@@ -16,7 +16,7 @@ import pytest
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
-from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef, exact_ref, semantic_hash
+from rawlsing_next.pre553_empirical_objects import EmpiricalFact, EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash
 from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
 
 R2_SHA = "265526a69c3a7a52365cf908709a4ef85ef9092e"
@@ -121,3 +121,42 @@ def test_retained_current_r1c_and_bound_first_reader_survive():
     assert bridge.admit_gt12_c_relation_from_verified_current_objects(
         relation, joint_query=q, joint_fact=f,
     ).admission.decision is adm.AdmissionDecision.ADMITTED
+
+
+def test_round2_allows_unresolved_query_to_mint_positive_ff_and_d(agent_a_round2_ff):
+    query, fact, conditioner, target = _objects()
+    unresolved = EmpiricalQuerySpec(
+        typed_state="UNRESOLVED",
+        authority_snapshot_refs=query.authority_snapshot_refs,
+        dependency_refs=query.dependency_refs,
+        producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
+        **dict(query.semantic_fields),
+    )
+    semantics = dict(fact.semantic_fields)
+    semantics["empirical_query_spec_ref"] = unresolved.ref
+    updated_dependencies = tuple(
+        unresolved.ref if exact_ref(ref) == query.ref else ref
+        for ref in fact.dependency_refs
+    )
+    signed_fact = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=updated_dependencies,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **semantics,
+    )
+    assert signed_fact.typed_state == "SUPPORTED"
+    assert unresolved.typed_state == "UNRESOLVED"
+    assert exact_ref(signed_fact.empirical_query_spec_ref) == unresolved.ref
+
+    prior = _produce(agent_a_round2_ff, unresolved, signed_fact, conditioner, target)
+    prior_as_current = ff.ExactConditionalSupportProfile(**{
+        field.name: getattr(prior, field.name)
+        for field in fields(ff.ExactConditionalSupportProfile) if field.init
+    })
+    assert bridge.admit_gt12_c_relation(prior_as_current).admission.decision is adm.AdmissionDecision.ADMITTED
+    with pytest.raises(ff.FieldForgeConditionalSupportError,
+                       match="positive fact cannot derive.*nonpositive query"):
+        _produce(ff, unresolved, signed_fact, conditioner, target)
+    restored = _produce(ff, query, fact, conditioner, target)
+    assert bridge.admit_gt12_c_relation(restored).admission.decision is adm.AdmissionDecision.ADMITTED
