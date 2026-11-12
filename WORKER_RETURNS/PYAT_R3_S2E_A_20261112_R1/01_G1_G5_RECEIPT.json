@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_R3_S2E_A_HANDOFF_GATES@1.0.0",
+  "commission": "P2-06__PYAT_R3_S2-E_ADVERSARIAL_DUEL",
+  "agent": "A_GO_FIRSTER",
+  "repository": "maidiu/rawlsing",
+  "source_branch": "integration/pyat-r3-s1b-s1d-s2f-scoped-g5-20261112-r1",
+  "source_sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "branch": "agent/pyat-r3-s2e-a-go-firster-20261112-r1",
+  "frozen_code_sha": "d7af5b8df922caa86bcd36a7baa0bbb55b43742d",
+  "draft_pr": "https://github.com/maidiu/rawlsing/pull/951",
+  "evidence": {
+    "workflow_run": "https://github.com/maidiu/rawlsing/actions/runs/43275018294",
+    "native_tests_pass": 78,
+    "s2f_tests_pass": 19,
+    "native_test_execution_status": "SUCCESS",
+    "s2f_preservation_status": "SUCCESS",
+    "one_batch": {
+      "sourcegrade": "TEST_ONLY_SOURCEFREE",
+      "respondents": 12,
+      "batch_units": 5,
+      "query_units": 4,
+      "discovery_units": 1,
+      "family_proof": [
+        "F1 marginal",
+        "F2 Y|X",
+        "F2 X|Y distinct risk and denominator",
+        "F3 exhaustive minority discovery with valid empty fates",
+        "F4 same-respondent 3-way joint, complete 8-cell domain"
+      ],
+      "F2_condition_denominators": {
+        "Y_given_X_eq_1": 6,
+        "X_given_Y_eq_1": 2
+      },
+      "F4_complete_domain_cells": 8,
+      "shared_vs_ungrouped_complete_graph_sha256": "befb766af812995cdf06989d1afd83d3f250859df30a1f01968e6f808eef63d0",
+      "shared_core_builds": 5,
+      "shared_core_hits": 1,
+      "timed_shared_seconds": 0.032906,
+      "timed_ungrouped_seconds": 0.028444,
+      "observed_process_maxrss_kib": 173012,
+      "process_tree_maxrss_kib": null,
+      "source_opens_during_batch": 0,
+      "full_source_opens": "NOT_MEASURED_FOR_COMPLETE_INGESTION",
+      "scratch_output_bytes": null,
+      "measured_saved_store_bytes": null,
+      "original35_performance": "NOT_RUN",
+      "proof_cap": "EXPLICIT_CANONICAL_TRANSCRIPT_BYTE_CAP_HOLDS_AND_RESTORES",
+      "performance_speedup_demonstrated": false
+    }
+  },
+  "gates": {
+    "G1": {
+      "status": "PARTIAL__EXACT_SOURCEFREE_KEYS_AND_OUTPUT_DOMAINS__NO_ALL35_UNIVERSE_COMPLETION",
+      "evidence": [
+        "existing I03GroupedExecutionScope._core_key exact release/universe, respondent root, risk, predicate, topology/domain, authority closure",
+        "per-measure weight and Fraction materialization recomputed, not shared",
+        "S2E native fact plus issued-query full-domain audit",
+        "all exact Batch output references and discovery candidate fates"
+      ],
+      "remainder": "Full original35/source-specific issued operation count and compat-key enumeration, source/rights, physical saved-store"
+    },
+    "G2": {
+      "status": "PASS_BOUNDED_SOURCEFREE_F1_F2_F3_F4_I03_I05_BATCH_ONLY",
+      "evidence": [
+        "single real 5-unit sealed C11 Batch",
+        "full-object graph SHA parity to independent ungrouped native evaluation",
+        "manual eight-cell F4 and F2 both-direction numerators/denominators",
+        "separate changed-upstream-value/restoration evidence in test_pyat919_s2e_a_conservation.py"
+      ],
+      "limitation": "Not all original35 operations or native original-respondent execution"
+    },
+    "G3": {
+      "status": "A_SIDE_PASS_AT_TESTED_SCOPE__B_OPPONENT_ATTACK_PENDING",
+      "attacked": [
+        "completed Batch missing all output refs",
+        "claimed extra I05 candidate despite missing fate",
+        "zero-support/candidate nonpositive preservation",
+        "cross-release/authority and universe provenance",
+        "rehashed F4 dropped-zero-domain with rehashed complete Batch receipt",
+        "inadequate output byte cap typed HOLD and restoration",
+        "separate upstream change and exact identity restoration"
+      ],
+      "original_mandatory_hostiles": "Additional unequal risk, routing UNKNOWN, absent overlap, weight/design, occurrence, unsupported topology and I05 recursive negatives retained in native regression suites, not newly all coexecuted in the five-unit Batch",
+      "unresolved": "Independent B self-attack and cross-claim tests remain required"
+    },
+    "G4": {
+      "status": "PARTIAL_REAL_MEASUREMENTS__NO_VERIFIED_SPEEDUP_OR_100K_CAP",
+      "result": "One true shared core hit; 12-row grouped path slower than independent path in measured CI; exact byte-cap hold on conservation transcript, not a hard host source memory cap",
+      "blocker": "HOLD_DEPENDENCY:S2-D for saved-store, process-tree/100k/source-native resource test",
+      "no_truncation": true
+    },
+    "G5": {
+      "status": "NOT_RUN_BY_THIRD_REVIEWER",
+      "decision_owner": "Independent nonauthor, non-A/non-B reviewer",
+      "accepts_at_sha": null
+    }
+  },
+  "authority_grade": {
+    "engineering": "SOURCEFREE_NATIVE_BOUNDED__AGENT_A_CI_REPRODUCED__NOT_G5",
+    "scientific": "NO_ORIGINAL35_NATIVE_OR_CAUSAL_SCIENCE_ISSUANCE",
+    "source": "NO_NEW_SOURCE_USE_OR_ORIGINAL_RESPONDENT_GRANT",
+    "actor": "NO_ACTOR_OR_PERSONA_ISSUANCE",
+    "integration": "DRAFT_PR_NOT_PROTECTED"
+  },
+  "dependencies": [
+    "HOLD_DEPENDENCY:S2-D saved-store first consumer",
+    "original35/source-use and issuer-science remains separate",
+    "G5 third reviewer",
+    "B adversarial improvement/repair turn"
+  ],
+  "disposition": "FROZEN_A_CANDIDATE__HANDOFF_TO_B__NOT_A_FINAL_ACCEPTANCE",
+  "stop_state": "AGENT_A_FIRST_TURN_COMPLETE__DUEL_CONTINUES__NO_PROTECTED_MERGE",
+  "rejects": [
+    "separate F1-F4 scientific engine duplicated from I03",
+    "counter-only output conservation",
+    "pretend grouped cache hit proves economy",
+    "reuse historical SRC04 brute-force pair loop",
+    "full MCR-C administrative chain for sourcefree case"
+  ]
+}
