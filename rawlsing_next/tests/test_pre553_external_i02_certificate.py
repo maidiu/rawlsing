@@ -578,3 +578,62 @@ def test_s2b_a_r2_deleting_verifier_seal_allows_db_substitution(tmp_path):
             )
         finally:
             replacement.close()
+
+
+def test_s2b_a_r2_atomic_publication_collision_preserves_other_writer(tmp_path, monkeypatch):
+    """A checked-absent final path can be claimed while builder works.
+
+    B inherited A's TOCTOU exists()->os.replace(): the competing final file
+    was silently lost. This test inserts the rival exactly at publication and
+    requires a typed refusal without clobbering that file.
+    """
+    source = _build_source("s2b-a-r2-publish-race", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    destination = tmp_path / "published.sqlite"
+    import os
+    real_link = os.link
+    collision_called = []
+
+    def race_link(source_path, target_path, *, follow_symlinks=True):
+        collision_called.append((source_path, target_path))
+        Path(target_path).write_bytes(b"unrelated-writer-exclusive-claim")
+        return real_link(source_path, target_path,
+                         follow_symlinks=follow_symlinks)
+
+    monkeypatch.setattr(os, "link", race_link)
+    with pytest.raises(ExternalI02IntegrityError, match="destination collision"):
+        build_sourcefree_external_i02(
+            _release(source), source["universe"].ref, destination,
+            chunk_size=2,
+        )
+    assert len(collision_called) == 1
+    assert destination.read_bytes() == b"unrelated-writer-exclusive-claim"
+    assert not list(tmp_path.glob(".s2b-stage-*.tmp"))
+
+
+def test_s2b_a_r2_only_readonly_select_rows_and_closed_iterators(tmp_path):
+    source = _build_source("s2b-a-r2-facade", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        assert verified.db.execute("SELECT 1").fetchone() == (1,)
+        for invalid in (
+            "ROLLBACK", "COMMIT", "PRAGMA query_only=OFF",
+            "CREATE TEMP TABLE selectors(kind TEXT)",
+            "SELECT 1; ROLLBACK", "SELECT * FROM nonexistent",
+        ):
+            with pytest.raises(ExternalI02IntegrityError):
+                verified.db.execute(invalid)
+        cursor = verified.db.execute("SELECT ref FROM main.objects ORDER BY ref")
+        assert not hasattr(cursor, "connection")
+        assert not hasattr(verified.db, "create_collation")
+        assert next(iter(cursor))[0]
+        verified.close()
+        with pytest.raises(ExternalI02IntegrityError, match="closed"):
+            next(cursor)
+        with pytest.raises(ExternalI02IntegrityError, match="closed"):
+            verified.db.execute("SELECT 1")
