@@ -19,10 +19,12 @@ from typing import Any, Mapping
 from rawlsing_next._pre553_query_common import QueryExecutionResult, _parse_target_plan
 from rawlsing_next.pre553_batch_runner import BatchManifest, UnitExecutionReceipt
 from rawlsing_next.pre553_discovery_exact import (
-    COVERAGE_CLAIM,
-    TERMINAL_COVERAGE_STATES,
+    COVERAGE_CLAIM, I05_CONTRACT_ID, TERMINAL_COVERAGE_STATES,
     ExactBoundedDiscoveryResult,
+    _verify_discovery_authority, _catalog_atoms, _catalog_templates,
+    _validate_catalog_scope, _compile_frontier, _derived_ref,
 )
+from rawlsing_next._pre553_query_common import QUERY_EXECUTION_CONTRACT_ID
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact,
     DiscoveryResultReceipt,
@@ -161,6 +163,147 @@ def _verify_declared_domain(fact: EmpiricalFact, query: Any, registry: Any) -> N
              "S2E_INCOMPLETE_OR_FOREIGN_DECLARED_DOMAIN")
 
 
+def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: ExactBoundedDiscoveryResult, unit: Any) -> None:
+    """Re-derive a native I05 candidate's *inner* hash and replay, not its self-hash.
+
+    The native producer constructs candidate identity in _candidate() and the
+    per-candidate replay in execute_exact_bounded_discovery(). We use those
+    frozen formulas independently of their supplied hash/ref assertions.
+    """
+    ci = receipt.candidate_identity
+    _require(isinstance(ci, Mapping), "S2E_I05_CANDIDATE_IDENTITY_MISSING")
+    roles = ci.get("query_roles")
+    _require(isinstance(roles, (tuple, list)) and bool(roles),
+             "S2E_I05_CANDIDATE_ROLE_CLOSURE_MISSING")
+    role_material = []
+    role_names: set[str] = set()
+    for raw in roles:
+        _require(isinstance(raw, Mapping) and isinstance(raw.get("role"), str)
+                 and bool(raw["role"]), "S2E_I05_CANDIDATE_ROLE_INVALID")
+        name = raw["role"]
+        _require(name not in role_names, "S2E_I05_DUPLICATE_QUERY_ROLE")
+        role_names.add(name)
+        role_material.append({
+            "role": name,
+            "predicate_ref": exact_ref(raw.get("predicate_ref"), "candidate role predicate").as_dict(),
+            "query_ref": exact_ref(raw.get("query_ref"), "candidate role query").as_dict(),
+        })
+    ancestry = tuple(sorted({
+        exact_ref(ref, "candidate ancestry") for ref in receipt.branch_or_parent_ancestry_refs
+    }, key=lambda ref: ref.key))
+    winner = exact_ref(receipt.winning_predicate_ref, "winning predicate")
+    mat = {
+        "contract": I05_CONTRACT_ID,
+        "family": ci.get("family"),
+        "rule_id": ci.get("rule_id"),
+        "winning_predicate_ref": winner.as_dict(),
+        "query_roles": role_material,
+        "validation": ci.get("validation"),
+        "ancestry_refs": [ref.as_dict() for ref in ancestry],
+    }
+    candidate_hash = semantic_hash(mat)
+    _require(ci.get("candidate_hash") == candidate_hash
+             and ci.get("candidate_id") == f"urn:rawlsing:pre553:i05:candidate:sha256:{candidate_hash}",
+             "S2E_I05_CANDIDATE_IDENTITY_MISMATCH")
+
+    _require(tuple(sorted(_ref_key(ref) for ref in receipt.validation_fact_refs))
+             == tuple(sorted(_ref_key(ref) for ref in receipt.empirical_fact_refs)),
+             "S2E_I05_VALIDATION_FACT_CLOSURE_MISMATCH")
+    facts_by_key = {fact.ref.key: fact for fact in output.empirical_facts}
+    support = receipt.support_uncertainty_state
+    role_refs = support.get("query_role_fact_refs") if isinstance(support, Mapping) else None
+    _require(isinstance(role_refs, Mapping) and set(role_refs) == role_names,
+             "S2E_I05_ROLE_FACT_CLOSURE_MISSING")
+    cited: set[str] = set()
+    for role in role_material:
+        member_refs = role_refs[role["role"]]
+        _require(isinstance(member_refs, (list, tuple)) and bool(member_refs),
+                 "S2E_I05_ROLE_WITHOUT_FACT")
+        for raw in member_refs:
+            key = _ref_key(raw)
+            _require(key in facts_by_key,
+                     "S2E_I05_ROLE_FACT_PREIMAGE_NOT_PRESENT")
+            _require(_ref_key(facts_by_key[key].empirical_query_spec_ref)
+                     == _ref_key(role["query_ref"]),
+                     "S2E_I05_ROLE_FACT_WRONG_QUERY")
+            cited.add(key)
+    _require(cited == {_ref_key(ref) for ref in receipt.empirical_fact_refs},
+             "S2E_I05_ROLE_FACT_CLOSURE_MISMATCH")
+
+    exact_fact_refs = tuple(sorted({
+        exact_ref(ref, "candidate empirical fact") for ref in receipt.empirical_fact_refs
+    }, key=lambda ref: ref.key))
+    replay_material = {
+        "contract": I05_CONTRACT_ID,
+        "authority_ref": output.discovery_authority_ref.as_dict(),
+        "frontier_ref": output.evaluated_frontier_ref.as_dict(),
+        "candidate_id": ci["candidate_id"],
+        "candidate_hash": ci["candidate_hash"],
+        "coverage_state": receipt.coverage_state,
+        "fact_refs": [ref.as_dict() for ref in exact_fact_refs],
+        "release_refs": [ref.as_dict() for ref in unit.release_refs],
+        "query_execution_contract": QUERY_EXECUTION_CONTRACT_ID,
+    }
+    expected = _derived_ref("PRE553_I05_DISCOVERY_REPLAY", "candidate-replay", replay_material)
+    _require(_ref_key(receipt.replay_ref) == expected.key
+             and _ref_key(receipt.producer_replay_locator_or_reference_root) == expected.key,
+             "S2E_I05_CANDIDATE_REPLAY_MISMATCH")
+
+
+def _verify_i05_declared_frontier(output: ExactBoundedDiscoveryResult, unit: Any, catalog: Any, registry: Any) -> None:
+    """Regenerate authority-declared candidate roster WITHOUT re-running any I03.
+
+    Native I05's own pre-search grammar compiler is the governing source;
+    this verifies a complete roster, not just equal claimed receipt counters.
+    Does not grant issuer currentness or original respondent/source competence.
+    """
+    authority = catalog.resolve_discovery_authority_exact(unit.job_ref)
+    definition = _verify_discovery_authority(authority, registry)
+    atoms = _catalog_atoms(definition, catalog.predicates)
+    templates = _catalog_templates(definition, catalog.queries)
+    _validate_catalog_scope(authority, atoms, templates)
+    candidates = _compile_frontier(definition, atoms, templates)
+    grammar_ref = exact_ref(authority.candidate_grammar_ref, "candidate grammar")
+    material = {
+        "contract": I05_CONTRACT_ID,
+        "discovery_authority_ref": authority.ref.as_dict(),
+        "candidate_grammar_ref": grammar_ref.as_dict(),
+        "query_execution_contract": QUERY_EXECUTION_CONTRACT_ID,
+        "candidate_identities": [
+            {"candidate_id": c.candidate_id, "candidate_hash": c.candidate_hash}
+            for c in candidates
+        ],
+        "coverage_claim": COVERAGE_CLAIM,
+    }
+    true_frontier = _derived_ref("PRE553_I05_EVALUATED_FRONTIER", "frontier", material)
+    _require(output.evaluated_frontier_ref == true_frontier
+             and output.candidate_grammar_ref == grammar_ref
+             and output.candidate_count == len(candidates),
+             "S2E_I05_DECLARED_FRONTIER_MISMATCH")
+    by_id = {
+        c.candidate_id: c for c in candidates
+    }
+    _require(len(by_id) == len(candidates), "S2E_I05_DECLARED_CANDIDATE_DUPLICATION")
+    actual_ids = {receipt.candidate_identity["candidate_id"] for receipt in output.receipts}
+    _require(actual_ids == set(by_id), "S2E_I05_DECLARED_FRONTIER_MISMATCH")
+    for receipt in output.receipts:
+        c = by_id[receipt.candidate_identity["candidate_id"]]
+        _require(
+            receipt.candidate_identity["candidate_hash"] == c.candidate_hash
+            and _ref_key(receipt.winning_predicate_ref) == c.winning_predicate.ref.key
+            and {_ref_key(ref) for ref in receipt.branch_or_parent_ancestry_refs}
+                == {ref.key for ref in c.ancestry_refs}
+            and tuple(
+                (row["role"], _ref_key(row["predicate_ref"]), _ref_key(row["query_ref"]))
+                for row in receipt.candidate_identity["query_roles"]
+            ) == tuple(
+                (role.role, role.predicate.ref.key, role.query.ref.key)
+                for role in c.query_roles
+            ),
+            "S2E_I05_DECLARED_CANDIDATE_ROLE_OR_ANCESTRY_MISMATCH",
+        )
+
+
 @dataclass(frozen=True)
 class S2EOutputCensus:
     contract: str
@@ -174,6 +317,7 @@ class S2EOutputCensus:
     i05_receipt_count: int
     typed_state_counts: Mapping[str, int]
     declared_domain_verified: bool
+    declared_frontier_verified: bool
     canonical_proof_transcript_bytes: int
     per_unit_full_preimage_sha256: Mapping[str, str]
     full_output_sha256: str
@@ -191,6 +335,7 @@ class S2EOutputCensus:
             "i05_receipt_count": self.i05_receipt_count,
             "typed_state_counts": dict(sorted(self.typed_state_counts.items())),
             "declared_domain_verified": self.declared_domain_verified,
+            "declared_frontier_verified": self.declared_frontier_verified,
             "canonical_proof_transcript_bytes": self.canonical_proof_transcript_bytes,
             "per_unit_full_preimage_sha256": dict(sorted(self.per_unit_full_preimage_sha256.items())),
             "full_output_sha256": self.full_output_sha256,
@@ -307,6 +452,8 @@ def census_native_batch(
                      "S2E_I05_VALID_EMPTY_CLAIM_MISMATCH")
             _require(tuple(_ref_key(ref) for ref in unit.release_refs),
                      "S2E_DISCOVERY_EMPTY_RELEASE_SCOPE")
+            if runtime_catalog is not None:
+                _verify_i05_declared_frontier(output, unit, runtime_catalog, registry)
             seen: set[tuple[str, str]] = set()
             cited_fact_refs: set[str] = set()
             for receipt in output.receipts:
@@ -328,6 +475,7 @@ def census_native_batch(
                 _require(key not in seen, "S2E_DUPLICATE_DISCOVERY_CANDIDATE_FATE")
                 seen.add(key)
                 cited_fact_refs.update(_ref_key(ref) for ref in receipt.empirical_fact_refs)
+                _verify_i05_candidate_receipt(receipt, output, unit)
                 _object(digest, "I05_RECEIPT", receipt)
                 totals["i05_receipt"] += 1
                 states["DISCOVERY:" + receipt.typed_state] = (
@@ -409,6 +557,7 @@ def census_native_batch(
         i05_receipt_count=totals["i05_receipt"],
         typed_state_counts=dict(sorted(states.items())),
         declared_domain_verified=runtime_catalog is not None,
+        declared_frontier_verified=runtime_catalog is not None,
         canonical_proof_transcript_bytes=transcript_bytes[0],
         per_unit_full_preimage_sha256=dict(sorted(per_unit.items())),
         full_output_sha256=summary.hexdigest(),
