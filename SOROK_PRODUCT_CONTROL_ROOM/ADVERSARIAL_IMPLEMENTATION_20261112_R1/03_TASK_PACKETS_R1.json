@@ -120,7 +120,8 @@
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
-      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
+      "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution."
     },
     {
       "id": "B05",
@@ -165,12 +166,13 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "A_COUNTER_RUNNING",
+      "status": "A_B_A_CANDIDATE_ROUND_COMPLETE_PENDING_TRANCHE_RECEIVING",
       "B01_candidate_source": "edbb4b344d54731a527fd415a965bc848ed964e1",
       "not_independently_accepted": true,
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
       "A_candidate_head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
-      "B_candidate_head": "0fd303e2af23d71b51b068393cfaa6f62d40fe38"
+      "B_candidate_head": "0fd303e2af23d71b51b068393cfaa6f62d40fe38",
+      "latest_head": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26"
     },
     {
       "id": "C02",
@@ -192,15 +194,16 @@
         "06"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHORIZED_CURRENT_CLOCK_PORTION_AFTER_C01_COUNTER_B02_HELD",
+      "status": "B_COUNTER_RUNNING_B02_PREREQUISITE_HELD",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
       "candidate_composition": "5932a509095f92f2d2b463b0899b27ac851741f6",
-      "running_contract": "pair3-A-C01-counter-C02-v3.txt",
+      "running_contract": "pair3-B-C02-counter-v4.txt",
       "dependencies_not_accepted": [
         "B02"
-      ]
+      ],
+      "A_candidate_head": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26"
     },
     {
       "id": "C03",
@@ -227,7 +230,8 @@
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
-      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet.",
+      "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution."
     },
     {
       "id": "C04",
@@ -252,7 +256,8 @@
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
-      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet.",
+      "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution."
     },
     {
       "id": "C05",
@@ -429,7 +434,8 @@
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
       "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet.",
-      "situated_context_candidate": "D02 current-clock selector at0d591ff6... under B challenge; no actor choice/durable effect; B02 and exact C01 integration held."
+      "situated_context_candidate": "D02 current-clock selector at0d591ff6... under B challenge; no actor choice/durable effect; B02 and exact C01 integration held.",
+      "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution."
     },
     {
       "id": "E02",
@@ -668,7 +674,7 @@
   ],
   "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers.",
   "frozen_programme_head": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "runtime_snapshot_utc": "2026-11-12T11:55:45.938143+00:00",
+  "runtime_snapshot_utc": "2026-11-12T12:18:14.126003+00:00",
   "persistent_pairs": [
     {
       "pair": 1,
@@ -705,12 +711,12 @@
         "A": "ses_e31295836ffeW9bYwX9iiMMcXS",
         "B": "ses_e31295826ffe6kteacpU7p3nQW"
       },
-      "state": "A_COUNTER_RUNNING",
-      "active_job": "sorok-duel-pair3-c01-counter-c02-a-20261112-r1",
-      "opponent_frozen_head": "0fd303e2af23d71b51b068393cfaa6f62d40fe38",
-      "base_commit": "5932a509095f92f2d2b463b0899b27ac851741f6",
+      "state": "B_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair3-c02-counter-b-20261112-r1",
+      "opponent_frozen_head": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26",
+      "base_commit": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26",
       "next_packet": "C02_B02_PREREQUISITE_HELD",
-      "active_contract_sha256": "c076e6c2a3ef77573a457b806cb32968413aaa32d0f8e91d76b51d0798fccbcd"
+      "active_contract_sha256": "e90d12c7286f3fad8ac6b526b9fafb34bf3dee435a1e680f365666e5e3d3709a"
     }
   ],
   "returned_candidates": [
@@ -775,6 +781,17 @@
       "branch": "codex/sorok-duel-d01-a-relay-d02-20261112-r1",
       "status": "AUTHOR_TESTED_B_COUNTER_RUNNING_B02_PREREQUISITE_HELD",
       "actual_change": "Receipt-record deletion detection; current-clock read-only P3 context selector; actual B01/C01/D01 one-root composition proof at its older frozen cut, not latest B03/C01 B or full historical D02."
+    },
+    {
+      "task": "C01_COUNTER_AND_C02_PARTIAL",
+      "role": "A",
+      "head": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26",
+      "implementation": "ace64f7794a4dd9324bc67768835083b452c49b2",
+      "branch": "codex/sorok-duel-c01-a-relay-c02-20261112-r1",
+      "status": "AUTHOR_TESTED_B_COUNTER_RUNNING_B02_PREREQUISITE_HELD",
+      "actual_change": "C01 repairs conceded and source composition tested; current-clock registered-parent material antecedents and work/care/debt effects plus self-only feasible options. Calendar/parent request decision/utterance/child uptake remain absent.",
+      "return_path": "WORKER_RETURNS/SOROK-DUEL-C01-R1/C02/",
+      "next_checks": "Truthful ordinary-activity event carrier; actor-local stock/currency/household permissions at B04/C03 join."
     }
   ],
   "composition_candidate": {
