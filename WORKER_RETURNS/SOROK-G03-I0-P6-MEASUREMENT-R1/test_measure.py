@@ -11,6 +11,7 @@ class Attacks(unittest.TestCase):
         self.man={"schema":m.SCHEMA,"repo_sha":"b"*40,"source_hashes":self.source,
                   "runner_sha256":"c"*64,"python_executable_sha256":"d"*64,"os":"Linux",
                   "state_digest_scheme":m.STATE_DIGEST_SCHEME,
+                  "state_logical_scheme":m.STATE_LOGICAL_SCHEME,
                   "env_keys":sorted(m.env_offline()),"env_fingerprint_sha256":"e"*64,
                   "provider_mode":"OFFLINE_VERIFIED_CHILD_ALLOWLIST","network_calls":"UNOBSERVED",
                   "descendant_processes":"UNOBSERVED",
@@ -51,6 +52,8 @@ class Attacks(unittest.TestCase):
             start["state_snapshot_before"]=snaps[i]
             rec["state_snapshot_before"]=snaps[i]
             rec["state_snapshot_after"]=snaps[min(i+1,4)]
+            rec["state_logical_before"]=snaps[i]
+            rec["state_logical_after"]=snaps[min(i+1,4)]
             self.save(d/"start.json",start)
             self.save(d/"receipt.json",rec)
         self.index()
@@ -129,6 +132,12 @@ class Attacks(unittest.TestCase):
     def test_duplicate_child_id_rejected(self):
         self.mutate("cold_view",lambda x:x.update(child_pid=100))
         self.rejects("DUPLICATED_CHILD_EXEC_ID")
+    def test_unwitnessed_sqlite_logical_digest_cannot_be_invented(self):
+        self.mutate("fail_wait",lambda x:x["state_logical_after"].update(sha256="f"*64))
+        self.rejects("STATE_FINAL_LOGICAL_MISMATCH")
+    def test_dropped_logical_refusal_witness_rejected(self):
+        self.mutate("fail_wait",lambda x:x.pop("state_logical_before"))
+        self.rejects("STATE_SNAPSHOT_INVALID")
     def test_no_cumulative_rss_fabrication(self):
         self.assertEqual(m.process_usage(None)["status"],"UNOBSERVED")
 if __name__=="__main__":unittest.main()
