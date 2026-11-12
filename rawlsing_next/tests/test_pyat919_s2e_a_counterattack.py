@@ -170,3 +170,78 @@ def test_a2_declared_grammar_refuses_coordinated_missing_candidate_and_outer():
             runtime_catalog=case[1], require_complete=True,
         ),
     )
+
+
+
+def test_a2_coordinated_rehashed_ancestry_and_candidate_replay_refused_by_issuer_grammar():
+    """Even mutually consistent candidate/inner/outer digests cannot rewrite the issued grammar."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    native = outputs[unit.unit_hash]
+    candidate = native.receipts[0]
+    ancestry_hash = semantic_hash("S2E_A2_FORGED_PARENT")
+    forged_ancestry = ExactRef(
+        "DISCOVERY_BRANCH_ANCESTRY",
+        f"urn:test:s2e:forged-parent:sha256:{ancestry_hash}",
+        ancestry_hash,
+    )
+    ci = dict(candidate.candidate_identity)
+    roles = tuple({
+        "role": role["role"],
+        "predicate_ref": exact_ref(role["predicate_ref"], "predicate").as_dict(),
+        "query_ref": exact_ref(role["query_ref"], "query").as_dict(),
+    } for role in ci["query_roles"])
+    winner = exact_ref(candidate.winning_predicate_ref, "winner")
+    changed_candidate_hash = semantic_hash({
+        "contract": I05_CONTRACT_ID,
+        "family": ci["family"],
+        "rule_id": ci["rule_id"],
+        "winning_predicate_ref": winner.as_dict(),
+        "query_roles": list(roles),
+        "validation": ci["validation"],
+        "ancestry_refs": [forged_ancestry.as_dict()],
+    })
+    ci["candidate_hash"] = changed_candidate_hash
+    ci["candidate_id"] = (
+        f"urn:rawlsing:pre553:i05:candidate:sha256:{changed_candidate_hash}"
+    )
+    fact_refs = sorted(
+        (exact_ref(ref, "candidate fact") for ref in candidate.empirical_fact_refs),
+        key=lambda ref: ref.key,
+    )
+    replay = _replay_ref("candidate-replay", {
+        "contract": I05_CONTRACT_ID,
+        "authority_ref": native.discovery_authority_ref.as_dict(),
+        "frontier_ref": native.evaluated_frontier_ref.as_dict(),
+        "candidate_id": ci["candidate_id"],
+        "candidate_hash": ci["candidate_hash"],
+        "coverage_state": candidate.coverage_state,
+        "fact_refs": [ref.as_dict() for ref in fact_refs],
+        "release_refs": [ref.as_dict() for ref in unit.release_refs],
+        "query_execution_contract": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    })
+    altered = _forge_receipt(
+        candidate,
+        overrides={
+            "candidate_identity": ci,
+            "branch_or_parent_ancestry_refs": (forged_ancestry,),
+            "replay_ref": replay,
+        },
+        root=replay,
+    )
+    broken_history, broken_outputs = _outer_consistent(
+        manifest, receipts, outputs, unit, altered,
+    )
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_DECLARED_FRONTIER_MISMATCH"):
+        census_native_batch(
+            manifest, broken_history, broken_outputs,
+            runtime_catalog=case[1], require_complete=True,
+        )
+    require_same_native_output_graph(
+        baseline, census_native_batch(
+            manifest, receipts, outputs,
+            runtime_catalog=case[1], require_complete=True,
+        ),
+    )
