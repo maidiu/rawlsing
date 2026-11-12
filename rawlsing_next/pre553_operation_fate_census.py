@@ -26,6 +26,7 @@ from rawlsing_next.universal_grammar.types import (
 )
 from rawlsing_next.universal_grammar.enumerate import (
     inventory_ledger as enumerate_inventory_ledger,
+    role_disposition as sourcefree_role_disposition,
 )
 
 SCOPE = "TEST_ONLY_SOURCEFREE"
@@ -285,6 +286,7 @@ def verify_frozen_inputs(
         inventory=inventory, policy=policy, frontier=frontier,
     )
     inventory_keys = set(inventory.by_key())
+    measures_by_id = {plan.measure_id: plan for plan in inventory.measure_plans}
     counts: Counter[str] = Counter()
     for op_id, op in operations.items():
         source = sources[op_id]
@@ -313,6 +315,28 @@ def verify_frozen_inputs(
             raise CensusRefusal("OCCURRENCE_NOT_IN_INVENTORY", op_id)
         if source.occurrence_ids != tuple(key.key for key in keys):
             raise CensusRefusal("OCCURRENCE_IDENTITY_DRIFT", op_id)
+        # The native lowerer checks role policy only for ELIGIBLE rows.
+        # Otherwise a jointly rehashed false HELD can silently drop RAW.
+        measure = measures_by_id.get(op.measure_id)
+        if measure is None:
+            raise CensusRefusal("SOURCEFREE_MEASURE_NOT_IN_INVENTORY", op_id)
+        actual_fate = (op.disposition, tuple(op.reasons),
+                       tuple(op.risk_set_refs), op.risk_set_ref)
+        predicted, reasons, risk_refs = sourcefree_role_disposition(
+            inventory, policy, targets=op.targets,
+            target_roles=op.target_roles,
+            conditions=op.conditions, conditioner_roles=op.conditioner_roles,
+            claim_class=op.claim_class, condition_mode=op.condition_mode,
+            measure=measure, branch_depth=op.branch_depth,
+        )
+        risk_refs = tuple(risk_refs)
+        expected_fate = (predicted, tuple(reasons), risk_refs,
+                         risk_refs[0] if risk_refs else None)
+        if actual_fate != expected_fate:
+            raise CensusRefusal("SOURCEFREE_ROLE_FATE_DRIFT", {
+                "operation_id": op_id, "declared": actual_fate,
+                "source_policy": expected_fate,
+            })
         if source.source_authority_ref not in inventory.authority_refs:
             raise CensusRefusal("SOURCE_AUTHORITY_NOT_IN_FROZEN_INVENTORY", op_id)
         for label, value in (
