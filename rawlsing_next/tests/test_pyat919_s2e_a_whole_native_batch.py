@@ -223,3 +223,56 @@ def test_a_one_batch_lost_i05_receipt_ref_is_red_even_at_same_count():
         runtime_catalog=case[1],
     )
     require_same_native_output_graph(census, good)
+
+
+def test_a_rehashed_f4_domain_hole_with_rehashed_completed_receipt_is_red():
+    """A zero cell can be deleted without changing totals; published query says no."""
+    from dataclasses import replace
+    from rawlsing_next.pre553_empirical_objects import EmpiricalFact
+
+    case = _native_case()
+    with I03GroupedExecutionScope() as scope:
+        manifest, receipts, outputs, original, _elapsed, _calls = _batch(case, scope=scope)
+    query_unit = next(
+        unit for unit in manifest.units
+        if unit.job_kind == "QUERY"
+        and len(next(q for q, p in case[2] if q.ref == unit.job_ref).target_question_refs) == 3
+    )
+    original_result = outputs[query_unit.unit_hash]
+    fact = original_result.facts[0]
+    fields = dict(fact.semantic_fields)
+    topology = dict(fields["target_topology"])
+    cells = list(topology["complete_cell_semantic_projection"])
+    assert len(cells) == 8 and any(row["raw_numerator_support"] == 0 for row in cells)
+    missing_zero_cell = next(i for i, row in enumerate(cells) if row["raw_numerator_support"] == 0)
+    cells.pop(missing_zero_cell)
+    topology["complete_cell_semantic_projection"] = cells
+    fields["target_topology"] = topology
+    # A self-consistent replacement object, not merely field corruption.
+    tampered_fact = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+    assert tampered_fact.ref != fact.ref
+    altered_result = replace(original_result, facts=(tampered_fact,))
+    altered_receipts = tuple(
+        replace(r, result_refs=(tampered_fact.ref,))
+        if r.unit_ref == query_unit.unit_ref else r
+        for r in receipts
+    )
+    # All other counts and Batch references remain self-consistent. The source
+    # query's exact declared 8-cell domain still falsifies the manufactured 7.
+    with pytest.raises(S2EOutputConservationError, match="S2E_INCOMPLETE_OR_FOREIGN_DECLARED_DOMAIN"):
+        census_native_batch(
+            manifest, altered_receipts,
+            {**outputs, query_unit.unit_hash: altered_result},
+            require_complete=True, runtime_catalog=case[1],
+        )
+    good = census_native_batch(
+        manifest, receipts, outputs,
+        require_complete=True, runtime_catalog=case[1],
+    )
+    require_same_native_output_graph(original, good)
