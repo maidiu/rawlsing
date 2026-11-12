@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+Machine-ready default: [UM-SOROK ten-parameter decision schema](00_UM_SOROK_GROKKING_DECISION_SCHEMA_R0.json).
+
+
 **DEFAULT UM-SOROK GROKKING / PRE-ADJUDICATION — REQUIRED FOR EVERY NEW SOROK HQ OR COMMISSION REVIEW (PROVISIONAL USER-DIRECTED R0):** [Read the complete UM-SOROK governing brain](00_UM_SOROK_GOVERNING_BRAIN_AND_GROKKING_R0.md) **after original source authority and before proposing, implementing, receiving or escalating any SOROK change**. Then read the [25/25 issue power-pass with executable remedies and white-whale limits](UM_SOROK_25_ISSUE_POWER_PASS_R1.md) and [machine-readable dispositions](UM_SOROK_25_ISSUE_POWER_PASS_R1.json). **Grokking proof:** explicitly distinguish (a) constitutive material/historical Other and actor/user epistemic membranes; (b) the already-designed prospective 3–5 event/outcome + simultaneous CAN/P3 pressure-stream computation + fallible retrospective LLM; (c) missing implementation vs unissued *specific* native science; (d) minimal repair/connect/extension/hold/defer and exact later-consumer proof; (e) **user-selected bounded real-world refresh and independently arising ordinary live-V3 interruptions** vs continuous world simulation and invented news. Apply the seven-step decision rubric and record one finite disposition. **UM-SOROK is an interpretive default, NOT an override of original CAN/ADP, protected ownership or frozen contracts. Do not resume stopped #939 agents or create new commissions from this note.**
 
 
