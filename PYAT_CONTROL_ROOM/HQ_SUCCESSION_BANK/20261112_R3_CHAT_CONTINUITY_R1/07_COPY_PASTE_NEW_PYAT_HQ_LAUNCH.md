@@ -29,7 +29,7 @@ Do NOT assume PYAT HQ accession itself grants original survey rights, native QSM
 
 ## 2. LIVE CURRENTNESS BEFORE ARCHITECTURE CLAIMS
 
-Read exact remote HEAD of integration/pre-main-reconciliation-r1. Fetch BOTH PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md and .json and BOTH SOROK_CONTROL_ROOM? NO: correct path is SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md and .json **at the SAME protected SHA**. Compare their revision numbers to actual newer issue/branch returns, record which statuses are historical. Verify latest legal PYAT HQ owner branch, exact latest PR heads, approved leases and independent adjudications. GitHub issue/branch/commit ≠ running local process. Inspect actual local controller state only if accessible; otherwise UNKNOWN. Existing user pause for W03/W04 at e31fea5ad65e9d9664cdc06bdf6ccb3a3c416ef0 remains in force unless expressly lifted.
+Read exact remote HEAD of integration/pre-main-reconciliation-r1. Fetch BOTH PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md and .json and BOTH SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md and .json **at the SAME protected SHA**. Compare their revision numbers to actual newer issue/branch returns, record which statuses are historical. Verify latest legal PYAT HQ owner branch, exact latest PR heads, approved leases and independent adjudications. GitHub issue/branch/commit ≠ running local process. Inspect actual local controller state only if accessible; otherwise UNKNOWN. Existing user pause for W03/W04 at e31fea5ad65e9d9664cdc06bdf6ccb3a3c416ef0 remains in force unless expressly lifted.
 
 Read the bank's seven core files 00–06 and the 07 prompt itself on PR #946; do not falsely assume all paths in this launch text are protected-merged. Currentness is a fresh test, not a copy of the bank.
 
