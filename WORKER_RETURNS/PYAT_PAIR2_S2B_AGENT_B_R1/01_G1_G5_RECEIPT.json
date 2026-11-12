@@ -1,0 +1,126 @@
+{
+  "schema": "PYAT_PAIR2_S2B_AGENT_B_G1_G5_RECEIPT@1",
+  "contract": "#919/S2-B/P2-02; #909/R3/R3C/R3S",
+  "explicit_scope_discrepancy": "User-pasted commission says S1-C P1-04 #918; attached Agent A artifact is S2-B P2-02 #919. This receipt strictly covers S2-B, not S1-C.",
+  "role": "AGENT_B_ADVERSARIAL_CONSTRUCTION_NOT_INDEPENDENT_G5",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/pyat-pair2-s2b-b-certificate-forgery-20261112-r1",
+  "draft_pr": "https://github.com/maidiu/rawlsing/pull/954",
+  "protected_pre_main_at_start": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "opponent_pr": "https://github.com/maidiu/rawlsing/pull/952",
+  "frozen_opponent_sha": "d5d6577b557fa8ced2dbb42d190ab254ab983b19",
+  "opponent_tested_source_sha": "2d217c63653f98a56ac23182f766a059460e8d68",
+  "inherited_unreceived_s2a_sha": "d3814d08dbe03b8464ac6fff4164765179869213",
+  "b_tested_code_sha": "96877c0c8315d06033371a622dc306419340fc57",
+  "tested_git_blobs": {
+    "production_file": "rawlsing_next/_pre553_external_i02_certificate.py@ca25d777204d194daa7159100f7f8e17cc534094",
+    "test_file": "rawlsing_next/tests/test_pre553_external_i02_certificate.py@4111dafa978bdac6bd5f47ab4b8222837250ee9f",
+    "workflow": ".github/workflows/pyat-pair2-s2b-external-i02.yml@513f02b83ad3d73068378cc11dbf35e60cebf040"
+  },
+  "code_lineage": {
+    "red_three_tests": "7eb268b5a614626d51cad2b80e364d820888525b",
+    "initial_trust_repair": "c84914692791ab4fda14c96d57e0aec134e64769",
+    "red_db_swap": "82b15d51d26b7d16123d1f75fe4952c6a97a3a26",
+    "final_tested_trust_repair": "96877c0c8315d06033371a622dc306419340fc57"
+  },
+  "ci": [
+    {
+      "run": 43276452169,
+      "sha": "7eb268b5a614626d51cad2b80e364d820888525b",
+      "passed": 84,
+      "failed": 3,
+      "meaning": "forged Protocol/subclass accepted; closed reader SQLite ProgrammingError",
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43276452169"
+    },
+    {
+      "run": 43276551713,
+      "sha": "c84914692791ab4fda14c96d57e0aec134e64769",
+      "passed": 87,
+      "failed": 0,
+      "meaning": "initial counterfeit/closed reader repairs passed",
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43276551713"
+    },
+    {
+      "run": 43277256665,
+      "sha": "82b15d51d26b7d16123d1f75fe4952c6a97a3a26",
+      "passed": 87,
+      "failed": 1,
+      "meaning": "same genuine verified object allowed database reassignment after cold check, changed real I03 native fact",
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43277256665"
+    },
+    {
+      "run": 43277344553,
+      "sha": "96877c0c8315d06033371a622dc306419340fc57",
+      "passed": 88,
+      "failed": 0,
+      "meaning": "final trust repair native I03/legacy sourcefree regressions plus separate 2048 sourcefree resource probe passed",
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43277344553"
+    }
+  ],
+  "inherited_case_count": 84,
+  "new_adversarial_cases": 4,
+  "final_resource_probe": {
+    "respondents": 2048,
+    "retained_bytes": 24801280,
+    "build_seconds": 5.94,
+    "cold_verify_seconds": 0.153,
+    "python_builder_tracemalloc_peak_bytes": 2112161,
+    "isolated_process_peak_rss_kb": 101400,
+    "full_88_case_test_suite_peak_rss_kb": 193804,
+    "logical_root": "025e17afa43b083a1aa557cab257f63d06716761da25e8575efb431996a88277",
+    "physical_root": "15be249f8da207d63c45e2999e9238c879b367d809b738bcb97cc8c99da16575",
+    "scratch_peak": "NOT_MEASURED",
+    "process_tree_peak": "NOT_MEASURED",
+    "integrated_100k_source_direct": "NOT_RUN",
+    "original35_science": "NOT_ISSUED"
+  },
+  "independent_verified_strengths": [
+    "Agent A 84 inherited sourcefree tests survive unchanged",
+    "Derived whole-I02 closure/selector roots and selected I03 exact-sourcefree parity survive",
+    "Deterministic original logical/physical root for original resource fixture survives"
+  ],
+  "reproduced_defects": [
+    "exact native installer accepted arbitrary Protocol with genuine roots/respondent refs but forged empty selector refs",
+    "subclass could override verified selector retrieval",
+    "native index after verifier close emitted uncontrolled sqlite3.ProgrammingError",
+    "genuine verifier admitted replacement SQLite connection after cold verification, altering normal native I03 facts"
+  ],
+  "corrected": [
+    "Exact concrete VerifiedExternalI02 type required before native installation",
+    "Slots disallow per-instance method monkeypatch",
+    "Typed verifier-open checks on public select and native event read methods",
+    "Post-validation immutable authenticated path/db/roots state, close-only lifecycle transition"
+  ],
+  "g1": {
+    "status": "PARTIAL",
+    "reason": "Original v1 M01-M18 carried; still depends on materialized C11LogicalRelease and closure_refs"
+  },
+  "g2": {
+    "status": "PARTIAL",
+    "reason": "Real native I03 positive/restored/refusal fixed; complete bounded source-direct I02 unavailable"
+  },
+  "g3": {
+    "status": "PARTIAL",
+    "reason": "Four material forged/close/source-selection cases repaired; full new source-direct negative court unrun"
+  },
+  "g4": {
+    "status": "PARTIAL",
+    "reason": "Derived sourcefree 2048 benchmark; upstream O(all refs), process-tree and 100k not solved"
+  },
+  "g5": {
+    "status": "NOT_RUN",
+    "reason": "Independent nonauthor receiving not undertaken; A and B cannot approve their own descendant"
+  },
+  "full_packet_disposition": "REVISE_EXACT_DEFECT",
+  "achieved_scope": "SOURCEFREE_DERIVED_EXTERNAL_CERTIFICATE_NATIVE_I03_TRUST_BOUNDARY_REPAIRED",
+  "remaining_primary_defect": "Source-direct I02 M01-M18 validation still uses existing full-materialized C11LogicalRelease and ReplayManifest.closure_refs",
+  "external_holds": [
+    "original35 source-equivalence and current use/source-grant",
+    "external competent scientific/root issuer",
+    "S2-A pending G5",
+    "S2-C distinct physical cold saved reader"
+  ],
+  "next_agent_a_attack": "Construct real bounded source-direct I02 M01-M18 producer+verifier from actual sourcefree candidate, without v1 closure_refs prerequisite; retain all 88 tests, prove normal native I03 changed/restored and hostile missing-index/authority/typed negatives at first consumer, measure resource ceilings; independently challenge B's post-check immutability boundary.",
+  "protected_merge": "NONE",
+  "independent_g5": "NOT_RUN"
+}

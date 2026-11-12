@@ -95,6 +95,126 @@ def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
         pass
 
 
+def test_s2b_forged_certificate_cannot_install_false_zero_into_real_i03(tmp_path):
+    """Harden the *existing* S2-B G3 counterfeit-index refusal at its consumer.
+
+    An attacker can copy genuine roots and the genuine respondent census,
+    while replacing only selector_refs. An arbitrary Protocol must never be
+    promoted into the ordinary native I03 index attestation.
+    """
+    from types import SimpleNamespace
+
+    source = _build_source("s2b-b-forged-install", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-b-forged-install")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as real:
+        forged = SimpleNamespace(
+            roots=real.roots,
+            respondent_refs=real.respondent_refs,
+            selector_refs=lambda *args, **kwargs: iter(()),
+        )
+        with pytest.raises(ExternalI02IntegrityError, match="exact cold-verified"):
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                forged,
+            )
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref,
+            real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+
+
+def test_s2b_verified_subclass_cannot_substitute_postings(tmp_path):
+    """A subclass can override the validated object's selector reader."""
+    source = _build_source("s2b-b-subclass", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    path, roots = _prepare(tmp_path, source)
+
+    class CounterfeitChild(VerifiedExternalI02):
+        def selector_refs(self, *args, **kwargs):
+            return iter(())
+
+    with CounterfeitChild(path, roots=roots) as counterfeit:
+        with pytest.raises(ExternalI02IntegrityError, match="exact cold-verified"):
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                counterfeit,
+            )
+
+
+def test_s2b_verified_connection_cannot_be_swapped_after_cold_root_check(tmp_path):
+    """A genuine verified class must not become a counterfeit by db reassignment."""
+    import shutil
+
+    source = _build_source("s2b-b-connection-swap", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-b-connection-swap")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    poisoned_path = tmp_path / "unanchored-copy.sqlite"
+    shutil.copy2(path, poisoned_path)
+    with sqlite3.connect(poisoned_path) as untrusted:
+        untrusted.execute("DELETE FROM selectors WHERE kind='native'")
+    with VerifiedExternalI02(path, roots=roots) as real:
+        replaced_connection = sqlite3.connect(poisoned_path)
+        try:
+            try:
+                real.db = replaced_connection
+            except ExternalI02IntegrityError as exc:
+                assert "immutable" in str(exc)
+            else:
+                # On Agent A's first implementation, the same trusted roots
+                # and genuine class now serve the unverified empty postings.
+                install_sourcefree_external_i02_i03(
+                    source["repo"], source["release_ref"],
+                    source["universe"].ref, real,
+                )
+                malicious_result = _run(source, qa, pred, query)
+                assert malicious_result != oracle
+                pytest.fail("post-verification DB swap corrupted real native I03 facts")
+        finally:
+            replaced_connection.close()
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+
+
+def test_s2b_closed_verified_reader_refuses_typed_native_selection(tmp_path):
+    """An attested installed I03 index must not use a closed SQLite witness."""
+    from rawlsing_next._pre553_query_predicate import _select_respondent_events
+
+    source = _build_source("s2b-b-closed", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-b-closed")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        index = source["repo"]._i03_release_indices[
+            (source["release_ref"], source["universe"].ref)
+        ]
+        respondent = next(iter(index.respondents))
+        target = source["qrefs"]["Y"]
+    with pytest.raises(ExternalI02IntegrityError, match="closed"):
+        list(_select_respondent_events(index, respondent, target))
+
+
 def test_s2b_same_respondent_duplicate_occurrence_and_states(tmp_path):
     source = _multi_i03_source("s2b-duplicate")
     path, roots = _prepare(tmp_path, source)
