@@ -24,6 +24,7 @@ from rawlsing_next._pre553_external_i02_certificate import (
 from rawlsing_next.tests.test_pre553_c11_repository_ingest import _candidate
 from rawlsing_next.pre553_c11_ingest import (
     C11SourceReleaseCandidate, ingest_c11_source_release,
+    validate_c11_source_release,
 )
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_objects import exact_ref, RespondentEvent
@@ -69,8 +70,16 @@ def test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release(tmp_path):
                 "SELECT COUNT(*) FROM main.objects WHERE family=?", (family,)
             )[0] >= 1
         header = dict(certified._rows("SELECT name,value FROM main.header"))
-        assert header["legacy_replay_m16_m18_equivalence"] == "NOT_PROVEN"
+        assert header["legacy_replay_m16_m18_equivalence"].startswith("STREAMED_HASH_")
         assert header["original_source_current_issuer"] == "NOT_ISSUED"
+        # Strong independent native historical functional comparator:
+        # only the TEST oracle uses full old in-memory ReplayManifest/C11.
+        # The direct producer above never constructed or consumed them.
+        historical = validate_c11_source_release(candidate)
+        assert header["candidate_projection_hash"] == historical.replay_manifest.semantic_projection_hash
+        assert header["reconstructed_v1_replay_ref"] == historical.replay_manifest.ref.key
+        assert header["reconstructed_v1_release_ref"] == historical.release_ref.key
+        assert expected.replay == historical.replay_manifest.ref.key
     # No direct-candidate roots may be smuggled into the old sealed-release
     # native I03 loader, even if it has an otherwise valid physical root.
     repo = C11Repository()
