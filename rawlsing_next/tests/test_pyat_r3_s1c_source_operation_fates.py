@@ -467,7 +467,7 @@ def test_s1c_b_rehashed_occurrence_false_fate_and_count_preserving_axis(tmp_path
         verify_frozen_inputs(forged_census, inventory=inventory,
                              policy=policy, frontier=forged)
 
-    budget_frontier = _fixture(tmp_path, budget=5)[3]
+    budget_frontier = enumerate_frontier(inventory, policy, budget=5)
     assert budget_frontier.execution_counts.get("PENDING", 0) > 0
     counts = dict(budget_frontier.execution_counts)
     counts["PENDING"] -= 1
