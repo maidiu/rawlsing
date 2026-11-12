@@ -1,0 +1,78 @@
+{
+  "baseline_axes": {
+    "compiled": 309,
+    "completed_sample_raw": 147,
+    "declared": 309,
+    "deferred_kinds": [
+      "ARITY_DEFERRED",
+      "RECURSION_BASELINE_NOT_ENUMERATED"
+    ],
+    "deferred_scope_count": 6,
+    "excluded_scope_count": 0,
+    "fate_counts": {
+      "ELIGIBLE": 150,
+      "HELD": 159
+    },
+    "held_rows": 159,
+    "received": 309,
+    "unknown_scope_count": 0,
+    "unsupported_runtime_rows": 3
+  },
+  "false_held_adapter": {
+    "code": "SOURCEFREE_ROLE_FATE_DRIFT",
+    "refused": true,
+    "source_factory_calls_before_refusal": 0
+  },
+  "false_held_native": {
+    "baseline_issued_candidate_count": 150,
+    "excluded_scope_equal": true,
+    "forged_disposition": "HELD",
+    "forged_received_candidate_ids": 0,
+    "forged_result_state": "HELD",
+    "inventory_ledger_equal": true,
+    "native_candidate_anti_join_no_drop_ok": true,
+    "native_operation_anti_join_no_drop_ok": true,
+    "native_receipt_count": 148,
+    "original_disposition": "ELIGIBLE",
+    "science_census_differs": true,
+    "source_census_equal": true,
+    "unknown_scope_equal": true
+  },
+  "false_reason": {
+    "actual_reason_sample": "POPULATION_WITHOUT_WEIGHT_OR_DESIGN",
+    "code": "SOURCEFREE_ROLE_FATE_DRIFT",
+    "forged_reason": "UNISSUED_AUTHORITY_OVERRIDE",
+    "operation_id": "urn:r61:op:0096782f0d144d07dd611b5a549471a26fc2b5acfe8ea62542132e3d5b6eb7e6",
+    "refused": true
+  },
+  "positive": {
+    "execution_state": "COMPLETED",
+    "fact_refs": 2,
+    "issued_candidate_count": 150,
+    "native_fact_count": 330,
+    "operation_id": "urn:r61:op:2ec519dde83b843918ba48ee96137ff776e492cbdcebcf077f7df9cc7cdc837e",
+    "receipt_refs": 2,
+    "received_candidate_ids": 2,
+    "result_state": "SUPPORTED",
+    "source_factory_calls": 1
+  },
+  "restoration": {
+    "baseline": {
+      "checkpoint_hash": "01fe1377f4592f0bb9b4c1a91395be9f5ca46a7a5812ce8a4316a7522c1efaec",
+      "frozen_census_hash": "136cb6c0310d0b8df3bee000b0b28c40f3fded7f8c0b0873c0a5d830c0340c26",
+      "issued_candidate_count": 150,
+      "native_fact_count": 330
+    },
+    "checkpoint_hash_equal": true,
+    "frozen_census_hash_equal": true,
+    "issued_candidate_count_equal": true,
+    "native_fact_count_equal": true,
+    "operation_fates_identical": true,
+    "restored": {
+      "checkpoint_hash": "01fe1377f4592f0bb9b4c1a91395be9f5ca46a7a5812ce8a4316a7522c1efaec",
+      "frozen_census_hash": "136cb6c0310d0b8df3bee000b0b28c40f3fded7f8c0b0873c0a5d830c0340c26",
+      "issued_candidate_count": 150,
+      "native_fact_count": 330
+    }
+  }
+}

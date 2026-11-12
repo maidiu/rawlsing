@@ -1,0 +1,277 @@
+{
+  "schema": "PYAT_R3_S1C_RUNNER_R2_EXECUTION_RECEIPT@1.0.0",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "governing_issues": ["#918", "#909"],
+  "kind": "EXECUTION_AND_CAUSAL_REPAIR_RUNNER_NOT_G5",
+  "pr": "https://github.com/maidiu/rawlsing/pull/967",
+  "timestamp_utc": "2026-11-12T20:24:24Z",
+  "source": {
+    "protected_pre_main_reference": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "frozen_final_head": "c14c96764e463f614e59cf97326abe8f6aa0b31c",
+    "pinned_implementation_test_commit": "eabeb769102d7fe7784553ce470ff3a032819fd4",
+    "required_census_blob": "5b2ea5add1d356617425baeda06684efda7fdcf9",
+    "required_test_blob": "3487ab193050a627555c869f1e273ef90a6217a2",
+    "verified_census_blob_at_pinned_and_final": "5b2ea5add1d356617425baeda06684efda7fdcf9",
+    "verified_test_blob_at_pinned_and_final": "3487ab193050a627555c869f1e273ef90a6217a2",
+    "tested_descendant_commit": "19ab029c2c5076ec6bc12d0287af60c00a41f576",
+    "tested_descendant_test_blob": "3677d6c3315deea8b556371840426568ca1bb213",
+    "tested_descendant_census_blob": "5b2ea5add1d356617425baeda06684efda7fdcf9",
+    "descendant_base": "c14c96764e463f614e59cf97326abe8f6aa0b31c",
+    "note": "The pinned implementation commit is an ancestor of the tested descendant; only the S1-C test fixture changed."
+  },
+  "infrastructure_finding": {
+    "github_runs": [
+      "https://github.com/maidiu/rawlsing/actions/runs/43286870232",
+      "https://github.com/maidiu/rawlsing/actions/runs/43286870214"
+    ],
+    "job_steps_executed": 0,
+    "conclusions": "failure before any job step",
+    "github_annotation": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+    "diagnosis": "GitHub-hosted runner unavailable for billing/spending-limit reasons; this is not a test result.",
+    "resolution": "Executed on an isolated local macOS x86_64 runner with Python 3.11.3 and the existing sourcefree dependency set."
+  },
+  "environment": {
+    "os": "macOS 13.2.1 x86_64",
+    "python": "3.11.3",
+    "isolation": "fresh venv at /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/pyat-r3-s1c/venv",
+    "packages": {
+      "duckdb": "2.0.0",
+      "iniconfig": "2.3.1",
+      "narwhals": "2.28.0",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pluggy": "1.7.0",
+      "psutil": "7.2.2",
+      "pyarrow": "26.0.1",
+      "Pygments": "2.21.0",
+      "pyreadstat": "1.3.7",
+      "pytest": "9.2.0",
+      "python-dateutil": "4.0.0",
+      "tzdata": "2026.6"
+    }
+  },
+  "commands_and_results": [
+    {
+      "command": "python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil",
+      "outcome": "installed"
+    },
+    {
+      "command": "export PYTHONPATH=.",
+      "outcome": "set"
+    },
+    {
+      "command": "python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py",
+      "pre_repair": "16 passed, 1 failed, 0 skipped in 95.25s",
+      "post_repair": "17 passed, 0 failed, 0 skipped in 82.88s",
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py",
+      "result": "22 passed in 99.53s",
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <S1-B files from pyat-r3-g5-scoped-combined.yml>",
+      "result": "46 passed in 101.79s",
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <S1-D files from pyat-r3-g5-scoped-combined.yml>",
+      "result": "59 passed in 86.96s",
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <S2-F files from pyat-r3-g5-scoped-combined.yml>",
+      "result": "19 passed in 8.39s",
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <shared C11/universal/empirical files from pyat-r3-g5-scoped-combined.yml>",
+      "result": "58 passed in 77.73s",
+      "exit": 0
+    }
+  ],
+  "focused_suite": {
+    "collected": 17,
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "tests": [
+      "test_s1c_full_frozen_census_reaches_real_issued_reader",
+      "test_s1c_omission_and_count_preserving_substitution_fail_before_source_open",
+      "test_s1c_source_fate_duplicates_and_cross_set_losses",
+      "test_s1c_source_edition_occurrence_and_op_hash_refuse",
+      "test_s1c_fate_mutation_refuses_eligibility_inflation",
+      "test_s1c_budget_pending_are_accounted_not_fake_completed",
+      "test_s1c_routing_unknown_is_retained_without_administered_positive",
+      "test_s1c_proved_inapplicable_form_is_retained_not_denominator",
+      "test_s1c_changed_valid_eligible_operation_and_restoration",
+      "test_s1c_changed_value_and_restore_real_fact_identity",
+      "test_s1c_actual_source_open_and_c11_build_census",
+      "test_s1c_b_unknown_and_excluded_axis_severance_before_source_open",
+      "test_s1c_b_rehashed_occurrence_false_fate_and_count_preserving_axis",
+      "test_s1c_b_inventory_ledger_fate_severance_and_restoration",
+      "test_s1c_b_rehashed_negative_axis_cannot_launder_other_frontier",
+      "test_s1c_b_r2_co_rehashed_false_held_raw_drops_real_first_consumer",
+      "test_s1c_b_r2_false_held_reason_alone_cannot_rehash_science"
+    ]
+  },
+  "combined_integration": {
+    "s1b_passed": 46,
+    "s1d_passed": 59,
+    "s2f_passed": 19,
+    "shared_passed": 58,
+    "total_passed": 182,
+    "failed": 0,
+    "skipped": 0,
+    "note": "Counts are per workflow invocation; some universal/custody tests intentionally appear in more than one preservation group."
+  },
+  "reproduced_defect": {
+    "test": "test_s1c_b_unknown_and_excluded_axis_severance_before_source_open",
+    "location": "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py:434",
+    "assertion": "assert real_frontier.unknown and real_frontier.excluded",
+    "observed": "unknown non-empty (279 operations), excluded empty (0 operations)",
+    "cause": "The fixture removed risk_set_refs only from item A. Under policy.risk_set_policy='UNKNOWN' this produces genuine UNKNOWN operations (UNKNOWN_RISK_SET) but no PROHIBITED or INAPPLICABLE_PROVED operation, so frontier.excluded necessarily remained empty. The product enumerator and census adapter were correct.",
+    "classification": "test-fixture defect, not a compiler/adapter/scientific-boundary defect"
+  },
+  "repair": {
+    "commit": "19ab029c2c5076ec6bc12d0287af60c00a41f576",
+    "branch": "agent/pyat-r3-s1c-b-round2-runner-repair-20261112-v2",
+    "scope": "one test fixture expression and its comment; no product code, no weakened check",
+    "change": "item A keeps an empty risk set (genuine UNKNOWN); items B and Y receive distinct nonempty risk sets (genuine DISJOINT_RISK_SET/INAPPLICABLE_PROVED EXCLUDED rows)",
+    "post_repair_axes": {
+      "operations": 309,
+      "unknown": 279,
+      "excluded": 16,
+      "excluded_reason": "DISJOINT_RISK_SET",
+      "excluded_disposition": "INAPPLICABLE_PROVED"
+    },
+    "single_test_after_repair": "1 passed",
+    "focused_suite_after_repair": "17 passed"
+  },
+  "adversarial_evidence": {
+    "positive": {
+      "operation_id": "urn:r61:op:36cffa61fde5b7d936f163451cb3906242cfec0963bfe957ed70f2267830d633",
+      "execution_state": "COMPLETED",
+      "result_state": "SUPPORTED",
+      "received_candidate_ids": 2,
+      "receipt_refs": 2,
+      "fact_refs": 2,
+      "issued_candidate_count": 150,
+      "native_fact_count": 330,
+      "source_factory_calls": 1
+    },
+    "false_held_native_drop": {
+      "original_disposition": "ELIGIBLE",
+      "forged_disposition": "HELD",
+      "source_census_equal": true,
+      "science_census_differs": true,
+      "unknown_scope_equal": true,
+      "excluded_scope_equal": true,
+      "inventory_ledger_equal": true,
+      "native_candidate_anti_join_no_drop_ok": true,
+      "native_operation_anti_join_no_drop_ok": true,
+      "native_receipt_count": 148,
+      "baseline_issued_candidate_count": 150,
+      "forged_received_candidate_ids": 0,
+      "forged_result_state": "HELD",
+      "consequence": "the real compiler/first consumer silently loses a valid RAW receipt while both native anti-joins remain green"
+    },
+    "false_held_adapter": {
+      "refused": true,
+      "code": "SOURCEFREE_ROLE_FATE_DRIFT",
+      "source_factory_calls_before_refusal": 0
+    },
+    "false_reason": {
+      "refused": true,
+      "code": "SOURCEFREE_ROLE_FATE_DRIFT",
+      "operation_id": "urn:r61:op:004c312d916b4af6d77b96e37278e7c1591841aea108e9b9757e278884112cd6",
+      "actual_reason_sample": "METHOD_GATED_CLASS:CROSS_SOURCE",
+      "forged_reason": "UNISSUED_AUTHORITY_OVERRIDE"
+    },
+    "restoration": {
+      "checkpoint_hash": "f63a2259dd4d510cf5353d515fbc13947e0278a5107211372c0c6b9e5fd2be15",
+      "frozen_census_hash": "8c7627c20df1f58f852181f38452a536c3b3b3780e538a71694bbcce0eeb2392",
+      "issued_candidate_count": 150,
+      "native_fact_count": 330,
+      "checkpoint_hash_equal": true,
+      "issued_candidate_count_equal": true,
+      "native_fact_count_equal": true,
+      "frozen_census_hash_equal": true,
+      "operation_fates_identical": true
+    },
+    "other_observed_refusal_codes_from_passing_focused_suite": [
+      "DUPLICATE_FRONTIER_OPERATION",
+      "ELIGIBILITY_DRIFT",
+      "EXECUTION_COUNTS_DRIFT",
+      "FROZEN_VS_FRONTIER_ANTI_JOIN",
+      "INVENTORY_LEDGER_CENSUS_DRIFT",
+      "INVENTORY_LEDGER_SOURCE_DRIFT",
+      "SOURCEFREE_ROLE_FATE_DRIFT",
+      "UNKNOWN_CENSUS_DRIFT",
+      "UNKNOWN_PROJECTION_DRIFT",
+      "EXCLUDED_CENSUS_DRIFT"
+    ]
+  },
+  "preservation": {
+    "legitimate_routing_unknown": "test_s1c_routing_unknown_is_retained_without_administered_positive passed",
+    "inapplicable_operations": "test_s1c_proved_inapplicable_form_is_retained_not_denominator passed",
+    "deferred_records": "6 rows retained, including ARITY_DEFERRED and RECURSION_BASELINE_NOT_ENUMERATED",
+    "genuinely_held_operations": "159 HELD rows retained with no candidate or fact refs",
+    "valid_unweighted_raw": "147 eligible SAMPLE/RAW rows completed with candidate receipts and facts; one directly sampled operation had 2 candidate IDs, 2 receipts and 2 facts",
+    "unsupported_runtime_rows": 3,
+    "no_op_drop": "declared=309, compiled=309, receipt_rows=309"
+  },
+  "resource_evidence": {
+    "scope": "GITHUB_HOSTED_SOURCEFREE_FIXTURE_NOT_ORIGINAL35",
+    "declared_operations": 309,
+    "compiled_operations": 309,
+    "receipt_rows": 309,
+    "fate_counts": {"ELIGIBLE": 150, "HELD": 159},
+    "deferred_scope_count": 6,
+    "unsupported_runtime_rows": 3,
+    "issued_candidates": 150,
+    "native_facts": 330,
+    "source_factory_calls": 1,
+    "bounded_i05_c11_builds": 1,
+    "inner_elapsed_seconds": 5.990137,
+    "sampled_process_tree_peak_rss_bytes": 201314304,
+    "sampled_process_tree_peak_rss_mib": 191.99,
+    "rss_samples": 2899,
+    "focused_wall_seconds": 83.3583,
+    "baseline_comparison": "B1 fixture reported 309 declared / 150 issued / 330 facts; B2 reproduces those counts, not fabricated increases."
+  },
+  "gates": {
+    "G1": "PASS_SOURCEFREE_CHAIN_EXECUTED_REAL_COMPILER_AND_I05_FIRST_CONSUMER",
+    "G2": "PASS_INHERITED_PRESERVATION_22_OF_22",
+    "G3": "PASS_ADVERSARIAL_NEGATIVES_FALSE_HELD_FALSE_REASON_SEVERANCE_RESTORATION",
+    "G4": "PASS_BOUNDED_MEASUREMENT_309_150_330_ONE_SOURCE_CALL_ONE_C11_BUILD",
+    "G5": "NOT_RUN"
+  },
+  "holds": [
+    "ORIGINAL35_SCIENTIFIC_AND_SOURCE_ISSUER",
+    "NATIVE_HOST_CURRENT_PERMISSION",
+    "PROTECTED_MERGE",
+    "GITHUB_ACTIONS_HOSTED_BILLING_UNAVAILABLE"
+  ],
+  "original35_authority": "No original35 respondent source or scientific issuance was accessed or created. Results are hard-grade TEST_ONLY_SOURCEFREE.",
+  "disposition": "S1C_B2_REAL_RUN_PASS__SOURCEFREE_G1_G4_PROVED__READY_FOR_A_COUNTERATTACK_AND_G5",
+  "next_action": "Agent A performs one bounded counterattack against descendant 19ab029c2c5076ec6bc12d0287af60c00a41f576 (branch agent/pyat-r3-s1c-b-round2-runner-repair-20261112-v2), then an independent nonauthor runs G5. Do not use GitHub Actions for this packet until the account billing/spending-limit block is corrected.",
+  "published_logs": {
+    "directory": "WORKER_RETURNS/PYAT_R3_S1C_RUNNER_R2/logs",
+    "sha256": {
+      "s1c-focused-pre-repair-failure.log": "441c1f83b6e4ad9bfaa7e4abd9528a719890638bc2d082c5e4d39f9505d134fd",
+      "s1c-focused-post-repair.log": "b651f6847149377d18d9602e04a922cf1cfa2698f83465acb42b1fad32a5bd34",
+      "repair-single-test.log": "fd821a942b7c6998db231487a19694daf266cb00eccc7e5c1b87a2d248319b0a",
+      "inherited-preservation.log": "ffba5b89378dbadf5afdbd7c79a21d608d1c812fa360beea5a03552082ecc015",
+      "combined-s1b.log": "0ac3c95d80e292ef05f5b4839fbd89e4c34d3d40a4f09f87a6993363d3b695c6",
+      "combined-s1d.log": "aebd12b71317f8789f68e63f231c06f4b3b341c6812359810834ae5c5082762f",
+      "combined-s2f.log": "2313416e6e7cada9614d7550e1e7b282d32c2be66ee1f389d73c13b8543442e4",
+      "combined-shared.log": "0a2df8295e5e1096b9ce250173528d05f14024893cf15b0b91392be9e101e415",
+      "adversarial-evidence.json": "34d967d59cc4c0aeb1f825935d8a799282f8d62f643c82c2ea4ac012e8552feb",
+      "pip-freeze.txt": "d29d0e1528bb0b3a74d3467cb070ed916045cd38bfab9a2a3d0525fc5698464b"
+    }
+  }
+}

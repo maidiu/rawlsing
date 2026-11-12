@@ -1,0 +1,72 @@
+..........S1C_RESOURCE_COUNTS {'declared': 309, 'compiled': 309, 'receipt_rows': 309, 'fate_counts': {'ELIGIBLE': 150, 'HELD': 159}, 'deferred_scope_count': 6, 'unsupported_runtime_rows': 3, 'issued_candidates': 150, 'native_facts': 330, 'source_factory_calls': 1, 'bounded_i05_c11_builds': 1, 'elapsed_seconds': 5.197859}
+.F.....
+=================================== FAILURES ===================================
+______ test_s1c_b_unknown_and_excluded_axis_severance_before_source_open _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-426/test_s1c_b_unknown_and_exclude0')
+
+    def test_s1c_b_unknown_and_excluded_axis_severance_before_source_open(tmp_path):
+        """Only genuine R61 negative projections may be frozen as sourcefree fates.
+    
+        B's initial test attached imaginary unknown/excluded source objects to
+        the frontier and declared the result legitimate. That could pass B's
+        census equality while laundering a false 'source-qualified' negative.
+        """
+        bundle, inventory, policy, frontier, _ = _fixture(tmp_path)
+        invented = replace(
+            frontier,
+            unknown=tuple(frontier.unknown) + ({
+                "kind": "ROUTING_UNKNOWN", "occurrence": "INVENTED_ITEM_X",
+                "reason": "UNATTESTED_SOURCE_NEGATIVE",
+            },),
+            excluded=tuple(frontier.excluded) + ({
+                "kind": "EXCLUDED_SOURCE_ITEM", "occurrence": "INVENTED_ITEM_Y",
+                "reason": "NO_MATCHING_OPERATION",
+            },),
+        )
+        invented_census = _freeze_packet(invented)
+        assert invented_census.source_census_ref == _freeze_packet(frontier).source_census_ref
+        assert invented_census.science_census_ref == _freeze_packet(frontier).science_census_ref
+        with pytest.raises(CensusRefusal, match="UNKNOWN_PROJECTION_DRIFT"):
+            verify_frozen_inputs(invented_census, inventory=inventory,
+                                 policy=policy, frontier=invented)
+    
+        # The R61 role rule gives route-UNKNOWN a HELD operation fate.
+        # An unknown risk set (under policy.risk_set_policy="UNKNOWN") is
+        # the genuine operation UNKNOWN case; no invented ledger rows.
+        changed = tuple(
+            replace(occ, risk_set_refs=())
+            if occ.key.item_id == "A" else occ
+            for occ in inventory.occurrences
+        )
+        real_inventory = replace(inventory, occurrences=changed)
+        real_frontier = enumerate_frontier(real_inventory, policy)
+        census = _freeze_packet(real_frontier, scope_id="B-REAL-NEGATIVE-AXES")
+>       assert real_frontier.unknown and real_frontier.excluded
+E       AssertionError: assert (({'schema': 'UniversalOperation@r61.1', 'claim_class': 'CONDITIONAL', 'targets': [{'item_id': 'B', 'option_id': None, ...ts': [{'item_id': 'A', 'option_id': None, 'form_id': None, 'repeat_id': None}], 'target_roles': ['OUTCOME'], ...}, ...) and ())
+E        +  where ({'schema': 'UniversalOperation@r61.1', 'claim_class': 'CONDITIONAL', 'targets': [{'item_id': 'B', 'option_id': None, ...ts': [{'item_id': 'A', 'option_id': None, 'form_id': None, 'repeat_id': None}], 'target_roles': ['OUTCOME'], ...}, ...) = ScientificFrontier(schema='UniversalFrontier@r61.1', inventory_id='R61-INVENTORY', inventory_hash='c7507222154a04cc673...8e494eeb5e3b2ca77d80a70d7b191219e7ab503c', e_pre_cause=None, original_science_grade='SOURCEFREE_PROPOSAL_NOT_ORIGINAL').unknown
+E        +  and   () = ScientificFrontier(schema='UniversalFrontier@r61.1', inventory_id='R61-INVENTORY', inventory_hash='c7507222154a04cc673...8e494eeb5e3b2ca77d80a70d7b191219e7ab503c', e_pre_cause=None, original_science_grade='SOURCEFREE_PROPOSAL_NOT_ORIGINAL').excluded
+
+rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py:434: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py::test_s1c_b_unknown_and_excluded_axis_severance_before_source_open
+1 failed, 16 passed in 95.25s (0:01:35)
+S1C_MEASURED_PROCESS_TREE {'peak_rss_bytes': 206692352, 'samples': 3308, 'elapsed_wall_seconds': 95.6735, 'scope': 'GITHUB_HOSTED_SOURCEFREE_FIXTURE_NOT_ORIGINAL35'}
+       95.92 real        85.01 user        17.09 sys
+           207847424  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              269804  page reclaims
+                  41  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                 208  voluntary context switches
+               93194  involuntary context switches
+         60016142069  instructions retired
+         80228788457  cycles elapsed
+             8896512  peak memory footprint
