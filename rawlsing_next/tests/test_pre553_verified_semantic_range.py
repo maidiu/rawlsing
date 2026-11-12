@@ -213,7 +213,46 @@ def test_h30_pages_are_bounded_and_no_inventory_method_exists():
 
 def _multi_i03_source(tag):
     """Actual I02 accepted same-respondent 2-occurrence, repeated-value source."""
-    candidate = _candidate(tag, event_kind="UNORDERED_MULTISELECT_SET")
+    from rawlsing_next.tests.test_pre553_c11_repository_ingest import _authority
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
+    old = _candidate(tag, event_kind="UNORDERED_MULTISELECT_SET")
+    routing_auth = _authority(
+        tag + "-routing", "ROUTING_RISK_SET",
+        families=("RoutingEligibilityFact@1.0.0",),
+    )
+    previous = old.routing_eligibility_facts_or_exact_rules[0]
+    routing = RoutingEligibilityFact(
+        typed_state=previous.typed_state,
+        authority_snapshot_refs=(routing_auth.authority_ref,),
+        dependency_refs=previous.dependency_refs,
+        producer_replay_locator_or_reference_root=previous.producer_replay_locator_or_reference_root,
+        **dict(previous.semantic_fields),
+    )
+    counts = dict(old.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["AuthoritySnapshot"] += 1
+    manifest = replace(
+        old.source_release_manifest,
+        declared_authority_snapshot_refs=(
+            *old.source_release_manifest.declared_authority_snapshot_refs,
+            routing_auth.authority_ref,
+        ),
+        declared_record_counts_by_logical_family=counts,
+    )
+    candidate = replace(
+        old, source_release_manifest=manifest,
+        routing_eligibility_facts_or_exact_rules=(routing,),
+        authority_snapshots=(*old.authority_snapshots, routing_auth),
+        candidate_replay_manifest=None,
+    )
+    candidate = replace(
+        candidate, candidate_replay_manifest=build_candidate_replay_manifest(
+            candidate,
+            replay_protocol_authority_ref=old.candidate_replay_manifest.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=old.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+            replay_protocol_version=old.candidate_replay_manifest.replay_protocol_version,
+        ),
+    )
     repo = C11Repository()
     result = ingest_c11_source_release(candidate, repo)
     assert result.accepted, result.errors
@@ -247,7 +286,7 @@ def test_h26_two_same_respondent_occurrences_actual_native_i03_fact_replay():
         **{**dict(initial.semantic_fields), "target_arity_and_topology": shape},
     )
     original = _run(source, qa, pred, query)
-    assert original.facts[0].typed_state == "SUPPORTED"
+    assert original.facts[0].typed_state == "SUPPORTED", dict(original.facts[0].semantic_fields)
     assert original.facts[0].raw_denominator_support == 1
 
     witness, root = _trusted(source)
