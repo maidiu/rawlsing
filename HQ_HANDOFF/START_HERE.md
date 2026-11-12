@@ -1,5 +1,8 @@
 # USER-DIRECTED PYAT HQ ELIGIBILITY GATE — REQUIRED FOR ALL NEW HQ SESSIONS
 
+**Prospective MCR-lite operations:** before issuing another commission, use the [shared MCR-lite standard](../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md). It defaults to actual execution and causal evidence rather than recursive approval packets; full MCR-C still controls explicitly frozen/full missions. Read exact owner progress and live branch state separately.
+
+
 **Read the canonical immutable checkpoint as directed below FIRST; it establishes the last sealed authority. But no fresh/resumed/successor HQ is VALID TO ISSUE NEW COMMANDS until it independently qualifies under `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md`.** Its status before acceptance is `CANDIDATE__READ_ONLY_GROK`.
 
 This accession explicitly requires genuine PRE-MAIN→Pyat plus Dva/Trii/Chetiri/Long Memory, crosswave atlas/driver/facet and V553 temporal *implementation* understanding, actual current successors, a critical comparative judgment on whether legacy mechanisms should be reused/improved/completed/replaced, and an evidence-backed persona-output/consumer target. **The end-product governs; science disciplines the transformations.** Best defensible approximation with acknowledged uncertainties is part of the machine, not a reason to abandon generating people. Old HQD-115/R2.1 historical grok tokens alone do not satisfy this new requirement. User or independent accession review is required; neither a repo script nor self-declared fluency grants operative HQ status.

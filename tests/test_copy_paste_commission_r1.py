@@ -263,5 +263,111 @@ class CommissionProofTest(unittest.TestCase):
         self.assertIn("REQUIRES_EXACTLY_ONE_COMPLETE_FENCED_COPY_PASTE_BLOCK", gate.validate(prompt().replace(chr(96)*3, ""))["errors"])
 
 
+class MCRLiteProofTest(unittest.TestCase):
+    """Proportional contract must be executable, not a header-only permission slip."""
+
+    def lite(self, overrides=None):
+        fields = {
+            "MCR": "LITE",
+            "REPOSITORY": "maidiu/rawlsing",
+            "AGENT_TYPE": "existing sourcefree implementation engineer",
+            "INTELLIGENCE_LEVEL": "I3",
+            "SINGLE_AGENT_FULL_DELIVERABLE": "YES",
+            "EXECUTION_SURFACE": "S1_S2",
+            "BRANCH": "agent/mcr-lite-integration-example",
+            "STARTUP_SHA": "a" * 40,
+            "ACTIVE_WORKER_NO_DISTURBANCE": "Preserve all existing owner leases",
+            "COMMISSION_KIND": "BUILD",
+            "CONTRACT_ID": "MCR-LITE-REAL-CONSUMER",
+            "CONTRACT_SOURCE_CUT": "SOURCE_NOT_REQUIRED: user-provided policy text without independent repo evidence",
+            "WORK_SCOPE_AND_FLIGHT":
+                "PARENT=complete original person-and-world product; "
+                "TRANCHE=all already authorized functionality in the single coherent assigned integration; "
+                "NO_DROP=preserve all inherited sourcefree owners and outstanding scientific obligations",
+            "TERMINAL_CONSUMER_AND_EFFECT":
+                "CONSUMER=actual P6 user-facing situated encounter; "
+                "EFFECT=world activity produces a durable consequence observed on cold revisit",
+            "FROZEN_ORACLE_AND_COUNTEREXAMPLE":
+                "POS=owned actual sourcefree event changes real downstream P6 behavior; "
+                "NEG=revoked event is rejected rather than becoming a fabricated actor memory",
+            "EXECUTION_AND_AUTHOR_PREFLIGHT":
+                "RUNNER=qualified isolated Git Python checkout; "
+                "PREFLIGHT=actual consumer test then owner source severance and restoration",
+            "CLOSURE_AND_OUT_OF_SCOPE":
+                "ACCEPT_AT=bounded independent sourcefree engineering; "
+                "EXCLUDE=native actor science and production authority remain held",
+            "SCIENCE_SOURCE_ACTOR_AUTHORITY":
+                "No original source, actor scientific, human or production grant inferred",
+            "POST_RETURN_INDEPENDENT_REVIEW":
+                "One separate actual-consumer reviewer after exact frozen implementation",
+        }
+        fields.update(overrides or {})
+        body = ("LAUNCH MCR-LITE REAL WORK\n"
+                + "\n".join(f"{key}: {value}" for key, value in fields.items())
+                + "\nENGINEERING: require real code and cold readback.\n"
+                + "SCIENTIFIC: only actual sourcefree evidence is established.\n"
+                + "AUTHORITY: no actor/source/human permission is inferred.\n"
+                + "Run consumer test and negative source severance, preserve reviewer independence, "
+                  "deliver full return with exact limitations.\n")
+        return ("**AGENT TYPE:** existing sourcefree implementation engineer "
+                "**INTELLIGENCE LEVEL:** I3\n\n" + chr(96)*3 + "text\n" + body + chr(96)*3 + "\n")
+
+    def test_lite_valid_without_full_ledger(self):
+        out = gate.validate(self.lite())
+        self.assertEqual(out["status"], "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH", out["errors"])
+        self.assertEqual(out["mcr"], "LITE")
+        self.assertEqual(out["mcr_required_obligation_count"], 0)
+        self.assertIsNone(out["mcr_completion_contract_sha256"])
+
+    def test_lite_cannot_erase_parent_or_no_drop(self):
+        for bad in (
+            {"WORK_SCOPE_AND_FLIGHT":
+                "PARENT=TBD; TRANCHE=do first tiny pilot only; NO_DROP=none"},
+            {"WORK_SCOPE_AND_FLIGHT":
+                "PARENT=whole original product; TRANCHE=all existing code; NO_DROP=TBD"},
+        ):
+            out = gate.validate(self.lite(bad))
+            self.assertEqual(out["status"], "RED_INVALID_FOR_DISPATCH", out["errors"])
+
+    def test_lite_requires_real_positive_negative_and_consumer(self):
+        for override in (
+            {"FROZEN_ORACLE_AND_COUNTEREXAMPLE": "POS=TBD; NEG=TBD"},
+            {"TERMINAL_CONSUMER_AND_EFFECT":
+                "CONSUMER=TBD; EFFECT=return shiny report"},
+            {"CONTRACT_SOURCE_CUT": "unverified-source"},
+        ):
+            out = gate.validate(self.lite(override))
+            self.assertEqual(out["status"], "RED_INVALID_FOR_DISPATCH", out["errors"])
+
+    def test_lite_repair_requires_frozen_failure_and_causal_regression(self):
+        incomplete = gate.validate(self.lite({"COMMISSION_KIND": "REPAIR"}))
+        self.assertEqual(incomplete["status"], "RED_INVALID_FOR_DISPATCH")
+        fixed = self.lite({
+            "COMMISSION_KIND": "REPAIR",
+            "FROZEN_FAILED_CLAIM": "claim@" + "b"*40,
+            "REPRODUCER_AND_ROOT_CAUSE":
+                "REPRO=real consumer fails after source removal; "
+                "ROOT_CAUSE=unqualified stale source accepted by owner",
+            "REGRESSION_AND_DELTA_REVIEW":
+                "REGRESSION=negative source revocation and requalification; "
+                "REVIEW_SCOPE=only the changed consumer/source edge",
+        })
+        out = gate.validate(fixed)
+        self.assertEqual(out["status"], "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH", out["errors"])
+
+    def test_lite_does_not_masquerade_as_full_mcr(self):
+        out = gate.validate(self.lite({"MCR": "REQUIRED"}))
+        self.assertEqual(out["status"], "RED_INVALID_FOR_DISPATCH")
+        self.assertIn("MCR_C_MISSING_OR_DUPLICATE_BLOCK_MCR_COMPLETION_CONTRACT_BEGIN",
+                      out["errors"])
+
+    def test_lite_source_cut_cannot_fake_sha(self):
+        out = gate.validate(self.lite({
+            "CONTRACT_SOURCE_CUT": "rawlsing_next/source.py@123456"
+        }))
+        self.assertEqual(out["status"], "RED_INVALID_FOR_DISPATCH")
+        self.assertIn("MCR_LITE_SOURCE_PATH_AND_FULL_COMMIT_REQUIRED", out["errors"])
+
+
 if __name__ == "__main__":
     unittest.main()

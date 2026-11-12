@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: preserve the full historically developing person objective, build/reuse actual owner code, prove first-consumer causality, independent receiving where warranted, close at honest sourcefree grade. `MCR: LITE` defaults; full MCR-C applies only when expressly mandated or frozen. Native CAN/ADP, Pyat source, actor, human and product rights remain separate.
+
+
 > **CURRENT PROTECTED STATUS UNCHANGED — PYAT-PRODUCT-PRIORITIES-20261110-R1 IS CANDIDATE PYAT→SOROK PRODUCT REQUIREMENT, NOT ACTOR GRANT.** **MANDATORY SITUATED HUMAN-LIFE QUESTION:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? [Pyat 27-row evidence/world/product obligation register](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) includes PP26-25 (N10E/N10W) and PP26-27 (actual Sorok person/scene consumer). The world may facilitate, prohibit, expose, reward, punish or contradict; actor-local biography chooses, interprets, resists, accommodates and transforms those conditions. **Group mean ≠ person's inner attitude or destiny**. Candidate pressure and hegemony theories must retain source/uncertainty, not masquerade as observer-proven causal or actor facts. No new MII/MIII/P5/P6, source, science, actor or protected CAS rights are minted by this marker.
 
 

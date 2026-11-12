@@ -401,6 +401,105 @@ def verify_return(commission, returned, candidate_sha, root):
     }
 
 
+
+# MCR-lite is the prospective low-ceremony execution path. It DOES NOT
+# approve science, rights or the author's work. Full MCR-C remains intact.
+def _lite_source_cut(value, errors, *, check_git=False):
+    if not value:
+        errors.append("MCR_LITE_SOURCE_OR_REASON_REQUIRED")
+        return
+    if value.startswith("SOURCE_NOT_REQUIRED:"):
+        reason = value.split(":", 1)[1].strip()
+        if len(reason) < 16 or reason.upper() in VAGUE:
+            errors.append("MCR_LITE_SOURCE_EXEMPTION_UNSPECIFIED")
+        return
+    match = re.fullmatch(r"([^@\s]+)@([0-9a-f]{40})(?:#([0-9a-f]{40}))?", value)
+    if match is None or not _safe_path(match.group(1)):
+        errors.append("MCR_LITE_SOURCE_PATH_AND_FULL_COMMIT_REQUIRED")
+        return
+    if check_git:
+        path, commit, blob = match.groups()
+        try:
+            actual = subprocess.run(["git", "rev-parse", commit + ":" + path],
+                                    capture_output=True, text=True, check=False, timeout=12)
+            if actual.returncode or not HEX40.fullmatch(actual.stdout.strip()):
+                errors.append("MCR_LITE_SOURCE_UNAVAILABLE")
+            elif blob and blob != actual.stdout.strip():
+                errors.append("MCR_LITE_SOURCE_BLOB_MISMATCH")
+        except (OSError, subprocess.TimeoutExpired):
+            errors.append("MCR_LITE_SOURCE_UNVERIFIED")
+
+
+def _validate_lite(prompt, header, errors):
+    # No redundant all-obligation ledger or MCR-C source census in Lite.
+    # This is a proportional specification, never author self-certification.
+    essentials = ("REPOSITORY", "AGENT_TYPE", "INTELLIGENCE_LEVEL",
+                  "SINGLE_AGENT_FULL_DELIVERABLE", "EXECUTION_SURFACE",
+                  "BRANCH", "STARTUP_SHA", "ACTIVE_WORKER_NO_DISTURBANCE",
+                  "COMMISSION_KIND", "CONTRACT_ID", "CONTRACT_SOURCE_CUT",
+                  "WORK_SCOPE_AND_FLIGHT", "TERMINAL_CONSUMER_AND_EFFECT",
+                  "FROZEN_ORACLE_AND_COUNTEREXAMPLE",
+                  "EXECUTION_AND_AUTHOR_PREFLIGHT", "CLOSURE_AND_OUT_OF_SCOPE",
+                  "SCIENCE_SOURCE_ACTOR_AUTHORITY", "POST_RETURN_INDEPENDENT_REVIEW")
+    for key in essentials:
+        if not header.get(key) or header[key].strip().upper() in VAGUE:
+            errors.append("MCR_LITE_MISSING_" + key)
+    if header.get("INTELLIGENCE_LEVEL") not in ALLOWED_INTELLIGENCE:
+        errors.append("MCR_LITE_INVALID_INTELLIGENCE")
+    if len(header.get("AGENT_TYPE", "")) < 15:
+        errors.append("MCR_LITE_AGENT_ROLE_NOT_SPECIFIC")
+    if not SHA.fullmatch(header.get("STARTUP_SHA", "")):
+        errors.append("MCR_LITE_EXACT_STARTUP_REQUIRED")
+    if not header.get("BRANCH", "").startswith(("agent/", "review/", "integration/", "proposal/")):
+        errors.append("MCR_LITE_ISOLATED_BRANCH_REQUIRED")
+    if header.get("SINGLE_AGENT_FULL_DELIVERABLE") != "YES":
+        errors.append("MCR_LITE_WHOLE_OWNER_REQUIRED")
+    if not re.search(r"S[0-3](?:_|$)", header.get("EXECUTION_SURFACE", "")):
+        errors.append("MCR_LITE_EXECUTION_SURFACE_REQUIRED")
+    if header.get("COMMISSION_KIND") not in ALLOWED_KINDS:
+        errors.append("MCR_LITE_INVALID_COMMISSION_KIND")
+    if len(header.get("CONTRACT_ID", "")) < 8:
+        errors.append("MCR_LITE_CONTRACT_ID_REQUIRED")
+    _lite_source_cut(header.get("CONTRACT_SOURCE_CUT", ""), errors)
+    for key, names in (
+        ("WORK_SCOPE_AND_FLIGHT", ("PARENT", "TRANCHE", "NO_DROP")),
+        ("TERMINAL_CONSUMER_AND_EFFECT", ("CONSUMER", "EFFECT")),
+        ("FROZEN_ORACLE_AND_COUNTEREXAMPLE", ("POS", "NEG")),
+        ("EXECUTION_AND_AUTHOR_PREFLIGHT", ("RUNNER", "PREFLIGHT")),
+        ("CLOSURE_AND_OUT_OF_SCOPE", ("ACCEPT_AT", "EXCLUDE")),
+    ):
+        _require_parts(header, key, names, errors)
+    for term in ("ENGINEERING", "SCIENTIFIC", "AUTHORITY"):
+        if not re.search(r"\b" + term + r"\b", prompt, re.I):
+            errors.append("MCR_LITE_MISSING_COURT_" + term)
+    for term in ("source", "review", "test", "return"):
+        if not re.search(r"\b" + term + r"\w*\b", prompt, re.I):
+            errors.append("MCR_LITE_INCOMPLETE_TASK_" + term.upper())
+    if header.get("COMMISSION_KIND") == "REPAIR":
+        if not re.search(r"[0-9a-f]{40}", header.get("FROZEN_FAILED_CLAIM", "")):
+            errors.append("MCR_LITE_REPAIR_UNPINNED_FAILED_CLAIM")
+        for key, names in (
+            ("REPRODUCER_AND_ROOT_CAUSE", ("REPRO", "ROOT_CAUSE")),
+            ("REGRESSION_AND_DELTA_REVIEW", ("REGRESSION", "REVIEW_SCOPE")),
+        ):
+            _require_parts(header, key, names, errors)
+    if "MCR_COMPLETION_CONTRACT_BEGIN" in prompt:
+        errors.append("MCR_LITE_DO_NOT_MIX_FULL_CONTRACT_MODES")
+    return {
+        "schema": "RAWLSING_COPY_PASTE_COMMISSION_R1",
+        "status": "RED_INVALID_FOR_DISPATCH" if errors else "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH",
+        "errors": errors, "agent_type": header.get("AGENT_TYPE"),
+        "intelligence_level": header.get("INTELLIGENCE_LEVEL"),
+        "branch": header.get("BRANCH"), "mcr": "LITE",
+        "commission_kind": header.get("COMMISSION_KIND"),
+        "contract_id": header.get("CONTRACT_ID"),
+        "mcr_completion_contract_sha256": None,
+        "mcr_required_obligation_count": 0,
+        "validation_scope": "MCR_LITE_STRUCTURE_ONLY__NO_SEMANTIC_OR_EXECUTION_CLAIM",
+        "prompt_chars": len(prompt),
+    }
+
+
 def validate(markdown: str):
     errors = []
     fences = list(FENCE.finditer(markdown))
@@ -413,7 +512,7 @@ def validate(markdown: str):
     prompt = markdown[fences[0].end():fences[1].start()].strip()
     if not prompt.startswith("LAUNCH"):
         errors.append("PROMPT_MUST_START_WITH_LAUNCH")
-    if len(prompt) < 650:
+    if len(prompt) < (350 if re.search(r"(?m)^MCR:[ \\t]*LITE[ \\t]*$", prompt) else 650):
         errors.append("PROMPT_INCOMPLETE")
     heading = markdown[:fences[0].start()]
     for label in ["AGENT TYPE", "INTELLIGENCE LEVEL"]:
@@ -426,6 +525,8 @@ def validate(markdown: str):
             key, value = line.split(":", 1)
             if key.strip() in FIELDS + CONTRACT_FIELDS + REPAIR_FIELDS:
                 header[key.strip()] = value.strip()
+    if header.get("MCR") == "LITE":
+        return _validate_lite(prompt, header, errors)
     for key in FIELDS + CONTRACT_FIELDS:
         if not header.get(key) or header[key].upper() in {"TBD", "N/A", "NONE", "NULL", "?"}:
             errors.append("MISSING_OR_EMPTY_" + key)
@@ -694,12 +795,20 @@ def main():
     if result["status"].startswith("PASS"):
         checks = []
         fences = list(FENCE.finditer(data))
-        completion_contract(data[fences[0].end():fences[1].start()].strip(), checks, check_git=True)
+        actual_prompt = data[fences[0].end():fences[1].start()].strip()
+        if result.get("mcr") == "LITE":
+            source_match = re.search(r"(?m)^CONTRACT_SOURCE_CUT:[ \\t]*(.*)$", actual_prompt)
+            _lite_source_cut(source_match.group(1).strip() if source_match else "",
+                             checks, check_git=True)
+        else:
+            completion_contract(actual_prompt, checks, check_git=True)
         if checks:
             result["status"] = "RED_INVALID_FOR_DISPATCH"
             result["errors"].extend(checks)
         else:
-            result["validation_scope"] = "STRUCTURE_AND_GIT_SOURCE_BLOBS_ONLY__NOT_CONSUMER_PROOF"
+            result["validation_scope"] = ("MCR_LITE_STRUCTURE_AND_SELECTED_GIT_SOURCE_ONLY__NOT_CONSUMER_PROOF"
+                                          if result.get("mcr") == "LITE"
+                                          else "STRUCTURE_AND_GIT_SOURCE_BLOBS_ONLY__NOT_CONSUMER_PROOF")
     print(json.dumps(result, indent=2))
     return 0 if result["status"].startswith("PASS") else 2
 

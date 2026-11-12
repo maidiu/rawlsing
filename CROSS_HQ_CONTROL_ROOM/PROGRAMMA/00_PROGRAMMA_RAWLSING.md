@@ -1,5 +1,8 @@
 # PROGRAMMA RAWLSING — COMPLETE SHARED PRE-MAIN OPERATING FRONT DOOR
 
+> **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: Understand → Specify → Execute → Falsify → Independently receive → Integrate. `MCR: LITE` is the low-ceremony default; `MCR: REQUIRED` preserves full MCR-C for expressly full-contract or previously frozen work. Do not dilute real science/source/actor rights, falsifiers, independent receiving or terminal scope. This overlay does not edit the frozen shared HQ rule tags below.
+
+
 > **CURRENT PROTECTED STATUS UNCHANGED — PYAT-PRODUCT-PRIORITIES-20261110-R1 IS A 2026-11-10 S0–S1 DOCUMENTARY CANDIDATE, NOT ADOPTED SCIENCE/ACTOR/RIGHTS LAW.** **Three-HQ mandatory product question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? The user-selected [27 exact Pyat source-to-product obligations](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) are immediately visible in every S01–S11 home: original35, codebooks/QSM, claim-graded U/E_pre, durable `ParquetC11Carrier`, W03/W04, historical FF A/B/C vs unbuilt relational power/pressure/contradiction, objective position repair vs producer, F6/F7, N9/N10W and actual Sorok. These are user-selected product destinations, not a new authority issuer, causality shortcut or universal theory blockade. Every future commission must be written to MCR-C's exact independent completion proof and original native scope.
 
 

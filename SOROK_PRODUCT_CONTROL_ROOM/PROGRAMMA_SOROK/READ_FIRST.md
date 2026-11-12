@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — current guide navigation
 
+**Prospective MCR-lite:** [shared eight-point operating standard](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) applies to all new ordinary MCR commissions. This is a discipline of maximal substantive completion and minimal administrative friction, not permission to invent actor/source science; full MCR-C remains where explicitly required. Live owner progress, not stale candidate paragraphs below, controls current engineering status.
+
+
 **NEW SOURCE-GROUNDED CANDIDATE — 2026-11-09, NOT EXECUTED:** [29 Nadia sensory access from outward player conduct](29_NADIA_SENSORY_ACCESS_FROM_PLAYER_CONDUCT_CANDIDATE_20261109_R1.md). Distinguish actual world conduct, Nadia's qualified auditory/visual/presence cues, and her own fallible evaluation/response. P5/P6 already protected at #775/#779/#828; Mechanism I #791 D8 joint P6 gaze proof separate; Mechanism III incoming with no supplied spec. This proposal is documentary only and confers no sensory implementation, actor-science/right, native or human grant. Earlier P5/P6 candidate status paragraphs are historical.
 
 **P5 candidate update (2026-11-07).** [P5 situated experience](26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.
