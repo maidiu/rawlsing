@@ -135,6 +135,16 @@ def test_first_consumer_binds_current_world_readset_separately_from_p3(tmp_path)
     assert internal["world_state_hash"] == packets[0]["world_state_hash"]
     # The private evidence receipt is durable yet not a public narrative.
     assert "sourcefree_p3_receipt" not in json.dumps(public)
+    cold_owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        cold_session = cold_owner.base_owner.fanin.session
+        recovered_event = cold_session.event(proof["event_id"])
+        assert recovered_event["hash"] == internal["current_world_readset"][0]
+        assert cold_owner.store.head()["count"] == 1
+        assert cold_session.read_root()["root_hash"] == internal["root_hash"]
+        assert cold_session.branch_id == internal["branch_id"]
+    finally:
+        cold_owner.close()
 
 
 def test_crash_after_world_speech_commit_holds_retry_without_duplication(tmp_path, monkeypatch):
