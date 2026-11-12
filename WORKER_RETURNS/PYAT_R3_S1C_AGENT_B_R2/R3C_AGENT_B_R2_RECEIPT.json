@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_R3_S1C_B_R2_RECEIPT@1.0.0",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "kind": "AGENT_B_R2_AUTHOR_NOT_G5",
+  "pr": "https://github.com/maidiu/rawlsing/pull/967",
+  "source": {
+    "protected_read": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "A": "5a6eb73158479a3bf4cead70b0d36cca43d902b6",
+    "B1_green": "e15ccaedaa54155fc3855f821565e2794c946a68",
+    "adopted_parent_959": "5b51411cee65a7f83dc5de0af8188b9da4bfe202",
+    "exact_B2_code_test_commit": "eabeb769102d7fe7784553ce470ff3a032819fd4",
+    "code_blob": "5b2ea5add1d356617425baeda06684efda7fdcf9",
+    "test_blob": "3487ab193050a627555c869f1e273ef90a6217a2",
+    "integration_PR948_unmerged": "7064daa14d93109211629e72d08f3a6e705a0d57"
+  },
+  "conceded": "PR959 fixes B1 jointly rehashed invented negative R61 projections and histograms.",
+  "refuted": "PR962 unrestricted extra non-operation mapping inside frontier.unknown/excluded is not a native R61 operation projection.",
+  "shared_failure": "A/B1/PR959 can silently reclassify valid ELIGIBLE SAMPLE RAW to HELD with independently rehashed manifest, matching frontier histograms and negative projections. Existing native lower_operation returns NOT_ELIGIBLE before policy revalidation; native anti-joins can still be green while first consumer loses a genuine receipt.",
+  "repair": "Use existing R61 role_disposition(inventory,policy,operation) to compare each sourcefree operation's scientific disposition, reasons and risk provenance pre-compilation; typed SOURCEFREE_ROLE_FATE_DRIFT. No new science issuer or native compiler.",
+  "new_tests": [
+    "test_s1c_b_r2_co_rehashed_false_held_raw_drops_real_first_consumer",
+    "test_s1c_b_r2_false_held_reason_alone_cannot_rehash_science"
+  ],
+  "code_tree_focused_tests": 17,
+  "prior_B1_proof": {
+    "focused_pass": 14,
+    "inherited_pass": 22,
+    "declared": 309,
+    "issued_receipts": 150,
+    "facts": 330,
+    "source_sha": "e15ccaedaa54155fc3855f821565e2794c946a68"
+  },
+  "new_head_ci": {
+    "s1c_run": "https://github.com/maidiu/rawlsing/actions/runs/43286870232",
+    "stacked_run": "https://github.com/maidiu/rawlsing/actions/runs/43286870214",
+    "initial_and_retried": "FAILURE_BEFORE_ANY_JOB_STEPS",
+    "tests_executed": 0,
+    "grade": "EXECUTION_UNVERIFIED_NO_CLAIM_OF_PASS_OR_CODE_FAIL"
+  },
+  "gates": {
+    "G1": "SOURCE_CONTROL_FLOW_GROUNDED_TEST_NOT_RUN",
+    "G2": "PRIOR_CUT_EXECUTION_ONLY_NEW_HEAD_NOT_RUN",
+    "G3": "NEGATIVES_AUTHORED_NOT_RUN",
+    "G4": "NO_NEW_CAS_SOURCEFREE_PROPORTIONAL_NOT_MEASURED",
+    "G5": "NOT_RUN_INDEPENDENT_NONAUTHOR_REQUIRED"
+  },
+  "holds": [
+    "GITHUB_ACTIONS_PRE_RUN_INFRASTRUCTURE",
+    "ORIGINAL35_SCIENTIFIC_AND_SOURCE_ISSUER",
+    "NATIVE_HOST_CURRENT_PERMISSION",
+    "PROTECTED_MERGE"
+  ],
+  "self_attack": [
+    "Legitimate externally issued science may impose further denials; sourcefree role check must not be misapplied to original35",
+    "Per-operation role_disposition cost not measured at scale",
+    "New test fixture's sourcefree code never executed on latest HEAD"
+  ],
+  "next": "Run exact 17 focused plus 22 R03/R61 and combined CI when execution available, let A attack one bounded time, then nonauthor G5 without optional hardening."
+}
