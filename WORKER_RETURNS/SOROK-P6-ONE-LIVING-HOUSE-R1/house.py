@@ -1,7 +1,11 @@
 """Sourcefree room and object facts held in the received BP4 world checkpoint."""
 
 from developmental_recursion.contracts import RecursionRefusal, detached, digest
-from developmental_recursion.p2_owner import material_fact_source, write_material_fact
+from developmental_recursion.p2_owner import (
+    branch_is_ancestor,
+    material_fact_source,
+    write_material_fact,
+)
 
 from encounter import movement_evidence
 from mii import close_available
@@ -198,12 +202,17 @@ def _bindings(bindings, world):
     return resolved
 
 
-def _read_household_document(document, world, root, branch, actor_ids):
+def _read_household_document(document, world, root, branch, actor_ids, *,
+                             branch_ok=None):
     if not isinstance(document, dict) or set(document) != HOUSEHOLD_STORED_FIELDS:
         raise RecursionRefusal("P6_HOUSEHOLD_SCHEMA")
     if document.get("schema") != HOUSEHOLD_SCHEMA or document.get("grade") != HOUSEHOLD_GRADE:
         raise RecursionRefusal("P6_HOUSEHOLD_SCHEMA")
-    if document.get("root") != root or document.get("branch") != branch:
+    stored_branch = document.get("branch")
+    if (document.get("root") != root
+            or (stored_branch != branch
+                and not (branch_ok is not None
+                         and branch_ok(stored_branch, document.get("epoch"))))):
         raise RecursionRefusal("P6_HOUSEHOLD_SOURCE_OR_ROOT_MISMATCH")
     epoch = document.get("epoch")
     if (isinstance(epoch, bool) or not isinstance(epoch, int)
@@ -285,9 +294,11 @@ def read_household(session):
     if document is None:
         raise RecursionRefusal("P6_HOUSEHOLD_ABSENT")
     root_row = session.read_root()
-    return _read_household_document(document, world, root_row["root_hash"],
-                                    session.branch_id,
-                                    tuple(root_row.get("actor_ids") or ()))
+    return _read_household_document(
+        document, world, root_row["root_hash"], session.branch_id,
+        tuple(root_row.get("actor_ids") or ()),
+        branch_ok=lambda stored, epoch: branch_is_ancestor(session, stored, epoch),
+    )
 
 
 def parent_choice_input(session):
@@ -435,7 +446,7 @@ def read_house(session):
     house = world.resources.get(SLOT)
     if not house or house.get("root") != session.read_root()["root_hash"]:
         raise RecursionRefusal("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH")
-    if house.get("branch") != session.branch_id:
+    if not branch_is_ancestor(session, house.get("branch"), house.get("epoch")):
         raise RecursionRefusal("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH")
     material = _material(house.get("source"))
     if material is None:
