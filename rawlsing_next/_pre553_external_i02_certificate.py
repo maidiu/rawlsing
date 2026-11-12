@@ -13,6 +13,7 @@ file itself: the caller MUST supply BOTH roots from an independent authority.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+from collections.abc import Sequence
 from hashlib import sha256
 from heapq import merge
 from pathlib import Path
@@ -35,7 +36,7 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref, semantic_hash,
 )
 from rawlsing_next._pre553_verified_semantic_range import (
-    CertifiedRespondentEvents, SemanticRangeIntegrityError,
+    SemanticRangeIntegrityError,
 )
 
 SCHEMA = "PYAT_S2B_EXTERNAL_I02_LOGICAL_SELECTOR_CERT@1"
@@ -452,15 +453,20 @@ def _check_relations_readonly(db: sqlite3.Connection, source: str) -> None:
         _fail("counterfeit/extra/mismatched selector index")
 
 
-class _DiskSelectedRespondent(CertifiedRespondentEvents):
-    """Reuse native I03 selector dispatch without editing scientific evaluator."""
-    __slots__ = ("_certificate", "_repository")
+class _DiskSelectedRespondent(Sequence[RespondentEvent]):
+    """Honest native I03 sequence, never a forged S2-A in-memory witness.
+
+    Its elements come from independently verified disk selectors, not an
+    intentionally empty `CertifiedRespondentEvents.all_events` payload.
+    This concrete owned type is allowlisted in the native selector dispatcher.
+    """
+    __slots__ = ("respondent_key", "_certificate", "_repository")
 
     def __init__(self, respondent: str, reader: VerifiedExternalI02,
                  repository: C11Repository):
-        super().__init__(respondent, (), MappingProxyType({}), None)
-        object.__setattr__(self, "_certificate", reader)
-        object.__setattr__(self, "_repository", repository)
+        self.respondent_key = respondent
+        self._certificate = reader
+        self._repository = repository
 
     def _load(self, ref: ExactRef) -> RespondentEvent:
         obj = self._repository.resolve_object_exact(ref)
