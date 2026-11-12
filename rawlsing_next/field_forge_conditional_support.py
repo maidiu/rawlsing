@@ -285,7 +285,7 @@ def _validate_common_closure(
     except Exception as exc:
         raise FieldForgeConditionalSupportError(
             "malformed query-specific authority closure") from exc
-    if not query_use_authorities.issubset(set(authorities)):
+    if joint_fact.typed_state == "SUPPORTED" and not query_use_authorities.issubset(set(authorities)):
         raise FieldForgeConditionalSupportError(
             "producer fact does not preserve query-specific authority refs")
 
