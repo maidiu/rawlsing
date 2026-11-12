@@ -33,5 +33,12 @@ jobs:
           git rev-parse HEAD:WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
       - name: New causal first-consumer positive negative and restore
         run: python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py
+      - name: Existing P3 cold owner B1 mediator and replay negatives
+        run: |
+          python -B -m pytest -q -p no:cacheprovider \
+            WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control \
+            WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore
+      - name: Actual P6 actor cue source regression
+        run: python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_outward_conduct_supplies_only_qualified_cues
       - name: Existing P6 situated interval regression
         run: python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_silent_interval_reconsiders_and_commits_only_admitted_speech
