@@ -1,7 +1,9 @@
 {
   "task_id": "PYAT960-S2G-G5",
   "packet_id": "S2-G",
-  "old_obligations": ["P2-08"],
+  "old_obligations": [
+    "P2-08"
+  ],
   "contract_sha": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
   "contract_frozen_at_sha": "63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
@@ -359,7 +361,11 @@
   "abi": {
     "classification": "LOCAL",
     "detail": "New isolated custody adapter plus tests; no existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner or interface modified. The exact defect repair is local adapter validation; no running contract silently changed.",
-    "affected_task_ids": ["S2-E", "S2-G", "S1-D"],
+    "affected_task_ids": [
+      "S2-E",
+      "S2-G",
+      "S1-D"
+    ],
     "breaking_interface": false,
     "source_or_authority_change": false,
     "scientific_hold": true
@@ -390,7 +396,8 @@
     "WORKER_RETURNS/PYAT960_S2G_G5/evidence/b_cut_receipt_fact_omission_red.txt",
     "WORKER_RETURNS/PYAT960_S2G_G5/evidence/b_cut_receipt_fact_omission_acceptance.json",
     "WORKER_RETURNS/PYAT960_S2G_G5/evidence/diffs.txt",
-    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/refs.txt"
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/refs.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/remote_verification.txt"
   ],
   "review_commands": [
     "python3 -m pytest -p no:cacheprovider <five owner files + four S2-G test files> -q => 153 passed in 51.62s",
@@ -410,6 +417,21 @@
     "decision": "REVISE_EXACT_DEFECT",
     "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
     "no_repair_performed": true,
-    "signed_at_utc": "2026-11-12T15:40:00Z"
+    "signed_at_utc": "2026-11-12T15:40:00Z",
+    "review_return_commit_sha": "c6cf991deac5fffec2495138c3ba8975b0296723"
+  },
+  "remote_verification": {
+    "remote": "origin",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat960-s2g-g5-r1",
+    "return_commit_sha": "c6cf991deac5fffec2495138c3ba8975b0296723",
+    "delivery_sha": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+    "code_cut_sha": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
+    "a_branch_sha": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+    "b_branch_sha": "220ebd3311fb0607079ed6a6e9a364d6681e5378",
+    "code_diff_vs_code_cut": "EMPTY",
+    "receipt_json_valid": true,
+    "handoff_present": true,
+    "verified_at_utc": "2026-11-12T20:38:16Z"
   }
 }
