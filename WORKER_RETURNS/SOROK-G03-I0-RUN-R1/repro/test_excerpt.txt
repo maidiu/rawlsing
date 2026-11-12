@@ -1,0 +1,18 @@
+20:         td = tempfile.TemporaryDirectory()
+21:         self.addCleanup(td.cleanup)
+22:         self.root = Path(td.name) / "state"
+23:         self.dbpath = self.root / writer.SQLITE_REL
+24:         self.dbpath.parent.mkdir(parents=True)
+25: 
+26:     def update_and_checkpoint(self, sql, parameters):
+27:         with closing(sqlite3.connect(self.dbpath)) as db:
+58:     def test_original_p6_p3_table_blob_text_collision(self):
+59:         repo = Path(__file__).resolve().parents[2]
+60:         cmd = [sys.executable, str(repo / writer.P6),
+61:                "--state", str(self.root), "new"]
+62:         result = subprocess.run(cmd, cwd=repo, env=writer.env_offline(),
+63:                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+64:                                 timeout=120)
+65:         self.assertEqual(result.returncode, 0,
+66:                          "Original P6 new failed: " + result.stderr.decode(errors="replace")[:500])
+67:         self.assertTrue(self.dbpath.is_file(), "Actual P3 psyche store missing")

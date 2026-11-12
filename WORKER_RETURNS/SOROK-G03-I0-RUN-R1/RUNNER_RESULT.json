@@ -1,0 +1,345 @@
+{
+  "schema": "SOROK_G03_I0_RUN_RESULT@1",
+  "commission": "G03-I0-RUN",
+  "status": "REVISE_EXACT_DEFECT",
+  "implementation_head": "5cc6595409d224f5331f367e36e4f8b283fe1959",
+  "predecessor_head": "aa157f23cf7d6284c982595295301036145b7cdf",
+  "runner": {
+    "provider": "local independent macOS host",
+    "host": "oldMac.lan",
+    "os": "macOS-13.7.8-x86_64-i386-64bit",
+    "os_release": "22.6.0",
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "git": "git version 2.39.1",
+    "lease": {
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/g03-i0-run-20261112T144430/LEASE.json",
+      "sha256": "242d4ebdb04c604499ef5488a6e1a333e7559e602e430e0a546c68fb418816be",
+      "exclusive": true,
+      "created_before_checkout": true,
+      "scope": "G03-I0-RUN one-off execution only"
+    },
+    "model_provider_calls": "UNOBSERVED",
+    "network_calls": "UNOBSERVED"
+  },
+  "source": {
+    "head": "5cc6595409d224f5331f367e36e4f8b283fe1959",
+    "clean": true,
+    "source_hashes": {
+      "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py": "fe12542957b4490127a507195087ebf26e7466c6d072688d08e423e77143e83f",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py": "7d78d48dd1b12a1bc95d3fc844df31cb41364eedbe5943a9c69c50699296c645",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py": "6058b50149ce044e78cfa72cae950c23ddc4f9cd757d7ae1cf697a8a736a946c",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py": "e952578a279adf7a212e3d52a110189bbbc5883a172a0d94712402eea1035f87",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py": "655e94418ee340a34a579592d13a8c7b3f4e747f248ff15cac844231be3df7ee",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated_provider.py": "630993c2b5daae76993a4e0c05747ce20cbe45aed554cb70de5b4607eb4509a5"
+    },
+    "runner_sha256": "524ccc2e0c48ab5b5e0db7e81d550f015167a76be4d0b1b0c5541d798df11e36",
+    "python_executable_sha256": "da4b64225172b2a7700d30a8d43380735c4357f88264478a9d059fdc46f7831b",
+    "git_status": "empty before and after measurement",
+    "diff_from_B": "only .github/workflows/sorok-g03-i0-a-relay-20261112.yml and WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/{README.md,measure.py,read_receipts.py,test_agent_a_relay.py,AGENT_A_RELAY_HANDOFF.md,G03_I0_A_RELAY_RECEIVING_STATUS.json}; no P3/P4/P5/P6 owner edit"
+  },
+  "tests": {
+    "combined": {
+      "command": "python3 -B -m unittest -v test_measure test_agent_b test_agent_a_relay",
+      "exit": 1,
+      "ran": 26,
+      "passed": 25,
+      "failed": 1,
+      "seconds": 0.735,
+      "logs": [
+        "tests.stdout",
+        "tests.stderr"
+      ]
+    },
+    "inherited23": {
+      "command": "python3 -B -m unittest -v test_measure test_agent_b",
+      "exit": 0,
+      "ran": 23,
+      "passed": 23,
+      "failed": 0,
+      "seconds": 0.415,
+      "logs": [
+        "inherited23.stdout",
+        "inherited23.stderr"
+      ]
+    },
+    "relay3": {
+      "command": "python3 -B -m unittest -v test_agent_a_relay",
+      "exit": 1,
+      "ran": 3,
+      "passed": 2,
+      "failed": 1,
+      "seconds": 0.271,
+      "logs": [
+        "relay3.stdout",
+        "relay3.stderr"
+      ]
+    },
+    "failure": {
+      "test": "test_agent_a_relay.TypedPsycheWitness.test_original_p6_p3_table_blob_text_collision",
+      "assertion": "result.returncode 2 != 0",
+      "p6_stdout": {
+        "status": "REFUSED",
+        "reason": "P4_STATE_ALREADY_EXISTS"
+      },
+      "p6_exit": 2,
+      "classification": "TEST_FIXTURE_PRECREATES_STATE_ROOT_BEFORE_P6_NEW",
+      "exact_source_cause": "setUp creates state/actual-p2; P6 new refuses existing state root with P4_STATE_ALREADY_EXISTS; test expected 0"
+    }
+  },
+  "measurement": {
+    "command": "python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/measure.py --repo \"$PWD\" --out \"$EVIDENCE\"",
+    "exit": 0,
+    "index_sha256": "79d737d96e4cc952d5a260efff8a99a6a913c13d7ab59143cee1a6b086a23d3b",
+    "reader_exit": 0,
+    "reader_expected_scenario_pass": true,
+    "attempts": 5,
+    "success": 4,
+    "expected_refusals": 1,
+    "all_refusals": 1,
+    "unexpected_failed_or_refused": 0,
+    "timed_out": 0,
+    "cold_reopened": 1,
+    "wall_seconds": {
+      "max": 5.379366270033643,
+      "median": 2.225274082040414,
+      "min": 2.0016848749946803,
+      "total": 15.15260625607334
+    },
+    "wall_by_attempt_seconds": {
+      "cold_view": 2.1351642110385,
+      "fail_wait": 2.0016848749946803,
+      "new": 5.379366270033643,
+      "view": 2.225274082040414,
+      "wait": 3.4111168179661036
+    },
+    "cpu_direct_child_seconds": {
+      "scope": "sum_direct_child_wait4_not_process_tree",
+      "status": "MEASURED",
+      "system_total": 1.000936,
+      "user_total": 13.452240999999999
+    },
+    "rss_direct_child_bytes": {
+      "max": 54874112,
+      "median": 53673984,
+      "min": 52064256,
+      "status": "MEASURED"
+    },
+    "peak_direct_child_rss_bytes": {
+      "max": 54874112,
+      "status": "MEASURED"
+    },
+    "state_after_bytes": {
+      "cold_view": 1392905,
+      "fail_wait": 1392905,
+      "new": 1282124,
+      "view": 1285052,
+      "wait": 1390315
+    },
+    "state_net_bytes": 1392905,
+    "refused_state": {
+      "logical_content_changed": false,
+      "logical_witness": "G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2",
+      "physical_content_changed": true,
+      "sqlite_page_churn_not_equated_with_actor_change": true
+    },
+    "provider": {
+      "calls": "UNOBSERVED",
+      "tokens": "UNOBSERVED",
+      "retries": "UNOBSERVED",
+      "billable_cost": "UNOBSERVED"
+    },
+    "resource_scope": "single direct wait4 child; not process-tree; macOS ru_maxrss bytes",
+    "attempts_detail": {
+      "new": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 5.379366270033643,
+        "state_bytes_before": 0,
+        "state_bytes_after": 1282124,
+        "stdout_sha256": "78dceae12f870431a1edf3d372e8fd6c8becc5d325ea0d0de25e4c17085188f1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.392117,
+          "cpu_user_s": 4.672217,
+          "peak_rss_bytes": 52064256,
+          "ru_maxrss_native": 52064256,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 248,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 80256
+      },
+      "view": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 2.225274082040414,
+        "state_bytes_before": 1282124,
+        "state_bytes_after": 1285052,
+        "stdout_sha256": "8c677b87b6799b60ac738690de71447979e25ede44fc7ccaa53d0ed45f51a864",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.161544,
+          "cpu_user_s": 1.9953889999999999,
+          "peak_rss_bytes": 53673984,
+          "ru_maxrss_native": 53673984,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 248,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 80258
+      },
+      "wait": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 3.4111168179661036,
+        "state_bytes_before": 1285052,
+        "state_bytes_after": 1390315,
+        "stdout_sha256": "689257f1cc984f2df314a2e23d6d6e9e2394e10b12f631634b5449e03919f426",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.199935,
+          "cpu_user_s": 2.965691,
+          "peak_rss_bytes": 52486144,
+          "ru_maxrss_native": 52486144,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 249,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 80260
+      },
+      "cold_view": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 2.1351642110385,
+        "state_bytes_before": 1390315,
+        "state_bytes_after": 1392905,
+        "stdout_sha256": "cc9d2d5885de6622b5534759a0dfc144c7ccc1d8169d441b3aafec334a2ff013",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.133205,
+          "cpu_user_s": 1.951018,
+          "peak_rss_bytes": 53927936,
+          "ru_maxrss_native": 53927936,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 249,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 80262
+      },
+      "fail_wait": {
+        "exit_code": 2,
+        "timeout": false,
+        "wall_seconds": 2.0016848749946803,
+        "state_bytes_before": 1392905,
+        "state_bytes_after": 1392905,
+        "stdout_sha256": "8a5b91a0dfbf56c083ed63054cc0dee87a84f78bd9db5d6233d61ef09ff2b0a7",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.114135,
+          "cpu_user_s": 1.867926,
+          "peak_rss_bytes": 54874112,
+          "ru_maxrss_native": 54874112,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": null,
+          "json": true,
+          "status": "REFUSED"
+        },
+        "child_pid": 80263
+      }
+    }
+  },
+  "cases": {
+    "I0-P01": {
+      "result": "PASS",
+      "evidence": "P6 new + view exit 0, clock 248"
+    },
+    "I0-P02": {
+      "result": "PASS",
+      "evidence": "wait 1 clock 249; cold_view exit 0 clock 249; cold_reopened=1"
+    },
+    "I0-N01": {
+      "result": "PASS",
+      "evidence": "wait 0 exit 2 REFUSED P6_WAIT_DURATION_OUT_OF_RANGE; logical state unchanged"
+    },
+    "I0-N02": {
+      "result": "REVISE",
+      "evidence": "actual-P6 BLOB/TEXT relay test fails before assertion because fixture precreates state root; simple typed collision test passes"
+    },
+    "I0-N03": {
+      "result": "PASS",
+      "evidence": "uncheckpointed WAL refused with sqlite_uncheckpointed_wal / SQLITE_UNCHECKPOINTED_WAL"
+    },
+    "I0-R01": {
+      "result": "PASS",
+      "evidence": "HEAD exact; clean tree; diff from B contains only measurement/workflow files"
+    },
+    "I0-M01": {
+      "result": "PASS",
+      "evidence": "five direct-child wall4/CPU/RSS and state bytes recorded"
+    },
+    "mapping_note": "Exact issue #949 case text was not retrievable with the current token scope; mapping derives from the pinned receiving status and the observed commands."
+  },
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "FAIL",
+    "G4": "PASS",
+    "G5": "NOT_RUN"
+  },
+  "actions_admission": {
+    "run_id": 43288957593,
+    "api_access": "403 Resource not accessible by personal access token for run, jobs, check-runs, attempts, timing, billing, actions permissions",
+    "commit_status": "HTTP 200 total_count=0 state=pending for 5cc6595",
+    "github_status": "All Systems Operational",
+    "verified_cause": null,
+    "unverified_hypotheses": [
+      "billing_or_usage_limit",
+      "runner_provisioning",
+      "repository_or_organization_policy",
+      "security_or_abuse_control"
+    ],
+    "executed_steps_in_hosted_run": "none observed; do not label implementation RED"
+  },
+  "evidence": {
+    "raw_tree": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/g03-i0-run-20261112T144430/evidence/raw",
+    "index_sha256": "79d737d96e4cc952d5a260efff8a99a6a913c13d7ab59143cee1a6b086a23d3b",
+    "external_index_pin": "79d737d96e4cc952d5a260efff8a99a6a913c13d7ab59143cee1a6b086a23d3b",
+    "archive": null,
+    "archive_sha256": null
+  },
+  "evidence_grade": "SOURCEFREE_S2_INSTRUMENTATION_ONLY_CANDIDATE_PENDING_G5",
+  "g03_full": "NOT_EVALUATED_G02_MISSING",
+  "limits": [
+    "No process-tree RSS; direct child only.",
+    "Provider calls/tokens/retries/cost UNOBSERVED.",
+    "Cold Python process, not cold kernel cache.",
+    "Mac host sample, not Linux/GitHub runner.",
+    "G5 independent nonauthor NOT_RUN.",
+    "No scientific, actor, human or protected merge grant."
+  ]
+}

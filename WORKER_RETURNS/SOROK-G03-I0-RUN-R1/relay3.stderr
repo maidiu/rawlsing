@@ -1,0 +1,16 @@
+test_blob_vs_text_must_not_collapse_in_logical_record (test_agent_a_relay.TypedPsycheWitness.test_blob_vs_text_must_not_collapse_in_logical_record) ... ok
+test_original_p6_p3_table_blob_text_collision (test_agent_a_relay.TypedPsycheWitness.test_original_p6_p3_table_blob_text_collision) ... FAIL
+test_uncheckpointed_wal_must_be_refused_not_misreported_logical (test_agent_a_relay.TypedPsycheWitness.test_uncheckpointed_wal_must_be_refused_not_misreported_logical) ... ok
+
+======================================================================
+FAIL: test_original_p6_p3_table_blob_text_collision (test_agent_a_relay.TypedPsycheWitness.test_original_p6_p3_table_blob_text_collision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/g03-i0-run-20261112T144430/checkout/WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py", line 65, in test_original_p6_p3_table_blob_text_collision
+    self.assertEqual(result.returncode, 0,
+AssertionError: 2 != 0 : Original P6 new failed: 
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.271s
+
+FAILED (failures=1)

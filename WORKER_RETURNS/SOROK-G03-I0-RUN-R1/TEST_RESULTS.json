@@ -1,0 +1,49 @@
+{
+  "combined": {
+    "command": "python3 -B -m unittest -v test_measure test_agent_b test_agent_a_relay",
+    "exit": 1,
+    "ran": 26,
+    "passed": 25,
+    "failed": 1,
+    "seconds": 0.735,
+    "logs": [
+      "tests.stdout",
+      "tests.stderr"
+    ]
+  },
+  "inherited23": {
+    "command": "python3 -B -m unittest -v test_measure test_agent_b",
+    "exit": 0,
+    "ran": 23,
+    "passed": 23,
+    "failed": 0,
+    "seconds": 0.415,
+    "logs": [
+      "inherited23.stdout",
+      "inherited23.stderr"
+    ]
+  },
+  "relay3": {
+    "command": "python3 -B -m unittest -v test_agent_a_relay",
+    "exit": 1,
+    "ran": 3,
+    "passed": 2,
+    "failed": 1,
+    "seconds": 0.271,
+    "logs": [
+      "relay3.stdout",
+      "relay3.stderr"
+    ]
+  },
+  "failure": {
+    "test": "test_agent_a_relay.TypedPsycheWitness.test_original_p6_p3_table_blob_text_collision",
+    "assertion": "result.returncode 2 != 0",
+    "p6_stdout": {
+      "status": "REFUSED",
+      "reason": "P4_STATE_ALREADY_EXISTS"
+    },
+    "p6_exit": 2,
+    "classification": "TEST_FIXTURE_PRECREATES_STATE_ROOT_BEFORE_P6_NEW",
+    "exact_source_cause": "setUp creates state/actual-p2; P6 new refuses existing state root with P4_STATE_ALREADY_EXISTS; test expected 0"
+  }
+}
