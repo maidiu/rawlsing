@@ -17,6 +17,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    authority_ref,
     EmpiricalFact,
     EmpiricalQuerySpec,
     ExactRef,
@@ -209,6 +210,9 @@ def _validate_common_closure(
     if joint_fact.typed_state not in ALLOWED_PRODUCER_STATES:
         raise FieldForgeConditionalSupportError(
             f"unsupported producer typed_state {joint_fact.typed_state!r}")
+    if joint_fact.typed_state == "SUPPORTED" and joint_query.typed_state != "QUERY_AUTHORIZED_RESOLVABLE":
+        raise FieldForgeConditionalSupportError(
+            "positive fact cannot derive FIELD FORGE relation from a nonpositive query state")
 
     fact_query_ref = _exact(joint_fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref")
     if fact_query_ref != joint_query.ref:
@@ -231,6 +235,28 @@ def _validate_common_closure(
         raise FieldForgeConditionalSupportError("GT2 relation requires SINGLE_UNIVERSE")
     if grain.get("measure_kind") != "RAW":
         raise FieldForgeConditionalSupportError("GT2 relation is RAW/unweighted only")
+
+    # A fact citing the exact query *object* may still have been independently
+    # re-signed with a different selection predicate, measure identity or
+    # response-state interpretation. Same risk label is not same estimand.
+    # Check these native query/fact semantics BEFORE the FF01 relation drops
+    # them to reference-only provenance. Do not infer source/science authority.
+    if _exact(joint_fact.condition_predicate_ref, "fact.condition_predicate_ref") != _exact(
+        joint_query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise FieldForgeConditionalSupportError(
+            "fact/query condition predicate mismatch")
+    if _exact(joint_fact.measure_basis_ref, "fact.measure_basis_ref") != _exact(
+        joint_query.measure_basis_ref, "query.measure_basis_ref"
+    ):
+        raise FieldForgeConditionalSupportError(
+            "fact/query measure basis mismatch")
+    query_response_ref = grain.get("response_state_semantics_ref")
+    if query_response_ref is not None and _exact(
+        joint_fact.response_state_semantics_ref, "fact.response_state_semantics_ref"
+    ) != _exact(query_response_ref, "query response_state_semantics_ref"):
+        raise FieldForgeConditionalSupportError(
+            "fact/query response-state semantics mismatch")
     if getattr(joint_fact, "source_scope_mode", None) not in (None, "SINGLE_UNIVERSE"):
         raise FieldForgeConditionalSupportError("producer fact source scope is not SINGLE_UNIVERSE")
     if getattr(joint_fact, "measure_kind", None) not in (None, "RAW"):
@@ -245,6 +271,23 @@ def _validate_common_closure(
     if not set(query_authorities).issubset(set(authorities)):
         raise FieldForgeConditionalSupportError(
             "producer fact authority closure does not preserve query authorities")
+
+    # The query's operation-specific issuer is separate from its general
+    # canonical-object authority snapshot. It must survive into the actual
+    # fact's admitted authority closure or FF01 would drop a missing/foreign
+    # query grant while keeping a positive fact and source-stamped D relation.
+    try:
+        query_use_authorities = {
+            authority_ref(ref, "query.query_authority_refs")
+            for ref in _sequence(joint_query.query_authority_refs,
+                                 "query.query_authority_refs", allow_empty=True)
+        }
+    except Exception as exc:
+        raise FieldForgeConditionalSupportError(
+            "malformed query-specific authority closure") from exc
+    if joint_fact.typed_state == "SUPPORTED" and not query_use_authorities.issubset(set(authorities)):
+        raise FieldForgeConditionalSupportError(
+            "producer fact does not preserve query-specific authority refs")
 
     replay_ref = _exact(joint_fact.replay_ref, "fact.replay_ref")
     if isinstance(joint_fact.producer_replay_locator_or_reference_root, ExactRef):
