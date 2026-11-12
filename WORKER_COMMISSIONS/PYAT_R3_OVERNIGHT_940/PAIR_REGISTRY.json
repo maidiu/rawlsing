@@ -497,7 +497,7 @@
             }
           },
           "pid": 51930,
-          "state": "STOPPED_READY_FOR_FOCUSED_G5",
+          "state": "STOPPED_SCOPED_ACCEPTED",
           "received_head": "16aa624c7ef99fe0c0f3affd4a5770fb1edefff0",
           "actual_counter_first_turn_model": {
             "id": "msg_1cf2bd306001cpOH1LnxaH3loc",
@@ -552,7 +552,7 @@
             }
           },
           "opponent_session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "STOPPED_AFTER_B_RETURN",
+          "state": "STOPPED_SCOPED_ACCEPTED",
           "job_id": "pyat940-s2f-b01",
           "received_head": "2dc67195387f3a25f7cca92f6c21fc5c347bd49b",
           "pid": 28324,
@@ -571,8 +571,8 @@
           }
         }
       },
-      "state": "G5_F08_RECHECK_RUNNING",
-      "active_role": "G5_NONAUTHOR",
+      "state": "TERMINAL_CLOSED_AT_SCOPED_GRADE",
+      "active_role": null,
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -608,8 +608,8 @@
         "S2-E integratedproducer"
       ],
       "integration_state": "UNMERGED",
-      "independent_g5": "REVISE_EXACT_DEFECT",
-      "active_job": "pyat940-s2f-g5-f08-recheck-r01",
+      "independent_g5": "ACCEPT_SCOPED",
+      "active_job": null,
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
         "job_id": "pyat940-s2f-g5-f08-recheck-r01",
@@ -645,7 +645,7 @@
       },
       "custody_comment": {
         "issue": 919,
-        "comment_id": 6821636609
+        "comment_id": 6821826159
       },
       "b_return": {
         "job_id": "pyat940-s2f-b01",
@@ -684,7 +684,7 @@
         "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s2f-g5",
         "branch": "agent/pyat940-s2f-g5-r1",
-        "state": "RUNNING",
+        "state": "TERMINAL_CLOSED_SCOPED_ACCEPTED",
         "job_id": "pyat940-s2f-g5-f08-recheck-r01",
         "tested_candidate_head": "eb4ba03c7da24cc401427dabb42c1ca6338d4f71",
         "tested_code_sha": "de68c7739b71daae9d4c06b2ac1ddb2a5a7a4fec",
@@ -741,7 +741,35 @@
         "remote_verified": true,
         "disposition": "REPAIRED_AUTHOR_CLAIM_FOCUSED_G5_PENDING",
         "claims": "actualG5crashreproREDtoGREEN,144testsPASS; livePIDtemp/legacyUUIDlimitreported; consumeridentitiesunchanged"
-      }
+      },
+      "g5_f08_recheck_return": {
+        "job_id": "pyat940-s2f-g5-f08-recheck-r01",
+        "exit_code": 0,
+        "review_head": "c372d3464e0bfe1fed9b61e6a81b7e1417fa6569",
+        "signed_receipt_commit": "83d6cfa244f08538ebca2cd3d9a185b4dfa35b9c",
+        "tested_delivery_sha": "eb4ba03c7da24cc401427dabb42c1ca6338d4f71",
+        "tested_code_sha": "de68c7739b71daae9d4c06b2ac1ddb2a5a7a4fec",
+        "decision": "ACCEPT_SCOPED",
+        "gates": "G1-G5 PASS",
+        "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+        "remote_verified": true,
+        "review_scope_verified": "own return/evidence only",
+        "actual_final_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "tests": "144 selected PASS; actual cold M1/GT2 exact, change/restore, hardcrashcleanup livePID/finalCAS preserved",
+        "material_open_defects": []
+      },
+      "completed_job": "pyat940-s2f-g5-f08-recheck-r01",
+      "engineering_disposition": "ACCEPT_SCOPED",
+      "accepted_scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "accepted_delivery_sha": "eb4ba03c7da24cc401427dabb42c1ca6338d4f71",
+      "accepted_code_sha": "de68c7739b71daae9d4c06b2ac1ddb2a5a7a4fec",
+      "original_task_state": "OPEN_HOLD_DEPENDENCY_ACCEPTED_S2E_REQUIRED",
+      "original_task_complete": false,
+      "next_authorized_action": "NONE_IN_S2F_AT_THIS_GRADE; await accepted external S2-E integration witness; continue existing S1-B and S1-D"
     }
   ],
   "created_utc": "2026-11-12T08:28:21.436010+00:00",
