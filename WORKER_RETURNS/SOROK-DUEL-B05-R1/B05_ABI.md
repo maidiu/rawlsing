@@ -1,3 +1,5 @@
+> **Later same-pair semantic revision:** see `B05_A_SEMANTIC_ADDENDUM.md` for the cross-boundary BatchEngine adapter and no-bridge parent-work ordering; the rent/first-consumer contract below remains.
+
 > **B revision (`4a3c45cda7d814df0c60ca4e245499fcfca62162`):** rent read/check/write is serialized by a state-root lock and crash rollback is proved at the checkpoint seam. The receipt/rent API is unchanged; see `B05_B_ABI_REVISION.md`.
 
 # B05 rolling household rent ABI

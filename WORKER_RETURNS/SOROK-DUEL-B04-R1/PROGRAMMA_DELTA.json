@@ -1,69 +1,64 @@
 {
-  "event_id": "SOROK-DUEL-B04-A-20261112-R1",
+  "event_id": "SOROK-DUEL-B04-A-SEMANTIC-20261112-R1",
   "task_id": "B04",
   "phase": "CG-B",
-  "title": "Parent-funded source-qualified stock purchase, refusal and ownership",
+  "title": "Typed parent purchase receipt; remove antecedent bridge; actual C02 join refusal",
   "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "implementation_sha": "62292613aa9210a7d3e944314e36924349337439",
-  "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
-  "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
-  "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+  "implementation_sha": "4959596dd2e130a3856cc3b9d7ce24f8d0261400",
+  "b_lock_commit": "4a3c45cda7d814df0c60ca4e245499fcfca62162",
+  "b_start": "15472ca725e03be1c87faef8c30511edcdf10111",
   "grade": "SOURCEFREE_S2_ONLY",
-  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_P3_CODE_PIN_BREAK",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_AND_C02_TYPED_HOOK_PENDING",
   "changed_symbols": [
-    "material_operations.MARKET_SLOT", "material_operations.OWNED_SLOT",
-    "material_operations.MARKET_SCHEMA", "material_operations.OWNED_SCHEMA",
-    "material_operations.PURCHASE_RECEIPT_SCHEMA", "material_operations.PURCHASE_KIND",
-    "material_operations.default_market_items", "material_operations.establish_market_inventory",
-    "material_operations.read_market_inventory", "material_operations.read_owned_objects",
-    "material_operations.purchase_drum_kit", "material_operations.read_purchase",
+    "material_operations._purchase_drum_kit (bridge removed)",
+    "material_operations.purchase_drum_kit (B locks retained)",
+    "material_operations.read_purchase (C01 alias + typed receipt + actual C02 status)",
+    "material_operations._purchase_lock",
     "p2_owner.MATERIAL_FACT_SLOTS"
   ],
   "actual_reader": [
-    "material_operations.read_market_inventory",
-    "material_operations.read_owned_objects",
     "material_operations.read_purchase",
-    "parent_activity.parent_feasible_actions"
+    "material_operations.read_owned_objects",
+    "material_operations.read_market_inventory",
+    "parent_activity.parent_feasible_actions only before the first purchase or after the typed C02 hook"
   ],
-  "first_consumer": {
-    "stock_ownership": "material_operations.read_owned_objects",
-    "parent_feasible_choice": "parent_activity.parent_feasible_actions",
-    "mother_decision": "NONE_VERIFIED"
+  "typed_hook_required": {
+    "consumer": "parent_activity._parent_material_history / read_parent_history / read_parent_material / parent_feasible_actions / C03",
+    "record": "P2_PARENT_PURCHASE with operation_id, receipt, material_after_source",
+    "not_accepted": "P2_PARENT_MATERIAL_ANTECEDENT with operation_kind=PURCHASE_MATERIAL_STATE"
   },
   "preserved_obligations": [
-    "B01 fixed-A household cash/free-hours untouched by parent purchase",
-    "C02 parent cash/free-hours are the funding source",
-    "B03 material constraints and source facts read",
-    "no public event/perception, no P3 psychology, no second ledger",
-    "stock must exist before transfer; refused paths do not debit/create ownership"
+    "B purchase/parent/material locks and one-transaction crash rollback",
+    "B01 fixed-A household cash/free-hours untouched",
+    "market stock/ownership source-qualified; no conjured object; refusal no debit",
+    "no public event/Nadia perception/P3 psychology/mother decision",
+    "B04 cold/restore and B05 rent remain independent of the missing C02 hook"
   ],
   "regressed_obligations": [
-    "p2_owner byte change invalidates prior P3 code-pin roots; fresh final-code roots only",
-    "B04 uses private parent_activity material helpers under Pair3-owned module; no edit, HQ composition required"
-  ],
-  "affected_queued_tasks": [
-    "B05 (built in this cut)",
-    "C03/C04 (mother decision/utterance/uptake still future)",
-    "C02 reconciliation (PARENT_B02_HOLD literal)",
-    "P3 receiving (pin migration/source closure)"
+    "post-purchase C02 parent material/feasible/activity reads now refuse PARENT_MATERIAL_HISTORY_MISMATCH; this is the actual typed join, not a bridge success",
+    "second purchase and post-purchase parent work are not admitted until the typed C02 hook",
+    "prior P3 code-pin roots incompatible; no migration"
   ],
   "test_refs": [
     "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py",
-    "WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/a_relay_b04.log",
-    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/b04_a_semantic.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log"
   ],
   "negative_refs": [
-    "PURCHASE_OWNER_UNKNOWN", "PURCHASE_CURRENCY_MISMATCH",
-    "PURCHASE_PARENT_UNAVAILABLE", "PURCHASE_PRICE_MISMATCH",
-    "PURCHASE_STOCK_UNAVAILABLE", "PURCHASE_INSUFFICIENT_FUNDS",
-    "PURCHASE_TIME_UNAVAILABLE", "REFUSED_NOISE",
-    "P6_MARKET_SOURCE_OR_ROOT_MISMATCH"
+    "PARENT_MATERIAL_HISTORY_MISMATCH after purchase",
+    "PURCHASE_PARENT_UNAVAILABLE for second purchase",
+    "no PURCHASE_MATERIAL_STATE antecedent row",
+    "wrong owner/currency/parent/price/branch/source",
+    "funds/time/stock/acoustic refusal no effect",
+    "market severance/restore",
+    "checkpoint crash rollback"
   ],
   "cold_refs": [
-    "test_purchase_cold_restore_and_source_severance cold subprocess exact purchase/owned/market/parent/household/dwelling/counts",
-    "market severance/restore and parent branch/source refusal"
+    "test_purchase_cold_restore_and_source_severance exact purchase/owned/market/household/dwelling/counts",
+    "test_purchase_crash_rolls_back_parent_stock_ownership_and_history"
   ],
   "public_event": "NOT_EMITTED_HELD_PAIR3_VOCABULARY",
   "cost": "UNKNOWN",
-  "note": "Executed author evidence at one cut, not independent nonauthor receiving."
+  "note": "Executed author evidence at one cut; one independent nonauthor receiving remains required. B's bridge revision/evidence is historical and not adopted."
 }

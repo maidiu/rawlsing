@@ -1,65 +1,60 @@
 {
-  "event_id": "SOROK-DUEL-B05-A-20261112-R1",
+  "event_id": "SOROK-DUEL-B05-A-SEMANTIC-20261112-R1",
   "task_id": "B05",
   "phase": "CG-B",
-  "title": "Rolling household rent, parent work and stock purchase across dated periods",
+  "title": "Cross-boundary BatchEngine material interleave, rent, rollback and typed parent refusal",
   "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "implementation_sha": "62292613aa9210a7d3e944314e36924349337439",
-  "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
-  "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
-  "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+  "implementation_sha": "4959596dd2e130a3856cc3b9d7ce24f8d0261400",
+  "b_lock_commit": "4a3c45cda7d814df0c60ca4e245499fcfca62162",
+  "b_start": "15472ca725e03be1c87faef8c30511edcdf10111",
   "grade": "SOURCEFREE_S2_ONLY",
-  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER",
+  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_C02_TYPED_HOOK_PENDING",
   "changed_symbols": [
-    "rolling_reproduction.RENT_KIND", "rolling_reproduction.RENT_RECEIPT_SCHEMA",
-    "rolling_reproduction.HOUSEHOLD_OBLIGATION_SCHEMA",
-    "rolling_reproduction.apply_household_rent",
-    "rolling_reproduction.read_household_obligation",
-    "rolling_reproduction._rent_chain"
+    "rolling_reproduction.PeriodInterleaveOwner",
+    "rolling_reproduction.apply_household_rent (B lock retained)",
+    "rolling_reproduction.read_household_obligation (B/A receipt semantics)"
   ],
   "actual_reader": [
     "rolling_reproduction.read_household_obligation",
     "historical_period.read_material_period",
     "house.material_feasibility",
-    "parent_activity.parent_feasible_actions"
+    "P3 BatchEngine records via PeriodInterleaveOwner"
   ],
-  "first_consumer": {
-    "household_obligation": "rolling_reproduction.read_household_obligation",
-    "nadia_material_input": "house.material_feasibility",
-    "parent_choice_input": "parent_activity.parent_feasible_actions",
-    "mother_decision": "NONE_VERIFIED"
+  "cross_boundary_cycle": {
+    "batch_events": 3,
+    "employment_split": "2026-01-20",
+    "materialize_between_events": ["2026-01-22", "2026-01-26", "2026-02-01"],
+    "batch_result": "3 records, MISSING_RULE, final clock anchor+31",
+    "reader": "read_material_period 2026-01-19 old term vs 2026-01-21 civic-works, state split at change",
+    "purchase_rent": "parent purchase then rent period 1; C02 parent read refuses typed-hook-pending after purchase; P3 head unchanged by B04/B05"
   },
   "preserved_obligations": [
-    "B02 dated periods and completion status; no time compression",
-    "B04 parent-funded stock/ownership and B01 household cash separation",
-    "C02 parent activity remains parent-local; household rent debits fixed-A cash only",
-    "no elapsed-time psychology/Trait; P3 head unchanged by rent/parent/purchase",
-    "SCHEDULED_ONLY periods remain NOT_PERFORMED"
+    "A/B02 incremental materialize/currentness; B02 events do not double-advance",
+    "B rent lock/one-rent-per-period/refusal-no-debit/crash rollback",
+    "B04 typed purchase/stock/ownership; no bridge",
+    "B01 fixed-A cash for rent only; parent C02 cash for purchase only",
+    "SCHEDULED_ONLY NOT_PERFORMED; period_uncovered reported; no elapsed psyche"
   ],
   "regressed_obligations": [
-    "one static monthly rent per completed period; no arrears/variable rent/landlord balance",
-    "C02 PARENT_B02_HOLD literal remains stale in Pair3-owned module",
-    "P3 prior code-pin roots incompatible with final p2_owner bytes"
-  ],
-  "affected_queued_tasks": [
-    "C03/C04 parent decision/utterance/uptake",
-    "C02 reconciliation (PARENT_B02_HOLD)",
-    "P3 receiving (full batch, pin migration)",
-    "B05 variable economics/arrears future"
+    "post-purchase C02 parent work/read refuse until typed C02 purchase hook; no fake history",
+    "second purchase after first refused while hook pending",
+    "prior P3 roots incompatible; no migration"
   ],
   "test_refs": [
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py",
-    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b05.log",
-    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/b05_a_semantic.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log"
   ],
   "negative_refs": [
+    "PARENT_MATERIAL_HISTORY_MISMATCH after purchase",
     "B05_RENT_ALREADY_RECORDED", "B05_INSUFFICIENT_HOUSEHOLD_CASH",
-    "B05_PERIOD_NOT_COMPLETE", "B05_RENT_SOURCE_STALE",
-    "no negative balance", "no duplicate rent/debit", "P3 head unchanged"
+    "B05_PERIOD_NOT_COMPLETE", "checkpoint crash rollback",
+    "period_uncovered reported", "no P3 head change from B04/B05"
   ],
-  "cold_refs": [
-    "test_recurring_rent_parent_work_and_purchase_change_later_inputs cold subprocess exact rent/parent/owned/market/household/dwelling/feasibility/period/P3 head/counts"
-  ],
+  "cold_refs": ["B05 rolling cold subprocess", "B05 rent rollback cold recovery"],
   "cost": "UNKNOWN",
-  "note": "Executed author evidence at one cut, not independent nonauthor receiving."
+  "note": "Executed author evidence at one cut; no independent nonauthor receiving; B bridge not adopted."
 }

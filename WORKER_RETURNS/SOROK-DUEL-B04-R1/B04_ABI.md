@@ -1,3 +1,5 @@
+> **Later same-pair semantic revision:** B's `B04_B_ABI_REVISION.md` antecedent bridge is not adopted. See `B04_A_SEMANTIC_ABI.md` for the typed purchase receipt, actual C02 refusal and exact parent-history hook. This base material-fact/API contract remains.
+
 > **B revision (`4a3c45cda7d814df0c60ca4e245499fcfca62162`):** admitted purchase now appends a C02-recognized material-state bridge in the same transaction and serializes with parent/material locks. The base purchase/rent schemas are unchanged; see `B04_B_ABI_REVISION.md` for the exact C02 composition/hook and crash boundary.
 
 # B04 parent-funded stock purchase ABI

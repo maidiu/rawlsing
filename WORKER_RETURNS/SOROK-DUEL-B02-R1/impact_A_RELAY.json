@@ -3,7 +3,7 @@
   "task_id": "B02",
   "phase": "CG-B",
   "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "implementation_sha": "62292613aa9210a7d3e944314e36924349337439",
+  "implementation_sha": "4959596dd2e130a3856cc3b9d7ce24f8d0261400",
   "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
   "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
   "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
@@ -11,10 +11,22 @@
   "grade": "SOURCEFREE_S2_ONLY",
   "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_AND_P3_SPAN_BEHAVIOR_CHANGE",
   "classification_detail": [
-    {"class": "NEW_CONSUMER", "detail": "period_progress/materialize_to/remaining_span actual readers; a real P3Owner.realize cycle interleaves the dated plan."},
-    {"class": "COMPATIBLE_ADDITIVE", "detail": "New receipt kind and additive as-of/progress fields; B's existing material facts and read fields retained."},
-    {"class": "BREAKING_INTERFACE", "detail": "p3_interval_span now subtracts current progress; full-period span after completion is 0. Old test assertion corrected."},
-    {"class": "SOURCE_OR_AUTHORITY", "detail": "p2_owner byte change alters P3Owner code pins; no migration; fresh final-code roots only."}
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "period_progress/materialize_to/remaining_span actual readers; a real P3Owner.realize cycle interleaves the dated plan."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "New receipt kind and additive as-of/progress fields; B's existing material facts and read fields retained."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "p3_interval_span now subtracts current progress; full-period span after completion is 0. Old test assertion corrected."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "p2_owner byte change alters P3Owner code pins; no migration; fresh final-code roots only."
+    }
   ],
   "changed_symbols": [
     "historical_period.materialize_to",
@@ -29,10 +41,22 @@
     "p2_owner.MATERIAL_FACT_SLOTS"
   ],
   "actual_reader": [
-    {"name": "historical_period.materialize_to", "returns": "MATERIALIZED|REPLAYED|RECOVERED|ALREADY_CURRENT with period state/receipt rows"},
-    {"name": "historical_period.period_progress", "returns": "BEFORE|PARTIAL|COMPLETE, coverage/gaps/remaining segments/next P3 span"},
-    {"name": "historical_period.read_material_period", "returns": "as-of period/employment/currentness/retrospective state and progress"},
-    {"name": "historical_period.p3_interval_span", "returns": "current-progress-subtracted {mode,span}"}
+    {
+      "name": "historical_period.materialize_to",
+      "returns": "MATERIALIZED|REPLAYED|RECOVERED|ALREADY_CURRENT with period state/receipt rows"
+    },
+    {
+      "name": "historical_period.period_progress",
+      "returns": "BEFORE|PARTIAL|COMPLETE, coverage/gaps/remaining segments/next P3 span"
+    },
+    {
+      "name": "historical_period.read_material_period",
+      "returns": "as-of period/employment/currentness/retrospective state and progress"
+    },
+    {
+      "name": "historical_period.p3_interval_span",
+      "returns": "current-progress-subtracted {mode,span}"
+    }
   ],
   "preserved_obligations": [
     "B02 source-qualified plan/employment facts and S46 producer reuse",
@@ -82,5 +106,10 @@
     "new_materialization_on_fork": "REFUSED"
   },
   "full_p3_batch": "NOT_RUN_SINGLE_P3OWNER_REALIZE_CYCLE_PROVEN",
-  "cost": {"status": "UNKNOWN", "reason": "No controller/provider token, latency, RSS or retry instrumentation available."}
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation available."
+  },
+  "b02_production_sha": "62292613aa9210a7d3e944314e36924349337439",
+  "combined_evidence": "39 passed in 394.59s (SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log)"
 }

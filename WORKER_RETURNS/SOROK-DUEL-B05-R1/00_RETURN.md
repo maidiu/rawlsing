@@ -1,19 +1,20 @@
-# SOROK B05 Agent A return
+# SOROK B05 Agent A return — cross-boundary material interleave
 
 **Task:** B05 rolling material reproduction (CG-B), depends B02/B04.
-**Code:** `62292613aa9210a7d3e944314e36924349337439` (feature `a3f74693b`), branch `codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1`.
-**Handoff:** `AGENT_A_HANDOFF.md`; **ABI:** `B05_ABI.md`; **delta/impact:** `PROGRAMMA_DELTA.json`, `impact.json`.
+**Code:** `4959596dd2e130a3856cc3b9d7ce24f8d0261400` on `codex/sorok-duel-b04-b05-a-semantic-interleave-20261112-r1`; B locks/rollback retained from `4a3c45c`; B start `15472ca`.
+**Full relay handoff:** `../SOROK-DUEL-B04-R1/AGENT_A_SEMANTIC_INTERLEAVE_HANDOFF.md`; **B05 addendum:** `B05_A_SEMANTIC_ADDENDUM.md`; delta/impact: `PROGRAMMA_DELTA.json`, `impact.json`.
 
 ## FINDING
 
-Across two completed B02 periods, household rent debits fixed-A cash only, C02 parent work changes parent cash/free-hours, and B04 parent-funded purchase changes stock/ownership without spending household cash. After rent 1 the B03 junior-kit availability flips from ADMISSIBLE to REFUSED_AFFORDABILITY; after rent 2 it remains refused; parent-funded purchases still succeed because the parent pays. Third purchase is refused on stock; duplicate rent is blocked; P3 head unchanged; cold replay exact.
+A real three-event P3 `BatchEngine` now crosses the B02 employment split with B02 `materialize_to` calls **between** events via the thin `PeriodInterleaveOwner` adapter: pre-batch to 2026-01-16; after event 4 to 2026-01-22 (crosses 2026-01-20); after event 5 to 2026-01-26; after event 6 to 2026-02-01. The reader shows the old term at 2026-01-19 and `civic-works` at 2026-01-21, with the split state. Then a typed parent purchase and household rent run; rent changes household cash 55→43 and flips B03 junior-kit feasibility to REFUSED_AFFORDABILITY; purchase stock/ownership changes; C02 parent work/read after purchase refuses `PARENT_MATERIAL_HISTORY_MISMATCH` (typed hook pending, no bridge); P3 head is unchanged by B04/B05. Period gaps are reported in `period_uncovered`; no elapsed psyche/work.
 
 ## EVIDENCE
 
-- B05 suite: 1 passed in 14.25s (`evidence/a_relay_b05.log`).
-- Combined 32 passed in 229.33s (`evidence/a_relay_b01_b02_b03_b04_b05.log`).
-- Cold subprocess exact rent/parent/owned/market/household/dwelling/feasibility/period/P3 head/counts; source severance/restore.
+- B05 rolling + rollback + post-split batch + cross-boundary batch: 4 passed in 134.80s (`evidence/b05_a_semantic.log`).
+- Combined 39 passed in 394.59s (`evidence/a_b04_b05_cross_combined.log`).
+- P6 house/P2/actor 15 passed; P6 MII 18 passed.
+- Cold, rent rollback, source severance/restore, duplicate rent, one-debit, cross-boundary materialization statuses.
 
 ## LIMITS
 
-No mother decision/utterance/uptake; static monthly rent, one charge per completed period, no arrears/landlord ledger/variable rent; C02 PARENT_B02_HOLD literal still stale (Pair3-owned); no full P3 3–5 batch; no cold fork; prior P3 code-pin roots incompatible; cost UNKNOWN; one independent nonauthor receiving still required.
+Three-event bounded batch, not five; no crash between a B02 materialize and the next P3 event; C02 typed purchase hook pending, so post-purchase parent work/read and second purchase refuse; no mother decision/utterance/uptake, public event/Nadia perception, arrears/landlord/variable rent/currency conversion, cold fork, full P6 live turn, native/science/rights/human/merge, or old P3 root compatibility. One independent nonauthor receiving remains required. Cost UNKNOWN.

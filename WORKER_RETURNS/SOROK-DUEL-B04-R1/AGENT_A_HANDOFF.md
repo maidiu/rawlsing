@@ -1,3 +1,5 @@
+> **Later same-pair semantic revision:** this file describes the pre-B04/B05-bridge A cut. The current code `4959596dd2e130a3856cc3b9d7ce24f8d0261400` removes B's antecedent bridge, keeps B's locks/rollback, and exposes the actual C02 typed-purchase refusal. See `AGENT_A_SEMANTIC_INTERLEAVE_HANDOFF.md` and `B04_A_SEMANTIC_ABI.md`; this file is retained as historical.
+
 # SOROK B04 AGENT A — parent-funded stock purchase handoff
 
 **Packet:** B04 `Implement consequential household work/care/resource and acquisition/refusal operations` (CG-B), depends B02/B03.

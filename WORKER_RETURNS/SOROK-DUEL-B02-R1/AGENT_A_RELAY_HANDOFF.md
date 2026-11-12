@@ -1,3 +1,5 @@
+> **Later same-pair semantic revision (B04/B05):** final tested code `4959596dd2e130a3856cc3b9d7ce24f8d0261400`. B's antecedent bridge is removed; after the first purchase C02 parent material/feasible/activity actually refuse `PARENT_MATERIAL_HISTORY_MISMATCH` until the typed `P2_PARENT_PURCHASE` hook, and read_purchase exposes that. A real 3-event BatchEngine now crosses the B02 split with materialize calls between events. Combined B01+B03+B02+B04+B05 is 39 passed; see `../SOROK-DUEL-B04-R1/AGENT_A_SEMANTIC_INTERLEAVE_HANDOFF.md`. The B02 period capability below is unchanged; its B04/B05 paragraphs/timings are historical and superseded.
+
 # SOROK B02 AGENT A RELAY — incremental periods, P3 interleave, B04/B05
 
 **Packet:** B02 counterstrike, then the same pair's B04 and B05 bounded constructions.

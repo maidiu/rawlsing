@@ -1,20 +1,20 @@
-# SOROK B04 Agent A return
+# SOROK B04 Agent A return — typed purchase
 
-**Task:** B04 parent-funded stock purchase/refusal (CG-B), depends B02/B03.
-**Code:** `62292613aa9210a7d3e944314e36924349337439` (feature `a3f74693b`), branch `codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1`.
-**Handoff:** `AGENT_A_HANDOFF.md`; **ABI:** `B04_ABI.md`; **delta/impact:** `PROGRAMMA_DELTA.json`, `impact.json`.
+**Task:** B04 parent-funded stock purchase (CG-B), depends B02/B03.
+**Code:** `4959596dd2e130a3856cc3b9d7ce24f8d0261400` on `codex/sorok-duel-b04-b05-a-semantic-interleave-20261112-r1`; B locks/rollback retained from `4a3c45c`; B start `15472ca`.
+**Full relay handoff:** `AGENT_A_SEMANTIC_INTERLEAVE_HANDOFF.md`; **exact typed parent ABI:** `B04_A_SEMANTIC_ABI.md`; delta/impact: `PROGRAMMA_DELTA.json`, `impact.json`.
 
 ## FINDING
 
-A registered C02 parent can buy one source-qualified object from the actual P2 market stock with her own cash/free-hours. The object must exist before transfer; refusal does not debit or create ownership; B01 fixed-A household cash stays untouched; admission atomically writes parent material, market stock, ownership, a C12 receipt and one checkpoint. The later readers expose the changed stock/ownership and parent feasible actions.
+The purchase is a real typed `P2_PARENT_PURCHASE` operation: source-qualified market stock must exist; parent cash/free-hours are debited; stock is decremented; ownership is written; one C12 receipt and one checkpoint commit atomically; B01 fixed-A cash is untouched; refusal does not debit or create stock/ownership; no public event or P3 psychology. B's `P2_PARENT_MATERIAL_ANTECEDENT`/`PURCHASE_MATERIAL_STATE` bridge is **not adopted**: it was a differently typed post-operation material row used to make C02's old history filter green, not typed purchase consumption. After the purchase, C02 `read_parent_material`/`parent_feasible_actions`/parent activity actually refuse `PARENT_MATERIAL_HISTORY_MISMATCH`. `read_purchase` still reads the typed receipt and ownership and reports the exact C02 refusal + the pending typed hook.
 
 ## EVIDENCE
 
-- B04 suite: 2 passed in 21.31s (`evidence/a_relay_b04.log`).
-- Combined B01+B03+B02+B04+B05: 32 passed in 229.33s (`../SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log`).
-- P6 test_house 8/8, P6 MII 18/18, adjacent 9/9.
-- Negatives: wrong owner/currency/parent/price/market branch/parent branch; stock/funds/time/material refusals; no possession; no public event; cold/severance.
+- B04 operations + composition: 6 passed in 63.78s (`evidence/b04_a_semantic.log`).
+- Combined B01+B03+B02+B04+B05: 39 passed in 394.59s (`../SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log`).
+- P6 house/P2/actor 15 passed; P6 MII 18 passed.
+- Negatives: wrong owner/currency/parent/price/branch/source; funds/time/stock/acoustic refusal no effect; no antecedent bridge row; post-purchase C02 refusal; second purchase refused; crash rollback; cold/severance.
 
 ## LIMITS
 
-No mother decision/utterance/uptake; no household-funded purchase; no public event/Nadia perception; no fork/cold-fork purchase; no general economy/landlord balance; parent_activity is Pair3-owned (new P2_PARENT_PURCHASE operation and stale PARENT_B02_HOLD need HQ reconciliation); prior P3 code-pin roots incompatible; cost UNKNOWN; one independent nonauthor receiving still required.
+Typed C02 purchase-history hook is pending Pair3; post-purchase parent material/feasible/activity and second purchase legitimately refuse until it exists. No mother decision/utterance/uptake, public event/Nadia perception, household-funded purchase, fork/cold-fork purchase, general economy/currency conversion, native/science/rights/human/merge, or old P3 root compatibility. One independent nonauthor receiving remains required. Cost UNKNOWN.

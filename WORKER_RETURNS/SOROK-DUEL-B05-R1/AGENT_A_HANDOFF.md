@@ -1,3 +1,5 @@
+> **Later same-pair semantic revision:** the current code adds `PeriodInterleaveOwner` for B02 materialize calls between real BatchEngine events, removes the B04 antecedent bridge, and demonstrates post-purchase C02 parent refusal rather than bridge success. See `../SOROK-DUEL-B04-R1/AGENT_A_SEMANTIC_INTERLEAVE_HANDOFF.md` and `B05_A_SEMANTIC_ADDENDUM.md`; this file is retained as historical.
+
 # SOROK B05 AGENT A — rolling material reproduction handoff
 
 **Packet:** B05 `Prove multicycle material duration and later first-consumer parity` (CG-B), depends B02/B04.
