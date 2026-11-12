@@ -1,4 +1,6 @@
 """Agent B: frozen G03-I0 custody/state attacks, not substitute P6 observations."""
+import sqlite3
+import tempfile
 import unittest
 from pathlib import Path
 import test_measure as a
@@ -27,6 +29,26 @@ class StateAndCustodyAttacks(unittest.TestCase):
         finally:
             file.write_bytes(before)
         self.assertTrue(reader.consume(self.root)["expected_scenario_pass"])
+
+    def test_logical_sqlite_witness_does_not_hide_real_row_change(self):
+        """A stable SQLite page format is not permission to ignore changed P3 rows."""
+        import measure as writer
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state"
+            dbpath = state / "actual-p2" / "p3_psyche.sqlite3"
+            dbpath.parent.mkdir(parents=True)
+            with sqlite3.connect(dbpath) as db:
+                db.execute("CREATE TABLE p3_records (id INTEGER, target TEXT)")
+                db.execute("INSERT INTO p3_records VALUES (1, 'before')")
+            first_writer = writer.state_snapshot(state, logical=True)["sha256"]
+            first_reader = reader.state_snapshot(state, logical=True)["sha256"]
+            self.assertEqual(first_writer, first_reader)
+            with sqlite3.connect(dbpath) as db:
+                db.execute("UPDATE p3_records SET target='after' WHERE id=1")
+            last_writer = writer.state_snapshot(state, logical=True)["sha256"]
+            last_reader = reader.state_snapshot(state, logical=True)["sha256"]
+            self.assertNotEqual(first_writer, last_writer)
+            self.assertEqual(last_writer, last_reader)
 
     def test_manifest_rewrite_cannot_survive_pinned_raw_index(self):
         """An external anchor for attempts must bind the runner/interpreter metadata."""
