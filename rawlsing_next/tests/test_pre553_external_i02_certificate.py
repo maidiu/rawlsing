@@ -1,0 +1,232 @@
+"""Adversarial native I03 and external-root tests for S2-B sourcefree certificate.
+
+G5 is intentionally NOT claimed: these are author-side tests. The already
+validated v1 I02 input still materializes full closure_refs upstream; this
+suite cannot demonstrate an independently source-direct 100k I02 build.
+"""
+from dataclasses import replace
+from pathlib import Path
+from time import monotonic
+import os
+import sqlite3
+import tracemalloc
+
+import pytest
+
+from rawlsing_next._pre553_external_i02_certificate import (
+    ExternalI02IntegrityError, ExternalI02Roots, VerifiedExternalI02,
+    _digest_file, _logical_root, build_sourcefree_external_i02,
+    install_sourcefree_external_i02_i03,
+)
+from rawlsing_next.tests.test_pre553_verified_semantic_range import (
+    _build_source, _release, _multi_i03_source,
+)
+from rawlsing_next.tests.test_pre553_empirical_query import (
+    _query_authority, _branch_predicate, _query, _run, _cell_map,
+)
+
+
+def _prepare(tmp_path, source, chunk=11):
+    release = _release(source)
+    universe = source["universe"].ref
+    path = tmp_path / "whole-i02.sqlite"
+    roots = build_sourcefree_external_i02(release, universe, path, chunk_size=chunk)
+    return path, roots
+
+
+def _facts(source, tag):
+    qa = _query_authority(tag)
+    pred = _branch_predicate(source, qa, tag=tag)
+    query = _query(source, qa, pred, ("Y",), tag=tag)
+    return qa, pred, query, _run(source, qa, pred, query)
+
+
+def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
+    source = _build_source("s2b-first-native", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-first-native")
+    assert oracle.facts[0].typed_state == "SUPPORTED"
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        changed_reader = _run(source, qa, pred, query)
+        assert changed_reader == oracle
+        assert _cell_map(changed_reader.facts[0])["1"]["raw_numerator_support"] == 2
+        key = source["respondents"]["R2"].ref.key
+        assert len(list(verified.event_refs(key))) == 1
+        assert len(list(verified.selector_refs(key, source["qrefs"]["Y"]))) == 1
+    # A future externally anchored version must change when a genuine
+    # original I02 event changes, NOT just when an index self-hash changes.
+    other = _build_source("s2b-first-native", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 1}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    other_path = tmp_path / "changed.sqlite"
+    new_roots = build_sourcefree_external_i02(
+        _release(other), other["universe"].ref, other_path, chunk_size=7,
+    )
+    assert new_roots.logical != roots.logical
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(other_path, roots=roots)
+    qa2, pred2, query2, changed_oracle = _facts(other, "s2b-first-native")
+    with VerifiedExternalI02(other_path, roots=new_roots) as valid:
+        install_sourcefree_external_i02_i03(
+            other["repo"], other["release_ref"], other["universe"].ref, valid,
+        )
+        assert _run(other, qa2, pred2, query2) == changed_oracle
+        assert _cell_map(changed_oracle.facts[0])["1"]["raw_numerator_support"] == 3
+    restored = _build_source("s2b-first-native", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    restore_path = tmp_path / "restored.sqlite"
+    restored_roots = build_sourcefree_external_i02(
+        _release(restored), restored["universe"].ref, restore_path, chunk_size=2,
+    )
+    assert restored_roots.logical == roots.logical
+    with VerifiedExternalI02(restore_path, roots=restored_roots):
+        pass
+
+
+def test_s2b_same_respondent_duplicate_occurrence_and_states(tmp_path):
+    source = _multi_i03_source("s2b-duplicate")
+    path, roots = _prepare(tmp_path, source)
+    respondent = source["respondents"]["R1"].ref.key
+    qref = source["qrefs"]["Y"]
+    with VerifiedExternalI02(path, roots=roots) as cert:
+        original = list(cert.selector_refs(respondent, qref))
+        assert len(original) == 2
+        assert len(set(ref.key for ref in original)) == 2
+        assert len(list(cert.selector_refs(respondent, qref, native_only=True))) == 2
+        assert list(cert.selector_refs(respondent, qref, states=frozenset())) == []
+        assert len(list(cert.selector_refs(respondent, qref,
+                          states=frozenset({"SUBSTANTIVE_RESPONSE"})))) == 2
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, cert,
+        )
+
+
+def test_s2b_attacker_rehashes_omitted_selector_but_cold_verifier_refuses(tmp_path):
+    source = _build_source("s2b-poison", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    path, held = _prepare(tmp_path, source)
+    db = sqlite3.connect(path)
+    try:
+        assert db.execute("SELECT COUNT(*) FROM selectors").fetchone()[0] > 0
+        db.execute("""DELETE FROM selectors WHERE rowid = (
+          SELECT rowid FROM selectors ORDER BY event_ref LIMIT 1
+        )""")
+        db.commit()
+        forged_local_logical = _logical_root(db)
+    finally:
+        db.close()
+    forged_local = replace(held, logical=forged_local_logical, physical=_digest_file(path))
+    # Even an adversary who knows the local recomputation algorithm cannot
+    # make the originally held roots change. Whole selector completeness also
+    # independently defeats an omitted entry under locally forged new roots.
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(path, roots=held)
+    with pytest.raises(ExternalI02IntegrityError, match="omits"):
+        VerifiedExternalI02(path, roots=forged_local)
+
+
+def test_s2b_corpus_event_removal_alias_and_wrong_binding_fail(tmp_path):
+    source = _build_source("s2b-event", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    path, roots = _prepare(tmp_path, source)
+    with sqlite3.connect(path) as db:
+        db.execute("""DELETE FROM objects WHERE ref = (
+          SELECT ref FROM objects WHERE family='RespondentEvent' LIMIT 1
+        )""")
+    forged = replace(roots, physical=_digest_file(path))
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(path, roots=forged)
+
+    other = tmp_path / "wrong-release.sqlite"
+    wrong_source = _build_source("s2b-different", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    wrong = build_sourcefree_external_i02(
+        _release(wrong_source), wrong_source["universe"].ref, other,
+    )
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(other, roots=roots)
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(other, roots=replace(
+            wrong, source=roots.source,
+        ))
+
+
+def test_s2b_deterministic_chunk_sizes_cold_reopen_orphan(tmp_path):
+    source = _build_source("s2b-deterministic", [
+        {"id": f"R{i}", "responses": {"Y": i % 2}} for i in range(72)
+    ])
+    a = tmp_path / "a.sqlite"
+    b = tmp_path / "b.sqlite"
+    release, universe = _release(source), source["universe"].ref
+    first = build_sourcefree_external_i02(release, universe, a, chunk_size=1)
+    second = build_sourcefree_external_i02(release, universe, b, chunk_size=19)
+    assert first.logical == second.logical
+    # Separate full cold independent verification, no in-memory witness passed.
+    with VerifiedExternalI02(a, roots=first) as reader:
+        assert len(list(reader.respondent_refs())) == 72
+    with VerifiedExternalI02(b, roots=second) as reader:
+        assert len(list(reader.respondent_refs())) == 72
+    with pytest.raises(ExternalI02IntegrityError):
+        build_sourcefree_external_i02(release, universe, a)
+    fake_stage = tmp_path / ".s2b-stage-orphan.sqlite"
+    fake_stage.write_bytes(a.read_bytes())
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(fake_stage, roots=first)
+
+
+def test_s2b_material_sourcefree_resource_probe(tmp_path):
+    """Narrow real I02 fixture; not 100k source-direct or 6GiB proof."""
+    n = 256
+    source = _build_source("s2b-resource", [
+        {"id": f"R{i:05d}", "responses": {"Y": i % 2}} for i in range(n)
+    ])
+    path = tmp_path / "material.sqlite"
+    before = monotonic()
+    tracemalloc.start()
+    try:
+        roots = build_sourcefree_external_i02(
+            _release(source), source["universe"].ref, path, chunk_size=7,
+        )
+        elapsed_build = monotonic() - before
+        _current, peak = tracemalloc.get_traced_memory()
+    finally:
+        tracemalloc.stop()
+    before = monotonic()
+    with VerifiedExternalI02(path, roots=roots) as verifier:
+        assert len(list(verifier.respondent_refs())) == n
+    elapsed_cold = monotonic() - before
+    assert path.stat().st_size > 0
+    assert peak < 64 * 1024 * 1024  # builder's incremental extra heap only
+    # Actual resource measurements emitted into CI log, not made-up figures.
+    rss_kb = None
+    if Path("/proc/self/status").exists():
+        for line in Path("/proc/self/status").read_text().splitlines():
+            if line.startswith("VmRSS:"):
+                rss_kb = int(line.split()[1])
+    print({
+        "respondents": n, "logical": roots.logical, "physical": roots.physical,
+        "retained_bytes": path.stat().st_size,
+        "build_s": round(elapsed_build, 4),
+        "cold_full_verify_s": round(elapsed_cold, 4),
+        "tracemalloc_peak_bytes": peak,
+        "process_rss_kb": rss_kb,
+        "peak_scratch": "NOT_MEASURED", "process_tree_peak": "NOT_MEASURED",
+        "100k_pipeline": "NOT_RUN", "source_rights": "NOT_ISSUED",
+    })
