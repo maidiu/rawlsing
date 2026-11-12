@@ -28,6 +28,11 @@ jobs:
           PYTHONPATH: .
         run: |
           /usr/bin/time -v python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py --junitxml=s2b-pair2.xml
+      - name: Isolated 2048-respondent material sourcefree CPU/RSS/scratch receipt
+        env:
+          PYTHONPATH: .
+        run: |
+          /usr/bin/time -v python -m pytest -q -s -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_material_sourcefree_resource_probe
       - uses: actions/upload-artifact@v4
         if: always()
         with:
