@@ -1,0 +1,53 @@
+{
+  "event_id": "SOROK-DUEL-B05-A-20261112-R1",
+  "task_id": "B05",
+  "phase": "CG-B",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "5888ab04d5fa05872aca188da687dceed545faf5",
+  "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
+  "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
+  "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+  "branch": "codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER",
+  "classification_detail": [
+    {"class": "NEW_CONSUMER", "detail": "read_household_obligation consumes the durable rent receipt; B03 material_feasibility and C02 feasible actions are the later/Nadia-parent readers."},
+    {"class": "COMPATIBLE_ADDITIVE", "detail": "New C12 rent receipt kind and reader; no B01/B02/B03/B04 production edit."},
+    {"class": "SOURCE_OR_AUTHORITY", "detail": "No new authority; rent is a sourcefree material obligation; no native/public event."}
+  ],
+  "changed_symbols": [
+    "rolling_reproduction.RENT_KIND", "rolling_reproduction.RENT_RECEIPT_SCHEMA",
+    "rolling_reproduction.HOUSEHOLD_OBLIGATION_SCHEMA",
+    "rolling_reproduction.apply_household_rent",
+    "rolling_reproduction.read_household_obligation",
+    "rolling_reproduction._rent_chain"
+  ],
+  "actual_reader": [
+    {"name": "rolling_reproduction.read_household_obligation", "returns": "durable rent receipt, current household cash/source, historical flag"},
+    {"name": "house.material_feasibility", "returns": "changed B03 material availability after household cash changes"},
+    {"name": "parent_activity.parent_feasible_actions", "returns": "changed parent cash/free-hours options"}
+  ],
+  "first_consumer": {"household_obligation": "read_household_obligation", "nadia_material_input": "house.material_feasibility", "parent_choice_input": "parent_feasible_actions", "mother_decision": "NONE_VERIFIED"},
+  "preserved_obligations": [
+    "B02 periods complete before rent; no time compression",
+    "B04 parent-funded purchase, B01 household cash separation",
+    "no elapsed-time trait/psyche; P3 head unchanged",
+    "SCHEDULED_ONLY = NOT_PERFORMED",
+    "one rent per period; no negative balance; refusal no debit"
+  ],
+  "regressed_obligations": [
+    "static monthly rent only; no arrears/variable rent/landlord ledger",
+    "C02 PARENT_B02_HOLD literal stale; Pair3-owned",
+    "prior P3 code-pin roots incompatible"
+  ],
+  "affected_queued_tasks": ["C03/C04", "C02 reconciliation", "P3 receiving/pin migration", "B05 economic extensions"],
+  "source_refs": ["WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py@5888ab04d5fa05872aca188da687dceed545faf5"],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b05.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
+  ],
+  "negative_refs": ["B05_RENT_ALREADY_RECORDED", "B05_INSUFFICIENT_HOUSEHOLD_CASH", "B05_PERIOD_NOT_COMPLETE", "B05_RENT_SOURCE_STALE"],
+  "cold_refs": ["test_recurring_rent_parent_work_and_purchase_change_later_inputs"],
+  "cost": {"status": "UNKNOWN", "reason": "No controller/provider token, latency, RSS or retry instrumentation available."}
+}

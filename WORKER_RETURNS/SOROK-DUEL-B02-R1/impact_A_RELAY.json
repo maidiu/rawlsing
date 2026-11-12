@@ -1,0 +1,86 @@
+{
+  "event_id": "SOROK-DUEL-B02-A-RELAY-20261112-R1",
+  "task_id": "B02",
+  "phase": "CG-B",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "5888ab04d5fa05872aca188da687dceed545faf5",
+  "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
+  "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
+  "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+  "branch": "codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_AND_P3_SPAN_BEHAVIOR_CHANGE",
+  "classification_detail": [
+    {"class": "NEW_CONSUMER", "detail": "period_progress/materialize_to/remaining_span actual readers; a real P3Owner.realize cycle interleaves the dated plan."},
+    {"class": "COMPATIBLE_ADDITIVE", "detail": "New receipt kind and additive as-of/progress fields; B's existing material facts and read fields retained."},
+    {"class": "BREAKING_INTERFACE", "detail": "p3_interval_span now subtracts current progress; full-period span after completion is 0. Old test assertion corrected."},
+    {"class": "SOURCE_OR_AUTHORITY", "detail": "p2_owner byte change alters P3Owner code pins; no migration; fresh final-code roots only."}
+  ],
+  "changed_symbols": [
+    "historical_period.materialize_to",
+    "historical_period.period_progress",
+    "historical_period.remaining_span",
+    "historical_period.p3_interval_span",
+    "historical_period.read_material_period",
+    "historical_period._recover_missing_receipts",
+    "historical_period._receipt_rows",
+    "historical_period._append_receipt",
+    "historical_period.MATERIALIZATION_RECEIPT_KIND",
+    "p2_owner.MATERIAL_FACT_SLOTS"
+  ],
+  "actual_reader": [
+    {"name": "historical_period.materialize_to", "returns": "MATERIALIZED|REPLAYED|RECOVERED|ALREADY_CURRENT with period state/receipt rows"},
+    {"name": "historical_period.period_progress", "returns": "BEFORE|PARTIAL|COMPLETE, coverage/gaps/remaining segments/next P3 span"},
+    {"name": "historical_period.read_material_period", "returns": "as-of period/employment/currentness/retrospective state and progress"},
+    {"name": "historical_period.p3_interval_span", "returns": "current-progress-subtracted {mode,span}"}
+  ],
+  "preserved_obligations": [
+    "B02 source-qualified plan/employment facts and S46 producer reuse",
+    "SCHEDULED_ONLY = NOT_PERFORMED",
+    "B01/B03 readers and B's same-root PsycheStore negative",
+    "no second clock/scheduler/ledger/P3 psychology",
+    "no future employment as current; no past as-of as current"
+  ],
+  "regressed_obligations": [
+    "P3 roots from prior p2_owner cuts refuse cold reopen under final code",
+    "p3_interval_span full-duration-after-completion behavior removed",
+    "C02 PARENT_B02_HOLD literal remains stale in Pair3-owned parent_activity.py; not edited"
+  ],
+  "affected_queued_tasks": [
+    "B04 built",
+    "B05 built",
+    "C02/C03 composition (stale hold)",
+    "D02/P3 receiving (full batch, source closure, pin migration)"
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py@5888ab04d5fa05872aca188da687dceed545faf5",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@5888ab04d5fa05872aca188da687dceed545faf5"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/a_relay_b02.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
+  ],
+  "negative_refs": [
+    "test_incremental_period_advance_interleaves_p3_and_employment",
+    "test_crash_after_state_before_receipt_recovers_once",
+    "P6_PERIOD_CLOCK_IN_PAST",
+    "P6_PERIOD_OUTSIDE_PLAN",
+    "FUTURE_NOT_MATERIALIZED",
+    "MATERIALIZED_RETROSPECTIVELY",
+    "ELAPSED_BY_OTHER_OWNER"
+  ],
+  "cold_refs": [
+    "B02 incremental cold subprocess exact plan/employment/period/P3 head/counts",
+    "B02 retry/cold no duplicate period"
+  ],
+  "fork_scope": {
+    "material_only": true,
+    "fork_state": "C12_FORK_WITHOUT_S46_INTERVAL_STATE",
+    "cold_fork": "NOT_PROVED",
+    "new_materialization_on_fork": "REFUSED"
+  },
+  "full_p3_batch": "NOT_RUN_SINGLE_P3OWNER_REALIZE_CYCLE_PROVEN",
+  "cost": {"status": "UNKNOWN", "reason": "No controller/provider token, latency, RSS or retry instrumentation available."}
+}
