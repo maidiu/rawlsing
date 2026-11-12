@@ -95,6 +95,11 @@ class FrozenInputCensus:
     source_census_ref: str
     science_census_ref: str
     deferred_scope_records: tuple[Mapping[str, Any], ...] = ()
+    # These are distinct source/eligibility axes, not operation IDs.  A's
+    # original two-way operation anti-join did not preserve their contents.
+    unknown_scope_records: tuple[Mapping[str, Any], ...] = ()
+    excluded_scope_records: tuple[Mapping[str, Any], ...] = ()
+    inventory_ledger_records: tuple[Mapping[str, Any], ...] = ()
     grade: str = SCOPE
 
     def material(self) -> Mapping[str, Any]:
@@ -105,6 +110,9 @@ class FrozenInputCensus:
             "source_census_ref": self.source_census_ref,
             "science_census_ref": self.science_census_ref,
             "deferred_scope_records": list(self.deferred_scope_records),
+            "unknown_scope_records": list(self.unknown_scope_records),
+            "excluded_scope_records": list(self.excluded_scope_records),
+            "inventory_ledger_records": list(self.inventory_ledger_records),
         }
 
     @property
@@ -177,6 +185,20 @@ def verify_frozen_inputs(
         list(frontier.deferred)
     ):
         raise CensusRefusal("DEFERRED_SCOPE_RECORDS_LOST_OR_FABRICATED")
+    # The frozen declaration must also conserve non-operation evidence:
+    # UNKNOWN, EXCLUDED, and the per-occurrence administration/fate ledger.
+    # Neither operation-ID parity nor the R03 issued-result anti-join covers
+    # these axes, so dropping them can otherwise falsely pass G1/G3.
+    for label, frozen, actual in (
+        ("UNKNOWN", census.unknown_scope_records, frontier.unknown),
+        ("EXCLUDED", census.excluded_scope_records, frontier.excluded),
+        ("INVENTORY_LEDGER", census.inventory_ledger_records,
+         tuple(entry.material() for entry in frontier.inventory_ledger)),
+    ):
+        if semantic_hash(list(frozen)) != semantic_hash(list(actual)):
+            raise CensusRefusal(label + "_CENSUS_DRIFT", {
+                "frozen_count": len(frozen), "frontier_count": len(actual),
+            })
     sources = _unique(census.source_candidates, "SOURCE_CANDIDATE")
     scientific = _unique(census.scientific_fates, "SCIENTIFIC_FATE")
     _same_ids(set(sources), set(scientific), "SOURCE_VS_SCIENCE")
@@ -279,6 +301,15 @@ def verify_frozen_inputs(
         "frontier_hash": frontier.content_hash,
         "deferred_scope_count": len(frontier.deferred),
         "deferred_scope_records": list(frontier.deferred),
+        "unknown_scope_count": len(frontier.unknown),
+        "excluded_scope_count": len(frontier.excluded),
+        "inventory_ledger_count": len(frontier.inventory_ledger),
+        "unknown_scope_hash": semantic_hash(list(frontier.unknown)),
+        "excluded_scope_hash": semantic_hash(list(frontier.excluded)),
+        "inventory_ledger_hash": semantic_hash(
+            [entry.material() for entry in frontier.inventory_ledger]),
+        "unknown_scope_records": list(frontier.unknown),
+        "excluded_scope_records": list(frontier.excluded),
     }
 
 
