@@ -210,6 +210,15 @@ def test_parent_activity_replay_cold_and_no_duplicates(tmp_path):
             record_parent_activity(
                 session, PARENT_ID, operation_id="c02:replay:1",
                 activity="PAID_WORK", hours=2)
+        world = session.world()
+        alias = read_supporting_actor(session, PARENT_ID)["alias"]
+        current_material = dict(world.actor_state[alias]["material"])
+        world.actor_state[alias].pop("material")
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        with pytest.raises(RecursionRefusal, match="RECOVERY_STALE"):
+            establish(session)
+        world.actor_state[alias]["material"] = current_material
+        session.product._checkpoint(session.branch_id, world.clock, world)
         material_source = read_parent_material(
             session, PARENT_ID, as_actor=PARENT_ID)["source"]
         history = read_parent_history(
