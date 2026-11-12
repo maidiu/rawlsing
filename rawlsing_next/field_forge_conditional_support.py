@@ -210,6 +210,16 @@ def _validate_common_closure(
     if joint_fact.typed_state not in ALLOWED_PRODUCER_STATES:
         raise FieldForgeConditionalSupportError(
             f"unsupported producer typed_state {joint_fact.typed_state!r}")
+    # SUPPORTED is an empirically positive typed state, not merely a positive
+    # risk denominator. The canonical EmpiricalFact family currently validates
+    # the denominator but permits numerator=0 under SUPPORTED. Without this
+    # guard FF01 emits a nonempty all-zero conditional profile, and the
+    # downstream D gate promotes it to ADMITTED structural input. Preserve
+    # genuine OBSERVED_ZERO as a typed negative instead of reclassifying it.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_fact.raw_numerator_support == 0):
+        raise FieldForgeConditionalSupportError(
+            "SUPPORTED empirical fact has zero positive support")
     # The exact query hash identifies what was requested, not whether that
     # operation was authorized. A re-signed positive fact may cite a real
     # QUERY_UNAUTHORIZED query and otherwise satisfy every closure check.
