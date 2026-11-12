@@ -315,7 +315,11 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_COUNTER_FIRST_REAL_TURN",
+          "model_actual_turn": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -343,8 +347,21 @@
             }
           },
           "pid": 36463,
-          "state": "LAUNCHED_FIRST_TURN_PENDING",
-          "received_head": "e119453bc038e82963f45384fb913df4ed02be33"
+          "state": "RUNNING",
+          "received_head": "e119453bc038e82963f45384fb913df4ed02be33",
+          "actual_counter_first_turn_model": {
+            "id": "msg_1cf2bd306001cpOH1LnxaH3loc",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794477118452,
+              "streamed": 1794477169156,
+              "completed": 1794477169282
+            }
+          }
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -391,7 +408,7 @@
           }
         }
       },
-      "state": "A_COUNTER_LAUNCHED_FIRST_TURN_PENDING",
+      "state": "A_COUNTER_RUNNING",
       "active_role": "A",
       "round_sequence": [
         "A_GO_FIRST",
