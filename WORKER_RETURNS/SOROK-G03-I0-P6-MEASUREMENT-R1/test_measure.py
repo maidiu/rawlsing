@@ -51,6 +51,13 @@ class Attacks(unittest.TestCase):
     def test_valid_synthetic_format_only(self):
         x=r.consume(self.p);self.assertEqual((x["attempts"],x["failed_or_refused"]),(5,1))
         self.assertTrue(x["expected_scenario_pass"])
+        self.assertEqual((x["expected_refusals"],x["unexpected_failed_or_refused"]),(1,0))
+        self.assertEqual(x["state_net_bytes"],40)
+    def test_unexpected_failure_stays_in_denominator(self):
+        self.mutate("view",lambda x:x.update(exit_code=3))
+        x=r.consume(self.p)
+        self.assertEqual((x["attempts"],x["unexpected_failed_or_refused"]),(5,1))
+        self.assertFalse(x["expected_scenario_pass"])
     def test_missing_refusal_cannot_reduce_denominator(self):
         (self.p/"attempts/fail_wait/receipt.json").unlink();self.rejects("ATTEMPT_MISSING")
     def test_reduced_plan_rejected(self):
