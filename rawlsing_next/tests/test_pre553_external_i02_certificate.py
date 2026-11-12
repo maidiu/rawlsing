@@ -550,10 +550,16 @@ def test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty(tmp_path):
     qa, pred, query, oracle = _facts(source, "s2b-a-object-shadow")
     path, roots = _prepare(tmp_path, source)
     with VerifiedExternalI02(path, roots=roots) as real:
-        real.db.execute("PRAGMA query_only=OFF")
-        real.db.execute(
-            "CREATE TEMP TABLE objects AS SELECT * FROM main.objects WHERE 0"
-        )
+        with pytest.raises(ExternalI02IntegrityError, match="only permits SELECT"):
+            real.db.execute("PRAGMA query_only=OFF")
+        with pytest.raises(ExternalI02IntegrityError, match="only permits SELECT"):
+            real.db.execute(
+                "CREATE TEMP TABLE objects AS SELECT * FROM main.objects WHERE 0"
+            )
+        # SELECT is allowed for existing read-only instrumentation, but no
+        # sqlite3.Cursor.connection or session-mutating public methods leak.
+        assert not hasattr(real.db.execute("SELECT 1"), "connection")
+        assert not hasattr(real.db, "create_collation")
         assert len(list(real.respondent_refs())) == 2
         respondent = source["respondents"]["R1"].ref.key
         assert len(list(real.event_refs(respondent))) == 1
