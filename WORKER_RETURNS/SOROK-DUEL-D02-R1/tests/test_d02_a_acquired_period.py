@@ -57,6 +57,13 @@ def _run_acquired(path: Path, outcome: str) -> dict:
         )
         assert case.owner.store.head() == head_before
         acquired = selector["acquired_state"]
+        boundary = selector["recipient_boundary"]
+        assert boundary["provider_role"] == (
+            "WORLD_PROPOSAL_TRANSPORT_NOT_ACTOR_COGNITION")
+        assert boundary["options_are_exhaustive"] is False
+        assert "acquired_state" in boundary["actor_qualified_input"]
+        assert "material" in boundary["world_proposal_input"]
+        assert "material" not in boundary["actor_qualified_input"]
         assert acquired["status"] == "ELIGIBLE"
         assert acquired["native_rule"] == "MISSING_RULE"
         assert acquired["memory_formation"] == "MISSING_RULE"

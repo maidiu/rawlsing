@@ -940,6 +940,26 @@ def build_situated_context(owner: Any, *, expected: Any = None,
         else "PREREQUISITE_HELD_NO_CURRENT_PERIOD")
     ingress["reason"] = period.get("reason")
     ingress["period_source"] = period.get("source")
+    recipient_boundary = {
+        "schema": "SOROK_D02_RECIPIENT_BOUNDARY@1",
+        "world_proposal_input": [
+            "material", "period", "relations.current_position",
+            "admissible_options",
+        ],
+        "actor_qualified_input": [
+            "observation", "relations.event_access", "acquired_state",
+            "material.actor_accessible",
+        ],
+        "objective_not_actor_knowledge": [
+            "material.place", "material.resources", "period.employment",
+            "period.plan_source",
+        ],
+        "provider_role": "WORLD_PROPOSAL_TRANSPORT_NOT_ACTOR_COGNITION",
+        "actual_actor_consumer": (
+            "P3Owner._effect with its own actual event access/context"),
+        "false_belief_or_attempt": "NOT_EXCLUDED_BY_SELECTOR",
+        "options_are_exhaustive": False,
+    }
     body = {
         "schema": SCHEMA,
         "grade": GRADE,
@@ -949,6 +969,7 @@ def build_situated_context(owner: Any, *, expected: Any = None,
         "relations": relations,
         "admissible_options": options,
         "option_semantics": OPTION_SEMANTICS,
+        "recipient_boundary": recipient_boundary,
         "period": period,
         "period_source": period.get("source"),
         "acquired_state": acquired,
@@ -1008,6 +1029,10 @@ def build_situated_context(owner: Any, *, expected: Any = None,
             "interval_span": period.get("interval_span"),
         },
         "acquired_state": acquired.get("readset"),
+        "recipient_boundary": {
+            "hash": digest(recipient_boundary),
+            "schema": recipient_boundary["schema"],
+        },
         "material": {
             "source": material.get("source"),
             "material_hash": material.get("material_hash"),
