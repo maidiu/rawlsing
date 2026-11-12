@@ -504,6 +504,27 @@ def build_sourcefree_direct_i02(
         _check_direct_relations(db, declared_universes=declared_universes)
         _check_relations(db, source=manifest.source_artifact_ref.key)
         coverage = _coverage(seen)
+        # Independently reconstruct original v1 replay and release hashes from
+        # sorted disk rows; do not create the mandatory v1 tuple of all refs.
+        candidate_projection_hash = _hash_original_candidate_projection(
+            db, manifest, source.typed_absences,
+        )
+        original_replay_ref = _hash_original_replay_manifest(
+            db, manifest=manifest,
+            candidate_projection_hash=candidate_projection_hash,
+            authority_hash=authority_snapshot_set_hash(snapshots),
+            replay_protocol_authority_ref=source.replay_protocol_authority_ref,
+            replay_protocol_version=source.replay_protocol_version,
+            deterministic_tie_order_rules_ref=source.deterministic_tie_order_rules_ref,
+        )
+        original_release_hash = semantic_hash({
+            "candidate_projection_hash": candidate_projection_hash,
+            "replay_manifest_ref": original_replay_ref.as_dict(),
+            "m01_m18": coverage,
+        })
+        original_release_ref = ExactRef(
+            "C11LogicalRelease", manifest.release_id, original_release_hash,
+        )
         replay_descriptor = {
             "schema": DIRECT_SCHEMA,
             "source_manifest": manifest.semantic_projection(),
@@ -522,10 +543,11 @@ def build_sourcefree_direct_i02(
             semantic_hash({"schema": DIRECT_SCHEMA,
                            "manifest": manifest.semantic_projection()}),
         )
-        replay_ref = ExactRef(
-            "C11_DIRECT_SOURCEFREE_REPLAY", manifest.release_id,
-            semantic_hash(replay_descriptor),
-        )
+        # The digest equals the historical ReplayManifest.ref when the
+        # underlying sourcefree section contents and replay descriptor match.
+        # This is an unissued *reconstruction*, not permission to mint a
+        # private legacy validation seal or auto-install in native I03.
+        replay_ref = original_replay_ref
         headers = {
             "schema": DIRECT_SCHEMA,
             "release": direct_release.key,
@@ -537,8 +559,11 @@ def build_sourcefree_direct_i02(
             "actual_counts": canonical_json(seen),
             "source_manifest_hash": manifest.content_hash,
             "replay_descriptor": canonical_json(replay_descriptor),
+            "candidate_projection_hash": candidate_projection_hash,
+            "reconstructed_v1_replay_ref": original_replay_ref.key,
+            "reconstructed_v1_release_ref": original_release_ref.key,
             "chunk_size_is_nonsemantic": "true",
-            "legacy_replay_m16_m18_equivalence": "NOT_PROVEN",
+            "legacy_replay_m16_m18_equivalence": "STREAMED_HASH_RECONSTRUCTED_NOT_YET_INDEPENDENTLY_RECEIVED",
             "original_source_current_issuer": "NOT_ISSUED",
         }
         for key, value in headers.items():
