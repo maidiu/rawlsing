@@ -47,6 +47,18 @@ def state_snapshot(root):
     return {"status":"PRESENT","bytes":total,"files":count,
             "sha256":hashbytes(data({"v":1,"status":"PRESENT","entries":entries}))}
 
+def state_file_digests(root):
+    """Diagnostic only: report paths whose persisted bytes changed on refused P6."""
+    root=Path(root)
+    if not root.exists():return {}
+    found={}
+    for parent,_,names in os.walk(root,followlinks=False):
+        for name in names:
+            q=Path(parent)/name
+            if q.is_file() and not q.is_symlink():
+                found[q.relative_to(root).as_posix()]=hashbytes(q.read_bytes())
+    return found
+
 def env_offline():
     return {"PATH":os.environ.get("PATH","/usr/bin:/bin"),"LANG":"C.UTF-8",
             "PYTHONDONTWRITEBYTECODE":"1","PYTHONNOUSERSITE":"1","PYTHONHASHSEED":"0"}
@@ -108,11 +120,17 @@ def run(repo,out,timeout):
         p=out/"attempts"/name;p.mkdir()
         argv=[sys.executable,str(repo/P6),"--state",str(state),*args]
         snap_before=state_snapshot(state);before=snap_before["bytes"]
+        before_files=state_file_digests(state) if name=="fail_wait" else None
         save(p/"start.json",{"id":name,"source_sha":head,"argv":argv,
                              "state_bytes_before":before,"state_snapshot_before":snap_before})
         stdout=p/"stdout.bin";stderr=p/"stderr.bin"
         pid,code,wall,usage,timed_out=measure(argv,repo,env,stdout,stderr,timeout)
         snap_after=state_snapshot(state)
+        if name=="fail_wait" and snap_before!=snap_after:
+            after_files=state_file_digests(state)
+            changed=sorted(k for k in set(before_files)|set(after_files)
+                           if before_files.get(k)!=after_files.get(k))
+            print("REFUSED_P6_CHANGED_PERSISTED_PATHS="+json.dumps(changed),file=sys.stderr)
         raw=stdout.read_bytes()
         try:
             output=json.loads(raw)
