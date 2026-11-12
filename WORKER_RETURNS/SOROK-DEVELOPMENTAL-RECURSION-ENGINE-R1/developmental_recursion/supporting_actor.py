@@ -8,6 +8,7 @@ engineering, not native C4/ADP-015 issuance.
 """
 from __future__ import annotations
 
+import itertools
 from typing import Any, Iterable, Mapping
 
 from .contracts import RecursionRefusal, canonical, detached, digest
@@ -70,6 +71,69 @@ def _root_and_alias_maps(session):
 
 def _branch_actor_ids(session) -> tuple[str, ...]:
     return tuple(session.product.store.branch(session.branch_id)["actor_ids"])
+
+
+_SAVEPOINT_SEQ = itertools.count()
+
+
+class _StoreWrite:
+    """One durable C12 write unit: all rows commit or none do.
+
+    The C12 store is opened with sqlite autocommit. Registration and
+    participation each span several rows (branch metadata, episode, checkpoint,
+    perception); without an explicit transaction a process death between rows
+    leaves a branch alias with no world actor row. BEGIN IMMEDIATE also
+    serializes competing registrations. If a caller already opened a
+    transaction, a savepoint preserves its outer unit.
+    """
+
+    def __init__(self, store) -> None:
+        self.store = store
+        self.savepoint = None
+
+    def __enter__(self) -> "_StoreWrite":
+        if self.store.db.in_transaction:
+            self.savepoint = "c01_write_%d" % next(_SAVEPOINT_SEQ)
+            self.store.db.execute("SAVEPOINT " + self.savepoint)
+        else:
+            self.store.db.execute("BEGIN IMMEDIATE")
+        return self
+
+    def __exit__(self, exc_type, exc, traceback) -> bool:
+        if self.savepoint is not None:
+            if exc_type is None:
+                self.store.db.execute("RELEASE SAVEPOINT " + self.savepoint)
+            else:
+                self.store.db.execute("ROLLBACK TO SAVEPOINT " + self.savepoint)
+                self.store.db.execute("RELEASE SAVEPOINT " + self.savepoint)
+            return False
+        self.store.db.execute("COMMIT" if exc_type is None else "ROLLBACK")
+        return False
+
+
+def _registration_episodes(session, alias: str) -> list[dict]:
+    return [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == SUPPORTING_REGISTRATION_KIND
+        and (row.get("body") or {}).get("alias") == alias
+    ]
+
+
+def _row_from_registration(episode: Mapping[str, Any]) -> dict:
+    body = episode.get("body") or {}
+    return {
+        "actor_id": body["actor_id"],
+        "role": body["role"],
+        "participant_kind": PARTICIPANT_KIND,
+        "private_state_hash": body["private_state_hash"],
+        "private_episode_id": episode["episode_id"],
+        "registration": {
+            key: body[key] for key in (
+                "schema", "grade", "root", "branch", "epoch", "actor_id",
+                "alias", "role", "source",
+            )
+        },
+    }
 
 
 def _private_state_for(session, alias: str, row: Mapping[str, Any]) -> dict:
@@ -162,122 +226,190 @@ def _find(session, *, actor_id: str | None = None,
     return matches[0] if matches else (None, None)
 
 
+def _validate_recovery_episode(session, episode: Mapping[str, Any], *,
+                               alias: str, actor_id: str, role: str,
+                               private: Mapping[str, Any], private_hash: str,
+                               source: str, root_hash: str, world_clock: int) -> dict:
+    body = episode.get("body") or {}
+    if (body.get("schema") != SUPPORTING_ACTOR_SCHEMA
+            or body.get("grade") != SUPPORTING_GRADE
+            or body.get("root") != root_hash
+            or body.get("branch") != session.branch_id
+            or body.get("actor_id") != actor_id
+            or body.get("alias") != alias
+            or body.get("role") != role
+            or body.get("private_state_hash") != private_hash
+            or body.get("source") != source
+            or _private_state(body.get("private_state")) != private):
+        raise RecursionRefusal("SUPPORTING_ACTOR_REGISTRATION_MISMATCH")
+    epoch = body.get("epoch")
+    if (isinstance(epoch, bool) or not isinstance(epoch, int)
+            or epoch < 0 or epoch > world_clock):
+        raise RecursionRefusal("SUPPORTING_ACTOR_EPOCH_INVALID")
+    return body
+
+
 def register_supporting_actor(session, *, alias: str, actor_id: str, role: str,
                               private_state: Mapping[str, Any] | None = None) -> dict:
-    """Register one stable supporting actor through the actual C12/P2 writer."""
-    world = session.world()
-    root = session.read_root()
+    """Register one stable supporting actor through the actual C12/P2 writer.
+
+    Branch metadata, the private-state episode and the world checkpoint commit
+    as one C12 transaction. A crash therefore leaves either the exact prior
+    state or the complete registration, never a branch alias with no live actor
+    row. A partial state written by the earlier non-atomic cut is recovered when
+    its registration episode still proves the requested identity; an orphan
+    branch alias with no episode and no world row is reclaimed.
+    """
     if not _text(alias) or not _text(actor_id) or role not in SUPPORTING_ROLES:
         raise RecursionRefusal("SUPPORTING_ACTOR_SCHEMA")
     private = _private_state(private_state)
-    root_ids, by_id, by_alias = _root_and_alias_maps(session)
-    if actor_id in root_ids:
-        raise RecursionRefusal("SUPPORTING_ACTOR_FOCAL_IDENTITY_RESERVED")
-    root_aliases = {by_id[actor] for actor in root_ids if actor in by_id}
-    user_alias = session.meta.get("user_actor")
-    if alias in root_aliases or alias == user_alias:
-        raise RecursionRefusal("SUPPORTING_ACTOR_ALIAS_RESERVED")
-    if alias in by_alias and by_alias[alias] != actor_id:
-        raise RecursionRefusal("SUPPORTING_ACTOR_ALIAS_COLLISION")
-    existing_alias = by_id.get(actor_id)
-    if existing_alias is not None and existing_alias != alias:
-        raise RecursionRefusal("SUPPORTING_ACTOR_ID_COLLISION")
-    found_alias, found = _find(session, actor_id=actor_id)
-    if found_alias is not None and found_alias != alias:
-        raise RecursionRefusal("SUPPORTING_ACTOR_ID_COLLISION")
     private_hash = digest(private)
     source = registration_source(
         actor_id=actor_id, alias=alias, role=role,
         private_state_hash=private_hash,
     )
-    if found is not None:
-        _validate_registration(session, found_alias, found, root_ids=root_ids)
-        if (found.get("role") == role
-                and _private_state_for(session, found_alias, found) == private
-                and found["registration"].get("source") == source):
-            return {
-                "schema": SUPPORTING_ACTOR_READ_SCHEMA,
-                "grade": SUPPORTING_GRADE,
-                "status": "UNCHANGED",
-                **_public_read(session, found_alias, found),
-            }
-        raise RecursionRefusal("SUPPORTING_ACTOR_REGISTRATION_MISMATCH")
-    if alias in world.actor_state or alias in _branch_actor_ids(session):
-        raise RecursionRefusal("SUPPORTING_ACTOR_ALIAS_RESERVED")
-    focal_alias = by_id.get(root_ids[0])
-    position = world.positions.get(focal_alias) if focal_alias else None
-    if not _text(position):
-        raise RecursionRefusal("SUPPORTING_ACTOR_FOCAL_POSITION_MISSING")
     store = session.product.store
-    old_actors = list(_branch_actor_ids(session))
-    changed = alias not in old_actors
-    try:
-        if changed:
-            actors = sorted(set(old_actors) | {alias})
-            store.db.execute(
-                "UPDATE branch SET actor_ids=? WHERE branch_id=?",
-                (canonical(actors), session.branch_id),
-            )
-            store.db.commit()
-        body = {
-            "schema": SUPPORTING_ACTOR_SCHEMA,
-            "grade": SUPPORTING_GRADE,
-            "root": root["root_hash"],
-            "branch": session.branch_id,
-            "epoch": world.clock,
-            "actor_id": actor_id,
-            "alias": alias,
-            "role": role,
-            "source": source,
-            "private_state_hash": private_hash,
-            "private_state": private,
-        }
-        existing_episode = next((
-            row for row in store.episodes(session.branch_id)
-            if row.get("kind") == SUPPORTING_REGISTRATION_KIND
-            and row.get("body") == body
-        ), None)
-        episode = existing_episode or store.append_episode(
-            session.branch_id, actor_id=alias,
-            kind=SUPPORTING_REGISTRATION_KIND, clock=world.clock, body=body,
-        )
-        row = {
-            "actor_id": actor_id,
-            "role": role,
-            "participant_kind": PARTICIPANT_KIND,
-            "private_state_hash": private_hash,
-            "private_episode_id": episode["episode_id"],
-            "registration": {
-                "schema": SUPPORTING_ACTOR_SCHEMA,
-                "grade": SUPPORTING_GRADE,
-                "root": root["root_hash"],
-                "branch": session.branch_id,
-                "epoch": world.clock,
-                "actor_id": actor_id,
-                "alias": alias,
-                "role": role,
-                "source": source,
-            },
-        }
-        world.actor_state[alias] = row
-        world.positions[alias] = position
-        session.product._checkpoint(session.branch_id, world.clock, world)
-    except BaseException:
-        if changed:
-            store.db.execute(
-                "UPDATE branch SET actor_ids=? WHERE branch_id=?",
-                (canonical(old_actors), session.branch_id),
-            )
-            store.db.commit()
-            world.actor_state.pop(alias, None)
-            world.positions.pop(alias, None)
-        raise
-    return {
-        "schema": SUPPORTING_ACTOR_READ_SCHEMA,
-        "grade": SUPPORTING_GRADE,
-        "status": "REGISTERED",
-        **_public_read(session, alias, row),
-    }
+    result = None
+    status = "REGISTERED"
+    with _StoreWrite(store):
+        world = session.world()
+        root = session.read_root()
+        root_ids, by_id, by_alias = _root_and_alias_maps(session)
+        branch_ids = _branch_actor_ids(session)
+        root_aliases = {by_id[actor] for actor in root_ids if actor in by_id}
+        user_alias = session.meta.get("user_actor")
+        if actor_id in root_ids:
+            raise RecursionRefusal("SUPPORTING_ACTOR_FOCAL_IDENTITY_RESERVED")
+        # Alias and stable-ID namespaces must not overlap either root, user or
+        # supporting registrations. Otherwise read_actor_access can resolve the
+        # same string as two different actors.
+        if (alias in root_ids or alias in root_aliases or alias in by_id
+                or alias == user_alias):
+            raise RecursionRefusal("SUPPORTING_ACTOR_ALIAS_RESERVED")
+        if (actor_id in by_alias or actor_id in root_aliases
+                or actor_id == user_alias):
+            raise RecursionRefusal("SUPPORTING_ACTOR_ID_COLLISION")
+        if alias in by_alias and by_alias[alias] != actor_id:
+            raise RecursionRefusal("SUPPORTING_ACTOR_ALIAS_COLLISION")
+        existing_alias = by_id.get(actor_id)
+        if existing_alias is not None and existing_alias != alias:
+            raise RecursionRefusal("SUPPORTING_ACTOR_ID_COLLISION")
+        found_alias, found = _find(session, actor_id=actor_id)
+        if found_alias is not None and found_alias != alias:
+            raise RecursionRefusal("SUPPORTING_ACTOR_ID_COLLISION")
+        if found is not None:
+            _validate_registration(session, found_alias, found, root_ids=root_ids)
+            episodes = _registration_episodes(session, found_alias)
+            if (len(episodes) != 1
+                    or episodes[0].get("episode_id")
+                    != found.get("private_episode_id")):
+                raise RecursionRefusal(
+                    "SUPPORTING_ACTOR_DUPLICATE_REGISTRATION")
+            if (found.get("role") == role
+                    and _private_state_for(session, found_alias, found) == private
+                    and found["registration"].get("source") == source):
+                result = {
+                    "schema": SUPPORTING_ACTOR_READ_SCHEMA,
+                    "grade": SUPPORTING_GRADE,
+                    "status": "UNCHANGED",
+                    **_public_read(session, found_alias, found),
+                }
+            else:
+                raise RecursionRefusal("SUPPORTING_ACTOR_REGISTRATION_MISMATCH")
+        else:
+            if alias in world.actor_state:
+                existing = world.actor_state[alias]
+                same_identity = (
+                    isinstance(existing, Mapping)
+                    and existing.get("participant_kind") == PARTICIPANT_KIND
+                    and existing.get("actor_id") == actor_id
+                    and existing.get("role") == role
+                )
+                if not same_identity:
+                    raise RecursionRefusal("SUPPORTING_ACTOR_ALIAS_RESERVED")
+                if existing.get("private_state_hash") != private_hash:
+                    raise RecursionRefusal(
+                        "SUPPORTING_ACTOR_REGISTRATION_MISMATCH")
+            focal_alias = by_id.get(root_ids[0])
+            position = world.positions.get(focal_alias) if focal_alias else None
+            if not _text(position):
+                raise RecursionRefusal("SUPPORTING_ACTOR_FOCAL_POSITION_MISSING")
+            episodes = _registration_episodes(session, alias)
+            if len(episodes) > 1:
+                raise RecursionRefusal("SUPPORTING_ACTOR_DUPLICATE_REGISTRATION")
+            if episodes:
+                episode = episodes[0]
+                _validate_recovery_episode(
+                    session, episode, alias=alias, actor_id=actor_id,
+                    role=role, private=private, private_hash=private_hash,
+                    source=source, root_hash=root["root_hash"],
+                    world_clock=world.clock,
+                )
+                row = _row_from_registration(episode)
+                if alias not in branch_ids:
+                    actors = sorted(set(branch_ids) | {alias})
+                    store.db.execute(
+                        "UPDATE branch SET actor_ids=? WHERE branch_id=?",
+                        (canonical(actors), session.branch_id),
+                    )
+                world.actor_state[alias] = row
+                world.positions[alias] = position
+                session.product._checkpoint(
+                    session.branch_id, world.clock, world)
+                _validate_registration(session, alias, row, root_ids=root_ids)
+                result = {
+                    "schema": SUPPORTING_ACTOR_READ_SCHEMA,
+                    "grade": SUPPORTING_GRADE,
+                    "status": "RECOVERED",
+                    **_public_read(session, alias, row),
+                }
+            else:
+                # An alias present only in branch metadata has no actor state
+                # and no registration episode: it is the exact partial left by
+                # the earlier non-atomic writer. Reclaiming the label cannot
+                # erase a live actor; the transaction then writes the full row.
+                body = {
+                    "schema": SUPPORTING_ACTOR_SCHEMA,
+                    "grade": SUPPORTING_GRADE,
+                    "root": root["root_hash"],
+                    "branch": session.branch_id,
+                    "epoch": world.clock,
+                    "actor_id": actor_id,
+                    "alias": alias,
+                    "role": role,
+                    "source": source,
+                    "private_state_hash": private_hash,
+                    "private_state": private,
+                }
+                if alias not in branch_ids:
+                    actors = sorted(set(branch_ids) | {alias})
+                    store.db.execute(
+                        "UPDATE branch SET actor_ids=? WHERE branch_id=?",
+                        (canonical(actors), session.branch_id),
+                    )
+                    status = "REGISTERED"
+                else:
+                    status = "RECOVERED"
+                episode = store.append_episode(
+                    session.branch_id, actor_id=alias,
+                    kind=SUPPORTING_REGISTRATION_KIND, clock=world.clock,
+                    body=body,
+                )
+                row = _row_from_registration(episode)
+                world.actor_state[alias] = row
+                world.positions[alias] = position
+                session.product._checkpoint(
+                    session.branch_id, world.clock, world)
+                _validate_registration(session, alias, row, root_ids=root_ids)
+                result = {
+                    "schema": SUPPORTING_ACTOR_READ_SCHEMA,
+                    "grade": SUPPORTING_GRADE,
+                    "status": status,
+                    **_public_read(session, alias, row),
+                }
+    if result is None:
+        raise RecursionRefusal("SUPPORTING_ACTOR_REGISTRATION_FAILED")
+    return result
 
 
 def _public_read(session, alias: str, row: Mapping[str, Any]) -> dict:
@@ -393,86 +525,162 @@ def _refuse_private_leak(event: Mapping[str, Any], private_state: Mapping[str, A
         raise RecursionRefusal("SUPPORTING_PRIVATE_STATE_LEAK")
 
 
-def _participation_episode(session, *, actor_id: str, event_id: str) -> dict | None:
-    return next((
+def _participation_episodes(session, *, actor_id: str,
+                            event_id: str) -> list[dict]:
+    return [
         row for row in session.product.store.episodes(session.branch_id)
         if row.get("kind") == SUPPORTING_PARTICIPATION_KIND
         and (row.get("body") or {}).get("actor_id") == actor_id
         and (row.get("body") or {}).get("event_id") == event_id
-    ), None)
+    ]
 
 
-def record_supporting_participation(session, *, event: Mapping[str, Any],
-                                    participants: Iterable[str]) -> list[dict]:
-    """Record actual C12 perception and a public participation receipt."""
-    if not isinstance(event, Mapping):
-        raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_MISSING")
-    event_id = event.get("event_id")
-    clock = event.get("clock")
-    location = event.get("location")
-    if (not _text(event_id) or not _text(event.get("hash"))
-            or isinstance(clock, bool)
-            or not isinstance(clock, int) or not _text(location)):
-        raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_INVALID")
-    world = session.world()
+def _participation_episode(session, *, actor_id: str, event_id: str) -> dict | None:
+    rows = _participation_episodes(
+        session, actor_id=actor_id, event_id=event_id)
+    if len(rows) > 1:
+        raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
+    return rows[0] if rows else None
+
+
+def assert_no_private_leak(session, document: Mapping[str, Any],
+                           participants: Iterable[str]) -> None:
+    """Refuse a proposal that carries any supporting actor's private value."""
     root_ids, _, _ = _root_and_alias_maps(session)
-    store = session.product.store
-    result = []
     for participant in participants:
         if participant in root_ids:
             continue
         alias, row = _find(session, actor_id=participant)
         if alias is None:
-            raise RecursionRefusal("P2_PARTICIPANT_NOT_REGISTERED")
+            continue
         checked = _validate_registration(session, alias, row, root_ids=root_ids)
-        if world.positions.get(alias) != location:
-            raise RecursionRefusal("P2_SUPPORTING_PARTICIPANT_NOT_COPRESENT")
-        private = _private_state_for(session, alias, checked)
-        _refuse_private_leak(event, private)
-        receipt = store.record_perception(
-            session.branch_id, actor_id=alias, event_id=event_id,
-            clock=clock, channel="co_present",
-        )
-        episode = _participation_episode(session, actor_id=participant,
-                                         event_id=event_id)
-        if episode is None:
-            episode = store.append_episode(
-                session.branch_id, actor_id=alias,
-                kind=SUPPORTING_PARTICIPATION_KIND, clock=clock,
-                body={
-                    "schema": SUPPORTING_PARTICIPATION_SCHEMA,
-                    "grade": SUPPORTING_GRADE,
-                    "root": session.read_root()["root_hash"],
-                    "branch": session.branch_id,
-                    "epoch": checked["registration"]["epoch"],
-                    "source": checked["registration"]["source"],
-                    "actor_id": participant,
-                    "alias": alias,
-                    "role": checked["role"],
-                    "event_id": event_id,
-                    "event_hash": event.get("hash"),
-                    "event_kind": event.get("kind"),
-                    "location": location,
-                    "clock": clock,
-                    "access_channel": "co_present",
-                    "private_state": "NOT_READ",
-                },
+        _refuse_private_leak(document, _private_state_for(session, alias, checked))
+
+
+def _validate_participation_episode(session, episode: Mapping[str, Any], *,
+                                    actor_id: str, alias: str, role: str,
+                                    source: str, event: Mapping[str, Any]) -> dict:
+    body = episode.get("body") or {}
+    if (episode.get("actor_id") != alias
+            or body.get("schema") != SUPPORTING_PARTICIPATION_SCHEMA
+            or body.get("grade") != SUPPORTING_GRADE
+            or body.get("root") != session.read_root()["root_hash"]
+            or body.get("branch") != session.branch_id
+            or body.get("actor_id") != actor_id
+            or body.get("alias") != alias
+            or body.get("role") != role
+            or body.get("source") != source
+            or body.get("event_id") != event.get("event_id")
+            or body.get("event_hash") != event.get("hash")
+            or body.get("event_kind") != event.get("kind")
+            or body.get("location") != event.get("location")
+            or body.get("clock") != event.get("clock")
+            or body.get("access_channel") != "co_present"):
+        raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
+    return body
+
+
+def record_supporting_participation(session, *, event: Mapping[str, Any],
+                                    participants: Iterable[str]) -> list[dict]:
+    """Record actual C12 perception and a public participation receipt.
+
+    The world event is resolved from the branch store, not trusted from the
+    caller: a detached or forged event mapping cannot mint a receipt. Every
+    participant is validated before the first write, and all perception rows,
+    participation episodes and receipts commit as one C12 transaction, so a
+    refused second participant cannot leave the first partially recorded.
+    """
+    if not isinstance(event, Mapping):
+        raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_MISSING")
+    event_id = event.get("event_id")
+    if not _text(event_id):
+        raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_INVALID")
+    store = session.product.store
+    result = []
+    with _StoreWrite(store):
+        actual = store.world_event(session.branch_id, event_id)
+        if actual is None:
+            raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_MISSING")
+        clock = actual.get("clock")
+        location = actual.get("location")
+        if (not _text(actual.get("hash"))
+                or isinstance(clock, bool) or not isinstance(clock, int)
+                or not _text(location) or not _text(actual.get("kind"))):
+            raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_INVALID")
+        if (event.get("hash") != actual.get("hash")
+                or event.get("clock") != clock
+                or event.get("kind") != actual.get("kind")
+                or event.get("location") != location):
+            raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_MISMATCH")
+        world = session.world()
+        root_ids, _, _ = _root_and_alias_maps(session)
+        plan = []
+        for participant in participants:
+            if participant in root_ids:
+                continue
+            alias, row = _find(session, actor_id=participant)
+            if alias is None:
+                raise RecursionRefusal("P2_PARTICIPANT_NOT_REGISTERED")
+            checked = _validate_registration(session, alias, row, root_ids=root_ids)
+            if world.positions.get(alias) != location:
+                raise RecursionRefusal("P2_SUPPORTING_PARTICIPANT_NOT_COPRESENT")
+            private = _private_state_for(session, alias, checked)
+            _refuse_private_leak(event, private)
+            _refuse_private_leak(actual, private)
+            plan.append((participant, alias, checked, private))
+        if canonical(detached(event)) != canonical(actual):
+            raise RecursionRefusal("SUPPORTING_PARTICIPATION_EVENT_MISMATCH")
+        for participant, alias, checked, _private in plan:
+            receipt = store.record_perception(
+                session.branch_id, actor_id=alias, event_id=event_id,
+                clock=clock, channel="co_present",
             )
-        result.append({
-            "schema": SUPPORTING_PARTICIPATION_SCHEMA,
-            "grade": SUPPORTING_GRADE,
-            "actor_id": participant,
-            "alias": alias,
-            "role": checked["role"],
-            "event_id": event_id,
-            "event_hash": event.get("hash"),
-            "event_kind": event.get("kind"),
-            "clock": clock,
-            "access_channel": "co_present",
-            "perception_duplicate": bool(receipt.get("duplicate")),
-            "participation_episode_id": episode["episode_id"],
-            "private_state": "NOT_READ",
-        })
+            episode = _participation_episode(session, actor_id=participant,
+                                             event_id=event_id)
+            if episode is None:
+                episode = store.append_episode(
+                    session.branch_id, actor_id=alias,
+                    kind=SUPPORTING_PARTICIPATION_KIND, clock=clock,
+                    body={
+                        "schema": SUPPORTING_PARTICIPATION_SCHEMA,
+                        "grade": SUPPORTING_GRADE,
+                        "root": session.read_root()["root_hash"],
+                        "branch": session.branch_id,
+                        "epoch": checked["registration"]["epoch"],
+                        "source": checked["registration"]["source"],
+                        "actor_id": participant,
+                        "alias": alias,
+                        "role": checked["role"],
+                        "event_id": event_id,
+                        "event_hash": actual["hash"],
+                        "event_kind": actual["kind"],
+                        "location": location,
+                        "clock": clock,
+                        "access_channel": "co_present",
+                        "private_state": "NOT_READ",
+                    },
+                )
+            else:
+                _validate_participation_episode(
+                    session, episode, actor_id=participant, alias=alias,
+                    role=checked["role"], event=actual,
+                    source=checked["registration"]["source"],
+                )
+            result.append({
+                "schema": SUPPORTING_PARTICIPATION_SCHEMA,
+                "grade": SUPPORTING_GRADE,
+                "actor_id": participant,
+                "alias": alias,
+                "role": checked["role"],
+                "event_id": event_id,
+                "event_hash": actual["hash"],
+                "event_kind": actual["kind"],
+                "clock": clock,
+                "access_channel": "co_present",
+                "perception_duplicate": bool(receipt.get("duplicate")),
+                "participation_episode_id": episode["episode_id"],
+                "private_state": "NOT_READ",
+            })
     return result
 
 
@@ -481,7 +689,7 @@ def verify_supporting_participation(session, *, event_id: str,
     """Fail closed when a recorded C12 perception or receipt was severed."""
     root_ids, _, _ = _root_and_alias_maps(session)
     receipts = {
-        (row["actor_id"], row["event_id"])
+        (row["actor_id"], row["event_id"]): row
         for row in session.product.store.perceptions(session.branch_id)
     }
     event = session.event(event_id)
@@ -494,7 +702,11 @@ def verify_supporting_participation(session, *, event_id: str,
         if current_alias != alias or row is None:
             raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
         _validate_registration(session, alias, row, root_ids=root_ids)
-        if (alias, event_id) not in receipts:
+        receipt = receipts.get((alias, event_id))
+        if receipt is None:
+            raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
+        if (receipt.get("clock") != event.get("clock")
+                or receipt.get("channel") != "co_present"):
             raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
         if (participant.get("event_hash") != event.get("hash")
                 or participant.get("clock") != event.get("clock")):
@@ -503,19 +715,27 @@ def verify_supporting_participation(session, *, event_id: str,
                                          event_id=event_id)
         if episode is None:
             raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
-        body = episode.get("body") or {}
-        if (body.get("alias") != alias
-                or body.get("event_hash") != event.get("hash")
-                or body.get("role") != row.get("role")
-                or body.get("source") != row["registration"].get("source")):
-            raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
+        _validate_participation_episode(
+            session, episode, actor_id=actor_id, alias=alias,
+            role=row.get("role"), event=event,
+            source=row["registration"].get("source"),
+        )
 
 
 def read_actor_access(session, actor_ref: str, event_id: str) -> dict:
-    """Return only the event content this actor actually perceived."""
+    """Return only the event content this actor actually perceived.
+
+    Root actors are read through their existing C12 perception receipts. A
+    supporting actor additionally needs its live registration and the public
+    participation episode for this exact event; a bare or forged perception row
+    cannot by itself grant access. A registration whose alias collides with a
+    root stable ID is refused rather than silently resolved as the root actor.
+    """
     if not _text(actor_ref) or not _text(event_id):
         raise RecursionRefusal("ACTOR_ACCESS_SCHEMA")
     root_ids, by_id, by_alias = _root_and_alias_maps(session)
+    if actor_ref in root_ids and actor_ref in by_alias:
+        raise RecursionRefusal("ACTOR_ACCESS_IDENTITY_AMBIGUOUS")
     if actor_ref in root_ids:
         actor_id = actor_ref
     elif actor_ref in by_alias:
@@ -551,11 +771,37 @@ def read_actor_access(session, actor_ref: str, event_id: str) -> dict:
         "branch": session.branch_id,
         "private_state": "NOT_READ",
     }
-    if receipt is None:
-        return {**base, "status": "NOT_PERCEIVED", "event": None}
-    event = session.event(event_id)
-    if not event:
-        raise RecursionRefusal("ACTOR_ACCESS_EVENT_UNAVAILABLE")
+    supporting_alias, supporting_row = (None, None)
+    if actor_id not in root_ids:
+        supporting_alias, supporting_row = _find(session, actor_id=actor_id)
+        if supporting_alias is not None and supporting_alias != alias:
+            raise RecursionRefusal("ACTOR_ACCESS_IDENTITY_AMBIGUOUS")
+    if supporting_row is not None:
+        checked = _validate_registration(
+            session, alias, supporting_row, root_ids=root_ids)
+        episode = _participation_episode(
+            session, actor_id=actor_id, event_id=event_id)
+        if receipt is None and episode is None:
+            return {**base, "status": "NOT_PERCEIVED", "event": None}
+        if receipt is None or episode is None:
+            raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
+        event = session.event(event_id)
+        if not event:
+            raise RecursionRefusal("ACTOR_ACCESS_EVENT_UNAVAILABLE")
+        _validate_participation_episode(
+            session, episode, actor_id=actor_id, alias=alias,
+            role=checked.get("role"), event=event,
+            source=checked["registration"].get("source"),
+        )
+        if (receipt.get("clock") != event.get("clock")
+                or receipt.get("channel") != "co_present"):
+            raise RecursionRefusal("P2_SUPPORTING_PARTICIPATION_SEVERED")
+    else:
+        if receipt is None:
+            return {**base, "status": "NOT_PERCEIVED", "event": None}
+        event = session.event(event_id)
+        if not event:
+            raise RecursionRefusal("ACTOR_ACCESS_EVENT_UNAVAILABLE")
     from s45_projection.projection import project_event
     projected = project_event(event)
     projected.pop("perceived_by_user", None)

@@ -1,0 +1,239 @@
+{
+  "event_id": "SOROK-DUEL-C01-B-20261112-R1",
+  "task_id": "C01",
+  "phase": "CG-C",
+  "title": "Stable supporting-actor identities and dynamic participation without changing Nadia root",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "frozen_start_sha": "edbb4b344d54731a527fd415a965bc848ed964e1",
+  "attacked_opponent_head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
+  "attacked_opponent_implementation_sha": "9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+  "implementation_sha": "0e526f043027e4256b353d42240e80d85ad39265",
+  "branch": "codex/sorok-duel-c01-b-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_BINDING_ROW_MIGRATION_AND_P3_CODE_PIN_BREAK",
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "P2Owner constructor, validate_proposal and realize entry points keep the existing call shapes. Supporting actors are registered through the existing C12 branch/world/checkpoint. Root and focal invariants are unchanged. A's six C01 tests pass unchanged."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "The persisted P2Owner binding row changes from mutable {'participants': [...]} to {'root_participants': root actor tuple}. Existing rows are read and migrated when root/branch/source match and the stored list names the focal actor. This removes the cross-scope P2_OWNER_BINDING_MISMATCH lockout that broke the ordinary P3 reopen shape after a C01 owner opened the same root."
+    },
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "read_actor_access now requires a supporting actor's participation episode and co_present receipt in addition to its registration and perception row. A bare/forged perception row no longer grants event access."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "p2_owner.py byte change alters P3Owner._code_pins()/config_hash. Same-code roots reopen; pre-B01/pre-C01 roots refuse cold reopen. No migration was invented and no native actor/science/right/merge authority is issued."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "Role allowlist remains parent only. No second owner, scheduler, world, clock, database or material ledger is added. Module-level material functions/material_fact, house.py and P3 code are untouched."
+    }
+  ],
+  "changed_owner_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "sha256": "baa3d5673d40a73da06620a111c7284340db2721233c95ca8c119fc8a734ef4a",
+      "changed": [
+        "P2Owner.__init__ (root-invariant binding, legacy migration, live participant validation)",
+        "P2Owner.validate_proposal (supporting private-leak precheck before reservation/admission)"
+      ],
+      "added": [
+        "import developmental_recursion.supporting_actor.assert_no_private_leak; removed unused read_supporting_actor import"
+      ],
+      "unchanged": [
+        "module-level material_fact_source / validate_material_fact / write_material_fact",
+        "P2Owner.material_fact",
+        "P2Owner._realize event-admission body",
+        "P3 code and P6 house.py"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "sha256": "35e43d8c924d6ea30b4376ef8bed4a8af5b68dd81d636e1cf9033da4320b9c5a",
+      "changed": [
+        "register_supporting_actor (one C12 transaction; namespace reservations; duplicate-episode detection; cold partial recovery; RECOVERED status)",
+        "record_supporting_participation (actual store event binding; pre-validation of all participants; one transaction; duplicate episode refusal)",
+        "verify_supporting_participation (receipt clock/channel and episode body integrity)",
+        "read_actor_access (supporting actors require registration + participation episode + receipt; identity ambiguity refusal)"
+      ],
+      "added": [
+        "_StoreWrite",
+        "_registration_episodes",
+        "_row_from_registration",
+        "_validate_recovery_episode",
+        "_participation_episodes",
+        "_validate_participation_episode",
+        "assert_no_private_leak"
+      ]
+    }
+  ],
+  "actual_writer_trace": [
+    "supporting_actor._StoreWrite BEGIN IMMEDIATE / SAVEPOINT (supporting_actor.py:79).",
+    "supporting_actor.register_supporting_actor -> C12Store branch actor_ids update + C12Store.append_episode(image P2_SUPPORTING_ACTOR) + WorldState actor_state/positions + BP4Product._checkpoint, one commit (supporting_actor.py:252).",
+    "P2Owner.realize -> P2Owner._realize -> S47Session.admit_event for the actual performed event (p2_owner.py participant path unchanged from A).",
+    "supporting_actor.record_supporting_participation resolves the event from C12Store.world_event, validates every participant, then C12Store.record_perception + C12Store.append_episode(P2_SUPPORTING_PARTICIPATION) in one commit (supporting_actor.py:583).",
+    "Cold reopen: S45Session.world -> BP4Product._world -> C12Store.latest_state; P2Owner.__init__ binding invariant; supporting_actor reads and recovery use the actual C12 rows."
+  ],
+  "actual_reader": [
+    {
+      "name": "P2Owner.realize consequences.supporting_participants",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py:457 (consequences assembly; A line shifted by the constructor/validate repair)",
+      "consumes": "proposal participants resolved to live root/supporting IDs plus the performed world event",
+      "returns": "public participation receipts and supporting_participation status"
+    },
+    {
+      "name": "supporting_actor.read_actor_access",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py:725",
+      "consumes": "root perception receipt, or supporting registration + participation episode + co_present receipt, plus the actual world event",
+      "returns": "SOROK_P2_ACTOR_ACCESS@1 PERCEIVED public event projection or NOT_PERCEIVED with no event content; supporting severance fails closed"
+    },
+    {
+      "name": "supporting_actor.read_supporting_actor",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py:438",
+      "consumes": "branch actor_ids, world registration row, registration episode",
+      "returns": "SOROK_P2_SUPPORTING_ACTOR_READ@1; private_state NOT_READ unless the same stable ID self-reads"
+    }
+  ],
+  "new_actual_first_reader": "The ordinary root-scoped P2Owner (the exact P3 reopen shape) admits a real S47/S42 event naming (focal, registered parent); the parent receives its own C12 perception and public participation receipt; read_actor_access returns distinct focal/parent views; a parent-scoped P2Owner and a cold process replay the same result. B test test_owner_binding_composes_across_participant_scopes.",
+  "effect_on_original_obligation": "PRESERVED_AND_EXPANDED",
+  "effect_detail": "PW-05 rolling parents and PW-06 changing others keep the stable supporting identity and same-world participation A built, and now compose with the ordinary P2/P3 owner binding. PW-10 custody keeps one C12/world ledger. Parent antecedent/activity, decision, utterance, hidden-reason uptake and relations remain C02/C03/C04/C05 work.",
+  "affected_task_ids": ["C02", "C03", "C04", "C05", "D02", "E01", "E02", "F03", "B02", "B03", "B04", "B05"],
+  "affected_queued_tasks": [
+    {
+      "task_id": "C02",
+      "effect": "Use the stable supporting ID and the root-invariant P2Owner binding. A parent-scoped owner no longer locks out the ordinary P3 reopen owner. C02 still owns independent parent antecedent/activity; registration is not a decision."
+    },
+    {
+      "task_id": "C03",
+      "effect": "Parent-authored performed action/utterance is still unimplemented. The participation writer records only co-presence/perception of the focal actor's event."
+    },
+    {
+      "task_id": "C04",
+      "effect": "Hidden reason remains private in C12; outward utterance and Nadia-qualified uptake remain separate. Non-string private values are not leak-scanned."
+    },
+    {
+      "task_id": "C05",
+      "effect": "Role allowlist is still parent only. Fork-aware registration/participation and relationship lineage are not implemented; the exact fork refusal is documented and tested."
+    },
+    {
+      "task_id": "D02",
+      "effect": "Situated-field projection must use public participation/access reads, never the raw world snapshot or private registration episode."
+    },
+    {
+      "task_id": "E01",
+      "effect": "J1 still needs a parent performed speech/decision distinct from Nadia's uptake; C01 supplies only identity, participation and actor-relative perception."
+    },
+    {
+      "task_id": "E02",
+      "effect": "Multi-period continuity must preserve the same stable parent ID. The binding repair lets period owners constructed with the root actor tuple reopen the same root."
+    },
+    {
+      "task_id": "F03",
+      "effect": "MI/MII/MIII presentation, exposure and movement remain separate; C01 adds no historical depth or independent parent movement."
+    },
+    {
+      "task_id": "B02/B03/B04/B05",
+      "effect": "B01 material facts are unchanged. Their P3 roots may hit the same code-pin break if created before this p2_owner.py byte change; recreate or migrate deliberately."
+    },
+    {
+      "task_id": "CG-A cross-input #915/#917/#924/#928",
+      "effect": "The p2_owner.py source pin moves again. Compare/rebase the unmerged candidate; do not presume its bridge or pins received."
+    },
+    {
+      "task_id": "Pair1 B fork-aware material readers 362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+      "effect": "Not merged or copied. The matched-cut composition must combine B01 B's branch_is_ancestor/material_fact changes with this C01 participant/binding repair. C01 registration remains origin-branch-bound and refuses on a fork until that composition is deliberately done."
+    }
+  ],
+  "queued_contract_changes": [
+    "C02/C03/C04/C05/D02/E01 receive the binding invariant and the stricter participation/access boundary; existing obligations are expanded, not narrowed.",
+    "No active contract was modified. No dependency is silently marked accepted."
+  ],
+  "active_contract_decision": "FINISH_THEN_RECONCILE",
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py@0e526f043027e4256b353d42240e80d85ad39265",
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@0e526f043027e4256b353d42240e80d85ad39265",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_ROLLING_PERSON_WORLD_OWNER_RECONCILIATION_20261111_R1.md (PR #911 b50b1282, byte-verified)",
+      "20261111_ROLLING_PERSON_WORLD_DURATION_MATERIAL_MEDIATION_R1.md (frozen programme source)"
+    ],
+    "test": [
+      "C01/test_c01_b_supporting_actor.py",
+      "C01/evidence/c01_b_supporting_actor.log",
+      "C01/evidence/a_c01_p2_b01_regression.log",
+      "C01/evidence/p3_owner_regression.log",
+      "C01/evidence/engine_p6_regression.log",
+      "C01/evidence/p3_vertical_selected_regression.log"
+    ],
+    "negative": [
+      "test_identity_namespaces_refuse_root_and_user_collisions",
+      "test_participation_writer_binds_actual_event_and_writes_atomically",
+      "test_actor_access_requires_participation_receipt",
+      "test_fork_copies_registration_but_read_is_not_yet_fork_aware",
+      "A's test_ghost_reserved_and_absent_participants_refuse_without_mutation",
+      "A's test_actor_access_is_separate_and_private_state_leak_refuses",
+      "A's test_replay_refuses_severed_supporting_perception_and_restores",
+      "A's test_private_state_episode_severance_refuses"
+    ],
+    "cold": [
+      "test_registration_transaction_rolls_back_and_recovers_partial_states (checkpoint fault injection, cold re-register, branch+episode recovery, branch-only reclaim)",
+      "test_cold_duplicate_registration_and_owner_reopen (fresh subprocess: UNCHANGED duplicate, root-participant P2Owner opens, parent access PERCEIVED, secret absent)",
+      "test_owner_binding_composes_across_participant_scopes (cold reopen with ordinary P3 shape and parent-scoped owner)",
+      "test_legacy_binding_row_migrates_to_root_invariant"
+    ]
+  },
+  "preserved_obligations": [
+    "Nadia remains the focal root actor; root actor_ids, P2Owner.actor and StateIdentity.actor are unchanged by registration and participation.",
+    "Parent is a newly registered supporting stable ID, not a relabel of fixed A/B or the user actor; namespace collisions now refuse.",
+    "Same-world event participation is recorded through actual C12 perception receipts and public participation episodes, not test-local state.",
+    "Private state is not in the world snapshot, event objective or public/child access; it lives in a C12 registration episode and only a same-ID self-read returns it.",
+    "Duplicate registration is UNCHANGED with no new rows; duplicate registration episodes fail closed; duplicate participation episodes fail closed.",
+    "The ordinary root-scoped P2Owner (P3 reopen shape) composes with a parent-scoped C01 owner in either order.",
+    "Existing P2 owner, B01, P3 owner, engine, model-cycle, recursion-integration and P6 actor-scene tests remain green.",
+    "No new owner, scheduler, person-world ledger, database or clock was added.",
+    "Native/scientific/rights/actor/human/protected merges remain held."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; pre-C01/pre-B01 state roots refuse cold reopen under the new code. Same-code roots reopen exactly; no migration invented.",
+    "C01 registration and participation remain origin-branch-bound. A C12 fork copies rows but reads refuse SUPPORTING_ACTOR_ROOT_OR_BRANCH_MISMATCH; the exact incompatibility is preserved and tested.",
+    "A post-admission participation refusal still leaves the inherited P2 ambiguous reservation; event admission plus participation is not one composite transaction (E03 owns recovery).",
+    "No full-estate run. The pre-existing P6 chronology-proof failure and the full P3 vertical-slice timeout are untouched."
+  ],
+  "cost_record": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, process RSS, provider latency or retry instrumentation was available or invented in this sourcefree session.",
+    "measured_test_wall_s": {
+      "b_c01_supporting_actor": 23.08,
+      "a_c01_p2_b01_regression": 69.44,
+      "p3_owner_regression": 31.75,
+      "engine_p6_regression": 192.98,
+      "p3_vertical_selected_regression": 347.05
+    },
+    "failed_attempts": [
+      "No full-estate or 900-second suite was attempted; only bounded affected suites were run."
+    ]
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  },
+  "proof_boundaries": [
+    "SOURCEFREE_S2_ONLY; no native C4/ADP-015, CAN/ADP/Pyat, actor/human right, source right or protected merge.",
+    "No parent decision, parent-authored action, utterance, hidden-reason uptake, relationship entity, household membership or genealogy is implemented.",
+    "C01 participation is of the focal actor's performed world event; the parent is a co-present participant/perceiver, not the event author.",
+    "Parent private state is developer-readable in a C12 registration episode, not actor-accessible through the C01 readers, not in the world snapshot and not in the event objective.",
+    "Private-state leak guard scans string values; non-string private values are not leak-scanned.",
+    "Supporting role allowlist is parent only.",
+    "Fork/copy is refused exactly; adoption of Pair1 B's verified-lineage reader is future composition, not this return.",
+    "No actual SIGKILL test; crash atomicity is SQLite BEGIN IMMEDIATE semantics plus checkpoint fault injection.",
+    "Two full ChatGPT Library architecture records remain NOT_INSPECTED locally; no contents are claimed."
+  ]
+}
