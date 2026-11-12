@@ -1,0 +1,123 @@
+{
+  "schema": "PYAT_R3_S2B_AGENT_A_R5_G1_G5_RECEIPT@1",
+  "commission": "S2-B/P2-02/#919",
+  "programme": "R3/R3C/R3S/#909",
+  "role": "AGENT_A_RECIPROCAL_BUILD_NOT_INDEPENDENT_RECEIVING",
+  "lineage": {
+    "original_a": {
+      "pr": 952,
+      "sha": "d5d6577b557fa8ced2dbb42d190ab254ab983b19"
+    },
+    "b_first": {
+      "pr": 954,
+      "sha": "f5ee89b8e700ac14cf266c2e3eae4c25f021c349",
+      "old_test_run": "https://github.com/maidiu/rawlsing/actions/runs/43278005794",
+      "old_passed": 88
+    },
+    "a_correction": {
+      "prs": [
+        961,
+        965
+      ],
+      "last_sha": "e82a7ee92a32cc8b327d0685267d4aaea1d86a1a"
+    },
+    "opponent_b_r4": {
+      "pr": 971,
+      "sha": "a11b92b767a9a16cc6ee4e312e67e9982fc01210",
+      "valid_root_exact_type_fix": true
+    },
+    "this_a_r5": {
+      "pr": 974,
+      "branch": "agent/pyat-pair2-s2b-a-direct-candidate-20261112-r5",
+      "code_test_workflow_cut": "edd0611d1ea0e80a47692635fe3bd73a079f1bec",
+      "report_path": "WORKER_RETURNS/PYAT_PAIR2_S2B_AGENT_A_R5/00_ADVERSARIAL_RETURN.md"
+    }
+  },
+  "implementation": {
+    "direct_schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+    "entry": "SourcefreeDirectI02Sections: original SourceReleaseManifest, 13 typed one-shot C11 family iterables, explicit TypedAbsence and exact replay/authority/tie-order",
+    "new_builder": "build_sourcefree_direct_i02",
+    "no_compulsory_legacy_C11LogicalRelease": true,
+    "no_legacy_ReplayManifest_closure_refs_array": true,
+    "external_memory_sorter": "SQLite complete object/closure/selector tables, scoped respondent and event occurrence uniqueness",
+    "v1_replay_identity_reconstructed": "streamed SHA256 of exact canonical ReplayManifest semantic projection",
+    "v1_release_identity_reconstructed": "sourcefree projection hash plus streamed replay ref plus original M01-M18 coverage labels",
+    "source_direct_schema_legacy_i03_install": "EXPLICITLY_REFUSED_NO_PRIVATE_VALIDATION_SEAL",
+    "native_comparator": "test uses old validate_c11_source_release as separate oracle, _build_release_index/_select_respondent_events first selector, no new private seal"
+  },
+  "new_tests": [
+    "test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release",
+    "test_s2b_a5_direct_chunk_determinism_cold_root_wrong_source",
+    "test_s2b_a5_direct_declared_census_refuses_family_omission (six families)",
+    "test_s2b_a5_direct_duplicate_occurrence_and_changed_state_refused",
+    "test_s2b_a5_direct_no_saved_local_rehash_authenticates_cold",
+    "test_s2b_a5_direct_one_shot_iterators_cannot_silently_replay",
+    "test_s2b_a5_sourcefree_direct_changed_restore_without_legacy_release",
+    "test_s2b_a5_direct_original_semantic_event_order_is_invariant",
+    "test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory"
+  ],
+  "evidence": {
+    "last_ci": {
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43301647636",
+      "sha": "edd0611d1ea0e80a47692635fe3bd73a079f1bec",
+      "status": "FAILURE_BEFORE_EXECUTION",
+      "assigned_runner": false,
+      "executed_steps": 0,
+      "tested_legacy_and_direct_suite": "NOT_RUN",
+      "resource_bench": "NOT_RUN"
+    },
+    "local_primitive": {
+      "status": "PASS",
+      "cases": 2048,
+      "method": "Python stdlib SQLite+canonical JSON independent shape implementation, NOT imported project code",
+      "result": "streamed candidate and ReplayManifest SHA256 equal materialized canonical JSON",
+      "candidate_hash": "636201ca2d0fe4c7241721d7b993a46e38edd8d2d5dbe0a911271263546f4056",
+      "replay_hash": "7799a2a581ca2b7af031aa900f844963ed8ede878ba58cf4df82a66ee75fe4c8",
+      "proof_boundary": "algorithmic shape only; native I02/I03 parity UNEXECUTED"
+    },
+    "inherited_b_r1_88": {
+      "sha": "f5ee89b8e700ac14cf266c2e3eae4c25f021c349",
+      "status": "PASS_88_OF_88_THAT_OLD_SHA_ONLY"
+    }
+  },
+  "gates": {
+    "G1": {
+      "status": "PARTIAL",
+      "new": "Complete typed sourcefree streaming family census/authority/alias/occurrence input and reconstructed original replay/release digest",
+      "unproven": "repository-level historical native parity; live S1-B/E input and source-equivalence issuer"
+    },
+    "G2": {
+      "status": "PARTIAL",
+      "new": "cold independently supplied root, native I03 first selector comparator test committed",
+      "unproven": "native full I03 fact/replay direct sourcefree execution on current SHA"
+    },
+    "G3": {
+      "status": "PARTIAL",
+      "new": "missing family/duplicate occurrence/wrong root/self-rehash/changed-restored and exact subclass negatives committed",
+      "unproven": "R5 native negative suite not executed"
+    },
+    "G4": {
+      "status": "PARTIAL",
+      "new": "direct builder no mandatory C11LogicalRelease/ReplayManifest.closure_refs, disk sorter and one-shot event generator",
+      "unproven": "input producer true end-to-end boundedness, peak process tree/scratch, 100k and 6GiB gate"
+    },
+    "G5": {
+      "status": "NOT_RUN",
+      "unproven": "independent nonauthor receiving distinct from both duel participants"
+    }
+  },
+  "permissions": {
+    "pre_main_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "pre_main_modified": false,
+    "w03_w04": "PAUSED_PRESERVED",
+    "s2a_g5": "PENDING",
+    "s1b_s1e_live_adapter": "NOT_IMPLEMENTED_ON_THIS_BRANCH",
+    "s2c": "NOT_BUILT",
+    "original35_source_issuer": "NOT_ISSUED",
+    "p01_p20_t01_t18_source_equivalence": "HELD_SEPARATE",
+    "current_use": "NOT_ISSUED",
+    "protected_merge": "NONE"
+  },
+  "disposition": "REVISE_EXACT_DEFECT",
+  "next_attack": "Run exact R5 native tests; prioritize historical replay/release bit parity and real S1-B/E one-shot section input, then actual native consumer changed/restore and process-tree/scratch scale. Repair concrete reds before G5."
+}
