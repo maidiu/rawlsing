@@ -340,6 +340,60 @@ def build_sourcefree_external_i02(
             os.unlink(staged)
 
 
+class _VerifiedSqlRows:
+    """Iteration/fetch-only view; never release the backing SQLite cursor.
+
+    sqlite3.Cursor.connection is a mutable escape hatch. A public certificate
+    cannot return raw cursors even if its execute method rejects writes.
+    """
+    __slots__ = ("__cursor",)
+
+    def __init__(self, cursor: sqlite3.Cursor) -> None:
+        self.__cursor = cursor
+
+    def fetchone(self) -> tuple | None:
+        return self.__cursor.fetchone()
+
+    def fetchall(self) -> list[tuple]:
+        return self.__cursor.fetchall()
+
+    def __iter__(self):
+        return self
+
+    def __next__(self) -> tuple:
+        result = self.fetchone()
+        if result is None:
+            raise StopIteration
+        return result
+
+
+class _VerifiedSelectOnlyDatabase:
+    """Certified-query facade: no PRAGMA, collation, TEMP table or raw cursor.
+
+    Changing SQLite session state can falsify WHERE equality even for
+    main-qualified rows. The raw connection is encapsulated after cold
+    verification, and the only public operation is a SELECT-only cursor.
+    Arbitrary co-resident private Python introspection is not a security
+    domain; this protects the actual native I03 certificate API boundary.
+    """
+    __slots__ = ("__connection",)
+
+    def __init__(self, connection: sqlite3.Connection) -> None:
+        self.__connection = connection
+
+    def execute(self, statement: str, params: tuple = ()) -> _VerifiedSqlRows:
+        if (not isinstance(statement, str)
+                or not statement.lstrip().upper().startswith("SELECT ")
+                or ";" in statement):
+            raise ExternalI02IntegrityError(
+                "verified external I02 database only permits SELECT queries"
+            )
+        return _VerifiedSqlRows(self.__connection.execute(statement, params))
+
+    def close(self) -> None:
+        self.__connection.close()
+
+
 class VerifiedExternalI02:
     """Fresh independent cold verifier; never trusts self-declared roots.
 
@@ -388,6 +442,11 @@ class VerifiedExternalI02:
         except Exception:
             self.db.close()
             raise
+        # Seal not only attribute assignment but the SQL session's semantics.
+        # The previous raw .db leaked PRAGMA query_only, TEMP table shadowing,
+        # create_collation('BINARY', ...), and raw Cursor.connection; any could
+        # alter normal native I03 facts after both held roots were checked.
+        self.db = _VerifiedSelectOnlyDatabase(self.db)
         self.roots = roots
         self._closed = False
         self._sealed = True
