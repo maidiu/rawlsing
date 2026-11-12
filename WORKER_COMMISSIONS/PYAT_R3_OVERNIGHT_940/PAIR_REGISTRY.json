@@ -315,7 +315,7 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "model_actual_turn": "PENDING_COUNTER_FIRST_REAL_TURN",
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -327,7 +327,7 @@
             }
           },
           "opponent_session_id": "ses_e3120b9efffegreD5YfH7dOO15",
-          "job_id": "pyat940-s2f-a01",
+          "job_id": "pyat940-s2f-a02-counter",
           "actual_first_turn_model": {
             "id": "msg_1cee50a60001SG8WZs9ZMRzllX",
             "type": "assistant",
@@ -342,8 +342,9 @@
               "completed": 1794472487821
             }
           },
-          "pid": 15751,
-          "state": "RETURNED"
+          "pid": 36463,
+          "state": "LAUNCHED_FIRST_TURN_PENDING",
+          "received_head": "e119453bc038e82963f45384fb913df4ed02be33"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -371,7 +372,7 @@
             }
           },
           "opponent_session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "RUNNING",
+          "state": "RETURNED",
           "job_id": "pyat940-s2f-b01",
           "received_head": "2dc67195387f3a25f7cca92f6c21fc5c347bd49b",
           "pid": 28324,
@@ -390,8 +391,8 @@
           }
         }
       },
-      "state": "B_RUNNING",
-      "active_role": "B",
+      "state": "A_COUNTER_LAUNCHED_FIRST_TURN_PENDING",
+      "active_role": "A",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -428,18 +429,18 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "active_job": "pyat940-s2f-b01",
+      "active_job": "pyat940-s2f-a02-counter",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s2f-b01",
-        "child_pid": 28324,
-        "supervisor_pid": 28323,
-        "observer_pid": 28325,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-b01",
+        "job_id": "pyat940-s2f-a02-counter",
+        "child_pid": 36463,
+        "supervisor_pid": 36462,
+        "observer_pid": 36464,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-a02-counter",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 28325,
+        "pid": 36464,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
@@ -464,7 +465,28 @@
       },
       "custody_comment": {
         "issue": 919,
-        "comment_id": 6819850875
+        "comment_id": 6820367844
+      },
+      "b_return": {
+        "job_id": "pyat940-s2f-b01",
+        "exit_code": 0,
+        "candidate_head": "e119453bc038e82963f45384fb913df4ed02be33",
+        "implemented_sha": "815eabb002970d8f403af7331e3250f5ed9e8da0",
+        "remote_verified": true,
+        "disposition": "B_CONSTRUCTION_CANDIDATE_ONLY",
+        "claims": "140 tests pass; four reproduced conservation defects repaired; G5 NOT_RUN",
+        "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+        "defects": [
+          "B-D1 native typed-negative shape",
+          "B-D2 per-source universe subset",
+          "B-D3 I05 marginal F1 census",
+          "B-D4 receipt release subset"
+        ],
+        "actual_final_turn_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
       }
     }
   ],
