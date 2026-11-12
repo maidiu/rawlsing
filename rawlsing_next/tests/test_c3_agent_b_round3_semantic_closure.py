@@ -16,7 +16,7 @@ import pytest
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
-from rawlsing_next.pre553_empirical_objects import EmpiricalFact, EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, EmpiricalFact, EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash
 from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
 
 R2_SHA = "265526a69c3a7a52365cf908709a4ef85ef9092e"
@@ -159,4 +159,47 @@ def test_round2_allows_unresolved_query_to_mint_positive_ff_and_d(agent_a_round2
                        match="positive fact cannot derive.*nonpositive query"):
         _produce(ff, unresolved, signed_fact, conditioner, target)
     restored = _produce(ff, query, fact, conditioner, target)
+    assert bridge.admit_gt12_c_relation(restored).admission.decision is adm.AdmissionDecision.ADMITTED
+
+
+def test_query_specific_issuance_authority_is_not_silently_dropped(agent_a_round2_ff):
+    q, f, c, target = _objects()
+    foreign = AuthorityRef(
+        "UNISSUED-FOREIGN-QUERY-OPERATOR", "R1",
+        semantic_hash({"c3-r3": "foreign-query-grant"}),
+    )
+    q_fields = dict(q.semantic_fields)
+    q_fields["query_authority_refs"] = (foreign,)
+    forged_query = EmpiricalQuerySpec(
+        typed_state=q.typed_state,
+        authority_snapshot_refs=q.authority_snapshot_refs,
+        dependency_refs=q.dependency_refs,
+        producer_replay_locator_or_reference_root=q.producer_replay_locator_or_reference_root,
+        **q_fields,
+    )
+    fact_fields = dict(f.semantic_fields)
+    fact_fields["empirical_query_spec_ref"] = forged_query.ref
+    rewritten_deps = tuple(
+        forged_query.ref if exact_ref(ref) == q.ref else ref
+        for ref in f.dependency_refs
+    )
+    forged_fact = EmpiricalFact(
+        typed_state=f.typed_state,
+        authority_snapshot_refs=f.authority_snapshot_refs,
+        dependency_refs=rewritten_deps,
+        producer_replay_locator_or_reference_root=f.producer_replay_locator_or_reference_root,
+        **fact_fields,
+    )
+    assert foreign not in f.authority_snapshot_refs
+    assert forged_query.ref == exact_ref(forged_fact.empirical_query_spec_ref)
+    old_relation = _produce(agent_a_round2_ff, forged_query, forged_fact, c, target)
+    typed_relation = ff.ExactConditionalSupportProfile(**{
+        item.name: getattr(old_relation, item.name)
+        for item in fields(ff.ExactConditionalSupportProfile) if item.init
+    })
+    assert bridge.admit_gt12_c_relation(typed_relation).admission.decision is adm.AdmissionDecision.ADMITTED
+    with pytest.raises(ff.FieldForgeConditionalSupportError,
+                       match="query-specific authority refs"):
+        _produce(ff, forged_query, forged_fact, c, target)
+    restored = _produce(ff, q, f, c, target)
     assert bridge.admit_gt12_c_relation(restored).admission.decision is adm.AdmissionDecision.ADMITTED
