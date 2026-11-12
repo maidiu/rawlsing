@@ -119,3 +119,46 @@ def test_c3_t01_synthetic_sourcefree_positive_cannot_impersonate_fixed_current()
     with pytest.raises(bridge.GT12CToDBridgeError,
                        match="not the exact fixed current"):
         bridge.admit_gt12_c_relation_from_fixed_current_transport(relation)
+
+
+def test_c3_t01_immutable_baseline_accepts_wrong_source_that_repair_refuses():
+    """Actual red/green differential against exact frozen Git source, not a mock."""
+    import subprocess
+    import sys
+    import types
+
+    baseline = subprocess.run(
+        ["git", "show", "HEAD^1:rawlsing_next/gt12_c_to_d_relation_bridge.py"],
+        check=True, capture_output=True,
+    ).stdout
+    identity = subprocess.run(
+        ["git", "hash-object", "--stdin"], input=baseline,
+        check=True, capture_output=True,
+    ).stdout.decode().strip()
+    assert identity == "ea04ec079e8d60e6e5c7236ec5b54898876be4b3"
+    name = "rawlsing_next._c3_agent_b_immutable_old_bridge"
+    old = types.ModuleType(name)
+    old.__package__ = "rawlsing_next"
+    sys.modules[name] = old
+    try:
+        exec(compile(baseline, name, "exec"), old.__dict__)
+        relation, _ = _fixture()
+        wrong = ExactRef("SOURCE_ARTIFACT", "Data/other-source.sav",
+                         semantic_hash({"git-differential": "other-physical-source"}))
+        attack = _resign_provenance(
+            relation, (wrong, *tuple(ref for ref in relation.producer_provenance_refs
+                                     if ref.kind != "SOURCE_ARTIFACT"))
+        )
+        # RED: unchanged source-code original stamps frozen source and ADMITS.
+        prior = old.admit_gt12_c_relation(attack)
+        assert prior.admission.decision is adm.AdmissionDecision.ADMITTED
+        assert prior.evidence.source_artifact_ref == ExactRef(
+            "SOURCE_ARTIFACT", adm.GT2_SOURCE_PATH, adm.GT2_SOURCE_SHA256
+        )
+        # GREEN: new source-contradiction check prevents that exact distortion.
+        with pytest.raises(bridge.GT12CToDBridgeError,
+                           match="declared producer source contradicts frozen"):
+            bridge.admit_gt12_c_relation(attack)
+        assert bridge.admit_gt12_c_relation(relation).admission.decision is adm.AdmissionDecision.ADMITTED
+    finally:
+        sys.modules.pop(name, None)
