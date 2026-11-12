@@ -57,7 +57,7 @@ def register_and_establish(session, *, cash=120, free_hours=8):
         actor_id=PARENT_ID, source_ref="sourcefree:parent:b04",
         employment_status="employed", wage_units_per_hour=5,
         debt_units=4, care_hours_due=2, cash_units=cash,
-        free_hours=free_hours,
+        free_hours=free_hours, currency_unit=mo.CURRENCY,
     )
     return establish_parent_material(session, PARENT_ID, fixture=fixture)
 
@@ -370,5 +370,42 @@ def test_purchase_cold_restore_and_source_severance(tmp_path):
         assert mo.read_owned_objects(session) == baseline_owned
         assert mo.read_purchase(
             session, PARENT_ID, "b04:cold:1", as_actor=PARENT_ID) == baseline_read
+    finally:
+        owner.close()
+
+
+def test_parent_currency_mismatch_refuses_without_conversion(tmp_path):
+    state = tmp_path / "state"
+    run_cmd(state, "new")
+    owner = open_owner(state)
+    try:
+        session = owner.base_owner.fanin.session
+        hp.establish_period_plan(session)
+        hp.materialize_to(session, "2026-02-01")
+        register_supporting_actor(
+            session, alias=PARENT_ALIAS, actor_id=PARENT_ID, role="parent",
+            private_state={"motive": SECRET},
+        )
+        establish_parent_material(
+            session, PARENT_ID,
+            fixture=parent_material_fixture(
+                actor_id=PARENT_ID, source_ref="sourcefree:parent:b04-currency",
+                employment_status="employed", wage_units_per_hour=5,
+                debt_units=4, care_hours_due=2, cash_units=120,
+                free_hours=8,
+            ),
+        )
+        mo.establish_market_inventory(session)
+        holder = holder_id(session)
+        with pytest.raises(RecursionRefusal, match="PURCHASE_CURRENCY_INCOMPATIBLE"):
+            mo.purchase_drum_kit(
+                session, PARENT_ID, operation_id="b04:currency-parent",
+                owner_actor_id=holder)
+        assert mo.read_owned_objects(session)["status"] == "ABSENT"
+        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 2
+        parent = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+        assert parent["material"]["cash_units"] == 120
+        assert parent["material"]["currency_unit"] == (
+            "parent_sourcefree_currency_unit")
     finally:
         owner.close()

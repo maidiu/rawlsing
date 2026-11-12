@@ -95,7 +95,7 @@ def test_three_event_batch_after_employment_split_then_purchase_and_rent(tmp_pat
             fixture=parent_material_fixture(
                 actor_id=PARENT_ID, source_ref="sourcefree:parent:b05-batch",
                 employment_status="employed", wage_units_per_hour=5,
-                debt_units=4, care_hours_due=2, cash_units=60, free_hours=8,
+                debt_units=4, care_hours_due=2, cash_units=60, free_hours=8, currency_unit=mo.CURRENCY,
             ),
         )
         mo.establish_market_inventory(session)

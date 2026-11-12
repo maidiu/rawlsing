@@ -57,7 +57,7 @@ def setup(tmp_path, *, cash=120, free_hours=8):
             actor_id=PARENT_ID, source_ref="sourcefree:parent:b04-composition",
             employment_status="employed", wage_units_per_hour=5,
             debt_units=4, care_hours_due=2, cash_units=cash,
-            free_hours=free_hours,
+            free_hours=free_hours, currency_unit=mo.CURRENCY,
         ),
     )
     mo.establish_market_inventory(session)

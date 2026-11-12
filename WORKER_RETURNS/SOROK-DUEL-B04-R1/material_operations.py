@@ -492,6 +492,13 @@ def _purchase_drum_kit(session, parent_id: str, *, operation_id: str,
             or item["unit_price"] < 0):
         raise RecursionRefusal("PURCHASE_PRICE_MISMATCH")
     fields = material["material"]
+    parent_currency = fields.get("currency_unit")
+    market_currency = market.get("currency_unit")
+    request_currency = request.get("currency_unit")
+    if (not _text(parent_currency) or not _text(market_currency)
+            or not _text(request_currency)
+            or not (parent_currency == market_currency == request_currency)):
+        raise RecursionRefusal("PURCHASE_CURRENCY_INCOMPATIBLE")
     if fields["cash_units"] < item["unit_price"]:
         return _refusal(
             session, operation_id=operation_id, parent_id=parent_id, alias=alias,
@@ -596,7 +603,10 @@ def _purchase_drum_kit(session, parent_id: str, *, operation_id: str,
         "event_effect": "NONE",
         "public_event": "NOT_EMITTED_HELD_PAIR3_VOCABULARY",
         "possession": "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN",
-        "currency_basis": "PARENT_MATERIAL_CASH_UNIT_AS_SOURCEFREE_CURRENCY_UNIT",
+        "currency_basis": "PARENT_MARKET_REQUEST_CURRENCY_UNIT_EQUAL",
+        "parent_currency_unit": parent_currency,
+        "market_currency_unit": market_currency,
+        "request_currency_unit": request_currency,
         "actual_reader": "material_operations.read_owned_objects",
         "read_boundary": detached(READ_BOUNDARY),
     }
