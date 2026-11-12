@@ -499,3 +499,74 @@ def test_c1_session_cache_rejects_conflicting_valid_release_rebind():
         cache.put(key, other)
     assert cache.get(key).release_ref == initial.release_ref
     assert cache.entry_count == 1
+
+
+def test_c1_empty_cache_rejects_unowned_valid_release_and_preserves_i03():
+    """First cache admission requires the *actual* governed C11 producer.
+
+    Both potential releases have independent I02 seals and the same source
+    SHA, but a different row/respondent association changes R1's Y fact.
+    A public cache.put for an empty slot must not grant either release the
+    authority of the unrelated governed projection key.
+    """
+    import pytest
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        SourceBackedC11FacadeError, source_backed_facade_key,
+    )
+
+    fx = _fixture("s1a-a-first-cache-admission")
+    source = _stream(fx)
+    base = fx["projection"]
+    rows = base.row_bindings
+    altered = replace(base, row_bindings=(
+        replace(rows[0], respondent_ref=rows[1].respondent_ref),
+        replace(rows[1], respondent_ref=rows[0].respondent_ref),
+        *rows[2:],
+    ))
+    actual = build_validated_source_backed_c11_release_from_stream(source, base)
+    foreign = build_validated_source_backed_c11_release_from_stream(source, altered)
+    assert actual.release_ref != foreign.release_ref
+    assert actual.source_artifact_ref == foreign.source_artifact_ref
+    key = source_backed_facade_key(source, base)
+    cache = SourceBackedC11SessionCache()
+
+    with pytest.raises(SourceBackedC11FacadeError, match="producer-only cache admission"):
+        cache.put(key, foreign)
+    assert cache.entry_count == 0
+
+    # Even a genuinely valid release with the correct governed context is
+    # not first-admitted through the public put: that caller did not prove
+    # it came through the source-backed producer for this session.
+    with pytest.raises(SourceBackedC11FacadeError, match="producer-only cache admission"):
+        cache.put(key, actual)
+    assert cache.entry_count == 0
+
+    repo, admitted = build_source_backed_c11_repository(source, base, cache=cache)
+    assert admitted.release_ref == actual.release_ref
+    assert cache.entry_count == 1
+
+    query_auth = _query_authority("s1a-a-first-cache-admission")
+    predicate = _branch_predicate(
+        fx, query_auth, members=(fx["respondents"]["R1"],),
+        tag="s1a-a-first-cache-r1",
+    )
+    query = _query(fx, query_auth, predicate, ("Y",), tag="s1a-a-first-cache-y")
+    registry = AuthorityRegistry((*fx["authorities"], query_auth))
+
+    def fact(repository, release):
+        return execute_empirical_query(
+            repository=repository, query=query, predicate=predicate,
+            authority_registry=registry, release_refs=(release.release_ref,),
+        ).facts[0]
+
+    expected = fact(C11Repository((actual,)), actual)
+    poisoned = fact(C11Repository((foreign,)), foreign)
+    observed = fact(repo, admitted)
+    assert observed.ref == expected.ref
+    assert observed.ref != poisoned.ref
+    assert observed.raw_denominator_support == poisoned.raw_denominator_support == 1
+    assert _cell_map(observed)["1"]["raw_numerator_support"] == 1
+    assert _cell_map(poisoned)["0"]["raw_numerator_support"] == 1
+    cache.clear()
+    _, restored = build_source_backed_c11_repository(source, base, cache=cache)
+    assert restored.release_ref == actual.release_ref
