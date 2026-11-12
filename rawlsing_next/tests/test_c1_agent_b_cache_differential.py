@@ -289,3 +289,44 @@ def test_c1_projection_mutation_during_source_read_must_not_poison_cache_key():
     )
     assert expected_after.release_ref != expected_before.release_ref
     assert cache.entry_count == 1
+
+
+def test_c1_cache_hit_callback_cannot_change_governed_input_while_serving():
+    """A warm cache entry must not outlive its full semantic preimage."""
+    import pytest
+    from rawlsing_next.pre553_source_backed_c11_facade import SourceBackedC11FacadeError
+
+    fx = _fixture("agent-a-warm-hit-race")
+    base = fx["projection"]
+    slot = base.response_slots[0]
+    mutable_semantic_value = {"response": "before"}
+    projection = replace(
+        base,
+        response_slots=(replace(
+            slot, values=(replace(slot.values[0], canonical_value=mutable_semantic_value),
+                          *slot.values[1:]),
+        ), *base.response_slots[1:]),
+    )
+
+    class CallbackCache(SourceBackedC11SessionCache):
+        mutate_on_read = False
+
+        def get(self, key):
+            if self.mutate_on_read:
+                mutable_semantic_value["response"] = "after"
+            return super().get(key)
+
+    cache = CallbackCache()
+    source = _stream(fx)
+    _, before = build_source_backed_c11_repository(source, projection, cache=cache)
+    assert cache.entry_count == 1
+    cache.mutate_on_read = True
+    with pytest.raises(SourceBackedC11FacadeError, match="cache input changed during C11 build"):
+        build_source_backed_c11_repository(source, projection, cache=cache)
+    assert cache.entry_count == 1
+
+    # No silent replacement of the previously legitimate entry.
+    cache.mutate_on_read = False
+    mutable_semantic_value["response"] = "before"
+    _, restored = build_source_backed_c11_repository(source, projection, cache=cache)
+    assert restored.release_ref == before.release_ref
