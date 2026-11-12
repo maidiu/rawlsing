@@ -373,3 +373,45 @@ def test_c1_uncached_physical_read_cannot_use_changed_governed_semantics():
     # A stable, explicitly revised projection can still legitimately build.
     _, current = build_source_backed_c11_repository(_stream(fx), p, cache=None)
     assert current.release_ref is not None
+
+
+def test_c1_transient_semantic_rewrite_and_restore_cannot_cache_mixed_release():
+    """Same hash before/after is insufficient if actual emitted events were mixed."""
+    from rawlsing_next.pre553_source_backed_c11_facade import SourceBackedC11FacadeError
+
+    fx = _fixture("agent-a-transient-semantics")
+    p = fx["projection"]
+    y = p.response_slots[1]
+    governed_value = {"answer": "EARLY"}
+    p = replace(
+        p, response_slots=(
+            p.response_slots[0],
+            replace(y, values=(replace(y.values[0], canonical_value=governed_value),
+                               *y.values[1:])),
+            *p.response_slots[2:],
+        )
+    )
+    before_key = p.cache_identity
+    baseline = build_validated_source_backed_c11_release_from_stream(_stream(fx), p)
+
+    def temporary_rewrite():
+        for cell in fx["cells"]:
+            if (cell.variable_name, cell.row_ordinal) == ("Y", 3):
+                governed_value["answer"] = "LATE"
+            yield cell
+        governed_value["answer"] = "EARLY"
+
+    source = ExactPhysicalCellStream(
+        source_sha256=fx["source_sha"], row_count=3,
+        cell_iter_factory=temporary_rewrite,
+    )
+    cache = SourceBackedC11SessionCache()
+    try:
+        _, emitted = build_source_backed_c11_repository(source, p, cache=cache)
+    except SourceBackedC11FacadeError:
+        pass  # Explicit refusal is valid.
+    else:
+        # Alternatively, an immutable governed input snapshot may emit the
+        # exact original C11 release, regardless of attempted caller mutation.
+        assert emitted.release_ref == baseline.release_ref
+    assert p.cache_identity == before_key  # The attack defeats entry/exit hashing.
