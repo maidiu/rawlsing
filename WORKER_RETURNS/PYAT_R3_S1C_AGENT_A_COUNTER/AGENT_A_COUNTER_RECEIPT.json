@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_R3_S1C_A_RECIPROCAL_COUNTER_RETURN@1.0.0",
+  "role": "AGENT_A_COUNTERAUTHOR_NOT_G5",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "issue": 918,
+  "parent_issue": 909,
+  "branch": "agent/pyat-r3-s1c-adversarial-a-counter-20261112-r1",
+  "parent_B_head": "5b1db9b5a687184615a199da8a39c55d5a30ed61",
+  "original_A_head": "5a6eb73158479a3bf4cead70b0d36cca43d902b6",
+  "protected_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "sourcefree_integration_base": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "original_B_proven_execution": {
+    "code_sha": "e15ccaedaa54155fc3855f821565e2794c946a68",
+    "new_sourcefree_tests": "14_PASS_0_FAIL",
+    "inherited_R03_R61": "22_PASS_0_FAIL",
+    "workflows": [
+      "https://github.com/maidiu/rawlsing/actions/runs/43278463747",
+      "https://github.com/maidiu/rawlsing/actions/runs/43278466894"
+    ]
+  },
+  "counter_code_commit": "b5f636ec1d5b11f38422e29669c4cd2219d46e96",
+  "counter_source_blob": "6fe67fca54bbbdb3ff6e3dcc3d48e726636c840a",
+  "counter_test_blob": "b72d54fd0cef335f920764d4599b188e7b75f730",
+  "new_refusals": [
+    "INVENTORY_LEDGER_INVENTORY_MISMATCH",
+    "UNKNOWN_OPERATION_NEGATIVE_LOSS",
+    "EXCLUDED_OPERATION_NEGATIVE_LOSS"
+  ],
+  "new_negative_cases": [
+    "coordinated forged ADMINISTERED/ELIGIBLE inventory_ledger while inventory actually UNKNOWN",
+    "simultaneously dropped UNKNOWN op from frontier and frozen negative census",
+    "simultaneously dropped INAPPLICABLE_PROVED excluded op from frontier and frozen census",
+    "independent nonoperation negative source holds preserved without valid RAW I05 loss"
+  ],
+  "changed_paths": [
+    "rawlsing_next/pre553_operation_fate_census.py",
+    "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py"
+  ],
+  "reused_original_symbols": [
+    "rawlsing_next.universal_grammar.enumerate.inventory_ledger",
+    "rawlsing_next.universal_grammar.types.ScientificFrontier",
+    "rawlsing_next.pre553_universal_workload.execute_governed_frontier",
+    "rawlsing_next.pre553_native_workload_binding.execute_test_only_discovery_workload"
+  ],
+  "verification": {
+    "status": "NOT_RUN_JOB_INITIALIZATION_FAILURE",
+    "reason": "GitHub Actions run failures in 2–6 seconds with zero executed steps and absent logs; no pytest or I05 result attributable to counter code",
+    "failed_before_steps_run_urls": [
+      "https://github.com/maidiu/rawlsing/actions/runs/43280535883",
+      "https://github.com/maidiu/rawlsing/actions/runs/43280839035",
+      "https://github.com/maidiu/rawlsing/actions/runs/43282195648"
+    ],
+    "rerun_attempted": true,
+    "claimed_new_positive": false,
+    "claimed_new_negative_execution": false
+  },
+  "gates": {
+    "G1": "B_SCOPE_PASS_WITH_A_EXTRA_GUARDS_UNTESTED",
+    "G2": "B_SOURCEFREE_PASS_INHERITED_A_COUNTER_UNTESTED",
+    "G3": "B_SOURCEFREE_PASS_A_NEW_NEGATIVES_UNTESTED",
+    "G4": "B_SCOPE_RESOURCE_PASS_A_COUNTER_UNMEASURED",
+    "G5": "NOT_RUN_NONAUTHOR_REQUIRED"
+  },
+  "external_holds": [
+    "ORIGINAL35_SOURCE_AND_SCIENCE_ISSUER",
+    "SOURCE/HOST/CURRENT_AUTHORITY",
+    "PROTECTED_MERGE"
+  ],
+  "next_stop": "RUN_EXISTING_S1C_AND_INHERITED_CI_AT_COUNTER_SHA_THEN_BOUNDED_REPAIR_IF_RED_ELSE_G5. NO OPTIONAL_HARDENING.",
+  "handoff_path": "WORKER_RETURNS/PYAT_R3_S1C_AGENT_A_COUNTER/AGENT_A_COUNTER_HANDOFF.md"
+}
