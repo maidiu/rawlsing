@@ -133,7 +133,7 @@ def interaction_quiet(session, world, house, cues):
 
 
 
-def current_p3_actor_access(session, interval, world, house, packet):
+def current_p3_actor_access(session, interval, world, house, packet, *, source_receipt=None):
     """Proof of current actor access for the optional TEST_ONLY P3 reader.
 
     A previously perceived MOVE or speech can inform situated interpretation,
@@ -151,10 +151,18 @@ def current_p3_actor_access(session, interval, world, house, packet):
         raise ValueError("P6_P3_ACCESS_INTERVAL_INVALID")
 
     perceived = {
-        row.get("event_id") for row in
+        (row.get("event_id"), row.get("clock")) for row in
         session.product.store.perceptions(session.branch_id, "A")
         if isinstance(row, dict)
     }
+    # This is the already-committed receipt produced by this P6 operation,
+    # *not* a sourcefree sensory claim constructed by the model or its caller.
+    current_outward = (
+        source_receipt.get("outward_cue") if isinstance(source_receipt, dict) else None
+    )
+    current_performed = (
+        source_receipt.get("performed") if isinstance(source_receipt, dict) else None
+    )
 
     def world_event(row):
         if not isinstance(row, dict) or not isinstance(row.get("event_id"), str):
@@ -170,19 +178,30 @@ def current_p3_actor_access(session, interval, world, house, packet):
             return None
         return event
 
-    # Current-turn, admitted outward stimuli. Validate the actual derived
-    # sensory candidate rather than trusting a caller-supplied cue dictionary.
+    # Only an actually *performed* outward event in this operation can
+    # present a sourcefree sensory cue. Never infer a sensory producer from
+    # event existence + actor perception + a caller-supplied modality:
+    # the event may be real while the alleged cue is completely fabricated.
+    # P6_MOVEMENT_EVIDENCE with HOLD_ACTOR_REGISTRATION_OWNER_MISSING is
+    # likewise not a registered actor observation for P3/ADP purposes.
     for cue in packet["cues"]:
         event = world_event(cue)
-        if event is None:
+        if event is None or cue.get("grade") != "SOURCEFREE_FIXTURE":
             continue
-        if cue.get("grade") == "SOURCEFREE_FIXTURE":
-            if sensory_candidate(event, world, house) == cue:
+        if (cue == current_outward and current_performed == event
+                and event.get("actor_id") == session.meta["user_actor"]
+                and sensory_candidate(event, world, house) == cue):
+            # The world-side source also requires an exact conduct parent.
+            if any(
+                ep.get("kind") == "P6_HOUSE_CONDUCT"
+                and ep.get("clock") == event["clock"]
+                and ep.get("body") == {
+                    "event_id": event["event_id"],
+                    "operation": event["kind"],
+                }
+                for ep in session.episodes(session.meta["user_actor"])
+            ):
                 return True
-        elif (event["event_id"] in perceived
-              and (cue.get("modality") in ("AUDITORY", "VISUAL")
-                   or cue.get("channels"))):
-            return True
 
     # For near-term contextual lists, only new observations strictly after
     # this interval began may qualify. Same-clock past context is not a new
@@ -191,13 +210,13 @@ def current_p3_actor_access(session, interval, world, house, packet):
     for row in packet["recent_self_actions"]:
         event = world_event(row)
         if (event is not None and event["clock"] > start
-                and event["event_id"] in perceived
+                and (event["event_id"], event["clock"]) in perceived
                 and event.get("actor_id") == "A"):
             return True
     for row in packet["recent_speech"]:
         event = world_event(row)
         if (event is not None and event["clock"] > start
-                and event["event_id"] in perceived
+                and (event["event_id"], event["clock"]) in perceived
                 and event.get("kind") == "SPEECH"
                 and event.get("actor_id") == row.get("speaker")):
             return True
@@ -286,7 +305,8 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
             # Qualified existing actor-local world evidence, not guessed
             # interiority or a portal-user/persona override.
             actor_observed=current_p3_actor_access(
-                session, interval, world, house, packet
+                session, interval, world, house, packet,
+                source_receipt=receipt,
             ),
         )
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
