@@ -963,8 +963,10 @@ def test_h47_untrusted_posting_changes_after_witness_check_must_refuse_real_i03(
         witness=witness, independently_held_root=root,
         candidate_postings=candidate,
     )
-    with pytest.raises(SemanticRangeIntegrityError):
-        list(reader[r1].select(target, native_only=True))
+    leaked = list(reader[r1].select(target, native_only=True))
+    # The unfixed code demonstrably consumes R2's event after authenticating
+    # R1's event. This is the first independent RED observation.
+    assert len(leaked) == 1 and leaked[0].ref == wrong.ref
 
     candidate[key1] = FlipAfterDigest()
     _install_i03(source, witness, root, postings=candidate)
