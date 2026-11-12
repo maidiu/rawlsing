@@ -1201,6 +1201,11 @@ def read_material_period(session, as_of_date: str) -> dict:
         "employment": term,
         "employment_status": ("EFFECTIVE" if term is not None
                               else "UNKNOWN_NO_EFFECTIVE_TERM"),
+        "employment_is_current": relation == "CURRENT",
+        "employment_currentness": (
+            "CURRENT_AS_OF" if relation == "CURRENT"
+            else "PAST_AS_OF" if relation == "PAST"
+            else "FUTURE_NOT_CURRENT"),
         "current_date": current_date.isoformat(),
         "current_employment": detached(current_term),
         "current_employment_status": ("EFFECTIVE" if current_term is not None
