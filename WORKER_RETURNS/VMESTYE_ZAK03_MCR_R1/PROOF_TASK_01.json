@@ -1,0 +1,36 @@
+{
+  "schema": "ZAK03_AUTHOR_SOURCE_DISPOSITION_V1",
+  "obligation_id": "ZAK03-TASK-01",
+  "author_terminal_status": "INCOMPLETE",
+  "source_cut": "9366b42a61a383808071106d70aa1255a769390a",
+  "original_scope": {
+    "path": "WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_03_FULL_COPY_PASTE_MCR.md",
+    "commit": "9d24323494cc852ada078010f09bfcf9ceb911d9",
+    "blob": "9dfa6bba55699e49f2910562e1c06bdb89b6ec73",
+    "contains_nine_id_mcrc_block": false
+  },
+  "user_supplied_9_id_contract": "WORKER_RETURNS/VMESTYE_ZAK03_MCR_R1/USER_SUPPLIED_ZAK03_LAUNCH_MCRC.txt",
+  "output_file": "WORKER_RETURNS/VMESTYE_ZAK03_MCR_R1/SOURCE_AND_PERMISSION_HOLD.md",
+  "source": {
+    "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/04_TARGET_ARCHITECTURE_INTERFACES_AND_INVARIANTS.md",
+    "commit": "315251451a6d112fb312a6e80b096d345c5de6",
+    "blob": "f4c342ea74a444f19cb492d04684e6007979e65d",
+    "tuple_verified": false
+  },
+  "status": "INCOMPLETE",
+  "grade": "S1_CODE_DOCUMENTARY",
+  "reason": "invalid frozen architecture source; 35-source/native/world-person graph not proven",
+  "positive": "bounded source→projection→RouteB→I03/I05 code edges located",
+  "negative": "source root misuse and actor grant are expressly not claimed",
+  "runner": "NOT_RUN",
+  "independent_court": "NOT_RECEIVED",
+  "candidate_sha": "PUBLISH_EXACT_SHA_ON_DRAFT_PR_NOT_SELF_REFERENTIAL",
+  "no_drop_id_present": true,
+  "proposed_valid_bounded_architecture_source": {
+    "path": "PYAT_CONTROL_ROOM/23_HQD124_SIX_STAGE_SOURCE_FREE_ARCHITECTURE_COMPLETION.md",
+    "commit": "9366b42a61a383808071106d70aa1255a769390a",
+    "blob": "7a17896da3fe83f299ab242e316317fc6e2b5ef2",
+    "grade": "SOURCEFREE_S1",
+    "contractual_substitution_authorized": false
+  }
+}
