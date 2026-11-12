@@ -463,3 +463,39 @@ def test_c1_governed_nested_semantic_input_is_detached_and_readonly():
         p.response_slots[0].values[0].canonical_value["values"][0]["answer"] = "INTRUSION"
     with pytest.raises(TypeError):
         p.response_slots[0].values[0].occurrences[0].multiplicity_order_rank_fields["kind"] = "WRONG"
+
+
+def test_c1_session_cache_rejects_conflicting_valid_release_rebind():
+    """One full preimage may not silently be rebound to a different I02 release.
+
+    A seal/source-SHA check is necessary but not sufficient: both releases
+    are independently I02-valid, under the same source SHA, while their
+    respondent ownership and actual I03 output differ.
+    """
+    import pytest
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        SourceBackedC11FacadeError, source_backed_facade_key,
+    )
+
+    fx = _fixture("s1a-b-cache-rebind")
+    source = _stream(fx)
+    p = fx["projection"]
+    rows = p.row_bindings
+    different = replace(p, row_bindings=(
+        replace(rows[0], respondent_ref=rows[1].respondent_ref),
+        replace(rows[1], respondent_ref=rows[0].respondent_ref),
+        *rows[2:],
+    ))
+    cache = SourceBackedC11SessionCache()
+    _, initial = build_source_backed_c11_repository(source, p, cache=cache)
+    other = build_validated_source_backed_c11_release_from_stream(source, different)
+    assert initial.source_artifact_ref.content_hash == other.source_artifact_ref.content_hash
+    assert initial.release_ref != other.release_ref
+    key = source_backed_facade_key(source, p)
+
+    # Identical producer receipt may be inserted again without changing custody.
+    cache.put(key, initial)
+    with pytest.raises(SourceBackedC11FacadeError, match="conflicting cache rebind"):
+        cache.put(key, other)
+    assert cache.get(key).release_ref == initial.release_ref
+    assert cache.entry_count == 1
