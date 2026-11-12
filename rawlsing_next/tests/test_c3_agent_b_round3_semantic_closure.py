@@ -16,7 +16,7 @@ import pytest
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
-from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef, exact_ref, semantic_hash
 from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
 
 R2_SHA = "265526a69c3a7a52365cf908709a4ef85ef9092e"
@@ -92,8 +92,8 @@ def test_round2_ff_accepts_semantically_different_fact_but_round3_refuses(
     assert fact.ref != original.ref
     assert semantic_hash(query.semantic_projection()) == query.content_hash
     assert semantic_hash(fact.semantic_projection()) == fact.content_hash
-    assert fact.empirical_query_spec_ref == query.ref.as_dict()
-    assert fact.risk_set_ref == query.risk_set_ref
+    assert exact_ref(fact.empirical_query_spec_ref) == query.ref
+    assert exact_ref(fact.risk_set_ref) == exact_ref(query.risk_set_ref)
 
     previous = _produce(agent_a_round2_ff, query, fact, conditioner, target)
     # Convert isolated old module's exact object into real current downstream
