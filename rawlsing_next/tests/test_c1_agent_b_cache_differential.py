@@ -15,6 +15,12 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
 )
 from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
 from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
+from rawlsing_next.pre553_c11_repository import C11Repository
+from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+from rawlsing_next.pre553_empirical_query import execute_empirical_query
+from rawlsing_next.tests.test_pre553_empirical_query import (
+    _branch_predicate, _cell_map, _query, _query_authority,
+)
 
 
 def _stream(fx, *, digest=None):
@@ -163,3 +169,49 @@ def test_c1_authority_set_cache_isolation_does_not_mint_authority():
     )
     assert base.release_ref == full.release_ref
     assert cache.entry_count == 2
+
+
+def test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores():
+    """R1 is the first reader: swapping two people changes its Y distribution."""
+    fx = _fixture("agent-b-first-reader")
+    source = _stream(fx)
+    base = fx["projection"]
+    rows = base.row_bindings
+    altered = replace(
+        base, row_bindings=(
+            replace(rows[0], respondent_ref=rows[1].respondent_ref),
+            replace(rows[1], respondent_ref=rows[0].respondent_ref),
+            *rows[2:],
+        )
+    )
+    cache = SourceBackedC11SessionCache()
+    old_repo, old_release = build_source_backed_c11_repository(source, base, cache=cache)
+    independent = build_validated_source_backed_c11_release_from_stream(source, altered)
+    new_repo, new_release = build_source_backed_c11_repository(source, altered, cache=cache)
+    assert new_release.release_ref == independent.release_ref
+
+    query_auth = _query_authority("agent-b-i03-first-reader")
+    predicate = _branch_predicate(
+        fx, query_auth, members=(fx["respondents"]["R1"],), tag="agent-b-single-r1",
+    )
+    query = _query(fx, query_auth, predicate, ("Y",), tag="agent-b-y-r1")
+    registry = AuthorityRegistry((*fx["authorities"], query_auth))
+
+    def execute(repo, release):
+        return execute_empirical_query(
+            repository=repo, query=query, predicate=predicate,
+            authority_registry=registry, release_refs=(release.release_ref,),
+        ).facts[0]
+
+    original_fact = execute(old_repo, old_release)
+    independent_fact = execute(C11Repository((independent,)), independent)
+    cache_fact = execute(new_repo, new_release)
+    assert original_fact.ref != independent_fact.ref
+    assert cache_fact.ref == independent_fact.ref
+    assert _cell_map(original_fact) != _cell_map(independent_fact)
+
+    cache.clear()
+    restored_repo, restored_release = build_source_backed_c11_repository(
+        source, base, cache=cache,
+    )
+    assert execute(restored_repo, restored_release).ref == original_fact.ref
