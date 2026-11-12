@@ -1,0 +1,80 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "event_id": "D02-A-PERIOD-20261112-71cd4dda",
+  "controller_event_id": "UNKNOWN_NOT_ISSUED_IN_AGENT_CONTEXT",
+  "task_id": "D02",
+  "status": "IN_PROGRESS_PREREQUISITE_HELD",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "71cd4dda7dde8d698c8b5146ec69224821297a9c",
+  "start_composition_sha": "0c460c7a2a3ed0b6f485b1cc3131bef1b18c0569",
+  "b02_source_sha256": "78e33649ed7c2a50d1cdea1692f04ea79ddb841748f7532d576c0436647ded22",
+  "author_branch": "codex/sorok-duel-d02-a-acquired-period-20261112-r1",
+  "changed_symbols": [
+    "p3.situated_context._period_ingress",
+    "p3.situated_context._b02_module",
+    "p3.situated_context._period_source"
+  ],
+  "ABIclass": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "Current logical clock is mapped through the actual B02 plan anchor/ticks; read_material_period must return the same logical tick.",
+    "Current period, employment as-of current date and typed p3_interval_span are read-only fields in body/readset/hash.",
+    "Historical as-of queries are not treated as current physical state; no future employment or mock calendar is used.",
+    "Holder-A employment is bound to the focal identity actor; it is never applied to the registered parent."
+  ],
+  "dependency_status": {
+    "B02": "SOURCE_PRESENT_CURRENT_PERIOD_INGRESS_IMPLEMENTED; HISTORICAL_SPLIT_INTERLEAVING_HELD",
+    "B02_materializer": "WHOLE_PLAN_SCHEDULING_NOT_YET_ACTUAL_P3_INTERLEAVING",
+    "C02_P4_P6": "C02_B_DIRECT_MUTATION_SEAM_UNRESOLVED; PAIR3_REPAIRING",
+    "D02": "IN_PROGRESS_PREREQUISITE_HELD"
+  },
+  "affected_queued_tasks": ["D03", "D05"],
+  "actual_reader": "existing RecursionCycle provider context; D02 period fields are read-only input, not an applied P3 interval",
+  "preserved_obligations": [
+    "B02 owns calendar/S46 conversion and S46 materialization; D02 does not edit or copy clock logic",
+    "P3 interval span is a typed read-only seam; no P3 event is applied or materialized by D02",
+    "no new scheduler, world/period ledger, native rule or actor knowledge claim"
+  ],
+  "regressed_obligations": [
+    "none observed in D02 20 / D01 15 / P3 77+1skip / B02 7",
+    "B02's global-unbuilt label and B's hold test updated only for the source-present distinction"
+  ],
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py",
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_a_acquired_period.py::test_current_b02_period_ingress_and_current_employment",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_a_b02_source_regression.log"
+    ],
+    "negative": [
+      "period absent -> B02_READER_PRESENT_NO_CURRENT_PERIOD hold",
+      "employment source tamper -> P6_EMPLOYMENT_SOURCE_OR_ROOT_MISMATCH",
+      "period source severance/restore exact-hash restore",
+      "current clock before/outside/not-day-aligned -> explicit hold",
+      "holder slot A must resolve to focal actor"
+    ],
+    "cold": [
+      "period fact and employment source exact restoration returns baseline selector hash",
+      "fresh-root composition establishes B02 plan, B01 household, C01 access, D01 retention and acquired state; cold reopen reads current period"
+    ]
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "wall_seconds_observed": {
+      "d02_all": 866.40,
+      "b02_source_regression": 53.02
+    },
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  }
+}
