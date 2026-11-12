@@ -4,7 +4,7 @@
   "phase": "CG-B",
   "title": "Commit selected inhabited dwelling/tenancy/noise/space/resource facts",
   "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "implementation_sha": "6deb7b71d0f8d761ae7734868c693dcb5dd253d8",
+  "implementation_sha": "99333985190d872d825a1ec205db224179daa4af",
   "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
   "frozen_b01_return": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
   "branch": "codex/sorok-duel-b01-a-relay-b03-20261112-r1",
@@ -27,25 +27,51 @@
   "changed_symbols": [
     {
       "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
-      "added": ["_copied_prefix_equal"],
-      "changed": ["MATERIAL_FACT_SLOTS", "branch_is_ancestor"],
+      "added": [
+        "_copied_prefix_equal"
+      ],
+      "changed": [
+        "MATERIAL_FACT_SLOTS",
+        "branch_is_ancestor"
+      ],
       "removed": []
     },
     {
       "file": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
       "added": [
-        "DWELLING_SLOT", "DWELLING_SCHEMA", "DWELLING_READ_SCHEMA",
-        "DWELLING_GRADE", "DWELLING_FIELDS", "DWELLING_STORED_FIELDS",
-        "DRUM_KIT_REQUEST_SCHEMA", "MATERIAL_FEASIBILITY_SCHEMA",
-        "MOTHER_MATERIAL_INPUT_SCHEMA", "DWELLING_INSTRUMENT_POLICIES",
-        "DRUM_KIT_REQUESTS", "dwelling_fixture", "_read_dwelling_document",
-        "_dwelling_document", "establish_dwelling", "commit_dwelling",
-        "read_dwelling", "_validate_drum_kit_request", "_household_cash",
-        "material_feasibility", "mother_material_input", "_material_provenance",
-        "_number", "_number_or_unknown", "_nonneg", "_nonneg_or_unknown",
+        "DWELLING_SLOT",
+        "DWELLING_SCHEMA",
+        "DWELLING_READ_SCHEMA",
+        "DWELLING_GRADE",
+        "DWELLING_FIELDS",
+        "DWELLING_STORED_FIELDS",
+        "DRUM_KIT_REQUEST_SCHEMA",
+        "MATERIAL_FEASIBILITY_SCHEMA",
+        "MOTHER_MATERIAL_INPUT_SCHEMA",
+        "DWELLING_INSTRUMENT_POLICIES",
+        "DRUM_KIT_REQUESTS",
+        "dwelling_fixture",
+        "_read_dwelling_document",
+        "_dwelling_document",
+        "establish_dwelling",
+        "commit_dwelling",
+        "read_dwelling",
+        "_validate_drum_kit_request",
+        "_household_cash",
+        "material_feasibility",
+        "mother_material_input",
+        "_material_provenance",
+        "_number",
+        "_number_or_unknown",
+        "_nonneg",
+        "_nonneg_or_unknown",
         "_int_or_unknown"
       ],
-      "changed": ["establish", "read_household", "parent_choice_input"],
+      "changed": [
+        "establish",
+        "read_household",
+        "parent_choice_input"
+      ],
       "removed": []
     }
   ],
@@ -125,8 +151,8 @@
     "SOROK-P6-CHRONOLOGY-PROOF-20261107-R1 still fails on mii_exposure_id/mii identically at baseline 6a5c12f and on this cut; not caused by B03."
   ],
   "source_refs": [
-    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@6deb7b71d0f8d761ae7734868c693dcb5dd253d8",
-    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@6deb7b71d0f8d761ae7734868c693dcb5dd253d8",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@99333985190d872d825a1ec205db224179daa4af",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@99333985190d872d825a1ec205db224179daa4af",
     "SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/.../bp4/product.py:101",
     "SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/.../bp4/store.py:216",
     "SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/.../bp4/world.py:323"
@@ -174,5 +200,6 @@
     "Same-code cold reopen only; prior P3 code-pin roots are incompatible.",
     "Fork reads are material/C12-scoped, never full P3 composite state.",
     "Two Library architecture records remain NOT_INSPECTED locally; no contents claimed."
-  ]
+  ],
+  "feature_commit": "6deb7b71d0f8d761ae7734868c693dcb5dd253d8"
 }

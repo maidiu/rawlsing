@@ -4,13 +4,14 @@
 **Depends on:** B01, frozen at B's return `362719b40a35a66fa2fb1c3490db8eb5b8e9167c`.
 **Grade:** `SOURCEFREE_S2_ONLY`. No native science, actor/human right, source right, Pyat rule, S14/A5 grant, or protected merge. This is constructive author work, not independent terminal receiving; one independent nonauthor receiving is required per coherent tranche/join.
 **Branch:** `codex/sorok-duel-b01-a-relay-b03-20261112-r1`.
-**Implementation SHA:** `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`.
+**Implementation SHA:** `99333985190d872d825a1ec205db224179daa4af` (final tested tree).
+**B03 feature commit:** `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`; final prefix hardening commit: `993339851`.
 **Running contract SHA:** `08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a`.
 **Protected inspection baseline:** `6a5c12f04323d74001f9632063ec907f4fc4468e`.
 
 ## 1. Exact artifact
 
-Code at `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`:
+Code at `99333985190d872d825a1ec205db224179daa4af`:
 
 | Path | Change |
 |---|---|
@@ -83,12 +84,12 @@ B01 relay repair preserved: B's read-only C12 ancestor provenance is kept; `read
 
 Evidence (all in this worktree):
 
-- B03 suite **8 passed in 41.89s** (`evidence/b03_dwelling.log`);
-- B01 suite + A fork provenance **11 passed in 71.14s** (`WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log`);
-- B01+B03 combined **19 passed in 115.63s** (`evidence/b01_b03_relay.log`);
-- full P6 `test_house.py` **8 passed in 154.83s** (`evidence/p6_test_house.log`);
-- full P6 `test_mii.py` **18 passed in 226.76s** (`evidence/p6_test_mii.log`);
-- P2 owner + actor scene + selected P3 reopen/config **9 passed in 44.00s** (`evidence/adjacent.log`);
+- B03 suite **8 passed in 46.01s** (`evidence/b03_dwelling.log`);
+- B01 suite + A fork provenance **11 passed in 74.88s** (`WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log`);
+- B01+B03 combined **19 passed in 113.82s** (`evidence/b01_b03_relay.log`);
+- full P6 `test_house.py` **8 passed in 158.53s** (`evidence/p6_test_house.log`);
+- full P6 `test_mii.py` **18 passed in 226.44s** (`evidence/p6_test_mii.log`);
+- P2 owner + actor scene + selected P3 reopen/config **9 passed in 50.92s** (`evidence/adjacent.log`);
 - pre-existing P6 chronology proof **1 failed** on `mii_exposure_id`/`mii`, unchanged from baseline `6a5c12f` (`evidence/p6_chronology_pre_existing.log`).
 
 ## 4. Own hostile findings
@@ -108,6 +109,7 @@ Evidence (all in this worktree):
 - **B02/B04/B05 and J1/J2:** not implemented. No historical calendar/as-of, no purchase/action/admission, no recurring costs/debits/refusals, no multicycle duration.
 - **Child new occupancy:** different dwelling/room/owner/landlord on a fork is refused by the B01 household cross-check; requires a future household re-establishment ABI.
 - **Tenure scope:** the B03 fixture is a rented two-room home. Owned/other tenure, vacant lease constraints or a different home identity are not implemented; the household place/tenure cross-check is deliberate.
+- **Scene scope:** B03 is established only in the ordinary P6 house scene. The gallery/symbolic presentation fixtures have no `p6_dwelling`; `read_dwelling`/`material_feasibility` refuse there. This is a bounded actual-house fixture, not a universal scene importer.
 - **Same-root PsycheStore negative:** not proved; the structural no-import guard and world-first readers are the protection. A valid mediator injected into the actual `p3_psyche.sqlite3` is a remaining attack.
 - **Cold fork:** in-process verified-owner fork reads/actions are proved; full cold `run_p6.experience` on a fork is blocked by P2/P3 branch binding and not claimed.
 - **P3 pin migration:** not solved; out of this lease.

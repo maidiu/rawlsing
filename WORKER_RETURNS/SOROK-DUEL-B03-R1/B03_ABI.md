@@ -1,7 +1,7 @@
 # B03 frozen dwelling / feasibility / mother-input ABI
 
 **Status:** sourcefree `SOURCEFREE_S2_ONLY`; B01-dependent bounded material construction. Not a purchase, mother decision, native science, or protected merge.
-**Code:** `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`.
+**Code:** `99333985190d872d825a1ec205db224179daa4af`.
 
 ## World resource
 

@@ -5,7 +5,8 @@
 **Frozen B return:** `362719b40a35a66fa2fb1c3490db8eb5b8e9167c`.
 **B implementation:** `160cbbd0ae00fb965004085c0e07c872384fe0ff`.
 **A relay branch:** `codex/sorok-duel-b01-a-relay-b03-20261112-r1`.
-**A relay code SHA:** `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`.
+**A relay code SHA:** `99333985190d872d825a1ec205db224179daa4af` (final tested tree).
+**Feature commit:** `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`; final prefix hardening commit: `993339851`.
 **Running contract SHA:** `08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a`.
 **Protected inspection baseline:** `6a5c12f04323d74001f9632063ec907f4fc4468e`.
 
@@ -105,12 +106,12 @@ It cross-checks the B01 household place/owner/landlord and P6 room set. `read_dw
 
 | Command | Result | Evidence |
 |---|---|---|
-| B01 suite + A fork-provenance suite | **11 passed in 71.14s** | `WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log` |
-| B03 suite | **8 passed in 41.89s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_dwelling.log` |
-| B01 + B03 combined | **19 passed in 115.63s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b01_b03_relay.log` |
-| Full P6 `test_house.py` | **8 passed in 154.83s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_house.log` |
-| Full P6 `test_mii.py` | **18 passed in 226.76s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_mii.log` |
-| P2 owner + actor scene + selected P3 reopen/config | **9 passed in 44.00s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/adjacent.log` |
+| B01 suite + A fork-provenance suite | **11 passed in 74.88s** | `WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log` |
+| B03 suite | **8 passed in 46.01s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_dwelling.log` |
+| B01 + B03 combined | **19 passed in 113.82s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b01_b03_relay.log` |
+| Full P6 `test_house.py` | **8 passed in 158.53s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_house.log` |
+| Full P6 `test_mii.py` | **18 passed in 226.44s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_mii.log` |
+| P2 owner + actor scene + selected P3 reopen/config | **9 passed in 50.92s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/adjacent.log` |
 | Pre-existing P6 chronology proof | **1 failed** on `mii_exposure_id`/`mii`; same failure at baseline `6a5c12f` and on this branch | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_chronology_pre_existing.log` |
 
 Negative controls exercised: PsycheStore kitchen `MEDIATOR` and test-local `later_decision` ignored/refused; material writer refuses psyche records/foreign root/source/epoch; foreign branch and post-fork epoch refused; mutable `root_counts` plus prefix mismatch refused; extra `social_class`/`trait`/bad policy refused; no possession, no mother action, no psyche read; cold subprocess identical with unchanged counts.
@@ -131,7 +132,7 @@ Negative controls exercised: PsycheStore kitchen `MEDIATOR` and test-local `late
 
 ## 7. Exact artifact and execution receipts
 
-Changed code at `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`:
+Changed code at `99333985190d872d825a1ec205db224179daa4af`:
 
 | Path | Change |
 |---|---|

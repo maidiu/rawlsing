@@ -1,6 +1,6 @@
 # B01 ABI — Agent A relay addendum
 
-**Base:** B's `B01_ABI_B_REVISION.md` remains the B01 ABI. This addendum records only the A relay additive changes at `6deb7b71d0f8d761ae7734868c693dcb5dd253d8`.
+**Base:** B's `B01_ABI_B_REVISION.md` remains the B01 ABI. This addendum records only the A relay additive changes at `99333985190d872d825a1ec205db224179daa4af`.
 
 ## 1. Fork provenance at the actual P6 consumer
 
