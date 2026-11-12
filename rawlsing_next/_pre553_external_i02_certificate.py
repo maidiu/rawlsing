@@ -307,9 +307,23 @@ def build_sourcefree_external_i02(
         with open(staged, "rb") as f:
             os.fsync(f.fileno())
         # No seal or manifest publication before all global checks succeed.
-        if target.exists() or target.is_symlink():
-            _fail("destination lease/collision changed during construction")
-        os.replace(staged, target)
+        # The old exists()→os.replace() race could silently overwrite a rival
+        # certificate that claimed the final path after the initial check.
+        # Hardlink the fully synced staged inode only if the target is NEW.
+        # This is an atomic no-clobber claim on the same filesystem, and a
+        # crashed link→unlink window leaves a complete final inode plus an
+        # orphan stage, not a partial certificate.
+        try:
+            os.link(staged, target, follow_symlinks=False)
+        except FileExistsError as exc:
+            raise ExternalI02IntegrityError(
+                "destination collision: certificate already claimed"
+            ) from exc
+        except OSError as exc:
+            raise ExternalI02IntegrityError(
+                "atomic no-clobber certificate publication unavailable"
+            ) from exc
+        os.unlink(staged)
         dirfd = os.open(target.parent, os.O_RDONLY)
         try:
             os.fsync(dirfd)
@@ -400,7 +414,14 @@ class _VerifiedSelectView:
             _fail("verified I02 connection permits SELECT only; no transaction control")
         if not isinstance(params, tuple):
             _fail("verified I02 SQL parameters must be a tuple")
-        return _VerifiedSelectRows(self.__connection.execute(sql, params), self)
+        if ";" in sql:
+            _fail("verified I02 SQL statements cannot contain separators")
+        try:
+            return _VerifiedSelectRows(self.__connection.execute(sql, params), self)
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified I02 SELECT cannot execute against the held snapshot"
+            ) from exc
 
     def _close(self) -> None:
         object.__setattr__(self, "_VerifiedSelectView__closed", True)
