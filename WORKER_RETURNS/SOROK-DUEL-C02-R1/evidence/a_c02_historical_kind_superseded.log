@@ -1,0 +1,49 @@
+F...                                                                     [100%]
+=================================== FAILURES ===================================
+________ test_parent_antecedent_and_activities_change_feasible_options _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1167/test_parent_antecedent_and_act0')
+
+    def test_parent_antecedent_and_activities_change_feasible_options(tmp_path):
+        fanin = start(tmp_path)
+        try:
+            session = fanin.session
+            root = session.read_root()
+            focal = root["actor_ids"][0]
+            register(fanin)
+            established = establish(session)
+            assert established["status"] == "REGISTERED"
+            assert established["period_qualification"] == PARENT_B02_HOLD
+            assert established["historical_dates"] == "NOT_AVAILABLE"
+            assert "date" not in established
+            assert "historical_dates" in established
+    
+            baseline = options(session)
+            baseline_options = by_activity(baseline)
+            assert baseline["admissible"] == ["PAID_WORK", "CARE_DEPENDENT", "PAY_DEBT"]
+            assert all(row["status"] == "ADMISSIBLE"
+                       for row in baseline_options.values())
+    
+            with pytest.raises(RecursionRefusal, match="PARENT_SELF_READ_REQUIRED"):
+                read_parent_material(session, PARENT_ID, as_actor=focal)
+            with pytest.raises(RecursionRefusal, match="PARENT_SELF_READ_REQUIRED"):
+                parent_feasible_actions(session, PARENT_ID, as_actor=focal)
+    
+            debt = record_parent_activity(
+                session, PARENT_ID, operation_id="c02:activity:debt",
+                activity="PAY_DEBT", payment=4)
+            assert debt["status"] == "ADMITTED"
+            assert debt["event_authored_by"] == PARENT_ALIAS
+            assert debt["period_qualification"] == PARENT_B02_HOLD
+            debt_event = session.event(debt["event_id"])
+            assert debt_event["actor_id"] == PARENT_ALIAS
+>           assert debt_event["kind"] == "OFFSCREEN_REPAIR"
+E           AssertionError: assert 'MATERIAL_ACTIVITY' == 'OFFSCREEN_REPAIR'
+E             
+E             - OFFSCREEN_REPAIR
+E             + MATERIAL_ACTIVITY
+
+WORKER_RETURNS/SOROK-DUEL-C01-R1/C02/test_c02_parent_activity.py:121: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-DUEL-C01-R1/C02/test_c02_parent_activity.py::test_parent_antecedent_and_activities_change_feasible_options
+1 failed, 3 passed in 10.35s

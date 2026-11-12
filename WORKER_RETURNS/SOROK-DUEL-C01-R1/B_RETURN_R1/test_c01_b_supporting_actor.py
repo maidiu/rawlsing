@@ -16,7 +16,7 @@ import sys
 
 import pytest
 
-RETURNS = Path(__file__).resolve().parents[1] / "WORKER_RETURNS"
+RETURNS = Path(__file__).resolve().parents[2]
 ENGINE = RETURNS / "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1"
 if str(ENGINE) not in sys.path:
     sys.path.insert(0, str(ENGINE))

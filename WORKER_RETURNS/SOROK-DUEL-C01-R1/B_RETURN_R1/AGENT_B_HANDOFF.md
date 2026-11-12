@@ -1,5 +1,7 @@
 # SOROK C01 AGENT B — adversarial construction handoff
 
+**Relocation note:** this return was originally committed at immutable B HEAD `0fd303e2af23d71b51b068393cfaa6f62d40fe38` under top-level `C01/`. The A relay moved the return artifacts into this directory and fixed only path/import references; the B implementation, evidence and historical SHA are unchanged.
+
 **Packet:** C01, `Stable other-actor identities and dynamic participation without changing Nadia root`, CG-C.
 **Grade:** `SOURCEFREE_S2_ONLY`. No native C4/ADP-015, CAN/ADP/Pyat, actor/human/source right or protected merge is issued.
 **Opponent:** SAME Pair3 A, session `ses_e31295836ffeW9bYwX9iiMMcXS`.
@@ -18,11 +20,11 @@ Changed product code at B implementation commit `0e526f043`:
 |---|---|---|
 | `WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py` | `35e43d8c924d6ea30b4376ef8bed4a8af5b68dd81d636e1cf9033da4320b9c5a` | Atomic registration/participation writes; cold partial recovery; namespace reservations; actual-store event binding; participation-receipt-qualified actor access. |
 | `WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py` | `baa3d5673d40a73da06620a111c7284340db2721233c95ca8c119fc8a734ef4a` | `P2Owner.__init__` binding invariant; `validate_proposal` private-leak precheck; supporting-actor import. Module-level material functions, `material_fact`, `_realize` admission body, P3 and `house.py` untouched. |
-| `C01/test_c01_b_supporting_actor.py` | `ced299462e40ea24e45f5141bbe614acb7377d50fb3a079a99a0e52baaa0e7a7` | 8 discriminating B tests. |
+| `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/test_c01_b_supporting_actor.py` | `ced299462e40ea24e45f5141bbe614acb7377d50fb3a079a99a0e52baaa0e7a7` | 8 discriminating B tests. |
 
-Return artifacts: this handoff, `C01/AGENT_B_RECONSTRUCTION.md` (recorded before opening A's handoff/diff), `C01/C01_B_ABI.md`, `C01/PROGRAMMA_DELTA.json`, `C01/impact.json`, `C01/evidence/*.log`. A's `WORKER_RETURNS/SOROK-DUEL-C01-R1/` records are preserved unchanged.
+Return artifacts: this handoff, `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/AGENT_B_RECONSTRUCTION.md` (recorded before opening A's handoff/diff), `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/C01_B_ABI.md`, `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/PROGRAMMA_DELTA.json`, `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/impact.json`, `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/*.log`. A's `WORKER_RETURNS/SOROK-DUEL-C01-R1/` records are preserved unchanged.
 
-**Independent reconstruction first.** `C01/AGENT_B_RECONSTRUCTION.md` records the mission rebuilt from the frozen programme (`01`–`05`, the 20261111 user requirement, and owner reconciliation `32` at #911 `b50b1282…`, verified byte-identical here). Core demand: a parent becomes a persistent independent participant in the *same* P2 world while Nadia stays the focal root; registration/admission binds actual registered identities and sources, not format-valid strings; objective co-presence is not an unqualified percept; private parent state does not become child/user knowledge; registration/retry/cold cannot create a ghost or partial actor; C02/C03/C04 must not be faked.
+**Independent reconstruction first.** `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/AGENT_B_RECONSTRUCTION.md` records the mission rebuilt from the frozen programme (`01`–`05`, the 20261111 user requirement, and owner reconciliation `32` at #911 `b50b1282…`, verified byte-identical here). Core demand: a parent becomes a persistent independent participant in the *same* P2 world while Nadia stays the focal root; registration/admission binds actual registered identities and sources, not format-valid strings; objective co-presence is not an unqualified percept; private parent state does not become child/user knowledge; registration/retry/cold cannot create a ghost or partial actor; C02/C03/C04 must not be faked.
 
 **Governing sources actually read:** the frozen programme files, the 20261111 rolling person–world requirement, reconciliation `32`, B01 A's frozen handoff/ABI/code at `edbb4b344`, and the actual P2/P3/C12/S42/S45 code. The two full ChatGPT Library architecture records remain **NOT_INSPECTED locally**; no contents are claimed from them.
 
@@ -40,7 +42,7 @@ These survive hostile examination and are preserved:
 
 ## 3. Defects established by execution against A's artifact
 
-All five were reproduced on `7e347c45d` before correction; each is now refused/corrected and covered by `C01/test_c01_b_supporting_actor.py`.
+All five were reproduced on `7e347c45d` before correction; each is now refused/corrected and covered by `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/test_c01_b_supporting_actor.py`.
 
 ### D1 — Owner binding lockout prevents the actual P2/P3 composition (high)
 
@@ -110,11 +112,11 @@ For a supporting actor, `read_actor_access` now requires a live registration **a
 
 ## 5. Proof of improvement
 
-All commands were run in the exact checkout with `/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider`; logs are in `C01/evidence/`.
+All commands were run in the exact checkout with `/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider`; logs are in `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/`.
 
 | Suite | Result | Evidence |
 |---|---|---|
-| B C01 tests (`C01/test_c01_b_supporting_actor.py`) | **8 passed** in 23.08 s | `evidence/c01_b_supporting_actor.log` |
+| B C01 tests (`WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/test_c01_b_supporting_actor.py`) | **8 passed** in 23.08 s | `evidence/c01_b_supporting_actor.log` |
 | A's C01 tests + P2 owner + B01 | **15 passed** in 69.44 s | `evidence/a_c01_p2_b01_regression.log` |
 | P3 owner suite | **9 passed, 1 skipped** in 31.75 s | `evidence/p3_owner_regression.log` |
 | Engine + model-cycle + recursion-integration + P6 actor scene | **68 passed** in 192.98 s | `evidence/engine_p6_regression.log` |

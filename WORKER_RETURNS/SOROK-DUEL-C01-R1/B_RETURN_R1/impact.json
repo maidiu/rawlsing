@@ -162,12 +162,12 @@
       "20261111_ROLLING_PERSON_WORLD_DURATION_MATERIAL_MEDIATION_R1.md (frozen programme source)"
     ],
     "test": [
-      "C01/test_c01_b_supporting_actor.py",
-      "C01/evidence/c01_b_supporting_actor.log",
-      "C01/evidence/a_c01_p2_b01_regression.log",
-      "C01/evidence/p3_owner_regression.log",
-      "C01/evidence/engine_p6_regression.log",
-      "C01/evidence/p3_vertical_selected_regression.log"
+      "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/test_c01_b_supporting_actor.py",
+      "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/c01_b_supporting_actor.log",
+      "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/a_c01_p2_b01_regression.log",
+      "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/p3_owner_regression.log",
+      "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/engine_p6_regression.log",
+      "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/p3_vertical_selected_regression.log"
     ],
     "negative": [
       "test_identity_namespaces_refuse_root_and_user_collisions",
@@ -198,7 +198,7 @@
     "Native/scientific/rights/actor/human/protected merges remain held."
   ],
   "regressed_obligations": [
-    "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; pre-C01/pre-B01 state roots refuse cold reopen under the new code. Same-code roots reopen exactly; no migration invented.",
+    "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; pre-WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/pre-B01 state roots refuse cold reopen under the new code. Same-code roots reopen exactly; no migration invented.",
     "C01 registration and participation remain origin-branch-bound. A C12 fork copies rows but reads refuse SUPPORTING_ACTOR_ROOT_OR_BRANCH_MISMATCH; the exact incompatibility is preserved and tested.",
     "A post-admission participation refusal still leaves the inherited P2 ambiguous reservation; event admission plus participation is not one composite transaction (E03 owns recovery).",
     "No full-estate run. The pre-existing P6 chronology-proof failure and the full P3 vertical-slice timeout are untouched."
