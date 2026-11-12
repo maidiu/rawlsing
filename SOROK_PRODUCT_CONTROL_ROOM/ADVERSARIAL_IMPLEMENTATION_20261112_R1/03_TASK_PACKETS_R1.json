@@ -68,12 +68,13 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "A_COUNTER_RUNNING_P3_INTERLEAVING_PROOF_PENDING",
+      "status": "AUTHOR_TESTED_A_CANDIDATE_SAME_B_COUNTER_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "pair": 1,
       "immutable_contract": "pair1-B-B03-counter-B02-v4.txt",
       "B_candidate_head": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
-      "not_independently_accepted": true
+      "not_independently_accepted": true,
+      "A_candidate_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a"
     },
     {
       "id": "B03",
@@ -121,12 +122,14 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHORIZED_DEPENDENCY_ORDERED_BUILD_AFTER_B02_COUNTER",
+      "status": "AUTHOR_TESTED_A_CANDIDATE_SAME_B_COUNTER_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
       "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution.",
       "running_contract": "pair1-A-B02-counter-B04-B05-v5.txt",
-      "live_root_join_note": "C02 B 4d93685df4c5abdfbd09f44510a24a41c850b6a8 truthful MATERIAL_ACTIVITY/history-bound parent currency; direct world writes fail ordinary P6 P4_COLD_STATE_MISMATCH. Same A repairs via existing record_activity path, not weaker check/new ledger. Released vocabulary is returned input; active others FINISH_THEN_RECONCILE."
+      "live_root_join_note": "C02 B 4d93685df4c5abdfbd09f44510a24a41c850b6a8 truthful MATERIAL_ACTIVITY/history-bound parent currency; direct world writes fail ordinary P6 P4_COLD_STATE_MISMATCH. Same A repairs via existing record_activity path, not weaker check/new ledger. Released vocabulary is returned input; active others FINISH_THEN_RECONCILE.",
+      "A_candidate_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+      "not_independently_accepted": true
     },
     {
       "id": "B05",
@@ -148,10 +151,12 @@
         "12"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHORIZED_DEPENDENCY_ORDERED_BUILD_AFTER_B02_COUNTER",
+      "status": "AUTHOR_TESTED_A_CANDIDATE_SAME_B_COUNTER_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
-      "running_contract": "pair1-A-B02-counter-B04-B05-v5.txt"
+      "running_contract": "pair1-A-B02-counter-B04-B05-v5.txt",
+      "A_candidate_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+      "not_independently_accepted": true
     },
     {
       "id": "C01",
@@ -212,7 +217,8 @@
       "A_candidate_head": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26",
       "dated_period_candidate": "B02 B 4f78bf71d9674450f4b32811f0dbee84adf3ed14 exposes historical_period read/as-of/S46 spans; author-tested scheduled-only, not a full P3 cycle. Active contracts FINISH_THEN_RECONCILE; no automatic READY.",
       "B_candidate_head": "4d93685df4c5abdfbd09f44510a24a41c850b6a8",
-      "not_independently_accepted": true
+      "not_independently_accepted": true,
+      "material_period_join": "B02 incremental/B04 parent purchase/B05 rent candidate8de517 returned; parent-history purchase kind and live-root composition remain unqualified. Active contracts immutable; reconcile at next return, no automatic READY."
     },
     {
       "id": "C03",
@@ -242,7 +248,8 @@
       "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet.",
       "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution.",
       "dated_period_candidate": "B02 B 4f78bf71d9674450f4b32811f0dbee84adf3ed14 exposes historical_period read/as-of/S46 spans; author-tested scheduled-only, not a full P3 cycle. Active contracts FINISH_THEN_RECONCILE; no automatic READY.",
-      "live_root_join_note": "C02 B 4d93685df4c5abdfbd09f44510a24a41c850b6a8 truthful MATERIAL_ACTIVITY/history-bound parent currency; direct world writes fail ordinary P6 P4_COLD_STATE_MISMATCH. Same A repairs via existing record_activity path, not weaker check/new ledger. Released vocabulary is returned input; active others FINISH_THEN_RECONCILE."
+      "live_root_join_note": "C02 B 4d93685df4c5abdfbd09f44510a24a41c850b6a8 truthful MATERIAL_ACTIVITY/history-bound parent currency; direct world writes fail ordinary P6 P4_COLD_STATE_MISMATCH. Same A repairs via existing record_activity path, not weaker check/new ledger. Released vocabulary is returned input; active others FINISH_THEN_RECONCILE.",
+      "material_period_join": "B02 incremental/B04 parent purchase/B05 rent candidate8de517 returned; parent-history purchase kind and live-root composition remain unqualified. Active contracts immutable; reconcile at next return, no automatic READY."
     },
     {
       "id": "C04",
@@ -351,7 +358,8 @@
       "A_candidate_head": "0d591ff6eab1477bc7e5058e1dd7740813125d19",
       "dated_period_candidate": "B02 B 4f78bf71d9674450f4b32811f0dbee84adf3ed14 exposes historical_period read/as-of/S46 spans; author-tested scheduled-only, not a full P3 cycle. Active contracts FINISH_THEN_RECONCILE; no automatic READY.",
       "B_candidate_head": "0ac3002b94e8a5ebc31842c2686a6a664e8cd63a",
-      "not_independently_accepted": true
+      "not_independently_accepted": true,
+      "material_period_join": "B02 incremental/B04 parent purchase/B05 rent candidate8de517 returned; parent-history purchase kind and live-root composition remain unqualified. Active contracts immutable; reconcile at next return, no automatic READY."
     },
     {
       "id": "D03",
@@ -456,7 +464,8 @@
       "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution.",
       "dated_period_candidate": "B02 B 4f78bf71d9674450f4b32811f0dbee84adf3ed14 exposes historical_period read/as-of/S46 spans; author-tested scheduled-only, not a full P3 cycle. Active contracts FINISH_THEN_RECONCILE; no automatic READY.",
       "live_root_join_note": "C02 B 4d93685df4c5abdfbd09f44510a24a41c850b6a8 truthful MATERIAL_ACTIVITY/history-bound parent currency; direct world writes fail ordinary P6 P4_COLD_STATE_MISMATCH. Same A repairs via existing record_activity path, not weaker check/new ledger. Released vocabulary is returned input; active others FINISH_THEN_RECONCILE.",
-      "qualified_context_note": "D02 B 0ac3002b94e8a5ebc31842c2686a6a664e8cd63a fixes event/access/source closure. Same A adds actually eligible acquired P3 organization and exact available B02 ingress; neither option labels/head hash nor provider transport are actor action/native psychology."
+      "qualified_context_note": "D02 B 0ac3002b94e8a5ebc31842c2686a6a664e8cd63a fixes event/access/source closure. Same A adds actually eligible acquired P3 organization and exact available B02 ingress; neither option labels/head hash nor provider transport are actor action/native psychology.",
+      "material_period_join": "B02 incremental/B04 parent purchase/B05 rent candidate8de517 returned; parent-history purchase kind and live-root composition remain unqualified. Active contracts immutable; reconcile at next return, no automatic READY."
     },
     {
       "id": "E02",
@@ -487,7 +496,8 @@
       "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet.",
       "situated_context_candidate": "D02 current-clock selector at0d591ff6... under B challenge; no actor choice/durable effect; B02 and exact C01 integration held.",
       "dated_period_candidate": "B02 B 4f78bf71d9674450f4b32811f0dbee84adf3ed14 exposes historical_period read/as-of/S46 spans; author-tested scheduled-only, not a full P3 cycle. Active contracts FINISH_THEN_RECONCILE; no automatic READY.",
-      "qualified_context_note": "D02 B 0ac3002b94e8a5ebc31842c2686a6a664e8cd63a fixes event/access/source closure. Same A adds actually eligible acquired P3 organization and exact available B02 ingress; neither option labels/head hash nor provider transport are actor action/native psychology."
+      "qualified_context_note": "D02 B 0ac3002b94e8a5ebc31842c2686a6a664e8cd63a fixes event/access/source closure. Same A adds actually eligible acquired P3 organization and exact available B02 ingress; neither option labels/head hash nor provider transport are actor action/native psychology.",
+      "material_period_join": "B02 incremental/B04 parent purchase/B05 rent candidate8de517 returned; parent-history purchase kind and live-root composition remain unqualified. Active contracts immutable; reconcile at next return, no automatic READY."
     },
     {
       "id": "E03",
@@ -699,7 +709,7 @@
   ],
   "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers.",
   "frozen_programme_head": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "runtime_snapshot_utc": "2026-11-12T13:26:19.995406+00:00",
+  "runtime_snapshot_utc": "2026-11-12T13:45:46.641854+00:00",
   "persistent_pairs": [
     {
       "pair": 1,
@@ -708,12 +718,12 @@
         "A": "ses_e3129596bffes0LaqGfkjAwEuQ",
         "B": "ses_e312958e8ffeVzjGxpyNpsMatM"
       },
-      "state": "A_COUNTER_RUNNING",
-      "active_job": "sorok-duel-pair1-b02-counter-b04-b05-a-20261112-r1",
-      "opponent_frozen_head": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
-      "base_commit": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
-      "next_packet": "B04_THEN_B05",
-      "active_contract_sha256": "f3cb84d3dbd51f3a5bfa495d7e7f06c2f109ad0989ccb1f85442e868f6916356"
+      "state": "B_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair1-b04-b05-counter-b-20261112-r1",
+      "opponent_frozen_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+      "base_commit": "2a47fb389b453c2f902b8c13ed52304fb40efd0d",
+      "next_packet": "B02_B04_B05_REAL_COMPOSITION",
+      "active_contract_sha256": "d01ca6637b1d03429295df1b37e5e2709ee4169b603440d0fe140600f058d2ab"
     },
     {
       "pair": 2,
@@ -848,6 +858,16 @@
       "status": "AUTHOR_TESTED_SAME_A_COUNTER_RUNNING",
       "actual_change": "Actual event-time/ordinal latest-perception selection; stable access identity with separate read clock; event/current copresence distinction; local 12-file context closure and refusal/rebuild/restoration.",
       "limitations": "P3_HEAD_ONLY_NOT_RECORDS is not acquired organization; no independent/native/actor/product/protected acceptance. B02 absent at frozen B input, supplied to next A."
+    },
+    {
+      "task": "B02_COUNTER_B04_B05",
+      "role": "A",
+      "head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+      "implementation": "62292613aa9210a7d3e944314e36924349337439",
+      "branch": "codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1",
+      "status": "AUTHOR_TESTED_SAME_B_COUNTER_RUNNING",
+      "actual_change": "Incremental materialize_to/remaining interval spans, period receipt recovery and one actual P3Owner interleave; parent-funded stock/ownership purchase/refusal; completed-period household rent and later material/parent readers.",
+      "limitations": "Full P3 BatchEngine, stricter parent-history purchase compatibility, normal P6 entry, public purchase event, forks and independent receiving unproven. No native/science/actor/human/protected acceptance."
     }
   ],
   "composition_candidate": {
@@ -972,6 +992,16 @@
       "owner": "Pair2 SAME A",
       "status": "AUTOMERGED_NOT_YET_EXECUTED_OR_ACCEPTED",
       "scope": "Qualified acquired P3 organization and exact period ingress through existing read owners; no world-knowledge or actor-choice substitution."
+    },
+    {
+      "head": "2a47fb389b453c2f902b8c13ed52304fb40efd0d",
+      "inputs": [
+        "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+        "4d93685df4c5abdfbd09f44510a24a41c850b6a8"
+      ],
+      "owner": "Pair1 SAME B",
+      "status": "AUTOMERGED_NOT_EXECUTED_OR_ACCEPTED",
+      "scope": "B02/B04/B05 counterstrike using actual stricter parent read owner; parent files remain Pair3-exclusive."
     }
   ],
   "queued_semantic_reconciliation": [
@@ -992,6 +1022,12 @@
       "source": "C02 B actual P6 probe at4d93685df4c5abdfbd09f44510a24a41c850b6a8",
       "need": "Use existing foreground_lock/check_boundary/record_activity before/after competent background actor writes; do not re-bless an already drifted root. Normal view and ordinary user turn must consume it cold without parent private leakage.",
       "status": "OBSERVED_DEFECT_REPAIR_COMMISSIONED"
+    },
+    {
+      "task": "B04_C02_C03",
+      "source": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+      "need": "B04 P2_PARENT_PURCHASE changes parent material; C02 history reader excludes that operation kind. Reconcile exact competent producer/reader at next Pair3 return without weakening history binding, relabeling purchase or mutating active contracts.",
+      "status": "OBSERVED_AUTHOR_REPORTED_COMPOSITION_GAP"
     }
   ],
   "provider_reported_session_cost_snapshot": {
