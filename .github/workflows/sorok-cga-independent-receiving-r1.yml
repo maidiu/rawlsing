@@ -1,0 +1,30 @@
+name: SOROK CG-A independent G5 receiving - sourcefree only
+on:
+  push:
+    branches:
+      - review/sorok-cga-independent-receiving-20261112-r1
+permissions:
+  contents: read
+jobs:
+  independent-s2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest
+      - name: Non-author independently constructed hostile source and cold tests
+        run: python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_receiver.py
+      - name: Original A and B first consumer tests
+        run: |
+          python -B -m pytest -q -p no:cacheprovider \
+            WORKER_RETURNS/SOROK-CGA-AGENT-A-RELAY-R1/test_cue_issuer.py \
+            WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py
+      - name: Wider inherited P3/P4/P6 regressions, not just cherry-picked cases
+        run: |
+          python -B -m pytest -q -p no:cacheprovider \
+            WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py \
+            WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py
