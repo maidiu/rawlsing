@@ -494,3 +494,390 @@ stage.build_sourcefree_external_i02(
     for orphan in orphans:
         with pytest.raises(ExternalI02IntegrityError):
             VerifiedExternalI02(orphan, roots=forged)
+
+
+def test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03(tmp_path):
+    """G3: an already-verified connection is not a writable selector authority.
+
+    SQLite's PRAGMA query_only is itself mutable. An untrusted consumer holding
+    the public db handle can turn it off and create a TEMP table that takes
+    precedence over the authenticated main.selectors in ordinary unqualified
+    SELECT statements. No root, file, class or Python attribute is reassigned.
+    """
+    source = _build_source("s2b-a-temp-shadow", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-temp-shadow")
+    assert oracle.facts[0].typed_state == "SUPPORTED"
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            verified.db.execute("PRAGMA query_only=OFF")
+            verified.db.execute("""
+                CREATE TEMP TABLE selectors(
+                    respondent TEXT, kind TEXT, target TEXT, event_ref TEXT
+                )
+            """)
+        except ExternalI02IntegrityError:
+            pass  # fixed certificate does not expose mutable SQL commands
+        else:
+            # If both commands succeed, main.selector bytes/root are untouched
+            # but native SELECT FROM selectors silently resolves temp.selectors.
+            poisoned_result = _run(source, qa, pred, query)
+            assert poisoned_result == oracle, (
+                "G3 RED: post-verification TEMP selector shadow silently "
+                "changed real native I03 result under unchanged trusted roots"
+            )
+        assert _run(source, qa, pred, query) == oracle
+    # The original on-disk certificate has not changed.
+    with VerifiedExternalI02(path, roots=roots) as fresh:
+        assert list(fresh.respondent_refs())
+
+
+def test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty(tmp_path):
+    """G3: independently authenticated main.objects must not resolve TEMP."""
+    source = _build_source("s2b-a-object-shadow", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-object-shadow")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as real:
+        with pytest.raises(ExternalI02IntegrityError, match="only permits SELECT"):
+            real.db.execute("PRAGMA query_only=OFF")
+        with pytest.raises(ExternalI02IntegrityError, match="only permits SELECT"):
+            real.db.execute(
+                "CREATE TEMP TABLE objects AS SELECT * FROM main.objects WHERE 0"
+            )
+        # SELECT is allowed for existing read-only instrumentation, but no
+        # sqlite3.Cursor.connection or session-mutating public methods leak.
+        assert not hasattr(real.db.execute("SELECT 1"), "connection")
+        assert not hasattr(real.db, "create_collation")
+        assert len(list(real.respondent_refs())) == 2
+        respondent = source["respondents"]["R1"].ref.key
+        assert len(list(real.event_refs(respondent))) == 1
+        assert len(list(real.selector_refs(respondent, source["qrefs"]["Y"]))) == 1
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+    with VerifiedExternalI02(path, roots=roots) as fresh:
+        assert len(list(fresh.respondent_refs())) == 2
+
+
+def test_s2b_a_counterattack_midstream_close_typed_refusal(tmp_path):
+    """G3/G4: close between certified occurrences must not leak untyped SQL."""
+    source = _multi_i03_source("s2b-a-close-between-occurrences")
+    path, roots = _prepare(tmp_path, source)
+    respondent = source["respondents"]["R1"].ref.key
+    target = source["qrefs"]["Y"]
+    cert = VerifiedExternalI02(path, roots=roots)
+    try:
+        iterator = cert.selector_refs(respondent, target, native_only=True)
+        first = next(iterator)
+        assert first.kind == source["repo"].resolve_object_exact(first).ref.kind
+        cert.close()
+        with pytest.raises(ExternalI02IntegrityError, match="closed|invalidated"):
+            next(iterator)
+        with pytest.raises(ExternalI02IntegrityError, match="closed|invalidated"):
+            list(cert.event_refs(respondent))
+    finally:
+        cert.close()
+
+
+def test_s2b_a_counterattack_publication_cannot_clobber_rival(tmp_path, monkeypatch):
+    """G4: target acquired between precheck and publish must never be replaced.
+
+    Two noncolliding writer leases must not accidentally inherit an os.replace
+    overwrite primitive; the final CAS name is publish-once, not last-writer.
+    """
+    import rawlsing_next._pre553_external_i02_certificate as impl
+    source = _build_source("s2b-a-race", [{"id": "R1", "responses": {"Y": 1}}])
+    target = tmp_path / "race.sqlite"
+    rival = b"other-writer-held-destination\n"
+    orig_replace = impl.os.replace
+    orig_link = impl.os.link
+    def competing_replace(stage, destination, *args, **kwargs):
+        target.write_bytes(rival)
+        return orig_replace(stage, destination, *args, **kwargs)
+    def competing_link(stage, destination, *args, **kwargs):
+        target.write_bytes(rival)
+        return orig_link(stage, destination, *args, **kwargs)
+    monkeypatch.setattr(impl.os, "replace", competing_replace)
+    monkeypatch.setattr(impl.os, "link", competing_link)
+    with pytest.raises(ExternalI02IntegrityError, match="collision|claimed|destination"):
+        build_sourcefree_external_i02(
+            _release(source), source["universe"].ref, target, chunk_size=1,
+        )
+    assert target.read_bytes() == rival
+    assert not any(tmp_path.glob(".s2b-stage-*.tmp"))
+
+
+def test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation(tmp_path):
+    """G3: even main-qualified SQL can be falsified by mutable BINARY collation.
+
+    A genuine sqlite3.Connection admits create_collation('BINARY', fn), so
+    respondent/target WHERE equality can match unrelated real I02 rows with
+    no file/manifest/root change. This attack does NOT use Python setattr or
+    arbitrary private-object mutation; it uses the public exposed db API.
+    """
+    source = _build_source("s2b-a-collation", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-collation")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            verified.db.create_collation("BINARY", lambda a, b: 0)
+        except (ExternalI02IntegrityError, AttributeError):
+            pass  # no public ability to redefine authenticated SQL semantics
+        else:
+            # Under Agent B's raw verified.db sqlite connection, every
+            # equality is now counterfeit. A derived I03 fact must not change.
+            assert _run(source, qa, pred, query) == oracle, (
+                "G3 RED: BINARY collation replaced after external root "
+                "verification, changing real native I03 semantics"
+            )
+        assert _run(source, qa, pred, query) == oracle
+    with VerifiedExternalI02(path, roots=roots) as fresh:
+        assert len(list(fresh.respondent_refs())) == 3
+
+
+def test_s2b_a_counterattack_nested_sql_handles_are_immutable(tmp_path):
+    """B's original db-reassignment defect must not recur inside A's facade."""
+    source = _build_source("s2b-a-nested-sql-swap", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-nested-sql-swap")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        rogue_connection = sqlite3.connect(":memory:")
+        try:
+            with pytest.raises(ExternalI02IntegrityError, match="immutable"):
+                verified.db._VerifiedSelectOnlyDatabase__connection = rogue_connection
+            rows = verified.db.execute("SELECT 1")
+            with pytest.raises(ExternalI02IntegrityError, match="immutable"):
+                rows._VerifiedSqlRows__cursor = rogue_connection.execute("SELECT 0")
+            assert rows.fetchone() == (1,)
+        finally:
+            rogue_connection.close()
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+
+def test_s2b_a_r2_public_sqlite_connection_rollback_corrupts_native_i03(tmp_path):
+    """RED on B: public db.execute('ROLLBACK') releases the verified snapshot.
+
+    A second writer can now alter the real SQLite file; the already-attested
+    I03 index reopens the changed posting keyspace under the *old* roots.
+    This is not object.__setattr__, subclassing or a forged certificate type.
+    """
+    source = _build_source("s2b-a-r2-rollback", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-r2-rollback")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref,
+            verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            verified.db.execute("ROLLBACK")
+        except ExternalI02IntegrityError:
+            assert _run(source, qa, pred, query) == oracle
+            return
+        # The read transaction was actually destroyed; real on-disk data
+        # changes are now observed by the exact previously verified instance.
+        with sqlite3.connect(path) as attacker:
+            removed = attacker.execute(
+                "DELETE FROM selectors WHERE kind='native'"
+            ).rowcount
+            assert removed == 3
+        poisoned_result = _run(source, qa, pred, query)
+        assert poisoned_result != oracle, "repro requires real native fact corruption"
+        pytest.fail(
+            "post-validation public SQLite rollback silently changed native I03 facts"
+        )
+
+
+def test_s2b_a_r2_deleting_verifier_seal_allows_db_substitution(tmp_path):
+    """RED on B: ordinary delattr(_sealed) disables __setattr__ guard."""
+    import shutil
+    source = _build_source("s2b-a-r2-delattr", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-r2-delattr")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    poison = tmp_path / "locally-rehashed-but-not-anchored.sqlite"
+    shutil.copy2(path, poison)
+    with sqlite3.connect(poison) as untrusted:
+        removed = untrusted.execute(
+            "DELETE FROM selectors WHERE kind='native'"
+        ).rowcount
+        assert removed == 3
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        try:
+            del verified._sealed
+        except ExternalI02IntegrityError:
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                verified,
+            )
+            assert _run(source, qa, pred, query) == oracle
+            return
+        replacement = sqlite3.connect(poison)
+        try:
+            verified.db = replacement
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                verified,
+            )
+            poisoned_result = _run(source, qa, pred, query)
+            assert poisoned_result != oracle
+            pytest.fail(
+                "ordinary delattr bypassed B's attribute seal and altered native I03"
+            )
+        finally:
+            replacement.close()
+
+
+def test_s2b_a_r2_atomic_publication_collision_preserves_other_writer(tmp_path, monkeypatch):
+    """A checked-absent final path can be claimed while builder works.
+
+    B inherited A's TOCTOU exists()->os.replace(): the competing final file
+    was silently lost. This test inserts the rival exactly at publication and
+    requires a typed refusal without clobbering that file.
+    """
+    source = _build_source("s2b-a-r2-publish-race", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    destination = tmp_path / "published.sqlite"
+    import os
+    real_link = os.link
+    collision_called = []
+
+    def race_link(source_path, target_path, *, follow_symlinks=True):
+        collision_called.append((source_path, target_path))
+        Path(target_path).write_bytes(b"unrelated-writer-exclusive-claim")
+        return real_link(source_path, target_path,
+                         follow_symlinks=follow_symlinks)
+
+    monkeypatch.setattr(os, "link", race_link)
+    with pytest.raises(ExternalI02IntegrityError, match="destination collision"):
+        build_sourcefree_external_i02(
+            _release(source), source["universe"].ref, destination,
+            chunk_size=2,
+        )
+    assert len(collision_called) == 1
+    assert destination.read_bytes() == b"unrelated-writer-exclusive-claim"
+    assert not list(tmp_path.glob(".s2b-stage-*.tmp"))
+
+
+def test_s2b_a_r2_only_readonly_select_rows_and_closed_iterators(tmp_path):
+    source = _build_source("s2b-a-r2-facade", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        assert verified.db.execute("SELECT 1").fetchone() == (1,)
+        for invalid in (
+            "ROLLBACK", "COMMIT", "PRAGMA query_only=OFF",
+            "CREATE TEMP TABLE selectors(kind TEXT)",
+            "SELECT 1; ROLLBACK", "SELECT * FROM nonexistent",
+        ):
+            with pytest.raises(ExternalI02IntegrityError):
+                verified.db.execute(invalid)
+        cursor = verified.db.execute("SELECT ref FROM main.objects ORDER BY ref")
+        assert not hasattr(cursor, "connection")
+        assert not hasattr(verified.db, "create_collation")
+        assert next(iter(cursor))[0]
+        verified.close()
+        with pytest.raises(ExternalI02IntegrityError, match="closed"):
+            next(cursor)
+        with pytest.raises(ExternalI02IntegrityError, match="closed"):
+            verified.db.execute("SELECT 1")
+
+
+def test_s2b_a_r2_same_semantics_different_physical_path_swap_pins_inode(
+    tmp_path, monkeypatch,
+):
+    """Physical root G3: adversary swaps equal-semantic but different bytes.
+
+    Pre-repair: _digest_file(path) saw the genuine bytes; the distinct
+    sqlite3.connect(path) then opened a physically different file with an
+    unchanged logical root, silently treating its physical identity as held.
+    This intercepts exactly the connect boundary, not private Python mutation
+    of a previously verified certificate.
+    """
+    import shutil
+    import os
+    from rawlsing_next import _pre553_external_i02_certificate as owner
+
+    source = _build_source("s2b-a-r2-physical-race", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-r2-physical-race")
+    path, roots = _prepare(tmp_path, source)
+    alternate = tmp_path / "same-logical-different-physical.sqlite"
+    archived = tmp_path / "original-verified-inode.sqlite"
+    shutil.copy2(path, alternate)
+    with sqlite3.connect(alternate) as connection:
+        connection.execute("PRAGMA user_version=19")
+        assert _logical_root(connection) == roots.logical
+    assert _digest_file(alternate) != roots.physical
+
+    original_connect = sqlite3.connect
+    swapped = []
+
+    def swap_just_before_sqlite_opens(database, *args, **kwargs):
+        if not swapped and "mode=ro" in str(database):
+            os.replace(path, archived)
+            os.replace(alternate, path)
+            swapped.append(True)
+        return original_connect(database, *args, **kwargs)
+
+    monkeypatch.setattr(owner.sqlite3, "connect", swap_just_before_sqlite_opens)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        assert swapped
+        assert _digest_file(path) != roots.physical
+        assert _digest_file(archived) == roots.physical
+        # Read-only source inspection of the actual opened SQLite connection:
+        # public user_version is not exposed as certified semantic output.
+        opened_connection = getattr(
+            verified.db, "_VerifiedSelectOnlyDatabase__connection", verified.db
+        )
+        assert opened_connection.execute(
+            "PRAGMA user_version"
+        ).fetchone() == (0,), "physical-root verifier opened swapped untrusted inode"
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref,
+            verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
