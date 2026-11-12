@@ -300,10 +300,10 @@
   "successor_960_working_overlay": {
     "issue": 960,
     "packet": "S2-G/P2-08",
-    "state": "A_DELIVERED_PENDING_FIXED_B_NOT_ACCEPTED",
+    "state": "B_REPAIRED_CANDIDATE_PENDING_SAME_A_COUNTER_NOT_ACCEPTED",
     "a_delivery": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
     "a_implementation": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
-    "reported_tests": "147 owner/adapter +19 S2-F; author reports, not HQ replay",
+    "reported_tests": "152 owner/adapter +19 S2-F; B reports, not HQ/G5 replay",
     "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE_CANDIDATE",
     "b_job": "pyat960-s2g-b01",
     "b_session": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -317,6 +317,10 @@
       "original35/science",
       "protected merge"
     ],
-    "publication_scope": "isolated HQ branch overlay; inherited canonical progress below historical"
+    "publication_scope": "isolated HQ branch overlay; inherited canonical progress below historical",
+    "b_delivery": "220ebd3311fb0607079ed6a6e9a364d6681e5378",
+    "b_implementation": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
+    "a_counter_job": "pyat960-s2g-a02-counter",
+    "b_job_state": "TERMINAL_EXIT0"
   }
 }

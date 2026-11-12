@@ -376,3 +376,8 @@ At each material HQ cycle, provide: (i) whole L0–L5 objective, (ii) exact bran
 ## Working HQ #960 S2-G candidate intake — 2026-11-12
 
 S05 M1/M2/B5 durable lifecycle and learned/world first-reader seam: isolated sourcefree candidate delivered at `eb8f097341738dcc08ae3172fa35aeebcdc061c3` (code `fc820533a2a90b948a9e8e80b4f220005e701d4b`). Same fixed B now attacks/repairs that descendant; author tests are not independent acceptance. G5 NOT_RUN, integration UNMERGED. Source-chain changed-input/restore proof remains under challenge. Q2/S1-E and Q3/S2-C still depend on qualified S1-C/S2-B input ABIs. Actual production current issuer/full upstream/original35/scientific/protected holds remain. Exact custody and next action: `WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/RESUME_CHECKPOINT.md`; paired progress overlay in `PYAT_CONTROL_ROOM/CURRENT_PROGRESS.{md,json}`. This working-branch update does not change canonical protected maturity.
+
+
+### #960 S05 same-pair B delta / A counter — 2026-11-12
+
+B code `0071aefb05d8ebbd75058a10c5e831d994a2f96f` (delivery `220ebd3311fb0607079ed6a6e9a364d6681e5378`) adds evidence-chain membership, pinned retained as-of history and replay/protocol/receipt conservation checks; real native-cell change reaches M1/M2/B5/actual learned-world reader with exact restoration in B tests. Reported 152+19 PASS is candidate evidence. Same A counter launched on same descendant; G5 NOT_RUN, integration UNMERGED. All prior external holds and Q2/Q3 dependencies persist. No protected/canonical adoption inferred.

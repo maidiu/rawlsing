@@ -1,3 +1,7 @@
+# Successor #960 B return and A counter — 2026-11-12
+
+S2-G isolated candidate B delivery `220ebd3311fb0607079ed6a6e9a364d6681e5378` (code `0071aefb05d8ebbd75058a10c5e831d994a2f96f`) repairs same-chain evidence, as-of history and replay/receipt checks, and adds real native-cell changed/restore proof. B reports 152+19 PASS; independently unaccepted. Same fixed A counter `pyat960-s2g-a02-counter` now launched on B exact descendant; B idle. Distinct G5 still NOT_RUN, UNMERGED; full joined/original35/science/production issuer/protected holds unchanged. Historical entries follow.
+
 # Successor #960 working-branch overlay — 2026-11-12
 
 Original S2-G/P2-08: A delivered `eb8f097341738dcc08ae3172fa35aeebcdc061c3` (code `fc820533a2a90b948a9e8e80b4f220005e701d4b`), candidate only. Author reports 147 owner/adapter +19 S2-F tests and cold existing learned/world consumer; no HQ/G5 acceptance. Same fixed B launched `pyat960-s2g-b01` on A's exact descendant, with full law/code/handoff and explicit same-chain change/restore challenge. G5 NOT_RUN; integration UNMERGED. Q2/S1-E and Q3/S2-C dependency holds persist. Production issuer, full joined upstream, original35/science and protected merge held. This is an isolated HQ publication; inherited canonical/historical progress follows unchanged.
