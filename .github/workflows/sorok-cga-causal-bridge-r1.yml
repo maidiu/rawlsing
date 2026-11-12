@@ -1,0 +1,37 @@
+name: SOROK CG-A independent sourcefree first consumer
+on:
+  push:
+    branches:
+      - review/sorok-cga-causal-bridge-20261111-r1
+  pull_request:
+    paths:
+      - 'WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/**'
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/sourcefree_p3_bridge.py'
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py'
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py'
+
+permissions:
+  contents: read
+
+jobs:
+  causal-first-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Exact source identity of historical and current owner files
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD:WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py
+          git rev-parse HEAD:WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py
+          git rev-parse HEAD:WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py
+          git rev-parse HEAD:WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
+      - name: New causal first-consumer positive negative and restore
+        run: python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py
+      - name: Existing P6 situated interval regression
+        run: python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_silent_interval_reconsiders_and_commits_only_admitted_speech
