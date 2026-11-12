@@ -8,7 +8,7 @@
 
 ## 1. Exact artifact
 
-Author implementation commit: `92365fa169abc96c2c8a2dc7b003b3b08ab4f365`
+Author implementation commit: `e3a4ec5541bf1dd0df6b28f82733ae94d29f130f`
 (this handoff and the delta records are a following documentation commit on the same branch).
 
 Changed implementation paths:
@@ -16,6 +16,7 @@ Changed implementation paths:
 | Path | Change |
 |---|---|
 | `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py` | Fail-closed retention invariant in `P3Owner._check_or_write_config`: a missing owner config with an existing `p3_psyche.sqlite3` now refuses instead of silently regenerating plan provenance. |
+| `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py` | Additive read-only `PsycheStore.completed()` listing COMPLETE operations in durable sequence order for the D01 provenance anchor. |
 | `WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py` | Read-only D01 reuse boundary: durable-config cold open, exact producer identity, sourcefree record validation, later P3 consumer validation. No new owner, scheduler, rule, store or world writer. |
 | `WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py` | Five discriminating tests. |
 | `WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/*.log` | Captured pytest receipts. |
@@ -46,7 +47,7 @@ The selected producer identity (current code pins) is exposed by `d01_reuse.prod
 | Source | SHA-256 at this branch |
 |---|---|
 | `p3/p3_owner.py` (post-repair) | `ee2d0826a3680ce54a9031f8ce8316c58da2f4590d1a9efbc2d17b4ede210583` |
-| `p3/state_store.py` | `173d4d6d3e94580804cac90039a01bfe6e3adfffcda9e806a56132b10ecc06bf` |
+| `p3/state_store.py` (post-repair) | `0d92be8c6b215b63cd6ebfd327ff8bf4f7bfcca3ebb8760f8506d53b2136cc26` |
 | `p3/test_rules.py` | `27272cd43c26b6aa114ee65c97ca07eb56accecbd440841c29696b98e203b4b4` |
 | `p3/projections.py` | `ca405dda778191537ce38b0b63ff6b6ba8104dcd1ea676d6b458d454b362005b` |
 | engine `contracts.py` | `9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d` |
@@ -93,6 +94,8 @@ Pre-repair `p3_owner.py` SHA-256 was `e735ada798533a8f568739e823767bb2e2b4272c3c
 
 **Finding D01-A3 (scope).** The CG-A cold-later test already exercised P3 cold retention, but it re-supplied the source/history/plans from an in-memory `VerticalCase`. It did not cold-open from the durable config. D01 adds the durable-config loader and refuses missing config/store at that boundary. It does not duplicate or modify the CG-A P6 bridge.
 
+**Finding D01-A4 (repaired).** A config file is only self-hashed. Before the provenance anchor, an attacker or accidental editor could alter an unused plan (for example the later counterpart), recompute the plan hash and `config_hash`, and the cold loader would accept the substituted plan while retaining the two-record store head; the later consumer then returned `inspect_alone`. I reproduced this directly. The repair adds `PsycheStore.completed()` and recomputes the last completed operation's `after.state_hash` from its durable P2 after-state, durable psychology head and the loaded `config_hash`. A config whose hash was not the one used at the last completed operation now refuses `D01_COLD_CONFIG_PROVENANCE_MISMATCH`. The test also exercises exact config restore. This is a durable consistency anchor, not a cryptographic signature; a writer with full rewrite authority over the entire state root is outside the boundary.
+
 ## 5. Unresolved challenges
 
 - No native CAN-008/010/011, ADP-016/017/019, Pyat, C9/O15 native or human issuance; everything here is TEST_ONLY sourcefree engineering.
@@ -111,6 +114,8 @@ Pre-repair `p3_owner.py` SHA-256 was `e735ada798533a8f568739e823767bb2e2b4272c3c
 - **Producer selection:** show a current exact-ABI producer other than B1/P3Owner that is a better drop-in for D01 without a new owner or scheduler.
 - **`read_sourcefree_records` breadth:** the exact `V3MS_MEDIATOR`/formation-rule selection is intentional for D01; check whether D04 needs a compatible additive selector without weakening D01's exactness.
 - **Guard ordering:** verify the new refusal occurs before any P2/P3 effect and does not mask a more specific corruption diagnosis.
+- **Store rewrite authority:** the provenance anchor detects a substituted config against the last durable completion, but a writer that recomputes the operation/result/receipt hashes could defeat it. If the commission needs Byzantine state-root tamper evidence, that requires an external authenticated root, not another local hash.
+- **Pending-operation cold state:** the D01 cold loader refuses any pending operation (`D01_COLD_OPERATION_PENDING`); verify this is the desired consumer behavior versus P3's own recovery path, which needs the exact original proposal/expected state.
 
 ## 7. Rejected alternatives
 
@@ -128,7 +133,8 @@ Pre-repair `p3_owner.py` SHA-256 was `e735ada798533a8f568739e823767bb2e2b4272c3c
 - The changed-value proof is at the exact rule boundary with an identical event hash; it is not a second actual P2 session.
 - The negative proofs are refusal/absence/changed-computation controls at the D01 boundary, not claims about untested native rules.
 - No claim is made that D01 completes CG-D or the whole programme; D02–D05 and the material/parent/P6 joins remain separate.
-- The two-line `P3Owner` repair is a retention-integrity fix, not a change to the P3 rule, store protocol, registry, science or authority.
+- The `P3Owner`/`PsycheStore` repairs are retention-integrity fixes: a missing config with an existing store refuses, and cold config is anchored to the last completed operation's durable provenance. They are not rule, science or authority changes.
+- The provenance anchor is a local consistency check, not an authenticated signature; full state-root rewrite authority is not defeated.
 
 ## Hardest concrete challenge for the same B
 
