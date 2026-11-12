@@ -1,0 +1,41 @@
+name: PYAT Pair2 S2-B external I02 certificate and native I03
+on:
+  push:
+    branches:
+      - agent/pyat-pair2-s2b-a-ext-i02-20261112-r1
+  pull_request:
+    paths:
+      - 'rawlsing_next/_pre553_external_i02_certificate.py'
+      - 'rawlsing_next/tests/test_pre553_external_i02_certificate.py'
+      - '.github/workflows/pyat-pair2-s2b-external-i02.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-and-cold:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pyarrow pandas pyreadstat
+      - name: Compile S2-B and existing S2-A semantics
+        run: python -m py_compile rawlsing_next/_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_external_i02_certificate.py
+      - name: S2-B bounded cold whole-corpus/index + real native I03 and regression
+        env:
+          PYTHONPATH: .
+        run: |
+          /usr/bin/time -v python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py --junitxml=s2b-pair2.xml
+      - name: Isolated 2048-respondent material sourcefree CPU/RSS/scratch receipt
+        env:
+          PYTHONPATH: .
+        run: |
+          /usr/bin/time -v python -m pytest -q -s -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_material_sourcefree_resource_probe
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-s2b-external-i02-junit
+          path: s2b-pair2.xml
+          if-no-files-found: ignore
