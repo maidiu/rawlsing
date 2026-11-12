@@ -107,8 +107,8 @@ def test_exact_931_ff_mints_unauthorized_positive_d_but_repair_refuses(
         expected = "query-specific authority refs"
     changed_f = _rebind_fact(original_f, original_q, changed_q)
     assert changed_f.typed_state == "SUPPORTED"
-    assert changed_f.empirical_query_spec_ref == changed_q.ref
-    assert changed_f.risk_set_ref == changed_q.risk_set_ref
+    assert exact_ref(changed_f.empirical_query_spec_ref) == changed_q.ref
+    assert exact_ref(changed_f.risk_set_ref) == exact_ref(changed_q.risk_set_ref)
     assert semantic_hash(changed_q.semantic_projection()) == changed_q.content_hash
     assert semantic_hash(changed_f.semantic_projection()) == changed_f.content_hash
 
