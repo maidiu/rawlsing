@@ -15,6 +15,8 @@ An **original unissued psychological Rule T** blocks a claim to native acquisiti
 
 ## 2. The missing hierarchy: prerequisites before decisions before implementation
 
+**Do not create false dependency gates:** The 'full original capability' column means **unqualified downstream human/person-world generalization**, *not* whether a bounded sourcefree packet can receive scoped engineering acceptance. All 27 packets may close at their warranted sourcefree grade with genuine consumer/falsifier evidence and proper independent tranche receiving, even when listed scientific or executive generalization nodes remain held. In particular **C01 independent-actor registration does not require A04 mother's full employment history**, and **G04 scoped no-drop receiving does not require H01 native/human issuance**; H01 applies only to those higher claims.
+
 The pre-existing **engineering DAG** states e.g. C03 depends on C02+B04; D03 depends on D02+C04; E01 depends on B04+C04+D03; E02 depends on E01+B05+C05+D04. Those dependencies are preserved exactly.
 
 The new **semantic DAG** identifies which decisions can lawfully be reached *only after other decisions or governing source reconstructions*. It contains 21 acyclic nodes, arranged into prerequisite levels. Levels are a partial order, **not** 8 successive committee meetings.
@@ -93,7 +95,7 @@ The diagram is deliberately simplified. **The machine-readable JSON contains the
 | `B03` | **M** | `B01` | `K01` | `A01` | `SA-01`, `SA-20` |
 | `B04` | **M** | `B02`, `B03` | `K01` | `A01`, `A03`, `A04` | `SA-03`, `SA-20`, `SA-21`, `SA-23` |
 | `B05` | **M** | `B02`, `B04` | `K01` | `A02`, `A03`, `A08` | `SA-01`, `SA-02`, `SA-03`, `SA-05`, `SA-21`, `SA-22` |
-| `C01` | **M** | `B01` | `K01` | `A04` | — |
+| `C01` | **M** | `B01` | `K01` | `K01` | — |
 | `C02` | **T** | `C01`, `B02`, `B03` | `K01` | `A04`, `A06`, `S01` | `SA-01`, `SA-03`, `SA-04`, `SA-06`, `SA-07`, `SA-08`, `SA-10` |
 | `C03` | **T** | `C02`, `B04` | `K01` | `A01`, `A04`, `A06`, `S01` | `SA-01`, `SA-04`, `SA-07`, `SA-08`, `SA-09`, `SA-10`, `SA-20`, `SA-21`, `SA-24` |
 | `C04` | **T** | `C03` | `K01`, `A05` | `A07`, `S02`, `S03` | `SA-09`, `SA-10`, `SA-11`, `SA-12`, `SA-21` |
@@ -114,172 +116,171 @@ The diagram is deliberately simplified. **The machine-readable JSON contains the
 | `G01` | **G** | `F04` | `K01` | `A09` | — |
 | `G02` | **T** | `G01` | `K01`, `K02` | `A10`, `S05`, `S07` | `SA-19` |
 | `G03` | **G** | `G02` | `K01` | `A10` | — |
-| `G04` | **G** | `G02`, `G03` | `K00`, `K01`, `K02` | `H01` | — |
+| `G04` | **G** | `G02`, `G03` | `K00`, `K01`, `K02` | `K00`, `K01`, `K02` | — |
 
 ## 4. Task-by-task split: safe to grind versus not yet warranted
 
 #### B01 — Select existing material writer and bounded household state ABI
 
-**Label:** M · **Existing tasks:** none · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A01 · **Mapped issues:** SA-01, SA-24.
+**Label:** M · **Existing tasks:** none · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A01 · **Mapped issues:** SA-01, SA-24.
 
-**Safe grindable implementation:** Implement verified material writer/household source binding. **Prohibited premature claim:** Adult/child account and tenancy generalization.
+**Safe grindable implementation:** Implement verified material writer/household source binding. **Prohibited premature general claim:** Adult/child account and tenancy generalization.
 
 #### B02 — Map historical calendar/as-of to existing P3/S46 logical clock and split periods
 
-**Label:** M · **Existing tasks:** B01 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A02 · **Mapped issues:** SA-02, SA-04, SA-05, SA-06, SA-23.
+**Label:** M · **Existing tasks:** B01 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A02 · **Mapped issues:** SA-02, SA-04, SA-05, SA-06, SA-23.
 
-**Safe grindable implementation:** Implement bounded calendar-as-of and period split. **Prohibited premature claim:** Authoritative person-time admission.
+**Safe grindable implementation:** Implement bounded calendar-as-of and period split. **Prohibited premature general claim:** Authoritative person-time admission.
 
 #### B03 — Commit selected inhabited dwelling/tenancy/noise/space/resource facts
 
-**Label:** M · **Existing tasks:** B01 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A01 · **Mapped issues:** SA-01, SA-20.
+**Label:** M · **Existing tasks:** B01 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A01 · **Mapped issues:** SA-01, SA-20.
 
-**Safe grindable implementation:** Write dwelling/market facts; validate space/noise/price. **Prohibited premature claim:** General household holder authority.
+**Safe grindable implementation:** Write dwelling/market facts; validate space/noise/price. **Prohibited premature general claim:** General household holder authority.
 
 #### B04 — Implement consequential household work/care/resource and acquisition/refusal operations
 
-**Label:** M · **Existing tasks:** B02, B03 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A01, A03, A04 · **Mapped issues:** SA-03, SA-20, SA-21, SA-23.
+**Label:** M · **Existing tasks:** B02, B03 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A01, A03, A04 · **Mapped issues:** SA-03, SA-20, SA-21, SA-23.
 
-**Safe grindable implementation:** Construct purchase/stock/source/idempotent debit/refusal. **Prohibited premature claim:** General household economy and parent contribution semantics.
+**Safe grindable implementation:** Construct purchase/stock/source/idempotent debit/refusal. **Prohibited premature general claim:** General household economy and parent contribution semantics.
 
 #### B05 — Prove multicycle material duration and later first-consumer parity
 
-**Label:** M · **Existing tasks:** B02, B04 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A02, A03, A08 · **Mapped issues:** SA-01, SA-02, SA-03, SA-05, SA-21, SA-22.
+**Label:** M · **Existing tasks:** B02, B04 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A02, A03, A08 · **Mapped issues:** SA-01, SA-02, SA-03, SA-05, SA-21, SA-22.
 
-**Safe grindable implementation:** Run bounded interleave, material-reader cold replay. **Prohibited premature claim:** Whole multiyear causal reproduction/atomicity.
+**Safe grindable implementation:** Run bounded interleave, material-reader cold replay. **Prohibited premature general claim:** Whole multiyear causal reproduction/atomicity.
 
 #### C01 — Stable other-actor identities and dynamic participation without changing Nadia root
 
-**Label:** M · **Existing tasks:** B01 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A04 · **Mapped issues:** none.
+**Label:** M · **Existing tasks:** B01 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** K01 · **Mapped issues:** none.
 
-**Safe grindable implementation:** Register stable independent parent/other identities and separate perceptions. **Prohibited premature claim:** Fully constituted continuing participant model.
+**Safe grindable implementation:** Register stable independent parent/other identities and separate perceptions. **Prohibited premature general claim:** A separately registered actor is not yet a fully independently continuing mother; C01 scoped actor identity/participation can be accepted without completing C02 material history or scientific motive..
 
 #### C02 — Independent mother antecedent and continuing materially conditioned activity
 
-**Label:** T · **Existing tasks:** C01, B02, B03 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A04, A06, S01 · **Mapped issues:** SA-01, SA-03, SA-04, SA-06, SA-07, SA-08, SA-10.
+**Label:** T · **Existing tasks:** C01, B02, B03 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A04, A06, S01 · **Mapped issues:** SA-01, SA-03, SA-04, SA-06, SA-07, SA-08, SA-10.
 
-**Safe grindable implementation:** Commit parent-local circumstance and author-labeled performed work/care/debt. **Prohibited premature claim:** Independently selected long-term activity and finance.
+**Safe grindable implementation:** Commit parent-local circumstance and author-labeled performed work/care/debt. **Prohibited premature general claim:** Independently selected long-term activity and finance.
 
 #### C03 — Materially situated parent decision and action admission
 
-**Label:** T · **Existing tasks:** C02, B04 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A01, A04, A06, S01 · **Mapped issues:** SA-01, SA-04, SA-07, SA-08, SA-09, SA-10, SA-20, SA-21, SA-24.
+**Label:** T · **Existing tasks:** C02, B04 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A01, A04, A06, S01 · **Mapped issues:** SA-01, SA-04, SA-07, SA-08, SA-09, SA-10, SA-20, SA-21, SA-24.
 
-**Safe grindable implementation:** Calculate material feasible choices, admit explicit decision and actual action. **Prohibited premature claim:** Mother's independently generated motives and chosen action.
+**Safe grindable implementation:** Calculate material feasible choices, admit explicit decision and actual action. **Prohibited premature general claim:** Mother's independently generated motives and chosen action.
 
 #### C04 — Separate parent hidden reason, performed utterance, and Nadia-qualified uptake
 
-**Label:** T · **Existing tasks:** C03 · **Pre-expansion prerequisite(s):** K01, A05 · **Full-claim prerequisite(s):** A07, S02, S03 · **Mapped issues:** SA-09, SA-10, SA-11, SA-12, SA-21.
+**Label:** T · **Existing tasks:** C03 · **Pre-expansion prerequisite(s):** K01, A05 · **Full generalization prerequisite(s):** A07, S02, S03 · **Mapped issues:** SA-09, SA-10, SA-11, SA-12, SA-21.
 
-**Safe grindable implementation:** Write speech event, private/public separation, causal child read. **Prohibited premature claim:** Self-generated parent intention, qualified hearing and Nadia uptake.
+**Safe grindable implementation:** Write speech event, private/public separation, causal child read. **Prohibited premature general claim:** Self-generated parent intention, qualified hearing and Nadia uptake.
 
 #### C05 — Continuing relations and variable-depth supporting actors
 
-**Label:** T · **Existing tasks:** C01, C04 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** S07 · **Mapped issues:** SA-25.
+**Label:** T · **Existing tasks:** C01, C04 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** S07 · **Mapped issues:** SA-25.
 
-**Safe grindable implementation:** Maintain relation identity, enter/leave, actor-local histories. **Prohibited premature claim:** Substantive relationship formation and transfer.
+**Safe grindable implementation:** Maintain relation identity, enter/leave, actor-local histories. **Prohibited premature general claim:** Substantive relationship formation and transfer.
 
 #### D01 — Exact-reuse positive-development producer selection and sourcefree native-rule boundary
 
-**Label:** M · **Existing tasks:** none · **Pre-expansion prerequisite(s):** K01, K02 · **Full-claim prerequisite(s):** S04 · **Mapped issues:** SA-14.
+**Label:** M · **Existing tasks:** none · **Pre-expansion prerequisite(s):** K01, K02 · **Full generalization prerequisite(s):** S04 · **Mapped issues:** SA-14.
 
-**Safe grindable implementation:** Reuse P3/PsycheStore actual indexed targets, cold state and holds. **Prohibited premature claim:** Positive scientific acquisition from flagged response.
+**Safe grindable implementation:** Reuse P3/PsycheStore actual indexed targets, cold state and holds. **Prohibited premature general claim:** Positive scientific acquisition from flagged response.
 
 #### D02 — Actor-local situated-field projection of actual world, state and accessible relations
 
-**Label:** M · **Existing tasks:** D01, B02, C01 · **Pre-expansion prerequisite(s):** K01, A05 · **Full-claim prerequisite(s):** S03, S07 · **Mapped issues:** SA-05, SA-06, SA-11, SA-12, SA-13, SA-15, SA-16, SA-17, SA-18, SA-24.
+**Label:** M · **Existing tasks:** D01, B02, C01 · **Pre-expansion prerequisite(s):** K01, A05 · **Full generalization prerequisite(s):** S03, S07 · **Mapped issues:** SA-05, SA-06, SA-11, SA-12, SA-13, SA-15, SA-16, SA-17, SA-18, SA-24.
 
-**Safe grindable implementation:** Project bounded objective and actor-qualified readsets to P3. **Prohibited premature claim:** Unrestricted recruitment/general knowledge or transfer.
+**Safe grindable implementation:** Project bounded objective and actor-qualified readsets to P3. **Prohibited premature general claim:** Unrestricted recruitment/general knowledge or transfer.
 
 #### D03 — Sourcefree CAN-008 immediate uptake versus durable formation
 
-**Label:** T · **Existing tasks:** D02, C04 · **Pre-expansion prerequisite(s):** K02, A05 · **Full-claim prerequisite(s):** A07, S03 · **Mapped issues:** SA-09, SA-11, SA-12, SA-13, SA-14, SA-15, SA-17, SA-19, SA-25.
+**Label:** T · **Existing tasks:** D02, C04 · **Pre-expansion prerequisite(s):** K02, A05 · **Full generalization prerequisite(s):** A07, S03 · **Mapped issues:** SA-09, SA-11, SA-12, SA-13, SA-14, SA-15, SA-17, SA-19, SA-25.
 
-**Safe grindable implementation:** Connect admitted speech to actual immediate sourcefree actor consumer. **Prohibited premature claim:** Qualified appraisal/response generalization.
+**Safe grindable implementation:** Connect admitted speech to actual immediate sourcefree actor consumer. **Prohibited premature general claim:** Qualified appraisal/response generalization.
 
 #### D04 — Acquire, inhibit, reinforce or explicitly hold one bounded actor-state target
 
-**Label:** T · **Existing tasks:** D01, D03, B05 · **Pre-expansion prerequisite(s):** K02 · **Full-claim prerequisite(s):** S04, S05, S06, S07 · **Mapped issues:** SA-14, SA-16, SA-17, SA-18, SA-19, SA-25.
+**Label:** T · **Existing tasks:** D01, D03, B05 · **Pre-expansion prerequisite(s):** K02 · **Full generalization prerequisite(s):** S04, S05, S06, S07 · **Mapped issues:** SA-14, SA-16, SA-17, SA-18, SA-19, SA-25.
 
-**Safe grindable implementation:** Store bounded target with valid refused/held routes. **Prohibited premature claim:** Acquired practice, memory or actual evaluated nochange.
+**Safe grindable implementation:** Store bounded target with valid refused/held routes. **Prohibited premature general claim:** Acquired practice, memory or actual evaluated nochange.
 
 #### D05 — Distinct prospective performed consumer of acquired state
 
-**Label:** M · **Existing tasks:** D04 · **Pre-expansion prerequisite(s):** K02 · **Full-claim prerequisite(s):** S04, S07 · **Mapped issues:** SA-14, SA-15, SA-16, SA-18, SA-25.
+**Label:** M · **Existing tasks:** D04 · **Pre-expansion prerequisite(s):** K02 · **Full generalization prerequisite(s):** S04, S07 · **Mapped issues:** SA-14, SA-15, SA-16, SA-18, SA-25.
 
-**Safe grindable implementation:** Prove changed target affects actual later performed sourcefree act. **Prohibited premature claim:** Warranted acquisition/portability beyond selected fixture.
+**Safe grindable implementation:** Prove changed target affects actual later performed sourcefree act. **Prohibited premature general claim:** Warranted acquisition/portability beyond selected fixture.
 
 #### E01 — J1 drum-kit complete objective-parent-speech-child causal join
 
-**Label:** M · **Existing tasks:** B04, C04, D03 · **Pre-expansion prerequisite(s):** K01, A05 · **Full-claim prerequisite(s):** A01, A02, A04, A06, A07, S01, S02, S03 · **Mapped issues:** SA-01, SA-05, SA-07, SA-09, SA-10, SA-11, SA-12, SA-13, SA-15, SA-20, SA-24, SA-25.
+**Label:** M · **Existing tasks:** B04, C04, D03 · **Pre-expansion prerequisite(s):** K01, A05 · **Full generalization prerequisite(s):** A01, A02, A04, A06, A07, S01, S02, S03 · **Mapped issues:** SA-01, SA-05, SA-07, SA-09, SA-10, SA-11, SA-12, SA-13, SA-15, SA-20, SA-24, SA-25.
 
-**Safe grindable implementation:** Compose actual material-parent-speech-child sourcefree vertical. **Prohibited premature claim:** Full independent human motive/actor/experience claim.
+**Safe grindable implementation:** Compose actual material-parent-speech-child sourcefree vertical. **Prohibited premature general claim:** Full independent human motive/actor/experience claim.
 
 #### E02 — J2 multiple years: ordinary world and mother change, Nadia develops or holds
 
-**Label:** T · **Existing tasks:** E01, B05, C05, D04 · **Pre-expansion prerequisite(s):** K01, K02 · **Full-claim prerequisite(s):** A01, A02, A03, A04, S01, S03, S04, S05, S07 · **Mapped issues:** SA-01, SA-02, SA-03, SA-04, SA-05, SA-06, SA-08, SA-18, SA-19, SA-24, SA-25.
+**Label:** T · **Existing tasks:** E01, B05, C05, D04 · **Pre-expansion prerequisite(s):** K01, K02 · **Full generalization prerequisite(s):** A01, A02, A03, A04, S01, S03, S04, S05, S07 · **Mapped issues:** SA-01, SA-02, SA-03, SA-04, SA-05, SA-06, SA-08, SA-18, SA-19, SA-24, SA-25.
 
-**Safe grindable implementation:** Prove multicycle material/parent/actor continuity and selective changes. **Prohibited premature claim:** Unqualified full historical person or invented development.
+**Safe grindable implementation:** Prove multicycle material/parent/actor continuity and selective changes. **Prohibited premature general claim:** Unqualified full historical person or invented development.
 
 #### E03 — Composite multi-owner commit/cold refusal/recovery across whole life operation
 
-**Label:** G · **Existing tasks:** E02 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A08 · **Mapped issues:** SA-21, SA-22.
+**Label:** G · **Existing tasks:** E02 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A08 · **Mapped issues:** SA-21, SA-22.
 
-**Safe grindable implementation:** Implement existing P3/P2 fail-stop and cross-owner replay. **Prohibited premature claim:** Composite atomicity without chosen lock/receipt protocol.
+**Safe grindable implementation:** Implement existing P3/P2 fail-stop and cross-owner replay. **Prohibited premature general claim:** Composite atomicity without chosen lock/receipt protocol.
 
 #### E04 — Whole J1/J2 adversarial matrix and measured provenance/economics
 
-**Label:** G · **Existing tasks:** E03, D05 · **Pre-expansion prerequisite(s):** K01, K02 · **Full-claim prerequisite(s):** A08 · **Mapped issues:** SA-22.
+**Label:** G · **Existing tasks:** E03, D05 · **Pre-expansion prerequisite(s):** K01, K02 · **Full generalization prerequisite(s):** A08 · **Mapped issues:** SA-22.
 
-**Safe grindable implementation:** Run first-consumer positive/negative/restore, cost and no-drop against scoped J. **Prohibited premature claim:** Accepting unsupported J1/J2 behavioral semantics.
+**Safe grindable implementation:** Run first-consumer positive/negative/restore, cost and no-drop against scoped J. **Prohibited premature general claim:** Accepting unsupported J1/J2 behavioral semantics.
 
 #### F01 — Current P6 generated-root import ABI selection and initial sourcefree loader
 
-**Label:** M · **Existing tasks:** E02 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A09 · **Mapped issues:** SA-06, SA-23, SA-24.
+**Label:** M · **Existing tasks:** E02 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A09 · **Mapped issues:** SA-06, SA-23, SA-24.
 
-**Safe grindable implementation:** Implement sourcefree cold root loader with unchanged history. **Prohibited premature claim:** Valid fork-forward child life operation.
+**Safe grindable implementation:** Implement sourcefree cold root loader with unchanged history. **Prohibited premature general claim:** Valid fork-forward child life operation.
 
 #### F02 — J3 live P4/P5/P6 user actions on imported precontact person/world
 
-**Label:** G · **Existing tasks:** F01 · **Pre-expansion prerequisite(s):** K01, A05 · **Full-claim prerequisite(s):** A09 · **Mapped issues:** SA-10, SA-13, SA-23.
+**Label:** G · **Existing tasks:** F01 · **Pre-expansion prerequisite(s):** K01, A05 · **Full generalization prerequisite(s):** A09 · **Mapped issues:** SA-10, SA-13, SA-23.
 
-**Safe grindable implementation:** Wire existing P4/P5/P6 actual user action to sourcefree imported root. **Prohibited premature claim:** General human/actor authority based only on fixture.
+**Safe grindable implementation:** Wire existing P4/P5/P6 actual user action to sourcefree imported root. **Prohibited premature general claim:** General human/actor authority based only on fixture.
 
 #### F03 — MI/II/III lawful historical depth, viewer exposure and independent movement
 
-**Label:** T · **Existing tasks:** F02 · **Pre-expansion prerequisite(s):** K01, A05 · **Full-claim prerequisite(s):** A09, S03, S07 · **Mapped issues:** none.
+**Label:** T · **Existing tasks:** F02 · **Pre-expansion prerequisite(s):** K01, A05 · **Full generalization prerequisite(s):** A09, S03, S07 · **Mapped issues:** none.
 
-**Safe grindable implementation:** Reuse already owned MI/MII/MIII exposure and movement mechanics. **Prohibited premature claim:** Historically independent actor behavior from narrative prompting.
+**Safe grindable implementation:** Reuse already owned MI/MII/MIII exposure and movement mechanics. **Prohibited premature general claim:** Historically independent actor behavior from narrative prompting.
 
 #### F04 — J3 cold precontact→live transition with branching and actor-psych reader
 
-**Label:** M · **Existing tasks:** F03, E04 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A09 · **Mapped issues:** SA-23.
+**Label:** M · **Existing tasks:** F03, E04 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A09 · **Mapped issues:** SA-23.
 
-**Safe grindable implementation:** Build cold fork/reopen and qualified P3 reader. **Prohibited premature claim:** Fully lawful prior-vs-future mutation across generated roots.
+**Safe grindable implementation:** Build cold fork/reopen and qualified P3 reader. **Prohibited premature general claim:** Fully lawful prior-vs-future mutation across generated roots.
 
 #### G01 — Freeze common sourcefree generator invocation/seed identity
 
-**Label:** G · **Existing tasks:** F04 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A09 · **Mapped issues:** none.
+**Label:** G · **Existing tasks:** F04 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A09 · **Mapped issues:** none.
 
-**Safe grindable implementation:** Pin seed/config, create repeated sourcefree root manifest. **Prohibited premature claim:** Unfounded general person equivalence.
+**Safe grindable implementation:** Pin seed/config, create repeated sourcefree root manifest. **Prohibited premature general claim:** Unfounded general person equivalence.
 
 #### G02 — Generate >=3, target five independent roots including ordinary/silence/nochange
 
-**Label:** T · **Existing tasks:** G01 · **Pre-expansion prerequisite(s):** K01, K02 · **Full-claim prerequisite(s):** A10, S05, S07 · **Mapped issues:** SA-19.
+**Label:** T · **Existing tasks:** G01 · **Pre-expansion prerequisite(s):** K01, K02 · **Full generalization prerequisite(s):** A10, S05, S07 · **Mapped issues:** SA-19.
 
-**Safe grindable implementation:** Run fixed common generator across varied inputs and retain failures. **Prohibited premature claim:** Generated lives as scientifically adequate human persons.
+**Safe grindable implementation:** Run fixed common generator across varied inputs and retain failures. **Prohibited premature general claim:** Generated lives as scientifically adequate human persons.
 
 #### G03 — Actual bounded economic/reliability evidence and failure analysis
 
-**Label:** G · **Existing tasks:** G02 · **Pre-expansion prerequisite(s):** K01 · **Full-claim prerequisite(s):** A10 · **Mapped issues:** none.
+**Label:** G · **Existing tasks:** G02 · **Pre-expansion prerequisite(s):** K01 · **Full generalization prerequisite(s):** A10 · **Mapped issues:** none.
 
-**Safe grindable implementation:** Measure actual calls/tokens/latency/RSS/retries/seed failures. **Prohibited premature claim:** Fictitious economics or hidden uncounted backend work.
+**Safe grindable implementation:** Measure actual calls/tokens/latency/RSS/retries/seed failures. **Prohibited premature general claim:** Fictitious economics or hidden uncounted backend work.
 
 #### G04 — J4 end-to-end no-drop receiving handoff and separate native/human source holds
 
-**Label:** G · **Existing tasks:** G02, G03 · **Pre-expansion prerequisite(s):** K00, K01, K02 · **Full-claim prerequisite(s):** H01 · **Mapped issues:** none.
+**Label:** G · **Existing tasks:** G02, G03 · **Pre-expansion prerequisite(s):** K00, K01, K02 · **Full generalization prerequisite(s):** K00, K01, K02 · **Mapped issues:** none.
 
-**Safe grindable implementation:** Assemble exact lineage and scoped independent receiving evidence. **Prohibited premature claim:** Native/person/source/human/promoted product status.
-
+**Safe grindable implementation:** Assemble exact lineage and scoped independent receiving evidence. **Prohibited premature general claim:** Sourcefree conservation and independent scoped receiving can close with native/human grants explicitly held; H01 blocks only their promotion, never this task's scoped completion..
 
 ## 5. Each governing or open decision: dependencies, current status, safe work
 
