@@ -23,6 +23,10 @@ from rawlsing_next.pre553_discovery_exact import (
     ExactBoundedDiscoveryResult,
     _verify_discovery_authority, _catalog_atoms, _catalog_templates,
     _validate_catalog_scope, _compile_frontier, _derived_ref,
+    _terminal_fact_class, _support_summary,
+    _distribution_differs, _joint_dependence,
+    _conditional_reversal, _target_cell_supported,
+    ExactBoundedDiscoveryError,
 )
 from rawlsing_next._pre553_query_common import QUERY_EXECUTION_CONTRACT_ID
 from rawlsing_next.pre553_empirical_objects import (
@@ -31,6 +35,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     Pre553IntegrityError,
     canonical_json,
+    canonicalize,
     exact_ref,
     semantic_hash,
 )
@@ -163,7 +168,7 @@ def _verify_declared_domain(fact: EmpiricalFact, query: Any, registry: Any) -> N
              "S2E_INCOMPLETE_OR_FOREIGN_DECLARED_DOMAIN")
 
 
-def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: ExactBoundedDiscoveryResult, unit: Any) -> None:
+def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: ExactBoundedDiscoveryResult, unit: Any, *, facts_by_key: Mapping[str, EmpiricalFact]) -> None:
     """Re-derive a native I05 candidate's *inner* hash and replay, not its self-hash.
 
     The native producer constructs candidate identity in _candidate() and the
@@ -222,7 +227,6 @@ def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: Exact
     _require(tuple(sorted(_ref_key(ref) for ref in receipt.validation_fact_refs))
              == tuple(sorted(_ref_key(ref) for ref in receipt.empirical_fact_refs)),
              "S2E_I05_VALIDATION_FACT_CLOSURE_MISMATCH")
-    facts_by_key = {fact.ref.key: fact for fact in output.empirical_facts}
     support = receipt.support_uncertainty_state
     role_refs = support.get("query_role_fact_refs") if isinstance(support, Mapping) else None
     _require(isinstance(role_refs, Mapping) and set(role_refs) == role_names,
@@ -261,6 +265,105 @@ def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: Exact
     _require(_ref_key(receipt.replay_ref) == expected.key
              and _ref_key(receipt.producer_replay_locator_or_reference_root) == expected.key,
              "S2E_I05_CANDIDATE_REPLAY_MISMATCH")
+
+
+def _verify_i05_scientific_fate_against_facts(
+    receipt: DiscoveryResultReceipt,
+    output: ExactBoundedDiscoveryResult,
+    unit: Any,
+    authority: Any,
+    *, facts_by_key: Mapping[str, EmpiricalFact],
+) -> None:
+    """Falsify an invented terminal discovery fate using the retained native facts.
+
+    Native I05's own validation primitives are invoked on exact I03
+    QueryExecutionResult views reconstructed from the already-executed fact
+    preimages. This does NOT re-open a source, redo an I03 scan or invent an
+    independent scientific estimator. It detects a self-consistent, fully
+    rehashed false VALID_EMPTY/SUPPORTED claim that A2 identity/replay checks
+    cannot distinguish because candidate identity is fixed *before* evaluation.
+
+    The competent catalogue is required by the caller; without it the census
+    explicitly reports declared_frontier_verified=False rather than claiming
+    this scientific-result check was performed.
+    """
+    role_refs = receipt.support_uncertainty_state["query_role_fact_refs"]
+    results: dict[str, QueryExecutionResult] = {}
+    canonical_role_refs: dict[str, list[dict[str, str]]] = {}
+    try:
+        for role in receipt.candidate_identity["query_roles"]:
+            name = role["role"]
+            exact_refs = tuple(exact_ref(ref, "role fact") for ref in role_refs[name])
+            facts = tuple(sorted(
+                (facts_by_key[ref.key] for ref in exact_refs),
+                key=lambda fact: fact.ref.key,
+            ))
+            _require(bool(facts) and len({f.ref.key for f in facts}) == len(exact_refs),
+                     "S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH")
+            _require(len({f.source_scope_mode for f in facts}) == 1,
+                     "S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH")
+            results[name] = QueryExecutionResult(
+                query_ref=exact_ref(role["query_ref"], "role query"),
+                facts=facts,
+                source_scope_mode=facts[0].source_scope_mode,
+                release_refs=unit.release_refs,
+            )
+            canonical_role_refs[name] = [f.ref.as_dict() for f in facts]
+
+        candidate_facts = tuple(sorted(
+            (facts_by_key[_ref_key(ref)] for ref in receipt.empirical_fact_refs),
+            key=lambda fact: fact.ref.key,
+        ))
+        expected_support = dict(_support_summary(candidate_facts))
+        expected_support["query_role_fact_refs"] = canonicalize({
+            name: canonical_role_refs[name] for name in sorted(canonical_role_refs)
+        })
+        _require(canonical_json(receipt.support_uncertainty_state)
+                 == canonical_json(expected_support),
+                 "S2E_I05_CANDIDATE_SUPPORT_PREIMAGE_MISMATCH")
+
+        terminal = _terminal_fact_class(candidate_facts)
+        if terminal == "NONCOMPARABLE":
+            expected = ("EVALUATED_NONCOMPARABLE", "NONCOMPARABLE")
+        elif terminal == "UNAVAILABLE":
+            expected = ("EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY", "COVERAGE_LIMITED")
+        elif terminal == "VALID_EMPTY":
+            expected = ("EVALUATED_VALID_EMPTY", "VALID_EMPTY")
+        else:
+            limit = authority.support_rules.get("minimum_raw_denominator", 1)
+            _require(type(limit) is int and limit >= 0,
+                     "S2E_I05_CANDIDATE_SUPPORT_RULE_INVALID")
+            primary = tuple(
+                f for f in candidate_facts
+                if f.typed_state in {"SUPPORTED", "LOW_SUPPORT", "OBSERVED_ZERO"}
+            )
+            if primary and any(f.raw_denominator_support < limit for f in primary):
+                expected = ("EVALUATED_UNDERPOWERED", "INSUFFICIENT_SUPPORT")
+            else:
+                validation = receipt.candidate_identity["validation"]
+                kind = validation["kind"]
+                if kind == "DISTRIBUTION_DIFFERS_FROM_BASELINE":
+                    supported = _distribution_differs(results["CONDITION"], results["BASELINE"])
+                elif kind == "JOINT_NOT_PRODUCT_OF_MARGINALS":
+                    supported = _joint_dependence(results)
+                elif kind == "CONDITIONAL_REVERSAL":
+                    supported = _conditional_reversal(results, validation)
+                elif kind == "TARGET_CELL_SUPPORTED":
+                    supported = _target_cell_supported(results["BASE"], validation.get("target_cell"))
+                else:
+                    raise S2EOutputConservationError("S2E_I05_UNKNOWN_NATIVE_VALIDATION")
+                expected = (
+                    ("EVALUATED_SUPPORTED", "DISCOVERED_RESULT_SUPPORTED")
+                    if supported else ("EVALUATED_VALID_EMPTY", "VALID_EMPTY")
+                )
+        _require((receipt.coverage_state, receipt.typed_state) == expected,
+                 "S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH")
+    except S2EOutputConservationError:
+        raise
+    except (KeyError, TypeError, ValueError, ExactBoundedDiscoveryError) as exc:
+        raise S2EOutputConservationError(
+            "S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH"
+        ) from exc
 
 
 def _verify_i05_declared_frontier(output: ExactBoundedDiscoveryResult, unit: Any, catalog: Any, registry: Any) -> None:
@@ -465,6 +568,9 @@ def census_native_batch(
                      "S2E_I05_VALID_EMPTY_CLAIM_MISMATCH")
             _require(tuple(_ref_key(ref) for ref in unit.release_refs),
                      "S2E_DISCOVERY_EMPTY_RELEASE_SCOPE")
+            # One O(F) index for all C candidate receipts and fate replays,
+            # rather than rebuilding the complete fact map O(C*F).
+            facts_by_key = {fact.ref.key: fact for fact in output.empirical_facts}
             seen: set[tuple[str, str]] = set()
             cited_fact_refs: set[str] = set()
             for receipt in output.receipts:
@@ -486,7 +592,7 @@ def census_native_batch(
                 _require(key not in seen, "S2E_DUPLICATE_DISCOVERY_CANDIDATE_FATE")
                 seen.add(key)
                 cited_fact_refs.update(_ref_key(ref) for ref in receipt.empirical_fact_refs)
-                _verify_i05_candidate_receipt(receipt, output, unit)
+                _verify_i05_candidate_receipt(receipt, output, unit, facts_by_key=facts_by_key)
                 _object(digest, "I05_RECEIPT", receipt)
                 totals["i05_receipt"] += 1
                 states["DISCOVERY:" + receipt.typed_state] = (
@@ -496,6 +602,12 @@ def census_native_batch(
                      "S2E_DISCOVERY_FACT_REF_LOSS")
             if runtime_catalog is not None:
                 _verify_i05_declared_frontier(output, unit, runtime_catalog, registry)
+                issued_authority = runtime_catalog.resolve_discovery_authority_exact(unit.job_ref)
+                for candidate_receipt in output.receipts:
+                    _verify_i05_scientific_fate_against_facts(
+                        candidate_receipt, output, unit, issued_authority,
+                        facts_by_key=facts_by_key,
+                    )
             # Native execute_exact_bounded_discovery derives the frontier
             # replay from this exact ordered closure. Merely digesting a
             # supplied replay_ref would certify even a replaced/false replay.
