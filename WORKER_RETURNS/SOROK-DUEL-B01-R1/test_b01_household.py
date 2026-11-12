@@ -245,6 +245,7 @@ def test_actual_root_household_is_world_owned_and_read_through_p6(tmp_path):
             },
         ]
         assert p2["state_hash"] == owner.base_owner.snapshot().state_hash
+        assert "state_scope" not in p2
         assert p2["document"] == world.resources[HOUSEHOLD_SLOT]
         assert parent["first_consumer"] == "NONE_VERIFIED"
         assert parent["parent_decision"] == "NOT_EVALUATED"
@@ -286,6 +287,67 @@ def test_actual_root_household_is_world_owned_and_read_through_p6(tmp_path):
     assert "PsycheStore(" not in source
     assert "p3.state_store" not in source
     assert "p3_psyche" not in source
+
+
+def test_c12_fork_carries_ancestor_household_without_rebinding_source(tmp_path):
+    state = tmp_path / "state"
+    run_cmd(state, "new")
+    owner = open_owner(state)
+    try:
+        session = owner.base_owner.fanin.session
+        parent_branch = session.branch_id
+        parent_household = read_household(session)
+        parent_p2 = owner.base_owner.material_fact(HOUSEHOLD_SLOT)
+        stored_before = copy.deepcopy(session.world().resources[HOUSEHOLD_SLOT])
+
+        session.fork_alt("b01-fork")
+        child_branch = session.branch_id
+        assert child_branch != parent_branch
+        child_counts = counts(session)
+
+        child_household = read_household(session)
+        child_input = parent_choice_input(session)
+        child_p2 = owner.base_owner.material_fact(HOUSEHOLD_SLOT)
+        _, child_house = house.read_house(session)
+        child_scene = house.scene(session)
+        assert counts(session) == child_counts
+
+        assert child_household["branch"] == child_branch
+        assert child_household["root"] == parent_household["root"]
+        assert child_household["source"] == parent_household["source"] == parent_p2["source"]
+        assert child_household["material_hash"] != parent_household["material_hash"]
+        assert child_input["branch_id"] == child_branch
+        assert child_input["source"]["hash"] == child_household["source"]
+        assert child_input["source"]["material_hash"] == child_household["material_hash"]
+        assert child_p2["branch"] == child_branch
+        assert child_p2["document"]["branch"] == parent_branch
+        assert child_p2["source"] == parent_household["source"]
+        assert child_p2["state_scope"] == "C12_FORK_WITHOUT_S46_INTERVAL_STATE"
+        assert child_house["branch"] == parent_branch
+        assert child_scene["room"] == "workshop"
+        assert session.world().resources[HOUSEHOLD_SLOT] == stored_before
+        assert session.branch_id == child_branch
+
+        _, moved = house.perform(session, {"operation": "GO", "target": "living room"})
+        assert moved["admission"] == "ADMITTED" and moved["performed"] is True
+        assert house.scene(session)["room"] == "living room"
+        after_move = read_household(session)
+        assert after_move["source"] == child_household["source"]
+
+        original = copy.deepcopy(session.world().resources[HOUSEHOLD_SLOT])
+        world = session.world()
+        world.resources[HOUSEHOLD_SLOT]["branch"] = "foreign-branch"
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        with pytest.raises(RecursionRefusal, match="P6_HOUSEHOLD_SOURCE_OR_ROOT_MISMATCH"):
+            read_household(session)
+        with pytest.raises(RecursionRefusal, match="P2_MATERIAL_FACT_ROOT_OR_BRANCH_MISMATCH"):
+            owner.base_owner.material_fact(HOUSEHOLD_SLOT)
+        world = session.world()
+        world.resources[HOUSEHOLD_SLOT] = original
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        assert read_household(session) == after_move
+    finally:
+        owner.close()
 
 
 def test_changed_value_severance_restore_and_cold_reopen(tmp_path):
@@ -395,6 +457,83 @@ def test_changed_value_severance_restore_and_cold_reopen(tmp_path):
     assert reopened["household"] == baseline
     assert reopened["parent"] == baseline_parent
     assert reopened["counts"] == restored_counts
+
+
+def test_world_resource_value_changes_material_hash_not_source(tmp_path):
+    state = tmp_path / "state"
+    run_cmd(state, "new")
+    owner = open_owner(state)
+    try:
+        session = owner.base_owner.fanin.session
+        baseline = read_household(session)
+        baseline_input = parent_choice_input(session)
+        workshop = copy.deepcopy(session.world().resources["workshop"])
+
+        world = session.world()
+        world.resources["workshop"]["material"] = workshop["material"] + 1
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        changed = read_household(session)
+        changed_input = parent_choice_input(session)
+        assert changed["source"] == baseline["source"]
+        assert changed["material_hash"] != baseline["material_hash"]
+        assert changed["resources"][0]["fields"]["material"] == workshop["material"] + 1
+        assert changed_input["source"]["hash"] == baseline["source"]
+        assert changed_input["source"]["material_hash"] == changed["material_hash"]
+
+        world = session.world()
+        world.resources["workshop"] = workshop
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        assert read_household(session) == baseline
+        assert parent_choice_input(session) == baseline_input
+    finally:
+        owner.close()
+
+
+def test_bound_resource_and_owner_severance_refuse_and_restore(tmp_path):
+    state = tmp_path / "state"
+    run_cmd(state, "new")
+    owner = open_owner(state)
+    try:
+        session = owner.base_owner.fanin.session
+        baseline = read_household(session)
+        baseline_input = parent_choice_input(session)
+
+        workspace = copy.deepcopy(session.world().resources["workshop"])
+        world = session.world()
+        world.resources.pop("workshop")
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        with pytest.raises(RecursionRefusal, match="P6_HOUSEHOLD_RESOURCE_BINDING"):
+            read_household(session)
+        with pytest.raises(RecursionRefusal, match="P6_HOUSEHOLD_RESOURCE_BINDING"):
+            parent_choice_input(session)
+        world = session.world()
+        world.resources["workshop"] = workspace
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        assert read_household(session) == baseline
+        assert parent_choice_input(session) == baseline_input
+
+        actor = copy.deepcopy(session.world().actor_state["A"])
+        world = session.world()
+        world.actor_state.pop("A")
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        with pytest.raises(RecursionRefusal, match="P6_HOUSEHOLD_OWNER_MISMATCH"):
+            read_household(session)
+        world = session.world()
+        world.actor_state["A"] = actor
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        assert read_household(session) == baseline
+
+        world = session.world()
+        world.actor_state["A"]["actor_id"] = "foreign-actor"
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        with pytest.raises(RecursionRefusal, match="P6_HOUSEHOLD_OWNER_MISMATCH"):
+            read_household(session)
+        world = session.world()
+        world.actor_state["A"] = actor
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        assert read_household(session) == baseline
+    finally:
+        owner.close()
 
 
 def test_psyche_store_kitchen_mediator_cannot_stand_for_a_world_fact(tmp_path):

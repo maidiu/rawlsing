@@ -42,6 +42,62 @@ def material_fact_source(document: Mapping[str, Any]) -> str:
                    if key not in MATERIAL_FACT_BINDING_FIELDS})
 
 
+def branch_is_ancestor(session, branch: Any, epoch: Any = None) -> bool:
+    """Return true when branch is the current branch or a verified C12 ancestor.
+
+    A C12 fork copies checkpoint rows up to its fork clock. A material fact
+    written on an ancestor is therefore valid provenance on a descendant only
+    when its epoch is not later than every copied fork edge leading here.
+    """
+    current = session.branch_id
+    if branch == current:
+        return True
+    if not isinstance(branch, str) or not branch:
+        return False
+    if (isinstance(epoch, bool) or not isinstance(epoch, int)
+            or epoch < 0):
+        return False
+    product = getattr(session, "product", None)
+    store = getattr(product, "store", None)
+    if store is None or not hasattr(store, "branch"):
+        return False
+    validator = getattr(session, "_lineage_result", None)
+    if callable(validator):
+        try:
+            lineage = validator()
+        except Exception:
+            return False
+        if not isinstance(lineage, Mapping) or not lineage.get("ok"):
+            return False
+    prefix_check = getattr(store, "inherits_verified_prefix", None)
+    if callable(prefix_check):
+        try:
+            if not prefix_check(current, branch):
+                return False
+        except Exception:
+            return False
+    seen = set()
+    while current not in seen:
+        seen.add(current)
+        try:
+            row = store.branch(current)
+        except Exception:
+            return False
+        if not isinstance(row, Mapping):
+            return False
+        if current == branch:
+            return True
+        fork_clock = row.get("fork_clock")
+        if (isinstance(fork_clock, bool) or not isinstance(fork_clock, int)
+                or fork_clock < epoch):
+            return False
+        parent = row.get("parent_branch_id")
+        if not isinstance(parent, str) or not parent or parent == "root":
+            return False
+        current = parent
+    return False
+
+
 def validate_material_fact(document: Any, *, root: str, branch: str,
                            world_clock: int) -> dict:
     """Validate the bounded world-material envelope, never a psyche record."""
@@ -160,24 +216,57 @@ class P2Owner:
 
         The caller's own reader remains responsible for the fact's schema.
         This accessor refuses psyche-store records and binds the read to the
-        verified root, branch, clock and world state of this owner.
+        verified root, current branch, clock and world state of this owner.
+        A C12 fork may carry a fact established on a verified ancestor; the
+        optional state_scope records when unrelated S46 state was not forked.
         """
         if self.source_ref != "P2_INPUT:" + digest({"case": self.case, "source": self.source}):
             raise RecursionRefusal("P2_INPUT_SOURCE_MUTATED")
         s = self.fanin.session
-        verified = s.verify()
-        if not verified.get("ok"):
-            raise RecursionRefusal("P2_SOURCE_OR_STATE_VERIFICATION_FAILED")
         if slot not in MATERIAL_FACT_SLOTS:
             raise RecursionRefusal("P2_MATERIAL_FACT_SLOT_INVALID")
         world = s.world()
         if slot not in world.resources:
             raise RecursionRefusal("P2_MATERIAL_FACT_ABSENT:" + str(slot))
+        stored = world.resources[slot]
+        if not isinstance(stored, Mapping):
+            raise RecursionRefusal("P2_MATERIAL_FACT_SCHEMA")
+        stored_branch = stored.get("branch")
+        stored_epoch = stored.get("epoch")
         root = s.read_root()["root_hash"]
-        fact = validate_material_fact(world.resources[slot], root=root,
-                                      branch=s.branch_id, world_clock=world.clock)
-        snapshot = self.snapshot()
-        return {
+        if stored_branch == s.branch_id:
+            verified = s.verify()
+            if not verified.get("ok"):
+                raise RecursionRefusal("P2_SOURCE_OR_STATE_VERIFICATION_FAILED")
+        elif branch_is_ancestor(s, stored_branch, stored_epoch):
+            # A C12 fork copies the checkpoint preimages but deliberately does
+            # not copy unrelated S46/S47 period state. Verify the branch that
+            # actually owns this world fact, not an unrelated period owner.
+            verifier = getattr(s.product, "c12_verify", None)
+            if not callable(verifier):
+                raise RecursionRefusal("P2_SOURCE_OR_STATE_VERIFICATION_FAILED")
+            verified = verifier(s.branch_id)
+            if not verified.get("ok"):
+                raise RecursionRefusal("P2_SOURCE_OR_STATE_VERIFICATION_FAILED")
+        else:
+            raise RecursionRefusal("P2_MATERIAL_FACT_ROOT_OR_BRANCH_MISMATCH")
+        fact = validate_material_fact(stored, root=root,
+                                      branch=stored_branch, world_clock=world.clock)
+        if stored_branch == s.branch_id:
+            state_hash = self.snapshot().state_hash
+            state_scope = None
+        else:
+            # The fork copied the world/event/encounter preimages but no S46
+            # interval state, so do not pretend a full composite hash exists.
+            material = {
+                "world": vars(s.world()),
+                "events": s.read_events(),
+                "intervals": "NOT_FORKED_ON_C12_BRANCH",
+                "encounters": s.read_encounters(),
+            }
+            state_hash = digest(material)
+            state_scope = "C12_FORK_WITHOUT_S46_INTERVAL_STATE"
+        result = {
             "schema": MATERIAL_FACT_READ_SCHEMA,
             "grade": self.grade,
             "slot": slot,
@@ -186,10 +275,13 @@ class P2Owner:
             "clock": world.clock,
             "epoch": fact["epoch"],
             "source": fact["source"],
-            "state_hash": snapshot.state_hash,
+            "state_hash": state_hash,
             "world_hash": digest(world.snapshot()),
             "document": fact,
         }
+        if state_scope is not None:
+            result["state_scope"] = state_scope
+        return result
 
     def validate_proposal(self, proposal: EventProposal) -> None:
         if proposal.operation != "ADMIT_EVENT":
