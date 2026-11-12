@@ -110,12 +110,17 @@ class FrozenInputCensus:
         return semantic_hash(self.material())
 
 
+def _row_operation_id(row: Any) -> str:
+    """ScientificOperation uses op_id; source/fate manifests use operation_id."""
+    return row.op_id if hasattr(row, "op_id") else row.operation_id
+
+
 def _unique(rows: tuple[Any, ...], name: str) -> dict[str, Any]:
-    ids = tuple(row.operation_id for row in rows)
+    ids = tuple(_row_operation_id(row) for row in rows)
     duplicates = sorted(op for op, count in Counter(ids).items() if count != 1)
     if duplicates:
         raise CensusRefusal("DUPLICATE_" + name, duplicates)
-    return {row.operation_id: row for row in rows}
+    return {_row_operation_id(row): row for row in rows}
 
 
 def _same_ids(expected: set[str], actual: set[str], phase: str) -> None:
@@ -158,6 +163,14 @@ def verify_frozen_inputs(
         _nonempty(value, label)
     if not census.source_candidates or not census.scientific_fates:
         raise CensusRefusal("EMPTY_DECLARED_CENSUS_NOT_ACCEPTED")
+    if census.source_census_ref != semantic_hash(
+        [row.material() for row in census.source_candidates]
+    ):
+        raise CensusRefusal("SOURCE_CENSUS_HASH_DRIFT")
+    if census.science_census_ref != semantic_hash(
+        [row.material() for row in census.scientific_fates]
+    ):
+        raise CensusRefusal("SCIENCE_CENSUS_HASH_DRIFT")
     sources = _unique(census.source_candidates, "SOURCE_CANDIDATE")
     scientific = _unique(census.scientific_fates, "SCIENTIFIC_FATE")
     _same_ids(set(sources), set(scientific), "SOURCE_VS_SCIENCE")
@@ -204,6 +217,8 @@ def verify_frozen_inputs(
             raise CensusRefusal("OCCURRENCE_NOT_IN_INVENTORY", op_id)
         if source.occurrence_ids != tuple(key.key for key in keys):
             raise CensusRefusal("OCCURRENCE_IDENTITY_DRIFT", op_id)
+        if source.source_authority_ref not in inventory.authority_refs:
+            raise CensusRefusal("SOURCE_AUTHORITY_NOT_IN_FROZEN_INVENTORY", op_id)
         for label, value in (
             ("meaning_ref", source.meaning_ref),
             ("source_authority_ref", source.source_authority_ref),
