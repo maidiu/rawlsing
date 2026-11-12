@@ -4,6 +4,7 @@ on:
     paths:
       - 'rawlsing_next/pre553_operation_fate_census.py'
       - 'rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py'
+      - 'rawlsing_next/tests/pyat_r3_s1c_rss_runner.py'
       - '.github/workflows/pyat-r3-s1c-sourcefree.yml'
   workflow_dispatch:
 permissions:
@@ -23,7 +24,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+          python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py \
             rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py
       - name: Preserve existing R03/R61 issued sourcefree functionality
         env:
