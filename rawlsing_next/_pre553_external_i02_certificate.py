@@ -348,8 +348,13 @@ class _VerifiedSqlRows:
     """
     __slots__ = ("__cursor",)
 
+    def __setattr__(self, name: str, value: object) -> None:
+        raise ExternalI02IntegrityError(
+            "immutable verified external I02 cursor cannot be reassigned"
+        )
+
     def __init__(self, cursor: sqlite3.Cursor) -> None:
-        self.__cursor = cursor
+        object.__setattr__(self, "_VerifiedSqlRows__cursor", cursor)
 
     def fetchone(self) -> tuple | None:
         try:
@@ -388,8 +393,13 @@ class _VerifiedSelectOnlyDatabase:
     """
     __slots__ = ("__connection",)
 
+    def __setattr__(self, name: str, value: object) -> None:
+        raise ExternalI02IntegrityError(
+            "immutable verified external I02 SQL session cannot be reassigned"
+        )
+
     def __init__(self, connection: sqlite3.Connection) -> None:
-        self.__connection = connection
+        object.__setattr__(self, "_VerifiedSelectOnlyDatabase__connection", connection)
 
     def execute(self, statement: str, params: tuple = ()) -> _VerifiedSqlRows:
         if (not isinstance(statement, str)
