@@ -2,7 +2,16 @@
 """Independent read-only first consumer for saved raw G03-I0 P6 receipts."""
 import argparse,hashlib,json,math,statistics
 from pathlib import Path
-from measure import SCHEMA,PLAN,FILES,P6
+# Deliberately independent of the measurement writer's declared plan.
+SCHEMA="G03_I0_REAL_P6_V1"
+P6="WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
+FILES=[P6,"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+       "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py",
+       "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py",
+       "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated_provider.py",
+       "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py"]
+PLAN=[("new",["new"]),("view",["view"]),("wait",["wait","1"]),
+      ("cold_view",["view"]),("fail_wait",["wait","0"])]
 
 class Reject(ValueError):pass
 def require(ok,why):
@@ -51,7 +60,7 @@ def consume(root,expected_index_sha256=None):
             and man.get("descendant_processes")=="UNOBSERVED","OFFLINE_OR_PROCESS_CLAIM_FALSE")
     expected={"attempts/"+n+"/"+f for n,_ in PLAN for f in ("start.json","receipt.json","stdout.bin","stderr.bin")}
     require(isinstance(idx.get("entries"),dict) and set(idx["entries"])==expected,"INDEX_ATTEMPTS_MISSING")
-    rows=[]
+    rows=[]; outputs=[]
     for name,args in PLAN:
         base=root/"attempts"/name
         for f in ("start.json","receipt.json","stdout.bin","stderr.bin"):
@@ -95,15 +104,27 @@ def consume(root,expected_index_sha256=None):
         require(isinstance(view,dict) and view.get("json") is (o is not None)
                 and view.get("status")==(o.get("status") if o else None)
                 and view.get("clock")==(o.get("clock") if o else None),"OUTPUT_CLAIM_FALSE")
-        rows.append(r)
+        rows.append(r);outputs.append(o)
+    require(len({r["child_pid"] for r in rows})==len(rows),"DUPLICATED_CHILD_EXEC_ID")
     require(rows[0]["state_bytes_before"]==0,"STATE_NOT_FRESH")
     require(all(a["state_bytes_after"]==b["state_bytes_before"] and a["argv"][3]==b["argv"][3]
                 for a,b in zip(rows,rows[1:])),"STATE_CONTINUITY_BAD")
+    # Source-exact semantic oracle: fresh root, genuine +1 wait, reopened
+    # clock preservation, specified refusal and zero state mutation on refusal.
+    semantic=(all(isinstance(o,dict) and type(o.get("clock")) is int
+                  and isinstance(o.get("mii_surface"),dict) for o in outputs[:4])
+              and outputs[0]["clock"]==outputs[1]["clock"]
+              and outputs[2]["clock"]==outputs[1]["clock"]+1
+              and outputs[3]["clock"]==outputs[2]["clock"]
+              and outputs[2].get("admission")=="ADMITTED"
+              and isinstance(outputs[4],dict)
+              and outputs[4].get("reason")=="P6_WAIT_DURATION_OUT_OF_RANGE"
+              and rows[4]["state_bytes_before"]==rows[4]["state_bytes_after"])
     expected=all(r["exit_code"]==0 and r["output"]["json"] and not r["timeout"] for r in rows[:4])
-    expected=expected and rows[-1]["exit_code"]==2 and rows[-1]["output"]["status"]=="REFUSED"
+    expected=expected and rows[-1]["exit_code"]==2 and rows[-1]["output"]["status"]=="REFUSED" and semantic
     walls=[r["wall_seconds"] for r in rows]
     rss=[r["resources"]["peak_rss_bytes"] for r in rows if r["resources"]["status"]=="MEASURED"]
-    return {"schema":SCHEMA,"source_sha":head,"attempts":len(rows),"success":sum(r["exit_code"]==0 for r in rows),
+    result={"schema":SCHEMA,"source_sha":head,"attempts":len(rows),"success":sum(r["exit_code"]==0 for r in rows),
             "failed_or_refused":sum(r["exit_code"]!=0 for r in rows),
             "timed_out":sum(r["timeout"] for r in rows),
             "expected_scenario_pass":bool(expected),"cold_reopened":1,"distinct_process_execs":len(rows),
@@ -114,6 +135,9 @@ def consume(root,expected_index_sha256=None):
             "provider_calls":"UNOBSERVED","tokens":"UNOBSERVED","retries":"UNOBSERVED","billable_cost":"UNOBSERVED",
             "descendant_process_count":"UNOBSERVED","index_sha256":sha(rawidx),
             "G03_FULL":"NOT_EVALUATED_G02_MISSING"}
+    if (root/"summary.json").is_file():
+        require(load(root/"summary.json")==result,"SUMMARY_FORGED")
+    return result
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument("root",type=Path)
     p.add_argument("--index-sha256");p.add_argument("--require-expected",action="store_true")
