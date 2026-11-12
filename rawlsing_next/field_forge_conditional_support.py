@@ -269,6 +269,36 @@ def _validate_common_closure(
         raise FieldForgeConditionalSupportError(
             "producer provenance refs are not retained in fact dependency closure")
 
+    # C-3: A legitimate query and fact have *separate* dependency closures.
+    # The C->D bridge sees only the fact's provenance subset. A re-signed
+    # query could therefore declare a contradictory physical source, while
+    # the narrower downstream FF relation still repeats the frozen source.
+    # Inspect every explicit physical-source ref before that information is
+    # projected away. This does NOT authenticate an absent physical source:
+    # original C11 custody and current source-use authority remain external.
+    query_dependencies = _exact_seq(
+        joint_query.dependency_refs, "query.dependency_refs")
+    explicit_query_sources = {
+        ref for ref in query_dependencies if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_fact_sources = {
+        ref for ref in dependencies if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_provenance_sources = {
+        ref for ref in provenance if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_sources = (
+        explicit_query_sources
+        | explicit_fact_sources
+        | explicit_provenance_sources
+    )
+    if len(explicit_sources) > 1:
+        raise FieldForgeConditionalSupportError(
+            "contradictory physical SOURCE_ARTIFACT claims across query, fact, and provenance")
+    if explicit_sources and explicit_sources != explicit_provenance_sources:
+        raise FieldForgeConditionalSupportError(
+            "physical SOURCE_ARTIFACT in query/fact closure is missing from producer provenance")
+
     return fact_risk, fact_universes, authorities, replay_ref, provenance
 
 
