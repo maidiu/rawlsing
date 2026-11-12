@@ -107,8 +107,8 @@ It cross-checks the B01 household place/owner/landlord and P6 room set. `read_dw
 | Command | Result | Evidence |
 |---|---|---|
 | B01 suite + A fork-provenance suite | **11 passed in 74.88s** | `WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log` |
-| B03 suite | **8 passed in 46.01s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_dwelling.log` |
-| B01 + B03 combined | **19 passed in 113.82s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b01_b03_relay.log` |
+| B03 suite | **8 passed in 48.97s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_dwelling.log` |
+| B01 + B03 combined | **19 passed in 120.90s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b01_b03_relay.log` |
 | Full P6 `test_house.py` | **8 passed in 158.53s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_house.log` |
 | Full P6 `test_mii.py` | **18 passed in 226.44s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_mii.log` |
 | P2 owner + actor scene + selected P3 reopen/config | **9 passed in 50.92s** | `WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/adjacent.log` |

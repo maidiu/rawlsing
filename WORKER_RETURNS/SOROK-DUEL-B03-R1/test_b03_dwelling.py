@@ -391,6 +391,23 @@ def test_child_can_commit_its_own_dwelling_without_mutating_parent(tmp_path):
         parent_document = session.product.store.latest_state(parent_branch)["world"]["resources"]
         assert parent_document[DWELLING_SLOT]["source"] == parent_dwelling["source"]
         assert parent_document[DWELLING_SLOT]["home"] == parent_dwelling["home"]
+
+        session.fork_alt("grandchild")
+        grandchild_dwelling = read_dwelling(session)
+        grandchild_household = read_household(session)
+        grandchild_refused = material_feasibility(session, DRUM_KIT_REQUESTS["junior"])
+        assert grandchild_dwelling["source"] == child["source"]
+        assert grandchild_dwelling["provenance"] == {
+            "stored_branch": "child",
+            "current_branch": "grandchild",
+            "inherited": True,
+            "scope": "P6_MATERIAL_FACT_ONLY",
+            "fork_state": "C12_FORK_WITHOUT_S46_INTERVAL_STATE",
+        }
+        assert grandchild_household["provenance"]["stored_branch"] == parent_branch
+        assert grandchild_household["provenance"]["current_branch"] == "grandchild"
+        assert grandchild_refused["status"] == "REFUSED"
+        assert grandchild_refused["reasons"] == ["REFUSED_TENANCY"]
     finally:
         owner.close()
 

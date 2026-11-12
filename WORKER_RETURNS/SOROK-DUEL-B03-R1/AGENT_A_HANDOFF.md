@@ -84,9 +84,9 @@ B01 relay repair preserved: B's read-only C12 ancestor provenance is kept; `read
 
 Evidence (all in this worktree):
 
-- B03 suite **8 passed in 46.01s** (`evidence/b03_dwelling.log`);
+- B03 suite **8 passed in 48.97s** (`evidence/b03_dwelling.log`);
 - B01 suite + A fork provenance **11 passed in 74.88s** (`WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log`);
-- B01+B03 combined **19 passed in 113.82s** (`evidence/b01_b03_relay.log`);
+- B01+B03 combined **19 passed in 120.90s** (`evidence/b01_b03_relay.log`);
 - full P6 `test_house.py` **8 passed in 158.53s** (`evidence/p6_test_house.log`);
 - full P6 `test_mii.py` **18 passed in 226.44s** (`evidence/p6_test_mii.log`);
 - P2 owner + actor scene + selected P3 reopen/config **9 passed in 50.92s** (`evidence/adjacent.log`);
