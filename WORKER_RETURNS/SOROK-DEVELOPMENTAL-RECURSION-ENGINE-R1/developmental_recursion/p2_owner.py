@@ -29,6 +29,7 @@ MATERIAL_FACT_GRADE = "SOURCEFREE_MATERIAL_FACT"
 MATERIAL_FACT_BINDING_FIELDS = frozenset({"root", "branch", "epoch", "source"})
 MATERIAL_FACT_SLOTS = frozenset({
     "p6_household", "p6_dwelling", "p6_employment", "p6_historical_period",
+    "p6_market_inventory", "p6_owned_objects",
 })
 PSYCH_RECORD_FIELDS = frozenset({
     "record_id", "counterpart", "effective_from", "causal_parents",
