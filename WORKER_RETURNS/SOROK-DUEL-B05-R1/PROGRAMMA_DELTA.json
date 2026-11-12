@@ -23,7 +23,11 @@
   "cross_boundary_cycle": {
     "batch_events": 3,
     "employment_split": "2026-01-20",
-    "materialize_between_events": ["2026-01-22", "2026-01-26", "2026-02-01"],
+    "materialize_between_events": [
+      "2026-01-22",
+      "2026-01-26",
+      "2026-02-01"
+    ],
     "batch_result": "3 records, MISSING_RULE, final clock anchor+31",
     "reader": "read_material_period 2026-01-19 old term vs 2026-01-21 civic-works, state split at change",
     "purchase_rent": "parent purchase then rent period 1; C02 parent read refuses typed-hook-pending after purchase; P3 head unchanged by B04/B05"
@@ -46,15 +50,22 @@
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py",
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py",
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/b05_a_semantic.log",
-    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log"
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py"
   ],
   "negative_refs": [
     "PARENT_MATERIAL_HISTORY_MISMATCH after purchase",
-    "B05_RENT_ALREADY_RECORDED", "B05_INSUFFICIENT_HOUSEHOLD_CASH",
-    "B05_PERIOD_NOT_COMPLETE", "checkpoint crash rollback",
-    "period_uncovered reported", "no P3 head change from B04/B05"
+    "B05_RENT_ALREADY_RECORDED",
+    "B05_INSUFFICIENT_HOUSEHOLD_CASH",
+    "B05_PERIOD_NOT_COMPLETE",
+    "checkpoint crash rollback",
+    "period_uncovered reported",
+    "no P3 head change from B04/B05"
   ],
-  "cold_refs": ["B05 rolling cold subprocess", "B05 rent rollback cold recovery"],
+  "cold_refs": [
+    "B05 rolling cold subprocess",
+    "B05 rent rollback cold recovery"
+  ],
   "cost": "UNKNOWN",
   "note": "Executed author evidence at one cut; no independent nonauthor receiving; B bridge not adopted."
 }

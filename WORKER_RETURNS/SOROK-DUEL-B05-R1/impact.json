@@ -10,19 +10,41 @@
   "grade": "SOURCEFREE_S2_ONLY",
   "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_C02_TYPED_HOOK_PENDING",
   "classification_detail": [
-    {"class": "NEW_CONSUMER", "detail": "PeriodInterleaveOwner adapts the real P3 owner to advance B02 after selected BatchEngine events; read_household_obligation consumes rent receipts."},
-    {"class": "COMPATIBLE_ADDITIVE", "detail": "A rent receipt/lock and B02 currentness unchanged; parent C02 purchase hook remains pending."},
-    {"class": "SOURCE_OR_AUTHORITY", "detail": "No new authority; P3 code-pin roots remain incompatible; no migration."}
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "PeriodInterleaveOwner adapts the real P3 owner to advance B02 after selected BatchEngine events; read_household_obligation consumes rent receipts."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "A rent receipt/lock and B02 currentness unchanged; parent C02 purchase hook remains pending."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "No new authority; P3 code-pin roots remain incompatible; no migration."
+    }
   ],
   "changed_symbols": [
-    "rolling_reproduction.PeriodInterleaveOwner", "rolling_reproduction.apply_household_rent",
+    "rolling_reproduction.PeriodInterleaveOwner",
+    "rolling_reproduction.apply_household_rent",
     "rolling_reproduction.read_household_obligation"
   ],
   "actual_reader": [
-    {"name": "rolling_reproduction.read_household_obligation", "returns": "rent receipt/current household/historical flag"},
-    {"name": "historical_period.read_material_period", "returns": "cross-boundary period/employment/currentness"},
-    {"name": "house.material_feasibility", "returns": "changed B03 availability after rent"},
-    {"name": "BatchEngine records via PeriodInterleaveOwner", "returns": "3 real P3 records + B02 materialization between events"}
+    {
+      "name": "rolling_reproduction.read_household_obligation",
+      "returns": "rent receipt/current household/historical flag"
+    },
+    {
+      "name": "historical_period.read_material_period",
+      "returns": "cross-boundary period/employment/currentness"
+    },
+    {
+      "name": "house.material_feasibility",
+      "returns": "changed B03 availability after rent"
+    },
+    {
+      "name": "BatchEngine records via PeriodInterleaveOwner",
+      "returns": "3 real P3 records + B02 materialization between events"
+    }
   ],
   "cross_boundary_cycle": {
     "events": 3,
@@ -43,16 +65,34 @@
     "second purchase refused while hook pending",
     "prior P3 roots incompatible"
   ],
-  "affected_queued_tasks": ["C02 typed hook", "C03/C04", "P3 receiving/pin migration", "5-event cross-boundary batch/crash"],
+  "affected_queued_tasks": [
+    "C02 typed hook",
+    "C03/C04",
+    "P3 receiving/pin migration",
+    "5-event cross-boundary batch/crash"
+  ],
   "test_refs": [
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py",
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py",
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py",
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py",
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/b05_a_semantic.log",
-    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log"
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py"
   ],
-  "negative_refs": ["PARENT_MATERIAL_HISTORY_MISMATCH", "B05_RENT_ALREADY_RECORDED", "B05_INSUFFICIENT_HOUSEHOLD_CASH", "checkpoint rollback", "period_uncovered"],
-  "cold_refs": ["B05 rolling cold", "B05 rollback cold"],
-  "cost": {"status": "UNKNOWN", "reason": "No controller/provider token, latency, RSS or retry instrumentation available."}
+  "negative_refs": [
+    "PARENT_MATERIAL_HISTORY_MISMATCH",
+    "B05_RENT_ALREADY_RECORDED",
+    "B05_INSUFFICIENT_HOUSEHOLD_CASH",
+    "checkpoint rollback",
+    "period_uncovered"
+  ],
+  "cold_refs": [
+    "B05 rolling cold",
+    "B05 rollback cold"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation available."
+  }
 }
