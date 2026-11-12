@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, replace, fields, is_dataclass
 from fractions import Fraction
 from types import MappingProxyType
+from threading import RLock
 import hashlib
 import math
 from typing import Any, Callable, Iterable, Mapping
@@ -681,58 +682,73 @@ class SourceBackedFacadeKey:
 class SourceBackedC11SessionCache:
     def __init__(self):
         self._entries = {}
+        # Sourcefree session cache; serialize only its small lookup/admission/
+        # eviction metadata, never the I02 source read or I03 computation.
+        self._lock = RLock()
 
-    def get(self, key):
-        entry = self._entries.get(key)
-        if entry is None:
-            return None
-        stored_key, release = entry
-        if stored_key != key or release.source_artifact_ref.content_hash != key.source_sha256:
-            raise SourceBackedC11FacadeError("stale/tampered cache")
-        return release
-
-    def put(self, key, release):
-        """Only check/replay a binding the governed producer *already* admitted.
-
-        A caller holding an I02-valid release cannot establish that it was
-        produced under this key's full governed projection, physical decoder,
-        and authority context. Public first-insertion would permit attaching
-        a different valid source-sibling release and changing I03 facts.
-        """
-        if not isinstance(release, C11LogicalRelease) or release.source_artifact_ref.content_hash != key.source_sha256:
-            raise SourceBackedC11FacadeError("cache/source mismatch")
-        existing = self._entries.get(key)
-        if existing is None:
-            raise SourceBackedC11FacadeError("producer-only cache admission")
-        stored_key, prior = existing
+    @staticmethod
+    def _require_same_binding(key, release, entry):
+        stored_key, prior = entry
         if (stored_key != key or not isinstance(prior, C11LogicalRelease)
                 or prior.source_artifact_ref.content_hash != key.source_sha256
                 or prior.release_ref != release.release_ref
                 or prior.source_release_manifest_hash != release.source_release_manifest_hash
                 or prior.replay_manifest.ref != release.replay_manifest.ref):
             raise SourceBackedC11FacadeError("conflicting cache rebind")
-        # Idempotent reinsertion only. The previously observed release is
-        # retained rather than replaced with a distinct caller-held object.
+
+    @staticmethod
+    def _require_source(key, release):
+        if (not isinstance(release, C11LogicalRelease)
+                or release.source_artifact_ref.content_hash != key.source_sha256):
+            raise SourceBackedC11FacadeError("cache/source mismatch")
+
+    def get(self, key):
+        with self._lock:
+            entry = self._entries.get(key)
+            if entry is None:
+                return None
+            stored_key, release = entry
+            if (stored_key != key or not isinstance(release, C11LogicalRelease)
+                    or release.source_artifact_ref.content_hash != key.source_sha256):
+                raise SourceBackedC11FacadeError("stale/tampered cache")
+            return release
+
+    def put(self, key, release):
+        """Public replay is idempotent only; no unowned first cache admission."""
+        self._require_source(key, release)
+        with self._lock:
+            existing = self._entries.get(key)
+            if existing is None:
+                raise SourceBackedC11FacadeError("producer-only cache admission")
+            self._require_same_binding(key, release, existing)
+            # Preserve first-admitted original object; never replace with a
+            # second caller-supplied object sharing its exact identities.
 
     def _admit_from_source_backed_producer(self, key, release):
-        """Private builder-owned admission after ONE I02 validation and key check.
+        """Single, atomic producer admission after I02 + full coherence checks.
 
-        This is internal Python API custody, not cryptographic source/issuer
-        authentication or a defense against hostile same-process reflection.
+        The prior contains() -> public put() split could refuse a legitimate
+        validated producer when another thread cleared the session cache in
+        between. Holding the cache metadata lock prevents that false denial
+        and retains A's producer-only first insertion + B's rebind refusal.
+        This is local synchronization, not external source/issuer authority.
         """
-        if not isinstance(release, C11LogicalRelease) or release.source_artifact_ref.content_hash != key.source_sha256:
-            raise SourceBackedC11FacadeError("cache/source mismatch")
-        if key in self._entries:
-            self.put(key, release)
-        else:
-            self._entries[key] = (key, release)
+        self._require_source(key, release)
+        with self._lock:
+            existing = self._entries.get(key)
+            if existing is None:
+                self._entries[key] = (key, release)
+            else:
+                self._require_same_binding(key, release, existing)
 
     def clear(self):
-        self._entries.clear()
+        with self._lock:
+            self._entries.clear()
 
     @property
     def entry_count(self):
-        return len(self._entries)
+        with self._lock:
+            return len(self._entries)
 
 
 def source_backed_facade_key(source, p, *, current_authorities=()):
