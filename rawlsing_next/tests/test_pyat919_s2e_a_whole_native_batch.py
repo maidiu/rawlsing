@@ -156,8 +156,25 @@ def test_a_one_shared_native_batch_executes_all_f1_f4_and_i05_f3():
     assert sum(
         row["raw_numerator_support"] for row in f4.target_topology["complete_cell_semantic_projection"]
     ) == len(source["respondents"])
+    def cell_counts(fact):
+        return {
+            tuple(row["cell"]) if isinstance(row["cell"], (list, tuple)) else row["cell"]:
+                row["raw_numerator_support"]
+            for row in fact.target_topology["complete_cell_semantic_projection"]
+        }
+    # Independent manually specified oracle: all eight possible X×Y×Z
+    # configurations, not reconstructed via native marginal multiplication.
+    assert cell_counts(f4) == {
+        ("0", "0", "0"): 5, ("0", "0", "1"): 0,
+        ("0", "1", "0"): 0, ("0", "1", "1"): 1,
+        ("1", "0", "0"): 0, ("1", "0", "1"): 5,
+        ("1", "1", "0"): 1, ("1", "1", "1"): 0,
+    }
+    assert cell_counts(f1) == {"0": 10, "1": 2}
     assert f2yx.raw_denominator_support == 6
     assert f2xy.raw_denominator_support == 2
+    assert cell_counts(f2yx) == {"0": 5, "1": 1}
+    assert cell_counts(f2xy) == {"0": 1, "1": 1}
     assert f2yx.denominator_member_refs != f2xy.denominator_member_refs
     assert len(by_ref[discovery.ref.key].receipts) == shared.i05_receipt_count
     # This is exact sourcefree case evidence, NOT a 100k process-tree cap test.
