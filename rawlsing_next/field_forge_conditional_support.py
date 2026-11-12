@@ -209,6 +209,9 @@ def _validate_common_closure(
     if joint_fact.typed_state not in ALLOWED_PRODUCER_STATES:
         raise FieldForgeConditionalSupportError(
             f"unsupported producer typed_state {joint_fact.typed_state!r}")
+    if joint_fact.typed_state == "SUPPORTED" and joint_query.typed_state != "QUERY_AUTHORIZED_RESOLVABLE":
+        raise FieldForgeConditionalSupportError(
+            "positive fact cannot derive FIELD FORGE relation from a nonpositive query state")
 
     fact_query_ref = _exact(joint_fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref")
     if fact_query_ref != joint_query.ref:
