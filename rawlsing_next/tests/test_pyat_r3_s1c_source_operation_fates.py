@@ -96,6 +96,8 @@ def test_s1c_full_frozen_census_reaches_real_issued_reader(tmp_path):
     assert result["source_factory_calls"] > 0
     assert result["checkpoint_hash"]
     assert result["deferred_scope_records"] == list(frontier.deferred)
+    assert any(x.get("kind") == "ARITY_DEFERRED"
+               for x in result["deferred_scope_records"])
     assert set(row["operation_id"] for row in result["operation_fates"]) == {
         row.operation_id for row in census.source_candidates
     }
@@ -251,6 +253,32 @@ def test_s1c_routing_unknown_is_retained_without_administered_positive(tmp_path)
                for op in affected if op.disposition != ELIGIBLE)
     assert all(not rows[op.op_id]["fact_refs"]
                for op in affected if op.disposition != ELIGIBLE)
+    assert result["operation_anti_join"]["no_drop_ok"]
+
+
+def test_s1c_proved_inapplicable_form_is_retained_not_denominator(tmp_path):
+    """Disjoint source-declared administration forms create a real typed fate."""
+    bundle, inventory, policy, _, _ = _fixture(tmp_path)
+    changed = tuple(
+        replace(occ, forms=("DISJOINT_B_FORM",)) if occ.key.item_id == "B"
+        else occ
+        for occ in inventory.occurrences
+    )
+    altered_inventory = replace(inventory, occurrences=changed)
+    frontier = enumerate_frontier(altered_inventory, policy)
+    census = _freeze_packet(frontier, scope_id="S1C-DISJOINT-FORM")
+    inapplicable = {
+        op.op_id for op in frontier.operations
+        if op.disposition == "INAPPLICABLE_PROVED"
+    }
+    assert inapplicable
+    result = _run(bundle, altered_inventory, policy, frontier, census)
+    rows = {row["operation_id"]: row for row in result["operation_fates"]}
+    assert inapplicable <= set(rows)
+    assert all(rows[op]["scientific_disposition"] == "INAPPLICABLE_PROVED"
+               and rows[op]["received_candidate_ids"] == []
+               and rows[op]["fact_refs"] == []
+               for op in inapplicable)
     assert result["operation_anti_join"]["no_drop_ok"]
 
 
