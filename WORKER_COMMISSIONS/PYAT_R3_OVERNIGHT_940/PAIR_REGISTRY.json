@@ -1,0 +1,299 @@
+{
+  "schema": "PYAT940_FIXED_RIVAL_PAIR_REGISTRY_R1",
+  "controller_thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+  "max_active_runs": 3,
+  "max_active_per_pair": 1,
+  "cross_pair_session_reuse_forbidden": true,
+  "pairs": [
+    {
+      "pair_id": "PYAT940-P1",
+      "packet_id": "S1-B",
+      "original_issue": 918,
+      "agents": {
+        "A": {
+          "session_id": "ses_e3122f686ffeByL78cGOKAacTS",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1b-a",
+          "branch": "agent/pyat940-s1b-a-r1",
+          "base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "model_requested": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "session_cost_observed": 0,
+          "session_tokens_observed": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache": {
+              "read": 0,
+              "write": 0
+            }
+          },
+          "opponent_session_id": "ses_e3120baacffegE3ZnR5uZcHb0N"
+        },
+        "B": {
+          "session_id": "ses_e3120baacffegE3ZnR5uZcHb0N",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1b-b",
+          "branch": "agent/pyat940-s1b-b-r1",
+          "base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "model_requested": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "session_cost_observed": 0,
+          "session_tokens_observed": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache": {
+              "read": 0,
+              "write": 0
+            }
+          },
+          "opponent_session_id": "ses_e3122f686ffeByL78cGOKAacTS"
+        }
+      },
+      "state": "PREPARED",
+      "active_role": null,
+      "round_sequence": [
+        "A_GO_FIRST",
+        "B_FOLLOW_UP",
+        "A_COUNTER",
+        "ONE_EXACT_REPAIR_IF_REPRODUCED",
+        "G5_NONAUTHOR"
+      ],
+      "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-control/WORKER_COMMISSIONS/PYAT_R3_OVERNIGHT_940/contracts/S1-B_v1.md",
+      "contract_sha256": "e4d18ba8f030930de153281cb68d00ca83c36870d6f1fff25c5e0399876b3cfb",
+      "mandatory_case_ids": [
+        "B01_HISTORICAL_FUNCTION_AND_DETERMINANT_MAP",
+        "B02_SAV_REAL_PROJECTION_CHANGE_RESTORE",
+        "B03_DTA_REAL_PROJECTION_CHANGE_RESTORE",
+        "B04_EDITION_SHA_ROW_ENCODING_REFUSAL",
+        "B05_MISSING_LABEL_DK_REFUSAL_ROUTING_DISTINCTION",
+        "B06_MULTIOCCURRENCE_SLOT_OWNER_UNJOINED_CONSERVATION",
+        "B07_DENIED_READ_ZERO_BYTE_OPENS",
+        "B08_BOUNDED_SAV_DTA_NO_FULLFRAME_FALLBACK",
+        "B09_EXISTING_DECODER_FACADE_REGRESSION"
+      ],
+      "old_obligations": [
+        "P1-02",
+        "P1-03"
+      ],
+      "first_consumer": "GovernedC11Projection \u2192 project_c11_candidate_from_physical_cells; real qualified synthetic SAV and DTA",
+      "write_allowlist": [
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/pre553_r157_projection_adapter.py",
+        "rawlsing_next/tests/test_pyat940_s1b_*.py"
+      ],
+      "external_holds": [
+        "original35/source/scientificissuer/actor/protectedmerge",
+        "productioncurrentissuer",
+        "nativegrade"
+      ],
+      "integration_state": "UNMERGED",
+      "independent_g5": "NOT_RUN"
+    },
+    {
+      "pair_id": "PYAT940-P2",
+      "packet_id": "S1-D",
+      "original_issue": 918,
+      "agents": {
+        "A": {
+          "session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1d-a",
+          "branch": "agent/pyat940-s1d-a-r1",
+          "base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "model_requested": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "session_cost_observed": 0,
+          "session_tokens_observed": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache": {
+              "read": 0,
+              "write": 0
+            }
+          },
+          "opponent_session_id": "ses_e3120ba49ffeWl7IZUTmL7mjZB"
+        },
+        "B": {
+          "session_id": "ses_e3120ba49ffeWl7IZUTmL7mjZB",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1d-b",
+          "branch": "agent/pyat940-s1d-b-r1",
+          "base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "model_requested": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "session_cost_observed": 0,
+          "session_tokens_observed": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache": {
+              "read": 0,
+              "write": 0
+            }
+          },
+          "opponent_session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r"
+        }
+      },
+      "state": "PREPARED",
+      "active_role": null,
+      "round_sequence": [
+        "A_GO_FIRST",
+        "B_FOLLOW_UP",
+        "A_COUNTER",
+        "ONE_EXACT_REPAIR_IF_REPRODUCED",
+        "G5_NONAUTHOR"
+      ],
+      "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-control/WORKER_COMMISSIONS/PYAT_R3_OVERNIGHT_940/contracts/S1-D_v1.md",
+      "contract_sha256": "220123f6ce248f0172558dc29c3fe150cff6b425a3428aebc8033998d76dcde7",
+      "mandatory_case_ids": [
+        "D01_NORMAL_CURRENT_CHANGE_RESTORE",
+        "D02_COMPLETED_CURRENT_CHANGE_RESTORE",
+        "D03_PARTIAL_CURRENT_CHANGE_RESTORE",
+        "D04_ABSENT_CURRENT_CHANGE_RESTORE",
+        "D05_FROZEN_GRANTED_EXTERNAL_REVOKED_ZERO_OPENS_ALL4",
+        "D06_WRONG_SOURCE_HOST_PURPOSE_ISSUER_EXPIRY",
+        "D07_MIDJOB_PRE_SERVE_REVOCATION",
+        "D08_COLD_PARTIAL_RETRY_CHECKPOINT_CONSERVATION",
+        "D09_EXISTING_ISSUED_NATIVE_FIRST_READER_PARITY"
+      ],
+      "old_obligations": [
+        "P1-05"
+      ],
+      "first_consumer": "normal execute_issued_workload and COMPLETED/PARTIAL/ABSENT resume_joined_workloads \u2192 existing native I03/I05/Batch",
+      "write_allowlist": [
+        "rawlsing_next/pre553_issued_workload.py",
+        "rawlsing_next/tests/test_pyat940_s1d_*.py",
+        "rawlsing_next/tests/test_universal_workload_custody.py",
+        "rawlsing_next/tests/test_universal_workload.py"
+      ],
+      "external_holds": [
+        "original35/source/scientificissuer/actor/protectedmerge",
+        "productioncurrentissuer",
+        "nativegrade"
+      ],
+      "integration_state": "UNMERGED",
+      "independent_g5": "NOT_RUN"
+    },
+    {
+      "pair_id": "PYAT940-P3",
+      "packet_id": "S2-F",
+      "original_issue": 919,
+      "agents": {
+        "A": {
+          "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s2f-a",
+          "branch": "agent/pyat940-s2f-a-r1",
+          "base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "model_requested": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "session_cost_observed": 0,
+          "session_tokens_observed": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache": {
+              "read": 0,
+              "write": 0
+            }
+          },
+          "opponent_session_id": "ses_e3120b9efffegreD5YfH7dOO15"
+        },
+        "B": {
+          "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s2f-b",
+          "branch": "agent/pyat940-s2f-b-r1",
+          "base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "model_requested": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "session_cost_observed": 0,
+          "session_tokens_observed": {
+            "input": 0,
+            "output": 0,
+            "reasoning": 0,
+            "cache": {
+              "read": 0,
+              "write": 0
+            }
+          },
+          "opponent_session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq"
+        }
+      },
+      "state": "PREPARED",
+      "active_role": null,
+      "round_sequence": [
+        "A_GO_FIRST",
+        "B_FOLLOW_UP",
+        "A_COUNTER",
+        "ONE_EXACT_REPAIR_IF_REPRODUCED",
+        "G5_NONAUTHOR"
+      ],
+      "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-control/WORKER_COMMISSIONS/PYAT_R3_OVERNIGHT_940/contracts/S2-F_v1.md",
+      "contract_sha256": "2d7517456846d41c06b5bf0355b79626142b5608db90a546e7252831ae3e2716",
+      "mandatory_case_ids": [
+        "F01_COMPLETE_NATIVE_F1_F4_I05_PREIMAGE_CENSUS",
+        "F02_NATIVE_TO_COLD_M1_AND_DESCRIPTIVE_READER",
+        "F03_CHANGED_VALUE_RESTORATION_EXACT_IDENTITY",
+        "F04_DELETE_MODIFY_REQUIRED_FRAGMENT_REFUSAL",
+        "F05_CONDITION_RISK_DENOMINATOR_NEGATIVE_FRONTIER_REPLAY_CONSERVATION",
+        "F06_WRONG_SOURCE_CURRENT_UNPINNED_SELFHASH_REFUSAL",
+        "F07_FRESH_PROCESS_ZERO_ORIGINAL_SOURCE_OPENS",
+        "F08_ATOMIC_CRASH_ROLLBACK_DEDUP_RESOURCE_MEASURES",
+        "F09_S2E_DEPENDENCY_GRADE_SEPARATION"
+      ],
+      "old_obligations": [
+        "P2-07"
+      ],
+      "first_consumer": "genuine native F1\u2013F4/I05 output \u2192 durable exact closure \u2192 fresh process source-disabled \u2192 pre553_learned_world_composition M1 plus lawful descriptive FF01 or N10E",
+      "write_allowlist": [
+        "rawlsing_next/pre553_durable_empirical_closure.py",
+        "rawlsing_next/pre553_durable_empirical_fragments.py",
+        "rawlsing_next/tests/test_pyat940_s2f_*.py"
+      ],
+      "external_holds": [
+        "original35/source/scientificissuer/actor/protectedmerge",
+        "productioncurrentissuer",
+        "S2-E integratedproducer"
+      ],
+      "integration_state": "UNMERGED",
+      "independent_g5": "NOT_RUN"
+    }
+  ],
+  "created_utc": "2026-11-12T08:28:21.436010+00:00",
+  "notes": {
+    "quota": "UNKNOWN: currentlocalOpenAPIhasnoquota/accountendpoint; no fabricatedbalance; actualproviderrefusalwillHOLD",
+    "model_catalog_name": "DeepSeek V4.1 Flash 1017",
+    "model_catalog_cost_per_million": {
+      "input": 0.15,
+      "output": 0.6,
+      "cache_read": 0.003
+    },
+    "known_session_cost": "0 atcreation, actualrunningcostreceiptpending",
+    "reasoning_switch": "No verifiedself-switchtool exposedhere; retaincurrentHQsettings, noquestionsovernight/noassumedAstraaccess",
+    "old_W03_W04": "USER_PAUSED_UNTOUCHED",
+    "wake_policy": "TERMINAL_NOTIFICATIONS_ONLY_NO_RECURRING_GOALWAKE",
+    "original_tasks": "DELEGATED_CANDIDATE notPASS; sameoriginalG5taskclosureonly"
+  }
+}
