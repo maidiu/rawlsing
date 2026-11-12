@@ -48,7 +48,7 @@ def predecessor_owner():
         sys.modules.pop(name, None)
 
 
-def _respondent(n, *, kind="RespondentEvent@1.0.0"):
+def _respondent(n, *, kind="C11Internal:RespondentIdentity"):
     return ExactRef(
         kind,
         f"urn:test:s3a:r5:respondent:{n}",
