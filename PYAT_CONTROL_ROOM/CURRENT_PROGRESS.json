@@ -331,7 +331,7 @@
     "independent_tests": "153+19+1 PASS, MR01 executed/noSKIP; wrongrelease refusal and lawfulmultirelease positive",
     "repair_job": "pyat960-s2g-mr01-b-repair",
     "repair_scope": "G5-MR01 selected fact provenance vs determinant release only",
-    "next": "Terminalreturn->samefixedQ2B or consumeQ3preflight; writer only at actualgate",
+    "next": "Existing Q2 A continues; sameB receives complete preflight on Areturn. Q3writer gates unchanged.",
     "repair_delivery": "6ae305dcd284a47d7eb105ad203001db31212c27",
     "repair_implementation": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
     "repair_job_state": "TERMINAL_EXIT0",
@@ -350,8 +350,12 @@
     "Q3": {
       "job": "pyat960-s2c-preflight01",
       "branch": "agent/pyat960-s2c-preflight-r1",
-      "state": "PREFLIGHT_ONLY",
-      "writer": "HELD_DIRECT_S2B_G5_AND_CONCRETE_Q2_ABI"
+      "state": "PREFLIGHT_RECOVERED_RUNTIME_EXIT1_WRITER_HELD",
+      "writer": "HELD_DIRECT_S2B_G5_AND_CONCRETE_Q2_ABI",
+      "return_sha": "be61531acd388428896ab22ffd2f631ebb7d721c",
+      "finding": "metadata-onlydirectI02 needs body-preservingQ2stream; proposals notnewarchitecture",
+      "count_function_entries": 48,
+      "count_old_obligations": 12
     }
   }
 }

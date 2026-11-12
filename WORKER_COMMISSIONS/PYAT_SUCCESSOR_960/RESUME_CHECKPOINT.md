@@ -1,5 +1,14 @@
 # Successor #960 — same existing PYAT HQ
 
+## Q3 preflight failed runtime / artifacts recovered / Q2 continues — 2026-11-12
+
+Q3 jobpyat960-s2c-preflight01 exited1 after14m56s with exact OpenCode unknown error `Failed to execute statement`; stderrempty. No provider/quota/account/disk cause established. Actual report files had been written but no workercommit/push. HQ read handoff/receipt/matrix, verified48 function entries/12W03W04mappings and actual directI02 schema/body loader/proc source; banked6 return-only files at `be61531acd388428896ab22ffd2f631ebb7d721c` on existingpreflightbranch, preserving originalworkerreports verbatim and addingHQ_CUSTODY_RECOVERY.json. Four claimed standalone mirrors02-05 absent; their substantive content is in actual matrix/handoff. Do NOT cite missingpaths or call exit0/G1productacceptance. No rerun/newworker needed to recover requested readonly findings. Q3 G2-G5 NOT_RUN, writerHELD.
+
+Required integration finding: S2B directSQLite objects/roots are metadata/selectorcertificate, no eventbody; selectedloader uses existingC11Repository.resolve_object_exact. Q2 source13family stream must be body-preserving/co-produced for Q3 without secondread or authoritativecorpus. Carry complete preflightreturn to SAME fixedQ2B on actual Aterminal, no midflightauthorredefinition. Directcertificate coldverifier Linux/proc requirement is explicit owner/hostcompatibility limit, not newscience. Specific13tablelayout/newrootstruct/sessionnames inreport are proposals only, NOT an adoptednewarchitecture/gates. Existing fixtureworktree/tempstorage is userauthorized; no inventedneedfornewhostapproval for boundedsourcefreefixtures; separatelygoverned durableoriginalsource storage holds unchanged.
+
+Q2 A session ses_e3122f686ffeByL78cGOKAacTS confirmed actuallyrunning viaactiveAPI and livechild53457/supervisor53456/observer53458 at thisfailureboundary. No restart/duplicate dispatch. Q3preflightterminal; Q3writerstillrequires independentlyaccepted directS2BG5+concretecompatibleQ2input, notS2E. Q1accepted STOP. Eventnotifications only, no recurringchecks. Observed availabledisk2.7GiB; no heavybenchmark/writer was launched from thisreturn.
+
+
 ## CURRENT USER UNLOCK: Q2 actual author + Q3 PREFLIGHT_ONLY launched — 2026-11-12
 
 User unlock attachment b0a775a1 received fully; updated issue960 front-loaded Nov11/12 vision/reuse lock and recovery978 read. Q1 scoped DONE unchanged; no reopening. Upstream S1C code `dae66cdf9f3846d237e0b1c3069cc17eb05b7746` real-runner `53adb6702b7e6c82652689df6a1a06f8698ac5c2` actual18/22/182 evidence, G5pending. DirectS2B code `155cd1b7244ab22ede804386e6d5253a39fe3587`, report `cc35e0a4e51394961f58b632dec8a149deea21a2`,129PASS and realI03 2->3->2 evidence; G5pending. 100k EVENTS/one respondent, not100krespondents/integrated6GiB. #980c8e739470 is unmerged scoped stagedbase, not protectedadoption. S2E not Q2/Q3 prereq.

@@ -406,3 +406,8 @@ G5 receiving `38d6136031f0665d29f8b3d8768a9a4976f639cb` (delivery `d5ee7deed4531
 ### #960 S01-S03 user unlock / provisional Q2 and read-only Q3 — 2026-11-12
 
 User authorizes originalS1E construction against exact provisional S1Cdae66cdf + directS2B155cd1b while independentG5 pending. Exclusive composition591056a948fb0fdd68adbd581301dd903485adc8 preserves scoped#980base; Q2actualauthor launched, immutable13familyABI+source/operation/currentno-drop frozen. Separate originalS2Cread-onlyreuse/ABI preflight launched; writer stillhelddirectS2BG5+concreteQ2input. S2E not prerequisite. Q1accepted STOP, no newpackets/science/currentproduction/protected authority. Fullvision/Oct28-Nov11reuse and all35no-drop retained in frozencontracts; exactlaunches/gates in successor960registry/checkpoint.
+
+
+### #960 S03 readonly preflight recovery — 2026-11-12
+
+Q3 report `be61531acd388428896ab22ffd2f631ebb7d721c` recovered after runtimeexit1, no productchanges.48 function reuse entries/12oldobligationmappings; sourceexact directI02certificate lacksbody, needsQ2body-preserving singlepass co-production. Carryfindings toexistingQ2B, not newengine/task. Proposed physicalschema/sessiondetails remain proposals. Q3G2-G5NOT_RUN/writerheld, Q2actualauthorcontinues, no original35/science/current/protected authority gained.
