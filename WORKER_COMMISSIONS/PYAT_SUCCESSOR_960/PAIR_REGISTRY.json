@@ -9,25 +9,26 @@
     {
       "packet_id": "S2-G",
       "queue": "Q1",
-      "state": "LAUNCHED_AWAITING_ACTUAL_FIRST_TURN_MODEL_PROOF",
+      "state": "B_DISPATCH_RESERVED",
       "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-control/WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md",
       "contract_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-a",
-          "branch": "agent/pyat960-s2g-a-r1"
+          "branch": "agent/pyat960-s2g-a-r1",
+          "state": "TERMINAL_WAIT_OWN_B"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-b",
           "branch": "agent/pyat960-s2g-b-r1",
-          "state": "IDLE_WAIT_OWN_A_TERMINAL"
+          "state": "DISPATCH_RESERVED"
         }
       },
       "integration": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "job_id": "pyat960-s2g-a01",
+      "job_id": "pyat960-s2g-b01",
       "owner_reservation": "https://github.com/maidiu/rawlsing/issues/919#issuecomment-6832863802",
       "launch": {
         "job_id": "pyat960-s2g-a01",
@@ -36,7 +37,10 @@
         "observer_pid": 95692,
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s2g-a01",
         "launch_is_not_completion": true
-      }
+      },
+      "a_delivery_sha": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
+      "a_implementation_sha": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
+      "a_disposition": "DELIVERED_PENDING_FIXED_OPPONENT_NOT_ACCEPTED"
     },
     {
       "packet_id": "S1-E",
