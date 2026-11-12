@@ -3,9 +3,9 @@
 import argparse, hashlib, json, os, platform, signal, sqlite3, subprocess, sys, time
 from pathlib import Path
 
-SCHEMA="G03_I0_REAL_P6_V2"
+SCHEMA="G03_I0_REAL_P6_V3"
 STATE_DIGEST_SCHEME="G03_STATE_PATH_CONTENT_SHA256_V1"
-STATE_LOGICAL_SCHEME="G03_SQLITE_ROWS_AND_OTHER_CONTENT_V1"
+STATE_LOGICAL_SCHEME="G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2"
 SQLITE_REL="actual-p2/p3_psyche.sqlite3"
 P6="WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
 FILES=[P6, "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
@@ -68,10 +68,24 @@ def state_file_digests(root):
                 found[q.relative_to(root).as_posix()]=hashbytes(q.read_bytes())
     return found
 
+def sqlite_typed_cell(v):
+    """Injective representation of SQLite's five primitive result storage classes."""
+    if v is None: return ["NULL"]
+    if type(v) is int: return ["INTEGER",str(v)]
+    if type(v) is float: return ["REAL",v.hex()]
+    if type(v) is str: return ["TEXT",v]
+    if type(v) is bytes: return ["BLOB",v.hex()]
+    raise ValueError("UNSUPPORTED_SQLITE_CELL_TYPE")
+
 def sqlite_logical_digest(root):
     """Diagnose physical SQLite page churn versus independently readable table contents."""
     path=Path(root)/"actual-p2"/"p3_psyche.sqlite3"
     if not path.exists():return {"status":"ABSENT"}
+    # immutable=1 is only truthful for a checkpointed, closed SQLite cut.
+    # A committed WAL can contain real rows invisible to immutable readers.
+    wal=Path(str(path)+"-wal")
+    if wal.exists() and wal.stat().st_size>0:
+        return {"status":"UNOBSERVED","reason":"sqlite_uncheckpointed_wal"}
     try:
         uri="file:"+str(path.resolve())+"?mode=ro&immutable=1"
         with sqlite3.connect(uri,uri=True) as db:
@@ -80,7 +94,7 @@ def sqlite_logical_digest(root):
             tables=[]
             for name in names:
                 safe=name.replace('"','""')
-                rows=[[(v.hex() if isinstance(v,bytes) else v) for v in row]
+                rows=[[sqlite_typed_cell(v) for v in row]
                       for row in db.execute('SELECT * FROM "'+safe+'"')]
                 rows.sort(key=lambda row:data(row))
                 tables.append([name,rows])

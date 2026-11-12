@@ -1,0 +1,109 @@
+{
+  "schema": "SOROK_G03_I0_A_RELAY_STATUS@1",
+  "packet_id": "G03-I0",
+  "contract_frozen_at_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "current_amendment": "maidiu/rawlsing issue #949 R3C G1-G5 amended body inspected 2026-11-12",
+  "frozen_base_sha": "aa157f23cf7d6284c982595295301036145b7cdf",
+  "candidate_sha": "2b1a115168be94479e3e12334fc9d23f3d0163b6",
+  "candidate_sha_scope": "immutable last implementation/test code cut; subsequent commits handoff/report only",
+  "mandatory_case_ids": [
+    "I0-P01",
+    "I0-P02",
+    "I0-N01",
+    "I0-N02",
+    "I0-N03",
+    "I0-R01",
+    "I0-M01"
+  ],
+  "mandatory_case_results": [
+    {
+      "id": "I0-P01",
+      "result": "NOT_RUN",
+      "command": "Final-head original-P6 CI attempted but host runner never allocated",
+      "actual": "B parent #43278614274 green; A variant never executed by Actions due zero-runner failures; local differential against genuine P6 archived SQL database is narrower evidence"
+    },
+    {
+      "id": "I0-P02",
+      "result": "NOT_RUN",
+      "command": "Final-head original-P6 CI attempted but host runner never allocated",
+      "actual": "B parent #43278614274 green; A variant never executed by Actions due zero-runner failures; local differential against genuine P6 archived SQL database is narrower evidence"
+    },
+    {
+      "id": "I0-N01",
+      "result": "NOT_RUN",
+      "command": "Final-head original-P6 CI attempted but host runner never allocated",
+      "actual": "B parent #43278614274 green; A variant never executed by Actions due zero-runner failures; local differential against genuine P6 archived SQL database is narrower evidence"
+    },
+    {
+      "id": "I0-N02",
+      "result": "NOT_RUN",
+      "command": "Final-head original-P6 CI attempted but host runner never allocated",
+      "actual": "B parent #43278614274 green; A variant never executed by Actions due zero-runner failures; local differential against genuine P6 archived SQL database is narrower evidence"
+    },
+    {
+      "id": "I0-N03",
+      "result": "NOT_RUN",
+      "command": "Final-head original-P6 CI attempted but host runner never allocated",
+      "actual": "B parent #43278614274 green; A variant never executed by Actions due zero-runner failures; local differential against genuine P6 archived SQL database is narrower evidence"
+    },
+    {
+      "id": "I0-R01",
+      "result": "PASS",
+      "command": "GitHub compare from B parent to A source cut",
+      "actual": "No P3/P4/P5/P6 producer or actor/world owner file modified"
+    },
+    {
+      "id": "I0-M01",
+      "result": "NOT_RUN",
+      "command": "Final-head original-P6 CI attempted but host runner never allocated",
+      "actual": "B parent #43278614274 green; A variant never executed by Actions due zero-runner failures; local differential against genuine P6 archived SQL database is narrower evidence"
+    }
+  ],
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "issue #949, original PR #938, B SHA, fresh A isolated branch; source custody checked"
+    },
+    "G2": {
+      "state": "NOT_RUN",
+      "receipt": "A V3 actual P6/reader workflow jobs ended before runner allocation; B V2 exact source passed #43278614274"
+    },
+    "G3": {
+      "state": "NOT_RUN",
+      "receipt": "A V3 newly committed hostile tests not run on official host; physical P6 SQL archive independently mutated in local probe"
+    },
+    "G4": {
+      "state": "NOT_RUN",
+      "receipt": "A V3 durable raw process receipts cannot be generated without allocated runner; B original retained"
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": "independent nonauthor not assigned",
+      "receipt": "No independent G5 receipt at A V3 source"
+    }
+  },
+  "first_consumer_proof": "B V2 independent reader success at 43278614274; A V3 receiver code and 3 new tests committed; full V3 execution NOT_RUN",
+  "material_open_defects": [],
+  "external_holds": [
+    {
+      "owner": "GitHub Actions hosted runner",
+      "minimal_missing_witness": "Final A V3 exact SHA G2-G4 full P6 execution and artifacts; multiple repo workflows fail without runner assignment; no executed test steps"
+    },
+    {
+      "owner": "G02 original generator owner",
+      "minimal_missing_witness": "Independent real generated-root cohort for terminal G03"
+    },
+    {
+      "owner": "independent nonauthor G5 receiver",
+      "minimal_missing_witness": "Exact A final SHA real positive/negative/cold replay and one independent hostile variation"
+    }
+  ],
+  "evidence_grade_ceiling": "SOURCEFREE_S2_INSTRUMENTATION_ONLY",
+  "earned_on_this_A_relay": "SOURCEFREE_LOCAL_P6_SQL_ARCHIVE_DIFFERENTIAL_AND_SOURCE_COMMITTED; S2 NOT YET PROVED",
+  "independent_receiver_decision": "REQUIRED, NOT CLAIMED",
+  "integration_state": "UNMERGED",
+  "stop_state": "HOLD_EXTERNAL",
+  "nonblocking_deferred": [
+    "No native scientific, actor, human, protected merge, provider token/cost or process-tree resource authority"
+  ]
+}
