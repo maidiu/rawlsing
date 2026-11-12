@@ -38,15 +38,17 @@ class TypedPsycheWitness(unittest.TestCase):
         return w
 
     def test_blob_vs_text_must_not_collapse_in_logical_record(self):
-        with sqlite3.connect(self.dbpath) as db:
+        with closing(sqlite3.connect(self.dbpath)) as db:
             db.execute("CREATE TABLE p3_records(id INTEGER PRIMARY KEY, payload_json TEXT NOT NULL)")
             db.execute("INSERT INTO p3_records VALUES (1, ?)",
                        (sqlite3.Binary(bytes.fromhex("4142")),))
-        with sqlite3.connect(self.dbpath) as db:
+            db.commit()
+        with closing(sqlite3.connect(self.dbpath)) as db:
             self.assertEqual(db.execute(
                 "SELECT typeof(payload_json) FROM p3_records").fetchone()[0], "blob")
         before = self.readings()
         self.update_and_checkpoint("UPDATE p3_records SET payload_json=? WHERE id=1", ("4142",))
+        with closing(sqlite3.connect(self.dbpath)) as db:
             self.assertEqual(db.execute(
                 "SELECT typeof(payload_json) FROM p3_records").fetchone()[0], "text")
         after = self.readings()
