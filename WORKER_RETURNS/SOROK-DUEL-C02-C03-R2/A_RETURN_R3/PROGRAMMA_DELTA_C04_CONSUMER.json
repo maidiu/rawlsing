@@ -1,0 +1,59 @@
+{
+  "event_id": "SOROK-DUEL-C04-A-CONSUMER-20261112-R1",
+  "task_id": "C04",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "61f2918ec947e44dd7ecff8fd3359734469e9a90",
+  "composition_start_sha": "01b2d2d23259969778ce996f5527037d666f46f8",
+  "opponent_frozen_sha": "1510d835fcf0a35a5b352b27f4daf4b1f0bb6b34",
+  "opponent_implementation_sha": "255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Added the actual normal P6/Nadia current-experience consumer for committed parent speech. run_p6.experience(command='child-experience', event_id|operation_id) uses the existing situated.recent_speech actor perception path plus parent_speech.read_child_experience, verifies actual speech event, parent own_speech receipt, child speech receipt, root/branch/author/hash/occurrence/read clocks, decision binding and source identity, and returns only public speech plus a bounded response input. Hidden reason/hash and parent decision action/basis are not child-facing. User view/say remain distinct and do not expose the parent utterance.",
+  "changed_symbols": [
+    "parent_speech.read_child_experience",
+    "parent_speech._utterance_by_event_or_operation",
+    "parent_speech.perform_parent_utterance disclosure fields (caller-supplied text/hidden reason, no generations claim)",
+    "run_p6._child_speech_experience / child_speech_experience",
+    "run_p6.experience command 'child-experience'",
+    "run_p6 CLI child-experience --event-id/--operation-id"
+  ],
+  "actual_consumer": [
+    "run_p6.experience ordinary child-experience after P4 parent-speak",
+    "situated.recent_speech actual P6 actor perception path",
+    "parent_speech.read_child_experience actual C12 child speech receipt + public projection"
+  ],
+  "evidence": [
+    "A C03/C04 consumer suite 3 passed in 70.05 s.",
+    "B C02/C03/C04 suite 11 passed in 261.31 s.",
+    "Same outward text with hidden reasons alpha/beta -> equivalent child public text, no hidden/hash/decision leak, distinct parent self-reads.",
+    "P6 view/say do not contain the parent text; P3 psychology head unchanged.",
+    "Remote/no-child-receipt and missing own_speech receipt do not deliver speech; severed event refuses while decision remains."
+  ],
+  "preserved": [
+    "C12 speech receipt is access owner, not memory/durable uptake",
+    "bounded same-room-at-admission experimental access condition explicit",
+    "no general sensory engine or user-visible parent speech",
+    "P4/P6 check_boundary/source/pending semantics",
+    "B's C04 writer and hidden-reason self-only custody"
+  ],
+  "regressed": [
+    "No parent language generation owner; text/hidden reason remain caller inputs",
+    "No P3 actor-decision context consumption or durable psychological uptake/native rule",
+    "MI/P5/P6 exposure remains unextended",
+    "Full P3 BatchEngine interleave/fork/E03 crash recovery remain held"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token instrumentation; measured test wall times above."
+  },
+  "ABIclass": "NEW_CONSUMER_SOURCEFREE_ACTOR_EXPERIENCE",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}
