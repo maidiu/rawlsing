@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_R3_S1C_FOLLOWUPPER_ADVERSARIAL_RECEIPT@1",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "kind": "AUTHOR_DESCENDANT_NOT_INDEPENDENT_G5",
+  "pr": "https://github.com/maidiu/rawlsing/pull/959",
+  "branch": "agent/pyat-r3-s1c-followupper-projection-adversarial-20261112-r1",
+  "provenance": {
+    "A_head": "5a6eb73158479a3bf4cead70b0d36cca43d902b6",
+    "A_tested": "9a539024f3d2a23f96e4e4fa50a0e749b0d6b56f",
+    "B_independent_tested": "e15ccaedaa54155fc3855f821565e2794c946a68",
+    "B_source_blob": "e97c3727d7798fedca4cd5c9b621e335ff50ebb7",
+    "direct_startup_head": "e15ccaedaa54155fc3855f821565e2794c946a68",
+    "sourcefree_integration_PR948": "7064daa14d93109211629e72d08f3a6e705a0d57",
+    "protected_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "patch_code_test_head": "b120cfc449415a17c7469c26329a8e9ea4e1a48c",
+    "adapter_blob": "ae66477721eff01185872fba1e1f9453ac7ec655",
+    "tests_blob": "f0e7f5980a54f70a5bc172a8d628074e317f246a"
+  },
+  "defect": {
+    "grade": "SOURCE_PROVEN_CONTROL_FLOW_FALSIFIER__NOT_HOST_EXECUTED",
+    "mechanism": "Rehashing both frozen and actual B frontier can launder invented R61 UNKNOWN/EXCLUDED source-negative rows, changed occurrence fates and equal-total status counts; B compared matched caller-owned records without authentic R61 projection/check.",
+    "initial_B_test_claim": "Accepted invented nonoperation UNKNOWN/EXCLUDED source objects as legitimate frozen frontier records",
+    "changed_guards": [
+      "UNKNOWN_PROJECTION_DRIFT",
+      "EXCLUDED_PROJECTION_DRIFT",
+      "INVENTORY_LEDGER_SOURCE_DRIFT",
+      "CLASS_COUNTS_DRIFT",
+      "DISPOSITION_COUNTS_DRIFT",
+      "EXECUTION_COUNTS_DRIFT",
+      "RESULT_COUNTS_DRIFT"
+    ],
+    "existing_functions_reused": [
+      "rawlsing_next.universal_grammar.enumerate.inventory_ledger",
+      "rawlsing_next.universal_grammar.enumerate.enumerate_frontier",
+      "rawlsing_next.pre553_universal_workload.compile_governed_frontier",
+      "rawlsing_next.pre553_universal_workload.execute_governed_frontier"
+    ]
+  },
+  "preservation": {
+    "native_compiler_modified": false,
+    "source_factory_modified": false,
+    "A_B_existing_first_consumer_retained": true,
+    "original35_issued": false,
+    "S1D_CURRENT_issued_by_this_PR": false,
+    "W03_W04_modified": false,
+    "protected_merged": false,
+    "no_parallel_science_compiler": true
+  },
+  "observed_CI": [
+    {
+      "run": 43279326500,
+      "conclusion": "FAILURE",
+      "runner_steps": "NONE_OBSERVED",
+      "tests": "NOT_RUN_OR_UNOBSERVABLE"
+    },
+    {
+      "run": 43279674997,
+      "conclusion": "FAILURE",
+      "runner_steps": "NONE_OBSERVED",
+      "tests": "NOT_RUN_OR_UNOBSERVABLE"
+    },
+    {
+      "run": 43280002352,
+      "conclusion": "FAILURE",
+      "runner_steps": "NONE_OBSERVED",
+      "tests": "NOT_RUN_OR_UNOBSERVABLE"
+    }
+  ],
+  "author_courts": {
+    "G1": "SOURCE_PROJECTION_LOGIC_IMPLEMENTED_NOT_EXECUTED_AT_NEW_HEAD",
+    "G2": "INHERITED_A_B_NATIVE_I05_PROOF_ONLY_NEW_DESCENDANT_NOT_RUN",
+    "G3": "NEGATIVE_PROJECTION_TESTS_WRITTEN_NOT_EXECUTED_AT_NEW_HEAD",
+    "G4": "STATIC_LINEAR_BOUND_ONLY_NEW_HEAD_RESOURCE_TEST_NOT_RUN",
+    "G5": "NOT_RUN_SEPARATE_NONAUTHOR_REQUIRED",
+    "scientific": "ORIGINAL35_SOURCE_SCIENCE_HOLD_EXTERNAL",
+    "authority": "NATIVE_HOST_ACTOR_AND_PROTECTED_INTEGRATION_HELD"
+  },
+  "refuted": [
+    "Invalid op_id can become a positive issued I05 candidate: refuted by native_map.lower_operation OPERATION_ID_NOT_CANONICAL"
+  ],
+  "self_attack": [
+    "Replaced second same-file physical fixture with enumerate_frontier on original inventory",
+    "Corrected route UNKNOWN test: R61 returns HELD, missing risk set yields true UNKNOWN",
+    "Full test suite still not executable with observed workflow runner state"
+  ],
+  "next": "A adversarially reproduce/attack original contract at exact code cut; no new tests beyond a reproduced scope defect, then nonauthor G5"
+}
