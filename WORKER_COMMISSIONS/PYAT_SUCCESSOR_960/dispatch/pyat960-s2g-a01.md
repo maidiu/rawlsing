@@ -1,7 +1,30 @@
+AGENT TYPE: Sourcefree durable lifecycle implementation author
+INTELLIGENCE LEVEL: I3 / established DeepSeek MAX
+
 ```text
-AGENT_TYPE: SOURCEFREE_IMPLEMENTATION_AUTHOR / A_GO_FIRST
-INTELLIGENCE_LEVEL: I3 bounded engineering with real existing native owners; established DeepSeek MAX
+LAUNCH — PYAT960 original S2-G / P2-08 fixed A author
+REPOSITORY: maidiu/rawlsing
+AGENT_TYPE: Sourcefree durable learned lifecycle implementation author A
+INTELLIGENCE_LEVEL: I3
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+EXECUTION_SURFACE: S0_S1_S2_S3
 MCR: LITE
+COMMISSION_KIND: BUILD
+CONTRACT_ID: PYAT960-S2G-R1
+CONTRACT_SOURCE_CUT: WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898
+BRANCH: agent/pyat960-s2g-a-r1
+STARTUP_SHA: 7064daa14d93109211629e72d08f3a6e705a0d57
+ACTIVE_WORKER_NO_DISTURBANCE: Exclusive new A worktree; B idle; Browser branches and paused W03/W04 read-only; no other worker dispatch
+WORK_SCOPE_AND_FLIGHT: PARENT=Original issue 919 S2-G P2-08 and successor issue 960; TRANCHE=Isolated sourcefree durable M1 M2 B5 first-consumer custody; NO_DROP=All frozen G01 through G09 plus original G1-G5 accounted with honest holds
+TERMINAL_CONSUMER_AND_EFFECT: CONSUMER=Existing compose_learned_world and evaluate_learned_world_consumer; EFFECT=Durable CAS publication and authenticated fresh-process selected learned product changes and exact restoration
+FROZEN_ORACLE_AND_COUNTEREXAMPLE: POS=Real synthetic native fact through existing M1 M2 B5 and existing world reader after cold reopen; NEG=Self-rehashed forged checkpoint and stale revoked wrong-purpose independent issuer refuse
+EXECUTION_AND_AUTHOR_PREFLIGHT: RUNNER=Established OpenCode Go DeepSeek V4.1 Flash MAX in exclusive Mac worktree; PREFLIGHT=Verify source blobs runtime imports and actual native smoke before authored implementation
+CLOSURE_AND_OUT_OF_SCOPE: ACCEPT_AT=G1-G4 complete without reproduced material defect then distinct nonauthor G5 scoped receiving; EXCLUDE=Original35 respondents science production issuer protected merging and full joined upstream integration
+SCIENCE_SOURCE_ACTOR_AUTHORITY: Synthetic sourcefree fixtures only; original-source scientific and production current issuer rights held
+POST_RETURN_INDEPENDENT_REVIEW: Fixed B reads full contract and complete A code tests handoff then same A counters; distinct nonauthor G5
+MODEL: opencode-go/deepseek-v4.1-flash#max
+REASONING: Established maximum variant without model or provider change
+PROVIDER/EDITOR_HARNESS: Existing local OpenCode 2.0.22 native runner
 
 S0: Independently read original S2-G/#919 and successor#960 plus FULL PROGRAMMA_PYAT/00 and canonical MCR-lite in your checkout before authored code. Pin inherited owners/source/ABI and complete G1-G5 below.
 S1: Inspect exact inherited M1/M2/B5 and existing accepted S2F closure; choose minimal legitimate isolated externalcustody/current/asof seam, no newscience/replay engine.
@@ -255,5 +278,4 @@ receipt.json +00_HANDOFF.md + decisiveactual evidence in OWN return: packet/oldI
 
 Specific execution: buildactualcodeNOWafterboundedsourcepass, notanotherassessment. Do notfake M1 outcome bydirectlyconstructingdisposition; useactualexistingfamilyrule/adjudicatorandexplicitlyTEST_ONLYqualifiednativevalidatorfixtures forsourcefreeproof. UseacceptedS2Fcoldclosure asinputwithout reimplementing/editingS2F. Reuseactualcompose/evaluatelearnedworld/M2/B5APIs; ifactualfirstreaderneedsmissingcompetentrule, identifyexactpermittedfixture/API or honestHOLDnotmockconsumer. Newadapter mustnot requirefullsourcecorpusreopen, dropM2constitutiveclosure/history, or trustselfhashedcheckpointascURRENT.
 ReturndirectoryWORKER_RETURNS/PYAT960_S2G_A/, receipt.json+00_HANDOFF.md+decisivecommandlogs. Includeownworstvulnerability/missingproof/strongestnextfalsifier, inheritedstrengthsandnewactualfailuresrepaired; completeoriginalG1-G5/mandatoryIDs andsource/consumer/resource/cost/ABI. ScientificHOLD/authorityHOLDseparatefromengineeringcandidate. IntegrationUNMERGED, G5NOT_RUN. CommitpushONLYyourbranchanddirectremoteverify. Existingfinitecontrollerkqueueobserver wakesHQatreturn, noauto-checks/pollingloops/recurringgoalwakes.
-
 ```
