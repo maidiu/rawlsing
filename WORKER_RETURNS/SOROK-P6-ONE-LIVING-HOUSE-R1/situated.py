@@ -208,6 +208,14 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
             project=psyche_scope.get("project"),
             counterpart=psyche_scope.get("counterpart"),
             as_of=world.clock,
+            interlocutor_role=psyche_scope.get("interlocutor_role"),
+            relation_ref=psyche_scope.get("relation_ref"),
+            obligation_refs=psyche_scope.get("obligation_refs", ()),
+            # Qualified existing actor-local world evidence, not guessed
+            # interiority or a portal-user/persona override.
+            actor_observed=bool(
+                packet["recent_self_actions"] or cues or packet["recent_speech"]
+            ),
         )
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
               "packet_hash": digest(packet)}
