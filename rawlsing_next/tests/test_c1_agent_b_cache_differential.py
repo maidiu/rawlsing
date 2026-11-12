@@ -270,6 +270,13 @@ def test_c1_projection_mutation_during_source_read_must_not_poison_cache_key():
 
     def mutate_then_read():
         mutable_semantic_value["response"] = "after"
+        # Ordinary caller-owned mapping mutation no longer changes the frozen
+        # projection; a hostile explicit bypass of dataclass immutability must
+        # still be rejected by the final key coherence check.
+        object.__setattr__(
+            changed_projection.response_slots[0].values[0],
+            "canonical_value", {"response": "after"},
+        )
         return iter(fx["cells"])
 
     source = ExactPhysicalCellStream(
@@ -314,6 +321,10 @@ def test_c1_cache_hit_callback_cannot_change_governed_input_while_serving():
         def get(self, key):
             if self.mutate_on_read:
                 mutable_semantic_value["response"] = "after"
+                object.__setattr__(
+                    projection.response_slots[0].values[0],
+                    "canonical_value", {"response": "after"},
+                )
             return super().get(key)
 
     cache = CallbackCache()
@@ -328,6 +339,10 @@ def test_c1_cache_hit_callback_cannot_change_governed_input_while_serving():
     # No silent replacement of the previously legitimate entry.
     cache.mutate_on_read = False
     mutable_semantic_value["response"] = "before"
+    object.__setattr__(
+        projection.response_slots[0].values[0],
+        "canonical_value", {"response": "before"},
+    )
     _, restored = build_source_backed_c11_repository(source, projection, cache=cache)
     assert restored.release_ref == before.release_ref
 
@@ -357,6 +372,10 @@ def test_c1_uncached_physical_read_cannot_use_changed_governed_semantics():
 
     def mutate():
         governed_value["response"] = "different"
+        object.__setattr__(
+            p.response_slots[0].values[0],
+            "canonical_value", {"response": "different"},
+        )
         return iter(fx["cells"])
 
     source = ExactPhysicalCellStream(
@@ -415,3 +434,32 @@ def test_c1_transient_semantic_rewrite_and_restore_cannot_cache_mixed_release():
         # exact original C11 release, regardless of attempted caller mutation.
         assert emitted.release_ref == baseline.release_ref
     assert p.cache_identity == before_key  # The attack defeats entry/exit hashing.
+
+
+def test_c1_governed_nested_semantic_input_is_detached_and_readonly():
+    """Changing an owner's original dict cannot silently rewrite an issued C11 rule."""
+    import pytest
+    fx = _fixture("agent-a-immutable-governed-contract")
+    p = fx["projection"]
+    x = p.response_slots[0]
+    canonical = {"values": [{"answer": "ISSUED"}]}
+    ranks = {"kind": "SCALAR_SINGULAR", "positions": [0]}
+    altered_occurrence = replace(x.values[0].occurrences[0],
+                                 multiplicity_order_rank_fields=ranks)
+    rule = replace(x.values[0], canonical_value=canonical,
+                   occurrences=(altered_occurrence,))
+    p = replace(p, response_slots=(
+        replace(x, values=(rule, *x.values[1:])),
+        *p.response_slots[1:],
+    ))
+    original_key = p.cache_identity
+    canonical["values"][0]["answer"] = "MUTATED"
+    ranks["positions"].append(55)
+    assert p.cache_identity == original_key
+    assert p.response_slots[0].values[0].canonical_value["values"][0]["answer"] == "ISSUED"
+    assert tuple(p.response_slots[0].values[0].occurrences[0].
+                 multiplicity_order_rank_fields["positions"]) == (0,)
+    with pytest.raises(TypeError):
+        p.response_slots[0].values[0].canonical_value["values"][0]["answer"] = "INTRUSION"
+    with pytest.raises(TypeError):
+        p.response_slots[0].values[0].occurrences[0].multiplicity_order_rank_fields["kind"] = "WRONG"
