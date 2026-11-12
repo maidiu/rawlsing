@@ -228,6 +228,16 @@ class CertifiedRespondentEvents(Sequence[RespondentEvent]):
     def _verified_alias(self, kind: str, target: ExactRef) -> tuple[RespondentEvent, ...]:
         key = (self.respondent_key, kind, target.key)
         rows = self._postings.get(key, ())
+        # The digest and the native I03 iterator MUST consume exactly the
+        # same immutable occurrence sequence. A list, tuple subclass or
+        # custom Sequence can swap members after the first __iter__ (H47),
+        # yielding a SUPPORTED empirical fact from data never authenticated.
+        # Require the precise immutable representation emitted by _bindings:
+        # this check is O(1) and does not copy an unbounded selected range.
+        if type(rows) is not tuple:
+            raise SemanticRangeIntegrityError(
+                "uncertified mutable or custom semantic-range posting sequence"
+            )
         observed = _digest(rows)
         expected = self._witness.range_digests.get(key, (0, _EMPTY_DIGEST))
         if observed != expected:
