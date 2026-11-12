@@ -240,6 +240,7 @@ class P3Owner:
             source_hash=self.source_hash,
         )
         try:
+            self.store.verify()
             self._verify_completed_provenance()
         except BaseException:
             self.store.close()

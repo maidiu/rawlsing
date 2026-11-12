@@ -1240,9 +1240,12 @@ class PsycheStore:
             ).fetchall()
             self._counters["row_reads"] += len(rows)
             record_rows = []
+            records_by_operation: dict[str, list[dict]] = {}
             for row in rows:
                 record = self._record_from_row(row)
                 record_rows.append((row, record))
+                records_by_operation.setdefault(
+                    row["operation_id"], []).append(record)
                 if row["previous_chain"] != previous:
                     raise RecursionRefusal("JOURNAL_INTEGRITY:RECORD_CHAIN")
                 chain = digest(
@@ -1290,6 +1293,21 @@ class PsycheStore:
                 ]
                 if (len(matches) != 1
                         or canonical(matches[0]) != canonical(record)):
+                    raise RecursionRefusal(
+                        "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISMATCH")
+            for operation_id, document in documents.items():
+                receipt = document.get("effects_receipt")
+                expected_records = records_by_operation.get(operation_id, [])
+                if not isinstance(receipt, Mapping):
+                    if expected_records:
+                        raise RecursionRefusal(
+                            "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISSING")
+                    continue
+                receipt_records = sorted(
+                    canonical(item) for item in receipt.get("records", []))
+                row_records = sorted(
+                    canonical(item) for item in expected_records)
+                if receipt_records != row_records:
                     raise RecursionRefusal(
                         "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISMATCH")
             return True
