@@ -247,6 +247,10 @@ def execute_universal_workload(
                 issued=item.issued, source_factory=source_factory,
                 host=compilation.host, purpose=compilation.purpose,
             )
+            # S2-E: the first actual operation consumer reads native_outputs.
+            # Do not record an executed operation if that published view has
+            # diverged from its completed Batch outputs or result refs.
+            result.assert_published_output_closure()
         except Exception as exc:
             failed.append({"operation_id": item.operation.operation_id,
                            "status": "ERROR", "reason": type(exc).__name__})

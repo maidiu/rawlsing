@@ -1,0 +1,43 @@
+name: PYAT R3 S2-E B public issued result closure
+on:
+  push:
+    branches:
+      - 'agent/pyat-r3-s2e-b-public-output-conservation-20261112-r1'
+  pull_request:
+    paths:
+      - 'rawlsing_next/**'
+      - '.github/workflows/pyat-r3-s2e-b.yml'
+permissions:
+  contents: read
+jobs:
+  s2e-b-hostile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas pyreadstat pyarrow duckdb
+      - name: Agent B executable first-consumer loss and exact restoration
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -s -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pyat919_s2e_b_public_result_closure.py
+      - name: All Agent A native and preservation regressions
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py \
+            rawlsing_next/tests/test_pyat919_s2e_a_conservation.py \
+            rawlsing_next/tests/test_pre553_empirical_query.py \
+            rawlsing_next/tests/test_pre553_discovery_exact.py \
+            rawlsing_next/tests/test_universal_workload.py \
+            rawlsing_next/tests/test_universal_workload_custody.py \
+            rawlsing_next/tests/test_pyat940_s2f_a_counter_provenance.py \
+            rawlsing_next/tests/test_pyat940_s2f_b_negative_and_multisource.py \
+            rawlsing_next/tests/test_pyat940_s2f_durable_closure.py \
+            rawlsing_next/tests/test_pyat940_s2f_fresh_process.py

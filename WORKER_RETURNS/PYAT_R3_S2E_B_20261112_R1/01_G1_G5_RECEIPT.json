@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_R3_S2E_B_G1_G5_HANDOFF@1.0.0",
+  "agent": "B_FOLLOW_UPPER",
+  "actual_packet": "S2-E/P2-06 (issue #919)",
+  "supplied_heading_mismatch": "User supplied S1-C/P1-04 duel (#918), while A artifact PR #951 is S2-E/P2-06; S1-C remains distinct",
+  "frozen_A_head": "4357675fc13cc933134bd3303e7efead7aeba4ea",
+  "frozen_A_tested_code_sha": "d7af5b8df922caa86bcd36a7baa0bbb55b43742d",
+  "integration_ancestor": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "B_code_and_tests_sha": "0bc69faa4058bc97db760f711f4e193837501220",
+  "B_branch": "agent/pyat-r3-s2e-b-public-output-conservation-20261112-r1",
+  "B_pr": "https://github.com/maidiu/rawlsing/pull/958",
+  "base_file_blobs": {
+    "rawlsing_next/pre553_issued_workload.py": "6356d6639a5af65b9e4e7f86f4e3b495905e9d2c",
+    "rawlsing_next/pre553_universal_workload.py": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e"
+  },
+  "counterexample": {
+    "id": "S2E-B-01-PUBLISHED-OUTPUT-LOSS",
+    "original_behaviour": "Original NativeWorkloadResult.exact_s2e_output_census inspects outputs_by_unit but never native_outputs nor output_refs; consumer pre553_universal_workload.py:258 reads native_outputs to collect fact_refs",
+    "attack": "On genuine issued TEST_ONLY result, dataclasses.replace(native_outputs=()) or output_refs=(); leave Batch receipts and outputs_by_unit unchanged",
+    "source_grade": "S1_EXACT_SOURCE_INSPECTION_CONFIRMED",
+    "executed_grade": "NOT_RUN__CI_RUNNER_UNASSIGNED",
+    "expected_before_fix": "Private census returns complete despite lost public output; universal reader may record executed operation with lost fact_refs",
+    "expected_after_fix": "S2EOutputConservationError at public closure; normal universal first consumer records ERROR instead of a completed executed operation; restore returns identical fact/receipt refs",
+    "authored_tests": [
+      "test_b_missing_public_native_outputs_must_not_pass_complete_census",
+      "test_b_missing_public_output_refs_must_not_pass_complete_census",
+      "test_b_real_universal_first_consumer_refuses_lost_native_view_and_restores"
+    ]
+  },
+  "repair": {
+    "rawlsing_next/pre553_issued_workload.py": "Add assert_published_output_closure and call it from exact_s2e_output_census",
+    "rawlsing_next/pre553_universal_workload.py": "Call public closure before consuming native_outputs in the real R03 first reader",
+    "rawlsing_next/tests/test_pyat919_s2e_b_public_result_closure.py": "Two direct severance/restore tests and real first-consumer refusal/restoration"
+  },
+  "evidence": {
+    "A_original_CI_run": "https://github.com/maidiu/rawlsing/actions/runs/43275018294",
+    "A_original_ci": "SUCCESS runner_id=1000003898, nine job steps; A reported 78 native + 19 S2F PASS",
+    "B_test_only_CI_run": "https://github.com/maidiu/rawlsing/actions/runs/43278658811",
+    "B_repaired_CI_run": "https://github.com/maidiu/rawlsing/actions/runs/43280064658",
+    "B_CI_state": "INFRASTRUCTURE_FAILURE_BEFORE_RUNNER_ASSIGNMENT; runner_id=0, steps=0; neither test failure nor test success",
+    "commands_to_rerun": [
+      "PYTHONPATH=. python -B -m pytest -q -s -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat919_s2e_b_public_result_closure.py",
+      "PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py rawlsing_next/tests/test_pyat919_s2e_a_conservation.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py"
+    ]
+  },
+  "G1": {
+    "status": "PARTIAL",
+    "reason": "Source-exact public output and first-consumer link verified; full original35 rights/estimates external; frozen S2-E full keys not independently rerun"
+  },
+  "G2": {
+    "status": "A_TESTED_PASS_AT_A_SHA__B_NOT_RUN",
+    "reason": "A sourcefree 5-unit native first consumer evidence remains; B modification lacks S2 runner"
+  },
+  "G3": {
+    "status": "B_STATIC_BREACH_AND_CAUSAL_REPAIR_CANDIDATE__EXECUTABLE_TESTS_NOT_RUN",
+    "reason": "Source-located omitted public output closure and three concrete hostile tests; no runner allocated"
+  },
+  "G4": {
+    "status": "PARTIAL_INHERITED",
+    "reason": "No process-tree or original35 100k claim; only O(unit-count) public mirror check intended; performance unmeasured at B head"
+  },
+  "G5": {
+    "status": "NOT_RUN",
+    "owner": "Independent nonauthor reviewer distinct from A and B"
+  },
+  "authority": {
+    "engineering": "S1_CODE_PATCH_WRITTEN_S2_UNVERIFIED",
+    "scientific": "NO_ORIGINAL35_ISSUANCE",
+    "source": "NO_NEW_SOURCE_GRANT",
+    "actor": "NO_ACTOR_RIGHTS",
+    "integration": "UNMERGED_DRAFT_PR"
+  },
+  "independent_receiver_decision": null,
+  "stop_state": "HOLD_EXECUTION_ENVIRONMENT__DO_NOT_CLAIM_READY_FOR_G5",
+  "external_holds": [
+    "GitHub hosted Actions runner allocation at B SHA",
+    "S2-D certified saved store",
+    "original35 scientific/source rights",
+    "G5 independent review"
+  ],
+  "nonblocking_deferred": [
+    "No novel compiler, persistence system, no extra hardening or performance theory"
+  ],
+  "strongest_next_attack": "Execute B tests and A regressions at exact B code SHA with available runner; try dual public/private coherent forgery, partial resume and exact weighted sourcefree result; separate external science."
+}
