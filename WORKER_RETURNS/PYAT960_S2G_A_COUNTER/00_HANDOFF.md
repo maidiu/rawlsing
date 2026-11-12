@@ -12,7 +12,7 @@
 - Startup / B delivery: `220ebd3311fb0607079ed6a6e9a364d6681e5378`.
 - B code cut: `0071aefb05d8ebbd75058a10c5e831d994a2f96f`.
 - A prior delivery / B base: `eb8f097341738dcc08ae3172fa35aeebcdc061c3`.
-- A counter implementation cut: `2beada4a0180721f963e59b48472f2c9e3e320eb`.
+- A counter implementation cut: `a3d1e33ecad37cd964f3caded37c2fec9360330e`.
 - Session: `ses_e3120ba1cffeO1w43uU5MLh4yq` / `opencode-go/deepseek-v4.1-flash#max`.
 - Return directory: `WORKER_RETURNS/PYAT960_S2G_A_COUNTER/`.
 
@@ -70,18 +70,18 @@ The exact RED record is `B_CUT_RED Failed: DID NOT RAISE` from the counter test 
 
 ### 3.2 A-C01 repair
 
-At implementation cut `2beada4a`, `_m1_evidence_binding` now additionally requires, for every discovery receipt retained by the M1 disposition:
+At implementation cut `a3d1e33e`, `_m1_evidence_binding` now additionally requires, for every discovery receipt retained by the M1 disposition:
 
 - the receipt is present in the declared S2-F closure;
-- all facts owned by that receipt's `empirical_fact_refs` and `validation_fact_refs` are present in the M1 disposition's empirical fact refs;
-- those facts are present in the stored M1 input-bundle fact rows;
-- those facts are present in the declared S2-F closure facts.
+- the receipt's `empirical_fact_refs` are present in the M1 disposition's empirical fact refs;
+- the receipt's `validation_fact_refs` are present in the M1 disposition's validation fact refs;
+- the union of those facts is present in the stored M1 input-bundle fact rows and the declared S2-F closure facts.
 
 The mutant now refuses at cold consume:
 
 ```text
 DurableLearnedLifecycleError:
-M1 disposition omits a fact owned by a retained discovery receipt
+M1 disposition omits an empirical fact owned by a retained discovery receipt
 ```
 
 The original base artifact still serves exact. The focused counter test is:
@@ -102,7 +102,7 @@ I inspected the release binding rather than claiming a defect without a conseque
 - the consumer receipt/query/predicate to be in the disposition;
 - the M1 bundle/disposition evidence to be in the same closure.
 
-B's current tests and the base chain use one release. I did not manufacture a multi-release positive artifact strong enough to prove a false acceptance or false refusal. **No material multi-release defect is claimed.** The residual boundary remains a next falsifier: a lawful multi-release product whose receipt facts span releases may require an explicit all-release dependency check, and a future receipt with `validation_fact_refs` distinct from `empirical_fact_refs` may test whether the A-C01 check is too literal. No repair was added without reproduction.
+B's current tests and the base chain use one release. I did not manufacture a multi-release positive artifact strong enough to prove a false acceptance or false refusal. **No material multi-release defect is claimed.** The residual boundary remains a next falsifier: a lawful multi-release product whose receipt facts span releases may require an explicit all-release dependency check. A distinct-validation-fact receipt is now explicitly bound rather than left as a gap. No repair was added without reproduction.
 
 ### 3.4 Multi-product B5 history
 
@@ -136,7 +136,7 @@ python3 -m pytest \
 Actual:
 
 ```text
-153 passed in 46.49s
+153 passed in 47.66s
 ```
 
 This preserves B's 152 tests and adds the A counter. The output is retained at `evidence/selected_153.txt`.
@@ -154,7 +154,7 @@ python3 -m pytest \
 Actual:
 
 ```text
-19 passed in 8.57s
+19 passed in 7.90s
 ```
 
 The mandatory G01-G09 and B01-B05 commands/results are recorded in `receipt.json`; all are green at the isolated fixture grade. The exact A-C01 RED/GREEN evidence is recorded separately.
@@ -205,11 +205,11 @@ B's repair was incomplete at the exact boundary B itself named: a receipt can re
 
 ## 8. Own worst vulnerability, missing proof, strongest next falsifier
 
-**Worst vulnerability:** the M1 evidence binding is enforced at cold consume, not at publication. A foreign or internally inconsistent M1 artifact can be stored on disk, but it cannot serve through the declared first consumer. The new receipt-fact check covers the reproduced omission, but a future lawful M1 receipt whose `validation_fact_refs` are not represented in `disposition.empirical_fact_refs`, or a multi-release product whose receipt facts span multiple releases, could expose either an under-check or a false refusal. A fully coherent rewrite plus a new external pin is a different artifact by construction.
+**Worst vulnerability:** the M1 evidence binding is enforced at cold consume, not at publication. A foreign or internally inconsistent M1 artifact can be stored on disk, but it cannot serve through the declared first consumer. The new receipt-fact check covers the reproduced omission and separately binds empirical and validation facts. A multi-release product whose fact source release is not retained in the M2 dependency closure can still expose an under-check. A fully coherent rewrite plus a new external pin is a different artifact by construction.
 
 **Missing proof:** no production current/as-of issuer or revocation service; no accepted complete S2-E/S2-D joined upstream; no scientific M1 family validator/science rule; no original35 source; no integrated 100k/6 GiB run; no independent nonauthor G5.
 
-**Strongest next falsifier:** build a multi-release S2-F closure where the consumer receipt and determinant release differ from the release recorded for another fact in the M1 product, and verify that the M2/M1 dependency closure and receipt-fact checks still refuse a partial chain. Also try a valid receipt with distinct validation facts to test the A-C01 check for false refusal.
+**Strongest next falsifier:** build a multi-release S2-F closure where the consumer receipt and determinant release differ from the release recorded for another fact in the M1 product, and verify that the M2/M1 dependency closure and receipt-fact checks still refuse a partial chain. A valid receipt with distinct validation facts is now explicitly bound, rather than a listed gap.
 
 ## 9. ABI / scope / authority
 
@@ -223,7 +223,7 @@ B's repair was incomplete at the exact boundary B itself named: a receipt can re
 
 ## 10. Next turn
 
-The next actor is one distinct nonauthor G5, other than A and B, at exact code cut `2beada4a0180721f963e59b48472f2c9e3e320eb` (or the final return-freeze tip) and the stated isolated grade. Focused review should re-run the cold base/changed/restored consumers, the B-D1/B-D2/B-D3 controls, and A-C01. No broad reconnaissance, optional benchmark matrix, or endless A/B loop is warranted. If G5 finds a reproduced in-scope SEV-0/1/2, at most one precise repair/handoff remains.
+The next actor is one distinct nonauthor G5, other than A and B, at exact code cut `a3d1e33ecad37cd964f3caded37c2fec9360330e` (or the final return-freeze tip) and the stated isolated grade. Focused review should re-run the cold base/changed/restored consumers, the B-D1/B-D2/B-D3 controls, and A-C01. No broad reconnaissance, optional benchmark matrix, or endless A/B loop is warranted. If G5 finds a reproduced in-scope SEV-0/1/2, at most one precise repair/handoff remains.
 
 ## 11. Quick reproduction
 
@@ -247,4 +247,4 @@ Expected: `153 passed`.
 python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py -q
 ```
 
-Expected: `1 passed`; the same test against B cut `0071aefb` produces `DID NOT RAISE`, recording the A-C01 defect.
+Expected: `1 passed`; the same test against B cut `0071aefb` produces `DID NOT RAISE`; the repair test passes at `a3d1e33e`, recording the A-C01 defect.

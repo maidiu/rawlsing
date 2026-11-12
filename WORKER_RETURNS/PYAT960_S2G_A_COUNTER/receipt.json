@@ -26,7 +26,7 @@
       "case": "B-D1 did not bind every retained receipt's owned empirical/validation facts to the disposition/bundle fact closure.",
       "evidence": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/b_cut_receipt_fact_omission_red.txt, b_cut_receipt_fact_omission_acceptance.json, and test_pyat960_s2g_a_counter_subset.py",
       "id": "A-C01",
-      "repair": "At 2beada4a, _m1_evidence_binding requires every closure receipt owned by the disposition to have all empirical/validation fact refs in the disposition, bundle and closure fact sets. The mutant now raises 'M1 disposition omits a fact owned by a retained discovery receipt'; base artifact remains exact.",
+      "repair": "At a3d1e33e, _m1_evidence_binding requires every closure receipt retained by the disposition to have its empirical facts in the disposition/bundle/closure empirical fact catalogs, and its validation facts in the disposition validation facts plus the bundle/closure fact catalogs. The mutant now raises 'M1 disposition omits an empirical fact owned by a retained discovery receipt'; base artifact remains exact.",
       "reproduced_at_b_cut": "0071aefb accepted a mutant artifact root 92ba894b4fa08916... in which the consumer receipt's fact was removed from the M1 disposition/bundle; actual consumer LEARNED_CONSUMER_EXACT_SUPPORTED 2690cdbe....",
       "severity": "SEV-1"
     }
@@ -76,7 +76,7 @@
       "owner": "original35/source-native scientific authority"
     },
     {
-      "minimal_missing_witness": "one receiver other than A/B to accept or revise exact 2beada4a at isolated grade",
+      "minimal_missing_witness": "one receiver other than A/B to accept or revise exact a3d1e33e at isolated grade",
       "owner": "independent nonauthor G5"
     }
   ],
@@ -96,13 +96,14 @@
   },
   "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
   "g5": {
+    "code_cut": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
     "note": "No independent nonauthor acceptance; original S2-G remains open at native/integrated grade.",
     "state": "NOT_RUN",
     "status": "DELEGATED_CANDIDATE"
   },
   "gates": {
     "G1": {
-      "receipt": "B's M1 evidence-to-S2F binding, B5 replay/protocol/learned-receipt conservation, and exact M1 bundle/family-rule preimages are preserved. A counter adds the missing receipt-owned fact conservation: every retained receipt's empirical/validation facts must be in the M1 disposition and bundle fact closures. Base artifact root 852498f7... and consumer 2690cdbe... remain exact.",
+      "receipt": "B's M1 evidence-to-S2F binding, B5 replay/protocol/learned-receipt conservation, and exact M1 bundle/family-rule preimages are preserved. A counter adds the missing receipt-owned fact conservation: each retained receipt's empirical facts must be in the disposition empirical facts and the bundle/closure fact catalogs, and its validation facts in the disposition validation facts and the bundle/closure fact catalogs. Base artifact root 852498f7... and consumer 2690cdbe... remain exact.",
       "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
       "state": "PASS"
     },
@@ -127,7 +128,7 @@
       "state": "NOT_RUN"
     }
   },
-  "implemented_sha": "2beada4a0180721f963e59b48472f2c9e3e320eb",
+  "implemented_sha": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
   "integration": "UNMERGED",
   "known_session_cost": "UNKNOWN",
   "mandatory_case_ids": [
@@ -149,7 +150,7 @@
   ],
   "mandatory_cases": [
     {
-      "actual": "1 passed at 2beada4a. B cut 0071aefb accepted the mutant: artifact root 92ba894b4fa08916..., consumer LEARNED_CONSUMER_EXACT_SUPPORTED hash 2690cdbe... despite the consumer receipt's fact omitted from the M1 disposition/bundle. At 2beada4a consume refuses 'M1 disposition omits a fact owned by a retained discovery receipt'; base artifact still exact.",
+      "actual": "1 passed at a3d1e33e. B cut 0071aefb accepted the mutant: artifact root 92ba894b4fa08916c7438ad0e171550322f8f4863295ed58dadca1af80191793, consumer LEARNED_CONSUMER_EXACT_SUPPORTED hash 2690cdbe..., despite the consumer receipt's fact omitted from the M1 disposition/bundle. At a3d1e33e consume refuses 'M1 disposition omits an empirical fact owned by a retained discovery receipt'; base artifact still exact.",
       "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py::test_a_counter_receipt_fact_omission_is_refused -q",
       "id": "A_C01_RECEIPT_FACT_OMISSION_REFUSED",
       "result": "PASS"
@@ -197,7 +198,7 @@
       "result": "PASS"
     },
     {
-      "actual": "153 passed in 46.49s. B's 152 preserved + A counter 1. S2-F separate regression: 19 passed in 8.57s.",
+      "actual": "153 passed in 47.66s. B's 152 preserved + A counter 1. S2-F separate regression: 19 passed in 7.90s.",
       "command": "python3 -m pytest rawlsing_next/tests/test_pre553_learned_world_composition.py rawlsing_next/tests/test_pre553_learned_empirical_adjudication.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py rawlsing_next/tests/test_pyat960_s2g_fresh_process.py rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py -q",
       "id": "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
       "result": "PASS"
@@ -241,7 +242,7 @@
   ],
   "missing_proof": "No production current/as-of issuer/revocation; no accepted S2-E/S2-D complete joined upstream; no scientific M1 family rule; no original35 source; no integrated 100k/6 GiB; no independent G5.",
   "model_requested": "opencode-go/deepseek-v4.1-flash#max",
-  "next_turn": "Submit A_COUNTER exact 2beada4a to ONE distinct nonauthor G5 other than A/B for focused review of the repaired B boundaries; no broad reconnaissance or optional hardening. Remaining S2-E/S2-D/production issuer/science holds are external.",
+  "next_turn": "Submit A_COUNTER exact a3d1e33e to ONE distinct nonauthor G5 other than A/B for focused review of the repaired B boundaries; no broad reconnaissance or optional hardening. Remaining S2-E/S2-D/production issuer/science holds are external.",
   "old_obligations": [
     "P2-08"
   ],
@@ -252,7 +253,7 @@
     "original_G4": "PASS at fixture grade; integrated 100k/6 GiB NOT_RUN.",
     "original_G5": "NOT_RUN; distinct nonauthor required."
   },
-  "own_worst_vulnerability": "A future M1 receipt with a distinct validation-fact substrate or a multi-release split where the consumer release is present in additional dependencies but another fact's release is not retained in the M2 dependency closure may still be under-checked. A fully coherent rehash plus a new pin remains a different artifact by definition.",
+  "own_worst_vulnerability": "A multi-release split where a fact's source release is not retained in the M2 dependency closure may still be under-checked, even though every receipt fact is in the M1 disposition/bundle/closure. A fully coherent rehash plus a new pin remains a different artifact by definition. The publish boundary does not open the S2-F closure, so a foreign artifact can occupy disk but cannot serve.",
   "packet_id": "S2-G",
   "persona_role": "A_COUNTER",
   "preserved_functions": [
@@ -293,7 +294,7 @@
     },
     "source_opens": 0
   },
-  "self_disclosed_weakest_point": "The M1 evidence binding is enforced at cold consume, not publication: a foreign M1 artifact can be stored but cannot serve through the declared first consumer. The new receipt-fact conservation check covers the reproduced subset case, but a future lawful M1 receipt whose validation facts are not represented in disposition.empirical_fact_refs could be a false refusal. The current/as-of issuer is TEST_ONLY with a caller-supplied external pin; there is no production issuer/revocation service. The M1 validator is TEST_ONLY, not science. A fully coherent rewrite plus a new external pin is a different artifact by construction; the external pin is the sole trust anchor. Resource scope is a small synthetic fixture; integrated 100k/6 GiB NOT_RUN.",
+  "self_disclosed_weakest_point": "The M1 evidence binding is enforced at cold consume, not publication: a foreign M1 artifact can be stored but cannot serve through the declared first consumer. The new receipt-fact conservation check covers the reproduced subset case and separately binds empirical and validation facts. The current/as-of issuer is TEST_ONLY with a caller-supplied external pin; there is no production issuer/revocation service. The M1 validator is TEST_ONLY, not science. A fully coherent rewrite plus a new external pin is a different artifact by construction; the external pin is the sole trust anchor. Resource scope is a small synthetic fixture; integrated 100k/6 GiB NOT_RUN.",
   "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
   "source_ABI_owner": {
     "b5_lifecycle": "rawlsing_next.pre553_learned_product_lifecycle (unchanged)",
@@ -307,7 +308,7 @@
   "sourcefree_grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
   "startup_sha": "220ebd3311fb0607079ed6a6e9a364d6681e5378",
   "stop_state": "READY_FOR_RECEIVING",
-  "strongest_next_falsifier": "Build a multi-release S2-F closure where the determinant receipt and M1 bundle use release A while the consumer receipt/composition uses release B, and inspect whether the additional-dependency/receipt-fact checks still bind the whole M1 product; also try a distinct validation-fact receipt whose facts are not in disposition empirical_fact_refs. Only a reproduced first-consumer consequence is a defect.",
+  "strongest_next_falsifier": "Build a multi-release S2-F closure where the determinant receipt and M1 bundle use release A while the consumer receipt/composition uses release B, and inspect whether the additional-dependency and receipt-fact checks bind the whole M1 product and the M2 dependency closure. Only a reproduced first-consumer consequence is a defect.",
   "task_id": "PYAT960-S2G",
   "three_court_grades": {
     "authority": "TEST_ONLY external current/as-of stand-in only; production issuer HOLD",
