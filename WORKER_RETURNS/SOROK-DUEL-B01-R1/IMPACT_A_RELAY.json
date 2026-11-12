@@ -1,0 +1,112 @@
+{
+  "event_id": "SOROK-DUEL-B01-A-RELAY-20261112-R1",
+  "task_id": "B01",
+  "phase": "CG-B",
+  "title": "Agent A relay counterstrike on B's C12 fork household repair",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "99333985190d872d825a1ec205db224179daa4af",
+  "frozen_b_return": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+  "frozen_b_implementation": "160cbbd0ae00fb965004085c0e07c872384fe0ff",
+  "branch": "codex/sorok-duel-b01-a-relay-b03-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_FOR_PRE_RELAY_ROOTS",
+  "conceded_b_findings": [
+    "A's household/house/material_fact readers refused a legitimate C12 fork because they compared the stored parent branch to the child and/or called full Session.verify(). B's read-only ancestor provenance is the correct repair.",
+    "B's state_scope=C12_FORK_WITHOUT_S46_INTERVAL_STATE is necessary and was preserved.",
+    "B's bound-resource/owner severance and world-resource value tests close real A evidence gaps."
+  ],
+  "repairs": [
+    {
+      "defect": "B's shared-prefix validation trusted mutable branch.root_counts; emptying it disabled the copied-prefix comparison.",
+      "repair": "p2_owner._copied_prefix_equal compares actual episode/world_event/checkpoint/perception prefix rows per fork edge; branch_is_ancestor uses it.",
+      "test": "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py::test_actual_copied_prefix_not_mutable_root_counts"
+    },
+    {
+      "defect": "Fork inheritance/scope was exposed only at P2Owner.material_fact, not read_household/parent_choice_input.",
+      "repair": "Additive provenance {stored_branch,current_branch,inherited,scope=P6_MATERIAL_FACT_ONLY,fork_state} in the P6 consumer; source also carries stored_branch/inherited/fork_state.",
+      "test": "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py::test_fork_provenance_is_explicit_and_not_full_composite"
+    },
+    {
+      "defect": "Post-fork epoch boundary was not tested at the actual P6 consumer.",
+      "repair": "Test a stored fact epoch later than the child fork clock; both P6 and P2 readers refuse; restore exact source.",
+      "test": "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py::test_fact_after_fork_clock_is_refused_and_restored"
+    }
+  ],
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "added": [
+        "_copied_prefix_equal"
+      ],
+      "changed": [
+        "MATERIAL_FACT_SLOTS",
+        "branch_is_ancestor"
+      ],
+      "removed": []
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+      "added": [
+        "_material_provenance"
+      ],
+      "changed": [
+        "read_household",
+        "parent_choice_input"
+      ],
+      "removed": []
+    }
+  ],
+  "actual_reader": [
+    "house.read_household(session)",
+    "house.parent_choice_input(session)",
+    "P2Owner.material_fact(\"p6_household\")"
+  ],
+  "affected_queued_tasks": [
+    "C01 composition (must compose both B01 house/p2_owner files at HQ; source cuts differ)",
+    "C03/C04 (parent input now carries additive provenance; first_consumer remains NONE_VERIFIED)",
+    "B03 (uses p6_dwelling allowlist and branch_is_ancestor; built in the same cut)",
+    "CG-A candidate p2_owner source-pin reconciliation"
+  ],
+  "preserved_obligations": [
+    "B's read-only ancestor inheritance and state_scope are preserved; no rebind or write on read.",
+    "Same-branch A/B01 household behavior and P6 test_house/test_mii suites remain green.",
+    "No new owner/scheduler/ledger; PsycheStore is not a world fact.",
+    "Parent first consumer remains NONE_VERIFIED; no parent action."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change invalidates every prior-cut P3 root through the code pin; fresh final-code roots only. P3 migration is Pair2/shared-receiving scope.",
+    "Pre-existing P6 chronology proof still fails on mii_exposure_id/mii at baseline and this cut."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@99333985190d872d825a1ec205db224179daa4af",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@99333985190d872d825a1ec205db224179daa4af"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b01_b03_relay.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_house.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_mii.log"
+  ],
+  "negative_refs": [
+    "test_actual_copied_prefix_not_mutable_root_counts",
+    "test_fact_after_fork_clock_is_refused_and_restored",
+    "test_child_p6_action_is_stored_on_child_with_parent_house_provenance",
+    "evidence/p6_chronology_pre_existing.log"
+  ],
+  "cold_refs": [
+    "B01 same-code cold subprocess test remains green in test_b01_household.py",
+    "Fork reads are in-process verified-owner reads; cold fork is not claimed"
+  ],
+  "remaining_attacks": [
+    "Ancestor provenance relabel: stored branch can be changed to another verified ancestor while source stays valid.",
+    "Same-root PsycheStore mediator injection remains unproved.",
+    "Child new occupancy is refused by the B01 household cross-check; future re-establishment ABI needed.",
+    "Cold fork/full P6 experience on a fork is blocked by P2/P3 branch binding."
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, process RSS or retry instrumentation was available or invented."
+  },
+  "feature_commit": "6deb7b71d0f8d761ae7734868c693dcb5dd253d8"
+}

@@ -27,7 +27,7 @@ MATERIAL_FACT_READ_SCHEMA = "SOROK_P2_MATERIAL_FACT_READ@1"
 MATERIAL_FACT_WRITE_SCHEMA = "SOROK_P2_MATERIAL_FACT_WRITE@1"
 MATERIAL_FACT_GRADE = "SOURCEFREE_MATERIAL_FACT"
 MATERIAL_FACT_BINDING_FIELDS = frozenset({"root", "branch", "epoch", "source"})
-MATERIAL_FACT_SLOTS = frozenset({"p6_household"})
+MATERIAL_FACT_SLOTS = frozenset({"p6_household", "p6_dwelling"})
 PSYCH_RECORD_FIELDS = frozenset({
     "record_id", "counterpart", "effective_from", "causal_parents",
     "registry_hash", "rule_id", "rule_version", "rule_hash",
@@ -44,6 +44,51 @@ def material_fact_source(document: Mapping[str, Any]) -> str:
     """Content address of a bounded material fact, excluding its binding."""
     return digest({key: value for key, value in document.items()
                    if key not in MATERIAL_FACT_BINDING_FIELDS})
+
+
+def _copied_prefix_equal(store, child: str, parent: str, fork_clock: int,
+                         root_counts: Any, root_hash: Any) -> bool:
+    """Verify the fork-time copied prefix and its recorded root hash."""
+    db = getattr(store, "db", None)
+    branch_lookup = getattr(store, "_branch", None)
+    if db is None or not callable(branch_lookup):
+        return False
+    if not isinstance(root_counts, Mapping) or not isinstance(root_hash, str):
+        return False
+    try:
+        if branch_lookup(parent) is None:
+            return False
+    except Exception:
+        return False
+    tables = (
+        ("episode", "seq,hash", True),
+        ("world_event", "seq,hash", True),
+        ("perception", "seq,event_id,actor_id", False),
+        ("checkpoint", "seq,hash", True),
+    )
+    copied_hashes = []
+    try:
+        for table, columns, has_hash in tables:
+            count = root_counts.get(table)
+            if type(count) is not int or count < 0:
+                return False
+            parent_rows = [tuple(row) for row in db.execute(
+                f"SELECT {columns} FROM {table} WHERE branch_id=? "
+                "ORDER BY seq LIMIT ?",
+                (parent, count))]
+            child_rows = [tuple(row) for row in db.execute(
+                f"SELECT {columns} FROM {table} WHERE branch_id=? "
+                "ORDER BY seq LIMIT ?",
+                (child, count))]
+            if parent_rows != child_rows:
+                return False
+            if has_hash:
+                copied_hashes.extend(row[1] for row in child_rows)
+    except Exception:
+        return False
+    expected = digest({"parent": parent, "fork_clock": fork_clock,
+                       "hashes": sorted(copied_hashes)})
+    return expected == root_hash
 
 
 def branch_is_ancestor(session, branch: Any, epoch: Any = None) -> bool:
@@ -97,6 +142,10 @@ def branch_is_ancestor(session, branch: Any, epoch: Any = None) -> bool:
             return False
         parent = row.get("parent_branch_id")
         if not isinstance(parent, str) or not parent or parent == "root":
+            return False
+        if not _copied_prefix_equal(store, current, parent, fork_clock,
+                                     row.get("root_counts"),
+                                     row.get("root_hash")):
             return False
         current = parent
     return False
