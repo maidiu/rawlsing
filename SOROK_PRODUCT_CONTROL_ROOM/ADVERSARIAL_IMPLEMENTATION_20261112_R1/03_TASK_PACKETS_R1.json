@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_ADVERSARIAL_IMPLEMENTATION_TASKS_R1",
-  "status": "PROGRAMME_PREPARED_NOT_DISPATCHED_NOT_ACCEPTED",
+  "status": "EXECUTING_SOURCEFREE_CANDIDATES_NOT_INDEPENDENTLY_ACCEPTED",
   "protected_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
   "source_architecture": {
     "operational": "ChatGPT Library /Rawlsing/SOROK_ARCHITECTURE/SOROK_PERSON_WORLD_OPERATIONAL_BLUEPRINT_PROGRAMMA_INTEGRATION_20261111_R1.md sha256 8e47677d2cad21d80f38c67afd5d9094b72ca7bc09c5db197b07a4f526e453a3",
@@ -42,10 +42,12 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED",
+      "status": "A_COUNTER_RUNNING",
       "cross_inputs": [
         "CG-A #915/#917/#924/#928 unmerged candidate selection; compare, do not presume received"
-      ]
+      ],
+      "B_candidate_head": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+      "not_independently_accepted": true
     },
     {
       "id": "B02",
@@ -65,7 +67,8 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
     },
     {
       "id": "B03",
@@ -85,7 +88,10 @@
         "09"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "AUTHORIZED_AFTER_B01_COUNTERSTRIKE",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "running_contract": "pair1-A-B01-counter-B03-v3.txt",
+      "candidate_dependency": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c"
     },
     {
       "id": "B04",
@@ -107,7 +113,8 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
     },
     {
       "id": "B05",
@@ -129,7 +136,8 @@
         "12"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
     },
     {
       "id": "C01",
@@ -150,7 +158,11 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "B_RUNNING",
+      "B01_candidate_source": "edbb4b344d54731a527fd415a965bc848ed964e1",
+      "not_independently_accepted": true,
+      "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
+      "A_candidate_head": "7e347c45d991df322b987c4fdc70558b1857d9f6"
     },
     {
       "id": "C02",
@@ -172,7 +184,9 @@
         "06"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
     },
     {
       "id": "C03",
@@ -194,7 +208,10 @@
         "09"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
     },
     {
       "id": "C04",
@@ -214,7 +231,10 @@
         "08"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
     },
     {
       "id": "C05",
@@ -224,7 +244,7 @@
         "C01",
         "C04"
       ],
-      "producer_owner": "C4–C7 / ADP-015 relation actor owner + shared world",
+      "producer_owner": "C4\u2013C7 / ADP-015 relation actor owner + shared world",
       "existing_capital": "P3 generic participants, distinct perception streams",
       "terminal_consumer": "later shared event and separate mother/Nadia/other context",
       "positive_oracle": "At least one other enters/leaves or changes relationship over dated period with actor-limited access",
@@ -235,7 +255,9 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
     },
     {
       "id": "D01",
@@ -253,7 +275,9 @@
         "07"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "A_COUNTER_RUNNING",
+      "B_candidate_head": "0e0bb07ec8091fd34c6e47fff493a9ce39c9893d",
+      "not_independently_accepted": true
     },
     {
       "id": "D02",
@@ -275,7 +299,16 @@
         "07"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "AUTHORIZED_AFTER_D01_COUNTERSTRIKE_WITH_B02_C01_PREREQUISITES_HELD",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "candidate_composition": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+      "running_contract": "pair2-A-D01-counter-D02-v3.txt",
+      "dependencies_not_accepted": [
+        "B02",
+        "C01"
+      ]
     },
     {
       "id": "D03",
@@ -296,7 +329,8 @@
         "08"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
     },
     {
       "id": "D04",
@@ -318,7 +352,8 @@
         "04"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
     },
     {
       "id": "D05",
@@ -338,7 +373,8 @@
         "07"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
     },
     {
       "id": "E01",
@@ -363,7 +399,8 @@
         "09"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
     },
     {
       "id": "E02",
@@ -389,7 +426,8 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
     },
     {
       "id": "E03",
@@ -420,7 +458,7 @@
         "D05"
       ],
       "producer_owner": "actual joint J1/J2 consumers",
-      "existing_capital": "§14 blueprint contrast matrix and exact sourcefree traces",
+      "existing_capital": "\u00a714 blueprint contrast matrix and exact sourcefree traces",
       "terminal_consumer": "separate receiving of joined life trajectory",
       "positive_oracle": "One changed-value and one legitimate nochange, other-parent, changed utterance, changed prior state, world as-of, silence and cold cases all measured at product boundary",
       "negative_oracle": "25 green toy tests without actual later reader, missing root/replay, unmeasured agent cost",
@@ -451,7 +489,8 @@
         "12"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED"
+      "status": "QUEUED_UNLAUNCHED",
+      "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase."
     },
     {
       "id": "F02",
@@ -495,7 +534,7 @@
     {
       "id": "F04",
       "phase": "CG-F",
-      "title": "J3 cold precontact→live transition with branching and actor-psych reader",
+      "title": "J3 cold precontact\u2192live transition with branching and actor-psych reader",
       "depends_on": [
         "F03",
         "E04"
@@ -561,7 +600,7 @@
       ],
       "producer_owner": "existing process usage/provider receipt instrumentation",
       "existing_capital": "P3 model call and context budgets, MI/II/III cost sources",
-      "terminal_consumer": "S0–S2 engineering feasibility receiving",
+      "terminal_consumer": "S0\u2013S2 engineering feasibility receiving",
       "positive_oracle": "Measure calls/tokens/latency/process RSS/retries/root bytes/actor deepening/cold entry, report distribution and failure rate",
       "negative_oracle": "Invented 6GiB/100k/latency ceiling, concealed parent calls, curated seeds excluded from denominator",
       "restoration_or_replay": "Repeat process-tree measurements at pinned source and same seed cohort",
@@ -596,5 +635,122 @@
       "status": "QUEUED_UNLAUNCHED"
     }
   ],
-  "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers."
+  "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers.",
+  "frozen_programme_head": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "runtime_snapshot_utc": "2026-11-12T11:05:09.140141+00:00",
+  "persistent_pairs": [
+    {
+      "pair": 1,
+      "task": "B01",
+      "sessions": {
+        "A": "ses_e3129596bffes0LaqGfkjAwEuQ",
+        "B": "ses_e312958e8ffeVzjGxpyNpsMatM"
+      },
+      "state": "A_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair1-b01-counter-b03-a-20261112-r1",
+      "opponent_frozen_head": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+      "base_commit": "edbb4b344d54731a527fd415a965bc848ed964e1",
+      "next_packet": "B03",
+      "active_contract_sha256": "bbc21896028d06ac5cb03974e0b4f7475574ab32fe24d33ee1785d67462fc894"
+    },
+    {
+      "pair": 2,
+      "task": "D01",
+      "sessions": {
+        "A": "ses_e31295866ffedvN437mwrEazci",
+        "B": "ses_e3129584cffeHvPiMRP57moWJ0"
+      },
+      "state": "A_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair2-d01-counter-d02-a-20261112-r1",
+      "opponent_frozen_head": "0e0bb07ec8091fd34c6e47fff493a9ce39c9893d",
+      "base_commit": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+      "next_packet": "D02_PREREQUISITE_HELD",
+      "active_contract_sha256": "d418e64377bf0129c6465354e71e7251353340f967fae42af975bf59b3f39434"
+    },
+    {
+      "pair": 3,
+      "task": "C01",
+      "sessions": {
+        "A": "ses_e31295836ffeW9bYwX9iiMMcXS",
+        "B": "ses_e31295826ffe6kteacpU7p3nQW"
+      },
+      "state": "B_RUNNING",
+      "active_job": "sorok-duel-pair3-c01-b-20261112-r1",
+      "opponent_frozen_head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
+      "base_commit": "edbb4b344d54731a527fd415a965bc848ed964e1",
+      "next_packet": null,
+      "active_contract_sha256": "f80885764adb56c74f2aa6413058aae26ffee37f24134c009dcf7c6fcb582abf"
+    }
+  ],
+  "returned_candidates": [
+    {
+      "task": "B01",
+      "role": "A",
+      "head": "edbb4b344d54731a527fd415a965bc848ed964e1",
+      "branch": "codex/sorok-duel-b01-a-20261112-r1",
+      "status": "AUTHOR_TESTED_SUPERSEDED_BY_B_COUNTERSTRIKE"
+    },
+    {
+      "task": "B01",
+      "role": "B",
+      "head": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+      "branch": "codex/sorok-duel-b01-b-20261112-r1",
+      "status": "AUTHOR_TESTED_CANDIDATE_A_COUNTER_RUNNING",
+      "actual_change": "Existing P2/P6 household reader and verified fork provenance; parent consumer NONE_VERIFIED; no full S46 cold fork or old-root pin migration."
+    },
+    {
+      "task": "D01",
+      "role": "A",
+      "head": "82d310b4e09774e04f883fe7386c2f53cb2ac23e",
+      "branch": "codex/sorok-duel-d01-a-20261112-r1",
+      "status": "AUTHOR_TESTED_SUPERSEDED_BY_B_COUNTERSTRIKE"
+    },
+    {
+      "task": "D01",
+      "role": "B",
+      "head": "0e0bb07ec8091fd34c6e47fff493a9ce39c9893d",
+      "branch": "codex/sorok-duel-d01-b-20261112-r1",
+      "status": "AUTHOR_TESTED_CANDIDATE_A_COUNTER_RUNNING",
+      "actual_change": "Existing P3Owner/PsycheStore cold retention, record/receipt consistency and verified config recovery; same-path differential, not a live fork."
+    },
+    {
+      "task": "C01",
+      "role": "A",
+      "head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
+      "branch": "codex/sorok-duel-c01-a-20261112-r1",
+      "status": "AUTHOR_TESTED_CANDIDATE_B_RUNNING",
+      "actual_change": "Distinct stable supporting parent and separate C12 perception; parent-authored decision/utterance still absent."
+    }
+  ],
+  "composition_candidate": {
+    "head": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+    "inputs": [
+      "0e0bb07ec8091fd34c6e47fff493a9ce39c9893d",
+      "7e347c45d991df322b987c4fdc70558b1857d9f6",
+      "362719b40a35a66fa2fb1c3490db8eb5b8e9167c"
+    ],
+    "status": "AUTOMERGED_NOT_EXECUTED_OR_ACCEPTED",
+    "first_proof_commission": "sorok-duel-pair2-d01-counter-d02-a-20261112-r1",
+    "constraint": "Matched p2_owner/house cuts; fresh final-code sourcefree fixture roots; no implicit migration or protected merge."
+  },
+  "wake_policy": {
+    "recurring_timer": "DELETED",
+    "notifications": "Existing finite controller completion queue only; queue acknowledgement is not observed HQ receiving."
+  },
+  "provider": {
+    "id": "opencode-go/deepseek-v4.1-flash",
+    "advertised_name": "DeepSeek V4.1 Flash 1017",
+    "variant": "max",
+    "successful_call_verified": true,
+    "remaining_quota": "NOT_EXPOSED",
+    "reported_probe_usd": 0.000606576
+  },
+  "evidence_ceiling": {
+    "engineering": "AUTHOR_TESTED_CANDIDATES_ONLY",
+    "independent_receiving": "NOT_YET_RUN_FOR_COHERENT_TRANCHE",
+    "native_science": "HELD",
+    "source_rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "NOT_AUTHORIZED"
+  }
 }
