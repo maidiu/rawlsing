@@ -29,7 +29,7 @@ class Attacks(unittest.TestCase):
                     "cpu_user_s":.01,"cpu_system_s":.01,"ru_maxrss_native":4,
                     "ru_maxrss_native_unit":"KiB","peak_rss_bytes":4096},
                 "direct_children_started":1,"descendants":"UNOBSERVED",
-                "state_bytes_before":i*10,"state_bytes_after":(i+1)*10,
+                "state_bytes_before":i*10,"state_bytes_after":(i*10 if i==4 else (i+1)*10),
                 "stdout_sha256":r.sha(b),"stdout_bytes":len(b),
                 "stderr_sha256":r.sha(b""),"stderr_bytes":0,
                 "output":{"json":True,"status":o.get("status"),"clock":o.get("clock")},
