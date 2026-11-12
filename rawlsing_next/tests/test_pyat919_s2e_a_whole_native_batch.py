@@ -276,3 +276,26 @@ def test_a_rehashed_f4_domain_hole_with_rehashed_completed_receipt_is_red():
         require_complete=True, runtime_catalog=case[1],
     )
     require_same_native_output_graph(original, good)
+
+
+def test_a_output_proof_cap_fails_precisely_instead_of_truncating():
+    case = _native_case()
+    with I03GroupedExecutionScope() as scope:
+        manifest, receipts, outputs, original, _elapsed, _calls = _batch(case, scope=scope)
+    assert original.canonical_proof_transcript_bytes > 1
+    with pytest.raises(S2EOutputConservationError, match="S2E_EXACT_OUTPUT_BYTES_CAP_HOLD"):
+        census_native_batch(
+            manifest, receipts, outputs, require_complete=True,
+            runtime_catalog=case[1], max_canonical_output_bytes=1,
+        )
+    with pytest.raises(S2EOutputConservationError, match="S2E_OUTPUT_BYTES_CAP_INVALID"):
+        census_native_batch(
+            manifest, receipts, outputs, require_complete=True,
+            runtime_catalog=case[1], max_canonical_output_bytes=False,
+        )
+    restored = census_native_batch(
+        manifest, receipts, outputs, require_complete=True,
+        runtime_catalog=case[1],
+        max_canonical_output_bytes=original.canonical_proof_transcript_bytes,
+    )
+    require_same_native_output_graph(original, restored)
