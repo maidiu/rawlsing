@@ -694,6 +694,22 @@ class SourceBackedC11SessionCache:
     def put(self, key, release):
         if not isinstance(release, C11LogicalRelease) or release.source_artifact_ref.content_hash != key.source_sha256:
             raise SourceBackedC11FacadeError("cache/source mismatch")
+        existing = self._entries.get(key)
+        if existing is not None:
+            stored_key, prior = existing
+            # An I02 validation seal and source SHA do not establish that two
+            # distinct semantic releases belong under one governed cache key.
+            # Preserve first-admitted custody; an identical replay is harmless,
+            # but a conflicting rebind must never replace a previously observed
+            # exact producer result. This is not source-authentication or a
+            # defense against forged *first* insertion by hostile Python code.
+            if (stored_key != key or not isinstance(prior, C11LogicalRelease)
+                    or prior.source_artifact_ref.content_hash != key.source_sha256
+                    or prior.release_ref != release.release_ref
+                    or prior.source_release_manifest_hash != release.source_release_manifest_hash
+                    or prior.replay_manifest.ref != release.replay_manifest.ref):
+                raise SourceBackedC11FacadeError("conflicting cache rebind")
+            return
         self._entries[key] = (key, release)
 
     def clear(self):
