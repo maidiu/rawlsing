@@ -467,8 +467,13 @@ class VerifiedExternalI02:
         object.__delattr__(self, name)
 
     def __init__(self, path: str | Path, *, roots: ExternalI02Roots) -> None:
-        if not isinstance(roots, ExternalI02Roots):
-            _fail("externally supplied roots required")
+        # A frozen base dataclass does not freeze overrides supplied by a
+        # subclass. In particular, a subclass may present correct source and
+        # release identities during cold verification, then switch the same
+        # fields when normal I03 binds the verified selector to a release.
+        # Certificate exact-type checks alone cannot protect its root object.
+        if type(roots) is not ExternalI02Roots:
+            _fail("exact immutable external I02 roots required")
         self._closed = True
         self.path = Path(path).absolute()
         if (self.path.is_symlink() or not self.path.is_file()

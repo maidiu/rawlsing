@@ -95,6 +95,82 @@ def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
         pass
 
 
+def test_s2b_b4_switchable_external_roots_cannot_authorize_wrong_i03_release(tmp_path):
+    """G3: external root identity MUST NOT change after cold authentication.
+
+    A dataclass subclass can present A's correct hashes at open and later
+    impersonate B's release/source/replay when the normal I03 installer reads
+    the held roots. The certificate class can be exact while its root isn't.
+    """
+    from dataclasses import fields
+
+    tag = "s2b-b4-root-persona"
+    before = _build_source(tag, [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    after = _build_source(tag, [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 1}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    _qa, _pred, _query, before_oracle = _facts(before, tag)
+    qa, pred, query, after_oracle = _facts(after, tag)
+    assert before_oracle != after_oracle
+    assert _cell_map(after_oracle.facts[0])["1"]["raw_numerator_support"] == 3
+    assert before["universe"].ref == after["universe"].ref
+    assert {v.ref.key for v in before["respondents"].values()} == {
+        v.ref.key for v in after["respondents"].values()
+    }
+    before_path, before_roots = _prepare(tmp_path, before)
+    after_path = tmp_path / "different-issued-release.sqlite"
+    after_roots = build_sourcefree_external_i02(
+        _release(after), after["universe"].ref, after_path,
+    )
+    assert after_roots.logical != before_roots.logical
+
+    class SwitchingExternalRoots(ExternalI02Roots):
+        replacement = None
+
+        def __getattribute__(self, name):
+            if name in ("release", "source", "replay", "universe"):
+                other = type(self).replacement
+                if other is not None:
+                    return getattr(other, name)
+            return super().__getattribute__(name)
+
+    persona = SwitchingExternalRoots(
+        *(getattr(before_roots, f.name) for f in fields(ExternalI02Roots))
+    )
+    try:
+        # Before B4, VerifiedExternalI02 used isinstance rather than exact
+        # root type; its cold proof accepted the mutable persona and its
+        # real native installer later used different release identity.
+        with pytest.raises(ExternalI02IntegrityError, match="exact immutable.*roots"):
+            with VerifiedExternalI02(before_path, roots=persona) as verified:
+                SwitchingExternalRoots.replacement = after_roots
+                install_sourcefree_external_i02_i03(
+                    after["repo"], after["release_ref"], after["universe"].ref,
+                    verified,
+                )
+                changed = _run(after, qa, pred, query)
+                assert changed != after_oracle, (
+                    "misbound certificate unexpectedly preserved the correct native fact"
+                )
+                pytest.fail("native I03 admitted unverified source/root persona")
+    finally:
+        SwitchingExternalRoots.replacement = None
+
+    # Positive native I03 with unmodified exact issued roots is preserved.
+    with VerifiedExternalI02(after_path, roots=after_roots) as legitimate:
+        install_sourcefree_external_i02_i03(
+            after["repo"], after["release_ref"], after["universe"].ref,
+            legitimate,
+        )
+        assert _run(after, qa, pred, query) == after_oracle
+
+
 def test_s2b_forged_certificate_cannot_install_false_zero_into_real_i03(tmp_path):
     """Harden the *existing* S2-B G3 counterfeit-index refusal at its consumer.
 
