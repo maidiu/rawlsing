@@ -1,0 +1,255 @@
+{
+  "packet_id": "S2-G",
+  "task_id": "PYAT960-S2G",
+  "old_obligations": ["P2-08"],
+  "contract_sha": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
+  "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
+  "persona_role": "A_GO_FIRST",
+  "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s2g-a-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-a",
+  "exclusive_allowlist": [
+    "rawlsing_next/pre553_durable_learned_lifecycle.py",
+    "rawlsing_next/pre553_learned_product_custody.py (not needed/not created)",
+    "rawlsing_next/tests/test_pyat960_s2g_*.py",
+    "WORKER_RETURNS/PYAT960_S2G_A/"
+  ],
+  "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "startup_sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "base_sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "implemented_sha": "50c2e33b48a040835e9981a822901186f0cc1ba0",
+  "changed_paths": [
+    "rawlsing_next/pre553_durable_learned_lifecycle.py",
+    "rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py",
+    "rawlsing_next/tests/test_pyat960_s2g_fresh_process.py",
+    "WORKER_RETURNS/PYAT960_S2G_A/receipt.json",
+    "WORKER_RETURNS/PYAT960_S2G_A/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT960_S2G_A/evidence/"
+  ],
+  "writer_lease_and_scope": "verified exclusive A writer in pyat960-s2g-a; B worktree idle; no other pair/worktree writes; existing native owners read-only",
+  "source_ABI_owner": {
+    "m1_adjudication": "rawlsing_next.pre553_learned_empirical_adjudication (unchanged; actual adjudication used with TEST_ONLY fixture rule)",
+    "m2_release": "rawlsing_next.pre553_learned_product_release (unchanged; constitute_release/closure objects reconstructed)",
+    "b5_lifecycle": "rawlsing_next.pre553_learned_product_lifecycle (unchanged; export_checkpoint/from_checkpoint/resolve_current_as_of)",
+    "i4_world": "rawlsing_next.pre553_learned_world_composition (unchanged; compose_learned_world/adapt_m1_disposition_to_m2/adapt_m2_release_to_b5/evaluate_learned_world_consumer)",
+    "s2f_input": "rawlsing_next.pre553_durable_empirical_closure (unchanged; opened with external root pin and cold discovery result)",
+    "c1_n10e": "rawlsing_next.pre553_analytical_composition + source_backed_positioned_subject_possibility (unchanged; actual cold composition and consumer)",
+    "new_adapter": "rawlsing_next/pre553_durable_learned_lifecycle.py (new isolated custody seam only)"
+  },
+  "preserved_functions": [
+    "pre553_learned_world_composition.compose_learned_world",
+    "pre553_learned_world_composition.build_m1_bundle_from_m01",
+    "pre553_learned_world_composition.adapt_m1_disposition_to_m2",
+    "pre553_learned_world_composition.adapt_m2_release_to_b5",
+    "pre553_learned_world_composition.evaluate_learned_world_consumer",
+    "pre553_learned_product_release.constitute_release/constitute_closure/register_producer_subject",
+    "pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor.export_checkpoint/from_checkpoint/resolve_current_as_of/select_current",
+    "pre553_learned_empirical_adjudication.adjudicate_learned_empirical and exact M1 preimage shapes",
+    "pre553_analytical_composition.compose_positioned_subject_possibility and actual N10E consumer",
+    "pre553_durable_empirical_closure open/publish/S2-F cold closure contract",
+    "existing M1/M2/B5/world/S2-F files unchanged: git diff base..HEAD names only the new adapter, two new test files and this return"
+  ],
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Exact productive M1 disposition, M1 input bundle, family rule binding, determinant/explanation receipt, M2 subject + five closure objects + release, B5 checkpoint/history/subject/protocol view/selection/replay, learned composition receipt and S2-F root/determinants are retained and cold-reconstructed. Actual M1 adjudication is the real pre553_learned_empirical_adjudication with a TEST_ONLY native validator fixture; M2/B5 are the existing owners. No counts-only or result-only checkpoint."
+    },
+    "G2": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Native M01 graph -> actual M1 adjudication -> M2 release -> B5 REGISTER/PUBLISH/SELECT_CURRENT -> existing evaluate_learned_world_consumer. Durable artifact root 852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5; fresh subprocess reconstructs M1/M2/B5 and reruns actual C1/N10E discovery composition from the accepted S2-F closure, then consumer LEARNED_CONSUMER_EXACT_SUPPORTED with consumer hash 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597. Changed M1 input yields a different artifact root; restoring original returns published=false and the exact prior root."
+    },
+    "G3": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Pre-served current requires TEST_ONLY external attestation with independent root pin; revoked, wrong purpose, stale checkpoint, wrong selection/key, wrong artifact root, missing pointer, wrong as-of and pre-selection as-of all refuse. Self-rehashed fake checkpoint/removed history, missing M1 bundle/determinant/family rule, changed M2 dependency and wrong root all refuse. True NO_CURRENT and supersession/as-of history preserved and tested."
+    },
+    "G4": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Versioned content-addressed artifact root with external pin; one compressed complete product blob, no second uncompressed archive; atomic stage/CAS/fsync; crash before manifest leaves no visible artifact; fresh-process cold read; B5 checkpoint replay and as-of checkpoint/event. Retained 32499 bytes (31987 compressed + 512 manifest) vs 283854 logical bytes; cold open 0.103s, consumer 0.061s, repeat 0.059s; process RSS 106831872; source opens 0; 6 GiB cap PASS; integrated 100k NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": null,
+      "receipt": "No distinct nonauthor receiver other than A/B has received this SHA. DELEGATED_CANDIDATE, not PASS."
+    }
+  },
+  "mandatory_case_ids": [
+    "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+    "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+    "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+    "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+    "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+    "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+    "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+    "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+    "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g01_real_m1_m2_b5_first_reader -q",
+      "actual": "1 passed. Actual M1 adjudication from native M01 bundle; M2 release and B5 selection retained; cold consumer LEARNED_CONSUMER_EXACT_SUPPORTED, consumer hash 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597; M1/M2/B5 refs exact."
+    },
+    {
+      "id": "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g02_changed_input_and_exact_restoration rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g02b_fresh_process_cold_learner -q",
+      "actual": "2 passed. Changed M1 adjudication/product produced different root; original restore reproduced exact root and published=false. Fresh subprocess returned exact consumer hash, source_opens=[]."
+    },
+    {
+      "id": "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g03_current_asof_supersession_and_no_current rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g03b_supersession_and_asof_history -q",
+      "actual": "2 passed. Test-only external attestation selects current; supersession second selection; as-of first event returns first release; as-of checkpoint returns first; historical pre-selection returns UNKNOWN_CURRENTNESS; no-current product refuses current-required consume but works without current requirement."
+    },
+    {
+      "id": "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g04_independent_issuer_refusals rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g04b_fresh_process_current_attestation -q",
+      "actual": "2 passed. Revoked, wrong-purpose, stale-checkpoint, wrong-selection/key and missing-pin attestations refuse; valid TEST_ONLY attestation works in fresh process and current consumer exact; no latest/default API."
+    },
+    {
+      "id": "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g05_self_rehashed_fake_checkpoint_and_wrong_asof -q",
+      "actual": "1 passed. Coherently self-rehashed checkpoint with removed events refused; old external pin rejected; wrong as-of event refused."
+    },
+    {
+      "id": "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g06_missing_rule_receipt_history_and_changed_m2_dependency -q",
+      "actual": "1 passed. Missing determinant receipt, missing exact family rule binding, removed historical event and changed M2 dependency all refuse."
+    },
+    {
+      "id": "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g07_publish_pointer_crash_and_recovery -q",
+      "actual": "1 passed. Artifact without external pointer refuses current; valid pointer restores current; injected crash before manifest leaves no visible artifact."
+    },
+    {
+      "id": "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_learned_world_composition.py rawlsing_next/tests/test_pre553_learned_empirical_adjudication.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py rawlsing_next/tests/test_pyat960_s2g_fresh_process.py -q",
+      "actual": "147 passed in 31.79s. Existing M1/M2/B5/world tests preserved. S2-F separate regression: 19 passed in 7.22s."
+    },
+    {
+      "id": "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g09_resources_and_source_opens -q; evidence/s2g_evidence.json",
+      "actual": "1 passed. Retained 32499 bytes; compressed 31987; logical 283854; cold open 0.103s; consumer 0.061s; repeat 0.059s; RSS 106831872; source opens 0; 6 GiB cap PASS; 100k NOT_RUN."
+    }
+  ],
+  "first_consumer": {
+    "native_producer": "real synthetic M01 graph executed by pre553_route_b_production; actual M1 adjudication via pre553_learned_empirical_adjudication with TEST_ONLY native validator fixture",
+    "m1_disposition_ref": "9a7f5e31226f4707c2aba6304dd791da1c4d78a5aa3a1661545c22085b8a3fdd",
+    "m2_release_ref": "3423ef93f9c6a4de45574ed89b47554b3062b7b0c97d2b373ad907a4f19747b9",
+    "b5_selection_receipt_ref": "2dd500392ea3b05ef0903fe4a46977f74627d86bbe0a802f2e663e085c98ef14",
+    "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+    "artifact_identity": "bb14f54c88515f8c0e0d1806afc0457fa1439d9c4212ad07381b9f7bc8df23eb",
+    "checkpoint_hash": "327a56898cdf8cae9ca1fa3bd778e1d3ede88faea2c5b88f06ed16ec2a69794d",
+    "consumer": "rawlsing_next.pre553_learned_world_composition.evaluate_learned_world_consumer",
+    "consumer_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+    "consumer_result_hash": "2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597",
+    "cold_process": "fresh Python subprocess, no native fixtures, only artifact path + external pin + S2F closure path; source_opens=[]; matches_expected=true"
+  },
+  "sourcefree_grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+  "external_holds": [
+    {
+      "owner": "Pair 2 / accepted S2-E and S2-D upstream",
+      "minimal_missing_witness": "independently accepted complete saved-reader/producer integration; full joined S2-G and integrated 100k remain HOLD_EXTERNAL"
+    },
+    {
+      "owner": "production current/as-of issuer",
+      "minimal_missing_witness": "real independently authenticated issuer/revocation/current root; only TEST_ONLY stand-in exists here"
+    },
+    {
+      "owner": "S2-G full M1/M2/B5 scientific lifecycle owner",
+      "minimal_missing_witness": "competent M1 family validator/science rule and full product-current operating chain; this is sourcefree engineering custody only"
+    },
+    {
+      "owner": "original35/source-native scientific authority",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; not read or claimed"
+    },
+    {
+      "owner": "independent nonauthor G5",
+      "minimal_missing_witness": "one receiver other than A/B to accept or revise exact 50c2e33b at isolated grade"
+    }
+  ],
+  "resource_cost": {
+    "fixture_grade": "synthetic native M01/M1/M2/B5 plus S2-F closure; not 100k",
+    "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+    "retained_disk_bytes": 32499,
+    "compressed_blob_bytes": 31987,
+    "logical_bytes": 283854,
+    "manifest_bytes": 512,
+    "cold_open_seconds": 0.103,
+    "consumer_seconds": 0.061,
+    "repeat_consumer_seconds": 0.059,
+    "process_tree_peak_rss_bytes": 106831872,
+    "source_opens": 0,
+    "rows": {
+      "b5_events": 3,
+      "m2_closures": 5,
+      "m1_determinant_material_keys": 25,
+      "artifact_files": 2
+    },
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS",
+    "integrated_100k": "NOT_RUN",
+    "reason_not_run": "accepted S2-E/S2-D integrated sourcefree pipeline is not present; local workload is synthetic fixture grade"
+  },
+  "material_open_defects": [],
+  "open_defects": [],
+  "nonblocking_deferred": [
+    "Production current/as-of issuer/signature and revocation source are external; TEST_ONLY attestation is not production authority.",
+    "Full joined S2-E/S2-D/S2-G integration and integrated 100k/6 GiB remain future holds.",
+    "The changed-input test uses a different actual native M1 adjudication fixture, not a single mutated raw fact; the property tested is product/selection change and exact restoration.",
+    "Generic FF01 is not implemented; the selected descriptive reader is the existing GT2 Field Forge relation (outside this S2-G adapter)."
+  ],
+  "self_disclosed_weakest_point": "The strongest missing proof is a production external current/as-of issuer: the adapter proves a TEST_ONLY externally pinned attestation interface, not a real trusted issuer or revocation service. The M1 rule is a TEST_ONLY native fixture; no scientific family rule is claimed. The changed-input case changes the actual M1 adjudication fixture rather than mutating a single native fact inside one batch. Full S2-E/S2-D integration and 100k/6 GiB are absent. The cold consumer reruns the C1/N10E discovery route from the accepted S2-F closure, not a full source-backed saved-reader path.",
+  "own_worst_vulnerability": "A reviewer should attack the separation between the test-only attestation root and the artifact root, the exact M1 input-bundle/family-rule binding checks, and whether a coherently rewritten B5 checkpoint plus a new external pin can become a different but internally valid current artifact. The old pin must always reject it; no production issuer is available to decide newness.",
+  "opponent_proven_improvement": null,
+  "next_turn": "Fixed B ses_e3120b9efffegreD5YfH7dOO15 independently reads the original contract and this full artifact/tests, attacks and repairs the same descendant branch, then A counters once; one distinct nonauthor G5 receives exact SHA. No new reviewer or broad reconnaissance.",
+  "known_session_cost": "UNKNOWN",
+  "g5": {
+    "state": "NOT_RUN",
+    "status": "DELEGATED_CANDIDATE",
+    "note": "No independent nonauthor acceptance; original S2-G remains open at integrated/native grade."
+  },
+  "disposition": "HOLD_EXTERNAL",
+  "stop_state": "READY_FOR_RECEIVING",
+  "integration": "UNMERGED",
+  "abi": {
+    "classification": "LOCAL",
+    "detail": "New isolated custody adapter and tests; no existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner or interface modified. Adapter API is additive/local; native consumer identities preserved.",
+    "affected_task_ids": ["S2-E", "S2-G", "S1-D"],
+    "affected_task_relationship": "dependency/consumer integration only; no running contract silently changed",
+    "breaking_interface": false,
+    "source_or_authority_change": false,
+    "scientific_hold": true
+  },
+  "original_gate_mapping": {
+    "original_G1": "PASS at isolated grade: exact M1 rule/disposition/input bundle, M2 closures/release, B5 checkpoint/history/selection, actual consumer, current/as-of trust boundary.",
+    "original_G2": "PASS at isolated grade: native M1 product -> M2 -> B5 -> existing world consumer; durable cold fresh process; changed product/restore exact.",
+    "original_G3": "PASS at isolated grade: hostile checkpoint/issuer/source/dependency/as-of/current/no-current/supersession cases.",
+    "original_G4": "PASS at isolated fixture grade for CAS/fsync/crash/recovery/resource/source-open; integrated 100k/6 GiB NOT_RUN.",
+    "original_G5": "NOT_RUN; distinct nonauthor receiver required."
+  },
+  "three_court_grades": {
+    "engineering": "ACCEPT_SCOPED_CANDIDATE at S2_SOURCEFREE_ISOLATED_FIXTURE; independent G5 not run",
+    "scientific": "NONE_VERIFIED; TEST_ONLY synthetic validator only; no original35/scientific issuer",
+    "authority": "TEST_ONLY external current/as-of stand-in only; production issuer/current authority HOLD"
+  },
+  "evidence": {
+    "receipt": "WORKER_RETURNS/PYAT960_S2G_A/receipt.json",
+    "handoff": "WORKER_RETURNS/PYAT960_S2G_A/00_HANDOFF.md",
+    "resource_evidence": "WORKER_RETURNS/PYAT960_S2G_A/evidence/s2g_evidence.json",
+    "selected_regression": "WORKER_RETURNS/PYAT960_S2G_A/evidence/selected_147.txt"
+  }
+}
