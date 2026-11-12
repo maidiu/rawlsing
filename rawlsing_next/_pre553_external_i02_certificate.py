@@ -307,9 +307,24 @@ def build_sourcefree_external_i02(
         with open(staged, "rb") as f:
             os.fsync(f.fileno())
         # No seal or manifest publication before all global checks succeed.
-        if target.exists() or target.is_symlink():
-            _fail("destination lease/collision changed during construction")
-        os.replace(staged, target)
+        # A second writer can claim the final name after the exists() probe.
+        # os.replace() silently destroys that writer's output; publishing a
+        # certificate is a one-time CAS claim, not last-writer-wins. Link the
+        # fully fsynced same-directory inode under an exclusively NEW name.
+        # On a collision fail closed and discard only OUR staged artifact.
+        # A crash between link and unlink can leave a duplicate stage orphan,
+        # never an incomplete published artifact or a silently lost rival.
+        try:
+            os.link(staged, target, follow_symlinks=False)
+        except FileExistsError as exc:
+            raise ExternalI02IntegrityError(
+                "destination collision: another writer claimed certificate name"
+            ) from exc
+        except OSError as exc:
+            raise ExternalI02IntegrityError(
+                "atomic no-clobber certificate publication unavailable"
+            ) from exc
+        os.unlink(staged)
         dirfd = os.open(target.parent, os.O_RDONLY)
         try:
             os.fsync(dirfd)
