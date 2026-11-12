@@ -1,0 +1,102 @@
+{
+  "schema": "PYAT_R3_S2E_A2_ADVERSARIAL_RETURN@1.0.0",
+  "commission": "P2-06 / #919 S2-E / #909 R3C-R3S",
+  "author": "AGENT_A_RETURN",
+  "frozen_predecessor": {
+    "B_final_head": "529444b6126256fd803e90a758fa4d0be3f4d541",
+    "B_repair_cut": "56ce7299508d2d28d2eefb6a6a7f6fbe93360103",
+    "A_previous_tested_code_cut": "d7af5b8df922caa86bcd36a7baa0bbb55b43742d",
+    "A_previous_ci": "https://github.com/maidiu/rawlsing/actions/runs/43275018294"
+  },
+  "exact_artifact": {
+    "repository": "maidiu/rawlsing",
+    "branch": "agent/pyat-r3-s2e-a-counterattack-20261112-r2",
+    "frozen_code_sha": "75d4a24bddcfdc5bd1553bd48f130d64f5d5b1e3",
+    "review_pr": "https://github.com/maidiu/rawlsing/pull/966",
+    "base_branch": "agent/pyat-r3-s2e-b-followupper-20261112-r1",
+    "base_sha": "529444b6126256fd803e90a758fa4d0be3f4d541",
+    "changed_paths": [
+      "rawlsing_next/pre553_s2e_exact_conservation.py",
+      "rawlsing_next/tests/test_pyat919_s2e_a_counterattack.py",
+      ".github/workflows/pyat-r3-s2e-a.yml"
+    ]
+  },
+  "B_findings": {
+    "B01_false_valid_empty": "GENUINE_SOURCE_GAP__PRESERVED_B_REPAIR",
+    "B02_wrong_frontier_replay": "GENUINE_SOURCE_GAP__PRESERVED_B_REPAIR",
+    "B_F4_pairwise_accusation": "NOT_SUSTAINED__NATIVE_F4_SAME_RESPONDENT_3WAY",
+    "B_F2_same_denominator_accusation": "NOT_SUSTAINED__B_ITSELF_PRESERVED_DISTINCT_CONDITIONERS",
+    "B_execution_claim": "CORRECTLY_NOT_CLAIMED",
+    "unsupported_accusations_found": []
+  },
+  "A2_repaired_new_defects": [
+    {
+      "id": "A2-01",
+      "cause": "Candidate replay_ref and producer root can be independently forged and outer frontier replay rehashed",
+      "repair": "Recompute native per-candidate I05 replay material and require both producer locator and replay ref",
+      "negative": "test_a2_rehashed_candidate_replay_and_rehashed_outer_frontier_refused"
+    },
+    {
+      "id": "A2-02",
+      "cause": "Receipt candidate ID/hash does not authenticate winning predicate, role identities, ancestry and role facts",
+      "repair": "Recompute native candidate hash; check role-query-fact closure and exact used fact refs",
+      "negative": "test_a2_rehashed_wrong_winning_predicate_and_outer_refused"
+    },
+    {
+      "id": "A2-03",
+      "cause": "Claimed zero candidate count can be self-consistent and still omit authority-declared candidates",
+      "repair": "Recompile complete pre-search frontier from existing exact discovery authority and runtime catalogue; match grammar ref, candidate roster and frontier replay",
+      "negative": "test_a2_declared_grammar_refuses_coordinated_missing_candidate_and_outer"
+    },
+    {
+      "id": "A2-04",
+      "cause": "Coordinated changes to ancestry, candidate ID/hash, candidate replay, outer replay and Batch receipt can be mutually self-consistent",
+      "repair": "Tie every candidate to original grammar-generated candidate, winning predicate, role and ancestry",
+      "negative": "test_a2_coordinated_rehashed_ancestry_and_candidate_replay_refused_by_issuer_grammar"
+    },
+    {
+      "id": "A2-05",
+      "cause": "Terminal coverage state and typed result could contradict while preserving self-hashed receipt identities",
+      "repair": "Check source-defined terminal coverage/typed-state mapping",
+      "negative": "test_a2_rehashed_candidate_coverage_cannot_contradict_typed_fate"
+    }
+  ],
+  "evidence": {
+    "code_readback": "https://github.com/maidiu/rawlsing/commit/75d4a24bddcfdc5bd1553bd48f130d64f5d5b1e3",
+    "diff_against_B": "3 paths: 164 additions/2 deletions in auditor, 295 lines new tests, 1 workflow line",
+    "previous_A_accepted_test_suite": "78 native plus 19 S2-F PASS at earlier A SHA only",
+    "A2_run": "https://github.com/maidiu/rawlsing/actions/runs/43287533659",
+    "A2_run_status": "FAILED_PRE_EXECUTION",
+    "A2_jobs_steps": "NULL",
+    "A2_run_started": "2026-11-12T19:11:06Z",
+    "A2_run_updated": "2026-11-12T19:11:10Z",
+    "previous_A2_run": "https://github.com/maidiu/rawlsing/actions/runs/43286588528",
+    "previous_A2_rerun": "FAILED_PRE_EXECUTION",
+    "B_RED_and_GREEN": "FAILED_PRE_EXECUTION__NO_RED_TO_GREEN_EVIDENCE",
+    "new_native_tests_executed": false,
+    "static_invariant_verification": "NATIVE_I05_SOURCE_EXAMINED__NO_SUBSTITUTE_FOR_RUNTIME",
+    "actual_red_green": "NOT_RUN"
+  },
+  "gates": {
+    "G1": "PARTIAL_SOURCEFREE__CANDIDATE_AND_FRONTIER_CONTRACT_REPAIRED__NO_ORIGINAL35_ISSUER",
+    "G2": "A_PREDECESSOR_PASS_78_NATIVE__B_AND_A2_NOT_RUN",
+    "G3": "A2_FIVE_NEW_HOSTILE_TESTS_COMMITTED__EXECUTION_PENDING__NOT_PASS",
+    "G4": "PARTIAL__NO_PRODUCTION_ECONOMICS__GRAMMAR_RECOMPILATION_EXTRA_COST_UNMEASURED",
+    "G5": "NOT_RUN_THIRD_REVIEWER_REQUIRED"
+  },
+  "proof_boundaries": [
+    "Candidate grammar recompilation uses native compiler, not an independent scientific proof of its algorithm",
+    "No source/issuer revocation authority established",
+    "No S2-D saved-store interface or original35 execution",
+    "No 100k process-tree cap or quantified larger-scale shared reuse",
+    "No executed B RED->GREEN or A2 regression at exact frozen SHA",
+    "No production/actor/persona authority; no protected merge"
+  ],
+  "dependencies": [
+    "HOLD_DEPENDENCY:S2-D",
+    "CI_PRE_RUNNER_FAILURE",
+    "G5_INDEPENDENT_THIRD_REVIEWER"
+  ],
+  "disposition": "A2_CODE_AND_TESTS_COMMITTED__EXACT_HEAD_EXECUTION_UNVERIFIED__HOLD_EXECUTED_TEST_RECEIVING",
+  "STOP": "AGENT_A_RETURN_FROZEN__NO_FURTHER_DUEL_SPRAWL__NO_PROTECTED_MERGE"
+}
