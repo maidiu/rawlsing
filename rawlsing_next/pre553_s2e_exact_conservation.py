@@ -226,8 +226,8 @@ def census_native_batch(
                          "S2E_DISCOVERY_RECEIPT_TYPE")
                 _require(receipt.coverage_state in TERMINAL_COVERAGE_STATES,
                          "S2E_UNVISITED_DISCOVERY_BRANCH")
-                _require(receipt.discovery_authority_ref == output.discovery_authority_ref
-                         and receipt.evaluated_frontier_ref == output.evaluated_frontier_ref,
+                _require(_ref_key(receipt.discovery_authority_ref) == output.discovery_authority_ref.key
+                         and _ref_key(receipt.evaluated_frontier_ref) == output.evaluated_frontier_ref.key,
                          "S2E_DISCOVERY_RECEIPT_WRONG_SCOPE")
                 ci = receipt.candidate_identity
                 _require(isinstance(ci, Mapping), "S2E_DISCOVERY_CANDIDATE_IDENTITY_MISSING")
