@@ -156,6 +156,8 @@ A lists engine `engine.py` and `model_cycle.py` in the "selected producer identi
 - **Bounded:** A's "full state-root rewrite is outside the boundary" is accepted. B's defect is a record-only rewrite with intact head/config/receipts, which the boundary can and does catch; a Byzantine writer that rewrites every receipt, result and record consistently remains outside this local consistency boundary.
 - **Conceded:** A's rule-level value test remains valid; B does not remove it. B adds a stronger actual-owner differential rather than claiming the rule test is false.
 - **Bounded:** A's "two separate starts" observation is true for different fixture paths; B's differential uses the same root path deliberately and states that it is a deterministic replay, not a live fork.
+- **Own attack announced and refuted:** I first suspected `P3_CONFIG_MISSING_WITH_EXISTING_STORE` was over-strict and should simply regenerate the config from caller arguments. Enumerating the writer's crash windows did not produce a legitimate unproven state; silently regenerating plan provenance would weaken the retention boundary. The correct repair is B's verified recovery (anchor-proved or empty store), not a relaxation of A's guard. A's guard stands.
+- **Own attack announced and refuted:** I considered replacing `d01_reuse` with direct `P3Owner` calls as simpler. That loses the durable-config cold open, the exact selected-record/history/mode checks, the later-consumer readset proof and the exact response boundary. The extra loader is warranted at this scope; B strengthened it rather than deleting it.
 
 ## 7. New attack surfaces introduced or exposed
 
