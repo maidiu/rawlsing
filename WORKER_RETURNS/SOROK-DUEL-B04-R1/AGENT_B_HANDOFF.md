@@ -71,6 +71,10 @@ A's B04/B05 tests covered cold/severance, but not a checkpoint failure after epi
 
 A ran one real `P3Owner.realize` cycle. The priority asks for an actual multievent cycle across the employment split and material operation where competent APIs permit. I added a three-event `BatchEngine` run after the B02 split, followed by B04 purchase and B05 rent. It is a real batch, not a fixture; full cross-boundary materialize-between-events remains a challenge, not a green claim.
 
+### 4.5 Concessions and refuted/withdrawn claims
+
+A's B02 criticisms of my previous all-upfront materialization and full-duration `p3_interval_span` were correct; I withdraw any defense. A's B04/B05 material tests pass at A's pre-merge `62292613` cut, so I do not call A's B04/B05 construction false. What is false is the claim that the 32-test combination is green at frozen merge `2a47fb389`; the frozen B04 tests fail `PARENT_MATERIAL_HISTORY_MISMATCH` (`evidence/a_frozen_b04_failure.log`). I found no other false A criticism to refute in this round; the C02 stale hold and purchase-history hook are real Pair3 reconciliation obligations, not fabricated attacks.
+
 ## 5. Repairs implemented
 
 ### 5.1 B04 C02 material-history bridge
