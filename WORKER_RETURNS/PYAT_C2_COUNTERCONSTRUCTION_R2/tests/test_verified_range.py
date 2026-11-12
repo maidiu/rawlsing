@@ -57,8 +57,18 @@ class Anchor:
     version: str
     count: int
     root: str
+    scope_root: str
     def fingerprint(self):
         return h(b"C2A", enc(self.__dict__)).hex()
+
+
+@dataclass(frozen=True)
+class Scope:
+    release: str
+    respondents: tuple[tuple[str, str], ...]
+    targets: tuple[str, ...]
+    def root(self):
+        return h(b"C2S", enc(self.__dict__)).hex()
 
 
 class BadRange(Exception):
@@ -77,7 +87,9 @@ class DiskSemanticIndex:
         self.proof_peak = 0
 
     @classmethod
-    def build(cls, path: Path, events, *, source="SOURCE_SHA", release="RELEASE_REF", replay="REPLAY_REF"):
+    def build(cls, path: Path, events, *, scope: Scope, source="SOURCE_SHA", release="RELEASE_REF", replay="REPLAY_REF"):
+        if scope.release != release:
+            raise BadRange("DOMAIN_RELEASE_MISMATCH")
         db = sqlite3.connect(str(path))
         db.executescript("""
           PRAGMA temp_store=FILE;
@@ -126,7 +138,7 @@ class DiskSemanticIndex:
             n, level = at, level+1
             db.commit()
         root = db.execute("SELECT digest FROM node WHERE level=? AND idx=0", (level,)).fetchone()[0].hex() if count else h(b"C2Z",b"").hex()
-        return cls(db,Anchor(source,release,replay,"SEMANTIC_RANGE_V2",count,root))
+        return cls(db,Anchor(source,release,replay,"SEMANTIC_RANGE_V2",count,root,scope.root()))
 
     def _path(self, idx):
         n=self.anchor.count
@@ -203,12 +215,14 @@ class DiskSemanticIndex:
                 raise BadRange("INVALID_UPPER_EMPTY_BOUND")
 
     def select(self, *, accepted: Anchor, universe, respondent, target, native_only=False, include_component=False,
-               states=None, known_respondents=(), allowed_targets=(), current=True):
+               states=None, scope: Scope, current=True):
         if not current:
             raise BadRange("CURRENT_AUTHORITY_REVOKED")
         if accepted != self.anchor:
             raise BadRange("UNTRUSTED_ANCHOR")
-        if (universe,respondent) not in known_respondents or target not in allowed_targets:
+        if scope.release != accepted.release or scope.root() != accepted.scope_root:
+            raise BadRange("DOMAIN_SCOPE_NOT_ATTESTED")
+        if (universe,respondent) not in scope.respondents or target not in scope.targets:
             raise BadRange("UNKNOWN_SCOPE_OR_SELECTOR")
         kinds=("native",) if native_only else (("native","canonical","component") if include_component else ("native","canonical"))
         cursors=[self.range(universe,respondent,kind,target) for kind in kinds]
@@ -237,14 +251,15 @@ class TestVerifiedRanges(unittest.TestCase):
             Event("U2","R1","NQ7","g","0","X","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
             Event("U1","R1","ALIAS","h","0","Y","SUBSTANTIVE_RESPONSE","ALIAS","ALIAS"),
         )
-        self.store=DiskSemanticIndex.build(Path(self.tmp.name)/"a.db",self.events)
+        self.scope=Scope("RELEASE_REF",(("U1","R1"),("U1","R2"),("U2","R1")),
+                         ("NQ7","CQ7","SUB7","ALIAS","ABSENT"))
+        self.store=DiskSemanticIndex.build(Path(self.tmp.name)/"a.db",self.events,scope=self.scope)
         self.addCleanup(self.store.db.close)
         self.a=self.store.anchor
-        self.known=(("U1","R1"),("U1","R2"),("U2","R1"))
 
     def ask(self, target="NQ7",**kw):
         return self.store.select(accepted=self.a,universe="U1",respondent="R1",target=target,
-                                 known_respondents=self.known,allowed_targets=("NQ7","CQ7","SUB7","ALIAS","ABSENT"),**kw)
+                                 scope=self.scope,**kw)
 
     def test_positive_native_all_occurrences_and_states(self):
         self.assertEqual(len(self.ask()),3)
@@ -275,7 +290,7 @@ class TestVerifiedRanges(unittest.TestCase):
         self.assertEqual(self.ask("ABSENT"),())
         with self.assertRaisesRegex(BadRange,"UNKNOWN_SCOPE_OR_SELECTOR"):
             self.store.select(accepted=self.a,universe="U9",respondent="R1",target="ABSENT",
-                              known_respondents=self.known,allowed_targets=("ABSENT",))
+                              scope=self.scope)
 
     def test_changed_state_is_detected_with_same_ref_inventory(self):
         self.store.db.execute("UPDATE entry SET state='SUBSTANTIVE_RESPONSE' WHERE eref=?",(self.events[2].ref(),))
@@ -287,12 +302,12 @@ class TestVerifiedRanges(unittest.TestCase):
         changed=replace(self.a,root="f"*64)
         with self.assertRaisesRegex(BadRange,"UNTRUSTED_ANCHOR"):
             self.store.select(accepted=changed,universe="U1",respondent="R1",target="NQ7",
-                              known_respondents=self.known,allowed_targets=("NQ7",))
+                              scope=self.scope)
 
     def test_release_and_current_are_independently_bound(self):
         with self.assertRaisesRegex(BadRange,"UNTRUSTED_ANCHOR"):
             self.store.select(accepted=replace(self.a,release="WRONG"),universe="U1",respondent="R1",target="NQ7",
-                              known_respondents=self.known,allowed_targets=("NQ7",))
+                              scope=self.scope)
         with self.assertRaisesRegex(BadRange,"CURRENT_AUTHORITY_REVOKED"):
             self.ask(current=False)
 
@@ -314,7 +329,7 @@ class TestVerifiedRanges(unittest.TestCase):
 
     def test_duplicate_occurrence_is_not_new_event(self):
         with self.assertRaisesRegex(AssertionError,"duplicate occurrence"):
-            DiskSemanticIndex.build(Path(self.tmp.name)/"b.db",self.events+(self.events[0],))
+            DiskSemanticIndex.build(Path(self.tmp.name)/"b.db",self.events+(self.events[0],),scope=self.scope)
 
     def test_entire_selector_range_deleted_cannot_be_false_empty(self):
         self.store.db.execute("DELETE FROM entry WHERE u='U1' AND r='R1' AND kind='native' AND q='NQ7'")
@@ -351,6 +366,13 @@ class TestVerifiedRanges(unittest.TestCase):
         with self.assertRaisesRegex(BadRange,"ROUTING_NOT_CERTIFIED"):
             if routing!="ELIGIBLE":
                 raise BadRange("ROUTING_NOT_CERTIFIED")
+
+    def test_caller_cannot_invent_eligible_scope_or_question(self):
+        false_scope=replace(self.scope,respondents=self.scope.respondents+(("U9","R1"),),
+                            targets=self.scope.targets+("PRIVATE",))
+        with self.assertRaisesRegex(BadRange,"DOMAIN_SCOPE_NOT_ATTESTED"):
+            self.store.select(accepted=self.a,universe="U9",respondent="R1",target="PRIVATE",
+                              scope=false_scope)
 
     def test_proof_work_bounded_by_log_tree_height(self):
         self.assertEqual(len(self.ask()),3)
