@@ -29,17 +29,20 @@ PARENT_HISTORY_SCHEMA = "SOROK_P2_PARENT_HISTORY@1"
 PARENT_MATERIAL_KIND = "P2_PARENT_MATERIAL_ANTECEDENT"
 PARENT_ACTIVITY_KIND = "P2_PARENT_ACTIVITY"
 PARENT_CIRCUMSTANCE_KIND = "P2_PARENT_CIRCUMSTANCE"
+PARENT_PURCHASE_KIND = "P2_PARENT_PURCHASE"
+PARENT_PURCHASE_RECEIPT_SCHEMA = "SOROK_PARENT_PURCHASE_RECEIPT@1"
 PARENT_ACTIVITY_EVENT_KIND = "MATERIAL_ACTIVITY"
 PARENT_GRADE = "SOURCEFREE_S2_ONLY"
 PARENT_B02_HOLD = "B02_PERIOD_PLAN_ABSENT_ON_ROOT"
 PARENT_B02_QUALIFIED = "B02_PERIOD_CONTEXT_READ"
 PARENT_B02_UNQUALIFIED = "B02_PERIOD_CONTEXT_UNQUALIFIED"
 PARENT_B02_MODULE_MISSING = "B02_MODULE_UNAVAILABLE"
-PARENT_B02_FULL_PROOF_HOLD = "HELD_INCREMENTAL_CURRENT_PERIOD_API_MISSING"
+PARENT_B02_FULL_PROOF = "B02_INCREMENTAL_PERIOD_API_QUALIFIED"
+PARENT_B02_FULL_PROOF_HOLD = "B02_FULL_DATED_PROOF_HELD_PLAN_ABSENT"
 B02_REQUIRED_HOOK = (
-    "historical_period.current_material_period(session) -> exact current "
-    "period/tick and incremental interval without materialize_periods "
-    "advancing the entire plan"
+    "historical_period.materialize_to + period_progress + "
+    "read_material_period (incremental current-period reader; no full-plan "
+    "advance required)"
 )
 PARENT_MATERIAL_BOUNDARY = {
     "owner": "PARENT_ACTOR_LOCAL_P2_STATE",
@@ -54,6 +57,7 @@ PARENT_HISTORICAL_INGRESS = {
     "dates_claimed": False,
     "full_dated_proof": PARENT_B02_FULL_PROOF_HOLD,
     "required_hook": B02_REQUIRED_HOOK,
+    "b02_incremental_api": "AVAILABLE_MATERIALIZE_TO_PERIOD_PROGRESS",
     "b02_employment_holder_actor_slot": "A",
     "b02_employment_applied_to_parent": False,
     "parent_employment_source": "PARENT_ACTOR_LOCAL",
@@ -93,6 +97,16 @@ def _text(value: Any) -> bool:
 
 def _nonneg_int(value: Any) -> bool:
     return type(value) is int and value >= 0
+
+
+def _hash_text(value: Any) -> bool:
+    if not isinstance(value, str) or len(value) != 64:
+        return False
+    try:
+        int(value, 16)
+    except ValueError:
+        return False
+    return True
 
 
 def _material_source(document: Mapping[str, Any]) -> str:
@@ -165,7 +179,7 @@ def historical_period_module():
 
 
 def _period_context(session) -> dict:
-    """Qualify the actual current S46 clock against B02's committed period plan."""
+    """Qualify the actual current S46 clock through B02's incremental readers."""
     base = dict(PARENT_HISTORICAL_INGRESS)
     base["reason"] = None
     module = _historical_period_module()
@@ -188,19 +202,24 @@ def _period_context(session) -> dict:
         return {**base, "status": PARENT_B02_UNQUALIFIED,
                 "period_qualification": PARENT_B02_UNQUALIFIED,
                 "reason": code}
+    clock = session.clock()
+    period = next(
+        (row for row in plan["periods"]
+         if row["start_clock"] <= clock < row["end_clock"]),
+        None,
+    )
+    if period is None:
+        return {**base, "status": PARENT_B02_UNQUALIFIED,
+                "period_qualification": PARENT_B02_UNQUALIFIED,
+                "reason": "P6_PERIOD_OUTSIDE_PLAN"}
     try:
-        anchor = date.fromisoformat(plan["anchor_date"])
-        ticks = plan["ticks_per_day"]
-        delta = session.clock() - plan["anchor_clock"]
-        if delta < 0:
-            raise RecursionRefusal("P6_PERIOD_CLOCK_BEFORE_ANCHOR")
-        days, remainder = divmod(delta, ticks)
-        if remainder:
-            raise RecursionRefusal("P6_PERIOD_CLOCK_NOT_DAY_ALIGNED")
-        as_of = anchor + timedelta(days=days)
-        material = module.read_material_period(session, as_of.isoformat())
-        if material["logical_tick"] != session.clock():
+        progress = module.period_progress(session, period["period_id"])
+        as_of = progress["current_date"]
+        material = module.read_material_period(session, as_of)
+        if material["logical_tick"] != clock:
             raise RecursionRefusal("P6_PERIOD_CURRENT_LOGICAL_TICK_MISMATCH")
+        if material["period"]["period_id"] != period["period_id"]:
+            raise RecursionRefusal("P6_PERIOD_CURRENT_PERIOD_MISMATCH")
     except (RecursionRefusal, ValueError, KeyError) as exc:
         return {**base, "status": PARENT_B02_UNQUALIFIED,
                 "period_qualification": PARENT_B02_UNQUALIFIED,
@@ -213,27 +232,32 @@ def _period_context(session) -> dict:
         "b02_employment_holder_actor_slot": "A",
         "b02_employment_applied_to_parent": False,
         "parent_employment_source": "PARENT_ACTOR_LOCAL",
-        "as_of_date": as_of.isoformat(),
+        "as_of_date": as_of,
+        "as_of_relation": material["as_of_relation"],
         "logical_tick": material["logical_tick"],
         "period": detached(material["period"]),
         "calendar_basis": material["calendar_basis"],
         "clock_basis": material["clock_basis"],
         "ticks_per_day": material["ticks_per_day"],
         "interval_status": material["interval_status"],
+        "interval_status_detail": material["interval_status_detail"],
+        "current_interval": detached(material.get("current_interval")),
+        "current_interval_status": material.get("current_interval_status"),
+        "period_progress": detached(progress),
         "provenance": detached(material["provenance"]),
         "dates_claimed": True,
-        "full_dated_proof": PARENT_B02_FULL_PROOF_HOLD,
+        "full_dated_proof": PARENT_B02_FULL_PROOF,
         "required_hook": B02_REQUIRED_HOOK,
         "reason": None,
         "source_binding": {
             "period_plan_source": plan["source"],
             "employment_source": plan["employment_source"],
+            "period_id": period["period_id"],
             "employment_holder_actor_slot": "A",
             "employment_applied_to_parent": False,
             "parent_employment_source": "PARENT_ACTOR_LOCAL",
         },
     }
-
 
 def _require_period_for_write(context: Mapping[str, Any]) -> None:
     if context.get("status") in {PARENT_B02_UNQUALIFIED,
@@ -312,28 +336,102 @@ def _parent_write_lock(session):
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
-def _parent_material_history(session, alias: str, parent_id: str) -> list[tuple[dict, str]]:
-    """Return ordered parent material/activity/circumstance episodes and sources."""
+def _purchase_history_source(session, episode: Mapping[str, Any], *,
+                             alias: str, parent_id: str,
+                             parent_currency: str | None, root: str,
+                             branch: str) -> str:
+    """Validate the exact B04 P2_PARENT_PURCHASE receipt for parent history.
+
+    B04 owns the purchase writer. This is a narrow read-side acceptance of its
+    typed receipt, not a generic unknown-episode allowance and not a second
+    purchase/debit path.
+    """
+    body = episode.get("body") or {}
+    if (body.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+            or body.get("grade") != PARENT_GRADE
+            or body.get("root") != root
+            or body.get("branch") != branch
+            or body.get("actor_id") != parent_id
+            or body.get("alias") != alias):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    receipt = body.get("receipt")
+    if not isinstance(receipt, Mapping):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    if (receipt.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+            or receipt.get("parent_id") != parent_id
+            or receipt.get("parent_alias") != alias
+            or receipt.get("root") != root
+            or receipt.get("branch") != branch):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    status = receipt.get("status")
+    if status not in {"ADMITTED", "REFUSED"} or body.get("status") != status:
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    before = receipt.get("parent_material_source_before")
+    after = receipt.get("parent_material_source_after")
+    if not _hash_text(before) or not _hash_text(after):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    if status == "REFUSED":
+        if (before != after
+                or receipt.get("possession") != "NONE"
+                or receipt.get("event_effect") != "NONE"):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        return before
+    if (receipt.get("possession") != "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"
+            or receipt.get("event_effect") != "NONE"
+            or receipt.get("clock") != episode.get("clock")):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    currency = receipt.get("currency_unit")
+    if not _text(currency):
+        raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+    if parent_currency is not None and currency != parent_currency:
+        raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+    if before == after:
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    return after
+
+
+def _parent_material_history(session, alias: str, parent_id: str, *,
+                             parent_currency: str | None, root: str,
+                             branch: str) -> list[tuple[dict, str]]:
+    """Return ordered validated parent material/activity/circumstance/purchase rows."""
     rows = []
+    previous_source = None
     for episode in session.product.store.episodes(session.branch_id):
         if episode.get("actor_id") != alias:
             continue
         kind = episode.get("kind")
         if kind not in {PARENT_MATERIAL_KIND, PARENT_ACTIVITY_KIND,
-                        PARENT_CIRCUMSTANCE_KIND}:
+                        PARENT_CIRCUMSTANCE_KIND, PARENT_PURCHASE_KIND}:
             continue
         body = episode.get("body") or {}
         if body.get("actor_id") != parent_id:
             raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
-        source = (body.get("material_source") if kind == PARENT_MATERIAL_KIND
-                  else body.get("material_after_source"))
+        if kind == PARENT_PURCHASE_KIND:
+            source = _purchase_history_source(
+                session, episode, alias=alias, parent_id=parent_id,
+                parent_currency=parent_currency, root=root, branch=branch)
+            before = (body.get("receipt") or {}).get(
+                "parent_material_source_before")
+            if previous_source is not None and before != previous_source:
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        else:
+            source = (body.get("material_source")
+                      if kind == PARENT_MATERIAL_KIND
+                      else body.get("material_after_source"))
+            if kind != PARENT_MATERIAL_KIND:
+                if (previous_source is not None
+                        and body.get("material_before_source")
+                        != previous_source):
+                    raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+            elif previous_source is not None:
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
         if not _text(source):
             raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISSING")
         rows.append((episode, source))
+        previous_source = source
     if not rows:
         raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISSING")
     return rows
-
 
 def _validate_material(session, *, parent_id: str, alias: str,
                        document: Any) -> dict:
@@ -380,7 +478,9 @@ def _read_material(session, *, parent_id: str, as_actor: str | None) -> dict:
         raise RecursionRefusal("PARENT_MATERIAL_ABSENT")
     stored = _validate_material(
         session, parent_id=parent_id, alias=alias, document=document)
-    history = _parent_material_history(session, alias, parent_id)
+    history = _parent_material_history(
+        session, alias, parent_id, parent_currency=stored["currency_unit"],
+        root=stored["root"], branch=stored["branch"])
     if history[-1][1] != stored["source"]:
         raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
     period = _period_context(session)
@@ -1116,17 +1216,56 @@ def read_parent_history(session, parent_id: str, *,
         raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
     registration = _parent_registration(session, parent_id)
     alias = registration["alias"]
+    root = session.read_root()["root_hash"]
+    branch = session.branch_id
+    world = session.world()
+    row = world.actor_state.get(alias)
+    document = row.get("material") if isinstance(row, Mapping) else None
+    parent_currency = (
+        document.get("currency_unit") if isinstance(document, Mapping) else None)
     rows = []
-    for episode in session.product.store.episodes(session.branch_id):
+    purchase_count = 0
+    for episode in session.product.store.episodes(branch):
         if episode.get("actor_id") != alias:
             continue
-        if episode.get("kind") not in {
+        kind = episode.get("kind")
+        if kind not in {
                 PARENT_MATERIAL_KIND, PARENT_ACTIVITY_KIND,
-                PARENT_CIRCUMSTANCE_KIND}:
+                PARENT_CIRCUMSTANCE_KIND, PARENT_PURCHASE_KIND}:
             continue
         body = episode.get("body") or {}
+        if kind == PARENT_PURCHASE_KIND:
+            source = _purchase_history_source(
+                session, episode, alias=alias, parent_id=parent_id,
+                parent_currency=parent_currency, root=root, branch=branch)
+            receipt = body.get("receipt") or {}
+            rows.append({
+                "kind": kind,
+                "operation_id": body.get("operation_id"),
+                "clock": episode["clock"],
+                "source_ref": None,
+                "material_before_source": receipt.get(
+                    "parent_material_source_before"),
+                "material_after_source": receipt.get(
+                    "parent_material_source_after"),
+                "status": receipt.get("status"),
+                "object_id": receipt.get("object_id"),
+                "owner_actor_id": receipt.get("owner_actor_id"),
+                "currency_unit": receipt.get("currency_unit"),
+                "purchase_source": receipt.get("purchase_source"),
+                "period": detached(receipt.get("period") or {}),
+                "period_qualification": (receipt.get("period") or {}).get(
+                    "status"),
+                "period_context": None,
+                "event_id": None,
+                "event_hash": None,
+                "action_provenance": "P2_PARENT_PURCHASE",
+                "history_source": source,
+            })
+            purchase_count += 1
+            continue
         rows.append({
-            "kind": episode["kind"],
+            "kind": kind,
             "operation_id": body.get("operation_id"),
             "clock": episode["clock"],
             "source_ref": body.get("source_ref"),
@@ -1138,10 +1277,14 @@ def read_parent_history(session, parent_id: str, *,
             "period_context": detached(body.get("period_context") or {}),
             "event_id": body.get("event_id"),
             "event_hash": body.get("event_hash"),
+            "action_provenance": (
+                "P2_PARENT_ACTIVITY" if kind == PARENT_ACTIVITY_KIND
+                else "P2_PARENT_CIRCUMSTANCE" if kind == PARENT_CIRCUMSTANCE_KIND
+                else "P2_PARENT_MATERIAL_ANTECEDENT"),
+            "history_source": (
+                body.get("material_source") if kind == PARENT_MATERIAL_KIND
+                else body.get("material_after_source")),
         })
-    world = session.world()
-    row = world.actor_state.get(alias)
-    document = row.get("material") if isinstance(row, Mapping) else None
     current_source = (
         document.get("source") if isinstance(document, Mapping) else None)
     latest_source = rows[-1]["material_after_source"] if rows else None
@@ -1152,10 +1295,13 @@ def read_parent_history(session, parent_id: str, *,
         "status": "READ",
         "actor_id": parent_id,
         "alias": alias,
-        "root": session.read_root()["root_hash"],
-        "branch": session.branch_id,
+        "root": root,
+        "branch": branch,
         "clock": world.clock,
         "history": rows,
+        "purchase_episode_count": purchase_count,
+        "purchase_currency_rule": (
+            "ADMITTED_PURCHASE_CURRENCY_MUST_MATCH_PARENT_MATERIAL"),
         "material_source": current_source,
         "latest_history_source": latest_source,
         "material_consistent": current_source == latest_source,

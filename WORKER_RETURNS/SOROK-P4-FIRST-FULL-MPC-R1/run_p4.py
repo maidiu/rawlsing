@@ -183,13 +183,18 @@ def record_activity(owner, ledger_file, ledger, before, result):
 
 
 PARENT_BACKGROUND_OPERATIONS = frozenset({
-    "period-establish", "parent-register", "parent-establish",
+    "period-establish", "period-materialize",
+    "market-establish",
+    "parent-register", "parent-establish",
     "parent-circumstance", "parent-activity",
+    "parent-decide", "parent-perform", "parent-speak",
 })
 
 
 def _parent_background_dispatch(session, operation, request):
-    from developmental_recursion import parent_activity, supporting_actor
+    from developmental_recursion import (
+        parent_activity, parent_decision, parent_speech, supporting_actor,
+    )
     if not isinstance(request, dict):
         raise RecursionRefusal("P4_PARENT_BACKGROUND_REQUEST_SCHEMA")
     if operation == "period-establish":
@@ -200,6 +205,20 @@ def _parent_background_dispatch(session, operation, request):
             session, employment=request.get("employment"),
             plan=request.get("plan"),
         )
+    if operation == "period-materialize":
+        module = parent_activity.historical_period_module()
+        if module is None:
+            raise RecursionRefusal("P4_B02_MODULE_UNAVAILABLE")
+        as_of_date = request.get("as_of_date")
+        if not isinstance(as_of_date, str) or not as_of_date.strip():
+            raise RecursionRefusal("P4_PARENT_BACKGROUND_REQUEST_SCHEMA")
+        return module.materialize_to(session, as_of_date)
+    if operation == "market-establish":
+        module = parent_decision._b04_module()
+        if module is None:
+            raise RecursionRefusal("P4_B04_MODULE_UNAVAILABLE")
+        return module.establish_market_inventory(
+            session, items=request.get("items"))
     parent_id = request.get("parent_id")
     if not isinstance(parent_id, str) or not parent_id.strip():
         raise RecursionRefusal("P4_PARENT_BACKGROUND_REQUEST_SCHEMA")
@@ -228,6 +247,28 @@ def _parent_background_dispatch(session, operation, request):
             hours=request.get("hours"),
             payment=request.get("payment"),
             expected_clock=request.get("expected_clock"),
+        )
+    if operation == "parent-decide":
+        return parent_decision.admit_parent_decision(
+            session, parent_id,
+            operation_id=request.get("operation_id"),
+            request=request.get("request"),
+            as_actor=parent_id,
+            expected_clock=request.get("expected_clock"),
+        )
+    if operation == "parent-perform":
+        return parent_decision.perform_parent_decision(
+            session, parent_id,
+            decision_id=request.get("decision_id"),
+            as_actor=parent_id,
+        )
+    if operation == "parent-speak":
+        return parent_speech.perform_parent_utterance(
+            session, parent_id,
+            decision_id=request.get("decision_id"),
+            text=request.get("text"),
+            hidden_reason=request.get("hidden_reason"),
+            operation_id=request.get("operation_id"),
         )
     raise RecursionRefusal("P4_PARENT_BACKGROUND_OPERATION_UNKNOWN")
 
