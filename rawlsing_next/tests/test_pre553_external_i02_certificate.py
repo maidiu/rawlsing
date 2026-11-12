@@ -881,3 +881,40 @@ def test_s2b_a_r2_same_semantics_different_physical_path_swap_pins_inode(
             verified,
         )
         assert _run(source, qa, pred, query) == oracle
+
+
+@pytest.mark.parametrize("stage", ("building", "cold_verification"))
+def test_s2b_a3_giant_poisoned_closure_refusal_keeps_python_heap_bounded(stage):
+    """S2-B G4: reject an attacker-controlled 60k-extra closure without list().
+
+    Both source-side construction and cold independent verification previously
+    collected every orphan ref into a Python list before refusing. This tests
+    the precise malicious-input failure path, not successful material pipeline
+    peak RSS or the separate 100k/6GiB source-direct acceptance.
+    """
+    from rawlsing_next._pre553_external_i02_certificate import (
+        _check_relations, _check_relations_readonly,
+    )
+    db = sqlite3.connect(":memory:")
+    try:
+        db.execute("CREATE TABLE closure(ref TEXT PRIMARY KEY)")
+        db.execute("CREATE TABLE objects(ref TEXT PRIMARY KEY)")
+        db.executemany(
+            "INSERT INTO closure VALUES (?)",
+            ((f"unissued-orphan:{i:012d}",) for i in range(60000)),
+        )
+        db.commit()
+        tracemalloc.start()
+        try:
+            with pytest.raises(ExternalI02IntegrityError, match="closure"):
+                ( _check_relations(db, source="SOURCE:missing")
+                  if stage == "building" else
+                  _check_relations_readonly(db, "SOURCE:missing") )
+            _current, peak = tracemalloc.get_traced_memory()
+        finally:
+            tracemalloc.stop()
+        assert peak < 1_500_000, (
+            f"{stage}: unbounded all-ref Python closure materialization {peak}"
+        )
+    finally:
+        db.close()
