@@ -1,7 +1,9 @@
 {
   "packet_id": "S2-G",
   "task_id": "PYAT960-S2G",
-  "old_obligations": ["P2-08"],
+  "old_obligations": [
+    "P2-08"
+  ],
   "contract_sha": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
   "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
@@ -228,7 +230,11 @@
   "abi": {
     "classification": "LOCAL",
     "detail": "New isolated custody adapter and tests; no existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner or interface modified. Adapter API is additive/local; native consumer identities preserved.",
-    "affected_task_ids": ["S2-E", "S2-G", "S1-D"],
+    "affected_task_ids": [
+      "S2-E",
+      "S2-G",
+      "S1-D"
+    ],
     "affected_task_relationship": "dependency/consumer integration only; no running contract silently changed",
     "breaking_interface": false,
     "source_or_authority_change": false,
@@ -250,6 +256,7 @@
     "receipt": "WORKER_RETURNS/PYAT960_S2G_A/receipt.json",
     "handoff": "WORKER_RETURNS/PYAT960_S2G_A/00_HANDOFF.md",
     "resource_evidence": "WORKER_RETURNS/PYAT960_S2G_A/evidence/s2g_evidence.json",
-    "selected_regression": "WORKER_RETURNS/PYAT960_S2G_A/evidence/selected_147.txt"
+    "selected_regression": "WORKER_RETURNS/PYAT960_S2G_A/evidence/selected_147.txt",
+    "execution_environment_passport": "WORKER_RETURNS/PYAT960_S2G_A/execution_environment_passport.json"
   }
 }

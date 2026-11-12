@@ -180,6 +180,7 @@ Evidence:
 
 - `WORKER_RETURNS/PYAT960_S2G_A/evidence/s2g_evidence.json`
 - `WORKER_RETURNS/PYAT960_S2G_A/evidence/selected_147.txt`
+- `WORKER_RETURNS/PYAT960_S2G_A/execution_environment_passport.json`
 
 ## 10. Status
 
