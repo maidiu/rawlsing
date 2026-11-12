@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_R3C_S1C_AGENT_A_SOURCEFREE_RECEIPT@1.0.0",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "governing_issue": 918,
+  "parent_issue": 909,
+  "disposition": "READY_FOR_B_ADVERSARIAL_REVIEW_NOT_G5",
+  "author_role": "AGENT_A_GO_FIRST",
+  "branch": "agent/pyat-r3-s1c-adversarial-a-20261112-r1",
+  "base_integration_pr": 948,
+  "base_integration_sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "base_integration_state_at_frozen_test": "OPEN_UNMERGED",
+  "protected_pre_main_source_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "frozen_tested_source_commit": "9a539024f3d2a23f96e4e4fa50a0e749b0d6b56f",
+  "frozen_blobs": {
+    "rawlsing_next/pre553_operation_fate_census.py": "1f68dc6ff60e68d72cee284cb8232f659100b8f6",
+    "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py": "c1a0c4b757483454b641ddd501558bdf94df5acf",
+    "rawlsing_next/tests/pyat_r3_s1c_rss_runner.py": "63656522497dd6f7760872b692b46bf0e8b7580e",
+    ".github/workflows/pyat-r3-s1c-sourcefree.yml": "901e2e6ce54bf5fda7b016d39524aac32f2862a8"
+  },
+  "test_commands": [
+    "PYTHONPATH=. python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py",
+    "PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py"
+  ],
+  "ci": {
+    "s1c_test_job": "https://github.com/maidiu/rawlsing/actions/runs/43275142293/job/131381455682",
+    "s1c_tests": {
+      "passed": 11,
+      "failed": 0
+    },
+    "inherited_tests": {
+      "passed": 22,
+      "failed": 0
+    },
+    "combined_stacked_integration_job": "https://github.com/maidiu/rawlsing/actions/runs/43275142354/job/131381457164",
+    "combined_conclusion": "success"
+  },
+  "scope": "TEST_ONLY_SOURCEFREE",
+  "first_reader": "rawlsing_next.pre553_native_workload_binding.execute_test_only_discovery_workload -> authentic Batch -> C11 -> I05 candidate receipts and empirical facts",
+  "measured": {
+    "declared_operations": 309,
+    "compiled_operations": 309,
+    "accounted_operation_rows": 309,
+    "eligible": 150,
+    "held": 159,
+    "unsupported_runtime_rows": 3,
+    "deferred_scope_records": 6,
+    "issued_candidate_receipts": 150,
+    "native_empirical_facts": 330,
+    "source_factory_calls": 1,
+    "c11_builds": 1,
+    "sourcefree_packet_elapsed_seconds": 3.229579,
+    "fixture_test_wall_seconds": 31.5029,
+    "peak_process_tree_rss_bytes": 260079616,
+    "samples_scope": "HOSTED_SOURCEFREE_FIXTURE_NOT_ORIGINAL35"
+  },
+  "proofs": {
+    "omitted_input_negative": "PASS",
+    "duplicate_input_negative": "PASS",
+    "count_preserving_substitution": "PASS",
+    "independently_rehashed_census_anti_join": "PASS",
+    "wrong_source_edition": "PASS",
+    "authority_refusal": "PASS_SOURCEFREE_ONLY",
+    "routing_unknown": "PASS",
+    "unweighted_sample_raw": "PASS",
+    "population_without_design": "HELD_NOT_PROMOTED",
+    "inapplicable_admin_form": "PASS",
+    "deferred_budget": "PASS",
+    "changed_operation_downstream_candidate": "PASS",
+    "changed_source_cell_downstream_fact": "PASS",
+    "restore_original_identity": "PASS",
+    "candidate_fact_anti_join": "PASS"
+  },
+  "gates": {
+    "G1": "PASS_SCOPED_DECLARED_SYNTHETIC_PACKET__ORIGINAL35_EXTERNAL_HOLD",
+    "G2": "PASS_SOURCEFREE_EXISTING_COMPILER_AND_ISSUED_I05_CONSUMER",
+    "G3": "PASS_SCOPED_HOSTILE_FATE_CONSERVATION",
+    "G4": "PASS_SCOPED_MEASUREMENTS_STATELESS_ADAPTER",
+    "G5": "NOT_RUN_REQUIRES_INDEPENDENT_NONAUTHOR"
+  },
+  "external_holds": [
+    "COMPETENT_ORIGINAL35_SOURCE_AND_SCIENCE_ISSUER",
+    "REAL_SOURCE_AUTHORIZATION_AND_CURRENT_PRODUCTION_GRANTS",
+    "PRODUCTION_SCALE_RESOURCE_TEST",
+    "PROTECTED_INTEGRATION",
+    "INDEPENDENT_G5"
+  ],
+  "authorship_note": "A authored this receipt; B and independent G5 must verify it. Neither A nor B may self-approve G5.",
+  "next": "B READ COMPLETE HANDOFF, DIFF, BOTH GREEN CI LOGS; RUN HOSTILE REPRODUCERS; CAUSALLY REPAIR MATERIAL IN-SCOPE DEFECTS IN COMMON LINEAGE. A COUNTERATTACK, THEN G5. NO OPTIONAL HARDENING."
+}
