@@ -32,7 +32,7 @@ from rawlsing_next.pre553_c11_integrity import (
 )
 from rawlsing_next.pre553_empirical_objects import (
     CanonicalSemanticObject, ExactRef, RespondentEvent, canonical_json,
-    semantic_hash,
+    exact_ref, semantic_hash,
 )
 from rawlsing_next._pre553_verified_semantic_range import (
     CertifiedRespondentEvents, SemanticRangeIntegrityError,
@@ -98,7 +98,13 @@ def _insert_object(db: sqlite3.Connection, obj: object, *, family: str) -> None:
         _fail("object content changed beneath original I02 ExactRef")
     def value(name: str) -> str:
         raw = getattr(obj, name, None)
-        return raw.key if isinstance(raw, ExactRef) else ""
+        if raw is None or isinstance(raw, TypedAbsence):
+            return ""
+        # Public canonical objects expose their source refs as serialized
+        # mappings in semantic_fields, while I02 internal records often
+        # expose real ExactRef instances. Both are legally exact references.
+        # Never silently call a mapping an absent respondent/alias.
+        return exact_ref(raw, name).key
     db.execute("INSERT INTO objects VALUES(?,?,?,?,?,?,?,?,?,?,?)", (
         ref, family, kind, object_id, digest,
         value("empirical_universe_ref"), value("scoped_respondent_ref"),
