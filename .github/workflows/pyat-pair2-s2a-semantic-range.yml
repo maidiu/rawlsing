@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install pytest pyarrow pandas
+      - run: python -m pip install pytest pyarrow pandas pyreadstat
       - name: S2-A real I02/I03 native first-reader, source-binding and hostile H26-H35
         env:
           PYTHONPATH: .
