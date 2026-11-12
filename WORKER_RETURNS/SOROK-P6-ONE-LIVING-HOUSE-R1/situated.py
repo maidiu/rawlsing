@@ -133,7 +133,7 @@ def interaction_quiet(session, world, house, cues):
 
 
 
-def current_p3_actor_access(session, interval, world, house, packet):
+def current_p3_actor_access(session, interval, world, house, packet, *, source_receipt=None, evidence_out=None):
     """Proof of current actor access for the optional TEST_ONLY P3 reader.
 
     A previously perceived MOVE or speech can inform situated interpretation,
@@ -149,12 +149,34 @@ def current_p3_actor_access(session, interval, world, house, packet):
     start, end = interval["start"], interval["end"]
     if type(start) is not int or type(end) is not int or start > end:
         raise ValueError("P6_P3_ACCESS_INTERVAL_INVALID")
+    if evidence_out is not None and type(evidence_out) is not list:
+        raise ValueError("P6_P3_ACCESS_EVIDENCE_SINK_INVALID")
+
+    def admitted(event, basis):
+        # World provenance is separate from the P3 record readset.
+        # It does NOT claim that a native law matches this cue to this
+        # psychological mediator, only that this world evidence was admitted.
+        if evidence_out is not None:
+            evidence_out.append({
+                "event_id": event["event_id"], "event_hash": event["hash"],
+                "clock": event["clock"], "basis": basis,
+                "grade": "SOURCEFREE_TEST_ONLY",
+            })
+        return True
 
     perceived = {
-        row.get("event_id") for row in
+        (row.get("event_id"), row.get("clock")) for row in
         session.product.store.perceptions(session.branch_id, "A")
         if isinstance(row, dict)
     }
+    # This is the already-committed receipt produced by this P6 operation,
+    # *not* a sourcefree sensory claim constructed by the model or its caller.
+    current_outward = (
+        source_receipt.get("outward_cue") if isinstance(source_receipt, dict) else None
+    )
+    current_performed = (
+        source_receipt.get("performed") if isinstance(source_receipt, dict) else None
+    )
 
     def world_event(row):
         if not isinstance(row, dict) or not isinstance(row.get("event_id"), str):
@@ -170,37 +192,53 @@ def current_p3_actor_access(session, interval, world, house, packet):
             return None
         return event
 
-    # Current-turn, admitted outward stimuli. Validate the actual derived
-    # sensory candidate rather than trusting a caller-supplied cue dictionary.
+    # Only an actually *performed* outward event in this operation can
+    # present a sourcefree sensory cue. Never infer a sensory producer from
+    # event existence + actor perception + a caller-supplied modality:
+    # the event may be real while the alleged cue is completely fabricated.
+    # P6_MOVEMENT_EVIDENCE with HOLD_ACTOR_REGISTRATION_OWNER_MISSING is
+    # likewise not a registered actor observation for P3/ADP purposes.
     for cue in packet["cues"]:
         event = world_event(cue)
-        if event is None:
+        if event is None or cue.get("grade") != "SOURCEFREE_FIXTURE":
             continue
-        if cue.get("grade") == "SOURCEFREE_FIXTURE":
-            if sensory_candidate(event, world, house) == cue:
-                return True
-        elif (event["event_id"] in perceived
-              and (cue.get("modality") in ("AUDITORY", "VISUAL")
-                   or cue.get("channels"))):
-            return True
+        if (cue == current_outward and current_performed == event
+                and event.get("actor_id") == session.meta["user_actor"]
+                and sensory_candidate(event, world, house) == cue):
+            # The world-side source also requires an exact conduct parent.
+            if any(
+                ep.get("kind") == "P6_HOUSE_CONDUCT"
+                and ep.get("clock") == event["clock"]
+                and ep.get("body") == {
+                    "event_id": event["event_id"],
+                    "operation": event["kind"],
+                }
+                for ep in session.episodes(session.meta["user_actor"])
+            ):
+                return admitted(event, "P6_OUTWARD_CURRENT_OPERATION_DERIVED")
 
-    # For near-term contextual lists, only new observations strictly after
-    # this interval began may qualify. Same-clock past context is not a new
-    # participant observation. Self-action helper already source-validates
-    # actor ownership and actor perception; recheck at the current read cut.
+    # For near-term lists, require the exact rows reissued by the existing
+    # actor-local source readers. A caller cannot turn a real event into an
+    # invented perception by modifying a context row.
+    verified_self = recent_self_actions(session)
+    verified_speech = recent_speech(session)
     for row in packet["recent_self_actions"]:
+        if row not in verified_self:
+            continue
         event = world_event(row)
         if (event is not None and event["clock"] > start
-                and event["event_id"] in perceived
+                and (event["event_id"], event["clock"]) in perceived
                 and event.get("actor_id") == "A"):
-            return True
+            return admitted(event, "P6_ACTOR_PERCEIVED_CURRENT_SELF_ACTION")
     for row in packet["recent_speech"]:
+        if row not in verified_speech:
+            continue
         event = world_event(row)
         if (event is not None and event["clock"] > start
-                and event["event_id"] in perceived
+                and (event["event_id"], event["clock"]) in perceived
                 and event.get("kind") == "SPEECH"
                 and event.get("actor_id") == row.get("speaker")):
-            return True
+            return admitted(event, "P6_ACTOR_PERCEIVED_CURRENT_SPEECH")
     return False
 
 
@@ -275,7 +313,15 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
     if psyche_owner is not None:
         if not isinstance(psyche_scope, dict):
             raise ValueError("P6_P3_SCOPE_REQUIRED")
-        packet["sourcefree_p3"] = qualified_p3_read(
+        # A caller does not get to manufacture observation through a list
+        # of near-term context. Bind the access decision to an exact event
+        # receipt, and keep world hashes outside the P3 record readset.
+        access_evidence = []
+        observed = current_p3_actor_access(
+            session, interval, world, house, packet,
+            source_receipt=receipt, evidence_out=access_evidence,
+        )
+        p3_read = qualified_p3_read(
             psyche_owner, session,
             project=psyche_scope.get("project"),
             counterpart=psyche_scope.get("counterpart"),
@@ -283,14 +329,30 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
             interlocutor_role=psyche_scope.get("interlocutor_role"),
             relation_ref=psyche_scope.get("relation_ref"),
             obligation_refs=psyche_scope.get("obligation_refs", ()),
-            # Qualified existing actor-local world evidence, not guessed
-            # interiority or a portal-user/persona override.
-            actor_observed=current_p3_actor_access(
-                session, interval, world, house, packet
-            ),
+            actor_observed=observed,
         )
+        p3_read["actor_access_evidence"] = access_evidence
+        p3_read["world_readset"] = [row["event_hash"] for row in access_evidence]
+        p3_read["stimulus_to_mediator_relevance"] = "UNISSUED_NATIVE_RULE"
+        packet["sourcefree_p3"] = p3_read
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
               "packet_hash": digest(packet)}
+    if psyche_owner is not None:
+        # This is a private operation receipt, not public narration or a
+        # psychological rule. Preserve the exact world-to-P3 causal read seam
+        # even after the model packet is no longer in process.
+        result["sourcefree_p3_receipt"] = {
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "root_hash": packet["root_hash"],
+            "branch_id": packet["branch_id"],
+            "clock": packet["clock"],
+            "world_state_hash": packet["world_state_hash"],
+            "p3_context_hash": p3_read["context_hash"],
+            "p3_record_readset": list(p3_read["readset"]),
+            "current_world_readset": list(p3_read["world_readset"]),
+            "actor_access_evidence": deepcopy(p3_read["actor_access_evidence"]),
+            "stimulus_to_mediator_relevance": "UNISSUED_NATIVE_RULE",
+        }
     try:
         decision = interpret(deepcopy(packet))
     except ModelUnavailable:
