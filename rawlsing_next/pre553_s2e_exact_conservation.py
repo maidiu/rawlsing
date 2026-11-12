@@ -16,7 +16,7 @@ from dataclasses import dataclass
 import hashlib
 from typing import Any, Mapping
 
-from rawlsing_next._pre553_query_common import QueryExecutionResult
+from rawlsing_next._pre553_query_common import QueryExecutionResult, _parse_target_plan
 from rawlsing_next.pre553_batch_runner import BatchManifest, UnitExecutionReceipt
 from rawlsing_next.pre553_discovery_exact import (
     COVERAGE_CLAIM,
@@ -115,6 +115,33 @@ def _check_fact(fact: EmpiricalFact, *, expected_query: ExactRef | None = None) 
             raise S2EOutputConservationError("S2E_POSITIVE_CELL_MISCLASSIFIED")
 
 
+def _verify_declared_domain(fact: EmpiricalFact, query: Any, registry: Any) -> None:
+    """Compare every executed native cell with the query's complete issued domain.
+
+    The source/authority owner continues to authenticate the query. This checks
+    that the fact did not lose zero-valued full-domain cells after execution.
+    """
+    _require(_ref_key(fact.condition_predicate_ref)
+             == _ref_key(query.condition_predicate_ref),
+             "S2E_FACT_CONDITION_DIRECTION_MISMATCH")
+    plan = _parse_target_plan(query, registry)
+    topology = fact.target_topology
+    if "complete_cell_semantic_projection" not in topology:
+        _require(fact.typed_state not in {"SUPPORTED", "OBSERVED_ZERO"},
+                 "S2E_POSITIVE_WITHOUT_DECLARED_DOMAIN")
+        return
+    _require(topology.get("arity") == plan.arity,
+             "S2E_DECLARED_TARGET_ARITY_MISMATCH")
+    _require(topology.get("target_domain_identity") == plan.domain_identity
+             and getattr(fact, "target_domain_identity", None) == plan.domain_identity,
+             "S2E_DECLARED_DOMAIN_IDENTITY_MISMATCH")
+    actual = tuple(canonical_json(row["cell"])
+                   for row in topology["complete_cell_semantic_projection"])
+    declared = tuple(sorted(canonical_json(cell) for cell in plan.full_domain))
+    _require(tuple(sorted(actual)) == declared,
+             "S2E_INCOMPLETE_OR_FOREIGN_DECLARED_DOMAIN")
+
+
 @dataclass(frozen=True)
 class S2EOutputCensus:
     contract: str
@@ -127,6 +154,7 @@ class S2EOutputCensus:
     i05_fact_count: int
     i05_receipt_count: int
     typed_state_counts: Mapping[str, int]
+    declared_domain_verified: bool
     per_unit_full_preimage_sha256: Mapping[str, str]
     full_output_sha256: str
 
@@ -142,6 +170,7 @@ class S2EOutputCensus:
             "i05_fact_count": self.i05_fact_count,
             "i05_receipt_count": self.i05_receipt_count,
             "typed_state_counts": dict(sorted(self.typed_state_counts.items())),
+            "declared_domain_verified": self.declared_domain_verified,
             "per_unit_full_preimage_sha256": dict(sorted(self.per_unit_full_preimage_sha256.items())),
             "full_output_sha256": self.full_output_sha256,
         }
@@ -153,6 +182,7 @@ def census_native_batch(
     outputs_by_unit: Mapping[str, Any],
     *,
     require_complete: bool = False,
+    runtime_catalog: Any | None = None,
 ) -> S2EOutputCensus:
     """Audit *all* Batch first-reader outputs at native object/preimage scope.
 
@@ -162,6 +192,13 @@ def census_native_batch(
     """
     _require(isinstance(manifest, BatchManifest), "S2E_INVALID_BATCH_MANIFEST")
     _require(isinstance(outputs_by_unit, Mapping), "S2E_OUTPUT_MAP_REQUIRED")
+    if runtime_catalog is not None:
+        from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+        _require(isinstance(runtime_catalog, RuntimeObjectCatalog),
+                 "S2E_RUNTIME_CATALOG_REQUIRED")
+        registry = runtime_catalog.authority_registry
+    else:
+        registry = None
     by_unit: dict[str, list[UnitExecutionReceipt]] = {
         unit.unit_ref.key: [] for unit in manifest.units
     }
@@ -208,8 +245,12 @@ def census_native_batch(
             _require(tuple(_ref_key(ref) for ref in output.release_refs)
                      == tuple(ref.key for ref in unit.release_refs),
                      "S2E_QUERY_RELEASE_SCOPE_MISMATCH")
+            query = (runtime_catalog.resolve_query_exact(unit.job_ref)
+                     if runtime_catalog is not None else None)
             for fact in output.facts:
                 _check_fact(fact, expected_query=output.query_ref)
+                if query is not None:
+                    _verify_declared_domain(fact, query, registry)
                 _object(digest, "I03_FACT", fact)
                 totals["i03"] += 1
                 states["FACT:" + fact.typed_state] = states.get("FACT:" + fact.typed_state, 0) + 1
@@ -257,8 +298,18 @@ def census_native_batch(
                 )
             _require(cited_fact_refs == {_ref_key(ref) for ref in output.empirical_fact_refs},
                      "S2E_DISCOVERY_FACT_REF_LOSS")
+            executed_query_by_ref = {
+                query.ref.key: query for query in output.executed_queries
+            }
             for fact in output.empirical_facts:
                 _check_fact(fact)
+                if registry is not None:
+                    parent_query = executed_query_by_ref.get(
+                        _ref_key(fact.empirical_query_spec_ref)
+                    )
+                    _require(parent_query is not None,
+                             "S2E_DISCOVERY_EXECUTED_QUERY_CLOSURE_LOST")
+                    _verify_declared_domain(fact, parent_query, registry)
                 _object(digest, "I05_FACT", fact)
                 totals["i05_fact"] += 1
                 states["FACT:" + fact.typed_state] = states.get("FACT:" + fact.typed_state, 0) + 1
@@ -302,6 +353,7 @@ def census_native_batch(
         i05_fact_count=totals["i05_fact"],
         i05_receipt_count=totals["i05_receipt"],
         typed_state_counts=dict(sorted(states.items())),
+        declared_domain_verified=runtime_catalog is not None,
         per_unit_full_preimage_sha256=dict(sorted(per_unit.items())),
         full_output_sha256=summary.hexdigest(),
     )
