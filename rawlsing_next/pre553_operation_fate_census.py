@@ -23,7 +23,9 @@ from rawlsing_next.pre553_universal_workload import (
 )
 from rawlsing_next.universal_grammar.types import (
     ELIGIBILITY_STATES, ScientificFrontier, SourceInventory, GrammarPolicy,
+    PROHIBITED, INAPPLICABLE_PROVED, UNKNOWN,
 )
+from rawlsing_next.universal_grammar.enumerate import inventory_ledger
 
 SCOPE = "TEST_ONLY_SOURCEFREE"
 SCHEMA = "PYAT_R3_S1C_FROZEN_CENSUS@1.0.0"
@@ -216,6 +218,55 @@ def verify_frozen_inputs(
     }
     if dict(frontier.source_identity) != frozen_source:
         raise CensusRefusal("SOURCE_IDENTITY_MISMATCH")
+    # Agent A counterattack on B: matching two copies of a negative axis is
+    # necessary but not sufficient.  Both may be coherently forged.  Compare
+    # the occurrence ledger to the *independently supplied* source inventory
+    # and extant grammar policy using the incumbent inventory_ledger owner.
+    # This does not enumerate or issue any new scientific operations.
+    expected_inventory_rows = tuple(
+        entry.material() for entry in inventory_ledger(inventory, policy)
+    )
+    actual_inventory_rows = tuple(
+        entry.material() for entry in frontier.inventory_ledger
+    )
+    if semantic_hash(list(actual_inventory_rows)) != semantic_hash(
+        list(expected_inventory_rows)
+    ):
+        raise CensusRefusal("INVENTORY_LEDGER_INVENTORY_MISMATCH", {
+            "actual": len(actual_inventory_rows),
+            "from_source_inventory": len(expected_inventory_rows),
+        })
+
+    # Existing R01 enumeration declares exact per-operation negative records.
+    # Preserve separately declared *non-operation* source-hold records without
+    # promoting them: only rows that assert an op_id can be cross-checked to
+    # operations.  A jointly truncated census+frontier must not hide a real
+    # UNKNOWN, PROHIBITED or INAPPLICABLE operation behind matching hashes.
+    expected_unknown_rows = tuple(
+        op.material() for op in frontier.operations
+        if op.disposition == UNKNOWN
+    )
+    expected_excluded_rows = tuple(
+        {"op_id": op.op_id, "class": op.claim_class,
+         "disposition": op.disposition, "reasons": list(op.reasons)}
+        for op in frontier.operations
+        if op.disposition in {PROHIBITED, INAPPLICABLE_PROVED}
+    )
+    for axis, rows, expected in (
+        ("UNKNOWN", frontier.unknown, expected_unknown_rows),
+        ("EXCLUDED", frontier.excluded, expected_excluded_rows),
+    ):
+        bound = []
+        for row in rows:
+            if not isinstance(row, Mapping):
+                raise CensusRefusal(axis + "_NEGATIVE_RECORD_UNTYPED")
+            if "op_id" in row:
+                bound.append(row)
+        if semantic_hash(bound) != semantic_hash(list(expected)):
+            raise CensusRefusal(axis + "_OPERATION_NEGATIVE_LOSS", {
+                "declared_operation_rows": len(bound),
+                "current_operation_fates": len(expected),
+            })
     inventory_keys = set(inventory.by_key())
     counts: Counter[str] = Counter()
     for op_id, op in operations.items():
