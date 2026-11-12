@@ -134,15 +134,21 @@ def _insert_object(db: sqlite3.Connection, obj: object, *, family: str) -> None:
 def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
     # Closure identity is the old genuinely validated I02's independent
     # ReplayManifest enumeration, NOT the builder's self-invented row count.
-    extras = [x[0] for x in db.execute("""
-        SELECT c.ref FROM closure c LEFT JOIN objects o ON c.ref=o.ref
-        WHERE o.ref IS NULL ORDER BY c.ref
-    """)]
+    # Do not materialize an unbounded list of hostile missing closure refs.
+    # COUNT/EXISTS remain bounded in Python even for a malformed giant index.
+    extras_count = db.execute("""
+        SELECT COUNT(*) FROM closure c LEFT JOIN objects o ON c.ref=o.ref
+        WHERE o.ref IS NULL
+    """).fetchone()[0]
+    has_source = db.execute("""
+        SELECT 1 FROM closure c LEFT JOIN objects o ON c.ref=o.ref
+        WHERE c.ref=? AND o.ref IS NULL LIMIT 1
+    """, (source,)).fetchone() is not None
     absent = db.execute("""
         SELECT o.ref FROM objects o LEFT JOIN closure c ON o.ref=c.ref
         WHERE c.ref IS NULL LIMIT 1
     """).fetchone()
-    if absent or len(extras) != 2 or source not in extras:
+    if absent or extras_count != 2 or not has_source:
         _fail("M01-M18 closure disagrees with witnessed whole I02 corpus")
     # Two exceptional v1 closure refs are the source artifact and the
     # source-snapshot retention ref, neither a public/internal C11 object.
@@ -306,10 +312,16 @@ def build_sourcefree_external_i02(
         db = None
         with open(staged, "rb") as f:
             os.fsync(f.fileno())
-        # No seal or manifest publication before all global checks succeed.
-        if target.exists() or target.is_symlink():
-            _fail("destination lease/collision changed during construction")
-        os.replace(staged, target)
+        # Atomic NO-REPLACE publication: check-then-os.replace lost a
+        # competing builder's complete artifact if target appeared between
+        # existence check and rename. Stage is on the same filesystem.
+        try:
+            os.link(staged, target)
+        except FileExistsError as exc:
+            raise ExternalI02IntegrityError(
+                "destination collision: another writer already published this path"
+            ) from exc
+        os.unlink(staged)
         dirfd = os.open(target.parent, os.O_RDONLY)
         try:
             os.fsync(dirfd)
@@ -323,6 +335,95 @@ def build_sourcefree_external_i02(
             db.close()
         if os.path.exists(staged):
             os.unlink(staged)
+
+
+
+class _SnapshotCursor:
+    """Restricted cursor: never expose SQLite's connection/transaction handle.
+
+    This is an API trust boundary, not an OS-enforced sandbox against code
+    that deliberately reflects into private Python attributes.
+    """
+    __slots__ = ("_cursor", "_owner")
+
+    def __init__(self, cursor: sqlite3.Cursor, owner: "VerifiedExternalI02") -> None:
+        object.__setattr__(self, "_cursor", cursor)
+        object.__setattr__(self, "_owner", owner)
+
+    def fetchone(self):
+        self._owner._ensure_open()
+        try:
+            return self._cursor.fetchone()
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 snapshot cursor became invalid"
+            ) from exc
+
+    def fetchall(self):
+        # Only for explicit small client queries: native processing uses
+        # streaming iteration to avoid materializing large ref sets.
+        self._owner._ensure_open()
+        try:
+            return self._cursor.fetchall()
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 snapshot cursor became invalid"
+            ) from exc
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        row = self.fetchone()
+        if row is None:
+            raise StopIteration
+        return row
+
+
+class _SnapshotReadView:
+    """Public read-only SQL view; verified BEGIN transaction is never exported.
+
+    The old public .db was a raw sqlite3.Connection, whose rollback/commit
+    ended the authenticated read snapshot despite B's immutable assignment
+    guard. Native I03 then read fresh attacker-edited data under old roots.
+    SELECT-only cursors also refuse after the certificate is closed.
+    """
+    __slots__ = ("_connection", "_owner")
+
+    def __init__(self, connection: sqlite3.Connection,
+                 owner: "VerifiedExternalI02") -> None:
+        object.__setattr__(self, "_connection", connection)
+        object.__setattr__(self, "_owner", owner)
+
+    def __setattr__(self, name, value):
+        _fail("immutable verified read-only database view")
+
+    def execute(self, statement: str, parameters: tuple = ()):
+        self._owner._ensure_open()
+        if (not isinstance(statement, str)
+                or re.match(r"^\s*SELECT\b", statement, re.IGNORECASE) is None):
+            _fail("verified external I02 read-only transaction control is forbidden")
+        try:
+            return _SnapshotCursor(
+                self._connection.execute(statement, parameters), self._owner,
+            )
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 snapshot query failed"
+            ) from exc
+
+    def rollback(self):
+        _fail("verified external I02 read-only transaction control is forbidden")
+
+    def commit(self):
+        _fail("verified external I02 read-only transaction control is forbidden")
+
+    def close(self):
+        _fail("verified external I02 read-only transaction control is forbidden")
+
+    def _trusted_close(self):
+        # Only VerifiedExternalI02.close() calls this private lifecycle owner.
+        self._connection.close()
 
 
 class VerifiedExternalI02:
@@ -352,13 +453,15 @@ class VerifiedExternalI02:
             _fail("orphan, symlink, missing or non-final certificate")
         if _digest_file(self.path) != roots.physical:
             _fail("cold physical bytes differ from held external root")
-        self.db = sqlite3.connect(self.path.as_uri() + "?mode=ro", uri=True)
-        self.db.execute("PRAGMA query_only=ON")
-        self.db.execute("BEGIN")
+        # Validate the whole file on a private, pinned SQLite read transaction.
+        # Do not expose the raw connection: rollback()/commit() would unpin it.
+        raw_db = sqlite3.connect(self.path.as_uri() + "?mode=ro", uri=True)
+        raw_db.execute("PRAGMA query_only=ON")
+        raw_db.execute("BEGIN")
         try:
-            if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+            if raw_db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
                 _fail("cold certificate physical integrity error")
-            h = dict(self.db.execute("SELECT name,value FROM header"))
+            h = dict(raw_db.execute("SELECT name,value FROM header"))
             if h.get("schema") != SCHEMA or any(
                 h.get(name) != getattr(roots, name)
                 for name in ("release", "source", "replay", "universe")
@@ -367,13 +470,16 @@ class VerifiedExternalI02:
             if set(__import__("json").loads(h["coverage"])) != set(M01_M18):
                 _fail("M01-M18 missing in certified header")
             # Revalidate semantic closure and keyspace before allowing EMPTY.
-            _check_relations_readonly(self.db, roots.source)
-            if _logical_root(self.db) != roots.logical:
+            _check_relations_readonly(raw_db, roots.source)
+            if _logical_root(raw_db) != roots.logical:
                 _fail("logical corpus/selector map differs from external root")
         except Exception:
-            self.db.close()
+            raw_db.close()
             raise
         self.roots = roots
+        # Only SELECT-only cursors are now available to ordinary consumers;
+        # the verified transaction is never independently mutable via .db.
+        self.db = _SnapshotReadView(raw_db, self)
         self._closed = False
         self._sealed = True
 
@@ -382,8 +488,10 @@ class VerifiedExternalI02:
             _fail("closed external I02 certificate cannot authorize native selection")
 
     def close(self) -> None:
+        if self._closed:
+            return
         object.__setattr__(self, "_closed", True)
-        self.db.close()
+        self.db._trusted_close()
 
     def __enter__(self) -> "VerifiedExternalI02":
         return self
@@ -440,11 +548,15 @@ class VerifiedExternalI02:
 def _check_relations_readonly(db: sqlite3.Connection, source: str) -> None:
     # This read-only check uses no self-generated selection postings. A forged
     # posting can be rehashed locally but cannot reproduce held logical root.
-    extras = [x[0] for x in db.execute("""
-        SELECT c.ref FROM closure c LEFT JOIN objects o ON c.ref=o.ref
-        WHERE o.ref IS NULL ORDER BY c.ref
-    """)]
-    if len(extras) != 2 or source not in extras or db.execute("""
+    extras_count = db.execute("""
+        SELECT COUNT(*) FROM closure c LEFT JOIN objects o ON c.ref=o.ref
+        WHERE o.ref IS NULL
+    """).fetchone()[0]
+    has_source = db.execute("""
+        SELECT 1 FROM closure c LEFT JOIN objects o ON c.ref=o.ref
+        WHERE c.ref=? AND o.ref IS NULL LIMIT 1
+    """, (source,)).fetchone() is not None
+    if extras_count != 2 or not has_source or db.execute("""
         SELECT 1 FROM objects o LEFT JOIN closure c ON o.ref=c.ref
         WHERE c.ref IS NULL LIMIT 1
     """).fetchone():
