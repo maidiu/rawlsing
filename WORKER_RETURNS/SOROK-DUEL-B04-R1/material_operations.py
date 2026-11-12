@@ -19,10 +19,11 @@ from developmental_recursion.p2_owner import (
     branch_is_ancestor, material_fact_source, write_material_fact,
 )
 from developmental_recursion.parent_activity import (
-    PARENT_GRADE, PARENT_MATERIAL_KIND, PARENT_MATERIAL_SCHEMA, _StoreWrite,
-    _material_content, _material_document, _parent_write_lock, _read_material,
+    PARENT_GRADE, PARENT_MATERIAL_SCHEMA, _StoreWrite, _material_content,
+    _material_document, _parent_write_lock, _read_material,
     parent_feasible_actions, read_parent_material,
 )
+from developmental_recursion.supporting_actor import read_supporting_actor
 
 try:
     import house as p6_house
@@ -599,31 +600,6 @@ def _purchase_drum_kit(session, parent_id: str, *, operation_id: str,
         "actual_reader": "material_operations.read_owned_objects",
         "read_boundary": detached(READ_BOUNDARY),
     }
-    material_after = {
-        key: after_content[key] for key in (
-            "schema", "grade", "actor_id", "source_ref", "employment_status",
-            "wage_units_per_hour", "debt_units", "care_hours_due",
-            "cash_units", "free_hours", "currency_unit",
-        )
-    }
-    bridge = {
-        "schema": PARENT_MATERIAL_SCHEMA,
-        "grade": PARENT_GRADE,
-        "root": after_parent["root"],
-        "branch": after_parent["branch"],
-        "epoch": after_parent["epoch"],
-        "actor_id": parent_id,
-        "alias": alias,
-        "source": after_parent["source"],
-        "source_ref": after_parent["source_ref"],
-        "material_source": after_parent["source"],
-        "material_before_source": material["source"],
-        "material_after_source": after_parent["source"],
-        "material": material_after,
-        "operation_id": operation_id,
-        "operation_kind": "PURCHASE_MATERIAL_STATE",
-        "purchase_source": purchase_source,
-    }
     store = session.product.store
     world = session.world()
     with _StoreWrite(store):
@@ -636,14 +612,6 @@ def _purchase_drum_kit(session, parent_id: str, *, operation_id: str,
                 "operation_id": operation_id, "actor_id": parent_id,
                 "alias": alias, "status": "ADMITTED", "receipt": receipt,
             },
-        )
-        # C02's ordered parent-material history accepts an antecedent material
-        # state record.  This bridge records the actual post-purchase material
-        # source, not a WORK/DEBT/CIRCUMSTANCE activity.  The P2_PARENT_PURCHASE
-        # receipt above remains the operation evidence.
-        store.append_episode(
-            session.branch_id, actor_id=alias, kind=PARENT_MATERIAL_KIND,
-            clock=world.clock, body=bridge,
         )
         world.actor_state[alias]["material"] = after_parent
         world.resources[MARKET_SLOT] = after_market
@@ -669,8 +637,8 @@ def read_purchase(session, parent_id: str, operation_id: str, *,
                   as_actor: str | None) -> dict:
     if as_actor != parent_id:
         raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
-    material = _read_material(session, parent_id=parent_id, as_actor=parent_id)
-    alias = material["alias"]
+    registration = read_supporting_actor(session, parent_id)
+    alias = registration["alias"]
     episodes = _purchase_episodes(session, alias, operation_id)
     if len(episodes) != 1:
         raise RecursionRefusal("PURCHASE_NOT_FOUND")
@@ -690,13 +658,29 @@ def read_purchase(session, parent_id: str, operation_id: str, *,
                 or acquisition.get("unit_price") != receipt.get("unit_price")
                 or acquisition.get("currency_unit") != receipt.get("currency_unit")):
             raise RecursionRefusal("PURCHASE_READ_STALE")
+    elif acquisition is not None:
+        raise RecursionRefusal("PURCHASE_READ_STALE")
+    material = None
+    parent_status = "READ"
+    try:
+        material = _read_material(session, parent_id=parent_id, as_actor=parent_id)
+    except RecursionRefusal as exc:
+        parent_status = "REFUSED:" + str(exc)
+    feasible = None
+    feasible_status = "READ"
+    try:
+        feasible = parent_feasible_actions(
+            session, parent_id, as_actor=parent_id)
+    except RecursionRefusal as exc:
+        feasible_status = "REFUSED:" + str(exc)
+    if material is None:
+        historical = None
+    elif receipt.get("status") == "ADMITTED":
         historical = (
             material["source"] != receipt.get("parent_material_source_after")
             or market["source"] != receipt.get("market_source_after")
             or owned["source"] != receipt.get("owned_source_after"))
     else:
-        if acquisition is not None:
-            raise RecursionRefusal("PURCHASE_READ_STALE")
         historical = (
             material["source"] != receipt.get("parent_material_source_before")
             or market["source"] != receipt.get("market_source_before")
@@ -708,12 +692,18 @@ def read_purchase(session, parent_id: str, operation_id: str, *,
         "operation_id": operation_id,
         "historical": historical,
         "receipt": receipt,
-        "parent_material_source": material["source"],
+        "parent_material": material,
+        "parent_material_status": parent_status,
+        "parent_feasible_actions": feasible,
+        "parent_feasible_actions_status": feasible_status,
+        "parent_material_source": material["source"] if material else None,
         "market_source": market["source"],
         "owned_source": owned["source"],
         "owned_totals": owned["totals"],
-        "parent_feasible_actions": parent_feasible_actions(
-            session, parent_id, as_actor=parent_id),
+        "purchase_is_typed": True,
+        "purchase_history_hook": (
+            "C02_PARENT_HISTORY_KIND_PENDING" if parent_status != "READ"
+            else "C02_PARENT_HISTORY_READ"),
         "read_boundary": detached(READ_BOUNDARY),
     }
 

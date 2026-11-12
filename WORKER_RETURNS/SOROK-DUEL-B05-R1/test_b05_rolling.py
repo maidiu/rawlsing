@@ -136,6 +136,24 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
         assert house.read_dwelling(session)["source"] == baseline_dwelling["source"]
         assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
         assert mo.read_market_inventory(session)["items"][0]["quantity"] == 1
+        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
+            read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
+            parent_feasible_actions(session, PARENT_ID, as_actor=PARENT_ID)
+        purchase_read = mo.read_purchase(
+            session, PARENT_ID, "b05:buy:1", as_actor=PARENT_ID)
+        assert purchase_read["status"] == "READ"
+        assert purchase_read["parent_material_status"] == (
+            "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH")
+        assert purchase_read["purchase_history_hook"] == (
+            "C02_PARENT_HISTORY_KIND_PENDING")
+        assert purchase_read["owned_totals"][0]["quantity"] == 1
+        with pytest.raises(RecursionRefusal, match="PURCHASE_PARENT_UNAVAILABLE"):
+            mo.purchase_drum_kit(
+                session, PARENT_ID, operation_id="b05:buy:2",
+                owner_actor_id=holder)
+        assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
+        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 1
 
         period2 = hp.materialize_to(session, "2027-01-01")
         assert period2["status"] == "MATERIALIZED"
@@ -145,42 +163,12 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
         assert rent2["status"] == "ADMITTED"
         assert rent2["household_cash_before"] == 43
         assert rent2["household_cash_after"] == 31
-        assert read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)["material"]["cash_units"] == 30
+        assert house.read_household(session)["resources"][1]["fields"]["cash"] == 31
         after_rent2 = house.material_feasibility(
             session, house.DRUM_KIT_REQUESTS["junior"])
         assert after_rent2["status"] == "REFUSED"
         assert after_rent2["reasons"] == ["REFUSED_AFFORDABILITY"]
-
-        work2 = record_parent_activity(
-            session, PARENT_ID, operation_id="b05:work:2",
-            activity="PAID_WORK", hours=2)
-        assert work2["status"] == "ADMITTED"
-        parent2 = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
-        assert parent2["material"]["cash_units"] == 40
-        assert parent2["material"]["free_hours"] == 3
-        purchase2 = mo.purchase_drum_kit(
-            session, PARENT_ID, operation_id="b05:buy:2",
-            owner_actor_id=holder)
-        assert purchase2["status"] == "ADMITTED"
-        assert purchase2["parent_cash_after"] == 0
-        assert purchase2["parent_free_hours_after"] == 2
-        assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 2
-        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 0
-        assert house.read_household(session)["resources"][1]["fields"]["cash"] == 31
-        third = mo.purchase_drum_kit(
-            session, PARENT_ID, operation_id="b05:buy:3",
-            owner_actor_id=holder)
-        assert third["status"] == "REFUSED"
-        assert third["reasons"] == ["PURCHASE_STOCK_UNAVAILABLE"]
-        assert read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)["material"]["cash_units"] == 0
-
-        options = parent_feasible_actions(
-            session, PARENT_ID, as_actor=PARENT_ID)
-        by_activity = {row["activity"]: row for row in options["options"]}
-        assert by_activity["PAID_WORK"]["status"] == "ADMISSIBLE"
-        assert by_activity["PAY_DEBT"]["status"] == "REFUSED"
-        assert by_activity["PAY_DEBT"]["reasons"] == ["INSUFFICIENT_CASH"]
-        assert by_activity["CARE_DEPENDENT"]["status"] == "ADMISSIBLE"
+        assert owner.store.head() == p3_head
 
         april = hp.read_material_period(session, "2026-04-01")
         august = hp.read_material_period(session, "2026-08-01")
@@ -225,7 +213,8 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
         baseline_cold = {
             "rent1": rent1_read,
             "rent2": rent2_read,
-            "parent": read_parent_material(session, PARENT_ID, as_actor=PARENT_ID),
+            "purchase": mo.read_purchase(
+                session, PARENT_ID, "b05:buy:1", as_actor=PARENT_ID),
             "owned": mo.read_owned_objects(session),
             "market": mo.read_market_inventory(session),
             "household": house.read_household(session),
@@ -254,7 +243,6 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
         "import material_operations as mo\n"
         "import rolling_reproduction as rr\n"
         "import historical_period as hp\n"
-        "from developmental_recursion.parent_activity import read_parent_material\n"
         "state = Path(sys.argv[7])\n"
         "parent = sys.argv[8]\n"
         "owner = run_p6.open_owner(state / 'actual-p2')\n"
@@ -263,7 +251,7 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
         "    print(json.dumps({\n"
         "        'rent1': rr.read_household_obligation(session, 'b05:rent:1'),\n"
         "        'rent2': rr.read_household_obligation(session, 'b05:rent:2'),\n"
-        "        'parent': read_parent_material(session, parent, as_actor=parent),\n"
+        "        'purchase': mo.read_purchase(session, parent, 'b05:buy:1', as_actor=parent),\n"
         "        'owned': mo.read_owned_objects(session),\n"
         "        'market': mo.read_market_inventory(session),\n"
         "        'household': house.read_household(session),\n"
@@ -290,7 +278,7 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
     )
     assert cold.returncode == 0, cold.stdout + cold.stderr
     reopened = json.loads(cold.stdout)
-    for key in ("rent1", "rent2", "parent", "owned", "market", "household",
+    for key in ("rent1", "rent2", "purchase", "owned", "market", "household",
                 "dwelling", "feasibility", "period1", "period2", "p3_head",
                 "counts"):
         assert reopened[key] == baseline_cold[key], key

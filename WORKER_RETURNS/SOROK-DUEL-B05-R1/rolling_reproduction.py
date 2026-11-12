@@ -11,7 +11,9 @@ import fcntl
 from pathlib import Path
 from typing import Any, Mapping
 
-from developmental_recursion.contracts import RecursionRefusal, detached, digest
+from developmental_recursion.contracts import (
+    RealizedEvent, RecursionRefusal, detached, digest,
+)
 from developmental_recursion.parent_activity import _StoreWrite
 
 try:
@@ -51,6 +53,54 @@ def _rent_lock(session):
             yield
         finally:
             fcntl.flock(handle, fcntl.LOCK_UN)
+
+
+class PeriodInterleaveOwner:
+    """Thin orchestration adapter over the real P3 owner and B02 period advance.
+
+    The BatchEngine still owns batching, reservation and replay.  This adapter
+    only advances B02 material periods after selected real P3 events and reports
+    the post-materialization owner snapshot as the event's after state.  It is
+    not a new P3 owner, scheduler or psychology rule.
+    """
+
+    def __init__(self, owner, session, after_event_dates):
+        self.owner = owner
+        self.session = session
+        self.after_event_dates = list(after_event_dates)
+        self._index = 0
+        self.materializations = []
+
+    def snapshot(self):
+        return self.owner.snapshot()
+
+    def validate_proposal(self, proposal):
+        return self.owner.validate_proposal(proposal)
+
+    def realize(self, operation_id, proposal, expected):
+        result = self.owner.realize(operation_id, proposal, expected)
+        target = None
+        if self._index < len(self.after_event_dates):
+            target = self.after_event_dates[self._index]
+            self._index += 1
+            advance = hp.materialize_to(self.session, target)
+            self.materializations.append({
+                "target_date": target,
+                "status": advance["status"],
+                "produced_states": advance["produced_states"],
+                "recovered_receipts": advance["recovered_receipts"],
+                "clock": advance["clock"],
+            })
+        after = self.owner.snapshot()
+        objective = detached(result.objective)
+        if target is not None:
+            objective["b02_materialized_after_event"] = detached(
+                self.materializations[-1])
+        return RealizedEvent(
+            result.operation_id, result.proposal_hash, result.before, after,
+            result.status, objective, result.accessible, result.consequences,
+            result.readset, result.receipt_ref,
+        )
 
 
 def _text(value: Any) -> bool:
@@ -292,5 +342,6 @@ def read_household_obligation(session, operation_id: str) -> dict:
 
 __all__ = [
     "RENT_KIND", "RENT_RECEIPT_SCHEMA", "HOUSEHOLD_OBLIGATION_SCHEMA",
-    "GRADE", "apply_household_rent", "read_household_obligation",
+    "GRADE", "PeriodInterleaveOwner", "apply_household_rent",
+    "read_household_obligation",
 ]
