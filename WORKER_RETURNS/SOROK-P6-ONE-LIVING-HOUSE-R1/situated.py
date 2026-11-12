@@ -133,7 +133,7 @@ def interaction_quiet(session, world, house, cues):
 
 
 
-def current_p3_actor_access(session, interval, world, house, packet, *, source_receipt=None):
+def current_p3_actor_access(session, interval, world, house, packet, *, source_receipt=None, evidence_out=None):
     """Proof of current actor access for the optional TEST_ONLY P3 reader.
 
     A previously perceived MOVE or speech can inform situated interpretation,
@@ -149,6 +149,20 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
     start, end = interval["start"], interval["end"]
     if type(start) is not int or type(end) is not int or start > end:
         raise ValueError("P6_P3_ACCESS_INTERVAL_INVALID")
+    if evidence_out is not None and type(evidence_out) is not list:
+        raise ValueError("P6_P3_ACCESS_EVIDENCE_SINK_INVALID")
+
+    def admitted(event, basis):
+        # World provenance is separate from the P3 record readset.
+        # It does NOT claim that a native law matches this cue to this
+        # psychological mediator, only that this world evidence was admitted.
+        if evidence_out is not None:
+            evidence_out.append({
+                "event_id": event["event_id"], "event_hash": event["hash"],
+                "clock": event["clock"], "basis": basis,
+                "grade": "SOURCEFREE_TEST_ONLY",
+            })
+        return True
 
     perceived = {
         (row.get("event_id"), row.get("clock")) for row in
@@ -201,7 +215,7 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
                 }
                 for ep in session.episodes(session.meta["user_actor"])
             ):
-                return True
+                return admitted(event, "P6_OUTWARD_CURRENT_OPERATION_DERIVED")
 
     # For near-term contextual lists, only new observations strictly after
     # this interval began may qualify. Same-clock past context is not a new
@@ -212,14 +226,14 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
         if (event is not None and event["clock"] > start
                 and (event["event_id"], event["clock"]) in perceived
                 and event.get("actor_id") == "A"):
-            return True
+            return admitted(event, "P6_ACTOR_PERCEIVED_CURRENT_SELF_ACTION")
     for row in packet["recent_speech"]:
         event = world_event(row)
         if (event is not None and event["clock"] > start
                 and (event["event_id"], event["clock"]) in perceived
                 and event.get("kind") == "SPEECH"
                 and event.get("actor_id") == row.get("speaker")):
-            return True
+            return admitted(event, "P6_ACTOR_PERCEIVED_CURRENT_SPEECH")
     return False
 
 
@@ -294,7 +308,15 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
     if psyche_owner is not None:
         if not isinstance(psyche_scope, dict):
             raise ValueError("P6_P3_SCOPE_REQUIRED")
-        packet["sourcefree_p3"] = qualified_p3_read(
+        # A caller does not get to manufacture observation through a list
+        # of near-term context. Bind the access decision to an exact event
+        # receipt, and keep world hashes outside the P3 record readset.
+        access_evidence = []
+        observed = current_p3_actor_access(
+            session, interval, world, house, packet,
+            source_receipt=receipt, evidence_out=access_evidence,
+        )
+        p3_read = qualified_p3_read(
             psyche_owner, session,
             project=psyche_scope.get("project"),
             counterpart=psyche_scope.get("counterpart"),
@@ -302,13 +324,12 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
             interlocutor_role=psyche_scope.get("interlocutor_role"),
             relation_ref=psyche_scope.get("relation_ref"),
             obligation_refs=psyche_scope.get("obligation_refs", ()),
-            # Qualified existing actor-local world evidence, not guessed
-            # interiority or a portal-user/persona override.
-            actor_observed=current_p3_actor_access(
-                session, interval, world, house, packet,
-                source_receipt=receipt,
-            ),
+            actor_observed=observed,
         )
+        p3_read["actor_access_evidence"] = access_evidence
+        p3_read["world_readset"] = [row["event_hash"] for row in access_evidence]
+        p3_read["stimulus_to_mediator_relevance"] = "UNISSUED_NATIVE_RULE"
+        packet["sourcefree_p3"] = p3_read
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
               "packet_hash": digest(packet)}
     try:
