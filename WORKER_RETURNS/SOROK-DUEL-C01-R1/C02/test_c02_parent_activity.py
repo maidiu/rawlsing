@@ -118,7 +118,8 @@ def test_parent_antecedent_and_activities_change_feasible_options(tmp_path):
         assert debt["period_qualification"] == PARENT_B02_HOLD
         debt_event = session.event(debt["event_id"])
         assert debt_event["actor_id"] == PARENT_ALIAS
-        assert debt_event["kind"] == "OFFSCREEN_REPAIR"
+        assert debt_event["kind"] == "MATERIAL_ACTIVITY"
+        assert debt_event["owner_receipt"]["act"] == "MATERIAL_ACTIVITY"
         assert read_actor_access(
             session, focal, debt["event_id"])["status"] == "NOT_PERCEIVED"
         assert SECRET not in json.dumps(debt_event)
@@ -168,6 +169,7 @@ def test_parent_antecedent_and_activities_change_feasible_options(tmp_path):
             "care_hours_due": 0,
             "cash_units": 46,
             "free_hours": 0,
+            "currency_unit": "parent_sourcefree_currency_unit",
         }
         history = read_parent_history(session, PARENT_ID, as_actor=PARENT_ID)
         assert [row["operation_id"] for row in history["history"]

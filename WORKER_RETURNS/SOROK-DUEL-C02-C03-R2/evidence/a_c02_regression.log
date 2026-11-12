@@ -1,0 +1,85 @@
+....F...F                                                                [100%]
+=================================== FAILURES ===================================
+___________ test_normal_live_root_parent_b02_view_and_user_turn_cold ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1314/test_normal_live_root_parent_b0')
+
+    def test_normal_live_root_parent_b02_view_and_user_turn_cold(tmp_path):
+        state = tmp_path / "live"
+        new_state(state)
+        owner_before = run_p6.open_owner(state / "actual-p2")
+        try:
+            psychology_head = owner_before.store.head()
+        finally:
+            owner_before.close()
+        period = background(state, "period-establish", {})
+        assert period["recorded_activity"] is True
+        assert period["result"]["periods"][0]["period_id"] == "period:2026-h1"
+        assert ledger(state)["pending"] is None
+    
+        registered = background(state, "parent-register", {
+            "parent_id": PARENT_ID, "alias": PARENT_ALIAS,
+            "actor_id": PARENT_ID, "role": "parent",
+            "private_state": {"motive": SECRET},
+        })
+        assert registered["result"]["status"] == "REGISTERED"
+        registered_view = run_p6.experience(state, Namespace(command="view"))
+        assert registered_view["room"] == "workshop"
+        assert "status" not in registered_view or (
+            registered_view.get("status") != "REFUSED")
+        fixture = parent_material_fixture(actor_id=PARENT_ID, **BASELINE)
+        established = background(state, "parent-establish", {
+            "parent_id": PARENT_ID, "fixture": fixture,
+        })
+        assert established["result"]["status"] == "REGISTERED"
+        assert established["result"]["period_qualification"] == PARENT_B02_QUALIFIED
+        assert established["result"]["period_context"]["period"]["period_id"] == (
+            "period:2026-h1")
+        assert established["result"]["period_context"][
+            "b02_employment_applied_to_parent"] is False
+>       assert established["result"]["period_context"]["full_dated_proof"] == (
+            PARENT_B02_FULL_PROOF_HOLD)
+E       AssertionError: assert 'B02_INCREMEN...API_QUALIFIED' == 'B02_FULL_DAT...D_PLAN_ABSENT'
+E         
+E         - B02_FULL_DATED_PROOF_HELD_PLAN_ABSENT
+E         + B02_INCREMENTAL_PERIOD_API_QUALIFIED
+
+WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py:103: AssertionError
+_________ test_read_only_period_context_and_no_false_b02_absent_claim __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1314/test_read_only_period_context_0')
+
+    def test_read_only_period_context_and_no_false_b02_absent_claim(tmp_path):
+        state = tmp_path / "period"
+        new_state(state)
+        background(state, "period-establish", {})
+        background(state, "parent-register", {
+            "parent_id": PARENT_ID, "alias": PARENT_ALIAS,
+            "actor_id": PARENT_ID, "role": "parent", "private_state": {},
+        })
+        background(state, "parent-establish", {
+            "parent_id": PARENT_ID,
+            "fixture": parent_material_fixture(actor_id=PARENT_ID, **BASELINE),
+        })
+        background(state, "parent-activity", {
+            "parent_id": PARENT_ID, "operation_id": "period:activity:1",
+            "activity": "PAID_WORK", "hours": 2,
+        })
+        fanin = open_read(state)
+        try:
+            material = read_parent_material(
+                fanin.session, PARENT_ID, as_actor=PARENT_ID)
+            assert material["historical_ingress"]["status"] == PARENT_B02_QUALIFIED
+            assert material["historical_ingress"]["dates_claimed"] is True
+>           assert material["historical_ingress"]["full_dated_proof"] == (
+                PARENT_B02_FULL_PROOF_HOLD)
+E               AssertionError: assert 'B02_INCREMEN...API_QUALIFIED' == 'B02_FULL_DAT...D_PLAN_ABSENT'
+E                 
+E                 - B02_FULL_DATED_PROOF_HELD_PLAN_ABSENT
+E                 + B02_INCREMENTAL_PERIOD_API_QUALIFIED
+
+WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py:334: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py::test_normal_live_root_parent_b02_view_and_user_turn_cold
+FAILED WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py::test_read_only_period_context_and_no_false_b02_absent_claim
+2 failed, 7 passed in 88.92s (0:01:28)

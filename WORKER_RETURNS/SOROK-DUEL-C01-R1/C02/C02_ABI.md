@@ -1,3 +1,5 @@
+> **Superseded status (A relay R2, 2026-11-12):** the actual B02 `historical_period.py` now exists and its committed current-period plan is read by parent material/activity. The `B02 calendar/period prerequisite HELD` and `HELD_B02_CALENDAR_ABSENT` text below is historical for this earlier cut; see `WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/` for current-period ingress and the remaining full two-period hold.
+
 # C02 current-clock parent antecedent and independent activity ABI
 
 **Status:** sourcefree `SOURCEFREE_S2_ONLY`; partial C02 construction. B02 dated calendar/history qualification is **HELD**.
