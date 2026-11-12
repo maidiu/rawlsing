@@ -1,0 +1,152 @@
+{
+  "schema": "PYAT_R3_PAIR2_S2B_AGENT_A_R2_ADVERSARIAL_RECEIPT@1",
+  "role": "AGENT_A_RECIPROCAL_COUNTERATTACK",
+  "correct_commission": {
+    "packet": "S2-B",
+    "original_obligation": "P2-02",
+    "issue": "https://github.com/maidiu/rawlsing/issues/919",
+    "programme": "https://github.com/maidiu/rawlsing/issues/909"
+  },
+  "lineage": {
+    "original_a": {
+      "pr": 952,
+      "head": "d5d6577b557fa8ced2dbb42d190ab254ab983b19"
+    },
+    "frozen_b": {
+      "pr": 954,
+      "head": "f5ee89b8e700ac14cf266c2e3eae4c25f021c349",
+      "source_test_result": {
+        "passed": 88,
+        "failed": 0,
+        "run": "https://github.com/maidiu/rawlsing/actions/runs/43278005794"
+      }
+    },
+    "reciprocal_a": {
+      "pr": 957,
+      "branch": "agent/pyat-pair2-s2b-a-counterattack-20261112-r2",
+      "frozen_source_test_cut": "b2931f9ccce0a5e2cd4b680a80a52c87f88f068f",
+      "docs_after_source_code": true
+    }
+  },
+  "unchanged_protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "s2a_upstream": {
+    "pr": 944,
+    "head": "d3814d08dbe03b8464ac6fff4164765179869213",
+    "g5": "PENDING"
+  },
+  "b_valid_findings_retained": [
+    "fake certificate object with actual roots silently promoted as I03 reader",
+    "forged subclass overriding selectors silently accepted",
+    "closed reader emitted untyped sqlite exception",
+    "postverification verifier.db reassignment changed actual native I03 output"
+  ],
+  "a_new_defects": [
+    {
+      "id": "G3_NEW_01",
+      "finding": "sqlite TEMP selectors table shadows unqualified main selectors after external root check",
+      "evidence": "stdlib sqlite reproducer locally PASS for primitive",
+      "native_test": "test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03",
+      "native_test_status": "COMMITTED_UNRUN"
+    },
+    {
+      "id": "G3_NEW_02",
+      "finding": "public sqlite create_collation('BINARY',...) changes equality including on main-qualified SQL",
+      "evidence": "stdlib sqlite reproducer locally PASS for primitive",
+      "native_test": "test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation",
+      "native_test_status": "COMMITTED_UNRUN"
+    },
+    {
+      "id": "G3_NEW_03",
+      "finding": "close during selector iteration can leak cursor errors",
+      "evidence": "inspection of pre-R2 cursor code",
+      "native_test": "test_s2b_a_counterattack_midstream_close_typed_refusal",
+      "native_test_status": "COMMITTED_UNRUN"
+    },
+    {
+      "id": "G4_NEW_04",
+      "finding": "os.replace publication can silently overwrite competing writer's final name after precheck",
+      "evidence": "local atomic hard-link no-clobber demonstration PASS",
+      "native_test": "test_s2b_a_counterattack_publication_cannot_clobber_rival",
+      "native_test_status": "COMMITTED_UNRUN"
+    },
+    {
+      "id": "SELF_ATTACK_R2",
+      "finding": "initial wrapper implementation allowed backing SQLite connection/cursor reassignment by ordinary Python attribute assignment",
+      "evidence": "code inspection and correction",
+      "native_test": "test_s2b_a_counterattack_nested_sql_handles_are_immutable",
+      "native_test_status": "COMMITTED_UNRUN"
+    }
+  ],
+  "a_additional_regression": "test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty",
+  "repairs": [
+    "All authenticated SQL references qualify schema main rather than default TEMP-precedence name resolution",
+    "Authenticated certificate exposes SELECT-only cursor facade without raw cursor or connection API",
+    "Nested database/cursor backing references reject normal assignment",
+    "Streaming cursor checks certificate closed-state and converts SQLite invalidation to typed C11 error",
+    "Publication uses atomic same-directory os.link no-clobber instead of os.replace overwrite"
+  ],
+  "execution": {
+    "parent_b_native_suite": {
+      "passed": 88,
+      "failed": 0,
+      "run": "https://github.com/maidiu/rawlsing/actions/runs/43278005794",
+      "sha": "f5ee89b8e700ac14cf266c2e3eae4c25f021c349"
+    },
+    "a_r2_new_native_tests": {
+      "passed": null,
+      "failed": null,
+      "status": "NOT_EXECUTED_PLATFORM_RUNNER_FAILURE",
+      "reason": "GitHub Actions fails before job steps, steps=null, with same failures in unrelated repo workflows",
+      "example_run": "https://github.com/maidiu/rawlsing/actions/runs/43281068800"
+    },
+    "local_stdlib_reproducer": {
+      "path": "rawlsing_next/tests/repro_s2b_sqlite_session_attack_stdlib.py",
+      "result": "PASS",
+      "statements": [
+        "SQL_TEMP_SHADOW: RED unqualified=0; GREEN main=2; held disk unchanged",
+        "BINARY_COLLATION: RED main-qualified WHERE gained unrelated event",
+        "ATOMIC_LINK: GREEN existing destination retained without clobber"
+      ],
+      "proof_boundary": "primitive semantics only, not actual native I03"
+    },
+    "material_resource": "INHERITED_B_ONLY_R2_NOT_MEASURED",
+    "integrated_100k_6gib": "NOT_RUN",
+    "scratch_peak": "NOT_MEASURED",
+    "process_tree_peak": "NOT_MEASURED"
+  },
+  "gates": {
+    "G1": {
+      "status": "PARTIAL",
+      "unproved": "independent bounded source-direct M01-M18 I02 validator absent"
+    },
+    "G2": {
+      "status": "PARTIAL",
+      "unproved": "A R2 native I03 tests not yet run; v1 materialized repo still needed"
+    },
+    "G3": {
+      "status": "PARTIAL",
+      "unproved": "local SQL/OS primitives proved; new actual native suite unrun; hostile filesystem boundary unproved"
+    },
+    "G4": {
+      "status": "PARTIAL",
+      "unproved": "legacy closure refs O(all refs), scratch/process-tree, integrated scale"
+    },
+    "G5": {
+      "status": "NOT_RUN",
+      "unproved": "independent nonauthor review only after real executable G1-G4"
+    }
+  },
+  "external_holds": {
+    "original35_native_rights": "NOT_ISSUED",
+    "source_equivalence_p01_p20_t01_t18": "SEPARATE",
+    "current_permission": "NOT_ISSUED",
+    "s2c_physical_c11": "NOT_BUILT",
+    "w03_w04_paused": "PRESERVED",
+    "protected_merges": "NONE"
+  },
+  "disposition": "REVISE_EXACT_DEFECT",
+  "primary_in_scope_repair": "Replace materialized legacy I02 C11LogicalRelease and ReplayManifest.closure_refs with genuine bounded source-direct full M01-M18 I02 validation",
+  "next_execution": "Run full B 88 + A R2 six new native tests and material resource probe at frozen R2 source cut on functioning executor; repair red cases before freezing G5 candidate",
+  "harness": "https://github.com/maidiu/rawlsing/blob/b2931f9ccce0a5e2cd4b680a80a52c87f88f068f/rawlsing_next/tests/repro_s2b_sqlite_session_attack_stdlib.py",
+  "report_path": "WORKER_RETURNS/PYAT_PAIR2_S2B_AGENT_A_R2/00_COUNTERATTACK.md"
+}
