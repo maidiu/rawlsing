@@ -38,5 +38,6 @@ jobs:
           python -m pytest -q -o addopts='' -p no:cacheprovider \
             rawlsing_next/tests/test_c3_agent_a_query_source_downgrade.py \
             rawlsing_next/tests/test_c3_agent_b_source_contradiction.py \
+            rawlsing_next/tests/test_c3_round2_current_origin_consumer.py \
             rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
             rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py
