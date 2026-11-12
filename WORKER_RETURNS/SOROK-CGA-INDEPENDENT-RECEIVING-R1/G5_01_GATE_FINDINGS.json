@@ -1,0 +1,61 @@
+{
+  "schema": "SOROK_CGA_G5_RECEIVING_FINDINGS@1",
+  "commission": "SOROK CG-A independent G5 receiving #977",
+  "status": "REVISE_EXACT_DEFECT",
+  "implementation_pr": 976,
+  "implementation_head": "37c5842e04892421c9ce74a39956c3cdcf57f0f5",
+  "tested_checkout_head": "9d3d8ae419998a3e13d88f58147756149e3dddb5",
+  "merge_base": "37c5842e04892421c9ce74a39956c3cdcf57f0f5",
+  "review_branch_delta": [
+    ".github/workflows/sorok-cga-independent-receiving-r1.yml",
+    "WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_receiver.py"
+  ],
+  "implementation_files_unchanged": true,
+  "commission_text_access": "NOT_ACCESSIBLE_WITH_CURRENT_TOKEN",
+  "execution": {
+    "command": "python3 -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_receiver.py WORKER_RETURNS/SOROK-CGA-AGENT-A-RELAY-R1/test_cue_issuer.py WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py",
+    "exit": 0,
+    "passed": 37,
+    "failed": 0,
+    "seconds": 2330.68,
+    "log": "G5_EVIDENCE/37_tests.log"
+  },
+  "new_hostile_probe": {
+    "path": "WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py",
+    "command": "python3 -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py",
+    "exit": 1,
+    "passed": 0,
+    "failed": 1,
+    "seconds": 12.72,
+    "log": "G5_EVIDENCE/hostile_stale_receipt.log",
+    "finding_id": "CGA-G5-D1-STALE-RECEIPT-REPLAY",
+    "result": "old authentic receipt accepted as current actor access when caller broadens the interval"
+  },
+  "defect": {
+    "id": "CGA-G5-D1-STALE-RECEIPT-REPLAY",
+    "severity": "BLOCKING_FOR_GENERAL_INTEGRATION",
+    "scope": "direct exported helper; normal P6 CLI path not demonstrated bypassed",
+    "source": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py:136 current_p3_actor_access",
+    "cause": "no receipt-to-current-operation binding; no equality between source_receipt.interval and caller interval; outward cue loop allows start <= event.clock",
+    "reproduction": "new -> approach (E1 at clock 248) -> wait 4 (world clock 253) -> current_p3_actor_access(old_receipt, interval={247,253}) returns True",
+    "minimal_repair": "bind receipt to current operation/request identity and/or require exact current interval equality; rerun the 37-test suite and this hostile probe",
+    "patch_applied": false
+  },
+  "gates": {
+    "G1": "PASS_SOURCE_CUSTODY__COMMISSION_TEXT_NOT_ACCESSIBLE",
+    "G2": "PASS",
+    "G3": "FAIL",
+    "G4": "PASS_AFTER_ARTIFACT_COMMIT",
+    "G5": "REVISE"
+  },
+  "integration_readiness": "NOT_READY_FOR_GENERAL_INTEGRATION__SCOPED_P6_CLI_PATH_GREEN__DIRECT_HELPER_REVISE",
+  "evidence_grade": "SOURCEFREE_S2_INSTRUMENTATION_ONLY_CANDIDATE_PENDING_REPAIR_AND_RECEIVING",
+  "g03_full": "NOT_EVALUATED_G02_MISSING",
+  "authority": {
+    "native_science": "HELD",
+    "actor_or_human_rights": "HELD",
+    "protected_merge": "NOT_PERFORMED",
+    "github_actions_used": false,
+    "credentials_exposed": false
+  }
+}
