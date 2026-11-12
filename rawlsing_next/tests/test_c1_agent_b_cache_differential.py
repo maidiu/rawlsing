@@ -240,3 +240,52 @@ def test_c1_one_shot_authority_iterable_produces_same_private_cache_binding(tmp_
         assert created, "expected governed private sourcefree accelerator cache"
         filenames.append(created)
     assert filenames[0] == filenames[1]
+
+
+def test_c1_projection_mutation_during_source_read_must_not_poison_cache_key():
+    """The key must still describe the actual I02-validated result after build.
+
+    Dataclass frozen=True does not freeze user-owned nested Mapping payloads.
+    A source read can legitimately interleave with an owner updating such a
+    payload; returning a new release under the old preimage is a TOCTOU error.
+    This is a sourcefree scheduling witness, not an authority grant.
+    """
+    import pytest
+    from rawlsing_next.pre553_source_backed_c11_facade import SourceBackedC11FacadeError
+
+    fx = _fixture("agent-a-projection-race")
+    base = fx["projection"]
+    slot = base.response_slots[0]
+    mutable_semantic_value = {"response": "before"}
+    changed_rule = replace(slot.values[0], canonical_value=mutable_semantic_value)
+    changed_projection = replace(
+        base,
+        response_slots=(replace(slot, values=(changed_rule, *slot.values[1:])),
+                        *base.response_slots[1:]),
+    )
+    original_key = changed_projection.cache_identity
+    expected_before = build_validated_source_backed_c11_release_from_stream(
+        _stream(fx), changed_projection
+    )
+
+    def mutate_then_read():
+        mutable_semantic_value["response"] = "after"
+        return iter(fx["cells"])
+
+    source = ExactPhysicalCellStream(
+        source_sha256=fx["source_sha"], row_count=3,
+        cell_iter_factory=mutate_then_read,
+    )
+    cache = SourceBackedC11SessionCache()
+    with pytest.raises(SourceBackedC11FacadeError, match="cache input changed during C11 build"):
+        build_source_backed_c11_repository(source, changed_projection, cache=cache)
+    assert changed_projection.cache_identity != original_key
+    assert cache.entry_count == 0
+
+    # The altered governed input is still legitimate after its explicit change,
+    # and it has a different real C11 release from the earlier one.
+    _, expected_after = build_source_backed_c11_repository(
+        _stream(fx), changed_projection, cache=cache
+    )
+    assert expected_after.release_ref != expected_before.release_ref
+    assert cache.entry_count == 1
