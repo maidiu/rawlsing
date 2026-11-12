@@ -1,0 +1,131 @@
+{
+  "schema": "PYAT_R3_S1C_AGENT_A_MACHINE_RECEIPT@1.0.0",
+  "kind": "AUTHOR_SOURCEFREE_RETURN_NOT_INDEPENDENT_ACCEPTANCE",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "issues": [
+    "https://github.com/maidiu/rawlsing/issues/918",
+    "https://github.com/maidiu/rawlsing/issues/909"
+  ],
+  "pr_url": "https://github.com/maidiu/rawlsing/pull/950",
+  "branch": "agent/pyat-r3-s1c-adversarial-a-20261112-r1",
+  "tested_code_test_sha": "9a539024f3d2a23f96e4e4fa50a0e749b0d6b56f",
+  "protected_pre_main_inspected_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "sourcefree_unmerged_integration_base": {
+    "pr": 948,
+    "sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+    "protected_received": false
+  },
+  "exact_tested_blobs": {
+    "rawlsing_next/pre553_operation_fate_census.py": "1f68dc6ff60e68d72cee284cb8232f659100b8f6",
+    "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py": "c1a0c4b757483454b641ddd501558bdf94df5acf",
+    "rawlsing_next/tests/pyat_r3_s1c_rss_runner.py": "63656522497dd6f7760872b692b46bf0e8b7580e",
+    ".github/workflows/pyat-r3-s1c-sourcefree.yml": "901e2e6ce54bf5fda7b016d39524aac32f2862a8"
+  },
+  "executor": "pre553_universal_workload.compile_governed_frontier -> pre553_universal_workload.execute_governed_frontier -> pre553_native_workload_binding.execute_test_only_discovery_workload -> Batch/C11/I05",
+  "authorization_grade": "TEST_ONLY_SOURCEFREE",
+  "tests": {
+    "focused": {
+      "passed": 11,
+      "failed": 0,
+      "run": "https://github.com/maidiu/rawlsing/actions/runs/43275142293/job/131381455682"
+    },
+    "inherited_r03_custody": {
+      "passed": 22,
+      "failed": 0,
+      "run": "https://github.com/maidiu/rawlsing/actions/runs/43275142293/job/131381455682"
+    },
+    "combined_pr948_integration": {
+      "status": "PENDING_AT_AUTHOR_RECEIPT_TIME",
+      "run": "https://github.com/maidiu/rawlsing/actions/runs/43275142354/job/131381457164"
+    }
+  },
+  "measured_fixture": {
+    "scope": "SOURCEFREE_SYNTHETIC_GITHUB_RUNNER_NOT_ORIGINAL35",
+    "declared_operation_count": 309,
+    "compiled_operation_count": 309,
+    "accounted_operation_count": 309,
+    "eligibility_fates": {
+      "ELIGIBLE": 150,
+      "HELD": 159
+    },
+    "deferred_scope_count": 6,
+    "unsupported_runtime_rows": 3,
+    "issued_candidate_receipts": 150,
+    "empirical_fact_count": 330,
+    "source_factory_calls": 1,
+    "bounded_i05_c11_build_count": 1,
+    "source_os_file_opens_within_packet": "NOT_MEASURED; fixture prepared upstream",
+    "reported_run_seconds": 3.229579,
+    "process_tree_peak_sampled_rss_bytes": 260079616,
+    "process_tree_sampling_count": 1412,
+    "focused_test_wall_seconds": 31.5029,
+    "all_pairs_default_expansion": "NOT_INTRODUCED_BY_ADAPTER; 309 DECLARED OPERATIONS USED"
+  },
+  "commands": [
+    "PYTHONPATH=. python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py",
+    "PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py"
+  ],
+  "gate_assessments": {
+    "G1": {
+      "status": "AUTHOR_PASS_DECLARED_SOURCEFREE_FIXTURE",
+      "external_completeness_issuer": "HOLD_EXTERNAL"
+    },
+    "G2": {
+      "status": "AUTHOR_PASS_TEST_ONLY_REAL_I05_CONSUMER",
+      "s1d_normal_resume_not_tested_here": true
+    },
+    "G3": {
+      "status": "AUTHOR_PASS_SCOPED_HOSTILE_NEGATIVES_AND_ANTIJOINS",
+      "original35_authority": "HOLD_EXTERNAL"
+    },
+    "G4": {
+      "status": "AUTHOR_PASS_FIXTURE_MEASUREMENT_ONLY",
+      "original35_large_scale": "NOT_TESTED"
+    },
+    "G5": {
+      "status": "NOT_RUN",
+      "required_reviewer": "Nonauthor distinct from both A and B on final frozen shared descendant"
+    }
+  },
+  "negative_tests": {
+    "omitted_candidate": "PASS_REFUSAL_BEFORE_SOURCE_FACTORY",
+    "count_preserving_duplicate": "PASS_REFUSAL_BEFORE_SOURCE_FACTORY",
+    "rehashed_mismatched_source_science_list": "PASS_REFUSAL",
+    "wrong_source_sha_or_edition": "PASS_REFUSAL",
+    "wrong_occurrence_or_canonical_hash": "PASS_REFUSAL",
+    "forged_authority_ref_or_native_grade": "PASS_REFUSAL",
+    "altered_eligibility": "PASS_REFUSAL",
+    "routing_unknown": "PASS_NOT_ISSUED",
+    "disjoint_admin_form": "PASS_TYPED_INAPPLICABLE",
+    "unsupported_runtime": "PASS_NO_FAKE_RECEIPT",
+    "budget_pending": "PASS_EXPLICIT_UNEXECUTED_FATE",
+    "optional_weight_absent_sample_raw": "PASS_ELIGIBLE_SOURCEFREE",
+    "eligible_joint_policy_change": "PASS_CHANGED_I05_AND_RESTORED",
+    "valid_source_value_change": "PASS_CHANGED_FACT_HASH_AND_RESTORED"
+  },
+  "hostile_author_findings": [
+    "INITIAL_FAILURE: ScientificOperation.op_id was misread as operation_id; repaired",
+    "INITIAL_WEAKNESS: named census refs were not content-addressed; repaired and tested against rehashed mismatches",
+    "INITIAL_FAILURE: wrong Route B/issued source build instrumentation; repaired to actual bounded R03 Batch/C11/I05 owner",
+    "PRESERVED_UNKNOWN: externally complete source/science census not certified by TEST_ONLY supplied-list hashes",
+    "PRESERVED_BOUNDARY: sourcefree test-only reader does not exercise S1-D normal/resume CURRENT credential owner",
+    "PRESERVED_LIMIT: true original35 source qualification, scientific U/E_pre issuance, host permissions and 100k performance unproved"
+  ],
+  "attack_for_B": [
+    "Give externally independent source-census root including one omitted source operation; determine whether equal dual-omission hashes can be detected absent an external competent issuer",
+    "Change source/instrument/meaning/authority and scientific provenance without changing count; try to cause a false positive issued receipt",
+    "Sever or mutate actual I05 fact/receipt identity then attempt to keep operation anti-join green",
+    "Attack routing UNKNOWN vs valid empty and optional SAMPLE weights vs required population weighting",
+    "Inspect normal/resume CURRENT under S1-D separately and verify #948 integration head",
+    "Inspect scaling and resource calls under larger but still sourcefree issued packet"
+  ],
+  "closure": {
+    "status": "READY_FOR_AGENT_B_ADVERSARIAL_TURN_NOT_G5_ACCEPTED",
+    "next": "Agent B independently ground, read handoff/diff/tests, reproduce/repair concrete defects; A counterattack; nonauthor G5",
+    "authorized_protected_merge": false,
+    "original35_source_science_actor_host_authority": false,
+    "W03_W04_modified": false,
+    "external_hold": "REAL_ORIGINAL35_SOURCE_AND_SCIENTIFIC_ISSUER"
+  }
+}
