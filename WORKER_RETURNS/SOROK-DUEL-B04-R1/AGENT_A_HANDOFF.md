@@ -83,7 +83,8 @@ Evidence: `evidence/a_relay_b04.log` 2 passed in 21.31s; combined 32 passed in 2
 6. **No fork/cold parent purchase.** C02 parent material is branch-bound; a child-fork purchase is refused. No cold fork is claimed.
 7. **B02 period reference depends on the plan.** Without an established B02 plan, the receipt says `B02_NOT_AVAILABLE`; it does not invent a date. With the plan, it names the actual period.
 8. **C02 stale B02 qualification.** `parent_activity.py` still says `HELD_B02_CALENDAR_ABSENT`; B04's receipt uses the actual B02 period, but the C02/C03 owner must reconcile `PARENT_B02_HOLD`. I did not edit Pair3.
-9. **My first B04 test hit stock exhaustion before the price-mismatch and no-time checks.** I reordered the test to the stock/price/time states; production behavior was not weakened.
+9. **C02 `read_parent_history` does not include the B04 purchase.** `parent_activity.read_parent_history` filters `P2_PARENT_MATERIAL_ANTECEDENT`, `P2_PARENT_ACTIVITY`, and `P2_PARENT_CIRCUMSTANCE`; the new `P2_PARENT_PURCHASE` episode is readable only through `material_operations.read_purchase`. C03/C04 or the C02 owner must compose that kind deliberately; I did not edit Pair3 `parent_activity.py`.
+10. **My first B04 test hit stock exhaustion before the price-mismatch and no-time checks.** I reordered the test to the stock/price/time states; production behavior was not weakened.
 
 ## 5. Unresolved challenges
 

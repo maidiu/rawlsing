@@ -11,29 +11,66 @@
   "grade": "SOURCEFREE_S2_ONLY",
   "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_P3_CODE_PIN_BREAK",
   "classification_detail": [
-    {"class": "NEW_CONSUMER", "detail": "read_owned_objects/read_market_inventory/read_purchase are actual stock/ownership consumers; parent_feasible_actions reads changed parent material."},
-    {"class": "COMPATIBLE_ADDITIVE", "detail": "Two new world material slots and a new C12 purchase receipt kind; existing B01/B03/B02 readers unchanged."},
-    {"class": "SOURCE_OR_AUTHORITY", "detail": "p2_owner slot allowlist byte change alters P3 code pins; no migration; fresh roots only."}
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "read_owned_objects/read_market_inventory/read_purchase are actual stock/ownership consumers; parent_feasible_actions reads changed parent material."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "Two new world material slots and a new C12 purchase receipt kind; existing B01/B03/B02 readers unchanged."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "p2_owner slot allowlist byte change alters P3 code pins; no migration; fresh roots only."
+    }
   ],
   "changed_symbols": [
-    "material_operations.MARKET_SLOT", "material_operations.OWNED_SLOT",
-    "material_operations.MARKET_SCHEMA", "material_operations.OWNED_SCHEMA",
-    "material_operations.PURCHASE_RECEIPT_SCHEMA", "material_operations.PURCHASE_KIND",
-    "material_operations.establish_market_inventory", "material_operations.read_market_inventory",
-    "material_operations.read_owned_objects", "material_operations.purchase_drum_kit",
-    "material_operations.read_purchase", "p2_owner.MATERIAL_FACT_SLOTS"
+    "material_operations.MARKET_SLOT",
+    "material_operations.OWNED_SLOT",
+    "material_operations.MARKET_SCHEMA",
+    "material_operations.OWNED_SCHEMA",
+    "material_operations.PURCHASE_RECEIPT_SCHEMA",
+    "material_operations.PURCHASE_KIND",
+    "material_operations.establish_market_inventory",
+    "material_operations.read_market_inventory",
+    "material_operations.read_owned_objects",
+    "material_operations.purchase_drum_kit",
+    "material_operations.read_purchase",
+    "p2_owner.MATERIAL_FACT_SLOTS"
   ],
   "new_world_resource": {
-    "p6_market_inventory": {"schema": "SOROK_MARKET_INVENTORY@1", "source_qualified": true},
-    "p6_owned_objects": {"schema": "SOROK_OWNED_OBJECTS@1", "source_qualified": true}
+    "p6_market_inventory": {
+      "schema": "SOROK_MARKET_INVENTORY@1",
+      "source_qualified": true
+    },
+    "p6_owned_objects": {
+      "schema": "SOROK_OWNED_OBJECTS@1",
+      "source_qualified": true
+    }
   },
   "actual_reader": [
-    {"name": "material_operations.read_market_inventory", "returns": "stock items/source/provenance"},
-    {"name": "material_operations.read_owned_objects", "returns": "acquisition rows and owner/object totals"},
-    {"name": "material_operations.read_purchase", "returns": "durable admitted/refused receipt, current sources, owned totals, parent feasible actions"},
-    {"name": "parent_activity.parent_feasible_actions", "returns": "changed parent cash/free-hours options"}
+    {
+      "name": "material_operations.read_market_inventory",
+      "returns": "stock items/source/provenance"
+    },
+    {
+      "name": "material_operations.read_owned_objects",
+      "returns": "acquisition rows and owner/object totals"
+    },
+    {
+      "name": "material_operations.read_purchase",
+      "returns": "durable admitted/refused receipt, current sources, owned totals, parent feasible actions"
+    },
+    {
+      "name": "parent_activity.parent_feasible_actions",
+      "returns": "changed parent cash/free-hours options"
+    }
   ],
-  "first_consumer": {"stock_ownership": "read_owned_objects", "parent_feasible_choice": "parent_feasible_actions", "mother_decision": "NONE_VERIFIED"},
+  "first_consumer": {
+    "stock_ownership": "read_owned_objects",
+    "parent_feasible_choice": "parent_feasible_actions",
+    "mother_decision": "NONE_VERIFIED"
+  },
   "preserved_obligations": [
     "B01 fixed-A cash/free-hours untouched by parent purchase",
     "C02 parent cash/free-hours funding source",
@@ -61,12 +98,24 @@
     "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
   ],
   "negative_refs": [
-    "PURCHASE_OWNER_UNKNOWN", "PURCHASE_CURRENCY_MISMATCH", "PURCHASE_PARENT_UNAVAILABLE",
-    "PURCHASE_PRICE_MISMATCH", "PURCHASE_STOCK_UNAVAILABLE", "PURCHASE_INSUFFICIENT_FUNDS",
-    "PURCHASE_TIME_UNAVAILABLE", "REFUSED_NOISE", "P6_MARKET_SOURCE_OR_ROOT_MISMATCH"
+    "PURCHASE_OWNER_UNKNOWN",
+    "PURCHASE_CURRENCY_MISMATCH",
+    "PURCHASE_PARENT_UNAVAILABLE",
+    "PURCHASE_PRICE_MISMATCH",
+    "PURCHASE_STOCK_UNAVAILABLE",
+    "PURCHASE_INSUFFICIENT_FUNDS",
+    "PURCHASE_TIME_UNAVAILABLE",
+    "REFUSED_NOISE",
+    "P6_MARKET_SOURCE_OR_ROOT_MISMATCH"
   ],
-  "cold_refs": ["test_purchase_cold_restore_and_source_severance"],
+  "cold_refs": [
+    "test_purchase_cold_restore_and_source_severance"
+  ],
   "public_event": "NOT_EMITTED_HELD_PAIR3_VOCABULARY",
   "fork_purchase": "REFUSED_C02_PARENT_BRANCH_BOUND",
-  "cost": {"status": "UNKNOWN", "reason": "No controller/provider token, latency, RSS or retry instrumentation available."}
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation available."
+  },
+  "parent_history_composition": "C02 parent_activity.read_parent_history excludes P2_PARENT_PURCHASE; use material_operations.read_purchase until the Pair3/C02 owner composes the kind."
 }
