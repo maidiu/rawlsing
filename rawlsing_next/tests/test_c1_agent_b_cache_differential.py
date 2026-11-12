@@ -218,3 +218,25 @@ def test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores():
         source, base, cache=cache,
     )
     assert execute(restored_repo, restored_release).ref == original_fact.ref
+
+
+def test_c1_one_shot_authority_iterable_produces_same_private_cache_binding(tmp_path, monkeypatch):
+    """Current-authority iterator is consumed once, not lost before disk binding."""
+    fx = _fixture("agent-b-one-shot")
+    source = _stream(fx)
+    filenames = []
+    for label, current in (
+        ("tuple", fx["authorities"]),
+        ("generator", (authority for authority in fx["authorities"])),
+    ):
+        root = tmp_path / label
+        root.mkdir(mode=0o700)
+        monkeypatch.setenv("RAWLSING_C11_ACCELERATOR_DIR", str(root))
+        _, result = build_source_backed_c11_repository(
+            source, fx["projection"], current_authorities=current,
+        )
+        assert result.release_ref is not None
+        created = sorted(path.name for path in root.glob("c11-events-*.parquet"))
+        assert created, "expected governed private sourcefree accelerator cache"
+        filenames.append(created)
+    assert filenames[0] == filenames[1]
