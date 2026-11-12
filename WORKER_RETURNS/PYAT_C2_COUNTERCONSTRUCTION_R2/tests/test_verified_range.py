@@ -63,12 +63,39 @@ class Anchor:
 
 
 @dataclass(frozen=True)
+class QuestionBinding:
+    """Model-only exact source-universe question/topology and mapping grant.
+
+    The real implementation must populate this from I02-validated
+    QuestionVariableBinding + authority snapshots, not user-declared strings.
+    """
+    universe: str
+    native: str
+    topology_authority_ref: str
+    canonical: str = ""
+    canonical_authority_ref: str = ""
+    components: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class Scope:
     release: str
     respondents: tuple[tuple[str, str], ...]
     targets: tuple[str, ...]
+    question_bindings: tuple[QuestionBinding, ...] = ()
     def root(self):
-        return h(b"C2S", enc(self.__dict__)).hex()
+        return h(b"C2S", enc({
+            "release": self.release,
+            "respondents": self.respondents,
+            "targets": self.targets,
+            "question_bindings": [vars(binding) for binding in self.question_bindings],
+        })).hex()
+    def allows_target(self, universe, target):
+        return any(binding.universe == universe and (
+            target == binding.native
+            or (target == binding.canonical and bool(binding.canonical_authority_ref))
+            or target in binding.components
+        ) for binding in self.question_bindings)
 
 
 class BadRange(Exception):
@@ -100,9 +127,34 @@ class DiskSemanticIndex:
           CREATE INDEX posting_lookup ON posting(u,r,kind,q,ord,eref);
           CREATE INDEX entry_lookup ON entry(u,r,kind,q,ord,eref);
         """)
+        # A global target whitelist is not a universe-specific question grant.
+        # The real authority owner must supply I02-validated QuestionVariableBindings.
+        bindings = {}
+        eligible_universes = {u for u, _ in scope.respondents}
+        for binding in scope.question_bindings:
+            key = (binding.universe, binding.native)
+            if (not binding.topology_authority_ref
+                    or key in bindings
+                    or not binding.native
+                    or binding.universe not in eligible_universes
+                    or (binding.canonical and not binding.canonical_authority_ref)):
+                db.close()
+                raise BadRange("QUESTION_BINDING_NOT_GOVERNED")
+            bindings[key] = binding
+        if not bindings:
+            db.close()
+            raise BadRange("QUESTION_BINDING_NOT_GOVERNED")
         # Uniqueness uses a disk-backed PRIMARY KEY, not an all-events Python set.
         # Only admitted source events are used; never import index as source truth.
         for e in events:
+            binding = bindings.get((e.universe, e.native))
+            if ((e.universe, e.respondent) not in scope.respondents
+                    or binding is None
+                    or (e.canonical and (e.canonical != binding.canonical
+                                        or not binding.canonical_authority_ref))
+                    or (e.component and e.component not in binding.components)):
+                db.close()
+                raise BadRange("EVENT_QUESTION_BINDING_OR_DOMAIN_MISMATCH")
             try:
                 db.execute("INSERT INTO occurrence VALUES(?)", (enc(e.occurrence_key()).decode(),))
             except sqlite3.IntegrityError as exc:
@@ -228,8 +280,12 @@ class DiskSemanticIndex:
             raise BadRange("UNTRUSTED_ANCHOR")
         if scope.release != accepted.release or scope.root() != accepted.scope_root:
             raise BadRange("DOMAIN_SCOPE_NOT_ATTESTED")
-        if (universe,respondent) not in scope.respondents or target not in scope.targets:
+        if (universe,respondent) not in scope.respondents:
             raise BadRange("UNKNOWN_SCOPE_OR_SELECTOR")
+        # Global vocabulary is documentary only: an exact governed binding
+        # can authorize a U2 alias even if a legacy global name-list omitted it.
+        if not scope.allows_target(universe, target):
+            raise BadRange("UNQUALIFIED_UNIVERSE_TARGET")
         kinds=("native",) if native_only else (("native","canonical","component") if include_component else ("native","canonical"))
         cursors=[self.range(universe,respondent,kind,target) for kind in kinds]
         # Ref ordering reproduces native frozen per-respondent event order. An
@@ -254,11 +310,18 @@ class TestVerifiedRanges(unittest.TestCase):
             Event("U1","R1","NQ7","g","1","B","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
             Event("U1","R1","NQ7","g","2","?","NO_RESPONSE","CQ7","SUB7"),
             Event("U1","R2","NQ7","g","0","C","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
-            Event("U2","R1","NQ7","g","0","X","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
+            Event("U2","R1","NQ7","g","0","X","SUBSTANTIVE_RESPONSE","CQ8","SUB7"),
             Event("U1","R1","ALIAS","h","0","Y","SUBSTANTIVE_RESPONSE","ALIAS","ALIAS"),
         )
         self.scope=Scope("RELEASE_REF",(("U1","R1"),("U1","R2"),("U2","R1")),
-                         ("NQ7","CQ7","SUB7","ALIAS","ABSENT"))
+                         ("NQ7","CQ7","SUB7","ALIAS","ABSENT"),
+                         (
+                             QuestionBinding("U1","NQ7","TOPOLOGY_U1_NQ7", "CQ7","MAPPING_U1_CQ7",("SUB7",)),
+                             QuestionBinding("U2","NQ7","TOPOLOGY_U2_NQ7", "CQ8","MAPPING_U2_CQ8",("SUB7",)),
+                             QuestionBinding("U1","ALIAS","TOPOLOGY_U1_ALIAS", "ALIAS","MAPPING_U1_ALIAS",("ALIAS",)),
+                             # Explicit native question with zero fixture events.
+                             QuestionBinding("U1","ABSENT","TOPOLOGY_U1_ABSENT"),
+                         ))
         self.store=DiskSemanticIndex.build(Path(self.tmp.name)/"a.db",self.events,scope=self.scope)
         self.addCleanup(self.store.db.close)
         self.a=self.store.anchor
@@ -389,6 +452,60 @@ class TestVerifiedRanges(unittest.TestCase):
         with self.assertRaisesRegex(BadRange,"UNTRUSTED_ANCHOR"):
             candidate.select(accepted=self.a,universe="U1",respondent="R1",target="NQ7",
                              scope=self.scope)
+
+    def test_global_target_is_not_exact_universe_question_binding(self):
+        # CQ7 is a U1-only canonical alias; U2 has an independent CQ8 mapping.
+        with self.assertRaisesRegex(BadRange,"UNQUALIFIED_UNIVERSE_TARGET"):
+            self.store.select(accepted=self.a,universe="U2",respondent="R1",
+                              target="CQ7",scope=self.scope)
+        self.assertEqual(self.store.select(accepted=self.a,universe="U2",
+                                            respondent="R1",target="NQ7",scope=self.scope)[0][2],
+                         "SUBSTANTIVE_RESPONSE")
+        # The source-qualified U2 canonical alias must work even though
+        # the legacy global vocabulary does not include CQ8.
+        self.assertEqual(self.store.select(accepted=self.a,universe="U2",
+                                            respondent="R1",target="CQ8",scope=self.scope)[0][2],
+                         "SUBSTANTIVE_RESPONSE")
+
+    def test_global_whitelist_cannot_convert_unissued_question_into_valid_empty(self):
+        globally_known=replace(self.scope,targets=self.scope.targets+("GHOST",))
+        candidate=DiskSemanticIndex.build(Path(self.tmp.name)/"globalonly.db",
+                                          self.events,scope=globally_known)
+        self.addCleanup(candidate.db.close)
+        with self.assertRaisesRegex(BadRange,"UNQUALIFIED_UNIVERSE_TARGET"):
+            candidate.select(accepted=candidate.anchor,universe="U1",respondent="R1",
+                             target="GHOST",scope=globally_known)
+
+    def test_fabricated_canonical_alias_fails_before_root_publication(self):
+        event=replace(self.events[0],canonical="FAKE_CANONICAL")
+        with self.assertRaisesRegex(BadRange,"EVENT_QUESTION_BINDING_OR_DOMAIN_MISMATCH"):
+            DiskSemanticIndex.build(Path(self.tmp.name)/"bad_alias.db",
+                                    (event,)+self.events[1:],scope=self.scope)
+
+    def test_out_of_domain_event_fails_before_accepted_selector_root(self):
+        extra=Event("U9","R8","NQ7","g","0","X","SUBSTANTIVE_RESPONSE")
+        with self.assertRaisesRegex(BadRange,"EVENT_QUESTION_BINDING_OR_DOMAIN_MISMATCH"):
+            DiskSemanticIndex.build(Path(self.tmp.name)/"bad_domain.db",
+                                    self.events+(extra,),scope=self.scope)
+
+    def test_legitimate_no_event_question_has_positive_binding_but_no_postings(self):
+        self.assertTrue(self.scope.allows_target("U1","ABSENT"))
+        self.assertEqual(self.ask("ABSENT"),())
+        self.assertFalse(self.scope.allows_target("U2","ABSENT"))
+        with self.assertRaisesRegex(BadRange,"UNQUALIFIED_UNIVERSE_TARGET"):
+            self.store.select(accepted=self.a,universe="U2",respondent="R1",
+                              target="ABSENT",scope=self.scope)
+
+    def test_mapping_authority_removed_with_same_events_invalidates_store(self):
+        grants=list(self.scope.question_bindings)
+        grants[0]=replace(grants[0],canonical_authority_ref="")
+        invalid=replace(self.scope,question_bindings=tuple(grants))
+        with self.assertRaisesRegex(BadRange,"QUESTION_BINDING_NOT_GOVERNED"):
+            DiskSemanticIndex.build(Path(self.tmp.name)/"bad_mapping.db",
+                                    self.events,scope=invalid)
+        with self.assertRaisesRegex(BadRange,"DOMAIN_SCOPE_NOT_ATTESTED"):
+            self.store.select(accepted=self.a,universe="U1",respondent="R1",
+                              target="NQ7",scope=invalid)
 
     def test_proof_work_bounded_by_log_tree_height(self):
         self.assertEqual(len(self.ask()),3)
