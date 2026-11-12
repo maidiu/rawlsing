@@ -1,8 +1,8 @@
 # Selected ABI and CG-B/C/D contract
 
 **Status:** sourcefree TEST_ONLY engineering contract. No native science, actor right, production authority or protected merge.
-**Source cut:** `2be0cf252662ad021571db6f0d38b12c205c56ae` (source-equivalent for the unavailable `1f77f203...`; every declared blob matches).
-**Selected common writer/readset:** `P3Owner` + `PsycheStore`, with the unchanged `BatchEngine` and `RecursionCycle`, plus P6 `house.read_house` as the material reader.
+**Source custody:** author executed at `2be0cf252662ad021571db6f0d38b12c205c56ae`, while PR #915 is based on protected `1f77f2036427a410429184780ef884ec4f253ad0`. Exact selected Git blobs, not claimed universal startup equivalence, govern. The three malformed source-matrix identities are corrected on this review repair branch; relevant P6 `run_p6.py` changed across these cuts.
+**Selected owner-domain composition, not a common world writer:** P2/P6 world state owns material facts and speech events; P3/PsycheStore owns sourcefree actor-scoped mediator records. The existing BatchEngine/RecursionCycle remains the developmental scheduler. An explicitly qualified READ-ONLY bridge is needed from P3 state into the actual P6 situated consumer.
 **No new scheduler:** the existing three-event-to-five-event cycle remains the only scheduler.
 
 ## 1. Exact current signatures
@@ -55,7 +55,7 @@ Local limits, not generic root policy:
 
 ### 1.3 P3 sidecar owner and store
 
-`P3Owner` (`e735ada7...`):
+`P3Owner` (actual Git blob `233a89f2cf99c192717cb223a771af47efe3bbd2`):
 
 ```text
 P3Owner(base_owner, *, source, history, plans, catalog=None,
@@ -67,7 +67,7 @@ realize(operation_id, proposal, expected) -> RealizedEvent
 
 `P3Owner` requires the base owner's `snapshot`, `validate_proposal`, `realize`, `actor_experience` and `fanin`; binds `source.root/actor/branch` exactly to the base snapshot; freezes source hash, history, plans, catalog, compression specs, standpoints and code pins; and composes one `PsycheStore` at `<state_root>/p3_psyche.sqlite3` with `binding={root, actor, branch}`. A pending sidecar operation blocks an unrelated operation. The recovery phases are `PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE`.
 
-`PsycheStore` (`173d4d6d...`):
+`PsycheStore` (actual Git blob `d38a67ce72ae40b44bd97705bb6837265804d071`):
 
 ```text
 PsycheStore(path, *, binding={root, actor, branch}, registry_hash, source_hash)
@@ -110,7 +110,7 @@ reconsider(session, receipt, interpret, realize=None, *,
            actor_context=None, provider_mode="INJECTED") -> dict
 ```
 
-`recent_speech` filters only events perceived by actor `A`; `reconsider` builds an actor-local packet from world/house/actor state, validates a model decision against actual cues and actions, and commits speech through `session.product.say(text, actor="A")`. It does not query `PsycheStore`.
+`recent_speech` filters only events perceived by actor `A`; `reconsider` builds an actor-local packet from world/house/actor state, validates a model decision against actual cues and actions, and commits speech through `session.product.say(text, actor="A")`. At the frozen author source cut it does not query `PsycheStore`; the separate repair branch now adds an opt-in TEST_ONLY read-only bridge from the real owner.
 
 ## 2. Owner, time, actor, version and edge
 
@@ -123,7 +123,7 @@ reconsider(session, receipt, interpret, realize=None, *,
 | Actor | focal actor is P2 `actor_ids[0]`; P3 store binds that actor | mother can only be a counterpart string, not an independent actor |
 | Version | store binding, head, source hash, registry hash, plan hash, rule id/version/hash, causal parents, receipt hash | no native rule version is issued |
 | Material | P2 world/interval snapshot; P6 `p6_house` resource | no `home_period` from/to/home_ref record |
-| Later edge | `P3Owner._effect` queries the store; `P2/S47.read_c9_conditioning` reads C9; `situated.reconsider` reads world/actor | `situated.reconsider` does not read the P3 sidecar; no bridge |
+| Later edge | P3 B1 mediator records are actor-local; P6 situated reads world/actor | Separate sourcefree read-only P3→P6 first-consumer bridge is repair candidate, not native action |
 
 The exact later-consumer edges are:
 
@@ -134,7 +134,7 @@ P2 material:  S46 interval/world -> S47Session.read_c9_conditioning -> later P2 
 P6 situated:  house.read_house + world.actor_state -> situated.reconsider -> say/decision
 ```
 
-The missing edge is the **bridge** between the P6 situated decision and the P3 sidecar, not a missing scheduler.
+The missing edge in the author's original source is a **qualified P3→P6 read-only bridge**, not another scheduler. The isolated reviewer branch implements that seam and tests the actual P6 actor speech/no-speech consumer. It does not make material facts into PsycheStore records.
 
 ## 3. Minimal CG-B/C/D extension contract
 
@@ -196,7 +196,7 @@ The existing `situated.reconsider` packet may carry this readset, but it must be
 
 ## 4. Functional mapping
 
-The repository does not contain a `PW-01..PW-12` definition. The IDs are therefore **not located**; the table below maps the twelve explicit mission functions without inventing repository IDs.
+The author's source search did not locate `PW-01..PW-12` in its selected tree. Their user-blueprint definitions are available in unmerged PR #911; the author result was a limited visibility claim, not global nonexistence. The table below maps functions, not invented IDs.
 
 | Mission function | Selected capital | Disposition |
 |---|---|---|
@@ -205,8 +205,8 @@ The repository does not contain a `PW-01..PW-12` definition. The IDs are therefo
 | 3. Independent mother actor | P2 root `actor_ids`; no per-actor writer | BUILD (`RootActorSet`) |
 | 4. Constrained decision/utterance | P6 `situated.reconsider`; P3 rules | ADAPT |
 | 5. Child receives only qualified speech | P6 `recent_speech`; missing mother speaker | BUILD (`MotherSpeech`) |
-| 6. Actor state change/HOLD/NOCHANGE | `PsycheStore` records; `MISSING_RULE`; statuses | REUSE |
-| 7. Later P3 decision reads world and actor state | `P3Owner._effect`; P6 decision packet | ADAPT bridge |
+| 6. Actor state change/HOLD/NOCHANGE | P3 sourcefree records; native `MISSING_RULE` | REUSE mechanical test-only; native issuer HELD |
+| 7. P6 situated decision reads actor-qualified prior P3 records | P3 actor-bound store and new optional P6 sourcefree bridge | REPAIR CANDIDATE; sourcefree consumer test required |
 | 8. Duration and intermediate time as inputs | P2 interval span/modes; P6 `epoch`/`elapsed` | REUSE/ADAPT |
 | 9. Historical positive target write/read | B1 exact `mode_for`; P3 formation/later response | REUSE/ADAPT |
 | 10. Transaction/rollback/refusal | `PsycheStore` phases; B3A precedent | REUSE |
@@ -226,4 +226,8 @@ The following are the minimum S2 tests the next construction must supply; CG-A d
 7. `MISSING_RULE` remains distinct from evaluated `NO_CHANGE`; `HELD`/`REFUSED`/`OMITTED` are not converted to `NO_CHANGE`;
 8. no provider or model prose writes canonical actor state.
 
-CG-A does not implement these; it freezes the writer/readset and the exact edge.
+Original author CG-A froze interfaces but did not implement the P6 sidecar first-reader. This isolated repair adds that sourcefree first-reader, not CG-B's material period, CG-C's independent mother, or native developmental rules. Mechanical storage acceptance does not issue psychology, memory or action.
+
+## Independent CG-A semantic repair: owner-domain partition
+
+The author `test_selected_common_readset.py` writes a synthetic `MEDIATOR` with `payload.room=kitchen` to a separate PsycheStore configured with synthetic source/registry hashes, then calls a test-local `later_decision`. This proves isolated storage mechanics but **not** a lawful common writer. Real `P3Owner` freezes the B1 TEST_ONLY registry; `P3Owner._effect` and `projections.activate` are B1 mediator/mode consumers and cannot be silently generalized to world-owned home facts. P2/P6 world resources own dates, homes and material constraints; mother speech must be an actual speaker event with recipient-qualified perception, not a psychological blob. The sourcefree P3→P6 bridge therefore reads ONLY prior actor-bound B1 mediator identities into the existing P6 situated packet, without new owners or native-science claims.
