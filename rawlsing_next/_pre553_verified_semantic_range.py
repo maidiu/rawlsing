@@ -121,6 +121,14 @@ def _bindings(
                 raise SemanticRangeIntegrityError(
                     "event canonical alias disagrees with sealed QuestionVariableBinding"
                 )
+            # Multiple different instrument-version grants for the same
+            # native question are not evidence of which version produced this
+            # event: RespondentEvent carries no question-version discriminator.
+            # Do not certify one arbitrary member of a conflicting union.
+            if len(admissible) > 1:
+                raise SemanticRangeIntegrityError(
+                    "ambiguous instrument-version canonical binding for event"
+                )
         respondents[respondent].append(event)
         aliases = [("native", native)]
         if canonical is not None:
