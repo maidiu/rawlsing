@@ -26,6 +26,7 @@ from rawlsing_next.pre553_c11_ingest import (
     C11SourceReleaseCandidate, ingest_c11_source_release,
 )
 from rawlsing_next.pre553_c11_repository import C11Repository
+from rawlsing_next.pre553_empirical_objects import exact_ref
 
 
 def _direct(tag):
@@ -54,10 +55,11 @@ def test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release(tmp_path):
     assert expected.schema == DIRECT_SCHEMA and expected.schema != SCHEMA
     with VerifiedExternalI02(path, roots=expected) as certified:
         assert list(certified.respondent_refs())
-        first_respondent = next(certified.respondent_refs())
-        native = candidate.respondent_events[0].native_question_ref
+        first_event = candidate.respondent_events[0]
+        respondent = exact_ref(first_event.scoped_respondent_ref).key
+        native = exact_ref(first_event.native_question_ref)
         assert len(list(certified.selector_refs(
-            first_respondent, native,
+            respondent, native,
         ))) > 0
         for family in ("EmpiricalUniverse", "RespondentIdentity",
                        "QuestionVariableBinding", "RespondentEvent",
