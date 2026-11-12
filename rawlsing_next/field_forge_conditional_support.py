@@ -220,6 +220,12 @@ def _validate_common_closure(
             and joint_fact.raw_numerator_support == 0):
         raise FieldForgeConditionalSupportError(
             "SUPPORTED empirical fact has zero positive support")
+    # I03 marks a positive but partially resolved target configuration
+    # UNRESOLVED. Re-signing it SUPPORTED cannot legitimize a D-positive.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_fact.raw_numerator_support != joint_fact.raw_denominator_support):
+        raise FieldForgeConditionalSupportError(
+            "SUPPORTED requires fully resolved target denominator")
     # The exact query hash identifies what was requested, not whether that
     # operation was authorized. A re-signed positive fact may cite a real
     # QUERY_UNAUTHORIZED query and otherwise satisfy every closure check.
@@ -270,6 +276,13 @@ def _validate_common_closure(
     ) != _exact(grain["response_state_semantics_ref"],
                "query.requested_output_grain.response_state_semantics_ref"):
         raise FieldForgeConditionalSupportError("query/fact response semantics mismatch")
+    # FF01 projects away producer uncertainty semantics. The exact query and
+    # fact must agree before that semantic assertion is lost at D.
+    if (grain.get("uncertainty_method_or_typed_state") is not None
+            and joint_fact.uncertainty_method_or_typed_state !=
+            grain["uncertainty_method_or_typed_state"]):
+        raise FieldForgeConditionalSupportError(
+            "query/fact uncertainty semantics mismatch")
     if ("risk_set_type" in joint_fact.semantic_fields
             and grain.get("risk_set_type") is not None
             and joint_fact.risk_set_type != grain["risk_set_type"]):
@@ -407,6 +420,10 @@ def _cell_profile(
         count = row.get("raw_numerator_support")
         if not isinstance(count, int) or isinstance(count, bool) or count < 0:
             raise FieldForgeConditionalSupportError("joint support count must be nonnegative exact integer")
+        # I03 RAW cells have no weighted numerator; otherwise FF01 silently
+        # drops a distinct measurement while falsely labeling the result RAW.
+        if row.get("weighted_numerator_support_if_authorized") is not None:
+            raise FieldForgeConditionalSupportError("RAW cell carries weighted support")
         cell_state = row.get("cell_state")
         if count == 0 and cell_state not in {
             "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET", "ZERO_SUPPORT"
