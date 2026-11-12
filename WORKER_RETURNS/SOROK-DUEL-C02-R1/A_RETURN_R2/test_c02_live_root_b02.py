@@ -23,7 +23,7 @@ import run_p6  # noqa: E402
 from developmental_recursion.contracts import RecursionRefusal  # noqa: E402
 from developmental_recursion.p2_owner import load_p2  # noqa: E402
 from developmental_recursion.parent_activity import (  # noqa: E402
-    PARENT_B02_FULL_PROOF_HOLD,
+    PARENT_B02_FULL_PROOF,
     PARENT_B02_QUALIFIED,
     PARENT_B02_UNQUALIFIED,
     parent_feasible_actions,
@@ -101,7 +101,7 @@ def test_normal_live_root_parent_b02_view_and_user_turn_cold(tmp_path):
     assert established["result"]["period_context"][
         "b02_employment_applied_to_parent"] is False
     assert established["result"]["period_context"]["full_dated_proof"] == (
-        PARENT_B02_FULL_PROOF_HOLD)
+        PARENT_B02_FULL_PROOF)
 
     activity = background(state, "parent-activity", {
         "parent_id": PARENT_ID, "operation_id": "live:activity:1",
@@ -332,7 +332,7 @@ def test_read_only_period_context_and_no_false_b02_absent_claim(tmp_path):
         assert material["historical_ingress"]["status"] == PARENT_B02_QUALIFIED
         assert material["historical_ingress"]["dates_claimed"] is True
         assert material["historical_ingress"]["full_dated_proof"] == (
-            PARENT_B02_FULL_PROOF_HOLD)
+            PARENT_B02_FULL_PROOF)
         assert material["historical_ingress"]["required_hook"]
         assert material["historical_ingress"][
             "b02_employment_applied_to_parent"] is False
@@ -343,7 +343,7 @@ def test_read_only_period_context_and_no_false_b02_absent_claim(tmp_path):
         assert material["period_context"]["interval_status"] == (
             "NOT_MATERIALIZED")
         assert material["period_context"]["full_dated_proof"] == (
-            PARENT_B02_FULL_PROOF_HOLD)
+            PARENT_B02_FULL_PROOF)
         activity = read_parent_activity(
             fanin.session, PARENT_ID, "period:activity:1",
             as_actor=PARENT_ID)

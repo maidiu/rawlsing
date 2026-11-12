@@ -380,14 +380,91 @@ def _purchase_history_source(session, episode: Mapping[str, Any], *,
             or receipt.get("event_effect") != "NONE"
             or receipt.get("clock") != episode.get("clock")):
         raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    for field in ("purchase_source", "market_source_before",
+                  "market_source_after", "owned_source_after"):
+        if not _hash_text(receipt.get(field)):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    if (receipt.get("owned_source_before") not in ("", None)
+            and not _hash_text(receipt.get("owned_source_before"))):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    if (not _text(receipt.get("object_id"))
+            or not _text(receipt.get("kind"))
+            or not _text(receipt.get("owner_actor_id"))
+            or not _nonneg_int(receipt.get("unit_price"))):
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    expected_purchase_source = digest({
+        "schema": PARENT_PURCHASE_RECEIPT_SCHEMA,
+        "operation_id": body.get("operation_id"),
+        "parent_id": parent_id,
+        "owner_actor_id": receipt.get("owner_actor_id"),
+        "object_id": receipt.get("object_id"),
+        "unit_price": receipt.get("unit_price"),
+        "market_source": receipt.get("market_source_before"),
+        "parent_before": before,
+        "parent_after": after,
+    })
+    if receipt.get("purchase_source") != expected_purchase_source:
+        raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
     currency = receipt.get("currency_unit")
     if not _text(currency):
         raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
     if parent_currency is not None and currency != parent_currency:
         raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+    request = receipt.get("request")
+    if (not isinstance(request, Mapping)
+            or request.get("currency_unit") != currency):
+        raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
     if before == after:
         raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
     return after
+
+
+def _purchase_episode_index(session, alias: str) -> dict[str, dict]:
+    index = {}
+    for episode in session.product.store.episodes(session.branch_id):
+        if episode.get("actor_id") != alias or episode.get("kind") != PARENT_PURCHASE_KIND:
+            continue
+        body = episode.get("body") or {}
+        receipt = body.get("receipt") or {}
+        if (receipt.get("status") != "ADMITTED"
+                or not _text(body.get("operation_id"))
+                or not _hash_text(receipt.get("parent_material_source_after"))):
+            continue
+        index[body["operation_id"]] = {
+            "body": body,
+            "receipt": receipt,
+            "after": receipt.get("parent_material_source_after"),
+            "purchase_source": receipt.get("purchase_source"),
+        }
+    return index
+
+
+def _purchase_bridge_duplicate(body: Mapping[str, Any], purchase_index: Mapping[str, Mapping[str, Any]]) -> bool:
+    """Recognize the suspended B04 bridge only as an exact duplicate.
+
+    The bridge is not adopted as C02 history. It is tolerated only when it
+    exactly duplicates an admitted P2_PARENT_PURCHASE already in the chain.
+    Pair1 owns removing it; removing it changes no reader result.
+    """
+    if body.get("operation_kind") != "PURCHASE_MATERIAL_STATE":
+        return False
+    operation_id = body.get("operation_id")
+    match = purchase_index.get(operation_id) if _text(operation_id) else None
+    if match is None:
+        raise RecursionRefusal("PARENT_MATERIAL_BRIDGE_NOT_ADOPTED")
+    receipt = match["receipt"]
+    if (body.get("schema") != PARENT_MATERIAL_SCHEMA
+            or body.get("grade") != PARENT_GRADE
+            or body.get("actor_id") != receipt.get("parent_id")
+            or body.get("alias") != receipt.get("parent_alias")
+            or body.get("source") != match["after"]
+            or body.get("material_source") != match["after"]
+            or body.get("material_after_source") != match["after"]
+            or body.get("purchase_source") != match["purchase_source"]
+            or body.get("material_before_source")
+            != receipt.get("parent_material_source_before")):
+        raise RecursionRefusal("PARENT_MATERIAL_BRIDGE_NOT_ADOPTED")
+    return True
 
 
 def _parent_material_history(session, alias: str, parent_id: str, *,
@@ -396,6 +473,7 @@ def _parent_material_history(session, alias: str, parent_id: str, *,
     """Return ordered validated parent material/activity/circumstance/purchase rows."""
     rows = []
     previous_source = None
+    purchases = _purchase_episode_index(session, alias)
     for episode in session.product.store.episodes(session.branch_id):
         if episode.get("actor_id") != alias:
             continue
@@ -406,6 +484,8 @@ def _parent_material_history(session, alias: str, parent_id: str, *,
         body = episode.get("body") or {}
         if body.get("actor_id") != parent_id:
             raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if kind == PARENT_MATERIAL_KIND and _purchase_bridge_duplicate(body, purchases):
+            continue
         if kind == PARENT_PURCHASE_KIND:
             source = _purchase_history_source(
                 session, episode, alias=alias, parent_id=parent_id,
@@ -1225,6 +1305,7 @@ def read_parent_history(session, parent_id: str, *,
         document.get("currency_unit") if isinstance(document, Mapping) else None)
     rows = []
     purchase_count = 0
+    purchases = _purchase_episode_index(session, alias)
     for episode in session.product.store.episodes(branch):
         if episode.get("actor_id") != alias:
             continue
@@ -1234,6 +1315,8 @@ def read_parent_history(session, parent_id: str, *,
                 PARENT_CIRCUMSTANCE_KIND, PARENT_PURCHASE_KIND}:
             continue
         body = episode.get("body") or {}
+        if kind == PARENT_MATERIAL_KIND and _purchase_bridge_duplicate(body, purchases):
+            continue
         if kind == PARENT_PURCHASE_KIND:
             source = _purchase_history_source(
                 session, episode, alias=alias, parent_id=parent_id,
@@ -1250,9 +1333,17 @@ def read_parent_history(session, parent_id: str, *,
                     "parent_material_source_after"),
                 "status": receipt.get("status"),
                 "object_id": receipt.get("object_id"),
+                "object_kind": receipt.get("kind"),
+                "unit_price": receipt.get("unit_price"),
                 "owner_actor_id": receipt.get("owner_actor_id"),
                 "currency_unit": receipt.get("currency_unit"),
                 "purchase_source": receipt.get("purchase_source"),
+                "market_source_before": receipt.get("market_source_before"),
+                "market_source_after": receipt.get("market_source_after"),
+                "owned_source_before": receipt.get("owned_source_before"),
+                "owned_source_after": receipt.get("owned_source_after"),
+                "possession": receipt.get("possession"),
+                "event_effect": receipt.get("event_effect"),
                 "period": detached(receipt.get("period") or {}),
                 "period_qualification": (receipt.get("period") or {}).get(
                     "status"),

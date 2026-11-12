@@ -20,6 +20,8 @@ PARENT_UTTERANCE_SCHEMA = "SOROK_PARENT_UTTERANCE@1"
 PARENT_UTTERANCE_RECEIPT_SCHEMA = "SOROK_PARENT_UTTERANCE_RECEIPT@1"
 PARENT_UTTERANCE_KIND = "P2_PARENT_UTTERANCE"
 CHILD_UPTAKE_SCHEMA = "SOROK_CHILD_SPEECH_UPTAKE@1"
+CHILD_EXPERIENCE_SCHEMA = "SOROK_CHILD_SPEECH_EXPERIENCE@1"
+CHILD_RESPONSE_INPUT_SCHEMA = "SOROK_CHILD_SPEECH_RESPONSE_INPUT@1"
 UTTERANCE_GRADE = "SOURCEFREE_S2_ONLY"
 
 
@@ -158,6 +160,13 @@ def perform_parent_utterance(session, parent_id: str, *, decision_id: str,
             "period_context": period_context,
             "private_state": "SELF_ONLY_HIDDEN_REASON",
             "public_utterance": True,
+            "text_source": "CALLER_SUPPLIED_NOT_GENERATED",
+            "hidden_reason_source": "CALLER_SUPPLIED_NOT_GENERATED",
+            "language_generation_owner": "NOT_IMPLEMENTED",
+            "physical_admission": "SPEECH_EVENT_COMMITTED",
+            "custody": "C12_SPEECH_RECEIPT_NOT_MEMORY",
+            "durable_acquisition": "MISSING_RULE",
+            "native_science": False,
         }
         store = session.product.store
         with _StoreWrite(store):
@@ -233,6 +242,159 @@ def read_parent_utterance(session, parent_id: str, operation_id: str, *,
         "period_context": detached(body.get("period_context") or {}),
         "receipt": receipt,
         "private_state": "SELF_ONLY_HIDDEN_REASON",
+    }
+
+
+def _utterance_by_event_or_operation(session, *, event_id=None,
+                                       operation_id=None) -> dict:
+    rows = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == PARENT_UTTERANCE_KIND
+        and ((event_id is not None
+              and (row.get("body") or {}).get("event_id") == event_id)
+             or (operation_id is not None
+                 and (row.get("body") or {}).get("operation_id") == operation_id))
+    ]
+    if len(rows) != 1:
+        raise RecursionRefusal("CHILD_EXPERIENCE_UTTERANCE_NOT_FOUND")
+    return rows[0]
+
+
+def read_child_experience(session, child_id: str, *, event_id: str | None = None,
+                          operation_id: str | None = None) -> dict:
+    """Compile Nadia's qualified current speech experience and response input.
+
+    This consumes the actual committed speech event and the child's own C12
+    speech perception. It is not a memory/durable-acquisition claim and never
+    reads the parent hidden reason. The experimental access condition is
+    bounded same-room registration by the existing speech writer; the C12
+    speech receipt remains the access owner.
+    """
+    if not _text(child_id) or (event_id is None and operation_id is None):
+        raise RecursionRefusal("CHILD_EXPERIENCE_SCHEMA")
+    episode = _utterance_by_event_or_operation(
+        session, event_id=event_id, operation_id=operation_id)
+    body = episode.get("body") or {}
+    event_id = body.get("event_id")
+    if not _text(event_id):
+        raise RecursionRefusal("CHILD_EXPERIENCE_UTTERANCE_MISMATCH")
+    child_alias = _child_alias(session, child_id)
+    if child_alias is None:
+        raise RecursionRefusal("CHILD_EXPERIENCE_ALIAS_UNAVAILABLE")
+    root = session.read_root()["root_hash"]
+    if (body.get("root") != root or body.get("branch") != session.branch_id
+            or body.get("child_actor_id") != child_id
+            or body.get("child_alias") != child_alias
+            or not _text(body.get("actor_id"))
+            or not _text(body.get("alias"))
+            or not _text(body.get("text"))):
+        raise RecursionRefusal("CHILD_EXPERIENCE_UTTERANCE_MISMATCH")
+    parent_id, parent_alias = body["actor_id"], body["alias"]
+    event = session.event(event_id)
+    if not event:
+        raise RecursionRefusal("CHILD_UPTAKE_EVENT_SEVERED")
+    if (event.get("kind") != "SPEECH"
+            or event.get("hash") != body.get("event_hash")
+            or event.get("actor_id") != parent_alias
+            or event.get("clock") != episode.get("clock")
+            or (event.get("body") or {}).get("text") != body.get("text")):
+        raise RecursionRefusal("CHILD_EXPERIENCE_EVENT_MISMATCH")
+    expected_source = digest({
+        "schema": PARENT_UTTERANCE_RECEIPT_SCHEMA,
+        "operation_id": body.get("operation_id"),
+        "decision_id": body.get("decision_id"),
+        "actor_id": parent_id,
+        "text": body.get("text"),
+        "clock": event.get("clock"),
+    })
+    if (event.get("body") or {}).get("utterance_source") != expected_source:
+        raise RecursionRefusal("CHILD_EXPERIENCE_SOURCE_MISMATCH")
+    own_speech = next((
+        row for row in session.product.store.perceptions(session.branch_id, parent_alias)
+        if row.get("event_id") == event_id
+        and row.get("channel") == "own_speech"
+        and row.get("clock") == event.get("clock")
+    ), None)
+    if own_speech is None:
+        raise RecursionRefusal("CHILD_EXPERIENCE_PARENT_RECEIPT_MISSING")
+    uptake = read_child_uptake(session, child_id, event_id)
+    base = {
+        "schema": CHILD_EXPERIENCE_SCHEMA,
+        "grade": UTTERANCE_GRADE,
+        "child_actor_id": child_id,
+        "child_alias": child_alias,
+        "speaker_actor_id": parent_id,
+        "speaker_alias": parent_alias,
+        "event_id": event_id,
+        "event_hash": event.get("hash"),
+        "occurrence_clock": event.get("clock"),
+        "read_clock": session.clock(),
+        "hidden_reason": "NOT_READ",
+        "private_state": "NOT_READ",
+        "custody": "C12_SPEECH_RECEIPT_NOT_MEMORY",
+        "durable_acquisition": "MISSING_RULE",
+        "native_science": False,
+        "access_condition": "SAME_ROOM_AT_ADMISSION",
+        "access_owner": "C12_SPEECH_PERCEPTION_RECEIPT",
+        "user_view": "NOT_EXPOSED",
+        "text_source": "CALLER_SUPPLIED_NOT_GENERATED",
+        "language_generation_owner": "NOT_IMPLEMENTED",
+    }
+    expected_channel = body.get("child_perception_channel")
+    if uptake.get("status") != "PERCEIVED":
+        if expected_channel == "speech":
+            raise RecursionRefusal("CHILD_EXPERIENCE_PERCEPTION_SEVERED")
+        return {**base, "status": "NOT_PERCEIVED", "event": None,
+                "response_input": None}
+    if expected_channel != "speech":
+        raise RecursionRefusal("CHILD_EXPERIENCE_PERCEPTION_MISMATCH")
+    if uptake["receipt"]["clock"] != event.get("clock"):
+        raise RecursionRefusal("CHILD_EXPERIENCE_PERCEPTION_CLOCK_MISMATCH")
+    decision_rows = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == PARENT_DECISION_KIND
+        and (row.get("body") or {}).get("decision_id") == body.get("decision_id")
+        and (row.get("body") or {}).get("actor_id") == parent_id
+        and (row.get("body") or {}).get("alias") == parent_alias
+        and (row.get("body") or {}).get("root") == root
+        and (row.get("body") or {}).get("branch") == session.branch_id
+    ]
+    if len(decision_rows) != 1:
+        raise RecursionRefusal("CHILD_EXPERIENCE_DECISION_SEVERED")
+    decision = (decision_rows[0].get("body") or {}).get("decision") or {}
+    if decision.get("action") != body.get("decision_action"):
+        raise RecursionRefusal("CHILD_EXPERIENCE_DECISION_MISMATCH")
+    public_event = dict(uptake["event"])
+    response_input = {
+        "schema": CHILD_RESPONSE_INPUT_SCHEMA,
+        "grade": UTTERANCE_GRADE,
+        "event_id": event_id,
+        "event_hash": event.get("hash"),
+        "speaker_actor_id": parent_id,
+        "speaker_alias": parent_alias,
+        "child_actor_id": child_id,
+        "child_alias": child_alias,
+        "public_text": body.get("text"),
+        "occurrence_clock": event.get("clock"),
+        "read_clock": session.clock(),
+        "perception_clock": uptake["receipt"]["clock"],
+        "perception_channel": uptake["receipt"]["channel"],
+        "access_condition": "SAME_ROOM_AT_ADMISSION",
+        "access_owner": "C12_SPEECH_PERCEPTION_RECEIPT",
+        "hidden_reason": "NOT_READ",
+        "decision_state": "NOT_READ",
+        "custody": "C12_SPEECH_RECEIPT_NOT_MEMORY",
+        "durable_acquisition": "MISSING_RULE",
+        "native_science": False,
+        "text_source": "CALLER_SUPPLIED_NOT_GENERATED",
+        "language_generation_owner": "NOT_IMPLEMENTED",
+    }
+    return {
+        **base,
+        "status": "PERCEIVED",
+        "event": public_event,
+        "receipt": dict(uptake["receipt"]),
+        "response_input": response_input,
     }
 
 

@@ -266,6 +266,8 @@ def _proposal(session, parent_id: str, request: Mapping[str, Any]) -> dict:
         "child_request": "NOT_EVALUATED",
         "nadia_state": "NOT_READ",
         "private_state": "SELF_ONLY_DECISION_BASIS",
+        "request_source": "CALLER_SUPPLIED_OBJECTIVE_REQUEST",
+        "decision_evidence": "EXPLICIT_SOURCEFREE_RULE_NOT_NATIVE",
     }
 
 
@@ -352,6 +354,11 @@ def admit_parent_decision(session, parent_id: str, *, operation_id: str,
             "child_request": "NOT_EVALUATED",
             "nadia_state": "NOT_READ",
             "private_state": "SELF_ONLY_DECISION_BASIS",
+            "request_source": "CALLER_SUPPLIED_OBJECTIVE_REQUEST",
+            "decision_evidence": "EXPLICIT_SOURCEFREE_RULE_NOT_NATIVE",
+            "physical_admission": "NOT_YET_PERFORMED",
+            "language_generation_owner": "C04_CALLER_SUPPLIED_TEXT",
+            "native_science": False,
         }
         store = session.product.store
         with _StoreWrite(store):
@@ -416,11 +423,11 @@ def read_parent_decision(session, parent_id: str, decision_id: str, *,
 def _perform_purchase(session, parent_id: str, decision: Mapping[str, Any],
                       request: Mapping[str, Any], decision_id: str) -> dict:
     b04 = _b04_module()
-    if b04 is None:
+    if b04 is None or not hasattr(b04, "_purchase_drum_kit"):
         raise RecursionRefusal("PARENT_DECISION_MARKET_UNAVAILABLE")
     objective = request["objective_request"]
     try:
-        return b04.purchase_drum_kit(
+        return b04._purchase_drum_kit(
             session, parent_id,
             operation_id=decision_id + ":purchase",
             owner_actor_id=request["owner_actor_id"],
@@ -441,110 +448,135 @@ def _perform_purchase(session, parent_id: str, decision: Mapping[str, Any],
         }
 
 
+def _perform_parent_decision_locked(session, parent_id: str, *, decision_id: str,
+                            as_actor: str | None = None) -> dict:
+    if as_actor != parent_id:
+        raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
+    material = _read_material(session, parent_id=parent_id, as_actor=parent_id)
+    alias = material["alias"]
+    episodes = _decision_episodes(session, alias, decision_id)
+    if len(episodes) != 1:
+        raise RecursionRefusal("PARENT_DECISION_NOT_FOUND")
+    body = episodes[0].get("body") or {}
+    if (body.get("actor_id") != parent_id
+            or body.get("root") != material["root"]
+            or body.get("branch") != material["branch"]):
+        raise RecursionRefusal("PARENT_DECISION_SEVERED")
+    decision = body.get("decision") or {}
+    request = body.get("request") or {}
+    existing = _action_episodes(session, alias, decision_id)
+    if len(existing) > 1:
+        raise RecursionRefusal("PARENT_ACTION_DUPLICATE")
+    if existing:
+        receipt = dict((existing[0].get("body") or {}).get("receipt") or {})
+        receipt["status"] = "REPLAY"
+        return receipt
+    current = _proposal(
+        session, parent_id, _validate_request(session, request))
+    if current.get("source") != decision.get("proposal_source"):
+        raise RecursionRefusal("PARENT_DECISION_STALE")
+    action = decision.get("action")
+    purchase = None
+    if action == ACTION_PURCHASE:
+        purchase = _perform_purchase(
+            session, parent_id, decision, request, decision_id)
+        if (purchase.get("status") in {"ADMITTED", "REPLAY"}
+                and purchase.get("possession")
+                == "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"):
+            action_status = "PERFORMED"
+            performed = True
+            valid_empty = False
+        else:
+            action_status = "REFUSED"
+            performed = False
+            valid_empty = True
+    elif action == ACTION_DECLINE:
+        action_status = "VALID_EMPTY"
+        performed = False
+        valid_empty = True
+    elif action == ACTION_HOLD:
+        action_status = "HELD"
+        performed = False
+        valid_empty = True
+    else:
+        raise RecursionRefusal("PARENT_DECISION_ACTION_UNKNOWN")
+    receipt = {
+        "schema": PARENT_ACTION_RECEIPT_SCHEMA,
+        "grade": DECISION_GRADE,
+        "status": action_status,
+        "decision_id": decision_id,
+        "operation_id": decision_id + ":action",
+        "actor_id": parent_id,
+        "alias": alias,
+        "root": material["root"],
+        "branch": material["branch"],
+        "clock": session.clock(),
+        "request_id": request.get("request_id"),
+        "decision_action": action,
+        "performed": performed,
+        "valid_empty": valid_empty,
+        "purchase": detached(purchase) if purchase is not None else None,
+        "material_before_source": material["source"],
+        "material_after_source": (
+            (purchase or {}).get("parent_material_source_after")
+            or material["source"]),
+        "owned_source_after": (purchase or {}).get("owned_source_after"),
+        "event_effect": (
+            "NONE" if purchase is None
+            else (purchase or {}).get("event_effect", "NONE")),
+        "possession": (
+            "NONE" if purchase is None
+            else (purchase or {}).get("possession", "NONE")),
+        "child_request": "NOT_EVALUATED",
+        "nadia_state": "NOT_READ",
+        "private_state": "SELF_ONLY_DECISION_BASIS",
+        "decision_evidence": "ADMITTED_DECISION_REEVALUATED_AT_PERFORM",
+        "physical_admission": (
+            "PERFORMED" if performed else
+            "VALID_EMPTY" if valid_empty else "HELD"),
+        "language_generation_owner": "C04_CALLER_SUPPLIED_TEXT",
+        "native_science": False,
+    }
+    store = session.product.store
+    with _StoreWrite(store):
+        store.append_episode(
+            session.branch_id, actor_id=alias,
+            kind=PARENT_ACTION_KIND, clock=session.clock(),
+            body={
+                "schema": PARENT_ACTION_RECEIPT_SCHEMA,
+                "grade": DECISION_GRADE,
+                "root": material["root"],
+                "branch": material["branch"],
+                "actor_id": parent_id,
+                "alias": alias,
+                "decision_id": decision_id,
+                "operation_id": decision_id + ":action",
+                "action": action,
+                "status": action_status,
+                "receipt": receipt,
+            },
+        )
+    return receipt
+
+
 def perform_parent_decision(session, parent_id: str, *, decision_id: str,
                             as_actor: str | None = None) -> dict:
     if as_actor != parent_id:
         raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
-    with _parent_write_lock(session):
-        material = _read_material(session, parent_id=parent_id, as_actor=parent_id)
-        alias = material["alias"]
-        episodes = _decision_episodes(session, alias, decision_id)
-        if len(episodes) != 1:
-            raise RecursionRefusal("PARENT_DECISION_NOT_FOUND")
-        body = episodes[0].get("body") or {}
-        if (body.get("actor_id") != parent_id
-                or body.get("root") != material["root"]
-                or body.get("branch") != material["branch"]):
-            raise RecursionRefusal("PARENT_DECISION_SEVERED")
-        decision = body.get("decision") or {}
-        request = body.get("request") or {}
-        existing = _action_episodes(session, alias, decision_id)
-        if len(existing) > 1:
-            raise RecursionRefusal("PARENT_ACTION_DUPLICATE")
-        if existing:
-            receipt = dict((existing[0].get("body") or {}).get("receipt") or {})
-            receipt["status"] = "REPLAY"
-            return receipt
-        current = _proposal(
-            session, parent_id, _validate_request(session, request))
-        if current.get("source") != decision.get("proposal_source"):
-            raise RecursionRefusal("PARENT_DECISION_STALE")
-        action = decision.get("action")
-        purchase = None
-        if action == ACTION_PURCHASE:
-            purchase = _perform_purchase(
-                session, parent_id, decision, request, decision_id)
-            if (purchase.get("status") in {"ADMITTED", "REPLAY"}
-                    and purchase.get("possession")
-                    == "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"):
-                action_status = "PERFORMED"
-                performed = True
-                valid_empty = False
-            else:
-                action_status = "REFUSED"
-                performed = False
-                valid_empty = True
-        elif action == ACTION_DECLINE:
-            action_status = "VALID_EMPTY"
-            performed = False
-            valid_empty = True
-        elif action == ACTION_HOLD:
-            action_status = "HELD"
-            performed = False
-            valid_empty = True
-        else:
-            raise RecursionRefusal("PARENT_DECISION_ACTION_UNKNOWN")
-        receipt = {
-            "schema": PARENT_ACTION_RECEIPT_SCHEMA,
-            "grade": DECISION_GRADE,
-            "status": action_status,
-            "decision_id": decision_id,
-            "operation_id": decision_id + ":action",
-            "actor_id": parent_id,
-            "alias": alias,
-            "root": material["root"],
-            "branch": material["branch"],
-            "clock": session.clock(),
-            "request_id": request.get("request_id"),
-            "decision_action": action,
-            "performed": performed,
-            "valid_empty": valid_empty,
-            "purchase": detached(purchase) if purchase is not None else None,
-            "material_before_source": material["source"],
-            "material_after_source": (
-                (purchase or {}).get("parent_material_source_after")
-                or material["source"]),
-            "owned_source_after": (purchase or {}).get("owned_source_after"),
-            "event_effect": (
-                "NONE" if purchase is None
-                else (purchase or {}).get("event_effect", "NONE")),
-            "possession": (
-                "NONE" if purchase is None
-                else (purchase or {}).get("possession", "NONE")),
-            "child_request": "NOT_EVALUATED",
-            "nadia_state": "NOT_READ",
-            "private_state": "SELF_ONLY_DECISION_BASIS",
-        }
-        store = session.product.store
-        with _StoreWrite(store):
-            store.append_episode(
-                session.branch_id, actor_id=alias,
-                kind=PARENT_ACTION_KIND, clock=session.clock(),
-                body={
-                    "schema": PARENT_ACTION_RECEIPT_SCHEMA,
-                    "grade": DECISION_GRADE,
-                    "root": material["root"],
-                    "branch": material["branch"],
-                    "actor_id": parent_id,
-                    "alias": alias,
-                    "decision_id": decision_id,
-                    "operation_id": decision_id + ":action",
-                    "action": action,
-                    "status": action_status,
-                    "receipt": receipt,
-                },
+    b04 = _b04_module()
+    if (b04 is None or not hasattr(b04, "_purchase_lock")
+            or not hasattr(b04, "_purchase_drum_kit")):
+        raise RecursionRefusal("PARENT_DECISION_B04_UNLOCKED_WRITER_UNAVAILABLE")
+    # B04's public purchase wrapper locks market/material first, then the
+    # parent lock. Hold the same order here and call its unlocked actual
+    # writer, so the decision revalidation and purchase stay in one lock
+    # composition instead of recursively taking the parent lock.
+    with b04._purchase_lock(session):
+        with _parent_write_lock(session):
+            return _perform_parent_decision_locked(
+                session, parent_id, decision_id=decision_id,
+                as_actor=as_actor,
             )
-        return receipt
 
 
 def read_parent_action(session, parent_id: str, decision_id: str, *,
