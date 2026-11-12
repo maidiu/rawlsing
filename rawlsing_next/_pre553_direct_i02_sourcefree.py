@@ -1,18 +1,19 @@
 """S2-B sourcefree DIRECT I02 section-stream producer — independent of v1 release.
 
 This is a substantive bounded-construction bridge, not a scientific/source
-issuer. It receives actual typed S1-B/E-compatible C11 section iterables and
-SourceReleaseManifest. It does NOT call validate_c11_source_release(), build
+issuer. It receives typed C11 family section iterables and SourceReleaseManifest.
+The live Pair1 S1-B/E decoder-to-section adapter is NOT yet established. It does NOT call validate_c11_source_release(), build
 ReplayManifest.closure_refs, create C11LogicalRelease, mint _C11_VALIDATION_SEAL
 or materialize the public/internal object graph. All public and internal
 semantic object refs, source/authority identities, typed absence declarations,
 respondent joins, native/canonical/component aliases and occurrence identities
 are checked as rows are consumed into SQLite.
 
-M16/M17/M18 use an explicitly DIFFERENT external direct replay descriptor,
-not the historical ReplayManifest. That remaining semantic equivalence, a
-competent external expected-root issuer, and S2-C physical native first-reader
-are NOT proven/issued by this bridge. It is deliberately marked DIRECT_SCHEMA
+The original v1 ReplayManifest content hash and C11LogicalRelease identity
+are reconstructed by disk-sorted, byte-identical JSON streams instead of the
+legacy closure_refs tuple. This identity equivalence has committed but not
+executed historical comparator tests; it does NOT mint the old validation
+seal, establish a competent expected-root issuer, or build S2-C physical I03. It is deliberately marked DIRECT_SCHEMA
 so a verified direct certificate cannot be substituted for a v1 sealed release.
 
 Native sourcefree I03 comparison remains a separate real-consumer test, not a
@@ -265,7 +266,7 @@ def _hash_original_replay_manifest(
 
 
 def _coverage(counts: Mapping[str, int]) -> dict[str, list[str]]:
-    """Truthful atom labels: do NOT relabel direct replay as legacy M16 seal."""
+    """Original M01–M18 atom names; streamed M16 digest is NOT seal issuance."""
     coverage = {
         "M01": ["EmpiricalUniverse"],
         "M02": ["RespondentIdentity"],
@@ -338,8 +339,9 @@ def build_sourcefree_direct_i02(
     retained for existing competent public validators; its size is separately
     bounded by manifest source declarations, not the corpus size.
 
-    This is sourcefree G1–G4 *construction capital*, not original35 source
-    equivalence, legacy replay M16–M18 parity, or native S2-C release issuance.
+    This is sourcefree G1–G4 *construction capital*. Byte-identical v1 replay
+    parity is an explicit unexecuted historical comparator hypothesis, not
+    original35 source-equivalence, private seal or S2-C release issuance.
     """
     if type(source) is not SourcefreeDirectI02Sections:
         _fail("exact sourcefree direct section input required")
@@ -536,7 +538,7 @@ def build_sourcefree_direct_i02(
                 f: source.typed_absences[f].as_dict()
                 for f in sorted(source.typed_absences)
             },
-            "historical_replay_manifest": "NOT_CONSTRUCTED_NOT_CLAIMED",
+            "historical_replay_manifest": "DIGEST_RECONSTRUCTED_NO_LEGACY_OBJECT_OR_SEAL",
         }
         direct_release = ExactRef(
             "C11_DIRECT_SOURCEFREE_RELEASE", manifest.release_id,
