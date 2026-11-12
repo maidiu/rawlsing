@@ -269,6 +269,7 @@ def _run_bounded_chain(
     v557_authority_ref: M4AuthorityRef,
     _expected_conditioner_ref: ExactRef | None = None,
     _expected_target_ref: ExactRef | None = None,
+    _verified_current_objects: bool = False,
 ) -> GT12E2BHarnessTerminal:
     """Mechanically compose existing public APIs.  Private synthetic-shape seam."""
     if type(query) is not EmpiricalQuerySpec or type(fact) is not EmpiricalFact:
@@ -288,7 +289,21 @@ def _run_bounded_chain(
     )
     if relation.typed_state != "SUPPORTED" or relation.producer_state_blocking:
         raise GT12E2BHarnessError("non-SUPPORTED FIELD FORGE relation cannot enter positive E2B")
-    admitted = c_to_d.admit_gt12_c_relation(relation)
+    # The selected genuine-current entry MUST take the exact transport-bound
+    # C→D path. Synthetic fixture proofs deliberately retain the original
+    # sourcefree-only direct path. The D receipt itself remains semantically
+    # unchanged; the entrypoint grade is not a physical-source certificate.
+    admitted = (
+        c_to_d.admit_gt12_c_relation_from_verified_current_objects(
+            relation, joint_query=query, joint_fact=fact,
+        )
+        if _verified_current_objects
+        else c_to_d.admit_gt12_c_relation(relation)
+    )
+    if _verified_current_objects and admitted.sourcefree_origin_path != (
+        "EXACT_PINNED_R1C_TRANSPORT_CONTENT__SOURCEFREE_ONLY"
+    ):
+        raise GT12E2BHarnessError("current R1C first reader lost exact provenance path")
     if admitted.admission.decision is not adm.AdmissionDecision.ADMITTED:
         raise GT12E2BHarnessError("FIELD FORGE relation did not receive exact positive PRE-V3 admission")
     _, evaluation = d_to_m4.evaluate_typed_d_to_e_at_v554(
@@ -332,6 +347,7 @@ def run_current_r1c_e2b_actual_objects(
         v554_rule_ref=binding.v554_rule_ref,
         publication_authority=binding.publication_authority,
         v557_authority_ref=binding.v557_authority_ref,
+        _verified_current_objects=True,
     )
 
 
