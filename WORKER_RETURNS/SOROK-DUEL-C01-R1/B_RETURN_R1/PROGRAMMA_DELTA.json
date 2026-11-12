@@ -1,0 +1,164 @@
+{
+  "event_id": "SOROK-DUEL-C01-B-20261112-R1",
+  "task_id": "C01",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "frozen_start_sha": "edbb4b344d54731a527fd415a965bc848ed964e1",
+  "attacked_opponent_head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
+  "implementation_sha": "0e526f043027e4256b353d42240e80d85ad39265",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Retained A's stable supporting-parent identity and same-world participation, then repaired five consequential boundaries established against A's cut: the P2Owner binding lockout, alias/stable-ID conflation with root/user identities, non-atomic registration partial states, a participation writer that trusted detached events and wrote partially, and actor access granted by a bare perception row. Registration and participation now commit as single C12 transactions; cold partials recover; the ordinary P3 reopen owner and a parent-scoped C01 owner compose. No second scheduler/owner/world/clock/ledger, no parent decision/utterance, no root replacement, no native authority.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "sha256": "baa3d5673d40a73da06620a111c7284340db2721233c95ca8c119fc8a734ef4a",
+      "symbols": [
+        "P2Owner.__init__ (root_participants binding invariant and legacy migration)",
+        "P2Owner.validate_proposal (supporting private-leak precheck)"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "sha256": "35e43d8c924d6ea30b4376ef8bed4a8af5b68dd81d636e1cf9033da4320b9c5a",
+      "symbols": [
+        "_StoreWrite",
+        "_registration_episodes",
+        "_row_from_registration",
+        "_validate_recovery_episode",
+        "_participation_episodes",
+        "_validate_participation_episode",
+        "register_supporting_actor",
+        "assert_no_private_leak",
+        "record_supporting_participation",
+        "verify_supporting_participation",
+        "read_actor_access"
+      ]
+    }
+  ],
+  "actual_reader": [
+    "P2Owner.realize consequences.supporting_participants (ordinary root-scoped owner admits a (focal, parent) S47/S42 event)",
+    "supporting_actor.read_actor_access (registration + participation episode + co_present receipt; distinct focal/parent views)",
+    "supporting_actor.read_supporting_actor (public registration/self-only private state)"
+  ],
+  "affected_queued_tasks": [
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "D02",
+    "E01",
+    "E02",
+    "F03",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "CG-A cross-input (#915/#917/#924/#928) source-pin reconciliation",
+    "Pair1 B fork-aware material readers (362719b40a35a66fa2fb1c3490db8eb5b8e9167c) matched-cut composition"
+  ],
+  "preserved_obligations": [
+    "Nadia remains the focal root actor; root actor_ids and P2Owner.actor unchanged.",
+    "Parent is a new stable supporting ID, not fixed A/B or the user actor; namespace collisions refuse.",
+    "Participation is recorded through actual C12 branch/world/perception machinery, not test-local state.",
+    "Private state is not in the world snapshot, event objective or public/child reads; only the self-only supporting read returns it.",
+    "Duplicate registration is UNCHANGED with no new rows; duplicate episodes fail closed; replay is idempotent.",
+    "The ordinary root-scoped P2Owner (P3 reopen shape) and a parent-scoped C01 owner compose in either order.",
+    "Existing P2/engine/B01/P3-owner/P6-actor-scene tests remain green.",
+    "No new owner, scheduler, person-world ledger, database or clock was added.",
+    "Native/science/rights/actor/human/protected holds remain separate."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; pre-WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/pre-B01 state roots refuse cold reopen under the new code. Same-code roots reopen exactly; no migration invented.",
+    "C01 registration/participation remain origin-branch-bound; a C12 fork copies rows but reads refuse SUPPORTING_ACTOR_ROOT_OR_BRANCH_MISMATCH. Exact incompatibility preserved and tested.",
+    "A post-admission participation refusal can still leave the inherited P2 ambiguous reservation; E03 owns composite event+participation recovery.",
+    "No full-estate run; the pre-existing P6 chronology-proof failure and full P3 vertical-slice timeout are untouched."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@0e526f043027e4256b353d42240e80d85ad39265",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py@0e526f043027e4256b353d42240e80d85ad39265",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py:42 (sqlite autocommit), 124 (branch), 151 (append_episode), 195 (record_perception), 216 (checkpoint), 323 (fork)",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/session.py:226 (read_root from the S44 root file, shared across branches)",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_ROLLING_PERSON_WORLD_OWNER_RECONCILIATION_20261111_R1.md (PR #911 b50b1282, byte-verified)",
+    "20261111_ROLLING_PERSON_WORLD_DURATION_MATERIAL_MEDIATION_R1.md (frozen programme source)"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/test_c01_b_supporting_actor.py",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/c01_b_supporting_actor.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/a_c01_p2_b01_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/p3_owner_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/engine_p6_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/evidence/p3_vertical_selected_regression.log"
+  ],
+  "negative_refs": [
+    "test_identity_namespaces_refuse_root_and_user_collisions",
+    "test_participation_writer_binds_actual_event_and_writes_atomically",
+    "test_actor_access_requires_participation_receipt",
+    "test_fork_copies_registration_but_read_is_not_yet_fork_aware",
+    "A's test_ghost_reserved_and_absent_participants_refuse_without_mutation",
+    "A's test_actor_access_is_separate_and_private_state_leak_refuses"
+  ],
+  "cold_refs": [
+    "test_registration_transaction_rolls_back_and_recovers_partial_states",
+    "test_cold_duplicate_registration_and_owner_reopen",
+    "test_owner_binding_composes_across_participant_scopes",
+    "test_legacy_binding_row_migrates_to_root_invariant"
+  ],
+  "defects_repaired": [
+    {
+      "id": "C01-B-D1",
+      "severity": "high",
+      "title": "P2Owner binding lockout across participant scopes",
+      "evidence": "Root-scoped owner then parent-scoped owner and the reverse both refused P2_OWNER_BINDING_MISMATCH on A HEAD 7e347c45d; the ordinary P3 reopen shape uses tuple(root actor_ids).",
+      "repair": "Persist root_participants as the invariant; migrate legacy participant rows; validate declared participants live."
+    },
+    {
+      "id": "C01-B-D2",
+      "severity": "high",
+      "title": "Alias/stable-ID conflation with root or user identity",
+      "evidence": "alias=root stable ID registered and read_actor_access resolved the root actor; actor_id='U' registered and read_actor_access('U') resolved the user actor.",
+      "repair": "Disjoint alias/stable-ID reservations and ACTOR_ACCESS_IDENTITY_AMBIGUOUS."
+    },
+    {
+      "id": "C01-B-D3",
+      "severity": "high",
+      "title": "Non-atomic registration; cold ghost branch alias",
+      "evidence": "Branch actor update committed before episode/world checkpoint; cold reopen left branch actor_ids containing P with no world row and re-registration refused ALIAS_RESERVED forever.",
+      "repair": "One BEGIN IMMEDIATE transaction for branch+episode+checkpoint; cold recovery of partial episode/branch-only states; duplicate-episode detection."
+    },
+    {
+      "id": "C01-B-D4",
+      "severity": "high",
+      "title": "Participation writer trusted a format-valid event and wrote partially",
+      "evidence": "Forged hash/clock/kind event mapping produced a participation episode with forged values; per-participant writes could leave a first actor recorded when a later participant refused.",
+      "repair": "Resolve the actual store event and require canonical equality; pre-validate all participants; one transaction for all receipts/episodes."
+    },
+    {
+      "id": "C01-B-D5",
+      "severity": "medium-high",
+      "title": "Bare perception row granted actor access",
+      "evidence": "A manually inserted C12 perception row for the parent with no participation episode returned PERCEIVED; severing the participation episode did not change the read.",
+      "repair": "Supporting access requires registration + participation episode + co_present receipt at the event clock/channel; bare/severed/forged receipts refuse."
+    }
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented in this sourcefree session.",
+    "measured_test_wall_s": {
+      "b_c01_supporting_actor": 23.08,
+      "a_c01_p2_b01_regression": 69.44,
+      "p3_owner_regression": 31.75,
+      "engine_p6_regression": 192.98,
+      "p3_vertical_selected_regression": 347.05
+    }
+  },
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_BINDING_ROW_MIGRATION_AND_P3_CODE_PIN_BREAK",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

@@ -18,6 +18,10 @@ from .contracts import (
     EventProposal, RealizedEvent, RecursionRefusal, StateIdentity,
     canonical, detached, digest,
 )
+from .supporting_actor import (
+    assert_no_private_leak, record_supporting_participation,
+    resolve_participants, verify_supporting_participation,
+)
 
 MATERIAL_FACT_READ_SCHEMA = "SOROK_P2_MATERIAL_FACT_READ@1"
 MATERIAL_FACT_WRITE_SCHEMA = "SOROK_P2_MATERIAL_FACT_WRITE@1"
@@ -225,25 +229,59 @@ class P2Owner:
         self.fanin = fanin
         self.case = detached(case)
         self.source = detached(source)
-        self.participants = participants
+        self.participants = tuple(participants)
         self.source_ref = "P2_INPUT:" + digest({"case": self.case, "source": self.source})
         root = fanin.session.read_root()
-        if participants != tuple(root["actor_ids"]):
-            raise RecursionRefusal("P2_PARTICIPANTS_NOT_BOUND_TO_ROOT")
-        self.actor = root["actor_ids"][0]
+        root_ids = tuple(root["actor_ids"])
+        resolve_participants(fanin.session, self.participants)
+        if root_ids[0] not in self.participants:
+            raise RecursionRefusal("P2_FOCAL_PARTICIPANT_REQUIRED")
+        self.actor = root_ids[0]
         self.db = sqlite3.connect(Path(fanin.session.state_root) / "recursion_owner.sqlite")
         self.db.execute("CREATE TABLE IF NOT EXISTS operations "
                         "(id TEXT PRIMARY KEY, proposal TEXT NOT NULL, "
                         "before_state TEXT NOT NULL, result TEXT)")
         self.db.execute("CREATE TABLE IF NOT EXISTS binding (id INTEGER PRIMARY KEY, value TEXT)")
-        binding = canonical({"root": fanin.root_hash, "branch": fanin.session.branch_id,
-                             "source": self.source_ref, "participants": participants})
+        # The binding is the original root/branch/source invariant over the
+        # root actor IDs. Declared owner participants are validated live at
+        # construction and per proposal; they are not a second invariant that
+        # can lock an ordinary P2/P3 owner out after a supporting actor enters.
+        current = {
+            "root": fanin.root_hash, "branch": fanin.session.branch_id,
+            "source": self.source_ref, "root_participants": root_ids,
+        }
+        binding = canonical(current)
         row = self.db.execute("SELECT value FROM binding WHERE id=1").fetchone()
         if row is None:
             self.db.execute("INSERT INTO binding VALUES (1,?)", (binding,))
         elif row[0] != binding:
-            self.db.close()
-            raise RecursionRefusal("P2_OWNER_BINDING_MISMATCH")
+            try:
+                stored = json.loads(row[0])
+            except (TypeError, ValueError):
+                stored = {}
+            identity_matches = (
+                stored.get("root") == current["root"]
+                and stored.get("branch") == current["branch"]
+                and stored.get("source") == current["source"]
+            )
+            stored_root = stored.get("root_participants")
+            if stored_root is not None:
+                root_matches = tuple(stored_root) == root_ids
+            else:
+                # Legacy row from the baseline or the first C01 cut: it bound a
+                # declared participant tuple. Migrate it to the root invariant
+                # when it still names this root's focal actor.
+                legacy = stored.get("participants")
+                root_matches = (
+                    isinstance(legacy, (list, tuple))
+                    and bool(legacy)
+                    and all(isinstance(value, str) for value in legacy)
+                    and root_ids[0] in legacy
+                )
+            if not (identity_matches and root_matches):
+                self.db.close()
+                raise RecursionRefusal("P2_OWNER_BINDING_MISMATCH")
+            self.db.execute("UPDATE binding SET value=? WHERE id=1", (binding,))
         self.db.commit()
 
     def snapshot(self) -> StateIdentity:
@@ -339,8 +377,20 @@ class P2Owner:
             raise RecursionRefusal("P2_OPERATION_NOT_QUALIFIED:" + proposal.operation)
         if proposal.source_refs != (self.source_ref,):
             raise RecursionRefusal("P2_ABSENT_OR_WRONG_SOURCE")
-        if proposal.participants != self.participants or not self.participants:
-            raise RecursionRefusal("P2_PARTICIPANT_SCOPE_MISMATCH")
+        resolution = resolve_participants(self.fanin.session, proposal.participants)
+        if resolution["focal_actor_id"] not in proposal.participants:
+            raise RecursionRefusal("P2_FOCAL_PARTICIPANT_REQUIRED")
+        world = self.fanin.session.world()
+        focal_position = world.positions.get(resolution["focal_alias"])
+        if not isinstance(focal_position, str) or not focal_position.strip():
+            raise RecursionRefusal("P2_FOCAL_POSITION_UNAVAILABLE")
+        for participant in resolution["participants"]:
+            if participant["kind"] == "SUPPORTING_ACTOR":
+                if (world.positions.get(participant["alias"])
+                        != focal_position):
+                    raise RecursionRefusal("P2_SUPPORTING_PARTICIPANT_NOT_COPRESENT")
+        assert_no_private_leak(
+            self.fanin.session, proposal.document(), proposal.participants)
         if set(proposal.circumstances) - {"history_refs", "language_context"}:
             raise RecursionRefusal("P2_UNSUPPORTED_EVENT_CIRCUMSTANCES")
         if proposal.circumstances.get("language_context") is not None:
@@ -469,6 +519,12 @@ class P2Owner:
             result = RealizedEvent(**body)
             if self.snapshot() != result.after:
                 raise RecursionRefusal("P2_REPLAY_STATE_MISMATCH")
+            supporting = (result.consequences.get("supporting_participants") or [])
+            if supporting:
+                verify_supporting_participation(
+                    self.fanin.session,
+                    event_id=supporting[0]["event_id"], participants=supporting,
+                )
             return result
         try:
             if self.snapshot() != expected:
@@ -517,16 +573,37 @@ class P2Owner:
             "s43": _s43_summary(language),
             "c9": _c9_summary(conditioning),
         }
+        root_ids = tuple(s.read_root()["actor_ids"])
+        supporting_ids = tuple(participant for participant in proposal.participants
+                               if participant not in root_ids)
+        supporting, participation_status = [], "NONE"
+        if supporting_ids:
+            action_event_id = read.get("action_event_id") or ""
+            action_event = s.event(action_event_id) if action_event_id else None
+            if action_event:
+                supporting = record_supporting_participation(
+                    s, event=action_event, participants=supporting_ids,
+                )
+                participation_status = "RECORDED"
+            else:
+                participation_status = "HELD_NO_PERFORMED_EVENT"
         after = self.snapshot()
         consequence = {
             "grade": self.grade,
+            "focal_actor": self.actor,
             "owner_state_changed": expected.state_hash != after.state_hash,
             "material_state_changed": material_before != detached(s.world().actor_state),
             "interval": detached(interval_result),
             "immediate_response": observation["c9"],
             "durable_psychological_transition": "MISSING_RULE",
             "independent_B": "CONTROLLED_SOURCEFREE_PARTICIPANT_ONLY",
+            "supporting_participation": participation_status,
+            "supporting_participants": supporting,
         }
+        if supporting:
+            verify_supporting_participation(
+                s, event_id=supporting[0]["event_id"], participants=supporting,
+            )
         result = RealizedEvent(
             operation_id, proposal_hash, expected, after, "REALIZED",
             {"event": detached(read), "interval": detached(interval_result)},
