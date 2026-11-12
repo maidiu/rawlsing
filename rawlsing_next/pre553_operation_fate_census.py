@@ -94,6 +94,7 @@ class FrozenInputCensus:
     scientific_fates: tuple[ScientificFate, ...]
     source_census_ref: str
     science_census_ref: str
+    deferred_scope_records: tuple[Mapping[str, Any], ...] = ()
     grade: str = SCOPE
 
     def material(self) -> Mapping[str, Any]:
@@ -103,6 +104,7 @@ class FrozenInputCensus:
             "scientific_fates": [x.material() for x in self.scientific_fates],
             "source_census_ref": self.source_census_ref,
             "science_census_ref": self.science_census_ref,
+            "deferred_scope_records": list(self.deferred_scope_records),
         }
 
     @property
@@ -171,6 +173,10 @@ def verify_frozen_inputs(
         [row.material() for row in census.scientific_fates]
     ):
         raise CensusRefusal("SCIENCE_CENSUS_HASH_DRIFT")
+    if semantic_hash(list(census.deferred_scope_records)) != semantic_hash(
+        list(frontier.deferred)
+    ):
+        raise CensusRefusal("DEFERRED_SCOPE_RECORDS_LOST_OR_FABRICATED")
     sources = _unique(census.source_candidates, "SOURCE_CANDIDATE")
     scientific = _unique(census.scientific_fates, "SCIENTIFIC_FATE")
     _same_ids(set(sources), set(scientific), "SOURCE_VS_SCIENCE")
@@ -231,6 +237,18 @@ def verify_frozen_inputs(
             ("reason", fate.reason),
         ):
             _nonempty(value, label)
+        expected_science_roots = (
+            frontier.u_item_root or "ABSENT:TEST_ONLY_U_ITEM",
+            frontier.u_unit_root or "ABSENT:TEST_ONLY_U_UNIT",
+            frontier.u_app_root or "ABSENT:TEST_ONLY_U_APP",
+            frontier.e_pre_root or "ABSENT:NO_ORIGINAL_EPRE",
+        )
+        supplied_science_roots = (
+            fate.u_item_ref, fate.u_unit_ref, fate.u_app_ref,
+            fate.e_pre_ref_or_absence,
+        )
+        if supplied_science_roots != expected_science_roots:
+            raise CensusRefusal("SCIENTIFIC_U_EPRE_ROOT_DRIFT", op_id)
         if fate.disposition not in ELIGIBILITY_STATES:
             raise CensusRefusal("INVALID_SCIENTIFIC_FATE", op_id)
         if fate.disposition != op.disposition:
@@ -238,6 +256,11 @@ def verify_frozen_inputs(
         counts[op.disposition] += 1
     if dict(counts) != {k: v for k, v in frontier.disposition_counts.items() if v}:
         raise CensusRefusal("FRONTIER_DISPOSITION_COUNT_DRIFT", dict(counts))
+    if len(set(frontier.pending_operation_ids)) != len(frontier.pending_operation_ids):
+        raise CensusRefusal("DUPLICATE_PENDING_OPERATION_ID")
+    if any(op_id not in operations or operations[op_id].disposition != "ELIGIBLE"
+           for op_id in frontier.pending_operation_ids):
+        raise CensusRefusal("PENDING_OPERATION_OUTSIDE_ELIGIBLE_CENSUS")
     axes = frontier.axis_conservation()
     if not (axes["considered_equals_eligibility"] and
             axes["execution_equals_considered"] and
@@ -254,6 +277,8 @@ def verify_frozen_inputs(
         "science_census_ref": census.science_census_ref,
         "frozen_census_hash": census.content_hash,
         "frontier_hash": frontier.content_hash,
+        "deferred_scope_count": len(frontier.deferred),
+        "deferred_scope_records": list(frontier.deferred),
     }
 
 
@@ -262,7 +287,11 @@ def execute_censused_sourcefree(
     policy: GrammarPolicy, frontier: ScientificFrontier, bundle: Any,
     as_of: str, host: str, purpose: str, source_factory: Callable[[Any], Any],
 ) -> Mapping[str, Any]:
-    """Actual existing R03 compiler -> U43 issued reader -> I05 receipt/fact.
+    """Real R03 compiler -> TEST_ONLY U43 envelope -> Batch/C11/I05 facts.
+
+    This tests the existing bounded R03 issued first consumer; it does not
+    invoke U43's separate normal/resume production executor or mint a CURRENT
+    source/science decision. Those remain S1-D and original-issuer boundaries.
 
     Returns a frozen-scope audit only AFTER both pre-compilation and real
     post-execution anti-joins succeed. Never opens an original source on HOLD.
