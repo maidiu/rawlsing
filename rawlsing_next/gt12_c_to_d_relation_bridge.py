@@ -143,8 +143,45 @@ def admit_gt12_c_relation(relation: ff.ExactConditionalSupportProfile) -> GT12CT
     receipt = adm.evaluate_gt2_relation_admission(adm.RelationAdmissionRequest(evidence), rule)
     return GT12CToDAdmissionResult(r.ref, evidence, rule, receipt)
 
+def admit_gt12_c_relation_from_fixed_current_transport(
+    relation: ff.ExactConditionalSupportProfile,
+) -> GT12CToDAdmissionResult:
+    """Positive sourcefree C→D admission bound to exact committed current GT12 transport.
+
+    The fixed transport loader verifies its own immutable release/replay manifest
+    and current fact/query identities. Reconstructing the relation against those
+    *actual* objects proves this relation came from that committed transport,
+    not merely from a caller-supplied source label or a matching risk-set name.
+    It does NOT prove original SAV/native source access or current science rights.
+    Legacy admit_gt12_c_relation remains a bounded sourcefree typed admission,
+    not a source-authenticating API.
+    """
+    r = _validate(relation)
+    if r.typed_state != "SUPPORTED" or r.producer_state_blocking:
+        raise GT12CToDBridgeError("fixed current positive transport requires SUPPORTED relation")
+    if (r.producer_permission_ceiling != (adm.GT2_TARGET_USE,)
+            or r.relation_permission_ceiling != (adm.GT2_TARGET_USE,)):
+        raise GT12CToDBridgeError("fixed current transport refuses inferred permission widening")
+    from rawlsing_next.pre553_repo_native_current_payload import (
+        load_current_gt2_query_fact_from_committed_transport,
+    )
+    query, fact = load_current_gt2_query_fact_from_committed_transport()
+    if (r.producer_query_ref != query.ref or r.producer_fact_ref != fact.ref
+            or r.producer_replay_ref != fact.replay_ref):
+        raise GT12CToDBridgeError("relation is not the exact fixed current fact/query/replay")
+    canonical = ff.produce_exact_conditional_support_profile(
+        joint_fact=fact, joint_query=query,
+        conditioner_ref=query.target_refs[0],
+        target_ref=query.target_refs[1],
+        producer_permission_ceiling=(adm.GT2_TARGET_USE,),
+        relation_permission_ceiling=(adm.GT2_TARGET_USE,),
+    )
+    if canonical.ref != r.ref or canonical.semantic_projection() != r.semantic_projection():
+        raise GT12CToDBridgeError("relation differs from fixed current C11 transport replay")
+    return admit_gt12_c_relation(r)
+
 def replay_gt12_c_to_d_admission(relation: ff.ExactConditionalSupportProfile, historical: adm.Prev3FieldForgeRelationAdmission) -> adm.Prev3FieldForgeRelationAdmission:
     e = bridge_gt12_c_relation_to_d_evidence(relation); rule = make_gt12_c_to_d_admission_rule(relation)
     return adm.replay_gt2_relation_admission(relation=e, rule=rule, historical_receipt=historical)
 
-__all__ = ["BRIDGE_CONTRACT_ID","CLOSURE_PROGRAM_COMMIT","EXPECTED_RELATION_OWNER","EXPECTED_RELATION_FAMILY","GT12CToDBridgeError","GT12CToDBridgeTypeError","GT12CToDAdmissionResult","frozen_gt12_c_relation_rule_ref","bridge_gt12_c_relation_to_d_evidence","make_gt12_c_to_d_admission_rule","admit_gt12_c_relation","replay_gt12_c_to_d_admission"]
+__all__ = ["BRIDGE_CONTRACT_ID","CLOSURE_PROGRAM_COMMIT","EXPECTED_RELATION_OWNER","EXPECTED_RELATION_FAMILY","GT12CToDBridgeError","GT12CToDBridgeTypeError","GT12CToDAdmissionResult","frozen_gt12_c_relation_rule_ref","bridge_gt12_c_relation_to_d_evidence","make_gt12_c_to_d_admission_rule","admit_gt12_c_relation","admit_gt12_c_relation_from_fixed_current_transport","replay_gt12_c_to_d_admission"]
