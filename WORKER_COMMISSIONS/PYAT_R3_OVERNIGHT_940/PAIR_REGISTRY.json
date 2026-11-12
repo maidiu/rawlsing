@@ -260,7 +260,11 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "model_actual_turn": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -272,7 +276,7 @@
             }
           },
           "opponent_session_id": "ses_e3120ba49ffeWl7IZUTmL7mjZB",
-          "job_id": "pyat940-s1d-a01",
+          "job_id": "pyat940-s1d-a02-counter",
           "actual_first_turn_model": {
             "id": "msg_1cee509a30010I4a0764nsXHlS",
             "type": "assistant",
@@ -287,8 +291,23 @@
               "completed": 1794472491458
             }
           },
-          "pid": 15742,
-          "state": "RETURNED"
+          "pid": 56522,
+          "state": "RUNNING",
+          "received_head": "dfdbddadc946f9a82cb3008148cb9669f8632ba4",
+          "actual_counter_first_turn_model": {
+            "id": "msg_1cf62f4a6001fO1FFAsb20igYM",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794480731444,
+              "streamed": 1794480740792,
+              "completed": 1794480740894
+            },
+            "error": null
+          }
         },
         "B": {
           "session_id": "ses_e3120ba49ffeWl7IZUTmL7mjZB",
@@ -316,7 +335,7 @@
             }
           },
           "opponent_session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
-          "state": "RUNNING",
+          "state": "RETURNED",
           "job_id": "pyat940-s1d-b01",
           "received_head": "1f30bc549ada2f5cf555b1fe1a4f519d0bab42ba",
           "pid": 40327,
@@ -335,8 +354,8 @@
           }
         }
       },
-      "state": "B_RUNNING",
-      "active_role": "B",
+      "state": "A_COUNTER_RUNNING",
+      "active_role": "A",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -374,18 +393,18 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "active_job": "pyat940-s1d-b01",
+      "active_job": "pyat940-s1d-a02-counter",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s1d-b01",
-        "child_pid": 40327,
-        "supervisor_pid": 40326,
-        "observer_pid": 40328,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1d-b01",
+        "job_id": "pyat940-s1d-a02-counter",
+        "child_pid": 56522,
+        "supervisor_pid": 56521,
+        "observer_pid": 56523,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1d-a02-counter",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 40328,
+        "pid": 56523,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
@@ -412,7 +431,23 @@
       },
       "custody_comment": {
         "issue": 918,
-        "comment_id": 6820577091
+        "comment_id": 6821636214
+      },
+      "b_return": {
+        "job_id": "pyat940-s1d-b01",
+        "exit_code": 0,
+        "candidate_head": "dfdbddadc946f9a82cb3008148cb9669f8632ba4",
+        "implemented_sha": "2293d213a1511c7bcee7bd15b4cccd9c0f4d2463",
+        "remote_verified": true,
+        "disposition": "B_CONSTRUCTION_CANDIDATE_ONLY",
+        "grade": "S2_SOURCEFREE",
+        "claims": "39court+7cache+6custody+55nativePASS; worldbinding17PASS/1blockedcallerRED",
+        "defects_repaired": [
+          "completedcacheoutput/receipthashmismatch",
+          "unguardedrestoreprotectedparse"
+        ],
+        "blocked_ownership": "test_universal_world_binding.py requiredresolvercallsiteREADONLY",
+        "g5": "NOT_RUN"
       }
     },
     {
@@ -462,7 +497,7 @@
             }
           },
           "pid": 51930,
-          "state": "RUNNING",
+          "state": "STOPPED_READY_FOR_FOCUSED_G5",
           "received_head": "16aa624c7ef99fe0c0f3affd4a5770fb1edefff0",
           "actual_counter_first_turn_model": {
             "id": "msg_1cf2bd306001cpOH1LnxaH3loc",
@@ -536,8 +571,8 @@
           }
         }
       },
-      "state": "F08_EXACT_REPAIR_RUNNING",
-      "active_role": "A",
+      "state": "G5_F08_RECHECK_RUNNING",
+      "active_role": "G5_NONAUTHOR",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -574,18 +609,18 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "REVISE_EXACT_DEFECT",
-      "active_job": "pyat940-s2f-f08-repair-r01",
+      "active_job": "pyat940-s2f-g5-f08-recheck-r01",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s2f-f08-repair-r01",
-        "child_pid": 51930,
-        "supervisor_pid": 51929,
-        "observer_pid": 51931,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-f08-repair-r01",
+        "job_id": "pyat940-s2f-g5-f08-recheck-r01",
+        "child_pid": 57315,
+        "supervisor_pid": 57314,
+        "observer_pid": 57316,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-g5-f08-recheck-r01",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 51931,
+        "pid": 57316,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
@@ -610,7 +645,7 @@
       },
       "custody_comment": {
         "issue": 919,
-        "comment_id": 6821418978
+        "comment_id": 6821636609
       },
       "b_return": {
         "job_id": "pyat940-s2f-b01",
@@ -649,12 +684,12 @@
         "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s2f-g5",
         "branch": "agent/pyat940-s2f-g5-r1",
-        "state": "WAIT_EXACT_DEFECT_REPAIR",
-        "job_id": "pyat940-s2f-g5-r01",
-        "tested_candidate_head": "34f2fee4547ac67ee4648f4ff93d7b8aad4898ef",
-        "tested_code_sha": "588d42fde9e7428114e6a45149d3b4754de9cb0f",
+        "state": "RUNNING",
+        "job_id": "pyat940-s2f-g5-f08-recheck-r01",
+        "tested_candidate_head": "eb4ba03c7da24cc401427dabb42c1ca6338d4f71",
+        "tested_code_sha": "de68c7739b71daae9d4c06b2ac1ddb2a5a7a4fec",
         "independent_of_both_A_B": true,
-        "pid": 43624,
+        "pid": 57315,
         "actual_first_turn_model": {
           "id": "msg_1cf3e8fce001z5lnpmKyRymmyS",
           "model": {
@@ -666,6 +701,17 @@
             "created": 1794478346346,
             "streamed": 1794478353166,
             "completed": 1794478353393
+          }
+        },
+        "actual_f08_recheck_first_turn_model": {
+          "id": "msg_1cf641afd001rMn74U5F7iHLbe",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "time": {
+            "created": 1794480806751
           }
         }
       },
@@ -686,7 +732,16 @@
         "independence": "distinct nonauthor other than both A/B",
         "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE"
       },
-      "bounded_g5_repair_count": 1
+      "bounded_g5_repair_count": 1,
+      "f08_repair_return": {
+        "job_id": "pyat940-s2f-f08-repair-r01",
+        "exit_code": 0,
+        "candidate_head": "eb4ba03c7da24cc401427dabb42c1ca6338d4f71",
+        "implemented_sha": "de68c7739b71daae9d4c06b2ac1ddb2a5a7a4fec",
+        "remote_verified": true,
+        "disposition": "REPAIRED_AUTHOR_CLAIM_FOCUSED_G5_PENDING",
+        "claims": "actualG5crashreproREDtoGREEN,144testsPASS; livePIDtemp/legacyUUIDlimitreported; consumeridentitiesunchanged"
+      }
     }
   ],
   "created_utc": "2026-11-12T08:28:21.436010+00:00",
