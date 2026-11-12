@@ -372,6 +372,28 @@ def verify_frozen_inputs(
         raise CensusRefusal("FRONTIER_DISPOSITION_COUNT_DRIFT", dict(counts))
     if len(set(frontier.pending_operation_ids)) != len(frontier.pending_operation_ids):
         raise CensusRefusal("DUPLICATE_PENDING_OPERATION_ID")
+    # R61 marks eligible operations PENDING when a bounded enumeration
+    # defers execution. R03 uses pending_operation_ids to exclude them from
+    # lowering; if that list is truncated while operation fates remain PENDING,
+    # a jointly rehashed census can actually issue work outside the budget.
+    # Conserve the *two* independent frontier representations of pending fate.
+    pending_from_rows = {
+        op_id for op_id, op in operations.items()
+        if op.execution_state == "PENDING"
+    }
+    pending_from_list = set(frontier.pending_operation_ids)
+    if pending_from_rows != pending_from_list:
+        raise CensusRefusal("PENDING_FATE_CENSUS_DRIFT", {
+            "missing_from_pending_list": sorted(pending_from_rows - pending_from_list),
+            "unmarked_pending_ids": sorted(pending_from_list - pending_from_rows),
+        })
+    if frontier.budget_state not in {"COMPLETE", "PARTIAL"} or (
+        (frontier.budget_state == "PARTIAL") != bool(pending_from_list)
+    ):
+        raise CensusRefusal("BUDGET_STATE_FATE_DRIFT", {
+            "declared_budget_state": frontier.budget_state,
+            "pending_count": len(pending_from_list),
+        })
     if any(op_id not in operations or operations[op_id].disposition != "ELIGIBLE"
            for op_id in frontier.pending_operation_ids):
         raise CensusRefusal("PENDING_OPERATION_OUTSIDE_ELIGIBLE_CENSUS")
