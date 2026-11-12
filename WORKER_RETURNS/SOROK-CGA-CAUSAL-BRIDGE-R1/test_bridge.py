@@ -21,6 +21,7 @@ if str(P6) not in sys.path:
 import run_p6  # noqa: E402
 from developmental_recursion.contracts import RecursionRefusal  # noqa: E402
 from sourcefree_p3_bridge import qualified_p3_read  # noqa: E402
+from actor_scene_context import recent_self_actions  # noqa: E402
 
 
 def _run(state, command, *, interpret=None, realize=None, bridge=False, **kwargs):
@@ -50,6 +51,9 @@ def _actual_state(state):
         packet = qualified_p3_read(
             owner, session, project=scope["project"], counterpart=scope["counterpart"],
             as_of=session.world().clock,
+            interlocutor_role=scope["interlocutor_role"],
+            relation_ref=scope["relation_ref"],
+            actor_observed=bool(recent_self_actions(session)),
         )
         speeches = [
             event for event in session.events()
@@ -134,7 +138,9 @@ def test_p3_to_p6_source_registry_and_clock_sever_then_restore(tmp_path, monkeyp
         session = owner.base_owner.fanin.session
         scope = json.loads((state / "p4_receipts.json").read_text())["scope"]
         kwargs = dict(project=scope["project"], counterpart=scope["counterpart"],
-                      as_of=session.world().clock)
+                      as_of=session.world().clock, interlocutor_role=scope["interlocutor_role"],
+                      relation_ref=scope["relation_ref"],
+                      actor_observed=bool(recent_self_actions(session)))
         original = qualified_p3_read(owner, session, **kwargs)
         assert len(original["records"]) == 1
         initial_head = owner.store.head()
