@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace, fields, is_dataclass
 from fractions import Fraction
+from types import MappingProxyType
 import hashlib
 import math
 from typing import Any, Callable, Iterable, Mapping
@@ -23,7 +24,7 @@ from rawlsing_next.pre553_c11_integrity import (
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_objects import (
-    AuthorityRef, AuthoritySnapshot, EmpiricalCoordinateFact, EmpiricalPredicate,
+    AuthorityRef, AuthoritySnapshot, CanonicalSemanticObject, EmpiricalCoordinateFact, EmpiricalPredicate,
     EmpiricalQuerySpec, EmpiricalUniverse, ExactRef, RespondentEvent,
     RoutingEligibilityFact, SourceUniverseRelation, WeightMeasureFact,
     authority_ref, canonicalize, exact_ref, semantic_hash,
@@ -264,6 +265,45 @@ class ExactPhysicalCellStream:
         return self.cell_iter_factory()
 
 
+def _freeze_governed_input(value: Any) -> Any:
+    """Detach mutable rule data once, before any physical-stream callback.
+
+    Frozen dataclasses are shallow. A mutable response/occurrence/weight or
+    coordinate subvalue must not change *during* the physical-cell iterator
+    and then be restored before the entry/exit cache-key comparison. Canonical
+    semantic and internal C11 records already own immutable identities and
+    remain under their original validators, not a duplicated representation.
+    This private snapshot does not issue scientific or source permission.
+    """
+    if isinstance(value, (ExactRef, AuthorityRef, TypedAbsence,
+                          CanonicalSemanticObject, C11InternalRecord)):
+        return value
+    if isinstance(value, Mapping):
+        return MappingProxyType({
+            key: _freeze_governed_input(item)
+            for key, item in value.items()
+        })
+    if isinstance(value, (tuple, list)):
+        items = tuple(_freeze_governed_input(item) for item in value)
+        if isinstance(value, tuple) and all(a is b for a, b in zip(items, value)):
+            return value
+        return items
+    if isinstance(value, (set, frozenset)):
+        # Sets have no lawful mutable descendants as members. Make the
+        # container immutable without reinterpreting its semantic elements.
+        return frozenset(value)
+    if is_dataclass(value):
+        transformed = {
+            field.name: _freeze_governed_input(getattr(value, field.name))
+            for field in fields(value)
+        }
+        if all(transformed[field.name] is getattr(value, field.name)
+               for field in fields(value)):
+            return value
+        return replace(value, **transformed)
+    return value
+
+
 def _cache_projection_preimage(value: Any) -> Any:
     """Lossless cache identity for the governed input (not a new authority).
 
@@ -320,6 +360,14 @@ class GovernedC11Projection:
     slot_owner_sets: tuple[PhysicalSlotOwnerSet, ...] = ()
 
     def __post_init__(self):
+        # Copy and deeply freeze rule-carrier descendants at the source-side
+        # boundary. A caller may mutate its own mapping after construction;
+        # that mutation must never alter the issued projection consumed by I02.
+        for field in fields(self):
+            original = getattr(self, field.name)
+            frozen = _freeze_governed_input(original)
+            if frozen is not original:
+                object.__setattr__(self, field.name, frozen)
         exact_ref(self.projection_identity_ref, "projection_identity_ref")
         _sha(self.expected_source_sha256, "expected_source_sha256")
         if self.source_snapshot_retention_ref.content_hash != self.expected_source_sha256:
