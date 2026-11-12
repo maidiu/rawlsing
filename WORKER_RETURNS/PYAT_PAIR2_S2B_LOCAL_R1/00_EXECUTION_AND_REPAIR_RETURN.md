@@ -77,6 +77,11 @@ Final result: **129 passed, 0 failed, 0 skipped** in 24.71 s; process max RSS
 Per-file counts: direct 26, external 29, verified range 26, empirical query 32,
 repository ingest 16.
 
+GitHub Actions runner assignment remained unavailable. Run `43314303601` at
+code/docs cut `1ce6e8c1ae916e69a62e5560a14e7d57ee562374` failed with an empty
+`runner_name` and zero executed steps. It is not counted as test execution;
+the Linux court above is the actual executed evidence.
+
 ### 3.3 Standalone SQLite attack reproduction
 
 ```bash
