@@ -24,7 +24,7 @@
   "b_weaknesses_refuted_or_repaired": [
     {
       "case": "B-D1 did not bind every retained receipt's owned empirical/validation facts to the disposition/bundle fact closure.",
-      "evidence": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/b_cut_receipt_fact_omission_red.txt and test_pyat960_s2g_a_counter_subset.py",
+      "evidence": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/b_cut_receipt_fact_omission_red.txt, b_cut_receipt_fact_omission_acceptance.json, and test_pyat960_s2g_a_counter_subset.py",
       "id": "A-C01",
       "repair": "At 2beada4a, _m1_evidence_binding requires every closure receipt owned by the disposition to have all empirical/validation fact refs in the disposition, bundle and closure fact sets. The mutant now raises 'M1 disposition omits a fact owned by a retained discovery receipt'; base artifact remains exact.",
       "reproduced_at_b_cut": "0071aefb accepted a mutant artifact root 92ba894b4fa08916... in which the consumer receipt's fact was removed from the M1 disposition/bundle; actual consumer LEARNED_CONSUMER_EXACT_SUPPORTED 2690cdbe....",
@@ -45,6 +45,7 @@
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
   "disposition": "HOLD_EXTERNAL",
   "evidence": {
+    "b_cut_acceptance": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/b_cut_receipt_fact_omission_acceptance.json",
     "b_cut_red": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/b_cut_receipt_fact_omission_red.txt",
     "counter_green": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/selected_153.txt",
     "handoff": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/00_HANDOFF.md",

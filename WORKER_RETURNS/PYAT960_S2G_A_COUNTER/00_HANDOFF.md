@@ -64,6 +64,7 @@ consumer hash: 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597
 This is the same frozen G1/G2 failure class B identified: the M1 product was not the product of the evidence owning the consumer receipt. B's B-D1 repair caught a foreign chain but not a same-closure receipt/fact omission. The pre-repair RED is preserved in:
 
 - `evidence/b_cut_receipt_fact_omission_red.txt`
+- `evidence/b_cut_receipt_fact_omission_acceptance.json` (mutant root `92ba894b4fa08916c7438ad0e171550322f8f4863295ed58dadca1af80191793`, consumer `2690cdbe...`, `ACCEPTED_AT_B_CUT`)
 
 The exact RED record is `B_CUT_RED Failed: DID NOT RAISE` from the counter test run against B cut `0071aefb`.
 
