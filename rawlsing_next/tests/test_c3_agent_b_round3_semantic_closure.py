@@ -203,3 +203,40 @@ def test_query_specific_issuance_authority_is_not_silently_dropped(agent_a_round
         _produce(ff, forged_query, forged_fact, c, target)
     restored = _produce(ff, q, f, c, target)
     assert bridge.admit_gt12_c_relation(restored).admission.decision is adm.AdmissionDecision.ADMITTED
+
+
+def test_missing_query_authority_preserves_existing_typed_negative():
+    """An issuer gap is a blocker, never an excuse to drop a valid negative."""
+    q, f, c, target = _objects(fact_state="OBSERVED_ZERO")
+    foreign = AuthorityRef(
+        "UNISSUED-NEGATIVE-QUERY-OPERATOR", "R1",
+        semantic_hash({"c3-r3": "negative-query-grant"}),
+    )
+    q_fields = dict(q.semantic_fields)
+    q_fields["query_authority_refs"] = (foreign,)
+    unresolved = EmpiricalQuerySpec(
+        typed_state="UNRESOLVED",
+        authority_snapshot_refs=q.authority_snapshot_refs,
+        dependency_refs=q.dependency_refs,
+        producer_replay_locator_or_reference_root=q.producer_replay_locator_or_reference_root,
+        **q_fields,
+    )
+    f_fields = dict(f.semantic_fields)
+    f_fields["empirical_query_spec_ref"] = unresolved.ref
+    f_deps = tuple(unresolved.ref if exact_ref(ref) == q.ref else ref
+                   for ref in f.dependency_refs)
+    negative = EmpiricalFact(
+        typed_state=f.typed_state,
+        authority_snapshot_refs=f.authority_snapshot_refs,
+        dependency_refs=f_deps,
+        producer_replay_locator_or_reference_root=f.producer_replay_locator_or_reference_root,
+        **f_fields,
+    )
+    assert negative.typed_state == "OBSERVED_ZERO"
+    result = _produce(ff, unresolved, negative, c, target)
+    assert result.typed_state == "OBSERVED_ZERO"
+    assert result.producer_state_blocking
+    assert not result.conditional_count_profile
+    downstream = bridge.admit_gt12_c_relation(result)
+    assert downstream.admission.decision is adm.AdmissionDecision.UNRESOLVED
+    assert downstream.admission.target_use_permissions == ()
