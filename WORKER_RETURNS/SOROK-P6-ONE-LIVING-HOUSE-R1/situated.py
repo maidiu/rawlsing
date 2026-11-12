@@ -217,17 +217,22 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
             ):
                 return admitted(event, "P6_OUTWARD_CURRENT_OPERATION_DERIVED")
 
-    # For near-term contextual lists, only new observations strictly after
-    # this interval began may qualify. Same-clock past context is not a new
-    # participant observation. Self-action helper already source-validates
-    # actor ownership and actor perception; recheck at the current read cut.
+    # For near-term lists, require the exact rows reissued by the existing
+    # actor-local source readers. A caller cannot turn a real event into an
+    # invented perception by modifying a context row.
+    verified_self = recent_self_actions(session)
+    verified_speech = recent_speech(session)
     for row in packet["recent_self_actions"]:
+        if row not in verified_self:
+            continue
         event = world_event(row)
         if (event is not None and event["clock"] > start
                 and (event["event_id"], event["clock"]) in perceived
                 and event.get("actor_id") == "A"):
             return admitted(event, "P6_ACTOR_PERCEIVED_CURRENT_SELF_ACTION")
     for row in packet["recent_speech"]:
+        if row not in verified_speech:
+            continue
         event = world_event(row)
         if (event is not None and event["clock"] > start
                 and (event["event_id"], event["clock"]) in perceived
