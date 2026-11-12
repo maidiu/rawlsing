@@ -209,3 +209,144 @@ def test_h30_pages_are_bounded_and_no_inventory_method_exists():
     assert all_pages == 64
     assert not hasattr(rows, "inventory_refs")
     assert peak < 64 * 1024 * 1024  # narrow pilot only, not 100k/6GiB S2-C
+
+
+def _multi_i03_source(tag):
+    """Actual I02 accepted same-respondent 2-occurrence, repeated-value source."""
+    candidate = _candidate(tag, event_kind="UNORDERED_MULTISELECT_SET")
+    repo = C11Repository()
+    result = ingest_c11_source_release(candidate, repo)
+    assert result.accepted, result.errors
+    return {
+        "repo": repo, "release_ref": result.release_ref,
+        "universe": candidate.empirical_universes[0],
+        "respondents": {"R1": candidate.respondent_identities[0]},
+        "qrefs": {"Y": candidate.question_variable_bindings[0].native_question_ref},
+        "risk_refs": {"R": candidate.routing_eligibility_facts_or_exact_rules[0].risk_set_ref},
+        "source_auth": candidate.authority_snapshots[0],
+        "authorities": candidate.authority_snapshots,
+    }
+
+
+def test_h26_two_same_respondent_occurrences_actual_native_i03_fact_replay():
+    source = _multi_i03_source("s2a-h26-real-multiple")
+    qa = _query_authority("s2a-h26-real-multiple")
+    pred = _branch_predicate(source, qa, tag="s2a-h26-real-multiple")
+    initial = _query(source, qa, pred, ("Y",), tag="s2a-h26-real-multiple")
+    shape = dict(initial.target_arity_and_topology)
+    component = dict(shape["components"][0])
+    component["topology"] = "UNORDERED_MULTISELECT_SET"
+    component["domain"] = [["SAME-VALUE"]]
+    shape["components"] = [component]
+    query = replace(initial, target_arity_and_topology=shape)
+    original = _run(source, qa, pred, query)
+    assert original.facts[0].typed_state == "SUPPORTED"
+    assert original.facts[0].raw_denominator_support == 1
+
+    witness, root = _trusted(source)
+    _install_i03(source, witness, root)
+    assert _run(source, qa, pred, query) == original
+    respondent = source["respondents"]["R1"].ref.key
+    key = (respondent, "native", source["qrefs"]["Y"].key)
+    original_postings = _canonical_postings(source, witness)
+    assert len(original_postings[key]) == 2
+    corrupted = dict(original_postings)
+    corrupted[key] = original_postings[key][:-1]  # same-value second occurrence disappears
+    _install_i03(source, witness, root, postings=corrupted)
+    denied = _run(source, qa, pred, query)
+    assert denied.facts[0].typed_state == "INTEGRITY_FAILURE"
+    assert denied != original
+    _install_i03(source, witness, root)
+    assert _run(source, qa, pred, query) == original
+
+
+def test_h27_real_i02_authorized_canonical_and_component_binding_omission():
+    """Do not count a fabricated alias as qualified: build it through I02."""
+    from rawlsing_next.tests.test_pre553_c11_repository_ingest import (
+        _authority, _ref,
+    )
+    from rawlsing_next.pre553_c11_integrity import QuestionVariableBinding
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    old = _candidate("s2a-authorized-alias", event_kind="UNORDERED_MULTISELECT_SET")
+    mapping = _authority(
+        "s2a-canonical", "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        families=("RespondentEvent@1.0.0",),
+    )
+    canonical = _ref("QUESTION_CANONICAL", "s2a-Q")
+    component = _ref("QUESTION_COMPONENT", "s2a-Q-component")
+    original_binding = old.question_variable_bindings[0]
+    binding = QuestionVariableBinding(
+        empirical_universe_ref=original_binding.empirical_universe_ref,
+        native_question_ref=original_binding.native_question_ref,
+        instrument_question_version=original_binding.instrument_question_version,
+        canonical_question_ref_or_typed_absence=canonical,
+        component_subitem_ref_or_typed_absence=component,
+        semantic_authority_ref=mapping.authority_ref,
+        topology_authority_ref=original_binding.topology_authority_ref,
+    )
+    new_events = []
+    for event in old.respondent_events:
+        fields = dict(event.semantic_fields)
+        fields.update(
+            canonical_question_ref_if_authorized=canonical,
+            component_or_subitem_ref=component,
+            value_transform_authority_ref=mapping.authority_ref,
+        )
+        new_events.append(RespondentEvent(
+            typed_state=event.typed_state,
+            authority_snapshot_refs=(*event.authority_snapshot_refs, mapping.authority_ref),
+            dependency_refs=event.dependency_refs,
+            producer_replay_locator_or_reference_root=event.producer_replay_locator_or_reference_root,
+            **fields,
+        ))
+    counts = dict(old.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["AuthoritySnapshot"] += 1
+    manifest = replace(
+        old.source_release_manifest,
+        declared_authority_snapshot_refs=(
+            *old.source_release_manifest.declared_authority_snapshot_refs,
+            mapping.authority_ref,
+        ),
+        declared_record_counts_by_logical_family=counts,
+    )
+    candidate = replace(
+        old, source_release_manifest=manifest,
+        question_variable_bindings=(binding,),
+        respondent_events=tuple(new_events),
+        authority_snapshots=(*old.authority_snapshots, mapping),
+        candidate_replay_manifest=None,
+    )
+    replay = build_candidate_replay_manifest(
+        candidate,
+        replay_protocol_authority_ref=old.candidate_replay_manifest.replay_protocol_authority_ref,
+        deterministic_tie_order_rules_ref=old.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+        replay_protocol_version=old.candidate_replay_manifest.replay_protocol_version,
+    )
+    candidate = replace(candidate, candidate_replay_manifest=replay)
+    repo = C11Repository()
+    accepted = ingest_c11_source_release(candidate, repo)
+    assert accepted.accepted, accepted.errors
+    release = repo.resolve_release_exact(accepted.release_ref)
+    universe = candidate.empirical_universes[0].ref
+    respondent = candidate.respondent_identities[0].ref.key
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    normal = certified_i03_events(release, universe, witness=witness,
+                                 independently_held_root=witness.root)
+    assert len(list(normal[respondent].select(canonical))) == 2
+    assert len(list(normal[respondent].select(component, include_component=True))) == 2
+    assert len(list(normal[respondent].select(component, native_only=True,
+                                               include_component=True))) == 0
+    from rawlsing_next._pre553_verified_semantic_range import _bindings
+    _, postings = _bindings(release, universe)
+    for kind, target in (("canonical", canonical), ("component", component)):
+        key = (respondent, kind, target.key)
+        poisoned = dict(postings)
+        poisoned[key] = poisoned[key][:-1]
+        reader = certified_i03_events(
+            release, universe, witness=witness, independently_held_root=witness.root,
+            candidate_postings=poisoned,
+        )
+        with pytest.raises(SemanticRangeIntegrityError):
+            list(reader[respondent].select(target, include_component=True))
