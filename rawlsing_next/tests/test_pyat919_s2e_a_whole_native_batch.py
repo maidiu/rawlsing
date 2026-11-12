@@ -123,6 +123,7 @@ def _batch(case, *, scope):
     elapsed = time.perf_counter() - begin
     census = census_native_batch(
         manifest, runner.receipts, outputs, require_complete=True,
+        runtime_catalog=catalog,
     )
     assert calls == {"query": 4, "discovery": 1}
     return manifest, runner.receipts, outputs, census, elapsed, calls
@@ -139,6 +140,7 @@ def test_a_one_shared_native_batch_executes_all_f1_f4_and_i05_f3():
         case, scope=forced_native,
     )
     require_same_native_output_graph(shared, independent)
+    assert shared.declared_domain_verified
     assert shared.complete and shared.unit_count == 5
     assert shared.completed_count == 5
     assert shared.i03_fact_count == 4
@@ -214,6 +216,10 @@ def test_a_one_batch_lost_i05_receipt_ref_is_red_even_at_same_count():
         census_native_batch(
             manifest, receipts,
             {**outputs, discovery_unit.unit_hash: broken}, require_complete=True,
+            runtime_catalog=case[1],
         )
-    good = census_native_batch(manifest, receipts, outputs, require_complete=True)
+    good = census_native_batch(
+        manifest, receipts, outputs, require_complete=True,
+        runtime_catalog=case[1],
+    )
     require_same_native_output_graph(census, good)
