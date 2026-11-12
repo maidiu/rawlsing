@@ -44,3 +44,59 @@ def test_b_missing_public_output_refs_must_not_pass_complete_census(tmp_path):
         missing.exact_s2e_output_census(require_complete=True)
     restored = replace(missing, output_refs=result.output_refs)
     assert restored.exact_s2e_output_census(require_complete=True) == original
+
+
+def test_b_real_universal_first_consumer_refuses_lost_native_view_and_restores(
+    tmp_path, monkeypatch,
+):
+    """The real R03 first reader uses result.native_outputs for fact_refs."""
+    import rawlsing_next.pre553_universal_workload as machine
+    from rawlsing_next.tests.test_universal_workload import (
+        AS_OF, HOST, PURPOSE, build_s3, s3_rows,
+    )
+
+    bundle = build_s3(tmp_path / "s2e-b-first-reader.sav",
+                      s3_rows(respondents=6, occasions=2))
+    compiled = machine.compile_universal_workload(
+        bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    source_factory = lambda _ref: bundle.physical_stream
+    baseline = machine.execute_universal_workload(
+        compilation=compiled, source_factory=source_factory,
+    )
+    assert baseline.anti_join()["no_drop_ok"]
+    assert baseline.fact_refs and not baseline.failed
+
+    selected = next(item for item in compiled.compiled if item.issued is not None)
+    original_executor = machine.execute_test_only_workload
+
+    def missing_published_output(*, issued, source_factory, host, purpose):
+        result = original_executor(
+            issued=issued, source_factory=source_factory, host=host, purpose=purpose,
+        )
+        if issued.envelope_sha256 == selected.issued.envelope_sha256:
+            assert result.native_outputs and result.outputs_by_unit
+            return replace(result, native_outputs=())
+        return result
+
+    with monkeypatch.context() as m:
+        m.setattr(machine, "execute_test_only_workload", missing_published_output)
+        severed = machine.execute_universal_workload(
+            compilation=compiled, source_factory=source_factory,
+        )
+    assert not severed.anti_join()["no_drop_ok"]
+    assert selected.operation.operation_id not in severed.executed_operation_ids
+    assert any(
+        f["operation_id"] == selected.operation.operation_id
+        and f["status"] == "ERROR"
+        and f["reason"] == "S2EOutputConservationError"
+        for f in severed.failed
+    )
+
+    restored = machine.execute_universal_workload(
+        compilation=compiled, source_factory=source_factory,
+    )
+    assert restored.anti_join()["no_drop_ok"]
+    assert restored.fact_refs == baseline.fact_refs
+    assert restored.receipt_refs == baseline.receipt_refs
+    assert restored.executed_operation_ids == baseline.executed_operation_ids
