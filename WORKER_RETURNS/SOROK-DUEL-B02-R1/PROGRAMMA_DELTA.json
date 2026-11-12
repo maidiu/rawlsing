@@ -1,0 +1,212 @@
+{
+  "event_id": "SOROK-DUEL-B02-B-20261112-R1",
+  "task_id": "B02",
+  "phase": "CG-B",
+  "title": "Map historical calendar/as-of to existing P3/S46 logical clock and split periods",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "509784c2850c499d1f640c9f43c569416081d76d",
+  "frozen_start_sha": "5bc29474e769b928d9264f1607bab605e2b1c7e9",
+  "opponent_implementation_sha": "99333985190d872d825a1ec205db224179daa4af",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "branch": "codex/sorok-duel-b03-counter-b02-b-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_P3_CODE_PIN_BREAK_FOR_PRE_B02_ROOTS",
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "p2_owner.MATERIAL_FACT_SLOTS gains p6_employment and p6_historical_period; P2Owner constructor/validate/realize/participant methods unchanged."
+    },
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "New historical_period material-period reader and S46 period adapter; next P3 cycle can consume the exact EventProposal.interval span."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "p2_owner.py byte change alters P3Owner._code_pins()/config_hash. Roots from 5bc29474e, 993339851, 362719b40, and earlier cuts refuse cold reopen under this final code. Fresh final-code roots only; no migration."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "Fork period facts are material/C12-only; S46 interval state is not forked, so interval reads are NOT_AVAILABLE_ON_FORK and materialization on a fork is refused."
+    },
+    {
+      "class": "SCIENTIFIC_HOLD",
+      "detail": "No native CAS/ADP/Pyat science, source/use rights, actor/human authority, or protected merge."
+    }
+  ],
+  "summary": "Added a bounded historical_period adapter over the existing S46 producer and P2 material writer. Two dated periods map Gregorian dates to explicit S46 logical ticks; a midperiod employment term change splits the first period at its exact date; an actual material-period reader returns employment as-of and the S46 interval; cold/retry replay reuses the exact intervals without duplicate periods. No new scheduler, clock, journal, psychology, purchase, or parent action.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "changed": [
+        "MATERIAL_FACT_SLOTS (p6_employment, p6_historical_period)"
+      ],
+      "unchanged": [
+        "P2Owner.__init__",
+        "P2Owner.validate_proposal",
+        "P2Owner.realize",
+        "P2Owner.actor_experience",
+        "P2Owner.snapshot"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py",
+      "added": [
+        "EMPLOYMENT_SLOT",
+        "PERIOD_SLOT",
+        "SOROK_EMPLOYMENT_TERMS@1",
+        "SOROK_HISTORICAL_PERIOD_PLAN@1",
+        "SOROK_EMPLOYMENT_TERMS_READ@1",
+        "SOROK_HISTORICAL_PERIOD_PLAN_READ@1",
+        "SOROK_PERIOD_MATERIALIZATION@1",
+        "SOROK_MATERIAL_PERIOD_READ@1",
+        "default_employment_terms",
+        "default_periods",
+        "period_plan_fixture",
+        "establish_period_plan",
+        "read_employment",
+        "read_period_plan",
+        "materialize_periods",
+        "read_material_period",
+        "p3_interval_span"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py",
+      "added": [
+        "same-root actual P6 PsycheStore MEDIATOR negative test"
+      ],
+      "production_change": false
+    }
+  ],
+  "period_contract": {
+    "calendar_basis": "GREGORIAN_PROLEPTIC_UTC_DATE",
+    "clock_basis": "S46_TEST_ONLY_LOGICAL_TICK_DAY_V1",
+    "ticks_per_day": 1,
+    "period_dates": "inclusive start / exclusive end",
+    "default_periods": [
+      "2026-01-01 -> 2026-07-01 (181 ticks)",
+      "2026-07-01 -> 2027-01-01 (184 ticks)"
+    ],
+    "employment_change": "2026-03-15 inside period:2026-h1; split tick = anchor + 73 days",
+    "first_interval_segments": [
+      [0, 73],
+      [73, 181]
+    ],
+    "second_interval_segments": [
+      [181, 365]
+    ],
+    "source_clocks": "anchor_date + anchor_clock + period start/end dates and S46 start/end ticks are stored and read together",
+    "materializer": "existing session.produce_interval with SCHEDULED_ONLY domains; status NOT_PERFORMED; no daily events or psychology"
+  },
+  "actual_consumer": [
+    "historical_period.read_material_period(session, as_of_date) — actual material-period/employment reader",
+    "historical_period.read_period_plan(session) and read_employment(session)",
+    "historical_period.p3_interval_span(session, period_id) — exact next P3 EventProposal.interval shape, validated by P2Owner.validate_proposal",
+    "P2Owner.material_fact(\"p6_employment\"|\"p6_historical_period\")"
+  ],
+  "affected_queued_tasks": [
+    {
+      "task_id": "C02",
+      "effect": "Can read employment as-of and dated material periods. It must not treat employment terms as a mother decision/action or private reason."
+    },
+    {
+      "task_id": "D02",
+      "effect": "Active Pair2 read-only situated-field work may consume read_material_period/p3_interval_span after HQ reconciliation. Do not silently rebase the active acfcb72... input; B02 is now frozen at this ABI."
+    },
+    {
+      "task_id": "B04",
+      "effect": "B02 performs no purchase/debit/refusal operation and no recurring cost. B04 owns those consequences and must use the period/employment facts as inputs, not duplicate them."
+    },
+    {
+      "task_id": "B05",
+      "effect": "B02 proves two dated periods and one split; multicycle ordinary duration, recurring costs, source change/severance across cycles, and later parent/Nadia material reads remain B05."
+    },
+    {
+      "task_id": "E02",
+      "effect": "May consume dated periods; multi-year parent-independent activity and selected Nadia change/held state remain E02."
+    },
+    {
+      "task_id": "F01",
+      "effect": "Imported roots may carry period/employment facts; P2/P3 branch binding and cold fork limitations still apply."
+    },
+    {
+      "task_id": "C03/C04",
+      "effect": "No parent decision, utterance, hidden reason, or Nadia uptake is added; parent first consumer remains NONE_VERIFIED."
+    }
+  ],
+  "preserved_obligations": [
+    "B01 household and C12 fork material provenance remain; B01/B03/B03 same-root tests pass.",
+    "B03 dwelling/tenancy/space/acoustics/cost and material feasibility remain; B03 suite passes.",
+    "P6 house and MII suites pass; no P6 situated.py or MII/MIII behavior was edited.",
+    "No new owner, scheduler, clock, database, daily-event stream, person ledger, or duplicate material ledger.",
+    "No PsycheStore record, class label, trait, or parent action is consumed by the period reader.",
+    "S46 state remains SCHEDULED_ONLY/NOT_PERFORMED; no actual daily work or actor psychology is fabricated.",
+    "No purchase, possession, debit, recurring cost, or mother action is created.",
+    "Native/science/rights/human/merge holds remain separate and unchanged."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change invalidates P3 code-pin roots from A's 5bc29474/993339851, B's 362719b40, and earlier cuts; they refuse cold reopen with P3_CONFIG_CHANGED. Fresh final-code test roots only; no migration invented.",
+    "Cold fork/full P6 experience on a fork remains blocked by P2/P3 branch binding; B02 fork reads are material-only and interval NOT_AVAILABLE_ON_FORK.",
+    "B02 does not run a full P3 DevelopmentOwner cycle; it exposes the exact EventProposal.interval shape and material-period reader for the next P3 cycle."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py@509784c2850c499d1f640c9f43c569416081d76d",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@509784c2850c499d1f640c9f43c569416081d76d",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/model.py",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py",
+    "frozen programme 03_TASK_PACKETS_R1.json B02",
+    "32_ROLLING_PERSON_WORLD_OWNER_RECONCILIATION_20261111_R1.md PW-03/PW-10"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/b02_period.log",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/b01_b02_b03_combined.log",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/p6_adjacent.log",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/p6_mii.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_same_root_psyche.log"
+  ],
+  "negative_refs": [
+    "test_employment_changes_as_of_date_and_severance_restores",
+    "test_clock_and_term_tampering_refuses_and_restores",
+    "test_before_first_term_is_unknown_and_outside_plan_refuses",
+    "test_fork_reads_material_only_and_refuses_new_materialization",
+    "test_b03_same_root_psyche_mediator_not_world_dwelling_fact"
+  ],
+  "cold_refs": [
+    "test_retry_and_cold_replay_do_not_duplicate_periods: fresh subprocess reads plan/employment/material period; same state IDs, no duplicate period",
+    "test_retry_and_cold_replay_do_not_duplicate_periods: materialize twice and after cold reopen -> REPLAYED, produced_states=0, counts unchanged"
+  ],
+  "b03_same_root_negative": {
+    "evidence": "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_same_root_psyche.log",
+    "result": "A valid MEDIATOR written into the actual P6 root's p3_psyche.sqlite3 is not consumed by read_dwelling/material_feasibility/mother_material_input; severing p6_dwelling still refuses the world readers while the PsycheStore record remains queryable; restoring returns the exact baseline.",
+    "production_change": false
+  },
+  "cost": {
+    "status": "PARTIAL",
+    "tokens": null,
+    "usd": null,
+    "wall_s": 683.04,
+    "detail": "Executed suites: B02 50.13 + combined 165.75 + P6 house/adjacent 217.45 + P6 MII 242.53 + B03 same-root 7.18 = 683.04s; the report uses the separately recorded deterministic suite receipts. Controller/provider token, latency, RSS, retry instrumentation unavailable; no figures invented."
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_ONLY_CANDIDATE",
+    "science": "HELD",
+    "source_or_rights": "HELD",
+    "human_or_actor": "HELD",
+    "protected_merge": "NOT_CLAIMED"
+  },
+  "proof_boundaries": [
+    "No native science, actor/human right, source right, or protected merge.",
+    "No full P3 DevelopmentOwner cycle, no P3 psychology, and no daily material activity.",
+    "No purchase, possession, debit, refusal operation, or recurring cost; B04/B05 own these.",
+    "No mother decision, utterance, hidden reason, or parent first consumer.",
+    "No cold fork; fork period reads are material-only and interval NOT_AVAILABLE_ON_FORK.",
+    "No P3 code-pin migration; prior roots incompatible.",
+    "No full-estate coverage; only listed bounded suites.",
+    "Two ChatGPT Library architecture records remain NOT_INSPECTED locally."
+  ],
+  "handoff": "WORKER_RETURNS/SOROK-DUEL-B02-R1/AGENT_B_HANDOFF.md",
+  "main_relay_handoff": "WORKER_RETURNS/SOROK-DUEL-B03-R1/AGENT_B_HANDOFF.md",
+  "abi": "WORKER_RETURNS/SOROK-DUEL-B02-R1/B02_ABI.md"
+}

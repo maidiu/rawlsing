@@ -27,7 +27,9 @@ MATERIAL_FACT_READ_SCHEMA = "SOROK_P2_MATERIAL_FACT_READ@1"
 MATERIAL_FACT_WRITE_SCHEMA = "SOROK_P2_MATERIAL_FACT_WRITE@1"
 MATERIAL_FACT_GRADE = "SOURCEFREE_MATERIAL_FACT"
 MATERIAL_FACT_BINDING_FIELDS = frozenset({"root", "branch", "epoch", "source"})
-MATERIAL_FACT_SLOTS = frozenset({"p6_household", "p6_dwelling"})
+MATERIAL_FACT_SLOTS = frozenset({
+    "p6_household", "p6_dwelling", "p6_employment", "p6_historical_period",
+})
 PSYCH_RECORD_FIELDS = frozenset({
     "record_id", "counterpart", "effective_from", "causal_parents",
     "registry_hash", "rule_id", "rule_version", "rule_hash",
