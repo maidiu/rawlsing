@@ -341,20 +341,20 @@ def test_pending_p3_operation_refuses_a_new_context(tmp_path: Path) -> None:
         case.owner.close()
 
 
-def test_b02_ingress_is_an_explicit_unbuilt_hold(tmp_path: Path) -> None:
+def test_b02_ingress_is_an_explicit_no_current_period_hold(tmp_path: Path) -> None:
     case, session, _ = _setup(tmp_path / "b02", count=1)
     try:
         selected = _latest(_rows(session))
         selector = _selector(case, selected["action_event_id"])
-        assert selector["date_scope"]["calendar"] == "HELD_B02_NOT_BUILT"
+        assert selector["date_scope"]["calendar"] == ("B02_READER_PRESENT_NO_CURRENT_PERIOD")
         assert selector["date_scope"]["historical_period"] == "NOT_QUALIFIED"
         assert selector["date_scope"]["logical_clock_only"] is True
         assert selector["b02_ingress"]["status"] == (
-            "PREREQUISITE_HELD_NOT_QUALIFIED")
+            "PREREQUISITE_HELD_NO_CURRENT_PERIOD")
         assert selector["b02_ingress"]["clock_basis"] == (
             "S46_LOGICAL_TICKS_NOT_CALENDAR_YEARS")
         assert selector["readset"]["b02_ingress"]["status"] == (
-            "PREREQUISITE_HELD_NOT_QUALIFIED")
+            "PREREQUISITE_HELD_NO_CURRENT_PERIOD")
         assert "period_id" not in selector["identity"]
         assert "calendar" not in selector["identity"]
     finally:

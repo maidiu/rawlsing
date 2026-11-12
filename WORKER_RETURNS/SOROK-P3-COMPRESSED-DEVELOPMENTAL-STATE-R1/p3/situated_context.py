@@ -5,20 +5,31 @@ household reader, and C01 actor-access/perception readers. It writes no world,
 actor, psychological, or scheduler state and adds no new rule. The result is a
 bounded decision-input document for a later P3 proposal/provider call.
 
-Current-clock only: historical calendar/as-of qualification is B02 and is NOT
-BUILT. The selector exposes only the current logical clock and an explicit
-B02 ingress hold. It does not invent a period, date or calendar mapping.
+Current-clock only: the B02 historical_period reader is present in the
+composition, but the selector uses only the current logical-clock period when
+an actual B02 plan is established. A historical as-of query is not treated as
+current physical state. If no plan is established or the current clock is
+outside the plan, the selector returns an exact period hold; it never invents a
+period, date or calendar mapping.
 
 Temporal selection uses the actual event time/ordinal, never the current world
 clock returned by the actor-access reader. Event access hashes are normalized
 so a later world clock cannot change the identity of a previously perceived
 event. Event-time shared perception and current objective co-presence are
 separate fields; current position alone never creates an observed relation.
+
+Acquired state is read-only: the selector queries the actual PsycheStore for the
+explicit later plan scope and runs the existing projections.activate machinery.
+It does not write a target, memory, immediate response, performed action or
+native rule. A stored record is eligible only when the existing activation
+reader says so; contradictions are surfaced, not silently resolved.
 """
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import sys
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -28,14 +39,15 @@ from developmental_recursion.contracts import (
     digest,
 )
 
-from . import p3_owner
+from . import p3_owner, projections, test_rules
 
 GRADE = "SOURCEFREE_S2_ONLY"
+P3_GRADE = test_rules.GRADE
 SCHEMA = "SOROK_D02_SITUATED_CONTEXT@1"
 SOURCE_SCHEMA = "SOROK_D02_SOURCE_CLOSURE@1"
 HOUSEHOLD_SLOT = "p6_household"
 DATE_SCOPE = {
-    "calendar": "HELD_B02_NOT_BUILT",
+    "calendar": "HELD_B02_NO_CURRENT_PERIOD",
     "historical_period": "NOT_QUALIFIED",
     "logical_clock_only": True,
 }
@@ -45,7 +57,7 @@ OPTION_SEMANTICS = (
 )
 B02_INGRESS = {
     "schema": "SOROK_D02_B02_INGRESS_CONTRACT@1",
-    "status": "PREREQUISITE_HELD_NOT_QUALIFIED",
+    "status": "PREREQUISITE_HELD_NO_CURRENT_PERIOD",
     "owner": "P3 DevelopmentOwner/S46 logical clock + existing P2 objective world",
     "clock_basis": "S46_LOGICAL_TICKS_NOT_CALENDAR_YEARS",
     "required_inputs": [
@@ -469,9 +481,400 @@ def _options(material: Mapping[str, Any], relations: list[dict],
     return sorted(set(options))
 
 
+
+def _b02_path() -> Path:
+    return _WORKER_RETURNS / "SOROK-DUEL-B02-R1" / "historical_period.py"
+
+
+def _b02_module():
+    path = _b02_path()
+    if not path.is_file():
+        return None
+    name = "_d02_historical_period"
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        _refuse("D02_B02_IMPORT_FAILED")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception as exc:
+        sys.modules.pop(name, None)
+        raise RecursionRefusal("D02_B02_IMPORT_FAILED") from exc
+    return module
+
+
+def _period_source(module: Any = None) -> dict:
+    path = _b02_path()
+    if not path.is_file():
+        return {"status": "UNAVAILABLE", "path": None, "sha256": None}
+    return {
+        "status": "SELECTED_SOURCE",
+        "path": _source_label(path),
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "symbols": ["read_material_period", "p3_interval_span",
+                    "read_period_plan"],
+    }
+
+
+def _period_ingress(session: Any, snapshot: Mapping[str, Any]) -> dict:
+    module = _b02_module()
+    source = _period_source(module)
+    if module is None:
+        return {
+            "status": "HELD",
+            "reason": "D02_B02_READER_UNAVAILABLE",
+            "source": source,
+            "date_scope": {
+                "calendar": "B02_READER_UNAVAILABLE",
+                "historical_period": "NOT_QUALIFIED",
+                "logical_clock_only": True,
+            },
+        }
+    try:
+        plan = module.read_period_plan(session)
+    except RecursionRefusal as exc:
+        if str(exc).startswith(("P6_EMPLOYMENT_ABSENT", "P6_PERIOD_ABSENT")):
+            return {
+                "status": "HELD",
+                "reason": str(exc),
+                "source": source,
+                "date_scope": {
+                    "calendar": "B02_READER_PRESENT_NO_CURRENT_PERIOD",
+                    "historical_period": "NOT_QUALIFIED",
+                    "logical_clock_only": True,
+                    "reason": str(exc),
+                },
+            }
+        raise
+    holder = session.world().actor_state.get("A")
+    if (not isinstance(holder, Mapping)
+            or holder.get("actor_id") != snapshot.get("actor")):
+        return {
+            "status": "HELD",
+            "reason": "B02_EMPLOYMENT_HOLDER_NOT_FOCAL",
+            "source": source,
+            "date_scope": {
+                "calendar": "B02_HOLDER_NOT_FOCAL",
+                "historical_period": "NOT_QUALIFIED",
+                "logical_clock_only": True,
+            },
+        }
+    ticks = plan.get("ticks_per_day")
+    anchor_clock = plan.get("anchor_clock")
+    anchor_date = plan.get("anchor_date")
+    if (type(ticks) is not int or ticks < 1
+            or type(anchor_clock) is not int
+            or not isinstance(anchor_date, str)):
+        _refuse("D02_B02_PLAN_BASIS")
+    delta = int(snapshot["clock"]) - anchor_clock
+    if delta < 0:
+        return {
+            "status": "HELD",
+            "reason": "B02_CURRENT_BEFORE_ANCHOR",
+            "source": source,
+            "date_scope": {
+                "calendar": "B02_CURRENT_BEFORE_ANCHOR",
+                "historical_period": "NOT_QUALIFIED",
+                "logical_clock_only": True,
+            },
+        }
+    if delta % ticks:
+        return {
+            "status": "HELD",
+            "reason": "B02_CURRENT_CLOCK_NOT_DAY_ALIGNED",
+            "source": source,
+            "date_scope": {
+                "calendar": "B02_CURRENT_CLOCK_NOT_DAY_ALIGNED",
+                "historical_period": "NOT_QUALIFIED",
+                "logical_clock_only": True,
+            },
+        }
+    try:
+        as_of = date.fromisoformat(anchor_date) + timedelta(days=delta // ticks)
+    except ValueError as exc:
+        raise RecursionRefusal("D02_B02_ANCHOR_DATE") from exc
+    try:
+        read = module.read_material_period(session, as_of.isoformat())
+    except RecursionRefusal as exc:
+        if str(exc).startswith("P6_PERIOD_OUTSIDE_PLAN"):
+            return {
+                "status": "HELD",
+                "reason": "B02_CURRENT_OUTSIDE_PLAN",
+                "source": source,
+                "date_scope": {
+                    "calendar": "B02_CURRENT_OUTSIDE_PLAN",
+                    "historical_period": "NOT_QUALIFIED",
+                    "logical_clock_only": True,
+                },
+            }
+        raise
+    if read.get("logical_tick") != snapshot["clock"]:
+        _refuse("D02_B02_LOGICAL_TICK_MISMATCH")
+    period = _mapping(read.get("period"), "D02_B02_PERIOD")
+    span = module.p3_interval_span(session, period["period_id"])
+    employment = read.get("employment")
+    employment_doc = None
+    if employment is not None:
+        employment_doc = _mapping(employment, "D02_B02_EMPLOYMENT")
+    return {
+        "status": "QUALIFIED_CURRENT_PERIOD",
+        "as_of_date": read.get("as_of_date"),
+        "logical_tick": read.get("logical_tick"),
+        "calendar_basis": read.get("calendar_basis"),
+        "clock_basis": read.get("clock_basis"),
+        "ticks_per_day": read.get("ticks_per_day"),
+        "period": period,
+        "employment": employment_doc,
+        "employment_status": read.get("employment_status"),
+        "employment_scope": (
+            "FOCAL_HOUSEHOLD_OBJECTIVE_MATERIAL_NOT_ACTOR_KNOWLEDGE_OR_PARENT"),
+        "holder_actor_slot": "A",
+        "holder_actor_id": holder.get("actor_id"),
+        "interval": read.get("interval"),
+        "interval_status": read.get("interval_status"),
+        "interval_span": {
+            "mode": span.get("mode"),
+            "span": span.get("span"),
+            "basis": "B02_TYPED_SEAM_READ_ONLY_NOT_APPLIED",
+        },
+        "plan_source": read.get("plan_source"),
+        "employment_source": read.get("employment_source"),
+        "provenance": read.get("provenance"),
+        "source": source,
+        "date_scope": {
+            "calendar": "B02_CURRENT_LOGICAL_PERIOD",
+            "as_of": read.get("as_of_date"),
+            "historical_period": (
+                "CURRENT_STATE_ONLY_NOT_HISTORICAL_QUERY"),
+            "logical_clock_only": False,
+        },
+        "read_boundary": {
+            "b02_psyche_store": "NOT_READ",
+            "b02_psychology_state": "NOT_WRITTEN",
+            "historical_query": "CURRENT_STATE_ONLY",
+            "knowledge_claim": "NOT_CLAIMED",
+        },
+    }
+
+
+def _plan_scope(plan: Any, owner: Any, snapshot: Mapping[str, Any]) -> dict:
+    value = _mapping(plan, "D02_ACQUIRED_PLAN")
+    for key in ("actor_observed", "material_eligible", "eligible",
+                "eligible_modes", "record_hashes"):
+        if key in value:
+            _refuse("D02_PLAN_OVERRIDE_FORBIDDEN:" + key)
+    for key in ("root", "actor", "branch"):
+        if value.get(key) != snapshot.get(key):
+            _refuse("D02_ACQUIRED_PLAN_IDENTITY:" + key)
+    for key in ("source_hash", "registry_hash", "grade", "project",
+                "counterpart"):
+        _text(value.get(key), "D02_ACQUIRED_PLAN_" + key.upper())
+    if value.get("source_hash") != owner.source_hash:
+        _refuse("D02_ACQUIRED_PLAN_SOURCE")
+    if value.get("registry_hash") != owner.registry.get("hash"):
+        _refuse("D02_ACQUIRED_PLAN_REGISTRY")
+    if value.get("grade") != P3_GRADE:
+        _refuse("D02_ACQUIRED_PLAN_GRADE")
+    if value.get("hash"):
+        _hash(value.get("hash"), "D02_ACQUIRED_PLAN_HASH")
+        if digest({key: item for key, item in value.items()
+                   if key != "hash"}) != value["hash"]:
+            _refuse("D02_ACQUIRED_PLAN_HASH_MISMATCH")
+    if "permitted_rules" in value and value["permitted_rules"] != (
+            test_rules.rule_descriptors()):
+        _refuse("D02_ACQUIRED_PLAN_RULES")
+    selectors = {}
+    for key in ("activation_roles", "relation_refs", "obligation_refs"):
+        items = value.get(key, [])
+        if not isinstance(items, list) or any(
+                not isinstance(item, str) or not item for item in items):
+            _refuse("D02_ACQUIRED_PLAN_SELECTORS:" + key)
+        selectors[key] = list(items)
+    role = value.get("interlocutor_role")
+    if role is not None:
+        _text(role, "D02_ACQUIRED_PLAN_ROLE")
+    relation = value.get("relation_ref")
+    if relation is not None:
+        _text(relation, "D02_ACQUIRED_PLAN_RELATION")
+    elif len(selectors["relation_refs"]) == 1:
+        relation = selectors["relation_refs"][0]
+    return {
+        "project": value["project"],
+        "counterpart": value["counterpart"],
+        "interlocutor_role": role,
+        "relation_ref": relation,
+        "obligation_refs": selectors["obligation_refs"],
+        "activation_roles": selectors["activation_roles"],
+        "relation_refs": selectors["relation_refs"],
+        "plan_hash": value.get("hash"),
+    }
+
+
+def _activation_context(snapshot: Mapping[str, Any], owner: Any,
+                        scope: Mapping[str, Any], material: Mapping[str, Any],
+                        observation: Mapping[str, Any]) -> dict:
+    material_eligible = None
+    if material.get("status") == "AVAILABLE":
+        material_eligible = (
+            material.get("actor_accessible", {}).get("status") == "PRESENT")
+    body = {
+        "root": snapshot["root"], "actor": snapshot["actor"],
+        "branch": snapshot["branch"], "clock": snapshot["clock"],
+        "project": scope["project"], "counterpart": scope["counterpart"],
+        "interlocutor_role": scope.get("interlocutor_role"),
+        "relation_ref": scope.get("relation_ref"),
+        "obligation_refs": list(scope.get("obligation_refs") or []),
+        "actor_observed": observation.get("status") == "AVAILABLE",
+        "material_eligible": material_eligible,
+        "source_refs": [owner.source_hash],
+        "grade": P3_GRADE,
+    }
+    body["hash"] = digest(body)
+    return body
+
+
+def _acquired_state(owner: Any, snapshot: Mapping[str, Any], plan: Any,
+                    material: Mapping[str, Any],
+                    observation: Mapping[str, Any]) -> dict:
+    if plan is None:
+        return {
+            "status": "NO_PLAN_SCOPE",
+            "scope": None,
+            "eligible_modes": [],
+            "eligible_record_hashes": [],
+            "withheld": [],
+            "contradictions": [],
+            "stored_count": 0,
+            "activation_context": None,
+            "source_hash": owner.source_hash,
+            "registry_hash": owner.registry.get("hash"),
+            "native_rule": "MISSING_RULE",
+            "memory_formation": "MISSING_RULE",
+            "first_person_claims": [],
+            "decision": "NOT_EVALUATED",
+            "semantics": (
+                "SOURCEFREE_ACTIVATION_READ_ONLY_NOT_MEMORY_NATIVE_STATE_OR_ACTION"),
+            "readset": {
+                "status": "NO_PLAN_SCOPE",
+                "eligible_record_hashes": [],
+                "withheld_record_hashes": [],
+                "contradictions": [],
+                "source_hash": owner.source_hash,
+                "registry_hash": owner.registry.get("hash"),
+            },
+        }
+    scope = _plan_scope(plan, owner, snapshot)
+    context = _activation_context(snapshot, owner, scope, material, observation)
+    head_before = owner.store.head()
+    records = owner.store.query(
+        project=scope["project"], counterpart=scope["counterpart"],
+        as_of=snapshot["clock"],
+    )
+    activation = projections.activate(
+        records, identity=snapshot, context=context, registry=owner.registry,
+    )
+    head_after = owner.store.head()
+    if head_before != head_after:
+        _refuse("D02_ACQUIRED_STATE_MUTATED")
+    entries = activation.get("entries") if isinstance(
+        activation.get("entries"), list) else []
+    eligible = [entry for entry in entries
+                if entry.get("activation") == "ELIGIBLE"]
+    withheld = [entry for entry in entries
+                if entry.get("activation") != "ELIGIBLE"]
+    contradictions = detached(activation.get("contradictions") or [])
+    eligible_ids = {row.get("record_id") for row in eligible}
+    active_contradictions = [
+        pair for pair in contradictions
+        if isinstance(pair, (list, tuple)) and len(pair) == 2
+        and set(pair) <= eligible_ids
+    ]
+    if active_contradictions:
+        status = "CONTRADICTION"
+    elif not entries:
+        status = "NO_RECORDS"
+    elif eligible:
+        status = "ELIGIBLE"
+    else:
+        status = "HELD_NO_ELIGIBLE_RECORD"
+    bounded = lambda rows: [
+        {
+            "record_hash": row.get("record_hash"),
+            "kind": row.get("kind"),
+            "mode": row.get("mode"),
+            "activation": row.get("activation"),
+            "material_eligible": row.get("material_eligible"),
+        }
+        for row in rows
+    ]
+    eligible_hashes = [row.get("record_hash") for row in eligible]
+    withheld_hashes = [row.get("record_hash") for row in withheld]
+    readset = {
+        "status": status,
+        "query": {
+            "project": scope["project"], "counterpart": scope["counterpart"],
+            "as_of": snapshot["clock"],
+        },
+        "activation_context_hash": context["hash"],
+        "eligible_record_hashes": eligible_hashes,
+        "withheld_record_hashes": withheld_hashes,
+        "contradictions": active_contradictions,
+        "latent_contradictions": contradictions,
+        "stored_count": len(records),
+        "source_hash": owner.source_hash,
+        "registry_hash": owner.registry.get("hash"),
+        "store_head": _store_head_view(head_before),
+    }
+    return {
+        "status": status,
+        "scope": {
+            "project": scope["project"], "counterpart": scope["counterpart"],
+            "interlocutor_role": scope.get("interlocutor_role"),
+            "relation_ref": scope.get("relation_ref"),
+            "obligation_refs": list(scope.get("obligation_refs") or []),
+        },
+        "eligible_modes": sorted({row.get("mode") for row in eligible}),
+        "eligible": bounded(eligible),
+        "eligible_record_hashes": eligible_hashes,
+        "withheld": bounded(withheld),
+        "withheld_record_hashes": withheld_hashes,
+        "contradictions": active_contradictions,
+        "latent_contradictions": contradictions,
+        "stored_count": len(records),
+        "activation_context": {
+            "clock": context["clock"],
+            "actor_observed": context["actor_observed"],
+            "material_eligible": context["material_eligible"],
+            "actor_observed_basis": (
+                "SELECTED_ACTUAL_PERCEPTION_NOT_LATER_EVENT"),
+            "material_eligible_basis": (
+                "OBJECTIVE_HOUSEHOLD_ACTOR_PRESENT_NOT_NATIVE_FEASIBILITY"),
+            "hash": context["hash"],
+        },
+        "source_hash": owner.source_hash,
+        "registry_hash": owner.registry.get("hash"),
+        "native_rule": "MISSING_RULE",
+        "memory_formation": "MISSING_RULE",
+        "first_person_claims": [],
+        "decision": "NOT_EVALUATED",
+        "knowledge": (
+            "ELIGIBLE_HYPOTHESIS_READ_NOT_GENERAL_MASTERY_OR_NATIVE_STATE"),
+        "semantics": (
+            "SOURCEFREE_ACTIVATION_READ_ONLY_NOT_MEMORY_NATIVE_STATE_OR_ACTION"),
+        "readset": readset,
+    }
+
+
+def _store_head_view(head: Mapping[str, Any]) -> dict:
+    value = _mapping(head, "D02_STORE_HEAD")
+    return {"hash": value.get("hash"), "count": value.get("count")}
+
+
 def build_situated_context(owner: Any, *, expected: Any = None,
                            event_id: str | None = None,
-                           expected_source_closure: Any = None) -> dict:
+                           expected_source_closure: Any = None,
+                           plan: Any = None) -> dict:
     """Build a read-only situated decision input from actual owners.
 
     No provider stub is consulted. The returned document is an input contract;
@@ -528,6 +931,15 @@ def build_situated_context(owner: Any, *, expected: Any = None,
     relations = _relations(
         session, snapshot["actor"], event_ref, event_access, focal_position)
     options = _options(material, relations, observation)
+    period = _period_ingress(session, snapshot)
+    acquired = _acquired_state(owner, snapshot, plan, material, observation)
+    ingress = detached(B02_INGRESS)
+    ingress["status"] = (
+        "QUALIFIED_CURRENT_PERIOD"
+        if period.get("status") == "QUALIFIED_CURRENT_PERIOD"
+        else "PREREQUISITE_HELD_NO_CURRENT_PERIOD")
+    ingress["reason"] = period.get("reason")
+    ingress["period_source"] = period.get("source")
     body = {
         "schema": SCHEMA,
         "grade": GRADE,
@@ -537,8 +949,11 @@ def build_situated_context(owner: Any, *, expected: Any = None,
         "relations": relations,
         "admissible_options": options,
         "option_semantics": OPTION_SEMANTICS,
-        "date_scope": detached(DATE_SCOPE),
-        "b02_ingress": detached(B02_INGRESS),
+        "period": period,
+        "period_source": period.get("source"),
+        "acquired_state": acquired,
+        "date_scope": detached(period["date_scope"]),
+        "b02_ingress": ingress,
         "source_closure": closure,
         "read_boundary": {
             "world_material": "OBJECTIVE_WORLD_READ",
@@ -546,7 +961,16 @@ def build_situated_context(owner: Any, *, expected: Any = None,
             "actor_access": "QUALIFIED_PERCEPTION_READ",
             "relation_current_position": "OBJECTIVE_POSITION_ONLY",
             "parent_private_state": "NOT_READ",
-            "psyche_store": "P3_HEAD_ONLY_NOT_RECORDS",
+            "psyche_store": (
+                "P3_HEAD_ONLY_NOT_RECORDS"
+                if acquired.get("status") == "NO_PLAN_SCOPE"
+                else "P3_ACQUIRED_RECORDS_ACTIVATION_READ"),
+            "acquired_state": (
+                "SOURCEFREE_ACTIVATION_READ_NOT_NATIVE_MEMORY_OR_ACTION"),
+            "period": (
+                "B02_CURRENT_PERIOD_READ"
+                if period.get("status") == "QUALIFIED_CURRENT_PERIOD"
+                else "B02_CURRENT_PERIOD_HELD"),
             "portal_user_view": "NOT_READ",
             "narrative_prose": "NOT_READ",
             "source_identity": "D02_SELECTED_CLOSURE",
@@ -566,9 +990,24 @@ def build_situated_context(owner: Any, *, expected: Any = None,
             "files": [row["path"] for row in closure["files"]],
         },
         "b02_ingress": {
-            "status": B02_INGRESS["status"],
-            "hash": digest(B02_INGRESS),
+            "status": ingress["status"],
+            "hash": digest(ingress),
         },
+        "period": {
+            "status": period.get("status"),
+            "reason": period.get("reason"),
+            "as_of_date": period.get("as_of_date"),
+            "logical_tick": period.get("logical_tick"),
+            "period_id": (
+                period.get("period", {}).get("period_id")
+                if isinstance(period.get("period"), Mapping) else None),
+            "plan_source": period.get("plan_source"),
+            "employment_source": period.get("employment_source"),
+            "source": period.get("source"),
+            "interval_status": period.get("interval_status"),
+            "interval_span": period.get("interval_span"),
+        },
+        "acquired_state": acquired.get("readset"),
         "material": {
             "source": material.get("source"),
             "material_hash": material.get("material_hash"),
@@ -591,7 +1030,7 @@ def build_situated_context(owner: Any, *, expected: Any = None,
             for row in relations
         ],
         "options": list(options),
-        "date_scope": detached(DATE_SCOPE),
+        "date_scope": detached(period["date_scope"]),
     }
     body["readset"] = readset
     body["hash"] = digest(body)

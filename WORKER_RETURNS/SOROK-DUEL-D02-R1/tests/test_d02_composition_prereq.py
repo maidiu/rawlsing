@@ -7,6 +7,7 @@ the same root and uses the P3 later consumer.
 """
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -16,11 +17,13 @@ D01_ROOT = WORKER_RETURNS / "SOROK-DUEL-D01-R1"
 P3_ROOT = WORKER_RETURNS / "SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1"
 ENGINE_ROOT = WORKER_RETURNS / "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1"
 P6_ROOT = WORKER_RETURNS / "SOROK-P6-ONE-LIVING-HOUSE-R1"
-for _path in (D01_ROOT, P3_ROOT, ENGINE_ROOT, P3_ROOT / "tests", P6_ROOT):
+B02_ROOT = WORKER_RETURNS / "SOROK-DUEL-B02-R1"
+for _path in (D01_ROOT, P3_ROOT, ENGINE_ROOT, P3_ROOT / "tests", P6_ROOT, B02_ROOT):
     if str(_path) not in sys.path:
         sys.path.insert(0, str(_path))
 
 import d01_reuse  # noqa: E402
+import historical_period as b02  # noqa: E402
 import house  # noqa: E402
 from developmental_recursion.contracts import EventProposal  # noqa: E402
 from developmental_recursion.p2_owner import P2Owner, load_p2  # noqa: E402
@@ -67,6 +70,7 @@ def test_fresh_root_d01_retention_household_and_supporting_actor_coexist(
         session = case.base_owner.fanin.session
         focal = session.read_root()["actor_ids"][0]
         house.establish(session)
+        b02.establish_period_plan(session)
         household_before = house.read_household(session)
         registered = register_supporting_actor(
             session, alias=PARENT_ALIAS, actor_id=PARENT_ID, role="parent",
@@ -125,12 +129,26 @@ def test_fresh_root_d01_retention_household_and_supporting_actor_coexist(
             base.fanin.session, focal, event_id)
         assert focal_access_after["status"] == "PERCEIVED"
         selector = situated_context.build_situated_context(
-            cold, event_id=event_id)
+            cold, event_id=event_id, plan=case.plans[3])
         assert selector["material"]["status"] == "AVAILABLE"
         assert selector["relations"][0]["actor_id"] == PARENT_ID
         assert "ATTEND_HOUSEHOLD_MATERIAL" in selector["admissible_options"]
         assert "ADDRESS_ELIGIBLE_OTHER" in selector["admissible_options"]
-        assert selector["date_scope"]["calendar"] == "HELD_B02_NOT_BUILT"
+        acquired = selector["acquired_state"]
+        assert acquired["scope"]["counterpart"] == "vertical:counterpart"
+        assert acquired["scope"]["counterpart"] != PARENT_ID
+        assert acquired["status"] == "CONTRADICTION"
+        assert acquired["eligible_modes"] == ["joint_check", "private_check"]
+        assert "d02-composition-secret" not in json.dumps(acquired)
+        assert cold.store.head()["count"] == 2
+        period = selector["period"]
+        assert period["status"] == "QUALIFIED_CURRENT_PERIOD"
+        assert period["logical_tick"] == cold.snapshot().clock
+        assert period["period"]["period_id"] == "period:2026-h1"
+        assert period["employment"]["term_id"] == (
+            "employment:workshop-cooperative")
+        assert period["holder_actor_slot"] == "A"
+        assert selector["date_scope"]["calendar"] == "B02_CURRENT_LOGICAL_PERIOD"
 
         later = d01_reuse.later_consumer(
             cold, "d02-composition-later", case.proposals[1],
