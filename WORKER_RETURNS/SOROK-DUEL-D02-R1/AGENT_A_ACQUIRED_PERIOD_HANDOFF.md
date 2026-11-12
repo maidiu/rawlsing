@@ -6,17 +6,17 @@
 **Branch:** `codex/sorok-duel-d02-a-acquired-period-20261112-r1`.
 **Composition start:** `0c460c7a2a3ed0b6f485b1cc3131bef1b18c0569` (A D02 `76547199...` + C02 B `4d93685d...` + B02 B `4f78bf71...`).
 **B return examined:** `0ac3002b94e8a5ebc31842c2686a6a664e8cd63a`; B code cut `dba782ddf15dd9d8db261c08b515944dcea4b8e4`.
-**A code cut:** `c9f97e99d4b786cb4676d7a1b61d28ffcacaa65d`.
+**A code cut:** `d82d2ac28331215ba2caa0ae2d152cce3266bef5`.
 **Ceiling:** `SOURCEFREE_S2_ONLY`; no native CAN/ADP/Pyat, actor/human/source right, production or protected merge.
 
 ## 1. Exact artifact
 
 | Path | SHA-256 / change |
 |---|---|
-| `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py` | `a8f5ff37e6bb207fb7864bb64aa76f633dbffe6562085b63329d070e6a598bd4`; acquired-state activation and current B02 ingress. |
+| `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py` | `8164a0a009db7b0491e63a635e2163171ff56a8203bedc5eeb75f3a7528d7f14`; acquired-state activation and current B02 ingress. |
 | `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/INTEGRATION_CONTRACT.md` | `4eabe29ce3f2bd884cd782b97d18046490865870285a9e1a75b57b2fdd14c4df`; additive optional D02 interface/source/evidence limits only. |
 | `WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md` | `8e43dc53d32bc057ce60b1de7e3d9ea82d39fa4ee660690d5cd2bafbd308f2b0`; actual current-period ingress, historical/interleaving hold. |
-| `WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_a_acquired_period.py` | `ffb889caf3dc5f005861f7b7f71b12cf39273de938e9beae05d38f0dc7c934f9`; four new tests. |
+| `WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_a_acquired_period.py` | `7b315120c3d1664b0080fc9b177a2bf1b7fab123785cff93eb0d691e6db24aed`; four new tests. |
 | `WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py` | `47bcca8ea843290a0a057cb07abc6ad4b8bdaed17bfead6cbe889a34baaeb76c`; acquired + B02 period added to fresh-root composition. |
 | `WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_b_repairs.py` | `d9ad684dc5b0359872caf68e5ba9124c19d97cbe7a1a419558948e522b594e62`; only the stale `B02 unbuilt` assertion/name updated to the source-present hold. B's other tests unchanged. |
 
@@ -40,7 +40,7 @@ Observed:
 
 | Suite | Result | Evidence |
 |---|---|---|
-| D02 all (A prior + B repairs + new acquired/period) | **20 passed in 815.73s** | `evidence/d02_a_acquired_period_all.log` |
+| D02 all (A prior + B repairs + new acquired/period) | **20 passed in 814.29s** | `evidence/d02_a_acquired_period_all.log` |
 | D01 all | **15 passed in 92.03s** | `evidence/d02_a_d01_regression.log` |
 | P3 owner/store/rules/projections/goal-residual | **77 passed, 1 skipped in 51.12s** | `evidence/d02_a_p3_regression.log` |
 | B02 source suite at this composition | **7 passed in 53.02s** | `evidence/d02_a_b02_source_regression.log` |
@@ -75,6 +75,7 @@ Observed:
 4. Runs the existing `p3.projections.activate` with the owner identity/registry. It does not add a rule or store; no target is written.
 5. Returns a bounded acquired-state field: status (`NO_PLAN_SCOPE`, `NO_RECORDS`, `HELD_NO_ELIGIBLE_RECORD`, `ELIGIBLE`, `CONTRADICTION`), eligible modes/hashes, withheld entries, active contradictions, latent contradictions, stored count, activation-context hash, exact source/registry hashes, and `native_rule: MISSING_RULE` / `memory_formation: MISSING_RULE` / `first_person_claims: []` / `decision: NOT_EVALUATED`.
 6. A stored record is not automatically recruited: role/relation/access inhibition yields `HELD_NO_ELIGIBLE_RECORD`; unrelated scope yields `NO_RECORDS`; contradictory eligible records yield `CONTRADICTION` and are not reduced to one mode; a no-plan request yields `NO_PLAN_SCOPE`, not “no psychology.”
+7. The body/readset include an explicit recipient boundary: objective material/period are world-proposal input, while observation, event relation access and acquired state are actor-qualified input. Options are non-exhaustive and do not exclude false belief or attempt; the actual actor-qualified consumer is `P3Owner._effect` with its own event access, not the provider transport.
 7. The field is included in the body/readset/hash and in the **existing** `RecursionCycle` provider context. The provider remains transport; the actual later P3 response is also checked.
 
 Actual-owner evidence: same-path, same-seed recognized/imposed histories produce the same P2 formation/event identity and different sourcefree mediator modes. After bootstrap, the selector reads the admitted target, and `RecursionCycle.advance(context=selector)` delivers `eligible_modes` `joint_check` or `private_check` plus the exact record hash to the actual provider input. The same later P3 event response streams carry that mode/hash; the store head is unchanged. A zero-history control yields `NO_RECORDS`, provider input `NO_RECORDS`, and `inspect_alone`; no record is fabricated.
