@@ -399,7 +399,9 @@ def test_h27_real_i02_authorized_canonical_and_component_binding_omission():
             list(reader[respondent].select(target, include_component=True))
 
 
-def _s2a_contradictory_alias_fixture(tag: str, *, binding_has_alias: bool = True):
+def _s2a_contradictory_alias_fixture(
+    tag: str, *, binding_has_alias: bool = True, event_uses_binding: bool = False,
+):
     """A genuine I02-accepted sourcefree release with conflicting alias claims.
 
     I02 currently verifies positive mapping authority and native-question
@@ -430,7 +432,9 @@ def _s2a_contradictory_alias_fixture(tag: str, *, binding_has_alias: bool = True
     for original in old.respondent_events:
         fields = dict(original.semantic_fields)
         fields.update(
-            canonical_question_ref_if_authorized=invented,
+            canonical_question_ref_if_authorized=(
+                declared if event_uses_binding else invented
+            ),
             value_transform_authority_ref=mapping.authority_ref,
         )
         new_events.append(RespondentEvent(
@@ -492,3 +496,96 @@ def test_h32_i02_accepted_unmapped_event_canonical_alias_must_refuse():
     # QuestionVariableBinding where the release explicitly says absent.
     with pytest.raises(SemanticRangeIntegrityError, match="binding|canonical"):
         I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h33_native_i03_owner_installer_binds_normal_first_consumer_and_refuses_poison():
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    from rawlsing_next._pre553_verified_semantic_range import CertifiedRespondentEvents
+
+    source = _build_source("s2a-h33-owner", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    qa = _query_authority("s2a-h33-owner")
+    pred = _branch_predicate(source, qa, tag="s2a-h33-owner")
+    query = _query(source, qa, pred, ("Y",), tag="s2a-h33-owner")
+    oracle = _run(source, qa, pred, query)
+    release = _release(source)
+    universe = source["universe"].ref
+    witness, root = _trusted(source)
+    # The new production entry point owns cache/attestation publication:
+    # callers do NOT hand a self-attested _ReleaseIndex to I03.
+    install_sourcefree_i02_certified_i03_range(
+        source["repo"], release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=root,
+    )
+    index = source["repo"]._i03_release_indices[(release.release_ref, universe)]
+    respondent = source["respondents"]["R2"].ref.key
+    selected = index.events_by_respondent[respondent]
+    assert isinstance(selected, CertifiedRespondentEvents)
+    assert _run(source, qa, pred, query) == oracle
+
+    # Adverse post-install change of only the derived selector: the I02
+    # release and the I03 attestation identities are otherwise unchanged.
+    key = (respondent, "native", source["qrefs"]["Y"].key)
+    assert len(selected._postings[key]) == 1
+    selected._postings[key] = ()
+    denied = _run(source, qa, pred, query)
+    assert denied.facts[0].typed_state == "INTEGRITY_FAILURE"
+    assert denied != oracle
+
+    # Reinstall from the genuine I02 corpus without altering science.
+    install_sourcefree_i02_certified_i03_range(
+        source["repo"], release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=root,
+    )
+    assert _run(source, qa, pred, query) == oracle
+
+
+def test_h34_owner_installer_wrong_root_is_transactionally_nonmutating():
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    source = _build_source("s2a-h34-rollback", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    release = _release(source)
+    universe = source["universe"].ref
+    witness, root = _trusted(source)
+    install_sourcefree_i02_certified_i03_range(
+        source["repo"], release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=root,
+    )
+    k = (release.release_ref, universe)
+    prior_index = source["repo"]._i03_release_indices[k]
+    prior_attestation = source["repo"]._i03_index_attestations[k]
+    with pytest.raises(SemanticRangeIntegrityError):
+        install_sourcefree_i02_certified_i03_range(
+            source["repo"], release_ref=release.release_ref,
+            universe_ref=universe, witness=witness, independently_held_root="0" * 64,
+        )
+    assert source["repo"]._i03_release_indices[k] is prior_index
+    assert source["repo"]._i03_index_attestations[k] is prior_attestation
+    qa = _query_authority("s2a-h34-rollback")
+    pred = _branch_predicate(source, qa, tag="s2a-h34-rollback")
+    query = _query(source, qa, pred, ("Y",), tag="s2a-h34-rollback")
+    assert _run(source, qa, pred, query).facts[0].typed_state == "SUPPORTED"
+
+
+def test_h35_positive_question_binding_alias_through_native_owner_first_reader():
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h35-admitted", event_uses_binding=True,
+    )
+    repo = C11Repository((release,))
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    install_sourcefree_i02_certified_i03_range(
+        repo, release_ref=release.release_ref, universe_ref=universe,
+        witness=witness, independently_held_root=witness.root,
+    )
+    index = repo._i03_release_indices[(release.release_ref, universe)]
+    respondent = next(iter(index.respondents))
+    assert len(list(_select_respondent_events(index, respondent, declared))) == 2
+    assert len(list(_select_respondent_events(index, respondent, declared,
+                                              native_only=True))) == 0
+    # An invented alias still has no selector events; no semantic permission
+    # to treat its emptiness as a certified question from this fact alone.
+    assert list(_select_respondent_events(index, respondent, invented)) == []
