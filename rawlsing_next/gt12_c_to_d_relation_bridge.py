@@ -85,6 +85,16 @@ def _validate(value: object) -> ff.ExactConditionalSupportProfile:
     if r.producer_fact_ref.kind != "EmpiricalFact@1.0.0" or r.producer_query_ref.kind != "EmpiricalQuerySpec@1.0.0":
         raise GT12CToDBridgeError("producer fact/query exact family mismatch")
     if not r.producer_authority_refs or not r.producer_provenance_refs: raise GT12CToDBridgeError("producer closure missing")
+    # A hash-consistent Field Forge profile can declare a different physical
+    # SOURCE_ARTIFACT while this bridge would otherwise stamp the frozen one.
+    # Reject *contradictory* declared source identities before D can admit them.
+    # This check is not native C11/source authentication: the fixed current
+    # transport has a large release/event provenance closure rather than a
+    # direct SOURCE_ARTIFACT ref. Missing source refs remain an explicit hold.
+    declared_sources = tuple(ref for ref in r.producer_provenance_refs
+                             if ref.kind == "SOURCE_ARTIFACT")
+    if declared_sources and (len(declared_sources) != 1 or declared_sources[0] != _source()):
+        raise GT12CToDBridgeError("declared producer source contradicts frozen GT12 physical source")
     if not set(r.relation_permission_ceiling) <= set(r.producer_permission_ceiling): raise GT12CToDBridgeError("permission widening")
     if r.producer_state_blocking != (r.typed_state != "SUPPORTED"): raise GT12CToDBridgeError("typed-state blocker mismatch")
     if r.producer_state_blocking == bool(r.conditional_count_profile): raise GT12CToDBridgeError("blocking/profile inconsistency")
