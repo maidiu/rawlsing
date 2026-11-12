@@ -89,7 +89,7 @@ supporting_actor.register_supporting_actor                    supporting_actor.p
 
 Demonstrated evidence:
 
-- **Positive producer → first reader:** 5/5 C01 tests pass. The parent is a distinct stable ID in branch actor IDs and world actor state; the root actor list and `P2Owner.actor` remain Nadia/focal.
+- **Positive producer → first reader:** 6/6 C01 tests pass. The parent is a distinct stable ID in branch actor IDs and world actor state; the root actor list and `P2Owner.actor` remain Nadia/focal.
 - **Changed-value/dynamic participation:** an owner created with root participants can later admit a registered parent; a separately created owner can bind `(focal, parent)` additively. A proposal with the parent participates only when the parent is registered and co-present.
 - **Separate actor-relative access:** both focal and parent have `PERCEIVED` receipts for the same event with distinct viewer identities; for a prior `ARRIVAL` event the focal actor is `PERCEIVED` while the later-registered parent is `NOT_PERCEIVED` with no event content.
 - **Private state:** the secret is absent from the world snapshot, the event body, `RealizedEvent.accessible`, `RealizedEvent.objective` and both public access reads. The self read (`as_actor=parent_id`) returns it; the public read returns `NOT_READ`. A fabricated event containing the secret refuses `SUPPORTING_PRIVATE_STATE_LEAK`.
@@ -163,7 +163,7 @@ Do not claim any of the following from this return:
 
 | Command | Result | Evidence |
 |---|---|---|
-| C01 packet tests | 5 passed in 13.19 s | `evidence/c01_supporting_actor.log` |
+| C01 packet tests | 6 passed in 15.33 s | `evidence/c01_supporting_actor.log` |
 | P2 owner regression | 5 passed in 15.26 s | `evidence/p2_owner_regression.log` |
 | P3 owner regression | 9 passed, 1 skipped in 29.90 s | `evidence/p3_owner_regression.log` |
 | B01 adjacent regression | 4 passed in 33.88 s | `evidence/b01_adjacent_regression.log` |

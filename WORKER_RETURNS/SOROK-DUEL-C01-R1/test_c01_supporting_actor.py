@@ -310,6 +310,35 @@ def test_replay_refuses_severed_supporting_perception_and_restores(tmp_path):
         fanin.close()
 
 
+def test_private_state_episode_severance_refuses(tmp_path):
+    from unittest.mock import patch
+
+    fanin = start(tmp_path)
+    try:
+        session = fanin.session
+        register_supporting_actor(
+            session, alias=PARENT_ALIAS, actor_id=PARENT_ID, role="parent",
+            private_state={"motive": SECRET},
+        )
+        episode_id = session.world().actor_state[
+            PARENT_ALIAS]["private_episode_id"]
+        store = session.product.store
+        original = store.episodes
+
+        def severed(branch_id):
+            return [row for row in original(branch_id)
+                    if row.get("episode_id") != episode_id]
+
+        assert read_supporting_actor(session, PARENT_ID)["role"] == "parent"
+        with patch.object(store, "episodes", side_effect=severed):
+            with pytest.raises(
+                    RecursionRefusal, match="PRIVATE_STATE_SEVERED"):
+                read_supporting_actor(session, PARENT_ID)
+        assert read_supporting_actor(session, PARENT_ID)["role"] == "parent"
+    finally:
+        fanin.close()
+
+
 def test_cold_process_reads_same_parent_participation(tmp_path):
     fanin = start(tmp_path)
     try:
