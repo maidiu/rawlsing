@@ -34,8 +34,12 @@ from rawlsing_next.pre553_universal_workload import (
 )
 
 
-def _full_query_run(tmp_path, *, scope=None):
-    bundle, issued = _issued_workloads(tmp_path)
+def _full_query_run(tmp_path, *, scope=None, shared=None):
+    if shared is None:
+        tmp_path.mkdir(parents=True, exist_ok=True)
+        bundle, issued = _issued_workloads(tmp_path)
+    else:
+        bundle, issued = shared
     item = issued[0]
     result = execute_issued_workload(
         item.workload,
@@ -73,12 +77,15 @@ def _discovery_run(tmp_path):
 
 
 def test_a_real_issued_i03_batch_complete_and_identity_parity(tmp_path):
-    shared = _full_query_run(tmp_path / "shared")
+    # Same immutable source edition, issuer and full input universe; changing
+    # the test SAV path would change the upstream SHA and invalidate parity.
+    source = _issued_workloads(tmp_path)
+    shared = _full_query_run(tmp_path, shared=source)
     # A closed scope forces the original exact per-operation evaluator. It is
     # not an alternative scientific model or an untrusted cache.
     disabled = I03GroupedExecutionScope()
     disabled.close()
-    independent = _full_query_run(tmp_path / "independent", scope=disabled)
+    independent = _full_query_run(tmp_path, scope=disabled, shared=source)
     first = _query_census(shared)
     second = _query_census(independent)
     require_same_native_output_graph(first, second)
