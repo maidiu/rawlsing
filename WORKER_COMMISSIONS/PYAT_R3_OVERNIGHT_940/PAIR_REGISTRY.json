@@ -299,7 +299,8 @@
               "completed": 1794472487821
             }
           },
-          "pid": 15751
+          "pid": 15751,
+          "state": "RETURNED"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -311,7 +312,11 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "model_actual_turn": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -323,11 +328,27 @@
             }
           },
           "opponent_session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "IDLE_WAIT_OWN_A_RETURN"
+          "state": "RUNNING",
+          "job_id": "pyat940-s2f-b01",
+          "received_head": "2dc67195387f3a25f7cca92f6c21fc5c347bd49b",
+          "pid": 28324,
+          "actual_first_turn_model": {
+            "id": "msg_1cf14bf52001spyYVYL1GA49td",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794475605964,
+              "streamed": 1794475613954,
+              "completed": 1794475614071
+            }
+          }
         }
       },
-      "state": "A_RUNNING",
-      "active_role": "A",
+      "state": "B_RUNNING",
+      "active_role": "B",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -364,22 +385,43 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "active_job": "pyat940-s2f-a01",
+      "active_job": "pyat940-s2f-b01",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s2f-a01",
-        "child_pid": 15751,
-        "supervisor_pid": 15746,
-        "observer_pid": 15752,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-a01",
+        "job_id": "pyat940-s2f-b01",
+        "child_pid": 28324,
+        "supervisor_pid": 28323,
+        "observer_pid": 28325,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-b01",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 15752,
+        "pid": 28325,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
         "interval": null
+      },
+      "a_return": {
+        "job_id": "pyat940-s2f-a01",
+        "exit_code": 1,
+        "candidate_head": "2dc67195387f3a25f7cca92f6c21fc5c347bd49b",
+        "implemented_sha": "8b5853c7cc9c14896c55c9dc60bdf2fad5c65c7f",
+        "remote_verified": true,
+        "disposition": "AUTHOR_QUALIFIED_CANDIDATE_ONLY",
+        "gates": "G1-G4 author claimed isolated fixture; G5 NOT_RUN",
+        "terminal_note": "final assistant message completed; nonzero terminal preserved separately, no delivery rerun",
+        "changed_paths_within_allowlist": true,
+        "incoming_s2e": "HOLD_DEPENDENCY",
+        "actual_final_turn_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      },
+      "custody_comment": {
+        "issue": 919,
+        "comment_id": 6819850875
       }
     }
   ],
