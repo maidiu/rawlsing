@@ -18,7 +18,7 @@ from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
 from rawlsing_next.pre553_empirical_objects import (
-    EmpiricalFact, EmpiricalQuerySpec, ExactRef, semantic_hash,
+    EmpiricalFact, EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash,
 )
 from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
 
@@ -90,13 +90,15 @@ def _attack(mode):
         if changed_query.ref != query.ref else fact_deps
     )
     provenance = (
-        tuple(ref for ref in fact.source_empirical_provenance_refs
+        tuple(ref for raw in fact.source_empirical_provenance_refs
+              for ref in (exact_ref(raw, "fact provenance ref"),)
               if ref.kind != "SOURCE_ARTIFACT")
         if mode == "query_only_unpropagated" else None
     )
     changed_fact = _rebuild_fact(
         fact, changed_query, replaced_fact_deps, provenance=provenance)
-    assert changed_fact.empirical_query_spec_ref == changed_query.ref
+    assert exact_ref(changed_fact.empirical_query_spec_ref,
+                     "changed_fact.empirical_query_spec_ref") == changed_query.ref
     assert changed_fact.risk_set_ref == changed_query.risk_set_ref
     return changed_query, changed_fact, conditioner, target
 
