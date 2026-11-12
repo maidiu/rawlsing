@@ -25,7 +25,9 @@ Original A module at Git blob `1f68dc6ff60e68d72cee284cb8232f659100b8f6`, `verif
 
 ## Proof and grade
 
-GitHub Actions run `43278463747` is the B S1-C focused and inherited regression court; `43278466894` is the stacked #948 combined integration court. At drafting the focused S1-C test step completed successfully while inherited/combined steps were still in progress; the machine receipt and the final handoff must report the actual terminal conclusions, not assume them. Full command:
+GitHub Actions run `43278463747` is the B S1-C focused and inherited regression court; `43278466894` is the stacked #948 combined integration court. At final readback, the S1-C run completed **SUCCESS: 14/14 focused tests and 22/22 inherited R03/R61 tests**. The stacked #948 combined sourcefree integration run `43278466894` also completed **SUCCESS** on the exact tested code commit. These are GitHub-hosted executable tests, not native original35 qualification. The GitHub log reports 309 operations, 150 candidate receipts, 330 native empirical facts, one bounded build, 260,132,864 B sampled peak process-tree RSS bytes, 2,288 RSS samples, 55.73 seconds focused test wall time and 4.605595 seconds representative packet time. These are B-hosted fixture measurements only.
+
+Full command:
 `PYTHONPATH=. python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py`
 and inherited R03/R61 `pytest` test modules. This is a CI runner, not a locally inspected Mac process. B's 3 additional hostile tests extend A's 11; do not confuse prior A's 309/150/330 measurements with newly measured original35 production results. No original respondent source read, no protected integration, no native source/science/current issuer.
 
