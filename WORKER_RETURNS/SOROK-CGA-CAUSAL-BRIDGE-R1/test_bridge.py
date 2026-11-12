@@ -39,7 +39,7 @@ def _no_mediator_new(monkeypatch, state):
 
     with monkeypatch.context() as patch:
         patch.setattr(run_p6, "new", no_history_new)
-        _run(state, "new")
+        _run(state, "new", situated_house=True)
 
 
 def _actual_state(state):
@@ -67,12 +67,12 @@ def _actual_state(state):
 def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_path, monkeypatch):
     positive = tmp_path / "actual-history"
     negative = tmp_path / "no-history"
-    _run(positive, "new")
+    _run(positive, "new", situated_house=True)
     _no_mediator_new(monkeypatch, negative)
 
     before_pos, before_speech_pos, before_head_pos = _actual_state(positive)
     before_neg, before_speech_neg, before_head_neg = _actual_state(negative)
-    assert len(before_pos["records"]) == 1, before_pos
+    assert before_pos["records"] == [] and before_pos["status"] == "NO_QUALIFIED_P3_CANDIDATES"
     assert before_neg["records"] == []
     assert before_pos["native_memory"] == "MISSING_RULE"
     assert len(before_speech_pos) == len(before_speech_neg)
@@ -104,11 +104,11 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
         assert packet["sourcefree_p3"]["records"]
         return utterance
 
-    # Both runs use exactly the same actual P6 reader and injected decision;
-    # only the sourcefree historical formation is absent in the negative.
-    _run(positive, "wait", duration=4, request_id="one", bridge=True,
+    # A committed outward cue qualifies present actor perception; history
+    # differs only by prior formation. Quiet/no-cue never grants B1 access.
+    _run(positive, "approach", request_id="one", bridge=True,
          interpret=interpret, realize=realize)
-    _run(negative, "wait", duration=4, request_id="one", bridge=True,
+    _run(negative, "approach", request_id="one", bridge=True,
          interpret=interpret, realize=realize)
 
     assert len(packets) == 2
@@ -120,7 +120,7 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
     assert len(speech_pos) == len(before_speech_pos) + 1
     assert speech_pos[-1]["body"]["text"] == utterance
     assert speech_neg == before_speech_neg
-    assert len(after_pos["records"]) == 1 and after_neg["records"] == []
+    assert after_pos["records"] == [] and after_neg["records"] == []
 
     actual = json.loads((positive / "p4_receipts.json").read_text())["turns"][-1]
     control = json.loads((negative / "p4_receipts.json").read_text())["turns"][-1]
@@ -132,7 +132,7 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
 
 def test_p3_to_p6_source_registry_and_clock_sever_then_restore(tmp_path, monkeypatch):
     state = tmp_path / "bound"
-    _run(state, "new")
+    _run(state, "new", situated_house=True)
     owner = run_p6.open_owner(state / "actual-p2")
     try:
         session = owner.base_owner.fanin.session
@@ -142,7 +142,7 @@ def test_p3_to_p6_source_registry_and_clock_sever_then_restore(tmp_path, monkeyp
                       relation_ref=scope["relation_ref"],
                       actor_observed=bool(recent_self_actions(session)))
         original = qualified_p3_read(owner, session, **kwargs)
-        assert len(original["records"]) == 1
+        assert original["records"] == []
         initial_head = owner.store.head()
         with monkeypatch.context() as fault:
             fault.setattr(owner, "source_hash", "0" * 64)
@@ -157,14 +157,14 @@ def test_p3_to_p6_source_registry_and_clock_sever_then_restore(tmp_path, monkeyp
 
 
 def test_exact_same_cold_world_reader_severance_and_restoration(tmp_path):
-    """Hold the entire P2/P3/P6 checkpoint fixed: only the read edge changes."""
+    """Hold one actual sourced house fixed; approach produces a qualified cue."""
     import shutil
 
     state = tmp_path / "same-root"
     baseline = tmp_path / "frozen-baseline"
-    _run(state, "new")
+    _run(state, "new", situated_house=True)
     initial, initial_speech, initial_head = _actual_state(state)
-    assert len(initial["records"]) == 1
+    assert initial["records"] == []
     shutil.copytree(state, baseline)
     packets = []
 
@@ -183,7 +183,7 @@ def test_exact_same_cold_world_reader_severance_and_restoration(tmp_path):
         return "The plan might be worth discussing."
 
     def go(*, bridge):
-        _run(state, "wait", duration=4, request_id="same-world-turn",
+        _run(state, "approach", request_id="same-world-turn",
              interpret=interpret, realize=realize, bridge=bridge)
         _, speech, head = _actual_state(state)
         decision = json.loads((state / "p4_receipts.json").read_text())["turns"][-1][
