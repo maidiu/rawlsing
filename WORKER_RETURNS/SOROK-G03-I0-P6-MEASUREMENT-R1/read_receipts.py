@@ -31,7 +31,7 @@ def load(p):
 def validhash(x,n=64):return isinstance(x,str) and len(x)==n and all(c in "0123456789abcdef" for c in x)
 def num(x):return type(x) in (int,float) and math.isfinite(x) and x>=0
 def canonical(obj):
-    return (json.dumps(obj,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(",",":"))+"\\n").encode()
+    return (json.dumps(obj,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(",",":"))+"\n").encode()
 def state_snapshot(root):
     """Independent receiver's path/content check; no dependency on the meter."""
     root=Path(root)
@@ -62,7 +62,9 @@ def check_snapshot(s):
     require(s["status"] in ("PRESENT","ABSENT") and type(s["bytes"]) is int and s["bytes"]>=0
             and type(s["files"]) is int and s["files"]>=0 and validhash(s["sha256"]),"STATE_SNAPSHOT_INVALID")
     if s["status"]=="ABSENT":
-        require(s==state_snapshot(Path("/a/nonexistent/g03-root")), "STATE_ABSENT_DIGEST_BAD")
+                require(s["bytes"]==0 and s["files"]==0 and
+                s["sha256"]==sha(canonical({"v":1,"status":"ABSENT"})),
+                "STATE_ABSENT_DIGEST_BAD")
 def verify_repo(repo,head,source):
     """Optional present-checkout source attestation. Not needed for offline archive reading."""
     repo=Path(repo).resolve()
