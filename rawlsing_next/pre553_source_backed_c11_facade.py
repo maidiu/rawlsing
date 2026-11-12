@@ -682,6 +682,9 @@ def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalC
 def build_source_backed_c11_repository(
     source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
 ):
+    # One-shot iterables must not disappear between cache admission and the
+    # compact physical-binding witness. Both must see identical authorities.
+    current_authorities = tuple(current_authorities)
     key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
     release = cache.get(key) if cache else None
     if release is None:
