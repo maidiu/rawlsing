@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_PAIR2_S2B_AGENT_B_R4_G1_G5_RECEIPT@1",
+  "contract": "#919/S2-B/P2-02 and #909/R3/R3C/R3S",
+  "role": "AGENT_B_ADVERSARIAL_CONSTRUCTION_NOT_G5",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "achieved": "SCOPED_EXACT_EXTERNAL_ROOT_CLASS_REFUSAL",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/pyat-pair2-s2b-b-r4-root-freeze-20261112",
+  "pr": "https://github.com/maidiu/rawlsing/pull/971",
+  "inherited_a3_sha": "e82a7ee92a32cc8b327d0685267d4aaea1d86a1a",
+  "inherited_a3_code_sha": "d3e3eed5fab51631eb796da4f20ce942ae8fd2ac",
+  "protected_pre_main_unchanged": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "b4_tested_status": "GITHUB_ACTIONS_NO_RUNNER__NATIVE_SOURCE_TESTS_NOT_EXECUTED",
+  "b4_code_test_workflow_sha": "04453a6478b0d374c54c86e2e0f1618893e739a8",
+  "changed_code_blobs": {
+    "rawlsing_next/_pre553_external_i02_certificate.py": "524ac3eb53508174dfd13f1b1e6e8178aca1eed7",
+    "rawlsing_next/tests/test_pre553_external_i02_certificate.py": "c7691b1449ef4e3c1139ae9af58d16d12773048c",
+    ".github/workflows/pyat-pair2-s2b-external-i02.yml": "19229467327d39a51d78834f066ce5e335814f29"
+  },
+  "evidence": {
+    "a3_heap_concession_local_independent": {
+      "method": "Python sqlite3 in-memory SELECT orphan closure antijoin tracemalloc",
+      "orphan_count": 60000,
+      "list_peak_bytes": 4640432,
+      "count_peak_bytes": 601,
+      "limitation": "SQL primitive only; not project/native or total RSS"
+    },
+    "b4_root_subclass_reproduction_local": {
+      "method": "Python frozen dataclass subtype override __getattribute__, switch release/source/replay after cold phase",
+      "old_gate": "isinstance accepted subclass",
+      "before": [
+        "release-A",
+        "source-A",
+        "replay-A"
+      ],
+      "after": [
+        "release-B",
+        "source-B",
+        "replay-B"
+      ],
+      "new_gate": "type(roots) is ExternalI02Roots refuses subtype",
+      "limitation": "Python primitive only, no native first-reader run"
+    },
+    "new_github_ci": {
+      "run_id": 43293333773,
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43293333773",
+      "conclusion": "failure",
+      "runner_assigned": false,
+      "steps_executed": 0,
+      "native_pytest_result": "NOT_EXECUTED",
+      "source_test_outcome": "UNKNOWN"
+    },
+    "old_b1_ci": {
+      "run_id": 43278005794,
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43278005794",
+      "passed": 88,
+      "failed": 0,
+      "limitation": "only old B1 SHA f5ee89b8e700ac14cf266c2e3eae4c25f021c349"
+    }
+  },
+  "inherited_preserved": [
+    "B 4 test-driven fixes at prior SHA",
+    "A #961 SQL facade, main-qualified index, transaction, TEMP, collation, seal-delete, atomic no-clobber, Linux inode-pinned physical hash",
+    "A #965 bounded COUNT/EXISTS invalid closure refusal"
+  ],
+  "new_attack": "Overrideable ExternalI02Roots subclass switches source/release/replay between cold root verification and real I03 binding",
+  "new_test": "test_s2b_b4_switchable_external_roots_cannot_authorize_wrong_i03_release",
+  "repair": "VerifiedExternalI02.__init__ exact ExternalI02Roots class check before any physical or semantic use",
+  "sourcefree_first_reader_test_execution": "NOT_RUN",
+  "shared_main_gap": "Full bounded source-direct original M01-M18 I02 proof still requires removed legacy C11LogicalRelease / ReplayManifest.closure_refs prerequisite",
+  "g1": {
+    "status": "PARTIAL",
+    "reason": "inherited v1 semantics; source-direct bounded I02 not constructed"
+  },
+  "g2": {
+    "status": "PARTIAL",
+    "reason": "B1 native proven only old SHA; descendant native first-reader tests not run"
+  },
+  "g3": {
+    "status": "PARTIAL",
+    "reason": "root subclass primitive reproduced, exact type patch, native negative not run"
+  },
+  "g4": {
+    "status": "PARTIAL",
+    "reason": "A3 heap primitive independent, no full process RSS/scratch/native source-direct"
+  },
+  "g5": {
+    "status": "NOT_RUN",
+    "reason": "distinct nonauthor required after G1-G4"
+  },
+  "external_holds": [
+    "Original35 source and scientific rights not issued",
+    "S2-A G5 pending",
+    "S2-C saved physical reader separate",
+    "new CI runner failed before test steps"
+  ],
+  "protected_merge": "NONE",
+  "next_agent_a_attack": "Try legitimate root issuer against exact-type guard; execute native B4 test and inherited suite; implement source-direct bounded M01-M18 on actual Pair1 input with no prebuilt replay closure."
+}
