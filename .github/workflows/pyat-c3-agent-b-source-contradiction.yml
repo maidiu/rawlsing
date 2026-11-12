@@ -9,6 +9,7 @@ on:
       - 'rawlsing_next/tests/test_c3_agent_a_query_source_downgrade.py'
       - 'rawlsing_next/tests/test_c3_agent_b_source_contradiction.py'
       - 'rawlsing_next/tests/test_c3_round2_current_origin_consumer.py'
+      - 'rawlsing_next/tests/test_hqr_s3a_exact_query_fact_closure.py'
       - 'rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py'
       - '.github/workflows/pyat-c3-agent-b-source-contradiction.yml'
   workflow_dispatch:
@@ -39,5 +40,6 @@ jobs:
             rawlsing_next/tests/test_c3_agent_a_query_source_downgrade.py \
             rawlsing_next/tests/test_c3_agent_b_source_contradiction.py \
             rawlsing_next/tests/test_c3_round2_current_origin_consumer.py \
+            rawlsing_next/tests/test_hqr_s3a_exact_query_fact_closure.py \
             rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
             rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py
