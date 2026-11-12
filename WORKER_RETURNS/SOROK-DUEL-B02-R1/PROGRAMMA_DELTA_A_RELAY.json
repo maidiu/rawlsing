@@ -1,0 +1,77 @@
+{
+  "event_id": "SOROK-DUEL-B02-A-RELAY-20261112-R1",
+  "task_id": "B02",
+  "phase": "CG-B",
+  "title": "Incremental dated periods, actual P3 interleave and as-of currentness",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "62292613aa9210a7d3e944314e36924349337439",
+  "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
+  "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
+  "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+  "frozen_opponent_implementation": "509784c2850c499d1f640c9f43c569416081d76d",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_AND_P3_SPAN_BEHAVIOR_CHANGE",
+  "changed_symbols": [
+    "historical_period.materialize_to",
+    "historical_period.period_progress",
+    "historical_period.remaining_span",
+    "historical_period.p3_interval_span",
+    "historical_period.read_material_period",
+    "historical_period._recover_missing_receipts",
+    "historical_period._segments_for_range",
+    "historical_period._receipt_rows",
+    "historical_period._append_receipt",
+    "historical_period.MATERIALIZATION_RECEIPT_KIND",
+    "p2_owner.MATERIAL_FACT_SLOTS (p6_market_inventory,p6_owned_objects)"
+  ],
+  "actual_reader": [
+    "historical_period.materialize_to",
+    "historical_period.period_progress",
+    "historical_period.read_material_period",
+    "historical_period.p3_interval_span"
+  ],
+  "preserved_obligations": [
+    "B02 dated plan/employment source facts and S46 producer reuse",
+    "SCHEDULED_ONLY is NOT_PERFORMED, not performed work",
+    "B03 same-root PsycheStore negative and B01/B03 readers",
+    "no second clock/scheduler/ledger/P3 psychology",
+    "calendar/S46 mapping remains a declared sourcefree hypothesis"
+  ],
+  "regressed_obligations": [
+    "p3_interval_span after elapsed time now returns the remaining span, not the full period; B's old test encoding full duration was corrected",
+    "p2_owner byte change invalidates prior P3 code-pin roots; fresh final-code roots only; no migration",
+    "B02 future as-of employment is never current; old unqualified employment field remains planning/as-of only"
+  ],
+  "affected_queued_tasks": [
+    "B04 (built in this cut)",
+    "B05 (built in this cut)",
+    "C02/C03 (PARENT_B02_HOLD literal reconciliation; Pair3-owned, not edited)",
+    "D02/P3 receiving (full 3-5 event batch, P3 source closure, pin migration)"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/a_relay_b02.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
+  ],
+  "negative_refs": [
+    "test_incremental_period_advance_interleaves_p3_and_employment",
+    "test_crash_after_state_before_receipt_recovers_once",
+    "P6_PERIOD_CLOCK_IN_PAST",
+    "P6_PERIOD_OUTSIDE_PLAN",
+    "FUTURE_NOT_MATERIALIZED / MATERIALIZED_RETROSPECTIVELY / ELAPSED_BY_OTHER_OWNER"
+  ],
+  "cold_refs": [
+    "test_incremental_period_advance_interleaves_p3_and_employment cold subprocess: plan/employment/period/read/P3 head/counts exact",
+    "test_retry_and_cold_replay_do_not_duplicate_periods"
+  ],
+  "fork_scope": {
+    "material_only": true,
+    "fork_state": "C12_FORK_WITHOUT_S46_INTERVAL_STATE",
+    "cold_fork": "NOT_PROVED",
+    "new_materialization_on_fork": "REFUSED"
+  },
+  "full_p3_batch": "NOT_RUN_SINGLE_P3OWNER_REALIZE_CYCLE_PROVEN",
+  "cost": "UNKNOWN",
+  "note": "Executed author evidence at one cut, not independent nonauthor receiving; composition 046f0f3 is unexecuted/unaccepted as a combination."
+}

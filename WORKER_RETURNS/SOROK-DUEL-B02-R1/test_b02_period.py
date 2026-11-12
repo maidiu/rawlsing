@@ -84,6 +84,19 @@ def test_two_dated_periods_midperiod_job_change_and_later_state_read(tmp_path):
         assert before_materialize["interval_status"] == "NOT_MATERIALIZED"
         assert before_materialize["interval"] is None
 
+        assert hp.p3_interval_span(session, "period:2026-h1") == {
+            "mode": "SCHEDULED_ONLY", "span": 181,
+        }
+        assert hp.p3_interval_span(session, "period:2026-h2") == {
+            "mode": "SCHEDULED_ONLY", "span": 184,
+        }
+        interval = hp.p3_interval_span(session, "period:2026-h1")
+        owner.base_owner.validate_proposal(EventProposal(
+            "b02:period-proposal", session.clock() + interval["span"] + 1,
+            "ADMIT_EVENT", (owner.base_owner.source_ref,),
+            owner.base_owner.participants, {}, interval=interval,
+        ))
+
         materialized = hp.materialize_periods(session)
         rows = by_period(materialized)
         assert materialized["status"] == "MATERIALIZED"
@@ -128,18 +141,8 @@ def test_two_dated_periods_midperiod_job_change_and_later_state_read(tmp_path):
         assert early["provenance"]["fork_state"] == "CURRENT_BRANCH"
         assert early["read_boundary"] == hp.READ_BOUNDARY
 
-        assert hp.p3_interval_span(session, "period:2026-h1") == {
-            "mode": "SCHEDULED_ONLY", "span": 181,
-        }
-        assert hp.p3_interval_span(session, "period:2026-h2") == {
-            "mode": "SCHEDULED_ONLY", "span": 184,
-        }
-        interval = hp.p3_interval_span(session, "period:2026-h1")
-        owner.base_owner.validate_proposal(EventProposal(
-            "b02:period-proposal", session.clock() + interval["span"] + 1,
-            "ADMIT_EVENT", (owner.base_owner.source_ref,),
-            owner.base_owner.participants, {}, interval=interval,
-        ))
+        assert hp.p3_interval_span(session, "period:2026-h1")["span"] == 0
+        assert hp.p3_interval_span(session, "period:2026-h2")["span"] == 0
 
         p2_employment = owner.base_owner.material_fact(hp.EMPLOYMENT_SLOT)
         p2_period = owner.base_owner.material_fact(hp.PERIOD_SLOT)

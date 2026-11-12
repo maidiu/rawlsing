@@ -1,0 +1,121 @@
+{
+  "event_id": "SOROK-DUEL-B04-A-20261112-R1",
+  "task_id": "B04",
+  "phase": "CG-B",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "62292613aa9210a7d3e944314e36924349337439",
+  "feature_commit": "a3f74693b70cb09f0e8bac4a7ca094812173db3a",
+  "composition_start": "046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5",
+  "frozen_opponent_return": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+  "branch": "codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_P3_CODE_PIN_BREAK",
+  "classification_detail": [
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "read_owned_objects/read_market_inventory/read_purchase are actual stock/ownership consumers; parent_feasible_actions reads changed parent material."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "Two new world material slots and a new C12 purchase receipt kind; existing B01/B03/B02 readers unchanged."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "p2_owner slot allowlist byte change alters P3 code pins; no migration; fresh roots only."
+    }
+  ],
+  "changed_symbols": [
+    "material_operations.MARKET_SLOT",
+    "material_operations.OWNED_SLOT",
+    "material_operations.MARKET_SCHEMA",
+    "material_operations.OWNED_SCHEMA",
+    "material_operations.PURCHASE_RECEIPT_SCHEMA",
+    "material_operations.PURCHASE_KIND",
+    "material_operations.establish_market_inventory",
+    "material_operations.read_market_inventory",
+    "material_operations.read_owned_objects",
+    "material_operations.purchase_drum_kit",
+    "material_operations.read_purchase",
+    "p2_owner.MATERIAL_FACT_SLOTS"
+  ],
+  "new_world_resource": {
+    "p6_market_inventory": {
+      "schema": "SOROK_MARKET_INVENTORY@1",
+      "source_qualified": true
+    },
+    "p6_owned_objects": {
+      "schema": "SOROK_OWNED_OBJECTS@1",
+      "source_qualified": true
+    }
+  },
+  "actual_reader": [
+    {
+      "name": "material_operations.read_market_inventory",
+      "returns": "stock items/source/provenance"
+    },
+    {
+      "name": "material_operations.read_owned_objects",
+      "returns": "acquisition rows and owner/object totals"
+    },
+    {
+      "name": "material_operations.read_purchase",
+      "returns": "durable admitted/refused receipt, current sources, owned totals, parent feasible actions"
+    },
+    {
+      "name": "parent_activity.parent_feasible_actions",
+      "returns": "changed parent cash/free-hours options"
+    }
+  ],
+  "first_consumer": {
+    "stock_ownership": "read_owned_objects",
+    "parent_feasible_choice": "parent_feasible_actions",
+    "mother_decision": "NONE_VERIFIED"
+  },
+  "preserved_obligations": [
+    "B01 fixed-A cash/free-hours untouched by parent purchase",
+    "C02 parent cash/free-hours funding source",
+    "B03 material constraints read; only household REFUSED_AFFORDABILITY separated",
+    "no public event/perception, no PsycheStore/P3 write, no second ledger",
+    "stock must exist; refusal no debit/stock/ownership; no negative balance"
+  ],
+  "regressed_obligations": [
+    "P3 prior code-pin roots incompatible with final p2_owner bytes",
+    "Pair3-owned parent_activity private helpers reused; HQ must reconcile new P2_PARENT_PURCHASE operation and stale PARENT_B02_HOLD literal"
+  ],
+  "affected_queued_tasks": [
+    "B05 built",
+    "C03/C04 parent decision/utterance/uptake future",
+    "C02 stale B02 qualification reconciliation",
+    "P3 receiving/pin migration"
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py@62292613aa9210a7d3e944314e36924349337439",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@62292613aa9210a7d3e944314e36924349337439"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/a_relay_b04.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log"
+  ],
+  "negative_refs": [
+    "PURCHASE_OWNER_UNKNOWN",
+    "PURCHASE_CURRENCY_MISMATCH",
+    "PURCHASE_PARENT_UNAVAILABLE",
+    "PURCHASE_PRICE_MISMATCH",
+    "PURCHASE_STOCK_UNAVAILABLE",
+    "PURCHASE_INSUFFICIENT_FUNDS",
+    "PURCHASE_TIME_UNAVAILABLE",
+    "REFUSED_NOISE",
+    "P6_MARKET_SOURCE_OR_ROOT_MISMATCH"
+  ],
+  "cold_refs": [
+    "test_purchase_cold_restore_and_source_severance"
+  ],
+  "public_event": "NOT_EMITTED_HELD_PAIR3_VOCABULARY",
+  "fork_purchase": "REFUSED_C02_PARENT_BRANCH_BOUND",
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation available."
+  },
+  "parent_history_composition": "C02 parent_activity.read_parent_history excludes P2_PARENT_PURCHASE; use material_operations.read_purchase until the Pair3/C02 owner composes the kind."
+}
