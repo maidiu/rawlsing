@@ -331,7 +331,15 @@ class VerifiedExternalI02:
     Exact class and slots are part of the native I03 trust boundary: neither a
     lookalike Protocol nor an overrideable child/instance selector is certified.
     """
-    __slots__ = ("path", "db", "roots", "_closed")
+    __slots__ = ("path", "db", "roots", "_closed", "_sealed")
+
+    def __setattr__(self, name: str, value: object) -> None:
+        # Certificate bytes and externally verified identity must not be
+        # replaced between cold validation and ordinary native I03 selection.
+        # The only permitted post-seal transition is close(), handled below.
+        if getattr(self, "_sealed", False):
+            _fail("immutable verified external I02 certificate cannot be reassigned")
+        object.__setattr__(self, name, value)
 
     def __init__(self, path: str | Path, *, roots: ExternalI02Roots) -> None:
         if not isinstance(roots, ExternalI02Roots):
@@ -367,13 +375,14 @@ class VerifiedExternalI02:
             raise
         self.roots = roots
         self._closed = False
+        self._sealed = True
 
     def _ensure_open(self) -> None:
         if self._closed:
             _fail("closed external I02 certificate cannot authorize native selection")
 
     def close(self) -> None:
-        self._closed = True
+        object.__setattr__(self, "_closed", True)
         self.db.close()
 
     def __enter__(self) -> "VerifiedExternalI02":
