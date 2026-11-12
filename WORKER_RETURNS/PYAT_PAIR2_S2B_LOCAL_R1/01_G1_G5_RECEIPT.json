@@ -1,0 +1,231 @@
+{
+  "schema": "PYAT_R3_S2B_LOCAL_REPAIR_R1_RECEIPT@1",
+  "commission": "S2-B/P2-02/#919",
+  "programme": "R3/R3C/R3S/#909",
+  "role": "LOCAL_EXECUTION_AND_CAUSAL_REPAIR_NOT_INDEPENDENT_G5",
+  "status": "READY_FOR_INDEPENDENT_G5",
+  "lineage": {
+    "starting_pr": 974,
+    "starting_branch": "agent/pyat-pair2-s2b-a-direct-candidate-20261112-r5",
+    "frozen_code_test_workflow_commit": "edd0611d1ea0e80a47692635fe3bd73a079f1bec",
+    "starting_pr_last_reported_head": "fef8abd4c61508bb85c1797b73006b60c5fe0170",
+    "repair_branch": "agent/pyat-s2b-r5-local-repair-20261112",
+    "repair_pr": 979,
+    "repair_pr_url": "https://github.com/maidiu/rawlsing/pull/979",
+    "repair_pr_base": "agent/pyat-pair2-s2b-a-direct-candidate-20261112-r5",
+    "source_test_repair_commit": "155cd1b7244ab22ede804386e6d5253a39fe3587",
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "protected_pre_main_modified": false,
+    "overlapping_writer_lease_used": false
+  },
+  "environment": {
+    "host": "macOS",
+    "execution": "Lima 2.3.0 Linux VM on Apple Virtualization framework",
+    "linux": "7.3.0-9-generic Ubuntu 26.10 x86_64",
+    "cpu": 2,
+    "memory_gib": 4,
+    "proc_self_fd": true,
+    "python": "3.11.18",
+    "pytest": "9.2.0",
+    "pyarrow": "26.0.1",
+    "pandas": "3.1.1",
+    "pyreadstat": "1.3.7",
+    "compile": "COMPILE_OK"
+  },
+  "tests": {
+    "frozen_direct_first_run": {
+      "passed": 14,
+      "failed": 0,
+      "log": "logs/00_DIRECT_FIRST_RUN_FROZEN.log"
+    },
+    "final_full_court": {
+      "passed": 129,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 24.71,
+      "process_maxrss_kib": 143560,
+      "junit": "logs/02_S2B_LOCAL_FULL_FINAL.xml",
+      "log": "logs/01_FULL_COURT_FINAL.log",
+      "files": {
+        "test_pre553_direct_i02_sourcefree": 26,
+        "test_pre553_external_i02_certificate": 29,
+        "test_pre553_verified_semantic_range": 26,
+        "test_pre553_empirical_query": 32,
+        "test_pre553_c11_repository_ingest": 16
+      }
+    },
+    "standalone_sqlite_attack_repro": {
+      "status": "PASS",
+      "log": "logs/03_REPRO_ATTACK_FINAL.log"
+    },
+    "material": {
+      "direct_2048_events_1_respondent": {
+        "status": "PASS",
+        "retained_sqlite_bytes": 13135872,
+        "build_seconds": 9.673,
+        "cold_verify_plus_2048_select_seconds": 0.2555,
+        "python_peak_bytes": 2233151,
+        "process_maxrss_kib": 42572,
+        "log": "logs/04_MATERIAL_2048_FINAL.log"
+      },
+      "derived_2048_respondents": {
+        "status": "PASS",
+        "retained_sqlite_bytes": 24801280,
+        "build_seconds": 6.8231,
+        "cold_verify_seconds": 0.3105,
+        "python_peak_bytes": 2112349,
+        "process_maxrss_kib": 101428,
+        "log": "logs/05_MATERIAL_EXTERNAL_FINAL.log"
+      },
+      "direct_20000_events_1_respondent": {
+        "status": "PASS",
+        "retained_sqlite_bytes": 126853120,
+        "build_seconds": 65.385,
+        "cold_verify_plus_select_seconds": 1.967,
+        "python_peak_bytes": 2231333,
+        "process_maxrss_kib": 40520,
+        "log": "logs/07_SCALE_20000.log"
+      },
+      "direct_100000_events_1_respondent": {
+        "status": "PASS",
+        "retained_sqlite_bytes": 638414848,
+        "build_seconds": 365.843,
+        "cold_verify_plus_select_seconds": 11.158,
+        "python_peak_bytes": 2231126,
+        "process_maxrss_kib": 40328,
+        "sampled_workdir_tmp_peak_bytes": 685603704,
+        "selected_postings": 100000,
+        "respondents": 1,
+        "log": "logs/06_SCALE_100000_FINAL.log"
+      }
+    }
+  },
+  "repairs": [
+    {
+      "id": "D1",
+      "defect": "direct builder accepted duplicate declared universe/authority refs that original I02 rejects",
+      "repair": "duplicate declaration refusal before staging",
+      "test": "test_s2b_a5_direct_duplicate_manifest_declarations_refused",
+      "red": "logs/09_RED_NEW_TESTS_ON_FROZEN.log",
+      "green": "logs/10_GREEN_NEW_TESTS_ON_REPAIRED.log"
+    },
+    {
+      "id": "D2",
+      "defect": "direct builder rejected a legacy-valid manifest omitting the ReplayManifest count declaration",
+      "repair": "require core counts; if ReplayManifest declared require exactly 1",
+      "test": "test_s2b_a5_direct_legacy_valid_manifest_without_replay_count",
+      "red": "logs/09_RED_NEW_TESTS_ON_FROZEN.log",
+      "green": "logs/10_GREEN_NEW_TESTS_ON_REPAIRED.log"
+    },
+    {
+      "id": "D3",
+      "defect": "malformed direct certificate leaked raw sqlite3.OperationalError",
+      "repair": "cold verifier wraps sqlite3.Error as ExternalI02IntegrityError",
+      "test": "test_s2b_a5_direct_cold_verifier_typed_refusal_on_missing_direct_tables",
+      "red": "logs/09_RED_NEW_TESTS_ON_FROZEN.log",
+      "green": "logs/10_GREEN_NEW_TESTS_ON_REPAIRED.log"
+    },
+    {
+      "id": "D4",
+      "defect": "direct atomic publication leaked raw OSError",
+      "repair": "non-collision OSError wrapped as ExternalI02IntegrityError; staged artifact removed",
+      "test": "test_s2b_a5_direct_publication_oserror_typed_no_clobber",
+      "red": "logs/09_RED_NEW_TESTS_ON_FROZEN.log",
+      "green": "logs/10_GREEN_NEW_TESTS_ON_REPAIRED.log"
+    },
+    {
+      "id": "D5",
+      "defect": "authority failure escaped as base C11IntegrityError",
+      "repair": "public builder is a typed refusal boundary mapping Pre553IntegrityError to ExternalI02IntegrityError",
+      "test": "test_s2b_a5_direct_wrong_authority_is_typed_refusal",
+      "red": "logs/11_RED_FROZEN_WRONG_AUTHORITY_TYPE.log",
+      "green": "logs/12_GREEN_REPAIRED_WRONG_AUTHORITY_TYPE.log"
+    },
+    {
+      "id": "D6",
+      "defect": "no direct-schema path to actual native I03 selectors",
+      "repair": "install_direct_sourcefree_i02_i03 requires exact reconstructed historical source/replay/release identity against an already-sealed body release; legacy installer still refuses direct schema",
+      "test": [
+        "test_s2b_a5_direct_historical_identity_installs_native_i03_selectors",
+        "test_s2b_a5_direct_changed_restored_native_i03_eligible_output",
+        "test_s2b_a5_direct_sourcefree_drives_full_native_i03_query"
+      ],
+      "red": "logs/13_RED_FROZEN_DIRECT_I03_IMPORT.log"
+    }
+  ],
+  "historical_identity_parity": {
+    "oracle": "actual validate_c11_source_release",
+    "candidate_projection_hash": "EQUAL",
+    "ReplayManifest_ref": "EQUAL",
+    "C11LogicalRelease_release_ref": "EQUAL",
+    "cases": [
+      "base typed-absence fixture",
+      "WeightMeasureFact present",
+      "19 respondents reversed section order",
+      "canonical and component aliases",
+      "multi-universe SourceUniverseRelation",
+      "all four optional internal replay families",
+      "legacy-valid manifest without ReplayManifest count declaration"
+    ],
+    "constructed_legacy_objects_in_direct_builder": false,
+    "legacy_validation_seal_issued": false
+  },
+  "native_i03": {
+    "direct_selectors_install_path": "install_direct_sourcefree_i02_i03",
+    "requires_exact_sealed_body_release": true,
+    "legacy_installer_still_refuses_direct_schema": true,
+    "ordered_selector_parity_native_canonical_component_states": true,
+    "full_native_query_original_raw_numerator_support": 2,
+    "full_native_query_changed_raw_numerator_support": 3,
+    "full_native_query_restored_equals_original": true,
+    "s2c_cold_physical_body_store": "SEPARATE_NOT_BUILT"
+  },
+  "gates": {
+    "G1": {
+      "status": "SATISFIED_AT_SCOPED_SOURCEFREE_TYPED_SECTION_EVIDENCE",
+      "evidence": "all 13 families, typed absences, authority/source binding, occurrence identity, reconstructed M01-M18 replay and executed SHA256 parity",
+      "remaining_external": "live S1-B/E decoder-to-section input; original35 source equivalence and CURRENT rights"
+    },
+    "G2": {
+      "status": "SATISFIED_AT_DIRECT_SELECTOR_PLUS_SEALED_BODY_SCOPE",
+      "evidence": "direct certificate selectors reach actual native I03 selection and full execute_empirical_query; changed input changes eligible output; restoration reproduces original",
+      "remaining_external": "S2-C cold physical body realization"
+    },
+    "G3": {
+      "status": "SATISFIED_AT_TESTED_HOSTILE_SCOPE",
+      "evidence": "omissions, duplicate declarations/occurrences, forged selectors, wrong source/authority, unlawful typed absence, self-rehash, malformed tables and publication failures refuse admission; inherited SQLite attacks remain green",
+      "limit": "no claim against hostile kernel or arbitrary co-resident Python introspection"
+    },
+    "G4": {
+      "status": "SATISFIED_AT_MEASURED_SOURCEFREE_SCOPE",
+      "evidence": "no legacy release/closure in direct builder; 100000 one-shot events at ~40 MB RSS; SQLite disk sorter; 2.23 MB Python peak",
+      "remaining_unmeasured": [
+        "100000 respondents",
+        "full integrated 6 GiB pipeline",
+        "process-tree RSS",
+        "exact SQLite scratch-file peak",
+        "live upstream one-shot decoder adapter"
+      ]
+    },
+    "G5": {
+      "status": "NOT_SELF_ISSUED",
+      "requirement": "independent nonauthor receiving on frozen artifact"
+    }
+  },
+  "authority_holds": {
+    "original35_source_equivalence": "HELD_SEPARATE",
+    "current_permission": "NOT_ISSUED",
+    "p01_p20_t01_t18": "HELD_SEPARATE",
+    "s2a_receiving": "PENDING",
+    "s2c_physical": "NOT_BUILT",
+    "w03_w04": "PAUSED",
+    "protected_merge": "NONE"
+  },
+  "evidence": {
+    "return_directory": "WORKER_RETURNS/PYAT_PAIR2_S2B_LOCAL_R1",
+    "checksums": "SHA256SUMS",
+    "probes": "probes/",
+    "no_original35_data": true,
+    "no_invented_source_permission": true
+  }
+}
