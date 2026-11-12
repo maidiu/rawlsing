@@ -127,7 +127,7 @@ Commands used the qualified venv and bounded pytest runs; logs are under `A_RETU
 | Check | Result | Evidence |
 |---|---|---|
 | B C02/C03/C04 packet suite (two periods, decision/action/speech) | **11 passed** in 261.31 s | `b_c02_c03_c04.log` |
-| A C03/C04 consumer suite (normal P6, remote/severed, currency) | **3 passed** in 61.39 s | `a_c03_c04_consumer.log` |
+| A C03/C04 consumer suite (normal P6, remote/severed, currency) | **3 passed** in 60.45 s | `a_c03_c04_consumer.log` |
 | A C02 parent + live/B02 tests (stale hold assertions repaired) | **9 passed** in 112.51 s | `a_c02_regression.log` |
 | C01 B/A + P2 + P3 owner | **28 passed, 1 skipped** in 88.51 s | `c01_p2_p3.log` |
 | B01 + B03 current cut | **15 passed** in 108.60 s | `b01_b03.log` |

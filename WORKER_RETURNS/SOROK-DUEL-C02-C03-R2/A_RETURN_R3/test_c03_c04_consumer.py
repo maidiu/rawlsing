@@ -314,6 +314,37 @@ def test_remote_unheard_and_source_severed_child_experience(tmp_path):
         assert read_child_experience(
             session2, child_id, operation_id="speech:own")["status"] == (
                 "PERCEIVED")
+        source_event = session2.event
+        def tampered_source(event_id):
+            event = source_event(event_id)
+            if event and event_id == utterance["event_id"]:
+                event = dict(event)
+                event["body"] = {**event["body"],
+                                 "utterance_source": "0" * 64}
+            return event
+        session2.event = tampered_source
+        try:
+            with pytest.raises(
+                    RecursionRefusal,
+                    match="CHILD_EXPERIENCE_SOURCE_MISMATCH"):
+                read_child_experience(
+                    session2, child_id, operation_id="speech:own")
+        finally:
+            session2.event = source_event
+        def tampered_actor(event_id):
+            event = source_event(event_id)
+            if event and event_id == utterance["event_id"]:
+                event = dict(event, actor_id="NOT_THE_PARENT")
+            return event
+        session2.event = tampered_actor
+        try:
+            with pytest.raises(
+                    RecursionRefusal,
+                    match="CHILD_EXPERIENCE_EVENT_MISMATCH"):
+                read_child_experience(
+                    session2, child_id, operation_id="speech:own")
+        finally:
+            session2.event = source_event
     finally:
         owner2.close()
 
