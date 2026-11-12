@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Independent read-only first consumer for saved raw G03-I0 P6 receipts."""
-import argparse,hashlib,json,math,statistics,os,subprocess
+import argparse,hashlib,json,math,statistics,os,sqlite3,subprocess
 from pathlib import Path
 # Deliberately independent of the measurement writer's declared plan.
 SCHEMA="G03_I0_REAL_P6_V2"
 STATE_DIGEST_SCHEME="G03_STATE_PATH_CONTENT_SHA256_V1"
+STATE_LOGICAL_SCHEME="G03_SQLITE_ROWS_AND_OTHER_CONTENT_V1"
+SQLITE_REL="actual-p2/p3_psyche.sqlite3"
 P6="WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
 FILES=[P6,"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
        "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py",
@@ -32,7 +34,29 @@ def validhash(x,n=64):return isinstance(x,str) and len(x)==n and all(c in "01234
 def num(x):return type(x) in (int,float) and math.isfinite(x) and x>=0
 def canonical(obj):
     return (json.dumps(obj,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(",",":"))+"\n").encode()
-def state_snapshot(root):
+def sqlite_logical_digest(root):
+    path=Path(root)/SQLITE_REL
+    require(path.is_file() and not path.is_symlink(),"SQLITE_LOGICAL_PATH_UNAVAILABLE")
+    try:
+        with sqlite3.connect("file:"+str(path.resolve())+"?mode=ro&immutable=1",uri=True) as db:
+            require(db.execute("PRAGMA quick_check(1)").fetchone()[0]=="ok",
+                    "SQLITE_INTEGRITY_CHECK_FAILED")
+            names=[row[0] for row in db.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")]
+            tables=[]
+            for name in names:
+                safe=name.replace('"','""')
+                rows=[[(v.hex() if isinstance(v,bytes) else v) for v in row]
+                      for row in db.execute('SELECT * FROM "'+safe+'"')]
+                rows.sort(key=lambda row:canonical(row))
+                tables.append([name,rows])
+            schema=list(db.execute("SELECT type,name,sql FROM sqlite_master ORDER BY type,name"))
+            return sha(canonical({"tables":tables,"schema":schema,
+                    "user_version":db.execute("PRAGMA user_version").fetchone()[0]}))
+    except sqlite3.DatabaseError as e:
+        raise Reject("SQLITE_LOGICAL_READ_FAILED") from e
+
+def state_snapshot(root, *, logical=False):
     """Independent receiver's path/content check; no dependency on the meter."""
     root=Path(root)
     if not root.exists():
@@ -52,7 +76,11 @@ def state_snapshot(root):
             before=q.stat();raw=q.read_bytes();after=q.stat()
             require((before.st_size,before.st_mtime_ns,before.st_ino)==
                     (after.st_size,after.st_mtime_ns,after.st_ino),"STATE_SNAPSHOT_RACE")
-            entries.append(["F",q.relative_to(root).as_posix(),len(raw),sha(raw)])
+            rel=q.relative_to(root).as_posix()
+            if logical and rel==SQLITE_REL:
+                entries.append(["SQLITE_ROWS",rel,sqlite_logical_digest(root)])
+            else:
+                entries.append(["F",rel,len(raw),sha(raw)])
             count+=1;total+=len(raw)
     entries.sort()
     return {"status":"PRESENT","bytes":total,"files":count,
@@ -62,7 +90,7 @@ def check_snapshot(s):
     require(s["status"] in ("PRESENT","ABSENT") and type(s["bytes"]) is int and s["bytes"]>=0
             and type(s["files"]) is int and s["files"]>=0 and validhash(s["sha256"]),"STATE_SNAPSHOT_INVALID")
     if s["status"]=="ABSENT":
-                require(s["bytes"]==0 and s["files"]==0 and
+        require(s["bytes"]==0 and s["files"]==0 and
                 s["sha256"]==sha(canonical({"v":1,"status":"ABSENT"})),
                 "STATE_ABSENT_DIGEST_BAD")
 def verify_repo(repo,head,source):
@@ -102,6 +130,7 @@ def consume(root,expected_index_sha256=None):
             "MANIFEST_NOT_INDEXED")
     require(man.get("schema")==SCHEMA and idx.get("schema")==SCHEMA,"SCHEMA_BAD")
     require(man.get("state_digest_scheme")==STATE_DIGEST_SCHEME,"STATE_DIGEST_SCHEME_MISSING")
+    require(man.get("state_logical_scheme")==STATE_LOGICAL_SCHEME,"STATE_LOGICAL_SCHEME_MISSING")
     head=man.get("repo_sha")
     require(validhash(head,40),"SOURCE_SHA_BAD")
     source=man.get("source_hashes")
@@ -141,6 +170,10 @@ def consume(root,expected_index_sha256=None):
                 and start.get("state_bytes_before")==r["state_bytes_before"],"STATE_BYTES_FORGED")
         before_snap=r.get("state_snapshot_before"); after_snap=r.get("state_snapshot_after")
         check_snapshot(before_snap);check_snapshot(after_snap)
+        log_before=r.get("state_logical_before");log_after=r.get("state_logical_after")
+        check_snapshot(log_before);check_snapshot(log_after)
+        require(log_before["bytes"]==before_snap["bytes"] and
+                log_after["bytes"]==after_snap["bytes"],"STATE_LOGICAL_SIZE_MISMATCH")
         require(start.get("state_snapshot_before")==before_snap and
                 before_snap["bytes"]==r["state_bytes_before"] and
                 after_snap["bytes"]==r["state_bytes_after"],"STATE_SNAPSHOT_SIZE_OR_START_MISMATCH")
@@ -173,10 +206,16 @@ def consume(root,expected_index_sha256=None):
                 for a,b in zip(rows,rows[1:])),"STATE_CONTINUITY_BAD")
     require(all(a["state_snapshot_after"]==b["state_snapshot_before"]
                 for a,b in zip(rows,rows[1:])),"STATE_CONTENT_CONTINUITY_BAD")
-    require(rows[-1]["state_snapshot_before"]==rows[-1]["state_snapshot_after"],
-            "REFUSED_MUTATED_STATE")
+    require(all(a["state_logical_after"]["sha256"]==b["state_logical_before"]["sha256"]
+                for a,b in zip(rows,rows[1:])),"STATE_LOGICAL_CONTINUITY_BAD")
+    refused_physical_changed=(rows[-1]["state_snapshot_before"]["sha256"] !=
+                              rows[-1]["state_snapshot_after"]["sha256"])
+    refused_logical_changed=(rows[-1]["state_logical_before"]["sha256"] !=
+                             rows[-1]["state_logical_after"]["sha256"])
     require(state_snapshot(root/"state")==rows[-1]["state_snapshot_after"],
             "STATE_FINAL_CONTENT_MISMATCH")
+    require(state_snapshot(root/"state",logical=True)["sha256"]==
+            rows[-1]["state_logical_after"]["sha256"],"STATE_FINAL_LOGICAL_MISMATCH")
     # Source-exact semantic oracle: fresh root, genuine +1 wait, reopened
     # clock preservation, specified refusal and zero state mutation on refusal.
     semantic=(all(isinstance(o,dict) and type(o.get("clock")) is int
@@ -189,7 +228,7 @@ def consume(root,expected_index_sha256=None):
               and outputs[4].get("reason")=="P6_WAIT_DURATION_OUT_OF_RANGE"
               and rows[4]["state_bytes_before"]==rows[4]["state_bytes_after"])
     expected=all(r["exit_code"]==0 and r["output"]["json"] and not r["timeout"] for r in rows[:4])
-    expected=expected and rows[-1]["exit_code"]==2 and rows[-1]["output"]["status"]=="REFUSED" and semantic
+    expected=expected and rows[-1]["exit_code"]==2 and rows[-1]["output"]["status"]=="REFUSED" and semantic and not refused_logical_changed
     walls=[r["wall_seconds"] for r in rows]
     rss=[r["resources"]["peak_rss_bytes"] for r in rows if r["resources"]["status"]=="MEASURED"]
     result={"schema":SCHEMA,"source_sha":head,"attempts":len(rows),"success":sum(r["exit_code"]==0 for r in rows),
@@ -202,7 +241,11 @@ def consume(root,expected_index_sha256=None):
             "provider_mode":"OFFLINE_VERIFIED_CHILD_ALLOWLIST",
             "provider_calls":"UNOBSERVED","tokens":"UNOBSERVED","retries":"UNOBSERVED","billable_cost":"UNOBSERVED",
             "descendant_process_count":"UNOBSERVED","index_sha256":sha(rawidx),
-            "G03_FULL":"NOT_EVALUATED_G02_MISSING"}
+            "G03_FULL":"NOT_EVALUATED_G02_MISSING",
+            "refused_state":{"physical_content_changed":refused_physical_changed,
+                             "logical_content_changed":refused_logical_changed,
+                             "logical_witness":STATE_LOGICAL_SCHEME,
+                             "sqlite_page_churn_not_equated_with_actor_change":True}}
     # Do not launder the planned negative into a 20% real-world failure rate.
     observed_refusals=sum(r["exit_code"]!=0 and isinstance(o,dict)
                           and o.get("status")=="REFUSED" for r,o in zip(rows,outputs))
