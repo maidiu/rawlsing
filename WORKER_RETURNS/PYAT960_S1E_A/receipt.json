@@ -1,0 +1,290 @@
+{
+  "task_id": "PYAT960-S1E",
+  "packet_id": "S1-E",
+  "old_obligations": [
+    "P1-06",
+    "P1-07"
+  ],
+  "persona_role": "A_GO_FIRST_SOURCE_DIRECT_IMPLEMENTER",
+  "session_id": "ses_e3122f686ffeByL78cGOKAacTS",
+  "session_model": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s1e-a-r1",
+  "contract_sha": "0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40",
+  "provisional_abi_sha": "cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54",
+  "base_sha": "591056a948fb0fdd68adbd581301dd903485adc8",
+  "implemented_sha": "5fcca91c71873a980afb4fdb45ec7e203f494ca3",
+  "candidate_sha": "5fcca91c71873a980afb4fdb45ec7e203f494ca3",
+  "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_NEW_WORKTREE agent/pyat960-s1e-a-r1 at /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a; only new Q2 adapter/test/return paths written; upstream owners/protected facade/W03-W04/controller untouched",
+  "exclusive_allowlist": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/tests/test_pyat960_s1e_*.py",
+    "WORKER_RETURNS/PYAT960_S1E_A/"
+  ],
+  "changed_paths": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/tests/test_pyat960_s1e_source_i02.py",
+    "WORKER_RETURNS/PYAT960_S1E_A/receipt.json",
+    "WORKER_RETURNS/PYAT960_S1E_A/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT960_S1E_A/resource_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_A/evidence/"
+  ],
+  "source_abi_owner": "rawlsing_next/pre553_source_i02_handoff.py over pinned pre553_r157_projection_adapter.py, pre553_physical_decoder.py, pre553_source_backed_c11_facade.py, pre553_operation_fate_census.py, _pre553_direct_i02_sourcefree.py, _pre553_external_i02_certificate.py",
+  "actual_first_consumer": "Existing SourcefreeDirectI02Sections/build_sourcefree_direct_i02 writes ExternalI02Roots; VerifiedExternalI02 cold reader and install_direct_sourcefree_i02_i03 native bridge are exposed but host-blocked on Darwin",
+  "evidence_grade": "SOURCEFREE_PROVISIONAL_DIRECT_I02_WITH_NATIVE_HOST_HOLD",
+  "s01_s05_ack": {
+    "S01": "governed source meaning/current entitlement: reuse R157 source config/decoder/projection; original35 CURRENT HOLD",
+    "S02": "operation/fate census: reuse S1-C frozen inputs/anti-join; no invented science",
+    "S03": "one compact direct I02; no full object corpus; Q2 does not claim S2-C Parquet physical estate",
+    "S04": "native I03/Batch facts: existing owners preserved; direct native bridge host HOLD",
+    "S05": "learned products untouched; not a Q2 claim"
+  },
+  "reuse_matrix": [
+    {
+      "path": "rawlsing_next/pre553_r157_projection_adapter.py",
+      "blob": "d4d84ef164feba6fb0de0851568738eb5f5e937d",
+      "disposition": "REUSE_AS_IS",
+      "function": "SourceConfig/build_governed_c11_projection/decode/admission",
+      "first_consumer": "Q2 projection/source handoff",
+      "reason": "accepted exact source identity and permission"
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "blob": "85ce3290d1dc8e1eb1362c22f200715b3d22758a",
+      "disposition": "REUSE_AS_IS",
+      "function": "decode_sav/decode_dta/iter_cells",
+      "first_consumer": "Q2 one physical pass",
+      "reason": "bounded custody"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "7c967b8227a2843971c7cd9f61f3deaa423af866",
+      "disposition": "REUSE_AS_IS",
+      "function": "_event/_coordinate/_weight/_cell_key/GovernedC11Projection",
+      "first_consumer": "Q2 family spool",
+      "reason": "existing semantic owners"
+    },
+    {
+      "path": "rawlsing_next/pre553_operation_fate_census.py",
+      "blob": "dd5bf3940083679612d73f98e6a7b7711c223fd5",
+      "disposition": "REUSE_AS_IS",
+      "function": "verify_frozen_inputs",
+      "first_consumer": "Q2 pre-source census gate",
+      "reason": "complete operation/fate anti-join"
+    },
+    {
+      "path": "rawlsing_next/_pre553_direct_i02_sourcefree.py",
+      "blob": "451727511af7f727b082c518aae2f4a3dbe2ba3a",
+      "disposition": "REUSE_AS_IS",
+      "function": "SourcefreeDirectI02Sections/build_sourcefree_direct_i02",
+      "first_consumer": "Q2 direct I02",
+      "reason": "actual direct builder"
+    },
+    {
+      "path": "rawlsing_next/_pre553_external_i02_certificate.py",
+      "blob": "cd5368e46a5f2d6016afc2d421717b4191a03005",
+      "disposition": "REUSE_AS_IS",
+      "function": "ExternalI02Roots/VerifiedExternalI02/install_direct...",
+      "first_consumer": "Q2 cold/native bridge",
+      "reason": "existing external-root verifier"
+    },
+    {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "blob": "47db61752d08fa5c774436b2c29e489a8d91c3f2",
+      "disposition": "HOLD_AUTHORITY",
+      "function": "S1-D current issuer",
+      "first_consumer": "future production current",
+      "reason": "no production CURRENT minted"
+    },
+    {
+      "path": "legacy full-object C11 writer / direct_sections_from_candidate",
+      "blob": "n/a",
+      "disposition": "LEGACY_READ_COMPAT",
+      "function": "legacy comparator only",
+      "first_consumer": "test identity parity",
+      "reason": "not Q2 production order"
+    },
+    {
+      "path": "W03/W04 compressed-body pilot",
+      "blob": "historical",
+      "disposition": "RETIRE_PROVED_FOR_Q2_ORDER",
+      "function": "negative economics",
+      "first_consumer": "none",
+      "reason": "6.47GB pilot exceeded 6GiB; paused"
+    }
+  ],
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Exact S1-E input ABI, 13 families, manifest, source/operation/fate preimages and function-level reuse matrix pinned; no new semantic owner."
+    },
+    "G2": {
+      "state": "NOT_RUN",
+      "receipt": "Direct I02 positive/change/restore PASS (10 tests). Native direct I03/Batch cold bridge HOLD_DEPENDENCY: VerifiedExternalI02 requires Linux /proc/self/fd; no fake native pass on Darwin."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "Census omission/duplicate/source SHA/id/occurrence/authority/target refuse before source; destination collision typed; optional-weight RAW and held/unknown/fate axes conserved; inherited S1-B/S1-C suites green."
+    },
+    "G4": {
+      "state": "PASS",
+      "receipt": "One source read/one cell pass; spool 7,464,000B cleaned; certificate 19,484,672B; peak RSS 131,088,384B; 100k/6GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": "distinct nonauthor G5 after fixed B attack",
+      "receipt": "No G5 acceptance; integration UNMERGED."
+    }
+  },
+  "mandatory_case_ids": [
+    "Q2_G1_EXACT_CONTRACT_REUSE",
+    "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+    "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+    "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+    "Q2_G4_CUSTODY_RESOURCES",
+    "Q2_G5_INDEPENDENT_RECEIVING",
+    "INHERITED_B01_B09",
+    "INHERITED_S1C_OPERATION_FATES",
+    "DECODER_CUSTODY_REGRESSION"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "Q2_G1_EXACT_CONTRACT_REUSE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_source_i02.py -o addopts=''",
+      "actual": "11 passed; 13-family manifest/streams built through existing direct I02 owner; pinned function/blob reuse matrix in handoff; source/operation/fate preimages frozen"
+    },
+    {
+      "id": "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_source_i02.py -o addopts=''",
+      "actual": "11 passed; SAV/DTA direct I02 roots, changed source meaning changes roots/event refs, exact restore; direct identity matches sealed-owner fixture; source reads=1, cell passes=1, full C11 builds=0"
+    },
+    {
+      "id": "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+      "result": "NOT_RUN",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pre553_external_i02_certificate.py -o addopts=''",
+      "actual": "HOST_DEPENDENCY: existing VerifiedExternalI02 requires Linux /proc/self/fd; Darwin external suite 7 passed/22 failed, direct S2-B suite 16 passed/10 failed, all cold-host failures; Q2 open_direct_native_i03 path implemented but not claimed"
+    },
+    {
+      "id": "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_source_i02.py -o addopts=''",
+      "actual": "11 passed; census omission/duplicate/source SHA/id/occurrence/authority/target refuse before source; destination collision typed; optional-weight sample RAW and HELD/unknown/fate axes conserved"
+    },
+    {
+      "id": "Q2_G4_CUSTODY_RESOURCES",
+      "result": "PASS",
+      "command": "python3 WORKER_RETURNS/PYAT960_S1E_A/resource_probe.py",
+      "actual": "1200 rows; 1200 events/1200 coords; source_reads 1; cell_passes 1; full_c11_builds 0; spool 7,464,000B cleaned; certificate 19,484,672B; peak RSS 131,088,384B; cold 5.536s/repeat 5.300s; 100k/6GiB NOT_RUN"
+    },
+    {
+      "id": "Q2_G5_INDEPENDENT_RECEIVING",
+      "result": "NOT_RUN",
+      "command": "not run",
+      "actual": "G5 NOT_RUN; no self-acceptance; integration UNMERGED"
+    },
+    {
+      "id": "INHERITED_B01_B09",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat940_s1b_b01_b04.py rawlsing_next/tests/test_pyat940_s1b_b05_b06.py rawlsing_next/tests/test_pyat940_s1b_b07_b08.py rawlsing_next/tests/test_pyat940_s1b_b09.py -o addopts=''",
+      "actual": "33 passed in 78.46s; S1-B historical/decoder/projection/custody/regression functions conserved"
+    },
+    {
+      "id": "INHERITED_S1C_OPERATION_FATES",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py -o addopts=''",
+      "actual": "18 passed in 86.70s; frozen census/compiler/issued-reader fate conservation conserved"
+    },
+    {
+      "id": "DECODER_CUSTODY_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_universal_source_byte_custody.py rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py -o addopts=''",
+      "actual": "56 passed, 1 skipped in 10.31s"
+    }
+  ],
+  "first_consumer_proof": {
+    "direct_builder": "build_sourcefree_direct_i02(source, universe_ref, destination, chunk_size=512) -> ExternalI02Roots",
+    "concrete_fixture": "generated nonrespondent SAV/DTA q101/country; accepted R157-style SourceConfig; S1-C frozen q101 operation/fate census",
+    "positive": "10 Q2 tests; direct roots and 13 sections; identity parity with existing sealed-owner fixture",
+    "change_restore": "response-state mapping changes direct logical/physical roots and event refs; exact restore reproduces roots/refs",
+    "native_boundary": "open_direct_native_i03 uses existing VerifiedExternalI02/install_direct...; host /proc requirement prevents local run and is explicit HOLD"
+  },
+  "preserved_functions": [
+    "S1-B decoder/projection/custody",
+    "S1-C frozen census/compiler/issued fate",
+    "S2-B direct I02 builder",
+    "S2-B external certificate/native bridge code",
+    "existing full-object legacy read compatibility",
+    "B01-B09 and decoder/custody regressions"
+  ],
+  "open_defects": [],
+  "external_holds": [
+    {
+      "owner": "Linux host /proc/self/fd cold-reader capability",
+      "minimal_missing_witness": "Run VerifiedExternalI02 + open_direct_native_i03 on a Linux host with a sealed body fixture; verify native I03/Batch changed/restore."
+    },
+    {
+      "owner": "S1-C and S2-B independent nonauthor G5 receivers",
+      "minimal_missing_witness": "Independent scoped G5 acceptance of upstream owners."
+    },
+    {
+      "owner": "original35 source/science/rights authority",
+      "minimal_missing_witness": "Permitted native R157 source/measurement/authority and source-read/use decision."
+    },
+    {
+      "owner": "S1-D production CURRENT issuer",
+      "minimal_missing_witness": "Independently authenticated current SourceReadDecision; Q2 only test-only resolver."
+    },
+    {
+      "owner": "protected receiving / integration owner",
+      "minimal_missing_witness": "Protected review/merge; branch UNMERGED."
+    },
+    {
+      "owner": "integrated 100k/6GiB resource gate",
+      "minimal_missing_witness": "Designated integrated artifact and full matrix; not run."
+    },
+    {
+      "owner": "W03/W04 authority",
+      "minimal_missing_witness": "User remains paused; not resumed."
+    }
+  ],
+  "resource_evidence": {
+    "rows": 1200,
+    "process_tree_peak_rss_bytes": 130363392,
+    "process_tree_baseline_rss_bytes": 122716160,
+    "retained_disk_bytes": 19492864,
+    "peak_disk_bytes": 26956864,
+    "cold_seconds": 5.018775115997414,
+    "repeat_seconds": 5.254074172989931,
+    "source_reads": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "spool_bytes": 7464000,
+    "spool_files": 3,
+    "certificate_bytes": 19492864,
+    "denied_read_source_opens": 0,
+    "budget_result": "SMALL_SOURCEFREE_FIXTURE; 100k/6GiB NOT_RUN"
+  },
+  "self_disclosed_weakest_point": "Direct I02 build and identity parity are real, but the existing native cold reader cannot open on this Darwin host; G2 native I03/Batch is HOLD_DEPENDENCY, not PASS. The operation/fate census is verified before source but Q2 does not itself execute an issued native batch on this host. Spool reconstruction is limited to the generated event/coordinate/weight public families and the q101/country source shape.",
+  "opponent_proven_improvement": "NONE_YET__AWAITING_FIXED_B_ATTACK",
+  "next_turn": "Fixed B ses_e3120baacffegE3ZnR5uZcHb0N attacks this exact descendant; then distinct nonauthor G5. Linux host must run native cold bridge.",
+  "known_session_cost": "UNKNOWN",
+  "abi_classification": "LOCAL",
+  "abi_impact": {
+    "S1-B": "no semantic change; adapter consumes public functions",
+    "S1-C": "no change; verify_frozen_inputs reused",
+    "S2-B": "no change; direct builder reused",
+    "S1-D": "no change; no issuer minted",
+    "S2-E": "no dependency",
+    "S2-C/Q3": "Q2 13-family producer ABI is available for read-only preflight; no physical writer claim"
+  },
+  "stop_state": "HOLD_EXTERNAL",
+  "integration": "UNMERGED",
+  "g5": "NOT_RUN",
+  "delegated_candidate": true,
+  "accepted_scoped_self_claim": false,
+  "closed_outcome_self_claim": "NONE__NATIVE_HOST_HOLD",
+  "original_task_complete": false,
+  "disposition": "HOLD_EXTERNAL",
+  "disposition_note": "Direct sourcefree I02 is implemented/tested; native direct I03/Batch requires Linux /proc/self/fd and remains HOLD_DEPENDENCY. No ACCEPT_SCOPED or G5 claim."
+}
