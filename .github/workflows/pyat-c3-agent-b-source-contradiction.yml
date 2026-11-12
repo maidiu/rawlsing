@@ -4,6 +4,7 @@ on:
     branches:
       - integration/pre-main-reconciliation-r1
       - agent-a/hqr-r3-s3a-925-receive-repair-20261112
+      - agent-b/s3a-925-931-query-issuer-closure-20261112
     paths:
       - 'rawlsing_next/gt12_c_to_d_relation_bridge.py'
       - 'rawlsing_next/field_forge_conditional_support.py'
@@ -12,6 +13,7 @@ on:
       - 'rawlsing_next/tests/test_c3_round2_current_origin_consumer.py'
       - 'rawlsing_next/tests/test_hqr_s3a_exact_query_fact_closure.py'
       - 'rawlsing_next/tests/test_s3a_followupper_query_authority_closure.py'
+      - 'rawlsing_next/tests/test_s3a_round3_positive_zero_support.py'
       - 'rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py'
       - '.github/workflows/pyat-c3-agent-b-source-contradiction.yml'
   workflow_dispatch:
@@ -44,5 +46,6 @@ jobs:
             rawlsing_next/tests/test_c3_round2_current_origin_consumer.py \
             rawlsing_next/tests/test_hqr_s3a_exact_query_fact_closure.py \
             rawlsing_next/tests/test_s3a_followupper_query_authority_closure.py \
+            rawlsing_next/tests/test_s3a_round3_positive_zero_support.py \
             rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
             rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py
