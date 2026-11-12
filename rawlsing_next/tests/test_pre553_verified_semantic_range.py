@@ -138,6 +138,8 @@ def test_h27_authorized_alias_ranges_and_native_only_precedence_at_i03_selector(
     native = source["qrefs"]["Y"]
     assert len(list(rows[key].select(native, native_only=True))) == 1
     assert len(list(rows[key].select(native, include_component=True))) == 1
+    assert len(list(rows[key].select(native, states=frozenset()))) == 0
+    assert len(list(rows[key].select(native, states=frozenset({"SUBSTANTIVE_RESPONSE"})))) == 1
     # An unknown canonical/component selector is *certified empty* against
     # the complete I02 witness, not an accidental alias to a native question.
     from rawlsing_next.tests.test_pre553_empirical_query import _ref
@@ -160,12 +162,11 @@ def test_h28_empty_event_selection_does_not_override_routing_unknown():
         {"id": "R2", "responses": {}},
     ], risk_sets={"R": {"Y": {"R1"}}}, nonmember_routing_state="ROUTING_UNKNOWN")
     witness, root = _trusted(source)
-    _install_i03(source, witness, root)
+    selected = _install_i03(source, witness, root)
     k = source["respondents"]["R2"].ref.key
-    assert list(_select_respondent_events(
-        _build_release_index(_release(source), source["universe"].ref),
-        k, source["qrefs"]["Y"],
-    )) == []
+    # EMPTY_CERTIFIED for *events* remains distinct from ROUTING_UNKNOWN.
+    assert list(selected[k].select(source["qrefs"]["Y"])) == []
+    assert list(selected[k].select(source["qrefs"]["Y"], states=frozenset())) == []
     qa = _query_authority("s2a-unknown")
     pred = _branch_predicate(source, qa, tag="s2a-unknown")
     query = _query(source, qa, pred, ("Y",), tag="s2a-unknown")
