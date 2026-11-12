@@ -113,8 +113,13 @@ def test_s1c_full_frozen_census_reaches_real_issued_reader(tmp_path):
         if row["execution_state"] == "COMPLETED"
     }
     assert sample_ids & completed
-    assert any(row["lowering_status"] == "UNSUPPORTED_RUNTIME"
-               for row in result["operation_fates"])
+    unsupported = [
+        row for row in result["operation_fates"]
+        if row["lowering_status"] == "UNSUPPORTED_RUNTIME"
+    ]
+    assert unsupported
+    assert all(not row["received_candidate_ids"] and not row["fact_refs"]
+               for row in unsupported)
 
 
 def test_s1c_omission_and_count_preserving_substitution_fail_before_source_open(tmp_path):
@@ -370,6 +375,12 @@ def test_s1c_actual_source_open_and_c11_build_census(tmp_path, monkeypatch):
         "declared": result["declared_operation_count"],
         "compiled": result["compiled_operation_count"],
         "receipt_rows": result["received_operation_count"],
+        "fate_counts": result["fate_counts"],
+        "deferred_scope_count": result["deferred_scope_count"],
+        "unsupported_runtime_rows": sum(
+            row["lowering_status"] == "UNSUPPORTED_RUNTIME"
+            for row in result["operation_fates"]
+        ),
         "issued_candidates": result["issued_candidate_count"],
         "native_facts": result["native_fact_count"],
         "source_factory_calls": result["source_factory_calls"],
