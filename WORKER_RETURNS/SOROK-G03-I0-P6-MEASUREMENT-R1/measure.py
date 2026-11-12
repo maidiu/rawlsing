@@ -81,6 +81,11 @@ def sqlite_logical_digest(root):
     """Diagnose physical SQLite page churn versus independently readable table contents."""
     path=Path(root)/"actual-p2"/"p3_psyche.sqlite3"
     if not path.exists():return {"status":"ABSENT"}
+    # immutable=1 is only truthful for a checkpointed, closed SQLite cut.
+    # A committed WAL can contain real rows invisible to immutable readers.
+    wal=Path(str(path)+"-wal")
+    if wal.exists() and wal.stat().st_size>0:
+        return {"status":"UNOBSERVED","reason":"sqlite_uncheckpointed_wal"}
     try:
         uri="file:"+str(path.resolve())+"?mode=ro&immutable=1"
         with sqlite3.connect(uri,uri=True) as db:
