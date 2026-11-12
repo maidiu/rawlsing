@@ -25,3 +25,8 @@ S2-F B returned exit0: immutable delivery e119453bc038e82963f45384fb913df4ed02be
 ACTUAL S2-F A counter launcher: child36463/supervisor36462/observer36464, fixed original A; kqueue ready/no interval. Current counter first actual model turn not yet emitted at startup (prior A/B models verified); do not substitute session settings as proof. Original #919 custody comment6820367844. No duplicate launch, no recurring checks.
 
 Counter first ACTUAL turn now verified msg_1cf2bd306001cpOH1LnxaH3loc: opencode-go/deepseek-v4.1-flash/max, no settings inference. S2-F A_COUNTER_RUNNING. Await terminal notification only; no extra status checks.
+
+S1-D A received: terminalexit1, completed final assistant/no model error; remote delivery d17501d0bd3fd2b8f2e7f2f6d9fd23737f16c997, codecut 4c922770f7c2e8bdf3b0796e9c2019b7498a7c43. Authorclaims39+6+55+18tests at its cut, NOTacceptance. OUT-OF-GRANT test_universal_world_binding.py hunk disclosed: mechanically restored protected version on B own branch in 1f30bc549ada2f5cf555b1fe1a4f519d0bab42ba; no retroactive scope expansion. B must retain known legacy ABI-callsiteRED, prove actual permitted native path and qualify optional restoreguard vs frozen protected-restore obligation. Fixed B ses_e3120ba49ffeWl7IZUTmL7mjZB reserved pyat940-s1d-b01; same D01-D09 contract. Other S1-B B and S2-F A_COUNTER live at scheduling check, max3.
+
+ACTUAL S1-D B launch: child40327/supervisor40326/observer40328; fixed same B first actual Flash MAX turn verified; kqueue intervalnull. Three lanes S1-B B / S1-D B / S2-F A counter. No acceptance, recurring wake or polling.
+Original #918 custody recorded in comment6820577091; no checkbox or protected adoption changed.

@@ -216,7 +216,8 @@
               "completed": 1794472491458
             }
           },
-          "pid": 15742
+          "pid": 15742,
+          "state": "RETURNED"
         },
         "B": {
           "session_id": "ses_e3120ba49ffeWl7IZUTmL7mjZB",
@@ -228,7 +229,11 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "model_actual_turn": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -240,11 +245,27 @@
             }
           },
           "opponent_session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
-          "state": "IDLE_WAIT_OWN_A_RETURN"
+          "state": "RUNNING",
+          "job_id": "pyat940-s1d-b01",
+          "received_head": "1f30bc549ada2f5cf555b1fe1a4f519d0bab42ba",
+          "pid": 40327,
+          "actual_first_turn_model": {
+            "id": "msg_1cf350b20001HNaAOu0A6TDSZ6",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794477722550,
+              "streamed": 1794477725266,
+              "completed": 1794477725350
+            }
+          }
         }
       },
-      "state": "A_RUNNING",
-      "active_role": "A",
+      "state": "B_RUNNING",
+      "active_role": "B",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -282,22 +303,45 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "active_job": "pyat940-s1d-a01",
+      "active_job": "pyat940-s1d-b01",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s1d-a01",
-        "child_pid": 15742,
-        "supervisor_pid": 15741,
-        "observer_pid": 15743,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1d-a01",
+        "job_id": "pyat940-s1d-b01",
+        "child_pid": 40327,
+        "supervisor_pid": 40326,
+        "observer_pid": 40328,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1d-b01",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 15743,
+        "pid": 40328,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
         "interval": null
+      },
+      "a_return": {
+        "job_id": "pyat940-s1d-a01",
+        "exit_code": 1,
+        "candidate_head": "d17501d0bd3fd2b8f2e7f2f6d9fd23737f16c997",
+        "implemented_sha": "4c922770f7c2e8bdf3b0796e9c2019b7498a7c43",
+        "remote_verified": true,
+        "disposition": "AUTHOR_QUALIFIED_CANDIDATE_SCOPE_DEVIATION",
+        "terminal_note": "Final assistant completed/no model error after pushed delivery; nonzero preserved separately",
+        "grade": "S2_SOURCEFREE",
+        "g5": "NOT_RUN",
+        "scope_deviation": "test_universal_world_binding.py four-line callsite migration outside frozen grant",
+        "custody_correction_sha": "1f30bc549ada2f5cf555b1fe1a4f519d0bab42ba",
+        "custody_correction": "mechanically restored out-of-grant test to protected base on B own branch; A original evidence preserved",
+        "actual_final_turn_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      },
+      "custody_comment": {
+        "issue": 918,
+        "comment_id": 6820577091
       }
     },
     {
