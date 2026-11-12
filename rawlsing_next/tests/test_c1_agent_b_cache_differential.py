@@ -643,15 +643,20 @@ def test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves
         assert started.wait(20), "slow builder did not open its source"
         expected = actual_first_reader(_stream(fx))
         permit_build.set()
-        assert cache.at_reinsert.wait(20), "did not reach contested producer admission"
-        # Legal eviction while a second identical, already validated producer
-        # is committing its output. This is not hostile Python memory access.
+        # The vulnerable contains() -> put() version enters put after seeing
+        # B's valid entry; evict precisely between those operations. A repaired
+        # *atomic* admission may correctly bypass public put altogether. Do
+        # not require it to perform the obsolete broken implementation step.
+        cache.at_reinsert.wait(0.25)
         cache.clear()
         cache.resume_reinsert.set()
         worker.join(20)
         assert not worker.is_alive(), "inflight producer hung"
         assert not failures, f"legitimate I03 build refused after clear: {failures!r}"
         assert answer["observed"] == expected
+        # A late legal clear can leave an empty accelerator, never a false
+        # empirical result. Recompute through the ordinary first reader.
+        assert actual_first_reader(_stream(fx)) == expected
         assert cache.entry_count == 1
     finally:
         permit_build.set()
