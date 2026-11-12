@@ -70,6 +70,11 @@ def _check_fact(fact: EmpiricalFact, *, expected_query: ExactRef | None = None) 
     if expected_query is not None:
         _require(_ref_key(fact.empirical_query_spec_ref) == expected_query.key,
                  "S2E_QUERY_FACT_REF_MISMATCH")
+    # A fact may legitimately describe only one of several source-indexed
+    # universes, but it cannot silently discard every release/universe preimage.
+    proven = {_ref_key(ref) for ref in fact.source_empirical_provenance_refs}
+    _require(all(_ref_key(ref) in proven for ref in fact.empirical_universe_refs),
+             "S2E_FACT_UNIVERSE_PROVENANCE_LOST")
     topology = fact.target_topology
     if not isinstance(topology, Mapping) or "complete_cell_semantic_projection" not in topology:
         # Native typed nonpositive facts have a different, explicitly identified
@@ -200,6 +205,9 @@ def census_native_batch(
             _require(isinstance(output, QueryExecutionResult), "S2E_QUERY_OUTPUT_TYPE")
             _require(output.query_ref == unit.job_ref, "S2E_QUERY_FIRST_READER_MISMATCH")
             _require(bool(output.facts), "S2E_QUERY_WITHOUT_NEGATIVE_OR_POSITIVE_FACT")
+            _require(tuple(_ref_key(ref) for ref in output.release_refs)
+                     == tuple(ref.key for ref in unit.release_refs),
+                     "S2E_QUERY_RELEASE_SCOPE_MISMATCH")
             for fact in output.facts:
                 _check_fact(fact, expected_query=output.query_ref)
                 _object(digest, "I03_FACT", fact)
@@ -219,6 +227,8 @@ def census_native_batch(
                      "S2E_DISCOVERY_COVERAGE_FALSE")
             _require(output.candidate_count == output.covered_candidate_count
                      == len(output.receipts), "S2E_MISSING_DISCOVERY_CANDIDATE_FATE")
+            _require(tuple(_ref_key(ref) for ref in unit.release_refs),
+                     "S2E_DISCOVERY_EMPTY_RELEASE_SCOPE")
             seen: set[tuple[str, str]] = set()
             cited_fact_refs: set[str] = set()
             for receipt in output.receipts:
@@ -229,6 +239,11 @@ def census_native_batch(
                 _require(_ref_key(receipt.discovery_authority_ref) == output.discovery_authority_ref.key
                          and _ref_key(receipt.evaluated_frontier_ref) == output.evaluated_frontier_ref.key,
                          "S2E_DISCOVERY_RECEIPT_WRONG_SCOPE")
+                _require(
+                    tuple(sorted(_ref_key(ref) for ref in receipt.source_release_refs))
+                    == tuple(sorted(ref.key for ref in unit.release_refs)),
+                    "S2E_DISCOVERY_RECEIPT_RELEASE_SCOPE_MISMATCH",
+                )
                 ci = receipt.candidate_identity
                 _require(isinstance(ci, Mapping), "S2E_DISCOVERY_CANDIDATE_IDENTITY_MISSING")
                 key = (str(ci.get("candidate_id")), str(ci.get("candidate_hash")))
