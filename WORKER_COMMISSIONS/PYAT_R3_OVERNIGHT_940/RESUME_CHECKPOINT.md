@@ -30,3 +30,8 @@ S1-D A received: terminalexit1, completed final assistant/no model error; remote
 
 ACTUAL S1-D B launch: child40327/supervisor40326/observer40328; fixed same B first actual Flash MAX turn verified; kqueue intervalnull. Three lanes S1-B B / S1-D B / S2-F A counter. No acceptance, recurring wake or polling.
 Original #918 custody recorded in comment6820577091; no checkbox or protected adoption changed.
+
+S2-F scheduled A counter returned exit0: remote delivery34f2fee4547ac67ee4648f4ff93d7b8aad4898ef, implementation588d42fde9e7428114e6a45149d3b4754de9cb0f;143testsclaimed, no material defects. Both A/B stopped underR3S; no extra rivalry round. Reserved ONE DISTINCT NONAUTHOR G5 sessionses_e30c25800ffeT8XbyTuHekRCme, own clean reviewworktree/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s2f-g5, jobpyat940-s2f-g5-r01; code/testsREADONLY, ownreturnonly. Both fixed pair identities unchanged; G5 separateindependent_receiver registry field (active_roleG5_NONAUTHOR), notagents[A/B]. Future terminal assert against independent_receiver.session_id. Full originalS2-F remainsOPEN/S2-EHOLD even if isolatedgradeaccepted. Other2workers live, max3.
+
+ACTUAL distinct S2-F G5 launched child43624/supervisor43623/observer43625; session ses_e30c25800ffeT8XbyTuHekRCme, first actual Flash MAX turn verified; kqueue intervalnull. Both construction authors remainSTOPPED. Three lanes S1-B B / S1-D B / S2-F G5; future notificationonly, no recurringwake/checks.
+Original #919 custody comment6820795611 records independent receiving dispatch, not acceptance.
