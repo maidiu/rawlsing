@@ -539,3 +539,48 @@ def test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03(tmp_pa
     # The original on-disk certificate has not changed.
     with VerifiedExternalI02(path, roots=roots) as fresh:
         assert list(fresh.respondent_refs())
+
+
+def test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty(tmp_path):
+    """G3: independently authenticated main.objects must not resolve TEMP."""
+    source = _build_source("s2b-a-object-shadow", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-object-shadow")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as real:
+        real.db.execute("PRAGMA query_only=OFF")
+        real.db.execute(
+            "CREATE TEMP TABLE objects AS SELECT * FROM main.objects WHERE 0"
+        )
+        assert len(list(real.respondent_refs())) == 2
+        respondent = source["respondents"]["R1"].ref.key
+        assert len(list(real.event_refs(respondent))) == 1
+        assert len(list(real.selector_refs(respondent, source["qrefs"]["Y"]))) == 1
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+    with VerifiedExternalI02(path, roots=roots) as fresh:
+        assert len(list(fresh.respondent_refs())) == 2
+
+
+def test_s2b_a_counterattack_midstream_close_typed_refusal(tmp_path):
+    """G3/G4: close between certified occurrences must not leak untyped SQL."""
+    source = _multi_i03_source("s2b-a-close-between-occurrences")
+    path, roots = _prepare(tmp_path, source)
+    respondent = source["respondents"]["R1"].ref.key
+    target = source["qrefs"]["Y"]
+    cert = VerifiedExternalI02(path, roots=roots)
+    try:
+        iterator = cert.selector_refs(respondent, target, native_only=True)
+        first = next(iterator)
+        assert first.kind == source["repo"].resolve_object_exact(first).ref.kind
+        cert.close()
+        with pytest.raises(ExternalI02IntegrityError, match="closed|invalidated"):
+            next(iterator)
+        with pytest.raises(ExternalI02IntegrityError, match="closed|invalidated"):
+            list(cert.event_refs(respondent))
+    finally:
+        cert.close()
