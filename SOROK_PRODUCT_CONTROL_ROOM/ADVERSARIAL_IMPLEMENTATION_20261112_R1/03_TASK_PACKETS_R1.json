@@ -165,11 +165,12 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "B_RUNNING",
+      "status": "A_COUNTER_RUNNING",
       "B01_candidate_source": "edbb4b344d54731a527fd415a965bc848ed964e1",
       "not_independently_accepted": true,
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
-      "A_candidate_head": "7e347c45d991df322b987c4fdc70558b1857d9f6"
+      "A_candidate_head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
+      "B_candidate_head": "0fd303e2af23d71b51b068393cfaa6f62d40fe38"
     },
     {
       "id": "C02",
@@ -191,10 +192,15 @@
         "06"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED",
+      "status": "AUTHORIZED_CURRENT_CLOCK_PORTION_AFTER_C01_COUNTER_B02_HELD",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
-      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
+      "candidate_composition": "5932a509095f92f2d2b463b0899b27ac851741f6",
+      "running_contract": "pair3-A-C01-counter-C02-v3.txt",
+      "dependencies_not_accepted": [
+        "B02"
+      ]
     },
     {
       "id": "C03",
@@ -220,7 +226,8 @@
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
-      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
     },
     {
       "id": "C04",
@@ -244,7 +251,8 @@
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
-      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
     },
     {
       "id": "C05",
@@ -267,7 +275,8 @@
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
-      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
     },
     {
       "id": "D01",
@@ -319,7 +328,8 @@
         "B02",
         "C01"
       ],
-      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
     },
     {
       "id": "D03",
@@ -412,7 +422,8 @@
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
-      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
     },
     {
       "id": "E02",
@@ -439,7 +450,8 @@
       ],
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
-      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "supporting_actor_latest": "C01 B 0fd303e2af23d71b51b068393cfaa6f62d40fe38; stronger registration/access/binding, A counter pending; no actual parent decision/utterance yet."
     },
     {
       "id": "E03",
@@ -649,7 +661,7 @@
   ],
   "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers.",
   "frozen_programme_head": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "runtime_snapshot_utc": "2026-11-12T11:33:30.566250+00:00",
+  "runtime_snapshot_utc": "2026-11-12T11:46:06.126412+00:00",
   "persistent_pairs": [
     {
       "pair": 1,
@@ -686,12 +698,12 @@
         "A": "ses_e31295836ffeW9bYwX9iiMMcXS",
         "B": "ses_e31295826ffe6kteacpU7p3nQW"
       },
-      "state": "B_RUNNING",
-      "active_job": "sorok-duel-pair3-c01-b-20261112-r1",
-      "opponent_frozen_head": "7e347c45d991df322b987c4fdc70558b1857d9f6",
-      "base_commit": "edbb4b344d54731a527fd415a965bc848ed964e1",
-      "next_packet": null,
-      "active_contract_sha256": "f80885764adb56c74f2aa6413058aae26ffee37f24134c009dcf7c6fcb582abf"
+      "state": "A_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair3-c01-counter-c02-a-20261112-r1",
+      "opponent_frozen_head": "0fd303e2af23d71b51b068393cfaa6f62d40fe38",
+      "base_commit": "5932a509095f92f2d2b463b0899b27ac851741f6",
+      "next_packet": "C02_B02_PREREQUISITE_HELD",
+      "active_contract_sha256": "c076e6c2a3ef77573a457b806cb32968413aaa32d0f8e91d76b51d0798fccbcd"
     }
   ],
   "returned_candidates": [
@@ -740,6 +752,14 @@
       "branch": "codex/sorok-duel-b01-a-relay-b03-20261112-r1",
       "status": "AUTHOR_TESTED_B_COUNTER_RUNNING",
       "actual_change": "Stronger copied-prefix provenance; world-owned dwelling/material feasibility. Mother decision/purchase/calendar still unbuilt; B02 commissioned after bounded B03 counterstrike."
+    },
+    {
+      "task": "C01",
+      "role": "B",
+      "head": "0fd303e2af23d71b51b068393cfaa6f62d40fe38",
+      "branch": "codex/sorok-duel-c01-b-20261112-r1",
+      "status": "AUTHOR_TESTED_A_COUNTER_RUNNING",
+      "actual_change": "Root-invariant participant binding; namespace/atomic registration/actual-event/access repairs. Ordinary-return relocation pending in same A commission. No parent authored decision/utterance."
     }
   ],
   "composition_candidate": {
@@ -808,6 +828,18 @@
       "job": "sorok-duel-pair2-d01-a-20261112-r1",
       "reported_step_usd": 0.191620404,
       "not_invoice": true
+    }
+  ],
+  "additional_composition_candidates": [
+    {
+      "head": "5932a509095f92f2d2b463b0899b27ac851741f6",
+      "inputs": [
+        "0fd303e2af23d71b51b068393cfaa6f62d40fe38",
+        "5bc29474e769b928d9264f1607bab605e2b1c7e9"
+      ],
+      "owner": "Pair3 SAME A",
+      "status": "AUTOMERGED_NOT_YET_EXECUTED_OR_ACCEPTED",
+      "scope": "C01 counter plus independent current-clock C02 portion; B02 remains held."
     }
   ]
 }
