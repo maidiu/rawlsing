@@ -397,3 +397,98 @@ def test_h27_real_i02_authorized_canonical_and_component_binding_omission():
         )
         with pytest.raises(SemanticRangeIntegrityError):
             list(reader[respondent].select(target, include_component=True))
+
+
+def _s2a_contradictory_alias_fixture(tag: str, *, binding_has_alias: bool = True):
+    """A genuine I02-accepted sourcefree release with conflicting alias claims.
+
+    I02 currently verifies positive mapping authority and native-question
+    membership independently; this sourcefree fixture tests whether the
+    S2-A witness can misrepresent an event's *different* canonical alias as
+    the alias authorized by the release's QuestionVariableBinding.
+    """
+    from rawlsing_next.tests.test_pre553_c11_repository_ingest import _authority, _ref
+    from rawlsing_next.pre553_c11_integrity import TypedAbsence
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    old = _candidate(tag, event_kind="UNORDERED_MULTISELECT_SET")
+    mapping = _authority(
+        tag + "-mapping", "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        families=("RespondentEvent@1.0.0",),
+    )
+    declared = _ref("QUESTION_CANONICAL", tag + "-DECLARED")
+    invented = _ref("QUESTION_CANONICAL", tag + "-INVENTED")
+    binding = replace(
+        old.question_variable_bindings[0],
+        semantic_authority_ref=mapping.authority_ref,
+        canonical_question_ref_or_typed_absence=(
+            declared if binding_has_alias else TypedAbsence("NOT_APPLICABLE")
+        ),
+    )
+    new_events = []
+    for original in old.respondent_events:
+        fields = dict(original.semantic_fields)
+        fields.update(
+            canonical_question_ref_if_authorized=invented,
+            value_transform_authority_ref=mapping.authority_ref,
+        )
+        new_events.append(RespondentEvent(
+            typed_state=original.typed_state,
+            authority_snapshot_refs=(*original.authority_snapshot_refs, mapping.authority_ref),
+            dependency_refs=original.dependency_refs,
+            producer_replay_locator_or_reference_root=original.producer_replay_locator_or_reference_root,
+            **fields,
+        ))
+    counts = dict(old.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["AuthoritySnapshot"] += 1
+    manifest = replace(
+        old.source_release_manifest,
+        declared_authority_snapshot_refs=(
+            *old.source_release_manifest.declared_authority_snapshot_refs,
+            mapping.authority_ref,
+        ),
+        declared_record_counts_by_logical_family=counts,
+    )
+    candidate = replace(
+        old,
+        source_release_manifest=manifest,
+        question_variable_bindings=(binding,),
+        respondent_events=tuple(new_events),
+        authority_snapshots=(*old.authority_snapshots, mapping),
+        candidate_replay_manifest=None,
+    )
+    candidate = replace(
+        candidate, candidate_replay_manifest=build_candidate_replay_manifest(
+            candidate,
+            replay_protocol_authority_ref=old.candidate_replay_manifest.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=old.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+            replay_protocol_version=old.candidate_replay_manifest.replay_protocol_version,
+        ),
+    )
+    repo = C11Repository()
+    accepted = ingest_c11_source_release(candidate, repo)
+    assert accepted.accepted, accepted.errors
+    release = repo.resolve_release_exact(accepted.release_ref)
+    return release, candidate.empirical_universes[0].ref, declared, invented
+
+
+def test_h31_i02_accepted_event_alias_disagrees_with_question_binding_must_refuse():
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h31-binding-disagreement"
+    )
+    # Exactly this inconsistency survives native I02: we assert acceptance
+    # inside the helper. A source-backed S2-A certificate MUST NOT accept
+    # an independently positive yet differently named mapping alias.
+    with pytest.raises(SemanticRangeIntegrityError, match="binding|canonical"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h32_i02_accepted_unmapped_event_canonical_alias_must_refuse():
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h32-absent-binding", binding_has_alias=False,
+    )
+    # An ALLOW value-transform authority cannot invent a native→canonical
+    # QuestionVariableBinding where the release explicitly says absent.
+    with pytest.raises(SemanticRangeIntegrityError, match="binding|canonical"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
