@@ -4,7 +4,7 @@
 
 - Original whole CG-A: [Issue #913](https://github.com/maidiu/rawlsing/issues/913); one independent receiving: [Issue #914](https://github.com/maidiu/rawlsing/issues/914). The original four duties remain `CGA-P3-ABI`, `CGA-POSITIVE-CAPITAL`, `CGA-COLD-LATER-READ`, `CGA-CGB-CD-CONTRACT`.
 - Initial author [PR #915](https://github.com/maidiu/rawlsing/pull/915) `8248711fb8ba4ac07c0b0e6e7dfc4decce9352b7`; Agent A [#917](https://github.com/maidiu/rawlsing/pull/917) `384d4a4ac4973b83187d9a1e160f6d085d6aae19`; Agent B's valid counterstrike [#924](https://github.com/maidiu/rawlsing/pull/924) **final** `0213c844b26a8e69afeea6e499fea46e13444c69`. Agent B's final-head CI was reported successful [#43162941345](https://github.com/maidiu/rawlsing/actions/runs/43162941345).
-- This round's private writer branch: `review/sorok-cga-agent-a-relay-20261112-r1`, created **from the exact B final HEAD**, not rewriting B's branch or PR. Substantive code/test cut: `58687a7ed865f8a8809e278b981e73cac94b057d`. Final resulting PR HEAD must be independently checked at receiving.
+- This round's private writer branch: `review/sorok-cga-agent-a-relay-20261112-r1`, created **from the exact B final HEAD**, not rewriting B's branch or PR. Substantive code/test cut: `618950bdf1a4c53aacb9a0eba7a6c06b744911d6`. Final resulting PR HEAD must be independently checked at receiving.
 - Changed paths at code cut: `WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py`; `WORKER_RETURNS/SOROK-CGA-AGENT-A-RELAY-R1/test_cue_issuer.py`; `.github/workflows/sorok-cga-agent-a-relay-r1.yml`. This handoff is an additive documentation change, not a test-code modification.
 - Sourcefree S2 only, no protected merge, no replacement owner, no native psych rule or respondent/human permission.
 
@@ -34,12 +34,12 @@ B's surviving diagnosis of missing scientific cue-to-specific-mediator matching 
 
 1. **Delete the unverified nonfixture cue shortcut**. For a sourcefree P6 outward sensory candidate, require `cue == source_receipt.outward_cue`, `source_receipt.performed == session.event(event_id)`, true actor/user/clock/event hash, `sensory_candidate` rederivation against actual checkpointed house, and a recorded `P6_HOUSE_CONDUCT` parent for that event/operation. `P6_MOVEMENT_EVIDENCE@1` with `HOLD_ACTOR_REGISTRATION_OWNER_MISSING` does **not** confer actor-observation authority just because visual eligibility was listed.
 2. **Keep exact actor-source readers**. A current self-action or speech row must equal a row re-emitted by `recent_self_actions(session)` or `recent_speech(session)` at that same read cut. Registered perceptions are compared by exact `(event_id,clock)`, not event ID alone. Strict `>interval.start` on prior-context rows remains B's conservative rule.
-3. **Separate historical and present readsets**. Keep `P3.readset` as B1 mediator hashes; add `sourcefree_p3.actor_access_evidence` with `(event_id, event_hash, clock, issuer basis, SOURCEFREE_TEST_ONLY)` and `sourcefree_p3.world_readset` with actual current world event hash. The parent P6 packet hash binds both. `stimulus_to_mediator_relevance=UNISSUED_NATIVE_RULE` explicitly blocks an interpretation of this engineering warrant as native Rule T/CAN/ADP psychological equivalence.
+3. **Separate historical and present readsets and persist the private causal receipt**. Keep `P3.readset` as B1 mediator hashes; add `sourcefree_p3.actor_access_evidence` with `(event_id, event_hash, clock, issuer basis, SOURCEFREE_TEST_ONLY)` and `sourcefree_p3.world_readset` with actual current world event hash. The parent P6 packet hash binds both. More importantly, `reconsider` also returns `receipt["situated"]["sourcefree_p3_receipt"]`: root/branch/clock, pre-action world-state hash, P3 activation context hash, distinct P3 and world readsets, and exact source evidence. Cold reopen verifies this readset against the world event and P3 store, while public surface rendering excludes the private receipt. `stimulus_to_mediator_relevance=UNISSUED_NATIVE_RULE` explicitly blocks an interpretation of this engineering warrant as native Rule T/CAN/ADP psychological equivalence.
 4. **Fault-inject the dangerous crash window**. `test_crash_after_world_speech_commit_holds_retry_without_duplication` raises *after* the actual P6 actor speech is admitted but before P4 outer receipt persistence, then confirms the pending guard refuses retry and no second world speech or P3 write appears. This is fail-stop evidence, NOT successful reconciliation.
 
 ## 5. Regressions / negatives / execution
 
-From an isolated checkout of the exact immutable code cut `58687a7ed865f8a8809e278b981e73cac94b057d`:
+From an isolated checkout of the exact immutable code cut `618950bdf1a4c53aacb9a0eba7a6c06b744911d6`:
 
 ```sh
 python3 -m pip install pytest
@@ -50,7 +50,7 @@ python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P4-FIRST-FULL-M
 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_outward_conduct_supplies_only_qualified_cues WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_silent_interval_reconsiders_and_commits_only_admitted_speech
 ```
 
-One repo-local GitHub Actions workflow runs these exact groups. Its **final exact run status and log counts must be verified and appended** before any claim of comprehensive S2 verification. Baseline B CI was green at its separately frozen HEAD. The initial RED source-real forged-cue test is a real pre-fix execution, not an invented hypothetical. Do not confuse passing authored CI with an independent reviewer identity.
+The first complete code cut `58687a7ed865f8a8809e278b981e73cac94b057d` passed all 17 selected tests in [GitHub Actions #43166066244](https://github.com/maidiu/rawlsing/actions/runs/43166066244) (5 new + 6 B bridge + 2 P3 + 1 P4 + 3 P6). The later change persists the private first-consumer receipt and asserts cold-reopened issuer identity; **verify its separate exact-code/head run** before promoting that stronger claim. The source and test diff after that cut is bounded to the private receipt and corresponding provenance assertions. Baseline B CI was green at its separately frozen HEAD. The initial RED source-real forged-cue test is a real pre-fix execution, not an invented hypothetical. Do not confuse passing authored CI with an independent reviewer identity.
 
 ## 6. Original CG-A obligations conserved
 
