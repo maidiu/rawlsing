@@ -238,7 +238,14 @@ def test_h26_two_same_respondent_occurrences_actual_native_i03_fact_replay():
     component["topology"] = "UNORDERED_MULTISELECT_SET"
     component["domain"] = [["SAME-VALUE"]]
     shape["components"] = [component]
-    query = replace(initial, target_arity_and_topology=shape)
+    from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec
+    query = EmpiricalQuerySpec(
+        typed_state=initial.typed_state,
+        authority_snapshot_refs=initial.authority_snapshot_refs,
+        dependency_refs=initial.dependency_refs,
+        producer_replay_locator_or_reference_root=initial.producer_replay_locator_or_reference_root,
+        **{**dict(initial.semantic_fields), "target_arity_and_topology": shape},
+    )
     original = _run(source, qa, pred, query)
     assert original.facts[0].typed_state == "SUPPORTED"
     assert original.facts[0].raw_denominator_support == 1
