@@ -1,5 +1,8 @@
 # SOROK HQ — compatibility first-read and historical startup
 
+**DEFAULT SOROK HQ UM-SOROK GROKKING (user-directed provisional pre-adjudication):** After checking original CAN/ADP/V3/V2 and current owner/source authority, read [UM-SOROK governing brain](PROGRAMMA_SOROK/00_UM_SOROK_GOVERNING_BRAIN_AND_GROKKING_R0.md) and [25-issue power pass](PROGRAMMA_SOROK/UM_SOROK_25_ISSUE_POWER_PASS_R1.md) before any new SOROK design choice, commission, receiving disposition or escalation. Use original existing event/outcome/CAN multistream recursion, not new money/choice/hidden-reason engines. Preserve objective-vs-generated-vs-perceived world event custody and admit bounded independent other-origin live-V3 interruptions. This adds no native scientific authority, worker dispatch or protected merge.
+
+
 **Prospective MCR-lite:** [shared execution standard](../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) precedes ordinary future MCR commissioning; full MCR-C remains for expressly full-contract and historical frozen work. No actor, native-source or human grant inferred.
 
 
