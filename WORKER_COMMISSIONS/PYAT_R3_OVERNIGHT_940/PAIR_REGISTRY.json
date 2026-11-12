@@ -20,7 +20,11 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "model_actual_turn": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -32,7 +36,7 @@
             }
           },
           "opponent_session_id": "ses_e3120baacffegE3ZnR5uZcHb0N",
-          "job_id": "pyat940-s1b-a01",
+          "job_id": "pyat940-s1b-a02-counter",
           "actual_first_turn_model": {
             "id": "msg_1cee50681001Hsll13btp6g5LO",
             "type": "assistant",
@@ -47,8 +51,20 @@
               "completed": 1794472483579
             }
           },
-          "pid": 15738,
-          "state": "RETURNED"
+          "pid": 45380,
+          "state": "RUNNING",
+          "received_head": "c356540e16d9410640c0b8a4cf4c83de0f140931",
+          "actual_counter_first_turn_model": {
+            "id": "msg_1cf409548001dEeoxUnGAq4TXB",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794478478837
+            }
+          }
         },
         "B": {
           "session_id": "ses_e3120baacffegE3ZnR5uZcHb0N",
@@ -76,7 +92,7 @@
             }
           },
           "opponent_session_id": "ses_e3122f686ffeByL78cGOKAacTS",
-          "state": "RUNNING",
+          "state": "RETURNED",
           "job_id": "pyat940-s1b-b01",
           "received_head": "aa98565c7f9a03b0383cb41eb6d2955d1575ac29",
           "pid": 31766,
@@ -95,8 +111,8 @@
           }
         }
       },
-      "state": "B_RUNNING",
-      "active_role": "B",
+      "state": "A_COUNTER_RUNNING",
+      "active_role": "A",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -134,18 +150,18 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "active_job": "pyat940-s1b-b01",
+      "active_job": "pyat940-s1b-a02-counter",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s1b-b01",
-        "child_pid": 31766,
-        "supervisor_pid": 31765,
-        "observer_pid": 31767,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1b-b01",
+        "job_id": "pyat940-s1b-a02-counter",
+        "child_pid": 45380,
+        "supervisor_pid": 45375,
+        "observer_pid": 45381,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1b-a02-counter",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 31767,
+        "pid": 45381,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
@@ -171,7 +187,27 @@
       },
       "custody_comment": {
         "issue": 918,
-        "comment_id": 6819968161
+        "comment_id": 6820840597
+      },
+      "b_return": {
+        "job_id": "pyat940-s1b-b01",
+        "exit_code": 0,
+        "candidate_head": "c356540e16d9410640c0b8a4cf4c83de0f140931",
+        "implemented_sha": "20a835ce6edfe17e51eafa68c190b36a19b3bad7",
+        "remote_verified": true,
+        "disposition": "B_CONSTRUCTION_CANDIDATE_ONLY",
+        "claims": "37packet+109regression/1skip+43additional; historical nonrespondent exact release/replay parity; six actual defects repaired",
+        "grade": "S1B_SOURCEFREE_SYNTHETIC_NONRESPONDENT_FIXTURE_PLUS_HISTORICAL_NONRESPONDENT_PARITY",
+        "material_open_defects": [],
+        "g5": "NOT_RUN",
+        "defects": [
+          "row/respondent swap",
+          "routing substitution",
+          "authority payload broadening",
+          "snapshotref substitution",
+          "wideDTA cellcap",
+          "roster falsepass"
+        ]
       }
     },
     {
