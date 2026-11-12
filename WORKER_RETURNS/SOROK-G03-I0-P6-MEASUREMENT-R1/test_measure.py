@@ -117,7 +117,9 @@ class Attacks(unittest.TestCase):
         receipt=self.p/"attempts/cold_view/receipt.json";row=json.loads(receipt.read_text())
         row["stdout_sha256"]=r.sha(raw);row["stdout_bytes"]=len(raw);row["output"]["clock"]=777
         self.save(receipt,row);self.index()
-        self.assertFalse(r.consume(self.p)["expected_scenario_pass"])
+        result=r.consume(self.p)
+        self.assertFalse(result["expected_scenario_pass"])
+        self.assertEqual(result["cold_reopened"],0,"Invalid cold clock must not be reported as reopened")
     def test_expected_refusal_wrong_reason_not_accepted(self):
         path=self.p/"attempts/fail_wait/stdout.bin"
         obj=json.loads(path.read_text());obj["reason"]="P6_FAKE_OTHER_REFUSAL";raw=m.data(obj);path.write_bytes(raw)
