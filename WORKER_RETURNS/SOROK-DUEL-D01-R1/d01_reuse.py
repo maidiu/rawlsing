@@ -12,7 +12,9 @@ CAN/ADP science, actor rights, human validity or production authority.
 """
 from __future__ import annotations
 
+import fcntl
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any, Mapping, Sequence
@@ -26,10 +28,12 @@ for _path in (_P3_ROOT, _ENGINE_ROOT):
 
 from developmental_recursion.contracts import (  # noqa: E402
     RecursionRefusal,
+    canonical,
     detached,
     digest,
 )
 from p3 import p3_owner, test_rules  # noqa: E402
+from p3.state_store import PsycheStore  # noqa: E402
 
 GRADE = test_rules.GRADE
 CONFIG_SCHEMA = p3_owner.CONFIG_SCHEMA
@@ -98,27 +102,35 @@ def _source_identity(source: Mapping[str, Any]) -> Mapping[str, Any]:
     return nested if isinstance(nested, Mapping) else source
 
 
-def _verify_completed_config(owner: Any, completed: Sequence[Mapping[str, Any]]) -> None:
-    if not completed:
+def _verify_completed_config(owner: Any) -> None:
+    _verify_completed_config_store(
+        owner.store, owner.config_hash,
+        code="D01_COLD_CONFIG_PROVENANCE_MISMATCH",
+    )
+
+
+def _verify_completed_config_store(
+    store: Any, config_hash: str, *, code: str,
+) -> dict | None:
+    try:
+        return p3_owner.verify_completed_config(store, config_hash)
+    except RecursionRefusal as exc:
+        if str(exc).startswith("P3_CONFIG_PROVENANCE_MISMATCH"):
+            _refuse(code)
+        raise
+
+
+def _fsync_directory(path: Path) -> None:
+    try:
+        handle = os.open(str(path), os.O_RDONLY)
+    except OSError:
         return
-    operation = owner.store.get_operation(completed[-1]["operation_id"])
-    if not isinstance(operation, Mapping):
-        _refuse("D01_COLD_OPERATION_MISSING")
-    result = _mapping(operation.get("result"), "D01_COLD_RESULT")
-    receipt = _mapping(operation.get("effects_receipt"), "D01_COLD_RECEIPT")
-    base = _mapping(operation.get("base_result"), "D01_COLD_BASE_RESULT")
-    base_after = _mapping(base.get("after"), "D01_COLD_BASE_AFTER")
-    psyche_after = _mapping(receipt.get("psyche_after"), "D01_COLD_PSYCHE_AFTER")
-    after = _mapping(result.get("after"), "D01_COLD_RESULT_AFTER")
-    expected = digest({
-        "base_state_hash": _hash(base_after.get("state_hash"),
-                                 "D01_COLD_BASE_STATE_HASH"),
-        "psychology_head": _hash(psyche_after.get("hash"),
-                                 "D01_COLD_PSYCHE_HEAD"),
-        "config_hash": owner.config_hash,
-    })
-    if after.get("state_hash") != expected:
-        _refuse("D01_COLD_CONFIG_PROVENANCE_MISMATCH")
+    try:
+        os.fsync(handle)
+    except OSError:
+        pass
+    finally:
+        os.close(handle)
 
 
 def _walk_claims(value: Any, path: str = "response") -> None:
@@ -189,28 +201,11 @@ def producer_identity() -> dict:
     }
 
 
-def load_cold_config(state_root: str | Path) -> dict:
-    """Read and validate the durable owner configuration without caller state."""
-    root = Path(state_root).expanduser().resolve()
-    config_path = root / p3_owner.CONFIG_FILE
-    store_path = root / STORE_FILE
-    if not config_path.is_file():
-        _refuse("D01_COLD_CONFIG_MISSING")
-    if not store_path.is_file():
-        _refuse("D01_COLD_STORE_MISSING")
-    try:
-        document = json.loads(config_path.read_text(encoding="utf-8"))
-    except (OSError, ValueError) as exc:
-        raise RecursionRefusal("D01_COLD_CONFIG_UNREADABLE") from exc
-    document = _mapping(document, "D01_COLD_CONFIG_SCHEMA")
-    if document.get("schema") != CONFIG_FILE_SCHEMA:
-        _refuse("D01_COLD_CONFIG_SCHEMA")
-    config = _mapping(document.get("config"), "D01_COLD_CONFIG_BODY")
+def _validate_config_body(config: Any) -> dict:
+    config = _mapping(config, "D01_COLD_CONFIG_BODY")
     if set(config) != CONFIG_KEYS:
         _refuse("D01_COLD_CONFIG_KEYS")
-    if document.get("config_hash") != digest(config):
-        _refuse("D01_COLD_CONFIG_HASH")
-    if config["schema"] != CONFIG_SCHEMA:
+    if config.get("schema") != CONFIG_SCHEMA:
         _refuse("D01_COLD_OWNER_SCHEMA")
     if config["code_pins"] != p3_owner._code_pins():
         _refuse("D01_COLD_CODE_IDENTITY")
@@ -235,6 +230,129 @@ def load_cold_config(state_root: str | Path) -> dict:
     return config
 
 
+def load_cold_config(state_root: str | Path) -> dict:
+    """Read and validate the durable owner configuration without caller state."""
+    root = Path(state_root).expanduser().resolve()
+    config_path = root / p3_owner.CONFIG_FILE
+    store_path = root / STORE_FILE
+    if not config_path.is_file():
+        _refuse("D01_COLD_CONFIG_MISSING")
+    if not store_path.is_file():
+        _refuse("D01_COLD_STORE_MISSING")
+    try:
+        document = json.loads(config_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        raise RecursionRefusal("D01_COLD_CONFIG_UNREADABLE") from exc
+    document = _mapping(document, "D01_COLD_CONFIG_SCHEMA")
+    if document.get("schema") != CONFIG_FILE_SCHEMA:
+        _refuse("D01_COLD_CONFIG_SCHEMA")
+    config = _validate_config_body(document.get("config"))
+    if document.get("config_hash") != digest(config):
+        _refuse("D01_COLD_CONFIG_HASH")
+    return config
+
+
+def recover_missing_config(state_root: str | Path, document: Any) -> dict:
+    """Restore an absent owner config only when durable evidence proves it.
+
+    The caller supplies a candidate config document (an exact backup or the
+    controller's retained copy).  It is never trusted as such: the last
+    completed operation's durable ``result.after.state_hash`` embeds the
+    config_hash that actually produced it, so a substituted candidate refuses.
+    An empty store (no operations, no records) is recoverable because there is
+    no durable computation whose provenance could be reinterpreted.  A pending
+    operation with no completed anchor is not recoverable from a config pin.
+    """
+    root = Path(state_root).expanduser().resolve()
+    config_path = root / p3_owner.CONFIG_FILE
+    store_path = root / STORE_FILE
+    if config_path.exists():
+        _refuse("D01_RECOVERY_CONFIG_EXISTS")
+    if not store_path.is_file():
+        _refuse("D01_RECOVERY_STORE_MISSING")
+    document = _mapping(document, "D01_RECOVERY_DOCUMENT")
+    if not {"schema", "config", "config_hash"} <= set(document):
+        _refuse("D01_RECOVERY_DOCUMENT_KEYS")
+    if document.get("schema") != CONFIG_FILE_SCHEMA:
+        _refuse("D01_RECOVERY_DOCUMENT_SCHEMA")
+    config = _validate_config_body(document.get("config"))
+    config_hash = _hash(document.get("config_hash"), "D01_RECOVERY_CONFIG_HASH")
+    if config_hash != digest(config):
+        _refuse("D01_RECOVERY_CONFIG_HASH")
+    identity = _source_identity(config["source"])
+    source_hash = config["source_hash"]
+    registry_hash = test_rules.make_registry(source_hash)["hash"]
+    root.mkdir(parents=True, exist_ok=True)
+    lock_path = root / p3_owner.LOCK_FILE
+    with lock_path.open("a") as lock_handle:
+        fcntl.flock(lock_handle, fcntl.LOCK_EX)
+        try:
+            if config_path.exists():
+                _refuse("D01_RECOVERY_CONFIG_EXISTS")
+            if not store_path.is_file():
+                _refuse("D01_RECOVERY_STORE_MISSING")
+            store = PsycheStore(
+                store_path,
+                binding={key: identity[key]
+                         for key in ("root", "actor", "branch")},
+                registry_hash=registry_hash,
+                source_hash=source_hash,
+            )
+            try:
+                store.verify()
+                pending = store.pending()
+                latest = store.latest_completed()
+                if latest is not None:
+                    provenance = _verify_completed_config_store(
+                        store, config_hash,
+                        code="D01_RECOVERY_PROVENANCE_MISMATCH",
+                    )
+                    mode = "VERIFIED_COMPLETED_ANCHOR"
+                else:
+                    if pending:
+                        _refuse("D01_RECOVERY_PENDING_UNVERIFIED")
+                    if store.head().get("count") != 0:
+                        _refuse(
+                            "D01_RECOVERY_RECORDS_WITHOUT_COMPLETION")
+                    provenance = None
+                    mode = "EMPTY_STORE"
+                temporary = root / (p3_owner.CONFIG_FILE + ".tmp")
+                try:
+                    with temporary.open("w", encoding="utf-8") as handle:
+                        handle.write(canonical({
+                            "schema": CONFIG_FILE_SCHEMA,
+                            "config": config,
+                            "config_hash": config_hash,
+                        }) + "\n")
+                        handle.flush()
+                        os.fsync(handle.fileno())
+                    os.replace(temporary, config_path)
+                except BaseException:
+                    if temporary.exists():
+                        temporary.unlink()
+                    raise
+                _fsync_directory(root)
+                return {
+                    "schema": "SOROK_D01_CONFIG_RECOVERY@1",
+                    "state_root": str(root),
+                    "config_hash": config_hash,
+                    "mode": mode,
+                    "pending_operation_ids": [
+                        row["operation_id"] for row in pending],
+                    "last_completed_operation_id": (
+                        provenance["operation_id"]
+                        if provenance else None),
+                    "store_head": detached(store.head()),
+                    "authority": "SOURCEFREE_TEST_ONLY",
+                    "native_rule": "MISSING_RULE",
+                    "native_action": "NOT_ISSUED_BY_P3_RULE",
+                }
+            finally:
+                store.close()
+        finally:
+            fcntl.flock(lock_handle, fcntl.LOCK_UN)
+
+
 def open_cold_owner(base_owner: Any, state_root: str | Path | None = None) -> Any:
     """Open the exact durable P3Owner over a caller-supplied actual base owner."""
     root = state_root
@@ -249,6 +367,23 @@ def open_cold_owner(base_owner: Any, state_root: str | Path | None = None) -> An
     for key in ("root", "actor", "branch"):
         if identity.get(key) != getattr(snapshot, key):
             _refuse("D01_COLD_BASE_IDENTITY:" + key)
+    registry_hash = test_rules.make_registry(config["source_hash"])["hash"]
+    store = PsycheStore(
+        Path(root).expanduser().resolve() / p3_owner.STORE_FILE,
+        binding={key: identity[key] for key in ("root", "actor", "branch")},
+        registry_hash=registry_hash,
+        source_hash=config["source_hash"],
+    )
+    try:
+        if store.pending():
+            _refuse("D01_COLD_OPERATION_PENDING")
+        store.verify()
+        _verify_completed_config_store(
+            store, digest(config),
+            code="D01_COLD_CONFIG_PROVENANCE_MISMATCH",
+        )
+    finally:
+        store.close()
     owner = p3_owner.P3Owner(
         base_owner,
         source=config["source"],
@@ -265,17 +400,83 @@ def open_cold_owner(base_owner: Any, state_root: str | Path | None = None) -> An
     try:
         if owner.store.pending():
             _refuse("D01_COLD_OPERATION_PENDING")
-        _verify_completed_config(owner, owner.store.completed())
+        _verify_completed_config(owner)
     except BaseException:
         owner.close()
         raise
     return owner
 
 
-def validate_sourcefree_response(response: Any) -> dict:
-    """Reject native/durable/first-person claims in a P3 sourcefree response."""
+EXACT_RESPONSE_KEYS = frozenset({
+    "grade", "status", "event_ref", "rule", "streams", "contradictions",
+    "native_rule", "native_action", "memory_formation",
+    "first_person_claims", "hash",
+})
+HELD_RESPONSE_KEYS = frozenset({"grade", "status", "reason", "streams"})
+EXACT_RULE_KEYS = frozenset({"rule_id", "rule_version", "rule_hash"})
+STREAM_KEYS = frozenset({
+    "mode", "history_ref", "record_id", "record_hash", "candidate_activity",
+    "material_eligible", "native_action_performed",
+})
+
+
+def _exact_stream_keys(stream: Mapping[str, Any]) -> frozenset[str]:
+    keys = set(stream)
+    if "record_id" in keys or "record_hash" in keys:
+        return frozenset({
+            "mode", "record_id", "record_hash", "candidate_activity",
+            "material_eligible", "native_action_performed",
+        })
+    if "history_ref" in keys:
+        return frozenset({
+            "mode", "history_ref", "candidate_activity",
+            "material_eligible", "native_action_performed",
+        })
+    return frozenset({
+        "mode", "candidate_activity", "material_eligible",
+        "native_action_performed",
+    })
+
+
+def validate_sourcefree_response(response: Any, *, exact: bool = False) -> dict:
+    """Reject native/durable/first-person claims in a P3 sourcefree response.
+
+    ``exact`` additionally requires the frozen rule's exact response shape, so
+    an affirmative claim cannot ride under an unknown key (for example
+    ``can_008``).  The D01 later consumer uses the exact form.
+    """
     body = _mapping(response, "D01_RESPONSE_SCHEMA")
     status = _text(body.get("status"), "D01_RESPONSE_STATUS")
+    if exact:
+        keys = set(body)
+        if keys not in (EXACT_RESPONSE_KEYS, HELD_RESPONSE_KEYS):
+            _refuse("D01_RESPONSE_SCHEMA_KEYS")
+        if body.get("grade") != GRADE:
+            _refuse("D01_RESPONSE_GRADE")
+        if keys == EXACT_RESPONSE_KEYS:
+            if status != "COMPUTED_TEST_ONLY_RESPONSE":
+                _refuse("D01_RESPONSE_STATUS")
+            rule = _mapping(body.get("rule"), "D01_RESPONSE_RULE")
+            if set(rule) != EXACT_RULE_KEYS:
+                _refuse("D01_RESPONSE_RULE_KEYS")
+            streams = body.get("streams")
+            if not isinstance(streams, list):
+                _refuse("D01_RESPONSE_STREAMS")
+            for stream in streams:
+                stream = _mapping(stream, "D01_RESPONSE_STREAM")
+                if set(stream) != _exact_stream_keys(stream):
+                    _refuse("D01_RESPONSE_STREAM_KEYS")
+            if not isinstance(body.get("contradictions"), list):
+                _refuse("D01_RESPONSE_CONTRADICTIONS")
+            supplied = _hash(body.get("hash"), "D01_RESPONSE_HASH")
+            if digest({key: item for key, item in body.items()
+                       if key != "hash"}) != supplied:
+                _refuse("D01_RESPONSE_HASH_MISMATCH")
+        else:
+            if status != "HELD":
+                _refuse("D01_RESPONSE_STATUS")
+            if body.get("streams") != []:
+                _refuse("D01_RESPONSE_STREAMS")
     if status.startswith("COMPUTED_TEST_ONLY_RESPONSE"):
         for key in ("native_rule", "native_action", "memory_formation"):
             if key not in body:
@@ -311,11 +512,55 @@ def _validate_record(record: Any, *, owner: Any, as_of: int) -> dict:
     if effective > as_of:
         _refuse("D01_RECORD_FUTURE")
     parents = value.get("causal_parents")
-    if not isinstance(parents, list) or not parents or not all(
-            isinstance(parent, str) and parent for parent in parents):
+    if (not isinstance(parents, list) or len(parents) != 2
+            or not all(isinstance(parent, str) and parent
+                       for parent in parents)):
         _refuse("D01_RECORD_PARENTS")
-    if not isinstance(value.get("payload"), Mapping):
-        _refuse("D01_RECORD_PAYLOAD")
+    event_parent = _hash(parents[0], "D01_RECORD_EVENT_PARENT")
+    history_parent = _hash(parents[1], "D01_RECORD_HISTORY_PARENT")
+    if parents != [event_parent, history_parent]:
+        _refuse("D01_RECORD_PARENTS")
+    history = next(
+        (row for row in owner.history if row.get("hash") == history_parent),
+        None,
+    )
+    if history is None:
+        _refuse("D01_RECORD_HISTORY")
+    record_id = _hash(value.get("record_id"), "D01_RECORD_ID")
+    expected_id = digest([
+        value["root"], value["actor"], value["branch"],
+        event_parent, history_parent, SELECTED_RULE["rule_hash"],
+    ])
+    if record_id != expected_id:
+        _refuse("D01_RECORD_ID")
+    payload = _mapping(value.get("payload"), "D01_RECORD_PAYLOAD")
+    if set(payload) != {
+            "mode", "origin_access", "activation_roles", "relation_refs",
+            "obligation_refs", "requires_actor_access"}:
+        _refuse("D01_RECORD_PAYLOAD_KEYS")
+    if payload.get("origin_access") != "NOT_GRANTED_AS_MEMORY":
+        _refuse("D01_RECORD_PAYLOAD_ORIGIN")
+    if payload.get("requires_actor_access") is not True:
+        _refuse("D01_RECORD_PAYLOAD_ACCESS")
+    for key in ("activation_roles", "relation_refs", "obligation_refs"):
+        items = payload.get(key)
+        if not isinstance(items, list) or not all(
+                isinstance(item, str) and item for item in items):
+            _refuse("D01_RECORD_PAYLOAD_SELECTORS:" + key)
+    project = value.get("project")
+    counterpart = value.get("counterpart")
+    if not isinstance(project, str) or not isinstance(counterpart, str):
+        _refuse("D01_RECORD_SCOPE")
+    modes = {
+        row["hash"]: mode
+        for row, mode in test_rules._mode_for(
+            owner.history,
+            {"project": project, "time": effective},
+            counterpart,
+        )
+    }
+    if modes.get(history_parent) != payload.get("mode"):
+        _refuse("D01_RECORD_MODE")
     return value
 
 
@@ -327,6 +572,8 @@ def read_sourcefree_records(
     as_of: int,
 ) -> dict:
     """Read only the selected rule's exact actor-local records at ``as_of``."""
+    test_rules._check_sources(owner.registry, owner.source_hash)
+    owner.store.verify()
     records = owner.store.query(
         project=project, counterpart=counterpart, as_of=as_of,
     )
@@ -356,13 +603,15 @@ def later_consumer(
     require_record_hashes: Sequence[str] | None = None,
 ) -> dict:
     """Realize one later P3 consumer and prove its exact sourcefree readset."""
+    owner.store.verify()
     snapshot = owner.snapshot() if expected is None else expected
     result = owner.realize(operation_id, proposal, snapshot)
     consequences = result.consequences if isinstance(result.consequences, Mapping) else {}
     _walk_claims(consequences, "consequences")
     if consequences.get("durable_psychological_transition") != "MISSING_RULE":
         _refuse("D01_DURABLE_TRANSITION_CLAIM")
-    response = validate_sourcefree_response(consequences.get("test_only_psychological"))
+    response = validate_sourcefree_response(
+        consequences.get("test_only_psychological"), exact=True)
     actor_surface = _mapping(result.accessible, "D01_ACTOR_SURFACE")
     projected = _mapping(consequences.get("test_only_actor_surface"),
                          "D01_PROJECTED_ACTOR_SURFACE")
@@ -424,5 +673,6 @@ __all__ = [
     "open_cold_owner",
     "producer_identity",
     "read_sourcefree_records",
+    "recover_missing_config",
     "validate_sourcefree_response",
 ]
