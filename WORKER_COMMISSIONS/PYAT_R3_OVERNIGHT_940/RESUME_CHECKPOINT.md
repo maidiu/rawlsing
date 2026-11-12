@@ -45,3 +45,8 @@ S2-F G5 returnedexit0 review16aa624c7ef99fe0c0f3affd4a5770fb1edefff0, code588d42
 
 ACTUAL boundedF08repair child51930/supervisor51929/observer51931; kqueue intervalnull. Actual first repair modelturn pending at initial launch; prior session model is not fresh proof. No duplicate launch/polling.
 Original#919custody comment6821418978. ActualrepairfirstFlashMAXturn verified msg_1cf5a3fc3001qb4yF5k1LXG0jm. Next: sameG5focusedrecheck afterrepairterminal; no recurringwake.
+
+S1-B counterexit0, remote deliveryaf51b50cb0b5d2d956a553c841f73c6aacad6e45/code9c296cfcfb4ebad11c48492238aacbedc9755ccb; allBrepairsconceded plusrowkey/multiplicityrepairs,42packet/109+1skip/132additionalclaimed; noopenmaterialdefect. STOPbothauthors/R3S. ONEdistinctG5sessionses_e30a442d8ffeYBbXi7rPUpPxoc, reviewworktree/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1b-g5, jobpyat940-s1b-g5-r01reserved, code/testsREADONLY/ownreturnonly. Registryindependent_receiver separatefromfixedA/B; active_roleG5_NONAUTHOR, futureterminalmatchthisreceiver. OtherS1-D B/S2-F exactrepairlive,max3; no extra benchmark/gates.
+
+ACTUAL S1-B distinctG5 child53566/supervisor53562/observer53567; exactsession ses_e30a442d8ffeYBbXi7rPUpPxoc, firstactualFlashMAXturnverified; kqueueintervalnull. BothauthorsSTOPPED. Three lanes S1-B G5 / S1-D B / S2-F boundedF08repair. Awaitterminalonly/noautowake.
+Original#918custody comment6821471070 records S1-B independentreceiving dispatch, notacceptance.
