@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Independent read-only first consumer for saved raw G03-I0 P6 receipts."""
-import argparse,hashlib,json,math,statistics
+import argparse,hashlib,json,math,statistics,os,subprocess
 from pathlib import Path
 # Deliberately independent of the measurement writer's declared plan.
-SCHEMA="G03_I0_REAL_P6_V1"
+SCHEMA="G03_I0_REAL_P6_V2"
+STATE_DIGEST_SCHEME="G03_STATE_PATH_CONTENT_SHA256_V1"
 P6="WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
 FILES=[P6,"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
        "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py",
@@ -29,6 +30,55 @@ def load(p):
     except (OSError,UnicodeError,ValueError) as e:raise Reject("INVALID_JSON:"+str(e)) from e
 def validhash(x,n=64):return isinstance(x,str) and len(x)==n and all(c in "0123456789abcdef" for c in x)
 def num(x):return type(x) in (int,float) and math.isfinite(x) and x>=0
+def canonical(obj):
+    return (json.dumps(obj,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(",",":"))+"\\n").encode()
+def state_snapshot(root):
+    """Independent receiver's path/content check; no dependency on the meter."""
+    root=Path(root)
+    if not root.exists():
+        return {"status":"ABSENT","bytes":0,"files":0,
+                "sha256":sha(canonical({"v":1,"status":"ABSENT"}))}
+    require(not root.is_symlink() and root.is_dir(),"STATE_ROOT_UNSAFE")
+    entries=[];total=0;count=0
+    for parent,dirs,names in os.walk(root,followlinks=False):
+        dirs.sort();names.sort()
+        for name in dirs:
+            q=Path(parent)/name
+            require(not q.is_symlink() and q.is_dir(),"STATE_DIR_UNSAFE")
+            entries.append(["D",q.relative_to(root).as_posix()])
+        for name in names:
+            q=Path(parent)/name
+            require(not q.is_symlink() and q.is_file(),"STATE_FILE_UNSAFE")
+            before=q.stat();raw=q.read_bytes();after=q.stat()
+            require((before.st_size,before.st_mtime_ns,before.st_ino)==
+                    (after.st_size,after.st_mtime_ns,after.st_ino),"STATE_SNAPSHOT_RACE")
+            entries.append(["F",q.relative_to(root).as_posix(),len(raw),sha(raw)])
+            count+=1;total+=len(raw)
+    entries.sort()
+    return {"status":"PRESENT","bytes":total,"files":count,
+            "sha256":sha(canonical({"v":1,"status":"PRESENT","entries":entries}))}
+def check_snapshot(s):
+    require(isinstance(s,dict) and set(s)=={"status","bytes","files","sha256"},"STATE_SNAPSHOT_INVALID")
+    require(s["status"] in ("PRESENT","ABSENT") and type(s["bytes"]) is int and s["bytes"]>=0
+            and type(s["files"]) is int and s["files"]>=0 and validhash(s["sha256"]),"STATE_SNAPSHOT_INVALID")
+    if s["status"]=="ABSENT":
+        require(s==state_snapshot(Path("/a/nonexistent/g03-root")), "STATE_ABSENT_DIGEST_BAD")
+def verify_repo(repo,head,source):
+    """Optional present-checkout source attestation. Not needed for offline archive reading."""
+    repo=Path(repo).resolve()
+    try:
+        actual=subprocess.check_output(["git","-C",str(repo),"rev-parse","HEAD"],text=True).strip()
+        dirty=subprocess.check_output(["git","-C",str(repo),"status","--porcelain",
+                                       "--untracked-files=all"],text=True).strip()
+    except (OSError,subprocess.CalledProcessError) as e:
+        raise Reject("SOURCE_RECHECK_UNAVAILABLE") from e
+    require(actual==head,"SOURCE_REPO_SHA_MISMATCH")
+    require(not dirty,"SOURCE_REPO_DIRTY_OR_UNTRACKED")
+    for p,digest in source.items():
+        q=repo/p
+        require(q.is_file() and not q.is_symlink(),"SOURCE_FILE_NOT_REGULAR:"+p)
+        require(sha(q.read_bytes())==digest,"SOURCE_FILE_HASH_MISMATCH:"+p)
+
 def resources(r,osname):
     require(isinstance(r,dict),"RESOURCE_MISSING")
     if r.get("status")=="UNOBSERVED":
@@ -45,7 +95,11 @@ def consume(root,expected_index_sha256=None):
     if expected_index_sha256 is not None:
         require(sha(rawidx)==expected_index_sha256,"INDEX_EXTERNAL_ANCHOR_MISMATCH")
     idx=load(idxpath)
+    require(isinstance(idx.get("entries"),dict) and
+            idx["entries"].get("manifest.json")==sha((root/"manifest.json").read_bytes()),
+            "MANIFEST_NOT_INDEXED")
     require(man.get("schema")==SCHEMA and idx.get("schema")==SCHEMA,"SCHEMA_BAD")
+    require(man.get("state_digest_scheme")==STATE_DIGEST_SCHEME,"STATE_DIGEST_SCHEME_MISSING")
     head=man.get("repo_sha")
     require(validhash(head,40),"SOURCE_SHA_BAD")
     source=man.get("source_hashes")
@@ -58,7 +112,7 @@ def consume(root,expected_index_sha256=None):
             and validhash(man.get("env_fingerprint_sha256"))
             and man.get("network_calls")=="UNOBSERVED"
             and man.get("descendant_processes")=="UNOBSERVED","OFFLINE_OR_PROCESS_CLAIM_FALSE")
-    expected={"attempts/"+n+"/"+f for n,_ in PLAN for f in ("start.json","receipt.json","stdout.bin","stderr.bin")}
+    expected={"manifest.json"} | {"attempts/"+n+"/"+f for n,_ in PLAN for f in ("start.json","receipt.json","stdout.bin","stderr.bin")}
     require(isinstance(idx.get("entries"),dict) and set(idx["entries"])==expected,"INDEX_ATTEMPTS_MISSING")
     rows=[]; outputs=[]
     for name,args in PLAN:
@@ -83,6 +137,11 @@ def consume(root,expected_index_sha256=None):
         require(type(r.get("state_bytes_before")) is int and r["state_bytes_before"]>=0
                 and type(r.get("state_bytes_after")) is int and r["state_bytes_after"]>=0
                 and start.get("state_bytes_before")==r["state_bytes_before"],"STATE_BYTES_FORGED")
+        before_snap=r.get("state_snapshot_before"); after_snap=r.get("state_snapshot_after")
+        check_snapshot(before_snap);check_snapshot(after_snap)
+        require(start.get("state_snapshot_before")==before_snap and
+                before_snap["bytes"]==r["state_bytes_before"] and
+                after_snap["bytes"]==r["state_bytes_after"],"STATE_SNAPSHOT_SIZE_OR_START_MISMATCH")
         require(r.get("direct_children_started")==1 and r.get("descendants")=="UNOBSERVED","PROCESS_COUNT_FORGED")
         require(r.get("cold") is (name=="cold_view")
                 and r.get("cold_basis")==("separate_python_exec_after_wait" if name=="cold_view" else "NOT_APPLICABLE"),"COLD_CLAIM_FORGED")
@@ -106,9 +165,16 @@ def consume(root,expected_index_sha256=None):
                 and view.get("clock")==(o.get("clock") if o else None),"OUTPUT_CLAIM_FALSE")
         rows.append(r);outputs.append(o)
     require(len({r["child_pid"] for r in rows})==len(rows),"DUPLICATED_CHILD_EXEC_ID")
-    require(rows[0]["state_bytes_before"]==0,"STATE_NOT_FRESH")
+    require(rows[0]["state_bytes_before"]==0 and
+            rows[0]["state_snapshot_before"]["status"]=="ABSENT","STATE_NOT_FRESH")
     require(all(a["state_bytes_after"]==b["state_bytes_before"] and a["argv"][3]==b["argv"][3]
                 for a,b in zip(rows,rows[1:])),"STATE_CONTINUITY_BAD")
+    require(all(a["state_snapshot_after"]==b["state_snapshot_before"]
+                for a,b in zip(rows,rows[1:])),"STATE_CONTENT_CONTINUITY_BAD")
+    require(rows[-1]["state_snapshot_before"]==rows[-1]["state_snapshot_after"],
+            "REFUSED_MUTATED_STATE")
+    require(state_snapshot(root/"state")==rows[-1]["state_snapshot_after"],
+            "STATE_FINAL_CONTENT_MISMATCH")
     # Source-exact semantic oracle: fresh root, genuine +1 wait, reopened
     # clock preservation, specified refusal and zero state mutation on refusal.
     semantic=(all(isinstance(o,dict) and type(o.get("clock")) is int
@@ -163,10 +229,14 @@ def consume(root,expected_index_sha256=None):
     return result
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument("root",type=Path)
-    p.add_argument("--index-sha256");p.add_argument("--require-expected",action="store_true")
+    p.add_argument("--index-sha256");p.add_argument("--repo",type=Path)
+    p.add_argument("--require-expected",action="store_true")
     a=p.parse_args()
     try:
         result=consume(a.root,a.index_sha256)
+        if a.repo is not None:
+            man=load(a.root/"manifest.json")
+            verify_repo(a.repo,man["repo_sha"],man["source_hashes"])
         require(not a.require_expected or result["expected_scenario_pass"],"SCENARIO_FAILED")
     except Reject as e:
         print("REJECT "+str(e));return 2
