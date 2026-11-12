@@ -137,7 +137,6 @@ class DiskSemanticIndex:
                     or key in bindings
                     or not binding.native
                     or binding.universe not in eligible_universes
-                    or binding.native not in scope.targets
                     or (binding.canonical and not binding.canonical_authority_ref)):
                 db.close()
                 raise BadRange("QUESTION_BINDING_NOT_GOVERNED")
@@ -281,8 +280,10 @@ class DiskSemanticIndex:
             raise BadRange("UNTRUSTED_ANCHOR")
         if scope.release != accepted.release or scope.root() != accepted.scope_root:
             raise BadRange("DOMAIN_SCOPE_NOT_ATTESTED")
-        if (universe,respondent) not in scope.respondents or target not in scope.targets:
+        if (universe,respondent) not in scope.respondents:
             raise BadRange("UNKNOWN_SCOPE_OR_SELECTOR")
+        # Global vocabulary is documentary only: an exact governed binding
+        # can authorize a U2 alias even if a legacy global name-list omitted it.
         if not scope.allows_target(universe, target):
             raise BadRange("UNQUALIFIED_UNIVERSE_TARGET")
         kinds=("native",) if native_only else (("native","canonical","component") if include_component else ("native","canonical"))
@@ -459,6 +460,11 @@ class TestVerifiedRanges(unittest.TestCase):
                               target="CQ7",scope=self.scope)
         self.assertEqual(self.store.select(accepted=self.a,universe="U2",
                                             respondent="R1",target="NQ7",scope=self.scope)[0][2],
+                         "SUBSTANTIVE_RESPONSE")
+        # The source-qualified U2 canonical alias must work even though
+        # the legacy global vocabulary does not include CQ8.
+        self.assertEqual(self.store.select(accepted=self.a,universe="U2",
+                                            respondent="R1",target="CQ8",scope=self.scope)[0][2],
                          "SUBSTANTIVE_RESPONSE")
 
     def test_global_whitelist_cannot_convert_unissued_question_into_valid_empty(self):
