@@ -858,3 +858,59 @@ def test_h45_changed_i02_value_changes_actual_i03_fact_and_restores():
     assert _cell_map(results[0].facts[0])["1"]["raw_numerator_support"] == 0
     assert _cell_map(results[1].facts[0])["1"]["raw_numerator_support"] == 1
     assert results[0] == results[2]
+
+
+def test_h46_sourcebacked_occurrence_component_without_question_grant_remains_native_only():
+    """Explicit producer occurrence rule is not the same as a persisted QVB grant.
+
+    The source-backed C11 producer may legally put a component on an
+    OccurrenceRule while QVB.component is typed absent. I02 accepts the source
+    and the native first reader retains the event. S2-A cannot authenticate
+    the extra component alias from I02-only records: refuse its *opt-in*
+    certificate, do not erase the native release or promote the occurrence
+    without source/sidecar provenance from Pair 1.
+    """
+    pytest.importorskip("pandas")
+    from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+    from rawlsing_next.tests.test_pre553_empirical_query import _ref
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        build_validated_source_backed_c11_release,
+    )
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    fx = _fixture("s2a-h46-occurrence-qualified")
+    projection = fx["projection"]
+    old_slots = list(projection.response_slots)
+    m_idx = next(i for i, row in enumerate(old_slots)
+                 if row.slot.name == "M")
+    old_slot = old_slots[m_idx]
+    values = list(old_slot.values)
+    first_value = values[0]
+    first_occ = first_value.occurrences[0]
+    alternate = _ref("QUESTION_COMPONENT", "s2a-h46-explicit-occurrence")
+    values[0] = replace(
+        first_value,
+        occurrences=(replace(first_occ, component_ref=alternate),
+                     *first_value.occurrences[1:]),
+    )
+    old_slots[m_idx] = replace(old_slot, values=tuple(values))
+    projection = replace(projection, response_slots=tuple(old_slots))
+    native_release = build_validated_source_backed_c11_release(fx["incidence"], projection)
+    events = [
+        e for e in native_release.public_objects
+        if isinstance(e, RespondentEvent)
+        and e.component_or_subitem_ref == alternate.as_dict()
+    ]
+    assert events  # actual producer emits source-qualified occurrence component
+    repo = C11Repository((native_release,))
+    index = _build_release_index(native_release, fx["universe"].ref)
+    native_scoped = next(k for k, value in index.respondents.items()
+                         if value.ref.as_dict() == events[0].scoped_respondent_ref)
+    assert list(_select_respondent_events(
+        index, native_scoped, alternate, include_component=True,
+    ))
+    # An I02-only witness cannot inspect the source projection that supplied
+    # this occurrence grant. Refuse additional certification, preserve native.
+    with pytest.raises(SemanticRangeIntegrityError, match="component|binding"):
+        I02SemanticRangeWitness.from_validated_release(native_release, fx["universe"].ref)
+    assert repo.resolve_release_exact(native_release.release_ref) is native_release
