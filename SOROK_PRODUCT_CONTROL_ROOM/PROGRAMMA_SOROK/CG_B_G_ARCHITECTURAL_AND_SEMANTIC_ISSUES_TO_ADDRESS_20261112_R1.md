@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — issues to address from CG-B–G overnight implementation and executive comparison (2026-11-12 R1)
 
+**UPDATED INTERPRETATION (R2) — DO NOT USE THIS R1 ALONE FOR NEW PHILOSOPHICAL DECISIONS:** [Corrected 25-issue campaigns, 21 M/T task dispositions and 21-node semantic statuses](CG_B_G_SEMANTIC_RECONCILIATION_AND_CAMPAIGNS_20261112_R2.md) · [machine-readable R2](CG_B_G_SEMANTIC_RECONCILIATION_AND_CAMPAIGNS_20261112_R2.json). User's subsequent instructions explicitly reject a new money/choice/hidden-reason theory: use existing prospective event possibilities, several co-operative or contradictory CAN/P3 streams, full computed outcome and fallible actor-limited retrospective LLM narration. **R1 source evidence and original task DAG remain preserved; R2 is a candidate interpretation, not adopted native science.** No new commission, dispatch, protected merge or historical-status promotion.
+
+
 **DECISION-DEPENDENCY AND SAFE-WORK CLASSIFICATION:** [All 27 G/M/T-labeled implementation packets, their two-layer prerequisite hierarchy and 21 typed governing decisions](CG_B_G_TASK_SEMANTIC_LABELS_AND_DECISION_HIERARCHY_20261112_R1.md) · [machine-readable task-ID matrix](CG_B_G_TASK_SEMANTIC_LABELS_AND_DECISION_HIERARCHY_20261112_R1.json). These labels are keyed to the original 27 packets, not additional commissions; bounded sourcefree completion remains possible while generalized or native claims are held.
 
 
