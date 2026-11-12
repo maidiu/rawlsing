@@ -914,3 +914,61 @@ def test_h46_sourcebacked_occurrence_component_without_question_grant_remains_na
     with pytest.raises(SemanticRangeIntegrityError, match="component|binding"):
         I02SemanticRangeWitness.from_validated_release(native_release, fx["universe"].ref)
     assert repo.resolve_release_exact(native_release.release_ref) is native_release
+
+
+def test_h47_untrusted_posting_changes_after_witness_check_must_refuse_real_i03():
+    """H26 range integrity, not a new grant: a digest cannot seal a second iterator.
+
+    Both event objects come from the same real I02-accepted sourcefree
+    release. Only the derived range accessor is adversarial: first iteration
+    supplies the correct R1 event for _digest, second supplies R2's genuine
+    event to native I03. One ordinary mutable list would have the same
+    check/use window under a concurrent writer.
+    """
+    source = _build_source("s2a-h47-check-use", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    qa = _query_authority("s2a-h47-check-use")
+    pred = _branch_predicate(source, qa, tag="s2a-h47-check-use")
+    query = _query(source, qa, pred, ("Y",), tag="s2a-h47-check-use")
+    oracle = _run(source, qa, pred, query)
+    assert oracle.facts[0].typed_state == "SUPPORTED"
+
+    witness, root = _trusted(source)
+    postings = _canonical_postings(source, witness)
+    target = source["qrefs"]["Y"]
+    r1 = source["respondents"]["R1"].ref.key
+    r2 = source["respondents"]["R2"].ref.key
+    key1, key2 = (r1, "native", target.key), (r2, "native", target.key)
+    assert len(postings[key1]) == len(postings[key2]) == 1
+    correct, wrong = postings[key1][0], postings[key2][0]
+    assert correct.ref != wrong.ref
+
+    class FlipAfterDigest(list):
+        def __init__(self):
+            super().__init__((correct,))
+            self.iterations = 0
+
+        def __iter__(self):
+            self.iterations += 1
+            return iter((correct if self.iterations % 2 else wrong,))
+
+    candidate = dict(postings)
+    candidate[key1] = FlipAfterDigest()
+    # Direct original selector and actual I03 owner must both fail closed:
+    # the event value served after digest is not the event that was hashed.
+    reader = certified_i03_events(
+        _release(source), source["universe"].ref,
+        witness=witness, independently_held_root=root,
+        candidate_postings=candidate,
+    )
+    with pytest.raises(SemanticRangeIntegrityError):
+        list(reader[r1].select(target, native_only=True))
+
+    candidate[key1] = FlipAfterDigest()
+    _install_i03(source, witness, root, postings=candidate)
+    denied = _run(source, qa, pred, query)
+    assert denied.facts[0].typed_state == "INTEGRITY_FAILURE"
+    _install_i03(source, witness, root)
+    assert _run(source, qa, pred, query) == oracle
