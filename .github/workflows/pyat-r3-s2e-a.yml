@@ -23,6 +23,7 @@ jobs:
         run: |
           python -B -m pytest -q -s -o addopts='' -p no:cacheprovider \
             rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py \
+            rawlsing_next/tests/test_pyat919_s2e_a_counterattack.py \
             rawlsing_next/tests/test_pyat919_s2e_a_conservation.py \
             rawlsing_next/tests/test_pre553_empirical_query.py \
             rawlsing_next/tests/test_pre553_discovery_exact.py \
