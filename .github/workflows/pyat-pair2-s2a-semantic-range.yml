@@ -4,6 +4,7 @@ on:
     paths:
       - 'rawlsing_next/_pre553_verified_semantic_range.py'
       - 'rawlsing_next/_pre553_query_predicate.py'
+      - 'rawlsing_next/pre553_empirical_query.py'
       - 'rawlsing_next/tests/test_pre553_verified_semantic_range.py'
       - '.github/workflows/pyat-pair2-s2a-semantic-range.yml'
   workflow_dispatch:
@@ -19,7 +20,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install pytest pyarrow
-      - name: S2-A real I02 and I03 native first-reader plus hostile H26-H30
+      - name: S2-A real I02/I03 native first-reader, source-binding and hostile H26-H35
         env:
           PYTHONPATH: .
         run: |

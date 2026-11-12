@@ -397,3 +397,255 @@ def test_h27_real_i02_authorized_canonical_and_component_binding_omission():
         )
         with pytest.raises(SemanticRangeIntegrityError):
             list(reader[respondent].select(target, include_component=True))
+
+
+def _s2a_contradictory_alias_fixture(
+    tag: str, *, binding_has_alias: bool = True, event_uses_binding: bool = False,
+    conflicting_version_alias: bool = False,
+):
+    """A genuine I02-accepted sourcefree release with conflicting alias claims.
+
+    I02 currently verifies positive mapping authority and native-question
+    membership independently; this sourcefree fixture tests whether the
+    S2-A witness can misrepresent an event's *different* canonical alias as
+    the alias authorized by the release's QuestionVariableBinding.
+    """
+    from rawlsing_next.tests.test_pre553_c11_repository_ingest import _authority, _ref
+    from rawlsing_next.pre553_c11_integrity import TypedAbsence
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    old = _candidate(tag, event_kind="UNORDERED_MULTISELECT_SET")
+    mapping = _authority(
+        tag + "-mapping", "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        families=("RespondentEvent@1.0.0",),
+    )
+    declared = _ref("QUESTION_CANONICAL", tag + "-DECLARED")
+    invented = _ref("QUESTION_CANONICAL", tag + "-INVENTED")
+    binding = replace(
+        old.question_variable_bindings[0],
+        semantic_authority_ref=mapping.authority_ref,
+        canonical_question_ref_or_typed_absence=(
+            declared if binding_has_alias else TypedAbsence("NOT_APPLICABLE")
+        ),
+    )
+    new_events = []
+    for original in old.respondent_events:
+        fields = dict(original.semantic_fields)
+        fields.update(
+            canonical_question_ref_if_authorized=(
+                declared if event_uses_binding else invented
+            ),
+            value_transform_authority_ref=mapping.authority_ref,
+        )
+        new_events.append(RespondentEvent(
+            typed_state=original.typed_state,
+            authority_snapshot_refs=(*original.authority_snapshot_refs, mapping.authority_ref),
+            dependency_refs=original.dependency_refs,
+            producer_replay_locator_or_reference_root=original.producer_replay_locator_or_reference_root,
+            **fields,
+        ))
+    counts = dict(old.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["AuthoritySnapshot"] += 1
+    if conflicting_version_alias:
+        counts["QuestionVariableBinding"] += 1
+    manifest = replace(
+        old.source_release_manifest,
+        declared_authority_snapshot_refs=(
+            *old.source_release_manifest.declared_authority_snapshot_refs,
+            mapping.authority_ref,
+        ),
+        declared_record_counts_by_logical_family=counts,
+    )
+    candidate = replace(
+        old,
+        source_release_manifest=manifest,
+        question_variable_bindings=(
+            (binding, replace(
+                binding, instrument_question_version="CONFLICTING_VERSION_2",
+                canonical_question_ref_or_typed_absence=invented,
+            )) if conflicting_version_alias else (binding,)
+        ),
+        respondent_events=tuple(new_events),
+        authority_snapshots=(*old.authority_snapshots, mapping),
+        candidate_replay_manifest=None,
+    )
+    candidate = replace(
+        candidate, candidate_replay_manifest=build_candidate_replay_manifest(
+            candidate,
+            replay_protocol_authority_ref=old.candidate_replay_manifest.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=old.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+            replay_protocol_version=old.candidate_replay_manifest.replay_protocol_version,
+        ),
+    )
+    repo = C11Repository()
+    accepted = ingest_c11_source_release(candidate, repo)
+    assert accepted.accepted, accepted.errors
+    release = repo.resolve_release_exact(accepted.release_ref)
+    return release, candidate.empirical_universes[0].ref, declared, invented
+
+
+def test_h31_i02_accepted_event_alias_disagrees_with_question_binding_must_refuse():
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h31-binding-disagreement"
+    )
+    # Exactly this inconsistency survives native I02: we assert acceptance
+    # inside the helper. A source-backed S2-A certificate MUST NOT accept
+    # an independently positive yet differently named mapping alias.
+    with pytest.raises(SemanticRangeIntegrityError, match="binding|canonical"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h32_i02_accepted_unmapped_event_canonical_alias_must_refuse():
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h32-absent-binding", binding_has_alias=False,
+    )
+    # An ALLOW value-transform authority cannot invent a native→canonical
+    # QuestionVariableBinding where the release explicitly says absent.
+    with pytest.raises(SemanticRangeIntegrityError, match="binding|canonical"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h33_native_i03_owner_installer_binds_normal_first_consumer_and_refuses_poison():
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    from rawlsing_next._pre553_verified_semantic_range import CertifiedRespondentEvents
+
+    source = _build_source("s2a-h33-owner", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    qa = _query_authority("s2a-h33-owner")
+    pred = _branch_predicate(source, qa, tag="s2a-h33-owner")
+    query = _query(source, qa, pred, ("Y",), tag="s2a-h33-owner")
+    oracle = _run(source, qa, pred, query)
+    release = _release(source)
+    universe = source["universe"].ref
+    witness, root = _trusted(source)
+    # The new production entry point owns cache/attestation publication:
+    # callers do NOT hand a self-attested _ReleaseIndex to I03.
+    install_sourcefree_i02_certified_i03_range(
+        source["repo"], release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=root,
+    )
+    index = source["repo"]._i03_release_indices[(release.release_ref, universe)]
+    respondent = source["respondents"]["R2"].ref.key
+    selected = index.events_by_respondent[respondent]
+    assert isinstance(selected, CertifiedRespondentEvents)
+    assert _run(source, qa, pred, query) == oracle
+
+    # Adverse post-install change of only the derived selector: the I02
+    # release and the I03 attestation identities are otherwise unchanged.
+    key = (respondent, "native", source["qrefs"]["Y"].key)
+    assert len(selected._postings[key]) == 1
+    selected._postings[key] = ()
+    denied = _run(source, qa, pred, query)
+    assert denied.facts[0].typed_state == "INTEGRITY_FAILURE"
+    assert denied != oracle
+
+    # Reinstall from the genuine I02 corpus without altering science.
+    install_sourcefree_i02_certified_i03_range(
+        source["repo"], release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=root,
+    )
+    assert _run(source, qa, pred, query) == oracle
+
+
+def test_h34_owner_installer_wrong_root_is_transactionally_nonmutating():
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    source = _build_source("s2a-h34-rollback", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    release = _release(source)
+    universe = source["universe"].ref
+    witness, root = _trusted(source)
+    install_sourcefree_i02_certified_i03_range(
+        source["repo"], release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=root,
+    )
+    k = (release.release_ref, universe)
+    prior_index = source["repo"]._i03_release_indices[k]
+    prior_attestation = source["repo"]._i03_index_attestations[k]
+    with pytest.raises(SemanticRangeIntegrityError):
+        install_sourcefree_i02_certified_i03_range(
+            source["repo"], release_ref=release.release_ref,
+            universe_ref=universe, witness=witness, independently_held_root="0" * 64,
+        )
+    assert source["repo"]._i03_release_indices[k] is prior_index
+    assert source["repo"]._i03_index_attestations[k] is prior_attestation
+    qa = _query_authority("s2a-h34-rollback")
+    pred = _branch_predicate(source, qa, tag="s2a-h34-rollback")
+    query = _query(source, qa, pred, ("Y",), tag="s2a-h34-rollback")
+    assert _run(source, qa, pred, query).facts[0].typed_state == "SUPPORTED"
+
+
+def test_h35_positive_question_binding_alias_through_native_owner_first_reader():
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h35-admitted", event_uses_binding=True,
+    )
+    repo = C11Repository((release,))
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    install_sourcefree_i02_certified_i03_range(
+        repo, release_ref=release.release_ref, universe_ref=universe,
+        witness=witness, independently_held_root=witness.root,
+    )
+    index = repo._i03_release_indices[(release.release_ref, universe)]
+    respondent = next(iter(index.respondents))
+    assert len(list(_select_respondent_events(index, respondent, declared))) == 2
+    assert len(list(_select_respondent_events(index, respondent, declared,
+                                              native_only=True))) == 0
+    # An invented alias still has no selector events; no semantic permission
+    # to treat its emptiness as a certified question from this fact alone.
+    assert list(_select_respondent_events(index, respondent, invented)) == []
+
+
+def test_h36_multiple_accepted_instrument_versions_same_native_are_preserved():
+    """The S2-A alias gate must not collapse legitimate per-instrument bindings."""
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    original = _candidate("s2a-h36-versions", event_kind="UNORDERED_MULTISELECT_SET")
+    first = original.question_variable_bindings[0]
+    version = replace(first, instrument_question_version="S2A_ADDITIONAL_INSTRUMENT_VERSION")
+    counts = dict(original.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["QuestionVariableBinding"] += 1
+    candidate = replace(
+        original,
+        source_release_manifest=replace(
+            original.source_release_manifest,
+            declared_record_counts_by_logical_family=counts,
+        ),
+        question_variable_bindings=(first, version),
+        candidate_replay_manifest=None,
+    )
+    candidate = replace(
+        candidate, candidate_replay_manifest=build_candidate_replay_manifest(
+            candidate,
+            replay_protocol_authority_ref=original.candidate_replay_manifest.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=original.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+            replay_protocol_version=original.candidate_replay_manifest.replay_protocol_version,
+        ),
+    )
+    repo = C11Repository()
+    result = ingest_c11_source_release(candidate, repo)
+    assert result.accepted, result.errors
+    release = repo.resolve_release_exact(result.release_ref)
+    universe = candidate.empirical_universes[0].ref
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    rows = certified_i03_events(
+        release, universe, witness=witness, independently_held_root=witness.root
+    )
+    respondent = candidate.respondent_identities[0].ref.key
+    target = first.native_question_ref
+    assert len(list(rows[respondent].select(target))) == 2
+
+
+def test_h37_conflicting_instrument_version_canonical_mappings_refuse_ambiguous_event():
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h37-conflicting-versions",
+        event_uses_binding=True, conflicting_version_alias=True,
+    )
+    # I02 accepts two positive QuestionVariableBinding versions for one native
+    # question and universe with conflicting canonical aliases. RespondentEvent
+    # has no instrument_question_version field: S2-A cannot guess which
+    # approved mapping produced this event.
+    with pytest.raises(SemanticRangeIntegrityError, match="ambiguous|version|binding"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
