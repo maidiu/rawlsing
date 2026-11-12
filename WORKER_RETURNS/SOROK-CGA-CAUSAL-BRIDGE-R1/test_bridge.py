@@ -290,8 +290,54 @@ def test_user_quiet_does_not_erase_actual_actor_experience_or_force_speech(tmp_p
     assert len(observed) == 1
     assert observed[0]["cues"] == []
     assert observed[0]["recent_self_actions"] or observed[0]["recent_speech"]
-    assert observed[0]["sourcefree_p3"]["status"] == "PRIOR_P3_CANDIDATES"
-    assert len(observed[0]["sourcefree_p3"]["records"]) == 1
+    # Older actor-perceived actions remain valid *context*, but are not
+    # automatically a newly qualified trigger for this later WAIT interval.
+    # In particular a retained sourcefree mediator does not imply permission
+    # to recruit it merely because the near-term context list is nonempty.
+    assert observed[0]["sourcefree_p3"]["status"] == "NO_QUALIFIED_P3_CANDIDATES"
+    assert observed[0]["sourcefree_p3"]["records"] == []
     _, after_speech, after_head = _actual_state(state)
     assert after_speech == before_speech
     assert after_head == before_head
+
+
+def test_old_and_forged_sensory_cues_do_not_authorize_p3_activation(tmp_path):
+    """A valid historical event is not a current cue; a forged hash is never one."""
+    from copy import deepcopy
+    from house import read_house
+    from outward import sensory_candidate
+    from situated import current_p3_actor_access
+
+    state = tmp_path / "stale-access"
+    _run(state, "new", situated_house=True)
+    _run(state, "approach", request_id="real-cue")
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        world, house = read_house(session)
+        event = next(e for e in session.events() if e["kind"] == "APPROACH")
+        cue = sensory_candidate(event, world, house)
+        assert cue is not None
+        previous_clock = world.clock
+        bad = deepcopy(cue)
+        bad["event_hash"] = "f" * 64
+        packet = {"cues": [bad], "recent_self_actions": [], "recent_speech": []}
+        interval = {"start": event["clock"], "end": previous_clock}
+        assert current_p3_actor_access(session, interval, world, house, packet) is False
+    finally:
+        owner.close()
+
+    # The same historically valid cue cannot be replayed as fresh evidence
+    # after an unrelated interval. Its source is real; its timing is wrong.
+    _run(state, "wait", duration=4, request_id="quiet-followup")
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        world, house = read_house(session)
+        assert world.clock > previous_clock
+        packet = {"cues": [cue], "recent_self_actions": [], "recent_speech": []}
+        interval = {"start": previous_clock + 1, "end": world.clock}
+        assert current_p3_actor_access(session, interval, world, house, packet) is False
+        assert owner.store.head()["count"] == 1
+    finally:
+        owner.close()
