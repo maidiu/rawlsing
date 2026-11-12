@@ -57,24 +57,47 @@
     {
       "packet_id": "S1-E",
       "queue": "Q2",
-      "state": "BLOCKED_DEPENDENCY",
+      "state": "PROVISIONAL_Q2_A_DISPATCH_RESERVED",
       "exact_prerequisites": [
         "S1-C#955@5b1db9b5a687184615a199da8a39c55d5a30ed61 independentacceptanceorfrozencompatibleproducerABI",
         "S2-B#954@f5ee89b8e700ac14cf266c2e3eae4c25f021c349 completequalifiedI02inputABI"
       ],
       "owner": "originalPair1S1-C/originalPair2S2-B; Browserduelsreadonly",
-      "last_boundary_check": "2026-11-12 after Q1 G5: #955 unchanged5b1db9b G5_NOT_RUN; #959 unexecuted follow-up noted, #954 unchangedf5ee89 incomplete source-direct bounded I02"
+      "last_boundary_check": "2026-11-12 after Q1 G5: #955 unchanged5b1db9b G5_NOT_RUN; #959 unexecuted follow-up noted, #954 unchangedf5ee89 incomplete source-direct bounded I02",
+      "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-control/WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S1-E_v1.md",
+      "contract_sha256": "0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40",
+      "provisional_ABI_sha256": "cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54",
+      "base": "591056a948fb0fdd68adbd581301dd903485adc8",
+      "agents": {
+        "A": {
+          "session": "ses_e3122f686ffeByL78cGOKAacTS",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a",
+          "branch": "agent/pyat960-s1e-a-r1",
+          "state": "DISPATCH_RESERVED"
+        },
+        "B": {
+          "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-b",
+          "branch": "agent/pyat960-s1e-b-r1",
+          "state": "IDLE_WAIT_OWN_A"
+        }
+      }
     },
     {
       "packet_id": "S2-C",
       "queue": "Q3",
-      "state": "BLOCKED_DEPENDENCY",
+      "state": "PREFLIGHT_ONLY_DISPATCH_RESERVED_WRITER_HELD",
       "exact_prerequisites": [
         "S2-BcompleteindependentlyacceptedI02logical+selectorcertificateNOTAVAILABLE@#954f5ee89b8",
         "S1-Equ alifiedsource-directABI NOT_YET_AVAILABLE"
       ],
       "owner": "originalPair2S2-B and queuedQ2S1-E",
-      "last_boundary_check": "2026-11-12 after Q1 G5: full S2-B still incomplete/unreceived and Q2 ABI unavailable"
+      "last_boundary_check": "2026-11-12 after Q1 G5: full S2-B still incomplete/unreceived and Q2 ABI unavailable",
+      "base": "591056a948fb0fdd68adbd581301dd903485adc8",
+      "preflight_session": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+      "preflight_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2c-preflight",
+      "fixed_opponent": "ses_e3120ba49ffeWl7IZUTmL7mjZB_IDLE_NOT_LAUNCHED",
+      "writer_gate": "Independent directS2B scopedG5 + concretecompatibleQ2sourceinput; noS2Eprerequisite"
     }
   ]
 }
