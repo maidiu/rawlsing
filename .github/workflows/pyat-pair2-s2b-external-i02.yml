@@ -9,6 +9,7 @@ on:
     paths:
       - 'rawlsing_next/_pre553_external_i02_certificate.py'
       - 'rawlsing_next/tests/test_pre553_external_i02_certificate.py'
+      - 'rawlsing_next/tests/repro_s2b_sqlite_session_attack_stdlib.py'
       - '.github/workflows/pyat-pair2-s2b-external-i02.yml'
   workflow_dispatch:
 permissions:
@@ -25,6 +26,8 @@ jobs:
       - run: python -m pip install pytest pyarrow pandas pyreadstat
       - name: Compile S2-B and existing S2-A semantics
         run: python -m py_compile rawlsing_next/_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_external_i02_certificate.py
+      - name: Standalone SQLite session and no-clobber primitive counterexamples
+        run: python rawlsing_next/tests/repro_s2b_sqlite_session_attack_stdlib.py
       - name: S2-B bounded cold whole-corpus/index + real native I03 and regression
         env:
           PYTHONPATH: .
