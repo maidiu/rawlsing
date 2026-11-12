@@ -589,3 +589,42 @@ def test_h35_positive_question_binding_alias_through_native_owner_first_reader()
     # An invented alias still has no selector events; no semantic permission
     # to treat its emptiness as a certified question from this fact alone.
     assert list(_select_respondent_events(index, respondent, invented)) == []
+
+
+def test_h36_multiple_accepted_instrument_versions_same_native_are_preserved():
+    """The S2-A alias gate must not collapse legitimate per-instrument bindings."""
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    original = _candidate("s2a-h36-versions", event_kind="UNORDERED_MULTISELECT_SET")
+    first = original.question_variable_bindings[0]
+    version = replace(first, instrument_question_version="S2A_ADDITIONAL_INSTRUMENT_VERSION")
+    counts = dict(original.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["QuestionVariableBinding"] += 1
+    candidate = replace(
+        original,
+        source_release_manifest=replace(
+            original.source_release_manifest,
+            declared_record_counts_by_logical_family=counts,
+        ),
+        question_variable_bindings=(first, version),
+        candidate_replay_manifest=None,
+    )
+    candidate = replace(
+        candidate, candidate_replay_manifest=build_candidate_replay_manifest(
+            candidate,
+            replay_protocol_authority_ref=original.candidate_replay_manifest.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=original.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+            replay_protocol_version=original.candidate_replay_manifest.replay_protocol_version,
+        ),
+    )
+    repo = C11Repository()
+    result = ingest_c11_source_release(candidate, repo)
+    assert result.accepted, result.errors
+    release = repo.resolve_release_exact(result.release_ref)
+    universe = candidate.empirical_universes[0].ref
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    rows = certified_i03_events(
+        release, universe, witness=witness, independently_held_root=witness.root
+    )
+    respondent = candidate.respondent_identities[0].ref.key
+    target = first.native_question_ref
+    assert len(list(rows[respondent].select(target))) == 2
