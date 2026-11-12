@@ -300,10 +300,10 @@
   "successor_960_working_overlay": {
     "issue": 960,
     "packet": "S2-G/P2-08",
-    "state": "B_REPAIRED_CANDIDATE_PENDING_SAME_A_COUNTER_NOT_ACCEPTED",
+    "state": "A_COUNTER_REPAIRED_PENDING_DISTINCT_G5_NOT_ACCEPTED",
     "a_delivery": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
     "a_implementation": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
-    "reported_tests": "152 owner/adapter +19 S2-F; B reports, not HQ/G5 replay",
+    "reported_tests": "153 owner/adapter/counter +19 S2-F; author-reported, not G5 acceptance",
     "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE_CANDIDATE",
     "b_job": "pyat960-s2g-b01",
     "b_session": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -321,6 +321,11 @@
     "b_delivery": "220ebd3311fb0607079ed6a6e9a364d6681e5378",
     "b_implementation": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
     "a_counter_job": "pyat960-s2g-a02-counter",
-    "b_job_state": "TERMINAL_EXIT0"
+    "b_job_state": "TERMINAL_EXIT0",
+    "a_counter_delivery": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+    "a_counter_implementation": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
+    "g5_job": "pyat960-s2g-g5-r01",
+    "g5_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "a_counter_job_state": "TERMINAL_EXIT0"
   }
 }

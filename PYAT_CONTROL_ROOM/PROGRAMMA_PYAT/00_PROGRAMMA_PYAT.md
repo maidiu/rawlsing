@@ -381,3 +381,8 @@ S05 M1/M2/B5 durable lifecycle and learned/world first-reader seam: isolated sou
 ### #960 S05 same-pair B delta / A counter — 2026-11-12
 
 B code `0071aefb05d8ebbd75058a10c5e831d994a2f96f` (delivery `220ebd3311fb0607079ed6a6e9a364d6681e5378`) adds evidence-chain membership, pinned retained as-of history and replay/protocol/receipt conservation checks; real native-cell change reaches M1/M2/B5/actual learned-world reader with exact restoration in B tests. Reported 152+19 PASS is candidate evidence. Same A counter launched on same descendant; G5 NOT_RUN, integration UNMERGED. All prior external holds and Q2/Q3 dependencies persist. No protected/canonical adoption inferred.
+
+
+### #960 S05 A-counter delta / independent G5 — 2026-11-12
+
+A counter code `a3d1e33ecad37cd964f3caded37c2fec9360330e` (delivery `6f3a10552e074c3f1fd54c861290c8300c99dbb2`) adds receipt-owned empirical/validation fact conservation after actual same-closure omission false acceptance at B cut. Base product remains exact; author reports153+19 PASS. Distinct nonauthor G5 now launched on exact descendant, full contract/code/all returns; G5 pending, UNMERGED. Original external/upstream/Q2/Q3 holds unchanged; no protected or scientific adoption inferred.

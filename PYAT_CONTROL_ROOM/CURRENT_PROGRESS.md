@@ -1,3 +1,7 @@
+# Successor #960 A-counter return / G5 launched — 2026-11-12
+
+S2-G candidate `6f3a10552e074c3f1fd54c861290c8300c99dbb2` / code `a3d1e33ecad37cd964f3caded37c2fec9360330e`: A counter repairs same-closure receipt-owned fact omission with predecessor RED/current GREEN; original base product conserved. Reports 153+19 PASS. Distinct nonauthor G5 `pyat960-s2g-g5-r01` now launched in exclusive reviewer worktree, full frozen contract and all A/B/counter returns supplied; authors idle. G5 NOT_RUN/PENDING, UNMERGED; Q2/Q3 and full joined/original35/science/production issuer/protected holds unchanged. Historical entries follow.
+
 # Successor #960 B return and A counter — 2026-11-12
 
 S2-G isolated candidate B delivery `220ebd3311fb0607079ed6a6e9a364d6681e5378` (code `0071aefb05d8ebbd75058a10c5e831d994a2f96f`) repairs same-chain evidence, as-of history and replay/receipt checks, and adds real native-cell changed/restore proof. B reports 152+19 PASS; independently unaccepted. Same fixed A counter `pyat960-s2g-a02-counter` now launched on B exact descendant; B idle. Distinct G5 still NOT_RUN, UNMERGED; full joined/original35/science/production issuer/protected holds unchanged. Historical entries follow.

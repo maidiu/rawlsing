@@ -1,5 +1,14 @@
 # Successor #960 — same existing PYAT HQ
 
+## A counter terminal → distinct nonauthor G5 launched (2026-11-12)
+
+A counter exit0 20:01:25–20:18:51 UTC (17m26s). Delivery `6f3a10552e074c3f1fd54c861290c8300c99dbb2`, code `a3d1e33ecad37cd964f3caded37c2fec9360330e`, remote readback verified. Actual handoff, receipt, code delta and RED/GREEN logs inspected. A accepted B-D1–D4 repairs and found A-C01: same-closure receipt accepted after owned fact removed. Narrow empirical/validation receipt-fact conservation added; B-cut DID_NOT_RAISE RED, current 153 owner/adapter/counter +19 S2-F reported PASS. Candidate only, G5 not accepted.
+
+Distinct persistent G5 `ses_e30c25800ffeT8XbyTuHekRCme` is neither author, reused terminal prior S2-F reviewer; NEW exclusive `pyat960-s2g-g5` / `agent/pyat960-s2g-g5-r1` exact A-counter descendant. Job `pyat960-s2g-g5-r01` launched ONCE, child16140/supervisor16139/finite observer16141. Existing code/tests/author returns read-only; own review return/harness only. Full frozen contract plus full A/B/A_COUNTER handoffs AND receipts passed intact in dispatch/pyat960-s2g-g5-r01.md. Actual first-turn model metadata pending; request/session MAX not settings-as-proof. One meaningful review, material defects only, original G1-G4 and honest isolated grade. At most one precise material correction if required, no endless relay. Both authors idle.
+
+Q2/S1-E and Q3/S2-C remain BLOCKED_DEPENDENCY; no new accepted upstream receipt received. Full joined/S2-E/S2-D/production issuer/original35/science/protected merge holds remain. Auto-wake paused, only terminal event receipt triggers intake.
+
+
 ## B terminal intake → same A counter launched (2026-11-12)
 
 B exit0, 19:35:36–19:59:40 UTC (24m04s). Delivery `220ebd3311fb0607079ed6a6e9a364d6681e5378`, implementation `0071aefb05d8ebbd75058a10c5e831d994a2f96f`, direct remote verified. Full B handoff/receipt and actual delta/tests inspected. Candidate repairs B-D1 unrelated M1/S2-F chain, B-D2 unpinned/foreign as-of history, B-D3 replay/protocol/learned-receipt conservation, B-D4 native physical-cell changed/restore proof. B reports 152 owner/adapter +19 S2-F PASS; not HQ/G5 acceptance.
