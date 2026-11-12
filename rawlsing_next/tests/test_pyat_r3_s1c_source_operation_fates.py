@@ -9,6 +9,7 @@ from dataclasses import replace
 
 import pytest
 
+from rawlsing_next.pre553_empirical_objects import semantic_hash
 from rawlsing_next.pre553_operation_fate_census import (
     CensusRefusal, FrozenInputCensus, ScientificFate, SourceQualifiedCandidate,
     execute_censused_sourcefree, verify_frozen_inputs,
@@ -60,8 +61,8 @@ def _freeze_packet(frontier, *, scope_id="R3-S1C-SOURCEFREE-PACKET"):
     return FrozenInputCensus(
         scope_id=scope_id, source_candidates=tuple(sources),
         scientific_fates=tuple(fates),
-        source_census_ref="FROZEN_BEFORE_R03:SOURCEFREE_SOURCE_LIST",
-        science_census_ref="FROZEN_BEFORE_R03:SOURCEFREE_SCIENCE_LIST",
+        source_census_ref=semantic_hash([x.material() for x in sources]),
+        science_census_ref=semantic_hash([x.material() for x in fates]),
     )
 
 
@@ -127,7 +128,7 @@ def test_s1c_omission_and_count_preserving_substitution_fail_before_source_open(
         _run(bundle, inventory, policy, substituted, census,
              lambda ref: opened.append(ref))
     assert not opened
-    assert removed.operation_id in {r.operation_id for r in census.source_candidates}
+    assert removed.op_id in {r.operation_id for r in census.source_candidates}
 
 
 def test_s1c_source_fate_duplicates_and_cross_set_losses(tmp_path):
@@ -135,11 +136,11 @@ def test_s1c_source_fate_duplicates_and_cross_set_losses(tmp_path):
     removed = census.source_candidates[0]
     for bad, code in (
         (replace(census, source_candidates=census.source_candidates[1:]),
-         "SOURCE_VS_SCIENCE_ANTI_JOIN"),
+         "SOURCE_CENSUS_HASH_DRIFT"),
         (replace(census, scientific_fates=census.scientific_fates[1:]),
-         "SOURCE_VS_SCIENCE_ANTI_JOIN"),
+         "SCIENCE_CENSUS_HASH_DRIFT"),
         (replace(census, source_candidates=census.source_candidates +
-                 (removed,)), "DUPLICATE_SOURCE_CANDIDATE"),
+                 (removed,)), "SOURCE_CENSUS_HASH_DRIFT"),
     ):
         with pytest.raises(CensusRefusal, match=code):
             verify_frozen_inputs(bad, inventory=inventory,
@@ -157,7 +158,9 @@ def test_s1c_source_edition_occurrence_and_op_hash_refuse(tmp_path):
         (replace(first, source_grade="ORIGINAL35_ISSUED"), "NON_SOURCEFREE_AUTHORITY_UNISSUED"),
     )
     for candidate, code in variants:
-        bad = replace(census, source_candidates=(candidate,) + census.source_candidates[1:])
+        candidates = (candidate,) + census.source_candidates[1:]
+        bad = replace(census, source_candidates=candidates,
+                      source_census_ref=semantic_hash([x.material() for x in candidates]))
         with pytest.raises(CensusRefusal, match=code):
             verify_frozen_inputs(bad, inventory=inventory,
                                  policy=policy, frontier=frontier)
@@ -171,10 +174,14 @@ def test_s1c_fate_mutation_refuses_eligibility_inflation(tmp_path):
     )
     old = census.scientific_fates[noneligible]
     forged = replace(old, disposition=ELIGIBLE)
-    bad = replace(census, scientific_fates=(
+    scientific_fates = (
         census.scientific_fates[:noneligible] +
         (forged,) + census.scientific_fates[noneligible + 1:]
-    ))
+    )
+    bad = replace(census, scientific_fates=scientific_fates,
+                  science_census_ref=semantic_hash(
+                      [x.material() for x in scientific_fates]
+                  ))
     with pytest.raises(CensusRefusal, match="ELIGIBILITY_DRIFT"):
         verify_frozen_inputs(bad, inventory=inventory,
                              policy=policy, frontier=frontier)
