@@ -5,6 +5,8 @@ from pathlib import Path
 
 SCHEMA="G03_I0_REAL_P6_V2"
 STATE_DIGEST_SCHEME="G03_STATE_PATH_CONTENT_SHA256_V1"
+STATE_LOGICAL_SCHEME="G03_SQLITE_ROWS_AND_OTHER_CONTENT_V1"
+SQLITE_REL="actual-p2/p3_psyche.sqlite3"
 P6="WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
 FILES=[P6, "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
        "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py",
@@ -21,7 +23,7 @@ def save(p,x):
     with tmp.open("xb") as f:
         f.write(data(x)); f.flush(); os.fsync(f.fileno())
     tmp.replace(p)
-def state_snapshot(root):
+def state_snapshot(root, *, logical=False):
     """Best-effort, path-sensitive state content snapshot; not a transaction/OS attestation."""
     root=Path(root)
     if not root.exists():
@@ -41,7 +43,14 @@ def state_snapshot(root):
             before=q.stat(); raw=q.read_bytes(); after=q.stat()
             if (before.st_size,before.st_mtime_ns,before.st_ino)!=(after.st_size,after.st_mtime_ns,after.st_ino):
                 raise ValueError("STATE_CHANGED_DURING_SNAPSHOT")
-            entries.append(["F",q.relative_to(root).as_posix(),len(raw),hashbytes(raw)])
+            rel=q.relative_to(root).as_posix()
+            if logical and rel==SQLITE_REL:
+                sql=sqlite_logical_digest(root)
+                if sql.get("status")!="MEASURED":
+                    raise ValueError("SQLITE_LOGICAL_SNAPSHOT_UNAVAILABLE")
+                entries.append(["SQLITE_ROWS",rel,sql["sha256"]])
+            else:
+                entries.append(["F",rel,len(raw),hashbytes(raw)])
             count+=1;total+=len(raw)
     entries.sort()
     return {"status":"PRESENT","bytes":total,"files":count,
@@ -131,6 +140,7 @@ def run(repo,out,timeout):
     state=out/"state"
     manifest={"schema":SCHEMA,"repo_sha":head,"source_hashes":hashes,
               "state_digest_scheme":STATE_DIGEST_SCHEME,
+              "state_logical_scheme":STATE_LOGICAL_SCHEME,
               "runner_sha256":hashbytes(Path(__file__).read_bytes()),
               "python_executable_sha256":hashbytes(Path(sys.executable).read_bytes()),
               "os":platform.system(),"os_release":platform.release(),
@@ -143,14 +153,15 @@ def run(repo,out,timeout):
     for name,args in PLAN:
         p=out/"attempts"/name;p.mkdir()
         argv=[sys.executable,str(repo/P6),"--state",str(state),*args]
-        snap_before=state_snapshot(state);before=snap_before["bytes"]
+        snap_before=state_snapshot(state);logical_before=state_snapshot(state,logical=True)
+        before=snap_before["bytes"]
         before_files=state_file_digests(state) if name=="fail_wait" else None
         before_sqlite=sqlite_logical_digest(state) if name=="fail_wait" else None
         save(p/"start.json",{"id":name,"source_sha":head,"argv":argv,
                              "state_bytes_before":before,"state_snapshot_before":snap_before})
         stdout=p/"stdout.bin";stderr=p/"stderr.bin"
         pid,code,wall,usage,timed_out=measure(argv,repo,env,stdout,stderr,timeout)
-        snap_after=state_snapshot(state)
+        snap_after=state_snapshot(state);logical_after=state_snapshot(state,logical=True)
         if name=="fail_wait" and snap_before!=snap_after:
             after_files=state_file_digests(state)
             changed=sorted(k for k in set(before_files)|set(after_files)
@@ -169,6 +180,7 @@ def run(repo,out,timeout):
             "direct_children_started":1,"descendants":"UNOBSERVED",
             "state_bytes_before":before,"state_bytes_after":snap_after["bytes"],
             "state_snapshot_before":snap_before,"state_snapshot_after":snap_after,
+            "state_logical_before":logical_before,"state_logical_after":logical_after,
             "stdout_sha256":hashbytes(raw),"stdout_bytes":len(raw),
             "stderr_sha256":hashbytes(stderr.read_bytes()),"stderr_bytes":stderr.stat().st_size,
             "output":{"json":output is not None,"status":output.get("status") if output else None,
