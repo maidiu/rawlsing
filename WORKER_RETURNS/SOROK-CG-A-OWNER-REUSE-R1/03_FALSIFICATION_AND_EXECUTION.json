@@ -1,0 +1,304 @@
+{
+  "schema": "SOROK_CGA_FALSIFICATION_AND_EXECUTION@1",
+  "contract_id": "SOROK-CG-A-OWNER-REUSE-COMPLETE",
+  "author_branch": "agent/sorok-cga-owner-reuse-selection-20261111-r1",
+  "author_cut": "2be0cf252662ad021571db6f0d38b12c205c56ae",
+  "declared_startup_sha": "1f77f2036427a410429184780ef884ec4f253ad0",
+  "declared_startup_present": false,
+  "author_ceiling": "DELIVERED_PENDING_RECEIVING",
+  "verdict": "SOURCE_EQUIVALENT_SOURCEFREE_REUSE_AND_COLD_LATER_READ_DEMONSTRATED__EXACT_DECLARED_STARTUP_IDENTITY_UNAVAILABLE__CG_BCD_MULTI_ACTOR_MATERIAL_ADAPTER_BUILD_HOLD",
+  "preflight": {
+    "host_platform": "darwin",
+    "host_date": "2026-11-11",
+    "working_repository": "/Users/matthewsmith/Desktop/Rawlsing",
+    "working_repository_head": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+    "isolated_worktree": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/sorok-cga-owner-reuse-r1",
+    "isolated_branch": "agent/sorok-cga-owner-reuse-selection-20261111-r1",
+    "isolated_head": "2be0cf252662ad021571db6f0d38b12c205c56ae",
+    "declared_startup_commit_found_in_local_object_database": false,
+    "declared_startup_branch_found": false,
+    "github_api_commit_status": 404,
+    "github_git_remote_status": 403,
+    "in_flight_prs": ["#874", "#908", "#860", "#889"],
+    "in_flight_prs_accessed": false,
+    "review_914_accessed": false,
+    "model_self_report": "DeepSeek V4.1-Flash",
+    "max_reasoning_independently_verified": false,
+    "host_quota": "UNKNOWN",
+    "browser_used": false,
+    "provider_calls": 0,
+    "respondent_or_native_data_read": false,
+    "pyat_mutation": false,
+    "protected_merge": false
+  },
+  "source_equivalence": {
+    "effective_source_cut": "2be0cf252662ad021571db6f0d38b12c205c56ae",
+    "basis": "all declared source paths and blobs are exact at this available commit",
+    "pinned_blobs": {
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/contracts.py": {
+        "declared": "c4ce557cdb6d1e5ad8f3217e72d16a5a91c2a0e8",
+        "observed": "c4ce557cdb6d1e5ad8f3217e72d16a5a91c2a0e8",
+        "match": true
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py": {
+        "declared": "3160eb157675453c0bfee5f9bd4b400f9c999c17",
+        "observed": "3160eb157675453c0bfee5f9bd4b400f9c999c17",
+        "match": true
+      },
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md": {
+        "declared": "c3cdc7c1e151cf3ece8159f7cc384b2359212e6c",
+        "observed": "c3cdc7c1e151cf3ece8159f7cc384b2359212e6c",
+        "match": true
+      },
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py": {
+        "declared": "af556c143e7e4eaa2f60a68fa402954091737dd4",
+        "observed": "af556c143e7e4eaa2f60a68fa402954091737dd4",
+        "match": true
+      }
+    },
+    "all_four_match": true,
+    "literal_commit_identity_claim": false,
+    "note": "The author did not fabricate the absent commit or rewrite a ref. A receiver requiring the literal STARTUP_SHA must mark the commit-identity portion incomplete."
+  },
+  "commands": [
+    {
+      "id": "engine71",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "71 passed",
+      "pytest_seconds": 278.95,
+      "log": "evidence/engine71.log"
+    },
+    {
+      "id": "p3_store_rules",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_state_store.py WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_rules.py",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "57 passed",
+      "pytest_seconds": 0.63,
+      "log": "evidence/p3_store_rules.log"
+    },
+    {
+      "id": "p3_store_cold_subset",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_state_store.py -k cold_reopen",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "7 passed, 45 deselected",
+      "pytest_seconds": 0.48,
+      "log": "evidence/p3_store_cold.log"
+    },
+    {
+      "id": "p3_owner_cold",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "1 passed",
+      "pytest_seconds": 280.92,
+      "log": "evidence/p3_owner_cold.log"
+    },
+    {
+      "id": "p3_primary",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "1 passed",
+      "pytest_seconds": 445.72,
+      "log": "evidence/p3_primary.log"
+    },
+    {
+      "id": "cga_cold_later",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CG-A-OWNER-REUSE-R1/tests/test_cold_later_recruit.py",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "1 passed",
+      "pytest_seconds": 247.70,
+      "log": "evidence/cga_cold_later.log",
+      "assertions": [
+        "formation store holds two records",
+        "owner is closed and reopened on the same state root",
+        "later recruit stream hashes equal the two formation hashes",
+        "later recruit readset intersects the formation hashes",
+        "response native_action is NOT_ISSUED_BY_P3_RULE",
+        "terminal batch id matches",
+        "store head count remains two"
+      ]
+    },
+    {
+      "id": "cga_common_readset",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CG-A-OWNER-REUSE-R1/tests/test_selected_common_readset.py",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "3 passed",
+      "pytest_seconds": 0.10,
+      "log": "evidence/cga_common_readset.log"
+    },
+    {
+      "id": "p3_negatives",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py -k 'wrong_root_actor_branch_time_source_rule_version or cross_root_binding or real_process_crash'",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "3 passed, 10 deselected",
+      "pytest_seconds": 14.03,
+      "log": "evidence/p3_negatives.log"
+    },
+    {
+      "id": "engine_material_cold",
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py -k 'material_antecedent or actual_material_effect'",
+      "cwd": "isolated worktree",
+      "exit": 0,
+      "result": "2 passed",
+      "pytest_seconds": 260.26,
+      "log": "evidence/engine_material_cold.log"
+    }
+  ],
+  "execution_summary": {
+    "recorded_commands": 9,
+    "recorded_passes": 146,
+    "recorded_failures": 0,
+    "note": "Some tests are repeated across commands; 146 is the sum of recorded command results, not a unique test count."
+  },
+  "frozen_positive_oracle": {
+    "status": "PASS_S2_AT_SOURCE_EQUIVALENT_CUT",
+    "owner_held_target": "two sourcefree V3MS_MEDIATOR records in PsycheStore",
+    "cold_restart": "owner and P2 session closed and reopened on the same root/actor/branch lineage",
+    "later_distinct_decision": "later recruit reads the exact two record hashes in its stream and readset",
+    "control": "no-record control chooses inspect_alone; no new record is fabricated",
+    "source_removal": "exact B1 source severance refuses; exact restore resumes; P3 cold test source restore passes",
+    "same_actor_root_branch_clock": true,
+    "native_action_claim": "NOT_ISSUED_BY_P3_RULE",
+    "memory_claim": "MISSING_RULE"
+  },
+  "frozen_negatives": [
+    {
+      "negative": "wrong root or actor or branch or clock",
+      "status": "PASS",
+      "evidence": "p3_negatives test and store binding tests"
+    },
+    {
+      "negative": "dynamic participant spoof",
+      "status": "PASS",
+      "evidence": "p2_owner.py:45-47 exact tuple; p2_owner.py:84 exact participant scope; store actor-local query"
+    },
+    {
+      "negative": "stale clock",
+      "status": "PASS",
+      "evidence": "P2_EVENT_CLOCK_NOT_FUTURE; BATCH_EVENT_TIMES_NOT_FORWARD; STALE_PSYCHE_HEAD"
+    },
+    {
+      "negative": "partial pre-refusal write",
+      "status": "PASS",
+      "evidence": "test_one_bad_target_rolls_back_all_records; test_bad_record_targets_do_not_mutate"
+    },
+    {
+      "negative": "double operation after crash",
+      "status": "PASS",
+      "evidence": "engine idempotency tests; test_h_real_process_crash_after_base_before_psych_commit"
+    },
+    {
+      "negative": "model retrospective fabricated memory",
+      "status": "PASS",
+      "evidence": "test_bootstrap_rejects_fictitious_memory; provider mutation held"
+    },
+    {
+      "negative": "omitted world readset",
+      "status": "PASS",
+      "evidence": "test_commit_requires_world_then_commits_and_replays; P2 material/C9 tests"
+    },
+    {
+      "negative": "unadmitted hypothetical target",
+      "status": "PASS",
+      "evidence": "test_bad_record_targets_do_not_mutate; plan/source/rule refusal"
+    },
+    {
+      "negative": "MISSING_RULE misread as NO_CHANGE",
+      "status": "PASS",
+      "evidence": "test_held_and_missing_rule_are_preserved_and_never_become_no_change"
+    },
+    {
+      "negative": "source removal",
+      "status": "PASS",
+      "evidence": "test_wrong_version_and_exact_source_severance_refuse_and_restore; P3 cold source restore"
+    },
+    {
+      "negative": "second independent actor",
+      "status": "NOT_RUN_BUILD_HOLD",
+      "evidence": "no current function; MFC-1 and MFC-3"
+    },
+    {
+      "negative": "dated home period",
+      "status": "NOT_RUN_BUILD_HOLD",
+      "evidence": "no current function; MFC-2"
+    },
+    {
+      "negative": "actual C9/E2 performed action after P3 response",
+      "status": "NOT_RUN",
+      "evidence": "P3 response is NOT_ISSUED_BY_P3_RULE; native E2 not in runtime"
+    }
+  ],
+  "missing_functions": [
+    {
+      "id": "MFC-1",
+      "function": "RootParticipantAdapter",
+      "need": "one root with a non-fixed participant set and per-event focal actor",
+      "current_limit": "p2_owner.py:45-47 fixed root actor tuple and first actor; state_store.py binding is one actor",
+      "disposition": "BUILD"
+    },
+    {
+      "id": "MFC-2",
+      "function": "HomePeriodWriter/Reader",
+      "need": "dated material home/period with from_clock/to_clock/home_ref/actors",
+      "current_limit": "house.py:151-165 writes epoch and object history only; no period record",
+      "disposition": "ADAPT_BUILD"
+    },
+    {
+      "id": "MFC-3",
+      "function": "MotherSpeechWriter/Reader",
+      "need": "independent mother speaker and recipient-qualified child read",
+      "current_limit": "situated.py:35-49 reads A only; situated.py:222-227 say actor A only",
+      "disposition": "BUILD"
+    },
+    {
+      "id": "MFC-4",
+      "function": "SidecarDecisionReadset",
+      "need": "later situated decision reads PsycheStore and binds record hashes",
+      "current_limit": "situated.reconsider never queries PsycheStore; P3Owner._effect does not call situated",
+      "disposition": "ADAPT"
+    },
+    {
+      "id": "MFC-5",
+      "function": "PW-01..PW-12 definitions",
+      "need": "exact named functional work packages",
+      "current_limit": "not found in repository by exact PW search",
+      "disposition": "NOT_LOCATED"
+    }
+  ],
+  "not_run": [
+    "full 13-case P3 A-H vertical matrix",
+    "full 115-test P3 suite",
+    "P6 independent mother speech and home period tests",
+    "actual C9/E2 performed action after P3 response",
+    "native CAN008 Rule A, CAN011 Rule T, O05/O07/O15, ADP016/017, Pyat N9/N10W, C12",
+    "browser execution",
+    "GitHub PR checks and reviews #874 #908 #860 #889 #914",
+    "literal declared STARTUP_SHA checkout"
+  ],
+  "push_and_pr": {
+    "branch_created_locally": true,
+    "commit_created": "see final HEAD",
+    "push_attempted": false,
+    "push_blocked_reason": "configured GitHub remote returned 403; API returned 404",
+    "pr_created": false,
+    "protected_merge": false,
+    "in_flight_work_disturbed": false
+  },
+  "receiving": {
+    "gate": "separate exact-CGA contract review with source check and cold replay acceptance",
+    "independent_owner_required": "non-author exact-source SOROK reviewer with separately authenticated account evidence",
+    "all_obligations": "PASS_REQUIRED",
+    "author_ceiling": "DELIVERED_PENDING_RECEIVING",
+    "on_any_failure": "INCOMPLETE",
+    "same_principal_approval": false,
+    "exact_declared_startup_identity": "INCOMPLETE_OR_RECEIVER_ACCEPTS_SOURCE_EQUIVALENCE"
+  }
+}
