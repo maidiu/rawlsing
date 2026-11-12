@@ -94,3 +94,35 @@ def test_actual_current_outward_receipt_grants_only_exact_one_operation(tmp_path
         assert owner.store.head() == before
     finally:
         owner.close()
+
+
+def test_first_consumer_binds_current_world_readset_separately_from_p3(tmp_path):
+    """No unsupported proof leap from B1 history to present-world observation."""
+    state = tmp_path / "actual-first-consumer"
+    packets = []
+
+    def interpret(packet):
+        packets.append(packet)
+        return {"attention": "uncertain", "interpretation": "Sourcefree cue available.",
+                "action": "continue", "cue_event_id": None, "channel": None}
+
+    run_p6.experience(state, Namespace(command="new", request_id=None,
+                                       situated_house=True))
+    run_p6.experience(state, Namespace(command="approach", request_id="real",
+                                       target=None), interpret=interpret,
+                      sourcefree_p3_bridge=True)
+    assert len(packets) == 1
+    p3 = packets[0]["sourcefree_p3"]
+    assert p3["status"] == "PRIOR_P3_CANDIDATES"
+    assert len(p3["records"]) == 1
+    assert len(p3["world_readset"]) == len(p3["actor_access_evidence"]) == 1
+    proof = p3["actor_access_evidence"][0]
+    assert proof["basis"] == "P6_OUTWARD_CURRENT_OPERATION_DERIVED"
+    assert proof["event_hash"] == p3["world_readset"][0]
+    assert proof["event_hash"] not in p3["readset"]
+    assert p3["stimulus_to_mediator_relevance"] == "UNISSUED_NATIVE_RULE"
+
+    import json
+    turns = json.loads((state / "p4_receipts.json").read_text())["turns"]
+    committed = turns[-1]["receipt"]["outward_cue"]
+    assert committed["event_hash"] == proof["event_hash"]
