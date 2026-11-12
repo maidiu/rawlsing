@@ -1,0 +1,126 @@
+{
+  "event_id": "SOROK-DUEL-C01-A-20261112-R1",
+  "task_id": "C01",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Added a stable supporting-parent identity and dynamic participation boundary inside the existing generated focal root. Registration uses the actual C12 branch actor set and P2 world checkpoint; private state is held in a C12 registration episode, not the world snapshot. P2Owner admits live registered supporting participants only with the focal actor present and co-present, and records actual C12 perception plus a public participation episode for the same performed world event. No second scheduler/actor owner/world/clock/ledger, no parent decision/utterance, no root replacement.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "symbols": [
+        "P2Owner.__init__",
+        "P2Owner.validate_proposal",
+        "P2Owner.realize/_realize participant-admission path"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "symbols": [
+        "SUPPORTING_ACTOR_SCHEMA",
+        "SUPPORTING_ACTOR_READ_SCHEMA",
+        "SUPPORTING_REGISTRATION_KIND",
+        "SUPPORTING_PARTICIPATION_KIND",
+        "SUPPORTING_PARTICIPATION_SCHEMA",
+        "ACTOR_ACCESS_SCHEMA",
+        "SUPPORTING_GRADE",
+        "SUPPORTING_ROLES",
+        "PARTICIPANT_KIND",
+        "registration_source",
+        "register_supporting_actor",
+        "read_supporting_actor",
+        "registered_supporting_actors",
+        "resolve_participants",
+        "record_supporting_participation",
+        "verify_supporting_participation",
+        "read_actor_access"
+      ]
+    }
+  ],
+  "actual_reader": [
+    "supporting_actor.read_actor_access (actual C12 perception receipts + public event projection)",
+    "supporting_actor.read_supporting_actor (registration + self-only private state)",
+    "P2Owner.realize consequences.supporting_participants (public participation receipts)"
+  ],
+  "affected_queued_tasks": [
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "D02",
+    "E01",
+    "E02",
+    "F03",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "CG-A cross-input (#915/#917/#924/#928) source-pin reconciliation"
+  ],
+  "preserved_obligations": [
+    "Nadia remains the focal root actor; root actor_ids unchanged.",
+    "Parent is a new stable supporting ID, not fixed A/B or the user actor.",
+    "Participation is recorded through actual C12 branch/world/perception machinery, not test-local state.",
+    "Private state is not in the world snapshot or event objective; only the self-only supporting read returns it.",
+    "Duplicate registration is UNCHANGED with no new rows; replay is idempotent.",
+    "Existing P2/engine/B01/P3-owner/selected P3 vertical-slice tests remain green.",
+    "No new owner, scheduler, person-world ledger, database or clock was added.",
+    "Native/science/rights/actor/human/protected holds remain separate."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; pre-C01 state roots refuse cold reopen under the new code. Same-code roots reopen exactly; no migration invented.",
+    "Full P3 vertical-slice suite exceeded a 900 s budget after 3 passing tests; selected cold-replay/view tests passed. No full-estate claim."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py@9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py:110",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py:146",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/product.py:101",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py:323"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/c01_supporting_actor.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p2_owner_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p3_owner_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/b01_adjacent_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/engine_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p6_actor_scene_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p3_vertical_selected_regression.log"
+  ],
+  "negative_refs": [
+    "test_ghost_reserved_and_absent_participants_refuse_without_mutation",
+    "test_actor_access_is_separate_and_private_state_leak_refuses",
+    "test_replay_refuses_severed_supporting_perception_and_restores",
+    "test_supporting_parent_participates_without_replacing_nadia_and_cold_reopens (duplicate registration)"
+  ],
+  "cold_refs": [
+    "test_cold_process_reads_same_parent_participation (fresh Python subprocess)",
+    "test_supporting_parent_participates_without_replacing_nadia_and_cold_reopens (close/reopen, snapshot/replay equality, counts unchanged)"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented in this sourcefree session.",
+    "measured_test_wall_s": {
+      "c01_supporting_actor": 13.19,
+      "p2_owner_regression": 15.26,
+      "p3_owner_regression": 29.9,
+      "b01_adjacent_regression": 33.88,
+      "engine_regression": 160.27,
+      "p6_actor_scene_regression": 25.32,
+      "p3_vertical_selected_regression": 333.51
+    }
+  },
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_FOR_PRE_C01_ROOTS",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}
