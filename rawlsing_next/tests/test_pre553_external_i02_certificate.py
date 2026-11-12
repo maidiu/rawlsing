@@ -95,6 +95,41 @@ def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
         pass
 
 
+def test_s2b_forged_certificate_cannot_install_false_zero_into_real_i03(tmp_path):
+    """Harden the *existing* S2-B G3 counterfeit-index refusal at its consumer.
+
+    An attacker can copy genuine roots and the genuine respondent census,
+    while replacing only selector_refs. An arbitrary Protocol must never be
+    promoted into the ordinary native I03 index attestation.
+    """
+    from types import SimpleNamespace
+
+    source = _build_source("s2b-b-forged-install", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-b-forged-install")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as real:
+        forged = SimpleNamespace(
+            roots=real.roots,
+            respondent_refs=real.respondent_refs,
+            selector_refs=lambda *args, **kwargs: iter(()),
+        )
+        with pytest.raises(ExternalI02IntegrityError, match="exact cold-verified"):
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                forged,
+            )
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref,
+            real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+
+
 def test_s2b_same_respondent_duplicate_occurrence_and_states(tmp_path):
     source = _multi_i03_source("s2b-duplicate")
     path, roots = _prepare(tmp_path, source)
