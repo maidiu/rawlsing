@@ -210,3 +210,62 @@ def test_exact_same_cold_world_reader_severance_and_restoration(tmp_path):
     assert "sourcefree_p3" in packets[0]
     assert "sourcefree_p3" not in packets[1]
     assert packets[2]["sourcefree_p3"]["readset"] == packets[0]["sourcefree_p3"]["readset"]
+
+
+def test_p3_activation_does_not_promote_inhibited_or_conflicting_history(tmp_path, monkeypatch):
+    """Real P3 record, accepted P3 activation; synthetic conflict is a fault."""
+    from copy import deepcopy
+    from developmental_recursion.contracts import digest
+
+    state = tmp_path / "qualification"
+    _run(state, "new", situated_house=True)
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        scope = json.loads((state / "p4_receipts.json").read_text())["scope"]
+        baseline = dict(
+            project=scope["project"], counterpart=scope["counterpart"],
+            as_of=session.world().clock, interlocutor_role=scope["interlocutor_role"],
+            relation_ref=scope["relation_ref"],
+        )
+        head = owner.store.head()
+        actual_history = owner.store.query(
+            project=scope["project"], counterpart=scope["counterpart"],
+            as_of=session.world().clock)
+        assert len(actual_history) == 1
+
+        # A root-bound record is *not* sufficient without the actor's
+        # qualified current experience. A model may not infer that experience.
+        unavailable = qualified_p3_read(owner, session, **baseline, actor_observed=False)
+        assert unavailable["records"] == []
+        assert unavailable["readset"] == []
+        eligible_unit_probe = qualified_p3_read(
+            owner, session, **baseline, actor_observed=True)
+        assert [row["record_hash"] for row in eligible_unit_probe["records"]] == [
+            actual_history[0]["hash"]]
+        for modification in ({"interlocutor_role": "unqualified-role"},
+                             {"relation_ref": "unqualified-relation"}):
+            candidate = qualified_p3_read(
+                owner, session, **{**baseline, **modification}, actor_observed=True)
+            assert candidate["records"] == [] and candidate["readset"] == []
+
+        # Test the existing P3 projection's incompatible-modes branch. This
+        # forges a *reader result*, never a committed world/psyche record.
+        competing = deepcopy(actual_history[0])
+        competing["record_id"] += ":competing-mode"
+        competing["payload"]["mode"] = (
+            "private_check" if actual_history[0]["payload"]["mode"] == "joint_check"
+            else "joint_check")
+        competing["hash"] = digest({k: v for k, v in competing.items() if k != "hash"})
+        with monkeypatch.context() as fault:
+            fault.setattr(owner.store, "query", lambda **_kwargs: [
+                deepcopy(actual_history[0]), competing])
+            rejected = qualified_p3_read(
+                owner, session, **baseline, actor_observed=True)
+            assert rejected["status"] == "CONTRADICTION_HELD"
+            assert rejected["records"] == rejected["readset"] == []
+        assert qualified_p3_read(
+            owner, session, **baseline, actor_observed=True) == eligible_unit_probe
+        assert owner.store.head() == head
+    finally:
+        owner.close()
