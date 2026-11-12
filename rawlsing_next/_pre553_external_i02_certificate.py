@@ -135,11 +135,11 @@ def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
     # Closure identity is the old genuinely validated I02's independent
     # ReplayManifest enumeration, NOT the builder's self-invented row count.
     extras = [x[0] for x in db.execute("""
-        SELECT c.ref FROM closure c LEFT JOIN objects o ON c.ref=o.ref
+        SELECT c.ref FROM main.closure c LEFT JOIN main.objects o ON c.ref=o.ref
         WHERE o.ref IS NULL ORDER BY c.ref
     """)]
     absent = db.execute("""
-        SELECT o.ref FROM objects o LEFT JOIN closure c ON o.ref=c.ref
+        SELECT o.ref FROM main.objects o LEFT JOIN main.closure c ON o.ref=c.ref
         WHERE c.ref IS NULL LIMIT 1
     """).fetchone()
     if absent or len(extras) != 2 or source not in extras:
@@ -147,14 +147,14 @@ def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
     # Two exceptional v1 closure refs are the source artifact and the
     # source-snapshot retention ref, neither a public/internal C11 object.
     if db.execute("""
-        SELECT 1 FROM objects e LEFT JOIN objects r
+        SELECT 1 FROM main.objects e LEFT JOIN main.objects r
           ON r.ref=e.respondent AND r.family='RespondentIdentity'
           AND r.universe=e.universe
         WHERE e.family='RespondentEvent' AND r.ref IS NULL LIMIT 1
     """).fetchone():
         _fail("event has missing/wrong-universe respondent identity")
     if db.execute("""
-        SELECT 1 FROM objects e LEFT JOIN bindings q
+        SELECT 1 FROM main.objects e LEFT JOIN main.bindings q
           ON q.universe=e.universe AND q.native=e.native
         WHERE e.family='RespondentEvent' AND q.native IS NULL LIMIT 1
     """).fetchone():
@@ -163,17 +163,17 @@ def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
     # instrument version, not the Cartesian product of separately observed
     # canonical/component aliases or a union across different versions.
     events = db.execute("""
-        SELECT ref,universe,native,canonical,component FROM objects
+        SELECT ref,universe,native,canonical,component FROM main.objects
         WHERE family='RespondentEvent' ORDER BY ref
     """)
     for ref, universe, native, canonical, component in events:
         versions = db.execute("""
-            SELECT DISTINCT version FROM bindings
+            SELECT DISTINCT version FROM main.bindings
             WHERE universe=? AND native=? ORDER BY version
         """, (universe, native))
         for (version,) in versions:
             if (canonical or component) and not db.execute("""
-                SELECT 1 FROM bindings WHERE universe=? AND native=?
+                SELECT 1 FROM main.bindings WHERE universe=? AND native=?
                   AND version=? AND (?='' OR canonical=?)
                   AND (?='' OR component=?) LIMIT 1
             """, (universe, native, version,
@@ -185,10 +185,10 @@ def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
         ):
             if target:
                 db.execute("INSERT INTO selectors VALUES(?,?,?,?)",
-                           (db.execute("SELECT respondent FROM objects WHERE ref=?",
+                           (db.execute("SELECT respondent FROM main.objects WHERE ref=?",
                                        (ref,)).fetchone()[0], kind, target, ref))
     if db.execute("""
-        SELECT 1 FROM selectors s LEFT JOIN objects o ON s.event_ref=o.ref
+        SELECT 1 FROM main.selectors s LEFT JOIN main.objects o ON s.event_ref=o.ref
         WHERE o.family!='RespondentEvent' OR o.ref IS NULL LIMIT 1
     """).fetchone():
         _fail("selector posting points outside full I02 event corpus")
@@ -204,10 +204,10 @@ def _logical_root(db: sqlite3.Connection) -> str:
     absorb(SCHEMA)
     for name, query in (
         ("header", "SELECT name,value FROM header ORDER BY name"),
-        ("objects", "SELECT * FROM objects ORDER BY ref"),
-        ("closure", "SELECT ref FROM closure ORDER BY ref"),
-        ("bindings", "SELECT * FROM bindings ORDER BY universe,native,version,canonical,component"),
-        ("selectors", "SELECT * FROM selectors ORDER BY respondent,kind,target,event_ref"),
+        ("objects", "SELECT * FROM main.objects ORDER BY ref"),
+        ("closure", "SELECT ref FROM main.closure ORDER BY ref"),
+        ("bindings", "SELECT * FROM main.bindings ORDER BY universe,native,version,canonical,component"),
+        ("selectors", "SELECT * FROM main.selectors ORDER BY respondent,kind,target,event_ref"),
     ):
         absorb(name)
         for row in db.execute(query):
@@ -294,7 +294,7 @@ def build_sourcefree_external_i02(
                 db.commit()
         _check_relations(db, source=release.source_artifact_ref.key)
         if not db.execute(
-            "SELECT 1 FROM objects WHERE family='EmpiricalUniverse' AND ref=?",
+            "SELECT 1 FROM main.objects WHERE family='EmpiricalUniverse' AND ref=?",
             (universe_ref.key,),
         ).fetchone():
             _fail("selected universe absent from the complete I02 source")
@@ -307,17 +307,18 @@ def build_sourcefree_external_i02(
         with open(staged, "rb") as f:
             os.fsync(f.fileno())
         # No seal or manifest publication before all global checks succeed.
-        # The old exists()→os.replace() race could silently overwrite a rival
-        # certificate that claimed the final path after the initial check.
-        # Hardlink the fully synced staged inode only if the target is NEW.
-        # This is an atomic no-clobber claim on the same filesystem, and a
-        # crashed link→unlink window leaves a complete final inode plus an
-        # orphan stage, not a partial certificate.
+        # A second writer can claim the final name after the exists() probe.
+        # os.replace() silently destroys that writer's output; publishing a
+        # certificate is a one-time CAS claim, not last-writer-wins. Link the
+        # fully fsynced same-directory inode under an exclusively NEW name.
+        # On a collision fail closed and discard only OUR staged artifact.
+        # A crash between link and unlink can leave a duplicate stage orphan,
+        # never an incomplete published artifact or a silently lost rival.
         try:
             os.link(staged, target, follow_symlinks=False)
         except FileExistsError as exc:
             raise ExternalI02IntegrityError(
-                "destination collision: certificate already claimed"
+                "destination collision: another writer claimed certificate name"
             ) from exc
         except OSError as exc:
             raise ExternalI02IntegrityError(
@@ -339,92 +340,100 @@ def build_sourcefree_external_i02(
             os.unlink(staged)
 
 
-class _VerifiedSelectRows:
-    """A bounded cursor iterator with no public raw SQLite connection.
+class _VerifiedSqlRows:
+    """Iteration/fetch-only view; never release the backing SQLite cursor.
 
-    Returning sqlite3.Cursor exposes a mutable .connection, which can
-    ROLLBACK the verified snapshot despite B's sealed verifier attributes.
+    sqlite3.Cursor.connection is a mutable escape hatch. A public certificate
+    cannot return raw cursors even if its execute method rejects writes.
     """
     __slots__ = ("__cursor", "__view")
 
-    def __init__(self, cursor: sqlite3.Cursor, view: "_VerifiedSelectView") -> None:
-        object.__setattr__(self, "_VerifiedSelectRows__cursor", cursor)
-        object.__setattr__(self, "_VerifiedSelectRows__view", view)
-
     def __setattr__(self, name: str, value: object) -> None:
-        _fail("verified I02 query-result state is immutable")
+        raise ExternalI02IntegrityError(
+            "immutable verified external I02 cursor cannot be reassigned"
+        )
 
     def __delattr__(self, name: str) -> None:
-        _fail("verified I02 query-result state cannot be deleted")
+        _fail("verified I02 cursor state cannot be deleted")
 
-    def __iter__(self) -> "_VerifiedSelectRows":
-        return self
+    def __init__(self, cursor: sqlite3.Cursor, view: "_VerifiedSelectOnlyDatabase") -> None:
+        object.__setattr__(self, "_VerifiedSqlRows__cursor", cursor)
+        object.__setattr__(self, "_VerifiedSqlRows__view", view)
 
-    def __next__(self):
-        self.__view._ensure_open()
-        try:
-            return next(self.__cursor)
-        except sqlite3.ProgrammingError as exc:
-            raise ExternalI02IntegrityError("verified I02 cursor was invalidated") from exc
-
-    def fetchone(self):
+    def fetchone(self) -> tuple | None:
         self.__view._ensure_open()
         try:
             return self.__cursor.fetchone()
-        except sqlite3.ProgrammingError as exc:
-            raise ExternalI02IntegrityError("verified I02 cursor was invalidated") from exc
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 read cursor closed or invalidated"
+            ) from exc
 
-    def fetchall(self):
+    def fetchall(self) -> list[tuple]:
         self.__view._ensure_open()
         try:
             return self.__cursor.fetchall()
-        except sqlite3.ProgrammingError as exc:
-            raise ExternalI02IntegrityError("verified I02 cursor was invalidated") from exc
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 read cursor closed or invalidated"
+            ) from exc
+
+    def __iter__(self):
+        return self
+
+    def __next__(self) -> tuple:
+        result = self.fetchone()
+        if result is None:
+            raise StopIteration
+        return result
 
 
-class _VerifiedSelectView:
-    """SELECT-only interface preserving ONE independently verified read snapshot.
+class _VerifiedSelectOnlyDatabase:
+    """Certified-query facade: no PRAGMA, collation, TEMP table or raw cursor.
 
-    The raw sqlite3.Connection and cursors are not public/native I03 APIs.
-    Python private-member introspection remains outside this in-process
-    API hardening claim, and is not cryptographic process isolation.
+    Changing SQLite session state can falsify WHERE equality even for
+    main-qualified rows. The raw connection is encapsulated after cold
+    verification, and the only public operation is a SELECT-only cursor.
+    Arbitrary co-resident private Python introspection is not a security
+    domain; this protects the actual native I03 certificate API boundary.
     """
     __slots__ = ("__connection", "__closed")
 
-    def __init__(self, connection: sqlite3.Connection) -> None:
-        object.__setattr__(self, "_VerifiedSelectView__connection", connection)
-        object.__setattr__(self, "_VerifiedSelectView__closed", False)
-
     def __setattr__(self, name: str, value: object) -> None:
-        _fail("verified I02 SQLite snapshot is immutable")
+        raise ExternalI02IntegrityError(
+            "immutable verified external I02 SQL session cannot be reassigned"
+        )
 
     def __delattr__(self, name: str) -> None:
-        _fail("verified I02 SQLite snapshot cannot be deleted")
+        _fail("verified I02 SQL session cannot be deleted")
+
+    def __init__(self, connection: sqlite3.Connection) -> None:
+        object.__setattr__(self, "_VerifiedSelectOnlyDatabase__connection", connection)
+        object.__setattr__(self, "_VerifiedSelectOnlyDatabase__closed", False)
 
     def _ensure_open(self) -> None:
         if self.__closed:
-            _fail("closed verified I02 SQLite snapshot cannot be queried")
+            _fail("closed verified I02 SQL session cannot authorize selection")
         if not self.__connection.in_transaction:
             _fail("verified I02 read transaction ended after root validation")
 
-    def execute(self, sql: str, params: tuple = ()) -> _VerifiedSelectRows:
+    def execute(self, statement: str, params: tuple = ()) -> _VerifiedSqlRows:
         self._ensure_open()
-        if (not isinstance(sql, str)
-                or not re.match(r"(?is)^SELECT\s", sql.lstrip())):
-            _fail("verified I02 connection permits SELECT only; no transaction control")
-        if not isinstance(params, tuple):
-            _fail("verified I02 SQL parameters must be a tuple")
-        if ";" in sql:
-            _fail("verified I02 SQL statements cannot contain separators")
+        if (not isinstance(statement, str)
+                or not statement.lstrip().upper().startswith("SELECT ")
+                or ";" in statement):
+            raise ExternalI02IntegrityError(
+                "verified external I02 database only permits SELECT queries"
+            )
         try:
-            return _VerifiedSelectRows(self.__connection.execute(sql, params), self)
+            return _VerifiedSqlRows(self.__connection.execute(statement, params), self)
         except sqlite3.Error as exc:
             raise ExternalI02IntegrityError(
-                "verified I02 SELECT cannot execute against the held snapshot"
+                "verified external I02 SQL session closed or invalidated"
             ) from exc
 
-    def _close(self) -> None:
-        object.__setattr__(self, "_VerifiedSelectView__closed", True)
+    def close(self) -> None:
+        object.__setattr__(self, "_VerifiedSelectOnlyDatabase__closed", True)
         self.__connection.close()
 
 
@@ -437,15 +446,13 @@ class VerifiedExternalI02:
     __slots__ = ("path", "db", "roots", "_closed", "_sealed")
 
     def __setattr__(self, name: str, value: object) -> None:
-        # Certificate bytes and externally verified identity must not be
-        # replaced between cold validation and ordinary native I03 selection.
-        # The only permitted post-seal transition is close(), handled below.
+        # Preserve Agent B's exact-type and authenticated-instance seal.
         if getattr(self, "_sealed", False):
             _fail("immutable verified external I02 certificate cannot be reassigned")
         object.__setattr__(self, name, value)
 
     def __delattr__(self, name: str) -> None:
-        # Deleting _sealed bypassed B's assignment guard.
+        # B's __setattr__-only seal could be bypassed by deleting _sealed.
         if getattr(self, "_sealed", False):
             _fail("immutable verified external I02 certificate cannot be deleted")
         object.__delattr__(self, name)
@@ -482,9 +489,11 @@ class VerifiedExternalI02:
         except Exception:
             self.db.close()
             raise
-        # Publish only a SELECT-only facade bound to the already verified
-        # read transaction; never expose mutable sqlite3.Connection.
-        self.db = _VerifiedSelectView(self.db)
+        # Seal not only attribute assignment but the SQL session's semantics.
+        # The previous raw .db leaked PRAGMA query_only, TEMP table shadowing,
+        # create_collation('BINARY', ...), and raw Cursor.connection; any could
+        # alter normal native I03 facts after both held roots were checked.
+        self.db = _VerifiedSelectOnlyDatabase(self.db)
         self.roots = roots
         self._closed = False
         self._sealed = True
@@ -494,9 +503,41 @@ class VerifiedExternalI02:
             _fail("closed external I02 certificate cannot authorize native selection")
         self.db._ensure_open()
 
+    def _rows(self, statement: str, params: tuple = ()) -> Iterator[tuple]:
+        """Never serve a row from a dead verified snapshot.
+
+        Live selection reads explicitly qualified main tables; SQLite TEMP
+        shadow tables must not replace I02-verified corpus or postings.
+        A cursor may be invalidated between two streamed rows, including
+        when close() is called during a native query.
+        """
+        self._ensure_open()
+        try:
+            cursor = self.db.execute(statement, params)
+            while True:
+                self._ensure_open()
+                row = cursor.fetchone()
+                if row is None:
+                    return
+                self._ensure_open()
+                yield row
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 SQLite cursor closed or invalidated"
+            ) from exc
+
+    def _first(self, statement: str, params: tuple = ()) -> tuple | None:
+        self._ensure_open()
+        try:
+            return self.db.execute(statement, params).fetchone()
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 SQLite cursor closed or invalidated"
+            ) from exc
+
     def close(self) -> None:
         object.__setattr__(self, "_closed", True)
-        self.db._close()
+        self.db.close()
 
     def __enter__(self) -> "VerifiedExternalI02":
         return self
@@ -505,17 +546,15 @@ class VerifiedExternalI02:
         self.close()
 
     def respondent_refs(self) -> Iterator[str]:
-        self._ensure_open()
-        for (ref,) in self.db.execute("""
-            SELECT ref FROM objects WHERE family='RespondentIdentity'
+        for (ref,) in self._rows("""
+            SELECT ref FROM main.objects WHERE family='RespondentIdentity'
               AND universe=? ORDER BY ref
         """, (self.roots.universe,)):
             yield ref
 
     def event_refs(self, respondent: str) -> Iterator[ExactRef]:
-        self._ensure_open()
-        for row in self.db.execute("""
-            SELECT o.ref_kind,o.object_id,o.digest FROM objects o
+        for row in self._rows("""
+            SELECT o.ref_kind,o.object_id,o.digest FROM main.objects o
             WHERE o.family='RespondentEvent'
               AND o.universe=? AND o.respondent=? ORDER BY o.ref
         """, (self.roots.universe, respondent)):
@@ -533,12 +572,11 @@ class VerifiedExternalI02:
         def part(kind: str):
             sql = """
                 SELECT o.ref,o.ref_kind,o.object_id,o.digest,o.state
-                FROM selectors s JOIN objects o ON o.ref=s.event_ref
+                FROM main.selectors s JOIN main.objects o ON o.ref=s.event_ref
                 WHERE s.respondent=? AND s.kind=? AND s.target=?
                 ORDER BY o.ref
             """
-            for row in self.db.execute(sql, (respondent, kind, target.key)):
-                yield row
+            yield from self._rows(sql, (respondent, kind, target.key))
         last = None
         for key, kind, object_id, digest, state in merge(
             *(part(kind) for kind in kinds), key=lambda row: row[0]
@@ -546,6 +584,7 @@ class VerifiedExternalI02:
             if key == last:
                 continue
             last = key
+            self._ensure_open()
             if states is None or state in states:
                 yield ExactRef(kind, object_id, digest)
 
@@ -554,33 +593,33 @@ def _check_relations_readonly(db: sqlite3.Connection, source: str) -> None:
     # This read-only check uses no self-generated selection postings. A forged
     # posting can be rehashed locally but cannot reproduce held logical root.
     extras = [x[0] for x in db.execute("""
-        SELECT c.ref FROM closure c LEFT JOIN objects o ON c.ref=o.ref
+        SELECT c.ref FROM main.closure c LEFT JOIN main.objects o ON c.ref=o.ref
         WHERE o.ref IS NULL ORDER BY c.ref
     """)]
     if len(extras) != 2 or source not in extras or db.execute("""
-        SELECT 1 FROM objects o LEFT JOIN closure c ON o.ref=c.ref
+        SELECT 1 FROM main.objects o LEFT JOIN main.closure c ON o.ref=c.ref
         WHERE c.ref IS NULL LIMIT 1
     """).fetchone():
         _fail("cold source closure mismatch")
     if db.execute("""
-        SELECT 1 FROM selectors s LEFT JOIN objects o ON s.event_ref=o.ref
+        SELECT 1 FROM main.selectors s LEFT JOIN main.objects o ON s.event_ref=o.ref
         WHERE o.ref IS NULL OR o.family!='RespondentEvent' LIMIT 1
     """).fetchone():
         _fail("orphan selector posting")
     # Full complement, including otherwise unselected states and aliases.
     for ref, respondent, native, canonical, component in db.execute("""
-        SELECT ref,respondent,native,canonical,component FROM objects
+        SELECT ref,respondent,native,canonical,component FROM main.objects
         WHERE family='RespondentEvent' ORDER BY ref
     """):
         for kind, target in (("native", native), ("canonical", canonical),
                              ("component", component)):
             if target and not db.execute("""
-                SELECT 1 FROM selectors WHERE respondent=? AND kind=?
+                SELECT 1 FROM main.selectors WHERE respondent=? AND kind=?
                 AND target=? AND event_ref=?
             """, (respondent, kind, target, ref)).fetchone():
                 _fail("cold index omits real I02 semantic selector posting")
     if db.execute("""
-        SELECT 1 FROM selectors s JOIN objects o ON s.event_ref=o.ref
+        SELECT 1 FROM main.selectors s JOIN main.objects o ON s.event_ref=o.ref
         WHERE s.respondent!=o.respondent OR
           (s.kind='native' AND s.target!=o.native) OR
           (s.kind='canonical' AND s.target!=o.canonical) OR
@@ -625,10 +664,10 @@ class _DiskSelectedRespondent(Sequence[RespondentEvent]):
 
     def __len__(self) -> int:
         self._certificate._ensure_open()
-        return self._certificate.db.execute("""
-            SELECT COUNT(*) FROM objects WHERE family='RespondentEvent'
+        return self._certificate._first("""
+            SELECT COUNT(*) FROM main.objects WHERE family='RespondentEvent'
               AND universe=? AND respondent=?
-        """, (self._certificate.roots.universe, self.respondent_key)).fetchone()[0]
+        """, (self._certificate.roots.universe, self.respondent_key))[0]
 
     def __iter__(self) -> Iterator[RespondentEvent]:
         for ref in self._certificate.event_refs(self.respondent_key):
@@ -642,11 +681,11 @@ class _DiskSelectedRespondent(Sequence[RespondentEvent]):
             index += len(self)
         if index < 0:
             raise IndexError(index)
-        row = self._certificate.db.execute("""
-            SELECT ref_kind,object_id,digest FROM objects
+        row = self._certificate._first("""
+            SELECT ref_kind,object_id,digest FROM main.objects
             WHERE family='RespondentEvent' AND universe=? AND respondent=?
             ORDER BY ref LIMIT 1 OFFSET ?
-        """, (self._certificate.roots.universe,self.respondent_key,index)).fetchone()
+        """, (self._certificate.roots.universe,self.respondent_key,index))
         if row is None:
             raise IndexError(index)
         return self._load(ExactRef(*row))
