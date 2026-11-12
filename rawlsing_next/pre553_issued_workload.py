@@ -331,10 +331,23 @@ class NativeWorkloadResult:
         cannot mint native/source/scientific authority or a completed Batch
         claim for an intentionally partial execution. No second evaluator.
         """
-        from rawlsing_next.pre553_s2e_exact_conservation import census_native_batch
+        from rawlsing_next.pre553_s2e_exact_conservation import (
+            S2EOutputConservationError, census_native_batch,
+        )
+
+        # The issued first consumer sees native_outputs/output_refs, not just
+        # outputs_by_unit. A complete private map cannot certify a public
+        # NativeWorkloadResult whose exposed output view lost its preimages.
+        output_map = self.outputs_by_unit or {}
+        exposed_native = tuple(output_map[key] for key in sorted(output_map))
+        if tuple(self.native_outputs) != exposed_native:
+            raise S2EOutputConservationError("S2E_NATIVE_OUTPUT_VIEW_LOSS")
+        receipt_refs = tuple(ref for receipt in self.receipts for ref in receipt.result_refs)
+        if tuple(self.output_refs) != receipt_refs:
+            raise S2EOutputConservationError("S2E_NATIVE_RESULT_REF_VIEW_LOSS")
 
         return census_native_batch(
-            self.manifest, self.receipts, self.outputs_by_unit or {},
+            self.manifest, self.receipts, output_map,
             require_complete=require_complete, runtime_catalog=runtime_catalog,
         )
 
