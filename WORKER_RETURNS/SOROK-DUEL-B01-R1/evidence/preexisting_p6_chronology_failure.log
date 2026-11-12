@@ -1,0 +1,20 @@
+Pre-existing P6 chronology proof failure, not introduced by B01.
+
+Baseline protected commit: 6a5c12f04323d74001f9632063ec907f4fc4468e
+Baseline command (fresh detached worktree):
+  /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider \
+    WORKER_RETURNS/SOROK-P6-CHRONOLOGY-PROOF-20261107-R1/test_p6_chronology_proof.py
+
+Baseline result:
+  1 failed in 22.60s
+  assert restored == baseline_view
+  Differing keys: mii_exposure_id and mii
+  MII_EXP_0499f4bf8679589a00607639 != MII_EXP_decd0b131dd0b0d0ad9d534c
+
+B01 branch result (same assertion, same keys):
+  1 failed in 25.72s
+
+Interpretation: the copied failure is the pre-existing MII presentation-sequence
+difference in that proof. B01 changes only the world/checkpoint material path and
+does not edit mii.py, situated.py or run_p6.py. It is disclosed, not repaired here,
+because MII exposure selection is outside the B01 writer/ABI lease.
