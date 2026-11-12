@@ -19,7 +19,12 @@
     "declared_startup_branch_found": false,
     "github_api_commit_status": 404,
     "github_git_remote_status": 403,
-    "in_flight_prs": ["#874", "#908", "#860", "#889"],
+    "in_flight_prs": [
+      "#874",
+      "#908",
+      "#860",
+      "#889"
+    ],
     "in_flight_prs_accessed": false,
     "review_914_accessed": false,
     "model_self_report": "DeepSeek V4.1-Flash",
@@ -112,7 +117,7 @@
       "cwd": "isolated worktree",
       "exit": 0,
       "result": "1 passed",
-      "pytest_seconds": 247.70,
+      "pytest_seconds": 247.7,
       "log": "evidence/cga_cold_later.log",
       "assertions": [
         "formation store holds two records",
@@ -130,7 +135,7 @@
       "cwd": "isolated worktree",
       "exit": 0,
       "result": "3 passed",
-      "pytest_seconds": 0.10,
+      "pytest_seconds": 0.1,
       "log": "evidence/cga_common_readset.log"
     },
     {
@@ -285,12 +290,13 @@
   ],
   "push_and_pr": {
     "branch_created_locally": true,
-    "commit_created": "see final HEAD",
-    "push_attempted": false,
-    "push_blocked_reason": "configured GitHub remote returned 403; API returned 404",
+    "commit_created": "1c7e90de06b5c89b403e96bd23dc650b417d4ebb (first delivery commit)",
+    "push_attempted": true,
+    "push_blocked_reason": "remote returned 403 Write access to repository not granted; API returned 404",
     "pr_created": false,
     "protected_merge": false,
-    "in_flight_work_disturbed": false
+    "in_flight_work_disturbed": false,
+    "push_exit": 128
   },
   "receiving": {
     "gate": "separate exact-CGA contract review with source check and cold replay acceptance",
