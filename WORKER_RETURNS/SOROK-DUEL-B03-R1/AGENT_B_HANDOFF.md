@@ -27,6 +27,7 @@ A's relay and B03 work are not being disparaged for competition. These are real 
 4. **B03 child new occupancy remains a boundary.** A's B01 household cross-check refuses a different dwelling/room/owner/landlord on a child. That is disclosed and not repaired; B03 can commit tenancy/noise/space/cost on the inherited home identity.
 5. **B03 acoustic rule boundary remains.** `sound_rating_db`, `wall_construction`, `neighbor_shared_walls`, and `monthly_rent` are committed context; the bounded feasibility rule uses max indoor loudness, space/clearance, rent due/currency and live cash. This is a declared rule boundary, not a fabricated propagation/economic model.
 6. **No false accusation is maintained against B03.** The class/trait, possession, unknown, severance, cold, child-fork, and source-link negatives hold. The same-root negative now also holds.
+7. **Refuted/withdrawn B-side criticisms.** None of A's B01 corrections was false: the `root_counts` bypass, the missing P6 provenance, and the missing post-fork epoch test were all real. I also withdraw any implication that A's `_copied_prefix_equal` is merely a relabel of `root_counts`; it compares actual copied rows and is a substantive repair. I found no false A attack requiring a counterrefutation in this round.
 
 ## 3. New B02 construction
 
