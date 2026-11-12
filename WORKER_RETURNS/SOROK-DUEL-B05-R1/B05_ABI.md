@@ -1,3 +1,5 @@
+> **Current same-pair B typed/interleave revision (`ef2129283fff3deffab8cefef6ff94da3045bc58`):** event-id keyed `PeriodInterleaveOwner` with committed-P3-result recovery after B02 advance; typed parent hook is present. See `B05_B_INTERLEAVE_ADDENDUM.md`. The later semantic notice below is historical.
+
 > **Later same-pair semantic revision:** see `B05_A_SEMANTIC_ADDENDUM.md` for the cross-boundary BatchEngine adapter and no-bridge parent-work ordering; the rent/first-consumer contract below remains.
 
 > **B revision (`4a3c45cda7d814df0c60ca4e245499fcfca62162`):** rent read/check/write is serialized by a state-root lock and crash rollback is proved at the checkpoint seam. The receipt/rent API is unchanged; see `B05_B_ABI_REVISION.md`.
