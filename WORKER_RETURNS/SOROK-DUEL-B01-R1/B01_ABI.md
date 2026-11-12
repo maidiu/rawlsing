@@ -1,5 +1,7 @@
 # B01 frozen household / parent-choice ABI
 
+> **B revision (`160cbbd0ae00fb965004085c0e07c872384fe0ff`):** the exact-branch invariant below applies to same-branch reads and establishment. A verified C12 ancestor is now accepted on fork reads; see `B01_ABI_B_REVISION.md`. Same-branch schemas are unchanged.
+
 **Status:** sourcefree `SOURCEFREE_S2_ONLY`; additive B01 base, not a parent decision and not native science.
 **Code:** `05a9b988ae039d44c55e636e1c610c01d89b4c1d`.
 
