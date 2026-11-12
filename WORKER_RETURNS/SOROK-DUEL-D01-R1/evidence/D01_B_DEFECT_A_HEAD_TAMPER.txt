@@ -1,3 +1,7 @@
+# Captured at A exact HEAD 82d310b4e09774e04f883fe7386c2f53cb2ac23e in an isolated worktree.
+# The probe imports A's P3/P2/D01 code, realizes the actual formation, rewrites a non-head
+# record payload consistently, and reopens through A's d01_reuse.open_cold_owner. The later
+# actual P3 consumer accepted the rewritten record. Case state root was task-local scratch.
 pre modes ['joint_check', 'private_check']
 pre hashes ['951352b222c50e3a8a88765db34d2e6947ee220204b466fc1f1186f9fd58d2ec', '18f7430d5ae93d3b2822e3aafe1fb9408b4cc7e48f1f5415116534078b25323f']
 row count 2

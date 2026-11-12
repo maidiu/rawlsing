@@ -1,3 +1,6 @@
+# Captured at B code cut 141372a9095f901c48fc06d03301c4dda66befec with the same tamper
+# procedure as D01_B_DEFECT_A_HEAD_TAMPER.txt. The B cold boundary now verifies the durable
+# chain and refuses before any record read or later consumer. Case state root was task-local scratch.
 pre modes ['joint_check', 'private_check']
 pre hashes ['04c0cc2c06b7a8c0fe257393b45d4f086dd9c886b829aa8bfbc711d0c849035f', '90f6711a8b0dbfa12a97b80c2e7a0112b8b7c1528453a3874adcbd075b08b87c']
 row count 2
