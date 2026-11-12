@@ -135,6 +135,7 @@ def test_purchase_stock_ownership_parent_feasibility_and_refusals(tmp_path):
         read = mo.read_purchase(
             session, PARENT_ID, "b04:purchase:1", as_actor=PARENT_ID)
         assert read["status"] == "READ"
+        assert read["historical"] is False
         assert read["receipt"]["status"] == "ADMITTED"
         assert read["owned_totals"] == owned_after["totals"]
         assert SECRET not in json.dumps(first)
@@ -176,6 +177,12 @@ def test_purchase_stock_ownership_parent_feasibility_and_refusals(tmp_path):
         assert second["parent_free_hours_after"] == 6
         assert mo.read_market_inventory(session)["items"][0]["quantity"] == 0
         assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 2
+        later_read = mo.read_purchase(
+            session, PARENT_ID, "b04:purchase:1", as_actor=PARENT_ID)
+        assert later_read["status"] == "READ"
+        assert later_read["historical"] is True
+        assert later_read["owned_totals"][0]["quantity"] == 2
+        assert later_read["receipt"]["status"] == "ADMITTED"
 
         before_refusal = counts(session)
         stock_refusal = mo.purchase_drum_kit(

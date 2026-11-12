@@ -605,20 +605,36 @@ def read_purchase(session, parent_id: str, operation_id: str, *,
     receipt = dict((episodes[0].get("body") or {}).get("receipt") or {})
     market = read_market_inventory(session)
     owned = read_owned_objects(session)
+    acquisition = next(
+        (row for row in owned.get("objects") or []
+         if row.get("acquisition_id") == operation_id), None)
     if receipt.get("status") == "ADMITTED":
-        if (material["source"] != receipt.get("parent_material_source_after")
-                or market["source"] != receipt.get("market_source_after")
-                or owned["source"] != receipt.get("owned_source_after")):
+        if acquisition is None:
             raise RecursionRefusal("PURCHASE_READ_STALE")
-    elif (material["source"] != receipt.get("parent_material_source_before")
-          or market["source"] != receipt.get("market_source_before")
-          or owned["source"] != receipt.get("owned_source_before")):
-        raise RecursionRefusal("PURCHASE_READ_STALE")
+        if (acquisition.get("purchase_source") != receipt.get("purchase_source")
+                or acquisition.get("market_source") != receipt.get("market_source_before")
+                or acquisition.get("object_id") != receipt.get("object_id")
+                or acquisition.get("owner_actor_id") != receipt.get("owner_actor_id")
+                or acquisition.get("unit_price") != receipt.get("unit_price")
+                or acquisition.get("currency_unit") != receipt.get("currency_unit")):
+            raise RecursionRefusal("PURCHASE_READ_STALE")
+        historical = (
+            material["source"] != receipt.get("parent_material_source_after")
+            or market["source"] != receipt.get("market_source_after")
+            or owned["source"] != receipt.get("owned_source_after"))
+    else:
+        if acquisition is not None:
+            raise RecursionRefusal("PURCHASE_READ_STALE")
+        historical = (
+            material["source"] != receipt.get("parent_material_source_before")
+            or market["source"] != receipt.get("market_source_before")
+            or owned["source"] != receipt.get("owned_source_before"))
     return {
         "schema": PURCHASE_RECEIPT_SCHEMA,
         "grade": GRADE,
         "status": "READ",
         "operation_id": operation_id,
+        "historical": historical,
         "receipt": receipt,
         "parent_material_source": material["source"],
         "market_source": market["source"],

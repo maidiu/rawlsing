@@ -65,9 +65,10 @@ def _rent_episodes(session, operation_id: str) -> list[dict]:
 
 
 def _receipt(session, *, operation_id: str, period_id: str, period_status: str,
-             rent: int, cash_before: int, cash_after: int,
-             household_before: Mapping[str, Any], household_after: Mapping[str, Any],
-             dwelling: Mapping[str, Any], status: str, reasons: list[str]) -> dict:
+             progress: Mapping[str, Any], rent: int, cash_before: int,
+             cash_after: int, household_before: Mapping[str, Any],
+             household_after: Mapping[str, Any], dwelling: Mapping[str, Any],
+             status: str, reasons: list[str]) -> dict:
     return {
         "schema": RENT_RECEIPT_SCHEMA,
         "grade": GRADE,
@@ -78,6 +79,11 @@ def _receipt(session, *, operation_id: str, period_id: str, period_status: str,
         "clock": session.clock(),
         "period_id": period_id,
         "period_status": period_status,
+        "period_b02_coverage": detached(progress.get("b02_coverage") or []),
+        "period_state_coverage": detached(progress.get("state_coverage") or []),
+        "period_uncovered": detached(progress.get("uncovered") or []),
+        "period_elapsed_ticks": progress.get("elapsed_ticks"),
+        "period_remaining_ticks": progress.get("remaining_ticks"),
         "monthly_rent": rent,
         "household_cash_before": cash_before,
         "household_cash_after": cash_after,
@@ -187,8 +193,8 @@ def apply_household_rent(session, *, operation_id: str, period_id: str,
             after = household
         receipt = _receipt(
             session, operation_id=operation_id, period_id=period_id,
-            period_status=progress["status"], rent=rent, cash_before=cash,
-            cash_after=cash_after, household_before=household,
+            period_status=progress["status"], progress=progress, rent=rent,
+            cash_before=cash, cash_after=cash_after, household_before=household,
             household_after=after, dwelling=dwelling, status=status,
             reasons=reasons,
         )
