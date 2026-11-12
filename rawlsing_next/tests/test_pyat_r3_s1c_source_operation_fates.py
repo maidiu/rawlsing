@@ -517,7 +517,14 @@ def test_s1c_a_counter_rehashed_occurrence_false_admin_fails_before_source_open(
 
 def test_s1c_a_counter_joint_forged_unknown_and_excluded_drops_refuse(tmp_path):
     """B bypass: both frozen and live negative lists omit a genuine op fate."""
-    _, inventory, policy, frontier, _ = _fixture(tmp_path)
+    _, inventory, policy, _, _ = _fixture(tmp_path)
+    # The ordinary fixture has 150 ELIGIBLE + 159 HELD and no excluded
+    # operations; independently create genuine inapplicable disjoint forms.
+    disjoint_inventory = replace(inventory, occurrences=tuple(
+        replace(o, forms=("DISJOINT_B_FORM",)) if o.key.item_id == "B" else o
+        for o in inventory.occurrences
+    ))
+    frontier = enumerate_frontier(disjoint_inventory, policy)
     assert frontier.excluded
     excluded_op = next(
         x for x in frontier.excluded if isinstance(x.get("op_id"), str)
@@ -530,7 +537,7 @@ def test_s1c_a_counter_joint_forged_unknown_and_excluded_drops_refuse(tmp_path):
     # B's two-way freeze/frontier comparison passes this co-mutated omission.
     with pytest.raises(CensusRefusal, match="EXCLUDED_OPERATION_NEGATIVE_LOSS"):
         verify_frozen_inputs(forged_excluded_census,
-                             inventory=inventory, policy=policy,
+                             inventory=disjoint_inventory, policy=policy,
                              frontier=forged_excluded)
 
     unknown_inventory = replace(inventory, occurrences=tuple(
