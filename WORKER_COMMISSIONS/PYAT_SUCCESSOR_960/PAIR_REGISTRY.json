@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_SUCCESSOR_960_EXISTING_QUEUE_R1",
+  "controller_thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+  "max_active_runs": 3,
+  "previous_transfer": "#940 independentlyscopedaccepted/closed; no reopening",
+  "source_base": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "protected_base": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "packets": [
+    {
+      "packet_id": "S2-G",
+      "queue": "Q1",
+      "state": "PREPARED_NOT_LAUNCHED",
+      "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-control/WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md",
+      "contract_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
+      "agents": {
+        "A": {
+          "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-a",
+          "branch": "agent/pyat960-s2g-a-r1"
+        },
+        "B": {
+          "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-b",
+          "branch": "agent/pyat960-s2g-b-r1",
+          "state": "IDLE_WAIT_OWN_A_TERMINAL"
+        }
+      },
+      "integration": "UNMERGED",
+      "independent_g5": "NOT_RUN"
+    },
+    {
+      "packet_id": "S1-E",
+      "queue": "Q2",
+      "state": "BLOCKED_DEPENDENCY",
+      "exact_prerequisites": [
+        "S1-C#955@5b1db9b5a687184615a199da8a39c55d5a30ed61 independentacceptanceorfrozencompatibleproducerABI",
+        "S2-B#954@f5ee89b8e700ac14cf266c2e3eae4c25f021c349 completequalifiedI02inputABI"
+      ],
+      "owner": "originalPair1S1-C/originalPair2S2-B; Browserduelsreadonly"
+    },
+    {
+      "packet_id": "S2-C",
+      "queue": "Q3",
+      "state": "BLOCKED_DEPENDENCY",
+      "exact_prerequisites": [
+        "S2-BcompleteindependentlyacceptedI02logical+selectorcertificateNOTAVAILABLE@#954f5ee89b8",
+        "S1-Equ alifiedsource-directABI NOT_YET_AVAILABLE"
+      ],
+      "owner": "originalPair2S2-B and queuedQ2S1-E"
+    }
+  ]
+}
