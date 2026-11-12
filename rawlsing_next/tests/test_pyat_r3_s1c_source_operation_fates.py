@@ -551,3 +551,44 @@ def test_s1c_a_counter_joint_forged_unknown_and_excluded_drops_refuse(tmp_path):
         verify_frozen_inputs(forged_unknown_census,
                              inventory=unknown_inventory, policy=policy,
                              frontier=forged_unknown)
+
+
+
+def test_s1c_a_counter_independent_nonoperation_negatives_preserved(tmp_path):
+    """The new cross-owner check must not erase B's separate source negatives.
+
+    An independently declared non-operation hold has no op_id, so it is
+    conserved byte-for-byte and does not remove valid RAW I05 results.
+    """
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    baseline = _run(bundle, inventory, policy, frontier, census)
+    extra_unknown = {
+        "kind": "EXTERNALLY_DECLARED_SOURCE_ROUTE_UNKNOWN",
+        "occurrence": "UNENUMERATED_SOURCE_ITEM_X",
+        "reason": "NO_SOURCE_ISSUER_QUALIFICATION",
+    }
+    extra_excluded = {
+        "kind": "EXTERNALLY_DECLARED_SOURCE_EXCLUSION",
+        "occurrence": "UNENUMERATED_SOURCE_ITEM_Y",
+        "reason": "OUTSIDE_CURRENT_OPERATION_DOMAIN",
+    }
+    extended = replace(
+        frontier,
+        unknown=frontier.unknown + (extra_unknown,),
+        excluded=frontier.excluded + (extra_excluded,),
+    )
+    extended_census = _freeze_packet(
+        extended, scope_id="A-COUNTER-EXTERNAL-NEGATIVE-PRESERVATION"
+    )
+    result = _run(bundle, inventory, policy, extended, extended_census)
+    assert result["candidate_anti_join"]["no_drop_ok"]
+    assert result["operation_anti_join"]["no_drop_ok"]
+    assert result["unknown_scope_records"][-1] == extra_unknown
+    assert result["excluded_scope_records"][-1] == extra_excluded
+    assert result["issued_candidate_count"] == baseline["issued_candidate_count"]
+    assert result["native_fact_count"] == baseline["native_fact_count"]
+    assert [
+        (r["operation_id"], r["fact_refs"]) for r in result["operation_fates"]
+    ] == [
+        (r["operation_id"], r["fact_refs"]) for r in baseline["operation_fates"]
+    ]
