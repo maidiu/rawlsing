@@ -36,6 +36,7 @@ from rawlsing_next.pre553_empirical_authority import (
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef, AuthoritySnapshot, CanonicalSemanticObject,
     EmpiricalCoordinateFact, EmpiricalUniverse, ExactRef,
+    Pre553IntegrityError,
     RespondentEvent, RoutingEligibilityFact, SourceUniverseRelation,
     WeightMeasureFact, canonical_json, exact_ref, semantic_hash,
 )
@@ -325,7 +326,7 @@ def _check_direct_relations(db: sqlite3.Connection, *, declared_universes: set[s
             _fail("undeclared sourcefree direct universe")
 
 
-def build_sourcefree_direct_i02(
+def _build_sourcefree_direct_i02_impl(
     source: SourcefreeDirectI02Sections,
     universe_ref: ExactRef,
     destination: str | Path,
@@ -369,9 +370,16 @@ def build_sourcefree_direct_i02(
     declared = manifest.declared_record_counts_by_logical_family
     if set(declared) - (set(_FAMILIES) | {"ReplayManifest"}):
         _fail("undeclared extra sourcefree direct record family")
-    if set(declared) < _CORE or declared.get("ReplayManifest") != 1:
+    if set(declared) < _CORE:
         _fail("sourcefree direct source manifest missing mandatory original counts")
+    if "ReplayManifest" in declared and declared["ReplayManifest"] != 1:
+        _fail("sourcefree direct replay manifest count must be exactly one")
     declared_universes = {ref.key for ref in manifest.declared_universe_refs}
+    if len(manifest.declared_universe_refs) != len(declared_universes):
+        _fail("sourcefree direct duplicate universe declaration")
+    declared_authorities = {ref.key for ref in manifest.declared_authority_snapshot_refs}
+    if len(manifest.declared_authority_snapshot_refs) != len(declared_authorities):
+        _fail("sourcefree direct duplicate authority declaration")
     if universe_ref.key not in declared_universes:
         _fail("selected universe not in original source manifest")
     target = Path(destination).absolute()
@@ -584,6 +592,10 @@ def build_sourcefree_direct_i02(
             raise ExternalI02IntegrityError(
                 "direct sourcefree publication collision"
             ) from exc
+        except OSError as exc:
+            raise ExternalI02IntegrityError(
+                "atomic no-clobber direct sourcefree publication unavailable"
+            ) from exc
         os.unlink(staged)
         dirfd = os.open(target.parent, os.O_RDONLY)
         try:
@@ -600,6 +612,29 @@ def build_sourcefree_direct_i02(
             db.close()
         if os.path.exists(staged):
             os.unlink(staged)
+
+
+def build_sourcefree_direct_i02(
+    source: SourcefreeDirectI02Sections,
+    universe_ref: ExactRef,
+    destination: str | Path,
+    *,
+    chunk_size: int = 512,
+) -> ExternalI02Roots:
+    """Typed public refusal boundary for sourcefree direct construction.
+
+    All underlying C11/authority integrity failures are surfaced as the
+    certificate-specific ExternalI02IntegrityError; ordinary input-shape
+    ValueErrors and SQLite/OS environment failures keep their native type.
+    """
+    try:
+        return _build_sourcefree_direct_i02_impl(
+            source, universe_ref, destination, chunk_size=chunk_size,
+        )
+    except ExternalI02IntegrityError:
+        raise
+    except Pre553IntegrityError as exc:
+        raise ExternalI02IntegrityError(str(exc)) from exc
 
 
 __all__ = [

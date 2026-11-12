@@ -544,6 +544,11 @@ class VerifiedExternalI02:
                 _check_relations_readonly(self.db, roots.source)
                 if _logical_root(self.db, schema=roots.schema) != roots.logical:
                     _fail("logical corpus/selector map differs from external root")
+            except sqlite3.Error as exc:
+                self.db.close()
+                raise ExternalI02IntegrityError(
+                    "cold certificate structure is missing or malformed"
+                ) from exc
             except Exception:
                 self.db.close()
                 raise
@@ -795,5 +800,57 @@ def install_sourcefree_external_i02_i03(
     with repository._i03_index_lock:
         if repository.resolve_release_exact(release_ref) is not release:
             _fail("source moved during actual native I03 index installation")
+        repository._i03_release_indices[key] = index
+        repository._i03_index_attestations[key] = _i03_index_attestation(index)
+
+
+def install_direct_sourcefree_i02_i03(
+    repository: C11Repository, release_ref: ExactRef, universe_ref: ExactRef,
+    certificate: VerifiedExternalI02,
+) -> None:
+    """Install direct-schema selectors for an exact sealed body release.
+
+    The direct certificate is not a legacy I02 release and never mints the old
+    validation seal. It may drive actual native I03 selector consumption only
+    when its reconstructed historical source/replay/release identities exactly
+    equal the already-sealed repository release whose semantic bodies it uses.
+    Full cold physical body realization remains the separate S2-C obligation.
+    """
+    if type(repository) is not C11Repository:
+        _fail("requires exact original I02 repository")
+    if type(certificate) is not VerifiedExternalI02:
+        _fail("exact cold-verified direct I02 certificate required")
+    certificate._ensure_open()
+    if certificate.roots.schema != DIRECT_SCHEMA:
+        _fail("direct sourcefree certificate schema required")
+    release = repository.resolve_release_exact(release_ref)
+    roots = certificate.roots
+    header = dict(certificate._rows("""
+        SELECT name,value FROM main.header
+        WHERE name IN ('reconstructed_v1_release_ref',
+                       'reconstructed_v1_replay_ref')
+    """))
+    if (roots.source != release.source_artifact_ref.key
+            or roots.replay != release.replay_manifest.ref.key
+            or roots.universe != universe_ref.key
+            or header.get("reconstructed_v1_release_ref")
+                != release.release_ref.key
+            or header.get("reconstructed_v1_replay_ref")
+                != release.replay_manifest.ref.key):
+        _fail("direct certificate historical identity differs from sealed release")
+    from rawlsing_next._pre553_query_predicate import _build_release_index
+    from rawlsing_next.pre553_empirical_query import _i03_index_attestation
+    native = _build_release_index(release, universe_ref)
+    if set(certificate.respondent_refs()) != set(native.respondents):
+        _fail("cold respondent identity set differs from native I02")
+    selector = MappingProxyType({
+        key: _DiskSelectedRespondent(key, certificate, repository)
+        for key in native.respondents
+    })
+    index = replace(native, events_by_respondent=selector)
+    key = (release_ref, universe_ref)
+    with repository._i03_index_lock:
+        if repository.resolve_release_exact(release_ref) is not release:
+            _fail("source moved during direct native I03 index installation")
         repository._i03_release_indices[key] = index
         repository._i03_index_attestations[key] = _i03_index_attestation(index)
