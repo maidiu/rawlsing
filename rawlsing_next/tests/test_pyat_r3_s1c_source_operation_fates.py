@@ -260,3 +260,44 @@ def test_s1c_changed_value_and_restore_real_fact_identity(tmp_path):
     assert original["checkpoint_hash"] == restored["checkpoint_hash"]
     assert original["checkpoint_hash"] != changed["checkpoint_hash"]
     assert changed["operation_anti_join"]["no_drop_ok"]
+
+
+def test_s1c_actual_source_open_and_c11_build_census(tmp_path, monkeypatch, capsys):
+    """Measure inherited U43 Route B + issued repository passes, not estimates."""
+    from rawlsing_next import pre553_issued_workload as issued
+    from rawlsing_next import pre553_route_b_production as route
+
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    builds = {"route_b": 0, "issued_reader": 0}
+    route_original = route.build_source_backed_c11_repository
+    issued_original = issued.build_source_backed_c11_repository
+
+    def counted_route(*args, **kwargs):
+        builds["route_b"] += 1
+        return route_original(*args, **kwargs)
+
+    def counted_issued(*args, **kwargs):
+        builds["issued_reader"] += 1
+        return issued_original(*args, **kwargs)
+
+    monkeypatch.setattr(route, "build_source_backed_c11_repository", counted_route)
+    monkeypatch.setattr(issued, "build_source_backed_c11_repository", counted_issued)
+    result = _run(bundle, inventory, policy, frontier, census)
+    assert result["source_factory_calls"] == 1
+    assert result["native_fact_count"] > 0
+    assert builds["issued_reader"] == 1
+    # The existing U43 Route B replay and issued reader may each build an
+    # authentic C11; observe that separately instead of falsely claiming
+    # one reader build because there was only one source-factory call.
+    assert builds["route_b"] >= 1
+    print("S1C_RESOURCE_COUNTS", {
+        "declared": result["declared_operation_count"],
+        "compiled": result["compiled_operation_count"],
+        "receipt_rows": result["received_operation_count"],
+        "issued_candidates": result["issued_candidate_count"],
+        "native_facts": result["native_fact_count"],
+        "source_factory_calls": result["source_factory_calls"],
+        "route_b_c11_builds": builds["route_b"],
+        "issued_reader_c11_builds": builds["issued_reader"],
+        "elapsed_seconds": round(result["elapsed_seconds"], 6),
+    })
