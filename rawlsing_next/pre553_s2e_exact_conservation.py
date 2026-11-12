@@ -37,6 +37,7 @@ from rawlsing_next.pre553_empirical_objects import (
     canonical_json,
     canonicalize,
     exact_ref,
+    authority_ref,
     semantic_hash,
 )
 
@@ -188,6 +189,26 @@ def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: Exact
     }
     _require(native_fate_types.get(receipt.coverage_state) == receipt.typed_state,
              "S2E_I05_CANDIDATE_TERMINAL_FATE_MISMATCH")
+    # The native I05 producer is an inert population-science fact consumer.
+    # Rehashing an otherwise correct receipt cannot authorize a diagnostic,
+    # structural proposition, or actor-state effect, nor silently replace the
+    # exact I03 contract underpinning the candidate replay.
+    _require(
+        all(
+            getattr(receipt, field, None) is False
+            for field in (
+                "diagnostic_score_is_empirical_fact",
+                "structural_truth_effect",
+                "actor_v3_effect",
+            )
+        ),
+        "S2E_I05_NONPROMOTION_FLAGS_MISMATCH",
+    )
+    _require(
+        getattr(receipt, "exact_query_contract_id", None)
+        == QUERY_EXECUTION_CONTRACT_ID,
+        "S2E_I05_QUERY_EXECUTION_CONTRACT_MISMATCH",
+    )
     ci = receipt.candidate_identity
     _require(isinstance(ci, Mapping), "S2E_I05_CANDIDATE_IDENTITY_MISSING")
     roles = ci.get("query_roles")
@@ -314,6 +335,34 @@ def _verify_i05_scientific_fate_against_facts(
             (facts_by_key[_ref_key(ref)] for ref in receipt.empirical_fact_refs),
             key=lambda fact: fact.ref.key,
         ))
+        # Native execute_exact_bounded_discovery emits the entire exact
+        # dependency and authority closure, not merely a self-hashed subset.
+        # B2's scientific recomputation alone would accept a receipt with
+        # its scientific inputs/authority provenance silently removed.
+        native_dependencies = {
+            authority.ref.key,
+            exact_ref(authority.candidate_grammar_ref, "issued candidate grammar").key,
+            output.evaluated_frontier_ref.key,
+            _ref_key(receipt.winning_predicate_ref),
+            *(f.ref.key for f in candidate_facts),
+        }
+        _require(
+            {_ref_key(ref) for ref in receipt.dependency_refs} == native_dependencies,
+            "S2E_I05_DEPENDENCY_CLOSURE_MISMATCH",
+        )
+        native_snapshots = {
+            authority_ref(ref, "issuer authority snapshot").key
+            for ref in (
+                *authority.authority_snapshot_refs,
+                *(snapshot for fact in candidate_facts
+                  for snapshot in fact.authority_snapshot_refs),
+            )
+        }
+        _require(
+            {authority_ref(ref, "candidate authority snapshot").key
+             for ref in receipt.authority_snapshot_refs} == native_snapshots,
+            "S2E_I05_AUTHORITY_SNAPSHOT_CLOSURE_MISMATCH",
+        )
         expected_support = dict(_support_summary(candidate_facts))
         expected_support["query_role_fact_refs"] = canonicalize({
             name: canonical_role_refs[name] for name in sorted(canonical_role_refs)
@@ -400,6 +449,24 @@ def _verify_i05_declared_frontier(output: ExactBoundedDiscoveryResult, unit: Any
         c.candidate_id: c for c in candidates
     }
     _require(len(by_id) == len(candidates), "S2E_I05_DECLARED_CANDIDATE_DUPLICATION")
+    # A correct candidate roster does not excuse an invented or omitted
+    # executed predicate/query object. I05 produces exactly the role objects
+    # of the compiler's complete pre-search candidate frontier.
+    declared_predicates = {
+        role.predicate.ref.key
+        for candidate in candidates for role in candidate.query_roles
+    }
+    declared_queries = {
+        role.query.ref.key
+        for candidate in candidates for role in candidate.query_roles
+    }
+    _require(
+        {predicate.ref.key for predicate in output.executed_predicates}
+            == declared_predicates
+        and {query.ref.key for query in output.executed_queries}
+            == declared_queries,
+        "S2E_I05_EXECUTED_OBJECT_CLOSURE_MISMATCH",
+    )
     actual_ids = {receipt.candidate_identity["candidate_id"] for receipt in output.receipts}
     _require(actual_ids == set(by_id), "S2E_I05_DECLARED_FRONTIER_MISMATCH")
     for receipt in output.receipts:
