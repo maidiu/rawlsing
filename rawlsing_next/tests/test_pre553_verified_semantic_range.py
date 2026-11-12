@@ -649,3 +649,268 @@ def test_h37_conflicting_instrument_version_canonical_mappings_refuse_ambiguous_
     # approved mapping produced this event.
     with pytest.raises(SemanticRangeIntegrityError, match="ambiguous|version|binding"):
         I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def _s2a_relation_source(
+    tag: str, *, bindings, event_canonical=None, event_component=None,
+):
+    """Native-I02 accepted fixture with version-qualified paired alias grants.
+
+    bindings: (instrument version, canonical tag/None, component tag/None).
+    These are sourcefree real QuestionVariableBinding records, never fabricated
+    CertifiedRespondentEvents or presealed release objects.
+    """
+    from rawlsing_next.tests.test_pre553_c11_repository_ingest import _authority, _ref
+    from rawlsing_next.pre553_c11_integrity import QuestionVariableBinding, TypedAbsence
+    from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    old = _candidate(tag, event_kind="UNORDERED_MULTISELECT_SET")
+    mapping = _authority(
+        tag + "-alias-authority", "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        families=("RespondentEvent@1.0.0",),
+    )
+    def cref(key):
+        return _ref("QUESTION_CANONICAL", tag + "-" + key) if key is not None else None
+    def sref(key):
+        return _ref("QUESTION_COMPONENT", tag + "-" + key) if key is not None else None
+    q0 = old.question_variable_bindings[0]
+    questions = tuple(
+        QuestionVariableBinding(
+            empirical_universe_ref=q0.empirical_universe_ref,
+            native_question_ref=q0.native_question_ref,
+            instrument_question_version=version,
+            canonical_question_ref_or_typed_absence=(
+                cref(canonical) if canonical is not None else TypedAbsence("NOT_APPLICABLE")
+            ),
+            component_subitem_ref_or_typed_absence=(
+                sref(component) if component is not None else TypedAbsence("NOT_APPLICABLE")
+            ),
+            semantic_authority_ref=(
+                mapping.authority_ref if canonical is not None else q0.semantic_authority_ref
+            ),
+            topology_authority_ref=q0.topology_authority_ref,
+        )
+        for version, canonical, component in bindings
+    )
+    events = []
+    for e in old.respondent_events:
+        fields = dict(e.semantic_fields)
+        fields.update(
+            canonical_question_ref_if_authorized=cref(event_canonical),
+            component_or_subitem_ref=sref(event_component),
+            value_transform_authority_ref=(
+                mapping.authority_ref if event_canonical is not None else None
+            ),
+        )
+        events.append(RespondentEvent(
+            typed_state=e.typed_state,
+            authority_snapshot_refs=(
+                (*e.authority_snapshot_refs, mapping.authority_ref)
+                if event_canonical is not None else e.authority_snapshot_refs
+            ),
+            dependency_refs=e.dependency_refs,
+            producer_replay_locator_or_reference_root=e.producer_replay_locator_or_reference_root,
+            **fields,
+        ))
+    counts = dict(old.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["QuestionVariableBinding"] = len(questions)
+    counts["AuthoritySnapshot"] += 1
+    manifest = replace(
+        old.source_release_manifest,
+        declared_record_counts_by_logical_family=counts,
+        declared_authority_snapshot_refs=(
+            *old.source_release_manifest.declared_authority_snapshot_refs,
+            mapping.authority_ref,
+        ),
+    )
+    candidate = replace(
+        old, source_release_manifest=manifest,
+        question_variable_bindings=questions,
+        respondent_events=tuple(events),
+        authority_snapshots=(*old.authority_snapshots, mapping),
+        candidate_replay_manifest=None,
+    )
+    candidate = replace(
+        candidate, candidate_replay_manifest=build_candidate_replay_manifest(
+            candidate,
+            replay_protocol_authority_ref=old.candidate_replay_manifest.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=old.candidate_replay_manifest.deterministic_tie_order_rules_ref,
+            replay_protocol_version=old.candidate_replay_manifest.replay_protocol_version,
+        ),
+    )
+    repository = C11Repository()
+    result = ingest_c11_source_release(candidate, repository)
+    assert result.accepted, result.errors
+    release = repository.resolve_release_exact(result.release_ref)
+    return release, old.empirical_universes[0].ref, repository, cref, sref
+
+
+def test_h38_i02_accepts_wrong_component_but_witness_must_refuse():
+    release, universe, _, _, _ = _s2a_relation_source(
+        "s2a-h38-component", bindings=(("V1", None, "A"),),
+        event_component="B",
+    )
+    with pytest.raises(SemanticRangeIntegrityError, match="component|binding"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h39_i02_accepts_component_despite_explicit_absent_binding():
+    release, universe, _, _, _ = _s2a_relation_source(
+        "s2a-h39-unmapped", bindings=(("V1", None, None),),
+        event_component="A",
+    )
+    with pytest.raises(SemanticRangeIntegrityError, match="component|binding"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h40_conflicting_component_grants_across_versions_refused():
+    release, universe, _, _, _ = _s2a_relation_source(
+        "s2a-h40-versions",
+        bindings=(("V1", None, "A"), ("V2", None, "B")),
+        event_component="A",
+    )
+    with pytest.raises(SemanticRangeIntegrityError, match="component|ambiguous|version"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h41_same_version_distinct_approved_components_preserved():
+    release, universe, repository, _, sref = _s2a_relation_source(
+        "s2a-h41-siblings",
+        bindings=(("V1", None, "A"), ("V1", None, "B")),
+        event_component="A",
+    )
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    install_sourcefree_i02_certified_i03_range(
+        repository, release_ref=release.release_ref,
+        universe_ref=universe, witness=witness,
+        independently_held_root=witness.root,
+    )
+    index = repository._i03_release_indices[(release.release_ref, universe)]
+    respondent = next(iter(index.respondents))
+    assert len(list(_select_respondent_events(
+        index, respondent, sref("A"), include_component=True,
+    ))) == 2
+    assert list(_select_respondent_events(
+        index, respondent, sref("B"), include_component=True,
+    )) == []
+
+
+def test_h42_pairwise_cross_grant_alias_composition_must_refuse():
+    """Even separately authorized refs cannot be joined across binding rows."""
+    release, universe, _, _, _ = _s2a_relation_source(
+        "s2a-h42-cross-product",
+        bindings=(("V1", "C1", "A"), ("V1", "C2", "B")),
+        event_canonical="C1", event_component="B",
+    )
+    with pytest.raises(SemanticRangeIntegrityError, match="binding|pair|component"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
+
+
+def test_h43_same_version_two_canonical_grants_paired_component_disambiguates():
+    """One version, two component-specific canonical grants: not version ambiguity."""
+    release, universe, repository, cref, sref = _s2a_relation_source(
+        "s2a-h43-paired-siblings",
+        bindings=(("V1", "C1", "A"), ("V1", "C2", "B")),
+        event_canonical="C1", event_component="A",
+    )
+    witness = I02SemanticRangeWitness.from_validated_release(release, universe)
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    install_sourcefree_i02_certified_i03_range(
+        repository, release_ref=release.release_ref,
+        universe_ref=universe, witness=witness, independently_held_root=witness.root,
+    )
+    index = repository._i03_release_indices[(release.release_ref, universe)]
+    respondent = next(iter(index.respondents))
+    assert len(list(_select_respondent_events(index, respondent, cref("C1")))) == 2
+    assert len(list(_select_respondent_events(
+        index, respondent, sref("A"), include_component=True,
+    ))) == 2
+    assert list(_select_respondent_events(index, respondent, cref("C2"))) == []
+
+
+def test_h44_same_component_grant_across_versions_preserved():
+    release, universe, _, _, _ = _s2a_relation_source(
+        "s2a-h44-agreed-versions",
+        bindings=(("V1", None, "A"), ("V2", None, "A")),
+        event_component="A",
+    )
+    assert I02SemanticRangeWitness.from_validated_release(release, universe).root
+
+
+def test_h45_changed_i02_value_changes_actual_i03_fact_and_restores():
+    """Source change—not a poisoned index—must change the real first consumer."""
+    from rawlsing_next.pre553_empirical_query import install_sourcefree_i02_certified_i03_range
+    qa = _query_authority("s2a-h45-changed")
+    results = []
+    for tag, value in (("s2a-h45-before", 0), ("s2a-h45-after", 1), ("s2a-h45-before", 0)):
+        source = _build_source(tag, [{"id": "R1", "responses": {"Y": value}}])
+        witness, root = _trusted(source)
+        install_sourcefree_i02_certified_i03_range(
+            source["repo"], release_ref=source["release_ref"],
+            universe_ref=source["universe"].ref,
+            witness=witness, independently_held_root=root,
+        )
+        pred = _branch_predicate(source, qa, tag="s2a-h45")
+        query = _query(source, qa, pred, ("Y",), tag="s2a-h45")
+        results.append(_run(source, qa, pred, query))
+    assert _cell_map(results[0].facts[0])["1"]["raw_numerator_support"] == 0
+    assert _cell_map(results[1].facts[0])["1"]["raw_numerator_support"] == 1
+    assert results[0] == results[2]
+
+
+def test_h46_sourcebacked_occurrence_component_without_question_grant_remains_native_only():
+    """Explicit producer occurrence rule is not the same as a persisted QVB grant.
+
+    The source-backed C11 producer may legally put a component on an
+    OccurrenceRule while QVB.component is typed absent. I02 accepts the source
+    and the native first reader retains the event. S2-A cannot authenticate
+    the extra component alias from I02-only records: refuse its *opt-in*
+    certificate, do not erase the native release or promote the occurrence
+    without source/sidecar provenance from Pair 1.
+    """
+    pytest.importorskip("pandas")
+    from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+    from rawlsing_next.tests.test_pre553_empirical_query import _ref
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        build_validated_source_backed_c11_release,
+    )
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    fx = _fixture("s2a-h46-occurrence-qualified")
+    projection = fx["projection"]
+    old_slots = list(projection.response_slots)
+    m_idx = next(i for i, row in enumerate(old_slots)
+                 if row.slot.name == "M")
+    old_slot = old_slots[m_idx]
+    values = list(old_slot.values)
+    first_value = values[0]
+    first_occ = first_value.occurrences[0]
+    alternate = _ref("QUESTION_COMPONENT", "s2a-h46-explicit-occurrence")
+    values[0] = replace(
+        first_value,
+        occurrences=(replace(first_occ, component_ref=alternate),
+                     *first_value.occurrences[1:]),
+    )
+    old_slots[m_idx] = replace(old_slot, values=tuple(values))
+    projection = replace(projection, response_slots=tuple(old_slots))
+    native_release = build_validated_source_backed_c11_release(fx["incidence"], projection)
+    events = [
+        e for e in native_release.public_objects
+        if isinstance(e, RespondentEvent)
+        and e.component_or_subitem_ref == alternate.as_dict()
+    ]
+    assert events  # actual producer emits source-qualified occurrence component
+    repo = C11Repository((native_release,))
+    index = _build_release_index(native_release, fx["universe"].ref)
+    native_scoped = next(k for k, value in index.respondents.items()
+                         if value.ref.as_dict() == events[0].scoped_respondent_ref)
+    assert list(_select_respondent_events(
+        index, native_scoped, alternate, include_component=True,
+    ))
+    # An I02-only witness cannot inspect the source projection that supplied
+    # this occurrence grant. Refuse additional certification, preserve native.
+    with pytest.raises(SemanticRangeIntegrityError, match="component|binding"):
+        I02SemanticRangeWitness.from_validated_release(native_release, fx["universe"].ref)
+    assert repo.resolve_release_exact(native_release.release_ref) is native_release

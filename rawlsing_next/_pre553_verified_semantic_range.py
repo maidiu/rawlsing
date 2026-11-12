@@ -82,22 +82,34 @@ def _bindings(
             if obj.ref.key in respondents:
                 raise SemanticRangeIntegrityError("duplicate respondent ref in sealed release")
             respondents[obj.ref.key] = []
-    # I02 validates native question membership and mapping-authority positivity,
-    # but these are distinct from native->canonical target equality. Reconstruct
-    # the exact admitted question aliases from *sealed QuestionVariableBinding*
-    # records, not from the untrusted derived selector or an event's assertion.
-    # Multiple genuine instrument-version bindings for the same native ref are
-    # allowed; a canonical event alias must match at least one accepted binding.
-    admitted_native: dict[str, set[str]] = {}
+    # I02's native membership and positive mapping authorities do not prove
+    # *relational* equality of an event's aliases with QuestionVariableBinding.
+    # Keep original (canonical, component) PAIRS grouped by instrument version:
+    # separate allowlists could admit synthetic cross-row combinations. Without
+    # an instrument-version discriminator, aliases must be supported by EVERY
+    # admitted version. Different siblings within ONE version remain valid.
+    admitted_native: dict[
+        str, dict[str, set[tuple[str | None, str | None]]]
+    ] = {}
     for record in release.internal_records:
         if not isinstance(record, QuestionVariableBinding):
             continue
         if _ref(record.empirical_universe_ref, "binding.universe") != universe_ref:
             continue
         native_key = _ref(record.native_question_ref, "binding.native").key
-        aliases = admitted_native.setdefault(native_key, set())
-        if isinstance(record.canonical_question_ref_or_typed_absence, ExactRef):
-            aliases.add(record.canonical_question_ref_or_typed_absence.key)
+        canonical = (
+            _ref(record.canonical_question_ref_or_typed_absence, "binding.canonical").key
+            if isinstance(record.canonical_question_ref_or_typed_absence, ExactRef)
+            else None
+        )
+        component = (
+            _ref(record.component_subitem_ref_or_typed_absence, "binding.component").key
+            if isinstance(record.component_subitem_ref_or_typed_absence, ExactRef)
+            else None
+        )
+        admitted_native.setdefault(native_key, {}).setdefault(
+            record.instrument_question_version, set()
+        ).add((canonical, component))
     postings: dict[_Key, list[RespondentEvent]] = {}
     for event in release.public_objects:
         if not isinstance(event, RespondentEvent):
@@ -109,32 +121,40 @@ def _bindings(
             raise SemanticRangeIntegrityError("event belongs to an absent respondent")
         _event_sig(event)
         native = _ref(event.native_question_ref, "event.native")
-        admissible = admitted_native.get(native.key)
-        if admissible is None:
+        admitted_versions = admitted_native.get(native.key)
+        if admitted_versions is None:
             raise SemanticRangeIntegrityError(
                 "native event lacks an exact sealed question binding in its universe"
             )
-        canonical = None
-        if event.canonical_question_ref_if_authorized is not None:
-            canonical = _ref(event.canonical_question_ref_if_authorized, "event.canonical")
-            if canonical.key not in admissible:
-                raise SemanticRangeIntegrityError(
-                    "event canonical alias disagrees with sealed QuestionVariableBinding"
-                )
-            # Multiple different instrument-version grants for the same
-            # native question are not evidence of which version produced this
-            # event: RespondentEvent carries no question-version discriminator.
-            # Do not certify one arbitrary member of a conflicting union.
-            if len(admissible) > 1:
-                raise SemanticRangeIntegrityError(
-                    "ambiguous instrument-version canonical binding for event"
-                )
+        canonical = (
+            _ref(event.canonical_question_ref_if_authorized, "event.canonical")
+            if event.canonical_question_ref_if_authorized is not None else None
+        )
+        component = (
+            _ref(event.component_or_subitem_ref, "event.component")
+            if event.component_or_subitem_ref is not None else None
+        )
+        if canonical is not None or component is not None:
+            # Each asserted alias must coexist in an ORIGINAL binding row
+            # for every candidate instrument version. The event cannot choose
+            # a version it does not identify.
+            for version, pairs in admitted_versions.items():
+                if not any(
+                    (canonical is None or c == canonical.key)
+                    and (component is None or p == component.key)
+                    for c, p in pairs
+                ):
+                    raise SemanticRangeIntegrityError(
+                        "event canonical/component alias violates paired "
+                        "QuestionVariableBinding or is ambiguous across "
+                        f"instrument versions ({version!r})"
+                    )
         respondents[respondent].append(event)
         aliases = [("native", native)]
         if canonical is not None:
             aliases.append(("canonical", canonical))
-        if event.component_or_subitem_ref is not None:
-            aliases.append(("component", _ref(event.component_or_subitem_ref, "event.component")))
+        if component is not None:
+            aliases.append(("component", component))
         for kind, alias in aliases:
             postings.setdefault((respondent, kind, alias.key), []).append(event)
     ordered = {
