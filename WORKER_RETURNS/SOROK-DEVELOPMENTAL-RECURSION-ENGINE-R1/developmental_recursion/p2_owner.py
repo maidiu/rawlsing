@@ -19,7 +19,7 @@ from .contracts import (
     canonical, detached, digest,
 )
 from .supporting_actor import (
-    read_supporting_actor, record_supporting_participation,
+    assert_no_private_leak, record_supporting_participation,
     resolve_participants, verify_supporting_participation,
 )
 
@@ -135,9 +135,13 @@ class P2Owner:
                         "(id TEXT PRIMARY KEY, proposal TEXT NOT NULL, "
                         "before_state TEXT NOT NULL, result TEXT)")
         self.db.execute("CREATE TABLE IF NOT EXISTS binding (id INTEGER PRIMARY KEY, value TEXT)")
+        # The binding is the original root/branch/source invariant over the
+        # root actor IDs. Declared owner participants are validated live at
+        # construction and per proposal; they are not a second invariant that
+        # can lock an ordinary P2/P3 owner out after a supporting actor enters.
         current = {
             "root": fanin.root_hash, "branch": fanin.session.branch_id,
-            "source": self.source_ref, "participants": self.participants,
+            "source": self.source_ref, "root_participants": root_ids,
         }
         binding = canonical(current)
         row = self.db.execute("SELECT value FROM binding WHERE id=1").fetchone()
@@ -148,19 +152,28 @@ class P2Owner:
                 stored = json.loads(row[0])
             except (TypeError, ValueError):
                 stored = {}
-            old = tuple(stored.get("participants") or ())
             identity_matches = (
                 stored.get("root") == current["root"]
                 and stored.get("branch") == current["branch"]
                 and stored.get("source") == current["source"]
             )
-            additive = set(old) <= set(self.participants)
-            if not (identity_matches and additive):
+            stored_root = stored.get("root_participants")
+            if stored_root is not None:
+                root_matches = tuple(stored_root) == root_ids
+            else:
+                # Legacy row from the baseline or the first C01 cut: it bound a
+                # declared participant tuple. Migrate it to the root invariant
+                # when it still names this root's focal actor.
+                legacy = stored.get("participants")
+                root_matches = (
+                    isinstance(legacy, (list, tuple))
+                    and bool(legacy)
+                    and all(isinstance(value, str) for value in legacy)
+                    and root_ids[0] in legacy
+                )
+            if not (identity_matches and root_matches):
                 self.db.close()
                 raise RecursionRefusal("P2_OWNER_BINDING_MISMATCH")
-            for extra in set(self.participants) - set(old):
-                if extra not in root_ids:
-                    read_supporting_actor(fanin.session, extra)
             self.db.execute("UPDATE binding SET value=? WHERE id=1", (binding,))
         self.db.commit()
 
@@ -233,6 +246,8 @@ class P2Owner:
                 if (world.positions.get(participant["alias"])
                         != focal_position):
                     raise RecursionRefusal("P2_SUPPORTING_PARTICIPANT_NOT_COPRESENT")
+        assert_no_private_leak(
+            self.fanin.session, proposal.document(), proposal.participants)
         if set(proposal.circumstances) - {"history_refs", "language_context"}:
             raise RecursionRefusal("P2_UNSUPPORTED_EVENT_CIRCUMSTANCES")
         if proposal.circumstances.get("language_context") is not None:
