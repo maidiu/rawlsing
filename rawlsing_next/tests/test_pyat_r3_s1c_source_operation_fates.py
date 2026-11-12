@@ -282,6 +282,35 @@ def test_s1c_proved_inapplicable_form_is_retained_not_denominator(tmp_path):
     assert result["operation_anti_join"]["no_drop_ok"]
 
 
+def test_s1c_changed_valid_eligible_operation_and_restoration(tmp_path):
+    """Changing one permitted operation class changes actual I05 receipts."""
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    baseline = _run(bundle, inventory, policy, frontier, census)
+    assert any(op.claim_class == "JOINT" and op.disposition == ELIGIBLE
+               for op in frontier.operations)
+
+    # Sourcefree policy decision removes JOINT eligibility; no operation is
+    # silently deleted, because the new declared frontier retains its denied
+    # operation IDs and independently re-frozen scientific fate rows.
+    narrower_policy = replace(
+        policy, allowed_classes=tuple(
+            cls for cls in policy.allowed_classes if cls != "JOINT"
+        ),
+    )
+    changed_frontier = enumerate_frontier(inventory, narrower_policy)
+    changed_census = _freeze_packet(
+        changed_frontier, scope_id="S1C-CHANGED-SOURCEFREE-ISSUER-DECISION"
+    )
+    changed = _run(bundle, inventory, narrower_policy,
+                   changed_frontier, changed_census)
+    restored = _run(bundle, inventory, policy, frontier, census)
+    assert changed["operation_anti_join"]["no_drop_ok"]
+    assert changed["issued_candidate_count"] < baseline["issued_candidate_count"]
+    assert changed["checkpoint_hash"] != baseline["checkpoint_hash"]
+    assert restored["checkpoint_hash"] == baseline["checkpoint_hash"]
+    assert restored["frozen_census_hash"] == baseline["frozen_census_hash"]
+
+
 def test_s1c_changed_value_and_restore_real_fact_identity(tmp_path):
     from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
     from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
