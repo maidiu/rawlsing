@@ -6,14 +6,14 @@
 **Branch:** `codex/sorok-duel-d02-a-acquired-period-20261112-r1`.
 **Composition start:** `0c460c7a2a3ed0b6f485b1cc3131bef1b18c0569` (A D02 `76547199...` + C02 B `4d93685d...` + B02 B `4f78bf71...`).
 **B return examined:** `0ac3002b94e8a5ebc31842c2686a6a664e8cd63a`; B code cut `dba782ddf15dd9d8db261c08b515944dcea4b8e4`.
-**A code cut:** `71cd4dda7dde8d698c8b5146ec69224821297a9c`.
+**A code cut:** `c9f97e99d4b786cb4676d7a1b61d28ffcacaa65d`.
 **Ceiling:** `SOURCEFREE_S2_ONLY`; no native CAN/ADP/Pyat, actor/human/source right, production or protected merge.
 
 ## 1. Exact artifact
 
 | Path | SHA-256 / change |
 |---|---|
-| `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py` | `434843b1c1ecfa892cadd585d39e2a3921914ad7ce5ed6f4d36bd8ffeadab11b`; acquired-state activation and current B02 ingress. |
+| `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py` | `a8f5ff37e6bb207fb7864bb64aa76f633dbffe6562085b63329d070e6a598bd4`; acquired-state activation and current B02 ingress. |
 | `WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/INTEGRATION_CONTRACT.md` | `4eabe29ce3f2bd884cd782b97d18046490865870285a9e1a75b57b2fdd14c4df`; additive optional D02 interface/source/evidence limits only. |
 | `WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md` | `8e43dc53d32bc057ce60b1de7e3d9ea82d39fa4ee660690d5cd2bafbd308f2b0`; actual current-period ingress, historical/interleaving hold. |
 | `WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_a_acquired_period.py` | `ffb889caf3dc5f005861f7b7f71b12cf39273de938e9beae05d38f0dc7c934f9`; four new tests. |
@@ -40,7 +40,7 @@ Observed:
 
 | Suite | Result | Evidence |
 |---|---|---|
-| D02 all (A prior + B repairs + new acquired/period) | **20 passed in 866.40s** | `evidence/d02_a_acquired_period_all.log` |
+| D02 all (A prior + B repairs + new acquired/period) | **20 passed in 815.73s** | `evidence/d02_a_acquired_period_all.log` |
 | D01 all | **15 passed in 92.03s** | `evidence/d02_a_d01_regression.log` |
 | P3 owner/store/rules/projections/goal-residual | **77 passed, 1 skipped in 51.12s** | `evidence/d02_a_p3_regression.log` |
 | B02 source suite at this composition | **7 passed in 53.02s** | `evidence/d02_a_b02_source_regression.log` |
