@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.18, pytest-9.2.0, pluggy-1.7.0 -- /Users/matthewsmith/s2b-work/rawlsing-s2b-r5-local/.venv/bin/python
+rootdir: /Users/matthewsmith/s2b-work/rawlsing-s2b-r5-local
+collecting ... collected 14 items
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release PASSED [  7%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_chunk_determinism_cold_root_wrong_source PASSED [ 14%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_declared_census_refuses_family_omission[RespondentEvent] PASSED [ 21%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_declared_census_refuses_family_omission[EmpiricalCoordinateFact] PASSED [ 28%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_declared_census_refuses_family_omission[RoutingEligibilityFact] PASSED [ 35%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_declared_census_refuses_family_omission[QuestionVariableBinding] PASSED [ 42%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_declared_census_refuses_family_omission[RespondentIdentity] PASSED [ 50%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_declared_census_refuses_family_omission[AuthoritySnapshot] PASSED [ 57%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_duplicate_occurrence_and_changed_state_refused PASSED [ 64%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_no_saved_local_rehash_authenticates_cold PASSED [ 71%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_one_shot_iterators_cannot_silently_replay PASSED [ 78%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_sourcefree_direct_changed_restore_without_legacy_release PASSED [ 85%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_original_semantic_event_order_is_invariant PASSED [ 92%]
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory PASSED [100%]
+
+============================== 14 passed in 8.78s ==============================

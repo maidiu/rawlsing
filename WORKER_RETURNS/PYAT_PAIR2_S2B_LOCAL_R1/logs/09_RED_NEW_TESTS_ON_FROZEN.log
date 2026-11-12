@@ -1,0 +1,175 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+__________ test_s2b_a5_direct_duplicate_manifest_declarations_refused __________
+
+tmp_path = PosixPath('/tmp/pytest-of-matthewsmith/pytest-7/test_s2b_a5_direct_duplicate_m0')
+
+    def test_s2b_a5_direct_duplicate_manifest_declarations_refused(tmp_path):
+        for label in ("universe", "authority"):
+            candidate, _, source = _direct("s2b-a5-dup-manifest-" + label)
+            manifest = candidate.source_release_manifest
+            if label == "universe":
+                universe = manifest.declared_universe_refs[0]
+                manifest = replace(
+                    manifest, declared_universe_refs=(universe, universe),
+                )
+            else:
+                authority = manifest.declared_authority_snapshot_refs[0]
+                manifest = replace(
+                    manifest, declared_authority_snapshot_refs=(
+                        *manifest.declared_authority_snapshot_refs, authority,
+                    ),
+                )
+            target = tmp_path / (label + ".sqlite")
+>           with pytest.raises(ExternalI02IntegrityError):
+E           Failed: DID NOT RAISE ExternalI02IntegrityError
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:300: Failed
+________ test_s2b_a5_direct_legacy_valid_manifest_without_replay_count _________
+
+tmp_path = PosixPath('/tmp/pytest-of-matthewsmith/pytest-7/test_s2b_a5_direct_legacy_vali0')
+
+    def test_s2b_a5_direct_legacy_valid_manifest_without_replay_count(tmp_path):
+        candidate, _, _ = _direct("s2b-a5-no-replay-count")
+        counts = dict(
+            candidate.source_release_manifest.declared_record_counts_by_logical_family
+        )
+        counts.pop("ReplayManifest")
+        base = replace(
+            candidate,
+            source_release_manifest=replace(
+                candidate.source_release_manifest,
+                declared_record_counts_by_logical_family=counts,
+            ),
+            candidate_replay_manifest=None,
+        )
+        replay = build_candidate_replay_manifest(
+            base,
+            replay_protocol_authority_ref=(
+                candidate.candidate_replay_manifest.replay_protocol_authority_ref
+            ),
+            deterministic_tie_order_rules_ref=(
+                candidate.candidate_replay_manifest.deterministic_tie_order_rules_ref
+            ),
+            replay_protocol_version=(
+                candidate.candidate_replay_manifest.replay_protocol_version
+            ),
+        )
+        candidate = replace(base, candidate_replay_manifest=replay)
+        historical = validate_c11_source_release(candidate)
+        direct = direct_sections_from_candidate(
+            replace(candidate, candidate_replay_manifest=None),
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+        )
+        path = tmp_path / "no-replay-count.sqlite"
+>       roots = build_sourcefree_direct_i02(
+            direct, candidate.empirical_universes[0].ref, path, chunk_size=2,
+        )
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:343: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_direct_i02_sourcefree.py:373: in build_sourcefree_direct_i02
+    _fail("sourcefree direct source manifest missing mandatory original counts")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'sourcefree direct source manifest missing mandatory original counts'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: sourcefree direct source manifest missing mandatory original counts
+
+rawlsing_next/_pre553_external_i02_certificate.py:52: ExternalI02IntegrityError
+___ test_s2b_a5_direct_cold_verifier_typed_refusal_on_missing_direct_tables ____
+
+tmp_path = PosixPath('/tmp/pytest-of-matthewsmith/pytest-7/test_s2b_a5_direct_cold_verifi0')
+
+    def test_s2b_a5_direct_cold_verifier_typed_refusal_on_missing_direct_tables(tmp_path):
+        candidate, _, source = _direct("s2b-a5-missing-direct-table")
+        path = tmp_path / "direct.sqlite"
+        roots = build_sourcefree_direct_i02(
+            source, candidate.empirical_universes[0].ref, path,
+        )
+        with sqlite3.connect(path) as attacker:
+            attacker.execute("DROP TABLE main.event_occurrences")
+        forged = replace(roots, physical=_digest_file(path))
+        with pytest.raises(ExternalI02IntegrityError):
+>           VerifiedExternalI02(path, roots=forged)
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:559: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:545: in __init__
+    if _logical_root(self.db, schema=roots.schema) != roots.logical:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+db = <sqlite3.Connection object at 0x7ab4a71508b0>
+schema = 'PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1'
+
+    def _logical_root(db: sqlite3.Connection, *, schema: str = SCHEMA) -> str:
+        """Canonical streaming commitment, independent of insertion and run sizes."""
+        h = sha256()
+        def absorb(fields: object) -> None:
+            material = canonical_json(fields).encode("utf-8")
+            h.update(len(material).to_bytes(8, "big"))
+            h.update(material)
+        if schema not in (SCHEMA, DIRECT_SCHEMA):
+            _fail("unknown external I02 certificate schema")
+        absorb(schema)
+        queries = (
+            ("header", "SELECT name,value FROM header ORDER BY name"),
+            ("objects", "SELECT * FROM main.objects ORDER BY ref"),
+            ("closure", "SELECT ref FROM main.closure ORDER BY ref"),
+            ("bindings", "SELECT * FROM main.bindings ORDER BY universe,native,version,canonical,component"),
+            ("selectors", "SELECT * FROM main.selectors ORDER BY respondent,kind,target,event_ref"),
+        )
+        if schema == DIRECT_SCHEMA:
+            queries += (
+                ("scoped_names", "SELECT * FROM main.scoped_names ORDER BY universe,respondent_key"),
+                ("event_occurrences", "SELECT * FROM main.event_occurrences ORDER BY identity"),
+            )
+        for name, query in queries:
+            absorb(name)
+>           for row in db.execute(query):
+                       ^^^^^^^^^^^^^^^^^
+E           sqlite3.OperationalError: no such table: main.event_occurrences
+
+rawlsing_next/_pre553_external_i02_certificate.py:231: OperationalError
+___________ test_s2b_a5_direct_publication_oserror_typed_no_clobber ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-matthewsmith/pytest-7/test_s2b_a5_direct_publication0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ab4a7316090>
+
+    def test_s2b_a5_direct_publication_oserror_typed_no_clobber(tmp_path, monkeypatch):
+        import rawlsing_next._pre553_direct_i02_sourcefree as impl
+        candidate, _, source = _direct("s2b-a5-publish-oserror")
+        target = tmp_path / "target.sqlite"
+        def broken_link(*args, **kwargs):
+            raise OSError("simulated link failure")
+        monkeypatch.setattr(impl.os, "link", broken_link)
+        with pytest.raises(ExternalI02IntegrityError, match="no-clobber"):
+>           build_sourcefree_direct_i02(
+                source, candidate.empirical_universes[0].ref, target, chunk_size=1,
+            )
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:570: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_direct_i02_sourcefree.py:582: in build_sourcefree_direct_i02
+    os.link(staged, target, follow_symlinks=False)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('/tmp/pytest-of-matthewsmith/pytest-7/test_s2b_a5_direct_publication0/.s2b-direct-stage-grmg7gtx.tmp', PosixPath('/tmp/pytest-of-matthewsmith/pytest-7/test_s2b_a5_direct_publication0/target.sqlite'))
+kwargs = {'follow_symlinks': False}
+
+    def broken_link(*args, **kwargs):
+>       raise OSError("simulated link failure")
+E       OSError: simulated link failure
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:567: OSError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_duplicate_manifest_declarations_refused
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_legacy_valid_manifest_without_replay_count
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_cold_verifier_typed_refusal_on_missing_direct_tables
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_publication_oserror_typed_no_clobber
+4 failed, 15 deselected in 0.67s

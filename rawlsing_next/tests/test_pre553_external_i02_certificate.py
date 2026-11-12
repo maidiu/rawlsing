@@ -16,7 +16,11 @@ import pytest
 from rawlsing_next._pre553_external_i02_certificate import (
     ExternalI02IntegrityError, ExternalI02Roots, VerifiedExternalI02,
     _digest_file, _logical_root, build_sourcefree_external_i02,
+    install_direct_sourcefree_i02_i03,
     install_sourcefree_external_i02_i03,
+)
+from rawlsing_next._pre553_direct_i02_sourcefree import (
+    build_sourcefree_direct_i02, direct_sections_from_candidate,
 )
 from rawlsing_next.tests.test_pre553_verified_semantic_range import (
     _build_source, _release, _multi_i03_source,
@@ -93,6 +97,88 @@ def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
     assert restored_roots.logical == roots.logical
     with VerifiedExternalI02(restore_path, roots=restored_roots):
         pass
+
+
+def test_s2b_a5_direct_sourcefree_drives_full_native_i03_query(tmp_path, monkeypatch):
+    """Direct-schema selectors feed the complete native fact/replay pipeline.
+
+    The direct certificate supplies the exact selector index; the already
+    sealed repository supplies semantic bodies. This is direct native I03
+    support, not the separate S2-C cold physical body realization.
+    """
+    import rawlsing_next.tests.test_pre553_empirical_query as empirical_query
+    captured = []
+    original = empirical_query.ingest_c11_source_release
+    def spy(candidate, repo):
+        captured.append(candidate)
+        return original(candidate, repo)
+    monkeypatch.setattr(
+        empirical_query, "ingest_c11_source_release", spy,
+    )
+
+    def build(tag, rows, name):
+        source = _build_source(tag, rows)
+        candidate = captured[-1]
+        qa, pred, query, oracle = _facts(source, tag)
+        replay = candidate.candidate_replay_manifest
+        direct = direct_sections_from_candidate(
+            replace(candidate, candidate_replay_manifest=None),
+            replay_protocol_authority_ref=(
+                replay.replay_protocol_authority_ref
+            ),
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=(
+                replay.deterministic_tie_order_rules_ref
+            ),
+        )
+        path = tmp_path / (name + ".sqlite")
+        roots = build_sourcefree_direct_i02(
+            direct, source["universe"].ref, path, chunk_size=3,
+        )
+        return source, qa, pred, query, oracle, path, roots
+
+    tag = "s2b-a5-direct-full-query"
+    original_rows = [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ]
+    changed_rows = [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 1}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ]
+    before = build(tag, original_rows, "direct-before")
+    with VerifiedExternalI02(before[5], roots=before[6]) as certified:
+        install_direct_sourcefree_i02_i03(
+            before[0]["repo"], before[0]["release_ref"],
+            before[0]["universe"].ref, certified,
+        )
+        result = _run(before[0], before[1], before[2], before[3])
+        assert result == before[4]
+        assert _cell_map(result.facts[0])["1"]["raw_numerator_support"] == 2
+    changed = build(tag, changed_rows, "direct-changed")
+    with VerifiedExternalI02(changed[5], roots=changed[6]) as certified:
+        install_direct_sourcefree_i02_i03(
+            changed[0]["repo"], changed[0]["release_ref"],
+            changed[0]["universe"].ref, certified,
+        )
+        changed_result = _run(
+            changed[0], changed[1], changed[2], changed[3],
+        )
+        assert changed_result == changed[4]
+        assert changed_result != before[4]
+        assert _cell_map(changed[4].facts[0])["1"]["raw_numerator_support"] == 3
+    restored = build(tag, original_rows, "direct-restored")
+    assert restored[6].logical == before[6].logical
+    with VerifiedExternalI02(restored[5], roots=restored[6]) as certified:
+        install_direct_sourcefree_i02_i03(
+            restored[0]["repo"], restored[0]["release_ref"],
+            restored[0]["universe"].ref, certified,
+        )
+        assert _run(
+            restored[0], restored[1], restored[2], restored[3],
+        ) == before[4]
 
 
 def test_s2b_b4_switchable_external_roots_cannot_authorize_wrong_i03_release(tmp_path):
