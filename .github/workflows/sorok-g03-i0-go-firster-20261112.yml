@@ -1,0 +1,37 @@
+name: SOROK G03-I0 actual P6 meter
+on:
+  push:
+    branches:
+      - agent/sorok-g03-i0-a-go-firster-20261112-r1
+permissions:
+  contents: read
+jobs:
+  actual-p6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Hostile reader tests
+        working-directory: WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1
+        run: python -B -m unittest -v test_measure
+      - name: Actual five distinct P6 subprocesses and independent cold reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/measure.py --repo "$GITHUB_WORKSPACE" --out /tmp/g03-i0-evidence
+          python -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/read_receipts.py /tmp/g03-i0-evidence --require-expected
+          echo "RAW_SAMPLE_BEGIN"
+          for file in manifest.json index.json summary.json; do echo "$file=$(cat /tmp/g03-i0-evidence/$file)"; done
+          for id in new view wait cold_view fail_wait; do echo "$id=$(cat /tmp/g03-i0-evidence/attempts/$id/receipt.json)"; done
+          echo "RAW_SAMPLE_END"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sorok-g03-i0-full-raw-receipts
+          path: /tmp/g03-i0-evidence/
+          retention-days: 30
