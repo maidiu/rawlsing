@@ -300,16 +300,16 @@
   "successor_960_working_overlay": {
     "issue": 960,
     "packet": "S2-G/P2-08",
-    "state": "G5_REVISE_MR01_SINGLE_B_REPAIR_RUNNING",
+    "state": "MR01_B_REPAIR_DELIVERED_SAME_G5_RECHECK_RUNNING",
     "a_delivery": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
     "a_implementation": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
-    "reported_tests": "153 owner/adapter/counter +19 S2-F; author-reported, not G5 acceptance",
+    "reported_tests": "153+19+1 PASS; B repair evidence, not independent reacceptance",
     "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE_CANDIDATE",
     "b_job": "pyat960-s2g-b01",
     "b_session": "ses_e3120b9efffegreD5YfH7dOO15",
     "first_consumer": "existing evaluate_learned_world_consumer cold from S2-F closure",
     "integration": "UNMERGED",
-    "G5": "FAIL_G1_G3_WRONG_SOURCE_MULTI_RELEASE",
+    "G5": "RECHECK_PENDING_PRIOR_MR01_FAIL_PRESERVED",
     "Q2_Q3": "BLOCKED_DEPENDENCY; no new accepted ABI receipt",
     "holds": [
       "production issuer",
@@ -331,6 +331,10 @@
     "independent_tests": "153+19 PASS but wrong-source first-consumer falsifier accepted",
     "repair_job": "pyat960-s2g-mr01-b-repair",
     "repair_scope": "G5-MR01 selected fact provenance vs determinant release only",
-    "next": "Same independent G5 delta recheck after single bounded correction"
+    "next": "Same G5 exact delta verdict; no further automatic repair loop",
+    "repair_delivery": "6ae305dcd284a47d7eb105ad203001db31212c27",
+    "repair_implementation": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+    "repair_job_state": "TERMINAL_EXIT0",
+    "g5_recheck_job": "pyat960-s2g-g5-mr01-recheck"
   }
 }

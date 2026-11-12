@@ -9,7 +9,7 @@
     {
       "packet_id": "S2-G",
       "queue": "Q1",
-      "state": "SAME_G5_MR01_RECHECK_RESERVED",
+      "state": "SAME_G5_MR01_RECHECK_LAUNCHED_PENDING_FIRST_TURN_METADATA",
       "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-control/WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md",
       "contract_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
       "agents": {
@@ -31,11 +31,11 @@
       "job_id": "pyat960-s2g-g5-mr01-recheck",
       "owner_reservation": "https://github.com/maidiu/rawlsing/issues/919#issuecomment-6832863802",
       "launch": {
-        "job_id": "pyat960-s2g-mr01-b-repair",
-        "child_pid": 23580,
-        "supervisor_pid": 23579,
-        "observer_pid": 23581,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s2g-mr01-b-repair",
+        "job_id": "pyat960-s2g-g5-mr01-recheck",
+        "child_pid": 27423,
+        "supervisor_pid": 27422,
+        "observer_pid": 27424,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s2g-g5-mr01-recheck",
         "launch_is_not_completion": true
       },
       "a_delivery_sha": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
@@ -50,7 +50,7 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-g5",
         "branch": "agent/pyat960-s2g-g5-r1",
         "independence": "NEITHER_A_NOR_B; prior S2-F reviewer only, no S2-G authorship",
-        "state": "MR01_RECHECK_RESERVED"
+        "state": "MR01_RECHECK_LAUNCHED"
       },
       "g5_delivery_sha": "8cfeb115a43c905dd3241e63b2d96aa0735bf415",
       "bounded_post_g5_correction": "USED_AWAIT_SAME_G5_RECHECK",

@@ -1,3 +1,7 @@
+# Successor #960 MR01 repair / same G5 recheck — 2026-11-12
+
+B repair code `c8e739470beb0dc65ad70c419a906e483a12ca8f` / delivery `6ae305dcd284a47d7eb105ad203001db31212c27`: ten-line exact selected-fact release check + focused regression. Original G5 wrong-source case now refuses; author153+19+1 PASS. SAME nonauthor G5 recheck `pyat960-s2g-g5-mr01-recheck` actually launched, authors idle. Prior G5 FAIL retained pending recheck; no acceptance. All external/upstream/Q2/Q3/protected holds remain. Historical entries follow.
+
 # Successor #960 G5 REVISE / exact repair — 2026-11-12
 
 Independent G5 `8cfeb115a43c905dd3241e63b2d96aa0735bf415` reproduced G5-MR01: receipt A+B admitted selected fact from A as determinant B at actual world consumer. Independent153+19 PASS and normal change/restore conserved, but G1/G3/G5 FAIL. One bounded repair now running through same fixed B (`pyat960-s2g-mr01-b-repair`), then same G5 delta recheck. No acceptance. All integration/science/production issuer/upstream/Q2/Q3 holds persist. Historical entries follow.

@@ -391,3 +391,8 @@ A counter code `a3d1e33ecad37cd964f3caded37c2fec9360330e` (delivery `6f3a10552e0
 ### #960 S05 G5 revision / selected source ownership — 2026-11-12
 
 Independent G5 delivery `8cfeb115a43c905dd3241e63b2d96aa0735bf415` independently153+19 PASS but G1/G3/G5 FAIL on G5-MR01: selected fact provenance A accepted with determinant B through multi-release receipt. No scoped acceptance. Same fixed B now runs ONE bounded exact adapter check/regression repair, then same G5 delta recheck; no optional hardening/new owner changes. Full original S2-G/production issuer/original35/science/protected holds and Q2/Q3 dependencies remain.
+
+
+### #960 S05 MR01 repair / same independent delta recheck — 2026-11-12
+
+B code `c8e739470beb0dc65ad70c419a906e483a12ca8f` adds ten-line selected-fact exact release-provenance check; original unmodified G5 wrong-source harness now REFUSED, base conserved, author153+19+1 PASS. SAME G5 recheck launched on delivery `6ae305dcd284a47d7eb105ad203001db31212c27`. Prior G5 FAIL preserved until verdict; no scoped acceptance or protected/scientific adoption. One bounded correction used; all upstream/external/Q2/Q3 holds persist.

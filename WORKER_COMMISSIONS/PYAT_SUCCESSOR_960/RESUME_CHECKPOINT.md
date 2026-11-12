@@ -1,5 +1,14 @@
 # Successor #960 — same existing PYAT HQ
 
+## B MR01 repair terminal → SAME G5 delta recheck launched — 2026-11-12
+
+B repair exit0 20:41:10–20:46:47 UTC (5m37s). Delivery `6ae305dcd284a47d7eb105ad203001db31212c27`, code `c8e739470beb0dc65ad70c419a906e483a12ca8f`, remote verified. Actual full handoff, code/test delta and original G5 unmodified harness GREEN evidence inspected. Ten-line adapter check binds determinant release to selected fact own exact C11 provenance; one focused regression. Original wrong-source mutant REFUSED with exact reason; base positive conserved. Author reports153+19+1 PASS. No acceptance until same reviewer returns.
+
+SAME independent G5 `ses_e30c25800ffeT8XbyTuHekRCme` fast-forwarded exclusive reviewer branch/worktree to exact B delivery. `pyat960-s2g-g5-mr01-recheck` launched ONCE child27423/supervisor27422/finite observer27424; both authors idle. Review only own NEW WORKER_RETURNS/PYAT960_S2G_G5_RECHECK/, original code/tests/returns read-only. Full contract/original G5 and B repair handoffs+receipts passed. Actual first-turn metadata pending. Delta recheck of MR01 and preserved original153+19 plus new regression (must RUN, no sparse SKIP), base/nativechange/restore; no new broad investigation. Single post-G5 correction used; unresolved material defect goes HQ adjudication, no further autonomous loop.
+
+Q2/S1-E and Q3/S2-C remain BLOCKED_DEPENDENCY with no new qualified upstream receipt. All original35/science/production issuer/full joined/protected merge holds remain. Terminal notifications only; auto-wakes paused.
+
+
 ## G5 REVISE / single bounded MR01 repair launched — 2026-11-12
 
 G5 exit0 20:21:46–20:38:48 UTC (17m02s), delivery `8cfeb115a43c905dd3241e63b2d96aa0735bf415` remote verified. Actual handoff, receipt, implementation boundary, hostile harness/evidence inspected. Independent153+19 PASS and genuine base/change/restore/current/as-of/crash preserved. Verdict REVISE_EXACT_DEFECT G5-MR01: multi-release receipt A+B allows selected fact provenance A with consumer determinant B, actual learned-world reader falsely supported. G1/G3 FAIL, G2/G4 scoped PASS, G5 FAIL; not acceptance. Reviewer modified own return only.
