@@ -1188,6 +1188,35 @@ class DurableLearnedLifecycle:
             raise DurableLearnedLifecycleError(
                 "consumer producer predicate is absent from the M1 evidence chain"
             )
+        closure_receipts = {
+            obj.ref.key: obj for obj in closure.object_graph.discovery_receipts
+        }
+        closure_fact_keys = set(closure_refs["empirical_facts"])
+        for receipt_ref in self.m1_disposition.discovery_result_receipt_refs:
+            receipt = closure_receipts.get(receipt_ref.key)
+            if receipt is None:
+                raise DurableLearnedLifecycleError(
+                    "M1 disposition discovery receipt is absent from the declared S2F closure"
+                )
+            receipt_fact_keys = {
+                _exact(dict(ref), "receipt empirical fact").key
+                for ref in (
+                    *receipt.empirical_fact_refs,
+                    *getattr(receipt, "validation_fact_refs", ()),
+                )
+            }
+            if not receipt_fact_keys.issubset(disposition_refs["empirical_facts"]):
+                raise DurableLearnedLifecycleError(
+                    "M1 disposition omits a fact owned by a retained discovery receipt"
+                )
+            if not receipt_fact_keys.issubset(bundle_refs["empirical_facts"]):
+                raise DurableLearnedLifecycleError(
+                    "M1 input bundle omits a fact owned by a retained discovery receipt"
+                )
+            if not receipt_fact_keys.issubset(closure_fact_keys):
+                raise DurableLearnedLifecycleError(
+                    "retained discovery receipt fact is absent from the declared S2F closure"
+                )
         if self.determinants.release_ref.key not in additional_refs:
             raise DurableLearnedLifecycleError(
                 "consumer source release is absent from the M1 input bundle"
