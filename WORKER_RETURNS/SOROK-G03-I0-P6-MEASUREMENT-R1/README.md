@@ -50,3 +50,22 @@ python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/read_receipts.py /tmp/g
 ```
 
 **Evidence boundary:** the true measured subprocess wall time, direct-child wait4 CPU/RSS, sourcefree command outcomes, SQLite readback, state bytes and cold **process** proof survive. Process-tree resource use, true cold kernel cache, provider calls/tokens/retries/spend, live network activity, generated-root cohort and Mac-host performance are **UNOBSERVED**, not zero. Physical SQLite header/page writes remain observable and are not denied. Immutable GitHub Actions results and downloadable raw artifacts are cut-specific. Final independent G5 receiving and any protected/native/human grant remain separate.
+
+
+## Agent A B→A relay — V3 typed, checkpoint-qualified SQLite witness
+
+A's relay is a strict, sourcefree successor to B's V2, not a retroactive reinterpretation of B's already pinned receipts. The changed `SCHEMA=G03_I0_REAL_P6_V3` and `STATE_LOGICAL_SCHEME=G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2` distinguish SQLite `NULL`, `INTEGER`, `REAL`, `TEXT` and `BLOB` result storage classes. Specifically, B's untyped BLOB `0x4142` → `"4142"` alias with TEXT `"4142"` is now impossible at the row serializer. This was reproduced against the actual `p3_records.payload_json` table in a real P6-generated sourcefree SQLite database from B's raw artifact #13972011801.
+
+Because B's `mode=ro&immutable=1` cannot read committed uncheckpointed WAL pages, V3 **fails closed** when nonempty `p3_psyche.sqlite3-wal` exists. This preserves the explicit B contract of *closed, checkpointed* SQLite logical evidence; a reader must not perform a hidden checkpoint or report stale SQL as current. This is not a universal multi-process transactional snapshot facility. New `test_agent_a_relay.py` includes the actual P6-generated P3 collision, a simple typed storage-class collision, and real committed WAL negative.
+
+Host CI replay command after runner access is restored:
+
+```bash
+(cd WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1 && python3 -B -m unittest -v test_measure test_agent_b test_agent_a_relay)
+python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/measure.py --repo "$PWD" --out /tmp/g03-a-relay-FRESH
+INDEX_SHA=$(sha256sum /tmp/g03-a-relay-FRESH/index.json)
+INDEX_SHA="${INDEX_SHA%% *}"
+python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/read_receipts.py /tmp/g03-a-relay-FRESH --index-sha256 "$INDEX_SHA" --repo "$PWD" --require-expected
+```
+
+At this relay's initial code cut, GitHub Actions allocated no runner and produced zero executable steps; parallel unrelated PYAT workflows also failed pre-runner. Do not represent those failed jobs as red implementation tests, nor B's earlier green sample as a green run of V3. Full status in `AGENT_A_RELAY_HANDOFF.md` and `G03_I0_A_RELAY_RECEIVING_STATUS.json`; G5 independent receiving remains unperformed. Sourcefree new code may earn S2 only after actual subprocess replay at its final exact SHA.
