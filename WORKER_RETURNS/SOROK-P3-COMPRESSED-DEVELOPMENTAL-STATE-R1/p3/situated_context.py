@@ -668,7 +668,7 @@ def _plan_scope(plan: Any, owner: Any, snapshot: Mapping[str, Any]) -> dict:
         if value.get(key) != snapshot.get(key):
             _refuse("D02_ACQUIRED_PLAN_IDENTITY:" + key)
     for key in ("source_hash", "registry_hash", "grade", "project",
-                "counterpart"):
+                "counterpart", "event_id"):
         _text(value.get(key), "D02_ACQUIRED_PLAN_" + key.upper())
     if value.get("source_hash") != owner.source_hash:
         _refuse("D02_ACQUIRED_PLAN_SOURCE")
@@ -676,13 +676,13 @@ def _plan_scope(plan: Any, owner: Any, snapshot: Mapping[str, Any]) -> dict:
         _refuse("D02_ACQUIRED_PLAN_REGISTRY")
     if value.get("grade") != P3_GRADE:
         _refuse("D02_ACQUIRED_PLAN_GRADE")
-    if value.get("hash"):
-        _hash(value.get("hash"), "D02_ACQUIRED_PLAN_HASH")
-        if digest({key: item for key, item in value.items()
-                   if key != "hash"}) != value["hash"]:
-            _refuse("D02_ACQUIRED_PLAN_HASH_MISMATCH")
-    if "permitted_rules" in value and value["permitted_rules"] != (
-            test_rules.rule_descriptors()):
+    if not value.get("hash"):
+        _refuse("D02_ACQUIRED_PLAN_HASH_MISSING")
+    _hash(value.get("hash"), "D02_ACQUIRED_PLAN_HASH")
+    if digest({key: item for key, item in value.items()
+               if key != "hash"}) != value["hash"]:
+        _refuse("D02_ACQUIRED_PLAN_HASH_MISMATCH")
+    if value.get("permitted_rules") != test_rules.rule_descriptors():
         _refuse("D02_ACQUIRED_PLAN_RULES")
     selectors = {}
     for key in ("activation_roles", "relation_refs", "obligation_refs"):
