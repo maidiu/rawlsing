@@ -209,6 +209,9 @@ def test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores():
     assert original_fact.ref != independent_fact.ref
     assert cache_fact.ref == independent_fact.ref
     assert _cell_map(original_fact) != _cell_map(independent_fact)
+    assert original_fact.raw_denominator_support == independent_fact.raw_denominator_support == 1
+    assert _cell_map(original_fact)["1"]["raw_numerator_support"] == 1
+    assert _cell_map(independent_fact)["0"]["raw_numerator_support"] == 1
 
     cache.clear()
     restored_repo, restored_release = build_source_backed_c11_repository(
