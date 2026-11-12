@@ -452,8 +452,6 @@ def census_native_batch(
                      "S2E_I05_VALID_EMPTY_CLAIM_MISMATCH")
             _require(tuple(_ref_key(ref) for ref in unit.release_refs),
                      "S2E_DISCOVERY_EMPTY_RELEASE_SCOPE")
-            if runtime_catalog is not None:
-                _verify_i05_declared_frontier(output, unit, runtime_catalog, registry)
             seen: set[tuple[str, str]] = set()
             cited_fact_refs: set[str] = set()
             for receipt in output.receipts:
@@ -483,6 +481,8 @@ def census_native_batch(
                 )
             _require(cited_fact_refs == {_ref_key(ref) for ref in output.empirical_fact_refs},
                      "S2E_DISCOVERY_FACT_REF_LOSS")
+            if runtime_catalog is not None:
+                _verify_i05_declared_frontier(output, unit, runtime_catalog, registry)
             # Native execute_exact_bounded_discovery derives the frontier
             # replay from this exact ordered closure. Merely digesting a
             # supplied replay_ref would certify even a replaced/false replay.
