@@ -150,6 +150,47 @@ def test_s2b_verified_subclass_cannot_substitute_postings(tmp_path):
             )
 
 
+def test_s2b_verified_connection_cannot_be_swapped_after_cold_root_check(tmp_path):
+    """A genuine verified class must not become a counterfeit by db reassignment."""
+    import shutil
+
+    source = _build_source("s2b-b-connection-swap", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-b-connection-swap")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    poisoned_path = tmp_path / "unanchored-copy.sqlite"
+    shutil.copy2(path, poisoned_path)
+    with sqlite3.connect(poisoned_path) as untrusted:
+        untrusted.execute("DELETE FROM selectors WHERE kind='native'")
+    with VerifiedExternalI02(path, roots=roots) as real:
+        replaced_connection = sqlite3.connect(poisoned_path)
+        try:
+            try:
+                real.db = replaced_connection
+            except ExternalI02IntegrityError as exc:
+                assert "immutable" in str(exc)
+            else:
+                # On Agent A's first implementation, the same trusted roots
+                # and genuine class now serve the unverified empty postings.
+                install_sourcefree_external_i02_i03(
+                    source["repo"], source["release_ref"],
+                    source["universe"].ref, real,
+                )
+                malicious_result = _run(source, qa, pred, query)
+                assert malicious_result != oracle
+                pytest.fail("post-verification DB swap corrupted real native I03 facts")
+        finally:
+            replaced_connection.close()
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+
+
 def test_s2b_closed_verified_reader_refuses_typed_native_selection(tmp_path):
     """An attested installed I03 index must not use a closed SQLite witness."""
     from rawlsing_next._pre553_query_predicate import _select_respondent_events
