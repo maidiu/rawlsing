@@ -14,7 +14,12 @@
     "p3.state_store.PsycheStore.completed"
   ],
   "abi_class": "COMPATIBLE_ADDITIVE",
-  "affected_task_ids": ["D02", "D03", "D04", "D05"],
+  "affected_task_ids": [
+    "D02",
+    "D03",
+    "D04",
+    "D05"
+  ],
   "active_contract_decision": "FINISH_THEN_RECONCILE",
   "active_contract_reason": "D01 adds a read-only reuse/consumer boundary and a fail-closed retention invariant; queued D02-D05 may consume it, but no running contract is rewritten.",
   "new_actual_first_reader": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py:P3Owner._effect (store.query) and WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py:later_consumer",
@@ -72,5 +77,16 @@
     "engineering": "SOURCEFREE_CANDIDATE",
     "science": "HELD",
     "rights": "HELD"
-  }
+  },
+  "preserved_obligations": [
+    "P3Owner lifecycle, PsycheStore binding/source/registry/head/receipt/replay checks",
+    "MISSING_RULE and NOT_ISSUED_BY_P3_RULE boundary",
+    "P2Owner sole actor/world writer; no second scheduler or ledger",
+    "P6 situated.py and CG-A candidate bridge untouched",
+    "native CAN/ADP/Pyat, actor/human rights and protected merge held"
+  ],
+  "regressed_obligations": [
+    "None observed in targeted suites: D01 5 passed; P3 subset 77 passed, 1 skipped",
+    "Behavioral tightening: missing config with existing store refuses; cold config is anchored to last completed operation provenance"
+  ]
 }
