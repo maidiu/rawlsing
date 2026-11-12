@@ -10,6 +10,7 @@ class Attacks(unittest.TestCase):
         self.source={f:"a"*64 for f in m.FILES}
         self.man={"schema":m.SCHEMA,"repo_sha":"b"*40,"source_hashes":self.source,
                   "runner_sha256":"c"*64,"python_executable_sha256":"d"*64,"os":"Linux",
+                  "state_digest_scheme":m.STATE_DIGEST_SCHEME,
                   "env_keys":sorted(m.env_offline()),"env_fingerprint_sha256":"e"*64,
                   "provider_mode":"OFFLINE_VERIFIED_CHILD_ALLOWLIST","network_calls":"UNOBSERVED",
                   "descendant_processes":"UNOBSERVED",
@@ -36,11 +37,28 @@ class Attacks(unittest.TestCase):
                 "provider_mode":"OFFLINE_VERIFIED_CHILD_ALLOWLIST","provider":m.missing_provider(),
                 "cold":n=="cold_view",
                 "cold_basis":"separate_python_exec_after_wait" if n=="cold_view" else "NOT_APPLICABLE"})
+        # Synthetic state contents, not a physical P6 measurement.
+        state=self.p/"state"
+        snaps=[m.state_snapshot(state)]
+        state.mkdir()
+        for size in (10,20,30,40):
+            (state/"payload.bin").write_bytes(b"X"*size)
+            snaps.append(m.state_snapshot(state))
+        for i,(name,_) in enumerate(m.PLAN):
+            d=self.p/"attempts"/name
+            start=json.loads((d/"start.json").read_text())
+            rec=json.loads((d/"receipt.json").read_text())
+            start["state_snapshot_before"]=snaps[i]
+            rec["state_snapshot_before"]=snaps[i]
+            rec["state_snapshot_after"]=snaps[min(i+1,4)]
+            self.save(d/"start.json",start)
+            self.save(d/"receipt.json",rec)
         self.index()
     def save(self,p,x):p.write_bytes(m.data(x))
     def index(self):
         d={"attempts/"+n+"/"+f:r.sha((self.p/"attempts"/n/f).read_bytes())
            for n,_ in m.PLAN for f in ("start.json","receipt.json","stdout.bin","stderr.bin")}
+        d["manifest.json"]=r.sha((self.p/"manifest.json").read_bytes())
         self.save(self.p/"index.json",{"schema":m.SCHEMA,"entries":d})
     def mutate(self,n,func,repair_index=True):
         p=self.p/"attempts"/n/"receipt.json";x=json.loads(p.read_text());func(x);self.save(p,x)
@@ -62,7 +80,7 @@ class Attacks(unittest.TestCase):
         (self.p/"attempts/fail_wait/receipt.json").unlink();self.rejects("ATTEMPT_MISSING")
     def test_reduced_plan_rejected(self):
         self.man["plan"].pop();self.save(self.p/"manifest.json",self.man)
-        self.rejects("PLAN_DENOMINATOR_REDUCED")
+        self.index();self.rejects("PLAN_DENOMINATOR_REDUCED")
     def test_edited_receipt_caught_by_index(self):
         self.mutate("wait",lambda x:x.update(exit_code=5),False)
         self.rejects("RAW_EVIDENCE_EDITED")
@@ -89,7 +107,7 @@ class Attacks(unittest.TestCase):
             r.consume(self.p,"f"*64)
     def test_env_forged(self):
         self.man["env_keys"].append("SOROK_SITUATED_MODEL_API_KEY")
-        self.save(self.p/"manifest.json",self.man);self.rejects("OFFLINE_OR_PROCESS_CLAIM_FALSE")
+        self.save(self.p/"manifest.json",self.man);self.index();self.rejects("OFFLINE_OR_PROCESS_CLAIM_FALSE")
     def test_cold_clock_forgery_not_treated_as_success(self):
         path=self.p/"attempts/cold_view/stdout.bin"
         obj=json.loads(path.read_text());obj["clock"]=777;raw=m.data(obj);path.write_bytes(raw)
