@@ -332,6 +332,11 @@ def build_sourcefree_direct_i02(
                 if isinstance(obj, RespondentIdentity):
                     if isinstance(obj.identity_map_authority_ref_or_typed_absence, AuthorityRef):
                         registry.resolve_exact(obj.identity_map_authority_ref_or_typed_absence)
+                    if db.execute("""
+                        SELECT 1 FROM main.scoped_names
+                        WHERE universe=? AND respondent_key=? LIMIT 1
+                    """, (obj.empirical_universe_ref.key, obj.respondent_key)).fetchone():
+                        _fail("duplicate sourcefree respondent identity within universe")
                     db.execute("INSERT INTO main.scoped_names VALUES (?,?,?)", (
                         obj.empirical_universe_ref.key, obj.respondent_key, obj.ref.key,
                     ))
@@ -344,12 +349,21 @@ def build_sourcefree_direct_i02(
                         "event_group_id": obj.event_group_id,
                         "event_id": obj.response_event_id_or_deterministic_index,
                     })
+                    if db.execute("""
+                        SELECT 1 FROM main.event_occurrences
+                        WHERE identity=? OR event_ref=? LIMIT 1
+                    """, (identity, obj.ref.key)).fetchone():
+                        _fail("duplicate sourcefree event occurrence identity")
                     db.execute("INSERT INTO main.event_occurrences VALUES (?,?)",
                                (identity, obj.ref.key))
                 if isinstance(obj, SourceUniverseRelation):
                     for ref in obj.source_universe_refs:
                         if exact_ref(ref).key not in declared_universes:
                             _fail("direct source relation contains undeclared universe")
+                if db.execute(
+                    "SELECT 1 FROM main.objects WHERE ref=? LIMIT 1", (obj.ref.key,)
+                ).fetchone():
+                    _fail("duplicate exact sourcefree corpus object reference")
                 _insert_object(db, obj, family=family)
                 db.execute("INSERT INTO main.closure VALUES(?)", (obj.ref.key,))
                 count += 1
