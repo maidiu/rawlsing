@@ -148,3 +148,59 @@ def test_p3_to_p6_source_registry_and_clock_sever_then_restore(tmp_path, monkeyp
         assert owner.store.head() == initial_head
     finally:
         owner.close()
+
+
+def test_exact_same_cold_world_reader_severance_and_restoration(tmp_path):
+    """Hold the entire P2/P3/P6 checkpoint fixed: only the read edge changes."""
+    import shutil
+
+    state = tmp_path / "same-root"
+    baseline = tmp_path / "frozen-baseline"
+    _run(state, "new")
+    initial, initial_speech, initial_head = _actual_state(state)
+    assert len(initial["records"]) == 1
+    shutil.copytree(state, baseline)
+    packets = []
+
+    def interpret(packet):
+        packets.append(packet)
+        prior = packet.get("sourcefree_p3")
+        return {
+            "attention": "uncertain",
+            "interpretation": "Bounded sourcefree prior-record counterfactual.",
+            "action": "speak" if prior and prior["records"] else "continue",
+            "cue_event_id": None, "channel": None,
+        }
+
+    def realize(packet, decision):
+        assert packet["sourcefree_p3"]["readset"]
+        return "The plan might be worth discussing."
+
+    def go(*, bridge):
+        _run(state, "wait", duration=4, request_id="same-world-turn",
+             interpret=interpret, realize=realize, bridge=bridge)
+        _, speech, head = _actual_state(state)
+        decision = json.loads((state / "p4_receipts.json").read_text())["turns"][-1][
+            "receipt"]["situated"]["decision"]["action"]
+        assert head == initial_head
+        return decision, speech
+
+    positive_action, positive_speech = go(bridge=True)
+    assert positive_action == "speak"
+    assert len(positive_speech) == len(initial_speech) + 1
+
+    shutil.rmtree(state)
+    shutil.copytree(baseline, state)
+    negative_action, negative_speech = go(bridge=False)
+    assert negative_action == "continue"
+    assert negative_speech == initial_speech
+
+    shutil.rmtree(state)
+    shutil.copytree(baseline, state)
+    restored_action, restored_speech = go(bridge=True)
+    assert restored_action == "speak"
+    assert len(restored_speech) == len(initial_speech) + 1
+    assert restored_speech[-1]["body"]["text"] == positive_speech[-1]["body"]["text"]
+    assert "sourcefree_p3" in packets[0]
+    assert "sourcefree_p3" not in packets[1]
+    assert packets[2]["sourcefree_p3"]["readset"] == packets[0]["sourcefree_p3"]["readset"]
