@@ -27,7 +27,10 @@ from rawlsing_next.pre553_r157_projection_adapter import (
     decode_fixture_config,
 )
 from rawlsing_next.pre553_c11_integrity import TypedAbsence
-from rawlsing_next.pre553_r157_projection_adapter import SourceConfig
+from rawlsing_next.pre553_r157_projection_adapter import (
+    SourceConfig,
+    row_native_keys_from_transport,
+)
 from rawlsing_next.pre553_r157_projection_adapter import (
     CURRENT_GRANTED,
     IssuedSourceReadDecision,
@@ -49,7 +52,7 @@ from rawlsing_next.tests.test_universal_grammar import (
 )
 
 
-def _fixture(tmp_path: Path, *, source_format: str = "SAV", values=(0.0, 1.0, 2.0, 0.0, 1.0)):
+def _fixture(tmp_path: Path, *, source_format: str = "SAV", values=(0.0, 1.0, 2.0, 0.0, 1.0), keyed=False):
     path, source_sha, rows = write_fixture(
         tmp_path / f"src-{source_format}", source_format=source_format, values=values)
     document = make_config(
@@ -57,7 +60,7 @@ def _fixture(tmp_path: Path, *, source_format: str = "SAV", values=(0.0, 1.0, 2.
         active_source_sha256=source_sha,
         row_count=rows,
         values=values,
-        keyed=False,
+        keyed=keyed,
     )
     config = SourceConfig(document)
     inventory = replace(
@@ -200,6 +203,12 @@ def test_s1e_census_refuses_before_any_source_read(tmp_path, monkeypatch):
         build_source_i02_handoff(
             config=config, source_path=path, destination=tmp_path / "bad2.sqlite",
             census=census, inventory=bad_inventory, policy=policy, frontier=frontier)
+    assert calls == []
+    bad_id = replace(inv, source_id="OTHER-SOURCE")
+    with pytest.raises(SourceI02Refusal, match="SOURCE_CENSUS_ID_MISMATCH"):
+        build_source_i02_handoff(
+            config=config, source_path=path, destination=tmp_path / "bad2b.sqlite",
+            census=census, inventory=bad_id, policy=policy, frontier=frontier)
     assert calls == []
 
     bad_items = replace(
@@ -359,3 +368,21 @@ def test_s1e_original_source_denied_before_bytes(tmp_path):
             resolver=Deny(), host="h", purpose="p", consumer_use="c",
             semantic_use_scope=("S1E_SOURCEFREE",))
     assert not (tmp_path / "denied.sqlite").exists()
+
+def test_s1e_keyed_source_requires_exact_physical_key_witnesses(tmp_path):
+    fixture = _fixture(tmp_path / "keyed", keyed=True)
+    path, sha, rows, config, doc, inv, policy, frontier, census = fixture
+    incidence = decode_fixture_config(config, path)
+    try:
+        keys = row_native_keys_from_transport(config, incidence=incidence, batch_size=4)
+    finally:
+        incidence.close()
+    handoff = _build(
+        tmp_path / "keyed", fixture, name="keyed.sqlite", row_native_keys=keys)
+    assert handoff.stats.event_count == len(keys)
+    swapped = dict(keys)
+    swapped[1], swapped[2] = keys[2], keys[1]
+    with pytest.raises(SourceI02Refusal, match="ROW_NATIVE_KEY_WITNESS_MISMATCH"):
+        _build(
+            tmp_path / "keyed", fixture, name="keyed-bad.sqlite",
+            row_native_keys=swapped)

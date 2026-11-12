@@ -54,6 +54,7 @@ from rawlsing_next.pre553_operation_fate_census import (
     verify_frozen_inputs,
 )
 from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalSourceIncidence
+from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_r157_projection_adapter import (
     IDENTITY_CLASS_ORIGINAL,
     SourceConfig,
@@ -240,10 +241,12 @@ def _verify_census_before_source(
 
 def _project_spooled_families(
     *,
+    config: SourceConfig,
     projection: GovernedC11Projection,
     incidence: PhysicalSourceIncidence,
     spool_paths: Mapping[str, Path],
     batch_size: int,
+    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
 ) -> tuple[dict[str, int], dict[str, Any]]:
     """Run exactly one bounded physical cell pass into the private spool."""
     rows = {binding.row_ordinal: binding.respondent_ref for binding in projection.row_bindings}
@@ -258,6 +261,8 @@ def _project_spooled_families(
         for family in SPOOL_FAMILIES
     }
     counts = {family: 0 for family in SPOOL_FAMILIES}
+    key_slot = config.document["respondents"].get("source_native_key_slot")
+    key_cells: list[PhysicalCell] = []
 
     def write(family: str, obj: Any) -> None:
         handles[family].write(
@@ -273,6 +278,8 @@ def _project_spooled_families(
                 continue
             if cell.row_ordinal not in rows:
                 raise SourceI02Refusal("CELL_ROW_OUTSIDE_PROJECTION", cell.row_ordinal)
+            if key_slot is not None and key == (key_slot["ordinal"], key_slot["name"]):
+                key_cells.append(cell)
             if cell.row_ordinal in seen[key]:
                 raise SourceI02Refusal(
                     "DUPLICATE_PHYSICAL_ROW_SLOT", (cell.row_ordinal, key))
@@ -327,6 +334,15 @@ def _project_spooled_families(
                 "PROJECTED_SLOT_INCOMPLETE",
                 {"slot": key, "missing_rows": sorted(expected_rows - actual)},
             )
+    if key_slot is not None:
+        key_stream = ExactPhysicalCellStream(
+            source_sha256=incidence.source_sha256,
+            row_count=incidence.row_count,
+            cell_iter_factory=lambda: tuple(key_cells),
+        )
+        derived = row_native_keys_from_transport(config, stream=key_stream)
+        if row_native_keys is None or dict(derived) != dict(row_native_keys):
+            raise SourceI02Refusal("ROW_NATIVE_KEY_WITNESS_MISMATCH")
     return counts, {"rows": len(rows), "projected_slots": len(projected)}
 
 
@@ -503,10 +519,12 @@ def build_source_i02_handoff(
         }
         try:
             counts, _ = _project_spooled_families(
+                config=config,
                 projection=projection,
                 incidence=incidence,
                 spool_paths=spool_paths,
                 batch_size=batch_size,
+                row_native_keys=row_native_keys,
             )
             manifest, source, declared_counts, absences = _manifest_and_sections(
                 projection=projection,
