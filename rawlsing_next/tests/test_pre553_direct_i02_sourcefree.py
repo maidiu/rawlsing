@@ -264,3 +264,71 @@ def test_s2b_a5_direct_original_semantic_event_order_is_invariant(tmp_path):
         tmp_path / "reversed-order.sqlite", chunk_size=1,
     )
     assert a.logical == b.logical
+
+
+
+def test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory(tmp_path):
+    """Actual typed event generator, not a pre-materialized 2048-object tuple.
+
+    The original fixture builds only two sourcefree events; the direct
+    producer consumes 2048 additional valid event instances one at a time.
+    This is a material-scale one-respondent occurrence sample, NOT
+    original35 100k-person or full integrated 6GiB release proof.
+    """
+    import time
+    import tracemalloc
+    import resource
+    base_candidate, _, base_source = _direct("s2b-a5-material")
+    base = base_candidate.respondent_events[0]
+    n = 2048
+    counts = dict(base_candidate.source_release_manifest.declared_record_counts_by_logical_family)
+    counts["RespondentEvent"] = n
+    manifest = replace(base_candidate.source_release_manifest,
+                       declared_record_counts_by_logical_family=counts)
+    def events():
+        for i in range(n):
+            yield RespondentEvent(
+                typed_state=base.typed_state,
+                authority_snapshot_refs=base.authority_snapshot_refs,
+                dependency_refs=base.dependency_refs,
+                producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+                **{**dict(base.semantic_fields),
+                   "response_event_id_or_deterministic_index": f"bounded-{i:05d}"},
+            )
+    sections = dict(base_source.sections)
+    sections["RespondentEvent"] = events()
+    input_stream = replace(base_source, manifest=manifest, sections=sections)
+    universe = base_candidate.empirical_universes[0].ref
+    path = tmp_path / "direct-material.sqlite"
+    tracemalloc.start()
+    started = time.monotonic()
+    try:
+        roots = build_sourcefree_direct_i02(
+            input_stream, universe, path, chunk_size=31,
+        )
+        build_s = time.monotonic() - started
+        _live, peak_python = tracemalloc.get_traced_memory()
+    finally:
+        tracemalloc.stop()
+    started = time.monotonic()
+    with VerifiedExternalI02(path, roots=roots) as certified:
+        target = exact_ref(base.native_question_ref)
+        respondent = exact_ref(base.scoped_respondent_ref).key
+        assert sum(1 for _ in certified.selector_refs(
+            respondent, target, native_only=True,
+        )) == n
+    cold_verify_s = time.monotonic() - started
+    print({
+        "schema": roots.schema,
+        "event_generator": n,
+        "respondents": 1,
+        "retained_bytes": path.stat().st_size,
+        "build_s": round(build_s, 4),
+        "cold_verify_plus_2048_select_s": round(cold_verify_s, 4),
+        "python_builder_peak_bytes": peak_python,
+        "peak_process_rss_kb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+        "scratch_peak": "NOT_MEASURED",
+        "complete_source_native_100k": "NOT_RUN",
+        "historical_replay_manifest_m16_m18": "NOT_PROVEN",
+    })
+    assert peak_python < 32 * 1024 * 1024
