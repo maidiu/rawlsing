@@ -1,5 +1,12 @@
 # Successor #960 — same existing PYAT HQ
 
+## 2026-11-12 A terminal intake → fixed B launched
+
+A job `pyat960-s2g-a01` ran 18:51:19–19:33:34 UTC (42m15s), exit0. Delivery `eb8f097341738dcc08ae3172fa35aeebcdc061c3` pushed/direct-remote verified; implementation `fc820533a2a90b948a9e8e80b4f220005e701d4b`. Actual first-turn metadata verified Go DeepSeek Flash MAX. Read full A handoff/receipt/evidence and inspected implementation/tests. Author reports 147 owner/adapter PASS +19 S2-F PASS and actual cold first-reader at isolated TEST_ONLY grade; HQ has NOT accepted these claims. Same-chain input mutation, real recovery/resources and stale receipt identities explicitly assigned to B for material challenge and repair.
+
+B `ses_e3120b9efffegreD5YfH7dOO15` fast-forwarded its clean exclusive branch `agent/pyat960-s2g-b-r1` to exact A delivery, then launched ONCE `pyat960-s2g-b01`, child3355/supervisor3354/finite observer3356. Full frozen contract, original B persona and FULL A handoff+receipt passed in dispatch/pyat960-s2g-b01.md; actual code/tests in its worktree. A idle, no other pair mixed. Actual B first-turn model metadata pending; settings are verified but not actual-turn proof. Completion notification triggers same A counter, then distinct G5. No recurring wake or polling. Q2/Q3 dependency holds unchanged; no new upstream acceptance receipt received.
+
+
 Q1 / original S2-G P2-08 author launched once as `pyat960-s2g-a01`, persistent A `ses_e3120ba1cffeO1w43uU5MLh4yq`, child 95691 / supervisor 95690 / finite OS-event observer 95692. Actual first-turn model verification pending; launch is not completion or acceptance. Fixed B `ses_e3120b9efffegreD5YfH7dOO15` remains idle until own A terminal return, then reads original law and FULL A code/tests/handoff and repairs SAME descendant. Same A counters; distinct nonauthor G5 after frozen STOP. No other pair mixing.
 
 Original-owner custody https://github.com/maidiu/rawlsing/issues/919#issuecomment-6832863802 . Full A prompt in dispatch/pyat960-s2g-a01.md; contract SHA256 `635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b`. Original #940 remains completed/scoped/unmerged and untouched. Startup PR948 `7064daa14d93109211629e72d08f3a6e705a0d57`; PRE-MAIN verified `6a5c12f04323d74001f9632063ec907f4fc4468e`. Established Go DeepSeek Flash 1017 MAX remains selected; current quota/balance UNKNOWN.

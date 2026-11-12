@@ -371,3 +371,8 @@ At each material HQ cycle, provide: (i) whole L0–L5 objective, (ii) exact bran
 
 
 **Reversible original:** `773bb412a820949f13a7178b6671327cd56a3bf1:PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md` Git blob `31985445159e952b8634bf01f3172b845f8ceaa2`; Pyat 00 and 13 previous complete texts remain available at exact historical source cut. No current progress was edited.
+
+
+## Working HQ #960 S2-G candidate intake — 2026-11-12
+
+S05 M1/M2/B5 durable lifecycle and learned/world first-reader seam: isolated sourcefree candidate delivered at `eb8f097341738dcc08ae3172fa35aeebcdc061c3` (code `fc820533a2a90b948a9e8e80b4f220005e701d4b`). Same fixed B now attacks/repairs that descendant; author tests are not independent acceptance. G5 NOT_RUN, integration UNMERGED. Source-chain changed-input/restore proof remains under challenge. Q2/S1-E and Q3/S2-C still depend on qualified S1-C/S2-B input ABIs. Actual production current issuer/full upstream/original35/scientific/protected holds remain. Exact custody and next action: `WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/RESUME_CHECKPOINT.md`; paired progress overlay in `PYAT_CONTROL_ROOM/CURRENT_PROGRESS.{md,json}`. This working-branch update does not change canonical protected maturity.

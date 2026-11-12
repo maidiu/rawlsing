@@ -1,3 +1,7 @@
+# Successor #960 working-branch overlay — 2026-11-12
+
+Original S2-G/P2-08: A delivered `eb8f097341738dcc08ae3172fa35aeebcdc061c3` (code `fc820533a2a90b948a9e8e80b4f220005e701d4b`), candidate only. Author reports 147 owner/adapter +19 S2-F tests and cold existing learned/world consumer; no HQ/G5 acceptance. Same fixed B launched `pyat960-s2g-b01` on A's exact descendant, with full law/code/handoff and explicit same-chain change/restore challenge. G5 NOT_RUN; integration UNMERGED. Q2/S1-E and Q3/S2-C dependency holds persist. Production issuer, full joined upstream, original35/science and protected merge held. This is an isolated HQ publication; inherited canonical/historical progress follows unchanged.
+
 # PROGRAMMA PYAT CAS4 — PRE-553 UNIVERSAL35 DOCUMENTARY RECOVERY RECEIVED — 2026-11-06
 
 **Protected factual receiving:** [PR #709](https://github.com/maidiu/rawlsing/pull/709) merged the independently accepted universal35 recovery and currentness overlays from `6c243ffee042187092fead1e7a25f0f838578b9e`, with a receiving-only two-line canonical front-door status marker at `f4dc51fbd02dace3a893adc5397d5aa42adbff03`. PRE-MAIN moved from CAS3 `4df35cba8a254e50622d4cb3059625c82e0cb74b` to **`728b3b8aed7609abbe1f9245ccd307484a604265`**. Independent nonauthor receipt: `48c87186cc3ba873109f32edce10e16de220405e` **ACCEPT_SCOPED_DOCUMENTARY** at the unchanged dossier cut. Old draft [#705](https://github.com/maidiu/rawlsing/pull/705) is an immutable historical parent and must not be merged over CAS4.
