@@ -104,6 +104,7 @@ Pre-repair `p3_owner.py` SHA-256 was `e735ada798533a8f568739e823767bb2e2b4272c3c
 - The actual P2 fixture is a controlled workshop; its event identity is nondeterministic across separate starts. Do not generalize the value test beyond the exact rule boundary.
 - The D01 cold loader freezes absolute-path code pins through the existing `P3Owner._code_pins()`. Exact-worktree cold reopen works; a moved/copied worktree is expected to refuse until its config is regenerated. This is consistent with the existing owner, but it is a portability limit.
 - The full P3 vertical matrix (all A–H cases) and full 115-test P3 suite were not rerun. Targeted owner/store/rules/projections/goal-residual tests and the two decisive vertical tests were run. B3A/BP2P4J/HQ300/M01/C9RI were inspected through the actual E1 reconnaissance and the current tree, but were not re-executed; they are rejected as D01 drop-in producers on exact ABI grounds, not declared scientifically inferior.
+- `PsycheStore.completed()` is an additive read-only method documented in the module and this handoff. The shared P3 `INTEGRATION_CONTRACT.md` is outside this lease and still lists only the original API; HQ should reconcile that shared contract if D02–D05 rely on the additive listing. No silent scope crossing was made.
 - Token/USD cost is `UNKNOWN`; only wall-clock test times are measured.
 
 ## 6. Likely attack surfaces

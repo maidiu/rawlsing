@@ -4,9 +4,11 @@ This module is mechanical.  It does not evaluate CAN/ADP rules, choose responses
 issue native science or write the P2 world.  It stores source/rule/actor-bound
 records and a durable cross-store operation protocol for the HQ-owned P3Owner.
 
-The API is the one frozen in INTEGRATION_CONTRACT.md:
+The base API is the one frozen in INTEGRATION_CONTRACT.md:
 PsycheStore, head, query, get_operation, pending, reserve, save_world,
-commit_effects, finish and close.
+commit_effects, finish and close. ``completed()`` is an additive read-only
+listing used by the D01 cold provenance anchor; it does not alter the frozen
+protocol.
 """
 from __future__ import annotations
 
