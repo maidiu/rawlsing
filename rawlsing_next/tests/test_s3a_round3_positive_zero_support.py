@@ -16,7 +16,7 @@ from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
 from rawlsing_next.pre553_empirical_objects import (
-    EmpiricalFact, canonicalize, semantic_hash,
+    EmpiricalFact, EmpiricalQuerySpec, canonicalize, exact_ref, semantic_hash,
 )
 from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
 
@@ -108,3 +108,52 @@ def test_actual_observed_zero_remains_typed_and_not_admitted():
     out = bridge.admit_gt12_c_relation(negative)
     assert out.admission.decision is not adm.AdmissionDecision.ADMITTED
     assert out.admission.target_use_permissions == ()
+
+
+def test_exact_933_ff_promotes_query_with_no_operation_authority(previous_owner):
+    """I03 rejects empty query_authority_refs; the #933 subset check does not."""
+    query, fact, conditioner, target = _objects()
+    material = dict(query.semantic_fields)
+    material["query_authority_refs"] = ()
+    changed_q = EmpiricalQuerySpec(
+        typed_state=query.typed_state,
+        authority_snapshot_refs=query.authority_snapshot_refs,
+        dependency_refs=query.dependency_refs,
+        producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
+        **material,
+    )
+    assert not changed_q.query_authority_refs
+    fact_material = dict(fact.semantic_fields)
+    fact_material["empirical_query_spec_ref"] = changed_q.ref
+    deps = tuple(
+        changed_q.ref if exact_ref(dep) == query.ref else dep
+        for dep in fact.dependency_refs
+    )
+    changed_f = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=deps,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **fact_material,
+    )
+    assert semantic_hash(changed_q.semantic_projection()) == changed_q.content_hash
+    assert semantic_hash(changed_f.semantic_projection()) == changed_f.content_hash
+    assert exact_ref(changed_f.empirical_query_spec_ref) == changed_q.ref
+
+    old_r = _produce(previous_owner, changed_q, changed_f, conditioner, target)
+    old_d_type = ff.ExactConditionalSupportProfile(**{
+        member.name: getattr(old_r, member.name)
+        for member in fields(ff.ExactConditionalSupportProfile) if member.init
+    })
+    assert bridge.admit_gt12_c_relation(
+        old_d_type,
+    ).admission.decision is adm.AdmissionDecision.ADMITTED
+
+    with pytest.raises(ff.FieldForgeConditionalSupportError,
+                       match="positive query lacks operation-specific authority refs"):
+        _produce(ff, changed_q, changed_f, conditioner, target)
+
+    restored = _produce(ff, query, fact, conditioner, target)
+    assert bridge.admit_gt12_c_relation(
+        restored,
+    ).admission.decision is adm.AdmissionDecision.ADMITTED
