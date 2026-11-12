@@ -1,0 +1,178 @@
+{
+  "event_id": "SOROK-DUEL-B03-A-20261112-R1",
+  "task_id": "B03",
+  "phase": "CG-B",
+  "title": "Commit selected inhabited dwelling/tenancy/noise/space/resource facts",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "6deb7b71d0f8d761ae7734868c693dcb5dd253d8",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "frozen_b01_return": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+  "branch": "codex/sorok-duel-b01-a-relay-b03-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_CONSUMER_WITH_P3_CODE_PIN_BREAK_FOR_PRE_RELAY_ROOTS",
+  "classification_detail": [
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "house.material_feasibility is the actual bounded consumer of p6_dwelling; mother_material_input is a frozen future-C03 input, not a mother decision."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "p6_dwelling is a new world.resources material fact and a new material-fact allowlist entry; B01 household and B's fork readers remain API-compatible. B01 read_household/parent_choice_input gain an additive provenance field."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "p2_owner.py byte change alters P3Owner code_pins/config_hash for all prior B01 cuts. Fresh final-code fixture roots are tested; no migration or pin weakening is performed."
+    }
+  ],
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "added": ["_copied_prefix_equal"],
+      "changed": ["MATERIAL_FACT_SLOTS", "branch_is_ancestor"],
+      "removed": []
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+      "added": [
+        "DWELLING_SLOT", "DWELLING_SCHEMA", "DWELLING_READ_SCHEMA",
+        "DWELLING_GRADE", "DWELLING_FIELDS", "DWELLING_STORED_FIELDS",
+        "DRUM_KIT_REQUEST_SCHEMA", "MATERIAL_FEASIBILITY_SCHEMA",
+        "MOTHER_MATERIAL_INPUT_SCHEMA", "DWELLING_INSTRUMENT_POLICIES",
+        "DRUM_KIT_REQUESTS", "dwelling_fixture", "_read_dwelling_document",
+        "_dwelling_document", "establish_dwelling", "commit_dwelling",
+        "read_dwelling", "_validate_drum_kit_request", "_household_cash",
+        "material_feasibility", "mother_material_input", "_material_provenance",
+        "_number", "_number_or_unknown", "_nonneg", "_nonneg_or_unknown",
+        "_int_or_unknown"
+      ],
+      "changed": ["establish", "read_household", "parent_choice_input"],
+      "removed": []
+    }
+  ],
+  "new_world_resource": {
+    "slot": "p6_dwelling",
+    "schema": "SOROK_DWELLING_MATERIAL@1",
+    "grade": "SOURCEFREE_FIXTURE",
+    "owner": "S47_P2_OBJECTIVE_WORLD",
+    "in_p2_snapshot_material_hash": true,
+    "cross_checks": [
+      "B01 p6_household dwelling_id/kind/rooms/tenure",
+      "B01 household owner actor slot/id and landlord ref",
+      "actual P6 ROOMS",
+      "live household actor cash for affordability"
+    ]
+  },
+  "actual_writer_trace": [
+    "house.establish [house.py] writes p6_house, checkpoints",
+    "establish_household [house.py] writes p6_household via p2_owner.write_material_fact",
+    "establish_dwelling [house.py] builds/verifies p6_dwelling",
+    "p2_owner.write_material_fact -> session.product._checkpoint",
+    "BP4Product._checkpoint -> C12Store.checkpoint -> WorldState.snapshot"
+  ],
+  "actual_reader": [
+    {
+      "name": "house.material_feasibility",
+      "consumes": "house.read_dwelling + house.read_household + concrete drum-kit request",
+      "returns": "SOROK_MATERIAL_FEASIBILITY@1 with status/reasons/unknowns/conditions, material_reader, possession_created=false, mother_decision=NOT_EVALUATED"
+    },
+    {
+      "name": "house.read_dwelling",
+      "consumes": "world.resources[p6_dwelling] and B01 household cross-check",
+      "returns": "SOROK_DWELLING_MATERIAL_READ@1 with source/material_hash/home/space/acoustics/costs/provenance"
+    },
+    {
+      "name": "house.mother_material_input",
+      "consumes": "dwelling + household + feasibility",
+      "returns": "SOROK_MOTHER_MATERIAL_INPUT@1, first_consumer=NONE_VERIFIED, mother_decision=NOT_EVALUATED, parent_action=null"
+    }
+  ],
+  "affected_queued_tasks": [
+    {
+      "task_id": "B02",
+      "effect": "Calendar/as-of remains queued; p6_dwelling is current-time/sourcefree and has no historical dates."
+    },
+    {
+      "task_id": "B04",
+      "effect": "Purchase/action/debit remains queued; material_feasibility is a verdict, not a purchase, and does not debit or create a possession."
+    },
+    {
+      "task_id": "B05",
+      "effect": "Multicycle duration remains queued; B03 does not implement recurring rent/period changes."
+    },
+    {
+      "task_id": "C03/C04",
+      "effect": "Mother decision/utterance/uptake remain queued; mother_material_input is material input only."
+    },
+    {
+      "task_id": "C01",
+      "effect": "C01 is running against A B01 edbb4b344; compose both files at HQ. Do not mix source cuts. This cut changes p2_owner and house.py and requires a joint rebase."
+    },
+    {
+      "task_id": "CG-A cross-input",
+      "effect": "Candidate p2_owner pins no longer match; compare/rebase, do not presume accepted. Their P3/P6 bridge was not copied or modified."
+    }
+  ],
+  "preserved_obligations": [
+    "B01 household and B's read-only C12 fork inheritance remain; full P6 test_house 8/8 and test_mii 18/18 pass.",
+    "No new owner/scheduler/person-world ledger; p6_dwelling is one world.resources entry.",
+    "No PsycheStore record is a dwelling fact; no class/social label creates a trait.",
+    "No drum-kit possession or p6_house object is created by an admissible feasibility.",
+    "No mother action/utterance/decision; first_consumer NONE_VERIFIED and mother_decision NOT_EVALUATED.",
+    "B02/B04/B05/C03/C04 remain future; no fake calendar, purchase, or parent action."
+  ],
+  "regressed_obligations": [
+    "P3Owner code pins include p2_owner.py; A/B/pre-relay roots refuse cold reopen under the final code. Fresh final-code roots are tested; no migration invented. P3 migration is Pair2/shared-receiving scope.",
+    "SOROK-P6-CHRONOLOGY-PROOF-20261107-R1 still fails on mii_exposure_id/mii identically at baseline 6a5c12f and on this cut; not caused by B03."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@6deb7b71d0f8d761ae7734868c693dcb5dd253d8",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@6deb7b71d0f8d761ae7734868c693dcb5dd253d8",
+    "SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/.../bp4/product.py:101",
+    "SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/.../bp4/store.py:216",
+    "SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/.../bp4/world.py:323"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_dwelling.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b01_b03_relay.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_house.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/p6_test_mii.log",
+    "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/adjacent.log",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_relay_b01.log"
+  ],
+  "negative_refs": [
+    "test_dwelling_extra_class_or_trait_is_refused",
+    "test_actual_root_dwelling_constrains_concrete_drum_kit_without_possession",
+    "test_committed_tenancy_space_unknown_and_restore",
+    "test_dwelling_severance_restore_and_cold_reopen",
+    "test_b01_fork_provenance.py::test_actual_copied_prefix_not_mutable_root_counts",
+    "test_b01_fork_provenance.py::test_fact_after_fork_clock_is_refused_and_restored",
+    "evidence/p6_chronology_pre_existing.log"
+  ],
+  "cold_refs": [
+    "test_dwelling_severance_restore_and_cold_reopen: fresh subprocess, exact household/dwelling/feasibility/mother JSON, unchanged episode/checkpoint/world-event/perception counts",
+    "read_dwelling/read_household verify root/branch/epoch/source and live household cross-link from cold restore"
+  ],
+  "fork_scope": {
+    "state_scope": "C12_FORK_WITHOUT_S46_INTERVAL_STATE",
+    "p6_provenance_scope": "P6_MATERIAL_FACT_ONLY",
+    "not_full_p3_composite": true,
+    "cold_fork": "NOT_PROVED",
+    "child_new_occupancy": "REFUSED_BY_B01_HOUSEHOLD_CROSSCHECK__FUTURE_REESTABLISHMENT_ABI",
+    "prefix_verification": "ACTUAL_COPIED_ROWS_NOT_MUTABLE_ROOT_COUNTS"
+  },
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, process RSS, retry or USD instrumentation was available or invented."
+  },
+  "proof_boundaries": [
+    "SOURCEFREE_S2_ONLY; no native CAN/ADP/Pyat science, actor/human/source rights, or protected merge.",
+    "No mother decision/utterance/trait; mother_material_input is input only.",
+    "No B02 calendar, B04 purchase/action, B05 duration, J1/J2/J3.",
+    "No possession or drum-kit object; feasibility is not a purchase and does not debit.",
+    "No crash-atomic composite establishment or concurrent-writer safety.",
+    "Same-code cold reopen only; prior P3 code-pin roots are incompatible.",
+    "Fork reads are material/C12-scoped, never full P3 composite state.",
+    "Two Library architecture records remain NOT_INSPECTED locally; no contents claimed."
+  ]
+}
