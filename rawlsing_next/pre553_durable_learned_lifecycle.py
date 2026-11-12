@@ -1192,28 +1192,42 @@ class DurableLearnedLifecycle:
             obj.ref.key: obj for obj in closure.object_graph.discovery_receipts
         }
         closure_fact_keys = set(closure_refs["empirical_facts"])
+        disposition_validation_keys = {
+            ref.key for ref in self.m1_disposition.validation_fact_refs
+        }
         for receipt_ref in self.m1_disposition.discovery_result_receipt_refs:
             receipt = closure_receipts.get(receipt_ref.key)
             if receipt is None:
                 raise DurableLearnedLifecycleError(
                     "M1 disposition discovery receipt is absent from the declared S2F closure"
                 )
-            receipt_fact_keys = {
+            receipt_empirical_keys = {
                 _exact(dict(ref), "receipt empirical fact").key
-                for ref in (
-                    *receipt.empirical_fact_refs,
-                    *getattr(receipt, "validation_fact_refs", ()),
-                )
+                for ref in receipt.empirical_fact_refs
             }
-            if not receipt_fact_keys.issubset(disposition_refs["empirical_facts"]):
+            receipt_validation_keys = {
+                _exact(dict(ref), "receipt validation fact").key
+                for ref in getattr(receipt, "validation_fact_refs", ())
+            }
+            if not receipt_empirical_keys.issubset(
+                disposition_refs["empirical_facts"]
+            ):
                 raise DurableLearnedLifecycleError(
-                    "M1 disposition omits a fact owned by a retained discovery receipt"
+                    "M1 disposition omits an empirical fact owned by a retained discovery receipt"
                 )
-            if not receipt_fact_keys.issubset(bundle_refs["empirical_facts"]):
+            if not receipt_validation_keys.issubset(disposition_validation_keys):
+                raise DurableLearnedLifecycleError(
+                    "M1 disposition omits a validation fact owned by a retained discovery receipt"
+                )
+            if not (
+                receipt_empirical_keys | receipt_validation_keys
+            ).issubset(bundle_refs["empirical_facts"]):
                 raise DurableLearnedLifecycleError(
                     "M1 input bundle omits a fact owned by a retained discovery receipt"
                 )
-            if not receipt_fact_keys.issubset(closure_fact_keys):
+            if not (
+                receipt_empirical_keys | receipt_validation_keys
+            ).issubset(closure_fact_keys):
                 raise DurableLearnedLifecycleError(
                     "retained discovery receipt fact is absent from the declared S2F closure"
                 )
