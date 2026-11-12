@@ -126,7 +126,7 @@ def test_retained_current_r1c_and_bound_first_reader_survive():
 def test_round2_allows_unresolved_query_to_mint_positive_ff_and_d(agent_a_round2_ff):
     query, fact, conditioner, target = _objects()
     unresolved = EmpiricalQuerySpec(
-        typed_state="UNRESOLVED",
+        typed_state="QUERY_UNAUTHORIZED",
         authority_snapshot_refs=query.authority_snapshot_refs,
         dependency_refs=query.dependency_refs,
         producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
@@ -146,7 +146,7 @@ def test_round2_allows_unresolved_query_to_mint_positive_ff_and_d(agent_a_round2
         **semantics,
     )
     assert signed_fact.typed_state == "SUPPORTED"
-    assert unresolved.typed_state == "UNRESOLVED"
+    assert unresolved.typed_state == "QUERY_UNAUTHORIZED"
     assert exact_ref(signed_fact.empirical_query_spec_ref) == unresolved.ref
 
     prior = _produce(agent_a_round2_ff, unresolved, signed_fact, conditioner, target)
@@ -215,7 +215,7 @@ def test_missing_query_authority_preserves_existing_typed_negative():
     q_fields = dict(q.semantic_fields)
     q_fields["query_authority_refs"] = (foreign,)
     unresolved = EmpiricalQuerySpec(
-        typed_state="UNRESOLVED",
+        typed_state="QUERY_UNAUTHORIZED",
         authority_snapshot_refs=q.authority_snapshot_refs,
         dependency_refs=q.dependency_refs,
         producer_replay_locator_or_reference_root=q.producer_replay_locator_or_reference_root,
