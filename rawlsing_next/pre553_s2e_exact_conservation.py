@@ -296,6 +296,15 @@ def census_native_batch(
                      "S2E_DISCOVERY_COVERAGE_FALSE")
             _require(output.candidate_count == output.covered_candidate_count
                      == len(output.receipts), "S2E_MISSING_DISCOVERY_CANDIDATE_FATE")
+            # The native I05 executor defines valid_empty from *all terminal
+            # candidate fates*. A self-hashed result can otherwise assert
+            # absence even when it carries a positive discovery receipt.
+            expected_valid_empty = not output.receipts or all(
+                receipt.typed_state == "VALID_EMPTY" for receipt in output.receipts
+            )
+            _require(type(output.valid_empty) is bool
+                     and output.valid_empty == expected_valid_empty,
+                     "S2E_I05_VALID_EMPTY_CLAIM_MISMATCH")
             _require(tuple(_ref_key(ref) for ref in unit.release_refs),
                      "S2E_DISCOVERY_EMPTY_RELEASE_SCOPE")
             seen: set[tuple[str, str]] = set()
@@ -326,6 +335,24 @@ def census_native_batch(
                 )
             _require(cited_fact_refs == {_ref_key(ref) for ref in output.empirical_fact_refs},
                      "S2E_DISCOVERY_FACT_REF_LOSS")
+            # Native execute_exact_bounded_discovery derives the frontier
+            # replay from this exact ordered closure. Merely digesting a
+            # supplied replay_ref would certify even a replaced/false replay.
+            replay_material = {
+                "contract": output.contract_id,
+                "frontier_ref": output.evaluated_frontier_ref.as_dict(),
+                "receipt_refs": [r.ref.as_dict() for r in output.receipts],
+                "fact_refs": [ref.as_dict() for ref in output.empirical_fact_refs],
+                "valid_empty": expected_valid_empty,
+            }
+            replay_hash = semantic_hash(replay_material)
+            expected_replay = ExactRef(
+                "PRE553_I05_FRONTIER_REPLAY",
+                f"urn:rawlsing:pre553:i05:frontier-replay:sha256:{replay_hash}",
+                replay_hash,
+            )
+            _require(output.replay_ref == expected_replay,
+                     "S2E_I05_FRONTIER_REPLAY_MISMATCH")
             executed_query_by_ref = {
                 query.ref.key: query for query in output.executed_queries
             }
