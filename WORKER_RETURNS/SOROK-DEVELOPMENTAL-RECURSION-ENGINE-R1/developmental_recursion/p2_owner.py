@@ -12,12 +12,91 @@ import json
 from pathlib import Path
 import sqlite3
 import sys
-from typing import Mapping
+from typing import Any, Mapping
 
 from .contracts import (
     EventProposal, RealizedEvent, RecursionRefusal, StateIdentity,
     canonical, detached, digest,
 )
+
+MATERIAL_FACT_READ_SCHEMA = "SOROK_P2_MATERIAL_FACT_READ@1"
+MATERIAL_FACT_WRITE_SCHEMA = "SOROK_P2_MATERIAL_FACT_WRITE@1"
+MATERIAL_FACT_GRADE = "SOURCEFREE_MATERIAL_FACT"
+MATERIAL_FACT_BINDING_FIELDS = frozenset({"root", "branch", "epoch", "source"})
+MATERIAL_FACT_SLOTS = frozenset({"p6_household"})
+PSYCH_RECORD_FIELDS = frozenset({
+    "record_id", "counterpart", "effective_from", "causal_parents",
+    "registry_hash", "rule_id", "rule_version", "rule_hash",
+    "permitted_rules", "project", "psyche_before", "psyche_after",
+    "response_hash", "receipt_hash",
+})
+PSYCH_RECORD_KINDS = frozenset({
+    "MEDIATOR", "TENSION", "PRACTICE",
+    "V3MS_MEDIATOR", "V3MS_TENSION", "V3MS_PRACTICE",
+})
+
+
+def material_fact_source(document: Mapping[str, Any]) -> str:
+    """Content address of a bounded material fact, excluding its binding."""
+    return digest({key: value for key, value in document.items()
+                   if key not in MATERIAL_FACT_BINDING_FIELDS})
+
+
+def validate_material_fact(document: Any, *, root: str, branch: str,
+                           world_clock: int) -> dict:
+    """Validate the bounded world-material envelope, never a psyche record."""
+    if not isinstance(document, Mapping):
+        raise RecursionRefusal("P2_MATERIAL_FACT_SCHEMA")
+    fact = detached(document)
+    if (set(fact) & PSYCH_RECORD_FIELDS) or fact.get("kind") in PSYCH_RECORD_KINDS:
+        raise RecursionRefusal("P2_MATERIAL_FACT_PSYCH_RECORD_REFUSED")
+    if not isinstance(fact.get("schema"), str) or not fact["schema"].strip():
+        raise RecursionRefusal("P2_MATERIAL_FACT_SCHEMA")
+    if not isinstance(fact.get("grade"), str) or not fact["grade"].strip():
+        raise RecursionRefusal("P2_MATERIAL_FACT_GRADE")
+    if fact.get("root") != root or fact.get("branch") != branch:
+        raise RecursionRefusal("P2_MATERIAL_FACT_ROOT_OR_BRANCH_MISMATCH")
+    epoch = fact.get("epoch")
+    if (isinstance(epoch, bool) or not isinstance(epoch, int)
+            or epoch < 0 or epoch > world_clock):
+        raise RecursionRefusal("P2_MATERIAL_FACT_EPOCH_INVALID")
+    source = fact.get("source")
+    if not isinstance(source, str) or len(source) != 64:
+        raise RecursionRefusal("P2_MATERIAL_FACT_SOURCE_INVALID")
+    try:
+        int(source, 16)
+    except ValueError as exc:
+        raise RecursionRefusal("P2_MATERIAL_FACT_SOURCE_INVALID") from exc
+    if material_fact_source(fact) != source:
+        raise RecursionRefusal("P2_MATERIAL_FACT_SOURCE_MISMATCH")
+    return fact
+
+
+def write_material_fact(session, *, slot: str, document: Mapping[str, Any]) -> dict:
+    """Write one bounded material fact through the actual S47/P2 checkpoint."""
+    if slot not in MATERIAL_FACT_SLOTS:
+        raise RecursionRefusal("P2_MATERIAL_FACT_SLOT_INVALID")
+    root = session.read_root()["root_hash"]
+    world = session.world()
+    fact = validate_material_fact(document, root=root, branch=session.branch_id,
+                                  world_clock=world.clock)
+    status = "UNCHANGED"
+    if world.resources.get(slot) != fact:
+        world.resources[slot] = fact
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        status = "WRITTEN"
+    return {
+        "schema": MATERIAL_FACT_WRITE_SCHEMA,
+        "grade": MATERIAL_FACT_GRADE,
+        "status": status,
+        "slot": slot,
+        "root": root,
+        "branch": session.branch_id,
+        "clock": world.clock,
+        "epoch": fact["epoch"],
+        "source": fact["source"],
+        "world_hash": digest(world.snapshot()),
+    }
 
 
 def load_p2():
@@ -75,6 +154,42 @@ class P2Owner:
         }
         return StateIdentity(self.fanin.root_hash, self.actor, s.branch_id,
                              s.clock(), digest(material))
+
+    def material_fact(self, slot: str) -> dict:
+        """Read one bounded world-material fact held by this composite snapshot.
+
+        The caller's own reader remains responsible for the fact's schema.
+        This accessor refuses psyche-store records and binds the read to the
+        verified root, branch, clock and world state of this owner.
+        """
+        if self.source_ref != "P2_INPUT:" + digest({"case": self.case, "source": self.source}):
+            raise RecursionRefusal("P2_INPUT_SOURCE_MUTATED")
+        s = self.fanin.session
+        verified = s.verify()
+        if not verified.get("ok"):
+            raise RecursionRefusal("P2_SOURCE_OR_STATE_VERIFICATION_FAILED")
+        if slot not in MATERIAL_FACT_SLOTS:
+            raise RecursionRefusal("P2_MATERIAL_FACT_SLOT_INVALID")
+        world = s.world()
+        if slot not in world.resources:
+            raise RecursionRefusal("P2_MATERIAL_FACT_ABSENT:" + str(slot))
+        root = s.read_root()["root_hash"]
+        fact = validate_material_fact(world.resources[slot], root=root,
+                                      branch=s.branch_id, world_clock=world.clock)
+        snapshot = self.snapshot()
+        return {
+            "schema": MATERIAL_FACT_READ_SCHEMA,
+            "grade": self.grade,
+            "slot": slot,
+            "root": root,
+            "branch": s.branch_id,
+            "clock": world.clock,
+            "epoch": fact["epoch"],
+            "source": fact["source"],
+            "state_hash": snapshot.state_hash,
+            "world_hash": digest(world.snapshot()),
+            "document": fact,
+        }
 
     def validate_proposal(self, proposal: EventProposal) -> None:
         if proposal.operation != "ADMIT_EVENT":
