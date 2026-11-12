@@ -22,6 +22,18 @@ from outward import OPERATIONS, establish_demo_conditions, perform as perform_ou
 from situated import reconsider
 from situated_provider import ModelUnavailable, SituatedProvider
 
+def parent_background_operation(state, *, operation, request):
+    """Internal P6 seam: normal P4 independent-activity entry for parent work.
+
+    Does not expose parent material on the user scene surface and does not
+    create a second ledger/controller. The caller must use a fresh/valid root;
+    a corrupted root still refuses at check_boundary.
+    """
+    from run_p4 import run_parent_operation
+    return run_parent_operation(
+        state, operation=operation, request=request)
+
+
 def PACE(fanin, action):
     # Off-room location is not evidence of obstruction. Use the received
     # UNKNOWN mode so elapsed time records no fabricated workshop cause.

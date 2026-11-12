@@ -16,7 +16,9 @@ sys.path.append(str(ROOT.parents[1]))
 # Reuse the received sourcefree scenario constructors. They provide antecedent
 # data only. All user operations come from this CLI's caller.
 from p3_fixture_support import build_case
-from developmental_recursion.contracts import RecursionRefusal, canonical, digest
+from developmental_recursion.contracts import (
+    RecursionRefusal, canonical, detached, digest,
+)
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
 from rawlsing_next.sorok_history.owner import (
@@ -178,6 +180,159 @@ def record_activity(owner, ledger_file, ledger, before, result):
     ledger["last_boundary"] = {"collection": "activity_turns",
                                "index": len(ledger["activity_turns"]) - 1}
     save(ledger_file, ledger)
+
+
+PARENT_BACKGROUND_OPERATIONS = frozenset({
+    "period-establish", "period-materialize",
+    "market-establish",
+    "parent-register", "parent-establish",
+    "parent-circumstance", "parent-activity",
+    "parent-decide", "parent-perform", "parent-speak",
+})
+
+
+def _parent_background_dispatch(session, operation, request):
+    from developmental_recursion import (
+        parent_activity, parent_decision, parent_speech, supporting_actor,
+    )
+    if not isinstance(request, dict):
+        raise RecursionRefusal("P4_PARENT_BACKGROUND_REQUEST_SCHEMA")
+    if operation == "period-establish":
+        module = parent_activity.historical_period_module()
+        if module is None:
+            raise RecursionRefusal("P4_B02_MODULE_UNAVAILABLE")
+        return module.establish_period_plan(
+            session, employment=request.get("employment"),
+            plan=request.get("plan"),
+        )
+    if operation == "period-materialize":
+        module = parent_activity.historical_period_module()
+        if module is None:
+            raise RecursionRefusal("P4_B02_MODULE_UNAVAILABLE")
+        as_of_date = request.get("as_of_date")
+        if not isinstance(as_of_date, str) or not as_of_date.strip():
+            raise RecursionRefusal("P4_PARENT_BACKGROUND_REQUEST_SCHEMA")
+        return module.materialize_to(session, as_of_date)
+    if operation == "market-establish":
+        module = parent_decision._b04_module()
+        if module is None:
+            raise RecursionRefusal("P4_B04_MODULE_UNAVAILABLE")
+        return module.establish_market_inventory(
+            session, items=request.get("items"))
+    parent_id = request.get("parent_id")
+    if not isinstance(parent_id, str) or not parent_id.strip():
+        raise RecursionRefusal("P4_PARENT_BACKGROUND_REQUEST_SCHEMA")
+    if operation == "parent-register":
+        return supporting_actor.register_supporting_actor(
+            session, alias=request.get("alias"),
+            actor_id=request.get("actor_id"), role=request.get("role", "parent"),
+            private_state=request.get("private_state"),
+        )
+    if operation == "parent-establish":
+        return parent_activity.establish_parent_material(
+            session, parent_id, fixture=request.get("fixture"))
+    if operation == "parent-circumstance":
+        return parent_activity.commit_parent_circumstances(
+            session, parent_id,
+            operation_id=request.get("operation_id"),
+            changes=request.get("changes"),
+            source_ref=request.get("source_ref"),
+            expected_clock=request.get("expected_clock"),
+        )
+    if operation == "parent-activity":
+        return parent_activity.record_parent_activity(
+            session, parent_id,
+            operation_id=request.get("operation_id"),
+            activity=request.get("activity"),
+            hours=request.get("hours"),
+            payment=request.get("payment"),
+            expected_clock=request.get("expected_clock"),
+        )
+    if operation == "parent-decide":
+        return parent_decision.admit_parent_decision(
+            session, parent_id,
+            operation_id=request.get("operation_id"),
+            request=request.get("request"),
+            as_actor=parent_id,
+            expected_clock=request.get("expected_clock"),
+        )
+    if operation == "parent-perform":
+        return parent_decision.perform_parent_decision(
+            session, parent_id,
+            decision_id=request.get("decision_id"),
+            as_actor=parent_id,
+        )
+    if operation == "parent-speak":
+        return parent_speech.perform_parent_utterance(
+            session, parent_id,
+            decision_id=request.get("decision_id"),
+            text=request.get("text"),
+            hidden_reason=request.get("hidden_reason"),
+            operation_id=request.get("operation_id"),
+        )
+    raise RecursionRefusal("P4_PARENT_BACKGROUND_OPERATION_UNKNOWN")
+
+
+def run_parent_operation(state, *, operation, request):
+    """Normal live-root background entry for B02/parent material operations.
+
+    It checks the ordinary P4 foreground boundary before any write, records a
+    pending fail-stop marker, then records the actual after snapshot and owner
+    receipt through the existing independent-activity protocol. A no-op does
+    not add an activity turn. An operation that mutates state and then fails
+    leaves pending set for explicit reconciliation; it does not duplicate or
+    bless an unrecorded mutation on retry.
+    """
+    if operation not in PARENT_BACKGROUND_OPERATIONS:
+        raise RecursionRefusal("P4_PARENT_BACKGROUND_OPERATION_UNKNOWN")
+    state = Path(state).resolve()
+    ledger_file = state / "p4_receipts.json"
+    with foreground_lock(state):
+        if not ledger_file.exists():
+            raise RecursionRefusal("P4_STATE_OR_SOURCE_MISSING")
+        ledger = json.loads(ledger_file.read_text())
+        if ledger.get("pending"):
+            raise RecursionRefusal(
+                "P4_PENDING_OPERATION_REQUIRES_RECONCILIATION")
+        owner = open_owner(state / "actual-p2")
+        try:
+            check_source(owner)
+            check_boundary(owner, ledger)
+            before = owner.snapshot().document()
+            ledger["pending"] = {
+                "kind": "parent_background",
+                "operation": operation,
+                "request": detached(request),
+            }
+            save(ledger_file, ledger)
+            try:
+                result = _parent_background_dispatch(
+                    owner.base_owner.fanin.session, operation, request)
+            except BaseException as exc:
+                after_failed = owner.snapshot().document()
+                if after_failed == before:
+                    ledger["pending"] = None
+                    save(ledger_file, ledger)
+                raise exc
+            after = owner.snapshot().document()
+            if after == before:
+                ledger["pending"] = None
+                save(ledger_file, ledger)
+                recorded = False
+            else:
+                ledger["pending"] = None
+                record_activity(
+                    owner, ledger_file, ledger, before, result)
+                recorded = True
+            return {
+                "grade": GRADE,
+                "operation": operation,
+                "recorded_activity": recorded,
+                "result": result,
+                "last_boundary": ledger.get("last_boundary"),
+            }
+        finally:
+            owner.close()
 
 
 def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
