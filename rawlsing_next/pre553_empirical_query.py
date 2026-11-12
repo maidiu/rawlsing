@@ -5,6 +5,7 @@ generated-position mapping, actor/V3/V2 state, rendering, legacy fallback or cut
 """
 from __future__ import annotations
 
+from dataclasses import replace
 from typing import Any, Iterable, Mapping
 
 from rawlsing_next._pre553_query_common import (
@@ -128,6 +129,54 @@ def _release_index_for(
             repository._i03_index_attestations[key] = _i03_index_attestation(rebuilt)
             index = rebuilt
         return index
+
+
+def install_sourcefree_i02_certified_i03_range(
+    repository: C11Repository,
+    *,
+    release_ref: ExactRef,
+    universe_ref: ExactRef,
+    witness: Any,
+    independently_held_root: str,
+) -> None:
+    """Opt in ONE exact I02-sealed sourcefree release to verified I03 selection.
+
+    This owner method does not accept caller-created postings, issue a source
+    permission, mint an I02 seal, certify source-native science, or install a
+    durable saved view. It uses the complete *existing* I02 release as its
+    separate provenance oracle. Publication into the ordinary I03 derived
+    cache occurs only after all original-source and exact-keyspace checks
+    succeed. The normal execute_empirical_query path then reads the same
+    attested index; callers cannot substitute a Protocol or index object.
+    """
+    if type(repository) is not C11Repository:
+        raise EmpiricalQueryResolutionError(
+            "S2-A sourcefree installation requires the native exact C11Repository"
+        )
+    release = _resolve_release_exact(repository, release_ref)
+    from rawlsing_next._pre553_verified_semantic_range import certified_i03_events
+
+    selected = certified_i03_events(
+        release, universe_ref, witness=witness,
+        independently_held_root=independently_held_root,
+    )
+    native = _build_release_index(release, universe_ref)
+    if set(selected) != set(native.respondents):
+        raise EmpiricalQueryResolutionError(
+            "sourcefree certified selector respondent domain differs from I02"
+        )
+    index = replace(native, events_by_respondent=selected)
+    attestation = _i03_index_attestation(index)
+    key = (release.release_ref, universe_ref)
+    # No code path can observe a half-installed cache pair. A failed
+    # certification leaves the previously accepted native index untouched.
+    with repository._i03_index_lock:
+        if repository.resolve_release_exact(release_ref) is not release:
+            raise EmpiricalQueryResolutionError(
+                "exact sourcefree release changed during index installation"
+            )
+        repository._i03_release_indices[key] = index
+        repository._i03_index_attestations[key] = attestation
 
 
 def _resolve_release_indices(
@@ -883,6 +932,7 @@ def replay_empirical_query(
 
 __all__ = [
     "I03GroupedExecutionScope",
+    "install_sourcefree_i02_certified_i03_range",
     "execute_empirical_query",
     "replay_empirical_query",
     "QueryExecutionResult",
