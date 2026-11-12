@@ -18,7 +18,7 @@ from typing import Any
 from rawlsing_next.pre553_c11_repository import (
     C11LogicalRelease, _C11_VALIDATION_SEAL,
 )
-from rawlsing_next.pre553_c11_integrity import RespondentIdentity
+from rawlsing_next.pre553_c11_integrity import RespondentIdentity, QuestionVariableBinding
 from rawlsing_next.pre553_empirical_objects import (
     ExactRef, EmpiricalUniverse, RespondentEvent, canonical_json, exact_ref, semantic_hash,
 )
@@ -82,6 +82,22 @@ def _bindings(
             if obj.ref.key in respondents:
                 raise SemanticRangeIntegrityError("duplicate respondent ref in sealed release")
             respondents[obj.ref.key] = []
+    # I02 validates native question membership and mapping-authority positivity,
+    # but these are distinct from native->canonical target equality. Reconstruct
+    # the exact admitted question aliases from *sealed QuestionVariableBinding*
+    # records, not from the untrusted derived selector or an event's assertion.
+    # Multiple genuine instrument-version bindings for the same native ref are
+    # allowed; a canonical event alias must match at least one accepted binding.
+    admitted_native: dict[str, set[str]] = {}
+    for record in release.internal_records:
+        if not isinstance(record, QuestionVariableBinding):
+            continue
+        if _ref(record.empirical_universe_ref, "binding.universe") != universe_ref:
+            continue
+        native_key = _ref(record.native_question_ref, "binding.native").key
+        aliases = admitted_native.setdefault(native_key, set())
+        if isinstance(record.canonical_question_ref_or_typed_absence, ExactRef):
+            aliases.add(record.canonical_question_ref_or_typed_absence.key)
     postings: dict[_Key, list[RespondentEvent]] = {}
     for event in release.public_objects:
         if not isinstance(event, RespondentEvent):
@@ -92,10 +108,23 @@ def _bindings(
         if respondent not in respondents:
             raise SemanticRangeIntegrityError("event belongs to an absent respondent")
         _event_sig(event)
-        respondents[respondent].append(event)
-        aliases = [("native", _ref(event.native_question_ref, "event.native"))]
+        native = _ref(event.native_question_ref, "event.native")
+        admissible = admitted_native.get(native.key)
+        if admissible is None:
+            raise SemanticRangeIntegrityError(
+                "native event lacks an exact sealed question binding in its universe"
+            )
+        canonical = None
         if event.canonical_question_ref_if_authorized is not None:
-            aliases.append(("canonical", _ref(event.canonical_question_ref_if_authorized, "event.canonical")))
+            canonical = _ref(event.canonical_question_ref_if_authorized, "event.canonical")
+            if canonical.key not in admissible:
+                raise SemanticRangeIntegrityError(
+                    "event canonical alias disagrees with sealed QuestionVariableBinding"
+                )
+        respondents[respondent].append(event)
+        aliases = [("native", native)]
+        if canonical is not None:
+            aliases.append(("canonical", canonical))
         if event.component_or_subitem_ref is not None:
             aliases.append(("component", _ref(event.component_or_subitem_ref, "event.component")))
         for kind, alias in aliases:
