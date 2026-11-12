@@ -1,0 +1,35 @@
+name: PYAT C-1 Agent B independent sourcefree cache differentials
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_source_backed_c11_facade.py'
+      - 'rawlsing_next/tests/test_c1_agent_b_cache_differential.py'
+      - 'rawlsing_next/tests/test_pre553_source_backed_c11_facade.py'
+      - '.github/workflows/pyat-c1-agent-b-cache-proof.yml'
+permissions:
+  contents: read
+jobs:
+  sourcefree-c1-cache:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb
+      - name: Independent divergent-projection, restore, decoder-context and existing C11 tests
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_c1_agent_b_cache_differential.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py \
+            --junitxml=pyat-c1-agent-b-sourcefree.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-c1-agent-b-sourcefree
+          path: pyat-c1-agent-b-sourcefree.xml
+          if-no-files-found: ignore
