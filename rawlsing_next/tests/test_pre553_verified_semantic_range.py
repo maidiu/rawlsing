@@ -401,6 +401,7 @@ def test_h27_real_i02_authorized_canonical_and_component_binding_omission():
 
 def _s2a_contradictory_alias_fixture(
     tag: str, *, binding_has_alias: bool = True, event_uses_binding: bool = False,
+    conflicting_version_alias: bool = False,
 ):
     """A genuine I02-accepted sourcefree release with conflicting alias claims.
 
@@ -446,6 +447,8 @@ def _s2a_contradictory_alias_fixture(
         ))
     counts = dict(old.source_release_manifest.declared_record_counts_by_logical_family)
     counts["AuthoritySnapshot"] += 1
+    if conflicting_version_alias:
+        counts["QuestionVariableBinding"] += 1
     manifest = replace(
         old.source_release_manifest,
         declared_authority_snapshot_refs=(
@@ -457,7 +460,12 @@ def _s2a_contradictory_alias_fixture(
     candidate = replace(
         old,
         source_release_manifest=manifest,
-        question_variable_bindings=(binding,),
+        question_variable_bindings=(
+            (binding, replace(
+                binding, instrument_question_version="CONFLICTING_VERSION_2",
+                canonical_question_ref_or_typed_absence=invented,
+            )) if conflicting_version_alias else (binding,)
+        ),
         respondent_events=tuple(new_events),
         authority_snapshots=(*old.authority_snapshots, mapping),
         candidate_replay_manifest=None,
@@ -628,3 +636,16 @@ def test_h36_multiple_accepted_instrument_versions_same_native_are_preserved():
     respondent = candidate.respondent_identities[0].ref.key
     target = first.native_question_ref
     assert len(list(rows[respondent].select(target))) == 2
+
+
+def test_h37_conflicting_instrument_version_canonical_mappings_refuse_ambiguous_event():
+    release, universe, declared, invented = _s2a_contradictory_alias_fixture(
+        "s2a-h37-conflicting-versions",
+        event_uses_binding=True, conflicting_version_alias=True,
+    )
+    # I02 accepts two positive QuestionVariableBinding versions for one native
+    # question and universe with conflicting canonical aliases. RespondentEvent
+    # has no instrument_question_version field: S2-A cannot guess which
+    # approved mapping produced this event.
+    with pytest.raises(SemanticRangeIntegrityError, match="ambiguous|version|binding"):
+        I02SemanticRangeWitness.from_validated_release(release, universe)
