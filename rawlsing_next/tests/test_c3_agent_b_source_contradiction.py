@@ -112,9 +112,17 @@ def test_c3_t01_genuine_retained_current_transport_still_admits_sourcefree():
 
 
 def test_c3_t01_synthetic_sourcefree_positive_cannot_impersonate_fixed_current():
-    relation, _ = _fixture()
-    # The ordinary frozen D sourcefree test is allowed; the strictly pinned
-    # *current transport* issuer refuses exactly the same synthetic relation.
+    from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
+
+    query, fact, conditioner, target = _objects()
+    relation = ff.produce_exact_conditional_support_profile(
+        joint_fact=fact, joint_query=query,
+        conditioner_ref=conditioner, target_ref=target,
+        producer_permission_ceiling=(adm.GT2_TARGET_USE,),
+        relation_permission_ceiling=(adm.GT2_TARGET_USE,),
+    )
+    # The real synthesized shape passes the *same* narrow permission budget.
+    # Strict transport now refuses the actual wrong fact/query identity.
     assert bridge.admit_gt12_c_relation(relation).admission.decision is adm.AdmissionDecision.ADMITTED
     with pytest.raises(bridge.GT12CToDBridgeError,
                        match="not the exact fixed current"):
