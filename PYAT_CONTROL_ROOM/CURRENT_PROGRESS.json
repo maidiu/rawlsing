@@ -300,7 +300,7 @@
   "successor_960_working_overlay": {
     "issue": 960,
     "packet": "S2-G/P2-08",
-    "state": "Q1_ACCEPTED_SCOPED_STOP_Q2_Q3_BLOCKED_DEPENDENCY",
+    "state": "Q1_ACCEPTED_STOP_Q2_PROVISIONAL_AUTHOR_RUNNING_Q3_PREFLIGHT_ONLY",
     "a_delivery": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
     "a_implementation": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
     "reported_tests": "153+19+1 PASS; B repair evidence, not independent reacceptance",
@@ -331,7 +331,7 @@
     "independent_tests": "153+19+1 PASS, MR01 executed/noSKIP; wrongrelease refusal and lawfulmultirelease positive",
     "repair_job": "pyat960-s2g-mr01-b-repair",
     "repair_scope": "G5-MR01 selected fact provenance vs determinant release only",
-    "next": "Await qualified S1-C and complete S2-B for Q2; no polling/substitute tasks",
+    "next": "Terminalreturn->samefixedQ2B or consumeQ3preflight; writer only at actualgate",
     "repair_delivery": "6ae305dcd284a47d7eb105ad203001db31212c27",
     "repair_implementation": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
     "repair_job_state": "TERMINAL_EXIT0",
@@ -339,6 +339,19 @@
     "accepted_code": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
     "reviewer_delivery": "d5ee7deed4531620706000e4f17e4558c449c6a1",
     "g5_recheck_job_state": "TERMINAL_EXIT0_ACCEPTED",
-    "MR01": "FIXED_CLOSED"
+    "MR01": "FIXED_CLOSED",
+    "Q2": {
+      "job": "pyat960-s1e-a01",
+      "base": "591056a948fb0fdd68adbd581301dd903485adc8",
+      "branch": "agent/pyat960-s1e-a-r1",
+      "state": "LAUNCHED_ON_VERIFIED_EXCLUSIVE_LEASE",
+      "upstreamG5": "PENDING; implementationpermittedbyuser"
+    },
+    "Q3": {
+      "job": "pyat960-s2c-preflight01",
+      "branch": "agent/pyat960-s2c-preflight-r1",
+      "state": "PREFLIGHT_ONLY",
+      "writer": "HELD_DIRECT_S2B_G5_AND_CONCRETE_Q2_ABI"
+    }
   }
 }

@@ -401,3 +401,8 @@ B code `c8e739470beb0dc65ad70c419a906e483a12ca8f` adds ten-line selected-fact ex
 ### #960 S05 terminal scoped acceptance — 2026-11-12
 
 G5 receiving `38d6136031f0665d29f8b3d8768a9a4976f639cb` (delivery `d5ee7deed4531620706000e4f17e4558c449c6a1`) independently ACCEPT_SCOPED_ENGINEERING / S2_SOURCEFREE_ISOLATED_FIXTURE for S2-G code `c8e739470beb0dc65ad70c419a906e483a12ca8f`. G1-G5 PASS at that boundary;153+19+1 PASS, original wrong-source release refused and valid matching multi-release positive retained, cold native learned/world first reader and change/restore proved. MR01 closed, historical negative evidence preserved. STOP isolated packet coding. Full joined S2-G remains OPEN/HOLD_EXTERNAL, UNMERGED; production current issuer/scientific M1/original35/integrated100k/protected adoption held. Q2/S1-E and Q3/S2-C remain blocked on unreceived S1-C and incomplete full S2-B at reverified unchanged refs. Exact custody: successor960 Q1_SCOPED_ACCEPTANCE.json and current checkpoint.
+
+
+### #960 S01-S03 user unlock / provisional Q2 and read-only Q3 — 2026-11-12
+
+User authorizes originalS1E construction against exact provisional S1Cdae66cdf + directS2B155cd1b while independentG5 pending. Exclusive composition591056a948fb0fdd68adbd581301dd903485adc8 preserves scoped#980base; Q2actualauthor launched, immutable13familyABI+source/operation/currentno-drop frozen. Separate originalS2Cread-onlyreuse/ABI preflight launched; writer stillhelddirectS2BG5+concreteQ2input. S2E not prerequisite. Q1accepted STOP, no newpackets/science/currentproduction/protected authority. Fullvision/Oct28-Nov11reuse and all35no-drop retained in frozencontracts; exactlaunches/gates in successor960registry/checkpoint.

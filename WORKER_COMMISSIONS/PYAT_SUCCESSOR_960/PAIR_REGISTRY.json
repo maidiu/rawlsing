@@ -57,10 +57,11 @@
     {
       "packet_id": "S1-E",
       "queue": "Q2",
-      "state": "PROVISIONAL_Q2_A_DISPATCH_RESERVED",
+      "state": "Q2_A_LAUNCHED_PROVISIONAL_UPSTREAM_G5_HELD",
       "exact_prerequisites": [
-        "S1-C#955@5b1db9b5a687184615a199da8a39c55d5a30ed61 independentacceptanceorfrozencompatibleproducerABI",
-        "S2-B#954@f5ee89b8e700ac14cf266c2e3eae4c25f021c349 completequalifiedI02inputABI"
+        "S1C dae66cdf9f3846d237e0b1c3069cc17eb05b7746 sourcefreeG5pending",
+        "directS2B155cd1b7244ab22ede804386e6d5253a39fe3587 sourcefreeG5pending; sourcefree129PASS/nativeI03evidence supplied",
+        "User permits provisional implementation NOW; Q2G5 requires qualifiedupstream or independently defensible compatiblelowergrade and realI02/nativeconsumer"
       ],
       "owner": "originalPair1S1-C/originalPair2S2-B; Browserduelsreadonly",
       "last_boundary_check": "2026-11-12 after Q1 G5: #955 unchanged5b1db9b G5_NOT_RUN; #959 unexecuted follow-up noted, #954 unchangedf5ee89 incomplete source-direct bounded I02",
@@ -73,7 +74,7 @@
           "session": "ses_e3122f686ffeByL78cGOKAacTS",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a",
           "branch": "agent/pyat960-s1e-a-r1",
-          "state": "DISPATCH_RESERVED"
+          "state": "LAUNCHED"
         },
         "B": {
           "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
@@ -81,15 +82,33 @@
           "branch": "agent/pyat960-s1e-b-r1",
           "state": "IDLE_WAIT_OWN_A"
         }
+      },
+      "launch": {
+        "job_id": "pyat960-s1e-a01",
+        "child_pid": 53457,
+        "supervisor_pid": 53456,
+        "observer_pid": 53458,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s1e-a01",
+        "launch_is_not_completion": true
+      },
+      "job_id": "pyat960-s1e-a01",
+      "actual_first_turn_metadata": "PENDING",
+      "five_gates": {
+        "G1": "PROVISIONAL_ABI_FROZEN_IMPLEMENTATION_OR_REUSE_PROOF_PENDING",
+        "G2": "NOT_RUN",
+        "G3": "NOT_RUN",
+        "G4": "NOT_RUN",
+        "G5": "NOT_RUN_SOURCEFREE_UPSTREAM_G5_PENDING"
       }
     },
     {
       "packet_id": "S2-C",
       "queue": "Q3",
-      "state": "PREFLIGHT_ONLY_DISPATCH_RESERVED_WRITER_HELD",
+      "state": "PREFLIGHT_ONLY_LAUNCHED_WRITER_HELD",
       "exact_prerequisites": [
-        "S2-BcompleteindependentlyacceptedI02logical+selectorcertificateNOTAVAILABLE@#954f5ee89b8",
-        "S1-Equ alifiedsource-directABI NOT_YET_AVAILABLE"
+        "Physicalwriter: independently accepted directS2BscopedG5",
+        "Physicalwriter: concretecompatibleQ2source-streaminputcontract",
+        "NOT S2-E dependent"
       ],
       "owner": "originalPair2S2-B and queuedQ2S1-E",
       "last_boundary_check": "2026-11-12 after Q1 G5: full S2-B still incomplete/unreceived and Q2 ABI unavailable",
@@ -97,7 +116,24 @@
       "preflight_session": "ses_e3120ba7affeNBHUoX1HIP3G4r",
       "preflight_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2c-preflight",
       "fixed_opponent": "ses_e3120ba49ffeWl7IZUTmL7mjZB_IDLE_NOT_LAUNCHED",
-      "writer_gate": "Independent directS2B scopedG5 + concretecompatibleQ2sourceinput; noS2Eprerequisite"
+      "writer_gate": "Independent directS2B scopedG5 + concretecompatibleQ2sourceinput; noS2Eprerequisite",
+      "launch": {
+        "job_id": "pyat960-s2c-preflight01",
+        "child_pid": 53740,
+        "supervisor_pid": 53736,
+        "observer_pid": 53741,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s2c-preflight01",
+        "launch_is_not_completion": true
+      },
+      "job_id": "pyat960-s2c-preflight01",
+      "actual_first_turn_metadata": "PENDING",
+      "five_gates": {
+        "G1": "PROVISIONAL_ABI_FROZEN_IMPLEMENTATION_OR_REUSE_PROOF_PENDING",
+        "G2": "WRITER_NOT_RUN_GATE_HELD",
+        "G3": "NOT_RUN",
+        "G4": "NOT_RUN",
+        "G5": "NOT_RUN_SOURCEFREE_UPSTREAM_G5_PENDING"
+      }
     }
   ]
 }
