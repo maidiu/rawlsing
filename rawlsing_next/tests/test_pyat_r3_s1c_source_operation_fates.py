@@ -422,10 +422,12 @@ def test_s1c_b_unknown_and_excluded_axis_severance_before_source_open(tmp_path):
 
     # The R61 role rule gives route-UNKNOWN a HELD operation fate.
     # An unknown risk set (under policy.risk_set_policy="UNKNOWN") is
-    # the genuine operation UNKNOWN case; no invented ledger rows.
+    # the genuine operation UNKNOWN case; disjoint nonempty risk sets
+    # are the genuine INAPPLICABLE_PROVED (EXCLUDED) case. No invented rows.
     changed = tuple(
         replace(occ, risk_set_refs=())
-        if occ.key.item_id == "A" else occ
+        if occ.key.item_id == "A"
+        else replace(occ, risk_set_refs=("RISK-" + occ.key.item_id,))
         for occ in inventory.occurrences
     )
     real_inventory = replace(inventory, occurrences=changed)
