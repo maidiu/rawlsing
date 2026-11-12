@@ -40,3 +40,8 @@ S1-B B return received exit0 remote deliveryc356540e16d9410640c0b8a4cf4c83de0f14
 
 ACTUAL S1-B sameA counter child45380/supervisor45375/observer45381; first real FlashMAX turn verified; kqueue intervalnull. Three lanes S1-B ACOUNTER / S1-D B / S2-F G5. Future notificationonly; no recurringwake/checks.
 Original #918 custody comment6820840597 records S1-B sameA counter, not acceptance.
+
+S2-F G5 returnedexit0 review16aa624c7ef99fe0c0f3affd4a5770fb1edefff0, code588d42f. IndependentG1-G3PASS/nativecoldM1GT2verified; G4/F08FAIL actualhardcrash leavesUUID-onlyblobtmp, cleanup expectsPID; syntheticPIDtestfalseconfidence. HQ dispositionREVISE_EXACT_DEFECT accepted exactfindingSEV2. ONEboundedrepair reserved SAME Ases_e3120ba1cffeO1w43uU5MLh4yq jobpyat940-s2f-f08-repair-r01, owncleanbranchfastforwardreviewevidence. SameindependentG5 session retainedWAIT_EXACT_DEFECT_REPAIR for focusedrecheck, notnewduel/reviewer. FullS2-FOPEN/S2EHOLD. OtherS1-B ACOUNTER/S1-D B actuallyrunning,max3.
+
+ACTUAL boundedF08repair child51930/supervisor51929/observer51931; kqueue intervalnull. Actual first repair modelturn pending at initial launch; prior session model is not fresh proof. No duplicate launch/polling.
+Original#919custody comment6821418978. ActualrepairfirstFlashMAXturn verified msg_1cf5a3fc3001qb4yF5k1LXG0jm. Next: sameG5focusedrecheck afterrepairterminal; no recurringwake.

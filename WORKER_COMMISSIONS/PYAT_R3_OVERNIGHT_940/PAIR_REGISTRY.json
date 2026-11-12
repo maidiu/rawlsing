@@ -411,7 +411,7 @@
             }
           },
           "opponent_session_id": "ses_e3120b9efffegreD5YfH7dOO15",
-          "job_id": "pyat940-s2f-a02-counter",
+          "job_id": "pyat940-s2f-f08-repair-r01",
           "actual_first_turn_model": {
             "id": "msg_1cee50a60001SG8WZs9ZMRzllX",
             "type": "assistant",
@@ -426,9 +426,9 @@
               "completed": 1794472487821
             }
           },
-          "pid": 36463,
-          "state": "STOPPED_READY_FOR_RECEIVING",
-          "received_head": "e119453bc038e82963f45384fb913df4ed02be33",
+          "pid": 51930,
+          "state": "RUNNING",
+          "received_head": "16aa624c7ef99fe0c0f3affd4a5770fb1edefff0",
           "actual_counter_first_turn_model": {
             "id": "msg_1cf2bd306001cpOH1LnxaH3loc",
             "model": {
@@ -440,6 +440,19 @@
               "created": 1794477118452,
               "streamed": 1794477169156,
               "completed": 1794477169282
+            }
+          },
+          "actual_f08_repair_first_turn_model": {
+            "id": "msg_1cf5a3fc3001qb4yF5k1LXG0jm",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794480160843,
+              "streamed": 1794480192364,
+              "completed": 1794480192607
             }
           }
         },
@@ -488,8 +501,8 @@
           }
         }
       },
-      "state": "G5_RUNNING",
-      "active_role": "G5_NONAUTHOR",
+      "state": "F08_EXACT_REPAIR_RUNNING",
+      "active_role": "A",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -525,19 +538,19 @@
         "S2-E integratedproducer"
       ],
       "integration_state": "UNMERGED",
-      "independent_g5": "PENDING_NOT_ACCEPTED",
-      "active_job": "pyat940-s2f-g5-r01",
+      "independent_g5": "REVISE_EXACT_DEFECT",
+      "active_job": "pyat940-s2f-f08-repair-r01",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s2f-g5-r01",
-        "child_pid": 43624,
-        "supervisor_pid": 43623,
-        "observer_pid": 43625,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-g5-r01",
+        "job_id": "pyat940-s2f-f08-repair-r01",
+        "child_pid": 51930,
+        "supervisor_pid": 51929,
+        "observer_pid": 51931,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s2f-f08-repair-r01",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 43625,
+        "pid": 51931,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
@@ -562,7 +575,7 @@
       },
       "custody_comment": {
         "issue": 919,
-        "comment_id": 6820795611
+        "comment_id": 6821418978
       },
       "b_return": {
         "job_id": "pyat940-s2f-b01",
@@ -601,7 +614,7 @@
         "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s2f-g5",
         "branch": "agent/pyat940-s2f-g5-r1",
-        "state": "RUNNING",
+        "state": "WAIT_EXACT_DEFECT_REPAIR",
         "job_id": "pyat940-s2f-g5-r01",
         "tested_candidate_head": "34f2fee4547ac67ee4648f4ff93d7b8aad4898ef",
         "tested_code_sha": "588d42fde9e7428114e6a45149d3b4754de9cb0f",
@@ -620,7 +633,25 @@
             "completed": 1794478353393
           }
         }
-      }
+      },
+      "g5_return": {
+        "job_id": "pyat940-s2f-g5-r01",
+        "exit_code": 0,
+        "review_head": "16aa624c7ef99fe0c0f3affd4a5770fb1edefff0",
+        "tested_delivery": "34f2fee4547ac67ee4648f4ff93d7b8aad4898ef",
+        "tested_code_sha": "588d42fde9e7428114e6a45149d3b4754de9cb0f",
+        "remote_verified": true,
+        "decision": "REVISE_EXACT_DEFECT",
+        "G1": "PASS",
+        "G2": "PASS",
+        "G3": "PASS",
+        "G4": "FAIL_F08",
+        "finding": "G5-F08-CRASH-TEMP-CLEANUP",
+        "severity": 2,
+        "independence": "distinct nonauthor other than both A/B",
+        "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE"
+      },
+      "bounded_g5_repair_count": 1
     }
   ],
   "created_utc": "2026-11-12T08:28:21.436010+00:00",
