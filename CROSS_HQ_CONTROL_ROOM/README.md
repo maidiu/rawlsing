@@ -1,5 +1,8 @@
 # Pyat ↔ Sorok shared grounding and progress
 
+**MCR-lite is the prospective default execution discipline.** [Read the canonical eight-point standard](MCR_LITE_EXECUTION_DISCIPLINE_R1.md): preserve the whole mission, reuse before invention, specify the real consumer and falsifier, execute, prove causal negatives, retain actual source/science/actor boundaries, receive independently where warranted, and finish at honest grade. Full §3A/MCR-C remains available for explicitly full-contract assignments; existing frozen work remains governed by its own exact contract.
+
+
 ## PRIORITY ZERO — WHAT FINISHED RAWLSING MUST ACTUALLY PRODUCE (2026-10-19)
 
 **Before any fresh/resumed HQ grok, return assessment or commissioning, read the [MANDATORY terminal-deliverable continuity / anti-microfocus law](HQ_TERMINAL_DELIVERABLE_CONTINUITY_AND_ANTI_MICROFOCUS_LAW_R1.md).** Every Pyat run works backward from original35 source→F1–F8 populated artifacts→N9/N10E/N10W real possibility consumer→N11 estate acceptance→N12 seam decision; every Sorok run works backward from an actually generated, historically developing person and C0–C12/A0–A5. A parallel flight of small successful tests is not a completion campaign. Select the largest lawful coherent substantive tranche first; then assign economical agents, independent evidence, and load-bearing tests. Publish the compact terminal completion strip in the EXISTING owner progress pair. No extra reviewer, source permission or Sorok/Pyat jurisdiction transfer.
