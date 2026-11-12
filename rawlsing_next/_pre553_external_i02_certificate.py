@@ -326,11 +326,17 @@ def build_sourcefree_external_i02(
 
 
 class VerifiedExternalI02:
-    """Fresh independent cold verifier; never trusts self-declared roots."""
+    """Fresh independent cold verifier; never trusts self-declared roots.
+
+    Exact class and slots are part of the native I03 trust boundary: neither a
+    lookalike Protocol nor an overrideable child/instance selector is certified.
+    """
+    __slots__ = ("path", "db", "roots", "_closed")
 
     def __init__(self, path: str | Path, *, roots: ExternalI02Roots) -> None:
         if not isinstance(roots, ExternalI02Roots):
             _fail("externally supplied roots required")
+        self._closed = True
         self.path = Path(path).absolute()
         if (self.path.is_symlink() or not self.path.is_file()
                 or self.path.suffix != ".sqlite"
@@ -360,8 +366,14 @@ class VerifiedExternalI02:
             self.db.close()
             raise
         self.roots = roots
+        self._closed = False
+
+    def _ensure_open(self) -> None:
+        if self._closed:
+            _fail("closed external I02 certificate cannot authorize native selection")
 
     def close(self) -> None:
+        self._closed = True
         self.db.close()
 
     def __enter__(self) -> "VerifiedExternalI02":
@@ -371,6 +383,7 @@ class VerifiedExternalI02:
         self.close()
 
     def respondent_refs(self) -> Iterator[str]:
+        self._ensure_open()
         for (ref,) in self.db.execute("""
             SELECT ref FROM objects WHERE family='RespondentIdentity'
               AND universe=? ORDER BY ref
@@ -378,6 +391,7 @@ class VerifiedExternalI02:
             yield ref
 
     def event_refs(self, respondent: str) -> Iterator[ExactRef]:
+        self._ensure_open()
         for row in self.db.execute("""
             SELECT o.ref_kind,o.object_id,o.digest FROM objects o
             WHERE o.family='RespondentEvent'
@@ -388,6 +402,7 @@ class VerifiedExternalI02:
     def selector_refs(self, respondent: str, target: ExactRef, *,
                       native_only: bool = False, include_component: bool = False,
                       states: frozenset[str] | None = None) -> Iterator[ExactRef]:
+        self._ensure_open()
         kinds = ["native"]
         if not native_only:
             kinds.append("canonical")
@@ -469,6 +484,7 @@ class _DiskSelectedRespondent(Sequence[RespondentEvent]):
         self._repository = repository
 
     def _load(self, ref: ExactRef) -> RespondentEvent:
+        self._certificate._ensure_open()
         obj = self._repository.resolve_object_exact(ref)
         if not isinstance(obj, RespondentEvent) or obj.ref != ref:
             raise SemanticRangeIntegrityError("certified disk event is not exact native I02")
@@ -486,6 +502,7 @@ class _DiskSelectedRespondent(Sequence[RespondentEvent]):
             yield self._load(ref)
 
     def __len__(self) -> int:
+        self._certificate._ensure_open()
         return self._certificate.db.execute("""
             SELECT COUNT(*) FROM objects WHERE family='RespondentEvent'
               AND universe=? AND respondent=?
@@ -496,6 +513,7 @@ class _DiskSelectedRespondent(Sequence[RespondentEvent]):
             yield self._load(ref)
 
     def __getitem__(self, index: int) -> RespondentEvent:
+        self._certificate._ensure_open()
         if not isinstance(index, int):
             raise TypeError("bounded certified reader supports integer indexing only")
         if index < 0:
@@ -524,6 +542,9 @@ def install_sourcefree_external_i02_i03(
     """
     if type(repository) is not C11Repository:
         _fail("requires exact original I02 repository")
+    if type(certificate) is not VerifiedExternalI02:
+        _fail("exact cold-verified external I02 certificate required")
+    certificate._ensure_open()
     release = repository.resolve_release_exact(release_ref)
     roots = certificate.roots
     if (roots.release != release.release_ref.key
