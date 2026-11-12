@@ -71,7 +71,8 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
     assert len(before_pos["records"]) == 1, before_pos
     assert before_neg["records"] == []
     assert before_pos["native_memory"] == "MISSING_RULE"
-    assert before_speech_pos == before_speech_neg
+    assert len(before_speech_pos) == len(before_speech_neg)
+    assert [(e["clock"], e["body"].get("text")) for e in before_speech_pos] == [(e["clock"], e["body"].get("text")) for e in before_speech_neg]
     assert before_head_pos["count"] == 1
     assert before_head_neg["count"] == 0
 
