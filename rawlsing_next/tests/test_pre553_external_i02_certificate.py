@@ -494,3 +494,87 @@ stage.build_sourcefree_external_i02(
     for orphan in orphans:
         with pytest.raises(ExternalI02IntegrityError):
             VerifiedExternalI02(orphan, roots=forged)
+
+
+def test_s2b_a_r2_public_sqlite_connection_rollback_corrupts_native_i03(tmp_path):
+    """RED on B: public db.execute('ROLLBACK') releases the verified snapshot.
+
+    A second writer can now alter the real SQLite file; the already-attested
+    I03 index reopens the changed posting keyspace under the *old* roots.
+    This is not object.__setattr__, subclassing or a forged certificate type.
+    """
+    source = _build_source("s2b-a-r2-rollback", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-r2-rollback")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref,
+            verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            verified.db.execute("ROLLBACK")
+        except ExternalI02IntegrityError:
+            assert _run(source, qa, pred, query) == oracle
+            return
+        # The read transaction was actually destroyed; real on-disk data
+        # changes are now observed by the exact previously verified instance.
+        with sqlite3.connect(path) as attacker:
+            removed = attacker.execute(
+                "DELETE FROM selectors WHERE kind='native'"
+            ).rowcount
+            assert removed == 3
+        poisoned_result = _run(source, qa, pred, query)
+        assert poisoned_result != oracle, "repro requires real native fact corruption"
+        pytest.fail(
+            "post-validation public SQLite rollback silently changed native I03 facts"
+        )
+
+
+def test_s2b_a_r2_deleting_verifier_seal_allows_db_substitution(tmp_path):
+    """RED on B: ordinary delattr(_sealed) disables __setattr__ guard."""
+    import shutil
+    source = _build_source("s2b-a-r2-delattr", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-r2-delattr")
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    poison = tmp_path / "locally-rehashed-but-not-anchored.sqlite"
+    shutil.copy2(path, poison)
+    with sqlite3.connect(poison) as untrusted:
+        removed = untrusted.execute(
+            "DELETE FROM selectors WHERE kind='native'"
+        ).rowcount
+        assert removed == 3
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        try:
+            del verified._sealed
+        except ExternalI02IntegrityError:
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                verified,
+            )
+            assert _run(source, qa, pred, query) == oracle
+            return
+        replacement = sqlite3.connect(poison)
+        try:
+            verified.db = replacement
+            install_sourcefree_external_i02_i03(
+                source["repo"], source["release_ref"], source["universe"].ref,
+                verified,
+            )
+            poisoned_result = _run(source, qa, pred, query)
+            assert poisoned_result != oracle
+            pytest.fail(
+                "ordinary delattr bypassed B's attribute seal and altered native I03"
+            )
+        finally:
+            replacement.close()
