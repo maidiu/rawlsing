@@ -4,6 +4,7 @@ from __future__ import annotations
 from argparse import Namespace
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 import pytest
@@ -183,6 +184,54 @@ def test_normal_live_root_parent_b02_view_and_user_turn_cold(tmp_path):
         assert evidence["event"]["event_id"] not in session.user_perceived_ids()
     finally:
         reopened.close()
+
+
+def test_cold_process_view_and_user_turn_after_parent_activity(tmp_path):
+    state = tmp_path / "cold-process"
+    new_state(state)
+    background(state, "period-establish", {})
+    background(state, "parent-register", {
+        "parent_id": PARENT_ID, "alias": PARENT_ALIAS,
+        "actor_id": PARENT_ID, "role": "parent",
+        "private_state": {"motive": SECRET},
+    })
+    background(state, "parent-establish", {
+        "parent_id": PARENT_ID,
+        "fixture": parent_material_fixture(actor_id=PARENT_ID, **BASELINE),
+    })
+    background(state, "parent-activity", {
+        "parent_id": PARENT_ID, "operation_id": "cold:activity:1",
+        "activity": "PAID_WORK", "hours": 2,
+    })
+    script = r"""
+import json, sys
+from argparse import Namespace
+from pathlib import Path
+repo = Path(sys.argv[1])
+for rel in ("WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1",
+            "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1",
+            "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1",
+            "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1"):
+    sys.path.insert(0, str(repo / rel))
+import run_p6
+view = run_p6.experience(Path(sys.argv[2]), Namespace(command="view"))
+say = run_p6.experience(Path(sys.argv[2]), Namespace(
+    command="say", text="hello", request_edge=False, request_id=None))
+print(json.dumps({"view": view, "say": say}, sort_keys=True))
+"""
+    completed = subprocess.run(
+        [sys.executable, "-B", "-c", script, str(RETURNS.parent), str(state)],
+        cwd=RETURNS.parent, capture_output=True, text=True, timeout=180,
+        check=True,
+    )
+    cold = json.loads(completed.stdout)
+    assert cold["view"]["room"] == "workshop"
+    assert cold["say"].get("admission") == "ADMITTED"
+    assert SECRET not in completed.stdout
+    assert "The parent works a paid shift." not in completed.stdout
+    saved = ledger(state)
+    assert saved["pending"] is None
+    assert len(saved["turns"]) == 1
 
 
 def test_corrupted_root_still_refuses_and_pending_refuses(tmp_path):

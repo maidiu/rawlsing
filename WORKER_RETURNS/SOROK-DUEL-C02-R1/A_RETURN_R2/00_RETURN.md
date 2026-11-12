@@ -7,5 +7,5 @@
 - **Grade:** `SOURCEFREE_S2_ONLY`; B02 full two-period proof held.
 - **Result:** normal live-root P4/P6 entry for B02 period establishment and parent registration/material/circumstance/activity; ordinary P6 view and say succeed after cold reopen; unrecorded bypass and pending/fail-stop refuse; parent activity leaves P3 psychology head and Nadia percepts untouched.
 - **B02:** current committed plan/current clock/date are read for parent reads/options/activity/history; B02 holder A is not applied to the parent; parent currency remains parent-local; no conversion/double count. Current-period source severance holds options and preserves past receipts. Exact incremental/two-period hook remains.
-- **Evidence:** live-root 4 passed; C02 A+B 11 passed; C01/P2/P3 28 passed/1 skipped; B01/B03 15 passed; B02 7 passed; P4/P5 7 passed.
+- **Evidence:** live-root 5 passed; C02 A+B 11 passed; C01/P2/P3 28 passed/1 skipped; B01/B03 15 passed; B02 7 passed; P4/P5 7 passed.
 - **Docs:** `AGENT_A_RELAY_HANDOFF.md` at C02 root; ABI/deltas/impact under this directory.

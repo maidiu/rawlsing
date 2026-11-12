@@ -92,7 +92,7 @@ Evidence:
 
 | Check | Result | Log |
 |---|---|---|
-| Live-root parent/B02 packet | 4 passed in 58.61 s | `A_RETURN_R2/evidence/live_root_b02.log` |
+| Live-root parent/B02 packet | 5 passed in 78.14 s | `A_RETURN_R2/evidence/live_root_b02.log` |
 | B + A C02 kernels | 11 passed in 30.29 s | `A_RETURN_R2/evidence/c02_ab.log` |
 | C01 B/A + P2 owner + P3 owner | 28 passed, 1 skipped in 79.89 s | `A_RETURN_R2/evidence/c01_p2_p3.log` |
 | B01 + B03 current cut | 15 passed in 92.82 s | `A_RETURN_R2/evidence/b01_b03.log` |
@@ -105,6 +105,7 @@ Negative/consumer discriminators:
 - A pending ledger refuses both view and background entry.
 - An injected post-mutation failure leaves `pending` set; the next view/background entry refuses reconciliation.
 - Repeating the parent activity operation through the P4 entry returns owner `REPLAY`, adds no activity turn, and leaves cash/world/episode counts unchanged.
+- A fresh Python subprocess after parent activity runs ordinary P6 `view` and `say`; both succeed, with no parent secret/activity summary on the surface.
 - Parent activity private secret and activity summary are absent from P6 view/say; focal access is `NOT_PERCEIVED`; P3 psychology head is unchanged.
 - B02 qualified context has `logical_tick == activity clock`, period `period:2026-h1`, `b02_employment_applied_to_parent=False`, `interval_status=NOT_MATERIALIZED`; removing the plan source makes options held, restoring it requalifies, and past activity receipt is not retconned.
 
