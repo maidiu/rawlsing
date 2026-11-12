@@ -1,0 +1,85 @@
+{
+  "event_id": "D02-A-20261112-76547199",
+  "task_id": "D02",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "76547199c20f29f63c0e0e43b13a12cdecb3d47a",
+  "d01_relay_code_sha": "a3ead75aad5a40a0c96224f8f747e9c48b6f085f",
+  "start_composition_sha": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+  "changed_owner_symbols": [
+    "p3.situated_context.build_situated_context",
+    "p3.situated_context._material",
+    "p3.situated_context._relations",
+    "p3.situated_context._options",
+    "p3.situated_context._focal_position",
+    "p3.situated_context._latest_perceived"
+  ],
+  "abi_class": "COMPATIBLE_ADDITIVE",
+  "affected_task_ids": ["D03", "D05"],
+  "active_contract_decision": "HOLD_FULL_D02_PREREQUISITE",
+  "active_contract_reason": "B02 calendar/as-of is not built and C01 is still a counterstruck candidate. The read-only selector is available as an additive input, but D02 is not dependency-satisfied.",
+  "new_actual_first_reader": "developmental_recursion.model_cycle.RecursionCycle._call provider request context; D02 test passes the exact selector and asserts the provider receives it",
+  "effect_on_original_obligation": "PRESERVED",
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_situated_context.py",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_all_pytest.log",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/composition_b01_c01_pytest.log",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/composition_p2_p6_pytest.log"
+  ],
+  "negative_refs": [
+    "D02_STALE_CLOCK",
+    "D02_STALE_STATE",
+    "D02_FOREIGN_STATE",
+    "P6_HOUSEHOLD_SOURCE_OR_ROOT_MISMATCH",
+    "unobserved parent relation absent",
+    "private state/portal gaze absent"
+  ],
+  "cold_refs": [
+    "fresh-root composition cold reopen and later P3 consumer",
+    "same-state restore stable selector hash"
+  ],
+  "preserved_obligations": [
+    "no new writer/scheduler/ledger/native rule",
+    "P2Owner sole world writer",
+    "B01 world-owned household",
+    "C01 public/private separation",
+    "D01 retention boundary and MISSING_RULE"
+  ],
+  "regressed_obligations": [
+    "none observed in the bounded suites",
+    "old-code roots refuse by exact code-pin design (hold)"
+  ],
+  "queued_contract_changes": [
+    {
+      "task_id": "D03",
+      "change": "May consume the read-only selector; must add its own response schema and not treat option labels as native choices.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D05",
+      "change": "May consume material/perception split; must add a distinct prospective performed consumer.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D02",
+      "change": "Full packet remains held for B02 calendar/as-of and exact later C01 integration.",
+      "status": "PREREQUISITE_HELD"
+    }
+  ],
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 483.11,
+    "usd": null,
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD"
+  }
+}
