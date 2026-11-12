@@ -1,64 +1,87 @@
 {
-  "event_id": "D01-A-20261112-ed8add689",
+  "event_id": "D01-B-20261112-141372a90",
   "task_id": "D01",
   "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "implementation_sha": "ed8add689631a796a4177bdb9aa98452d946e7c5",
+  "implementation_sha": "141372a9095f901c48fc06d03301c4dda66befec",
+  "handoff_provenance": "Final artifact is the codex/sorok-duel-d01-b-20261112-r1 HEAD commit containing AGENT_B_HANDOFF.md; implementation_sha is the immutable B code cut.",
   "changed_owner_symbols": [
+    "p3.p3_owner.verify_completed_config",
+    "p3.p3_owner._fsync_directory",
+    "p3.p3_owner.P3Owner.__init__",
     "p3.p3_owner.P3Owner._check_or_write_config",
-    "d01_reuse.producer_identity",
+    "p3.p3_owner.P3Owner._verify_completed_provenance",
+    "p3.state_store.PsycheStore.latest_completed",
+    "p3.state_store.PsycheStore.verify",
+    "d01_reuse._validate_config_body",
     "d01_reuse.load_cold_config",
     "d01_reuse.open_cold_owner",
-    "d01_reuse.validate_sourcefree_response",
     "d01_reuse.read_sourcefree_records",
     "d01_reuse.later_consumer",
-    "p3.state_store.PsycheStore.completed"
+    "d01_reuse.validate_sourcefree_response",
+    "d01_reuse._validate_record",
+    "d01_reuse.recover_missing_config"
   ],
   "abi_class": "COMPATIBLE_ADDITIVE",
-  "affected_task_ids": [
-    "D02",
-    "D03",
-    "D04",
-    "D05"
+  "abi_notes": [
+    "No new owner, scheduler, rule, registry, store or world writer.",
+    "Additive latest_completed(), verify_completed_config(), recover_missing_config() and optional exact response mode.",
+    "Behavioral tightening only: P3Owner config-provenance anchor, cold/later verify(), record-to-receipt binding, exact record/response validation.",
+    "A's completed() listing and the five shipped D01 tests are preserved."
   ],
+  "affected_task_ids": ["D02", "D03", "D04", "D05"],
   "active_contract_decision": "FINISH_THEN_RECONCILE",
-  "active_contract_reason": "D01 adds a read-only reuse/consumer boundary and a fail-closed retention invariant; queued D02-D05 may consume it, but no running contract is rewritten.",
-  "new_actual_first_reader": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py:P3Owner._effect (store.query) and WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py:later_consumer",
+  "active_contract_reason": "D01 adds read-only reuse/provenance machinery; queued D02-D05 may consume it, but no running contract is rewritten and the shared INTEGRATION_CONTRACT remains unreconciled outside this lease.",
+  "new_actual_first_reader": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py:P3Owner._effect -> PsycheStore.query -> test_rules.evaluate_event; D01 wrapper WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py:later_consumer",
   "effect_on_original_obligation": "PRESERVED",
   "source_refs": [
     "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
     "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
     "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/test_rules.py",
-    "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py"
+    "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py"
   ],
   "test_refs": [
     "WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py",
-    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/d01_reuse_pytest_vv.log",
-    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_regression_pytest.log",
-    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_primary_cold_pytest.log"
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_owner_differential.py",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/d01_b_all_pytest.log",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_b_regression_pytest.log",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_b_primary_cold_crash_pytest.log"
   ],
   "negative_refs": [
-    "test_cold_no_record_consumer_differs_and_fabricates_nothing",
-    "test_narrative_and_native_claims_are_not_durable_sourcefree_records",
-    "test_config_and_source_severance_refuse_then_exact_restore"
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/D01_B_DEFECT_A_HEAD_TAMPER.txt",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/D01_B_FIXED_TAMPER.txt",
+    "test_cold_open_refuses_rewritten_nonhead_record",
+    "test_cold_open_refuses_chain_consistent_record_receipt_divergence",
+    "test_live_owner_terminal_consumer_refuses_record_chain_tamper",
+    "test_exact_response_refuses_unknown_affirmative_claim_key",
+    "test_record_read_refuses_severed_rule_source_cleanly",
+    "test_config_and_source_severance_refuse_then_exact_restore",
+    "test_narrative_and_native_claims_are_not_durable_sourcefree_records"
   ],
   "cold_refs": [
     "test_cold_reopen_later_consumer_reads_exact_owner_held_record",
-    "d01_reuse.open_cold_owner"
+    "test_actual_owner_changed_value_with_identical_p2_event_identity",
+    "test_recovery_accepts_only_durable_provenance_and_restores_exact_bytes",
+    "test_recovery_empty_store_is_unambiguous",
+    "test_recovery_preserves_verified_pending_operation",
+    "test_h_cold_reopen_idempotent_replay_and_source_restore",
+    "test_h_real_process_crash_after_base_before_psych_commit"
   ],
   "queued_contract_changes": [
     {
       "task_id": "D02",
-      "change": "May use d01_reuse.open_cold_owner/read_sourcefree_records for the read-only situated-field source, with no new store or scheduler.",
+      "change": "May use open_cold_owner/read_sourcefree_records, but must add an explicit situated-field selector if a different record kind is needed; do not silently widen D01's exact V3MS_MEDIATOR checks.",
       "status": "CANDIDATE_ADDITIVE"
     },
     {
       "task_id": "D03",
-      "change": "May reuse the exact producer/consumer boundary; CAN-008 native semantics remain held.",
+      "change": "May reuse the exact producer/consumer boundary; CAN-008 native semantics remain held, and a different response schema needs its own exact validator.",
       "status": "CANDIDATE_ADDITIVE"
     },
     {
       "task_id": "D04",
-      "change": "Must extend selector breadth additively if needed; D01's formation-rule/kind check must not be silently widened.",
+      "change": "Must extend target-kind breadth additively; D01's frozen formation-rule/kind/payload semantics must not be weakened.",
       "status": "CANDIDATE_ADDITIVE"
     },
     {
@@ -67,26 +90,52 @@
       "status": "CANDIDATE_ADDITIVE"
     }
   ],
+  "shared_contract_gap": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/INTEGRATION_CONTRACT.md is outside the writer lease and still lists only the base PsycheStore API. Additive completed(), latest_completed(), verify_completed_config(), recover_missing_config() and the exact response mode require later reconciliation; they are not claimed as received.",
+  "code_pin_transition": "Fresh configs pin B's p3_owner.py/state_store.py SHA-256. Stores created under A's cut refuse under B's code by exact source identity; HQ must rebuild or explicitly re-pin at B/D composition rather than weakening code_pins.",
   "cost_record": {
     "tokens": null,
-    "wall_s": 520.81,
+    "wall_s": 622.06,
     "usd": null,
-    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+    "honest_status": "UNKNOWN_TOKENS_AND_USD",
+    "wall_breakdown_s": {
+      "d01_suite": 83.45,
+      "p3_regression_subset": 52.52,
+      "p3_primary_cold_crash": 486.09
+    }
   },
   "authority": {
     "engineering": "SOURCEFREE_CANDIDATE",
     "science": "HELD",
-    "rights": "HELD"
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
   },
   "preserved_obligations": [
     "P3Owner lifecycle, PsycheStore binding/source/registry/head/receipt/replay checks",
     "MISSING_RULE and NOT_ISSUED_BY_P3_RULE boundary",
     "P2Owner sole actor/world writer; no second scheduler or ledger",
     "P6 situated.py and CG-A candidate bridge untouched",
-    "native CAN/ADP/Pyat, actor/human rights and protected merge held"
+    "native CAN/ADP/Pyat, actor/human rights and protected merge held",
+    "A's five D01 tests unchanged and passing; targeted P3 suites passing"
   ],
   "regressed_obligations": [
-    "None observed in targeted suites: D01 5 passed; P3 subset 77 passed, 1 skipped",
-    "Behavioral tightening: missing config with existing store refuses; cold config is anchored to last completed operation provenance"
+    "No functional regression observed.",
+    "Intentional exact-code transition for A-cut stores (see code_pin_transition).",
+    "Cold/later D01 boundary now pays a full verify() scan; measured, not hidden."
+  ],
+  "new_attack_surfaces": [
+    "Full verify() at the D01 proof boundary is O(records + operations); keep it out of hot paths unless measured.",
+    "P3Owner construction now reads the last completed operation; targeted, not a full scan.",
+    "Empty-store recovery accepts a structurally valid candidate with matching source/binding; confirm the fresh-sidecar policy.",
+    "Exact response schema is D01-specific; D03/D04 need their own additive schema.",
+    "Record-to-receipt binding depends on the operation receipt's normalized records; update both sides together.",
+    "Directory fsync is best-effort; verified recovery is the fallback.",
+    "Same-path deterministic replay is not a live fork; a true fork needs C12/branch machinery outside this lease."
+  ],
+  "surviving_disagreements": [
+    "Whether a same-path/seed deterministic replay meets the intended same-world standard, or a live forked-root comparison is required.",
+    "Whether every P3Owner construction should run a full store.verify() rather than only the targeted config anchor.",
+    "Whether HQ requires an old-code read/migration path for A-cut stores instead of exact-code refusal.",
+    "Whether open_cold_owner should itself expose pending-operation recovery; B keeps it read-only and provides verified config recovery separately."
   ]
 }
