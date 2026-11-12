@@ -822,3 +822,62 @@ def test_s2b_a_r2_only_readonly_select_rows_and_closed_iterators(tmp_path):
             next(cursor)
         with pytest.raises(ExternalI02IntegrityError, match="closed"):
             verified.db.execute("SELECT 1")
+
+
+def test_s2b_a_r2_same_semantics_different_physical_path_swap_pins_inode(
+    tmp_path, monkeypatch,
+):
+    """Physical root G3: adversary swaps equal-semantic but different bytes.
+
+    Pre-repair: _digest_file(path) saw the genuine bytes; the distinct
+    sqlite3.connect(path) then opened a physically different file with an
+    unchanged logical root, silently treating its physical identity as held.
+    This intercepts exactly the connect boundary, not private Python mutation
+    of a previously verified certificate.
+    """
+    import shutil
+    import os
+    from rawlsing_next import _pre553_external_i02_certificate as owner
+
+    source = _build_source("s2b-a-r2-physical-race", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-r2-physical-race")
+    path, roots = _prepare(tmp_path, source)
+    alternate = tmp_path / "same-logical-different-physical.sqlite"
+    archived = tmp_path / "original-verified-inode.sqlite"
+    shutil.copy2(path, alternate)
+    with sqlite3.connect(alternate) as connection:
+        connection.execute("PRAGMA user_version=19")
+        assert _logical_root(connection) == roots.logical
+    assert _digest_file(alternate) != roots.physical
+
+    original_connect = sqlite3.connect
+    swapped = []
+
+    def swap_just_before_sqlite_opens(database, *args, **kwargs):
+        if not swapped and "mode=ro" in str(database):
+            os.replace(path, archived)
+            os.replace(alternate, path)
+            swapped.append(True)
+        return original_connect(database, *args, **kwargs)
+
+    monkeypatch.setattr(owner.sqlite3, "connect", swap_just_before_sqlite_opens)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        assert swapped
+        assert _digest_file(path) != roots.physical
+        assert _digest_file(archived) == roots.physical
+        # Read-only source inspection of the actual opened SQLite connection:
+        # public user_version is not exposed as certified semantic output.
+        opened_connection = getattr(
+            verified.db, "_VerifiedSelectOnlyDatabase__connection", verified.db
+        )
+        assert opened_connection.execute(
+            "PRAGMA user_version"
+        ).fetchone() == (0,), "physical-root verifier opened swapped untrusted inode"
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref,
+            verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
