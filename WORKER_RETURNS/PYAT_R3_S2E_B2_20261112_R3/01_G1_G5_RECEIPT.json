@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_R3_S2E_B2_BOUNDED_REPAIR_GATES@1.0.0",
+  "packet_id": "S2-E",
+  "original_obligation": "P2-06",
+  "governing_contract": "maidiu/rawlsing issue #919 S2-E G1–G5, issue #909 R3C/R3S; MCR-lite; sourcefree only",
+  "original_inherited_branch": "agent/pyat-r3-s2e-a-counterattack-20261112-r2",
+  "original_inherited_frozen_head": "d6f9f1a75ed96d2d8dccb41cd5be3e386d83ce04",
+  "original_predecessors": {
+    "A_code": "d7af5b8df922caa86bcd36a7baa0bbb55b43742d",
+    "B_code": "56ce7299508d2d28d2eefb6a6a7f6fbe93360103",
+    "A2_code": "75d4a24bddcfdc5bd1553bd48f130d64f5d5b1e3"
+  },
+  "branch": "agent/pyat-r3-s2e-b-fate-counterexample-20261112-r2",
+  "red_test_commit": "e31d520cc836723e1a36f0be51f8dac1696a937f",
+  "repair_commit": "c0f8df0b874bae9fe057c3340516eb04c28ae08c",
+  "repair_self_attack_commit": "b48d0a9287968012a9c97a9602ec31dc1099f183",
+  "tested_code_sha": "NONE_B2_NATIVE_CI_RUNNER_DID_NOT_START",
+  "source_blobs": {
+    "A2_auditor": "2fbcf1d7ecdfb9b205a5122f5e6f7965cd7a0e91",
+    "B2_repaired_auditor": "2c28d4ab250d2fcc8b1752a09b60e160f2718423",
+    "native_I05_producer": "1b82b6df993bf14afa5e78782d988cba6e76b668"
+  },
+  "changed_paths": [
+    "rawlsing_next/pre553_s2e_exact_conservation.py",
+    "rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py",
+    ".github/workflows/pyat-r3-s2e-a.yml"
+  ],
+  "first_consumer": "census_native_batch() on real F1/F2/F3/F4/I03/I05 Batch with source-qualified RuntimeObjectCatalog",
+  "material_defect": {
+    "id": "B2-01-SCIENTIFIC-FATE-FORGERY",
+    "severity": "SEV1_IF_NATIVE_REPRODUCED",
+    "frozen_requirement": "G1 exact native I05 recursive/terminal candidate fates; G2 complete native output graph; G3 no false missing/held/negative/scientific claim",
+    "violation": "A2 validates a candidate's reported coverage_state-to-typed_state pair but not that either is actually produced by its referenced exact native I03 facts and validation rule; coordinated self-hashed original true minority discovery to VALID_EMPTY is accepted by static A2 control flow",
+    "repair": "Reuse I05 original _terminal_fact_class/_distribution_differs/_joint_dependence/_conditional_reversal/_target_cell_supported on existing I03 fact preimages, exact support summary, and original discovery support rules; assert computed terminal outcome equals receipt. No new engine, source read or scientific issuer.",
+    "regression": "test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red",
+    "red_green": "NOT_EXECUTED_AS_NATIVE_TEST_DUE_CI_PRE_RUNNER_FAILURE"
+  },
+  "independent_synthetic_oracle": {
+    "grade": "INDEPENDENT_NUMERICAL_ARITHMETIC_NOT_NATIVE",
+    "sample": "A original explicit 12-row fixture",
+    "baseline_yes": "2/12",
+    "minority_yes": "2/2",
+    "rates_differ": true,
+    "execution": "local Python fractions Fraction(2,12)!=Fraction(2,2) PASS",
+    "limit": "Shows the expected F3 evidence is nonempty, not native job/replay execution."
+  },
+  "source_static_checks": {
+    "A2_candidate_hash_and_native_frontier": "VERIFIED_PRESERVED",
+    "B1_valid_empty_and_frontier_replay": "VERIFIED_PRESERVED",
+    "B2_uses_existing_native_scientific_functions": "VERIFIED_SOURCE_IMPORTS",
+    "B2_one_index_per_discovery_unit": "SOURCE_CHECKED_NOT_TIMED",
+    "native_compatibility": "NOT_EXECUTED_AT_B2_SHA"
+  },
+  "CI": {
+    "A_original_full_native": "https://github.com/maidiu/rawlsing/actions/runs/43275018294",
+    "A_original_tests": "78 S2-E native/regression +19 S2-F preservation PASS at A code SHA only",
+    "A2_latest": "https://github.com/maidiu/rawlsing/actions/runs/43287533659",
+    "B2_current": "https://github.com/maidiu/rawlsing/actions/runs/43293037049",
+    "B2_current_status": "FAILED_BEFORE_RUNNER_EXECUTION_NO_TESTS_RAN",
+    "B2_tests_passed": 0,
+    "native_red_green_proved": false,
+    "preserved_suite_reran_at_B2": false
+  },
+  "resources": {
+    "additional_I03_scans": 0,
+    "additional_source_opens": "DESIGN_NONE__NOT_MEASURED",
+    "per_candidate_fact_index": "removed; one index per entire discovery unit instead of per candidate",
+    "time_and_rss": "NOT_MEASURED",
+    "output_and_scratch_bytes": "NOT_MEASURED",
+    "saved_store": "HOLD_DEPENDENCY:S2-D",
+    "original35": "NO_ORIGINAL35_RIGHTS"
+  },
+  "gates": {
+    "G1": {
+      "state": "PARTIAL",
+      "detail": "Sourcefree keys/frontier/terminal facts audited, no original35 full source issue or B2 live run"
+    },
+    "G2": {
+      "state": "NOT_RUN_AT_B2_SHA",
+      "detail": "A five-unit Batch parity PASSED at A SHA only, no B2 code runner"
+    },
+    "G3": {
+      "state": "NOT_RUN_AT_B2_SHA",
+      "detail": "One meaningful rehashed semantic fate adversarial test committed plus all prior B/A2 tests inherited; CI pre-runner failure"
+    },
+    "G4": {
+      "state": "PARTIAL",
+      "detail": "No scale proof, all existing A sourcefree resource limitations retained"
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "detail": "Independent reviewer neither A nor B must receive frozen executable candidate"
+    }
+  },
+  "authority_grade": "ISOLATED_SOURCEFREE_ENGINEERING_PATCH__NOT_NATIVE_VERIFIED__NO_SCIENCE_OR_ORIGINAL35_PROMOTION",
+  "holds": [
+    "CI_RUNNER_DID_NOT_EXECUTE",
+    "HOLD_DEPENDENCY:S2-D saved store",
+    "ORIGINAL35_SCIENTIFIC_ISSUER_SEPARATE",
+    "G5_INDEPENDENT_RECEIVING_REQUIRED"
+  ],
+  "challenges_refuted": [
+    "A2 candidate and declared frontier identity logic preserved; not false by default",
+    "B's earlier valid_empty and frontier replay repairs preserved",
+    "F4 same-respondent three-way and F2 independent denominators not refuted"
+  ],
+  "open_risks": [
+    "Private native evaluator ABI/snapshot source pinned; new source edition needs scientific contract recheck",
+    "Scientific fate revalidation adds computational cost without measured process-tree bound",
+    "No runtime proof of B2 and inherited tests"
+  ],
+  "independent_receiver_decision": "NOT_RUN",
+  "disposition": "B2_BOUNDED_REPAIR_COMMITTED_SOURCE_VERIFIED__CI_PRE_RUNNER_HOLD",
+  "stop_state": "NO_MORE_GENERAL_DUEL__EXECUTE_EXACT_SHA_TESTS_THEN_DISTINCT_G5_OR_EXACT_HOLD",
+  "integration": "DRAFT_PR_UNMERGED"
+}
