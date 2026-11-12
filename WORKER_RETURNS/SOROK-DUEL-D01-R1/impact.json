@@ -1,0 +1,75 @@
+{
+  "event_id": "D01-A-20261112-92365fa16",
+  "task_id": "D01",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "92365fa169abc96c2c8a2dc7b003b3b08ab4f365",
+  "changed_owner_symbols": [
+    "p3.p3_owner.P3Owner._check_or_write_config",
+    "d01_reuse.producer_identity",
+    "d01_reuse.load_cold_config",
+    "d01_reuse.open_cold_owner",
+    "d01_reuse.validate_sourcefree_response",
+    "d01_reuse.read_sourcefree_records",
+    "d01_reuse.later_consumer"
+  ],
+  "abi_class": "COMPATIBLE_ADDITIVE",
+  "affected_task_ids": ["D02", "D03", "D04", "D05"],
+  "active_contract_decision": "FINISH_THEN_RECONCILE",
+  "active_contract_reason": "D01 adds a read-only reuse/consumer boundary and a fail-closed retention invariant; queued D02-D05 may consume it, but no running contract is rewritten.",
+  "new_actual_first_reader": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py:P3Owner._effect (store.query) and WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py:later_consumer",
+  "effect_on_original_obligation": "PRESERVED",
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/test_rules.py",
+    "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/d01_reuse_pytest_vv.log",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_regression_pytest.log",
+    "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_primary_cold_pytest.log"
+  ],
+  "negative_refs": [
+    "test_cold_no_record_consumer_differs_and_fabricates_nothing",
+    "test_narrative_and_native_claims_are_not_durable_sourcefree_records",
+    "test_config_and_source_severance_refuse_then_exact_restore"
+  ],
+  "cold_refs": [
+    "test_cold_reopen_later_consumer_reads_exact_owner_held_record",
+    "d01_reuse.open_cold_owner"
+  ],
+  "queued_contract_changes": [
+    {
+      "task_id": "D02",
+      "change": "May use d01_reuse.open_cold_owner/read_sourcefree_records for the read-only situated-field source, with no new store or scheduler.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D03",
+      "change": "May reuse the exact producer/consumer boundary; CAN-008 native semantics remain held.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D04",
+      "change": "Must extend selector breadth additively if needed; D01's formation-rule/kind check must not be silently widened.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D05",
+      "change": "Must add the distinct prospective performed consumer; D01's rule-level response is not a performed action.",
+      "status": "CANDIDATE_ADDITIVE"
+    }
+  ],
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 520.81,
+    "usd": null,
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD"
+  }
+}

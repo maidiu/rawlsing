@@ -1,0 +1,95 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "event_id": "D01-A-20261112-92365fa16",
+  "controller_event_id": "UNKNOWN_NOT_ISSUED_IN_AGENT_CONTEXT",
+  "task_id": "D01",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "92365fa169abc96c2c8a2dc7b003b3b08ab4f365",
+  "author_branch": "codex/sorok-duel-d01-a-20261112-r1",
+  "protected_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "status": "SOURCEFREE_S2_CANDIDATE_PENDING_B",
+  "changed_symbols": [
+    "p3.p3_owner.P3Owner._check_or_write_config",
+    "d01_reuse.producer_identity",
+    "d01_reuse.load_cold_config",
+    "d01_reuse.open_cold_owner",
+    "d01_reuse.validate_sourcefree_response",
+    "d01_reuse.read_sourcefree_records",
+    "d01_reuse.later_consumer"
+  ],
+  "ABIclass": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "No new owner, scheduler, rule, registry, store or world writer.",
+    "Additive read-only D01 reuse/consumer boundary over existing P3Owner and PsycheStore.",
+    "P3Owner now fail-closes when a nonempty durable store exists without its owner config; this is a retention-integrity refusal, not a rule change."
+  ],
+  "affected_queued_tasks": ["D02", "D03", "D04", "D05"],
+  "affected_task_notes": {
+    "D02": "May consume d01_reuse.read_sourcefree_records/open_cold_owner for the situated-field readset; must not add a second store or scheduler.",
+    "D03": "May bind immediate uptake to the same selected producer boundary; native CAN-008 remains held.",
+    "D04": "Must extend the exact selector additively if a different target kind is needed; do not weaken D01's frozen formation-rule/kind check silently.",
+    "D05": "Must use a distinct prospective performed consumer; the D01 rule-level response is not a performed action."
+  },
+  "actual_reader": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py:P3Owner._effect -> PsycheStore.query -> test_rules.evaluate_event; D01 wrapper: WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py:later_consumer",
+  "producer": "P3Owner over P2Owner; PsycheStore V3MS_MEDIATOR; frozen test_rules B1-derived formation rule TEST_ONLY_P3_B1_SCOPED_MEDIATOR_CREATE",
+  "producer_source_identity": {
+    "p3_owner_sha256": "ee2d0826a3680ce54a9031f8ce8316c58da2f4590d1a9efbc2d17b4ede210583",
+    "pre_repair_p3_owner_sha256": "e735ada798533a8f568739e823767bb2e2b4272c3c03d84dc2cd47f73cf65df1",
+    "state_store_sha256": "173d4d6d3e94580804cac90039a01bfe6e3adfffcda9e806a56132b10ecc06bf",
+    "test_rules_sha256": "27272cd43c26b6aa114ee65c97ca07eb56accecbd440841c29696b98e203b4b4",
+    "b1_sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+  },
+  "preserved_obligations": [
+    "P3Owner PREPARED/WORLD_COMMITTED/PSYCH_COMMITTED/COMPLETE protocol",
+    "PsycheStore binding/source/registry/head/receipt/replay checks",
+    "MISSING_RULE and NOT_ISSUED_BY_P3_RULE boundary",
+    "no native CAN/ADP/Pyat issuance, actor rights, human validity or protected merge",
+    "P6 situated.py and CG-A candidate bridge untouched",
+    "P2Owner remains the sole actor/world writer; no second scheduler or ledger"
+  ],
+  "regressed_obligations": [
+    "None observed in targeted suites: D01 5 passed; P3 owner/store/rules/projections/goal-residual 77 passed, 1 skipped; P3 primary+cold 2 passed.",
+    "Behavioral tightening only: missing owner config with existing store now refuses rather than regenerating plan provenance."
+  ],
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/test_rules.py",
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/d01_reuse.py"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/d01_reuse_pytest_vv.log",
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_regression_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_primary_cold_pytest.log"
+    ],
+    "negative": [
+      "test_cold_no_record_consumer_differs_and_fabricates_nothing",
+      "test_narrative_and_native_claims_are_not_durable_sourcefree_records",
+      "test_config_and_source_severance_refuse_then_exact_restore",
+      "STORE_REOPEN_BINDING_MISMATCH and D01_COLD_BASE_IDENTITY root/branch refusals"
+    ],
+    "cold": [
+      "test_cold_reopen_later_consumer_reads_exact_owner_held_record",
+      "test_config_and_source_severance_refuse_then_exact_restore exact-byte restore",
+      "d01_reuse.open_cold_owner from durable p3_owner_config.json + p3_psyche.sqlite3"
+    ]
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "wall_seconds_observed": {
+      "d01_suite": 24.0,
+      "p3_regression_subset": 50.15,
+      "p3_primary_and_cold": 446.66
+    },
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  }
+}
