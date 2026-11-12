@@ -612,3 +612,39 @@ def test_s2b_a_counterattack_publication_cannot_clobber_rival(tmp_path, monkeypa
         )
     assert target.read_bytes() == rival
     assert not any(tmp_path.glob(".s2b-stage-*.tmp"))
+
+
+def test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation(tmp_path):
+    """G3: even main-qualified SQL can be falsified by mutable BINARY collation.
+
+    A genuine sqlite3.Connection admits create_collation('BINARY', fn), so
+    respondent/target WHERE equality can match unrelated real I02 rows with
+    no file/manifest/root change. This attack does NOT use Python setattr or
+    arbitrary private-object mutation; it uses the public exposed db API.
+    """
+    source = _build_source("s2b-a-collation", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-collation")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            verified.db.create_collation("BINARY", lambda a, b: 0)
+        except (ExternalI02IntegrityError, AttributeError):
+            pass  # no public ability to redefine authenticated SQL semantics
+        else:
+            # Under Agent B's raw verified.db sqlite connection, every
+            # equality is now counterfeit. A derived I03 fact must not change.
+            assert _run(source, qa, pred, query) == oracle, (
+                "G3 RED: BINARY collation replaced after external root "
+                "verification, changing real native I03 semantics"
+            )
+        assert _run(source, qa, pred, query) == oracle
+    with VerifiedExternalI02(path, roots=roots) as fresh:
+        assert len(list(fresh.respondent_refs())) == 3
