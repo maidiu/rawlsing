@@ -78,7 +78,7 @@ B02_INGRESS = {
     "consumer": "p3.situated_context.build_situated_context",
     "first_reader": "RecursionCycle provider context / later P3 proposal input",
     "reconcile_at": "B02 exact qualified cut",
-    "contract_doc": "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md",
+    "contract_doc": "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT_B.md",
 }
 _WORKER_RETURNS = Path(__file__).resolve().parents[2]
 
@@ -512,8 +512,8 @@ def _period_source(module: Any = None) -> dict:
         "status": "SELECTED_SOURCE",
         "path": _source_label(path),
         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
-        "symbols": ["read_material_period", "p3_interval_span",
-                    "read_period_plan"],
+        "symbols": ["read_material_period", "period_progress",
+                    "p3_interval_span", "read_period_plan"],
     }
 
 
@@ -590,10 +590,32 @@ def _period_ingress(session: Any, snapshot: Mapping[str, Any]) -> dict:
                 "logical_clock_only": True,
             },
         }
+    current_period = next((
+        row for row in plan.get("periods") or []
+        if isinstance(row, Mapping)
+        and row.get("start_clock") <= snapshot["clock"] < row.get("end_clock")
+    ), None)
+    if current_period is None:
+        return {
+            "status": "HELD",
+            "reason": "B02_CURRENT_OUTSIDE_PLAN",
+            "source": source,
+            "date_scope": {
+                "calendar": "B02_CURRENT_OUTSIDE_PLAN",
+                "historical_period": "NOT_QUALIFIED",
+                "logical_clock_only": True,
+            },
+        }
+    progress = module.period_progress(session, current_period["period_id"])
+    if progress.get("period_id") != current_period["period_id"]:
+        _refuse("D02_B02_PROGRESS_PERIOD")
+    if progress.get("clock") != snapshot["clock"]:
+        _refuse("D02_B02_PROGRESS_CLOCK")
+    as_of_text = _text(progress.get("current_date"), "D02_B02_CURRENT_DATE")
     try:
-        as_of = date.fromisoformat(anchor_date) + timedelta(days=delta // ticks)
+        as_of = date.fromisoformat(as_of_text)
     except ValueError as exc:
-        raise RecursionRefusal("D02_B02_ANCHOR_DATE") from exc
+        raise RecursionRefusal("D02_B02_CURRENT_DATE") from exc
     try:
         read = module.read_material_period(session, as_of.isoformat())
     except RecursionRefusal as exc:
@@ -640,6 +662,19 @@ def _period_ingress(session: Any, snapshot: Mapping[str, Any]) -> dict:
         },
         "plan_source": read.get("plan_source"),
         "employment_source": read.get("employment_source"),
+        "period_progress": {
+            "schema": progress.get("schema"),
+            "status": progress.get("status"),
+            "period_id": progress.get("period_id"),
+            "current_date": progress.get("current_date"),
+            "clock": progress.get("clock"),
+            "elapsed_ticks": progress.get("elapsed_ticks"),
+            "remaining_ticks": progress.get("remaining_ticks"),
+            "uncovered_ticks": progress.get("uncovered_ticks"),
+            "state_covered_ticks": progress.get("state_covered_ticks"),
+            "next_p3_span": progress.get("next_p3_span"),
+            "currentness": progress.get("currentness"),
+        },
         "provenance": read.get("provenance"),
         "source": source,
         "date_scope": {
@@ -1027,6 +1062,7 @@ def build_situated_context(owner: Any, *, expected: Any = None,
             "source": period.get("source"),
             "interval_status": period.get("interval_status"),
             "interval_span": period.get("interval_span"),
+            "period_progress": period.get("period_progress"),
         },
         "acquired_state": acquired.get("readset"),
         "recipient_boundary": {
