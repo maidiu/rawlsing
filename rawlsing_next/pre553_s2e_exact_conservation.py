@@ -170,6 +170,19 @@ def _verify_i05_candidate_receipt(receipt: DiscoveryResultReceipt, output: Exact
     per-candidate replay in execute_exact_bounded_discovery(). We use those
     frozen formulas independently of their supplied hash/ref assertions.
     """
+    # The native I05 evaluator emits these exact terminal-fate/type pairs.
+    # A self-hashed receipt may not relabel a supported candidate as a typed
+    # negative while preserving the rest of the discovery graph.
+    native_fate_types = {
+        "EVALUATED_SUPPORTED": "DISCOVERED_RESULT_SUPPORTED",
+        "EVALUATED_VALID_EMPTY": "VALID_EMPTY",
+        "EVALUATED_UNDERPOWERED": "INSUFFICIENT_SUPPORT",
+        "EVALUATED_NONCOMPARABLE": "NONCOMPARABLE",
+        "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": "COVERAGE_LIMITED",
+        "EVALUATED_DENIED_BY_EXACT_AUTHORITY": "PRUNED_BY_AUTHORITY",
+    }
+    _require(native_fate_types.get(receipt.coverage_state) == receipt.typed_state,
+             "S2E_I05_CANDIDATE_TERMINAL_FATE_MISMATCH")
     ci = receipt.candidate_identity
     _require(isinstance(ci, Mapping), "S2E_I05_CANDIDATE_IDENTITY_MISSING")
     roles = ci.get("query_roles")
