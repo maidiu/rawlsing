@@ -6,7 +6,7 @@
 - Worktree: `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-a`
 - Protected base: `6a5c12f04323d74001f9632063ec907f4fc4468e`
 - Startup / B base: `7064daa14d93109211629e72d08f3a6e705a0d57`
-- **Implementation SHA:** `50c2e33b48a040835e9981a822901186f0cc1ba0`
+- **Implementation SHA:** `fc820533a2a90b948a9e8e80b4f220005e701d4b`
 - Contract SHA256: `635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b`
 - Contract source: `WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898`
 - Session: `ses_e3120ba1cffeO1w43uU5MLh4yq` / `opencode-go/deepseek-v4.1-flash#max`
@@ -28,7 +28,7 @@ python3 -m pytest \
   rawlsing_next/tests/test_universal_learned_consumer.py \
   rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py \
   rawlsing_next/tests/test_pyat960_s2g_fresh_process.py -q
-# 147 passed in 31.79s
+# 147 passed in 31.94s
 
 python3 -m pytest \
   rawlsing_next/tests/test_pyat940_s2f_durable_closure.py \
@@ -184,7 +184,7 @@ Evidence:
 
 ## 10. Status
 
-- `implemented_sha = 50c2e33b48a040835e9981a822901186f0cc1ba0`
+- `implemented_sha = fc820533a2a90b948a9e8e80b4f220005e701d4b`
 - `evidence_grade = S2_SOURCEFREE_ISOLATED_FIXTURE`
 - `G1-G4 = PASS` candidate at fixture grade
 - `G5 = NOT_RUN`, no self-issued acceptance
