@@ -17,6 +17,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    authority_ref,
     EmpiricalFact,
     EmpiricalQuerySpec,
     ExactRef,
@@ -270,6 +271,23 @@ def _validate_common_closure(
     if not set(query_authorities).issubset(set(authorities)):
         raise FieldForgeConditionalSupportError(
             "producer fact authority closure does not preserve query authorities")
+
+    # The query's operation-specific issuer is separate from its general
+    # canonical-object authority snapshot. It must survive into the actual
+    # fact's admitted authority closure or FF01 would drop a missing/foreign
+    # query grant while keeping a positive fact and source-stamped D relation.
+    try:
+        query_use_authorities = {
+            authority_ref(ref, "query.query_authority_refs")
+            for ref in _sequence(joint_query.query_authority_refs,
+                                 "query.query_authority_refs", allow_empty=True)
+        }
+    except Exception as exc:
+        raise FieldForgeConditionalSupportError(
+            "malformed query-specific authority closure") from exc
+    if not query_use_authorities.issubset(set(authorities)):
+        raise FieldForgeConditionalSupportError(
+            "producer fact does not preserve query-specific authority refs")
 
     replay_ref = _exact(joint_fact.replay_ref, "fact.replay_ref")
     if isinstance(joint_fact.producer_replay_locator_or_reference_root, ExactRef):
