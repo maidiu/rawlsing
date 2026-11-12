@@ -106,3 +106,16 @@ def test_c3_t01_genuine_retained_current_transport_still_admits_sourcefree():
     assert receipt.admission.decision is adm.AdmissionDecision.ADMITTED
     assert receipt.evidence.relation_ref == relation.ref
     assert receipt.admission.relation_ref == relation.ref
+    strict = bridge.admit_gt12_c_relation_from_fixed_current_transport(relation)
+    assert strict.admission.decision is adm.AdmissionDecision.ADMITTED
+    assert strict.admission.ref == receipt.admission.ref
+
+
+def test_c3_t01_synthetic_sourcefree_positive_cannot_impersonate_fixed_current():
+    relation, _ = _fixture()
+    # The ordinary frozen D sourcefree test is allowed; the strictly pinned
+    # *current transport* issuer refuses exactly the same synthetic relation.
+    assert bridge.admit_gt12_c_relation(relation).admission.decision is adm.AdmissionDecision.ADMITTED
+    with pytest.raises(bridge.GT12CToDBridgeError,
+                       match="not the exact fixed current"):
+        bridge.admit_gt12_c_relation_from_fixed_current_transport(relation)
