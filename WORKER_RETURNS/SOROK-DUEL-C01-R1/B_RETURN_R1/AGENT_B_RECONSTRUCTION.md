@@ -145,7 +145,7 @@ owner/scheduler/write.
 - The P3 pin break disclosed by B01 is a composition constraint, not something I
   may silently rebase: C01 must record its own pin impact and not pretend the
   current code includes Pair1 B's later fork-aware readers (`362719b40…`).
-- Preserve A's historical records; my return is additive under `C01/` and the
+- Preserve A's historical records; my return is additive under `WORKER_RETURNS/SOROK-DUEL-C01-R1/B_RETURN_R1/` and the
   supporting-actor implementation, not an overwrite of A's handoff/evidence.
 
 ## 5. My starting hypothesis (to be tested, not assumed)
