@@ -193,7 +193,7 @@ def test_s2b_deterministic_chunk_sizes_cold_reopen_orphan(tmp_path):
 
 def test_s2b_material_sourcefree_resource_probe(tmp_path):
     """Narrow real I02 fixture; not 100k source-direct or 6GiB proof."""
-    n = 256
+    n = 2048
     source = _build_source("s2b-resource", [
         {"id": f"R{i:05d}", "responses": {"Y": i % 2}} for i in range(n)
     ])
@@ -338,3 +338,39 @@ def test_s2b_exact_weight_and_unknown_routing_preserved(tmp_path):
     forged = replace(forged, physical=_digest_file(path))
     with pytest.raises(ExternalI02IntegrityError):
         VerifiedExternalI02(path, roots=forged)
+
+
+def test_s2b_crash_before_commit_leaves_only_refused_orphan(tmp_path):
+    """Real subprocess SIG-equivalent hard death before final publication."""
+    import subprocess
+    import sys
+    script = """
+from pathlib import Path
+import os
+import rawlsing_next._pre553_external_i02_certificate as stage
+from rawlsing_next.tests.test_pre553_empirical_query import _build_source
+from rawlsing_next.tests.test_pre553_verified_semantic_range import _release
+source = _build_source('s2b-crash-fixture', [
+    {'id':'R1','responses':{'Y':1}}, {'id':'R2','responses':{'Y':0}}])
+original = stage._insert_object
+counter = [0]
+def interrupt(db, obj, *, family):
+    original(db, obj, family=family)
+    counter[0] += 1
+    if counter[0] == 2:
+        os._exit(77)
+stage._insert_object = interrupt
+stage.build_sourcefree_external_i02(
+    _release(source), source['universe'].ref, Path(%r))
+""" % str(tmp_path / "not-committed.sqlite")
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True,
+                            text=True, check=False)
+    assert result.returncode == 77, (result.returncode, result.stderr)
+    assert not (tmp_path / "not-committed.sqlite").exists()
+    orphans = list(tmp_path.glob(".s2b-stage-*.tmp"))
+    assert orphans, "hard crash must not publish nor invisibly lose stage evidence"
+    forged = ExternalI02Roots("0" * 64, "0" * 64, "none", "none",
+                             "none", "none")
+    for orphan in orphans:
+        with pytest.raises(ExternalI02IntegrityError):
+            VerifiedExternalI02(orphan, roots=forged)
