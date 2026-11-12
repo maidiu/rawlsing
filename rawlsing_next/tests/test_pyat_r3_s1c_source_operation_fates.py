@@ -618,3 +618,70 @@ def test_s1c_b_r2_false_held_reason_alone_cannot_rehash_science(tmp_path):
     with pytest.raises(CensusRefusal, match="SOURCEFREE_ROLE_FATE_DRIFT"):
         verify_frozen_inputs(census, inventory=inventory,
                              policy=policy, frontier=manipulated)
+
+
+def test_s1c_a_counter_pending_severance_cannot_overissue_bounded_work(tmp_path):
+    """A real R03 vulnerability: truncated pending list issues budget-held work.
+
+    Frozen source/science operation IDs and dispositions, the operation's own
+    PENDING execution state, and every negative/inventory evidence surface
+    remain unchanged. Only R03's exclusion list is removed. Before this
+    adapter repair the preflight accepted the inconsistent frontier.
+    """
+    from rawlsing_next.pre553_universal_workload import (
+        compile_governed_frontier, execute_governed_frontier,
+    )
+
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path, budget=5)
+    assert frontier.budget_state == "PARTIAL"
+    assert frontier.pending_operation_ids
+    assert all(
+        op.execution_state == "PENDING"
+        for op in frontier.operations if op.op_id in frontier.pending_operation_ids
+    )
+    baseline = _run(bundle, inventory, policy, frontier, census)
+    assert baseline["issued_candidate_count"] > 0
+    assert all(
+        not row["received_candidate_ids"]
+        for row in baseline["operation_fates"]
+        if row["operation_id"] in frontier.pending_operation_ids
+    )
+
+    tampered = replace(frontier, pending_operation_ids=())
+    tampered_census = _freeze_packet(tampered)
+    assert tampered_census.source_census_ref == census.source_census_ref
+    assert tampered_census.science_census_ref == census.science_census_ref
+    assert tampered_census.unknown_scope_records == census.unknown_scope_records
+    assert tampered_census.excluded_scope_records == census.excluded_scope_records
+    assert tampered_census.inventory_ledger_records == census.inventory_ledger_records
+
+    # Exercise the real, existing R03 compiler and issued I05 first reader.
+    # Its exclusion mechanism trusts pending_operation_ids, not row state.
+    overissued = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy,
+        frontier=tampered, as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    native = execute_governed_frontier(
+        compilation=overissued,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert native.anti_join["no_drop_ok"]
+    assert native.operation_anti_join["no_drop_ok"]
+    assert len(native.receipt_refs) > baseline["issued_candidate_count"]
+
+    opened = []
+    with pytest.raises(CensusRefusal, match="PENDING_FATE_CENSUS_DRIFT"):
+        _run(bundle, inventory, policy, tampered, tampered_census,
+             lambda ref: opened.append(ref))
+    assert opened == []
+
+    false_budget_complete = replace(frontier, budget_state="COMPLETE")
+    with pytest.raises(CensusRefusal, match="BUDGET_STATE_FATE_DRIFT"):
+        verify_frozen_inputs(_freeze_packet(false_budget_complete),
+                             inventory=inventory, policy=policy,
+                             frontier=false_budget_complete)
+
+    restored = _run(bundle, inventory, policy, frontier, census)
+    assert restored["checkpoint_hash"] == baseline["checkpoint_hash"]
+    assert restored["frozen_census_hash"] == baseline["frozen_census_hash"]
+    assert restored["operation_fates"] == baseline["operation_fates"]
