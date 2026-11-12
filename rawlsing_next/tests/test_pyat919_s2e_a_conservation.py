@@ -51,10 +51,12 @@ def _full_query_run(tmp_path, *, scope=None, shared=None):
     return result
 
 
-def _query_census(result):
+def _query_census(result, *, catalog):
     # The normal issued native result (not a stand-alone model record) exposes
-    # its first-reader full-output conservation contract.
-    return result.exact_s2e_output_census(require_complete=True)
+    # its first-reader full-output conservation and issued-domain contract.
+    return result.exact_s2e_output_census(
+        require_complete=True, runtime_catalog=catalog,
+    )
 
 
 def _discovery_run(tmp_path):
@@ -85,8 +87,9 @@ def test_a_real_issued_i03_batch_complete_and_identity_parity(tmp_path):
     disabled = I03GroupedExecutionScope()
     disabled.close()
     independent = _full_query_run(tmp_path, scope=disabled, shared=source)
-    first = _query_census(shared)
-    second = _query_census(independent)
+    first = _query_census(shared, catalog=source[1][0].workload.catalog)
+    second = _query_census(independent, catalog=source[1][0].workload.catalog)
+    assert first.declared_domain_verified
     require_same_native_output_graph(first, second)
     assert first.i03_fact_count >= 1
     assert first.complete and not first.unresolved_unit_count
