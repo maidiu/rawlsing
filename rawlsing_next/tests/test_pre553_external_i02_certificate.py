@@ -230,3 +230,111 @@ def test_s2b_material_sourcefree_resource_probe(tmp_path):
         "peak_scratch": "NOT_MEASURED", "process_tree_peak": "NOT_MEASURED",
         "100k_pipeline": "NOT_RUN", "source_rights": "NOT_ISSUED",
     })
+
+
+def test_s2b_h27_real_canonical_component_pairing_and_poisoned_index(tmp_path):
+    from rawlsing_next.tests.test_pre553_verified_semantic_range import _s2a_relation_source
+    from rawlsing_next._pre553_query_predicate import _select_respondent_events
+    release, universe, repository, cref, sref = _s2a_relation_source(
+        "s2b-h27-alias",
+        bindings=(("V1", "C1", "A"), ("V1", "C2", "B")),
+        event_canonical="C1", event_component="A",
+    )
+    path = tmp_path / "complete-alias.sqlite"
+    roots = build_sourcefree_external_i02(release, universe, path, chunk_size=1)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            repository, release.release_ref, universe, verified,
+        )
+        index = repository._i03_release_indices[(release.release_ref, universe)]
+        respondent = next(iter(index.respondents))
+        assert len(list(_select_respondent_events(index, respondent, cref("C1")))) == 2
+        assert len(list(_select_respondent_events(index, respondent, sref("A"),
+                                                  include_component=True))) == 2
+        assert list(_select_respondent_events(index, respondent, cref("C2"))) == []
+        assert list(_select_respondent_events(index, respondent, sref("A"),
+                                              native_only=True,
+                                              include_component=True)) == []
+        assert list(_select_respondent_events(index, respondent, cref("C1"),
+                                              states=frozenset())) == []
+        assert not hasattr(index.events_by_respondent[respondent], "all_events")
+
+    # The attacker removes only the canonical selector and recomputes every
+    # index-local digest/manifest it controls; the separately held root remains.
+    with sqlite3.connect(path) as db:
+        db.execute("DELETE FROM selectors WHERE kind='canonical'")
+        local_new_root = _logical_root(db)
+    forged = replace(roots, logical=local_new_root, physical=_digest_file(path))
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(path, roots=roots)
+    with pytest.raises(ExternalI02IntegrityError, match="omits"):
+        VerifiedExternalI02(path, roots=forged)
+
+
+def test_s2b_all_concrete_m01_m18_object_families_omission_refused(tmp_path):
+    from rawlsing_next.pre553_c11_ingest import ingest_c11_source_release
+    from rawlsing_next.pre553_c11_repository import C11Repository
+    from rawlsing_next.tests.test_pre553_c11_repository_ingest import _candidate
+    candidate = _candidate("s2b-all-closure")
+    repository = C11Repository()
+    result = ingest_c11_source_release(candidate, repository)
+    assert result.accepted, result.errors
+    release = repository.resolve_release_exact(result.release_ref)
+    for family in (
+        "RespondentEvent", "EmpiricalCoordinateFact", "RoutingEligibilityFact",
+        "QuestionVariableBinding", "RespondentIdentity", "AuthoritySnapshot",
+    ):
+        path = tmp_path / (family + ".sqlite")
+        roots = build_sourcefree_external_i02(
+            release, candidate.empirical_universes[0].ref, path, chunk_size=2,
+        )
+        with sqlite3.connect(path) as db:
+            assert db.execute(
+                "SELECT COUNT(*) FROM objects WHERE family=?", (family,)
+            ).fetchone()[0]
+            db.execute(
+                """DELETE FROM objects WHERE ref=(
+                    SELECT ref FROM objects WHERE family=? ORDER BY ref LIMIT 1
+                )""", (family,),
+            )
+            forged_root = _logical_root(db)
+        forged = replace(roots, logical=forged_root, physical=_digest_file(path))
+        with pytest.raises(ExternalI02IntegrityError):
+            VerifiedExternalI02(path, roots=roots)
+        # A separately trusted root cannot be replaced by a locally
+        # self-consistent forged graph; v1 closure still catches missing refs.
+        with pytest.raises(ExternalI02IntegrityError):
+            VerifiedExternalI02(path, roots=forged)
+
+
+def test_s2b_exact_weight_and_unknown_routing_preserved(tmp_path):
+    source = _build_source(
+        "s2b-weight-and-unknown",
+        [{"id": "R1", "responses": {"Y": 1}},
+         {"id": "R2", "responses": {}}],
+        weights={"R1": ("WEIGHT_VALID_AUTHORIZED", "2"),
+                 "R2": ("WEIGHT_MISSING", None)},
+        risk_sets={"R": {"Y": {"R1"}}},
+        nonmember_routing_state="ROUTING_UNKNOWN",
+    )
+    qa, pred, query, original = _facts(source, "s2b-weight-and-unknown")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        assert verified.db.execute(
+            "SELECT COUNT(*) FROM objects WHERE family='WeightMeasureFact'"
+        ).fetchone()[0] == 2
+        assert verified.db.execute(
+            "SELECT COUNT(*) FROM objects WHERE family='RoutingEligibilityFact'"
+        ).fetchone()[0] > 0
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == original
+    with sqlite3.connect(path) as db:
+        db.execute("""DELETE FROM objects WHERE ref=(
+            SELECT ref FROM objects WHERE family='WeightMeasureFact' LIMIT 1
+        )""")
+        forged = replace(roots, logical=_logical_root(db))
+    forged = replace(forged, physical=_digest_file(path))
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(path, roots=forged)
