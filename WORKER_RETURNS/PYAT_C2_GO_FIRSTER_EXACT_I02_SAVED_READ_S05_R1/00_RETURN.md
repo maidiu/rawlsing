@@ -139,3 +139,98 @@ These are **future nonoverlapping cuts**, not jobs launched by this read-only re
 | **P8 whole 100k and native later** | Qualified S2 host/reviewer integrates real saved reader, complete I05/Batch/normal/joined and S05 selected reader, perf under 6 GiB cap. Later separately qualified P05/original35 science/source owner can run native work. | Actual 100k process-tree RSS, complete saved artifact, steady+peak disk, repeated latency and full changed-value consumer, no synthetic→native inflation. Depends safe implemented cuts. |
 
 **Real acceptance ladder:** S0 source and scope/current authority; S1 exact semantics/ABI; S2 sourcefree implemented native first-reader and negative/restore + controlled 100k 6GiB cost; independently qualified original-source/host/source science and P05 P01–P20/T01–T18 when S3 claimed; distinct Field Forge/N11/N12 and actor owner acceptance downstream. An S2 technical fixture pass is not original35 population/structural scientific authority. If an issuer is absent, give precise SOURCE_OR_ISSUER_HELD and continue independent licensed work; do not create a court-of-court or abandon the complete mission.
+
+
+## H. Hostile acceptance court — 25 discriminating tests (proposed, NOT RUN)
+
+For each test use one real bounded sourcefree positive fixture and an **independently anchored expected source/release/currentness**, apply the specified mutation/severance, assert that the **actual first-reader** supported fact or served product changes/refuses, restore original and require exact original native result/refs. Where no real trusted issuer exists, this is a test-only witness, not permission.
+
+| ID | Positive first consumer | Adverse input/counterexample and required RED |
+|---|---|---|
+| **H01** | I02→C11Repository→I03 complete scoped sourcefree answer. | Delete one event from a spill partition and locally update file/manifest: global full-source closure/expected I02 root refuses. |
+| **H02** | Certified saved I03 exact positive member. | Hide one respondent/index page while lookup returns no match: absence cannot become OBSERVED_ZERO or valid NO_CURRENT; it is unverified/refused. |
+| **H03** | I02→I03 multiselect/ranked event. | Duplicate or collapse native question/component/event-group/occurrence index across partitions: reject global occurrence uniqueness even if local ref hashes recomputed. |
+| **H04** | I02→I03 correct source universe/respondent. | Substitute a similarly named respondent from another universe: reject cross-universe identity and release-scope mismatch. |
+| **H05** | Saved root→I03 native complete fact. | Rewrite complete internal Parquet manifest/replay with coherent new hashes while independent publisher root stays fixed: hard refusal. |
+| **H06** | Fresh process open→I03. | Truncate a Parquet row group or replace member inode after manifest verification: no supported result from partial/corrupt member. |
+| **H07** | Current-source-authorized saved I03. | External issuer REVOKED while bytes and old authority snapshot remain valid: no cached support or source open before required admission. |
+| **H08** | I03 exact risk/denominator fact. | Wrong risk-set ref or wrong respondent coexposure with identical aggregate numerator: fail complete member/replay identity or return typed refusal. |
+| **H09** | I03 RAW plus independently authorized weighted estimand. | Insert unqualified design weight, coerce exact Fraction to float or substitute denominator; weighted fact/ref fails; lawful RAW remains available. |
+| **H10** | I03 source routing negative with correct domain. | Convert NOT_APPLICABLE to OBSERVED_ZERO, ZERO_SUPPORT to valid empty or missing questionnaire route to negative zero: typed state/complete-domain mismatch RED. |
+| **H11** | I05 exact full frontier through native I03. | Omit one actual candidate/query role and claim full coverage; candidate_count/role-preimage and retained result closure reject. |
+| **H12** | I05 legitimate negative candidate. | Remove one EVALUATED_NONCOMPARABLE/VALID_EMPTY/INSUFFICIENT_SUPPORT receipt but retain positives; missing-fate proof RED. |
+| **H13** | Certified saved I03 + BatchExecutionRunner actual mixed manifest. | Remove only one of the distributed C11Repository barriers: real Batch fails/refuses or lacks required release/receipt identity; cannot claim whole-path success. |
+| **H14** | Normal execute_issued_workload query plus discovery. | Suppress second C11 construction: compare **all** native Route B results and complete I03/I05/Batch outputs, not invocation count alone; wrong discovery assignment is RED. |
+| **H15** | Joined COMPLETED retained first consumer. | Stored CURRENT_GRANTED but independent live resolver returns REVOKED: refuse before _completed_entry_view, no positive returned, zero unauthorized source opens. |
+| **H16** | Joined PARTIAL retained prefix. | Same external revocation despite a valid first unit receipt: refuse before reading/restoring retained outputs; no historical _resolver_for permission. |
+| **H17** | Joined ABSENT new workload. | Same external revocation with no checkpoint entry: refuse prior to source_factory or positive output. |
+| **H18** | Authenticated cold joined checkpoint. | Valid externally pinned checkpoint SHA with wrong source/host/purpose or changed issued job/envelope: refuse; a matching checkpoint hash is not current source permission. |
+| **H19** | Safe physical carrier persist and reopen. | Traversal ID, symlinked ancestor, swapped member/parent, outside sentinel: refuse and leave sentinel/source outside root untouched. Reuse existing unmerged W03 focused court. |
+| **H20** | Canonical publication→fresh I03. | Crash between staged Parquet and CAS or after CAS before cleanup: pre-CAS no visible release; post-CAS intact verified release; no orphan self-adoption. |
+| **H21** | S04 saved exact empirical fact→eligible descriptive FF consumer. | Delete exact query/predicate/authority/risk membership preimage or hashed fragment: ref-only summary must not pass as fully consumable current empirical evidence. |
+| **H22** | S04 I05 zero-source restart. | Preserve 50 candidate ref names but remove a role query or typed negative fact: native I05 closure and downstream first reader reject. Historic 50 is a test-fixture count only. |
+| **H23** | S05 actual M1→M2→B5 learned graph. | Remove required determinant, replay reconstruction, explanation or authority closure member: no M2 release/current selection or learned-world served answer. |
+| **H24** | B5 restored checkpoint→current learned first consumer. | Fabricate a *locally coherent* self-hashed B5 checkpoint/current selection without independently pinned current publisher/issuer: local replay may succeed, but external current read must refuse. |
+| **H25** | B5 accepted current-as-of/competing CAS reader. | Reorder event parent, use wrong previous selection receipt, omit invalidation, or select beyond frozen as-of root: no silent new current product. |
+
+**Nonvacuity and closure:** positive tests must use at least one actually populated respondent, a real multi-response/route/weight contrast, one legitimate missing/zero case, an I05 branch with more than one role, a Batch mixed unit and a learned reader with genuine changed-value effect. A suite with only input-shape exceptions is incomplete. A test-only issuer fixture may create a hard external expected hash for mutation checks; it must not be described as source-native original35 or a competent real issuer. The 6 GiB stress benchmark is a separate S2 qualification, not presumed from 25 small cases.
+
+## I. What was actually verified here and what was not
+
+The author inspected exact GitHub current files and unmerged writer, #919/#909/#910, PROGRAMMA law, October 28 chosen architecture, and FIABC LiTS sourcefree preimage-retention contract. A source-frozen scripted check was executed on downloaded exact GitHub file contents: **14/14 textual/call-structure assertions matched**. The assertions were:
+
+1. C11 private validation sentinel exists;
+2. current saved reader uses full to_pylist and _make_validated_release;
+3. CarrierNeutralResearchExecutor type-checks C11Repository;
+4. direct I03 type-checks C11Repository;
+5. BatchExecutionRunner type-checks C11Repository;
+6. I05 candidate evaluator invokes native I03 for each query role;
+7. normal issued workload separately constructs Route B and source-backed C11;
+8. joined COMPLETED path returns retained view without fresh admit;
+9. joined _resolver_for returns stored item.record;
+10. B5 checkpoint validates own semantic hash and replay;
+11. B5 explicitly holds external issuer;
+12. source equivalence declares P01–P20 and T01–T18;
+13. unmerged writer still whole-reopens with to_pylist;
+14. unmerged writer includes bounded batch write path.
+
+**These are source inspection checks, NOT 14 executed Python tests or a source-native scientific result.** No local private PYAT checkout/pytest, source-backed 100k data, native original35 respondents, execution/reviewer/worktree/host credentials or scientific-issuer approval was available or asserted. The already existing W03 reports 13/68 scoped tests and FIABC reports its own historical runs; Agent A did not rerun them. No performance value or S2/3 authority was minted.
+
+**Commands a later authorized S2 implementer/reviewer should run on the correct frozen checkout** (reviewer must first verify genuine branch/host/root, noncollision and actual test availability):
+
+~~~sh
+git rev-parse HEAD
+git show 6a5c12f04323d74001f9632063ec907f4fc4468e:rawlsing_next/pre553_c11_ingest.py
+git show 6a5c12f04323d74001f9632063ec907f4fc4468e:rawlsing_next/pre553_issued_workload.py
+git show f420c2cdac0e2c537f7719de68c9f74e5514aa07:rawlsing_next/pre553_parquet_carrier.py
+python3 -B -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_repository_ingest.py
+# On qualified W03 writer checkout with its actual tests:
+python3 -B -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_pre553_parquet_writer_bounded.py
+# On the pinned FIABC test checkout, not presumed on protected PRE-MAIN:
+python3 -B -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_fiabc_lits_parity_ready_checkpoint_v2.py
+# Implement and run C-2 H01–H25 against actual selected native first readers.
+# Then run genuinely full generated 100k saved artifact + fresh-query cap benchmark.
+~~~
+
+An executable claim is acceptable only on exact code SHA, qualified runner, positive+severance+restore, complete first-consumer identity/provenance and a separate genuinely independent receiving at its proper grade. 100k sourcefree does not equal original35; full original35 needs source-rights/host/science and P05 P01–P20/T01–T18 independently issued. A successful external store test is not a Field Forge structural theorem, N11 acceptance or Sorok actor grant.
+
+## J. Own hostile assessment, rejected alternatives and eight-part handoff
+
+**Strongest self-discovered weaknesses and corrections in this proposed design:** the intrinsic replay closure includes source snapshot retention and all refs (not a subset); uniqueness must be global across spills; nonmembership requires complete externally authenticated keyspace before any negative; direct I03 is not the only actual reader; sorted full-domain traversal and inline fact members defeat a naive lazy-map 6 GiB claim; joined resume currentness is unsound as an independently trusted authorization path in the inspected code; B5 semantic replay cannot establish independently issued currentness. These are not buried as implementation details; each has a defined owner, interface and negative test above.
+
+**Rejected on source grounds:** one-line C11Repository duck-typing; fake C11LogicalRelease from partial arrays; treating self-hashed Parquet/replay as independent certificate; a second full object-shaped corpus; reimplementing I03/I05 statistics in SQL; reducing facts to aggregates or fingersprints; replacing B5 instead of using its actual replay/CAS; universal serial S04→S05→Field Forge→N10E; repetition of prior 84 benchmark arms or reopening paused W03 to save administrative effort. None of these solves the whole exact first consumer.
+
+**Unresolved proof/engineering holds:** full external-memory implementation and semantic hash parity across all 13 sections; physical complete-keyspace exclusion witness and independent external publisher credential; unissued current source/host/actor authority; actual full S04 fact/role closure across all applicable operation fates; atomic B5+M2 publisher cross-crash; full 100k process-tree memory economics; original35 P05/source science; live verified writer lease. None can be solved by a heading or a format validator.
+
+### Eight-part handoff
+
+1. **Exact artifact.** This one bounded differential Markdown at WORKER_RETURNS/PYAT_C2_GO_FIRSTER_EXACT_I02_SAVED_READ_S05_R1/00_RETURN.md on agent/pyat-c2-go-firster-s03-s05-r1. Git commit and blob SHA must be read back after final publication, not guessed in the text. Commands above are for qualified future runtime, not purported executed runs.
+2. **Governing contract.** PYAT #919 under #909; pinned PR #910 R2, October 28 selected one hybrid, current PROGRAMMA S03–S05/source permissions and MCR-lite, with original full MCR-C assignments preserved.
+3. **Strongest achieved result.** Actual source-pinned 11-defect native-owner differential, implementable complete external-memory I02 and authenticated read-store owner ABI, 25 hostile cases, exact S04 FIABC and S05 M1/M2/B5 reuse, concrete noncolliding cut order. 14 static source checks true; no S2 implementation claimed.
+4. **Author's hostile findings.** §B–J: fake seal, incomplete replay closure, false absence, broad repository barriers, full-domain RAM, normal double C11 build, joined stale currentness and B5 external root. These are source-established or explicitly labeled design inferences.
+5. **Unresolved challenges.** Actual implementation/S2 reader, global proof under real mixed topology, full 6 GiB data/resource test, external trust, issuer and original-source/native science; precise boundaries rather than invented completions.
+6. **Likely rival attack surfaces.** Cross-spill duplicate occurrence, exact ReplayManifest closure equality, held original source equivalence, physical read nonmembership, I03 complete used-member cost, I05 frontier, Batch and joined resume, B5 as-of and durable independent publisher root. Try to falsify H01–H25 at actual native readers.
+7. **Rejected alternatives.** Above; a superior tested smaller ABI may replace this design. The return is not engineered to obstruct modification.
+8. **Proof boundary.** ENGINEERING S1 source-exact design; S2 real working sourcefree vertical and physical cap NOT_RUN. SCIENTIFIC no novel source/native, Field Forge or psychological claims. AUTHORITY isolated repository return only, no W03 restart, qualified host, external issuer, independent reviewer, protected merge, original35 or N11/N12 approval.
+
+**Receiving:** one independently instantiated nonauthor reviewer should inspect the immutable final branch head against #919, reproduce claimed source facts, attack the hardest ABI/semantic/economic assumptions and return exact defects. If the owner revises, repair this same isolated artifact; do not create another all-estate governance program. A committed document is DELIVERED_FOR_REVIEW, never an accepted machine.
