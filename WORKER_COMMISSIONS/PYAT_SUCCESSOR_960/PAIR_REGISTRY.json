@@ -9,7 +9,7 @@
     {
       "packet_id": "S2-G",
       "queue": "Q1",
-      "state": "SAME_G5_MR01_RECHECK_RUNNING_ACTUAL_MODEL_VERIFIED",
+      "state": "ACCEPTED_SCOPED_STOP",
       "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-control/WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md",
       "contract_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
       "agents": {
@@ -17,27 +17,20 @@
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-a",
           "branch": "agent/pyat960-s2g-a-r1",
-          "state": "TERMINAL_WAIT_G5"
+          "state": "TERMINAL_SCOPED_STOP"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-b",
           "branch": "agent/pyat960-s2g-b-r1",
-          "state": "TERMINAL_WAIT_G5_RECHECK"
+          "state": "TERMINAL_SCOPED_STOP"
         }
       },
       "integration": "UNMERGED",
-      "independent_g5": "REVISE_EXACT_DEFECT_G5-MR01",
+      "independent_g5": "PASS_SCOPED_ENGINEERING",
       "job_id": "pyat960-s2g-g5-mr01-recheck",
       "owner_reservation": "https://github.com/maidiu/rawlsing/issues/919#issuecomment-6832863802",
-      "launch": {
-        "job_id": "pyat960-s2g-g5-mr01-recheck",
-        "child_pid": 27423,
-        "supervisor_pid": 27422,
-        "observer_pid": 27424,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s2g-g5-mr01-recheck",
-        "launch_is_not_completion": true
-      },
+      "launch": null,
       "a_delivery_sha": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
       "a_implementation_sha": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
       "a_disposition": "DELIVERED_PENDING_FIXED_OPPONENT_NOT_ACCEPTED",
@@ -50,12 +43,16 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-g5",
         "branch": "agent/pyat960-s2g-g5-r1",
         "independence": "NEITHER_A_NOR_B; prior S2-F reviewer only, no S2-G authorship",
-        "state": "MR01_RECHECK_LAUNCHED"
+        "state": "TERMINAL_ACCEPT_SCOPED_STOP",
+        "receipt": "WORKER_RETURNS/PYAT960_S2G_G5_RECHECK/receipt.json"
       },
       "g5_delivery_sha": "8cfeb115a43c905dd3241e63b2d96aa0735bf415",
-      "bounded_post_g5_correction": "USED_AWAIT_SAME_G5_RECHECK",
+      "bounded_post_g5_correction": "USED_MR01_FIXED_CLOSED",
       "repair_delivery_sha": "6ae305dcd284a47d7eb105ad203001db31212c27",
-      "repair_implementation_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f"
+      "repair_implementation_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+      "accepted_implementation_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+      "independent_review_delivery_sha": "d5ee7deed4531620706000e4f17e4558c449c6a1",
+      "original_full_packet": "OPEN_HOLD_EXTERNAL"
     },
     {
       "packet_id": "S1-E",
@@ -65,7 +62,8 @@
         "S1-C#955@5b1db9b5a687184615a199da8a39c55d5a30ed61 independentacceptanceorfrozencompatibleproducerABI",
         "S2-B#954@f5ee89b8e700ac14cf266c2e3eae4c25f021c349 completequalifiedI02inputABI"
       ],
-      "owner": "originalPair1S1-C/originalPair2S2-B; Browserduelsreadonly"
+      "owner": "originalPair1S1-C/originalPair2S2-B; Browserduelsreadonly",
+      "last_boundary_check": "2026-11-12 after Q1 G5: #955 unchanged5b1db9b G5_NOT_RUN; #959 unexecuted follow-up noted, #954 unchangedf5ee89 incomplete source-direct bounded I02"
     },
     {
       "packet_id": "S2-C",
@@ -75,7 +73,8 @@
         "S2-BcompleteindependentlyacceptedI02logical+selectorcertificateNOTAVAILABLE@#954f5ee89b8",
         "S1-Equ alifiedsource-directABI NOT_YET_AVAILABLE"
       ],
-      "owner": "originalPair2S2-B and queuedQ2S1-E"
+      "owner": "originalPair2S2-B and queuedQ2S1-E",
+      "last_boundary_check": "2026-11-12 after Q1 G5: full S2-B still incomplete/unreceived and Q2 ABI unavailable"
     }
   ]
 }

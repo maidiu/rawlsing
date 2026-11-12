@@ -1,5 +1,14 @@
 # Successor #960 — same existing PYAT HQ
 
+## CURRENT: Q1 scoped ACCEPTED / Q2-Q3 genuine dependency holds — 2026-11-12
+
+Q1/S2-G/P2-08 STOP at ACCEPT_SCOPED_ENGINEERING / S2_SOURCEFREE_ISOLATED_FIXTURE. Accepted code `c8e739470beb0dc65ad70c419a906e483a12ca8f`, author delivery `6ae305dcd284a47d7eb105ad203001db31212c27`, independent G5 receiving `38d6136031f0665d29f8b3d8768a9a4976f639cb`, reviewer delivery `d5ee7deed4531620706000e4f17e4558c449c6a1`, remote verified. G5 recheck exit0 20:48:06–20:56:06 UTC (8m00s). Actual handoff/receipt, exact review-only diff, original wrong-source refusal, valid matching multi-release positive and153+19+1 PASS evidence inspected. MR01 FIXED_CLOSED. G1–G5 PASS ONLY this isolated fixture custody/actual learned-world first-reader boundary. Prior negative evidence retained, no optional extra review. A/B/G5 all terminal. Full original S2-G remains OPEN/HOLD_EXTERNAL; UNMERGED, no protected adoption.
+
+Next authorized construction is Q2/S1-E only when qualified S1-C/source-operation fate ABI and full qualified S2-B I02 ABI exist. At this meaningful scheduling boundary GitHub955 still `5b1db9b5a687184615a199da8a39c55d5a30ed61`, awaiting A/G5; comment references #959 later unexecuted negative-ledger follow-up, not acceptance. GitHub954 still `f5ee89b8e700ac14cf266c2e3eae4c25f021c349`, G1–G4 PARTIAL/G5 NOT_RUN, source-direct bounded I02 incomplete due legacy materialized prerequisites. Q3/S2-C waits complete accepted S2-B + Q2 source-direct ABI. No substitute tasks/physical architecture or repeated discovery. Await actual upstream qualified return, no recurring checks.
+
+Accepted Q1 does NOT unblock full S2-E/S2-D chain, production current/as-of issuer/revocation, scientific M1 rule/original35/source/science rights, integrated100k/6GiB or protected merge. Stable event/auto-wake arrangement unchanged: recurring goal checks PAUSED, terminal receipt alone wakes intake. Same existing HQ. Original #940 stays closed/scoped/unmerged. Exact scoped acceptance in Q1_SCOPED_ACCEPTANCE.json.
+
+
 ## B MR01 repair terminal → SAME G5 delta recheck launched — 2026-11-12
 
 B repair exit0 20:41:10–20:46:47 UTC (5m37s). Delivery `6ae305dcd284a47d7eb105ad203001db31212c27`, code `c8e739470beb0dc65ad70c419a906e483a12ca8f`, remote verified. Actual full handoff, code/test delta and original G5 unmodified harness GREEN evidence inspected. Ten-line adapter check binds determinant release to selected fact own exact C11 provenance; one focused regression. Original wrong-source mutant REFUSED with exact reason; base positive conserved. Author reports153+19+1 PASS. No acceptance until same reviewer returns.

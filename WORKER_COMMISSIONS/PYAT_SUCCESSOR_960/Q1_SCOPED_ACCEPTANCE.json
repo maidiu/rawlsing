@@ -1,0 +1,39 @@
+{
+  "packet": "S2-G/P2-08",
+  "queue": "Q1",
+  "disposition": "ACCEPT_SCOPED_ENGINEERING",
+  "grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+  "contract_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
+  "accepted_implementation": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+  "author_delivery": "6ae305dcd284a47d7eb105ad203001db31212c27",
+  "independent_receiving_commit": "38d6136031f0665d29f8b3d8768a9a4976f639cb",
+  "reviewer_delivery": "d5ee7deed4531620706000e4f17e4558c449c6a1",
+  "reviewer_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "G1_G5": "PASS_AT_SCOPED_GRADE",
+  "original_full_packet": "OPEN_HOLD_EXTERNAL",
+  "integration": "UNMERGED",
+  "tests": {
+    "owner_adapter_counter": 153,
+    "s2f": 19,
+    "mr01_regression": 1,
+    "mr01_skipped": false
+  },
+  "actual_consumer": "evaluate_learned_world_consumer",
+  "MR01": "FIXED_CLOSED; exact wrong-source refuses, valid matching multi-release positive preserved",
+  "consumer_base": "2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597",
+  "consumer_changed": "4cef580c7e79c6ca2ce647749723c17040d9d2f5821a296708084c1bab2f6be7",
+  "consumer_valid_multirelease": "879ea8e7710178b2dd02fe71ec2f1a7f1bcf02da33b40912c1e42eb505762660",
+  "source_opens": 0,
+  "retained_bytes": 32499,
+  "cold_child_seconds": 0.2521,
+  "child_rss_bytes": 39321600,
+  "holds": [
+    "accepted complete S2-E/S2-D full joined chain",
+    "production current/as-of issuer and revocation",
+    "scientific M1 family rule",
+    "original35/source/science authority",
+    "integrated100k/6GiB",
+    "protected adoption/merge"
+  ],
+  "next": "STOP Q1 coding; await qualified Q2 prerequisites without polling; preserve original packet higher-grade hold"
+}

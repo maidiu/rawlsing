@@ -1,3 +1,7 @@
+# Successor #960 Q1 scoped accepted / Q2-Q3 held — 2026-11-12
+
+S2-G isolated sourcefree engineering ACCEPTED at code `c8e739470beb0dc65ad70c419a906e483a12ca8f`, independent G5 `38d6136031f0665d29f8b3d8768a9a4976f639cb` / delivery `d5ee7deed4531620706000e4f17e4558c449c6a1`. G1–G5 PASS only declared fixture custody/actual learned-world boundary;153+19+1 independently PASS, exact wrong-source refuses, valid matching multi-release works. MR01 FIXED_CLOSED; original REDs retained. STOP Q1 coding; all workers terminal. Full original S2-G OPEN/HOLD_EXTERNAL, UNMERGED. Live boundary check #955 unchanged/unreceived; #954 unchanged/full bounded I02 incomplete. Q2/S1-E and Q3/S2-C BLOCKED_DEPENDENCY. No original35/science/production issuer/full joined/100k/protected claim. No recurring checks. Historical entries follow.
+
 # Successor #960 MR01 repair / same G5 recheck — 2026-11-12
 
 B repair code `c8e739470beb0dc65ad70c419a906e483a12ca8f` / delivery `6ae305dcd284a47d7eb105ad203001db31212c27`: ten-line exact selected-fact release check + focused regression. Original G5 wrong-source case now refuses; author153+19+1 PASS. SAME nonauthor G5 recheck `pyat960-s2g-g5-mr01-recheck` actually launched, authors idle. Prior G5 FAIL retained pending recheck; no acceptance. All external/upstream/Q2/Q3/protected holds remain. Historical entries follow.

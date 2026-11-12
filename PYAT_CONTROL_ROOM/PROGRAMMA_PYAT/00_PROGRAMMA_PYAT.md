@@ -396,3 +396,8 @@ Independent G5 delivery `8cfeb115a43c905dd3241e63b2d96aa0735bf415` independently
 ### #960 S05 MR01 repair / same independent delta recheck — 2026-11-12
 
 B code `c8e739470beb0dc65ad70c419a906e483a12ca8f` adds ten-line selected-fact exact release-provenance check; original unmodified G5 wrong-source harness now REFUSED, base conserved, author153+19+1 PASS. SAME G5 recheck launched on delivery `6ae305dcd284a47d7eb105ad203001db31212c27`. Prior G5 FAIL preserved until verdict; no scoped acceptance or protected/scientific adoption. One bounded correction used; all upstream/external/Q2/Q3 holds persist.
+
+
+### #960 S05 terminal scoped acceptance — 2026-11-12
+
+G5 receiving `38d6136031f0665d29f8b3d8768a9a4976f639cb` (delivery `d5ee7deed4531620706000e4f17e4558c449c6a1`) independently ACCEPT_SCOPED_ENGINEERING / S2_SOURCEFREE_ISOLATED_FIXTURE for S2-G code `c8e739470beb0dc65ad70c419a906e483a12ca8f`. G1-G5 PASS at that boundary;153+19+1 PASS, original wrong-source release refused and valid matching multi-release positive retained, cold native learned/world first reader and change/restore proved. MR01 closed, historical negative evidence preserved. STOP isolated packet coding. Full joined S2-G remains OPEN/HOLD_EXTERNAL, UNMERGED; production current issuer/scientific M1/original35/integrated100k/protected adoption held. Q2/S1-E and Q3/S2-C remain blocked on unreceived S1-C and incomplete full S2-B at reverified unchanged refs. Exact custody: successor960 Q1_SCOPED_ACCEPTANCE.json and current checkpoint.
