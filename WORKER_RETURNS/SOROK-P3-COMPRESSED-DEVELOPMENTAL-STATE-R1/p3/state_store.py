@@ -4,9 +4,12 @@ This module is mechanical.  It does not evaluate CAN/ADP rules, choose responses
 issue native science or write the P2 world.  It stores source/rule/actor-bound
 records and a durable cross-store operation protocol for the HQ-owned P3Owner.
 
-The API is the one frozen in INTEGRATION_CONTRACT.md:
+The base API is the one frozen in INTEGRATION_CONTRACT.md:
 PsycheStore, head, query, get_operation, pending, reserve, save_world,
-commit_effects, finish and close.
+commit_effects, finish and close. ``completed()`` and ``latest_completed()``
+are additive read-only listings; the latter targets the last COMPLETE
+operation for the owner/cold config provenance anchor. Neither alters the
+frozen protocol.
 """
 from __future__ import annotations
 
@@ -843,6 +846,30 @@ class PsycheStore:
             self._counters["row_reads"] += len(rows)
             return [_detached(self._operation_document(row)) for row in rows]
 
+    def completed(self) -> list[dict]:
+        with self._lock:
+            self._ensure_open()
+            rows = self._connection.execute(
+                "SELECT * FROM p3_operations WHERE phase=? ORDER BY seq",
+                (PHASE_COMPLETE,),
+            ).fetchall()
+            self._counters["row_reads"] += len(rows)
+            return [_detached(self._operation_document(row)) for row in rows]
+
+    def latest_completed(self) -> dict | None:
+        """Targeted last COMPLETE operation for the config provenance anchor."""
+        with self._lock:
+            self._ensure_open()
+            row = self._connection.execute(
+                "SELECT * FROM p3_operations WHERE phase=? "
+                "ORDER BY seq DESC LIMIT 1",
+                (PHASE_COMPLETE,),
+            ).fetchone()
+            if row is None:
+                return None
+            self._counters["row_reads"] += 1
+            return _detached(self._operation_document(row))
+
     def reserve(
         self,
         operation_id: str,
@@ -1212,8 +1239,13 @@ class PsycheStore:
                 "SELECT * FROM p3_records ORDER BY seq"
             ).fetchall()
             self._counters["row_reads"] += len(rows)
+            record_rows = []
+            records_by_operation: dict[str, list[dict]] = {}
             for row in rows:
                 record = self._record_from_row(row)
+                record_rows.append((row, record))
+                records_by_operation.setdefault(
+                    row["operation_id"], []).append(record)
                 if row["previous_chain"] != previous:
                     raise RecursionRefusal("JOURNAL_INTEGRITY:RECORD_CHAIN")
                 chain = digest(
@@ -1240,8 +1272,44 @@ class PsycheStore:
                 "SELECT * FROM p3_operations ORDER BY seq"
             ).fetchall()
             self._counters["row_reads"] += len(operations)
+            documents = {}
             for row in operations:
-                self._operation_document(row)
+                document = self._operation_document(row)
+                documents[document["operation_id"]] = document
+            for row, record in record_rows:
+                operation = documents.get(row["operation_id"])
+                if operation is None:
+                    raise RecursionRefusal(
+                        "JOURNAL_INTEGRITY:RECORD_OPERATION_MISSING")
+                receipt = operation.get("effects_receipt")
+                if not isinstance(receipt, Mapping):
+                    raise RecursionRefusal(
+                        "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISSING")
+                matches = [
+                    item for item in receipt.get("records", [])
+                    if isinstance(item, Mapping)
+                    and item.get("record_id") == record["record_id"]
+                    and item.get("hash") == record["hash"]
+                ]
+                if (len(matches) != 1
+                        or canonical(matches[0]) != canonical(record)):
+                    raise RecursionRefusal(
+                        "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISMATCH")
+            for operation_id, document in documents.items():
+                receipt = document.get("effects_receipt")
+                expected_records = records_by_operation.get(operation_id, [])
+                if not isinstance(receipt, Mapping):
+                    if expected_records:
+                        raise RecursionRefusal(
+                            "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISSING")
+                    continue
+                receipt_records = sorted(
+                    canonical(item) for item in receipt.get("records", []))
+                row_records = sorted(
+                    canonical(item) for item in expected_records)
+                if receipt_records != row_records:
+                    raise RecursionRefusal(
+                        "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISMATCH")
             return True
 
     def stats(self) -> dict:

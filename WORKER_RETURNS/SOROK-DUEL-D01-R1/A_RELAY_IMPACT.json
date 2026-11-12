@@ -1,0 +1,63 @@
+{
+  "event_id": "D01-A-RELAY-20261112-a3ead75a",
+  "task_id": "D01",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "a3ead75aad5a40a0c96224f8f747e9c48b6f085f",
+  "start_composition_sha": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+  "b_return_sha": "0e0bb07ec8091fd34c6e47fff493a9ce39c9893d",
+  "changed_owner_symbols": [
+    "p3.state_store.PsycheStore.verify",
+    "p3.p3_owner.P3Owner.__init__"
+  ],
+  "abi_class": "COMPATIBLE_ADDITIVE",
+  "affected_task_ids": ["D02", "D03", "D04"],
+  "active_contract_decision": "FINISH_THEN_RECONCILE",
+  "new_actual_first_reader": "P3Owner construction now verifies the durable store before use; D01 cold/live boundary already verified",
+  "effect_on_original_obligation": "PRESERVED",
+  "defect": {
+    "id": "A-RELAY-D01-1",
+    "summary": "B's verify() bound surviving record rows to receipts one-way; a chain-consistent deletion of a record left the receipt intact and verify() returned True. P3Owner.__init__ also did not call verify(), so a direct owner construction accepted it.",
+    "classification": "CONSEQUENTIAL_RETENTION_DEFECT_IN_B_REPAIR",
+    "evidence_before": "2 records -> delete first, rewrite second chain/head -> verify True, head count 1, later consumer sees one record",
+    "repair": "verify() compares full canonical receipt record list with rows per operation; P3Owner.__init__ calls verify() before the config anchor and closes the store on failure",
+    "regression_test": "WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_a_relay_repairs.py"
+  },
+  "preserved_obligations": [
+    "B's row-to-receipt binding, config anchor, verified recovery, exact response mode, chain/head checks",
+    "P3 protocol, MISSING_RULE/NOT_ISSUED boundary, no new owner/scheduler/rule",
+    "A's original D01 tests and B's 9 repair tests"
+  ],
+  "regressed_obligations": [
+    "none observed: D01 15 passed; P3 subset 77 passed/1 skipped",
+    "bounded full-store scan added at owner construction (cost, not semantic regression)"
+  ],
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_a_relay_repairs.py",
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/d01_a_relay_all_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D01-R1/evidence/p3_a_relay_regression_pytest.log"
+    ],
+    "negative": [
+      "JOURNAL_INTEGRITY:RECORD_RECEIPT_MISMATCH on chain-consistent deletion",
+      "direct P3Owner construction refuses the same tamper"
+    ],
+    "cold": [
+      "D01 cold boundary refuses the tampered store before later consumer"
+    ]
+  },
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 147.02,
+    "usd": null,
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD"
+  }
+}

@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/.codex/worktrees/sorok-duel-d01/Rawlsing
+collecting ... collected 5 items
+
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_rule_value_change_controls_later_response PASSED [ 20%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_cold_reopen_later_consumer_reads_exact_owner_held_record PASSED [ 40%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_cold_no_record_consumer_differs_and_fabricates_nothing PASSED [ 60%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_config_and_source_severance_refuse_then_exact_restore PASSED [ 80%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_narrative_and_native_claims_are_not_durable_sourcefree_records PASSED [100%]
+
+============================== 5 passed in 25.50s ==============================
