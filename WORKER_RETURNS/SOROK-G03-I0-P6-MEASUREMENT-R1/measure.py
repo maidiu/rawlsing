@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """G03-I0 real P6 process meter: sourcefree, no cohort claim."""
-import argparse, hashlib, json, os, platform, signal, subprocess, sys, time
+import argparse, hashlib, json, os, platform, signal, sqlite3, subprocess, sys, time
 from pathlib import Path
 
 SCHEMA="G03_I0_REAL_P6_V2"
@@ -58,6 +58,30 @@ def state_file_digests(root):
             if q.is_file() and not q.is_symlink():
                 found[q.relative_to(root).as_posix()]=hashbytes(q.read_bytes())
     return found
+
+def sqlite_logical_digest(root):
+    """Diagnose physical SQLite page churn versus independently readable table contents."""
+    path=Path(root)/"actual-p2"/"p3_psyche.sqlite3"
+    if not path.exists():return {"status":"ABSENT"}
+    try:
+        uri="file:"+str(path.resolve())+"?mode=ro&immutable=1"
+        with sqlite3.connect(uri,uri=True) as db:
+            names=[row[0] for row in db.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")]
+            tables=[]
+            for name in names:
+                safe=name.replace('"','""')
+                rows=[[(v.hex() if isinstance(v,bytes) else v) for v in row]
+                      for row in db.execute('SELECT * FROM "'+safe+'"')]
+                rows.sort(key=lambda row:data(row))
+                tables.append([name,rows])
+            schema=list(db.execute("SELECT type,name,sql FROM sqlite_master ORDER BY type,name"))
+            return {"status":"MEASURED","sha256":hashbytes(data(
+                    {"tables":tables,"schema":schema,
+                     "user_version":db.execute("PRAGMA user_version").fetchone()[0]})),
+                    "tables":{name:len(rows) for name,rows in tables}}
+    except sqlite3.DatabaseError:
+        return {"status":"UNOBSERVED","reason":"sqlite_readonly_inspection_failed"}
 
 def env_offline():
     return {"PATH":os.environ.get("PATH","/usr/bin:/bin"),"LANG":"C.UTF-8",
@@ -121,6 +145,7 @@ def run(repo,out,timeout):
         argv=[sys.executable,str(repo/P6),"--state",str(state),*args]
         snap_before=state_snapshot(state);before=snap_before["bytes"]
         before_files=state_file_digests(state) if name=="fail_wait" else None
+        before_sqlite=sqlite_logical_digest(state) if name=="fail_wait" else None
         save(p/"start.json",{"id":name,"source_sha":head,"argv":argv,
                              "state_bytes_before":before,"state_snapshot_before":snap_before})
         stdout=p/"stdout.bin";stderr=p/"stderr.bin"
@@ -131,6 +156,7 @@ def run(repo,out,timeout):
             changed=sorted(k for k in set(before_files)|set(after_files)
                            if before_files.get(k)!=after_files.get(k))
             print("REFUSED_P6_CHANGED_PERSISTED_PATHS="+json.dumps(changed),file=sys.stderr)
+            print("REFUSED_P6_SQLITE_LOGICAL_BEFORE_AFTER="+json.dumps([before_sqlite,sqlite_logical_digest(state)]),file=sys.stderr)
         raw=stdout.read_bytes()
         try:
             output=json.loads(raw)
