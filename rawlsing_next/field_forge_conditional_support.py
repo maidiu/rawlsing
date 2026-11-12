@@ -231,6 +231,28 @@ def _validate_common_closure(
         raise FieldForgeConditionalSupportError("GT2 relation requires SINGLE_UNIVERSE")
     if grain.get("measure_kind") != "RAW":
         raise FieldForgeConditionalSupportError("GT2 relation is RAW/unweighted only")
+
+    # A fact citing the exact query *object* may still have been independently
+    # re-signed with a different selection predicate, measure identity or
+    # response-state interpretation. Same risk label is not same estimand.
+    # Check these native query/fact semantics BEFORE the FF01 relation drops
+    # them to reference-only provenance. Do not infer source/science authority.
+    if _exact(joint_fact.condition_predicate_ref, "fact.condition_predicate_ref") != _exact(
+        joint_query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise FieldForgeConditionalSupportError(
+            "fact/query condition predicate mismatch")
+    if _exact(joint_fact.measure_basis_ref, "fact.measure_basis_ref") != _exact(
+        joint_query.measure_basis_ref, "query.measure_basis_ref"
+    ):
+        raise FieldForgeConditionalSupportError(
+            "fact/query measure basis mismatch")
+    query_response_ref = grain.get("response_state_semantics_ref")
+    if query_response_ref is not None and _exact(
+        joint_fact.response_state_semantics_ref, "fact.response_state_semantics_ref"
+    ) != _exact(query_response_ref, "query response_state_semantics_ref"):
+        raise FieldForgeConditionalSupportError(
+            "fact/query response-state semantics mismatch")
     if getattr(joint_fact, "source_scope_mode", None) not in (None, "SINGLE_UNIVERSE"):
         raise FieldForgeConditionalSupportError("producer fact source scope is not SINGLE_UNIVERSE")
     if getattr(joint_fact, "measure_kind", None) not in (None, "RAW"):
