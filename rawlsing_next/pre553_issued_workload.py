@@ -323,7 +323,8 @@ class NativeWorkloadResult:
     source_sha256: str | None = None
     outputs_by_unit: Mapping[str, Any] | None = None
 
-    def exact_s2e_output_census(self, *, require_complete: bool = True):
+    def exact_s2e_output_census(self, *, require_complete: bool = True,
+                                runtime_catalog: RuntimeObjectCatalog | None = None):
         """Audit full native I03/I05 and Batch first-reader output preimages.
 
         This read-only S2-E proof surface is intentionally optional and
@@ -334,7 +335,7 @@ class NativeWorkloadResult:
 
         return census_native_batch(
             self.manifest, self.receipts, self.outputs_by_unit or {},
-            require_complete=require_complete,
+            require_complete=require_complete, runtime_catalog=runtime_catalog,
         )
 
 
