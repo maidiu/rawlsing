@@ -4,7 +4,7 @@
 **Grade:** `SOURCEFREE_S2_ONLY`. No native science, actor/human right, source right, Pyat rule, or protected merge. Constructive author evidence, not independent receiving.
 **Composition start:** `046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5`.
 **Branch:** `codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1`.
-**Code:** final SHA `5888ab04d5fa05872aca188da687dceed545faf5`; feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`.
+**Code:** final SHA `62292613aa9210a7d3e944314e36924349337439`; feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`.
 **Running contract:** `08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a`.
 **Module:** `WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py`.
 **ABI:** `B05_ABI.md`. **Delta/impact:** `PROGRAMMA_DELTA.json`, `impact.json`.
@@ -24,7 +24,7 @@ Commands and evidence:
 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider \
   WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py
 ```
-1 passed in 13.68s (`evidence/a_relay_b05.log`). Combined B01+B03+B02+B04+B05 32 passed in 228.89s (`evidence/a_relay_b01_b02_b03_b04_b05.log`). P6 house 8/8, P6 MII 18/18, adjacent 9/9.
+1 passed in 14.25s (`evidence/a_relay_b05.log`). Combined B01+B03+B02+B04+B05 32 passed in 229.33s (`evidence/a_relay_b01_b02_b03_b04_b05.log`). P6 house 8/8, P6 MII 18/18, adjacent 9/9.
 
 ## 2. Governing contract
 

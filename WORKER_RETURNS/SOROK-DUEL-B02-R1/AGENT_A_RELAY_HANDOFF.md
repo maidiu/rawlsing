@@ -8,7 +8,7 @@
 **Running contract SHA:** `08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a`.
 **Protected inspection baseline:** `6a5c12f04323d74001f9632063ec907f4fc4468e`.
 
-**Final tested code SHA:** `5888ab04d5fa05872aca188da687dceed545faf5` (B02/B04/B05 feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`). Return/docs test HEAD is the branch tip after this handoff commit; `PROGRAMMA_DELTA_A_RELAY.json` carries the same exact values.
+**Final tested code SHA:** `62292613aa9210a7d3e944314e36924349337439` (B02/B04/B05 feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`). Return/docs test HEAD is the branch tip after this handoff commit; `PROGRAMMA_DELTA_A_RELAY.json` carries the same exact values.
 
 ## 1. B's valid findings and improvements, explicitly acknowledged
 
@@ -119,9 +119,9 @@ My first `read_material_period` called `_all_states` before checking inherited f
 | Command | Result | Evidence |
 |---|---|---|
 | B02 period + incremental suite | **9 passed in 77.61s** | `WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/a_relay_b02.log` |
-| B04 operations suite | **2 passed in 20.50s** | `WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/a_relay_b04.log` |
-| B05 rolling suite | **1 passed in 13.68s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b05.log` |
-| B01+B03+B03 same-root+B02+B04+B05 combined | **32 passed in 228.89s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log` |
+| B04 operations suite | **2 passed in 21.31s** | `WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/a_relay_b04.log` |
+| B05 rolling suite | **1 passed in 14.25s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b05.log` |
+| B01+B03+B03 same-root+B02+B04+B05 combined | **32 passed in 229.33s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log` |
 | P6 `test_house.py` | **8 passed in 162.31s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/p6_test_house.log` |
 | P6 `test_mii.py` | **18 passed in 231.49s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/p6_test_mii.log` |
 | P2 owner + actor scene + selected P3 reopen/config | **9 passed in 51.18s** | `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/adjacent.log` |

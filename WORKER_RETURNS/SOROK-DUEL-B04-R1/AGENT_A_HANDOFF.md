@@ -4,7 +4,7 @@
 **Grade:** `SOURCEFREE_S2_ONLY`. No native science, actor/human right, source right, Pyat rule, or protected merge. Constructive author evidence, not independent receiving.
 **Composition start:** `046f0f3be85cf13d6cab5acc1a5cd3e90dce17c5`.
 **Branch:** `codex/sorok-duel-b02-a-relay-b04-b05-20261112-r1`.
-**Code:** final code SHA `5888ab04d5fa05872aca188da687dceed545faf5`; feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`.
+**Code:** final code SHA `62292613aa9210a7d3e944314e36924349337439`; feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`.
 **Running contract:** `08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a`.
 **Module:** `WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py`.
 **ABI:** `B04_ABI.md`. **Delta/impact:** `PROGRAMMA_DELTA.json`, `impact.json`.
@@ -71,7 +71,7 @@ p6_owned_objects      SOROK_OWNED_OBJECTS@1
 
 Demonstrated: parent cash 120/free 8 buys two junior kits (cash 80 then 40, free 7 then 6, stock 2→1→0, ownership 1→2); third purchase REFUSED stock with no debit; wrong owner/currency/parent/price/market branch/parent branch refuse; acoustic kit REFUSED noise with no debit; missing object REFUSED stock; parent no-time REFUSED time; B05 composition buys despite household affordability because the parent funds it; cold subprocess exact; market severance/restore exact.
 
-Evidence: `evidence/a_relay_b04.log` 2 passed in 20.50s; combined 32 passed in 228.89s in `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log`. P6 `test_house` 8/8, `test_mii` 18/18, adjacent 9/9.
+Evidence: `evidence/a_relay_b04.log` 2 passed in 21.31s; combined 32 passed in 229.33s in `WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_relay_b01_b02_b03_b04_b05.log`. P6 `test_house` 8/8, `test_mii` 18/18, adjacent 9/9.
 
 ## 4. Own hostile findings
 

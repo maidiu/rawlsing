@@ -1,7 +1,7 @@
 # B05 rolling household rent ABI
 
 **Status:** `SOURCEFREE_S2_ONLY`; depends B02/B04. Not a mother decision, public event, landlord ledger, or native science.
-**Code:** final SHA `5888ab04d5fa05872aca188da687dceed545faf5` (feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`).
+**Code:** final SHA `62292613aa9210a7d3e944314e36924349337439` (feature commit `a3f74693b70cb09f0e8bac4a7ca094812173db3a`).
 **Module:** `WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py`.
 
 ## API
