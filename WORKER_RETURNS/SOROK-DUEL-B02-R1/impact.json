@@ -1,0 +1,153 @@
+{
+  "event_id": "SOROK-DUEL-B02-B-20261112-R1",
+  "task_id": "B02",
+  "phase": "CG-B",
+  "title": "Map historical calendar/as-of to existing P3/S46 logical clock and split periods",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "509784c2850c499d1f640c9f43c569416081d76d",
+  "frozen_start_sha": "5bc29474e769b928d9264f1607bab605e2b1c7e9",
+  "opponent_implementation_sha": "99333985190d872d825a1ec205db224179daa4af",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "branch": "codex/sorok-duel-b03-counter-b02-b-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "abi_class": "BREAKING_INTERFACE",
+  "changed_owner_symbols": [
+    "developmental_recursion.p2_owner.MATERIAL_FACT_SLOTS (p6_employment, p6_historical_period)",
+    "historical_period.establish_period_plan",
+    "historical_period.read_employment",
+    "historical_period.read_period_plan",
+    "historical_period.materialize_periods",
+    "historical_period.read_material_period",
+    "historical_period.p3_interval_span"
+  ],
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "P2 material-slot allowlist gains p6_employment and p6_historical_period. P2Owner constructor/validate_proposal/realize/participant methods unchanged."
+    },
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "New material-period reader and exact P3 EventProposal.interval adapter over the existing S46 producer; no new scheduler or journal."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; all prior-cut P3 roots refuse P3_CONFIG_CHANGED under this final code. Fresh final-code roots only; no migration."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "Fork reads of period/employment facts are material/C12-only; S46 interval is not forked and materialization on a fork is refused."
+    },
+    {
+      "class": "SCIENTIFIC_HOLD",
+      "detail": "No native/science/source-rights/actor-human authority or protected merge."
+    }
+  ],
+  "affected_task_ids": [
+    "C02",
+    "D02",
+    "B04",
+    "B05",
+    "E02",
+    "F01",
+    "C03",
+    "C04"
+  ],
+  "new_actual_first_reader": "historical_period.read_material_period(session, as_of_date) consumes the committed p6_employment/p6_historical_period facts and the actual S46 interval state by domain hash; p3_interval_span supplies the next P3 EventProposal.interval. P2Owner.material_fact reads both new P2 slots.",
+  "effect_on_original_obligation": "EXPANDED",
+  "regressed_obligations": [
+    "P3 code-pin roots from 5bc29474e, 993339851, 362719b40, and earlier cuts are incompatible with this p2_owner byte cut; no migration invented.",
+    "Full cold fork/P6 experience remains blocked by P2/P3 branch binding; fork period reads are material-only with interval NOT_AVAILABLE_ON_FORK.",
+    "B02 does not execute a full P3 DevelopmentOwner cycle; it freezes the exact interval/read ABI for the next P3 cycle."
+  ],
+  "period_contract": {
+    "calendar_basis": "GREGORIAN_PROLEPTIC_UTC_DATE",
+    "clock_basis": "S46_TEST_ONLY_LOGICAL_TICK_DAY_V1",
+    "ticks_per_day": 1,
+    "period_dates": "inclusive start / exclusive end",
+    "default_periods": [
+      "period:2026-h1 2026-01-01..2026-07-01 181 ticks",
+      "period:2026-h2 2026-07-01..2027-01-01 184 ticks"
+    ],
+    "employment_change": "2026-03-15 splits period:2026-h1 at anchor+73 days; second period one segment",
+    "source_clocks": "anchor date/clock, period dates, period start/end logical clocks are stored together",
+    "materializer": "existing session.produce_interval, SCHEDULED_ONLY domains, status NOT_PERFORMED",
+    "read_statuses": [
+      "MATERIALIZED",
+      "NOT_MATERIALIZED",
+      "NOT_AVAILABLE_ON_FORK"
+    ]
+  },
+  "c01_c02_d02_impact": {
+    "C02": "May consume employment as-of and period dates; employment terms are not a mother action, utterance, private reason, or trait.",
+    "D02": "Active Pair2 read-only situated-field input acfcb72f... was not altered. B02 freezes read_material_period/p3_interval_span for reconciliation; do not silently rebase the active input.",
+    "C03_C04": "Parent first consumer remains NONE_VERIFIED; no parent decision/utterance/uptake is added."
+  },
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py@509784c2850c499d1f640c9f43c569416081d76d",
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@509784c2850c499d1f640c9f43c569416081d76d",
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/B02_ABI.md"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py",
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/b02_period.log",
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/b01_b02_b03_combined.log",
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/p6_adjacent.log",
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/p6_mii.log",
+      "WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py",
+      "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_same_root_psyche.log"
+    ],
+    "negative": [
+      "test_employment_changes_as_of_date_and_severance_restores",
+      "test_clock_and_term_tampering_refuses_and_restores",
+      "test_before_first_term_is_unknown_and_outside_plan_refuses",
+      "test_fork_reads_material_only_and_refuses_new_materialization",
+      "test_b03_same_root_psyche_mediator_not_world_dwelling_fact"
+    ],
+    "cold": [
+      "test_retry_and_cold_replay_do_not_duplicate_periods: fresh subprocess plan/employment/material-period reads identical; retry REPLAYED, produced_states=0, counts unchanged"
+    ],
+    "regression": [
+      "B01/B03/B03-same-root/B02 combined 27 passed",
+      "P6 house + adjacent 17 passed",
+      "P6 MII 18 passed"
+    ]
+  },
+  "queued_contract_changes": [
+    "C02 may read employment as-of and period dates; do not turn terms into mother action or trait.",
+    "D02 may consume historical_period after HQ reconciliation; active Pair2 input not silently rebased.",
+    "B04/B05 own purchase/debit/recurrence/multicycle consequences; B02 supplies only two dated periods and one employment split.",
+    "F01 imported roots must respect P2/P3 branch binding and fork interval limitation.",
+    "C03/C04 parent first consumer remains NONE_VERIFIED."
+  ],
+  "active_contract_decision": "PAUSE_AT_CHECKPOINT",
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 683.04,
+    "usd": null,
+    "detail": "B02 50.13 + combined 165.75 + P6 house/adjacent 217.45 + P6 MII 242.53 + B03 same-root 7.18 = 683.04s of executed suites. No controller/provider/RSS/retry instrumentation available; no figures invented."
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_ONLY_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "human": "HELD",
+    "merge": "NOT_CLAIMED"
+  },
+  "b03_same_root_negative": {
+    "result": "PASS",
+    "evidence": "WORKER_RETURNS/SOROK-DUEL-B03-R1/evidence/b03_same_root_psyche.log",
+    "detail": "Valid MEDIATOR injected into the actual P6 root's p3_psyche.sqlite3; world dwelling/feasibility/mother material readers unchanged; severing p6_dwelling refuses world readers while PsycheStore query remains; restore returns exact baseline."
+  },
+  "proof_boundaries": [
+    "No native science, source right, actor/human authority, or protected merge.",
+    "No full P3 development cycle, P3 psychology, daily work/care, purchase, possession, debit, or recurring cost.",
+    "No mother decision/utterance/hidden reason; parent first consumer NONE_VERIFIED.",
+    "No cold fork; fork period interval NOT_AVAILABLE_ON_FORK.",
+    "No P3 pin migration; prior roots incompatible.",
+    "Two Library architecture records NOT_INSPECTED locally."
+  ],
+  "handoff": "WORKER_RETURNS/SOROK-DUEL-B02-R1/AGENT_B_HANDOFF.md",
+  "main_relay_handoff": "WORKER_RETURNS/SOROK-DUEL-B03-R1/AGENT_B_HANDOFF.md",
+  "abi": "WORKER_RETURNS/SOROK-DUEL-B02-R1/B02_ABI.md"
+}
