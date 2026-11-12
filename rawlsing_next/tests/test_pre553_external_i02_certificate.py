@@ -494,3 +494,48 @@ stage.build_sourcefree_external_i02(
     for orphan in orphans:
         with pytest.raises(ExternalI02IntegrityError):
             VerifiedExternalI02(orphan, roots=forged)
+
+
+def test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03(tmp_path):
+    """G3: an already-verified connection is not a writable selector authority.
+
+    SQLite's PRAGMA query_only is itself mutable. An untrusted consumer holding
+    the public db handle can turn it off and create a TEMP table that takes
+    precedence over the authenticated main.selectors in ordinary unqualified
+    SELECT statements. No root, file, class or Python attribute is reassigned.
+    """
+    source = _build_source("s2b-a-temp-shadow", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-temp-shadow")
+    assert oracle.facts[0].typed_state == "SUPPORTED"
+    assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            verified.db.execute("PRAGMA query_only=OFF")
+            verified.db.execute("""
+                CREATE TEMP TABLE selectors(
+                    respondent TEXT, kind TEXT, target TEXT, event_ref TEXT
+                )
+            """)
+        except ExternalI02IntegrityError:
+            pass  # fixed certificate does not expose mutable SQL commands
+        else:
+            # If both commands succeed, main.selector bytes/root are untouched
+            # but native SELECT FROM selectors silently resolves temp.selectors.
+            poisoned_result = _run(source, qa, pred, query)
+            assert poisoned_result == oracle, (
+                "G3 RED: post-verification TEMP selector shadow silently "
+                "changed real native I03 result under unchanged trusted roots"
+            )
+        assert _run(source, qa, pred, query) == oracle
+    # The original on-disk certificate has not changed.
+    with VerifiedExternalI02(path, roots=roots) as fresh:
+        assert list(fresh.respondent_refs())
