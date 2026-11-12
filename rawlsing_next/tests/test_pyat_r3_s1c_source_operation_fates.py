@@ -395,41 +395,89 @@ def test_s1c_actual_source_open_and_c11_build_census(tmp_path, monkeypatch):
 
 
 def test_s1c_b_unknown_and_excluded_axis_severance_before_source_open(tmp_path):
-    """B's reproduced G3 hole: nonoperation negative evidence was unchecked.
+    """Only genuine R61 negative projections may be frozen as sourcefree fates.
 
-    Before the B repair, both changes below passed verify_frozen_inputs:
-    all operation IDs, dispositions and deferred rows were unchanged.
+    B's initial test attached imaginary unknown/excluded source objects to
+    the frontier and declared the result legitimate. That could pass B's
+    census equality while laundering a false 'source-qualified' negative.
     """
     bundle, inventory, policy, frontier, _ = _fixture(tmp_path)
-    marked = replace(
+    invented = replace(
         frontier,
         unknown=tuple(frontier.unknown) + ({
-            "kind": "ROUTING_UNKNOWN", "occurrence": "INDEPENDENT_SOURCE_ITEM_X",
-            "reason": "NO_ADMINISTRATION_PROOF",
+            "kind": "ROUTING_UNKNOWN", "occurrence": "INVENTED_ITEM_X",
+            "reason": "UNATTESTED_SOURCE_NEGATIVE",
         },),
         excluded=tuple(frontier.excluded) + ({
-            "kind": "EXCLUDED_SOURCE_ITEM", "occurrence": "INDEPENDENT_SOURCE_ITEM_Y",
-            "reason": "NOT_IN_DECLARED_OPERATION_DOMAIN",
+            "kind": "EXCLUDED_SOURCE_ITEM", "occurrence": "INVENTED_ITEM_Y",
+            "reason": "NO_MATCHING_OPERATION",
         },),
     )
-    census = _freeze_packet(marked, scope_id="B-FROZEN-NEGATIVE-AXES")
-    assert verify_frozen_inputs(census, inventory=inventory,
-                                policy=policy, frontier=marked)["source_candidate_count"]
+    invented_census = _freeze_packet(invented)
+    assert invented_census.source_census_ref == _freeze_packet(frontier).source_census_ref
+    assert invented_census.science_census_ref == _freeze_packet(frontier).science_census_ref
+    with pytest.raises(CensusRefusal, match="UNKNOWN_PROJECTION_DRIFT"):
+        verify_frozen_inputs(invented_census, inventory=inventory,
+                             policy=policy, frontier=invented)
+
+    changed = tuple(
+        replace(occ, administration=ADMINISTRATION_UNKNOWN,
+                route_state="UNKNOWN_ROUTING")
+        if occ.key.item_id == "A" else occ
+        for occ in inventory.occurrences
+    )
+    real_inventory = replace(inventory, occurrences=changed)
+    real_frontier = enumerate_frontier(real_inventory, policy)
+    census = _freeze_packet(real_frontier, scope_id="B-REAL-NEGATIVE-AXES")
+    assert real_frontier.unknown and real_frontier.excluded
+    assert verify_frozen_inputs(census, inventory=real_inventory,
+                                policy=policy, frontier=real_frontier)[
+                                    "source_candidate_count"
+                                ] == len(real_frontier.operations)
     opened = []
-    for changed, code in (
-        (replace(marked, unknown=tuple(frontier.unknown)),
-         "UNKNOWN_CENSUS_DRIFT"),
-        (replace(marked, excluded=tuple(frontier.excluded)),
-         "EXCLUDED_CENSUS_DRIFT"),
+    for changed_frontier, code in (
+        (replace(real_frontier, unknown=()), "UNKNOWN_CENSUS_DRIFT"),
+        (replace(real_frontier, excluded=()), "EXCLUDED_CENSUS_DRIFT"),
     ):
         with pytest.raises(CensusRefusal, match=code):
             execute_censused_sourcefree(
-                census=census, inventory=inventory, policy=policy,
-                frontier=changed, bundle=bundle, as_of=AS_OF,
+                census=census, inventory=real_inventory, policy=policy,
+                frontier=changed_frontier, bundle=bundle, as_of=AS_OF,
                 host=HOST, purpose=PURPOSE,
                 source_factory=lambda ref: opened.append(ref),
             )
     assert opened == []
+
+
+def test_s1c_b_rehashed_occurrence_false_fate_and_count_preserving_axis(tmp_path):
+    """No independent false per-occurrence evidence or typed status histogram."""
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    original = frontier.inventory_ledger[0]
+    forged_entry = replace(
+        original, disposition=("UNKNOWN" if original.disposition != "UNKNOWN"
+                               else "HELD")
+    )
+    forged = replace(
+        frontier, inventory_ledger=(forged_entry,) + frontier.inventory_ledger[1:]
+    )
+    # Both sides have been independently rehashed; B's earlier frozen-vs-frontier
+    # equality alone let this forged census through.
+    forged_census = _freeze_packet(forged)
+    with pytest.raises(CensusRefusal, match="INVENTORY_LEDGER_SOURCE_DRIFT"):
+        verify_frozen_inputs(forged_census, inventory=inventory,
+                             policy=policy, frontier=forged)
+
+    budget_frontier = _fixture(tmp_path, budget=5)[3]
+    assert budget_frontier.execution_counts.get("PENDING", 0) > 0
+    counts = dict(budget_frontier.execution_counts)
+    counts["PENDING"] -= 1
+    counts["NOT_STARTED"] = counts.get("NOT_STARTED", 0) + 1
+    tampered = replace(budget_frontier, execution_counts=counts)
+    tampered_census = _freeze_packet(tampered)
+    assert sum(counts.values()) == sum(budget_frontier.execution_counts.values())
+    with pytest.raises(CensusRefusal, match="EXECUTION_COUNTS_DRIFT"):
+        verify_frozen_inputs(tampered_census, inventory=inventory,
+                             policy=policy, frontier=tampered)
 
 
 def test_s1c_b_inventory_ledger_fate_severance_and_restoration(tmp_path):
