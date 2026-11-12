@@ -192,6 +192,53 @@ def _query_component_material(
     return domains[0], domains[1], identity
 
 
+def _check_positive_respondent_extent(fact: EmpiricalFact) -> None:
+    """Check declared I03 sourcefree member-set closure, without certifying origin.
+
+    I03 produces both enumerations together. Historical sourcefree D-shaped
+    fixtures sometimes declare neither: retain that ABI, but do not treat
+    absence as authenticated membership. A partial declaration is invalid.
+    Do not demand denominator == all risk members; a condition may select
+    fewer than the complete risk set.
+    """
+    material = fact.semantic_fields
+    risk_present = "risk_set_member_refs" in material
+    denominator_present = "denominator_member_refs" in material
+    if risk_present != denominator_present:
+        raise FieldForgeConditionalSupportError(
+            "risk-set and denominator members must be declared together")
+    if not risk_present:
+        return  # sourcefree content check only; missing extent remains unqualified
+
+    risk_members = tuple(
+        _exact(ref, "fact.risk_set_member_refs")
+        for ref in _sequence(
+            material["risk_set_member_refs"], "fact.risk_set_member_refs",
+            allow_empty=True)
+    )
+    denominator_members = tuple(
+        _exact(ref, "fact.denominator_member_refs")
+        for ref in _sequence(
+            material["denominator_member_refs"], "fact.denominator_member_refs",
+            allow_empty=True)
+    )
+    # The real I03 respondent is a C11 internal RespondentIdentity, not the
+    # distinct public RespondentEvent fact. Preserve the exact native ABI.
+    if any(ref.kind != "C11Internal:RespondentIdentity"
+           for ref in (*risk_members, *denominator_members)):
+        raise FieldForgeConditionalSupportError("respondent member kind mismatch")
+    if len(set(risk_members)) != len(risk_members):
+        raise FieldForgeConditionalSupportError("duplicate risk-set member")
+    if len(set(denominator_members)) != len(denominator_members):
+        raise FieldForgeConditionalSupportError("duplicate denominator member")
+    if len(denominator_members) != fact.raw_denominator_support:
+        raise FieldForgeConditionalSupportError(
+            "denominator member count mismatch with raw denominator")
+    if not set(denominator_members).issubset(set(risk_members)):
+        raise FieldForgeConditionalSupportError(
+            "denominator member outside risk set")
+
+
 def _validate_common_closure(
     *,
     joint_fact: EmpiricalFact,
@@ -244,6 +291,8 @@ def _validate_common_closure(
     query_risk = _exact(joint_query.risk_set_ref, "query.risk_set_ref")
     if fact_risk != query_risk:
         raise FieldForgeConditionalSupportError("producer fact/query risk-set mismatch")
+    if joint_fact.typed_state == "SUPPORTED":
+        _check_positive_respondent_extent(joint_fact)
 
     fact_universes = _exact_seq(joint_fact.empirical_universe_refs, "fact.empirical_universe_refs")
     query_universes = _exact_seq(joint_query.empirical_universe_refs, "query.empirical_universe_refs")
