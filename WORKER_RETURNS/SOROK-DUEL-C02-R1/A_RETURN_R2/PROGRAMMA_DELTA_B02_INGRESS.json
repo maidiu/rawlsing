@@ -1,0 +1,107 @@
+{
+  "event_id": "SOROK-DUEL-C02-A-B02-INGRESS-20261112-R1",
+  "task_id": "C02",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "9ac1ac71cdbc8dd2c832b2980b501b4031e163e8",
+  "composition_start_sha": "ea1f8d75b894c28d8a7bdb2d667761af2b67e310",
+  "opponent_frozen_sha": "4d93685df4c5abdfbd09f44510a24a41c850b6a8",
+  "opponent_implementation_sha": "3f9d1079bc3b1f09a318afc80bd5aa63d7ccdecf",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Composed the actual B02 period plan into parent material/activity. Current clock/date is qualified against the committed B02 plan via historical_period.read_period_plan/read_material_period; parent reads/options/activity receipts/history carry the current period context. B02 employment holder A is explicitly not applied to the parent; parent wage/currency remain parent-local and no household conversion/double-counting is applied. Current-period source severance makes options held but does not retcon past activity receipts. The old global B02-not-built claim is superseded. Two-period/incremental proof remains held pending an exact current-period API.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "symbols": [
+        "PARENT_B02_HOLD (now B02_PERIOD_PLAN_ABSENT_ON_ROOT)",
+        "PARENT_B02_QUALIFIED",
+        "PARENT_B02_UNQUALIFIED",
+        "PARENT_B02_MODULE_MISSING",
+        "PARENT_B02_FULL_PROOF_HOLD",
+        "B02_REQUIRED_HOOK",
+        "historical_period_module",
+        "_period_context",
+        "_require_period_for_write",
+        "_historical_ingress",
+        "_validate_period_context",
+        "read_parent_material",
+        "parent_feasible_actions",
+        "establish_parent_material",
+        "commit_parent_circumstances",
+        "record_parent_activity",
+        "read_parent_activity",
+        "read_parent_history"
+      ]
+    }
+  ],
+  "actual_consumer": [
+    "parent_activity.read_parent_material / parent_feasible_actions current period context",
+    "parent_activity.read_parent_activity stored period context",
+    "parent_activity.read_parent_history per-row and current period context",
+    "run_p4.run_parent_operation period-establish -> B02 establish_period_plan"
+  ],
+  "actual_writer_trace": [
+    "run_p4.run_parent_operation period-establish calls historical_period.establish_period_plan with B02 employment/plan defaults through the normal P4 background entry.",
+    "parent_activity._period_context reads historical_period.read_period_plan and read_material_period at the actual current S46 clock.",
+    "parent_activity.establish_parent_material/commit_parent_circumstances/record_parent_activity bind the current period context into C12 episode/receipt and MATERIAL_ACTIVITY event body.",
+    "B02 source/material is not edited or copied; only its public API is consumed."
+  ],
+  "affected_queued_tasks": [
+    "C02 (current-period ingress; full two-period proof held)",
+    "B02 incremental/current-period API owner",
+    "C03",
+    "C04",
+    "B04 shared household/currency reconciliation",
+    "D02",
+    "E02",
+    "P3 source-closure integration owner"
+  ],
+  "preserved_obligations": [
+    "B02 historical_period.py is unedited and not copied.",
+    "Parent employment holder/rate/currency remain parent-local; B02 A employment is not applied to the parent.",
+    "No household cash read, currency conversion, shared-spend permission or double counting.",
+    "Current period context is bound to actual current clock/date; no past as-of query on a future world.",
+    "Committed activity receipt/history retains its stored period context after current plan severance/restore.",
+    "B's material/history/event/currency/lock repairs are preserved.",
+    "Native/science/rights/actor/human/protected holds remain separate."
+  ],
+  "regressed_obligations": [
+    "Full C02 dated proof is not complete: no two dated periods, split-period cold/severance, or incremental interval materialization.",
+    "B02 interval_status is NOT_MATERIALIZED in the live current-period proof; materialize_periods full-plan advance was deliberately not used.",
+    "A finite hook is required from the B02 owner: exact current_material_period without full-plan advance."
+  ],
+  "negative_refs": [
+    "test_read_only_period_context_and_no_false_b02_absent_claim (B02 qualified, A employment not applied, source severance -> unqualified/held, restore)",
+    "test_normal_live_root_parent_b02_view_and_user_turn_cold (period logical tick equals activity clock; period H1)",
+    "test_corrupted_root_still_refuses_and_pending_refuses"
+  ],
+  "cold_refs": [
+    "test_normal_live_root_parent_b02_view_and_user_turn_cold: period/parent activity/material read after cold P6 open",
+    "test_read_only_period_context_and_no_false_b02_absent_claim: B02 plan source severance/restore, past activity receipt preserved"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py",
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/evidence/live_root_b02.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/evidence/c02_ab.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/evidence/b02_period.log"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented.",
+    "measured_test_wall_s": {
+      "live_root_b02": 55.48,
+      "c02_ab": 30.29,
+      "b02_period": 47.37
+    }
+  },
+  "ABIclass": "COMPATIBLE_ADDITIVE_B02_CURRENT_PERIOD_CONTEXT",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

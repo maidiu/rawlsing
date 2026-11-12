@@ -1,0 +1,107 @@
+{
+  "event_id": "SOROK-DUEL-C02-A-LIVE-ROOT-20261112-R1",
+  "task_id": "C02",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "9ac1ac71cdbc8dd2c832b2980b501b4031e163e8",
+  "composition_start_sha": "ea1f8d75b894c28d8a7bdb2d667761af2b67e310",
+  "opponent_frozen_sha": "4d93685df4c5abdfbd09f44510a24a41c850b6a8",
+  "opponent_implementation_sha": "3f9d1079bc3b1f09a318afc80bd5aa63d7ccdecf",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Added a normal live-root P4/P6 background entry for B02 period establishment and parent registration/material/circumstance/activity. It checks the existing foreground boundary before any write, records a pending fail-stop marker, executes the existing parent/world/B02 owner, and records the actual after snapshot and receipt through the existing independent-activity protocol. Ordinary P6 view and user say now succeed after cold reopen; direct/unrecorded mutations and pending states still refuse.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+      "symbols": [
+        "PARENT_BACKGROUND_OPERATIONS",
+        "_parent_background_dispatch",
+        "run_parent_operation"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
+      "symbols": [
+        "parent_background_operation"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py",
+      "symbols": [
+        "test_normal_live_root_parent_b02_view_and_user_turn_cold",
+        "test_corrupted_root_still_refuses_and_pending_refuses",
+        "test_post_mutation_failure_leaves_pending_fail_stop",
+        "test_read_only_period_context_and_no_false_b02_absent_claim"
+      ]
+    }
+  ],
+  "actual_consumer": [
+    "run_p6.experience ordinary view after normal parent background activity",
+    "run_p6.experience ordinary lawful say after cold reopen",
+    "run_p4.check_boundary/last_boundary consuming the recorded activity after snapshot",
+    "parent_activity parent_feasible_actions/read_parent_material/read_parent_activity through the live root"
+  ],
+  "actual_writer_trace": [
+    "run_p4.run_parent_operation [run_p4.py:235] acquires foreground_lock, opens state/actual-p2, check_source/check_boundary, saves pending, dispatches period/parent operation, then clear/record_activity.",
+    "run_p4.record_activity appends ledger.activity_turns and updates last_boundary with after snapshot + foreground_witness.",
+    "P6 ordinary view/say opens the same state/actual-p2, calls check_boundary against the new last boundary, and proceeds."
+  ],
+  "affected_queued_tasks": [
+    "C02 (live-root integration portion; full dated proof still held)",
+    "C03",
+    "C04",
+    "E03 (composite crash recovery)",
+    "F01/J3",
+    "P4/P5/P6 runtime integration",
+    "P3 source-closure integration owner"
+  ],
+  "preserved_obligations": [
+    "Existing P4 check_boundary/foreground_witness/record_activity semantics are unchanged.",
+    "No second ledger, scheduler, owner or snapshot-anchor rewrite.",
+    "No user inspection is required before view/say.",
+    "Parent activity does not create Nadia psyche/memory/perception; P3 psychology head is unchanged.",
+    "Parent material/activity remains off the user-visible surface.",
+    "A root corrupted by direct unrecorded writes still refuses P4_COLD_STATE_MISMATCH.",
+    "Pending operation and post-mutation failure fail-stop without duplicate effects.",
+    "B's C01 repairs and MATERIAL_ACTIVITY vocabulary are preserved.",
+    "Native/science/rights/actor/human/protected holds remain separate."
+  ],
+  "regressed_obligations": [
+    "Full SIGKILL/crash reconciliation is not proved; only pending fail-stop and no-duplicate retry are proved. E03 owns composite recovery.",
+    "Full C02 dated/two-period proof still requires the B02 incremental/current-period hook.",
+    "No full-estate run."
+  ],
+  "negative_refs": [
+    "test_corrupted_root_still_refuses_and_pending_refuses",
+    "test_post_mutation_failure_leaves_pending_fail_stop",
+    "test_normal_live_root_parent_b02_view_and_user_turn_cold (private secret and activity summary absent from view/say; focal NOT_PERCEIVED)"
+  ],
+  "cold_refs": [
+    "test_normal_live_root_parent_b02_view_and_user_turn_cold: separate P6 open calls after parent activity; ordinary view and say succeed; P3 psychology head unchanged",
+    "parent material/options/activity read after reopening state/actual-p2"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/test_c02_live_root_b02.py",
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/evidence/live_root_b02.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/evidence/c01_p2_p3.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-R1/A_RETURN_R2/evidence/p4_p5.log"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented.",
+    "measured_test_wall_s": {
+      "live_root_b02": 55.48,
+      "c01_p2_p3": 79.89,
+      "p4_p5": 67.92
+    }
+  },
+  "ABIclass": "COMPATIBLE_ADDITIVE_NEW_RUNTIME_ENTRY",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

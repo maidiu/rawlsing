@@ -85,6 +85,10 @@ def test_normal_live_root_parent_b02_view_and_user_turn_cold(tmp_path):
         "private_state": {"motive": SECRET},
     })
     assert registered["result"]["status"] == "REGISTERED"
+    registered_view = run_p6.experience(state, Namespace(command="view"))
+    assert registered_view["room"] == "workshop"
+    assert "status" not in registered_view or (
+        registered_view.get("status") != "REFUSED")
     fixture = parent_material_fixture(actor_id=PARENT_ID, **BASELINE)
     established = background(state, "parent-establish", {
         "parent_id": PARENT_ID, "fixture": fixture,
