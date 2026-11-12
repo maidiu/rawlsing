@@ -10,7 +10,7 @@ Q2/S1-E `LAUNCHED_ON_VERIFIED_EXCLUSIVE_LEASE`: jobpyat960-s1e-a01, existingfixe
 
 Q3/S2-C `PREFLIGHT_ONLY`: jobpyat960-s2c-preflight01, existingterminalS1D A ses_e3120ba7affeNBHUoX1HIP3G4r NEWpyat960-s2c-preflight / agent/pyat960-s2c-preflight-r1, child53740/supervisor53736/finiteobserver53741. FixedoldopponentB ses_e3120ba49ffeWl7IZUTmL7mjZB NOTlaunched. Onlyownreturn writable; function-level exact reuse/ABI comparison requested, map12W03W04obligations. PhysicalwriterHELD until directS2B independent scopedG5 AND concretecompatibleQ2input, notS2E. No newarchitecture/object-firstfoundation/duplicateauthoritycorpus. Q3preflight mayfinish whileQ2runs; don'tcommissionanotherauthorreviewofpreparation.
 
-Actualfirstturnmodelproof pending for both launches, sessionsettings verifiedGoDeepSeekFlashMAX notproof. Twoactualdispatches/max3, nootherAPIactivebeforelaunch. No newHQ/model/provider/hostrights/pausedW03writes/science/original35/CURRENTproduction/protected/N11N12 authority. Terminalnotifications only, recurringgoalwakes PAUSED. Onreturn verifyactualcode/firstreceipt and execute fixedopponent or readygate step.
+Actual first-turn message metadata for BOTH launches VERIFIED opencode-go/deepseek-v4.1-flash variant max; exact message IDs/proofs in registry/dispatch. Twoactualdispatches/max3, nootherAPIactivebeforelaunch. No newHQ/model/provider/hostrights/pausedW03writes/science/original35/CURRENTproduction/protected/N11N12 authority. Terminalnotifications only, recurringgoalwakes PAUSED. Onreturn verifyactualcode/firstreceipt and execute fixedopponent or readygate step.
 
 
 ## CURRENT: Q1 scoped ACCEPTED / Q2-Q3 genuine dependency holds — 2026-11-12
