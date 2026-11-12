@@ -1,0 +1,37 @@
+name: SOROK G03-I0 Agent B actual P6 and negative tests
+on:
+  push:
+    branches:
+      - agent/sorok-g03-i0-b-follow-upper-20261112-r1
+permissions:
+  contents: read
+jobs:
+  b-real-p6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Adversarial original-plus-B test suite
+        working-directory: WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1
+        run: python -B -m unittest -v test_measure test_agent_b
+      - name: Genuine P6 subprocess measurements and separate source-qualified reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/measure.py --repo "$GITHUB_WORKSPACE" --out /tmp/g03-b-evidence
+          python -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/read_receipts.py /tmp/g03-b-evidence --repo "$GITHUB_WORKSPACE" --require-expected
+          echo "EVIDENCE_INDEX_BEGIN"
+          cat /tmp/g03-b-evidence/index.json
+          cat /tmp/g03-b-evidence/summary.json
+          echo "EVIDENCE_INDEX_END"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sorok-g03-i0-b-full-raw-receipts
+          path: /tmp/g03-b-evidence/
+          retention-days: 30
