@@ -63,6 +63,7 @@ def _freeze_packet(frontier, *, scope_id="R3-S1C-SOURCEFREE-PACKET"):
         scientific_fates=tuple(fates),
         source_census_ref=semantic_hash([x.material() for x in sources]),
         science_census_ref=semantic_hash([x.material() for x in fates]),
+        deferred_scope_records=tuple(frontier.deferred),
     )
 
 
@@ -94,6 +95,7 @@ def test_s1c_full_frozen_census_reaches_real_issued_reader(tmp_path):
     assert result["issued_candidate_count"] > 0
     assert result["source_factory_calls"] > 0
     assert result["checkpoint_hash"]
+    assert result["deferred_scope_records"] == list(frontier.deferred)
     assert set(row["operation_id"] for row in result["operation_fates"]) == {
         row.operation_id for row in census.source_candidates
     }
@@ -134,13 +136,28 @@ def test_s1c_omission_and_count_preserving_substitution_fail_before_source_open(
 def test_s1c_source_fate_duplicates_and_cross_set_losses(tmp_path):
     bundle, inventory, policy, frontier, census = _fixture(tmp_path)
     removed = census.source_candidates[0]
+    fewer_sources = census.source_candidates[1:]
+    fewer_fates = census.scientific_fates[1:]
+    duplicate_sources = census.source_candidates + (removed,)
     for bad, code in (
-        (replace(census, source_candidates=census.source_candidates[1:]),
+        (replace(census, source_candidates=fewer_sources),
          "SOURCE_CENSUS_HASH_DRIFT"),
-        (replace(census, scientific_fates=census.scientific_fates[1:]),
+        (replace(census, scientific_fates=fewer_fates),
          "SCIENCE_CENSUS_HASH_DRIFT"),
-        (replace(census, source_candidates=census.source_candidates +
-                 (removed,)), "SOURCE_CENSUS_HASH_DRIFT"),
+        (replace(census, source_candidates=duplicate_sources),
+         "SOURCE_CENSUS_HASH_DRIFT"),
+        (replace(census, source_candidates=fewer_sources,
+                 source_census_ref=semantic_hash(
+                     [x.material() for x in fewer_sources])),
+         "SOURCE_VS_SCIENCE_ANTI_JOIN"),
+        (replace(census, scientific_fates=fewer_fates,
+                 science_census_ref=semantic_hash(
+                     [x.material() for x in fewer_fates])),
+         "SOURCE_VS_SCIENCE_ANTI_JOIN"),
+        (replace(census, source_candidates=duplicate_sources,
+                 source_census_ref=semantic_hash(
+                     [x.material() for x in duplicate_sources])),
+         "DUPLICATE_SOURCE_CANDIDATE"),
     ):
         with pytest.raises(CensusRefusal, match=code):
             verify_frozen_inputs(bad, inventory=inventory,
@@ -156,6 +173,8 @@ def test_s1c_source_edition_occurrence_and_op_hash_refuse(tmp_path):
         (replace(first, occurrence_ids=("DROPPED",)), "OCCURRENCE_IDENTITY_DRIFT"),
         (replace(first, operation_hash="f" * 64), "OPERATION_IDENTITY_DRIFT"),
         (replace(first, source_grade="ORIGINAL35_ISSUED"), "NON_SOURCEFREE_AUTHORITY_UNISSUED"),
+        (replace(first, source_authority_ref="FORGED-OWNER"),
+         "SOURCE_AUTHORITY_NOT_IN_FROZEN_INVENTORY"),
     )
     for candidate, code in variants:
         candidates = (candidate,) + census.source_candidates[1:]
@@ -226,6 +245,13 @@ def test_s1c_routing_unknown_is_retained_without_administered_positive(tmp_path)
     assert all(op.disposition != ELIGIBLE for op in affected)
     # Unknown is neither proved inapplicable nor observed zero.
     assert any(op.disposition in {"UNKNOWN", "HELD"} for op in affected)
+    result = _run(bundle, altered_inventory, policy, frontier, census)
+    rows = {row["operation_id"]: row for row in result["operation_fates"]}
+    assert all(not rows[op.op_id]["received_candidate_ids"]
+               for op in affected if op.disposition != ELIGIBLE)
+    assert all(not rows[op.op_id]["fact_refs"]
+               for op in affected if op.disposition != ELIGIBLE)
+    assert result["operation_anti_join"]["no_drop_ok"]
 
 
 def test_s1c_changed_value_and_restore_real_fact_identity(tmp_path):
