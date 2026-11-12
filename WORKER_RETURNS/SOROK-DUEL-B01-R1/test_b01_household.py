@@ -260,6 +260,10 @@ def test_actual_root_household_is_world_owned_and_read_through_p6(tmp_path):
             "resources": household["resources"],
         }
         assert parent["source"]["ref"] == "P6_HOUSEHOLD:" + household["source"]
+        assert parent["source"]["material_hash"] == household["material_hash"]
+        assert household["world_state_hash"] == digest(world.snapshot())
+        assert len(household["material_hash"]) == 64
+        int(household["material_hash"], 16)
 
         before = counts(session)
         for _ in range(3):
@@ -267,6 +271,8 @@ def test_actual_root_household_is_world_owned_and_read_through_p6(tmp_path):
             assert parent_choice_input(session) == parent
             owner.base_owner.material_fact(HOUSEHOLD_SLOT)
         assert counts(session) == before
+        parent["household"]["place"]["tenure"] = "owned"
+        assert parent_choice_input(session)["household"]["place"]["tenure"] == "rented"
         assert establish_household(session) == household
         assert counts(session) == before
         world.advance(world.clock + 1)

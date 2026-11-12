@@ -1,0 +1,99 @@
+{
+  "event_id": "SOROK-DUEL-B01-A-20261112-R1",
+  "task_id": "B01",
+  "phase": "CG-B",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "05a9b988ae039d44c55e636e1c610c01d89b4c1d",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "abi_class": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_FOR_PRE_B01_ROOTS",
+  "summary": "Selected the existing S47/P2 world checkpoint writer and added one bounded, source-qualified p6_household resource plus a read-only parent-choice input ABI. No parent action, no PsycheStore home fact, no new owner/scheduler/ledger.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "symbols": [
+        "MATERIAL_FACT_READ_SCHEMA",
+        "MATERIAL_FACT_WRITE_SCHEMA",
+        "MATERIAL_FACT_BINDING_FIELDS",
+        "MATERIAL_FACT_SLOTS",
+        "PSYCH_RECORD_FIELDS",
+        "PSYCH_RECORD_KINDS",
+        "material_fact_source",
+        "validate_material_fact",
+        "write_material_fact",
+        "P2Owner.material_fact"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+      "symbols": [
+        "HOUSEHOLD_SLOT",
+        "HOUSEHOLD_SCHEMA",
+        "HOUSEHOLD_READ_SCHEMA",
+        "HOUSEHOLD_GRADE",
+        "HOUSEHOLD_WORLD_RESOURCE_SLOTS",
+        "HOUSEHOLD_ACTOR_SLOTS",
+        "PARENT_CHOICE_INPUT_SCHEMA",
+        "household_fixture",
+        "establish_household",
+        "read_household",
+        "parent_choice_input",
+        "establish"
+      ]
+    }
+  ],
+  "actual_reader": [
+    "house.read_household(session)",
+    "house.parent_choice_input(session)",
+    "P2Owner.material_fact(\"p6_household\")"
+  ],
+  "affected_queued_tasks": [
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "C01",
+    "C03",
+    "C04",
+    "CG-A cross-input (#915/#917/#924/#928) source pin reconciliation"
+  ],
+  "preserved_obligations": [
+    "Existing P6 house fixture, object/history provenance and full P6 test_house suite remain green.",
+    "P2 world root/branch/clock and composite snapshot ownership remain the material owner.",
+    "No PsycheStore record is accepted as a world-owned household fact.",
+    "No new owner, scheduler, person-world ledger, actor owner, clock or database was added.",
+    "Parent first consumer remains NONE_VERIFIED; no parent action, utterance or motive is fabricated.",
+    "SOURCEFREE_S2_ONLY scientific/rights/human/merge holds remain separate and unchanged."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py bytes feed P3Owner._code_pins()/config_hash; a state root created before B01 under the old pin will refuse cold reopen with a P3 config mismatch. New same-code roots reopen exactly; no migration was invented.",
+    "SOROK-P6-CHRONOLOGY-PROOF-20261107-R1 already fails at protected baseline 6a5c12f on mii_exposure_id/mii; it also fails on this branch. Not caused or repaired by B01; MII sequencing is outside this lease."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@05a9b988ae039d44c55e636e1c610c01d89b4c1d",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@05a9b988ae039d44c55e636e1c610c01d89b4c1d",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/product.py:101",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py:216",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py:323",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py:194"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/b01_household.log",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/p6_test_house_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/adjacent_regression.log"
+  ],
+  "negative_refs": [
+    "test_psyche_store_kitchen_mediator_cannot_stand_for_a_world_fact",
+    "test_material_fact_writer_refuses_psyche_records_and_foreign_sources",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/preexisting_p6_chronology_failure.log"
+  ],
+  "cold_refs": [
+    "test_changed_value_severance_restore_and_cold_reopen: fresh Python subprocess reopen, JSON-identical household/parent input, unchanged episode/checkpoint/world-event/perception counts",
+    "house.read_household: verifies root, branch, epoch, source content address, place, owner and live bindings from the cold-restored world"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented in this sourcefree session."
+  }
+}
