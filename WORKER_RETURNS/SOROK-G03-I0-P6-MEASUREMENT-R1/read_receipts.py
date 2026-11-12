@@ -227,6 +227,14 @@ def consume(root,expected_index_sha256=None):
               and isinstance(outputs[4],dict)
               and outputs[4].get("reason")=="P6_WAIT_DURATION_OUT_OF_RANGE"
               and rows[4]["state_bytes_before"]==rows[4]["state_bytes_after"])
+    cold_ok=(isinstance(outputs[1],dict) and isinstance(outputs[2],dict) and
+             isinstance(outputs[3],dict) and type(outputs[1].get("clock")) is int and
+             type(outputs[2].get("clock")) is int and
+             type(outputs[3].get("clock")) is int and
+             outputs[2]["clock"]==outputs[1]["clock"]+1 and
+             outputs[3]["clock"]==outputs[2]["clock"] and
+             rows[2]["exit_code"]==0 and rows[3]["exit_code"]==0 and
+             not rows[2]["timeout"] and not rows[3]["timeout"])
     expected=all(r["exit_code"]==0 and r["output"]["json"] and not r["timeout"] for r in rows[:4])
     expected=expected and rows[-1]["exit_code"]==2 and rows[-1]["output"]["status"]=="REFUSED" and semantic and not refused_logical_changed
     walls=[r["wall_seconds"] for r in rows]
@@ -234,7 +242,7 @@ def consume(root,expected_index_sha256=None):
     result={"schema":SCHEMA,"source_sha":head,"attempts":len(rows),"success":sum(r["exit_code"]==0 for r in rows),
             "failed_or_refused":sum(r["exit_code"]!=0 for r in rows),
             "timed_out":sum(r["timeout"] for r in rows),
-            "expected_scenario_pass":bool(expected),"cold_reopened":1,"distinct_process_execs":len(rows),
+            "expected_scenario_pass":bool(expected),"cold_reopened":int(cold_ok),"distinct_process_execs":len(rows),
             "wall_seconds":{"min":min(walls),"median":statistics.median(walls),"max":max(walls),"total":sum(walls)},
             "peak_direct_child_rss_bytes":({"status":"MEASURED","max":max(rss)} if len(rss)==len(rows)
                                              else {"status":"UNOBSERVED","reason":"missing_child_measurement"}),
