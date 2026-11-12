@@ -1,3 +1,5 @@
+> **B revision (`4a3c45cda7d814df0c60ca4e245499fcfca62162`):** admitted purchase now appends a C02-recognized material-state bridge in the same transaction and serializes with parent/material locks. The base purchase/rent schemas are unchanged; see `B04_B_ABI_REVISION.md` for the exact C02 composition/hook and crash boundary.
+
 # B04 parent-funded stock purchase ABI
 
 **Status:** `SOURCEFREE_S2_ONLY`; depends B02/B03. Not a mother decision, public event, or native science.

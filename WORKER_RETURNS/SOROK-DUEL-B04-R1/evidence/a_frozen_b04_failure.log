@@ -1,0 +1,146 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+________ test_purchase_stock_ownership_parent_feasibility_and_refusals _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1273/test_purchase_stock_ownership_0')
+
+    def test_purchase_stock_ownership_parent_feasibility_and_refusals(tmp_path):
+        state = tmp_path / "state"
+        run_cmd(state, "new")
+        owner = open_owner(state)
+        try:
+            session = owner.base_owner.fanin.session
+            hp.establish_period_plan(session)
+            hp.materialize_to(session, "2026-02-01")
+            register_and_establish(session)
+            mo.establish_market_inventory(session)
+            holder = holder_id(session)
+            household_before = house.read_household(session)
+            dwelling_before = house.read_dwelling(session)
+            parent_before = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+            market_before = mo.read_market_inventory(session)
+            assert mo.read_owned_objects(session)["status"] == "ABSENT"
+            baseline_feasibility = house.material_feasibility(
+                session, house.DRUM_KIT_REQUESTS["junior"])
+    
+            first = mo.purchase_drum_kit(
+                session, PARENT_ID, operation_id="b04:purchase:1",
+                owner_actor_id=holder)
+            assert first["status"] == "ADMITTED"
+            assert first["buyer"] == "REGISTERED_PARENT"
+            assert first["parent_cash_before"] == 120
+            assert first["parent_cash_after"] == 80
+            assert first["parent_free_hours_before"] == 8
+            assert first["parent_free_hours_after"] == 7
+            assert first["object_id"] == "object:junior-drum-kit"
+            assert first["quantity"] == 1
+            assert first["unit_price"] == 40
+            assert first["event_effect"] == "NONE"
+            assert first["public_event"] == "NOT_EMITTED_HELD_PAIR3_VOCABULARY"
+            assert first["possession"] == "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"
+            assert first["period"]["status"] == "B02_MATERIAL_PERIOD_READ"
+            assert first["period"]["period_id"] == "period:2026-h1"
+            assert first["period"]["as_of_date"] == "2026-02-01"
+            assert first["household_source"] == household_before["source"]
+            assert first["dwelling_source"] == dwelling_before["source"]
+            assert first["b03_feasibility"]["status"] == "ADMISSIBLE"
+            market_after = mo.read_market_inventory(session)
+            owned_after = mo.read_owned_objects(session)
+            assert market_after["items"][0]["quantity"] == 1
+            assert owned_after["status"] == "READ"
+            assert owned_after["totals"] == [{
+                "owner_actor_id": holder, "object_id": "object:junior-drum-kit",
+                "kind": "junior_drum_kit", "quantity": 1,
+            }]
+            assert house.read_household(session)["source"] == household_before["source"]
+            assert house.read_household(session)["material_hash"] == household_before["material_hash"]
+            assert house.read_dwelling(session)["source"] == dwelling_before["source"]
+            assert house.material_feasibility(
+                session, house.DRUM_KIT_REQUESTS["junior"]) == baseline_feasibility
+>           options_after = {row["activity"]: row for row in parent_feasible_actions(
+                session, PARENT_ID, as_actor=PARENT_ID)["options"]}
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py:131: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:360: in parent_feasible_actions
+    material = _read_material(session, parent_id=parent_id, as_actor=as_actor)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <s47.session.S47Session object at 0x10e38b850>
+parent_id = 'TEST_ONLY_B04_PARENT', as_actor = 'TEST_ONLY_B04_PARENT'
+
+    def _read_material(session, *, parent_id: str, as_actor: str | None) -> dict:
+        if as_actor != parent_id:
+            raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
+        registration = _parent_registration(session, parent_id)
+        alias = registration["alias"]
+        row = session.world().actor_state.get(alias)
+        document = row.get("material") if isinstance(row, Mapping) else None
+        if document is None:
+            raise RecursionRefusal("PARENT_MATERIAL_ABSENT")
+        stored = _validate_material(
+            session, parent_id=parent_id, alias=alias, document=document)
+        history = _parent_material_history(session, alias, parent_id)
+        if history[-1][1] != stored["source"]:
+>           raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+E           developmental_recursion.contracts.RecursionRefusal: PARENT_MATERIAL_HISTORY_MISMATCH
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:222: RecursionRefusal
+_______________ test_purchase_cold_restore_and_source_severance ________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1273/test_purchase_cold_restore_and0')
+
+    def test_purchase_cold_restore_and_source_severance(tmp_path):
+        state = tmp_path / "state"
+        run_cmd(state, "new")
+        owner = open_owner(state)
+        try:
+            session = owner.base_owner.fanin.session
+            hp.establish_period_plan(session)
+            hp.materialize_to(session, "2026-02-01")
+            register_and_establish(session, cash=60, free_hours=8)
+            mo.establish_market_inventory(session)
+            holder = holder_id(session)
+            household = house.read_household(session)
+            dwelling = house.read_dwelling(session)
+            purchase = mo.purchase_drum_kit(
+                session, PARENT_ID, operation_id="b04:cold:1",
+                owner_actor_id=holder)
+            assert purchase["status"] == "ADMITTED"
+            baseline_owned = mo.read_owned_objects(session)
+            baseline_market = mo.read_market_inventory(session)
+>           baseline_parent = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py:261: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:250: in read_parent_material
+    return _read_material(session, parent_id=parent_id, as_actor=as_actor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <s47.session.S47Session object at 0x10e4a5750>
+parent_id = 'TEST_ONLY_B04_PARENT', as_actor = 'TEST_ONLY_B04_PARENT'
+
+    def _read_material(session, *, parent_id: str, as_actor: str | None) -> dict:
+        if as_actor != parent_id:
+            raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
+        registration = _parent_registration(session, parent_id)
+        alias = registration["alias"]
+        row = session.world().actor_state.get(alias)
+        document = row.get("material") if isinstance(row, Mapping) else None
+        if document is None:
+            raise RecursionRefusal("PARENT_MATERIAL_ABSENT")
+        stored = _validate_material(
+            session, parent_id=parent_id, alias=alias, document=document)
+        history = _parent_material_history(session, alias, parent_id)
+        if history[-1][1] != stored["source"]:
+>           raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+E           developmental_recursion.contracts.RecursionRefusal: PARENT_MATERIAL_HISTORY_MISMATCH
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:222: RecursionRefusal
+=========================== short test summary info ============================
+FAILED ../../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_stock_ownership_parent_feasibility_and_refusals
+FAILED ../../../../../../var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/b04-frozen/WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_cold_restore_and_source_severance
+2 failed in 12.96s

@@ -9,6 +9,9 @@ actual later reader.
 """
 from __future__ import annotations
 
+from contextlib import contextmanager
+import fcntl
+from pathlib import Path
 from typing import Any, Mapping
 
 from developmental_recursion.contracts import RecursionRefusal, detached, digest
@@ -16,9 +19,9 @@ from developmental_recursion.p2_owner import (
     branch_is_ancestor, material_fact_source, write_material_fact,
 )
 from developmental_recursion.parent_activity import (
-    PARENT_GRADE, PARENT_MATERIAL_SCHEMA, _StoreWrite, _material_content,
-    _material_document, _read_material, parent_feasible_actions,
-    read_parent_material,
+    PARENT_GRADE, PARENT_MATERIAL_KIND, PARENT_MATERIAL_SCHEMA, _StoreWrite,
+    _material_content, _material_document, _parent_write_lock, _read_material,
+    parent_feasible_actions, read_parent_material,
 )
 
 try:
@@ -58,6 +61,24 @@ READ_BOUNDARY = {
     "class_to_trait": "NOT_APPLIED",
     "model_prose": "NOT_READ",
 }
+
+
+@contextmanager
+def _purchase_lock(session):
+    """Serialize market/ownership transfer reads and writes.
+
+    This is a state-root lock over the existing P2/C12 writers, not a new
+    scheduler or ledger.  It prevents two purchases from reading the same
+    stock/ownership sources before either commits.
+    """
+    root = Path(session.state_root)
+    root.mkdir(parents=True, exist_ok=True)
+    with (root / "material_operations.lock").open("a") as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle, fcntl.LOCK_UN)
 
 
 def _text(value: Any) -> bool:
@@ -187,7 +208,7 @@ def read_market_inventory(session) -> dict:
     )
 
 
-def establish_market_inventory(session, *, items: Any = None) -> dict:
+def _establish_market_inventory(session, *, items: Any = None) -> dict:
     document = _document(session, _market_content(items))
     _read_market_document(document, session.world(),
                           session.read_root()["root_hash"], session.branch_id)
@@ -198,6 +219,11 @@ def establish_market_inventory(session, *, items: Any = None) -> dict:
         return read_market_inventory(session)
     write_material_fact(session, slot=MARKET_SLOT, document=document)
     return read_market_inventory(session)
+
+
+def establish_market_inventory(session, *, items: Any = None) -> dict:
+    with _purchase_lock(session):
+        return _establish_market_inventory(session, items=items)
 
 
 def _validate_owned_objects(objects: Any) -> list[dict]:
@@ -387,7 +413,7 @@ def _refusal(session, *, operation_id: str, parent_id: str, alias: str,
     return receipt
 
 
-def purchase_drum_kit(session, parent_id: str, *, operation_id: str,
+def _purchase_drum_kit(session, parent_id: str, *, operation_id: str,
                       owner_actor_id: str, request: Any = None,
                       expected_clock: int | None = None) -> dict:
     """Purchase one source-qualified object for an explicit owner using parent cash."""
@@ -573,6 +599,31 @@ def purchase_drum_kit(session, parent_id: str, *, operation_id: str,
         "actual_reader": "material_operations.read_owned_objects",
         "read_boundary": detached(READ_BOUNDARY),
     }
+    material_after = {
+        key: after_content[key] for key in (
+            "schema", "grade", "actor_id", "source_ref", "employment_status",
+            "wage_units_per_hour", "debt_units", "care_hours_due",
+            "cash_units", "free_hours", "currency_unit",
+        )
+    }
+    bridge = {
+        "schema": PARENT_MATERIAL_SCHEMA,
+        "grade": PARENT_GRADE,
+        "root": after_parent["root"],
+        "branch": after_parent["branch"],
+        "epoch": after_parent["epoch"],
+        "actor_id": parent_id,
+        "alias": alias,
+        "source": after_parent["source"],
+        "source_ref": after_parent["source_ref"],
+        "material_source": after_parent["source"],
+        "material_before_source": material["source"],
+        "material_after_source": after_parent["source"],
+        "material": material_after,
+        "operation_id": operation_id,
+        "operation_kind": "PURCHASE_MATERIAL_STATE",
+        "purchase_source": purchase_source,
+    }
     store = session.product.store
     world = session.world()
     with _StoreWrite(store):
@@ -586,11 +637,32 @@ def purchase_drum_kit(session, parent_id: str, *, operation_id: str,
                 "alias": alias, "status": "ADMITTED", "receipt": receipt,
             },
         )
+        # C02's ordered parent-material history accepts an antecedent material
+        # state record.  This bridge records the actual post-purchase material
+        # source, not a WORK/DEBT/CIRCUMSTANCE activity.  The P2_PARENT_PURCHASE
+        # receipt above remains the operation evidence.
+        store.append_episode(
+            session.branch_id, actor_id=alias, kind=PARENT_MATERIAL_KIND,
+            clock=world.clock, body=bridge,
+        )
         world.actor_state[alias]["material"] = after_parent
         world.resources[MARKET_SLOT] = after_market
         world.resources[OWNED_SLOT] = after_owned
         session.product._checkpoint(session.branch_id, world.clock, world)
     return receipt
+
+
+def purchase_drum_kit(session, parent_id: str, *, operation_id: str,
+                      owner_actor_id: str, request: Any = None,
+                      expected_clock: int | None = None) -> dict:
+    """Serialize one registered-parent purchase and its material history."""
+    with _purchase_lock(session):
+        with _parent_write_lock(session):
+            return _purchase_drum_kit(
+                session, parent_id, operation_id=operation_id,
+                owner_actor_id=owner_actor_id, request=request,
+                expected_clock=expected_clock,
+            )
 
 
 def read_purchase(session, parent_id: str, operation_id: str, *,

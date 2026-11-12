@@ -6,6 +6,9 @@ No elapsed-time psychology, second ledger, scheduler or public event is created.
 """
 from __future__ import annotations
 
+from contextlib import contextmanager
+import fcntl
+from pathlib import Path
 from typing import Any, Mapping
 
 from developmental_recursion.contracts import RecursionRefusal, detached, digest
@@ -31,6 +34,23 @@ READ_BOUNDARY = {
     "class_to_trait": "NOT_APPLIED",
     "model_prose": "NOT_READ",
 }
+
+
+@contextmanager
+def _rent_lock(session):
+    """Serialize rent read/check/write on the existing state root.
+
+    A file lock, not a scheduler or ledger.  It prevents two callers from both
+    observing no rent for a period and then each appending a debit/receipt.
+    """
+    root = Path(session.state_root)
+    root.mkdir(parents=True, exist_ok=True)
+    with (root / "rolling_reproduction.lock").open("a") as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle, fcntl.LOCK_UN)
 
 
 def _text(value: Any) -> bool:
@@ -125,7 +145,7 @@ def _rent_chain(session, episode_id: str, receipt: Mapping[str, Any]) -> tuple[b
     return True, current_cash != after_cash
 
 
-def apply_household_rent(session, *, operation_id: str, period_id: str,
+def _apply_household_rent(session, *, operation_id: str, period_id: str,
                          expected_clock: int | None = None) -> dict:
     """Charge one completed period's household rent against fixed-A cash."""
     if p6_house is None or hp is None:
@@ -209,6 +229,16 @@ def apply_household_rent(session, *, operation_id: str, period_id: str,
             },
         )
     return receipt
+
+
+def apply_household_rent(session, *, operation_id: str, period_id: str,
+                         expected_clock: int | None = None) -> dict:
+    """Charge one completed period's household rent under the rent lock."""
+    with _rent_lock(session):
+        return _apply_household_rent(
+            session, operation_id=operation_id, period_id=period_id,
+            expected_clock=expected_clock,
+        )
 
 
 def read_household_obligation(session, operation_id: str) -> dict:

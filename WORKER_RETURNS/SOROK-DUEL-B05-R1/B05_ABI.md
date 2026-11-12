@@ -1,3 +1,5 @@
+> **B revision (`4a3c45cda7d814df0c60ca4e245499fcfca62162`):** rent read/check/write is serialized by a state-root lock and crash rollback is proved at the checkpoint seam. The receipt/rent API is unchanged; see `B05_B_ABI_REVISION.md`.
+
 # B05 rolling household rent ABI
 
 **Status:** `SOURCEFREE_S2_ONLY`; depends B02/B04. Not a mother decision, public event, landlord ledger, or native science.
