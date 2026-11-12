@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any, Mapping
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
-from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, exact_ref, semantic_hash
 
 BRIDGE_CONTRACT_ID = "GT12_C_TO_D_TYPED_LOSSLESS_BRIDGE@1.0.0"
 CLOSURE_PROGRAM_COMMIT = "a473091473f5729dd9aa6e54d68b88de49f9d608"
@@ -167,7 +167,7 @@ def admit_gt12_c_relation_from_fixed_current_transport(
     )
     query, fact = load_current_gt2_query_fact_from_committed_transport()
     if (r.producer_query_ref != query.ref or r.producer_fact_ref != fact.ref
-            or r.producer_replay_ref != fact.replay_ref):
+            or r.producer_replay_ref != exact_ref(fact.replay_ref, "current fact.replay_ref")):
         raise GT12CToDBridgeError("relation is not the exact fixed current fact/query/replay")
     canonical = ff.produce_exact_conditional_support_profile(
         joint_fact=fact, joint_query=query,
