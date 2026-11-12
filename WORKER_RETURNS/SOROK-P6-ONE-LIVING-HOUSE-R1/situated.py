@@ -337,6 +337,22 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
         packet["sourcefree_p3"] = p3_read
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
               "packet_hash": digest(packet)}
+    if psyche_owner is not None:
+        # This is a private operation receipt, not public narration or a
+        # psychological rule. Preserve the exact world-to-P3 causal read seam
+        # even after the model packet is no longer in process.
+        result["sourcefree_p3_receipt"] = {
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "root_hash": packet["root_hash"],
+            "branch_id": packet["branch_id"],
+            "clock": packet["clock"],
+            "world_state_hash": packet["world_state_hash"],
+            "p3_context_hash": p3_read["context_hash"],
+            "p3_record_readset": list(p3_read["readset"]),
+            "current_world_readset": list(p3_read["world_readset"]),
+            "actor_access_evidence": deepcopy(p3_read["actor_access_evidence"]),
+            "stimulus_to_mediator_relevance": "UNISSUED_NATIVE_RULE",
+        }
     try:
         decision = interpret(deepcopy(packet))
     except ModelUnavailable:
