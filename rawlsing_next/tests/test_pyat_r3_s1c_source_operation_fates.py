@@ -468,3 +468,86 @@ def test_s1c_b_rehashed_negative_axis_cannot_launder_other_frontier(tmp_path):
     with pytest.raises(CensusRefusal, match="UNKNOWN_CENSUS_DRIFT"):
         verify_frozen_inputs(census, inventory=inventory,
                              policy=policy, frontier=marked)
+
+
+
+def test_s1c_a_counter_rehashed_occurrence_false_admin_fails_before_source_open(tmp_path):
+    """B bypass: forge BOTH inventory-negative copies, leaving real source UNKNOWN.
+
+    The old B verifier compared frozen ledger to supplied frontier ledger only.
+    It did not recompute the administrative state from the frozen inventory.
+    This tests false authorization in the *reported source evidence*, not a
+    claim that actual I05 issued a disallowed operation.
+    """
+    bundle, inventory, policy, _, _ = _fixture(tmp_path)
+    unknown_inventory = replace(inventory, occurrences=tuple(
+        replace(o, administration=ADMINISTRATION_UNKNOWN, route_state="KNOWN")
+        if o.key.item_id == "A" else o
+        for o in inventory.occurrences
+    ))
+    sourcefront = enumerate_frontier(unknown_inventory, policy)
+    census = _freeze_packet(sourcefront, scope_id="A-COUNTER-INVENTORY-UNKNOWN")
+    before = next(x for x in sourcefront.inventory_ledger if x.occurrence_id ==
+                  next(o.key.key for o in unknown_inventory.occurrences
+                       if o.key.item_id == "A"))
+    assert before.administration == ADMINISTRATION_UNKNOWN
+    assert before.disposition == "UNKNOWN"
+    fake_ledger = tuple(
+        replace(x, administration="ADMINISTERED", disposition=ELIGIBLE,
+                reasons=()) if x.occurrence_id == before.occurrence_id else x
+        for x in sourcefront.inventory_ledger
+    )
+    fake_frontier = replace(sourcefront, inventory_ledger=fake_ledger)
+    fake_census = replace(
+        census, inventory_ledger_records=tuple(x.material() for x in fake_ledger)
+    )
+    # All source/science operation IDs and roots are the same; both B axes
+    # have been changed coherently. An honest recomputation must reject this.
+    assert fake_census.source_census_ref == census.source_census_ref
+    assert fake_census.science_census_ref == census.science_census_ref
+    opens = []
+    with pytest.raises(CensusRefusal, match="INVENTORY_LEDGER_INVENTORY_MISMATCH"):
+        _run(bundle, unknown_inventory, policy, fake_frontier, fake_census,
+             lambda ref: opens.append(ref))
+    assert not opens
+    restored = _run(bundle, unknown_inventory, policy, sourcefront, census)
+    assert restored["candidate_anti_join"]["no_drop_ok"]
+    assert restored["operation_anti_join"]["no_drop_ok"]
+
+
+def test_s1c_a_counter_joint_forged_unknown_and_excluded_drops_refuse(tmp_path):
+    """B bypass: both frozen and live negative lists omit a genuine op fate."""
+    _, inventory, policy, frontier, _ = _fixture(tmp_path)
+    assert frontier.excluded
+    excluded_op = next(
+        x for x in frontier.excluded if isinstance(x.get("op_id"), str)
+    )
+    kept_excluded = tuple(
+        x for x in frontier.excluded if x["op_id"] != excluded_op["op_id"]
+    )
+    forged_excluded = replace(frontier, excluded=kept_excluded)
+    forged_excluded_census = _freeze_packet(forged_excluded)
+    # B's two-way freeze/frontier comparison passes this co-mutated omission.
+    with pytest.raises(CensusRefusal, match="EXCLUDED_OPERATION_NEGATIVE_LOSS"):
+        verify_frozen_inputs(forged_excluded_census,
+                             inventory=inventory, policy=policy,
+                             frontier=forged_excluded)
+
+    unknown_inventory = replace(inventory, occurrences=tuple(
+        replace(o, administration=ADMINISTRATION_UNKNOWN, route_state="KNOWN")
+        if o.key.item_id == "A" else o for o in inventory.occurrences
+    ))
+    unknown_frontier = enumerate_frontier(unknown_inventory, policy)
+    assert unknown_frontier.unknown
+    unknown_op = next(
+        x for x in unknown_frontier.unknown if isinstance(x.get("op_id"), str)
+    )
+    kept_unknown = tuple(
+        x for x in unknown_frontier.unknown if x["op_id"] != unknown_op["op_id"]
+    )
+    forged_unknown = replace(unknown_frontier, unknown=kept_unknown)
+    forged_unknown_census = _freeze_packet(forged_unknown)
+    with pytest.raises(CensusRefusal, match="UNKNOWN_OPERATION_NEGATIVE_LOSS"):
+        verify_frozen_inputs(forged_unknown_census,
+                             inventory=unknown_inventory, policy=policy,
+                             frontier=forged_unknown)
