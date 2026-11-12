@@ -102,6 +102,55 @@ def _code_pins() -> dict:
     return {"files": sorted(files, key=lambda row: row["path"])}
 
 
+def _fsync_directory(path: Path) -> None:
+    """Best-effort directory durability for an atomic config replacement."""
+    try:
+        handle = os.open(str(path), os.O_RDONLY)
+    except OSError:
+        return
+    try:
+        os.fsync(handle)
+    except OSError:
+        pass
+    finally:
+        os.close(handle)
+
+
+def verify_completed_config(store: Any, config_hash: str) -> dict | None:
+    """Bind a reopened owner config to the last durable COMPLETE operation.
+
+    The config file is self-hashed, so an editor can substitute an unused plan
+    and recompute the document hash while the store still holds records.  The
+    last completed operation's ``result.after.state_hash`` embeds the
+    config_hash that actually produced it; recomputing that digest from the
+    durable base after-state, psychology head and the loaded config_hash
+    refuses a substituted config.  This is a local consistency anchor, not a
+    signature against a writer that rewrites the whole state root.
+    """
+    latest = store.latest_completed()
+    if latest is None:
+        return None
+    operation = latest
+    result = _mapping(operation.get("result"), "P3_COMPLETED_RESULT")
+    receipt = _mapping(operation.get("effects_receipt"), "P3_COMPLETED_RECEIPT")
+    base = _mapping(operation.get("base_result"), "P3_COMPLETED_BASE_RESULT")
+    base_after = _mapping(base.get("after"), "P3_COMPLETED_BASE_AFTER")
+    psyche_after = _mapping(receipt.get("psyche_after"),
+                            "P3_COMPLETED_PSYCHE_AFTER")
+    after = _mapping(result.get("after"), "P3_COMPLETED_RESULT_AFTER")
+    expected = digest({
+        "base_state_hash": _hash(base_after.get("state_hash"),
+                                 "P3_COMPLETED_BASE_STATE_HASH"),
+        "psychology_head": _hash(psyche_after.get("hash"),
+                                 "P3_COMPLETED_PSYCHE_HEAD"),
+        "config_hash": _hash(config_hash, "P3_COMPLETED_CONFIG_HASH"),
+    })
+    if after.get("state_hash") != expected:
+        _refuse("P3_CONFIG_PROVENANCE_MISMATCH")
+    return {"operation_id": operation["operation_id"],
+            "state_hash": expected}
+
+
 def _store_class():
     try:
         from .state_store import PsycheStore  # type: ignore
@@ -190,6 +239,12 @@ class P3Owner:
             registry_hash=self.registry["hash"],
             source_hash=self.source_hash,
         )
+        try:
+            self.store.verify()
+            self._verify_completed_provenance()
+        except BaseException:
+            self.store.close()
+            raise
 
     # ------------------------------------------------------------------
     # Identity/config helpers
@@ -246,9 +301,18 @@ class P3Owner:
         if self._config_path.exists():
             self._check_config()
             return
+        if (self._state_root / STORE_FILE).exists():
+            _refuse("P3_CONFIG_MISSING_WITH_EXISTING_STORE")
         temporary = self._state_root / (CONFIG_FILE + ".tmp")
-        temporary.write_text(canonical(document) + "\n", encoding="utf-8")
+        with temporary.open("w", encoding="utf-8") as handle:
+            handle.write(canonical(document) + "\n")
+            handle.flush()
+            os.fsync(handle.fileno())
         os.replace(temporary, self._config_path)
+        _fsync_directory(self._state_root)
+
+    def _verify_completed_provenance(self) -> None:
+        verify_completed_config(self.store, self.config_hash)
 
     def _root_lock(self):
         self._state_root.mkdir(parents=True, exist_ok=True)
@@ -749,4 +813,5 @@ def canonical_load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-__all__ = ["CONFIG_FILE", "CONFIG_SCHEMA", "P3Owner", "STORE_FILE", "STORE_MISSING"]
+__all__ = ["CONFIG_FILE", "CONFIG_SCHEMA", "P3Owner", "STORE_FILE",
+           "STORE_MISSING", "verify_completed_config"]

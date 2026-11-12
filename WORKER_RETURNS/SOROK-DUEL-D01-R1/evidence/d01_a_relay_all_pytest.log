@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/.codex/worktrees/sorok-duel-d01/Rawlsing
+collecting ... collected 15 items
+
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_a_relay_repairs.py::test_chain_consistent_record_deletion_is_refused PASSED [  6%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_owner_differential.py::test_actual_owner_changed_value_with_identical_p2_event_identity PASSED [ 13%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_cold_open_refuses_rewritten_nonhead_record PASSED [ 20%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_cold_open_refuses_chain_consistent_record_receipt_divergence PASSED [ 26%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_live_owner_terminal_consumer_refuses_record_chain_tamper PASSED [ 33%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_recovery_accepts_only_durable_provenance_and_restores_exact_bytes PASSED [ 40%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_exact_response_refuses_unknown_affirmative_claim_key PASSED [ 46%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_record_read_refuses_severed_rule_source_cleanly PASSED [ 53%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_recovery_empty_store_is_unambiguous PASSED [ 60%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_retention_repairs.py::test_recovery_preserves_verified_pending_operation PASSED [ 66%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_rule_value_change_controls_later_response PASSED [ 73%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_cold_reopen_later_consumer_reads_exact_owner_held_record PASSED [ 80%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_cold_no_record_consumer_differs_and_fabricates_nothing PASSED [ 86%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_config_and_source_severance_refuse_then_exact_restore PASSED [ 93%]
+WORKER_RETURNS/SOROK-DUEL-D01-R1/tests/test_d01_reuse.py::test_narrative_and_native_claims_are_not_durable_sourcefree_records PASSED [100%]
+
+======================== 15 passed in 91.73s (0:01:31) =========================

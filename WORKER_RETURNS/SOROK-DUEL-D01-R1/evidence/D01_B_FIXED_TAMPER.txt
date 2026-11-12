@@ -1,0 +1,10 @@
+# Captured at B code cut 141372a9095f901c48fc06d03301c4dda66befec with the same tamper
+# procedure as D01_B_DEFECT_A_HEAD_TAMPER.txt. The B cold boundary now verifies the durable
+# chain and refuses before any record read or later consumer. Case state root was task-local scratch.
+pre modes ['joint_check', 'private_check']
+pre hashes ['04c0cc2c06b7a8c0fe257393b45d4f086dd9c886b829aa8bfbc711d0c849035f', '90f6711a8b0dbfa12a97b80c2e7a0112b8b7c1528453a3874adcbd075b08b87c']
+row count 2
+tampered first record id 58bdf4868b92c6ede6d7ab5e532e6a351fb9ee7e1f48a71d740ff24e96b2567d old hash 04c0cc2c06b7a8c0fe257393b45d4f086dd9c886b829aa8bfbc711d0c849035f new hash d7b6e8365adce66d9f2b0f4b66145f5e71962899848fc714eaa03da529ae9dbf
+head row {'head_hash': '4498db802e8e71fc4706e68d4d14f9aa79bb6d858ab153ee3bfa23b01aa662e5', 'record_count': 2, 'head_record_id': '746e9a9c544e47a8b89aec5804441ee681550de81e689a863ab9d2db29fa3ddb', 'head_record_hash': '90f6711a8b0dbfa12a97b80c2e7a0112b8b7c1528453a3874adcbd075b08b87c'}
+last chain {'record_id': '746e9a9c544e47a8b89aec5804441ee681550de81e689a863ab9d2db29fa3ddb', 'hash': '90f6711a8b0dbfa12a97b80c2e7a0112b8b7c1528453a3874adcbd075b08b87c', 'previous_chain': 'c4d9aa14523a413ef9069d7622bc86e073cfea18878e3419da9906a3425379aa', 'chain_hash': '4498db802e8e71fc4706e68d4d14f9aa79bb6d858ab153ee3bfa23b01aa662e5'}
+cold open refused RecursionRefusal JOURNAL_INTEGRITY:RECORD_CHAIN_HASH
