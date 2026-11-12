@@ -155,7 +155,7 @@ All proposed cases require an independently qualified sourcefree test runner and
 | SF-11 | Same bytes re-signed with different current source-use decision, or source SHA swapped | Source read and issuer checks decide independently; no cached positive under stale rights or wrong source identity |
 | SF-12 | Two physical fields share response/coordinate roles; owner authority permits only one | `PhysicalSlotOwnerSet` omission or wrong family refuses; explicit scoped dual-owner rule required to emit both |
 
-## VI. Six binding hostile falsifiers (plus two critical supplementary checks)
+## VI. Six binding hostile falsifiers (plus three supplementary challenges)
 
 Each is an **unexecuted acceptance oracle** with an independently chosen expected behavior and the named actual owner/first reader. The adversary should run these against the selected implementation, not merely confirm headings.
 
