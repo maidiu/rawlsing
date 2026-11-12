@@ -64,6 +64,11 @@ def _freeze_packet(frontier, *, scope_id="R3-S1C-SOURCEFREE-PACKET"):
         source_census_ref=semantic_hash([x.material() for x in sources]),
         science_census_ref=semantic_hash([x.material() for x in fates]),
         deferred_scope_records=tuple(frontier.deferred),
+        unknown_scope_records=tuple(frontier.unknown),
+        excluded_scope_records=tuple(frontier.excluded),
+        inventory_ledger_records=tuple(
+            row.material() for row in frontier.inventory_ledger
+        ),
     )
 
 
@@ -387,3 +392,210 @@ def test_s1c_actual_source_open_and_c11_build_census(tmp_path, monkeypatch):
         "bounded_i05_c11_builds": builds["bounded_i05_c11"],
         "elapsed_seconds": round(result["elapsed_seconds"], 6),
     })
+
+
+def test_s1c_b_unknown_and_excluded_axis_severance_before_source_open(tmp_path):
+    """B's reproduced G3 hole: nonoperation negative evidence was unchecked.
+
+    Before the B repair, both changes below passed verify_frozen_inputs:
+    all operation IDs, dispositions and deferred rows were unchanged.
+    """
+    bundle, inventory, policy, frontier, _ = _fixture(tmp_path)
+    marked = replace(
+        frontier,
+        unknown=tuple(frontier.unknown) + ({
+            "kind": "ROUTING_UNKNOWN", "occurrence": "INDEPENDENT_SOURCE_ITEM_X",
+            "reason": "NO_ADMINISTRATION_PROOF",
+        },),
+        excluded=tuple(frontier.excluded) + ({
+            "kind": "EXCLUDED_SOURCE_ITEM", "occurrence": "INDEPENDENT_SOURCE_ITEM_Y",
+            "reason": "NOT_IN_DECLARED_OPERATION_DOMAIN",
+        },),
+    )
+    census = _freeze_packet(marked, scope_id="B-FROZEN-NEGATIVE-AXES")
+    assert verify_frozen_inputs(census, inventory=inventory,
+                                policy=policy, frontier=marked)["source_candidate_count"]
+    opened = []
+    for changed, code in (
+        (replace(marked, unknown=tuple(frontier.unknown)),
+         "UNKNOWN_CENSUS_DRIFT"),
+        (replace(marked, excluded=tuple(frontier.excluded)),
+         "EXCLUDED_CENSUS_DRIFT"),
+    ):
+        with pytest.raises(CensusRefusal, match=code):
+            execute_censused_sourcefree(
+                census=census, inventory=inventory, policy=policy,
+                frontier=changed, bundle=bundle, as_of=AS_OF,
+                host=HOST, purpose=PURPOSE,
+                source_factory=lambda ref: opened.append(ref),
+            )
+    assert opened == []
+
+
+def test_s1c_b_inventory_ledger_fate_severance_and_restoration(tmp_path):
+    """No silent per-occurrence administrative status loss despite ID parity."""
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    assert frontier.inventory_ledger
+    baseline = _run(bundle, inventory, policy, frontier, census)
+    original = frontier.inventory_ledger[0]
+    poison = replace(original, disposition=(
+        "UNKNOWN" if original.disposition != "UNKNOWN" else "HELD"
+    ))
+    changed = replace(
+        frontier, inventory_ledger=(poison,) + frontier.inventory_ledger[1:]
+    )
+    with pytest.raises(CensusRefusal, match="INVENTORY_LEDGER_CENSUS_DRIFT"):
+        verify_frozen_inputs(census, inventory=inventory,
+                             policy=policy, frontier=changed)
+    restored = _run(bundle, inventory, policy, frontier, census)
+    assert restored["checkpoint_hash"] == baseline["checkpoint_hash"]
+    assert restored["frozen_census_hash"] == baseline["frozen_census_hash"]
+    assert restored["inventory_ledger_hash"] == baseline["inventory_ledger_hash"]
+    assert restored["operation_anti_join"]["no_drop_ok"]
+    assert restored["candidate_anti_join"]["no_drop_ok"]
+
+
+def test_s1c_b_rehashed_negative_axis_cannot_launder_other_frontier(tmp_path):
+    """A source-side rehash cannot substitute for the real frontier state."""
+    _, inventory, policy, frontier, census = _fixture(tmp_path)
+    marked = replace(frontier, unknown=tuple(frontier.unknown) + ({
+        "reason": "ROUTING_UNKNOWN", "source": "separate occurrence"
+    },))
+    # Honest old frozen declaration, tampered frontier.  Rehashing all
+    # operation manifests would still give exactly the same operation hashes.
+    assert census.source_census_ref == _freeze_packet(marked).source_census_ref
+    assert census.science_census_ref == _freeze_packet(marked).science_census_ref
+    with pytest.raises(CensusRefusal, match="UNKNOWN_CENSUS_DRIFT"):
+        verify_frozen_inputs(census, inventory=inventory,
+                             policy=policy, frontier=marked)
+
+
+
+def test_s1c_a_counter_rehashed_occurrence_false_admin_fails_before_source_open(tmp_path):
+    """B bypass: forge BOTH inventory-negative copies, leaving real source UNKNOWN.
+
+    The old B verifier compared frozen ledger to supplied frontier ledger only.
+    It did not recompute the administrative state from the frozen inventory.
+    This tests false authorization in the *reported source evidence*, not a
+    claim that actual I05 issued a disallowed operation.
+    """
+    bundle, inventory, policy, _, _ = _fixture(tmp_path)
+    unknown_inventory = replace(inventory, occurrences=tuple(
+        replace(o, administration=ADMINISTRATION_UNKNOWN, route_state="KNOWN")
+        if o.key.item_id == "A" else o
+        for o in inventory.occurrences
+    ))
+    sourcefront = enumerate_frontier(unknown_inventory, policy)
+    census = _freeze_packet(sourcefront, scope_id="A-COUNTER-INVENTORY-UNKNOWN")
+    before = next(x for x in sourcefront.inventory_ledger if x.occurrence_id ==
+                  next(o.key.key for o in unknown_inventory.occurrences
+                       if o.key.item_id == "A"))
+    assert before.administration == ADMINISTRATION_UNKNOWN
+    assert before.disposition == "UNKNOWN"
+    fake_ledger = tuple(
+        replace(x, administration="ADMINISTERED", disposition=ELIGIBLE,
+                reasons=()) if x.occurrence_id == before.occurrence_id else x
+        for x in sourcefront.inventory_ledger
+    )
+    fake_frontier = replace(sourcefront, inventory_ledger=fake_ledger)
+    fake_census = replace(
+        census, inventory_ledger_records=tuple(x.material() for x in fake_ledger)
+    )
+    # All source/science operation IDs and roots are the same; both B axes
+    # have been changed coherently. An honest recomputation must reject this.
+    assert fake_census.source_census_ref == census.source_census_ref
+    assert fake_census.science_census_ref == census.science_census_ref
+    opens = []
+    with pytest.raises(CensusRefusal, match="INVENTORY_LEDGER_INVENTORY_MISMATCH"):
+        _run(bundle, unknown_inventory, policy, fake_frontier, fake_census,
+             lambda ref: opens.append(ref))
+    assert not opens
+    restored = _run(bundle, unknown_inventory, policy, sourcefront, census)
+    assert restored["candidate_anti_join"]["no_drop_ok"]
+    assert restored["operation_anti_join"]["no_drop_ok"]
+
+
+def test_s1c_a_counter_joint_forged_unknown_and_excluded_drops_refuse(tmp_path):
+    """B bypass: both frozen and live negative lists omit a genuine op fate."""
+    _, inventory, policy, _, _ = _fixture(tmp_path)
+    # The ordinary fixture has 150 ELIGIBLE + 159 HELD and no excluded
+    # operations; independently create genuine inapplicable disjoint forms.
+    disjoint_inventory = replace(inventory, occurrences=tuple(
+        replace(o, forms=("DISJOINT_B_FORM",)) if o.key.item_id == "B" else o
+        for o in inventory.occurrences
+    ))
+    frontier = enumerate_frontier(disjoint_inventory, policy)
+    assert frontier.excluded
+    excluded_op = next(
+        x for x in frontier.excluded if isinstance(x.get("op_id"), str)
+    )
+    kept_excluded = tuple(
+        x for x in frontier.excluded if x["op_id"] != excluded_op["op_id"]
+    )
+    forged_excluded = replace(frontier, excluded=kept_excluded)
+    forged_excluded_census = _freeze_packet(forged_excluded)
+    # B's two-way freeze/frontier comparison passes this co-mutated omission.
+    with pytest.raises(CensusRefusal, match="EXCLUDED_OPERATION_NEGATIVE_LOSS"):
+        verify_frozen_inputs(forged_excluded_census,
+                             inventory=disjoint_inventory, policy=policy,
+                             frontier=forged_excluded)
+
+    unknown_inventory = replace(inventory, occurrences=tuple(
+        replace(o, administration=ADMINISTRATION_UNKNOWN, route_state="KNOWN")
+        if o.key.item_id == "A" else o for o in inventory.occurrences
+    ))
+    unknown_frontier = enumerate_frontier(unknown_inventory, policy)
+    assert unknown_frontier.unknown
+    unknown_op = next(
+        x for x in unknown_frontier.unknown if isinstance(x.get("op_id"), str)
+    )
+    kept_unknown = tuple(
+        x for x in unknown_frontier.unknown if x["op_id"] != unknown_op["op_id"]
+    )
+    forged_unknown = replace(unknown_frontier, unknown=kept_unknown)
+    forged_unknown_census = _freeze_packet(forged_unknown)
+    with pytest.raises(CensusRefusal, match="UNKNOWN_OPERATION_NEGATIVE_LOSS"):
+        verify_frozen_inputs(forged_unknown_census,
+                             inventory=unknown_inventory, policy=policy,
+                             frontier=forged_unknown)
+
+
+
+def test_s1c_a_counter_independent_nonoperation_negatives_preserved(tmp_path):
+    """The new cross-owner check must not erase B's separate source negatives.
+
+    An independently declared non-operation hold has no op_id, so it is
+    conserved byte-for-byte and does not remove valid RAW I05 results.
+    """
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    baseline = _run(bundle, inventory, policy, frontier, census)
+    extra_unknown = {
+        "kind": "EXTERNALLY_DECLARED_SOURCE_ROUTE_UNKNOWN",
+        "occurrence": "UNENUMERATED_SOURCE_ITEM_X",
+        "reason": "NO_SOURCE_ISSUER_QUALIFICATION",
+    }
+    extra_excluded = {
+        "kind": "EXTERNALLY_DECLARED_SOURCE_EXCLUSION",
+        "occurrence": "UNENUMERATED_SOURCE_ITEM_Y",
+        "reason": "OUTSIDE_CURRENT_OPERATION_DOMAIN",
+    }
+    extended = replace(
+        frontier,
+        unknown=frontier.unknown + (extra_unknown,),
+        excluded=frontier.excluded + (extra_excluded,),
+    )
+    extended_census = _freeze_packet(
+        extended, scope_id="A-COUNTER-EXTERNAL-NEGATIVE-PRESERVATION"
+    )
+    result = _run(bundle, inventory, policy, extended, extended_census)
+    assert result["candidate_anti_join"]["no_drop_ok"]
+    assert result["operation_anti_join"]["no_drop_ok"]
+    assert result["unknown_scope_records"][-1] == extra_unknown
+    assert result["excluded_scope_records"][-1] == extra_excluded
+    assert result["issued_candidate_count"] == baseline["issued_candidate_count"]
+    assert result["native_fact_count"] == baseline["native_fact_count"]
+    assert [
+        (r["operation_id"], r["fact_refs"]) for r in result["operation_fates"]
+    ] == [
+        (r["operation_id"], r["fact_refs"]) for r in baseline["operation_fates"]
+    ]

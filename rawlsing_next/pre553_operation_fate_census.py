@@ -23,7 +23,9 @@ from rawlsing_next.pre553_universal_workload import (
 )
 from rawlsing_next.universal_grammar.types import (
     ELIGIBILITY_STATES, ScientificFrontier, SourceInventory, GrammarPolicy,
+    PROHIBITED, INAPPLICABLE_PROVED, UNKNOWN,
 )
+from rawlsing_next.universal_grammar.enumerate import inventory_ledger
 
 SCOPE = "TEST_ONLY_SOURCEFREE"
 SCHEMA = "PYAT_R3_S1C_FROZEN_CENSUS@1.0.0"
@@ -95,6 +97,11 @@ class FrozenInputCensus:
     source_census_ref: str
     science_census_ref: str
     deferred_scope_records: tuple[Mapping[str, Any], ...] = ()
+    # These are distinct source/eligibility axes, not operation IDs.  A's
+    # original two-way operation anti-join did not preserve their contents.
+    unknown_scope_records: tuple[Mapping[str, Any], ...] = ()
+    excluded_scope_records: tuple[Mapping[str, Any], ...] = ()
+    inventory_ledger_records: tuple[Mapping[str, Any], ...] = ()
     grade: str = SCOPE
 
     def material(self) -> Mapping[str, Any]:
@@ -105,6 +112,9 @@ class FrozenInputCensus:
             "source_census_ref": self.source_census_ref,
             "science_census_ref": self.science_census_ref,
             "deferred_scope_records": list(self.deferred_scope_records),
+            "unknown_scope_records": list(self.unknown_scope_records),
+            "excluded_scope_records": list(self.excluded_scope_records),
+            "inventory_ledger_records": list(self.inventory_ledger_records),
         }
 
     @property
@@ -177,6 +187,20 @@ def verify_frozen_inputs(
         list(frontier.deferred)
     ):
         raise CensusRefusal("DEFERRED_SCOPE_RECORDS_LOST_OR_FABRICATED")
+    # The frozen declaration must also conserve non-operation evidence:
+    # UNKNOWN, EXCLUDED, and the per-occurrence administration/fate ledger.
+    # Neither operation-ID parity nor the R03 issued-result anti-join covers
+    # these axes, so dropping them can otherwise falsely pass G1/G3.
+    for label, frozen, actual in (
+        ("UNKNOWN", census.unknown_scope_records, frontier.unknown),
+        ("EXCLUDED", census.excluded_scope_records, frontier.excluded),
+        ("INVENTORY_LEDGER", census.inventory_ledger_records,
+         tuple(entry.material() for entry in frontier.inventory_ledger)),
+    ):
+        if semantic_hash(list(frozen)) != semantic_hash(list(actual)):
+            raise CensusRefusal(label + "_CENSUS_DRIFT", {
+                "frozen_count": len(frozen), "frontier_count": len(actual),
+            })
     sources = _unique(census.source_candidates, "SOURCE_CANDIDATE")
     scientific = _unique(census.scientific_fates, "SCIENTIFIC_FATE")
     _same_ids(set(sources), set(scientific), "SOURCE_VS_SCIENCE")
@@ -194,6 +218,55 @@ def verify_frozen_inputs(
     }
     if dict(frontier.source_identity) != frozen_source:
         raise CensusRefusal("SOURCE_IDENTITY_MISMATCH")
+    # Agent A counterattack on B: matching two copies of a negative axis is
+    # necessary but not sufficient.  Both may be coherently forged.  Compare
+    # the occurrence ledger to the *independently supplied* source inventory
+    # and extant grammar policy using the incumbent inventory_ledger owner.
+    # This does not enumerate or issue any new scientific operations.
+    expected_inventory_rows = tuple(
+        entry.material() for entry in inventory_ledger(inventory, policy)
+    )
+    actual_inventory_rows = tuple(
+        entry.material() for entry in frontier.inventory_ledger
+    )
+    if semantic_hash(list(actual_inventory_rows)) != semantic_hash(
+        list(expected_inventory_rows)
+    ):
+        raise CensusRefusal("INVENTORY_LEDGER_INVENTORY_MISMATCH", {
+            "actual": len(actual_inventory_rows),
+            "from_source_inventory": len(expected_inventory_rows),
+        })
+
+    # Existing R01 enumeration declares exact per-operation negative records.
+    # Preserve separately declared *non-operation* source-hold records without
+    # promoting them: only rows that assert an op_id can be cross-checked to
+    # operations.  A jointly truncated census+frontier must not hide a real
+    # UNKNOWN, PROHIBITED or INAPPLICABLE operation behind matching hashes.
+    expected_unknown_rows = tuple(
+        op.material() for op in frontier.operations
+        if op.disposition == UNKNOWN
+    )
+    expected_excluded_rows = tuple(
+        {"op_id": op.op_id, "class": op.claim_class,
+         "disposition": op.disposition, "reasons": list(op.reasons)}
+        for op in frontier.operations
+        if op.disposition in {PROHIBITED, INAPPLICABLE_PROVED}
+    )
+    for axis, rows, expected in (
+        ("UNKNOWN", frontier.unknown, expected_unknown_rows),
+        ("EXCLUDED", frontier.excluded, expected_excluded_rows),
+    ):
+        bound = []
+        for row in rows:
+            if not isinstance(row, Mapping):
+                raise CensusRefusal(axis + "_NEGATIVE_RECORD_UNTYPED")
+            if "op_id" in row:
+                bound.append(row)
+        if semantic_hash(bound) != semantic_hash(list(expected)):
+            raise CensusRefusal(axis + "_OPERATION_NEGATIVE_LOSS", {
+                "declared_operation_rows": len(bound),
+                "current_operation_fates": len(expected),
+            })
     inventory_keys = set(inventory.by_key())
     counts: Counter[str] = Counter()
     for op_id, op in operations.items():
@@ -279,6 +352,15 @@ def verify_frozen_inputs(
         "frontier_hash": frontier.content_hash,
         "deferred_scope_count": len(frontier.deferred),
         "deferred_scope_records": list(frontier.deferred),
+        "unknown_scope_count": len(frontier.unknown),
+        "excluded_scope_count": len(frontier.excluded),
+        "inventory_ledger_count": len(frontier.inventory_ledger),
+        "unknown_scope_hash": semantic_hash(list(frontier.unknown)),
+        "excluded_scope_hash": semantic_hash(list(frontier.excluded)),
+        "inventory_ledger_hash": semantic_hash(
+            [entry.material() for entry in frontier.inventory_ledger]),
+        "unknown_scope_records": list(frontier.unknown),
+        "excluded_scope_records": list(frontier.excluded),
     }
 
 
