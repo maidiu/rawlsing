@@ -68,7 +68,7 @@ def holder_id(session):
     return session.world().actor_state["A"]["actor_id"]
 
 
-def test_purchase_is_typed_and_c02_history_refuses_until_hook(tmp_path):
+def test_purchase_is_typed_and_c02_history_consumes_it(tmp_path):
     state, owner, session = setup(tmp_path)
     try:
         holder = holder_id(session)
@@ -76,29 +76,32 @@ def test_purchase_is_typed_and_c02_history_refuses_until_hook(tmp_path):
             session, PARENT_ID, operation_id="b04:compose:1",
             owner_actor_id=holder)
         assert purchase["status"] == "ADMITTED"
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            parent_feasible_actions(session, PARENT_ID, as_actor=PARENT_ID)
+        parent = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+        assert parent["material"]["cash_units"] == 80
+        assert parent_feasible_actions(
+            session, PARENT_ID, as_actor=PARENT_ID)["admissible"]
         history = read_parent_history(session, PARENT_ID, as_actor=PARENT_ID)
-        assert history["material_consistent"] is False
-        assert all(row.get("operation_id") != "b04:compose:1"
+        assert history["material_consistent"] is True
+        assert history["purchase_episode_count"] == 1
+        assert any(row.get("operation_id") == "b04:compose:1"
+                   and row.get("kind") == "P2_PARENT_PURCHASE"
                    for row in history["history"])
         assert all(row.get("operation_kind") != "PURCHASE_MATERIAL_STATE"
                    for row in history["history"])
         read = mo.read_purchase(
             session, PARENT_ID, "b04:compose:1", as_actor=PARENT_ID)
         assert read["status"] == "READ"
-        assert read["parent_material_status"] == (
-            "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH")
-        assert read["purchase_history_hook"] == "C02_PARENT_HISTORY_KIND_PENDING"
+        assert read["historical"] is False
+        assert read["parent_material_status"] == "READ"
+        assert read["parent_feasible_actions_status"] == "READ"
+        assert read["purchase_history_hook"] == "C02_PARENT_HISTORY_READ"
         assert read["receipt"]["status"] == "ADMITTED"
         assert read["owned_totals"][0]["quantity"] == 1
     finally:
         owner.close()
 
 
-def test_c02_parent_activity_refuses_after_purchase_without_double_debit(tmp_path):
+def test_parent_activity_and_second_purchase_follow_typed_history(tmp_path):
     state, owner, session = setup(tmp_path)
     try:
         holder = holder_id(session)
@@ -106,20 +109,27 @@ def test_c02_parent_activity_refuses_after_purchase_without_double_debit(tmp_pat
             session, PARENT_ID, operation_id="b04:compose:typed",
             owner_actor_id=holder)
         assert purchase["status"] == "ADMITTED"
-        before_market = mo.read_market_inventory(session)
-        before_owned = mo.read_owned_objects(session)
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            record_parent_activity(
-                session, PARENT_ID, operation_id="b04:compose:work",
-                activity="PAID_WORK", hours=2)
-        assert mo.read_market_inventory(session) == before_market
-        assert mo.read_owned_objects(session) == before_owned
+        work = record_parent_activity(
+            session, PARENT_ID, operation_id="b04:compose:work",
+            activity="PAID_WORK", hours=2)
+        assert work["status"] == "ADMITTED"
+        parent = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+        assert parent["material"]["cash_units"] == 90
+        assert parent["material"]["free_hours"] == 5
+        second = mo.purchase_drum_kit(
+            session, PARENT_ID, operation_id="b04:compose:second",
+            owner_actor_id=holder)
+        assert second["status"] == "ADMITTED"
+        assert second["parent_cash_after"] == 50
+        assert second["parent_free_hours_after"] == 4
+        assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 2
+        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 0
         read = mo.read_purchase(
             session, PARENT_ID, "b04:compose:typed", as_actor=PARENT_ID)
         assert read["status"] == "READ"
         assert read["receipt"]["status"] == "ADMITTED"
-        assert read["parent_material_status"] == (
-            "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH")
+        assert read["parent_material_status"] == "READ"
+        assert read["historical"] is True
     finally:
         owner.close()
 

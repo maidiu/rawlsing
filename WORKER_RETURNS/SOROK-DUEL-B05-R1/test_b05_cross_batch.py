@@ -83,7 +83,11 @@ def test_batch_events_cross_employment_split_with_materialize_between(tmp_path):
             assert digest(row.document()) == plan["proposal_hash"]
         wrapped = rr.PeriodInterleaveOwner(
             owner, session,
-            ["2026-01-22", "2026-01-26", "2026-02-01"],
+            {
+                "vertical:event:4": "2026-01-22",
+                "vertical:event:5": "2026-01-26",
+                "vertical:event:6": "2026-02-01",
+            },
         )
         engine = BatchEngine(wrapped, state / "b05-cross-batch.sqlite")
         result = engine.run_batch("b05-cross-batch", proposals)
@@ -137,15 +141,15 @@ def test_batch_events_cross_employment_split_with_materialize_between(tmp_path):
         assert purchase["status"] == "ADMITTED"
         assert purchase["period"]["period_id"] == "period:2026-h1"
         assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            from developmental_recursion.parent_activity import read_parent_material
-            read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+        from developmental_recursion.parent_activity import read_parent_material
+        parent_after_purchase = read_parent_material(
+            session, PARENT_ID, as_actor=PARENT_ID)
+        assert parent_after_purchase["material"]["cash_units"] == 20
         purchase_read = mo.read_purchase(
             session, PARENT_ID, "b05-cross:buy", as_actor=PARENT_ID)
-        assert purchase_read["parent_material_status"] == (
-            "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH")
-        assert purchase_read["purchase_history_hook"] == (
-            "C02_PARENT_HISTORY_KIND_PENDING")
+        assert purchase_read["parent_material_status"] == "READ"
+        assert purchase_read["purchase_history_hook"] == "C02_PARENT_HISTORY_READ"
+        assert purchase_read["historical"] is False
 
         complete = hp.materialize_to(session, "2026-07-01")
         assert complete["status"] == "MATERIALIZED"

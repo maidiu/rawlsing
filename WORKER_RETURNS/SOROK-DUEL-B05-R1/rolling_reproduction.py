@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from developmental_recursion.contracts import (
-    RealizedEvent, RecursionRefusal, detached, digest,
+    RealizedEvent, RecursionRefusal, StateIdentity, detached, digest,
 )
 from developmental_recursion.parent_activity import _StoreWrite
 
@@ -59,16 +59,25 @@ class PeriodInterleaveOwner:
     """Thin orchestration adapter over the real P3 owner and B02 period advance.
 
     The BatchEngine still owns batching, reservation and replay.  This adapter
-    only advances B02 material periods after selected real P3 events and reports
-    the post-materialization owner snapshot as the event's after state.  It is
-    not a new P3 owner, scheduler or psychology rule.
+    advances B02 material periods after selected real P3 events and reports the
+    post-materialization owner snapshot as the event's after state.  It is not a
+    new P3 owner, scheduler or psychology rule.
+
+    ``after_event_dates`` is keyed by the exact P3 event id, not by an in-memory
+    position.  A restarted adapter therefore cannot advance the next event's
+    date for an already committed event.  A target already elapsed by the time
+    the event returns is reported as ALREADY_ELAPSED and is not rewound.
     """
 
     def __init__(self, owner, session, after_event_dates):
+        if not isinstance(after_event_dates, Mapping):
+            raise RecursionRefusal("B05_INTERLEAVE_DATES_SCHEMA")
         self.owner = owner
         self.session = session
-        self.after_event_dates = list(after_event_dates)
-        self._index = 0
+        self.after_event_dates = {
+            str(event_id): str(target_date)
+            for event_id, target_date in after_event_dates.items()
+        }
         self.materializations = []
 
     def snapshot(self):
@@ -77,14 +86,88 @@ class PeriodInterleaveOwner:
     def validate_proposal(self, proposal):
         return self.owner.validate_proposal(proposal)
 
+    def _target_tick(self, target_date):
+        if hp is None:
+            raise RecursionRefusal("B05_INTERLEAVE_B02_UNAVAILABLE")
+        try:
+            plan = hp.read_period_plan(self.session)
+            target = hp._date(target_date, "B05_INTERLEAVE_TARGET_DATE")
+            tick = hp._logical_tick(plan, target)
+        except RecursionRefusal:
+            raise
+        except Exception as exc:
+            raise RecursionRefusal("B05_INTERLEAVE_TARGET_DATE") from exc
+        if not (plan["periods"][0]["start_clock"] <= tick
+                <= plan["periods"][-1]["end_clock"]):
+            raise RecursionRefusal("B05_INTERLEAVE_TARGET_OUTSIDE_PLAN")
+        return tick
+
+    def _stored_result(self, operation_id, proposal, expected):
+        """Recover an already committed P3 result after a B02 clock advance.
+
+        P3Owner's normal replay correctly refuses when its recorded after state
+        is no longer the current composite state.  That is exactly what happens
+        after this adapter legitimately advances B02 following the event.  The
+        adapter may read the durable P3 operation receipt here, but it must not
+        call the owner again or invent a new event/receipt.
+        """
+        store = getattr(self.owner, "store", None)
+        get_operation = getattr(store, "get_operation", None)
+        if not callable(get_operation):
+            return None
+        try:
+            document = get_operation(operation_id)
+        except Exception:
+            return None
+        if not isinstance(document, Mapping) or document.get("phase") != "COMPLETE":
+            return None
+        value = document.get("result")
+        if not isinstance(value, Mapping):
+            return None
+        if (value.get("operation_id") != operation_id
+                or value.get("proposal_hash") != digest(proposal.document())):
+            return None
+        try:
+            before = StateIdentity(**detached(value["before"]))
+            after = StateIdentity(**detached(value["after"]))
+        except Exception:
+            return None
+        if before != expected:
+            return None
+        readset = value.get("readset")
+        if not isinstance(readset, (list, tuple)):
+            return None
+        return RealizedEvent(
+            value["operation_id"], value["proposal_hash"], before, after,
+            value["status"], detached(value["objective"]),
+            detached(value["accessible"]), detached(value["consequences"]),
+            tuple(readset), value["receipt_ref"],
+        )
+
     def realize(self, operation_id, proposal, expected):
-        result = self.owner.realize(operation_id, proposal, expected)
-        target = None
-        if self._index < len(self.after_event_dates):
-            target = self.after_event_dates[self._index]
-            self._index += 1
-            advance = hp.materialize_to(self.session, target)
+        target = self.after_event_dates.get(proposal.event_id)
+        target_tick = self._target_tick(target) if target is not None else None
+        try:
+            result = self.owner.realize(operation_id, proposal, expected)
+        except RecursionRefusal:
+            result = self._stored_result(operation_id, proposal, expected)
+            if result is None:
+                raise
+        advance = None
+        if target is not None:
+            current = self.session.clock()
+            if target_tick < current:
+                advance = {
+                    "target_date": target,
+                    "status": "ALREADY_ELAPSED",
+                    "produced_states": 0,
+                    "recovered_receipts": 0,
+                    "clock": current,
+                }
+            else:
+                advance = hp.materialize_to(self.session, target)
             self.materializations.append({
+                "event_id": proposal.event_id,
                 "target_date": target,
                 "status": advance["status"],
                 "produced_states": advance["produced_states"],
@@ -93,9 +176,8 @@ class PeriodInterleaveOwner:
             })
         after = self.owner.snapshot()
         objective = detached(result.objective)
-        if target is not None:
-            objective["b02_materialized_after_event"] = detached(
-                self.materializations[-1])
+        if advance is not None:
+            objective["b02_materialized_after_event"] = detached(advance)
         return RealizedEvent(
             result.operation_id, result.proposal_hash, result.before, after,
             result.status, objective, result.accessible, result.consequences,
