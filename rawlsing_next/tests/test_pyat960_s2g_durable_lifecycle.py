@@ -30,6 +30,7 @@ from rawlsing_next.pre553_analytical_composition import (
 )
 from rawlsing_next.pre553_durable_empirical_closure import (
     NativeEmpiricalOutput,
+    open_empirical_closure,
     publish_empirical_closure,
 )
 from rawlsing_next.pre553_durable_learned_lifecycle import (
@@ -263,6 +264,13 @@ def test_g01_real_m1_m2_b5_first_reader(tmp_path):
     assert artifact.trust_state == "EXTERNALLY_PINNED"
     assert artifact.core["evidence_grade"] == "S2_SOURCEFREE_ISOLATED_FIXTURE"
     assert artifact.core["contract_sha"] == DURABLE_LEARNED_CONTRACT_SHA
+    s2f = open_empirical_closure(
+        item["s2f_receipt"].root_path, expected_root=item["s2f_receipt"].root_identity
+    ).require_trusted()
+    s2f_fact_keys = {fact.ref.key for fact in s2f.object_graph.empirical_facts}
+    s2f_receipt_keys = {receipt.ref.key for receipt in s2f.object_graph.discovery_receipts}
+    assert {fact.ref.key for fact in item["m1_bundle"].empirical_facts}.issubset(s2f_fact_keys)
+    assert {receipt.ref.key for receipt in item["m1_bundle"].discovery_receipts}.issubset(s2f_receipt_keys)
 
 
 # ---------------------------------------------------------------------------
