@@ -3,9 +3,9 @@
 import argparse,hashlib,json,math,statistics,os,sqlite3,subprocess
 from pathlib import Path
 # Deliberately independent of the measurement writer's declared plan.
-SCHEMA="G03_I0_REAL_P6_V2"
+SCHEMA="G03_I0_REAL_P6_V3"
 STATE_DIGEST_SCHEME="G03_STATE_PATH_CONTENT_SHA256_V1"
-STATE_LOGICAL_SCHEME="G03_SQLITE_ROWS_AND_OTHER_CONTENT_V1"
+STATE_LOGICAL_SCHEME="G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2"
 SQLITE_REL="actual-p2/p3_psyche.sqlite3"
 P6="WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
 FILES=[P6,"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
@@ -34,6 +34,15 @@ def validhash(x,n=64):return isinstance(x,str) and len(x)==n and all(c in "01234
 def num(x):return type(x) in (int,float) and math.isfinite(x) and x>=0
 def canonical(obj):
     return (json.dumps(obj,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(",",":"))+"\n").encode()
+def sqlite_typed_cell(v):
+    """Injective representation of SQLite's five primitive result storage classes."""
+    if v is None: return ["NULL"]
+    if type(v) is int: return ["INTEGER",str(v)]
+    if type(v) is float: return ["REAL",v.hex()]
+    if type(v) is str: return ["TEXT",v]
+    if type(v) is bytes: return ["BLOB",v.hex()]
+    raise ValueError("UNSUPPORTED_SQLITE_CELL_TYPE")
+
 def sqlite_logical_digest(root):
     path=Path(root)/SQLITE_REL
     require(path.is_file() and not path.is_symlink(),"SQLITE_LOGICAL_PATH_UNAVAILABLE")
@@ -46,7 +55,7 @@ def sqlite_logical_digest(root):
             tables=[]
             for name in names:
                 safe=name.replace('"','""')
-                rows=[[(v.hex() if isinstance(v,bytes) else v) for v in row]
+                rows=[[sqlite_typed_cell(v) for v in row]
                       for row in db.execute('SELECT * FROM "'+safe+'"')]
                 rows.sort(key=lambda row:canonical(row))
                 tables.append([name,rows])
