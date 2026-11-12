@@ -1,0 +1,19 @@
+name: PYAT PREV3 MCR-C launch source preflight
+on:
+  pull_request:
+    paths:
+      - 'WORKER_COMMISSIONS/PYAT_PREV3_MATERIALIZER_MCRC_REVIEW_20261110_R1/00_FULL_COPY_PASTE_LAUNCH.md'
+      - '.github/workflows/pyat-prev3-mcrc-commission-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-source-mcrc-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Strict source-blob and MCR-C commission preflight
+        run: python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py WORKER_COMMISSIONS/PYAT_PREV3_MATERIALIZER_MCRC_REVIEW_20261110_R1/00_FULL_COPY_PASTE_LAUNCH.md
