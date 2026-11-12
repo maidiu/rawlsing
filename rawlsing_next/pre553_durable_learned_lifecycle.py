@@ -725,6 +725,54 @@ class LearnedConsumerReceipt:
     material: Mapping[str, Any]
 
 
+def _doc_ref(document: Mapping[str, Any], name: str) -> ExactRef:
+    item = _mapping(document, name)
+    schema = _text(item.get("schema_id"), f"{name}.schema_id")
+    version = _text(item.get("schema_version"), f"{name}.schema_version")
+    return ExactRef(
+        f"{schema}@{version}",
+        _text(item.get("object_id"), f"{name}.object_id"),
+        _text(item.get("content_hash"), f"{name}.content_hash"),
+    )
+
+
+_M1_EVIDENCE_FAMILIES = (
+    ("discovery_receipts", "DiscoveryResultReceipt@1.0.0"),
+    ("empirical_facts", "EmpiricalFact@1.0.0"),
+    ("empirical_queries", "EmpiricalQuerySpec@1.0.0"),
+    ("empirical_predicates", "EmpiricalPredicate@1.0.0"),
+)
+
+
+def _bundle_evidence_refs(
+    bundle_document: Mapping[str, Any],
+) -> tuple[Mapping[str, Mapping[str, ExactRef]], set[str]]:
+    """Extract exact evidence refs from the stored M1 input-bundle preimage."""
+
+    bundle = _mapping(bundle_document, "m1_input_bundle")
+    fields = _mapping(bundle.get("semantic_fields"), "m1_input_bundle.semantic_fields")
+    evidence: dict[str, dict[str, ExactRef]] = {}
+    for family, expected_kind in _M1_EVIDENCE_FAMILIES:
+        rows = _sequence(fields.get(family, ()), family)
+        refs: dict[str, ExactRef] = {}
+        for row in rows:
+            ref = _doc_ref(_mapping(row, family), family)
+            if ref.kind != expected_kind:
+                raise DurableLearnedLifecycleError(
+                    f"M1 input bundle {family} contains {ref.kind}, expected {expected_kind}"
+                )
+            refs[ref.key] = ref
+        evidence[family] = refs
+    additional = {
+        _exact(value, "m1 additional dependency").key
+        for value in _sequence(
+            fields.get("additional_dependency_refs", ()),
+            "m1 additional dependency refs",
+        )
+    }
+    return evidence, additional
+
+
 def _core_document(
     learned: LearnedWorldCompositionResult,
     executor: LearnedProductLifecycleExecutor,
@@ -1063,6 +1111,95 @@ class DurableLearnedLifecycle:
             b5_replay_receipt=self.b5_replay_receipt,
         )
 
+    def _m1_evidence_binding(self, closure: DurableEmpiricalClosure) -> None:
+        """Require the retained M1 product to be drawn from the declared S2-F closure.
+
+        A cold consumer that reuses a different native evidence chain would
+        otherwise be able to serve an M1 disposition/M2/B5 product against an
+        unrelated S2-F closure whenever the producer predicate and source
+        universe happen to overlap.  The bundle, the disposition refs, the
+        consumer receipt/query/predicate and the source release must all be
+        exact members of the same retained closure.
+        """
+
+        evidence = _mapping(self.core.get("m1_evidence"), "m1_evidence")
+        bundle = _mapping(evidence.get("input_bundle"), "m1_input_bundle")
+        bundle_refs, additional_refs = _bundle_evidence_refs(bundle)
+        closure_refs = {
+            "discovery_receipts": {
+                obj.ref.key: obj.ref for obj in closure.object_graph.discovery_receipts
+            },
+            "empirical_facts": {
+                obj.ref.key: obj.ref for obj in closure.object_graph.empirical_facts
+            },
+            "empirical_queries": {
+                obj.ref.key: obj.ref for obj in closure.object_graph.executed_queries
+            },
+            "empirical_predicates": {
+                obj.ref.key: obj.ref for obj in closure.object_graph.executed_predicates
+            },
+        }
+        for family, _ in _M1_EVIDENCE_FAMILIES:
+            missing = [
+                key for key in bundle_refs[family] if key not in closure_refs[family]
+            ]
+            if missing:
+                raise DurableLearnedLifecycleError(
+                    f"M1 input bundle {family} is not drawn from the declared S2F closure"
+                )
+        disposition_refs = {
+            "discovery_receipts": {
+                ref.key for ref in self.m1_disposition.discovery_result_receipt_refs
+            },
+            "empirical_facts": {
+                ref.key for ref in self.m1_disposition.empirical_fact_refs
+            },
+            "empirical_queries": {
+                ref.key for ref in self.m1_disposition.empirical_query_spec_refs
+            },
+            "empirical_predicates": {
+                ref.key for ref in self.m1_disposition.empirical_predicate_refs
+            },
+        }
+        for family, _ in _M1_EVIDENCE_FAMILIES:
+            if not disposition_refs[family].issubset(bundle_refs[family]):
+                raise DurableLearnedLifecycleError(
+                    f"M1 disposition {family} are not a subset of the retained input bundle"
+                )
+            if not disposition_refs[family].issubset(closure_refs[family]):
+                raise DurableLearnedLifecycleError(
+                    f"M1 disposition {family} are not drawn from the declared S2F closure"
+                )
+        if self.determinants.discovery_receipt_ref.key not in disposition_refs[
+            "discovery_receipts"
+        ]:
+            raise DurableLearnedLifecycleError(
+                "consumer discovery receipt is absent from the M1 evidence chain"
+            )
+        if self.determinants.producer_query_ref.key not in disposition_refs[
+            "empirical_queries"
+        ]:
+            raise DurableLearnedLifecycleError(
+                "consumer producer query is absent from the M1 evidence chain"
+            )
+        if self.determinants.producer_predicate_ref.key not in disposition_refs[
+            "empirical_predicates"
+        ]:
+            raise DurableLearnedLifecycleError(
+                "consumer producer predicate is absent from the M1 evidence chain"
+            )
+        if self.determinants.release_ref.key not in additional_refs:
+            raise DurableLearnedLifecycleError(
+                "consumer source release is absent from the M1 input bundle"
+            )
+        if _doc_ref(bundle, "m1_input_bundle") != _exact(
+            self.m1_disposition.determinant_explanation_receipt.input_bundle_ref,
+            "m1 disposition input bundle",
+        ):
+            raise DurableLearnedLifecycleError(
+                "M1 input bundle preimage differs from the retained disposition"
+            )
+
     def consumer_composition(
         self,
         s2f_closure_path: str | Path,
@@ -1073,6 +1210,7 @@ class DurableLearnedLifecycle:
             s2f_closure_path,
             expected_root=self.determinants.s2f_root_identity,
         ).require_trusted()
+        self._m1_evidence_binding(closure)
         receipt = next(
             (
                 item
@@ -1252,17 +1390,82 @@ class DurableLearnedLifecycle:
         *,
         expected_checkpoint_hash: str | None = None,
     ) -> SelectionResolution:
-        """Exact historical checkpoint replay; the caller pins its hash."""
+        """Exact historical checkpoint replay; the caller pins its hash.
+
+        The checkpoint must be a prefix of the artifact's retained event/history
+        chain.  A coherently self-rehashed foreign checkpoint is not an
+        independent authority and is refused even when its own hash is supplied.
+        """
+
         self.require_trusted()
+        if expected_checkpoint_hash is None:
+            raise DurableLearnedLifecycleUntrusted(
+                "as-of checkpoint has no independent external pin"
+            )
         document = _mapping(checkpoint, "as_of_checkpoint")
         supplied = _text(document.get("checkpoint_hash"), "checkpoint_hash")
-        if expected_checkpoint_hash is not None and supplied != expected_checkpoint_hash:
+        if supplied != expected_checkpoint_hash:
             raise DurableLearnedLifecycleRefusal(
                 "as-of checkpoint external hash pin mismatch"
             )
         if self.b5_selection_receipt is None:
             raise DurableLearnedLifecycleRefusal(
                 "NO_CURRENT: no selected product history is present"
+            )
+        retained = self.b5_executor.export_checkpoint()
+        retained_payload = _mapping(
+            retained.get("checkpoint_payload"), "retained checkpoint payload"
+        )
+        supplied_payload = _mapping(
+            document.get("checkpoint_payload"), "as-of checkpoint payload"
+        )
+        retained_events = tuple(
+            _exact(row["record_ref"], "retained event").key
+            for row in _sequence(retained_payload.get("events", ()), "retained events")
+        )
+        supplied_events = tuple(
+            _exact(row["record_ref"], "as-of event").key
+            for row in _sequence(supplied_payload.get("events", ()), "as-of events")
+        )
+        if supplied_events != retained_events[: len(supplied_events)]:
+            raise DurableLearnedLifecycleRefusal(
+                "as-of checkpoint is not on the retained event history"
+            )
+        retained_selection = {
+            _exact(dict(row["record_ref"]), "retained selection").key
+            for row in _sequence(
+                retained_payload.get("selection_receipts", ()),
+                "retained selection receipts",
+            )
+        }
+        supplied_selection = {
+            _exact(dict(row["record_ref"]), "as-of selection").key
+            for row in _sequence(
+                supplied_payload.get("selection_receipts", ()),
+                "as-of selection receipts",
+            )
+        }
+        if not supplied_selection.issubset(retained_selection):
+            raise DurableLearnedLifecycleRefusal(
+                "as-of checkpoint selection is not on the retained history"
+            )
+        retained_no_current = {
+            _exact(dict(row["record_ref"]), "retained no-current").key
+            for row in _sequence(
+                retained_payload.get("no_current_receipts", ()),
+                "retained no-current receipts",
+            )
+        }
+        supplied_no_current = {
+            _exact(dict(row["record_ref"]), "as-of no-current").key
+            for row in _sequence(
+                supplied_payload.get("no_current_receipts", ()),
+                "as-of no-current receipts",
+            )
+        }
+        if not supplied_no_current.issubset(retained_no_current):
+            raise DurableLearnedLifecycleRefusal(
+                "as-of checkpoint no-current receipt is not on the retained history"
             )
         return self.b5_executor.resolve_current_as_of(
             self.b5_selection_receipt.selection_key_ref,
@@ -1409,6 +1612,75 @@ def open_learned_lifecycle(
         LearnedWorldCompositionReceipt,
         _mapping(core.get("learned_receipt"), "learned_receipt"),
     )
+    checkpoint_event_keys = tuple(
+        _exact(row["record_ref"], "checkpoint event").key
+        for row in _sequence(
+            checkpoint["checkpoint_payload"].get("events", ()),
+            "checkpoint events",
+        )
+    )
+    product_event_keys = {
+        _exact(row["record_ref"], "checkpoint event").key
+        for row in _sequence(
+            checkpoint["checkpoint_payload"].get("events", ()),
+            "checkpoint events",
+        )
+        if _exact(dict(row["release_ref"]), "checkpoint release").key
+        == m2.release.ref.key
+    }
+    receipt_event_keys = tuple(
+        _exact(ref, "learned receipt event").key for ref in receipt.b5_event_refs
+    )
+    if set(receipt_event_keys) != product_event_keys:
+        raise DurableLearnedLifecycleError(
+            "learned receipt event refs do not match the retained product history"
+        )
+    if receipt_event_keys and not product_event_keys:
+        raise DurableLearnedLifecycleError(
+            "learned receipt names events absent from the retained product history"
+        )
+    if not receipt_event_keys and any(
+        receipt.side_effects.get(name)
+        for name in (
+            "b5_registration_effect",
+            "b5_publication_effect",
+            "b5_current_selection_effect",
+        )
+    ):
+        raise DurableLearnedLifecycleError(
+            "learned receipt claims B5 effects without lifecycle events"
+        )
+    if checkpoint_event_keys and replay is None:
+        raise DurableLearnedLifecycleError(
+            "retained B5 history has no lifecycle replay receipt"
+        )
+    if replay is not None:
+        if receipt.b5_replay_receipt_ref is None:
+            raise DurableLearnedLifecycleError(
+                "retained replay receipt is absent from the learned receipt"
+            )
+        if _exact(receipt.b5_replay_receipt_ref, "learned replay ref") != replay.ref:
+            raise DurableLearnedLifecycleError(
+                "retained lifecycle replay ref differs from learned receipt"
+            )
+        expected_replay = executor.audit_replay()
+        if (
+            replay.original_checkpoint_hash != checkpoint["checkpoint_hash"]
+            or replay.replayed_checkpoint_hash != checkpoint["checkpoint_hash"]
+            or {ref.key for ref in replay.event_refs}
+            != set(checkpoint_event_keys)
+            or {ref.key for ref in replay.selection_receipt_refs}
+            != {ref.key for ref in expected_replay.selection_receipt_refs}
+            or {ref.key for ref in replay.no_current_receipt_refs}
+            != {ref.key for ref in expected_replay.no_current_receipt_refs}
+        ):
+            raise DurableLearnedLifecycleError(
+                "retained lifecycle replay receipt does not reproduce the checkpoint history"
+            )
+    elif receipt.b5_replay_receipt_ref is not None:
+        raise DurableLearnedLifecycleError(
+            "learned receipt references an absent lifecycle replay receipt"
+        )
     determinants = LearnedConsumerDeterminants.from_document(
         _mapping(core.get("consumer_determinants"), "consumer_determinants")
     )
@@ -1449,6 +1721,74 @@ def open_learned_lifecycle(
         raise DurableLearnedLifecycleError("B5 subject ref differs from learned receipt")
     if selection is not None and receipt.b5_selection_receipt_ref != selection.ref:
         raise DurableLearnedLifecycleError("B5 selection ref differs from learned receipt")
+    for name in (
+        "release_ref",
+        "product_ref",
+        "product_family_ref",
+        "producer_owner_ref",
+        "producer_contract_ref",
+        "semantic_projection_hash",
+        "authority_snapshot_refs",
+        "direct_dependency_refs",
+        "determinant_refs",
+        "determinant_set_hash",
+        "replay_root_ref",
+        "selection_scope_ref",
+        "build_or_release_receipt_refs",
+        "producer_permission_ceiling_ref",
+    ):
+        if getattr(protocol, name) != getattr(subject, name):
+            raise DurableLearnedLifecycleError(
+                f"B5 protocol view {name} differs from the retained B5 subject"
+            )
+    for name in (
+        "authority_closure",
+        "dependency_closure",
+        "determinant_closure",
+        "replay_closure",
+        "explanation_closure",
+    ):
+        if getattr(protocol, f"m2_{name}_ref") != getattr(m2, name).ref:
+            raise DurableLearnedLifecycleError(
+                f"B5 protocol view {name} differs from the retained M2 closure"
+            )
+    if protocol.producer_typed_state != m1.adjudication_outcome:
+        raise DurableLearnedLifecycleError(
+            "B5 protocol producer typed state differs from the retained M1 outcome"
+        )
+    if (
+        receipt.m1_input_bundle_ref is not None
+        and receipt.m1_input_bundle_ref
+        != m1.determinant_explanation_receipt.input_bundle_ref
+    ):
+        raise DurableLearnedLifecycleError(
+            "learned receipt input bundle differs from the retained M1 disposition"
+        )
+    if receipt.m2_subject_ref != m2.subject.ref:
+        raise DurableLearnedLifecycleError(
+            "learned receipt M2 subject differs from the retained M2 subject"
+        )
+    for name in (
+        "authority_closure",
+        "dependency_closure",
+        "determinant_closure",
+        "replay_closure",
+        "explanation_closure",
+    ):
+        if getattr(receipt, f"m2_{name}_ref") != getattr(m2, name).ref:
+            raise DurableLearnedLifecycleError(
+                f"learned receipt {name} differs from the retained M2 closure"
+            )
+    if receipt.determinant_root_ref != m1.determinant_manifest_ref:
+        raise DurableLearnedLifecycleError("learned receipt determinant root drift")
+    if receipt.replay_root_ref != m1.replay_ref:
+        raise DurableLearnedLifecycleError("learned receipt replay root drift")
+    if receipt.explanation_root_ref != m1.explanation_ref:
+        raise DurableLearnedLifecycleError("learned receipt explanation root drift")
+    if selection is not None and receipt.b5_selection_key_ref != selection.selection_key_ref:
+        raise DurableLearnedLifecycleError(
+            "learned receipt B5 selection key differs from the retained selection"
+        )
     return DurableLearnedLifecycle(
         artifact_path=path,
         artifact_identity=artifact_identity,

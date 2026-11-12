@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import resource
 import sys
 import time
 
@@ -57,6 +58,8 @@ def run(
     else:
         consumed = artifact.consume(s2f_closure_path)
     elapsed = time.monotonic() - started
+    max_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    max_rss_bytes = int(max_rss) if sys.platform == "darwin" else int(max_rss) * 1024
     return {
         "root_identity": artifact.root_identity,
         "artifact_identity": artifact.artifact_identity,
@@ -75,6 +78,7 @@ def run(
         else None,
         "source_opens": source_opens,
         "elapsed_seconds": elapsed,
+        "process_tree_peak_rss_bytes": max_rss_bytes,
         "current_state": current_state,
         "matches_expected": consumed.consumer_result_hash == expected_consumer_hash,
     }
