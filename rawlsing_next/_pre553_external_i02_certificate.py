@@ -40,6 +40,7 @@ from rawlsing_next._pre553_verified_semantic_range import (
 )
 
 SCHEMA = "PYAT_S2B_EXTERNAL_I02_LOGICAL_SELECTOR_CERT@1"
+DIRECT_SCHEMA = "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1"
 HEX = re.compile(r"[0-9a-f]{64}\Z")
 
 
@@ -203,21 +204,29 @@ def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
         _fail("selector posting points outside full I02 event corpus")
 
 
-def _logical_root(db: sqlite3.Connection) -> str:
+def _logical_root(db: sqlite3.Connection, *, schema: str = SCHEMA) -> str:
     """Canonical streaming commitment, independent of insertion and run sizes."""
     h = sha256()
     def absorb(fields: object) -> None:
         material = canonical_json(fields).encode("utf-8")
         h.update(len(material).to_bytes(8, "big"))
         h.update(material)
-    absorb(SCHEMA)
-    for name, query in (
+    if schema not in (SCHEMA, DIRECT_SCHEMA):
+        _fail("unknown external I02 certificate schema")
+    absorb(schema)
+    queries = (
         ("header", "SELECT name,value FROM header ORDER BY name"),
         ("objects", "SELECT * FROM main.objects ORDER BY ref"),
         ("closure", "SELECT ref FROM main.closure ORDER BY ref"),
         ("bindings", "SELECT * FROM main.bindings ORDER BY universe,native,version,canonical,component"),
         ("selectors", "SELECT * FROM main.selectors ORDER BY respondent,kind,target,event_ref"),
-    ):
+    )
+    if schema == DIRECT_SCHEMA:
+        queries += (
+            ("scoped_names", "SELECT * FROM main.scoped_names ORDER BY universe,respondent_key"),
+            ("event_occurrences", "SELECT * FROM main.event_occurrences ORDER BY identity"),
+        )
+    for name, query in queries:
         absorb(name)
         for row in db.execute(query):
             absorb(list(row))
@@ -232,10 +241,13 @@ class ExternalI02Roots:
     source: str
     replay: str
     universe: str
+    schema: str = SCHEMA
 
     def __post_init__(self) -> None:
         if not HEX.fullmatch(self.logical) or not HEX.fullmatch(self.physical):
             _fail("complete independent sha256 logical and physical roots required")
+        if self.schema not in (SCHEMA, DIRECT_SCHEMA):
+            _fail("unsupported externally held certificate schema")
 
 
 def build_sourcefree_external_i02(
@@ -521,7 +533,7 @@ class VerifiedExternalI02:
                 if physical.hexdigest() != roots.physical:
                     _fail("cold physical bytes differ from held external root")
                 h = dict(self.db.execute("SELECT name,value FROM main.header"))
-                if h.get("schema") != SCHEMA or any(
+                if h.get("schema") != roots.schema or any(
                     h.get(name) != getattr(roots, name)
                     for name in ("release", "source", "replay", "universe")
                 ):
@@ -530,7 +542,7 @@ class VerifiedExternalI02:
                     _fail("M01-M18 missing in certified header")
                 # Revalidate semantic closure and keyspace before allowing EMPTY.
                 _check_relations_readonly(self.db, roots.source)
-                if _logical_root(self.db) != roots.logical:
+                if _logical_root(self.db, schema=roots.schema) != roots.logical:
                     _fail("logical corpus/selector map differs from external root")
             except Exception:
                 self.db.close()
@@ -760,6 +772,8 @@ def install_sourcefree_external_i02_i03(
     if type(certificate) is not VerifiedExternalI02:
         _fail("exact cold-verified external I02 certificate required")
     certificate._ensure_open()
+    if certificate.roots.schema != SCHEMA:
+        _fail("direct sourcefree candidate certificate cannot impersonate legacy sealed I02 release")
     release = repository.resolve_release_exact(release_ref)
     roots = certificate.roots
     if (roots.release != release.release_ref.key

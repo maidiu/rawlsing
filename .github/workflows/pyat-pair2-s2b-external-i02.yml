@@ -8,9 +8,12 @@ on:
       - agent/pyat-pair2-s2b-a-counter-20261112-r2
       - agent/pyat-pair2-s2b-a-closure-bounded-20261112-r3
       - agent/pyat-pair2-s2b-b-r4-root-freeze-20261112
+      - agent/pyat-pair2-s2b-a-direct-candidate-20261112-r5
   pull_request:
     paths:
       - 'rawlsing_next/_pre553_external_i02_certificate.py'
+      - 'rawlsing_next/_pre553_direct_i02_sourcefree.py'
+      - 'rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py'
       - 'rawlsing_next/tests/test_pre553_external_i02_certificate.py'
       - 'rawlsing_next/tests/repro_s2b_sqlite_session_attack_stdlib.py'
       - '.github/workflows/pyat-pair2-s2b-external-i02.yml'
@@ -28,19 +31,24 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install pytest pyarrow pandas pyreadstat
       - name: Compile S2-B and existing S2-A semantics
-        run: python -m py_compile rawlsing_next/_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_external_i02_certificate.py
+        run: python -m py_compile rawlsing_next/_pre553_external_i02_certificate.py rawlsing_next/_pre553_direct_i02_sourcefree.py rawlsing_next/tests/test_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py
       - name: Standalone SQLite session and no-clobber primitive counterexamples
         run: python rawlsing_next/tests/repro_s2b_sqlite_session_attack_stdlib.py
       - name: S2-B bounded cold whole-corpus/index + real native I03 and regression
         env:
           PYTHONPATH: .
         run: |
-          /usr/bin/time -v python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py --junitxml=s2b-pair2.xml
+          /usr/bin/time -v python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py --junitxml=s2b-pair2.xml
       - name: Isolated 2048-respondent material sourcefree CPU/RSS/scratch receipt
         env:
           PYTHONPATH: .
         run: |
           /usr/bin/time -v python -m pytest -q -s -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_material_sourcefree_resource_probe
+      - name: Direct 2048-event one-shot sourcefree construction and cold memory receipt
+        env:
+          PYTHONPATH: .
+        run: |
+          /usr/bin/time -v python -m pytest -q -s -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory
       - uses: actions/upload-artifact@v4
         if: always()
         with:
