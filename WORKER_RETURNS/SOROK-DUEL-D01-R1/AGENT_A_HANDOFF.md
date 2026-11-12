@@ -38,9 +38,9 @@ python3 -B -m pytest -q -p no:cacheprovider \
 
 Observed receipts:
 
-- D01 suite: **5 passed in 24.00 s** (`evidence/d01_reuse_pytest_vv.log`; latest rerun 5 passed in 23.78 s in `evidence/d01_reuse_pytest.log`).
-- P3 owner/store/rules/projections/goal-residual suite: **77 passed, 1 skipped in 50.15 s** (`evidence/p3_regression_pytest.log`).
-- P3 primary formation→later-response/no-mediator control plus cold replay/source restore: **2 passed in 446.66 s** (`evidence/p3_primary_cold_pytest.log`).
+- D01 suite: **5 passed** (`evidence/d01_reuse_pytest_vv.log`; latest rerun 5 passed in 26.04 s in `evidence/d01_reuse_pytest.log`).
+- P3 owner/store/rules/projections/goal-residual suite: **77 passed, 1 skipped in 48.28 s** (`evidence/p3_regression_pytest.log`).
+- P3 primary formation→later-response/no-mediator control plus cold replay/source restore: **2 passed in 425.02 s** (`evidence/p3_primary_cold_pytest.log`).
 
 The selected producer identity (current code pins) is exposed by `d01_reuse.producer_identity()` and freezes these actual sources:
 
