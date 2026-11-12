@@ -231,6 +231,30 @@ def _validate_common_closure(
         raise FieldForgeConditionalSupportError("GT2 relation requires SINGLE_UNIVERSE")
     if grain.get("measure_kind") != "RAW":
         raise FieldForgeConditionalSupportError("GT2 relation is RAW/unweighted only")
+
+    # This projection keeps the fact/query exact references but not their
+    # individual predicate, measure, response semantics or declared risk type.
+    # Their identities must agree *before* FF01 drops the pairwise material:
+    # otherwise a coherent re-signed fact with a different estimand can become
+    # an apparently valid C relation and reach the D first consumer.
+    # These are sourcefree closure checks, not current-source/issuer grants.
+    if _exact(joint_fact.condition_predicate_ref, "fact.condition_predicate_ref") != _exact(
+        joint_query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise FieldForgeConditionalSupportError("query/fact predicate mismatch")
+    if _exact(joint_fact.measure_basis_ref, "fact.measure_basis_ref") != _exact(
+        joint_query.measure_basis_ref, "query.measure_basis_ref"
+    ):
+        raise FieldForgeConditionalSupportError("query/fact measure basis mismatch")
+    if grain.get("response_state_semantics_ref") is not None and _exact(
+        joint_fact.response_state_semantics_ref, "fact.response_state_semantics_ref"
+    ) != _exact(grain["response_state_semantics_ref"],
+               "query.requested_output_grain.response_state_semantics_ref"):
+        raise FieldForgeConditionalSupportError("query/fact response semantics mismatch")
+    if ("risk_set_type" in joint_fact.semantic_fields
+            and grain.get("risk_set_type") is not None
+            and joint_fact.risk_set_type != grain["risk_set_type"]):
+        raise FieldForgeConditionalSupportError("query/fact risk set type mismatch")
     if getattr(joint_fact, "source_scope_mode", None) not in (None, "SINGLE_UNIVERSE"):
         raise FieldForgeConditionalSupportError("producer fact source scope is not SINGLE_UNIVERSE")
     if getattr(joint_fact, "measure_kind", None) not in (None, "RAW"):
