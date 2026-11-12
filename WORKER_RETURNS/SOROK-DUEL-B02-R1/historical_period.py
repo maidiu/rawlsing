@@ -33,6 +33,8 @@ PERIOD_SCHEMA = "SOROK_HISTORICAL_PERIOD_PLAN@1"
 PERIOD_READ_SCHEMA = "SOROK_HISTORICAL_PERIOD_PLAN_READ@1"
 MATERIAL_PERIOD_READ_SCHEMA = "SOROK_MATERIAL_PERIOD_READ@1"
 MATERIALIZATION_SCHEMA = "SOROK_PERIOD_MATERIALIZATION@1"
+MATERIALIZATION_RECEIPT_KIND = "P2_B02_PERIOD_MATERIALIZATION"
+MATERIALIZATION_RECEIPT_SCHEMA = "SOROK_PERIOD_MATERIALIZATION_RECEIPT@1"
 GRADE = "SOURCEFREE_FIXTURE"
 CALENDAR_BASIS = "GREGORIAN_PROLEPTIC_UTC_DATE"
 CLOCK_BASIS = "S46_TEST_ONLY_LOGICAL_TICK_DAY_V1"
@@ -601,13 +603,385 @@ def _interval_summary(state: dict) -> dict:
     }
 
 
-def materialize_periods(session) -> dict:
-    """Advance the existing S46 clock in the plan's dated segments once.
+def _all_states(session) -> list[dict]:
+    try:
+        return session.read_interval_states()
+    except Exception as exc:
+        raise RecursionRefusal("P6_PERIOD_S46_STATE_INVALID") from exc
 
-    Existing interval states with the exact domain hash are reused.  A retry
-    therefore returns the same period state IDs and appends no duplicate
-    period.  A missing interval whose start is already in the past is refused;
-    no clock is rewound.
+
+def _state_maps(states: list[dict]) -> tuple[dict, dict]:
+    by_id, by_domain = {}, {}
+    for state in states:
+        state_id = state.get("state_id")
+        if not _text(state_id):
+            raise RecursionRefusal("P6_PERIOD_STATE_ID")
+        if state_id in by_id:
+            raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
+        by_id[state_id] = state
+        by_domain.setdefault(state.get("domain_hash"), []).append(state)
+    return by_id, by_domain
+
+
+def _receipt_rows(session, plan_source: str, period_id: str | None = None) -> list[dict]:
+    root = session.read_root()["root_hash"]
+    rows = []
+    for episode in session.product.store.episodes(session.branch_id):
+        if episode.get("kind") != MATERIALIZATION_RECEIPT_KIND:
+            continue
+        body = dict(episode.get("body") or {})
+        if body.get("plan_source") != plan_source:
+            continue
+        if period_id is not None and body.get("period_id") != period_id:
+            continue
+        if body.get("root") != root or body.get("branch") != session.branch_id:
+            raise RecursionRefusal("P6_PERIOD_RECEIPT_SOURCE_MISMATCH")
+        body["_episode_id"] = episode["episode_id"]
+        body["_clock"] = episode["clock"]
+        rows.append(body)
+    return rows
+
+
+def _date_from_clock(plan: dict, clock: int) -> date:
+    anchor = date.fromisoformat(plan["anchor_date"])
+    return anchor.fromordinal(anchor.toordinal() + (int(clock) - plan["anchor_clock"]))
+
+
+def _segments_for_range(plan: dict, employment: dict,
+                        start_clock: int, end_clock: int) -> tuple:
+    if start_clock >= end_clock:
+        raise RecursionRefusal("P6_PERIOD_EMPTY_SEGMENTS")
+    start_date = _date_from_clock(plan, start_clock)
+    end_date = _date_from_clock(plan, end_clock)
+    boundaries = [start_clock]
+    for term in employment["terms"]:
+        effective = date.fromisoformat(term["effective_from"])
+        if start_date < effective < end_date:
+            tick = _logical_tick(plan, effective)
+            if start_clock < tick < end_clock:
+                boundaries.append(tick)
+    boundaries.append(end_clock)
+    boundaries = sorted(set(boundaries))
+    segments = tuple((boundaries[i], boundaries[i + 1])
+                     for i in range(len(boundaries) - 1))
+    if not segments or any(a >= b for a, b in segments):
+        raise RecursionRefusal("P6_PERIOD_EMPTY_SEGMENTS")
+    return segments
+
+
+def _coverage_union(intervals: list[tuple[int, int]]) -> list[list[int]]:
+    rows = sorted([tuple(row) for row in intervals])
+    if not rows:
+        return []
+    merged = [list(rows[0])]
+    for start, end in rows[1:]:
+        if start < merged[-1][1]:
+            raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
+        if start == merged[-1][1]:
+            merged[-1][1] = end
+        else:
+            merged.append([start, end])
+    return merged
+
+
+def _coverage_ticks(intervals: list[list[int]]) -> int:
+    return sum(end - start for start, end in intervals)
+
+
+def _receipt_document(session, plan: dict, employment: dict, period: dict,
+                      target_date: str, target_clock: int, state: dict,
+                      status: str) -> dict:
+    return {
+        "schema": MATERIALIZATION_RECEIPT_SCHEMA,
+        "grade": GRADE,
+        "status": status,
+        "root": plan["root"],
+        "branch": session.branch_id,
+        "plan_source": plan["source"],
+        "employment_source": employment["source"],
+        "period_id": period["period_id"],
+        "period_start": period["start_clock"],
+        "period_end": period["end_clock"],
+        "target_date": target_date,
+        "target_clock": target_clock,
+        "clock_before": state["start"],
+        "clock_after": state["end"],
+        "state_id": state["state_id"],
+        "domain_hash": state["domain_hash"],
+        "start": state["start"],
+        "end": state["end"],
+        "segments": detached(state.get("segments") or []),
+        "mode": state.get("domain", {}).get("mode", ""),
+        "public_event": "NOT_EMITTED",
+        "read_boundary": detached(READ_BOUNDARY),
+    }
+
+
+def _append_receipt(session, document: dict) -> dict:
+    rows = _receipt_rows(session, document["plan_source"], document["period_id"])
+    for row in rows:
+        if (row.get("domain_hash") == document["domain_hash"]
+                or row.get("state_id") == document["state_id"]):
+            if (row.get("domain_hash") != document["domain_hash"]
+                    or row.get("state_id") != document["state_id"]):
+                raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
+            return {**row, "receipt_status": "REPLAYED"}
+    episode = session.product._append_episode(
+        session.branch_id, "A", MATERIALIZATION_RECEIPT_KIND,
+        session.clock(), detached(document),
+    )
+    return {**detached(document), "receipt_status": "APPENDED",
+            "_episode_id": episode["episode_id"], "_clock": episode["clock"]}
+
+
+def _period_state_row(session, plan: dict, period: dict, receipts: list[dict]) -> dict:
+    by_id, _ = _state_maps(_all_states(session))
+    states = []
+    for receipt in receipts:
+        state = by_id.get(receipt.get("state_id"))
+        if state is None:
+            raise RecursionRefusal("P6_PERIOD_STATE_SEVERED")
+        states.append(state)
+    if not states:
+        raise RecursionRefusal("P6_PERIOD_NOT_MATERIALIZED")
+    states.sort(key=lambda row: (row["start"], row["end"]))
+    if len(states) == 1:
+        state = states[0]
+        return {
+            "period_id": period["period_id"],
+            "start_date": period["start_date"],
+            "end_date": period["end_date"],
+            "start_clock": period["start_clock"],
+            "end_clock": period["end_clock"],
+            "domain_hash": state["domain_hash"],
+            **_interval_summary(state),
+        }
+    segments = [row for state in states for row in state.get("segments") or []]
+    segments.sort(key=lambda row: (row.get("start"), row.get("end")))
+    coverage = [row for state in states for row in state.get("coverage") or []]
+    coverage.sort()
+    return {
+        "period_id": period["period_id"],
+        "start_date": period["start_date"],
+        "end_date": period["end_date"],
+        "start_clock": period["start_clock"],
+        "end_clock": period["end_clock"],
+        "domain_hash": states[-1]["domain_hash"],
+        "state_id": states[-1]["state_id"],
+        "status": "PARTIAL",
+        "start": period["start_clock"],
+        "end": period["end_clock"],
+        "segments": segments,
+        "coverage": coverage,
+        "currentness": states[-1].get("currentness", ""),
+        "state_ids": [state["state_id"] for state in states],
+    }
+
+
+def period_progress(session, period_id: str) -> dict:
+    """Return clock/state progress for a dated period without advancing time."""
+    plan = read_period_plan(session)
+    employment = read_employment(session)
+    if plan["employment_source"] != employment["source"]:
+        raise RecursionRefusal("P6_PERIOD_EMPLOYMENT_SOURCE_MISMATCH")
+    period = next((row for row in plan["periods"]
+                   if row["period_id"] == period_id), None)
+    if period is None:
+        raise RecursionRefusal("P6_PERIOD_UNKNOWN")
+    receipts = _receipt_rows(session, plan["source"], period_id)
+    states = _all_states(session)
+    by_id, _ = _state_maps(states)
+    b02_states = []
+    for receipt in receipts:
+        state = by_id.get(receipt.get("state_id"))
+        if state is None:
+            raise RecursionRefusal("P6_PERIOD_STATE_SEVERED")
+        if (state.get("domain_hash") != receipt.get("domain_hash")
+                or state.get("start") != receipt.get("start")
+                or state.get("end") != receipt.get("end")):
+            raise RecursionRefusal("P6_PERIOD_STATE_DOMAIN_MISMATCH")
+        if (state.get("domain") or {}).get("mode") != "SCHEDULED_ONLY":
+            raise RecursionRefusal("P6_PERIOD_STATE_MODE_MISMATCH")
+        if not (period["start_clock"] <= state["start"] < state["end"]
+                <= period["end_clock"]):
+            raise RecursionRefusal("P6_PERIOD_STATE_OUT_OF_PERIOD")
+        b02_states.append(state)
+    b02_ids = {state["state_id"] for state in b02_states}
+    actor_id = session.world().actor_state.get("A", {}).get("actor_id")
+    other_states = [
+        state for state in states
+        if state.get("state_id") not in b02_ids
+        and state.get("actor_id") == actor_id
+        and state.get("branch_id") == session.branch_id
+        and period["start_clock"] <= state["start"] < state["end"]
+        <= period["end_clock"]
+    ]
+    b02_coverage = _coverage_union(
+        [(state["start"], state["end"]) for state in b02_states])
+    all_coverage = _coverage_union(
+        [(state["start"], state["end"]) for state in b02_states + other_states])
+    clock = session.clock()
+    current_end = min(max(clock, period["start_clock"]), period["end_clock"])
+    elapsed = max(0, current_end - period["start_clock"])
+    remaining = max(0, period["end_clock"] - max(clock, period["start_clock"]))
+    gaps = []
+    cursor = period["start_clock"]
+    for start, end in all_coverage:
+        if end <= cursor:
+            continue
+        if start > cursor and cursor < current_end:
+            gaps.append([cursor, min(start, current_end)])
+        cursor = max(cursor, end)
+        if cursor >= current_end:
+            break
+    if cursor < current_end:
+        gaps.append([cursor, current_end])
+    status = ("BEFORE" if clock <= period["start_clock"]
+              else "COMPLETE" if clock >= period["end_clock"]
+              else "PARTIAL")
+    remaining_segments = []
+    if clock < period["end_clock"]:
+        start = max(clock, period["start_clock"])
+        if start < period["end_clock"]:
+            remaining_segments = [
+                [a, b] for a, b in _segments_for_range(
+                    plan, employment, start, period["end_clock"])]
+    return {
+        "schema": MATERIALIZATION_SCHEMA,
+        "grade": "SOURCEFREE_S2_ONLY",
+        "status": status,
+        "period_id": period["period_id"],
+        "start_date": period["start_date"],
+        "end_date": period["end_date"],
+        "start_clock": period["start_clock"],
+        "end_clock": period["end_clock"],
+        "clock": clock,
+        "current_date": _date_from_clock(plan, clock).isoformat(),
+        "elapsed_ticks": elapsed,
+        "remaining_ticks": remaining,
+        "b02_coverage": b02_coverage,
+        "b02_covered_ticks": _coverage_ticks(b02_coverage),
+        "state_coverage": all_coverage,
+        "state_covered_ticks": _coverage_ticks(all_coverage),
+        "uncovered": gaps,
+        "uncovered_ticks": sum(end - start for start, end in gaps),
+        "b02_state_ids": sorted(b02_ids),
+        "other_state_ids": sorted(state["state_id"] for state in other_states),
+        "remaining_segments": remaining_segments,
+        "next_p3_span": remaining,
+        "root_hash": plan["root"],
+        "branch_id": session.branch_id,
+        "plan_source": plan["source"],
+        "employment_source": employment["source"],
+        "provenance": detached(plan["provenance"]),
+        "read_boundary": detached(READ_BOUNDARY),
+    }
+
+
+def remaining_span(session, period_id: str, *, to_date: Any = None) -> dict:
+    """Return the not-yet-elapsed span for a period, subtracting current progress."""
+    plan = read_period_plan(session)
+    period = next((row for row in plan["periods"]
+                   if row["period_id"] == period_id), None)
+    if period is None:
+        raise RecursionRefusal("P6_PERIOD_UNKNOWN")
+    target = period["end_clock"]
+    if to_date is not None:
+        target = _logical_tick(plan, _date(to_date, "P6_PERIOD_AS_OF_DATE"))
+        target = min(target, period["end_clock"])
+    current = session.clock()
+    if target < current:
+        if to_date is None and current >= period["end_clock"]:
+            target = current
+        else:
+            raise RecursionRefusal("P6_PERIOD_CLOCK_IN_PAST")
+    start = max(period["start_clock"], current)
+    return {
+        "period_id": period_id,
+        "start_clock": start,
+        "end_clock": target,
+        "span": max(0, target - start),
+        "mode": "SCHEDULED_ONLY",
+        "current_clock": current,
+    }
+
+
+def _materialization_result(session, plan: dict, employment: dict,
+                            target_date: str, target_clock: int,
+                            status: str, produced: int, replayed: int,
+                            recovered: int, touched: list[dict]) -> dict:
+    periods = []
+    for period in plan["periods"]:
+        receipts = _receipt_rows(session, plan["source"], period["period_id"])
+        if not receipts:
+            continue
+        periods.append(_period_state_row(session, plan, period, receipts))
+    return {
+        "schema": MATERIALIZATION_SCHEMA,
+        "grade": "SOURCEFREE_S2_ONLY",
+        "status": status,
+        "produced_states": produced,
+        "replayed_states": replayed,
+        "recovered_receipts": recovered,
+        "target_date": target_date,
+        "target_clock": target_clock,
+        "root_hash": plan["root"],
+        "branch_id": session.branch_id,
+        "clock": session.clock(),
+        "plan_source": plan["source"],
+        "employment_source": employment["source"],
+        "periods": periods,
+        "touched": touched,
+        "provenance": detached(plan["provenance"]),
+        "read_boundary": detached(READ_BOUNDARY),
+    }
+
+
+def _recover_missing_receipts(session, plan: dict, employment: dict,
+                              target_date: str, target_clock: int) -> int:
+    """Recover a B02 state produced before its receipt in a crashed call."""
+    existing = _receipt_rows(session, plan["source"])
+    receipt_ids = {row.get("state_id") for row in existing}
+    recovered = 0
+    for state in _all_states(session):
+        if state.get("state_id") in receipt_ids:
+            continue
+        domain = state.get("domain") or {}
+        if domain.get("mode") != "SCHEDULED_ONLY":
+            continue
+        period = next((row for row in plan["periods"]
+                       if row["start_clock"] <= state.get("start")
+                       and state.get("end") <= row["end_clock"]), None)
+        if period is None:
+            continue
+        try:
+            expected = _segments_for_range(
+                plan, employment, state["start"], state["end"])
+        except RecursionRefusal:
+            continue
+        actual = tuple(
+            (int(row[0]), int(row[1])) if isinstance(row, (list, tuple))
+            else (int(row["start"]), int(row["end"]))
+            for row in domain.get("segments") or []
+        )
+        if actual != expected:
+            continue
+        _append_receipt(session, _receipt_document(
+            session, plan, employment, period, target_date, target_clock,
+            state, "RECOVERED",
+        ))
+        receipt_ids.add(state["state_id"])
+        recovered += 1
+    return recovered
+
+
+def materialize_to(session, as_of_date: str) -> dict:
+    """Advance the existing S46 clock to a dated target incrementally.
+
+    Only the not-yet-elapsed range from the current clock to the target is
+    materialized.  A prior period or segment is never replayed from its start,
+    a past target is refused, and the employment change is split only when it
+    falls inside the newly advanced range.
     """
     plan = read_period_plan(session)
     employment = read_employment(session)
@@ -615,53 +989,136 @@ def materialize_periods(session) -> dict:
         raise RecursionRefusal("P6_PERIOD_FORK_MATERIALIZATION_NOT_SUPPORTED")
     if plan["employment_source"] != employment["source"]:
         raise RecursionRefusal("P6_PERIOD_EMPLOYMENT_SOURCE_MISMATCH")
-    domains = _period_domains(session, plan, employment)
-    index = _state_index(session)
-    produced, rows = 0, []
-    for item in domains:
-        period, domain = item["period"], item["domain"]
-        matches = index.get(domain["domain_hash"], [])
-        if len(matches) > 1:
-            raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
-        if matches:
-            state = matches[0]
-        else:
-            if session.clock() > domain["start"]:
-                raise RecursionRefusal("P6_PERIOD_LOGICAL_CLOCK_IN_PAST")
-            state = session.produce_interval(domain)
-            if state.get("domain_hash") != domain["domain_hash"]:
+    as_of = _date(as_of_date, "P6_PERIOD_AS_OF_DATE")
+    target_clock = _logical_tick(plan, as_of)
+    if target_clock < plan["periods"][0]["start_clock"] or target_clock > plan["periods"][-1]["end_clock"]:
+        raise RecursionRefusal("P6_PERIOD_OUTSIDE_PLAN")
+    current = session.clock()
+    if target_clock < current:
+        raise RecursionRefusal("P6_PERIOD_CLOCK_IN_PAST")
+    recovered_initial = _recover_missing_receipts(
+        session, plan, employment, as_of_date, target_clock)
+    if target_clock == current:
+        status = "RECOVERED" if recovered_initial else "ALREADY_CURRENT"
+        return _materialization_result(
+            session, plan, employment, as_of_date, target_clock,
+            status, 0, sum(
+                len(_receipt_rows(session, plan["source"], period["period_id"]))
+                for period in plan["periods"]), recovered_initial, [],
+        )
+    produced = replayed = 0
+    recovered = recovered_initial
+    touched = []
+    for period in plan["periods"]:
+        start = max(period["start_clock"], session.clock())
+        end = min(period["end_clock"], target_clock)
+        if end <= start:
+            continue
+        actor = session.world().actor_state.get("A", {}).get("actor_id")
+        if not _text(actor):
+            raise RecursionRefusal("P6_PERIOD_ACTOR_UNAVAILABLE")
+        from s46.model import make_domain
+        segments = _segments_for_range(plan, employment, start, end)
+        domain = make_domain(
+            mode="SCHEDULED_ONLY", start=start, end=end, segments=segments,
+            actor_id=actor, branch_id=session.branch_id,
+        )
+        receipts = _receipt_rows(session, plan["source"], period["period_id"])
+        existing = next((row for row in receipts
+                         if row.get("domain_hash") == domain["domain_hash"]), None)
+        by_id, by_domain = _state_maps(_all_states(session))
+        if existing is not None:
+            state = by_id.get(existing.get("state_id"))
+            if state is None:
+                raise RecursionRefusal("P6_PERIOD_STATE_SEVERED")
+            if (state.get("domain_hash") != domain["domain_hash"]
+                    or state.get("start") != start or state.get("end") != end):
                 raise RecursionRefusal("P6_PERIOD_STATE_DOMAIN_MISMATCH")
-            index[domain["domain_hash"]] = [state]
-            produced += 1
-        if state.get("start") != period["start_clock"] or state.get("end") != period["end_clock"]:
-            raise RecursionRefusal("P6_PERIOD_STATE_CLOCK_MISMATCH")
-        rows.append({
+            replayed += 1
+            receipt_status = "REPLAYED"
+        else:
+            matches = by_domain.get(domain["domain_hash"], [])
+            if len(matches) > 1:
+                raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
+            if matches:
+                state = matches[0]
+                if state.get("start") != start or state.get("end") != end:
+                    raise RecursionRefusal("P6_PERIOD_STATE_CLOCK_MISMATCH")
+                recovered += 1
+                receipt_status = "RECOVERED"
+            else:
+                if session.clock() > start:
+                    raise RecursionRefusal("P6_PERIOD_LOGICAL_CLOCK_IN_PAST")
+                state = session.produce_interval(domain)
+                if (state.get("domain_hash") != domain["domain_hash"]
+                        or state.get("start") != start or state.get("end") != end):
+                    raise RecursionRefusal("P6_PERIOD_STATE_DOMAIN_MISMATCH")
+                produced += 1
+                receipt_status = "PRODUCED"
+            _append_receipt(session, _receipt_document(
+                session, plan, employment, period, as_of_date, target_clock,
+                state, receipt_status,
+            ))
+        if session.clock() != state["end"]:
+            raise RecursionRefusal("P6_PERIOD_CLOCK_DID_NOT_ADVANCE")
+        touched.append({
             "period_id": period["period_id"],
-            "start_date": period["start_date"],
-            "end_date": period["end_date"],
-            "start_clock": period["start_clock"],
-            "end_clock": period["end_clock"],
+            "start_clock": start,
+            "end_clock": end,
             "domain_hash": domain["domain_hash"],
-            **_interval_summary(state),
+            "state_id": state["state_id"],
+            "receipt_status": receipt_status,
         })
-    return {
-        "schema": MATERIALIZATION_SCHEMA,
-        "grade": "SOURCEFREE_S2_ONLY",
-        "status": "MATERIALIZED" if produced else "REPLAYED",
-        "produced_states": produced,
-        "root_hash": plan["root"],
-        "branch_id": session.branch_id,
-        "clock": session.clock(),
-        "plan_source": plan["source"],
-        "employment_source": employment["source"],
-        "periods": rows,
-        "provenance": detached(plan["provenance"]),
-        "read_boundary": detached(READ_BOUNDARY),
-    }
+        if session.clock() >= target_clock:
+            break
+    if session.clock() != target_clock:
+        raise RecursionRefusal("P6_PERIOD_MATERIALIZATION_INCOMPLETE")
+    status = "MATERIALIZED" if produced else ("RECOVERED" if recovered else "REPLAYED")
+    return _materialization_result(
+        session, plan, employment, as_of_date, target_clock, status,
+        produced, replayed, recovered, touched,
+    )
+
+
+def materialize_periods(session) -> dict:
+    """Materialize the whole plan through the incremental dated API.
+
+    This is the legacy full-plan wrapper.  It still advances only from the
+    current clock; it never replays an already elapsed period.  Use
+    materialize_to for a bounded partial advance.
+    """
+    plan = read_period_plan(session)
+    last_date = plan["periods"][-1]["end_date"]
+    result = materialize_to(session, last_date)
+    if result["status"] == "ALREADY_CURRENT" and result["periods"]:
+        result = {**result, "status": "REPLAYED"}
+    return result
+
+
+def _covering_states(states: list[dict], tick: int, *, actor_id: str,
+                     branch_id: str, period: dict) -> list[dict]:
+    return [
+        state for state in states
+        if state.get("actor_id") == actor_id
+        and state.get("branch_id") == branch_id
+        and state.get("start") <= tick < state.get("end")
+        and period["start_clock"] <= state.get("start") < state.get("end")
+        <= period["end_clock"]
+    ]
+
+
+def _state_interval_read(state: dict, *, b02_ids: set[str], tick: int) -> dict:
+    summary = _interval_summary(state)
+    summary["mode"] = (state.get("domain") or {}).get("mode", "")
+    summary["admitted_clock"] = state.get("clock", 0)
+    summary["b02_materialized"] = state.get("state_id") in b02_ids
+    summary["available_at_as_of"] = int(state.get("clock", 0)) <= tick
+    summary["retrospective"] = not summary["available_at_as_of"]
+    return summary
 
 
 def read_material_period(session, as_of_date: str) -> dict:
-    """Read the dated material period and employment as-of a calendar date."""
+    """Read the dated period, employment and state currentness as-of a date."""
     plan = read_period_plan(session)
     employment = read_employment(session)
     if plan["employment_source"] != employment["source"]:
@@ -671,27 +1128,72 @@ def read_material_period(session, as_of_date: str) -> dict:
     logical_tick = _logical_tick(plan, as_of)
     if not period["start_clock"] <= logical_tick < period["end_clock"]:
         raise RecursionRefusal("P6_PERIOD_CLOCK_MISMATCH")
+    current_clock = session.clock()
+    current_date = _date_from_clock(plan, current_clock)
+    current_term = _employment_as_of(employment["terms"], current_date)
     term = _employment_as_of(employment["terms"], as_of)
-    interval, interval_status = None, "NOT_MATERIALIZED"
+    relation = ("PAST" if logical_tick < current_clock
+                else "CURRENT" if logical_tick == current_clock else "FUTURE")
     provenance = detached(plan["provenance"])
+    actor_id = session.world().actor_state.get("A", {}).get("actor_id")
+    states = [] if provenance["inherited"] else _all_states(session)
+    receipts = [] if provenance["inherited"] else _receipt_rows(
+        session, plan["source"], period["period_id"])
+    b02_ids = {row.get("state_id") for row in receipts}
+    interval = None
+    interval_status = "NOT_MATERIALIZED"
+    interval_detail = "NOT_MATERIALIZED"
+    state_admitted_clock = None
+    state_available_at_as_of = None
+    retrospective = None
+    current_interval = None
+    current_interval_status = "NOT_MATERIALIZED"
+    progress = None
     if provenance["inherited"]:
         interval_status = "NOT_AVAILABLE_ON_FORK"
+        interval_detail = "NOT_AVAILABLE_ON_FORK"
     else:
-        domains = _period_domains(session, plan, employment)
-        domain = next(row["domain"] for row in domains
-                      if row["period"]["period_id"] == period["period_id"])
-        index = _state_index(session)
-        matches = index.get(domain["domain_hash"], [])
-        if len(matches) > 1:
+        progress = period_progress(session, period["period_id"])
+        covering = _covering_states(
+            states, logical_tick, actor_id=actor_id,
+            branch_id=session.branch_id, period=period)
+        if len(covering) > 1:
             raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
-        if matches:
-            interval = _interval_summary(matches[0])
+        if covering:
+            interval = _state_interval_read(
+                covering[0], b02_ids=b02_ids, tick=logical_tick)
             interval_status = "MATERIALIZED"
+            interval_detail = (
+                "ELAPSED_BY_OTHER_OWNER" if not interval["b02_materialized"]
+                else "MATERIALIZED_RETROSPECTIVELY" if interval["retrospective"]
+                else "MATERIALIZED_AT_AS_OF")
+            state_admitted_clock = interval["admitted_clock"]
+            state_available_at_as_of = interval["available_at_as_of"]
+            retrospective = interval["retrospective"]
+        else:
+            interval_detail = (
+                "FUTURE_NOT_MATERIALIZED" if relation == "FUTURE"
+                else "NOT_MATERIALIZED_AT_AS_OF" if relation == "PAST"
+                else "CURRENT_NOT_MATERIALIZED")
+        current_covering = [
+            state for state in states
+            if state.get("actor_id") == actor_id
+            and state.get("branch_id") == session.branch_id
+            and state.get("start") <= current_clock < state.get("end")
+        ]
+        if len(current_covering) == 1:
+            current_interval = _interval_summary(current_covering[0])
+            current_interval["mode"] = (
+                current_covering[0].get("domain") or {}).get("mode", "")
+            current_interval_status = "MATERIALIZED"
+        elif len(current_covering) > 1:
+            raise RecursionRefusal("P6_PERIOD_DUPLICATE_STATE")
     return {
         "schema": MATERIAL_PERIOD_READ_SCHEMA,
         "grade": "SOURCEFREE_S2_ONLY",
         "as_of_date": as_of_date,
         "logical_tick": logical_tick,
+        "as_of_relation": relation,
         "calendar_basis": plan["calendar_basis"],
         "clock_basis": plan["clock_basis"],
         "ticks_per_day": plan["ticks_per_day"],
@@ -699,28 +1201,33 @@ def read_material_period(session, as_of_date: str) -> dict:
         "employment": term,
         "employment_status": ("EFFECTIVE" if term is not None
                               else "UNKNOWN_NO_EFFECTIVE_TERM"),
+        "current_date": current_date.isoformat(),
+        "current_employment": detached(current_term),
+        "current_employment_status": ("EFFECTIVE" if current_term is not None
+                                      else "UNKNOWN_NO_EFFECTIVE_TERM"),
         "employment_source": employment["source"],
         "plan_source": plan["source"],
         "interval": interval,
         "interval_status": interval_status,
+        "interval_status_detail": interval_detail,
+        "state_admitted_clock": state_admitted_clock,
+        "state_available_at_as_of": state_available_at_as_of,
+        "retrospective": retrospective,
+        "current_interval": current_interval,
+        "current_interval_status": current_interval_status,
+        "period_progress": progress,
         "root_hash": plan["root"],
         "branch_id": session.branch_id,
-        "clock": session.clock(),
+        "clock": current_clock,
         "provenance": provenance,
         "read_boundary": detached(READ_BOUNDARY),
     }
 
 
-def p3_interval_span(session, period_id: str) -> dict:
-    """Return only the existing P3 EventProposal.interval shape for a period."""
-    plan = read_period_plan(session)
-    for period in plan["periods"]:
-        if period["period_id"] == period_id:
-            return {
-                "mode": "SCHEDULED_ONLY",
-                "span": period["end_clock"] - period["start_clock"],
-            }
-    raise RecursionRefusal("P6_PERIOD_UNKNOWN")
+def p3_interval_span(session, period_id: str, *, to_date: Any = None) -> dict:
+    """Return only the existing P3 EventProposal.interval shape, net of progress."""
+    span = remaining_span(session, period_id, to_date=to_date)
+    return {"mode": "SCHEDULED_ONLY", "span": span["span"]}
 
 
 def period_plan_fixture(session) -> dict:
@@ -733,9 +1240,11 @@ def period_plan_fixture(session) -> dict:
 __all__ = [
     "EMPLOYMENT_SLOT", "PERIOD_SLOT", "EMPLOYMENT_SCHEMA", "EMPLOYMENT_READ_SCHEMA",
     "PERIOD_SCHEMA", "PERIOD_READ_SCHEMA", "MATERIAL_PERIOD_READ_SCHEMA",
-    "MATERIALIZATION_SCHEMA", "GRADE", "CALENDAR_BASIS", "CLOCK_BASIS",
+    "MATERIALIZATION_SCHEMA", "MATERIALIZATION_RECEIPT_KIND",
+    "MATERIALIZATION_RECEIPT_SCHEMA", "GRADE", "CALENDAR_BASIS", "CLOCK_BASIS",
     "TICKS_PER_DAY", "MAX_PERIODS", "MAX_DAYS",
     "default_employment_terms", "default_periods", "period_plan_fixture",
     "establish_period_plan", "read_employment", "read_period_plan",
-    "materialize_periods", "read_material_period", "p3_interval_span",
+    "materialize_periods", "materialize_to", "period_progress",
+    "remaining_span", "read_material_period", "p3_interval_span",
 ]
