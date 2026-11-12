@@ -27,9 +27,21 @@ jobs:
             rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
             rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py \
             --junitxml=pyat-c1-agent-b-sourcefree.xml
+      - name: Preservation — source-equivalence, governed operations and joined-resume sourcefree paths
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pre553_source_equivalence.py \
+            rawlsing_next/tests/test_universal_workload.py \
+            rawlsing_next/tests/test_universal_workload_custody.py \
+            rawlsing_next/tests/test_universal_source_byte_custody.py \
+            --junitxml=pyat-c1-agent-b-preservation.xml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: pyat-c1-agent-b-sourcefree
-          path: pyat-c1-agent-b-sourcefree.xml
+          path: |
+            pyat-c1-agent-b-sourcefree.xml
+            pyat-c1-agent-b-preservation.xml
           if-no-files-found: ignore
