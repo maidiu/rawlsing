@@ -4,14 +4,17 @@ The parent is the stable supporting actor registered by C01. Its ordinary
 material state lives in the existing P2 world actor state; its activity and
 antecedent changes are C12 episodes and, for performed activity, real world
 events authored by that parent. No second scheduler, parent world, time ledger
-or psychological model is created. Dated historical periods remain HELD because
-B02 calendar qualification is not built.
+or psychological model is created. A committed B02 period plan is read as the
+current period/clock context when present; full incremental/two-period proof
+remains held until an exact current-period hook exists.
 """
 from __future__ import annotations
 
 from contextlib import contextmanager
+from datetime import date, timedelta
 import fcntl
 from pathlib import Path
+import sys
 from typing import Any, Iterable, Mapping
 
 from .contracts import RecursionRefusal, canonical, detached, digest
@@ -28,7 +31,16 @@ PARENT_ACTIVITY_KIND = "P2_PARENT_ACTIVITY"
 PARENT_CIRCUMSTANCE_KIND = "P2_PARENT_CIRCUMSTANCE"
 PARENT_ACTIVITY_EVENT_KIND = "MATERIAL_ACTIVITY"
 PARENT_GRADE = "SOURCEFREE_S2_ONLY"
-PARENT_B02_HOLD = "HELD_B02_CALENDAR_ABSENT"
+PARENT_B02_HOLD = "B02_PERIOD_PLAN_ABSENT_ON_ROOT"
+PARENT_B02_QUALIFIED = "B02_PERIOD_CONTEXT_READ"
+PARENT_B02_UNQUALIFIED = "B02_PERIOD_CONTEXT_UNQUALIFIED"
+PARENT_B02_MODULE_MISSING = "B02_MODULE_UNAVAILABLE"
+PARENT_B02_FULL_PROOF_HOLD = "HELD_INCREMENTAL_CURRENT_PERIOD_API_MISSING"
+B02_REQUIRED_HOOK = (
+    "historical_period.current_material_period(session) -> exact current "
+    "period/tick and incremental interval without materialize_periods "
+    "advancing the entire plan"
+)
 PARENT_MATERIAL_BOUNDARY = {
     "owner": "PARENT_ACTOR_LOCAL_P2_STATE",
     "household_cash": "NOT_READ",
@@ -38,13 +50,13 @@ PARENT_MATERIAL_BOUNDARY = {
 }
 PARENT_HISTORICAL_INGRESS = {
     "status": PARENT_B02_HOLD,
-    "required": [
-        "B02_PERIOD_BOUNDARY",
-        "B02_AS_OF_CLOCK_MAPPING",
-        "SOURCE_PERIOD_REF",
-        "MATERIAL_SOURCE_BINDING",
-    ],
+    "period_qualification": PARENT_B02_HOLD,
     "dates_claimed": False,
+    "full_dated_proof": PARENT_B02_FULL_PROOF_HOLD,
+    "required_hook": B02_REQUIRED_HOOK,
+    "b02_employment_holder_actor_slot": "A",
+    "b02_employment_applied_to_parent": False,
+    "parent_employment_source": "PARENT_ACTOR_LOCAL",
 }
 
 
@@ -128,6 +140,157 @@ def _parent_registration(session, parent_id: str) -> dict:
     if not _text(parent_id):
         raise RecursionRefusal("PARENT_ACTOR_SCHEMA")
     return read_supporting_actor(session, parent_id)
+
+
+def _historical_period_module():
+    try:
+        import historical_period
+        return historical_period
+    except ImportError:
+        path = (Path(__file__).resolve().parents[2]
+                / "SOROK-DUEL-B02-R1")
+        if path.is_dir() and str(path) not in sys.path:
+            sys.path.insert(0, str(path))
+            try:
+                import historical_period
+                return historical_period
+            except ImportError:
+                return None
+        return None
+
+
+def historical_period_module():
+    """Return the actual B02 module when available, else None."""
+    return _historical_period_module()
+
+
+def _period_context(session) -> dict:
+    """Qualify the actual current S46 clock against B02's committed period plan."""
+    base = dict(PARENT_HISTORICAL_INGRESS)
+    base["reason"] = None
+    module = _historical_period_module()
+    if module is None:
+        return {**base, "status": PARENT_B02_MODULE_MISSING,
+                "period_qualification": PARENT_B02_MODULE_MISSING,
+                "reason": "historical_period module unavailable"}
+    try:
+        plan = module.read_period_plan(session)
+    except RecursionRefusal as exc:
+        code = str(exc)
+        if "ABSENT" in code:
+            world = session.world()
+            employment_slot = getattr(module, "EMPLOYMENT_SLOT", None)
+            period_slot = getattr(module, "PERIOD_SLOT", None)
+            has_employment = bool(employment_slot in world.resources)
+            has_period = bool(period_slot in world.resources)
+            if not has_employment and not has_period:
+                return {**base, "reason": code}
+        return {**base, "status": PARENT_B02_UNQUALIFIED,
+                "period_qualification": PARENT_B02_UNQUALIFIED,
+                "reason": code}
+    try:
+        anchor = date.fromisoformat(plan["anchor_date"])
+        ticks = plan["ticks_per_day"]
+        delta = session.clock() - plan["anchor_clock"]
+        if delta < 0:
+            raise RecursionRefusal("P6_PERIOD_CLOCK_BEFORE_ANCHOR")
+        days, remainder = divmod(delta, ticks)
+        if remainder:
+            raise RecursionRefusal("P6_PERIOD_CLOCK_NOT_DAY_ALIGNED")
+        as_of = anchor + timedelta(days=days)
+        material = module.read_material_period(session, as_of.isoformat())
+        if material["logical_tick"] != session.clock():
+            raise RecursionRefusal("P6_PERIOD_CURRENT_LOGICAL_TICK_MISMATCH")
+    except (RecursionRefusal, ValueError, KeyError) as exc:
+        return {**base, "status": PARENT_B02_UNQUALIFIED,
+                "period_qualification": PARENT_B02_UNQUALIFIED,
+                "reason": str(exc)}
+    return {
+        "status": PARENT_B02_QUALIFIED,
+        "period_qualification": PARENT_B02_QUALIFIED,
+        "plan_source": plan["source"],
+        "employment_source": plan["employment_source"],
+        "b02_employment_holder_actor_slot": "A",
+        "b02_employment_applied_to_parent": False,
+        "parent_employment_source": "PARENT_ACTOR_LOCAL",
+        "as_of_date": as_of.isoformat(),
+        "logical_tick": material["logical_tick"],
+        "period": detached(material["period"]),
+        "calendar_basis": material["calendar_basis"],
+        "clock_basis": material["clock_basis"],
+        "ticks_per_day": material["ticks_per_day"],
+        "interval_status": material["interval_status"],
+        "provenance": detached(material["provenance"]),
+        "dates_claimed": True,
+        "full_dated_proof": PARENT_B02_FULL_PROOF_HOLD,
+        "required_hook": B02_REQUIRED_HOOK,
+        "reason": None,
+        "source_binding": {
+            "period_plan_source": plan["source"],
+            "employment_source": plan["employment_source"],
+            "employment_holder_actor_slot": "A",
+            "employment_applied_to_parent": False,
+            "parent_employment_source": "PARENT_ACTOR_LOCAL",
+        },
+    }
+
+
+def _require_period_for_write(context: Mapping[str, Any]) -> None:
+    if context.get("status") in {PARENT_B02_UNQUALIFIED,
+                                 "B02_PERIOD_CONTEXT_REFUSED"}:
+        raise RecursionRefusal(
+            "PARENT_ACTIVITY_B02_PERIOD_UNAVAILABLE:"
+            + str(context.get("reason")))
+
+
+def _historical_ingress(context: Mapping[str, Any]) -> dict:
+    return {
+        "status": context.get("status", PARENT_B02_HOLD),
+        "period_qualification": context.get(
+            "period_qualification", PARENT_B02_HOLD),
+        "dates_claimed": bool(context.get("dates_claimed")),
+        "full_dated_proof": context.get(
+            "full_dated_proof", PARENT_B02_FULL_PROOF_HOLD),
+        "required_hook": context.get("required_hook", B02_REQUIRED_HOOK),
+        "b02_employment_holder_actor_slot": context.get(
+            "b02_employment_holder_actor_slot", "A"),
+        "b02_employment_applied_to_parent": False,
+        "parent_employment_source": "PARENT_ACTOR_LOCAL",
+        "plan_source": context.get("plan_source"),
+        "as_of_date": context.get("as_of_date"),
+        "logical_tick": context.get("logical_tick"),
+        "interval_status": context.get("interval_status"),
+        "reason": context.get("reason"),
+    }
+
+
+def _validate_period_context(value: Any, *, qualification: Any,
+                             logical_tick: int | None = None) -> dict:
+    if not isinstance(value, Mapping):
+        raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+    context = detached(value)
+    if context.get("status") != qualification:
+        raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+    if context.get("b02_employment_applied_to_parent") is not False:
+        raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+    if qualification == PARENT_B02_QUALIFIED:
+        if (not _text(context.get("plan_source"))
+                or not _text(context.get("employment_source"))
+                or context.get("b02_employment_holder_actor_slot") != "A"
+                or context.get("parent_employment_source") != "PARENT_ACTOR_LOCAL"
+                or not isinstance(context.get("period"), Mapping)
+                or not _text(context["period"].get("period_id"))
+                or not _text(context.get("as_of_date"))
+                or not _text(context.get("calendar_basis"))
+                or not _text(context.get("clock_basis"))
+                or type(context.get("logical_tick")) is not int):
+            raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+        if logical_tick is not None and context["logical_tick"] != logical_tick:
+            raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+    elif qualification not in {PARENT_B02_HOLD, PARENT_B02_UNQUALIFIED,
+                                PARENT_B02_MODULE_MISSING}:
+        raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+    return context
 
 
 @contextmanager
@@ -220,6 +383,7 @@ def _read_material(session, *, parent_id: str, as_actor: str | None) -> dict:
     history = _parent_material_history(session, alias, parent_id)
     if history[-1][1] != stored["source"]:
         raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+    period = _period_context(session)
     return {
         "schema": PARENT_MATERIAL_READ_SCHEMA,
         "grade": PARENT_GRADE,
@@ -236,9 +400,20 @@ def _read_material(session, *, parent_id: str, as_actor: str | None) -> dict:
         "material": {key: stored[key] for key in (
             "employment_status", "wage_units_per_hour", "debt_units",
             "care_hours_due", "cash_units", "free_hours", "currency_unit")},
-        "period_qualification": PARENT_B02_HOLD,
-        "historical_dates": "NOT_AVAILABLE",
-        "historical_ingress": dict(PARENT_HISTORICAL_INGRESS),
+        "employment_basis": {
+            "source": "PARENT_ACTOR_LOCAL",
+            "holder_actor_id": parent_id,
+            "wage_units_per_hour": stored["wage_units_per_hour"],
+            "currency_unit": stored["currency_unit"],
+            "b02_employment_holder_actor_slot": "A",
+            "b02_employment_applied_to_parent": False,
+        },
+        "period_qualification": period["period_qualification"],
+        "period_context": period,
+        "historical_dates": (
+            "B02_CURRENT_PERIOD_ONLY" if period.get("dates_claimed")
+            else "NOT_AVAILABLE"),
+        "historical_ingress": _historical_ingress(period),
         "material_boundary": _material_boundary(stored["currency_unit"]),
         "child_request": "NOT_EVALUATED",
         "nadia_state": "NOT_READ",
@@ -358,7 +533,18 @@ def _options(material: Mapping[str, Any]) -> list[dict]:
 def parent_feasible_actions(session, parent_id: str, *,
                             as_actor: str | None) -> dict:
     material = _read_material(session, parent_id=parent_id, as_actor=as_actor)
-    options = _options(material["material"])
+    period = material["period_context"]
+    if period["status"] in {PARENT_B02_UNQUALIFIED,
+                            "B02_PERIOD_CONTEXT_REFUSED"}:
+        options = [{
+            "activity": activity,
+            "parameters": {},
+            "status": "HELD",
+            "reasons": ["B02_PERIOD_UNAVAILABLE"],
+            "after_material": material["material"],
+        } for activity in ("PAID_WORK", "CARE_DEPENDENT", "PAY_DEBT")]
+    else:
+        options = _options(material["material"])
     return {
         "schema": PARENT_FEASIBLE_SCHEMA,
         "grade": PARENT_GRADE,
@@ -374,9 +560,11 @@ def parent_feasible_actions(session, parent_id: str, *,
         "option_count": len(options),
         "admissible": [row["activity"] for row in options
                        if row["status"] == "ADMISSIBLE"],
-        "period_qualification": PARENT_B02_HOLD,
-        "historical_dates": "NOT_AVAILABLE",
-        "historical_ingress": dict(PARENT_HISTORICAL_INGRESS),
+        "period_qualification": material["period_qualification"],
+        "period_context": period,
+        "historical_dates": material["historical_dates"],
+        "historical_ingress": material["historical_ingress"],
+        "employment_basis": material["employment_basis"],
         "material_boundary": _material_boundary(
             material["material"].get("currency_unit")),
         "child_request": "NOT_EVALUATED",
@@ -414,6 +602,8 @@ def _establish_parent_material(session, parent_id: str, *, fixture: Mapping[str,
             result["status"] = "UNCHANGED"
             return result
         raise RecursionRefusal("PARENT_MATERIAL_ALREADY_ESTABLISHED")
+    period = _period_context(session)
+    _require_period_for_write(period)
     store = session.product.store
     all_episodes = store.episodes(session.branch_id)
     episodes = [
@@ -476,6 +666,8 @@ def _establish_parent_material(session, parent_id: str, *, fixture: Mapping[str,
                     "source_ref": document["source_ref"],
                     "material_source": document["source"],
                     "material": content,
+                    "period_qualification": period["period_qualification"],
+                    "period_context": period,
                 },
             )
             world.actor_state[alias]["material"] = document
@@ -556,6 +748,7 @@ def _commit_parent_circumstances(session, parent_id: str, *, operation_id: str,
     })
     after_content = _apply_changes(content, changes)
     document = _material_document(session, parent_id, after_content)
+    period = material["period_context"]
     if document["source"] == material["source"]:
         return {
             "schema": PARENT_CIRCUMSTANCE_RECEIPT_SCHEMA,
@@ -571,8 +764,11 @@ def _commit_parent_circumstances(session, parent_id: str, *, operation_id: str,
             "clock": material["clock"],
             "event_effect": "NONE",
             "operation_kind": "ANTECEDENT_MATERIAL_CHANGE",
-            "period_qualification": PARENT_B02_HOLD,
+            "period_qualification": period["period_qualification"],
+            "period_context": period,
+            "historical_ingress": _historical_ingress(period),
         }
+    _require_period_for_write(period)
     receipt = {
         "schema": PARENT_CIRCUMSTANCE_RECEIPT_SCHEMA,
         "grade": PARENT_GRADE,
@@ -587,7 +783,9 @@ def _commit_parent_circumstances(session, parent_id: str, *, operation_id: str,
         "clock": material["clock"],
         "event_effect": "NONE",
         "operation_kind": "ANTECEDENT_MATERIAL_CHANGE",
-        "period_qualification": PARENT_B02_HOLD,
+        "period_qualification": period["period_qualification"],
+        "period_context": period,
+        "historical_ingress": _historical_ingress(period),
     }
     store = session.product.store
     world = session.world()
@@ -608,6 +806,8 @@ def _commit_parent_circumstances(session, parent_id: str, *, operation_id: str,
                 "changes": detached(changes),
                 "material_before_source": material["source"],
                 "material_after_source": document["source"],
+                "period_qualification": period["period_qualification"],
+                "period_context": period,
                 "receipt": receipt,
             },
         )
@@ -652,6 +852,8 @@ def _record_parent_activity(session, parent_id: str, *, operation_id: str,
         receipt = dict(body.get("receipt") or {})
         receipt["status"] = "REPLAY"
         return receipt
+    period = material["period_context"]
+    _require_period_for_write(period)
     evaluation = _evaluate_activity(
         material["material"], activity, parameters)
     if evaluation["status"] != "ADMISSIBLE":
@@ -679,6 +881,9 @@ def _record_parent_activity(session, parent_id: str, *, operation_id: str,
         "clock": clock,
         "material_before_source": material["source"],
         "material_after_source": after_document["source"],
+        "period_qualification": period["period_qualification"],
+        "period_source": period.get("plan_source"),
+        "period_id": (period.get("period") or {}).get("period_id"),
     })
     summaries = {
         "PAID_WORK": "The parent works a paid shift.",
@@ -701,7 +906,9 @@ def _record_parent_activity(session, parent_id: str, *, operation_id: str,
             "material_before_source": material["source"],
             "material_after_source": after_document["source"],
             "activity_source": activity_source,
-            "period_qualification": PARENT_B02_HOLD,
+            "period_qualification": period["period_qualification"],
+            "period_context": period,
+            "historical_ingress": _historical_ingress(period),
             "visibility": "PARENT_ORDINARY_ACTIVITY",
             "household_effect": "NONE_PARENT_LOCAL_ONLY",
             "child_request": "NOT_EVALUATED",
@@ -728,9 +935,11 @@ def _record_parent_activity(session, parent_id: str, *, operation_id: str,
         "activity_source": activity_source,
         "before_material_source": material["source"],
         "after_material_source": after_document["source"],
-        "period_qualification": PARENT_B02_HOLD,
-        "historical_ingress": dict(PARENT_HISTORICAL_INGRESS),
-        "material_boundary": dict(PARENT_MATERIAL_BOUNDARY),
+        "period_qualification": period["period_qualification"],
+        "period_context": period,
+        "historical_ingress": _historical_ingress(period),
+        "material_boundary": _material_boundary(
+            material["material"]["currency_unit"]),
         "household_effect": "NONE_PARENT_LOCAL_ONLY",
         "child_request": "NOT_EVALUATED",
         "nadia_state": "NOT_READ",
@@ -758,6 +967,8 @@ def _record_parent_activity(session, parent_id: str, *, operation_id: str,
                 "source_ref": material["source_ref"],
                 "material_before_source": material["source"],
                 "material_after_source": after_document["source"],
+                "period_qualification": period["period_qualification"],
+                "period_context": period,
                 "event_id": event["event_id"],
                 "event_hash": event["hash"],
                 "receipt": activity_receipt,
@@ -806,8 +1017,16 @@ def _validate_activity_event(session, *, body: Mapping[str, Any],
             or event_body.get("parent_alias") != alias
             or not _text(event_body.get("currency_unit"))
             or event_body.get("household_effect") != "NONE_PARENT_LOCAL_ONLY"
-            or event_body.get("period_qualification") != PARENT_B02_HOLD
             or event_body.get("visibility") != "PARENT_ORDINARY_ACTIVITY"):
+        raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
+    qualification = event_body.get("period_qualification")
+    period_context = _validate_period_context(
+        event_body.get("period_context"), qualification=qualification,
+        logical_tick=event.get("clock"))
+    if (body.get("period_qualification") != qualification
+            or body.get("period_context") != period_context
+            or receipt.get("period_qualification") != qualification
+            or receipt.get("period_context") != period_context):
         raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
     if (receipt.get("event_id") != event.get("event_id")
             or receipt.get("event_hash") != event.get("hash")
@@ -821,7 +1040,6 @@ def _validate_activity_event(session, *, body: Mapping[str, Any],
             != event_body.get("material_before_source")
             or receipt.get("after_material_source")
             != event_body.get("material_after_source")
-            or receipt.get("period_qualification") != PARENT_B02_HOLD
             or receipt.get("household_effect") != "NONE_PARENT_LOCAL_ONLY"
             or receipt.get("clock") != event.get("clock")):
         raise RecursionRefusal("PARENT_ACTIVITY_EVENT_MISMATCH")
@@ -881,8 +1099,10 @@ def read_parent_activity(session, parent_id: str, operation_id: str, *,
         "event_authored_by": event.get("actor_id"),
         "receipt": detached(body.get("receipt") or {}),
         "currency_unit": (body.get("receipt") or {}).get("currency_unit"),
-        "period_qualification": PARENT_B02_HOLD,
-        "historical_ingress": dict(PARENT_HISTORICAL_INGRESS),
+        "period_qualification": body.get("period_qualification"),
+        "period_context": detached(body.get("period_context") or {}),
+        "historical_ingress": _historical_ingress(
+            body.get("period_context") or {}),
         "material_boundary": _material_boundary(
             (body.get("receipt") or {}).get("currency_unit")),
         "household_effect": "NONE_PARENT_LOCAL_ONLY",
@@ -914,6 +1134,8 @@ def read_parent_history(session, parent_id: str, *,
                                               body.get("material_source")),
             "material_after_source": body.get("material_after_source",
                                              body.get("material_source")),
+            "period_qualification": body.get("period_qualification"),
+            "period_context": detached(body.get("period_context") or {}),
             "event_id": body.get("event_id"),
             "event_hash": body.get("event_hash"),
         })
@@ -923,6 +1145,7 @@ def read_parent_history(session, parent_id: str, *,
     current_source = (
         document.get("source") if isinstance(document, Mapping) else None)
     latest_source = rows[-1]["material_after_source"] if rows else None
+    period = _period_context(session)
     return {
         "schema": PARENT_HISTORY_SCHEMA,
         "grade": PARENT_GRADE,
@@ -936,9 +1159,12 @@ def read_parent_history(session, parent_id: str, *,
         "material_source": current_source,
         "latest_history_source": latest_source,
         "material_consistent": current_source == latest_source,
-        "period_qualification": PARENT_B02_HOLD,
-        "historical_dates": "NOT_AVAILABLE",
-        "historical_ingress": dict(PARENT_HISTORICAL_INGRESS),
+        "period_qualification": period["period_qualification"],
+        "period_context": period,
+        "historical_dates": (
+            "B02_CURRENT_PERIOD_ONLY" if period.get("dates_claimed")
+            else "NOT_AVAILABLE"),
+        "historical_ingress": _historical_ingress(period),
         "material_boundary": _material_boundary(
             document.get("currency_unit") if isinstance(document, Mapping) else None),
         "private_state": "NOT_READ",
