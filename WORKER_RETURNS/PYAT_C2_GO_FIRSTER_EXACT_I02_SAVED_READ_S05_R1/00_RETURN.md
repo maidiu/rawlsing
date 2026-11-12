@@ -37,3 +37,59 @@ Every path below is under rawlsing_next/ at the frozen PRE-MAIN read cut. Blob I
 ### Existing worker reuse, not duplicate implementation
 
 At unmerged W03 commit f420c2cdac0e2c537f7719de68c9f74e5514aa07, pre553_parquet_carrier.py blob 4a4fce1a62bda0b9e9b63320073a91f7b4c224d7 has bounded Parquet row writing, descriptor-relative O_NOFOLLOW ancestor containment and atomic staging. Its worker return reports 13 focused test passes and 68 selected passes/one skip, but nonauthor recheck and 100k persisted-query proof are outstanding. Its _read_rows_at still uses full read_table(...).to_pylist(). **REUSE** safe writer components only after its separate W03 review and writer lease. No second carrier, unpause or overlap.
+
+
+## C. Certified read-store ABI: implementable owner contract, not a fake seal
+
+Use ONE I02-owned internal adapter family; do not create a new public science or source authority. A qualified I02 factory receives an **independently held** accepted proof record, verifies complete C11 semantic/ref/occurrence keyspace, exact source/release/replay/physical hashes, codec/version and authorized storage root, then issues a privately constructed CertifiedReleaseHandle bound to that real root. Self-provided fields or an arbitrary Python Protocol implementation cannot mint I02 authority; principal isolation and external issuer require actual qualified host custody.
+
+~~~python
+@dataclass(frozen=True)
+class CertifiedReleaseHandle:
+    release_ref: ExactRef
+    source_artifact_ref: ExactRef
+    source_release_manifest_hash: str
+    semantic_release_hash: str
+    replay_manifest_ref: ExactRef
+    frontier_version: str
+    semantic_projection_id: str
+    m01_m18_coverage: Mapping[str, tuple[str, ...]]
+    accepted_i02_receipt_ref: ExactRef
+    full_ref_keyspace_root: str
+    physical_manifest_root: str
+    independent_publisher_record_ref: ExactRef
+
+class CertifiedC11ReadStore(Protocol):
+    def inventory_refs(self) -> tuple[ExactRef, ...]: ...
+    def snapshot_identity(self) -> str: ...
+    def resolve_release_exact(self, ref: ExactRef) -> CertifiedReleaseHandle: ...
+    def resolve_object_exact(self, ref: ExactRef): ...
+    def open_universe(self, release_ref: ExactRef, universe_ref: ExactRef): ...
+    def iter_complete_respondents(self, universe_ref: ExactRef): ...
+    def select_events(self, universe_ref: ExactRef, respondent_ref: ExactRef,
+                      native_question_ref: ExactRef, *, states=None): ...
+    def prove_member(self, ref: ExactRef): ...
+    def prove_nonmember(self, ref: ExactRef): ...
+    def require_current_use(self, exact_request, external_resolver): ...
+    def close(self): ...
+~~~
+
+**Existing owner adaptations required, not merely annotation changes:** (1) pre553_carrier_execution bind_repository_builder and CarrierNeutralResearchExecutor; (2) pre553_empirical_query execute_empirical_query, _resolve_release_indices and _release_index_for; (3) _pre553_query_common/_pre553_query_predicate authenticated release index with native event selector; (4) _pre553_query_eval full-domain respondent iteration, exact risk/denominator and used-object materialization; (5) I05 complete frontier via native I03; (6) pre553_batch_runner exact release verification and genuine receipt; (7) issued normal/joined workload; (8) replay-audit helpers with C11Repository-specific guards. Provide a **legacy real sealed C11Repository adapter** through the same owner API so reference queries retain exact behavior. The saved adapter never constructs a partial C11LogicalRelease with a private sentinel.
+
+**First complete sourcefree vertical slice:** build one actual governed sourcefree C11 through I02; compare legacy and disk-backed certified readers in a **fresh process** at CarrierNeutralResearchExecutor.execute_i03, execute_i05, BatchExecutionRunner.run, normal issued execution, joined resume and one real M1→M2→B5 learned consumer. Compare complete canonical native fact, typed negative, exact source/denominator/weight/risk/used-ref, replay and receipt preimage—not a SQL count. Perform changed-input severance and restore at the same actual first reader. A store that answers I03 but not Batch is not complete.
+
+**Resource obstruction to solve explicitly:** current _ReleaseIndex release field is C11LogicalRelease, its cache attestation tracks Python identity, native evaluator sorts the complete respondent domain, and exact fact/replay contracts embed complete member/ref vectors. An authenticated disk index may save object-reopen memory yet still exceed the 6 GiB process cap during fact construction. Prove total process-tree memory or return RESOURCE_HELD; a future compressed evidence reference format requires separate versioned scientific/consumer issuance, never silent count-only substitution.
+
+## D. Exhaustive I02 external-memory certification algorithm
+
+1. **Freeze governed inputs:** source SHA/snapshot, decoder/physical metadata, source release manifest, declared counts/sections, respondent/row/slot/occurrence mapping, authority snapshot/rule set, semantic projection protocol, exact absent/present alternatives. Original35 source-meaning issuance is distinct and cannot be invented by I02.
+2. **Stream physical cells into bounded staged runs:** each governed projected slot must appear once for every declared applicable physical respondent row, not merely every observed nonmissing value. Preserve native raw, typed missing/refused/inapplicable, canonical only where authorized, order/rank/multiple response, event-group ID, exact routing/coordinate/weight and source universe. Use source-qualified current decoder and keep a trusted source-retention ref.
+3. **Global external sort + joins:** sort by the exact canonical ref/key used in pre553_c11_ingest._candidate_projection_semantic_hash; separately sort complete response occurrence key (universe, scoped respondent, native question, component, event_group, response_event_id_or_deterministic_index). Merge across all spill partitions to reject duplicates even if content hashes differ. Validate all declared family counts, respondent/universe and question/event joins, authority snapshot set, native vs canonical question grants, routing/risk, weight/design and source relations. A per-partition local validation or an 18-key coverage dictionary cannot establish global completeness.
+4. **Canonical replay/semantic equality:** stream the original candidate section order and typed absence values through the same canonical representation as existing I02. Construct the **exact full multiset** from _all_nonmanifest_refs, including source_artifact_ref and source_snapshot_retention_ref, all section refs and replay bindings. Demand equality to ReplayManifest.closure_refs, never just subset membership. Validate positive replay authority, authority snapshot-set hash, source substrate refs, frontier/projection version and deterministic tie rule. Compute unchanged semantic release root from candidate projection hash + replay manifest ref + actual M01–M18 coverage, and compare against a separately witnessed accepted root or trusted full recomputation from original admitted source.
+5. **Physical/keyspace completeness:** write one canonical Parquet/Zstd relation family portfolio with sorted exact ref→location index and independent full-family count/root witnesses. Retain hashes for each file, schema, row group and locator; the publisher stores the expected root outside the candidate artifact. Verify selected positive rows by page/member and native canonical object ref hash. **Negative read:** require full certified family keyspace plus authenticated predecessor/successor/range exclusion, or independently witnessed empty family. A miss in a partial page is UNKNOWN/UNAVAILABLE, not OBSERVED_ZERO/NOT_APPLICABLE/NO_CURRENT or a valid zero-denominator fact. Fail closed on corrupt/untrusted index.
+6. **Durable publication/recovery:** private authorized root, no-follow path component traversal, staging journal, full global proof before CAS, fsync and atomic publication, pinned immutable reader root. Crash before publish must expose nothing; post-publish fresh read must verify. A complete orphan may be adopted ONLY with matching independently held planned source/semantic/physical and live issuer, not an internal stage name or local manifest. Revoke source/host/purpose rights before serving cached bytes. No guarantee is inferred from os.replace alone.
+7. **External original-source certification remains separate:** pre553_source_equivalence P01–P20/T01–T18 plus actual source snapshot/host/source-science owner. Internal I02 proof and independent physical storage cannot certify missing original source semantics, original35 population estimands or structural/actor meaning.
+
+**Proposed physical schema:** one semantic estate consisting of respondent-aligned typed scalar-value/state columns where topology allows, a separate exact sparse repeated/ranked/multi event/occurrence table, governed question/option dictionary, source-scoped respondent key and row map, routing/risk facts, coordinates/time, exact rational weight and design, authority/replay/typed-absence/source-relation sidecars, and an authenticated complete ref/locator index. Optional packed masks/group counts/Arrow/DuckDB reads are regenerable accelerators; their presence never authorizes I03 or changes a scientific negative.
+
+**Whole-cost test:** retained bytes = required source custody + canonical Parquet/index/sidecars + exact S04/S05 published products/preimages + externally pinned journals/selected caches. Track staging/orphans/temp sort separately, decoded source and object/proof expansion, children, peak RSS under 6,442,450,944-byte sampled cap with margin, cold first use, warm repeated use and actual full candidate stored bytes. A historical one-pair generated 100k test reported 11.26% faster first answer and 23.20% lower peak RSS; later candidate persistence exceeded the cap at ~6,468,513,792 bytes before direct saved query. Neither establishes the new design's economics. No 100k test was run here.
