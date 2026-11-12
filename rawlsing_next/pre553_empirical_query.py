@@ -932,6 +932,7 @@ def replay_empirical_query(
 
 __all__ = [
     "I03GroupedExecutionScope",
+    "install_sourcefree_i02_certified_i03_range",
     "execute_empirical_query",
     "replay_empirical_query",
     "QueryExecutionResult",
