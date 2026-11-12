@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_PAIR2_S2B_AGENT_A_G1_G5_RECEIPT@1",
+  "commission": "#919/S2-B/P2-02",
+  "role": "AGENT_A_FIRST_CONSTRUCTION",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/pyat-pair2-s2b-a-ext-i02-20261112-r1",
+  "protected_pre_main_observed": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "base_s2a_unreceived": "d3814d08dbe03b8464ac6fff4164765179869213",
+  "s2a_g5": "PENDING",
+  "code_and_test_cut": "2d217c63653f98a56ac23182f766a059460e8d68",
+  "receiving_status": "DELIVERED_TO_B_NOT_G5",
+  "full_packet_disposition": "REVISE_EXACT_DEFECT",
+  "sourcefree_achieved": "DERIVED_COMPLETE_EXTERNAL_SELECTOR_CERTIFICATE_FROM_EXISTING_SEALED_I02",
+  "orig_m01_m18_coverage": {
+    "M01": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M02": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M03": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M04": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M05": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M06": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M07": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M08": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M09": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M10": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M11": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M12": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M13": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M14": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M15": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M16": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M17": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED",
+    "M18": "INHERITED_VALIDATED_V1_CARRIED_NOT_DIRECT_SOURCE_ISSUED"
+  },
+  "gates": {
+    "G1": {
+      "status": "PARTIAL",
+      "pass": [
+        "18/18 v1 inherited coverage atom identities carried",
+        "whole historical closure matched to streamed object identity",
+        "full native/canonical/component keyspace derived"
+      ],
+      "unproved": [
+        "no full source-direct streaming independent M01-M18 original validator",
+        "no P01-P20/T01-T18 or CURRENT issuer"
+      ]
+    },
+    "G2": {
+      "status": "PARTIAL",
+      "pass": [
+        "normal native I03 full fact/replay parity",
+        "changed response support 2 to 3",
+        "original restoration",
+        "cold certificate full verification"
+      ],
+      "unproved": [
+        "normal first consumer still needs materialized C11Repository for event bodies and old _build_release_index"
+      ]
+    },
+    "G3": {
+      "status": "PARTIAL",
+      "pass": [
+        "rehashed omitted native/canonical selector refused",
+        "omitted event/coordinate/routing/authority/respondent/question refused",
+        "duplicate occurrences and states verified",
+        "wrong source/release/root refused",
+        "hard crashed stage refuses"
+      ],
+      "unproved": [
+        "large original35 hostile court",
+        "TOCTOU formal proof"
+      ]
+    },
+    "G4": {
+      "status": "PARTIAL",
+      "pass": [
+        "disk sort and canonical root independent of chunk size",
+        "2048 respondent isolated sourcefree resource bench",
+        "atomic stage then rename",
+        "fresh full verifier"
+      ],
+      "unproved": [
+        "full upstream v1 input has unbounded all-ref tuple",
+        "peak scratch and process-tree aggregator",
+        "100k/6GiB full pipeline",
+        "one compact full C11 carrier"
+      ]
+    },
+    "G5": {
+      "status": "NOT_RUN",
+      "reason": "Nonauthor independent reviewer only after A/B descendant"
+    }
+  },
+  "last_sourcefree_ci": {
+    "run_url": "https://github.com/maidiu/rawlsing/actions/runs/43274142763",
+    "code_sha": "2d217c63653f98a56ac23182f766a059460e8d68",
+    "passed": 84,
+    "failed": 0,
+    "wall_seconds": 10.64,
+    "whole_suite_peak_rss_kb": 192768
+  },
+  "inherited_s2a_ci": {
+    "run_url": "https://github.com/maidiu/rawlsing/actions/runs/43274142789",
+    "status": "PASS"
+  },
+  "red_first_ci": {
+    "run_url": "https://github.com/maidiu/rawlsing/actions/runs/43272630296",
+    "passed": 74,
+    "failed": 6,
+    "cause": "serialized exact ref mapping mistaken for missing respondent"
+  },
+  "repaired_green_ci": {
+    "run_url": "https://github.com/maidiu/rawlsing/actions/runs/43272942550",
+    "passed": 80,
+    "failed": 0
+  },
+  "resource_2048": {
+    "fixture": "Genuine existing sourcefree I02-sealed release",
+    "respondents": 2048,
+    "logical_root_sha256": "025e17afa43b083a1aa557cab257f63d06716761da25e8575efb431996a88277",
+    "physical_file_sha256": "15be249f8da207d63c45e2999e9238c879b367d809b738bcb97cc8c99da16575",
+    "retained_bytes": 24801280,
+    "build_wall_seconds": 5.7709,
+    "cold_full_verify_seconds": 0.1473,
+    "tracemalloc_builder_peak_bytes": 2112161,
+    "isolated_process_peak_rss_kb": 101288,
+    "peak_scratch_bytes": null,
+    "peak_process_tree_rss_kb": null,
+    "integrated_100k_6gib": "NOT_RUN"
+  },
+  "authority": {
+    "source_native": "HELD",
+    "source_equivalence_p01_p20_t01_t18": "NOT_ISSUED",
+    "current_use": "HELD",
+    "s2a_g5": "PENDING",
+    "s2c_physical": "NOT_BUILT",
+    "w03_w04_pause": "PRESERVED",
+    "protected_merge": "NONE"
+  },
+  "next_agent_primary_attack": "Eliminate legacy full C11LogicalRelease/ReplayManifest.closure_refs materialization and produce full direct streaming I02 M01-M18 certificate with native I03 parity; preserve external-root refusal",
+  "artifact_handoff_path": "WORKER_RETURNS/PYAT_PAIR2_S2B_AGENT_A_R1/00_ADVERSARIAL_HANDOFF.md"
+}
