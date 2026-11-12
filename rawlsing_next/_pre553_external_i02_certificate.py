@@ -134,15 +134,24 @@ def _insert_object(db: sqlite3.Connection, obj: object, *, family: str) -> None:
 def _check_relations(db: sqlite3.Connection, *, source: str) -> None:
     # Closure identity is the old genuinely validated I02's independent
     # ReplayManifest enumeration, NOT the builder's self-invented row count.
-    extras = [x[0] for x in db.execute("""
-        SELECT c.ref FROM main.closure c LEFT JOIN main.objects o ON c.ref=o.ref
-        WHERE o.ref IS NULL ORDER BY c.ref
-    """)]
+    # A malformed physical certificate may present millions of orphan
+    # closure members. Never expand the attacker's keys into a Python list
+    # merely to reject them: SQLite's disk-backed COUNT/EXISTS is bounded.
+    extras_count = db.execute("""
+        SELECT COUNT(*) FROM main.closure c
+        LEFT JOIN main.objects o ON c.ref=o.ref
+        WHERE o.ref IS NULL
+    """).fetchone()[0]
+    source_extra = db.execute("""
+        SELECT 1 FROM main.closure c
+        LEFT JOIN main.objects o ON c.ref=o.ref
+        WHERE c.ref=? AND o.ref IS NULL LIMIT 1
+    """, (source,)).fetchone() is not None
     absent = db.execute("""
         SELECT o.ref FROM main.objects o LEFT JOIN main.closure c ON o.ref=c.ref
         WHERE c.ref IS NULL LIMIT 1
     """).fetchone()
-    if absent or len(extras) != 2 or source not in extras:
+    if absent or extras_count != 2 or not source_extra:
         _fail("M01-M18 closure disagrees with witnessed whole I02 corpus")
     # Two exceptional v1 closure refs are the source artifact and the
     # source-snapshot retention ref, neither a public/internal C11 object.
@@ -626,11 +635,17 @@ class VerifiedExternalI02:
 def _check_relations_readonly(db: sqlite3.Connection, source: str) -> None:
     # This read-only check uses no self-generated selection postings. A forged
     # posting can be rehashed locally but cannot reproduce held logical root.
-    extras = [x[0] for x in db.execute("""
-        SELECT c.ref FROM main.closure c LEFT JOIN main.objects o ON c.ref=o.ref
-        WHERE o.ref IS NULL ORDER BY c.ref
-    """)]
-    if len(extras) != 2 or source not in extras or db.execute("""
+    extras_count = db.execute("""
+        SELECT COUNT(*) FROM main.closure c
+        LEFT JOIN main.objects o ON c.ref=o.ref
+        WHERE o.ref IS NULL
+    """).fetchone()[0]
+    source_extra = db.execute("""
+        SELECT 1 FROM main.closure c
+        LEFT JOIN main.objects o ON c.ref=o.ref
+        WHERE c.ref=? AND o.ref IS NULL LIMIT 1
+    """, (source,)).fetchone() is not None
+    if extras_count != 2 or not source_extra or db.execute("""
         SELECT 1 FROM main.objects o LEFT JOIN main.closure c ON o.ref=c.ref
         WHERE c.ref IS NULL LIMIT 1
     """).fetchone():

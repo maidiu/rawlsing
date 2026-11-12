@@ -1,0 +1,121 @@
+{
+  "schema": "PYAT_R3_S2B_AGENT_A_CONVERGED_R3_G1_G5_RECEIPT@1",
+  "mission": "S2-B/P2-02/#919",
+  "original_scope": "Full bounded I02 external memory selector certification",
+  "programme": "#909 R3/R3C/R3S",
+  "classification": "REVISE_EXACT_DEFECT",
+  "role": "AGENT_A_RECIPROCAL_FURTHER_IMPROVEMENT",
+  "integration": "DRAFT_UNMERGED",
+  "independent_receiving": "G5_NOT_RUN",
+  "lineage": {
+    "original_agent_a": {
+      "pr": 952,
+      "head": "d5d6577b557fa8ced2dbb42d190ab254ab983b19"
+    },
+    "adversary_b": {
+      "pr": 954,
+      "head": "f5ee89b8e700ac14cf266c2e3eae4c25f021c349",
+      "ci": "https://github.com/maidiu/rawlsing/actions/runs/43278005794",
+      "actual_tests": {
+        "passed": 88,
+        "failed": 0
+      }
+    },
+    "converged_agent_a_prior": {
+      "pr": 961,
+      "head": "6d5a8b7b6ea0b4035cefab62925705a30269c758",
+      "note": "Preserved TEMP-table, collation, transaction, deletion-of-seal, no-clobber fixes; new native CI did not execute."
+    },
+    "this_descendant": {
+      "pr": 965,
+      "branch": "agent/pyat-pair2-s2b-a-closure-bounded-20261112-r3",
+      "code_test_workflow_sha": "d3e3eed5fab51631eb796da4f20ce942ae8fd2ac",
+      "report_path": "WORKER_RETURNS/PYAT_PAIR2_S2B_AGENT_A_R3/00_CONVERGED_COUNTERATTACK.md"
+    },
+    "superseded_fork": {
+      "pr": 964,
+      "state": "CLOSED_UNMERGED",
+      "reason": "One stronger single B→A lineage and nonoverlapping improvement carried into PR 965"
+    }
+  },
+  "changed_files": [
+    "rawlsing_next/_pre553_external_i02_certificate.py",
+    "rawlsing_next/tests/test_pre553_external_i02_certificate.py",
+    ".github/workflows/pyat-pair2-s2b-external-i02.yml",
+    "WORKER_RETURNS/PYAT_PAIR2_S2B_AGENT_A_R3/00_CONVERGED_COUNTERATTACK.md",
+    "WORKER_RETURNS/PYAT_PAIR2_S2B_AGENT_A_R3/01_G1_G5_RECEIPT.json"
+  ],
+  "actual_independent_local_python_measurement": {
+    "source": "standalone sqlite3 script with original and replacement query shapes",
+    "language": "Python 3.13 Linux",
+    "spoofed_unclosed_refs": 60000,
+    "old_list_python_peak_bytes": 4640284,
+    "new_count_python_peak_bytes": 529,
+    "proof_limit": "Real SQL primitive memory measurement only, not exact imported S2-B module or complete material-size acceptance."
+  },
+  "new_tests": [
+    "test_s2b_a3_giant_poisoned_closure_refusal_keeps_python_heap_bounded[building]",
+    "test_s2b_a3_giant_poisoned_closure_refusal_keeps_python_heap_bounded[cold_verification]"
+  ],
+  "attacks_preserved": {
+    "b_counterfeit_certificate": "REAL_RED_GREEN_AT_B_SHA",
+    "b_subclass_impersonation": "REAL_RED_GREEN_AT_B_SHA",
+    "b_closed_cursor": "REAL_RED_GREEN_AT_B_SHA",
+    "b_db_connection_swap": "REAL_RED_GREEN_AT_B_SHA",
+    "prior_a_sqlite_temp_shadow": "LOCAL_SQL_PRIMITIVE_PASS_REPO_NATIVE_UNEXECUTED",
+    "prior_a_custom_binary_collation": "LOCAL_SQL_PRIMITIVE_PASS_REPO_NATIVE_UNEXECUTED",
+    "prior_a_seal_delete": "PATCH_PRESERVED_NATIVE_UNEXECUTED",
+    "prior_a_noclobber_publish": "LOCAL_FS_PRIMITIVE_PASS_REPO_NATIVE_UNEXECUTED",
+    "this_a_giant_hostile_closure": "LOCAL_SQL_MEMORY_COMPARATOR_PASS_REPO_NATIVE_UNEXECUTED"
+  },
+  "ci_new_head": {
+    "runs": [
+      "https://github.com/maidiu/rawlsing/actions/runs/43285547404",
+      "https://github.com/maidiu/rawlsing/actions/runs/43285505531"
+    ],
+    "reported_conclusion": "FAILURE",
+    "runner_assigned": false,
+    "steps_executed": 0,
+    "junit_artifacts": 0,
+    "classification": "RUNNER_START_INFRASTRUCTURE_FAILURE_NOT_SOURCE_TEST_EXECUTION",
+    "new_test_pass_count": null,
+    "new_test_fail_count": null
+  },
+  "gates": {
+    "G1": {
+      "status": "PARTIAL",
+      "preserved": "Existing genuine I02 v1 M01-M18 plus derived full selector corpus",
+      "missing": "Bounded source-direct M01–M18 validator no legacy full replay closure."
+    },
+    "G2": {
+      "status": "PARTIAL",
+      "preserved": "B 88 native first-consumer tests at B SHA",
+      "missing": "Unexecuted new native court and genuine source-direct I02."
+    },
+    "G3": {
+      "status": "PARTIAL",
+      "preserved": "B real red-green plus A2 stronger SQL proof and committed tests",
+      "missing": "R3 actual repo tests not executed."
+    },
+    "G4": {
+      "status": "PARTIAL",
+      "preserved": "Local 60k malformed closure list-to-count heap improvement",
+      "missing": "Legacy O(all refs) replay closure, process tree/scratch, complete 100k/6GiB."
+    },
+    "G5": {
+      "status": "NOT_RUN",
+      "missing": "Independent nonauthor verified G1-G4 after source-direct work."
+    }
+  },
+  "authority": {
+    "pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "pre_main_modified": false,
+    "original35_science": "NOT_ISSUED",
+    "source_equivalence_p01_p20_t01_t18": "SEPARATE_NOT_GRANTED",
+    "current_read_permission": "NOT_ISSUED",
+    "s2a_pr944_g5": "PENDING",
+    "s2c_physical": "NOT_BUILT",
+    "w03_w04": "PAUSED_PRESERVED"
+  },
+  "next_attack": "Run real tests once runner works; implement fully source-direct bounded I02 M01-M18 with independent full native I03 comparator and resource proof; preserve B and A fixes."
+}
