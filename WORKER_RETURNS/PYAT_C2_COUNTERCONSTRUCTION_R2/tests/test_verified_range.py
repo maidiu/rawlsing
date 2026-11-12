@@ -138,6 +138,11 @@ class DiskSemanticIndex:
             n, level = at, level+1
             db.commit()
         root = db.execute("SELECT digest FROM node WHERE level=? AND idx=0", (level,)).fetchone()[0].hex() if count else h(b"C2Z",b"").hex()
+        # Staging postings and the uniqueness ledger are discarded after seal;
+        # only the compact locator and range witnesses remain for read.
+        db.execute("DROP TABLE posting")
+        db.execute("DROP TABLE occurrence")
+        db.commit()
         return cls(db,Anchor(source,release,replay,"SEMANTIC_RANGE_V2",count,root,scope.root()))
 
     def _path(self, idx):
@@ -161,12 +166,13 @@ class DiskSemanticIndex:
             raise BadRange("OUT_OF_ANCHORED_RANGE")
         value=leaf(data)
         at=idx
-        for sib in self._path(idx):
+        siblings=self._path(idx)
+        for sib in siblings:
             value=parent(value,sib) if at%2==0 else parent(sib,value)
             at//=2
         if value.hex()!=self.anchor.root:
             raise BadRange("ANCHORED_RANGE_PROOF_MISMATCH")
-        self.proof_peak=max(self.proof_peak,len(self._path(idx)))
+        self.proof_peak=max(self.proof_peak,len(siblings))
         return data
 
     def _byidx(self, idx):
