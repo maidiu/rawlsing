@@ -710,16 +710,16 @@ def build_source_backed_c11_repository(
         )
         if public is not None:
             release = replace(release, public_objects=public)
+        # Frozen dataclasses can still enclose caller-owned mutable mappings.
+        # The physical iterator (or a sidecar callback) may mutate them after
+        # input admission but before I02 finishes. A valid release computed
+        # under changed source/semantic/authority context is not an issued
+        # release under the original context, whether or not a cache exists.
+        if source_backed_facade_key(
+            source, projection, current_authorities=current_authorities
+        ) != key:
+            raise SourceBackedC11FacadeError("cache input changed during C11 build")
         if cache:
-            # Frozen dataclasses can still enclose caller-owned mutable mappings.
-            # The physical iterator (or a sidecar callback) may mutate them
-            # after the key was computed but before the validated C11 exists.
-            # Never admit an independently valid *new* release under the
-            # *old* semantic/decoder/authority context.
-            if source_backed_facade_key(
-                source, projection, current_authorities=current_authorities
-            ) != key:
-                raise SourceBackedC11FacadeError("cache input changed during C11 build")
             cache.put(key, release)
     elif cache and source_backed_facade_key(
         source, projection, current_authorities=current_authorities
