@@ -55,3 +55,42 @@ def test_world_real_perceived_event_cannot_become_forged_sensory_cue(tmp_path):
             {**packet, "cues": [stripped]}) is False
     finally:
         owner.close()
+
+
+def test_actual_current_outward_receipt_grants_only_exact_one_operation(tmp_path):
+    """Same actual world: issuer + performed event + conduct parent required."""
+    import json
+    from copy import deepcopy
+
+    state = tmp_path / "performed"
+    run_p6.experience(state, Namespace(command="new", request_id=None,
+                                       situated_house=True))
+    run_p6.experience(state, Namespace(command="approach",
+                                       request_id="current-approach"))
+    ledger = json.loads((state / "p4_receipts.json").read_text())
+    receipt = ledger["turns"][-1]["receipt"]
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        world, house = read_house(session)
+        cue = receipt["outward_cue"]
+        assert cue["grade"] == "SOURCEFREE_FIXTURE"
+        assert receipt["performed"]["event_id"] == cue["event_id"]
+        packet = {"cues": [cue], "recent_self_actions": [], "recent_speech": []}
+        interval = receipt["interval"]
+        before = owner.store.head()
+        assert current_p3_actor_access(
+            session, interval, world, house, packet, source_receipt=receipt) is True
+        assert current_p3_actor_access(
+            session, interval, world, house, packet) is False
+        forged = deepcopy(receipt)
+        forged["performed"]["event_id"] = "counterfeit-performed-event"
+        assert current_p3_actor_access(
+            session, interval, world, house, packet, source_receipt=forged) is False
+        stripped = deepcopy(receipt)
+        stripped["outward_cue"] = None
+        assert current_p3_actor_access(
+            session, interval, world, house, packet, source_receipt=stripped) is False
+        assert owner.store.head() == before
+    finally:
+        owner.close()
