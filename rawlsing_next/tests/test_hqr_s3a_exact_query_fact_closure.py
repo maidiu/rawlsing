@@ -16,7 +16,7 @@ import pytest
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
-from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef
+from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef, semantic_hash
 from rawlsing_next.tests.test_gt12_e2b_actual_object_consumer_harness import _objects
 
 INHERITED_HEAD = "265526a69c3a7a52365cf908709a4ef85ef9092e"
@@ -79,7 +79,7 @@ def test_original_ff01_to_d_admitted_inconsistent_query_fact_but_repair_refuses(
 ):
     query, fact, conditioner, target = _objects()
     value = (
-        ExactRef(kind, "urn:test:hqr-s3a:wrong-" + dimension, dimension[0] * 64)
+        ExactRef(kind, "urn:test:hqr-s3a:wrong-" + dimension, semantic_hash({"s3a-incompatible": dimension}))
         if kind else "INCOMPATIBLE_RISK_SET_TYPE"
     )
     changed = _resign_fact(fact, field, value)
