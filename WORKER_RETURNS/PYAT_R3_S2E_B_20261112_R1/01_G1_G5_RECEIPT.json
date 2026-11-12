@@ -1,0 +1,100 @@
+{
+  "schema": "PYAT_R3_S2E_B_G1_G5_HANDOFF@1.0.0",
+  "packet_id": "S2-E",
+  "old_obligations": [
+    "P2-06"
+  ],
+  "frozen_contract": "maidiu/rawlsing#919 S2-E G1–G5 and #909 R3C/R3S",
+  "previous_author": "Agent A",
+  "previous_handoff_sha": "4357675fc13cc933134bd3303e7efead7aeba4ea",
+  "frozen_base_sha": "4357675fc13cc933134bd3303e7efead7aeba4ea",
+  "b_red_test_commit": "5edc5091114e7bd99fb8e03384a404a8ccfa4ddf",
+  "b_repaired_code_commit": "56ce7299508d2d28d2eefb6a6a7f6fbe93360103",
+  "branch": "agent/pyat-r3-s2e-b-followupper-20261112-r1",
+  "pr": "https://github.com/maidiu/rawlsing/pull/963",
+  "changed_paths": [
+    "rawlsing_next/pre553_s2e_exact_conservation.py",
+    "rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py"
+  ],
+  "first_consumer": "census_native_batch(BatchManifest, native UnitExecutionReceipt, native ExactBoundedDiscoveryResult), called on sealed I03/I05 Batch",
+  "test_case_ids": [
+    "S2E-B-I05-FALSE-VALID-EMPTY",
+    "S2E-B-I05-WRONG-FRONTIER-REPLAY",
+    "S2E-B-I05-RESTORED-ORIGINAL-GRAPH"
+  ],
+  "proof": {
+    "base_ci": "https://github.com/maidiu/rawlsing/actions/runs/43275018294",
+    "base_code_sha": "d7af5b8df922caa86bcd36a7baa0bbb55b43742d",
+    "base_ci_accepted_scope": "78 S2-E/native/legacy + 19 S2-F preservation passed; Agent A only",
+    "b_red_ci": "https://github.com/maidiu/rawlsing/actions/runs/43282276800",
+    "b_repair_ci": "https://github.com/maidiu/rawlsing/actions/runs/43282556270",
+    "b_ci_ran_tests": false,
+    "b_ci_observation": "GitHub jobs all concluded failure before an executable step; runner_id=0, empty steps; rerun also failed before runner",
+    "static_source_comparison": "Verified A audit lacks replay check; B implementation derives replay hash using exactly the same five native source fields and prefix as execute_exact_bounded_discovery; code read-back blobs 9dc02fb42377148875f097475128f886834d0888 -> 7ca3cea24ffdcd2f7027033b1617d6fa50a2f552",
+    "red_green_status": "NOT_EXECUTED_NO_CI_RUNNER",
+    "preservation_tests_status": "B_NOT_EXECUTED__A_EXACT_CODE_PREDECESSOR_PASSED",
+    "economics": "No new credible B measurements; A's 12-respondent result has 1 reuse hit but no measured speedup or process-tree RSS proof"
+  },
+  "findings": [
+    {
+      "id": "B01",
+      "severity": "SEV1_IF_REPRODUCED",
+      "in_scope": "G1/G3 I05 typed result and complete output",
+      "source_gap": "census_native_batch accepted a native ExactBoundedDiscoveryResult.valid_empty assertion without cross-checking terminal candidate receipts",
+      "repair": "Derive expected_valid_empty from actual terminal receipts and require literal bool match",
+      "test": "test_b_i05_valid_empty_false_absence_cannot_pass_native_output_census",
+      "result": "CODE_PATCHED__EXECUTION_NOT_RUN"
+    },
+    {
+      "id": "B02",
+      "severity": "SEV1_IF_REPRODUCED",
+      "in_scope": "G1/G2/G3 I05 exact replay conservation",
+      "source_gap": "auditor fingerprinted provided replay_ref but never authenticated its mathematical commitment to frontier/receipt/fact closure",
+      "repair": "Reconstruct exact native I05 frontier replay material and require generated ExactRef match",
+      "test": "test_b_i05_wrong_frontier_replay_is_not_an_accepted_complete_graph",
+      "result": "CODE_PATCHED__EXECUTION_NOT_RUN"
+    }
+  ],
+  "gates": {
+    "G1": {
+      "state": "PARTIAL",
+      "detail": "A's exact sourcefree output keys inherited; two original I05 envelope cross-checks added, no original35 contract proof or B runtime"
+    },
+    "G2": {
+      "state": "NOT_RUN_AT_B_SHA",
+      "detail": "A's F1/F2 both directions/F3/F4 5-unit true native Batch passed at its prior frozen code SHA only; B code test not executed"
+    },
+    "G3": {
+      "state": "NOT_RUN_AT_B_SHA",
+      "detail": "Two new adversarial tests + restore assertions committed but RED/ GREEN not observed, so cannot assert PASS"
+    },
+    "G4": {
+      "state": "PARTIAL",
+      "detail": "A 12-respondent measurements only; no source native performance, process-tree memory, cold/retained size or measured reuse speedup"
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "detail": "Third reviewer neither A nor B required after G1–G4 native execution proof"
+    }
+  },
+  "authority_grade": {
+    "engineering": "ISOLATED_SOURCEFREE_CODE_PATCHED__B_RUNTIME_NOT_VERIFIED",
+    "scientific": "NO_ORIGINAL35_ISSUANCE",
+    "source": "TEST_ONLY_SOURCEFREE__NO_NEW_SOURCE_RIGHTS",
+    "integration": "DRAFT_PR_UNMERGED",
+    "independent_receiver": "NONE"
+  },
+  "external_holds": [
+    "HOLD_DEPENDENCY:S2-D saved store",
+    "CI_RUNNER_UNAVAILABLE_FOR_B_EXACT_SHA",
+    "Original35 source/design/estimand issuer separate"
+  ],
+  "material_open_defects": "No additional reproduced defects; B01/B02 source-control-flow violations repaired but runtime counterexample evidence unavailable",
+  "nonblocking_deferred": [
+    "Large-scale shared-scan speedup not demonstrated",
+    "Candidate-specific replay from original issuer beyond B's two corrected frontier-level checks"
+  ],
+  "stop_state": "AGENT_B_TURN_FROZEN__RETURN_TO_A_FOR_COUNTERATTACK_AND_NATIVE_EXECUTION_WHEN_AVAILABLE",
+  "independent_receiver_decision": "NOT_RUN",
+  "integration_state": "UNMERGED"
+}
