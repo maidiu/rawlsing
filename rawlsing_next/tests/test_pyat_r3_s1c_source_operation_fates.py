@@ -518,3 +518,101 @@ def test_s1c_b_rehashed_negative_axis_cannot_launder_other_frontier(tmp_path):
     with pytest.raises(CensusRefusal, match="UNKNOWN_CENSUS_DRIFT"):
         verify_frozen_inputs(census, inventory=inventory,
                              policy=policy, frontier=marked)
+
+
+def test_s1c_b_r2_co_rehashed_false_held_raw_drops_real_first_consumer(tmp_path):
+    """An independently legitimate SAMPLE/RAW must not disappear as false HELD.
+
+    Previous A/B/#959 verification accepted the rehashed operation/fate pair:
+    source IDs and canonical_hash do not include eligibility disposition,
+    R61 unknown/excluded projections do not include HELD, and the previously
+    tested count axes remain internally consistent. The native lowerer then
+    skips policy revalidation for HELD, silently losing a valid RAW receipt.
+    """
+    from rawlsing_next.pre553_universal_workload import (
+        compile_governed_frontier, execute_governed_frontier,
+    )
+
+    bundle, inventory, policy, frontier, census = _fixture(tmp_path)
+    baseline = _run(bundle, inventory, policy, frontier, census)
+    eligible_raw = next(
+        op for op in frontier.operations
+        if op.disposition == ELIGIBLE
+        and op.measure_kind == "SAMPLE" and op.claim_class == "DIST"
+    )
+    original = next(row for row in baseline["operation_fates"]
+                    if row["operation_id"] == eligible_raw.op_id)
+    assert original["execution_state"] == "COMPLETED"
+    assert original["received_candidate_ids"]
+    forged_op = replace(
+        eligible_raw, disposition="HELD", reasons=("UNISSUED_FALSE_HOLD",)
+    )
+    changed_ops = tuple(
+        forged_op if op.op_id == eligible_raw.op_id else op
+        for op in frontier.operations
+    )
+    dispositions = dict(frontier.disposition_counts)
+    dispositions["ELIGIBLE"] -= 1
+    dispositions["HELD"] = dispositions.get("HELD", 0) + 1
+    class_counts = dict(frontier.class_counts)
+    class_counts[eligible_raw.claim_class] -= 1
+    if class_counts[eligible_raw.claim_class] == 0:
+        del class_counts[eligible_raw.claim_class]
+    forged_frontier = replace(
+        frontier, operations=changed_ops,
+        disposition_counts=dispositions, class_counts=class_counts,
+    )
+    fake_census = _freeze_packet(forged_frontier)
+    assert fake_census.source_census_ref == census.source_census_ref
+    assert fake_census.science_census_ref != census.science_census_ref
+    assert fake_census.unknown_scope_records == census.unknown_scope_records
+    assert fake_census.excluded_scope_records == census.excluded_scope_records
+    assert fake_census.inventory_ledger_records == census.inventory_ledger_records
+
+    # Actual existing compiler/first-reader is vulnerable if it receives
+    # such a forged, already-censused frontier: native anti-joins can be true
+    # despite the loss of a legitimate sourcefree issued operation.
+    compiled = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy,
+        frontier=forged_frontier, as_of=AS_OF, host=HOST, purpose=PURPOSE,
+    )
+    native = execute_governed_frontier(
+        compilation=compiled,
+        source_factory=lambda _ref: bundle.physical_stream,
+    )
+    assert native.operation_anti_join["no_drop_ok"]
+    assert native.anti_join["no_drop_ok"]
+    assert len(native.receipt_refs) < baseline["issued_candidate_count"]
+    forged_row = next(row for row in native.operation_ledger
+                      if row["operation_id"] == eligible_raw.op_id)
+    assert not forged_row["received_candidate_ids"]
+    assert forged_row["result_state"] == "HELD"
+
+    # The stronger adapter must refuse before opening any source.
+    opened = []
+    with pytest.raises(CensusRefusal, match="SOURCEFREE_ROLE_FATE_DRIFT"):
+        _run(bundle, inventory, policy, forged_frontier, fake_census,
+             lambda source_ref: opened.append(source_ref))
+    assert opened == []
+    restored = _run(bundle, inventory, policy, frontier, census)
+    assert restored["checkpoint_hash"] == baseline["checkpoint_hash"]
+    assert restored["issued_candidate_count"] == baseline["issued_candidate_count"]
+    assert restored["frozen_census_hash"] == baseline["frozen_census_hash"]
+
+
+def test_s1c_b_r2_false_held_reason_alone_cannot_rehash_science(tmp_path):
+    """A fake reason for an actual HELD decision is sourcefree false evidence."""
+    _, inventory, policy, frontier, _ = _fixture(tmp_path)
+    actual = next(op for op in frontier.operations if op.disposition == "HELD")
+    changed = tuple(
+        replace(op, reasons=("UNISSUED_AUTHORITY_OVERRIDE",))
+        if op.op_id == actual.op_id else op
+        for op in frontier.operations
+    )
+    manipulated = replace(frontier, operations=changed)
+    census = _freeze_packet(manipulated)
+    # Disposition, all four histogram axes, source IDs and original35 grade
+    # remain unchanged. Only the sourcefree scientific decision's cause lies.
+    with pytest.raises(CensusRefusal, match="SOURCEFREE_ROLE_FATE_DRIFT"):
+        verify_frozen_inputs(census, inventory=inventory,
+                             policy=policy, frontier=manipulated)
