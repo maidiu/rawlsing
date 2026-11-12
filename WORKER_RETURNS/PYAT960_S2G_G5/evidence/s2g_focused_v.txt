@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-g5
+plugins: anyio-4.12.1
+collecting ... collected 19 items
+
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g01_real_m1_m2_b5_first_reader PASSED [  5%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g02b_fresh_process_cold_learner PASSED [ 10%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g02_changed_input_and_exact_restoration PASSED [ 15%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g03_current_asof_supersession_and_no_current PASSED [ 21%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g03b_supersession_and_asof_history PASSED [ 26%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g04_independent_issuer_refusals PASSED [ 31%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g04b_fresh_process_current_attestation PASSED [ 36%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g05_self_rehashed_fake_checkpoint_and_wrong_asof PASSED [ 42%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g06_missing_rule_receipt_history_and_changed_m2_dependency PASSED [ 47%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g07_publish_pointer_crash_and_recovery PASSED [ 52%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g08_native_lifecycle_objects_unchanged PASSED [ 57%]
+rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g09_resources_and_source_opens PASSED [ 63%]
+rawlsing_next/tests/test_pyat960_s2g_fresh_process.py::test_fresh_process_runner_import_has_no_side_effects PASSED [ 68%]
+rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_real_native_fact_change_m1_m2_b5_then_exact_restore PASSED [ 73%]
+rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_cross_chain_m1_evidence_is_refused_by_actual_consumer PASSED [ 78%]
+rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_unpinned_and_foreign_asof_checkpoints_refused PASSED [ 84%]
+rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_tampered_b5_replay_and_receipt_history_refused PASSED [ 89%]
+rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_fresh_process_cold_resource_envelope PASSED [ 94%]
+rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py::test_a_counter_receipt_fact_omission_is_refused PASSED [100%]
+
+============================= 19 passed in 31.58s ==============================
