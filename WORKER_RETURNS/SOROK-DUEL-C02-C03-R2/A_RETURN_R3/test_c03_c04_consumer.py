@@ -182,6 +182,10 @@ def test_normal_live_parent_decision_action_speech_and_child_experience(tmp_path
     assert second_child["status"] == "PERCEIVED"
     assert second_child["response_input"]["public_text"] == (
         child["response_input"]["public_text"])
+    for key in ("access_condition", "access_owner", "perception_channel",
+                "text_source", "language_generation_owner"):
+        assert second_child["response_input"][key] == (
+            child["response_input"][key])
     assert HIDDEN_A not in json.dumps(second_child)
     assert HIDDEN_B not in json.dumps(second_child)
 

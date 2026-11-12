@@ -86,8 +86,8 @@ response_input=SOROK_CHILD_SPEECH_RESPONSE_INPUT@1
 The response input is an actual input for the next actor response owner, not a
 memory, acquired trait, native rule or generated reply. Hidden reason/hash and
 the parent decision action/basis are not child-facing. Same outward text with
-different hidden reasons yields the same public text/input; parent self-read
-remains distinct.
+different hidden reasons yields the same public text/access semantics (event
+identity/clock differ); parent self-read remains distinct.
 
 Negatives:
 
