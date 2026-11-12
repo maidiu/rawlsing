@@ -23,7 +23,7 @@ import os
 from pathlib import Path
 import stat
 import tempfile
-from typing import Any, Iterator, Mapping
+from typing import Any, Iterator, Mapping, Sequence
 
 from rawlsing_next.pre553_r5_codec import normalize_decoder_physical_value
 
@@ -33,6 +33,33 @@ SOURCE_DECLARED_ENCODING_ONLY = "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DE
 PHYSICAL_METADATA_CONTRACT = "PRE553_PHYSICAL_METADATA@1.0.0"
 SOURCE_CUSTODY_CONTRACT = "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0"
 DECODER_IMPLEMENTATION_ID = "rawlsing_next/pre553_physical_decoder.py"
+# Bounded read policy: the emitted cell-batch size remains caller controlled,
+# while the reader's row window is independently bounded.  The floor avoids
+# pathological row-at-a-time reader calls on wide files; the cell cap prevents
+# a wide file from turning the floor into an unbounded frame.
+MAX_READ_ROWS = 10_000
+MIN_READ_ROWS = 1_024
+MAX_READ_CELLS = 1_000_000
+
+
+def _bounded_rows_per_chunk(
+    width: int,
+    requested_cells: int,
+    *,
+    floor_rows: int = 1,
+) -> int:
+    """Return a reader row window that respects both the row and cell caps.
+
+    ``requested_cells`` is the caller's cell-batch budget.  The DTA floor keeps
+    small batches from degenerating into row-at-a-time process reopens, but it is
+    itself capped by ``MAX_READ_CELLS`` so a wide file cannot turn that floor
+    into a large frame.  The same cell cap applies to every format.
+    """
+    width = max(1, int(width))
+    cell_cap_rows = max(1, MAX_READ_CELLS // width)
+    floor = max(1, min(int(floor_rows), cell_cap_rows))
+    requested = max(1, int(requested_cells))
+    return min(MAX_READ_ROWS, cell_cap_rows, max(floor, requested // width))
 COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
     "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a": "latin1",
     "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379": "latin1",
@@ -156,14 +183,19 @@ class PhysicalSourceIncidence:
     def iter_batches(self, batch_size: int = 10_000) -> Iterator[tuple[PhysicalCell, ...]]:
         """Yield bounded cell batches with stable source row ordinals.
 
-        The decoder retains only the reader frame when a compatibility reader
-        requires a full read; it never retains a complete cell-object universe.
+        The decoder retains only the current bounded reader window; it never
+        retains a complete cell-object universe.
         """
         if not isinstance(batch_size, int) or isinstance(batch_size, bool) or batch_size < 1:
             raise ValueError("batch_size must be a positive integer")
         variables = self.variables
         declarations = {v.name: v.missing_declarations for v in variables}
-        rows_per_chunk = max(1, batch_size // max(1, len(variables)))
+        width = max(1, len(variables))
+        rows_per_chunk = _bounded_rows_per_chunk(
+            width,
+            batch_size,
+            floor_rows=(MIN_READ_ROWS if self.source_format == "DTA" else 1),
+        )
 
         def emit(frame: Any, row_offset: int) -> Iterator[tuple[PhysicalCell, ...]]:
             batch: list[PhysicalCell] = []
@@ -171,6 +203,25 @@ class PhysicalSourceIncidence:
                 for variable, value in zip(variables, row):
                     raw = _physical_value(value)
                     state, declaration = classify_physical_value(raw, declarations[variable.name])
+                    if (
+                        state is PhysicalMissingState.OBSERVED_STORAGE_VALUE
+                        and self._reader_kind == "DTA"
+                        and str(variable.storage_type).lower() not in {"string", "str"}
+                        and isinstance(raw, str)
+                        and len(raw) == 1
+                        and raw.lower() in "abcdefghijklmnopqrstuvwxyz"
+                    ):
+                        # Stata extended missing tokens are storage values, not
+                        # survey labels.  Readstat returns the one-letter token
+                        # for a numeric column; if per-chunk metadata did not
+                        # surface it, preserve the exact native representation
+                        # rather than degrading it to an observed string.
+                        declaration = {
+                            "kind": "extended",
+                            "reader_token": raw,
+                            "stata_token": "." + raw.lower(),
+                        }
+                        state = PhysicalMissingState.FORMAT_EXTENDED_MISSING
                     batch.append(PhysicalCell(row_offset + local_row, variable.ordinal, variable.name, raw, state,
                                               declaration, variable.value_labels.get(str(raw))))
                     if len(batch) >= batch_size:
@@ -180,6 +231,9 @@ class PhysicalSourceIncidence:
                 yield tuple(batch)
 
         if self._frame is not None:
+            # Legacy caller-supplied in-memory incidence only.  decode_sav and
+            # decode_dta never set _frame; file-backed sources must take the
+            # bounded chunk path below.
             yield from emit(self._frame, 0)
             return
         if self._reader_kind is None or self._source_snapshot is None:
@@ -189,22 +243,29 @@ class PhysicalSourceIncidence:
         snapshot = self._source_snapshot
         reader = pyreadstat.read_sav if self._reader_kind == "SAV" else pyreadstat.read_dta
         snapshot.rewind()
-        if self._reader_kind == "SAV":
-            row_offset = 0
-            chunks = pyreadstat.read_file_in_chunks(
-                reader, snapshot.reader_path, chunksize=rows_per_chunk, encoding=self._encoding,
-                apply_value_formats=False, user_missing=True,
-            )
-            for frame, _metadata in chunks:
-                snapshot.check_stable()
-                yield from emit(frame, row_offset)
-                row_offset += len(frame)
-            return
-        frame, _metadata = reader(
-            snapshot.reader_path, apply_value_formats=False, user_missing=True, encoding=self._encoding
+        row_offset = 0
+        # Both SAV and DTA are consumed through the same bounded chunk reader.
+        # There is deliberately no whole-frame fallback: a full-frame read is a
+        # FAIL for the bounded-reader contract, not an exception path.
+        #
+        # pyreadstat's chunk driver performs a metadata read before the first
+        # data chunk.  For a DTA opened through /dev/fd that metadata read and
+        # the data open share the same file description offset; resetting it
+        # before every readstat invocation keeps the chunk path on the unlinked
+        # content-bound snapshot instead of falling back to a retained path.
+        def bounded_reader(path, **kwargs):
+            snapshot.rewind()
+            return reader(path, **kwargs)
+
+        chunks = pyreadstat.read_file_in_chunks(
+            bounded_reader, snapshot.reader_path, chunksize=rows_per_chunk,
+            encoding=self._encoding, apply_value_formats=False, user_missing=True,
         )
+        for frame, _metadata in chunks:
+            snapshot.check_stable()
+            yield from emit(frame, row_offset)
+            row_offset += len(frame)
         snapshot.verify()
-        yield from emit(frame, 0)
 
     def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
         for batch in self.iter_batches(batch_size):
@@ -724,6 +785,49 @@ def _file_metadata_contract(
     }
 
 
+def _probe_dta_declarations(
+    *,
+    snapshot: _SourceSnapshot,
+    reader: Any,
+    reader_source: str,
+    names: Sequence[str],
+    encoding: str | None,
+    rows_per_chunk: int,
+) -> Mapping[str, tuple[Mapping[str, Any], ...]]:
+    """Collect data-derived Stata extended-missing declarations in bounded chunks.
+
+    Stata does not declare user-missing tokens in the dictionary: readstat
+    discovers them while decoding the data stream.  ``metadataonly=True``
+    therefore returns no ``missing_user_values`` for DTA.  One bounded probe
+    pass preserves those tokens without ever materialising a whole frame.
+    """
+    import pyreadstat
+
+    collected: dict[str, list[Mapping[str, Any]]] = {name: [] for name in names}
+
+    def bounded_reader(path: str, **kwargs: Any):
+        snapshot.rewind()
+        return reader(path, **kwargs)
+
+    snapshot.rewind()
+    chunks = pyreadstat.read_file_in_chunks(
+        bounded_reader,
+        reader_source,
+        chunksize=rows_per_chunk,
+        encoding=encoding,
+        apply_value_formats=False,
+        user_missing=True,
+    )
+    for _frame, chunk_metadata in chunks:
+        snapshot.check_stable()
+        for name in names:
+            for declaration in _missing_declarations(chunk_metadata, name, "DTA"):
+                if declaration not in collected[name]:
+                    collected[name].append(declaration)
+    snapshot.verify()
+    return {name: tuple(values) for name, values in collected.items()}
+
+
 def _decode(
     path: str | Path,
     *,
@@ -757,18 +861,47 @@ def _decode(
         _metadata_frame, metadata = reader(reader_source, metadataonly=True, apply_value_formats=False,
                                            user_missing=True, encoding=encoding)
         snapshot.verify()
-        source_format = expected_format.upper()
-        compatibility_full_read = encoding is not None
-        frame = None
-        if compatibility_full_read:
+        if encoding is not None:
+            # A compatibility encoding still must be exercised, but only on a
+            # bounded one-row window.  The historical full-frame encoding read
+            # is deliberately not retained: full-frame materialisation is a
+            # FAIL for this decoder, not a compatibility exception.
             snapshot.rewind()
-            frame, metadata = reader(reader_source, apply_value_formats=False, user_missing=True, encoding=encoding)
+            reader(
+                reader_source,
+                row_offset=0,
+                row_limit=1,
+                apply_value_formats=False,
+                user_missing=True,
+                encoding=encoding,
+            )
             snapshot.verify()
+        source_format = expected_format.upper()
+        frame = None
         names = list(metadata.column_names)
+        probed_declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
+        if source_format == "DTA" and names:
+            probe_width = max(1, len(names))
+            # The probe must respect the same cell cap as the data pass.  The
+            # historical MIN_READ_ROWS floor is deliberately NOT applied above
+            # the cap: a wide file makes each row expensive, so the cap wins.
+            probe_rows = min(MAX_READ_ROWS, max(1, MAX_READ_CELLS // probe_width))
+            probed_declarations = dict(_probe_dta_declarations(
+                snapshot=snapshot,
+                reader=reader,
+                reader_source=reader_source,
+                names=names,
+                encoding=encoding,
+                rows_per_chunk=probe_rows,
+            ))
         variables: list[PhysicalVariable] = []
         declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
         for ordinal, name in enumerate(names, 1):
-            decl = _missing_declarations(metadata, name, source_format)
+            decl_parts = list(_missing_declarations(metadata, name, source_format))
+            for declaration in probed_declarations.get(name, ()):
+                if declaration not in decl_parts:
+                    decl_parts.append(declaration)
+            decl = tuple(decl_parts)
             declarations[name] = decl
             labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
             display = {
@@ -856,6 +989,9 @@ __all__ = [
     "DECLARED_ENCODING_ALLOWLIST",
     "SOURCE_DECLARED_ENCODING_ONLY",
     "DECODER_IMPLEMENTATION_ID",
+    "MAX_READ_ROWS",
+    "MIN_READ_ROWS",
+    "MAX_READ_CELLS",
     "PHYSICAL_METADATA_CONTRACT",
     "SOURCE_CUSTODY_CONTRACT",
     "DecoderError",
