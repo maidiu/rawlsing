@@ -132,6 +132,78 @@ def interaction_quiet(session, world, house, cues):
             "last_break_event_id": parent}
 
 
+
+def current_p3_actor_access(session, interval, world, house, packet):
+    """Proof of current actor access for the optional TEST_ONLY P3 reader.
+
+    A previously perceived MOVE or speech can inform situated interpretation,
+    but cannot *by itself* activate a P3 mediator in a later interval. Outward
+    cues must be exact derived matches to a committed world event and to the
+    checkpointed sensory conditions. Ordinary self-actions and speech need
+    current-interval actor perception, not merely a recent-history list entry.
+
+    This is evidence provenance, not a semantic psychological trigger matcher.
+    """
+    from outward import sensory_candidate
+
+    start, end = interval["start"], interval["end"]
+    if type(start) is not int or type(end) is not int or start > end:
+        raise ValueError("P6_P3_ACCESS_INTERVAL_INVALID")
+
+    perceived = {
+        row.get("event_id") for row in
+        session.product.store.perceptions(session.branch_id, "A")
+        if isinstance(row, dict)
+    }
+
+    def world_event(row):
+        if not isinstance(row, dict) or not isinstance(row.get("event_id"), str):
+            return None
+        event = session.event(row["event_id"])
+        if (not isinstance(event, dict)
+                or type(event.get("clock")) is not int
+                or type(row.get("clock")) is not int
+                or event["clock"] != row["clock"]
+                or not start <= event["clock"] <= end
+                or not isinstance(event.get("hash"), str)
+                or ("event_hash" in row and event["hash"] != row["event_hash"])):
+            return None
+        return event
+
+    # Current-turn, admitted outward stimuli. Validate the actual derived
+    # sensory candidate rather than trusting a caller-supplied cue dictionary.
+    for cue in packet["cues"]:
+        event = world_event(cue)
+        if event is None:
+            continue
+        if cue.get("grade") == "SOURCEFREE_FIXTURE":
+            if sensory_candidate(event, world, house) == cue:
+                return True
+        elif (event["event_id"] in perceived
+              and (cue.get("modality") in ("AUDITORY", "VISUAL")
+                   or cue.get("channels"))):
+            return True
+
+    # For near-term contextual lists, only new observations strictly after
+    # this interval began may qualify. Same-clock past context is not a new
+    # participant observation. Self-action helper already source-validates
+    # actor ownership and actor perception; recheck at the current read cut.
+    for row in packet["recent_self_actions"]:
+        event = world_event(row)
+        if (event is not None and event["clock"] > start
+                and event["event_id"] in perceived
+                and event.get("actor_id") == "A"):
+            return True
+    for row in packet["recent_speech"]:
+        event = world_event(row)
+        if (event is not None and event["clock"] > start
+                and event["event_id"] in perceived
+                and event.get("kind") == "SPEECH"
+                and event.get("actor_id") == row.get("speaker")):
+            return True
+    return False
+
+
 def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED", psyche_owner=None, psyche_scope=None):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
@@ -213,8 +285,8 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
             obligation_refs=psyche_scope.get("obligation_refs", ()),
             # Qualified existing actor-local world evidence, not guessed
             # interiority or a portal-user/persona override.
-            actor_observed=bool(
-                packet["recent_self_actions"] or cues or packet["recent_speech"]
+            actor_observed=current_p3_actor_access(
+                session, interval, world, house, packet
             ),
         )
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
