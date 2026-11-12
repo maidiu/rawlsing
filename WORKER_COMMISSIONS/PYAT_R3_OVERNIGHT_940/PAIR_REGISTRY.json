@@ -47,7 +47,8 @@
               "completed": 1794472483579
             }
           },
-          "pid": 15738
+          "pid": 15738,
+          "state": "RETURNED"
         },
         "B": {
           "session_id": "ses_e3120baacffegE3ZnR5uZcHb0N",
@@ -59,7 +60,11 @@
             "providerID": "opencode-go",
             "variant": "max"
           },
-          "model_actual_turn": "PENDING_FIRST_REAL_TURN",
+          "model_actual_turn": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
           "session_cost_observed": 0,
           "session_tokens_observed": {
             "input": 0,
@@ -71,11 +76,27 @@
             }
           },
           "opponent_session_id": "ses_e3122f686ffeByL78cGOKAacTS",
-          "state": "IDLE_WAIT_OWN_A_RETURN"
+          "state": "RUNNING",
+          "job_id": "pyat940-s1b-b01",
+          "received_head": "aa98565c7f9a03b0383cb41eb6d2955d1575ac29",
+          "pid": 31766,
+          "actual_first_turn_model": {
+            "id": "msg_1cf1a2b9b001unBEeeLFBoQNiQ",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794475961346,
+              "streamed": 1794475970709,
+              "completed": 1794475971048
+            }
+          }
         }
       },
-      "state": "A_RUNNING",
-      "active_role": "A",
+      "state": "B_RUNNING",
+      "active_role": "B",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -113,22 +134,44 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "NOT_RUN",
-      "active_job": "pyat940-s1b-a01",
+      "active_job": "pyat940-s1b-b01",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s1b-a01",
-        "child_pid": 15738,
-        "supervisor_pid": 15737,
-        "observer_pid": 15739,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1b-a01",
+        "job_id": "pyat940-s1b-b01",
+        "child_pid": 31766,
+        "supervisor_pid": 31765,
+        "observer_pid": 31767,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1b-b01",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 15739,
+        "pid": 31767,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
         "interval": null
+      },
+      "a_return": {
+        "job_id": "pyat940-s1b-a01",
+        "exit_code": 1,
+        "candidate_head": "aa98565c7f9a03b0383cb41eb6d2955d1575ac29",
+        "implemented_sha": "c3010bc6f11454c99bc38c79e8d6fbf4000e8197",
+        "remote_verified": true,
+        "disposition": "AUTHOR_QUALIFIED_CANDIDATE_ONLY",
+        "terminal_note": "Final assistant stop/no model error observed after committed delivery; nonzero process separately preserved",
+        "grade": "S1B_SOURCEFREE_SYNTHETIC_NONRESPONDENT_FIXTURE",
+        "gates": "G1-G4 author claims only; G5 NOT_RUN",
+        "actual_final_turn_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "handoff_custody_correction": "Final challenge contains stale fb1bdb6 pointer; dispatch pins correct aa98565 delivery and c3010 implementation",
+        "open_boundary_for_B": "historical build_index/roster absent-current declarations must be checked against frozen G1"
+      },
+      "custody_comment": {
+        "issue": 918,
+        "comment_id": 6819968161
       }
     },
     {
