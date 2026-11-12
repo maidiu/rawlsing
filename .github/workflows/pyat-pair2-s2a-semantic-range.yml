@@ -1,0 +1,32 @@
+name: PYAT Pair2 S2-A certified semantic selector first-reader
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/_pre553_verified_semantic_range.py'
+      - 'rawlsing_next/_pre553_query_predicate.py'
+      - 'rawlsing_next/tests/test_pre553_verified_semantic_range.py'
+      - '.github/workflows/pyat-pair2-s2a-semantic-range.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-native-selector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pyarrow
+      - name: S2-A real I02 and I03 native first-reader plus hostile H26-H30
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py --junitxml=s2a-pair2.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-s2a-semantic-range-junit
+          path: s2a-pair2.xml
+          if-no-files-found: ignore
