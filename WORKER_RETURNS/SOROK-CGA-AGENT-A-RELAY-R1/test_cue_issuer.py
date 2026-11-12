@@ -108,7 +108,7 @@ def test_first_consumer_binds_current_world_readset_separately_from_p3(tmp_path)
 
     run_p6.experience(state, Namespace(command="new", request_id=None,
                                        situated_house=True))
-    run_p6.experience(state, Namespace(command="approach", request_id="real",
+    public = run_p6.experience(state, Namespace(command="approach", request_id="real",
                                        target=None), interpret=interpret,
                       sourcefree_p3_bridge=True)
     assert len(packets) == 1
@@ -126,6 +126,15 @@ def test_first_consumer_binds_current_world_readset_separately_from_p3(tmp_path)
     turns = json.loads((state / "p4_receipts.json").read_text())["turns"]
     committed = turns[-1]["receipt"]["outward_cue"]
     assert committed["event_hash"] == proof["event_hash"]
+    internal = turns[-1]["receipt"]["situated"]["sourcefree_p3_receipt"]
+    assert internal["grade"] == "SOURCEFREE_TEST_ONLY"
+    assert internal["p3_record_readset"] == p3["readset"]
+    assert internal["current_world_readset"] == p3["world_readset"]
+    assert internal["p3_context_hash"] == p3["context_hash"]
+    assert internal["actor_access_evidence"] == p3["actor_access_evidence"]
+    assert internal["world_state_hash"] == packets[0]["world_state_hash"]
+    # The private evidence receipt is durable yet not a public narrative.
+    assert "sourcefree_p3_receipt" not in json.dumps(public)
 
 
 def test_crash_after_world_speech_commit_holds_retry_without_duplication(tmp_path, monkeypatch):
