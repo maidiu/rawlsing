@@ -5,6 +5,8 @@ on:
       - integration/pre-main-reconciliation-r1
     paths:
       - 'rawlsing_next/gt12_c_to_d_relation_bridge.py'
+      - 'rawlsing_next/field_forge_conditional_support.py'
+      - 'rawlsing_next/tests/test_c3_agent_a_query_source_downgrade.py'
       - 'rawlsing_next/tests/test_c3_agent_b_source_contradiction.py'
       - '.github/workflows/pyat-c3-agent-b-source-contradiction.yml'
   workflow_dispatch:
@@ -19,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # include protected PR-base parent for exact old-code differential
+          fetch-depth: 0  # inspect exact immutable protected baseline by SHA
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -30,6 +32,7 @@ jobs:
           PYTHONPATH: .
         run: |
           python -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_c3_agent_a_query_source_downgrade.py \
             rawlsing_next/tests/test_c3_agent_b_source_contradiction.py \
             rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
             rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py
