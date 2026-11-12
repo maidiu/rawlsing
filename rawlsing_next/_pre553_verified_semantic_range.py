@@ -10,6 +10,8 @@ from __future__ import annotations
 
 from collections.abc import Iterator, Mapping, Sequence
 from dataclasses import dataclass
+from hashlib import sha256
+from heapq import merge
 from types import MappingProxyType
 from typing import Any
 
@@ -18,14 +20,14 @@ from rawlsing_next.pre553_c11_repository import (
 )
 from rawlsing_next.pre553_c11_integrity import RespondentIdentity
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef, RespondentEvent, exact_ref, semantic_hash,
+    ExactRef, EmpiricalUniverse, RespondentEvent, canonical_json, exact_ref, semantic_hash,
 )
 from rawlsing_next._pre553_query_common import EmpiricalQueryExecutionError
 
 _SCHEMA = "PYAT_I02_CERTIFIED_SEMANTIC_RANGE_PILOT@1"
 _Key = tuple[str, str, str]  # exact respondent-ref key, selector kind, exact target-ref key
 _RangeDigest = tuple[int, str]
-_EMPTY_DIGEST = semantic_hash([])
+_EMPTY_DIGEST = sha256(b"").hexdigest()
 
 
 class SemanticRangeIntegrityError(EmpiricalQueryExecutionError):
@@ -46,10 +48,20 @@ def _event_sig(event: RespondentEvent) -> list[str]:
 
 
 def _digest(events: Sequence[RespondentEvent]) -> _RangeDigest:
-    signatures = [_event_sig(event) for event in events]
-    if len({row[0] for row in signatures}) != len(signatures):
-        raise SemanticRangeIntegrityError("duplicate exact occurrence in semantic range")
-    return len(signatures), semantic_hash(signatures)
+    """Constant-extra-memory digest over an *already ordered* occurrence stream.
+
+    Length-prefix each canonical signature to eliminate delimiting ambiguity;
+    the I02 seal owns global occurrence uniqueness, and a poisoned duplicate
+    changes this held count/hash. No full-range JSON list is ever allocated.
+    """
+    digest = sha256()
+    count = 0
+    for event in events:
+        material = canonical_json(_event_sig(event)).encode("utf-8")
+        digest.update(len(material).to_bytes(8, "big"))
+        digest.update(material)
+        count += 1
+    return count, digest.hexdigest()
 
 
 def _bindings(
@@ -57,6 +69,12 @@ def _bindings(
 ) -> tuple[dict[str, tuple[RespondentEvent, ...]], dict[_Key, tuple[RespondentEvent, ...]]]:
     if not isinstance(release, C11LogicalRelease) or release._validation_seal is not _C11_VALIDATION_SEAL:
         raise SemanticRangeIntegrityError("semantic range requires a genuine I02-sealed release")
+    universes = [
+        obj for obj in release._public_non_events
+        if isinstance(obj, EmpiricalUniverse) and obj.ref == universe_ref
+    ]
+    if len(universes) != 1:
+        raise SemanticRangeIntegrityError("the chosen universe is not exactly present in sealed I02")
     respondents: dict[str, list[RespondentEvent]] = {}
     for obj in release.internal_records:
         if (isinstance(obj, RespondentIdentity)
@@ -64,8 +82,6 @@ def _bindings(
             if obj.ref.key in respondents:
                 raise SemanticRangeIntegrityError("duplicate respondent ref in sealed release")
             respondents[obj.ref.key] = []
-    if not respondents:
-        raise SemanticRangeIntegrityError("universe has no admitted respondent identities")
     postings: dict[_Key, list[RespondentEvent]] = {}
     for event in release.public_objects:
         if not isinstance(event, RespondentEvent):
@@ -174,14 +190,18 @@ class CertifiedRespondentEvents(Sequence[RespondentEvent]):
             parts.append(self._verified_alias("canonical", target))
             if include_component:
                 parts.append(self._verified_alias("component", target))
-        selected: dict[str, RespondentEvent] = {}
-        for part in parts:
-            for event in part:
-                prior = selected.setdefault(event.ref.key, event)
-                if prior != event:
+        # Up to three already-sorted alias postings. Merge lazily and suppress
+        # the same event under multiple authorized aliases without materializing
+        # a full combined range/dedup dictionary.
+        previous_key = None
+        previous_event = None
+        for event in merge(*parts, key=lambda obj: obj.ref.key):
+            key = event.ref.key
+            if key == previous_key:
+                if event != previous_event:
                     raise SemanticRangeIntegrityError("alias points to conflicting event body")
-        for key in sorted(selected):
-            event = selected[key]
+                continue
+            previous_key, previous_event = key, event
             if states is None or event.typed_state in states:
                 yield event
 
