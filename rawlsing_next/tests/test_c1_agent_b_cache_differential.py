@@ -330,3 +330,46 @@ def test_c1_cache_hit_callback_cannot_change_governed_input_while_serving():
     mutable_semantic_value["response"] = "before"
     _, restored = build_source_backed_c11_repository(source, projection, cache=cache)
     assert restored.release_ref == before.release_ref
+
+
+def test_c1_uncached_physical_read_cannot_use_changed_governed_semantics():
+    """An absent session cache must not bypass coherent governed projection custody.
+
+    A before/after semantic mutation is not made safe by omitting the optional
+    accelerator. Both cached and uncached entrypoints must refuse the same
+    changed governing input before returning an apparently valid C11 release.
+    """
+    import pytest
+    from rawlsing_next.pre553_source_backed_c11_facade import SourceBackedC11FacadeError
+
+    fx = _fixture("agent-a-uncached-projection-race")
+    p = fx["projection"]
+    slot = p.response_slots[0]
+    governed_value = {"response": "issued"}
+    p = replace(
+        p,
+        response_slots=(replace(slot, values=(
+            replace(slot.values[0], canonical_value=governed_value),
+            *slot.values[1:],
+        )), *p.response_slots[1:]),
+    )
+    issued_preimage = p.cache_identity
+
+    def mutate():
+        governed_value["response"] = "different"
+        return iter(fx["cells"])
+
+    source = ExactPhysicalCellStream(
+        source_sha256=fx["source_sha"], row_count=3,
+        cell_iter_factory=mutate,
+    )
+    with pytest.raises(
+        SourceBackedC11FacadeError,
+        match="cache input changed during C11 build",
+    ):
+        build_source_backed_c11_repository(source, p, cache=None)
+    assert p.cache_identity != issued_preimage
+
+    # A stable, explicitly revised projection can still legitimately build.
+    _, current = build_source_backed_c11_repository(_stream(fx), p, cache=None)
+    assert current.release_ref is not None
