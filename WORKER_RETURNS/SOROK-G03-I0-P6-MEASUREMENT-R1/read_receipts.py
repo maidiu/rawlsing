@@ -46,6 +46,9 @@ def sqlite_typed_cell(v):
 def sqlite_logical_digest(root):
     path=Path(root)/SQLITE_REL
     require(path.is_file() and not path.is_symlink(),"SQLITE_LOGICAL_PATH_UNAVAILABLE")
+    wal=Path(str(path)+"-wal")
+    require(not (wal.exists() and wal.stat().st_size>0),
+            "SQLITE_UNCHECKPOINTED_WAL")
     try:
         with sqlite3.connect("file:"+str(path.resolve())+"?mode=ro&immutable=1",uri=True) as db:
             require(db.execute("PRAGMA quick_check(1)").fetchone()[0]=="ok",
