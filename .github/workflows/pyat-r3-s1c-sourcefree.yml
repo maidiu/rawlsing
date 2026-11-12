@@ -1,0 +1,34 @@
+name: PYAT R3 S1-C sourcefree censused operation and first consumer
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_operation_fate_census.py'
+      - 'rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py'
+      - '.github/workflows/pyat-r3-s1c-sourcefree.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sourcefree-census-to-issued-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing sourcefree runtime test dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas pyreadstat pyarrow duckdb psutil
+      - name: S1-C independent input census, R03 issued reader, negatives and restoration
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py
+      - name: Preserve existing R03/R61 issued sourcefree functionality
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_universal_workload.py \
+            rawlsing_next/tests/test_universal_workload_custody.py
