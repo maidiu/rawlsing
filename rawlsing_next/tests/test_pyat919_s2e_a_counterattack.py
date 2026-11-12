@@ -245,3 +245,51 @@ def test_a2_coordinated_rehashed_ancestry_and_candidate_replay_refused_by_issuer
             runtime_catalog=case[1], require_complete=True,
         ),
     )
+
+
+
+def test_a2_rehashed_candidate_coverage_cannot_contradict_typed_fate():
+    """A complete, rehashed negative coverage claim cannot retain a supported typed fate."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    native = outputs[unit.unit_hash]
+    candidate = native.receipts[0]
+    assert candidate.typed_state == "DISCOVERED_RESULT_SUPPORTED"
+    assert candidate.coverage_state == "EVALUATED_SUPPORTED"
+    ci = candidate.candidate_identity
+    new_coverage = "EVALUATED_VALID_EMPTY"
+    fact_refs = sorted(
+        (exact_ref(ref, "candidate fact") for ref in candidate.empirical_fact_refs),
+        key=lambda ref: ref.key,
+    )
+    false_replay = _replay_ref("candidate-replay", {
+        "contract": I05_CONTRACT_ID,
+        "authority_ref": native.discovery_authority_ref.as_dict(),
+        "frontier_ref": native.evaluated_frontier_ref.as_dict(),
+        "candidate_id": ci["candidate_id"],
+        "candidate_hash": ci["candidate_hash"],
+        "coverage_state": new_coverage,
+        "fact_refs": [ref.as_dict() for ref in fact_refs],
+        "release_refs": [ref.as_dict() for ref in unit.release_refs],
+        "query_execution_contract": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    })
+    altered = _forge_receipt(
+        candidate, overrides={"coverage_state": new_coverage, "replay_ref": false_replay},
+        root=false_replay,
+    )
+    history, output = _outer_consistent(
+        manifest, receipts, outputs, unit, altered,
+    )
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_CANDIDATE_TERMINAL_FATE_MISMATCH"):
+        census_native_batch(
+            manifest, history, output,
+            runtime_catalog=case[1], require_complete=True,
+        )
+    require_same_native_output_graph(
+        baseline, census_native_batch(
+            manifest, receipts, outputs,
+            runtime_catalog=case[1], require_complete=True,
+        ),
+    )
