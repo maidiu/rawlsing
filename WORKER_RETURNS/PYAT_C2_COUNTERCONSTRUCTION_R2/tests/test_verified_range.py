@@ -310,7 +310,7 @@ class TestVerifiedRanges(unittest.TestCase):
             Event("U1","R1","NQ7","g","1","B","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
             Event("U1","R1","NQ7","g","2","?","NO_RESPONSE","CQ7","SUB7"),
             Event("U1","R2","NQ7","g","0","C","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
-            Event("U2","R1","NQ7","g","0","X","SUBSTANTIVE_RESPONSE","CQ7","SUB7"),
+            Event("U2","R1","NQ7","g","0","X","SUBSTANTIVE_RESPONSE","CQ8","SUB7"),
             Event("U1","R1","ALIAS","h","0","Y","SUBSTANTIVE_RESPONSE","ALIAS","ALIAS"),
         )
         self.scope=Scope("RELEASE_REF",(("U1","R1"),("U1","R2"),("U2","R1")),
