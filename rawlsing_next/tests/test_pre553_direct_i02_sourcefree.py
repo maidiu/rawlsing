@@ -80,6 +80,30 @@ def test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release(tmp_path):
         assert header["reconstructed_v1_replay_ref"] == historical.replay_manifest.ref.key
         assert header["reconstructed_v1_release_ref"] == historical.release_ref.key
         assert expected.replay == historical.replay_manifest.ref.key
+        # Trace the actual native I03 first selector owner, not an abstract
+        # expected-number model. Full native facts are covered in inherited
+        # I03 tests; here compare direct-produced complete selected refs.
+        from rawlsing_next._pre553_query_predicate import (
+            _build_release_index, _select_respondent_events,
+        )
+        native_index = _build_release_index(
+            historical, candidate.empirical_universes[0].ref,
+        )
+        for respondent in native_index.respondents:
+            old_all = {x.ref.key for x in native_index.events_by_respondent[respondent]}
+            new_all = {x.key for x in certified.event_refs(respondent)}
+            assert new_all == old_all
+            for q in candidate.question_variable_bindings:
+                expected_events = {
+                    x.ref.key for x in _select_respondent_events(
+                        native_index, respondent, q.native_question_ref,
+                        native_only=True,
+                    )
+                }
+                selected = {x.key for x in certified.selector_refs(
+                    respondent, q.native_question_ref, native_only=True,
+                )}
+                assert selected == expected_events
     # No direct-candidate roots may be smuggled into the old sealed-release
     # native I03 loader, even if it has an otherwise valid physical root.
     repo = C11Repository()
