@@ -1,0 +1,195 @@
+{
+  "schema": "PYAT_R3_S1A_SOURCEFREE_PACKET_RECEIPT@1",
+  "packet_id": "S1-A",
+  "old_obligations": [
+    "P1-01"
+  ],
+  "governing_commission": "https://github.com/maidiu/rawlsing/issues/918",
+  "governing_stop_rule": "https://github.com/maidiu/rawlsing/issues/909#issuecomment-6817926106",
+  "contract_frozen_at_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "predecessor_candidate_sha": "29ddbb44a5d30f7bf287e594cee57f360b286e99",
+  "candidate_tested_sha": "6286ea700a253ff142104f2e3ee62c9352a07644",
+  "test_only_red_sha": "97b1eba95266cb6dc0340022a35f945aaa2c9b38",
+  "branch": "review/pyat-r3-s1a-b-recovery-race-20261112-r1",
+  "proposed_pr": "https://github.com/maidiu/rawlsing/pull/942",
+  "changed_paths": [
+    "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "rawlsing_next/tests/test_c1_agent_b_cache_differential.py",
+    ".github/workflows/pyat-c1-agent-b-cache-proof.yml"
+  ],
+  "changed_blobs": {
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "f29247b33cb78e5f1e620620d6968ab433ce407a",
+    "rawlsing_next/tests/test_c1_agent_b_cache_differential.py": "d94946349e7f353df3f46adf4c60160db022d5c7",
+    ".github/workflows/pyat-c1-agent-b-cache-proof.yml": "f740e6a10ac573a9de85d2666d4c4b6c3c25c897"
+  },
+  "writer_lease_and_scope": "Exclusive isolated GitHub branch creation and exact-head CAS file writes observed; external host/process lease not independently certified. Sourcefree S1-A only, no protected or predecessor writes.",
+  "actual_first_consumer": "rawlsing_next.pre553_empirical_query.execute_empirical_query via real build_source_backed_c11_repository and test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves_i03",
+  "evidence_grade": "S2_SOURCEFREE_ENGINEERING_CANDIDATE",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "R3 #918 S1-A G1–G4 and HQR-R3S independently read; #937 exact-head from #935 and original #922; only source-backed C11 session-cache owner altered"
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Inherited R1/Y I03 row-owner changed-value, denominator 1 and exact restoration plus new concurrent clear/recompute positive first reader; 34/34 focused green"
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "A/B inherited negative tests for response, row, routing, occurrence, decoder, authority, mutable projection, warm/uncached TOCTOU, conflicting rebind and foreign first insert preserved; 136/136 wider sourcefree preservation green"
+    },
+    "G4": {
+      "state": "PASS",
+      "receipt": "Deterministic real-thread clear/recompute RED reproduced and repaired. Scoped 3-row key/warm/cold/clear time and RSS measured by Actions. Durable CAS N/A because optional in-memory session cache; no 100k economics or original35 resource claim."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": null,
+      "receipt": "One independent nonauthor receiving of exact report-containing descendant HEAD required"
+    }
+  },
+  "mandatory_cases": [
+    {
+      "id": "S1A_CHANGED_RESPONSE",
+      "result": "PASS",
+      "test": "test_c1_changed_semantic_value_must_not_reuse_same_key_cached_release"
+    },
+    {
+      "id": "S1A_ROW_OWNERSHIP",
+      "result": "PASS",
+      "test": "test_c1_changed_row_to_respondent_binding_cannot_reuse_old_c11"
+    },
+    {
+      "id": "S1A_PHYSICAL_DECODER",
+      "result": "PASS",
+      "test": "test_c1_decoder_metadata_context_changes_cache_admission_not_c11_semantics"
+    },
+    {
+      "id": "S1A_ROUTING_OCCURRENCE",
+      "result": "PASS",
+      "test": "test_c1_changed_routing_and_occurrence_are_distinct_cache_inputs"
+    },
+    {
+      "id": "S1A_AUTHORITY_CONTEXT",
+      "result": "PASS",
+      "test": "test_c1_authority_set_cache_isolation_does_not_mint_authority"
+    },
+    {
+      "id": "S1A_REAL_I03_RESTORE",
+      "result": "PASS",
+      "test": "test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores"
+    },
+    {
+      "id": "S1A_ONE_SHOT_AUTHORITY",
+      "result": "PASS",
+      "test": "test_c1_one_shot_authority_iterable_produces_same_private_cache_binding"
+    },
+    {
+      "id": "S1A_WARM_COLD_MUTATION",
+      "result": "PASS",
+      "test": "test_c1_projection_mutation_during_source_read_must_not_poison_cache_key"
+    },
+    {
+      "id": "S1A_WARM_CACHE_HIT",
+      "result": "PASS",
+      "test": "test_c1_cache_hit_callback_cannot_change_governed_input_while_serving"
+    },
+    {
+      "id": "S1A_NO_CACHE_COHERENCE",
+      "result": "PASS",
+      "test": "test_c1_uncached_physical_read_cannot_use_changed_governed_semantics"
+    },
+    {
+      "id": "S1A_MUTATE_RESTORE",
+      "result": "PASS",
+      "test": "test_c1_transient_semantic_rewrite_and_restore_cannot_cache_mixed_release"
+    },
+    {
+      "id": "S1A_IMMUTABLE_NESTED_RULES",
+      "result": "PASS",
+      "test": "test_c1_governed_nested_semantic_input_is_detached_and_readonly"
+    },
+    {
+      "id": "S1A_CONFLICT_REBIND",
+      "result": "PASS",
+      "test": "test_c1_session_cache_rejects_conflicting_valid_release_rebind"
+    },
+    {
+      "id": "S1A_FIRST_INSERT_POISON",
+      "result": "PASS",
+      "test": "test_c1_empty_cache_rejects_unowned_valid_release_and_preserves_i03"
+    },
+    {
+      "id": "S1A_CONCURRENT_CLEAR_RESTORE",
+      "result": "PASS",
+      "test": "test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves_i03"
+    }
+  ],
+  "test_commands": [
+    "PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_c1_agent_b_cache_differential.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+    "PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_source_equivalence.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py rawlsing_next/tests/test_universal_source_byte_custody.py"
+  ],
+  "executions": [
+    {
+      "kind": "RED",
+      "sha": "97b1eba95266cb6dc0340022a35f945aaa2c9b38",
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43181257077",
+      "focused_pass": 33,
+      "focused_fail": 1,
+      "error": "SourceBackedC11FacadeError('producer-only cache admission') after concurrent clear before public put"
+    },
+    {
+      "kind": "GREEN",
+      "sha": "6286ea700a253ff142104f2e3ee62c9352a07644",
+      "url": "https://github.com/maidiu/rawlsing/actions/runs/43182074662",
+      "focused_pass": 34,
+      "focused_fail": 0,
+      "preservation_pass": 136,
+      "preservation_fail": 0
+    }
+  ],
+  "resource_evidence": {
+    "fixture_rows": 3,
+    "physical_cell_factory_calls": 2,
+    "cache_entries_after_rebuild": 1,
+    "entry_dict_shallow_bytes": 224,
+    "cache_key_hash_5_calls_seconds": 0.029707529000006616,
+    "cold_build_seconds": 0.055720088000001056,
+    "warm_hit_seconds": 0.012360418000000095,
+    "clear_recompute_seconds": 0.06383836499999518,
+    "single_process_maxrss_kib": 170196,
+    "process_tree_peak_rss_bytes": null,
+    "retained_disk_bytes": null,
+    "peak_disk_bytes": null,
+    "measurement_limit": "one sourcefree 3-row Actions/Python3.11 process, includes imports; not 100k or 6 GiB acceptance"
+  },
+  "preserved_functions": [
+    "B #922 full-governed-preimage/decoder/authority cache keys and actual I03 first reader",
+    "A #926 recursive detached freeze, cache/no-cache final coherence checks",
+    "B #935 conflicting-rebind refusal, idempotent reinsertion",
+    "A #937 public first-admission denial, producer-only valid insertion",
+    "existing source equivalence, issued-operation, byte custody and joined-resume sourcefree behaviors"
+  ],
+  "open_defects": [],
+  "nonblocking_deferred": [
+    "Arbitrary hostile in-process mutation or private method invocation not protected by Python lock",
+    "Independent native source-byte authentication and original35/QSM authority not established by caller-provided source SHA",
+    "100k physical pipeline resource gate belongs to selected integrated S2 work; not S1-A"
+  ],
+  "external_holds": [
+    {
+      "owner": "qualified native original35 source and scientific issuer",
+      "minimal_missing_witness": "source-rights and source-document semantics, U/Epre and original35 scientific first-reader issue"
+    },
+    {
+      "owner": "qualified current source/host/actor decision authority",
+      "minimal_missing_witness": "source/current-use and host authorization independent of local cache key"
+    }
+  ],
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_HOST_ACTOR_ISSUER_GRANTS",
+  "stop_state": "READY_FOR_RECEIVING",
+  "independent_receiver_decision": "NOT_RUN",
+  "disposition": null,
+  "integration_state": "UNMERGED"
+}

@@ -570,3 +570,95 @@ def test_c1_empty_cache_rejects_unowned_valid_release_and_preserves_i03():
     cache.clear()
     _, restored = build_source_backed_c11_repository(source, base, cache=cache)
     assert restored.release_ref == actual.release_ref
+
+
+def test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves_i03():
+    """G4 clear/recompute cannot cause a false refusal for valid simultaneous builds.
+
+    Both builders start on a completely empty cache with identical source,
+    rules and authority binding. The first finishes; the second sees an
+    occupied slot at admission and a legitimate clear interleaves before put.
+    The second producer has already I02-validated and must still serve its
+    real I03 output. A previously installed cache entry is disposable.
+    """
+    from threading import Event, Thread
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        SourceBackedC11SessionCache, ExactPhysicalCellStream,
+    )
+
+    fx = _fixture("s1a-b-clear-inflight")
+    p = fx["projection"]
+    started = Event()
+    permit_build = Event()
+
+    class InterleavedCache(SourceBackedC11SessionCache):
+        def __init__(self):
+            super().__init__()
+            self.at_reinsert = Event()
+            self.resume_reinsert = Event()
+
+        def put(self, key, release):
+            self.at_reinsert.set()
+            assert self.resume_reinsert.wait(20), "timed out waiting for legitimate eviction"
+            return super().put(key, release)
+
+    def slow_cell_iter():
+        started.set()
+        assert permit_build.wait(20), "timed out waiting for other valid source build"
+        return iter(fx["cells"])
+
+    cache = InterleavedCache()
+    delayed_source = ExactPhysicalCellStream(
+        source_sha256=fx["source_sha"],
+        row_count=3,
+        cell_iter_factory=slow_cell_iter,
+    )
+    answer = {}
+    failures = []
+
+    qa = _query_authority("s1a-b-clear-inflight")
+    pred = _branch_predicate(
+        fx, qa, members=(fx["respondents"]["R1"],), tag="s1a-b-clear-pred",
+    )
+    query = _query(fx, qa, pred, ("Y",), tag="s1a-b-clear-query")
+    reg = AuthorityRegistry((*fx["authorities"], qa))
+
+    def actual_first_reader(source):
+        repo, release = build_source_backed_c11_repository(source, p, cache=cache)
+        fact = execute_empirical_query(
+            repository=repo, query=query, predicate=pred,
+            authority_registry=reg, release_refs=(release.release_ref,),
+        ).facts[0]
+        return release.release_ref, fact.ref, _cell_map(fact), fact.raw_denominator_support
+
+    def slow_worker():
+        try:
+            answer["observed"] = actual_first_reader(delayed_source)
+        except BaseException as exc:
+            failures.append(exc)
+
+    worker = Thread(target=slow_worker, daemon=True)
+    worker.start()
+    try:
+        assert started.wait(20), "slow builder did not open its source"
+        expected = actual_first_reader(_stream(fx))
+        permit_build.set()
+        # The vulnerable contains() -> put() version enters put after seeing
+        # B's valid entry; evict precisely between those operations. A repaired
+        # *atomic* admission may correctly bypass public put altogether. Do
+        # not require it to perform the obsolete broken implementation step.
+        cache.at_reinsert.wait(0.25)
+        cache.clear()
+        cache.resume_reinsert.set()
+        worker.join(20)
+        assert not worker.is_alive(), "inflight producer hung"
+        assert not failures, f"legitimate I03 build refused after clear: {failures!r}"
+        assert answer["observed"] == expected
+        # A late legal clear can leave an empty accelerator, never a false
+        # empirical result. Recompute through the ordinary first reader.
+        assert actual_first_reader(_stream(fx)) == expected
+        assert cache.entry_count == 1
+    finally:
+        permit_build.set()
+        cache.resume_reinsert.set()
+        worker.join(20)
