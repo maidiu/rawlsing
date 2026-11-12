@@ -139,9 +139,16 @@ def test_actual_copied_prefix_not_mutable_root_counts(tmp_path):
             (json.dumps({}), "child"),
         )
         store.db.commit()
-        assert branch_is_ancestor(session, parent_branch, epoch)
-        assert read_household(session)["source"]
+        assert not branch_is_ancestor(session, parent_branch, epoch)
+        with pytest.raises(RecursionRefusal, match="P6_HOUSEHOLD_SOURCE_OR_ROOT_MISMATCH"):
+            read_household(session)
+        with pytest.raises(RecursionRefusal, match="P2_MATERIAL_FACT_ROOT_OR_BRANCH_MISMATCH"):
+            owner.base_owner.material_fact(HOUSEHOLD_SLOT)
 
+        store.db.execute(
+            "UPDATE branch SET root_counts=? WHERE branch_id=?",
+            (json.dumps(original_counts), "child"),
+        )
         store.db.execute("DROP TRIGGER IF EXISTS world_event_no_update")
         store.db.execute(
             "UPDATE world_event SET hash=? WHERE branch_id='child' AND seq=0",
@@ -157,10 +164,6 @@ def test_actual_copied_prefix_not_mutable_root_counts(tmp_path):
         store.db.execute(
             "UPDATE world_event SET hash=? WHERE branch_id='child' AND seq=0",
             (original_row[0],),
-        )
-        store.db.execute(
-            "UPDATE branch SET root_counts=? WHERE branch_id=?",
-            (json.dumps(original_counts), "child"),
         )
         store.db.commit()
         assert branch_is_ancestor(session, parent_branch, epoch)
