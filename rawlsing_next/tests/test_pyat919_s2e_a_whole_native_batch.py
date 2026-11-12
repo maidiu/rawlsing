@@ -299,3 +299,63 @@ def test_a_output_proof_cap_fails_precisely_instead_of_truncating():
         max_canonical_output_bytes=original.canonical_proof_transcript_bytes,
     )
     require_same_native_output_graph(original, restored)
+
+
+def test_b_i05_valid_empty_false_absence_cannot_pass_native_output_census():
+    """B adversarial RED: a positive discovery cannot be labelled valid empty.
+
+    The forged envelope is still a legal native dataclass, with unchanged
+    candidate coverage, exact facts, receipts, Batch receipt and source release.
+    The *first-reader* auditor must refuse instead of blessing a new digest.
+    """
+    from dataclasses import replace
+
+    case = _native_case()
+    with I03GroupedExecutionScope() as scope:
+        manifest, receipts, outputs, original_census, _, _ = _batch(case, scope=scope)
+    unit = next(u for u in manifest.units if u.job_kind == "DISCOVERY")
+    native = outputs[unit.unit_hash]
+    assert not native.valid_empty
+    assert any(r.typed_state == "DISCOVERED_RESULT_SUPPORTED" for r in native.receipts)
+    forged = replace(native, valid_empty=True)
+    with pytest.raises(S2EOutputConservationError, match="S2E_I05_VALID_EMPTY_CLAIM_MISMATCH"):
+        census_native_batch(
+            manifest, receipts, {**outputs, unit.unit_hash: forged},
+            require_complete=True, runtime_catalog=case[1],
+        )
+    restored = census_native_batch(
+        manifest, receipts, outputs, require_complete=True, runtime_catalog=case[1],
+    )
+    require_same_native_output_graph(original_census, restored)
+
+
+def test_b_i05_wrong_frontier_replay_is_not_an_accepted_complete_graph():
+    """B adversarial RED: the auditor must recompute the native replay identity.
+
+    A structurally valid typed replay ref is not proof that it commits to the
+    actual frontier, all receipt refs, all fact refs and valid-empty state.
+    """
+    from dataclasses import replace
+
+    case = _native_case()
+    with I03GroupedExecutionScope() as scope:
+        manifest, receipts, outputs, original_census, _, _ = _batch(case, scope=scope)
+    unit = next(u for u in manifest.units if u.job_kind == "DISCOVERY")
+    native = outputs[unit.unit_hash]
+    fictitious = "f" * 64
+    forged_replay = ExactRef(
+        "PRE553_I05_FRONTIER_REPLAY",
+        f"urn:rawlsing:pre553:i05:frontier-replay:sha256:{fictitious}",
+        fictitious,
+    )
+    assert forged_replay != native.replay_ref
+    forged = replace(native, replay_ref=forged_replay)
+    with pytest.raises(S2EOutputConservationError, match="S2E_I05_FRONTIER_REPLAY_MISMATCH"):
+        census_native_batch(
+            manifest, receipts, {**outputs, unit.unit_hash: forged},
+            require_complete=True, runtime_catalog=case[1],
+        )
+    restored = census_native_batch(
+        manifest, receipts, outputs, require_complete=True, runtime_catalog=case[1],
+    )
+    require_same_native_output_graph(original_census, restored)
