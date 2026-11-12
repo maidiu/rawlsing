@@ -17,6 +17,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    authority_ref,
     EmpiricalFact,
     EmpiricalQuerySpec,
     ExactRef,
@@ -209,6 +210,14 @@ def _validate_common_closure(
     if joint_fact.typed_state not in ALLOWED_PRODUCER_STATES:
         raise FieldForgeConditionalSupportError(
             f"unsupported producer typed_state {joint_fact.typed_state!r}")
+    # The exact query hash identifies what was requested, not whether that
+    # operation was authorized. A re-signed positive fact may cite a real
+    # QUERY_UNAUTHORIZED query and otherwise satisfy every closure check.
+    # A typed nonpositive fact is preserved, without permission promotion.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_query.typed_state != "QUERY_AUTHORIZED_RESOLVABLE"):
+        raise FieldForgeConditionalSupportError(
+            "positive fact cannot derive FIELD FORGE relation from non-authorized query state")
 
     fact_query_ref = _exact(joint_fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref")
     if fact_query_ref != joint_query.ref:
@@ -269,6 +278,24 @@ def _validate_common_closure(
     if not set(query_authorities).issubset(set(authorities)):
         raise FieldForgeConditionalSupportError(
             "producer fact authority closure does not preserve query authorities")
+
+    # Query-wide authority_snapshot_refs do not imply that operation-specific
+    # query_authority_refs have been carried by the fact. The latter are part
+    # of the exact query's permitted-use closure. Check *before* projection
+    # to a profile that retains only the fact's authority snapshot.
+    try:
+        query_use_authorities = {
+            authority_ref(ref, "query.query_authority_refs")
+            for ref in _sequence(joint_query.query_authority_refs,
+                                 "query.query_authority_refs", allow_empty=True)
+        }
+    except Exception as exc:
+        raise FieldForgeConditionalSupportError(
+            "malformed query-specific authority closure") from exc
+    if (joint_fact.typed_state == "SUPPORTED"
+            and not query_use_authorities.issubset(set(authorities))):
+        raise FieldForgeConditionalSupportError(
+            "producer fact does not preserve query-specific authority refs")
 
     replay_ref = _exact(joint_fact.replay_ref, "fact.replay_ref")
     if isinstance(joint_fact.producer_replay_locator_or_reference_root, ExactRef):
