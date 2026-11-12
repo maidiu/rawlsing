@@ -210,6 +210,16 @@ def _validate_common_closure(
     if joint_fact.typed_state not in ALLOWED_PRODUCER_STATES:
         raise FieldForgeConditionalSupportError(
             f"unsupported producer typed_state {joint_fact.typed_state!r}")
+    # SUPPORTED is an empirically positive typed state, not merely a positive
+    # risk denominator. The canonical EmpiricalFact family currently validates
+    # the denominator but permits numerator=0 under SUPPORTED. Without this
+    # guard FF01 emits a nonempty all-zero conditional profile, and the
+    # downstream D gate promotes it to ADMITTED structural input. Preserve
+    # genuine OBSERVED_ZERO as a typed negative instead of reclassifying it.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_fact.raw_numerator_support == 0):
+        raise FieldForgeConditionalSupportError(
+            "SUPPORTED empirical fact has zero positive support")
     # The exact query hash identifies what was requested, not whether that
     # operation was authorized. A re-signed positive fact may cite a real
     # QUERY_UNAUTHORIZED query and otherwise satisfy every closure check.
@@ -292,6 +302,13 @@ def _validate_common_closure(
     except Exception as exc:
         raise FieldForgeConditionalSupportError(
             "malformed query-specific authority closure") from exc
+    # I03 itself refuses a query with zero operation-specific authorities.
+    # A mathematical empty-set subset would pass the check below and let a
+    # hash-valid SUPPORTED fact reach D despite no query operation issuer.
+    # Preserve negative/held typed facts; they cannot become D positives.
+    if joint_fact.typed_state == "SUPPORTED" and not query_use_authorities:
+        raise FieldForgeConditionalSupportError(
+            "positive query lacks operation-specific authority refs")
     if (joint_fact.typed_state == "SUPPORTED"
             and not query_use_authorities.issubset(set(authorities))):
         raise FieldForgeConditionalSupportError(
