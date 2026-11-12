@@ -68,7 +68,7 @@ def make_event(*, clock: int, kind: str, actor_id: str, location: str,
     if kind not in {"ARRIVAL", "MOVE", "SPEECH", "INSPECT", "REPAIR", "NO_CHANGE",
                     "OFFSCREEN_REPAIR", "OFFSCREEN_NO_CHANGE", "REFUSAL", "ATTEND",
                     "PLAY_INSTRUMENT", "STOP_INSTRUMENT", "APPROACH", "ORIENT",
-                    "HISTORICAL_MATERIAL"}:
+                    "HISTORICAL_MATERIAL", "MATERIAL_ACTIVITY"}:
         raise WorldRefusal("UNKNOWN_WORLD_EVENT_KIND", kind)
     if receipt is not None:
         validate_owner_receipt(receipt, actor_id=actor_id, act=kind, clock=clock)
