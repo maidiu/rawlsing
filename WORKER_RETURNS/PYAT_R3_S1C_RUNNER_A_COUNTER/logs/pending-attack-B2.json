@@ -1,0 +1,68 @@
+{
+  "adapter_on_severed_pending": {
+    "checkpoint_hash": "d0d1f597cd52827fa0779426894d47b6c727e768a044003093c974bfc43f8b78",
+    "issued_candidate_count": 150,
+    "refused": false,
+    "source_factory_calls": 1
+  },
+  "attack_frontier": {
+    "budget_state_after": "PARTIAL",
+    "excluded_scope_equal": true,
+    "inventory_ledger_equal": true,
+    "pending_ids_after": 0,
+    "pending_rows_still_pending": true,
+    "science_census_equal": true,
+    "source_census_equal": true,
+    "unknown_scope_equal": true
+  },
+  "false_complete_budget": {
+    "issued_candidate_count": 5,
+    "refused": false
+  },
+  "honest": {
+    "budget_state": "PARTIAL",
+    "execution_counts": {
+      "NOT_STARTED": 164,
+      "PENDING": 145
+    },
+    "issued_candidate_count": 5,
+    "native_fact_count": 11,
+    "pending_count": 145,
+    "pending_rows_all_pending": true,
+    "pending_rows_with_candidates": []
+  },
+  "native_overissue": {
+    "baseline_issued_candidate_count": 5,
+    "candidate_anti_join_no_drop_ok": true,
+    "issued_excess": 145,
+    "operation_anti_join_no_drop_ok": true,
+    "pending_ids_now_with_receipts": 142,
+    "pending_ids_sample": [
+      "urn:r61:op:0530305b6668222741e1aa0feda13852233d01a4e0ec7e08df53ba524c05b1e8",
+      "urn:r61:op:06561484ac9f71ea263e9c1c434681d1ff0b69ebeb0946aa835c2504882c67fb",
+      "urn:r61:op:06b2bd015ed6d18067998e3ad211e121ba7dfab906c0ef2ac6a7ddbe1183f0d2",
+      "urn:r61:op:076ba767a8196b2c20a8d1d5b10e757a7b1ff78dfbe8cb5ec45673ef9d6d582d",
+      "urn:r61:op:07901f8dd1e6419b67f7315b5f782eb5ba32ebeddd97ec05dbb1dfd3c962528b"
+    ],
+    "pending_ids_without_receipts": 3,
+    "sample_overissued_row": {
+      "fact_refs": 2,
+      "operation_id": "urn:r61:op:0530305b6668222741e1aa0feda13852233d01a4e0ec7e08df53ba524c05b1e8",
+      "receipt_refs": 1,
+      "received_candidate_ids": 1,
+      "result_state": "SUPPORTED"
+    },
+    "tampered_issued_receipt_count": 150
+  },
+  "restoration": {
+    "checkpoint_equal": true,
+    "checkpoint_hash": "713570e381b900653ed4c6ed48c6cb0f6f0a7afc845dbcd392b79202daf92cfd",
+    "fact_count_equal": true,
+    "frozen_census_equal": true,
+    "frozen_census_hash": "6f321592802ac69877cc263b872e35e4962a61468ba7ac2d4135e8a008a39d07",
+    "issued_candidate_count": 5,
+    "issued_count_equal": true,
+    "native_fact_count": 11,
+    "operation_fates_identical": true
+  }
+}

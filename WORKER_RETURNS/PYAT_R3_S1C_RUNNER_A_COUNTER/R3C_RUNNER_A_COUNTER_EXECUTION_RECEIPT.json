@@ -1,0 +1,255 @@
+{
+  "schema": "PYAT_R3_S1C_RUNNER_A_COUNTER_EXECUTION_RECEIPT@1.0.0",
+  "kind": "INDEPENDENT_EXECUTION_VERIFICATION_RUNNER_NOT_G5",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "governing_issues": ["#918", "#909"],
+  "pr_under_test": "https://github.com/maidiu/rawlsing/pull/975",
+  "agent_a_branch": "agent/pyat-r3-s1c-a-counter-b2-pending-20261112-r1",
+  "runner_branch": "agent/pyat-r3-s1c-a-counter-runner-20261112-r1",
+  "starting_frozen_agent_a_head": "779fea665829aae641a3f3d6b463f456c78f8316",
+  "agent_a_code_test_commit": "dae66cdf9f3846d237e0b1c3069cc17eb05b7746",
+  "b2_tested_ancestor": "f011a7639c89ec07829521cff3824dcaf95b6e6e",
+  "protected_pre_main_reference": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "source": {
+    "agent_a_census_blob_expected": "dd5bf3940083679612d73f98e6a7b7711c223fd5",
+    "agent_a_census_blob_verified": "dd5bf3940083679612d73f98e6a7b7711c223fd5",
+    "agent_a_test_blob_expected": "a19b0db5ea800af80aff86816e77e666f4acc72f",
+    "agent_a_test_blob_verified": "a19b0db5ea800af80aff86816e77e666f4acc72f",
+    "b2_census_blob": "5b2ea5add1d356617425baeda06684efda7fdcf9",
+    "b2_test_blob": "3677d6c3315deea8b556371840426568ca1bb213",
+    "lineage_verified": "f011a763 is an ancestor of dae66cdf and 779fea66; the A branch adds only the pending-list guard, its regression test and documentary receipt on top of B2."
+  },
+  "infrastructure": {
+    "github_actions": "UNAVAILABLE_CONFIRMED_BILLING_OR_SPENDING_LIMIT_BLOCK_BEFORE_JOB_STEPS",
+    "local_runner": "macOS 13.2.1 x86_64, Python 3.11.3, isolated venv",
+    "packages": {
+      "duckdb": "2.0.0",
+      "numpy": "2.4.6",
+      "pandas": "3.1.1",
+      "psutil": "7.2.2",
+      "pyarrow": "26.0.1",
+      "pyreadstat": "1.3.7",
+      "pytest": "9.2.0"
+    },
+    "worktree": "isolated git worktree detached at dae66cdf9f3846d237e0b1c3069cc17eb05b7746; Agent A branch was not modified"
+  },
+  "commands_and_results": [
+    {
+      "command": "python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py",
+      "collection": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 94.53,
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py",
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 107.84,
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <S1-B workflow files>",
+      "passed": 46,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <S1-D workflow files>",
+      "passed": 59,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <S2-F workflow files>",
+      "passed": 19,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "command": "python -B -m pytest -q -o addopts='' -p no:cacheprovider <shared C11/universal/empirical workflow files>",
+      "passed": 58,
+      "failed": 0,
+      "exit": 0
+    }
+  ],
+  "focused_suite": {
+    "collected": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "new_agent_a_test": "test_s1c_a_counter_pending_severance_cannot_overissue_bounded_work",
+    "tests": [
+      "test_s1c_full_frozen_census_reaches_real_issued_reader",
+      "test_s1c_omission_and_count_preserving_substitution_fail_before_source_open",
+      "test_s1c_source_fate_duplicates_and_cross_set_losses",
+      "test_s1c_source_edition_occurrence_and_op_hash_refuse",
+      "test_s1c_fate_mutation_refuses_eligibility_inflation",
+      "test_s1c_budget_pending_are_accounted_not_fake_completed",
+      "test_s1c_routing_unknown_is_retained_without_administered_positive",
+      "test_s1c_proved_inapplicable_form_is_retained_not_denominator",
+      "test_s1c_changed_valid_eligible_operation_and_restoration",
+      "test_s1c_changed_value_and_restore_real_fact_identity",
+      "test_s1c_actual_source_open_and_c11_build_census",
+      "test_s1c_b_unknown_and_excluded_axis_severance_before_source_open",
+      "test_s1c_b_rehashed_occurrence_false_fate_and_count_preserving_axis",
+      "test_s1c_b_inventory_ledger_fate_severance_and_restoration",
+      "test_s1c_b_rehashed_negative_axis_cannot_launder_other_frontier",
+      "test_s1c_b_r2_co_rehashed_false_held_raw_drops_real_first_consumer",
+      "test_s1c_b_r2_false_held_reason_alone_cannot_rehash_science",
+      "test_s1c_a_counter_pending_severance_cannot_overissue_bounded_work"
+    ]
+  },
+  "pending_list_attack": {
+    "reproduced": true,
+    "honest_budget_5_frontier": {
+      "budget_state": "PARTIAL",
+      "pending_count": 145,
+      "execution_counts": {"NOT_STARTED": 164, "PENDING": 145},
+      "issued_candidate_count": 5,
+      "native_fact_count": 11,
+      "pending_rows_with_candidates": 0
+    },
+    "mutated_frontier": {
+      "pending_ids_after": 0,
+      "budget_state_after": "PARTIAL",
+      "pending_rows_still_pending": true,
+      "source_census_equal": true,
+      "science_census_equal": true,
+      "unknown_scope_equal": true,
+      "excluded_scope_equal": true,
+      "inventory_ledger_equal": true
+    },
+    "native_overissue": {
+      "baseline_issued_candidate_count": 5,
+      "tampered_issued_receipt_count": 150,
+      "issued_excess": 145,
+      "pending_ids_now_with_receipts": 142,
+      "pending_ids_without_receipts": 3,
+      "candidate_anti_join_no_drop_ok": true,
+      "operation_anti_join_no_drop_ok": true,
+      "sample_overissued_operation": {
+        "operation_id": "urn:r61:op:0991d869783ce1a1ed731b5d9fa681513602895235c18b6001510eedc9570530",
+        "received_candidate_ids": 1,
+        "receipt_refs": 1,
+        "fact_refs": 2,
+        "result_state": "SUPPORTED"
+      },
+      "consequence": "the pre-repair existing R03/Batch/C11/I05 path issued 145 budget-deferred operations while both internal anti-joins remained green"
+    },
+    "pre_repair_b2_adapter_on_severed_pending": {
+      "refused": false,
+      "source_factory_calls": 1,
+      "issued_candidate_count": 150,
+      "takeaway": "B2 preflight accepted the severed pending list and actually opened the source"
+    },
+    "repaired_agent_a_adapter_on_severed_pending": {
+      "refused": true,
+      "code": "PENDING_FATE_CENSUS_DRIFT",
+      "missing_from_pending_list_count": 145,
+      "unmarked_pending_ids_count": 0,
+      "source_factory_calls": 0,
+      "takeaway": "the new guard refuses before compiling or opening any source"
+    },
+    "false_complete_budget": {
+      "pre_repair_b2": {"refused": false, "issued_candidate_count": 5},
+      "repaired_agent_a": {
+        "refused": true,
+        "code": "BUDGET_STATE_FATE_DRIFT",
+        "declared_budget_state": "COMPLETE",
+        "pending_count": 145
+      }
+    },
+    "restoration": {
+      "checkpoint_equal": true,
+      "frozen_census_equal": true,
+      "operation_fates_identical": true,
+      "issued_count_equal": true,
+      "fact_count_equal": true,
+      "checkpoint_hash": "7fa73f893b97f556b598350868923c33c51d4b1b52ff775bd079225302670e70",
+      "frozen_census_hash": "b4c246d59ba8049b522dfe8cc787b332e30a908b0978da5191694bddefc49581",
+      "issued_candidate_count": 5,
+      "native_fact_count": 11
+    }
+  },
+  "b2_preservation": {
+    "full_census_counts": {
+      "declared": 309,
+      "compiled": 309,
+      "receipt_rows": 309,
+      "fate_counts": {"ELIGIBLE": 150, "HELD": 159},
+      "deferred_scope_count": 6,
+      "unsupported_runtime_rows": 3,
+      "issued_candidates": 150,
+      "native_facts": 330,
+      "source_factory_calls": 1,
+      "bounded_i05_c11_builds": 1
+    },
+    "retained_checks": [
+      "complete operation-ID conservation",
+      "frozen source and scientific census checks",
+      "UNKNOWN, EXCLUDED and occurrence-ledger conservation",
+      "authentic R61 negative projections and four-axis histograms",
+      "sourcefree role_disposition against false eligibility and false HELD",
+      "source identity, provenance and authority-grade restrictions",
+      "actual Batch/C11/I05 execution, candidate and operation anti-joins",
+      "changed-value behavior and exact restoration",
+      "bounded source-factory and C11 construction"
+    ],
+    "false_held_and_false_reason_tests": "both passed within the 18 focused tests"
+  },
+  "resource_evidence": {
+    "scope": "TEST_ONLY_SOURCEFREE_FIXTURE_NOT_ORIGINAL35",
+    "focused_inner_elapsed_seconds": 5.465261,
+    "focused_wall_seconds": 95.1941,
+    "sampled_process_tree_peak_rss_bytes": 189599744,
+    "sampled_process_tree_peak_rss_mib": 180.82,
+    "rss_samples": 3199,
+    "inherited_wall_seconds": 107.84,
+    "combined_wall_seconds": {"s1b": 109.43, "s1d": 83.98, "s2f": 8.69, "shared": 78.97}
+  },
+  "repair": {
+    "runner_code_change_required": false,
+    "runner_repair_commit": null,
+    "note": "Agent A's committed source/test repair is causally correct and passed unchanged. No runner modification was made."
+  },
+  "gates": {
+    "G1": "PASS_SOURCEFREE_CHAIN_EXECUTED_REAL_R03_BATCH_C11_I05",
+    "G2": "PASS_INHERITED_PRESERVATION_22_OF_22",
+    "G3": "PASS_PENDING_OVERISSUE_REPRODUCED_AND_REFUSED_FALSE_HELD_FALSE_REASON_NEGATIVE_AXES_RESTORATION",
+    "G4": "PASS_BOUNDED_MEASUREMENT_5_OF_145_BUDGET_RECEIPTS_AND_FULL_309_150_330_CENSUS",
+    "G5": "NOT_RUN"
+  },
+  "holds": [
+    "ORIGINAL35_SCIENTIFIC_AND_SOURCE_ISSUER",
+    "NATIVE_HOST_CURRENT_PERMISSION",
+    "PROTECTED_MERGE",
+    "GITHUB_ACTIONS_HOSTED_BILLING_UNAVAILABLE"
+  ],
+  "remaining_limitations": [
+    "Sourcefree consistency now conserves the two pending representations, but it cannot independently certify an externally issued budget value that is absent from the frozen manifest.",
+    "No original35 respondent source, U_item/U_unit/U_app/E_pre issuance or native-host CURRENT permission was accessed or created.",
+    "Results are hard-grade TEST_ONLY_SOURCEFREE; G5 remains independent and not run by this worker."
+  ],
+  "disposition": "S1C_A_COUNTER_REAL_RUN_PASS__SOURCEFREE_G1_G4_COMPLETE__READY_FOR_INDEPENDENT_G5",
+  "next": "Hand exact code/test commit dae66cdf9f3846d237e0b1c3069cc17eb05b7746 (and this runner evidence branch HEAD) to one independent nonauthor G5 reviewer. No further author contest or construction is required.",
+  "published_logs": {
+    "directory": "WORKER_RETURNS/PYAT_R3_S1C_RUNNER_A_COUNTER/logs",
+    "sha256": {
+      "s1c-focused.log": "19425d5a4c404dc8d963a304f2b50c9b800cc7f26ed5b7fd3c971314e5971471",
+      "inherited.log": "cd81f28cfd3286d25389e218b4067bf551183eae4ece130e56a241c10f1bf066",
+      "collect-only.log": "764f76f7f9dd0105231e47040b305a03221c5a8b42bd5aa3487bada9ece0e379",
+      "combined-s1b.log": "7d1403fcad86fafaa22d5c9d7f5265a015deeb100f7dd735030314d37338b3e9",
+      "combined-s1d.log": "20b49f61a3783e608b5b125028f3ea298c227044a28d361ef87a44df6d7a3da5",
+      "combined-s2f.log": "71787e5d215cf69b5c54919c56797aa64566921089062dcf41a2aa49cc0005a1",
+      "combined-shared.log": "4d9e0d72a257e84b8e858ef137e428e8c663617181c354478d57e54e5bc37983",
+      "pending-attack-A.json": "edf10d91d04143a663f775e29bfb1e757d2035e33548b27d73e81302d9e89870",
+      "pending-attack-B2.json": "022af57bb55124db6a7d3bc9cb16c80848baee074e26290bc7e260a4d117c76f",
+      "pip-freeze.txt": "d29d0e1528bb0b3a74d3467cb070ed916045cd38bfab9a2a3d0525fc5698464b"
+    }
+  }
+}
