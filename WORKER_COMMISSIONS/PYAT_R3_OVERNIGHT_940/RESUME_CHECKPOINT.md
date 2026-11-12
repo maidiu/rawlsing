@@ -64,3 +64,8 @@ S1-B G5exit0 reviewf546e74b59cf21704aa945d7da5c3ab6050ce8e6: G1/G2/G4PASS, G3/B0
 
 ACTUAL S1-B exactfactoryrepair child62286/supervisor62285/observer62287; firstFlashMAXturnverified,kqueueintervalnull. SameS1BG5waitsexactrepair; S2Fclosedatacceptedgrade; S1Dcounterlive. Noextraordinarytasks/statuspolling/autowakes.
 Original#918 exactrevise/repaircustody comment6821926165; noacceptanceorcheckboxchange.
+
+S1-B exactrepairterminalexit0, remote deliverybdd3a83fc471ce99c5d85d7f7930270128eff2d4/codededd2fb8a1f5842910a0dc842fe75b3618c23443; minimumhelpercheck+focusedtests only,46packet+109/1skip+132claimed. SAMEindependentG5ses_e30a442d8ffeYBbXi7rPUpPxoc reservedpyat940-s1b-g5-factory-key-recheck-r01; owncleanreviewbranchfastforwarded; originalREVISEpreserved, noacceptanceyet. BothauthorsSTOPPED; S2FscopedacceptedSTOPPED; S1Dcounteractualrunning. Two necessaryruns/nofillertasks, noautowake/polling.
+
+ACTUAL S1-B sameG5factorykeyfocusedrecheck child64511/supervisor64510/observer64512, firstactualFlashMAXturnverified/kqueueintervalnull. S1Dcounterlive/S2Fscopedclosed. Duplicatefactoryrepairreturndedupagainstfactory_key_repair_return.job_id. Noautowake/polling.
+Original#918custody comment6822100947; focusedrecheckpending/notacceptance.

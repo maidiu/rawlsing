@@ -52,7 +52,7 @@
             }
           },
           "pid": 62286,
-          "state": "RUNNING",
+          "state": "STOPPED_READY_FOR_FOCUSED_G5",
           "received_head": "f546e74b59cf21704aa945d7da5c3ab6050ce8e6",
           "actual_counter_first_turn_model": {
             "id": "msg_1cf409548001dEeoxUnGAq4TXB",
@@ -124,8 +124,8 @@
           }
         }
       },
-      "state": "FACTORY_KEY_EXACT_REPAIR_RUNNING",
-      "active_role": "A",
+      "state": "G5_FACTORY_KEY_RECHECK_RUNNING",
+      "active_role": "G5_NONAUTHOR",
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -163,18 +163,18 @@
       ],
       "integration_state": "UNMERGED",
       "independent_g5": "REVISE_EXACT_DEFECT",
-      "active_job": "pyat940-s1b-factory-key-repair-r01",
+      "active_job": "pyat940-s1b-g5-factory-key-recheck-r01",
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
-        "job_id": "pyat940-s1b-factory-key-repair-r01",
-        "child_pid": 62286,
-        "supervisor_pid": 62285,
-        "observer_pid": 62287,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1b-factory-key-repair-r01",
+        "job_id": "pyat940-s1b-g5-factory-key-recheck-r01",
+        "child_pid": 64511,
+        "supervisor_pid": 64510,
+        "observer_pid": 64512,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat940-01a15c1e/pyat940-s1b-g5-factory-key-recheck-r01",
         "launch_is_not_completion": true
       },
       "observer_ready": {
-        "pid": 62287,
+        "pid": 64512,
         "thread": "01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
         "targets": 1,
         "mode": "KQUEUE_OS_FILE_EVENTS_NO_PERIODIC_POLLING",
@@ -200,7 +200,7 @@
       },
       "custody_comment": {
         "issue": 918,
-        "comment_id": 6821926165
+        "comment_id": 6822100947
       },
       "b_return": {
         "job_id": "pyat940-s1b-b01",
@@ -237,12 +237,12 @@
         "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1b-g5",
         "branch": "agent/pyat940-s1b-g5-r1",
-        "state": "WAIT_EXACT_DEFECT_REPAIR",
-        "job_id": "pyat940-s1b-g5-r01",
-        "tested_candidate_head": "af51b50cb0b5d2d956a553c841f73c6aacad6e45",
-        "tested_code_sha": "9c296cfcfb4ebad11c48492238aacbedc9755ccb",
+        "state": "RUNNING",
+        "job_id": "pyat940-s1b-g5-factory-key-recheck-r01",
+        "tested_candidate_head": "bdd3a83fc471ce99c5d85d7f7930270128eff2d4",
+        "tested_code_sha": "dedd2fb8a1f5842910a0dc842fe75b3618c23443",
         "independent_of_both_A_B": true,
-        "pid": 53566,
+        "pid": 64511,
         "actual_first_turn_model": {
           "id": "msg_1cf5c9e64001DertvS5ZYC1Ll4",
           "model": {
@@ -254,6 +254,19 @@
             "created": 1794480316157,
             "streamed": 1794480323267,
             "completed": 1794480323468
+          }
+        },
+        "actual_factory_key_recheck_first_turn_model": {
+          "id": "msg_1cf78ce86001BHnoCNzlZJ7bap",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "time": {
+            "created": 1794482163434,
+            "streamed": 1794482170605,
+            "completed": 1794482170727
           }
         }
       },
@@ -273,7 +286,17 @@
         "severity": 1,
         "grade": "S1B_SOURCEFREE_SYNTHETIC_PLUS_HISTORICAL_NONRESPONDENT_PARITY"
       },
-      "bounded_g5_repair_count": 1
+      "bounded_g5_repair_count": 1,
+      "factory_key_repair_return": {
+        "job_id": "pyat940-s1b-factory-key-repair-r01",
+        "exit_code": 0,
+        "candidate_head": "bdd3a83fc471ce99c5d85d7f7930270128eff2d4",
+        "implemented_sha": "dedd2fb8a1f5842910a0dc842fe75b3618c23443",
+        "remote_verified": true,
+        "disposition": "REPAIRED_AUTHOR_CLAIM_G5_PENDING",
+        "claims": "bothfactory/repositorymismatchrefuse/matchingandabsentpositive;46packet+109regression/1skip+132relatedPASS",
+        "code_changes": "adapter24linehelper+focusedtestonly"
+      }
     },
     {
       "pair_id": "PYAT940-P2",
