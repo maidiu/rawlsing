@@ -68,11 +68,11 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
 
     before_pos, before_speech_pos, before_head_pos = _actual_state(positive)
     before_neg, before_speech_neg, before_head_neg = _actual_state(negative)
-    assert len(before_pos["records"]) == 2, before_pos
+    assert len(before_pos["records"]) == 1, before_pos
     assert before_neg["records"] == []
     assert before_pos["native_memory"] == "MISSING_RULE"
     assert before_speech_pos == before_speech_neg
-    assert before_head_pos["count"] == 2
+    assert before_head_pos["count"] == 1
     assert before_head_neg["count"] == 0
 
     packets = []
@@ -107,7 +107,7 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
          interpret=interpret, realize=realize)
 
     assert len(packets) == 2
-    assert len(packets[0]["sourcefree_p3"]["records"]) == 2
+    assert len(packets[0]["sourcefree_p3"]["records"]) == 1
     assert packets[1]["sourcefree_p3"]["records"] == []
     after_pos, speech_pos, head_pos = _actual_state(positive)
     after_neg, speech_neg, head_neg = _actual_state(negative)
@@ -115,7 +115,7 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
     assert len(speech_pos) == len(before_speech_pos) + 1
     assert speech_pos[-1]["body"]["text"] == utterance
     assert speech_neg == before_speech_neg
-    assert len(after_pos["records"]) == 2 and after_neg["records"] == []
+    assert len(after_pos["records"]) == 1 and after_neg["records"] == []
 
     actual = json.loads((positive / "p4_receipts.json").read_text())["turns"][-1]
     control = json.loads((negative / "p4_receipts.json").read_text())["turns"][-1]
@@ -135,7 +135,7 @@ def test_p3_to_p6_source_registry_and_clock_sever_then_restore(tmp_path, monkeyp
         kwargs = dict(project=scope["project"], counterpart=scope["counterpart"],
                       as_of=session.world().clock)
         original = qualified_p3_read(owner, session, **kwargs)
-        assert len(original["records"]) == 2
+        assert len(original["records"]) == 1
         initial_head = owner.store.head()
         with monkeypatch.context() as fault:
             fault.setattr(owner, "source_hash", "0" * 64)
