@@ -208,3 +208,66 @@ def test_wrong_independent_expected_i02_refuses_complete_publication(tmp_path):
             root, expected_i02=wrong,
         )
     assert not list((root / "releases").glob("*")) if (root / "releases").exists() else True
+
+
+def test_denied_current_does_not_open_estate_bytes(tmp_path, monkeypatch):
+    """G3: CURRENT must refuse before reading manifest or any persisted body."""
+    root, _, receipt = _write(tmp_path, "S2C-DENY-BEFORE-BYTES")
+    read_paths = []
+    original_open = Path.open
+
+    def spy_open(path, *args, **kwargs):
+        read_paths.append(Path(path))
+        return original_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", spy_open)
+    with pytest.raises(DirectEstateError, match="current source/operation authority refused"):
+        _open(root, receipt, lambda _roots: False)
+    assert not any(path.is_relative_to(Path(receipt.path)) for path in read_paths), (
+        "denied CURRENT still read a committed semantic/physical byte"
+    )
+
+
+@pytest.mark.parametrize("changed_field", [
+    "respondent", "native", "canonical", "component", "state",
+])
+def test_forged_posting_rehashed_under_same_i02_detected(tmp_path, changed_field):
+    """G3: exact ref and a rehashed physical manifest do not authenticate selectors.
+
+    This models a flawed *writer or repinning decision*, NOT a way to bypass
+    a previously held independent manifest hash. Same direct I02 roots are kept.
+    """
+    import hashlib
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+    from rawlsing_next.pre553_empirical_objects import canonical_json, exact_ref
+
+    root, candidate, receipt = _write(tmp_path, "S2C-POSTING-" + changed_field)
+    first = candidate.respondent_events[0]
+    directory = Path(receipt.path)
+    locator = directory / "event_locator.parquet"
+    table = pq.read_table(locator)
+    postings = table.to_pylist()
+    forged = (exact_ref(candidate.empirical_universes[0].ref).key
+              if changed_field != "state" else "DK")
+    assert postings[0][changed_field] != forged
+    postings[0][changed_field] = forged
+    pq.write_table(pa.Table.from_pylist(postings, schema=table.schema),
+                   locator, row_group_size=1, compression="zstd")
+    manifest_path = directory / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["members"]["event_locator.parquet"] = hashlib.sha256(locator.read_bytes()).hexdigest()
+    manifest_path.write_text(canonical_json(manifest) + "\n")
+    # Simulate a new independent receipt that pins this newly published
+    # *incorrect* physical manifestation; direct I02 roots do not change.
+    new_manifest_digest = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+    cold = VerifiedDirectEstate(
+        root, exact_path=receipt.path,
+        independently_held_manifest_sha256=new_manifest_digest,
+        independently_held_i02=receipt.i02,
+        current_authorizer=lambda _roots: True,
+    )
+    respondent = (candidate.empirical_universes[0].ref
+                  if changed_field == "respondent" else first.scoped_respondent_ref)
+    with pytest.raises(DirectEstateError, match="posting disagrees with exact native body"):
+        tuple(cold.select_events(respondent))
