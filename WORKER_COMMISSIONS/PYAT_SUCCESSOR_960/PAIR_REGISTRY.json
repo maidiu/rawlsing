@@ -57,7 +57,7 @@
     {
       "packet_id": "S1-E",
       "queue": "Q2",
-      "state": "Q2_A_LAUNCHED_PROVISIONAL_UPSTREAM_G5_HELD",
+      "state": "Q2_FIXED_B_DISPATCH_RESERVED",
       "exact_prerequisites": [
         "S1C dae66cdf9f3846d237e0b1c3069cc17eb05b7746 sourcefreeG5pending",
         "directS2B155cd1b7244ab22ede804386e6d5253a39fe3587 sourcefreeG5pending; sourcefree129PASS/nativeI03evidence supplied",
@@ -74,13 +74,13 @@
           "session": "ses_e3122f686ffeByL78cGOKAacTS",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a",
           "branch": "agent/pyat960-s1e-a-r1",
-          "state": "LAUNCHED"
+          "state": "TERMINAL_WAIT_OWN_B"
         },
         "B": {
           "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-b",
           "branch": "agent/pyat960-s1e-b-r1",
-          "state": "IDLE_WAIT_OWN_A"
+          "state": "DISPATCH_RESERVED"
         }
       },
       "launch": {
@@ -91,7 +91,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s1e-a01",
         "launch_is_not_completion": true
       },
-      "job_id": "pyat960-s1e-a01",
+      "job_id": "pyat960-s1e-b01",
       "actual_first_turn_metadata": {
         "session": "ses_e3122f686ffeByL78cGOKAacTS",
         "message_id": "msg_1d217db23001SOHgPl9UWYuCPY",
@@ -107,7 +107,11 @@
         "G3": "NOT_RUN",
         "G4": "NOT_RUN",
         "G5": "NOT_RUN_SOURCEFREE_UPSTREAM_G5_PENDING"
-      }
+      },
+      "a_delivery_sha": "f4aaf2b17c7519642bb0bcfc5987cf21f86a46af",
+      "a_implementation_sha": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
+      "G2_native": "HOLD_LINUX_PROC_READER_NOT_ACCEPTED",
+      "body_stream": "REPAIR_ORIGINAL_PRODUCER_HANDOFF_LIFETIME"
     },
     {
       "packet_id": "S2-C",
