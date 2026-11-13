@@ -78,6 +78,34 @@ def _decision_body(session, parent_id: str, alias: str,
 
 
 
+def _verify_world_event_seal(event: Mapping[str, Any], *, refusal: str) -> None:
+    """Verify BP4's event hash AND event-ID content address before consumption.
+
+    BP4's existing make_event derives the ID from the complete base, then
+    hashes that ID plus the base. Merely matching the stored episode hash
+    would accept altered public summary, location, observable flag or sequence
+    with a copied stale hash. This is read-only sourcefree custody, not a new
+    world writer, scientific rule or actor authorization.
+    """
+    from bp4.world import EVENT_SCHEMA, WORLD_GRADE
+    try:
+        document = detached(event)
+        if (not isinstance(document, dict)
+                or document.get("schema") != EVENT_SCHEMA
+                or document.get("grade") != WORLD_GRADE
+                or document.get("native") is not False):
+            raise RecursionRefusal(refusal)
+        recorded_hash = document.pop("hash", None)
+        if not _text(recorded_hash) or recorded_hash != digest(document):
+            raise RecursionRefusal(refusal)
+        recorded_id = document.pop("event_id", None)
+        if (not _text(recorded_id)
+                or recorded_id != "TEST_ONLY_BP4_WORLD_EVT_" + digest(document)):
+            raise RecursionRefusal(refusal)
+    except (TypeError, ValueError) as exc:
+        raise RecursionRefusal(refusal) from exc
+
+
 def _verify_utterance_custody(session, body: Mapping[str, Any],
                               episode_clock: int, *, parent_id: str,
                               alias: str) -> dict:
@@ -155,6 +183,8 @@ def _verify_utterance_custody(session, body: Mapping[str, Any],
             or channel not in {"speech", "NOT_PERCEIVED"}
             or receipt.get("child_perception_channel") != channel):
         raise RecursionRefusal("PARENT_UTTERANCE_CHILD_RECEIPT_SEVERED")
+    _verify_world_event_seal(
+        event, refusal="PARENT_UTTERANCE_WORLD_EVENT_UNSEALED")
     return dict(event)
 
 
@@ -394,6 +424,8 @@ def read_child_experience(session, child_id: str, *, event_id: str | None = None
     })
     if (event.get("body") or {}).get("utterance_source") != expected_source:
         raise RecursionRefusal("CHILD_EXPERIENCE_SOURCE_MISMATCH")
+    _verify_world_event_seal(
+        event, refusal="CHILD_EXPERIENCE_WORLD_EVENT_UNSEALED")
     own_speech = next((
         row for row in session.product.store.perceptions(session.branch_id, parent_alias)
         if row.get("event_id") == event_id
@@ -507,6 +539,8 @@ def read_child_uptake(session, child_id: str, event_id: str) -> dict:
             or event.get("hash") != utterance.get("event_hash")
             or event.get("actor_id") != utterance.get("alias")):
         raise RecursionRefusal("CHILD_UPTAKE_NOT_SPEECH")
+    _verify_world_event_seal(
+        event, refusal="CHILD_UPTAKE_WORLD_EVENT_UNSEALED")
     receipt = next((
         row for row in session.product.store.perceptions(
             session.branch_id, actor_id=child_alias)

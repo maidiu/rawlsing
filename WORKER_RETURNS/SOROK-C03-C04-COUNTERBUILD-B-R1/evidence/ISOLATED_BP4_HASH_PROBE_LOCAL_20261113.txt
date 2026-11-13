@@ -1,0 +1,31 @@
+Agent B C04 bounded source-equivalent hash probe — local Python container, 2026-11-13
+Scope: THE BP4 EVENT HASH CONSTRUCTION AND COMPARISON ONLY. Not the complete private repository, J1/P6 runtime, or G5 acceptance.
+
+Command executed:
+  /usr/bin/time -f 'ELAPSED_S=%e MAX_RSS_KB=%M EXIT=%x' python /mnt/data/c04_event_hash_probe.py
+
+Stdout:
+  SOURCE-EQUIVALENT PROBE (NOT FULL REPO): A field gate accepts 4 forged events; B seal rejects 4/4
+  SOURCE-EQUIVALENT PROBE (NOT FULL REPO): unmodified original accepted; rehashed wrong-ID rejected
+  ELAPSED_S=0.67 MAX_RSS_KB=95632 EXIT=0
+
+Observed local script SHA-256: 054a41fd757b25291f4447ffaa0e69ae6817967576712d605ca0ce14caf323ec
+Observed local log SHA-256: fbf219b13753fb442640d2473404984c8d787b2ce8d0d0081e32918ec85dbc78
+
+A similar reproducible stdlib-only script is in isolated_bp4_event_hash_probe.py.
+This test copies the actual BP4 world.make_event hash construction verified from source blob
+5c4a309d376ce2bedce6a8a7e4f09768131f4d46, and models the selected-field
+A-era gate. It does not exercise the actual imported session/store/P6 modules.
+
+Full repo tests committed at:
+  WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py
+New hostile tests use actual open_j1_case and P6 child_speech_experience plus
+normal read_child_uptake, but were NOT_RUN here: no mounted authorized private
+repository and no executable historical import closure in this container.
+No passed whole-repository test, cold replay, model cost or CI success is claimed.
+
+Required actual-host commands:
+  python -m pytest -q WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py
+  python -m pytest -q WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c03_prospectives.py
+  python -m pytest -q WORKER_RETURNS/SOROK-E01-J1-995-R1/test_j1_three_head_join.py
+  python -m pytest -q WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py
