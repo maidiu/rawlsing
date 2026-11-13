@@ -66,12 +66,14 @@ def k_enact(f: Field, w: World):
         Event("work-comply", "coerced", coercive, w.child_sees),
         Event("work-voluntary", "voluntary", volunteered, w.child_sees),
         Event("work-negotiate", "negotiate", not coercive and not volunteered, w.child_sees),
-        Event("breach", "harm", w.institutional_breach,
-              w.child_sees and w.breach_accessible),
     ]
     for i in range(2):
         events.append(Event("care-"+str(i), "care", w.institutional_care,
                             w.child_sees, personally_practiced=True))
+    # Chronology matters: the child must have actually acquired the criterion
+    # from prior acts before this contrary institutional action can violate it.
+    events.append(Event("breach", "harm", w.institutional_breach,
+                        w.child_sees and w.breach_accessible))
     for ability in ("care", "repair"):
         events.append(Event("outside-"+ability, "skill-"+ability, actual_practice,
                             actual_practice and w.child_sees, actual_practice and w.child_sees))
