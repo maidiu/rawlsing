@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT997_TEST_PATCH_R2@1",
+  "base_candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "canonical_branch": "229544e23435f608272c2bead78cc5c2cfc786f5",
+  "files": [
+    {
+      "path": "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py",
+      "base_blob": "053926db84a022066535b3378d080338fe306983",
+      "patched_blob": "148c7c29d8c407ee831f379d95c898018d049977",
+      "base_sha256": "135260221f068eae52e7384545f7343cb34fc34d29e9a7d1c5da973237664e6f",
+      "patched_sha256": "8fedc683b870068ad5ec8f7cd7bce5fe960a439605b86994cfa77862a09f32e2"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py",
+      "base_blob": "e974758b23c5bc3c38091312fda1cb3489363ef3",
+      "patched_blob": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+      "base_sha256": "b5845a34d2356113e8a61c6b6d8f516db09c8b4f6b9a61db11f43b8e45b4c0a8",
+      "patched_sha256": "f527fcff93e92f6116119ecd4f0415365a112e3427628485243a0bd98a36da07"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py",
+      "base_blob": "5660285479c8c4a0a0dd19b6d5cfa5207f3f94f5",
+      "patched_blob": "3ca7396a50312b7b8daf2d29e4119aba71d63db9",
+      "base_sha256": "a1b1eff1f2758c59f5eed6fc58537e0866ce4398aa27b6a867fedc08dd2d14ab",
+      "patched_sha256": "1b03c6b65beb27f2f6d13758f6229cd8401d9297b8f4b69db1dafb724070e372"
+    }
+  ],
+  "proposed_patch_sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+  "product_py_files_unchanged": true,
+  "canonical_product_diff": "",
+  "apply_check": "PASS: patch applied to isolated canonical-copy tree; all three resulting blobs match scratch",
+  "baseline": "75 tests, 68 pass, 7 fail",
+  "patched": "75 tests, 75 pass, 0 fail, 0 errors, 0 skip",
+  "r5": "5 passed, 15 deselected"
+}

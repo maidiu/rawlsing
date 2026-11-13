@@ -1,0 +1,493 @@
+F..F.....F...........FFF....F........................................... [ 96%]
+...                                                                      [100%]
+=================================== FAILURES ===================================
+____ test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join ____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_source_to_saved_cold_s1c_0')
+
+    def test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join(tmp_path):
+        first = _run(tmp_path / "first", (0., 1., 0., 1., 0.))
+        changed = _run(tmp_path / "changed", (0., 1., 1., 1., 0.))
+        restored = _run(tmp_path / "restored", (0., 1., 0., 1., 0.))
+        assert first[0].source_sha256 != changed[0].source_sha256
+        assert first[1].i02.logical != changed[1].i02.logical
+>       assert first[1].i02.logical == restored[1].i02.logical
+E       AssertionError: assert '94e948039ff8...77ea16d978e3f' == '85f1ce9ddbac...8730314d21d2c'
+E         
+E         - 85f1ce9ddbaca165c759375054bb4b70c7741d98b070c72fbc98730314d21d2c
+E         + 94e948039ff877a1d070a591b2af17b66644a5083862551274e77ea16d978e3f
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:175: AssertionError
+_______ test_q2_held_fate_cannot_be_promoted_into_native_issued_positive _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_q2_held_fate_cannot_be_pr0')
+
+    def test_q2_held_fate_cannot_be_promoted_into_native_issued_positive(tmp_path):
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / "held-promotion"
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        assert any(row["disposition"] == "HELD" for row in handoff.operation_fates)
+        target = next(
+            row["operation_id"] for row in handoff.operation_fates
+            if row["disposition"] == "HELD"
+        )
+        altered = tuple(
+            {**row, "disposition": "ELIGIBLE"}
+            if row["operation_id"] == target else row
+            for row in handoff.operation_fates
+        )
+        forged = replace(handoff, operation_fates=altered)
+        with pytest.raises(
+            SourceReceiptJoinError, match="Q2_OPERATION_FATE_OR_CLAIM_PROMOTED",
+        ):
+>           join_saved_source_operation_fates(
+                handoff=forged, estate_receipt=estate, admission=admission,
+                compilation=compilation, workload=compilation.issued.workload,
+                resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+                runner=runner,
+            )
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:240: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+    
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+            raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+        if runner.repository is not admission:
+            raise SourceReceiptJoinError("BATCH_RUNNER_NOT_BOUND_TO_SAVED_ADMISSION")
+        if (handoff.roots != estate_receipt.i02
+                or admission.i02 != handoff.roots
+                or admission.manifest_sha256 != estate_receipt.manifest_sha256
+                or admission.release_ref != estate_receipt.reconstructed_v1_release_ref
+                or admission.estate_path != estate_receipt.path
+                or admission.source_ref.key != handoff.roots.source
+                or admission.replay_ref.key != handoff.roots.replay):
+            raise SourceReceiptJoinError("Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT")
+        if (compilation.source_sha256 != handoff.source_sha256
+                or workload.projection.expected_source_sha256 != handoff.source_sha256
+                or compilation.issued.workload != workload
+                or admission.binding_receipt().runtime_catalog != workload.catalog.receipt()):
+            raise SourceReceiptJoinError("ISSUED_WORKLOAD_AND_SOURCE_IDENTITY_DRIFT")
+        # Q2 independently certified the complete S1-C inventory/frontier
+        # before opening the physical source; native R03 compiles that same
+        # original frontier. A shared source SHA and matching operation labels
+        # do NOT establish that the two products came from the same frontier.
+        # Bind their original, non-pruned content hash before any issued receipt
+        # can be associated with the source-side fates.
+        census = handoff.census_audit
+        if (not isinstance(census, Mapping)
+                or not isinstance(compilation.frontier_hash, str)
+                or census.get("frontier_hash") != compilation.frontier_hash):
+            raise SourceReceiptJoinError("Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT")
+        original_operation_count = len(handoff.operation_fates)
+        original_fate_counts = dict(Counter(
+            row["disposition"] for row in handoff.operation_fates
+        ))
+        if (census.get("source_candidate_count") != original_operation_count
+                or census.get("scientific_fate_count") != original_operation_count
+                or census.get("eligible_count") != original_fate_counts.get("ELIGIBLE", 0)
+                or census.get("fate_counts") != original_fate_counts):
+>           raise SourceReceiptJoinError("Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:211: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_q2_held_fate_cannot_be_pr0')
+
+    def test_q2_held_fate_cannot_be_promoted_into_native_issued_positive(tmp_path):
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / "held-promotion"
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        assert any(row["disposition"] == "HELD" for row in handoff.operation_fates)
+        target = next(
+            row["operation_id"] for row in handoff.operation_fates
+            if row["disposition"] == "HELD"
+        )
+        altered = tuple(
+            {**row, "disposition": "ELIGIBLE"}
+            if row["operation_id"] == target else row
+            for row in handoff.operation_fates
+        )
+        forged = replace(handoff, operation_fates=altered)
+>       with pytest.raises(
+            SourceReceiptJoinError, match="Q2_OPERATION_FATE_OR_CLAIM_PROMOTED",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Q2_OPERATION_FATE_OR_CLAIM_PROMOTED'
+E         Actual message: 'Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT'
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:237: AssertionError
+_ test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[unresolved_routing] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_agent_b_q2_detail_witness1')
+attack = 'unresolved_routing'
+
+    @pytest.mark.parametrize("attack", ["missing_emission", "unresolved_routing", "measure_preimage"])
+    def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
+        tmp_path, attack,
+    ):
+        """A's summary/census are kept favorable while physical Q2 detail is forged.
+    
+        This is a negative-first preservation test: the unexecuted Batch runner is
+        intentional because Q2 contradictions must be refused before promotion.
+        """
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / ("agent-b-" + attack)
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        candidates = [
+            row for row in handoff.operation_fates
+            if row["disposition"] == "ELIGIBLE" and row["source_realized"] is True
+        ]
+        if attack == "unresolved_routing":
+            candidates = [
+                row for row in candidates
+                if any(w["family"] == "RespondentEvent" and w["emitted"] > 0
+                       for w in row["source_realization"])
+            ]
+        target = next(iter(candidates))
+        forged_row = dict(target)
+        if attack == "missing_emission":
+            key = target["source_realization"][0]["key"]
+            forged_row["source_realization"] = tuple(
+                {**w, "emitted": 0} if w["key"] == key else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        elif attack == "unresolved_routing":
+            witness = next(
+                w for w in target["source_realization"]
+                if w["family"] == "RespondentEvent" and w["emitted"] > 0
+            )
+            forged_row["source_realization"] = tuple(
+                {**w, "routing_unresolved": True} if w is witness else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        else:
+            source_preimage = dict(target["source_preimage"])
+            source_preimage["measure"] = {
+                **source_preimage["measure"],
+                "weight_ref": "FORGED_WEIGHT_MEASURE",
+            }
+            forged_row["source_preimage"] = source_preimage
+            refusal = "Q2_MEASURE_PREIMAGE_CONTRADICTION"
+        forged = replace(
+            handoff, operation_fates=tuple(
+                forged_row if row["operation_id"] == target["operation_id"] else row
+                for row in handoff.operation_fates
+            ),
+        )
+        with pytest.raises(SourceReceiptJoinError, match=refusal):
+>           join_saved_source_operation_fates(
+                handoff=forged, estate_receipt=estate, admission=admission,
+                compilation=compilation, workload=compilation.issued.workload,
+                resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+                runner=runner,
+            )
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_source_postconsumer_receipts.py:231: in join_saved_source_operation_fates
+    _verify_realized_q2_body_witness(source_fate)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source_fate = {'claim_class': 'DIST', 'design_ref': None, 'disposition': 'ELIGIBLE', 'estimand': 'descriptive-sample-proportion', ...}
+
+    def _verify_realized_q2_body_witness(source_fate: Mapping[str, Any]) -> None:
+        """Check per-key Q2 emission before using its favorable summary flag.
+    
+        This validates Q2 internal consistency, not independent source authority.
+        The original source-pass recorded all emission, occurrence and routing
+        details; a mutable aggregate or Boolean cannot override that evidence.
+        """
+        if (source_fate.get("disposition") != "ELIGIBLE"
+                or source_fate.get("source_realized") is not True):
+            return
+        witnesses = source_fate.get("source_realization")
+        if not isinstance(witnesses, (list, tuple)) or not witnesses:
+            raise SourceReceiptJoinError("Q2_REALIZED_OPERATION_WITHOUT_BODIES")
+        present_keys: set[str] = set()
+        supported_keys: set[str] = set()
+        unresolved_response_keys: set[str] = set()
+        # Original Q2 refuses a realized response key whose emitted response
+        # slots all have zero eligible routed rows. Preserve that denominator
+        # rule in the postconsumer boundary; B checked only the routing flag.
+        emitted_response_routes: dict[str, list[int]] = {}
+        for witness in witnesses:
+            if not isinstance(witness, Mapping):
+                raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+            key = witness.get("key")
+            emitted = witness.get("emitted")
+            occurrence = witness.get("occurrence_realized")
+            routing_unresolved = witness.get("routing_unresolved", False)
+            if (not isinstance(key, str) or not key
+                    or type(emitted) is not int or emitted < 0
+                    or type(occurrence) is not bool
+                    or type(routing_unresolved) is not bool):
+                raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+            family = witness.get("family")
+            if family not in {
+                "RespondentEvent", "EmpiricalCoordinateFact", "WeightMeasureFact"
+            }:
+                raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+            routing_states = witness.get("routing_states")
+            if (not isinstance(routing_states, Mapping)
+                    or any(not isinstance(name, str) or type(value) is not int
+                           or value < 0 for name, value in routing_states.items())):
+                raise SourceReceiptJoinError("Q2_REALIZATION_ROUTING_CENSUS_INVALID")
+            routable_rows = witness.get("routable_rows")
+            if family == "RespondentEvent":
+                if (type(routable_rows) is not int or routable_rows < 0
+                        or routable_rows != routing_states.get("ELIGIBLE_APPLICABLE", 0)
+                        or routing_unresolved != any(
+                            state in routing_states for state in (
+                                "ROUTING_UNKNOWN", "RULE_UNAVAILABLE"
+                            )
+                        )):
+>                   raise SourceReceiptJoinError("Q2_REALIZATION_ROUTING_CENSUS_DRIFT")
+E                   rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: Q2_REALIZATION_ROUTING_CENSUS_DRIFT
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:136: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_agent_b_q2_detail_witness1')
+attack = 'unresolved_routing'
+
+    @pytest.mark.parametrize("attack", ["missing_emission", "unresolved_routing", "measure_preimage"])
+    def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
+        tmp_path, attack,
+    ):
+        """A's summary/census are kept favorable while physical Q2 detail is forged.
+    
+        This is a negative-first preservation test: the unexecuted Batch runner is
+        intentional because Q2 contradictions must be refused before promotion.
+        """
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / ("agent-b-" + attack)
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        candidates = [
+            row for row in handoff.operation_fates
+            if row["disposition"] == "ELIGIBLE" and row["source_realized"] is True
+        ]
+        if attack == "unresolved_routing":
+            candidates = [
+                row for row in candidates
+                if any(w["family"] == "RespondentEvent" and w["emitted"] > 0
+                       for w in row["source_realization"])
+            ]
+        target = next(iter(candidates))
+        forged_row = dict(target)
+        if attack == "missing_emission":
+            key = target["source_realization"][0]["key"]
+            forged_row["source_realization"] = tuple(
+                {**w, "emitted": 0} if w["key"] == key else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        elif attack == "unresolved_routing":
+            witness = next(
+                w for w in target["source_realization"]
+                if w["family"] == "RespondentEvent" and w["emitted"] > 0
+            )
+            forged_row["source_realization"] = tuple(
+                {**w, "routing_unresolved": True} if w is witness else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        else:
+            source_preimage = dict(target["source_preimage"])
+            source_preimage["measure"] = {
+                **source_preimage["measure"],
+                "weight_ref": "FORGED_WEIGHT_MEASURE",
+            }
+            forged_row["source_preimage"] = source_preimage
+            refusal = "Q2_MEASURE_PREIMAGE_CONTRADICTION"
+        forged = replace(
+            handoff, operation_fates=tuple(
+                forged_row if row["operation_id"] == target["operation_id"] else row
+                for row in handoff.operation_fates
+            ),
+        )
+>       with pytest.raises(SourceReceiptJoinError, match=refusal):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION'
+E         Actual message: 'Q2_REALIZATION_ROUTING_CENSUS_DRIFT'
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:378: AssertionError
+_ test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_changed_source_cell_chang0')
+source_format = 'SAV'
+
+    @pytest.mark.parametrize("source_format", ["SAV", "DTA"])
+    def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
+        tmp_path, source_format,
+    ):
+        baseline = _build_saved(
+            tmp_path, name="baseline", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        changed = _build_saved(
+            tmp_path, name="changed", source_format=source_format,
+            values=(0.0, 1.0, 1.0, 0.0, 1.0),
+        )
+        restored = _build_saved(
+            tmp_path, name="restored", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        a, b, c = (x[1] for x in (baseline, changed, restored))
+        assert a.roots.logical != b.roots.logical
+>       assert a.roots.logical == c.roots.logical
+E       AssertionError: assert '0e15005c9e11...3c5368d258d78' == 'feb1de257f95...dc34b423ba5bc'
+E         
+E         - feb1de257f95b0844de1b1ef0ed03b95d859cab2ba3ac681f73dc34b423ba5bc
+E         + 0e15005c9e119d082c15d514a4977c8ad35be8ae7b2b87a6b753c5368d258d78
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:197: AssertionError
+_ test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_changed_source_cell_chang1')
+source_format = 'DTA'
+
+    @pytest.mark.parametrize("source_format", ["SAV", "DTA"])
+    def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
+        tmp_path, source_format,
+    ):
+        baseline = _build_saved(
+            tmp_path, name="baseline", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        changed = _build_saved(
+            tmp_path, name="changed", source_format=source_format,
+            values=(0.0, 1.0, 1.0, 0.0, 1.0),
+        )
+        restored = _build_saved(
+            tmp_path, name="restored", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        a, b, c = (x[1] for x in (baseline, changed, restored))
+        assert a.roots.logical != b.roots.logical
+        assert a.roots.logical == c.roots.logical
+        def evidence(bundle):
+            _, handoff, sink, root = bundle
+            estate = _estate(handoff, sink, root)
+            return tuple(sorted(
+                (exact_ref(e.scoped_respondent_ref).key, e.raw_response_value, e.response_state)
+                for e in estate.iter_family("RespondentEvent")
+            ))
+        assert evidence(baseline) != evidence(changed)
+        assert evidence(baseline) == evidence(restored)
+        assert a.manifest.source_artifact_ref == c.manifest.source_artifact_ref
+        assert a.manifest.source_artifact_ref != b.manifest.source_artifact_ref
+        # Real saved native I03 (same test query/target domain): material change,
+        # not just altered source SHA or altered Parquet bytes.
+        def native_cells(bundle):
+            _, handoff, sink, root = bundle
+            estate = _estate(handoff, sink, root)
+            result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+            assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+            fact = result.facts[0]
+            return tuple(
+                (str(cell["cell"]), cell["raw_numerator_support"])
+                for cell in fact.target_topology["complete_cell_semantic_projection"]
+            )
+>       assert native_cells(baseline) != native_cells(changed)
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bundle = ((PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_changed_s.../60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_changed_source_cell_chang1/baseline-private'))
+
+    def native_cells(bundle):
+        _, handoff, sink, root = bundle
+        estate = _estate(handoff, sink, root)
+        result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+>       assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+E       AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:fd3b453ed0204a80a7b3b6dcbde4e8b38a906b7cdafdce3b113ac1c0eb4aa80e', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'
+E        +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:fd3b453ed0204a80a7b3b6dcbde4e8b38a906b7cdafdce3b113ac1c0eb4aa80e', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery...', object_id='S1B_FIXTURE_RELEASE', content_hash='bdf65285d8aa890a070390d1dc23507a45494bf424e56f93322d72a0f7b60340'),)).facts
+E         
+E         - SUPPORTED
+E         + UNAVAILABLE)
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:215: AssertionError
+_____________ test_cold_saved_real_native_i03_from_exact_q2_source _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_cold_saved_real_native_i00')
+
+    def test_cold_saved_real_native_i03_from_exact_q2_source(tmp_path):
+        _, handoff, sink, root = _build_saved(tmp_path)
+        estate = _estate(handoff, sink, root)
+        result, raw_domain = _native_i03(estate, tag="PYAT997-SAVED-Q2")
+        assert result.facts
+        fact = result.facts[0]
+>       assert fact.raw_denominator_support > 0
+E       AssertionError: assert 0 > 0
+E        +  where 0 = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:9a24d2b8e58d879d3b2be1cff70b88e37e3b40856cc35c0e67564ad897c30e13', typed_state='UNAVAILABLE').raw_denominator_support
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:231: AssertionError
+_____ test_actual_source_cell_changed_cold_body_changed_then_exact_restore _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-842/test_actual_source_cell_change0')
+
+    def test_actual_source_cell_changed_cold_body_changed_then_exact_restore(tmp_path):
+        baseline = _saved(tmp_path / "before")
+        changed = _saved(tmp_path / "after", values=(0., 1., 1., 0., 1.))
+        restored = _saved(tmp_path / "restore")
+        (_, hand0, sink0, private0, rec0) = baseline
+        (_, hand1, sink1, private1, rec1) = changed
+        (_, hand2, sink2, private2, rec2) = restored
+        assert hand0.source_sha256 != hand1.source_sha256
+        assert rec0.i02.logical != rec1.i02.logical
+>       assert rec0.i02.logical == rec2.i02.logical
+E       AssertionError: assert '55304c603828...50f9457f1690b' == '1051f5afca9b...ed13f79679a24'
+E         
+E         - 1051f5afca9b6c125e7322d668c12e85dffc30a5bb0f733dda5ed13f79679a24
+E         + 55304c6038283512f7de08ccb05ddc102d531168ae4cfa4e78e50f9457f1690b
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py:111: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_q2_held_fate_cannot_be_promoted_into_native_issued_positive
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[unresolved_routing]
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV]
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_cold_saved_real_native_i03_from_exact_q2_source
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat997-testpatch-r2-scratch/rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_actual_source_cell_changed_cold_body_changed_then_exact_restore
+7 failed, 68 passed in 30.78s

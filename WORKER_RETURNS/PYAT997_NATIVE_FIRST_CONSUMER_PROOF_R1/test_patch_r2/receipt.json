@@ -1,0 +1,156 @@
+{
+  "schema": "PYAT997_TEST_HARNESS_PATCH_R2@1",
+  "task_id": "PYAT997-TEST-HARNESS-PATCH-PROOF-R2",
+  "branch": "agent/pyat997-native-proof-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-native-proof",
+  "startup_sha": "229544e23435f608272c2bead78cc5c2cfc786f5",
+  "candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "candidate_product_parent": "534fb6602cce60fd991abd7972ebd95c92f3146c",
+  "status": "TEST_PATCH_READY_75_OF_75__FRESH_PROCESS_Q2_PROOF_PASS__NOT_ADOPTED__NOT_G5",
+  "product_edits": "NONE",
+  "canonical_test_edits": "NONE",
+  "canonical_product_diff": "EMPTY",
+  "integration": "UNMERGED",
+  "sourcefree": true,
+  "original35_used": false,
+  "production_current_used": false,
+  "new_issuer_or_authority": false,
+  "1006_run": false,
+  "proposed_patch": {
+    "path": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/proposed.patch",
+    "sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+    "files": [
+      {
+        "path": "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py",
+        "base_blob": "053926db84a022066535b3378d080338fe306983",
+        "patched_blob": "148c7c29d8c407ee831f379d95c898018d049977",
+        "base_sha256": "135260221f068eae52e7384545f7343cb34fc34d29e9a7d1c5da973237664e6f",
+        "patched_sha256": "8fedc683b870068ad5ec8f7cd7bce5fe960a439605b86994cfa77862a09f32e2"
+      },
+      {
+        "path": "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py",
+        "base_blob": "e974758b23c5bc3c38091312fda1cb3489363ef3",
+        "patched_blob": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+        "base_sha256": "b5845a34d2356113e8a61c6b6d8f516db09c8b4f6b9a61db11f43b8e45b4c0a8",
+        "patched_sha256": "f527fcff93e92f6116119ecd4f0415365a112e3427628485243a0bd98a36da07"
+      },
+      {
+        "path": "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py",
+        "base_blob": "5660285479c8c4a0a0dd19b6d5cfa5207f3f94f5",
+        "patched_blob": "3ca7396a50312b7b8daf2d29e4119aba71d63db9",
+        "base_sha256": "a1b1eff1f2758c59f5eed6fc58537e0866ce4398aa27b6a867fedc08dd2d14ab",
+        "patched_sha256": "1b03c6b65beb27f2f6d13758f6229cd8401d9297b8f4b69db1dafb724070e372"
+      }
+    ],
+    "apply_check": "PASS on isolated canonical-copy tree; all resulting blobs equal the scratch test copies",
+    "changed_test_diff": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/changed_test_diff/"
+  },
+  "test_results": {
+    "baseline": {
+      "tests": 75,
+      "passed": 68,
+      "failed": 7,
+      "errors": 0,
+      "skipped": 0,
+      "log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/baseline_68_of_75.txt",
+      "junit": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/baseline_68_of_75.junit.xml"
+    },
+    "patched": {
+      "tests": 75,
+      "passed": 75,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 42.753,
+      "log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/six_suite_75_pass.txt",
+      "junit": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/six_suite_75_pass.junit.xml"
+    },
+    "r5_targeted": {
+      "result": "5 passed, 15 deselected in 8.15s",
+      "log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/r5_5_pass.txt"
+    },
+    "node_outcomes": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/node_outcomes.json",
+    "all_seven_baseline_failures_now_pass": true
+  },
+  "patch_causes_and_changes": [
+    {
+      "cause": "EXACT_RESTORE_FIXTURE_REGENERATION",
+      "change": "Reuse the exact baseline fixture/source bytes for restored builds; changed source remains a separate generated source. No source hash normalization, no product-hash substitution, no relaxed root/fact/path assertions.",
+      "files": [
+        "test_pyat997_s1e_saved_native_first_consumer.py",
+        "test_pyat997_s1e_saved_source_bridge.py",
+        "test_pyat997_s1e_source_saved_body_bridge.py"
+      ],
+      "probe": "evidence/delayed_fixture_probe.txt: equal values, 1.2s apart, different SAV SHA-256"
+    },
+    {
+      "cause": "FIRST_GREEN_I03_QUERY_SELECTION",
+      "change": "Select the compiled q101 question query by exact compiled target ref, assert SUPPORTED, denominator 5, cell-total 5, and preserve the separate compiled country-coordinate RISK_SET_UNAVAILABLE negative witness. The test fixture baseline values are within the compiled q101 target domain 0/1; changed q101 value remains a real source-cell change.",
+      "files": [
+        "test_pyat997_s1e_saved_native_first_consumer.py",
+        "test_pyat997_s1e_saved_source_bridge.py"
+      ],
+      "not_a_scan_for_any_green": true
+    },
+    {
+      "cause": "STALE_EARLIER_REFUSAL_EXPECTATIONS",
+      "change": "Assert exact current typed guards Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT and Q2_REALIZATION_ROUTING_CENSUS_DRIFT; assert the unexecuted Batch runner has zero receipts after refusal. No broad alternation or generic exception.",
+      "files": [
+        "test_pyat997_s1e_saved_native_first_consumer.py"
+      ]
+    }
+  ],
+  "product_hash_check": {
+    "product_python_files_compared": 182,
+    "all_product_python_hashes_unchanged": true,
+    "canonical_product_diff": "EMPTY",
+    "evidence": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/product_hash_compare.json"
+  },
+  "fresh_process_q2_proof": {
+    "status": "PASS",
+    "proof": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/fresh_process_proof.json",
+    "run_log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/evidence/fresh_process_run.txt",
+    "producer": "separate interpreter: generated TEST_ONLY SAV -> Q2 body sink -> S2-C persisted estate -> actual I03/I05/Batch oracle; then exit",
+    "consumer": "new interpreter after producer exit: SavedC11Admission.open from persisted estate and existing TEST_ONLY catalog; actual execute_saved_i03/execute_saved_i05/execute_saved_batch",
+    "source_file_deleted_before_consumer": true,
+    "consumer_source_opens": 0,
+    "consumer_full_c11_repository_builds": 0,
+    "producer_source_reads": 1,
+    "producer_decode_calls": 1,
+    "producer_cell_passes": 1,
+    "i03_fact_refs_equal": true,
+    "i05_receipt_refs_equal": true,
+    "batch_states_equal": true,
+    "batch_units": {
+      "issued_query_units": 0,
+      "issued_discovery_units": 1
+    },
+    "fresh_process_boundary": "producer process returncode 0 observed before consumer process start; source file deleted before consumer"
+  },
+  "existing_repository_fresh_evidence": {
+    "s2d_fresh_tests_exist": true,
+    "paths": [
+      "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_fresh_process_saved_i03_after_producer_source_is_gone",
+      "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_fresh_process_saved_i05_after_producer_source_is_gone"
+    ],
+    "limitation": "Those tests use the S2C direct-estate fixture, not the Q2 source-produced estate. The new return harness supplies the missing Q2 producer exit -> fresh consumer process boundary."
+  },
+  "remaining_unmet_obligation": {
+    "code": "BATCH_QUERY_UNIT_NOT_ISSUED",
+    "detail": "The actual frozen issued workload has 0 query requests and 1 discovery unit. The q101 supported query is real and is exercised directly by saved I03, but the test patch does not mint an issued Batch query unit. If original #997 requires a Batch QUERY positive, Browser/issuer owner must provide a legitimately issued query unit or state the narrower contract; this patch does not force Batch coverage.",
+    "not_product_patch": true
+  },
+  "gates": {
+    "G1": "PASS_SCOPED: exact candidate/test/blob pins; only three test copies changed.",
+    "G2": "PASS_SCOPED: baseline 68/75 -> patched 75/75; exact source restore and changed q101 fact.",
+    "G3": "PASS_SCOPED: exact stale-refusal expectations and zero receipts; R5 5/5.",
+    "G4": "PASS_SCOPED_FRESH_PROCESS: producer exit, source deletion, new interpreter, source opens 0, full C11 builds 0; small resource scope only.",
+    "G5": "NOT_RUN: not an independent nonauthor acceptance."
+  },
+  "engineering_grade": "TEST_PATCH_READY_FOR_BROWSER_OWNER",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_PRODUCTION_CURRENT_OR_ISSUER_GRANT",
+  "adoption": "NOT_ADOPTED; Browser owner must review/apply proposed.patch under its own authority.",
+  "next_dependency": "Browser997 owner test-harness adoption plus precise resolution of the zero-issued-query Batch shape; then distinct nonauthor G5.",
+  "known_session_cost": "UNKNOWN"
+}

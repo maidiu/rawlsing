@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="75" time="32.053" timestamp="2026-11-13T18:10:31.853177-05:00" hostname="mainMac.lan"><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join" time="3.867"><failure message="AssertionError: assert '1fb17f3bdd08...40666f8de822e' == '4c555738b09b...b9097b8bc91d8'&#10;  &#10;  - 4c555738b09b4dc04d62061b1620a7813d01adfcb13049813a9b9097b8bc91d8&#10;  + 1fb17f3bdd082a2239d34f2f4be2e6e1602c77ef61f5e4259a740666f8de822e">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_source_to_saved_cold_s1c_0')
+
+    def test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join(tmp_path):
+        first = _run(tmp_path / "first", (0., 1., 0., 1., 0.))
+        changed = _run(tmp_path / "changed", (0., 1., 1., 1., 0.))
+        restored = _run(tmp_path / "restored", (0., 1., 0., 1., 0.))
+        assert first[0].source_sha256 != changed[0].source_sha256
+        assert first[1].i02.logical != changed[1].i02.logical
+&gt;       assert first[1].i02.logical == restored[1].i02.logical
+E       AssertionError: assert '1fb17f3bdd08...40666f8de822e' == '4c555738b09b...b9097b8bc91d8'
+E         
+E         - 4c555738b09b4dc04d62061b1620a7813d01adfcb13049813a9b9097b8bc91d8
+E         + 1fb17f3bdd082a2239d34f2f4be2e6e1602c77ef61f5e4259a740666f8de822e
+
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:175: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_missing_issued_batch_receipt_stays_pending_not_invented" time="0.539" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_mixed_source_issued_receipt_join_refused_before_claim" time="0.956" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_q2_held_fate_cannot_be_promoted_into_native_issued_positive" time="0.548"><failure message="AssertionError: Regex pattern did not match.&#10;  Expected regex: 'Q2_OPERATION_FATE_OR_CLAIM_PROMOTED'&#10;  Actual message: 'Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT'">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_q2_held_fate_cannot_be_pr0')
+
+    def test_q2_held_fate_cannot_be_promoted_into_native_issued_positive(tmp_path):
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / "held-promotion"
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        assert any(row["disposition"] == "HELD" for row in handoff.operation_fates)
+        target = next(
+            row["operation_id"] for row in handoff.operation_fates
+            if row["disposition"] == "HELD"
+        )
+        altered = tuple(
+            {**row, "disposition": "ELIGIBLE"}
+            if row["operation_id"] == target else row
+            for row in handoff.operation_fates
+        )
+        forged = replace(handoff, operation_fates=altered)
+        with pytest.raises(
+            SourceReceiptJoinError, match="Q2_OPERATION_FATE_OR_CLAIM_PROMOTED",
+        ):
+&gt;           join_saved_source_operation_fates(
+                handoff=forged, estate_receipt=estate, admission=admission,
+                compilation=compilation, workload=compilation.issued.workload,
+                resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+                runner=runner,
+            )
+
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:240: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+    ) -&gt; PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+    
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+            raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+        if runner.repository is not admission:
+            raise SourceReceiptJoinError("BATCH_RUNNER_NOT_BOUND_TO_SAVED_ADMISSION")
+        if (handoff.roots != estate_receipt.i02
+                or admission.i02 != handoff.roots
+                or admission.manifest_sha256 != estate_receipt.manifest_sha256
+                or admission.release_ref != estate_receipt.reconstructed_v1_release_ref
+                or admission.estate_path != estate_receipt.path
+                or admission.source_ref.key != handoff.roots.source
+                or admission.replay_ref.key != handoff.roots.replay):
+            raise SourceReceiptJoinError("Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT")
+        if (compilation.source_sha256 != handoff.source_sha256
+                or workload.projection.expected_source_sha256 != handoff.source_sha256
+                or compilation.issued.workload != workload
+                or admission.binding_receipt().runtime_catalog != workload.catalog.receipt()):
+            raise SourceReceiptJoinError("ISSUED_WORKLOAD_AND_SOURCE_IDENTITY_DRIFT")
+        # Q2 independently certified the complete S1-C inventory/frontier
+        # before opening the physical source; native R03 compiles that same
+        # original frontier. A shared source SHA and matching operation labels
+        # do NOT establish that the two products came from the same frontier.
+        # Bind their original, non-pruned content hash before any issued receipt
+        # can be associated with the source-side fates.
+        census = handoff.census_audit
+        if (not isinstance(census, Mapping)
+                or not isinstance(compilation.frontier_hash, str)
+                or census.get("frontier_hash") != compilation.frontier_hash):
+            raise SourceReceiptJoinError("Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT")
+        original_operation_count = len(handoff.operation_fates)
+        original_fate_counts = dict(Counter(
+            row["disposition"] for row in handoff.operation_fates
+        ))
+        if (census.get("source_candidate_count") != original_operation_count
+                or census.get("scientific_fate_count") != original_operation_count
+                or census.get("eligible_count") != original_fate_counts.get("ELIGIBLE", 0)
+                or census.get("fate_counts") != original_fate_counts):
+&gt;           raise SourceReceiptJoinError("Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:211: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_q2_held_fate_cannot_be_pr0')
+
+    def test_q2_held_fate_cannot_be_promoted_into_native_issued_positive(tmp_path):
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / "held-promotion"
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        assert any(row["disposition"] == "HELD" for row in handoff.operation_fates)
+        target = next(
+            row["operation_id"] for row in handoff.operation_fates
+            if row["disposition"] == "HELD"
+        )
+        altered = tuple(
+            {**row, "disposition": "ELIGIBLE"}
+            if row["operation_id"] == target else row
+            for row in handoff.operation_fates
+        )
+        forged = replace(handoff, operation_fates=altered)
+&gt;       with pytest.raises(
+            SourceReceiptJoinError, match="Q2_OPERATION_FATE_OR_CLAIM_PROMOTED",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Q2_OPERATION_FATE_OR_CLAIM_PROMOTED'
+E         Actual message: 'Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT'
+
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:237: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_postconsumer_receipt_rows_cannot_change_after_source_mutation" time="0.581" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_source_realization_witness_must_agree_before_native_join[realized]" time="0.586" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_source_realization_witness_must_agree_before_native_join[state]" time="0.536" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_source_realization_witness_must_agree_before_native_join[census]" time="0.578" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[missing_emission]" time="0.606" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[unresolved_routing]" time="0.698"><failure message="AssertionError: Regex pattern did not match.&#10;  Expected regex: 'Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION'&#10;  Actual message: 'Q2_REALIZATION_ROUTING_CENSUS_DRIFT'">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_agent_b_q2_detail_witness1')
+attack = 'unresolved_routing'
+
+    @pytest.mark.parametrize("attack", ["missing_emission", "unresolved_routing", "measure_preimage"])
+    def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
+        tmp_path, attack,
+    ):
+        """A's summary/census are kept favorable while physical Q2 detail is forged.
+    
+        This is a negative-first preservation test: the unexecuted Batch runner is
+        intentional because Q2 contradictions must be refused before promotion.
+        """
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / ("agent-b-" + attack)
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        candidates = [
+            row for row in handoff.operation_fates
+            if row["disposition"] == "ELIGIBLE" and row["source_realized"] is True
+        ]
+        if attack == "unresolved_routing":
+            candidates = [
+                row for row in candidates
+                if any(w["family"] == "RespondentEvent" and w["emitted"] &gt; 0
+                       for w in row["source_realization"])
+            ]
+        target = next(iter(candidates))
+        forged_row = dict(target)
+        if attack == "missing_emission":
+            key = target["source_realization"][0]["key"]
+            forged_row["source_realization"] = tuple(
+                {**w, "emitted": 0} if w["key"] == key else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        elif attack == "unresolved_routing":
+            witness = next(
+                w for w in target["source_realization"]
+                if w["family"] == "RespondentEvent" and w["emitted"] &gt; 0
+            )
+            forged_row["source_realization"] = tuple(
+                {**w, "routing_unresolved": True} if w is witness else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        else:
+            source_preimage = dict(target["source_preimage"])
+            source_preimage["measure"] = {
+                **source_preimage["measure"],
+                "weight_ref": "FORGED_WEIGHT_MEASURE",
+            }
+            forged_row["source_preimage"] = source_preimage
+            refusal = "Q2_MEASURE_PREIMAGE_CONTRADICTION"
+        forged = replace(
+            handoff, operation_fates=tuple(
+                forged_row if row["operation_id"] == target["operation_id"] else row
+                for row in handoff.operation_fates
+            ),
+        )
+        with pytest.raises(SourceReceiptJoinError, match=refusal):
+&gt;           join_saved_source_operation_fates(
+                handoff=forged, estate_receipt=estate, admission=admission,
+                compilation=compilation, workload=compilation.issued.workload,
+                resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+                runner=runner,
+            )
+
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_source_postconsumer_receipts.py:231: in join_saved_source_operation_fates
+    _verify_realized_q2_body_witness(source_fate)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source_fate = {'claim_class': 'DIST', 'design_ref': None, 'disposition': 'ELIGIBLE', 'estimand': 'descriptive-sample-proportion', ...}
+
+    def _verify_realized_q2_body_witness(source_fate: Mapping[str, Any]) -&gt; None:
+        """Check per-key Q2 emission before using its favorable summary flag.
+    
+        This validates Q2 internal consistency, not independent source authority.
+        The original source-pass recorded all emission, occurrence and routing
+        details; a mutable aggregate or Boolean cannot override that evidence.
+        """
+        if (source_fate.get("disposition") != "ELIGIBLE"
+                or source_fate.get("source_realized") is not True):
+            return
+        witnesses = source_fate.get("source_realization")
+        if not isinstance(witnesses, (list, tuple)) or not witnesses:
+            raise SourceReceiptJoinError("Q2_REALIZED_OPERATION_WITHOUT_BODIES")
+        present_keys: set[str] = set()
+        supported_keys: set[str] = set()
+        unresolved_response_keys: set[str] = set()
+        # Original Q2 refuses a realized response key whose emitted response
+        # slots all have zero eligible routed rows. Preserve that denominator
+        # rule in the postconsumer boundary; B checked only the routing flag.
+        emitted_response_routes: dict[str, list[int]] = {}
+        for witness in witnesses:
+            if not isinstance(witness, Mapping):
+                raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+            key = witness.get("key")
+            emitted = witness.get("emitted")
+            occurrence = witness.get("occurrence_realized")
+            routing_unresolved = witness.get("routing_unresolved", False)
+            if (not isinstance(key, str) or not key
+                    or type(emitted) is not int or emitted &lt; 0
+                    or type(occurrence) is not bool
+                    or type(routing_unresolved) is not bool):
+                raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+            family = witness.get("family")
+            if family not in {
+                "RespondentEvent", "EmpiricalCoordinateFact", "WeightMeasureFact"
+            }:
+                raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+            routing_states = witness.get("routing_states")
+            if (not isinstance(routing_states, Mapping)
+                    or any(not isinstance(name, str) or type(value) is not int
+                           or value &lt; 0 for name, value in routing_states.items())):
+                raise SourceReceiptJoinError("Q2_REALIZATION_ROUTING_CENSUS_INVALID")
+            routable_rows = witness.get("routable_rows")
+            if family == "RespondentEvent":
+                if (type(routable_rows) is not int or routable_rows &lt; 0
+                        or routable_rows != routing_states.get("ELIGIBLE_APPLICABLE", 0)
+                        or routing_unresolved != any(
+                            state in routing_states for state in (
+                                "ROUTING_UNKNOWN", "RULE_UNAVAILABLE"
+                            )
+                        )):
+&gt;                   raise SourceReceiptJoinError("Q2_REALIZATION_ROUTING_CENSUS_DRIFT")
+E                   rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: Q2_REALIZATION_ROUTING_CENSUS_DRIFT
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:136: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_agent_b_q2_detail_witness1')
+attack = 'unresolved_routing'
+
+    @pytest.mark.parametrize("attack", ["missing_emission", "unresolved_routing", "measure_preimage"])
+    def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
+        tmp_path, attack,
+    ):
+        """A's summary/census are kept favorable while physical Q2 detail is forged.
+    
+        This is a negative-first preservation test: the unexecuted Batch runner is
+        intentional because Q2 contradictions must be refused before promotion.
+        """
+        handoff, estate, admission, compilation, resolver, _ = _full(
+            tmp_path / ("agent-b-" + attack)
+        )
+        manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+        runner = BatchExecutionRunner(
+            manifest=manifest, repository=admission, saved_mode=True,
+        )
+        candidates = [
+            row for row in handoff.operation_fates
+            if row["disposition"] == "ELIGIBLE" and row["source_realized"] is True
+        ]
+        if attack == "unresolved_routing":
+            candidates = [
+                row for row in candidates
+                if any(w["family"] == "RespondentEvent" and w["emitted"] &gt; 0
+                       for w in row["source_realization"])
+            ]
+        target = next(iter(candidates))
+        forged_row = dict(target)
+        if attack == "missing_emission":
+            key = target["source_realization"][0]["key"]
+            forged_row["source_realization"] = tuple(
+                {**w, "emitted": 0} if w["key"] == key else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        elif attack == "unresolved_routing":
+            witness = next(
+                w for w in target["source_realization"]
+                if w["family"] == "RespondentEvent" and w["emitted"] &gt; 0
+            )
+            forged_row["source_realization"] = tuple(
+                {**w, "routing_unresolved": True} if w is witness else w
+                for w in target["source_realization"]
+            )
+            refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        else:
+            source_preimage = dict(target["source_preimage"])
+            source_preimage["measure"] = {
+                **source_preimage["measure"],
+                "weight_ref": "FORGED_WEIGHT_MEASURE",
+            }
+            forged_row["source_preimage"] = source_preimage
+            refusal = "Q2_MEASURE_PREIMAGE_CONTRADICTION"
+        forged = replace(
+            handoff, operation_fates=tuple(
+                forged_row if row["operation_id"] == target["operation_id"] else row
+                for row in handoff.operation_fates
+            ),
+        )
+&gt;       with pytest.raises(SourceReceiptJoinError, match=refusal):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION'
+E         Actual message: 'Q2_REALIZATION_ROUTING_CENSUS_DRIFT'
+
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:378: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[measure_preimage]" time="0.613" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery[zero_routable-Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR]" time="0.612" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery[concealed_unknown-Q2_REALIZATION_ROUTING_CENSUS_DRIFT]" time="0.487" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery[eligible_count_drift-Q2_REALIZATION_ROUTING_CENSUS_DRIFT]" time="0.506" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_a_counter_preserves_q2_multislot_one_routable_semantics" time="0.000" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_r5_original_frontier_and_frozen_census_cut[q2_frontier-Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT]" time="0.550" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_r5_original_frontier_and_frozen_census_cut[r03_frontier-Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT]" time="1.208" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_r5_original_frontier_and_frozen_census_cut[source_census-Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT]" time="0.567" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_r5_original_frontier_and_frozen_census_cut[science_census-Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT]" time="0.601" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer" name="test_agent_b_r5_original_frontier_and_frozen_census_cut[eligible_fate_partition-Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT]" time="0.524" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge" name="test_q2_one_sav_to_complete_cold_saved_thirteen_families" time="0.373" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge" name="test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV]" time="1.124"><failure message="AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:891a741f87d3cf735b0d3187237a646d84e9eb63a63f1e532bbea71fd0738e23', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'&#10; +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:891a741f87d3cf735b0d3187237a646d84e9eb63a63f1e532bbea71fd0738e23', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery...', object_id='S1B_FIXTURE_RELEASE', content_hash='f1209c967526c6f3c9bfd447169cb4de61d80f5ad25624b2ca72d7239e728b9f'),)).facts&#10;  &#10;  - SUPPORTED&#10;  + UNAVAILABLE)">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_changed_source_cell_chang0')
+source_format = 'SAV'
+
+    @pytest.mark.parametrize("source_format", ["SAV", "DTA"])
+    def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
+        tmp_path, source_format,
+    ):
+        baseline = _build_saved(
+            tmp_path, name="baseline", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        changed = _build_saved(
+            tmp_path, name="changed", source_format=source_format,
+            values=(0.0, 1.0, 1.0, 0.0, 1.0),
+        )
+        restored = _build_saved(
+            tmp_path, name="restored", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        a, b, c = (x[1] for x in (baseline, changed, restored))
+        assert a.roots.logical != b.roots.logical
+        assert a.roots.logical == c.roots.logical
+        def evidence(bundle):
+            _, handoff, sink, root = bundle
+            estate = _estate(handoff, sink, root)
+            return tuple(sorted(
+                (exact_ref(e.scoped_respondent_ref).key, e.raw_response_value, e.response_state)
+                for e in estate.iter_family("RespondentEvent")
+            ))
+        assert evidence(baseline) != evidence(changed)
+        assert evidence(baseline) == evidence(restored)
+        assert a.manifest.source_artifact_ref == c.manifest.source_artifact_ref
+        assert a.manifest.source_artifact_ref != b.manifest.source_artifact_ref
+        # Real saved native I03 (same test query/target domain): material change,
+        # not just altered source SHA or altered Parquet bytes.
+        def native_cells(bundle):
+            _, handoff, sink, root = bundle
+            estate = _estate(handoff, sink, root)
+            result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+            assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+            fact = result.facts[0]
+            return tuple(
+                (str(cell["cell"]), cell["raw_numerator_support"])
+                for cell in fact.target_topology["complete_cell_semantic_projection"]
+            )
+&gt;       assert native_cells(baseline) != native_cells(changed)
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bundle = ((PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_changed_s.../60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_changed_source_cell_chang0/baseline-private'))
+
+    def native_cells(bundle):
+        _, handoff, sink, root = bundle
+        estate = _estate(handoff, sink, root)
+        result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+&gt;       assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+E       AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:891a741f87d3cf735b0d3187237a646d84e9eb63a63f1e532bbea71fd0738e23', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'
+E        +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:891a741f87d3cf735b0d3187237a646d84e9eb63a63f1e532bbea71fd0738e23', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery...', object_id='S1B_FIXTURE_RELEASE', content_hash='f1209c967526c6f3c9bfd447169cb4de61d80f5ad25624b2ca72d7239e728b9f'),)).facts
+E         
+E         - SUPPORTED
+E         + UNAVAILABLE)
+
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:215: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge" name="test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]" time="1.313"><failure message="AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:c5f920f3b62b57107bafabe3ab4c33cd4a4c47c2ffa5bb337396a34199caed27', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'&#10; +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:c5f920f3b62b57107bafabe3ab4c33cd4a4c47c2ffa5bb337396a34199caed27', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery...', object_id='S1B_FIXTURE_RELEASE', content_hash='284ec9a46e55ba1ce810290f7eec35d2dbf78550fa9605a852605bacc9197776'),)).facts&#10;  &#10;  - SUPPORTED&#10;  + UNAVAILABLE)">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_changed_source_cell_chang1')
+source_format = 'DTA'
+
+    @pytest.mark.parametrize("source_format", ["SAV", "DTA"])
+    def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
+        tmp_path, source_format,
+    ):
+        baseline = _build_saved(
+            tmp_path, name="baseline", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        changed = _build_saved(
+            tmp_path, name="changed", source_format=source_format,
+            values=(0.0, 1.0, 1.0, 0.0, 1.0),
+        )
+        restored = _build_saved(
+            tmp_path, name="restored", source_format=source_format,
+            values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        )
+        a, b, c = (x[1] for x in (baseline, changed, restored))
+        assert a.roots.logical != b.roots.logical
+        assert a.roots.logical == c.roots.logical
+        def evidence(bundle):
+            _, handoff, sink, root = bundle
+            estate = _estate(handoff, sink, root)
+            return tuple(sorted(
+                (exact_ref(e.scoped_respondent_ref).key, e.raw_response_value, e.response_state)
+                for e in estate.iter_family("RespondentEvent")
+            ))
+        assert evidence(baseline) != evidence(changed)
+        assert evidence(baseline) == evidence(restored)
+        assert a.manifest.source_artifact_ref == c.manifest.source_artifact_ref
+        assert a.manifest.source_artifact_ref != b.manifest.source_artifact_ref
+        # Real saved native I03 (same test query/target domain): material change,
+        # not just altered source SHA or altered Parquet bytes.
+        def native_cells(bundle):
+            _, handoff, sink, root = bundle
+            estate = _estate(handoff, sink, root)
+            result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+            assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+            fact = result.facts[0]
+            return tuple(
+                (str(cell["cell"]), cell["raw_numerator_support"])
+                for cell in fact.target_topology["complete_cell_semantic_projection"]
+            )
+&gt;       assert native_cells(baseline) != native_cells(changed)
+               ^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bundle = ((PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_changed_s.../60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_changed_source_cell_chang1/baseline-private'))
+
+    def native_cells(bundle):
+        _, handoff, sink, root = bundle
+        estate = _estate(handoff, sink, root)
+        result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+&gt;       assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+E       AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:c5f920f3b62b57107bafabe3ab4c33cd4a4c47c2ffa5bb337396a34199caed27', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'
+E        +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:c5f920f3b62b57107bafabe3ab4c33cd4a4c47c2ffa5bb337396a34199caed27', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuery...', object_id='S1B_FIXTURE_RELEASE', content_hash='284ec9a46e55ba1ce810290f7eec35d2dbf78550fa9605a852605bacc9197776'),)).facts
+E         
+E         - SUPPORTED
+E         + UNAVAILABLE)
+
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:215: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge" name="test_cold_saved_real_native_i03_from_exact_q2_source" time="0.341"><failure message="AssertionError: assert 0 &gt; 0&#10; +  where 0 = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:4de64952ab15772d5d7ebc523d9dcc126ad81ad3d40cb1d142b67a2738b9cc22', typed_state='UNAVAILABLE').raw_denominator_support">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_cold_saved_real_native_i00')
+
+    def test_cold_saved_real_native_i03_from_exact_q2_source(tmp_path):
+        _, handoff, sink, root = _build_saved(tmp_path)
+        estate = _estate(handoff, sink, root)
+        result, raw_domain = _native_i03(estate, tag="PYAT997-SAVED-Q2")
+        assert result.facts
+        fact = result.facts[0]
+&gt;       assert fact.raw_denominator_support &gt; 0
+E       AssertionError: assert 0 &gt; 0
+E        +  where 0 = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:4de64952ab15772d5d7ebc523d9dcc126ad81ad3d40cb1d142b67a2738b9cc22', typed_state='UNAVAILABLE').raw_denominator_support
+
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:231: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge" name="test_q2_fail_closed_on_missing_saved_body_and_cleans_stage" time="0.172" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge" name="test_wrong_held_root_and_revoked_source_refuse_native_cold" time="0.336" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge" name="test_one_source_snapshot_real_cold_thirteen_body_members[SAV]" time="0.473" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge" name="test_one_source_snapshot_real_cold_thirteen_body_members[DTA]" time="0.469" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge" name="test_actual_source_cell_changed_cold_body_changed_then_exact_restore" time="1.114"><failure message="AssertionError: assert 'cab875b7729e...56a83002c8ba6' == '1d5e0c41e76f...b86024f8f8b6f'&#10;  &#10;  - 1d5e0c41e76f715e1cd6ba610c2e4be969cc0879ea975f2f00bb86024f8f8b6f&#10;  + cab875b7729ecdfd8e5431e287987e8f57e1710afa941af8bf456a83002c8ba6">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-817/test_actual_source_cell_change0')
+
+    def test_actual_source_cell_changed_cold_body_changed_then_exact_restore(tmp_path):
+        baseline = _saved(tmp_path / "before")
+        changed = _saved(tmp_path / "after", values=(0., 1., 1., 0., 1.))
+        restored = _saved(tmp_path / "restore")
+        (_, hand0, sink0, private0, rec0) = baseline
+        (_, hand1, sink1, private1, rec1) = changed
+        (_, hand2, sink2, private2, rec2) = restored
+        assert hand0.source_sha256 != hand1.source_sha256
+        assert rec0.i02.logical != rec1.i02.logical
+&gt;       assert rec0.i02.logical == rec2.i02.logical
+E       AssertionError: assert 'cab875b7729e...56a83002c8ba6' == '1d5e0c41e76f...b86024f8f8b6f'
+E         
+E         - 1d5e0c41e76f715e1cd6ba610c2e4be969cc0879ea975f2f00bb86024f8f8b6f
+E         + cab875b7729ecdfd8e5431e287987e8f57e1710afa941af8bf456a83002c8ba6
+
+rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py:111: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge" name="test_missing_body_member_fails_closed_and_cleans_all_stages" time="0.121" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge" name="test_wrong_pinned_root_and_current_revocation_refuse_native_cold" time="0.436" /><testcase classname="rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge" name="test_sink_requires_exact_source_and_rejects_wrong_transport_before_publish" time="0.002" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_source_direct_i02_positive_and_real_roots" time="0.270" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_changed_source_meaning_changes_root_and_restore[SAV]" time="0.285" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_changed_source_meaning_changes_root_and_restore[DTA]" time="0.322" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_census_refuses_before_any_source_read" time="0.166" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_operation_duplicate_and_fate_audit" time="0.156" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_cold_certificate_host_capability_is_explicit" time="0.142" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_direct_identity_matches_legacy_owner_fixture" time="0.160" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_direct_native_i03_uses_existing_cold_reader_or_explicit_host_hold" time="0.156" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_output_collision_and_optional_weight_raw_conservation" time="0.109" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_original_source_denied_before_bytes" time="0.021" /><testcase classname="rawlsing_next.tests.test_pyat960_s1e_source_i02" name="test_s1e_keyed_source_requires_exact_physical_key_witnesses" time="0.157" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_direct_one_pass_thirteen_families_and_selected_exact_body" time="0.149" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_canonical_mapping_proxy_and_dict_selectors_but_reject_forgery" time="0.123" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_missing_member_and_tamper_fail_before_any_empty_or_fact" time="0.235" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_self_rehash_cannot_replace_independent_held_root" time="0.121" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_wrong_source_root_and_live_revocation_refuse" time="0.159" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_new_release_nonclobber_and_root_symlink_refusal" time="0.236" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_source_stream_is_consumed_once_even_when_certified_twice" time="0.098" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_wrong_independent_expected_i02_refuses_complete_publication" time="0.032" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_denied_current_does_not_open_estate_bytes" time="0.111" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_forged_posting_rehashed_under_same_i02_detected[respondent]" time="0.238" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_forged_posting_rehashed_under_same_i02_detected[native]" time="0.134" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_forged_posting_rehashed_under_same_i02_detected[canonical]" time="0.140" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_forged_posting_rehashed_under_same_i02_detected[component]" time="0.143" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_forged_posting_rehashed_under_same_i02_detected[state]" time="0.131" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_corrupt_locator_before_publication_refused" time="0.095" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_every_emitted_family_cold_reconstructs_at_its_exact_census" time="0.126" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_duplicate_physical_event_cannot_replace_missing_exact_event" time="0.084" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_physical_projection_lane_forgery_refused_before_publication[raw_typed]" time="0.078" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_physical_projection_lane_forgery_refused_before_publication[occurrence]" time="0.075" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_physical_projection_lane_forgery_refused_before_publication[kind]" time="0.074" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_physical_projection_lane_forgery_refused_before_publication[content_hash]" time="0.076" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_physical_projection_lane_forgery_refused_before_publication[raw_bool]" time="0.081" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_reconstructed_v1_release_is_distinct_and_manifest_pinned" time="0.119" /><testcase classname="rawlsing_next.tests.test_pre553_source_direct_parquet_estate" name="test_tampered_direct_certificate_v1_header_refuses_before_publication" time="0.092" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_cold_saved_i03_matches_native_oracle_without_c11_or_source" time="0.161" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_fresh_process_saved_i03_after_producer_source_is_gone" time="0.995" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_cold_saved_i05_matches_native_frontier_without_c11_or_source" time="0.206" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_fresh_process_saved_i05_after_producer_source_is_gone" time="0.897" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_changed_cold_estate_changes_native_i03_and_restore_is_exact" time="0.290" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_revoked_current_wrong_pin_and_missing_body_refuse" time="0.168" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_batch_guard_actually_refuses_until_owner_ack" time="0.133" /><testcase classname="rawlsing_next.tests.test_pyat991_s2d_saved_admission" name="test_shared_owner_readers_are_typed_holds_not_fake_seven_pass" time="0.002" /></testsuite></testsuites>

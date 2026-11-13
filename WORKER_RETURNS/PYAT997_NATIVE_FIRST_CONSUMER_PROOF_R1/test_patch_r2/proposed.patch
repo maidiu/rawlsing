@@ -1,0 +1,493 @@
+--- a/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py
++++ b/rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py
+@@ -36,19 +36,29 @@
+ from rawlsing_next.tests.test_pyat_r3_s1c_source_operation_fates import _freeze_packet
+ 
+ 
+-def _full(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV"):
+-    tmp_path.mkdir(parents=True, exist_ok=True)
+-    # R03 owner fixture has exact TEST_ONLY risk/authority and canonical cells.
+-    fixture = _native_fixture(tmp_path, values=values)
++def _fixed_fixture(fixture):
+     # Cross-root restoration must preserve the *same* scientific inventory
+     # identity, not source_fixture's test-root-specific id(root) debug label.
+     fixed_inventory = replace(
+         fixture["inventory"], inventory_id="PYAT997-S1E-EXACT-RESTORE")
+     fixed_frontier = _frontier(fixed_inventory, fixture["policy"])
++    fixture = dict(fixture)
+     fixture.update(
+         inventory=fixed_inventory, frontier=fixed_frontier,
+         census=_freeze_packet(fixed_frontier),
+     )
++    return fixture
++
++
++def _full(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV",
++          *, fixture=None):
++    tmp_path.mkdir(parents=True, exist_ok=True)
++    # R03 owner fixture has exact TEST_ONLY risk/authority and canonical cells.
++    if fixture is None:
++        fixture = _native_fixture(tmp_path, values=values)
++    # Reuse the exact source file when restoring; regenerating a timestamped
++    # SAV/DTA file would be a different source identity even with equal values.
++    fixture = _fixed_fixture(fixture)
+     private = tmp_path / "private"
+     private.mkdir(mode=0o700)
+     certificate = tmp_path / "source-i02.sqlite"
+@@ -83,20 +93,48 @@
+ 
+ 
+ def _native_i03(admission, compilation):
++    """Select the frozen compiled q101 query, not the first green-looking fact.
++
++    The compiled plan also contains legitimate country-coordinate negative
++    queries. Keep those separate and assert their typed negative state; the
++    causal q101 query is the one whose exact compiled target is question q101.
++    """
++    intended = None
++    negatives = []
+     for entry in compilation.plan.records:
+         if entry.status != "SUPPORTED" or not entry.query_refs:
+             continue
+-        raw = entry.query_refs[0]
+-        if isinstance(raw, Mapping):
+-            raw = {key: raw[key] for key in ("kind", "object_id", "content_hash")}
+-        query_ref = exact_ref(raw, "lowering query")
+-        query = compilation.issued.workload.catalog.resolve_query_exact(query_ref)
+-        predicate_ref = exact_ref(query.condition_predicate_ref, "lowering predicate")
+-        result = execute_saved_i03(
+-            admission, query_ref=query_ref, predicate_ref=predicate_ref)
+-        if result.facts:
+-            return entry.operation_id, result
+-    pytest.fail("no S1-C supported saved-native I03 first reader")
++        for raw in entry.query_refs:
++            if isinstance(raw, Mapping):
++                raw = {key: raw[key] for key in ("kind", "object_id", "content_hash")}
++            query_ref = exact_ref(raw, "lowering query")
++            query = compilation.issued.workload.catalog.resolve_query_exact(query_ref)
++            predicate_ref = exact_ref(
++                query.condition_predicate_ref, "lowering predicate")
++            result = execute_saved_i03(
++                admission, query_ref=query_ref, predicate_ref=predicate_ref)
++            if not result.facts:
++                continue
++            fact = result.facts[0]
++            targets = tuple(exact_ref(target) for target in query.target_refs)
++            is_q101 = any(
++                target.kind == "QUESTION_NATIVE"
++                and target.object_id.endswith(":q101")
++                for target in targets
++            )
++            if is_q101 and fact.typed_state == "SUPPORTED":
++                intended = (entry.operation_id, result, query_ref)
++            else:
++                negatives.append((query_ref, fact))
++    if intended is None:
++        pytest.fail("compiled q101 saved-native I03 first reader is unavailable")
++    if not any(
++            fact.typed_state == "UNAVAILABLE"
++            and getattr(fact, "target_topology", {}).get(
++                "p02_failure_state") == "RISK_SET_UNAVAILABLE"
++            for _ref, fact in negatives):
++        pytest.fail("compiled country/negative I03 witness disappeared")
++    return intended[0], intended[1], negatives
+ 
+ 
+ def _issued_manifest(workload, admission):
+@@ -120,11 +158,21 @@
+     }
+ 
+ 
+-def _run(tmp_path, values):
+-    handoff, estate, admission, compilation, resolver, sink = _full(tmp_path, values)
++def _run(tmp_path, values, *, fixture=None):
++    handoff, estate, admission, compilation, resolver, sink = _full(
++        tmp_path, values, fixture=fixture)
+     record = compilation.issued.record
+     workload = compilation.issued.workload
+-    operation, fact_result = _native_i03(admission, compilation)
++    operation, fact_result, native_negatives = _native_i03(
++        admission, compilation)
++    assert fact_result.facts[0].typed_state == "SUPPORTED"
++    assert fact_result.facts[0].raw_denominator_support == 5
++    assert sum(
++        int(cell["raw_numerator_support"])
++        for cell in fact_result.facts[0].target_topology[
++            "complete_cell_semantic_projection"]
++    ) == 5
++    assert native_negatives
+     authority_ref = workload.discoveries[0]
+     discovery = execute_saved_i05(admission, discovery_authority_ref=authority_ref)
+     assert discovery.receipts
+@@ -167,9 +215,16 @@
+ 
+ 
+ def test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join(tmp_path):
+-    first = _run(tmp_path / "first", (0., 1., 0., 1., 0.))
+-    changed = _run(tmp_path / "changed", (0., 1., 1., 1., 0.))
+-    restored = _run(tmp_path / "restored", (0., 1., 0., 1., 0.))
++    baseline_fixture = _fixed_fixture(_native_fixture(
++        tmp_path / "baseline-source", values=(0., 1., 0., 1., 0.)))
++    changed_fixture = _fixed_fixture(_native_fixture(
++        tmp_path / "changed-source", values=(0., 1., 1., 1., 0.)))
++    first = _run(tmp_path / "first", (0., 1., 0., 1., 0.),
++                 fixture=baseline_fixture)
++    changed = _run(tmp_path / "changed", (0., 1., 1., 1., 0.),
++                   fixture=changed_fixture)
++    restored = _run(tmp_path / "restored", (0., 1., 0., 1., 0.),
++                    fixture=baseline_fixture)
+     assert first[0].source_sha256 != changed[0].source_sha256
+     assert first[1].i02.logical != changed[1].i02.logical
+     assert first[1].i02.logical == restored[1].i02.logical
+@@ -235,7 +290,8 @@
+     )
+     forged = replace(handoff, operation_fates=altered)
+     with pytest.raises(
+-        SourceReceiptJoinError, match="Q2_OPERATION_FATE_OR_CLAIM_PROMOTED",
++        SourceReceiptJoinError,
++        match="Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT",
+     ):
+         join_saved_source_operation_fates(
+             handoff=forged, estate_receipt=estate, admission=admission,
+@@ -243,6 +299,7 @@
+             resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+             runner=runner,
+         )
++    assert runner.receipts == ()
+ 
+ 
+ def test_postconsumer_receipt_rows_cannot_change_after_source_mutation(tmp_path):
+@@ -360,7 +417,7 @@
+             {**w, "routing_unresolved": True} if w is witness else w
+             for w in target["source_realization"]
+         )
+-        refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
++        refusal = "Q2_REALIZATION_ROUTING_CENSUS_DRIFT"
+     else:
+         source_preimage = dict(target["source_preimage"])
+         source_preimage["measure"] = {
+@@ -382,6 +439,7 @@
+             resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+             runner=runner,
+         )
++    assert runner.receipts == ()
+ 
+ 
+ @pytest.mark.parametrize(
+--- a/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py
++++ b/rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py
+@@ -15,11 +15,13 @@
+ pytest.importorskip("pyreadstat")
+ 
+ from rawlsing_next.pre553_c11_repository import C11Repository
+-from rawlsing_next.pre553_empirical_objects import (
+-    EmpiricalQuerySpec, authority_ref, exact_ref,
++from rawlsing_next.pre553_empirical_objects import exact_ref
++from rawlsing_next.pre553_r157_projection_adapter import (
++    SourceConfig, build_governed_c11_projection,
+ )
+-from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+-from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
++from rawlsing_next.pre553_saved_c11_admission import (
++    SavedC11Admission, SavedReleaseIdentity,
++)
+ from rawlsing_next.pre553_source_direct_parquet_estate import (
+     DirectEstateError, VerifiedDirectEstate,
+ )
+@@ -27,18 +29,62 @@
+     SourceSavedBodySink,
+ )
+ from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
++from rawlsing_next.tests.test_pyat960_s1e_native_fact import (
++    _compile_native, _native_document,
++)
+ from rawlsing_next.tests.test_pyat960_s1e_source_i02 import _build, _fixture
+-import rawlsing_next.tests.test_pre553_empirical_query as native
++from rawlsing_next.tests.test_pyat960_s1e_support import build
++from rawlsing_next.tests.test_pyat_r3_s1c_source_operation_fates import (
++    _freeze_packet,
++)
++from rawlsing_next.tests.test_universal_grammar import _frontier, _policy
+ 
+ 
++def _native_fixture_for(root: Path, *, source_format: str, values):
++    fixture_root = root / "source"
++    fixture_root.mkdir(parents=True, exist_ok=True)
++    path, source_sha, rows, _cfg, document, inventory, _policy0, _fr, _census = (
++        _fixture(fixture_root, source_format=source_format, values=values)
++    )
++    document = _native_document(document)
++    config = SourceConfig(document)
++    projection = build_governed_c11_projection(config)
++    risk_set_ref = exact_ref(
++        projection.routing[0].risk_set_ref, "risk_set_ref")
++    occurrences = tuple(
++        replace(occurrence, risk_set_refs=(risk_set_ref.key,))
++        for occurrence in inventory.occurrences
++    )
++    inventory = replace(
++        inventory,
++        occurrences=occurrences,
++        risk_set_refs=(risk_set_ref.key,),
++        inventory_id="PYAT997-S1E-EXACT-RESTORE",
++    )
++    policy = _policy(j=1, k=1, d=0)
++    frontier = _frontier(inventory, policy)
++    census = _freeze_packet(frontier)
++    return {
++        "path": path, "source_sha": source_sha, "rows": rows,
++        "config": config, "document": document, "inventory": inventory,
++        "policy": policy, "frontier": frontier, "census": census,
++        "projection": projection,
++    }
++
++
+ def _build_saved(tmp_path: Path, *, name: str = "one",
+                  values=(0.0, 1.0, 2.0, 0.0, 1.0),
+-                 source_format: str = "SAV", sink_cls=SourceSavedBodySink):
+-    fixture_root = tmp_path / (name + "-source")
+-    fixture_root.mkdir()
+-    fixture = _fixture(
+-        fixture_root, source_format=source_format, values=values,
+-    )
++                 source_format: str = "SAV", sink_cls=SourceSavedBodySink,
++                 source_fixture=None):
++    tmp_path.mkdir(parents=True, exist_ok=True)
++    if source_fixture is None:
++        fixture_root = tmp_path / (name + "-source")
++        fixture_root.mkdir(parents=True, exist_ok=True)
++        fixture = _native_fixture_for(
++            fixture_root, source_format=source_format, values=values,
++        )
++    else:
++        fixture = source_fixture
+     private = tmp_path / (name + "-private")
+     private.mkdir(mode=0o700)
+     certificate = tmp_path / (name + ".sqlite")
+@@ -47,7 +93,7 @@
+         authorized_private_root=private,
+         chunk_rows=4,
+     )
+-    handoff = _build(
++    handoff = build(
+         tmp_path, fixture, name=name + ".sqlite",
+         body_sink=sink, chunk_size=4,
+     )
+@@ -63,62 +109,20 @@
+     )
+ 
+ 
+-def _native_i03(estate: VerifiedDirectEstate, *, tag: str):
+-    """Run the accepted S2-D real I03 on the *saved Q2 physical source*."""
+-    universe = next(estate.iter_family("EmpiricalUniverse"))
+-    respondents = tuple(estate.iter_family("RespondentIdentity"))
++def _native_i03(estate: VerifiedDirectEstate, *, tag: str, handoff, fixture):
++    """Run the exact compiled q101 native I03 on the saved Q2 physical source.
++
++    The compiled plan contains q101 question queries and separate country
++    coordinate queries. The former is the intended response target; the latter
++    must remain a typed negative witness, not be erased by query cherry-picking.
++    """
+     events = tuple(estate.iter_family("RespondentEvent"))
+     assert events
+-    first = events[0]
+-    native_question = exact_ref(first.native_question_ref)
+-    routing = tuple(estate.iter_family("RoutingEligibilityFact"))
+-    eligible_routing = [
+-        r for r in routing
+-        if exact_ref(r.question_or_target_ref) == native_question
+-    ]
+-    assert eligible_routing
+-    risk_ref = exact_ref(eligible_routing[0].risk_set_ref)
+-    snapshots = tuple(estate.iter_family("AuthoritySnapshot"))
+-    source_authority = next(
+-        a for a in snapshots
+-        if a.authority_ref == authority_ref(first.authority_snapshot_refs[0])
+-    )
+-    source = {
+-        "universe": universe,
+-        "respondents": {r.ref.key: r for r in respondents},
+-        "qrefs": {"Y": native_question},
+-        "risk_refs": {"R": risk_ref},
+-        "source_auth": source_authority,
+-    }
+-    grammar = native._query_authority(tag)
+-    predicate = native._branch_predicate(source, grammar, tag=tag)
+-    proposed = native._query(source, grammar, predicate, ("Y",), tag=tag)
+-    # The physical fixture's exact response domain is 0.0 / 1.0 / 2.0,
+-    # not the unrelated native test helper's default domain ['0','1'].
+-    # Fixed issued TEST_ONLY target domain across the changed source runs:
+-    # a disappearing observed value must not silently narrow the query.
+-    domain = ["0.0", "1.0", "2.0"]
+-    topology = dict(proposed.target_arity_and_topology)
+-    topology["components"] = [
+-        {**dict(component), "domain": domain}
+-        for component in proposed.target_arity_and_topology["components"]
+-    ]
+-    query = EmpiricalQuerySpec(
+-        typed_state=proposed.typed_state,
+-        authority_snapshot_refs=proposed.authority_snapshot_refs,
+-        dependency_refs=proposed.dependency_refs,
+-        producer_replay_locator_or_reference_root=(
+-            proposed.producer_replay_locator_or_reference_root
+-        ),
+-        **{**dict(proposed.semantic_fields), "target_arity_and_topology": topology},
+-    )
+-    catalog = RuntimeObjectCatalog(
+-        authorities=tuple((*snapshots, grammar)),
+-        predicates=(predicate,),
+-        queries=(query,),
+-        discovery_authorities=(),
+-    )
+-    # Reopen using exact independent roots and original accepted S2-D facade.
++    release_identity = SavedReleaseIdentity(
++        estate.reconstructed_v1_release_ref)
++    compilation = _compile_native(
++        fixture, handoff, fixture["projection"], release_identity)
++    catalog = compilation.issued.workload.catalog
+     re_admitted = SavedC11Admission.open(
+         root=estate.root, exact_path=estate.directory,
+         independently_held_manifest_sha256=estate.held_manifest_sha256,
+@@ -127,10 +131,54 @@
+         runtime_catalog=catalog,
+         current_authorizer=estate._authorize,
+     )
+-    result = re_admitted.execute_i03(
+-        query_ref=query.ref, predicate_ref=predicate.ref,
++    intended = None
++    negatives = []
++    for entry in compilation.plan.records:
++        if entry.status != "SUPPORTED":
++            continue
++        for raw in entry.query_refs:
++            if isinstance(raw, dict):
++                raw = {
++                    key: raw[key] for key in
++                    ("kind", "object_id", "content_hash")
++                }
++            query_ref = exact_ref(raw, "compiled query")
++            query = catalog.resolve_query_exact(query_ref)
++            predicate_ref = exact_ref(
++                query.condition_predicate_ref, "compiled predicate")
++            result = re_admitted.execute_i03(
++                query_ref=query_ref, predicate_ref=predicate_ref)
++            if not result.facts:
++                continue
++            fact = result.facts[0]
++            targets = tuple(exact_ref(target) for target in query.target_refs)
++            is_q101 = any(
++                target.kind == "QUESTION_NATIVE"
++                and target.object_id.endswith(":q101")
++                for target in targets
++            )
++            if is_q101 and fact.typed_state == "SUPPORTED":
++                intended = result
++            elif any(
++                target.kind == "COORDINATE_NATIVE"
++                for target in targets
++            ):
++                negatives.append(fact)
++    if intended is None:
++        pytest.fail("compiled q101 native I03 first reader is unavailable")
++    fact = intended.facts[0]
++    assert fact.raw_denominator_support == 5
++    assert sum(
++        int(cell["raw_numerator_support"])
++        for cell in fact.target_topology["complete_cell_semantic_projection"]
++    ) == 5
++    assert any(
++        negative.typed_state == "UNAVAILABLE"
++        and negative.target_topology.get("p02_failure_state")
++        == "RISK_SET_UNAVAILABLE"
++        for negative in negatives
+     )
+-    return result, {str(e.raw_response_value) for e in events}
++    return intended, {str(e.raw_response_value) for e in events}, negatives
+ 
+ 
+ def test_q2_one_sav_to_complete_cold_saved_thirteen_families(tmp_path, monkeypatch):
+@@ -182,7 +230,7 @@
+ ):
+     baseline = _build_saved(
+         tmp_path, name="baseline", source_format=source_format,
+-        values=(0.0, 1.0, 2.0, 0.0, 1.0),
++        values=(0.0, 1.0, 0.0, 1.0, 0.0),
+     )
+     changed = _build_saved(
+         tmp_path, name="changed", source_format=source_format,
+@@ -190,7 +238,7 @@
+     )
+     restored = _build_saved(
+         tmp_path, name="restored", source_format=source_format,
+-        values=(0.0, 1.0, 2.0, 0.0, 1.0),
++        source_fixture=baseline[0],
+     )
+     a, b, c = (x[1] for x in (baseline, changed, restored))
+     assert a.roots.logical != b.roots.logical
+@@ -209,10 +257,14 @@
+     # Real saved native I03 (same test query/target domain): material change,
+     # not just altered source SHA or altered Parquet bytes.
+     def native_cells(bundle):
+-        _, handoff, sink, root = bundle
++        fixture, handoff, sink, root = bundle
+         estate = _estate(handoff, sink, root)
+-        result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
++        result, _, negatives = _native_i03(
++            estate, tag="PYAT997-CHANGED-SOURCE",
++            handoff=handoff, fixture=fixture,
++        )
+         assert result.facts and result.facts[0].typed_state == "SUPPORTED"
++        assert negatives
+         fact = result.facts[0]
+         return tuple(
+             (str(cell["cell"]), cell["raw_numerator_support"])
+@@ -223,13 +275,17 @@
+ 
+ 
+ def test_cold_saved_real_native_i03_from_exact_q2_source(tmp_path):
+-    _, handoff, sink, root = _build_saved(tmp_path)
++    fixture, handoff, sink, root = _build_saved(
++        tmp_path, values=(0.0, 1.0, 0.0, 1.0, 0.0))
+     estate = _estate(handoff, sink, root)
+-    result, raw_domain = _native_i03(estate, tag="PYAT997-SAVED-Q2")
++    result, raw_domain, negatives = _native_i03(
++        estate, tag="PYAT997-SAVED-Q2", handoff=handoff, fixture=fixture)
+     assert result.facts
+     fact = result.facts[0]
+-    assert fact.raw_denominator_support > 0
++    assert fact.typed_state == "SUPPORTED"
++    assert fact.raw_denominator_support == 5
+     assert raw_domain
++    assert negatives
+     assert sum(
+         int(c["raw_numerator_support"])
+         for c in fact.target_topology["complete_cell_semantic_projection"]
+--- a/rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py
++++ b/rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py
+@@ -26,10 +26,13 @@
+ 
+ 
+ def _saved(root: Path, *, source_format="SAV", values=(0., 1., 2., 0., 1.),
+-           monkeypatch=None):
++           monkeypatch=None, fixture_override=None):
+     root.mkdir(mode=0o700)
+-    fixture = source_fixture(root / "source", source_format=source_format,
+-                             values=values)
++    fixture = (
++        fixture_override if fixture_override is not None
++        else source_fixture(root / "source", source_format=source_format,
++                            values=values)
++    )
+     private = root / "private"
+     private.mkdir(mode=0o700)
+     cert = root / "direct.sqlite"
+@@ -102,7 +105,8 @@
+ def test_actual_source_cell_changed_cold_body_changed_then_exact_restore(tmp_path):
+     baseline = _saved(tmp_path / "before")
+     changed = _saved(tmp_path / "after", values=(0., 1., 1., 0., 1.))
+-    restored = _saved(tmp_path / "restore")
++    restored = _saved(
++        tmp_path / "restore", fixture_override=baseline[0])
+     (_, hand0, sink0, private0, rec0) = baseline
+     (_, hand1, sink1, private1, rec1) = changed
+     (_, hand2, sink2, private2, rec2) = restored
