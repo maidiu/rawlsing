@@ -390,14 +390,14 @@
     }
   },
   "s2d_transfer_991": {
-    "status": "ALL_SEVEN_G5_REVISE_PARTIAL_BINDING_A_REPAIR_RUNNING",
+    "status": "ALL_SEVEN_PARTIAL_REPAIR_SAME_G5_RECHECK_RUNNING",
     "job_id": "pyat991-s2d-preflight01",
     "launch": {
-      "job_id": "pyat991-partial-binding-repair-a01",
-      "child_pid": 83771,
-      "supervisor_pid": 83770,
-      "observer_pid": 83772,
-      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-partial-binding-repair-a01",
+      "job_id": "pyat991-all-seven-g5-recheck-r01",
+      "child_pid": 85515,
+      "supervisor_pid": 85514,
+      "observer_pid": 85516,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-all-seven-g5-recheck-r01",
       "launch_is_not_completion": true
     },
     "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
@@ -418,8 +418,8 @@
       }
     },
     "delivery_sha": "585cb21d39ea5b1dcc1c121633fa7e07f5650280",
-    "active_job": "pyat991-partial-binding-repair-a01",
-    "next_action": "SAMEdistinctG5 rechecks frozenrepair, originalwitness andrequiredobservables; no newABround",
+    "active_job": "pyat991-all-seven-g5-recheck-r01",
+    "next_action": "SAME independentG5 exactPARTIAL/G4recheck verdict at demonstratedscope; no newreviewcampaign",
     "shared_handoff": "ACK_TWO_FILES_RECEIVED_CURRENT_BLOBS_MATCH",
     "a_delivery_sha": "e399c48d576f5b2ae501dac569fb729e95bd968e",
     "a_code_sha": "55af65cc1a2df1d3eb82906a80434353735c5d50",
@@ -483,6 +483,7 @@
     "five_remaining": "AUTHOR_IMPLEMENTED_PENDING_INDEPENDENT_G5",
     "all_seven_g5_verdict": "REVISE_EXACT_DEFECT",
     "all_seven_g5_delivery_sha": "f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f",
-    "g4_status": "OPEN_REQUIRED_LOCAL_OBSERVATIONS, not external authority hold"
+    "g4_status": "AUTHOR_OBSERVATIONS_DELIVERED_PENDING_INDEPENDENT_QUALIFICATION",
+    "partial_repair_delivery_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969"
   }
 }
