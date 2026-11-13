@@ -1,3 +1,9 @@
+## Browser997 native return — real bounded chain,7testfailures and prooflimits preserved; sameDeepSeek exactfollowup running
+
+Return229544e23435f608272c2bead78cc5c2cfc786f5 directremoteverified;18ownreturn/harness/evidencepaths only, Browserproduct/tests unchanged. ActualJUnit75nodes68PASS7FAIL0skip. RealgeneratedSAV/Q2onepass/13familypersisted/nativeI03I05/discoveryBatch/fatejoin positive, changedfact/exactsource-root-fact-joinrestore,5rows boundedresources observed. Not G5orfullS1Eacceptance. IssuedBatchshape0queryrequests1discovery; ownharnessdoesnotproveproducerexitfreshprocess merelybywrapper, originalcoldboundarystillrequiresdirectproof.
+
+SameDeepSeekexecutor actualnewjob `pyat997-test-harness-patch-proof-r2`, child17675, ownNEWtest_patch_r2returnonly plusprivateproofcopies: precise7nodecausaltest-onlypatchproposition, delayedfixturebytes/exactrestoration, explicitintendedquery(notfirstgreen), exactearliestrefusal+zeroattribution, all75nodereplay; verify/producetrueproducerexit/freshconsumer witness. No canonicalBrowsertest/productedits/newissuer/physicalengine/authoritypromotion. Browserownerreceivesconcretepatchforadoption beforedistinctG5. S2Aauthor independentlyrunning, no interference; no#1006benchmarkduplicate. GoalwakeupsPAUSED/terminalnotificationsonly.
+
 ## Explicit S2-A owner grant received — repair and independent ready native bridge execution launched
 
 UserselectsdirectpublicAPIrepair; ownercomments6866766494/6866776540pinned. Fileblob0e4b34ce4973bb4d23b6105faea55b9056ecf373 identicalacceptedS2Cb7b697/S2D9d96verified. ActualexclusiveS2Aauthor DeepSeekses_e3120b9efffegreD5YfH7dOO15, isolated agent/pyat999-s2a-public-repair-r1 at9d96, child14140, boundedselect_events/locator-bodyvalidation/orderhelpers+newS2Atests only. Writer/schema/nativeI03/S2Dimmutable. Original0vs1RED->GREEN/restore/fullpreservation/resources then SAMEindependentreviewerses_e30c25800ffeT8XbyTuHekRCme. No newadapter/ABround/architecturecourt.
