@@ -20,6 +20,7 @@ import mii
 
 from outward import OPERATIONS, establish_demo_conditions, perform as perform_outward
 from situated import reconsider
+from sourcefree_p3_bridge import qualified_p4_scope
 from situated_provider import ModelUnavailable, SituatedProvider
 
 def PACE(fanin, action):
@@ -79,6 +80,9 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                 mii.save_profile(gaze_file, profile)
                 return result
             check_boundary(owner, ledger)
+            if sourcefree_p3_bridge:
+                # Fail before P4 pending/world conduct on unbound foreground scope.
+                qualified_p4_scope(owner, ledger)
             bridge_kwargs = ({"psyche_owner": owner, "psyche_scope": ledger["scope"]}
                              if sourcefree_p3_bridge else {})
             prior = scene(session)
