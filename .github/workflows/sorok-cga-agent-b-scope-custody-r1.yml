@@ -1,0 +1,30 @@
+name: Sorok CG-A Agent B source-scope adversarial run
+on:
+  push:
+    branches:
+      - review/sorok-cga-agent-b-scope-custody-20261112-r1
+  workflow_dispatch:
+jobs:
+  source_scope_and_inherited:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Agent B scope case and inherited bridge/conduct/owner
+        run: |
+          python -B -m pytest -q -p no:cacheprovider \
+            WORKER_RETURNS/SOROK-CGA-AGENT-B-SCOPE-CHALLENGE-R1/test_scope_source.py \
+            WORKER_RETURNS/SOROK-CGA-AGENT-A-RELAY-R1/test_cue_issuer.py \
+            WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py \
+            WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control \
+            WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore \
+            WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py::test_performed_speech_reads_real_prior_p3_formation \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_outward_conduct_supplies_only_qualified_cues \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_silent_interval_reconsiders_and_commits_only_admitted_speech
