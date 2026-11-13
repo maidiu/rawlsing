@@ -19,6 +19,7 @@ from heapq import merge
 from pathlib import Path
 from types import MappingProxyType
 from typing import Iterator, Mapping
+import json
 import os
 import re
 import sqlite3
@@ -32,8 +33,8 @@ from rawlsing_next.pre553_c11_integrity import (
     C11InternalRecord, TypedAbsence,
 )
 from rawlsing_next.pre553_empirical_objects import (
-    CanonicalSemanticObject, ExactRef, RespondentEvent, canonical_json,
-    exact_ref, semantic_hash,
+    CanonicalSemanticObject, ExactRef, Pre553IntegrityError, RespondentEvent,
+    canonical_json, exact_ref, semantic_hash,
 )
 from rawlsing_next._pre553_verified_semantic_range import (
     SemanticRangeIntegrityError,
@@ -538,16 +539,39 @@ class VerifiedExternalI02:
                     for name in ("release", "source", "replay", "universe")
                 ):
                     _fail("external I02 identity, replay or universe mismatched")
-                if set(__import__("json").loads(h["coverage"])) != set(M01_M18):
-                    _fail("M01-M18 missing in certified header")
+                coverage_text = h.get("coverage")
+                if not isinstance(coverage_text, str):
+                    _fail("certified M01-M18 coverage header missing or non-text")
+                try:
+                    coverage = json.loads(coverage_text)
+                except (TypeError, ValueError) as exc:
+                    raise ExternalI02IntegrityError(
+                        "certified M01-M18 coverage header is not valid JSON"
+                    ) from exc
+                if type(coverage) is not dict or set(coverage) != set(M01_M18):
+                    _fail("M01-M18 missing or malformed in certified header")
+                for atom in M01_M18:
+                    body = coverage[atom]
+                    if (not isinstance(body, list) or not body
+                            or any(not isinstance(token, str) or not token
+                                   for token in body)):
+                        _fail("certified M01-M18 coverage body is malformed")
                 # Revalidate semantic closure and keyspace before allowing EMPTY.
                 _check_relations_readonly(self.db, roots.source)
                 if _logical_root(self.db, schema=roots.schema) != roots.logical:
                     _fail("logical corpus/selector map differs from external root")
+            except ExternalI02IntegrityError:
+                self.db.close()
+                raise
             except sqlite3.Error as exc:
                 self.db.close()
                 raise ExternalI02IntegrityError(
                     "cold certificate structure is missing or malformed"
+                ) from exc
+            except (KeyError, TypeError, ValueError, Pre553IntegrityError) as exc:
+                self.db.close()
+                raise ExternalI02IntegrityError(
+                    "cold certificate header or structure is malformed"
                 ) from exc
             except Exception:
                 self.db.close()

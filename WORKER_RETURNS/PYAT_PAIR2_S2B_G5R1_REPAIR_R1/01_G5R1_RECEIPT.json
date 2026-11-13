@@ -1,0 +1,174 @@
+{
+  "schema": "PYAT_R3_S2B_G5R1_LOCAL_REPAIR_RECEIPT@1",
+  "commission": "S2-B/P2-02/#919",
+  "programme": "R3/R3C/R3S/#909",
+  "role": "LOCAL_AUTHOR_REPAIR_NOT_INDEPENDENT_G5",
+  "disposition": "REPAIR_COMPLETE__PENDING_SAME_INDEPENDENT_G5_RECHECK",
+  "s2b_g5": "REVISE_EXACT_DEFECT",
+  "s2b_terminal_closed": false,
+  "lineage": {
+    "frozen_source_test_base": "155cd1b7244ab22ede804386e6d5253a39fe3587",
+    "local_author_return_only": "cc35e0a4e51394961f58b632dec8a149deea21a2",
+    "independent_g5_r1_report": "acfd5b516a5ae8177730aeb672b846fe4e22fdfe",
+    "independent_g5_r1_branch": "review/pyat-s2b-independent-g5-20261113-r1",
+    "repair_branch": "agent/pyat-s2b-g5-r1-repair-20261113-r1",
+    "repair_code_test_sha": "092db6bc50a6f256756edf8ab1e95981e2d95abe",
+    "repair_parent": "155cd1b7244ab22ede804386e6d5253a39fe3587",
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "protected_pre_main_modified": false
+  },
+  "lease": {
+    "status": "VERIFIED_EXCLUSIVE_LOCAL_OWNER",
+    "remote_repair_refs_before_work": [],
+    "repair_pr_before_work": null,
+    "issue_repair_launch_after_commission": false,
+    "overlapping_active_writer": false,
+    "evidence": "logs/12_LEASE_AND_DUPLICATION_CHECK.txt"
+  },
+  "environment": {
+    "host": "macOS",
+    "execution": "Lima 2.3.0 Linux VM on Apple Virtualization framework",
+    "linux": "7.3.0-9-generic Ubuntu 26.10 x86_64",
+    "cpu": 2,
+    "memory_gib": 4,
+    "python": "3.11.18",
+    "pytest": "9.2.0",
+    "pyarrow": "26.0.1",
+    "pandas": "3.1.1",
+    "pyreadstat": "1.3.7",
+    "proc_self_fd": true,
+    "vm_root_fs_note": "ext4 reported errors and remounted read-only during session; /tmp tmpfs used; SQLITE_TMPDIR set before Python startup for 100k probe",
+    "evidence": "logs/11_ENVIRONMENT.txt"
+  },
+  "g5_r1": {
+    "defect": "malformed cold certificate coverage header raised raw JSONDecodeError/KeyError/TypeError instead of ExternalI02IntegrityError",
+    "attack": "attacks/attack_malformed_header.py",
+    "red_frozen": [
+      "invalid-json JSONDecodeError",
+      "missing-key KeyError",
+      "json-null TypeError",
+      "json-number TypeError"
+    ],
+    "green_repaired": [
+      "invalid-json ExternalI02IntegrityError",
+      "missing-key ExternalI02IntegrityError",
+      "json-null ExternalI02IntegrityError",
+      "json-number ExternalI02IntegrityError"
+    ],
+    "repair": [
+      "require coverage text presence",
+      "explicit json.loads with typed cause",
+      "require JSON object with exactly M01-M18 keys",
+      "require non-empty list-of-non-empty-string bodies",
+      "normalize KeyError/TypeError/ValueError/Pre553IntegrityError at the cold boundary",
+      "preserve sqlite3.Error typed handling",
+      "close the SQLite DB on every refusal"
+    ],
+    "unchanged": [
+      "semantic logical-root schema",
+      "external logical/physical root trust model",
+      "no BaseException catch",
+      "no fallback source access",
+      "no integrity-check bypass",
+      "no protected merge",
+      "no S2-C writer",
+      "no W03/W04 edit"
+    ],
+    "red_logs": [
+      "logs/00_RED_REVIEWER_ATTACK_FROZEN.log",
+      "logs/01_RED_REGRESSION_TEST_FROZEN.log"
+    ],
+    "green_logs": [
+      "logs/02_GREEN_REVIEWER_ATTACK_REPAIRED.log",
+      "logs/03_GREEN_REGRESSION_TEST_REPAIRED.log"
+    ]
+  },
+  "tests": {
+    "full_court": {
+      "passed": 130,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 35.69,
+      "process_maxrss_kib": 143456,
+      "note": "original 129 tests plus G5-R1 regression",
+      "log": "logs/04_FULL_COURT_130.log",
+      "junit": "logs/05_FULL_COURT_130.xml"
+    },
+    "targeted": {
+      "passed": 9,
+      "failed": 0,
+      "log": "logs/06_TARGETED_D1_D6_AND_G5R1.log"
+    },
+    "parity_probes": {
+      "status": "PASS",
+      "log": "logs/07_PARITY_PROBES.log"
+    },
+    "valid_cold_selection_restore": {
+      "status": "PASS",
+      "test": "test_s2b_g5r1_malformed_coverage_header_typed_refusal",
+      "note": "untouched original certificate reopened with real selector selection after every malformed refusal"
+    },
+    "native_i03_changed_restored": {
+      "status": "PASS",
+      "sequence": "2 -> 3 -> 2",
+      "log": "logs/06_TARGETED_D1_D6_AND_G5R1.log"
+    }
+  },
+  "resources": {
+    "direct_2048_events_1_respondent": {
+      "retained_sqlite_bytes": 13135872,
+      "build_seconds": 9.701,
+      "cold_verify_plus_2048_select_seconds": 0.294,
+      "python_peak_bytes": 2233151,
+      "process_maxrss_kib": 42500,
+      "log": "logs/08_MATERIAL_2048.log"
+    },
+    "direct_100000_events_1_respondent": {
+      "retained_sqlite_bytes": 638414848,
+      "build_seconds": 508.827,
+      "cold_verify_plus_select_seconds": 24.633,
+      "python_peak_bytes": 2231538,
+      "process_maxrss_kib": 40424,
+      "sampled_workdir_tmp_peak_bytes": 685625126,
+      "selected_postings": 100000,
+      "respondents": 1,
+      "log": "logs/09_SCALE_100000.log",
+      "boundary": "not 100000 respondents; not integrated 6 GiB"
+    }
+  },
+  "g5_r2": {
+    "status": "NONBLOCKING_UNCHANGED",
+    "description": "forged external logical root plus physical root permits header-preserving selector omission; native selection 1 vs sealed 2",
+    "fixed_by_this_repair": false,
+    "log": "logs/10_G5R2_NONBLOCKING_UNCHANGED.log",
+    "treatment": "future root-issuer/integration defense-in-depth; not native/production accepted"
+  },
+  "next": {
+    "reviewer": "SAME independent nonauthor G5 receiver from review/pyat-s2b-independent-g5-20261113-r1",
+    "exact_sha": "092db6bc50a6f256756edf8ab1e95981e2d95abe",
+    "scope": "R1 recheck only; no fresh broad G5 hunt",
+    "acceptance": [
+      "ACCEPT_SCOPED@S2_SOURCEFREE_DIRECT_I02",
+      "REVISE_EXACT_DEFECT with a new reproducible in-scope first-reader breach",
+      "HOLD_EXTERNAL only if genuinely indispensable"
+    ]
+  },
+  "authority_holds": {
+    "original35_source_equivalence": "HELD",
+    "current_permission": "NOT_ISSUED",
+    "p01_p20_t01_t18": "HELD",
+    "s2a_receiving": "PENDING",
+    "s2c_cold_physical": "NOT_BUILT",
+    "w03_w04": "PAUSED",
+    "protected_merge": "NONE",
+    "native_production_permissions": "NONE",
+    "competent_external_root_issuer": "NOT_ESTABLISHED"
+  },
+  "evidence": {
+    "return_directory": "WORKER_RETURNS/PYAT_PAIR2_S2B_G5R1_REPAIR_R1",
+    "exact_diff": "02_EXACT_DIFF.patch",
+    "checksums": "SHA256SUMS",
+    "no_original35_data": true,
+    "no_invented_source_permission": true
+  }
+}

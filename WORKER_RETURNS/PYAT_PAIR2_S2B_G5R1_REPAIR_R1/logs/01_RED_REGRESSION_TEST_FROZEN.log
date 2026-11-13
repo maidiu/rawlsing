@@ -1,0 +1,91 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_s2b_g5r1_malformed_coverage_header_typed_refusal _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-matthewsmith/pytest-82/test_s2b_g5r1_malformed_covera0')
+
+    def test_s2b_g5r1_malformed_coverage_header_typed_refusal(tmp_path):
+        candidate, _, _ = _direct("s2b-g5r1-malformed-header")
+        original = tmp_path / "direct-original.sqlite"
+        roots = _build_direct(candidate, original)
+        with VerifiedExternalI02(original, roots=roots) as certified:
+            assert list(certified.respondent_refs())
+        with sqlite3.connect(original) as db:
+            coverage_text = db.execute(
+                "SELECT value FROM main.header WHERE name='coverage'"
+            ).fetchone()[0]
+        coverage = json.loads(coverage_text)
+        missing_atom = dict(coverage)
+        missing_atom.pop("M01")
+        extra_atom = dict(coverage)
+        extra_atom["M19"] = ["EmpiricalUniverse"]
+        empty_body = dict(coverage)
+        empty_body["M01"] = []
+        nontext_token = dict(coverage)
+        nontext_token["M01"] = [123]
+        nonarray_body = dict(coverage)
+        nonarray_body["M01"] = "EmpiricalUniverse"
+        cases = (
+            ("invalid-json", "{not-json"),
+            ("missing-key", None),
+            ("json-null", "null"),
+            ("json-number", "123"),
+            ("json-array", "[]"),
+            ("json-string", '"M01"'),
+            ("json-empty-object", "{}"),
+            ("missing-atom", json.dumps(missing_atom)),
+            ("extra-atom", json.dumps(extra_atom)),
+            ("empty-body", json.dumps(empty_body)),
+            ("nontext-token", json.dumps(nontext_token)),
+            ("nonarray-body", json.dumps(nonarray_body)),
+        )
+        for label, value in cases:
+            case = tmp_path / (label + ".sqlite")
+            shutil.copyfile(original, case)
+            with sqlite3.connect(case) as db:
+                if value is None:
+                    db.execute("DELETE FROM main.header WHERE name='coverage'")
+                else:
+                    db.execute(
+                        "UPDATE main.header SET value=? WHERE name='coverage'",
+                        (value,),
+                    )
+                db.commit()
+            forged = replace(roots, physical=_digest_file(case))
+            with pytest.raises(ExternalI02IntegrityError):
+>               VerifiedExternalI02(case, roots=forged)
+
+rawlsing_next/tests/test_g5r1_red_tmp.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:541: in __init__
+    if set(__import__("json").loads(h["coverage"])) != set(M01_M18):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/matthewsmith.guest/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/json/__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/matthewsmith.guest/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/json/decoder.py:337: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x72720da29450>, s = '{not-json'
+idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+>           obj, end = self.scan_once(s, idx)
+                       ^^^^^^^^^^^^^^^^^^^^^^
+E           json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+/home/matthewsmith.guest/.local/share/uv/python/cpython-3.11.18-linux-x86_64-gnu/lib/python3.11/json/decoder.py:353: JSONDecodeError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_g5r1_red_tmp.py::test_s2b_g5r1_malformed_coverage_header_typed_refusal
+1 failed in 1.29s

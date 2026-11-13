@@ -7,7 +7,9 @@ suite cannot demonstrate an independently source-direct 100k I02 build.
 from dataclasses import replace
 from pathlib import Path
 from time import monotonic
+import json
 import os
+import shutil
 import sqlite3
 import tracemalloc
 
@@ -22,8 +24,12 @@ from rawlsing_next._pre553_external_i02_certificate import (
 from rawlsing_next._pre553_direct_i02_sourcefree import (
     build_sourcefree_direct_i02, direct_sections_from_candidate,
 )
+from rawlsing_next.pre553_empirical_objects import exact_ref
 from rawlsing_next.tests.test_pre553_verified_semantic_range import (
     _build_source, _release, _multi_i03_source,
+)
+from rawlsing_next.tests.test_pre553_direct_i02_sourcefree import (
+    _build_direct, _direct,
 )
 from rawlsing_next.tests.test_pre553_empirical_query import (
     _query_authority, _branch_predicate, _query, _run, _cell_map,
@@ -43,6 +49,72 @@ def _facts(source, tag):
     pred = _branch_predicate(source, qa, tag=tag)
     query = _query(source, qa, pred, ("Y",), tag=tag)
     return qa, pred, query, _run(source, qa, pred, query)
+
+
+def test_s2b_g5r1_malformed_coverage_header_typed_refusal(tmp_path):
+    candidate, _, _ = _direct("s2b-g5r1-malformed-header")
+    original = tmp_path / "direct-original.sqlite"
+    roots = _build_direct(candidate, original)
+    event = candidate.respondent_events[0]
+    with VerifiedExternalI02(original, roots=roots) as certified:
+        assert list(certified.respondent_refs())
+        assert list(certified.selector_refs(
+            exact_ref(event.scoped_respondent_ref).key,
+            exact_ref(event.native_question_ref),
+            native_only=True,
+        ))
+    with sqlite3.connect(original) as db:
+        coverage_text = db.execute(
+            "SELECT value FROM main.header WHERE name='coverage'"
+        ).fetchone()[0]
+    coverage = json.loads(coverage_text)
+    missing_atom = dict(coverage)
+    missing_atom.pop("M01")
+    extra_atom = dict(coverage)
+    extra_atom["M19"] = ["EmpiricalUniverse"]
+    empty_body = dict(coverage)
+    empty_body["M01"] = []
+    nontext_token = dict(coverage)
+    nontext_token["M01"] = [123]
+    nonarray_body = dict(coverage)
+    nonarray_body["M01"] = "EmpiricalUniverse"
+    cases = (
+        ("invalid-json", "{not-json"),
+        ("missing-key", None),
+        ("json-null", "null"),
+        ("json-number", "123"),
+        ("json-array", "[]"),
+        ("json-string", '"M01"'),
+        ("json-empty-object", "{}"),
+        ("missing-atom", json.dumps(missing_atom)),
+        ("extra-atom", json.dumps(extra_atom)),
+        ("empty-body", json.dumps(empty_body)),
+        ("nontext-token", json.dumps(nontext_token)),
+        ("nonarray-body", json.dumps(nonarray_body)),
+    )
+    for label, value in cases:
+        case = tmp_path / (label + ".sqlite")
+        shutil.copyfile(original, case)
+        with sqlite3.connect(case) as db:
+            if value is None:
+                db.execute("DELETE FROM main.header WHERE name='coverage'")
+            else:
+                db.execute(
+                    "UPDATE main.header SET value=? WHERE name='coverage'",
+                    (value,),
+                )
+            db.commit()
+        forged = replace(roots, physical=_digest_file(case))
+        with pytest.raises(ExternalI02IntegrityError):
+            VerifiedExternalI02(case, roots=forged)
+    # The untouched original remains valid after every malformed refusal.
+    with VerifiedExternalI02(original, roots=roots) as certified:
+        assert list(certified.respondent_refs())
+        assert list(certified.selector_refs(
+            exact_ref(event.scoped_respondent_ref).key,
+            exact_ref(event.native_question_ref),
+            native_only=True,
+        ))
 
 
 def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):

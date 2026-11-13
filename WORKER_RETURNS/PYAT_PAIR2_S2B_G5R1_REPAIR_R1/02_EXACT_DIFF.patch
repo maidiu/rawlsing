@@ -1,0 +1,167 @@
+diff --git a/rawlsing_next/_pre553_external_i02_certificate.py b/rawlsing_next/_pre553_external_i02_certificate.py
+index cd5368e46..2af16c6d9 100644
+--- a/rawlsing_next/_pre553_external_i02_certificate.py
++++ b/rawlsing_next/_pre553_external_i02_certificate.py
+@@ -19,6 +19,7 @@ from heapq import merge
+ from pathlib import Path
+ from types import MappingProxyType
+ from typing import Iterator, Mapping
++import json
+ import os
+ import re
+ import sqlite3
+@@ -32,8 +33,8 @@ from rawlsing_next.pre553_c11_integrity import (
+     C11InternalRecord, TypedAbsence,
+ )
+ from rawlsing_next.pre553_empirical_objects import (
+-    CanonicalSemanticObject, ExactRef, RespondentEvent, canonical_json,
+-    exact_ref, semantic_hash,
++    CanonicalSemanticObject, ExactRef, Pre553IntegrityError, RespondentEvent,
++    canonical_json, exact_ref, semantic_hash,
+ )
+ from rawlsing_next._pre553_verified_semantic_range import (
+     SemanticRangeIntegrityError,
+@@ -538,17 +539,40 @@ class VerifiedExternalI02:
+                     for name in ("release", "source", "replay", "universe")
+                 ):
+                     _fail("external I02 identity, replay or universe mismatched")
+-                if set(__import__("json").loads(h["coverage"])) != set(M01_M18):
+-                    _fail("M01-M18 missing in certified header")
++                coverage_text = h.get("coverage")
++                if not isinstance(coverage_text, str):
++                    _fail("certified M01-M18 coverage header missing or non-text")
++                try:
++                    coverage = json.loads(coverage_text)
++                except (TypeError, ValueError) as exc:
++                    raise ExternalI02IntegrityError(
++                        "certified M01-M18 coverage header is not valid JSON"
++                    ) from exc
++                if type(coverage) is not dict or set(coverage) != set(M01_M18):
++                    _fail("M01-M18 missing or malformed in certified header")
++                for atom in M01_M18:
++                    body = coverage[atom]
++                    if (not isinstance(body, list) or not body
++                            or any(not isinstance(token, str) or not token
++                                   for token in body)):
++                        _fail("certified M01-M18 coverage body is malformed")
+                 # Revalidate semantic closure and keyspace before allowing EMPTY.
+                 _check_relations_readonly(self.db, roots.source)
+                 if _logical_root(self.db, schema=roots.schema) != roots.logical:
+                     _fail("logical corpus/selector map differs from external root")
++            except ExternalI02IntegrityError:
++                self.db.close()
++                raise
+             except sqlite3.Error as exc:
+                 self.db.close()
+                 raise ExternalI02IntegrityError(
+                     "cold certificate structure is missing or malformed"
+                 ) from exc
++            except (KeyError, TypeError, ValueError, Pre553IntegrityError) as exc:
++                self.db.close()
++                raise ExternalI02IntegrityError(
++                    "cold certificate header or structure is malformed"
++                ) from exc
+             except Exception:
+                 self.db.close()
+                 raise
+diff --git a/rawlsing_next/tests/test_pre553_external_i02_certificate.py b/rawlsing_next/tests/test_pre553_external_i02_certificate.py
+index 7a8a0f5a6..10d6f5906 100644
+--- a/rawlsing_next/tests/test_pre553_external_i02_certificate.py
++++ b/rawlsing_next/tests/test_pre553_external_i02_certificate.py
+@@ -7,7 +7,9 @@ suite cannot demonstrate an independently source-direct 100k I02 build.
+ from dataclasses import replace
+ from pathlib import Path
+ from time import monotonic
++import json
+ import os
++import shutil
+ import sqlite3
+ import tracemalloc
+ 
+@@ -22,9 +24,13 @@ from rawlsing_next._pre553_external_i02_certificate import (
+ from rawlsing_next._pre553_direct_i02_sourcefree import (
+     build_sourcefree_direct_i02, direct_sections_from_candidate,
+ )
++from rawlsing_next.pre553_empirical_objects import exact_ref
+ from rawlsing_next.tests.test_pre553_verified_semantic_range import (
+     _build_source, _release, _multi_i03_source,
+ )
++from rawlsing_next.tests.test_pre553_direct_i02_sourcefree import (
++    _build_direct, _direct,
++)
+ from rawlsing_next.tests.test_pre553_empirical_query import (
+     _query_authority, _branch_predicate, _query, _run, _cell_map,
+ )
+@@ -45,6 +51,72 @@ def _facts(source, tag):
+     return qa, pred, query, _run(source, qa, pred, query)
+ 
+ 
++def test_s2b_g5r1_malformed_coverage_header_typed_refusal(tmp_path):
++    candidate, _, _ = _direct("s2b-g5r1-malformed-header")
++    original = tmp_path / "direct-original.sqlite"
++    roots = _build_direct(candidate, original)
++    event = candidate.respondent_events[0]
++    with VerifiedExternalI02(original, roots=roots) as certified:
++        assert list(certified.respondent_refs())
++        assert list(certified.selector_refs(
++            exact_ref(event.scoped_respondent_ref).key,
++            exact_ref(event.native_question_ref),
++            native_only=True,
++        ))
++    with sqlite3.connect(original) as db:
++        coverage_text = db.execute(
++            "SELECT value FROM main.header WHERE name='coverage'"
++        ).fetchone()[0]
++    coverage = json.loads(coverage_text)
++    missing_atom = dict(coverage)
++    missing_atom.pop("M01")
++    extra_atom = dict(coverage)
++    extra_atom["M19"] = ["EmpiricalUniverse"]
++    empty_body = dict(coverage)
++    empty_body["M01"] = []
++    nontext_token = dict(coverage)
++    nontext_token["M01"] = [123]
++    nonarray_body = dict(coverage)
++    nonarray_body["M01"] = "EmpiricalUniverse"
++    cases = (
++        ("invalid-json", "{not-json"),
++        ("missing-key", None),
++        ("json-null", "null"),
++        ("json-number", "123"),
++        ("json-array", "[]"),
++        ("json-string", '"M01"'),
++        ("json-empty-object", "{}"),
++        ("missing-atom", json.dumps(missing_atom)),
++        ("extra-atom", json.dumps(extra_atom)),
++        ("empty-body", json.dumps(empty_body)),
++        ("nontext-token", json.dumps(nontext_token)),
++        ("nonarray-body", json.dumps(nonarray_body)),
++    )
++    for label, value in cases:
++        case = tmp_path / (label + ".sqlite")
++        shutil.copyfile(original, case)
++        with sqlite3.connect(case) as db:
++            if value is None:
++                db.execute("DELETE FROM main.header WHERE name='coverage'")
++            else:
++                db.execute(
++                    "UPDATE main.header SET value=? WHERE name='coverage'",
++                    (value,),
++                )
++            db.commit()
++        forged = replace(roots, physical=_digest_file(case))
++        with pytest.raises(ExternalI02IntegrityError):
++            VerifiedExternalI02(case, roots=forged)
++    # The untouched original remains valid after every malformed refusal.
++    with VerifiedExternalI02(original, roots=roots) as certified:
++        assert list(certified.respondent_refs())
++        assert list(certified.selector_refs(
++            exact_ref(event.scoped_respondent_ref).key,
++            exact_ref(event.native_question_ref),
++            native_only=True,
++        ))
++
++
+ def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
+     source = _build_source("s2b-first-native", [
+         {"id": "R1", "responses": {"Y": 1}},
