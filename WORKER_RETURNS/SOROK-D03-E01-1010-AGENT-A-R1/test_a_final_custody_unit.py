@@ -177,7 +177,6 @@ def test_after_write_guard_reports_illicit_unlocked_mutation_not_atomicity():
     assert len(base.writes) == 1, "Check cannot roll back a direct bypass writer"
 
 
-
 def test_b_provider_head_only_check_misses_the_reserved_p3_op_differential():
     from post_provider_guard import GuardedProvider
 
