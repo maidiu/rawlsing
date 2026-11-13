@@ -431,3 +431,8 @@ S2-C USER_PAUSED by explicit user instruction. Existing preflight terminal; writ
 ### #960 Q2 nativefact candidate / distinct G5, Q3paused — 2026-11-12
 
 Q2A-counter `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7` fixes reproducedmultiownerroutingbypass and sourcefreefixtureauthority/domainpreimages; existingnativequerySUPPORTED5/5->3/3->exactrestore observedinauthorevidence. DistinctnonauthorG5nowlaunched on delivery `24e6bc02536a0714b0ab94a225f8eef1d84d8127`; notaccepted yet. S2-C USER_PAUSED,noautomaticwriter/review; fullscience/upstream/protectedholdsunchanged.
+
+
+### #960 Q2 independent rejection / exact correction — 2026-11-12
+
+G5 `2678dc8637dda2c77d358c61e3a172d0a4dc31a4` (delivery `c19c762b903688e1d632fcf0ca50f976a900ca92`) findsnativefactlegacybodycomparator, measurefatenonloss failure and4missingreuseowners. NoQ2G2/G5acceptance; priorauthorgreenclaimsqualifiedbyactualsourcebody/issuedlineagecounterexample. ONEfixedBboundedrepairrunning, noQ3writer/newengine/nativeownerchanges; exactG2HOLDifmissingABI, fullgoalincomplete. S2-C USER_PAUSED, fullscience/upstream/protectedholdsretained.
