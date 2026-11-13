@@ -48,8 +48,8 @@ B correctly kept the full Q2 native fact as HOLD rather than faking it, but did 
 
 Exact actual native fact evidence (`evidence/native_fact_GREEN.json`):
 
-- Base fact: `urn:rawlsing:pre553:EmpiricalFact:sha256:e970cd835c6572a6854df0d8ffd65eca49ec56643c8802e1f97f8af639624ce7`, SUPPORTED, raw `5/5`.
-- Changed valid branch operation: `...ffc2628e792fa5c5e2bc7717f08917ebac086ebcbfa98b59703cd5f219ff2b5a...`, SUPPORTED, raw `3/3`.
+- Base fact: `urn:rawlsing:pre553:EmpiricalFact:sha256:92b3254af2f18b84219ad4a7fb4fe70e82703e0a9fbbdd2cf5e7fcb8ed33d25a`, SUPPORTED, raw `5/5`.
+- Changed valid branch operation: `...3a83c02c0ba63bf5f285205edd78e6f2dbf7530e70131ed0416e0dc716057cbc...`, SUPPORTED, raw `3/3`.
 - Restored fact: exact base ref, raw `5/5`; direct logical root restored.
 - Detail: `exact governed target distribution resolved`.
 - Fixture corrections: existing routing authority kind `ROUTING_RISK_SET`; canonical values `0/1` matching the query's declared domain. These are sourcefree engineering preimages, **not** original35 science or a new production issuer.
