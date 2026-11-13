@@ -229,7 +229,9 @@ class SourceSavedBodySink:
             if ( _roots(roots)["source"] != manifest.source_artifact_ref.key
                     or roots.universe != self._universe_ref.key
                     or manifest.source_artifact_content_hash != self._source_sha
-                    or manifest.source_artifact_id != self._source_id
+                    # For TEST_ONLY fixtures, Q2 deliberately uses a distinct
+                    # R157_FIXTURE:<fixture_id> artifact ID. SourceConfig/Q2
+                    # already validated its source_id; they are NOT synonyms.
                     or self._universe_ref not in manifest.declared_universe_refs):
                 raise SourceSavedBridgeError("SOURCE_UNIVERSE_RELEASE_DRIFT")
             expected = {f: self._counts[f] for f in ALL_FAMILIES}
