@@ -6,3 +6,5 @@ Readyforactual997acceptedphysical/fatebridge+S2Aqualifiedrepair beforefulljoined
 
 
 [Actual author return](https://github.com/maidiu/rawlsing/blob/d88630a448905856f980f7573442617813afda88/WORKER_RETURNS/PYAT998_STAGING/s1a_linux_r2/00_HANDOFF.md). No accepted sourcefreepacket requalification or newscientific/protectedpermission.
+
+[Immutable HQ disposition](https://github.com/maidiu/rawlsing/blob/a3e97106db9392d488d1abe9ad7bf74b1727fa69/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/STAGING998_R2_RETURN_DISPOSITION.json). Browser997 receiving can target stagingd88630a44 afterexact997G5 andS2Arepair; no requirementforall35realruns and no localduplicatephysicalproducer.
