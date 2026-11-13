@@ -27,7 +27,6 @@ import tempfile
 from types import MappingProxyType
 from typing import Any
 
-import pyarrow.parquet as pq
 
 from rawlsing_next._pre553_query_common import (
     EmpiricalQueryResolutionError, _ReleaseIndex,
@@ -179,6 +178,7 @@ class DirectEstateI03Session:
             self._temporary = None
 
     def _build(self) -> None:
+        import pyarrow.parquet as pq
         db = self._require_live()
         universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse")
         universes = [
@@ -285,6 +285,7 @@ class DirectEstateI03Session:
     def _respondent_family(
         self, family: str, respondent_key: str,
     ) -> Iterator[Any]:
+        import pyarrow.parquet as pq
         db = self._require_live()
         expected_type = {
             "EmpiricalCoordinateFact": EmpiricalCoordinateFact,
