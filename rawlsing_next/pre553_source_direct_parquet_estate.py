@@ -667,15 +667,24 @@ class VerifiedDirectEstate:
             raise DirectEstateError("exact respondent and question selectors required") from exc
         if type(respondent_ref) is not ExactRef or (target is not None and type(target) is not ExactRef):
             raise DirectEstateError("exact respondent and question selectors required")
+        yield from self._events_from_postings(self._locators(
+            respondent=respondent_ref.key, target=target,
+            native_only=native_only, include_component=include_component,
+            states=states,
+        ))
+
+    def _events_from_postings(self, postings: Iterator[Mapping[str, Any]]) -> Iterator[RespondentEvent]:
+        """One exact reader for both ordinary selection and indexed native I03.
+
+        Caller postings are never authority; validate every posting against its
+        independently pinned Parquet body before returning a native event.
+        """
+        self._live()
         import pyarrow.parquet as pq
         pf = pq.ParquetFile(self.directory / "RespondentEvent.parquet")
         group = None
         rows = None
-        for posting in self._locators(
-            respondent=respondent_ref.key, target=target,
-            native_only=native_only, include_component=include_component,
-            states=states,
-        ):
+        for posting in postings:
             self._live()
             ref, gid, offset = posting["ref"], posting["group"], posting["offset"]
             if group != gid:
