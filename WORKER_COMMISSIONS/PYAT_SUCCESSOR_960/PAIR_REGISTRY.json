@@ -190,8 +190,8 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "PHASE1_A_RUNNING_NEW_MODULES_SHARED_ACK_PENDING",
-      "job_id": "pyat991-s2d-phase1-a01",
+      "state": "PHASE1_B_RUNNING_A_PARTIAL_FIVE_OWNER_HOLDS",
+      "job_id": "pyat991-s2d-phase1-b01",
       "branch": "agent/pyat991-s2d-a-r1",
       "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
@@ -199,26 +199,28 @@
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "RUNNING_PHASE1"
+          "state": "TERMINAL_PARTIAL_IDLE"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
-          "state": "IDLE_UNTIL_A_RETURN"
+          "state": "RUNNING_FIXED_CORRECTIVE",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-b",
+          "branch": "agent/pyat991-s2d-b-r1"
         }
       },
       "phase1_gate": "S2C_G5_SATISFIED; new modules authorized; shared-file edits await exact owner ACK",
       "S1E_continuation": "Necessary production handoff map included; scoped acceptance banked/full original OPEN",
       "launch": {
-        "job_id": "pyat991-s2d-phase1-a01",
-        "child_pid": 45264,
-        "supervisor_pid": 45263,
-        "observer_pid": 45265,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-a01",
+        "job_id": "pyat991-s2d-phase1-b01",
+        "child_pid": 46880,
+        "supervisor_pid": 46879,
+        "observer_pid": 46881,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-b01",
         "launch_is_not_completion": true
       },
       "actual_first_turn_metadata": {
-        "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-        "message_id": "msg_1d42d00d40014RaLFwWuewEogE",
+        "session": "ses_e3120b9efffegreD5YfH7dOO15",
+        "message_id": "msg_1d43c358d001ngeYnwIkXVXxjs",
         "actual_model": {
           "id": "deepseek-v4.1-flash",
           "providerID": "opencode-go",
@@ -226,7 +228,9 @@
         }
       },
       "delivery_sha": "585cb21d39ea5b1dcc1c121633fa7e07f5650280",
-      "disposition": "S2D_PREFLIGHT_DISPOSITION.json"
+      "disposition": "S2D_PREFLIGHT_DISPOSITION.json",
+      "a_delivery_sha": "e399c48d576f5b2ae501dac569fb729e95bd968e",
+      "a_code_sha": "55af65cc1a2df1d3eb82906a80434353735c5d50"
     }
   ]
 }
