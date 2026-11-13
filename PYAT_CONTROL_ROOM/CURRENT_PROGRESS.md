@@ -1,3 +1,7 @@
+# Q2 bounded repair / same G5 recheck; S2-C USER_PAUSED — 2026-11-12
+
+Brepair `8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94` / delivery `e4a4142929afd08bade35931310d9ad0bf87cd0b` claims realQ2bodytee->compatnativebody->actualcompiledS1CplanI03/Batch, one source read, bodychange/restore; returnedmeasurefates andfourreuseowners fixed. Onein-memoryC11compatbody remains andmustbecounted, productionhandoffpreconsumerledgerstillHOLD; nofullproductionclaim. SAMEG5recheckactuallylaunched tojudgethreeoriginalfindings/grade. PriorFAIL retained, noacceptance. S2-C USER_PAUSED; otherauthority/upstream/productionholds unchanged. Historicalentriesfollow.
+
 # Q2 G5 REVISE / exact correction; S2-C USER_PAUSED — 2026-11-12
 
 G5 `c19c762b903688e1d632fcf0ca50f976a900ca92` rejects fullQ2acceptance: claimednativefact is disconnectedlegacybodycomparator(secondsource/fullC11, noQ2bodytee orissuedop), returnedmeasurefateslost16SAMPLE/6POPULATION distinctions,4G1reuseownersmissing. DirectI02/bodytee/sourceanti-joins/genuinefixtureG4surviveindependentreview. ONEfixedBcorrectionactuallylaunched; realnativebody/issuedlineageprioritywithinexistingABI or exactG2HOLD/claimcorrection(notcompletion), measure andownermappingfixes. SameG5recheckthenHQadjudicationifmaterialunresolved. S2-C USER_PAUSED,noresume; no otherauthoritychange. Historicalentriesfollow.

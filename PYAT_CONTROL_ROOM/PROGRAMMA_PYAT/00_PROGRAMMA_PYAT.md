@@ -436,3 +436,8 @@ Q2A-counter `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7` fixes reproducedmultiowne
 ### #960 Q2 independent rejection / exact correction — 2026-11-12
 
 G5 `2678dc8637dda2c77d358c61e3a172d0a4dc31a4` (delivery `c19c762b903688e1d632fcf0ca50f976a900ca92`) findsnativefactlegacybodycomparator, measurefatenonloss failure and4missingreuseowners. NoQ2G2/G5acceptance; priorauthorgreenclaimsqualifiedbyactualsourcebody/issuedlineagecounterexample. ONEfixedBboundedrepairrunning, noQ3writer/newengine/nativeownerchanges; exactG2HOLDifmissingABI, fullgoalincomplete. S2-C USER_PAUSED, fullscience/upstream/protectedholdsretained.
+
+
+### #960 Q2 bounded native-body/measure correction / same G5 — 2026-11-12
+
+Repaircode `8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94` (delivery `e4a4142929afd08bade35931310d9ad0bf87cd0b`) claimsnativecanaryfromsameQ2bodytee/actualS1Ccompiledop andrestoresmeasurefates/reuseowners. Compatibilitybodymaterialization andpreconsumerissuedrefHOLDremainexplicit; sameG5nowrechecksoriginalthreefindings, priorFAILnotrewritten. NofullQ2acceptanceyet. S2-CUSER_PAUSED, noautomaticwriter/resume/otherauthoritychange.
