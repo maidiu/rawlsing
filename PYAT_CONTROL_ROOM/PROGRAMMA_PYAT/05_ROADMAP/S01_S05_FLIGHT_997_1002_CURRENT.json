@@ -254,5 +254,41 @@
     },
     "same_reviewer": true,
     "full_acceptance": "PENDING"
+  },
+  "native997_r2_return": {
+    "delivery": "bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5",
+    "grade": "RECEIVED_AUTHOR_TEST_PATCH_AND_FRESH_PROOF__NOT_S1E_ACCEPTED",
+    "patch": {
+      "url": "https://github.com/maidiu/rawlsing/blob/bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5/WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/proposed.patch",
+      "sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+      "scope": "3candidateBrowsertestfilesonly, testedinprivatecopies; no productchange",
+      "adoption": "NOT_ADOPTED__BROWSER_OWNER_TO_RECEIVE"
+    },
+    "tests": "SAME75nodes75PASS",
+    "fresh_process": "Q2producerexit/newconsumer/sourcegone passed, discoveryBatchonly",
+    "next_actual_job": {
+      "job": "pyat997-issued-batch-f4-resume-proof-r3",
+      "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+      "child_pid": 22144,
+      "startup_sha": "bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5",
+      "branch": "agent/pyat997-native-proof-r1",
+      "service_state": {
+        "type": "running"
+      },
+      "actual_turn_model": {
+        "message_id": "msg_1d743cd23001MNPRL6ZZNBzFeF",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      }
+    },
+    "original_scope_unmet": [
+      "CurrentfixtureissuedBatchhas0QUERY1DISCOVERY; noissuedqueryBatchpositive",
+      "Original997line21explicit changedinput->nativeI03 AND downstreamBatch/F4 notyetproved",
+      "Original997same-sourceNORMAL/resumeconnectedproofneedsactualnewQ2estate, notstandaloneS2Dtests",
+      "IndependentG5andcanonicaltestadoptionpending"
+    ]
   }
 }

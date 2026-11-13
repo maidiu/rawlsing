@@ -169,30 +169,36 @@
     },
     {
       "issue": 997,
-      "status": "PARTIAL_NATIVE_PROOF_RETURNED__EXACT_TEST_PATCH_DRAFT_AND_COLD_WITNESS_RUNNING",
+      "status": "TEST_PATCH75PASS_AND_FRESH_PROOF_RETURNED__MISSING_ISSUED_BATCH_F4_RESUME_WITNESS_RUNNING",
       "worker": "two user-dispatched independent Browser agents; actual identities/branch/receipt not yet supplied",
       "writes": "Browser-owned bridge isolated; local readonly",
-      "missing_dependency": "Validatedtest-onlypatchadoption andtruefreshprocessproof then distinctG5",
-      "next_artifact": "Proposedpatch+75nodeREDGREENprooforcause, exactcoldnativeboundary/coverage",
+      "missing_dependency": "Browsertestpatchadoption+actualoriginalBatchF4/resumeproof then independentG5",
+      "next_artifact": "ActualqueryBatch/F4changedrestore+same-Q2savedresume, orpreciserunnablemissingcontract",
       "receiving_authority": "distinct Browser nonauthor G5",
       "candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
       "native_executor": {
-        "job": "pyat997-test-harness-patch-proof-r2",
+        "job": "pyat997-issued-batch-f4-resume-proof-r3",
         "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-        "child_pid": 17675,
+        "child_pid": 22144,
+        "startup_sha": "bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5",
         "branch": "agent/pyat997-native-proof-r1",
-        "startup": "229544e23435f608272c2bead78cc5c2cfc786f5",
+        "service_state": {
+          "type": "running"
+        },
         "actual_turn_model": {
-          "message_id": "msg_1d73478280018nXt680j0oYoJt",
+          "message_id": "msg_1d743cd23001MNPRL6ZZNBzFeF",
           "model": {
             "id": "deepseek-v4.1-flash",
             "providerID": "opencode-go",
             "variant": "max"
           }
-        },
-        "service_state": {
-          "type": "running"
         }
+      },
+      "proposed_patch": {
+        "url": "https://github.com/maidiu/rawlsing/blob/bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5/WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/proposed.patch",
+        "sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+        "scope": "3candidateBrowsertestfilesonly, testedinprivatecopies; no productchange",
+        "adoption": "NOT_ADOPTED__BROWSER_OWNER_TO_RECEIVE"
       }
     },
     {
@@ -262,6 +268,11 @@
       "delivery": "c29972ce99cae9672eae20dc7030d4eafe66ada6",
       "candidate": "1cb7977b78022f8def26b769714b4c7ac519ece0",
       "disposition": "AUTHOR_CANDIDATE_RECEIVED__INDEPENDENT_G5_PENDING"
+    },
+    {
+      "job": "pyat997-test-harness-patch-proof-r2",
+      "delivery": "bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5",
+      "disposition": "RECEIVED_AUTHOR_TEST_PATCH_AND_FRESH_PROOF__NOT_S1E_ACCEPTED"
     }
   ],
   "issued_owner_handoff_job": {
