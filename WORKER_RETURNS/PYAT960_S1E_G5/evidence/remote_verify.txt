@@ -1,0 +1,41 @@
+--- remote heads
+24e6bc02536a0714b0ab94a225f8eef1d84d8127	refs/heads/agent/pyat960-s1e-a-r1
+ed9bda50ec1c1cbbc0ced56262a696b65fb14dad	refs/heads/agent/pyat960-s1e-b-r1
+2678dc8637dda2c77d358c61e3a172d0a4dc31a4	refs/heads/agent/pyat960-s1e-g5-r1
+--- local/remote G5 heads
+2678dc8637dda2c77d358c61e3a172d0a4dc31a4
+2678dc8637dda2c77d358c61e3a172d0a4dc31a4
+--- remote receipt/handoff/probe hashes
+receipt.json 5b28fcd22ce91a5b73d74055369c68459fc9be9c5eb2233eed5019a9d3f07fd8
+00_HANDOFF.md 4fc5a47724ca07b3d95d33297b2df04f47a7e4796c6e294208ec74fe8ae80e71
+g5_lineage_measure_probe.py 2effeca9f99b5cedaef5ef3beca72a907930d2e667cc8d744b31880051068170
+--- local receipt/handoff/probe hashes
+receipt.json 5b28fcd22ce91a5b73d74055369c68459fc9be9c5eb2233eed5019a9d3f07fd8
+00_HANDOFF.md 4fc5a47724ca07b3d95d33297b2df04f47a7e4796c6e294208ec74fe8ae80e71
+g5_lineage_measure_probe.py 2effeca9f99b5cedaef5ef3beca72a907930d2e667cc8d744b31880051068170
+--- review diff vs delivery
+ WORKER_RETURNS/PYAT960_S1E_G5/00_HANDOFF.md        | 111 +++++++
+ .../PYAT960_S1E_G5/evidence/all35_ledger.json      |  53 +++
+ .../PYAT960_S1E_G5/evidence/decoder-56.txt         |   2 +
+ .../PYAT960_S1E_G5/evidence/g2-focused.txt         |   2 +
+ .../PYAT960_S1E_G5/evidence/g3-focused.txt         |   2 +
+ .../PYAT960_S1E_G5/evidence/input-composition.json |  78 +++++
+ .../evidence/lineage-measure-linux.txt             |  59 ++++
+ .../PYAT960_S1E_G5/evidence/lineage-measure.json   |  59 ++++
+ .../evidence/native-body-independence.txt          |  31 ++
+ .../PYAT960_S1E_G5/evidence/native-fact-linux.txt  |  44 +++
+ .../evidence/native-selector-linux.txt             |  48 +++
+ .../evidence/partial-routing-native.txt            |   3 +
+ .../PYAT960_S1E_G5/evidence/q2-darwin.txt          |   2 +
+ .../PYAT960_S1E_G5/evidence/q2-linux.txt           |   2 +
+ WORKER_RETURNS/PYAT960_S1E_G5/evidence/refs.json   |  19 ++
+ .../PYAT960_S1E_G5/evidence/resource.json          |  93 ++++++
+ .../PYAT960_S1E_G5/evidence/reuse_matrix.json      | 135 ++++++++
+ .../PYAT960_S1E_G5/evidence/reuse_matrix_gap.json  |  45 +++
+ WORKER_RETURNS/PYAT960_S1E_G5/evidence/s1b-33.txt  |   2 +
+ WORKER_RETURNS/PYAT960_S1E_G5/evidence/s1c-18.txt  |   2 +
+ .../PYAT960_S1E_G5/evidence/s2b-linux-81.txt       |   3 +
+ .../PYAT960_S1E_G5/evidence/wrong-source-bytes.txt |   2 +
+ .../PYAT960_S1E_G5/g5_lineage_measure_probe.py     | 128 ++++++++
+ WORKER_RETURNS/PYAT960_S1E_G5/receipt.json         | 362 +++++++++++++++++++++
+ 24 files changed, 1287 insertions(+)
