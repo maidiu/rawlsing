@@ -189,3 +189,79 @@ def test_forged_public_event_cannot_gain_parent_self_read(
                 session, PARENT_ID, "j1-speech", as_actor=PARENT_ID)
     finally:
         _close(opened)
+
+
+@pytest.mark.parametrize("field", ["summary", "location", "observable", "sequence"])
+def test_stale_hash_public_event_forgery_refused_on_parent_and_child(
+    tmp_path, monkeypatch, field
+):
+    """A's event-hash equality was insufficient: actual BP4 content was not sealed.
+
+    A forged returned event keeps the recorded event ID/hash, but mutates an
+    independently meaningful public field. Original A accepted this on parent
+    replay/read and normal P6 child consumption; B requires content-addressed
+    BP4 event verification at every one of those consumers.
+    """
+    from run_p6 import child_speech_experience
+    from developmental_recursion.parent_speech import read_child_uptake
+
+    opened = open_j1_case(tmp_path / field)
+    try:
+        session = opened["session"]
+        event_id = opened["receipt"]["event_id"]
+        original = session.event(event_id)
+        assert _replay(session)["status"] == "REPLAY"
+        assert read_parent_utterance(
+            session, PARENT_ID, "j1-speech", as_actor=PARENT_ID
+        )["status"] == "READ"
+        assert child_speech_experience(session, event_id=event_id)["status"] == "PERCEIVED"
+        assert read_child_uptake(session, opened["focal"], event_id)["status"] == "PERCEIVED"
+
+        actual = session.event
+
+        def forged(ref):
+            row = actual(ref)
+            if ref != event_id or row is None:
+                return row
+            row = dict(row)
+            if field == "observable":
+                row["body"] = dict(row["body"])
+                row["body"]["observable"] = False
+            elif field == "sequence":
+                row["sequence"] = row["sequence"] + 1
+            elif field == "location":
+                row["location"] = "market" if row["location"] != "market" else "workshop"
+            else:
+                row["summary"] = "Mother is now represented as agreeing."
+            # The old A gate checked equality to this same stale hash/ID.
+            assert row["event_id"] == original["event_id"]
+            assert row["hash"] == original["hash"]
+            return row
+
+        monkeypatch.setattr(session, "event", forged)
+        with pytest.raises(
+            RecursionRefusal, match="PARENT_UTTERANCE_WORLD_EVENT_UNSEALED"
+        ):
+            _replay(session)
+        with pytest.raises(
+            RecursionRefusal, match="PARENT_UTTERANCE_WORLD_EVENT_UNSEALED"
+        ):
+            read_parent_utterance(
+                session, PARENT_ID, "j1-speech", as_actor=PARENT_ID
+            )
+        with pytest.raises(
+            RecursionRefusal, match="CHILD_EXPERIENCE_WORLD_EVENT_UNSEALED"
+        ):
+            child_speech_experience(session, event_id=event_id)
+        with pytest.raises(
+            RecursionRefusal, match="CHILD_UPTAKE_WORLD_EVENT_UNSEALED"
+        ):
+            read_child_uptake(session, opened["focal"], event_id)
+
+        # Restoration is a read-only return to the unchanged owner event.
+        monkeypatch.setattr(session, "event", actual)
+        assert _replay(session)["status"] == "REPLAY"
+        assert child_speech_experience(session, event_id=event_id)["status"] == "PERCEIVED"
+        assert session.event(event_id) == original
+    finally:
+        _close(opened)
