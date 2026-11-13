@@ -2,7 +2,7 @@
   "schema": "PYAT960_S1E_B_REUSE_MATRIX@1.0.0",
   "base": "591056a948fb0fdd68adbd581301dd903485adc8",
   "a_code_cut": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
-  "b_code_cut": "4c3fb666539bf62485c389e3a1abbbd3986b6d64",
+  "b_code_cut": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
   "entries": [
     {
       "path": "rawlsing_next/pre553_source_i02_handoff.py",
@@ -11,7 +11,7 @@
       "disposition": "ADAPT",
       "functions": ["build_source_i02_handoff", "_project_spooled_families", "_operation_source_antijoin", "_cleanup_spool", "_target_matches_manifest"],
       "first_consumer": "S2-B build_sourcefree_direct_i02 + ExternalI02Roots + native selector bridge",
-      "no_loss_test": "Q2 29 tests on Darwin and Linux; S1-C 18; S1-B 33; decoder/custody 56/1; native selector 5/5 refs",
+      "no_loss_test": "Q2 30 tests on Darwin and Linux; S1-C 18; S1-B 33; decoder/custody 56/1; native selector 5/5 refs",
       "reason": "A's direct-I02 handoff was sound but body-dropping and label-only for operation realization. B adds the synchronous body sink, source/operation/fate anti-join, honest open counter and fail-closed output invalidation."
     },
     {
@@ -74,7 +74,7 @@
       "disposition": "REUSE_AS_IS",
       "functions": ["ExternalI02Roots", "VerifiedExternalI02", "install_direct_sourcefree_i02_i03"],
       "first_consumer": "Q2 cold certificate and native selector bridge",
-      "no_loss_test": "Q2 29 tests on Linux including native selector 5/5 event refs; S2-B 81 native tests on Linux",
+      "no_loss_test": "Q2 30 tests on Linux including native selector 5/5 event refs; S2-B 81 native tests on Linux",
       "reason": "Existing external-root verifier and native selector installer; Linux host capability exercised on the existing s2b runner."
     },
     {

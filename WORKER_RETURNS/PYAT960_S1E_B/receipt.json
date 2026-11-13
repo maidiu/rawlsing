@@ -11,8 +11,8 @@
   "base_sha": "591056a948fb0fdd68adbd581301dd903485adc8",
   "received_a_head": "f4aaf2b17c7519642bb0bcfc5987cf21f86a46af",
   "a_code_cut_sha": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
-  "b_code_cut_sha": "4c3fb666539bf62485c389e3a1abbbd3986b6d64",
-  "return_commit_note": "b_code_cut_sha is the implementation/test cut; this receipt, handoff, ledgers and evidence are following return-only commits on the same branch.",
+  "b_code_cut_sha": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
+  "return_commit_note": "b_code_cut_sha is the final implementation/test commit; this receipt, handoff, ledgers and evidence are return artifacts on the same branch. Use the immutable branch HEAD for the complete artifact.",
   "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_NEW_WORKTREE agent/pyat960-s1e-b-r1 at /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-b; only Q2 adapter/streams/tests/return written; upstream owners, A/Q3 returns, protected facade, W03/W04 and controller untouched.",
   "exclusive_allowlist": [
     "rawlsing_next/pre553_source_i02_handoff.py",
@@ -56,7 +56,7 @@
     },
     "G2": {
       "state": "NOT_RUN",
-      "receipt": "Direct I02 positive/change/restore PASS (29 Q2 tests). Native selector event bodies PASS on existing Linux s2b runner (Q2 certificate -> VerifiedExternalI02 -> install_direct_sourcefree_i02_i03 -> 5/5 event refs). Full Q2-driven native I03/Batch empirical fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; the synthetic Q2 config has replay.predicate NOT_APPLICABLE and supplies no predicate replay/query authority preimage. B did not adjudicate the exact root cause. S2-B 81 native tests pass with its fully constructed fixture. Native fact remains HOLD_DEPENDENCY, not PASS."
+      "receipt": "Direct I02 positive/change/restore PASS (30 Q2 tests). Native selector event bodies PASS on existing Linux s2b runner (Q2 certificate -> VerifiedExternalI02 -> install_direct_sourcefree_i02_i03 -> 5/5 event refs). Full Q2-driven native I03/Batch empirical fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; the synthetic Q2 config has replay.predicate NOT_APPLICABLE and supplies no predicate replay/query authority preimage. B did not adjudicate the exact root cause. S2-B 81 native tests pass with its fully constructed fixture. Native fact remains HOLD_DEPENDENCY, not PASS."
     },
     "G3": {
       "state": "PASS",
@@ -92,13 +92,13 @@
       "id": "Q2_G1_EXACT_CONTRACT_REUSE",
       "result": "PASS",
       "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''",
-      "actual": "29 passed on Darwin and Linux. ABI/reuse/ledger files present; 13 families; source/operation/fate preimages; all35 ledger exact."
+      "actual": "30 passed on Darwin and Linux. ABI/reuse/ledger files present; 13 families; source/operation/fate preimages; all35 ledger exact."
     },
     {
       "id": "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
       "result": "PASS",
       "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''",
-      "actual": "29 passed; SAV/DTA direct roots, changed source meaning changes roots/event refs, exact restore; one source byte pass; no full C11 build."
+      "actual": "30 passed; SAV/DTA direct roots, changed source meaning changes roots/event refs, exact restore; one source byte pass; no full C11 build."
     },
     {
       "id": "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
@@ -172,7 +172,7 @@
     "native_selector": "VerifiedExternalI02 + install_direct_sourcefree_i02_i03 + C11Repository selected event bodies; 5/5 exact refs on Linux",
     "native_fact": "Q2-driven native empirical query UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; full I03/Batch receipt HOLD_DEPENDENCY",
     "fixtures": "generated nonrespondent SAV/DTA q101/country; 1,200-row resource fixture; no original source/respondent bytes",
-    "positive": "29 Q2 tests; direct roots/13 sections; changed/restored roots/event refs",
+    "positive": "30 Q2 tests; direct roots/13 sections; changed/restored roots/event refs",
     "body_transport": "13/13 families; counts equal manifest; sink roots/manifest equal returned certificate; no source reread",
     "source_open_model": "fixture 1 byte pass/1 snapshot/1 decode; original prehash+snapshot=2 byte passes; keyed handoff 1 + external key witness read 1 = 2 total scenario reads"
   },
@@ -211,7 +211,7 @@
     }
   ],
   "verified_opponent_strengths": [
-    "A's sourcefree direct I02 builder path, change/restore and roots are real; 29 Q2 tests pass with A's code plus B repairs.",
+    "A's sourcefree direct I02 builder path, change/restore and roots are real; 30 Q2 tests pass with A's code plus B repairs.",
     "A's S1-C pre-source census/anti-join is substantive and inherited 18 tests pass.",
     "A's host disclosure was honest: Darwin cannot open VerifiedExternalI02; the existing Linux s2b runner resolves that host limit.",
     "A correctly kept native I03/Batch HOLD rather than substituting a mocked consumer.",
@@ -280,7 +280,7 @@
   },
   "linux_native_evidence": {
     "runner": "existing Lima VM s2b, Linux 7.3.0, existing venv /Users/matthewsmith/s2b-work/rawlsing-s2b-r5-local/.venv (Python 3.11.18, pytest 9.2.0)",
-    "q2_tests": "29 passed in 11.57s",
+    "q2_tests": "30 passed in 7.41s",
     "s2b_native_tests": "81 passed in 32.86s (external certificate, direct sourcefree, verified semantic range)",
     "q2_native_selector": "5 certificate events selected from sealed release; 5/5 refs equal certificate; reader closed; body transport complete",
     "q2_native_query": "1 fact UNAVAILABLE; p02_failure_state MISSING_REQUIRED_AUTHORITY; not claimed PASS",
@@ -344,7 +344,7 @@
   "open_defects": [],
   "self_disclosed_weakest_point": "The body sink is caller-owned and the adapter can only enforce finish/abort ordering and its own certificate invalidation; a third-party sink that publishes too early is outside the adapter's control. The Q2 synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied; a full Q2-driven native I03/Batch fact returns UNAVAILABLE/MISSING_REQUIRED_AUTHORITY, and B did not adjudicate the exact root cause. The native selector event body read is real on Linux, but it is not a full Batch receipt.",
   "opponent_proven_improvement": "A's direct I02 builder, S1-C census and host disclosure survive independent examination. B's proven improvements are the 13-family body-preserving sink, the source/operation/fate realization anti-join, honest source-open counters, fail-closed cleanup/output invalidation, the Linux native selector body proof, and the precise Q2 native fact HOLD.",
-  "next_turn": "Agent A counterattacks b_code_cut_sha 4c3fb666539bf62485c389e3a1abbbd3986b6d64, focusing on the Q2 native query authority/replay preimage, body sink lifecycle, multi-owner/partial-routing anti-join and keyed source one-pass. Then a distinct nonauthor G5 receiver other than A and B.",
+  "next_turn": "Agent A counterattacks b_code_cut_sha 9987a00e10dbb4e2dca7032b7d66a90e2303c780, focusing on the Q2 native query authority/replay preimage, body sink lifecycle, multi-owner/partial-routing anti-join and keyed source one-pass. Then a distinct nonauthor G5 receiver other than A and B.",
   "known_session_cost": "UNKNOWN",
   "stop_state": "HOLD_EXTERNAL",
   "integration": "UNMERGED",

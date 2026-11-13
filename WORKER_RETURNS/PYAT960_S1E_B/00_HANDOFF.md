@@ -6,7 +6,7 @@
 **Base:** `591056a948fb0fdd68adbd581301dd903485adc8`
 **Received A HEAD:** `f4aaf2b17c7519642bb0bcfc5987cf21f86a46af`
 **A code cut:** `75d09e87dbaf8273fab3a5ece2bb7981328113ce`
-**B code cut:** `4c3fb666539bf62485c389e3a1abbbd3986b6d64`
+**B code cut:** `9987a00e10dbb4e2dca7032b7d66a90e2303c780`
 **Contract v1 SHA-256:** `0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40`
 **Provisional ABI SHA-256:** `cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54`
 **Disposition:** `HOLD_EXTERNAL` for the full Q2 native I03/Batch fact · **G5:** `NOT_RUN` · **Integration:** `UNMERGED`
@@ -27,7 +27,7 @@
 
 ## 1. Exact artifact
 
-Code/test cut `4c3fb666539bf62485c389e3a1abbbd3986b6d64`:
+Code/test cut `9987a00e10dbb4e2dca7032b7d66a90e2303c780`:
 
 - `rawlsing_next/pre553_source_i02_handoff.py` — A handoff extended with body sink, source/operation anti-join, honest open counters, fail-closed cleanup/invalidation.
 - `rawlsing_next/pre553_source_i02_streams.py` — new bounded synchronous 13-family body transport.
@@ -90,7 +90,7 @@ The anti-join runs pre-source for config/projection-impossible cases (projected 
 
 On the existing `s2b` Linux VM with its existing Python 3.11 venv:
 
-- Q2 29 tests: **29 passed**.
+- Q2 30 tests: **30 passed**.
 - Native selector: certificate 5 events, native selected 5 events, refs equal, reader closed, body transport complete.
 - S2-B external/direct/verified native suites: **81 passed**.
 - Full Q2-driven native empirical query: one `UNAVAILABLE` fact with `p02_failure_state=MISSING_REQUIRED_AUTHORITY`; not claimed PASS.
@@ -101,7 +101,7 @@ On the existing `s2b` Linux VM with its existing Python 3.11 venv:
 
 ```text
 python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''
-29 passed in 4.43s
+30 passed in 4.12s
 
 python3 -m pytest -q rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py -o addopts=''
 18 passed in 86.83s
@@ -118,7 +118,7 @@ Darwin S2-B native files are host-blocked: `32 failed, 49 passed`, all cold fail
 ### Linux `s2b` (existing runner)
 
 ```text
-Q2 tests: 29 passed in 11.57s
+Q2 tests: 30 passed in 7.41s
 S2-B native suites: 81 passed in 32.86s
 native selector: certificate_event_count=5, native_selected_event_count=5,
                  native_selected_refs_equal_certificate=true
