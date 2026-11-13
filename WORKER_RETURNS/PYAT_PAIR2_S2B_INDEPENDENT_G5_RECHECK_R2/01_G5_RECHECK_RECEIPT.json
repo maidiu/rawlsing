@@ -1,0 +1,238 @@
+{
+  "schema": "PYAT_R3_S2B_INDEPENDENT_G5_RECHECK_RECEIPT@1.0.0",
+  "kind": "INDEPENDENT_NONAUTHOR_G5_RECHECK",
+  "packet": "S2-B",
+  "original_obligation": "P2-02",
+  "original_issue": "#919",
+  "governing_issues": ["#919", "#909", "#960"],
+  "pr_under_test": "https://github.com/maidiu/rawlsing/pull/994",
+  "review_branch": "review/pyat-s2b-independent-g5-recheck-20261113-r1",
+  "return_directory": "WORKER_RETURNS/PYAT_PAIR2_S2B_INDEPENDENT_G5_RECHECK_R2/",
+  "verdict": "ACCEPT_SCOPED@S2_SOURCEFREE_DIRECT_I02",
+  "grade": "INDEPENDENT_NONAUTHOR_EXECUTED__SOURCEFREE_DIRECT_I02__NOT_ORIGINAL35",
+  "terminal_closed_at_scope": true,
+  "protected_merge": false,
+  "s2c_physical_bodies": "NOT_BUILT_SEPARATE_PACKET",
+  "independence": {
+    "role": "G5_INDEPENDENT_NONAUTHOR_RECEIVER",
+    "resumed_from": "review/pyat-s2b-independent-g5-20261113-r1",
+    "prior_verdict_commit": "acfd5b516a5ae8177730aeb672b846fe4e22fdfe",
+    "authored_s2b_code": false,
+    "authored_g5r1_repair": false,
+    "host": "local OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash"
+  },
+  "artifacts": {
+    "rejected_code_test": "155cd1b7244ab22ede804386e6d5253a39fe3587",
+    "repaired_code_test_under_test": "092db6bc50a6f256756edf8ab1e95981e2d95abe",
+    "author_evidence_delivery": "b829e7f857a4219a38b0d98aa524bb95184bed3e",
+    "prior_independent_finding": "acfd5b516a5ae8177730aeb672b846fe4e22fdfe",
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "protected_pre_main_modified": false,
+    "rawlsing_next_diff_repaired_to_evidence": "EMPTY",
+    "changed_files_rejected_to_repaired": [
+      "rawlsing_next/_pre553_external_i02_certificate.py",
+      "rawlsing_next/tests/test_pre553_external_i02_certificate.py"
+    ],
+    "direct_builder_unchanged_by_repair": true,
+    "exact_diff": "02_EXACT_REPAIR_DIFF.patch",
+    "verification_log": "logs/01_ARTIFACT_VERIFICATION.txt"
+  },
+  "environment": {
+    "host": "macOS",
+    "execution": "fresh Lima 2.3.0 Linux VM lima-s2b-g5r2",
+    "linux": "7.3.0-9-generic Ubuntu 26.10 x86_64",
+    "cpus": 2,
+    "memory_gib": 4,
+    "root_filesystem": "/dev/vda1 ext4, filesystem state clean, writable",
+    "tmp_filesystem": "ext4 root, 7.3 GiB free",
+    "proc_self_fd": true,
+    "python": "3.11.18",
+    "pytest": "9.2.0",
+    "pyarrow": "26.0.1",
+    "pandas": "3.1.1",
+    "pyreadstat": "1.3.7",
+    "author_degraded_vm_used": false,
+    "timing_used_as_benchmark": false,
+    "log": "logs/00_ENVIRONMENT.txt"
+  },
+  "g5_r1_recheck": {
+    "status": "CLOSED_TYPED_REFUSAL",
+    "original_four_attacks": {
+      "invalid-json": "ExternalI02IntegrityError",
+      "missing-key": "ExternalI02IntegrityError",
+      "json-null": "ExternalI02IntegrityError",
+      "json-number": "ExternalI02IntegrityError",
+      "log": "logs/02_ORIGINAL_FOUR_ATTACKS_REPAIRED.log"
+    },
+    "extended_cases": [
+      "invalid-json",
+      "missing-key",
+      "json-null",
+      "json-number",
+      "json-array",
+      "json-string",
+      "json-empty-object",
+      "missing-atom",
+      "extra-atom",
+      "empty-body",
+      "nontext-token",
+      "nonarray-body",
+      "wrong-body",
+      "forged-both-roots-malformed"
+    ],
+    "schemas_tested": ["DIRECT_SCHEMA", "SCHEMA"],
+    "attempts_per_case": 3,
+    "every_refusal_typed": true,
+    "native_facts_served_on_refusal": false,
+    "fd_count_before_after": "stable at 4",
+    "fd_leak": false,
+    "valid_original_cold_selection": "PASS",
+    "log": "logs/04_INDEPENDENT_ATTACK_AND_FD_CLOSURE.log",
+    "regression_test": "test_s2b_g5r1_malformed_coverage_header_typed_refusal",
+    "regression_log": "logs/03_G5R1_REGRESSION_TEST.log"
+  },
+  "logical_root_trust": {
+    "physical_only_rehash_refused": true,
+    "held_logical_root_preserved": true,
+    "forged_both_roots_malformed_header_refused": true,
+    "valid_certificate_selection_preserved": true,
+    "log": "logs/10_LOGICAL_ROOT_TRUST.log"
+  },
+  "execution": {
+    "full_court": {
+      "collected": 130,
+      "passed": 130,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 22.24,
+      "process_maxrss_kib": 149296,
+      "log": "logs/05_FULL_COURT_130.log",
+      "junit": "logs/06_FULL_COURT_130.xml",
+      "per_file": {
+        "test_pre553_external_i02_certificate": 30,
+        "test_pre553_direct_i02_sourcefree": 26,
+        "test_pre553_verified_semantic_range": 26,
+        "test_pre553_empirical_query": 32,
+        "test_pre553_c11_repository_ingest": 16
+      }
+    },
+    "targeted_six_repairs_plus_native_and_g5r1": {
+      "passed": 9,
+      "failed": 0,
+      "log": "logs/07_TARGETED_9.log"
+    },
+    "prior_frozen_six_repair_red": {
+      "D1_universe": "ACCEPTED_ON_FROZEN",
+      "D1_authority": "ACCEPTED_ON_FROZEN",
+      "D2_no_replay_count": "REFUSED_ON_FROZEN",
+      "D3_missing_table": "RAW_SQLITE_OPERATIONAL_ERROR_ON_FROZEN",
+      "D4_publish_oserror": "RAW_OSERROR_ON_FROZEN",
+      "D5_wrong_authority": "RAW_C11INTEGRITYERROR_ON_FROZEN",
+      "D6_direct_installer_import": "IMPORTERROR_ON_FROZEN",
+      "log": "logs/14_PRIOR_FROZEN_SIX_REPAIR_RED.log"
+    },
+    "historical_parity": {
+      "status": "PASS",
+      "cases": [
+        "base typed-absence fixture",
+        "weights present",
+        "19 respondents reversed order",
+        "canonical/component aliases",
+        "multi-universe SourceUniverseRelation",
+        "all four optional internal replay families",
+        "legacy-valid manifest without ReplayManifest count"
+      ],
+      "log": "logs/08_PARITY_PROBES.log"
+    },
+    "native_i03": {
+      "original_raw_numerator_support": 2,
+      "changed_raw_numerator_support": 3,
+      "restored_raw_numerator_support": 2,
+      "changed_result_differs": true,
+      "restored_result_equals_original": true,
+      "restored_logical_equals_original": true,
+      "log": "logs/09_NATIVE_2_3_2.log"
+    },
+    "material": {
+      "direct_2048_events_1_respondent": {
+        "retained_sqlite_bytes": 13135872,
+        "build_seconds": 7.5098,
+        "cold_verify_plus_2048_select_seconds": 0.1893,
+        "python_peak_bytes": 2233149,
+        "process_maxrss_kib": 42716,
+        "log": "logs/11_MATERIAL_2048.log"
+      },
+      "direct_100000_events_1_respondent": {
+        "retained_sqlite_bytes": 638414848,
+        "build_seconds": 358.63,
+        "cold_verify_plus_select_seconds": 11.43,
+        "python_peak_bytes": 2231458,
+        "process_maxrss_kib": 40424,
+        "sampled_workdir_tmp_peak_bytes": 685603704,
+        "selected_postings": 100000,
+        "respondents": 1,
+        "log": "logs/12_SCALE_100000.log",
+        "boundary": "not 100000 respondents; not integrated 6 GiB; timing not a benchmark"
+      }
+    }
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS_AT_SCOPED_SOURCEFREE_TYPED_SECTION_EVIDENCE",
+      "remaining_external": [
+        "live S1-B/E decoder-to-section input",
+        "original35 source equivalence",
+        "CURRENT permission",
+        "competent external root issuer"
+      ]
+    },
+    "G2": {
+      "state": "PASS_AT_DIRECT_SELECTOR_PLUS_SEALED_BODY_SCOPE",
+      "remaining_external": ["S2-C cold physical body estate"]
+    },
+    "G3": {
+      "state": "PASS_AT_TESTED_HOSTILE_SCOPE_G5R1_CLOSED",
+      "primary_defect": "G5-R1 closed by 092db6bc50a6f256756edf8ab1e95981e2d95abe"
+    },
+    "G4": {
+      "state": "PASS_AT_MEASURED_SOURCEFREE_SCOPE",
+      "remaining_unmeasured": [
+        "100000 respondents",
+        "integrated 6 GiB pipeline",
+        "process-tree RSS",
+        "exact SQLite scratch peak",
+        "live upstream decoder adapter"
+      ]
+    },
+    "G5": {
+      "state": "ACCEPT_SCOPED@S2_SOURCEFREE_DIRECT_I02",
+      "decision": "ACCEPT_SCOPED@S2_SOURCEFREE_DIRECT_I02",
+      "scope": "sourcefree direct I02 logical/selector certificate and compatible native I03 selector admission"
+    }
+  },
+  "g5_r2": {
+    "status": "NONBLOCKING_UNCHANGED",
+    "description": "forged external logical and physical roots permit header-preserving selector omission; native 1 vs sealed 2",
+    "fixed_by_this_repair": false,
+    "acceptance_condition": false,
+    "treatment": "future competent root-issuer/integration defense-in-depth; not native/production accepted",
+    "log": "logs/13_G5R2_NONBLOCKING.log"
+  },
+  "authority_holds": {
+    "original35_source_equivalence": "HELD",
+    "current_permission": "NOT_ISSUED",
+    "p01_p20_t01_t18": "HELD",
+    "s2a_receiving": "PENDING",
+    "s2c_cold_physical": "NOT_BUILT",
+    "w03_w04": "PAUSED",
+    "protected_merge": "NONE",
+    "native_production_permissions": "NONE",
+    "competent_external_root_issuer": "NOT_ESTABLISHED"
+  },
+  "notifications": {
+    "targets": ["#919", "#909", "#960", "PR #994"],
+    "status": "PUBLISHED_AFTER_REVIEW_COMMIT"
+  },
+  "stop": "R3S_STOP"
+}

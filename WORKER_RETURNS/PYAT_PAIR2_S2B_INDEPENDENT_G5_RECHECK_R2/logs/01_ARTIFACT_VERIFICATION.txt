@@ -1,0 +1,25 @@
+# Independent artifact verification
+date_utc 2026-11-13T08:51:25Z
+
+HEAD b829e7f857a4219a38b0d98aa524bb95184bed3e
+repair 092db6bc50a6f256756edf8ab1e95981e2d95abe
+frozen 155cd1b7244ab22ede804386e6d5253a39fe3587
+prior_review acfd5b516a5ae8177730aeb672b846fe4e22fdfe
+
+## rawlsing_next diff between repair and evidence HEAD (must be empty)
+
+## files changed frozen->repair
+rawlsing_next/_pre553_external_i02_certificate.py
+rawlsing_next/tests/test_pre553_external_i02_certificate.py
+
+## direct builder unchanged frozen->repair
+DIRECT_BUILDER_UNCHANGED
+
+## protected PRE-MAIN ancestor
+PRE_MAIN_ANCESTOR_UNMODIFIED
+
+## repair commit
+092db6bc5 S2-B G5-R1: type malformed cold certificate coverage header refusal
+ rawlsing_next/_pre553_external_i02_certificate.py  | 32 ++++++++--
+ .../tests/test_pre553_external_i02_certificate.py  | 72 ++++++++++++++++++++++
+ 2 files changed, 100 insertions(+), 4 deletions(-)
