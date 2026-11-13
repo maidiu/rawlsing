@@ -59,6 +59,8 @@ from rawlsing_next.pre553_empirical_query import (
     execute_empirical_query,
 )
 from rawlsing_next.pre553_source_backed_c11_facade import GovernedC11Projection
+from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
+from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session, _ref_from_key
 
 
 CARRIER_EXECUTION_CONTRACT_ID = (
@@ -403,13 +405,15 @@ class RuntimeObjectCatalog:
 class CarrierNeutralResearchExecutor:
     """One I03/I05 executor above the candidate-specific physical layer."""
 
-    repository: C11Repository
+    repository: C11Repository | VerifiedDirectEstate
     release_refs: tuple[ExactRef, ...]
     runtime_catalog: RuntimeObjectCatalog
 
     def __post_init__(self) -> None:
-        if not isinstance(self.repository, C11Repository):
-            raise CarrierExecutionBindingError("repository must be an exact C11Repository")
+        if not isinstance(self.repository, C11Repository) and type(self.repository) is not VerifiedDirectEstate:
+            raise CarrierExecutionBindingError(
+                "repository must be native C11Repository or independently verified sourcefree S2-C estate"
+            )
         refs = tuple(
             sorted(
                 {exact_ref(ref, "release_ref") for ref in self.release_refs},
@@ -418,13 +422,21 @@ class CarrierNeutralResearchExecutor:
         )
         if not refs:
             raise CarrierExecutionBindingError("one or more exact C11 releases are required")
-        for ref in refs:
-            try:
-                self.repository.resolve_release_exact(ref)
-            except KeyError as exc:
+        if type(self.repository) is VerifiedDirectEstate:
+            self.repository._live()
+            expected = _ref_from_key(self.repository.i02.release, "C11LogicalRelease")
+            if refs != (expected,):
                 raise CarrierExecutionBindingError(
-                    "bound C11 release unavailable; no fallback permitted"
-                ) from exc
+                    "cold S2-C I03 requires exactly its independently pinned C11 release"
+                )
+        else:
+            for ref in refs:
+                try:
+                    self.repository.resolve_release_exact(ref)
+                except KeyError as exc:
+                    raise CarrierExecutionBindingError(
+                        "bound C11 release unavailable; no fallback permitted"
+                    ) from exc
         object.__setattr__(self, "release_refs", refs)
 
     def execute_i03(
@@ -445,6 +457,22 @@ class CarrierNeutralResearchExecutor:
             raise CarrierExecutionBindingError(
                 "group_scope must be an I03GroupedExecutionScope or None"
             )
+        if type(self.repository) is VerifiedDirectEstate:
+            # The exact original evaluator runs against a *bounded native*
+            # physical read session. No complete v1 C11Repository is rebuilt.
+            # This is a sourcefree S2-C I03 canary, NOT S2-D or a new issuer.
+            if group_scope is not None:
+                raise CarrierExecutionBindingError(
+                    "grouped saved I03 scope awaits distinct S2-D qualification"
+                )
+            with DirectEstateI03Session(self.repository) as saved:
+                return execute_empirical_query(
+                    repository=saved,
+                    query=query,
+                    predicate=predicate,
+                    authority_registry=self.runtime_catalog.authority_registry,
+                    release_refs=self.release_refs,
+                )
         return execute_empirical_query(
             repository=self.repository,
             query=query,
@@ -460,6 +488,10 @@ class CarrierNeutralResearchExecutor:
         discovery_authority_ref: ExactRef | Mapping[str, Any],
         group_scope: I03GroupedExecutionScope | None = None,
     ) -> ExactBoundedDiscoveryResult:
+        if type(self.repository) is VerifiedDirectEstate:
+            raise CarrierExecutionBindingError(
+                "S2-C accepts only cold native I03; I05/Batch saved wiring belongs to S2-D"
+            )
         authority = self.runtime_catalog.resolve_discovery_authority_exact(
             discovery_authority_ref
         )
@@ -494,8 +526,20 @@ class CarrierNeutralResearchExecutor:
             "contract": CARRIER_EXECUTION_CONTRACT_ID,
             "i03_contract": QUERY_EXECUTION_CONTRACT_ID,
             "i05_contract": I05_CONTRACT_ID,
-            "repository_snapshot_identity": self.repository.snapshot_identity(),
-            "repository_snapshot_hash": semantic_hash(self.repository.snapshot_identity()),
+            "repository_snapshot_identity": (
+                self.repository.snapshot_identity()
+                if isinstance(self.repository, C11Repository)
+                else {"schema": "PYAT_S2C_DIRECT_I03_SOURCEFREE@1",
+                      "i02": self.repository.manifest["i02"],
+                      "manifest_sha256": self.repository.held_manifest_sha256}
+            ),
+            "repository_snapshot_hash": semantic_hash(
+                self.repository.snapshot_identity()
+                if isinstance(self.repository, C11Repository)
+                else {"schema": "PYAT_S2C_DIRECT_I03_SOURCEFREE@1",
+                      "i02": self.repository.manifest["i02"],
+                      "manifest_sha256": self.repository.held_manifest_sha256}
+            ),
             "release_refs": [x.as_dict() for x in self.release_refs],
             "runtime_catalog": self.runtime_catalog.receipt(),
         }
