@@ -1,0 +1,283 @@
+{
+  "schema": "PYAT1002_HISTORICAL_GRANT_RECONCILIATION_R2_RECEIPT@1.0.0",
+  "contract_id": "PYAT1002-HISTORICAL-GRANT-RECONCILIATION-R2",
+  "issue": 1002,
+  "branch": "agent/pyat1002-source-steward-r1",
+  "startup_sha": "58ee21134730eb0afaa48842647d568e63c884b8",
+  "prior_return_commit": "58ee21134730eb0afaa48842647d568e63c884b8",
+  "status": "RECONCILED_WITH_PARTIAL_SCOPE_HOLD",
+  "machine_verdict": "HISTORICAL_GRANTS_RECONCILED__SRC04_AUTHORIZED_OBSERVED_RESPONSE__SRC17_SOURCE_C11_ONLY__ONE_BROWSER_DECISION",
+  "engineering_disposition": "PASS_FACTUAL_CORRECTION",
+  "scientific_disposition": "HISTORICAL_ACTUAL_POSITIVES_REPORTED_AT_EXACT_SCOPES__NOT_RERUN_IN_R2",
+  "authority_disposition": "PARTIAL__SRC04_AUTHORIZED_PARTIAL__SRC17_SOURCE_C11_ONLY__BROWSER_SCOPE_DECISION",
+  "integration": "UNMERGED",
+  "evidence_grade": "HISTORICAL_GIT_EVIDENCE_RECONCILIATION__NO_R2_SOURCE_IO",
+  "counts": {
+    "sources": 35,
+    "authorized_for_this_host_purpose": 2,
+    "authorized_partial_1002_scope": 1,
+    "unknown_owner_decision": 33,
+    "denied": 0,
+    "expired": 0,
+    "not_located": 0,
+    "historical_source_use_grants_located": 4,
+    "historical_actual_source_native_positives": 2,
+    "historical_actual_empirical_execution_partial": 1,
+    "r157_nonrespondent_fixture_positive_rows": 35,
+    "source_opens_in_reconciliation_r2": 0,
+    "source_bytes_read_in_reconciliation_r2": 0,
+    "source_native_executions_in_reconciliation_r2": 0,
+    "new_source_grants_minted": 0,
+    "authorized_1002_source_read_and_C11_positive": 2,
+    "authorized_1002_observed_response_U_EPRE_scope": 1,
+    "authorized_1002_first_i03_scope": 1,
+    "partial_scope_decision_required": 1,
+    "superseded_historical_grants": 1,
+    "current_source_use_grants_located": 3
+  },
+  "prior_return_files": [
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/00_HANDOFF.md",
+      "bytes": 12756,
+      "sha256": "4e0d1b630c559238f9ce4ff05ca97ab6953c42f6694fad73f9fcc58244388bf6",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/01_SOURCE_METADATA_CENSUS.md",
+      "bytes": 8863,
+      "sha256": "972f44cd1152f111162fe66e4d4a2a0d9fb6d8caad70aaedfcfb2517d233503b",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/02_PERMISSION_PROOF_SEARCH.md",
+      "bytes": 9443,
+      "sha256": "3af3db3180ba54c7a224f5ea2e1d25c3035a5864ac9c3bd39b9c367444056829",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/03_HISTORICAL_SRC04_SRC17.md",
+      "bytes": 5989,
+      "sha256": "77be5fb6c9fc82baa81d571ea90abd69bab7ee89f30011101a7e304ea69e1b71",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/04_ONE_HIGHEST_IMPACT_GRANT.md",
+      "bytes": 8922,
+      "sha256": "c56fc52942ad59756aba69ea5f3ca06309a1b124c1c9fbb4067456a465ad93c9",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/05_NATIVE_SOURCE_HOLD_AND_GATES.md",
+      "bytes": 6181,
+      "sha256": "5576cfad92c2e682bd832d8f0356c2ee69504db4b6f15446422ada64ba4170c3",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/35_row_source_rights_matrix.json",
+      "bytes": 318011,
+      "sha256": "03116d64152abe1b7cd67cdfe639fe0de0c35c811c228bafe20aad292fe65907",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/35_row_source_rights_matrix.csv",
+      "bytes": 48968,
+      "sha256": "9cb8507633cdf3bf87b449c36e4b63b8658afa286a79eb63a31c067fbe003b08",
+      "unchanged_from_prior": true
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/receipt.json",
+      "bytes": 19393,
+      "sha256": "761e1c33f6fc22271090b3b1ab80032c5b030ff787ae70216df883a77fd825bf",
+      "unchanged_from_prior": true
+    }
+  ],
+  "prior_return_hashes_preserved": true,
+  "other_33_rows_unchanged": true,
+  "other_33_canonical_sha256_before": "411fe181a00a2b54d507b2cfd050d2a96248e32fd1ecfad4f7da7d18ae059a67",
+  "other_33_canonical_sha256_after": "411fe181a00a2b54d507b2cfd050d2a96248e32fd1ecfad4f7da7d18ae059a67",
+  "corrected_source_ids": [
+    "SRC04",
+    "SRC17"
+  ],
+  "no_r2_source_io": {
+    "source_opens": 0,
+    "source_files_read": 0,
+    "source_bytes_read": 0,
+    "source_bytes_hashed": 0,
+    "source_decodes": 0,
+    "native_executions": 0,
+    "u_epre_executions": 0,
+    "i02_persisted": 0,
+    "first_i03_facts": 0,
+    "new_source_grants_minted": 0,
+    "new_licences_created": 0,
+    "new_host_or_purpose_invented": 0
+  },
+  "historical_actual_positives": {
+    "SRC04": {
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "host": "USER_LOCAL_MAC",
+      "c11_release": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+      "release_acceptance": "ACCEPT_SCOPED_ORIGINAL_SRC04_C11_RELEASE@ba41253681212be14a0cde009afb99d77e14935e",
+      "independent_review": "PASS_SCOPED_ORIGINAL_SRC04_RELEASE@e21f28f2657027bfde37d27e5fe5dad2f7fd3908",
+      "rows": 7337,
+      "selected_response_fields": 177,
+      "selected_coordinate_fields": 3,
+      "response_positions": 1298649,
+      "q217_held_unbound_cells": 38,
+      "actual_empirical_execution": "PARTIAL_FULL_UNARY_PLUS_JOINT_PREFIX__208_OPS__177_UNARY_31_JOINT__FULL_FRONTIER_SCALE_BLOCKED",
+      "full_success_claimed": false,
+      "fixture_positive": "NONRESPONDENT_FIXTURE_ONLY__SEPARATE"
+    },
+    "SRC17": {
+      "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "host": "USER_LOCAL_MAC",
+      "c11_release": "2f81b527ba1a62ecb79c7cc858063d60a10826a91af7d689606ed83e6bbd039e",
+      "independent_review": "PASS@24f2f3f22f05ed1f0d71dbdf61dbab62d7269358__SOURCE_NATIVE_C11_POSITIVE_QUALIFIED_WITH_RECORDED_HISTORICAL_PROCESS_DEVIATION",
+      "rows": 1504,
+      "selected_response_fields": 258,
+      "held_response_slots": 21,
+      "selected_coordinate_fields": 2,
+      "i03_i05": "NOT_AUTHORIZED_BY_D2_GRANT",
+      "fixture_positive": "NONRESPONDENT_FIXTURE_ONLY__SEPARATE"
+    }
+  },
+  "four_authority_layers": {
+    "1_user_operational_read_authorization": "PRESENT__SRC04_HUMAN_USER__SRC17_TRUE_HQ_D1_D2_DISPOSITION__HOST_USER_LOCAL_MAC",
+    "2_documented_dataset_license_or_rights": "NOT_LOCATED_IN_READ_SET__USER_OPERATIONAL_AUTHORIZATION_IS_NOT_A_DATASET_LICENSE",
+    "3_scientific_issuer_claim_authority": "SRC04_OBSERVED_RESPONSE_STATISTIC_ONLY__SRC17_C11_CONSTRUCTION_ONLY",
+    "4_runtime_resolver_representation": "SCHEMA_FIELD_DIFFERENCES_RECORDED__NOT_TREATED_AS_ABSENCE_OF_AUTHORIZATION"
+  },
+  "continued_applicability": {
+    "SRC04": "CURRENT_GRANTED_AT_ISSUANCE__EXPIRY_NONE_RECORDED__REVOCATION_NONE_RECORDED__NO_LATER_REVOCATION_LOCATED",
+    "SRC17": "CURRENT_GRANTED_AT_ISSUANCE__EFFECTIVE_INTERVAL_2026-10-27_TRUE_HQ_D1_D2_PINNED_CONTROL_3b703e8__EXPIRY_NONE_RECORDED__REVOCATION_NONE_RECORDED__NO_LATER_REVOCATION_LOCATED",
+    "expiry_inferred_from_age": false
+  },
+  "prior_proposed_grant_status": {
+    "status": "WITHDRAWN_REDUNDANT__ACTUAL_SRC04_GRANTS_EXIST",
+    "withdrawn_fields": [
+      "RAWLSING_LOCAL_DARWIN_SOURCE_HOST",
+      "PYAT1002_SOURCE_NATIVE_S01_S02_FIRST_READ_VALIDATION",
+      "30_DAY_RETENTION"
+    ],
+    "new_grant_minted": false
+  },
+  "r2_gates": {
+    "factual_historical_reconciliation": "PASS",
+    "prior_9_files_preserved": "PASS",
+    "other_33_rows_preserved": "PASS",
+    "actual_vs_fixture_separated": "PASS",
+    "four_authority_layers_separated": "PASS",
+    "zero_r2_source_io": "PASS",
+    "browser_high_scope_decision": "OPEN"
+  },
+  "original_native_gates": {
+    "G1_exact_contract_and_complete_inputs": "PASS_HISTORICAL_EVIDENCE__NOT_RERUN",
+    "G2_real_source_native_positive": "NOT_RUN_IN_R2__HISTORICAL_POSITIVES_REPORTED",
+    "G3_hostile_negative_and_conservation": "NOT_RUN_IN_R2",
+    "G4_custody_resources_recovery": "NOT_APPLICABLE_PROVED_FOR_R2__NO_PERSISTENT_R2_ARTIFACT",
+    "G5_independent_nonauthor_receiving": "NOT_RUN__NO_NEW_NATIVE_POSITIVE_CLAIM"
+  },
+  "one_unresolved_decision": {
+    "id": "BROWSER_HIGH__D2_CONSTRUCTION_GRANT_SUFFICIENCY_FOR_1002_U_EPRE_FIRST_I03",
+    "status": "OPEN__WORKER_DOES_NOT_DECIDE",
+    "commission_path": "03_ONE_BROWSER_HIGH_DECISION.md",
+    "question": "Does the exact existing human/True-HQ operational authorization satisfy 1002's required existing competent current source right for the intended source-native first-read without a separate documented dataset-owner licence? Choose A sufficient for exact scopes, B separate dataset-owner licence required, or C partial with exact scientific issuer needed.",
+    "not_a_generic_go_request": true,
+    "no_new_publisher_contact_inferred": true
+  },
+  "failures": {
+    "root_cause": "Prior search inspected only R157 fixture cut 1924499 and omitted later actual source-native campaigns.",
+    "prior_false_negative": "SRC04/SRC17 grants and actual positives were misclassified as absent.",
+    "dataset_license": "No separately documented dataset-owner licence located in read set.",
+    "src17_i03_i05": "Explicitly not authorized by D2 grant.",
+    "src04_full_frontier": "Partial empirical execution only; full frontier scale-blocked, not rights-blocked; no independent G5 for partial frontier located.",
+    "r2_source_reads": "None; historical positives reported, not rerun.",
+    "self_acceptance": "None."
+  },
+  "next_indispensable_dependency": "Browser High A/B/C decision in 03_ONE_BROWSER_HIGH_DECISION.md; if A, proceed only within exact existing scopes; if B/C, name exact missing authority artifact/issuer. No new generic source grant request.",
+  "preserved_holds": [
+    "original35 source/science/host rights outside SRC04/SRC17 exact scopes remain HOLD",
+    "production CURRENT HOLD",
+    "protected merge/protected receiving not performed",
+    "W03/W04 paused/not restarted",
+    "Browser #997 / Codex #998 / accepted S2-C/D read-only",
+    "no new issuer/licence/model/provider/account/effort/region/harness/VM",
+    "no source bytes or respondent IDs in public evidence"
+  ],
+  "not_done": [
+    "No R2 source open/read/hash/decode/native execution.",
+    "No new grant/licence/host/purpose/retention.",
+    "No U/Epre/I02/I03 execution in R2.",
+    "No product/test/other-worker/accepted-code edits."
+  ],
+  "commands": [
+    {
+      "command": "git cat-file -t 303a5785 b6be4058 5b1b9bd5 24f2f3f2",
+      "result": "all commits present"
+    },
+    {
+      "command": "git show 303a5785:campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json | sha256",
+      "result": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+    },
+    {
+      "command": "git show b6be4058:campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json | sha256",
+      "result": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+    },
+    {
+      "command": "git show 5b1b9bd5:campaign_d2_src17/evidence/TRUE_HQ_GRANT.txt | sha256",
+      "result": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae"
+    },
+    {
+      "command": "git show 24f2f3f2:campaign_d2_src17/review/DISPOSITION.json | sha256",
+      "result": "5b42327b13cced09a61c5ee84f51fdd360ed379132ed25c3853e3eb602e877a0"
+    },
+    {
+      "command": "python3 build corrected 35-row matrix from prior matrix",
+      "result": "2 rows corrected; other 33 canonical digest unchanged"
+    },
+    {
+      "command": "source IO in reconciliation_r2",
+      "result": "0 opens, 0 reads, 0 hashes, 0 native executions"
+    }
+  ],
+  "return_files": [
+    {
+      "path": "35_row_source_rights_matrix.json",
+      "bytes": 338192,
+      "sha256": "e46177cb89a929ae4dcdc3890b88562d9a64a52ec2b7137f5275e11a1aae2444"
+    },
+    {
+      "path": "35_row_source_rights_matrix.csv",
+      "bytes": 5057,
+      "sha256": "e00f5721765216bfeaf569e2d66a471f5bd9b5272c8da54d129c331e31a4fa64"
+    },
+    {
+      "path": "01_HISTORICAL_GRANT_PROVENANCE_MAP.json",
+      "bytes": 24543,
+      "sha256": "c8def7cf1bacd7b28e856539b3327fcb31eaf3d38462237aa644baf88250a506"
+    },
+    {
+      "path": "02_RED_TO_CORRECTED_ACCOUNTING.md",
+      "bytes": 8434,
+      "sha256": "8e38c34e9fc44fc7af2f1b8e1f101e7c587c66c7b138479b4d3da10a51be5a34"
+    },
+    {
+      "path": "03_ONE_BROWSER_HIGH_DECISION.md",
+      "bytes": 8367,
+      "sha256": "358539484cf9e4f92322e460e430497b34937bcb1a37b2a784aa43c89c597e94"
+    },
+    {
+      "path": "04_HANDOFF.md",
+      "bytes": 8730,
+      "sha256": "92f2064c72be29b046c4061736a73dc19e4976ecdadce632cba65b240f4dd94a"
+    }
+  ],
+  "no_selfaccept": true,
+  "known_user_instruction": {
+    "source": "Current HQ flight user instruction, as stated in the R2 commission",
+    "text": "Permission to read the entire original Arab Barometer Wave 1 was explicitly given, followed by \"complete the work\"; subsequent human approval was given for empirical use.",
+    "is_generic_sourcefree_go": false,
+    "preserved_as": "Relevant user operational read authorization evidence, not a dataset-owner licence or new scientific scope."
+  }
+}

@@ -1,0 +1,395 @@
+{
+  "schema": "PYAT1002_HISTORICAL_GRANT_PROVENANCE_MAP_R2@1.0.0",
+  "contract_id": "PYAT1002-HISTORICAL-GRANT-RECONCILIATION-R2",
+  "issue": 1002,
+  "prior_return_commit": "58ee21134730eb0afaa48842647d568e63c884b8",
+  "historical_source_cut_inspected_prior": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+  "correction_scope": [
+    "SRC04",
+    "SRC17"
+  ],
+  "correction_thesis": "The prior return correctly found no R157 source-use grant at the R157 fixture cut, but it did not inspect later actual source-native campaigns. Later exact user/True-HQ operational grants and actual source-native positives exist for SRC04 and SRC17. They are reconciled here without minting new permission or changing host/purpose/retention names.",
+  "sources": {
+    "SRC04": {
+      "source_id": "SRC04",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "host": "USER_LOCAL_MAC",
+      "grant_artifacts": [
+        {
+          "kind": "USER_FULL_SOURCE_READ_GRANT",
+          "path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+          "commit": "303a57851785557fff8229e29a5554717168cbd1",
+          "also_at_commit": "8787a6ae6d88b901ce794b3c9baf67b817e0551c",
+          "sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+        },
+        {
+          "kind": "USER_OBSERVED_RESPONSE_EMPIRICAL_GRANT",
+          "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+          "commit": "b6be405899be7fc78a96680f22244aa5b50a2d1e",
+          "also_at_commit": "1f1794d3f7a04957dd7702f28c7841b9fe0a28aa",
+          "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f"
+        },
+        {
+          "kind": "EARLIER_USER_FIRST_SOURCE_GRANT",
+          "path": "PYAT_CONTROL_ROOM/CAMPAIGN_A_SRC04_USER_GRANT.json",
+          "commit": "3b703e878946a442b5c880f318b929365865ed00",
+          "sha256": "feb8320a149315fdfe74ae97f0aa91a3720aa141e5a1d5cbd5e2b97746c594f1",
+          "status": "SUPERSEDED_BY_FULL_SOURCE_GRANT__PRESERVED_AS_HISTORICAL_AUTHORIZATION"
+        }
+      ],
+      "grant_fields": {
+        "authorized_purposes": [
+          "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+          "PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0"
+        ],
+        "authorized_consumer": "EXISTING_PRE553_SOURCE_BACKED_C11",
+        "authorized_scope": "FULL_SOURCE_READ__ALL_181_PHYSICAL_SLOTS_ACCOUNTED__177_SELECTED_RESPONSE_AND_3_COORDINATES__Q217_HELD_AT_38_UNBOUND_CELLS__OBSERVED_RESPONSE_UNARY_BIDIRECTIONAL_JOINT__SOURCE_LOCAL_I03_CONSUMER",
+        "retention": "RESPONDENT_DATA_LOCAL_OUTSIDE_GIT_STDOUT__PUBLISH_NONIDENTIFYING_AGGREGATES_ONLY",
+        "source_permission_authority": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+        "currentness": "CURRENT_GRANTED_AT_ISSUANCE__NO_LATER_REVOCATION_LOCATED",
+        "expiry": "NONE_RECORDED",
+        "revocation": "NONE_RECORDED",
+        "dataset_license_or_rights_document": "NOT_LOCATED_IN_READ_SET__USER_OPERATIONAL_AUTHORIZATION_IS_NOT_A_DATASET_LICENSE",
+        "runtime_resolver_representation": "PYAT_FULL_SOURCE_READ_GRANT_AND_USER_EMPIRICAL_GRANT_SCHEMAS__AUTHENTICATED_BY_CAMPAIGN_RUNNERS__NOT_GENERIC_ISSUEDSOURCEREADDECISION",
+        "exact_authorization_text": {
+          "CAMPAIGN_A_SRC04_USER_GRANT": "yes of course dude",
+          "FULL_SOURCE_GRANT": "Direct human user in existing Pyat HQ on2026-10-28, replying to exact fullfile7337respondents181variables qualification/remainingbindings/nativeC11 grant: obviously; complete the work",
+          "USER_EMPIRICAL_GRANT": "Direct user okay go on2026-10-28 in reply to exact request to run actualSRC04distributions,bidirectionalconditionals,same-respondentjoints andfeedresults to existing source-localdiscovery/consumerpipeline. Priorfullsourcegrant independentlyreceived."
+        }
+      },
+      "actual_historical_positive": {
+        "actual_source_native_positive": true,
+        "source_read_performed": true,
+        "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+        "rows": 7337,
+        "columns": 181,
+        "host": "USER_LOCAL_MAC",
+        "c11_release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+          "content_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1"
+        },
+        "source_release_manifest_hash": "cf5b990ec740134b77a4acf34653be02640450110ae86bff1b23aa4ffca44472",
+        "selected_response_fields": 177,
+        "selected_coordinate_fields": 3,
+        "response_positions": 1298649,
+        "coordinate_positions": 22011,
+        "held_response_slot": "q217",
+        "held_q217_unbound_cells": 38,
+        "release_acceptance": {
+          "disposition": "ACCEPT_SCOPED_ORIGINAL_SRC04_C11_RELEASE",
+          "acceptance_commit": "ba41253681212be14a0cde009afb99d77e14935e",
+          "acceptance_path": "PYAT_CONTROL_ROOM/SRC04_ORIGINAL_NATIVE_RELEASE_SCOPED_ACCEPTANCE.json",
+          "acceptance_sha256": "8f07ad170b1193dc28cfdd6cb49f4470c1ce849f67708f06acef7e7a75fd7291",
+          "independent_review_commit": "e21f28f2657027bfde37d27e5fe5dad2f7fd3908",
+          "review_artifact_commit": "0cdcab734796d4b007a7401d10872bdf5522ac8e",
+          "review_verdict": "PASS_SCOPED_ORIGINAL_SRC04_RELEASE"
+        },
+        "actual_empirical_execution": {
+          "status": "PARTIAL_FULL_UNARY_PLUS_JOINT_PREFIX__BLOCKED_FULL_APPLICABLE_WORKLOAD_SCALE",
+          "evidence_commit": "b6be405899be7fc78a96680f22244aa5b50a2d1e",
+          "blocker_path": "campaign_src04_completion/empirical/ORIGINAL_EXECUTION_BLOCKER.json",
+          "blocker_sha256": "38a781d998527e205e197840f0e790db039717ed10fbff3b7e2443c824385ad1",
+          "operations_executed": 208,
+          "unary_operations_completed": 177,
+          "joint_operations_completed": 31,
+          "operations_refused": 0,
+          "aggregate_cells": 4427,
+          "response_events": 1298649,
+          "remaining_joint_operations": 15545,
+          "full_operation_queue_after_partial": 15546,
+          "full_success_claimed": false,
+          "full_workload_claimed": false,
+          "author_reported": true,
+          "independent_g5_for_partial_frontier": "NOT_LOCATED_IN_READ_SET",
+          "note": "Scale/architecture blocker, not a source-right blocker."
+        },
+        "fixture_positive_separate": {
+          "r157_fixture_release": "R157_FIXTURE_RELEASE/SRC04",
+          "fixture_id": "R157-ARAB-SRC04-NONRESPONDENT",
+          "fixture_rows": 8,
+          "status": "NONRESPONDENT_FIXTURE_ONLY__NOT_ACTUAL_SOURCE_POSITIVE"
+        }
+      },
+      "fixture_positive_separate": "NONRESPONDENT_FIXTURE_ONLY",
+      "four_layers": {
+        "1_user_operational_read_authorization": "PRESENT__HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+        "2_documented_dataset_license_or_rights": "NOT_LOCATED_IN_READ_SET__USER_OPERATIONAL_AUTHORIZATION_IS_NOT_A_DATASET_LICENSE",
+        "3_scientific_issuer_claim_authority": "HUMAN_USER_OBSERVED_RESPONSE_STATISTIC_ONLY__NO_ELIGIBLE_POPULATION_CANONICAL_CAUSAL_STRUCTURAL_ISSUER",
+        "4_runtime_resolver_representation": "PYAT_FULL_SOURCE_READ_GRANT_AND_USER_EMPIRICAL_GRANT_SCHEMAS__AUTHENTICATED_BY_CAMPAIGN_RUNNERS__NOT_GENERIC_ISSUEDSOURCEREADDECISION"
+      },
+      "continued_applicability": {
+        "stated_at_issuance": "CURRENT_GRANTED",
+        "declared_expiry": "NONE_RECORDED",
+        "declared_revocation": "NONE_RECORDED",
+        "later_revocation_located": false,
+        "expiry_inferred_from_age": false
+      },
+      "1002_scope_reconciliation": {
+        "source_read": "AUTHORIZED",
+        "selected_column_decode_projection": "AUTHORIZED",
+        "c11_source_native_positive": "AUTHORIZED_ACCEPTED_SCOPED",
+        "u_epre_claim_graded_operation": "AUTHORIZED_OBSERVED_RESPONSE_STATISTIC_ONLY",
+        "first_i03_native_fact": "AUTHORIZED_WITHIN_OBSERVED_RESPONSE_STATISTIC_ONLY",
+        "eligible_risk_population_weight": "NOT_AUTHORIZED",
+        "canonical_signed_causal_structural_ff": "NOT_AUTHORIZED",
+        "remaining_nonrights_blocker": "FULL_PAIRWISE_FRONTIER_SCALE_BLOCKED__15546_REMAINING__NOT_RIGHTS_BLOCKED",
+        "verdict": "AUTHORIZED_WITHIN_OBSERVED_RESPONSE_STATISTIC_SCOPE"
+      },
+      "remaining_unresolved_decision": null,
+      "exact_grant_fields": {
+        "FULL_SOURCE_GRANT": {
+          "schema": "PYAT_FULL_SOURCE_READ_GRANT@1.0.0",
+          "issuer": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+          "authorization": "Direct human user in existing Pyat HQ on2026-10-28, replying to exact fullfile7337respondents181variables qualification/remainingbindings/nativeC11 grant: obviously; complete the work",
+          "host": "USER_LOCAL_MAC",
+          "purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+          "consumer": "EXISTING_PRE553_SOURCE_BACKED_C11",
+          "full_source": true,
+          "first_slice_only": false,
+          "scope": "ALL_181_PHYSICAL_SLOTS__ALL_QUALIFIED_RESPONSE_FIELDS",
+          "currentness": "CURRENT_GRANTED",
+          "revocation": "NONE_RECORDED",
+          "limits": [
+            "Only exact SRC04 file through existing admitted SHAcheckeddecoder; no unrelatedoriginalsource",
+            "Qualifyall181slots, inspectremainingq217/income/age bindings and constructallqualifiedresponseandcoordinate product",
+            "Respondentdata remainlocal,outsideGit/stdout",
+            "No neworiginalempiricalestimand/workload/downstreamscientificadoption from this sourceconstructiongrant",
+            "CI/prod/N11/N12/Sorok/actor/J52W52 holds unchanged"
+          ]
+        },
+        "USER_EMPIRICAL_GRANT": {
+          "schema": "PYAT_SRC04_NATIVE_EMPIRICAL_USER_GRANT@1.0.0",
+          "issuer": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+          "authorization": "Direct user okay go on2026-10-28 in reply to exact request to run actualSRC04distributions,bidirectionalconditionals,same-respondentjoints andfeedresults to existing source-localdiscovery/consumerpipeline. Priorfullsourcegrant independentlyreceived.",
+          "host": "USER_LOCAL_MAC",
+          "operation": "PRE553_OBSERVED_RESPONSE_EMPIRICAL_OPERATIONS@1.0.0",
+          "decision": "ALLOW_WITHIN_EXACT_SCOPE",
+          "currentness": "CURRENT_GRANTED",
+          "scope": {
+            "fields": "ALL_ACTUALLY_SOURCE_QUALIFIED_SRC04_FIELDS_NOT_FIXED163_OR175",
+            "source_records": 7337,
+            "methods": [
+              "UNARY_OBSERVED_DISTRIBUTION",
+              "BIDIRECTIONAL_CONDITIONAL_DISTRIBUTION",
+              "SAME_RESPONDENT_JOINT_DISTRIBUTION"
+            ],
+            "denominators": [
+              "PER_TARGET_OBSERVED",
+              "CO_OBSERVED_TARGETS"
+            ],
+            "condition_observation": "ALL_REFERENCED_RESPONSE_VARIABLES_OBSERVED",
+            "missingness": "Missingobservations excludedandcounted; DK,REFUSAL,SOURCE_SPECIFIC_SPECIAL remainseparate recordedstates,never substantiveanswers",
+            "source_roles": "Preserve exactsource-nativevalues,units,topology,source-country anddocumentedcoordinate meaning; serialIDidentityonly; no inventedroles/categories/currencyconversion",
+            "topology_issuance": "Mechanicallyissue exactsource-literal/topologybindings onlywherevalidatednativecarrier/sourceconfiguration supports requestedoperation; one-eventscalarprojection onlyifvalidatedoneevent-per-field/respondent andno lossofrank/multiplicity; unresolvedpremisesheld",
+            "source_local_use": [
+              "ExistingnativeI03EmpiricalFact/replay",
+              "ExistinglawfullyissuedI05/exactboundeddiscovery",
+              "Existingdirectempiricalpublication/resolution/consumerat SOURCE_LOCAL_STATISTIC grade"
+            ],
+            "release_binding": "ExactvalidatedcurrentoriginalSRC04C11release/manifest/universe/config/authorityrefs boundmechanically afterconstruction/requiredqualification; nofixtureorhistorical42slice promotedtofullsource",
+            "equivalent_bindings": "Batchprogrammaticissuance fromthishumanapproval; no per-fieldhumanhashor equivalentpermissionrequest"
+          },
+          "limits": [
+            "No question-eligible risksetclaim,weightedpopulation,causal,structuralorFieldForgeadoption",
+            "No weakeningeligible-riskUNKNOWNrefusal orcanonicaldirectionadoption",
+            "No cross-surveyrespondentjoin,populationpooling,actor/V3/V2/Sorok,N11/N12,CI/prod,J52/W52 effects",
+            "No label/sparse-threshold interpretationinvented; rawcounts/exactzeroscontinueindependently",
+            "Respondentdata/memberlists/nativecellpayloads remainlocaloutsideGit/stdout; publishnonidentifyingaggregates/provenanceonly",
+            "No originalsurveyotherthanSRC04; source-read grant remainsseparateexistingexactpermission"
+          ]
+        }
+      }
+    },
+    "SRC17": {
+      "source_id": "SRC17",
+      "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "host": "USER_LOCAL_MAC",
+      "grant_artifacts": [
+        {
+          "kind": "TRUE_HQ_D1_D2_DISPOSITION",
+          "path": "campaign_d2_src17/evidence/TRUE_HQ_GRANT.txt",
+          "commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+          "also_at_path": "PYAT_CONTROL_ROOM/TRUE_HQ_D1_D2_DISPOSITION_20261027.txt",
+          "also_at_commit": "3b703e878946a442b5c880f318b929365865ed00",
+          "sha256": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae"
+        },
+        {
+          "kind": "GRANT_AUTHENTICATION",
+          "path": "campaign_d2_src17/evidence/GRANT_AUTHENTICATION.json",
+          "commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+          "sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b"
+        },
+        {
+          "kind": "USER_GRANT_METADATA",
+          "path": "campaign_d2_src17/evidence/USER_GRANT.json",
+          "commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+          "sha256": "d6272ba68d737fa9da27704e18bf6ee00ef1d31f685ba76f84f4a0dcc4764e3d"
+        },
+        {
+          "kind": "TRUE_HQ_STANDING_PROGRAM",
+          "path": "campaign_d2_src17/evidence/PROGRAM.txt",
+          "commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+          "sha256": "9e292a10df7052afb6db503a96c4b1721472d9030ab33094f8681b6bc8e49b50"
+        }
+      ],
+      "grant_fields": {
+        "authorized_purposes": [
+          "SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE"
+        ],
+        "authorized_consumer": "EXISTING_PRE553_SOURCE_BACKED_C11",
+        "authorized_scope": "EXACT_LOCAL_SRC17_SOURCE_READ__C11_CONSTRUCTION__LARGEST_OBSERVED_CELL_QUALIFIED_CONFIGURED_SLICE__258_SELECTED_RESPONSE__21_HELD_RESPONSE__2_COORDINATES",
+        "retention": "ORIGINAL_RESPONDENT_DATA_LOCAL_HOST__COMMIT_NONIDENTIFYING_EVIDENCE_AND_PERMITTED_REFS_ONLY",
+        "source_permission_authority": "PYAT_TRUE_HQ_BOUNDED_D1_D2_DISPOSITION_20261027",
+        "currentness": "CURRENT_GRANTED_AT_ISSUANCE__EFFECTIVE_INTERVAL_2026-10-27_TRUE_HQ_D1_D2_PINNED_CONTROL_3b703e8__NO_LATER_REVOCATION_LOCATED",
+        "expiry": "NONE_RECORDED",
+        "revocation": "NONE_RECORDED",
+        "dataset_license_or_rights_document": "NOT_LOCATED_IN_READ_SET__USER_OPERATIONAL_AUTHORIZATION_IS_NOT_A_DATASET_LICENSE",
+        "runtime_resolver_representation": "GRANT_AUTHENTICATION_HAS_REQUEST_AND_USER_SOURCE_READ_DECISION_REFS__CURRENT_GRANTED__ACTUAL_USER_GRANT_SCHEMA_SEPARATE",
+        "exact_authorization_text": {
+          "TRUE_HQ_D1_D2_DISPOSITION": "D2: APPROVE — SRC17 original read and C11 construction. Authorize the exact local source ... Host: USER_LOCAL_MAC. Purpose: second-family original-source C11 positive using the existing accepted R157 configuration and current source-read/decoder/C11 owners.",
+          "D2_EXCLUSION": "This grant does NOT authorize SRC17 I03/I05 original workloads, population estimation, canonical semantic issuance, additional source reads, CI/prod changes, N11/N12, Sorok, actor actions or J52/W52.",
+          "GRANT_AUTHENTICATION": "currentness=CURRENT_GRANTED; host=USER_LOCAL_MAC; purpose=SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE; revocation=NONE_RECORDED; effective_interval=2026-10-27/TRUE_HQ_D1_D2_PINNED_CONTROL_3b703e8"
+        }
+      },
+      "actual_historical_positive": {
+        "actual_source_native_positive": true,
+        "source_read_performed": true,
+        "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+        "rows": 1504,
+        "columns": 339,
+        "host": "USER_LOCAL_MAC",
+        "c11_release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "GSS_1973_SOURCE_ARTIFACT",
+          "content_hash": "2f81b527ba1a62ecb79c7cc858063d60a10826a91af7d689606ed83e6bbd039e"
+        },
+        "source_release_manifest_hash": "0b7c6af9cf8b391fc89bb2bed7ec18b92fd2f9b0654cbb0a364cb91d3e8a0678",
+        "selected_response_fields": 258,
+        "held_response_slots": 21,
+        "selected_coordinate_fields": 2,
+        "independent_review": {
+          "verdict": "PASS",
+          "grade": "SOURCE_NATIVE_C11_POSITIVE_QUALIFIED_WITH_RECORDED_HISTORICAL_PROCESS_DEVIATION",
+          "review_commit": "24f2f3f22f05ed1f0d71dbdf61dbab62d7269358",
+          "disposition_path": "campaign_d2_src17/review/DISPOSITION.json",
+          "disposition_sha256": "5b42327b13cced09a61c5ee84f51fdd360ed379132ed25c3853e3eb602e877a0",
+          "review_md_path": "campaign_d2_src17/review/REVIEW.md",
+          "review_md_sha256": "7fac9520ad41e456ae09097869e6c4fe2e335169790989e62530552e304dbaca",
+          "process_deviation": "PRE_ADMISSION_METADATA_LISTING__NO_SOURCE_BYTES_READ_OR_HASHED_OUTSIDE_ADMISSION__BOUNDED_MATERIAL_EFFECT_NONE_OBSERVED"
+        },
+        "i03_i05": "NOT_AUTHORIZED_BY_D2_GRANT",
+        "fixture_positive_separate": {
+          "r157_fixture_release": "R157_GSS_FIXTURE_RELEASE/SRC17",
+          "fixture_source_sha256": "e85b8fc3d9c11f14bf123f32fdfea5bda3b6d37a99a0f7225cd827638c517805",
+          "status": "NONRESPONDENT_FIXTURE_ONLY__NOT_ACTUAL_SOURCE_POSITIVE"
+        }
+      },
+      "fixture_positive_separate": "NONRESPONDENT_FIXTURE_ONLY",
+      "four_layers": {
+        "1_user_operational_read_authorization": "PRESENT__PYAT_TRUE_HQ_BOUNDED_D1_D2_DISPOSITION_20261027",
+        "2_documented_dataset_license_or_rights": "NOT_LOCATED_IN_READ_SET__USER_OPERATIONAL_AUTHORIZATION_IS_NOT_A_DATASET_LICENSE",
+        "3_scientific_issuer_claim_authority": "PYAT_TRUE_HQ_C11_CONSTRUCTION_ONLY__NO_I03_I05_ISSUER",
+        "4_runtime_resolver_representation": "GRANT_AUTHENTICATION_HAS_REQUEST_AND_USER_SOURCE_READ_DECISION_REFS__CURRENT_GRANTED__ACTUAL_USER_GRANT_SCHEMA_SEPARATE"
+      },
+      "continued_applicability": {
+        "stated_at_issuance": "CURRENT_GRANTED",
+        "declared_expiry": "NONE_RECORDED",
+        "declared_revocation": "NONE_RECORDED",
+        "later_revocation_located": false,
+        "expiry_inferred_from_age": false
+      },
+      "1002_scope_reconciliation": {
+        "source_read": "AUTHORIZED",
+        "selected_column_decode_projection": "AUTHORIZED",
+        "c11_source_native_positive": "AUTHORIZED_INDEPENDENT_REVIEW_PASS",
+        "u_epre_claim_graded_operation": "NOT_AUTHORIZED_BY_D2_GRANT",
+        "first_i03_native_fact": "NOT_AUTHORIZED_BY_D2_GRANT",
+        "eligible_risk_population_weight": "NOT_AUTHORIZED",
+        "canonical_signed_causal_structural_ff": "NOT_AUTHORIZED",
+        "remaining_nonrights_blocker": null,
+        "verdict": "PARTIAL__SOURCE_READ_AND_C11_ONLY__I03_I05_NOT_AUTHORIZED"
+      },
+      "remaining_unresolved_decision": "BROWSER_HIGH__D2_CONSTRUCTION_GRANT_SUFFICIENCY_FOR_1002_U_EPRE_FIRST_I03",
+      "exact_grant_fields": {
+        "TRUE_HQ_D1_D2_DISPOSITION": {
+          "schema": "PYAT TRUE-HQ — BOUNDED D1/D2 DISPOSITION",
+          "D2": "APPROVE — SRC17 original read and C11 construction.",
+          "host": "USER_LOCAL_MAC",
+          "purpose": "second-family original-source C11 positive using the existing accepted R157 configuration and current source-read/decoder/C11 owners.",
+          "exclusion": "This grant does NOT authorize SRC17 I03/I05 original workloads, population estimation, canonical semantic issuance, additional source reads, CI/prod changes, N11/N12, Sorok, actor actions or J52/W52.",
+          "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+          "source_path_ref": "SOURCE_LOCAL_PATH_IN_REFERENCED_TRUE_HQ_GRANT_ARTIFACT"
+        },
+        "GRANT_AUTHENTICATION": {
+          "schema": "PYAT_D2_SRC17_GRANT_AUTHENTICATION@1.0.0",
+          "currentness": "CURRENT_GRANTED",
+          "effective_interval": "2026-10-27/TRUE_HQ_D1_D2_PINNED_CONTROL_3b703e8",
+          "revocation": "NONE_RECORDED",
+          "dummy_test_only_resolver_used": false,
+          "source_io_before_decision": false,
+          "decision_ref": {
+            "kind": "USER_SOURCE_READ_DECISION",
+            "object_id": "urn:rawlsing:campaign-d2:src17:decision",
+            "content_hash": "2ab9dfd5daf116988323ceb2300edee89aacbcc356e3c8407c59316a8d0faf43"
+          },
+          "source_permission_ref": {
+            "kind": "USER_SOURCE_READ_GRANT",
+            "object_id": "urn:rawlsing:campaign-d2:src17:grant",
+            "content_hash": "f51de87818f8fd1365d347da3aee73005fe9ab8ae0c8d2a607487395016d48ae"
+          },
+          "request": {
+            "source_id": "SRC17",
+            "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+            "source_format": "SAV",
+            "custody_locator_binding": "SRC17_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+            "host": "USER_LOCAL_MAC",
+            "purpose": "SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE",
+            "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+            "read_operation": "SOURCE_RESPONSE_DECODE",
+            "physical_read_extent": "EXACT_FILE",
+            "semantic_use_scope": [
+              "CAMPAIGN_D2",
+              "NO_SEMANTIC_ADOPTION",
+              "SOURCE_NATIVE_RESPONSE_INCIDENCE",
+              "SRC17"
+            ],
+            "metadata_freeze_refs": [
+              {
+                "kind": "R154_PHYSICAL_METADATA",
+                "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC17_PHYSICAL_METADATA.json",
+                "content_hash": "e7a8515c6473b43b9a8f9233ca7aac5cd8ec246e8f7dcf9ecb42b23d92c89c52"
+              }
+            ]
+          },
+          "scientific_ALLOW_claimed": false
+        }
+      }
+    }
+  },
+  "fixture_vs_actual": {
+    "r157_fixture_positive": "All 35 R157 AVAILABLE_NATIVE_RECEIPT rows are nonrespondent fixture construction; not original respondent execution.",
+    "src04_actual": "Accepted scoped original C11 release 9ddec985... at ba41253681212be14a0cde009afb99d77e14935e; partial author-reported original empirical execution 208 ops at b6be4058..., no full-frontier or G5 claim.",
+    "src17_actual": "Original C11 release 2f81b527... independently reviewed PASS at 24f2f3f2..., with recorded pre-admission metadata-listing deviation; no I03/I05.",
+    "no_fixture_promotion": "No R157 fixture result is counted as actual source-native positive."
+  },
+  "no_r2_source_io": {
+    "source_opens": 0,
+    "source_bytes_read": 0,
+    "source_bytes_hashed": 0,
+    "native_executions": 0,
+    "new_grants": 0
+  },
+  "one_unresolved_decision": {
+    "id": "BROWSER_HIGH__D2_CONSTRUCTION_GRANT_SUFFICIENCY_FOR_1002_U_EPRE_FIRST_I03",
+    "question": "Does the existing SRC17 D2 source-read/C11-construction grant, and the existing SRC04 user source-read/C11/observed-response grants, constitute sufficient current source/authority for the 1002 intended source-native first-read/U-Epre/first-I03 step, or does the remaining 1002 first-I03 use for SRC17 require a separate scientific issuer (and, if so, is a separately documented dataset-owner licence required)?",
+    "worker_decides": false,
+    "commission_path": "03_ONE_BROWSER_HIGH_DECISION.md"
+  },
+  "known_user_instruction": {
+    "source": "Current HQ flight user instruction, as stated in the R2 commission",
+    "text": "Permission to read the entire original Arab Barometer Wave 1 was explicitly given, followed by \"complete the work\"; subsequent human approval was given for empirical use.",
+    "is_generic_sourcefree_go": false,
+    "preserved_as": "Relevant user operational read authorization evidence, not a dataset-owner licence or new scientific scope."
+  }
+}
