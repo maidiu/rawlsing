@@ -180,7 +180,7 @@ class DirectEstateI03Session:
     def _build(self) -> None:
         import pyarrow.parquet as pq
         db = self._require_live()
-        universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse")
+        universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse@1.0.0")
         universes = [
             obj for obj in self.estate.iter_family("EmpiricalUniverse")
             if obj.ref == universe_ref
@@ -323,7 +323,7 @@ class DirectEstateI03Session:
         self._require_live()
         release = _ref_from_key(self.estate.i02.release, "C11LogicalRelease")
         replay = _ref_from_key(self.estate.i02.replay, "C11Internal:ReplayManifest")
-        universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse")
+        universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse@1.0.0")
         supplied = tuple(sorted(
             {exact_ref(ref, "release_ref") for ref in release_refs},
             key=lambda ref: ref.key,
