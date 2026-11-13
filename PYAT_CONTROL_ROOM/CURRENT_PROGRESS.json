@@ -390,14 +390,14 @@
     }
   },
   "s2d_transfer_991": {
-    "status": "PHASE1_B_RUNNING_A_PARTIAL_FIVE_OWNER_HOLDS",
+    "status": "PHASE1_A_COUNTER_RUNNING_PARTIAL_FIVE_OWNER_HOLDS",
     "job_id": "pyat991-s2d-preflight01",
     "launch": {
-      "job_id": "pyat991-s2d-phase1-b01",
-      "child_pid": 46880,
-      "supervisor_pid": 46879,
-      "observer_pid": 46881,
-      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-b01",
+      "job_id": "pyat991-s2d-phase1-a02-counter",
+      "child_pid": 49434,
+      "supervisor_pid": 49433,
+      "observer_pid": 49435,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-a02-counter",
       "launch_is_not_completion": true
     },
     "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
@@ -418,8 +418,8 @@
       }
     },
     "delivery_sha": "585cb21d39ea5b1dcc1c121633fa7e07f5650280",
-    "active_job": "pyat991-s2d-phase1-b01",
-    "next_action": "Fixed B terminal intake; exact shared owner ACK before dependent edits; sameA counter then distinctG5, no scope reduction",
+    "active_job": "pyat991-s2d-phase1-a02-counter",
+    "next_action": "Same A final counter; distinctnonauthorG5 then honest full-task hold if shared owner ACK absent",
     "shared_handoff": "PENDING_919_COMMENT6848800312",
     "a_delivery_sha": "e399c48d576f5b2ae501dac569fb729e95bd968e",
     "a_code_sha": "55af65cc1a2df1d3eb82906a80434353735c5d50",
@@ -433,6 +433,9 @@
       "COMPLETED",
       "PARTIAL",
       "ABSENT"
-    ]
+    ],
+    "b_delivery_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "b_code_sha": "75e1521878ee1e4d4d661d8fdae6b80944d07f6c",
+    "scope_rule": "PROVISIONAL_PENDING_LAWFUL_SCOPE_COUNTERCHECK"
   }
 }
