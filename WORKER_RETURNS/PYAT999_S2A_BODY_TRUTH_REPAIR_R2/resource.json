@@ -1,0 +1,68 @@
+{
+  "artifact_files": 15,
+  "cap_bytes": 6442450944,
+  "cap_result": "PASS at material local fixture; not integrated 100k",
+  "child_cold_select_seconds": 0.21788999999989755,
+  "child_peak_rss_bytes": 63893504,
+  "child_refs_equal_parent": true,
+  "child_returncode": 0,
+  "child_selected_refs": [
+    {
+      "content_hash": "a026d568c839e3606121e2749af1de5ec094a32a501afbb077a2d7e63b1b816c",
+      "kind": "RespondentEvent@1.0.0",
+      "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:a026d568c839e3606121e2749af1de5ec094a32a501afbb077a2d7e63b1b816c"
+    }
+  ],
+  "child_source_opens": [],
+  "cold_i03_seconds": 0.5398626860114746,
+  "cold_select_seconds": 0.20114808299695142,
+  "coverage_note": "Source opens count original-source extensions only; estate Parquet opens are the authenticated reader. Family opens/row-group reads/body reconstructions are actual call counts. Child is one fresh process, not a multi-process tree.",
+  "estate_open_counters": {
+    "body_reconstructions": 0,
+    "family_opens": 2,
+    "row_group_reads": 0
+  },
+  "estate_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s2a-public-resource-cngvna8y/estate",
+  "fixture": "256 synthetic respondents / 256 events; not 100k",
+  "full_c11_builds": 0,
+  "i03_counters": {
+    "body_reconstructions": 513,
+    "family_opens": 10,
+    "row_group_reads": 1021
+  },
+  "integrated_100k": "NOT_RUN",
+  "native_i03_fact_ref": {
+    "content_hash": "d648339b3f1c521e72711aaad6e96f8b6eac0e7f50b2c6ff634c3bd23479d3a7",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d648339b3f1c521e72711aaad6e96f8b6eac0e7f50b2c6ff634c3bd23479d3a7"
+  },
+  "native_i03_fact_state": "SUPPORTED",
+  "native_i03_repeat_equal": true,
+  "parent_peak_rss_bytes": 150343680,
+  "parent_selected_refs": [
+    {
+      "content_hash": "a026d568c839e3606121e2749af1de5ec094a32a501afbb077a2d7e63b1b816c",
+      "kind": "RespondentEvent@1.0.0",
+      "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:a026d568c839e3606121e2749af1de5ec094a32a501afbb077a2d7e63b1b816c"
+    }
+  ],
+  "peak_selected_index_bytes": 16384,
+  "repeat_i03_seconds": 0.5161633990064729,
+  "repeat_select_counters": {
+    "body_reconstructions": 257,
+    "family_opens": 3,
+    "row_group_reads": 257
+  },
+  "repeat_select_seconds": 0.203155095980037,
+  "retained_bytes": 9758503,
+  "schema": "PYAT999_S2A_BODY_TRUTH_PUBLIC_SELECTOR_RESOURCE@1",
+  "select_counters": {
+    "body_reconstructions": 257,
+    "family_opens": 3,
+    "row_group_reads": 257
+  },
+  "selected_count": 1,
+  "selected_refs_equal_repeat": true,
+  "source_extension_opens": [],
+  "whole_table_read_table_fallbacks": 0
+}

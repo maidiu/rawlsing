@@ -1,0 +1,193 @@
+{
+  "packet_id": "S2-A",
+  "task_id": "PYAT999-S2A-PUBLIC-BODY-TRUTH-REPAIR-R2",
+  "old_obligations": ["P2-01"],
+  "contract_id": "PYAT999-S2A-PUBLIC-BODY-TRUTH-REPAIR-R2",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/owner_comment_6866766494.md@66c9dd38fa31d075b99b1bdbf90ca03a56f29b08",
+  "contract_frozen_at_sha": "66c9dd38fa31d075b99b1bdbf90ca03a56f29b08",
+  "governing_issues": ["https://github.com/maidiu/rawlsing/issues/919", "https://github.com/maidiu/rawlsing/issues/923", "https://github.com/maidiu/rawlsing/issues/999", "https://github.com/maidiu/rawlsing/issues/909"],
+  "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat999-s2a-body-truth-r2",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-body-truth-r2",
+  "startup_sha": "c29972ce99cae9672eae20dc7030d4eafe66ada6",
+  "base_s2a": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "previous_public_repair": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+  "code_test_sha": "5727db0ebecab2c9ae393a49e9bce1be3076a589",
+  "implemented_sha": "5727db0ebecab2c9ae393a49e9bce1be3076a589",
+  "return_content_commit": "PENDING_TERMINAL_RETURN_FREEZE",
+  "g5_review_delivery": "f88a6c61b89f6c18157f2f789de1b7873bc9e747",
+  "g5_review_content": "8e788f7e622781a0950ff07a382d3f651d4e4462",
+  "g5_reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "accepted_s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2d": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "changed_paths": [
+    "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py",
+    "WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/"
+  ],
+  "exclusive_writer_scope": "Same existing S2-A author on a new isolated descendant. Only the owner-granted public selector class/file and the existing new S2-A regression were edited. The frozen native I03 owner, S2-C writer/schema/manifest/layout, S2-D, science, current, issuer, protected and prior-return bytes were not edited.",
+  "native_module_pin": {
+    "path": "rawlsing_next/pre553_direct_estate_i03.py",
+    "blob_at_b7b697": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "blob_at_9d96": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "blob_at_1cb": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "blob_at_c299": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "blob_at_r2": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "edit": "NONE; native paired-projection poison remains a known owner hold"
+  },
+  "source_blob_pins": {
+    "public_selector_target_before": "dca76c98f6c097bb8d79316087eaf548b1b45594",
+    "public_selector_target_after": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+    "new_test_after": "40faf558fdd13da063e7c58177e3d7c3d9fce343",
+    "baseline_g5_attack_script_sha256": "f5ea45ac8dab07a28eaf8a8e450ac0316d4a75be39577b574320da430d2bfe27",
+    "baseline_g5_attack_json_sha256": "070f77d52bef32c0e8fc9cbd210742b83fdacd6ae685c8c74984ba23a67eabf1"
+  },
+  "original_g5_red": {
+    "delivery": "f88a6c61b89f6c18157f2f789de1b7873bc9e747",
+    "content": "8e788f7e622781a0950ff07a382d3f651d4e4462",
+    "attack_script": "WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/baseline/s2a_coherent_body_attack.py",
+    "output_json": "WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/baseline/s2a_coherent_attack.json",
+    "output_log": "WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/baseline/s2a_coherent_attack.out",
+    "run_on": "pristine c29972ce9 (contains rejected public repair 1cb7977b)",
+    "canonical_body_json_ref_digest_before": "3070d589d6c7255063ed8ac26d90c06e61ed4db4881523266e5918095b895f6c",
+    "canonical_body_json_ref_digest_after": "3070d589d6c7255063ed8ac26d90c06e61ed4db4881523266e5918095b895f6c",
+    "body_ref_corpus_unchanged": true,
+    "projected_native_changed": true,
+    "locator_native_changed": true,
+    "manifest_coherently_repinned": true,
+    "native_selected_count": 1,
+    "public_select_count": 0,
+    "public_select_error": null,
+    "public_silent_undercount": true,
+    "actual_native_i03_error": null,
+    "actual_native_i03_oracle_fact": "urn:rawlsing:pre553:EmpiricalFact:sha256:8867cb069cbeb3c01a21413a8a4cdb80daf528aae03bce031e69e9aa41aba380",
+    "actual_native_i03_changed_fact": "urn:rawlsing:pre553:EmpiricalFact:sha256:e8b3842a3a0866082d64b4cef994c2e8787dbd7a4f3df8c599e898282002059b",
+    "actual_native_i03_silently_changed": true
+  },
+  "public_green": {
+    "attack_reexecuted": true,
+    "public_select_error": "DirectEstateError: physical event posting disagrees with exact native body",
+    "public_silent_undercount": false,
+    "body_ref_corpus_unchanged": true,
+    "native_actual_fact_still_changed": true,
+    "known_native_owner_hold": "native DirectEstateI03Session._build remains projected-column based at frozen blob 8b4d5ca2; it still returns the changed fact e8b384 even though the public path now refuses",
+    "paired_projection_locator_regression": "native, respondent, canonical, component, state and occurrence body-column poisons refuse before any public yield",
+    "invalid_body_ref_regression": "invalid body_json, ref, object_id, content_hash and kind refuse with DirectEstateError",
+    "preserved": "old locator-only H26/H27/H28/H29, canonical order, repeated occurrences, empty states, current/root and changed/restore behavior all pass"
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Owner grant, original #919/#923 H26-H30, G5 delivery f88a6c61, exact startup c299, public target/test blobs and frozen native I03 blob pinned. Only granted public-selector symbols and new S2-A regression changed."
+    },
+    "G2": {
+      "state": "PASS_SCOPED_PUBLIC",
+      "receipt": "Actual public selector and native I03 positive/changed/restore/order tests pass. Overall S2-A positive remains held because the frozen native I03 coherent-projection poison still changes a fact."
+    },
+    "G3": {
+      "state": "PUBLIC_PASS__NATIVE_OWNER_HOLD",
+      "receipt": "Public coherent projected-column+locator poison now refuses before any subset; original locator-only tests still refuse; exact public body/ref truth and order preserved. Native I03 same poison remains a separate known RED and was not edited."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_FIXTURE",
+      "receipt": "Own 256-respondent public body-truth resource probe: retained 9758503 B; selected index 16384 B; 257 canonical body reconstructions and 257 row-group reads per public call; 3 family opens; cold/repeat public 0.2011/0.2032 s; native I03 0.5399/0.5162 s; parent/child RSS 150343680/63893504 B; source opens []; C11 builds 0; pq.read_table 0; 6 GiB cap PASS at fixture; integrated 100k NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_DISPATCHED__NATIVE_OWNER_HOLD",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+      "receipt": "No new G5 dispatch while the frozen native paired-projection contract breach remains. Same independent reviewer receives one coherent final delta only after the Browser owner grants the native exception and the same author implements it."
+    }
+  },
+  "tests": {
+    "s2a_new_7_darwin": "7 passed in 3.81s",
+    "s2a_focused_64_darwin": "64 passed in 8.43s",
+    "s2a_focused_64_linux": "64 passed in 12.61s",
+    "s2c_focused_31_darwin": "31 passed in 4.78s",
+    "s2c_focused_31_linux": "31 passed in 4.57s",
+    "s2c_inherited_86_linux": "86 passed in 37.10s",
+    "s2d_focused_31_darwin": "31 passed in 13.19s",
+    "s2d_focused_31_linux": "31 passed in 19.73s",
+    "full_accepted_202": "NOT_RUN",
+    "integrated_100k": "NOT_RUN",
+    "old_tests_weakened": false
+  },
+  "resources": {
+    "probe": "WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/resource_probe.py",
+    "results": "WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/resource.json",
+    "fixture": "256 synthetic respondents / 256 events; sourcefree; not 100k",
+    "retained_bytes": 9758503,
+    "peak_selected_index_bytes": 16384,
+    "estate_open_counters": {"family_opens": 2, "row_group_reads": 0, "body_reconstructions": 0},
+    "select_counters": {"family_opens": 3, "row_group_reads": 257, "body_reconstructions": 257},
+    "repeat_select_counters": {"family_opens": 3, "row_group_reads": 257, "body_reconstructions": 257},
+    "i03_counters": {"family_opens": 10, "row_group_reads": 1021, "body_reconstructions": 513},
+    "cold_select_seconds": 0.20114808299695142,
+    "repeat_select_seconds": 0.203155095980037,
+    "cold_i03_seconds": 0.5398626860114746,
+    "repeat_i03_seconds": 0.5161633990064729,
+    "selected_count": 1,
+    "selected_refs_equal_repeat": true,
+    "native_i03_fact_state": "SUPPORTED",
+    "native_i03_repeat_equal": true,
+    "parent_peak_rss_bytes": 150343680,
+    "child_peak_rss_bytes": 63893504,
+    "child_cold_select_seconds": 0.21788999999989755,
+    "child_source_opens": [],
+    "child_refs_equal_parent": true,
+    "source_extension_opens": [],
+    "full_c11_builds": 0,
+    "whole_table_read_table_fallbacks": 0,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at material local fixture; not integrated 100k",
+    "measurement_note": "Single parent and one fresh child; not a multi-process tree benchmark. Public canonical-body reconstruction is 257 per call at this fixture. No 100k/6 GiB integration claim."
+  },
+  "engineering_grade": "S2A_PUBLIC_CANONICAL_BODY_TRUTH_REPAIRED__NATIVE_OWNER_HOLD",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE; sourcefree TEST_ONLY",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT; native exception PENDING Browser owner",
+  "public_half": "GREEN__CANONICAL_BODY_TRUTH",
+  "overall_s2a": "HOLD_NATIVE_OWNER__PAIRED_PROJECTION_POISON_REMAINS",
+  "disposition": "HOLD_NATIVE_OWNER__PUBLIC_BODY_TRUTH_REPAIRED__G5_DEFERRED",
+  "integration": "UNMERGED",
+  "remaining_exact_failure": {
+    "id": "NATIVE_I03_PAIRED_PROJECTION_TRUTH",
+    "severity": "SEV-0",
+    "file": "rawlsing_next/pre553_direct_estate_i03.py",
+    "function": "DirectEstateI03Session._build",
+    "frozen_blob": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "actual": "coherent projected native + locator native poison with unchanged body_json/ref corpus still returns changed native fact e8b384... instead of oracle 8867cb... with no error",
+    "disposition": "PENDING exact existing Browser owner native-file exception; no native edit in this turn"
+  },
+  "external_holds": [
+    {
+      "owner": "existing Browser S2-C/native I03 owner",
+      "minimal_missing_witness": "narrow exact native-file exception to validate canonical body_json/ref truth for every event before native fact construction; not granted yet"
+    },
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source bytes used"
+    },
+    {
+      "owner": "production current/host/actor issuer",
+      "minimal_missing_witness": "independent production CURRENT/rights; TEST_ONLY direct estate only"
+    },
+    {
+      "owner": "integrated 100k respondents / 6 GiB",
+      "minimal_missing_witness": "complete accepted vertical workload; NOT_RUN"
+    },
+    {
+      "owner": "protected merge/N11-N12",
+      "minimal_missing_witness": "protected receiving authority; UNMERGED"
+    }
+  ],
+  "own_worst_vulnerability": "The public selector now parses every event body_json on every call: at 256 events it is 0.20 s with a 16 KiB temporary selected-ref index and 257 body reconstructions, but 100k behavior is unproved. The frozen native I03 still silently changes a fact under the same coherent poison; the public GREEN cannot be promoted to S2-A acceptance. The regression suite intentionally contains a passing native-known-RED observation, which documents the owner hold rather than treating it as green. The legacy private _locators helper remains unused and is not the repaired public path.",
+  "challenges_refuted": [
+    "The prior locator-only repair was real and remains green; it was not sufficient for canonical body truth.",
+    "The new attack was reproduced on pristine c299 before edits with unchanged body_json/ref digest and changed projected+locator fields.",
+    "The public fix does not use a second codec: it reconstructs every event through the existing _object_from_row and compares exact ref/type/selector projection.",
+    "The native paired-projection defect was not introduced by the public patch: the native file blob is identical at accepted b7b697, 9d96, 1cb, c299 and this descendant."
+  ],
+  "next_actor": "Browser owner decides the narrow native pre553_direct_estate_i03.py exception. If granted, the same author applies the canonical body truth check to the native session and reruns the same coherent attack; then the same distinct reviewer receives one coherent final delta. No G5 dispatch now.",
+  "known_session_cost": "UNKNOWN",
+  "stop_state": "PUBLIC_BODY_TRUTH_REPAIRED__NATIVE_OWNER_HOLD__G5_DEFERRED"
+}
