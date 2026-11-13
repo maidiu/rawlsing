@@ -19,6 +19,7 @@ selects a motive or a member of that list.
 from __future__ import annotations
 
 import hashlib
+import inspect
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -141,6 +142,37 @@ def _context(joined: Mapping[str, Any], identity: Mapping[str, Any]) -> dict:
     return body
 
 
+def _execution_code_closure() -> dict:
+    """Pin the new adapter, B guard and owner lease absent from J1 closure.
+
+    The frozen repo commit is the durable source authority; this protects
+    against source/path substitution during a single live provider/write.
+    It does NOT make arbitrary disk writes atomic with an actor event.
+    """
+    home = Path(__file__).resolve().parent
+    files = [
+        ("d03_e01_performer.py", home / "d03_e01_performer.py", None),
+        ("post_provider_guard.py", home / "post_provider_guard.py", GuardedProvider),
+        ("owner_custody.py", home / "owner_custody.py", P3CoordinatedP2Owner),
+    ]
+    rows = []
+    for label, path, source_class in files:
+        if not path.is_file():
+            _refuse("E01_EXECUTION_SOURCE_MISSING:" + label)
+        if source_class is not None:
+            try:
+                loaded = Path(inspect.getfile(source_class)).resolve()
+            except (TypeError, OSError):
+                _refuse("E01_EXECUTION_IMPORT_SOURCE_UNAVAILABLE:" + label)
+            if loaded != path.resolve():
+                _refuse("E01_EXECUTION_IMPORT_SOURCE_MISMATCH:" + label)
+        rows.append({
+            "file": label,
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        })
+    return {"files": rows, "hash": digest(rows)}
+
+
 def _actual_readback(session: Any, records: Any, identity: Mapping[str, Any]) -> list[dict]:
     if not isinstance(records, list) or not 3 <= len(records) <= 5:
         _refuse("E01_BATCH_NOT_THREE_TO_FIVE_REALIZED")
@@ -210,6 +242,7 @@ def run_d03_e01_first_batch(
         _refuse("E01_REAL_PROVIDER_REQUIRED")
     if Path(journal_path).resolve() == Path(cycle_path).resolve():
         _refuse("E01_JOURNAL_AND_CYCLE_COLLIDE")
+    execution_code_closure = _execution_code_closure()
     joined = j1_join.compose_j1(
         owner, session, child_id=child_id, speech_event_id=speech_event_id,
         utterance_receipt=utterance_receipt, plan=plan,
@@ -242,6 +275,8 @@ def run_d03_e01_first_batch(
             _refuse("E01_POSTPROVIDER_OWNER_IDENTITY_CHANGED")
         if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
             _refuse("E01_POSTPROVIDER_J1_SOURCE_CHANGED")
+        if _execution_code_closure()["hash"] != execution_code_closure["hash"]:
+            _refuse("E01_POSTPROVIDER_EXECUTION_SOURCE_CHANGED")
 
     # The B proxy checks at provider return, but cannot protect the gap
     # between that check and each of BatchEngine's individual owner writes.
@@ -258,6 +293,8 @@ def run_d03_e01_first_batch(
                 _refuse("E01_EVENT_WRITE_OWNER_IDENTITY_CHANGED")
         if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
             _refuse("E01_EVENT_WRITE_J1_SOURCE_CHANGED")
+        if _execution_code_closure()["hash"] != execution_code_closure["hash"]:
+            _refuse("E01_EVENT_WRITE_EXECUTION_SOURCE_CHANGED")
 
     original_p2_write_owner = P3CoordinatedP2Owner(
         owner, owner.base_owner, event_write_custody,
@@ -295,6 +332,7 @@ def run_d03_e01_first_batch(
             "performed_event_owner_scope": "P2_PREBOUND_CASE_NOT_P3_PLAN",
             "distinct_later_actor_performance_reader": "NOT_ESTABLISHED",
             "source_closure": joined["source_closure"]["hash"],
+            "execution_code_closure": execution_code_closure["hash"],
             "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         }
         if not report["p3_head_unchanged"]:
