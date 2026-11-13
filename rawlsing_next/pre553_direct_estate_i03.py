@@ -215,22 +215,53 @@ class DirectEstateI03Session:
         )
 
         locator = pq.ParquetFile(self.estate.directory / "event_locator.parquet")
+        physical_events = pq.ParquetFile(
+            self.estate.directory / "RespondentEvent.parquet"
+        )
         self._files["event_locator"] = locator
+        self._files["RespondentEvent"] = physical_events
+        if locator.num_row_groups != physical_events.num_row_groups:
+            raise DirectEstateError("cold I03 event posting topology mismatches bodies")
         count = 0
-        for batch in locator.iter_batches(batch_size=512):
-            db.executemany(
-                "INSERT INTO events VALUES(?,?,?,?,?,?,?,?)",
-                [
-                    (row["respondent"], row["ref"], row["native"],
-                     row["canonical"], row["component"], row["state"],
-                     row["group"], row["offset"])
-                    for row in batch.to_pylist()
-                ],
-            )
-            count += batch.num_rows
+        # The native first reader MUST NOT trust a re-pinned manifest census
+        # or a subset of surviving postings. Position-by-position coverage of
+        # *every* event body is verified as the temporary SQLite index is
+        # constructed; no full C11 graph, second body store or pq.read_table.
+        for gid in range(physical_events.num_row_groups):
             self._require_live()
+            bodies = physical_events.read_row_group(
+                gid, columns=[
+                    "ref", "respondent", "native", "canonical",
+                    "component", "typed_state",
+                ],
+            ).to_pylist()
+            postings = locator.read_row_group(gid).to_pylist()
+            if len(bodies) != len(postings):
+                raise DirectEstateError("cold I03 event locator hides physical event occurrence")
+            inserts = []
+            for offset, (body, row) in enumerate(zip(bodies, postings)):
+                if (row["group"] != gid or row["offset"] != offset
+                        or row["ref"] != body["ref"]
+                        or row["respondent"] != body["respondent"]
+                        or row["native"] != body["native"]
+                        or row["canonical"] != body["canonical"]
+                        or row["component"] != body["component"]
+                        or row["state"] != body["typed_state"]):
+                    raise DirectEstateError(
+                        "cold I03 event posting lacks exact positional/selector coverage"
+                    )
+                inserts.append((
+                    row["respondent"], row["ref"], row["native"],
+                    row["canonical"], row["component"], row["state"],
+                    gid, offset,
+                ))
+            db.executemany(
+                "INSERT INTO events VALUES(?,?,?,?,?,?,?,?)", inserts,
+            )
+            count += len(bodies)
         stored_count = db.execute("SELECT COUNT(*) FROM events").fetchone()[0]
         if (count != self.estate.manifest["event_locator_count"]
+                or count != self.estate.manifest["family_counts"]["RespondentEvent"]
                 or stored_count != count):
             raise DirectEstateError("cold I03 index omitted authenticated event postings")
 
