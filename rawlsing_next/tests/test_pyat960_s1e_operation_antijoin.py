@@ -85,12 +85,13 @@ def test_s1e_held_unprojected_operation_is_typed_not_silently_positive(
     assert Path(handoff.destination).is_file()
 
 
-def test_s1e_eligible_response_with_all_routing_unknown_refuses(
-    tmp_path, monkeypatch
+@pytest.mark.parametrize("routing_state", ("ROUTING_UNKNOWN", "NOT_ASKED"))
+def test_s1e_eligible_response_with_no_eligible_routing_refuses(
+    tmp_path, monkeypatch, routing_state
 ):
     fixture = source_fixture(
         tmp_path / "routing",
-        routing_state="ROUTING_UNKNOWN",
+        routing_state=routing_state,
     )
     called = _forbid_source(monkeypatch)
     target = tmp_path / "routing" / "out.sqlite"
