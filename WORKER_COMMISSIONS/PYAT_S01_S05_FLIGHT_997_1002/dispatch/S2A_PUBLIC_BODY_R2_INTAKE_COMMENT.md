@@ -6,3 +6,5 @@ Latest#999/#990ownercommentschecked: additionalnative_buildexceptionnotreceived;
 
 
 [Actualpublic-R2authorhandoff](https://github.com/maidiu/rawlsing/blob/a59c6a5a85451330500bd6a939c3faee6dbc94ad/WORKER_RETURNS/PYAT999_S2A_BODY_TRUTH_REPAIR_R2/00_HANDOFF.md). ExistingBrowserowner can grant the alreadyrequested exactnativefile/bodyvalidationexception; no new architecture/engine/science/issuer/protectedpermission requested. Publiccodefrozenat5727db0e untilqualifiedcombinedreceiving.
+
+[ImmutableHQintake](https://github.com/maidiu/rawlsing/blob/81b895e0e682834627e5225f93bd74ec6a45216d/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/S2A_PUBLIC_BODY_R2_RETURN_DISPOSITION.json), [exactnativeownerexceptionpacket](https://github.com/maidiu/rawlsing/blob/81b895e0e682834627e5225f93bd74ec6a45216d/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/S2A_NATIVE_BODY_TRUTH_OWNER_EXCEPTION_REQUEST.md).
