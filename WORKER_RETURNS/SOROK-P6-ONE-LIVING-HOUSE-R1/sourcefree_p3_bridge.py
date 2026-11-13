@@ -24,32 +24,12 @@ def qualified_p4_scope(owner, ledger):
     or future multiproject arrangements are held, not guessed from a list.
     The check must happen BEFORE P4 writes pending or performs an action.
     """
+    from response import qualified_scope
     scope = ledger.get("scope") if type(ledger) is dict else None
-    required = {"project", "counterpart", "interlocutor_role", "relation_ref"}
-    if type(scope) is not dict or set(scope) != required:
-        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
-    plans = getattr(owner, "plans", None)
-    if not isinstance(plans, (list, tuple)):
-        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
-    formations = [
-        row for row in plans
-        if type(row) is dict and row.get("phase") == "FORMATION"
-    ]
-    if len(formations) != 1:
-        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
-    formation = formations[0]
-    relations = formation.get("relation_refs")
-    if not isinstance(relations, (list, tuple)) or len(relations) != 1:
-        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
-    expected = {
-        "project": formation.get("project"),
-        "counterpart": formation.get("counterpart"),
-        "interlocutor_role": formation.get("interlocutor_role"),
-        "relation_ref": relations[0],
-    }
-    if any(type(v) is not str or not v for v in expected.values()) or scope != expected:
-        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
-    return dict(expected)
+    return qualified_scope(
+        owner, scope, exact_keys=True,
+        code="P6_P3_SCOPE_NOT_SOURCE_BOUND",
+    )
 
 
 def qualified_p3_read(

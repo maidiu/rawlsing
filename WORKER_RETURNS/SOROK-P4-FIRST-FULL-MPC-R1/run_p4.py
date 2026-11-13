@@ -26,7 +26,7 @@ from rawlsing_next.sorok_history.activity import (
     ActivityRefusal, REPAIR_TASK_ID, dispatch_activity_requirement,
     produce_activity_requirement, resume_activity_requirements,
 )
-from response import check_source, express, read_response
+from response import check_source, express, qualified_scope, read_response
 from speech import admit_speech
 
 GRADE = "SOURCEFREE_TEST_ONLY"
@@ -235,6 +235,8 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
         action["pacing"] = "P5"
         if args.command in {"inspect", "inspect-edge"} and getattr(args, "thorough", False):
             action["thorough"] = True
+    if args.command == "say":
+        qualified_scope(owner, ledger.get("scope"), exact_keys=True)
     if args.request_id:
         for turn in ledger["turns"]:
             if turn["request_id"] != args.request_id:

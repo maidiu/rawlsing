@@ -17,9 +17,54 @@ def check_source(owner):
     test_rules._check_sources(owner.registry, owner.source_hash)
 
 
+def qualified_scope(owner, scope, *, exact_keys=False,
+                    code="P4_SCOPE_NOT_SOURCE_BOUND"):
+    """Return the exact foreground scope owned by the single source formation."""
+    required = ("project", "counterpart", "interlocutor_role", "relation_ref")
+    if type(scope) is not dict:
+        raise RecursionRefusal(code)
+    if exact_keys:
+        if set(scope) != set(required):
+            raise RecursionRefusal(code)
+    elif any(key not in scope for key in required):
+        raise RecursionRefusal(code)
+    plans = getattr(owner, "plans", None)
+    if not isinstance(plans, (list, tuple)):
+        raise RecursionRefusal(code)
+    formations = [
+        row for row in plans
+        if type(row) is dict and row.get("phase") == "FORMATION"
+    ]
+    if len(formations) != 1:
+        raise RecursionRefusal(code)
+    formation = formations[0]
+    relations = formation.get("relation_refs")
+    if not isinstance(relations, (list, tuple)) or len(relations) != 1:
+        raise RecursionRefusal(code)
+    expected = {
+        "project": formation.get("project"),
+        "counterpart": formation.get("counterpart"),
+        "interlocutor_role": formation.get("interlocutor_role"),
+        "relation_ref": relations[0],
+    }
+    if (any(type(value) is not str or not value for value in expected.values())
+            or any(scope.get(key) != value for key, value in expected.items())):
+        raise RecursionRefusal(code)
+    registry = getattr(owner, "registry", None)
+    if (type(registry) is not dict
+            or formation.get("hash") != digest({
+                key: value for key, value in formation.items() if key != "hash"
+            })
+            or formation.get("source_hash") != getattr(owner, "source_hash", None)
+            or formation.get("registry_hash") != registry.get("hash")):
+        raise RecursionRefusal(code)
+    return dict(expected)
+
+
 def read_response(owner, admission, scope):
     """Read uptake using the actor's actual speech perception and P3 readset."""
     check_source(owner)
+    scope = qualified_scope(owner, scope)
     identity = owner.base_owner.snapshot().document()
     session = owner.base_owner.fanin.session
     attempt = admission["attempt"]
