@@ -1,0 +1,271 @@
+{
+  "task_id": "PYAT960-S1E",
+  "packet_id": "S1-E",
+  "old_obligations": [
+    "P1-06",
+    "P1-07"
+  ],
+  "persona_role": "A_COUNTER",
+  "session_id": "ses_e3122f686ffeByL78cGOKAacTS",
+  "session_model": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s1e-a-r1",
+  "contract_sha": "0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40",
+  "provisional_abi_sha": "cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54",
+  "base_sha": "591056a948fb0fdd68adbd581301dd903485adc8",
+  "received_b_head": "ed9bda50ec1c1cbbc0ced56262a696b65fb14dad",
+  "b_code_cut_sha": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
+  "a_previous_code_cut": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
+  "implemented_sha": "047298f9d6bff987f319c686aae336baba07cf9e",
+  "candidate_sha": "047298f9d6bff987f319c686aae336baba07cf9e",
+  "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_NEW_WORKTREE agent/pyat960-s1e-a-r1 at /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a; only new Q2 adapter/test/return paths written; upstream owners, A/B prior returns, Q3, protected facade, W03/W04 and controller untouched",
+  "exclusive_allowlist": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/pre553_source_i02_streams.py",
+    "rawlsing_next/tests/test_pyat960_s1e_*.py",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/"
+  ],
+  "changed_paths": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/tests/test_pyat960_s1e_counter_attack.py",
+    "rawlsing_next/tests/test_pyat960_s1e_native_fact.py",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/receipt.json",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/multiowner_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/native_fact_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/evidence/"
+  ],
+  "source_abi_owner": "rawlsing_next/pre553_source_i02_handoff.py and pre553_source_i02_streams.py over pinned R157/S1C/S2B owners",
+  "actual_first_consumer": "Existing build_sourcefree_direct_i02 -> ExternalI02Roots; VerifiedExternalI02 + install_direct_sourcefree_i02_i03 -> native selector; existing execute_empirical_query native I03/Batch fact on Linux s2b",
+  "evidence_grade": "SOURCEFREE_PROVISIONAL_DIRECT_I02_BODY_AND_NATIVE_FACT",
+  "s01_s05_ack": {
+    "S01": "R157 source meaning reused; original35 CURRENT HOLD",
+    "S02": "S1-C census and B source realization join",
+    "S03": "compact direct I02 + body tee; no Q3 writer",
+    "S04": "actual Q2 native fact SUPPORTED on Linux; full S2-D all-consumer separate",
+    "S05": "learned products untouched"
+  },
+  "reuse_matrix": "B WORKER_RETURNS/PYAT960_S1E_B/reuse_matrix.json copied read-only as evidence/b_reuse_matrix.json; A adds native fact fixture and multiowner guard",
+  "all35_ledger": {
+    "path": "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/evidence/b_all35_ledger.json",
+    "sha256": "b9a83189e41800618d76ad191e33b2c97b754c45cd01df11286a5ba91a11ca89",
+    "counts": "35 sources/18,276 items/18,413 slots/26 unjoined preparation-held"
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "ABI, 13 families, source/operation/fate preimages, all35 ledger and function-level reuse matrix; B body/anti-join accepted."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Direct I02 positive/change/restore and 13-family body transport; actual Q2-driven native I03/Batch fact SUPPORTED raw 5/5, changed branch 3/3, exact restore 5/5 on Linux s2b; TEST_ONLY sourcefree fixture only."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "Census/source/operation/target/occurrence/authority negatives; A fixes multiowner routing bypass; optional-weight RAW and held/unknown fates conserved."
+    },
+    "G4": {
+      "state": "PASS",
+      "receipt": "One source byte pass/one decode/one cell pass/one direct builder/zero full C11 in Q2; 1,200 rows; spool cleaned; certificate 19,369,984B; peak disk 46,223,669B; peak RSS 128,163,840B; 100k/6GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": "distinct nonauthor G5 after fixed B attack",
+      "receipt": "No G5 acceptance; integration UNMERGED."
+    }
+  },
+  "mandatory_case_ids": [
+    "Q2_G1_EXACT_CONTRACT_REUSE",
+    "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+    "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+    "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+    "Q2_G4_CUSTODY_RESOURCES",
+    "Q2_G5_INDEPENDENT_RECEIVING",
+    "INHERITED_B01_B09",
+    "INHERITED_S1C_OPERATION_FATES",
+    "DECODER_CUSTODY_REGRESSION",
+    "Q2_NATIVE_SELECTOR_LINUX",
+    "Q2_MULTIOWNER_ROUTING_GUARD"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "Q2_G1_EXACT_CONTRACT_REUSE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts='' (Darwin); same suite on Linux s2b",
+      "actual": "Darwin 32 passed/1 skipped; Linux 33 passed; 13-family ABI, source/operation/fate preimages, all35 ledger exact; B body/anti-join accepted"
+    },
+    {
+      "id": "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''",
+      "actual": "Direct I02 roots, changed source meaning and restored roots/event refs; 13 family body transport; no full C11 build in Q2 handoff"
+    },
+    {
+      "id": "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+      "result": "PASS",
+      "command": "Linux s2b: pytest test_pyat960_s1e_native_fact.py; native_fact_probe.py",
+      "actual": "SUPPORTED native fact raw 5/5; changed valid branch operation raw 3/3; restored exact base ref/raw 5/5. Routing authority kind and canonical value fixture corrections only; TEST_ONLY sourcefree canary."
+    },
+    {
+      "id": "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''",
+      "actual": "Census omission/duplicate/source SHA/id/occurrence/authority/target refuse before source; B operation realization checks retained; A fixes multiowner response+coordinate unknown routing bypass; optional-weight sample RAW/held fates conserved"
+    },
+    {
+      "id": "Q2_G4_CUSTODY_RESOURCES",
+      "result": "PASS",
+      "command": "python3 WORKER_RETURNS/PYAT960_S1E_B/resource_probe.py",
+      "actual": "1,200 rows/events/coordinates; source byte pass 1, decode 1, cell 1, direct builder 1, full C11 0; spool 7,464,000B cleaned; certificate 19,369,984B; peak disk 46,223,669B; peak RSS 128,163,840B; cold 6.341s/repeat 6.261s; denied opens 0; 100k/6GiB NOT_RUN"
+    },
+    {
+      "id": "Q2_G5_INDEPENDENT_RECEIVING",
+      "result": "NOT_RUN",
+      "command": "not run",
+      "actual": "G5 NOT_RUN; no self-acceptance; integration UNMERGED"
+    },
+    {
+      "id": "INHERITED_B01_B09",
+      "result": "PASS",
+      "command": "python3 -m pytest -q [S1-B four files] -o addopts=''",
+      "actual": "33 passed"
+    },
+    {
+      "id": "INHERITED_S1C_OPERATION_FATES",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py -o addopts=''",
+      "actual": "18 passed"
+    },
+    {
+      "id": "DECODER_CUSTODY_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q [decoder/custody four files] -o addopts=''",
+      "actual": "56 passed, 1 skipped"
+    },
+    {
+      "id": "Q2_NATIVE_SELECTOR_LINUX",
+      "result": "PASS",
+      "command": "Linux s2b: native_probe.py",
+      "actual": "certificate 5 events; native selected 5/5 exact refs; reader closed; body transport 13 families complete"
+    },
+    {
+      "id": "Q2_MULTIOWNER_ROUTING_GUARD",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_counter_attack.py -o addopts=''",
+      "actual": "B code accepted q101 response+coordinate with all routing unknown; A code refuses pre-source; valid multiowner eligible routing remains accepted"
+    }
+  ],
+  "first_consumer_proof": {
+    "direct": "build_sourcefree_direct_i02(source, universe_ref, destination) -> ExternalI02Roots; 13-family body tee complete",
+    "native_selector": "VerifiedExternalI02 -> install_direct_sourcefree_i02_i03; certificate 5 -> native selected 5 exact refs on Linux",
+    "native_fact": "SUPPORTED raw 5/5; changed branch raw 3/3; restored exact base ref/raw 5/5; measured on Linux s2b",
+    "engineering_fixture": "R157-shaped sourcefree q101 nonrespondent SAV; TEST_ONLY query/predicate authority; routing authority kind ROUTING_RISK_SET and canonical values 0/1 are engineering corrections, not new science",
+    "source_open_model": "fixture one byte pass/one snapshot/one decode; original path prehash+snapshot=2; keyed path 1 handoff + external key witness"
+  },
+  "preserved_functions": [
+    "S1-B decoder/projection/custody/source admission",
+    "S1-C frozen census/compiler/issued fate",
+    "S2-B direct I02 builder, external certificate, native selector, query math",
+    "B body tee/anti-join/counters/cleanup",
+    "B01-B09 33, S1-C 18, decoder/custody 56+1, S2-B Linux 81"
+  ],
+  "defects_established_and_repaired": [
+    {
+      "severity": "SEV-1",
+      "case": "B multiowner response+coordinate slot disabled routing denominator guard; eligible operation with all ROUTING_UNKNOWN accepted",
+      "evidence": "B code cut 9987a00e; evidence/multiowner_RED.txt",
+      "repair": "response_owned=any(RespondentEvent) in pre-source and post-source checks; evidence/multiowner_GREEN.txt; valid multiowner eligible accepted"
+    },
+    {
+      "severity": "SEV-3",
+      "case": "B native fact HOLD root cause unadjudicated",
+      "evidence": "B native_query_probe MISSING_REQUIRED_AUTHORITY",
+      "repair": "fixture routing authority kind ROUTING_RISK_SET + canonical 0/1; native fact SUPPORTED"
+    }
+  ],
+  "b_strengths_accepted": [
+    "13-family body-preserving tee",
+    "source/operation/fate realization anti-join",
+    "honest source-open counters",
+    "cleanup/output invalidation",
+    "Linux native selector 5/5",
+    "S2-B 81 native tests"
+  ],
+  "b_claims_refuted": [
+    "B native fact HOLD is not an absent engine; it was a sourcefree fixture authority-kind/canonical-domain preimage omission. B multiowner routing acceptance is a real G3 hole."
+  ],
+  "open_defects": [],
+  "external_holds": [
+    {
+      "owner": "original35 source/science/rights authority",
+      "minimal_missing_witness": "permitted native R157 source/measurement/authority and source-read/use decision"
+    },
+    {
+      "owner": "S1-C and S2-B independent G5 receivers",
+      "minimal_missing_witness": "independent scoped G5 acceptance"
+    },
+    {
+      "owner": "S1-D production CURRENT issuer",
+      "minimal_missing_witness": "independently authenticated current SourceReadDecision; only TEST_ONLY resolver used"
+    },
+    {
+      "owner": "protected receiving / integration owner",
+      "minimal_missing_witness": "protected review/merge; UNMERGED"
+    },
+    {
+      "owner": "integrated 100k/6GiB resource gate",
+      "minimal_missing_witness": "designated integrated artifact/matrix; not run"
+    },
+    {
+      "owner": "Q3 S2-C writer gate",
+      "minimal_missing_witness": "direct S2-B independent G5 + concrete Q2 body contract; body tee is proof, not Q3 acceptance"
+    },
+    {
+      "owner": "W03/W04 authority",
+      "minimal_missing_witness": "user paused; not resumed"
+    }
+  ],
+  "resource_evidence": {
+    "rows": 1200,
+    "events": 1200,
+    "coordinates": 1200,
+    "process_tree_peak_rss_bytes": 128163840,
+    "process_tree_baseline_rss_bytes": 120258560,
+    "retained_disk_bytes": 19369984,
+    "peak_disk_bytes": 46223669,
+    "cold_seconds": 6.340550916007487,
+    "repeat_seconds": 6.260623692010995,
+    "source_reads": 1,
+    "source_prehash_passes": 0,
+    "snapshot_acquisitions": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "spool_bytes": 7464000,
+    "spool_files": 3,
+    "denied_read_source_opens": 0,
+    "body_transport_object_count": 4809,
+    "budget_result": "SMALL_SOURCEFREE_FIXTURE; 100k respondent/6GiB integrated gate NOT_RUN"
+  },
+  "self_disclosed_weakest_point": "The native Q2 fact uses a TEST_ONLY sourcefree engineering fixture with two explicit fixture corrections; it is not original35 science or a production CURRENT permission. One native fact is a Q2 canary, not full S2-D all I03/I05/Batch/resume. The body sink is caller-owned; a Q3 sink must stage/commit correctly. Partial routing is preserved for native typed RISK_SET_UNAVAILABLE; multiowner routing is now fail-closed but remains a conservative item-level interpretation.",
+  "opponent_proven_improvement": "B body tee/anti-join/counters/cleanup and Linux native selector are genuine and retained. B missed the multiowner routing hole and did not adjudicate the native query root cause; A repaired both and produced the actual SUPPORTED native fact with changed/restore.",
+  "next_turn": "Fixed B attacks exact descendant 047298f9...; then one distinct nonauthor G5. Q3 remains read-only preflight until direct S2-B G5 + concrete Q2 body contract.",
+  "known_session_cost": "UNKNOWN",
+  "abi_classification": "LOCAL",
+  "abi_impact": {
+    "S1-B": "no semantic change",
+    "S1-C": "no change; census reused",
+    "S2-B": "no change; direct builder/certificate/native selector reused",
+    "S1-D": "no change; no issuer",
+    "S2-E": "no dependency",
+    "S2-C/Q3": "Q2 13-family+body tee available for preflight; no writer claim"
+  },
+  "stop_state": "READY_FOR_RECEIVING",
+  "integration": "UNMERGED",
+  "g5": "NOT_RUN",
+  "delegated_candidate": true,
+  "accepted_scoped_self_claim": false,
+  "closed_outcome_self_claim": "NONE__REQUIRES_DISTINCT_G5",
+  "original_task_complete": false,
+  "disposition": "READY_FOR_RECEIVING",
+  "disposition_note": "Original applicable G1-G4 pass at sourcefree provisional grade with actual native Q2 fact; G5 NOT_RUN and integration UNMERGED. No self-issued ACCEPT_SCOPED."
+}

@@ -1,0 +1,135 @@
+{
+  "schema": "PYAT960_S1E_B_REUSE_MATRIX@1.0.0",
+  "base": "591056a948fb0fdd68adbd581301dd903485adc8",
+  "a_code_cut": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
+  "b_code_cut": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
+  "entries": [
+    {
+      "path": "rawlsing_next/pre553_source_i02_handoff.py",
+      "blob": "63c5866de160ee9ab33843b9a2340e286b0db4d8",
+      "source_blob_at_a_cut": "10f446c759e74dfeac06ad27c25308e3114ba56a",
+      "disposition": "ADAPT",
+      "functions": ["build_source_i02_handoff", "_project_spooled_families", "_operation_source_antijoin", "_cleanup_spool", "_target_matches_manifest"],
+      "first_consumer": "S2-B build_sourcefree_direct_i02 + ExternalI02Roots + native selector bridge",
+      "no_loss_test": "Q2 30 tests on Darwin and Linux; S1-C 18; S1-B 33; decoder/custody 56/1; native selector 5/5 refs",
+      "reason": "A's direct-I02 handoff was sound but body-dropping and label-only for operation realization. B adds the synchronous body sink, source/operation/fate anti-join, honest open counter and fail-closed output invalidation."
+    },
+    {
+      "path": "rawlsing_next/pre553_source_i02_streams.py",
+      "blob": "9547fe3d5972005c3bb96cb91083c39743cb2d0c",
+      "disposition": "ADD",
+      "functions": ["SourceI02BodySink", "SourceI02BodyTee", "SourceI02BodyTransportStats", "ALL_FAMILIES"],
+      "first_consumer": "Existing S2-B one-shot 13-family direct builder; caller-owned Q3 body estate sink",
+      "no_loss_test": "13/13 family body/absence counts equal manifest; 4,809 object bodies at 1,200 rows; sink roots/manifest equal returned certificate; fail emit/finish/builder-after-publish cleanup",
+      "reason": "The completed direct certificate stores selectors only; Q3 cannot consume a body estate. This synchronous tee delivers the exact bodies during the same one source pass without a second corpus or source reread."
+    },
+    {
+      "path": "rawlsing_next/pre553_r157_projection_adapter.py",
+      "blob": "d4d84ef164feba6fb0de0851568738eb5f5e937d",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["SourceConfig", "build_governed_c11_projection", "decode_fixture_config", "decode_config_with_source_read_permission", "row_native_keys_from_transport"],
+      "first_consumer": "Q2 source/config/projection and permission transport",
+      "no_loss_test": "Q2 positive/change/restore; S1-B 33 inherited; original-read instrumentation 2 byte passes",
+      "reason": "Accepted exact source identity, projection and permission semantics; no second source semantics owner."
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "blob": "85ce3290d1dc8e1eb1362c22f200715b3d22758a",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["decode_sav", "decode_dta", "PhysicalSourceIncidence.iter_cells", "source_custody"],
+      "first_consumer": "Q2 one bounded physical cell pass",
+      "no_loss_test": "SAV/DTA Q2 tests; decoder/custody 56 passed/1 skipped",
+      "reason": "Bounded content-bound reader; no decoder rewrite."
+    },
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "7c967b8227a2843971c7cd9f61f3deaa423af866",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["GovernedC11Projection", "_event", "_coordinate", "_weight", "_cell_key"],
+      "first_consumer": "Q2 raw-cell to exact public family bodies",
+      "no_loss_test": "Q2 identity parity, repeated occurrence and anti-join tests",
+      "reason": "Existing semantic construction and occurrence authority; Q2 only streams its exact outputs."
+    },
+    {
+      "path": "rawlsing_next/pre553_operation_fate_census.py",
+      "blob": "dd5bf3940083679612d73f98e6a7b7711c223fd5",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["FrozenInputCensus", "SourceQualifiedCandidate", "ScientificFate", "verify_frozen_inputs"],
+      "first_consumer": "Q2 pre-source census and operation/fate anti-join",
+      "no_loss_test": "S1-C 18 inherited; Q2 pre-source refusal tests for hash/SHA/id/operation/occurrence",
+      "reason": "Existing complete operation/fate anti-join; Q2 adds source-body realization without replacing it."
+    },
+    {
+      "path": "rawlsing_next/_pre553_direct_i02_sourcefree.py",
+      "blob": "451727511af7f727b082c518aae2f4a3dbe2ba3a",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["SourcefreeDirectI02Sections", "build_sourcefree_direct_i02"],
+      "first_consumer": "Q2 direct I02 certificate",
+      "no_loss_test": "Q2 roots/change/restore; direct identity parity; 13-family manifest counts",
+      "reason": "Actual direct I02 receiver; no full C11 candidate/public/internal object prerequisite."
+    },
+    {
+      "path": "rawlsing_next/_pre553_external_i02_certificate.py",
+      "blob": "cd5368e46a5f2d6016afc2d421717b4191a03005",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["ExternalI02Roots", "VerifiedExternalI02", "install_direct_sourcefree_i02_i03"],
+      "first_consumer": "Q2 cold certificate and native selector bridge",
+      "no_loss_test": "Q2 30 tests on Linux including native selector 5/5 event refs; S2-B 81 native tests on Linux",
+      "reason": "Existing external-root verifier and native selector installer; Linux host capability exercised on the existing s2b runner."
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "blob": "c0cd4e835ceb8fe6c6025ebeb89e32223427f955",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["C11Repository.resolve_object_exact", "C11Repository sealed release"],
+      "first_consumer": "Native selector body loader for Q2 direct certificate",
+      "no_loss_test": "Q2 native selector selected event refs equal certificate; S2-B 81 native tests",
+      "reason": "Selected body repository is a required native input for the direct certificate bridge; no new repository or seal minted."
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "blob": "1539bbd30270971e05929ad8491eba9f204c9157",
+      "disposition": "REUSE_AS_IS",
+      "functions": ["execute_empirical_query", "native I03 fact owner"],
+      "first_consumer": "Native I03/Batch fact consumer",
+      "no_loss_test": "S2-B 81 native tests on Linux; Q2-driven native query attempted and returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY",
+      "reason": "Existing math/fact owner is preserved. Q2's synthetic config lacks the predicate replay/query authority preimage for a supported full native fact; held, not mocked."
+    },
+    {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "blob": "47db61752d08fa5c774436b2c29e489a8d91c3f2",
+      "disposition": "HOLD_AUTHORITY",
+      "functions": ["S1-D production CURRENT issuer"],
+      "first_consumer": "Future production current decision",
+      "no_loss_test": "Denied/expired/revoked test resolver; no production issuer minted",
+      "reason": "Sourcefree fixture permission only; production CURRENT remains external."
+    },
+    {
+      "path": "legacy full-object build_validated_c11_release_from_config / C11LogicalRelease",
+      "blob": "LEGACY_PATH",
+      "disposition": "LEGACY_READ_COMPAT",
+      "functions": ["legacy identity comparator", "sealed body fixture for native selector test"],
+      "first_consumer": "Native selector body source in sourcefree test; never Q2 production producer",
+      "no_loss_test": "Q2 direct identity parity; native selector test; S2-B 81",
+      "reason": "Q2 does not build a full C11 candidate/public/internal/ReplayManifest object graph; the legacy release is a test-only sealed body fixture/comparator."
+    },
+    {
+      "path": "W03/W04 compressed-body pilot",
+      "blob": "HISTORICAL_PAUSED",
+      "disposition": "RETIRE_PROVED_FOR_Q2_ORDER",
+      "functions": ["negative economics only"],
+      "first_consumer": "none",
+      "no_loss_test": "6,468,513,792B > 6,442,450,944B historical pilot preserved as negative",
+      "reason": "W03/W04 remain USER_PAUSED; no worktree/branch write, resume or acceptance."
+    },
+    {
+      "path": "Q3 S2-C preflight",
+      "blob": "READONLY_PREFLIGHT",
+      "disposition": "READ_ONLY_PREFLIGHT",
+      "functions": ["reuse/ABI preflight only"],
+      "first_consumer": "Q2 body sink ABI for future estate writer",
+      "no_loss_test": "No Q3 code/writer/root/session name adopted",
+      "reason": "Q3 writer remains gated on independently accepted S2-B direct I02 G5 and concrete Q2 input; Q2 provides the body transport seam only."
+    }
+  ]
+}
