@@ -29,7 +29,7 @@ from developmental_recursion.model_cycle import RecursionCycle
 SCHEMA = "SOROK_D03_E01_P2_PERFORMANCE@1"
 CONTEXT_SCHEMA = "SOROK_D03_E01_ACTOR_ACCESS_CONTEXT@1"
 GRADE = "SOURCEFREE_P2_EVENT_ONLY"
-HELDED = "HELD_NOT_PERCEIVED_NO_D03_EVENT_CAUSAL_CLAIM"
+HELD = "HELD_NOT_PERCEIVED_NO_D03_EVENT_CAUSAL_CLAIM"
 
 
 def _refuse(code: str) -> None:
@@ -215,7 +215,7 @@ def run_d03_e01_first_batch(
     )
     if joined.get("status") == "HELD_NOT_PERCEIVED":
         return {
-            "schema": SCHEMA, "grade": GRADE, "status": HELDED,
+            "schema": SCHEMA, "grade": GRADE, "status": HELD,
             "world_events_written": 0, "provider_called": False,
             "d03_status": "HELD_NOT_PERCEIVED",
             "native_rule": "MISSING_RULE",
