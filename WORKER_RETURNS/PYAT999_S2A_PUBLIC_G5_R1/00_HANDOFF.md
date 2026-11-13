@@ -133,3 +133,10 @@ inherited S2-C/proc suite (four files) passed **86/86 in 38.68s**; the new S2-A
 five-test file passed **5/5 in 3.38s**. These are separate counts, not an
 invented 91/91 sum. The decisive coherent body-truth attack remains a Darwin
 SEV-0; Linux cannot cure it.
+
+## Remote verification
+
+Review content commit `8e788f7e622781a0950ff07a382d3f651d4e4462` was pushed to
+`origin/review/pyat999-s2a-public-g5-r1`. Direct remote verification found the
+product tree unchanged from `1cb7977b` and the remote receipt valid. See
+`evidence/remote_verification.txt`.
