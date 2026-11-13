@@ -778,8 +778,10 @@ class VerifiedDirectEstate:
                 bodies = body.read_row_group(
                     gid,
                     columns=[
-                        "ref", "respondent", "native", "canonical",
-                        "component", "typed_state",
+                        "ref", "kind", "object_id", "content_hash",
+                        "family", "typed_state", "universe", "respondent",
+                        "native", "canonical", "component", "occurrence",
+                        "body_json",
                     ],
                 ).to_pylist()
                 postings = locator.read_row_group(gid).to_pylist()
@@ -797,6 +799,59 @@ class VerifiedDirectEstate:
                     if posting["ref"] != body_row["ref"]:
                         raise DirectEstateError(
                             "event locator targets different native body"
+                        )
+                    # The projected Parquet selector columns are not truth.
+                    # Reconstruct the canonical event body through the existing
+                    # codec and bind its exact ref/type/full selector projection
+                    # before consulting the locator or applying any filter.
+                    try:
+                        event_body = _object_from_row(
+                            json.loads(body_row["body_json"])
+                        )
+                    except Exception as exc:
+                        raise DirectEstateError(
+                            "canonical event body/ref does not match projected body"
+                        ) from exc
+                    if type(event_body) is not RespondentEvent:
+                        raise DirectEstateError(
+                            "canonical event body/ref does not match projected body"
+                        )
+                    if (
+                        body_row["ref"] != event_body.ref.key
+                        or body_row["kind"] != event_body.ref.kind
+                        or body_row["object_id"] != event_body.ref.object_id
+                        or body_row["content_hash"] != event_body.ref.content_hash
+                        or body_row["family"] != "RespondentEvent"
+                    ):
+                        raise DirectEstateError(
+                            "canonical event body/ref does not match projected body"
+                        )
+                    occurrence_projection = canonical_json({
+                        "group": event_body.event_group_id,
+                        "id": event_body.response_event_id_or_deterministic_index,
+                        "topology": event_body.multiplicity_order_rank_fields,
+                    })
+                    if (
+                        body_row["typed_state"] != str(event_body.typed_state)
+                        or body_row["universe"] != _key(
+                            event_body.empirical_universe_ref
+                        )
+                        or body_row["respondent"] != _key(
+                            event_body.scoped_respondent_ref
+                        )
+                        or body_row["native"] != _key(
+                            event_body.native_question_ref
+                        )
+                        or body_row["canonical"] != _key(
+                            event_body.canonical_question_ref_if_authorized
+                        )
+                        or body_row["component"] != _key(
+                            event_body.component_or_subitem_ref
+                        )
+                        or body_row["occurrence"] != occurrence_projection
+                    ):
+                        raise DirectEstateError(
+                            "physical event posting disagrees with exact native body"
                         )
                     if (
                         posting["respondent"] != body_row["respondent"]

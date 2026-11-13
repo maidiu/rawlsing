@@ -10,12 +10,15 @@ repeated occurrences.  Sourcefree fixtures only.
 from __future__ import annotations
 
 from dataclasses import replace
+import hashlib
+import json
 from pathlib import Path
 
 import pytest
 
 pytest.importorskip("pyarrow")
 
+import pyarrow as pa
 import pyarrow.parquet as pq
 
 from rawlsing_next._pre553_query_predicate import (
@@ -26,7 +29,7 @@ from rawlsing_next.pre553_c11_ingest import (
 )
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_objects import (
-    exact_ref, RespondentEvent,
+    canonical_json, exact_ref, RespondentEvent,
 )
 from rawlsing_next.pre553_source_direct_parquet_estate import (
     DirectEstateError, VerifiedDirectEstate,
@@ -103,6 +106,76 @@ def _poison(receipt, *, match_respondent, match_target, field, value):
     forged[index][field] = value
     return s2c._repin_hostile_event_locator(
         receipt, forged, falsify_count=False,
+    )
+
+
+def _body_truth_digest(receipt) -> str:
+    body = pq.read_table(Path(receipt.path) / "RespondentEvent.parquet")
+    rows = body.to_pylist()
+    return hashlib.sha256(canonical_json(sorted(
+        ({"ref": row["ref"], "body_json": row["body_json"]} for row in rows),
+        key=lambda row: row["ref"],
+    )).encode()).hexdigest()
+
+
+def _coherent_projection_poison(
+    receipt, *, match_respondent, match_target, field, value,
+):
+    """Change projected body columns and matching locator, keep body truth."""
+    directory = Path(receipt.path)
+    body_file = directory / "RespondentEvent.parquet"
+    locator_file = directory / "event_locator.parquet"
+    body_table = pq.read_table(body_file)
+    locator_table = pq.read_table(locator_file)
+    bodies = body_table.to_pylist()
+    postings = locator_table.to_pylist()
+    before = _body_truth_digest(receipt)
+    locator_index = next(
+        i for i, row in enumerate(postings)
+        if row["respondent"] == match_respondent.key
+        and row["native"] == match_target.key
+    )
+    body_index = next(
+        i for i, row in enumerate(bodies)
+        if row["ref"] == postings[locator_index]["ref"]
+    )
+    body_name = "typed_state" if field == "state" else field
+    body_field_index = body_table.schema.get_field_index(body_name)
+    if body_field_index < 0:
+        raise AssertionError(f"body projection lacks {body_name}")
+    body_values = body_table.column(body_field_index).to_pylist()
+    body_values[body_index] = value
+    body_table = body_table.set_column(
+        body_field_index, body_name,
+        pa.array(body_values, type=body_table.schema.field(body_field_index).type),
+    )
+    locator_field_index = locator_table.schema.get_field_index(body_name)
+    if locator_field_index >= 0:
+        locator_values = locator_table.column(locator_field_index).to_pylist()
+        locator_values[locator_index] = value
+        locator_table = locator_table.set_column(
+            locator_field_index, body_name,
+            pa.array(locator_values, type=locator_table.schema.field(locator_field_index).type),
+        )
+    pq.write_table(body_table, body_file, compression="zstd", row_group_size=2)
+    pq.write_table(locator_table, locator_file, compression="zstd", row_group_size=2)
+    manifest_file = directory / "manifest.json"
+    manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
+    manifest["members"]["RespondentEvent.parquet"] = hashlib.sha256(
+        body_file.read_bytes()
+    ).hexdigest()
+    manifest["members"]["event_locator.parquet"] = hashlib.sha256(
+        locator_file.read_bytes()
+    ).hexdigest()
+    manifest_file.write_text(canonical_json(manifest) + "\n", encoding="utf-8")
+    after = _body_truth_digest(receipt)
+    return (
+        replace(
+            receipt,
+            manifest_sha256=hashlib.sha256(manifest_file.read_bytes()).hexdigest(),
+        ),
+        before,
+        after,
     )
 
 
@@ -433,3 +506,116 @@ def test_public_selector_revocation_and_wrong_root_refuse(tmp_path, monkeypatch)
             ),
             current_authorizer=lambda _roots: True,
         )
+
+
+
+def test_public_coherent_projection_body_truth_and_native_owner_hold(
+    tmp_path, monkeypatch,
+):
+    tag = "S2A-BODY-TRUTH"
+    source, candidate = _capture_source(
+        monkeypatch, tag,
+        [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+            {"id": "R4", "responses": {"Y": 0}},
+        ],
+    )
+    qauth = native._query_authority(tag)
+    predicate = native._branch_predicate(source, qauth)
+    query = native._query(source, qauth, predicate, ("Y",), tag=tag)
+    oracle = native._run(source, qauth, predicate, query)
+    respondent = source["respondents"]["R1"].ref
+    target = source["qrefs"]["Y"]
+    root, receipt = s2c._cold(
+        tmp_path, candidate, source["universe"].ref, "body-truth-base",
+    )
+    baseline = _public_refs(_open(root, receipt), respondent, target,
+                            native_only=True)
+    assert baseline
+    foreign = _ref("QUESTION_NATIVE", "S2A-BODY-TRUTH-FOREIGN").key
+    canonical_foreign = _ref(
+        "QUESTION_CANONICAL", "S2A-BODY-TRUTH-FOREIGN-CANONICAL"
+    ).key
+    component_foreign = _ref(
+        "QUESTION_COMPONENT", "S2A-BODY-TRUTH-FOREIGN-COMPONENT"
+    ).key
+    respondent_foreign = _ref(
+        "RESPONDENT_IDENTITY", "S2A-BODY-TRUTH-FOREIGN-RESPONDENT"
+    ).key
+    cases = (
+        ("native", foreign),
+        ("respondent", respondent_foreign),
+        ("canonical", canonical_foreign),
+        ("component", component_foreign),
+        ("state", "DK"),
+        ("occurrence", "{}"),
+    )
+    for field, value in cases:
+        poison_root, poison_receipt = s2c._cold(
+            tmp_path, candidate, source["universe"].ref,
+            "body-truth-" + field,
+        )
+        hidden, before, after = _coherent_projection_poison(
+            poison_receipt, match_respondent=respondent,
+            match_target=target, field=field, value=value,
+        )
+        assert before == after, field
+        hidden_estate = _open(poison_root, hidden)
+        with pytest.raises(DirectEstateError, match="posting|canonical"):
+            tuple(hidden_estate.select_events(
+                respondent, target, native_only=True,
+            ))
+    # The native I03 module is frozen by the current grant.  It still returns
+    # a changed fact for the paired projected+locator poison.  This test
+    # documents the known owner HOLD; it does not turn the native path green.
+    native_root, native_receipt = s2c._cold(
+        tmp_path, candidate, source["universe"].ref, "body-truth-native-hold",
+    )
+    native_hidden, _, _ = _coherent_projection_poison(
+        native_receipt, match_respondent=respondent,
+        match_target=target, field="native", value=foreign,
+    )
+    native_fact = s2c._executor(
+        native_root, native_hidden, source, qauth, predicate, query,
+    ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    assert native_fact.facts != oracle.facts
+    assert native_fact.facts[0].ref != oracle.facts[0].ref
+    # Untampered public and native restoration remain exact.
+    assert _public_refs(_open(root, receipt), respondent, target,
+                        native_only=True) == baseline
+    restored = s2c._executor(
+        root, receipt, source, qauth, predicate, query,
+    ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    assert restored.facts == oracle.facts
+
+
+def test_public_invalid_canonical_body_and_ref_refuse(tmp_path, monkeypatch):
+    tag = "S2A-BODY-INVALID"
+    source, candidate = _capture_source(
+        monkeypatch, tag,
+        [{"id": "R1", "responses": {"Y": 1}},
+         {"id": "R2", "responses": {"Y": 0}}],
+    )
+    respondent = source["respondents"]["R1"].ref
+    target = source["qrefs"]["Y"]
+    for field, value in (
+        ("body_json", "{}"),
+        ("ref", _ref("QUESTION_NATIVE", "S2A-BODY-INVALID-REF").key),
+        ("object_id", "urn:test:s2a-body-invalid-object"),
+        ("content_hash", "0" * 64),
+        ("kind", "WrongEvent@1.0.0"),
+    ):
+        root, receipt = s2c._cold(
+            tmp_path, candidate, source["universe"].ref,
+            "invalid-" + field,
+        )
+        hidden, _, _ = _coherent_projection_poison(
+            receipt, match_respondent=respondent,
+            match_target=target, field=field, value=value,
+        )
+        with pytest.raises(DirectEstateError, match="posting|canonical"):
+            tuple(_open(root, hidden).select_events(
+                respondent, target, native_only=True,
+            ))
