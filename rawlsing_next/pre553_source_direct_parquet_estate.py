@@ -28,7 +28,7 @@ from rawlsing_next._pre553_direct_i02_sourcefree import (
 )
 from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef, RespondentEvent, canonical_json, exact_ref,
+    ExactRef, Pre553IntegrityError, RespondentEvent, canonical_json, exact_ref,
 )
 from rawlsing_next.pre553_parquet_carrier import _object_row, _object_from_row
 from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
@@ -528,6 +528,15 @@ class VerifiedDirectEstate:
     ) -> Iterator[RespondentEvent]:
         """Selected on-disk row groups only; no full pq.read_table/to_pylist."""
         self._live()
+        # Source semantic fields are frozen mappings, not ExactRef instances.
+        # The native strict parser requires precisely three validated fields;
+        # reject malformed mappings and custom reference subclasses.
+        try:
+            respondent_ref = exact_ref(respondent_ref, "scoped_respondent_ref")
+            if target is not None:
+                target = exact_ref(target, "target_ref")
+        except (Pre553IntegrityError, TypeError, ValueError) as exc:
+            raise DirectEstateError("exact respondent and question selectors required") from exc
         if type(respondent_ref) is not ExactRef or (target is not None and type(target) is not ExactRef):
             raise DirectEstateError("exact respondent and question selectors required")
         import pyarrow.parquet as pq
