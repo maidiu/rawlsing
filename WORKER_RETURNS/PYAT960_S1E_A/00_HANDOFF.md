@@ -97,6 +97,7 @@ No-loss tests: S1-B inherited B01–B09 packet suite 33 passed; S1-C operation/f
 - Protected facade/#922, W03/W04, other worktrees and controller untouched.
 - 100k/6 GiB integrated resource gate NOT_RUN; original35 QSM/source ownership HOLD.
 - Legacy full-C11 identity parity is a test comparator, not Q2 production order.
+- The original-source path retains the existing S1-B admission pre-hash plus snapshot acquisition. The measured one-open result is the sourcefree fixture path; no original-source positive was run.
 
 ## 8. Remaining attack surfaces
 
