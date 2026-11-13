@@ -1,0 +1,60 @@
+{
+  "job": "pyat1002-historical-grant-reconciliation-r2",
+  "exit_code": 0,
+  "delivery": "d4f0a6499432aa3186c0d92174fa228211759e44",
+  "remote_readback_matches": true,
+  "return_scope": "7 new reconciliation files only; product/tests and old9 files unchanged",
+  "current6_artifact_hashes_verified": true,
+  "prior9_artifact_hashes_verified": true,
+  "actual_matrix_changed_sources": [
+    "SRC04",
+    "SRC17"
+  ],
+  "historical_grant_checks": [
+    {
+      "commit": "303a57851785557fff8229e29a5554717168cbd1",
+      "path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+      "sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+      "match": true
+    },
+    {
+      "commit": "b6be405899be7fc78a96680f22244aa5b50a2d1e",
+      "path": "campaign_src04_completion/empirical/USER_EMPIRICAL_GRANT.json",
+      "sha256": "757ee9e0eddd933b9d23d9cb84450e0dafabd8b1b6a1ad7e737d433b32c0130f",
+      "match": true
+    },
+    {
+      "commit": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+      "path": "campaign_d2_src17/evidence/GRANT_AUTHENTICATION.json",
+      "sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
+      "match": true
+    },
+    {
+      "commit": "24f2f3f22f05ed1f0d71dbdf61dbab62d7269358",
+      "path": "campaign_d2_src17/review/DISPOSITION.json",
+      "sha256": "5b42327b13cced09a61c5ee84f51fdd360ed379132ed25c3853e3eb602e877a0",
+      "match": true
+    }
+  ],
+  "hq_disposition": "RECEIVED_FACTUAL_CORRECTION__NO_NEW_SOURCE_NATIVE_ACCEPTANCE",
+  "SRC04": "Existing human full-source/C11 and observed-response empirical grants preserved; historical accepted nativeC11 and partial208operation execution, not fullworkload",
+  "SRC17": "Existing source-read/C11 grant and independently reviewed nativeC11 preserved; I03/I05 explicitly excluded",
+  "other33": "Original metadata rows byte-equivalent as canonical objects; current competent rights UNKNOWN_OWNER_DECISION",
+  "withdrawn_worker_proposals": [
+    "new host alias",
+    "new purpose string",
+    "30day retention requirement",
+    "blanket no-existing-grants assertion"
+  ],
+  "1002_current_first_reader": "NOT_EXECUTED; consequential use-scope decision routed to user Browser High; model may not grant authority",
+  "browser_packet": "https://github.com/maidiu/rawlsing/blob/d4f0a6499432aa3186c0d92174fa228211759e44/WORKER_RETURNS/PYAT1002_SOURCE_RIGHTS/reconciliation_r2/03_ONE_BROWSER_HIGH_DECISION.md",
+  "important_limit": "Historical exact-scope authorization is not blanket current1002/full35 science or protected adoption; no expiry/revocation inferred from age",
+  "remaining_holds": [
+    "source/scientific scope beyond actual grants",
+    "S2A Browser owner handoff",
+    "997 accepted physical/fate bridge",
+    "1000 competent CAS grant",
+    "1001 fullrun waits accepted998"
+  ],
+  "goal_wakeups": "PAUSED"
+}
