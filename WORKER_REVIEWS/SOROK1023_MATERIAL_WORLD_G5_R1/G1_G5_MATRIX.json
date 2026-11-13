@@ -1,0 +1,111 @@
+{
+  "schema": "SOROK1023_G5_MATRIX@1",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "scope": "B01_B05_SOURCEFREE_MATERIAL_WORLD_AT_CODE_CUT_c724d1a8",
+  "reviewer_session": "ses_e28ef72f9ffelBx7qet6BAina3",
+  "gates": {
+    "G1_material_temporal_owner_source_grade": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "B blobs equal source head 1161e5f and composed code c724d1a8 (BLOB_PINS.json)",
+        "household owner/resource bindings read through house.read_household",
+        "parent supporting actor funds separate from fixed-A household cash",
+        "market stock/ownership are distinct source-qualified P2 material facts",
+        "request/market/parent currency equality is explicit; no conversion",
+        "B02 dated periods, as-of, and midperiod employment split read through historical_period",
+        "B03 tenancy/space/acoustics/costs produce ADMISSIBLE/REFUSED/UNKNOWN typed outcomes",
+        "B04 typed P2_PARENT_PURCHASE and B05 P2_HOUSEHOLD_RENT receipts"
+      ],
+      "limits": [
+        "sourcefree fixtures only; no external source or native person-science rights",
+        "no general household economy, arrears, conversion, or actor psychology claim"
+      ]
+    },
+    "G2_actual_first_consumers": {
+      "status": "PASS_FOR_NORMAL_READERS__FORGED_PROVENANCE_FAILURE_RECORDED_IN_G3",
+      "evidence": [
+        "house.read_household/read_dwelling/material_feasibility",
+        "historical_period.read_material_period/period_progress/materialize_to",
+        "material_operations.read_market_inventory/read_owned_objects/read_purchase",
+        "rolling_reproduction.read_household_obligation",
+        "parent_activity.read_parent_material/read_parent_history and parent_decision actual PURCHASE path",
+        "fresh-process cold reopen via run_p6.open_owner"
+      ],
+      "non_claims": [
+        "material affordability does not determine parent desire",
+        "no Nadia choice, J1 performed child event, or native psychology claim"
+      ]
+    },
+    "G3_independent_hostile_falsification": {
+      "status": "FAIL_REVISE_EXACT_DEFECT",
+      "passing_attacks": [
+        "wrong request currency refused before debit",
+        "household-low/parent-adequate and household-adequate/parent-low are kept distinct",
+        "unknown acoustics HELD, prohibited tenancy REFUSED, tight space REFUSED",
+        "wrong household root/actor and wrong market branch refused; exact restore",
+        "period boundaries, outside-plan as-of, midperiod split, period replay",
+        "duplicate purchase/rent replay and same-period second rent do not double-debit",
+        "partial purchase evidence (ownership row removed) refused",
+        "cold-after-failure: failed wrong-currency purchase left no partial state",
+        "read-only C03/B04 integration lock order: purchase lock then parent lock; purchase PERFORMED"
+      ],
+      "defects": [
+        {
+          "id": "G5-B04-RECEIPT-FOREIGN-ROOT",
+          "first_reader": "material_operations.read_purchase",
+          "file_line": "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py:646-672",
+          "input": "forged ADMITTED P2_PARENT_PURCHASE episode appended through session.product.store.append_episode with nested receipt root=ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff and branch=foreign-branch plus a coherent ownership row",
+          "expected": "typed refusal binding receipt root/branch/parent_id to the current session and actual B04 operation",
+          "actual": "status READ; forged receipt accepted",
+          "cause": "read_purchase validates acquisition fields but never compares the nested receipt root/branch/parent_id; C02 parent_activity.py:363-364 does compare receipt root/branch",
+          "smallest_suggested_owner_fix": "B04 owner adds receipt root/branch/parent_id equality before returning READ"
+        },
+        {
+          "id": "G5-B05-RENT-RECEIPT-FOREIGN-ROOT",
+          "first_reader": "rolling_reproduction.read_household_obligation",
+          "file_line": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:376-406",
+          "input": "forged ADMITTED P2_HOUSEHOLD_RENT episode appended through session.product.store.append_episode with nested receipt root=eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee and branch=foreign-branch, rent=12, before/after cash consistent with current household cash",
+          "expected": "typed refusal binding receipt root/branch and exact rent operation/debit to the current session",
+          "actual": "status READ; forged rent receipt accepted with no cash change",
+          "cause": "the B05 reader checks dwelling/household sources and arithmetic but not receipt root/branch, and does not require the receipt to correspond to a unique actual rent operation for the period",
+          "smallest_suggested_owner_fix": "B05 owner adds receipt root/branch and period-operation binding before READ"
+        }
+      ],
+      "repair": "NONE; product code READONLY by commission"
+    },
+    "G4_preservation_change_restore_cold_measurement": {
+      "status": "PASS_WITH_LIMITS",
+      "original_43": {
+        "command": "PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q <14 B01-B05 test files>",
+        "result": "43 passed",
+        "elapsed_seconds": 534.18,
+        "author_isolated_reference_seconds": 442.42,
+        "exit": 0,
+        "peak_rss_bytes": 75231232,
+        "contention": "host oldMac.lan simultaneously running #1006 scale-50k write workload and #1007 prep; load average about 5.3"
+      },
+      "change_restore": [
+        "changed dwelling space gave REFUSED_SPACE; original stored document restored exact material_hash",
+        "changed legitimate space then restored exact baseline feasibility document",
+        "purchase changed stock/ownership; cold process read exact receipt and sources"
+      ],
+      "cold_process": {
+        "result": "two purchases (2026-h1 and 2026-h2) and one household rent reopened in a fresh process",
+        "no_duplicate": "latest purchase replay REPLAY, earlier purchase typed stale refusal, rent replay REPLAY, second same-period rent refused B05_RENT_ALREADY_RECORDED",
+        "state": "parent cash 20, household cash 43, market quantity 0, two ownership rows, P3 head unchanged",
+        "elapsed_seconds": 22.285
+      },
+      "limitations": [
+        "full original P6/MII suite and full J1 suite were not rerun for this B-tranche",
+        "no native/external source rights, no 100k/6GiB claim, no protected merge",
+        "provider token/USD cost UNOBSERVED; only observed wall time and process RSS are reported"
+      ]
+    },
+    "G5_nonauthor_receiver_verdict": {
+      "status": "REVISE_EXACT_DEFECT",
+      "reviewer_independence": "fresh session ses_e28ef72f9ffelBx7qet6BAina3; distinct from declared B authors ses_e3129596bffes0LaqGfkjAwEuQ/ses_e312958e8ffeVzjGxpyNpsMatM and J1 author ses_e2bcd8b7bfferVT3C26nF0Mw7C; no prior conversation reused",
+      "acceptance": "NOT_ACCEPTED",
+      "protected_or_scientific_authority": "NONE"
+    }
+  }
+}

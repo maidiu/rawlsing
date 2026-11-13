@@ -1,0 +1,72 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "issue_or_packet_id": "1023",
+  "task_ids": ["B01", "B02", "B03", "B04", "B05"],
+  "phase": "CG-B",
+  "event_id": "SOROK1023-MATERIAL-WORLD-G5-20261113-R1",
+  "status": "REVISE_EXACT_DEFECT",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "reviewer_role": "FRESH_NONAUTHOR_INDEPENDENT_G5",
+  "reviewer_session": "ses_e28ef72f9ffelBx7qet6BAina3",
+  "source_pins": {
+    "B_head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+    "composed_code_cut": "c724d1a89626f3e177acd004c0be20029dc7ade4",
+    "documentary_cut": "fb061dec16c8386b9caa1b5ea75ec7645aff88a7",
+    "original_packets_commit": "227ce149fc7864c83c179a7d3ecaef2b92c5bdab",
+    "overlay_commit": "f5c43c80675f2556e1287bf55d25052d11e8746e"
+  },
+  "verdict_summary": "B01-B05 normal material first consumers and the original 43 tests pass sourcefree, but two public receipt readers accept forged ADMITTED receipts with foreign root/branch provenance. Verdict is REVISE_EXACT_DEFECT, not ACCEPT_SCOPED.",
+  "defects": [
+    {
+      "id": "G5-B04-RECEIPT-FOREIGN-ROOT",
+      "owner": "B04",
+      "first_reader": "material_operations.read_purchase",
+      "expected": "typed refusal for a receipt whose root/branch/parent do not bind to the current session",
+      "actual": "READ accepted for forged ADMITTED receipt with foreign root/branch",
+      "evidence": "evidence/g5_probe_run.log; g5_probe.py; hostile_report.json"
+    },
+    {
+      "id": "G5-B05-RENT-RECEIPT-FOREIGN-ROOT",
+      "owner": "B05",
+      "first_reader": "rolling_reproduction.read_household_obligation",
+      "expected": "typed refusal for a forged ADMITTED rent receipt with foreign root/branch",
+      "actual": "READ accepted; no cash change, but false rent evidence accepted",
+      "evidence": "evidence/g5_probe_run.log; g5_probe.py; hostile_report.json"
+    }
+  ],
+  "not_repaired": [
+    "No product code was edited.",
+    "No patch or repair loop is part of this review.",
+    "No Browser issue/session was contacted."
+  ],
+  "tested_evidence": {
+    "original_43": "43 passed in 534.18s, exit 0; evidence/b01_b05_original43.log",
+    "hostile_probe": "63 checks; exit 1 because the two forged-provenance attacks were accepted; evidence/g5_probe_run.log",
+    "cold_process": "fresh-process reopen with two purchases and one rent; no duplicate; exit 0; evidence/g5_cold_probe.log",
+    "c03_lock_order": "purchase_lock -> parent_lock; purchase PERFORMED; exit 0; evidence/g5_c03_lock_probe.log",
+    "pins": "evidence/g5_pins.log; BLOB_PINS.json"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_ONLY",
+    "science": "HELD",
+    "source_or_rights": "HELD",
+    "human_or_actor": "HELD",
+    "protected_merge": "NOT_CLAIMED",
+    "native_person_science": "NOT_CLAIMED",
+    "j1_terminal_performed_event": "NOT_REVIEWED_NOT_CLAIMED"
+  },
+  "changed_paths": [
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/00_RETURN.md",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/PROGRAMMA_DELTA.json",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/G1_G5_MATRIX.json",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/BLOB_PINS.json",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/CONTRACT_READBACK.json",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/DEFECT_WITNESS.md",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_probe.py",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_cold_probe.py",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_c03_lock_probe.py",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_collect_pins.py",
+    "WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/evidence/"
+  ],
+  "stop_condition": "Evidence-only publication on the reviewer branch, then STOP. Defect is reported to HQ/user; user decides any owner repair or Browser relay."
+}
