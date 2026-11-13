@@ -487,3 +487,58 @@ def test_agent_a_counter_preserves_q2_multislot_one_routable_semantics():
         match="Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR",
     ):
         _verify_realized_q2_body_witness(no_eligible_route)
+
+
+@pytest.mark.parametrize(
+    "attack,refusal",
+    [
+        ("q2_frontier", "Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT"),
+        ("r03_frontier", "Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT"),
+        ("source_census", "Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT"),
+        ("science_census", "Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT"),
+        ("eligible_fate_partition", "Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT"),
+    ],
+)
+def test_agent_b_r5_original_frontier_and_frozen_census_cut(
+    tmp_path, attack, refusal,
+):
+    """Reject same-source but different original S1-C/R03 frontier preimage.
+
+    Every attack keeps the source body, its SHA, Q2 emitted-key details,
+    acceptable routing witness, legal P1 operation labels, and all physical
+    saved roots unchanged. These contradictions were invisible to A R4.
+    """
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / ("agent-b-r5-" + attack)
+    )
+    assert handoff.census_audit["frontier_hash"] == compilation.frontier_hash
+    assert (handoff.census_audit["source_candidate_count"]
+            == len(handoff.operation_fates))
+    assert (handoff.census_audit["scientific_fate_count"]
+            == len(handoff.operation_fates))
+    manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    altered = dict(handoff.census_audit)
+    if attack == "q2_frontier":
+        altered["frontier_hash"] = "0" * 64
+    elif attack == "r03_frontier":
+        compilation = replace(compilation, frontier_hash="0" * 64)
+    elif attack == "source_census":
+        altered["source_candidate_count"] += 1
+    elif attack == "science_census":
+        altered["scientific_fate_count"] -= 1
+    else:
+        fate_counts = dict(altered["fate_counts"])
+        fate_counts["ELIGIBLE"] += 1
+        altered["fate_counts"] = fate_counts
+    if attack != "r03_frontier":
+        handoff = replace(handoff, census_audit=altered)
+    with pytest.raises(SourceReceiptJoinError, match=refusal):
+        join_saved_source_operation_fates(
+            handoff=handoff, estate_receipt=estate, admission=admission,
+            compilation=compilation, workload=compilation.issued.workload,
+            resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+            runner=runner,
+        )
