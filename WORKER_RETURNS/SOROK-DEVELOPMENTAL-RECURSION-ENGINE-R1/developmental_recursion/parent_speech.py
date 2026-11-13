@@ -362,13 +362,20 @@ def read_parent_utterance(session, parent_id: str, operation_id: str, *,
 
 def _utterance_by_event_or_operation(session, *, event_id=None,
                                        operation_id=None) -> dict:
+    # Two selectors identify the SAME occurrence, not competing alternatives.
+    # Previously OR would silently ignore a wrong/nonexistent selector and
+    # return the event identified by the other one.
+    if ((event_id is not None and not _text(event_id))
+            or (operation_id is not None and not _text(operation_id))
+            or (event_id is None and operation_id is None)):
+        raise RecursionRefusal("CHILD_EXPERIENCE_SELECTOR_SCHEMA")
     rows = [
         row for row in session.product.store.episodes(session.branch_id)
         if row.get("kind") == PARENT_UTTERANCE_KIND
-        and ((event_id is not None
-              and (row.get("body") or {}).get("event_id") == event_id)
-             or (operation_id is not None
-                 and (row.get("body") or {}).get("operation_id") == operation_id))
+        and (event_id is None
+             or (row.get("body") or {}).get("event_id") == event_id)
+        and (operation_id is None
+             or (row.get("body") or {}).get("operation_id") == operation_id)
     ]
     if len(rows) != 1:
         raise RecursionRefusal("CHILD_EXPERIENCE_UTTERANCE_NOT_FOUND")
@@ -516,6 +523,14 @@ def read_child_experience(session, child_id: str, *, event_id: str | None = None
 
 
 def read_child_uptake(session, child_id: str, event_id: str) -> dict:
+    """Read a genuinely admitted parent speech relative to this child.
+
+    Event self-hashing is necessary but not sufficient: the stored speech
+    episode and admission-time perception channel must agree with the event
+    and actor's actual C12 receipts. Otherwise a missing receipt must not be
+    mistaken for an originally unheard utterance, or a forged receipt used
+    to invent historical access. This is read-only sourcefree custody.
+    """
     if not _text(child_id) or not _text(event_id):
         raise RecursionRefusal("CHILD_UPTAKE_SCHEMA")
     child_alias = _child_alias(session, child_id)
@@ -528,24 +543,69 @@ def read_child_uptake(session, child_id: str, event_id: str) -> dict:
     ]
     if len(utterances) != 1:
         raise RecursionRefusal("CHILD_UPTAKE_UTTERANCE_NOT_FOUND")
-    utterance = utterances[0].get("body") or {}
-    if (utterance.get("child_actor_id") != child_id
-            or utterance.get("event_hash") is None):
+    episode = utterances[0]
+    utterance = episode.get("body") or {}
+    parent_id = utterance.get("actor_id")
+    parent_alias = utterance.get("alias")
+    root = session.read_root()["root_hash"]
+    channel = utterance.get("child_perception_channel")
+    if (utterance.get("root") != root
+            or utterance.get("branch") != session.branch_id
+            or utterance.get("child_actor_id") != child_id
+            or utterance.get("child_alias") != child_alias
+            or not _text(parent_id) or not _text(parent_alias)
+            or not _text(utterance.get("decision_id"))
+            or not _text(utterance.get("operation_id"))
+            or not _text(utterance.get("text"))
+            or channel not in {"speech", "NOT_PERCEIVED"}):
         raise RecursionRefusal("CHILD_UPTAKE_UTTERANCE_MISMATCH")
     event = session.event(event_id)
     if not event:
         raise RecursionRefusal("CHILD_UPTAKE_EVENT_SEVERED")
-    if (event.get("kind") != "SPEECH"
+    if (event.get("event_id") != event_id
+            or event.get("kind") != "SPEECH"
             or event.get("hash") != utterance.get("event_hash")
-            or event.get("actor_id") != utterance.get("alias")):
+            or event.get("actor_id") != parent_alias
+            or event.get("clock") != episode.get("clock")
+            or (event.get("body") or {}).get("text") != utterance["text"]
+            or (event.get("body") or {}).get("decision_id")
+                != utterance["decision_id"]):
         raise RecursionRefusal("CHILD_UPTAKE_NOT_SPEECH")
+    expected_source = digest({
+        "schema": PARENT_UTTERANCE_RECEIPT_SCHEMA,
+        "operation_id": utterance["operation_id"],
+        "decision_id": utterance["decision_id"],
+        "actor_id": parent_id,
+        "text": utterance["text"],
+        "clock": episode["clock"],
+    })
+    if (event.get("body") or {}).get("utterance_source") != expected_source:
+        raise RecursionRefusal("CHILD_UPTAKE_SOURCE_SEVERED")
+    # Preserve B's complete BP4 event seal (content hash plus event-ID hash).
     _verify_world_event_seal(
         event, refusal="CHILD_UPTAKE_WORLD_EVENT_UNSEALED")
-    receipt = next((
+    own = [
+        row for row in session.product.store.perceptions(
+            session.branch_id, actor_id=parent_alias)
+        if row.get("event_id") == event_id
+        and row.get("clock") == episode["clock"]
+        and row.get("channel") == "own_speech"
+    ]
+    if len(own) != 1:
+        raise RecursionRefusal("CHILD_UPTAKE_PARENT_RECEIPT_SEVERED")
+    child_receipts = [
         row for row in session.product.store.perceptions(
             session.branch_id, actor_id=child_alias)
         if row.get("event_id") == event_id
-    ), None)
+    ]
+    # The receipt stored AT ADMISSION controls whether she originally heard.
+    # Missing a historically present receipt is severance, not NONPERCEPTION.
+    if channel == "speech" and len(child_receipts) == 0:
+        raise RecursionRefusal("CHILD_UPTAKE_PERCEPTION_SEVERED")
+    if channel == "NOT_PERCEIVED" and child_receipts:
+        raise RecursionRefusal("CHILD_UPTAKE_FALSE_PERCEPTION")
+    if len(child_receipts) > 1:
+        raise RecursionRefusal("CHILD_UPTAKE_RECEIPT_DUPLICATE")
     base = {
         "schema": CHILD_UPTAKE_SCHEMA,
         "grade": UTTERANCE_GRADE,
@@ -555,10 +615,11 @@ def read_child_uptake(session, child_id: str, event_id: str) -> dict:
         "hidden_reason": "NOT_READ",
         "private_state": "NOT_READ",
     }
-    if receipt is None:
+    if channel == "NOT_PERCEIVED":
         return {**base, "status": "NOT_PERCEIVED", "event": None}
+    receipt = child_receipts[0]
     if (receipt.get("channel") != "speech"
-            or receipt.get("clock") != event.get("clock")):
+            or receipt.get("clock") != episode["clock"]):
         raise RecursionRefusal("CHILD_UPTAKE_RECEIPT_MISMATCH")
     from s45_projection.projection import project_event
     project = project_event(event)
