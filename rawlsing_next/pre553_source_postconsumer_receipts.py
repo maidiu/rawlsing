@@ -81,6 +81,48 @@ def _results(result: Any, kind: str) -> tuple[str, ...]:
     return tuple(sorted(ref.ref.key for ref in values))
 
 
+
+def _verify_realized_q2_body_witness(source_fate: Mapping[str, Any]) -> None:
+    """Check per-key Q2 emission before using its favorable summary flag.
+
+    This validates Q2 internal consistency, not independent source authority.
+    The original source-pass recorded all emission, occurrence and routing
+    details; a mutable aggregate or Boolean cannot override that evidence.
+    """
+    if (source_fate.get("disposition") != "ELIGIBLE"
+            or source_fate.get("source_realized") is not True):
+        return
+    witnesses = source_fate.get("source_realization")
+    if not isinstance(witnesses, (list, tuple)) or not witnesses:
+        raise SourceReceiptJoinError("Q2_REALIZED_OPERATION_WITHOUT_BODIES")
+    present_keys: set[str] = set()
+    supported_keys: set[str] = set()
+    unresolved_response_keys: set[str] = set()
+    for witness in witnesses:
+        if not isinstance(witness, Mapping):
+            raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+        key = witness.get("key")
+        emitted = witness.get("emitted")
+        occurrence = witness.get("occurrence_realized")
+        routing_unresolved = witness.get("routing_unresolved", False)
+        if (not isinstance(key, str) or not key
+                or type(emitted) is not int or emitted < 0
+                or type(occurrence) is not bool
+                or type(routing_unresolved) is not bool):
+            raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+        present_keys.add(key)
+        if emitted > 0 and occurrence and not routing_unresolved:
+            supported_keys.add(key)
+        if (witness.get("family") == "RespondentEvent"
+                and emitted > 0 and routing_unresolved):
+            unresolved_response_keys.add(key)
+    if (present_keys != supported_keys or unresolved_response_keys
+            or source_fate.get("unrealized_keys")
+            or source_fate.get("routing_unresolved_keys")):
+        raise SourceReceiptJoinError("Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION")
+
+
+
 def join_saved_source_operation_fates(
     *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
     admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
@@ -135,6 +177,7 @@ def join_saved_source_operation_fates(
         raise SourceReceiptJoinError("Q2_SOURCE_REALIZATION_AUDIT_MISSING")
     source_states = Counter()
     for source_fate in handoff.operation_fates:
+        _verify_realized_q2_body_witness(source_fate)
         eligible = source_fate["disposition"] == "ELIGIBLE"
         realized = source_fate.get("source_realized")
         if type(realized) is not bool:
@@ -324,6 +367,15 @@ def join_saved_source_operation_fates(
                 or source["operation_hash_matches"] is not True
                 or old.get("issued_receipt_refs") != ()):
             raise SourceReceiptJoinError("SOURCE_OPERATION_PROVENANCE_OR_PREISSUE_DRIFT")
+        original_measure = source.get("measure")
+        measure_keys = (
+            "measure_kind", "measure_id", "weight_ref",
+            "estimand", "design_ref", "variance_policy",
+        )
+        if (not isinstance(original_measure, Mapping)
+                or set(original_measure) != set(measure_keys)
+                or any(original_measure[k] != old[k] for k in measure_keys)):
+            raise SourceReceiptJoinError("Q2_MEASURE_PREIMAGE_CONTRADICTION")
         state = old["disposition"]
         if (state != dispositions[operation_id]
                 or old["claim_class"] != claim_classes[operation_id]):
