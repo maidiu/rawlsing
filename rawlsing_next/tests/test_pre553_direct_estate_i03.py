@@ -101,7 +101,8 @@ def test_original_native_carrier_execute_i03_from_cold_sourcefree_parquet(
     oracle = native._run(source, qauth, predicate, query)
     assert oracle.facts[0].typed_state == "SUPPORTED"
     root, receipt = _cold(tmp_path, candidate, source["universe"].ref, "private-native")
-    assert receipt.i02.release == source["release_ref"].key
+    assert receipt.reconstructed_v1_release_ref == source["release_ref"]
+    assert receipt.i02.release != source["release_ref"].key
     executor = _executor(root, receipt, source, qauth, predicate, query)
     # Native first consumer MUST NOT silently fall back to full C11 rebuild
     # or whole-Parquet table materialization after source is unavailable.
