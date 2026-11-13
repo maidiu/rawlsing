@@ -148,7 +148,7 @@ Retained earlier repairs and defenses (all executed in the 90-test suite): B2's 
 - No original35 native operation universe, source issuance, production issuer currentness, revocation, causal/structural effect, actor V3/persona or human-consent authority.
 - No full S2-D compact cold saved-release consumer; no 100,000-respondent/6 GiB integrated workload or economy claim.
 - No protected PRE-MAIN merge, author-branch rewrite, or W03/W04 activation.
-- Issue comments could not be posted because the available token returned HTTP 403; the committed branch/return is the durable notification (`evidence/11_ISSUE_NOTIFICATION.md`).
+- Issue comments were attempted on #919, #909 and #960; all three returned HTTP 403 for the available token. The committed branch/return is the durable notification (`evidence/11_ISSUE_NOTIFICATION.md`).
 
 **Integration unlock:** S2-E is terminal at the demonstrated sourcefree engineering grade. This acceptance explicitly unlocks the full upstream native **S2-E → durable S2-F → learned S2-G** integration, subject to the still-unbuilt actual saved-reader **S2-D** and independent combined receiving. It does not itself perform or accept that combined integration.
 

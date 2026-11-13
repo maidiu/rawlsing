@@ -1,8 +1,9 @@
 Issue notification draft — #919, #909, #960
 
-Publication status: NOT POSTED. The available fine-grained GITHUB_TOKEN returned
-HTTP 403 for issue read and issue-comment write ("Resource not accessible by
-personal access token"). The committed review branch and this return directory
+Publication status: NOT POSTED. On 2026-11-13 the available fine-grained
+GITHUB_TOKEN was used to POST one concise comment to each of #919, #909 and
+#960. All three returned HTTP 403 "Resource not accessible by personal access
+token" (the same token also returned 403 for issue reads). The committed review branch and this return directory
 are the durable notification record. The same limitation was recorded by the
 S2-B independent G5.
 
