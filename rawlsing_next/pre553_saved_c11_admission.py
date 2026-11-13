@@ -288,10 +288,28 @@ class SavedC11Admission:
         return self._estate.directory.as_posix()
 
     @property
+    def release_ref(self) -> ExactRef:
+        """Exact reconstructed historical v1 release admitted by this estate."""
+
+        return self._release_ref
+
+    @property
     def source_ref(self) -> ExactRef:
         """Exact admitted source artifact, derived from the estate's I02 root."""
 
         return self._source_ref
+
+    @property
+    def replay_ref(self) -> ExactRef:
+        """Exact native replay identity, derived from the estate's I02 root."""
+
+        kind = self._estate.i02.replay.split("|", 1)[0]
+        return _ref_from_key(self._estate.i02.replay, kind)
+
+    def check_current(self) -> None:
+        """Recheck the external current/rights callback before protected work."""
+
+        self._estate._live()
 
     def binding_receipt(self) -> SavedBindingReceipt:
         return SavedBindingReceipt(
