@@ -15,10 +15,12 @@ from typing import Any, Mapping
 from .contracts import RecursionRefusal, canonical, detached, digest
 from .parent_activity import (
     PARENT_GRADE, _parent_write_lock, _read_material, _StoreWrite,
+    parent_feasible_actions, read_parent_history,
 )
 
 PARENT_REQUEST_SCHEMA = "SOROK_PARENT_REQUEST@1"
 PARENT_PROPOSAL_SCHEMA = "SOROK_PARENT_DECISION_PROPOSAL@1"
+PARENT_PROSPECTIVE_READ_SCHEMA = "SOROK_PARENT_MATERIAL_PROSPECTIVES@1"
 PARENT_DECISION_SCHEMA = "SOROK_PARENT_DECISION@1"
 PARENT_DECISION_RECEIPT_SCHEMA = "SOROK_PARENT_DECISION_RECEIPT@1"
 PARENT_ACTION_RECEIPT_SCHEMA = "SOROK_PARENT_ACTION_RECEIPT@1"
@@ -276,6 +278,128 @@ def propose_parent_decision(session, parent_id: str, *, request: Any,
     if as_actor != parent_id:
         raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
     return _proposal(session, parent_id, _validate_request(session, request))
+
+
+
+def read_parent_material_prospectives(session, parent_id: str, *,
+                                      as_actor: str | None) -> dict:
+    """Read five conditioned alternatives WITHOUT issuing maternal volition.
+
+    This is a C03 actor-local, read-only bridge over existing C02 history,
+    P2 material activity, B02 date qualification and B03/B04 opportunity.
+    It intentionally never converts ELIGIBLE into CHOSEN/PERFORMED. Neither
+    sourcefree purchase auto-selection nor a caller request counts as
+    independently issued parent intent. Existing C03 legacy demo remains
+    separately labelled an experimental rule, not parent-owned psychology.
+    """
+    if as_actor != parent_id:
+        raise RecursionRefusal("PARENT_SELF_READ_REQUIRED")
+    current = _read_material(session, parent_id=parent_id, as_actor=parent_id)
+    feasible = parent_feasible_actions(session, parent_id, as_actor=parent_id)
+    history = read_parent_history(session, parent_id, as_actor=parent_id)
+    if (not history.get("material_consistent")
+            or history.get("root") != current["root"]
+            or history.get("branch") != current["branch"]
+            or history.get("clock") != current["clock"]
+            or history.get("material_source") != current["source"]
+            or feasible.get("source") != current["source"]
+            or feasible.get("root") != current["root"]
+            or feasible.get("branch") != current["branch"]
+            or feasible.get("clock") != current["clock"]):
+        raise RecursionRefusal("PARENT_PROSPECTIVES_SOURCE_STALE")
+
+    # A known object is a possibility in the world, not a private wish.
+    # Use the inherited B03/B04 evidence/readers, not a second market.
+    request = parent_request_fixture(kind="junior", owner_actor_id=parent_id)
+    purchase = _proposal(session, parent_id, request)
+    if (purchase.get("root") != current["root"]
+            or purchase.get("branch") != current["branch"]
+            or purchase.get("clock") != current["clock"]
+            or purchase["evaluation"]["material_source"] != current["source"]):
+        raise RecursionRefusal("PARENT_PROSPECTIVES_SOURCE_STALE")
+    purchase_eval = purchase["evaluation"]
+    choice_labels = {
+        "ADMISSIBLE": "ELIGIBLE_NOT_SELECTED",
+        "REFUSED": "MATERIALLY_INELIGIBLE",
+        "HELD": "MATERIAL_UNKNOWN_HELD",
+    }
+    purchase_status = choice_labels.get(purchase_eval["status"])
+    if purchase_status is None:
+        raise RecursionRefusal("PARENT_PROSPECTIVES_EVALUATION_INVALID")
+    options = [{
+        "candidate": "POSSIBLE_JUNIOR_PURCHASE",
+        "status": purchase_status,
+        "reasons": list(purchase_eval["reasons"]),
+        "unknowns": list(purchase_eval["unknowns"]),
+        "material_evaluation_source": purchase["source"],
+        "chosen": False,
+        "performed": False,
+    }]
+    for activity in ("PAID_WORK", "CARE_DEPENDENT", "PAY_DEBT"):
+        rows = [row for row in feasible["options"]
+                if row.get("activity") == activity]
+        if len(rows) != 1:
+            raise RecursionRefusal("PARENT_PROSPECTIVES_ACTIVITY_UNAVAILABLE")
+        row = rows[0]
+        options.append({
+            "candidate": activity,
+            "status": {
+                "ADMISSIBLE": "ELIGIBLE_NOT_SELECTED",
+                "REFUSED": "MATERIALLY_INELIGIBLE",
+                "HELD": "MATERIAL_UNKNOWN_HELD",
+            }.get(row["status"], "MATERIAL_UNKNOWN_HELD"),
+            "reasons": list(row.get("reasons") or []),
+            "unknowns": [],
+            "material_evaluation_source": feasible["source"],
+            "chosen": False,
+            "performed": False,
+        })
+    options.append({
+        "candidate": "QUIET_NONPURCHASE",
+        "status": "ELIGIBLE_NOT_SELECTED",
+        "reasons": [],
+        "unknowns": [],
+        "material_evaluation_source": current["source"],
+        "chosen": False,
+        "performed": False,
+    })
+    # Preserve chronology and actual history identity; do not expose the
+    # mother's private registration/claims as child-consumable truth.
+    historical_source = digest({
+        "root": history["root"],
+        "branch": history["branch"],
+        "clock": history["clock"],
+        "material_source": history["material_source"],
+        "history": history["history"],
+        "period_qualification": history["period_qualification"],
+    })
+    result = {
+        "schema": PARENT_PROSPECTIVE_READ_SCHEMA,
+        "grade": DECISION_GRADE,
+        "status": "CANDIDATES_ONLY_ACTOR_SELECTION_UNISSUED",
+        "actor_id": parent_id,
+        "alias": current["alias"],
+        "root": current["root"],
+        "branch": current["branch"],
+        "clock": current["clock"],
+        "material_source": current["source"],
+        "history_source": historical_source,
+        "period_qualification": history["period_qualification"],
+        "options": options,
+        "option_count": len(options),
+        "chosen_candidate": None,
+        "performed_event": None,
+        "decision_rule": "NO_PARENT_VOLITION_ISSUED",
+        "child_request": "NOT_EVALUATED",
+        "nadia_state": "NOT_READ",
+        "private_state": "NOT_EXPOSED",
+        "language_generation_owner": "NOT_IMPLEMENTED",
+        "native_science": False,
+        "first_consumer": "PARENT_OWNED_PROSPECTIVE_PERFORMER_HELD",
+    }
+    result["source"] = digest(result)
+    return result
+
 
 
 def _decision_episodes(session, alias: str, operation_id: str) -> list[dict]:
