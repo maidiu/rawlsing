@@ -1,0 +1,77 @@
+AGENT TYPE: Nativeexecution of immutableBrowser997candidate
+INTELLIGENCE LEVEL: I3 / DeepSeekMAX
+
+```text
+LAUNCH — PYAT 998 finite existing flight
+REPOSITORY: maidiu/rawlsing
+AGENT_TYPE: Existing qualified DeepSeek native executor reproducing frozen Browser997 candidate without product edits
+INTELLIGENCE_LEVEL: I3
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+EXECUTION_SURFACE: S0_S1_S2_S3
+MCR: LITE
+COMMISSION_KIND: INVESTIGATION
+CONTRACT_ID: PYAT997-NATIVE-P0-P1-PROOF-R1
+CONTRACT_SOURCE_CUT: WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_997.md@cecfc154262eaa140d003e9e704811f44b940455
+BRANCH: agent/pyat997-native-proof-r1
+STARTUP_SHA: 2c476e739a263dd0069b54706c6cfa63b07190c1
+ACTIVE_WORKER_NO_DISTURBANCE: Only S2A exclusiveauthor currentlylocal; #997 Browserproduct readonly2c476; #1006 remote readonlybaseline; uniqueproofworktree no sharedwrite
+WORK_SCOPE_AND_FLIGHT: PARENT=User commissioned S01-S05 flight997-1002; TRANCHE=Exact issue998 finite assigned deliverables below; NO_DROP=All original contract invariants and inherited functionality retained
+TERMINAL_CONSUMER_AND_EFFECT: CONSUMER=Actual native first readers and qualified downstream integration; EFFECT=Executable scoped proof or staging and exact next dependency, never unrelated model-only green
+FROZEN_ORACLE_AND_COUNTEREXAMPLE: POS=Exact issued contract actual native positive and changed restored output; NEG=Real poison refusal with conserved negative facts references receipts and authority
+EXECUTION_AND_AUTHOR_PREFLIGHT: RUNNER=Existing OpenCode Go DeepSeek Flash MAX actual local service; PREFLIGHT=Verify exact branch code and exclusive ownership then execute without duplicate discovery
+CLOSURE_AND_OUT_OF_SCOPE: ACCEPT_AT=Assigned finite issue deliverables with immutable code evidence and scoped verdict; EXCLUDE=Original35 rights minting productionCURRENT protectedmerge new architecture duplicate physical engine
+SCIENCE_SOURCE_ACTOR_AUTHORITY: Sourcefree engineering only except genuinely authenticated current source rights in1002; independent scientific and authority limits preserved
+POST_RETURN_INDEPENDENT_REVIEW: This is native evidence execution not G5; Browser997 owner and genuinely distinct reviewer receive exactactualoutput before accepting bridge or998join
+MODEL: opencode-go/deepseek-v4.1-flash#max
+PROVIDER/EDITOR_HARNESS: Existing local OpenCode service unchanged; account quota costs UNKNOWN no switch authorized
+
+WORKTREE: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-native-proof
+EXCLUSIVE WRITES: NEW WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/ ONLY, including ownlocalproofharness/fixtures/logs/receipt. All productcode/tests/Browserreturns/acceptedS2C-D/science/source/otherworktrees READONLY. No codefixes or competingbridgeauthor.
+
+Existing HQ997-1002flight native qualification, not replacementBrowserHQ. #997's two Browseractors have nowreturned immutable source/testcandidate PR1024HEAD2c476e739a263dd0069b54706c6cfa63b07190c1, executableproduct534fb6602cce60fd991abd7972ebd95c92f3146c. LastBrowserBexplicitly says stop speculative rounds and execute nativeP0/P1 onqualifiedhost; no actual native run/launchreceipt recorded. This work is the indispensable native evidence missing from original997, notnewarchitecture/duplicateproducer/oldW03or1006benchmark. Candidate staysisolated here, neverimportinto998untilqualifiedimmutableacceptance.
+
+FIRST read exactcandidate WORKER_RETURNS/PYAT997_S1E_BROWSER_B_R5/00_HANDOFF.md, originalA/B/counterhandoffs and fulloriginalissue997 pinned inHQ sources. IdentifyactualP0producer/P1sidecar and existing tests. Use existing qualifiedlocalPython3.11/PyArrow/pyreadstat/DuckDB runtime, or existingRunningLimas2b withuniqueproofdir if platformrequires; no environment/VM/provider/model/account/effort/region/config switch/install/newpaidservice. Verifysourcefilehashes/import/cwdexactcandidate. No respondent/original35 sourcebytes; TEST_ONLY generated SAV/DTAfixtures only.
+
+Execute actual repositorytests from B handoff:
+python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py rawlsing_next/tests/test_pyat960_s1e_source_i02.py rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py
+Logactualnodecounts/errors/results. Isolatedpredicate mirrors areNOTnativeproof. No weakening/deleting/skipping tests ormonkeypatchingactualnativeconsumers toforcegreen. Ifpreexistingtest/runtimefailure, bankexactrunnablecounterexample/sourcepositions andcontinueindependentunaffectedpositivewherepossible; no source/testrepaironthisreadonlycommission. P0firstconsumerhighestpriority, thenP1existingjoinedproof.
+
+Required nativechain scope from997P0/P1: actualgeneratedsourcephysicalprojection->Q2 singledecodebodytee->all13familiesS2CphysicalParquet+externalI02->producerexit/freshprocesscoldS2D actualI03/I05/Batch, fullfacts/negative/denom/risk/usedrefs/replay and source/releaseidentity. ChangedlegitimateTEST_ONLYsourcevalue -> differentactualnativefact -> exactrestore. P1 originalR03frontier/census/claims/fates immutable preconsumerhandoff joinedactualnativeissuedreceipt/operationfates underrealTEST_ONLYruntimeissuer, allHELD/pending/UNKNOWN conserved, no nativeauthority fromselfhash. FullFrontierHash/fatepartitionmutations refusebeforepositiveattribution. Exactsourceopens/decodes/cellpasses <=1producerread, no secondwholeC11graph/savedbodycorpus. No original35license/science/CURRENTproduction. Smallboundedfixtures, no100k/fullperformancecourt; measure process-treeRSS, retained/peakstaging, actualsourceopens/familycounts andcoldrepeat/resources peroriginal997G4 asavailable, honestcounterlimits. Do notrun#1006baselineornewstoragecomparison.
+
+If existingtests trulycoverfirstconsumer/exit/change/restore/fates, reuse them andlinkactualassertions/logs. If requiredmissing executable witness, add own harness ONLY under ownreturndirectory to driveexistingpublicAPIs fromsettledcontract, notnewproducttests/APIs. If no frozeninterfacecanrealizeoriginal997positive, exactREVISEwithsmallestactualfirstreaderfailure anddeliver Browserowner; don'tinventanotherengine orscope. Consequentialnewarchitecture/science/authoritychoice -> exactBrowserHighquestionforuser, notDeepSeekdecision.
+
+Emit machine receipt G1-G4actualproof/NOT_RUNlimits, code/testblobpins, commands/stdout/JUnitwhereavailable, actualcoldnativeoutputs/change/restorerefs, no-lossandnegativewitnesses, source/resourceaccounting, smallestmaterialdefectifany. Engineering, scientific, and authority courts must be reported separately. This is nativeexecutor evidence, NOT independentG5oraccepted997/998. Do notchangeBrowserG5requirements. Freezecommit/pushownreturn-onlybranch/directremotereadback. No productedit/acceptedphysicalschemachange. ExistingS2ADeepSeekauthor ses_e3120b9efffegreD5YfH7dOO15 repairsseparatesource descendant; yourcandidateusesoriginalacceptednativeI03whichalreadyrefusesselectorpoison, do notstealS2Afix. SameS2Areviewer reservedseparately. No pollingloops/goalwakes; finitecompletionnotificationonly. GoalwakeupsPAUSED.
+
+ORIGINAL997CONTRACT:
+# PYAT R3 existing S1-E / P1-06+P1-07 — SOURCEFREE COMPLETE PRODUCER→PERSISTED BODY→FIRST-CONSUMER FATE JOIN
+**COMMISSION KIND:** implement original #918 S1-E remaining G1–G5 (not a twenty-first packet). **EXECUTION:** two genuinely independent Browser A/B actors, then A finite counter if material, **distinct nonauthor G5**, exact immutable returns. **STATUS:** PREPARED FOR REAL LEASED DISPATCH, **NO AGENT LAUNCHED BY THIS ISSUE**. Original scope governed by [#918 S1-E](https://github.com/maidiu/rawlsing/issues/918), [#909 R3C/R3S](https://github.com/maidiu/rawlsing/issues/909), Oct28 source-authoritative compact architecture, MCR-lite. Human requests progress toward S01–S05, NOT a new physical architecture.
+
+## Pinned accepted capital (read-only, no reprise)
+- S1-B source config/decoder sourcefree code `dedd2fb8a1f5842910a0dc842fe75b3618c23443` / G5 `802603db0113b92a52f024116c4583791c8122dd`.
+- S1-C sourcefree operation-fate/eligible 309→150 code `dae66cdf9f3846d237e0b1c3069cc17eb05b7746` / G5 `9faeac2b0a54db2866449d03064814a48462c681`; false-HELD + pending-overissue refusal.
+- S1-D CURRENT/issued sourcefree code `06c1213149e4649c62dcb6133669dec90cd4d29f` / G5 `684b288f192b9d2211f3d01c73a292eaa154fe97`; no native/production issuer.
+- **Q2/S1-E prior scoped compatibility code** `8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94` / G5 `41f479315cd42b31c28b4f4c91d225207f119c8f`: one source snapshot/decode/cellpass, 13-family body tee, direct I02, one **IN-MEMORY** compatibility full-C11 release, genuine compiled plan/native I03 and Batch, changed/restore; **no persisted saved body and its handoff.operation_fates has issued_receipt_refs=() and native HOLD**.
+- S2-B external direct I02 code `092db6bc50a6f256756edf8ab1e95981e2d95abe` / independent G5 `96ad0fe202ad7cbe5ea98d5e055c010a944b0a79` (do not inherit stale S2-D reviewer text calling recheck pending).
+- **S2-C physical 13-family Parquet/Zstd writer & cold I03** accepted `b7b697b69f0acea12174937ee824c19ac34ac284`, tree `dc416d1f23100d4d52b19bc2120226964bc0be43`; G5 #990 terminal. `pre553_source_direct_parquet_estate.py`, its writer/reader, `pre553_direct_estate_i03.py` and tests are **READONLY**.
+- **S2-D all seven saved native first readers** accepted code `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969` / G5 `ba8d760cd8e31a9baff9b45698bd4117f4baa456`; accepted G4 only bounded 4-respondent Darwin TEST_ONLY. I03, I05, Batch, NORMAL, COMPLETED, PARTIAL, ABSENT READONLY.
+- S2-E native F1–F4/I05 accepted `81a764cc7eac960f0fd607d9c3fe62428905daa4` (B2 test-only `7b19a242...`) / G5 `295619ea1cb57396899f759514d554061cb58ad9`. S2-F/G and four-packet #980 are accepted *separately*, not evidence of complete joined native chain.
+
+## The exact unfinished original S1-E seam (actual Phase0 finding)
+`SourceI02Handoff.body_transport` at accepted Q2 emits a typed body sink/statistics, while S2-C `write_direct_estate(source: SourcefreeDirectI02Sections,...)` needs the real 13-family sections; copying summaries is not a body transport, and second decode/source read is prohibited. `operation_fates.issued_receipt_refs` remains empty/preconsumer; compiled native first-consumer receipts exist **outside** the Q2 handoff. Bridge both seams without inventing issuer/science authority or copying a full C11 graph. See [S2-D Phase0 exact receipt](https://github.com/maidiu/rawlsing/blob/585cb21d39ea5b1dcc1c121633fa7e07f5650280/WORKER_RETURNS/PYAT991_S2D_PREFLIGHT/receipt.json).
+
+## Browser A — original S1-E cross-pair author
+First independently read originals, actual code, and 13-family source producer/physical writer/issued native reader. Verify live HEADs and exclusive lease. Own **NEW S1-E bridge module(s), new focused tests and own return only** by default. Any indispensable edit to existing S1-C/S1-E/S1-D paths requires an explicit *narrow* owner handoff first. Freeze allowed file set; do not edit S2-C, S2-D, I03/I05, native science, accepted author branches.
+Implement one **actual lossless, bounded single-projection 13-family sections/iterator bridge from Q2 source output** into the accepted `write_direct_estate` with correct externally held source/I02/replay/manifest/root identity, and sourcefree S1-C compiled qualified source/operation -> persisted cold C11 -> existing S2-D native I03/I05/Batch/NORMAL and real resume first consumers **from the same source**. Prove **one source physical snapshot/decode/cellpass and no second source parse, no eager whole C11 graph, no second persistent corpus**. Preserve per-family body (not statistics alone), conditional/routing/occurrence/owner/weight/design/estimand and scientific negative states.
+Define an exact immutable postconsumer receipt/fate **JOIN** keyed by all source+operation+issuer+release+native consumer identities: every eligible/completed output has its authentic existing issuer/native receipt; HELD/UNKNOWN/INAPPLICABLE/DEFERRED/UNAVAILABLE and eligible-but-not-executed remain explicit with no false positive. Do not mutate canonical preconsumer handoff and do not mint backdated receipts. The accepted Q2 S1-E adapter may be extended ONLY via separate, lease-approved new integration code; source-authority absence remains HOLD.
+Run sourcefree normal→changed valid source cell or qualified operation (changes actual I03 fact and downstream Batch/F4)→exact restore; sever any body family, forge wrong root/current/source, drop an eligible issued receipt or mutate a HELD fate, and demonstrate native first-reader typed refusal. Run full original 35-source ID/18,276 item/18,413 slot/26 unjoined count **as historical no-drop ledger** (not original35 source execution). Resource counters source opens, 13-family yields, full-C11 builds, stages/disk, RSS; no 100k/6GiB claim at tiny fixture.
+
+## Browser B — independent hostile opposite/repair
+Do NOT merely accept A's summary. Inspect original #918 S1-E and accepted S1-C/S2-B/C/D first. Challenge strongest *actual* reader falsifiers: wrong body-sink contract, missing section tail/duplicate event, rehashed intact manifest hiding one deleted body row, source decoded twice, detached authority/weight/measurement, wrong partial fates and fake native receipt joins, I05 false supported, F4 coexposure denominator drift, CURRENT/revocation after first reader, collapsed UNKNOWN/HELD, fake entire35. Reproduce with a runnable native saved release. Repair A's **same code descendant** once where possible; exact RED→GREEN plus restoration. No alternative engine.
+A counter: one bounded fresh best native witness, preserve B corrections and freeze exact source code cut. Independent **distinct nonauthor G5** runs sourcefree full original S1-E G1–G5 against frozen cut and source-to-physical-to-issued/receipt/fate first-reader chain, not just an I03 smoke test.
+
+## Mandatory verdict, closure and ownership
+`ACCEPT_SCOPED@S1E_SOURCEFREE_SINGLE_PASS_SAVED_FIRST_CONSUMER_FATE_JOIN` only when actual saved + native + receipt join is independently executed, input/output/no-drop and negatives intact, G4 cost honest. `REVISE_EXACT_DEFECT` only with executable violating original condition; `HOLD_EXTERNAL` for original35/current issuer/source rights if they are actually indispensable. **Original35 SCIENCE/RIGHTS and full production S1-E remain OPEN** even after sourcefree scoped acceptance. Stop at R3S; no extra A/B campaigns.
+
+**Dependencies/ownership:** Browser owns bridge only; S2-C physical and S2-D accepted engine frozen. Partner [sourcefree vertical Codex receiving commission] is separately staged, **do not concurrently write its integration branch**. Keep live source/authority slots qualified; no raw private source copied to GitHub. Return links, exact SHAs, model/actor/lease, 13-family/source-open/resource receipts, first-reader witness and independent G5 to #918/#909/#960.
+
+```
