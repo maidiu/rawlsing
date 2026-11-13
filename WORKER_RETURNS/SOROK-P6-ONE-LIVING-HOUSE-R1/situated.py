@@ -133,6 +133,96 @@ def interaction_quiet(session, world, house, cues):
 
 
 
+def _owner_current_interval(session, interval, world):
+    """Return the latest owner-issued interval state for this exact request."""
+    if type(interval) is not dict:
+        return None
+    start, end = interval.get("start"), interval.get("end")
+    if type(start) is not int or type(end) is not int or start > end:
+        return None
+    reader = getattr(session, "read_interval_states", None)
+    if not callable(reader):
+        return None
+    try:
+        states = reader()
+    except Exception:
+        return None
+    if not isinstance(states, list) or not states:
+        return None
+    state = states[-1]
+    if (not isinstance(state, dict)
+            or state.get("currentness") != "CURRENT"
+            or state.get("start") != start
+            or state.get("end") != end
+            or state.get("end") != world.clock
+            or state.get("root_hash") != session.read_root()["root_hash"]
+            or state.get("branch_id") != session.branch_id
+            or state.get("actor_id") != world.actor_state["A"]["actor_id"]):
+        return None
+    return state
+
+
+def _bound_interval_receipt(source_receipt, state):
+    """Require the caller's receipt to be this owner-issued interval episode."""
+    if not isinstance(source_receipt, dict):
+        return False
+    receipt_interval = source_receipt.get("interval")
+    if not isinstance(receipt_interval, dict):
+        return False
+    for key in ("state_id", "receipt_hash", "episode_id", "domain_issuance_id"):
+        value = receipt_interval.get(key)
+        if not isinstance(value, str) or not value or state.get(key) != value:
+            return False
+    return (
+        receipt_interval.get("start") == state.get("start")
+        and receipt_interval.get("end") == state.get("end")
+        and receipt_interval.get("root_hash") == state.get("root_hash")
+        and receipt_interval.get("branch_id") == state.get("branch_id")
+        and receipt_interval.get("actor_id") == state.get("actor_id")
+    )
+
+
+def _current_operation_conduct(session, state, event):
+    """Return the unique outward conduct committed inside this interval's operation."""
+    if not isinstance(event, dict) or not isinstance(event.get("event_id"), str):
+        return None
+    try:
+        episodes = session.product.store.episodes(session.branch_id)
+        user_episodes = session.episodes(session.meta["user_actor"])
+    except Exception:
+        return None
+    state_index = next((
+        index for index, row in enumerate(episodes)
+        if row.get("kind") == "S46_INTERVAL_STATE"
+        and row.get("episode_id") == state.get("episode_id")
+    ), None)
+    if state_index is None:
+        return None
+    previous_index = next((
+        index for index in range(state_index - 1, -1, -1)
+        if episodes[index].get("kind") == "S46_INTERVAL_STATE"
+    ), -1)
+    window_ids = {
+        row.get("episode_id") for row in episodes[previous_index + 1:state_index]
+    }
+    conducts = [
+        row for row in user_episodes
+        if row.get("kind") == "P6_HOUSE_CONDUCT"
+        and row.get("episode_id") in window_ids
+    ]
+    if len(conducts) != 1:
+        return None
+    parent = conducts[0]
+    if (parent.get("clock") != state.get("start")
+            or parent.get("clock") != event.get("clock")
+            or parent.get("body") != {
+                "event_id": event["event_id"],
+                "operation": event["kind"],
+            }):
+        return None
+    return parent
+
+
 def current_p3_actor_access(session, interval, world, house, packet, *, source_receipt=None, evidence_out=None):
     """Proof of current actor access for the optional TEST_ONLY P3 reader.
 
@@ -142,7 +232,11 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
     checkpointed sensory conditions. Ordinary self-actions and speech need
     current-interval actor perception, not merely a recent-history list entry.
 
-    This is evidence provenance, not a semantic psychological trigger matcher.
+    The authority is the latest owner-issued S46 interval state, not any pair of
+    caller-editable interval fields. The receipt must be that exact state, and
+    an outward event must be the unique conduct committed inside the operation
+    that produced it. This is evidence provenance, not a semantic psychological
+    trigger matcher.
     """
     from outward import sensory_candidate
 
@@ -151,6 +245,11 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
         raise ValueError("P6_P3_ACCESS_INTERVAL_INVALID")
     if evidence_out is not None and type(evidence_out) is not list:
         raise ValueError("P6_P3_ACCESS_EVIDENCE_SINK_INVALID")
+
+    owned = _owner_current_interval(session, interval, world)
+    if owned is None or not _bound_interval_receipt(source_receipt, owned):
+        return False
+    start, end = owned["start"], owned["end"]
 
     def admitted(event, basis):
         # World provenance is separate from the P3 record readset.
@@ -161,6 +260,8 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
                 "event_id": event["event_id"], "event_hash": event["hash"],
                 "clock": event["clock"], "basis": basis,
                 "grade": "SOURCEFREE_TEST_ONLY",
+                "interval_state_id": owned["state_id"],
+                "interval_episode_id": owned["episode_id"],
             })
         return True
 
@@ -205,16 +306,9 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
         if (cue == current_outward and current_performed == event
                 and event.get("actor_id") == session.meta["user_actor"]
                 and sensory_candidate(event, world, house) == cue):
-            # The world-side source also requires an exact conduct parent.
-            if any(
-                ep.get("kind") == "P6_HOUSE_CONDUCT"
-                and ep.get("clock") == event["clock"]
-                and ep.get("body") == {
-                    "event_id": event["event_id"],
-                    "operation": event["kind"],
-                }
-                for ep in session.episodes(session.meta["user_actor"])
-            ):
+            # The world-side source also requires the unique conduct of the
+            # operation that produced this owner-issued interval.
+            if _current_operation_conduct(session, owned, event) is not None:
                 return admitted(event, "P6_OUTWARD_CURRENT_OPERATION_DERIVED")
 
     # For near-term lists, require the exact rows reissued by the existing
