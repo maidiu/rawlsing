@@ -1,0 +1,498 @@
+{
+  "schema": "PYAT1002_SOURCE_RIGHTS_RECEIPT@1.0.0",
+  "contract_id": "PYAT1002-EXISTING-FLIGHT-R1",
+  "issue": 1002,
+  "branch": "agent/pyat1002-source-steward-r1",
+  "startup_sha": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94",
+  "contract_source_cut": "cecfc154262eaa140d003e9e704811f44b940455",
+  "issue_file_sha256": "359c5db93a49a8bb37fd2d86987fa6618231d29300c3a8a40bfcd9c3556238e0",
+  "historical_source_cut": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+  "status": "HOLD_EXTERNAL",
+  "native_source_verdict": "NATIVE_SOURCE_ISSUER_HOLD",
+  "evidence_grade": "PREFLIGHT_METADATA_RIGHTS_INVENTORY_ONLY",
+  "integration": "UNMERGED",
+  "stop_state": "HOLD_EXTERNAL",
+  "engineering_court": {
+    "state": "PASS",
+    "scope": "35-row original35 source metadata/rights/custody inventory",
+    "receipts": [
+      "35 exact source IDs and the 18,276/18,413/18,250/26 historical ledger preserved",
+      "35 exact source configurations parsed; no current source-use grant located",
+      "35 exact-filename artifacts present with matching historical byte sizes",
+      "0 source bytes opened/read/hashed; metadata-only inspection"
+    ]
+  },
+  "scientific_court": {
+    "state": "NOT_RUN",
+    "reason": "NO_CURRENT_AUTHORIZED_SOURCE",
+    "receipts": [
+      "source-native positive: NOT_RUN",
+      "U/Epre claim-graded operation: NOT_RUN",
+      "persisted I02: NOT_RUN",
+      "first I03 native fact: NOT_RUN",
+      "RAW/population/temporal/causal claims: NOT_RUN/NOT_AUTHORIZED"
+    ]
+  },
+  "authority_court": {
+    "state": "HOLD_EXTERNAL",
+    "decision_counts": {
+      "AUTHORIZED_FOR_THIS_HOST_PURPOSE": 0,
+      "DENIED": 0,
+      "EXPIRED": 0,
+      "NOT_LOCATED": 0,
+      "UNKNOWN_OWNER_DECISION": 35
+    },
+    "minimal_missing_witness": "One exact current IssuedSourceReadDecision from the competent source owner for SRC04 (or another exact source), including permission refs, host/purpose/consumer-use/semantic-scope, metadata freeze refs, retention/export limits, effective interval, currentness and revocation."
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Contract pinned; 35-row matrix; permission-proof search; historical authority separated from current permission; one exact grant request."
+    },
+    "G2": {
+      "state": "NOT_RUN",
+      "receipt": "No current authorized source; no source-native read or changed/restored positive."
+    },
+    "G3": {
+      "state": "NOT_RUN",
+      "receipt": "No current authorized source; no native hostile-negative court was entered."
+    },
+    "G4": {
+      "state": "NOT_APPLICABLE_PROVED",
+      "receipt": "Read-only metadata inventory; no persistent source-native artifact and no durability/resource claim; 0 source bytes read."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "receipt": "No source-native positive; this is an author return; distinct nonauthor receiving remains pending."
+    }
+  },
+  "counts": {
+    "sources": 35,
+    "authorized_for_this_host_purpose": 0,
+    "denied": 0,
+    "expired": 0,
+    "not_located": 0,
+    "unknown_owner_decision": 35,
+    "source_artifacts_present": 35,
+    "source_size_match": 35,
+    "current_source_use_grants_located": 0,
+    "source_native_positives_executed": 0,
+    "u_epre_claim_graded_operations_executed": 0,
+    "i02_persisted": 0,
+    "first_i03_native_facts": 0
+  },
+  "historical_ledger": {
+    "source_ids": [
+      "SRC01",
+      "SRC02",
+      "SRC03",
+      "SRC04",
+      "SRC05",
+      "SRC06",
+      "SRC07",
+      "SRC08",
+      "SRC09",
+      "SRC10",
+      "SRC11",
+      "SRC12",
+      "SRC13",
+      "SRC14",
+      "SRC15",
+      "SRC16",
+      "SRC17",
+      "SRC18",
+      "SRC19",
+      "SRC20",
+      "SRC21",
+      "SRC22",
+      "SRC23",
+      "SRC24",
+      "SRC25",
+      "SRC26",
+      "SRC27",
+      "SRC28",
+      "SRC29",
+      "SRC30",
+      "SRC31",
+      "SRC32",
+      "SRC33",
+      "SRC34",
+      "SRC35"
+    ],
+    "source_count": 35,
+    "original_items": 18276,
+    "physical_slots": 18413,
+    "exact_relation_matches": 18250,
+    "unjoined_count": 26,
+    "unjoined_by_source": {
+      "SRC01": 3,
+      "SRC24": 18,
+      "SRC26": 5
+    },
+    "unjoined_status": "PREPARATION_HELD__NOT_SCIENCE",
+    "unjoined_items": [
+      [
+        "SRC01",
+        "question_impl.phase0.238565c640e3d79b72d0"
+      ],
+      [
+        "SRC01",
+        "question_impl.phase0.c1b201b575e7490270a8"
+      ],
+      [
+        "SRC01",
+        "question_impl.phase0.e8a81e3fdbb1f7e81e74"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.0fa0a9f546132c54f98c"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.1f60935613eb8655add9"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.23f75ff1ae9fa5f9e832"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.30e308d2f5b1add44a69"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.339be33bf48093941579"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.62f74db198472da0b525"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.715c3c525b8d7aea42cc"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.7207b6d4db8252fc0c90"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.7d541ce591ee2c5b7920"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.7dbb9eae2776776e6ea9"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.9147f6bcfc5d312f0ffd"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.a4d13df93b0b5f774305"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.b347c6c99a427d8b7c48"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.b5595cebe965f664cb27"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.e02d1acbdbe0dd0d28ca"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.e8dc88eb458ddb593acd"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.ec543f8a2afb10e7974a"
+      ],
+      [
+        "SRC24",
+        "question_impl.phase0.f86530d3805d17e8e918"
+      ],
+      [
+        "SRC26",
+        "question_impl.phase0.50b49a78bd42f4ccc762"
+      ],
+      [
+        "SRC26",
+        "question_impl.phase0.79ced092c7ce65377c1c"
+      ],
+      [
+        "SRC26",
+        "question_impl.phase0.8399e795f61d5c853609"
+      ],
+      [
+        "SRC26",
+        "question_impl.phase0.9e4cec8d21b7bd803dd5"
+      ],
+      [
+        "SRC26",
+        "question_impl.phase0.f90eff21049e70ac36bf"
+      ]
+    ],
+    "ledger_note": "These are historical implementation/physical-slot identities; they are not respondent counts, executable operations or science compliance."
+  },
+  "source_open_evidence": {
+    "source_files_stat_checked": 35,
+    "source_files_opened": 0,
+    "source_bytes_read": 0,
+    "source_bytes_hashed": 0,
+    "source_decode_attempts": 0,
+    "source_read_decisions_issued_by_this_return": 0,
+    "source_native_executions": 0,
+    "note": "Only stat metadata and already-existing metadata/config artifacts were inspected. No SAV/DTA bytes were opened, read, decoded or hashed."
+  },
+  "permission_proof_search": {
+    "declared_roots_searched": [
+      "R157 source_pre553_validation + SOURCE_PRE553_PLAN at 1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+      "R157 rawlsing_next/source_configuration at the same cut",
+      "PYAT_CONTROL_ROOM / control WHOLE_MACHINE_COMPLETION estate matrix",
+      "local Rawlsing manual_authority packets",
+      "local R157 source-library artifact names/sizes under RAWLSING_LOCAL_DATA_ROOT"
+    ],
+    "findings": [
+      {
+        "ref": "SOURCE_PRE553_PLAN/evidence/PER_SOURCE_READINESS.csv",
+        "result": "35/35 response_execution_permission=NOT_ADJUDICATED_BY_ASSESSMENT"
+      },
+      {
+        "ref": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+        "result": "35 metadata identities; no source-use grant"
+      },
+      {
+        "ref": "35 original source configs at 1924499",
+        "result": "top-level execution_grant/source_permission absent/null; authority snapshots are preparation/replay/protocol only"
+      },
+      {
+        "ref": "rawlsing_next/source_configuration/README.md",
+        "result": "original-source execution is a separate permission/issuance boundary; original-plan opens no source bytes"
+      },
+      {
+        "ref": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+        "result": "precommit_status=WORKING_EVIDENCE_INVENTORY__NOT_OPERATIVE_SOURCE_GRANT; no raw source touched"
+      },
+      {
+        "ref": "local manual-authority packets",
+        "result": "semantic/manual authority only; no respondent-data licence or current source-use decision"
+      },
+      {
+        "ref": "local artifact stat",
+        "result": "35/35 present and size-matched; filesystem presence is not permission"
+      },
+      {
+        "ref": "source_pre553_validation/integration/EXCEPTION_AGGREGATE.json",
+        "result": "Original respondent execution and original workload issuance are a separate permission boundary"
+      },
+      {
+        "ref": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+        "result": "Prior row authority is recovered evidence with original grades, not current execution permission"
+      }
+    ],
+    "no_current_source_use_grant_located": true,
+    "no_source_license_or_permission_artifact_located_in_declared_roots": true,
+    "not_a_global_web_search": true,
+    "not_a_denial": true,
+    "bounded_search_limit": "If a current grant exists outside the declared roots, it must be supplied explicitly; this return cannot see it and does not call it denied."
+  },
+  "historical_src04_src17": {
+    "finding": "The inspected SRC04/SRC17 PASS artifacts are nonrespondent fixture releases, not original respondent execution.",
+    "src04": {
+      "validation_results": "source_pre553_validation/SRC04/VALIDATION_RESULTS.json",
+      "physical_row_expansion": "NOT_PERFORMED",
+      "fixture_id": "R157-ARAB-SRC04-NONRESPONDENT",
+      "fixture_rows": 8,
+      "release_object_id": "R157_FIXTURE_RELEASE/SRC04",
+      "original_respondent_positive": "NONE_LOCATED"
+    },
+    "src17": {
+      "manifest": "source_pre553_validation/SRC17/SRC17.manifest.json",
+      "limits": [
+        "Original GSS respondent execution is NOT performed or claimed.",
+        "The positive native release is from a distinct nonrespondent fixture config and fixture bytes.",
+        "Original construction requires permitted decode-produced row_native_keys and remains P3 reader/transport work.",
+        "No cross-wave equivalence, pooling, canonical mapping, weight authorization or population claim is asserted."
+      ],
+      "release_object_id": "R157_GSS_FIXTURE_RELEASE/SRC17",
+      "response_bound_items": 279,
+      "held_items": 60,
+      "original_respondent_positive": "NONE_LOCATED"
+    }
+  },
+  "highest_impact_grant": {
+    "source_id": "SRC04",
+    "why": "Smallest existing fixture-positive supported slice; 181 items, 178 response slots, 7,337 rows, no configured weight slot; an engineering first-reader unlock, not scientific completeness.",
+    "competent_actor": "Arab Barometer principal investigator/data steward or authorized Arab Barometer archive with authority over the exact SAV; not the local operator, HQ, a model, a filesystem mount or a user GO to sourcefree engineering.",
+    "request": {
+      "source_id": "SRC04",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "source_format": "SAV",
+      "custody_locator_binding": "SRC04_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+      "host": "RAWLSING_LOCAL_DARWIN_SOURCE_HOST",
+      "purpose": "PYAT1002_SOURCE_NATIVE_S01_S02_FIRST_READ_VALIDATION",
+      "consumer_use": "NATIVE_FIRST_READER_I02_I03_ENGINEERING_VALIDATION",
+      "read_operation": "SOURCE_RESPONSE_DECODE",
+      "physical_read_extent": "EXACT_FILE",
+      "metadata_freeze_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC04_PHYSICAL_METADATA.json",
+          "content_hash": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb"
+        }
+      ],
+      "semantic_use_scope": [
+        "SOURCE_NATIVE_SELECTED_COLUMN_DECODE",
+        "U_EPRE_CLAIM_GRADED_OPERATION",
+        "RAW_INCIDENCE_LOCAL_ONLY"
+      ]
+    },
+    "required_decision": {
+      "decision_ref": "EXTERNAL_EXACT_DECISION_REF_REQUIRED",
+      "source_permission_refs": [
+        "EXTERNAL_EXACT_PERMISSION_REF_REQUIRED"
+      ],
+      "currentness": "CURRENT_GRANTED",
+      "effective_interval": "2026-11-14T00:00:00Z/2026-12-14T23:59:59Z",
+      "revocation_ref": null,
+      "retention_export_limits": {
+        "raw_source_bytes": "LOCAL_ONLY_NO_PUBLIC_EXPORT",
+        "derived_respondent_level": "LOCAL_ONLY_NO_PUBLIC_EXPORT",
+        "derived_aggregate_typed_receipt": "PUBLIC_SAFE_ALLOWED_NO_RESPONDENT_IDS",
+        "retention_after_independent_receipt": "30_DAYS",
+        "delete_on_revocation": "IMMEDIATE"
+      }
+    },
+    "not_granted_here": true,
+    "placeholder_rule": "Only the competent issuer can replace EXTERNAL_EXACT_* placeholders with exact authenticated refs; placeholders are never proof."
+  },
+  "failures": [
+    "No current competent source-use grant or permission proof located for any of the 35.",
+    "Host authentication not established; the local Darwin workstation is not a signed source host.",
+    "Current source bytes were not re-hashed; historical hash plus current size match is not a cryptographic currentness proof.",
+    "No source-native positive, U/Epre operation, I02 persistence or first I03 fact.",
+    "The inspected SRC04/SRC17 PASS artifacts are nonrespondent fixtures, not original respondent execution.",
+    "The permission search is bounded to declared roots; an external grant could exist and must be supplied explicitly.",
+    "No independent G5; this return is author-only and self-accepting nothing."
+  ],
+  "next_indispensable_dependency": [
+    "Exact current IssuedSourceReadDecision from the competent SRC04 owner matching the request in 04_ONE_HIGHEST_IMPACT_GRANT.md.",
+    "Only after grant: authorized selected-column native source-positive plus U/Epre claim-graded operation through existing compatible owners.",
+    "Only after positive: distinct nonauthor G5 at the exact positive SHA; no self-accept."
+  ],
+  "independent_receiving": {
+    "state": "NOT_RUN",
+    "required_reviewer": "999 or another qualified nonauthor distinct from this author; staging 998 and any native source-positive require subsequent qualified receiving.",
+    "self_review": false
+  },
+  "preserved_holds": [
+    "original35 source/science/host rights HOLD",
+    "production CURRENT HOLD",
+    "protected merge/protected receiving not performed",
+    "W03/W04 still paused/not restarted",
+    "Browser #997 and Codex #998 accepted S2-C/D/math/science read-only",
+    "no replacement bridge/engine/issuer/licence/admin system",
+    "no new paid source, no new web scraping, no respondent bytes uploaded",
+    "no model/provider/account/effort/region/harness/VM change",
+    "no code/tests/product files changed"
+  ],
+  "not_done": [
+    "No source-native execution; no source open/decode/hash.",
+    "No U/Epre claim-graded operation; no I02; no first I03 fact.",
+    "No new source grant, licence, issuer or scientific authority.",
+    "No protected merge or production CURRENT.",
+    "No old evidence edited and no existing test weakened."
+  ],
+  "commands": [
+    {
+      "command": "git rev-parse HEAD",
+      "result": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94"
+    },
+    {
+      "command": "git show 1924499...:SOURCE_PRE553_PLAN/evidence/PER_SOURCE_READINESS.csv",
+      "result": "35 rows; all response_execution_permission=NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    {
+      "command": "git show 1924499...:rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+      "result": "35 source identities, hashes and metadata; no source-use grant"
+    },
+    {
+      "command": "python3 parse of SOURCE_LIBRARY_INDEX + 35 original configs + PER_SOURCE_GAPS",
+      "result": "35-row matrix; no current grant; historical replay summary captured"
+    },
+    {
+      "command": "python3 os.stat over RAWLSING_LOCAL_DATA_ROOT",
+      "result": "35/35 present; 35/35 size match; 0 bytes opened/read/hashed"
+    },
+    {
+      "command": "git show 1924499...:source_pre553_validation/SRC04/VALIDATION_RESULTS.json",
+      "result": "fixture release R157_FIXTURE_RELEASE/SRC04; physical_row_expansion=NOT_PERFORMED"
+    },
+    {
+      "command": "git show 1924499...:source_pre553_validation/SRC17/SRC17.manifest.json",
+      "result": "original respondent execution NOT performed or claimed; distinct nonrespondent fixture release"
+    },
+    {
+      "command": "bounded rg search for licence/permission/data-use/retention/expiry/revocation artifacts",
+      "result": "no current source-use grant located in declared roots; not a global web search"
+    },
+    {
+      "command": "no source read, no code/test execution",
+      "result": "read-only metadata/rights inventory only"
+    }
+  ],
+  "return_files": [
+    {
+      "path": "00_HANDOFF.md",
+      "bytes": 12756,
+      "sha256": "4e0d1b630c559238f9ce4ff05ca97ab6953c42f6694fad73f9fcc58244388bf6"
+    },
+    {
+      "path": "01_SOURCE_METADATA_CENSUS.md",
+      "bytes": 8863,
+      "sha256": "972f44cd1152f111162fe66e4d4a2a0d9fb6d8caad70aaedfcfb2517d233503b"
+    },
+    {
+      "path": "02_PERMISSION_PROOF_SEARCH.md",
+      "bytes": 9443,
+      "sha256": "3af3db3180ba54c7a224f5ea2e1d25c3035a5864ac9c3bd39b9c367444056829"
+    },
+    {
+      "path": "03_HISTORICAL_SRC04_SRC17.md",
+      "bytes": 5989,
+      "sha256": "77be5fb6c9fc82baa81d571ea90abd69bab7ee89f30011101a7e304ea69e1b71"
+    },
+    {
+      "path": "04_ONE_HIGHEST_IMPACT_GRANT.md",
+      "bytes": 8922,
+      "sha256": "c56fc52942ad59756aba69ea5f3ca06309a1b124c1c9fbb4067456a465ad93c9"
+    },
+    {
+      "path": "05_NATIVE_SOURCE_HOLD_AND_GATES.md",
+      "bytes": 6181,
+      "sha256": "5576cfad92c2e682bd832d8f0356c2ee69504db4b6f15446422ada64ba4170c3"
+    },
+    {
+      "path": "35_row_source_rights_matrix.json",
+      "bytes": 318011,
+      "sha256": "03116d64152abe1b7cd67cdfe639fe0de0c35c811c228bafe20aad292fe65907"
+    },
+    {
+      "path": "35_row_source_rights_matrix.csv",
+      "bytes": 49004,
+      "sha256": "d7d54e7aa77071c539fdf50201829e148d361c6b6e5a621850e50db062f8eb93"
+    }
+  ],
+  "self_critical_notes": [
+    "The commission is a rights/inventory lane, not a scientific completion; the hold is the correct finite outcome, not an excuse to write more code.",
+    "The \"existing partial SRC04/SRC17 positives\" are fixture-grade in the inspected evidence; if an older original positive exists, it is still not current permission.",
+    "The historical hash is recorded but current byte identity is not re-proven. The eventual authorized read must bind the exact source SHA before decoding.",
+    "The one-grant choice is an engineering unlock priority; it does not claim SRC04 routing, form, weight or population sufficiency.",
+    "The bounded search cannot prove a universal negative outside declared roots; the user/competent owner must supply any external grant."
+  ],
+  "no_selfaccept": true
+}
