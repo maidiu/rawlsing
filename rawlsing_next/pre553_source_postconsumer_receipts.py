@@ -189,6 +189,26 @@ def join_saved_source_operation_fates(
             or compilation.issued.workload != workload
             or admission.binding_receipt().runtime_catalog != workload.catalog.receipt()):
         raise SourceReceiptJoinError("ISSUED_WORKLOAD_AND_SOURCE_IDENTITY_DRIFT")
+    # Q2 independently certified the complete S1-C inventory/frontier
+    # before opening the physical source; native R03 compiles that same
+    # original frontier. A shared source SHA and matching operation labels
+    # do NOT establish that the two products came from the same frontier.
+    # Bind their original, non-pruned content hash before any issued receipt
+    # can be associated with the source-side fates.
+    census = handoff.census_audit
+    if (not isinstance(census, Mapping)
+            or not isinstance(compilation.frontier_hash, str)
+            or census.get("frontier_hash") != compilation.frontier_hash):
+        raise SourceReceiptJoinError("Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT")
+    original_operation_count = len(handoff.operation_fates)
+    original_fate_counts = dict(Counter(
+        row["disposition"] for row in handoff.operation_fates
+    ))
+    if (census.get("source_candidate_count") != original_operation_count
+            or census.get("scientific_fate_count") != original_operation_count
+            or census.get("eligible_count") != original_fate_counts.get("ELIGIBLE", 0)
+            or census.get("fate_counts") != original_fate_counts):
+        raise SourceReceiptJoinError("Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT")
     admission.check_current()
     record = admit(
         workload, resolver, host=host, purpose=purpose,
