@@ -4,3 +4,5 @@ SameDeepSeek return `d4f0a6499432aa3186c0d92174fa228211759e44` verified remote;6
 
 
 This is factual intake, not a new source/scientific/host/CURRENT/protected grant. Browser should interpret exact existing scope and name only an indispensable missing authority, not demand a new genericGO or invent terms.
+
+[Immutable HQ disposition](https://github.com/maidiu/rawlsing/blob/960e1d7d0d4a1f870e585c3618ea8d1964eec0c0/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/SOURCE1002_R2_INTAKE_DISPOSITION.json).
