@@ -1,0 +1,165 @@
+{
+  "b_packets": {
+    "B01": {
+      "depends_on": [],
+      "grade": "SOURCEFREE_S2_ONLY",
+      "id": "B01",
+      "latest_head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+      "negative_oracle": "PsycheStore kitchen MEDIATOR or test-local later_decision treated as world-owned fact",
+      "phase": "CG-B",
+      "positive_oracle": "One admitted actual-root fixture carries source-qualified household resources/place/owner read through P6",
+      "producer_owner": "S47/P2 objective world; P6 house.py",
+      "restoration_or_replay": "Identical cold-root/material state reopens without new owner/scheduler",
+      "status": "AUTHOR_TESTED_CGB_CANDIDATE_BANKED_STOP_REQUESTED_INDEPENDENT_RECEIVING_NOT_RUN",
+      "terminal_consumer": "P6 house reader and selected parent-choice input",
+      "title": "Select existing material writer and bounded household state ABI"
+    },
+    "B02": {
+      "depends_on": [
+        "B01"
+      ],
+      "grade": "SOURCEFREE_S2_ONLY",
+      "id": "B02",
+      "latest_head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+      "negative_oracle": "Clock mismatch or stale employment persists beyond effective date",
+      "phase": "CG-B",
+      "positive_oracle": "Two dated periods and midperiod job change produce correctly split world/time with preserved source clocks",
+      "producer_owner": "P3 DevelopmentOwner and S46 clock; existing P2 owner",
+      "restoration_or_replay": "Cold period replay yields identical sequence and no duplicated period",
+      "status": "AUTHOR_TESTED_CGB_CANDIDATE_BANKED_STOP_REQUESTED_INDEPENDENT_RECEIVING_NOT_RUN",
+      "terminal_consumer": "next P3 cycle/actual material period reader",
+      "title": "Map historical calendar/as-of to existing P3/S46 logical clock and split periods"
+    },
+    "B03": {
+      "depends_on": [
+        "B01"
+      ],
+      "grade": "SOURCEFREE_S2_ONLY",
+      "id": "B03",
+      "latest_head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+      "negative_oracle": "House description treated as psyche, social class directly creates trait or impossible object appears",
+      "phase": "CG-B",
+      "positive_oracle": "Committed home, walls/acoustics, affordability and tenancy constrain a concrete drum-kit availability",
+      "producer_owner": "P2 world + bounded P6 material/house adapter",
+      "restoration_or_replay": "Reopening root gives exact housed facts and legitimate unknowns",
+      "status": "AUTHOR_TESTED_CGB_CANDIDATE_BANKED_STOP_REQUESTED_INDEPENDENT_RECEIVING_NOT_RUN",
+      "terminal_consumer": "later material feasibility reader and mother decision candidate",
+      "title": "Commit selected inhabited dwelling/tenancy/noise/space/resource facts"
+    },
+    "B04": {
+      "depends_on": [
+        "B02",
+        "B03"
+      ],
+      "grade": "SOURCEFREE_S2_ONLY",
+      "id": "B04",
+      "latest_head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+      "negative_oracle": "Negative balance or unavailable apartment instrument admitted, refusal silently debits; rendered object conjured without writer",
+      "phase": "CG-B",
+      "positive_oracle": "A paid obligation/job change/purchase/refusal changes actual resources, ownership and next action feasibility",
+      "producer_owner": "existing world/event/material writer",
+      "restoration_or_replay": "Event-sever/retry preserves one debit and corresponding world receipt",
+      "status": "AUTHOR_TESTED_CGB_CANDIDATE_BANKED_STOP_REQUESTED_INDEPENDENT_RECEIVING_NOT_RUN",
+      "terminal_consumer": "later objective stock/ownership/time and parent feasible choice",
+      "title": "Implement consequential household work/care/resource and acquisition/refusal operations"
+    },
+    "B05": {
+      "depends_on": [
+        "B02",
+        "B04"
+      ],
+      "grade": "SOURCEFREE_S2_ONLY",
+      "id": "B05",
+      "latest_head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+      "negative_oracle": "All elapsed time auto-generates psyche, old source remains after revocation, or period time compresses away causally important change",
+      "phase": "CG-B",
+      "positive_oracle": "Ordinary life progresses across dated intervals with recurring costs, changed constraints, and next actual consumer",
+      "producer_owner": "existing P3/S46 + P2 material world",
+      "restoration_or_replay": "Cold restart + source change/sever/restore replays exactly",
+      "status": "AUTHOR_TESTED_CGB_CANDIDATE_BANKED_STOP_REQUESTED_INDEPENDENT_RECEIVING_NOT_RUN",
+      "terminal_consumer": "later parent and Nadia contextual material reads, then live world",
+      "title": "Prove multicycle material duration and later first-consumer parity"
+    }
+  },
+  "declared_author_sessions_not_reused": [
+    "ses_e3129596bffes0LaqGfkjAwEuQ",
+    "ses_e312958e8ffeVzjGxpyNpsMatM",
+    "ses_e2bcd8b7bfferVT3C26nF0Mw7C"
+  ],
+  "exact43_command": "PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_interleave_retry.py",
+  "overlay_blobs": {
+    "CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md": "9412ed317f4fbf1686d55375a4a5c795b1fc7793",
+    "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md": "d85f67790c5345e5ca5d8209358b9fc2ff9faa1d",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md": "c166a3e948431a9382b133a9391ca0a9d90d1bec",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_UM_SOROK_GOVERNING_BRAIN_AND_GROKKING_R1.md": "90e92890dcc93ae1580dd39dd70f876405e22c3e",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_UM_SOROK_GROKKING_DECISION_SCHEMA_R1.json": "fab8044407b12c6420f248fcefe65ef31c6b98ad",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CG_B_G_SEMANTIC_RECONCILIATION_AND_CAMPAIGNS_20261112_R2.json": "2b271afa99416d1df7b4bd16695eeb7850cc7391",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CG_B_G_SEMANTIC_RECONCILIATION_AND_CAMPAIGNS_20261112_R2.md": "170e8506499df642373617b5f50de77acd31b200",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CG_B_G_TASK_SEMANTIC_LABELS_AND_DECISION_HIERARCHY_20261112_R1.json": "26ef4ba85cf100e58dda548364ea1484bc78be8a",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CG_B_G_TASK_SEMANTIC_LABELS_AND_DECISION_HIERARCHY_20261112_R1.md": "8079c07c80c628c5d17e8d0dba09abf7840fe1b4",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/UM_SOROK_25_ISSUE_POWER_PASS_R1.json": "8ac6ca26036b907eeadef80cebad4248564d08a9",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/UM_SOROK_25_ISSUE_POWER_PASS_R1.md": "641b3355cfb3d8d00e44c0ef863ae34091efe4ed"
+  },
+  "read_scope": {
+    "coordination_snapshots": [
+      "998",
+      "999",
+      "1006",
+      "1002",
+      "997"
+    ],
+    "issue_1023": "full",
+    "overlay_available": true,
+    "overlay_note": "UM-SOROK R1/R2 and CG_B_G files are present as Git objects at f5c43c8; they are not all present in the assigned worktree. No missing overlay content is invented.",
+    "packets_commit": "227ce149fc7864c83c179a7d3ecaef2b92c5bdab",
+    "packets_file_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "programme_law": [
+      "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
+      "CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md"
+    ],
+    "source_graded_overlay_commit": "f5c43c80675f2556e1287bf55d25052d11e8746e"
+  },
+  "reviewer_identity": {
+    "branch": "codex/sorok1023-material-g5-20261113-r1",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "session": "ses_e28ef72f9ffelBx7qet6BAina3",
+    "variant": "max",
+    "worktree_logical": "sorok-duel-c01/Rawlsing"
+  },
+  "schema": "SOROK1023_G5_CONTRACT_READBACK@1",
+  "snapshots": {
+    "ISSUE_1002_CURRENT.md": {
+      "bytes": 11837,
+      "sha256": "2226adc8cde16dae3d84a4999278f06377c60f42288372ab65e79911a96c38dd"
+    },
+    "ISSUE_1006_CURRENT.md": {
+      "bytes": 18762,
+      "sha256": "758ac40500bf49ef9ab282bab7f372ce38ea8719720be32a2085c2853f66d514"
+    },
+    "ISSUE_1023_CURRENT.md": {
+      "bytes": 8974,
+      "sha256": "92e03d5d646a6aa7d4c1ee2aed3f45c44a17d7bd8027980efbfa48a94c2e9426"
+    },
+    "ISSUE_997_CURRENT.md": {
+      "bytes": 19658,
+      "sha256": "2c1b180f4f01360ed71b27b9f0c8d9ded878f9244538dd3883dda80a257681da"
+    },
+    "ISSUE_998_CURRENT.md": {
+      "bytes": 20077,
+      "sha256": "9271e75b70909102f2acc4aa21bca3ca2cb482f7f737b2ec38d7b5a83269c85c"
+    },
+    "ISSUE_999_CURRENT.md": {
+      "bytes": 9372,
+      "sha256": "524162613d8223070f259726b2932d207be4c5119a641500bf83df06caf2a992"
+    }
+  },
+  "sourcefree_semantic_constraints": [
+    "material conditions are distinct from psychological motives",
+    "sourcefree evidence is not native person science",
+    "no additional world or finance engine",
+    "parent funds and household funds are not interchangeable",
+    "material affordability does not determine desire or choice",
+    "no broader J1/CG-D or Nadia psychological claim in this review"
+  ]
+}

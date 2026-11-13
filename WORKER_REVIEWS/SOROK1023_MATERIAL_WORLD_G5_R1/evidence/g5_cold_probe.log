@@ -1,0 +1,120 @@
+{
+  "child": {
+    "counts": {
+      "P2_HOUSEHOLD_RENT": 1,
+      "P2_PARENT_PURCHASE": 2,
+      "episodes": 61
+    },
+    "counts_after_replay": {
+      "P2_HOUSEHOLD_RENT": 1,
+      "P2_PARENT_PURCHASE": 2,
+      "episodes": 61
+    },
+    "duplicate_rent": {
+      "code": "B05_RENT_ALREADY_RECORDED",
+      "refused": true
+    },
+    "head": {
+      "count": 1,
+      "hash": "94a1f57c9e3d3bcf6a074af6958365d4929d423d1e62ee96491e2c84c2ff4b6c"
+    },
+    "head_after": {
+      "count": 1,
+      "hash": "94a1f57c9e3d3bcf6a074af6958365d4929d423d1e62ee96491e2c84c2ff4b6c"
+    },
+    "household_cash": 43,
+    "household_cash_after_replay": 43,
+    "market_quantity": 0,
+    "market_quantity_after_replay": 0,
+    "market_source": "2e32d81550c12e66487209891bd03e5ce805e74bfebb64b7b239403212cc0673",
+    "ok": true,
+    "owned_rows_after_replay": 2,
+    "owned_source": "dc013295d6e8d7b28739629955e59a3243b78aeb66883373da1c6a972d340ad2",
+    "owned_totals": [
+      {
+        "kind": "junior_drum_kit",
+        "object_id": "object:junior-drum-kit",
+        "owner_actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "quantity": 2
+      }
+    ],
+    "parent_cash": 20,
+    "parent_cash_after_replay": 20,
+    "parent_free_hours": 6,
+    "purchase1": {
+      "historical": true,
+      "owned_source_after": "226322ccc2bcb33212d90ad7945fe40204b458151dd66a3505feda228383e621",
+      "parent_cash_after": 60,
+      "period_id": "period:2026-h1",
+      "purchase_source": "66e5f01137821abc3e80f3ef0ee495ab87596d2d86bcd8f11f3f25d913c38c2a",
+      "receipt_status": "ADMITTED",
+      "status": "READ"
+    },
+    "purchase2": {
+      "historical": false,
+      "owned_source_after": "dc013295d6e8d7b28739629955e59a3243b78aeb66883373da1c6a972d340ad2",
+      "parent_cash_after": 20,
+      "period_id": "period:2026-h2",
+      "purchase_source": "1a671f8497b30829cefb3ae787500b907eb23861959d43b8bbfa75f9ec772a04",
+      "receipt_status": "ADMITTED",
+      "status": "READ"
+    },
+    "rent": {
+      "historical": false,
+      "household_cash_after": 43,
+      "household_cash_before": 55,
+      "monthly_rent": 12,
+      "receipt_status": "ADMITTED",
+      "status": "READ"
+    },
+    "rent_replay": "REPLAY",
+    "replay1": "REFUSED:PURCHASE_REPLAY_STALE",
+    "replay2": "REPLAY",
+    "schema": "SOROK1023_G5_COLD_CHILD@1"
+  },
+  "child_exit": 0,
+  "child_stderr": "",
+  "elapsed_seconds": 21.795,
+  "ok": true,
+  "schema": "SOROK1023_G5_COLD_PARENT@1",
+  "warm": {
+    "counts": {
+      "P2_HOUSEHOLD_RENT": 1,
+      "P2_PARENT_PURCHASE": 2,
+      "episodes": 61
+    },
+    "failure": "REFUSED:PURCHASE_CURRENCY_MISMATCH",
+    "failure_unchanged": true,
+    "head": {
+      "count": 1,
+      "hash": "94a1f57c9e3d3bcf6a074af6958365d4929d423d1e62ee96491e2c84c2ff4b6c"
+    },
+    "market_source": "2e32d81550c12e66487209891bd03e5ce805e74bfebb64b7b239403212cc0673",
+    "owned_source": "dc013295d6e8d7b28739629955e59a3243b78aeb66883373da1c6a972d340ad2",
+    "purchase1_cash": 60,
+    "purchase1_period": "period:2026-h1",
+    "purchase2_cash": 20,
+    "purchase2_period": "period:2026-h2",
+    "rent_cash": 43,
+    "rent_status": "ADMITTED"
+  },
+  "warm_ok": true
+}
+       22.26 real        20.42 user         1.25 sys
+            60477440  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               42132  page reclaims
+                  29  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                1044  voluntary context switches
+               15996  involuntary context switches
+         72828257386  instructions retired
+         40947338398  cycles elapsed
+            53653504  peak memory footprint

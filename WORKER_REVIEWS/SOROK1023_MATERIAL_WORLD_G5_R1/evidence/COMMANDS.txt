@@ -1,0 +1,42 @@
+SOROK #1023 evidence command log
+Reviewer session ses_e28ef72f9ffelBx7qet6BAina3
+Worktree: sorok-duel-c01/Rawlsing (branch codex/sorok1023-material-g5-20261113-r1)
+Host: oldMac.lan, Darwin 22.6.0 x86_64
+Python: /private/tmp/rawlsing-oct28-p1r1/venv/bin/python (3.11.3), pytest 9.1.1
+All commands run sequentially, one workload child at a time.
+
+1) Original 43 B01-B05 tests
+Start: 2026-11-13T17:50:24-0500
+End:   2026-11-13T17:59:19-0500
+Command:
+PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_interleave_retry.py
+Observed TRUE_EXIT=0; 43 passed in 534.18s; peak RSS 75,231,232 bytes.
+Log: evidence/b01_b05_original43.log
+
+2) Novel hostile witness
+Start: 2026-11-13T18:05:24-0500
+Command:
+PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_probe.py
+Observed TRUE_EXIT=1; 63 checks, 61 pass, 2 forged-receipt failures; peak RSS 58,798,080 bytes.
+Log: evidence/g5_probe_run.log; machine report evidence/hostile_report.json
+
+3) Fresh-process cold proof
+Command:
+PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_cold_probe.py
+Observed TRUE_EXIT=0; fresh child exit 0; 22.285s; peak RSS 58,769,408 bytes.
+Log: evidence/g5_cold_probe.log; machine report evidence/cold_report.json
+
+4) Read-only C03/B04 lock order
+Command:
+PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_c03_lock_probe.py
+Observed TRUE_EXIT=0; purchase_lock -> parent_lock; 13.343s; peak RSS 53,338,112 bytes.
+Log: evidence/g5_c03_lock_probe.log; machine report evidence/lock_report.json
+
+5) Blob/provenance pins
+Command:
+PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1023_MATERIAL_WORLD_G5_R1/g5_collect_pins.py
+Observed TRUE_EXIT=0; B product/test blobs equal B head; product unmodified from documentary cut.
+Log: evidence/g5_pins.log; machine report BLOB_PINS.json
+
+Contention observed:
+#1006 scale-50k write workload (child PID 51945) and #1007 were active; load average about 5.3 at 17:43. No simultaneous author/reviewer or second pytest was run.
