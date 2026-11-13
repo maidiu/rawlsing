@@ -1,5 +1,14 @@
 # Successor #960 — same existing PYAT HQ
 
+## Q2 A counter terminal → distinct G5 launched; S2-C USER_PAUSED — 2026-11-12
+
+A counter exit0 after25m07s (00:57:43–01:22:50 UTC Nov13; eveningNov12 clienttime). Delivery `24e6bc02536a0714b0ab94a225f8eef1d84d8127`, code `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7`, remoteverified. Actual full handoff, code/routingdelta and nativeGREEN evidence inspected. Prior nativeauthorityHOLD traced to wrongTEST_ONLYroutingkind andcanonicaldomainspelling; correctedfixturepreimages, existingnativequerynowSUPPORTED5/5->3/3->exactbasefact92b3254a/restoredroots. No nativeowner/sciencechange. New reproducedmultiownerresponse+coordinate routingbypass fixed all->any andpartialunknown typedHOLD. Reports34Q2Linux/33+1skipDarwin,81S2Bnative,18S1C/33S1B/56decoder+1skip. Candidateonly.
+
+Correctnextactor DISTINCTG5, not extraBduel despiteauthorhandoffwording. ExistingqualifiedpriorS1BG5 `ses_e30a442d8ffeYBbXi7rPUpPxoc` (neitherQ2author) moved to NEWexclusivepyat960-s1e-g5/agentbranch at exactA-counterdelivery; bothauthorsidle. `pyat960-s1e-g5-r01` launchedONCE child80351/supervisor80350/finiteobserver80352. Fullunchangedcontract/newvision and allA/B/counterhandoffs+latestreceipt plusallactualreturns/code/tests supplied. Review-only ownG5return/harness; originalsourceoperation/issuedreceipt/nativefactlineage, lowergradecompatibleupstreamproof, no secondmandatoryC11build, exactbodytee/anti-join/current/routing/zero/RAW resources; independentlyauthorednegative+restore required. ExistingLinuxs2brunner onlyafterqualification, no newVM/provider/hostswitch. Actualfirstturnmetadata pending.
+
+S2-C/Q3 remains USER_PAUSED: NOdispatch/review/writer/resume evenifQ2passes orupstreamqualifies untiluserexplicitresumption. ReviewQ2producerbodyseamonly; Q3productexcluded. Q1STOP. UpstreamG5/#980combined/source/science/CURRENTproduction/original35/N11N12/protected andintegrated100kholds unchanged; exactcompatiblelowergrade canonlybeindependentlyadjudicated, notselfissued. OriginalfiniteG1-G4 thenG5; atmostoneprecisematerialcorrectionifrequired, no optionalhardening/extraauthorround. Terminalevents only/autowakesoff.
+
+
 ## USER PAUSE — S2-C / Q3 only — 2026-11-12
 
 User explicitly paused S2-C. Registry/runtime state USER_PAUSED; NO S2-C author/reviewer/preflight/writer dispatch or resume until explicit user resumption, even if upstream gates later qualify. Actual active API confirms no S2-C run; its preflight already terminal and writer never started. Preserve banked preflight/code/evidence. Q2 A counter remains authorized and was actually running; do not pause or interrupt Q2. Whole goal recurring wakes remain off.

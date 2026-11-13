@@ -1,3 +1,7 @@
+# Q2 native fact candidate / distinct G5; S2-C USER_PAUSED — 2026-11-12
+
+A counter code `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7` / delivery `24e6bc02536a0714b0ab94a225f8eef1d84d8127`: TEST_ONLYroutingauthority+canonicaldomainfixture corrections yield actualnativeSUPPORTED5/5->3/3->exactrestore; multiowner routingbypass fixed, partialunknownheld. Author34Q2Linux+81native/inheritedgreen. DISTINCTnonauthorG5actuallylaunched on exactdescendant, noextraBround. Nativeproof/operationlineage/bodyconservation stillpendingindependentreceiving. S2-C USER_PAUSED withnoresume evenifgatesqualify; Q1STOP, otherauthorityholdsretained. Historical entries follow.
+
 # User pause — S2-C / Q3 only — 2026-11-12
 
 S2-C USER_PAUSED. No active S2-C process; preflight already terminal, writer never launched. No new S2-C dispatch/resume/review until explicit user resumption, even if dependencies qualify. Q2 remains active and authorized. Prior evidence retained; historical entries follow.

@@ -426,3 +426,8 @@ Q2Bcode `9987a00e10dbb4e2dca7032b7d66a90e2303c780` suppliesbody-preserving13fami
 ### #960 user pause of S2-C / Q3 — 2026-11-12
 
 S2-C USER_PAUSED by explicit user instruction. Existing preflight terminal; writer never launched. No S2-C dispatch/resume/review until explicit user resumption; dependency qualification alone does not lift pause. Q2 remains authorized; evidence preserved.
+
+
+### #960 Q2 nativefact candidate / distinct G5, Q3paused — 2026-11-12
+
+Q2A-counter `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7` fixes reproducedmultiownerroutingbypass and sourcefreefixtureauthority/domainpreimages; existingnativequerySUPPORTED5/5->3/3->exactrestore observedinauthorevidence. DistinctnonauthorG5nowlaunched on delivery `24e6bc02536a0714b0ab94a225f8eef1d84d8127`; notaccepted yet. S2-C USER_PAUSED,noautomaticwriter/review; fullscience/upstream/protectedholdsunchanged.
