@@ -1,5 +1,13 @@
 # Successor #960 — same existing PYAT HQ
 
+## CURRENT — S2-D preflight received; product blocked on S2-C independent acceptance
+
+Job `pyat991-s2d-preflight01` terminal exit0, 04:36:08–04:46:06 UTC Nov13 (9m58s). Delivery `585cb21d39ea5b1dcc1c121633fa7e07f5650280` clean and direct-remote verified. Read actual handoff, receipt, provisional ABI and seven-consumer table; checked artifact hashes and all pinned source blobs. Exactly four allowed return files changed, no product or tests. Disposition PREFLIGHT_COMPLETE / PRODUCT_BLOCKED_UNTIL_S2C_G5. G1 preflight only; G2–G5 NOT_RUN. No independent review required for this read-only preparation; original product G5 remains mandatory later.
+
+Live PR990 unchanged `3893a14887424c76a7949ac006e9344cda64e267`, latest native tests NOT_RUN and no independent G5 receipt/comments. Local active service empty. Fixed A terminal; B idle. No new dispatch can satisfy original Phase1 entry yet. Necessary ownership/interface findings supplied to producer: Q2 one-pass body-sink -> S2-C section-stream writer; narrow Batch/issuer/resume admission/guard ownership; existing current and postconsumer operation/fate/receipt composition. These are provisional integration findings, not approved schema, a mandate for another builder, or new authority gates. Reuse current/native owners; production authority not prerequisite to permitted TEST_ONLY engineering. Do not reopen preflight or accepted Q2.
+
+Next authorized dependent action: intake independent S2-C G5 at exact frozen physical ABI and relevant lease/handoff, then issue existing S2-D sequence on exclusive terrain. Original full S1-E OPEN; Q2 compatibility accepted unchanged. Codex S2-C/Q3 and W03/W04 USER_PAUSED unchanged; no source/original35/scientific/production/protected grants. All seven cold native product rows remain unproved. Terminal events only, recurring wakes off. See S2D_PREFLIGHT_DISPOSITION.json and worker return at exact delivery. Historical entries follow.
+
 ## CURRENT — Original S2-D #991 Phase0 launched; S1-E continuation mapped; S2-C remains paused
 
 User "do both" authorizes full S1-E continuation and original #919 S2-D transfer #991 within actual dependencies. Accepted Q2 scoped code/review remains banked (8b51dc8f /41f47931); full original S1-E is OPEN. One indispensable joint production handoff/receipt/fate map is included in the finite S2-D preflight; no duplicate Q2 author/reviewer or second report task.

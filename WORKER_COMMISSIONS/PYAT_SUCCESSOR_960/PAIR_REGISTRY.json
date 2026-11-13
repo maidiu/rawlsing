@@ -190,7 +190,7 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "PHASE0_LAUNCHED_NOT_ACCEPTED",
+      "state": "PREFLIGHT_COMPLETE_PRODUCT_BLOCKED_UNTIL_S2C_G5",
       "job_id": "pyat991-s2d-preflight01",
       "branch": "agent/pyat991-s2d-preflight-r1",
       "startup_sha": "41f479315cd42b31c28b4f4c91d225207f119c8f",
@@ -199,7 +199,7 @@
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "RUNNING_READONLY_PREFLIGHT"
+          "state": "TERMINAL_PREFLIGHT_STOP"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -224,7 +224,9 @@
           "providerID": "opencode-go",
           "variant": "max"
         }
-      }
+      },
+      "delivery_sha": "585cb21d39ea5b1dcc1c121633fa7e07f5650280",
+      "disposition": "S2D_PREFLIGHT_DISPOSITION.json"
     }
   ]
 }
