@@ -57,7 +57,7 @@
     {
       "packet_id": "S1-E",
       "queue": "Q2",
-      "state": "Q2_G5_REVISE_SINGLE_B_REPAIR_RUNNING_ACTUAL_MODEL_VERIFIED",
+      "state": "Q2_SAME_G5_EXACT_RECHECK_RESERVED",
       "exact_prerequisites": [
         "S1C dae66cdf9f3846d237e0b1c3069cc17eb05b7746 sourcefreeG5pending",
         "directS2B155cd1b7244ab22ede804386e6d5253a39fe3587 sourcefreeG5pending; sourcefree129PASS/nativeI03evidence supplied",
@@ -80,7 +80,7 @@
           "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-b",
           "branch": "agent/pyat960-s1e-b-r1",
-          "state": "BOUNDED_REPAIR_LAUNCHED"
+          "state": "TERMINAL_WAIT_G5_RECHECK"
         }
       },
       "launch": {
@@ -91,7 +91,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s1e-g5-bounded-b-repair",
         "launch_is_not_completion": true
       },
-      "job_id": "pyat960-s1e-g5-bounded-b-repair",
+      "job_id": "pyat960-s1e-g5-recheck-r01",
       "actual_first_turn_metadata": {
         "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
         "message_id": "msg_1d2999e55001OpMHNr4mtDfZbN",
@@ -120,12 +120,14 @@
         "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-g5",
         "branch": "agent/pyat960-s1e-g5-r1",
-        "state": "TERMINAL_REVISE_WAIT_EXACT_REPAIR",
+        "state": "RECHECK_RESERVED",
         "independence": "NeitherQ2AorB; priorS1Brevieweronly"
       },
       "g5_delivery_sha": "c19c762b903688e1d632fcf0ca50f976a900ca92",
       "independent_g5": "FAIL_REVISE_NATIVE_LINEAGE_MEASURE_REUSE",
-      "bounded_post_g5_correction": "SINGLE_ALLOWANCE_DISPATCHED"
+      "bounded_post_g5_correction": "USED_WAIT_SAME_G5_RECHECK",
+      "repair_delivery_sha": "e4a4142929afd08bade35931310d9ad0bf87cd0b",
+      "repair_code_sha": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94"
     },
     {
       "packet_id": "S2-C",
