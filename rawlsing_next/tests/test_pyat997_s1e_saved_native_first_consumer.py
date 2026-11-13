@@ -6,6 +6,8 @@ existing test-only issuer grants original35 or production source rights.
 from __future__ import annotations
 
 from pathlib import Path
+from dataclasses import replace
+from collections.abc import Mapping
 
 import pytest
 
@@ -29,12 +31,23 @@ from rawlsing_next.tests.test_pyat960_s1e_native_fact import (
     _native_fixture, _native_bundle, _compile_native, _NATIVE_HOST, _NATIVE_PURPOSE,
 )
 from rawlsing_next.tests.test_pyat960_s1e_support import build
+from rawlsing_next.tests.test_universal_grammar import _frontier
+from rawlsing_next.tests.test_pyat_r3_s1c_source_operation_fates import _freeze_packet
 
 
 def _full(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV"):
     tmp_path.mkdir(parents=True, exist_ok=True)
     # R03 owner fixture has exact TEST_ONLY risk/authority and canonical cells.
     fixture = _native_fixture(tmp_path, values=values)
+    # Cross-root restoration must preserve the *same* scientific inventory
+    # identity, not source_fixture's test-root-specific id(root) debug label.
+    fixed_inventory = replace(
+        fixture["inventory"], inventory_id="PYAT997-S1E-EXACT-RESTORE")
+    fixed_frontier = _frontier(fixed_inventory, fixture["policy"])
+    fixture.update(
+        inventory=fixed_inventory, frontier=fixed_frontier,
+        census=_freeze_packet(fixed_frontier),
+    )
     private = tmp_path / "private"
     private.mkdir(mode=0o700)
     certificate = tmp_path / "source-i02.sqlite"
@@ -72,7 +85,10 @@ def _native_i03(admission, compilation):
     for entry in compilation.plan.records:
         if entry.status != "SUPPORTED" or not entry.query_refs:
             continue
-        query_ref = exact_ref(entry.query_refs[0], "lowering query")
+        raw = entry.query_refs[0]
+        if isinstance(raw, Mapping):
+            raw = {key: raw[key] for key in ("kind", "object_id", "content_hash")}
+        query_ref = exact_ref(raw, "lowering query")
         query = compilation.issued.workload.catalog.resolve_query_exact(query_ref)
         predicate_ref = exact_ref(query.condition_predicate_ref, "lowering predicate")
         result = execute_saved_i03(
