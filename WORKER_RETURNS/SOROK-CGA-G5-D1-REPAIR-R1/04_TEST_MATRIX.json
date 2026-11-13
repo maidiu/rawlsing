@@ -1,0 +1,28 @@
+{
+  "schema": "SOROK_CGA_G5_D1_REPAIR_MATRIX@1",
+  "commission": "SOROK CG-A exact-defect corrective #982",
+  "status": "D1_REPAIRED_PENDING_INDEPENDENT_G5",
+  "base_implementation": "37c5842e04892421c9ce74a39956c3cdcf57f0f5",
+  "changed_implementation_files": [
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py"
+  ],
+  "fix": {
+    "condition": "source_receipt.interval == interval and interval.end == world.clock",
+    "scope": "outward cue acceptance only",
+    "preserves_current_receipt": true,
+    "rejects_broadened_old_receipt": true,
+    "rejects_unchanged_old_interval": true
+  },
+  "tests": {
+    "full_37": {"exit": 0, "passed": 37, "failed": 0, "seconds": 2422.84, "log": "evidence/37_tests_fixed.log"},
+    "d1_regression": {"exit": 0, "passed": 2, "failed": 0, "seconds": 27.73, "log": "evidence/repair_tests.log"}
+  },
+  "not_run": [
+    "GitHub Actions",
+    "protected PRE-MAIN merge",
+    "new native science or actor authority"
+  ],
+  "residual_limit": "A caller with raw writer access can forge a receipt; this repair fixes authentic stale-receipt replay, not receipt authentication.",
+  "author_ceiling": "DELIVERED_PENDING_INDEPENDENT_G5",
+  "self_approval": false
+}

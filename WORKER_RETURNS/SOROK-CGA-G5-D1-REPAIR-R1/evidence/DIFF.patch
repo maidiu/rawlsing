@@ -1,0 +1,27 @@
+diff --git a/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py b/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
+index 1433d6885..89815b68a 100644
+--- a/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
++++ b/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
+@@ -177,6 +177,14 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
+     current_performed = (
+         source_receipt.get("performed") if isinstance(source_receipt, dict) else None
+     )
++    source_interval = (
++        source_receipt.get("interval") if isinstance(source_receipt, dict) else None
++    )
++    receipt_current = (
++        isinstance(source_interval, dict)
++        and source_interval == interval
++        and interval.get("end") == world.clock
++    )
+ 
+     def world_event(row):
+         if not isinstance(row, dict) or not isinstance(row.get("event_id"), str):
+@@ -203,6 +211,7 @@ def current_p3_actor_access(session, interval, world, house, packet, *, source_r
+         if event is None or cue.get("grade") != "SOURCEFREE_FIXTURE":
+             continue
+         if (cue == current_outward and current_performed == event
++                and receipt_current
+                 and event.get("actor_id") == session.meta["user_actor"]
+                 and sensory_candidate(event, world, house) == cue):
+             # The world-side source also requires an exact conduct parent.
