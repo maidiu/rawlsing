@@ -96,6 +96,61 @@ def _estate_name(i02: ExternalI02Roots) -> str:
     # No source-provided release_id interpolated into any filesystem path.
     return sha256(i02.release.encode("utf-8")).hexdigest()
 
+def _decode_reconstructed_v1_release(value: str, release_id: str) -> ExactRef:
+    """Validate the historical v1 *identity*, never issue a v1 C11 seal."""
+    if not isinstance(value, str) or "|" not in value:
+        raise DirectEstateError("direct I02 lacks an exact reconstructed v1 release")
+    kind, _, tail = value.partition("|")
+    if "|" not in tail:
+        raise DirectEstateError("malformed reconstructed v1 release identity")
+    object_id, _, digest = tail.rpartition("|")
+    if (kind != "C11LogicalRelease" or object_id != release_id
+            or not _hex(digest)):
+        raise DirectEstateError("direct I02 reconstructed v1 release identity mismatched")
+    ref = ExactRef(kind, object_id, digest)
+    if ref.key != value:
+        raise DirectEstateError("noncanonical reconstructed v1 release identity")
+    return ref
+
+
+def _reconstructed_v1_release_from_certificate(
+    certificate: Path, i02: ExternalI02Roots, release_id: str,
+    source_manifest_hash: str,
+) -> ExactRef:
+    """Carry the original S2-B certified header through physical publication.
+
+    The temporary full certificate remains disposable. Its physical SHA must
+    match the S2-B builder result before any header becomes a durable fact.
+    The resulting ref stays an unissued v1 historical identity, distinct from
+    the direct I02 release root and bound into the caller-held manifest SHA.
+    """
+    import sqlite3
+
+    if _hash(certificate) != i02.physical:
+        raise DirectEstateError("direct I02 certificate bytes changed after qualification")
+    try:
+        with sqlite3.connect(f"file:{certificate}?mode=ro", uri=True) as db:
+            db.execute("PRAGMA query_only=ON")
+            header = dict(db.execute(
+                "SELECT name,value FROM header WHERE name IN ("
+                "'schema','release','source','replay','universe',"
+                "'source_manifest_hash','reconstructed_v1_release_ref',"
+                "'reconstructed_v1_replay_ref')"
+            ))
+    except (OSError, sqlite3.Error) as exc:
+        raise DirectEstateError("certified direct I02 historical identity unavailable") from exc
+    if (header.get("schema") != i02.schema or header.get("release") != i02.release
+            or header.get("source") != i02.source
+            or header.get("replay") != i02.replay
+            or header.get("universe") != i02.universe
+            or header.get("source_manifest_hash") != source_manifest_hash
+            or header.get("reconstructed_v1_replay_ref") != i02.replay):
+        raise DirectEstateError("direct I02 header and held root identity mismatch")
+    return _decode_reconstructed_v1_release(
+        header.get("reconstructed_v1_release_ref"), release_id,
+    )
+
+
 
 def _arrow_schema():
     import pyarrow as pa
@@ -393,6 +448,7 @@ class EstateReceipt:
     path: str
     manifest_sha256: str
     i02: ExternalI02Roots
+    reconstructed_v1_release_ref: ExactRef
     family_counts: Mapping[str, int]
     retained_bytes: int
 
@@ -463,6 +519,9 @@ def write_direct_estate(
         _verify_emitted_physical_payloads(
             stage, scratch, {name: writer.count for name, writer in writers.items()},
         )
+        reconstructed_v1 = _reconstructed_v1_release_from_certificate(
+            scratch, i02, source.manifest.release_id, source.manifest.content_hash,
+        )
         # SQLite is proof scratch and MUST NOT become a second durable corpus.
         scratch.unlink()
         members = {}
@@ -474,6 +533,7 @@ def write_direct_estate(
         counts = {family: writer.count for family, writer in writers.items()}
         meta = {
             "schema": SCHEMA, "i02": _roots(i02),
+            "reconstructed_v1_release_ref": reconstructed_v1.key,
             "source_manifest_sha256": source.manifest.content_hash,
             "family_counts": counts, "event_locator_count": index.count,
             "chunk_rows": chunk_rows, "members": members,
@@ -523,7 +583,7 @@ def write_direct_estate(
             os.close(base_fd)
         result = EstateReceipt(
             str(target), sha256(manifest_bytes).hexdigest(), i02,
-            MappingProxyType(counts),
+            reconstructed_v1, MappingProxyType(counts),
             sum((target / member).stat().st_size for member in members) + len(manifest_bytes),
         )
         published = None
@@ -580,6 +640,12 @@ class VerifiedDirectEstate:
             raise DirectEstateError("committed manifest invalid") from exc
         if manifest.get("schema") != SCHEMA or manifest.get("i02") != _roots(self.i02):
             raise DirectEstateError("estate source/replay/universe/logical/physical roots mismatch")
+        # Independently held manifest SHA binds this v1 historical identity;
+        # direct i02.release remains the *different* direct-schema identity.
+        direct_release_id = self.i02.release.partition("|")[2].rpartition("|")[0]
+        self.reconstructed_v1_release_ref = _decode_reconstructed_v1_release(
+            manifest.get("reconstructed_v1_release_ref"), direct_release_id,
+        )
         required = set(f + ".parquet" for f in _FAMILIES_IN_ORDER) | {"event_locator.parquet"}
         members = manifest.get("members")
         if not isinstance(members, dict) or set(members) != required:
