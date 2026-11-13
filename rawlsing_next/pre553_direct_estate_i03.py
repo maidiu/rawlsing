@@ -350,7 +350,7 @@ class DirectEstateI03Session:
         self, *, query: Any, release_refs: Any,
     ) -> tuple[tuple[ExactRef, _ReleaseIndex], ...]:
         self._require_live()
-        release = _ref_from_key(self.estate.i02.release, "C11LogicalRelease")
+        release = self.estate.reconstructed_v1_release_ref
         replay = _ref_from_key(self.estate.i02.replay, "C11Internal:ReplayManifest")
         universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse@1.0.0")
         supplied = tuple(sorted(
