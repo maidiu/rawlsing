@@ -1,6 +1,6 @@
 # UM-SOROK — provisional governing brain / default grokking constitution (R1: three orders and terminal-first)
 
-Machine-readable decision schema: [UM-SOROK R0 JSON](00_UM_SOROK_GROKKING_DECISION_SCHEMA_R0.json).
+Machine-readable decision schema: [UM-SOROK R1 JSON](00_UM_SOROK_GROKKING_DECISION_SCHEMA_R1.json).
 
 
 **Status:** `USER-REQUESTED_PRE_ADJUDICATION_CONSTITUTION_R1__CANDIDATE__NOT_NATIVE_CAN_ADP_LAW`. **R1 supersedes R0 on empirical and methodological priority while preserving its remaining core commitments.** **Scope:** SOROK HQ, DeepSeek implementation commission drafting, independent receiving, live-V3 product/architecture decisions. **Authority:** this is a preliminary operator-directed reading and triage discipline subordinate to original PROGRAMMA/CAN/ADP/V3/V2/P2/P3/P4/P5/P6 sources, immutable worker contracts, competent native science/rights and the user's later adjudication. It cannot silently change original scientific rules, assign new writer rights, restart the stopped controller fleet or authorize protected merges.
