@@ -1,0 +1,6 @@
+## Integration998 staging returned — bounded compatibility and ownerhandoff dispatched
+
+Authora9407f08f7e0efed32b4dba7f654b3906cbfb18a remoteverified;34sourcedblobpins verified/2newharnessfiles. Literalworld18PASS caller4linecorrection inspected; S1C18/S2C31/S2D31/S2E22PASS; S2B49PASS+32Darwin/proc failures not fullgreen. 1001prep2PASS1000distinctIDs/257eventsentinel; full100kNOT_RUN. JoinedverticalNOT_RUN, noindependentG5/newsource/science/protectedadoption.
+
+SameDeepSeekintegrationauthor actualchild1037/jobpyat998-s1a-linux-compat-r2: incorporate newlyindependentlyacceptedS1A where exactcompatible, currentcomposedS2Bcompatibility onexistingRunningLima s2b, noVM/provider/configchange. ExistingS1Dissuedowner actualchild1032/jobpyat998-issued-owner-handoff-r1: exact15lineNativeWorkloadResult.exact_s2e_output_census prospectivefile/symbolACK only, acceptedsharedfunction otherwisefrozen. Bothlocaljobsactuallylaunched separateworktrees/sessionroles, nofillerthirdlane. Browser997bridge/S2AfrozenAPI/scope1002decisions remainexternal. GoalwakeupsPAUSED, kqueueterminalnotificationsactive.
+

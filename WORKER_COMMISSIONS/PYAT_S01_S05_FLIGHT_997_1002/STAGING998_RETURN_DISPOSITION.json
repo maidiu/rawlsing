@@ -1,0 +1,66 @@
+{
+  "job": "pyat998-staging-and-scale-prep-r1",
+  "delivery": "a9407f08f7e0efed32b4dba7f654b3906cbfb18a",
+  "exit_code": 0,
+  "remote_readback_matches": true,
+  "hq_disposition": "RECEIVED_AUTHOR_STAGING_ONLY__NOT_JOINED_ACCEPTANCE",
+  "provenance": "36manifestentries:34source/stagedblobpins match actualgitobjects;2newharnessfiles correctly sourcecommitnull",
+  "actual_results": {
+    "world_binding": "18PASS;4linelegitimateTestOnlyDecisionResolver/allow_test_only caller addition inspected",
+    "S1C": "18PASS",
+    "S2C": "31PASS",
+    "S2D": "31PASS",
+    "S2E": "22PASS",
+    "S2B": "49PASS+32Darwin/proc failures; host attribution not independently accepted as full compatibility",
+    "imports": "11PASS",
+    "1001prep": "2PASS;1000distinctIDs+257eventsentinel; full100kNOT_RUN"
+  },
+  "observed_open_items": [
+    "AcceptedS1A newly available and not yet composed",
+    "S2B current composed-cut Linux compatibility needed",
+    "Issued-workload exact15lineS2Ecensusmethod composed into9d96S2D without recordednarrowownerACK; prospectivenarrowhandoffrequired beforeacceptance",
+    "Full998verticalneeds997andS2Aacceptance"
+  ],
+  "next_actual_launches": [
+    {
+      "job": "pyat998-s1a-linux-compat-r2",
+      "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+      "child_pid": 1037,
+      "branch": "agent/pyat998-sourcefree-staging-r1",
+      "startup": "a9407f08f7e0efed32b4dba7f654b3906cbfb18a",
+      "service_state": {
+        "type": "running"
+      },
+      "actual_turn_model": {
+        "message_id": "msg_1d6a428c4001EFvWX1MoJJszXZ",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      }
+    },
+    {
+      "job": "pyat998-issued-owner-handoff-r1",
+      "session": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+      "child_pid": 1032,
+      "branch": "agent/pyat1002-source-steward-r1",
+      "startup": "d4f0a6499432aa3186c0d92174fa228211759e44",
+      "service_state": {
+        "type": "running"
+      },
+      "actual_turn_model": {
+        "message_id": "msg_1d6a427e7001IzADvQulo4yHE1",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      }
+    }
+  ],
+  "full_vertical": "NOT_RUN",
+  "full100k6GiB": "NOT_RUN",
+  "native_science_source_or_protected": "NOT_PROMOTED",
+  "goal_wakeups": "PAUSED"
+}
