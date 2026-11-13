@@ -466,13 +466,17 @@ class CarrierNeutralResearchExecutor:
                     "grouped saved I03 scope awaits distinct S2-D qualification"
                 )
             with DirectEstateI03Session(self.repository) as saved:
-                return execute_empirical_query(
+                result = execute_empirical_query(
                     repository=saved,
                     query=query,
                     predicate=predicate,
                     authority_registry=self.runtime_catalog.authority_registry,
                     release_refs=self.release_refs,
                 )
+                # Do not serve an earlier granted result after mid-query
+                # revocation. This is a check, never a new issuer.
+                self.repository._live()
+                return result
         return execute_empirical_query(
             repository=self.repository,
             query=query,
