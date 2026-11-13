@@ -32,6 +32,7 @@ from developmental_recursion.parent_activity import (  # noqa: E402
     parent_material_fixture,
     read_parent_history,
     read_parent_material,
+    record_parent_activity,
 )
 from developmental_recursion.supporting_actor import register_supporting_actor  # noqa: E402
 
@@ -76,7 +77,7 @@ def counts(session):
     }
 
 
-def test_purchase_is_typed_and_c02_parent_history_refuses_until_hook(tmp_path):
+def test_purchase_is_typed_and_c02_history_consumes_it(tmp_path):
     state = tmp_path / "state"
     run_cmd(state, "new")
     owner = open_owner(state)
@@ -179,13 +180,20 @@ def test_purchase_is_typed_and_c02_parent_history_refuses_until_hook(tmp_path):
         }]
         assert SECRET not in json.dumps(first)
 
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            parent_feasible_actions(session, PARENT_ID, as_actor=PARENT_ID)
+        parent_after = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+        assert parent_after["material"]["cash_units"] == 80
+        assert parent_after["material"]["free_hours"] == 7
+        options_after = parent_feasible_actions(
+            session, PARENT_ID, as_actor=PARENT_ID)
+        assert options_after["admissible"]
         history = read_parent_history(session, PARENT_ID, as_actor=PARENT_ID)
-        assert history["material_consistent"] is False
-        assert all(row.get("operation_id") != "b04:purchase:1"
+        assert history["material_consistent"] is True
+        assert history["purchase_episode_count"] == 2
+        assert sum(row.get("status") == "ADMITTED"
+                   for row in history["history"]) == 1
+        assert any(row.get("operation_id") == "b04:purchase:1"
+                   and row.get("kind") == "P2_PARENT_PURCHASE"
+                   and row.get("status") == "ADMITTED"
                    for row in history["history"])
         assert all(row.get("operation_kind") != "PURCHASE_MATERIAL_STATE"
                    for row in history["history"])
@@ -193,20 +201,31 @@ def test_purchase_is_typed_and_c02_parent_history_refuses_until_hook(tmp_path):
         read = mo.read_purchase(
             session, PARENT_ID, "b04:purchase:1", as_actor=PARENT_ID)
         assert read["status"] == "READ"
-        assert read["historical"] is None
-        assert read["parent_material_status"] == "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH"
-        assert read["parent_feasible_actions_status"] == (
-            "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH")
-        assert read["purchase_history_hook"] == "C02_PARENT_HISTORY_KIND_PENDING"
+        assert read["historical"] is False
+        assert read["parent_material_status"] == "READ"
+        assert read["parent_feasible_actions_status"] == "READ"
+        assert read["purchase_history_hook"] == "C02_PARENT_HISTORY_READ"
         assert read["receipt"]["status"] == "ADMITTED"
         assert read["owned_totals"][0]["quantity"] == 1
 
-        with pytest.raises(RecursionRefusal, match="PURCHASE_PARENT_UNAVAILABLE"):
-            mo.purchase_drum_kit(
-                session, PARENT_ID, operation_id="b04:purchase:2",
-                owner_actor_id=holder)
-        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 1
-        assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
+        work = record_parent_activity(
+            session, PARENT_ID, operation_id="b04:purchase:work",
+            activity="PAID_WORK", hours=2)
+        assert work["status"] == "ADMITTED"
+        assert read_parent_material(
+            session, PARENT_ID, as_actor=PARENT_ID)["material"]["cash_units"] == 90
+        second = mo.purchase_drum_kit(
+            session, PARENT_ID, operation_id="b04:purchase:2",
+            owner_actor_id=holder)
+        assert second["status"] == "ADMITTED"
+        assert second["parent_cash_after"] == 50
+        assert second["parent_free_hours_after"] == 4
+        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 0
+        assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 2
+        later_read = mo.read_purchase(
+            session, PARENT_ID, "b04:purchase:1", as_actor=PARENT_ID)
+        assert later_read["status"] == "READ"
+        assert later_read["historical"] is True
     finally:
         owner.close()
 

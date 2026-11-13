@@ -136,24 +136,19 @@ def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
         assert house.read_dwelling(session)["source"] == baseline_dwelling["source"]
         assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
         assert mo.read_market_inventory(session)["items"][0]["quantity"] == 1
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
-        with pytest.raises(RecursionRefusal, match="PARENT_MATERIAL_HISTORY_MISMATCH"):
-            parent_feasible_actions(session, PARENT_ID, as_actor=PARENT_ID)
+        parent_after_purchase = read_parent_material(
+            session, PARENT_ID, as_actor=PARENT_ID)
+        assert parent_after_purchase["material"]["cash_units"] == 30
+        assert parent_after_purchase["material"]["free_hours"] == 5
+        assert parent_feasible_actions(
+            session, PARENT_ID, as_actor=PARENT_ID)["admissible"]
         purchase_read = mo.read_purchase(
             session, PARENT_ID, "b05:buy:1", as_actor=PARENT_ID)
         assert purchase_read["status"] == "READ"
-        assert purchase_read["parent_material_status"] == (
-            "REFUSED:PARENT_MATERIAL_HISTORY_MISMATCH")
-        assert purchase_read["purchase_history_hook"] == (
-            "C02_PARENT_HISTORY_KIND_PENDING")
+        assert purchase_read["parent_material_status"] == "READ"
+        assert purchase_read["purchase_history_hook"] == "C02_PARENT_HISTORY_READ"
+        assert purchase_read["historical"] is False
         assert purchase_read["owned_totals"][0]["quantity"] == 1
-        with pytest.raises(RecursionRefusal, match="PURCHASE_PARENT_UNAVAILABLE"):
-            mo.purchase_drum_kit(
-                session, PARENT_ID, operation_id="b05:buy:2",
-                owner_actor_id=holder)
-        assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
-        assert mo.read_market_inventory(session)["items"][0]["quantity"] == 1
 
         period2 = hp.materialize_to(session, "2027-01-01")
         assert period2["status"] == "MATERIALIZED"

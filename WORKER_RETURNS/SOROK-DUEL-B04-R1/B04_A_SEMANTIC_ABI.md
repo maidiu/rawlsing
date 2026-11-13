@@ -1,3 +1,5 @@
+> **Later typed-hook notice:** Pair3 typed `P2_PARENT_PURCHASE` history is now present and consumed. The “pending” state below is historical; see `B04_B_TYPED_JOIN_ADDENDUM.md`.
+
 # B04 typed purchase / C02 parent-history hook ABI — A semantic revision
 
 **Status:** `SOURCEFREE_S2_ONLY`; B04 purchase receipt/stock/ownership is real, but C02 parent current-material consumption is **REFUSED until the typed hook exists**. No antecedent bridge is adopted.

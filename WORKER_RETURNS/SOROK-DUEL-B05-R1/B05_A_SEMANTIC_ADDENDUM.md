@@ -1,3 +1,5 @@
+> **Later typed-hook/interleave notice:** Pair3 typed parent hook is present; the interleave adapter is event-id keyed with committed-result recovery. The “pending” text below is historical; see `B05_B_INTERLEAVE_ADDENDUM.md`.
+
 # B05 ABI — Agent A semantic interleave addendum
 
 **Base:** `B05_ABI.md` remains the rent receipt/reader contract. B's `B05_B_ABI_REVISION.md` is historical; its B04 bridge dependency is not adopted.
