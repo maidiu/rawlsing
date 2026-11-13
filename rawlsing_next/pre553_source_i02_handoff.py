@@ -60,9 +60,9 @@ from rawlsing_next.pre553_r157_projection_adapter import (
     SourceConfig,
     build_governed_c11_projection,
     decode_config_with_source_read_permission,
-    decode_fixture_config,
     row_native_keys_from_transport,
 )
+from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection,
     SourceBackedC11FacadeError,
@@ -274,12 +274,12 @@ def _project_spooled_families(
             if not isinstance(cell, PhysicalCell):
                 raise SourceI02Refusal("NON_PHYSICAL_CELL_TRANSPORT")
             key = (cell.variable_ordinal, cell.variable_name)
+            if key_slot is not None and key == (key_slot["ordinal"], key_slot["name"]):
+                key_cells.append(cell)
             if key not in projected:
                 continue
             if cell.row_ordinal not in rows:
                 raise SourceI02Refusal("CELL_ROW_OUTSIDE_PROJECTION", cell.row_ordinal)
-            if key_slot is not None and key == (key_slot["ordinal"], key_slot["name"]):
-                key_cells.append(cell)
             if cell.row_ordinal in seen[key]:
                 raise SourceI02Refusal(
                     "DUPLICATE_PHYSICAL_ROW_SLOT", (cell.row_ordinal, key))
@@ -506,7 +506,12 @@ def build_source_i02_handoff(
             semantic_use_scope=semantic_use_scope,
         )
     else:
-        incidence = decode_fixture_config(config, source_path, batch_size=batch_size)
+        source_format = doc["identity"]["source_format"]
+        decoder = decode_sav if source_format == "SAV" else decode_dta
+        # The fixture path performs the same content-bound snapshot hash in the
+        # decoder; avoiding the pre-hash keeps the source path to one governed
+        # open while the exact binding is checked below.
+        incidence = decoder(source_path, encoding=None)
     try:
         if incidence.source_sha256 != doc["binding"]["source_sha256"]:
             raise SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")

@@ -185,11 +185,11 @@ def test_s1e_census_refuses_before_any_source_read(tmp_path, monkeypatch):
     path, sha, rows, config, doc, inv, policy, frontier, census = fixture
     calls = []
     import rawlsing_next.pre553_source_i02_handoff as handoff_mod
-    monkeypatch.setattr(
-        handoff_mod, "decode_fixture_config",
-        lambda *a, **k: calls.append((a, k)) or (_ for _ in ()).throw(
-            AssertionError("source opened")),
-    )
+    def forbidden(*a, **k):
+        calls.append((a, k))
+        raise AssertionError("source opened")
+    monkeypatch.setattr(handoff_mod, "decode_sav", forbidden)
+    monkeypatch.setattr(handoff_mod, "decode_dta", forbidden)
 
     bad_census = replace(census, source_candidates=census.source_candidates[1:])
     with pytest.raises(SourceI02Refusal, match="SOURCE_CENSUS_HASH_DRIFT"):
