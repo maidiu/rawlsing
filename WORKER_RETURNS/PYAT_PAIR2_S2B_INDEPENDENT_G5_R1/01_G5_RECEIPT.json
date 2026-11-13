@@ -1,0 +1,247 @@
+{
+  "schema": "PYAT_R3_S2B_INDEPENDENT_G5_RECEIPT@1.0.0",
+  "kind": "INDEPENDENT_NONAUTHOR_G5_RECEIVING",
+  "packet": "S2-B",
+  "original_obligation": "P2-02",
+  "original_issue": "#919",
+  "governing_issues": ["#919", "#909", "#960"],
+  "pr_under_test": "https://github.com/maidiu/rawlsing/pull/979",
+  "review_branch": "review/pyat-s2b-independent-g5-20261113-r1",
+  "return_directory": "WORKER_RETURNS/PYAT_PAIR2_S2B_INDEPENDENT_G5_R1/",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "grade": "INDEPENDENT_NONAUTHOR_EXECUTED__SOURCEFREE_DIRECT_I02__NOT_ORIGINAL35",
+  "integration": "UNMERGED",
+  "protected_merge": false,
+  "s2c_physical_bodies": "NOT_BUILT_SEPARATE_PACKET",
+  "independence": {
+    "role": "G5_INDEPENDENT_NONAUTHOR_RECEIVER",
+    "authored_s2b_rounds": false,
+    "authored_local_repair": false,
+    "host": "local OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "linux_vm": "Lima 2.3.0, Ubuntu 26.10, kernel 7.3.0-9-generic, x86_64, 2 vCPU, 4 GiB"
+  },
+  "prior_g5_search": {
+    "found_valid_independent_s2b_g5": false,
+    "reviewed_remote_refs": [
+      "agent/pyat-s2b-r5-local-repair-20261112",
+      "agent/pyat-pair2-s2b-a-ext-i02-20261112-r1",
+      "agent/pyat-pair2-s2b-a-counterattack-20261112-r2",
+      "agent/pyat-pair2-s2b-a-counter-20261112-r2",
+      "agent/pyat-pair2-s2b-a-txn-lifecycle-20261112-r2",
+      "agent/pyat-pair2-s2b-a-closure-bounded-20261112-r3",
+      "agent/pyat-pair2-s2b-a-direct-candidate-20261112-r5",
+      "agent/pyat-pair2-s2b-b-certificate-forgery-20261112-r1",
+      "agent/pyat-pair2-s2b-b-r4-root-freeze-20261112",
+      "agent/pyat940-s1b-g5-r1",
+      "agent/pyat940-s1d-g5-r1",
+      "agent/pyat940-s2f-g5-r1",
+      "agent/pyat960-s1e-g5-r1",
+      "agent/pyat960-s2g-g5-r1",
+      "agent/pyat918-s1c-g5-r1"
+    ],
+    "excluded_other_packet_g5s": ["S1-B", "S1-C", "S1-D", "S1-E", "S2-F", "S2-G"],
+    "issue_comment_access": "HTTP 403: Resource not accessible by personal access token",
+    "conclusion": "no independent S2-B G5 in code/refs; perform receiving directly"
+  },
+  "artifacts": {
+    "tested_code_test_commit": "155cd1b7244ab22ede804386e6d5253a39fe3587",
+    "local_return_head": "cc35e0a4e51394961f58b632dec8a149deea21a2",
+    "previous_direct_builder_commit": "edd0611d1ea0e80a47692635fe3bd73a079f1bec",
+    "pr979_head": "cc35e0a4e51394961f58b632dec8a149deea21a2",
+    "pr979_merge": "b0357abe24aa6a562dab0b32b11e99c79e2ba010",
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "protected_pre_main_modified": false,
+    "tested_code_equals_local_return": true,
+    "changed_blobs": {
+      "rawlsing_next/_pre553_direct_i02_sourcefree.py": "451727511af7f727b082c518aae2f4a3dbe2ba3a",
+      "rawlsing_next/_pre553_external_i02_certificate.py": "cd5368e46a5f2d6016afc2d421717b4191a03005",
+      "rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py": "cef715f69af2d21243b454787c689da7f0086bbf",
+      "rawlsing_next/tests/test_pre553_external_i02_certificate.py": "7a8a0f5a60c5d5a776cea44f3beea109e0f98ff3",
+      ".github/workflows/pyat-pair2-s2b-external-i02.yml": "7b60661e315ea1d528c67a19fa137715acdb144a"
+    }
+  },
+  "execution": {
+    "host": "Linux VM via Lima 2.3.0",
+    "linux": "7.3.0-9-generic Ubuntu 26.10 x86_64",
+    "cpus": 2,
+    "memory_gib": 4,
+    "python": "3.14.8",
+    "pytest": "9.2.0",
+    "pyarrow": "26.0.1",
+    "pandas": "3.1.1",
+    "pyreadstat": "1.3.7",
+    "proc_self_fd": true,
+    "full_court": {
+      "command": "PYTHONPATH=. /usr/bin/time -v .venv/bin/python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_external_i02_certificate.py rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+      "collected": 129,
+      "passed": 129,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 79.88,
+      "process_maxrss_kib": 179080,
+      "per_file": {
+        "test_pre553_external_i02_certificate": 29,
+        "test_pre553_direct_i02_sourcefree": 26,
+        "test_pre553_verified_semantic_range": 26,
+        "test_pre553_empirical_query": 32,
+        "test_pre553_c11_repository_ingest": 16
+      }
+    },
+    "targeted_six_repair_tests": {
+      "passed": 8,
+      "failed": 0,
+      "wall_seconds": 0.74
+    },
+    "frozen_six_repair_probes": {
+      "D1_universe": "ACCEPTED_ON_FROZEN",
+      "D1_authority": "ACCEPTED_ON_FROZEN",
+      "D2_no_replay_count": "REFUSED_ON_FROZEN_EXTERNAL_ERROR",
+      "D3_missing_table": "RAW_SQLITE_OPERATIONAL_ERROR_ON_FROZEN",
+      "D4_publish_oserror": "RAW_OSERROR_ON_FROZEN",
+      "D5_wrong_authority": "RAW_C11INTEGRITYERROR_ON_FROZEN",
+      "D6_direct_installer_import": "IMPORTERROR_ON_FROZEN"
+    },
+    "full_native_changed_restored": {
+      "original_raw_numerator_support": 2,
+      "changed_raw_numerator_support": 3,
+      "changed_result_differs": true,
+      "restored_logical_equals_original": true,
+      "restored_raw_numerator_support": 2,
+      "restored_result_equals_original": true
+    },
+    "scale": {
+      "probe_20000_events_1_respondent": {
+        "retained_sqlite_bytes": 126853120,
+        "build_seconds": 86.689,
+        "cold_verify_plus_select_seconds": 3.085,
+        "python_builder_peak_bytes": 2260709,
+        "process_maxrss_kib": 42136,
+        "sampled_workdir_tmp_peak_bytes": 147688854
+      },
+      "probe_100000_events_1_respondent": {
+        "retained_sqlite_bytes": 638414848,
+        "build_seconds": 307.597,
+        "cold_verify_plus_select_seconds": 15.883,
+        "python_builder_peak_bytes": 2260594,
+        "process_maxrss_kib": 42184,
+        "sampled_workdir_tmp_peak_bytes": 685623193,
+        "selected_postings": 100000,
+        "respondents": 1
+      },
+      "not_proven": [
+        "100000 respondents",
+        "integrated 6 GiB C11+native+saved pipeline",
+        "independently aggregated process-tree peak RSS",
+        "separately instrumented SQLite scratch-file peak",
+        "live S1-B/E one-shot decoder stream"
+      ]
+    }
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS_AT_SCOPED_SOURCEFREE_TYPED_SECTION_EVIDENCE",
+      "evidence": "exact SHA/blob/ancestry verified; direct producer reconstructs candidate projection, ReplayManifest and C11LogicalRelease identities by streamed disk rows without legacy object graph/closure tuple; parity executed against validate_c11_source_release for base, weights, reversed order, aliases, multi-universe, all optional families and no-ReplayManifest-count; external roots are caller-held.",
+      "remaining_external": [
+        "live S1-B/E decoder-to-section input",
+        "original35 source equivalence",
+        "CURRENT permission",
+        "competent external root issuer"
+      ]
+    },
+    "G2": {
+      "state": "PASS_AT_DIRECT_SELECTOR_PLUS_SEALED_BODY_SCOPE",
+      "evidence": "direct builder, cold verifier, direct installer and actual native selector/full query exercised; ordered native/canonical/component/state/occurrence parity; original 2 -> changed 3 -> restored 2; direct certificate drives installed selectors while sealed release supplies bodies; legacy installer still refuses direct schema.",
+      "remaining_external": ["S2-C cold physical body estate"]
+    },
+    "G3": {
+      "state": "REVISE_EXACT_DEFECT",
+      "evidence": "six frozen defects reproduced and repaired tests green; omissions, forged selectors, physical rehash, wrong roots, duplicate occurrences/declarations, unlawful typed absences, malformed tables and publication failures refuse; however malformed header coverage leaks raw JSONDecodeError/KeyError/TypeError at the cold first reader under the D3 physical-rehash threat model.",
+      "primary_defect": "G5-R1",
+      "secondary_residual": "G5-R2"
+    },
+    "G4": {
+      "state": "PASS_AT_MEASURED_SOURCEFREE_SCOPE",
+      "evidence": "independent 129/129 at 79.88 s and 179080 KiB max RSS; 100k events/1 respondent at 638414848 retained bytes, 307.597 s build, 2.26 MB Python peak and 42184 KiB process RSS; 20k reproduced; constant Python heap across scale.",
+      "remaining_unmeasured": [
+        "100000 respondents",
+        "integrated 6 GiB pipeline",
+        "process-tree RSS",
+        "exact SQLite scratch peak",
+        "live upstream decoder adapter"
+      ]
+    },
+    "G5": {
+      "state": "REVISE_EXACT_DEFECT",
+      "decision": "REVISE_EXACT_DEFECT",
+      "reason": "G5-R1 malformed header typed-refusal contract violation at the cold first reader"
+    }
+  },
+  "defects": [
+    {
+      "id": "G5-R1",
+      "severity": "EXACT_PRIMARY",
+      "location": "rawlsing_next/_pre553_external_i02_certificate.py:535-551",
+      "defect": "cold verifier parses main.header.coverage without a typed boundary; missing/invalid/non-object coverage raises KeyError/JSONDecodeError/TypeError instead of ExternalI02IntegrityError",
+      "threat_model": "same as accepted D3 test: modify certificate bytes, recompute physical root only, keep externally held logical root",
+      "reproducer": "attacks/attack_malformed_header.py",
+      "observed": [
+        "invalid-json: JSONDecodeError",
+        "missing-key: KeyError",
+        "json-null: TypeError",
+        "json-number: TypeError"
+      ],
+      "required_repair": "validate entire untrusted header/structure in a typed boundary; catch KeyError/TypeError/ValueError/JSONDecodeError/Pre553IntegrityError and raise ExternalI02IntegrityError; add invalid/missing/non-object coverage regression test",
+      "blocks_acceptance": true
+    },
+    {
+      "id": "G5-R2",
+      "severity": "RESIDUAL_DEFENSE_IN_DEPTH",
+      "location": "rawlsing_next/_pre553_external_i02_certificate.py:807-856",
+      "defect": "direct installer trusts self-asserted reconstructed historical header and respondent census; it does not recompute historical identities or compare event/selector postings to the sealed release",
+      "threat_model": "requires replacing the externally held logical root with a self-rehashed root, contrary to the documented VerifiedExternalI02 caller requirement",
+      "reproducer": "attacks/attack_selector_omission_forged_root.py",
+      "observed": "cold verifier accepts, direct installer accepts, native selector returns 1 instead of 2",
+      "required_repair": "recompute direct historical identities from certificate rows and/or compare certificate event/selector map to native sealed release before installation",
+      "blocks_acceptance": false,
+      "note": "not the primary verdict; under an honest external logical root the corruption is refused"
+    }
+  ],
+  "restoration": {
+    "direct_logical_root_original": "reproduced",
+    "direct_logical_root_changed_differs": true,
+    "direct_logical_root_restored_equals_original": true,
+    "native_query_restored_equals_original": true
+  },
+  "authority_holds": {
+    "original35_source_equivalence": "HELD",
+    "current_permission": "NOT_ISSUED",
+    "p01_p20_t01_t18": "HELD",
+    "s2a_receiving": "PENDING",
+    "s2c_physical": "NOT_BUILT",
+    "w03_w04": "PAUSED",
+    "protected_merge": "NONE",
+    "native_production_permissions": "NONE",
+    "competent_external_root_issuer": "NOT_ESTABLISHED"
+  },
+  "evidence": {
+    "report": "00_INDEPENDENT_G5_REPORT.md",
+    "full_court": "evidence/00_FULL_COURT_129.log",
+    "targeted_six": "evidence/01_TARGETED_SIX_REPAIR_TESTS.log",
+    "frozen_six": "evidence/02_FROZEN_SIX_REPAIR_RED.log",
+    "parity_probes": "evidence/03_PARITY_AND_ATTACK_PROBES.log",
+    "full_native": "evidence/04_FULL_NATIVE_CHANGED_RESTORED.log",
+    "malformed_header": "evidence/05_MALFORMED_HEADER_UNTYPED.log",
+    "selector_omission": "evidence/06_SELECTOR_OMISSION_FORGED_ROOT.log",
+    "scale_20000": "evidence/07_SCALE_20000.log",
+    "scale_100000": "evidence/08_SCALE_100000.log",
+    "environment": "evidence/09_ENVIRONMENT.txt",
+    "prior_g5_search": "evidence/10_PRIOR_G5_SEARCH.txt",
+    "issue_notification": "evidence/11_ISSUE_NOTIFICATION.md",
+    "attacks": [
+      "attacks/attack_malformed_header.py",
+      "attacks/attack_selector_omission_forged_root.py"
+    ],
+    "sha256sums": "SHA256SUMS"
+  }
+}

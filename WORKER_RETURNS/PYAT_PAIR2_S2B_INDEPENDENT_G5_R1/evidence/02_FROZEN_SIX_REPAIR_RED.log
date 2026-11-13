@@ -1,0 +1,7 @@
+D1-universe ACCEPTED
+D1-authority ACCEPTED
+D2-no-replay-count REFUSED ExternalI02IntegrityError is_external= True msg= sourcefree direct source manifest missing mandatory original counts
+D3-missing-table REFUSED OperationalError is_external= False msg= no such table: main.event_occurrences
+D4-publish-oserror REFUSED OSError is_external= False msg= simulated
+D5-wrong-authority REFUSED C11IntegrityError is_external= False msg= exact historical authority unavailable; no fallback permitted
+D6-direct-install-import REFUSED ImportError is_external= False msg= cannot import name 'install_direct_sourcefree_i02_i03' from 'rawlsing_next._pre553_external_i02_certificate' (/home/matt

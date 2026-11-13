@@ -1,0 +1,54 @@
+PYAT R3 S2-B prior independent G5 search
+========================================
+
+Repository: maidiu/rawlsing (private)
+Search time: 2026-11-12/13 UTC
+Reviewer: independent nonauthor G5 receiver (local OpenCode)
+
+Result: no valid independent S2-B G5 verdict on the exact tested code.
+
+Remote refs inspected
+---------------------
+agent/pyat-s2b-r5-local-repair-20261112
+  cc35e0a4e51394961f58b632dec8a149deea21a2
+  Local execution and repair return; report explicitly NOT_SELF_ISSUED and
+  not an independent G5.
+
+agent/pyat-pair2-s2b-a-ext-i02-20261112-r1
+agent/pyat-pair2-s2b-a-counterattack-20261112-r2
+agent/pyat-pair2-s2b-a-counter-20261112-r2
+agent/pyat-pair2-s2b-a-txn-lifecycle-20261112-r2
+agent/pyat-pair2-s2b-a-closure-bounded-20261112-r3
+agent/pyat-pair2-s2b-a-direct-candidate-20261112-r5
+  Agent A author/adversarial rounds. Their reports return REVISE_EXACT_DEFECT
+  or hand off to G5; they do not claim independent receiving.
+
+agent/pyat-pair2-s2b-b-certificate-forgery-20261112-r1
+agent/pyat-pair2-s2b-b-r4-root-freeze-20261112
+  Agent B author/adversarial rounds; G5_NOT_RUN.
+
+Other G5 branches found
+-----------------------
+agent/pyat940-s1b-g5-r1       S1-B, not S2-B
+agent/pyat940-s1d-g5-r1       S1-D, not S2-B
+agent/pyat940-s2f-g5-r1       S2-F, not S2-B
+agent/pyat960-s1e-g5-r1       S1-E, not S2-B
+agent/pyat960-s2g-g5-r1       S2-G, not S2-B
+agent/pyat918-s1c-g5-r1       S1-C, not S2-B
+
+No review/*s2b* and no *s2b*g5* ref found.
+The only remote refs containing cc35e0a were:
+  refs/heads/agent/pyat-s2b-r5-local-repair-20261112
+  refs/pull/979/merge
+
+Issue/PR comment limitation
+---------------------------
+The local GitHub credential can read contents/commits (HTTP 200 for commit and
+contents APIs) but returns HTTP 403 "Resource not accessible by personal access
+token" for Issues and Pull Requests APIs. A verdict published only as an
+issue/PR comment could not be inspected. No code/ref evidence of one exists.
+
+Conclusion
+----------
+Perform independent G5 receiving directly. Do not adopt any author-side
+G1-G5 receipt as an independent verdict.

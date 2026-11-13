@@ -1,0 +1,42 @@
+=== probe_parity.py
+OK probe-plain 287b4dded202 events 4 weights 0
+OK probe-weights 537838bc68fe events 4 weights 2
+OK probe-rev 4eef23fae0fa events 4 weights 2
+OK probe-multi 558b8f0f5b51 events 19 weights 0
+ALL_PROBE_PARITY_OK
+=== probe_aliases.py
+QUESTION_NATIVE native_only True component False exp 2 got 2
+QUESTION_NATIVE native_only True component True exp 2 got 2
+QUESTION_NATIVE native_only False component False exp 2 got 2
+QUESTION_NATIVE native_only False component True exp 2 got 2
+QUESTION_CANONICAL native_only True component False exp 0 got 0
+QUESTION_CANONICAL native_only True component True exp 0 got 0
+QUESTION_CANONICAL native_only False component False exp 2 got 2
+QUESTION_CANONICAL native_only False component True exp 2 got 2
+COMPONENT native_only True component False exp 0 got 0
+COMPONENT native_only True component True exp 0 got 0
+COMPONENT native_only False component False exp 0 got 0
+COMPONENT native_only False component True exp 2 got 2
+ALIAS_CLOSURE_PARITY_OK f3e83ad90ae2
+=== probe_optional.py
+ALL_OPTIONAL_INTERNAL_FAMILY_PARITY_OK 904667f38ab4
+=== probe_universe.py
+MULTI_UNIVERSE_RELATION_PARITY_OK 7b534f1845d4
+=== probe_manifest.py
+dup-universe: legacy=REJECT C11IngestValidationError: declared universe refs do not exactly match candidate universes | direct=REJECT ExternalI02IntegrityError: sourcefree direct duplicate universe declaration
+dup-authority: legacy=REJECT C11IngestValidationError: declared authority snapshot refs do not exactly match package snapshots | direct=REJECT ExternalI02IntegrityError: sourcefree direct duplicate authority declaration
+no-replay-count: legacy=ACCEPT | direct=ACCEPT
+   parity b717860e C11LogicalRelease|REL-probe-manifest|561
+no-count-EmpiricalUniverse: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['EmpiricalUniverse'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct required family empty or undeclared: EmpiricalUniverse
+no-count-RespondentIdentity: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['RespondentIdentity'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct required family empty or undeclared: RespondentIdentity
+no-count-QuestionVariableBinding: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['QuestionVariableBinding'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct required family empty or undeclared: QuestionVariableBinding
+no-count-RespondentEvent: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['RespondentEvent'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct required family empty or undeclared: RespondentEvent
+no-count-RoutingEligibilityFact: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['RoutingEligibilityFact'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct required family empty or undeclared: RoutingEligibilityFact
+no-count-EmpiricalCoordinateFact: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['EmpiricalCoordinateFact'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct required family empty or undeclared: EmpiricalCoordinateFact
+no-count-AuthoritySnapshot: legacy=REJECT C11IntegrityError: source manifest omits core logical-family counts ['AuthoritySnapshot'] | direct=REJECT ExternalI02IntegrityError: sourcefree direct authority census does not match source manifest
+no-weight-count: legacy=ACCEPT | direct=ACCEPT
+   parity 7ab44aeb C11LogicalRelease|REL-probe-manifest|d8a
+=== probe_direct_native.py
+DIRECT_NATIVE_SELECTOR_CONSUMER_OK 5543ea3de11b
+=== probe_wrong_authority.py
+rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError exact historical authority unavailable; no fallback permitted

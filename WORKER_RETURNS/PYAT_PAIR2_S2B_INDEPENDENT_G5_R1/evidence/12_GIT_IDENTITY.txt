@@ -1,0 +1,60 @@
+PYAT R3 S2-B independent G5 — git identity evidence
+==================================================
+
+Tested code/test commit
+-----------------------
+155cd1b7244ab22ede804386e6d5253a39fe3587
+parent edd0611d1ea0e80a47692635fe3bd73a079f1bec
+author maidiu <matthewdavidsmith86@gmail.com>
+date 2026-11-12 16:47:59 -0500
+subject S2-B A5 local: conserve direct manifest semantics and reach native I03 selectors
+
+Local return HEAD / PR #979 head
+--------------------------------
+cc35e0a4e51394961f58b632dec8a149deea21a2
+parent 1ce6e8c1ae916e69a62e5560a14e7d57ee562374
+date 2026-11-12 16:52:00 -0500
+subject S2-B A5 local: record Actions runner-startup status in the return
+
+Previous direct-builder implementation
+--------------------------------------
+edd0611d1ea0e80a47692635fe3bd73a079f1bec
+parent 04c86268113cd1f2151fe96cc80285f50165696e
+date 2026-11-12 15:34:24 -0500
+subject S2-B A5: qualify reconstructed replay versus actual v1 seal and live S1-B/E source adapter; no invented authority
+
+PR #979 merge
+-------------
+b0357abe24aa6a562dab0b32b11e99c79e2ba010
+parents fef8abd4c61508bb85c1797b73006b60c5fe0170 and cc35e0a4e51394961f58b632dec8a149deea21a2
+subject Merge cc35e0a4e51394961f58b632dec8a149deea21a2 into fef8abd4c61508bb85c1797b73006b60c5fe0170
+
+Code/test equality
+------------------
+git diff --exit-code 155cd1b7244ab22ede804386e6d5253a39fe3587 cc35e0a4e51394961f58b632dec8a149deea21a2 -- rawlsing_next
+exit 0
+
+Only WORKER_RETURNS/PYAT_PAIR2_S2B_LOCAL_R1/ differs between the tested code
+commit and the local return HEAD.
+
+Blobs at 155cd1b
+----------------
+rawlsing_next/_pre553_direct_i02_sourcefree.py 451727511af7f727b082c518aae2f4a3dbe2ba3a
+rawlsing_next/_pre553_external_i02_certificate.py cd5368e46a5f2d6016afc2d421717b4191a03005
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py cef715f69af2d21243b454787c689da7f0086bbf
+rawlsing_next/tests/test_pre553_external_i02_certificate.py 7a8a0f5a60c5d5a776cea44f3beea109e0f98ff3
+.github/workflows/pyat-pair2-s2b-external-i02.yml 7b60661e315ea1d528c67a19fa137715acdb144a
+
+Protected PRE-MAIN
+------------------
+6a5c12f04323d74001f9632063ec907f4fc4468e
+merge-base with cc35e0a: 6a5c12f04323d74001f9632063ec907f4fc4468e
+Ancestor: yes. No reset, no modification, no protected merge. The PR base is the
+Agent A R5 documentation head fef8abd4c61508bb85c1797b73006b60c5fe0170; the
+merge commit b0357abe... merges cc35e0a into that Agent A branch.
+
+Review branch
+-------------
+review/pyat-s2b-independent-g5-20261113-r1
+Based on cc35e0a4e51394961f58b632dec8a149deea21a2; adds only this return
+directory.
