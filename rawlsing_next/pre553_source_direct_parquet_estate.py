@@ -284,8 +284,16 @@ def _verify_emitted_physical_payloads(
     if not certificate.is_file():
         raise DirectEstateError("direct I02 parity certificate missing")
     db = sqlite3.connect(str(certificate))
+    # Disk-bounded exact uniqueness: counts plus successful membership checks
+    # alone permit duplicate physical rows replacing missing native identities.
+    # This temporary ref-only anti-join is NOT a second retained corpus.
+    seen_path = stage / ".physical-ref-uniqueness.sqlite"
+    seen = None
     try:
         db.execute("PRAGMA query_only=ON")
+        seen = sqlite3.connect(str(seen_path))
+        seen.execute("PRAGMA cache_size=-1024")
+        seen.execute("CREATE TABLE seen(ref TEXT PRIMARY KEY, family TEXT NOT NULL)")
         for family in _FAMILIES_IN_ORDER:
             physical = pq.ParquetFile(stage / (family + ".parquet"))
             locator = (pq.ParquetFile(stage / "event_locator.parquet")
@@ -315,6 +323,10 @@ def _verify_emitted_physical_payloads(
                     ).fetchone()
                     if certified is None or certified[0] != family:
                         raise DirectEstateError("emitted body missing from direct I02 proof")
+                    # An exact primary key prevents a duplicated Parquet ref
+                    # from replacing another source-certified object unseen.
+                    seen.execute("INSERT INTO seen(ref,family) VALUES(?,?)",
+                                 (row["ref"], family))
                     if family == "RespondentEvent":
                         selector = (
                             _key(obj.scoped_respondent_ref),
@@ -349,6 +361,9 @@ def _verify_emitted_physical_payloads(
     except Exception as exc:
         raise DirectEstateError("bounded physical-to-direct-I02 proof failed") from exc
     finally:
+        if seen is not None:
+            seen.close()
+        seen_path.unlink(missing_ok=True)
         db.close()
 
 
