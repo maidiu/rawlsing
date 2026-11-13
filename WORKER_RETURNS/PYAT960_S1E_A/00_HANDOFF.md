@@ -4,7 +4,7 @@
 **Fixed rival:** B `ses_e3120baacffegE3ZnR5uZcHb0N` (idle)
 **Branch:** `agent/pyat960-s1e-a-r1`
 **Base:** `591056a948fb0fdd68adbd581301dd903485adc8`
-**Return implementation SHA:** `5fcca91c71873a980afb4fdb45ec7e203f494ca3`
+**Return implementation SHA:** `75d09e87dbaf8273fab3a5ece2bb7981328113ce`
 **Contract v1 SHA-256:** `0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40`
 **Provisional ABI SHA-256:** `cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54`
 **Integration:** `UNMERGED` · **G5:** `NOT_RUN` · original task not complete.
@@ -83,9 +83,9 @@ No-loss tests: S1-B inherited B01–B09 packet suite 33 passed; S1-C operation/f
 `evidence/resource.json`:
 
 - 1,200 rows; 1,200 events; 1,200 coordinates; source reads 1; cell passes 1; full C11 builds 0.
-- Private spool 7,464,000 bytes, 3 files, cleaned; certificate 19,492,864 bytes.
-- Process baseline RSS 117,047,296; peak 130,363,392 bytes (single process, no children).
-- Cold 5.019 s; repeat 5.254 s; retained certificate root remains; no second persistent corpus.
+- Private spool 7,464,000 bytes, 3 files, cleaned; certificate 19,345,408 bytes.
+- Process baseline RSS 117,047,296; peak 128,376,832 bytes (single process, no children).
+- Cold 5.419 s; repeat 5.394 s; retained certificate root remains; no second persistent corpus.
 - 100k/6 GiB integrated gate NOT_RUN and not claimed. Old W03/W04 failed pilot remains explicit.
 
 ## 7. Holds and proof boundaries
