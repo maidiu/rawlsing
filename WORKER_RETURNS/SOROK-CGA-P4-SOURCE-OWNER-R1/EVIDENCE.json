@@ -1,0 +1,53 @@
+{
+  "schema": "SOROK_CGA_P4_SOURCE_OWNER_EVIDENCE@1",
+  "base": "5d63d452c96d49a035355d9372b1ec3ddd4af6ba",
+  "branch": "agent/sorok-cga-p4-source-owner-local-20261112-r1",
+  "code_test_commit": "6f1bc8894d1151d0921140e72bb43f5d1bb50fae",
+  "source_blobs": {
+    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/response.py": "730d5692c16a4039981d25a632bf97d428eae526",
+    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py": "b99d8e82ed8ba25b9d090c5d7041eadb7ebd19d4",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/sourcefree_p3_bridge.py": "a041785f88956fc65464e124bc4007d8a4914f95",
+    "WORKER_RETURNS/SOROK-CGA-P4-SOURCE-OWNER-R1/test_p4_scope_owner.py": "728799b1250e61d3aafc7eeb2c3ed003f514a157"
+  },
+  "environment": {
+    "host": "macOS 13.2.1 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.2.0",
+    "model_session": "opencode-go/deepseek-v4.1-flash",
+    "execution": "local isolated worktree and venv"
+  },
+  "red": {
+    "cut": "5d63d452c96d49a035355d9372b1ec3ddd4af6ba",
+    "command": "python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-P4-SOURCE-OWNER-R1/test_p4_scope_owner.py",
+    "exit": 1,
+    "passed": 1,
+    "failed": 6,
+    "duration_seconds": 49.51,
+    "failures": [
+      "project substitution: DID NOT RAISE RecursionRefusal",
+      "counterpart substitution: DID NOT RAISE RecursionRefusal",
+      "interlocutor_role substitution: DID NOT RAISE RecursionRefusal",
+      "relation_ref substitution: DID NOT RAISE RecursionRefusal",
+      "extra scope field: DID NOT RAISE RecursionRefusal",
+      "direct read_response substitution: DID NOT RAISE RecursionRefusal"
+    ]
+  },
+  "green": {
+    "commit": "6f1bc8894d1151d0921140e72bb43f5d1bb50fae",
+    "new_test": {"exit": 0, "passed": 7, "duration_seconds": 57.50},
+    "agent_b_scope": {"exit": 0, "passed": 6, "duration_seconds": 47.97},
+    "g5_37_baseline": {"exit": 0, "passed": 37, "duration_seconds": 2378.06},
+    "agent_a_b_p4_p5": {"exit": 0, "passed": 14, "duration_seconds": 237.46},
+    "p6_extra": {"exit": 0, "passed": 45, "duration_seconds": 588.79}
+  },
+  "separate_982_hold": {
+    "test_source_cut": "c597024bb250f014f9a616006f10172ed53e4357",
+    "test_blob": "a1453e799d98b4c47d26c56a12d1d2695bd42557",
+    "exit": 1,
+    "passed": 0,
+    "failed": 1,
+    "duration_seconds": 11.28,
+    "observation": "old authentic receipt at clock 248 accepted as current access at clock 253"
+  },
+  "verdict": "DELIVERED_FOR_INDEPENDENT_G5"
+}
