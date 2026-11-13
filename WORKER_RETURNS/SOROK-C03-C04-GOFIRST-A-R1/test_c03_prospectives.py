@@ -107,3 +107,24 @@ def test_wrong_actor_cannot_claim_parent_self_reader(tmp_path):
                 opened["session"], PARENT_ID, as_actor="NADIA")
     finally:
         _close(opened)
+
+
+def test_changed_reader_source_cannot_be_spliced_into_parent_prospectives(
+    tmp_path, monkeypatch
+):
+    opened = open_j1_case(tmp_path / "wrong-source")
+    try:
+        import developmental_recursion.parent_decision as decision
+        original = decision.parent_feasible_actions
+
+        def forged(*args, **kwargs):
+            result = original(*args, **kwargs)
+            return {**result, "source": "0" * 64}
+
+        monkeypatch.setattr(decision, "parent_feasible_actions", forged)
+        with pytest.raises(
+            RecursionRefusal, match="PARENT_PROSPECTIVES_SOURCE_STALE"
+        ):
+            _read(opened)
+    finally:
+        _close(opened)
