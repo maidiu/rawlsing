@@ -1,5 +1,10 @@
 # Pyat ↔ Sorok shared grounding and progress
 
+## SEAM — proposed joint PRE-V3 ↔ V3 working space
+
+The [SEAM opening space](../SEAM/00_READ_FIRST.md) is the **joint PYAT↔SOROK boundary correspondence**, beginning with a challengeable PYAT-side account of the objective-world/actor transformation, SDTF R4, the candidate interface, and a protocol for two independently grokked HQ agents to dispute it. Its R0 is an **unadopted documentary proposal**, not a fourth HQ, new authority, native N11/N12/C9 permission, or an implementation acceptance. The two HQs retain distinct jurisdictions; independent review and protected receiving remain separate.
+
+
 **MCR-lite is the prospective default execution discipline.** [Read the canonical eight-point standard](MCR_LITE_EXECUTION_DISCIPLINE_R1.md): preserve the whole mission, reuse before invention, specify the real consumer and falsifier, execute, prove causal negatives, retain actual source/science/actor boundaries, receive independently where warranted, and finish at honest grade. Full §3A/MCR-C remains available for explicitly full-contract assignments; existing frozen work remains governed by its own exact contract.
 
 
