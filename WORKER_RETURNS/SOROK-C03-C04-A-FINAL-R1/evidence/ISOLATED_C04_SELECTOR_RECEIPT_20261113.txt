@@ -1,0 +1,30 @@
+Agent A final counter — bounded source-equivalent C04 selector/receipt probe
+Date: 2026-11-13
+Environment: this ChatGPT container, no mounted private Rawlsing checkout and no GitHub/network DNS connectivity.
+
+Executed command:
+  /usr/bin/time -f 'ELAPSED_S=%e MAX_RSS_KB=%M EXIT=%x' python /mnt/data/c04_agent_a_final_isolated_probe.py
+
+Actual stdout:
+  C04 SELECTOR/RECEIPT PROBE: 2 mismatched selectors formerly accepted; A-final refuses both
+  C04 SELECTOR/RECEIPT PROBE: missing witnessed receipt, forged unheard receipt, missing parent receipt, duplicate receipt now refused
+  C04 SELECTOR/RECEIPT PROBE: valid witnessed, valid unheard, and matching selectors preserved
+  SOURCE-EQUIVALENT ISOLATED PROBE ONLY; NOT ACTUAL G1-G5, J1, P6, D03 OR CI
+  ELAPSED_S=1.29 MAX_RSS_KB=96016 EXIT=0
+
+Observed script SHA-256:
+  a3f4d38dce5fc7a623fece2871149d2f2b99b54825c159a3ed0ca0ef1d609911
+
+Proof boundary:
+- This is a source-equivalent test harness with mocked C12 receipt documents and BP4 content-derived world-event structure, not imported parent_speech.py or the real P2/J1/P6 runner.
+- It reproduces the B-era OR selector behavior and B-era direct child receipt handling and demonstrates A-final conjunctive and admission-bound policy behavior under synthetic inputs.
+- The actual Python code was committed separately; the source-equivalent results do NOT establish that its integration passes.
+- No RED→GREEN against the complete project, cold replay, D03 native, rent/lock/writer integration, or independent G5. No provider tokens observed.
+- The session's filesystem contains the standalone script, which can be supplied to reviewer as a separate download.
+- The GitHub repository was not cloned: git ls-remote returned 'Could not resolve host: github.com'. GitHub connector source access and writes remained available.
+Exact in-repository full-runtime suite to run:
+  python -m pytest -q WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py
+  python -m pytest -q WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py
+  python -m pytest -q WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c03_prospectives.py
+  python -m pytest -q WORKER_RETURNS/SOROK-E01-J1-995-R1/test_j1_three_head_join.py
+  python -m pytest -q WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py
