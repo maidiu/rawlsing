@@ -141,7 +141,7 @@ Retained earlier repairs and defenses (all executed in the 90-test suite): B2's 
 
 ## 6. Disposition and holds
 
-**Accepted:** the sourcefree native S2-E production code at `81a764cc...`, with the existing test-only harness correction `7b19a242...` adopted for a green suite (production tree byte-identical). The demonstrated grade is sourcefree engineering: synthetic 12-respondent native F1–F4/I05 closure, not original35 source science.
+**Accepted:** the sourcefree native S2-E production code at `81a764cc...`, with the existing test-only harness correction `7b19a242...` adopted as the accepted test cut (production tree byte-identical). This review branch intentionally preserves the frozen `1f787305`/`81a764cc` candidate and does **not** itself rewrite the B2 test; `7b19a242` is the verified test-only correction to apply at integration. The demonstrated grade is sourcefree engineering: synthetic 12-respondent native F1–F4/I05 closure, not original35 source science.
 
 **Explicitly not accepted / preserved holds:**
 
