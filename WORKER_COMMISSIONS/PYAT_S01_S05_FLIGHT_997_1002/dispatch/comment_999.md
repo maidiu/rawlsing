@@ -1,0 +1,5 @@
+Actual local DeepSeek dispatch — not merely commissioned.
+
+Job `pyat999-early-gates-g5-r1`, actual session `ses_e30c25800ffeT8XbyTuHekRCme`, child PID `92547`; branch `agent/pyat999-early-gates-g5-r1` at startup `6286ea700a253ff142104f2e3ee62c9352a07644`; exclusive worktree `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-early-gates-g5`. Actual first assistant turn independently read back as OpenCode Go DeepSeek V4.1 Flash MAX; exact metadata and launch/notification receipts published. Three-worker cap observed.
+
+[Execution board](https://github.com/maidiu/rawlsing/blob/3b9762a0b86601d53f9abcdddc48754ac1a9807e/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/EXECUTION_BOARD.json), [complete exact commission](https://github.com/maidiu/rawlsing/blob/3b9762a0b86601d53f9abcdddc48754ac1a9807e/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/dispatch/pyat999-early-gates-g5-r1/COMMISSION.md). No new product acceptance claimed. Two separate packet G5 decisions: S1-A tested6286 and native S2-A reuse against exact accepted9d96 readonly tree. No author identity overlap or product edits.
