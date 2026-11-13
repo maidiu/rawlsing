@@ -161,9 +161,18 @@ def join_saved_source_operation_fates(
         by_unit.setdefault(receipt.unit_ref.key, []).append(receipt)
     completed: dict[str, UnitExecutionReceipt] = {}
     output_refs: dict[str, tuple[str, ...]] = {}
-    # Exact native I05 candidate receipts, not a blind completed Batch label.
+    # Actual native I05 receipt rows are collected across *all* issued
+    # discovery jobs. R03's candidate universe is the whole frontier, not an
+    # arbitrary single discovery's partial result. Pending units must remain
+    # pending rather than triggering a false no-drop failure.
     discovery_candidates: dict[str, Any] = {}
     discovery_batch_receipts: dict[str, str] = {}
+    all_discovery_receipts: list[Any] = []
+    expected_candidate_ids = {
+        candidate["candidate_id"] for candidate in compilation.plan.expected_candidates
+    }
+    if len(expected_candidate_ids) != len(compilation.plan.expected_candidates):
+        raise SourceReceiptJoinError("DUPLICATE_EXPECTED_NATIVE_CANDIDATE")
     for unit in manifest.units:
         history = sorted(by_unit.get(unit.unit_ref.key, ()),
                          key=lambda r: r.attempt_index)
@@ -187,25 +196,45 @@ def join_saved_source_operation_fates(
             )
         obtained = _results(observed, unit.job_kind)
         if unit.job_kind == "DISCOVERY":
-            # R03 owns the complete expected candidate/rule semantic anti-join.
-            audit = native_receipt_anti_join(compilation.plan, observed.receipts)
-            if audit.get("no_drop_ok") is not True:
-                raise SourceReceiptJoinError("NATIVE_DISCOVERY_CANDIDATE_ANTI_JOIN_FAILED")
             for native in observed.receipts:
                 identity = native.candidate_identity
                 candidate_id = identity.get("candidate_id") if isinstance(identity, Mapping) else None
                 if not isinstance(candidate_id, str) or not candidate_id:
                     raise SourceReceiptJoinError("NATIVE_CANDIDATE_ID_MISSING")
+                if candidate_id not in expected_candidate_ids:
+                    raise SourceReceiptJoinError("UNISSUED_NATIVE_DISCOVERY_CANDIDATE")
                 if candidate_id in discovery_candidates:
                     raise SourceReceiptJoinError("DUPLICATE_NATIVE_DISCOVERY_CANDIDATE")
                 discovery_candidates[candidate_id] = native
                 discovery_batch_receipts[candidate_id] = receipt.receipt_ref.key
+                all_discovery_receipts.append(native)
         retained = tuple(sorted(ref.key for ref in receipt.result_refs))
         if obtained != retained:
             raise SourceReceiptJoinError("RECEIPT_NATIVE_FIRST_CONSUMER_OUTPUT_DRIFT")
         completed[unit.unit_ref.key] = receipt
         output_refs[unit.unit_ref.key] = obtained
         admission.check_current()
+
+    discovery_units = tuple(
+        unit for unit in manifest.units if unit.job_kind == "DISCOVERY"
+    )
+    if discovery_units and all(
+        unit.unit_ref.key in completed for unit in discovery_units
+    ):
+        # Only the fully issued discovery set can satisfy the global R03
+        # native-candidate/rule no-drop court.
+        audit = native_receipt_anti_join(
+            compilation.plan, tuple(all_discovery_receipts),
+        )
+        if audit.get("no_drop_ok") is not True:
+            raise SourceReceiptJoinError(
+                "NATIVE_DISCOVERY_CANDIDATE_ANTI_JOIN_FAILED"
+            )
+    else:
+        # An interrupted/missing discovery cannot be evidence that an S1-C
+        # operation completed. Keep eligible operations explicitly pending.
+        discovery_candidates.clear()
+        discovery_batch_receipts.clear()
 
     # S1-C lowering's per-operation query lineage; no invented operation
     # labels derived from arbitrary output statistics or from discovery rank.
