@@ -1,0 +1,251 @@
+{
+  "schema": "PYAT_R3_S1C_INDEPENDENT_G5_RECEIPT@1.0.0",
+  "kind": "INDEPENDENT_NONAUTHOR_G5_RECEIVING",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "original_issue": "#918",
+  "governing_issues": ["#918", "#909", "#960"],
+  "pr_under_test": "https://github.com/maidiu/rawlsing/pull/975",
+  "verdict": "ACCEPT_SCOPED@TEST_ONLY_SOURCEFREE",
+  "terminal": "S1C_TERMINAL_CLOSED@dae66cdf9f3846d237e0b1c3069cc17eb05b7746__SOURCEFREE",
+  "phase": "CLOSURE_ONLY",
+  "grade": "TEST_ONLY_SOURCEFREE",
+  "integration": "UNMERGED",
+  "protected_merge": false,
+  "independence": {
+    "role": "G5_INDEPENDENT_NONAUTHOR_RECEIVER",
+    "authored_s1c_rounds": false,
+    "authored_runner_correction": false,
+    "host": "local OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash"
+  },
+  "prior_g5_search": {
+    "found_independent_s1c_g5": false,
+    "s1c_state_in_q2_s1e_g5": "distinct nonauthor G5 still pending; not accepted there",
+    "s1c_state_in_q2_composition": "PINNED_PROVISIONAL_READONLY_UPSTREAM_G5_PENDING",
+    "combined_scoped_g5_covers": ["S1-B", "S1-D", "S2-F"],
+    "remote_s1c_g5_branch": null,
+    "conclusion": "no valid independent S1-C G5 to adopt; perform receiving"
+  },
+  "artifacts": {
+    "tested_code_test_commit": "dae66cdf9f3846d237e0b1c3069cc17eb05b7746",
+    "agent_a_documentary_head": "779fea665829aae641a3f3d6b463f456c78f8316",
+    "runner_commit": "53adb6702b7e6c82652689df6a1a06f8698ac5c2",
+    "census_blob": "dd5bf3940083679612d73f98e6a7b7711c223fd5",
+    "test_blob": "a19b0db5ea800af80aff86816e77e666f4acc72f",
+    "runner_blob": "63656522497dd6f7760872b692b46bf0e8b7580e",
+    "workflow_blob": "901e2e6ce54bf5fda7b016d39524aac32f2862a8",
+    "pr975_head_remote": "779fea665829aae641a3f3d6b463f456c78f8316",
+    "pr975_merge_remote": "644dd199104bb8fbbedb9f51e95184b71c48fe82",
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "unmerged_948_base": "7064daa14d93109211629e72d08f3a6e705a0d57"
+  },
+  "ancestry": {
+    "dae66cdf_is_ancestor_of_779fea": true,
+    "779fea_is_ancestor_of_runner": true,
+    "protected_pre_main_is_ancestor": true,
+    "dae66cdf_to_779fea": "2 documentary files changed, 141 insertions",
+    "dae66cdf_to_runner": "14 evidence files changed, 796 insertions",
+    "s1c_delta_vs_948_base": [
+      ".github/workflows/pyat-r3-s1c-sourcefree.yml",
+      "rawlsing_next/pre553_operation_fate_census.py",
+      "rawlsing_next/tests/pyat_r3_s1c_rss_runner.py",
+      "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py"
+    ],
+    "existing_owner_files_modified_by_s1c": false
+  },
+  "census": {
+    "declared_source_candidates": 309,
+    "declared_scientific_fates": 309,
+    "compiled_operations": 309,
+    "receipt_rows": 309,
+    "fate_counts": {"ELIGIBLE": 150, "HELD": 159},
+    "deferred_scope_count": 6,
+    "inventory_ledger_count": 3,
+    "unsupported_runtime_rows": 3,
+    "issued_candidates": 150,
+    "native_facts": 330,
+    "result_states": {
+      "SUPPORTED": 123,
+      "VALID_EMPTY": 24,
+      "HELD": 159,
+      "UNSUPPORTED": 3,
+      "ZERO_SUPPORT": 0,
+      "UNKNOWN": 0,
+      "DIFFUSE": 0
+    }
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "evidence": "exact SHA/blob/ancestry verified; S1-C adds four files and leaves existing ScientificFrontier/R03 compiler/issuer/I05/Batch/C11 owners untouched; no second enumerator, issuer, parser, carrier, engine, graph or persistence; all original #918 obligations preserved."
+    },
+    "G2": {
+      "state": "PASS",
+      "evidence": "actual issued path executed once per run through Batch/C11/I05; 150 candidate receipts and 330 native facts; changed physical value changes all 147 fact-bearing operation identities; changed eligible operation changes receipts; exact restoration; anti-joins green."
+    },
+    "G3": {
+      "state": "PASS",
+      "evidence": "B2 false-HELD native receipt loss reproduced (150->148, anti-joins green) and refused pre-source with SOURCEFREE_ROLE_FATE_DRIFT; pending severance native overissue reproduced (5->150, +145, 142 pending IDs receipted, anti-joins green) and refused pre-source with PENDING_FATE_CENSUS_DRIFT; false COMPLETE refused with BUDGET_STATE_FATE_DRIFT; variants refuse; UNKNOWN/EXCLUDED/inventory/deferred/inapplicable conserved; optional-weight RAW preserved without invented eligibility."
+    },
+    "G4": {
+      "state": "PASS",
+      "evidence": "clean pinned detached worktree; focused 18, inherited 22, combined 46/59/19/58 (182), total 222 passed, 0 failed, 0 skipped; peak process-tree RSS 200646656 bytes over 5136 samples; 1 source open and 1 bounded C11 build; 309/150/330 reviewed as synthetic sourcefree, not original35."
+    },
+    "G5": {
+      "state": "PASS",
+      "decision": "ACCEPT_SCOPED@TEST_ONLY_SOURCEFREE",
+      "evidence": "no material in-scope defect at the declared sourcefree grade; terminal frozen; no protected merge or source/science/original35 authority."
+    }
+  },
+  "execution": {
+    "host": "macOS 13.7.8 x86_64, Python 3.11.3, isolated venv",
+    "packages": {
+      "pytest": "9.2.0",
+      "pandas": "3.1.1",
+      "pyreadstat": "1.3.7",
+      "pyarrow": "26.0.1",
+      "duckdb": "2.0.0",
+      "psutil": "7.2.2",
+      "numpy": "2.4.6"
+    },
+    "focused": {"collected": 18, "passed": 18, "failed": 0, "skipped": 0, "wall_seconds": 152.0},
+    "inherited": {"passed": 22, "failed": 0, "skipped": 0, "wall_seconds": 150.99},
+    "combined": {
+      "s1b": {"passed": 46, "failed": 0, "wall_seconds": 222.32},
+      "s1d": {"passed": 59, "failed": 0, "wall_seconds": 157.61},
+      "s2f": {"passed": 19, "failed": 0, "wall_seconds": 20.79},
+      "shared": {"passed": 58, "failed": 0, "wall_seconds": 137.17},
+      "total_passed": 182
+    },
+    "total_passed": 222,
+    "focused_resources": {
+      "inner_elapsed_seconds": 10.257499,
+      "wall_seconds": 152.709,
+      "sampled_process_tree_peak_rss_bytes": 200646656,
+      "rss_samples": 5136,
+      "source_factory_calls": 1,
+      "bounded_i05_c11_builds": 1
+    },
+    "hosted_ci_claimed": false
+  },
+  "g2": {
+    "positive": {
+      "declared": 309,
+      "compiled": 309,
+      "receipt_rows": 309,
+      "issued_candidates": 150,
+      "native_facts": 330,
+      "operations_with_receipts": 147,
+      "operations_without_receipts": 162,
+      "operations_without_receipts_breakdown": {"HELD": 159, "UNSUPPORTED_RUNTIME": 3},
+      "candidate_anti_join_no_drop_ok": true,
+      "operation_anti_join_no_drop_ok": true
+    },
+    "changed_value": {
+      "checkpoint_changed": true,
+      "checkpoint_restored_exactly": true,
+      "fact_identity_changed": true,
+      "fact_identity_restored": true,
+      "operations_with_changed_fact_identity": 147,
+      "issued_candidates": 150,
+      "native_facts": 330
+    },
+    "optional_weight": {
+      "eligible_sample_raw": 150,
+      "sample_raw_with_receipts": 147,
+      "sample_raw_without_receipts_unsupported": 3,
+      "eligible_population": 0,
+      "population_with_receipts": 0,
+      "held_population_without_weight": 147,
+      "invented_eligibility": 0
+    }
+  },
+  "g3": {
+    "false_held": {
+      "target": "urn:r61:op:09c060e624ebc6dc0796cfbbd10b6cd7a4b1be0efa4f89e2a3017c4d8010f36d",
+      "baseline_state": "COMPLETED",
+      "baseline_receipts": 150,
+      "forged_native_receipts": 148,
+      "receipt_loss": 2,
+      "forged_native_candidate_anti_join_ok": true,
+      "forged_native_operation_anti_join_ok": true,
+      "source_census_equal": true,
+      "science_census_differs": true,
+      "adapter_refusal": "SOURCEFREE_ROLE_FATE_DRIFT",
+      "adapter_source_factory_calls": 0,
+      "reason_only_variant_refusal": "SOURCEFREE_ROLE_FATE_DRIFT"
+    },
+    "pending": {
+      "honest_budget": 5,
+      "honest_budget_state": "PARTIAL",
+      "honest_pending_count": 145,
+      "honest_execution_counts": {"NOT_STARTED": 164, "PENDING": 145},
+      "honest_issued_candidates": 5,
+      "honest_native_facts": 11,
+      "honest_pending_with_receipts": 0,
+      "honest_source_factory_calls": 1,
+      "severed_pending_count": 0,
+      "severed_native_receipts": 150,
+      "overissued_receipts": 145,
+      "severed_pending_ids_with_receipts": 142,
+      "severed_native_candidate_anti_join_ok": true,
+      "severed_native_operation_anti_join_ok": true,
+      "severed_source_science_unknown_excluded_inventory_censuses_equal": true,
+      "adapter_refusal": "PENDING_FATE_CENSUS_DRIFT",
+      "adapter_source_factory_calls": 0,
+      "false_complete_refusal": "BUDGET_STATE_FATE_DRIFT",
+      "variant_partial_list_loss_refusal": "PENDING_FATE_CENSUS_DRIFT",
+      "variant_duplicate_pending_id_refusal": "DUPLICATE_PENDING_OPERATION_ID",
+      "variant_unmarked_pending_row_refusal": "PENDING_FATE_CENSUS_DRIFT",
+      "restoration_exact": true
+    },
+    "negative_axes": {
+      "baseline_unknown": 0,
+      "baseline_excluded": 0,
+      "baseline_inventory_ledger": 3,
+      "baseline_deferred": 6,
+      "real_unknown_operations": 279,
+      "real_inapplicable_operations": 16,
+      "real_unknown_with_receipts": 0,
+      "real_excluded_with_receipts": 0,
+      "operation_anti_join_ok": true,
+      "unknown_axis_drop_refusal": "UNKNOWN_CENSUS_DRIFT",
+      "excluded_axis_drop_refusal": "EXCLUDED_CENSUS_DRIFT",
+      "deferred_frontier_tamper_refusal": "DEFERRED_SCOPE_RECORDS_LOST_OR_FABRICATED",
+      "inapplicable_operations": 272,
+      "inapplicable_with_receipts_or_facts": 0
+    }
+  },
+  "restoration": {
+    "checkpoint_exact": true,
+    "frozen_census_exact": true,
+    "operation_fates_identical": true,
+    "issued_candidates_equal": true,
+    "native_facts_equal": true
+  },
+  "holds": [
+    "ORIGINAL35_SCIENTIFIC_SOURCE_AND_RESPONDENT_ENTITLEMENT",
+    "NATIVE_HOST_CURRENT_PERMISSION",
+    "PRODUCTION_S1_D_ISSUER",
+    "PROTECTED_MERGE",
+    "UPSTREAM_S2_B_AND_980_COMBINED_G5",
+    "100K_6GIB_AND_ORIGINAL_N9_N10W",
+    "GITHUB_ACTIONS_HOSTED_BILLING_UNAVAILABLE"
+  ],
+  "residual_boundaries": [
+    "Caller-supplied census completeness is external; a fully co-forged census and frontier can omit operations or deferred records. This is the declared-input boundary, not a bypass of the repaired pending/false-HELD guards.",
+    "The base R03 native path still overissues when called directly with a severed pending frontier; the S1-C adapter is the guarded contract path and refuses before source opening.",
+    "The 309-operation/150-receipt/330-fact fixture is synthetic sourcefree evidence, not original35 execution.",
+    "No source/science/respondent/CURRENT/protected authority is created by this receiving."
+  ],
+  "operational_note": {
+    "issue_posting": "BLOCKED_BY_CREDENTIAL_SCOPE",
+    "detail": "available GitHub credential can push the review branch but GitHub Issues REST returns 403 Resource not accessible by personal access token; exact notification text preserved in evidence/issue_notification.md"
+  },
+  "review": {
+    "branch": "agent/pyat918-s1c-g5-r1",
+    "return_directory": "WORKER_RETURNS/PYAT_R3_S1C_G5/",
+    "evidence_directory": "WORKER_RETURNS/PYAT_R3_S1C_G5/evidence/"
+  }
+}

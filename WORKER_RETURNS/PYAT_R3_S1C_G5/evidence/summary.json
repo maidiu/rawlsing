@@ -1,0 +1,491 @@
+{
+  "G2_changed_value_restore": {
+    "baseline_issued_candidates": 150,
+    "baseline_native_facts": 330,
+    "changed_issued_candidates": 150,
+    "changed_native_facts": 330,
+    "checkpoint_changed": true,
+    "checkpoint_restored_exactly": true,
+    "fact_identity_changed": true,
+    "fact_identity_restored": true,
+    "operations_with_changed_fact_identity": 147
+  },
+  "G2_positive": {
+    "candidate_anti_join": {
+      "actual_candidate_count": 150,
+      "actual_rule_count": 147,
+      "count_mismatches": {},
+      "duplicate_candidate_ids": [],
+      "expected_candidate_count": 150,
+      "expected_rule_count": 147,
+      "fact_closure_ok": true,
+      "missing_candidate_ids": [],
+      "missing_rule_ids": [],
+      "no_drop_ok": true,
+      "semantic_mismatches": [],
+      "unexpected_candidate_ids": [],
+      "unexpected_rule_ids": []
+    },
+    "compiled": 309,
+    "declared": 309,
+    "fate_counts": {
+      "ELIGIBLE": 150,
+      "HELD": 159
+    },
+    "issued_candidates": 150,
+    "native_facts": 330,
+    "operation_anti_join": {
+      "accounted_eligible_operation_count": 150,
+      "accounting_ok": true,
+      "completed_operation_count": 147,
+      "expected_operation_count": 147,
+      "frontier_eligible_operation_count": 150,
+      "missing_candidate_operations": [],
+      "missing_operation_ids": [],
+      "no_drop_ok": true,
+      "not_eligible_operation_ids": [
+        "urn:r61:op:00ac9dec6c4c867d24ab1d0b3c3519ffab24b51828bd9747be764ae0a1c923f3",
+        "urn:r61:op:0106973ecbd3f09d35aac3201f990be3c6d6c98912f9d6c155c855f529afd7ee",
+        "urn:r61:op:01a653d295f7520ed65e6bab184615200dfa86200497260d5460f76f5fad2652",
+        "urn:r61:op:01cc5eaafa981d5f2ca4c9239cc50934287d0593ce383de93359f1779578a83d",
+        "urn:r61:op:04c5736375d486c53432eb6aedaad9adbea9a3ea52ecb465c4c45ae2b9a31332",
+        "urn:r61:op:04e61b24ae2af1689f67068d82f7420005aa2f3a7f1e90c0b8f7785fbc3187f9",
+        "urn:r61:op:06279ce304f29e2fbfd3c33fe26248089f44f9b071bb147a0275400a13c2e6bc",
+        "urn:r61:op:0795469ba64bc724cb070ed2205f8ac4f66553f4083967c811c48951c70e710a",
+        "urn:r61:op:081ac52559e1b9c116203bfd048f42f7b44695fb848ad865fc51c0836bbf3518",
+        "urn:r61:op:0c784ff3cad16b6bcb2c223cf2783f37fef04013fd211aec1ec2459fc9fe5eb6",
+        "urn:r61:op:0d9f1955bb82cc6bbdb318fe1226d88299e19945e8dd8b2999eb009d47407ae8",
+        "urn:r61:op:10305e98c21914b2d04c8922924ebb6ea4000cff394082859e6ebc198e43d94c",
+        "urn:r61:op:10bd0ea24ecf6297248083c01d0f8d2f0aa1bf62d4a75a36ad579875242ea12f",
+        "urn:r61:op:15017dc4466f761406de0ef501e986edcd2ccc86d50b8938e864432cb26fb1fc",
+        "urn:r61:op:155a31f8a2329a5364bb6c839b9e9f00723c09de2db0bb55c269746a277b1d9c",
+        "urn:r61:op:1658b64f9b2665f562baa28a78a2a54a6d077c1f77e2fce46785d6c8c5ba8b2c",
+        "urn:r61:op:1707d95ff87d6a4d68aeae259c7a9a372fb26b2c66bc5a3dad5b5145cfdbe0da",
+        "urn:r61:op:1a01f8c25dd12b0fa7a1e443cc89da138651f12af85ddb66ee3f38337e0d041a",
+        "urn:r61:op:1bc37eee29c47072275e7e8e3d70525f0db0a054a5c4c44bdc2b69b68e30ac0c",
+        "urn:r61:op:23511fc63166d2210c971eaeec303603a0b5917b6777ac9108a400df12f0bb44",
+        "urn:r61:op:2397385704337e5b3a816652797c179d2fcd3db82d1fbbe313d00248d0660702",
+        "urn:r61:op:23f2d5d1bdb13271c7aacfe0872475fb491e49e4b21e54e7b6dc6ca7c460073e",
+        "urn:r61:op:24e4e3a6b0a91ae13ae015151dbe5859144404a153d837066940a0b7e6598701",
+        "urn:r61:op:25412f13da019a5d582fc66c357100f302cf918d188a2c3aac676b7092be9af3",
+        "urn:r61:op:2646128c5db3254aa46d074fce618963ce8e545d4513578a97c74d08aa452da3",
+        "urn:r61:op:2901f8dbccaceca5bc70f101f6fa706160d4754f8c5072ccd92752c89d27dd13",
+        "urn:r61:op:2bb94164c3ed05500b2d88c6d0c8cb710bb4d586789e5aa03b4a942a717af59a",
+        "urn:r61:op:2e5e59f3c48c8291b28fd7867203740b5eadceb925e7bd307a795a03c65e0e09",
+        "urn:r61:op:305d24ac0727aff5d724bf469a9206c57b4e3042b99f5dd84686c108a6191655",
+        "urn:r61:op:31b65dd8d9ecc7e9f90d41db8383eb6f7b0735ab7b00c42d229789ea18ebffd4",
+        "urn:r61:op:3257c4410fb64381115ae664e2eead97b9f901770e1d738720682b189aaeeaeb",
+        "urn:r61:op:35cb5a8ff3cdabf4cbf9c8217227295de05bb7e8648a8ccd03cfbd25e1cd62bf",
+        "urn:r61:op:3862f42ec1c54972aa65c96b66c68ace3fdf867bc5b47ffad364eafe395c196f",
+        "urn:r61:op:3bbde14539e3944519ff9ebe3318d89242ed7459aa91cfc7897b3980e14b7baa",
+        "urn:r61:op:3c6900bc911a7a78bcebe5ad25ad8b5ca6ceb0251c86f76e712a2caff64d9b71",
+        "urn:r61:op:3cb561aa08c8933e0efc7b78a99a03f13911729d3de9e83ada09f296a651dbd8",
+        "urn:r61:op:3db20101142b8473c14d196801a8c345640fa160005807f7adf6bd21d55448ac",
+        "urn:r61:op:3f220e09f4ac4b84d9b1019e895206fe78ee798c826b01b883a54aa7051a0978",
+        "urn:r61:op:40e368a4dd6f9e7e94f655b5d57e5d0a98fa2ec3da5be43e7d50885712f42c9b",
+        "urn:r61:op:4151ef1da0305f9f850bfb1d36defd926d65c70bf8118f39eee17341f973f3d1",
+        "urn:r61:op:42e5f4f3d776201551010a947c8d90b0cb7194854b3398081dd56918cd7ee457",
+        "urn:r61:op:43929ccd94b7109ae0ebccadae85ffa7ea5c44fe98b8123bc0a44f863335c844",
+        "urn:r61:op:457e97244a0fd5d78de1f4ed1f1d7842215455e7281edf4d645212361014409d",
+        "urn:r61:op:4718106aef5c41bfa6869d2a559936ed51c7f87807ddd28ce444a2c5295e1a88",
+        "urn:r61:op:49d45cd8f20b3cd3f6613253b39fd4c995b33d52064d2fbedcd6f09e067279cd",
+        "urn:r61:op:4a4d212af712b6af839d9d7fe064a77bdb22a67ae2c535d5da4c7446c1c22268",
+        "urn:r61:op:4aa779cbd6eb0a82d951745f0166eb593a21afd763571f1257276f450c576e11",
+        "urn:r61:op:4ae45b7d2169707d8fa0f820279dda8ac3b2464b5c76646f0ef6a5d3f74b8dca",
+        "urn:r61:op:4b2011a0af0f9de73e17cb61878df09842bb4584fccf216913663a2af7cf08de",
+        "urn:r61:op:4c26560f84ba8092cefafc22a9cbb9f72e6c2d67047fd672ccbd0f8d58b04eec",
+        "urn:r61:op:4d78650ff99538ae4ac64503042abe3033362de3bf47855623e4952557b3d454",
+        "urn:r61:op:4ebae0ab64946f0089f2e607248ad05ba7ded60ff7215fcae9d47c242a843bc7",
+        "urn:r61:op:5204a555ca811c75e5185abe042278442c190858098a9a9ac3d61df9a4d7bb09",
+        "urn:r61:op:54e8e87dc1d85b57ad6d97636c759a97ad197d027e49e3f1cefd5f6e0d8e392b",
+        "urn:r61:op:55b9c0bd2ed75832baee9bcd048c0d127cabd5aae1b9f16fb2d5eac7d461498f",
+        "urn:r61:op:566397edacd5def8c75ef83db6df3b36b29759a33f042b2a95cab1f09ae4d17c",
+        "urn:r61:op:5669cf5565cc1cb9ae8c07889aa3598ff3724ff8196ac6b5706614a3f06ff1cd",
+        "urn:r61:op:588ddb6ef4a65455aacfba74d1a6ead72d982e26c1a85271eb421436bf6bd694",
+        "urn:r61:op:5aa1291c4461659a6fdfc0b79dfd5e408eb7794d733b8bbeb1b34944edd290ba",
+        "urn:r61:op:5eb082c57c9630d86765a8788cb0eb5d9a2e47e8d2e5d97d3953c089e07a9054",
+        "urn:r61:op:6087d207af1b0b58d383e1ff7a337f79fe221518d254715cedd4ab5b2bc4af7f",
+        "urn:r61:op:6331bda96417ab1d7073a046622c7cef442ef4c0b64f23daf47ec5cfd4fb7dec",
+        "urn:r61:op:65538b867e9f670a07f4c615e77ccfed84a645f7dd225faebc74cd5a07b90b0d",
+        "urn:r61:op:668d222382a593a323bd58b03e4afbf596c21bddea9c5ff0e5046728c6cf350e",
+        "urn:r61:op:6ae4b2c2bef979c07ce3823017ae88fae6d69e86ea36b538b1c3e3cdcfd66bbf",
+        "urn:r61:op:6b2417dcb4e2311d0e15e5a1c400521f565de0c2f71d7a8d0a99db701a24b0ec",
+        "urn:r61:op:6b4f13cdabef6fced294e7d2037ae1e2b2118abe7d80bb81491e3117e0eb01e3",
+        "urn:r61:op:6b50395a07b745ad70526d7ba14d934619d02de666915448b4a139abb08018e4",
+        "urn:r61:op:6bc5ce71ad9c2a1cbe6f86fe8bca2cb2b9cb5fa929fa019b23c5d6319cca602b",
+        "urn:r61:op:6c4199544fd46a6671e93939d4e4cdf7885730c81997463d0f436fe86a240e45",
+        "urn:r61:op:6d7cf02aceeeb6e74569bf535d88ad5be269c327563af6ef957cd018674556b8",
+        "urn:r61:op:6ee3aa794c3d48e55fb54bfd769f4aa0e257fe5a404b1d645a52562a0eedaebd",
+        "urn:r61:op:6f4bbe6282176ec839b30d19a1ebe305ed110d011f8351359f2600e37fc14858",
+        "urn:r61:op:72cf8220804e833cf35b47aa9dcf9d74031cc8208c15c73ccc6e6f41a50d56bb",
+        "urn:r61:op:73dfeace8e805da1211047482066886b54f465e29c7fcc77b8c9bdc7bee20fd9",
+        "urn:r61:op:7571723783b5d2f71abdb6bb8908466e04589cd59ca816a49a28527a1c1e5fd0",
+        "urn:r61:op:76eb43720b54ec4a38906c78e9d690520ea7b1fb2e5938d740074d1b2d8dda53",
+        "urn:r61:op:79a58c8914caef75e3382dc9e90efc33cfd6f4328f3013b6cb3568f11c1e4440",
+        "urn:r61:op:83efa49186b83535e2ecf4ea0963dffc02ddaa9b1de2b5338f6c87690901a8d8",
+        "urn:r61:op:84b45629660c5b0eae42b31590059f82e3d8e51a5fac9849c1755243bc95b8a0",
+        "urn:r61:op:84e91ec86de53735e89dfa4e97189e60ede2c7e685be76ea5d4b6950da56a240",
+        "urn:r61:op:86fe4a61997c9f91fa2197affc57e7cb79d3915e218eaf31a8efca03cf7b9406",
+        "urn:r61:op:87c9949e703b615cbaf7ed8eff35019008252b2fbea035f242831c9509deeca4",
+        "urn:r61:op:8a2c3cbbf11e74794a54020b690ec18fc1c4b63e03a0f6de2182e0bccd16506d",
+        "urn:r61:op:8a4349c38323c3f53be75abce2317ce450a53ea86ad9fc8acd11705633665282",
+        "urn:r61:op:8ac84b962ebda191f3225a9c222fb941aabae453f52ad7a8110536b8d757fcc1",
+        "urn:r61:op:8b0c030d50c64ae220a4d2f02b906199c55a8f0aaff307e207a2378337fac202",
+        "urn:r61:op:8c9080a8523f1cf583bb36cb71cccf25417d56c21c4e92229abdb8a36e56bca5",
+        "urn:r61:op:8eb57175519d174ed25b828ff407acc258fdcdce3435d5b0b71c3351072be03d",
+        "urn:r61:op:8fea0a92aa41a32d96df6ffa135be52a6c451a9cb9d7be39178cab43d1cc0198",
+        "urn:r61:op:9130b841495d21df1dbfacb7730d47b0a25f85f5e56b6e26168f12948fac0b2d",
+        "urn:r61:op:941e145d529703709b3930769f3e4e6c0d44dc6f161c2d123eaf8a8fb77f447d",
+        "urn:r61:op:942bad48d2aa8016bf268065a09e649d5cd6331d85eb59883d916b420815556d",
+        "urn:r61:op:945c2d61316ea4469085f04b3dc99c5faf86d9db3264e6b42f09056093eb2816",
+        "urn:r61:op:94d2b4ca50578a85d86eb76bd80bc0b1cab2d0e069c4d5fce6fea0d6d6244a8f",
+        "urn:r61:op:954b729ac4e30cb9aa18b4b2fbcc392ae2ed15e6cd1a3cbbab58aeb6d106cd4a",
+        "urn:r61:op:95ccb9bf5feb86c5ce1372cc9d329f7ac49348d75275a039eaba5bde512412b7",
+        "urn:r61:op:988eef0cd4989f9539d67b102f49f0b12ccf2399c0af900b4c4c682afa19825d",
+        "urn:r61:op:99d058e3402d92efe853936e2ae51db5f9c477db5f7ee2e3f289c5412cfd75b9",
+        "urn:r61:op:9b0d480266bb90e0671b5f8277f9b6a59499eedacafc72d6fec8c123dd4079fb",
+        "urn:r61:op:9b6111a04f215aa27cd912fa69593ffd65b84788efe4f4ff4cc2a5f71b36c28f",
+        "urn:r61:op:9bec4f76f34b9b98c6a120db331158e9de0a049aae5ade139a9bd84a90a3fd77",
+        "urn:r61:op:a5f5a4a94bf5348248e4dae4b05e01a9409712a356006507048558ebbf98df04",
+        "urn:r61:op:a76e3616e5f1b217ec897d434c9d485157bee994a176b2cb4020004741032b3f",
+        "urn:r61:op:a9618672f1bdd071e189853ccba1efc7583e7bf685c4631a764497047a02e96f",
+        "urn:r61:op:af685cb20a95de73e61588f4f050f41b15ecd2b6e1e855bf49f69458815c0ec9",
+        "urn:r61:op:af869b25e9b4902ecbb315264f958fd075550377d49149e6f4559675c81567df",
+        "urn:r61:op:b170e65062665c0faa8696df9ba3879269f7c976c72ff3d2017643a108e6d5d2",
+        "urn:r61:op:b1a8cf75c2c8935377d1aea1e43217bca55ac808bcfc716c3a4c3e19b35019c7",
+        "urn:r61:op:b1eed9dab540d1ba21e1cf3b764e6a4587c0d8c2ccef1fac340906ad171f209e",
+        "urn:r61:op:b4c28e13e8ae88f524e6fc69f2302b6c27ce4f202b9e523c9bd8ae3bb062ff3a",
+        "urn:r61:op:b4fc27c0311e0c319a4b782d35a3103083b8f7ec821451a3626490bcebdf2183",
+        "urn:r61:op:b5b557511dcb4ae5451b0110fa1df3b39677d9cb4e83a680f702c7843cca641b",
+        "urn:r61:op:b6bac725f68bf160dce7184d0c4e94b61cf8940cc2361769f2bce5208567501b",
+        "urn:r61:op:b90ad8f463a209d96e82bc21d8028ab3301ebd5eb940b0c2b22bfefe14e218d6",
+        "urn:r61:op:bad3f3d663a654561c233e334dafb3b9b2d2211838214db846d9a7d3ea49072e",
+        "urn:r61:op:bc2a1de6dcf2eb9ee68c8e9529404883b209b8c722e07e6ca9b9042ddb5a198f",
+        "urn:r61:op:bf4d093cff0f2624e30f38f453da69ae3dabbd9a86fee1ecb13c2abce6a1c35c",
+        "urn:r61:op:bf4e0fa020a01bab2ef0f2e452320aafccecb1e601e518e1fb1b43d09e6cfe3e",
+        "urn:r61:op:c01e191af3704bd260c08cf924da061ff26ebbeb5871908e1f3f5f358a5b4688",
+        "urn:r61:op:c2177607877886e7dd254a31fea3f3129664ebcad627fc620885e6fb10c4e643",
+        "urn:r61:op:c2534a7a32f4903fbbc5d976c4223c0aebafc7ceded21bc0a56921995e6eb457",
+        "urn:r61:op:c31c3a4e255ece9c2faaea0ce8f8e608efdcb22b5d8f103d549b9d9dc5d909f7",
+        "urn:r61:op:c6474fb2223f62bd413e93cb80c99a94ed39aa2f5c2f81124d580eb461e15e57",
+        "urn:r61:op:c7e1b7aa212a0b151f4b6db41fda9485ab21ed1ef6c7d6554c96edc7c4c61174",
+        "urn:r61:op:c845b4887d42b221183f4d2b188a051b09ba302bbecd08805d73e3646a583428",
+        "urn:r61:op:c89c12b0f0fd72c00de7bd3b8f1c6c7184c0eed618a4a38d77de77d2d91c766f",
+        "urn:r61:op:ca5e3aa29669c099ec8bc0455f2aa09f363b85f6aed75ad3f7f87ec32a21535f",
+        "urn:r61:op:cc1d8ea00c05378568f3a46956f4778d2761454545b1d8f4043f4b6ed5efe424",
+        "urn:r61:op:ce1a604342ea0c301dee540ef3f7ac7e402dfd478a2a26521c5967c25efaeb16",
+        "urn:r61:op:d0aa2485ce813bf85f57b1605cf8829a24a302e64040ed4930cc92612e44d3d0",
+        "urn:r61:op:d0b1bfbec992b819b2e0f8ba8d652e4bb124a58047d664f2dd036e24cba01b3b",
+        "urn:r61:op:d0f7986ec3d8086be126771fc2daca64fe8f8c79641c51fec18d4f5d495349b6",
+        "urn:r61:op:d199e6e16e510da3dae8c21ac168e2a2ab58c25f14c6186231b1486bc987f3ef",
+        "urn:r61:op:d5fa520f38e947db780cde1bb3093dc61f93db359ca5d3ca973c3d291caa3d04",
+        "urn:r61:op:d6cdaf9b8b283c4cf8cf17eab227a31953069857ce10e7f2eb5e2d43a8387049",
+        "urn:r61:op:d9c91d58da8775f2b208988b6e915332dec12541fe560066b68748b6dded6489",
+        "urn:r61:op:dbe975206aaa9f792a0f9c2d4cea3a16c54c5ecb1898fe0aaf5a76a0a6db74a3",
+        "urn:r61:op:ddfad16402a14393ec854df9e4a44dc3c422c579f3a0ca591c2a75a5aed52610",
+        "urn:r61:op:e13b5b9c9b23a626906a200551a705752023308b4a390ea53a3bca0be93f07f3",
+        "urn:r61:op:e3041fd6fc4e6f93fbdc4fa7b5ce46aec7f67b4a2e3dc8a6e4b8fa7e04ec5af6",
+        "urn:r61:op:e3f765bd895d428dfd13efff959f583b612d82f126d4f2cb7d27f31b25cba5a5",
+        "urn:r61:op:e6362c0485e7068dda31be9eaf4bc5189c84a376934688e968625ba0e1ad28f4",
+        "urn:r61:op:e8a69b559626b979f01fc23141ad0aec2b884b6a22c832f3fd55cb9fc435536f",
+        "urn:r61:op:e92183afd4718700fc78350742fad6097ae270e2e19f27d59a920395c574cd94",
+        "urn:r61:op:eb46216c9b3c92fdd3b87f2041ea5a0834aa5fa046795e72d102a76baaa2464e",
+        "urn:r61:op:ec28bbee09e550ad96d2c012e240e17529e16e5c9c521bf96bc0e29d1348a00a",
+        "urn:r61:op:ed43591b1c8019d79d8d658ebe0a9cd1f8c5ad61aa36377f3d98117cfa552bee",
+        "urn:r61:op:f04a27f426b0f0db2f46ed1cb3da805f3f0ede0adda3d5a2cf4123ba41599566",
+        "urn:r61:op:f2834cc19d9a00a47825355162588d2238917d8ebd62aae8ca0022149971a56d",
+        "urn:r61:op:f3b216e74f72332c5300fbf539185a9235a3d228b385dcb4a8c4882dad93574b",
+        "urn:r61:op:f620570552f3d822fd864f59b4dd5d69f885f0a3d0669e00659bd2c9b4612707",
+        "urn:r61:op:f635d5ff427d477b2060f06120b98324d366a0a375aaff059dd4c62b67c62f35",
+        "urn:r61:op:f664de2f0db3b0d851adf514d2ba561a39cfec90ca8cc859bfba41fe9a56aa3f",
+        "urn:r61:op:f7b6c728fb3619068617ee05ef1c9cbd8260a823f009191e19038522d4ad4210",
+        "urn:r61:op:f8b941594fd5087c74b6e15a6ad1bb7fee44cec472872e96a01f657c95a4d2e8",
+        "urn:r61:op:fb09d774642edd9ac337e5fef711096f0f7509086fc11724dd5fe37f65d138f0",
+        "urn:r61:op:fbd916c1b21def0a7c26fff0475d0bcdb009c2e1adce2f9c336f0911d167c4c7",
+        "urn:r61:op:fd9135048bcc4c3f46b68eedadf51548c0a0f74875d609b5c4ad91be99583b09"
+      ],
+      "overlapping_disposition_ids": [],
+      "pending_operation_ids": [],
+      "unaccounted_eligible_operation_ids": [],
+      "unexpected_candidate_ids": [],
+      "unexpected_operation_ids": [],
+      "unsupported_operation_ids": [
+        "urn:r61:op:5bfe384003445c57738fedab67986d1c14082c12de39aaa4adb4153028f0d83b",
+        "urn:r61:op:a30eec18858730bfd105a427c367ee70730a0d4a2891ab71fa3e00467b196c70",
+        "urn:r61:op:f3503ed7b8626483cb99d77f5fc0242dca2bb35fb9d0e5f85104656f55c6029e"
+      ]
+    },
+    "operations_with_receipts": 147,
+    "operations_without_receipts": 162,
+    "receipt_rows": 309,
+    "states": {
+      "execution_state": {
+        "COMPLETED": 147,
+        "NOT_STARTED": 159,
+        "UNSUPPORTED_RUNTIME": 3
+      },
+      "lowering_status": {
+        "NOT_ELIGIBLE": 159,
+        "SUPPORTED": 147,
+        "UNSUPPORTED_RUNTIME": 3
+      },
+      "result_state": {
+        "HELD": 159,
+        "SUPPORTED": 123,
+        "UNSUPPORTED": 3,
+        "VALID_EMPTY": 24
+      }
+    }
+  },
+  "G3_false_complete": {
+    "code": "BUDGET_STATE_FATE_DRIFT",
+    "opens": 0,
+    "refused": true
+  },
+  "G3_false_held": {
+    "adapter_code": "SOURCEFREE_ROLE_FATE_DRIFT",
+    "adapter_opens": 0,
+    "baseline_execution_state": "COMPLETED",
+    "baseline_receipts": 150,
+    "forged_native_candidate_anti_join_ok": true,
+    "forged_native_operation_anti_join_ok": true,
+    "forged_native_receipts": 148,
+    "receipt_loss": 2,
+    "science_census_differs": true,
+    "source_census_equal": true,
+    "target_operation_id": "urn:r61:op:1852da97d0f57187c80786a0325e4fcf23facc539b615edea765c9ac66dc19c0"
+  },
+  "G3_optional_weight": {
+    "declared_eligible": 150,
+    "eligible_population": 0,
+    "eligible_sample_raw": 150,
+    "held_population_without_weight": 147,
+    "invented_eligibility": [],
+    "population_with_receipts": [],
+    "sample_raw_with_receipts": 147,
+    "sample_raw_without_receipts": [
+      "urn:r61:op:5bfe384003445c57738fedab67986d1c14082c12de39aaa4adb4153028f0d83b",
+      "urn:r61:op:a30eec18858730bfd105a427c367ee70730a0d4a2891ab71fa3e00467b196c70",
+      "urn:r61:op:f3503ed7b8626483cb99d77f5fc0242dca2bb35fb9d0e5f85104656f55c6029e"
+    ]
+  },
+  "G3_pending_honest": {
+    "budget_state": "PARTIAL",
+    "execution_counts": {
+      "NOT_STARTED": 164,
+      "PENDING": 145
+    },
+    "issued_candidates": 6,
+    "native_facts": 12,
+    "pending_count": 145,
+    "pending_rows_all_pending": true,
+    "pending_rows_with_facts": 0,
+    "pending_rows_with_receipts": 0,
+    "source_factory_calls": 1
+  },
+  "G3_pending_restoration": {
+    "checkpoint_restored_exactly": true,
+    "frozen_census_restored_exactly": true,
+    "issued_candidates_equal": true,
+    "native_facts_equal": true,
+    "operation_fates_identical": true
+  },
+  "G3_pending_severance_native": {
+    "adapter_code": "PENDING_FATE_CENSUS_DRIFT",
+    "adapter_opens": 0,
+    "baseline_receipts": 6,
+    "budget_state_after": "PARTIAL",
+    "candidate_anti_join_ok": true,
+    "excluded_scope_equal": true,
+    "frontier_pending_rows_still_pending": true,
+    "inventory_ledger_equal": true,
+    "operation_anti_join_ok": true,
+    "overissued": true,
+    "pending_ids_removed": 145,
+    "pending_ids_with_receipts": 142,
+    "science_census_equal": true,
+    "source_census_equal": true,
+    "tampered_native_receipts": 150,
+    "unknown_scope_equal": true
+  },
+  "G3_pending_variants": {
+    "duplicate_pending_id": "DUPLICATE_PENDING_OPERATION_ID",
+    "partial_list_loss": "PENDING_FATE_CENSUS_DRIFT",
+    "unmarked_pending_row": "PENDING_FATE_CENSUS_DRIFT"
+  },
+  "combined": {
+    "s1b": 46,
+    "s1d": 59,
+    "s2f": 19,
+    "shared": 58,
+    "total": 182
+  },
+  "focused": {
+    "inner_elapsed_seconds": 10.257499,
+    "passed": 18,
+    "peak_rss_bytes": 200646656,
+    "rss_samples": 5136,
+    "wall_seconds": 152.0
+  },
+  "inherited": {
+    "passed": 22,
+    "wall_seconds": 150.99
+  },
+  "negative_axes": {
+    "baseline": {
+      "candidate_anti_join_ok": true,
+      "declared": 309,
+      "deferred_scope_count": 6,
+      "deferred_scope_records": [
+        {
+          "class": "CROSS_SOURCE",
+          "reason": "METHOD_GATED_OR_BOUNDED",
+          "trigger": "COMPETENT_METHOD_ISSUANCE"
+        },
+        {
+          "class": "TEMPORAL",
+          "reason": "METHOD_GATED_OR_BOUNDED",
+          "trigger": "COMPETENT_METHOD_ISSUANCE"
+        },
+        {
+          "class": "POSSIBILITY",
+          "reason": "METHOD_GATED_OR_BOUNDED",
+          "trigger": "COMPETENT_METHOD_ISSUANCE"
+        },
+        {
+          "class": "STRUCTURAL",
+          "reason": "METHOD_GATED_OR_BOUNDED",
+          "trigger": "COMPETENT_METHOD_ISSUANCE"
+        },
+        {
+          "beyond": {
+            "D": 1,
+            "J": 2,
+            "K": 2
+          },
+          "kind": "ARITY_DEFERRED",
+          "trigger": "ISSUED_RELEASE_EXPANSION"
+        },
+        {
+          "baseline_policy_ref": null,
+          "kind": "RECURSION_BASELINE_NOT_ENUMERATED",
+          "policy_D": 1,
+          "reason": "R01_DECLARES_FORK_OVER_CONDITIONERS_ONLY_NO_INDEPENDENT_RECURRENCE_CHAIN",
+          "recursion_relation_ref": null,
+          "state": "EXACT_CONTRACT_GAP"
+        }
+      ],
+      "excluded_scope_count": 0,
+      "fate_counts": {
+        "ELIGIBLE": 150,
+        "HELD": 159
+      },
+      "grade": "TEST_ONLY_SOURCEFREE",
+      "held_with_receipts": 0,
+      "inapplicable_with_receipts": 0,
+      "inventory_ledger_count": 3,
+      "issued_candidates": 150,
+      "native_facts": 330,
+      "noneligible_with_facts": 0,
+      "noneligible_with_receipts": 0,
+      "operation_anti_join_ok": true,
+      "received": 309,
+      "result_states": {
+        "DIFFUSE": 0,
+        "HELD": 159,
+        "SUPPORTED": 123,
+        "UNKNOWN": 0,
+        "UNSUPPORTED": 3,
+        "VALID_EMPTY": 24,
+        "ZERO_SUPPORT": 0
+      },
+      "source_factory_calls": 1,
+      "unknown_scope_count": 0,
+      "unknown_with_receipts": 0
+    },
+    "deferred_coforged_both_empty": {
+      "refused": false,
+      "source_factory_calls": 0
+    },
+    "deferred_frontier_tamper": {
+      "code": "DEFERRED_SCOPE_RECORDS_LOST_OR_FABRICATED",
+      "detail": null,
+      "refused": true,
+      "source_factory_calls": 0
+    },
+    "excluded_axis_dropped": {
+      "code": "EXCLUDED_CENSUS_DRIFT",
+      "detail": {
+        "frontier_count": 0,
+        "frozen_count": 16
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    },
+    "inapplicable_excluded_drop": {
+      "code": "EXCLUDED_CENSUS_DRIFT",
+      "detail": {
+        "frontier_count": 0,
+        "frozen_count": 272
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    },
+    "proved_inapplicable": {
+      "all_retained": true,
+      "all_without_receipts_or_facts": true,
+      "excluded_scope_count": 272,
+      "fate_counts": {
+        "ELIGIBLE": 14,
+        "HELD": 23,
+        "INAPPLICABLE_PROVED": 272
+      },
+      "inapplicable_operations": 272,
+      "operation_anti_join_ok": true,
+      "source_factory_calls": 1
+    },
+    "real_negative_axes": {
+      "excluded_operations": 16,
+      "excluded_scope_count": 16,
+      "excluded_with_receipts": 0,
+      "fate_counts": {
+        "ELIGIBLE": 4,
+        "HELD": 10,
+        "INAPPLICABLE_PROVED": 16,
+        "UNKNOWN": 279
+      },
+      "inventory_ledger_count": 3,
+      "operation_anti_join_ok": true,
+      "source_factory_calls": 1,
+      "unknown_operations": 279,
+      "unknown_scope_count": 279,
+      "unknown_with_receipts": 0
+    },
+    "routing_unknown": {
+      "affected_operations": 279,
+      "excluded_scope_count": 0,
+      "fate_counts": {
+        "ELIGIBLE": 12,
+        "HELD": 297
+      },
+      "inventory_ledger_count": 3,
+      "noneligible_affected_with_facts": 0,
+      "noneligible_affected_with_receipts": 0,
+      "operation_anti_join_ok": true,
+      "source_factory_calls": 1,
+      "unknown_scope_count": 0,
+      "unknown_with_receipts": 0
+    },
+    "unknown_axis_dropped": {
+      "code": "UNKNOWN_CENSUS_DRIFT",
+      "detail": {
+        "frontier_count": 0,
+        "frozen_count": 279
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    },
+    "workdir": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s1c-g5-negatives-xal2lu_e"
+  },
+  "total_passed": 222
+}

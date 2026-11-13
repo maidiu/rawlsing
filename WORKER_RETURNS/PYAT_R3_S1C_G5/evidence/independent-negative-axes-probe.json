@@ -1,0 +1,156 @@
+{
+  "baseline": {
+    "candidate_anti_join_ok": true,
+    "declared": 309,
+    "deferred_scope_count": 6,
+    "deferred_scope_records": [
+      {
+        "class": "CROSS_SOURCE",
+        "reason": "METHOD_GATED_OR_BOUNDED",
+        "trigger": "COMPETENT_METHOD_ISSUANCE"
+      },
+      {
+        "class": "TEMPORAL",
+        "reason": "METHOD_GATED_OR_BOUNDED",
+        "trigger": "COMPETENT_METHOD_ISSUANCE"
+      },
+      {
+        "class": "POSSIBILITY",
+        "reason": "METHOD_GATED_OR_BOUNDED",
+        "trigger": "COMPETENT_METHOD_ISSUANCE"
+      },
+      {
+        "class": "STRUCTURAL",
+        "reason": "METHOD_GATED_OR_BOUNDED",
+        "trigger": "COMPETENT_METHOD_ISSUANCE"
+      },
+      {
+        "beyond": {
+          "D": 1,
+          "J": 2,
+          "K": 2
+        },
+        "kind": "ARITY_DEFERRED",
+        "trigger": "ISSUED_RELEASE_EXPANSION"
+      },
+      {
+        "baseline_policy_ref": null,
+        "kind": "RECURSION_BASELINE_NOT_ENUMERATED",
+        "policy_D": 1,
+        "reason": "R01_DECLARES_FORK_OVER_CONDITIONERS_ONLY_NO_INDEPENDENT_RECURRENCE_CHAIN",
+        "recursion_relation_ref": null,
+        "state": "EXACT_CONTRACT_GAP"
+      }
+    ],
+    "excluded_scope_count": 0,
+    "fate_counts": {
+      "ELIGIBLE": 150,
+      "HELD": 159
+    },
+    "grade": "TEST_ONLY_SOURCEFREE",
+    "held_with_receipts": 0,
+    "inapplicable_with_receipts": 0,
+    "inventory_ledger_count": 3,
+    "issued_candidates": 150,
+    "native_facts": 330,
+    "noneligible_with_facts": 0,
+    "noneligible_with_receipts": 0,
+    "operation_anti_join_ok": true,
+    "received": 309,
+    "result_states": {
+      "DIFFUSE": 0,
+      "HELD": 159,
+      "SUPPORTED": 123,
+      "UNKNOWN": 0,
+      "UNSUPPORTED": 3,
+      "VALID_EMPTY": 24,
+      "ZERO_SUPPORT": 0
+    },
+    "source_factory_calls": 1,
+    "unknown_scope_count": 0,
+    "unknown_with_receipts": 0
+  },
+  "deferred_coforged_both_empty": {
+    "refused": false,
+    "source_factory_calls": 0
+  },
+  "deferred_frontier_tamper": {
+    "code": "DEFERRED_SCOPE_RECORDS_LOST_OR_FABRICATED",
+    "detail": null,
+    "refused": true,
+    "source_factory_calls": 0
+  },
+  "excluded_axis_dropped": {
+    "code": "EXCLUDED_CENSUS_DRIFT",
+    "detail": {
+      "frontier_count": 0,
+      "frozen_count": 16
+    },
+    "refused": true,
+    "source_factory_calls": 0
+  },
+  "inapplicable_excluded_drop": {
+    "code": "EXCLUDED_CENSUS_DRIFT",
+    "detail": {
+      "frontier_count": 0,
+      "frozen_count": 272
+    },
+    "refused": true,
+    "source_factory_calls": 0
+  },
+  "proved_inapplicable": {
+    "all_retained": true,
+    "all_without_receipts_or_facts": true,
+    "excluded_scope_count": 272,
+    "fate_counts": {
+      "ELIGIBLE": 14,
+      "HELD": 23,
+      "INAPPLICABLE_PROVED": 272
+    },
+    "inapplicable_operations": 272,
+    "operation_anti_join_ok": true,
+    "source_factory_calls": 1
+  },
+  "real_negative_axes": {
+    "excluded_operations": 16,
+    "excluded_scope_count": 16,
+    "excluded_with_receipts": 0,
+    "fate_counts": {
+      "ELIGIBLE": 4,
+      "HELD": 10,
+      "INAPPLICABLE_PROVED": 16,
+      "UNKNOWN": 279
+    },
+    "inventory_ledger_count": 3,
+    "operation_anti_join_ok": true,
+    "source_factory_calls": 1,
+    "unknown_operations": 279,
+    "unknown_scope_count": 279,
+    "unknown_with_receipts": 0
+  },
+  "routing_unknown": {
+    "affected_operations": 279,
+    "excluded_scope_count": 0,
+    "fate_counts": {
+      "ELIGIBLE": 12,
+      "HELD": 297
+    },
+    "inventory_ledger_count": 3,
+    "noneligible_affected_with_facts": 0,
+    "noneligible_affected_with_receipts": 0,
+    "operation_anti_join_ok": true,
+    "source_factory_calls": 1,
+    "unknown_scope_count": 0,
+    "unknown_with_receipts": 0
+  },
+  "unknown_axis_dropped": {
+    "code": "UNKNOWN_CENSUS_DRIFT",
+    "detail": {
+      "frontier_count": 0,
+      "frozen_count": 279
+    },
+    "refused": true,
+    "source_factory_calls": 0
+  },
+  "workdir": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s1c-g5-negatives-xal2lu_e"
+}

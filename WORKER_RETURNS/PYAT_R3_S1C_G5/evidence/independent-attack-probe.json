@@ -1,0 +1,1906 @@
+{
+  "G2_changed_value_restore": {
+    "baseline_checkpoint": "f87b2fdbcf621dfedc320168982de5768fc7c001ed0691e5527061c6a1d82c55",
+    "baseline_issued_candidates": 150,
+    "baseline_native_facts": 330,
+    "changed_anti_join": {
+      "actual_candidate_count": 150,
+      "actual_rule_count": 147,
+      "count_mismatches": {},
+      "duplicate_candidate_ids": [],
+      "expected_candidate_count": 150,
+      "expected_rule_count": 147,
+      "fact_closure_ok": true,
+      "missing_candidate_ids": [],
+      "missing_rule_ids": [],
+      "no_drop_ok": true,
+      "semantic_mismatches": [],
+      "unexpected_candidate_ids": [],
+      "unexpected_rule_ids": []
+    },
+    "changed_checkpoint": "5a33e3a3277283593704cfd0dcdb945e73a130e3a9e72c71ddf9202751ed66fa",
+    "changed_issued_candidates": 150,
+    "changed_native_facts": 330,
+    "changed_operation_anti_join": {
+      "accounted_eligible_operation_count": 150,
+      "accounting_ok": true,
+      "completed_operation_count": 147,
+      "expected_operation_count": 147,
+      "frontier_eligible_operation_count": 150,
+      "missing_candidate_operations": [],
+      "missing_operation_ids": [],
+      "no_drop_ok": true,
+      "not_eligible_operation_ids": [
+        "urn:r61:op:00ac9dec6c4c867d24ab1d0b3c3519ffab24b51828bd9747be764ae0a1c923f3",
+        "urn:r61:op:0106973ecbd3f09d35aac3201f990be3c6d6c98912f9d6c155c855f529afd7ee",
+        "urn:r61:op:01a653d295f7520ed65e6bab184615200dfa86200497260d5460f76f5fad2652",
+        "urn:r61:op:01cc5eaafa981d5f2ca4c9239cc50934287d0593ce383de93359f1779578a83d",
+        "urn:r61:op:04c5736375d486c53432eb6aedaad9adbea9a3ea52ecb465c4c45ae2b9a31332",
+        "urn:r61:op:04e61b24ae2af1689f67068d82f7420005aa2f3a7f1e90c0b8f7785fbc3187f9",
+        "urn:r61:op:06279ce304f29e2fbfd3c33fe26248089f44f9b071bb147a0275400a13c2e6bc",
+        "urn:r61:op:0795469ba64bc724cb070ed2205f8ac4f66553f4083967c811c48951c70e710a",
+        "urn:r61:op:081ac52559e1b9c116203bfd048f42f7b44695fb848ad865fc51c0836bbf3518",
+        "urn:r61:op:0c784ff3cad16b6bcb2c223cf2783f37fef04013fd211aec1ec2459fc9fe5eb6",
+        "urn:r61:op:0d9f1955bb82cc6bbdb318fe1226d88299e19945e8dd8b2999eb009d47407ae8",
+        "urn:r61:op:10305e98c21914b2d04c8922924ebb6ea4000cff394082859e6ebc198e43d94c",
+        "urn:r61:op:10bd0ea24ecf6297248083c01d0f8d2f0aa1bf62d4a75a36ad579875242ea12f",
+        "urn:r61:op:15017dc4466f761406de0ef501e986edcd2ccc86d50b8938e864432cb26fb1fc",
+        "urn:r61:op:155a31f8a2329a5364bb6c839b9e9f00723c09de2db0bb55c269746a277b1d9c",
+        "urn:r61:op:1658b64f9b2665f562baa28a78a2a54a6d077c1f77e2fce46785d6c8c5ba8b2c",
+        "urn:r61:op:1707d95ff87d6a4d68aeae259c7a9a372fb26b2c66bc5a3dad5b5145cfdbe0da",
+        "urn:r61:op:1a01f8c25dd12b0fa7a1e443cc89da138651f12af85ddb66ee3f38337e0d041a",
+        "urn:r61:op:1bc37eee29c47072275e7e8e3d70525f0db0a054a5c4c44bdc2b69b68e30ac0c",
+        "urn:r61:op:23511fc63166d2210c971eaeec303603a0b5917b6777ac9108a400df12f0bb44",
+        "urn:r61:op:2397385704337e5b3a816652797c179d2fcd3db82d1fbbe313d00248d0660702",
+        "urn:r61:op:23f2d5d1bdb13271c7aacfe0872475fb491e49e4b21e54e7b6dc6ca7c460073e",
+        "urn:r61:op:24e4e3a6b0a91ae13ae015151dbe5859144404a153d837066940a0b7e6598701",
+        "urn:r61:op:25412f13da019a5d582fc66c357100f302cf918d188a2c3aac676b7092be9af3",
+        "urn:r61:op:2646128c5db3254aa46d074fce618963ce8e545d4513578a97c74d08aa452da3",
+        "urn:r61:op:2901f8dbccaceca5bc70f101f6fa706160d4754f8c5072ccd92752c89d27dd13",
+        "urn:r61:op:2bb94164c3ed05500b2d88c6d0c8cb710bb4d586789e5aa03b4a942a717af59a",
+        "urn:r61:op:2e5e59f3c48c8291b28fd7867203740b5eadceb925e7bd307a795a03c65e0e09",
+        "urn:r61:op:305d24ac0727aff5d724bf469a9206c57b4e3042b99f5dd84686c108a6191655",
+        "urn:r61:op:31b65dd8d9ecc7e9f90d41db8383eb6f7b0735ab7b00c42d229789ea18ebffd4",
+        "urn:r61:op:3257c4410fb64381115ae664e2eead97b9f901770e1d738720682b189aaeeaeb",
+        "urn:r61:op:35cb5a8ff3cdabf4cbf9c8217227295de05bb7e8648a8ccd03cfbd25e1cd62bf",
+        "urn:r61:op:3862f42ec1c54972aa65c96b66c68ace3fdf867bc5b47ffad364eafe395c196f",
+        "urn:r61:op:3bbde14539e3944519ff9ebe3318d89242ed7459aa91cfc7897b3980e14b7baa",
+        "urn:r61:op:3c6900bc911a7a78bcebe5ad25ad8b5ca6ceb0251c86f76e712a2caff64d9b71",
+        "urn:r61:op:3cb561aa08c8933e0efc7b78a99a03f13911729d3de9e83ada09f296a651dbd8",
+        "urn:r61:op:3db20101142b8473c14d196801a8c345640fa160005807f7adf6bd21d55448ac",
+        "urn:r61:op:3f220e09f4ac4b84d9b1019e895206fe78ee798c826b01b883a54aa7051a0978",
+        "urn:r61:op:40e368a4dd6f9e7e94f655b5d57e5d0a98fa2ec3da5be43e7d50885712f42c9b",
+        "urn:r61:op:4151ef1da0305f9f850bfb1d36defd926d65c70bf8118f39eee17341f973f3d1",
+        "urn:r61:op:42e5f4f3d776201551010a947c8d90b0cb7194854b3398081dd56918cd7ee457",
+        "urn:r61:op:43929ccd94b7109ae0ebccadae85ffa7ea5c44fe98b8123bc0a44f863335c844",
+        "urn:r61:op:457e97244a0fd5d78de1f4ed1f1d7842215455e7281edf4d645212361014409d",
+        "urn:r61:op:4718106aef5c41bfa6869d2a559936ed51c7f87807ddd28ce444a2c5295e1a88",
+        "urn:r61:op:49d45cd8f20b3cd3f6613253b39fd4c995b33d52064d2fbedcd6f09e067279cd",
+        "urn:r61:op:4a4d212af712b6af839d9d7fe064a77bdb22a67ae2c535d5da4c7446c1c22268",
+        "urn:r61:op:4aa779cbd6eb0a82d951745f0166eb593a21afd763571f1257276f450c576e11",
+        "urn:r61:op:4ae45b7d2169707d8fa0f820279dda8ac3b2464b5c76646f0ef6a5d3f74b8dca",
+        "urn:r61:op:4b2011a0af0f9de73e17cb61878df09842bb4584fccf216913663a2af7cf08de",
+        "urn:r61:op:4c26560f84ba8092cefafc22a9cbb9f72e6c2d67047fd672ccbd0f8d58b04eec",
+        "urn:r61:op:4d78650ff99538ae4ac64503042abe3033362de3bf47855623e4952557b3d454",
+        "urn:r61:op:4ebae0ab64946f0089f2e607248ad05ba7ded60ff7215fcae9d47c242a843bc7",
+        "urn:r61:op:5204a555ca811c75e5185abe042278442c190858098a9a9ac3d61df9a4d7bb09",
+        "urn:r61:op:54e8e87dc1d85b57ad6d97636c759a97ad197d027e49e3f1cefd5f6e0d8e392b",
+        "urn:r61:op:55b9c0bd2ed75832baee9bcd048c0d127cabd5aae1b9f16fb2d5eac7d461498f",
+        "urn:r61:op:566397edacd5def8c75ef83db6df3b36b29759a33f042b2a95cab1f09ae4d17c",
+        "urn:r61:op:5669cf5565cc1cb9ae8c07889aa3598ff3724ff8196ac6b5706614a3f06ff1cd",
+        "urn:r61:op:588ddb6ef4a65455aacfba74d1a6ead72d982e26c1a85271eb421436bf6bd694",
+        "urn:r61:op:5aa1291c4461659a6fdfc0b79dfd5e408eb7794d733b8bbeb1b34944edd290ba",
+        "urn:r61:op:5eb082c57c9630d86765a8788cb0eb5d9a2e47e8d2e5d97d3953c089e07a9054",
+        "urn:r61:op:6087d207af1b0b58d383e1ff7a337f79fe221518d254715cedd4ab5b2bc4af7f",
+        "urn:r61:op:6331bda96417ab1d7073a046622c7cef442ef4c0b64f23daf47ec5cfd4fb7dec",
+        "urn:r61:op:65538b867e9f670a07f4c615e77ccfed84a645f7dd225faebc74cd5a07b90b0d",
+        "urn:r61:op:668d222382a593a323bd58b03e4afbf596c21bddea9c5ff0e5046728c6cf350e",
+        "urn:r61:op:6ae4b2c2bef979c07ce3823017ae88fae6d69e86ea36b538b1c3e3cdcfd66bbf",
+        "urn:r61:op:6b2417dcb4e2311d0e15e5a1c400521f565de0c2f71d7a8d0a99db701a24b0ec",
+        "urn:r61:op:6b4f13cdabef6fced294e7d2037ae1e2b2118abe7d80bb81491e3117e0eb01e3",
+        "urn:r61:op:6b50395a07b745ad70526d7ba14d934619d02de666915448b4a139abb08018e4",
+        "urn:r61:op:6bc5ce71ad9c2a1cbe6f86fe8bca2cb2b9cb5fa929fa019b23c5d6319cca602b",
+        "urn:r61:op:6c4199544fd46a6671e93939d4e4cdf7885730c81997463d0f436fe86a240e45",
+        "urn:r61:op:6d7cf02aceeeb6e74569bf535d88ad5be269c327563af6ef957cd018674556b8",
+        "urn:r61:op:6ee3aa794c3d48e55fb54bfd769f4aa0e257fe5a404b1d645a52562a0eedaebd",
+        "urn:r61:op:6f4bbe6282176ec839b30d19a1ebe305ed110d011f8351359f2600e37fc14858",
+        "urn:r61:op:72cf8220804e833cf35b47aa9dcf9d74031cc8208c15c73ccc6e6f41a50d56bb",
+        "urn:r61:op:73dfeace8e805da1211047482066886b54f465e29c7fcc77b8c9bdc7bee20fd9",
+        "urn:r61:op:7571723783b5d2f71abdb6bb8908466e04589cd59ca816a49a28527a1c1e5fd0",
+        "urn:r61:op:76eb43720b54ec4a38906c78e9d690520ea7b1fb2e5938d740074d1b2d8dda53",
+        "urn:r61:op:79a58c8914caef75e3382dc9e90efc33cfd6f4328f3013b6cb3568f11c1e4440",
+        "urn:r61:op:83efa49186b83535e2ecf4ea0963dffc02ddaa9b1de2b5338f6c87690901a8d8",
+        "urn:r61:op:84b45629660c5b0eae42b31590059f82e3d8e51a5fac9849c1755243bc95b8a0",
+        "urn:r61:op:84e91ec86de53735e89dfa4e97189e60ede2c7e685be76ea5d4b6950da56a240",
+        "urn:r61:op:86fe4a61997c9f91fa2197affc57e7cb79d3915e218eaf31a8efca03cf7b9406",
+        "urn:r61:op:87c9949e703b615cbaf7ed8eff35019008252b2fbea035f242831c9509deeca4",
+        "urn:r61:op:8a2c3cbbf11e74794a54020b690ec18fc1c4b63e03a0f6de2182e0bccd16506d",
+        "urn:r61:op:8a4349c38323c3f53be75abce2317ce450a53ea86ad9fc8acd11705633665282",
+        "urn:r61:op:8ac84b962ebda191f3225a9c222fb941aabae453f52ad7a8110536b8d757fcc1",
+        "urn:r61:op:8b0c030d50c64ae220a4d2f02b906199c55a8f0aaff307e207a2378337fac202",
+        "urn:r61:op:8c9080a8523f1cf583bb36cb71cccf25417d56c21c4e92229abdb8a36e56bca5",
+        "urn:r61:op:8eb57175519d174ed25b828ff407acc258fdcdce3435d5b0b71c3351072be03d",
+        "urn:r61:op:8fea0a92aa41a32d96df6ffa135be52a6c451a9cb9d7be39178cab43d1cc0198",
+        "urn:r61:op:9130b841495d21df1dbfacb7730d47b0a25f85f5e56b6e26168f12948fac0b2d",
+        "urn:r61:op:941e145d529703709b3930769f3e4e6c0d44dc6f161c2d123eaf8a8fb77f447d",
+        "urn:r61:op:942bad48d2aa8016bf268065a09e649d5cd6331d85eb59883d916b420815556d",
+        "urn:r61:op:945c2d61316ea4469085f04b3dc99c5faf86d9db3264e6b42f09056093eb2816",
+        "urn:r61:op:94d2b4ca50578a85d86eb76bd80bc0b1cab2d0e069c4d5fce6fea0d6d6244a8f",
+        "urn:r61:op:954b729ac4e30cb9aa18b4b2fbcc392ae2ed15e6cd1a3cbbab58aeb6d106cd4a",
+        "urn:r61:op:95ccb9bf5feb86c5ce1372cc9d329f7ac49348d75275a039eaba5bde512412b7",
+        "urn:r61:op:988eef0cd4989f9539d67b102f49f0b12ccf2399c0af900b4c4c682afa19825d",
+        "urn:r61:op:99d058e3402d92efe853936e2ae51db5f9c477db5f7ee2e3f289c5412cfd75b9",
+        "urn:r61:op:9b0d480266bb90e0671b5f8277f9b6a59499eedacafc72d6fec8c123dd4079fb",
+        "urn:r61:op:9b6111a04f215aa27cd912fa69593ffd65b84788efe4f4ff4cc2a5f71b36c28f",
+        "urn:r61:op:9bec4f76f34b9b98c6a120db331158e9de0a049aae5ade139a9bd84a90a3fd77",
+        "urn:r61:op:a5f5a4a94bf5348248e4dae4b05e01a9409712a356006507048558ebbf98df04",
+        "urn:r61:op:a76e3616e5f1b217ec897d434c9d485157bee994a176b2cb4020004741032b3f",
+        "urn:r61:op:a9618672f1bdd071e189853ccba1efc7583e7bf685c4631a764497047a02e96f",
+        "urn:r61:op:af685cb20a95de73e61588f4f050f41b15ecd2b6e1e855bf49f69458815c0ec9",
+        "urn:r61:op:af869b25e9b4902ecbb315264f958fd075550377d49149e6f4559675c81567df",
+        "urn:r61:op:b170e65062665c0faa8696df9ba3879269f7c976c72ff3d2017643a108e6d5d2",
+        "urn:r61:op:b1a8cf75c2c8935377d1aea1e43217bca55ac808bcfc716c3a4c3e19b35019c7",
+        "urn:r61:op:b1eed9dab540d1ba21e1cf3b764e6a4587c0d8c2ccef1fac340906ad171f209e",
+        "urn:r61:op:b4c28e13e8ae88f524e6fc69f2302b6c27ce4f202b9e523c9bd8ae3bb062ff3a",
+        "urn:r61:op:b4fc27c0311e0c319a4b782d35a3103083b8f7ec821451a3626490bcebdf2183",
+        "urn:r61:op:b5b557511dcb4ae5451b0110fa1df3b39677d9cb4e83a680f702c7843cca641b",
+        "urn:r61:op:b6bac725f68bf160dce7184d0c4e94b61cf8940cc2361769f2bce5208567501b",
+        "urn:r61:op:b90ad8f463a209d96e82bc21d8028ab3301ebd5eb940b0c2b22bfefe14e218d6",
+        "urn:r61:op:bad3f3d663a654561c233e334dafb3b9b2d2211838214db846d9a7d3ea49072e",
+        "urn:r61:op:bc2a1de6dcf2eb9ee68c8e9529404883b209b8c722e07e6ca9b9042ddb5a198f",
+        "urn:r61:op:bf4d093cff0f2624e30f38f453da69ae3dabbd9a86fee1ecb13c2abce6a1c35c",
+        "urn:r61:op:bf4e0fa020a01bab2ef0f2e452320aafccecb1e601e518e1fb1b43d09e6cfe3e",
+        "urn:r61:op:c01e191af3704bd260c08cf924da061ff26ebbeb5871908e1f3f5f358a5b4688",
+        "urn:r61:op:c2177607877886e7dd254a31fea3f3129664ebcad627fc620885e6fb10c4e643",
+        "urn:r61:op:c2534a7a32f4903fbbc5d976c4223c0aebafc7ceded21bc0a56921995e6eb457",
+        "urn:r61:op:c31c3a4e255ece9c2faaea0ce8f8e608efdcb22b5d8f103d549b9d9dc5d909f7",
+        "urn:r61:op:c6474fb2223f62bd413e93cb80c99a94ed39aa2f5c2f81124d580eb461e15e57",
+        "urn:r61:op:c7e1b7aa212a0b151f4b6db41fda9485ab21ed1ef6c7d6554c96edc7c4c61174",
+        "urn:r61:op:c845b4887d42b221183f4d2b188a051b09ba302bbecd08805d73e3646a583428",
+        "urn:r61:op:c89c12b0f0fd72c00de7bd3b8f1c6c7184c0eed618a4a38d77de77d2d91c766f",
+        "urn:r61:op:ca5e3aa29669c099ec8bc0455f2aa09f363b85f6aed75ad3f7f87ec32a21535f",
+        "urn:r61:op:cc1d8ea00c05378568f3a46956f4778d2761454545b1d8f4043f4b6ed5efe424",
+        "urn:r61:op:ce1a604342ea0c301dee540ef3f7ac7e402dfd478a2a26521c5967c25efaeb16",
+        "urn:r61:op:d0aa2485ce813bf85f57b1605cf8829a24a302e64040ed4930cc92612e44d3d0",
+        "urn:r61:op:d0b1bfbec992b819b2e0f8ba8d652e4bb124a58047d664f2dd036e24cba01b3b",
+        "urn:r61:op:d0f7986ec3d8086be126771fc2daca64fe8f8c79641c51fec18d4f5d495349b6",
+        "urn:r61:op:d199e6e16e510da3dae8c21ac168e2a2ab58c25f14c6186231b1486bc987f3ef",
+        "urn:r61:op:d5fa520f38e947db780cde1bb3093dc61f93db359ca5d3ca973c3d291caa3d04",
+        "urn:r61:op:d6cdaf9b8b283c4cf8cf17eab227a31953069857ce10e7f2eb5e2d43a8387049",
+        "urn:r61:op:d9c91d58da8775f2b208988b6e915332dec12541fe560066b68748b6dded6489",
+        "urn:r61:op:dbe975206aaa9f792a0f9c2d4cea3a16c54c5ecb1898fe0aaf5a76a0a6db74a3",
+        "urn:r61:op:ddfad16402a14393ec854df9e4a44dc3c422c579f3a0ca591c2a75a5aed52610",
+        "urn:r61:op:e13b5b9c9b23a626906a200551a705752023308b4a390ea53a3bca0be93f07f3",
+        "urn:r61:op:e3041fd6fc4e6f93fbdc4fa7b5ce46aec7f67b4a2e3dc8a6e4b8fa7e04ec5af6",
+        "urn:r61:op:e3f765bd895d428dfd13efff959f583b612d82f126d4f2cb7d27f31b25cba5a5",
+        "urn:r61:op:e6362c0485e7068dda31be9eaf4bc5189c84a376934688e968625ba0e1ad28f4",
+        "urn:r61:op:e8a69b559626b979f01fc23141ad0aec2b884b6a22c832f3fd55cb9fc435536f",
+        "urn:r61:op:e92183afd4718700fc78350742fad6097ae270e2e19f27d59a920395c574cd94",
+        "urn:r61:op:eb46216c9b3c92fdd3b87f2041ea5a0834aa5fa046795e72d102a76baaa2464e",
+        "urn:r61:op:ec28bbee09e550ad96d2c012e240e17529e16e5c9c521bf96bc0e29d1348a00a",
+        "urn:r61:op:ed43591b1c8019d79d8d658ebe0a9cd1f8c5ad61aa36377f3d98117cfa552bee",
+        "urn:r61:op:f04a27f426b0f0db2f46ed1cb3da805f3f0ede0adda3d5a2cf4123ba41599566",
+        "urn:r61:op:f2834cc19d9a00a47825355162588d2238917d8ebd62aae8ca0022149971a56d",
+        "urn:r61:op:f3b216e74f72332c5300fbf539185a9235a3d228b385dcb4a8c4882dad93574b",
+        "urn:r61:op:f620570552f3d822fd864f59b4dd5d69f885f0a3d0669e00659bd2c9b4612707",
+        "urn:r61:op:f635d5ff427d477b2060f06120b98324d366a0a375aaff059dd4c62b67c62f35",
+        "urn:r61:op:f664de2f0db3b0d851adf514d2ba561a39cfec90ca8cc859bfba41fe9a56aa3f",
+        "urn:r61:op:f7b6c728fb3619068617ee05ef1c9cbd8260a823f009191e19038522d4ad4210",
+        "urn:r61:op:f8b941594fd5087c74b6e15a6ad1bb7fee44cec472872e96a01f657c95a4d2e8",
+        "urn:r61:op:fb09d774642edd9ac337e5fef711096f0f7509086fc11724dd5fe37f65d138f0",
+        "urn:r61:op:fbd916c1b21def0a7c26fff0475d0bcdb009c2e1adce2f9c336f0911d167c4c7",
+        "urn:r61:op:fd9135048bcc4c3f46b68eedadf51548c0a0f74875d609b5c4ad91be99583b09"
+      ],
+      "overlapping_disposition_ids": [],
+      "pending_operation_ids": [],
+      "unaccounted_eligible_operation_ids": [],
+      "unexpected_candidate_ids": [],
+      "unexpected_operation_ids": [],
+      "unsupported_operation_ids": [
+        "urn:r61:op:5bfe384003445c57738fedab67986d1c14082c12de39aaa4adb4153028f0d83b",
+        "urn:r61:op:a30eec18858730bfd105a427c367ee70730a0d4a2891ab71fa3e00467b196c70",
+        "urn:r61:op:f3503ed7b8626483cb99d77f5fc0242dca2bb35fb9d0e5f85104656f55c6029e"
+      ]
+    },
+    "changed_source_factory_calls": 1,
+    "checkpoint_changed": true,
+    "checkpoint_restored_exactly": true,
+    "fact_identity_changed": true,
+    "fact_identity_restored": true,
+    "frozen_census_restored_exactly": true,
+    "operations_with_changed_fact_identity": [
+      "urn:r61:op:024f7c62ed66507cf30f801f6ddaa31230a8339c8acd226d852f30fbf1d105d4",
+      "urn:r61:op:03cd12423330782ec3f9a9718f3a1824a4647fc636ca5ff032468608f78d6684",
+      "urn:r61:op:075becbf1509b9d3449bfdc5f9e52ff932bb83a3f65530f7365f8ba8b2b47ac3",
+      "urn:r61:op:0a34a368b5617fb76a13bf16f2f1e518654d0313c00333e9889a74c4b008fdb6",
+      "urn:r61:op:0afd92218700001ab6cd3808014c9cb05a4a771f90dcd86872b07201383fb557",
+      "urn:r61:op:0d67426d106ee29cb103b075dc9fc8e9c761dc95dbedcef768ffbb534bab3503",
+      "urn:r61:op:0f008758469260ecaeb294106bce5fb968f9954a30d8521fd36cb36ea122a8a5",
+      "urn:r61:op:111ba52c3d96fa5e299c6a8007b1156c2c5ef4a91b73e8c1a189fc5be6ed15dd",
+      "urn:r61:op:12312131a49974301822ae8a1a894d4d8eed5babced3153d613d79a301c0d468",
+      "urn:r61:op:1291a07b98df8f2b5321e61376b47a2ae9cfd0e3edcfbbe460506a7d9bb86434",
+      "urn:r61:op:1592f0e49bb0c3ec1ca43f97991b00f08900a2dc07036ca6ea30047481ec2832",
+      "urn:r61:op:16ce4f8c86b3bbffb557173c64bee3d26ca55c68e98f74b7e03e7fefdcbd493d",
+      "urn:r61:op:1852da97d0f57187c80786a0325e4fcf23facc539b615edea765c9ac66dc19c0",
+      "urn:r61:op:185d5a236682cd274aa1d0cbe0c86a42a9b9c5bd6efb54d7fc4ce7203b22d5e4",
+      "urn:r61:op:1a8f6d5174984c704ef7f08b00ccc24a1d9a0fe03773e215b3fbbe8b985cbf0f",
+      "urn:r61:op:1ed19a1759dff93e75d275be7af1ad7e7aa2b7e3bbb83ac1357c2012b06901dd",
+      "urn:r61:op:1fef116bc1cbef079988fe2706100c29e1f81038a3c80031b488000ab2ec2129",
+      "urn:r61:op:22ebfe1bf58e7d346c1009e644ebc9f316e1b8874cc89cc8b4709eabc37b122f",
+      "urn:r61:op:23f3530256b5e17ad1bcf52d0283ca06fb5731f082978cd004c36f1550fbb60d",
+      "urn:r61:op:27f66c7920f1da7cb9844fecffe0b62a7423e76f8dbe4b581769550f9a3321d3",
+      "urn:r61:op:282e88c9f604657ffd083c701127b002bb9ddd011e9830389240d5a02adcabc2",
+      "urn:r61:op:2ea82a79858710748ba7ded5f6dcbaef67e46995c99c36668ccfdf238c33c946",
+      "urn:r61:op:2f2ab50cfd32a94e9fe62289652ceea4b6f43366b798737cd6b1f288a9e7157a",
+      "urn:r61:op:34d741fa51c63b1a9c69edf387b3ef0b1f88818505511c06bb1ba293c791b7c8",
+      "urn:r61:op:35cbd1307f914e4e131e079027a965a1c0c3290fbbb0933272dcd93acd5b5439",
+      "urn:r61:op:35eee85e1295f4bccb29a9bbcccc7d453552d85d5a83d1a4107c96c0da1f99cc",
+      "urn:r61:op:38b1f0282c1354da3b4c526b452ba2683ae857f551cd62677dbbe2419cd5a5c6",
+      "urn:r61:op:3a03b4fc398f8e9f763cfb5707e08c4df1cdb8284b93503886bca4c92a71aeae",
+      "urn:r61:op:3df13fbfe420d833a83580f149dce8502727442c20eecab2de5cb83ed96efd62",
+      "urn:r61:op:41e9b916a4e13814359a93e358a3b75967ef91afe8504e1beac16351e920966b",
+      "urn:r61:op:4356c9413e960b6ae40067238c0c0a6fc608a871098f2d457b8b16cda6aa24d8",
+      "urn:r61:op:4b3a762c6f562a23d2567a7069e9af1798f6b52a701ef754e8fa6520208652c0",
+      "urn:r61:op:4c0f185a93b24021aaf81803dc3b64bd8ca0db1468f8fd0abb7f950369c623b5",
+      "urn:r61:op:4d1fad8a2c3964919112fbb6a7b84b3dc3381207f59f4a3c3f07dc9df58e0cd2",
+      "urn:r61:op:50fc693891f3baf0972438c2e0a17ede11d75e125275164946e98f4c62f13482",
+      "urn:r61:op:52487029d627f1ff8f58620949e8f8261fcd2bde08e086e67ef0f1942b9ed878",
+      "urn:r61:op:5268c2823294dbf113b27d846888cd8be9e80a2749e69a7372fddaaaa220d043",
+      "urn:r61:op:54364307a0d87607d69153706c63ab6e25360a0168be5b2af3284d48c6e9bdce",
+      "urn:r61:op:545f820d9b7ce880cef68055e27740966aac8ab5dc596249b0236dc810f30d9e",
+      "urn:r61:op:551010de5e59428300c435d94bb4bea9014cc7223c0265975ce90fd9698dac5a",
+      "urn:r61:op:5517c030c5a24d0054d91bbcfff040e1bf04f4d057d490113df6fb19a08b597d",
+      "urn:r61:op:5626b85f95c632816dd752a2be130082b8352f828dbfceba240ef1fb28c0ffdb",
+      "urn:r61:op:59d2fbe290908ff096d22cecfda0c7ba5a7ca17c3fb435efaaa5002357e01652",
+      "urn:r61:op:5be94312c20ee9643598805625ecd836bd26a8205a67c875f561b25d3bed8df8",
+      "urn:r61:op:5d9baf7461e3a7ec5d76dd7ee587fd9e50b4f02d14e1336d2882bc67582b40f4",
+      "urn:r61:op:5e68d5bde339a231e1425f2ebcc0107afcbfcfdb16d1612bc805736972ea6922",
+      "urn:r61:op:6082585d3a7219bcda01c42b33ca2d775974f5e749f092433a7eef1c86860735",
+      "urn:r61:op:651ade08ba6b9a001775b03a4a63086753518d510ffd329dbc483bde304b75a1",
+      "urn:r61:op:652cbba6928aeb6132c77ee1417cce5c917a095981fc15fc7f92c08e9062981e",
+      "urn:r61:op:65ba55fa620d05d326e5c110e715c02fa2e13b8799eac7440dd826c0ccee9ae7",
+      "urn:r61:op:65e615d44ddf7933f8d7449e299e74513c90660024ef16ca212528eefbbec735",
+      "urn:r61:op:68ba139137883496e84f9548236f4264058b5869e1a1ccac8a0de02f751ddb91",
+      "urn:r61:op:6c87bc861a88b46d6426a7b65a239a9489e488fbe5208fdd90c735872e1a93a9",
+      "urn:r61:op:6df5403e0a20a08cb18eb7814ff50b6ba4af4ba3a93ac4322a779c78795441b5",
+      "urn:r61:op:7249ede78de5e2e52aad5b247eea806a078535593175787978783aec24defd16",
+      "urn:r61:op:725a1ff201cb4d081943798caf392b01b2c0a13ab37de3d690c3635b1005219e",
+      "urn:r61:op:75a7111753f36451783a9e7ec622c73332fb0d06bb9049e9c06237faca0e69c4",
+      "urn:r61:op:75b2b3bcd3b90fc9bb4e926a72eceef848e6b293e4261c5ee9d23022e8325bbd",
+      "urn:r61:op:79218f73c0dd300cfe0f7133edd68c4a4863d28410175450ea5a5b08cbce57ce",
+      "urn:r61:op:793be8c6d54fdc98f1e1b6711a4f84cd508a6bac068f0ba90a6343e26138b3d7",
+      "urn:r61:op:7d0eaa3dff10346b4446ccc9f74ea9ffc06bc893cea0236c2bbd2c7ed3fc038e",
+      "urn:r61:op:7dd88256c9714a1ec8d168c3a405aabd8fcff73fb649532895ef0dbbf13fb1d7",
+      "urn:r61:op:7e130a405a3e154876d5da11d3f30fd3a707cf5a72ca89fc746aaaba7845ed54",
+      "urn:r61:op:7e8d3538f90b284540b7415f21a81a77160ad3170d425a94515fc88a3555c957",
+      "urn:r61:op:7f4d3659dee8e6e7479dbc67ade8f829e27fb564bc3e18ae465744533a44c86d",
+      "urn:r61:op:87927ef12064a0d18146cff19fa1fe699ea9bbe0ac8bfa962bc942fde21d9e5d",
+      "urn:r61:op:8b07d1b4ad19a61a02bcf86cb56e2fc5c4585bc37531351d1f960917ae7a17bb",
+      "urn:r61:op:8d441513116f95ab9c5f6c2ca9ed92f933952efe5b9fa56e4a39dd1650984228",
+      "urn:r61:op:8e259e1aa62cf9ca67c66948a66f4f274d245750bc541c9e88256bb8a0a10224",
+      "urn:r61:op:9014fdb87e44b76bfcaf34039bf26a3b9ec8d9a7b89ecec488ba67e350030f9e",
+      "urn:r61:op:90aa704410aa40d2490310120d2466641c45afe167a84d4040b6b66755b05cfc",
+      "urn:r61:op:91cde473dba8c068fe8450ea9a8599ce39df23893959625856dfc5f166f4dcf5",
+      "urn:r61:op:92ee40e3c757b6842760b12f39824129ff2186e4d70a71b2164fc021cb697d3a",
+      "urn:r61:op:960ee8204f1d256d80ac9461255ee835620994a2c843f09be963f37cde2ace88",
+      "urn:r61:op:970307fb37996d77b9ffee51116900a568952f63878ba2a031db7718fb140788",
+      "urn:r61:op:98a54a3e99b37281a21c9278ceae8e38ba591d9142eb750290c28948c07c3b93",
+      "urn:r61:op:9c04383a1c835d566cd9cf7aa80c3a21d264083328c968933e1d88610fc4bfbb",
+      "urn:r61:op:9d4869d2f60a05df1c4ed2df6dcaa0454f3300c524ccb921b70fa68de2f4f374",
+      "urn:r61:op:9f2b34d5d6be336434e25fea94cc37c325bfbb2868045c03022960eb27a0c135",
+      "urn:r61:op:a0a74e788edf9651ca113e3ee6fe202c657bda8096cdb4b782c76fade65ff9c7",
+      "urn:r61:op:a1264e0eef9a3450064d359c97ab809fdf29cb2bce0f3ae39b1c5d00fe6dfb67",
+      "urn:r61:op:a164e38ca59fb9d2e7ee52bd50324c5d470e2de8ab63bdfd17cf9312759c6885",
+      "urn:r61:op:a3460580c344a5dbb9ade86ac5429a57691c3f145260a74a5e6d0562b3dcaba9",
+      "urn:r61:op:a62286dd7aa0b5398574102dd2782236629c874d460d87f410041d83cdc3f54b",
+      "urn:r61:op:a799bb2c45c74a291403f977b584506f7d9a945bd859bf205fbc1241708d9c0c",
+      "urn:r61:op:a7e6f1b5e23de0f69fd0bbb0583b41df3249587060bb645b7d48679b3555d012",
+      "urn:r61:op:a7fe00bfd087d7b18387e719d39944226c364b522d4bba3ba3c9812aa5b86839",
+      "urn:r61:op:aa3ad1ae02d8c5e8e6745307fa1fbc3d70c708eaaef38a3138ebd274d195feb2",
+      "urn:r61:op:aa88523f2d45e603f6dde3373632509f87c96e8113b0a6a458ca2f42bd40b9ae",
+      "urn:r61:op:ab71b68e34e38fe404b178cb352cf5f452e72c7969807c2121e9104fe01d866c",
+      "urn:r61:op:abd3a1942bf641a4e8aa77c038375d092e7044b9fa010540b55f7e16f9c1fd5d",
+      "urn:r61:op:b0ec55f3cc9c9698a16777c230fb66e28a4e60a9d439d1214bd017236d2c97c3",
+      "urn:r61:op:b16ae3dc10f7603fe38cc4f16339d7229b793a35b47ff6bd96821d45dc751f86",
+      "urn:r61:op:b2999084db1614e1adc10f6d6d6e1d40de0cefa36b5acea4e4a084a36041c6e9",
+      "urn:r61:op:b31ef93fe4df75b74fb9c311c6cafe3e7fb3ef4e6caef9a0e799b10dc2ce15f5",
+      "urn:r61:op:b367f74a7c724b44bc790c68de2402d3172c76ec4ea57ac0addd8ed3ac65522f",
+      "urn:r61:op:b47c6d8338de8506425803e420bdd5fb372c98e85b8c9e53b281ce22a455e06d",
+      "urn:r61:op:b6ab3aa6d7749baab49499aa4bb2ab2bbb63e96013ba2a7766368caaf8dbaa7a",
+      "urn:r61:op:b86b9854dda6da9ec4200f99d1d326c3b5872e8c23339d42f527ff99ddec7925",
+      "urn:r61:op:b9cb45968b6a6763b4064dd3c41b42ac47b25f929388b208f6223f41ea09c2d5",
+      "urn:r61:op:bac12a5e00d4abca006a9576a11069f5a0bb527d12a6be245fae4302b34e60e9",
+      "urn:r61:op:bbb8b10ae13aba94a350441441378ff06fa4454eaf7eb57a98d647d4b11f6f2d",
+      "urn:r61:op:bc7ad8ff0d45a485d776f84451e04f2e1faf8794f1a83b26ca3f9707f63b36fc",
+      "urn:r61:op:c1fea030c1249878f4d330fcc16546e17975607cf1b2d36e17e6ab89b6b96286",
+      "urn:r61:op:c26762017c68a4a795a84bf1644aa59d289fca9682a1c8fed4d762b020085a3c",
+      "urn:r61:op:c2a5d30e0a37762945c426d03cc7694ccef8ff5a196e40099d42ab278be108f1",
+      "urn:r61:op:c4632d10ce2b0976c2ffcf6c51a3a7bcb1b9bcf83e34e3a85ea8da4d17de0686",
+      "urn:r61:op:c492a392b632933800256ad8cc36b54367f3e54ee2bafd5a6908b3cd6476c8de",
+      "urn:r61:op:c57a73e9fc66729aeffefb5e5990eb6251f078d484a056d7a97b83ffbbacaae1",
+      "urn:r61:op:c7c09c4a356cddfaac45265f96cd6a6f739a8295a5b8aa33e4eafd40cf0f9709",
+      "urn:r61:op:c823ff0dcb2ef1fccf349f522989bd67d65bc00befb45daab4248121fd8ec18f",
+      "urn:r61:op:c8aed71f6e83e0e7380fd7cadc0fb55291d2690e5c6ce557425641d15069c824",
+      "urn:r61:op:ca2daae508d30ca7439e1ed54c12595d844082b4bb520658f304b77cbd3712b8",
+      "urn:r61:op:cb6e67f767187baf6520cd8142e7149360575332238abae11764472240a3b191",
+      "urn:r61:op:cb96acbc9fc18b331144e8e3d523443fc01903a2f9c0b0e74feddd38336818c8",
+      "urn:r61:op:ccdc183eea7cb482f5780dcaf8349952b2851d6a80197aec7112af7a382ffcd5",
+      "urn:r61:op:cdbb44873cfd16e75affcce693c68c5c8bf79e30539611734b623cc0a714c9c6",
+      "urn:r61:op:ce872fc347fdb0a286dfa7b268a6edc90b2ba7123e08b0b039bc2f2778dfa691",
+      "urn:r61:op:ce96f6b8c4cb625192b995e307be778c0dbc60d535e1b53384d5547ac40bcafd",
+      "urn:r61:op:d236f866d6f4f1884771bbbd15537df865aecf95197fadb2507def480b7a3ff9",
+      "urn:r61:op:d2ac80006ee9c660af3d61005b9ebb34bafc6b16a8f755c0275e01338d2e8b1a",
+      "urn:r61:op:d325be262129dc0f344c0658348255ca0dd68e0ff9b973dae00b4c3509ba426f",
+      "urn:r61:op:d629b1a63f98c997af9b1a8815ed51765c1ec33e624e7fc45dd2ccf81d92c8d1",
+      "urn:r61:op:d95bde578c10d274ffeff80cccbf70784dba2d961928176e11863a548bfbf730",
+      "urn:r61:op:de1ff5a2e7ef481eee612b80cdff5123756c5db825637d05f16b510efebd511f",
+      "urn:r61:op:e1a54907be5f7bd8deef95de3983c5e5fda05a7a5f1ebb7bb31db0d7ffb7d1df",
+      "urn:r61:op:e273a5763bb5de3ac4e24b56e84153097d3a9a13da406563334fce317b7b1082",
+      "urn:r61:op:e275f8976e9a3f980a4a88e431f28e3c2bd2b67714637b279c3f9ac6af751f6e",
+      "urn:r61:op:e2834f6c356ccc3c7dba7efbe3cec99341121f640462cfae1d4fa7d5e8cd7e08",
+      "urn:r61:op:e3314707b36c74cc9e6b0c3ab9e50ef6e9c7c1e4823f1a0202ecd00c29e30ce7",
+      "urn:r61:op:e4273702a37e37d07312f526541cd49c897c3e7bd631d7d4767865d6b11a2911",
+      "urn:r61:op:e5e749f051b9057a3a6f8c770b173bc3cf8ce177480b1ef1eaa2bd4c1a62e1a1",
+      "urn:r61:op:e5f84f6fe03ac61acd42510431686dcc67e131ea7dea44f4a71b821886e40317",
+      "urn:r61:op:e63fbe0a0f0015a52163f229ea64f549271e53ca821b5d57b99d4bd351758076",
+      "urn:r61:op:e7ccdddda6d6eda411a304bed20006a2a86a8725952db72ea3937b54ce58cf63",
+      "urn:r61:op:e84b2a05b6e33179cac872410c463d13c050096ed48f443a1c4027dc3f920ff5",
+      "urn:r61:op:e90ee570290af0deea3b5fd1a55e5da9dfcfd5a07ac605e250c20a92bcbaed83",
+      "urn:r61:op:ec5539c718f1a7953dd2c41dd7ddd89c901b60d42ae0a27f1f3d89b00ff0d3c0",
+      "urn:r61:op:ec9cd96046c1a5a208691b22b667844298e12c274d85faede3b85c976215646e",
+      "urn:r61:op:ee1419b721716a1f0174d98b41db472fc459cc1a16ed7e12e3c524513a784d84",
+      "urn:r61:op:ee57bcb4d72282af4d5a7d63ac2f8e35a9d47fe840ff9f7adbb81479790e4a7c",
+      "urn:r61:op:ee612ea7f9cc1e8d2f686ef509538ee3b91203b81c373c277f7afbbbeb9ca9c5",
+      "urn:r61:op:eeb779de92182ddc941e4b493f54c13b4a2e133a38914fb39227c71eb41412cd",
+      "urn:r61:op:f109ed52bc59da99899a9eb63648af168c0f2d1bc618621cc953ae3ee11e6b70",
+      "urn:r61:op:f309a3614ecbb6a60c66a13c5d14ea7f62ce6701d39348a0ee97e72a005edb96",
+      "urn:r61:op:f57df9ff011d49d32ab31bd345495f84803e7b2562b72f68731d3d8578d4f08d",
+      "urn:r61:op:f599227025bd858e5edcbbe7659a80bcc2d09bfb0c86cb837e85cd8a37b55ce1"
+    ],
+    "restored_checkpoint": "f87b2fdbcf621dfedc320168982de5768fc7c001ed0691e5527061c6a1d82c55"
+  },
+  "G2_positive": {
+    "candidate_anti_join": {
+      "actual_candidate_count": 150,
+      "actual_rule_count": 147,
+      "count_mismatches": {},
+      "duplicate_candidate_ids": [],
+      "expected_candidate_count": 150,
+      "expected_rule_count": 147,
+      "fact_closure_ok": true,
+      "missing_candidate_ids": [],
+      "missing_rule_ids": [],
+      "no_drop_ok": true,
+      "semantic_mismatches": [],
+      "unexpected_candidate_ids": [],
+      "unexpected_rule_ids": []
+    },
+    "candidate_assigned_to_multiple_operations": {},
+    "compiled": 309,
+    "declared": 309,
+    "deferred_scope_count": 6,
+    "distinct_expected_candidate_ids": 150,
+    "distinct_received_candidate_ids": 150,
+    "fate_counts": {
+      "ELIGIBLE": 150,
+      "HELD": 159
+    },
+    "issued_candidates": 150,
+    "missing_expected_candidate_ids": [],
+    "native_facts": 330,
+    "operation_anti_join": {
+      "accounted_eligible_operation_count": 150,
+      "accounting_ok": true,
+      "completed_operation_count": 147,
+      "expected_operation_count": 147,
+      "frontier_eligible_operation_count": 150,
+      "missing_candidate_operations": [],
+      "missing_operation_ids": [],
+      "no_drop_ok": true,
+      "not_eligible_operation_ids": [
+        "urn:r61:op:00ac9dec6c4c867d24ab1d0b3c3519ffab24b51828bd9747be764ae0a1c923f3",
+        "urn:r61:op:0106973ecbd3f09d35aac3201f990be3c6d6c98912f9d6c155c855f529afd7ee",
+        "urn:r61:op:01a653d295f7520ed65e6bab184615200dfa86200497260d5460f76f5fad2652",
+        "urn:r61:op:01cc5eaafa981d5f2ca4c9239cc50934287d0593ce383de93359f1779578a83d",
+        "urn:r61:op:04c5736375d486c53432eb6aedaad9adbea9a3ea52ecb465c4c45ae2b9a31332",
+        "urn:r61:op:04e61b24ae2af1689f67068d82f7420005aa2f3a7f1e90c0b8f7785fbc3187f9",
+        "urn:r61:op:06279ce304f29e2fbfd3c33fe26248089f44f9b071bb147a0275400a13c2e6bc",
+        "urn:r61:op:0795469ba64bc724cb070ed2205f8ac4f66553f4083967c811c48951c70e710a",
+        "urn:r61:op:081ac52559e1b9c116203bfd048f42f7b44695fb848ad865fc51c0836bbf3518",
+        "urn:r61:op:0c784ff3cad16b6bcb2c223cf2783f37fef04013fd211aec1ec2459fc9fe5eb6",
+        "urn:r61:op:0d9f1955bb82cc6bbdb318fe1226d88299e19945e8dd8b2999eb009d47407ae8",
+        "urn:r61:op:10305e98c21914b2d04c8922924ebb6ea4000cff394082859e6ebc198e43d94c",
+        "urn:r61:op:10bd0ea24ecf6297248083c01d0f8d2f0aa1bf62d4a75a36ad579875242ea12f",
+        "urn:r61:op:15017dc4466f761406de0ef501e986edcd2ccc86d50b8938e864432cb26fb1fc",
+        "urn:r61:op:155a31f8a2329a5364bb6c839b9e9f00723c09de2db0bb55c269746a277b1d9c",
+        "urn:r61:op:1658b64f9b2665f562baa28a78a2a54a6d077c1f77e2fce46785d6c8c5ba8b2c",
+        "urn:r61:op:1707d95ff87d6a4d68aeae259c7a9a372fb26b2c66bc5a3dad5b5145cfdbe0da",
+        "urn:r61:op:1a01f8c25dd12b0fa7a1e443cc89da138651f12af85ddb66ee3f38337e0d041a",
+        "urn:r61:op:1bc37eee29c47072275e7e8e3d70525f0db0a054a5c4c44bdc2b69b68e30ac0c",
+        "urn:r61:op:23511fc63166d2210c971eaeec303603a0b5917b6777ac9108a400df12f0bb44",
+        "urn:r61:op:2397385704337e5b3a816652797c179d2fcd3db82d1fbbe313d00248d0660702",
+        "urn:r61:op:23f2d5d1bdb13271c7aacfe0872475fb491e49e4b21e54e7b6dc6ca7c460073e",
+        "urn:r61:op:24e4e3a6b0a91ae13ae015151dbe5859144404a153d837066940a0b7e6598701",
+        "urn:r61:op:25412f13da019a5d582fc66c357100f302cf918d188a2c3aac676b7092be9af3",
+        "urn:r61:op:2646128c5db3254aa46d074fce618963ce8e545d4513578a97c74d08aa452da3",
+        "urn:r61:op:2901f8dbccaceca5bc70f101f6fa706160d4754f8c5072ccd92752c89d27dd13",
+        "urn:r61:op:2bb94164c3ed05500b2d88c6d0c8cb710bb4d586789e5aa03b4a942a717af59a",
+        "urn:r61:op:2e5e59f3c48c8291b28fd7867203740b5eadceb925e7bd307a795a03c65e0e09",
+        "urn:r61:op:305d24ac0727aff5d724bf469a9206c57b4e3042b99f5dd84686c108a6191655",
+        "urn:r61:op:31b65dd8d9ecc7e9f90d41db8383eb6f7b0735ab7b00c42d229789ea18ebffd4",
+        "urn:r61:op:3257c4410fb64381115ae664e2eead97b9f901770e1d738720682b189aaeeaeb",
+        "urn:r61:op:35cb5a8ff3cdabf4cbf9c8217227295de05bb7e8648a8ccd03cfbd25e1cd62bf",
+        "urn:r61:op:3862f42ec1c54972aa65c96b66c68ace3fdf867bc5b47ffad364eafe395c196f",
+        "urn:r61:op:3bbde14539e3944519ff9ebe3318d89242ed7459aa91cfc7897b3980e14b7baa",
+        "urn:r61:op:3c6900bc911a7a78bcebe5ad25ad8b5ca6ceb0251c86f76e712a2caff64d9b71",
+        "urn:r61:op:3cb561aa08c8933e0efc7b78a99a03f13911729d3de9e83ada09f296a651dbd8",
+        "urn:r61:op:3db20101142b8473c14d196801a8c345640fa160005807f7adf6bd21d55448ac",
+        "urn:r61:op:3f220e09f4ac4b84d9b1019e895206fe78ee798c826b01b883a54aa7051a0978",
+        "urn:r61:op:40e368a4dd6f9e7e94f655b5d57e5d0a98fa2ec3da5be43e7d50885712f42c9b",
+        "urn:r61:op:4151ef1da0305f9f850bfb1d36defd926d65c70bf8118f39eee17341f973f3d1",
+        "urn:r61:op:42e5f4f3d776201551010a947c8d90b0cb7194854b3398081dd56918cd7ee457",
+        "urn:r61:op:43929ccd94b7109ae0ebccadae85ffa7ea5c44fe98b8123bc0a44f863335c844",
+        "urn:r61:op:457e97244a0fd5d78de1f4ed1f1d7842215455e7281edf4d645212361014409d",
+        "urn:r61:op:4718106aef5c41bfa6869d2a559936ed51c7f87807ddd28ce444a2c5295e1a88",
+        "urn:r61:op:49d45cd8f20b3cd3f6613253b39fd4c995b33d52064d2fbedcd6f09e067279cd",
+        "urn:r61:op:4a4d212af712b6af839d9d7fe064a77bdb22a67ae2c535d5da4c7446c1c22268",
+        "urn:r61:op:4aa779cbd6eb0a82d951745f0166eb593a21afd763571f1257276f450c576e11",
+        "urn:r61:op:4ae45b7d2169707d8fa0f820279dda8ac3b2464b5c76646f0ef6a5d3f74b8dca",
+        "urn:r61:op:4b2011a0af0f9de73e17cb61878df09842bb4584fccf216913663a2af7cf08de",
+        "urn:r61:op:4c26560f84ba8092cefafc22a9cbb9f72e6c2d67047fd672ccbd0f8d58b04eec",
+        "urn:r61:op:4d78650ff99538ae4ac64503042abe3033362de3bf47855623e4952557b3d454",
+        "urn:r61:op:4ebae0ab64946f0089f2e607248ad05ba7ded60ff7215fcae9d47c242a843bc7",
+        "urn:r61:op:5204a555ca811c75e5185abe042278442c190858098a9a9ac3d61df9a4d7bb09",
+        "urn:r61:op:54e8e87dc1d85b57ad6d97636c759a97ad197d027e49e3f1cefd5f6e0d8e392b",
+        "urn:r61:op:55b9c0bd2ed75832baee9bcd048c0d127cabd5aae1b9f16fb2d5eac7d461498f",
+        "urn:r61:op:566397edacd5def8c75ef83db6df3b36b29759a33f042b2a95cab1f09ae4d17c",
+        "urn:r61:op:5669cf5565cc1cb9ae8c07889aa3598ff3724ff8196ac6b5706614a3f06ff1cd",
+        "urn:r61:op:588ddb6ef4a65455aacfba74d1a6ead72d982e26c1a85271eb421436bf6bd694",
+        "urn:r61:op:5aa1291c4461659a6fdfc0b79dfd5e408eb7794d733b8bbeb1b34944edd290ba",
+        "urn:r61:op:5eb082c57c9630d86765a8788cb0eb5d9a2e47e8d2e5d97d3953c089e07a9054",
+        "urn:r61:op:6087d207af1b0b58d383e1ff7a337f79fe221518d254715cedd4ab5b2bc4af7f",
+        "urn:r61:op:6331bda96417ab1d7073a046622c7cef442ef4c0b64f23daf47ec5cfd4fb7dec",
+        "urn:r61:op:65538b867e9f670a07f4c615e77ccfed84a645f7dd225faebc74cd5a07b90b0d",
+        "urn:r61:op:668d222382a593a323bd58b03e4afbf596c21bddea9c5ff0e5046728c6cf350e",
+        "urn:r61:op:6ae4b2c2bef979c07ce3823017ae88fae6d69e86ea36b538b1c3e3cdcfd66bbf",
+        "urn:r61:op:6b2417dcb4e2311d0e15e5a1c400521f565de0c2f71d7a8d0a99db701a24b0ec",
+        "urn:r61:op:6b4f13cdabef6fced294e7d2037ae1e2b2118abe7d80bb81491e3117e0eb01e3",
+        "urn:r61:op:6b50395a07b745ad70526d7ba14d934619d02de666915448b4a139abb08018e4",
+        "urn:r61:op:6bc5ce71ad9c2a1cbe6f86fe8bca2cb2b9cb5fa929fa019b23c5d6319cca602b",
+        "urn:r61:op:6c4199544fd46a6671e93939d4e4cdf7885730c81997463d0f436fe86a240e45",
+        "urn:r61:op:6d7cf02aceeeb6e74569bf535d88ad5be269c327563af6ef957cd018674556b8",
+        "urn:r61:op:6ee3aa794c3d48e55fb54bfd769f4aa0e257fe5a404b1d645a52562a0eedaebd",
+        "urn:r61:op:6f4bbe6282176ec839b30d19a1ebe305ed110d011f8351359f2600e37fc14858",
+        "urn:r61:op:72cf8220804e833cf35b47aa9dcf9d74031cc8208c15c73ccc6e6f41a50d56bb",
+        "urn:r61:op:73dfeace8e805da1211047482066886b54f465e29c7fcc77b8c9bdc7bee20fd9",
+        "urn:r61:op:7571723783b5d2f71abdb6bb8908466e04589cd59ca816a49a28527a1c1e5fd0",
+        "urn:r61:op:76eb43720b54ec4a38906c78e9d690520ea7b1fb2e5938d740074d1b2d8dda53",
+        "urn:r61:op:79a58c8914caef75e3382dc9e90efc33cfd6f4328f3013b6cb3568f11c1e4440",
+        "urn:r61:op:83efa49186b83535e2ecf4ea0963dffc02ddaa9b1de2b5338f6c87690901a8d8",
+        "urn:r61:op:84b45629660c5b0eae42b31590059f82e3d8e51a5fac9849c1755243bc95b8a0",
+        "urn:r61:op:84e91ec86de53735e89dfa4e97189e60ede2c7e685be76ea5d4b6950da56a240",
+        "urn:r61:op:86fe4a61997c9f91fa2197affc57e7cb79d3915e218eaf31a8efca03cf7b9406",
+        "urn:r61:op:87c9949e703b615cbaf7ed8eff35019008252b2fbea035f242831c9509deeca4",
+        "urn:r61:op:8a2c3cbbf11e74794a54020b690ec18fc1c4b63e03a0f6de2182e0bccd16506d",
+        "urn:r61:op:8a4349c38323c3f53be75abce2317ce450a53ea86ad9fc8acd11705633665282",
+        "urn:r61:op:8ac84b962ebda191f3225a9c222fb941aabae453f52ad7a8110536b8d757fcc1",
+        "urn:r61:op:8b0c030d50c64ae220a4d2f02b906199c55a8f0aaff307e207a2378337fac202",
+        "urn:r61:op:8c9080a8523f1cf583bb36cb71cccf25417d56c21c4e92229abdb8a36e56bca5",
+        "urn:r61:op:8eb57175519d174ed25b828ff407acc258fdcdce3435d5b0b71c3351072be03d",
+        "urn:r61:op:8fea0a92aa41a32d96df6ffa135be52a6c451a9cb9d7be39178cab43d1cc0198",
+        "urn:r61:op:9130b841495d21df1dbfacb7730d47b0a25f85f5e56b6e26168f12948fac0b2d",
+        "urn:r61:op:941e145d529703709b3930769f3e4e6c0d44dc6f161c2d123eaf8a8fb77f447d",
+        "urn:r61:op:942bad48d2aa8016bf268065a09e649d5cd6331d85eb59883d916b420815556d",
+        "urn:r61:op:945c2d61316ea4469085f04b3dc99c5faf86d9db3264e6b42f09056093eb2816",
+        "urn:r61:op:94d2b4ca50578a85d86eb76bd80bc0b1cab2d0e069c4d5fce6fea0d6d6244a8f",
+        "urn:r61:op:954b729ac4e30cb9aa18b4b2fbcc392ae2ed15e6cd1a3cbbab58aeb6d106cd4a",
+        "urn:r61:op:95ccb9bf5feb86c5ce1372cc9d329f7ac49348d75275a039eaba5bde512412b7",
+        "urn:r61:op:988eef0cd4989f9539d67b102f49f0b12ccf2399c0af900b4c4c682afa19825d",
+        "urn:r61:op:99d058e3402d92efe853936e2ae51db5f9c477db5f7ee2e3f289c5412cfd75b9",
+        "urn:r61:op:9b0d480266bb90e0671b5f8277f9b6a59499eedacafc72d6fec8c123dd4079fb",
+        "urn:r61:op:9b6111a04f215aa27cd912fa69593ffd65b84788efe4f4ff4cc2a5f71b36c28f",
+        "urn:r61:op:9bec4f76f34b9b98c6a120db331158e9de0a049aae5ade139a9bd84a90a3fd77",
+        "urn:r61:op:a5f5a4a94bf5348248e4dae4b05e01a9409712a356006507048558ebbf98df04",
+        "urn:r61:op:a76e3616e5f1b217ec897d434c9d485157bee994a176b2cb4020004741032b3f",
+        "urn:r61:op:a9618672f1bdd071e189853ccba1efc7583e7bf685c4631a764497047a02e96f",
+        "urn:r61:op:af685cb20a95de73e61588f4f050f41b15ecd2b6e1e855bf49f69458815c0ec9",
+        "urn:r61:op:af869b25e9b4902ecbb315264f958fd075550377d49149e6f4559675c81567df",
+        "urn:r61:op:b170e65062665c0faa8696df9ba3879269f7c976c72ff3d2017643a108e6d5d2",
+        "urn:r61:op:b1a8cf75c2c8935377d1aea1e43217bca55ac808bcfc716c3a4c3e19b35019c7",
+        "urn:r61:op:b1eed9dab540d1ba21e1cf3b764e6a4587c0d8c2ccef1fac340906ad171f209e",
+        "urn:r61:op:b4c28e13e8ae88f524e6fc69f2302b6c27ce4f202b9e523c9bd8ae3bb062ff3a",
+        "urn:r61:op:b4fc27c0311e0c319a4b782d35a3103083b8f7ec821451a3626490bcebdf2183",
+        "urn:r61:op:b5b557511dcb4ae5451b0110fa1df3b39677d9cb4e83a680f702c7843cca641b",
+        "urn:r61:op:b6bac725f68bf160dce7184d0c4e94b61cf8940cc2361769f2bce5208567501b",
+        "urn:r61:op:b90ad8f463a209d96e82bc21d8028ab3301ebd5eb940b0c2b22bfefe14e218d6",
+        "urn:r61:op:bad3f3d663a654561c233e334dafb3b9b2d2211838214db846d9a7d3ea49072e",
+        "urn:r61:op:bc2a1de6dcf2eb9ee68c8e9529404883b209b8c722e07e6ca9b9042ddb5a198f",
+        "urn:r61:op:bf4d093cff0f2624e30f38f453da69ae3dabbd9a86fee1ecb13c2abce6a1c35c",
+        "urn:r61:op:bf4e0fa020a01bab2ef0f2e452320aafccecb1e601e518e1fb1b43d09e6cfe3e",
+        "urn:r61:op:c01e191af3704bd260c08cf924da061ff26ebbeb5871908e1f3f5f358a5b4688",
+        "urn:r61:op:c2177607877886e7dd254a31fea3f3129664ebcad627fc620885e6fb10c4e643",
+        "urn:r61:op:c2534a7a32f4903fbbc5d976c4223c0aebafc7ceded21bc0a56921995e6eb457",
+        "urn:r61:op:c31c3a4e255ece9c2faaea0ce8f8e608efdcb22b5d8f103d549b9d9dc5d909f7",
+        "urn:r61:op:c6474fb2223f62bd413e93cb80c99a94ed39aa2f5c2f81124d580eb461e15e57",
+        "urn:r61:op:c7e1b7aa212a0b151f4b6db41fda9485ab21ed1ef6c7d6554c96edc7c4c61174",
+        "urn:r61:op:c845b4887d42b221183f4d2b188a051b09ba302bbecd08805d73e3646a583428",
+        "urn:r61:op:c89c12b0f0fd72c00de7bd3b8f1c6c7184c0eed618a4a38d77de77d2d91c766f",
+        "urn:r61:op:ca5e3aa29669c099ec8bc0455f2aa09f363b85f6aed75ad3f7f87ec32a21535f",
+        "urn:r61:op:cc1d8ea00c05378568f3a46956f4778d2761454545b1d8f4043f4b6ed5efe424",
+        "urn:r61:op:ce1a604342ea0c301dee540ef3f7ac7e402dfd478a2a26521c5967c25efaeb16",
+        "urn:r61:op:d0aa2485ce813bf85f57b1605cf8829a24a302e64040ed4930cc92612e44d3d0",
+        "urn:r61:op:d0b1bfbec992b819b2e0f8ba8d652e4bb124a58047d664f2dd036e24cba01b3b",
+        "urn:r61:op:d0f7986ec3d8086be126771fc2daca64fe8f8c79641c51fec18d4f5d495349b6",
+        "urn:r61:op:d199e6e16e510da3dae8c21ac168e2a2ab58c25f14c6186231b1486bc987f3ef",
+        "urn:r61:op:d5fa520f38e947db780cde1bb3093dc61f93db359ca5d3ca973c3d291caa3d04",
+        "urn:r61:op:d6cdaf9b8b283c4cf8cf17eab227a31953069857ce10e7f2eb5e2d43a8387049",
+        "urn:r61:op:d9c91d58da8775f2b208988b6e915332dec12541fe560066b68748b6dded6489",
+        "urn:r61:op:dbe975206aaa9f792a0f9c2d4cea3a16c54c5ecb1898fe0aaf5a76a0a6db74a3",
+        "urn:r61:op:ddfad16402a14393ec854df9e4a44dc3c422c579f3a0ca591c2a75a5aed52610",
+        "urn:r61:op:e13b5b9c9b23a626906a200551a705752023308b4a390ea53a3bca0be93f07f3",
+        "urn:r61:op:e3041fd6fc4e6f93fbdc4fa7b5ce46aec7f67b4a2e3dc8a6e4b8fa7e04ec5af6",
+        "urn:r61:op:e3f765bd895d428dfd13efff959f583b612d82f126d4f2cb7d27f31b25cba5a5",
+        "urn:r61:op:e6362c0485e7068dda31be9eaf4bc5189c84a376934688e968625ba0e1ad28f4",
+        "urn:r61:op:e8a69b559626b979f01fc23141ad0aec2b884b6a22c832f3fd55cb9fc435536f",
+        "urn:r61:op:e92183afd4718700fc78350742fad6097ae270e2e19f27d59a920395c574cd94",
+        "urn:r61:op:eb46216c9b3c92fdd3b87f2041ea5a0834aa5fa046795e72d102a76baaa2464e",
+        "urn:r61:op:ec28bbee09e550ad96d2c012e240e17529e16e5c9c521bf96bc0e29d1348a00a",
+        "urn:r61:op:ed43591b1c8019d79d8d658ebe0a9cd1f8c5ad61aa36377f3d98117cfa552bee",
+        "urn:r61:op:f04a27f426b0f0db2f46ed1cb3da805f3f0ede0adda3d5a2cf4123ba41599566",
+        "urn:r61:op:f2834cc19d9a00a47825355162588d2238917d8ebd62aae8ca0022149971a56d",
+        "urn:r61:op:f3b216e74f72332c5300fbf539185a9235a3d228b385dcb4a8c4882dad93574b",
+        "urn:r61:op:f620570552f3d822fd864f59b4dd5d69f885f0a3d0669e00659bd2c9b4612707",
+        "urn:r61:op:f635d5ff427d477b2060f06120b98324d366a0a375aaff059dd4c62b67c62f35",
+        "urn:r61:op:f664de2f0db3b0d851adf514d2ba561a39cfec90ca8cc859bfba41fe9a56aa3f",
+        "urn:r61:op:f7b6c728fb3619068617ee05ef1c9cbd8260a823f009191e19038522d4ad4210",
+        "urn:r61:op:f8b941594fd5087c74b6e15a6ad1bb7fee44cec472872e96a01f657c95a4d2e8",
+        "urn:r61:op:fb09d774642edd9ac337e5fef711096f0f7509086fc11724dd5fe37f65d138f0",
+        "urn:r61:op:fbd916c1b21def0a7c26fff0475d0bcdb009c2e1adce2f9c336f0911d167c4c7",
+        "urn:r61:op:fd9135048bcc4c3f46b68eedadf51548c0a0f74875d609b5c4ad91be99583b09"
+      ],
+      "overlapping_disposition_ids": [],
+      "pending_operation_ids": [],
+      "unaccounted_eligible_operation_ids": [],
+      "unexpected_candidate_ids": [],
+      "unexpected_operation_ids": [],
+      "unsupported_operation_ids": [
+        "urn:r61:op:5bfe384003445c57738fedab67986d1c14082c12de39aaa4adb4153028f0d83b",
+        "urn:r61:op:a30eec18858730bfd105a427c367ee70730a0d4a2891ab71fa3e00467b196c70",
+        "urn:r61:op:f3503ed7b8626483cb99d77f5fc0242dca2bb35fb9d0e5f85104656f55c6029e"
+      ]
+    },
+    "operation_fate_rows": 309,
+    "operations_with_facts": 147,
+    "operations_with_receipts": 147,
+    "operations_without_receipts": 162,
+    "operations_without_receipts_detail": [
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:00ac9dec6c4c867d24ab1d0b3c3519ffab24b51828bd9747be764ae0a1c923f3"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:0106973ecbd3f09d35aac3201f990be3c6d6c98912f9d6c155c855f529afd7ee"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:01a653d295f7520ed65e6bab184615200dfa86200497260d5460f76f5fad2652"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:01cc5eaafa981d5f2ca4c9239cc50934287d0593ce383de93359f1779578a83d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:04c5736375d486c53432eb6aedaad9adbea9a3ea52ecb465c4c45ae2b9a31332"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:04e61b24ae2af1689f67068d82f7420005aa2f3a7f1e90c0b8f7785fbc3187f9"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:06279ce304f29e2fbfd3c33fe26248089f44f9b071bb147a0275400a13c2e6bc"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:0795469ba64bc724cb070ed2205f8ac4f66553f4083967c811c48951c70e710a"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:081ac52559e1b9c116203bfd048f42f7b44695fb848ad865fc51c0836bbf3518"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:0c784ff3cad16b6bcb2c223cf2783f37fef04013fd211aec1ec2459fc9fe5eb6"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:0d9f1955bb82cc6bbdb318fe1226d88299e19945e8dd8b2999eb009d47407ae8"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:10305e98c21914b2d04c8922924ebb6ea4000cff394082859e6ebc198e43d94c"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:10bd0ea24ecf6297248083c01d0f8d2f0aa1bf62d4a75a36ad579875242ea12f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:15017dc4466f761406de0ef501e986edcd2ccc86d50b8938e864432cb26fb1fc"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:155a31f8a2329a5364bb6c839b9e9f00723c09de2db0bb55c269746a277b1d9c"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:1658b64f9b2665f562baa28a78a2a54a6d077c1f77e2fce46785d6c8c5ba8b2c"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:1707d95ff87d6a4d68aeae259c7a9a372fb26b2c66bc5a3dad5b5145cfdbe0da"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:1a01f8c25dd12b0fa7a1e443cc89da138651f12af85ddb66ee3f38337e0d041a"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:1bc37eee29c47072275e7e8e3d70525f0db0a054a5c4c44bdc2b69b68e30ac0c"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:23511fc63166d2210c971eaeec303603a0b5917b6777ac9108a400df12f0bb44"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:2397385704337e5b3a816652797c179d2fcd3db82d1fbbe313d00248d0660702"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:23f2d5d1bdb13271c7aacfe0872475fb491e49e4b21e54e7b6dc6ca7c460073e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:24e4e3a6b0a91ae13ae015151dbe5859144404a153d837066940a0b7e6598701"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:25412f13da019a5d582fc66c357100f302cf918d188a2c3aac676b7092be9af3"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:2646128c5db3254aa46d074fce618963ce8e545d4513578a97c74d08aa452da3"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:2901f8dbccaceca5bc70f101f6fa706160d4754f8c5072ccd92752c89d27dd13"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:2bb94164c3ed05500b2d88c6d0c8cb710bb4d586789e5aa03b4a942a717af59a"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:2e5e59f3c48c8291b28fd7867203740b5eadceb925e7bd307a795a03c65e0e09"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:305d24ac0727aff5d724bf469a9206c57b4e3042b99f5dd84686c108a6191655"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:31b65dd8d9ecc7e9f90d41db8383eb6f7b0735ab7b00c42d229789ea18ebffd4"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3257c4410fb64381115ae664e2eead97b9f901770e1d738720682b189aaeeaeb"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:35cb5a8ff3cdabf4cbf9c8217227295de05bb7e8648a8ccd03cfbd25e1cd62bf"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3862f42ec1c54972aa65c96b66c68ace3fdf867bc5b47ffad364eafe395c196f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3bbde14539e3944519ff9ebe3318d89242ed7459aa91cfc7897b3980e14b7baa"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3c6900bc911a7a78bcebe5ad25ad8b5ca6ceb0251c86f76e712a2caff64d9b71"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3cb561aa08c8933e0efc7b78a99a03f13911729d3de9e83ada09f296a651dbd8"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3db20101142b8473c14d196801a8c345640fa160005807f7adf6bd21d55448ac"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:3f220e09f4ac4b84d9b1019e895206fe78ee798c826b01b883a54aa7051a0978"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:40e368a4dd6f9e7e94f655b5d57e5d0a98fa2ec3da5be43e7d50885712f42c9b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4151ef1da0305f9f850bfb1d36defd926d65c70bf8118f39eee17341f973f3d1"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:42e5f4f3d776201551010a947c8d90b0cb7194854b3398081dd56918cd7ee457"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:43929ccd94b7109ae0ebccadae85ffa7ea5c44fe98b8123bc0a44f863335c844"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:457e97244a0fd5d78de1f4ed1f1d7842215455e7281edf4d645212361014409d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4718106aef5c41bfa6869d2a559936ed51c7f87807ddd28ce444a2c5295e1a88"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:49d45cd8f20b3cd3f6613253b39fd4c995b33d52064d2fbedcd6f09e067279cd"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4a4d212af712b6af839d9d7fe064a77bdb22a67ae2c535d5da4c7446c1c22268"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4aa779cbd6eb0a82d951745f0166eb593a21afd763571f1257276f450c576e11"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4ae45b7d2169707d8fa0f820279dda8ac3b2464b5c76646f0ef6a5d3f74b8dca"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4b2011a0af0f9de73e17cb61878df09842bb4584fccf216913663a2af7cf08de"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4c26560f84ba8092cefafc22a9cbb9f72e6c2d67047fd672ccbd0f8d58b04eec"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4d78650ff99538ae4ac64503042abe3033362de3bf47855623e4952557b3d454"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:4ebae0ab64946f0089f2e607248ad05ba7ded60ff7215fcae9d47c242a843bc7"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:5204a555ca811c75e5185abe042278442c190858098a9a9ac3d61df9a4d7bb09"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:54e8e87dc1d85b57ad6d97636c759a97ad197d027e49e3f1cefd5f6e0d8e392b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:55b9c0bd2ed75832baee9bcd048c0d127cabd5aae1b9f16fb2d5eac7d461498f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:566397edacd5def8c75ef83db6df3b36b29759a33f042b2a95cab1f09ae4d17c"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:5669cf5565cc1cb9ae8c07889aa3598ff3724ff8196ac6b5706614a3f06ff1cd"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:588ddb6ef4a65455aacfba74d1a6ead72d982e26c1a85271eb421436bf6bd694"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:5aa1291c4461659a6fdfc0b79dfd5e408eb7794d733b8bbeb1b34944edd290ba"
+      },
+      {
+        "disposition": "ELIGIBLE",
+        "execution_state": "UNSUPPORTED_RUNTIME",
+        "lowering_status": "UNSUPPORTED_RUNTIME",
+        "operation_id": "urn:r61:op:5bfe384003445c57738fedab67986d1c14082c12de39aaa4adb4153028f0d83b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:5eb082c57c9630d86765a8788cb0eb5d9a2e47e8d2e5d97d3953c089e07a9054"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6087d207af1b0b58d383e1ff7a337f79fe221518d254715cedd4ab5b2bc4af7f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6331bda96417ab1d7073a046622c7cef442ef4c0b64f23daf47ec5cfd4fb7dec"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:65538b867e9f670a07f4c615e77ccfed84a645f7dd225faebc74cd5a07b90b0d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:668d222382a593a323bd58b03e4afbf596c21bddea9c5ff0e5046728c6cf350e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6ae4b2c2bef979c07ce3823017ae88fae6d69e86ea36b538b1c3e3cdcfd66bbf"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6b2417dcb4e2311d0e15e5a1c400521f565de0c2f71d7a8d0a99db701a24b0ec"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6b4f13cdabef6fced294e7d2037ae1e2b2118abe7d80bb81491e3117e0eb01e3"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6b50395a07b745ad70526d7ba14d934619d02de666915448b4a139abb08018e4"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6bc5ce71ad9c2a1cbe6f86fe8bca2cb2b9cb5fa929fa019b23c5d6319cca602b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6c4199544fd46a6671e93939d4e4cdf7885730c81997463d0f436fe86a240e45"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6d7cf02aceeeb6e74569bf535d88ad5be269c327563af6ef957cd018674556b8"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6ee3aa794c3d48e55fb54bfd769f4aa0e257fe5a404b1d645a52562a0eedaebd"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:6f4bbe6282176ec839b30d19a1ebe305ed110d011f8351359f2600e37fc14858"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:72cf8220804e833cf35b47aa9dcf9d74031cc8208c15c73ccc6e6f41a50d56bb"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:73dfeace8e805da1211047482066886b54f465e29c7fcc77b8c9bdc7bee20fd9"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:7571723783b5d2f71abdb6bb8908466e04589cd59ca816a49a28527a1c1e5fd0"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:76eb43720b54ec4a38906c78e9d690520ea7b1fb2e5938d740074d1b2d8dda53"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:79a58c8914caef75e3382dc9e90efc33cfd6f4328f3013b6cb3568f11c1e4440"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:83efa49186b83535e2ecf4ea0963dffc02ddaa9b1de2b5338f6c87690901a8d8"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:84b45629660c5b0eae42b31590059f82e3d8e51a5fac9849c1755243bc95b8a0"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:84e91ec86de53735e89dfa4e97189e60ede2c7e685be76ea5d4b6950da56a240"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:86fe4a61997c9f91fa2197affc57e7cb79d3915e218eaf31a8efca03cf7b9406"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:87c9949e703b615cbaf7ed8eff35019008252b2fbea035f242831c9509deeca4"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8a2c3cbbf11e74794a54020b690ec18fc1c4b63e03a0f6de2182e0bccd16506d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8a4349c38323c3f53be75abce2317ce450a53ea86ad9fc8acd11705633665282"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8ac84b962ebda191f3225a9c222fb941aabae453f52ad7a8110536b8d757fcc1"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8b0c030d50c64ae220a4d2f02b906199c55a8f0aaff307e207a2378337fac202"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8c9080a8523f1cf583bb36cb71cccf25417d56c21c4e92229abdb8a36e56bca5"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8eb57175519d174ed25b828ff407acc258fdcdce3435d5b0b71c3351072be03d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:8fea0a92aa41a32d96df6ffa135be52a6c451a9cb9d7be39178cab43d1cc0198"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:9130b841495d21df1dbfacb7730d47b0a25f85f5e56b6e26168f12948fac0b2d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:941e145d529703709b3930769f3e4e6c0d44dc6f161c2d123eaf8a8fb77f447d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:942bad48d2aa8016bf268065a09e649d5cd6331d85eb59883d916b420815556d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:945c2d61316ea4469085f04b3dc99c5faf86d9db3264e6b42f09056093eb2816"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:94d2b4ca50578a85d86eb76bd80bc0b1cab2d0e069c4d5fce6fea0d6d6244a8f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:954b729ac4e30cb9aa18b4b2fbcc392ae2ed15e6cd1a3cbbab58aeb6d106cd4a"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:95ccb9bf5feb86c5ce1372cc9d329f7ac49348d75275a039eaba5bde512412b7"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:988eef0cd4989f9539d67b102f49f0b12ccf2399c0af900b4c4c682afa19825d"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:99d058e3402d92efe853936e2ae51db5f9c477db5f7ee2e3f289c5412cfd75b9"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:9b0d480266bb90e0671b5f8277f9b6a59499eedacafc72d6fec8c123dd4079fb"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:9b6111a04f215aa27cd912fa69593ffd65b84788efe4f4ff4cc2a5f71b36c28f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:9bec4f76f34b9b98c6a120db331158e9de0a049aae5ade139a9bd84a90a3fd77"
+      },
+      {
+        "disposition": "ELIGIBLE",
+        "execution_state": "UNSUPPORTED_RUNTIME",
+        "lowering_status": "UNSUPPORTED_RUNTIME",
+        "operation_id": "urn:r61:op:a30eec18858730bfd105a427c367ee70730a0d4a2891ab71fa3e00467b196c70"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:a5f5a4a94bf5348248e4dae4b05e01a9409712a356006507048558ebbf98df04"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:a76e3616e5f1b217ec897d434c9d485157bee994a176b2cb4020004741032b3f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:a9618672f1bdd071e189853ccba1efc7583e7bf685c4631a764497047a02e96f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:af685cb20a95de73e61588f4f050f41b15ecd2b6e1e855bf49f69458815c0ec9"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:af869b25e9b4902ecbb315264f958fd075550377d49149e6f4559675c81567df"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b170e65062665c0faa8696df9ba3879269f7c976c72ff3d2017643a108e6d5d2"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b1a8cf75c2c8935377d1aea1e43217bca55ac808bcfc716c3a4c3e19b35019c7"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b1eed9dab540d1ba21e1cf3b764e6a4587c0d8c2ccef1fac340906ad171f209e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b4c28e13e8ae88f524e6fc69f2302b6c27ce4f202b9e523c9bd8ae3bb062ff3a"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b4fc27c0311e0c319a4b782d35a3103083b8f7ec821451a3626490bcebdf2183"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b5b557511dcb4ae5451b0110fa1df3b39677d9cb4e83a680f702c7843cca641b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b6bac725f68bf160dce7184d0c4e94b61cf8940cc2361769f2bce5208567501b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:b90ad8f463a209d96e82bc21d8028ab3301ebd5eb940b0c2b22bfefe14e218d6"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:bad3f3d663a654561c233e334dafb3b9b2d2211838214db846d9a7d3ea49072e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:bc2a1de6dcf2eb9ee68c8e9529404883b209b8c722e07e6ca9b9042ddb5a198f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:bf4d093cff0f2624e30f38f453da69ae3dabbd9a86fee1ecb13c2abce6a1c35c"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:bf4e0fa020a01bab2ef0f2e452320aafccecb1e601e518e1fb1b43d09e6cfe3e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c01e191af3704bd260c08cf924da061ff26ebbeb5871908e1f3f5f358a5b4688"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c2177607877886e7dd254a31fea3f3129664ebcad627fc620885e6fb10c4e643"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c2534a7a32f4903fbbc5d976c4223c0aebafc7ceded21bc0a56921995e6eb457"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c31c3a4e255ece9c2faaea0ce8f8e608efdcb22b5d8f103d549b9d9dc5d909f7"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c6474fb2223f62bd413e93cb80c99a94ed39aa2f5c2f81124d580eb461e15e57"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c7e1b7aa212a0b151f4b6db41fda9485ab21ed1ef6c7d6554c96edc7c4c61174"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c845b4887d42b221183f4d2b188a051b09ba302bbecd08805d73e3646a583428"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:c89c12b0f0fd72c00de7bd3b8f1c6c7184c0eed618a4a38d77de77d2d91c766f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:ca5e3aa29669c099ec8bc0455f2aa09f363b85f6aed75ad3f7f87ec32a21535f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:cc1d8ea00c05378568f3a46956f4778d2761454545b1d8f4043f4b6ed5efe424"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:ce1a604342ea0c301dee540ef3f7ac7e402dfd478a2a26521c5967c25efaeb16"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d0aa2485ce813bf85f57b1605cf8829a24a302e64040ed4930cc92612e44d3d0"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d0b1bfbec992b819b2e0f8ba8d652e4bb124a58047d664f2dd036e24cba01b3b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d0f7986ec3d8086be126771fc2daca64fe8f8c79641c51fec18d4f5d495349b6"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d199e6e16e510da3dae8c21ac168e2a2ab58c25f14c6186231b1486bc987f3ef"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d5fa520f38e947db780cde1bb3093dc61f93db359ca5d3ca973c3d291caa3d04"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d6cdaf9b8b283c4cf8cf17eab227a31953069857ce10e7f2eb5e2d43a8387049"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:d9c91d58da8775f2b208988b6e915332dec12541fe560066b68748b6dded6489"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:dbe975206aaa9f792a0f9c2d4cea3a16c54c5ecb1898fe0aaf5a76a0a6db74a3"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:ddfad16402a14393ec854df9e4a44dc3c422c579f3a0ca591c2a75a5aed52610"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:e13b5b9c9b23a626906a200551a705752023308b4a390ea53a3bca0be93f07f3"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:e3041fd6fc4e6f93fbdc4fa7b5ce46aec7f67b4a2e3dc8a6e4b8fa7e04ec5af6"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:e3f765bd895d428dfd13efff959f583b612d82f126d4f2cb7d27f31b25cba5a5"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:e6362c0485e7068dda31be9eaf4bc5189c84a376934688e968625ba0e1ad28f4"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:e8a69b559626b979f01fc23141ad0aec2b884b6a22c832f3fd55cb9fc435536f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:e92183afd4718700fc78350742fad6097ae270e2e19f27d59a920395c574cd94"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:eb46216c9b3c92fdd3b87f2041ea5a0834aa5fa046795e72d102a76baaa2464e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:ec28bbee09e550ad96d2c012e240e17529e16e5c9c521bf96bc0e29d1348a00a"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:ed43591b1c8019d79d8d658ebe0a9cd1f8c5ad61aa36377f3d98117cfa552bee"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f04a27f426b0f0db2f46ed1cb3da805f3f0ede0adda3d5a2cf4123ba41599566"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f2834cc19d9a00a47825355162588d2238917d8ebd62aae8ca0022149971a56d"
+      },
+      {
+        "disposition": "ELIGIBLE",
+        "execution_state": "UNSUPPORTED_RUNTIME",
+        "lowering_status": "UNSUPPORTED_RUNTIME",
+        "operation_id": "urn:r61:op:f3503ed7b8626483cb99d77f5fc0242dca2bb35fb9d0e5f85104656f55c6029e"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f3b216e74f72332c5300fbf539185a9235a3d228b385dcb4a8c4882dad93574b"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f620570552f3d822fd864f59b4dd5d69f885f0a3d0669e00659bd2c9b4612707"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f635d5ff427d477b2060f06120b98324d366a0a375aaff059dd4c62b67c62f35"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f664de2f0db3b0d851adf514d2ba561a39cfec90ca8cc859bfba41fe9a56aa3f"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f7b6c728fb3619068617ee05ef1c9cbd8260a823f009191e19038522d4ad4210"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:f8b941594fd5087c74b6e15a6ad1bb7fee44cec472872e96a01f657c95a4d2e8"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:fb09d774642edd9ac337e5fef711096f0f7509086fc11724dd5fe37f65d138f0"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:fbd916c1b21def0a7c26fff0475d0bcdb009c2e1adce2f9c336f0911d167c4c7"
+      },
+      {
+        "disposition": "HELD",
+        "execution_state": "NOT_STARTED",
+        "lowering_status": "NOT_ELIGIBLE",
+        "operation_id": "urn:r61:op:fd9135048bcc4c3f46b68eedadf51548c0a0f74875d609b5c4ad91be99583b09"
+      }
+    ],
+    "receipt_rows": 309,
+    "source_factory_calls": 1,
+    "states": {
+      "execution_state": {
+        "COMPLETED": 147,
+        "NOT_STARTED": 159,
+        "UNSUPPORTED_RUNTIME": 3
+      },
+      "lowering_status": {
+        "NOT_ELIGIBLE": 159,
+        "SUPPORTED": 147,
+        "UNSUPPORTED_RUNTIME": 3
+      },
+      "result_state": {
+        "HELD": 159,
+        "SUPPORTED": 123,
+        "UNSUPPORTED": 3,
+        "VALID_EMPTY": 24
+      }
+    },
+    "unexpected_received_candidate_ids": [],
+    "unsupported_runtime_rows": 3
+  },
+  "G3_false_complete": {
+    "declared_budget_state": "COMPLETE",
+    "pending_count": 145,
+    "verifier": {
+      "code": "BUDGET_STATE_FATE_DRIFT",
+      "detail": {
+        "declared_budget_state": "COMPLETE",
+        "pending_count": 145
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    }
+  },
+  "G3_false_held": {
+    "adapter": {
+      "code": "SOURCEFREE_ROLE_FATE_DRIFT",
+      "detail": {
+        "declared": [
+          "HELD",
+          [
+            "UNISSUED_FALSE_HOLD"
+          ],
+          [
+            "RISK-A"
+          ],
+          "RISK-A"
+        ],
+        "operation_id": "urn:r61:op:1852da97d0f57187c80786a0325e4fcf23facc539b615edea765c9ac66dc19c0",
+        "source_policy": [
+          "ELIGIBLE",
+          [],
+          [
+            "RISK-A"
+          ],
+          "RISK-A"
+        ]
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    },
+    "baseline_execution_state": "COMPLETED",
+    "baseline_receipts": 150,
+    "baseline_received_candidates": [
+      "urn:rawlsing:pre553:i05:candidate:sha256:7196b2e41b5261453a5a6688a97cc6a1c7c5821aaf0d4de3557edf44a8cf0cb0",
+      "urn:rawlsing:pre553:i05:candidate:sha256:87612c1bef304c16fc811110070f00c334b231dd7e0405a44cb941ca1ad1e201"
+    ],
+    "forged_native_candidate_anti_join_ok": true,
+    "forged_native_operation_anti_join_ok": true,
+    "forged_native_receipts": 148,
+    "forged_row_received_candidates": [],
+    "forged_row_result_state": "HELD",
+    "receipt_loss": 2,
+    "science_census_differs": true,
+    "source_census_equal": true,
+    "target_operation_id": "urn:r61:op:1852da97d0f57187c80786a0325e4fcf23facc539b615edea765c9ac66dc19c0"
+  },
+  "G3_false_held_reason_variant": {
+    "disposition_unchanged": true,
+    "target_operation_id": "urn:r61:op:00ac9dec6c4c867d24ab1d0b3c3519ffab24b51828bd9747be764ae0a1c923f3",
+    "verifier": {
+      "code": "SOURCEFREE_ROLE_FATE_DRIFT",
+      "detail": {
+        "declared": [
+          "HELD",
+          [
+            "UNISSUED_AUTHORITY_OVERRIDE"
+          ],
+          [
+            "RISK-A"
+          ],
+          "RISK-A"
+        ],
+        "operation_id": "urn:r61:op:00ac9dec6c4c867d24ab1d0b3c3519ffab24b51828bd9747be764ae0a1c923f3",
+        "source_policy": [
+          "HELD",
+          [
+            "POPULATION_WITHOUT_WEIGHT_OR_DESIGN"
+          ],
+          [
+            "RISK-A"
+          ],
+          "RISK-A"
+        ]
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    }
+  },
+  "G3_optional_weight": {
+    "declared_eligible": 150,
+    "eligible_population": 0,
+    "eligible_sample_raw": 150,
+    "held_population_without_weight": 147,
+    "invented_eligibility": [],
+    "population_with_receipts": [],
+    "sample_raw_with_receipts": 147,
+    "sample_raw_without_receipts": [
+      "urn:r61:op:5bfe384003445c57738fedab67986d1c14082c12de39aaa4adb4153028f0d83b",
+      "urn:r61:op:a30eec18858730bfd105a427c367ee70730a0d4a2891ab71fa3e00467b196c70",
+      "urn:r61:op:f3503ed7b8626483cb99d77f5fc0242dca2bb35fb9d0e5f85104656f55c6029e"
+    ]
+  },
+  "G3_pending_honest": {
+    "budget_state": "PARTIAL",
+    "execution_counts": {
+      "NOT_STARTED": 164,
+      "PENDING": 145
+    },
+    "issued_candidates": 6,
+    "native_facts": 12,
+    "pending_count": 145,
+    "pending_rows_all_pending": true,
+    "pending_rows_with_facts": 0,
+    "pending_rows_with_receipts": 0,
+    "source_factory_calls": 1
+  },
+  "G3_pending_restoration": {
+    "checkpoint_restored_exactly": true,
+    "frozen_census_restored_exactly": true,
+    "issued_candidates_equal": true,
+    "native_facts_equal": true,
+    "operation_fates_identical": true
+  },
+  "G3_pending_severance_native": {
+    "adapter": {
+      "code": "PENDING_FATE_CENSUS_DRIFT",
+      "detail": {
+        "missing_from_pending_list": [
+          "urn:r61:op:08675b7bf6122118486e77ce0161fc530d6af79fdfa7884a02a7bcce9f5a162b",
+          "urn:r61:op:0c9108258dd75a6298432ccc8e19682830c932d2505d41c4e540a51a5dcb2567",
+          "urn:r61:op:0d498937a4dacb9b90b71ef29c4e0bb479593eece4ff2c4f2c06ba6c4fc742a0",
+          "urn:r61:op:0d67d68377557ba497b0e4a05a61a9a37c2141fb7ea260a43daef7d3897120fb",
+          "urn:r61:op:0df376303fd7835bdcefa8108532dc16d79473a794c0ca912b9adb5c49a4fd94",
+          "urn:r61:op:0f4a995c5f0a312ac4fc8e585b9978ddb0eb4a21a948f847c3a67af6f10276d4",
+          "urn:r61:op:10b5025081cf7ab5338391a525c87330279915db937c667c05700f484a359863",
+          "urn:r61:op:1440d5c0f82a6bb5f5fef62cd87534f44c5e9fa05356510dfedcfbee9c9b362b",
+          "urn:r61:op:1470086297cfddba0b2bdf61a97a0550b12a690131d3e1ca911c31f1f36cf7e5",
+          "urn:r61:op:17e5fc1eb99f1c936133860eee0ea37eec0d547dd5c1d50f387f12956f240a1f",
+          "urn:r61:op:189ef458032af35cd105d439e308e3eeea24fa31dd976ffcc06a61553a6a7d69",
+          "urn:r61:op:19254dbac9b46c9243831244c009a74d335d078c9a89ad394860bfd3a8a08f45",
+          "urn:r61:op:19b236f6bb7284b64647999082c50e87454ea928fa3a3dd6bed43278c062bfc3",
+          "urn:r61:op:19fc983d4e31b9e1b8e950eb6c135c1bbaa8eb59b45464b6e0c09736fda8f2af",
+          "urn:r61:op:1bf319ab4427b0cf0646b6b9743873f17948427d4584b96e202832a83a9b9047",
+          "urn:r61:op:1c765758891a9d8c266f7483edb761d3344a724f322c1f4d537734905a7a78a5",
+          "urn:r61:op:20d4af3df7c6350034b272a6d83f86d5bc076a46a0883ad1ba5819d13d9e724a",
+          "urn:r61:op:229255c4c3d514a7cc06109d5a42231e0a8fbfbaac68b0c0ff22e72e2c8b200d",
+          "urn:r61:op:23638290c586a8d4371de57f0c25558271a5fe35ca9e09e3b10a110f408c3bcc",
+          "urn:r61:op:24cdc8c170d3926c3a5ab749c70729d71c977b67f4a45ecbe5d3c52fdcc6085a",
+          "urn:r61:op:2c9d53b4b140d9f0fb365a35ba797e66866f8d8a63acf9951db1dc114ecea2db",
+          "urn:r61:op:2ccbf1a22ccd64e2945e2dbc5e4ce14fd82005ea3ca87f1e929919797aac3225",
+          "urn:r61:op:2e099789edd41f8246b08cac58fac6c1cfd3f8a46bbcbf2a40f462e2a42bd78d",
+          "urn:r61:op:2e9f03af9162140b9f6e37e3b8de546a0bcf6605f79de521360bfab2bd20c062",
+          "urn:r61:op:31dc447983fdebce34cbfa6fa61111b4e0d89c71846cdad7e148bf57856f5e64",
+          "urn:r61:op:31f4d927e9222dfb49b1b774ceb8e47afc9c86ab887e3c7866762e21d65f29b5",
+          "urn:r61:op:32df18f6969e123c3a934b172a99caacc696ae8702a4032bf92b80fd8e2d179c",
+          "urn:r61:op:35c25ad3485ed2a565a33df4181d4f21ca0d724362683010741dd86e1f3ee6f3",
+          "urn:r61:op:376a097f52599484897a12bd86e915cdf153d4baaee6336cb0e11a636bf13381",
+          "urn:r61:op:3c7bb9ca3b04a8b449961d2329872925309ed72747d669dff457d96eeed25275",
+          "urn:r61:op:3c940af06a1d7d04ba2708ba19cb1dec1feeb3c2f6b785bd0c5f014b80e2b768",
+          "urn:r61:op:3caab253000ebe6bcb7b4c1b81bbeee602977749da6c324d130e7f766314d146",
+          "urn:r61:op:3e77dc43d9c8ab4afc79c51ace088ba4553f481d9657a6ab4b8fc1fa81756128",
+          "urn:r61:op:3e8273f3f301c5d2cb0625694e7964c3d4879641b3ceac48d74887c128f5710f",
+          "urn:r61:op:3f8d06144700582bde7305eafb057b5844911763a9408115399483bd5f6c2d8e",
+          "urn:r61:op:42629b572115099e08633ed8b48520a2353925bb30a2bdbb59fb2497135d01b4",
+          "urn:r61:op:42e8e66dbad2df7d9de44840ca108061b486e56193c31ad99d4f1af6df1602fa",
+          "urn:r61:op:46ba0c9b8ba5eded650de5d25d6e3362466ccd38954c52f118c8c43d3fd6cc7e",
+          "urn:r61:op:487459ddf899eab78edd2bec3c124b5f4b60a887dd3634ebae5f959ff99b1534",
+          "urn:r61:op:523f81ca6fe5adf56b7113696fbfdcb0809ed3ae604566f77cb054de9757de8d",
+          "urn:r61:op:52438f18c93be659d7004d4f0d6c170a67fbf6863b86e200a56d5355cea763d6",
+          "urn:r61:op:52bdb91d3ff4670284acb1fb531f3ae8abe88c334f6b3eea986733c8e10221fa",
+          "urn:r61:op:53b7d93ce6ca197cafd151567129551eab6bc82fc8220661e06d5ce45f3d535d",
+          "urn:r61:op:55473d74134c1659ea6835b7fbc8febad69020aba31fff7eb8adf2da0e960d0e",
+          "urn:r61:op:56d0311adce4ae5d42479e0d02bada5fcefaffb8524cce682409a70bd84663bc",
+          "urn:r61:op:578b88157f1eb0251f61ba9dbb5c27c6dcd6f38979be89ac46dbd917196105a7",
+          "urn:r61:op:57def1347dafa10f7c49b4fc2fabc7a2078d959fde5bd4cfe48b3fc441d4fd67",
+          "urn:r61:op:58dec61257b49f5e840591e83893fd0c7b243e1002f16e5f084ada9071023bd6",
+          "urn:r61:op:5a106d7fd0fa06389b3ab28167ba388acb6ad65b292ff9f3d15aa4783c804e58",
+          "urn:r61:op:5a3c0d8385e769d3641541af3092dc9cdd472d4a60f6bf3a8bd6ad21f20f2e13",
+          "urn:r61:op:5a5dfd04bebe5bc426dd01ae68ccf966d663c06e0aa52a8f52a40ef8ef6a0398",
+          "urn:r61:op:5b1ff660bc9f174fd14adbff08b8f150482748c88d8a0b7deab8ee66868cb2fc",
+          "urn:r61:op:5b4dbaf5329d6e233c24c98b31bdce6b04011f8151d8b41d1e162d5a633e0152",
+          "urn:r61:op:5bade6db9dab4c440f56b536fb74b53c64eaed4691fbec8b0e6c1cf679ff72e4",
+          "urn:r61:op:60fe8760108361bbaad6207b32a2492ad0659d83ccafeac9ee0580f152be7465",
+          "urn:r61:op:62c38fa09b4830251f420848b7c6feca095d17c0e3081acf96890ea050fbc14f",
+          "urn:r61:op:64c9426cd6a20f7398f1457ca747af98f473dbd93fb08a5a273f36f555d57f65",
+          "urn:r61:op:652dd4136bbd143540c4064a070f2d3c9786f0ffb492772b130594f59090b223",
+          "urn:r61:op:66b935eb0f362b1a7746eeb3349e20f756be4158bd9b8c84e2751137e5f43e17",
+          "urn:r61:op:68748ab4d53b82ceb8d3c0cfc384e8243e871e871a7d2b89e763714375ae3577",
+          "urn:r61:op:6be3561ff1f2bd878d6ae9ab3b9e86264717b0a65e967a86d09e0528702207ce",
+          "urn:r61:op:6e8293de42f6b136d9000aa66f460d09ea0a4ef480072adf5863fe5f057ddf20",
+          "urn:r61:op:6ff7e472d9b70778d9293ac0e8b80c892e3193242798479d4110375a1735f055",
+          "urn:r61:op:74c0d13bd2425ac3f96686e22f078818f4a8dbce94d1dcd0ce723bd73f62797d",
+          "urn:r61:op:75ddfbf0f75678fb78a6a62b272351d79291dac8eb46c3ff4a324ef6b75132b2",
+          "urn:r61:op:75df1e8eac3a77f397e3666547c85b559ec728723facf5223c75be76f101e50f",
+          "urn:r61:op:78107b3bdf8fcefa86aeae9980e92aed811b1b5c279669757e1ef73e26940fbc",
+          "urn:r61:op:7abccbb0e976954bd97c32bc102316e69a28f65cf9745e71a264874710aedfc0",
+          "urn:r61:op:7c16808f9cf632ddc4180e4c4b3c5404d92ec98b63468273272ccb2b29d90cc6",
+          "urn:r61:op:7cac005f1940db2c9423aa8961de70996dcc96196b6d74910b8e4418c6312f4a",
+          "urn:r61:op:7cbb75a47e5b126bd65565724b0f073af67e76eb8b91a218bf79bc8c3f608c45",
+          "urn:r61:op:7d32f2ffa532a283e803eb1b03df3b6a2824b87e27d5e98eb22c8248a9241f7c",
+          "urn:r61:op:7e9fd805effdf97ef125bf701d37dd588fcc7a82230e32fb2609d63a184dfadc",
+          "urn:r61:op:7fe4d56fddd8dc130f217977f7629367266e70dc120b7da16c0793543b6910e1",
+          "urn:r61:op:82b2a24ff8243e60fa728ac0f2fdb4c426447ef538f3c11a9034b578fe0e0103",
+          "urn:r61:op:832168ec54ea4e624e06971d9c3527aaf92b958352d187f7c85438e766eae83a",
+          "urn:r61:op:83721c652fc5b4179865d1f29ab891da03af64cc56f6e8ad554111ef84db00ed",
+          "urn:r61:op:85955a82ce481b51758a34e4920309af91f801edb3f4181849d8c3099d25801e",
+          "urn:r61:op:868c8e08d5c0dd827dd44ef55846a08eddbd96b1c0245ad24aefa15d3942e28b",
+          "urn:r61:op:8819c39a7757f9e4afab105d810840ad856d0764d3709970b587da9f736d26bf",
+          "urn:r61:op:88dbccc7b7e346db6a8a2d23019ec30fdd6620bc4e80c1382ed6d0ddab5b51ee",
+          "urn:r61:op:8b3ac5508c68892647cf354c46f28137f0bfbf7a577f4ae9ef5ffed1a9838af7",
+          "urn:r61:op:8c2d801bb9005ada3361423d265dfe1d498be53f9408c836388da6f8ec25e15e",
+          "urn:r61:op:8d05e8b7a05d9f36f28acdca2140febaf8c9243722040bb38b1916a94cb3fa60",
+          "urn:r61:op:8d55f280938a5d44007722a6324747557c19040ffa834426e51ac49924714220",
+          "urn:r61:op:8dc1c364274821bf777d0c389833f1ee8b811ed1a1b9c25e319411de5ca7a4d0",
+          "urn:r61:op:97d4bb54a7bd8f8ed86c1bab16fedf6e3b4a63a7d74c3082e27c5c99f8e9645d",
+          "urn:r61:op:97fffec4f4103427e4865a4eb66f9280100e4fe9f23fb2552c97ce7183ce1569",
+          "urn:r61:op:9806a9e14db2a8c3b8ec42a46443f05b16df1b841003336cf7a0b9de89d66ef0",
+          "urn:r61:op:99ce4d98336e4b39641d3a55a13ca1dc186092050a24ac29447ed2fd7bd5d94a",
+          "urn:r61:op:9a84160cc29a8d96245d42cba6ea82fc2c77551b6e48b4350f311de4cc9bc2d2",
+          "urn:r61:op:9b653296df3a5fec3506df556f68f6c05cb26f006c82b6aca0d42cf51fb8aef6",
+          "urn:r61:op:9e8d787028a1becce402e9132264b7d526c2d97d6cf1cee4e2a018800ad69c71",
+          "urn:r61:op:a0753d3e96071f065049bf3662c00bbc4ea9faed0a92753717365c60fc6fb697",
+          "urn:r61:op:a1d60b8bffbb1e2d74125061e4bcc7eb47605acaae0943e66f6213a531d17176",
+          "urn:r61:op:a28254907e4904637b087c5d92ee457ab0914fdc2650cfffec81160c244d8ed0",
+          "urn:r61:op:a3d70f16af9b19a08b482498019de816a1207f65f553ca1eb38dc44636e25203",
+          "urn:r61:op:a59b676a3c7ea6d60adb9d6f9e21a9d4879340ec5d1ee6d9ba52189f39040b7f",
+          "urn:r61:op:a59bf7ac7fb12848d614881707f15227b72c167e6178ddf8b69d5fbcc6f68d69",
+          "urn:r61:op:a6261f60bf96b73f70c4121e30f64ef97fb2d1f62630778bce1e27dcdcd8047c",
+          "urn:r61:op:a6a51e17d62e5d0edf0c91380c1e44d74fe143e84bdc629ee07c3044dc6fae5e",
+          "urn:r61:op:a8a01154ec516d4e124f11e648e364619711042d6af56157024c0bf650a5c9a3",
+          "urn:r61:op:a8a95bdd008ceaedeb0e8cf929140fb7a0eef455475d748d19fcb82bb014e047",
+          "urn:r61:op:a9b35ac4d10ab65b52354bf058002ebbe3e75b2752d600ae74587d3ae18beb77",
+          "urn:r61:op:ab72c5f226a56e7fba9598aef37ca1321e77989dd7e1af7b674f09129416274f",
+          "urn:r61:op:abdb5899d474cfc0544589c876cde1ae1dd7cc6364f007d32ce7e5c2832e7eb2",
+          "urn:r61:op:abf874616550988e611d52f03b06a29addee7ced8e217de0323cd3fa958e81e8",
+          "urn:r61:op:ac30d5278cb4e29428e0cf5a4e9c34232216e4e29bab079ac83a366ff6498523",
+          "urn:r61:op:ae321046c6bc1d36bebbdac3fa2d96783a0eb5711f9bacffe8d74ec1b895a656",
+          "urn:r61:op:aed0fa42cec4779d9da8e2d7f3bd485729adb4d57313371d4a6957763fb97d08",
+          "urn:r61:op:af1b1be58a450f74b48355c78c80b9aa7a96ada9c027d1f6f40e35619462cd74",
+          "urn:r61:op:afb5ecd19765c5584ac640671475794f0229689b5f89cc7af4417eb153fd2691",
+          "urn:r61:op:b2f38f74dc2f5efd975a2cce7a2d8fcccd337e804877b9658d88f8cf7f95b94e",
+          "urn:r61:op:b40f91b0293f4d61da6d9f9564fab0c1a3e292f43f4cda091ad11b03451472b6",
+          "urn:r61:op:b4ab6c87b84d6cc370c25803941bc531870b31a27f8245c53e4c309955db367c",
+          "urn:r61:op:b739f4fde398773267f5a007358f7dbbedcde64895607a36fcbb3a23da5d9cb4",
+          "urn:r61:op:ba1d46bffdfa45c264a1fd762f28ec6656ee769b8ccc2fa3f2633a6efb36dc89",
+          "urn:r61:op:bce850f5a302cd353c392f66e8c32e85c21039876242e2b8b38958f25edf202b",
+          "urn:r61:op:bff187a61e5fba4ca9c72bb5d072520f3893f2ff3a59cc102bf38bcb3767e84c",
+          "urn:r61:op:c459abbb0a758813a165dc2c03f2c311c0b8609d800957f2866d7c6d73984594",
+          "urn:r61:op:ca55316f926b02d46ba6966880aadafd2d0dccb1bbb2ddb56dd70c7dd2781f42",
+          "urn:r61:op:cbac30fc9e0af38b1badf118ccbc638654b4f480913f16e13b9aaaada8d376c5",
+          "urn:r61:op:cbe5168e3f022743c8f89a4199550c90ac594d845eb9fa20b010c078a37af739",
+          "urn:r61:op:cbef3c2fd39bdcb4fda216ba571411aab9a7a955e32da8d0b1e91bc9e5df27af",
+          "urn:r61:op:cc97f70f51b6954a911bfeb84a54f771893e9454e0789a03d1b91179247b6930",
+          "urn:r61:op:ccabb49b36f2f78a0f3eae80409434b9f659dad6ffb82b9662e59a31a8be75c5",
+          "urn:r61:op:d05bb96dba69d9e26c04738e7ca6970db93198fdca3253fcd60b3829493ba7c7",
+          "urn:r61:op:d347679f9cde01273835ff7ad90b79882fd1c9b639f1b281b2c0e7310e5baf41",
+          "urn:r61:op:d621f0b6aae3b2ea855e6ebd7d297dee9488d9489781a9cde7e3d276e0484c45",
+          "urn:r61:op:d639a48eb2bfaa8b0106f19d7e61091389779dc9786caea02e685135218bbee1",
+          "urn:r61:op:d71ec41579fbf987d2048279ebf1ef4b3384d152264ebdcc4ca4e8149f6ffa54",
+          "urn:r61:op:da81b43e601c404f4776bfd7a3ce95d2f9aedba1220c56b703e9aed24838b533",
+          "urn:r61:op:dd765f056caec415a390fdf934d8109108dce0ab39f1363767dfcb3fca283555",
+          "urn:r61:op:e56a738b1b8c21171c2c7500f5963038496cc4da177ba9adae5f9090c53a56b0",
+          "urn:r61:op:e7856cc449d34f6ebe59172d74fd405c6194c0154cf3f02f51db7e6eded70698",
+          "urn:r61:op:e9cbedd0f39746c6f45425f9ec5a08f3be46c389c6a7495eade3d6f52f6b4452",
+          "urn:r61:op:ea71a4fb573bf6fe612f2b6944cb2deede17a98832eb906f3ec44f1245062a20",
+          "urn:r61:op:eabdd230b7f27f8fdf4c5a921af8715a941fc5f66e5ca1995aa7b8ae38645521",
+          "urn:r61:op:eb7b12dc600ae3a5d6abbd003dea0c740195cab721312b27de8d83dd171a4fb0",
+          "urn:r61:op:f0740906987ef794cc09c198b366290700bc104c211b87d9a71d15750583fbe1",
+          "urn:r61:op:f0a15a11151acbe4cd83c87e883896e20aa0c55a2c93b15f196b16bdb48dce6b",
+          "urn:r61:op:f4a5b5bc70e25cd7eab299c029c7384d6507573cf5148fe4122554a664cf99ce",
+          "urn:r61:op:f616fe1669430b46890deec93d00b178d2f3644f1e4d63d8f0aece5137c9096f",
+          "urn:r61:op:ff5505502c6bd965b3712b56d1e8b0e6eeaed59e570366452f310d220b864073",
+          "urn:r61:op:ffc0ef3d704a64f1b9fd9a1983073a22eef97edaccfb89d1ace435a50c488925"
+        ],
+        "unmarked_pending_ids": []
+      },
+      "refused": true,
+      "source_factory_calls": 0
+    },
+    "baseline_receipts": 6,
+    "budget_state_after": "PARTIAL",
+    "candidate_anti_join_ok": true,
+    "excluded_scope_equal": true,
+    "frontier_pending_rows_still_pending": true,
+    "inventory_ledger_equal": true,
+    "operation_anti_join_ok": true,
+    "overissued": true,
+    "pending_ids_removed": 145,
+    "pending_ids_with_receipts": 142,
+    "science_census_equal": true,
+    "source_census_equal": true,
+    "tampered_native_receipts": 150,
+    "unknown_scope_equal": true
+  },
+  "G3_pending_variants": {
+    "duplicate_pending_id": {
+      "verifier": {
+        "code": "DUPLICATE_PENDING_OPERATION_ID",
+        "detail": null,
+        "refused": true,
+        "source_factory_calls": 0
+      }
+    },
+    "partial_list_loss": {
+      "removed": 1,
+      "verifier": {
+        "code": "PENDING_FATE_CENSUS_DRIFT",
+        "detail": {
+          "missing_from_pending_list": [
+            "urn:r61:op:ffc0ef3d704a64f1b9fd9a1983073a22eef97edaccfb89d1ace435a50c488925"
+          ],
+          "unmarked_pending_ids": []
+        },
+        "refused": true,
+        "source_factory_calls": 0
+      }
+    },
+    "unmarked_pending_row": {
+      "operation_id": "urn:r61:op:01c50dcd65064b3d8e11f827a7843f7a39fa34282620db03b0c1ab2ee77ed8d3",
+      "verifier": {
+        "code": "PENDING_FATE_CENSUS_DRIFT",
+        "detail": {
+          "missing_from_pending_list": [
+            "urn:r61:op:01c50dcd65064b3d8e11f827a7843f7a39fa34282620db03b0c1ab2ee77ed8d3"
+          ],
+          "unmarked_pending_ids": []
+        },
+        "refused": true,
+        "source_factory_calls": 0
+      }
+    }
+  },
+  "workdir": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s1c-g5-independent-n8br7swh"
+}

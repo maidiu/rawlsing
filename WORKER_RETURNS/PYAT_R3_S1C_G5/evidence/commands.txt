@@ -1,0 +1,56 @@
+Clean detached worktree at dae66cdf9f3846d237e0b1c3069cc17eb05b7746.
+Python 3.11.3 isolated venv. Commands run from the worktree root with PYTHONPATH=.
+
+FOCUSED + RSS WRAPPER (18 passed, 152.00s, peak RSS 200646656 bytes, 5136 samples)
+python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py
+
+INHERITED (22 passed, 150.99s)
+python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_universal_workload.py \
+  rawlsing_next/tests/test_universal_workload_custody.py
+
+COMBINED S1-B (46 passed, 222.32s)
+python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pyat940_s1b_b01_b04.py \
+  rawlsing_next/tests/test_pyat940_s1b_b01_historical_parity.py \
+  rawlsing_next/tests/test_pyat940_s1b_b04_projection_guard_repair.py \
+  rawlsing_next/tests/test_pyat940_s1b_b05_b06.py \
+  rawlsing_next/tests/test_pyat940_s1b_b07_b08.py \
+  rawlsing_next/tests/test_pyat940_s1b_b08_wide_dta_cell_cap.py \
+  rawlsing_next/tests/test_pyat940_s1b_b09.py \
+  rawlsing_next/tests/test_pyat940_s1b_factory_key_repair.py
+
+COMBINED S1-D (59 passed, 157.61s)
+python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pyat940_s1d_current_permissions.py \
+  rawlsing_next/tests/test_pyat940_s1d_a_counter_cache_binding.py \
+  rawlsing_next/tests/test_pyat940_s1d_b_cache_custody.py \
+  rawlsing_next/tests/test_universal_workload_custody.py
+
+COMBINED S2-F (19 passed, 20.79s)
+python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pyat940_s2f_a_counter_provenance.py \
+  rawlsing_next/tests/test_pyat940_s2f_b_negative_and_multisource.py \
+  rawlsing_next/tests/test_pyat940_s2f_durable_closure.py \
+  rawlsing_next/tests/test_pyat940_s2f_fresh_process.py
+
+COMBINED SHARED C11/UNIVERSAL/EMPIRICAL (58 passed, 137.17s)
+python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+  rawlsing_next/tests/test_universal_workload.py \
+  rawlsing_next/tests/test_pre553_empirical_query.py
+
+FOCUSED COLLECTION (18 tests collected)
+python -B -m pytest -q --collect-only -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py
+
+INDEPENDENT ATTACK PROBE
+python -B WORKER_RETURNS/PYAT_R3_S1C_G5/evidence/independent_g5_probe.py
+  -> evidence/independent-attack-probe.json
+
+INDEPENDENT NEGATIVE-AXIS PROBE
+python -B WORKER_RETURNS/PYAT_R3_S1C_G5/evidence/independent_negative_axes_probe.py
+  -> evidence/independent-negative-axes-probe.json
+
+Note: the /path/to/python used was the isolated venv's Python 3.11.3. The package
+freeze is in evidence/pip-freeze.txt. No GitHub Actions run is claimed.
