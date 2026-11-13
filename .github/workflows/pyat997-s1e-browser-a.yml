@@ -9,6 +9,7 @@ on:
       - "rawlsing_next/pre553_source_postconsumer_receipts.py"
       - "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py"
       - "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py"
+      - "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py"
       - ".github/workflows/pyat997-s1e-browser-a.yml"
   workflow_dispatch:
 permissions:
@@ -32,6 +33,7 @@ jobs:
           python -B -m pytest -q -o addopts='' -p no:cacheprovider \
             rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py \
             rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py \
+            rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py \
             rawlsing_next/tests/test_pyat960_s1e_source_i02.py \
             rawlsing_next/tests/test_pyat960_s1e_body_transport.py \
             rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py \
