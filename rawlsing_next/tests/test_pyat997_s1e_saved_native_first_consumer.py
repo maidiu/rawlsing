@@ -265,3 +265,51 @@ def test_postconsumer_receipt_rows_cannot_change_after_source_mutation(tmp_path)
     assert joined.rows[0]["source_preimage"]["source_id"] == old
     with pytest.raises(TypeError):
         joined.rows[0]["source_preimage"]["source_id"] = "TAMPERED"
+
+
+@pytest.mark.parametrize("forgery", ["realized", "state", "census"])
+def test_source_realization_witness_must_agree_before_native_join(
+    tmp_path, forgery,
+):
+    """A mutable Q2 row or its separate census must not confer a receipt."""
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / ("source-witness-" + forgery)
+    )
+    manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    if forgery == "census":
+        altered_audit = dict(handoff.census_audit)
+        source_audit = dict(altered_audit["operation_source_antijoin"])
+        source_audit["operation_count"] += 1
+        altered_audit["operation_source_antijoin"] = source_audit
+        forged = replace(handoff, census_audit=altered_audit)
+        refusal = "Q2_SOURCE_REALIZATION_AUDIT_DRIFT"
+    else:
+        target = next(
+            row for row in handoff.operation_fates
+            if row["disposition"] == "ELIGIBLE"
+            and row["source_realized"] is True
+        )
+        forged_row = dict(target)
+        if forgery == "realized":
+            # The original Q2 source-state witness still says REALIZED.
+            forged_row["source_realized"] = False
+        else:
+            # Keep the favorable boolean and conceal the original source state.
+            forged_row["operation_source_state"] = "ELIGIBLE_TYPED_HOLD"
+        forged = replace(
+            handoff, operation_fates=tuple(
+                forged_row if row["operation_id"] == target["operation_id"]
+                else row for row in handoff.operation_fates
+            ),
+        )
+        refusal = "Q2_SOURCE_REALIZATION_CONTRADICTION"
+    with pytest.raises(SourceReceiptJoinError, match=refusal):
+        join_saved_source_operation_fates(
+            handoff=forged, estate_receipt=estate, admission=admission,
+            compilation=compilation, workload=compilation.issued.workload,
+            resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+            runner=runner,
+        )
