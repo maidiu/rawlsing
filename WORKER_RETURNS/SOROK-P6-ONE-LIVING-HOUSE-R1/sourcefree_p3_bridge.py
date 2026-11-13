@@ -14,6 +14,44 @@ from p3 import projections, test_rules
 _GRADE = "SOURCEFREE_TEST_ONLY"
 
 
+def qualified_p4_scope(owner, ledger):
+    """Preflight the P4 foreground's test-only P3 scope against its source plan.
+
+    P4's ledger is an action receipt, not an authority for replacing the
+    project, counterpart, role or relation chosen at genesis. The existing
+    P3Owner source/config is frozen and checked on reopen. This exact P4
+    fixture has one source-issued FORMATION plan and one relation. Ambiguous
+    or future multiproject arrangements are held, not guessed from a list.
+    The check must happen BEFORE P4 writes pending or performs an action.
+    """
+    scope = ledger.get("scope") if type(ledger) is dict else None
+    required = {"project", "counterpart", "interlocutor_role", "relation_ref"}
+    if type(scope) is not dict or set(scope) != required:
+        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
+    plans = getattr(owner, "plans", None)
+    if not isinstance(plans, (list, tuple)):
+        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
+    formations = [
+        row for row in plans
+        if type(row) is dict and row.get("phase") == "FORMATION"
+    ]
+    if len(formations) != 1:
+        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
+    formation = formations[0]
+    relations = formation.get("relation_refs")
+    if not isinstance(relations, (list, tuple)) or len(relations) != 1:
+        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
+    expected = {
+        "project": formation.get("project"),
+        "counterpart": formation.get("counterpart"),
+        "interlocutor_role": formation.get("interlocutor_role"),
+        "relation_ref": relations[0],
+    }
+    if any(type(v) is not str or not v for v in expected.values()) or scope != expected:
+        raise RecursionRefusal("P6_P3_SCOPE_NOT_SOURCE_BOUND")
+    return dict(expected)
+
+
 def qualified_p3_read(
     owner, session, *, project, counterpart, as_of,
     interlocutor_role=None, relation_ref=None, obligation_refs=(),
