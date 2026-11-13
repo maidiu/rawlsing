@@ -334,3 +334,41 @@ def test_duplicate_physical_event_cannot_replace_missing_exact_event(tmp_path, m
         )
     assert poisoned["done"]
     assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
+
+
+@pytest.mark.parametrize("lane", [
+    "raw_typed", "occurrence", "kind", "content_hash", "raw_bool",
+])
+def test_physical_projection_lane_forgery_refused_before_publication(
+    tmp_path, monkeypatch, lane,
+):
+    """A2 hostile: source-I02 membership and event posting can remain valid
+    while a typed/value/occurrence/identity Parquet lane is silently wrong.
+    The entire physical projection must match the source-certified exact body.
+    """
+    import rawlsing_next.pre553_source_direct_parquet_estate as estate
+
+    candidate, direct = _source("S2C-A2-LANE-" + lane)
+    root = tmp_path / ("private-" + lane)
+    root.mkdir(mode=0o700)
+    original_flush = estate._Sink.flush
+    corrupted = {"done": False}
+
+    def poison_typed_lane(self):
+        if self.family == "RespondentEvent" and self.pending and not corrupted["done"]:
+            entry = dict(self.pending[0])
+            if lane == "raw_bool":
+                entry[lane] = not bool(entry[lane])
+            else:
+                entry[lane] = str(entry[lane]) + "::FORGED"
+            self.pending[0] = entry
+            corrupted["done"] = True
+        return original_flush(self)
+
+    monkeypatch.setattr(estate._Sink, "flush", poison_typed_lane)
+    with pytest.raises(DirectEstateError, match="physical typed/identity/occurrence lane"):
+        write_direct_estate(
+            direct, candidate.empirical_universes[0].ref, root, chunk_rows=2,
+        )
+    assert corrupted["done"]
+    assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
