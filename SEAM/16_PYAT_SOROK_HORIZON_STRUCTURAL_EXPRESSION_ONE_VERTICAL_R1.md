@@ -82,18 +82,19 @@ One **sourcefree matched synthetic experiment** with a single illustrative joint
 
 ### Executed local logic demonstration
 
-[SEAM/17](17_SOROK_CROSS_FIELD_HORIZON_SOURCEFREE_PROBE_R1.py) is the intended repository companion to this note. In this session I independently ran the candidate reference in the local container as `/mnt/data/seam_cross_field_horizon_probe.py`. **35/35 assertions PASS**, including:
+[SEAM/17](17_SOROK_CROSS_FIELD_HORIZON_SOURCEFREE_PROBE_R1.py) is the intended repository companion to this note. In this session I independently ran the candidate reference in the local container as `/mnt/data/seam_cross_field_horizon_probe.py`. **38/38 assertions PASS**, including:
 - fixed hypothetical adult normative field, altered material sanction authority → changed *actual performed adult conduct* and child-visible encounter;
 - fixed world/rights, altered hypothetical adult norm configuration → different *enacted* voluntary deference versus negotiation under an explicit K, not a direct trait;
 - same field, but actor's independent project competes → own agency changes K;
 - identical field and world, remove child access → no epistemic uptake though objective events still occur;
 - identical living history, later actor-visible institutional violation and counterfield changes → critique and learned practice can differ;
+- **same current world, changed childhood sanction exposure → changed prospective adult shift-request strategy**; same childhood but changed current employer right → changed feasible response without rewriting acquired history; actual peer-coordination practice creates a third strategy;
 - threatened hegemonic normality can recruit an otherwise egalitarian-avowing actor into an actual sanction **only if power exists**;
 - painful rupture alone and counterfield existence alone cannot force independent generativity; skill, coactor and budget must all be operative;
 - after an executed rupture and witnessed cost, one sourcefree U can de-center institution-reference while another U does not;
 - negative and no-learning controls, performed-versus-expected/world consequences and deterministic repeat.
 
-**Ceiling:** fabricated small example fields/rights, illustrative K/U parameters and scalar toy counters, no PYAT native empirical sample, P3/CAN authorized learning, or actual multiplayer product loop. The experiment proves **one possible computational expression**, not true human psychogenesis. The sourcefree test code itself should not become a new engine or psychology registry.
+**Exact-execution distinction:** the 38-check full local reference was executed in the container at `/mnt/data/seam_cross_field_horizon_probe.py`, with results `/mnt/data/seam_cross_field_horizon_probe_results.json`. The companion committed [SEAM/17](17_SOROK_CROSS_FIELD_HORIZON_SOURCEFREE_PROBE_R1.py) is a shorter **28-check readable repository variant** and was verified by GitHub readback, **not run from a checkout**. These artifacts must not be conflated. **Ceiling:** fabricated small example fields/rights, illustrative K/U parameters and scalar toy counters, no PYAT native empirical sample, P3/CAN authorized learning, or actual multiplayer product loop. The experiment proves **one possible computational expression**, not true human psychogenesis. The sourcefree test code itself should not become a new engine or psychology registry.
 
 ## 5. Concrete first-reader and minimum patch
 
