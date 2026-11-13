@@ -521,6 +521,9 @@ def _native_question_key(section: Mapping[str, Any]) -> str:
     return exact_ref(section["native_question_ref"], "native_question_ref").key
 
 
+_UNRESOLVED_ROUTING_STATES = frozenset({"ROUTING_UNKNOWN", "RULE_UNAVAILABLE"})
+
+
 def _sections_by_name(
     doc: Mapping[str, Any],
 ) -> dict[str, tuple[tuple[str, Mapping[str, Any]], ...]]:
@@ -603,6 +606,9 @@ def _operation_source_antijoin(
                         ("RespondentEvent", slot), 0)),
                     "routing_states": dict(sorted(states.items())),
                     "routable_rows": int(states.get("ELIGIBLE_APPLICABLE", 0)),
+                    "routing_unresolved": any(
+                        name in _UNRESOLVED_ROUTING_STATES
+                        for name in states),
                     "occurrence_realized": realized,
                     "occurrence_dimension": dimension,
                 })
@@ -671,6 +677,7 @@ def _operation_source_antijoin(
         )
         eligible = operation.disposition == "ELIGIBLE"
         realized_all = bool(key_records)
+        routing_unresolved_keys: list[str] = []
         for key, key_realizations, response_owned in key_records:
             if not key_realizations:
                 realized_all = False
@@ -713,6 +720,9 @@ def _operation_source_antijoin(
                         "routing_states": response_rows[0]["routing_states"],
                     },
                 )
+            if any(row.get("routing_unresolved") for row in response_rows):
+                routing_unresolved_keys.append(key.key)
+        source_realized = realized_all and not routing_unresolved_keys
         if eligible:
             eligible_count += 1
             if not realized_all:
@@ -724,7 +734,8 @@ def _operation_source_antijoin(
                         "realizations": realizations,
                     },
                 )
-            eligible_realized_count += 1
+            if source_realized:
+                eligible_realized_count += 1
         elif not realized_all:
             held_unrealized_count += 1
         rows.append({
@@ -755,20 +766,25 @@ def _operation_source_antijoin(
                 ),
             },
             "source_realization": realizations,
-            "source_realized": realized_all,
+            "source_realized": source_realized,
+            "routing_unresolved_keys": tuple(routing_unresolved_keys),
             "unrealized_keys": tuple(
                 key.key for key, key_realizations, _response_owned in key_records
                 if not any(
                     row["emitted"] > 0 and row["occurrence_realized"]
+                    and not row.get("routing_unresolved")
                     for row in key_realizations
                 )
             ),
             "operation_source_state": (
-                "ELIGIBLE_REALIZED" if eligible and realized_all
+                "ELIGIBLE_REALIZED" if eligible and source_realized
+                else "ELIGIBLE_TYPED_HOLD" if eligible
                 else "HELD_OR_UNKNOWN_SOURCE_STATE"
             ),
             "native_first_reader_state": (
-                "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE"
+                "HOLD_ROUTING_OR_BODY_UNRESOLVED"
+                if eligible and not source_realized
+                else "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE"
             ),
             "issued_receipt_refs": (),
         })
@@ -780,8 +796,10 @@ def _operation_source_antijoin(
         "held_unrealized_count": held_unrealized_count,
         "source_realized_operation_count": sum(
             1 for row in rows if row["source_realized"]),
-        "unrealized_eligible_count": 0,
-        "unrealized_eligible_policy": "REFUSE_BEFORE_RETURN",
+        "unrealized_eligible_count": sum(
+            1 for row in rows
+            if row["disposition"] == "ELIGIBLE" and not row["source_realized"]),
+        "unrealized_eligible_policy": "TYPED_HOLD_NOT_REFUSED",
         "native_first_reader_state": (
             "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE"),
     }
