@@ -1,0 +1,59 @@
+{
+  "finding": "The claimed native fact uses a separately built legacy full C11 release as the body repository (second source decode), not the Q2 handoff body tee; the Q2 operation fates all carry zero issued receipt refs and native HOLD. The fate ledger also omits measure_kind/measure_id/weight_ref, so optional-weight RAW is not retained in the returned no-drop ledger.",
+  "frontier_measure_kinds": {
+    "POPULATION": 6,
+    "SAMPLE": 16
+  },
+  "frontier_operation_count": 22,
+  "handoff_body_transport": null,
+  "handoff_stats": {
+    "cell_passes": 1,
+    "decode_calls": 1,
+    "full_c11_builds": 0,
+    "source_reads": 1
+  },
+  "issued_receipt_lengths": {
+    "0": 22
+  },
+  "legacy_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|85b25fb86d30a58bcc4d999f603680700d93c64126f20d6cb4e1d3c60433b6e2",
+  "native_fact_helper_counts": {
+    "decode_fixture": 1,
+    "legacy_build": 1,
+    "sha": 1,
+    "snapshot": 2
+  },
+  "native_fact_legacy_full_builds": 1,
+  "native_fact_total_source_snapshots": 2,
+  "native_first_reader_states": {
+    "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE": 22
+  },
+  "native_repository_release_is_legacy": true,
+  "operation_fate_row_keys": [
+    "claim_class",
+    "disposition",
+    "execution_state",
+    "issued_receipt_refs",
+    "native_first_reader_state",
+    "operation_hash",
+    "operation_id",
+    "operation_source_state",
+    "result_state",
+    "routing_unresolved_keys",
+    "source_preimage",
+    "source_realization",
+    "source_realized",
+    "unrealized_keys"
+  ],
+  "operation_fates_preserve_measure_kind": false,
+  "operation_ids_sample": [
+    "urn:r61:op:1102b72040d2eb75fe8519f554dfac0a8f24ce2623f83ea76b121db5d56995af",
+    "urn:r61:op:1842576647d3ae7f081a236cec2a4df1e8241b92b6917e786261567f95a8296f",
+    "urn:r61:op:1884819a2feee706fadf1ce69ed73827854a4dcd8ee457cffb4020cd679faf66"
+  ],
+  "q2_direct_logical_root": "acca20e116d3398e6aadb334d596ea34646f855df35fd8ec2fd4ecabfe7c6d1c",
+  "query_branch_id": "BRANCH-q2-native",
+  "query_branch_is_frontier_operation_id": false,
+  "source_fixture_bytes": 602,
+  "tested_code_cut": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7",
+  "tested_delivery": "24e6bc02536a0714b0ab94a225f8eef1d84d8127"
+}

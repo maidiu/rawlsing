@@ -1,0 +1,362 @@
+{
+  "task_id": "PYAT960-S1E",
+  "packet_id": "S1-E",
+  "old_obligations": ["P1-06", "P1-07"],
+  "original_task": "Issue single qualified source→I02 handoff and no-drop integration",
+  "persona_role": "G5_INDEPENDENT_NONAUTHOR_RECEIVER",
+  "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+  "session_model": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s1e-g5-r1",
+  "exclusive_allowlist": ["WORKER_RETURNS/PYAT960_S1E_G5/"],
+  "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_G5_READ_ONLY: candidate code/tests/native owners/upstream/earlier returns/controller read-only; only WORKER_RETURNS/PYAT960_S1E_G5/ written; no reviewer patch; no branch switch/reset/rebase; no protected merge; no Q3/S2-C writer.",
+  "contract_sha": "0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40",
+  "contract_frozen_at_sha": "4d806637b9b99778b54a722aa6b0c7786b133808",
+  "provisional_abi_sha": "cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54",
+  "base_sha": "591056a948fb0fdd68adbd581301dd903485adc8",
+  "composition_base": "591056a948fb0fdd68adbd581301dd903485adc8",
+  "delivery_sha": "24e6bc02536a0714b0ab94a225f8eef1d84d8127",
+  "candidate_sha": "24e6bc02536a0714b0ab94a225f8eef1d84d8127",
+  "implemented_sha": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7",
+  "code_test_cut": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7",
+  "delivery_changes_return_only": true,
+  "reviewed_a_heads": {
+    "a_implementation": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
+    "b_delivery": "ed9bda50ec1c1cbbc0ced56262a696b65fb14dad",
+    "b_code_cut": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
+    "a_counter": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7"
+  },
+  "reviewed_changed_paths": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/pre553_source_i02_streams.py",
+    "rawlsing_next/tests/test_pyat960_s1e_body_transport.py",
+    "rawlsing_next/tests/test_pyat960_s1e_counter_attack.py",
+    "rawlsing_next/tests/test_pyat960_s1e_native_bridge.py",
+    "rawlsing_next/tests/test_pyat960_s1e_native_fact.py",
+    "rawlsing_next/tests/test_pyat960_s1e_operation_antijoin.py",
+    "rawlsing_next/tests/test_pyat960_s1e_source_i02.py",
+    "rawlsing_next/tests/test_pyat960_s1e_support.py",
+    "WORKER_RETURNS/PYAT960_S1E_A/",
+    "WORKER_RETURNS/PYAT960_S1E_B/",
+    "WORKER_RETURNS/PYAT960_S1E_A_COUNTER/"
+  ],
+  "review_changed_paths": [
+    "WORKER_RETURNS/PYAT960_S1E_G5/receipt.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT960_S1E_G5/g5_lineage_measure_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/"
+  ],
+  "source_abi_owner": "rawlsing_next/pre553_source_i02_handoff.py + rawlsing_next/pre553_source_i02_streams.py over pinned R157/S1-B, S1-C, S2-B, repository and query owners",
+  "actual_first_consumer": "build_sourcefree_direct_i02 -> ExternalI02Roots; VerifiedExternalI02 + install_direct_sourcefree_i02_i03 -> native selector; execute_empirical_query native I03 fact on Linux s2b. The native fact is a legacy sealed-body comparator, not a Q2 body-tee consumer; Q2 operation fates all have issued_receipt_refs=() and native HOLD.",
+  "evidence_grade": "SOURCEFREE_PROVISIONAL_DIRECT_I02_BODY_AND_NATIVE_SELECTOR_COMPARATOR",
+  "sourcefree_grade": "SOURCEFREE_PROVISIONAL_DIRECT_I02_BODY_AND_NATIVE_SELECTOR_COMPARATOR",
+  "upstream_owner_signature_grade": {
+    "S1_B": "priority accepted G5 at dedd2fb8a1f5842910a0dc842fe75b3618c23443 (prior task), sourcefree grade",
+    "S1_C": "dae66cdf9f3846d237e0b1c3069cc17eb05b7746 pinned; distinct nonauthor G5 still pending; not accepted here",
+    "S2_B": "155cd1b7244ab22ede804386e6d5253a39fe3587 pinned; distinct nonauthor G5 still pending; not accepted here",
+    "combined_980": "pending; not accepted here",
+    "Q3_S2_C": "USER_PAUSED; read-only preflight, no writer"
+  },
+  "gates": {
+    "G1": {
+      "state": "FAIL",
+      "receipt": "13-family ABI/body, manifest/typed-absence/replay/counts, source/operation/fate preimages, and all35 ledger (35/18,276/18,413/26) are largely real. G1 reuse court is incomplete: 14-entry reuse_matrix.json does not include Q2-imported owners pre553_c11_ingest.py (SourceReleaseManifest/INGEST_CONTRACT_VERSION), pre553_c11_integrity.py (TypedAbsence), pre553_empirical_objects.py (canonical objects), and universal_grammar/types.py (SourceInventory/ScientificFrontier/GrammarPolicy). Expected function-level path/blob/disposition/first-consumer/no-loss/reason entries; actual absent. Also the optional-weight RAW measure kind is not retained in operation fate rows (see G3)."
+    },
+    "G2": {
+      "state": "FAIL",
+      "receipt": "Direct I02 positive/change/restore and 13-family body tee PASS. The claimed actual Q2 native I03/Batch fact FAILS lineage: test_pyat960_s1e_native_fact._build_native and native_fact_probe.py build a separate legacy full C11 release via build_validated_c11_release_from_config after a second source decode, then use it as the native repository. Q2 handoff body_transport is None and is not consumed; with/without a body sink produces the identical native fact. All 22 Q2 operation fates have issued_receipt_refs=() and native HOLD_DEPENDENCY; the native query is BRANCH-q2-native, not a frontier operation. The author's 'actual Q2 native fact' is a legacy-body comparator, not the Q2 direct body/issued operation fact."
+    },
+    "G3": {
+      "state": "FAIL",
+      "receipt": "Hostile body/source/operation/multiowner/partial-routing/occurrence/wrong-SHA/wrong-current negatives largely PASS (21 focused tests; wrong source bytes refuse with no output; partial routing preserves operation HOLD and native RISK_SET_UNAVAILABLE with the corrected test-only fixture). FAIL: optional-weight RAW nonloss is not preserved in the returned no-drop ledger. Frontier has 16 SAMPLE and 6 POPULATION operations, but every operation_fate row exposes only claim_class/disposition/execution/result/source_preimage; it omits measure_kind/measure_id/weight_ref/estimand/design, and the authored 'optional_weight_raw_conservation' test only checks the frontier, not the handoff. A downstream Q3/S2-D consumer cannot distinguish sample RAW from population/weighted operations from the handoff."
+    },
+    "G4": {
+      "state": "PASS",
+      "receipt": "Q2 handoff fixture grade: 1,200 rows/events/coordinates, one fixture source snapshot, one decode, one cell pass, one direct builder, zero full C11 builds; spool 7,464,000B across 3 files cleaned; retained certificate 19,353,600B; peak disk 46,190,901B; peak process RSS 133,267,456B; cold 5.616829s/repeat 5.718084s; denied-read source opens 0; body transport 4,809 objects/13 families. Original path prehash+snapshot=2 and keyed path external key witness disclosed. The native fact comparator additionally performs a second source decode and one legacy full C11 build, which the author's G4 receipt does not count; recorded as G2 claim defect. 100k respondent/6GiB integrated gate NOT_RUN."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+      "receipt": "Independent nonauthor receiving at delivery 24e6bc02/code f6fcd708. One closed outcome REVISE_EXACT_DEFECT. Direct I02/body tee/selector comparator are substantive, but G1/G2/G3 have material reproduced failures. This is not ACCEPT_SCOPED, not PROTECTED_RECEIVED, and not full original S1-E."
+    }
+  },
+  "mandatory_case_ids": [
+    "Q2_G1_EXACT_CONTRACT_REUSE",
+    "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+    "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+    "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+    "Q2_G4_CUSTODY_RESOURCES",
+    "Q2_G5_INDEPENDENT_RECEIVING",
+    "INHERITED_B01_B09",
+    "INHERITED_S1C_OPERATION_FATES",
+    "DECODER_CUSTODY_REGRESSION",
+    "Q2_NATIVE_SELECTOR_LINUX",
+    "Q2_MULTIOWNER_ROUTING_GUARD",
+    "Q2_PARTIAL_ROUTING_TYPED_HOLD"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "Q2_G1_EXACT_CONTRACT_REUSE",
+      "result": "FAIL",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''; PYTHONPATH=$PWD python3 WORKER_RETURNS/PYAT960_S1E_G5/g5_lineage_measure_probe.py",
+      "actual": "33 passed/1 skipped Darwin; 34 passed Linux; 13-family body/ledger/all35 exact. Reuse matrix has 14 entries but excludes four Q2-imported owners (pre553_c11_ingest.py, pre553_c11_integrity.py, pre553_empirical_objects.py, universal_grammar/types.py); no function-level entries. Optional-weight measure kind absent from operation fate rows."
+    },
+    {
+      "id": "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_source_i02.py -o addopts=''",
+      "actual": "11 passed. Real generated SAV/DTA -> bounded decoder -> R157 projection -> single bounded cell pass/spool -> build_sourcefree_direct_i02 -> ExternalI02Roots; changed response meaning changes logical/physical roots and event refs; restore reproduces roots/refs; no legacy full C11 build in the Q2 handoff."
+    },
+    {
+      "id": "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+      "result": "FAIL",
+      "command": "Linux s2b: native_fact_probe.py; python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_native_fact.py -o addopts=''; PYTHONPATH=$PWD python3 WORKER_RETURNS/PYAT960_S1E_G5/g5_lineage_measure_probe.py; g5_native_body_independence_probe.py",
+      "actual": "Base fact SUPPORTED 5/5, changed branch 3/3, restore exact 5/5 on Linux. But the fact repository is a separately built legacy C11LogicalRelease; the helper counts 2 source snapshots, 1 legacy full C11 build, Q2 handoff body_transport None; with/without a body sink the native fact is identical; all 22 operation fates have issued_receipt_refs=() and native HOLD; the query is BRANCH-q2-native, not a frontier issued operation. This is a legacy-body comparator, not the Q2 body/issued-operation native fact."
+    },
+    {
+      "id": "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+      "result": "FAIL",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_counter_attack.py rawlsing_next/tests/test_pyat960_s1e_operation_antijoin.py rawlsing_next/tests/test_pyat960_s1e_body_transport.py -o addopts=''; PYTHONPATH=$PWD python3 WORKER_RETURNS/PYAT960_S1E_G5/g5_lineage_measure_probe.py; wrong-source-bytes probe",
+      "actual": "21 focused hostile tests passed; wrong source bytes -> SourceI02Refusal DECODED_SOURCE_SHA_MISMATCH with no output; partial routing operation HOLD and native RISK_SET_UNAVAILABLE verified. Optional-weight RAW nonloss FAILS: frontier 16 SAMPLE/6 POPULATION, but operation_fates lacks measure_kind/measure_id/weight_ref/estimand/design; the authored test checks only the frontier."
+    },
+    {
+      "id": "Q2_G4_CUSTODY_RESOURCES",
+      "result": "PASS",
+      "command": "python3 WORKER_RETURNS/PYAT960_S1E_B/resource_probe.py; python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_body_transport.py -o addopts=''",
+      "actual": "1,200 rows/events/coordinates; source byte pass 1/snapshot 1/decode 1/cell pass 1/direct builder 1/full C11 0 in Q2 handoff; spool 7,464,000B cleaned; certificate 19,353,600B; peak disk 46,190,901B; peak RSS 133,267,456B; cold 5.616829s/repeat 5.718084s; denied-read opens 0. Native comparator adds 1 second source snapshot and 1 legacy full build (G2 defect). 100k/6GiB NOT_RUN."
+    },
+    {
+      "id": "Q2_G5_INDEPENDENT_RECEIVING",
+      "result": "FAIL",
+      "command": "independent review; not author self-review",
+      "actual": "REVISE_EXACT_DEFECT; G5 FAIL; integration UNMERGED. No ACCEPT_SCOPED."
+    },
+    {
+      "id": "INHERITED_B01_B09",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat940_s1b_b01_b04.py rawlsing_next/tests/test_pyat940_s1b_b05_b06.py rawlsing_next/tests/test_pyat940_s1b_b07_b08.py rawlsing_next/tests/test_pyat940_s1b_b09.py -o addopts=''",
+      "actual": "33 passed."
+    },
+    {
+      "id": "INHERITED_S1C_OPERATION_FATES",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py -o addopts=''",
+      "actual": "18 passed."
+    },
+    {
+      "id": "DECODER_CUSTODY_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_universal_source_byte_custody.py rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py -o addopts=''",
+      "actual": "56 passed, 1 skipped."
+    },
+    {
+      "id": "Q2_NATIVE_SELECTOR_LINUX",
+      "result": "PASS",
+      "command": "Linux s2b: native_probe.py; S2-B native suites",
+      "actual": "Q2 certificate selectors selected 5/5 exact event refs; reader closed; body transport 13 families; S2-B external/direct/verified native 81 passed. Q2 certificate drives selectors over a legacy body repository."
+    },
+    {
+      "id": "Q2_MULTIOWNER_ROUTING_GUARD",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_counter_attack.py -o addopts=''",
+      "actual": "3 passed; response+coordinate multiowner with all ROUTING_UNKNOWN refuses pre-source; eligible multiowner retained."
+    },
+    {
+      "id": "Q2_PARTIAL_ROUTING_TYPED_HOLD",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_counter_attack.py -o addopts=''; Linux partial-routing native probe",
+      "actual": "Partial routing preserves 6 operation HOLD rows; corrected TEST_ONLY fixture native query returns UNAVAILABLE/RISK_SET_UNAVAILABLE, no false SUPPORTED fact."
+    }
+  ],
+  "first_consumer_proof": {
+    "direct_i02": "build_sourcefree_direct_i02(source, universe_ref, destination) -> ExternalI02Roots; 13-family body tee exact counts; direct positive/change/restore.",
+    "native_selector": "VerifiedExternalI02 + install_direct_sourcefree_i02_i03 -> selectors over a caller-supplied legacy sealed body release; 5/5 exact event refs.",
+    "native_fact": "SUPPORTED 5/5 -> changed branch 3/3 -> restored exact 5/5 on Linux, but over a separately built legacy C11LogicalRelease, not the Q2 direct body/issued operation. Q2 operation fates all have issued_receipt_refs=() and native HOLD.",
+    "q2_body_tee": "Caller-owned SourceI02BodySink/Tee delivers 13 families during one direct-builder consumption; not consumed by any native reader.",
+    "claim_ceiling": "Sourcefree TEST_ONLY q101 nonrespondent canary; no original35 science, production CURRENT, full S2-D all-consumer, or Q3 body estate."
+  },
+  "preserved_functions": [
+    "S1-B decoder/projection/custody/source admission; B01-B09 33 passed",
+    "S1-C frozen census/operation/fate verifier; 18 passed",
+    "S2-B direct I02 builder, external certificate, native selector, empirical query; 81 Linux native tests passed",
+    "Q2 one-pass direct I02 handoff, 13-family body tee, operation/fate anti-join, cleanup/invalidation",
+    "all35 ledger 35 sources/18,276 items/18,413 slots/26 unjoined preparation-held (exact)",
+    "decoder/custody 56 passed/1 skipped"
+  ],
+  "open_defects": [
+    {
+      "severity": "SEV-1",
+      "case": "Q2_G2_NATIVE_I03_BATCH_CONSUMER: claimed native Q2 fact is a legacy full-C11 comparator",
+      "gate": "G2",
+      "command": "PYTHONPATH=$PWD python3 WORKER_RETURNS/PYAT960_S1E_G5/g5_lineage_measure_probe.py; Linux g5_native_body_independence_probe.py",
+      "input": "sourcefree q101 nonrespondent SAV; native_fact_probe/test_pyat960_s1e_native_fact",
+      "expected": "Native fact driven by the Q2 direct I02 body/body tee and an actual issued S1-C operation/fate, or an explicit G2 native HOLD_DEPENDENCY; one Q2 source read; no mandatory second full C11 build.",
+      "observed": "test helper builds a separate legacy C11LogicalRelease after a second source decode; handoff.body_transport=None; with/without a body sink produces the identical fact; native repository release is legacy; all 22 Q2 operation fates have issued_receipt_refs=() and native HOLD; native query is BRANCH-q2-native, not a frontier operation; native fact helper counts snapshot=2, legacy_build=1.",
+      "first_consumer_consequence": "A SUPPORTED native fact can be produced even if the Q2 body tee is absent/wrong; the fact does not prove the Q2 direct-body/issued-operation handoff. The author's 'actual Q2 native fact' claim is a false green at G2.",
+      "owner": "rawlsing_next/tests/test_pyat960_s1e_native_fact.py::_build_native, WORKER_RETURNS/PYAT960_S1E_A_COUNTER/native_fact_probe.py, rawlsing_next/_pre553_external_i02_certificate.py::install_direct_sourcefree_i02_i03/_DiskSelectedRespondent",
+      "minimal_repair": "Either (a) build a real Q2 body repository from the body tee/Q3 producer and execute the native fact from an actual issued S1-C operation/fate, changing the fact on changed Q2 body and restoring; or (b) mark Q2_G2_NATIVE_I03_BATCH_CONSUMER HOLD_DEPENDENCY, relabel the current result as a legacy-body comparator, and count its second source snapshot and one legacy full build in G4. Do not claim actual Q2 native fact from the comparator."
+    },
+    {
+      "severity": "SEV-1",
+      "case": "Q2_G3 optional-weight RAW fate loss in operation_fates",
+      "gate": "G1/G3",
+      "command": "PYTHONPATH=$PWD python3 WORKER_RETURNS/PYAT960_S1E_G5/g5_lineage_measure_probe.py",
+      "input": "sourcefree q101 fixture frontier with 16 SAMPLE and 6 POPULATION operations",
+      "expected": "Every operation/fate row preserves measure_kind/measure_id (and weight_ref/estimand/design where applicable) so SAMPLE RAW vs POPULATION/weighted fates survive the no-drop ledger.",
+      "observed": "operation_fates rows expose only claim_class, disposition, execution_state, result_state, source_preimage, source_realization, source_realized, issued_receipt_refs, native_first_reader_state, routing_unresolved_keys, unrealized_keys; measure_kind/measure_id/weight_ref/estimand/design absent. The authored test test_s1e_output_collision_and_optional_weight_raw_conservation checks only frontier.operations, not handoff.operation_fates.",
+      "first_consumer_consequence": "A Q3/S2-D consumer cannot distinguish SAMPLE RAW from population/weighted operations from the Q2 handoff and may apply the wrong estimator or denominator; optional-weight RAW conservation is incomplete.",
+      "owner": "rawlsing_next/pre553_source_i02_handoff.py::_operation_source_antijoin row/source_preimage",
+      "minimal_repair": "Carry measure_kind/measure_id/weight_ref/estimand/design_ref/variance_policy in the fate row or source_preimage and add a test asserting the 16 SAMPLE/6 POPULATION distinction in handoff.operation_fates."
+    }
+  ],
+  "gate_failures": [
+    {
+      "gate": "G1",
+      "case": "reuse matrix incomplete for Q2-imported owners",
+      "expected": "Function-level path/blob/disposition/first-consumer/no-loss/reason entries for each applicable owner.",
+      "observed": "WORKER_RETURNS/PYAT960_S1E_B/reuse_matrix.json has 14 entries but omits rawlsing_next/pre553_c11_ingest.py (37cd35fa...), rawlsing_next/pre553_c11_integrity.py (7c59aa13...), rawlsing_next/pre553_empirical_objects.py (a61365b9...), and rawlsing_next/universal_grammar/types.py (e7b196ef...), all imported by the Q2 handoff.",
+      "minimal_repair": "Add the four function-level entries with pinned blobs/first consumers/no-loss tests and re-evaluate the S01-S05 crosswalk."
+    }
+  ],
+  "nonblocking_deferred": [
+    "A_COUNTER receipt says Darwin 34 passed/1 skipped while evidence/q2-tests-darwin.txt is 33 passed/1 skipped; received evidence count used.",
+    "The body tee is caller-owned; a Q3 sink must stage/commit only in finish; no universal sink sandbox demanded.",
+    "The native selector/Q2 certificate over a legacy body is allowed as a comparator/readcompat only, never as the mandatory Q2 body consumer.",
+    "Original-source path retains prehash+snapshot=2 and keyed path an external key-witness read; disclosed, sourcefree fixture path is one pass.",
+    "DTA/operation test-only fixture corrections (ROUTING_RISK_SET authority kind and canonical 0/1 spelling) are disclosed engineering preimages, not original science.",
+    "100k respondent/6GiB integrated gate NOT_RUN; Q3 S2-C remains USER_PAUSED; no Q3 writer/resume claimed.",
+    "W03/W04 failed memory pilot remains preserved; no resume."
+  ],
+  "external_holds": [
+    {
+      "owner": "S1-C sourcefree operation/fate independent G5",
+      "minimal_missing_witness": "qualified distinct G5 receipt at dae66cdf...; Q2 cannot self-accept upstream."
+    },
+    {
+      "owner": "S2-B direct I02/native independent G5",
+      "minimal_missing_witness": "qualified distinct G5 receipt at 155cd1b...; Q2 cannot self-accept upstream."
+    },
+    {
+      "owner": "#980 combined integration receiving",
+      "minimal_missing_witness": "independent combined integration receipt; pending."
+    },
+    {
+      "owner": "original35 source/science/rights authority",
+      "minimal_missing_witness": "permitted native R157 source/measurement/authority and source-read/use decision; no original execution claimed."
+    },
+    {
+      "owner": "S1-D production CURRENT issuer",
+      "minimal_missing_witness": "independently authenticated CURRENT_GRANTED decision; only TEST_ONLY resolver/preimages used."
+    },
+    {
+      "owner": "Q3 S2-C body estate / S2-D all-consumer",
+      "minimal_missing_witness": "a Q2 body-native receiver and issued S1-C operation execution; USER_PAUSED, not authorized by this review."
+    },
+    {
+      "owner": "protected receiving/merge",
+      "minimal_missing_witness": "protected review/merge; integration UNMERGED."
+    },
+    {
+      "owner": "integrated 100k respondent/6GiB resource gate",
+      "minimal_missing_witness": "designated integrated artifact/matrix; NOT_RUN."
+    },
+    {
+      "owner": "W03/W04 authority",
+      "minimal_missing_witness": "USER_PAUSED; not resumed."
+    }
+  ],
+  "resource_evidence": {
+    "rows": 1200,
+    "events": 1200,
+    "coordinates": 1200,
+    "weights": 0,
+    "process_tree_peak_rss_bytes": 133267456,
+    "process_tree_baseline_rss_bytes": 120258560,
+    "retained_disk_bytes": 19353600,
+    "peak_disk_bytes": 46190901,
+    "cold_seconds": 5.616828612997779,
+    "repeat_seconds": 5.718083946005208,
+    "source_reads": 1,
+    "source_prehash_passes": 0,
+    "snapshot_acquisitions": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "spool_bytes": 7464000,
+    "spool_files": 3,
+    "body_transport_object_count": 4809,
+    "denied_read_source_opens": 0,
+    "native_comparator_extra": {
+      "source_snapshots": 2,
+      "legacy_full_c11_builds": 1,
+      "note": "test-only legacy comparator; not Q2 production, but must be counted/labelled and not used as the Q2 native proof."
+    },
+    "budget_result": "SMALL_SOURCEFREE_FIXTURE; 100k respondent/6GiB integrated gate NOT_RUN"
+  },
+  "s01_s05_ack": {
+    "terminal_outputs": [
+      "S01 governed source meaning/current entitlement",
+      "S02 exhaustive qualified operation/fate census",
+      "S03 one compact authenticated source-direct C11 estate",
+      "S04 full native I03/I05/Batch scientific outputs",
+      "S05 durable served learned products"
+    ],
+    "target_choice": "Oct28 respondent-coherent typed C11 + Nov11 source-direct compact I02; no full-object-first production order, no second authoritative event corpus.",
+    "reuse_vs_replaced": "Reused R157 source/projection/decoder, S1-C census, S2-B direct builder/certificate/native selector/query math; replaced the old mandatory full-object Q2 order. Legacy full-object release remains comparator/readcompat only.",
+    "w03_w04_pilot": "preserved negative: matched saved-artifact peak 6,468,513,792B > 6,442,450,944B cap, killed; no resume.",
+    "named_first_consumer": "build_sourcefree_direct_i02; VerifiedExternalI02/install_direct_sourcefree_i02_i03 native selector; execute_empirical_query native I03 comparator.",
+    "dependency_owner_lease": "exclusive G5 worktree/branch; Q2 authors terminal idle; S1-C/S2-B/#980 G5 pending; Q3 S2-C USER_PAUSED; protected merge separate.",
+    "highest_risk_false_green": "Treating a legacy full-C11 body + Q2 selector certificate as the actual Q2 body native fact; and treating operation_fates without measure_kind as optional-weight RAW conservation."
+  },
+  "three_courts": {
+    "engineering": "Direct I02/body tee/selector comparator are substantive, but native fact is a legacy comparator and optional-weight RAW fates are lost; G1 reuse matrix incomplete.",
+    "science": "Sourcefree TEST_ONLY q101 nonrespondent canary; routing authority kind and canonical spelling corrections disclosed; no original35 science or source execution was read.",
+    "authority": "S1-C/S2-B/#980 G5 pending; original35/source/current/production/protected/Q3 S2-C holds; integration UNMERGED."
+  },
+  "self_disclosed_weakest_point": "The native fact proof uses a separately built legacy C11LogicalRelease from a second source decode and does not consume the Q2 body tee; the Q2 operation fates have no issued receipts and omit optional-weight measure kind. The direct I02 certificate/body tee/selector comparator and hostile repairs are real, but they cannot be promoted to full original G2/G3 by association.",
+  "opponent_proven_improvement": "B's 13-family body tee, source/operation/fate anti-join, honest counters, cleanup/invalidation and Linux native selector are real; A's multiowner routing guard, partial-routing typed HOLD, and native fact comparator are real but the comparator is not Q2 body/issued operation. The prior B/A repairs remain green.",
+  "next_turn": "One bounded correction under HQ: (1) preserve measure_kind/measure_id/weight_ref/estimand/design in operation_fates and test 16 SAMPLE/6 POPULATION; (2) complete the reuse matrix for pre553_c11_ingest/integrity/empirical_objects/universal_grammar.types; (3) either produce an actual Q2 body/issued-operation native fact or mark Q2_G2_NATIVE_I03_BATCH_CONSUMER HOLD_DEPENDENCY, relabel the legacy comparator, and count its second source snapshot/legacy build. Then fresh nonauthor G5 at the new SHA. No Q3 writer/S2-C resume, no optional hardening, no new duel.",
+  "known_session_cost": "UNKNOWN",
+  "abi_classification": "LOCAL",
+  "abi_impact": {
+    "S1-B": "no change; reused",
+    "S1-C": "reused provisional; G5 pending",
+    "S2-B": "reused provisional; G5 pending",
+    "S1-D": "no production issuer; test-only resolver",
+    "Q2/S1-E": "new local adapter/streams/tests; no upstream edits",
+    "S2-C/Q3": "body tee ABI suitable for preflight; no writer acceptance",
+    "S2-D": "native all-consumer/resume outside this Q2 canary",
+    "S2-E": "no dependency"
+  },
+  "affected_task_ids": ["S1-E", "S1-C", "S2-B", "S2-C", "S2-D"],
+  "stop_state": "REVISE_EXACT_DEFECT",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "integration": "UNMERGED",
+  "g5": "FAIL",
+  "independent_receiver_decision": "REVISE_EXACT_DEFECT",
+  "accepted_scoped": false,
+  "original_task_complete": false,
+  "sourcefree_packet_complete": false,
+  "review_evidence": [
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/refs.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/q2-darwin.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/q2-linux.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/s2b-linux-81.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/s1c-18.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/s1b-33.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/decoder-56.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/native-fact-linux.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/native-selector-linux.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/partial-routing-native.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/native-body-independence.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/lineage-measure.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/lineage-measure-linux.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/wrong-source-bytes.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/g3-focused.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/g2-focused.txt",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/resource.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/all35_ledger.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/reuse_matrix.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/reuse_matrix_gap.json",
+    "WORKER_RETURNS/PYAT960_S1E_G5/evidence/input-composition.json"
+  ]
+}
