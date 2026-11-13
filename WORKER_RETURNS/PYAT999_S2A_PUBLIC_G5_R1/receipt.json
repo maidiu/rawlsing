@@ -1,0 +1,214 @@
+{
+  "packet_id": "S2-A",
+  "task_id": "PYAT999-S2A-PUBLIC-SELECTOR-G5-R1",
+  "old_obligations": [
+    "P2-01"
+  ],
+  "contract_id": "PYAT999-S2A-PUBLIC-SELECTOR-G5-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/owner_comment_6866766494.md@66c9dd38fa31d075b99b1bdbf90ca03a56f29b08",
+  "governing_issues": [
+    "https://github.com/maidiu/rawlsing/issues/919",
+    "https://github.com/maidiu/rawlsing/issues/923",
+    "https://github.com/maidiu/rawlsing/issues/999",
+    "https://github.com/maidiu/rawlsing/issues/909"
+  ],
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "review_branch": "review/pyat999-s2a-public-g5-r1",
+  "review_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-public-g5",
+  "startup_and_code_cut": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+  "baseline_s2a": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "accepted_s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "author_return_content": "17e1471550c7e77228a40607d9eaaeef4b3fc971",
+  "target_file": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+  "baseline_target_blob": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+  "repaired_target_blob": "dca76c98f6c097bb8d79316087eaf548b1b45594",
+  "new_test_blob": "cdadb84531659a0dc9264b740e12d9f084e5380b",
+  "writer_lease_and_scope": "REVIEW_ONLY on clean isolated branch; author delta is one public-selector source file plus new S2-A test. No product, accepted test, writer, schema, manifest, native I03, S2-D, prior-return or protected edit by this reviewer.",
+  "actual_first_consumer": "VerifiedDirectEstate.select_events (public selector) and CarrierNeutralResearchExecutor.execute_i03 -> DirectEstateI03Session.indices_for -> _select_respondent_events (native I03)",
+  "evidence_grade": "S2_SOURCEFREE",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Owner grant @66c9dd, original #919/#923 H26-H30 and R3C/R3S read; exact 9d96 baseline, 1cb descendant, target/test blobs and allowed public-selector symbols pinned. Writer/schema/manifest/native I03/S2-D unchanged."
+    },
+    "G2": {
+      "state": "PASS_SCOPED",
+      "receipt": "Normal public selector/native I03 positive, changed legitimate event, exact restore, repeated occurrence/order and the author five-test suite pass. Full sourcefree positive is not accepted because the independent coherent body-truth attack changes an actual native fact."
+    },
+    "G3": {
+      "state": "FAIL",
+      "receipt": "The repair compares projected RespondentEvent selector columns to the locator but does not authenticate those projected columns against canonical body_json/ref. A coherent projected-column+locator poison with unchanged body_json/ref corpus and re-pinned manifest returns public 0 vs native 1 and causes actual native I03 to return a changed fact without refusal."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_FIXTURE",
+      "receipt": "Independent rerun of the material 256-respondent/event probe: retained 9758503 B, peak selected index 16384 B, source-extension opens none, 3 family opens/257 row-group reads/1 body reconstruction per select, cold/repeat select 0.5385/0.1247s, parent 152174592 B, child 60084224 B, C11 builds 0, pq.read_table 0, process-tree wrapper sampled peak 213860352 B (286 samples), 100k NOT_RUN."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; not S2-A author/fixer",
+      "receipt": "REVISE_EXACT_DEFECT: SEV-0 coherent projected-column+locator body-truth breach is reproducible at 1cb; native actual fact changes silently and public selector undercounts. The owner public-selector grant alone does not authorize the required native I03 truth fix."
+    }
+  },
+  "mandatory_cases": [
+    {
+      "id": "ORIGINAL_H26_RED_9D96",
+      "result": "PASS",
+      "command": "original s2a_native_witness.py on pristine 9d96",
+      "actual": "native 1; public 0; public no refusal; native I03 refused locator-only poison."
+    },
+    {
+      "id": "AUTHOR_NEW_5",
+      "result": "PASS",
+      "command": "pytest test_pre553_s2a_public_selector_h26.py",
+      "actual": "5 passed in 2.40s; locator-only poisons refuse and selected order is canonical."
+    },
+    {
+      "id": "S2A_FOCUSED_62",
+      "result": "PASS",
+      "command": "pytest S2-A four files",
+      "actual": "62 passed in 11.65s."
+    },
+    {
+      "id": "S2C_FOCUSED_31",
+      "result": "PASS",
+      "command": "pytest source_direct_parquet_estate + direct_estate_i03",
+      "actual": "31 passed in 10.87s."
+    },
+    {
+      "id": "S2D_FOCUSED_31",
+      "result": "PASS",
+      "command": "pytest six S2-D focused files",
+      "actual": "31 passed in 22.47s."
+    },
+    {
+      "id": "COHERENT_PROJECTION_LOCATOR_BODY_TRUTH",
+      "result": "FAIL",
+      "command": "python3 -B WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/s2a_coherent_body_attack.py <proofroot>",
+      "expected": "typed refusal before empty/subset; native oracle fact unchanged or explicit refusal",
+      "actual": "body_json/ref digest unchanged; projected native and locator native changed; public select 0 vs native 1 with no error; actual execute_i03 returned changed fact e8b384... instead of oracle 8867... with no error.",
+      "evidence": "evidence/s2a_coherent_attack.json"
+    },
+    {
+      "id": "H27_H28_H29_H30_EXISTING",
+      "result": "PASS_SCOPED",
+      "actual": "62 focused suite includes canonical/component/state, empty/routing, wrong source/root/current, repeated order and bounded H30; unchanged accepted tests pass."
+    },
+    {
+      "id": "CHANGED_RESTORE_AND_NATIVE_POSITIVE",
+      "result": "PASS",
+      "actual": "Changed legitimate event changes public/native result; original root restores public refs and native facts."
+    },
+    {
+      "id": "LINUX_INHERITED_86",
+      "result": "PASS",
+      "command": "Lima s2b /tmp/pyat997-venv: pytest direct_i02_sourcefree + external_i02_certificate + source_direct_parquet_estate + direct_estate_i03",
+      "actual": "86 passed in 38.68s"
+    },
+    {
+      "id": "LINUX_NEW_5",
+      "result": "PASS",
+      "command": "Lima s2b /tmp/pyat997-venv: pytest test_pre553_s2a_public_selector_h26.py",
+      "actual": "5 passed in 3.38s"
+    }
+  ],
+  "open_defects": [
+    {
+      "id": "S2A_COHERENT_PROJECTION_LOCATOR_BODY_TRUTH",
+      "severity": "SEV-0",
+      "file": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+      "function": "_stage_validated_public_selector / select_events; native counterpart DirectEstateI03Session._build in pre553_direct_estate_i03.py",
+      "tested_sha": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+      "input": "Real sourcefree direct estate; one RespondentEvent projected native column and matching event_locator native field changed coherently; canonical body_json/ref corpus and external direct-I02 roots unchanged; physical member/manifest hashes coherently re-pinned.",
+      "expected": "typed refusal before any empty/subset or native fact; matching original H26 body-truth law",
+      "actual": "public select_events returned 0 vs native 1 with no error; actual CarrierNeutralResearchExecutor.execute_i03 returned a changed fact with no error",
+      "root_cause": "The new stage validates projected selector columns against the secondary locator, but neither the public stage nor DirectEstateI03Session authenticates those projected columns against canonical body_json/ref for unselected rows. The known body truth is available in body_json but never consulted.",
+      "minimal_rightful_repair_path": "Within the granted public class, read canonical body_json/ref for every row and validate projected respondent/native/canonical/component/state/occurrence against it before filtering. Separately, the frozen native I03 DirectEstateI03Session and/or its selected-body path requires a new narrow S2-C owner decision to enforce the same body-truth validation for all rows, not only selected rows. Add one regression updating both projection column and locator with body_json/ref intact; assert public and native typed refusal and exact untampered restore. No new adapter; this is not authorized by the current public-only grant.",
+      "evidence": "evidence/s2a_coherent_attack.json; evidence/s2a_coherent_attack.out; evidence/original_s2a_red_recheck.out"
+    }
+  ],
+  "preserved_functions": [
+    "Accepted S2-C writer/schema/manifest/layout/tests and S2-D code remain unchanged",
+    "Actual public/native positive, changed event, exact restore and canonical ref order",
+    "Existing H26-H30 native/certified suites and 62 S2-A focused tests",
+    "No source/current/issuer/science promotion"
+  ],
+  "nonblocking_deferred": [
+    "Full 100k/6 GiB integrated resource gate remains NOT_RUN.",
+    "Linux/proc 91-test inherited evidence was read from the author return but not independently rerun; the decisive Darwin SEV-0 already refuses acceptance."
+  ],
+  "external_holds": [
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source bytes used"
+    },
+    {
+      "owner": "production current/host/actor issuer",
+      "minimal_missing_witness": "independent production CURRENT/rights; TEST_ONLY direct estate only"
+    },
+    {
+      "owner": "integrated 100k/6 GiB",
+      "minimal_missing_witness": "full integrated resource gate; NOT_RUN"
+    },
+    {
+      "owner": "protected merge/N11-N12",
+      "minimal_missing_witness": "protected receiving authority; UNMERGED"
+    }
+  ],
+  "resource_evidence": {
+    "fixture": "256 synthetic respondents/events; sourcefree; not 100k",
+    "retained_bytes": 9758503,
+    "peak_selected_index_bytes": 16384,
+    "source_extension_opens": [],
+    "select_counters": {
+      "family_opens": 3,
+      "row_group_reads": 257,
+      "body_reconstructions": 1
+    },
+    "repeat_select_counters": {
+      "family_opens": 3,
+      "row_group_reads": 257,
+      "body_reconstructions": 1
+    },
+    "i03_counters": {
+      "family_opens": 10,
+      "row_group_reads": 1021,
+      "body_reconstructions": 513
+    },
+    "cold_select_seconds": 0.538459622010123,
+    "repeat_select_seconds": 0.12472156799049117,
+    "cold_native_i03_seconds": 0.7033436470082961,
+    "repeat_native_i03_seconds": 0.6714090010209475,
+    "parent_peak_rss_bytes": 152174592,
+    "child_peak_rss_bytes": 60084224,
+    "child_cold_select_seconds": 0.11466072199982591,
+    "process_tree_peak_rss_bytes_sampled": 213860352,
+    "process_tree_samples": 286,
+    "process_tree_note": "independent wrapper sampled the parent-root tree including wrapper, resource probe and child; not an exact hardware maximum",
+    "full_c11_builds": 0,
+    "whole_table_read_table_fallbacks": 0,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at material local fixture; not integrated 100k",
+    "integrated_100k_6GiB": "NOT_RUN",
+    "linux_inherited_86": "PASS in 38.68s on existing Lima s2b",
+    "linux_new_5": "PASS in 3.38s on existing Lima s2b"
+  },
+  "disposition": "REVISE_EXACT_DEFECT",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT; TEST_ONLY_SOURCEFREE",
+  "stop_state": "REVISE_EXACT_DEFECT__HQ_OR_BROWSER_OWNER_ADJUDICATION_BEFORE_NATIVE_TRUTH_REPAIR",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/original_s2a_red_recheck.out",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2a_new_5.txt",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2a_focused_62.txt",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2c_focused_31.txt",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2d_focused_31.txt",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2a_coherent_attack.json",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2a_coherent_attack.out",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2a_resource_probe_recheck.out",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/s2a_process_tree_probe.out",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/linux_s2c_inherited_86.txt",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/evidence/linux_s2a_new_5.txt"
+  ]
+}

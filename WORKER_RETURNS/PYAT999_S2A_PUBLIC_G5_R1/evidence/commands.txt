@@ -1,0 +1,22 @@
+Original 9d96 RED:
+cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-native-readonly
+PYTHONPATH=<readonly> python3 -B /Users/.../PYAT999_EARLY_GATES_G5/s2a_native_witness.py <proofroot>
+=> native 1, public 0, no refusal; actual execute_i03 refuses.
+
+Descendant 1cb:
+pytest -q rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py => 5 passed in 2.40s
+pytest -q S2-A four files => 62 passed in 11.65s
+pytest -q test_pre553_source_direct_parquet_estate.py test_pre553_direct_estate_i03.py => 31 passed in 10.87s
+pytest -q six S2-D focused files => 31 passed in 22.47s
+
+Independent coherent projected-column + locator attack:
+PYTHONPATH=. python3 -B WORKER_RETURNS/PYAT999_S2A_PUBLIC_G5_R1/s2a_coherent_body_attack.py <proofroot>
+=> public select 0 vs native 1, no error; actual execute_i03 fact changed and did not refuse.
+
+Resource (author probe rerun):
+=> 256 respondents/events, retained 9,758,503 B, selected index 16,384 B, parent 152,174,592 B, child 60,084,224 B, source opens [], C11 builds 0, pq.read_table 0, 100k NOT_RUN.
+Independent process-tree wrapper peak: 213,860,352 B sampled 286 times.
+
+Linux s2b (existing /tmp/pyat997-venv):
+86 inherited S2-C/proc tests => 86 passed in 38.68s
+new S2-A five-test file => 5 passed in 3.38s
