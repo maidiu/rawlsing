@@ -6,3 +6,5 @@ SameDeepSeekexecutor actualnewjob `pyat997-test-harness-patch-proof-r2`, child17
 
 
 [Actual native return](https://github.com/maidiu/rawlsing/blob/229544e23435f608272c2bead78cc5c2cfc786f5/WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/00_HANDOFF.md); [exact7failednodes](https://github.com/maidiu/rawlsing/blob/229544e23435f608272c2bead78cc5c2cfc786f5/WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/native_six_suite_summary.json). Browserauthorsneednotstartanother speculativeABround; awaitconcreteproposedtestcorrection, preservefrozenproduct.
+
+[Exact HQ disposition and actualnextlaunch](https://github.com/maidiu/rawlsing/blob/43caa3e82b1ea6f1787b1339b372b5217c414ece/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/NATIVE997_RETURN_DISPOSITION.json).
