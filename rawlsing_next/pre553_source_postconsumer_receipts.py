@@ -200,6 +200,24 @@ def join_saved_source_operation_fates(
             or not isinstance(compilation.frontier_hash, str)
             or census.get("frontier_hash") != compilation.frontier_hash):
         raise SourceReceiptJoinError("Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT")
+    # Refuse an altered per-operation preconsumer fate before the aggregate
+    # census comparison can mask it as generic census drift. The compiled
+    # frontier retains the original disposition/claim-class partition.
+    dispositions = compilation.operation_dispositions
+    claim_classes = compilation.operation_claim_classes
+    if (not isinstance(dispositions, Mapping)
+            or not isinstance(claim_classes, Mapping)
+            or set(dispositions) != {
+                row["operation_id"] for row in handoff.operation_fates
+            }
+            or set(claim_classes) != set(dispositions)):
+        raise SourceReceiptJoinError("COMPLETE_ISSUED_FATE_CENSUS_REQUIRED")
+    for row in handoff.operation_fates:
+        operation_id = row.get("operation_id")
+        if (operation_id not in dispositions
+                or row.get("disposition") != dispositions[operation_id]
+                or row.get("claim_class") != claim_classes[operation_id]):
+            raise SourceReceiptJoinError("Q2_OPERATION_FATE_OR_CLAIM_PROMOTED")
     original_operation_count = len(handoff.operation_fates)
     original_fate_counts = dict(Counter(
         row["disposition"] for row in handoff.operation_fates

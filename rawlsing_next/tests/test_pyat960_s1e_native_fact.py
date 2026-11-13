@@ -94,7 +94,10 @@ def _native_document(document):
     return doc
 
 
-def _native_fixture(tmp_path: Path, *, values=(0.0, 1.0, 0.0, 1.0, 0.0), policy_kwargs=None):
+def _native_fixture(
+    tmp_path: Path, *, values=(0.0, 1.0, 0.0, 1.0, 0.0), policy_kwargs=None,
+    source_format="SAV",
+):
     """Build the sourcefree Q2 fixture with the TEST_ONLY native preimages.
 
     Two engineering-only fixture corrections are explicit: the routing
@@ -104,7 +107,7 @@ def _native_fixture(tmp_path: Path, *, values=(0.0, 1.0, 0.0, 1.0, 0.0), policy_
     owner able to consume the Q2 projection without a second source read.
     """
     fixture = source_fixture(
-        tmp_path / "native", values=values,
+        tmp_path / "native", values=values, source_format=source_format,
         policy_kwargs=policy_kwargs or {"j": 1, "k": 1, "d": 0})
     document = _native_document(fixture["document"])
     config = SourceConfig(document)
