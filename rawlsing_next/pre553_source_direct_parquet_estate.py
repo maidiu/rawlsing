@@ -128,17 +128,21 @@ def _reconstructed_v1_release_from_certificate(
 
     if _hash(certificate) != i02.physical:
         raise DirectEstateError("direct I02 certificate bytes changed after qualification")
+    db = None
     try:
-        with sqlite3.connect(f"file:{certificate}?mode=ro", uri=True) as db:
-            db.execute("PRAGMA query_only=ON")
-            header = dict(db.execute(
-                "SELECT name,value FROM header WHERE name IN ("
-                "'schema','release','source','replay','universe',"
-                "'source_manifest_hash','reconstructed_v1_release_ref',"
-                "'reconstructed_v1_replay_ref')"
-            ))
+        db = sqlite3.connect(f"file:{certificate}?mode=ro", uri=True)
+        db.execute("PRAGMA query_only=ON")
+        header = dict(db.execute(
+            "SELECT name,value FROM header WHERE name IN ("
+            "'schema','release','source','replay','universe',"
+            "'source_manifest_hash','reconstructed_v1_release_ref',"
+            "'reconstructed_v1_replay_ref')"
+        ))
     except (OSError, sqlite3.Error) as exc:
         raise DirectEstateError("certified direct I02 historical identity unavailable") from exc
+    finally:
+        if db is not None:
+            db.close()
     if (header.get("schema") != i02.schema or header.get("release") != i02.release
             or header.get("source") != i02.source
             or header.get("replay") != i02.replay
@@ -642,7 +646,11 @@ class VerifiedDirectEstate:
             raise DirectEstateError("estate source/replay/universe/logical/physical roots mismatch")
         # Independently held manifest SHA binds this v1 historical identity;
         # direct i02.release remains the *different* direct-schema identity.
-        direct_release_id = self.i02.release.partition("|")[2].rpartition("|")[0]
+        direct_kind, sep, direct_tail = self.i02.release.partition("|")
+        direct_release_id, sep2, direct_digest = direct_tail.rpartition("|")
+        if (direct_kind != "C11_DIRECT_SOURCEFREE_RELEASE" or not sep
+                or not sep2 or not direct_release_id or not _hex(direct_digest)):
+            raise DirectEstateError("unqualified direct-sourcefree release identity")
         self.reconstructed_v1_release_ref = _decode_reconstructed_v1_release(
             manifest.get("reconstructed_v1_release_ref"), direct_release_id,
         )
