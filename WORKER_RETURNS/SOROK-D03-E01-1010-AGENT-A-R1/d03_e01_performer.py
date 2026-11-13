@@ -26,6 +26,7 @@ from developmental_recursion.contracts import RecursionRefusal, detached, digest
 from developmental_recursion.engine import BatchEngine
 from developmental_recursion.model_cycle import RecursionCycle
 from post_provider_guard import GuardedProvider
+from owner_custody import P3CoordinatedP2Owner
 
 SCHEMA = "SOROK_D03_E01_P2_PERFORMANCE@1"
 CONTEXT_SCHEMA = "SOROK_D03_E01_ACTOR_ACCESS_CONTEXT@1"
@@ -233,6 +234,8 @@ def run_d03_e01_first_batch(
     # RecursionCycle forwards the proposals to the P2 world writer. A's prior
     # post-batch head check could detect a stale P3 state only after a write.
     def precommit_custody() -> None:
+        if owner.store.pending():
+            _refuse("E01_POSTPROVIDER_P3_PENDING_OPERATION")
         if owner.store.head() != joined["immediate_uptake"]["store_head"]["after"]:
             _refuse("E01_POSTPROVIDER_P3_HEAD_CHANGED")
         if _identity(owner, owner.base_owner, session, child_id) != initial:
@@ -240,7 +243,26 @@ def run_d03_e01_first_batch(
         if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
             _refuse("E01_POSTPROVIDER_J1_SOURCE_CHANGED")
 
-    engine = BatchEngine(owner.base_owner, journal_path)
+    # The B proxy checks at provider return, but cannot protect the gap
+    # between that check and each of BatchEngine's individual owner writes.
+    # P3Owner.realize itself takes _root_lock before P2Owner.realize; preserve
+    # the same order, while rechecking custody for EVERY admitted P2 event.
+    def event_write_custody() -> None:
+        if owner.store.pending():
+            _refuse("E01_EVENT_WRITE_P3_PENDING_OPERATION")
+        if owner.store.head() != joined["immediate_uptake"]["store_head"]["after"]:
+            _refuse("E01_EVENT_WRITE_P3_HEAD_CHANGED")
+        current = _identity(owner, owner.base_owner, session, child_id)
+        for key in ("root", "actor", "branch"):
+            if current["p2"][key] != initial["p2"][key]:
+                _refuse("E01_EVENT_WRITE_OWNER_IDENTITY_CHANGED")
+        if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
+            _refuse("E01_EVENT_WRITE_J1_SOURCE_CHANGED")
+
+    original_p2_write_owner = P3CoordinatedP2Owner(
+        owner, owner.base_owner, event_write_custody,
+    )
+    engine = BatchEngine(original_p2_write_owner, journal_path)
     try:
         batch = RecursionCycle(
             engine, GuardedProvider(provider, precommit_custody), cycle_path
@@ -264,7 +286,10 @@ def run_d03_e01_first_batch(
             "durable_formation": "MISSING_RULE",
             "motive_selection": "NOT_ASSERTED",
             "psychological_causation_by_d03": "NOT_ESTABLISHED",
-            "post_provider_precommit_custody": "P3_P2_J1_SOURCE_CHECKED",
+            "post_provider_precommit_custody": "P3_P2_J1_SOURCE_AND_PENDING_CHECKED",
+            "per_event_custody": "P3_ROOT_LOCK_PER_P2_REALIZE_ORIGINAL_ORDER",
+            "cross_owner_atomicity": "NOT_CLAIMED",
+            "p3_pending_operations": "REJECTED_BEFORE_EACH_P2_WRITE",
             "ordinary_unrelated_activity": "NOT_ESTABLISHED_BY_P2_CASE",
             "g2_historical_child_performance": "HELD_NOT_ESTABLISHED",
             "performed_event_owner_scope": "P2_PREBOUND_CASE_NOT_P3_PLAN",
