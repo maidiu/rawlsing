@@ -56,7 +56,7 @@
     },
     "G2": {
       "state": "NOT_RUN",
-      "receipt": "Direct I02 positive/change/restore PASS (29 Q2 tests). Native selector event bodies PASS on existing Linux s2b runner (Q2 certificate -> VerifiedExternalI02 -> install_direct_sourcefree_i02_i03 -> 5/5 event refs). Full Q2-driven native I03/Batch empirical fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY: the synthetic Q2 config lacks the predicate replay/query authority preimage. S2-B 81 native tests pass with its fully constructed fixture. Native fact remains HOLD_DEPENDENCY, not PASS."
+      "receipt": "Direct I02 positive/change/restore PASS (29 Q2 tests). Native selector event bodies PASS on existing Linux s2b runner (Q2 certificate -> VerifiedExternalI02 -> install_direct_sourcefree_i02_i03 -> 5/5 event refs). Full Q2-driven native I03/Batch empirical fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; the synthetic Q2 config has replay.predicate NOT_APPLICABLE and supplies no predicate replay/query authority preimage. B did not adjudicate the exact root cause. S2-B 81 native tests pass with its fully constructed fixture. Native fact remains HOLD_DEPENDENCY, not PASS."
     },
     "G3": {
       "state": "PASS",
@@ -164,7 +164,7 @@
       "id": "Q2_NATIVE_QUERY_HOLD",
       "result": "NOT_RUN",
       "command": "existing s2b Linux runner: venv python WORKER_RETURNS/PYAT960_S1E_B/native_query_probe.py",
-      "actual": "one fact UNAVAILABLE with p02_failure_state MISSING_REQUIRED_AUTHORITY; Q2 synthetic config lacks the predicate replay/query authority preimage. S2-B 81 native tests pass with its fixture; no fake native pass."
+      "actual": "one fact UNAVAILABLE with p02_failure_state MISSING_REQUIRED_AUTHORITY; Q2 synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied; exact root cause not adjudicated. S2-B 81 native tests pass with its fixture; no fake native pass."
     }
   ],
   "first_consumer_proof": {
@@ -219,21 +219,21 @@
   ],
   "challenges_investigated_and_refuted": [
     "A's direct I02 builder is not a fake: real SAV/DTA direct certificates and native selector event bodies exist.",
-    "The native HOLD is not a code defect alone: on the existing Linux s2b runner, the Q2 native selector bridge and S2-B full native suite pass. The remaining Q2 native fact block is the synthetic config's missing predicate replay/query authority preimage, not the body seam.",
+    "The native HOLD is not a code defect alone: on the existing Linux s2b runner, the Q2 native selector bridge and S2-B full native suite pass. The attempted Q2 native fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; the Q2 synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied. Exact root cause is not adjudicated; it is not the body seam.",
     "A's operation/fate census is not wholly label-only at the S1-C layer; the defect is the missing source-body realization join, now added.",
     "The 26 unjoined IDs are exact inherited preparation, not Q2 operations or science."
   ],
   "new_attack_surfaces": [
     "The body sink is caller-owned; a Q3 sink must stage and commit/abort correctly. The adapter cannot enforce a third party's staging discipline beyond finish/abort call ordering and certificate invalidation.",
     "The operation anti-join uses config-derived response/coordinate/weight sections and occurrence tokens; an external scientific option/crosswalk not present in the source config can still produce a typed HOLD rather than a positive.",
-    "Q2 native selector event read is real, but a full Q2-driven native I03/Batch fact needs a config with predicate replay/query authority preimage; the current synthetic config returns MISSING_REQUIRED_AUTHORITY.",
+    "Q2 native selector event read is real, but a full Q2-driven native I03/Batch fact returned MISSING_REQUIRED_AUTHORITY; the synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied. Exact root cause remains a next-turn question.",
     "Keyed source handoff still requires an external key-witness source read; handoff stats disclose this separately (1 handoff + 1 external = 2 scenario reads).",
     "Original-source path retains S1-B prehash+snapshot (2 byte passes); not weakened; no original-source positive was run.",
     "The sink object holds bodies only during the call; a Q3 writer that publishes before finish would violate the documented staging contract and must be rejected by the consumer."
   ],
   "surviving_disagreements": [
     "Whether Q2 should own a full native I03/Batch fact from its synthetic config or whether that is the distinct S2-D/issued consumer dependency. B kept the exact native fact HOLD and did not fake it.",
-    "Whether a Q2 source config can lawfully carry a predicate replay/query authority preimage without new science; current sourcefree fixture cannot, so the fact is HOLD.",
+    "Whether a Q2 source config can lawfully carry a predicate replay/query authority preimage without new science; the current sourcefree fixture has replay.predicate=NOT_APPLICABLE and the attempted fact is HOLD.",
     "Whether the body sink should be a generic standalone stream factory or the co-production tee used here. The tee preserves one source read and exact roots; a separate factory could enable a second consumer without the certificate.",
     "Whether keyed sources should derive row-native keys in the handoff pass or accept an external key witness. B discloses the external read and does not add a raw-cell spool."
   ],
@@ -285,7 +285,7 @@
     "q2_native_selector": "5 certificate events selected from sealed release; 5/5 refs equal certificate; reader closed; body transport complete",
     "q2_native_query": "1 fact UNAVAILABLE; p02_failure_state MISSING_REQUIRED_AUTHORITY; not claimed PASS",
     "host_hold_resolved_for": "direct certificate cold reader + native selector event bodies",
-    "host_hold_remaining": "Q2-driven full native I03/Batch empirical fact requires predicate replay/query authority preimage"
+    "host_hold_remaining": "Q2-driven full native I03/Batch empirical fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; Q2 synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied; exact root cause not adjudicated"
   },
   "source_usage": {
     "original_source_bytes_opened": false,
@@ -342,7 +342,7 @@
     "A Q2-driven full native fact using a source config with predicate replay/query authority preimage."
   ],
   "open_defects": [],
-  "self_disclosed_weakest_point": "The body sink is caller-owned and the adapter can only enforce finish/abort ordering and its own certificate invalidation; a third-party sink that publishes too early is outside the adapter's control. The Q2 synthetic config also lacks the predicate replay/query authority preimage, so a full Q2-driven native I03/Batch fact returns UNAVAILABLE/MISSING_REQUIRED_AUTHORITY. The native selector event body read is real on Linux, but it is not a full Batch receipt.",
+  "self_disclosed_weakest_point": "The body sink is caller-owned and the adapter can only enforce finish/abort ordering and its own certificate invalidation; a third-party sink that publishes too early is outside the adapter's control. The Q2 synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied; a full Q2-driven native I03/Batch fact returns UNAVAILABLE/MISSING_REQUIRED_AUTHORITY, and B did not adjudicate the exact root cause. The native selector event body read is real on Linux, but it is not a full Batch receipt.",
   "opponent_proven_improvement": "A's direct I02 builder, S1-C census and host disclosure survive independent examination. B's proven improvements are the 13-family body-preserving sink, the source/operation/fate realization anti-join, honest source-open counters, fail-closed cleanup/output invalidation, the Linux native selector body proof, and the precise Q2 native fact HOLD.",
   "next_turn": "Agent A counterattacks b_code_cut_sha 4c3fb666539bf62485c389e3a1abbbd3986b6d64, focusing on the Q2 native query authority/replay preimage, body sink lifecycle, multi-owner/partial-routing anti-join and keyed source one-pass. Then a distinct nonauthor G5 receiver other than A and B.",
   "known_session_cost": "UNKNOWN",
@@ -354,5 +354,5 @@
   "closed_outcome_self_claim": "NONE__NATIVE_FACT_DEPENDENCY_HOLD",
   "original_task_complete": false,
   "disposition": "HOLD_EXTERNAL",
-  "disposition_note": "Body-preserving direct I02 and native selector event read are implemented and independently executed on Linux; full Q2-driven native I03/Batch fact remains HOLD_EXTERNAL due the missing predicate replay/query authority preimage, not a fake pass. G5 NOT_RUN; UNMERGED."
+  "disposition_note": "Body-preserving direct I02 and native selector event read are implemented and independently executed on Linux; full Q2-driven native I03/Batch fact remains HOLD_EXTERNAL after UNAVAILABLE/MISSING_REQUIRED_AUTHORITY. The Q2 synthetic config has replay.predicate=NOT_APPLICABLE and no query-authority preimage was supplied; exact root cause not adjudicated. Not a fake pass. G5 NOT_RUN; UNMERGED."
 }

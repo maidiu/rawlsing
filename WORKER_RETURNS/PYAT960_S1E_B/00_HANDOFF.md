@@ -60,7 +60,7 @@ All red evidence is in `evidence/red_at_75d09e87.txt`.
    Each produced a certificate and copied operation labels without an actual body realization check.
 3. **Hardcoded source opens (SEV-2 honesty).** On the original-source path, instrumentation shows one prehash + one snapshot acquisition = **2 actual source byte passes**, but A reports `source_reads=1`. The fixture path is genuinely one.
 4. **Cleanup / retained-disk accounting (SEV-2).** A’s spool cleanup swallows rmdir errors and has no sink failure path. A’s `evidence/resource.json` says `retained_disk_bytes=0` while the certificate is 19,345,408B; A’s receipt reports 19,345,408. The historical record was not rewritten; B measures the current artifact directly.
-5. **Native host HOLD (not a defect, but a blocked evidence grade).** On Darwin the existing native reader refuses `/proc/self/fd`. On the existing Linux `s2b` runner, the Q2 direct certificate drives native selector event bodies 5/5. A full Q2-driven native I03/Batch fact returns `UNAVAILABLE / MISSING_REQUIRED_AUTHORITY` because the synthetic Q2 config lacks the predicate replay/query authority preimage.
+5. **Native host HOLD (not a defect, but a blocked evidence grade).** On Darwin the existing native reader refuses `/proc/self/fd`. On the existing Linux `s2b` runner, the Q2 direct certificate drives native selector event bodies 5/5. A full Q2-driven native I03/Batch fact returns `UNAVAILABLE / MISSING_REQUIRED_AUTHORITY`; the observed Q2 synthetic config has `replay.predicate=NOT_APPLICABLE` and no query-authority preimage was supplied. B did not adjudicate the exact root cause beyond that observed state.
 
 ## 4. Corrections implemented
 
@@ -142,7 +142,7 @@ native query:    UNAVAILABLE, MISSING_REQUIRED_AUTHORITY
 ## 6. Challenges refuted
 
 - **A’s direct I02 is fake / only metadata:** refuted. Native selector event bodies 5/5 exact refs on Linux.
-- **Native HOLD is purely host:** partially refuted. Native selector event bodies work on Linux; full Q2 native fact is blocked by the synthetic config’s missing predicate replay/query authority preimage. The S2-B 81 native tests show the owner works with a properly constructed fixture.
+- **Native HOLD is purely host:** partially refuted. Native selector event bodies work on Linux. The attempted full Q2 native fact returned `UNAVAILABLE / MISSING_REQUIRED_AUTHORITY`; the Q2 synthetic config has `replay.predicate=NOT_APPLICABLE` and no query-authority preimage was supplied. B did not adjudicate the exact root cause. The S2-B 81 native tests show the owner works with a properly constructed fixture.
 - **A’s operation/fate census is wholly label-only:** the S1-C census layer is substantive; the defect was the missing source-body realization join, now added.
 - **Body sink requires a second source read:** refuted. The tee sits on the same one-shot sections; instrumentation shows one source byte pass.
 - **The 26 unjoined IDs can be treated as Q2 operations:** refused; they remain preparation-held, never slots/operations/science.
@@ -151,7 +151,7 @@ native query:    UNAVAILABLE, MISSING_REQUIRED_AUTHORITY
 
 - The sink is caller-owned; the adapter enforces finish/abort ordering and its own certificate invalidation, but a third-party sink that publishes before `finish` is outside the adapter’s control. Q3 must stage and commit only in `finish`.
 - The operation anti-join depends on source config sections/occurrence tokens; an external scientific option/crosswalk absent from the config produces a typed HOLD, not a positive.
-- Q2 full native fact needs a config with predicate replay/query authority preimage; the current Q2 synthetic config cannot supply it.
+- Q2 full native fact requires a predicate replay/query authority preimage; the current Q2 synthetic config has `replay.predicate=NOT_APPLICABLE` and no query-authority preimage was supplied. Exact root cause remains a next-turn question.
 - Keyed sources still need an external key-witness read; the handoff discloses 1 inward + 1 external = 2 scenario reads.
 - Original-source path remains two byte passes (prehash+snapshot); not weakened, not run as a positive.
 - Resource evidence is small-fixture only; 100k/6GiB remains a separate integrated gate.
@@ -173,4 +173,4 @@ native query:    UNAVAILABLE, MISSING_REQUIRED_AUTHORITY
 
 ## 10. Disposition
 
-The direct I02 body transport, 13-family completeness, operation/fate realization anti-join, honest source-open model, cleanup/invalidation and Linux native selector body proof are verified improvements. The full Q2-driven native I03/Batch empirical fact remains `HOLD_EXTERNAL` because the exact predicate replay/query authority preimage is absent; the upstream S2-B native owner passes 81 tests with its own fixture. G5 remains `NOT_RUN`; integration is `UNMERGED`; this is not `ACCEPT_SCOPED`.
+The direct I02 body transport, 13-family completeness, operation/fate realization anti-join, honest source-open model, cleanup/invalidation and Linux native selector body proof are verified improvements. The full Q2-driven native I03/Batch empirical fact remains `HOLD_EXTERNAL`: the attempted query returned `UNAVAILABLE / MISSING_REQUIRED_AUTHORITY`, the Q2 synthetic config has `replay.predicate=NOT_APPLICABLE`, and no query-authority preimage was supplied; B did not adjudicate the exact root cause. The upstream S2-B native owner passes 81 tests with its own fixture. G5 remains `NOT_RUN`; integration is `UNMERGED`; this is not `ACCEPT_SCOPED`.
