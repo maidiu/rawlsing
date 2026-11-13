@@ -108,6 +108,20 @@ Actual fixture (2 respondents/2 events):
 
 The child was a separate process; it was not passed the source, original C11 repository or event bodies. The resource probe forbade `C11Repository.__init__` and `pq.read_table` during the saved consumers.
 
+## Seven-reader status
+
+| Reader | Actual first reader | Positive | Changed / restore | Current / revocation | Negative / replay | Resource / evidence | Status |
+|---|---|---|---|---|---|---|---|
+| I03 | `SavedC11Admission.execute_i03` → `CarrierNeutralResearchExecutor.execute_i03` → `execute_empirical_query` | Exact native fact refs/projections/release refs on cold estate | Changed native fact ref differs and matches changed oracle; base restore exact | Current callback checked before/after; revoked refuses | Wrong manifest/missing body refuse; full fact provenance/replay from existing owner | Cold `0.016766s`, repeat `0.014585s`; fresh child `54,771,712B`; no C11/whole-table fallback | **PASS_SCOPED_ACTUAL_COLD** |
+| I05 | `SavedC11Admission.execute_i05` → `execute_exact_bounded_discovery` → `execute_empirical_query` | Candidate/covered `1/1`; exact 2 fact refs and 1 receipt on cold estate | Fresh-process exact; changed/restore not separately run | Same live current callback via session | Same native frontier/receipt/replay owner; mixed-universe negative not separately run | Same estate resource probe; no C11/whole-table fallback | **PASS_SCOPED_ACTUAL_COLD** |
+| Batch | `BatchExecutionRunner.__init__` / `run` | Not run | Not run | Not run | Actual guard refuses saved admission | No saved Batch resource | **BLOCKED_OWNERSHIP** |
+| NORMAL | `execute_issued_workload` | Not run | Not run | Not run | Not run | No saved normal resource | **BLOCKED_OWNERSHIP** |
+| COMPLETED | `resume_joined_workloads` / `_completed_entry_view` | Not run | Not run | Not run | Not run | No retained-checkpoint resource | **BLOCKED_OWNERSHIP** |
+| PARTIAL | `resume_joined_workloads` / `execute_issued_workload` | Not run | Not run | Not run | Not run | No partial-resume resource | **BLOCKED_OWNERSHIP** |
+| ABSENT | `resume_joined_workloads` / `execute_issued_workload` | Not run | Not run | Not run | Not run | No absent-resume resource | **BLOCKED_OWNERSHIP** |
+
+Only I03/I05 are actual. This table is not an all-seven acceptance matrix.
+
 ## Why five readers are blocked
 
 The lease permits only the two new modules and new tests; shared files remain READONLY without an explicit owner ACK. The actual startup barriers are:
