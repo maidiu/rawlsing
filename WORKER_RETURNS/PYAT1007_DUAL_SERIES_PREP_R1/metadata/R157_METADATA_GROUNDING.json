@@ -1,0 +1,1962 @@
+{
+  "schema": "PYAT1007_R157_METADATA_GROUNDING@1",
+  "r157_commit": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+  "r157_config_schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+  "evidence_grade": "METADATA_ONLY__R157_GIT_CONFIG_BLOBS__NO_ORIGINAL_RESPONDENT_BYTES_READ",
+  "original_source_bytes_read": false,
+  "original_source_hold": {
+    "state": "SOURCE_BYTES_UNAVAILABLE|SOURCE_PERMISSION_HELD",
+    "current_use_grant": "UNKNOWN_NOT_ESTABLISHED_BY_THIS_PREP",
+    "translation_or_rights_edition_state": "UNKNOWN_TYPED_HOLD"
+  },
+  "fixture_policy": {
+    "grade": "NONRESPONDENT_FIXTURE_ONLY",
+    "row_ids": "SYNTHETIC_TEST_ONLY",
+    "bytes": "SYNTHETIC_TEST_ONLY_SAV_DTA",
+    "source_sha256": "SYNTHETIC_TEST_ONLY_NOT_ORIGINAL",
+    "scientific_comparability": "NOT_CLAIMED",
+    "design_issuer": "NOT_ISSUED"
+  },
+  "series": {
+    "ARAB_SRC07": {
+      "source_id": "SRC07",
+      "config_path": "rawlsing_next/source_configuration/data/SRC07/source.config.json",
+      "config_blob_sha256": "4252ec7146dd598ca90aa90c3bb7cd3bd5ca6b673817915189db3cf38ec70b9f",
+      "config_blob_bytes": 8687431,
+      "config_id": "R157-ARAB-SRC07-FULL-SOURCE-PREPARATION",
+      "config_revision": 1,
+      "family": "Arab Barometer",
+      "wave": "VIII",
+      "source_family_id": "Arab Barometer",
+      "release_id": "SRC07_ARAB_BAROMETER_VIII_PREPARATION",
+      "instrument_release_id": "SRC07_INSTRUMENT_ARAB_BAROMETER_VIII",
+      "source_artifact_id": "Arab Barometer Wave 8.sav",
+      "source_format": "SAV",
+      "declared_original_source_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "declared_original_source_sha256_state": "DECLARED_IN_R157_METADATA__NOT_READ__NOT_A_PERMISSION_GRANT",
+      "source_row_count_declared": 15627,
+      "source_column_count_declared": 690,
+      "source_bytes_declared": 12275728,
+      "respondents": {
+        "subject_unit": "SOURCE_INTERVIEW_ROW",
+        "respondent_namespace": "urn:rawlsing:r157:source:SRC07:rows",
+        "respondent_key_pattern": "SRC07-ROW-{row_ordinal:05d}",
+        "source_native_key_slot": null,
+        "identity_map_authority_ref": null,
+        "row_identity_grade": "SOURCE_PHYSICAL_ROW_ORDINAL_ONLY"
+      },
+      "weight_slots_count": 0,
+      "weight_declaration_state": "NO_WEIGHT_SLOT_IN_R157_CONFIG__DESIGN_PLACEHOLDER_TYPED_ABSENCE",
+      "coordinate_slot_names": [
+        "Q130_2",
+        "Q1014C",
+        "Q629_99",
+        "ID",
+        "Q130_99",
+        "Q1015",
+        "PSU",
+        "Q1014D",
+        "Q1001YEAR",
+        "Q130_98",
+        "Q1014A",
+        "Q1001",
+        "STRATUM",
+        "Q130_1",
+        "Q629_2",
+        "Q629_6",
+        "DATE",
+        "Q629_98",
+        "Q1012C_MOR_3",
+        "Q1012C_MOR_99",
+        "Q629_3",
+        "Q1012C_MOR_2",
+        "Q1",
+        "Q13",
+        "Q629_4",
+        "Q1014E",
+        "Q130_4",
+        "Q130_3",
+        "Q1012C_MOR_1",
+        "Q130_5",
+        "Q1001APPROX",
+        "Q1012C_MOR_4",
+        "BLOCK_ID",
+        "Q629_5",
+        "Q1012C_MOR_98",
+        "Q1012C_MOR_90",
+        "COUNTRY",
+        "Q629_1"
+      ],
+      "selected_variables": {
+        "COUNTRY": {
+          "ordinal": 1,
+          "label": "Country:",
+          "storage_type": "double",
+          "original_type": "F8.2",
+          "storage_width": "8",
+          "measure": "scale",
+          "value_labels": {
+            "10.0": "Lebanon",
+            "12.0": "Mauritania",
+            "13.0": "Morocco",
+            "15.0": "Palestine",
+            "21.0": "Tunisia",
+            "7.0": "Iraq",
+            "8.0": "Jordan",
+            "9.0": "Kuwait"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_COORDINATE",
+          "codebook_mapping": {
+            "var_name": "COUNTRY",
+            "row_hash": "1f2a8f4a49598d1997ce0fb3cc1205119ae97f71c2110002ffecc22d87c4c05d",
+            "status": "EXACT"
+          },
+          "r157_coordinate_slot": {
+            "native_coordinate_ref": {
+              "kind": "COORDINATE_NATIVE",
+              "object_id": "urn:rawlsing:r157:original:SRC07:COUNTRY",
+              "content_hash": "5457bb0d1ce7ce04b9581b9b7c2ff18873dd00a272267566aa31275e5644463e"
+            },
+            "unit_taxonomy_ref": {
+              "kind": "UNIT_TAXONOMY",
+              "object_id": "urn:rawlsing:r157:SOURCE_NATIVE_ADMIN_CONTEXT",
+              "content_hash": "c3ce991d614b1ba4d52502849b66eccd771008c99d038764c37d7ae8e2b4945a"
+            },
+            "effective_time": "VIII",
+            "copy_observed_raw": false
+          }
+        },
+        "Q508": {
+          "ordinal": 134,
+          "label": "Q508 In your opinion, to what extent is the United States of America a democratic country?",
+          "storage_type": "double",
+          "original_type": "F8.2",
+          "storage_width": "8",
+          "measure": "scale",
+          "value_labels": {
+            "0.0": "0",
+            "1.0": "1",
+            "10.0": "10",
+            "2.0": "2",
+            "3.0": "3",
+            "4.0": "4",
+            "5.0": "5",
+            "6.0": "6",
+            "7.0": "7",
+            "8.0": "8",
+            "9.0": "9",
+            "98.0": "Don’t know",
+            "99.0": "Refused to answer"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "var_name": "Q508",
+            "row_hash": "4b65ee4872631c4e2a206daabe798c5a574ec1c0b06ed6a9ce893d73e5a93221",
+            "status": "EXACT"
+          },
+          "r157_question_id": "Q508",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": 0.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 6.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 7.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 8.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 9.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 10.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 98.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 99.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "REFUSAL",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Q509": {
+          "ordinal": 135,
+          "label": "Q509 In your opinion, to what extent is China a democratic country?",
+          "storage_type": "double",
+          "original_type": "F8.2",
+          "storage_width": "8",
+          "measure": "scale",
+          "value_labels": {
+            "0.0": "0",
+            "1.0": "1",
+            "10.0": "10",
+            "2.0": "2",
+            "3.0": "3",
+            "4.0": "4",
+            "5.0": "5",
+            "6.0": "6",
+            "7.0": "7",
+            "8.0": "8",
+            "9.0": "9",
+            "98.0": "Don’t know",
+            "99.0": "Refused to answer"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "var_name": "Q509",
+            "row_hash": "cb4e8368fb1fe6970ed24a8794394ac9ac0295725025e94f5b0c778e9cb470fe",
+            "status": "EXACT"
+          },
+          "r157_question_id": "Q509",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": 0.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 6.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 7.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 8.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 9.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 10.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 98.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 99.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "REFUSAL",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Q104A_2_1": {
+          "ordinal": 151,
+          "label": "For economic reasons",
+          "storage_type": "double",
+          "original_type": "F8.2",
+          "storage_width": "8",
+          "measure": "scale",
+          "value_labels": {
+            "0.0": "Other",
+            "1.0": "Would emigrate for economic reasons"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "var_name": "Q104A_2_1",
+            "row_hash": "3b879a5754290747181ee7a054e205ed3b0cfaeabd9b9ec29eb91fc9ec8868f4",
+            "status": "EXACT"
+          },
+          "r157_question_id": "Q104A_2_1",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": 0.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "MULTISELECT_INDICATOR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "MULTISELECT_INDICATOR",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "MULTISELECT_INDICATOR",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "WVS_SRC35": {
+      "source_id": "SRC35",
+      "config_path": "rawlsing_next/source_configuration/data/SRC35/SRC35.source.config.json",
+      "config_blob_sha256": "00ad786a351a0a2987b442489e1ca91154a8be32954cddd6f1eeb69e2196dbf9",
+      "config_blob_bytes": 11607038,
+      "config_id": "R157-WVS-SRC35-ORIGINAL-SOURCE",
+      "config_revision": 1,
+      "family": "WVS",
+      "wave": "W7",
+      "source_family_id": "WVS",
+      "release_id": "WVS_W7_SOURCE_ARTIFACT",
+      "instrument_release_id": "SRC35_METADATA_WITNESS_SHA256:0d8e4eeb069d4866a59010187b66e8a0ae67f113e6a8ae79c1f9dc00d911960d",
+      "source_artifact_id": "WVS Wave 7.sav",
+      "source_format": "SAV",
+      "declared_original_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "declared_original_source_sha256_state": "DECLARED_IN_R157_METADATA__NOT_READ__NOT_A_PERMISSION_GRANT",
+      "source_row_count_declared": 97220,
+      "source_column_count_declared": 613,
+      "source_bytes_declared": 185163494,
+      "respondents": {
+        "subject_unit": "WVS_RESPONDENT_ROW",
+        "respondent_namespace": "urn:rawlsing:r157:source:SRC35:respondent",
+        "respondent_key_pattern": "SRC35-ROW-{row_ordinal:06d}",
+        "source_native_key_slot": {
+          "ordinal": 11,
+          "name": "S007"
+        },
+        "identity_map_authority_ref": null,
+        "row_identity_grade": "SOURCE_NATIVE_KEY_SLOT_DECLARED_VALUE_DECODE_REQUIRED"
+      },
+      "weight_slots_count": 0,
+      "weight_declaration_state": "NO_WEIGHT_SLOT_IN_R157_CONFIG__DESIGN_PLACEHOLDER_TYPED_ABSENCE",
+      "coordinate_slot_names": [
+        "B_COUNTRY",
+        "A_YEAR",
+        "N_REGION_ISO"
+      ],
+      "selected_variables": {
+        "S007": {
+          "ordinal": 11,
+          "label": "Unified respondent number",
+          "storage_type": "double",
+          "original_type": "F10.0",
+          "storage_width": "8",
+          "measure": "scale",
+          "value_labels": null,
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SOURCE_NATIVE_RESPONDENT_KEY",
+          "codebook_mapping": {
+            "row_hash": "3b1d4875c661230111ace1435cca5357769f3968ae70cb730fecf31a3ea7c231",
+            "status": "EXACT",
+            "var_name": "S007"
+          }
+        },
+        "A_YEAR": {
+          "ordinal": 4,
+          "label": "Year of survey",
+          "storage_type": "double",
+          "original_type": "F4.0",
+          "storage_width": "8",
+          "measure": "scale",
+          "value_labels": {
+            "2017.0": "2017",
+            "2018.0": "2018",
+            "2019.0": "2019",
+            "2020.0": "2020",
+            "2021.0": "2021",
+            "2022.0": "2022",
+            "2023.0": "2023"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_COORDINATE",
+          "codebook_mapping": {
+            "row_hash": "6d8cb9e641f090d753f5e89f1d7af9f3f2b1a87cabc7decffe004f41e1a97e2b",
+            "status": "EXACT",
+            "var_name": "A_YEAR"
+          },
+          "r157_coordinate_slot": {
+            "native_coordinate_ref": {
+              "kind": "COORDINATE_NATIVE",
+              "object_id": "urn:rawlsing:r157:source:SRC35:coordinate:A_YEAR",
+              "content_hash": "eca8c7e464ad119141ef9a589787556a6390fd53246c58ddf8474be2d4fae80b"
+            },
+            "unit_taxonomy_ref": {
+              "kind": "UNIT_TAXONOMY",
+              "object_id": "urn:rawlsing:r157:unit:wvs_a_year",
+              "content_hash": "55b5942469663d09ffebbbb50631ad1a7a8dd3f706d2c042a6a1132cea70e963"
+            },
+            "effective_time": "WVS_W7",
+            "copy_observed_raw": true
+          }
+        },
+        "Q1": {
+          "ordinal": 41,
+          "label": "Important in life: Family",
+          "storage_type": "double",
+          "original_type": "F3.0",
+          "storage_width": "8",
+          "measure": "nominal",
+          "value_labels": {
+            "-1.0": "Don't know",
+            "-2.0": "No answer",
+            "-4.0": "Not asked",
+            "-5.0": "Other missing; Multiple answers Mail (EVS)",
+            "1.0": "Very important",
+            "2.0": "Rather important",
+            "3.0": "Not very important",
+            "4.0": "Not at all important"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "row_hash": "926cccfe573fb2f6717e46cdda7cb69f9dcc46d944a89bc020ae4caecde9aa12",
+            "status": "EXACT",
+            "var_name": "Q1"
+          },
+          "r157_question_id": "WVS:W7:Q1",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": -5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "NOT_ASKED",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Q2": {
+          "ordinal": 42,
+          "label": "Important in life: Friends",
+          "storage_type": "double",
+          "original_type": "F3.0",
+          "storage_width": "8",
+          "measure": "nominal",
+          "value_labels": {
+            "-1.0": "Don't know",
+            "-2.0": "No answer",
+            "-4.0": "Not asked",
+            "-5.0": "Other missing; Multiple answers Mail (EVS)",
+            "1.0": "Very important",
+            "2.0": "Rather important",
+            "3.0": "Not very important",
+            "4.0": "Not at all important"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "row_hash": "5afea8fe812cdd83e9c438cc15a8606202b211d184ea8749ca84efa973554a93",
+            "status": "EXACT",
+            "var_name": "Q2"
+          },
+          "r157_question_id": "WVS:W7:Q2",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": -5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "NOT_ASKED",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Q3": {
+          "ordinal": 43,
+          "label": "Important in life: Leisure time",
+          "storage_type": "double",
+          "original_type": "F3.0",
+          "storage_width": "8",
+          "measure": "nominal",
+          "value_labels": {
+            "-1.0": "Don't know",
+            "-2.0": "No answer",
+            "-4.0": "Not asked",
+            "-5.0": "Other missing; Multiple answers Mail (EVS)",
+            "1.0": "Very important",
+            "2.0": "Rather important",
+            "3.0": "Not very important",
+            "4.0": "Not at all important"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "row_hash": "6e36e8f25f117e7dda6a6f970ba49a09798175669fb5fa9df700f719e848edb7",
+            "status": "EXACT",
+            "var_name": "Q3"
+          },
+          "r157_question_id": "WVS:W7:Q3",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": -5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "NOT_ASKED",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Q4": {
+          "ordinal": 44,
+          "label": "Important in life: Politics",
+          "storage_type": "double",
+          "original_type": "F3.0",
+          "storage_width": "8",
+          "measure": "nominal",
+          "value_labels": {
+            "-1.0": "Don't know",
+            "-2.0": "No answer",
+            "-4.0": "Not asked",
+            "-5.0": "Other missing; Multiple answers Mail (EVS)",
+            "1.0": "Very important",
+            "2.0": "Rather important",
+            "3.0": "Not very important",
+            "4.0": "Not at all important"
+          },
+          "missing_declarations": null,
+          "mr_declarations": null,
+          "disposition": "SUPPORTED_RESPONSE",
+          "codebook_mapping": {
+            "row_hash": "23de1033ff496fb6e1259547320742240ce6c8c37c459a4f71d690845399946e",
+            "status": "EXACT",
+            "var_name": "Q4"
+          },
+          "r157_question_id": "WVS:W7:Q4",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": -5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "NOT_ASKED",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "0",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "SCALAR_SINGULAR",
+                    "source_manual_topology": "scalar",
+                    "index": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "LITS_SRC28_HOSTILE": {
+      "source_id": "SRC28",
+      "config_path": "rawlsing_next/source_configuration/data/SRC28/src28.config.json",
+      "config_blob_sha256": "e690d57051db3f77369b71ae07b1792636deebaa43708675f6e478c94fa4ae7b",
+      "config_blob_bytes": 6121960,
+      "config_id": "R157-LITS-SRC28-SOURCE-PREPARATION",
+      "config_revision": 1,
+      "family": "LiTS",
+      "wave": "II",
+      "source_family_id": "LiTS",
+      "release_id": "LiTS_WAVE_II",
+      "instrument_release_id": "SRC28_METADATA_WITNESS_SHA256:071d27f6e8430295e5d99e7e16eb815886baf3b759090d4adf5be83865ac1348",
+      "source_artifact_id": "LiTS_II.dta",
+      "source_format": "DTA",
+      "declared_original_source_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "declared_original_source_sha256_state": "DECLARED_IN_R157_METADATA__NOT_READ__NOT_A_PERMISSION_GRANT",
+      "source_row_count_declared": 38864,
+      "source_column_count_declared": 627,
+      "source_bytes_declared": 199716969,
+      "respondents": {
+        "subject_unit": "HOUSEHOLD",
+        "respondent_namespace": "LiTS/II/household",
+        "respondent_key_pattern": "lits:II:household_row:{row_ordinal}",
+        "row_identity_grade": "ROW_ORDINAL_REPLAY_KEY__SOURCE_NATIVE_KEY_SLOT_HELD_UNTIL_DECODE"
+      },
+      "weight_slots_count": 0,
+      "weight_declaration_state": "NO_WEIGHT_SLOT_IN_R157_CONFIG__DESIGN_PLACEHOLDER_TYPED_ABSENCE",
+      "coordinate_slot_names": [
+        "country",
+        "psu"
+      ],
+      "selected_variables": {
+        "psu": {
+          "ordinal": 4,
+          "label": "psu - PSU NUMBER",
+          "storage_type": "double",
+          "original_type": "%10.0g",
+          "storage_width": "8",
+          "measure": "unknown",
+          "value_labels": null,
+          "missing_declarations": {
+            "missing_ranges": null,
+            "missing_user_values": null
+          },
+          "mr_declarations": null,
+          "disposition": "INCLUDED_COORDINATE_SLOT",
+          "codebook_mapping": {
+            "var_name": "psu",
+            "row_hash": "80963379b9448d3362d2d79b856acdaef0001480b71b2ca5d522870620d25595",
+            "status": "EXACT"
+          },
+          "r157_coordinate_slot": {
+            "native_coordinate_ref": {
+              "kind": "SOURCE_COORDINATE",
+              "object_id": "urn:rawlsing:r157:SRC28:coordinate:psu",
+              "content_hash": "b85a8ad31243f885d954f7f56303ddf83a9bcdde4c208fcc10306932a8413ab1"
+            },
+            "unit_taxonomy_ref": {
+              "kind": "COORDINATE_UNIT_TAXONOMY",
+              "object_id": "urn:rawlsing:r157:SRC28:coordinate-unit:psu",
+              "content_hash": "077d2247f34404ca259cae6bb40dee69f1c0b62bf50166b03a9c271c1001732d"
+            },
+            "effective_time": "II",
+            "copy_observed_raw": true
+          }
+        },
+        "q201": {
+          "ordinal": 45,
+          "label": "q201 - TYPE OF DWELLING",
+          "storage_type": "double",
+          "original_type": "%10.0g",
+          "storage_width": "8",
+          "measure": "unknown",
+          "value_labels": {
+            "-1": "Not stated",
+            "-90": "Filtered",
+            "-97": "Don't know",
+            "-98": "Not applicable",
+            "-99": "Refused",
+            "1": "DETACHED HOUSE",
+            "2": "SEMI-DETACHED HOUSE / TOWNHOUSE",
+            "3": "APARTMENT / FLAT",
+            "4": "PART COMMERCIAL / INDUSTRIAL",
+            "5": "MOBILE HOME (CARAVAN / TENT / GER)",
+            "6": "IMPROVISED HOUSING UNIT / SHACK",
+            "7": "Other (specify)"
+          },
+          "missing_declarations": {
+            "missing_ranges": null,
+            "missing_user_values": null
+          },
+          "mr_declarations": null,
+          "disposition": "INCLUDED_RESPONSE_SLOT",
+          "codebook_mapping": {
+            "var_name": "q201",
+            "row_hash": "b318bf726218b69f4c281135d59896bb06814d4392cf0e630d0a1452ddfdc5ce",
+            "status": "EXACT"
+          },
+          "r157_question_id": "SRC28_q201",
+          "r157_routing_state": "ELIGIBLE_APPLICABLE",
+          "r157_value_states": [
+            {
+              "raw_value": -99.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "REFUSAL",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -98.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "INAPPLICABLE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -97.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "DK",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -90.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "INAPPLICABLE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": -1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 3.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 4.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 5.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 6.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 7.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "source_SRC28_q201",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "ordinal_context",
+                    "source_topology": "ordinal_context",
+                    "position": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "q102_1": {
+          "ordinal": 6,
+          "label": "Gender of household members : Person 1",
+          "storage_type": "double",
+          "original_type": "%10.0g",
+          "storage_width": "8",
+          "measure": "unknown",
+          "value_labels": {
+            "1": "Male",
+            "2": "Female"
+          },
+          "missing_declarations": {
+            "missing_ranges": null,
+            "missing_user_values": null
+          },
+          "mr_declarations": null,
+          "disposition": "INCLUDED_REPEATED_RESPONSE_SLOT",
+          "codebook_mapping": {
+            "var_name": "q102_1",
+            "row_hash": "90a4d622148a9a23e6fe86e02b9c2dace728d2bc3a6d2488a056f6feaefdf2f1",
+            "status": "EXACT"
+          },
+          "r157_question_id": "SRC28_q102_1",
+          "r157_routing_state": "ROUTING_UNKNOWN",
+          "r157_value_states": [
+            {
+              "raw_value": 1.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "household_member_position_1_q102_1",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "REPEATED_EVENT",
+                    "source_topology": "nominal_choice",
+                    "repeat_axis": "household_roster",
+                    "member_position": 1,
+                    "source_slot": "q102_1"
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": 2.0,
+              "missing_state": "OBSERVED_STORAGE_VALUE",
+              "source_missing_declaration": null,
+              "response_state": "SUBSTANTIVE_RESPONSE",
+              "occurrences": [
+                {
+                  "key": "household_member_position_1_q102_1",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "REPEATED_EVENT",
+                    "source_topology": "nominal_choice",
+                    "repeat_axis": "household_roster",
+                    "member_position": 1,
+                    "source_slot": "q102_1"
+                  }
+                }
+              ]
+            },
+            {
+              "raw_value": null,
+              "missing_state": "SYSTEM_MISSING",
+              "source_missing_declaration": null,
+              "response_state": "MISSING",
+              "occurrences": [
+                {
+                  "key": "household_member_position_1_q102_1",
+                  "topology_ref_kind": "RESPONSE_TOPOLOGY",
+                  "multiplicity_order_rank_fields": {
+                    "kind": "REPEATED_EVENT",
+                    "source_topology": "nominal_choice",
+                    "repeat_axis": "household_roster",
+                    "member_position": 1,
+                    "source_slot": "q102_1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
