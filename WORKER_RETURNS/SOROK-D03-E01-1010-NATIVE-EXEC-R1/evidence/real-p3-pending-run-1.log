@@ -1,0 +1,11 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+_________ test_real_pending_after_provider_refuses_before_any_p2_write _________
+WORKER_RETURNS/SOROK-D03-E01-1010-NATIVE-EXEC-R1/test_real_p3_pending.py:119: in test_real_pending_after_provider_refuses_before_any_p2_write
+    assert not journal.exists()
+E   AssertionError: assert not True
+E    +  where True = exists()
+E    +    where exists = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-818/test_real_pending_after_provid0/real-post/e01_p2_journal.sqlite').exists
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-D03-E01-1010-NATIVE-EXEC-R1/test_real_p3_pending.py::test_real_pending_after_provider_refuses_before_any_p2_write
+1 failed, 1 passed in 23.04s
