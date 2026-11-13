@@ -1,0 +1,14 @@
+.EEE.                                                                    [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_q2_builds_one_validated_same_source_release_without_identity_collapse _
+E   rawlsing_next.gt34_q2_q69b_q86a_same_source_materialization.Q2SameSourceMaterializationError: accepted Q86 producer path did not reproduce accepted release identity
+_ ERROR at setup of test_q2_reuses_exact_objects_from_accepted_q86_claim_scoped_release _
+E   rawlsing_next.gt34_q2_q69b_q86a_same_source_materialization.Q2SameSourceMaterializationError: accepted Q86 producer path did not reproduce accepted release identity
+___ ERROR at setup of test_q2_release_identity_is_deterministic_and_bounded ____
+E   rawlsing_next.gt34_q2_q69b_q86a_same_source_materialization.Q2SameSourceMaterializationError: accepted Q86 producer path did not reproduce accepted release identity
+=========================== short test summary info ============================
+ERROR rawlsing_next/tests/test_gt34_q2_same_source_c11_release.py::test_q2_builds_one_validated_same_source_release_without_identity_collapse
+ERROR rawlsing_next/tests/test_gt34_q2_same_source_c11_release.py::test_q2_reuses_exact_objects_from_accepted_q86_claim_scoped_release
+ERROR rawlsing_next/tests/test_gt34_q2_same_source_c11_release.py::test_q2_release_identity_is_deterministic_and_bounded
+2 passed, 3 errors in 302.73s (0:05:02)
+EXIT:1

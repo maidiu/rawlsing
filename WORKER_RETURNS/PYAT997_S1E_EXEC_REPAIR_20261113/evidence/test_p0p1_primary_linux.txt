@@ -1,0 +1,46 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/matthewsmith/s2b-work/pyat997-s1e-exec-20261113
+collected 32 items
+
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py .... [ 12%]
+................                                                         [ 62%]
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py ......       [ 81%]
+rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py ......  [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_missing_issued_batch_receipt_stays_pending_not_invented
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_mixed_source_issued_receipt_join_refused_before_claim
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_q2_held_fate_cannot_be_promoted_into_native_issued_positive
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_postconsumer_receipt_rows_cannot_change_after_source_mutation
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_realization_witness_must_agree_before_native_join[realized]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_realization_witness_must_agree_before_native_join[state]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_realization_witness_must_agree_before_native_join[census]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[missing_emission]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[unresolved_routing]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[measure_preimage]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery[zero_routable-Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery[concealed_unknown-Q2_REALIZATION_ROUTING_CENSUS_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery[eligible_count_drift-Q2_REALIZATION_ROUTING_CENSUS_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_a_counter_preserves_q2_multislot_one_routable_semantics
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_r5_original_frontier_and_frozen_census_cut[q2_frontier-Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_r5_original_frontier_and_frozen_census_cut[r03_frontier-Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_r5_original_frontier_and_frozen_census_cut[source_census-Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_r5_original_frontier_and_frozen_census_cut[science_census-Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_r5_original_frontier_and_frozen_census_cut[eligible_fate_partition-Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_q2_one_sav_to_complete_cold_saved_thirteen_families
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_cold_saved_real_native_i03_from_exact_q2_source
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_q2_fail_closed_on_missing_saved_body_and_cleans_stage
+PASSED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_wrong_held_root_and_revoked_source_refuse_native_cold
+PASSED rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_one_source_snapshot_real_cold_thirteen_body_members[SAV]
+PASSED rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_one_source_snapshot_real_cold_thirteen_body_members[DTA]
+PASSED rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_actual_source_cell_changed_cold_body_changed_then_exact_restore
+PASSED rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_missing_body_member_fails_closed_and_cleans_all_stages
+PASSED rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_wrong_pinned_root_and_current_revocation_refuse_native_cold
+PASSED rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_sink_requires_exact_source_and_rejects_wrong_transport_before_publish
+============================= 32 passed in 31.10s ==============================
+EXIT:0
