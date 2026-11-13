@@ -4,6 +4,8 @@
 **Base:** `4cbf67398d742eeab0853d047b6c2239c84b8348`.
 **Branch:** `agent/sorok-cga-982-composite-stale-receipt-20261113-r1`.
 **Report HEAD:** the commit containing this file; verify with `git rev-parse HEAD`.
+**Remote branch:** `origin/agent/sorok-cga-982-composite-stale-receipt-20261113-r1`.
+**Draft PR:** not created; the credential returned HTTP 403 for pull-request creation. See `06_PUBLICATION_STATUS.md`. The branch and exact cut are the delivery subject.
 
 The receiving reviewer must be a genuinely separate nonauthor under #977. The author does not self-approve and does not declare G5 acceptance.
 

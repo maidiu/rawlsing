@@ -64,6 +64,10 @@ Beyond the reproduced stale-broadened receipt:
 
 No second ledger, P3/P4/P6 owner replacement, new person engine, scheduler or general psychology was introduced. No native CAN-008 Rule A, CAN-011 Rule T, memory, transfer, `NO_CHANGE`, actor consciousness, human right or production grant is issued. No stimulus-to-mediator relevance is promoted; it remains `UNISSUED_NATIVE_RULE`. No independent G5 acceptance is claimed.
 
-## 6. Handoff
+## 6. Publication
+
+The branch was pushed to `origin` as `agent/sorok-cga-982-composite-stale-receipt-20261113-r1`. Draft PR creation was attempted against the #992 branch and returned HTTP 403 `Resource not accessible by personal access token`; the credential can push contents but cannot create pull requests. No PR number is claimed. The exact branch, compare URL and blocker are recorded in `06_PUBLICATION_STATUS.md`.
+
+## 7. Handoff
 
 The exact source cut for one independent nonauthor G5 receiving is `ff30c13eea54e37e2dc8edfa73a7c7447127b735`; the reviewer should verify the report HEAD and inspect both trust boundaries, run the original G5 asset, the D1 contract, the new hostile cases, the 37-test baseline, and the P4/P6 source-preservation checks in `03_G5_HANDOFF.md`.
