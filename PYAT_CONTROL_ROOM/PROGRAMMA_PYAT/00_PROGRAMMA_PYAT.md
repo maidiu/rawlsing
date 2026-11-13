@@ -1,6 +1,6 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
-> **Existing HQ #960 / original S2-D transfer #991:** PARTIALorderingrepair9d96a9ca delivered,38focused+69nativePASSreported; SAMEG5 exactfix/resourcequalification actuallyrunning. Crashprobeceilingexplicit, no fullG5acceptanceyet. [Pairedprogress](../CURRENT_PROGRESS.md). FullgoalOPEN; ownershipresolved/S2Cimmutable/source-science-protectedholds/Q3W03pauseunchanged, recurringwakesOFF.
+> **Existing HQ #960 / original S2-D transfer #991:** independentG5 ba8d760c ACCEPT_SCOPED@S2_SOURCEFREE_SAVED_NATIVE_ALL_READERS on code9d96a9ca; allseven actualnativepaths, exactPARTIALbefore-restoredefectclosed, boundedDarwinresource/nativecrashrecoveryproof. ScopedpacketTERMINAL_CLOSED; allworkersidle. UNMERGED, notoriginal35/science/productionCURRENT/fullscale/protectedadoption. [Machineacceptance](../../WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/S2D_ALL_SEVEN_SCOPED_ACCEPTANCE.json), [pairedprogress](../CURRENT_PROGRESS.md), component/seamreceiptsupdated. Q3/W03paused, goalwakeupsOFF.
 
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 

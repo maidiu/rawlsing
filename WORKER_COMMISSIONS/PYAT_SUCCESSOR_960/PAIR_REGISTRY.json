@@ -190,7 +190,7 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "ALL_SEVEN_PARTIAL_REPAIR_SAME_G5_RECHECK_RUNNING",
+      "state": "TERMINAL_CLOSED_SCOPED_STOP_EXTERNAL_HOLDS_PRESERVED",
       "job_id": "pyat991-all-seven-g5-recheck-r01",
       "branch": "agent/pyat991-s2d-a-r1",
       "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
@@ -199,11 +199,11 @@
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "TERMINAL_PARTIAL_REPAIR_IDLE"
+          "state": "TERMINAL_SCOPED_STOP_LEASE_RELEASED"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
-          "state": "IDLE_SERIAL_LEASE",
+          "state": "TERMINAL_SCOPED_STOP_LEASE_RELEASED",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-b",
           "branch": "agent/pyat991-s2d-b-r1"
         }
@@ -239,7 +239,7 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
         "branch": "agent/pyat991-s2d-g5-r1",
         "independence": "NEITHER_S2D_AUTHOR_NOR_REPAIRER; priorS2F/S2G reviewer only",
-        "state": "RUNNING_SAME_ALL_SEVEN_RECHECK"
+        "state": "TERMINAL_ACCEPT_SCOPED_STOP"
       },
       "g5_delivery_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
       "g5_verdict": "HOLD_EXTERNAL",
@@ -248,7 +248,7 @@
       "g5_recheck_delivery_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
       "accepted_subresult_code_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
       "accepted_subresult_grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
-      "active_job": "pyat991-all-seven-g5-recheck-r01",
+      "active_job": null,
       "original_task_complete": false,
       "owner_handoff": {
         "session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
@@ -275,15 +275,20 @@
             "variant": "max"
           }
         },
-        "state": "TERMINAL_ACK"
+        "state": "TERMINAL_ACK_LEASE_FULFILLED"
       },
       "owner_ack_delivery_sha": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
       "owner_handoff_status": "ACK_BOTH_TWO_FILES_MATCHING_CURRENT_BLOBS",
       "five_reader_delivery_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
       "all_seven_g5_delivery_sha": "f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f",
-      "all_seven_g5_verdict": "REVISE_EXACT_DEFECT",
-      "g4_status": "OPEN_REQUIRED_LOCAL_OBSERVATIONS_NOT_AUTHORITY_HOLD",
-      "partial_repair_delivery_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969"
+      "all_seven_g5_verdict": "ACCEPT_SCOPED@S2_SOURCEFREE_SAVED_NATIVE_ALL_READERS",
+      "g4_status": "PASS_SCOPED_BOUNDED_INDEPENDENT_DARWIN_FIXTURE",
+      "partial_repair_delivery_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+      "all_seven_g5_recheck_delivery_sha": "ba8d760cd8e31a9baff9b45698bd4117f4baa456",
+      "accepted_implementation_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+      "sourcefree_packet_complete": true,
+      "original_native_product_accepted": false,
+      "handoff_instruction_complete_at_permitted_grade": true
     }
   ]
 }
