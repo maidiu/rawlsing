@@ -95,7 +95,9 @@ def _native_i03(estate: VerifiedDirectEstate, *, tag: str):
     proposed = native._query(source, grammar, predicate, ("Y",), tag=tag)
     # The physical fixture's exact response domain is 0.0 / 1.0 / 2.0,
     # not the unrelated native test helper's default domain ['0','1'].
-    domain = sorted({str(e.raw_response_value) for e in events})
+    # Fixed issued TEST_ONLY target domain across the changed source runs:
+    # a disappearing observed value must not silently narrow the query.
+    domain = ["0.0", "1.0", "2.0"]
     topology = dict(proposed.target_arity_and_topology)
     topology["components"] = [
         {**dict(component), "domain": domain}
@@ -204,6 +206,20 @@ def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
     assert evidence(baseline) == evidence(restored)
     assert a.manifest.source_artifact_ref == c.manifest.source_artifact_ref
     assert a.manifest.source_artifact_ref != b.manifest.source_artifact_ref
+    # Real saved native I03 (same test query/target domain): material change,
+    # not just altered source SHA or altered Parquet bytes.
+    def native_cells(bundle):
+        _, handoff, sink, root = bundle
+        estate = _estate(handoff, sink, root)
+        result, _ = _native_i03(estate, tag="PYAT997-CHANGED-SOURCE")
+        assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+        fact = result.facts[0]
+        return tuple(
+            (str(cell["cell"]), cell["raw_numerator_support"])
+            for cell in fact.target_topology["complete_cell_semantic_projection"]
+        )
+    assert native_cells(baseline) != native_cells(changed)
+    assert native_cells(baseline) == native_cells(restored)
 
 
 def test_cold_saved_real_native_i03_from_exact_q2_source(tmp_path):
