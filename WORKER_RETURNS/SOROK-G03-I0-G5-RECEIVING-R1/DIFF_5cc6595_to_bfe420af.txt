@@ -1,0 +1,38 @@
+diff --git a/WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py b/WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py
+index f57e73572..713a69571 100644
+--- a/WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py
++++ b/WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py
+@@ -21,7 +21,8 @@ class TypedPsycheWitness(unittest.TestCase):
+         self.addCleanup(td.cleanup)
+         self.root = Path(td.name) / "state"
+         self.dbpath = self.root / writer.SQLITE_REL
+-        self.dbpath.parent.mkdir(parents=True)
++        # Do not create a P6 state root here: P6 "new" correctly refuses one.
++        # SQLite-only tests create their own fixture directories below.
+ 
+     def update_and_checkpoint(self, sql, parameters):
+         with closing(sqlite3.connect(self.dbpath)) as db:
+@@ -38,6 +39,7 @@ class TypedPsycheWitness(unittest.TestCase):
+         return w
+ 
+     def test_blob_vs_text_must_not_collapse_in_logical_record(self):
++        self.dbpath.parent.mkdir(parents=True)
+         with closing(sqlite3.connect(self.dbpath)) as db:
+             db.execute("CREATE TABLE p3_records(id INTEGER PRIMARY KEY, payload_json TEXT NOT NULL)")
+             db.execute("INSERT INTO p3_records VALUES (1, ?)",
+@@ -56,6 +58,7 @@ class TypedPsycheWitness(unittest.TestCase):
+                             "REAL SQL ROW CHANGED TYPE AND CONTENT BUT B'S LOGICAL HASH COLLIDED")
+ 
+     def test_original_p6_p3_table_blob_text_collision(self):
++        self.assertFalse(self.root.exists(), "P6 new needs a wholly absent state root")
+         repo = Path(__file__).resolve().parents[2]
+         cmd = [sys.executable, str(repo / writer.P6),
+                "--state", str(self.root), "new"]
+@@ -78,6 +81,7 @@ class TypedPsycheWitness(unittest.TestCase):
+                             "Genuine P6-generated P3 database changed logical row undetected")
+ 
+     def test_uncheckpointed_wal_must_be_refused_not_misreported_logical(self):
++        self.dbpath.parent.mkdir(parents=True)
+         with closing(sqlite3.connect(self.dbpath)) as db:
+             db.execute("PRAGMA journal_mode=WAL")
+             db.execute("CREATE TABLE p3_records(id INTEGER PRIMARY KEY, payload_json TEXT)")
