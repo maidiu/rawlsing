@@ -1,5 +1,7 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **Existing HQ #960 / original S2-D transfer #991:** one finite read-only saved-admission preflight launched on verified exclusive lease; accepted Q2 compatibility preserved, full S1-E OPEN. Joint production handoff map included without duplicate author work. Actual S2-C producer G5 unaccepted; product implementation and all cold native acceptance held. Codex S2-C/Q3 and W03/W04 USER_PAUSED unchanged. See [paired current progress](../CURRENT_PROGRESS.md) and [existing resume checkpoint](../../WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/RESUME_CHECKPOINT.md). This isolated overlay is not protected adoption.
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
 

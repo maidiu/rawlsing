@@ -185,6 +185,46 @@
       "state_before_user_pause": "PREFLIGHT_RECOVERED_READONLY_SOURCE_FINDINGS_WRITER_HELD",
       "resume_authority": "EXPLICIT_USER_RESUMPTION_REQUIRED",
       "pause_observation": "No S2-C run active; preflight terminal, writer never launched. Active API shows only Q2 A counter."
+    },
+    {
+      "packet_id": "S2-D",
+      "original_issue": 919,
+      "transfer_issue": 991,
+      "state": "PHASE0_LAUNCHED_NOT_ACCEPTED",
+      "job_id": "pyat991-s2d-preflight01",
+      "branch": "agent/pyat991-s2d-preflight-r1",
+      "startup_sha": "41f479315cd42b31c28b4f4c91d225207f119c8f",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-preflight",
+      "contract_sha256": "4f7542b12284b2dac3281d1ed7386ae117b8d2d73bd514cfec581c7b0223e534",
+      "agents": {
+        "A": {
+          "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+          "state": "RUNNING_READONLY_PREFLIGHT"
+        },
+        "B": {
+          "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
+          "state": "IDLE_PHASE1_GATED"
+        }
+      },
+      "phase1_gate": "Independent accepted exact S2-C G5 plus frozen ABI and relevant owner lease; current guard edits not granted",
+      "S1E_continuation": "Necessary production handoff map included; scoped acceptance banked/full original OPEN",
+      "launch": {
+        "job_id": "pyat991-s2d-preflight01",
+        "child_pid": 10559,
+        "supervisor_pid": 10558,
+        "observer_pid": 10560,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-preflight01",
+        "launch_is_not_completion": true
+      },
+      "actual_first_turn_metadata": {
+        "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+        "message_id": "msg_1d33108ff001yf19LG1zdMvSsu",
+        "actual_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      }
     }
   ]
 }
