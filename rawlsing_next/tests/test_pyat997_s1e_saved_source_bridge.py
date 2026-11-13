@@ -16,7 +16,7 @@ pytest.importorskip("pyreadstat")
 
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_objects import (
-    EmpiricalQuerySpec, exact_ref,
+    EmpiricalQuerySpec, authority_ref, exact_ref,
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
@@ -63,9 +63,8 @@ def _estate(handoff, sink, private, guard=lambda _roots: True):
     )
 
 
-def _native_i03(admitted: SavedC11Admission, *, tag: str):
+def _native_i03(estate: VerifiedDirectEstate, *, tag: str):
     """Run the accepted S2-D real I03 on the *saved Q2 physical source*."""
-    estate = admitted._estate  # read-only first-reader test harness
     universe = next(estate.iter_family("EmpiricalUniverse"))
     respondents = tuple(estate.iter_family("RespondentIdentity"))
     events = tuple(estate.iter_family("RespondentEvent"))
@@ -81,7 +80,8 @@ def _native_i03(admitted: SavedC11Admission, *, tag: str):
     risk_ref = exact_ref(eligible_routing[0].risk_set_ref)
     snapshots = tuple(estate.iter_family("AuthoritySnapshot"))
     source_authority = next(
-        a for a in snapshots if a.authority_ref == first.authority_snapshot_refs[0]
+        a for a in snapshots
+        if a.authority_ref == authority_ref(first.authority_snapshot_refs[0])
     )
     source = {
         "universe": universe,
@@ -121,7 +121,7 @@ def _native_i03(admitted: SavedC11Admission, *, tag: str):
         root=estate.root, exact_path=estate.directory,
         independently_held_manifest_sha256=estate.held_manifest_sha256,
         independently_held_i02=estate.i02,
-        release_ref=admitted.release_ref,
+        release_ref=estate.reconstructed_v1_release_ref,
         runtime_catalog=catalog,
         current_authorizer=estate._authorize,
     )
@@ -197,7 +197,7 @@ def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
         _, handoff, sink, root = bundle
         estate = _estate(handoff, sink, root)
         return tuple(sorted(
-            (e.scoped_respondent_ref, e.raw_response_value, e.response_state)
+            (exact_ref(e.scoped_respondent_ref).key, e.raw_response_value, e.response_state)
             for e in estate.iter_family("RespondentEvent")
         ))
     assert evidence(baseline) != evidence(changed)
@@ -209,21 +209,7 @@ def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
 def test_cold_saved_real_native_i03_from_exact_q2_source(tmp_path):
     _, handoff, sink, root = _build_saved(tmp_path)
     estate = _estate(handoff, sink, root)
-    # The empty bootstrap catalog is accepted only as a binding. The actual
-    # query catalog is source-bound and constructed from saved physical bodies.
-    catalog = RuntimeObjectCatalog(
-        authorities=tuple(estate.iter_family("AuthoritySnapshot")),
-        predicates=(), queries=(), discovery_authorities=(),
-    )
-    admission = SavedC11Admission.open(
-        root=root, exact_path=sink.receipt.path,
-        independently_held_manifest_sha256=sink.receipt.manifest_sha256,
-        independently_held_i02=handoff.roots,
-        release_ref=sink.receipt.reconstructed_v1_release_ref,
-        runtime_catalog=catalog,
-        current_authorizer=lambda _: True,  # TEST_ONLY only, never production grant
-    )
-    result, raw_domain = _native_i03(admission, tag="PYAT997-SAVED-Q2")
+    result, raw_domain = _native_i03(estate, tag="PYAT997-SAVED-Q2")
     assert result.facts
     fact = result.facts[0]
     assert fact.raw_denominator_support > 0
