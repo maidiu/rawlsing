@@ -1,6 +1,6 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
-> **Existing HQ #960 / original S2-D transfer #991:** B delivered saved I03/I05 corrective candidate75e15218 (deliveryb23d8542), SAME A final counter actually launched. Five Batch/normal/resume readers unimplemented pending ownerACK; full seven-reader task OPEN. Strictscope change pending original-semantics verification; no science/protected acceptance. Frozen S2-C immutable. See [pairedprogress](../CURRENT_PROGRESS.md). Q3/W03 paused; terminalnotifications only.
+> **Existing HQ #960 / original S2-D transfer #991:** A counter2b1f8d87 repaired lawful exactrelease scope rejection, preserves B fixes; distinct nonauthor G5 now actually running on frozen exactcode. Only I03/I05 implemented; five Batch/normal/resume readers still ownerACK holds, fullgoalOPEN. No allseven/G5/protected acceptance. See [pairedprogress](../CURRENT_PROGRESS.md). S2C immutable, Q3/W03paused, terminalevents only.
 
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
