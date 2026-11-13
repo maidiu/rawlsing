@@ -24,10 +24,11 @@ class Episode:
 class Option:
     key: str
     carrier: Optional[str]
-    serves_care: int               # world-model prospective effect {-1, 0, +1}
+    serves_care: int               # ACTOR-ACCESSIBLE expected effect {-1, 0, +1}; may be false
     effort: int = 0                # actor's real effort cost, not moral judgment
     danger: int = 0                # objective risk/cost, not inference from sponsor
     feasible: bool = True
+    actual_effect: int = 0         # OBJECTIVE world effect; intentionally NOT read by choose()
 
 
 @dataclass(frozen=True)
@@ -93,6 +94,14 @@ def choose(s, options, *, available_effort=10):
             "ranking": [{"key": o.key, "score": score(s, o)} for o in ranked]}
 
 
+def perform_world(world, selected_key, options):
+    """Toy fictional-world operation, distinct from actor expected consequences."""
+    option = next(o for o in options if o.key == selected_key)
+    assert option.feasible
+    return {"care_balance": world["care_balance"] + option.actual_effect,
+            "admitted_performed": selected_key}
+
+
 def history(stage):
     # Names are TEST FIXTURE positions, not assigned kinds of people or trajectory labels.
     seq = [Episode("C0", "claim", "I", True, words="Protect those entrusted to us"),
@@ -153,6 +162,12 @@ def run():
     check("Rival learning hypotheses produce prospective choices rather than narrative tags",
           lambda: assert_ne(choose(learn(history(2), LearningHypothesis(practice_uptake=0)), [neutral, helpful_I])["chosen"],
                             choose(portable, [neutral, helpful_I])["chosen"]), results)
+    check("Objective outcome can contradict actor expectation without retroactively changing choice",
+          lambda: assert_eq(choose(portable, [neutral, Option("I_help_misfires", "I", +1, effort=1, actual_effect=-1)])["chosen"], "I_help_misfires"), results)
+    check("Performed outcome changes world independently of the actor's predicted benefit",
+          lambda: assert_eq(perform_world({"care_balance": 2}, "I_help_misfires", [Option("I_help_misfires", "I", +1, effort=1, actual_effect=-1)])["care_balance"], 1), results)
+    check("Contrary world effect cannot leak into actor's learned state without reception",
+          lambda: assert_eq(learn(history(0) + [Episode("B3", "performed", "I", False, -1, True)]).practiced_care, before.practiced_care), results)
     check("No fixed 'Horizon stage' exists in learned actor state",
           lambda: assert_eq(set(vars(portable).keys()), {'practiced_care', 'carrier_association', 'heard_claims', 'accessible_events', 'unseen_outcomes'}), results)
     print(json.dumps({"grade":"SOURCEFREE_TOY_NOT_PRODUCT", "tests_passed":len(results),
