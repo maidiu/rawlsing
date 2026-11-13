@@ -1,0 +1,118 @@
+{
+  "schema": "PYAT998_ISSUED_OWNER_HANDOFF_ACK_R1",
+  "status": "ACK",
+  "contract_id": "PYAT998-ISSUED-OWNER-HANDOFF-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_998.md@cecfc154262eaa140d003e9e704811f44b940455",
+  "owner_session": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+  "owner_role": "Actual existing S1-D issued-workload/current/checkpoint owner",
+  "worktree": "pyat1002-source-steward",
+  "branch": "agent/pyat1002-source-steward-r1",
+  "startup_sha": "d4f0a6499432aa3186c0d92174fa228211759e44",
+  "prior_ack": {
+    "commit": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
+    "path": "WORKER_RETURNS/PYAT991_OWNER_HANDOFF/owner_ack.json",
+    "scope": "prior narrow S1-D issued-workload/Batch two-file handoff; preserved, not reopened here"
+  },
+  "authorization_timing": {
+    "prospective_receiving_ack": true,
+    "retroactive_authorization_fabricated": false,
+    "prior_authorization_time_rewritten": false,
+    "note": "This ACK is made from the current audit. It confirms the already-frozen staged block is ready for receiving prospectively; it does not claim the block was authorized at a9407f08 or earlier."
+  },
+  "staged_block": {
+    "file": "rawlsing_next/pre553_issued_workload.py",
+    "base_commit": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "base_blob": "b02810677ae66231e5e59b09aefe9bd63a31aaa3",
+    "base_sha256": "4c18d53ed8008b677ec019f9e85d960a36f95db996b930c022782062036c768f",
+    "staged_commit": "a9407f08f7e0efed32b4dba7f654b3906cbfb18a",
+    "staged_branch": "agent/pyat998-sourcefree-staging-r1",
+    "staged_blob": "5879c2b6690deb01c9442061bca9d9691988281f",
+    "staged_sha256": "5ce0bdfab33e5695f8f97ec884b45b23cdfeef1337ef1611d38f2270ac906499",
+    "diff_numstat": "15 additions, 0 deletions",
+    "diff_hunk": "single hunk: NativeWorkloadResult.exact_s2e_output_census only",
+    "exact_symbol": "NativeWorkloadResult.exact_s2e_output_census",
+    "signature": "def exact_s2e_output_census(self, *, require_complete: bool = True, runtime_catalog: RuntimeObjectCatalog | None = None)",
+    "behavior": "Lazy-imports census_native_batch from accepted S2-E pre553_s2e_exact_conservation and calls it on self.manifest, self.receipts, self.outputs_by_unit or {} with optional require_complete/runtime_catalog pass-through.",
+    "read_only": true,
+    "mints_source_science_current_completion_or_batch_facts": false,
+    "second_evaluator": false,
+    "accepted_s2e": {
+      "commit": "81a764cc7eac960f0fd607d9c3fe62428905daa4",
+      "module": "rawlsing_next/pre553_s2e_exact_conservation.py",
+      "blob": "2b843d1c717f069969b7558f0f184ceec3145010",
+      "sha256": "48c5d4e947193e09bccf994b4e744449cd58e813757d6491589ef9f86c28d34b",
+      "g5": "295619ea1cb57396899f759514d554061cb58ad9",
+      "relationship": "accepted read-only S2-E native output census composed into latest accepted S2-D issued path"
+    },
+    "provenance_manifest": "WORKER_RETURNS/PYAT998_STAGING/provenance_manifest.json",
+    "provenance_relationship": "exact S2-E read-only conservation method composed into latest accepted S2-D issued path",
+    "method_line_count": 15
+  },
+  "permitted_scope": {
+    "grant_kind": "ISSUED_WORKLOAD_FUNCTIONAL_ALLOCATION__NOT_S2E_SCIENTIFIC_OWNERSHIP__NOT_BATCH_AUTHORSHIP",
+    "receiving_integration_author_session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+    "receiving_integration_branch": "agent/pyat998-sourcefree-staging-r1",
+    "receiving_staged_head": "a9407f08f7e0efed32b4dba7f654b3906cbfb18a",
+    "exclusive_serial_lease": true,
+    "valid_until": "frozen integration receiving at the exact staged/integrated SHA and subsequent distinct nonauthor integrated G5; no competing worker write grant in this ACK",
+    "competing_worker_writes": "NONE_GRANTED_BY_THIS_ACK",
+    "permitted": "Use the exact existing frozen 15-line NativeWorkloadResult.exact_s2e_output_census method for receiving/read-only S2-E output census at the staged cut; no other product function or file is granted.",
+    "not_granted": "No source read, source/science/CURRENT/completion/Batch fact, new issuer/licence, protected merge, production CURRENT, W03/W04/Q3 restart, S2-E scientific ownership, Batch authorship, or qualified full integrated acceptance."
+  },
+  "jurisdiction": {
+    "basis": "A is the actual existing S1-D issued-workload/current/checkpoint owner; the symbol is an additive read-only method on NativeWorkloadResult in the S1-D-owned file, and the accepted S2-D execute/resume/current/checkpoint logic is unchanged.",
+    "actual_s1d_ancestry": "06c1213149e4649c62dcb6133669dec90cd4d29f",
+    "accepted_s2d_cut": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "s2e_scientific_owner": false,
+    "batch_author": false,
+    "new_owner_created": false,
+    "blocker": null
+  },
+  "no_loss_invariants": [
+    "Existing execute_issued_workload, resume_joined_workloads, JoinedWorkloadCheckpoint, capture_joined_checkpoint, restore/admit/current/checkpoint semantics are unchanged.",
+    "Normal, COMPLETED, PARTIAL and ABSENT receipts, prefixes, output refs, retry and cold-recovery conservation are unchanged.",
+    "Existing CurrentDecisionResolver API, issuer competence, host/purpose, envelope/source SHA/expected jobs/as-of, revocation and expiry semantics are unchanged.",
+    "No source factory, source-open, cache-hit, protected restore or serve path is added or bypassed by the new method.",
+    "No fallback to historical item.record, no stale permission, no fake seal, no second evaluator.",
+    "The method is read-only over existing manifest/receipts/outputs_by_unit; require_complete=False can audit an intentionally partial execution without converting it to completion.",
+    "No Batch runner, Batch scheduler, Batch receipt/state behavior, science math, operation/fate, expected-job or authority promotion is changed.",
+    "Existing tests remain read-only; no test weakening/deletion and no new product test in this owner acknowledgement."
+  ],
+  "scope_exclusions": [
+    "No edits to any product file; this ACK writes only owner_ack.json and 00_HANDOFF.md.",
+    "No edits to pre553_issued_workload.py beyond the exact existing 15-line block.",
+    "No edits to pre553_s2e_exact_conservation.py, tests, Batch, S2-C/D, science, source or other worker files.",
+    "No source/respondent bytes, source read/stat/hash/decode, test rerun or native execution.",
+    "No new grant/licence/issuer/host/purpose/retention; no generic user GO request.",
+    "No protected merge, production CURRENT, W03/W04/Q3 resume, original35/science/N11/N12/actor effect."
+  ],
+  "authority_boundaries": {
+    "engineering": "Owner ACK only; not independent G5 or integrated acceptance.",
+    "scientific": "S2-E scientific ownership remains with accepted S2-E; no claim.",
+    "authority": "Source/science/CURRENT/completion/Batch fact authority excluded.",
+    "integration": "UNMERGED; receiving author may use the exact block; distinct nonauthor integrated G5 remains separate.",
+    "frozen_public_selector_S2A": "UNAFFECTED",
+    "browser_source_question_1002": "UNAFFECTED",
+    "other_workers": "READONLY"
+  },
+  "write_scope": [
+    "WORKER_RETURNS/PYAT998_ISSUED_OWNER_HANDOFF/owner_ack.json",
+    "WORKER_RETURNS/PYAT998_ISSUED_OWNER_HANDOFF/00_HANDOFF.md"
+  ],
+  "no_r2_or_998_product_writes": true,
+  "no_source_read_or_test_rerun": true,
+  "confirmation": "ACK for the exact existing NativeWorkloadResult.exact_s2e_output_census block at staged blob 5879c2b66; prospective readiness for the named 998 receiving author; all S1-D/S2-D semantics and all source/science/authority holds preserved; no S2-E ownership, Batch authorship or integrated G5 claimed.",
+  "activity": {
+    "source_opens": 0,
+    "source_files_read": 0,
+    "source_bytes_read": 0,
+    "source_bytes_hashed": 0,
+    "source_decodes": 0,
+    "test_reruns": 0,
+    "native_executions": 0,
+    "product_code_edits": 0,
+    "new_issuers": 0,
+    "new_grants": 0,
+    "new_licences": 0
+  }
+}
