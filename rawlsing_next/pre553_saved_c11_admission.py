@@ -21,7 +21,7 @@ all-reader product.
 """
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any
 
@@ -30,7 +30,10 @@ from rawlsing_next.pre553_carrier_execution import (
     CarrierNeutralResearchExecutor,
     RuntimeObjectCatalog,
 )
-from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+from rawlsing_next.pre553_direct_estate_i03 import (
+    DirectEstateI03Session,
+    _ref_from_key,
+)
 from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
 from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
 from rawlsing_next.pre553_source_direct_parquet_estate import (
@@ -99,6 +102,7 @@ class SavedBindingReceipt:
     full_c11_repository_builds: int = 0
     full_c11_logical_release_builds: int = 0
     persistent_body_corpora: int = 0
+    counter_status: str = "DECLARED_ZERO__NOT_A_MEASUREMENT"
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -120,11 +124,40 @@ class SavedBindingReceipt:
             "full_c11_repository_builds": self.full_c11_repository_builds,
             "full_c11_logical_release_builds": self.full_c11_logical_release_builds,
             "persistent_body_corpora": self.persistent_body_corpora,
+            "counter_status": self.counter_status,
         }
 
 
+def _mapping(value: Any, name: str) -> Mapping[str, Any]:
+    if not isinstance(value, Mapping):
+        raise SavedC11AdmissionError(f"{name} must be an exact mapping")
+    return value
+
+
+def _sequence(value: Any, name: str) -> Sequence[Any]:
+    if isinstance(value, (str, bytes, bytearray)) or not isinstance(value, Sequence):
+        raise SavedC11AdmissionError(f"{name} must be a sequence")
+    return value
+
+
 class SavedC11Admission:
-    """One exact accepted S2-C estate with bounded native I03/I05 consumers."""
+    """One exact accepted S2-C estate with bounded native I03/I05 consumers.
+
+    The bound estate/release/catalog are private-and-frozen after construction.
+    Reassigning any binding field is a refusal, not a silent retarget.  A direct
+    constructor also re-verifies the supplied estate into a private reader, so a
+    caller mutation of the object it passed cannot retarget an already-open
+    admission.
+    """
+
+    __slots__ = (
+        "_estate",
+        "_release_ref",
+        "_runtime_catalog",
+        "_executor",
+        "_universe_ref",
+        "_frozen",
+    )
 
     def __init__(
         self,
@@ -141,21 +174,79 @@ class SavedC11Admission:
             raise SavedC11AdmissionError("exact reconstructed v1 release ref required")
         if type(runtime_catalog) is not RuntimeObjectCatalog:
             raise SavedC11AdmissionError("exact RuntimeObjectCatalog required")
+        # Snapshot by re-verifying the exact pins into a private reader object.
+        # A caller cannot retarget this admission by mutating the estate it still
+        # holds after construction.
+        private_estate = VerifiedDirectEstate(
+            estate.root,
+            exact_path=estate.directory,
+            independently_held_manifest_sha256=estate.held_manifest_sha256,
+            independently_held_i02=estate.i02,
+            current_authorizer=estate._authorize,
+        )
+        self._initialize(private_estate, release_ref, runtime_catalog)
+
+    @classmethod
+    def _from_verified_estate(
+        cls,
+        estate: VerifiedDirectEstate,
+        release_ref: ExactRef,
+        runtime_catalog: RuntimeObjectCatalog,
+    ) -> "SavedC11Admission":
+        """Internal fast path for an estate just verified by ``open``."""
+
+        if type(estate) is not VerifiedDirectEstate:
+            raise SavedC11AdmissionError(
+                "exact accepted VerifiedDirectEstate required; no duck repository"
+            )
+        self = cls.__new__(cls)
+        self._initialize(estate, release_ref, runtime_catalog)
+        return self
+
+    def _initialize(
+        self,
+        estate: VerifiedDirectEstate,
+        release_ref: ExactRef,
+        runtime_catalog: RuntimeObjectCatalog,
+    ) -> None:
+        if type(release_ref) is not ExactRef:
+            raise SavedC11AdmissionError("exact reconstructed v1 release ref required")
+        if type(runtime_catalog) is not RuntimeObjectCatalog:
+            raise SavedC11AdmissionError("exact RuntimeObjectCatalog required")
         if release_ref != estate.reconstructed_v1_release_ref:
             raise SavedC11AdmissionError(
                 "saved release ref differs from the estate's reconstructed v1 identity"
             )
-        self.estate = estate
-        self.release_ref = release_ref
-        self.runtime_catalog = runtime_catalog
+        # Private catalog snapshot: later mutation of the caller's catalog object
+        # cannot replace the workload bound to this admission.
+        private_catalog = RuntimeObjectCatalog(
+            authorities=tuple(runtime_catalog.authorities),
+            predicates=tuple(runtime_catalog.predicates),
+            queries=tuple(runtime_catalog.queries),
+            discovery_authorities=tuple(runtime_catalog.discovery_authorities),
+        )
         # Constructing the existing carrier performs the exact type, release,
         # current and catalog checks without asking for a C11 repository.
-        self._executor = CarrierNeutralResearchExecutor(
+        executor = CarrierNeutralResearchExecutor(
             repository=estate,
             release_refs=(release_ref,),
-            runtime_catalog=runtime_catalog,
+            runtime_catalog=private_catalog,
         )
-        self.estate._live()
+        universe_ref = _ref_from_key(
+            estate.i02.universe, "EmpiricalUniverse@1.0.0"
+        )
+        object.__setattr__(self, "_estate", estate)
+        object.__setattr__(self, "_release_ref", release_ref)
+        object.__setattr__(self, "_runtime_catalog", private_catalog)
+        object.__setattr__(self, "_executor", executor)
+        object.__setattr__(self, "_universe_ref", universe_ref)
+        object.__setattr__(self, "_frozen", True)
+        estate._live()
+
+    def __setattr__(self, name: str, value: Any) -> None:
+        if getattr(self, "_frozen", False):
+            raise SavedC11AdmissionError("saved admission binding is immutable")
+        object.__setattr__(self, name, value)
 
     @classmethod
     def open(
@@ -178,43 +269,104 @@ class SavedC11Admission:
             independently_held_i02=independently_held_i02,
             current_authorizer=current_authorizer,
         )
-        return cls(
-            estate=estate,
-            release_ref=release_ref,
-            runtime_catalog=runtime_catalog,
-        )
+        return cls._from_verified_estate(estate, release_ref, runtime_catalog)
 
     @property
     def manifest_sha256(self) -> str:
-        return self.estate.held_manifest_sha256
+        return self._estate.held_manifest_sha256
 
     @property
     def i02(self) -> ExternalI02Roots:
-        return self.estate.i02
+        return self._estate.i02
 
     @property
     def estate_path(self) -> str:
-        return self.estate.directory.as_posix()
+        return self._estate.directory.as_posix()
 
     def binding_receipt(self) -> SavedBindingReceipt:
         return SavedBindingReceipt(
             schema="PYAT991_S2D_SAVED_C11_ADMISSION@1",
             manifest_sha256=self.manifest_sha256,
             i02=self.i02,
-            release_ref=self.release_ref,
+            release_ref=self._release_ref,
             estate_path=self.estate_path,
-            runtime_catalog=self.runtime_catalog.receipt(),
+            runtime_catalog=self._runtime_catalog.receipt(),
         )
+
+    def _require_query_scope(self, query: Any) -> None:
+        universes = tuple(
+            sorted(
+                {
+                    exact_ref(value, "query.empirical_universe_refs")
+                    for value in query.empirical_universe_refs
+                },
+                key=lambda ref: ref.key,
+            )
+        )
+        if universes != (self._universe_ref,):
+            raise SavedC11AdmissionError(
+                "saved consumer query is not the exact admitted estate universe"
+            )
+        scopes = {
+            exact_ref(value, "query.scope_refs").key
+            for value in getattr(query, "scope_refs", ())
+        }
+        if scopes != {self._universe_ref.key}:
+            raise SavedC11AdmissionError(
+                "saved consumer query scope is not the exact admitted estate universe"
+            )
+
+    def _require_predicate_scope(self, predicate: Any) -> None:
+        scopes = {
+            exact_ref(value, "predicate.scope_refs").key
+            for value in getattr(predicate, "scope_refs", ())
+        }
+        if scopes != {self._universe_ref.key}:
+            raise SavedC11AdmissionError(
+                "saved consumer predicate scope is not the exact admitted estate universe"
+            )
+
+    def _require_discovery_scope(self, authority: Any) -> None:
+        definition = _mapping(
+            authority.candidate_universe_definition,
+            "discovery candidate_universe_definition",
+        )
+        for raw in _sequence(definition.get("atoms", ()), "discovery atoms"):
+            atom = _mapping(raw, "discovery atom")
+            predicate = self._runtime_catalog.resolve_predicate_exact(
+                atom.get("predicate_ref")
+            )
+            self._require_predicate_scope(predicate)
+        for raw in _sequence(
+            definition.get("query_templates", ()), "discovery query templates"
+        ):
+            template = _mapping(raw, "discovery query template")
+            query = self._runtime_catalog.resolve_query_exact(
+                template.get("query_ref")
+            )
+            self._require_query_scope(query)
+        source_scope = getattr(authority, "source_universe_scope", None)
+        if isinstance(source_scope, Mapping):
+            allowed = source_scope.get("allowed_universe_refs")
+            if isinstance(allowed, (tuple, list, set, frozenset)) and allowed:
+                allowed_keys = {
+                    exact_ref(value, "discovery allowed universe").key
+                    for value in allowed
+                }
+                if self._universe_ref.key not in allowed_keys:
+                    raise SavedC11AdmissionError(
+                        "saved discovery authority does not allow the admitted estate universe"
+                    )
 
     def resolve_release_exact(self, ref: ExactRef) -> SavedReleaseIdentity:
         """Identity-only exact release resolution for a future Batch handoff."""
 
         exact = exact_ref(ref, "saved_batch_release_ref")
-        if exact != self.release_ref:
+        if exact != self._release_ref:
             raise SavedC11AdmissionError(
                 "saved Batch release ref is not the exact admitted release"
             )
-        return SavedReleaseIdentity(self.release_ref)
+        return SavedReleaseIdentity(self._release_ref)
 
     def execute_i03(
         self,
@@ -224,14 +376,18 @@ class SavedC11Admission:
     ) -> Any:
         """Run the existing native I03 owner against the bounded saved estate."""
 
-        self.estate._live()
+        self._estate._live()
+        query = self._runtime_catalog.resolve_query_exact(query_ref)
+        predicate = self._runtime_catalog.resolve_predicate_exact(predicate_ref)
+        self._require_query_scope(query)
+        self._require_predicate_scope(predicate)
         result = self._executor.execute_i03(
-            query_ref=query_ref,
-            predicate_ref=predicate_ref,
+            query_ref=query.ref,
+            predicate_ref=predicate.ref,
             group_scope=None,
         )
         # Never serve a result after a revocation that happened mid-query.
-        self.estate._live()
+        self._estate._live()
         return result
 
     def execute_i05(
@@ -247,23 +403,24 @@ class SavedC11Admission:
         introduced.
         """
 
-        self.estate._live()
-        authority = self.runtime_catalog.resolve_discovery_authority_exact(
+        self._estate._live()
+        authority = self._runtime_catalog.resolve_discovery_authority_exact(
             discovery_authority_ref
         )
-        with DirectEstateI03Session(self.estate) as session:
+        self._require_discovery_scope(authority)
+        with DirectEstateI03Session(self._estate) as session:
             result = execute_exact_bounded_discovery(
                 repository=session,
                 discovery_authority=authority,
-                authority_registry=self.runtime_catalog.authority_registry,
-                release_refs=(self.release_ref,),
-                predicate_catalog=self.runtime_catalog.predicates,
-                query_template_catalog=self.runtime_catalog.queries,
+                authority_registry=self._runtime_catalog.authority_registry,
+                release_refs=(self._release_ref,),
+                predicate_catalog=self._runtime_catalog.predicates,
+                query_template_catalog=self._runtime_catalog.queries,
                 group_scope=None,
             )
         # The session checked current at every materialization; this final
         # check prevents release/serve after a mid-result revocation.
-        self.estate._live()
+        self._estate._live()
         return result
 
 
