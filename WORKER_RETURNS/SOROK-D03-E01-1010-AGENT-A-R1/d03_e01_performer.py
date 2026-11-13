@@ -296,6 +296,11 @@ def run_d03_e01_first_batch(
         if _execution_code_closure()["hash"] != execution_code_closure["hash"]:
             _refuse("E01_EVENT_WRITE_EXECUTION_SOURCE_CHANGED")
 
+    # A's post-provider and per-event checks were necessary but too late for
+    # an already-pending P3 operation: they still spent a provider call, then
+    # permanently HELD a new cycle despite knowing writes were inadmissible.
+    # Refuse before creating the batch journal, cycle reservation or model call.
+    precommit_custody()
     original_p2_write_owner = P3CoordinatedP2Owner(
         owner, owner.base_owner, event_write_custody,
     )
