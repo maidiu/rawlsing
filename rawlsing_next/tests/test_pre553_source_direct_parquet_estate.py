@@ -271,3 +271,40 @@ def test_forged_posting_rehashed_under_same_i02_detected(tmp_path, changed_field
                   if changed_field == "respondent" else first.scoped_respondent_ref)
     with pytest.raises(DirectEstateError, match="posting disagrees with exact native body"):
         tuple(cold.select_events(respondent))
+
+
+def test_corrupt_locator_before_publication_refused(tmp_path, monkeypatch):
+    """G1/G3: matched census and valid native bodies cannot hide a false selector."""
+    import rawlsing_next.pre553_source_direct_parquet_estate as estate
+
+    candidate, direct = _source("S2C-PREBIND")
+    root = tmp_path / "private-prebind"
+    root.mkdir(mode=0o700)
+    add = estate._IndexSink.add
+    changed = {"done": False}
+
+    def poisoned_add(self, row, group, offset):
+        if not changed["done"]:
+            row = dict(row)
+            row["respondent"] = candidate.empirical_universes[0].ref.key
+            changed["done"] = True
+        return add(self, row, group, offset)
+
+    monkeypatch.setattr(estate._IndexSink, "add", poisoned_add)
+    with pytest.raises(DirectEstateError, match="event posting/body/direct I02 parity"):
+        write_direct_estate(
+            direct, candidate.empirical_universes[0].ref, root, chunk_rows=1,
+        )
+    assert changed["done"]
+    assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
+
+
+def test_every_emitted_family_cold_reconstructs_at_its_exact_census(tmp_path):
+    """G1: no empty placeholder family may stand in for its actual body set."""
+    root, _, receipt = _write(tmp_path, "S2C-THIRTEEN-BODIES")
+    cold = _open(root, receipt)
+    for family, expected_count in receipt.family_counts.items():
+        objects = tuple(cold.iter_family(family, batch_size=1))
+        assert len(objects) == expected_count, family
+        assert all(type(obj).__name__ == family for obj in objects)
+        assert len({obj.ref.key for obj in objects}) == expected_count, family
