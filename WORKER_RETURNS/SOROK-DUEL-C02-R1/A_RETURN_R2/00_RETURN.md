@@ -1,3 +1,5 @@
+> **Superseded B02 status (A relay R3):** B02's actual incremental owner is now available (`period_progress`, `materialize_to`, `read_material_period`) and B proves two chronological parent periods plus source severance on the prepared composition. The `PARENT_B02_FULL_PROOF_HOLD`/current-period-only statements below are historical for this earlier cut; the current A consumer evidence is under `WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/`.
+
 # SOROK C02 Agent A relay return
 
 - **Task:** C02 live-root parent background + B02 current-period ingress.

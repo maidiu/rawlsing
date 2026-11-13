@@ -1,0 +1,147 @@
+{
+  "task_id": "C03/C04",
+  "phase": "CG-C",
+  "branch": "codex/sorok-duel-c03-c04-a-consumer-20261112-r1",
+  "implementation_sha": "61f2918ec947e44dd7ecff8fd3359734469e9a90",
+  "composition_start_sha": "01b2d2d23259969778ce996f5527037d666f46f8",
+  "opponent_frozen_sha": "1510d835fcf0a35a5b352b27f4daf4b1f0bb6b34",
+  "opponent_implementation_sha": "255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "results": [
+    {
+      "event_id": "SOROK-DUEL-C03-A-LOCK-COMPOSITION-20261112-R1",
+      "ABIclass": "BREAKING_INTERFACE_REPAIR_WITHIN_PARENT_OWNER",
+      "source_changes": [
+        "parent_decision.perform_parent_decision now acquires B04 _purchase_lock then parent lock and calls the actual unlocked B04 writer",
+        "parent_decision._perform_parent_decision_locked"
+      ],
+      "actual_consumer": "run_p4 parent-perform and B C03 perform/replay/stale tests",
+      "preserved": [
+        "decision revalidation under one lock composition",
+        "one actual B04 purchase/no duplicate debit",
+        "P4 foreground lock and B05 rent lock separate"
+      ],
+      "regressed": [
+        "B04 private _purchase_lock/_purchase_drum_kit is a precise dependency/hook",
+        "no SIGKILL/composite recovery"
+      ],
+      "evidence": [
+        "Pre-repair bounded subprocess probe timed out at 120 s.",
+        "Post-repair B C02/C03/C04 11 passed in 261.31 s.",
+        "A C03/C04 3 passed in 60.45 s."
+      ]
+    },
+    {
+      "event_id": "SOROK-DUEL-C03-A-PURCHASE-HISTORY-20261112-R1",
+      "ABIclass": "COMPATIBLE_ADDITIVE_TYPED_PURCHASE_HISTORY",
+      "source_changes": [
+        "parent_activity typed P2_PARENT_PURCHASE validation and exact duplicate bridge suppression"
+      ],
+      "actual_consumer": "parent_activity.read_parent_material/read_parent_history/parent_feasible_actions and C03 perform",
+      "preserved": [
+        "actual B04 purchase before/after/root/actor/currency/stock/ownership/receipt provenance",
+        "strict before-after source chain",
+        "bridge not adopted; no duplicate history"
+      ],
+      "regressed": [
+        "B04 currency guard remains Pair1-owned; B04/B05 default tests fail real mismatch",
+        "no full P3 batch/B05 rent budget reconciliation"
+      ],
+      "evidence": [
+        "A C03/C04 purchase history purchase_count=1, bridge absent from history, fake bridge refused.",
+        "B 11 tests green.",
+        "B04/B05 3 failed/1 passed at currency boundary."
+      ]
+    },
+    {
+      "event_id": "SOROK-DUEL-C04-A-CONSUMER-20261112-R1",
+      "ABIclass": "NEW_CONSUMER_SOURCEFREE_ACTOR_EXPERIENCE",
+      "source_changes": [
+        "parent_speech.read_child_experience",
+        "run_p6 child-experience normal P6 consumer and CLI seam"
+      ],
+      "actual_consumer": "run_p6.experience child-experience using situated.recent_speech and actual C12 child speech receipt",
+      "preserved": [
+        "hidden reason/hash and decision basis not child-facing",
+        "user view/say distinct from Nadia hearing",
+        "bounded same-room access condition explicit",
+        "C12 receipt custody not memory/durable uptake"
+      ],
+      "regressed": [
+        "text/hidden reason remain caller inputs; no parent language generation owner",
+        "no P3 actor-decision context/durable uptake/native rule",
+        "MI/P5/P6 exposure unextended"
+      ],
+      "evidence": [
+        "A C03/C04 3 passed.",
+        "Same outward text/two hidden reasons equivalent public input; no hidden/decision leak.",
+        "P6 view/say do not expose parent utterance; P3 head unchanged.",
+        "Remote/no receipt and missing own_speech refuse; severed event refuses while decision remains."
+      ]
+    }
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py@61f2918ec947e44dd7ecff8fd3359734469e9a90",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py@61f2918ec947e44dd7ecff8fd3359734469e9a90",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py@61f2918ec947e44dd7ecff8fd3359734469e9a90",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py@61f2918ec947e44dd7ecff8fd3359734469e9a90",
+    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py@01b2d2d23259969778ce996f5527037d666f46f8",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py@01b2d2d23259969778ce996f5527037d666f46f8 (consumed, not edited)",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py@01b2d2d23259969778ce996f5527037d666f46f8 (not edited)"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/a_c03_c04_consumer.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/b_c02_c03_c04.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/a_c02_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/c01_p2_p3.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/b01_b03.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/b02_period.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/p4_p5.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/evidence/b04_b05_currency.log"
+  ],
+  "negative_refs": [
+    "test_remote_unheard_and_source_severed_child_experience",
+    "test_currency_mismatch_refuses_before_b04_and_no_purchase_history",
+    "test_normal_live_parent_decision_action_speech_and_child_experience (hidden/decision/user-view negatives)",
+    "fake bridge without admitted purchase -> PARENT_MATERIAL_BRIDGE_NOT_ADOPTED",
+    "missing parent own_speech receipt -> CHILD_EXPERIENCE_PARENT_RECEIPT_MISSING"
+  ],
+  "cold_refs": [
+    "normal P6 child-experience/view/say open a fresh owner after parent speech; parent material/history/decision reads after reopen",
+    "same outward text two utterances hidden reasons; parent self reads distinct, child input equivalent"
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented.",
+    "measured_test_wall_s": {
+      "b_c02_c03_c04": 261.31,
+      "a_c03_c04_consumer": 60.45,
+      "a_c02_regression": 112.51,
+      "c01_p2_p3": 88.51,
+      "b01_b03": 108.6,
+      "b02_period": 54.59,
+      "p4_p5": 86.45,
+      "b04_b05_currency": 40.85
+    }
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  },
+  "proof_boundaries": [
+    "No native/MIII parent psychology, source/use rights, actor/human authority or protected merge.",
+    "C03 text/hidden reason remain caller-supplied; no general language-generation owner.",
+    "C04 response input is not durable psychological uptake/memory/native CAN rule.",
+    "B04 currency guard and B05 rent/budget integration remain Pair1-owned; B04/B05 default tests fail real currency mismatch.",
+    "No full P3 BatchEngine interleave/actor-decision context or P3 source closure.",
+    "No E03 SIGKILL composite recovery, fork/cold parent lineage or shared household economy.",
+    "No full-estate run; bounded affected suites only."
+  ]
+}

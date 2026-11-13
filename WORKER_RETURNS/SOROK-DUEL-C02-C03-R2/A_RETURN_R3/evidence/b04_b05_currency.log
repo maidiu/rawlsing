@@ -1,0 +1,398 @@
+FF.F                                                                     [100%]
+=================================== FAILURES ===================================
+____________ test_purchase_earns_c02_history_and_is_not_an_activity ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1380/test_purchase_earns_c02_histor0')
+
+    def test_purchase_earns_c02_history_and_is_not_an_activity(tmp_path):
+        state, owner, session = setup(tmp_path)
+        try:
+            holder = holder_id(session)
+            purchase = mo.purchase_drum_kit(
+                session, PARENT_ID, operation_id="b04:compose:1",
+                owner_actor_id=holder)
+            assert purchase["status"] == "ADMITTED"
+>           parent = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:605: in read_parent_material
+    return _read_material(session, parent_id=parent_id, as_actor=as_actor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:561: in _read_material
+    history = _parent_material_history(
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:490: in _parent_material_history
+    source = _purchase_history_source(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <s47.session.S47Session object at 0x105aa7810>
+episode = {'actor_id': 'P', 'body': {'actor_id': 'TEST_ONLY_B04_COMPOSE_PARENT', 'alias': 'P', 'branch': 'first_session', 'grade': 'SOURCEFREE_S2_ONLY', ...}, 'branch_id': 'first_session', 'clock': 279, ...}
+alias = 'P', parent_id = 'TEST_ONLY_B04_COMPOSE_PARENT'
+parent_currency = 'parent_sourcefree_currency_unit'
+root = 'd747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6'
+branch = 'first_session'
+
+    def _purchase_history_source(session, episode: Mapping[str, Any], *,
+                                 alias: str, parent_id: str,
+                                 parent_currency: str | None, root: str,
+                                 branch: str) -> str:
+        """Validate the exact B04 P2_PARENT_PURCHASE receipt for parent history.
+    
+        B04 owns the purchase writer. This is a narrow read-side acceptance of its
+        typed receipt, not a generic unknown-episode allowance and not a second
+        purchase/debit path.
+        """
+        body = episode.get("body") or {}
+        if (body.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+                or body.get("grade") != PARENT_GRADE
+                or body.get("root") != root
+                or body.get("branch") != branch
+                or body.get("actor_id") != parent_id
+                or body.get("alias") != alias):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        receipt = body.get("receipt")
+        if not isinstance(receipt, Mapping):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (receipt.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+                or receipt.get("parent_id") != parent_id
+                or receipt.get("parent_alias") != alias
+                or receipt.get("root") != root
+                or receipt.get("branch") != branch):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        status = receipt.get("status")
+        if status not in {"ADMITTED", "REFUSED"} or body.get("status") != status:
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        before = receipt.get("parent_material_source_before")
+        after = receipt.get("parent_material_source_after")
+        if not _hash_text(before) or not _hash_text(after):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if status == "REFUSED":
+            if (before != after
+                    or receipt.get("possession") != "NONE"
+                    or receipt.get("event_effect") != "NONE"):
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+            return before
+        if (receipt.get("possession") != "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"
+                or receipt.get("event_effect") != "NONE"
+                or receipt.get("clock") != episode.get("clock")):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        for field in ("purchase_source", "market_source_before",
+                      "market_source_after", "owned_source_after"):
+            if not _hash_text(receipt.get(field)):
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (receipt.get("owned_source_before") not in ("", None)
+                and not _hash_text(receipt.get("owned_source_before"))):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (not _text(receipt.get("object_id"))
+                or not _text(receipt.get("kind"))
+                or not _text(receipt.get("owner_actor_id"))
+                or not _nonneg_int(receipt.get("unit_price"))):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        expected_purchase_source = digest({
+            "schema": PARENT_PURCHASE_RECEIPT_SCHEMA,
+            "operation_id": body.get("operation_id"),
+            "parent_id": parent_id,
+            "owner_actor_id": receipt.get("owner_actor_id"),
+            "object_id": receipt.get("object_id"),
+            "unit_price": receipt.get("unit_price"),
+            "market_source": receipt.get("market_source_before"),
+            "parent_before": before,
+            "parent_after": after,
+        })
+        if receipt.get("purchase_source") != expected_purchase_source:
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        currency = receipt.get("currency_unit")
+        if not _text(currency):
+            raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+        if parent_currency is not None and currency != parent_currency:
+>           raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+E           developmental_recursion.contracts.RecursionRefusal: PARENT_PURCHASE_CURRENCY_MISMATCH
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:412: RecursionRefusal
+_ test_later_parent_activity_makes_purchase_replay_stale_without_double_debit __
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1380/test_later_parent_activity_mak0')
+
+    def test_later_parent_activity_makes_purchase_replay_stale_without_double_debit(tmp_path):
+        state, owner, session = setup(tmp_path)
+        try:
+            holder = holder_id(session)
+            mo.purchase_drum_kit(session, PARENT_ID, operation_id="b04:compose:stale",
+                                 owner_actor_id=holder)
+>           work = record_parent_activity(
+                session, PARENT_ID, operation_id="b04:compose:work",
+                activity="PAID_WORK", hours=2)
+
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:1167: in record_parent_activity
+    return _record_parent_activity(
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:1015: in _record_parent_activity
+    material = _read_material(session, parent_id=parent_id, as_actor=parent_id)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:561: in _read_material
+    history = _parent_material_history(
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:490: in _parent_material_history
+    source = _purchase_history_source(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <s47.session.S47Session object at 0x1061b4c10>
+episode = {'actor_id': 'P', 'body': {'actor_id': 'TEST_ONLY_B04_COMPOSE_PARENT', 'alias': 'P', 'branch': 'first_session', 'grade': 'SOURCEFREE_S2_ONLY', ...}, 'branch_id': 'first_session', 'clock': 279, ...}
+alias = 'P', parent_id = 'TEST_ONLY_B04_COMPOSE_PARENT'
+parent_currency = 'parent_sourcefree_currency_unit'
+root = 'd747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6'
+branch = 'first_session'
+
+    def _purchase_history_source(session, episode: Mapping[str, Any], *,
+                                 alias: str, parent_id: str,
+                                 parent_currency: str | None, root: str,
+                                 branch: str) -> str:
+        """Validate the exact B04 P2_PARENT_PURCHASE receipt for parent history.
+    
+        B04 owns the purchase writer. This is a narrow read-side acceptance of its
+        typed receipt, not a generic unknown-episode allowance and not a second
+        purchase/debit path.
+        """
+        body = episode.get("body") or {}
+        if (body.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+                or body.get("grade") != PARENT_GRADE
+                or body.get("root") != root
+                or body.get("branch") != branch
+                or body.get("actor_id") != parent_id
+                or body.get("alias") != alias):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        receipt = body.get("receipt")
+        if not isinstance(receipt, Mapping):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (receipt.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+                or receipt.get("parent_id") != parent_id
+                or receipt.get("parent_alias") != alias
+                or receipt.get("root") != root
+                or receipt.get("branch") != branch):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        status = receipt.get("status")
+        if status not in {"ADMITTED", "REFUSED"} or body.get("status") != status:
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        before = receipt.get("parent_material_source_before")
+        after = receipt.get("parent_material_source_after")
+        if not _hash_text(before) or not _hash_text(after):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if status == "REFUSED":
+            if (before != after
+                    or receipt.get("possession") != "NONE"
+                    or receipt.get("event_effect") != "NONE"):
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+            return before
+        if (receipt.get("possession") != "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"
+                or receipt.get("event_effect") != "NONE"
+                or receipt.get("clock") != episode.get("clock")):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        for field in ("purchase_source", "market_source_before",
+                      "market_source_after", "owned_source_after"):
+            if not _hash_text(receipt.get(field)):
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (receipt.get("owned_source_before") not in ("", None)
+                and not _hash_text(receipt.get("owned_source_before"))):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (not _text(receipt.get("object_id"))
+                or not _text(receipt.get("kind"))
+                or not _text(receipt.get("owner_actor_id"))
+                or not _nonneg_int(receipt.get("unit_price"))):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        expected_purchase_source = digest({
+            "schema": PARENT_PURCHASE_RECEIPT_SCHEMA,
+            "operation_id": body.get("operation_id"),
+            "parent_id": parent_id,
+            "owner_actor_id": receipt.get("owner_actor_id"),
+            "object_id": receipt.get("object_id"),
+            "unit_price": receipt.get("unit_price"),
+            "market_source": receipt.get("market_source_before"),
+            "parent_before": before,
+            "parent_after": after,
+        })
+        if receipt.get("purchase_source") != expected_purchase_source:
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        currency = receipt.get("currency_unit")
+        if not _text(currency):
+            raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+        if parent_currency is not None and currency != parent_currency:
+>           raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+E           developmental_recursion.contracts.RecursionRefusal: PARENT_PURCHASE_CURRENCY_MISMATCH
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:412: RecursionRefusal
+_______ test_recurring_rent_parent_work_and_purchase_change_later_inputs _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1380/test_recurring_rent_parent_wor0')
+
+    def test_recurring_rent_parent_work_and_purchase_change_later_inputs(tmp_path):
+        state = tmp_path / "state"
+        run_cmd(state, "new")
+        owner = open_owner(state)
+        try:
+            session = owner.base_owner.fanin.session
+            hp.establish_period_plan(session)
+            register_and_establish(session)
+            mo.establish_market_inventory(session)
+            holder = holder_id(session)
+            p3_head = owner.store.head()
+            baseline_household = house.read_household(session)
+            baseline_dwelling = house.read_dwelling(session)
+            baseline_junior = house.material_feasibility(
+                session, house.DRUM_KIT_REQUESTS["junior"])
+            assert baseline_household["resources"][1]["fields"]["cash"] == 55
+            assert baseline_junior["status"] == "ADMISSIBLE"
+    
+            period1 = hp.materialize_to(session, "2026-07-01")
+            assert period1["status"] == "MATERIALIZED"
+            assert hp.period_progress(session, "period:2026-h1")["status"] == "COMPLETE"
+            rent1 = rr.apply_household_rent(
+                session, operation_id="b05:rent:1", period_id="period:2026-h1")
+            assert rent1["status"] == "ADMITTED"
+            assert rent1["household_cash_before"] == 55
+            assert rent1["household_cash_after"] == 43
+            assert rent1["period_status"] == "COMPLETE"
+            assert rent1["scheduled_participation"] == "NOT_PERFORMED"
+            assert rent1["event_effect"] == "NONE"
+            assert rent1["public_event"] == "NOT_EMITTED"
+            assert rent1["household_document_source"] == baseline_household["source"]
+            assert rent1["dwelling_source"] == baseline_dwelling["source"]
+            assert house.read_dwelling(session)["source"] == baseline_dwelling["source"]
+            after_rent1 = house.material_feasibility(
+                session, house.DRUM_KIT_REQUESTS["junior"])
+            assert after_rent1["status"] == "REFUSED"
+            assert after_rent1["reasons"] == ["REFUSED_AFFORDABILITY"]
+            assert read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)["material"]["cash_units"] == 60
+    
+            work1 = record_parent_activity(
+                session, PARENT_ID, operation_id="b05:work:1",
+                activity="PAID_WORK", hours=2)
+            assert work1["status"] == "ADMITTED"
+            parent1 = read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)
+            assert parent1["material"]["cash_units"] == 70
+            assert parent1["material"]["free_hours"] == 6
+            assert house.read_household(session)["resources"][1]["fields"]["cash"] == 43
+            purchase1 = mo.purchase_drum_kit(
+                session, PARENT_ID, operation_id="b05:buy:1",
+                owner_actor_id=holder)
+            assert purchase1["status"] == "ADMITTED"
+            assert purchase1["parent_cash_before"] == 70
+            assert purchase1["parent_cash_after"] == 30
+            assert purchase1["parent_free_hours_after"] == 5
+            assert purchase1["period"]["period_id"] == "period:2026-h2"
+            assert house.read_household(session)["resources"][1]["fields"]["cash"] == 43
+            assert house.read_dwelling(session)["source"] == baseline_dwelling["source"]
+            assert mo.read_owned_objects(session)["totals"][0]["quantity"] == 1
+            assert mo.read_market_inventory(session)["items"][0]["quantity"] == 1
+    
+            period2 = hp.materialize_to(session, "2027-01-01")
+            assert period2["status"] == "MATERIALIZED"
+            assert hp.period_progress(session, "period:2026-h2")["status"] == "COMPLETE"
+            rent2 = rr.apply_household_rent(
+                session, operation_id="b05:rent:2", period_id="period:2026-h2")
+            assert rent2["status"] == "ADMITTED"
+            assert rent2["household_cash_before"] == 43
+            assert rent2["household_cash_after"] == 31
+>           assert read_parent_material(session, PARENT_ID, as_actor=PARENT_ID)["material"]["cash_units"] == 30
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:605: in read_parent_material
+    return _read_material(session, parent_id=parent_id, as_actor=as_actor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:561: in _read_material
+    history = _parent_material_history(
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:490: in _parent_material_history
+    source = _purchase_history_source(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <s47.session.S47Session object at 0x1066ae6d0>
+episode = {'actor_id': 'P', 'body': {'actor_id': 'TEST_ONLY_B05_PARENT', 'alias': 'P', 'branch': 'first_session', 'grade': 'SOURCEFREE_S2_ONLY', ...}, 'branch_id': 'first_session', 'clock': 429, ...}
+alias = 'P', parent_id = 'TEST_ONLY_B05_PARENT'
+parent_currency = 'parent_sourcefree_currency_unit'
+root = 'd747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6'
+branch = 'first_session'
+
+    def _purchase_history_source(session, episode: Mapping[str, Any], *,
+                                 alias: str, parent_id: str,
+                                 parent_currency: str | None, root: str,
+                                 branch: str) -> str:
+        """Validate the exact B04 P2_PARENT_PURCHASE receipt for parent history.
+    
+        B04 owns the purchase writer. This is a narrow read-side acceptance of its
+        typed receipt, not a generic unknown-episode allowance and not a second
+        purchase/debit path.
+        """
+        body = episode.get("body") or {}
+        if (body.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+                or body.get("grade") != PARENT_GRADE
+                or body.get("root") != root
+                or body.get("branch") != branch
+                or body.get("actor_id") != parent_id
+                or body.get("alias") != alias):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        receipt = body.get("receipt")
+        if not isinstance(receipt, Mapping):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (receipt.get("schema") != PARENT_PURCHASE_RECEIPT_SCHEMA
+                or receipt.get("parent_id") != parent_id
+                or receipt.get("parent_alias") != alias
+                or receipt.get("root") != root
+                or receipt.get("branch") != branch):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        status = receipt.get("status")
+        if status not in {"ADMITTED", "REFUSED"} or body.get("status") != status:
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        before = receipt.get("parent_material_source_before")
+        after = receipt.get("parent_material_source_after")
+        if not _hash_text(before) or not _hash_text(after):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if status == "REFUSED":
+            if (before != after
+                    or receipt.get("possession") != "NONE"
+                    or receipt.get("event_effect") != "NONE"):
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+            return before
+        if (receipt.get("possession") != "OBJECT_STOCK_AND_OWNERSHIP_WRITTEN"
+                or receipt.get("event_effect") != "NONE"
+                or receipt.get("clock") != episode.get("clock")):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        for field in ("purchase_source", "market_source_before",
+                      "market_source_after", "owned_source_after"):
+            if not _hash_text(receipt.get(field)):
+                raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (receipt.get("owned_source_before") not in ("", None)
+                and not _hash_text(receipt.get("owned_source_before"))):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        if (not _text(receipt.get("object_id"))
+                or not _text(receipt.get("kind"))
+                or not _text(receipt.get("owner_actor_id"))
+                or not _nonneg_int(receipt.get("unit_price"))):
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        expected_purchase_source = digest({
+            "schema": PARENT_PURCHASE_RECEIPT_SCHEMA,
+            "operation_id": body.get("operation_id"),
+            "parent_id": parent_id,
+            "owner_actor_id": receipt.get("owner_actor_id"),
+            "object_id": receipt.get("object_id"),
+            "unit_price": receipt.get("unit_price"),
+            "market_source": receipt.get("market_source_before"),
+            "parent_before": before,
+            "parent_after": after,
+        })
+        if receipt.get("purchase_source") != expected_purchase_source:
+            raise RecursionRefusal("PARENT_MATERIAL_HISTORY_MISMATCH")
+        currency = receipt.get("currency_unit")
+        if not _text(currency):
+            raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+        if parent_currency is not None and currency != parent_currency:
+>           raise RecursionRefusal("PARENT_PURCHASE_CURRENCY_MISMATCH")
+E           developmental_recursion.contracts.RecursionRefusal: PARENT_PURCHASE_CURRENCY_MISMATCH
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py:412: RecursionRefusal
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_purchase_earns_c02_history_and_is_not_an_activity
+FAILED WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_later_parent_activity_makes_purchase_replay_stale_without_double_debit
+FAILED WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py::test_recurring_rent_parent_work_and_purchase_change_later_inputs
+3 failed, 1 passed in 40.85s
