@@ -313,3 +313,71 @@ def test_source_realization_witness_must_agree_before_native_join(
             resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
             runner=runner,
         )
+
+
+@pytest.mark.parametrize("attack", ["missing_emission", "unresolved_routing", "measure_preimage"])
+def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
+    tmp_path, attack,
+):
+    """A's summary/census are kept favorable while physical Q2 detail is forged.
+
+    This is a negative-first preservation test: the unexecuted Batch runner is
+    intentional because Q2 contradictions must be refused before promotion.
+    """
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / ("agent-b-" + attack)
+    )
+    manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    candidates = [
+        row for row in handoff.operation_fates
+        if row["disposition"] == "ELIGIBLE" and row["source_realized"] is True
+    ]
+    if attack == "unresolved_routing":
+        candidates = [
+            row for row in candidates
+            if any(w["family"] == "RespondentEvent" and w["emitted"] > 0
+                   for w in row["source_realization"])
+        ]
+    target = next(iter(candidates))
+    forged_row = dict(target)
+    if attack == "missing_emission":
+        key = target["source_realization"][0]["key"]
+        forged_row["source_realization"] = tuple(
+            {**w, "emitted": 0} if w["key"] == key else w
+            for w in target["source_realization"]
+        )
+        refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+    elif attack == "unresolved_routing":
+        witness = next(
+            w for w in target["source_realization"]
+            if w["family"] == "RespondentEvent" and w["emitted"] > 0
+        )
+        forged_row["source_realization"] = tuple(
+            {**w, "routing_unresolved": True} if w is witness else w
+            for w in target["source_realization"]
+        )
+        refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+    else:
+        source_preimage = dict(target["source_preimage"])
+        source_preimage["measure"] = {
+            **source_preimage["measure"],
+            "weight_ref": "FORGED_WEIGHT_MEASURE",
+        }
+        forged_row["source_preimage"] = source_preimage
+        refusal = "Q2_MEASURE_PREIMAGE_CONTRADICTION"
+    forged = replace(
+        handoff, operation_fates=tuple(
+            forged_row if row["operation_id"] == target["operation_id"] else row
+            for row in handoff.operation_fates
+        ),
+    )
+    with pytest.raises(SourceReceiptJoinError, match=refusal):
+        join_saved_source_operation_fates(
+            handoff=forged, estate_receipt=estate, admission=admission,
+            compilation=compilation, workload=compilation.issued.workload,
+            resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+            runner=runner,
+        )
