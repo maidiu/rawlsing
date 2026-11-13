@@ -1,4 +1,10 @@
-"""Q2 B-role native selector bridge: real on Linux, typed host hold on Darwin."""
+"""Q2 B-role native selector bridge: real on Linux, typed host hold on Darwin.
+
+The body repository is the sealed C11 release reconstructed directly from the
+Q2 body tee.  No second source decode and no legacy full-object comparator are
+used; the existing direct certificate selectors are installed over the same Q2
+bodies.
+"""
 from __future__ import annotations
 
 import os
@@ -9,43 +15,41 @@ import pytest
 from rawlsing_next._pre553_external_i02_certificate import (
     ExternalI02IntegrityError,
 )
-from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_objects import RespondentEvent
-from rawlsing_next.pre553_r157_projection_adapter import (
-    build_validated_c11_release_from_config,
-    decode_fixture_config,
-)
 from rawlsing_next.pre553_source_i02_handoff import open_direct_native_i03
+from rawlsing_next.tests.test_pyat960_s1e_native_fact import (
+    _build_native,
+    _native_fixture,
+)
 from rawlsing_next.tests.test_pyat960_s1e_support import (
-    build,
     event_refs_from_certificate,
-    source_fixture,
 )
 
 
 def test_s1e_q2_certificate_drives_native_selector_when_host_capable(tmp_path):
-    fixture = source_fixture(tmp_path / "native")
-    handoff = build(tmp_path / "native", fixture, name="native.sqlite")
-    incidence = decode_fixture_config(fixture["config"], fixture["path"])
-    try:
-        legacy = build_validated_c11_release_from_config(
-            fixture["config"], incidence=incidence, batch_size=4)
-    finally:
-        incidence.close()
-    repository = C11Repository((legacy,))
+    fixture = _native_fixture(tmp_path / "native")
+    handoff, release, source = _build_native(
+        tmp_path / "native", fixture, fixture["document"], "native.sqlite")
+    assert handoff.body_transport is not None
+    assert source["body_release_built_from_q2_tee"] is True
+    assert handoff.stats.source_reads == 1
+    assert handoff.stats.decode_calls == 1
+    assert handoff.stats.full_c11_builds == 0
+
+    repository = source["repo"]
     if not os.path.isdir("/proc/self/fd"):
         with pytest.raises(
             ExternalI02IntegrityError,
             match="Linux /proc/self/fd|descriptor-pinned",
         ):
             open_direct_native_i03(
-                handoff, repository, legacy.release_ref)
+                handoff, repository, release.release_ref)
         return
 
     reader = open_direct_native_i03(
-        handoff, repository, legacy.release_ref)
+        handoff, repository, release.release_ref)
     try:
-        key = (legacy.release_ref, handoff.universe_ref)
+        key = (release.release_ref, handoff.universe_ref)
         index = repository._i03_release_indices[key]
         certificate_events = event_refs_from_certificate(
             Path(handoff.destination))

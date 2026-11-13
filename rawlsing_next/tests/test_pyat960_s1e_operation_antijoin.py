@@ -1,6 +1,7 @@
 """Q2 B-role source/operation/fate anti-join and no-drop courts."""
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -171,3 +172,50 @@ def test_s1e_operation_fates_are_realization_not_labels(tmp_path):
         assert preimage["u_item_ref"]
         assert row["native_first_reader_state"].startswith("HOLD_DEPENDENCY")
         assert row["issued_receipt_refs"] == ()
+
+
+def test_s1e_returned_operation_fates_preserve_measure_and_weight_fates(tmp_path):
+    """G5 defect 2: the returned ledger, not just the frontier, keeps measure."""
+    fixture = source_fixture(
+        tmp_path / "measure-fates",
+        values=(0.0, 1.0, 0.0, 1.0, 0.0),
+    )
+    handoff = build(tmp_path / "measure-fates", fixture, name="fates.sqlite")
+    rows = tuple(handoff.operation_fates)
+    assert Counter(row["measure_kind"] for row in rows) == {
+        "SAMPLE": 16,
+        "POPULATION": 6,
+    }
+    for row in rows:
+        measure = row["source_preimage"]["measure"]
+        assert row["measure_kind"] == measure["measure_kind"]
+        assert row["measure_id"] == measure["measure_id"]
+        assert row["weight_ref"] == measure["weight_ref"]
+        assert row["estimand"] == measure["estimand"]
+        assert row["design_ref"] == measure["design_ref"]
+        assert row["variance_policy"] == measure["variance_policy"]
+        preimage = row["source_preimage"]
+        assert preimage["source_sha256"] == handoff.source_sha256
+        assert preimage["operation_hash"] == row["operation_hash"]
+        assert preimage["operation_hash_matches"] is True
+        assert preimage["source_id"]
+        assert preimage["wave"]
+        assert preimage["edition"]
+        assert "instrument_ref" in preimage
+        assert "universe_scope" in preimage
+
+    sample = [row for row in rows if row["measure_kind"] == "SAMPLE"]
+    population = [row for row in rows if row["measure_kind"] == "POPULATION"]
+    assert len(sample) == 16
+    assert len(population) == 6
+    assert {row["disposition"] for row in population} == {"HELD"}
+    assert {row["disposition"] for row in sample} == {"ELIGIBLE", "HELD"}
+    # The fixture truth: RAW sample operations remain valid without invented
+    # weights; population estimators remain held with exact owner fields.
+    assert all(row["weight_ref"] is None for row in sample)
+    assert all(row["weight_ref"] is None for row in population)
+    assert all(row["estimand"] for row in sample)
+    assert all(row["estimand"] for row in population)
+    assert all(row["variance_policy"] for row in sample)
+    assert all(row["design_ref"] is None for row in sample)
+    assert all(row["design_ref"] is None for row in population)
