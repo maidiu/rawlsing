@@ -19,6 +19,7 @@ selects a motive or a member of that list.
 from __future__ import annotations
 
 import hashlib
+import inspect
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -26,6 +27,7 @@ from developmental_recursion.contracts import RecursionRefusal, detached, digest
 from developmental_recursion.engine import BatchEngine
 from developmental_recursion.model_cycle import RecursionCycle
 from post_provider_guard import GuardedProvider
+from owner_custody import P3CoordinatedP2Owner
 
 SCHEMA = "SOROK_D03_E01_P2_PERFORMANCE@1"
 CONTEXT_SCHEMA = "SOROK_D03_E01_ACTOR_ACCESS_CONTEXT@1"
@@ -140,6 +142,37 @@ def _context(joined: Mapping[str, Any], identity: Mapping[str, Any]) -> dict:
     return body
 
 
+def _execution_code_closure() -> dict:
+    """Pin the new adapter, B guard and owner lease absent from J1 closure.
+
+    The frozen repo commit is the durable source authority; this protects
+    against source/path substitution during a single live provider/write.
+    It does NOT make arbitrary disk writes atomic with an actor event.
+    """
+    home = Path(__file__).resolve().parent
+    files = [
+        ("d03_e01_performer.py", home / "d03_e01_performer.py", None),
+        ("post_provider_guard.py", home / "post_provider_guard.py", GuardedProvider),
+        ("owner_custody.py", home / "owner_custody.py", P3CoordinatedP2Owner),
+    ]
+    rows = []
+    for label, path, source_class in files:
+        if not path.is_file():
+            _refuse("E01_EXECUTION_SOURCE_MISSING:" + label)
+        if source_class is not None:
+            try:
+                loaded = Path(inspect.getfile(source_class)).resolve()
+            except (TypeError, OSError):
+                _refuse("E01_EXECUTION_IMPORT_SOURCE_UNAVAILABLE:" + label)
+            if loaded != path.resolve():
+                _refuse("E01_EXECUTION_IMPORT_SOURCE_MISMATCH:" + label)
+        rows.append({
+            "file": label,
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        })
+    return {"files": rows, "hash": digest(rows)}
+
+
 def _actual_readback(session: Any, records: Any, identity: Mapping[str, Any]) -> list[dict]:
     if not isinstance(records, list) or not 3 <= len(records) <= 5:
         _refuse("E01_BATCH_NOT_THREE_TO_FIVE_REALIZED")
@@ -209,6 +242,7 @@ def run_d03_e01_first_batch(
         _refuse("E01_REAL_PROVIDER_REQUIRED")
     if Path(journal_path).resolve() == Path(cycle_path).resolve():
         _refuse("E01_JOURNAL_AND_CYCLE_COLLIDE")
+    execution_code_closure = _execution_code_closure()
     joined = j1_join.compose_j1(
         owner, session, child_id=child_id, speech_event_id=speech_event_id,
         utterance_receipt=utterance_receipt, plan=plan,
@@ -233,14 +267,39 @@ def run_d03_e01_first_batch(
     # RecursionCycle forwards the proposals to the P2 world writer. A's prior
     # post-batch head check could detect a stale P3 state only after a write.
     def precommit_custody() -> None:
+        if owner.store.pending():
+            _refuse("E01_POSTPROVIDER_P3_PENDING_OPERATION")
         if owner.store.head() != joined["immediate_uptake"]["store_head"]["after"]:
             _refuse("E01_POSTPROVIDER_P3_HEAD_CHANGED")
         if _identity(owner, owner.base_owner, session, child_id) != initial:
             _refuse("E01_POSTPROVIDER_OWNER_IDENTITY_CHANGED")
         if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
             _refuse("E01_POSTPROVIDER_J1_SOURCE_CHANGED")
+        if _execution_code_closure()["hash"] != execution_code_closure["hash"]:
+            _refuse("E01_POSTPROVIDER_EXECUTION_SOURCE_CHANGED")
 
-    engine = BatchEngine(owner.base_owner, journal_path)
+    # The B proxy checks at provider return, but cannot protect the gap
+    # between that check and each of BatchEngine's individual owner writes.
+    # P3Owner.realize itself takes _root_lock before P2Owner.realize; preserve
+    # the same order, while rechecking custody for EVERY admitted P2 event.
+    def event_write_custody() -> None:
+        if owner.store.pending():
+            _refuse("E01_EVENT_WRITE_P3_PENDING_OPERATION")
+        if owner.store.head() != joined["immediate_uptake"]["store_head"]["after"]:
+            _refuse("E01_EVENT_WRITE_P3_HEAD_CHANGED")
+        current = _identity(owner, owner.base_owner, session, child_id)
+        for key in ("root", "actor", "branch"):
+            if current["p2"][key] != initial["p2"][key]:
+                _refuse("E01_EVENT_WRITE_OWNER_IDENTITY_CHANGED")
+        if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
+            _refuse("E01_EVENT_WRITE_J1_SOURCE_CHANGED")
+        if _execution_code_closure()["hash"] != execution_code_closure["hash"]:
+            _refuse("E01_EVENT_WRITE_EXECUTION_SOURCE_CHANGED")
+
+    original_p2_write_owner = P3CoordinatedP2Owner(
+        owner, owner.base_owner, event_write_custody,
+    )
+    engine = BatchEngine(original_p2_write_owner, journal_path)
     try:
         batch = RecursionCycle(
             engine, GuardedProvider(provider, precommit_custody), cycle_path
@@ -264,12 +323,16 @@ def run_d03_e01_first_batch(
             "durable_formation": "MISSING_RULE",
             "motive_selection": "NOT_ASSERTED",
             "psychological_causation_by_d03": "NOT_ESTABLISHED",
-            "post_provider_precommit_custody": "P3_P2_J1_SOURCE_CHECKED",
+            "post_provider_precommit_custody": "P3_P2_J1_SOURCE_AND_PENDING_CHECKED",
+            "per_event_custody": "P3_ROOT_LOCK_PER_P2_REALIZE_ORIGINAL_ORDER",
+            "cross_owner_atomicity": "NOT_CLAIMED",
+            "p3_pending_operations": "REJECTED_BEFORE_EACH_P2_WRITE",
             "ordinary_unrelated_activity": "NOT_ESTABLISHED_BY_P2_CASE",
             "g2_historical_child_performance": "HELD_NOT_ESTABLISHED",
             "performed_event_owner_scope": "P2_PREBOUND_CASE_NOT_P3_PLAN",
             "distinct_later_actor_performance_reader": "NOT_ESTABLISHED",
             "source_closure": joined["source_closure"]["hash"],
+            "execution_code_closure": execution_code_closure["hash"],
             "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         }
         if not report["p3_head_unchanged"]:
