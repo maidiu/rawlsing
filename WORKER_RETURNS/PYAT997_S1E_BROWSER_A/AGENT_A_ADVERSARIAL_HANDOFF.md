@@ -72,3 +72,37 @@ Counts-only handoff (no bodies); re-decoding SAV/DTA or constructing a full resi
 STATUS: AUTHOR_CANDIDATE_CODE_COMMITTED; P0_NATIVE_POSITIVE_NOT_EXECUTED; P1_OPERATION_JOIN_NOT_EXECUTED; INDEPENDENT_G5_NOT_RUN; ORIGINAL35_SOURCE_RIGHTS_HELD; PROTECTED_UNMERGED.
 
 Browser B: FIRST obtain an actual authorized runner and execute the above focused/inherited tests, including true native first consumers. Independently inspect/repair a concrete defect in the same source descendant. Then submit a frozen tested SHA for separate nonauthor G5. Do not add a new architecture or checklist campaign, and do not count code/green author assertions as scientific acceptance.
+
+
+## R2 — Additional first-party hostile repairs after initial handoff
+
+**Code/test cut before this return-only addendum:** \`96812d91385af2d0ebf42e5533aab7afc402f77e\` (S1-E source, P1 join, focused tests and CI workflow). The earlier \`2346f...\` head is historical; it is NOT the current candidate. All work remains TEST_ONLY, author-side, unexecuted, and unreceived. No full native/source or protected grades have changed.
+
+**Five exact defects repaired inside original S1-E scope:**
+
+1. \`SourceSavedBodySink.finish\` originally equated Q2's source roster \`source_id\` with \`SourceReleaseManifest.source_artifact_id\`. The TEST_ONLY R157 source IDs deliberately differ from sealed \`R157_FIXTURE:<fixture_id>\` artifact IDs (directly verified in \`_active_identity\`); refusing their difference would make the requested legitimate fixture impossible. Compare pinned content SHA, manifest root, universe and complete I02 instead, retaining the independent source-level roster check in Q2.
+2. The new P1 \`join_saved_source_operation_fates\` independently cross-checks **all** preconsumer dispositions and claim classes against the existing \`GovernedFrontierCompilation.operation_dispositions\` and \`operation_claim_classes\`, rejecting HELD/UNKNOWN promotion or suppressed scientific rows as \`Q2_OPERATION_FATE_OR_CLAIM_PROMOTED\`. The original Q2 issuer/preimage audit remains authoritative; this is a separate downstream refusal, not a new issuer.
+3. The initial native first-reader integration test issued a Batch manifest containing only one discovery unit while P1 correctly required the exact entire \`record.expected_jobs\` census. The test now builds units from **every** real issued \`workload.requests\` and \`workload.discoveries\`; one successful discovery does not pretend to complete the issued Batch.
+4. P1 initially ran global R03 \`native_receipt_anti_join(plan, observed.receipts)\` on **each individual** discovery unit. A valid multi-discovery workload would be incorrectly rejected for missing candidates belonging to another unit. It now accumulates exact nonduplicate candidate receipts across all issued discoveries, executes global R03 only when every discovery job has a genuine completed native receipt, and preserves pending eligibility otherwise. Unexpected candidate IDs and duplicates refuse immediately. This preserves actual per-operation receipts, not a shared artificial completion bit.
+5. \`PostconsumerFateJoin.rows\` originally held mutable nested dictionaries from the shallow-frozen Q2 producer and could change *after* \`result_hash\` was computed. The sidecar now recursively snapshots/freezes every mapping and collection. Added hostile tests for false HELD promotion and post-hash nested-preimage mutation.
+
+**Additional native hostile probes:** \`rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py\` is a separate source→saved witness against the original Q2 fixture. It explicitly tests complete 13-family cold reconstruction, a single SAV/DTA source snapshot, changed source *cell*→actual saved native I03 changed full-domain cells→restore, missing journal event refusal and release/current pin refusal. It uses only TEST_ONLY query grammar, not an original35 scientific issuance. Existing author tests and accepted frozen S2-C/D files remain unchanged.
+
+**Run on a real Python 3.11+ sourcefree host (NOT executed in this session):**
+
+\`\`\`bash
+python -m pip install pytest pyarrow duckdb pandas pyreadstat
+PYTHONPATH=. python -m py_compile rawlsing_next/pre553_source_saved_body_bridge.py rawlsing_next/pre553_source_postconsumer_receipts.py
+PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py \
+  rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py \
+  rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py \
+  rawlsing_next/tests/test_pyat960_s1e_source_i02.py \
+  rawlsing_next/tests/test_pyat960_s1e_body_transport.py \
+  rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py \
+  rawlsing_next/tests/test_pre553_direct_estate_i03.py
+\`\`\`
+
+**Critical exact evidence ceiling:** Github Actions still reports FAILED zero-step jobs; no Python syntax/import, positive native fact, hostile refusal, changed/restore, full issuance, disk/RSS/cold latency or 100k/6GiB is claimed PASS at this cut. A missing runner is not source science or a native test failure. Further work must first run this test suite on an actual authorized host and repair reproducible defects; independent Browser B and separate G5 remain required. The P0 implementation is a credible bounded adapter, not yet an accepted P0 proof. P1 is implemented for subsequent hostile execution but NOT received. The original35 lineage/right/issuer issues stay separate holds. Frozen S2-C/D modules were not edited.
+
+**Immediate Browser B attack priorities:** challenge Q2→S2-C second I02 *physical* SHA equality and journal typed-object fidelity on real SAV/DTA, shared/multiple native discovery jobs, exact positive output/anti-join identity, optional RAW weights, HELD/UNKNOWN/no-false completion, and source CURRENT revocation. Verify native normal and COMPLETED/PARTIAL/ABSENT resume, process-tree peak RSS, temporary journal + S2-C scratch disk, retained bytes and cold query latency. Reject any claim of G5/full source proof from this author’s tests alone.
