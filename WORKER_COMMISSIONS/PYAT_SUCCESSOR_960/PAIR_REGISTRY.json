@@ -190,8 +190,8 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "PHASE1_DISTINCT_G5_RUNNING_FIVE_OWNER_HOLDS",
-      "job_id": "pyat991-s2d-phase1-g5-r01",
+      "state": "PHASE1_G5_REVISE_EXACT_SOURCE_SCOPE_REPAIR_RUNNING",
+      "job_id": "pyat991-s2d-g5-source-scope-repair-r01",
       "branch": "agent/pyat991-s2d-a-r1",
       "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
@@ -199,7 +199,7 @@
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "TERMINAL_FINAL_COUNTER_IDLE"
+          "state": "RUNNING_EXACT_G5_REPAIR"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -211,16 +211,16 @@
       "phase1_gate": "S2C_G5_SATISFIED; new modules authorized; shared-file edits await exact owner ACK",
       "S1E_continuation": "Necessary production handoff map included; scoped acceptance banked/full original OPEN",
       "launch": {
-        "job_id": "pyat991-s2d-phase1-g5-r01",
-        "child_pid": 50773,
-        "supervisor_pid": 50772,
-        "observer_pid": 50774,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-g5-r01",
+        "job_id": "pyat991-s2d-g5-source-scope-repair-r01",
+        "child_pid": 52409,
+        "supervisor_pid": 52408,
+        "observer_pid": 52410,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-g5-source-scope-repair-r01",
         "launch_is_not_completion": true
       },
       "actual_first_turn_metadata": {
-        "session": "ses_e30c25800ffeT8XbyTuHekRCme",
-        "message_id": "msg_1d462b8b2001pMjCP0J2BzmLtf",
+        "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+        "message_id": "msg_1d472efee001QWJugShivOiJ3M",
         "actual_model": {
           "id": "deepseek-v4.1-flash",
           "providerID": "opencode-go",
@@ -239,8 +239,11 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
         "branch": "agent/pyat991-s2d-g5-r1",
         "independence": "NEITHER_S2D_AUTHOR_NOR_REPAIRER; priorS2F/S2G reviewer only",
-        "state": "RUNNING_NONAUTHOR_REVIEW"
-      }
+        "state": "TERMINAL_REVISE_IDLE_SAME_RECHECK_NEXT"
+      },
+      "g5_delivery_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+      "g5_verdict": "REVISE_EXACT_DEFECT",
+      "bounded_post_g5_correction": "ONE_EXACT_SOURCE_SCOPE_CORRECTION_DISPATCHED"
     }
   ]
 }
