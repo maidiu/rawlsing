@@ -302,11 +302,11 @@ def _verify_emitted_physical_payloads(
                 raise DirectEstateError("event posting row-group topology differs")
             observed = 0
             for gid in range(physical.num_row_groups):
+                # All physical projection lanes are semantic obligations,
+                # including the R5 typed lane and repeated-event topology.
+                # Read exactly ONE bounded row group, never the whole table.
                 rows = physical.read_row_group(
-                    gid, columns=[
-                        "body_json", "ref", "family", "respondent",
-                        "native", "canonical", "component", "typed_state",
-                    ],
+                    gid, columns=_arrow_schema().names,
                 ).to_pylist()
                 postings = (locator.read_row_group(gid).to_pylist()
                             if locator is not None else None)
@@ -317,6 +317,25 @@ def _verify_emitted_physical_payloads(
                     if (type(obj) is not _FAMILIES[family]
                             or row["family"] != family or obj.ref.key != row["ref"]):
                         raise DirectEstateError("emitted canonical physical body/ref mismatch")
+                    expected_row = _row(family, obj)
+                    # Arrow float64 may canonicalize NaN payload bits: the
+                    # independent exact R5 raw_typed lane holds those bits.
+                    # Every other lane, including negative zero, must agree.
+                    for column, expected in expected_row.items():
+                        actual = row[column]
+                        if (column == "raw_float64" and type(expected) is float
+                                and expected != expected):
+                            if type(actual) is not float or actual == actual:
+                                raise DirectEstateError("physical raw float lane differs from body")
+                        elif column == "raw_float64" and type(expected) is float:
+                            import struct
+                            if (type(actual) is not float or
+                                    struct.pack("!d", actual) != struct.pack("!d", expected)):
+                                raise DirectEstateError("physical raw float lane differs from body")
+                        elif actual != expected:
+                            raise DirectEstateError(
+                                "physical typed/identity/occurrence lane differs from exact body"
+                            )
                     certified = db.execute(
                         "SELECT family,respondent,native,canonical,component,state "
                         "FROM main.objects WHERE ref=?", (row["ref"],),
