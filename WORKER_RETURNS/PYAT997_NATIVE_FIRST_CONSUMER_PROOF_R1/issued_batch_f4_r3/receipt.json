@@ -1,0 +1,194 @@
+{
+  "schema": "PYAT997_R3_ISSUED_BATCH_F4_RESUME_RECEIPT@1",
+  "task_id": "PYAT997-ISSUED-BATCH-F4-RESUME-PROOF-R3",
+  "branch": "agent/pyat997-native-proof-r1",
+  "startup_sha": "bf4e8c9a4f6586071689f3400ca3d24b2d5a0bb5",
+  "candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "status": "R3_ISSUED_QUERY_F4_RESUME_PASS_SCOPED__NOT_G5",
+  "product_edits": "NONE",
+  "canonical_test_edits": "NONE",
+  "canonical_product_diff": "EMPTY",
+  "sourcefree": true,
+  "original35_used": false,
+  "production_current_used": false,
+  "new_issuer_or_authority": false,
+  "1006_run": false,
+  "harness": {
+    "path": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/harness.py",
+    "proof": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/evidence/issued_batch_f4_resume.json",
+    "log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/evidence/harness_run.txt",
+    "fixture": "TEST_ONLY generated four-column SAV: q101, q102, q103, country; five respondents; no original35 bytes",
+    "fixture_provenance": "make_config + explicit q102/q103 response/physical/question/routing additions, then the existing _native_document authority/domain normalization",
+    "compiler": "existing compile_governed_frontier with policy j=3,k=2,d=1 and existing TEST_ONLY catalog; q101/q102/q103 joint query selected from compiler catalog"
+  },
+  "issued_workload": {
+    "query_units": 1,
+    "discovery_units": 1,
+    "query_ref": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8b27ab837310b04e2019e897f3b57a5c8e202cbaf4c1598f6dfb8c1621fb3aa7",
+    "source_qualified": true,
+    "test_only_issued_record": "Constructed with existing NativeWorkload / IssuedWorkloadRecord / TestOnlyDecisionResolver constructors from compiler plan+query; no production issuer, no fake authority, no catalog monkeypatch.",
+    "manual_direct_i03": false
+  },
+  "baseline": {
+    "source_sha256": "a1875643565211ad1d0f76d0f314cf38e618625ffc7dc46aed1c49677b09eafa",
+    "logical_root": "911bf8a3eca490366bfd4d633b9ae33fdcadfea9226ba86793c385a28480e937",
+    "stats": {
+      "source_reads": 1,
+      "decode_calls": 1,
+      "cell_passes": 1,
+      "full_c11_builds": 0,
+      "source_rows": 5,
+      "source_columns": 4,
+      "event_count": 15,
+      "coordinate_count": 5,
+      "weight_count": 0,
+      "cleanup_complete": true
+    },
+    "family_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 5,
+      "QuestionVariableBinding": 3,
+      "RespondentEvent": 15,
+      "RoutingEligibilityFact": 15,
+      "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "i03": {
+      "typed_state": "SUPPORTED",
+      "fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:1870057e3a5797bf9229708a4599a2b9c97fa780783315563bdd8a3e3dd40458"
+    },
+    "i05": {
+      "candidate_count": 150,
+      "covered_candidate_count": 150,
+      "receipt_count": 150
+    },
+    "batch": {
+      "units": 2,
+      "states": ["COMPLETED", "COMPLETED"],
+      "query_units": 1,
+      "discovery_units": 1,
+      "result_ref_count": 151
+    },
+    "normal": {
+      "units": 2,
+      "states": ["COMPLETED", "COMPLETED"],
+      "output_ref_count": 151
+    },
+    "partial": {
+      "prefix_units": 1,
+      "resumed_prefix": 1,
+      "resumed_completed": 0,
+      "output_ref_count": 151
+    },
+    "absent": {
+      "resumed_prefix": 1,
+      "resumed_completed": 0,
+      "output_ref_count": 151
+    },
+    "join": {
+      "result_hash": "6fcd3753d5931c3fb96e9d59481b7a3dfb5c207020e689c4c5002f66dd54d15d",
+      "operation_count": 2140,
+      "preconsumer_fate_counts": {"ELIGIBLE": 536, "HELD": 1076, "PROHIBITED": 528},
+      "positive_native_linked_operations": 147,
+      "native_discovery_candidates_exactly_joined": 150,
+      "pending_eligible_operations": 389,
+      "batch_units": 2,
+      "native_completed_units_rechecked": 2,
+      "issue_grants_created": 0,
+      "preconsumer_handoff_unchanged": true,
+      "independent_g5": "NOT_RUN"
+    },
+    "f4": {
+      "query_ref": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8b27ab837310b04e2019e897f3b57a5c8e202cbaf4c1598f6dfb8c1621fb3aa7",
+      "fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:1870057e3a5797bf9229708a4599a2b9c97fa780783315563bdd8a3e3dd40458",
+      "typed_state": "SUPPORTED",
+      "arity": 3,
+      "cell_count": 8,
+      "denominator": 5,
+      "cells": [
+        {"cell": ["0", "0", "0"], "raw_numerator_support": 1, "state": "OBSERVED_POSITIVE"},
+        {"cell": ["0", "0", "1"], "raw_numerator_support": 1, "state": "OBSERVED_POSITIVE"},
+        {"cell": ["0", "1", "0"], "raw_numerator_support": 1, "state": "OBSERVED_POSITIVE"},
+        {"cell": ["0", "1", "1"], "raw_numerator_support": 0, "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+        {"cell": ["1", "0", "0"], "raw_numerator_support": 0, "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+        {"cell": ["1", "0", "1"], "raw_numerator_support": 1, "state": "OBSERVED_POSITIVE"},
+        {"cell": ["1", "1", "0"], "raw_numerator_support": 0, "state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+        {"cell": ["1", "1", "1"], "raw_numerator_support": 1, "state": "OBSERVED_POSITIVE"}
+      ],
+      "same_respondent_joint": true,
+      "marginal_multiplication": false
+    }
+  },
+  "changed_and_restored": {
+    "changed_source_sha256": "1fb4c408f141afac7065396a0b079e2abb44eb343870478b3be08f2b7a258f76",
+    "changed_f4_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:7c5c3c635b04ea3ed79d45c95bb576c75c3f453c8908f2c8d6c75a74a7e2b0a0",
+    "changed_actual_batch_query_output": true,
+    "restored_source_sha256": "a1875643565211ad1d0f76d0f314cf38e618625ffc7dc46aed1c49677b09eafa",
+    "restored_f4_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:1870057e3a5797bf9229708a4599a2b9c97fa780783315563bdd8a3e3dd40458",
+    "restored_logical_root": "911bf8a3eca490366bfd4d633b9ae33fdcadfea9226ba86793c385a28480e937",
+    "restored_join_hash": "6fcd3753d5931c3fb96e9d59481b7a3dfb5c207020e689c4c5002f66dd54d15d",
+    "exact_baseline_bytes_reused": true
+  },
+  "fresh_process": {
+    "status": "PASS",
+    "producer": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/fresh_producer_3q.py",
+    "consumer": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/fresh_consumer_3q.py",
+    "launcher": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/run_fresh_process_proof_3q.py",
+    "proof": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/evidence/fresh_process_proof.json",
+    "run_log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/evidence/fresh_process_run.txt",
+    "producer_exit_before_consumer_start": true,
+    "source_deleted_before_consumer": true,
+    "consumer_source_opens": 0,
+    "consumer_full_c11_builds": 0,
+    "i03_facts_equal": true,
+    "i05_receipts_equal": true,
+    "batch_states_equal": true,
+    "batch_units": 2,
+    "i03_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:8c7071abe1a3470a33f6e2eef5412777803820dd2de0233aad7e11c4aa8a6c5f"
+  },
+  "negative_witnesses": {
+    "held_promotion_refusal": "Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT",
+    "frontier_refusal": "Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT",
+    "missing_receipts_no_positive": true,
+    "wrong_root_refusal": "DirectEstateError",
+    "revoked_current_refusal": "DirectEstateError:current source/operation authority refused"
+  },
+  "resource": {
+    "respondents": 5,
+    "retained_bytes": 626679,
+    "stage_bytes": 913399,
+    "parent_maxrss_bytes": 259137536,
+    "process_tree_note": "single native harness process; no child process was launched by this harness, so parent maxrss is the process-tree bound for this run",
+    "source_reads": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "parquet_members": 14,
+    "full_100k_6gib": "NOT_RUN"
+  },
+  "gates": {
+    "G1": "PASS_SCOPED: candidate code/test pins, custom TEST_ONLY fixture, compiler plan/query provenance, no product edit.",
+    "G2": "PASS_SCOPED: actual q101/q102/q103 issued Batch query output, cold I03/I05/Batch/NORMAL, changed source, exact restore; fresh producer/consumer proof.",
+    "G3": "PASS_SCOPED: actual same-respondent 3-target 8-cell F4, denominator 5, 147 positive linked operations, held/frontier/missing-receipt/wrong-root/revoked refusals.",
+    "G4": "PASS_SCOPED_SMALL: source read/decode/cell 1, full C11 0, retained 626,679 B, stage 913,399 B, parent 259,137,536 B; 100k NOT_RUN.",
+    "G5": "NOT_RUN: not an independent nonauthor acceptance."
+  },
+  "coverage_not_proved": [
+    "Original35 source rights/science and production CURRENT/issuer.",
+    "Universal 100k respondents / 6 GiB resource court.",
+    "Independent nonauthor G5 acceptance.",
+    "Any production Batch query authorization or source permission.",
+    "A genuine original Q2/35 source population or causal/structural claim."
+  ],
+  "engineering_grade": "R3_ISSUED_QUERY_F4_AND_SAVED_RESUME_EXECUTED_SCOPED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "TEST_ONLY_SOURCEFREE__NO_PRODUCTION_ISSUER_OR_CURRENT",
+  "disposition": "R3_SCOPED_PROOF_PASS__NOT_G5",
+  "known_session_cost": "UNKNOWN"
+}
