@@ -77,6 +77,88 @@ def _decision_body(session, parent_id: str, alias: str,
     return body
 
 
+
+def _verify_utterance_custody(session, body: Mapping[str, Any],
+                              episode_clock: int, *, parent_id: str,
+                              alias: str) -> dict:
+    """Re-derive C04 event and perception custody before replay/self-read.
+
+    A stored episode alone must never authorize replay of a severed event.
+    Historical child presence is the admission-time receipt, not her current
+    position. This is custody checking, not native actor/language authority.
+    """
+    root = session.read_root()["root_hash"]
+    event_id = body.get("event_id")
+    event_hash = body.get("event_hash")
+    receipt = body.get("receipt") or {}
+    if (body.get("root") != root or body.get("branch") != session.branch_id
+            or body.get("actor_id") != parent_id
+            or body.get("alias") != alias
+            or not _text(body.get("operation_id"))
+            or not _text(body.get("decision_id"))
+            or not _text(body.get("text"))
+            or not _text(event_id) or not _text(event_hash)):
+        raise RecursionRefusal("PARENT_UTTERANCE_CUSTODY_SEVERED")
+    event = session.event(event_id)
+    if (not isinstance(event, Mapping)
+            or event.get("event_id") != event_id
+            or event.get("hash") != event_hash
+            or event.get("kind") != "SPEECH"
+            or event.get("actor_id") != alias
+            or event.get("clock") != episode_clock
+            or (event.get("body") or {}).get("text") != body["text"]
+            or (event.get("body") or {}).get("decision_id")
+                != body["decision_id"]):
+        raise RecursionRefusal("PARENT_UTTERANCE_EVENT_SEVERED")
+    expected_source = digest({
+        "schema": PARENT_UTTERANCE_RECEIPT_SCHEMA,
+        "operation_id": body["operation_id"],
+        "decision_id": body["decision_id"],
+        "actor_id": parent_id,
+        "text": body["text"],
+        "clock": episode_clock,
+    })
+    if (event.get("body") or {}).get("utterance_source") != expected_source:
+        raise RecursionRefusal("PARENT_UTTERANCE_SOURCE_SEVERED")
+    if (receipt.get("event_id") != event_id
+            or receipt.get("event_hash") != event_hash
+            or receipt.get("event_authored_by") != alias
+            or receipt.get("actor_id") != parent_id
+            or receipt.get("root") != root
+            or receipt.get("branch") != session.branch_id
+            or receipt.get("clock") != episode_clock
+            or receipt.get("decision_id") != body["decision_id"]
+            or receipt.get("hidden_reason_hash")
+                != body.get("hidden_reason_hash")):
+        raise RecursionRefusal("PARENT_UTTERANCE_RECEIPT_SEVERED")
+    own = [
+        p for p in session.product.store.perceptions(session.branch_id, alias)
+        if p.get("event_id") == event_id and p.get("clock") == episode_clock
+        and p.get("channel") == "own_speech"
+    ]
+    if len(own) != 1:
+        raise RecursionRefusal("PARENT_UTTERANCE_OWN_SPEECH_SEVERED")
+    child_id = body.get("child_actor_id")
+    if not _text(child_id):
+        raise RecursionRefusal("PARENT_UTTERANCE_CHILD_ID_SEVERED")
+    child_alias = _child_alias(session, child_id)
+    if child_alias != body.get("child_alias"):
+        raise RecursionRefusal("PARENT_UTTERANCE_CHILD_ALIAS_SEVERED")
+    seen = [] if child_alias is None else [
+        p for p in session.product.store.perceptions(session.branch_id, child_alias)
+        if p.get("event_id") == event_id and p.get("clock") == episode_clock
+        and p.get("channel") == "speech"
+    ]
+    channel = body.get("child_perception_channel")
+    if (channel == "speech" and len(seen) != 1
+            or channel == "NOT_PERCEIVED" and len(seen) != 0
+            or channel not in {"speech", "NOT_PERCEIVED"}
+            or receipt.get("child_perception_channel") != channel):
+        raise RecursionRefusal("PARENT_UTTERANCE_CHILD_RECEIPT_SEVERED")
+    return dict(event)
+
+
+
 def perform_parent_utterance(session, parent_id: str, *, decision_id: str,
                              text: str, hidden_reason: Any,
                              operation_id: str) -> dict:
@@ -101,6 +183,9 @@ def perform_parent_utterance(session, parent_id: str, *, decision_id: str,
                     or body.get("text") != text
                     or body.get("hidden_reason_hash") != hidden_hash):
                 raise RecursionRefusal("PARENT_UTTERANCE_REUSE_MISMATCH")
+            _verify_utterance_custody(
+                session, body, existing[0]["clock"],
+                parent_id=parent_id, alias=alias)
             receipt = dict(body.get("receipt") or {})
             receipt["status"] = "REPLAY"
             return receipt
@@ -220,9 +305,9 @@ def read_parent_utterance(session, parent_id: str, operation_id: str, *,
     body = episodes[0].get("body") or {}
     if body.get("actor_id") != parent_id or body.get("alias") != alias:
         raise RecursionRefusal("PARENT_UTTERANCE_SEVERED")
-    event = session.event(body.get("event_id") or "")
-    if not event or event.get("hash") != body.get("event_hash"):
-        raise RecursionRefusal("PARENT_UTTERANCE_EVENT_SEVERED")
+    event = _verify_utterance_custody(
+        session, body, episodes[0]["clock"],
+        parent_id=parent_id, alias=alias)
     from s45_projection.projection import project_event
     projected = project_event(event)
     projected.pop("perceived_by_user", None)
