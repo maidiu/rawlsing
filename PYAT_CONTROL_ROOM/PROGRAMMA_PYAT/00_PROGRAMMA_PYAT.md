@@ -411,3 +411,8 @@ User authorizes originalS1E construction against exact provisional S1Cdae66cdf +
 ### #960 S03 readonly preflight recovery — 2026-11-12
 
 Q3 report `be61531acd388428896ab22ffd2f631ebb7d721c` recovered after runtimeexit1, no productchanges.48 function reuse entries/12oldobligationmappings; sourceexact directI02certificate lacksbody, needsQ2body-preserving singlepass co-production. Carryfindings toexistingQ2B, not newengine/task. Proposed physicalschema/sessiondetails remain proposals. Q3G2-G5NOT_RUN/writerheld, Q2actualauthorcontinues, no original35/science/current/protected authority gained.
+
+
+### #960 S01-S03 Q2 A candidate / fixed B — 2026-11-12
+
+Q2code `75d09e87dbaf8273fab3a5ece2bb7981328113ce` (delivery `f4aaf2b17c7519642bb0bcfc5987cf21f86a46af`) implements R157configuredsourcefreeSAV/DTA->typedspool->directI02manifest/operationfates; nativefirstreader remainsLinux/procHOLD. Deletedspool doesnotyetprovideQ3bodyinput. SamefixedB nowattacks/repairs exactdescendant withfullQ3read-onlyfindings inoriginalQ2scope; noQ2acceptance/Q3writer/protectedadoption. All priorupstream/source/science/currentholdsretained.

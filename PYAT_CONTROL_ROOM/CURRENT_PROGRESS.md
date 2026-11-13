@@ -1,3 +1,7 @@
+# Successor #960 Q2 A return / fixed B launched — 2026-11-12
+
+Q2 A delivery `f4aaf2b17c7519642bb0bcfc5987cf21f86a46af` / code `75d09e87dbaf8273fab3a5ece2bb7981328113ce`: sourcefreeSAV/DTA->R157->directI02 manifest/fates/change-restore, reports11Q2+inheritedgreen. NativeI03/Batch remainsLinux/procHOLD, notaccepted. Deletedbodyspool leavesQ3transportgap. SAMEfixedB nowlaunched on exactdescendant with fullA/Q3returns torepairbody-preservinghandoff and attackrealconservation; no sourceownerchanges or mockconsumer. Q3writerheld, Q1STOP, source/science/protectedholdsunchanged. Historical entries follow.
+
 # Successor #960 Q3 preflight recovered after runtime failure — 2026-11-12
 
 Q3 exited1 on OpenCode `Failed to execute statement` after writing requested reports, before commit. HQ banked return-only `be61531acd388428896ab22ffd2f631ebb7d721c`:48 function reuse entries/all12 old obligations, body-preserving Q2→Q3 mismatch and exact source witnesses. Four claimed standalone mirrors absent, explicitly recorded; substantive matrix/handoff retained, no product acceptance. Q2 author actually stillrunning, no restart. Q3 writer held original qualification gates; sameQ2B will consume full preflight at Areturn. Proposed layout/root/session details not new mandatory architecture. Auto-checks off. Historical entries follow.
