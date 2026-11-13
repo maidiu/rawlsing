@@ -1,6 +1,6 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
-> **Existing HQ #960 / original S2-D transfer #991:** two-file ownerACK b32f2156 received/currentblobsverified; priorownershipholdresolved for narrowBatch/issuedsavedintegration. OriginalS2DA actually implementingfive remainingreaders; existingI03/I05qualifiedgradebanked. Newimplementation goes to SAMEdistinctG5, no preflight/S2Crewrite/newarchitecture. FullgoalOPEN pendingcode/tests/independentallsevenreview. [Pairedprogress](../CURRENT_PROGRESS.md). Source/science/protectedholds/Q3/W03pauseunchanged, recurringwakesOFF.
+> **Existing HQ #960 / original S2-D transfer #991:** authorcandidate5df0bbdf implementsremainingfive andclaimsactualallseven,36focused+69nativePASS. SAMEdistinctG5 actually running NEWimplementationreview/fullsevenparity/current/checkpoint/resources; notHQacceptance. Two-fileACK received, S2Cimmutable. [Pairedprogress](../CURRENT_PROGRESS.md). FullgoalOPEN pendingG5, source/science/production/protectedholds/Q3W03pauseunchanged, recurringwakesOFF.
 
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
