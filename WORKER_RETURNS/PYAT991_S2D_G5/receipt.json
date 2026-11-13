@@ -1,0 +1,357 @@
+{
+  "task_id": "PYAT991-S2D-G5",
+  "packet_id": "S2-D",
+  "old_obligations": ["P2-05"],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "contract_frozen_at_sha": "d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "persona_role": "S2D_DISTINCT_NONAUTHOR_G5",
+  "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat991-s2d-g5-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
+  "exclusive_allowlist": "WORKER_RETURNS/PYAT991_S2D_G5/",
+  "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2c_tree": "dc416d1f23100d4d52b19bc2120226964bc0be43",
+  "a_prior_delivery_sha": "e399c48d576f5b2ae501dac569fb729e95bd968e",
+  "a_prior_implementation_sha": "55af65cc1a2df1d3eb82906a80434353735c5d50",
+  "b_delivery_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+  "b_code_cut_sha": "75e1521878ee1e4d4d661d8fdae6b80944d07f6c",
+  "tested_delivery_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+  "tested_code_cut_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+  "changed_paths": [
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/pre553_saved_workload_integration.py",
+    "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py",
+    "rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py",
+    "rawlsing_next/tests/test_pyat991_s2d_a_counter.py",
+    "WORKER_RETURNS/PYAT991_S2D_A/",
+    "WORKER_RETURNS/PYAT991_S2D_B/",
+    "WORKER_RETURNS/PYAT991_S2D_A_COUNTER/"
+  ],
+  "review_changed_paths": [
+    "WORKER_RETURNS/PYAT991_S2D_G5/receipt.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource_run.out",
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/"
+  ],
+  "source_blob_pins": {
+    "saved_admission": "7d1807be4e25cad18a6d0890b9a563ee04204ea9",
+    "saved_workload_integration": "fd3fa4378d2c15f85ee1fa0f68714307bc1de54c",
+    "a_counter_test": "dc24827df6e50b4cb65c8a5d0eb18cffb7c271bd",
+    "accepted_s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+    "accepted_s2c_tree": "dc416d1f23100d4d52b19bc2120226964bc0be43"
+  },
+  "source_ABI_owner": "Accepted S2-C VerifiedDirectEstate/DirectEstateI03Session, existing native I03/I05 owners, shared Batch/issued/checkpoint/current/Q2 owners, and all product/test/author files are read-only. New S2-D modules are the only S2-D code; no reviewer edit.",
+  "actual_first_consumer": "actual SavedC11Admission.execute_i03 -> CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query over the accepted S2-C estate; SavedC11Admission.execute_i05 -> execute_exact_bounded_discovery; actual first readers exercised in tests and in the independent scope witness.",
+  "evidence_grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL__SCOPE_FALSE_REFUSAL__FIVE_OWNER_BLOCKS",
+  "gates": {
+    "G1": {
+      "state": "FAIL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "Exact accepted-S2-C estate/release/catalog/binding and actual I03/I05 owners are present, but full S2-D G1 is not complete: only two of seven readers are actual, the five shared-reader owner ACKs are absent, and the implemented I03 scope preflight over-narrows lawful exact scope metadata, refusing the exact admitted SOURCE_ARTIFACT scope as foreign."
+    },
+    "G2": {
+      "state": "FAIL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "Actual cold/fresh I03 and I05 base/change/restore/negative paths pass, but Batch/NORMAL/COMPLETED/PARTIAL/ABSENT are BLOCKED_OWNERSHIP rather than executed, so the original two-level normal workload and resume criteria are not met."
+    },
+    "G3": {
+      "state": "FAIL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "B-D1/B-D2/B-D3, A-C01 and the I03/I05 current/root/body/foreign-universe/release refusals pass, but the independent G5 witness shows the saved admission refuses a valid exact admitted source-scope input; five shared-reader hostile/resume cases remain blocked."
+    },
+    "G4": {
+      "state": "FAIL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "I03/I05 fixture resources were measured (B probe run at this cut): retained 193570 B, peak staging 28672 B, 24 bounded object materializations, source opens 0 parent/child, full C11 builds 0, whole-table fallbacks 0, parent RSS 112869376 B, child RSS 52043776 B, cold I03/I05 0.0158/0.0261 s, repeat 0.0138/0.0265 s. Batch/NORMAL/resume resources and integrated 100k/6 GiB are NOT_RUN; accepted S2-C writer custody is prior evidence, not a new all-reader claim."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "PYAT991-S2D-G5 distinct nonauthor reviewer, session ses_e30c25800ffeT8XbyTuHekRCme; not A and not B",
+      "receipt": "26 focused tests pass and the two actual readers' base/change/restore paths reproduce, but the independent scope witness returns native SUPPORTED and saved admission REFUSED for the exact admitted source scope; five readers remain blocked. Closed outcome REVISE_EXACT_DEFECT; no ACCEPT_SCOPED, no all-seven pass."
+    }
+  },
+  "mandatory_case_ids": [
+    "I03_ACTUAL_COLD_NATIVE_PARITY",
+    "I05_ACTUAL_COLD_NATIVE_PARITY",
+    "I03_CHANGED_RESTORE",
+    "I05_CHANGED_RESTORE",
+    "I05_FRONTIER_NEGATIVE_VALIDEMPTY_MIXED",
+    "CURRENT_REVOCATION_WRONG_ROOT_MISSING_BODY",
+    "BATCH_OWNER_GUARD",
+    "NORMAL_OWNER_HOLD",
+    "COMPLETED_OWNER_HOLD",
+    "PARTIAL_OWNER_HOLD",
+    "ABSENT_OWNER_HOLD",
+    "G5_SCOPE_FALSE_REFUSAL",
+    "FOCUSED_26_REGRESSION",
+    "RESOURCE_FIXTURE_PROBE"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "I03_ACTUAL_COLD_NATIVE_PARITY",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py -q -o addopts=''",
+      "actual": "26 passed in 6.86s. Actual SavedC11Admission.execute_i03 returns the native fact/projection/ref with no C11Repository graph or pq.read_table fallback; fresh process exact."
+    },
+    {
+      "id": "I05_ACTUAL_COLD_NATIVE_PARITY",
+      "result": "PASS",
+      "command": "same 26 focused suite",
+      "actual": "Actual SavedC11Admission.execute_i05 returns the native candidate/frontier/facts/receipts/replay; valid zero and mixed supported+valid-empty frontier paths pass; no whole-table fallback."
+    },
+    {
+      "id": "I03_CHANGED_RESTORE",
+      "result": "PASS",
+      "command": "same 26 focused suite",
+      "actual": "Changed native I03 input changes the actual fact; exact restore reproduces the base fact identity."
+    },
+    {
+      "id": "I05_CHANGED_RESTORE",
+      "result": "PASS",
+      "command": "same 26 focused suite",
+      "actual": "Changed native I05 rows change facts/receipts/replay; exact restore reproduced in the B repair suite."
+    },
+    {
+      "id": "I05_FRONTIER_NEGATIVE_VALIDEMPTY_MIXED",
+      "result": "PASS",
+      "command": "same 26 focused suite",
+      "actual": "I05 zero/valid-empty/negative and mixed supported+valid-empty frontier paths pass; no false positive."
+    },
+    {
+      "id": "CURRENT_REVOCATION_WRONG_ROOT_MISSING_BODY",
+      "result": "PASS",
+      "command": "same 26 focused suite",
+      "actual": "Revoked current, wrong independently held manifest and missing body refuse; base restore exact."
+    },
+    {
+      "id": "BATCH_OWNER_GUARD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "same 26 focused suite; actual BatchExecutionRunner.__init__ guard",
+      "actual": "Existing Batch guard refuses the saved admission; no saved Batch execution is claimed."
+    },
+    {
+      "id": "NORMAL_OWNER_HOLD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "typed saved integration hold",
+      "actual": "execute_saved_normal raises S2D_NORMAL_OWNER_ACK_REQUIRED at pre553_issued_workload.py::execute_issued_workload."
+    },
+    {
+      "id": "COMPLETED_OWNER_HOLD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "typed saved integration hold",
+      "actual": "execute_saved_completed raises S2D_RESUME_OWNER_ACK_REQUIRED at resume_joined_workloads/JoinedWorkloadCheckpoint."
+    },
+    {
+      "id": "PARTIAL_OWNER_HOLD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "typed saved integration hold",
+      "actual": "execute_saved_partial raises S2D_RESUME_OWNER_ACK_REQUIRED; no saved partial resume."
+    },
+    {
+      "id": "ABSENT_OWNER_HOLD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "typed saved integration hold",
+      "actual": "execute_saved_absent raises S2D_RESUME_OWNER_ACK_REQUIRED; no saved absent resume."
+    },
+    {
+      "id": "G5_SCOPE_FALSE_REFUSAL",
+      "result": "FAIL",
+      "command": "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py <proofroot>",
+      "actual": "exit 0 with defect=true. Exact admitted SOURCE_ARTIFACT scope SOURCE-G5-ADMITTED-SOURCE-SCOPE / ab4de536...; native full-repository I03 SUPPORTED denominator 2 fact c2105164...; saved-estate native CarrierNeutralResearchExecutor I03 SUPPORTED same fact; saved base I03 SUPPORTED fact 064b866d...; saved admission REFUSED with SavedC11AdmissionError 'saved consumer scope contains a foreign scope reference'. Expected exact admitted source scope preserved; only foreign source/universe/release/authority refused."
+    },
+    {
+      "id": "FOCUSED_26_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py -q -o addopts=''",
+      "actual": "26 passed in 6.86s (7 accepted S2-C + 8 A + 9 B + 2 A counter). Author-reported 172/19 regressions are cited but not rerun; no reproduced regression required them."
+    },
+    {
+      "id": "RESOURCE_FIXTURE_PROBE",
+      "result": "PASS",
+      "command": "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 python3 WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py",
+      "actual": "Measured at current cut: retained 193570 B, peak root 193570 B, peak staging 28672 B, 24 object materializations, source opens 0 parent/0 child, full C11 builds 0, whole-table fallbacks 0, parent RSS 112869376 B, child RSS 52043776 B, cold I03/I05 0.0158/0.0261 s, repeat 0.0138/0.0265 s, I03 denominator 2, I05 1/1 candidate/fact 2/receipt 1; 100k/6 GiB integrated NOT_RUN."
+    }
+  ],
+  "seven_reader_status": {
+    "I03": "ACTUAL_COLD_BASE_CHANGE_RESTORE_PASS__SCOPE_FALSE_REFUSAL",
+    "I05": "ACTUAL_COLD_BASE_CHANGE_RESTORE_PASS",
+    "Batch": "BLOCKED_OWNERSHIP__pre553_batch_runner.py::BatchExecutionRunner.__init__",
+    "NORMAL": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::execute_issued_workload",
+    "COMPLETED": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint",
+    "PARTIAL": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint",
+    "ABSENT": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint"
+  },
+  "scope_witness": {
+    "id": "G5-S2D-SCOPE-WHITELIST",
+    "severity": "SEV-1",
+    "case": "Exact admitted SOURCE_ARTIFACT scope is rejected as foreign by SavedC11Admission._require_exact_scope_refs.",
+    "expected": "The saved admission preserves the exact admitted source artifact scope (and exact universe/release) as lawful exact scope metadata, while refusing foreign source/universe/release/authority scope.",
+    "actual": "Native full-repository I03 and the native saved-estate CarrierNeutralResearchExecutor both return SUPPORTED denominator 2 fact c2105164...; SavedC11Admission.execute_i03 raises SavedC11AdmissionError('saved consumer scope contains a foreign scope reference'). Base saved I03 remains SUPPORTED.",
+    "original_contract_basis": "EmpiricalQuerySpec.scope_refs and EmpiricalPredicate.scope_refs are required set-like exact scope references with no universe/release-only type whitelist; native I03 accepts the exact admitted source artifact. The S2-D G1 exact trust/permitted scope must not discard lawful exact scope metadata.",
+    "code_location": "rawlsing_next/pre553_saved_c11_admission.py::SavedC11Admission._require_exact_scope_refs, allowed={universe, release}; source artifact kind is outside that whitelist.",
+    "minimal_repair": "Allow the exact admitted source artifact ref derived from estate.i02.source (and exact universe/release); reject any other source/universe/release/authority scope. Add a focused regression. No native/shared owner edit is required.",
+    "evidence": "WORKER_RETURNS/PYAT991_S2D_G5/evidence/scope_witness_evidence.json and scope_witness_run.out"
+  },
+  "material_open_defects": [
+    {
+      "id": "G5-S2D-SCOPE-WHITELIST",
+      "severity": "SEV-1",
+      "gate": "G1 exact permitted scope / G3 hostile negative preservation",
+      "disposition": "REVISE_EXACT_DEFECT; exact admitted source scope is a valid native request and is refused by the implemented saved I03 boundary."
+    },
+    {
+      "id": "S2D-FIVE-READERS",
+      "severity": "SEV-1",
+      "gate": "G1/G2/G3/G4 all-seven readers",
+      "disposition": "BLOCKED_OWNERSHIP; Batch, NORMAL, COMPLETED, PARTIAL, ABSENT are not implemented and require exact shared-owner ACKs. Not an all-seven pass."
+    }
+  ],
+  "open_defects": [
+    {
+      "severity": "SEV-1",
+      "case": "G5-S2D-SCOPE-WHITELIST",
+      "disposition": "REVISE_EXACT_DEFECT; no reviewer patch; exact finding to HQ/owner."
+    },
+    {
+      "severity": "SEV-1",
+      "case": "S2D-FIVE-READERS",
+      "disposition": "BLOCKED_OWNERSHIP; exact shared-owner ACKs absent."
+    }
+  ],
+  "external_holds": [
+    {
+      "owner": "BatchExecutionRunner owner",
+      "minimal_missing_witness": "narrow ACK for pre553_batch_runner.py::BatchExecutionRunner.__init__ to accept exact SavedC11Admission or narrow saved repository and resolve SavedReleaseIdentity without a full C11 graph"
+    },
+    {
+      "owner": "S1-D/issued-workload owner",
+      "minimal_missing_witness": "narrow ACK for pre553_issued_workload.py::execute_issued_workload optional saved_admission path without source_factory/build_source_backed_c11_repository"
+    },
+    {
+      "owner": "S1-D/issued-workload checkpoint owner",
+      "minimal_missing_witness": "narrow ACK for resume_joined_workloads/JoinedWorkloadCheckpoint/capture_joined_checkpoint to bind saved estate and preserve completed/partial/absent current and receipts"
+    },
+    {
+      "owner": "S1-D native I03 scope owner",
+      "minimal_missing_witness": "exact scope decision for the native full-repository mixed-universe positive; saved adapter refuses it but the native owner still accepts"
+    },
+    {
+      "owner": "S1-D production current/revocation",
+      "minimal_missing_witness": "independent production current/as-of/revocation issuer; only TEST_ONLY callback exists"
+    },
+    {
+      "owner": "Q2/S1-E body-sink/fate owner",
+      "minimal_missing_witness": "accepted pre553_source_i02_handoff.py/streams.py body-sink and postconsumer native receipt/fate join; absent from accepted S2-C tree"
+    },
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; none read or claimed"
+    },
+    {
+      "owner": "Linux new-module runner",
+      "minimal_missing_witness": "new S2-D modules were not executed on Linux; Darwin-only evidence; accepted S2-C Linux producer evidence is prior, not a new-module claim"
+    },
+    {
+      "owner": "integrated 100k/6 GiB",
+      "minimal_missing_witness": "full integrated sourcefree workload; NOT_RUN"
+    },
+    {
+      "owner": "S2-B G5-R1 independent recheck",
+      "minimal_missing_witness": "independent verdict at 092db6...; not claimed"
+    }
+  ],
+  "resource_evidence": {
+    "fixture": "2 respondents / 2 events; synthetic sourcefree; not 100k",
+    "measurement": "NEWLY_MEASURED_AT_CURRENT_CUT",
+    "retained_disk_bytes": 193570,
+    "peak_root_tree_bytes": 193570,
+    "peak_staging_bytes": 28672,
+    "object_materializations": 24,
+    "source_opens_parent": 0,
+    "source_opens_child": 0,
+    "full_c11_builds": 0,
+    "whole_table_fallbacks": 0,
+    "cold_i03_seconds": 0.01583680599287618,
+    "repeat_i03_seconds": 0.013827481001499109,
+    "cold_i05_seconds": 0.026053673995193094,
+    "repeat_i05_seconds": 0.02646155300317332,
+    "child_cold_i03_seconds": 0.02027540600101929,
+    "child_cold_i05_seconds": 0.02972926400252618,
+    "parent_peak_rss_bytes": 112869376,
+    "child_process_peak_rss_bytes": 52043776,
+    "i03_fact_state": "SUPPORTED",
+    "i03_denominator": 2,
+    "i05_candidate_count": 1,
+    "i05_covered_count": 1,
+    "i05_fact_count": 2,
+    "i05_receipt_count": 1,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at fixture grade",
+    "integrated_100k_6GiB": "NOT_RUN",
+    "host": "Darwin/macOS Python 3.11.3; Linux new modules NOT_RUN",
+    "measurement_note": "Actual B-style probe adapted and run at this cut; parent/child single-process peaks, estate root/staging, bounded materializations and tripwires. Not a multi-process tree benchmark and not 100k."
+  },
+  "three_court_grades": {
+    "engineering": "REVISE_EXACT_DEFECT; independently proved actual I03/I05 base/change/restore subresult, but the exact admitted source scope is falsely refused and five readers remain blocked",
+    "scientific": "NONE_VERIFIED; TEST_ONLY sourcefree engineering only",
+    "authority": "HOLD; production current/as-of issuer and shared owner ACKs absent"
+  },
+  "original_gate_mapping": {
+    "original_G1": "FAIL/PARTIAL: exact I03/I05 binding exists, but the exact permitted scope is over-narrow and five readers are absent.",
+    "original_G2": "FAIL/PARTIAL: actual I03/I05 cold/change/restore pass; Batch/NORMAL/COMPLETED/PARTIAL/ABSENT not executed.",
+    "original_G3": "FAIL/PARTIAL: I03/I05 hostile refusals pass, but valid admitted-source scope is falsely refused and five-reader hostile/resume coverage is blocked.",
+    "original_G4": "PARTIAL: I03/I05 fixture resources measured; Batch/resume/100k/6 GiB NOT_RUN; accepted S2-C writer custody is prior.",
+    "original_G5": "REVISE_EXACT_DEFECT: distinct nonauthor receiver found the exact scope false refusal; no all-seven acceptance."
+  },
+  "abi": {
+    "classification": "LOCAL",
+    "detail": "New S2-D admission/integration modules and tests only; accepted S2-C/native/shared files are read-only. The scope repair is local to the new admission; no native/shared owner edit by reviewer.",
+    "affected_task_ids": ["S2-E", "S2-G", "S1-D", "S2-D"],
+    "breaking_interface": false,
+    "source_or_authority_change": false,
+    "scientific_hold": true
+  },
+  "independent_receiver_decision": "REVISE_EXACT_DEFECT",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "stop_state": "REVISE_EXACT_DEFECT",
+  "integration": "UNMERGED",
+  "integration_state": "UNMERGED",
+  "original_task_remaining_hold": "FULL_ORIGINAL_S2D_REMAINS_OPEN: only I03/I05 are actual; Batch/NORMAL/COMPLETED/PARTIAL/ABSENT are BLOCKED_OWNERSHIP; no all-seven ACCEPT_SCOPED, no production current/issuer, no original35/science, no 100k/6GiB, no protected merge. Q2/Q3 goal not complete.",
+  "next_turn": "HQ/owner receives exact G5-S2D-SCOPE-WHITELIST and the five-reader owner holds. Do not require a broad new A/B round; if authorized, one bounded repair of the exact admitted-source scope in the new adapter plus focused regression, then distinct G5 re-receipt. Preserve the five exact owner ACK holds. No reviewer patch, no extra benchmark, no promotion.",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/focused_26.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/scope_witness_evidence.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/scope_witness_run.out",
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/diffs.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/refs.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource_run.out",
+    "WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py"
+  ],
+  "review_commands": [
+    "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py -q -o addopts='' => 26 passed in 6.86s",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py <proofroot> => defect=true; native/saved-estate I03 SUPPORTED c2105164...; saved admission REFUSED 'saved consumer scope contains a foreign scope reference'",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 python3 WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py => measured fixture resources; source opens 0; 100k NOT_RUN"
+  ],
+  "signature": {
+    "signed_by_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "persona_role": "S2D_DISTINCT_NONAUTHOR_G5",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "tested_delivery_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+    "tested_code_cut_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+    "decision": "REVISE_EXACT_DEFECT",
+    "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+    "no_repair_performed": true,
+    "signed_at_utc": "2026-11-13T05:25:00Z"
+  }
+}
