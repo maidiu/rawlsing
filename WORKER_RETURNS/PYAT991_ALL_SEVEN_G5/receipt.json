@@ -1,7 +1,9 @@
 {
   "task_id": "PYAT991-S2D-G5-ALL-SEVEN",
   "packet_id": "S2-D",
-  "old_obligations": ["P2-05"],
+  "old_obligations": [
+    "P2-05"
+  ],
   "contract_id": "PYAT991-S2D-PHASE1-R1",
   "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
@@ -296,7 +298,8 @@
     "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/refs.txt",
     "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/owner_ack.json",
     "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/author_receipt.json",
-    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/author_resource.json"
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/author_resource.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/remote_verification.txt"
   ],
   "next_turn": "HQ/owner adjudicates the exact PARTIAL binding-order defect. No new A/B round, no reviewer repair, no optional scope expansion or protected merge. If authorized, correct only the PARTIAL ordering and add the missing regression, then freeze and have this distinct G5 re-receive.",
   "known_session_cost": "UNKNOWN",
@@ -311,6 +314,21 @@
     "decision": "REVISE_EXACT_DEFECT",
     "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
     "no_repair_performed": true,
-    "signed_at_utc": "2026-11-13T13:00:00Z"
+    "signed_at_utc": "2026-11-13T13:00:00Z",
+    "review_content_commit_sha": "8643e23a795c3a3373622e3b3b1ddc0c345d9bf7"
+  },
+  "remote_verification": {
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "review_content_commit_sha": "8643e23a795c3a3373622e3b3b1ddc0c345d9bf7",
+    "tested_code_cut_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+    "prior_g5_return_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+    "a_branch_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+    "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "code_diff_vs_tested_cut": "EMPTY",
+    "remote_receipt_json_valid": true,
+    "remote_handoff_present": true,
+    "reviewer_product_edits": false,
+    "verified_at_utc": "2026-11-13T13:05:00Z"
   }
 }

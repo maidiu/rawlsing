@@ -194,3 +194,11 @@ freeze and have this distinct G5 re-receive. No new A/B round, optional hardenin
 reviewer patch or protected merge. Stop finite.
 
 Return: `WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/`.
+
+## 10. Remote verification
+
+Review content commit **`8643e23a795c3a3373622e3b3b1ddc0c345d9bf7`** was pushed to
+`origin/agent/pyat991-s2d-g5-r1`. Direct remote verification found the tested product
+tree unchanged (`git diff --stat 5df0bbd..8643e23 -- rawlsing_next` empty), the remote
+receipt valid and the handoff present. A branch `5df0bbd`; B branch `b23d85428`.
+See `evidence/remote_verification.txt`.
