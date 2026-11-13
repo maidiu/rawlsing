@@ -1,0 +1,39 @@
+{
+  "checkpoint_prior_receipts": 1,
+  "checkpoint_state": "PARTIAL",
+  "crash_point": "after second actual BatchExecutionRunner.record_receipt inside native PARTIAL resume",
+  "crashed_child_killed_by_sigkill": true,
+  "crashed_child_returncode": -9,
+  "crashed_child_stderr": "",
+  "crashed_child_stdout": "",
+  "expected_output_refs": [
+    [
+      "EmpiricalFact@1.0.0",
+      "urn:rawlsing:pre553:EmpiricalFact:sha256:788fcdddec4f39d47f171f5a82917ef2c8bbd4e1d9c92c17a0598d3a4afa0102",
+      "788fcdddec4f39d47f171f5a82917ef2c8bbd4e1d9c92c17a0598d3a4afa0102"
+    ],
+    [
+      "EmpiricalFact@1.0.0",
+      "urn:rawlsing:pre553:EmpiricalFact:sha256:e790226bef6028288653f376e2c9bd90f02804dfeb838a40555aed0561d45072",
+      "e790226bef6028288653f376e2c9bd90f02804dfeb838a40555aed0561d45072"
+    ]
+  ],
+  "fixture": "S1-D/S3 sourcefree synthetic 4 respondents/2 occasions",
+  "fresh_resume_exact_full_output_refs": true,
+  "fresh_resume_returncode": 0,
+  "fresh_resume_stderr": "",
+  "note": "This kills actual native resume after a real pending receipt; it is not the author's JSON-load-only pre-resume dummy death.",
+  "recovered_output_refs": [
+    [
+      "EmpiricalFact@1.0.0",
+      "urn:rawlsing:pre553:EmpiricalFact:sha256:788fcdddec4f39d47f171f5a82917ef2c8bbd4e1d9c92c17a0598d3a4afa0102",
+      "788fcdddec4f39d47f171f5a82917ef2c8bbd4e1d9c92c17a0598d3a4afa0102"
+    ],
+    [
+      "EmpiricalFact@1.0.0",
+      "urn:rawlsing:pre553:EmpiricalFact:sha256:e790226bef6028288653f376e2c9bd90f02804dfeb838a40555aed0561d45072",
+      "e790226bef6028288653f376e2c9bd90f02804dfeb838a40555aed0561d45072"
+    ]
+  ],
+  "schema": "PYAT991_ALL_SEVEN_G5_NATIVE_CRASH_WITNESS@1"
+}

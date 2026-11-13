@@ -1,0 +1,67 @@
+{
+  "bounded_family_objects_yielded_parent_normal_partial": 15,
+  "child_results": {
+    "absent": {
+      "output_refs_equal_normal": true,
+      "process_tree_peak_rss_bytes": 182910976,
+      "process_tree_samples": 24,
+      "returncode": 0,
+      "stderr": ""
+    },
+    "completed": {
+      "output_refs_equal_normal": true,
+      "process_tree_peak_rss_bytes": 184221696,
+      "process_tree_samples": 22,
+      "returncode": 0,
+      "stderr": ""
+    },
+    "normal": {
+      "output_refs_equal_normal": true,
+      "process_tree_peak_rss_bytes": 184864768,
+      "process_tree_samples": 24,
+      "returncode": 0,
+      "stderr": ""
+    },
+    "partial": {
+      "output_refs_equal_normal": true,
+      "process_tree_peak_rss_bytes": 185520128,
+      "process_tree_samples": 24,
+      "returncode": 0,
+      "stderr": ""
+    }
+  },
+  "counter_coverage": "parent normal+partial only; fresh child modes are not included in family/source/build counters",
+  "crash_witness": "SEPARATE_OWN_NATIVE_BOUNDARY_WITNESS__see_native_crash_witness.json",
+  "fixture": "S1-D/S3 sourcefree synthetic 4 respondents/2 occasions; not 100k",
+  "fresh_batch_probe": {
+    "process_tree_peak_rss_bytes": 297783296,
+    "process_tree_samples": 69,
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\n  \"child_returncode\": 0,\n  \"child_stderr\": \"\",\n  \"observed_manifest_hash\": \"d146e6944600000fa0efc04ccf138ea3049d1aef52441315e834479b4a578ca4\",\n  \"observed_receipt_count\": 2,\n  \"observed_receipt_states\": [\n    \"COMPLETED\"\n  ],\n  \"observed_summary\": {\n    \"actual_execution_receipts\": 2,\n    \"batch_s"
+  },
+  "full_c11_build_calls_parent_normal_partial": 0,
+  "host": "darwin/Python 3.11.3",
+  "integrated_100k_6GiB": "NOT_RUN",
+  "new_modules_linux": "NOT_RUN; Darwin-only",
+  "normal_output_refs": 2,
+  "normal_seconds": 0.13022448800620623,
+  "orphan_child_pids": [],
+  "parent_peak_rss_bytes": 121630720,
+  "partial_output_refs": 1,
+  "partial_seconds": 0.06528332000016235,
+  "peak_root_tree_bytes": 320500,
+  "peak_staging_bytes": 555503,
+  "peak_staging_samples": 62,
+  "process_tree_aggregate_scope": "sampled parent-root tree including live descendants; max is not exact hardware maximum",
+  "resume_seconds": {
+    "absent": 0.15702689500176348,
+    "completed": 0.036945085012121126,
+    "partial": 0.10407858400139958
+  },
+  "retained_disk_bytes": 320500,
+  "schema": "PYAT991_ALL_SEVEN_G5_G4_INDEPENDENT@1",
+  "scratch_leftovers": [],
+  "source_factory_calls_parent_normal_partial": 0,
+  "whole_table_read_table_calls_parent_normal_partial": 0
+}

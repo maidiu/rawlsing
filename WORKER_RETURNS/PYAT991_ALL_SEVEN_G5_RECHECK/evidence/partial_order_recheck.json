@@ -1,0 +1,57 @@
+{
+  "all_negatives_zero_protected_work": true,
+  "current_flip_after_binding": {
+    "counts": {
+      "restore_output_material": 0,
+      "restore_receipt": 0,
+      "validate_entry_material": 0,
+      "validate_entry_outputs": 0
+    },
+    "error": "WorkloadAdmissionError: ISSUER_SNAPSHOT_CHANGED_AFTER_SAVED_BINDING",
+    "factory_calls": 1,
+    "flip_at_call": 3,
+    "resolver_calls": 3
+  },
+  "defect_reproduced": false,
+  "forged_partial": {
+    "counts": {
+      "restore_output_material": 0,
+      "restore_receipt": 0,
+      "validate_entry_material": 0,
+      "validate_entry_outputs": 0
+    },
+    "error": "WorkloadAdmissionError: JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH",
+    "factory_calls": 1
+  },
+  "legitimate_partial": {
+    "counts": {
+      "restore_output_material": 2,
+      "restore_receipt": 3,
+      "validate_entry_material": 1,
+      "validate_entry_outputs": 1
+    },
+    "error": null,
+    "output_refs_equal_full": true
+  },
+  "revoked_current": {
+    "counts": {
+      "restore_output_material": 0,
+      "restore_receipt": 0,
+      "validate_entry_material": 0,
+      "validate_entry_outputs": 0
+    },
+    "error": "WorkloadAdmissionError: CURRENT_COMPETENT_SOURCE_AND_SCIENCE_DECISION_REQUIRED",
+    "factory_calls": 0
+  },
+  "schema": "PYAT991_ALL_SEVEN_G5_PARTIAL_ORDER_RECHECK@1",
+  "wrong_type": {
+    "counts": {
+      "restore_output_material": 0,
+      "restore_receipt": 0,
+      "validate_entry_material": 0,
+      "validate_entry_outputs": 0
+    },
+    "error": "WorkloadAdmissionError: EXACT_SAVED_C11_ADMISSION_REQUIRED",
+    "factory_calls": 1
+  }
+}
