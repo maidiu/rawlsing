@@ -1,0 +1,15 @@
+F
+=================================== FAILURES ===================================
+______________ test_s2b_real_i02_native_i03_complete_and_restore _______________
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:57: in test_s2b_real_i02_native_i03_complete_and_restore
+    with VerifiedExternalI02(path, roots=roots) as verified:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/_pre553_external_i02_certificate.py:505: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+rawlsing_next/_pre553_external_i02_certificate.py:52: in _fail
+    raise ExternalI02IntegrityError(message)
+E   rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_real_i02_native_i03_complete_and_restore
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.36s

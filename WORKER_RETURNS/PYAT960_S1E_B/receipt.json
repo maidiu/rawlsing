@@ -1,0 +1,358 @@
+{
+  "task_id": "PYAT960-S1E",
+  "packet_id": "S1-E",
+  "old_obligations": ["P1-06", "P1-07"],
+  "persona_role": "B_INDEPENDENT_ATTACK_AND_REPAIR",
+  "session_id": "ses_e3120baacffegE3ZnR5uZcHb0N",
+  "session_model": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s1e-b-r1",
+  "contract_sha": "0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40",
+  "provisional_abi_sha": "cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54",
+  "base_sha": "591056a948fb0fdd68adbd581301dd903485adc8",
+  "received_a_head": "f4aaf2b17c7519642bb0bcfc5987cf21f86a46af",
+  "a_code_cut_sha": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
+  "b_code_cut_sha": "4c3fb666539bf62485c389e3a1abbbd3986b6d64",
+  "return_commit_note": "b_code_cut_sha is the implementation/test cut; this receipt, handoff, ledgers and evidence are following return-only commits on the same branch.",
+  "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_NEW_WORKTREE agent/pyat960-s1e-b-r1 at /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-b; only Q2 adapter/streams/tests/return written; upstream owners, A/Q3 returns, protected facade, W03/W04 and controller untouched.",
+  "exclusive_allowlist": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/pre553_source_i02_streams.py",
+    "rawlsing_next/tests/test_pyat960_s1e_*.py",
+    "WORKER_RETURNS/PYAT960_S1E_B/"
+  ],
+  "changed_paths": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/pre553_source_i02_streams.py",
+    "rawlsing_next/tests/test_pyat960_s1e_support.py",
+    "rawlsing_next/tests/test_pyat960_s1e_body_transport.py",
+    "rawlsing_next/tests/test_pyat960_s1e_operation_antijoin.py",
+    "rawlsing_next/tests/test_pyat960_s1e_native_bridge.py",
+    "WORKER_RETURNS/PYAT960_S1E_B/receipt.json",
+    "WORKER_RETURNS/PYAT960_S1E_B/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT960_S1E_B/all35_ledger.json",
+    "WORKER_RETURNS/PYAT960_S1E_B/reuse_matrix.json",
+    "WORKER_RETURNS/PYAT960_S1E_B/reproduce_a_defects.py",
+    "WORKER_RETURNS/PYAT960_S1E_B/resource_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_B/native_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_B/native_query_probe.py",
+    "WORKER_RETURNS/PYAT960_S1E_B/evidence/"
+  ],
+  "source_abi_owner": "rawlsing_next/pre553_source_i02_handoff.py and pre553_source_i02_streams.py over pinned pre553_r157_projection_adapter.py, pre553_physical_decoder.py, pre553_source_backed_c11_facade.py, pre553_operation_fate_census.py, _pre553_direct_i02_sourcefree.py, _pre553_external_i02_certificate.py",
+  "actual_first_consumer": "Existing build_sourcefree_direct_i02 -> ExternalI02Roots; existing VerifiedExternalI02 + install_direct_sourcefree_i02_i03 -> native selector event bodies on the existing Linux s2b runner; full Q2-driven native I03/Batch empirical fact is HOLD.",
+  "evidence_grade": "SOURCEFREE_PROVISIONAL_DIRECT_I02_PLUS_BODY_TRANSPORT_PLUS_LINUX_NATIVE_SELECTOR_WITH_NATIVE_FACT_HOLD",
+  "s01_s05_ack": {
+    "S01": "governed source meaning/current entitlement: reuse R157 config/projection/decoder; original35 CURRENT HOLD",
+    "S02": "operation/fate census: reuse S1-C verify_frozen_inputs; B adds source-family/routing/occurrence realization and exact preimage rows",
+    "S03": "one compact direct I02 certificate; body-preserving sink ABI for future source-direct estate; no full object corpus and no Q3 writer claim",
+    "S04": "native selector event bodies exercised on Linux; full native I03/Batch fact from the Q2 fixture is UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; S2-B 81 native tests pass with its fully constructed fixture",
+    "S05": "learned products untouched; not a Q2 claim"
+  },
+  "reuse_matrix": "WORKER_RETURNS/PYAT960_S1E_B/reuse_matrix.json (15 function-level entries with path/blob/disposition/first consumer/no-loss/reason)",
+  "all35_ledger": "WORKER_RETURNS/PYAT960_S1E_B/all35_ledger.json (35 IDs; 18,276 inherited identities; 18,413 inherited slots; 26 exact unjoined held IDs; no science execution claim)",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Exact S1-E input ABI and pinned source owners frozen; 13-family body transport ABI; source/operation/fate preimages carried per operation; all35 ledger exact; function-level reuse matrix with blob pins and first consumers."
+    },
+    "G2": {
+      "state": "NOT_RUN",
+      "receipt": "Direct I02 positive/change/restore PASS (29 Q2 tests). Native selector event bodies PASS on existing Linux s2b runner (Q2 certificate -> VerifiedExternalI02 -> install_direct_sourcefree_i02_i03 -> 5/5 event refs). Full Q2-driven native I03/Batch empirical fact returned UNAVAILABLE/MISSING_REQUIRED_AUTHORITY: the synthetic Q2 config lacks the predicate replay/query authority preimage. S2-B 81 native tests pass with its fully constructed fixture. Native fact remains HOLD_DEPENDENCY, not PASS."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "Census omission/duplicate/source SHA/id/occurrence/authority/target refuse before source; B adds eligible-operation projected-owner, routing-denominator, occurrence-dimension and emitted-body anti-joins; orphan eligible/unprojected, all-routing-unknown and option-9 defects reproduced on A code and now refuse; held/unprojected operations remain typed with unrealized_keys and native HOLD."
+    },
+    "G4": {
+      "state": "PASS",
+      "receipt": "One source byte pass/one decode/one cell pass/one direct builder/zero full C11 on the sourcefree fixture; 1,200 rows; spool 7,464,000B cleaned; certificate 19,337,216B retained; peak disk 46,158,133B; peak process RSS 127,545,344B; denied read 0 source opens; 100k/6GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": "distinct nonauthor receiver other than A and B; not this B role",
+      "receipt": "No G5 acceptance. Integration UNMERGED."
+    }
+  },
+  "mandatory_case_ids": [
+    "Q2_G1_EXACT_CONTRACT_REUSE",
+    "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+    "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+    "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+    "Q2_G4_CUSTODY_RESOURCES",
+    "Q2_G5_INDEPENDENT_RECEIVING",
+    "INHERITED_B01_B09",
+    "INHERITED_S1C_OPERATION_FATES",
+    "DECODER_CUSTODY_REGRESSION",
+    "Q2_BODY_TRANSPORT_13_FAMILIES",
+    "Q2_OPERATION_SOURCE_ANTIJOIN",
+    "Q2_NATIVE_SELECTOR_LINUX",
+    "Q2_NATIVE_QUERY_HOLD"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "Q2_G1_EXACT_CONTRACT_REUSE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''",
+      "actual": "29 passed on Darwin and Linux. ABI/reuse/ledger files present; 13 families; source/operation/fate preimages; all35 ledger exact."
+    },
+    {
+      "id": "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts=''",
+      "actual": "29 passed; SAV/DTA direct roots, changed source meaning changes roots/event refs, exact restore; one source byte pass; no full C11 build."
+    },
+    {
+      "id": "Q2_G2_NATIVE_I03_BATCH_CONSUMER",
+      "result": "NOT_RUN",
+      "command": "existing s2b Linux runner: venv python -m pytest -q rawlsing_next/tests/test_pyat960_s1e_native_bridge.py; plus S2-B native suite",
+      "actual": "Q2 native selector PASS: five certificate event refs selected from sealed release bodies, exact equality. Q2-driven empirical query: UNAVAILABLE / MISSING_REQUIRED_AUTHORITY. S2-B 81 native tests PASS with its fully constructed fixture. Full Q2 native I03/Batch fact HOLD_DEPENDENCY."
+    },
+    {
+      "id": "Q2_G3_HOSTILE_NEGATIVE_CONSERVATION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_operation_antijoin.py rawlsing_next/tests/test_pyat960_s1e_body_transport.py -o addopts=''",
+      "actual": "Orphan eligible target, all-routing-unknown, option-9 unreachable occurrence, census omission, source SHA/id/occurrence and destination collision refuse; held/unprojected operations retain typed unrealized_keys; optional-weight sample RAW and held fates conserved."
+    },
+    {
+      "id": "Q2_G4_CUSTODY_RESOURCES",
+      "result": "PASS",
+      "command": "python3 WORKER_RETURNS/PYAT960_S1E_B/resource_probe.py",
+      "actual": "1,200 rows/1,200 events/1,200 coordinates; source bytes 1, decode 1, cell pass 1, direct builder 1, full C11 0; spool 7,464,000B cleaned; certificate 19,337,216B retained; peak disk 46,158,133B; peak RSS 127,545,344B; cold 5.978842s/repeat 5.571991s; 100k/6GiB NOT_RUN."
+    },
+    {
+      "id": "Q2_G5_INDEPENDENT_RECEIVING",
+      "result": "NOT_RUN",
+      "command": "not run",
+      "actual": "G5 NOT_RUN; no self-acceptance; integration UNMERGED."
+    },
+    {
+      "id": "INHERITED_B01_B09",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat940_s1b_b01_b04.py rawlsing_next/tests/test_pyat940_s1b_b05_b06.py rawlsing_next/tests/test_pyat940_s1b_b07_b08.py rawlsing_next/tests/test_pyat940_s1b_b09.py -o addopts=''",
+      "actual": "33 passed in 77.35s."
+    },
+    {
+      "id": "INHERITED_S1C_OPERATION_FATES",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py -o addopts=''",
+      "actual": "18 passed in 86.83s."
+    },
+    {
+      "id": "DECODER_CUSTODY_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_universal_source_byte_custody.py rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py -o addopts=''",
+      "actual": "56 passed, 1 skipped in 9.47s."
+    },
+    {
+      "id": "Q2_BODY_TRANSPORT_13_FAMILIES",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_body_transport.py -o addopts=''",
+      "actual": "SAV and DTA body sinks receive all 13 families; counts equal manifest; six typed absences; 29 bodies at 5 rows; 4,809 at 1,200 rows; sink finish roots/manifest equal handoff; fail begin/emit/finish/builder-after-publish clean and invalidate output."
+    },
+    {
+      "id": "Q2_OPERATION_SOURCE_ANTIJOIN",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_operation_antijoin.py -o addopts=''",
+      "actual": "A's code accepted orphan eligible, all-routing-unknown and option-9 operations; repaired code refuses before source for the first three and records held/unprojected operations with source_realization/unrealized_keys and exact source/authority/fate preimages."
+    },
+    {
+      "id": "Q2_NATIVE_SELECTOR_LINUX",
+      "result": "PASS",
+      "command": "existing s2b Linux runner: venv python WORKER_RETURNS/PYAT960_S1E_B/native_probe.py",
+      "actual": "certificate_event_count=5; native_selected_event_count=5; native_selected_refs_equal_certificate=true; reader closed; body transport 13 families complete; host linux_proc_self_fd."
+    },
+    {
+      "id": "Q2_NATIVE_QUERY_HOLD",
+      "result": "NOT_RUN",
+      "command": "existing s2b Linux runner: venv python WORKER_RETURNS/PYAT960_S1E_B/native_query_probe.py",
+      "actual": "one fact UNAVAILABLE with p02_failure_state MISSING_REQUIRED_AUTHORITY; Q2 synthetic config lacks the predicate replay/query authority preimage. S2-B 81 native tests pass with its fixture; no fake native pass."
+    }
+  ],
+  "first_consumer_proof": {
+    "direct_builder": "build_sourcefree_direct_i02(source, universe_ref, destination, chunk_size=512) -> ExternalI02Roots",
+    "native_selector": "VerifiedExternalI02 + install_direct_sourcefree_i02_i03 + C11Repository selected event bodies; 5/5 exact refs on Linux",
+    "native_fact": "Q2-driven native empirical query UNAVAILABLE/MISSING_REQUIRED_AUTHORITY; full I03/Batch receipt HOLD_DEPENDENCY",
+    "fixtures": "generated nonrespondent SAV/DTA q101/country; 1,200-row resource fixture; no original source/respondent bytes",
+    "positive": "29 Q2 tests; direct roots/13 sections; changed/restored roots/event refs",
+    "body_transport": "13/13 families; counts equal manifest; sink roots/manifest equal returned certificate; no source reread",
+    "source_open_model": "fixture 1 byte pass/1 snapshot/1 decode; original prehash+snapshot=2 byte passes; keyed handoff 1 + external key witness read 1 = 2 total scenario reads"
+  },
+  "preserved_functions": [
+    "S1-B decoder/projection/custody and source-read admission",
+    "S1-C frozen census/compiler/issued fate",
+    "S2-B direct I02 builder, external certificate and native selector bridge",
+    "existing native I03/query math and C11Repository",
+    "legacy full-object read compatibility (test-only comparator/body fixture)",
+    "B01-B09, S1-C, decoder/custody regressions"
+  ],
+  "defects_established_and_repaired": [
+    {
+      "severity": "SEV-1",
+      "case": "Body-dropping handoff",
+      "evidence": "A's certificate stores metadata/selectors only; build_source_i02_handoff deletes the JSONL spool and returns roots/manifest/audit with no body stream; Q3 cannot consume a body estate. Evidence: A code cut 75d09e87; Q3 preflight finding.",
+      "repair": "Optional caller-owned SourceI02BodySink + SourceI02BodyTee delivers the same 13 families synchronously during the one direct-builder consumption; finish gets exact roots/manifest/counts; abort/fail invalidates output. Evidence: linux-native-selector.json, body transport tests."
+    },
+    {
+      "severity": "SEV-1",
+      "case": "Operation/fate integration was label-only",
+      "evidence": "A's code accepted eligible operations targeting an unprojected HELD physical slot, response operations with all routing ROUTING_UNKNOWN, and operations with option_id '9' absent from the source mapping. Evidence: red_at_75d09e87.txt.",
+      "repair": "Pre-source projected-owner/routing/occurrence checks and post-source emitted-body realization anti-join; exact source/authority/fate preimage rows; held/unprojected operations keep typed unrealized_keys. Evidence: green_at_b_repair.txt, operation antijoin tests."
+    },
+    {
+      "severity": "SEV-2",
+      "case": "Hardcoded source_reads=1 hid the original-source prehash",
+      "evidence": "A's original-source path instrumented at two actual source byte passes (prehash + snapshot) but reported source_reads=1. Evidence: red_at_75d09e87.txt (original_reads).",
+      "repair": "Stats now report source_prehash_passes, snapshot_acquisitions, decode_calls, key_witness_passes and source_open_model; fixture=1, original=2; tests instrument the decoder. Evidence: green_at_b_repair.txt, body transport original test."
+    },
+    {
+      "severity": "SEV-2",
+      "case": "Cleanup/output invalidation and retained-disk accounting",
+      "evidence": "A's spool cleanup swallowed rmdir errors; no sink existed; A evidence/resource.json retained_disk_bytes=0 conflicts with a 19,345,408B certificate, while A's receipt reports 19,345,408. B's probe measures retained/peak/scratch directly.",
+      "repair": "Fail-closed spool cleanup and certificate invalidation on sink finish/builder-after-publish failure; honest retained 19,337,216B, peak 46,158,133B, scratch 7,464,000B, RSS 127,545,344B. A's historical files were not rewritten."
+    }
+  ],
+  "verified_opponent_strengths": [
+    "A's sourcefree direct I02 builder path, change/restore and roots are real; 29 Q2 tests pass with A's code plus B repairs.",
+    "A's S1-C pre-source census/anti-join is substantive and inherited 18 tests pass.",
+    "A's host disclosure was honest: Darwin cannot open VerifiedExternalI02; the existing Linux s2b runner resolves that host limit.",
+    "A correctly kept native I03/Batch HOLD rather than substituting a mocked consumer.",
+    "A's direct certificate reconstructs release/source/replay identities sufficient for the native selector bridge on Linux."
+  ],
+  "challenges_investigated_and_refuted": [
+    "A's direct I02 builder is not a fake: real SAV/DTA direct certificates and native selector event bodies exist.",
+    "The native HOLD is not a code defect alone: on the existing Linux s2b runner, the Q2 native selector bridge and S2-B full native suite pass. The remaining Q2 native fact block is the synthetic config's missing predicate replay/query authority preimage, not the body seam.",
+    "A's operation/fate census is not wholly label-only at the S1-C layer; the defect is the missing source-body realization join, now added.",
+    "The 26 unjoined IDs are exact inherited preparation, not Q2 operations or science."
+  ],
+  "new_attack_surfaces": [
+    "The body sink is caller-owned; a Q3 sink must stage and commit/abort correctly. The adapter cannot enforce a third party's staging discipline beyond finish/abort call ordering and certificate invalidation.",
+    "The operation anti-join uses config-derived response/coordinate/weight sections and occurrence tokens; an external scientific option/crosswalk not present in the source config can still produce a typed HOLD rather than a positive.",
+    "Q2 native selector event read is real, but a full Q2-driven native I03/Batch fact needs a config with predicate replay/query authority preimage; the current synthetic config returns MISSING_REQUIRED_AUTHORITY.",
+    "Keyed source handoff still requires an external key-witness source read; handoff stats disclose this separately (1 handoff + 1 external = 2 scenario reads).",
+    "Original-source path retains S1-B prehash+snapshot (2 byte passes); not weakened; no original-source positive was run.",
+    "The sink object holds bodies only during the call; a Q3 writer that publishes before finish would violate the documented staging contract and must be rejected by the consumer."
+  ],
+  "surviving_disagreements": [
+    "Whether Q2 should own a full native I03/Batch fact from its synthetic config or whether that is the distinct S2-D/issued consumer dependency. B kept the exact native fact HOLD and did not fake it.",
+    "Whether a Q2 source config can lawfully carry a predicate replay/query authority preimage without new science; current sourcefree fixture cannot, so the fact is HOLD.",
+    "Whether the body sink should be a generic standalone stream factory or the co-production tee used here. The tee preserves one source read and exact roots; a separate factory could enable a second consumer without the certificate.",
+    "Whether keyed sources should derive row-native keys in the handoff pass or accept an external key witness. B discloses the external read and does not add a raw-cell spool."
+  ],
+  "challenge_to_agent_a": [
+    "Construct or identify a lawfully sourcefree Q2 config with the exact predicate replay/query authority preimage, run a supported Q2-driven native I03/Batch fact on the Linux s2b runner, and show changed/restore. The current Q2 fixture returns UNAVAILABLE/MISSING_REQUIRED_AUTHORITY.",
+    "Attack the body sink lifecycle: a sink that publishes before finish, writes outside its private root, or survives abort must be refused by the caller/consumer; show the exact boundary.",
+    "Attack the operation-source anti-join with a multi-owner slot, a coordinate/weight target, a partially eligible routing denominator, or a held unprojected operation; ensure no false positive and no lost held row.",
+    "Decide whether keyed source key-witness derivation belongs in the single Q2 pass or is an explicit external input; if in-pass, prove no raw-cell second corpus.",
+    "Reconcile A's retained_disk_bytes=0 historical evidence with the certificate without rewriting history; cite B's measured retained/peak/scratch."
+  ],
+  "resource_evidence": {
+    "rows": 1200,
+    "events": 1200,
+    "coordinates": 1200,
+    "weights": 0,
+    "process_tree_peak_rss_bytes": 127545344,
+    "process_tree_baseline_rss_bytes": 119353344,
+    "cold_process_rss_bytes": 126619648,
+    "repeat_process_rss_bytes": 127545344,
+    "retained_disk_bytes_after_cleanup": 19337216,
+    "retained_certificate_bytes": 19337216,
+    "peak_disk_bytes": 46158133,
+    "scratch_bytes": 7464000,
+    "spool_bytes": 7464000,
+    "spool_files": 3,
+    "spool_cleanup_glob": [],
+    "source_fixture_bytes": 19701,
+    "cold_certificate_bytes": 19337216,
+    "repeat_certificate_bytes": 19337216,
+    "repeat_spool_bytes": 7464000,
+    "cold_seconds": 5.978841531992657,
+    "repeat_seconds": 5.57199120799487,
+    "source_reads": 1,
+    "source_prehash_passes": 0,
+    "snapshot_acquisitions": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "key_witness_passes": 0,
+    "full_c11_builds": 0,
+    "denied_read_source_opens": 0,
+    "body_transport_object_count": 4809,
+    "budget_result": "SMALL_SOURCEFREE_FIXTURE; 100k RESPONDENT / 6GiB INTEGRATED GATE NOT_RUN; Q2 DOES NOT CLAIM S2-C/S2-D ECONOMICS",
+    "reconciliation_with_a": "A's evidence/resource.json reports retained_disk_bytes=0 with certificate_bytes=19345408; A's receipt resource_evidence reports retained_disk_bytes=19345408. B did not rewrite A's records; B measures retained certificate 19337216, peak disk 46158133, scratch 7464000, RSS 127545344."
+  },
+  "linux_native_evidence": {
+    "runner": "existing Lima VM s2b, Linux 7.3.0, existing venv /Users/matthewsmith/s2b-work/rawlsing-s2b-r5-local/.venv (Python 3.11.18, pytest 9.2.0)",
+    "q2_tests": "29 passed in 11.57s",
+    "s2b_native_tests": "81 passed in 32.86s (external certificate, direct sourcefree, verified semantic range)",
+    "q2_native_selector": "5 certificate events selected from sealed release; 5/5 refs equal certificate; reader closed; body transport complete",
+    "q2_native_query": "1 fact UNAVAILABLE; p02_failure_state MISSING_REQUIRED_AUTHORITY; not claimed PASS",
+    "host_hold_resolved_for": "direct certificate cold reader + native selector event bodies",
+    "host_hold_remaining": "Q2-driven full native I03/Batch empirical fact requires predicate replay/query authority preimage"
+  },
+  "source_usage": {
+    "original_source_bytes_opened": false,
+    "original_respondent_rows_opened": false,
+    "fixtures": "All SAV/DTA fixtures generated synthetic nonrespondent bytes under private temp roots; no original source/respondent data committed.",
+    "historical_reads": "S1-B inherited census only; no original35 source science."
+  },
+  "authority_holds": [
+    "original35/source/respondent/science/QSM/U/Epre",
+    "production CURRENT issuer S1-D",
+    "N11/N12",
+    "protected merge",
+    "paused W03/W04",
+    "Q3 physical writer (S2-B direct I02 scoped G5 + concrete Q2 input gate)",
+    "distinct nonauthor G5 receiver"
+  ],
+  "external_holds": [
+    {
+      "owner": "Q2 native I03/Batch fact authority/replay preimage owner",
+      "minimal_missing_witness": "A lawfully sourcefree Q2 SourceConfig with exact predicate replay/query authority preimage, or an authorized S2-D/issued consumer, that turns the current UNAVAILABLE/MISSING_REQUIRED_AUTHORITY result into a supported native fact with changed/restore."
+    },
+    {
+      "owner": "S1-C and S2-B independent G5 receivers",
+      "minimal_missing_witness": "Independent scoped G5 acceptance of the upstream owners."
+    },
+    {
+      "owner": "original35 source/science/rights authority",
+      "minimal_missing_witness": "Permitted native R157 source/measurement/authority and source-read/use decision."
+    },
+    {
+      "owner": "S1-D production CURRENT issuer",
+      "minimal_missing_witness": "Independently authenticated current SourceReadDecision; Q2 only test-only resolver."
+    },
+    {
+      "owner": "protected receiving / integration owner",
+      "minimal_missing_witness": "Protected review/merge; branch UNMERGED."
+    },
+    {
+      "owner": "integrated 100k/6GiB resource gate",
+      "minimal_missing_witness": "Designated integrated artifact and full matrix; not run."
+    },
+    {
+      "owner": "W03/W04 authority",
+      "minimal_missing_witness": "User remains paused; not resumed."
+    },
+    {
+      "owner": "Q3 S2-C writer gate",
+      "minimal_missing_witness": "Independently accepted S2-B direct I02 scoped G5 and a concrete compatible Q2 body/stream contract; the B sink is a transport proof, not Q3 acceptance."
+    }
+  ],
+  "nonblocking_deferred": [
+    "A standalone Q2 body stream factory without the certificate (the co-production tee is the selected seam).",
+    "In-pass key-witness derivation for keyed sources without a raw-cell spool.",
+    "A Q2-driven full native fact using a source config with predicate replay/query authority preimage."
+  ],
+  "open_defects": [],
+  "self_disclosed_weakest_point": "The body sink is caller-owned and the adapter can only enforce finish/abort ordering and its own certificate invalidation; a third-party sink that publishes too early is outside the adapter's control. The Q2 synthetic config also lacks the predicate replay/query authority preimage, so a full Q2-driven native I03/Batch fact returns UNAVAILABLE/MISSING_REQUIRED_AUTHORITY. The native selector event body read is real on Linux, but it is not a full Batch receipt.",
+  "opponent_proven_improvement": "A's direct I02 builder, S1-C census and host disclosure survive independent examination. B's proven improvements are the 13-family body-preserving sink, the source/operation/fate realization anti-join, honest source-open counters, fail-closed cleanup/output invalidation, the Linux native selector body proof, and the precise Q2 native fact HOLD.",
+  "next_turn": "Agent A counterattacks b_code_cut_sha 4c3fb666539bf62485c389e3a1abbbd3986b6d64, focusing on the Q2 native query authority/replay preimage, body sink lifecycle, multi-owner/partial-routing anti-join and keyed source one-pass. Then a distinct nonauthor G5 receiver other than A and B.",
+  "known_session_cost": "UNKNOWN",
+  "stop_state": "HOLD_EXTERNAL",
+  "integration": "UNMERGED",
+  "g5": "NOT_RUN",
+  "delegated_candidate": true,
+  "accepted_scoped_self_claim": false,
+  "closed_outcome_self_claim": "NONE__NATIVE_FACT_DEPENDENCY_HOLD",
+  "original_task_complete": false,
+  "disposition": "HOLD_EXTERNAL",
+  "disposition_note": "Body-preserving direct I02 and native selector event read are implemented and independently executed on Linux; full Q2-driven native I03/Batch fact remains HOLD_EXTERNAL due the missing predicate replay/query authority preimage, not a fake pass. G5 NOT_RUN; UNMERGED."
+}

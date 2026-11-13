@@ -1,0 +1,100 @@
+{
+  "accepted": false,
+  "detail": "ELIGIBLE_OPERATION_TARGET_NOT_PROJECTED: {'operation_id': 'urn:r61:op:132c45fa84ef75cda438266518184dcb261b03ced09b4721b1d3902720dd8345', 'item': 'orphan', 'projected_items': ['country', 'q101']}",
+  "error": "SourceI02Refusal",
+  "label": "eligible_operation_on_unprojected_slot"
+}
+{
+  "accepted": false,
+  "detail": "OPERATION_ROUTING_FATE_MISMATCH: {'operation_id': 'urn:r61:op:1ab6a268084711574d21900901c33a3a05ffdf836ccd068cbcd49a84009b6963', 'item_id': 'q101', 'question_id': 'q101', 'routing_states': {'ROUTING_UNKNOWN': 5}}",
+  "error": "SourceI02Refusal",
+  "label": "eligible_operation_with_all_routing_unknown"
+}
+{
+  "accepted": false,
+  "detail": "OPERATION_OCCURRENCE_DIMENSION_NOT_REALIZED: {'operation_id': 'urn:r61:op:05612e3be93b758ec87d8aa401062b507f9332b3ac6292a2960a22f849617c9f', 'item_id': 'q101', 'dimension': 'option_id', 'key': '{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":\"9\",\"repeat_id\":null}'}",
+  "error": "SourceI02Hold",
+  "label": "eligible_operation_unrealized_option_dimension"
+}
+{
+  "accepted": true,
+  "actual_prehash_passes": 1,
+  "actual_snapshot_acquisitions": 1,
+  "actual_source_byte_passes": 2,
+  "label": "original_source_read_model",
+  "reported_stats": {
+    "cell_passes": 1,
+    "cleanup_complete": true,
+    "coordinate_count": 5,
+    "decode_calls": 1,
+    "event_count": 5,
+    "full_c11_builds": 0,
+    "key_witness_passes": 0,
+    "snapshot_acquisitions": 1,
+    "source_columns": 2,
+    "source_open_model": "ORIGINAL_PREHASH_PLUS_SNAPSHOT",
+    "source_prehash_passes": 1,
+    "source_reads": 2,
+    "source_rows": 5,
+    "spool_bytes": 31100,
+    "spool_files": 3,
+    "weight_count": 0
+  }
+}
+{
+  "accepted": true,
+  "body_transport": {
+    "aborted": false,
+    "absences": {
+      "ComparatorReplayBinding": "DEFERRED",
+      "DiscoveryBranchReplayBinding": "DEFERRED",
+      "EmpiricalPredicateReplayBinding": "NOT_APPLICABLE",
+      "SourceUniverseRelation": "DISTINCT_BY_DEFAULT",
+      "StructuralAdmissionReplayBinding": "NOT_APPLICABLE",
+      "WeightMeasureFact": "NOT_APPLICABLE"
+    },
+    "complete": true,
+    "empty_families": [],
+    "families": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 5,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "finished": true,
+    "object_count": 29,
+    "schema": "PYAT960_S1E_SOURCE_I02_BODY_TRANSPORT@1.0.0",
+    "sink_class": "__main__.check_body_sink.<locals>.Sink"
+  },
+  "certificate_exists": true,
+  "label": "body_preserving_13_family_sink",
+  "roots_match": true,
+  "sink_absences": {
+    "ComparatorReplayBinding": "DEFERRED",
+    "DiscoveryBranchReplayBinding": "DEFERRED",
+    "EmpiricalPredicateReplayBinding": "NOT_APPLICABLE",
+    "SourceUniverseRelation": "DISTINCT_BY_DEFAULT",
+    "StructuralAdmissionReplayBinding": "NOT_APPLICABLE",
+    "WeightMeasureFact": "NOT_APPLICABLE"
+  },
+  "sink_counts": {
+    "AuthoritySnapshot": 7,
+    "EmpiricalCoordinateFact": 5,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 1,
+    "RespondentEvent": 5,
+    "RespondentIdentity": 5,
+    "RoutingEligibilityFact": 5
+  },
+  "sink_finished": true,
+  "supported": true
+}
