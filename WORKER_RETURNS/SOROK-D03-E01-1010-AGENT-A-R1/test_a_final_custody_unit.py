@@ -175,3 +175,29 @@ def test_after_write_guard_reports_illicit_unlocked_mutation_not_atomicity():
     with pytest.raises(ValueError, match="E01_P3_HEAD_CHANGED"):
         adapter.realize("op1", "qualified", 0)
     assert len(base.writes) == 1, "Check cannot roll back a direct bypass writer"
+
+
+
+def test_b_provider_head_only_check_misses_the_reserved_p3_op_differential():
+    from post_provider_guard import GuardedProvider
+
+    base, p3, adapter = scene()
+    p3.pending = [{"phase": "PREPARED", "id": "invisible-to-head"}]
+    trace = []
+
+    class Provider:
+        def call(self, request):
+            trace.append("provider")
+            return {"prospective": request}
+
+    def b_head_only():
+        trace.append("b-validate")
+        assert p3.head == "old" and base.snapshot() == 0
+        # Identical P3 head / P2 state / J1 code but pending operation exists.
+
+    assert GuardedProvider(Provider(), b_head_only).call({"p": 1}) == {
+        "prospective": {"p": 1}}
+    assert trace == ["provider", "b-validate"]
+    with pytest.raises(ValueError, match="E01_P3_PENDING_OPERATION"):
+        adapter.realize("op", "qualified", 0)
+    assert base.writes == []
