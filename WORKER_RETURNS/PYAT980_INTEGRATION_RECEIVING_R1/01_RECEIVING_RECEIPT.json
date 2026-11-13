@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT980_INTEGRATION_RECEIVING_RECEIPT@1",
+  "decision": "ACCEPTED_INTEGRATION_BRANCH",
+  "candidate_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+  "candidate_is_live_pr980_head": true,
+  "protected_base": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "stage_948": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "scope": "S1-B S1-D S2-F S2-G combined sourcefree receiving",
+  "evidence_grade": "S2_SOURCEFREE_COMBINED_FOUR_PACKET_RECEIVING",
+  "combined": {
+    "passed": 202,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 806.16,
+    "log": "evidence/combined_suite.log",
+    "monitored_passed": 202,
+    "monitored_seconds": 635.5002801418304,
+    "process_tree_peak_rss_bytes": 434765824,
+    "scratch_peak_bytes": 53653504,
+    "samples": 1042,
+    "monitored_log": "evidence/combined_suite_monitored.log"
+  },
+  "vertical_resources": {
+    "process_tree_peak_rss_bytes": 112549888,
+    "retained_disk_bytes": 32499,
+    "cold_seconds": 0.08735049003735185,
+    "repeat_seconds": 0.08463641512207687,
+    "source_opens": 0,
+    "artifact_files": 2,
+    "logical_bytes": 283854,
+    "consumer_result_hash": "2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597"
+  },
+  "mr01": {
+    "wrong_release_exit": 0,
+    "wrong_release_state": "REFUSED",
+    "valid_positive_exit": 0,
+    "valid_positive_consumer": "879ea8e7710178b2dd02fe71ec2f1a7f1bcf02da33b40912c1e42eb505762660"
+  },
+  "known_red": {
+    "path": "rawlsing_next/tests/test_universal_world_binding.py",
+    "result": "17 passed, 1 failed",
+    "error": "TypeError: resume_joined_workloads() missing 1 required keyword-only argument: resolver",
+    "classification": "BLOCKED_OWNERSHIP_OUT_OF_SCOPE",
+    "counted_in_202": false
+  },
+  "source_custody": {
+    "blob_mismatches": 0,
+    "packets": {
+      "S1-B": 11,
+      "S1-D": 5,
+      "S2-F": 6,
+      "S2-G": 28
+    },
+    "outside_expected_prefixes": []
+  },
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS_SCOPED_WITH_KNOWN_OUT_OF_SCOPE_RED",
+    "G4": "PASS_SCOPED",
+    "G5": "PASS/ACCEPTED_INTEGRATION_BRANCH"
+  },
+  "integration": "UNMERGED",
+  "protected_merge": "NOT_PERFORMED",
+  "holds": [
+    "100k/6GiB",
+    "native/original35/science",
+    "production current/as-of issuer/revocation",
+    "S2-E/S2-D",
+    "known S1-D world-binding caller RED",
+    "protected CAS merge"
+  ],
+  "publication": {
+    "committed_branch": true,
+    "issue_comment_980": "NOT_POSTED_TOKEN_SCOPE",
+    "issue_comment_909": "NOT_POSTED_TOKEN_SCOPE"
+  }
+}

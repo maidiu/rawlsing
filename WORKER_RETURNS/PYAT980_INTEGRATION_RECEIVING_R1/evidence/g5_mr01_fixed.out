@@ -1,0 +1,72 @@
+{
+  "artifact_root_identity": "32d19b29d2df59356ff25250f0f5d1998a8a61cf4a4c22d4759f16d681ae4e48",
+  "b5_selection_ref": {
+    "content_hash": "decb1199fd753eaef349879cc06c32c838705bd4271ffac1b7c55308bf90887f",
+    "kind": "B5Lifecycle:CURRENT_SELECTION",
+    "object_id": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:decb1199fd753eaef349879cc06c32c838705bd4271ffac1b7c55308bf90887f"
+  },
+  "base_positive_control": {
+    "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+    "consumer_result_hash": "2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597",
+    "consumer_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+    "s2f_root_identity": "eae60b4aaec326ddd028419c640713e20abe347347e1d242ee9a65d6872152e2"
+  },
+  "base_release": {
+    "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-m01"
+  },
+  "consumer_determinant_release": {
+    "content_hash": "87a5584ddb81f369913dba370ffbbfe5ffc7be91bd8446a1fd9bad1c646b2ab0",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-m01-missing-weight"
+  },
+  "defect_if_accepted": false,
+  "m1_disposition_ref": {
+    "content_hash": "18b73963e1ceed396c3f4a250a8363de5bccb2715f73c3f93ab4b3f8e7583fea",
+    "kind": "LearnedEmpiricalDisposition@1.0.0",
+    "object_id": "urn:rawlsing:pre553:m1:LearnedEmpiricalDisposition:sha256:18b73963e1ceed396c3f4a250a8363de5bccb2715f73c3f93ab4b3f8e7583fea"
+  },
+  "m2_release_ref": {
+    "content_hash": "53c1e6fa0448aa65039cd74f03871b837b5b9a2f93b0782741774b2ecd1def35",
+    "kind": "LearnedProductReleaseCore",
+    "object_id": "urn:rawlsing:pre553:m2:release:sha256:53c1e6fa0448aa65039cd74f03871b837b5b9a2f93b0782741774b2ecd1def35"
+  },
+  "outcome": {
+    "accepted": false,
+    "composition_identity": null,
+    "consumer_result_hash": null,
+    "consumer_state": "REFUSED",
+    "reason_code": "consumer determinant release is not the selected fact source release"
+  },
+  "receipt_declared_releases": [
+    {
+      "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-m01"
+    },
+    {
+      "content_hash": "87a5584ddb81f369913dba370ffbbfe5ffc7be91bd8446a1fd9bad1c646b2ab0",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-m01-missing-weight"
+    }
+  ],
+  "s2f_root_identity": "8ab33706ad8f413f157aecfcfcf261b8a5b442568375bc96d669868cd4b6a040",
+  "second_release": {
+    "content_hash": "87a5584ddb81f369913dba370ffbbfe5ffc7be91bd8446a1fd9bad1c646b2ab0",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-m01-missing-weight"
+  },
+  "selected_fact_ref": {
+    "content_hash": "cc3f9b07d4f8e83b269f0a47bb2c28aa8849802ae80cd5e973bd5c802462970a",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:cc3f9b07d4f8e83b269f0a47bb2c28aa8849802ae80cd5e973bd5c802462970a"
+  },
+  "selected_fact_release_provenance": [
+    {
+      "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-m01"
+    }
+  ]
+}

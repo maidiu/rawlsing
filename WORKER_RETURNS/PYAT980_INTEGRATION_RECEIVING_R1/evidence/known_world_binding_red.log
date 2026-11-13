@@ -1,0 +1,171 @@
+.................F                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_same_source_r04_partial_resume_reaches_actual_p41 ____________
+
+p41_runtime = '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p980-receiving-20261112T220715/checkout/rawlsing_next/sourcefree_world'
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p980-receiving-20261112T220715/tmp/pytest-of-matthewsmith/pytest-0/test_same_source_r04_partial_r0')
+
+    def test_same_source_r04_partial_resume_reaches_actual_p41(p41_runtime, tmp_path):
+        source_path = tmp_path / "same-source.sav"
+>       result = _same_source_connected(p41_runtime, source_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_universal_world_binding.py:1393: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+p41_runtime = '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p980-receiving-20261112T220715/checkout/rawlsing_next/sourcefree_world'
+source_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p980-receiving-20261112T220715/tmp/pytest-of-matthewsmith/pytest-0/test_same_source_r04_partial_r0/same-source.sav')
+
+    def _same_source_connected(p41_runtime: str, source_path=None):
+        """One TEST_ONLY physical/source lineage across R04, R05 and P41."""
+        from collections.abc import Mapping
+        from rawlsing_next.pre553_issued_workload import (
+            NativeWorkload, IssuedWorkloadRecord, execute_issued_workload,
+            capture_joined_checkpoint, restore_joined_checkpoint,
+            resume_joined_workloads, operation_jobs,
+        )
+        from rawlsing_next.pre553_native_workload_binding import (
+            TestOnlyIssuedWorkload, TestOnlyDecisionResolver,
+        )
+        from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+        from rawlsing_next.pre553_universal_workload import (
+            compile_governed_frontier, compile_universal_workload,
+        )
+        from rawlsing_next.tests.test_universal_workload import (
+            _frontier_bundle, _frontier_fixture,
+        )
+        from rawlsing_next.tests.test_universal_workload_custody import (
+            AS_OF, HOST, PURPOSE,
+        )
+        import rawlsing_next.pre553_learned_empirical_adjudication as m1
+        import rawlsing_next.pre553_learned_world_composition as i4
+        from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+        from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+        from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+        from rawlsing_next.pre553_learned_product_release import M2Repository
+        from rawlsing_next.pre553_source_backed_c11_facade import build_source_backed_c11_repository
+        from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+            _binding, _m1_authority, _registry, _validator,
+        )
+        from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+        from rawlsing_next.pre553_empirical_objects import exact_ref
+        from rawlsing_next.tests.test_universal_source_projection import package
+        from rawlsing_next.pre553_physical_decoder import decode_sav
+        from rawlsing_next.pre553_source_native_preimage_adapter import (
+            NativeSourceRule, materialize_native_preimages,
+        )
+    
+        def merge(values):
+            by_key = {value.ref.key: value for value in values}
+            return tuple(by_key[key] for key in sorted(by_key))
+    
+        def leaves(ast):
+            if isinstance(ast, Mapping) and ast.get("op") == "LEAF":
+                return [ast]
+            if isinstance(ast, Mapping):
+                return [leaf for child in ast.get("children", ()) for leaf in leaves(child)]
+            return []
+    
+        def fixed_validator(context):
+            binding = context.family_rule_binding
+            return m1.FamilyValidationResult(
+                claim_family_id=binding.claim_family_id,
+                claim_rule_id=binding.claim_rule_id,
+                family_rule_binding_ref=binding.ref,
+                validator_authority_ref=binding.validator_authority_ref,
+                validator_algorithm_identity=binding.validator_algorithm_identity_if_required,
+                adjudication_outcome="RULE_SATISFIED",
+                reason_code="SYNTHETIC_RULE_DECISION",
+                relation_proposition_identity_ref=None,
+                semantic_claim_identity_ref=None,
+                semantic_assertion_polarity_or_state="NONE",
+                semantic_ceiling=binding.semantic_ceiling,
+                determinant_material={"fixed": True},
+                explanation_material={"fixed": True},
+                effects=dict(m1._FALSE_EFFECTS),
+            )
+    
+        with tempfile.TemporaryDirectory(prefix=".r96-same-source-") as directory:
+            path = Path(source_path) if source_path is not None else Path(directory) / "same-source.sav"
+            if path.is_file():
+                incidence = decode_sav(path)
+                pkg = package(
+                    path, incidence.row_count,
+                    (NativeSourceRule("impl.a", "A"),
+                     NativeSourceRule("impl.b", "B"),
+                     NativeSourceRule("impl.y", "Y")),
+                    coordinate="G",
+                )
+                bundle = materialize_native_preimages(package=pkg, incidence=incidence)
+            else:
+                bundle, _ = _frontier_bundle(path)
+            inventory, policy, frontier = _frontier_fixture(bundle)
+            governed = compile_governed_frontier(
+                bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+                as_of=AS_OF, host=HOST, purpose=PURPOSE,
+            )
+            universal = compile_universal_workload(
+                bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE,
+            )
+            query_issued = universal.compiled[0].issued
+            base = query_issued.workload
+            discovery = governed.issued.workload
+            catalog = RuntimeObjectCatalog(
+                authorities=merge(base.catalog.authorities + discovery.catalog.authorities),
+                predicates=merge(base.catalog.predicates + discovery.catalog.predicates),
+                queries=merge(base.catalog.queries + discovery.catalog.queries),
+                discovery_authorities=merge(
+                    base.catalog.discovery_authorities + discovery.catalog.discovery_authorities
+                ),
+            )
+            workload = NativeWorkload(
+                decision_ref=ExactRef(
+                    "TEST_ONLY_DECISION", "urn:test:r96:same-source", "9" * 64,
+                ),
+                source_factory_ref=base.source_factory_ref,
+                descriptor=base.descriptor, projection=base.projection,
+                catalog=catalog,
+                requests=base.requests, discoveries=discovery.discoveries,
+                original_u_root=base.original_u_root,
+                expected_frontier_root=base.expected_frontier_root,
+            )
+            record = IssuedWorkloadRecord(
+                decision_ref=workload.decision_ref,
+                source_permission_ref=query_issued.record.source_permission_ref,
+                scientific_permission_refs=query_issued.record.scientific_permission_refs,
+                host=HOST, purpose=PURPOSE,
+                source_sha256=query_issued.record.source_sha256,
+                envelope_sha256=semantic_hash(workload.envelope()),
+                original_u_root=workload.original_u_root,
+                expected_frontier_root=workload.expected_frontier_root,
+                expected_jobs=operation_jobs(workload.requests, workload.discoveries),
+                currentness="CURRENT_GRANTED", scope=query_issued.record.scope,
+            )
+            issued = TestOnlyIssuedWorkload(
+                workload=workload, record=record,
+                descriptor=query_issued.descriptor,
+                envelope_sha256=record.envelope_sha256,
+            )
+    
+            # Stop at a real partial native prefix and cold-restore the captured checkpoint.
+            partial = execute_issued_workload(
+                workload, TestOnlyDecisionResolver(record),
+                source_factory=lambda _ref: bundle.physical_stream,
+                host=HOST, purpose=PURPOSE, allow_test_only=True, max_units=1,
+            )
+            checkpoint = capture_joined_checkpoint((partial,))
+            restored = restore_joined_checkpoint(
+                checkpoint.material(), expected_checkpoint_ref=checkpoint.checkpoint_hash,
+            )
+>           resumed = resume_joined_workloads(
+                workloads=(issued,),
+                source_factory=lambda _ref: bundle.physical_stream,
+                host=HOST, purpose=PURPOSE, checkpoint=restored,
+                expected_checkpoint_ref=checkpoint.checkpoint_hash,
+            )
+E           TypeError: resume_joined_workloads() missing 1 required keyword-only argument: 'resolver'
+
+rawlsing_next/tests/test_universal_world_binding.py:1075: TypeError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41
+1 failed, 17 passed in 580.18s (0:09:40)
