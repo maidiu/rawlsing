@@ -1,0 +1,194 @@
+{
+  "index_entries": [
+    "attempts/cold_view/receipt.json",
+    "attempts/cold_view/start.json",
+    "attempts/cold_view/stderr.bin",
+    "attempts/cold_view/stdout.bin",
+    "attempts/fail_wait/receipt.json",
+    "attempts/fail_wait/start.json",
+    "attempts/fail_wait/stderr.bin",
+    "attempts/fail_wait/stdout.bin",
+    "attempts/new/receipt.json",
+    "attempts/new/start.json",
+    "attempts/new/stderr.bin",
+    "attempts/new/stdout.bin",
+    "attempts/view/receipt.json",
+    "attempts/view/start.json",
+    "attempts/view/stderr.bin",
+    "attempts/view/stdout.bin",
+    "attempts/wait/receipt.json",
+    "attempts/wait/start.json",
+    "attempts/wait/stderr.bin",
+    "attempts/wait/stdout.bin",
+    "manifest.json"
+  ],
+  "manifest_repo_sha": "bfe420af96e401342b4d36b942532057a4871575",
+  "manifest_source_hashes": {
+    "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py": "fe12542957b4490127a507195087ebf26e7466c6d072688d08e423e77143e83f",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py": "7d78d48dd1b12a1bc95d3fc844df31cb41364eedbe5943a9c69c50699296c645",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py": "6058b50149ce044e78cfa72cae950c23ddc4f9cd757d7ae1cf697a8a736a946c",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py": "e952578a279adf7a212e3d52a110189bbbc5883a172a0d94712402eea1035f87",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py": "655e94418ee340a34a579592d13a8c7b3f4e747f248ff15cac844231be3df7ee",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated_provider.py": "630993c2b5daae76993a4e0c05747ce20cbe45aed554cb70de5b4607eb4509a5"
+  },
+  "plan": [
+    {
+      "args": [
+        "new"
+      ],
+      "cold": false,
+      "id": "new"
+    },
+    {
+      "args": [
+        "view"
+      ],
+      "cold": false,
+      "id": "view"
+    },
+    {
+      "args": [
+        "wait",
+        "1"
+      ],
+      "cold": false,
+      "id": "wait"
+    },
+    {
+      "args": [
+        "view"
+      ],
+      "cold": true,
+      "id": "cold_view"
+    },
+    {
+      "args": [
+        "wait",
+        "0"
+      ],
+      "cold": false,
+      "id": "fail_wait"
+    }
+  ],
+  "reader_attempts": 5,
+  "reader_cold_reopened": 1,
+  "reader_expected_refusals": 1,
+  "reader_expected_scenario_pass": true,
+  "reader_index_sha256": "e35455ddd634f83de883ad82c44dcd3ba70e0368eaad14f7fc3ff5e584b37995",
+  "reader_refused_state": {
+    "logical_content_changed": false,
+    "logical_witness": "G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2",
+    "physical_content_changed": true,
+    "sqlite_page_churn_not_equated_with_actor_change": true
+  },
+  "reader_rss_max": 55226368,
+  "reader_success": 4,
+  "reader_unexpected_failed_or_refused": 0,
+  "reader_wall_total": 40.988526213448495,
+  "rows": [
+    {
+      "admission": null,
+      "child_pid": 1166,
+      "clock": 248,
+      "cpu_system": 0.992184,
+      "cpu_user": 10.449174,
+      "exit": 0,
+      "id": "new",
+      "logical_changed": true,
+      "physical_changed": true,
+      "reason": null,
+      "rss": 54239232,
+      "state_after": 1282745,
+      "state_before": 0,
+      "status": null,
+      "stdout_sha": "78dceae12f870431a1edf3d372e8fd6c8becc5d325ea0d0de25e4c17085188f1",
+      "timeout": false,
+      "wall": 15.53233761782758
+    },
+    {
+      "admission": null,
+      "child_pid": 1322,
+      "clock": 248,
+      "cpu_system": 0.453852,
+      "cpu_user": 4.290749,
+      "exit": 0,
+      "id": "view",
+      "logical_changed": true,
+      "physical_changed": true,
+      "reason": null,
+      "rss": 51548160,
+      "state_after": 1285673,
+      "state_before": 1282745,
+      "status": null,
+      "stdout_sha": "8c677b87b6799b60ac738690de71447979e25ede44fc7ccaa53d0ed45f51a864",
+      "timeout": false,
+      "wall": 6.370215861825272
+    },
+    {
+      "admission": "ADMITTED",
+      "child_pid": 1360,
+      "clock": 249,
+      "cpu_system": 0.44414,
+      "cpu_user": 5.7699,
+      "exit": 0,
+      "id": "wait",
+      "logical_changed": true,
+      "physical_changed": true,
+      "reason": null,
+      "rss": 53125120,
+      "state_after": 1390936,
+      "state_before": 1285673,
+      "status": null,
+      "stdout_sha": "689257f1cc984f2df314a2e23d6d6e9e2394e10b12f631634b5449e03919f426",
+      "timeout": false,
+      "wall": 6.714783193077892
+    },
+    {
+      "admission": null,
+      "child_pid": 1361,
+      "clock": 249,
+      "cpu_system": 0.33713899999999997,
+      "cpu_user": 4.300486,
+      "exit": 0,
+      "id": "cold_view",
+      "logical_changed": true,
+      "physical_changed": true,
+      "reason": null,
+      "rss": 54554624,
+      "state_after": 1393526,
+      "state_before": 1390936,
+      "status": null,
+      "stdout_sha": "cc9d2d5885de6622b5534759a0dfc144c7ccc1d8169d441b3aafec334a2ff013",
+      "timeout": false,
+      "wall": 5.872488695895299
+    },
+    {
+      "admission": null,
+      "child_pid": 1389,
+      "clock": null,
+      "cpu_system": 0.377034,
+      "cpu_user": 4.579841,
+      "exit": 2,
+      "id": "fail_wait",
+      "logical_changed": false,
+      "physical_changed": true,
+      "reason": "P6_WAIT_DURATION_OUT_OF_RANGE",
+      "rss": 55226368,
+      "state_after": 1393526,
+      "state_before": 1393526,
+      "status": "REFUSED",
+      "stdout_sha": "8a5b91a0dfbf56c083ed63054cc0dee87a84f78bd9db5d6233d61ef09ff2b0a7",
+      "timeout": false,
+      "wall": 6.4987008448224515
+    }
+  ],
+  "tests_exit": 0,
+  "tests_ok_line": [
+    "OK"
+  ],
+  "tests_ran_line": [
+    "Ran 26 tests in 23.653s"
+  ],
+  "tests_stderr_bytes": 3307,
+  "tests_stderr_sha256": "10eaee5b78255b285e05e0eaeffa4903372ebd9c5259faf294b0a95f477df0b0"
+}

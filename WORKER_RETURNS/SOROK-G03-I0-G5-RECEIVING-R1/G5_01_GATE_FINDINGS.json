@@ -1,0 +1,273 @@
+{
+  "candidate_diff": {
+    "deletions": 1,
+    "files_changed": [
+      "WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py"
+    ],
+    "from": "5cc6595409d224f5331f367e36e4f8b283fe1959",
+    "insertions": 5,
+    "production_owner_changed": false,
+    "to": "bfe420af96e401342b4d36b942532057a4871575"
+  },
+  "cases": {
+    "I0-M01": {
+      "evidence": "Five direct-child wait4 samples measured wall/CPU/RSS; max direct-child RSS 55,226,368 bytes; CPU user 29.39015 s and system 2.604349 s; process-tree RSS and descendants remain UNOBSERVED.",
+      "result": "PASS"
+    },
+    "I0-N01": {
+      "evidence": "Five attempts, four successes, one expected refusal; fail_wait exit 2 with P6_WAIT_DURATION_OUT_OF_RANGE; unexpected_failed_or_refused=0; denominator not reduced.",
+      "result": "PASS"
+    },
+    "I0-N02": {
+      "evidence": "Provider calls, tokens, retries, and billable cost are UNOBSERVED, not zero; child environment is the five-key offline allowlist; no provider transport was independently observed.",
+      "result": "PASS"
+    },
+    "I0-N03": {
+      "evidence": "26/26 hostile suite includes source forgery, edited receipt, stdout mutation, forged summary, RSS units, provider zero, cold lie, WAL refusal, and BLOB/TEXT collision; new P3 row type/content tamper was refused with exit 2.",
+      "result": "PASS"
+    },
+    "I0-P01": {
+      "evidence": "Fresh measure2 actual P6 new, view, wait 1, and cold view all exited 0; clock 248 to 249; wait admission ADMITTED; five distinct child PIDs.",
+      "result": "PASS"
+    },
+    "I0-P02": {
+      "evidence": "Full raw start/receipt/stdout/stderr for all five attempts, manifest, and 21-entry index; independent reader exit 0 with expected_scenario_pass=true at index e35455ddd634f83de883ad82c44dcd3ba70e0368eaad14f7fc3ff5e584b37995.",
+      "result": "PASS"
+    },
+    "I0-R01": {
+      "evidence": "Candidate diff from prior runner SHA changes only test_agent_a_relay.py; no P3/P4/P5/P6 owner or protected source edit; checkout clean before and after; no commit or merge.",
+      "result": "PASS"
+    }
+  },
+  "commission": "G03-I0-G5 independent executable final receiving, no A/B relay",
+  "decision": "ACCEPT_SCOPED at SOURCEFREE_S2_INSTRUMENTATION_ONLY; integration UNMERGED; no native or authority grant.",
+  "defects": {
+    "minor_observations": [
+      "R2 RUNNER_RESULT.json archive and archive_sha256 are null although the committed archive and ARCHIVE_SHA256.txt exist and match.",
+      "R2 seven-case mapping used old labels for I0-P02 and I0-N02; this receiving regrades with the corrected G5-issue labels.",
+      "Live PR head was not independently checked through the remote API; local pinned ref g03/pr972 equals bfe420af.",
+      "Issue #949 full body was not retrievable; the corrected seven-case labels in the G5 issue and the candidate status IDs were used."
+    ],
+    "sev_0": [],
+    "sev_1": [],
+    "sev_2": []
+  },
+  "evidence_grade": "SOURCEFREE_S2_INSTRUMENTATION_ONLY",
+  "fresh_run": {
+    "attempts": [
+      {
+        "clock": 248,
+        "cpu_system_s": 0.992184,
+        "cpu_user_s": 10.449174,
+        "exit": 0,
+        "id": "new",
+        "peak_rss_bytes": 54239232,
+        "state_after": 1282745,
+        "state_before": 0,
+        "status": null,
+        "wall_seconds": 15.53233761782758
+      },
+      {
+        "clock": 248,
+        "cpu_system_s": 0.453852,
+        "cpu_user_s": 4.290749,
+        "exit": 0,
+        "id": "view",
+        "peak_rss_bytes": 51548160,
+        "state_after": 1285673,
+        "state_before": 1282745,
+        "status": null,
+        "wall_seconds": 6.370215861825272
+      },
+      {
+        "admission": "ADMITTED",
+        "clock": 249,
+        "cpu_system_s": 0.44414,
+        "cpu_user_s": 5.7699,
+        "exit": 0,
+        "id": "wait",
+        "peak_rss_bytes": 53125120,
+        "state_after": 1390936,
+        "state_before": 1285673,
+        "status": null,
+        "wall_seconds": 6.714783193077892
+      },
+      {
+        "clock": 249,
+        "cpu_system_s": 0.337139,
+        "cpu_user_s": 4.300486,
+        "exit": 0,
+        "id": "cold_view",
+        "peak_rss_bytes": 54554624,
+        "state_after": 1393526,
+        "state_before": 1390936,
+        "status": null,
+        "wall_seconds": 5.872488695895299
+      },
+      {
+        "clock": null,
+        "cpu_system_s": 0.377034,
+        "cpu_user_s": 4.579841,
+        "exit": 2,
+        "id": "fail_wait",
+        "peak_rss_bytes": 55226368,
+        "reason": "P6_WAIT_DURATION_OUT_OF_RANGE",
+        "state_after": 1393526,
+        "state_before": 1393526,
+        "status": "REFUSED",
+        "wall_seconds": 6.4987008448224515
+      }
+    ],
+    "checkout": "/Users/matthewsmith/Desktop/rawlsing-g03-i0-g5-review-20261113T030841Z/evidence",
+    "measure": {
+      "attempts": 5,
+      "cold_kernel_cache": "UNOBSERVED",
+      "cold_reopened": 1,
+      "command": "python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/measure.py --repo <checkout> --out <evidence>/measure2",
+      "cpu_system_seconds": 2.604349,
+      "cpu_user_seconds": 29.39015,
+      "distinct_process_execs": 5,
+      "exit": 0,
+      "expected_refusals": 1,
+      "index_sha256": "e35455ddd634f83de883ad82c44dcd3ba70e0368eaad14f7fc3ff5e584b37995",
+      "max_direct_child_rss_bytes": 55226368,
+      "process_tree_rss": "UNOBSERVED",
+      "provider_billable_cost": "UNOBSERVED",
+      "provider_calls": "UNOBSERVED",
+      "provider_retries": "UNOBSERVED",
+      "provider_tokens": "UNOBSERVED",
+      "success": 4,
+      "timed_out": 0,
+      "unexpected_failed_or_refused": 0,
+      "wall_total_seconds": 40.988526213448495
+    },
+    "reader": {
+      "command": "python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/read_receipts.py <evidence>/measure2 --index-sha256 e35455ddd634f83de883ad82c44dcd3ba70e0368eaad14f7fc3ff5e584b37995 --repo <checkout> --require-expected",
+      "exit": 0,
+      "expected_scenario_pass": true
+    },
+    "refused_state": {
+      "logical_content_changed": false,
+      "logical_witness": "G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2",
+      "physical_content_changed": true
+    },
+    "tests": {
+      "command": "python3 -B -m unittest -v test_measure test_agent_b test_agent_a_relay",
+      "cwd": "WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1",
+      "exit": 0,
+      "failed": 0,
+      "passed": 26,
+      "ran": 26,
+      "seconds": 23.653,
+      "stderr_bytes": 3307,
+      "stderr_sha256": "10eaee5b78255b285e05e0eaeffa4903372ebd9c5259faf294b0a95f477df0b0"
+    }
+  },
+  "g03_full": "NOT_EVALUATED_G02_MISSING",
+  "gates": {
+    "G1": {
+      "basis": "Exact candidate SHA, clean detached checkout, source hashes, exclusive lease, one-file test-only diff. Issue #949 full body was not retrievable locally/current token; corrected seven-case labels from the G5 issue were used. Live PR head was not independently checked through the remote API; local g03/pr972 equals bfe420af.",
+      "state": "PASS_SOURCE_CUSTODY__CONTRACT_TEXT_NOT_ACCESSIBLE"
+    },
+    "G2": {
+      "basis": "26/26 tests; five actual P6 children; measure exit 0; independent reader exit 0 with expected_scenario_pass=true.",
+      "state": "PASS"
+    },
+    "G3": {
+      "basis": "26/26 hostile suite; new independent SQLite P3 tamper refused with exit 2.",
+      "state": "PASS"
+    },
+    "G4": {
+      "basis": "Fresh raw receipts, manifest, 21-entry index, reader output, environment, source state, and durable copies. R2 archive SHA and SHA256SUMS verified; raw index matches dca3959d. One minor R2 metadata inconsistency noted.",
+      "state": "PASS"
+    },
+    "G5": {
+      "basis": "Independent execution completed; all seven corrected cases PASS; no substantive defect; integration remains UNMERGED and full G03 is NOT_EVALUATED_G02_MISSING.",
+      "scope": "SOURCEFREE_S2_INSTRUMENTATION_ONLY",
+      "state": "ACCEPT_SCOPED"
+    }
+  },
+  "generated_utc": "2026-11-13T03:20:56.540924+00:00",
+  "host": {
+    "git": "git version 2.39.1",
+    "hostname": "oldMac.lan",
+    "hw_memsize": 17179869184,
+    "hw_ncpu": 16,
+    "kernel": "22.6.0",
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3"
+  },
+  "integration_state": "UNMERGED",
+  "lease": {
+    "created_before_checkout": true,
+    "exclusive": true,
+    "lock_dir_created_atomically": true,
+    "path": "/Users/matthewsmith/Desktop/rawlsing-g03-i0-g5-review-20261113T030841Z/LEASE.json",
+    "scope": "G03-I0-G5 independent executable final receiving only"
+  },
+  "limits": [
+    "Provider calls/tokens/retries/billable cost UNOBSERVED, not zero.",
+    "Process-tree RSS and descendant count UNOBSERVED; only direct wait4 child metrics measured.",
+    "Cold Python process demonstrated; cold kernel page cache UNOBSERVED.",
+    "Mac host sample, not Linux/GitHub-hosted.",
+    "G02 cohort missing; full G03 NOT_EVALUATED_G02_MISSING.",
+    "No native science, actor/human/production grant, protected merge, or GitHub publication.",
+    "Issue #949 full body and live PR head were not independently accessible through the current remote API."
+  ],
+  "new_hostile_variation": {
+    "copy_control_expected_scenario_pass": true,
+    "copy_control_reader_exit": 0,
+    "description": "Copied the fresh completed evidence+state, altered an existing generated SQLite P3 p3_records row from TEXT length 178 to BLOB length 2, checkpointed WAL, left receipts/index untouched, and reran the reader with the original external index.",
+    "expected_scenario_pass_after_tamper": false,
+    "index_unchanged_sha256": "e35455ddd634f83de883ad82c44dcd3ba70e0368eaad14f7fc3ff5e584b37995",
+    "logical_detail_after": "817e87c7656e35a80c7bd9e005778f992f9c05d4be1f03c7fa7689d3e62bd863",
+    "logical_detail_before": "2e968aaa0955ea32eb6d6d9ef378ba197aba0c15d9f979487c56a907cd785f76",
+    "logical_digest_after": "07a2e6316852bf3226ac813aef55b0ad698a9030b6d368129d752ba5a453e6b3",
+    "logical_digest_before": "8d1c0329e92d40f9281da44def881bf1043c59c437d5f620a11288434f9fcc64",
+    "note": "The reader refused at its final physical-state guard; the logical digest also changed independently, so the expected logical-state mismatch is evidenced even though the physical guard fired first.",
+    "row_after": {
+      "hex": "4142",
+      "length": 2,
+      "seq": 1,
+      "typeof": "blob"
+    },
+    "row_before": {
+      "hex_prefix": "7B2261637469766174696F6E5F726F6C6573",
+      "length": 178,
+      "seq": 1,
+      "typeof": "text"
+    },
+    "tampered_reader_exit": 2,
+    "tampered_reader_result": "REJECT STATE_FINAL_CONTENT_MISMATCH",
+    "wal_bytes": 0,
+    "wal_checkpointed": true
+  },
+  "prior_runner_sha": "5cc6595409d224f5331f367e36e4f8b283fe1959",
+  "r2_verification": {
+    "archive_matches_recorded": true,
+    "archive_sha256": "334dfcff09b1e01c3994da51c18df52a569a46cd209d8f9af10e81bbda2c1375",
+    "commit": "41ac77670008e6d73f5d6a6bc4422e0c262aaf32",
+    "known_evidence_reproduced": true,
+    "minor_metadata_observation": "RUNNER_RESULT.json archive and archive_sha256 are null while ARCHIVE_SHA256.txt and the committed archive exist and match; evidence metadata only, not a material failure.",
+    "raw_index_matches_recorded": true,
+    "raw_index_sha256": "dca3959d8b0876968bc4f6f4aa2eb0394133d1e002d62ac6d20f29cb0a2cdc73",
+    "reader_expected_scenario_pass": true,
+    "sha256sums_all_ok": true,
+    "tests_passed": 26,
+    "tests_ran": 26,
+    "tests_stderr_bytes": 3306
+  },
+  "reviewer": {
+    "agent_type": "Independent nonauthor G5 receiving reviewer",
+    "independence": "Not Agent A, Agent B, or #969 runner; fresh detached checkout and new evidence",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "session": "ses_e2de207ebffeB9ZV7kqTMQnz4s",
+    "user": "matthewsmith"
+  },
+  "runner_sha": "41ac77670008e6d73f5d6a6bc4422e0c262aaf32",
+  "schema": "SOROK_G03_I0_G5_FINAL_RECEIVING@1",
+  "source_sha": "bfe420af96e401342b4d36b942532057a4871575",
+  "status": "ACCEPT_SCOPED"
+}
