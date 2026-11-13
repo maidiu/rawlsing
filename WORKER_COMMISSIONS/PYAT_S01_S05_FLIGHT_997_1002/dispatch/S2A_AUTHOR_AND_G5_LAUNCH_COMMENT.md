@@ -6,3 +6,5 @@ SAMEoriginalindependentreviewer ses_e30c25800ffeT8XbyTuHekRCme actualjob `pyat99
 
 
 [Exactauthorhandoff](https://github.com/maidiu/rawlsing/blob/c29972ce99cae9672eae20dc7030d4eafe66ada6/WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/00_HANDOFF.md). Actual G5launchnotacceptance; no source/scientific/protectedadoption.
+
+[Immutablecontrollerdisposition+exactactualG5launch](https://github.com/maidiu/rawlsing/blob/f6a1cf449d6770bb45ae23988891974d44f8964b/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/S2A_PUBLIC_AUTHOR_RETURN_DISPOSITION.json).
