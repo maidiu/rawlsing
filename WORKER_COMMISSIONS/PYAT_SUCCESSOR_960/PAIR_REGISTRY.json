@@ -190,7 +190,7 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "PHASE1_SAME_G5_SOURCE_SCOPE_RECHECK_RUNNING",
+      "state": "HOLD_EXTERNAL_FIVE_READERS_OWNER_ACK_PENDING",
       "job_id": "pyat991-s2d-g5-source-scope-recheck-r01",
       "branch": "agent/pyat991-s2d-a-r1",
       "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
@@ -199,11 +199,11 @@
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "TERMINAL_EXACT_REPAIR_IDLE"
+          "state": "TERMINAL_SCOPED_IDLE"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
-          "state": "TERMINAL_IDLE",
+          "state": "TERMINAL_SCOPED_IDLE",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-b",
           "branch": "agent/pyat991-s2d-b-r1"
         }
@@ -239,12 +239,17 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
         "branch": "agent/pyat991-s2d-g5-r1",
         "independence": "NEITHER_S2D_AUTHOR_NOR_REPAIRER; priorS2F/S2G reviewer only",
-        "state": "RUNNING_SAME_DELTA_RECHECK"
+        "state": "TERMINAL_HOLD_EXTERNAL_TWO_READER_SUBRESULT_QUALIFIED"
       },
       "g5_delivery_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
-      "g5_verdict": "REVISE_EXACT_DEFECT",
-      "bounded_post_g5_correction": "ONE_SOURCE_SCOPE_REPAIR_DELIVERED_SAME_G5_RECHECK_RUNNING",
-      "repair_delivery_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f"
+      "g5_verdict": "HOLD_EXTERNAL",
+      "bounded_post_g5_correction": "USED_SOURCE_SCOPE_FINDING_CLOSED",
+      "repair_delivery_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+      "g5_recheck_delivery_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+      "accepted_subresult_code_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+      "accepted_subresult_grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "active_job": null,
+      "original_task_complete": false
     }
   ]
 }
