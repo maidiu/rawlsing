@@ -1,0 +1,45 @@
+event_clock_forged/uptake                        REFUSED   CHILD_UPTAKE_NOT_SPEECH
+event_clock_forged/p6                            REFUSED   CHILD_EXPERIENCE_EVENT_MISMATCH
+episode_root/uptake                              REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_root/p6                                  REFUSED   CHILD_EXPERIENCE_UTTERANCE_MISMATCH
+episode_branch/uptake                            REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_branch/p6                                REFUSED   CHILD_EXPERIENCE_UTTERANCE_MISMATCH
+episode_actor_id/uptake                          REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_actor_id/p6                              REFUSED   CHILD_EXPERIENCE_SOURCE_MISMATCH
+episode_alias/uptake                             REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_alias/p6                                 REFUSED   CHILD_EXPERIENCE_EVENT_MISMATCH
+episode_child_actor_id/uptake                    REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_child_actor_id/p6                        REFUSED   CHILD_EXPERIENCE_UTTERANCE_MISMATCH
+episode_child_alias/uptake                       REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_child_alias/p6                           REFUSED   CHILD_EXPERIENCE_UTTERANCE_MISMATCH
+episode_text/uptake                              REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_text/p6                                  REFUSED   CHILD_EXPERIENCE_EVENT_MISMATCH
+episode_decision_id/uptake                       REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_decision_id/p6                           REFUSED   CHILD_EXPERIENCE_SOURCE_MISMATCH
+episode_operation_id/uptake                      REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_operation_id/p6                          REFUSED   CHILD_EXPERIENCE_SOURCE_MISMATCH
+episode_event_hash/uptake                        REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+episode_event_hash/p6                            REFUSED   CHILD_EXPERIENCE_EVENT_MISMATCH
+episode_clock/uptake                             REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+duplicate_parent_receipt/uptake                  REFUSED   CHILD_UPTAKE_PARENT_RECEIPT_SEVERED
+duplicate_parent_receipt/p6                      REFUSED   CHILD_UPTAKE_PARENT_RECEIPT_SEVERED
+duplicate_utterance_episode/uptake               REFUSED   CHILD_UPTAKE_UTTERANCE_NOT_FOUND
+duplicate_utterance_episode/p6                   REFUSED   CHILD_EXPERIENCE_UTTERANCE_NOT_FOUND
+duplicate_utterance_episode/select               REFUSED   CHILD_EXPERIENCE_UTTERANCE_NOT_FOUND
+receipt_text/uptake                              REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+receipt_event_kind/uptake                        REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+receipt_event_authored_by/uptake                 REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+receipt_decision_action/uptake                   ACCEPTED  {"schema": "SOROK_CHILD_SPEECH_UPTAKE@1", "grade": "SOURCEFREE_S2_ONLY", "child_actor_id": "TEST_ONLY_BP1_R26V
+receipt_hidden_reason_hash/uptake                REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+receipt_status/uptake                            REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+receipt_event_id/uptake                          REFUSED   CHILD_UPTAKE_UTTERANCE_MISMATCH
+d03_receipt_root                                 ACCEPTED  {"child_experience": {"access_condition": "SAME_ROOM_AT_ADMISSION", "access_owner": "C12_SPEECH_PERCEPTION_REC
+d03_receipt_branch                               ACCEPTED  {"child_experience": {"access_condition": "SAME_ROOM_AT_ADMISSION", "access_owner": "C12_SPEECH_PERCEPTION_REC
+d03_receipt_clock                                ACCEPTED  {"child_experience": {"access_condition": "SAME_ROOM_AT_ADMISSION", "access_owner": "C12_SPEECH_PERCEPTION_REC
+d03_receipt_operation_id                         ACCEPTED  {"child_experience": {"access_condition": "SAME_ROOM_AT_ADMISSION", "access_owner": "C12_SPEECH_PERCEPTION_REC
+d03_receipt_decision_id                          REFUSED   PARENT_DECISION_NOT_FOUND
+d03_receipt_event_hash                           REFUSED   J1_UTTERANCE_HASH_MISMATCH
+d03_receipt_actor_id                             REFUSED   J1_SPEAKER_MISMATCH
+d03_receipt_alias                                REFUSED   J1_SPEAKER_ALIAS_MISMATCH
+d03_receipt_text                                 REFUSED   J1_UTTERANCE_TEXT_MISMATCH
+EXIT=0
