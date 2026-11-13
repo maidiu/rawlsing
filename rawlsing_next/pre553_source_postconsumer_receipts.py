@@ -98,6 +98,10 @@ def _verify_realized_q2_body_witness(source_fate: Mapping[str, Any]) -> None:
     present_keys: set[str] = set()
     supported_keys: set[str] = set()
     unresolved_response_keys: set[str] = set()
+    # Original Q2 refuses a realized response key whose emitted response
+    # slots all have zero eligible routed rows. Preserve that denominator
+    # rule in the postconsumer boundary; B checked only the routing flag.
+    emitted_response_routes: dict[str, list[int]] = {}
     for witness in witnesses:
         if not isinstance(witness, Mapping):
             raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
@@ -110,12 +114,39 @@ def _verify_realized_q2_body_witness(source_fate: Mapping[str, Any]) -> None:
                 or type(occurrence) is not bool
                 or type(routing_unresolved) is not bool):
             raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+        family = witness.get("family")
+        if family not in {
+            "RespondentEvent", "EmpiricalCoordinateFact", "WeightMeasureFact"
+        }:
+            raise SourceReceiptJoinError("Q2_REALIZATION_WITNESS_INVALID")
+        routing_states = witness.get("routing_states")
+        if (not isinstance(routing_states, Mapping)
+                or any(not isinstance(name, str) or type(value) is not int
+                       or value < 0 for name, value in routing_states.items())):
+            raise SourceReceiptJoinError("Q2_REALIZATION_ROUTING_CENSUS_INVALID")
+        routable_rows = witness.get("routable_rows")
+        if family == "RespondentEvent":
+            if (type(routable_rows) is not int or routable_rows < 0
+                    or routable_rows != routing_states.get("ELIGIBLE_APPLICABLE", 0)
+                    or routing_unresolved != any(
+                        state in routing_states for state in (
+                            "ROUTING_UNKNOWN", "RULE_UNAVAILABLE"
+                        )
+                    )):
+                raise SourceReceiptJoinError("Q2_REALIZATION_ROUTING_CENSUS_DRIFT")
+            if emitted > 0:
+                emitted_response_routes.setdefault(key, []).append(routable_rows)
+        elif (routing_states or routable_rows is not None or routing_unresolved):
+            raise SourceReceiptJoinError("Q2_REALIZATION_NONRESPONSE_ROUTING_DRIFT")
         present_keys.add(key)
         if emitted > 0 and occurrence and not routing_unresolved:
             supported_keys.add(key)
         if (witness.get("family") == "RespondentEvent"
                 and emitted > 0 and routing_unresolved):
             unresolved_response_keys.add(key)
+    if any(not any(rows > 0 for rows in routes)
+           for routes in emitted_response_routes.values()):
+        raise SourceReceiptJoinError("Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR")
     if (present_keys != supported_keys or unresolved_response_keys
             or source_fate.get("unrealized_keys")
             or source_fate.get("routing_unresolved_keys")):

@@ -25,6 +25,7 @@ from rawlsing_next.pre553_saved_workload_integration import (
 from rawlsing_next.pre553_issued_workload import execute_issued_workload
 from rawlsing_next.pre553_source_postconsumer_receipts import (
     join_saved_source_operation_fates, SourceReceiptJoinError,
+    _verify_realized_q2_body_witness,
 )
 from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
 from rawlsing_next.tests.test_pyat960_s1e_native_fact import (
@@ -381,3 +382,108 @@ def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
             resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
             runner=runner,
         )
+
+
+@pytest.mark.parametrize(
+    "attack,refusal",
+    [
+        ("zero_routable", "Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR"),
+        ("concealed_unknown", "Q2_REALIZATION_ROUTING_CENSUS_DRIFT"),
+        ("eligible_count_drift", "Q2_REALIZATION_ROUTING_CENSUS_DRIFT"),
+    ],
+)
+def test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery(
+    tmp_path, attack, refusal,
+):
+    """B's per-key emitted/occurrence check alone admits false routed support.
+
+    Keep ELIGIBLE, the favorable per-key summary, aggregate census, and
+    physical I02 roots intact; mutate only one Q2 detail witness family.
+    """
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / ("agent-a-routing-" + attack)
+    )
+    manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    target = next(
+        row for row in handoff.operation_fates
+        if row["disposition"] == "ELIGIBLE" and row["source_realized"] is True
+        and any(
+            w["family"] == "RespondentEvent" and w["emitted"] > 0
+            for w in row["source_realization"]
+        )
+    )
+    original = next(
+        w for w in target["source_realization"]
+        if w["family"] == "RespondentEvent" and w["emitted"] > 0
+    )
+    key = original["key"]
+    modified = []
+    for witness in target["source_realization"]:
+        new = dict(witness)
+        if attack == "zero_routable" and (
+            witness["key"] == key and witness["family"] == "RespondentEvent"
+            and witness["emitted"] > 0
+        ):
+            states = dict(witness["routing_states"])
+            states["ELIGIBLE_APPLICABLE"] = 0
+            new["routing_states"] = states
+            new["routable_rows"] = 0
+        elif witness is original and attack == "concealed_unknown":
+            new["routing_states"] = {
+                **witness["routing_states"], "ROUTING_UNKNOWN": 1,
+            }
+            # The favorable but now false 'routing_unresolved' remains False.
+        elif witness is original and attack == "eligible_count_drift":
+            new["routable_rows"] = witness["routable_rows"] + 1
+        modified.append(new)
+    forged = replace(handoff, operation_fates=tuple(
+        {**row, "source_realization": tuple(modified)}
+        if row["operation_id"] == target["operation_id"]
+        else row for row in handoff.operation_fates
+    ))
+    with pytest.raises(SourceReceiptJoinError, match=refusal):
+        join_saved_source_operation_fates(
+            handoff=forged, estate_receipt=estate, admission=admission,
+            compilation=compilation, workload=compilation.issued.workload,
+            resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+            runner=runner,
+        )
+
+
+def test_agent_a_counter_preserves_q2_multislot_one_routable_semantics():
+    """Q2 requires at least one eligible routed response slot, not all slots.
+
+    Synthetic per-key predicate test: no claim this invented tuple is a
+    separately authorized source or a complete physical release.
+    """
+    first = {
+        "key": "KEY-1", "item_id": "item-1", "family": "RespondentEvent",
+        "slot": (0, "q1"), "question_id": "q1", "emitted": 5,
+        "routing_states": {"ELIGIBLE_APPLICABLE": 5}, "routable_rows": 5,
+        "routing_unresolved": False, "occurrence_realized": True,
+        "occurrence_dimension": None,
+    }
+    zero = {
+        **first, "slot": (1, "q2"), "question_id": "q2",
+        "routing_states": {"NOT_ASKED": 5}, "routable_rows": 0,
+    }
+    source_fate = {
+        "disposition": "ELIGIBLE", "source_realized": True,
+        "source_realization": (first, zero),
+        "routing_unresolved_keys": (), "unrealized_keys": (),
+    }
+    _verify_realized_q2_body_witness(source_fate)
+    no_eligible_route = {
+        **source_fate, "source_realization": (
+            {**first, "routing_states": {"NOT_ASKED": 5},
+             "routable_rows": 0}, zero,
+        ),
+    }
+    with pytest.raises(
+        SourceReceiptJoinError,
+        match="Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR",
+    ):
+        _verify_realized_q2_body_witness(no_eligible_route)
