@@ -1565,13 +1565,11 @@ def resume_joined_workloads(
         require_unchanged(
             item, current_record, "ISSUER_SNAPSHOT_CHANGED_BEFORE_RESTORE"
         )
-        _validate_entry_material(entry)
-        _validate_entry_outputs(entry, workload=workload)
-        prior_receipts = tuple(_restore_receipt(row) for row in entry.receipt_materials)
-        prior_outputs = {
-            unit_hash: _restore_output_material(row)
-            for unit_hash, row in entry.completed_outputs.items()
-        }
+        # The exact saved binding/type/source check MUST precede any protected
+        # entry/output parse or restore in the PARTIAL branch.  This mirrors the
+        # COMPLETED branch and prevents a coherently rehashed forged checkpoint
+        # from causing retained-output restoration before refusal.
+        saved = None
         if saved_admission_factory is not None:
             saved = saved_admission_factory()
             if type(saved) is not SavedC11Admission:
@@ -1584,6 +1582,20 @@ def resume_joined_workloads(
                 raise WorkloadAdmissionError(
                     "JOINED_CHECKPOINT_SAVED_SOURCE_MISMATCH"
                 )
+            # The estate open/current callback must not invalidate the exact
+            # CURRENT record established before the protected parse.
+            require_unchanged(
+                item, current_record,
+                "ISSUER_SNAPSHOT_CHANGED_AFTER_SAVED_BINDING",
+            )
+        _validate_entry_material(entry)
+        _validate_entry_outputs(entry, workload=workload)
+        prior_receipts = tuple(_restore_receipt(row) for row in entry.receipt_materials)
+        prior_outputs = {
+            unit_hash: _restore_output_material(row)
+            for unit_hash, row in entry.completed_outputs.items()
+        }
+        if saved is not None:
             saved_factory = lambda saved=saved: saved
             resumed_results.append(execute_issued_workload(
                 workload, resolver, source_factory=None,
