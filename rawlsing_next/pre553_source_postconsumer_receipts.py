@@ -5,9 +5,10 @@ mint an issuer or backdate receipts. The caller supplies a REAL accepted S2-D
 saved admission and REAL BatchExecutionRunner (actual execution or legally
 restored receipts). Every positive Batch output is checked by re-executing its
 native cold reader and comparing exact result references under live CURRENT.
-An operation is marked evidenced only if its own S1-C supported query units
-are all accounted for. Shared discovery output alone never makes every
-scientific operation COMPLETE. All negative/pending states survive verbatim.
+An operation is marked evidenced only if its S1-C expected candidate IDs
+match re-executed I05 native receipts through R03's original candidate
+anti-join, or its exact issued query units are complete. A shared Batch
+COMPLETED state alone never marks every scientific operation COMPLETE. All negative/pending states survive verbatim.
 """
 from __future__ import annotations
 
@@ -29,6 +30,7 @@ from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_source_direct_parquet_estate import EstateReceipt
 from rawlsing_next.pre553_source_i02_handoff import SourceI02Handoff
 from rawlsing_next.pre553_universal_workload import GovernedFrontierCompilation
+from rawlsing_next.universal_grammar.native_map import native_receipt_anti_join
 
 SCHEMA = "PYAT997_S1E_SOURCEFREE_SAVED_POSTCONSUMER_FATES@1"
 
@@ -143,6 +145,9 @@ def join_saved_source_operation_fates(
         by_unit.setdefault(receipt.unit_ref.key, []).append(receipt)
     completed: dict[str, UnitExecutionReceipt] = {}
     output_refs: dict[str, tuple[str, ...]] = {}
+    # Exact native I05 candidate receipts, not a blind completed Batch label.
+    discovery_candidates: dict[str, Any] = {}
+    discovery_batch_receipts: dict[str, str] = {}
     for unit in manifest.units:
         history = sorted(by_unit.get(unit.unit_ref.key, ()),
                          key=lambda r: r.attempt_index)
@@ -165,6 +170,20 @@ def join_saved_source_operation_fates(
                 discovery_authority_ref=unit.job_ref,
             )
         obtained = _results(observed, unit.job_kind)
+        if unit.job_kind == "DISCOVERY":
+            # R03 owns the complete expected candidate/rule semantic anti-join.
+            audit = native_receipt_anti_join(compilation.plan, observed.receipts)
+            if audit.get("no_drop_ok") is not True:
+                raise SourceReceiptJoinError("NATIVE_DISCOVERY_CANDIDATE_ANTI_JOIN_FAILED")
+            for native in observed.receipts:
+                identity = native.candidate_identity
+                candidate_id = identity.get("candidate_id") if isinstance(identity, Mapping) else None
+                if not isinstance(candidate_id, str) or not candidate_id:
+                    raise SourceReceiptJoinError("NATIVE_CANDIDATE_ID_MISSING")
+                if candidate_id in discovery_candidates:
+                    raise SourceReceiptJoinError("DUPLICATE_NATIVE_DISCOVERY_CANDIDATE")
+                discovery_candidates[candidate_id] = native
+                discovery_batch_receipts[candidate_id] = receipt.receipt_ref.key
         retained = tuple(sorted(ref.key for ref in receipt.result_refs))
         if obtained != retained:
             raise SourceReceiptJoinError("RECEIPT_NATIVE_FIRST_CONSUMER_OUTPUT_DRIFT")
@@ -204,10 +223,27 @@ def join_saved_source_operation_fates(
         entry = plan_by_op.get(operation_id)
         refs: tuple[str, ...] = ()
         result_refs: tuple[str, ...] = ()
+        batch_refs: tuple[str, ...] = ()
         joined_state = "NONELIGIBLE_FATE_PRESERVED"
         if state == "ELIGIBLE":
             joined_state = "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT"
             if (old.get("source_realized") is True and entry is not None
+                    and entry.status == "SUPPORTED" and entry.expected_candidate_keys
+                    and set(entry.expected_candidate_keys) <= set(discovery_candidates)):
+                selected_candidates = [
+                    discovery_candidates[c] for c in sorted(set(entry.expected_candidate_keys))
+                ]
+                refs = tuple(sorted(r.ref.key for r in selected_candidates))
+                result_refs = tuple(sorted({
+                    _key(fact) for r in selected_candidates
+                    for fact in r.empirical_fact_refs
+                }))
+                batch_refs = tuple(sorted({
+                    discovery_batch_receipts[c] for c in entry.expected_candidate_keys
+                }))
+                joined_state = "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED"
+                positively_linked += 1
+            elif (old.get("source_realized") is True and entry is not None
                     and entry.status == "SUPPORTED" and entry.query_refs):
                 qids = {_key(ref) for ref in entry.query_refs}
                 if all(q in query_unit for q in qids):
@@ -220,6 +256,7 @@ def join_saved_source_operation_fates(
                             ref for u in selected
                             for ref in output_refs[u.unit_ref.key]
                         ))
+                        batch_refs = refs
                         if not refs:
                             raise SourceReceiptJoinError("EMPTY_POSITIVE_RECEIPT_SET")
                         joined_state = "TEST_ONLY_SAVED_NATIVE_QUERY_RECEIPTED"
@@ -232,6 +269,7 @@ def join_saved_source_operation_fates(
         row["postconsumer_state"] = joined_state
         row["postconsumer_receipt_refs"] = refs
         row["postconsumer_native_output_refs"] = result_refs
+        row["postconsumer_batch_receipt_refs"] = batch_refs
         row["postconsumer_decision_ref"] = record.decision_ref.key
         row["postconsumer_release_ref"] = admission.release_ref.key
         row["postconsumer_saved_manifest_sha256"] = admission.manifest_sha256
@@ -249,7 +287,8 @@ def join_saved_source_operation_fates(
         "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
         "operation_count": len(output_rows),
         "preconsumer_fate_counts": dict(sorted(fate_counts.items())),
-        "positive_query_linked_operations": positively_linked,
+        "positive_native_linked_operations": positively_linked,
+        "native_discovery_candidates_exactly_joined": len(discovery_candidates),
         "pending_eligible_operations": pending_eligible,
         "batch_units": len(manifest.units),
         "native_completed_units_rechecked": len(completed),
