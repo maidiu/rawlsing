@@ -212,3 +212,56 @@ def test_mixed_source_issued_receipt_join_refused_before_claim(tmp_path):
             compilation=compilation, workload=workload, resolver=resolver,
             host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE, runner=runner,
         )
+
+
+def test_q2_held_fate_cannot_be_promoted_into_native_issued_positive(tmp_path):
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / "held-promotion"
+    )
+    manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    assert any(row["disposition"] == "HELD" for row in handoff.operation_fates)
+    target = next(
+        row["operation_id"] for row in handoff.operation_fates
+        if row["disposition"] == "HELD"
+    )
+    altered = tuple(
+        {**row, "disposition": "ELIGIBLE"}
+        if row["operation_id"] == target else row
+        for row in handoff.operation_fates
+    )
+    forged = replace(handoff, operation_fates=altered)
+    with pytest.raises(
+        SourceReceiptJoinError, match="Q2_OPERATION_FATE_OR_CLAIM_PROMOTED",
+    ):
+        join_saved_source_operation_fates(
+            handoff=forged, estate_receipt=estate, admission=admission,
+            compilation=compilation, workload=compilation.issued.workload,
+            resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+            runner=runner,
+        )
+
+
+def test_postconsumer_receipt_rows_cannot_change_after_source_mutation(tmp_path):
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / "immutable-fate"
+    )
+    manifest, _ = _issued_manifest(compilation.issued.workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    joined = join_saved_source_operation_fates(
+        handoff=handoff, estate_receipt=estate, admission=admission,
+        compilation=compilation, workload=compilation.issued.workload,
+        resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+        runner=runner,
+    )
+    old = joined.rows[0]["source_preimage"]["source_id"]
+    # The producer's shallow-frozen dataclass contains nested dictionaries.
+    # Editing one after join must NOT silently rewrite a hashed P1 receipt.
+    handoff.operation_fates[0]["source_preimage"]["source_id"] = "MUTATED"
+    assert joined.rows[0]["source_preimage"]["source_id"] == old
+    with pytest.raises(TypeError):
+        joined.rows[0]["source_preimage"]["source_id"] = "TAMPERED"
