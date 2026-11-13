@@ -178,3 +178,10 @@ recheck. S1-A needs no further packet work.
 The independent small fixture had 4 respondents/4 locator rows; parent max RSS
 `108,490,752 B`; the poisoned `select_events` path traced only `12,521 B` at
 the small fixture. This is not a 100k/6 GiB or process-tree proof.
+
+## Remote verification
+
+Review content commit `c0971e9af4fcb96b45cf0fa8ee2906f400d1f1f4` was pushed to
+`origin/agent/pyat999-early-gates-g5-r1`. Direct remote verification found the
+product tree unchanged from S1-A tested `6286ea7` and all three receipt JSON files
+valid. See `evidence/remote_verification.txt`.

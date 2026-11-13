@@ -1,6 +1,8 @@
 {
   "packet_id": "S1-A",
-  "old_obligations": ["P1-01"],
+  "old_obligations": [
+    "P1-01"
+  ],
   "contract_id": "PYAT999-EXISTING-FLIGHT-R1",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_999.md@cecfc154262eaa140d003e9e704811f44b940455",
   "governing_issue": "https://github.com/maidiu/rawlsing/issues/918",
@@ -49,21 +51,81 @@
     }
   },
   "mandatory_cases": [
-    {"id": "S1A_CHANGED_RESPONSE", "result": "PASS", "test": "test_c1_changed_semantic_value_must_not_reuse_same_key_cached_release"},
-    {"id": "S1A_ROW_OWNERSHIP", "result": "PASS", "test": "test_c1_changed_row_to_respondent_binding_cannot_reuse_old_c11"},
-    {"id": "S1A_PHYSICAL_DECODER", "result": "PASS", "test": "test_c1_decoder_metadata_context_changes_cache_admission_not_c11_semantics"},
-    {"id": "S1A_ROUTING_OCCURRENCE", "result": "PASS", "test": "test_c1_changed_routing_and_occurrence_are_distinct_cache_inputs"},
-    {"id": "S1A_AUTHORITY_CONTEXT", "result": "PASS", "test": "test_c1_authority_set_cache_isolation_does_not_mint_authority"},
-    {"id": "S1A_REAL_I03_RESTORE", "result": "PASS", "test": "test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores"},
-    {"id": "S1A_ONE_SHOT_AUTHORITY", "result": "PASS", "test": "test_c1_one_shot_authority_iterable_produces_same_private_cache_binding"},
-    {"id": "S1A_WARM_COLD_MUTATION", "result": "PASS", "test": "test_c1_projection_mutation_during_source_read_must_not_poison_cache_key"},
-    {"id": "S1A_WARM_CACHE_HIT", "result": "PASS", "test": "test_c1_cache_hit_callback_cannot_change_governed_input_while_serving"},
-    {"id": "S1A_NO_CACHE_COHERENCE", "result": "PASS", "test": "test_c1_uncached_physical_read_cannot_use_changed_governed_semantics"},
-    {"id": "S1A_MUTATE_RESTORE", "result": "PASS", "test": "test_c1_transient_semantic_rewrite_and_restore_cannot_cache_mixed_release"},
-    {"id": "S1A_IMMUTABLE_NESTED_RULES", "result": "PASS", "test": "test_c1_governed_nested_semantic_input_is_detached_and_readonly"},
-    {"id": "S1A_CONFLICT_REBIND", "result": "PASS", "test": "test_c1_session_cache_rejects_conflicting_valid_release_rebind"},
-    {"id": "S1A_FIRST_INSERT_POISON", "result": "PASS", "test": "test_c1_empty_cache_rejects_unowned_valid_release_and_preserves_i03"},
-    {"id": "S1A_CONCURRENT_CLEAR_RESTORE", "result": "PASS", "test": "test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves_i03"}
+    {
+      "id": "S1A_CHANGED_RESPONSE",
+      "result": "PASS",
+      "test": "test_c1_changed_semantic_value_must_not_reuse_same_key_cached_release"
+    },
+    {
+      "id": "S1A_ROW_OWNERSHIP",
+      "result": "PASS",
+      "test": "test_c1_changed_row_to_respondent_binding_cannot_reuse_old_c11"
+    },
+    {
+      "id": "S1A_PHYSICAL_DECODER",
+      "result": "PASS",
+      "test": "test_c1_decoder_metadata_context_changes_cache_admission_not_c11_semantics"
+    },
+    {
+      "id": "S1A_ROUTING_OCCURRENCE",
+      "result": "PASS",
+      "test": "test_c1_changed_routing_and_occurrence_are_distinct_cache_inputs"
+    },
+    {
+      "id": "S1A_AUTHORITY_CONTEXT",
+      "result": "PASS",
+      "test": "test_c1_authority_set_cache_isolation_does_not_mint_authority"
+    },
+    {
+      "id": "S1A_REAL_I03_RESTORE",
+      "result": "PASS",
+      "test": "test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores"
+    },
+    {
+      "id": "S1A_ONE_SHOT_AUTHORITY",
+      "result": "PASS",
+      "test": "test_c1_one_shot_authority_iterable_produces_same_private_cache_binding"
+    },
+    {
+      "id": "S1A_WARM_COLD_MUTATION",
+      "result": "PASS",
+      "test": "test_c1_projection_mutation_during_source_read_must_not_poison_cache_key"
+    },
+    {
+      "id": "S1A_WARM_CACHE_HIT",
+      "result": "PASS",
+      "test": "test_c1_cache_hit_callback_cannot_change_governed_input_while_serving"
+    },
+    {
+      "id": "S1A_NO_CACHE_COHERENCE",
+      "result": "PASS",
+      "test": "test_c1_uncached_physical_read_cannot_use_changed_governed_semantics"
+    },
+    {
+      "id": "S1A_MUTATE_RESTORE",
+      "result": "PASS",
+      "test": "test_c1_transient_semantic_rewrite_and_restore_cannot_cache_mixed_release"
+    },
+    {
+      "id": "S1A_IMMUTABLE_NESTED_RULES",
+      "result": "PASS",
+      "test": "test_c1_governed_nested_semantic_input_is_detached_and_readonly"
+    },
+    {
+      "id": "S1A_CONFLICT_REBIND",
+      "result": "PASS",
+      "test": "test_c1_session_cache_rejects_conflicting_valid_release_rebind"
+    },
+    {
+      "id": "S1A_FIRST_INSERT_POISON",
+      "result": "PASS",
+      "test": "test_c1_empty_cache_rejects_unowned_valid_release_and_preserves_i03"
+    },
+    {
+      "id": "S1A_CONCURRENT_CLEAR_RESTORE",
+      "result": "PASS",
+      "test": "test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves_i03"
+    }
   ],
   "actual_tests": {
     "focused_34": {
@@ -95,10 +157,22 @@
     "Original35/source-native authentication and 100k integrated resource economics remain external."
   ],
   "external_holds": [
-    {"owner": "qualified original35/source science authority", "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; not used"},
-    {"owner": "production current/host/actor issuer", "minimal_missing_witness": "independent production CURRENT/source/host rights; local cache key is not a grant"},
-    {"owner": "integrated resource gate", "minimal_missing_witness": "100k respondents/6 GiB; this is a 3-row sourcefree cache witness only"},
-    {"owner": "protected receiving", "minimal_missing_witness": "protected PRE-MAIN merge/authority; UNMERGED"}
+    {
+      "owner": "qualified original35/source science authority",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; not used"
+    },
+    {
+      "owner": "production current/host/actor issuer",
+      "minimal_missing_witness": "independent production CURRENT/source/host rights; local cache key is not a grant"
+    },
+    {
+      "owner": "integrated resource gate",
+      "minimal_missing_witness": "100k respondents/6 GiB; this is a 3-row sourcefree cache witness only"
+    },
+    {
+      "owner": "protected receiving",
+      "minimal_missing_witness": "protected PRE-MAIN merge/authority; UNMERGED"
+    }
   ],
   "resource_evidence": {
     "rows": 3,
@@ -126,6 +200,17 @@
     "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_focused_34.txt",
     "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_preservation_136.txt",
     "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_native_witness.json",
-    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_native_witness.out"
-  ]
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_native_witness.out",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/remote_verification.txt"
+  ],
+  "remote_verification": {
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat999-early-gates-g5-r1",
+    "review_content_commit_sha": "c0971e9af4fcb96b45cf0fa8ee2906f400d1f1f4",
+    "tested_cut_sha": "6286ea700a253ff142104f2e3ee62c9352a07644",
+    "product_diff_vs_s1a_6286_in_rawlsing_next": "EMPTY",
+    "remote_receipt_json_valid": true,
+    "original_returns_control_modified": false,
+    "verified_at_utc": "2026-11-13T15:30:00Z"
+  }
 }
