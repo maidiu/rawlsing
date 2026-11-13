@@ -190,8 +190,8 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "ALL_SEVEN_NEW_IMPLEMENTATION_G5_RUNNING",
-      "job_id": "pyat991-all-seven-g5-r01",
+      "state": "ALL_SEVEN_G5_REVISE_PARTIAL_BINDING_A_REPAIR_RUNNING",
+      "job_id": "pyat991-partial-binding-repair-a01",
       "branch": "agent/pyat991-s2d-a-r1",
       "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
@@ -199,7 +199,7 @@
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "TERMINAL_FIVE_READER_CANDIDATE_IDLE"
+          "state": "RUNNING_EXACT_PARTIAL_REPAIR_REQUIRED_G4_PROOF"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
@@ -211,11 +211,11 @@
       "phase1_gate": "S2C_G5_SATISFIED; new modules authorized; shared-file edits await exact owner ACK",
       "S1E_continuation": "Necessary production handoff map included; scoped acceptance banked/full original OPEN",
       "launch": {
-        "job_id": "pyat991-all-seven-g5-r01",
-        "child_pid": 80813,
-        "supervisor_pid": 80812,
-        "observer_pid": 80814,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-all-seven-g5-r01",
+        "job_id": "pyat991-partial-binding-repair-a01",
+        "child_pid": 83771,
+        "supervisor_pid": 83770,
+        "observer_pid": 83772,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-partial-binding-repair-a01",
         "launch_is_not_completion": true
       },
       "actual_first_turn_metadata": {
@@ -239,7 +239,7 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
         "branch": "agent/pyat991-s2d-g5-r1",
         "independence": "NEITHER_S2D_AUTHOR_NOR_REPAIRER; priorS2F/S2G reviewer only",
-        "state": "RUNNING_NEW_IMPLEMENTATION_ALL_SEVEN"
+        "state": "TERMINAL_REVISE_IDLE_SAME_RECHECK_NEXT"
       },
       "g5_delivery_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
       "g5_verdict": "HOLD_EXTERNAL",
@@ -248,7 +248,7 @@
       "g5_recheck_delivery_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
       "accepted_subresult_code_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
       "accepted_subresult_grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
-      "active_job": "pyat991-all-seven-g5-r01",
+      "active_job": "pyat991-partial-binding-repair-a01",
       "original_task_complete": false,
       "owner_handoff": {
         "session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
@@ -279,7 +279,10 @@
       },
       "owner_ack_delivery_sha": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
       "owner_handoff_status": "ACK_BOTH_TWO_FILES_MATCHING_CURRENT_BLOBS",
-      "five_reader_delivery_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1"
+      "five_reader_delivery_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+      "all_seven_g5_delivery_sha": "f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f",
+      "all_seven_g5_verdict": "REVISE_EXACT_DEFECT",
+      "g4_status": "OPEN_REQUIRED_LOCAL_OBSERVATIONS_NOT_AUTHORITY_HOLD"
     }
   ]
 }
