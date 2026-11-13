@@ -559,6 +559,7 @@ class VerifiedDirectEstate:
         if current_authorizer is None or not callable(current_authorizer):
             raise DirectEstateError("independent live current/rights guard required")
         self._authorize = current_authorizer
+        self.held_manifest_sha256 = independently_held_manifest_sha256
         # Refuse before hashing or opening any source-derived estate bytes.
         self._live()
         self.root = _root(root)
