@@ -1,0 +1,46 @@
+{
+  "tests": 75,
+  "failures": 7,
+  "errors": 0,
+  "skipped": 0,
+  "time": "32.053",
+  "failed_nodes": [
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer",
+      "name": "test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join",
+      "message": "AssertionError: assert '1fb17f3bdd08...40666f8de822e' == '4c555738b09b...b9097b8bc91d8'\n  \n  - 4c555738b09b4dc04d62061b1620a7813d01adfcb13049813a9b9097b8bc91d8\n  + 1fb17f3bdd082a2239d34f2f4be2e6e1602c77ef61f5e4259a740666f8de822e"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer",
+      "name": "test_q2_held_fate_cannot_be_promoted_into_native_issued_positive",
+      "message": "AssertionError: Regex pattern did not match.\n  Expected regex: 'Q2_OPERATION_FATE_OR_CLAIM_PROMOTED'\n  Actual message: 'Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT'"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_saved_native_first_consumer",
+      "name": "test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[unresolved_routing]",
+      "message": "AssertionError: Regex pattern did not match.\n  Expected regex: 'Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION'\n  Actual message: 'Q2_REALIZATION_ROUTING_CENSUS_DRIFT'"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge",
+      "name": "test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV]",
+      "message": "AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:891a741f87d3cf735b0d3187237a646d84e9eb63a63f1e532bbea71fd0738e23', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'\n +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:891a741f87d3cf735b0d3187237a646d84e9eb63a63f1e532bbea71fd0738e23', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:E"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge",
+      "name": "test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]",
+      "message": "AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:c5f920f3b62b57107bafabe3ab4c33cd4a4c47c2ffa5bb337396a34199caed27', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'\n +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:c5f920f3b62b57107bafabe3ab4c33cd4a4c47c2ffa5bb337396a34199caed27', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:E"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_saved_source_bridge",
+      "name": "test_cold_saved_real_native_i03_from_exact_q2_source",
+      "message": "AssertionError: assert 0 > 0\n +  where 0 = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:4de64952ab15772d5d7ebc523d9dcc126ad81ad3d40cb1d142b67a2738b9cc22', typed_state='UNAVAILABLE').raw_denominator_support"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pyat997_s1e_source_saved_body_bridge",
+      "name": "test_actual_source_cell_changed_cold_body_changed_then_exact_restore",
+      "message": "AssertionError: assert 'cab875b7729e...56a83002c8ba6' == '1d5e0c41e76f...b86024f8f8b6f'\n  \n  - 1d5e0c41e76f715e1cd6ba610c2e4be969cc0879ea975f2f00bb86024f8f8b6f\n  + cab875b7729ecdfd8e5431e287987e8f57e1710afa941af8bf456a83002c8ba6"
+    }
+  ],
+  "command": "python3 -B -m pytest -q -o addopts='' -p no:cacheprovider --junitxml=... [six B handoff suites]",
+  "scope": "actual repository tests; native executor evidence, not G5"
+}

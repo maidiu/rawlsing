@@ -1,0 +1,227 @@
+{
+  "schema": "PYAT997_NATIVE_P0_P1_PROOF_R1@1",
+  "task_id": "PYAT997-NATIVE-P0-P1-PROOF-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_997.md@cecfc154262eaa140d003e9e704811f44b940455",
+  "branch": "agent/pyat997-native-proof-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-native-proof",
+  "candidate_head": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "candidate_product_parent": "534fb6602cce60fd991abd7972ebd95c92f3146c",
+  "status": "NATIVE_P0_P1_SCOPED_HARNESS_PASS__REPOSITORY_TESTS_68_OF_75__TEST_HARNESS_REVISE__NOT_G5",
+  "integration": "UNMERGED",
+  "product_edits": "NONE",
+  "sourcefree": true,
+  "original35_used": false,
+  "production_current_used": false,
+  "new_issuer_or_authority": false,
+  "1006_baseline_run": false,
+  "cwd_and_imports": {
+    "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-native-proof",
+    "head": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+    "head_subject": "PYAT #997 Agent B R5: preserve A routing counter, add independent frontier binding, publish test ceiling and stop",
+    "python": "3.11.3",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "candidate_blobs": {
+      "rawlsing_next/pre553_source_postconsumer_receipts.py": "fad3a96bb00bb3d4eb4c9e3e8c5e2d6ca970dcd8",
+      "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py": "053926db84a022066535b3378d080338fe306983",
+      "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py": "e974758b23c5bc3c38091312fda1cb3489363ef3",
+      "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py": "5660285479c8c4a0a0dd19b6d5cfa5207f3f94f5",
+      "rawlsing_next/tests/test_pyat960_s1e_source_i02.py": "4c0a0041e15813970ea26dcde1fbef7980c93c4f",
+      "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py": "4afbc5adc02478a5e1bb1a7bbbee503007ff0e23",
+      "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py": "e0a2c1f0711e2e82e677e294d66945460d8a8699"
+    },
+    "product_diff_vs_candidate": "EMPTY",
+    "tracked_status_clean_except_own_return": true
+  },
+  "repository_tests": {
+    "command": "python3 -B -m pytest -q -o addopts='' -p no:cacheprovider --junitxml=... test_pyat997_s1e_saved_native_first_consumer.py test_pyat997_s1e_saved_source_bridge.py test_pyat997_s1e_source_saved_body_bridge.py test_pyat960_s1e_source_i02.py test_pre553_source_direct_parquet_estate.py test_pyat991_s2d_saved_admission.py",
+    "tests": 75,
+    "passed": 68,
+    "failed": 7,
+    "errors": 0,
+    "skipped": 0,
+    "time_seconds": 32.053,
+    "junit": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/native_six_suite.junit.xml",
+    "log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/native_six_suite.txt",
+    "r5_frontier_focused": "5 passed, 15 deselected in 6.46s",
+    "r5_log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/r5_frontier_census.txt"
+  },
+  "test_failure_categories": [
+    {
+      "kind": "TEST_ONLY_FIXTURE_NONDETERMINISM",
+      "nodes": [
+        "test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join",
+        "test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV]",
+        "test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]",
+        "test_pyat997_s1e_source_saved_body_bridge.py::test_actual_source_cell_changed_cold_body_changed_then_exact_restore"
+      ],
+      "evidence": "Two separately generated equal-value SAV fixtures can differ in bytes/timestamp. The delayed fixture probe shows same values but unequal SHA. The body-bridge test passed when rerun alone and failed in the full run, demonstrating time-dependent flakiness.",
+      "probe": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/test_failure_probe.txt",
+      "product_implication": "NONE_PROVEN; the native harness reuses the exact baseline source bytes and restores the exact root/fact/join."
+    },
+    {
+      "kind": "TEST_HELPER_SELECTS_FIRST_NEGATIVE_I03",
+      "nodes": [
+        "test_pyat997_s1e_saved_source_bridge.py::test_cold_saved_real_native_i03_from_exact_q2_source",
+        "test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]"
+      ],
+      "evidence": "_native_i03 returns the first fact from the first SUPPORTED plan record. The plan contains supported country query records whose first fact is RISK_SET_UNAVAILABLE; the same plan also contains supported query refs with SUPPORTED denominator 5. The native harness scans the exact compiled refs and selects the supported one.",
+      "helper_position": "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::_native_i03 line 130-132",
+      "product_implication": "NONE_PROVEN; actual supported I03 exists and is exercised by the harness."
+    },
+    {
+      "kind": "EXPECTED_ERROR_STRING_ORDER_MISMATCH",
+      "nodes": [
+        "test_pyat997_s1e_saved_native_first_consumer.py::test_q2_held_fate_cannot_be_promoted_into_native_issued_positive",
+        "test_pyat997_s1e_saved_native_first_consumer.py::test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary[unresolved_routing]"
+      ],
+      "evidence": "The forged HELD promotion is refused before attribution with Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT, not the test's later Q2_OPERATION_FATE_OR_CLAIM_PROMOTED. The unresolved-routing detail mutation is refused with Q2_REALIZATION_ROUTING_CENSUS_DRIFT, not the test's Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION. Both are typed refusals; the tests assert a later/alternate error string.",
+      "product_implication": "NO UNAUTHORIZED POSITIVE; only expected-string maintenance."
+    }
+  ],
+  "native_p0_p1_harness": {
+    "path": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/native_proof_harness.py",
+    "status": "PASS",
+    "proof_json": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/native_proof_measured.json",
+    "stdout": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/evidence/native_harness_measured.txt",
+    "actual_first_consumer": "Q2 SourceI02Handoff -> SourceSavedBodySink -> S2-C persisted 14-member Parquet/Zstd estate -> SavedC11Admission -> actual execute_saved_i03 / execute_saved_i05 / execute_saved_batch / execute_issued_workload -> join_saved_source_operation_fates",
+    "baseline": {
+      "source_sha256": "9a01ede0deaa07f876b61cdfccd0811f58ef47d40dd866c5538e9542612979b0",
+      "logical_root": "d84b11464d88fb4df273d2f210b76001871821c71df2ed56531cc103088cf1b3",
+      "i03_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:f49a734cc77880acc9686ace0c73ad45817f5c37bfdb81212aa9e30ecd33621b",
+      "i03_typed_state": "SUPPORTED",
+      "i03_denominator": 5,
+      "i03_numerator": 5,
+      "i03_supported_query_count": 3,
+      "i03_negative_query_count": 3,
+      "retained_bytes": 356590,
+      "stage_bytes": 533299,
+      "family_counts": {
+        "EmpiricalUniverse": 1,
+        "RespondentIdentity": 5,
+        "QuestionVariableBinding": 1,
+        "RespondentEvent": 5,
+        "RoutingEligibilityFact": 5,
+        "EmpiricalCoordinateFact": 5,
+        "WeightMeasureFact": 0,
+        "AuthoritySnapshot": 7,
+        "SourceUniverseRelation": 0,
+        "EmpiricalPredicateReplayBinding": 0,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "StructuralAdmissionReplayBinding": 0
+      },
+      "source_stats": {
+        "source_reads": 1,
+        "decode_calls": 1,
+        "cell_passes": 1,
+        "full_c11_builds": 0,
+        "source_rows": 5,
+        "source_columns": 2,
+        "spool_files": 3,
+        "spool_bytes": 31090,
+        "cleanup_complete": true
+      },
+      "parquet_members": 14,
+      "body_objects": 29,
+      "journal_bytes": 78149,
+      "stage_clean": true,
+      "i05_receipt_count": 8,
+      "i05_states": ["COVERAGE_LIMITED", "DISCOVERED_RESULT_SUPPORTED", "VALID_EMPTY"],
+      "batch_unit_count": 1,
+      "batch_states": ["COMPLETED"],
+      "normal_receipt_count": 1,
+      "normal_states": ["COMPLETED"],
+      "join_result_hash": "fcc5ec968d87396d1909ba154aaf2c6561ea167b01c805dcd30417740192fc9e",
+      "join_audit": {
+        "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+        "operation_count": 22,
+        "preconsumer_fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+        "positive_native_linked_operations": 6,
+        "native_discovery_candidates_exactly_joined": 8,
+        "pending_eligible_operations": 2,
+        "batch_units": 1,
+        "native_completed_units_rechecked": 1,
+        "issue_grants_created": 0,
+        "preconsumer_handoff_unchanged": true,
+        "independent_g5": "NOT_RUN"
+      },
+      "issued_workload_shape": {
+        "requests": 0,
+        "discoveries": 1,
+        "batch_query_units": 0,
+        "batch_discovery_units": 1,
+        "note": "The frozen compiled NativeWorkload issues one discovery unit and no query units in this fixture. The actual supported query is exercised through execute_saved_i03 from the compiled plan; Batch query units are legitimately zero, not fabricated."
+      },
+      "original_issued_receipt_refs_empty": true,
+      "noneligible_rows_without_native_receipts": true
+    },
+    "changed": {
+      "source_sha256": "ae16923ba0bab7dc9905808f91736c04dbf7785707f39056182ba926391474e6",
+      "i03_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:34745edc2af255679c4ac0e8b4ea33aa6bb0b3ccf596dae23fd862d3243390d2",
+      "i03_typed_state": "SUPPORTED",
+      "retained_bytes": 356602,
+      "stage_bytes": 533311
+    },
+    "restored": {
+      "source_sha256": "9a01ede0deaa07f876b61cdfccd0811f58ef47d40dd866c5538e9542612979b0",
+      "logical_root": "d84b11464d88fb4df273d2f210b76001871821c71df2ed56531cc103088cf1b3",
+      "i03_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:f49a734cc77880acc9686ace0c73ad45817f5c37bfdb81212aa9e30ecd33621b",
+      "join_result_hash": "fcc5ec968d87396d1909ba154aaf2c6561ea167b01c805dcd30417740192fc9e",
+      "retained_bytes": 356590,
+      "stage_bytes": 532718
+    },
+    "change_restore": {
+      "baseline_fact_differs_from_changed": true,
+      "baseline_fact_equals_restored": true,
+      "baseline_root_equals_restored": true,
+      "baseline_join_hash_equals_restored": true
+    },
+    "negative_witnesses": {
+      "held_promotion_refusal": "Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT",
+      "frontier_drift_refusal": "Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT",
+      "positive_attribution_before_refusal": false
+    },
+    "resource": {
+      "elapsed_seconds": 4.601185083389282,
+      "process_tree_peak_rss_bytes": 128163840,
+      "process_tree_samples": 145,
+      "process_tree_interval_seconds": 0.01,
+      "parent_maxrss_raw": 127025152,
+      "retained_bytes_baseline": 356590,
+      "peak_stage_bytes_baseline": 533299,
+      "full_100k_6gib": "NOT_RUN"
+    }
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS_SCOPED",
+      "receipt": "Exact cwd/head, candidate B R5 blobs, Python/PyArrow/pyreadstat/DuckDB runtime, empty product diff; no product/test/source/authority edit."
+    },
+    "G2": {
+      "state": "PASS_SCOPED_NATIVE_HARNESS__REPOSITORY_TEST_HARNESS_REVISE",
+      "receipt": "Actual Q2 body sink -> 13-family S2-C persisted estate -> S2-D I03/I05/Batch/NORMAL smoke -> changed fact -> exact restore in the native harness. Repository suite is 68/75; 7 failures are test-only fixture/helper/error-string defects, not product first-reader failures."
+    },
+    "G3": {
+      "state": "PASS_SCOPED_NATIVE_HARNESS__REPOSITORY_TEST_HARNESS_REVISE",
+      "receipt": "Actual fate join: 22 rows, 8 eligible/14 held, 6 positive native-linked, 8 discovery candidates joined, 2 pending; frontier and HELD mutation refusals; R5 focused 5/5 pass. Repository test suite not fully green."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_SMALL_FIXTURE",
+      "receipt": "5 rows, 533,299 B peak stage, 356,590 B retained, 1 source read/decode/cell pass, 0 full C11 builds, 128,163,840 B sampled process-tree RSS; 100k/6GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "receipt": "This is native executor evidence, not an independent nonauthor G5; Browser owner and distinct reviewer required."
+    }
+  },
+  "engineering_grade": "NATIVE_P0_P1_SCOPED_PROOF_PASS",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "TEST_ONLY_SOURCEFREE__NO_PRODUCTION_CURRENT_OR_ISSUER",
+  "disposition": "NATIVE_P0_P1_SCOPED_PASS__TEST_HARNESS_REVISE__NOT_G5",
+  "smallest_material_defect": "Repository test harness only: regenerated timestamped SAV/DTA fixtures, _native_i03 first-negative selection, and two stale expected error strings. No product P0/P1 first-reader defect was reproduced; exact source restore and fate join pass when the exact baseline bytes are reused.",
+  "next_dependency": "Browser owner/test-harness owner corrects the TEST_ONLY fixture/helper expectations, then reruns the six suites; distinct nonauthor G5 receives this native proof and the exact candidate head. No product edit was made here.",
+  "known_session_cost": "UNKNOWN"
+}

@@ -1,0 +1,42 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-native-proof
+plugins: anyio-4.12.1
+collecting ... collected 4 items
+
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV] FAILED [ 25%]
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA] FAILED [ 50%]
+rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py::test_actual_source_cell_changed_cold_body_changed_then_exact_restore PASSED [ 75%]
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV] _
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:197: in test_changed_source_cell_changes_saved_native_events_then_exact_restore
+    assert a.roots.logical == c.roots.logical
+E   AssertionError: assert 'd7cd972480a9...60691473f10c6' == '6347918ec61e...21a1c0b28f8d4'
+E     
+E     - 6347918ec61e4345307737c3ac214ef781784acbef1fab11abe21a1c0b28f8d4
+E     + d7cd972480a981155f87ffd17a4f437905d2361debe2a301ea660691473f10c6
+_ test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA] _
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:221: in test_changed_source_cell_changes_saved_native_events_then_exact_restore
+    assert native_cells(baseline) != native_cells(changed)
+           ^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py:215: in native_cells
+    assert result.facts and result.facts[0].typed_state == "SUPPORTED"
+E   AssertionError: assert ((EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:f7da7a38b311a4f8dd81b95f0eb6c282e01ae90fb27b9ff957173d04aabcfea4', typed_state='UNAVAILABLE'),) and 'UNAVAILABLE' == 'SUPPORTED'
+E    +  where (EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:f7da7a38b311a4f8dd81b95f0eb6c282e01ae90fb27b9ff957173d04aabcfea4', typed_state='UNAVAILABLE'),) = QueryExecutionResult(query_ref=ExactRef(kind='EmpiricalQuerySpec@1.0.0', object_id='urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:75606cf4a1f93edc0ade971006af1dfd7370a53bde28a17fb1b1c7badcea6668', content_hash='75606cf4a1f93edc0ade971006af1dfd7370a53bde28a17fb1b1c7badcea6668'), facts=(EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:f7da7a38b311a4f8dd81b95f0eb6c282e01ae90fb27b9ff957173d04aabcfea4', typed_state='UNAVAILABLE'),), source_scope_mode='SINGLE_UNIVERSE', release_refs=(ExactRef(kind='C11LogicalRelease', object_id='S1B_FIXTURE_RELEASE', content_hash='c706b2a01bbddd5eebb7a73caa41bcf805c57c16a7c4514a3df38f5c862bf6e2'),)).facts
+E     
+E     - SUPPORTED
+E     + UNAVAILABLE)
+____ test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join ____
+rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py:175: in test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join
+    assert first[1].i02.logical == restored[1].i02.logical
+E   AssertionError: assert '94505a081a00...e826a7d1e12c7' == '1d3ddae72d7b...d34cdb2f34c24'
+E     
+E     - 1d3ddae72d7be8146956b6002c164b2f5b2e25a79f561248e5ad34cdb2f34c24
+E     + 94505a081a002bdd9b9308cbb2b20ebfb0b07e2945b80d9fbd6e826a7d1e12c7
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[SAV]
+FAILED rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py::test_changed_source_cell_changes_saved_native_events_then_exact_restore[DTA]
+FAILED rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join
+========================= 3 failed, 1 passed in 9.68s ==========================
