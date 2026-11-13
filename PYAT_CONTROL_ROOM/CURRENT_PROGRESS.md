@@ -1,3 +1,9 @@
+## S2-A author returned — same independent G5 launched on exact repaired code
+
+Authorc29972ce99cae9672eae20dc7030d4eafe66ada6 remoteverified, testedcode1cb7977b78022f8def26b769714b4c7ac519ece0. Exactly2code/testpaths; mechanicalASTonlypublicselect_events andprivate_stage_validated_public_selector changed, originalreviewwitnessbyte-identical; acceptedwriter/schema/nativeI03/S2Dunchanged. Actualrawauthorlogs5new/62S2A/31S2C/91Linuxinherited/31S2DPASS; overlappingcountsnot summed. Resource256rowparent/childRSSseparate, no full100k/process-treeclaim accepted. AUTHORcandidateonly.
+
+SAMEoriginalindependentreviewer ses_e30c25800ffeT8XbyTuHekRCme actualjob `pyat999-s2a-public-selector-g5-r1` child19038, newreadonly review/pyat999-s2a-public-g5-r1 at1cb7977; ownreviewreturnonly. OriginalH26-H30G1-G5, realbodyprojection/locatorparity, canonicalorder/repeated/state/negative/nativefact/replay/changedrestore andactualboundedG4, sourceblobs/ownerexception. RunnableREVISEorqualifiedACCEPT/STOP, noauthorselfrepair/ABrestart. Native997testpatchproof continuesindependently. Source/science/production/protected/fullscaleholds unchanged. GoalwakeupsPAUSED, terminalnotificationsonly.
+
 ## Browser997 native return — real bounded chain,7testfailures and prooflimits preserved; sameDeepSeek exactfollowup running
 
 Return229544e23435f608272c2bead78cc5c2cfc786f5 directremoteverified;18ownreturn/harness/evidencepaths only, Browserproduct/tests unchanged. ActualJUnit75nodes68PASS7FAIL0skip. RealgeneratedSAV/Q2onepass/13familypersisted/nativeI03I05/discoveryBatch/fatejoin positive, changedfact/exactsource-root-fact-joinrestore,5rows boundedresources observed. Not G5orfullS1Eacceptance. IssuedBatchshape0queryrequests1discovery; ownharnessdoesnotproveproducerexitfreshprocess merelybywrapper, originalcoldboundarystillrequiresdirectproof.

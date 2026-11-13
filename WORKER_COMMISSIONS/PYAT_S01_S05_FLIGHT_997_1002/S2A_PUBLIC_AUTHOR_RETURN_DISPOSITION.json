@@ -1,0 +1,47 @@
+{
+  "job": "pyat999-s2a-public-selector-repair-r1",
+  "exit_code": 0,
+  "delivery": "c29972ce99cae9672eae20dc7030d4eafe66ada6",
+  "code_test_cut": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+  "remote_readback_matches": true,
+  "original_RED_witness_byte_identical": true,
+  "code_test_diff": [
+    "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py"
+  ],
+  "mechanical_AST_changed_functions": [
+    "VerifiedDirectEstate.select_events",
+    "VerifiedDirectEstate._stage_validated_public_selector"
+  ],
+  "author_reported_results_rawlogs_inspected": {
+    "new_H26": "5PASS",
+    "Linux_S2A": "62PASS",
+    "Linux_S2C_focused": "31PASS",
+    "Linux_S2C_inherited": "91PASS",
+    "Linux_S2D": "31PASS"
+  },
+  "scope_grade": "AUTHOR_CANDIDATE_RECEIVED__INDEPENDENT_G5_PENDING",
+  "resource_limit": "256respondent/eventfixture parent/freshchildRSS separate; no measuredsimultaneousprocess-treepeak/full100k; reviewerqualifiesoriginalG4",
+  "specific_independent_check": "Actualcanonicaleventbody/ref authenticated vssemanticprojectedcolumns+locator; pairedprojectionlocatorpoison withunchangedbody cannotfalseempty",
+  "next_actual_job": {
+    "job": "pyat999-s2a-public-selector-g5-r1",
+    "session": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "child_pid": 19038,
+    "branch": "review/pyat999-s2a-public-g5-r1",
+    "startup_sha": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+    "service_state": {
+      "type": "running"
+    },
+    "actual_turn_model": {
+      "message_id": "msg_1d73a3a77001qOztQ1U3Og46v0",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      }
+    }
+  },
+  "no_self_acceptance": true,
+  "no_new_source_science_or_protected_authority": true,
+  "goal_wakeups": "PAUSED"
+}
