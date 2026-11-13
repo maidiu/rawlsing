@@ -167,6 +167,11 @@
       "job": "pyat998-staging-and-scale-prep-r1",
       "delivery": "a9407f08f7e0efed32b4dba7f654b3906cbfb18a",
       "verdict": "AUTHOR_STAGING_RECEIVED_NOT_FULL_ACCEPTED"
+    },
+    {
+      "job": "pyat998-issued-owner-handoff-r1",
+      "delivery": "bf0c683a94b63cb7db4b3891cf153da9a773ccaf",
+      "verdict": "ACK_RECEIVED_EXACT_PROSPECTIVE_FUNCTIONAL_SCOPE"
     }
   ],
   "issued_owner_handoff_job": {
@@ -185,6 +190,9 @@
         "providerID": "opencode-go",
         "variant": "max"
       }
-    }
+    },
+    "status": "TERMINAL_ACK_RECEIVED",
+    "delivery": "bf0c683a94b63cb7db4b3891cf153da9a773ccaf",
+    "received_lease": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/ISSUED998_OWNER_RECEIVED_LEASE.json"
   }
 }

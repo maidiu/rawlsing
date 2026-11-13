@@ -1,0 +1,37 @@
+{
+  "job": "pyat998-issued-owner-handoff-r1",
+  "delivery": "bf0c683a94b63cb7db4b3891cf153da9a773ccaf",
+  "exit_code": 0,
+  "remote_readback_matches": true,
+  "scope_files_verified": [
+    "WORKER_RETURNS/PYAT998_ISSUED_OWNER_HANDOFF/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT998_ISSUED_OWNER_HANDOFF/owner_ack.json"
+  ],
+  "blob_and_sha_checks": {
+    "base": {
+      "blob": "b02810677ae66231e5e59b09aefe9bd63a31aaa3",
+      "sha256": "4c18d53ed8008b677ec019f9e85d960a36f95db996b930c022782062036c768f"
+    },
+    "staged": {
+      "blob": "5879c2b6690deb01c9442061bca9d9691988281f",
+      "sha256": "5ce0bdfab33e5695f8f97ec884b45b23cdfeef1337ef1611d38f2270ac906499"
+    }
+  },
+  "hq_disposition": "ACK_RECEIVED_EXACT_PROSPECTIVE_FUNCTIONAL_SCOPE",
+  "grant_owner": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+  "receiving_author": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "receiving_branch": "agent/pyat998-sourcefree-staging-r1",
+  "permitted_symbol": "NativeWorkloadResult.exact_s2e_output_census",
+  "permitted_staged_blob": "5879c2b6690deb01c9442061bca9d9691988281f",
+  "valid_until": "frozen integration receiving at the exact staged/integrated SHA and subsequent distinct nonauthor integrated G5; no competing worker write grant in this ACK",
+  "grant_excludes": "Any other product edit; source/science/CURRENT/Batch facts, protected merge, integrated acceptance",
+  "timing": "Prospective receiving ACK only; does not rewrite staging authorization history",
+  "earliest_next_action": "Existing998author may consume exact frozen15lineblock for receiving; continue acceptedS1A/Linuxcompatibility without newauthorrun",
+  "remaining_dependencies": [
+    "997 accepted Browser physical/fate join",
+    "S2A exact publicselector owner decision and qualified repair",
+    "1002 competent use-scope decision",
+    "Fulljoined998 positive/change/restore/hostiles and distinctG5 before1001fullrun"
+  ],
+  "goal_wakeups": "PAUSED"
+}
