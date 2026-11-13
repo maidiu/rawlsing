@@ -666,8 +666,33 @@ class VerifiedDirectEstate:
         census = manifest.get("family_counts")
         if not isinstance(census, dict) or set(census) != set(_FAMILIES_IN_ORDER):
             raise DirectEstateError("thirteen complete source family counts required")
-        if census["RespondentEvent"] != manifest.get("event_locator_count"):
+        event_count = census["RespondentEvent"]
+        locator_count = manifest.get("event_locator_count")
+        if (type(event_count) is not int or type(locator_count) is not int
+                or event_count < 0 or event_count != locator_count):
             raise DirectEstateError("physical event locator census mismatch")
+        # Cold sourcefree boundary: a re-pinned manifest's mutable counters
+        # cannot hide a retained native event body. Compare both *actual*
+        # Parquet footer censuses and row-group topology before any query can
+        # consume a subset. Full per-position parity is checked while native
+        # I03 constructs its already-required bounded postings index.
+        import pyarrow.parquet as pq
+        body = pq.ParquetFile(expected / "RespondentEvent.parquet")
+        locator = pq.ParquetFile(expected / "event_locator.parquet")
+        try:
+            if (body.metadata.num_rows != event_count
+                    or locator.metadata.num_rows != locator_count
+                    or body.metadata.num_rows != locator.metadata.num_rows
+                    or body.num_row_groups != locator.num_row_groups):
+                raise DirectEstateError("cold physical event/locator census differs from event bodies")
+            for gid in range(body.num_row_groups):
+                self._live()
+                if (body.metadata.row_group(gid).num_rows
+                        != locator.metadata.row_group(gid).num_rows):
+                    raise DirectEstateError("cold event/locator row-group coverage mismatch")
+        finally:
+            body.close()
+            locator.close()
         self.manifest = manifest
         self._live()
 
