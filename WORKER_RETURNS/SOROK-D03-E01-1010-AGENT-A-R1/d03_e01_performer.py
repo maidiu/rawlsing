@@ -266,6 +266,9 @@ def run_d03_e01_first_batch(
             "psychological_causation_by_d03": "NOT_ESTABLISHED",
             "post_provider_precommit_custody": "P3_P2_J1_SOURCE_CHECKED",
             "ordinary_unrelated_activity": "NOT_ESTABLISHED_BY_P2_CASE",
+            "g2_historical_child_performance": "HELD_NOT_ESTABLISHED",
+            "performed_event_owner_scope": "P2_PREBOUND_CASE_NOT_P3_PLAN",
+            "distinct_later_actor_performance_reader": "NOT_ESTABLISHED",
             "source_closure": joined["source_closure"]["hash"],
             "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         }
