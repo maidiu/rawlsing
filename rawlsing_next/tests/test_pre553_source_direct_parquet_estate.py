@@ -80,6 +80,34 @@ def test_direct_one_pass_thirteen_families_and_selected_exact_body(tmp_path):
                for row in selected)
 
 
+
+def test_canonical_mapping_proxy_and_dict_selectors_but_reject_forgery(tmp_path):
+    """The native semantic-object ABI emits immutable mapping refs, not ExactRef."""
+    root, candidate, receipt = _write(tmp_path, "S2C-EXACT-MAPPING")
+    cold = _open(root, receipt)
+    event = candidate.respondent_events[0]
+    respondent_mapping = event.scoped_respondent_ref
+    question_mapping = event.native_question_ref
+    assert type(respondent_mapping) is MappingProxyType
+    assert type(question_mapping) is MappingProxyType
+    direct = tuple(cold.select_events(respondent_mapping, question_mapping,
+                                      native_only=True))
+    copied = tuple(cold.select_events(dict(respondent_mapping),
+                                      dict(question_mapping), native_only=True))
+    assert [x.ref for x in direct] == [x.ref for x in copied]
+    assert event.ref in {x.ref for x in direct}
+
+    forged_respondent = MappingProxyType({**dict(respondent_mapping),
+                                         "not_an_exact_ref_field": "forged"})
+    invalid_target = MappingProxyType({**dict(question_mapping),
+                                       "content_hash": "non-sha256"})
+    with pytest.raises(DirectEstateError, match="exact respondent and question"):
+        tuple(cold.select_events(forged_respondent, question_mapping,
+                                 native_only=True))
+    with pytest.raises(DirectEstateError, match="exact respondent and question"):
+        tuple(cold.select_events(respondent_mapping, invalid_target,
+                                 native_only=True))
+
 def test_missing_member_and_tamper_fail_before_any_empty_or_fact(tmp_path):
     root, candidate, receipt = _write(tmp_path, "S2C-MISSING")
     (Path(receipt.path) / "event_locator.parquet").unlink()
