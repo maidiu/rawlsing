@@ -330,5 +330,20 @@
     "remote_handoff_present": true,
     "reviewer_product_edits": false,
     "verified_at_utc": "2026-11-13T13:05:00Z"
+  },
+  "fresh_process_capsule_qualification": {
+    "decision": "LAWFUL_TEST_ONLY_WORKLOAD_ENVELOPE_TRANSPORT__NOT_SOURCE_ROOT_AUTHORITY",
+    "dataflow": [
+      "material(issued.workload) carries the exact projection document, catalog, descriptor, requests/discoveries, source-factory ref and U/E_pre roots.",
+      "The child CapsuleProjection.as_dict returns that exact projection document; workload.envelope() hashes it and admit() verifies the result against the independently serialized issued record envelope_sha256.",
+      "The saved estate opens through the separately supplied exact root/exact_path/manifest SHA/direct I02/reconstructed release ref and exact runtime catalog; no duck projection is used as physical root/source authority.",
+      "The child uses TestOnlyDecisionResolver/current_authorizer=True and allow_test_only=True; it is explicitly TEST_ONLY, not production CURRENT."
+    ],
+    "not_claimed": [
+      "not a production source-stream handoff",
+      "not a production CURRENT authority",
+      "not an unbound duck projection accepted as source/root authority"
+    ],
+    "independent_witness": "Our fresh Batch child used the same exact estate/catalog/manifest and returned exact result refs; the author fresh normal/completed/partial/absent child modes returned 0 in our resource probe."
   }
 }

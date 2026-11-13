@@ -202,3 +202,20 @@ Review content commit **`8643e23a795c3a3373622e3b3b1ddc0c345d9bf7`** was pushed 
 tree unchanged (`git diff --stat 5df0bbd..8643e23 -- rawlsing_next` empty), the remote
 receipt valid and the handoff present. A branch `5df0bbd`; B branch `b23d85428`.
 See `evidence/remote_verification.txt`.
+
+## 11. Fresh-process capsule qualification
+
+The author capsule is a **TEST_ONLY workload-envelope transport**, not a source/root
+authority. `material(issued.workload)` carries the exact projection document, catalog,
+descriptor, request/discovery refs, source-factory ref and U/E_pre roots; the child's
+`CapsuleProjection.as_dict` returns that same document, and `admit()` verifies the
+resulting envelope hash against the serialized issued record. The saved estate is opened
+separately through the exact root/path/manifest SHA/direct I02/reconstructed release and
+exact catalog. The duck projection is therefore bound by the envelope/record and is not
+used as physical source/root authority.
+
+Its resolver is `TestOnlyDecisionResolver` with `current_authorizer=True` and
+`allow_test_only=True`. That is lawful at this test-only grade but is **not** production
+CURRENT and not a production source-stream handoff. Our independent fresh Batch child
+used the same exact estate/catalog/manifest and matched the normal result refs; the
+author fresh normal/completed/partial/absent modes also returned 0 in our resource probe.
