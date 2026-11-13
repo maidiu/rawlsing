@@ -8,3 +8,5 @@ Independentreadywork: Browser997nowfrozencandidatePR1024HEAD2c476e739a263dd0069b
 Actual job/session/startup/symbol leases and terminal targets are in EXECUTION_BOARD.json and dispatch launch receipts. Launch is not completion or acceptance.
 
 Native997executor session `ses_e3120ba1cffeO1w43uU5MLh4yq`, actual child14684, job `pyat997-native-p0-p1-proof-r1`; S2Aproduct session `ses_e3120b9efffegreD5YfH7dOO15`, actual child14140, job `pyat999-s2a-public-selector-repair-r1`. Both actual first assistant metadata independently verified OpenCode Go DeepSeek Flash MAX.
+
+[Immutable flightboard with exact exclusive writes and actual launch receipts](https://github.com/maidiu/rawlsing/blob/06b00fbf5807fd19545ccba30c92a19e5504d36b/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/EXECUTION_BOARD.json).
