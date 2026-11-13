@@ -147,3 +147,45 @@ def test_historically_unheard_speech_replays_without_invented_child_hearing(
         )["receipt"]["child_perception_channel"] == "NOT_PERCEIVED"
     finally:
         _close(opened)
+
+
+@pytest.mark.parametrize(
+    "tamper,refusal",
+    [
+        ("actor", "PARENT_UTTERANCE_EVENT_SEVERED"),
+        ("text", "PARENT_UTTERANCE_EVENT_SEVERED"),
+        ("source", "PARENT_UTTERANCE_SOURCE_SEVERED"),
+    ],
+)
+def test_forged_public_event_cannot_gain_parent_self_read(
+    tmp_path, monkeypatch, tamper, refusal
+):
+    opened = open_j1_case(tmp_path / tamper)
+    try:
+        session = opened["session"]
+        raw = session.event
+        event_id = opened["receipt"]["event_id"]
+
+        def fake(ref):
+            event = raw(ref)
+            if ref != event_id or event is None:
+                return event
+            event = dict(event)
+            if tamper == "actor":
+                event["actor_id"] = "IMPERSONATED_PARENT"
+            else:
+                event["body"] = dict(event["body"])
+                if tamper == "text":
+                    event["body"]["text"] = "I never said that."
+                else:
+                    event["body"]["utterance_source"] = "0" * 64
+            return event
+
+        monkeypatch.setattr(session, "event", fake)
+        with pytest.raises(RecursionRefusal, match=refusal):
+            _replay(session)
+        with pytest.raises(RecursionRefusal, match=refusal):
+            read_parent_utterance(
+                session, PARENT_ID, "j1-speech", as_actor=PARENT_ID)
+    finally:
+        _close(opened)
