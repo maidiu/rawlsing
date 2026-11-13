@@ -3,9 +3,12 @@
 These are executable first-consumer claims, NOT original35/source/rights or
 independent G5 acceptance. No fake C11 seal and no permanent event-body SQLite.
 """
-from dataclasses import replace
+from dataclasses import asdict, replace
 import hashlib
+import json
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -216,3 +219,78 @@ def test_cold_i03_new_source_content_changes_fact_and_old_root_restores(
     ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
     assert restored.facts[0].ref == first.facts[0].ref
     assert _fact_signature(restored) == _fact_signature(first)
+
+
+def test_fresh_interpreter_cold_native_i03_without_original_c11_or_source(
+    tmp_path, monkeypatch,
+):
+    """G2: isolated new Python interpreter, only exact held physical/source
+    roots and exact serialized query/authority catalog are transferable.
+    The old C11 repository/candidate/first-process fact never reaches child.
+    """
+    source, candidate = _source_with_candidate(monkeypatch, "S2C-NATIVE-COLD-PROC", 1)
+    qauth = native._query_authority("S2C-NATIVE-COLD-PROC")
+    predicate = native._branch_predicate(source, qauth)
+    query = native._query(source, qauth, predicate, ("Y",), tag="S2C-NATIVE-COLD-PROC")
+    oracle = native._run(source, qauth, predicate, query)
+    assert oracle.facts[0].typed_state == "SUPPORTED"
+    root, receipt = _cold(
+        tmp_path, candidate, source["universe"].ref, "private-fresh-process",
+    )
+    capsule = tmp_path / "held-outside-estate.json"
+    capsule.write_text(json.dumps({
+        "root": str(root),
+        "exact_path": receipt.path,
+        "manifest_sha256": receipt.manifest_sha256,
+        "i02": asdict(receipt.i02),
+        "release": source["release_ref"].as_dict(),
+        "authorities": [obj.as_dict() for obj in (*source["authorities"], qauth)],
+        "predicate": predicate.as_dict(),
+        "query": query.as_dict(),
+    }, sort_keys=True), encoding="utf-8")
+    child = """
+import json
+import sys
+from pathlib import Path
+from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
+from rawlsing_next.pre553_carrier_execution import (
+    CarrierNeutralResearchExecutor, RuntimeObjectCatalog, materialize_public_object,
+)
+from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
+from rawlsing_next.pre553_empirical_objects import exact_ref
+capsule = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+estate = VerifiedDirectEstate(
+    capsule["root"], exact_path=capsule["exact_path"],
+    independently_held_manifest_sha256=capsule["manifest_sha256"],
+    independently_held_i02=ExternalI02Roots(**capsule["i02"]),
+    current_authorizer=lambda _r: True,  # SOURCEFREE TEST_ONLY, not production issuer
+)
+query = materialize_public_object(capsule["query"])
+predicate = materialize_public_object(capsule["predicate"])
+catalog = RuntimeObjectCatalog(
+    authorities=tuple(materialize_public_object(v) for v in capsule["authorities"]),
+    queries=(query,), predicates=(predicate,), discovery_authorities=(),
+)
+executor = CarrierNeutralResearchExecutor(
+    repository=estate, release_refs=(exact_ref(capsule["release"]),),
+    runtime_catalog=catalog,
+)
+result = executor.execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+print(json.dumps({"fact_refs": [f.ref.as_dict() for f in result.facts],
+                  "release_refs": [r.as_dict() for r in result.release_refs],
+                  "fact_projections": [f.semantic_projection() for f in result.facts]},
+                 sort_keys=True))
+"""
+    completed = subprocess.run(
+        [sys.executable, "-c", child, str(capsule)],
+        check=False, capture_output=True, text=True,
+    )
+    assert completed.returncode == 0, completed.stderr
+    result = json.loads(completed.stdout)
+    assert result["fact_refs"] == [fact.ref.as_dict() for fact in oracle.facts]
+    assert result["release_refs"] == [ref.as_dict() for ref in oracle.release_refs]
+    assert result["fact_projections"] == [
+        json.loads(json.dumps(fact.semantic_projection(), sort_keys=True))
+        for fact in oracle.facts
+    ]
+    assert not list(root.glob(".s2c-native-i03-*"))
