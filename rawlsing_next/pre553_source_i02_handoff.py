@@ -658,7 +658,7 @@ def _operation_source_antijoin(
             key for key, _ in operation.conditions)
         key_records = tuple(
             (key, realizations_for(key),
-             all(family == "RespondentEvent"
+             any(family == "RespondentEvent"
                  for family, _section in sections_by_name.get(key.item_id, ())))
             for key in keys
         )
@@ -669,7 +669,7 @@ def _operation_source_antijoin(
         )
         eligible = operation.disposition == "ELIGIBLE"
         realized_all = bool(key_records)
-        for key, key_realizations, response_only in key_records:
+        for key, key_realizations, response_owned in key_records:
             if not key_realizations:
                 realized_all = False
                 continue
@@ -699,7 +699,7 @@ def _operation_source_antijoin(
                 row for row in key_realizations
                 if row["family"] == "RespondentEvent" and row["emitted"] > 0
             ]
-            if response_only and response_rows and all(
+            if response_owned and response_rows and all(
                 row["routable_rows"] == 0 for row in response_rows
             ):
                 raise SourceI02Refusal(
@@ -755,7 +755,7 @@ def _operation_source_antijoin(
             "source_realization": realizations,
             "source_realized": realized_all,
             "unrealized_keys": tuple(
-                key.key for key, key_realizations, _response_only in key_records
+                key.key for key, key_realizations, _response_owned in key_records
                 if not any(
                     row["emitted"] > 0 and row["occurrence_realized"]
                     for row in key_realizations
