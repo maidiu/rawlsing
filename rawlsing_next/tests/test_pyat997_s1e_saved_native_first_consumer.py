@@ -25,6 +25,7 @@ from rawlsing_next.pre553_saved_workload_integration import (
 from rawlsing_next.pre553_issued_workload import execute_issued_workload
 from rawlsing_next.pre553_source_postconsumer_receipts import (
     join_saved_source_operation_fates, SourceReceiptJoinError,
+    _verify_realized_q2_body_witness,
 )
 from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
 from rawlsing_next.tests.test_pyat960_s1e_native_fact import (
@@ -450,3 +451,39 @@ def test_agent_a_counter_b_q2_routing_denominator_and_state_anti_forgery(
             resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
             runner=runner,
         )
+
+
+def test_agent_a_counter_preserves_q2_multislot_one_routable_semantics():
+    """Q2 requires at least one eligible routed response slot, not all slots.
+
+    Synthetic per-key predicate test: no claim this invented tuple is a
+    separately authorized source or a complete physical release.
+    """
+    first = {
+        "key": "KEY-1", "item_id": "item-1", "family": "RespondentEvent",
+        "slot": (0, "q1"), "question_id": "q1", "emitted": 5,
+        "routing_states": {"ELIGIBLE_APPLICABLE": 5}, "routable_rows": 5,
+        "routing_unresolved": False, "occurrence_realized": True,
+        "occurrence_dimension": None,
+    }
+    zero = {
+        **first, "slot": (1, "q2"), "question_id": "q2",
+        "routing_states": {"NOT_ASKED": 5}, "routable_rows": 0,
+    }
+    source_fate = {
+        "disposition": "ELIGIBLE", "source_realized": True,
+        "source_realization": (first, zero),
+        "routing_unresolved_keys": (), "unrealized_keys": (),
+    }
+    _verify_realized_q2_body_witness(source_fate)
+    no_eligible_route = {
+        **source_fate, "source_realization": (
+            {**first, "routing_states": {"NOT_ASKED": 5},
+             "routable_rows": 0}, zero,
+        ),
+    }
+    with pytest.raises(
+        SourceReceiptJoinError,
+        match="Q2_REALIZATION_ZERO_ROUTABLE_DENOMINATOR",
+    ):
+        _verify_realized_q2_body_witness(no_eligible_route)
