@@ -1,0 +1,370 @@
+FFFFFF...........FF..                                                    [100%]
+=================================== FAILURES ===================================
+_ test_embedded_admission_receipt_fields_are_exactly_bound[text-I agree to everything.] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_embedded_admission_receip0')
+field = 'text', value = 'I agree to everything.'
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+__ test_embedded_admission_receipt_fields_are_exactly_bound[event_kind-MOVE] ___
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_embedded_admission_receip1')
+field = 'event_kind', value = 'MOVE'
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+_ test_embedded_admission_receipt_fields_are_exactly_bound[event_authored_by-IMPERSONATED_PARENT] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_embedded_admission_receip2')
+field = 'event_authored_by', value = 'IMPERSONATED_PARENT'
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+_ test_embedded_admission_receipt_fields_are_exactly_bound[decision_action-PURCHASE] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_embedded_admission_receip3')
+field = 'decision_action', value = 'PURCHASE'
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+_ test_embedded_admission_receipt_fields_are_exactly_bound[hidden_reason_hash-2222222222222222222222222222222222222222222222222222222222222222] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_embedded_admission_receip4')
+field = 'hidden_reason_hash'
+value = '2222222222222222222222222222222222222222222222222222222222222222'
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+_ test_embedded_admission_receipt_fields_are_exactly_bound[public_utterance-False] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_embedded_admission_receip5')
+field = 'public_utterance', value = False
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+__________ test_duplicate_parent_receipt_and_duplicate_episode_refuse __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_duplicate_parent_receipt_0')
+
+    def test_duplicate_parent_receipt_and_duplicate_episode_refuse(tmp_path):
+        opened = open_j1_case(tmp_path / "duplicates")
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            alias = opened["receipt"]["alias"]
+            store = session.product.store
+    
+            original_perceptions = _perception_tamper(
+                store, alias, lambda rows: rows + rows[-1:])
+            with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_PARENT_RECEIPT_SEVERED"
+            ):
+>               read_child_uptake(session, opened["focal"], eid)
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+session = <s47.session.S47Session object at 0x10477ba10>
+child_id = 'TEST_ONLY_BP1_R26V_ACTOR_A'
+event_id = 'TEST_ONLY_BP4_WORLD_EVT_2620b1e08294af4167a918fba7e500804f577d13ae45dedd6816893c3f935953'
+
+    def read_child_uptake(session, child_id: str, event_id: str) -> dict:
+        """Read a genuinely admitted parent speech relative to this child.
+    
+        Event self-hashing is necessary but not sufficient: the stored speech
+        episode and admission-time perception channel must agree with the event
+        and actor's actual C12 receipts. Otherwise a missing receipt must not be
+        mistaken for an originally unheard utterance, or a forged receipt used
+        to invent historical access. This is read-only sourcefree custody.
+        """
+        if not _text(child_id) or not _text(event_id):
+            raise RecursionRefusal("CHILD_UPTAKE_SCHEMA")
+        child_alias = _child_alias(session, child_id)
+        if child_alias is None:
+            raise RecursionRefusal("CHILD_UPTAKE_ALIAS_UNAVAILABLE")
+        utterances = [
+            row for row in session.product.store.episodes(session.branch_id)
+            if row.get("kind") == PARENT_UTTERANCE_KIND
+            and (row.get("body") or {}).get("event_id") == event_id
+        ]
+        if len(utterances) != 1:
+            raise RecursionRefusal("CHILD_UPTAKE_UTTERANCE_NOT_FOUND")
+        episode = utterances[0]
+        utterance = episode.get("body") or {}
+        parent_id = utterance.get("actor_id")
+        parent_alias = utterance.get("alias")
+        root = session.read_root()["root_hash"]
+        channel = utterance.get("child_perception_channel")
+        receipt_body = utterance.get("receipt") or {}
+        if (utterance.get("root") != root
+                or utterance.get("branch") != session.branch_id
+                or utterance.get("child_actor_id") != child_id
+                or utterance.get("child_alias") != child_alias
+                or not _text(parent_id) or not _text(parent_alias)
+                or not _text(utterance.get("decision_id"))
+                or not _text(utterance.get("operation_id"))
+                or not _text(utterance.get("text"))
+                or channel not in {"speech", "NOT_PERCEIVED"}
+                or not isinstance(receipt_body, Mapping)
+                or receipt_body.get("schema") != PARENT_UTTERANCE_RECEIPT_SCHEMA
+                or receipt_body.get("status") != "ADMITTED"
+                or receipt_body.get("root") != root
+                or receipt_body.get("branch") != session.branch_id
+                or receipt_body.get("actor_id") != parent_id
+                or receipt_body.get("alias") != parent_alias
+                or receipt_body.get("child_actor_id") != child_id
+                or receipt_body.get("child_alias") != child_alias
+                or receipt_body.get("child_perception_channel") != channel
+                or receipt_body.get("event_id") != event_id
+                or receipt_body.get("event_hash") != utterance.get("event_hash")
+                or receipt_body.get("decision_id") != utterance["decision_id"]
+                or receipt_body.get("operation_id") != utterance["operation_id"]
+                or receipt_body.get("clock") != episode.get("clock")):
+            raise RecursionRefusal("CHILD_UPTAKE_UTTERANCE_MISMATCH")
+        event = session.event(event_id)
+        if not event:
+            raise RecursionRefusal("CHILD_UPTAKE_EVENT_SEVERED")
+        if (event.get("event_id") != event_id
+                or event.get("kind") != "SPEECH"
+                or event.get("hash") != utterance.get("event_hash")
+                or event.get("actor_id") != parent_alias
+                or event.get("clock") != episode.get("clock")
+                or (event.get("body") or {}).get("text") != utterance["text"]
+                or (event.get("body") or {}).get("decision_id")
+                    != utterance["decision_id"]):
+            raise RecursionRefusal("CHILD_UPTAKE_NOT_SPEECH")
+        expected_source = digest({
+            "schema": PARENT_UTTERANCE_RECEIPT_SCHEMA,
+            "operation_id": utterance["operation_id"],
+            "decision_id": utterance["decision_id"],
+            "actor_id": parent_id,
+            "text": utterance["text"],
+            "clock": episode["clock"],
+        })
+        if (event.get("body") or {}).get("utterance_source") != expected_source:
+            raise RecursionRefusal("CHILD_UPTAKE_SOURCE_SEVERED")
+        # Preserve B's complete BP4 event seal (content hash plus event-ID hash).
+        _verify_world_event_seal(
+            event, refusal="CHILD_UPTAKE_WORLD_EVENT_UNSEALED")
+        own = [
+>           row for row in session.product.store.perceptions(
+                session.branch_id, actor_id=parent_alias)
+            if row.get("event_id") == event_id
+            and row.get("clock") == episode["clock"]
+            and row.get("channel") == "own_speech"
+        ]
+E       TypeError: _perception_tamper.<locals>.perceptions() got an unexpected keyword argument 'actor_id'
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py:604: TypeError
+_______ test_later_co_presence_cannot_invent_historically_unheard_speech _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-821/test_later_co_presence_cannot_0')
+
+    def test_later_co_presence_cannot_invent_historically_unheard_speech(
+        tmp_path,
+    ):
+        opened = open_j1_case(tmp_path / "late-presence", child_present=False)
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            assert opened["receipt"]["child_perception_channel"] == "NOT_PERCEIVED"
+            child_alias = opened["receipt"]["child_alias"]
+            parent_location = session.world().positions[opened["receipt"]["alias"]]
+            world = session.world()
+            world.positions[child_alias] = parent_location
+            session.product._checkpoint(session.branch_id, world.clock, world)
+            assert session.world().positions[child_alias] == parent_location
+            assert read_child_uptake(
+                session, opened["focal"], eid)["status"] == "NOT_PERCEIVED"
+            p6 = child_speech_experience(session, event_id=eid)
+            assert p6["status"] == "NOT_PERCEIVED"
+            assert p6["event"] is None
+            joined = j1_join.compose_j1(
+                opened["case"].owner, session, child_id=opened["focal"],
+                speech_event_id=eid, utterance_receipt=opened["receipt"],
+                plan=opened["plan"])
+>           assert joined["status"] == j1_join.HELD_NOT_PERCEIVED
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'j1_join' has no attribute 'HELD_NOT_PERCEIVED'
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:255: AttributeError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[text-I agree to everything.]
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[event_kind-MOVE]
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[event_authored_by-IMPERSONATED_PARENT]
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[decision_action-PURCHASE]
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[hidden_reason_hash-2222222222222222222222222222222222222222222222222222222222222222]
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[public_utterance-False]
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_duplicate_parent_receipt_and_duplicate_episode_refuse
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_later_co_presence_cannot_invent_historically_unheard_speech
+8 failed, 13 passed in 176.98s (0:02:56)
+EXIT=1

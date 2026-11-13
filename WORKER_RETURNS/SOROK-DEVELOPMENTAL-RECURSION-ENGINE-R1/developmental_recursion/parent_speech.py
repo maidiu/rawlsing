@@ -150,12 +150,17 @@ def _verify_utterance_custody(session, body: Mapping[str, Any],
         raise RecursionRefusal("PARENT_UTTERANCE_SOURCE_SEVERED")
     if (receipt.get("event_id") != event_id
             or receipt.get("event_hash") != event_hash
+            or receipt.get("event_kind") != event.get("kind")
             or receipt.get("event_authored_by") != alias
             or receipt.get("actor_id") != parent_id
             or receipt.get("root") != root
             or receipt.get("branch") != session.branch_id
             or receipt.get("clock") != episode_clock
             or receipt.get("decision_id") != body["decision_id"]
+            or receipt.get("text") != body["text"]
+            or receipt.get("hidden_reason") != "NOT_READ"
+            or receipt.get("decision_action") != body.get("decision_action")
+            or receipt.get("public_utterance") is not True
             or receipt.get("hidden_reason_hash")
                 != body.get("hidden_reason_hash")):
         raise RecursionRefusal("PARENT_UTTERANCE_RECEIPT_SEVERED")
@@ -571,9 +576,18 @@ def read_child_uptake(session, child_id: str, event_id: str) -> dict:
             or receipt_body.get("child_perception_channel") != channel
             or receipt_body.get("event_id") != event_id
             or receipt_body.get("event_hash") != utterance.get("event_hash")
+            or receipt_body.get("event_kind") != "SPEECH"
+            or receipt_body.get("event_authored_by") != parent_alias
             or receipt_body.get("decision_id") != utterance["decision_id"]
             or receipt_body.get("operation_id") != utterance["operation_id"]
-            or receipt_body.get("clock") != episode.get("clock")):
+            or receipt_body.get("clock") != episode.get("clock")
+            or receipt_body.get("text") != utterance["text"]
+            or receipt_body.get("hidden_reason") != "NOT_READ"
+            or receipt_body.get("hidden_reason_hash")
+                != utterance.get("hidden_reason_hash")
+            or receipt_body.get("decision_action")
+                != utterance.get("decision_action")
+            or receipt_body.get("public_utterance") is not True):
         raise RecursionRefusal("CHILD_UPTAKE_UTTERANCE_MISMATCH")
     event = session.event(event_id)
     if not event:

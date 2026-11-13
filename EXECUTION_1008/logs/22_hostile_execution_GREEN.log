@@ -1,0 +1,59 @@
+...F.................                                                    [100%]
+=================================== FAILURES ===================================
+_ test_embedded_admission_receipt_fields_are_exactly_bound[decision_action-PURCHASE] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-832/test_embedded_admission_receip3')
+field = 'decision_action', value = 'PURCHASE'
+
+    @pytest.mark.parametrize("field,value", [
+        ("text", "I agree to everything."),
+        ("event_kind", "MOVE"),
+        ("event_authored_by", "IMPERSONATED_PARENT"),
+        ("decision_action", "PURCHASE"),
+        ("hidden_reason_hash", "2" * 64),
+        ("public_utterance", False),
+    ])
+    def test_embedded_admission_receipt_fields_are_exactly_bound(
+        tmp_path, field, value
+    ):
+        opened = open_j1_case(tmp_path / ("receipt-" + field))
+        try:
+            session = opened["session"]
+            eid = opened["receipt"]["event_id"]
+            store = session.product.store
+    
+            def forge(row):
+                body = dict(row["body"])
+                body["receipt"] = {**body["receipt"], field: value}
+                row["body"] = body
+                return row
+    
+            original = _episode_tamper(store, eid, forge)
+>           with pytest.raises(
+                RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+            ):
+E           Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>
+
+WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py:93: Failed
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_hostile_execution_r1.py::test_embedded_admission_receipt_fields_are_exactly_bound[decision_action-PURCHASE]
+1 failed, 20 passed in 175.54s (0:02:55)
+      176.30 real       158.21 user        12.14 sys
+            70737920  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               28841  page reclaims
+                   0  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               14929  voluntary context switches
+              260359  involuntary context switches
+        841670096543  instructions retired
+        540616093234  cycles elapsed
+            68759552  peak memory footprint
+EXIT=1
