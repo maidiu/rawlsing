@@ -31,6 +31,7 @@ from typing import Any
 from rawlsing_next._pre553_query_common import (
     EmpiricalQueryResolutionError, _ReleaseIndex,
 )
+from rawlsing_next._pre553_external_i02_certificate import DIRECT_SCHEMA
 from rawlsing_next.pre553_c11_integrity import RespondentIdentity
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalCoordinateFact, EmpiricalUniverse, ExactRef, RespondentEvent,
@@ -119,6 +120,8 @@ class DirectEstateI03Session:
     def __init__(self, estate: VerifiedDirectEstate):
         if type(estate) is not VerifiedDirectEstate:
             raise DirectEstateError("native cold I03 requires exact VerifiedDirectEstate")
+        if estate.i02.schema != DIRECT_SCHEMA:
+            raise DirectEstateError("native cold I03 requires exact complete direct-I02 certificate")
         self.estate = estate
         self._temporary: tempfile.TemporaryDirectory[str] | None = None
         self._db: sqlite3.Connection | None = None
