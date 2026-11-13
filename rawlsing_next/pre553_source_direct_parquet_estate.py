@@ -267,6 +267,106 @@ class _IndexSink:
         self.path.chmod(0o600)
 
 
+def _verify_emitted_physical_payloads(
+    stage: Path, certificate: Path, counts: Mapping[str, int],
+) -> None:
+    """Bounded, first-publication parity against S2-B's certified source stream.
+
+    Verify every emitted canonical body/ref/family, not just row counts. For
+    events, compare each physical locator and selector to the independent
+    semantic relations already checked by the temporary direct-I02 sorter.
+    This is a build-time check: no repeat original-source read, no persistent
+    second corpus, and no whole-graph cold-session allocation.
+    """
+    import sqlite3
+    import pyarrow.parquet as pq
+
+    if not certificate.is_file():
+        raise DirectEstateError("direct I02 parity certificate missing")
+    db = sqlite3.connect(str(certificate))
+    # Disk-bounded exact uniqueness: counts plus successful membership checks
+    # alone permit duplicate physical rows replacing missing native identities.
+    # This temporary ref-only anti-join is NOT a second retained corpus.
+    seen_path = stage / ".physical-ref-uniqueness.sqlite"
+    seen = None
+    try:
+        db.execute("PRAGMA query_only=ON")
+        seen = sqlite3.connect(str(seen_path))
+        seen.execute("PRAGMA cache_size=-1024")
+        seen.execute("CREATE TABLE seen(ref TEXT PRIMARY KEY, family TEXT NOT NULL)")
+        for family in _FAMILIES_IN_ORDER:
+            physical = pq.ParquetFile(stage / (family + ".parquet"))
+            locator = (pq.ParquetFile(stage / "event_locator.parquet")
+                       if family == "RespondentEvent" else None)
+            if locator is not None and locator.num_row_groups != physical.num_row_groups:
+                raise DirectEstateError("event posting row-group topology differs")
+            observed = 0
+            for gid in range(physical.num_row_groups):
+                rows = physical.read_row_group(
+                    gid, columns=[
+                        "body_json", "ref", "family", "respondent",
+                        "native", "canonical", "component", "typed_state",
+                    ],
+                ).to_pylist()
+                postings = (locator.read_row_group(gid).to_pylist()
+                            if locator is not None else None)
+                if postings is not None and len(postings) != len(rows):
+                    raise DirectEstateError("event postings omitted or duplicated native rows")
+                for offset, row in enumerate(rows):
+                    obj = _object_from_row(json.loads(row["body_json"]))
+                    if (type(obj) is not _FAMILIES[family]
+                            or row["family"] != family or obj.ref.key != row["ref"]):
+                        raise DirectEstateError("emitted canonical physical body/ref mismatch")
+                    certified = db.execute(
+                        "SELECT family,respondent,native,canonical,component,state "
+                        "FROM main.objects WHERE ref=?", (row["ref"],),
+                    ).fetchone()
+                    if certified is None or certified[0] != family:
+                        raise DirectEstateError("emitted body missing from direct I02 proof")
+                    # An exact primary key prevents a duplicated Parquet ref
+                    # from replacing another source-certified object unseen.
+                    seen.execute("INSERT INTO seen(ref,family) VALUES(?,?)",
+                                 (row["ref"], family))
+                    if family == "RespondentEvent":
+                        selector = (
+                            _key(obj.scoped_respondent_ref),
+                            _key(obj.native_question_ref),
+                            _key(obj.canonical_question_ref_if_authorized),
+                            _key(obj.component_or_subitem_ref),
+                            str(obj.typed_state),
+                        )
+                        if (selector != tuple(certified[1:])
+                                or selector != (
+                                    row["respondent"], row["native"],
+                                    row["canonical"], row["component"], row["typed_state"],
+                                )):
+                            raise DirectEstateError("event selector/body differs from direct I02")
+                        posting = postings[offset]
+                        if (posting["ref"] != row["ref"]
+                                or posting["group"] != gid
+                                or posting["offset"] != offset
+                                or selector != (
+                                    posting["respondent"], posting["native"],
+                                    posting["canonical"], posting["component"], posting["state"],
+                                )):
+                            raise DirectEstateError("event posting/body/direct I02 parity failed")
+                    observed += 1
+            certified_count = db.execute(
+                "SELECT COUNT(*) FROM main.objects WHERE family=?", (family,),
+            ).fetchone()[0]
+            if observed != counts[family] or observed != certified_count:
+                raise DirectEstateError("certified family body count differs from Parquet")
+    except DirectEstateError:
+        raise
+    except Exception as exc:
+        raise DirectEstateError("bounded physical-to-direct-I02 proof failed") from exc
+    finally:
+        if seen is not None:
+            seen.close()
+        seen_path.unlink(missing_ok=True)
+        db.close()
+
+
 @dataclass(frozen=True)
 class EstateReceipt:
     """CANDIDATE evidence, not independently accepted scientific authority."""
@@ -339,6 +439,11 @@ def write_direct_estate(
         # census; never turn a missing locator into authenticated EMPTY.
         if index.count != writers["RespondentEvent"].count:
             raise DirectEstateError("event locator omitted or duplicated an event")
+        # Verify the complete emitted Parquet estate against the SAME one-pass
+        # S2-B source certificate before deleting temporary proof scratch.
+        _verify_emitted_physical_payloads(
+            stage, scratch, {name: writer.count for name, writer in writers.items()},
+        )
         # SQLite is proof scratch and MUST NOT become a second durable corpus.
         scratch.unlink()
         members = {}
@@ -427,13 +532,17 @@ class VerifiedDirectEstate:
         independently_held_i02: ExternalI02Roots,
         current_authorizer: Callable[[ExternalI02Roots], bool] | None,
     ):
-        self.root = _root(root)
         self.i02 = independently_held_i02
+        if type(self.i02) is not ExternalI02Roots:
+            raise DirectEstateError("exact independently held direct I02 roots required")
         if not _hex(independently_held_manifest_sha256):
             raise DirectEstateError("independently held SHA-256 required")
         if current_authorizer is None or not callable(current_authorizer):
             raise DirectEstateError("independent live current/rights guard required")
         self._authorize = current_authorizer
+        # Refuse before hashing or opening any source-derived estate bytes.
+        self._live()
+        self.root = _root(root)
         candidate = Path(exact_path).absolute()
         expected = self.root / "releases" / _estate_name(self.i02)
         if candidate != expected:
@@ -495,7 +604,7 @@ class VerifiedDirectEstate:
 
     def _locators(self, *, respondent: str, target: ExactRef | None,
                   native_only: bool, include_component: bool,
-                  states: frozenset[str] | None) -> Iterator[tuple[str, int, int]]:
+                  states: frozenset[str] | None) -> Iterator[Mapping[str, Any]]:
         import pyarrow.parquet as pq
         pf = pq.ParquetFile(self.directory / "event_locator.parquet")
         examined = 0
@@ -517,7 +626,7 @@ class VerifiedDirectEstate:
                         )
                     ):
                         continue
-                yield row["ref"], row["group"], row["offset"]
+                yield row
         if examined != self.manifest["event_locator_count"]:
             raise DirectEstateError("incomplete physical locator scan")
 
@@ -543,12 +652,13 @@ class VerifiedDirectEstate:
         pf = pq.ParquetFile(self.directory / "RespondentEvent.parquet")
         group = None
         rows = None
-        for ref, gid, offset in self._locators(
+        for posting in self._locators(
             respondent=respondent_ref.key, target=target,
             native_only=native_only, include_component=include_component,
             states=states,
         ):
             self._live()
+            ref, gid, offset = posting["ref"], posting["group"], posting["offset"]
             if group != gid:
                 rows = pf.read_row_group(gid, columns=["body_json", "ref"]).to_pylist()
                 group = gid
@@ -560,6 +670,14 @@ class VerifiedDirectEstate:
             obj = _object_from_row(json.loads(row["body_json"]))
             if type(obj) is not RespondentEvent or obj.ref.key != ref:
                 raise DirectEstateError("selected native event semantic identity mismatch")
+            # Matching event ID does not prove respondent/question/state selection.
+            # Bind every physical posting to the reconstructed canonical body.
+            if (posting["respondent"] != _key(obj.scoped_respondent_ref)
+                    or posting["native"] != _key(obj.native_question_ref)
+                    or posting["canonical"] != _key(obj.canonical_question_ref_if_authorized)
+                    or posting["component"] != _key(obj.component_or_subitem_ref)
+                    or posting["state"] != str(obj.typed_state)):
+                raise DirectEstateError("physical event posting disagrees with exact native body")
             yield obj
 
 __all__ = [
