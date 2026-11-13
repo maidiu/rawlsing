@@ -28,17 +28,38 @@ from rawlsing_next.pre553_source_saved_body_bridge import (
 )
 from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
 from rawlsing_next.tests.test_pyat960_s1e_source_i02 import _build, _fixture
+from rawlsing_next.tests.test_pyat960_s1e_native_fact import _native_fixture
 import rawlsing_next.tests.test_pre553_empirical_query as native
+
+
+def _fixture_tuple(value):
+    """Normalise the native fixture mapping to the Q2 builder tuple shape."""
+    if isinstance(value, dict):
+        return (
+            value["path"], value["source_sha"], value["rows"], value["config"],
+            value["document"], value["inventory"], value["policy"],
+            value["frontier"], value["census"],
+        )
+    return value
 
 
 def _build_saved(tmp_path: Path, *, name: str = "one",
                  values=(0.0, 1.0, 2.0, 0.0, 1.0),
-                 source_format: str = "SAV", sink_cls=SourceSavedBodySink):
-    fixture_root = tmp_path / (name + "-source")
-    fixture_root.mkdir()
-    fixture = _fixture(
-        fixture_root, source_format=source_format, values=values,
-    )
+                 source_format: str = "SAV", sink_cls=SourceSavedBodySink,
+                 fixture=None, native_fixture: bool = False):
+    if fixture is not None:
+        fixture = _fixture_tuple(fixture)
+    elif native_fixture:
+        fixture = _fixture_tuple(_native_fixture(
+            tmp_path / (name + "-source"), values=values,
+            source_format=source_format,
+        ))
+    else:
+        fixture_root = tmp_path / (name + "-source")
+        fixture_root.mkdir()
+        fixture = _fixture(
+            fixture_root, source_format=source_format, values=values,
+        )
     private = tmp_path / (name + "-private")
     private.mkdir(mode=0o700)
     certificate = tmp_path / (name + ".sqlite")
@@ -93,11 +114,15 @@ def _native_i03(estate: VerifiedDirectEstate, *, tag: str):
     grammar = native._query_authority(tag)
     predicate = native._branch_predicate(source, grammar, tag=tag)
     proposed = native._query(source, grammar, predicate, ("Y",), tag=tag)
-    # The physical fixture's exact response domain is 0.0 / 1.0 / 2.0,
-    # not the unrelated native test helper's default domain ['0','1'].
-    # Fixed issued TEST_ONLY target domain across the changed source runs:
-    # a disappearing observed value must not silently narrow the query.
-    domain = ["0.0", "1.0", "2.0"]
+    # The exact declared domain follows the canonical response values that the
+    # saved Q2 bodies actually carry. A disappearing observed value must not
+    # silently narrow the issued TEST_ONLY query.
+    domain = sorted({
+        str(event.canonical_response_value_if_authorized)
+        for event in events
+        if event.canonical_response_value_if_authorized is not None
+    })
+    assert domain
     topology = dict(proposed.target_arity_and_topology)
     topology["components"] = [
         {**dict(component), "domain": domain}
@@ -182,15 +207,17 @@ def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
 ):
     baseline = _build_saved(
         tmp_path, name="baseline", source_format=source_format,
-        values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        values=(0.0, 1.0, 2.0, 0.0, 1.0), native_fixture=True,
     )
     changed = _build_saved(
         tmp_path, name="changed", source_format=source_format,
-        values=(0.0, 1.0, 1.0, 0.0, 1.0),
+        values=(0.0, 1.0, 1.0, 0.0, 1.0), native_fixture=True,
     )
+    # Exact restoration replays the baseline source bytes. Re-emitting a SAV
+    # would embed a new writer timestamp and is not an exact source restoration.
     restored = _build_saved(
         tmp_path, name="restored", source_format=source_format,
-        values=(0.0, 1.0, 2.0, 0.0, 1.0),
+        fixture=baseline[0],
     )
     a, b, c = (x[1] for x in (baseline, changed, restored))
     assert a.roots.logical != b.roots.logical
@@ -223,7 +250,7 @@ def test_changed_source_cell_changes_saved_native_events_then_exact_restore(
 
 
 def test_cold_saved_real_native_i03_from_exact_q2_source(tmp_path):
-    _, handoff, sink, root = _build_saved(tmp_path)
+    _, handoff, sink, root = _build_saved(tmp_path, native_fixture=True)
     estate = _estate(handoff, sink, root)
     result, raw_domain = _native_i03(estate, tag="PYAT997-SAVED-Q2")
     assert result.facts

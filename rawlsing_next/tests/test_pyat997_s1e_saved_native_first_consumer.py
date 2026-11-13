@@ -36,10 +36,10 @@ from rawlsing_next.tests.test_universal_grammar import _frontier
 from rawlsing_next.tests.test_pyat_r3_s1c_source_operation_fates import _freeze_packet
 
 
-def _full(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV"):
+def _prepare_fixture(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV"):
     tmp_path.mkdir(parents=True, exist_ok=True)
     # R03 owner fixture has exact TEST_ONLY risk/authority and canonical cells.
-    fixture = _native_fixture(tmp_path, values=values)
+    fixture = _native_fixture(tmp_path, values=values, source_format=source_format)
     # Cross-root restoration must preserve the *same* scientific inventory
     # identity, not source_fixture's test-root-specific id(root) debug label.
     fixed_inventory = replace(
@@ -49,6 +49,14 @@ def _full(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV"):
         inventory=fixed_inventory, frontier=fixed_frontier,
         census=_freeze_packet(fixed_frontier),
     )
+    return fixture
+
+
+def _full(tmp_path: Path, values=(0., 1., 0., 1., 0.), source_format="SAV",
+          fixture=None):
+    tmp_path.mkdir(parents=True, exist_ok=True)
+    if fixture is None:
+        fixture = _prepare_fixture(tmp_path, values, source_format)
     private = tmp_path / "private"
     private.mkdir(mode=0o700)
     certificate = tmp_path / "source-i02.sqlite"
@@ -94,9 +102,9 @@ def _native_i03(admission, compilation):
         predicate_ref = exact_ref(query.condition_predicate_ref, "lowering predicate")
         result = execute_saved_i03(
             admission, query_ref=query_ref, predicate_ref=predicate_ref)
-        if result.facts:
+        if result.facts and result.facts[0].typed_state == "SUPPORTED":
             return entry.operation_id, result
-    pytest.fail("no S1-C supported saved-native I03 first reader")
+    pytest.fail("no S1-C SUPPORTED saved-native I03 first reader")
 
 
 def _issued_manifest(workload, admission):
@@ -120,8 +128,9 @@ def _issued_manifest(workload, admission):
     }
 
 
-def _run(tmp_path, values):
-    handoff, estate, admission, compilation, resolver, sink = _full(tmp_path, values)
+def _run(tmp_path, values, fixture=None):
+    handoff, estate, admission, compilation, resolver, sink = _full(
+        tmp_path, values, fixture=fixture)
     record = compilation.issued.record
     workload = compilation.issued.workload
     operation, fact_result = _native_i03(admission, compilation)
@@ -163,13 +172,16 @@ def _run(tmp_path, values):
     )
     return (handoff, estate, admission, compilation, resolver, batch, joined,
             tuple(f.ref.key for f in fact_result.facts),
-            tuple(r.ref.key for r in discovery.receipts))
+            tuple(r.ref.key for r in discovery.receipts), sink)
 
 
 def test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join(tmp_path):
-    first = _run(tmp_path / "first", (0., 1., 0., 1., 0.))
+    # Exact restoration replays the baseline source bytes. Re-emitting a SAV
+    # would embed a new writer timestamp and is not an exact source restoration.
+    first_fixture = _prepare_fixture(tmp_path / "first-source", (0., 1., 0., 1., 0.))
+    first = _run(tmp_path / "first", (0., 1., 0., 1., 0.), fixture=first_fixture)
     changed = _run(tmp_path / "changed", (0., 1., 1., 1., 0.))
-    restored = _run(tmp_path / "restored", (0., 1., 0., 1., 0.))
+    restored = _run(tmp_path / "restored", (0., 1., 0., 1., 0.), fixture=first_fixture)
     assert first[0].source_sha256 != changed[0].source_sha256
     assert first[1].i02.logical != changed[1].i02.logical
     assert first[1].i02.logical == restored[1].i02.logical
@@ -360,7 +372,9 @@ def test_agent_b_q2_detail_witness_cannot_be_overruled_by_summary(
             {**w, "routing_unresolved": True} if w is witness else w
             for w in target["source_realization"]
         )
-        refusal = "Q2_REALIZATION_BODY_OR_ROUTING_CONTRADICTION"
+        # Agent A's preserved repair: the unresolved flag must agree with
+        # the original Q2 routing-state census for that exact response key.
+        refusal = "Q2_REALIZATION_ROUTING_CENSUS_DRIFT"
     else:
         source_preimage = dict(target["source_preimage"])
         source_preimage["measure"] = {

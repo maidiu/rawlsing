@@ -1,0 +1,2442 @@
+{
+  "environment": {
+    "dependencies": {
+      "duckdb": "2.0.0",
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "pyarrow": "26.0.1",
+      "pyreadstat": "1.3.7",
+      "pytest": "9.2.0"
+    },
+    "git_branch": "agent/pyat997-s1e-exec-repair-20261113",
+    "git_head": "7b1795981ccc79c9c4700c5ec7e39507d6c88b0b",
+    "git_status": "?? ../",
+    "machine": "x86_64",
+    "platform": "Linux-7.3.0-9-generic-x86_64-with-glibc2.44",
+    "proc_self_fd": true,
+    "python": "3.12.16 (main, Nov 11 2026, 00:15:59) [Clang 23.1.3 ]",
+    "python_executable": "/tmp/pyat997-venv/bin/python"
+  },
+  "honesty": {
+    "fixture_rows": 5,
+    "independent_g5": "PENDING_INDEPENDENT_RECEIVING",
+    "original35_rights_claimed": false,
+    "production_100k_or_6gib_claimed": false,
+    "separate_1006_engine_optimization_authority": true
+  },
+  "p0": {
+    "baseline_discovery_refs": [
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324|06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684|096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f|09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c|2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f|77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e|a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754|bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855|c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855"
+    ],
+    "baseline_fact_refs": [
+      "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:0a09fcec3ec9c3fdec58e0db27e1263756eb12d31e004f00b65813c8b4fd59a9|0a09fcec3ec9c3fdec58e0db27e1263756eb12d31e004f00b65813c8b4fd59a9"
+    ],
+    "baseline_joined_result_hash": "e454d26ea2a2a345df9bf95f3fdef24354d58eb637658fef275033ad5532ae68",
+    "batch_states": {
+      "COMPLETED": 1
+    },
+    "batch_units": 1,
+    "bridge_native": {
+      "baseline": {
+        "cells": [
+          [
+            "0",
+            2
+          ],
+          [
+            "1",
+            2
+          ],
+          [
+            "2.0",
+            1
+          ]
+        ],
+        "denominator": 5,
+        "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:befed36115e2af6e84070d0db220e74090d7d5a9c6f3fb2767180f62a75f3941|befed36115e2af6e84070d0db220e74090d7d5a9c6f3fb2767180f62a75f3941",
+        "native_i03_seconds": 0.04840744999819435,
+        "raw_domain": [
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '0000000000000000', 't': 'float64_finite'})})}",
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '3ff0000000000000', 't': 'float64_finite'})})}",
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '4000000000000000', 't': 'float64_finite'})})}"
+        ],
+        "roots": {
+          "logical": "e5fefdff3483012ead6305c39a0323f0a476a34b4243686ba9f6fbe07c414c49",
+          "physical": "4d79bf7a25f87ab353292649d39d70260fab748499a0bc51406a6dc89028a8c6",
+          "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|031a0b9bbd57ba9e566b9f793325b243c13e34472676d7b5d41896191180d099",
+          "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:cd20b4ddc6830850563f06a8ea7fb0dcec2f96173873df7c74185cf01471f281|cd20b4ddc6830850563f06a8ea7fb0dcec2f96173873df7c74185cf01471f281",
+          "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+          "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|88627cecc45170e4bf70a12e4810e019fad5521368c9abd75dc2e3da17831dc7",
+          "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+        },
+        "source_sha256": "88627cecc45170e4bf70a12e4810e019fad5521368c9abd75dc2e3da17831dc7",
+        "typed_state": "SUPPORTED"
+      },
+      "baseline_fact_equal_restored": true,
+      "baseline_roots_equal_restored": true,
+      "changed": {
+        "cells": [
+          [
+            "0",
+            2
+          ],
+          [
+            "1",
+            3
+          ]
+        ],
+        "denominator": 5,
+        "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:fd796f60a50aadfd10c5b15caa6c00a2064e190eac9be7621dc3d3ee46f53bd8|fd796f60a50aadfd10c5b15caa6c00a2064e190eac9be7621dc3d3ee46f53bd8",
+        "native_i03_seconds": 0.03266065700154286,
+        "raw_domain": [
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '0000000000000000', 't': 'float64_finite'})})}",
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '3ff0000000000000', 't': 'float64_finite'})})}"
+        ],
+        "roots": {
+          "logical": "35c9108ee21ec64ec53741611e137596ae20c00c4503d2b681b84e3cb5c322a2",
+          "physical": "6c77e2f3425a1a04aa8e969a409520227c12514b3b2a017613277924be85fd6f",
+          "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|d360bafd2a160cf3cf79ebe3c58ea720e18cc04b5ec462dc058071679b0d7153",
+          "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:bd91e60ee96d5bec5c3adb1f6e5c0330a684c67cc413c72491459cd0f15ceda1|bd91e60ee96d5bec5c3adb1f6e5c0330a684c67cc413c72491459cd0f15ceda1",
+          "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+          "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|16905903fc431e235a97beabcc76efca887e32fd0913353db23d29563d05efcd",
+          "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+        },
+        "source_sha256": "16905903fc431e235a97beabcc76efca887e32fd0913353db23d29563d05efcd",
+        "typed_state": "SUPPORTED"
+      },
+      "changed_fact_differs": true,
+      "changed_roots_differ": true,
+      "restored": {
+        "cells": [
+          [
+            "0",
+            2
+          ],
+          [
+            "1",
+            2
+          ],
+          [
+            "2.0",
+            1
+          ]
+        ],
+        "denominator": 5,
+        "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:befed36115e2af6e84070d0db220e74090d7d5a9c6f3fb2767180f62a75f3941|befed36115e2af6e84070d0db220e74090d7d5a9c6f3fb2767180f62a75f3941",
+        "native_i03_seconds": 0.033730025999830104,
+        "raw_domain": [
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '0000000000000000', 't': 'float64_finite'})})}",
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '3ff0000000000000', 't': 'float64_finite'})})}",
+          "{'$raw_physical_value': mappingproxy({'codec': 'PRE553_R5_TYPED_VALUE_CODEC@1.0.0', 'schema': 'PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0', 'token': mappingproxy({'bits': '4000000000000000', 't': 'float64_finite'})})}"
+        ],
+        "roots": {
+          "logical": "e5fefdff3483012ead6305c39a0323f0a476a34b4243686ba9f6fbe07c414c49",
+          "physical": "4d79bf7a25f87ab353292649d39d70260fab748499a0bc51406a6dc89028a8c6",
+          "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|031a0b9bbd57ba9e566b9f793325b243c13e34472676d7b5d41896191180d099",
+          "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:cd20b4ddc6830850563f06a8ea7fb0dcec2f96173873df7c74185cf01471f281|cd20b4ddc6830850563f06a8ea7fb0dcec2f96173873df7c74185cf01471f281",
+          "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+          "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|88627cecc45170e4bf70a12e4810e019fad5521368c9abd75dc2e3da17831dc7",
+          "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+        },
+        "source_sha256": "88627cecc45170e4bf70a12e4810e019fad5521368c9abd75dc2e3da17831dc7",
+        "typed_state": "SUPPORTED"
+      }
+    },
+    "cell_passes": 1,
+    "changed_discovery_refs": [
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:259a935e9b0f8b75d15b7036c9464ed81aa55c28efb8055a4c5260b1698c0188|259a935e9b0f8b75d15b7036c9464ed81aa55c28efb8055a4c5260b1698c0188",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:395c5ccd6780885d3af9141bc347bb3610207942d6c9ff40cad86dccc5df2f6c|395c5ccd6780885d3af9141bc347bb3610207942d6c9ff40cad86dccc5df2f6c",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:4c4d78dc967eb24570595ba2a28d97a0287f11a0b0847a83c4ea9e4b78afeb21|4c4d78dc967eb24570595ba2a28d97a0287f11a0b0847a83c4ea9e4b78afeb21",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:8471bb7476e472303f1abe278d710abcc870670c15d5e0df7d49d8bc546eb9ef|8471bb7476e472303f1abe278d710abcc870670c15d5e0df7d49d8bc546eb9ef",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:9c4e94be68a9531c644e750d48668224bd086691e0bd6af495c3c53345862322|9c4e94be68a9531c644e750d48668224bd086691e0bd6af495c3c53345862322",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:9d3f226173c76cea926fc441c83b3f799c700b6afbd38d7fba6481a5c0599d62|9d3f226173c76cea926fc441c83b3f799c700b6afbd38d7fba6481a5c0599d62",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:c0759097f4887ea07908f1fd329345efb8c4a3cd688a8bab1da5a2a7e2e9b3f3|c0759097f4887ea07908f1fd329345efb8c4a3cd688a8bab1da5a2a7e2e9b3f3",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:ccc7026d79023a62f678c8fa17291dd305713887f0521c3297c18d7cc612033e|ccc7026d79023a62f678c8fa17291dd305713887f0521c3297c18d7cc612033e"
+    ],
+    "changed_fact_refs": [
+      "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:11e89c95a28446efe4ad0fee9f9947ab1051db624b08d4c0a6e1b5b2551c85f1|11e89c95a28446efe4ad0fee9f9947ab1051db624b08d4c0a6e1b5b2551c85f1"
+    ],
+    "changed_joined_differs": true,
+    "changed_joined_result_hash": "cddedc9cfafb551aec77123dcced2a3fb6e281bbd744b45f695732ed13115f32",
+    "changed_roots_differ": true,
+    "cold_first_reader": {
+      "cells": [
+        {
+          "cell": "0",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 3,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell": "1",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 2,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "decode_calls": 1,
+      "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:6235fe9084fe388e671e982619c62262d8e3456e4f7129f46affb1293ce64b2c|6235fe9084fe388e671e982619c62262d8e3456e4f7129f46affb1293ce64b2c",
+      "operation_id": "urn:r61:op:146987945b6577c5beeaa1b9044d0dbab0de75359c6164fcaddfe30e2b7bfdfa",
+      "raw_denominator_support": 5,
+      "raw_numerator_support": 5,
+      "seconds": 0.018588865001220256,
+      "source_open_count": 1,
+      "typed_state": "SUPPORTED"
+    },
+    "declared_source_reads": 1,
+    "decode_calls": 1,
+    "estate_bytes_actual": 356591,
+    "estate_i02": {
+      "logical": "b2c0a8824c926151a9c207ddce47a84451ca46b6d82115e18e0939ac46f43079",
+      "physical": "efff2055285a5d4b0d66ee28297b9950b1c65182407ec345ecc8787da599dba6",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|d49d59ee2bae8cee1410ca235200c3a7f9f6dc16bc47f2329f908a5760cc90bd",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:1046107521c410694b95a084dbbb0c7a62da89c3fb26143eab9fc7c09eb787d7|1046107521c410694b95a084dbbb0c7a62da89c3fb26143eab9fc7c09eb787d7",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "family_table": {
+      "body_objects": 29,
+      "families": {
+        "AuthoritySnapshot": {
+          "cold_refs": [
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:7644eb318927b82d7dd326dce9b8ea18bdf762e59770ccef879e7c9740468263|7644eb318927b82d7dd326dce9b8ea18bdf762e59770ccef879e7c9740468263",
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:f3546ae9a8a3e611e50cf611f187f9155812902d740cad8757e21be0b0b78d21|f3546ae9a8a3e611e50cf611f187f9155812902d740cad8757e21be0b0b78d21",
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:b762db77ed3ed05bf8e70b8aa3f25e868b5e2c49310f87bb41ed42f2c270dbf3|b762db77ed3ed05bf8e70b8aa3f25e868b5e2c49310f87bb41ed42f2c270dbf3",
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:e729372ec143de7787a257753852cb28d99df405159f8155874ae2a8889d8eb7|e729372ec143de7787a257753852cb28d99df405159f8155874ae2a8889d8eb7",
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:22ae87c8c247cdfb42226c5abab4b5041e99a58ee525652b210a3cb5918810e6|22ae87c8c247cdfb42226c5abab4b5041e99a58ee525652b210a3cb5918810e6",
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:056a6bff2635894f65345aecf84f47cd71dbca65b2c87231b7da41701dc82fdc|056a6bff2635894f65345aecf84f47cd71dbca65b2c87231b7da41701dc82fdc",
+            "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:1c9cce25fe34c5343064a035b3033f1c8a60c23d22e36bbd34ecafe8a73b93cf|1c9cce25fe34c5343064a035b3033f1c8a60c23d22e36bbd34ecafe8a73b93cf"
+          ],
+          "cold_rows": 7,
+          "declared": 7,
+          "estate_declared": 7,
+          "sink_yield": 7
+        },
+        "ComparatorReplayBinding": {
+          "cold_refs": [],
+          "cold_rows": 0,
+          "declared": 0,
+          "estate_declared": 0,
+          "sink_yield": 0
+        },
+        "DiscoveryBranchReplayBinding": {
+          "cold_refs": [],
+          "cold_rows": 0,
+          "declared": 0,
+          "estate_declared": 0,
+          "sink_yield": 0
+        },
+        "EmpiricalCoordinateFact": {
+          "cold_refs": [
+            "EmpiricalCoordinateFact@1.0.0|urn:rawlsing:pre553:EmpiricalCoordinateFact:sha256:5acd1ed006f39218a101b2743acee9e46dc51f26cf40cbff2d41bc7e658f0470|5acd1ed006f39218a101b2743acee9e46dc51f26cf40cbff2d41bc7e658f0470",
+            "EmpiricalCoordinateFact@1.0.0|urn:rawlsing:pre553:EmpiricalCoordinateFact:sha256:f8feea69c2faaac10ab26c24c526ca7bfc9494f0ed809495b7ef5ed1e228ba40|f8feea69c2faaac10ab26c24c526ca7bfc9494f0ed809495b7ef5ed1e228ba40",
+            "EmpiricalCoordinateFact@1.0.0|urn:rawlsing:pre553:EmpiricalCoordinateFact:sha256:8f97d9ec8c2d32af951add0d52e8cce9867d168e49986359e39bbd5e19d34d8d|8f97d9ec8c2d32af951add0d52e8cce9867d168e49986359e39bbd5e19d34d8d",
+            "EmpiricalCoordinateFact@1.0.0|urn:rawlsing:pre553:EmpiricalCoordinateFact:sha256:ead6960a8ea618e4ddd7999513b5945a147b23f76b83088f6680995648538224|ead6960a8ea618e4ddd7999513b5945a147b23f76b83088f6680995648538224",
+            "EmpiricalCoordinateFact@1.0.0|urn:rawlsing:pre553:EmpiricalCoordinateFact:sha256:ef6ef9bb06c8039c3532d9d4e23e10a7a69ef5c44fa35266bce42db33fe7679f|ef6ef9bb06c8039c3532d9d4e23e10a7a69ef5c44fa35266bce42db33fe7679f"
+          ],
+          "cold_rows": 5,
+          "declared": 5,
+          "estate_declared": 5,
+          "sink_yield": 5
+        },
+        "EmpiricalPredicateReplayBinding": {
+          "cold_refs": [],
+          "cold_rows": 0,
+          "declared": 0,
+          "estate_declared": 0,
+          "sink_yield": 0
+        },
+        "EmpiricalUniverse": {
+          "cold_refs": [
+            "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+          ],
+          "cold_rows": 1,
+          "declared": 1,
+          "estate_declared": 1,
+          "sink_yield": 1
+        },
+        "QuestionVariableBinding": {
+          "cold_refs": [
+            "C11Internal:QuestionVariableBinding|urn:rawlsing:pre553:c11:QuestionVariableBinding:sha256:823926ce2876aed41aa169a9484c0089d280f7f83d50f3706977a732ba4ce91d|823926ce2876aed41aa169a9484c0089d280f7f83d50f3706977a732ba4ce91d"
+          ],
+          "cold_rows": 1,
+          "declared": 1,
+          "estate_declared": 1,
+          "sink_yield": 1
+        },
+        "RespondentEvent": {
+          "cold_refs": [
+            "RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:040e38a0f575f5e75857ce827790ab6369d40819fd628b778841dabc732df81e|040e38a0f575f5e75857ce827790ab6369d40819fd628b778841dabc732df81e",
+            "RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:4779a9df17d4d82ca43d69226c2bf14a0e0a6f61c197e729616615a4347cba2e|4779a9df17d4d82ca43d69226c2bf14a0e0a6f61c197e729616615a4347cba2e",
+            "RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:84117a873716273f1c0ae08d7ff7c15d76a66fd3fd0efcd10bf250e34ceb09a5|84117a873716273f1c0ae08d7ff7c15d76a66fd3fd0efcd10bf250e34ceb09a5",
+            "RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:194257f356fbb4ddc6d7d12fa607741defec58f84cf1dda189812d4d02546d28|194257f356fbb4ddc6d7d12fa607741defec58f84cf1dda189812d4d02546d28",
+            "RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:e5e9916998644ee89ad8adccafe59bf180ae0f5fb4810fa00bd1668a08d176eb|e5e9916998644ee89ad8adccafe59bf180ae0f5fb4810fa00bd1668a08d176eb"
+          ],
+          "cold_rows": 5,
+          "declared": 5,
+          "estate_declared": 5,
+          "sink_yield": 5
+        },
+        "RespondentIdentity": {
+          "cold_refs": [
+            "C11Internal:RespondentIdentity|urn:rawlsing:pre553:c11:RespondentIdentity:sha256:5a61c83c8790bacbe512a83a5b86d02ffd75a421ee517e6006959015ca07696a|5a61c83c8790bacbe512a83a5b86d02ffd75a421ee517e6006959015ca07696a",
+            "C11Internal:RespondentIdentity|urn:rawlsing:pre553:c11:RespondentIdentity:sha256:52ced1037ed3603f104497e38ca1887ecc8ab01869771afeffbedccc988fb0b8|52ced1037ed3603f104497e38ca1887ecc8ab01869771afeffbedccc988fb0b8",
+            "C11Internal:RespondentIdentity|urn:rawlsing:pre553:c11:RespondentIdentity:sha256:692a0d8fdb36637b2c0cd28fd358bd09dc756f9aa40e21f525cb447505ef4d33|692a0d8fdb36637b2c0cd28fd358bd09dc756f9aa40e21f525cb447505ef4d33",
+            "C11Internal:RespondentIdentity|urn:rawlsing:pre553:c11:RespondentIdentity:sha256:70d4fd22473b1b37be2bf080ae45b3f9f661ef3322aa971ae639309356cc458d|70d4fd22473b1b37be2bf080ae45b3f9f661ef3322aa971ae639309356cc458d",
+            "C11Internal:RespondentIdentity|urn:rawlsing:pre553:c11:RespondentIdentity:sha256:396b1eba29a5ab0471fac84903c47088b821ead8b2bc9439dee2b1fb57bb3da8|396b1eba29a5ab0471fac84903c47088b821ead8b2bc9439dee2b1fb57bb3da8"
+          ],
+          "cold_rows": 5,
+          "declared": 5,
+          "estate_declared": 5,
+          "sink_yield": 5
+        },
+        "RoutingEligibilityFact": {
+          "cold_refs": [
+            "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:276993a8c42514e6c50da38cc41c9d9f017b320d4d5ab705c6f43a3e74e573a1|276993a8c42514e6c50da38cc41c9d9f017b320d4d5ab705c6f43a3e74e573a1",
+            "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:f9aad3918e6bd5b96ced55701a77f913cdcbd01811aa8d47e28107d1de649c83|f9aad3918e6bd5b96ced55701a77f913cdcbd01811aa8d47e28107d1de649c83",
+            "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:13b529110a7fa654fed8c97089a8e8039f59b8dd5e69ee4f498d952ab357c952|13b529110a7fa654fed8c97089a8e8039f59b8dd5e69ee4f498d952ab357c952",
+            "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e3f1a4d21387ac484b803cdac75714ed44513ad65e3311ea67ddf1128e45603f|e3f1a4d21387ac484b803cdac75714ed44513ad65e3311ea67ddf1128e45603f",
+            "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e1e5e8b758cad51c23d2ab5c01801636f6d1c5c1e8e4de789ef4629cf538676b|e1e5e8b758cad51c23d2ab5c01801636f6d1c5c1e8e4de789ef4629cf538676b"
+          ],
+          "cold_rows": 5,
+          "declared": 5,
+          "estate_declared": 5,
+          "sink_yield": 5
+        },
+        "SourceUniverseRelation": {
+          "cold_refs": [],
+          "cold_rows": 0,
+          "declared": 0,
+          "estate_declared": 0,
+          "sink_yield": 0
+        },
+        "StructuralAdmissionReplayBinding": {
+          "cold_refs": [],
+          "cold_rows": 0,
+          "declared": 0,
+          "estate_declared": 0,
+          "sink_yield": 0
+        },
+        "WeightMeasureFact": {
+          "cold_refs": [],
+          "cold_rows": 0,
+          "declared": 0,
+          "estate_declared": 0,
+          "sink_yield": 0
+        }
+      },
+      "family_total": 13,
+      "replay_manifest_declared": 1,
+      "typed_absences": {
+        "ComparatorReplayBinding": "DEFERRED",
+        "DiscoveryBranchReplayBinding": "DEFERRED",
+        "EmpiricalPredicateReplayBinding": "NOT_APPLICABLE",
+        "SourceUniverseRelation": "DISTINCT_BY_DEFAULT",
+        "StructuralAdmissionReplayBinding": "NOT_APPLICABLE",
+        "WeightMeasureFact": "NOT_APPLICABLE"
+      }
+    },
+    "full_c11_builds": 0,
+    "i05_receipts": [
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324|06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684|096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f|09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c|2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f|77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e|a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754|bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855|c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855"
+    ],
+    "journal_leftovers": [],
+    "legacy_full_c11_builds_expected": 0,
+    "manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+    "parquet_files": [
+      {
+        "bytes": 52573,
+        "name": "AuthoritySnapshot.parquet"
+      },
+      {
+        "bytes": 2975,
+        "name": "ComparatorReplayBinding.parquet"
+      },
+      {
+        "bytes": 2975,
+        "name": "DiscoveryBranchReplayBinding.parquet"
+      },
+      {
+        "bytes": 65060,
+        "name": "EmpiricalCoordinateFact.parquet"
+      },
+      {
+        "bytes": 2975,
+        "name": "EmpiricalPredicateReplayBinding.parquet"
+      },
+      {
+        "bytes": 13414,
+        "name": "EmpiricalUniverse.parquet"
+      },
+      {
+        "bytes": 14397,
+        "name": "QuestionVariableBinding.parquet"
+      },
+      {
+        "bytes": 86253,
+        "name": "RespondentEvent.parquet"
+      },
+      {
+        "bytes": 32779,
+        "name": "RespondentIdentity.parquet"
+      },
+      {
+        "bytes": 58542,
+        "name": "RoutingEligibilityFact.parquet"
+      },
+      {
+        "bytes": 2975,
+        "name": "SourceUniverseRelation.parquet"
+      },
+      {
+        "bytes": 2975,
+        "name": "StructuralAdmissionReplayBinding.parquet"
+      },
+      {
+        "bytes": 2975,
+        "name": "WeightMeasureFact.parquet"
+      },
+      {
+        "bytes": 12598,
+        "name": "event_locator.parquet"
+      }
+    ],
+    "restored_discovery_refs": [
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324|06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684|096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f|09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c|2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f|77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e|a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754|bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754",
+      "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855|c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855"
+    ],
+    "restored_fact_refs": [
+      "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:0a09fcec3ec9c3fdec58e0db27e1263756eb12d31e004f00b65813c8b4fd59a9|0a09fcec3ec9c3fdec58e0db27e1263756eb12d31e004f00b65813c8b4fd59a9"
+    ],
+    "restored_joined_equal": true,
+    "restored_joined_result_hash": "e454d26ea2a2a345df9bf95f3fdef24354d58eb637658fef275033ad5532ae68",
+    "restored_roots_equal": true,
+    "retained_bytes": 356591,
+    "roots": {
+      "logical": "b2c0a8824c926151a9c207ddce47a84451ca46b6d82115e18e0939ac46f43079",
+      "physical": "efff2055285a5d4b0d66ee28297b9950b1c65182407ec345ecc8787da599dba6",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|d49d59ee2bae8cee1410ca235200c3a7f9f6dc16bc47f2329f908a5760cc90bd",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:1046107521c410694b95a084dbbb0c7a62da89c3fb26143eab9fc7c09eb787d7|1046107521c410694b95a084dbbb0c7a62da89c3fb26143eab9fc7c09eb787d7",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "source_open_count": 1,
+    "source_rows": 5,
+    "stage_leftovers": [],
+    "timed_phases": {
+      "batch_seconds": 0.10086140800558496,
+      "batch_states": {
+        "COMPLETED": 1
+      },
+      "batch_units": 1,
+      "i05_receipts": [
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324|06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684|096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f|09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c|2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f|77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e|a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754|bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754",
+        "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855|c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855"
+      ],
+      "i05_seconds": 0.10569410600874107,
+      "join_matches_first": true,
+      "join_pending_eligible": 2,
+      "join_positive_linked": 6,
+      "join_result_hash": "e454d26ea2a2a345df9bf95f3fdef24354d58eb637658fef275033ad5532ae68",
+      "join_seconds": 0.1962893570016604
+    }
+  },
+  "p1": {
+    "audit": {
+      "batch_units": 1,
+      "independent_g5": "NOT_RUN",
+      "issue_grants_created": 0,
+      "native_completed_units_rechecked": 1,
+      "native_discovery_candidates_exactly_joined": 8,
+      "operation_count": 22,
+      "pending_eligible_operations": 2,
+      "positive_native_linked_operations": 6,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "preconsumer_handoff_unchanged": true,
+      "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE"
+    },
+    "changed_joined": {
+      "issued_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "original_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "postconsumer_state_counts": {
+        "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT": 2,
+        "NONELIGIBLE_FATE_PRESERVED": 14,
+        "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED": 6
+      },
+      "result_hash": "cddedc9cfafb551aec77123dcced2a3fb6e281bbd744b45f695732ed13115f32"
+    },
+    "estate_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+    "issued_fate_counts": {
+      "ELIGIBLE": 8,
+      "HELD": 14
+    },
+    "issuer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+    "issuer_envelope_sha256": "755436ee6eb7adc69ef578b2a5eb00298de62e4f532bdb189a9fe189cba723bd",
+    "noneligible_operation_count": 14,
+    "noneligible_with_receipts": [],
+    "operation_anti_join": {
+      "extra_in_join": [],
+      "issued_dispositions": 22,
+      "joined_rows": 22,
+      "missing_from_join": [],
+      "original_operations": 22
+    },
+    "original_fate_counts": {
+      "ELIGIBLE": 8,
+      "HELD": 14
+    },
+    "pending_eligible_operations": 2,
+    "positive_native_linked_operations": 6,
+    "postconsumer_state_counts": {
+      "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT": 2,
+      "NONELIGIBLE_FATE_PRESERVED": 14,
+      "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED": 6
+    },
+    "receipted_operation_count": 6,
+    "release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+    "restored_joined": {
+      "issued_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "original_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "postconsumer_state_counts": {
+        "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT": 2,
+        "NONELIGIBLE_FATE_PRESERVED": 14,
+        "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED": 6
+      },
+      "result_hash": "e454d26ea2a2a345df9bf95f3fdef24354d58eb637658fef275033ad5532ae68"
+    },
+    "rows": [
+      {
+        "claim_class": "STRUCTURAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "2d2b958c958115d8ff8a2261603de05672febc7becb8e1985a06e4b804f6d45c",
+        "operation_id": "urn:r61:op:2d2b958c958115d8ff8a2261603de05672febc7becb8e1985a06e4b804f6d45c",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "2d2b958c958115d8ff8a2261603de05672febc7becb8e1985a06e4b804f6d45c",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "STRUCTURAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "2ec2e8b2081e4b69daa09eccc804ab31aadc3e1228e97a009e78dee7c54ff1ac",
+        "operation_id": "urn:r61:op:2ec2e8b2081e4b69daa09eccc804ab31aadc3e1228e97a009e78dee7c54ff1ac",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "2ec2e8b2081e4b69daa09eccc804ab31aadc3e1228e97a009e78dee7c54ff1ac",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "POSSIBILITY",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "3215faefed7c38e83abce1d0f874f560c0dcbcbafc299e58ee95097873623723",
+        "operation_id": "urn:r61:op:3215faefed7c38e83abce1d0f874f560c0dcbcbafc299e58ee95097873623723",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "3215faefed7c38e83abce1d0f874f560c0dcbcbafc299e58ee95097873623723",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "target-population-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "POPULATION",
+        "measure_kind": "POPULATION",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "35266a9a15cd80c3d91646309114d536543225c73fb1f4fe22a24e6fee95627c",
+        "operation_id": "urn:r61:op:35266a9a15cd80c3d91646309114d536543225c73fb1f4fe22a24e6fee95627c",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "target-population-proportion",
+            "measure_id": "POPULATION",
+            "measure_kind": "POPULATION",
+            "variance_policy": "DESIGN_BASED",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "35266a9a15cd80c3d91646309114d536543225c73fb1f4fe22a24e6fee95627c",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "DESIGN_BASED",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "5a3aee4c5ed3f6643d08b861d90f83877b0137059f38d7a7fd09ae6237beb0d8",
+        "operation_id": "urn:r61:op:5a3aee4c5ed3f6643d08b861d90f83877b0137059f38d7a7fd09ae6237beb0d8",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [
+          "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66|f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66"
+        ],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:a052bfb22db8ca4b8c8be2717fa4f1aedc2469039a34948cee1a83c8a6d724f9|a052bfb22db8ca4b8c8be2717fa4f1aedc2469039a34948cee1a83c8a6d724f9",
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:c9c07ab21434a98b757e4ea101ab0aa57dd47f18e8dfd1bc51b5049067884111|c9c07ab21434a98b757e4ea101ab0aa57dd47f18e8dfd1bc51b5049067884111"
+        ],
+        "postconsumer_receipt_refs": [
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324|06bf900be661aab36a74bf8b89ecbe4a8ee40258b5cda8001940071754373324"
+        ],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "5a3aee4c5ed3f6643d08b861d90f83877b0137059f38d7a7fd09ae6237beb0d8",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "target-population-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "POPULATION",
+        "measure_kind": "POPULATION",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "65dbd4919513dccaebdd0b9cf59dfc32c6b461e727c97827324b0e7b80bff9ee",
+        "operation_id": "urn:r61:op:65dbd4919513dccaebdd0b9cf59dfc32c6b461e727c97827324b0e7b80bff9ee",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "target-population-proportion",
+            "measure_id": "POPULATION",
+            "measure_kind": "POPULATION",
+            "variance_policy": "DESIGN_BASED",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "65dbd4919513dccaebdd0b9cf59dfc32c6b461e727c97827324b0e7b80bff9ee",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "DESIGN_BASED",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "target-population-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "POPULATION",
+        "measure_kind": "POPULATION",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "6fe9706530d1174701273aa4049ae438d43516cfd413c9ba28c5c7e4e3a536bf",
+        "operation_id": "urn:r61:op:6fe9706530d1174701273aa4049ae438d43516cfd413c9ba28c5c7e4e3a536bf",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "target-population-proportion",
+            "measure_id": "POPULATION",
+            "measure_kind": "POPULATION",
+            "variance_policy": "DESIGN_BASED",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "6fe9706530d1174701273aa4049ae438d43516cfd413c9ba28c5c7e4e3a536bf",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "DESIGN_BASED",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "7b06c3ad9187fd467848a2d50b6097fad5378fddea94f047c6fa1ac57257b57b",
+        "operation_id": "urn:r61:op:7b06c3ad9187fd467848a2d50b6097fad5378fddea94f047c6fa1ac57257b57b",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [
+          "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66|f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66"
+        ],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:185ae1b6ffc35a2bc31d1fc612b79b1507ca3862fbcc49b4123a370243c1adf1|185ae1b6ffc35a2bc31d1fc612b79b1507ca3862fbcc49b4123a370243c1adf1",
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:c24e2ec8d1e62153c601889797dfbba7725dc727a24929c1f3f61db746fcfa74|c24e2ec8d1e62153c601889797dfbba7725dc727a24929c1f3f61db746fcfa74"
+        ],
+        "postconsumer_receipt_refs": [
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754|bcb31d8c58a968b0cec3e1b57f709e60f0f9e44e1b3f41cedd5d365a6d100754"
+        ],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "7b06c3ad9187fd467848a2d50b6097fad5378fddea94f047c6fa1ac57257b57b",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "POSSIBILITY",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "8b6e76283aad9cde9b4c2a29771bb3550cd947fd7818343e9914a23ebce5c56f",
+        "operation_id": "urn:r61:op:8b6e76283aad9cde9b4c2a29771bb3550cd947fd7818343e9914a23ebce5c56f",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "8b6e76283aad9cde9b4c2a29771bb3550cd947fd7818343e9914a23ebce5c56f",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "8d9ba5c122c45cc29c820f1de833062c25ecd0aa12f4fcb0eb5ba2fae3135db1",
+        "operation_id": "urn:r61:op:8d9ba5c122c45cc29c820f1de833062c25ecd0aa12f4fcb0eb5ba2fae3135db1",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [
+          "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66|f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66"
+        ],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:7d5624bf33bbecc2135890aba597003c1b0c56bec60c14fe9e70f8adc970bc2d|7d5624bf33bbecc2135890aba597003c1b0c56bec60c14fe9e70f8adc970bc2d",
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:92564f911de33fc49a43c1f92b4748fae36d00e25ad389ee13b15ecc51f3c9b2|92564f911de33fc49a43c1f92b4748fae36d00e25ad389ee13b15ecc51f3c9b2"
+        ],
+        "postconsumer_receipt_refs": [
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c|2130308ffe5249371ce6fca2f0687d4255d7d55f38ac485ea79aefa0d018486c"
+        ],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "8d9ba5c122c45cc29c820f1de833062c25ecd0aa12f4fcb0eb5ba2fae3135db1",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "DIST",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "target-population-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "POPULATION",
+        "measure_kind": "POPULATION",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "9c32e4b15ddb6500c2e5c4802bb1203cd15821376b92559eb834db089a017a90",
+        "operation_id": "urn:r61:op:9c32e4b15ddb6500c2e5c4802bb1203cd15821376b92559eb834db089a017a90",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "target-population-proportion",
+            "measure_id": "POPULATION",
+            "measure_kind": "POPULATION",
+            "variance_policy": "DESIGN_BASED",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "9c32e4b15ddb6500c2e5c4802bb1203cd15821376b92559eb834db089a017a90",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "DESIGN_BASED",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "target-population-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "POPULATION",
+        "measure_kind": "POPULATION",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "9ca198a23d17fb17f19a5da025dae2d1601097632e0921fd18601929127a4799",
+        "operation_id": "urn:r61:op:9ca198a23d17fb17f19a5da025dae2d1601097632e0921fd18601929127a4799",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "target-population-proportion",
+            "measure_id": "POPULATION",
+            "measure_kind": "POPULATION",
+            "variance_policy": "DESIGN_BASED",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "9ca198a23d17fb17f19a5da025dae2d1601097632e0921fd18601929127a4799",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "DESIGN_BASED",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "DIST",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "9d19df41d94e4423fc4cbde4577bce2c366c151f6abfc9af20fb2ed553a4abf1",
+        "operation_id": "urn:r61:op:9d19df41d94e4423fc4cbde4577bce2c366c151f6abfc9af20fb2ed553a4abf1",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [
+          "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66|f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66"
+        ],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:75bb54d2e9f51fd9ca4d49c7e44ebbad0074e03a64df5bb899686b223d36bd7f|75bb54d2e9f51fd9ca4d49c7e44ebbad0074e03a64df5bb899686b223d36bd7f",
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:98fabc311ac0b6c70e72e62153e55018a9c5506f2082c4820047ba19bf49d616|98fabc311ac0b6c70e72e62153e55018a9c5506f2082c4820047ba19bf49d616"
+        ],
+        "postconsumer_receipt_refs": [
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684|096d2c5de35826107ab8b9337095fb35a968b7e8e2dd9e3baf6ce1b9654db684",
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f|09f4a228d0d7e48c9814e60949c359bbcc78648f8b60de48e15b1d8152a8f00f"
+        ],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "9d19df41d94e4423fc4cbde4577bce2c366c151f6abfc9af20fb2ed553a4abf1",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "TEMPORAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "aa9f248ef8f2dcc448524873e17ac0a82982a874aba28561808c5dd6d7edafb1",
+        "operation_id": "urn:r61:op:aa9f248ef8f2dcc448524873e17ac0a82982a874aba28561808c5dd6d7edafb1",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "aa9f248ef8f2dcc448524873e17ac0a82982a874aba28561808c5dd6d7edafb1",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CROSS_SOURCE",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "bbda987d1bc9e9022e1aff5a2d3cbac8ec02eeb319452c772580b1702e7ed716",
+        "operation_id": "urn:r61:op:bbda987d1bc9e9022e1aff5a2d3cbac8ec02eeb319452c772580b1702e7ed716",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "bbda987d1bc9e9022e1aff5a2d3cbac8ec02eeb319452c772580b1702e7ed716",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "STATE_ROBUSTNESS",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "c067bbdaf02d0d14afe897e90cbb3415d94baeb6ba2f4df457a6877c96dfa1bb",
+        "operation_id": "urn:r61:op:c067bbdaf02d0d14afe897e90cbb3415d94baeb6ba2f4df457a6877c96dfa1bb",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "c067bbdaf02d0d14afe897e90cbb3415d94baeb6ba2f4df457a6877c96dfa1bb",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CROSS_SOURCE",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "d66f2b4f17efbd6a5cd040bca3d78ec0616c7d9aa81ab03a584105feaf78c1e2",
+        "operation_id": "urn:r61:op:d66f2b4f17efbd6a5cd040bca3d78ec0616c7d9aa81ab03a584105feaf78c1e2",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "d66f2b4f17efbd6a5cd040bca3d78ec0616c7d9aa81ab03a584105feaf78c1e2",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "TEMPORAL",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "e0adb0d204f7a1e2a72c80a07cb9e31378cd45589f91cd7dcea68b48105a85ca",
+        "operation_id": "urn:r61:op:e0adb0d204f7a1e2a72c80a07cb9e31378cd45589f91cd7dcea68b48105a85ca",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "e0adb0d204f7a1e2a72c80a07cb9e31378cd45589f91cd7dcea68b48105a85ca",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "STATE_ROBUSTNESS",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "e47d87042d5e2e005ef8a8c04abbb9393dda91847db5af9717b2b602d1877f0d",
+        "operation_id": "urn:r61:op:e47d87042d5e2e005ef8a8c04abbb9393dda91847db5af9717b2b602d1877f0d",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "e47d87042d5e2e005ef8a8c04abbb9393dda91847db5af9717b2b602d1877f0d",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "DIST",
+        "design_ref": null,
+        "disposition": "HELD",
+        "estimand": "target-population-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "POPULATION",
+        "measure_kind": "POPULATION",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "efa19363273163b17cd6dc53bed0c3331b6c6ed594f141d2dcaf3979f5f7e779",
+        "operation_id": "urn:r61:op:efa19363273163b17cd6dc53bed0c3331b6c6ed594f141d2dcaf3979f5f7e779",
+        "operation_source_state": "HELD_OR_UNKNOWN_SOURCE_STATE",
+        "postconsumer_batch_receipt_refs": [],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [],
+        "postconsumer_receipt_refs": [],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "NONELIGIBLE_FATE_PRESERVED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "target-population-proportion",
+            "measure_id": "POPULATION",
+            "measure_kind": "POPULATION",
+            "variance_policy": "DESIGN_BASED",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "efa19363273163b17cd6dc53bed0c3331b6c6ed594f141d2dcaf3979f5f7e779",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "DESIGN_BASED",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "CONDITIONAL",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "f16f79e510d23220ea20f035a0d28f7c9a2d386a6d9ffecc5977c27f5bc9b843",
+        "operation_id": "urn:r61:op:f16f79e510d23220ea20f035a0d28f7c9a2d386a6d9ffecc5977c27f5bc9b843",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [
+          "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66|f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66"
+        ],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:3661c9bd60c1b8f63b522c7cf63782a7bf368aaf9dafb8871a3e10bbceb524ed|3661c9bd60c1b8f63b522c7cf63782a7bf368aaf9dafb8871a3e10bbceb524ed",
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:78a1f2e4fbf1ffafd1b353e0c3449ceca53b62a9f26f488f31476f9f3ed8ef03|78a1f2e4fbf1ffafd1b353e0c3449ceca53b62a9f26f488f31476f9f3ed8ef03"
+        ],
+        "postconsumer_receipt_refs": [
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e|a58dae0b8b99f125f536199d6ff7df41e32e030db35f2ee4b7c2631f8e00bd5e"
+        ],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "f16f79e510d23220ea20f035a0d28f7c9a2d386a6d9ffecc5977c27f5bc9b843",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "EmpiricalCoordinateFact",
+            "item_id": "country",
+            "key": "{\"form_id\":null,\"item_id\":\"country\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": null,
+            "routable_rows": null,
+            "routing_states": {},
+            "slot": [
+              2,
+              "country"
+            ]
+          },
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      },
+      {
+        "claim_class": "DIST",
+        "design_ref": null,
+        "disposition": "ELIGIBLE",
+        "estimand": "descriptive-sample-proportion",
+        "execution_state": "NOT_STARTED",
+        "issued_receipt_refs": [],
+        "measure_id": "SAMPLE",
+        "measure_kind": "SAMPLE",
+        "native_first_reader_state": "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE",
+        "operation_hash": "fd5cc3ba487f299c7e2176a5c99f8ce8b19643acbf5c72cfbb95540df49efc78",
+        "operation_id": "urn:r61:op:fd5cc3ba487f299c7e2176a5c99f8ce8b19643acbf5c72cfbb95540df49efc78",
+        "operation_source_state": "ELIGIBLE_REALIZED",
+        "postconsumer_batch_receipt_refs": [
+          "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66|f1cfdd5b4aca3c291367c554e6ddd39e75e1a8a56a84a9951b0b7ae9a31a3b66"
+        ],
+        "postconsumer_decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-c9ae865c684ce512-2026-11-12|da3e4fc5a55c73792704d58848e177cfd027e3bb434ab82462338ac6a938a87b",
+        "postconsumer_native_output_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:421369bde1299bb49d73041f7cedd8d1d4e0efeea98b936b948f3fe3bf614670|421369bde1299bb49d73041f7cedd8d1d4e0efeea98b936b948f3fe3bf614670",
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:5606e0b3df72c8c40d2fdd82438b5207649a2e0423b827d87c54a44af2a23a67|5606e0b3df72c8c40d2fdd82438b5207649a2e0423b827d87c54a44af2a23a67"
+        ],
+        "postconsumer_receipt_refs": [
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f|77cf9cc2dcfd694604884c66dd03e3e537fd4e9801b63e562459782a429daf3f",
+          "DiscoveryResultReceipt@1.0.0|urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855|c5576cf372234df40f3a016e45a6f830144577032baed44eba35dd9d79611855"
+        ],
+        "postconsumer_release_ref": "C11LogicalRelease|S1B_FIXTURE_RELEASE|86754871b3a35f46b9a7b151b642c2d99adcf7808d4366737024473f733edcc7",
+        "postconsumer_saved_manifest_sha256": "bd98c078b647158e1ebca42bf449b4166d28a8eb113a87b3e337c6de944b3299",
+        "postconsumer_state": "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED",
+        "result_state": "UNKNOWN",
+        "routing_unresolved_keys": [],
+        "source_preimage": {
+          "e_pre_ref_or_absence": "5dbb2a9a241a0e27a3911ad0b51a9000ee53b442a403641c3a3f5e0da4c10022",
+          "edition": "S1B_ORIGINAL_INSTRUMENT_NOT_READ",
+          "instrument_ref": null,
+          "meaning_ref": "SOURCEFREE_TEST_ONLY_INVENTORY_SEMANTICS",
+          "measure": {
+            "design_ref": null,
+            "estimand": "descriptive-sample-proportion",
+            "measure_id": "SAMPLE",
+            "measure_kind": "SAMPLE",
+            "variance_policy": "UNQUANTIFIED_SAMPLE",
+            "weight_ref": null
+          },
+          "occurrence_ids": [
+            "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}"
+          ],
+          "operation_hash": "fd5cc3ba487f299c7e2176a5c99f8ce8b19643acbf5c72cfbb95540df49efc78",
+          "operation_hash_matches": true,
+          "science_eligibility_decision_ref": "SOURCEFREE_R61_TEST_ONLY_NOT_ISSUED",
+          "science_grade": "TEST_ONLY_SOURCEFREE",
+          "source_authority_ref": "R61-TEST-ONLY-OWNER",
+          "source_decision_ref": "SOURCEFREE_TEST_ONLY_NOT_CURRENT_PERMISSION",
+          "source_grade": "TEST_ONLY_SOURCEFREE",
+          "source_id": "SRC09",
+          "source_sha256": "9ecd21e02b8e04eb2db9cef0b5f8d0c183a64e528c5f6a2f05a8b5dc574c4aa7",
+          "u_app_ref": "255a5858a33755748842c88a4e465e6ca9ae798f9026a22a5b35614e1ee72fa5",
+          "u_item_ref": "edbd81988334bc2dd95d00d2b86bfa9844fe6414f7c0801c9844326d74ecdfc3",
+          "u_unit_ref": "0e346fc26b4d73affbf5e52910180c6a4967fc4b229dd15428749ab0578ce724",
+          "universe_scope": "WAVE-A",
+          "wave": "S1B"
+        },
+        "source_realization": [
+          {
+            "emitted": 5,
+            "family": "RespondentEvent",
+            "item_id": "q101",
+            "key": "{\"form_id\":null,\"item_id\":\"q101\",\"option_id\":null,\"repeat_id\":null}",
+            "occurrence_dimension": null,
+            "occurrence_realized": true,
+            "question_id": "q101",
+            "routable_rows": 5,
+            "routing_states": {
+              "ELIGIBLE_APPLICABLE": 5
+            },
+            "routing_unresolved": false,
+            "slot": [
+              1,
+              "q101"
+            ]
+          }
+        ],
+        "source_realized": true,
+        "unrealized_keys": [],
+        "variance_policy": "UNQUANTIFIED_SAMPLE",
+        "weight_ref": null
+      }
+    ]
+  },
+  "resource": {
+    "baseline_chain_seconds": 1.722683682004572,
+    "batch_seconds": 0.10086140800558496,
+    "changed_chain_seconds": 1.3076240669906838,
+    "cold_i03_seconds": 0.018588865001220256,
+    "estate_bytes_actual": 356591,
+    "events": 5,
+    "i05_seconds": 0.10569410600874107,
+    "join_seconds": 0.1962893570016604,
+    "journal_bytes": 78149,
+    "peak_rss_bytes_after": 187723776,
+    "peak_rss_bytes_before": 153108480,
+    "peak_rss_mib": 179.027,
+    "restored_chain_seconds": 0.9788198269961867,
+    "retained_bytes": 356591,
+    "source_rows": 5,
+    "source_rows_per_second_total": 0.83,
+    "spool_bytes": 31090,
+    "wall_seconds_total": 6.026155728002777
+  },
+  "schema": "PYAT997_S1E_EXEC_RUNTIME_EVIDENCE@1",
+  "scope": "TEST_ONLY_SOURCEFREE_TINY_FIXTURE_NOT_PRODUCTION"
+}
