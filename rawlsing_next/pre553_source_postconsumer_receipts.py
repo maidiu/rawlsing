@@ -201,6 +201,18 @@ def join_saved_source_operation_fates(
         if entry.operation_id in plan_by_op:
             raise SourceReceiptJoinError("DUPLICATE_LOWERED_OPERATION")
         plan_by_op[entry.operation_id] = entry
+    # The compiled frontier independently retains the complete S1-C fate
+    # and claim-class census. The preconsumer handoff may not be edited after
+    # publication to turn HELD/UNKNOWN into an apparently issued ELIGIBLE row.
+    dispositions = compilation.operation_dispositions
+    claim_classes = compilation.operation_claim_classes
+    if (not isinstance(dispositions, Mapping)
+            or not isinstance(claim_classes, Mapping)
+            or set(dispositions) != {
+                r["operation_id"] for r in handoff.operation_fates
+            }
+            or set(claim_classes) != set(dispositions)):
+        raise SourceReceiptJoinError("COMPLETE_ISSUED_FATE_CENSUS_REQUIRED")
     output_rows = []
     all_ops = set()
     positively_linked = 0
@@ -212,13 +224,20 @@ def join_saved_source_operation_fates(
             raise SourceReceiptJoinError("DUPLICATE_Q2_SOURCE_OPERATION")
         all_ops.add(operation_id)
         source = old["source_preimage"]
-        if (source["source_id"] != handoff.manifest.source_artifact_id
+        # S1-C source_id names the original source roster; for TEST_ONLY
+        # R157 the sealed Q2 artifact_id is R157_FIXTURE:<fixture_id>.
+        # These are distinct identity axes and MUST NOT be equated.
+        if (not isinstance(source["source_id"], str)
+                or not source["source_id"].strip()
                 or source["source_sha256"] != handoff.source_sha256
                 or source["operation_hash"] != old["operation_hash"]
                 or source["operation_hash_matches"] is not True
                 or old.get("issued_receipt_refs") != ()):
             raise SourceReceiptJoinError("SOURCE_OPERATION_PROVENANCE_OR_PREISSUE_DRIFT")
         state = old["disposition"]
+        if (state != dispositions[operation_id]
+                or old["claim_class"] != claim_classes[operation_id]):
+            raise SourceReceiptJoinError("Q2_OPERATION_FATE_OR_CLAIM_PROMOTED")
         fate_counts[state] += 1
         entry = plan_by_op.get(operation_id)
         refs: tuple[str, ...] = ()
