@@ -100,7 +100,15 @@ def test_original_native_carrier_execute_i03_from_cold_sourcefree_parquet(
     root, receipt = _cold(tmp_path, candidate, source["universe"].ref, "private-native")
     assert receipt.i02.release == source["release_ref"].key
     executor = _executor(root, receipt, source, qauth, predicate, query)
-    observed = executor.execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    # Native first consumer MUST NOT silently fall back to full C11 rebuild
+    # or whole-Parquet table materialization after source is unavailable.
+    import pyarrow.parquet as pq
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError("forbidden full-graph repository or pq.read_table fallback")
+    with monkeypatch.context() as guard:
+        guard.setattr(C11Repository, "__init__", forbidden)
+        guard.setattr(pq, "read_table", forbidden)
+        observed = executor.execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
     assert observed.query_ref == oracle.query_ref
     assert observed.release_refs == oracle.release_refs
     assert _fact_signature(observed) == _fact_signature(oracle)
