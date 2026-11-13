@@ -131,5 +131,72 @@
     "full_vertical": "HOLD_997_AND_S2A",
     "1001": "NOT_RUN",
     "no_duplicate1006": true
+  },
+  "owner_granted_s2a_and_ready997_native": {
+    "S2A_owner_grant": "VERIFIED_EXACT_PUBLIC_API_EXCEPTION",
+    "actual_jobs": [
+      {
+        "job": "pyat999-s2a-public-selector-repair-r1",
+        "session": "ses_e3120b9efffegreD5YfH7dOO15",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-public-repair",
+        "branch": "agent/pyat999-s2a-public-repair-r1",
+        "startup_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+        "target_blob": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+        "exclusive_symbols": [
+          "VerifiedDirectEstate.select_events",
+          "VerifiedDirectEstate._locators",
+          "VerifiedDirectEstate._events_from_postings",
+          "strictlyindispensable privatebodylocatorparity/reforder helpers in sameclass/file"
+        ],
+        "new_test": "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py",
+        "own_return": "WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/",
+        "reviewer_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+        "status": "LAUNCHED_SERVICE_RUNNING",
+        "997_no_collision": "BrowserP0/P1only, no sharedworktreewrites",
+        "1006_no_collision": "ExternaloldMac readonlyphysicalbaseline only",
+        "cap": 3,
+        "child_pid": 14140,
+        "supervisor_pid": 14139,
+        "observer_pid": 14141,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat999-s2a-public-selector-repair-r1",
+        "actual_turn_model": {
+          "message_id": "msg_1d7267daa001e05vYKh3hrJL0a",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          }
+        }
+      },
+      {
+        "job": "pyat997-native-p0-p1-proof-r1",
+        "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-native-proof",
+        "branch": "agent/pyat997-native-proof-r1",
+        "startup_sha": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+        "exclusive_writes": [
+          "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/"
+        ],
+        "product_readonly": true,
+        "role": "NATIVE_EXECUTOR_NOT_PRODUCT_AUTHOR_NOT_G5",
+        "no_duplicate": "No997nativejobcurrentlypublished; BrowserBreturnsrequiresnativeexecution;1006separatebaselineuntouched",
+        "status": "LAUNCHED_SERVICE_RUNNING",
+        "child_pid": 14684,
+        "supervisor_pid": 14681,
+        "observer_pid": 14685,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat997-native-p0-p1-proof-r1",
+        "actual_turn_model": {
+          "message_id": "msg_1d728732a00132Ek3tVRkEKjFh",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          }
+        }
+      }
+    ],
+    "S2A_independent_reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "scope": "S2Arepairplus997readonlynativeproof; nooriginalsource/protected/scienceeffects",
+    "goal_wakeups": "PAUSED"
   }
 }
