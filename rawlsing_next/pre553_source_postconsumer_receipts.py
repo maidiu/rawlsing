@@ -125,6 +125,51 @@ def join_saved_source_operation_fates(
             or record.scope != "TEST_ONLY_SOURCEFREE"
             or record != compilation.issued.record):
         raise SourceReceiptJoinError("TEST_ONLY_CURRENT_ISSUER_NOT_EXACT")
+    # Q2's frozen handoff contains mutable nested preimages. Its source-
+    # realization claim must agree with the source-side witness and the
+    # independently recorded Q2 operation-source census before any native
+    # result can be promoted. A compiler ELIGIBLE disposition alone is not
+    # proof that this source physically realized the operation.
+    source_audit = handoff.census_audit.get("operation_source_antijoin")
+    if not isinstance(source_audit, Mapping):
+        raise SourceReceiptJoinError("Q2_SOURCE_REALIZATION_AUDIT_MISSING")
+    source_states = Counter()
+    for source_fate in handoff.operation_fates:
+        eligible = source_fate["disposition"] == "ELIGIBLE"
+        realized = source_fate.get("source_realized")
+        if type(realized) is not bool:
+            raise SourceReceiptJoinError("Q2_SOURCE_REALIZATION_CONTRADICTION")
+        state = (
+            "ELIGIBLE_REALIZED" if eligible and realized
+            else "ELIGIBLE_TYPED_HOLD" if eligible
+            else "HELD_OR_UNKNOWN_SOURCE_STATE"
+        )
+        reader_state = (
+            "HOLD_ROUTING_OR_BODY_UNRESOLVED" if eligible and not realized
+            else "HOLD_DEPENDENCY_LINUX_PROC_SELF_FD_AND_SEALED_BODY_RELEASE"
+        )
+        if (source_fate.get("operation_source_state") != state
+                or source_fate.get("native_first_reader_state") != reader_state
+                or (realized and (
+                    source_fate.get("routing_unresolved_keys")
+                    or source_fate.get("unrealized_keys")
+                ))):
+            raise SourceReceiptJoinError("Q2_SOURCE_REALIZATION_CONTRADICTION")
+        source_states["operation_count"] += 1
+        source_states["source_realized_operation_count"] += int(realized)
+        if eligible:
+            source_states["eligible_operation_count"] += 1
+            source_states["eligible_realized_count"] += int(realized)
+            source_states["unrealized_eligible_count"] += int(not realized)
+        else:
+            source_states["held_operation_count"] += 1
+    for key in (
+        "operation_count", "eligible_operation_count", "eligible_realized_count",
+        "held_operation_count", "source_realized_operation_count",
+        "unrealized_eligible_count",
+    ):
+        if source_audit.get(key) != source_states[key]:
+            raise SourceReceiptJoinError("Q2_SOURCE_REALIZATION_AUDIT_DRIFT")
     manifest = runner.manifest
     expected_jobs = set(record.expected_jobs)
     units_by_ref = {unit.unit_ref.key: unit for unit in manifest.units}
