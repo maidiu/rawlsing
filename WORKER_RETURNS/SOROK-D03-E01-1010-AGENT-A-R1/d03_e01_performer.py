@@ -25,6 +25,7 @@ from typing import Any, Mapping
 from developmental_recursion.contracts import RecursionRefusal, detached, digest
 from developmental_recursion.engine import BatchEngine
 from developmental_recursion.model_cycle import RecursionCycle
+from post_provider_guard import GuardedProvider
 
 SCHEMA = "SOROK_D03_E01_P2_PERFORMANCE@1"
 CONTEXT_SCHEMA = "SOROK_D03_E01_ACTOR_ACCESS_CONTEXT@1"
@@ -228,9 +229,22 @@ def run_d03_e01_first_batch(
         _refuse("E01_PREPROVIDER_WORLD_MOVED")
     # RecursionCycle rejects pre-existing cycle stores: no blind retry or
     # duplicate side-effect. Its BatchEngine records owner operation IDs.
+    # Recheck the read-only actor/source state after provider.call but BEFORE
+    # RecursionCycle forwards the proposals to the P2 world writer. A's prior
+    # post-batch head check could detect a stale P3 state only after a write.
+    def precommit_custody() -> None:
+        if owner.store.head() != joined["immediate_uptake"]["store_head"]["after"]:
+            _refuse("E01_POSTPROVIDER_P3_HEAD_CHANGED")
+        if _identity(owner, owner.base_owner, session, child_id) != initial:
+            _refuse("E01_POSTPROVIDER_OWNER_IDENTITY_CHANGED")
+        if j1_join.source_closure()["hash"] != joined["source_closure"]["hash"]:
+            _refuse("E01_POSTPROVIDER_J1_SOURCE_CHANGED")
+
     engine = BatchEngine(owner.base_owner, journal_path)
     try:
-        batch = RecursionCycle(engine, provider, cycle_path).bootstrap(context)
+        batch = RecursionCycle(
+            engine, GuardedProvider(provider, precommit_custody), cycle_path
+        ).bootstrap(context)
         rows = _actual_readback(session, batch.get("records"), initial)
         status = ("SOURCEFREE_P2_EVENT_ACTOR_OBSERVED"
                   if all(row["actor_access_status"] == "OBSERVED" for row in rows)
@@ -250,6 +264,7 @@ def run_d03_e01_first_batch(
             "durable_formation": "MISSING_RULE",
             "motive_selection": "NOT_ASSERTED",
             "psychological_causation_by_d03": "NOT_ESTABLISHED",
+            "post_provider_precommit_custody": "P3_P2_J1_SOURCE_CHECKED",
             "ordinary_unrelated_activity": "NOT_ESTABLISHED_BY_P2_CASE",
             "source_closure": joined["source_closure"]["hash"],
             "adapter_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
