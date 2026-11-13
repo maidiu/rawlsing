@@ -25,6 +25,12 @@ S2-B direct I02 → accepted S2-C Parquet/Zstd estate → accepted S2-D cold
 I03/I05/Batch admission. No production file was edited and no second
 decoder/writer/engine/bridge was created.
 
+The external R157 `SOURCE_LIBRARY_INDEX.json` / populated
+`SourceConfigLibrary` index is absent from this checkout. The harness uses the
+accepted closed `SourceConfig` schema and existing factory functions directly
+with the committed compact metadata witness; it did not fabricate or rebuild
+the absent 35-source index.
+
 R157 metadata was read only from the accepted immutable Git blob
 `1924499ef52403a0f331b8aff9b7c7eff99bf1e2`; no original respondent bytes,
 original source hash, .env, credential or original byte holding was read.
