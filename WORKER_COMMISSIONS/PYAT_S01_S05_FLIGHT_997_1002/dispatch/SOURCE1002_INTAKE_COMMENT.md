@@ -1,0 +1,5 @@
+## Source1002 return — historical evidence correction dispatched
+
+Return58ee21134730eb0afaa48842647d568e63c884b8 remote verified; all8 listed artifact hashes match,35unique IDs, no product change/source read reported. Metadata inventory received at author grade. Proposed all35-rights hold NOT accepted as final: search omitted existing actual later SRC04 source/empirical approval and SRC17 authenticated grant at exact campaign branches. Same DeepSeek owner now performing bounded metadata-only reconciliation, job `pyat1002-historical-grant-reconciliation-r2`, child97324, same isolated branch at58ee2113; writes only reconciliation_r2. No new source read/expiry/publisher-signature/retention condition inferred. Any consequential remaining authority judgment goes to user's Browser High agents. Other two jobs unchanged. Goal wakeups PAUSED; finite terminal notifications active. Full joined/source/science/protected acceptance not claimed.
+
+Exact disposition and launch receipts will be published on existing HQ branch. Not a new source grant, scientific acceptance or denial.
