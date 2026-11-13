@@ -1,0 +1,24 @@
+{
+  "commission": "PYAT999-EXISTING-FLIGHT-R1",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "packets": [
+    {
+      "packet_id": "S1-A",
+      "receipt": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/S1A_receipt.json",
+      "candidate_sha": "6286ea700a253ff142104f2e3ee62c9352a07644",
+      "disposition": "ACCEPT_SCOPED@S1A_SOURCEFREE_SEMANTIC_CACHE",
+      "integration": "UNMERGED"
+    },
+    {
+      "packet_id": "S2-A",
+      "receipt": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/S2A_receipt.json",
+      "candidate_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+      "disposition": "REVISE_EXACT_DEFECT",
+      "defect": "S2A_SELECT_EVENTS_SEMANTIC_OMISSION",
+      "integration": "UNMERGED"
+    }
+  ],
+  "handoff": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/00_HANDOFF.md",
+  "product_edits": false,
+  "external_holds": ["original35/source science/current", "integrated 100k/6 GiB", "protected merge"]
+}

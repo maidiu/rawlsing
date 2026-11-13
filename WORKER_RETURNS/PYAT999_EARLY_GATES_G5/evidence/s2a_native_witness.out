@@ -1,0 +1,31 @@
+{
+  "actual_first_consumer": "CarrierNeutralResearchExecutor.execute_i03 -> DirectEstateI03Session.indices_for -> _select_respondent_events",
+  "cold_fact_matches_oracle": true,
+  "cold_fact_ref": {
+    "content_hash": "e22ff52500bc25de5b47cb189000e30997951f263279741c7a47d0a40abb8861",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e22ff52500bc25de5b47cb189000e30997951f263279741c7a47d0a40abb8861"
+  },
+  "direct_select_events_count": 1,
+  "direct_select_events_equal_native": true,
+  "fixture_locator_rows": 4,
+  "fixture_respondents": 4,
+  "native_selected_count": 1,
+  "native_selector_expected_count": 1,
+  "no_inventory_refs": true,
+  "oracle_fact_ref": {
+    "content_hash": "e22ff52500bc25de5b47cb189000e30997951f263279741c7a47d0a40abb8861",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e22ff52500bc25de5b47cb189000e30997951f263279741c7a47d0a40abb8861"
+  },
+  "parent_max_rss_bytes": 108490752,
+  "poisoned_body_ref_corpus_unchanged": true,
+  "poisoned_native_i03_error": "DirectEstateError: cold I03 event posting lacks exact positional/selector coverage",
+  "poisoned_native_i03_refused": true,
+  "poisoned_select_events_count": 0,
+  "poisoned_select_events_undercount": true,
+  "poisoned_selector_observed_count": 0,
+  "schema": "PYAT999_S2A_NATIVE_SELECTOR_WITNESS@1",
+  "select_events_peak_traced_bytes": 12521,
+  "tested_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-native-readonly"
+}

@@ -1,0 +1,131 @@
+{
+  "packet_id": "S1-A",
+  "old_obligations": ["P1-01"],
+  "contract_id": "PYAT999-EXISTING-FLIGHT-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_999.md@cecfc154262eaa140d003e9e704811f44b940455",
+  "governing_issue": "https://github.com/maidiu/rawlsing/issues/918",
+  "governing_r3c": "HQ909_6817606383",
+  "governing_r3s": "HQ909_6817926106",
+  "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "candidate_sha": "6286ea700a253ff142104f2e3ee62c9352a07644",
+  "documentary_head": "783994fbbd09132fe7a4a3c9e6d5b1b9a4ec3ae5",
+  "red_sha": "97b1eba95266cb6dc0340022a35f945aaa2c9b38",
+  "branch": "agent/pyat999-early-gates-g5-r1",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "changed_paths": [
+    "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "rawlsing_next/tests/test_c1_agent_b_cache_differential.py",
+    ".github/workflows/pyat-c1-agent-b-cache-proof.yml"
+  ],
+  "changed_blobs": {
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "f29247b33cb78e5f1e620620d6968ab433ce407a",
+    "rawlsing_next/tests/test_c1_agent_b_cache_differential.py": "d94946349e7f353df3f46adf4c60160db022d5c7",
+    ".github/workflows/pyat-c1-agent-b-cache-proof.yml": "f740e6a10ac573a9de85d2666d4c4b6c3c25c897"
+  },
+  "writer_lease_and_scope": "REVIEW_ONLY. Accepted sourcefree S1-A candidate is read-only; no product, test, workflow or prior-return edit by this reviewer. Original35/current/protected authority not used.",
+  "actual_first_consumer": "build_source_backed_c11_repository -> execute_empirical_query via the real source-backed producer; additional real first-reader cache/clear/recompute witness",
+  "evidence_grade": "S2_SOURCEFREE_ENGINEERING",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Original #918 S1-A and R3C/R3S read; exact 6286 source/test/workflow blobs pinned; protected 6a5c12 base and B #942 descendant identified; no replacement semantic registry or authority."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Actual source-backed producer and execute_empirical_query cold/warm/clear-recompute facts are exact; changed row-owner test changes the actual I03 fact and restore returns the original; 34 focused tests pass."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "Changed source/row/decoder/routing/occurrence/authority/one-shot/TOCTOU/conflicting-rebind/first-insert/clear-race tests pass in 34 focused; 136 sourcefree preservation tests pass. Wrong source/authority is not minted from cache key."
+    },
+    "G4": {
+      "state": "PASS_SCOPED",
+      "receipt": "Tiny 3-row real sourcefree witness: cold source cell iteration 1, warm extra 0, clear/recompute extra 1; cache entry count 1; parent peak RSS 98787328 B; in-memory session cache has no durable CAS. Full 100k/6 GiB remains separate NOT_RUN."
+    },
+    "G5": {
+      "state": "PASS",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; not S1-A author and not B-repair author",
+      "receipt": "Independent nonauthor rerun of focused34, preservation136, native clear/recompute and changed/restore; no material in-scope failure found."
+    }
+  },
+  "mandatory_cases": [
+    {"id": "S1A_CHANGED_RESPONSE", "result": "PASS", "test": "test_c1_changed_semantic_value_must_not_reuse_same_key_cached_release"},
+    {"id": "S1A_ROW_OWNERSHIP", "result": "PASS", "test": "test_c1_changed_row_to_respondent_binding_cannot_reuse_old_c11"},
+    {"id": "S1A_PHYSICAL_DECODER", "result": "PASS", "test": "test_c1_decoder_metadata_context_changes_cache_admission_not_c11_semantics"},
+    {"id": "S1A_ROUTING_OCCURRENCE", "result": "PASS", "test": "test_c1_changed_routing_and_occurrence_are_distinct_cache_inputs"},
+    {"id": "S1A_AUTHORITY_CONTEXT", "result": "PASS", "test": "test_c1_authority_set_cache_isolation_does_not_mint_authority"},
+    {"id": "S1A_REAL_I03_RESTORE", "result": "PASS", "test": "test_c1_changed_row_owner_propagates_to_actual_i03_fact_and_restores"},
+    {"id": "S1A_ONE_SHOT_AUTHORITY", "result": "PASS", "test": "test_c1_one_shot_authority_iterable_produces_same_private_cache_binding"},
+    {"id": "S1A_WARM_COLD_MUTATION", "result": "PASS", "test": "test_c1_projection_mutation_during_source_read_must_not_poison_cache_key"},
+    {"id": "S1A_WARM_CACHE_HIT", "result": "PASS", "test": "test_c1_cache_hit_callback_cannot_change_governed_input_while_serving"},
+    {"id": "S1A_NO_CACHE_COHERENCE", "result": "PASS", "test": "test_c1_uncached_physical_read_cannot_use_changed_governed_semantics"},
+    {"id": "S1A_MUTATE_RESTORE", "result": "PASS", "test": "test_c1_transient_semantic_rewrite_and_restore_cannot_cache_mixed_release"},
+    {"id": "S1A_IMMUTABLE_NESTED_RULES", "result": "PASS", "test": "test_c1_governed_nested_semantic_input_is_detached_and_readonly"},
+    {"id": "S1A_CONFLICT_REBIND", "result": "PASS", "test": "test_c1_session_cache_rejects_conflicting_valid_release_rebind"},
+    {"id": "S1A_FIRST_INSERT_POISON", "result": "PASS", "test": "test_c1_empty_cache_rejects_unowned_valid_release_and_preserves_i03"},
+    {"id": "S1A_CONCURRENT_CLEAR_RESTORE", "result": "PASS", "test": "test_c1_concurrent_clear_during_legitimate_producer_reinsertion_still_serves_i03"}
+  ],
+  "actual_tests": {
+    "focused_34": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_c1_agent_b_cache_differential.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+      "actual": "34 passed in 3.66s",
+      "log": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_focused_34.txt"
+    },
+    "preservation_136": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_source_equivalence.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py rawlsing_next/tests/test_universal_source_byte_custody.py",
+      "actual": "136 passed in 94.78s",
+      "log": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_preservation_136.txt"
+    },
+    "native_witness": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/PYAT999_EARLY_GATES_G5/s1a_native_witness.py <proofroot>",
+      "actual": "cold fact == warm == clear/recompute; cold cell iterations 1; warm extra 0; recompute extra 1; cache entries 1; parent RSS 98787328 B",
+      "log": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_native_witness.out"
+    }
+  },
+  "preserved_functions": [
+    "B #922 full governed preimage/decoder/authority cache keys",
+    "A #926 detached freeze and final coherence checks",
+    "B #935 conflicting-rebind refusal and idempotent replay",
+    "A #937 producer-only first admission and clear/recompute repair",
+    "real execute_empirical_query changed/restore and source-equivalence/issued-operation/byte-custody regressions"
+  ],
+  "open_defects": [],
+  "nonblocking_deferred": [
+    "Arbitrary hostile in-process mutation/private-method invocation outside the normal cache API is not an S1-A acceptance goal.",
+    "Original35/source-native authentication and 100k integrated resource economics remain external."
+  ],
+  "external_holds": [
+    {"owner": "qualified original35/source science authority", "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; not used"},
+    {"owner": "production current/host/actor issuer", "minimal_missing_witness": "independent production CURRENT/source/host rights; local cache key is not a grant"},
+    {"owner": "integrated resource gate", "minimal_missing_witness": "100k respondents/6 GiB; this is a 3-row sourcefree cache witness only"},
+    {"owner": "protected receiving", "minimal_missing_witness": "protected PRE-MAIN merge/authority; UNMERGED"}
+  ],
+  "resource_evidence": {
+    "rows": 3,
+    "fixture": "sourcefree real C11 builder/execute_empirical_query; not original35",
+    "source_opens_cold": 1,
+    "source_opens_warm_extra": 0,
+    "source_opens_clear_recompute_extra": 1,
+    "cache_entries_after_rebuild": 1,
+    "parent_peak_rss_bytes": 98787328,
+    "process_tree_peak_rss_bytes": null,
+    "retained_disk_bytes": null,
+    "peak_disk_bytes": null,
+    "cold_seconds": null,
+    "repeat_seconds": null,
+    "durable_cas": "NOT_APPLICABLE_PROVED: optional in-memory SourceBackedC11SessionCache",
+    "100k_6GiB": "NOT_RUN"
+  },
+  "disposition": "ACCEPT_SCOPED@S1A_SOURCEFREE_SEMANTIC_CACHE",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_HOST_ACTOR_ISSUER_GRANTS",
+  "stop_state": "TERMINAL_CLOSED@6286ea700a253ff142104f2e3ee62c9352a07644",
+  "known_session_cost": "UNKNOWN",
+  "review_evidence": [
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_focused_34.txt",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_preservation_136.txt",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_native_witness.json",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s1a_native_witness.out"
+  ]
+}

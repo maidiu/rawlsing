@@ -1,0 +1,188 @@
+{
+  "packet_id": "S2-A",
+  "old_obligations": [
+    "P2-01"
+  ],
+  "contract_id": "PYAT999-EXISTING-FLIGHT-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_999.md@cecfc154262eaa140d003e9e704811f44b940455",
+  "governing_issue": "https://github.com/maidiu/rawlsing/issues/919",
+  "governing_model_witness": "https://github.com/maidiu/rawlsing/issues/923",
+  "model_witness_sha": "fc6b75ec83795931df5d8f47d7a31553198ca05a",
+  "accepted_s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2d": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "frozen_base_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "candidate_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "tested_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-native-readonly",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "changed_paths": [],
+  "writer_lease_and_scope": "REVIEW_ONLY against the frozen accepted S2-C/D read-only tree. No S2-C/D product, test, writer, layout or prior-return edit; no source/rights/current grant.",
+  "actual_first_consumer": "CarrierNeutralResearchExecutor.execute_i03 -> DirectEstateI03Session.indices_for -> _select_respondent_events; named public selector comparison: VerifiedDirectEstate.select_events",
+  "evidence_grade": "S2_SOURCEFREE",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Original S2-A #919 and model-only #923 H26-H30 read; exact native selector _select_respondent_events, VerifiedDirectEstate.select_events and DirectEstateI03Session.indices_for pinned at 9d96. Exact sourcefree direct-estate roots/ref corpus and native/canonical/component/states/repeated contract identified."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Independent witness and existing 57 tests: real S2-C direct estate through execute_i03 returns the exact oracle fact; changed source/restore, complete selected event bodies, aliases and state filtering pass in the selected native path."
+    },
+    "G3": {
+      "state": "FAIL",
+      "receipt": "H26 at VerifiedDirectEstate.select_events: a target-specific poisoned locator with intact event bodies/refs and equal counts, re-pinned manifest, silently undercounts a valid selector (observed 0 vs native 1). The actual DirectEstateI03Session path refuses the same poison; the named public selector does not. H27/H28/H29 existing native tests pass; this selected-API omission blocks H26."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_FIXTURE",
+      "receipt": "Existing H30 bounded/page/no-inventory test passes for certified ranges; S2-C select_events has no inventory_refs and streams row groups. Our native witness confirms no inventory_refs. Full 100k/6 GiB not run."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; not S2-C/D author",
+      "receipt": "REVISE_EXACT_DEFECT: executable H26 selector omission in an accepted S2-C public selector. Actual native execute_i03 is safe, but the named authenticated selector API is not, so the S2-A packet cannot be scoped-accepted without a bounded owner-granted correction and re-receipt."
+    }
+  },
+  "mandatory_cases": [
+    {
+      "id": "H26_NATIVE_I03_HIDDEN_EVENT",
+      "result": "PASS",
+      "test": "test_g5_hidden_event_repin_cannot_produce_false_native_i03_fact; test_g5_equal_census_forged_duplicate_locator_refuses_native_i03",
+      "actual": "Actual DirectEstateI03Session refuses hidden/duplicate locator poison; no false native fact."
+    },
+    {
+      "id": "H26_SELECT_EVENTS_SEMANTIC_OMISSION",
+      "result": "FAIL",
+      "command": "PYTHONPATH=<s2a-readonly> python3 s2a_native_witness.py <proofroot>",
+      "expected": "VerifiedDirectEstate.select_events refuses/rebuilds the target-specific poisoned locator with intact body/ref corpus; native selected count is 1",
+      "actual": "select_events returned 0 with no error; actual execute_i03 refused with DirectEstateError: cold I03 event posting lacks exact positional/selector coverage",
+      "evidence": "evidence/s2a_native_witness.json"
+    },
+    {
+      "id": "H27_CANONICAL_COMPONENT_EXISTING",
+      "result": "PASS",
+      "test": "test_h27_authorized_alias_ranges_and_native_only_precedence_at_i03_selector; test_h27_real_i02_authorized_canonical_and_component_binding_omission; S2-C forged canonical/component posting tests",
+      "actual": "Existing native/certified selector tests pass; S2-C direct target poison remains covered by the same unchecked-selector root."
+    },
+    {
+      "id": "H28_EMPTY_ROUTING_UNKNOWN",
+      "result": "PASS",
+      "test": "test_h28_empty_event_selection_does_not_override_routing_unknown",
+      "actual": "Empty selected events remain distinct from routing UNKNOWN; no observed-zero promotion."
+    },
+    {
+      "id": "H29_WRONG_SOURCE_UNIVERSE_ROOT_ASOF",
+      "result": "PASS",
+      "test": "test_h29_reject_wrong_source_release_universe_root_and_keyspace_tamper; test_wrong_source_root_and_live_revocation_refuse",
+      "actual": "Wrong source/release/universe/root/keyspace and revocation refuse; no cached authority."
+    },
+    {
+      "id": "H30_BOUNDED_RANGE_NO_INVENTORY",
+      "result": "PASS_SCOPED_FIXTURE",
+      "test": "test_h30_pages_are_bounded_and_no_inventory_method_exists; S2-C no-inventory witness",
+      "actual": "Bounded pages/no inventory method pass; S2-C full 100k/6 GiB NOT_RUN."
+    },
+    {
+      "id": "CHANGED_RESTORED_NATIVE_I03",
+      "result": "PASS",
+      "test": "test_cold_i03_new_source_content_changes_fact_and_old_root_restores; test_original_native_carrier_execute_i03_from_cold_sourcefree_parquet",
+      "actual": "Changed source creates changed exact fact; old root restores the original fact/replay identity."
+    },
+    {
+      "id": "DUPLICATE_ORDER_ADVISORY",
+      "result": "ADVISORY",
+      "command": "evidence/s2a_selector_order_advisory.out",
+      "expected": "Native selector order is canonical ref order",
+      "actual": "VerifiedDirectEstate.select_events yields source/locator order for a legitimate two-occurrence fixture; actual DirectEstateI03Session SQL path is ref-sorted. This is a secondary public-selector parity discrepancy."
+    }
+  ],
+  "actual_tests": {
+    "existing_57": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py rawlsing_next/tests/test_pre553_direct_estate_i03.py",
+      "actual": "57 passed in 5.58s",
+      "log": "evidence/s2a_existing.txt"
+    },
+    "own_native_witness": {
+      "command": "PYTHONPATH=<s2a-readonly> PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/PYAT999_EARLY_GATES_G5/s2a_native_witness.py <proofroot>",
+      "actual": "cold fact exactly oracle; poisoned target locator: select_events 0 vs native 1, no error; actual execute_i03 refuses; no inventory_refs",
+      "log": "evidence/s2a_native_witness.json"
+    }
+  },
+  "source_blob_pins": {
+    "rawlsing_next/_pre553_query_predicate.py": "44fb9522484b2664374933c39e1aabd764eb46f1",
+    "rawlsing_next/_pre553_verified_semantic_range.py": "bd3b2bcc9cb244942d0257ede87c4a64a020af8b",
+    "rawlsing_next/pre553_source_direct_parquet_estate.py": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+    "rawlsing_next/pre553_direct_estate_i03.py": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "rawlsing_next/tests/test_pre553_verified_semantic_range.py": "c32e18040d49ad6879c6d7119ffe70988a786de3",
+    "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py": "4afbc5adc02478a5e1bb1a7bbbee503007ff0e23",
+    "rawlsing_next/tests/test_pre553_direct_estate_i03.py": "970996b889e841d7e283b59ca245e9cac7594a55"
+  },
+  "preserved_functions": [
+    "Accepted S2-C physical writer, VerifiedDirectEstate, DirectEstateI03Session/layout/tests unchanged",
+    "Accepted S2-D saved I03/I05/Batch/issued/resume code and prior G5 evidence unchanged",
+    "Actual native execute_i03 changed/restore and hidden/duplicate locator refusal",
+    "Native canonical/component/state/frontier tests and no inventory_refs page path",
+    "Sourcefree authority ceiling; no original35 or production current"
+  ],
+  "open_defects": [
+    {
+      "id": "S2A_SELECT_EVENTS_SEMANTIC_OMISSION",
+      "severity": "SEV-1",
+      "file": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+      "function": "VerifiedDirectEstate.select_events (and its _locators/_events_from_postings selection path)",
+      "tested_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+      "input": "Real sourcefree S2-C direct estate; one target-specific locator native field poisoned while all event bodies/refs and row/body counts remain intact; manifest+member digest coherently re-pinned; caller supplies the new independently held manifest SHA.",
+      "expected": "Refuse/rebuild the semantic selector; do not return a subset. Native expected selected count = 1.",
+      "actual": "VerifiedDirectEstate.select_events returned 0 selected events with no error. Actual CarrierNeutralResearchExecutor.execute_i03 refused with DirectEstateError: cold I03 event posting lacks exact positional/selector coverage.",
+      "first_reader": "VerifiedDirectEstate.select_events is the named public selector API; actual execute_i03 remains safe through DirectEstateI03Session._build.",
+      "why_in_scope": "S2-A G3/H26 expressly requires a poisoned secondary selector with intact ref corpus to refuse/rebuild, not undercount. The launch names VerifiedDirectEstate.select_events for independent semantic comparison.",
+      "proposed_fix_path": "Owner-granted patch to pre553_source_direct_parquet_estate.py::VerifiedDirectEstate.select_events to validate every locator row/body position before serving, or an approved new adapter that reuses DirectEstateI03Session's complete positional/body parity build. Do not silently edit frozen S2-C as reviewer.",
+      "required_regression": "Add the exact target-specific native/canonical/component/state locator poison with intact bodies/refs and corrected counts; assert select_events refuses, native execute_i03 refuses, and the untampered estate restores the exact native fact/refs.",
+      "evidence": "evidence/s2a_native_witness.json; evidence/s2a_selector_order_advisory.out"
+    }
+  ],
+  "external_holds": [
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source/respondent bytes used"
+    },
+    {
+      "owner": "production current/host/actor issuer",
+      "minimal_missing_witness": "independent production CURRENT/rights; the sourcefree direct estate current_authorizer is test-only"
+    },
+    {
+      "owner": "integrated 100k/6 GiB",
+      "minimal_missing_witness": "full integrated resource gate; sourcefree small/medium only"
+    },
+    {
+      "owner": "protected merge/N11-N12",
+      "minimal_missing_witness": "protected receiving authority; UNMERGED"
+    }
+  ],
+  "resource_evidence": {
+    "rows": null,
+    "fixture": "S2-C direct sourcefree small/medium; exact row count in existing tests; full 100k NOT_RUN",
+    "process_tree_peak_rss_bytes": null,
+    "retained_disk_bytes": null,
+    "peak_disk_bytes": null,
+    "cold_seconds": null,
+    "repeat_seconds": null,
+    "no_inventory_refs": true,
+    "h30_existing_bounded_pages": "PASS at 64-event fixture; not 100k",
+    "integrated_100k_6GiB": "NOT_RUN",
+    "fixture_respondents": 4,
+    "fixture_locator_rows": 4,
+    "parent_max_rss_bytes": 108490752,
+    "select_events_peak_traced_bytes": 12521
+  },
+  "disposition": "REVISE_EXACT_DEFECT",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_HOST_ACTOR_ISSUER_GRANTS; TEST_ONLY_SOURCEFREE",
+  "stop_state": "REVISE_EXACT_DEFECT__HQ_ADJUDICATION_BEFORE_REPAIR",
+  "known_session_cost": "UNKNOWN",
+  "review_evidence": [
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s2a_existing.txt",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s2a_native_witness.json",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s2a_native_witness.out",
+    "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/evidence/s2a_selector_order_advisory.out"
+  ]
+}

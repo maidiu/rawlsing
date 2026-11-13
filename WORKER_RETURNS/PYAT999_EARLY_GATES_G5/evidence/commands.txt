@@ -1,0 +1,16 @@
+S1-A:
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_c1_agent_b_cache_differential.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py
+=> 34 passed in 3.66s
+
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_source_equivalence.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py rawlsing_next/tests/test_universal_source_byte_custody.py
+=> 136 passed in 94.78s
+
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/PYAT999_EARLY_GATES_G5/s1a_native_witness.py <proofroot>
+=> exact cold/warm/recompute fact; cell iterations 1/1/2; parent RSS 98,787,328 B
+
+S2-A (read-only native worktree 9d96a9c):
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_verified_semantic_range.py rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py rawlsing_next/tests/test_pre553_direct_estate_i03.py
+=> 57 passed in 5.58s
+
+PYTHONPATH=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-native-readonly PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/PYAT999_EARLY_GATES_G5/s2a_native_witness.py <proofroot>
+=> actual execute_i03 fact equals oracle; poisoned target locator: select_events 0 vs native 1, no error; actual execute_i03 refuses; no inventory_refs; parent RSS 108,490,752 B
