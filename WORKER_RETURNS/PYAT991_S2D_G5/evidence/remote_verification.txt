@@ -1,0 +1,20 @@
+Direct remote verification at 2026-11-13T10:24:53Z
+repository: https://github.com/maidiu/rawlsing.git
+branch: agent/pyat991-s2d-g5-r1
+return_commit: 84b4b3666d6a2e23e216844344c88e911120e2ee
+tested_cut: 2b1f8d878e455b1f6ecb48683895b8a40dcbad72
+a_branch_sha: 2b1f8d878e455b1f6ecb48683895b8a40dcbad72
+b_branch_sha: b23d85428e4cd0180231fd7e35727c771de18cab
+
+git ls-remote origin refs/heads/agent/pyat991-s2d-g5-r1 refs/heads/agent/pyat991-s2d-a-r1 refs/heads/agent/pyat991-s2d-b-r1:
+84b4b3666d6a2e23e216844344c88e911120e2ee	refs/heads/agent/pyat991-s2d-g5-r1
+2b1f8d878e455b1f6ecb48683895b8a40dcbad72	refs/heads/agent/pyat991-s2d-a-r1
+b23d85428e4cd0180231fd7e35727c771de18cab	refs/heads/agent/pyat991-s2d-b-r1
+
+git diff --stat 2b1f8d878e455b1f6ecb48683895b8a40dcbad72 84b4b3666d6a2e23e216844344c88e911120e2ee -- rawlsing_next:
+EMPTY
+
+git cat-file -p 84b4b3666d6a2e23e216844344c88e911120e2ee:WORKER_RETURNS/PYAT991_S2D_G5/receipt.json | python3 -m json.tool:
+VALID
+
+handoff present: yes

@@ -1,7 +1,9 @@
 {
   "task_id": "PYAT991-S2D-G5",
   "packet_id": "S2-D",
-  "old_obligations": ["P2-05"],
+  "old_obligations": [
+    "P2-05"
+  ],
   "contract_id": "PYAT991-S2D-PHASE1-R1",
   "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
@@ -313,7 +315,12 @@
   "abi": {
     "classification": "LOCAL",
     "detail": "New S2-D admission/integration modules and tests only; accepted S2-C/native/shared files are read-only. The scope repair is local to the new admission; no native/shared owner edit by reviewer.",
-    "affected_task_ids": ["S2-E", "S2-G", "S1-D", "S2-D"],
+    "affected_task_ids": [
+      "S2-E",
+      "S2-G",
+      "S1-D",
+      "S2-D"
+    ],
     "breaking_interface": false,
     "source_or_authority_change": false,
     "scientific_hold": true
@@ -335,7 +342,8 @@
     "WORKER_RETURNS/PYAT991_S2D_G5/resource.json",
     "WORKER_RETURNS/PYAT991_S2D_G5/resource_run.out",
     "WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py",
-    "WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py"
+    "WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5/evidence/remote_verification.txt"
   ],
   "review_commands": [
     "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py -q -o addopts='' => 26 passed in 6.86s",
@@ -352,6 +360,20 @@
     "decision": "REVISE_EXACT_DEFECT",
     "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
     "no_repair_performed": true,
-    "signed_at_utc": "2026-11-13T05:25:00Z"
+    "signed_at_utc": "2026-11-13T05:25:00Z",
+    "review_return_commit_sha": "84b4b3666d6a2e23e216844344c88e911120e2ee"
+  },
+  "remote_verification": {
+    "remote": "origin",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "return_commit_sha": "84b4b3666d6a2e23e216844344c88e911120e2ee",
+    "tested_cut_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+    "a_branch_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+    "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "code_diff_vs_cut": "EMPTY",
+    "receipt_json_valid": true,
+    "handoff_present": true,
+    "verified_at_utc": "2026-11-13T05:35:00Z"
   }
 }
