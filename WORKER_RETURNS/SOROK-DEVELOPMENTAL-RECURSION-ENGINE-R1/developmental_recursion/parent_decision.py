@@ -533,7 +533,7 @@ def _perform_parent_decision_locked(session, parent_id: str, *, decision_id: str
         "decision_evidence": "ADMITTED_DECISION_REEVALUATED_AT_PERFORM",
         "physical_admission": (
             "PERFORMED" if performed else
-            "VALID_EMPTY" if valid_empty else "HELD"),
+            "HELD" if action_status == "HELD" else "VALID_EMPTY"),
         "language_generation_owner": "C04_CALLER_SUPPLIED_TEXT",
         "native_science": False,
     }
