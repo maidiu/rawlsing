@@ -13,7 +13,7 @@
     "command": "PYTHONPATH=. <read-only venv python> WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/measure_fixtures.py",
     "exit_status": 0,
     "max_rss_bytes_os_time": 107339776,
-    "output": "wrote /Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/evidence/FIXTURE_REGENERATION_MANIFEST.json (11595 bytes)\nARAB_SRC07 db9a5067e26105ed2e3ed17771c3173c3aa4300052a9728176cdec1c35eeabbc a90e2a3a8817a0d67cb6c87879126b870d130dbdb0e00f02516da75681eba793 621216 deterministic=False\nWVS_SRC35 7a4fcfaa370fec171c3aba81bf7a00432c576863222ade42c57c7690f76d0be0 22f7bfe11c736b3155043468e8cc944c77e3e805578e8f8558c448b04ec26167 686843 deterministic=False\nLITS_SRC28_HOSTILE 18c6b428810e39eab9df995d2f7ddab6a2b430cfb02b6a52ab3cfcfc99a67239 d707992d71e27d976960edceaa3122ae295de65d66aae58c2ebb7fad1eccd3ae 452835 deterministic=True",
+    "output": "wrote <PRIVATE_WORKTREE>/WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/evidence/FIXTURE_REGENERATION_MANIFEST.json (11595 bytes)\nARAB_SRC07 db9a5067e26105ed2e3ed17771c3173c3aa4300052a9728176cdec1c35eeabbc a90e2a3a8817a0d67cb6c87879126b870d130dbdb0e00f02516da75681eba793 621216 deterministic=False\nWVS_SRC35 7a4fcfaa370fec171c3aba81bf7a00432c576863222ade42c57c7690f76d0be0 22f7bfe11c736b3155043468e8cc944c77e3e805578e8f8558c448b04ec26167 686843 deterministic=False\nLITS_SRC28_HOSTILE 18c6b428810e39eab9df995d2f7ddab6a2b430cfb02b6a52ab3cfcfc99a67239 d707992d71e27d976960edceaa3122ae295de65d66aae58c2ebb7fad1eccd3ae 452835 deterministic=True",
     "wall_seconds_os_time": 4.18
   },
   "fixture_semantics": {
@@ -235,8 +235,8 @@
     }
   },
   "host_contention": {
-    "1006_runner_process_end": "45447 S    02:45:02   1.1  28068 /Users/matthewsmith/.opencode/bin/opencode",
-    "1006_runner_process_start": "45447 S    02:44:53   0.1  28052 /Users/matthewsmith/.opencode/bin/opencode",
+    "1006_runner_process_end": "45447 S    02:45:02   1.1  28068 <opencode-bin>",
+    "1006_runner_process_start": "45447 S    02:44:53   0.1  28052 <opencode-bin>",
     "concurrent_1006_runner_active": true,
     "disk_available_kib_end": 16281000,
     "disk_available_kib_start": 15240824,
@@ -244,6 +244,7 @@
     "note": "Host ran the existing #1006 runner; timings above are actual contended observations, not an isolated benchmark.",
     "observed_loadavg_end": "{ 7.84 8.85 7.29 }",
     "observed_loadavg_start": "{ 7.79 8.88 7.28 }",
+    "private_paths_redacted": true,
     "relative_slowdown_claim": "UNOBSERVED__NO_ISOLATED_COMPARISON"
   },
   "limits": [
@@ -272,11 +273,12 @@
   "scope": "EARLY_SOURCEFREE_FIXTURE_PREP_ONLY",
   "test_only": true,
   "test_run": {
-    "command": "PYTHONPATH=. /Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python -m pytest -q WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/tests/test_dual_series_prep.py",
+    "command": "PYTHONPATH=. <EXISTING_READ_ONLY_PYAT1006_VENV>/bin/python -m pytest -q WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/tests/test_dual_series_prep.py",
     "end_utc": "2026-11-13T23:10:28Z",
     "exit_status": 0,
     "max_rss_bytes_os_time": 112820224,
     "peak_memory_footprint_bytes_os_time": 0,
+    "private_paths_redacted": true,
     "pytest_reported_seconds": 8.07,
     "pytest_result": "............                                                             [100%]\n12 passed in 8.07s",
     "start_utc": "2026-11-13T23:10:19Z",

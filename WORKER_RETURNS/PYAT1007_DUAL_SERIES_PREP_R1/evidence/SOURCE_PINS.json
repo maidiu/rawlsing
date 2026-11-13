@@ -118,9 +118,10 @@
       "sha256": "f1a93e83dd8b9f749523b0249e3796f8d13bb0d2909622e14023f09c07851b15"
     }
   },
+  "private_path_policy": "The existing read-only venv path is deliberately not committed; resolve it from the live host environment.",
   "r157_metadata_commit": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
   "schema": "PYAT1007_SOURCE_PINS@1",
-  "test_command": "PYTHONPATH=. /Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python -m pytest -q WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/tests/test_dual_series_prep.py",
+  "test_command": "PYTHONPATH=. <EXISTING_READ_ONLY_PYAT1006_VENV>/bin/python -m pytest -q WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/tests/test_dual_series_prep.py",
   "test_result": "12 passed; exit 0",
   "worktree_base_head": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969"
 }

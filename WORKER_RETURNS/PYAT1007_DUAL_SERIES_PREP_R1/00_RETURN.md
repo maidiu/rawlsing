@@ -33,10 +33,10 @@ explicitly differ from the declared R157 metadata hashes.
 
 ## Actual executable evidence
 
-Command (existing read-only venv; not modified):
+Command (existing read-only venv; absolute path intentionally not committed):
 
 ```text
-PYTHONPATH=. /Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python \
+PYTHONPATH=. <existing read-only PYAT1006 venv python> \
   -m pytest -q WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/tests/test_dual_series_prep.py
 ```
 
