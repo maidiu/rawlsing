@@ -128,6 +128,8 @@ class DirectEstateI03Session:
         self.respondents: dict[str, RespondentIdentity] = {}
         self._universe: EmpiricalUniverse | None = None
         self._relations: tuple[SourceUniverseRelation, ...] = ()
+        self._files: dict[str, Any] = {}
+        self._row_group_cache: dict[str, dict[str, Any]] = {}
 
     def _require_live(self) -> sqlite3.Connection:
         self.estate._live()
@@ -177,6 +179,11 @@ class DirectEstateI03Session:
         self.respondents.clear()
         self._universe = None
         self._relations = ()
+        for reader in self._files.values():
+            if hasattr(reader, "close"):
+                reader.close()
+        self._files.clear()
+        self._row_group_cache.clear()
         if self._temporary is not None:
             self._temporary.cleanup()
             self._temporary = None
@@ -208,6 +215,7 @@ class DirectEstateI03Session:
         )
 
         locator = pq.ParquetFile(self.estate.directory / "event_locator.parquet")
+        self._files["event_locator"] = locator
         count = 0
         for batch in locator.iter_batches(batch_size=512):
             db.executemany(
@@ -228,6 +236,7 @@ class DirectEstateI03Session:
 
         for family in ("EmpiricalCoordinateFact", "RoutingEligibilityFact", "WeightMeasureFact"):
             physical = pq.ParquetFile(self.estate.directory / (family + ".parquet"))
+            self._files[family] = physical
             observed = 0
             for gid in range(physical.num_row_groups):
                 self._require_live()
@@ -281,7 +290,15 @@ class DirectEstateI03Session:
             }
             for row in cursor
         )
-        for event in self.estate._events_from_postings(postings):
+        import pyarrow.parquet as pq
+        if "RespondentEvent" not in self._files:
+            self._files["RespondentEvent"] = pq.ParquetFile(
+                self.estate.directory / "RespondentEvent.parquet"
+            )
+        for event in self.estate._events_from_postings(
+            postings, parquet_file=self._files["RespondentEvent"],
+            row_group_cache=self._row_group_cache.setdefault("RespondentEvent", {}),
+        ):
             self._require_live()
             if (_key(event.scoped_respondent_ref) != respondent_ref.key
                     or _key(event.empirical_universe_ref) != self.estate.i02.universe):
@@ -298,7 +315,8 @@ class DirectEstateI03Session:
             "RoutingEligibilityFact": RoutingEligibilityFact,
             "WeightMeasureFact": WeightMeasureFact,
         }[family]
-        physical = pq.ParquetFile(self.estate.directory / (family + ".parquet"))
+        physical = self._files[family]
+        cache = self._row_group_cache.setdefault(family, {})
         group = None
         rows = None
         cursor = db.execute(
@@ -308,9 +326,14 @@ class DirectEstateI03Session:
         for ref, gid, offset in cursor:
             self._require_live()
             if gid != group:
-                rows = physical.read_row_group(
-                    gid, columns=["body_json", "ref"],
-                ).to_pylist()
+                if cache.get("gid") == gid:
+                    rows = cache["rows"]
+                else:
+                    rows = physical.read_row_group(
+                        gid, columns=["body_json", "ref"],
+                    ).to_pylist()
+                    cache.clear()
+                    cache.update({"gid": gid, "rows": rows})
                 group = gid
             if rows is None or not 0 <= offset < len(rows):
                 raise DirectEstateError("native I03 cold family locator out of bounds")
