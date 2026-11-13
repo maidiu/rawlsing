@@ -308,3 +308,29 @@ def test_every_emitted_family_cold_reconstructs_at_its_exact_census(tmp_path):
         assert len(objects) == expected_count, family
         assert all(type(obj).__name__ == family for obj in objects)
         assert len({obj.ref.key for obj in objects}) == expected_count, family
+
+
+def test_duplicate_physical_event_cannot_replace_missing_exact_event(tmp_path, monkeypatch):
+    """G1: source-certified counts and membership alone do not prove no-drop."""
+    import rawlsing_next.pre553_source_direct_parquet_estate as estate
+
+    candidate, direct = _source("S2C-DUPLICATE-PHYSICAL")
+    root = tmp_path / "private-duplicate"
+    root.mkdir(mode=0o700)
+    original_flush = estate._Sink.flush
+    poisoned = {"done": False}
+
+    def poison_one_chunk(self):
+        if (self.family == "RespondentEvent"
+                and len(self.pending) >= 2 and not poisoned["done"]):
+            self.pending[1] = dict(self.pending[0])
+            poisoned["done"] = True
+        return original_flush(self)
+
+    monkeypatch.setattr(estate._Sink, "flush", poison_one_chunk)
+    with pytest.raises(DirectEstateError, match="bounded physical-to-direct-I02 proof failed"):
+        write_direct_estate(
+            direct, candidate.empirical_universes[0].ref, root, chunk_rows=2,
+        )
+    assert poisoned["done"]
+    assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
