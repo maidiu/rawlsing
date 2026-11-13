@@ -293,6 +293,39 @@ class SavedC11Admission:
             runtime_catalog=self._runtime_catalog.receipt(),
         )
 
+    def _require_exact_scope_refs(self, refs: Any, label: str) -> None:
+        """Require exact source selectors without narrowing lawful scope metadata.
+
+        The original EmpiricalQuerySpec/EmpiricalPredicate schema permits
+        non-universe scope refs (for example the exact admitted C11LogicalRelease
+        or a source-scope descriptor).  The native I03 owner accepts those.
+        A saved single-universe admission must reject a *foreign universe* or
+        *foreign release* in scope, but must not require the entire scope set to
+        equal a singleton universe when the owner itself permits additional
+        exact scope metadata.
+        """
+
+        parsed = tuple(exact_ref(value, label) for value in refs)
+        universes = {
+            ref.key for ref in parsed if ref.kind == "EmpiricalUniverse@1.0.0"
+        }
+        releases = {
+            ref.key for ref in parsed if ref.kind == "C11LogicalRelease"
+        }
+        if universes != {self._universe_ref.key}:
+            raise SavedC11AdmissionError(
+                "saved consumer scope is not the exact admitted estate universe"
+            )
+        if releases and releases != {self._release_ref.key}:
+            raise SavedC11AdmissionError(
+                "saved consumer scope names a foreign C11 release"
+            )
+        allowed = {self._universe_ref.key, self._release_ref.key}
+        if any(ref.key not in allowed for ref in parsed):
+            raise SavedC11AdmissionError(
+                "saved consumer scope contains a foreign scope reference"
+            )
+
     def _require_query_scope(self, query: Any) -> None:
         universes = tuple(
             sorted(
@@ -307,24 +340,12 @@ class SavedC11Admission:
             raise SavedC11AdmissionError(
                 "saved consumer query is not the exact admitted estate universe"
             )
-        scopes = {
-            exact_ref(value, "query.scope_refs").key
-            for value in getattr(query, "scope_refs", ())
-        }
-        if scopes != {self._universe_ref.key}:
-            raise SavedC11AdmissionError(
-                "saved consumer query scope is not the exact admitted estate universe"
-            )
+        self._require_exact_scope_refs(query.scope_refs, "query.scope_refs")
 
     def _require_predicate_scope(self, predicate: Any) -> None:
-        scopes = {
-            exact_ref(value, "predicate.scope_refs").key
-            for value in getattr(predicate, "scope_refs", ())
-        }
-        if scopes != {self._universe_ref.key}:
-            raise SavedC11AdmissionError(
-                "saved consumer predicate scope is not the exact admitted estate universe"
-            )
+        self._require_exact_scope_refs(
+            predicate.scope_refs, "predicate.scope_refs",
+        )
 
     def _require_discovery_scope(self, authority: Any) -> None:
         definition = _mapping(
