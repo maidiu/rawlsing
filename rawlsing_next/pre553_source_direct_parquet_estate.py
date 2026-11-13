@@ -674,7 +674,10 @@ class VerifiedDirectEstate:
             states=states,
         ))
 
-    def _events_from_postings(self, postings: Iterator[Mapping[str, Any]]) -> Iterator[RespondentEvent]:
+    def _events_from_postings(
+        self, postings: Iterator[Mapping[str, Any]], *,
+        parquet_file: Any | None = None, row_group_cache: dict[str, Any] | None = None,
+    ) -> Iterator[RespondentEvent]:
         """One exact reader for both ordinary selection and indexed native I03.
 
         Caller postings are never authority; validate every posting against its
@@ -682,14 +685,22 @@ class VerifiedDirectEstate:
         """
         self._live()
         import pyarrow.parquet as pq
-        pf = pq.ParquetFile(self.directory / "RespondentEvent.parquet")
+        pf = parquet_file if parquet_file is not None else pq.ParquetFile(
+            self.directory / "RespondentEvent.parquet"
+        )
         group = None
         rows = None
         for posting in postings:
             self._live()
             ref, gid, offset = posting["ref"], posting["group"], posting["offset"]
             if group != gid:
-                rows = pf.read_row_group(gid, columns=["body_json", "ref"]).to_pylist()
+                if row_group_cache is not None and row_group_cache.get("gid") == gid:
+                    rows = row_group_cache["rows"]
+                else:
+                    rows = pf.read_row_group(gid, columns=["body_json", "ref"]).to_pylist()
+                    if row_group_cache is not None:
+                        row_group_cache.clear()
+                        row_group_cache.update({"gid": gid, "rows": rows})
                 group = gid
             if rows is None or not (0 <= offset < len(rows)):
                 raise DirectEstateError("event locator points beyond row-group bounds")
