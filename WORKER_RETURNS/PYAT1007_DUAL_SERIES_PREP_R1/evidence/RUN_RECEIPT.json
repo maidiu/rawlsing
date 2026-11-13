@@ -1,0 +1,287 @@
+{
+  "cold_reader_counters": {
+    "full_c11_repository_builds": "0__asserted",
+    "persistent_body_corpora": "0__asserted",
+    "source_opens": "0__asserted_in_test_three_series_positive_cold_i03_one_generic_pipeline"
+  },
+  "cost": {
+    "claim": "no invoice or quota claim is made",
+    "provider_quota_or_invoice": "UNOBSERVED",
+    "tokens": "UNOBSERVED"
+  },
+  "fixture_build_run": {
+    "command": "PYTHONPATH=. <read-only venv python> WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/measure_fixtures.py",
+    "exit_status": 0,
+    "max_rss_bytes_os_time": 107339776,
+    "output": "wrote /Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/evidence/FIXTURE_REGENERATION_MANIFEST.json (11595 bytes)\nARAB_SRC07 db9a5067e26105ed2e3ed17771c3173c3aa4300052a9728176cdec1c35eeabbc a90e2a3a8817a0d67cb6c87879126b870d130dbdb0e00f02516da75681eba793 621216 deterministic=False\nWVS_SRC35 7a4fcfaa370fec171c3aba81bf7a00432c576863222ade42c57c7690f76d0be0 22f7bfe11c736b3155043468e8cc944c77e3e805578e8f8558c448b04ec26167 686843 deterministic=False\nLITS_SRC28_HOSTILE 18c6b428810e39eab9df995d2f7ddab6a2b430cfb02b6a52ab3cfcfc99a67239 d707992d71e27d976960edceaa3122ae295de65d66aae58c2ebb7fad1eccd3ae 452835 deterministic=True",
+    "wall_seconds_os_time": 4.18
+  },
+  "fixture_semantics": {
+    "estate_manifest_determinism": "Not claimed for SAV builds; DTA hostile fixture was deterministic across two builds.",
+    "estate_retained_bytes_total": 1760894,
+    "fixture_bytes_total": 6984,
+    "sav_writer_timestamp": "SAV fixture SHA varies with the writer wall-clock timestamp; decoded synthetic cell manifests were deterministic across two builds.",
+    "series": {
+      "ARAB_SRC07": {
+        "candidate_release_ref": {
+          "content_hash": "81c541567d44ba3dd3c32652f23ed9e6c028b18e24fb77809ae2d9a5a13803a8",
+          "kind": "C11LogicalRelease",
+          "object_id": "PYAT1007_ARAB_SRC07_TEST_RELEASE"
+        },
+        "config_canonical_sha256": "613dfd878652c06d1edac7024bee76057f015ac3a7e3dcd2e9e6963655e422da",
+        "config_purpose": "NONRESPONDENT_FIXTURE",
+        "declared_original_source_read": false,
+        "declared_original_source_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+        "decoded_cell_manifest_deterministic": true,
+        "decoded_cell_manifest_sha256": "c505a6e2879d856e92d3047b643af7dfc6c6014efdde2924729be2eddcf29fb7",
+        "decoded_cell_manifest_sha256_second_build": "c505a6e2879d856e92d3047b643af7dfc6c6014efdde2924729be2eddcf29fb7",
+        "estate_manifest_deterministic": false,
+        "estate_manifest_sha256": "a90e2a3a8817a0d67cb6c87879126b870d130dbdb0e00f02516da75681eba793",
+        "estate_manifest_sha256_second_build": "6740cc781eed5a6790a3217a3202b64980cc27b580934291213f985f5ff9e97b",
+        "estate_retained_bytes": 621216,
+        "family": "Arab Barometer",
+        "family_counts": {
+          "AuthoritySnapshot": 7,
+          "ComparatorReplayBinding": 0,
+          "DiscoveryBranchReplayBinding": 0,
+          "EmpiricalCoordinateFact": 6,
+          "EmpiricalPredicateReplayBinding": 0,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 3,
+          "RespondentEvent": 24,
+          "RespondentIdentity": 6,
+          "RoutingEligibilityFact": 18,
+          "SourceUniverseRelation": 0,
+          "StructuralAdmissionReplayBinding": 0,
+          "WeightMeasureFact": 0
+        },
+        "fixture_authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+        "fixture_bytes": 1531,
+        "fixture_file": "arab_src07_sav_test_only.sav",
+        "fixture_sha256": "db9a5067e26105ed2e3ed17771c3173c3aa4300052a9728176cdec1c35eeabbc",
+        "fixture_writer_note": "SAV writer embeds a wall-clock timestamp; exact fixture SHA is recorded per build and the decoded synthetic cell manifest is deterministic.",
+        "identity_class": "NONRESPONDENT_FIXTURE",
+        "reconstructed_v1_release_ref": {
+          "content_hash": "81c541567d44ba3dd3c32652f23ed9e6c028b18e24fb77809ae2d9a5a13803a8",
+          "kind": "C11LogicalRelease",
+          "object_id": "PYAT1007_ARAB_SRC07_TEST_RELEASE"
+        },
+        "respondent_key_grade": "NONRESPONDENT_FIXTURE_ROW_ORDINAL",
+        "routing_states": {
+          "Q104A_2_1": "ELIGIBLE_APPLICABLE",
+          "Q508": "ELIGIBLE_APPLICABLE",
+          "Q509": "ROUTING_UNKNOWN"
+        },
+        "source_format": "SAV",
+        "source_id": "SRC07",
+        "test_only_notes": [
+          "TEST_ONLY nonrespondent fixture. Do not promote to original-source, scientific, rights, design, weight, or comparability acceptance.",
+          "Semantic metadata witness: R157 1924499ef52403a0f331b8aff9b7c7eff99bf1e2 rawlsing_next/source_configuration/data/SRC07/source.config.json sha256=4252ec7146dd598ca90aa90c3bb7cd3bd5ca6b673817915189db3cf38ec70b9f.",
+          "Local physical ordinals compact selected variables; exact R157 ordinals are retained in the metadata witness.",
+          "Routing eligibility/ranked occurrence overrides are typed fixture semantics, not R157 administration.",
+          "Original respondent bytes/current permission are SOURCE_BYTES_UNAVAILABLE/SOURCE_PERMISSION_HELD."
+        ],
+        "universe_ref": {
+          "content_hash": "03ecbc0d1c78b2c676b8d9444591459f516f60017ac0ee14eaa5afca5d49cef3",
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:03ecbc0d1c78b2c676b8d9444591459f516f60017ac0ee14eaa5afca5d49cef3"
+        },
+        "wave": "VIII",
+        "weight_typed_absence": {
+          "state": "NOT_APPLICABLE",
+          "type": "TypedAbsence"
+        }
+      },
+      "LITS_SRC28_HOSTILE": {
+        "candidate_release_ref": {
+          "content_hash": "fc59d35ffe696467743a7172d155f5a73e12816ed2b9586493b9a5358241994e",
+          "kind": "C11LogicalRelease",
+          "object_id": "PYAT1007_LITS_SRC28_HOSTILE_TEST_RELEASE"
+        },
+        "config_canonical_sha256": "a38b9735582411a15612a518c61d103c9ec68ddc6a83bee30538625eb0ba6c25",
+        "config_purpose": "NONRESPONDENT_FIXTURE",
+        "declared_original_source_read": false,
+        "declared_original_source_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+        "decoded_cell_manifest_deterministic": true,
+        "decoded_cell_manifest_sha256": "9e80200347c42bbb1211fb071f4de3c89bbe0a72967de88e0ad828e8243e5446",
+        "decoded_cell_manifest_sha256_second_build": "9e80200347c42bbb1211fb071f4de3c89bbe0a72967de88e0ad828e8243e5446",
+        "estate_manifest_deterministic": true,
+        "estate_manifest_sha256": "d707992d71e27d976960edceaa3122ae295de65d66aae58c2ebb7fad1eccd3ae",
+        "estate_manifest_sha256_second_build": "d707992d71e27d976960edceaa3122ae295de65d66aae58c2ebb7fad1eccd3ae",
+        "estate_retained_bytes": 452835,
+        "family": "LiTS",
+        "family_counts": {
+          "AuthoritySnapshot": 7,
+          "ComparatorReplayBinding": 0,
+          "DiscoveryBranchReplayBinding": 0,
+          "EmpiricalCoordinateFact": 6,
+          "EmpiricalPredicateReplayBinding": 0,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 2,
+          "RespondentEvent": 12,
+          "RespondentIdentity": 6,
+          "RoutingEligibilityFact": 12,
+          "SourceUniverseRelation": 0,
+          "StructuralAdmissionReplayBinding": 0,
+          "WeightMeasureFact": 0
+        },
+        "fixture_authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+        "fixture_bytes": 3293,
+        "fixture_file": "lits_src28_hostile_dta_test_only.dta",
+        "fixture_sha256": "18c6b428810e39eab9df995d2f7ddab6a2b430cfb02b6a52ab3cfcfc99a67239",
+        "fixture_writer_note": "DTA fixture bytes were deterministic across the two builds.",
+        "identity_class": "NONRESPONDENT_FIXTURE",
+        "reconstructed_v1_release_ref": {
+          "content_hash": "fc59d35ffe696467743a7172d155f5a73e12816ed2b9586493b9a5358241994e",
+          "kind": "C11LogicalRelease",
+          "object_id": "PYAT1007_LITS_SRC28_HOSTILE_TEST_RELEASE"
+        },
+        "respondent_key_grade": "NONRESPONDENT_FIXTURE_ROW_ORDINAL",
+        "routing_states": {
+          "q102_1": "ROUTING_UNKNOWN",
+          "q201": "ELIGIBLE_APPLICABLE"
+        },
+        "source_format": "DTA",
+        "source_id": "SRC28",
+        "test_only_notes": [
+          "TEST_ONLY nonrespondent fixture. Do not promote to original-source, scientific, rights, design, weight, or comparability acceptance.",
+          "Semantic metadata witness: R157 1924499ef52403a0f331b8aff9b7c7eff99bf1e2 rawlsing_next/source_configuration/data/SRC28/src28.config.json sha256=e690d57051db3f77369b71ae07b1792636deebaa43708675f6e478c94fa4ae7b.",
+          "Local physical ordinals compact selected variables; exact R157 ordinals are retained in the metadata witness.",
+          "Routing eligibility/ranked occurrence overrides are typed fixture semantics, not R157 administration.",
+          "Original respondent bytes/current permission are SOURCE_BYTES_UNAVAILABLE/SOURCE_PERMISSION_HELD."
+        ],
+        "universe_ref": {
+          "content_hash": "d18f41aa2bf28a32e5b815fc952a719bb30c1f0a9b290fa1fce0df2220dc205a",
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:d18f41aa2bf28a32e5b815fc952a719bb30c1f0a9b290fa1fce0df2220dc205a"
+        },
+        "wave": "II",
+        "weight_typed_absence": {
+          "state": "NOT_APPLICABLE",
+          "type": "TypedAbsence"
+        }
+      },
+      "WVS_SRC35": {
+        "candidate_release_ref": {
+          "content_hash": "8edd4e3ac8a45490da3b0d4762f1dd56d432d3db1cb1a01f3b5907f85f5e55c2",
+          "kind": "C11LogicalRelease",
+          "object_id": "PYAT1007_WVS_SRC35_TEST_RELEASE"
+        },
+        "config_canonical_sha256": "eddf433700690ffc76b28b921c56104d6f4b364fbc4f919cabc89d58490ac1b0",
+        "config_purpose": "NONRESPONDENT_FIXTURE",
+        "declared_original_source_read": false,
+        "declared_original_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "decoded_cell_manifest_deterministic": true,
+        "decoded_cell_manifest_sha256": "0d1cdb7a051dd9826679e25840b78a0cb51cf4949860793545b42050942e2609",
+        "decoded_cell_manifest_sha256_second_build": "0d1cdb7a051dd9826679e25840b78a0cb51cf4949860793545b42050942e2609",
+        "estate_manifest_deterministic": false,
+        "estate_manifest_sha256": "22f7bfe11c736b3155043468e8cc944c77e3e805578e8f8558c448b04ec26167",
+        "estate_manifest_sha256_second_build": "245137d128b7a1bc0da912204d4d375e7c74a297802165986a5da4ef443f04b6",
+        "estate_retained_bytes": 686843,
+        "family": "WVS",
+        "family_counts": {
+          "AuthoritySnapshot": 7,
+          "ComparatorReplayBinding": 0,
+          "DiscoveryBranchReplayBinding": 0,
+          "EmpiricalCoordinateFact": 6,
+          "EmpiricalPredicateReplayBinding": 0,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 4,
+          "RespondentEvent": 24,
+          "RespondentIdentity": 6,
+          "RoutingEligibilityFact": 24,
+          "SourceUniverseRelation": 0,
+          "StructuralAdmissionReplayBinding": 0,
+          "WeightMeasureFact": 0
+        },
+        "fixture_authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+        "fixture_bytes": 2160,
+        "fixture_file": "wvs_src35_sav_test_only.sav",
+        "fixture_sha256": "7a4fcfaa370fec171c3aba81bf7a00432c576863222ade42c57c7690f76d0be0",
+        "fixture_writer_note": "SAV writer embeds a wall-clock timestamp; exact fixture SHA is recorded per build and the decoded synthetic cell manifest is deterministic.",
+        "identity_class": "NONRESPONDENT_FIXTURE",
+        "reconstructed_v1_release_ref": {
+          "content_hash": "8edd4e3ac8a45490da3b0d4762f1dd56d432d3db1cb1a01f3b5907f85f5e55c2",
+          "kind": "C11LogicalRelease",
+          "object_id": "PYAT1007_WVS_SRC35_TEST_RELEASE"
+        },
+        "respondent_key_grade": "NONRESPONDENT_FIXTURE_KEY_WITNESS",
+        "routing_states": {
+          "Q1": "ELIGIBLE_APPLICABLE",
+          "Q2": "ELIGIBLE_APPLICABLE",
+          "Q3": "ELIGIBLE_APPLICABLE",
+          "Q4": "ROUTING_UNKNOWN"
+        },
+        "source_format": "SAV",
+        "source_id": "SRC35",
+        "test_only_notes": [
+          "TEST_ONLY nonrespondent fixture. Do not promote to original-source, scientific, rights, design, weight, or comparability acceptance.",
+          "Semantic metadata witness: R157 1924499ef52403a0f331b8aff9b7c7eff99bf1e2 rawlsing_next/source_configuration/data/SRC35/SRC35.source.config.json sha256=00ad786a351a0a2987b442489e1ca91154a8be32954cddd6f1eeb69e2196dbf9.",
+          "Local physical ordinals compact selected variables; exact R157 ordinals are retained in the metadata witness.",
+          "Routing eligibility/ranked occurrence overrides are typed fixture semantics, not R157 administration.",
+          "Original respondent bytes/current permission are SOURCE_BYTES_UNAVAILABLE/SOURCE_PERMISSION_HELD."
+        ],
+        "universe_ref": {
+          "content_hash": "1071532aa27f4052ef58e435933b384e0e777eb6951520e10fe9043cc5ac5372",
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:1071532aa27f4052ef58e435933b384e0e777eb6951520e10fe9043cc5ac5372"
+        },
+        "wave": "W7",
+        "weight_typed_absence": {
+          "state": "NOT_APPLICABLE",
+          "type": "TypedAbsence"
+        }
+      }
+    }
+  },
+  "host_contention": {
+    "1006_runner_process_end": "45447 S    02:45:02   1.1  28068 /Users/matthewsmith/.opencode/bin/opencode",
+    "1006_runner_process_start": "45447 S    02:44:53   0.1  28052 /Users/matthewsmith/.opencode/bin/opencode",
+    "concurrent_1006_runner_active": true,
+    "disk_available_kib_end": 16281000,
+    "disk_available_kib_start": 15240824,
+    "isolated_baseline": "NOT_RUN",
+    "note": "Host ran the existing #1006 runner; timings above are actual contended observations, not an isolated benchmark.",
+    "observed_loadavg_end": "{ 7.84 8.85 7.29 }",
+    "observed_loadavg_start": "{ 7.79 8.88 7.28 }",
+    "relative_slowdown_claim": "UNOBSERVED__NO_ISOLATED_COMPARISON"
+  },
+  "limits": [
+    "SOURCE_BYTES_UNAVAILABLE and SOURCE_PERMISSION_HELD for real Arab/WVS original bytes and current use rights.",
+    "True #997 source-to-saved vertical remains HOLD_DEPENDENCY; #1002 current grant is not established.",
+    "No original35 blanket ingestion, protected merge, scientific comparability, design issuer, weight authority, Field Forge or PRE-V3/V3 acceptance.",
+    "No performance-scale 100k/6GiB workload; that remains #1001/#1006 territory and was not duplicated."
+  ],
+  "original_source_bytes_read": false,
+  "r157_metadata_commit": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+  "raw_logs": [
+    "evidence/pytest_actual.log",
+    "evidence/pytest_actual.time",
+    "evidence/pytest_exit.txt",
+    "evidence/fixture_build.log",
+    "evidence/fixture_build.time",
+    "evidence/fixture_build_exit.txt",
+    "evidence/loadavg_start.txt",
+    "evidence/loadavg_end.txt",
+    "evidence/disk_start.txt",
+    "evidence/disk_end.txt",
+    "evidence/host_1006_process_start.txt",
+    "evidence/host_1006_process_end.txt"
+  ],
+  "schema": "PYAT1007_RUN_RECEIPT@1",
+  "scope": "EARLY_SOURCEFREE_FIXTURE_PREP_ONLY",
+  "test_only": true,
+  "test_run": {
+    "command": "PYTHONPATH=. /Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python -m pytest -q WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/tests/test_dual_series_prep.py",
+    "end_utc": "2026-11-13T23:10:28Z",
+    "exit_status": 0,
+    "max_rss_bytes_os_time": 112820224,
+    "peak_memory_footprint_bytes_os_time": 0,
+    "pytest_reported_seconds": 8.07,
+    "pytest_result": "............                                                             [100%]\n12 passed in 8.07s",
+    "start_utc": "2026-11-13T23:10:19Z",
+    "under_1gib": true,
+    "wall_seconds_os_time": 9.17
+  },
+  "worktree_base_head": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969"
+}
