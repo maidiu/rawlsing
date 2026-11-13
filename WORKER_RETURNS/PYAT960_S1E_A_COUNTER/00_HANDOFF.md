@@ -7,7 +7,7 @@
 **B delivery:** `ed9bda50ec1c1cbbc0ced56262a696b65fb14dad`
 **B code cut:** `9987a00e10dbb4e2dca7032b7d66a90e2303c780`
 **A previous code cut:** `75d09e87dbaf8273fab3a5ece2bb7981328113ce`
-**A-counter implementation SHA:** `047298f9d6bff987f319c686aae336baba07cf9e`
+**A-counter implementation SHA:** `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7`
 **Contract v1 SHA-256:** `0ed0384411441b2f647dc5ea3369931c88d408c71802ec8cd7eaff00c3052a40`
 **Provisional ABI SHA-256:** `cbc8988b6f38fc354311d7db7afe02a5bd66c8e53ab2c6f9cca2b5134d383f54`
 
@@ -48,8 +48,8 @@ B correctly kept the full Q2 native fact as HOLD rather than faking it, but did 
 
 Exact actual native fact evidence (`evidence/native_fact_GREEN.json`):
 
-- Base fact: `urn:rawlsing:pre553:EmpiricalFact:sha256:e25ec9ff75b5840fc62511de0fcc22bf7d3bf588419e304bd1c982581dbef685`, SUPPORTED, raw `5/5`.
-- Changed valid branch operation: `...03ff3852a9770eb3fa8b4422ff25de5d41822261cc62f3bb86b2d62e860405f9...`, SUPPORTED, raw `3/3`.
+- Base fact: `urn:rawlsing:pre553:EmpiricalFact:sha256:e970cd835c6572a6854df0d8ffd65eca49ec56643c8802e1f97f8af639624ce7`, SUPPORTED, raw `5/5`.
+- Changed valid branch operation: `...ffc2628e792fa5c5e2bc7717f08917ebac086ebcbfa98b59703cd5f219ff2b5a...`, SUPPORTED, raw `3/3`.
 - Restored fact: exact base ref, raw `5/5`; direct logical root restored.
 - Detail: `exact governed target distribution resolved`.
 - Fixture corrections: existing routing authority kind `ROUTING_RISK_SET`; canonical values `0/1` matching the query's declared domain. These are sourcefree engineering preimages, **not** original35 science or a new production issuer.
@@ -70,8 +70,8 @@ This is a Q2 G3 source/operation/routing realization defect, not speculative har
 
 ## 4. Tests and resources
 
-- Q2 Darwin: **32 passed, 1 skipped** (`VerifiedExternalI02` host skip).
-- Q2 Linux s2b: **33 passed** (including native fact).
+- Q2 Darwin: **33 passed, 1 skipped** (`VerifiedExternalI02` host skip).
+- Q2 Linux s2b: **34 passed** (including native fact).
 - Existing S2-B native suites Linux: **81 passed**.
 - S1-B inherited: **33 passed**; S1-C: **18 passed**; decoder/custody: **56 passed, 1 skipped**.
 - Resource (`evidence/resource.json`): 1,200 rows, 1,200 events, 1,200 coordinates; source byte pass 1, decode 1, cell pass 1, direct builder 1, full C11 0; spool 7,464,000 B cleaned; certificate 19,369,984 B; peak disk 46,223,669 B; peak RSS 128,163,840 B; cold 6.341 s/repeat 6.261 s; denied source opens 0. 100k/6 GiB NOT_RUN.
@@ -87,4 +87,4 @@ This is a Q2 G3 source/operation/routing realization defect, not speculative har
 
 ## 6. Disposition
 
-`READY_FOR_RECEIVING` at `047298f9d6bff987f319c686aae336baba07cf9e` for fixed B attack and then one distinct nonauthor G5. The direct I02 certificate, body transport, operation/fate conservation, Linux native selector and actual Q2 native fact are demonstrably working at the sourcefree TEST_ONLY grade. No `ACCEPT_SCOPED` is self-issued; integration remains `UNMERGED`.
+`READY_FOR_RECEIVING` at `f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7` for fixed B attack and then one distinct nonauthor G5. The direct I02 certificate, body transport, operation/fate conservation, Linux native selector and actual Q2 native fact are demonstrably working at the sourcefree TEST_ONLY grade. No `ACCEPT_SCOPED` is self-issued; integration remains `UNMERGED`.

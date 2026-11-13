@@ -15,8 +15,8 @@
   "received_b_head": "ed9bda50ec1c1cbbc0ced56262a696b65fb14dad",
   "b_code_cut_sha": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
   "a_previous_code_cut": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
-  "implemented_sha": "047298f9d6bff987f319c686aae336baba07cf9e",
-  "candidate_sha": "047298f9d6bff987f319c686aae336baba07cf9e",
+  "implemented_sha": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7",
+  "candidate_sha": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7",
   "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_NEW_WORKTREE agent/pyat960-s1e-a-r1 at /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a; only new Q2 adapter/test/return paths written; upstream owners, A/B prior returns, Q3, protected facade, W03/W04 and controller untouched",
   "exclusive_allowlist": [
     "rawlsing_next/pre553_source_i02_handoff.py",
@@ -84,14 +84,15 @@
     "INHERITED_S1C_OPERATION_FATES",
     "DECODER_CUSTODY_REGRESSION",
     "Q2_NATIVE_SELECTOR_LINUX",
-    "Q2_MULTIOWNER_ROUTING_GUARD"
+    "Q2_MULTIOWNER_ROUTING_GUARD",
+    "Q2_PARTIAL_ROUTING_TYPED_HOLD"
   ],
   "mandatory_cases": [
     {
       "id": "Q2_G1_EXACT_CONTRACT_REUSE",
       "result": "PASS",
       "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_*.py -o addopts='' (Darwin); same suite on Linux s2b",
-      "actual": "Darwin 32 passed/1 skipped; Linux 33 passed; 13-family ABI, source/operation/fate preimages, all35 ledger exact; B body/anti-join accepted"
+      "actual": "Darwin 34 passed/1 skipped; Linux 34 passed; 13-family ABI, source/operation/fate preimages, all35 ledger exact; B body/anti-join accepted"
     },
     {
       "id": "Q2_G2_DIRECT_I02_POSITIVE_CHANGE_RESTORE",
@@ -152,6 +153,12 @@
       "result": "PASS",
       "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_counter_attack.py -o addopts=''",
       "actual": "B code accepted q101 response+coordinate with all routing unknown; A code refuses pre-source; valid multiowner eligible routing remains accepted"
+    },
+    {
+      "id": "Q2_PARTIAL_ROUTING_TYPED_HOLD",
+      "result": "PASS",
+      "command": "python3 -m pytest -q rawlsing_next/tests/test_pyat960_s1e_counter_attack.py -o addopts=''",
+      "actual": "Partial routing (3 eligible + 2 ROUTING_UNKNOWN) preserves body but eligible operation row is source_realized=false with routing_unresolved_keys and native HOLD_ROUTING_OR_BODY_UNRESOLVED; existing native query returns typed RISK_SET_UNAVAILABLE, no false supported fact"
     }
   ],
   "first_consumer_proof": {
