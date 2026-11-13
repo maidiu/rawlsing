@@ -1,3 +1,7 @@
+# Successor #960 Q2 B repairs / same A counter — 2026-11-12
+
+B delivery `ed9bda50ec1c1cbbc0ced56262a696b65fb14dad` / code `9987a00e10dbb4e2dca7032b7d66a90e2303c780`: working13familybodytee, sourcebody/routing/occurrence anti-joins, honestread/disk/cleanup;30Q2+81S2Bnative Linux PASS and eventselection5/5. Full Q2nativefact stillMISSING_REQUIRED_AUTHORITY; selectorbodyisnotfullfact. SAMEA counteractuallylaunched on exactdescendant totraceexistingfixture/query/replaypreimage and preserveoneactualG2fact requirement. No source/science/protectedgrant. Q3bodyinputcandidate exists, writerstillhelddirectS2BindependentG5. Historical entries follow.
+
 # Successor #960 Q2 A return / fixed B launched — 2026-11-12
 
 Q2 A delivery `f4aaf2b17c7519642bb0bcfc5987cf21f86a46af` / code `75d09e87dbaf8273fab3a5ece2bb7981328113ce`: sourcefreeSAV/DTA->R157->directI02 manifest/fates/change-restore, reports11Q2+inheritedgreen. NativeI03/Batch remainsLinux/procHOLD, notaccepted. Deletedbodyspool leavesQ3transportgap. SAMEfixedB nowlaunched on exactdescendant with fullA/Q3returns torepairbody-preservinghandoff and attackrealconservation; no sourceownerchanges or mockconsumer. Q3writerheld, Q1STOP, source/science/protectedholdsunchanged. Historical entries follow.

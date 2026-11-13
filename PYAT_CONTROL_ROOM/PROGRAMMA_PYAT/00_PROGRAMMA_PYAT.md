@@ -416,3 +416,8 @@ Q3 report `be61531acd388428896ab22ffd2f631ebb7d721c` recovered after runtimeexit
 ### #960 S01-S03 Q2 A candidate / fixed B — 2026-11-12
 
 Q2code `75d09e87dbaf8273fab3a5ece2bb7981328113ce` (delivery `f4aaf2b17c7519642bb0bcfc5987cf21f86a46af`) implements R157configuredsourcefreeSAV/DTA->typedspool->directI02manifest/operationfates; nativefirstreader remainsLinux/procHOLD. Deletedspool doesnotyetprovideQ3bodyinput. SamefixedB nowattacks/repairs exactdescendant withfullQ3read-onlyfindings inoriginalQ2scope; noQ2acceptance/Q3writer/protectedadoption. All priorupstream/source/science/currentholdsretained.
+
+
+### #960 S01-S03 body contract and native first-fact hold — 2026-11-12
+
+Q2Bcode `9987a00e10dbb4e2dca7032b7d66a90e2303c780` suppliesbody-preserving13familysink ABI and sourceoperationrealization anti-joins. ExistingLinuxnative selectedbodies5/5 proved, fullnativefact still UNAVAILABLE/MISSING_REQUIRED_AUTHORITY. SameA finitecounter nowrunning totraceexactlawfulfixture/queryauthoritypreimage; Q2G2notwaivedasS2D. Q3bodyinputconcretecandidate, originalindependentdirectS2BG5 gate remains; no protected/science acceptance.
