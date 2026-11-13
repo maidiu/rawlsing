@@ -57,7 +57,7 @@
     {
       "packet_id": "S1-E",
       "queue": "Q2",
-      "state": "Q2_SAME_G5_EXACT_RECHECK_RUNNING_ACTUAL_MODEL_VERIFIED",
+      "state": "ACCEPTED_SCOPED_COMPATIBILITY_STOP_ORIGINAL_OPEN",
       "exact_prerequisites": [
         "S1C dae66cdf9f3846d237e0b1c3069cc17eb05b7746 sourcefreeG5pending",
         "directS2B155cd1b7244ab22ede804386e6d5253a39fe3587 sourcefreeG5pending; sourcefree129PASS/nativeI03evidence supplied",
@@ -74,23 +74,16 @@
           "session": "ses_e3122f686ffeByL78cGOKAacTS",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a",
           "branch": "agent/pyat960-s1e-a-r1",
-          "state": "TERMINAL_WAIT_G5"
+          "state": "TERMINAL_SCOPED_STOP"
         },
         "B": {
           "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-b",
           "branch": "agent/pyat960-s1e-b-r1",
-          "state": "TERMINAL_WAIT_G5_RECHECK"
+          "state": "TERMINAL_SCOPED_STOP"
         }
       },
-      "launch": {
-        "job_id": "pyat960-s1e-g5-recheck-r01",
-        "child_pid": 93640,
-        "supervisor_pid": 93639,
-        "observer_pid": 93641,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s1e-g5-recheck-r01",
-        "launch_is_not_completion": true
-      },
+      "launch": null,
       "job_id": "pyat960-s1e-g5-recheck-r01",
       "actual_first_turn_metadata": {
         "session": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
@@ -110,7 +103,7 @@
       },
       "a_delivery_sha": "f4aaf2b17c7519642bb0bcfc5987cf21f86a46af",
       "a_implementation_sha": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
-      "G2_native": "FAIL_CLAIMED_Q2FACT_IS_LEGACY_COMPARATOR_SECOND_SOURCE_NO_BODYTEE_OR_ISSUEDOP",
+      "G2_native": "PASS_SOURCEFREE_TEST_ONLY_SAME_BODY_COMPILED_PLAN_CANARY_NOT_PRODUCTION",
       "body_stream": "CONCRETE_13_FAMILY_BODY_TEE_TESTED_CANDIDATE",
       "b_delivery_sha": "ed9bda50ec1c1cbbc0ced56262a696b65fb14dad",
       "b_implementation_sha": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
@@ -120,14 +113,19 @@
         "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-g5",
         "branch": "agent/pyat960-s1e-g5-r1",
-        "state": "RECHECK_LAUNCHED",
-        "independence": "NeitherQ2AorB; priorS1Brevieweronly"
+        "state": "TERMINAL_ACCEPT_SCOPED_STOP",
+        "independence": "NeitherQ2AorB; priorS1Brevieweronly",
+        "receipt": "WORKER_RETURNS/PYAT960_S1E_G5_RECHECK/receipt.json"
       },
       "g5_delivery_sha": "c19c762b903688e1d632fcf0ca50f976a900ca92",
-      "independent_g5": "FAIL_REVISE_NATIVE_LINEAGE_MEASURE_REUSE",
-      "bounded_post_g5_correction": "USED_WAIT_SAME_G5_RECHECK",
+      "independent_g5": "PASS_SCOPED_COMPATIBILITY",
+      "bounded_post_g5_correction": "USED_THREE_FINDINGS_FIXED_SCOPED",
       "repair_delivery_sha": "e4a4142929afd08bade35931310d9ad0bf87cd0b",
-      "repair_code_sha": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94"
+      "repair_code_sha": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94",
+      "accepted_implementation_sha": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94",
+      "independent_review_delivery_sha": "41f479315cd42b31c28b4f4c91d225207f119c8f",
+      "original_task_complete": false,
+      "sourcefree_packet_complete": true
     },
     {
       "packet_id": "S2-C",

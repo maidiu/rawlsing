@@ -441,3 +441,8 @@ G5 `2678dc8637dda2c77d358c61e3a172d0a4dc31a4` (delivery `c19c762b903688e1d632fcf
 ### #960 Q2 bounded native-body/measure correction / same G5 — 2026-11-12
 
 Repaircode `8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94` (delivery `e4a4142929afd08bade35931310d9ad0bf87cd0b`) claimsnativecanaryfromsameQ2bodytee/actualS1Ccompiledop andrestoresmeasurefates/reuseowners. Compatibilitybodymaterialization andpreconsumerissuedrefHOLDremainexplicit; sameG5nowrechecksoriginalthreefindings, priorFAILnotrewritten. NofullQ2acceptanceyet. S2-CUSER_PAUSED, noautomaticwriter/resume/otherauthoritychange.
+
+
+### #960 Q2 scoped compatibility acceptance / full original open — 2026-11-12
+
+IndependentG5 `41f479315cd42b31c28b4f4c91d225207f119c8f` acceptsQ2code `8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94` at SOURCEFREE_PROVISIONAL_TEST_ONLY_COMPATIBILITY: realsamebodytee->compiledS1CplanI03/Batch/change/restore/severance, measurefate andownermappingnonloss. Onein-memoryfullC11compatibilityreleasecounted, productionhandofffatespreconsumer/HOLD; NOTproductioncompactestate/fulloriginalS1Ecompletion. ScopedpacketSTOP, original_task_complete=false, UNMERGED. S2-CUSER_PAUSED,noautomaticwriter/review/resume. Fullupstream/source/science/current/protected/100k/S2D/N11N12holdsretained; exactscopeQ2_SCOPED_ACCEPTANCE.json.
