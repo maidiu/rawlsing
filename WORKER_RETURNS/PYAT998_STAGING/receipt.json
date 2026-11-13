@@ -1,0 +1,99 @@
+{
+  "packet_id": "S01-S05-998-STAGING",
+  "task_id": "PYAT998-EXISTING-FLIGHT",
+  "contract_id": "PYAT998-EXISTING-FLIGHT-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_998.md@cecfc154262eaa140d003e9e704811f44b940455",
+  "persona_role": "SOURCEFREE_INTEGRATION_STAGING_AUTHOR",
+  "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat998-sourcefree-staging-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat998-sourcefree-staging",
+  "startup_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+  "base_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+  "status": "STAGING_COMPLETE__PHASE2_HOLD_DEPENDENCY_997_999",
+  "joined_vertical": "NOT_RUN",
+  "phase2_holds": [
+    "#997 accepted exact source-to-saved physical/fate bridge",
+    "#999 early-gate independent G5",
+    "genuine joined sourcefree S01-S05 vertical after both accepted cuts"
+  ],
+  "accepted_sources": {
+    "base_980": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+    "S1C": "dae66cdf9f3846d237e0b1c3069cc17eb05b7746 / G5 9faeac2b0a54db2866449d03064814a48462c681",
+    "S2B": "092db6bc50a6f256756edf8ab1e95981e2d95abe / G5 96ad0fe202ad7cbe5ea98d5e055c010a944b0a79",
+    "S2C": "b7b697b69f0acea12174937ee824c19ac34ac284 / G5 terminal #990",
+    "S2D": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969 / G5 ba8d760cd8e31a9baff9b45698bd4117f4baa456",
+    "S2E": "81a764cc7eac960f0fd607d9c3fe62428905daa4 / G5 295619ea1cb57396899f759514d554061cb58ad9; test-only B2 correction 7b19a242ebc9edf85bf8303be33338f860eabf65",
+    "S2F": "de68c7739b71daae9d4c06b2ac1ddb2a5a7a4fec / G5 5c372d3464e0bfe1fed9b61e6a81b7e1417fa6569",
+    "S2G": "c8e739470beb0dc65ad70c419a906e483a12ca8f / accepted #980 combined"
+  },
+  "provenance_manifest": "WORKER_RETURNS/PYAT998_STAGING/provenance_manifest.json",
+  "staged_file_count": 36,
+  "composition": {
+    "base": "S1-B/S1-D/S2-F/S2-G from #980 c8e",
+    "added_exact": "S1-C, S2-B/S2-C/S2-D latest accepted descendants, S2-E source/tests, exact B2 test correction",
+    "overlap_resolution": [
+      "S2-B external certificate repair 2af16c6d... preserved from 092db6; latest S2-C/D test variants retained",
+      "S2-E NativeWorkloadResult.exact_s2e_output_census composed into latest S2-D issued workload",
+      "world-binding historical caller corrected with TestOnlyDecisionResolver and allow_test_only=True only"
+    ],
+    "no_old_control_room_cherry_pick": true
+  },
+  "historical_world_binding_red": {
+    "before": "17 passed, 1 failed: resume_joined_workloads missing required keyword-only resolver",
+    "after": "18 passed in 285.72s",
+    "correction": "minimum lawful caller-only edit in rawlsing_next/tests/test_universal_world_binding.py; TestOnlyDecisionResolver and allow_test_only=True; no production resolver/guard/checkpoint change"
+  },
+  "validation": {
+    "world18": "18 passed in 285.72s",
+    "s1c": "18 passed in 98.56s",
+    "s2b_direct": "42 passed, 10 environment failures on Darwin /proc-required SQLite tests",
+    "s2b_external": "7 passed, 22 environment failures on Darwin /proc-required SQLite tests",
+    "s2c": "31 passed in 4.90s",
+    "s2d": "31 passed in 22.42s",
+    "s2e": "22 passed in 19.98s",
+    "imports": "11 module imports PASS",
+    "s2b_environment_note": "S2B accepted G5 is Linux; Darwin lacks /proc/self/fd descriptor-pinned SQLite verification. These are not code failures and no Linux runner was fabricated."
+  },
+  "scale_prep": {
+    "return": "WORKER_RETURNS/PYAT1001_HARNESS_PREP/",
+    "status": "PREP_ONLY__NOT_RUN_FULL_SCALE",
+    "validated_1000_distinct": true,
+    "sentinel_events": 257,
+    "supported_100000_plan": true,
+    "full_100k_6GiB": "NOT_RUN__HOLD_DEPENDENCY_998"
+  },
+  "gates": {
+    "G1": {
+      "state": "STAGING_PASS_SCOPED",
+      "receipt": "Exact file-to-source/blob manifest for 36 staged files, accepted packet ancestry preserved; no protected merge."
+    },
+    "G2": {
+      "state": "PARTIAL_STAGING",
+      "receipt": "Import/ABI and existing accepted native test smokes pass; joined source-to-saved-to-native positive/change/restore is NOT_RUN because #997/#999 are not accepted."
+    },
+    "G3": {
+      "state": "PARTIAL_STAGING",
+      "receipt": "World-binding caller RED closed 17→18; inherited hostile suites run where host-compatible; no new joined hostile chain."
+    },
+    "G4": {
+      "state": "NOT_RUN",
+      "receipt": "No joined vertical; 1001 full resource court held."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "receipt": "No independent integrated G5; staging author cannot self-accept."
+    }
+  },
+  "engineering_grade": "S01_S05_INTEGRATION_STAGING_COMPLETE__JOINED_VERTICAL_HOLD",
+  "scientific_grade": "NONE_VERIFIED; sourcefree engineering staging only",
+  "authority_grade": "HOLD; no original35/source/current/protected grant",
+  "integration": "UNMERGED",
+  "disposition": "STAGING_READY_FOR_PHASE2_DEPENDENCIES",
+  "stop_state": "STAGING_COMPLETE__HOLD_997_999",
+  "known_session_cost": "UNKNOWN",
+  "sourcefree": true,
+  "original35_claimed": false,
+  "production_current_claimed": false,
+  "protected_merge": "NONE"
+}

@@ -21,8 +21,13 @@ from rawlsing_next.pre553_batch_runner import (
 from rawlsing_next.pre553_carrier_execution import (
     CarrierNeutralResearchExecutor, I03GroupedExecutionScope, RuntimeObjectCatalog,
 )
+from rawlsing_next.pre553_saved_c11_admission import (
+    SavedBindingReceipt,
+    SavedC11Admission,
+)
 from rawlsing_next.pre553_discovery_exact import COVERAGE_CLAIM, I05_CONTRACT_ID
 from rawlsing_next._pre553_query_common import QueryExecutionResult
+from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
 from types import SimpleNamespace
 from rawlsing_next.pre553_empirical_objects import (
     DiscoveryResultReceipt, EmpiricalFact, EmpiricalPredicate,
@@ -323,9 +328,26 @@ class NativeWorkloadResult:
     source_sha256: str | None = None
     outputs_by_unit: Mapping[str, Any] | None = None
 
+    def exact_s2e_output_census(self, *, require_complete: bool = True,
+                                runtime_catalog: RuntimeObjectCatalog | None = None):
+        """Audit full native I03/I05 and Batch first-reader output preimages.
+
+        This read-only S2-E proof surface is intentionally optional and
+        cannot mint native/source/scientific authority or a completed Batch
+        claim for an intentionally partial execution. No second evaluator.
+        """
+        from rawlsing_next.pre553_s2e_exact_conservation import census_native_batch
+
+        return census_native_batch(
+            self.manifest, self.receipts, self.outputs_by_unit or {},
+            require_complete=require_complete, runtime_catalog=runtime_catalog,
+        )
+
 
 def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionResolver, *,
-                            source_factory: Callable[[ExactRef], Any], host: str, purpose: str,
+                            source_factory: Callable[[ExactRef], Any] | None = None,
+                            saved_admission_factory: Callable[[], SavedC11Admission] | None = None,
+                            host: str, purpose: str,
                             allow_test_only: bool = False, prior_receipts=(),
                             prior_outputs=None, max_units=None,
                             expected_wave: OriginalWaveIdentity | None = None,
@@ -359,37 +381,71 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         if current != record:
             raise WorkloadAdmissionError("ISSUER_SNAPSHOT_CHANGED_DURING_EXECUTION")
 
-    # Admit and recheck immediately before the source-read boundary. If the
-    # decision changes in this window the factory is never called.
+    # Admit and recheck immediately before the source/saved-estate boundary.
+    # The saved admission factory is called only after the fresh external
+    # CURRENT admission above; no estate bytes are opened by this function
+    # before that admission.
     check_current()
-    source = source_factory(workload.source_factory_ref)
-    if source.source_sha256 != record.source_sha256:
-        raise WorkloadAdmissionError("SOURCE_FACTORY_RETURNED_WRONG_EDITION")
-    check_current()
-    # No invented empty DiscoveryAuthority: query-only scopes use actual C11/I03.
-    routes_list = []
-    if max_units is None:
-        for n, ref in enumerate(workload.discoveries):
-            check_current()
-            routes_list.append(execute_route_b_production(
-                source=source, projection=workload.projection, runtime_catalog=workload.catalog,
-                i03_requests=workload.requests if n == 0 else (), discovery_authority_ref=ref,
-            ))
-            check_current()
-    routes = tuple(routes_list)
-    check_current()
-    repo, release = build_source_backed_c11_repository(
-        source, workload.projection, current_authorities=workload.catalog.authorities,
-    )
-    check_current()
-    executor = CarrierNeutralResearchExecutor(repo, (release.release_ref,), workload.catalog)
-    owned_group_scope = None
-    if group_scope is None and len(workload.requests) + len(workload.discoveries) > 1:
-        group_scope = I03GroupedExecutionScope()
-        owned_group_scope = group_scope
-    units = tuple(BatchUnitSpec("QUERY", r.query_ref, (release.release_ref,),
+    saved = None
+    if saved_admission_factory is not None:
+        # The source factory is deliberately not called on the saved path. A
+        # caller may retain its tripwire/factory for legacy compatibility.
+        if group_scope is not None:
+            raise WorkloadAdmissionError(
+                "SAVED_GROUPED_SCOPE_UNSUPPORTED"
+            )
+        if not callable(saved_admission_factory):
+            raise WorkloadAdmissionError("SAVED_ADMISSION_FACTORY_INVALID")
+        check_current()
+        saved = saved_admission_factory()
+        if type(saved) is not SavedC11Admission:
+            raise WorkloadAdmissionError("EXACT_SAVED_C11_ADMISSION_REQUIRED")
+        if saved.source_ref.content_hash != record.source_sha256:
+            raise WorkloadAdmissionError("SAVED_SOURCE_DOES_NOT_MATCH_CURRENT_SOURCE")
+        if saved.release_ref.object_id != workload.projection.release_id:
+            raise WorkloadAdmissionError("SAVED_RELEASE_DOES_NOT_MATCH_WORKLOAD")
+        check_current()
+        release_ref = saved.release_ref
+        replay_ref = saved.replay_ref
+        routes = ()
+        repository = saved
+        executor = None
+        owned_group_scope = None
+    else:
+        if not callable(source_factory):
+            raise WorkloadAdmissionError("SOURCE_FACTORY_REQUIRED")
+        source = source_factory(workload.source_factory_ref)
+        if source.source_sha256 != record.source_sha256:
+            raise WorkloadAdmissionError("SOURCE_FACTORY_RETURNED_WRONG_EDITION")
+        check_current()
+        # No invented empty DiscoveryAuthority: query-only scopes use actual C11/I03.
+        routes_list = []
+        if max_units is None:
+            for n, ref in enumerate(workload.discoveries):
+                check_current()
+                routes_list.append(execute_route_b_production(
+                    source=source, projection=workload.projection, runtime_catalog=workload.catalog,
+                    i03_requests=workload.requests if n == 0 else (), discovery_authority_ref=ref,
+                ))
+                check_current()
+        routes = tuple(routes_list)
+        check_current()
+        repo, release = build_source_backed_c11_repository(
+            source, workload.projection, current_authorities=workload.catalog.authorities,
+        )
+        check_current()
+        executor = CarrierNeutralResearchExecutor(repo, (release.release_ref,), workload.catalog)
+        owned_group_scope = None
+        if group_scope is None and len(workload.requests) + len(workload.discoveries) > 1:
+            group_scope = I03GroupedExecutionScope()
+            owned_group_scope = group_scope
+        release_ref = release.release_ref
+        replay_ref = release.replay_manifest.ref
+        repository = repo
+
+    units = tuple(BatchUnitSpec("QUERY", r.query_ref, (release_ref,),
                                (r.predicate_ref, workload.decision_ref)) for r in workload.requests)
-    units += tuple(BatchUnitSpec("DISCOVERY", d, (release.release_ref,),
+    units += tuple(BatchUnitSpec("DISCOVERY", d, (release_ref,),
                                 (workload.decision_ref,)) for d in workload.discoveries)
     manifest = BatchManifest(units)
     _validate_prior_cache(manifest, prior_receipts, prior_outputs)
@@ -398,7 +454,19 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
 
     def execute(unit):
         check_current()
-        if unit.job_kind == "QUERY":
+        if saved is not None:
+            if unit.job_kind == "QUERY":
+                result = saved.execute_i03(
+                    query_ref=unit.job_ref,
+                    predicate_ref=requests_by_query[unit.job_ref.key].predicate_ref,
+                )
+                refs = tuple(f.ref for f in result.facts)
+            else:
+                result = saved.execute_i05(
+                    discovery_authority_ref=unit.job_ref,
+                )
+                refs = tuple(r.ref for r in result.receipts)
+        elif unit.job_kind == "QUERY":
             result = executor.execute_i03(query_ref=unit.job_ref,
                 predicate_ref=requests_by_query[unit.job_ref.key].predicate_ref,
                 group_scope=group_scope)
@@ -409,13 +477,16 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
             refs = tuple(r.ref for r in result.receipts)
         check_current()
         outputs[unit.unit_hash] = result
-        return ExecutionOutcome(refs, (release.replay_manifest.ref, workload.decision_ref))
+        return ExecutionOutcome(refs, (replay_ref, workload.decision_ref))
 
     def executor_ref(kind):
         h = semantic_hash({"module": __name__, "kind": kind, "envelope": record.envelope_sha256})
         return ExactRef("U43_ISSUED_NATIVE_TRANSPORT", "urn:rawlsing:u43:" + h, h)
 
-    runner = BatchExecutionRunner(manifest=manifest, repository=repo, prior_receipts=prior_receipts)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=repository, prior_receipts=prior_receipts,
+        saved_mode=saved is not None,
+    )
     try:
         check_current()
         runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
@@ -474,13 +545,20 @@ class JoinedWorkloadCheckpoint:
     schema: str
     entries: tuple[WorkloadCustodyEntry, ...]
     checkpoint_hash: str
+    # Optional exact saved-estate binding.  It is omitted from material() and
+    # the content hash for legacy source-based checkpoints, preserving their
+    # existing schema/hash semantics.
+    saved_binding: SavedBindingReceipt | None = None
 
     def material(self) -> dict[str, Any]:
-        return {
+        material_payload = {
             "schema": self.schema,
             "entries": [entry.material() for entry in self.entries],
             "checkpoint_hash": self.checkpoint_hash,
         }
+        if self.saved_binding is not None:
+            material_payload["saved_binding"] = self.saved_binding.as_dict()
+        return material_payload
 
     @property
     def completed_decision_refs(self) -> tuple[ExactRef, ...]:
@@ -746,10 +824,13 @@ def _entry_payload(entry: WorkloadCustodyEntry) -> dict[str, Any]:
 
 def _checkpoint_content_hash(checkpoint: JoinedWorkloadCheckpoint) -> str:
     """Content address of the complete checkpoint, independent of the claimed pin."""
-    return semantic_hash({
+    payload = {
         "schema": checkpoint.schema,
         "entries": [entry.material() for entry in checkpoint.entries],
-    })
+    }
+    if checkpoint.saved_binding is not None:
+        payload["saved_binding"] = checkpoint.saved_binding.as_dict()
+    return semantic_hash(payload)
 
 
 def _validate_entry_material(entry: WorkloadCustodyEntry) -> None:
@@ -1077,6 +1158,7 @@ def _validate_entry_outputs(
 def capture_joined_checkpoint(
     results: Sequence[Any], *,
     source_sha256_by_decision: Mapping[str, str] | None = None,
+    saved_binding: SavedBindingReceipt | None = None,
 ) -> JoinedWorkloadCheckpoint:
     """Capture completed or real partial prefix with native output facts retained."""
     entries = []
@@ -1141,12 +1223,51 @@ def capture_joined_checkpoint(
     ordered = tuple(sorted(entries, key=lambda entry: entry.decision_ref.key))
     if len({entry.decision_ref.key for entry in ordered}) != len(ordered):
         raise WorkloadAdmissionError("JOINED_CHECKPOINT_DUPLICATE_DECISION")
+    if saved_binding is not None and type(saved_binding) is not SavedBindingReceipt:
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_SAVED_BINDING_INVALID")
     payload = {"schema": JOINED_CUSTODY_SCHEMA,
                "entries": [entry.material() for entry in ordered]}
+    if saved_binding is not None:
+        payload["saved_binding"] = saved_binding.as_dict()
     return JoinedWorkloadCheckpoint(
         schema=JOINED_CUSTODY_SCHEMA, entries=ordered,
-        checkpoint_hash=semantic_hash(payload),
+        checkpoint_hash=semantic_hash(payload), saved_binding=saved_binding,
     )
+
+
+def _restore_saved_binding(value: Any) -> SavedBindingReceipt:
+    """Restore the exact saved-estate binding from checkpoint material."""
+    if not isinstance(value, Mapping):
+        raise WorkloadAdmissionError("JOINED_CHECKPOINT_SAVED_BINDING_REQUIRED")
+    try:
+        i02_raw = value["i02"]
+        if not isinstance(i02_raw, Mapping):
+            raise TypeError("i02 not mapping")
+        i02 = ExternalI02Roots(**dict(i02_raw))
+        binding = SavedBindingReceipt(
+            schema=value["schema"],
+            manifest_sha256=value["manifest_sha256"],
+            i02=i02,
+            release_ref=exact_ref(value["release_ref"], "saved_binding.release_ref"),
+            estate_path=value["estate_path"],
+            runtime_catalog=dict(value["runtime_catalog"]),
+            source_opens=value.get("source_opens", 0),
+            full_c11_repository_builds=value.get("full_c11_repository_builds", 0),
+            full_c11_logical_release_builds=value.get(
+                "full_c11_logical_release_builds", 0
+            ),
+            persistent_body_corpora=value.get("persistent_body_corpora", 0),
+            counter_status=value.get(
+                "counter_status", "DECLARED_ZERO__NOT_A_MEASUREMENT"
+            ),
+        )
+    except WorkloadAdmissionError:
+        raise
+    except Exception as exc:
+        raise WorkloadAdmissionError(
+            "JOINED_CHECKPOINT_SAVED_BINDING_INVALID"
+        ) from exc
+    return binding
 
 
 def restore_joined_checkpoint(
@@ -1184,6 +1305,13 @@ def restore_joined_checkpoint(
         "schema": payload.get("schema"),
         "entries": [dict(row) for row in entries_material],
     }
+    saved_binding_material = payload.get("saved_binding")
+    saved_binding = (
+        _restore_saved_binding(saved_binding_material)
+        if saved_binding_material is not None else None
+    )
+    if saved_binding_material is not None:
+        computed_payload["saved_binding"] = dict(saved_binding_material)
     if claimed != semantic_hash(computed_payload):
         raise WorkloadAdmissionError("JOINED_CHECKPOINT_HASH_MISMATCH")
     if claimed != expected_checkpoint_ref:
@@ -1250,7 +1378,7 @@ def restore_joined_checkpoint(
         raise WorkloadAdmissionError("JOINED_CHECKPOINT_MATERIAL_INVALID") from exc
     return JoinedWorkloadCheckpoint(
         schema=payload["schema"], entries=tuple(entries),
-        checkpoint_hash=claimed,
+        checkpoint_hash=claimed, saved_binding=saved_binding,
     )
 
 
@@ -1284,7 +1412,8 @@ def resume_joined_workloads(
     *,
     workloads: Sequence[Any],
     resolver: CurrentDecisionResolver,
-    source_factory: Callable[[ExactRef], Any],
+    source_factory: Callable[[ExactRef], Any] | None = None,
+    saved_admission_factory: Callable[[], SavedC11Admission] | None = None,
     host: str,
     purpose: str,
     checkpoint: JoinedWorkloadCheckpoint,
@@ -1304,6 +1433,19 @@ def resume_joined_workloads(
         raise WorkloadAdmissionError("JOINED_CHECKPOINT_REQUIRED")
     if checkpoint.schema != JOINED_CUSTODY_SCHEMA:
         raise WorkloadAdmissionError("JOINED_CHECKPOINT_SCHEMA_MISMATCH")
+    if saved_admission_factory is not None:
+        if not callable(saved_admission_factory):
+            raise WorkloadAdmissionError("SAVED_ADMISSION_FACTORY_INVALID")
+        if checkpoint.saved_binding is None:
+            raise WorkloadAdmissionError(
+                "SAVED_CHECKPOINT_BINDING_REQUIRED"
+            )
+    elif checkpoint.saved_binding is not None:
+        raise WorkloadAdmissionError(
+            "SAVED_CHECKPOINT_REQUIRES_SAVED_ADMISSION"
+        )
+    if source_factory is None and saved_admission_factory is None:
+        raise WorkloadAdmissionError("SOURCE_OR_SAVED_ADMISSION_REQUIRED")
     if not isinstance(checkpoint.entries, tuple) or any(
         not isinstance(entry, WorkloadCustodyEntry) for entry in checkpoint.entries
     ):
@@ -1377,11 +1519,31 @@ def resume_joined_workloads(
         current_by_key[key] = current_record
         entry = completed_entries.get(key)
         if entry is None:
-            resumed_results.append(execute_issued_workload(
-                workload, resolver, source_factory=source_factory,
-                host=host, purpose=purpose, allow_test_only=allow_test_only,
-                expected_wave=workload.original_wave_identity,
-            ))
+            if saved_admission_factory is not None:
+                saved = saved_admission_factory()
+                if type(saved) is not SavedC11Admission:
+                    raise WorkloadAdmissionError("EXACT_SAVED_C11_ADMISSION_REQUIRED")
+                if saved.binding_receipt() != checkpoint.saved_binding:
+                    raise WorkloadAdmissionError(
+                        "JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH"
+                    )
+                if saved.source_ref.content_hash != current_record.source_sha256:
+                    raise WorkloadAdmissionError(
+                        "JOINED_CHECKPOINT_SAVED_SOURCE_MISMATCH"
+                    )
+                saved_factory = lambda saved=saved: saved
+                resumed_results.append(execute_issued_workload(
+                    workload, resolver, source_factory=None,
+                    saved_admission_factory=saved_factory,
+                    host=host, purpose=purpose, allow_test_only=allow_test_only,
+                    expected_wave=workload.original_wave_identity,
+                ))
+            else:
+                resumed_results.append(execute_issued_workload(
+                    workload, resolver, source_factory=source_factory,
+                    host=host, purpose=purpose, allow_test_only=allow_test_only,
+                    expected_wave=workload.original_wave_identity,
+                ))
             continue
         if (entry.envelope_sha256 != current_record.envelope_sha256
                 or entry.source_sha256 != current_record.source_sha256
@@ -1391,6 +1553,18 @@ def resume_joined_workloads(
             require_unchanged(
                 item, current_record, "ISSUER_SNAPSHOT_CHANGED_BEFORE_RESTORE"
             )
+            if saved_admission_factory is not None:
+                saved = saved_admission_factory()
+                if type(saved) is not SavedC11Admission:
+                    raise WorkloadAdmissionError("EXACT_SAVED_C11_ADMISSION_REQUIRED")
+                if saved.binding_receipt() != checkpoint.saved_binding:
+                    raise WorkloadAdmissionError(
+                        "JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH"
+                    )
+                if saved.source_ref.content_hash != current_record.source_sha256:
+                    raise WorkloadAdmissionError(
+                        "JOINED_CHECKPOINT_SAVED_SOURCE_MISMATCH"
+                    )
             # Current authority is established immediately above. Only now may
             # the checkpoint's native material be parsed and validated.
             _validate_entry_material(entry)
@@ -1406,6 +1580,29 @@ def resume_joined_workloads(
         require_unchanged(
             item, current_record, "ISSUER_SNAPSHOT_CHANGED_BEFORE_RESTORE"
         )
+        # The exact saved binding/type/source check MUST precede any protected
+        # entry/output parse or restore in the PARTIAL branch.  This mirrors the
+        # COMPLETED branch and prevents a coherently rehashed forged checkpoint
+        # from causing retained-output restoration before refusal.
+        saved = None
+        if saved_admission_factory is not None:
+            saved = saved_admission_factory()
+            if type(saved) is not SavedC11Admission:
+                raise WorkloadAdmissionError("EXACT_SAVED_C11_ADMISSION_REQUIRED")
+            if saved.binding_receipt() != checkpoint.saved_binding:
+                raise WorkloadAdmissionError(
+                    "JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH"
+                )
+            if saved.source_ref.content_hash != current_record.source_sha256:
+                raise WorkloadAdmissionError(
+                    "JOINED_CHECKPOINT_SAVED_SOURCE_MISMATCH"
+                )
+            # The estate open/current callback must not invalidate the exact
+            # CURRENT record established before the protected parse.
+            require_unchanged(
+                item, current_record,
+                "ISSUER_SNAPSHOT_CHANGED_AFTER_SAVED_BINDING",
+            )
         _validate_entry_material(entry)
         _validate_entry_outputs(entry, workload=workload)
         prior_receipts = tuple(_restore_receipt(row) for row in entry.receipt_materials)
@@ -1413,12 +1610,22 @@ def resume_joined_workloads(
             unit_hash: _restore_output_material(row)
             for unit_hash, row in entry.completed_outputs.items()
         }
-        resumed_results.append(execute_issued_workload(
-            workload, resolver, source_factory=source_factory,
-            host=host, purpose=purpose, allow_test_only=allow_test_only,
-            prior_receipts=prior_receipts, prior_outputs=prior_outputs,
-            expected_wave=workload.original_wave_identity,
-        ))
+        if saved is not None:
+            saved_factory = lambda saved=saved: saved
+            resumed_results.append(execute_issued_workload(
+                workload, resolver, source_factory=None,
+                saved_admission_factory=saved_factory,
+                host=host, purpose=purpose, allow_test_only=allow_test_only,
+                prior_receipts=prior_receipts, prior_outputs=prior_outputs,
+                expected_wave=workload.original_wave_identity,
+            ))
+        else:
+            resumed_results.append(execute_issued_workload(
+                workload, resolver, source_factory=source_factory,
+                host=host, purpose=purpose, allow_test_only=allow_test_only,
+                prior_receipts=prior_receipts, prior_outputs=prior_outputs,
+                expected_wave=workload.original_wave_identity,
+            ))
     # One final read for every item, after all native work and immediately
     # before publication. A change affecting an earlier completed result
     # still aborts the whole return.

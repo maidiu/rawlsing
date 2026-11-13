@@ -16,6 +16,7 @@ import re
 from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next.pre553_c11_repository import C11Repository
+from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 
 
@@ -394,13 +395,19 @@ class BatchExecutionRunner:
         self,
         *,
         manifest: BatchManifest,
-        repository: C11Repository,
+        repository: C11Repository | SavedC11Admission,
         prior_receipts: Iterable[UnitExecutionReceipt] = (),
+        saved_mode: bool = False,
     ) -> None:
         if not isinstance(manifest, BatchManifest):
             raise BatchIntegrityError("manifest must be immutable BatchManifest")
-        if not isinstance(repository, C11Repository):
-            raise BatchIntegrityError("repository must be accepted I02 C11Repository")
+        if (
+            not isinstance(repository, C11Repository)
+            and not (saved_mode is True and type(repository) is SavedC11Admission)
+        ):
+            raise BatchIntegrityError(
+                "repository must be accepted I02 C11Repository or exact SavedC11Admission"
+            )
         self.manifest = manifest
         self.repository = repository
         self._units_by_key = MappingProxyType({unit.unit_ref.key: unit for unit in manifest.units})

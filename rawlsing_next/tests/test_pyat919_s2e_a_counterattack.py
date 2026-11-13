@@ -1,0 +1,295 @@
+"""Agent A return: adversarial I05 candidate and whole-frontier falsifiers.
+
+These execute the real inherited five-unit sourcefree Batch, and forge complete
+canonical public receipt objects PLUS a newly valid outer frontier replay and
+matching Batch completion receipt. A self-hash failure is deliberately avoided.
+"""
+from __future__ import annotations
+
+from dataclasses import replace
+
+import pytest
+
+from rawlsing_next.pre553_empirical_objects import (
+    DiscoveryResultReceipt, ExactRef, exact_ref, semantic_hash,
+)
+from rawlsing_next.pre553_discovery_exact import I05_CONTRACT_ID
+from rawlsing_next.pre553_s2e_exact_conservation import (
+    S2EOutputConservationError, census_native_batch, require_same_native_output_graph,
+)
+from rawlsing_next.pre553_empirical_query import I03GroupedExecutionScope
+from rawlsing_next.tests.test_pyat919_s2e_a_whole_native_batch import (
+    _batch, _native_case,
+)
+
+
+def _replay_ref(namespace, material):
+    digest = semantic_hash(material)
+    return ExactRef(
+        "PRE553_I05_FRONTIER_REPLAY" if namespace == "frontier-replay"
+        else "PRE553_I05_DISCOVERY_REPLAY",
+        f"urn:rawlsing:pre553:i05:{namespace}:sha256:{digest}", digest,
+    )
+
+
+def _forge_receipt(receipt, *, overrides, root=None):
+    data = dict(receipt.semantic_fields)
+    data.update(overrides)
+    return DiscoveryResultReceipt(
+        typed_state=receipt.typed_state,
+        authority_snapshot_refs=receipt.authority_snapshot_refs,
+        dependency_refs=receipt.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            receipt.producer_replay_locator_or_reference_root if root is None else root
+        ),
+        **data,
+    )
+
+
+def _outer_consistent(manifest, history, outputs, unit, forged_receipt):
+    """Rebuild outer frontier replay and Batch result refs; not a hash-only negative."""
+    original = outputs[unit.unit_hash]
+    substituted = tuple(sorted(
+        (forged_receipt if r.ref == original.receipts[0].ref else r
+         for r in original.receipts),
+        key=lambda r: r.ref.key,
+    ))
+    outer = _replay_ref("frontier-replay", {
+        "contract": I05_CONTRACT_ID,
+        "frontier_ref": original.evaluated_frontier_ref.as_dict(),
+        "receipt_refs": [r.ref.as_dict() for r in substituted],
+        "fact_refs": [r.as_dict() for r in original.empirical_fact_refs],
+        "valid_empty": original.valid_empty,
+    })
+    bogus = replace(original, receipts=substituted, replay_ref=outer)
+    replaced_receipts = tuple(
+        replace(r, result_refs=tuple(x.ref for x in substituted))
+        if r.unit_ref == unit.unit_ref else r
+        for r in history
+    )
+    return replaced_receipts, {**outputs, unit.unit_hash: bogus}
+
+
+def _run():
+    case = _native_case()
+    with I03GroupedExecutionScope() as scope:
+        manifest, receipts, outputs, baseline, _, _ = _batch(case, scope=scope)
+    unit = next(u for u in manifest.units if u.job_kind == "DISCOVERY")
+    return case, manifest, receipts, outputs, baseline, unit
+
+
+def test_a2_rehashed_candidate_replay_and_rehashed_outer_frontier_refused():
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    candidate = outputs[unit.unit_hash].receipts[0]
+    fictitious = "f" * 64
+    forged_inner = ExactRef(
+        "PRE553_I05_DISCOVERY_REPLAY",
+        f"urn:rawlsing:pre553:i05:candidate-replay:sha256:{fictitious}",
+        fictitious,
+    )
+    assert candidate.replay_ref != forged_inner
+    altered = _forge_receipt(
+        candidate, overrides={"replay_ref": forged_inner}, root=forged_inner,
+    )
+    broken_history, broken_outputs = _outer_consistent(
+        manifest, receipts, outputs, unit, altered,
+    )
+    # Candidate and outer replay refs are all self-consistent as objects;
+    # only the native candidate-specific formula disproves the forgery.
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_CANDIDATE_REPLAY_MISMATCH"):
+        census_native_batch(
+            manifest, broken_history, broken_outputs,
+            runtime_catalog=case[1], require_complete=True,
+        )
+    restored = census_native_batch(
+        manifest, receipts, outputs,
+        runtime_catalog=case[1], require_complete=True,
+    )
+    require_same_native_output_graph(baseline, restored)
+
+
+def test_a2_rehashed_wrong_winning_predicate_and_outer_refused():
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    native = outputs[unit.unit_hash]
+    candidate = native.receipts[0]
+    winner = exact_ref(candidate.winning_predicate_ref, "candidate winner")
+    wrong = next(
+        p.ref for p in native.executed_predicates if p.ref != winner
+    )
+    assert wrong != winner
+    altered = _forge_receipt(
+        candidate, overrides={"winning_predicate_ref": wrong},
+    )
+    broken_history, broken_outputs = _outer_consistent(
+        manifest, receipts, outputs, unit, altered,
+    )
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_CANDIDATE_IDENTITY_MISMATCH"):
+        census_native_batch(
+            manifest, broken_history, broken_outputs,
+            runtime_catalog=case[1], require_complete=True,
+        )
+    require_same_native_output_graph(
+        baseline, census_native_batch(
+            manifest, receipts, outputs,
+            runtime_catalog=case[1], require_complete=True,
+        ),
+    )
+
+
+def test_a2_declared_grammar_refuses_coordinated_missing_candidate_and_outer():
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    original = outputs[unit.unit_hash]
+    # A native executed frontier is not proven complete by identical CLAIMED
+    # counters. A fabricated zero-candidate result must contradict the issued
+    # exact discovery authority's nonempty grammar.
+    emptied = replace(
+        original, candidate_count=0, covered_candidate_count=0,
+        receipts=(), empirical_fact_refs=(), empirical_facts=(),
+        executed_queries=(), executed_predicates=(), valid_empty=True,
+        replay_ref=_replay_ref("frontier-replay", {
+            "contract": I05_CONTRACT_ID,
+            "frontier_ref": original.evaluated_frontier_ref.as_dict(),
+            "receipt_refs": [], "fact_refs": [], "valid_empty": True,
+        }),
+    )
+    replaced = tuple(
+        replace(r, result_refs=()) if r.unit_ref == unit.unit_ref else r
+        for r in receipts
+    )
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_DECLARED_FRONTIER_MISMATCH"):
+        census_native_batch(
+            manifest, replaced, {**outputs, unit.unit_hash: emptied},
+            runtime_catalog=case[1], require_complete=True,
+        )
+    require_same_native_output_graph(
+        baseline, census_native_batch(
+            manifest, receipts, outputs,
+            runtime_catalog=case[1], require_complete=True,
+        ),
+    )
+
+
+
+def test_a2_coordinated_rehashed_ancestry_and_candidate_replay_refused_by_issuer_grammar():
+    """Even mutually consistent candidate/inner/outer digests cannot rewrite the issued grammar."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    native = outputs[unit.unit_hash]
+    candidate = native.receipts[0]
+    ancestry_hash = semantic_hash("S2E_A2_FORGED_PARENT")
+    forged_ancestry = ExactRef(
+        "DISCOVERY_BRANCH_ANCESTRY",
+        f"urn:test:s2e:forged-parent:sha256:{ancestry_hash}",
+        ancestry_hash,
+    )
+    ci = dict(candidate.candidate_identity)
+    roles = tuple({
+        "role": role["role"],
+        "predicate_ref": exact_ref(role["predicate_ref"], "predicate").as_dict(),
+        "query_ref": exact_ref(role["query_ref"], "query").as_dict(),
+    } for role in ci["query_roles"])
+    winner = exact_ref(candidate.winning_predicate_ref, "winner")
+    changed_candidate_hash = semantic_hash({
+        "contract": I05_CONTRACT_ID,
+        "family": ci["family"],
+        "rule_id": ci["rule_id"],
+        "winning_predicate_ref": winner.as_dict(),
+        "query_roles": list(roles),
+        "validation": ci["validation"],
+        "ancestry_refs": [forged_ancestry.as_dict()],
+    })
+    ci["candidate_hash"] = changed_candidate_hash
+    ci["candidate_id"] = (
+        f"urn:rawlsing:pre553:i05:candidate:sha256:{changed_candidate_hash}"
+    )
+    fact_refs = sorted(
+        (exact_ref(ref, "candidate fact") for ref in candidate.empirical_fact_refs),
+        key=lambda ref: ref.key,
+    )
+    replay = _replay_ref("candidate-replay", {
+        "contract": I05_CONTRACT_ID,
+        "authority_ref": native.discovery_authority_ref.as_dict(),
+        "frontier_ref": native.evaluated_frontier_ref.as_dict(),
+        "candidate_id": ci["candidate_id"],
+        "candidate_hash": ci["candidate_hash"],
+        "coverage_state": candidate.coverage_state,
+        "fact_refs": [ref.as_dict() for ref in fact_refs],
+        "release_refs": [ref.as_dict() for ref in unit.release_refs],
+        "query_execution_contract": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    })
+    altered = _forge_receipt(
+        candidate,
+        overrides={
+            "candidate_identity": ci,
+            "branch_or_parent_ancestry_refs": (forged_ancestry,),
+            "replay_ref": replay,
+        },
+        root=replay,
+    )
+    broken_history, broken_outputs = _outer_consistent(
+        manifest, receipts, outputs, unit, altered,
+    )
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_DECLARED_FRONTIER_MISMATCH"):
+        census_native_batch(
+            manifest, broken_history, broken_outputs,
+            runtime_catalog=case[1], require_complete=True,
+        )
+    require_same_native_output_graph(
+        baseline, census_native_batch(
+            manifest, receipts, outputs,
+            runtime_catalog=case[1], require_complete=True,
+        ),
+    )
+
+
+
+def test_a2_rehashed_candidate_coverage_cannot_contradict_typed_fate():
+    """A complete, rehashed negative coverage claim cannot retain a supported typed fate."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    case, manifest, receipts, outputs, baseline, unit = _run()
+    native = outputs[unit.unit_hash]
+    candidate = native.receipts[0]
+    assert candidate.typed_state == "DISCOVERED_RESULT_SUPPORTED"
+    assert candidate.coverage_state == "EVALUATED_SUPPORTED"
+    ci = candidate.candidate_identity
+    new_coverage = "EVALUATED_VALID_EMPTY"
+    fact_refs = sorted(
+        (exact_ref(ref, "candidate fact") for ref in candidate.empirical_fact_refs),
+        key=lambda ref: ref.key,
+    )
+    false_replay = _replay_ref("candidate-replay", {
+        "contract": I05_CONTRACT_ID,
+        "authority_ref": native.discovery_authority_ref.as_dict(),
+        "frontier_ref": native.evaluated_frontier_ref.as_dict(),
+        "candidate_id": ci["candidate_id"],
+        "candidate_hash": ci["candidate_hash"],
+        "coverage_state": new_coverage,
+        "fact_refs": [ref.as_dict() for ref in fact_refs],
+        "release_refs": [ref.as_dict() for ref in unit.release_refs],
+        "query_execution_contract": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    })
+    altered = _forge_receipt(
+        candidate, overrides={"coverage_state": new_coverage, "replay_ref": false_replay},
+        root=false_replay,
+    )
+    history, output = _outer_consistent(
+        manifest, receipts, outputs, unit, altered,
+    )
+    with pytest.raises(S2EOutputConservationError,
+                       match="S2E_I05_CANDIDATE_TERMINAL_FATE_MISMATCH"):
+        census_native_batch(
+            manifest, history, output,
+            runtime_catalog=case[1], require_complete=True,
+        )
+    require_same_native_output_graph(
+        baseline, census_native_batch(
+            manifest, receipts, outputs,
+            runtime_catalog=case[1], require_complete=True,
+        ),
+    )

@@ -1,0 +1,52 @@
+{
+  "task_id": "PYAT1001-HARNESS-PREP",
+  "issue": 1001,
+  "status": "PREP_ONLY__NOT_RUN_FULL_SCALE",
+  "full_scale_state": "HOLD_DEPENDENCY_998",
+  "base_contract": "PYAT998-EXISTING-FLIGHT-R1",
+  "branch": "agent/pyat998-sourcefree-staging-r1",
+  "startup_sha": "c8e739470beb0dc65ad70c419a906e483a12ca8f",
+  "harness": {
+    "schema": "ScalePlan",
+    "path": "rawlsing_next/tests/pyat1001_scale_harness.py",
+    "generator": "lazy synthetic respondent/occasion rows; sentinel many-occurrence respondent",
+    "measurement": "bounded ps parent-root process-tree sampling; cold/repeat/recovery/source/build counters interfaces",
+    "full_scale_gate": "1001 full 100k respondents / 6 GiB must wait for an independently accepted #998 integrated vertical"
+  },
+  "validated_small_plan": {
+    "respondent_count": 1000,
+    "distinct_respondent_ids_proved": 1000,
+    "sentinel_respondent": "SENTINEL-MANY-EVENTS",
+    "sentinel_events": 257,
+    "expected_events": 2255,
+    "expected_slots": 2255,
+    "events_are_not_respondent_count": true
+  },
+  "supported_large_plan": {
+    "respondent_count": 100000,
+    "distinct_respondent_ids_proved": 100000,
+    "expected_events": 300997,
+    "events_are_not_respondent_count": true,
+    "materialized": false,
+    "executed": false
+  },
+  "tests": {
+    "command": "python3 -m pytest rawlsing_next/tests/test_pyat998_scale_harness_prep.py -q -o addopts=''",
+    "result": "2 passed in 0.11s",
+    "log": "WORKER_RETURNS/PYAT1001_HARNESS_PREP/scale_prep.txt"
+  },
+  "resource_claims": {
+    "full_100k_rss": "NOT_RUN",
+    "six_gib_cap": "NOT_RUN__FULL_VERTICAL_DEPENDENCY_998",
+    "retained_peak_stage": "NOT_MEASURED_AT_SCALE",
+    "source_opens": "NOT_MEASURED_AT_SCALE",
+    "full_c11_builds": "NOT_MEASURED_AT_SCALE",
+    "100k_integration_input": "PREPARED_ONLY"
+  },
+  "sourcefree": true,
+  "original35_claimed": false,
+  "production_current_claimed": false,
+  "protected_merge": "NONE",
+  "next_dependency": "Exact independently accepted #998 integrated sourcefree vertical; then same owner may execute full 100k/6GiB against that frozen cut.",
+  "receipt_note": "This is a preparation receipt, not an ACCEPT_SCOPED resource verdict."
+}

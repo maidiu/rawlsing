@@ -2,6 +2,8 @@
 from collections.abc import Iterator
 
 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _RespondentEvents
+from rawlsing_next._pre553_verified_semantic_range import CertifiedRespondentEvents
+from rawlsing_next._pre553_external_i02_certificate import _DiskSelectedRespondent
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
@@ -38,7 +40,11 @@ def _select_respondent_events(
     semantics, including complete respondent universes and zero domains.
     """
     events = index.events_by_respondent[respondent_key]
-    if isinstance(events, _RespondentEvents):
+    # S2-C's versioned saved-read session is explicitly recognized, rather
+    # than accepting an arbitrary duck-typed selector as a native I03 issuer.
+    from rawlsing_next.pre553_direct_estate_i03 import DirectSelectedRespondent
+    if isinstance(events, (_RespondentEvents, CertifiedRespondentEvents,
+                           _DiskSelectedRespondent, DirectSelectedRespondent)):
         yield from events.select(
             target, native_only=native_only, include_component=include_component, states=states,
         )

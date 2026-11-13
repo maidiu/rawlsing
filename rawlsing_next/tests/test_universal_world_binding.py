@@ -1074,9 +1074,11 @@ def _same_source_connected(p41_runtime: str, source_path=None):
         )
         resumed = resume_joined_workloads(
             workloads=(issued,),
+            resolver=TestOnlyDecisionResolver(record),
             source_factory=lambda _ref: bundle.physical_stream,
             host=HOST, purpose=PURPOSE, checkpoint=restored,
             expected_checkpoint_ref=checkpoint.checkpoint_hash,
+            allow_test_only=True,
         )
         final = resumed.resumed_results[0]
         full = execute_issued_workload(
@@ -1111,9 +1113,11 @@ def _same_source_connected(p41_runtime: str, source_path=None):
         try:
             resume_joined_workloads(
                 workloads=(revoked_issued,),
+                resolver=TestOnlyDecisionResolver(revoked),
                 source_factory=lambda _ref: bundle.physical_stream,
                 host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
                 expected_checkpoint_ref=checkpoint.checkpoint_hash,
+                allow_test_only=True,
             )
         except Exception as error:
             revoked_code = type(error).__name__
