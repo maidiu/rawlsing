@@ -120,7 +120,8 @@ not evidence that the real #997 bridge or original-source pilot is complete.
 ## Pins and files
 
 - worktree base: `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`;
-- exact code/test/evidence cut: `6f7369f004573bfd09d961f8bd92076eae228237`;
+- exact code/test cut: `6f7369f004573bfd09d961f8bd92076eae228237` (code/tests unchanged);
+- sanitized evidence/docs head: `695f84cc38450704ee53ff889db042b407e638da`;
 - accepted interfaces: S1-B `dedd2fb8…`, S1-C `dae66cd…`, S2-B
   `092db6bc…` / G5 `96ad0fe2…`, S2-C `b7b697b…` / #990, S2-D `9d96a9c…` /
   G5 `ba8d760c…`;

@@ -59,6 +59,6 @@ Actual bounded resource: maximum RSS 112,820,224 B; three persisted estates
 No frozen-writer edit was needed and no minimal first-consumer blocker was
 found for this sourcefree prep path.
 
-Exact code/test/evidence cut: `6f7369f004573bfd09d961f8bd92076eae228237`
-(also in `RETURN_SHA.txt`). Full log, pins and regeneration identities are under
+Exact code/test cut: `6f7369f004573bfd09d961f8bd92076eae228237` (code/tests unchanged).
+Sanitized evidence/docs head: `695f84cc38450704ee53ff889db042b407e638da` (also in `RETURN_SHA.txt`). Full log, pins and regeneration identities are under
 `evidence/`.
