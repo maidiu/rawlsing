@@ -190,35 +190,35 @@
       "packet_id": "S2-D",
       "original_issue": 919,
       "transfer_issue": 991,
-      "state": "PREFLIGHT_COMPLETE_PRODUCT_BLOCKED_UNTIL_S2C_G5",
-      "job_id": "pyat991-s2d-preflight01",
-      "branch": "agent/pyat991-s2d-preflight-r1",
-      "startup_sha": "41f479315cd42b31c28b4f4c91d225207f119c8f",
-      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-preflight",
+      "state": "PHASE1_A_RUNNING_NEW_MODULES_SHARED_ACK_PENDING",
+      "job_id": "pyat991-s2d-phase1-a01",
+      "branch": "agent/pyat991-s2d-a-r1",
+      "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
       "contract_sha256": "4f7542b12284b2dac3281d1ed7386ae117b8d2d73bd514cfec581c7b0223e534",
       "agents": {
         "A": {
           "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-          "state": "TERMINAL_PREFLIGHT_STOP"
+          "state": "RUNNING_PHASE1"
         },
         "B": {
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
-          "state": "IDLE_PHASE1_GATED"
+          "state": "IDLE_UNTIL_A_RETURN"
         }
       },
-      "phase1_gate": "Independent accepted exact S2-C G5 plus frozen ABI and relevant owner lease; current guard edits not granted",
+      "phase1_gate": "S2C_G5_SATISFIED; new modules authorized; shared-file edits await exact owner ACK",
       "S1E_continuation": "Necessary production handoff map included; scoped acceptance banked/full original OPEN",
       "launch": {
-        "job_id": "pyat991-s2d-preflight01",
-        "child_pid": 10559,
-        "supervisor_pid": 10558,
-        "observer_pid": 10560,
-        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-preflight01",
+        "job_id": "pyat991-s2d-phase1-a01",
+        "child_pid": 45264,
+        "supervisor_pid": 45263,
+        "observer_pid": 45265,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-a01",
         "launch_is_not_completion": true
       },
       "actual_first_turn_metadata": {
         "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-        "message_id": "msg_1d33108ff001yf19LG1zdMvSsu",
+        "message_id": "msg_1d42d00d40014RaLFwWuewEogE",
         "actual_model": {
           "id": "deepseek-v4.1-flash",
           "providerID": "opencode-go",

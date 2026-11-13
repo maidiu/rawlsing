@@ -390,17 +390,17 @@
     }
   },
   "s2d_transfer_991": {
-    "status": "PREFLIGHT_COMPLETE_PRODUCT_BLOCKED_UNTIL_S2C_G5",
+    "status": "PHASE1_A_RUNNING_NEW_MODULES_SHARED_ACK_PENDING",
     "job_id": "pyat991-s2d-preflight01",
     "launch": {
-      "job_id": "pyat991-s2d-preflight01",
-      "child_pid": 10559,
-      "supervisor_pid": 10558,
-      "observer_pid": 10560,
-      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-preflight01",
+      "job_id": "pyat991-s2d-phase1-a01",
+      "child_pid": 45264,
+      "supervisor_pid": 45263,
+      "observer_pid": 45265,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-s2d-phase1-a01",
       "launch_is_not_completion": true
     },
-    "startup_sha": "41f479315cd42b31c28b4f4c91d225207f119c8f",
+    "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
     "branch": "agent/pyat991-s2d-preflight-r1",
     "source_candidate": "3893a14887424c76a7949ac006e9344cda64e267",
     "phase1": "HOLD_S2C_G5_AND_EXACT_OWNERSHIP",
@@ -410,7 +410,7 @@
     "protected_adoption": false,
     "actual_first_turn_metadata": {
       "session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
-      "message_id": "msg_1d33108ff001yf19LG1zdMvSsu",
+      "message_id": "msg_1d42d00d40014RaLFwWuewEogE",
       "actual_model": {
         "id": "deepseek-v4.1-flash",
         "providerID": "opencode-go",
@@ -418,7 +418,8 @@
       }
     },
     "delivery_sha": "585cb21d39ea5b1dcc1c121633fa7e07f5650280",
-    "active_job": null,
-    "next_action": "Receive exact independent accepted S2-C G5 plus frozen ABI and relevant ownership handoff, then existing fixed A/B/A/distinctG5 S2-D sequence; no re-investigation"
+    "active_job": "pyat991-s2d-phase1-a01",
+    "next_action": "Actual A terminal intake; preserve full original sequence and obtain exact shared-file ACK before dependent edits",
+    "shared_handoff": "PENDING_919_COMMENT6848800312"
   }
 }
