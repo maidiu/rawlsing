@@ -1,0 +1,40 @@
+# G5-R1 repair execution environment
+Linux lima-s2b 7.3.0-9-generic #9-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  5 10:38:02 UTC 2026 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 26.10"
+NAME="Ubuntu"
+VERSION_ID="26.10"
+VERSION="26.10 (Stonking Stingray)"
+VERSION_CODENAME=stonking
+RELEASE_TYPE=stable
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+DOCUMENTATION_URL="https://docs.ubuntu.com"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+LOGO=ubuntu-logo
+VENDOR_NAME="Canonical"
+VENDOR_URL="https://canonical.com/"
+UBUNTU_CODENAME=stonking
+
+Python 3.11.18
+pytest 9.2.0
+pyarrow 26.0.1
+pandas 3.1.1
+pyreadstat 1.3.7
+
+nproc: 2
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.5Gi       1.4Gi       690Mi       2.0Gi       2.4Gi
+Swap:             0B          0B          0B
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        14G  3.5G  9.9G  27% /
+/proc/self/fd: present
+
+Filesystem state:         clean with errors
+FS Error count:           2
+First error err:          EIO
+Last error err:           EIO
+/      /dev/vda1 ext4   rw,relatime,discard,errors=remount-ro,commit=30,emergency_ro
+note: VM root ext4 became read-only during this session; /tmp (tmpfs) was used.
