@@ -204,3 +204,41 @@ def test_duplicate_child_perception_or_forged_speech_episode_refuses(
             read_child_uptake(session, opened["focal"], eid)
     finally:
         _close(opened)
+
+
+def test_episode_embedded_admission_receipt_mismatch_is_not_public_access(
+    tmp_path, monkeypatch
+):
+    opened = open_j1_case(tmp_path / "receipt-inconsistent")
+    try:
+        session = opened["session"]
+        eid = opened["receipt"]["event_id"]
+        store = session.product.store
+        original = store.episodes
+
+        def forge(branch_id):
+            rows = original(branch_id)
+            result = []
+            for row in rows:
+                if (row.get("kind") == PARENT_UTTERANCE_KIND
+                        and (row.get("body") or {}).get("event_id") == eid):
+                    row = dict(row)
+                    body = dict(row["body"])
+                    body["receipt"] = {
+                        **body["receipt"],
+                        "child_perception_channel": "NOT_PERCEIVED",
+                    }
+                    row["body"] = body
+                result.append(row)
+            return result
+
+        monkeypatch.setattr(store, "episodes", forge)
+        with pytest.raises(
+            RecursionRefusal, match="CHILD_UPTAKE_UTTERANCE_MISMATCH"
+        ):
+            read_child_uptake(session, opened["focal"], eid)
+        monkeypatch.setattr(store, "episodes", original)
+        assert read_child_uptake(
+            session, opened["focal"], eid)["status"] == "PERCEIVED"
+    finally:
+        _close(opened)
