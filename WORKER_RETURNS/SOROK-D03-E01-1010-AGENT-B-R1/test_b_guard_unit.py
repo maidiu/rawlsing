@@ -43,3 +43,38 @@ def test_b_failed_guard_prevents_world_writer():
 def test_b_guard_requires_callable_validator():
     with pytest.raises(TypeError, match="callback"):
         GuardedProvider(Provider([]), None)
+
+
+def test_b_old_postwrite_check_is_too_late_differential():
+    """Isolated order falsifier, not an integrated P2/P3 S2 execution."""
+    trace = []
+    state = {"head": "before"}
+
+    class MutatingProvider:
+        def call(self, request):
+            trace.append("provider")
+            state["head"] = "after"
+            return {"prospective": []}
+
+    def validate():
+        if state["head"] != "before":
+            trace.append("detect-drift")
+            raise ValueError("STALE_P3")
+
+    def world_write(_result):
+        trace.append("world-write")
+
+    # A's former order: provider -> world commit -> P3 head check.
+    result = MutatingProvider().call({})
+    world_write(result)
+    with pytest.raises(ValueError, match="STALE_P3"):
+        validate()
+    assert trace == ["provider", "world-write", "detect-drift"]
+
+    # B's order: provider -> guard -> (only if valid) world commit.
+    trace.clear()
+    state["head"] = "before"
+    with pytest.raises(ValueError, match="STALE_P3"):
+        result = GuardedProvider(MutatingProvider(), validate).call({})
+        world_write(result)
+    assert trace == ["provider", "detect-drift"]
