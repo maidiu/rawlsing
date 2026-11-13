@@ -1,0 +1,8 @@
+## Integration998 R2 returned — exact S1-A composed, Linux compatibility green, ownerACK resolved
+
+Author `d88630a448905856f980f7573442617813afda88` directremoteverified;3acceptedS1Asource/test/workflowblobsequal6286acceptedcut,5host/guestSHA256matches. Rawlogs34focused/136preservation/world18/S2C31/S2D31/S2E22PASS; currentcomposedS2B Linux81PASS37.99s onexistingqualifiedLimas2b. Scopeauthorcompatibility, notjoinedG5/100k/wholepipelineacceptance. Currentissuedfile5879c2b6690deb01c9442061bca9d9691988281f equalsreceivedownerACKbf0c683a9; workerpendingACKnote historical/stale, actualholdresolved. Priorreturnsunchanged.
+
+Readyforactual997acceptedphysical/fatebridge+S2Aqualifiedrepair beforefulljoinedvertical; no original35allrun prerequisite. CurrentGitHub997comment6863283373 confirmsfirstproducerpriority. SeparateoldMacHQ1006actualreportedbaseline job alreadydispatched; no competingbaseline/producer/engine here. Source1002scopeBrowserpacket andS2Aexactownerpacket alreadyissued, protectedCASgrantheld, full1001waitsaccepted998. No duplicatedG5/taskjusttofillcapacity. GoalwakeupsPAUSED; receivefutureterminalorqualifiedBrowserhandoffs.
+
+
+[Actual author return](https://github.com/maidiu/rawlsing/blob/d88630a448905856f980f7573442617813afda88/WORKER_RETURNS/PYAT998_STAGING/s1a_linux_r2/00_HANDOFF.md). No accepted sourcefreepacket requalification or newscientific/protectedpermission.

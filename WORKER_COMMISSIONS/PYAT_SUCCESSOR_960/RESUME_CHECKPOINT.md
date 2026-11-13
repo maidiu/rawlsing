@@ -1,3 +1,9 @@
+## Integration998 R2 returned — exact S1-A composed, Linux compatibility green, ownerACK resolved
+
+Author `d88630a448905856f980f7573442617813afda88` directremoteverified;3acceptedS1Asource/test/workflowblobsequal6286acceptedcut,5host/guestSHA256matches. Rawlogs34focused/136preservation/world18/S2C31/S2D31/S2E22PASS; currentcomposedS2B Linux81PASS37.99s onexistingqualifiedLimas2b. Scopeauthorcompatibility, notjoinedG5/100k/wholepipelineacceptance. Currentissuedfile5879c2b6690deb01c9442061bca9d9691988281f equalsreceivedownerACKbf0c683a9; workerpendingACKnote historical/stale, actualholdresolved. Priorreturnsunchanged.
+
+Readyforactual997acceptedphysical/fatebridge+S2Aqualifiedrepair beforefulljoinedvertical; no original35allrun prerequisite. CurrentGitHub997comment6863283373 confirmsfirstproducerpriority. SeparateoldMacHQ1006actualreportedbaseline job alreadydispatched; no competingbaseline/producer/engine here. Source1002scopeBrowserpacket andS2Aexactownerpacket alreadyissued, protectedCASgrantheld, full1001waitsaccepted998. No duplicatedG5/taskjusttofillcapacity. GoalwakeupsPAUSED; receivefutureterminalorqualifiedBrowserhandoffs.
+
 ## Issued-workload998 owner ACK received — one composition hold cleared
 
 Actual ownerjob exit0/4m08s, delivery `bf0c683a94b63cb7db4b3891cf153da9a773ccaf` directremoteverified. OnlytwoownACKfileschanged. Fullbase/stagedblob+SHA256 verified: b02810677ae66231e5e59b09aefe9bd63a31aaa3 ->5879c2b6690deb01c9442061bca9d9691988281f. ActualS1Downer grants named998author useofexact15line NativeWorkloadResult.exact_s2e_output_census block prospectively, no retroactivegrantclaim/otherproductedit. Receivedlease `WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/ISSUED998_OWNER_RECEIVED_LEASE.json`.
