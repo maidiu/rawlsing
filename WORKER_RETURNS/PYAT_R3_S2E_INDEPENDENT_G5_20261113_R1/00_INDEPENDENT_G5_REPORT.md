@@ -14,7 +14,7 @@ This is an independent receiving result, not an A/B author round. No author bran
 
 ## 1. Prior independent G5 search
 
-All 3668 remote branch tips were fetched and searched. No independent S2-E G5 receipt exists at the frozen delivery HEAD. The only S2-E refs are author A/A2/A3/B/B2 branches plus a post-freeze author **test-only** repair (`7b19a242...`). The #980 combined receiving covers S1-B, S1-D, S2-F and S2-G only; S2-E is absent. Issue API reads returned HTTP 403 for the available token, so contract reconstruction used the commission, the frozen author returns and the frozen code/tests. Details: `evidence/10_PRIOR_G5_SEARCH.txt`.
+All 3668 remote branch tips were fetched and searched. Contract reconstruction read all five frozen author returns (A, A2, A3, B, B2), the real native `pre553_discovery_exact.py`, `pre553_empirical_query.py`, `_pre553_query_common.py`, `pre553_batch_runner.py`, `pre553_carrier_execution.py`, `pre553_issued_workload.py`, and the accepted S2-F closure tests and consumer contracts. No independent S2-E G5 receipt exists at the frozen delivery HEAD. The only S2-E refs are author A/A2/A3/B/B2 branches plus a post-freeze author **test-only** repair (`7b19a242...`). The #980 combined receiving covers S1-B, S1-D, S2-F and S2-G only; S2-E is absent. Issue API reads returned HTTP 403 for the available token, so contract reconstruction used the commission, the frozen author returns and the frozen code/tests. Details: `evidence/10_PRIOR_G5_SEARCH.txt`.
 
 ## 2. Lineage and custody (G1)
 
