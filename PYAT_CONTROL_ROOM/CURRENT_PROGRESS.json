@@ -390,7 +390,7 @@
     }
   },
   "s2d_transfer_991": {
-    "status": "HOLD_EXTERNAL_FIVE_READERS_OWNER_ACK_PENDING",
+    "status": "USER_DIRECTED_NARROW_OWNER_HANDOFF_RUNNING",
     "job_id": "pyat991-s2d-preflight01",
     "launch": {
       "job_id": "pyat991-s2d-g5-source-scope-recheck-r01",
@@ -418,8 +418,8 @@
       }
     },
     "delivery_sha": "585cb21d39ea5b1dcc1c121633fa7e07f5650280",
-    "active_job": null,
-    "next_action": "Receive competent exact shared-file handoff/exclusive lease then implement remaining five paths through existing native owners; no further investigation or duplicate review of qualified two-reader scope",
+    "active_job": "pyat991-existing-owner-handoff-r01",
+    "next_action": "Receive concrete handoff then original S2-D A finish five new reader paths; same distinctG5 review new implementation; no repeat two-reader duel",
     "shared_handoff": "PENDING_919_COMMENT6848800312",
     "a_delivery_sha": "e399c48d576f5b2ae501dac569fb729e95bd968e",
     "a_code_sha": "55af65cc1a2df1d3eb82906a80434353735c5d50",
@@ -460,6 +460,23 @@
       ]
     },
     "scope_finding": "CLOSED_CORRECTED",
-    "original_task_complete": false
+    "original_task_complete": false,
+    "owner_handoff": {
+      "session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+      "original_role": "Existing S1-D owner A; inherited native Batch/issuer composition; no invented personal R16 authorship",
+      "branch": "agent/pyat991-owner-handoff-r1",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-owner-handoff",
+      "job_id": "pyat991-existing-owner-handoff-r01",
+      "launch": {
+        "job_id": "pyat991-existing-owner-handoff-r01",
+        "child_pid": 75980,
+        "supervisor_pid": 75979,
+        "observer_pid": 75981,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat991-existing-owner-handoff-r01",
+        "launch_is_not_completion": true
+      },
+      "scope": "ONLY two-file owner acknowledgement, no code/tests/architecture investigation",
+      "next": "Receive concrete handoff then original S2-D A finish five new reader paths; same distinctG5 review new implementation; no repeat two-reader duel"
+    }
   }
 }
