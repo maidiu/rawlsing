@@ -424,7 +424,7 @@ class CarrierNeutralResearchExecutor:
             raise CarrierExecutionBindingError("one or more exact C11 releases are required")
         if type(self.repository) is VerifiedDirectEstate:
             self.repository._live()
-            expected = _ref_from_key(self.repository.i02.release, "C11LogicalRelease")
+            expected = self.repository.reconstructed_v1_release_ref
             if refs != (expected,):
                 raise CarrierExecutionBindingError(
                     "cold S2-C I03 requires exactly its independently pinned C11 release"
