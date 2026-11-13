@@ -1,0 +1,120 @@
+{
+  "schema": "SOROK_CGA_982_COMPOSITE_TEST_MATRIX@1",
+  "commission": "SOROK CG-A exact-defect repair #982",
+  "base": "4cbf67398d742eeab0853d047b6c2239c84b8348",
+  "base_implementation_commit": "6f1bc8894d1151d0921140e72bb43f5d1bb50fae",
+  "final_code_head": "ff30c13eea54e37e2dc8edfa73a7c7447127b735",
+  "final_report_head": "VERIFY_WITH_GIT_REV_PARSE_HEAD",
+  "author_disposition": "DELIVERED_FOR_INDEPENDENT_G5",
+  "self_approval": false,
+  "red": {
+    "cut": "4cbf67398d742eeab0853d047b6c2239c84b8348",
+    "test_source_cut": "c597024bb250f014f9a616006f10172ed53e4357",
+    "test_blob": "a1453e799d98b4c47d26c56a12d1d2695bd42557",
+    "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py",
+    "exit": 1,
+    "passed": 0,
+    "failed": 1,
+    "duration_seconds": 10.43,
+    "assertion": "assert current_p3_actor_access(..., source_receipt=old) is False -> AssertionError: assert True is False",
+    "log": "evidence/RED_base_c597024_hostile.log"
+  },
+  "green": {
+    "77_baseline_37": {
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py WORKER_RETURNS/SOROK-CGA-AGENT-A-RELAY-R1/test_cue_issuer.py WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py",
+      "exit": 0,
+      "passed": 37,
+      "failed": 0,
+      "duration_seconds": 2273.44,
+      "log": "evidence/GREEN_37_baseline_final.log"
+    },
+    "current_operation_repair_7": {
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_current_operation_binding.py WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py",
+      "exit": 0,
+      "passed": 7,
+      "failed": 0,
+      "duration_seconds": 89.76,
+      "log": "evidence/GREEN_repair_final.log"
+    },
+    "p4_source_owner_7": {
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-P4-SOURCE-OWNER-R1/test_p4_scope_owner.py",
+      "exit": 0,
+      "passed": 7,
+      "failed": 0,
+      "duration_seconds": 66.07,
+      "log": "evidence/GREEN_p4_scope_owner_final.log"
+    },
+    "agent_b_scope_6": {
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-AGENT-B-SCOPE-CHALLENGE-R1/test_scope_source.py",
+      "exit": 0,
+      "passed": 6,
+      "failed": 0,
+      "duration_seconds": 56.35,
+      "log": "evidence/GREEN_agent_b_scope_final.log"
+    },
+    "agent_ab_p4_p5_14": {
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-AGENT-A-RELAY-R1/test_cue_issuer.py WORKER_RETURNS/SOROK-CGA-CAUSAL-BRIDGE-R1/test_bridge.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/test_experience.py",
+      "exit": 0,
+      "passed": 14,
+      "failed": 0,
+      "duration_seconds": 270.23,
+      "log": "evidence/GREEN_14_group_final.log"
+    },
+    "p6_45": {
+      "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative.py WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative_hostile.py WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_scene_context.py WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_mii.py",
+      "exit": 0,
+      "passed": 45,
+      "failed": 0,
+      "duration_seconds": 587.42,
+      "log": "evidence/GREEN_45_p6_final.log"
+    },
+    "original_hostile_after_fix": {
+      "exit": 0,
+      "passed": 1,
+      "duration_seconds": 10.76,
+      "log": "evidence/GREEN_original_hostile.log"
+    },
+    "d1_contract_after_fix": {
+      "exit": 0,
+      "passed": 1,
+      "duration_seconds": 24.99,
+      "log": "evidence/GREEN_d1_contract.log"
+    }
+  },
+  "intermediate_regression": {
+    "cut": "working tree at ff30c13ee parent content before conduct-reader correction",
+    "command": "same six-group 37-test command",
+    "exit": 1,
+    "passed": 36,
+    "failed": 1,
+    "duration_seconds": 2336.97,
+    "failure": "test_real_current_cue_requires_issuer_parent_not_just_event_identity: assert True is False",
+    "cause": "conduct lookup bypassed the receiver's session.episodes revocation probe by reading the store directly",
+    "repair": "read the conduct through the actor-scoped session.episodes(user) reader while retaining owner interval episode ordering",
+    "post_repair_probe": {
+      "exit": 0,
+      "passed": 1,
+      "duration_seconds": 8.64,
+      "log": "evidence/GREEN_receiver_revocation_after_fix.log"
+    },
+    "failed_log": "evidence/INTERMEDIATE_37_first_run_regression.log"
+  },
+  "hostile_variations": [
+    "original stale authentic APPROACH receipt with broadened caller interval after WAIT 4",
+    "old authentic receipt with its unchanged original interval after WAIT 4",
+    "old event laundered through a copied current interval state",
+    "two same-clock operations (APPROACH vs ORIENT) in separate real states: substituting the other receipt refuses while the state's own receipt remains accepted",
+    "missing, malformed, widened, and replayed state_id / receipt_hash / episode_id / domain_issuance_id provenance",
+    "cold reopen and same-request retry conservation; later operation supersession"
+  ],
+  "preserved_assets": {
+    "g5_original_test_blob": "a1453e799d98b4c47d26c56a12d1d2695bd42557",
+    "d1_contract_test_blob": "30701f83ee7dcc37aa3cf958a7224cd6229b6816",
+    "receiver_977_test_blob": "2b489ba1edd0698ead4899fe64abe19e9f7f4cce"
+  },
+  "not_run": [
+    "GitHub Actions",
+    "protected PRE-MAIN merge",
+    "independent G5 receiving"
+  ]
+}

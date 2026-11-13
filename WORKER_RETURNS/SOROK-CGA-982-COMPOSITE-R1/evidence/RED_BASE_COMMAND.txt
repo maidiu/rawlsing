@@ -1,0 +1,15 @@
+Base cut: 4cbf67398d742eeab0853d047b6c2239c84b8348
+Test source cut: c597024bb250f014f9a616006f10172ed53e4357
+Test blob: a1453e799d98b4c47d26c56a12d1d2695bd42557
+Test staging path (removed after RED): WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py
+
+Command:
+python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py
+
+Exit: 1
+Passed: 0
+Failed: 1
+Duration: 10.43s
+Failure: assert current_p3_actor_access(..., source_receipt=old) is False
+         AssertionError: assert True is False
+Log: RED_base_c597024_hostile.log

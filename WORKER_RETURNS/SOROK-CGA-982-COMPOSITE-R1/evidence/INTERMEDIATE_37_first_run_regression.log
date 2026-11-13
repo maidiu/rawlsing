@@ -1,0 +1,26 @@
+F....................................                                    [100%]
+=================================== FAILURES ===================================
+_____ test_real_current_cue_requires_issuer_parent_not_just_event_identity _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1438/test_real_current_cue_requires0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10834d010>
+
+    def test_real_current_cue_requires_issuer_parent_not_just_event_identity(tmp_path, monkeypatch):
+        root, owner, session, world, house, receipt, packet = _case(tmp_path)
+        try:
+            expected = current_p3_actor_access(session, receipt["interval"], world, house,
+                                                packet, source_receipt=receipt)
+            assert expected is True
+            user = session.meta["user_actor"]
+            with monkeypatch.context() as patch:
+                original = session.episodes
+                patch.setattr(session, "episodes", lambda actor: [] if actor == user else original(actor))
+>               assert current_p3_actor_access(session, receipt["interval"], world, house,
+                                                packet, source_receipt=receipt) is False
+E                                               AssertionError: assert True is False
+E                                                +  where True = current_p3_actor_access(<s47.session.S47Session object at 0x108ce3e50>, {'activity_id': 'TEST_ONLY_S46_MATERIAL_INSPECT', 'actor_id': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'actor_knowledge_inferred': False, 'actor_owner': 'TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER', ...}, WorldState(clock=249, positions={'A': 'workshop', 'B': 'workshop', 'U': 'workshop'}, actor_state={'A': {'actor_id': 'T...BP4_OBJECTIVE_WORLD@1', owner='TEST_ONLY_BP4_WORLD_OWNER', grade='TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE', native=False), {'branch': 'first_session', 'epoch': 248, 'history': {'bench-installation': {'clock': 234, 'depends_on': [], 'id': 'be...ses the left strap.', 'glance': 'A photograph leans against the wall on the shelf.', 'room': 'living room'}, ...}, ...}, {'cues': [{'channels': ['AUDITORY'], 'clock': 248, 'condition_source': 'ef7b8da3f75ff09d6261159c4641cf4459f061a04413a8dfdc6e2ca6f100e2e0', 'detail': {'near': True}, ...}], 'recent_self_actions': [], 'recent_speech': []}, source_receipt={'interval': {'activity_id': 'TEST_ONLY_S46_MATERIAL_INSPECT', 'actor_id': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'actor_knowle...ck': 248, 'event_id': 'TEST_ONLY_BP4_WORLD_EVT_1e2bf940207a2ee21e1c702f2eb1f6423e978bd5c226238ac5af72e4d71c09d6', ...}})
+
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py:46: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py::test_real_current_cue_requires_issuer_parent_not_just_event_identity
+1 failed, 36 passed in 2336.97s (0:38:56)
