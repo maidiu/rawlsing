@@ -222,3 +222,11 @@ external holds.** No new A/B round, reviewer patch, optional hardening, producti
 source/current, protected merge, or universal crash architecture.
 
 Return: `WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/`.
+
+## 11. Remote verification
+
+Review content commit **`c0d266403a7f2929557403cbd70025444583734b`** was pushed to
+`origin/agent/pyat991-s2d-g5-r1`. Direct remote verification found the tested product
+tree unchanged (`git diff --stat 9d96a9c..c0d2664 -- rawlsing_next` empty), the remote
+receipt valid and the handoff present. A branch `9d96a9c`; B branch `b23d85428`.
+See `evidence/remote_verification.txt`.

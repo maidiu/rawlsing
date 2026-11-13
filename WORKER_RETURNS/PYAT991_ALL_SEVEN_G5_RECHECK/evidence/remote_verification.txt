@@ -1,0 +1,21 @@
+Direct remote verification at 2026-11-13T18:34:17Z
+repository: https://github.com/maidiu/rawlsing.git
+branch: agent/pyat991-s2d-g5-r1
+review_content_commit: c0d266403a7f2929557403cbd70025444583734b
+tested_code_cut: 9d96a9cac7d10f59f2c30d8045dd1696fa3ab969
+prior_g5_return: f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f
+a_branch_sha: 9d96a9cac7d10f59f2c30d8045dd1696fa3ab969
+b_branch_sha: b23d85428e4cd0180231fd7e35727c771de18cab
+owner_ack_blob: dae76ff13b096efe67df9ec526b9d8b99ce28b25
+
+direct ls-remote:
+c0d266403a7f2929557403cbd70025444583734b	refs/heads/agent/pyat991-s2d-g5-r1
+9d96a9cac7d10f59f2c30d8045dd1696fa3ab969	refs/heads/agent/pyat991-s2d-a-r1
+b23d85428e4cd0180231fd7e35727c771de18cab	refs/heads/agent/pyat991-s2d-b-r1
+
+git diff --stat 9d96a9cac7d10f59f2c30d8045dd1696fa3ab969 c0d266403a7f2929557403cbd70025444583734b -- rawlsing_next:
+EMPTY
+
+remote receipt.json: VALID
+remote 00_HANDOFF.md: PRESENT
+reviewer product edits: NONE

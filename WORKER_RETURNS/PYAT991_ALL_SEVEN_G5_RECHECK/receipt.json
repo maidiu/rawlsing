@@ -1,7 +1,9 @@
 {
   "task_id": "PYAT991-S2D-G5-ALL-SEVEN-RECHECK",
   "packet_id": "S2-D",
-  "old_obligations": ["P2-05"],
+  "old_obligations": [
+    "P2-05"
+  ],
   "contract_id": "PYAT991-S2D-PHASE1-R1",
   "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
@@ -87,7 +89,9 @@
       "rawlsing_next/pre553_issued_workload.py",
       "rawlsing_next/tests/test_pyat991_s2d_partial_binding_order.py"
     ],
-    "changed_return_paths": ["WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/"],
+    "changed_return_paths": [
+      "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/"
+    ],
     "issued_delta": "26 lines in resume_joined_workloads PARTIAL: exact saved admission type/binding/source checks and a second fresh CURRENT require_unchanged now precede _validate_entry_material/_validate_entry_outputs/_restore_receipt/_restore_output_material. Legacy branch, COMPLETED, ABSENT, schema, scheduler, issuer and science are unchanged.",
     "new_test": "135 lines; coherently rehashed forged PARTIAL/COMPLETED, legitimate PARTIAL conservation, revoked CURRENT zero restore.",
     "source_blob_pins_at_9d96": {
@@ -211,10 +215,22 @@
     "peak_staging_sampling": "1 ms .s2c-stage-* sampler, 66 samples; sampled peak, not exact instantaneous maximum",
     "parent_peak_rss_bytes": 121630720,
     "main_process_tree_samples": {
-      "normal": {"peak_bytes": 184864768, "samples": 24},
-      "completed": {"peak_bytes": 184221696, "samples": 22},
-      "partial": {"peak_bytes": 185520128, "samples": 24},
-      "absent": {"peak_bytes": 182910976, "samples": 24}
+      "normal": {
+        "peak_bytes": 184864768,
+        "samples": 24
+      },
+      "completed": {
+        "peak_bytes": 184221696,
+        "samples": 22
+      },
+      "partial": {
+        "peak_bytes": 185520128,
+        "samples": 24
+      },
+      "absent": {
+        "peak_bytes": 182910976,
+        "samples": 24
+      }
     },
     "main_process_tree_scope": "2 ms ps parent-root tree including live descendants; simultaneous snapshot sum; sampled peak, not hardware maximum",
     "separate_fresh_batch_tree": {
@@ -229,8 +245,14 @@
     "counter_coverage": "Parent normal+partial only. Fresh child modes and the separate Batch driver were not included in family/source/build/table counters. This is not an all-reader object-materialization count.",
     "normal_seconds": 0.13022448800620623,
     "partial_seconds": 0.06528332000016235,
-    "repeat_normal_seconds": {"cold": 0.13129893300356343, "repeat": 0.10149151299265213},
-    "repeat_partial_seconds": {"cold": 0.07214308099355549, "repeat": 0.07028796500526369},
+    "repeat_normal_seconds": {
+      "cold": 0.13129893300356343,
+      "repeat": 0.10149151299265213
+    },
+    "repeat_partial_seconds": {
+      "cold": 0.07214308099355549,
+      "repeat": 0.07028796500526369
+    },
     "resume_seconds": {
       "completed": 0.036945085012121126,
       "partial": 0.10407858400139958,
@@ -261,12 +283,30 @@
     "reviewer_noninterference": "No product/test/source/prior-return edits."
   },
   "external_holds": [
-    {"owner": "production current/issuer", "missing": "production CURRENT/as-of/revocation issuer; TEST_ONLY fixture only"},
-    {"owner": "original35/source science/rights", "missing": "original source/respondent/rights and scientific issuer; not read"},
-    {"owner": "Q2/S1-E", "missing": "production body-sink and postconsumer native receipt/fate join"},
-    {"owner": "S2-B", "missing": "G5-R1 independent recheck"},
-    {"owner": "resource platform", "missing": "integrated 100k respondents/6 GiB; new modules not run on Linux; process-tree sampled not exact hardware max; no universal crash/failpoint matrix"},
-    {"owner": "protected merge", "missing": "protected PRE-MAIN/N11/N12 integration authority"}
+    {
+      "owner": "production current/issuer",
+      "missing": "production CURRENT/as-of/revocation issuer; TEST_ONLY fixture only"
+    },
+    {
+      "owner": "original35/source science/rights",
+      "missing": "original source/respondent/rights and scientific issuer; not read"
+    },
+    {
+      "owner": "Q2/S1-E",
+      "missing": "production body-sink and postconsumer native receipt/fate join"
+    },
+    {
+      "owner": "S2-B",
+      "missing": "G5-R1 independent recheck"
+    },
+    {
+      "owner": "resource platform",
+      "missing": "integrated 100k respondents/6 GiB; new modules not run on Linux; process-tree sampled not exact hardware max; no universal crash/failpoint matrix"
+    },
+    {
+      "owner": "protected merge",
+      "missing": "protected PRE-MAIN/N11/N12 integration authority"
+    }
   ],
   "grades": {
     "engineering": "S2_SOURCEFREE_SAVED_ALL_SEVEN_FIXTURE__G3_ORDER_REPAIRED__G4_BOUNDED__ACCEPTED",
@@ -297,7 +337,8 @@
     "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/evidence/owner_ack.json",
     "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/evidence/diffs.txt",
     "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/evidence/refs.txt",
-    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/evidence/commands.txt"
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/evidence/commands.txt",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5_RECHECK/evidence/remote_verification.txt"
   ],
   "signature": {
     "signed_by_session": "ses_e30c25800ffeT8XbyTuHekRCme",
@@ -308,6 +349,21 @@
     "decision": "ACCEPT_SCOPED",
     "scope": "S2_SOURCEFREE_SAVED_NATIVE_ALL_READERS",
     "no_repair_performed": true,
-    "signed_at_utc": "2026-11-13T13:40:00Z"
+    "signed_at_utc": "2026-11-13T13:40:00Z",
+    "review_content_commit_sha": "c0d266403a7f2929557403cbd70025444583734b"
+  },
+  "remote_verification": {
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "review_content_commit_sha": "c0d266403a7f2929557403cbd70025444583734b",
+    "tested_code_cut_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "prior_g5_return_sha": "f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f",
+    "a_branch_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "code_diff_vs_tested_cut": "EMPTY",
+    "remote_receipt_json_valid": true,
+    "remote_handoff_present": true,
+    "reviewer_product_edits": false,
+    "verified_at_utc": "2026-11-13T13:50:00Z"
   }
 }
