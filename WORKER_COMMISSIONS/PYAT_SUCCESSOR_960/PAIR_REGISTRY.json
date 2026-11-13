@@ -57,7 +57,7 @@
     {
       "packet_id": "S1-E",
       "queue": "Q2",
-      "state": "Q2_SAME_A_COUNTER_RUNNING_ACTUAL_MODEL_VERIFIED",
+      "state": "Q2_DISTINCT_G5_RESERVED",
       "exact_prerequisites": [
         "S1C dae66cdf9f3846d237e0b1c3069cc17eb05b7746 sourcefreeG5pending",
         "directS2B155cd1b7244ab22ede804386e6d5253a39fe3587 sourcefreeG5pending; sourcefree129PASS/nativeI03evidence supplied",
@@ -74,7 +74,7 @@
           "session": "ses_e3122f686ffeByL78cGOKAacTS",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-a",
           "branch": "agent/pyat960-s1e-a-r1",
-          "state": "COUNTER_LAUNCHED"
+          "state": "TERMINAL_WAIT_G5"
         },
         "B": {
           "session": "ses_e3120baacffegE3ZnR5uZcHb0N",
@@ -91,7 +91,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat960-01a15c1e/pyat960-s1e-a02-counter",
         "launch_is_not_completion": true
       },
-      "job_id": "pyat960-s1e-a02-counter",
+      "job_id": "pyat960-s1e-g5-r01",
       "actual_first_turn_metadata": {
         "session": "ses_e3122f686ffeByL78cGOKAacTS",
         "message_id": "msg_1d269134d001P7IiIqdJQtqkdC",
@@ -110,10 +110,19 @@
       },
       "a_delivery_sha": "f4aaf2b17c7519642bb0bcfc5987cf21f86a46af",
       "a_implementation_sha": "75d09e87dbaf8273fab3a5ece2bb7981328113ce",
-      "G2_native": "SELECTOR_BODIES_PROVED_LINUX_FULLFACT_HOLD_MISSING_REQUIRED_AUTHORITY",
+      "G2_native": "AUTHOR_SUPPORTED5/5_3/3_RESTORE_PENDING_G5",
       "body_stream": "CONCRETE_13_FAMILY_BODY_TEE_TESTED_CANDIDATE",
       "b_delivery_sha": "ed9bda50ec1c1cbbc0ced56262a696b65fb14dad",
-      "b_implementation_sha": "9987a00e10dbb4e2dca7032b7d66a90e2303c780"
+      "b_implementation_sha": "9987a00e10dbb4e2dca7032b7d66a90e2303c780",
+      "a_counter_delivery_sha": "24e6bc02536a0714b0ab94a225f8eef1d84d8127",
+      "a_counter_code_sha": "f6fcd708f8cb8b8fc32bb7f6b9745b3676910be7",
+      "g5_reviewer": {
+        "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s1e-g5",
+        "branch": "agent/pyat960-s1e-g5-r1",
+        "state": "RESERVED",
+        "independence": "NeitherQ2AorB; priorS1Brevieweronly"
+      }
     },
     {
       "packet_id": "S2-C",
