@@ -98,6 +98,27 @@ def _native_i03(admission, compilation):
     pytest.fail("no S1-C supported saved-native I03 first reader")
 
 
+def _issued_manifest(workload, admission):
+    """Every originally issued unit, not merely a convenient discovery."""
+    units = tuple(
+        BatchUnitSpec(
+            "QUERY", request.query_ref,
+            (admission.release_ref,), (workload.decision_ref,),
+        )
+        for request in workload.requests
+    ) + tuple(
+        BatchUnitSpec(
+            "DISCOVERY", authority,
+            (admission.release_ref,), (workload.decision_ref,),
+        )
+        for authority in workload.discoveries
+    )
+    return BatchManifest(units), {
+        request.query_ref.key: request.predicate_ref
+        for request in workload.requests
+    }
+
+
 def _run(tmp_path, values):
     handoff, estate, admission, compilation, resolver, sink = _full(tmp_path, values)
     record = compilation.issued.record
@@ -106,14 +127,12 @@ def _run(tmp_path, values):
     authority_ref = workload.discoveries[0]
     discovery = execute_saved_i05(admission, discovery_authority_ref=authority_ref)
     assert discovery.receipts
-    batch_manifest = BatchManifest((
-        BatchUnitSpec("DISCOVERY", authority_ref,
-                      (admission.release_ref,), (workload.decision_ref,)),
-    ))
+    batch_manifest, predicates = _issued_manifest(workload, admission)
     batch = execute_saved_batch(
-        admission, manifest=batch_manifest, predicate_ref_by_query={},
+        admission, manifest=batch_manifest, predicate_ref_by_query=predicates,
     )
-    assert len(batch.receipts) == 1 and batch.receipts[0].state == "COMPLETED"
+    assert len(batch.receipts) == len(batch_manifest.units)
+    assert all(receipt.state == "COMPLETED" for receipt in batch.receipts)
     # Also exercise the previously accepted S2-D normal issued-workload reader
     # with source_factory absent: it must NOT re-decode the SAV source.
     normal = execute_issued_workload(
@@ -162,10 +181,7 @@ def test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join(tmp_p
 def test_missing_issued_batch_receipt_stays_pending_not_invented(tmp_path):
     handoff, estate, admission, compilation, resolver, _ = _full(tmp_path / "missing")
     workload = compilation.issued.workload
-    batch_manifest = BatchManifest((
-        BatchUnitSpec("DISCOVERY", workload.discoveries[0],
-                      (admission.release_ref,), (workload.decision_ref,)),
-    ))
+    batch_manifest, _predicates = _issued_manifest(workload, admission)
     never_executed = BatchExecutionRunner(
         manifest=batch_manifest, repository=admission, saved_mode=True)
     joined = join_saved_source_operation_fates(
