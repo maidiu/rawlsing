@@ -1,0 +1,150 @@
+{
+  "packet_id": "S2-D",
+  "task_id": "PYAT991-S2D-SOURCE-SCOPE-REPAIR",
+  "old_obligations": ["P2-05"],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "contract_frozen_at_sha": "d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "persona_role": "S2D_G5_SOURCE_SCOPE_A_REPAIR",
+  "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat991-s2d-a-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
+  "startup_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+  "base_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+  "g5_reviewed_cut": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+  "g5_delivery": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+  "b_code_cut": "75e1521878ee1e4d4d661d8fdae6b80944d07f6c",
+  "accepted_s2c": {
+    "executable": "b7b697b69f0acea12174937ee824c19ac34ac284",
+    "tree": "dc416d1f23100d4d52b19bc2120226964bc0be43"
+  },
+  "decision": "REVISE_EXACT_DEFECT_CORRECTED__PENDING_SAME_G5_DELTA_RECHECK",
+  "repair_state": "CORRECTED_LOCAL_EXACT_SOURCE_SCOPE",
+  "full_mission": "STILL_PARTIAL__FIVE_READERS_BLOCKED_OWNERSHIP",
+  "changed_paths": [
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/receipt.json",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_before_repair.json",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_after_repair.json",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_after_repair.out",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/canonical_g5_scope_witness.py",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/focused-29.txt"
+  ],
+  "source_blob_pins": {
+    "repaired_admission": "10e1a13752f482406e47f3da45b83c10d7c5dd99",
+    "new_source_scope_test": "ccad68294d9471d678ced5b43d68e623390654e0",
+    "b_admission_before": "721029ca35c389885423719c3b17345565257f1a",
+    "b_test": "25cefde8310c5d4754090b755e9af28679213703",
+    "a_release_scope_counter_test": "dc24827df6e50b4cb65c8a5d0eb18cffb7c271bd"
+  },
+  "g5_witness": {
+    "id": "G5-S2D-SCOPE-WHITELIST",
+    "original_observed": "Native full-repository I03 and native saved-estate CarrierNeutralResearchExecutor returned SUPPORTED denominator 2 fact c2105164... for an exact admitted SOURCE_ARTIFACT scope; SavedC11Admission refused with 'saved consumer scope contains a foreign scope reference'.",
+    "admitted_source_scope": {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-G5-ADMITTED-SOURCE-SCOPE",
+      "content_hash": "ab4de5365b5eb12a8592d54898ddde47b0c0c5c542378767e2f5f7d8f0a3e0cf",
+      "derivation": "exact ref decoded from receipt.i02.source; not hardcoded in product"
+    },
+    "repair": "SavedC11Admission derives the exact admitted source artifact from estate.i02.source, stores it privately/frozen with the admitted universe/release, and allows only those exact scope identities. Foreign source/universe/release/authority scope remains refused.",
+    "after_repair": {
+      "defect": false,
+      "saved_state": "ACCEPTED",
+      "native_fact": "c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8",
+      "saved_fact": "c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8",
+      "denominator": 2,
+      "base_fact": "064b866d646f7b7b9076842a3e26ee19df6262a1bd07a5e2e8ac87cd60955278"
+    },
+    "evidence_before": "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_before_repair.json",
+    "evidence_after": "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_after_repair.json",
+    "same_g5_recheck_target": "ses_e30c25800ffeT8XbyTuHekRCme"
+  },
+  "actual_tests": {
+    "focused_29": "29 passed in 7.82s (existing 26 + 3 new G5 source-scope tests)",
+    "prior_focused_26": "26 passed in 7.25s at prior cut; preserved",
+    "prior_regression_172": "172 passed in 49.94s at prior cut; preserved; not rerun after this local scope-only fix",
+    "prior_s2f_19": "19 passed in 8.09s at prior cut; preserved"
+  },
+  "new_tests": [
+    {
+      "id": "G5_EXACT_ADMITTED_SOURCE_SCOPE_I03",
+      "result": "PASS",
+      "actual": "Exact source artifact derived from receipt.i02.source added to both query and predicate scope; actual native and saved I03 exact fact/projection/ref parity; denominator 2."
+    },
+    {
+      "id": "G5_FOREIGN_SOURCE_SCOPE_REFUSED_I03",
+      "result": "PASS",
+      "actual": "Foreign source artifact scope is refused by SavedC11Admission; no foreign source positive."
+    },
+    {
+      "id": "G5_ADMITTED_SOURCE_SCOPE_I05",
+      "result": "PASS",
+      "actual": "Same exact admitted source scope on I05 atom predicates and query template; actual native discovery and saved I05 candidate/fact/receipt parity."
+    }
+  ],
+  "seven_reader_status": {
+    "I03": "PASS_SCOPED_ACTUAL_COLD__EXACT_ADMITTED_SOURCE_SCOPE_REPAIRED",
+    "I05": "PASS_SCOPED_ACTUAL_COLD__EXACT_ADMITTED_SOURCE_SCOPE_PRESERVED",
+    "Batch": "BLOCKED_OWNERSHIP__pre553_batch_runner.py::BatchExecutionRunner.__init__",
+    "NORMAL": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::execute_issued_workload",
+    "COMPLETED": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint",
+    "PARTIAL": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint",
+    "ABSENT": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint"
+  },
+  "remaining_owner_holds": [
+    "pre553_batch_runner.py::BatchExecutionRunner.__init__ exact saved admission",
+    "pre553_issued_workload.py::execute_issued_workload optional saved admission",
+    "pre553_issued_workload.py::resume_joined_workloads/JoinedWorkloadCheckpoint saved binding",
+    "S1-D production current/revocation",
+    "Q2/S1-E body-sink and postconsumer native receipt/fate join",
+    "S1-D/native I03 mixed foreign-universe owner decision",
+    "S2-B G5-R1 independent recheck",
+    "original35/source science/rights",
+    "integrated 100k respondents/6 GiB",
+    "distinct S2-D G5 acceptance"
+  ],
+  "resource_evidence": {
+    "state": "NOT_RERUN_FOR_THIS_LOCAL_SCOPE_ONLY_FIX",
+    "prior_g5_fixture": {
+      "retained_disk_bytes": 193570,
+      "peak_staging_bytes": 28672,
+      "object_materializations": 24,
+      "source_opens_parent": 0,
+      "source_opens_child": 0,
+      "full_c11_builds": 0,
+      "whole_table_fallbacks": 0,
+      "parent_peak_rss_bytes": 112869376,
+      "child_process_peak_rss_bytes": 52043776,
+      "cold_i03_seconds": 0.0158,
+      "repeat_i03_seconds": 0.0138,
+      "cold_i05_seconds": 0.0261,
+      "repeat_i05_seconds": 0.0265,
+      "integrated_100k_6GiB": "NOT_RUN"
+    },
+    "note": "The source-scope repair adds only exact-ref validation in the new adapter; no physical layout/resource change. No 100k or multi-process claim."
+  },
+  "grades": {
+    "engineering": "LOCAL_SOURCE_SCOPE_DEFECT_REPAIRED_PENDING_SAME_G5_DELTA; two actual readers exact; five readers still BLOCKED_OWNERSHIP",
+    "scientific": "NONE_VERIFIED; TEST_ONLY sourcefree engineering only",
+    "authority": "HOLD; production current and shared owner ACKs absent"
+  },
+  "gates": {
+    "G1": "PARTIAL: exact source scope corrected for I03/I05; five readers blocked",
+    "G2": "PARTIAL: actual I03/I05 cold/change/restore; five readers not executed",
+    "G3": "PARTIAL: source/universe/release/current/body refusals preserved; five-reader hostiles blocked",
+    "G4": "PARTIAL: prior independent fixture resources; 100k/6GiB NOT_RUN",
+    "G5": "REVISE_EXACT_DEFECT_PENDING_SAME_REVIEWER_DELTA_RECHECK"
+  },
+  "disposition": "REVISE_EXACT_DEFECT",
+  "stop_state": "REPAIRED_LOCAL_EXACT_SOURCE_SCOPE__PENDING_SAME_G5",
+  "integration": "UNMERGED",
+  "known_session_cost": "UNKNOWN",
+  "sourcefree": true,
+  "original35_claimed": false,
+  "production_current_claimed": false,
+  "protected_merge": "NONE"
+}

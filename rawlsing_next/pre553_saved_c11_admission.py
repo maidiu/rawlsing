@@ -156,6 +156,7 @@ class SavedC11Admission:
         "_runtime_catalog",
         "_executor",
         "_universe_ref",
+        "_source_ref",
         "_frozen",
     )
 
@@ -235,11 +236,14 @@ class SavedC11Admission:
         universe_ref = _ref_from_key(
             estate.i02.universe, "EmpiricalUniverse@1.0.0"
         )
+        source_kind = estate.i02.source.split("|", 1)[0]
+        source_ref = _ref_from_key(estate.i02.source, source_kind)
         object.__setattr__(self, "_estate", estate)
         object.__setattr__(self, "_release_ref", release_ref)
         object.__setattr__(self, "_runtime_catalog", private_catalog)
         object.__setattr__(self, "_executor", executor)
         object.__setattr__(self, "_universe_ref", universe_ref)
+        object.__setattr__(self, "_source_ref", source_ref)
         object.__setattr__(self, "_frozen", True)
         estate._live()
 
@@ -283,6 +287,12 @@ class SavedC11Admission:
     def estate_path(self) -> str:
         return self._estate.directory.as_posix()
 
+    @property
+    def source_ref(self) -> ExactRef:
+        """Exact admitted source artifact, derived from the estate's I02 root."""
+
+        return self._source_ref
+
     def binding_receipt(self) -> SavedBindingReceipt:
         return SavedBindingReceipt(
             schema="PYAT991_S2D_SAVED_C11_ADMISSION@1",
@@ -320,7 +330,11 @@ class SavedC11Admission:
             raise SavedC11AdmissionError(
                 "saved consumer scope names a foreign C11 release"
             )
-        allowed = {self._universe_ref.key, self._release_ref.key}
+        allowed = {
+            self._universe_ref.key,
+            self._release_ref.key,
+            self._source_ref.key,
+        }
         if any(ref.key not in allowed for ref in parsed):
             raise SavedC11AdmissionError(
                 "saved consumer scope contains a foreign scope reference"
