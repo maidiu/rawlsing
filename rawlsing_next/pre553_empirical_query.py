@@ -745,8 +745,16 @@ def execute_empirical_query(
     Identity/hash tampering raises and cannot be laundered into a semantic state.
     Lawful but nonpositive runtime outcomes are returned as typed EmpiricalFacts.
     """
-    if not isinstance(repository, C11Repository):
-        raise EmpiricalQueryExecutionError("repository must be accepted I02 C11Repository")
+    # This is the ORIGINAL I03 semantics owner. A strictly verified S2-C
+    # sourcefree saved-read session may supply the same _ReleaseIndex inputs;
+    # it is not passed off as a validated v1 C11Repository or a science issuer.
+    from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+    if not isinstance(repository, C11Repository) and type(repository) is not DirectEstateI03Session:
+        raise EmpiricalQueryExecutionError(
+            "repository must be accepted I02 C11Repository or exact verified S2-C I03 session"
+        )
+    if type(repository) is DirectEstateI03Session and group_scope is not None:
+        raise EmpiricalQueryExecutionError("grouped native I03 cache not yet qualified for cold sourcefree estate")
     if not isinstance(query, EmpiricalQuerySpec):
         raise EmpiricalQueryExecutionError("query must be EmpiricalQuerySpec@1.0.0")
     if not isinstance(predicate, EmpiricalPredicate):
@@ -800,7 +808,11 @@ def execute_empirical_query(
         )
 
     try:
-        resolved = _resolve_release_indices(repository, query=query, release_refs=supplied_releases)
+        resolved = (
+            _resolve_release_indices(repository, query=query, release_refs=supplied_releases)
+            if isinstance(repository, C11Repository)
+            else repository.indices_for(query=query, release_refs=supplied_releases)
+        )
     except EmpiricalQueryResolutionError as exc:
         p01, p02 = _failure_code(exc)
         return _negative_result(

@@ -96,6 +96,65 @@ def _estate_name(i02: ExternalI02Roots) -> str:
     # No source-provided release_id interpolated into any filesystem path.
     return sha256(i02.release.encode("utf-8")).hexdigest()
 
+def _decode_reconstructed_v1_release(value: str, release_id: str) -> ExactRef:
+    """Validate the historical v1 *identity*, never issue a v1 C11 seal."""
+    if not isinstance(value, str) or "|" not in value:
+        raise DirectEstateError("direct I02 lacks an exact reconstructed v1 release")
+    kind, _, tail = value.partition("|")
+    if "|" not in tail:
+        raise DirectEstateError("malformed reconstructed v1 release identity")
+    object_id, _, digest = tail.rpartition("|")
+    if (kind != "C11LogicalRelease" or object_id != release_id
+            or not _hex(digest)):
+        raise DirectEstateError("direct I02 reconstructed v1 release identity mismatched")
+    ref = ExactRef(kind, object_id, digest)
+    if ref.key != value:
+        raise DirectEstateError("noncanonical reconstructed v1 release identity")
+    return ref
+
+
+def _reconstructed_v1_release_from_certificate(
+    certificate: Path, i02: ExternalI02Roots, release_id: str,
+    source_manifest_hash: str,
+) -> ExactRef:
+    """Carry the original S2-B certified header through physical publication.
+
+    The temporary full certificate remains disposable. Its physical SHA must
+    match the S2-B builder result before any header becomes a durable fact.
+    The resulting ref stays an unissued v1 historical identity, distinct from
+    the direct I02 release root and bound into the caller-held manifest SHA.
+    """
+    import sqlite3
+
+    if _hash(certificate) != i02.physical:
+        raise DirectEstateError("direct I02 certificate bytes changed after qualification")
+    db = None
+    try:
+        db = sqlite3.connect(f"file:{certificate}?mode=ro", uri=True)
+        db.execute("PRAGMA query_only=ON")
+        header = dict(db.execute(
+            "SELECT name,value FROM header WHERE name IN ("
+            "'schema','release','source','replay','universe',"
+            "'source_manifest_hash','reconstructed_v1_release_ref',"
+            "'reconstructed_v1_replay_ref')"
+        ))
+    except (OSError, sqlite3.Error) as exc:
+        raise DirectEstateError("certified direct I02 historical identity unavailable") from exc
+    finally:
+        if db is not None:
+            db.close()
+    if (header.get("schema") != i02.schema or header.get("release") != i02.release
+            or header.get("source") != i02.source
+            or header.get("replay") != i02.replay
+            or header.get("universe") != i02.universe
+            or header.get("source_manifest_hash") != source_manifest_hash
+            or header.get("reconstructed_v1_replay_ref") != i02.replay):
+        raise DirectEstateError("direct I02 header and held root identity mismatch")
+    return _decode_reconstructed_v1_release(
+        header.get("reconstructed_v1_release_ref"), release_id,
+    )
+
+
 
 def _arrow_schema():
     import pyarrow as pa
@@ -302,11 +361,11 @@ def _verify_emitted_physical_payloads(
                 raise DirectEstateError("event posting row-group topology differs")
             observed = 0
             for gid in range(physical.num_row_groups):
+                # All physical projection lanes are semantic obligations,
+                # including the R5 typed lane and repeated-event topology.
+                # Read exactly ONE bounded row group, never the whole table.
                 rows = physical.read_row_group(
-                    gid, columns=[
-                        "body_json", "ref", "family", "respondent",
-                        "native", "canonical", "component", "typed_state",
-                    ],
+                    gid, columns=_arrow_schema().names,
                 ).to_pylist()
                 postings = (locator.read_row_group(gid).to_pylist()
                             if locator is not None else None)
@@ -317,6 +376,25 @@ def _verify_emitted_physical_payloads(
                     if (type(obj) is not _FAMILIES[family]
                             or row["family"] != family or obj.ref.key != row["ref"]):
                         raise DirectEstateError("emitted canonical physical body/ref mismatch")
+                    expected_row = _row(family, obj)
+                    # Arrow float64 may canonicalize NaN payload bits: the
+                    # independent exact R5 raw_typed lane holds those bits.
+                    # Every other lane, including negative zero, must agree.
+                    for column, expected in expected_row.items():
+                        actual = row[column]
+                        if (column == "raw_float64" and type(expected) is float
+                                and expected != expected):
+                            if type(actual) is not float or actual == actual:
+                                raise DirectEstateError("physical raw float lane differs from body")
+                        elif column == "raw_float64" and type(expected) is float:
+                            import struct
+                            if (type(actual) is not float or
+                                    struct.pack("!d", actual) != struct.pack("!d", expected)):
+                                raise DirectEstateError("physical raw float lane differs from body")
+                        elif actual != expected:
+                            raise DirectEstateError(
+                                "physical typed/identity/occurrence lane differs from exact body"
+                            )
                     certified = db.execute(
                         "SELECT family,respondent,native,canonical,component,state "
                         "FROM main.objects WHERE ref=?", (row["ref"],),
@@ -374,6 +452,7 @@ class EstateReceipt:
     path: str
     manifest_sha256: str
     i02: ExternalI02Roots
+    reconstructed_v1_release_ref: ExactRef
     family_counts: Mapping[str, int]
     retained_bytes: int
 
@@ -444,6 +523,9 @@ def write_direct_estate(
         _verify_emitted_physical_payloads(
             stage, scratch, {name: writer.count for name, writer in writers.items()},
         )
+        reconstructed_v1 = _reconstructed_v1_release_from_certificate(
+            scratch, i02, source.manifest.release_id, source.manifest.content_hash,
+        )
         # SQLite is proof scratch and MUST NOT become a second durable corpus.
         scratch.unlink()
         members = {}
@@ -455,6 +537,7 @@ def write_direct_estate(
         counts = {family: writer.count for family, writer in writers.items()}
         meta = {
             "schema": SCHEMA, "i02": _roots(i02),
+            "reconstructed_v1_release_ref": reconstructed_v1.key,
             "source_manifest_sha256": source.manifest.content_hash,
             "family_counts": counts, "event_locator_count": index.count,
             "chunk_rows": chunk_rows, "members": members,
@@ -504,7 +587,7 @@ def write_direct_estate(
             os.close(base_fd)
         result = EstateReceipt(
             str(target), sha256(manifest_bytes).hexdigest(), i02,
-            MappingProxyType(counts),
+            reconstructed_v1, MappingProxyType(counts),
             sum((target / member).stat().st_size for member in members) + len(manifest_bytes),
         )
         published = None
@@ -540,6 +623,7 @@ class VerifiedDirectEstate:
         if current_authorizer is None or not callable(current_authorizer):
             raise DirectEstateError("independent live current/rights guard required")
         self._authorize = current_authorizer
+        self.held_manifest_sha256 = independently_held_manifest_sha256
         # Refuse before hashing or opening any source-derived estate bytes.
         self._live()
         self.root = _root(root)
@@ -560,6 +644,16 @@ class VerifiedDirectEstate:
             raise DirectEstateError("committed manifest invalid") from exc
         if manifest.get("schema") != SCHEMA or manifest.get("i02") != _roots(self.i02):
             raise DirectEstateError("estate source/replay/universe/logical/physical roots mismatch")
+        # Independently held manifest SHA binds this v1 historical identity;
+        # direct i02.release remains the *different* direct-schema identity.
+        direct_kind, sep, direct_tail = self.i02.release.partition("|")
+        direct_release_id, sep2, direct_digest = direct_tail.rpartition("|")
+        if (direct_kind != "C11_DIRECT_SOURCEFREE_RELEASE" or not sep
+                or not sep2 or not direct_release_id or not _hex(direct_digest)):
+            raise DirectEstateError("unqualified direct-sourcefree release identity")
+        self.reconstructed_v1_release_ref = _decode_reconstructed_v1_release(
+            manifest.get("reconstructed_v1_release_ref"), direct_release_id,
+        )
         required = set(f + ".parquet" for f in _FAMILIES_IN_ORDER) | {"event_locator.parquet"}
         members = manifest.get("members")
         if not isinstance(members, dict) or set(members) != required:
@@ -572,8 +666,33 @@ class VerifiedDirectEstate:
         census = manifest.get("family_counts")
         if not isinstance(census, dict) or set(census) != set(_FAMILIES_IN_ORDER):
             raise DirectEstateError("thirteen complete source family counts required")
-        if census["RespondentEvent"] != manifest.get("event_locator_count"):
+        event_count = census["RespondentEvent"]
+        locator_count = manifest.get("event_locator_count")
+        if (type(event_count) is not int or type(locator_count) is not int
+                or event_count < 0 or event_count != locator_count):
             raise DirectEstateError("physical event locator census mismatch")
+        # Cold sourcefree boundary: a re-pinned manifest's mutable counters
+        # cannot hide a retained native event body. Compare both *actual*
+        # Parquet footer censuses and row-group topology before any query can
+        # consume a subset. Full per-position parity is checked while native
+        # I03 constructs its already-required bounded postings index.
+        import pyarrow.parquet as pq
+        body = pq.ParquetFile(expected / "RespondentEvent.parquet")
+        locator = pq.ParquetFile(expected / "event_locator.parquet")
+        try:
+            if (body.metadata.num_rows != event_count
+                    or locator.metadata.num_rows != locator_count
+                    or body.metadata.num_rows != locator.metadata.num_rows
+                    or body.num_row_groups != locator.num_row_groups):
+                raise DirectEstateError("cold physical event/locator census differs from event bodies")
+            for gid in range(body.num_row_groups):
+                self._live()
+                if (body.metadata.row_group(gid).num_rows
+                        != locator.metadata.row_group(gid).num_rows):
+                    raise DirectEstateError("cold event/locator row-group coverage mismatch")
+        finally:
+            body.close()
+            locator.close()
         self.manifest = manifest
         self._live()
 
@@ -648,19 +767,39 @@ class VerifiedDirectEstate:
             raise DirectEstateError("exact respondent and question selectors required") from exc
         if type(respondent_ref) is not ExactRef or (target is not None and type(target) is not ExactRef):
             raise DirectEstateError("exact respondent and question selectors required")
-        import pyarrow.parquet as pq
-        pf = pq.ParquetFile(self.directory / "RespondentEvent.parquet")
-        group = None
-        rows = None
-        for posting in self._locators(
+        yield from self._events_from_postings(self._locators(
             respondent=respondent_ref.key, target=target,
             native_only=native_only, include_component=include_component,
             states=states,
-        ):
+        ))
+
+    def _events_from_postings(
+        self, postings: Iterator[Mapping[str, Any]], *,
+        parquet_file: Any | None = None, row_group_cache: dict[str, Any] | None = None,
+    ) -> Iterator[RespondentEvent]:
+        """One exact reader for both ordinary selection and indexed native I03.
+
+        Caller postings are never authority; validate every posting against its
+        independently pinned Parquet body before returning a native event.
+        """
+        self._live()
+        import pyarrow.parquet as pq
+        pf = parquet_file if parquet_file is not None else pq.ParquetFile(
+            self.directory / "RespondentEvent.parquet"
+        )
+        group = None
+        rows = None
+        for posting in postings:
             self._live()
             ref, gid, offset = posting["ref"], posting["group"], posting["offset"]
             if group != gid:
-                rows = pf.read_row_group(gid, columns=["body_json", "ref"]).to_pylist()
+                if row_group_cache is not None and row_group_cache.get("gid") == gid:
+                    rows = row_group_cache["rows"]
+                else:
+                    rows = pf.read_row_group(gid, columns=["body_json", "ref"]).to_pylist()
+                    if row_group_cache is not None:
+                        row_group_cache.clear()
+                        row_group_cache.update({"gid": gid, "rows": rows})
                 group = gid
             if rows is None or not (0 <= offset < len(rows)):
                 raise DirectEstateError("event locator points beyond row-group bounds")

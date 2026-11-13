@@ -334,3 +334,107 @@ def test_duplicate_physical_event_cannot_replace_missing_exact_event(tmp_path, m
         )
     assert poisoned["done"]
     assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
+
+
+@pytest.mark.parametrize("lane", [
+    "raw_typed", "occurrence", "kind", "content_hash", "raw_bool",
+])
+def test_physical_projection_lane_forgery_refused_before_publication(
+    tmp_path, monkeypatch, lane,
+):
+    """A2 hostile: source-I02 membership and event posting can remain valid
+    while a typed/value/occurrence/identity Parquet lane is silently wrong.
+    The entire physical projection must match the source-certified exact body.
+    """
+    import rawlsing_next.pre553_source_direct_parquet_estate as estate
+
+    candidate, direct = _source("S2C-A2-LANE-" + lane)
+    root = tmp_path / ("private-" + lane)
+    root.mkdir(mode=0o700)
+    original_flush = estate._Sink.flush
+    corrupted = {"done": False}
+
+    def poison_typed_lane(self):
+        if self.family == "RespondentEvent" and self.pending and not corrupted["done"]:
+            entry = dict(self.pending[0])
+            if lane == "raw_bool":
+                entry[lane] = not bool(entry[lane])
+            else:
+                entry[lane] = str(entry[lane]) + "::FORGED"
+            self.pending[0] = entry
+            corrupted["done"] = True
+        return original_flush(self)
+
+    monkeypatch.setattr(estate._Sink, "flush", poison_typed_lane)
+    with pytest.raises(DirectEstateError, match="physical typed/identity/occurrence lane"):
+        write_direct_estate(
+            direct, candidate.empirical_universes[0].ref, root, chunk_rows=2,
+        )
+    assert corrupted["done"]
+    assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
+
+
+def test_reconstructed_v1_release_is_distinct_and_manifest_pinned(tmp_path):
+    """A2 R1: source-direct I02 is NOT a historic v1 validation seal."""
+    import hashlib
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+
+    root, candidate, receipt = _write(tmp_path, "S2C-V1-DISTINCT")
+    cold = _open(root, receipt)
+    assert receipt.i02.release.startswith("C11_DIRECT_SOURCEFREE_RELEASE|")
+    assert receipt.reconstructed_v1_release_ref.kind == "C11LogicalRelease"
+    assert receipt.reconstructed_v1_release_ref.object_id == (
+        candidate.source_release_manifest.release_id
+    )
+    assert cold.reconstructed_v1_release_ref == receipt.reconstructed_v1_release_ref
+    assert receipt.reconstructed_v1_release_ref.key != receipt.i02.release
+
+    # Even with a freshly repinned *physical* manifest SHA, a direct-schema
+    # release may not masquerade as a historic C11LogicalRelease.
+    manifest = Path(receipt.path) / "manifest.json"
+    material = json.loads(manifest.read_text(encoding="utf-8"))
+    material["reconstructed_v1_release_ref"] = receipt.i02.release
+    manifest.write_text(canonical_json(material) + "\n", encoding="utf-8")
+    new_held_digest = hashlib.sha256(manifest.read_bytes()).hexdigest()
+    with pytest.raises(DirectEstateError, match="reconstructed v1 release identity"):
+        VerifiedDirectEstate(
+            root, exact_path=receipt.path,
+            independently_held_manifest_sha256=new_held_digest,
+            independently_held_i02=receipt.i02,
+            current_authorizer=lambda _: True,
+        )
+
+
+def test_tampered_direct_certificate_v1_header_refuses_before_publication(
+    tmp_path, monkeypatch,
+):
+    """A2 R1: never persist a changed certificate header as a new v1 identity."""
+    import sqlite3
+    import rawlsing_next.pre553_source_direct_parquet_estate as estate
+
+    candidate, direct = _source("S2C-V1-HEADER-TAMPER")
+    root = tmp_path / "private-v1-header"
+    root.mkdir(mode=0o700)
+    actual_builder = estate.build_sourcefree_direct_i02
+    tampered = {"value": False}
+
+    def mutate_header(source, universe, destination, *, chunk_size):
+        roots = actual_builder(
+            source, universe, destination, chunk_size=chunk_size,
+        )
+        with sqlite3.connect(destination) as db:
+            db.execute(
+                "UPDATE header SET value=? "
+                "WHERE name='reconstructed_v1_release_ref'",
+                ("C11LogicalRelease|FORGED|" + "0" * 64,),
+            )
+        tampered["value"] = True
+        return roots
+
+    monkeypatch.setattr(estate, "build_sourcefree_direct_i02", mutate_header)
+    with pytest.raises(DirectEstateError, match="certificate bytes changed after qualification"):
+        write_direct_estate(
+            direct, candidate.empirical_universes[0].ref, root, chunk_rows=2,
+        )
+    assert tampered["value"]
+    assert not list((root / "releases").iterdir()) if (root / "releases").exists() else True
