@@ -549,6 +549,7 @@ def read_child_uptake(session, child_id: str, event_id: str) -> dict:
     parent_alias = utterance.get("alias")
     root = session.read_root()["root_hash"]
     channel = utterance.get("child_perception_channel")
+    receipt_body = utterance.get("receipt") or {}
     if (utterance.get("root") != root
             or utterance.get("branch") != session.branch_id
             or utterance.get("child_actor_id") != child_id
@@ -557,7 +558,22 @@ def read_child_uptake(session, child_id: str, event_id: str) -> dict:
             or not _text(utterance.get("decision_id"))
             or not _text(utterance.get("operation_id"))
             or not _text(utterance.get("text"))
-            or channel not in {"speech", "NOT_PERCEIVED"}):
+            or channel not in {"speech", "NOT_PERCEIVED"}
+            or not isinstance(receipt_body, Mapping)
+            or receipt_body.get("schema") != PARENT_UTTERANCE_RECEIPT_SCHEMA
+            or receipt_body.get("status") != "ADMITTED"
+            or receipt_body.get("root") != root
+            or receipt_body.get("branch") != session.branch_id
+            or receipt_body.get("actor_id") != parent_id
+            or receipt_body.get("alias") != parent_alias
+            or receipt_body.get("child_actor_id") != child_id
+            or receipt_body.get("child_alias") != child_alias
+            or receipt_body.get("child_perception_channel") != channel
+            or receipt_body.get("event_id") != event_id
+            or receipt_body.get("event_hash") != utterance.get("event_hash")
+            or receipt_body.get("decision_id") != utterance["decision_id"]
+            or receipt_body.get("operation_id") != utterance["operation_id"]
+            or receipt_body.get("clock") != episode.get("clock")):
         raise RecursionRefusal("CHILD_UPTAKE_UTTERANCE_MISMATCH")
     event = session.event(event_id)
     if not event:
