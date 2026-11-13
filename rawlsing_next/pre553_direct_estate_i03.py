@@ -143,7 +143,7 @@ class DirectEstateI03Session:
             self._db.execute("PRAGMA cache_size=-1024")
             self._db.execute(
                 "CREATE TABLE events("
-                "respondent TEXT NOT NULL, ref TEXT NOT NULL, "
+                "respondent TEXT NOT NULL, ref TEXT NOT NULL UNIQUE, "
                 "native TEXT NOT NULL, canonical TEXT NOT NULL, "
                 "component TEXT NOT NULL, state TEXT NOT NULL, "
                 "gid INTEGER NOT NULL, off INTEGER NOT NULL)"
@@ -151,7 +151,8 @@ class DirectEstateI03Session:
             self._db.execute(
                 "CREATE TABLE members("
                 "family TEXT NOT NULL, respondent TEXT NOT NULL, "
-                "ref TEXT NOT NULL, gid INTEGER NOT NULL, off INTEGER NOT NULL)"
+                "ref TEXT NOT NULL, gid INTEGER NOT NULL, off INTEGER NOT NULL, "
+                "PRIMARY KEY(family,ref))"
             )
             self._build()
             self._db.execute(
@@ -217,7 +218,9 @@ class DirectEstateI03Session:
             )
             count += batch.num_rows
             self._require_live()
-        if count != self.estate.manifest["event_locator_count"]:
+        stored_count = db.execute("SELECT COUNT(*) FROM events").fetchone()[0]
+        if (count != self.estate.manifest["event_locator_count"]
+                or stored_count != count):
             raise DirectEstateError("cold I03 index omitted authenticated event postings")
 
         for family in ("EmpiricalCoordinateFact", "RoutingEligibilityFact", "WeightMeasureFact"):
