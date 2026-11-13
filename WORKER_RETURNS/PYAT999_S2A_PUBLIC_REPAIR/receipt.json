@@ -1,0 +1,174 @@
+{
+  "packet_id": "S2-A",
+  "task_id": "PYAT999-S2A-PUBLIC-SELECTOR-REPAIR-R1",
+  "old_obligations": ["P2-01"],
+  "contract_id": "PYAT999-S2A-PUBLIC-SELECTOR-REPAIR-R1",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/owner_comment_6866766494.md@66c9dd38fa31d075b99b1bdbf90ca03a56f29b08",
+  "contract_frozen_at_sha": "66c9dd38fa31d075b99b1bdbf90ca03a56f29b08",
+  "governing_issues": ["https://github.com/maidiu/rawlsing/issues/919", "https://github.com/maidiu/rawlsing/issues/923", "https://github.com/maidiu/rawlsing/issues/999", "https://github.com/maidiu/rawlsing/issues/909"],
+  "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat999-s2a-public-repair-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-s2a-public-repair",
+  "startup_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "base_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "accepted_s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2d": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "code_test_sha": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+  "implemented_sha": "1cb7977b78022f8def26b769714b4c7ac519ece0",
+  "return_commit": "PENDING_TERMINAL_RETURN_FREEZE; code/test cut is immutable",
+  "changed_paths": [
+    "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py",
+    "WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/"
+  ],
+  "exclusive_writer_scope": "One existing Codex S2-A implementation session on a new isolated branch/worktree; only the S2-C-owned VerifiedDirectEstate public selector and strictly indispensable same-class private coverage/order helpers were edited. Accepted S2-C/S2-D code, tests, writer, schema, manifest, native I03/I05, science, current, issuer and prior returns remain unchanged.",
+  "allowed_symbols_used": [
+    "VerifiedDirectEstate.select_events",
+    "_stage_validated_public_selector (new private same-class coverage and bounded selected-ref-order helper)"
+  ],
+  "source_blob_pins": {
+    "rawlsing_next/pre553_source_direct_parquet_estate.py@startup": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+    "rawlsing_next/pre553_source_direct_parquet_estate.py@repair": "dca76c98f6c097bb8d79316087eaf548b1b45594",
+    "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py@repair": "cdadb84531659a0dc9264b740e12d9f084e5380b",
+    "baseline/reviewer_s2a_native_witness.py": "4fe072e484d1359d35c770074bea88438480533d",
+    "baseline/reviewer_s2a_native_witness.py.sha256": "52bc5e03980fe192df093fcf246b3631ed0a9bbefe361f59a6d1aeee6c8438a4",
+    "baseline/reviewer_s2a_native_witness.json.sha256": "d54215124933f0b72145c49025f741af9d9cf8056daa86e0ab1bb97e61f18bbd",
+    "resource.json.sha256": "252f44545bbe8fc654e72bbdbf9cb605fb1f49e24b67ae158edac17793192813"
+  },
+  "original_red": {
+    "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "reviewer_delivery": "c900cf463694a8b21af7f3f8bd8da6a6b23d1d82",
+    "witness_script": "WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/baseline/reviewer_s2a_native_witness.py",
+    "witness_output": "WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/baseline/reviewer_s2a_native_witness.json",
+    "executed_on": "pristine 9d96a9cac7d10f59f2c30d8045dd1696fa3ab969 before source edits",
+    "fixture_respondents": 4,
+    "fixture_locator_rows": 4,
+    "native_selected_count": 1,
+    "normal_direct_select_count": 1,
+    "poisoned_select_events_count": 0,
+    "poisoned_select_events_undercount": true,
+    "native_i03_refused_same_poison": true,
+    "native_i03_error": "DirectEstateError: cold I03 event posting lacks exact positional/selector coverage",
+    "poisoned_body_ref_corpus_unchanged": true,
+    "select_events_peak_traced_bytes": 12521,
+    "parent_max_rss_bytes": 103579648,
+    "exit": 0
+  },
+  "green": {
+    "test_file": "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py",
+    "public_selector": "VerifiedDirectEstate.select_events",
+    "actual_first_consumer": "VerifiedDirectEstate.select_events plus preserved CarrierNeutralResearchExecutor.execute_i03 -> DirectEstateI03Session.indices_by_respondent -> _select_respondent_events",
+    "coverage_before_filter": "Every RespondentEvent body selector row is matched against every event_locator row by row-group, offset, ref and occurs before respondent/target/state filtering.",
+    "empty_state_validation": "states=frozenset() still executes complete coverage validation before returning an empty selection.",
+    "poison_refusal": "Coherent target-native, canonical, component and state locator poison refuse with DirectEstateError before any subset.",
+    "native_refusal_preserved": "The native I03 session still refuses the same poison with its existing positional/selector coverage error.",
+    "ordering": "Selected locator refs are staged in a disposable SQLite cursor and returned ORDER BY ref, matching native _build_release_index ref-key order; repeated distinct occurrence refs are not deduplicated.",
+    "duplicate_refs": "Duplicate exact event refs are rejected by a temporary ref-only uniqueness table before selection.",
+    "changed_restore": "Changed legitimate native event produces a changed public selection and changed native I03 fact; original root restores the exact prior public refs and native facts.",
+    "empty_vs_unknown": "Public empty selection remains distinct from native ROUTING_UNKNOWN.",
+    "current_source_root": "Revoked current and wrong source/root refuse; existing accepted H29 root tests remain green."
+  },
+  "tests": {
+    "s2a_focused_62_darwin": "62 passed in 9.86s",
+    "s2a_focused_62_linux": "62 passed in 13.58s",
+    "s2c_focused_31_darwin": "31 passed in 7.54s",
+    "s2c_focused_31_linux": "31 passed in 8.81s",
+    "s2c_inherited_91_linux": "91 passed in 41.85s",
+    "s2c_inherited_91_darwin": "59 passed, 32 host-blocked because VerifiedExternalI02 requires Linux /proc/self/fd; explicit host-capability hold, not claimed as product pass",
+    "s2d_focused_31_darwin": "31 passed in 21.70s",
+    "s2d_focused_31_linux": "31 passed in 55.46s",
+    "h26_green_verbose": "5 passed in 3.01s",
+    "full_accepted_202": "NOT_RUN",
+    "integrated_100k": "NOT_RUN",
+    "no_test_weakening": true
+  },
+  "resources": {
+    "probe": "WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/resource_probe.py",
+    "results": "WORKER_RETURNS/PYAT999_S2A_PUBLIC_REPAIR/resource.json",
+    "fixture": "256 synthetic respondents / 256 events; sourcefree; not 100k",
+    "retained_bytes": 9758503,
+    "peak_selected_index_bytes": 16384,
+    "estate_open_family_opens": 2,
+    "select_family_opens": 3,
+    "select_row_group_reads": 257,
+    "select_body_reconstructions": 1,
+    "cold_select_seconds": 0.1340129949967377,
+    "repeat_select_seconds": 0.1314811749907676,
+    "cold_native_i03_seconds": 0.8156134669843595,
+    "repeat_native_i03_seconds": 0.7867205289949197,
+    "selected_count": 1,
+    "selected_refs_equal_repeat": true,
+    "native_i03_fact_state": "SUPPORTED",
+    "native_i03_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:d648339b3f1c521e72711aaad6e96f8b6eac0e7f50b2c6ff634c3bd23479d3a7",
+    "native_i03_repeat_equal": true,
+    "parent_peak_rss_bytes": 153587712,
+    "child_peak_rss_bytes": 60567552,
+    "child_cold_select_seconds": 0.1324875979917124,
+    "child_refs_equal_parent": true,
+    "child_source_opens": [],
+    "source_extension_opens": [],
+    "full_c11_builds": 0,
+    "whole_table_read_table_fallbacks": 0,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at material local fixture; not integrated 100k",
+    "measurement_note": "Single parent and one fresh child, not a multi-process tree benchmark. Scratch is the disposable selected-ref SQLite index; no retained duplicate body corpus. Full 100k/6 GiB integration NOT_RUN."
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Original #919/#923 H26-H30, owner grant @66c9dd and exact startup blob 0e4b34 were read and pinned. Public selector native/canonical/component/state/occurrence and current/source/root boundary preserved."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Actual cold sourcefree direct estate public selector equals native selected refs and native I03 fact/release oracle; changed legitimate event changes both public selection and native fact; original root restores exact identities."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "H26 target-native poison with intact bodies/ref corpus refuses before empty target subset; H27 canonical/component/state poison refuses; H28 empty stays distinct from ROUTING_UNKNOWN; H29 wrong source/root and current revocation refuse; native I03 refuses the exact H26 poison."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_FIXTURE",
+      "receipt": "Material local 256-respondent fixture measured retained 9758503 B, disposable selected-index peak 16384 B, 3 family opens and 257 row-group reads per selector call, 1 selected body reconstruction, cold/repeat selector 0.134/0.131 s, native I03 0.816/0.787 s, parent/child RSS 153587712/60567552 B, 0 source-extension opens, 0 C11 builds, 0 pq.read_table fallbacks. Full 100k/6 GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+      "receipt": "Author cannot self-accept. Exact implementation SHA 1cb7977b78022f8def26b769714b4c7ac519ece0 goes to the same distinct nonauthor reviewer for one scoped re-review after terminal."
+    }
+  },
+  "engineering_grade": "S2A_PUBLIC_SELECTOR_REPAIRED__G5_PENDING",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE; sourcefree TEST_ONLY",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT; exact owner file exception only",
+  "integration": "UNMERGED",
+  "open_defects": [],
+  "remaining_exact_failure": null,
+  "external_holds": [
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source/respondent bytes used"
+    },
+    {
+      "owner": "production current/host/actor issuer",
+      "minimal_missing_witness": "independent production CURRENT/rights; the sourcefree direct estate current_authorizer is test-only"
+    },
+    {
+      "owner": "integrated 100k respondents / 6 GiB",
+      "minimal_missing_witness": "complete accepted vertical workload; NOT_RUN"
+    },
+    {
+      "owner": "protected merge / N11-N12",
+      "minimal_missing_witness": "protected receiving authority; UNMERGED"
+    }
+  ],
+  "own_worst_vulnerability": "The public selector now performs a full row-group scan of all event body/locator selectors on every call; at 256 respondents it is 0.13 s and a 16 KiB temporary selected-ref index, but 100k behavior is unproved. The legacy private _locators helper remains in the file but is no longer on the public path; a future reader could confuse it with the repaired public selector. Native I03 and the public selector implement the same parity law in separate code; they are independently tested, not a single shared helper. The Darwin inherited 32-test host block is handled by the existing Linux Lima run, not by changing tests.",
+  "challenges_refuted": [
+    "The original defect was not fixed by a count/hash check: every event body selector and locator position is compared before filter.",
+    "The original native I03 path was already safe; the fix does not weaken or replace it.",
+    "Native canonical ref order is preserved with distinct repeated occurrence refs; the selector does not deduplicate valid occurrences.",
+    "The five S2-D readers and S2-C writer/schema/native session were not reopened or edited."
+  ],
+  "next_actor": "Same distinct nonauthor reviewer ses_e30c25800ffeT8XbyTuHekRCme receives exact code/test SHA 1cb7977b78022f8def26b769714b4c7ac519ece0 for one scoped G1-G5 re-review. Author is not G5.",
+  "known_session_cost": "UNKNOWN",
+  "stop_state": "S2A_PUBLIC_REPAIR_TERMINAL__G5_PENDING"
+}
