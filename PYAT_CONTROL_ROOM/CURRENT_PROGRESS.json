@@ -360,12 +360,13 @@
     "Q3": {
       "job": "pyat960-s2c-preflight01",
       "branch": "agent/pyat960-s2c-preflight-r1",
-      "state": "PREFLIGHT_RECOVERED_RUNTIME_EXIT1_WRITER_HELD",
+      "state": "USER_PAUSED",
       "writer": "HELD_DIRECT_S2B_G5_AND_CONCRETE_Q2_ABI",
       "return_sha": "be61531acd388428896ab22ffd2f631ebb7d721c",
       "finding": "metadata-onlydirectI02 needs body-preservingQ2stream; proposals notnewarchitecture",
       "count_function_entries": 48,
-      "count_old_obligations": 12
+      "count_old_obligations": 12,
+      "resume": "Explicit user resumption required; qualification alone cannot launch"
     }
   }
 }

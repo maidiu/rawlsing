@@ -421,3 +421,8 @@ Q2code `75d09e87dbaf8273fab3a5ece2bb7981328113ce` (delivery `f4aaf2b17c7519642bb
 ### #960 S01-S03 body contract and native first-fact hold — 2026-11-12
 
 Q2Bcode `9987a00e10dbb4e2dca7032b7d66a90e2303c780` suppliesbody-preserving13familysink ABI and sourceoperationrealization anti-joins. ExistingLinuxnative selectedbodies5/5 proved, fullnativefact still UNAVAILABLE/MISSING_REQUIRED_AUTHORITY. SameA finitecounter nowrunning totraceexactlawfulfixture/queryauthoritypreimage; Q2G2notwaivedasS2D. Q3bodyinputconcretecandidate, originalindependentdirectS2BG5 gate remains; no protected/science acceptance.
+
+
+### #960 user pause of S2-C / Q3 — 2026-11-12
+
+S2-C USER_PAUSED by explicit user instruction. Existing preflight terminal; writer never launched. No S2-C dispatch/resume/review until explicit user resumption; dependency qualification alone does not lift pause. Q2 remains authorized; evidence preserved.

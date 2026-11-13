@@ -1,3 +1,7 @@
+# User pause — S2-C / Q3 only — 2026-11-12
+
+S2-C USER_PAUSED. No active S2-C process; preflight already terminal, writer never launched. No new S2-C dispatch/resume/review until explicit user resumption, even if dependencies qualify. Q2 remains active and authorized. Prior evidence retained; historical entries follow.
+
 # Successor #960 Q2 B repairs / same A counter — 2026-11-12
 
 B delivery `ed9bda50ec1c1cbbc0ced56262a696b65fb14dad` / code `9987a00e10dbb4e2dca7032b7d66a90e2303c780`: working13familybodytee, sourcebody/routing/occurrence anti-joins, honestread/disk/cleanup;30Q2+81S2Bnative Linux PASS and eventselection5/5. Full Q2nativefact stillMISSING_REQUIRED_AUTHORITY; selectorbodyisnotfullfact. SAMEA counteractuallylaunched on exactdescendant totraceexistingfixture/query/replaypreimage and preserveoneactualG2fact requirement. No source/science/protectedgrant. Q3bodyinputcandidate exists, writerstillhelddirectS2BindependentG5. Historical entries follow.

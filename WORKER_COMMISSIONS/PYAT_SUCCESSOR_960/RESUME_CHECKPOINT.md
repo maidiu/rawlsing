@@ -1,5 +1,10 @@
 # Successor #960 — same existing PYAT HQ
 
+## USER PAUSE — S2-C / Q3 only — 2026-11-12
+
+User explicitly paused S2-C. Registry/runtime state USER_PAUSED; NO S2-C author/reviewer/preflight/writer dispatch or resume until explicit user resumption, even if upstream gates later qualify. Actual active API confirms no S2-C run; its preflight already terminal and writer never started. Preserve banked preflight/code/evidence. Q2 A counter remains authorized and was actually running; do not pause or interrupt Q2. Whole goal recurring wakes remain off.
+
+
 ## Q2 B terminal → SAME A counter launched / native fact authority witness — 2026-11-12
 
 B jobpyat960-s1e-b01 exit0 after50m54s (00:04:21–00:55:15 UTC Nov13; eveningNov12 clienttime). Delivery `ed9bda50ec1c1cbbc0ced56262a696b65fb14dad`, code `9987a00e10dbb4e2dca7032b7d66a90e2303c780`, remote verified. Actual full handoff, code/13familybody helper and returnevidence inspected. Reports30Q2/18S1C/33S1B/56decoder+1skip Darwin; existingLinux s2b Lima privatecopy30Q2+81S2Bnative PASS and native selectedeventbodies5/5exact. Bodytee begin/emit/absence/finish/abort nowworking; operation source-body realization/route/occurrence anti-joins, honestoriginal2bytepasses/fixture1, failcleanup and actual19,337,216Bcertificate/46,158,133Bpeakdisk. All35IDs/18276identities/26unjoinedheld accounted, no originalscience.

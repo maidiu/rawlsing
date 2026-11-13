@@ -118,7 +118,7 @@
     {
       "packet_id": "S2-C",
       "queue": "Q3",
-      "state": "PREFLIGHT_RECOVERED_READONLY_SOURCE_FINDINGS_WRITER_HELD",
+      "state": "USER_PAUSED",
       "exact_prerequisites": [
         "Physicalwriter: independently accepted directS2BscopedG5",
         "Physicalwriter: concretecompatibleQ2source-streaminputcontract",
@@ -159,7 +159,7 @@
       "preflight_return": "be61531acd388428896ab22ffd2f631ebb7d721c",
       "worker_exit": 1,
       "runtime_error": "unknown: Failed to execute statement; cause undetermined",
-      "next": "Existing Q2 B handoff must consume body-preserving stream findings; Q3 writer awaits existing gates",
+      "next": "No S2-C/Q3 dispatch, resume, review or writer launch until user explicitly resumes this lane, even if dependencies qualify.",
       "gates": {
         "G1": "READONLY_REUSE_ABI_PREPARATION_RECEIVED_NOT_PRODUCT_ACCEPTANCE",
         "G2": "NOT_RUN",
@@ -169,7 +169,10 @@
       },
       "body_finding": "DirectI02certificate lacks eventbodies; preserve13-family input for co-production, no second source read/corpus",
       "proposal_status": "specific layout/root/session proposals NOT ADOPTED as new contract",
-      "concrete_Q2_body_candidate": "9987a00e10dbb4e2dca7032b7d66a90e2303c780::SourceI02BodySink begin/emit/absence/finish/abort; candidate under A counter"
+      "concrete_Q2_body_candidate": "9987a00e10dbb4e2dca7032b7d66a90e2303c780::SourceI02BodySink begin/emit/absence/finish/abort; candidate under A counter",
+      "state_before_user_pause": "PREFLIGHT_RECOVERED_READONLY_SOURCE_FINDINGS_WRITER_HELD",
+      "resume_authority": "EXPLICIT_USER_RESUMPTION_REQUIRED",
+      "pause_observation": "No S2-C run active; preflight terminal, writer never launched. Active API shows only Q2 A counter."
     }
   ]
 }
