@@ -295,3 +295,127 @@ print(json.dumps({"fact_refs": [f.ref.as_dict() for f in result.facts],
         for fact in oracle.facts
     ]
     assert not list(root.glob(".s2c-native-i03-*"))
+
+
+def _repin_hostile_event_locator(receipt, altered_postings, *, falsify_count):
+    """Adversarially modify the physical selector AND repin all mutable hashes.
+
+    The held S2-B logical/physical roots remain frozen, but the attacking
+    fixture deliberately supplies a newly trusted physical manifest SHA.
+    No original event body is modified, reconstructed, or read by the attack.
+    """
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+
+    directory = Path(receipt.path)
+    locator_file = directory / "event_locator.parquet"
+    pf = pq.ParquetFile(locator_file)
+    try:
+        schema = pf.schema_arrow
+    finally:
+        pf.close()
+    pq.write_table(
+        pa.Table.from_pylist(altered_postings, schema=schema),
+        locator_file, compression="zstd", row_group_size=2,
+    )
+    manifest_file = directory / "manifest.json"
+    manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
+    manifest["members"]["event_locator.parquet"] = hashlib.sha256(
+        locator_file.read_bytes()
+    ).hexdigest()
+    if falsify_count:
+        manifest["event_locator_count"] = len(altered_postings)
+        manifest["family_counts"]["RespondentEvent"] = len(altered_postings)
+    manifest_file.write_text(
+        canonical_json(manifest) + "\n", encoding="utf-8",
+    )
+    return replace(
+        receipt,
+        manifest_sha256=hashlib.sha256(manifest_file.read_bytes()).hexdigest(),
+    )
+
+
+def test_g5_hidden_event_repin_cannot_produce_false_native_i03_fact(
+    tmp_path, monkeypatch,
+):
+    """G3 exact independent G5 counterexample: 2 bodies, 1 locator, 1 claimed.
+
+    This tests the REAL executor invocation, not merely iter_family (which
+    already refused the truncation). The old A2 R1 emitted a false fact.
+    """
+    tag = "S2C-G5-HIDDEN-REPIN"
+    source, candidate = _source_with_candidate(monkeypatch, tag, 1)
+    qauth = native._query_authority(tag)
+    predicate = native._branch_predicate(source, qauth)
+    query = native._query(source, qauth, predicate, ("Y",), tag=tag)
+    oracle = native._run(source, qauth, predicate, query)
+    root, receipt = _cold(
+        tmp_path, candidate, source["universe"].ref, "private-hidden-repin",
+    )
+    assert len(candidate.respondent_events) == 2
+    baseline = _executor(
+        root, receipt, source, qauth, predicate, query,
+    ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    assert _fact_signature(baseline) == _fact_signature(oracle)
+    assert tuple(f.ref for f in baseline.facts) == tuple(f.ref for f in oracle.facts)
+
+    import pyarrow.parquet as pq
+    pf = pq.ParquetFile(Path(receipt.path) / "event_locator.parquet")
+    try:
+        postings = [
+            row for gid in range(pf.num_row_groups)
+            for row in pf.read_row_group(gid).to_pylist()
+        ]
+    finally:
+        pf.close()
+    assert len(postings) == 2
+    hidden = _repin_hostile_event_locator(
+        receipt, postings[:1], falsify_count=True,
+    )
+    assert hidden.i02 == receipt.i02  # frozen original direct-I02 roots
+    # The attacker has updated the locator digest, census fields and even
+    # the independently supplied physical manifest SHA, so a simple hash
+    # comparison against this new SHA must NOT be the only barrier.
+    with pytest.raises(DirectEstateError, match="event.*(census|coverage)|event bodies"):
+        _executor(
+            root, hidden, source, qauth, predicate, query,
+        ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    assert not list(root.glob(".s2c-native-i03-*"))
+
+
+def test_g5_equal_census_forged_duplicate_locator_refuses_native_i03(
+    tmp_path, monkeypatch,
+):
+    """G3 coverage is a bijection, not just matching two row counts."""
+    tag = "S2C-G5-EQUAL-COUNT-DUPLICATE"
+    source, candidate = _source_with_candidate(monkeypatch, tag, 1)
+    qauth = native._query_authority(tag)
+    predicate = native._branch_predicate(source, qauth)
+    query = native._query(source, qauth, predicate, ("Y",), tag=tag)
+    root, receipt = _cold(
+        tmp_path, candidate, source["universe"].ref, "private-duplicate-repin",
+    )
+
+    import pyarrow.parquet as pq
+    pf = pq.ParquetFile(Path(receipt.path) / "event_locator.parquet")
+    try:
+        postings = [
+            row for gid in range(pf.num_row_groups)
+            for row in pf.read_row_group(gid).to_pylist()
+        ]
+    finally:
+        pf.close()
+    assert len(postings) == 2
+    duplicate = dict(postings[0])
+    duplicate["offset"] = postings[1]["offset"]
+    forged = _repin_hostile_event_locator(
+        receipt, [postings[0], duplicate], falsify_count=False,
+    )
+    with pytest.raises(
+        DirectEstateError, match="positional/selector coverage"
+    ):
+        _executor(
+            root, forged, source, qauth, predicate, query,
+        ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    assert not list(root.glob(".s2c-native-i03-*"))
