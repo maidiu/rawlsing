@@ -427,13 +427,17 @@ class VerifiedDirectEstate:
         independently_held_i02: ExternalI02Roots,
         current_authorizer: Callable[[ExternalI02Roots], bool] | None,
     ):
-        self.root = _root(root)
         self.i02 = independently_held_i02
+        if type(self.i02) is not ExternalI02Roots:
+            raise DirectEstateError("exact independently held direct I02 roots required")
         if not _hex(independently_held_manifest_sha256):
             raise DirectEstateError("independently held SHA-256 required")
         if current_authorizer is None or not callable(current_authorizer):
             raise DirectEstateError("independent live current/rights guard required")
         self._authorize = current_authorizer
+        # Refuse before hashing or opening any source-derived estate bytes.
+        self._live()
+        self.root = _root(root)
         candidate = Path(exact_path).absolute()
         expected = self.root / "releases" / _estate_name(self.i02)
         if candidate != expected:
@@ -495,7 +499,7 @@ class VerifiedDirectEstate:
 
     def _locators(self, *, respondent: str, target: ExactRef | None,
                   native_only: bool, include_component: bool,
-                  states: frozenset[str] | None) -> Iterator[tuple[str, int, int]]:
+                  states: frozenset[str] | None) -> Iterator[Mapping[str, Any]]:
         import pyarrow.parquet as pq
         pf = pq.ParquetFile(self.directory / "event_locator.parquet")
         examined = 0
@@ -517,7 +521,7 @@ class VerifiedDirectEstate:
                         )
                     ):
                         continue
-                yield row["ref"], row["group"], row["offset"]
+                yield row
         if examined != self.manifest["event_locator_count"]:
             raise DirectEstateError("incomplete physical locator scan")
 
@@ -543,12 +547,13 @@ class VerifiedDirectEstate:
         pf = pq.ParquetFile(self.directory / "RespondentEvent.parquet")
         group = None
         rows = None
-        for ref, gid, offset in self._locators(
+        for posting in self._locators(
             respondent=respondent_ref.key, target=target,
             native_only=native_only, include_component=include_component,
             states=states,
         ):
             self._live()
+            ref, gid, offset = posting["ref"], posting["group"], posting["offset"]
             if group != gid:
                 rows = pf.read_row_group(gid, columns=["body_json", "ref"]).to_pylist()
                 group = gid
@@ -560,6 +565,14 @@ class VerifiedDirectEstate:
             obj = _object_from_row(json.loads(row["body_json"]))
             if type(obj) is not RespondentEvent or obj.ref.key != ref:
                 raise DirectEstateError("selected native event semantic identity mismatch")
+            # Matching event ID does not prove respondent/question/state selection.
+            # Bind every physical posting to the reconstructed canonical body.
+            if (posting["respondent"] != _key(obj.scoped_respondent_ref)
+                    or posting["native"] != _key(obj.native_question_ref)
+                    or posting["canonical"] != _key(obj.canonical_question_ref_if_authorized)
+                    or posting["component"] != _key(obj.component_or_subitem_ref)
+                    or posting["state"] != str(obj.typed_state)):
+                raise DirectEstateError("physical event posting disagrees with exact native body")
             yield obj
 
 __all__ = [
