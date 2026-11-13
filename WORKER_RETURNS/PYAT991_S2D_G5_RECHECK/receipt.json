@@ -1,7 +1,9 @@
 {
   "task_id": "PYAT991-S2D-G5-RECHECK",
   "packet_id": "S2-D",
-  "old_obligations": ["P2-05"],
+  "old_obligations": [
+    "P2-05"
+  ],
   "contract_id": "PYAT991-S2D-PHASE1-R1",
   "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
   "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
@@ -318,7 +320,8 @@
     "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/prior_g5_resource_inherited.out",
     "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/diffs.txt",
     "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/refs.txt",
-    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/scope_foreign_split.py"
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/scope_foreign_split.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/remote_verification.txt"
   ],
   "review_commands": [
     "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py -q -o addopts='' => 29 passed in 7.43s",
@@ -337,6 +340,21 @@
     "decision": "HOLD_EXTERNAL",
     "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
     "no_repair_performed": true,
-    "signed_at_utc": "2026-11-13T05:45:00Z"
+    "signed_at_utc": "2026-11-13T05:45:00Z",
+    "review_return_commit_sha": "25507ec497ead250ddc5d4ddbecbce480b1f01ce"
+  },
+  "remote_verification": {
+    "remote": "origin",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "return_commit_sha": "25507ec497ead250ddc5d4ddbecbce480b1f01ce",
+    "repair_delivery_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "prior_g5_return_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+    "a_branch_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "code_diff_vs_repair_cut": "EMPTY",
+    "receipt_json_valid": true,
+    "handoff_present": true,
+    "verified_at_utc": "2026-11-13T05:55:00Z"
   }
 }
