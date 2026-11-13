@@ -91,7 +91,7 @@ The player observes:
 **Four key interventions (must avoid moral outcome assumptions):**
 1. **Same spoken creed; different performed cost-bearing:** Does the actor choose differently when helping really demands time, income, status or danger? No simplistic revealed-preference truth from a single action.
 2. **Same material actability, change *institutional sponsor*:** Is behavior conditional solely on whether `I` proposes it, or on whether it actually serves `V` under recognized safety/authority? A negative-sovereignty hypothesis needs independent access evidence; a principled refusal of a harmful institution must not be mislabeled compulsive opposition.
-3. **Remove `I) from the situation:** Can the person still pursue a valued activity and independent relationship? If not, negative fixation is a live hypothesis, not a verdict.
+3. **Remove `I` from the situation:** Can the person still pursue a valued activity and independent relationship? If not, negative fixation is a live hypothesis, not a verdict.
 4. **Same contradiction, change actor access and acquired premise:** Without access to the discrepancy, do not issue alienation/objectification; without prior credible practice, do not issue `V` as already learned.
 
 **Product outcome:** the user does not receive an omniscient paragraph announcing the actor's “Horizon.” They see a person whose commitments, refusals and possible cooperation are historically conditioned, whose self-description may not fully explain what they enact, and whose life continues beyond the user. Some encounters can make the player rethink their own category of the Other. Neither empathy nor doctrinal correctness is forced.
