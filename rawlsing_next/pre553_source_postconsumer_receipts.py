@@ -60,6 +60,22 @@ def _key(value: Any) -> str:
     return exact_ref(value).key
 
 
+def _deep_freeze(value: Any) -> Any:
+    """Return an immutable independent view of all nested receipt material.
+
+    A Q2 SourceI02Handoff is a frozen dataclass but its row dictionaries are
+    not deeply immutable. Reusing nested preimage dictionaries here would
+    allow a caller to change an already-hashed postconsumer result after G5.
+    """
+    if isinstance(value, Mapping):
+        return MappingProxyType({k: _deep_freeze(v) for k, v in value.items()})
+    if isinstance(value, (tuple, list)):
+        return tuple(_deep_freeze(v) for v in value)
+    if isinstance(value, (set, frozenset)):
+        return frozenset(_deep_freeze(v) for v in value)
+    return value
+
+
 def _results(result: Any, kind: str) -> tuple[str, ...]:
     values = result.facts if kind == "QUERY" else result.receipts
     return tuple(sorted(ref.ref.key for ref in values))
@@ -292,7 +308,7 @@ def join_saved_source_operation_fates(
         row["postconsumer_decision_ref"] = record.decision_ref.key
         row["postconsumer_release_ref"] = admission.release_ref.key
         row["postconsumer_saved_manifest_sha256"] = admission.manifest_sha256
-        output_rows.append(MappingProxyType(row))
+        output_rows.append(_deep_freeze(row))
     if len(all_ops) != len(handoff.operation_fates):
         raise SourceReceiptJoinError("OPERATION_ANTI_JOIN")
     if not set(plan_by_op).issubset(all_ops):
