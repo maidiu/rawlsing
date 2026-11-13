@@ -1,5 +1,8 @@
 # UM-SOROK — provisional governing brain / default grokking constitution (R0)
 
+**HISTORICAL R0; SUPERSEDED ON EMPIRICAL/METHODOLOGICAL PRIMACY:** Read [UM-SOROK R1](00_UM_SOROK_GOVERNING_BRAIN_AND_GROKKING_R1.md) and [R1 machine grokking](00_UM_SOROK_GROKKING_DECISION_SCHEMA_R1.json). R0's person-theory materiality is still valid, but the raw empirical source of synthetic generation is pre-V3/PYAT survey evidence, and terminal-demand adjudication runs V3-first backward. Do not use R0 alone to determine programme work order.
+
+
 Machine-readable decision schema: [UM-SOROK R0 JSON](00_UM_SOROK_GROKKING_DECISION_SCHEMA_R0.json).
 
 
