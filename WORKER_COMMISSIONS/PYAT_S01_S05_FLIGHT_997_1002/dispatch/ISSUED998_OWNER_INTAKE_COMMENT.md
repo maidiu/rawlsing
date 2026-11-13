@@ -6,3 +6,5 @@ No scientific/source/CURRENT/Batchfact/protected/integratedG5 authority. Existin
 
 
 [Actual owner ACK](https://github.com/maidiu/rawlsing/blob/bf0c683a94b63cb7db4b3891cf153da9a773ccaf/WORKER_RETURNS/PYAT998_ISSUED_OWNER_HANDOFF/owner_ack.json). Receivingauthor: preserve exactfrozenblock andlimits, no need for another genericpermission request.
+
+[HQ received exact lease](https://github.com/maidiu/rawlsing/blob/32b1850bdee63119ab1bd93ec8090d4d2c4d0820/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/ISSUED998_OWNER_RECEIVED_LEASE.json).
