@@ -1,5 +1,7 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **UM-PYAT R0 PROVISIONAL / NOT PROTECTED-ADOPTED:** After original PROGRAMMA/PYAT science, source, authority and the Oct28/R3 law, consult the [UM-PYAT scientific-materialist governing brain](00_UM_PYAT_GOVERNING_BRAIN_AND_GROKKING_R0.md) and its [ten-parameter machine-readable grokking schema](00_UM_PYAT_GROKKING_DECISION_SCHEMA_R0.json) when preparing a material new S01–S05 commission, receiving decision or source-to-world claim. This is the PYAT-specific **candidate adaptation** of Sorok's draft UM-SOROK method, *not Sorok's actor law, a new native scientific rule, a new mandatory R3 gate, a new task registry or a protected status upgrade*. Original PROGRAMMA, Oct28 source-direct hybrid, R3C/R3S, and original source/science rights outrank it. Preserve complete lossless C11, real first consumers and sourcefree-vs-native grades; no re-bakeoff or resumed paused W03/W04.
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
 
