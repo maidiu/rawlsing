@@ -184,7 +184,7 @@ def test_absence_does_not_recruit_or_write_any_event(tmp_path):
     before_p3 = copy.deepcopy(opened["case"].owner.store.head())
     try:
         result = _invoke(opened, provider)
-        assert result["status"] == a.HELDED
+        assert result["status"] == a.HELD
         assert result["world_events_written"] == 0
         assert result["provider_called"] is False
         assert provider.calls == []
