@@ -1,0 +1,83 @@
+PYAT998 S1-A / Linux compatibility receiving evidence
+=====================================================
+
+Date: 2026-11-13 (local Darwin host / existing Lima guest)
+Branch: agent/pyat998-sourcefree-staging-r1
+Parent return: a9407f08f7e0efed32b4dba7f654b3906cbfb18a
+
+Existing runner
+---------------
+limactl: /usr/local/bin/limactl
+VM: s2b (Running, vz, x86_64, 2 CPU, 4 GiB, 15 GiB disk)
+Guest venv: /Users/matthewsmith/s2b-work/rawlsing-s2b-r5-local/.venv/bin/python3
+Python 3.11.18, pytest 9.2.0, pyarrow 26.0.1
+Proof directory: /Users/matthewsmith/s2b-work/pyat998-s1a-linux-r2-20261113T154623
+No active pytest/rawlsing process was found in the guest before creating this unique proof directory.
+No VM configuration, provider, account, harness or other worker directory was changed.
+
+Proofcopy provenance
+--------------------
+Copied from the exact current staging worktree with:
+  rsync -a --exclude __pycache__ --exclude .DS_Store rawlsing_next/ "$PD/rawlsing_next/"
+
+Host and guest SHA-256 matched for:
+  rawlsing_next/pre553_source_backed_c11_facade.py
+  rawlsing_next/_pre553_external_i02_certificate.py
+  rawlsing_next/_pre553_direct_i02_sourcefree.py
+  rawlsing_next/tests/test_pre553_external_i02_certificate.py
+  rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py
+
+Expected git blobs:
+  facade f29247b33cb78e5f1e620620d6968ab433ce407a
+  external 2af16c6d9097333570a3417519995bd8dc7fcaa0
+  direct 451727511af7f727b082c518aae2f4a3dbe2ba3a
+  external test 7a8a0f5a60c5d5a776cea44f3beea109e0f98ff3
+  direct test cef715f69af2d21243b454787c689da7f0086bbf
+
+Actual Linux compatibility command
+----------------------------------
+cd /Users/matthewsmith/s2b-work/pyat998-s1a-linux-r2-20261113T154623
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 \
+  /Users/matthewsmith/s2b-work/rawlsing-s2b-r5-local/.venv/bin/python3 \
+  -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py \
+  rawlsing_next/tests/test_pre553_external_i02_certificate.py \
+  rawlsing_next/tests/test_pre553_verified_semantic_range.py
+
+Result: 81 passed in 37.99s
+This is current composed-cut compatibility, not a rerun of the prior S2-B G5 court for confidence.
+
+Darwin pre-fix observation
+--------------------------
+The same S2-B tests on Darwin produced 42 passed/10 failed (direct+semantic) and
+7 passed/22 failed (external) because descriptor-pinned SQLite checks require
+Linux /proc/self/fd. The Linux run above closes that specific host-capability
+gap on the exact proofcopy. No /proc fallback, skip, weakened test, mocked
+selector or artificial green was used.
+
+Composed-cut S1-A compatibility (Darwin host)
+---------------------------------------------
+S1-A focused 34:                 34 passed in 3.21s
+S1-A preservation 136:           136 passed in 105.79s
+world-binding literal 18:        18 passed in 275.24s
+S2-C:                            31 passed in 5.73s
+S2-D:                            31 passed in 14.08s
+S2-E:                            22 passed in 20.86s
+imports after S1-A:              PASS
+
+Evidence files
+--------------
+lima_list.txt
+guest_runtime.txt
+host_sha256.txt
+guest_sha256.txt
+proofdir.txt
+s1a_focused34.txt
+s1a_preservation136.txt
+world18_after_s1a.txt
+s2c_after_s1a.txt
+s2d_after_s1a.txt
+s2e_after_s1a.txt
+s2b_linux.txt
+import_after_s1a.txt
+s2e_method_delta.patch

@@ -1,0 +1,25 @@
+{
+  "schema": "PYAT998_S2A_HOLD@1",
+  "packet_id": "S2-A",
+  "review_receipt": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/S2A_receipt.json",
+  "review_commit": "c900cf463694a8b21af7f3f8bd8da6a6b23d1d82",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "tested_sha": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "defect": {
+    "file": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "function": "VerifiedDirectEstate.select_events",
+    "witness": "target-specific locator poison with intact bodies/refs and equal counts; public select_events returned 0 while actual execute_i03 refused; native expected 1",
+    "severity": "SEV-1",
+    "status": "UNPATCHED"
+  },
+  "author_action": "NO_PATCH__NO_ADAPTER__NO_FROZEN_S2C_EDIT",
+  "owner_handoff": "Browser S2-C owner decision pending; this author cannot authorize a public-selector adapter or edit the frozen S2-C product.",
+  "preserved": [
+    "actual native execute_i03 hidden/duplicate locator refusal",
+    "S2-C writer/layout/tests unchanged",
+    "S2-C/D G5 evidence unchanged"
+  ],
+  "effect_on_phase2": "S2A remains a prerequisite for the joined vertical; no false S2A acceptance.",
+  "next_owner": "Browser S2-C owner adjudication followed by exact G5 re-receipt"
+}
