@@ -296,10 +296,12 @@ def _verify_census_before_source(
                         "key": key.key,
                     },
                 )
-            response_only = all(
+            response_owned = any(
                 family == "RespondentEvent" for family, _section in key_sections)
-            if response_only:
-                for _family, section in key_sections:
+            if response_owned:
+                for family, section in key_sections:
+                    if family != "RespondentEvent":
+                        continue
                     states = routing_by_question.get(
                         section["question_id"], Counter())
                     if int(states.get("ELIGIBLE_APPLICABLE", 0)) == 0:
