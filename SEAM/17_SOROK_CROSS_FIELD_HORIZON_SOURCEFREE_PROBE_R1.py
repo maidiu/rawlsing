@@ -150,6 +150,22 @@ def later_response(p: Person, w: World, institution_sponsored: bool):
     return "ACCEPT_HELP" if p.practiced_care-symbolic_cost >= 1 else "DECLINE"
 
 
+def later_shift_strategy(p: Person, current: World):
+    """Actual prospective reader of learned risk, subject to CURRENT world gate.
+
+    This returns a candidate actor decision, not an admitted P2 performed act.
+    """
+    if current.resources < 1:
+        return "MATERIAL_HOLD"
+    if not current.sanction_right:
+        return "REQUEST_ALONE"
+    if p.experienced_sanction:
+        if current.counterfield_coactor and {"care", "repair"} <= set(p.skills):
+            return "COORDINATE_WITH_PEERS"
+        return "AVOID_UNSUPPORTED_REQUEST"
+    return "REQUEST_ALONE"
+
+
 def new_activity(p: Person, w: World):
     # Bounded composition of practiced capacity + independent person + time/stock.
     return ("COOPERATIVE_CARE_REPAIR" if {"care", "repair"} <= set(p.skills)
@@ -187,6 +203,10 @@ def run():
           u_learn(k_enact(f,replace(w,child_sees=False))).normality==0)
     check("no personal threat => no defensive recruitment",
           defend_normality(base,w,False)=="NO_RECRUITMENT")
+    check("same present world, different sourcefree childhood sanctions => different later action",
+          later_shift_strategy(base,w)!=later_shift_strategy(powerless,w))
+    check("current world power may independently alter a feasible action",
+          later_shift_strategy(base,replace(w,sanction_right=False))=="REQUEST_ALONE")
     breach = replace(w,institutional_breach=True)
     exposed = u_learn(k_enact(f,breach))
     check("accessible contradiction can expose institutional practice",
@@ -202,6 +222,8 @@ def run():
           possible_decenter(costed)==costed)
     with_coactor = replace(breach,counterfield_coactor=True,child_practices=True,opposition_cost_seen=True)
     skilled = u_learn(k_enact(f,with_coactor))
+    check("counterfield-acquired skill changes later strategy without removing employer sanction",
+          later_shift_strategy(skilled,with_coactor)=="COORDINATE_WITH_PEERS")
     costed_skilled, _ = perform_refusal(skilled,with_coactor)
     freed = possible_decenter(costed_skilled)
     check("actual coactor/practice + refusal cost permits a changed reference",
