@@ -1,0 +1,50 @@
+Prior independent S2-E G5 search — 2026-11-13
+
+Repository: maidiu/rawlsing (private; authenticated contents read)
+Search scope: all 3668 remote branch tips fetched; commit messages, WORKER_RETURNS trees, refs containing frozen SHAs.
+
+Frozen implementation SHAs:
+  81a764cc7eac960f0fd607d9c3fe62428905daa4 production code/test/workflow
+  1f787305f2f712f8a45e937cde7ee4b7a3be741e documentary delivery HEAD
+  2132932b920e3572068cd8d4fcf8fae5cc2957f9 B2 accepted repair ancestor
+
+Refs containing 81a764cc:
+    origin/agent/pyat-r3-s2e-a-final-conservation-20261112-r3
+    origin/agent/pyat-r3-s2e-a3-native-verification-b2-test-repair-20261112-r3
+
+S2-E-related remote refs (name):
+  origin/agent/pyat-r3-s2e-a-counterattack-20261112-r2 d6f9f1a75ed96d2d8dccb41cd5be3e386d83ce04
+  origin/agent/pyat-r3-s2e-a-final-conservation-20261112-r3 1f787305f2f712f8a45e937cde7ee4b7a3be741e
+  origin/agent/pyat-r3-s2e-a-go-firster-20261112-r1 4357675fc13cc933134bd3303e7efead7aeba4ea
+  origin/agent/pyat-r3-s2e-a3-native-verification-b2-test-repair-20261112-r3 7b19a242ebc9edf85bf8303be33338f860eabf65
+  origin/agent/pyat-r3-s2e-b-fate-counterexample-20261112-r2 2132932b920e3572068cd8d4fcf8fae5cc2957f9
+  origin/agent/pyat-r3-s2e-b-followupper-20261112-r1 529444b6126256fd803e90a758fa4d0be3f4d541
+  origin/agent/pyat-r3-s2e-b-order-neutral-ref-repair-20261112-r1 38e6280f5df571e82211ca856e1664639241a189
+  origin/agent/pyat-r3-s2e-b-public-output-conservation-20261112-r1 e5dcb3762de7a4c7b0dba051107fbf362a3b4d05
+
+Author returns found under WORKER_RETURNS/PYAT_R3_S2E_*:
+  WORKER_RETURNS/PYAT_R3_S2E_A2_20261112_R2/00_RETURN.md
+  WORKER_RETURNS/PYAT_R3_S2E_A2_20261112_R2/01_G1_G5_RECEIPT.json
+  WORKER_RETURNS/PYAT_R3_S2E_A3_20261112_R4/00_RETURN.md
+  WORKER_RETURNS/PYAT_R3_S2E_A3_20261112_R4/01_G1_G5_RECEIPT.json
+  WORKER_RETURNS/PYAT_R3_S2E_A_20261112_R1/00_RETURN.md
+  WORKER_RETURNS/PYAT_R3_S2E_A_20261112_R1/01_G1_G5_RECEIPT.json
+  WORKER_RETURNS/PYAT_R3_S2E_B2_20261112_R3/00_RETURN.md
+  WORKER_RETURNS/PYAT_R3_S2E_B2_20261112_R3/01_G1_G5_RECEIPT.json
+  WORKER_RETURNS/PYAT_R3_S2E_B_20261112_R1/00_RETURN.md
+  WORKER_RETURNS/PYAT_R3_S2E_B_20261112_R1/01_G1_G5_RECEIPT.json
+
+No WORKER_RETURNS/PYAT_R3_S2E*INDEPENDENT* or independent G5 receipt exists at frozen delivery HEAD.
+No remote review branch containing a S2-E independent G5 existed at search time.
+review/pyat980-four-packet-receiving-20261112-r1 G5_RECEIPTS.json covers S1-B, S1-D, S2-F, S2-G only; S2-E absent.
+
+Post-freeze author test-harness repair found:
+  7b19a242ebc9edf85bf8303be33338f860eabf65
+  parent 81a764cc; changes only rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py; no production diff.
+  It is an author test repair, not a G5 receipt and not part of 1f787305.
+
+Issue API: GET /repos/maidiu/rawlsing/issues/919,909,960 returned HTTP 403
+'Resource not accessible by personal access token'. Issue bodies were therefore
+reconstructed from the commission, the frozen author returns, and the frozen
+code/tests, not from an authenticated issue-body fetch. No issue comment
+publication was possible with this token.

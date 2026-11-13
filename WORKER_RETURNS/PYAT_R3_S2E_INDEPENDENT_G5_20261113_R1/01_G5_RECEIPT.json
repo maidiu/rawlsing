@@ -1,0 +1,368 @@
+{
+  "schema": "PYAT_R3_S2E_INDEPENDENT_G5_RECEIPT@1.0.0",
+  "kind": "INDEPENDENT_NONAUTHOR_G5_RECEIVING",
+  "packet": "S2-E",
+  "original_obligation": "P2-06",
+  "original_issue": "#919",
+  "governing_issues": [
+    "#919",
+    "#909",
+    "#960"
+  ],
+  "pr_under_test": "https://github.com/maidiu/rawlsing/pull/973",
+  "review_branch": "review/pyat-r3-s2e-independent-g5-20261113-r1",
+  "return_directory": "WORKER_RETURNS/PYAT_R3_S2E_INDEPENDENT_G5_20261113_R1/",
+  "verdict": "ACCEPT_SCOPED@S2_SOURCEFREE_NATIVE_F1_F4_I05",
+  "grade": "SOURCEFREE_NATIVE_F1_F4_I05_ENGINEERING_ACCEPTED__NOT_ORIGINAL35_SCIENCE",
+  "independence": {
+    "role": "G5_INDEPENDENT_NONAUTHOR_RECEIVER",
+    "authored_s2e_rounds": false,
+    "authored_candidate_code": false,
+    "host": "local OpenCode",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "platform": "macOS 13.7.8, Intel i9-9880H, 16 logical CPUs, 16 GiB RAM",
+    "python": "3.11.3",
+    "executed_candidate_production_code": true
+  },
+  "prior_g5_search": {
+    "found_valid_independent_s2e_g5": false,
+    "fetched_remote_branch_tips": 3668,
+    "s2e_author_refs_only": [
+      "agent/pyat-r3-s2e-a-go-firster-20261112-r1",
+      "agent/pyat-r3-s2e-b-followupper-20261112-r1",
+      "agent/pyat-r3-s2e-a-counterattack-20261112-r2",
+      "agent/pyat-r3-s2e-b-fate-counterexample-20261112-r2",
+      "agent/pyat-r3-s2e-b-order-neutral-ref-repair-20261112-r1",
+      "agent/pyat-r3-s2e-b-public-output-conservation-20261112-r1",
+      "agent/pyat-r3-s2e-a-final-conservation-20261112-r3",
+      "agent/pyat-r3-s2e-a3-native-verification-b2-test-repair-20261112-r3"
+    ],
+    "excluded_other_packet_g5s": [
+      "S1-B",
+      "S1-C",
+      "S1-D",
+      "S1-E",
+      "S2-B",
+      "S2-C",
+      "S2-F",
+      "S2-G"
+    ],
+    "combined_pyat980_s2e_present": false,
+    "issue_read_access": "HTTP 403 Resource not accessible by personal access token",
+    "issue_comment_access": "HTTP 403; not posted",
+    "conclusion": "No independent S2-E G5 receipt existed; performed receiving directly."
+  },
+  "artifacts": {
+    "frozen_production_code_test_workflow_sha": "81a764cc7eac960f0fd607d9c3fe62428905daa4",
+    "documentary_author_delivery_head": "1f787305f2f712f8a45e937cde7ee4b7a3be741e",
+    "b2_accepted_repair_ancestor": "2132932b920e3572068cd8d4fcf8fae5cc2957f9",
+    "a2_candidate_repair_ancestor": "75d4a24bddcfdc5bd1553bd48f130d64f5d5b1e3",
+    "accepted_official_test_repair_descendant": "7b19a242ebc9edf85bf8303be33338f860eabf65",
+    "test_repair_parent": "81a764cc7eac960f0fd607d9c3fe62428905daa4",
+    "production_tree_diff_frozen_vs_test_repair": "EMPTY",
+    "test_repair_changed_files": [
+      "rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py"
+    ],
+    "protected_pre_main_modified": false,
+    "author_branches_modified": false,
+    "paused_w03_w04_modified": false,
+    "a3_changed_files_vs_b2": [
+      "rawlsing_next/pre553_s2e_exact_conservation.py",
+      "rawlsing_next/tests/test_pyat919_s2e_a3_native_closure.py",
+      ".github/workflows/pyat-r3-s2e-a.yml"
+    ],
+    "native_science_modules_unchanged_by_a3": true,
+    "hashes_sha256": {
+      "rawlsing_next/pre553_s2e_exact_conservation.py": "48c5d4e947193e09bccf994b4e744449cd58e813757d6491589ef9f86c28d34b",
+      "rawlsing_next/tests/test_pyat919_s2e_a3_native_closure.py": "8001b61b7702e8fb5a7af15273ef72ee69b79e27e432f4ce10c6928aeec8af53",
+      "rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py@frozen": "f4700821affaa7111105641eeaa8cc7e3217f720001965c87b7b46c46c249498",
+      "rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py@test_repair": "6aa9afd45e48229a9f0817996481f72d6fcb0a681fb3e7bd77db5835ed01308a",
+      ".github/workflows/pyat-r3-s2e-a.yml": "85a0a10b351bee6bec4309d4d8739f8b99d15a69c4245a4c848d1cba5a6b89b1"
+    }
+  },
+  "execution": {
+    "frozen_native_hostile_regression_suite": {
+      "command_log": "evidence/00_FROZEN_90_SUITE_RED.log",
+      "collected": 90,
+      "passed": 89,
+      "failed": 1,
+      "skipped": 0,
+      "wall_seconds": 122.31,
+      "process_maxrss_bytes": 258904064,
+      "failure": {
+        "test": "test_pyat919_s2e_b2_fate_counterexample.py::test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red",
+        "error": "AttributeError: 'mappingproxy' object has no attribute 'as_dict'",
+        "classification": "TEST_ONLY_HARNESS_DEFECT__NOT_NATIVE_FIRST_CONSUMER_FAILURE"
+      }
+    },
+    "frozen_core_22_suite_monitored": {
+      "command_log": "evidence/02_FROZEN_CORE_22_SUITE_MONITORED.log",
+      "passed": 21,
+      "failed": 1,
+      "wall_seconds": 21.48,
+      "process_tree_peak_rss_kib": 135636,
+      "process_tree_peak_rss_mib": 132.5,
+      "samples": 269
+    },
+    "test_repaired_90_suite": {
+      "sha": "7b19a242ebc9edf85bf8303be33338f860eabf65",
+      "command_log": "evidence/03_TEST_REPAIRED_90_SUITE_GREEN.log",
+      "production_tree_identical_to_frozen": true,
+      "collected": 90,
+      "passed": 90,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 115.88,
+      "process_tree_peak_rss_kib": 320224,
+      "process_tree_peak_rss_mib": 312.7,
+      "max_single_process_rss_kib": 250536,
+      "max_live_processes": 2,
+      "samples": 1430,
+      "full_output_sha256": "befb766af812995cdf06989d1afd83d3f250859df30a1f01968e6f808eef63d0"
+    },
+    "s2f_preservation_suite": {
+      "command_logs": [
+        "evidence/04_S2F_19_GREEN.log",
+        "evidence/05_S2F_19_GREEN_MONITORED.log"
+      ],
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 10.0,
+      "process_tree_peak_rss_kib": 145760,
+      "process_tree_peak_rss_mib": 142.3,
+      "max_live_processes": 2
+    },
+    "independent_controls": {
+      "b2_false_valid_empty_refused_at_frozen": {
+        "script": "attacks/test_independent_b2_fate.py",
+        "log": "evidence/06_INDEPENDENT_B2_GREEN.log",
+        "passed": 1,
+        "expected_error": "S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH",
+        "restore_exact": true
+      },
+      "a3_additive_dependency_authority_refused": {
+        "script": "attacks/test_independent_a3_additive.py",
+        "log": "evidence/07_INDEPENDENT_A3_ADDITIVE_GREEN.log",
+        "passed": 1,
+        "expected_errors": [
+          "S2E_I05_DEPENDENCY_CLOSURE_MISMATCH",
+          "S2E_I05_AUTHORITY_SNAPSHOT_CLOSURE_MISMATCH"
+        ],
+        "restore_exact": true
+      },
+      "a3_extra_predicate_refused": {
+        "script": "attacks/test_independent_a3_predicate.py",
+        "log": "evidence/08_INDEPENDENT_A3_PREDICATE_GREEN.log",
+        "passed": 1,
+        "expected_error": "S2E_I05_EXECUTED_OBJECT_CLOSURE_MISMATCH",
+        "restore_exact": true
+      },
+      "f3_minority_recursive_simpson_valid_empty": {
+        "log": "evidence/17_F3_MINORITY_RECURSIVE_SIMPSON_VALID_EMPTY.log",
+        "passed": 5
+      },
+      "at10_counterpattern_fixture": {
+        "log": "evidence/18_AT10_COUNTERPATTERN.log",
+        "passed": 1,
+        "groups": {
+          "modal": 10,
+          "minority": 8,
+          "counterpattern": 2
+        },
+        "literal_native_counterpattern_family": false,
+        "closest_native_family": "CONDITIONAL_REVERSAL_OR_SIMPSON"
+      },
+      "at14_state_distinctions": {
+        "log": "evidence/19_AT14_STATE_DISTINCTIONS.log",
+        "passed": 11,
+        "states": [
+          "OBSERVED_ZERO",
+          "ZERO_SUPPORT",
+          "VALID_EMPTY",
+          "UNDERPOWERED/INSUFFICIENT_SUPPORT",
+          "UNRESOLVED/UNKNOWN",
+          "UNVISITED",
+          "NONCOMPARABLE",
+          "BLOCKED_BY_AUTHORITY",
+          "INTEGRITY_FAILURE"
+        ]
+      }
+    },
+    "native_positive_witness": {
+      "script": "probes/s2e_positive_witness.py",
+      "log": "evidence/14_POSITIVE_WITNESS.log",
+      "sourcefree_universe_respondents": 12,
+      "batch_units": 5,
+      "query_calls": 4,
+      "discovery_calls": 1,
+      "i03_fact_count": 4,
+      "i05_fact_count": 2,
+      "i05_receipt_count": 1,
+      "i05_candidate_count": 1,
+      "i05_contract": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+      "i05_query_contract": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+      "i05_dependency_refs": 6,
+      "i05_authority_snapshot_refs": 5,
+      "i05_empirical_fact_refs": 2,
+      "i05_executed_predicates": 2,
+      "i05_executed_queries": 2,
+      "nonpromotion_flags_all_false": true,
+      "f1": {
+        "denominator": 12,
+        "numerator": 12,
+        "cells": {
+          "0": 10,
+          "1": 2
+        },
+        "exact_rates": {
+          "0": "10/12",
+          "1": "2/12"
+        }
+      },
+      "f2_forward": {
+        "denominator": 6,
+        "cells": {
+          "0": 5,
+          "1": 1
+        },
+        "exact_rates": {
+          "0": "5/6",
+          "1": "1/6"
+        }
+      },
+      "f2_reverse": {
+        "denominator": 2,
+        "cells": {
+          "0": 1,
+          "1": 1
+        },
+        "exact_rates": {
+          "0": "1/2",
+          "1": "1/2"
+        },
+        "independent_denominator_members_from_forward": true
+      },
+      "f3_minority": {
+        "branch_denominator": 2,
+        "branch_y1": 2,
+        "baseline_denominator": 12,
+        "baseline_y1": 2,
+        "exact_branch_rate": "1",
+        "exact_baseline_rate": "1/6",
+        "typed_state": "DISCOVERED_RESULT_SUPPORTED",
+        "coverage_state": "EVALUATED_SUPPORTED",
+        "valid_empty": false
+      },
+      "f4_joint": {
+        "arity": 3,
+        "complete_cell_count": 8,
+        "cells": {
+          "0,0,0": 5,
+          "0,0,1": 0,
+          "0,1,0": 0,
+          "0,1,1": 1,
+          "1,0,0": 0,
+          "1,0,1": 5,
+          "1,1,0": 1,
+          "1,1,1": 0
+        },
+        "total": 12,
+        "zero_cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "pairwise_arithmetic_substitution": false
+      },
+      "provenance_ref_counts": {
+        "f1": 27,
+        "f2_forward": 33,
+        "f2_reverse": 29,
+        "f4": 75
+      },
+      "full_output_sha256": "befb766af812995cdf06989d1afd83d3f250859df30a1f01968e6f808eef63d0",
+      "actual_source_file_opens": [],
+      "batch_elapsed_seconds": 0.060846,
+      "witness_process_maxrss_bytes": 31657984
+    },
+    "changed_input_and_restore": {
+      "changed_input": "all respondents Y=1 (legitimate sourcefree input)",
+      "changed_discovery_typed_state": "VALID_EMPTY",
+      "changed_discovery_coverage_state": "EVALUATED_VALID_EMPTY",
+      "changed_discovery_valid_empty": true,
+      "changed_frontier_ref": "urn:rawlsing:pre553:i05:frontier:sha256:94b58120b677151f7bf8c36bc88ff430b26fc11dc80970f8066f435dda1585ca",
+      "changed_replay_ref": "urn:rawlsing:pre553:i05:frontier-replay:sha256:6876b0a726d51495cc1acd4787e758a4f01542cd30c2cd2d170a3a9908796189",
+      "restored_full_output_sha256": "befb766af812995cdf06989d1afd83d3f250859df30a1f01968e6f808eef63d0",
+      "restore_identical": true
+    },
+    "resource_and_scope": {
+      "sparse_code_worktree_bytes_approx": "13 MB",
+      "test_venv_bytes_approx": "399 MB",
+      "evidence_bytes_approx": "<1 MB",
+      "disk_free_before": "10 GiB",
+      "integrated_100k_6gib_workload": "NOT_RUN_S2_D_DEPENDENCY",
+      "s2d_saved_reader": "NOT_BUILT_SEPARATE_PACKET",
+      "original35_native_universe": "NOT_RUN_NOT_ISSUED",
+      "production_issuer_currentness_revocation": "NOT_TESTED"
+    }
+  },
+  "scientific_contract": {
+    "f1_complete_marginal_domain": true,
+    "f2_both_independent_conditioner_denominators": true,
+    "f3_minority_recursive_and_counterpattern_family_results": true,
+    "f4_genuine_same_respondent_intersection_three_variables": true,
+    "zero_unknown_inapplicable_unsupported_underpowered_valid_empty_distinctions": true,
+    "complete_denominator_risk_member_provenance_exact_fraction_and_used_ref_closure": true,
+    "actual_native_i05_output_and_query_contract": true,
+    "changed_input_scientific_fact_discovery_change_and_exact_restore": true,
+    "sourcefree_not_original35": true,
+    "no_structural_causal_actor_or_diagnostic_promotion": true
+  },
+  "gates": {
+    "G1": "PASS_SCOPED__ANCESTRY_AND_NATIVE_FACT_CONTRACT_PRESERVED__ORIGINAL35_NOT_PROVED",
+    "G2": "PASS_SCOPED__REAL_FIVE_UNIT_NATIVE_BATCH_F1_F4_I05_AND_CHANGED_RESTORE",
+    "G3": "PASS_SCOPED__A3_CONTROLS_PLUS_ADDITIVE_VARIATIONS_AND_B2_REPAIR_RETAINED__TEST_ONLY_FROZEN_DEFECT_DISCLOSED",
+    "G4": "PASS_SCOPED__LOCAL_EXECUTION_MEASURED__S2D_AND_100K_NOT_RUN",
+    "G5": "ACCEPT_SCOPED@S2_SOURCEFREE_NATIVE_F1_F4_I05"
+  },
+  "test_harness_defect": {
+    "present_at_frozen_sha": true,
+    "file": "rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py",
+    "error": "AttributeError: 'mappingproxy' object has no attribute 'as_dict'",
+    "production_impact": "NONE",
+    "implementation_check_independently_reproduced_at_frozen_sha": true,
+    "author_test_only_repair": "7b19a242ebc9edf85bf8303be33338f860eabf65",
+    "repaired_suite": "90 passed",
+    "bounded_owner_if_integration_requires_frozen_test_file": "S2-E test-harness owner; adopt existing 7b19a242 test-only diff",
+    "new_ab_round_requested": false
+  },
+  "strongest_negative": {
+    "attack": "fully rehashed false VALID_EMPTY substitution for a genuinely SUPPORTED minority discovery, preserving facts, roles, candidate identity, outer frontier and Batch refs",
+    "refusal": "S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH",
+    "exact_restore": true,
+    "native_first_consumer_counterexample_survived": false
+  },
+  "holds": [
+    "ORIGINAL35_NATIVE_SOURCE_AND_SCIENCE_NOT_ISSUED_OR_PROVED",
+    "S2_D_COMPACT_COLD_SAVED_RELEASE_CONSUMER_NOT_BUILT",
+    "INTEGRATED_100000_RESPONDENT_6GIB_WORKLOAD_NOT_RUN",
+    "PRODUCTION_ISSUER_CURRENTNESS_REVOCATION_NOT_TESTED",
+    "NO_CAUSAL_STRUCTURAL_ACTOR_PERSONA_OR_CONSENT_AUTHORITY",
+    "FROZEN_TEST_HARNESS_CORRECTION_7B19A242_REQUIRED_FOR_GREEN_TEST_CUT_BUT_NO_PRODUCTION_CHANGE",
+    "ISSUE_COMMENT_PUBLICATION_403_TOKEN_SCOPE"
+  ],
+  "integration_unlock": {
+    "s2e_terminal_at_sourcefree_engineering_grade": true,
+    "unlock": "FULL_UPSTREAM_NATIVE_S2E_TO_DURABLE_S2F_TO_LEARNED_S2G_INTEGRATION",
+    "conditions": [
+      "ACTUAL_SAVED_READER_S2_D",
+      "INDEPENDENT_COMBINED_RECEIVING"
+    ],
+    "combined_integration_performed_here": false
+  },
+  "publication": {
+    "review_branch_committed": true,
+    "issue_919_comment": "NOT_POSTED_HTTP_403",
+    "issue_909_comment": "NOT_POSTED_HTTP_403",
+    "issue_960_comment": "NOT_POSTED_HTTP_403",
+    "durable_record": "review branch + WORKER_RETURNS/PYAT_R3_S2E_INDEPENDENT_G5_20261113_R1/"
+  },
+  "stop": "NO_NEW_AB_ROUND__NO_OPTIONAL_HARDENING__NO_INVENTED_AUTHORITY"
+}

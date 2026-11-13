@@ -1,0 +1,43 @@
+Test-harness correction execution — independent verification
+
+Frozen delivery test file at 81a764cc/1f787305:
+  rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py
+  Failure: AttributeError: 'mappingproxy' object has no attribute 'as_dict'
+  at the test's own replay material construction, before the forged receipt
+  is submitted to the native first consumer. 89 passed, 1 failed.
+
+Post-freeze author test repair:
+  7b19a242ebc9edf85bf8303be33338f860eabf65
+  parent: 81a764cc7eac960f0fd607d9c3fe62428905daa4
+  diff: only the B2 falsifier file; normalizes frozen mapping refs with exact_ref
+  production diff vs 81a764cc: EMPTY (all production/test except this test file identical)
+
+Execution at 7b19a242 (separate sparse worktree of the same repository):
+  command:
+    PYTHONPATH=. python -m pytest -q -s -o addopts='' -p no:cacheprovider \
+      rawlsing_next/tests/test_pyat919_s2e_a3_native_closure.py \
+      rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py \
+      rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py \
+      rawlsing_next/tests/test_pyat919_s2e_a_counterattack.py \
+      rawlsing_next/tests/test_pyat919_s2e_a_conservation.py \
+      rawlsing_next/tests/test_pre553_empirical_query.py \
+      rawlsing_next/tests/test_pre553_discovery_exact.py \
+      rawlsing_next/tests/test_universal_workload.py \
+      rawlsing_next/tests/test_universal_workload_custody.py
+  result: 90 passed, 0 failed, 0 skipped, 115.88 s
+  process tree max RSS: 320224 KiB = 312.7 MiB (1430 samples, max 2 live processes)
+  full-output graph SHA256: befb766af812995cdf06989d1afd83d3f250859df30a1f01968e6f808eef63d0
+
+Independent reproduction at frozen code 81a764cc:
+  attacks/test_independent_b2_fate.py
+  result: 1 passed
+  It forges the same supported -> VALID_EMPTY scientific fate, computes the
+  same canonical receipt and outer frontier replay with exact_ref normalization,
+  and requires S2E_I05_CANDIDATE_SCIENTIFIC_FATE_MISMATCH plus exact restoration.
+  Therefore the implementation check B2 introduced is valid; only the frozen
+  test's ref representation was wrong.
+
+Disposition effect:
+  No production repair is required. The test-only correction is already a
+  committed author descendant and is adopted as the accepted test cut. It is
+  not a new A/B round and changes no production or scientific behavior.

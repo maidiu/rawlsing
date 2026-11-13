@@ -1,0 +1,51 @@
+....FS2E_NATIVE_RESOURCE_JSON={"discovery_calls": 1, "full_domain_cell_count_f4": 8, "graph_sha256": "befb766af812995cdf06989d1afd83d3f250859df30a1f01968e6f808eef63d0", "grouped_seconds": 0.042315, "independent_seconds": 0.039263, "integrated_100k_cap": "NOT_RUN_S2_D_DEPENDENCY", "logical_source_release_reused": 1, "native_batch_units": 5, "process_maxrss_kib": 121589760, "process_tree_maxrss_kib": null, "query_calls": 4, "saved_store_bytes": null, "schema": "PYAT_S2E_SOURCEFREE_NATIVE_RESOURCE@1", "shared_core_builds": 5, "shared_core_hits": 1, "source_opens_during_batch": 0, "universe_respondents": 12}
+.....................................................................................
+=================================== FAILURES ===================================
+__ test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red __
+
+    def test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red():
+        case = _native_case()
+        with I03GroupedExecutionScope() as scope:
+            manifest, receipts, outputs, baseline, _, _ = _batch(case, scope=scope)
+        unit = next(u for u in manifest.units if u.job_kind == "DISCOVERY")
+        original = outputs[unit.unit_hash]
+        assert original.candidate_count == len(original.receipts) == 1
+        assert not original.valid_empty
+        candidate = original.receipts[0]
+        assert candidate.typed_state == "DISCOVERED_RESULT_SUPPORTED"
+        assert candidate.coverage_state == "EVALUATED_SUPPORTED"
+        assert candidate.empirical_fact_refs
+    
+        # The true CONDITION/BASLINE empirical facts and every source, authority,
+        # candidate identity, query role, winner and fact reference remain untouched.
+        # Forge ONLY the interpretation, then recompute both authentic replay roots.
+        candidate_replay = _replay_ref("candidate-replay", {
+            "contract": original.contract_id,
+            "authority_ref": original.discovery_authority_ref.as_dict(),
+            "frontier_ref": original.evaluated_frontier_ref.as_dict(),
+            "candidate_id": candidate.candidate_identity["candidate_id"],
+            "candidate_hash": candidate.candidate_identity["candidate_hash"],
+            "coverage_state": "EVALUATED_VALID_EMPTY",
+>           "fact_refs": [ref.as_dict() for ref in candidate.empirical_fact_refs],
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "release_refs": [ref.as_dict() for ref in unit.release_refs],
+            "query_execution_contract": candidate.exact_query_contract_id,
+        })
+
+rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x121f57b20>
+
+>       "fact_refs": [ref.as_dict() for ref in candidate.empirical_fact_refs],
+                      ^^^^^^^^^^^
+        "release_refs": [ref.as_dict() for ref in unit.release_refs],
+        "query_execution_contract": candidate.exact_query_contract_id,
+    })
+E   AttributeError: 'mappingproxy' object has no attribute 'as_dict'
+
+rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py:50: AttributeError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py::test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red
+1 failed, 89 passed in 109.56s (0:01:49)
+S2E_TREE_MONITOR_JSON={"command": ["/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/s2e-g5-venv/bin/python", "-B", "-m", "pytest", "-q", "-s", "-o", "addopts=", "-p", "no:cacheprovider", "rawlsing_next/tests/test_pyat919_s2e_a3_native_closure.py", "rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py", "rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py", "rawlsing_next/tests/test_pyat919_s2e_a_counterattack.py", "rawlsing_next/tests/test_pyat919_s2e_a_conservation.py", "rawlsing_next/tests/test_pre553_empirical_query.py", "rawlsing_next/tests/test_pre553_discovery_exact.py", "rawlsing_next/tests/test_universal_workload.py", "rawlsing_next/tests/test_universal_workload_custody.py"], "exit": 1, "max_live_processes": 1, "max_process_tree_rss_kib": 101472, "max_process_tree_rss_mib": 99.1, "max_single_process_rss_kib": 101472, "samples": 14, "schema": "PYAT_S2E_PROCESS_TREE_RSS@1", "wall_seconds": 110.25}

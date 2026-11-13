@@ -1,0 +1,60 @@
+Git identity / custody — S2-E independent G5
+review_branch: review/pyat-r3-s2e-independent-g5-20261113-r1
+review_base: 1f787305f2f712f8a45e937cde7ee4b7a3be741e (documentary delivery HEAD)
+frozen_production_code: 81a764cc7eac960f0fd607d9c3fe62428905daa4
+B2_ancestor: 2132932b920e3572068cd8d4fcf8fae5cc2957f9
+A2_ancestor: 75d4a24bddcfdc5bd1553bd48f130d64f5d5b1e3
+author_test_repair_descendant: 7b19a242ebc9edf85bf8303be33338f860eabf65
+
+Ancestry checks:
+  B2_is_ancestor_of_A3=YES
+  A2_is_ancestor_of_B2=YES
+
+A3 changed files relative to B2:
+ .github/workflows/pyat-r3-s2e-a.yml                |   1 +
+ rawlsing_next/pre553_s2e_exact_conservation.py     |  67 ++++++++++
+ .../tests/test_pyat919_s2e_a3_native_closure.py    | 144 +++++++++++++++++++++
+ 3 files changed, 212 insertions(+)
+
+Production diff between frozen A3 and test-repair descendant (must be empty):
+  (empty above = only the B2 test file differs)
+
+Exact test-repair diff:
+diff --git a/rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py b/rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py
+index fe6af7974..8eeffae30 100644
+--- a/rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py
++++ b/rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py
+@@ -11,7 +11,9 @@ from dataclasses import replace
+ 
+ import pytest
+ 
+-from rawlsing_next.pre553_empirical_objects import DiscoveryResultReceipt, semantic_hash
++from rawlsing_next.pre553_empirical_objects import (
++    DiscoveryResultReceipt, exact_ref, semantic_hash,
++)
+ from rawlsing_next.pre553_empirical_query import I03GroupedExecutionScope
+ from rawlsing_next.pre553_s2e_exact_conservation import (
+     S2EOutputConservationError,
+@@ -47,7 +49,10 @@ def test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red()
+         "candidate_id": candidate.candidate_identity["candidate_id"],
+         "candidate_hash": candidate.candidate_identity["candidate_hash"],
+         "coverage_state": "EVALUATED_VALID_EMPTY",
+-        "fact_refs": [ref.as_dict() for ref in candidate.empirical_fact_refs],
++        "fact_refs": [
++            exact_ref(ref, "candidate fact").as_dict()
++            for ref in candidate.empirical_fact_refs
++        ],
+         "release_refs": [ref.as_dict() for ref in unit.release_refs],
+         "query_execution_contract": candidate.exact_query_contract_id,
+     })
+
+SHA256 of frozen relevant files:
+  48c5d4e947193e09bccf994b4e744449cd58e813757d6491589ef9f86c28d34b  rawlsing_next/pre553_s2e_exact_conservation.py
+  8001b61b7702e8fb5a7af15273ef72ee69b79e27e432f4ce10c6928aeec8af53  rawlsing_next/tests/test_pyat919_s2e_a3_native_closure.py
+  f4700821affaa7111105641eeaa8cc7e3217f720001965c87b7b46c46c249498  rawlsing_next/tests/test_pyat919_s2e_b2_fate_counterexample.py
+  85a0a10b351bee6bec4309d4d8739f8b99d15a69c4245a4c848d1cba5a6b89b1  .github/workflows/pyat-r3-s2e-a.yml
+
+SHA256 of test-repair B2 falsifier:
+6aa9afd45e48229a9f0817996481f72d6fcb0a681fb3e7bd77db5835ed01308a  -
+
+No protected PRE-MAIN, author branch, original science issuer, or W03/W04 path was modified.
