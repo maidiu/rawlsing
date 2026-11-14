@@ -1,0 +1,9 @@
+# ZAK-04 Counteraudit R2: explicit scope and authority ceiling
+
+Parent candidate: PR #1045 at eebe88a42ab3ccf9f17bdc33543754338629cc19. Protected PRE-MAIN: 6a5c12f04323d74001f9632063ec907f4fc4468e. Historical tree: 25830fe7462bb9e29bc4087e6ae14f3f84cec377.
+Historical axis: ALL_APPLICABLE_TO_MODERN_TERRITORY, OPEN_DISCOVERY. Modern axis: DEFINED_PIPELINE_REGION — learned/Field Forge source ingress, conditional evidence, N9/N10W and V558/SOROK actor-authority boundary.
+This supplement covers three previously inventoried G1-A historical IDs that the parent located in EXTENSIONS/MIGRATION_MAP but did not analyze as individual T cases. It does NOT mint three new original historical identities or claim a closed historical universe.
+Scope/denominator: parent 20 T cases and 200 T-by-domain cells, additional 3 T cases with 30 domain cells: combined unadopted candidate 23 and 230. These are not conservation-success denominators.
+Entry: source/condition/packet evidence under original selected rule. Exit: typed source/field/world/actor context or explicit held/refused states. Boundary owner: ZAK-02 legacy and ZAK-03 upstream source, G1-A original identity, ZAK-04 functional/consumer interface, ZAK-08 whole estate, qualified PYAT/SOROK issuers; no person-native rights.
+Vozhd, Vozhd/Verkhovod, Dva, Trii, Chetiri, Long Memory and pre-Vozhd are explicitly recorded at per-T grain; most remain NOT_INSPECTED. Search obligation: if a posited artifact is missing, look across repository symbols, blobs, predecessor returns, likely branch/date and actual callers and record where found or grounded clues.
+No source or native runtime; no S2/S3, no engineering, no CI, no actor/source/scientific authority, no protected merge, no independent reviewer acceptance. Only standalone documentary R1-schema sidecar under COUNTERAUDIT_R2; parent 45 files and manifest untouched.
