@@ -25,3 +25,7 @@
 - Competing facts: determine structural owner's expectation for diagnostic candidate ID preservation.
 
 **Disposition:** OPEN_DISCOVERY; source-only; no implementation authorization.
+
+## Agent B R3 archival accounting correction
+
+Earlier R2 claimed that the original opponent ZIP was “preserved outside repository.” That was insufficient for the user’s full-work GitHub publication instruction. This R3 retains the **exact original binary ZIP** inside the documentary Git tree, alongside Agent B’s exact pre-R1 eight-file evidence ZIP. The 28+8 original members, 26+60+234 original row identities, original 19 S0–S1 case IDs, and both engineering PR source/receipt cuts are all indexed. This is documentary provenance, not complete semantic equivalence or accepted review. V551 conditional determinicity remains explicitly unreconciled (GAP0018).

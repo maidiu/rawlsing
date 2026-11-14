@@ -60,3 +60,15 @@ The original opponent 12-T/144-cell return is retained above as **frozen predece
 **ENGINEERING:** read-only S1 code/discovery. **SCIENTIFIC:** descriptive historical and typed negative distinction, no original35 grant. **AUTHORITY:** documentary candidate for independent receiving, not merged/protected or central atlas accepted.
 
 **Terminal sentence:** Contract identities **9/9 accounted / 0 newly closed**. Historical discovery **16 provisional T; OPEN_DISCOVERY**. Applicable T×domain matrix **53/192 bounded-inspected with 139 NOT_INSPECTED**. Mechanism and consumer reconciliation **27 S/M comparison records, 0 current original-native first consumers proved**. Independent evidence grade **S1/source-only; no independent receiver**. Usable next for **bounded owner-specific source-reader/cross-grain comparison, conservation and closure decisions**. Cannot claim **whole-estate completeness, executable parity, original35, authority, or engineering acceptance**.
+
+---
+
+## Agent B R3 amendment — complete work-corpus preservation and R1 navigation
+
+**All located prior ZAK-02S work products are now stored or immutable-crosslinked on GitHub, but functional discovery/comparison remains open.** This amendment archives the opponent’s exact 28-file source ZIP and Agent B’s exact eight-file pre-R1 source ZIP, preserves the user-provided standard, indexes the original 19 ZAK-02 source-only cases, and records both earlier unexecuted engineering draft PRs #1041/#1044 without reopening them.
+
+`PRIOR_WORK_PRESERVATION_AND_JOIN_GUIDE.md` supplies exact hashes, 26/26 original case crosslinks, 60/60 source-mechanism crosslinks, 234/234 preserved legacy cells, 19/19 original case IDs, original PR custody and negative-proof grades. The legacy 234-cell domain schema is not silently added to the 192-cell R1 T×domain matrix. All earlier evidence assets are documentary source/provenance, not newly observed native-science or execution.
+
+**Current R1 amended quantities:** 16 provisional T and 192 domain cells (38 FOUND, 15 UNRESOLVED, 139 NOT_INSPECTED); 27 mechanism crosswalk edges; original 9/9 IDs accounted; no new S2/native/independent acceptance. R3 adds six custody EV0068–EV0073, five bounded discovery receipts SEARCH030–034, one explicit conditional-determinicity anti-join GAP0018, and two migration/custody registers. None of these archival rows changes the discovery denominator.
+
+**Artifact boundary:** PR #904 holds original 19 S0–S1 case rows; PR #1041 Agent A and PR #1044 Agent B preserve withdrawn executable-harness work without an S2 witness. No source file is modified here; no merge or production tests are authorized.

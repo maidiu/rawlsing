@@ -21,3 +21,7 @@
 ## Agent B scope amendment R2 — documentary, preserved core
 
 The *same original NAMED_SET* is expanded by **four uncovered T classes** identified through original-source-driven challenge, not by changing commission: V551 directional stamp audit, V551J reviewable sidecar, V552 distribution recomputation, and V550 paired cloud. **16 provisional T** now; historical function source universe still **OPEN DISCOVERY**. Domain matrix 16 × 12 = 192 cells. Current and historical blobs all verified identical for four new T at 9253064bc9423a0f0ccda4fbdea43c2f54f800c6 and 6a5c12f04323d74001f9632063ec907f4fc4468e. R1 standard has not granted engineering rights. Exact `REVERSE_CONSUMERS.tsv` duplicate IDs from opponent are repaired; `REVERSE_ID_MIGRATION.tsv` retains old row alias. The opponent ZIP source is a *user-provided uncommitted artifact*; this sidecar is an independently challenged proposed successor, not an adopted central atlas.
+
+## Amendment R3 — source-custody correction only
+
+The user expressly authorized **documentary** publication; the earliest pre-R1 report’s literal “do not commit” wording was historical at its original cut. Its full eight-file evidence bytes are now retained inside this documentary return with a 26-row case map, 60-row mechanism map and an exact 234-cell archival reference, without pretending its nine-domain matrix has the same T×12 denominator as current R1. Prior Agent A original ZIP and both engineering draft PRs remain frozen; historical T discovery and actual first readers are still OPEN.
