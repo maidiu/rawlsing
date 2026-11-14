@@ -1,6 +1,10 @@
 # 00_RETURN — ZAK-02 bounded read-only unified reconnaissance, 2026-11-14
 
-## **CURRENT R4 COUNTS AND SOURCE-LEVEL VERDICT — 2026-11-14**
+## R5 CURRENT COUNTS AND SOURCE-QUALIFIED CORRECTION
+
+**19 provisional T, 54 edges, 133 evidence, 35 reverse consumers, 56 searches, 39 gaps.** Matrix 228 cells: 45 located, 15 unresolved, 168 uninspected. R4 “two missing legacy packet names” is REFUTED for the certified index by the later compatibility write; old review sidecar and two legacy readiness names remain unresolved. A separate V551J denominator-failure hypothesis is refuted by terminal certification code. V550 helper Boolean/type and co-signature fallback are conditional source issues only. See `ROUND5_HOSTILE_SOURCE_COUNTERSEARCH.md`. No native run, engineering or independent acceptance.
+
+## **PREVIOUS R4 COUNTS AND SOURCE-LEVEL VERDICT — 2026-11-14**
 
 This is the current report header. Previous R1/R2/R3 snapshots below are retained as history and must **not** be read as current totals. Documentary PR #1046 previous HEAD `7abaff676c401d15c4bc675d9c7c0c7627c6a5c6`. **19 provisional historical T; historical discovery OPEN**, no accepted unique original estate denominator. **Original nine ZAK-02 obligations 9/9 recorded, 0/9 newly functionally discharged**; earlier 19 operation rows preserved by archive/crosswalk, not T. **Coverage 60/228 bounded inspected** (45 `FOUND` source locators; 15 `UNRESOLVED`; 168 `NOT_INSPECTED`); historical domain succession remains mostly unsearched. **48 mechanism edges** are source-level comparisons, **49 operation rows**, **123 claim-pinned evidence entries**, **33 reverse-consumer records**, **51 bounded search receipts**, **36 unjoins**. **Zero independently admitted source-native scientific first readers, no native execution, no independent receiving**, no authority promotion or engineering. The first-reader record distinguishes V550 producer, checkpoint writer, replay and bridge context/disabled lanes from actual science consumption. Full results in `ROUND4_FUNCTIONAL_COUNTERSEARCH.md` and `CASES/ZAK02-T-0018.md` / `0019.md`.
 

@@ -5,22 +5,22 @@
     "coverage": 228,
     "coverage_states": {
       "FOUND": 45,
-      "NOT_INSPECTED": 168,
-      "UNRESOLVED": 15
+      "UNRESOLVED": 15,
+      "NOT_INSPECTED": 168
     },
-    "evidence": 123,
-    "mechanism_edges": 48,
+    "evidence": 133,
+    "mechanism_edges": 54,
     "operation": 49,
-    "reverse_consumer": 33,
-    "search": 51,
-    "unjoins": 36
+    "reverse_consumer": 35,
+    "search": 56,
+    "unjoins": 39
   },
-  "documentary_round": "R4_FINAL_DOUBLE_CONTRACT_ADDENDUM",
+  "documentary_round": "R5_HISTORICAL_SOURCE_COUNTERSEARCH",
   "engineering_changes": 0,
   "files": {
     "00_RETURN.md": {
-      "bytes": 19186,
-      "sha256": "6e8de90f6a9f834022c5ab3e1403b5805b1723289aecc4e460e2a81b5a12d2c5"
+      "bytes": 19851,
+      "sha256": "a71dc666562be8d2a7b55f878d22ea96793d4f8c117a5336093e99cbccffe5cd"
     },
     "ADVERSARIAL_RECEIPT.md": {
       "bytes": 4568,
@@ -83,16 +83,16 @@
       "sha256": "f57a2cb64675f266c9a37cb4ecb53de067f6bb649cd18e19ea9739078e5a6ed8"
     },
     "CASES/ZAK02-T-0014.md": {
-      "bytes": 9608,
-      "sha256": "ade1a54d2f19acbaaedc2e85848da245983aff8eb17463fce5fdbbb01ebb9aa4"
+      "bytes": 10259,
+      "sha256": "2a791c006272790bb5eb575778b38999bf5bd617d40b4a54847c3236907b91a5"
     },
     "CASES/ZAK02-T-0015.md": {
       "bytes": 6495,
       "sha256": "7990112dd14d4eb1f440458229cc5811d32f068a77df6da18c0372bdcbe82b35"
     },
     "CASES/ZAK02-T-0016.md": {
-      "bytes": 11731,
-      "sha256": "f2a1d508b2c21f4acc137f0ef6e591393ddb03801727628e2610f5dfecb1e645"
+      "bytes": 12064,
+      "sha256": "450533110e9f3fe3f13adb00b42ebb4c2758aba86463bd52514d5a7c0210e0fe"
     },
     "CASES/ZAK02-T-0017.md": {
       "bytes": 9675,
@@ -103,12 +103,12 @@
       "sha256": "6cbbac910379c6fa20f5309db5cfbea05b79073beeb24ede12ab7d61aa78956d"
     },
     "CASES/ZAK02-T-0019.md": {
-      "bytes": 7645,
-      "sha256": "f3999e003622dd27a450bc873a4e967954a87e751b873c8e4726d2fff74d8613"
+      "bytes": 8120,
+      "sha256": "3f210139f662e31741905243e67a966f96a7548b36b82f0e579d236189f71635"
     },
     "CHANGED_FILES.txt": {
-      "bytes": 1436,
-      "sha256": "85eee5ef5ddf2fbcd9bdb6bc3b656b8e57772336533eb56019089bf83d2090d7"
+      "bytes": 569,
+      "sha256": "523922c3d632a22906311960a901e46c62e81f6561f67967f0659b61f988971e"
     },
     "COVERAGE.tsv": {
       "bytes": 93291,
@@ -119,8 +119,8 @@
       "sha256": "7eb7013d677fa6ecd57cb858b64a9ffaa8fa3401ae001e69713531e2f854036c"
     },
     "EVIDENCE.tsv": {
-      "bytes": 78730,
-      "sha256": "85584e718a0717406cee8e8fe112f9420a7c0bd1018928d02d12a2d840971e99"
+      "bytes": 87385,
+      "sha256": "1f27e6e377476e4a08db77bf3e77be12337500ea6e5b7fbbde517ccb629d0ac4"
     },
     "EVIDENCE_ARCHIVE/AGENT_A_PREDECESSOR_28_FILE_R1.zip": {
       "bytes": 91907,
@@ -139,12 +139,12 @@
       "sha256": "fe18a014f5d190c7164f749a6ccd537ec6eb603e53dc6aabc19a134488b0153f"
     },
     "HUMAN_STORY.md": {
-      "bytes": 16606,
-      "sha256": "6806ba245acce8dffe85b14a9a6492e11024998dde4354e09a50275ad7eac0ac"
+      "bytes": 17195,
+      "sha256": "843d978afa05969eeee454d46dcfb88dc8cc335b969b47713eba8fea0066572b"
     },
     "MECHANISM_RECONCILIATION.tsv": {
-      "bytes": 45391,
-      "sha256": "56956a4624c41ffc42bdca5182e65284682002f941e7e60eb4f0aa142151514c"
+      "bytes": 51331,
+      "sha256": "0ca36f38d05cbf93c123311f7846a03073ff5e42e86f818ddbc236bf230fac89"
     },
     "OPERATION_TRACES.tsv": {
       "bytes": 39114,
@@ -171,8 +171,8 @@
       "sha256": "6f3f41adf246fc20ee81aff2a9651e38da01babff992c6ace5eeed3393758d7b"
     },
     "REVERSE_CONSUMERS.tsv": {
-      "bytes": 15455,
-      "sha256": "4ed1ecee36a9de3b34144f9bd36e02d8aded53752c83e1b4546281dc033c317d"
+      "bytes": 16398,
+      "sha256": "c8b8221b1da1585a0101397f5146fc444d0dd1fba02d7626b195726fa1483bfd"
     },
     "REVERSE_ID_MIGRATION.tsv": {
       "bytes": 424,
@@ -183,29 +183,33 @@
       "sha256": "203ecc909aa35936843f765c1f225b69d8d36c89c4e2c3d5577488dccbefbd8e"
     },
     "ROUND4_FUNCTIONAL_COUNTERSEARCH.md": {
-      "bytes": 6100,
-      "sha256": "ba0eb22ea8ac385fa38d3ddeef1981ddd25b6309f966a47cdcb8942000912373"
+      "bytes": 6476,
+      "sha256": "1f1cf8459eb91f7cbdd7c2cb6c8269f61e036891c4fd63d74ed2fcf6c668a063"
     },
     "SCOPE_CONTRACT.md": {
-      "bytes": 9750,
-      "sha256": "54d3239cc101801bf10f91636238804e835ee0ff98ede680071da35ebf54eaa6"
+      "bytes": 10415,
+      "sha256": "deb913c5e4081e22db56d434348b390b299c3ffe97bb347979ba202397881cbf"
     },
     "SOURCE_SEARCH_LOG.tsv": {
-      "bytes": 33995,
-      "sha256": "cc3cd60e76442e0a3e948ec73675fa2f2f62eb44b2084ee41465e591f320832f"
+      "bytes": 37877,
+      "sha256": "30d25c28d31278dad05df5e5e0356bd40b460eadfdb8a3f0a4151160a5b11f73"
     },
     "UNJOINS.tsv": {
-      "bytes": 24496,
-      "sha256": "707e1f0056085aa71f9601aa3742f25e30fa6ec7fb6d888f9d148891176829a7"
+      "bytes": 26482,
+      "sha256": "8cc076951c9c56b60cba5e7e62ebedcec746b29ac1883373ce559203284da64f"
     },
     "WORK_ARTIFACT_CUSTODY.tsv": {
       "bytes": 2235,
       "sha256": "dd9894c56a37cf29c1342ac7600790257364175f191444c8da139e4e88499aba"
+    },
+    "ROUND5_HOSTILE_SOURCE_COUNTERSEARCH.md": {
+      "bytes": 3811,
+      "sha256": "59da376734c926f1ce083f1a8f65f6e6789d1c6aaaff674fb04c8aa9a58f2143"
     }
   },
   "legacy_archives_mutated": false,
   "original_cut": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
-  "publication_base_pr_head": "7abaff676c401d15c4bc675d9c7c0c7627c6a5c6",
+  "publication_base_pr_head": "9eac116260c009c3ec4acc63b6313130fc3a0e1b",
   "source_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
   "source_execution": "NOT_RUN"
 }
