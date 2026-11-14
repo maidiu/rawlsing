@@ -1,9 +1,13 @@
-"""ZAK-04S R05/P41 sourcefree differential probe, pre-repair.
-Pre-repair version intentionally records the actual selector's current behavior;
-it does NOT represent a qualified C->D->M1->V558 relation.
+"""ZAK04S actual sourcefree R05/P41 authority regressions (not native FF).
+
+The genuine selected C->D->M1->V558 product has CONTEXT use, not a
+qualified Field Forge N9 STRUCTURAL admission.  The REF swap below therefore
+does NOT execute NEG08's admitted FF causal pair, and is never labeled so.
 """
 from dataclasses import replace
+from types import SimpleNamespace
 import json
+import pytest
 from rawlsing_next.pre553_empirical_objects import ExactRef
 from rawlsing_next.pre553_universal_world_binding import (
     R05WorldField, select_r05_world_view, _pinned_p41_runtime,
@@ -41,37 +45,109 @@ def _emit(label, view):
     }, sort_keys=True), flush=True)
 
 
-def test_pre_repair_ff_claim_is_ignored_at_actual_p41_reader():
+@pytest.fixture(scope="module")
+def world_baseline():
     data, execution, request, baseline = _case()
+    assert baseline.consumer_values_read["t0_receipt_hash"]
+    assert baseline.consumer_values_read["t1_receipt_hash"]
+    assert baseline.consumer_values_read["t0_receipt_hash"] != baseline.consumer_values_read["t1_receipt_hash"]
     _emit("REAL_P41_BASELINE", baseline)
-    fields = request.fields
+    return data, execution, request, baseline
+
+
+def test_actual_p41_owned_structural_positive_and_restore(world_baseline):
+    _data, _execution, request, baseline = world_baseline
+    restored = select_r05_world_view(request)
+    _emit("REAL_P41_REPLAY", restored)
+    assert restored.state == "R05_WORLD_SELECTED_VIEW"
+    assert restored.view_hash == baseline.view_hash
+    assert restored.consumer_values_read["t0_n10e_steps"][0]["content_hash"] == restored.consumer_values_read["consumer_result_hash"]
+
+
+@pytest.mark.parametrize("attack", [
+    "authority", "admission", "relation_ref", "field_ref",
+    "transport_ref", "transport_bool", "full", "positive_looking",
+])
+def test_neg07_unqualified_ff_structural_claims_denied_by_real_selector(world_baseline, attack):
+    data, execution, request, baseline = world_baseline
     forged = _ref("a")
-    promoted = replace(fields[0], field_ref=forged, relation_ref=forged, role="STRUCTURAL")
-    candidate = _r05_request(
-        data, actual_execution=execution, fields=(promoted, fields[1]),
-        ff_structural_authority_ref=forged,
-        relation_transport_ref=forged, relation_transport_authorized=False,
-    )
-    result = select_r05_world_view(candidate)
-    _emit("NEG07_PRE_REPAIR_UNQUALIFIED_CLAIM", result)
-    # This observation intentionally tests present (unrepaired) behavior.
-    assert result.state == "R05_WORLD_SELECTED_VIEW", result.reason_code
-    assert result.view_hash == baseline.view_hash
-    swapped = _ref("b")
-    severed = select_r05_world_view(replace(
-        candidate,
-        fields=(replace(promoted, field_ref=swapped, relation_ref=swapped), fields[1]),
-        ff_structural_authority_ref=swapped,
-        relation_transport_ref=swapped,
-    ))
-    _emit("UNQUALIFIED_REF_SWAP_NOT_NEG08", severed)
-    assert severed.state == "R05_WORLD_SELECTED_VIEW", severed.reason_code
-    assert severed.view_hash == baseline.view_hash
-    restored = select_r05_world_view(candidate)
-    _emit("RESTORED_UNQUALIFIED_CLAIM", restored)
-    assert restored.view_hash == result.view_hash
-    context = select_r05_world_view(replace(
-        candidate, fields=(promoted, replace(fields[1], role="CONTEXT"))
-    ))
-    _emit("CONTEXT_REFUSAL", context)
-    assert context.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+    fields = request.fields
+    kwargs = {}
+    if attack == "authority":
+        kwargs["ff_structural_authority_ref"] = forged
+    elif attack == "admission":
+        kwargs["ff_structural_admission"] = SimpleNamespace(typed_state="ADMITTED_FOR_EXACT_STRUCTURAL_USE")
+    elif attack == "relation_ref":
+        fields = (replace(fields[0], relation_ref=forged), fields[1])
+    elif attack == "field_ref":
+        fields = (replace(fields[0], field_ref=forged), fields[1])
+    elif attack == "transport_ref":
+        kwargs["relation_transport_ref"] = forged
+    elif attack == "transport_bool":
+        kwargs["relation_transport_authorized"] = True
+    elif attack == "positive_looking":
+        kwargs["ff_structural_admission"] = SimpleNamespace(
+            typed_state="ADMITTED_FOR_EXACT_STRUCTURAL_USE",
+            target_use="STRUCTURAL_MEDIATION_INPUT",
+            source_universe_refs=(data["source_universe_ref"],),
+            structural_semantic_identity_refs=(forged,),
+        )
+    else:
+        fields = (replace(fields[0], role="STRUCTURAL", relation_ref=forged, field_ref=forged), fields[1])
+        kwargs.update(ff_structural_authority_ref=forged,
+                      ff_structural_admission=SimpleNamespace(typed_state="ADMITTED_FOR_EXACT_STRUCTURAL_USE"),
+                      relation_transport_ref=forged, relation_transport_authorized=True)
+    candidate = replace(request, fields=fields, **kwargs)
+    # No invalid-handle short circuit.  All learned/source/P41 inputs stay valid.
+    assert candidate.execution_handle == request.execution_handle
+    assert candidate.learned_consumer is request.learned_consumer
+    refused = select_r05_world_view(candidate)
+    _emit("NEG07_" + attack, refused)
+    assert refused.state == "REFUSED"
+    assert refused.reason_code == "R05_FF_ANCESTRY_NOT_TRUSTED"
+    assert select_r05_world_view(request).view_hash == baseline.view_hash
+
+
+def test_unqualified_ref_severance_is_not_a_fake_neg08(world_baseline):
+    _data, _execution, request, baseline = world_baseline
+    a, b = _ref("a"), _ref("b")
+    fields = request.fields
+    forged = replace(request,
+                     fields=(replace(fields[0], relation_ref=a, field_ref=a), fields[1]),
+                     ff_structural_authority_ref=a, relation_transport_ref=a,
+                     relation_transport_authorized=True)
+    removed = replace(forged,
+                      fields=(replace(forged.fields[0], relation_ref=b, field_ref=b), fields[1]),
+                      ff_structural_authority_ref=b, relation_transport_ref=b)
+    for label, candidate in (
+        ("UNQUALIFIED_A_NOT_NEG08", forged),
+        ("UNQUALIFIED_B_NOT_NEG08", removed),
+        ("UNQUALIFIED_A_RESTORED", forged),
+    ):
+        refused = select_r05_world_view(candidate)
+        _emit(label, refused)
+        assert refused.state == "REFUSED"
+        assert refused.reason_code == "R05_FF_ANCESTRY_NOT_TRUSTED"
+    world_restored = select_r05_world_view(request)
+    _emit("REAL_P41_RESTORED", world_restored)
+    assert world_restored.view_hash == baseline.view_hash
+
+
+def test_context_refusal_and_other_existing_guard_precedence(world_baseline):
+    _data, _execution, request, baseline = world_baseline
+    forged = _ref("c")
+    fields = request.fields
+    context = replace(request,
+                      fields=(fields[0], replace(fields[1], role="CONTEXT")),
+                      ff_structural_authority_ref=forged)
+    refused = select_r05_world_view(context)
+    _emit("CONTEXT_REFUSAL", refused)
+    assert refused.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+    cross_unit = replace(request, fields=(
+        replace(fields[0], unit="person", relation_ref=forged),
+        replace(fields[1], unit="household", relation_ref=forged)))
+    assert select_r05_world_view(cross_unit).reason_code == "CROSS_UNIT_LINKED_QUERY_UNAVAILABLE"
+    bad_handle = replace(request, execution_handle="r06ctx-bogus",
+                         ff_structural_authority_ref=forged)
+    assert select_r05_world_view(bad_handle).reason_code == "TRUSTED_EXECUTION_HANDLE_INVALID"
+    assert select_r05_world_view(request).view_hash == baseline.view_hash
