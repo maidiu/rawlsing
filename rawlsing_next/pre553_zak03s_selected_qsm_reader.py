@@ -291,7 +291,13 @@ def execute_selected_qsm_route_b(
         "target_use_ref": selection.target_use_ref.as_dict(),
         "target_use_authority_ref": selection.target_use_authority_ref.as_dict(),
         "target_use_operation": selection.target_use_operation,
-        "reader": "rawlsing_next.pre553_route_b_production.execute_route_b_production",
+        # Route B is the actually invoked producer, not an independently
+        # demonstrated import of this new QSM binding by the issued-workload
+        # Batch path. Never call a producer invocation first-reader proof.
+        "invoked_current_producer":
+            "rawlsing_next.pre553_route_b_production.execute_route_b_production",
+        "selected_binding_first_importing_reader": "NOT_PROVED",
+        "issued_batch_consumption_of_selected_qsm": False,
         "route_receipt_identity": route.replay_receipt["receipt_identity"],
         "c11_release_ref": route.c11_release.release_ref.as_dict(),
         "i03_query_refs": [x.query_ref.as_dict() for x in route.i03_results],
