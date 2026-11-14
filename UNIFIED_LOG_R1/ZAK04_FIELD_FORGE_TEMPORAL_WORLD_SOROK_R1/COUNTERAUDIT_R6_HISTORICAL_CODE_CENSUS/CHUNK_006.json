@@ -1,0 +1,1785 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    66,
+    80
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/ddm_v551j_packets.py",
+      "sha": "740bae4cfd4da7ed8aa2c9a2321c47f26ba7c7e8",
+      "role": "CORE_MODULE",
+      "n": 1817,
+      "bytes": 130227,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 47
+        },
+        {
+          "kind": "def",
+          "name": "_to_bool",
+          "line": 59
+        },
+        {
+          "kind": "def",
+          "name": "_stable_hash",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "_json_array",
+          "line": 79
+        },
+        {
+          "kind": "def",
+          "name": "_json_object",
+          "line": 90
+        },
+        {
+          "kind": "def",
+          "name": "_first_nonempty",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "_join_token_variants",
+          "line": 102
+        },
+        {
+          "kind": "def",
+          "name": "_confidence_tier_rank",
+          "line": 116
+        },
+        {
+          "kind": "def",
+          "name": "_best_confidence_tier",
+          "line": 127
+        },
+        {
+          "kind": "def",
+          "name": "_series_first",
+          "line": 139
+        },
+        {
+          "kind": "def",
+          "name": "_pick_join_row",
+          "line": 146
+        },
+        {
+          "kind": "def",
+          "name": "_classify_authority",
+          "line": 166
+        },
+        {
+          "kind": "def",
+          "name": "_directionality_status",
+          "line": 180
+        },
+        {
+          "kind": "def",
+          "name": "_v552_context_bundle",
+          "line": 193
+        },
+        {
+          "kind": "def",
+          "name": "_packet_type_for_join",
+          "line": 244
+        },
+        {
+          "kind": "def",
+          "name": "_future_affordances",
+          "line": 256
+        },
+        {
+          "kind": "def",
+          "name": "_known_absence_claims",
+          "line": 294
+        },
+        {
+          "kind": "def",
+          "name": "_packet_row",
+          "line": 298
+        },
+        {
+          "kind": "def",
+          "name": "_join_diagnostics_row",
+          "line": 528
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_join_key_diagnostics",
+          "line": 558
+        },
+        {
+          "kind": "def",
+          "name": "_heuristic_join_strategy",
+          "line": 570
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_candidate_trace",
+          "line": 581
+        },
+        {
+          "kind": "def",
+          "name": "_forbidden_inference_rows",
+          "line": 844
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_readiness_report",
+          "line": 883
+        },
+        {
+          "kind": "def",
+          "name": "validate_v551j_candidate_trace",
+          "line": 936
+        },
+        {
+          "kind": "def",
+          "name": "_stance_alignment_status",
+          "line": 962
+        },
+        {
+          "kind": "def",
+          "name": "_evidence_role_status",
+          "line": 973
+        },
+        {
+          "kind": "def",
+          "name": "_v2_json",
+          "line": 984
+        },
+        {
+          "kind": "def",
+          "name": "_v2_list",
+          "line": 988
+        },
+        {
+          "kind": "def",
+          "name": "_v2_scalar",
+          "line": 1011
+        },
+        {
+          "kind": "def",
+          "name": "_v2_hash",
+          "line": 1026
+        },
+        {
+          "kind": "def",
+          "name": "_v2_hash_file",
+          "line": 1031
+        },
+        {
+          "kind": "def",
+          "name": "_v2_packet_id",
+          "line": 1044
+        },
+        {
+          "kind": "def",
+          "name": "_v2_component_id",
+          "line": 1048
+        },
+        {
+          "kind": "def",
+          "name": "_v2_bool_certified",
+          "line": 1052
+        },
+        {
+          "kind": "def",
+          "name": "_v2_pattern_measurements",
+          "line": 1057
+        },
+        {
+          "kind": "def",
+          "name": "_v2_equal",
+          "line": 1088
+        },
+        {
+          "kind": "def",
+          "name": "_v221_status",
+          "line": 1097
+        },
+        {
+          "kind": "def",
+          "name": "_v221_old_status",
+          "line": 1106
+        },
+        {
+          "kind": "def",
+          "name": "_v2_identity",
+          "line": 1110
+        },
+        {
+          "kind": "def",
+          "name": "_v2_match_atoms_for_item",
+          "line": 1114
+        },
+        {
+          "kind": "def",
+          "name": "_v2_component_row",
+          "line": 1164
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_joint_component_index",
+          "line": 1289
+        },
+        {
+          "kind": "def",
+          "name": "_v2_signature",
+          "line": 1317
+        },
+        {
+          "kind": "def",
+          "name": "validate_governed_input_scope",
+          "line": 1322
+        },
+        {
+          "kind": "def",
+          "name": "_v2_packet_status",
+          "line": 1400
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_joint_outputs_v2",
+          "line": 1481
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v551j_schema import (",
+        "26:from data.ddm_build_copy.ddm_v551j_contract import (",
+        "41:from data.ddm_build_copy.ddm_v551j_validation import (",
+        "44:from data.ddm_build_copy.ddm_v550_manifest import utc_now"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"V551J packet assembly helpers.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v551j_review.py",
+      "sha": "ef06476f0fbb183ad665be21c664e2c49998fb94",
+      "role": "CORE_MODULE",
+      "n": 875,
+      "bytes": 42310,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 28
+        },
+        {
+          "kind": "def",
+          "name": "_to_bool",
+          "line": 40
+        },
+        {
+          "kind": "def",
+          "name": "_json_array",
+          "line": 55
+        },
+        {
+          "kind": "def",
+          "name": "_json_object",
+          "line": 66
+        },
+        {
+          "kind": "def",
+          "name": "_parse_json_array",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "_parse_json_object",
+          "line": 89
+        },
+        {
+          "kind": "def",
+          "name": "_first_nonempty",
+          "line": 104
+        },
+        {
+          "kind": "def",
+          "name": "_join_token_variants",
+          "line": 112
+        },
+        {
+          "kind": "def",
+          "name": "_series_first",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "_join_series",
+          "line": 133
+        },
+        {
+          "kind": "def",
+          "name": "_join_audit_row",
+          "line": 153
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_v552_context_join_audit",
+          "line": 183
+        },
+        {
+          "kind": "def",
+          "name": "_review_blockers",
+          "line": 204
+        },
+        {
+          "kind": "def",
+          "name": "_review_reason_codes",
+          "line": 251
+        },
+        {
+          "kind": "def",
+          "name": "_review_priority",
+          "line": 272
+        },
+        {
+          "kind": "def",
+          "name": "_numeric",
+          "line": 292
+        },
+        {
+          "kind": "def",
+          "name": "_confidence_score",
+          "line": 305
+        },
+        {
+          "kind": "def",
+          "name": "_authority_score",
+          "line": 315
+        },
+        {
+          "kind": "def",
+          "name": "_directionality_score",
+          "line": 330
+        },
+        {
+          "kind": "def",
+          "name": "_join_strength_score",
+          "line": 343
+        },
+        {
+          "kind": "def",
+          "name": "_semantic_specificity_score",
+          "line": 347
+        },
+        {
+          "kind": "def",
+          "name": "_support_score",
+          "line": 364
+        },
+        {
+          "kind": "def",
+          "name": "_review_priority_score",
+          "line": 376
+        },
+        {
+          "kind": "def",
+          "name": "_reliability_vector",
+          "line": 380
+        },
+        {
+          "kind": "def",
+          "name": "_evidence_backed_for_sidecar",
+          "line": 429
+        },
+        {
+          "kind": "def",
+          "name": "_sidecar_reasons",
+          "line": 446
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_reviewable_evidence_sidecar",
+          "line": 461
+        },
+        {
+          "kind": "def",
+          "name": "_v552_join_strength",
+          "line": 502
+        },
+        {
+          "kind": "def",
+          "name": "_v552_refs",
+          "line": 508
+        },
+        {
+          "kind": "def",
+          "name": "_required_for_certification",
+          "line": 519
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_authority_status",
+          "line": 534
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_directionality_status",
+          "line": 539
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_support_status",
+          "line": 544
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_v552_context_status",
+          "line": 555
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_comparability_status",
+          "line": 560
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_v551j_review_status",
+          "line": 565
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_v551j_certification_status",
+          "line": 574
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_v551j_lane",
+          "line": 589
+        },
+        {
+          "kind": "def",
+          "name": "_normalization_bundle",
+          "line": 603
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_review_surface",
+          "line": 660
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_review_readiness_report",
+          "line": 827
+        }
+      ],
+      "imports": [
+        "13:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "14:from data.ddm_build_copy.ddm_v551j_schema import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"V551J review-surface helpers for phase B.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v551j_schema.py",
+      "sha": "c5a91908a40f4101781bcd4cfc77dc68b272cf56",
+      "role": "CORE_MODULE",
+      "n": 925,
+      "bytes": 42468,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_normalize_tokens",
+          "line": 637
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Schema and enum definitions for V551J candidate evidence packets.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v551j_semantic_diff.py",
+      "sha": "54ccfc56a76f9fac26b2e131bcdaf6b5a2c0cdcd",
+      "role": "CORE_MODULE",
+      "n": 588,
+      "bytes": 25921,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 133
+        },
+        {
+          "kind": "def",
+          "name": "_json_array",
+          "line": 145
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_scalar",
+          "line": 166
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_for_compare",
+          "line": 181
+        },
+        {
+          "kind": "def",
+          "name": "_first_existing_table_path",
+          "line": 198
+        },
+        {
+          "kind": "def",
+          "name": "_read_table",
+          "line": 210
+        },
+        {
+          "kind": "def",
+          "name": "_frame_to_rows",
+          "line": 234
+        },
+        {
+          "kind": "def",
+          "name": "_diff_fields",
+          "line": 245
+        },
+        {
+          "kind": "def",
+          "name": "_pack_table_rows",
+          "line": 257
+        },
+        {
+          "kind": "def",
+          "name": "_bundle_status",
+          "line": 396
+        },
+        {
+          "kind": "def",
+          "name": "_load_bundle",
+          "line": 404
+        },
+        {
+          "kind": "def",
+          "name": "build_v551j_cross_wave_semantic_diff",
+          "line": 444
+        },
+        {
+          "kind": "def",
+          "name": "validate_v551j_cross_wave_semantic_diff",
+          "line": 566
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Cross-wave comparability and semantic diff helpers for V551J.  This is a provisional V551J-D layer. It compares two V551J runs and makes differences expli"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v551j_validation.py",
+      "sha": "c4f5b758e1e67349273bcae94f19e9baabe5b766",
+      "role": "CORE_MODULE",
+      "n": 715,
+      "bytes": 37571,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "validate_v551j_v2_2_3_outputs",
+          "line": 51
+        },
+        {
+          "kind": "def",
+          "name": "read_v551j_contract_csv",
+          "line": 435
+        },
+        {
+          "kind": "def",
+          "name": "validate_written_v551j_artifacts",
+          "line": 439
+        },
+        {
+          "kind": "def",
+          "name": "_stringify_value",
+          "line": 460
+        },
+        {
+          "kind": "def",
+          "name": "_canonical_bool",
+          "line": 468
+        },
+        {
+          "kind": "def",
+          "name": "validate_required_columns",
+          "line": 472
+        },
+        {
+          "kind": "def",
+          "name": "_column_values",
+          "line": 477
+        },
+        {
+          "kind": "def",
+          "name": "validate_packet_lifecycle_statuses",
+          "line": 483
+        },
+        {
+          "kind": "def",
+          "name": "validate_no_certified_packets_in_phase_a",
+          "line": 490
+        },
+        {
+          "kind": "def",
+          "name": "validate_runtime_use_classes",
+          "line": 497
+        },
+        {
+          "kind": "def",
+          "name": "validate_authority_statuses",
+          "line": 504
+        },
+        {
+          "kind": "def",
+          "name": "validate_directionality_statuses",
+          "line": 511
+        },
+        {
+          "kind": "def",
+          "name": "validate_forbidden_claim_ids",
+          "line": 518
+        },
+        {
+          "kind": "def",
+          "name": "validate_no_runtime_safe_packets_in_phase_a",
+          "line": 535
+        },
+        {
+          "kind": "def",
+          "name": "validate_future_affordances_are_coarse",
+          "line": 542
+        },
+        {
+          "kind": "def",
+          "name": "validate_review_surface_statuses",
+          "line": 557
+        },
+        {
+          "kind": "def",
+          "name": "validate_review_priorities",
+          "line": 564
+        },
+        {
+          "kind": "def",
+          "name": "validate_reliability_numeric_columns",
+          "line": 571
+        },
+        {
+          "kind": "def",
+          "name": "validate_evidence_quality_statuses",
+          "line": 601
+        },
+        {
+          "kind": "def",
+          "name": "validate_use_permission_classes",
+          "line": 608
+        },
+        {
+          "kind": "def",
+          "name": "validate_review_surface_schema",
+          "line": 615
+        },
+        {
+          "kind": "def",
+          "name": "validate_reviewable_evidence_sidecar_schema",
+          "line": 627
+        },
+        {
+          "kind": "def",
+          "name": "validate_certified_packet_index_schema",
+          "line": 643
+        },
+        {
+          "kind": "def",
+          "name": "validate_certification_audit_schema",
+          "line": 653
+        },
+        {
+          "kind": "def",
+          "name": "validate_certification_rejection_audit_schema",
+          "line": 657
+        },
+        {
+          "kind": "def",
+          "name": "validate_certification_readiness_report_schema",
+          "line": 661
+        },
+        {
+          "kind": "def",
+          "name": "validate_json_array_columns",
+          "line": 665
+        },
+        {
+          "kind": "def",
+          "name": "validate_no_actor_orientation_fields",
+          "line": 685
+        },
+        {
+          "kind": "def",
+          "name": "validate_no_carrier_mediation_fields",
+          "line": 690
+        },
+        {
+          "kind": "def",
+          "name": "validate_no_enneagram_fields",
+          "line": 695
+        },
+        {
+          "kind": "def",
+          "name": "validate_candidate_trace_schema",
+          "line": 700
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v551j_schema import (",
+        "32:from data.ddm_build_copy.ddm_v551j_contract import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Validation helpers for V551J candidate packets.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v552_contract.py",
+      "sha": "86463a840e46eae96276582a3d32f180fc680e30",
+      "role": "CORE_MODULE",
+      "n": 622,
+      "bytes": 25695,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "v552_canonical_value",
+          "line": 13
+        },
+        {
+          "kind": "def",
+          "name": "v552_canonical_json",
+          "line": 51
+        },
+        {
+          "kind": "def",
+          "name": "v552_hash_payload",
+          "line": 62
+        },
+        {
+          "kind": "def",
+          "name": "v552_stable_hash",
+          "line": 66
+        },
+        {
+          "kind": "def",
+          "name": "_prefixed_id",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "v552_component_identity_payload",
+          "line": 78
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_pressure_component_id",
+          "line": 90
+        },
+        {
+          "kind": "def",
+          "name": "v552_observation_identity_payload",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_pressure_observation_id",
+          "line": 114
+        },
+        {
+          "kind": "def",
+          "name": "v552_response_surface_payload",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_response_surface_signature",
+          "line": 139
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_dominant_orientation",
+          "line": 143
+        },
+        {
+          "kind": "class",
+          "name": "V552ObservationState",
+          "line": 159
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_observation_state",
+          "line": 172
+        },
+        {
+          "kind": "def",
+          "name": "v552_v2_1_4_component_measurement_payload",
+          "line": 281
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_v2_1_4_component_measurement_hash",
+          "line": 285
+        },
+        {
+          "kind": "def",
+          "name": "v552_v2_1_4_pressure_measurement_payload",
+          "line": 292
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_v2_1_4_pressure_measurement_hash",
+          "line": 388
+        },
+        {
+          "kind": "class",
+          "name": "V552DistributionContractRecomputation",
+          "line": 399
+        },
+        {
+          "kind": "def",
+          "name": "_num",
+          "line": 431
+        },
+        {
+          "kind": "def",
+          "name": "_direction_sign",
+          "line": 443
+        },
+        {
+          "kind": "def",
+          "name": "_signed_for",
+          "line": 454
+        },
+        {
+          "kind": "def",
+          "name": "_representation",
+          "line": 475
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_distribution_contract",
+          "line": 500
+        }
+      ],
+      "imports": [],
+      "top": "\"\"\"Canonical V552 v2.1.4 contract hashing helpers.\"\"\"  from __future__ import annotations  import hashlib"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v552_structural.py",
+      "sha": "0df56d70cb3880dee723df00aea2207acd525260",
+      "role": "CORE_MODULE",
+      "n": 265,
+      "bytes": 53600,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_extend",
+          "line": 27
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 37
+        },
+        {
+          "kind": "def",
+          "name": "_bool",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "_num",
+          "line": 45
+        },
+        {
+          "kind": "def",
+          "name": "_now",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "_json",
+          "line": 51
+        },
+        {
+          "kind": "def",
+          "name": "_hash",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "_id",
+          "line": 53
+        },
+        {
+          "kind": "def",
+          "name": "_empty",
+          "line": 54
+        },
+        {
+          "kind": "def",
+          "name": "_canon",
+          "line": 55
+        },
+        {
+          "kind": "def",
+          "name": "compute_input_hash",
+          "line": 59
+        },
+        {
+          "kind": "def",
+          "name": "normalize_v552_status",
+          "line": 65
+        },
+        {
+          "kind": "def",
+          "name": "empty_v552_artifact",
+          "line": 66
+        },
+        {
+          "kind": "def",
+          "name": "validate_v552_v551_input_contract",
+          "line": 68
+        },
+        {
+          "kind": "class",
+          "name": "V552IntensityRepresentationResolution",
+          "line": 106
+        },
+        {
+          "kind": "class",
+          "name": "V552ScaleTransformResult",
+          "line": 108
+        },
+        {
+          "kind": "def",
+          "name": "v552_direction_sign",
+          "line": 110
+        },
+        {
+          "kind": "def",
+          "name": "resolve_v552_distribution_intensity_representation",
+          "line": 112
+        },
+        {
+          "kind": "def",
+          "name": "resolve_v552_signed_component",
+          "line": 113
+        },
+        {
+          "kind": "def",
+          "name": "_resp_sig",
+          "line": 120
+        },
+        {
+          "kind": "def",
+          "name": "_sem_sig",
+          "line": 121
+        },
+        {
+          "kind": "def",
+          "name": "_struct_sig",
+          "line": 122
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_pressure_observation_id",
+          "line": 123
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_pressure_component_id",
+          "line": 124
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_component_measurement_hash",
+          "line": 125
+        },
+        {
+          "kind": "def",
+          "name": "recompute_v552_pressure_measurement_hash",
+          "line": 127
+        },
+        {
+          "kind": "def",
+          "name": "_surface_sig",
+          "line": 129
+        },
+        {
+          "kind": "def",
+          "name": "_surface",
+          "line": 130
+        },
+        {
+          "kind": "def",
+          "name": "select_v552_distribution_weight_basis",
+          "line": 137
+        },
+        {
+          "kind": "def",
+          "name": "build_v552_pressure_component_index",
+          "line": 148
+        },
+        {
+          "kind": "def",
+          "name": "_cn",
+          "line": 157
+        },
+        {
+          "kind": "def",
+          "name": "_class",
+          "line": 158
+        },
+        {
+          "kind": "def",
+          "name": "build_v552_pressure_observation_index",
+          "line": 159
+        },
+        {
+          "kind": "def",
+          "name": "_observed",
+          "line": 187
+        },
+        {
+          "kind": "def",
+          "name": "_roll",
+          "line": 188
+        },
+        {
+          "kind": "def",
+          "name": "build_relation_axis_pressure_from_observations",
+          "line": 195
+        },
+        {
+          "kind": "def",
+          "name": "build_target_entity_pressure_from_observations",
+          "line": 196
+        },
+        {
+          "kind": "def",
+          "name": "build_driver_facet_pressure_from_observations",
+          "line": 197
+        },
+        {
+          "kind": "def",
+          "name": "build_country_wave_pressure_profile_from_observations",
+          "line": 198
+        },
+        {
+          "kind": "def",
+          "name": "build_structural_channel_index_from_observations",
+          "line": 199
+        },
+        {
+          "kind": "def",
+          "name": "build_position_conditioning_profile_from_observations",
+          "line": 200
+        },
+        {
+          "kind": "def",
+          "name": "build_contradiction_tensor_from_observations",
+          "line": 203
+        },
+        {
+          "kind": "def",
+          "name": "build_v552_pressure_observation_audit",
+          "line": 204
+        },
+        {
+          "kind": "def",
+          "name": "build_v552_intensity_representation_resolution_audit",
+          "line": 209
+        },
+        {
+          "kind": "def",
+          "name": "_facts",
+          "line": 215
+        },
+        {
+          "kind": "def",
+          "name": "_temporal",
+          "line": 220
+        },
+        {
+          "kind": "def",
+          "name": "_poh",
+          "line": 225
+        },
+        {
+          "kind": "def",
+          "name": "_handoff",
+          "line": 230
+        },
+        {
+          "kind": "def",
+          "name": "_runstate",
+          "line": 236
+        },
+        {
+          "kind": "def",
+          "name": "_readiness",
+          "line": 240
+        },
+        {
+          "kind": "def",
+          "name": "apply_v552_downstream_permission",
+          "line": 242
+        },
+        {
+          "kind": "def",
+          "name": "build_v552_structural_outputs",
+          "line": 253
+        },
+        {
+          "kind": "def",
+          "name": "validate_v552_v2_1_output_contract",
+          "line": 261
+        }
+      ],
+      "imports": [
+        "16:from data.ddm_build_copy import ddm_v550_schema as S"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Canonical V552 v3 structural-pressure helpers.  V552 consumes V551 v3 canonical signed side/intensity. It does not infer sign or magnitude from raw respon"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v552_validation.py",
+      "sha": "9a0a44e34a572c543d773a5a5a2432bd22f624b5",
+      "role": "CORE_MODULE",
+      "n": 330,
+      "bytes": 16705,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "ValidationIssue",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "name": "_issue",
+          "line": 40
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "_num",
+          "line": 56
+        },
+        {
+          "kind": "def",
+          "name": "_bool",
+          "line": 65
+        },
+        {
+          "kind": "def",
+          "name": "_json_list",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "name": "_frame",
+          "line": 79
+        },
+        {
+          "kind": "def",
+          "name": "_validate_component_projection",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_validate_distribution_observations",
+          "line": 131
+        },
+        {
+          "kind": "def",
+          "name": "_expected_run_state",
+          "line": 228
+        },
+        {
+          "kind": "def",
+          "name": "_validate_readiness",
+          "line": 238
+        },
+        {
+          "kind": "def",
+          "name": "_validate_no_direct_v553",
+          "line": 266
+        },
+        {
+          "kind": "def",
+          "name": "validate_v552_v2_1_4_outputs",
+          "line": 278
+        },
+        {
+          "kind": "def",
+          "name": "validate_v552_outputs",
+          "line": 308
+        },
+        {
+          "kind": "def",
+          "name": "validate_written_artifacts",
+          "line": 312
+        },
+        {
+          "kind": "def",
+          "name": "issues_to_strings",
+          "line": 328
+        }
+      ],
+      "imports": [
+        "16:from data.ddm_build_copy.ddm_v552_structural import ("
+      ],
+      "top": "\"\"\"Validation for the canonical V552 v3 structural-pressure contract.  The validator checks compiler-emitted V552 v3 fields against V551 v3 producer surfaces.  It does not invoke t"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v552j_handoff.py",
+      "sha": "476e617370e8947ee1f38b0718243ecfc5ba9e5c",
+      "role": "CORE_MODULE",
+      "n": 148,
+      "bytes": 23512,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 13
+        },
+        {
+          "kind": "def",
+          "name": "_number",
+          "line": 20
+        },
+        {
+          "kind": "def",
+          "name": "_truthy",
+          "line": 26
+        },
+        {
+          "kind": "def",
+          "name": "_parse_json_array",
+          "line": 29
+        },
+        {
+          "kind": "def",
+          "name": "_json_array",
+          "line": 37
+        },
+        {
+          "kind": "def",
+          "name": "_first_nonempty",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "_row_value",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "_scope_identity",
+          "line": 55
+        },
+        {
+          "kind": "def",
+          "name": "_same_scope",
+          "line": 58
+        },
+        {
+          "kind": "def",
+          "name": "_semantic_values",
+          "line": 64
+        },
+        {
+          "kind": "def",
+          "name": "_structural_fact_match_score",
+          "line": 69
+        },
+        {
+          "kind": "def",
+          "name": "_structural_fact_match_policy",
+          "line": 76
+        },
+        {
+          "kind": "def",
+          "name": "_packet_structural_dimension_resolution",
+          "line": 79
+        },
+        {
+          "kind": "def",
+          "name": "_score",
+          "line": 97
+        },
+        {
+          "kind": "def",
+          "name": "_packet_score_bundle",
+          "line": 98
+        },
+        {
+          "kind": "def",
+          "name": "_stable_id",
+          "line": 106
+        },
+        {
+          "kind": "def",
+          "name": "_packet_lane",
+          "line": 107
+        },
+        {
+          "kind": "def",
+          "name": "_packet_rows",
+          "line": 110
+        },
+        {
+          "kind": "def",
+          "name": "_derive_join_state",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "_mean_or_none",
+          "line": 127
+        },
+        {
+          "kind": "def",
+          "name": "build_v552j_join",
+          "line": 131
+        },
+        {
+          "kind": "def",
+          "name": "build_v552j_structural_handoff",
+          "line": 144
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Producer-bound V552J join of V551J packets to V552 structural facts.\"\"\" from __future__ import annotations import hashlib, json from typing import Any, Ma"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v552j_schema.py",
+      "sha": "eaee609692fd9b8283b5c8002747707c1e0c5c50",
+      "role": "CORE_MODULE",
+      "n": 668,
+      "bytes": 19784,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "validate_required_columns",
+          "line": 623
+        },
+        {
+          "kind": "def",
+          "name": "validate_forbidden_runtime_claims",
+          "line": 631
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Schema definitions for the provisional V552J structural handoff adapter.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v552j_validation.py",
+      "sha": "a8b00a72c02d5a4cbe948cb139668d633b17f55e",
+      "role": "CORE_MODULE",
+      "n": 117,
+      "bytes": 5172,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "validate_structural_constraint_packet",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "name": "validate_structural_context_packet",
+          "line": 34
+        },
+        {
+          "kind": "def",
+          "name": "validate_structural_absence_packet",
+          "line": 38
+        },
+        {
+          "kind": "def",
+          "name": "validate_structural_uncertainty_packet",
+          "line": 42
+        },
+        {
+          "kind": "def",
+          "name": "validate_forbidden_inference_audit",
+          "line": 46
+        },
+        {
+          "kind": "def",
+          "name": "validate_input_artifact_audit",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "validate_status_conflict_audit",
+          "line": 54
+        },
+        {
+          "kind": "def",
+          "name": "validate_permission_boundary_audit",
+          "line": 58
+        },
+        {
+          "kind": "def",
+          "name": "validate_downstream_leakage_audit",
+          "line": 62
+        },
+        {
+          "kind": "def",
+          "name": "validate_structural_context_only_index",
+          "line": 66
+        },
+        {
+          "kind": "def",
+          "name": "validate_review_only_index",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "validate_diagnostic_only_index",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "validate_blocked_index",
+          "line": 78
+        },
+        {
+          "kind": "def",
+          "name": "validate_to_v553_handoff_index",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "name": "validate_v553_handoff_manifest",
+          "line": 86
+        },
+        {
+          "kind": "def",
+          "name": "validate_runtime_handoff_manifest",
+          "line": 90
+        },
+        {
+          "kind": "def",
+          "name": "validate_readiness_report",
+          "line": 94
+        }
+      ],
+      "imports": [
+        "8:from data.ddm_build_copy.ddm_v552j_schema import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Validation helpers for the provisional V552J structural handoff adapter.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v553_canonical_harmonization.py",
+      "sha": "1951ada5cb7453108939eae9af91fcbfc90ad517",
+      "role": "CORE_MODULE",
+      "n": 707,
+      "bytes": 32307,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "V553CanonicalSurfaceError",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 103
+        },
+        {
+          "kind": "def",
+          "name": "_truthy",
+          "line": 115
+        },
+        {
+          "kind": "def",
+          "name": "_descriptor",
+          "line": 121
+        },
+        {
+          "kind": "def",
+          "name": "_json_array_items",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "_collect_ids",
+          "line": 142
+        },
+        {
+          "kind": "def",
+          "name": "_base_context",
+          "line": 155
+        },
+        {
+          "kind": "def",
+          "name": "_fail",
+          "line": 181
+        },
+        {
+          "kind": "def",
+          "name": "_document",
+          "line": 194
+        },
+        {
+          "kind": "def",
+          "name": "_producer_identity",
+          "line": 206
+        },
+        {
+          "kind": "def",
+          "name": "_validate_document_contract",
+          "line": 218
+        },
+        {
+          "kind": "def",
+          "name": "_artifact_declarations",
+          "line": 256
+        },
+        {
+          "kind": "def",
+          "name": "_artifact_declaration",
+          "line": 263
+        },
+        {
+          "kind": "def",
+          "name": "_validate_frame_schema",
+          "line": 299
+        },
+        {
+          "kind": "def",
+          "name": "_verify_artifact",
+          "line": 338
+        },
+        {
+          "kind": "def",
+          "name": "_same_frame",
+          "line": 394
+        },
+        {
+          "kind": "def",
+          "name": "inspect_v552j_canonical_surface",
+          "line": 403
+        },
+        {
+          "kind": "def",
+          "name": "_build_canonical_wave_bundle",
+          "line": 567
+        },
+        {
+          "kind": "def",
+          "name": "build_v553_wave_harmonization",
+          "line": 660
+        }
+      ],
+      "imports": [
+        "23:from data.ddm_build_copy import ddm_v553_harmonization as _legacy",
+        "31:from data.ddm_build_copy.ddm_v552j_handoff import (",
+        "37:from data.ddm_build_copy.ddm_v553_harmonization import WaveDescriptor"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Fail-closed canonical V552J consumer adapter for V553 wave harmonization.  POSTG5-004 closed the V552J producer contract on the current structural join/in"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v553_harmonization.py",
+      "sha": "153f3dbeab19e6be15947f7bcbb5377dae1dfc8a",
+      "role": "CORE_MODULE",
+      "n": 1053,
+      "bytes": 50565,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "WaveDescriptor",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_load_json",
+          "line": 170
+        },
+        {
+          "kind": "def",
+          "name": "_load_frame",
+          "line": 180
+        },
+        {
+          "kind": "def",
+          "name": "_load_parquet_frame",
+          "line": 187
+        },
+        {
+          "kind": "def",
+          "name": "_clean_text",
+          "line": 200
+        },
+        {
+          "kind": "def",
+          "name": "_bounded_score",
+          "line": 211
+        },
+        {
+          "kind": "def",
+          "name": "_json_array_items",
+          "line": 221
+        },
+        {
+          "kind": "def",
+          "name": "_json_object",
+          "line": 239
+        },
+        {
+          "kind": "def",
+          "name": "_collect_unique_ids",
+          "line": 252
+        },
+        {
+          "kind": "def",
+          "name": "_overlay_path",
+          "line": 266
+        },
+        {
+          "kind": "def",
+          "name": "_certified_overlay_row_count",
+          "line": 288
+        },
+        {
+          "kind": "def",
+          "name": "_thin_readiness_path",
+          "line": 333
+        },
+        {
+          "kind": "def",
+          "name": "_load_wave_bundle",
+          "line": 340
+        },
+        {
+          "kind": "def",
+          "name": "_shared_columns",
+          "line": 475
+        },
+        {
+          "kind": "def",
+          "name": "_shared_id_lists",
+          "line": 485
+        },
+        {
+          "kind": "def",
+          "name": "_pairwise_shared_id_lists",
+          "line": 501
+        },
+        {
+          "kind": "def",
+          "name": "_pairwise_shared_columns",
+          "line": 509
+        },
+        {
+          "kind": "def",
+          "name": "_wave_sort_key",
+          "line": 513
+        },
+        {
+          "kind": "def",
+          "name": "build_v553_wave_harmonization_table",
+          "line": 519
+        },
+        {
+          "kind": "def",
+          "name": "build_v553_wave_harmonization_report",
+          "line": 527
+        },
+        {
+          "kind": "def",
+          "name": "validate_v553_wave_harmonization_report",
+          "line": 986
+        },
+        {
+          "kind": "def",
+          "name": "build_v553_wave_harmonization",
+          "line": 1038
+        }
+      ],
+      "imports": [
+        "26:from data.ddm_build_copy.ddm_v550_family_overlay import load_family_overlay",
+        "27:from data.ddm_build_copy.ddm_v550_authority_contract import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Wave harmonization helpers for the V553 temporal layer.  This module is the first substantive implementation step for the V553 path. It harmonizes multipl"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v553_repo_discovery.py",
+      "sha": "41e0c85d4179a49b71560d1a55de351f2fe18ec7",
+      "role": "CORE_MODULE",
+      "n": 395,
+      "bytes": 12666,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "DiscoveredWaveRun",
+          "line": 49
+        },
+        {
+          "kind": "def",
+          "name": "_path_depth",
+          "line": 63
+        },
+        {
+          "kind": "def",
+          "name": "_mapping_identity",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "_identity_from_fixed_manifests",
+          "line": 96
+        },
+        {
+          "kind": "def",
+          "name": "_identity_from_name",
+          "line": 122
+        },
+        {
+          "kind": "def",
+          "name": "_candidate_identity",
+          "line": 152
+        },
+        {
+          "kind": "def",
+          "name": "discover_latest_wave_runs",
+          "line": 158
+        },
+        {
+          "kind": "def",
+          "name": "_overlay_count",
+          "line": 216
+        },
+        {
+          "kind": "def",
+          "name": "choose_best_authority_dir",
+          "line": 234
+        },
+        {
+          "kind": "def",
+          "name": "latest_run_root_for_wave",
+          "line": 255
+        },
+        {
+          "kind": "def",
+          "name": "build_wave_descriptors_from_repo",
+          "line": 276
+        }
+      ],
+      "imports": [
+        "22:from data.ddm_build_copy.ddm_v550_family_overlay import load_family_overlay"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Family-aware repository discovery for V553 wave harmonization.  Discovery keys every candidate by ``(source, canonical_wave, country)``.  Legacy GSS direc"
+    }
+  ]
+}
