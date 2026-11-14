@@ -155,9 +155,13 @@ def _exact_selection(selection: SelectedQsmRequest, projection: GovernedC11Proje
         slot for slot in projection.response_slots
         if slot.question_binding.native_question_ref == selection.native_question_ref
         and slot.question_binding.empirical_universe_ref == universe.ref
+        # Same native physical variable code, never a guessed alias or a
+        # question-label-to-variable-name inference. Different naming requires
+        # a separately issued source mapping, which this adapter cannot grant.
+        and slot.slot.name.casefold() == row.get("var_code", "").casefold()
     ]
     _must(len(matched) == 1,
-          "historical question lacks unique native C11 response-slot binding")
+          "historical question lacks unique same-code native C11 response-slot binding")
     return path, result, universe
 
 
