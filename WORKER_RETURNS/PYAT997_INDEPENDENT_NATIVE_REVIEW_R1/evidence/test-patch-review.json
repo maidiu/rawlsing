@@ -1,0 +1,33 @@
+{
+  "patch": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/proposed.patch",
+  "patch_sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+  "applied_in_own_proof_copy_only": true,
+  "canonical_browser_test_tree_modified": false,
+  "base_test_blobs": {
+    "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py": "053926db84a022066535b3378d080338fe306983",
+    "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py": "e974758b23c5bc3c38091312fda1cb3489363ef3",
+    "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py": "5660285479c8c4a0a0dd19b6d5cfa5207f3f94f5"
+  },
+  "patched_test_blobs": {
+    "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py": "148c7c29d8c407ee831f379d95c898018d049977",
+    "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+    "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py": "3ca7396a50312b7b8daf2d29e4119aba71d63db9"
+  },
+  "results": {
+    "canonical_unpatched": "68 passed, 7 failed, 0 skipped",
+    "patched_own_copy": "75 passed, 0 failed, 0 skipped",
+    "product_python_files_compared": 182,
+    "all_product_hashes_unchanged": true
+  },
+  "no_weakening_review": {
+    "exact_restore_uses_baseline_bytes_not_regenerated_timestamped_file": true,
+    "q101_selection_is_by_exact_compiled_plan_target_not_first_green_fact": true,
+    "country_coordinate_RISK_SET_UNAVAILABLE_negative_preserved": true,
+    "changed_q101_cell_is_within_declared_0_1_domain": true,
+    "stale_refusal_expectations_are_exact_current_guards": true,
+    "zero_receipts_asserted_after_refusal": true,
+    "generic_exception_skip_xfail_or_relaxed_assertion": false
+  },
+  "adoption": "NOT_ADOPTED; Browser test owner must apply exact patch; canonical 68/7 remains.",
+  "remaining_query_obligation": "The patch itself records BATCH_QUERY_UNIT_NOT_ISSUED: actual frozen issued workload has 0 QUERY requests and 1 DISCOVERY unit. The R3 native harness separately manufactures a QUERY unit; see issuer-binding-witness.json."
+}

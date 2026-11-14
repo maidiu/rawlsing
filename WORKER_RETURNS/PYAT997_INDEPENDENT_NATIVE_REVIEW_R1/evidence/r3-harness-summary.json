@@ -1,0 +1,663 @@
+{
+  "baseline": {
+    "absent": {
+      "output_refs": 151,
+      "resumed_completed": 0,
+      "resumed_prefix": 1
+    },
+    "batch_states": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "batch_units": 2,
+    "cell_passes": 1,
+    "decode_calls": 1,
+    "f4": {
+      "arity": 3,
+      "cell_count": 8,
+      "cells": [
+        {
+          "cell": [
+            "0",
+            "0",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "0",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1",
+            "1"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0",
+            "0"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1",
+            "0"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "1",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        }
+      ],
+      "denominator": 5,
+      "fact_ref": {
+        "content_hash": "365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112"
+      },
+      "query_ref": {
+        "content_hash": "f207f6b1a9cf386aa59905a3043c2466e8fc8e8c66420cf19c5f774ab38d2e9f",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f207f6b1a9cf386aa59905a3043c2466e8fc8e8c66420cf19c5f774ab38d2e9f"
+      },
+      "typed_state": "SUPPORTED"
+    },
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 3,
+      "RespondentEvent": 15,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 15,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "full_c11_builds": 0,
+    "i03_facts": [
+      {
+        "content_hash": "365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112"
+      }
+    ],
+    "i03_states": [
+      "SUPPORTED"
+    ],
+    "i05_receipt_count": 150,
+    "join": {
+      "audit": {
+        "batch_units": 2,
+        "independent_g5": "NOT_RUN",
+        "issue_grants_created": 0,
+        "native_completed_units_rechecked": 2,
+        "native_discovery_candidates_exactly_joined": 150,
+        "operation_count": 2140,
+        "pending_eligible_operations": 389,
+        "positive_native_linked_operations": 147,
+        "preconsumer_fate_counts": {
+          "ELIGIBLE": 536,
+          "HELD": 1076,
+          "PROHIBITED": 528
+        },
+        "preconsumer_handoff_unchanged": true,
+        "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE"
+      },
+      "positive_rows": 147,
+      "result_hash": "428745e76abc3e5703d8c4876f3d4541deaf99da920b9ca6bd840e75f40d4ce6",
+      "rows": 2140
+    },
+    "normal": {
+      "output_refs": 151,
+      "states": [
+        "COMPLETED",
+        "COMPLETED"
+      ],
+      "units": 2
+    },
+    "parent_maxrss": 218910720,
+    "parquet_members": 14,
+    "partial": {
+      "output_refs": 151,
+      "prefix_units": 1,
+      "resumed_completed": 0,
+      "resumed_prefix": 1
+    },
+    "retained_bytes": 626671,
+    "roots": {
+      "logical": "5e7791ddc11dd7f8b4c5a071d0dee093d477bc7ad09b4a47818e0863889a85a0",
+      "physical": "5d35ae097cca006f7f3b30cd2047bbf60f30dff118c76fc77b43121701c851fc",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|3cd1951d640a81e66d65763b19582e70ccb47ffb4d319640ea4ad7fb1e94d590",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:cddec9feca049610bfe97e01e7b41deba34c34f851a25b8261b64d4315bcd61e|cddec9feca049610bfe97e01e7b41deba34c34f851a25b8261b64d4315bcd61e",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|53cb4571c3230fb02262b238d70217bc6165629917a7d1c1d9b3d39662143848",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "source_reads": 1,
+    "source_sha256": "53cb4571c3230fb02262b238d70217bc6165629917a7d1c1d9b3d39662143848",
+    "stage_bytes": 913391,
+    "stats": {
+      "cell_passes": 1,
+      "cleanup_complete": true,
+      "coordinate_count": 5,
+      "decode_calls": 1,
+      "event_count": 15,
+      "full_c11_builds": 0,
+      "key_witness_passes": 0,
+      "snapshot_acquisitions": 1,
+      "source_columns": 4,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_prehash_passes": 0,
+      "source_reads": 1,
+      "source_rows": 5,
+      "spool_bytes": 65580,
+      "spool_files": 3,
+      "weight_count": 0
+    }
+  },
+  "candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "change_restore": {
+    "baseline_fact": {
+      "content_hash": "365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112"
+    },
+    "baseline_join": "428745e76abc3e5703d8c4876f3d4541deaf99da920b9ca6bd840e75f40d4ce6",
+    "baseline_logical": "5e7791ddc11dd7f8b4c5a071d0dee093d477bc7ad09b4a47818e0863889a85a0",
+    "baseline_source": "53cb4571c3230fb02262b238d70217bc6165629917a7d1c1d9b3d39662143848",
+    "changed_fact": {
+      "content_hash": "29a99a0743c539efc71d64d706d0b3c7def3649b52ea43fe1c6bc56d133f8f1b",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:29a99a0743c539efc71d64d706d0b3c7def3649b52ea43fe1c6bc56d133f8f1b"
+    },
+    "changed_source": "56e6a9f1629cee599416f218856a76e61ba16c49b0512fb91da58da9b5014109",
+    "restored_fact": {
+      "content_hash": "365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112"
+    },
+    "restored_join": "428745e76abc3e5703d8c4876f3d4541deaf99da920b9ca6bd840e75f40d4ce6",
+    "restored_logical": "5e7791ddc11dd7f8b4c5a071d0dee093d477bc7ad09b4a47818e0863889a85a0"
+  },
+  "changed": {
+    "absent": {
+      "output_refs": 151,
+      "resumed_completed": 0,
+      "resumed_prefix": 1
+    },
+    "batch_states": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "batch_units": 2,
+    "cell_passes": 1,
+    "decode_calls": 1,
+    "f4": {
+      "arity": 3,
+      "cell_count": 8,
+      "cells": [
+        {
+          "cell": [
+            "0",
+            "0",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "0",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1",
+            "1"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0",
+            "0"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1",
+            "1"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        }
+      ],
+      "denominator": 5,
+      "fact_ref": {
+        "content_hash": "29a99a0743c539efc71d64d706d0b3c7def3649b52ea43fe1c6bc56d133f8f1b",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:29a99a0743c539efc71d64d706d0b3c7def3649b52ea43fe1c6bc56d133f8f1b"
+      },
+      "query_ref": {
+        "content_hash": "ac48ac5eac572294c038596e6c12a14bf034fe84e967f47bdef037319fb6343e",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ac48ac5eac572294c038596e6c12a14bf034fe84e967f47bdef037319fb6343e"
+      },
+      "typed_state": "SUPPORTED"
+    },
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 3,
+      "RespondentEvent": 15,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 15,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "full_c11_builds": 0,
+    "i03_facts": [
+      {
+        "content_hash": "29a99a0743c539efc71d64d706d0b3c7def3649b52ea43fe1c6bc56d133f8f1b",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:29a99a0743c539efc71d64d706d0b3c7def3649b52ea43fe1c6bc56d133f8f1b"
+      }
+    ],
+    "i03_states": [
+      "SUPPORTED"
+    ],
+    "i05_receipt_count": 150,
+    "join": {
+      "audit": {
+        "batch_units": 2,
+        "independent_g5": "NOT_RUN",
+        "issue_grants_created": 0,
+        "native_completed_units_rechecked": 2,
+        "native_discovery_candidates_exactly_joined": 150,
+        "operation_count": 2140,
+        "pending_eligible_operations": 389,
+        "positive_native_linked_operations": 147,
+        "preconsumer_fate_counts": {
+          "ELIGIBLE": 536,
+          "HELD": 1076,
+          "PROHIBITED": 528
+        },
+        "preconsumer_handoff_unchanged": true,
+        "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE"
+      },
+      "positive_rows": 147,
+      "result_hash": "5a9a9fa9c21c46776673d9873da15829bd1f908fd41426a4d0c89dae69750ee6",
+      "rows": 2140
+    },
+    "normal": {
+      "output_refs": 151,
+      "states": [
+        "COMPLETED",
+        "COMPLETED"
+      ],
+      "units": 2
+    },
+    "parent_maxrss": 259276800,
+    "parquet_members": 14,
+    "partial": {
+      "output_refs": 151,
+      "prefix_units": 1,
+      "resumed_completed": 0,
+      "resumed_prefix": 1
+    },
+    "retained_bytes": 626700,
+    "roots": {
+      "logical": "e0bd4b55a100563a6928b772d35cffa96f9c379637c8add7a2f6b5af3216ed7a",
+      "physical": "a023a13feacf3da1ec0396e970421dc73f2af174c904ae1c8c367fc4e12058b6",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|eaa8e7c59ff9cd0d401ef0bcd0f24c7a4248ced94b433f421b3712c2c9d8127e",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:fe15c9f3754cc414be6a29a0a07dbf3d31e8b80e3014b598ef2446d04e69ed4a|fe15c9f3754cc414be6a29a0a07dbf3d31e8b80e3014b598ef2446d04e69ed4a",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|56e6a9f1629cee599416f218856a76e61ba16c49b0512fb91da58da9b5014109",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "source_reads": 1,
+    "source_sha256": "56e6a9f1629cee599416f218856a76e61ba16c49b0512fb91da58da9b5014109",
+    "stage_bytes": 913420,
+    "stats": {
+      "cell_passes": 1,
+      "cleanup_complete": true,
+      "coordinate_count": 5,
+      "decode_calls": 1,
+      "event_count": 15,
+      "full_c11_builds": 0,
+      "key_witness_passes": 0,
+      "snapshot_acquisitions": 1,
+      "source_columns": 4,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_prehash_passes": 0,
+      "source_reads": 1,
+      "source_rows": 5,
+      "spool_bytes": 65580,
+      "spool_files": 3,
+      "weight_count": 0
+    }
+  },
+  "elapsed_seconds": 145.9571499824524,
+  "fixture": "TEST_ONLY generated 4-column SAV; no original35",
+  "join": {
+    "audit": {
+      "batch_units": 2,
+      "independent_g5": "NOT_RUN",
+      "issue_grants_created": 0,
+      "native_completed_units_rechecked": 2,
+      "native_discovery_candidates_exactly_joined": 150,
+      "operation_count": 2140,
+      "pending_eligible_operations": 389,
+      "positive_native_linked_operations": 147,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 536,
+        "HELD": 1076,
+        "PROHIBITED": 528
+      },
+      "preconsumer_handoff_unchanged": true,
+      "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE"
+    },
+    "positive_rows": 147,
+    "result_hash": "428745e76abc3e5703d8c4876f3d4541deaf99da920b9ca6bd840e75f40d4ce6",
+    "rows": 2140
+  },
+  "limits": [
+    "Small TEST_ONLY five-respondent fixture, not original35.",
+    "Compiler query catalog and existing TEST_ONLY record constructors used; no production issuer.",
+    "F4 is the actual 3-target native I03 fact, not marginal multiplication."
+  ],
+  "negatives": {
+    "frontier_refusal": "Q2_R03_ORIGINAL_FRONTIER_HASH_DRIFT",
+    "held_refusal": "Q2_ORIGINAL_FROZEN_FATE_CENSUS_DRIFT",
+    "missing_receipts_no_positive": true,
+    "revoked_refusal": "DirectEstateError:current source/operation authority refused",
+    "wrong_root_refusal": "DirectEstateError"
+  },
+  "restored": {
+    "absent": {
+      "output_refs": 151,
+      "resumed_completed": 0,
+      "resumed_prefix": 1
+    },
+    "batch_states": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "batch_units": 2,
+    "cell_passes": 1,
+    "decode_calls": 1,
+    "f4": {
+      "arity": 3,
+      "cell_count": 8,
+      "cells": [
+        {
+          "cell": [
+            "0",
+            "0",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "0",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1",
+            "0"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1",
+            "1"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0",
+            "0"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1",
+            "0"
+          ],
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "raw_numerator_support": 0
+        },
+        {
+          "cell": [
+            "1",
+            "1",
+            "1"
+          ],
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1
+        }
+      ],
+      "denominator": 5,
+      "fact_ref": {
+        "content_hash": "365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112"
+      },
+      "query_ref": {
+        "content_hash": "f207f6b1a9cf386aa59905a3043c2466e8fc8e8c66420cf19c5f774ab38d2e9f",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f207f6b1a9cf386aa59905a3043c2466e8fc8e8c66420cf19c5f774ab38d2e9f"
+      },
+      "typed_state": "SUPPORTED"
+    },
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 3,
+      "RespondentEvent": 15,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 15,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "full_c11_builds": 0,
+    "i03_facts": [
+      {
+        "content_hash": "365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:365ee6a87aa8ab92e7133ca9103c291743ddd693dcfc7558473f2d81bf7b0112"
+      }
+    ],
+    "i03_states": [
+      "SUPPORTED"
+    ],
+    "i05_receipt_count": 150,
+    "join": {
+      "audit": {
+        "batch_units": 2,
+        "independent_g5": "NOT_RUN",
+        "issue_grants_created": 0,
+        "native_completed_units_rechecked": 2,
+        "native_discovery_candidates_exactly_joined": 150,
+        "operation_count": 2140,
+        "pending_eligible_operations": 389,
+        "positive_native_linked_operations": 147,
+        "preconsumer_fate_counts": {
+          "ELIGIBLE": 536,
+          "HELD": 1076,
+          "PROHIBITED": 528
+        },
+        "preconsumer_handoff_unchanged": true,
+        "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE"
+      },
+      "positive_rows": 147,
+      "result_hash": "428745e76abc3e5703d8c4876f3d4541deaf99da920b9ca6bd840e75f40d4ce6",
+      "rows": 2140
+    },
+    "normal": {
+      "output_refs": 151,
+      "states": [
+        "COMPLETED",
+        "COMPLETED"
+      ],
+      "units": 2
+    },
+    "parent_maxrss": 260825088,
+    "parquet_members": 14,
+    "partial": {
+      "output_refs": 151,
+      "prefix_units": 1,
+      "resumed_completed": 0,
+      "resumed_prefix": 1
+    },
+    "retained_bytes": 626671,
+    "roots": {
+      "logical": "5e7791ddc11dd7f8b4c5a071d0dee093d477bc7ad09b4a47818e0863889a85a0",
+      "physical": "5d35ae097cca006f7f3b30cd2047bbf60f30dff118c76fc77b43121701c851fc",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|3cd1951d640a81e66d65763b19582e70ccb47ffb4d319640ea4ad7fb1e94d590",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:cddec9feca049610bfe97e01e7b41deba34c34f851a25b8261b64d4315bcd61e|cddec9feca049610bfe97e01e7b41deba34c34f851a25b8261b64d4315bcd61e",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|53cb4571c3230fb02262b238d70217bc6165629917a7d1c1d9b3d39662143848",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "source_reads": 1,
+    "source_sha256": "53cb4571c3230fb02262b238d70217bc6165629917a7d1c1d9b3d39662143848",
+    "stage_bytes": 913391,
+    "stats": {
+      "cell_passes": 1,
+      "cleanup_complete": true,
+      "coordinate_count": 5,
+      "decode_calls": 1,
+      "event_count": 15,
+      "full_c11_builds": 0,
+      "key_witness_passes": 0,
+      "snapshot_acquisitions": 1,
+      "source_columns": 4,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_prehash_passes": 0,
+      "source_reads": 1,
+      "source_rows": 5,
+      "spool_bytes": 65580,
+      "spool_files": 3,
+      "weight_count": 0
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,222 @@
+{
+  "task_id": "PYAT997-INDEPENDENT-NATIVE-REVIEW-R1",
+  "packet_id": "PYAT-R3-S1E-997",
+  "old_obligations": ["P1-06", "P1-07"],
+  "original_task": "Sourcefree complete producer -> persisted 13-family body -> cold native first consumer -> issuer/release/native receipt/fate join",
+  "persona_role": "DISTINCT_EXISTING_NONAUTHOR_INDEPENDENT_REVIEWER",
+  "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+  "session_model": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "review/pyat997-native-independent-r1",
+  "startup_sha": "11d6f480349a09b871414c3dc1c3f4fa3e680797",
+  "exclusive_allowlist": ["WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/"],
+  "writer_lease_and_scope": "VERIFIED_EXCLUSIVE_REVIEW_READ_ONLY: Browser product/tests, all prior returns, 998/1006/S2A, S2-C/D native engine, controller and protected refs read-only; own private proof copy only; exact proposed test patch applied only to private proof copy; no canonical test product write; no product fix; no A/B round; no Q3 writer; no protected merge.",
+  "contract_source_cut": "cecfc154262eaa140d003e9e704811f44b940455",
+  "contract_sha256": "d3717f25d12b09d16f2fb9db1fa7f50f7d9fa387aff7ea9a48af0265cd78b6ca",
+  "original_s1e_918_sha256": "7476fd6f03f2bc23f5f96588aee52ecd0659e372143f118c40dc6f0bf5262e68",
+  "original_r3_909_sha256": "24a0ec9428ac9afde4f5c945b7c4caff72cd35862f52fc58644bc12685a14366",
+  "reviewed_native_evidence_head": "11d6f480349a09b871414c3dc1c3f4fa3e680797",
+  "browser_candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "tested_product_cut": "534fb6602cce60fd991abd7972ebd95c92f3146c",
+  "product_code_identical_to_browser_and_product_cut": true,
+  "reviewed_paths": [
+    "rawlsing_next/pre553_source_saved_body_bridge.py",
+    "rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/pre553_source_i02_streams.py",
+    "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "rawlsing_next/pre553_direct_estate_i03.py",
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/pre553_saved_workload_integration.py",
+    "rawlsing_next/pre553_batch_runner.py",
+    "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/harness.py",
+    "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/fresh_producer_3q.py",
+    "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/fresh_consumer_3q.py",
+    "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/proposed.patch"
+  ],
+  "product_blobs": {
+    "rawlsing_next/pre553_source_saved_body_bridge.py": "eddaa9a57eec4e44ce5d0ee5c223facae8d5775d",
+    "rawlsing_next/pre553_source_postconsumer_receipts.py": "fad3a96bb00bb3d4eb4c9e3e8c5e2d6ca970dcd8",
+    "rawlsing_next/pre553_source_i02_handoff.py": "31d99b70b9e726ecd1b2413aa68d642df4dc8151",
+    "rawlsing_next/pre553_source_i02_streams.py": "9547fe3d5972005c3bb96cb91083c39743cb2d0c",
+    "rawlsing_next/pre553_source_direct_parquet_estate.py": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+    "rawlsing_next/pre553_direct_estate_i03.py": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "rawlsing_next/pre553_saved_c11_admission.py": "22749addc1fca5f0b90e12728847c390aafa7a84",
+    "rawlsing_next/pre553_saved_workload_integration.py": "cc8aa32512378261406d765f0b049c748cb3e11f",
+    "rawlsing_next/pre553_batch_runner.py": "49e3974c658d66a270815d9faa3798b40d4488b1"
+  },
+  "test_patch": {
+    "path": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/proposed.patch",
+    "sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+    "base_blobs": {
+      "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py": "053926db84a022066535b3378d080338fe306983",
+      "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py": "e974758b23c5bc3c38091312fda1cb3489363ef3",
+      "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py": "5660285479c8c4a0a0dd19b6d5cfa5207f3f94f5"
+    },
+    "patched_blobs": {
+      "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py": "148c7c29d8c407ee831f379d95c898018d049977",
+      "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+      "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py": "3ca7396a50312b7b8daf2d29e4119aba71d63db9"
+    },
+    "adopted_in_canonical": false,
+    "own_copy_baseline": "68 passed, 7 failed, 0 skipped",
+    "own_copy_patched": "75 passed, 0 failed, 0 skipped",
+    "product_python_files_compared": 182,
+    "all_product_hashes_unchanged": true,
+    "no_weakening_review": "PASS: exact restore reuses baseline bytes; q101 selected by exact compiled target; country RISK_SET_UNAVAILABLE negative retained; q101 changed cell is in declared 0/1 domain; exact current guards asserted; zero receipts after refusal; no generic/skip/xfail. Patch is NOT adopted."
+  },
+  "actual_first_consumer": "Q2 one source read -> SourceSavedBodySink journal -> unchanged S2-C write_direct_estate -> persisted 13-family estate -> SavedC11Admission -> actual saved I03/I05/Batch/NORMAL/resume. P0/direct-q101/discovery are real. The R3 claimed Batch QUERY/F4 is a manually constructed TEST_ONLY workload/record that replaces compilation.issued; it is not compiler-issued and the selected joint query is a prohibited catalog operation.",
+  "evidence_grade": "SOURCEFREE_TEST_ONLY_SMALL_5_RESPONDENT_WITH_KNOWN_ISSUER_AND_KERNEL_HOLDS",
+  "gates": {
+    "G1": {
+      "state": "FAIL",
+      "receipt": "Contract/ABI/code/test/patch identities pinned. P0 source body bridge and historical all35 ledger exact. G1 exact source/operation/issuer inputs fail at P1: compile_governed_frontier issued 0 QUERY requests + 1 DISCOVERY; R3 harness constructs a QUERY NativeWorkload/IssuedWorkloadRecord and replaces compilation.issued; selected q101/q102/q103 catalog query is absent from plan.records and all F4-like frontier operations are PROHIBITED. Test patch itself reports BATCH_QUERY_UNIT_NOT_ISSUED."
+    },
+    "G2": {
+      "state": "FAIL",
+      "receipt": "P0 one-source 13-family persisted estate, direct q101 I03 5/5, country negative, changed source and exact restore, discovery I05 150 receipts, compiler-issued discovery NORMAL/COMPLETED pass. The claimed Batch QUERY + F4 positive is not a compiler-issued eligible operation; it is a manually issued prohibited joint query. Actual S1-E Batch QUERY positive therefore not proved."
+    },
+    "G3": {
+      "state": "FAIL",
+      "receipt": "B R5 frontier/census/measure/source-realization guards and wrong root/current/missing-receipt/HELD-promotion negatives pass; 1076 HELD/528 PROHIBITED preserved. But the R3 F4 query is a PROHIBITED operation executed as a positive; no UNKNOWN/DEFERRED/INAPPLICABLE row is exercised in the 2140-operation fixture; the self-issued query is a functional attribution breach."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_SMALL",
+      "receipt": "5 respondents; one source read/decode/cell pass; 13 families persisted; 14 Parquet members; full C11 0; retained 626,671 B; stage 913,391 B; parent RSS 218,910,720 B; journal cleaned; no 100k/6GiB."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+      "receipt": "Independent nonauthor REVISE_EXACT_DEFECT. P0/direct-q101/discovery and resource are banked; Batch QUERY/F4 issuer breach is a runnable original-contract RED. Historical #997 Browser return is not accepted; integration UNMERGED."
+    }
+  },
+  "material_findings": [
+    {
+      "id": "P1_QUERY_ISSUER_BYPASS",
+      "severity": "SEV-1",
+      "gate": "G1/G2/G3",
+      "case": "Q2_R03_QUERY_ISSUER_BINDING",
+      "command": "python3 -B WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/witness_issuer_binding.py",
+      "expected": "Exact QUERY Batch unit bound to an original source-qualified ELIGIBLE S1-C operation and the compiler-issued workload/envelope/expected jobs/plan; no replacement of compilation.issued; actual native execution receipt.",
+      "observed": "compile_governed_frontier returns issued.workload.requests=0 and issued.workload.discoveries=1; record.expected_jobs only DISCOVERY. R3 harness constructs NativeWorkload(requests=(joint_query,), discoveries=(discovery.ref,)), a separate IssuedWorkloadRecord with decision_ref urn:test:pyat997:r3:..., and replaces compilation.issued. The joint q101/q102/q103 catalog query is not in any plan.records query_refs; all 12 matching F4-like frontier operations are PROHIBITED (JOINT/CO_TRAVEL SAMPLE). R3 then executes 2 Batch units and reports F4 SUPPORTED 3-arity/8 cells/denom 5. Test patch receipt explicitly says actual frozen issued workload has 0 query/1 discovery and BATCH_QUERY_UNIT_NOT_ISSUED.",
+      "evidence": [
+        "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/issuer-binding-witness.json",
+        "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/issuer-binding-summary.json",
+        "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/test_patch_r2/receipt.json::remaining_unmet_obligation",
+        "rawlsing_next/pre553_universal_workload.py::compile_governed_frontier",
+        "rawlsing_next/pre553_native_workload_binding.py::build_test_only_discovery_workload",
+        "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/harness.py::_materialize"
+      ],
+      "first_consumer_consequence": "The F4/QUERY Batch positive and the two-unit partial/absent story are not an original S1-E eligible operation receipt. A caller can self-mint the very issuer record the postconsumer join then compares against compilation.issued; the join cannot detect the replacement. This is false positive attribution, not a test-only query label.",
+      "minimal_rightful_owner_repair": "Do not replace compilation.issued. Browser/R03 owner must either (a) execute only the actual compiler-issued DISCOVERY workload and mark Batch QUERY NOT_ISSUED/HOLD, reporting q101 direct I03 separately; or (b) obtain an owner-level R03/issuer change that emits an exact QUERY job for an ELIGIBLE operation with its own decision_ref/envelope/expected_jobs, then make join_saved_source_operation_fates require equality with that unchanged compiler record and add a negative test that manual replacement is refused. No reviewer patch; no redesign."
+    }
+  ],
+  "banked_qualified": [
+    "P0 SourceSavedBodySink one-source 13-family persisted S2-C estate; journal cleanup; exact source/I02/replay/release; no full C11 graph/second corpus.",
+    "Patched q101 direct I03 SUPPORTED denominator 5/cell total 5; country UNAVAILABLE/RISK_SET_UNAVAILABLE; changed q101 source cell and exact baseline-byte restore.",
+    "P0 missing body/root/current/source drift negatives; 75 patched tests.",
+    "P1 actual discovery/I05: 150 candidate receipts exactly joined, 147 positive-linked operations, 389 eligible pending, 2140 rows; 1076 HELD/528 PROHIBITED preserved; no false HELD promotion; B R5 frontier/census/measure/source-realization guards.",
+    "Compiler-issued discovery-only NORMAL and explicit COMPLETED checkpoint pass; source opens 0/full C11 builds 0; 1 completed result/8 refs.",
+    "Historical all35 ledger 35/18,276/18,413/26 exact; no original35 source execution.",
+    "Bounded 5-respondent resource accounting."
+  ],
+  "mandatory_cases": [
+    {"id": "G1_CONTRACT_AND_INPUTS", "result": "FAIL", "actual": "P0/ledger exact; P1 compiler-issued QUERY absent; manual prohibited catalog query."},
+    {"id": "P0_ONE_SOURCE_13_FAMILIES", "result": "PASS_SCOPED", "actual": "Patched 75/75; SourceSavedBodySink; one source read/decode/cell; 14 Parquet; 13 families; journal 913,391 B stage cleaned; retained 626,671 B."},
+    {"id": "P0_DIRECT_Q101_I03", "result": "PASS_SCOPED", "actual": "q101 SUPPORTED 5/5 denominator/cells; country negative; changed q101 and exact restore in patched tests."},
+    {"id": "P0_CHANGE_RESTORE_AND_NEGATIVES", "result": "PASS_SCOPED", "actual": "Patched 75/75; missing body/root/current/source drift; exact baseline bytes; no weakening."},
+    {"id": "P1_COMPILER_ISSUED_QUERY_BINDING", "result": "FAIL", "actual": "compiler issued 0 QUERY/1 DISCOVERY; manual record replaces compilation.issued; joint query absent from plan; F4 operations PROHIBITED."},
+    {"id": "P1_DISCOVERY_I05_JOIN", "result": "PASS_SCOPED", "actual": "R3 own run: 150 discovery candidates, 147 linked, 389 pending, 2140 rows; 536 ELIGIBLE/1076 HELD/528 PROHIBITED."},
+    {"id": "P1_BATCH_QUERY_F4", "result": "FAIL", "actual": "Manual 2-unit Batch executes prohibited F4 catalog query as SUPPORTED; test patch admits BATCH_QUERY_UNIT_NOT_ISSUED."},
+    {"id": "P1_NORMAL_COMPLETED", "result": "PASS_SCOPED", "actual": "Compiler-issued discovery-only NORMAL/COMPLETED pass; completed witness 1 result/8 refs; source opens 0/full builds 0."},
+    {"id": "P1_PARTIAL_ABSENT", "result": "NOT_ACCEPTED", "actual": "R3 two-unit PARTIAL/ABSENT uses the manually issued QUERY; actual compiler-issued workload has only one DISCOVERY. Accepted S2-D direct-estate five readers 7/7 is not a Q2 substitute."},
+    {"id": "P1_FATE_JOIN_NO_DROP", "result": "PARTIAL", "actual": "2140 rows/no-drop/HELD/PROHIBITED preserved; no UNKNOWN/DEFERRED/INAPPLICABLE rows exercised; F4 query not in operation census."},
+    {"id": "ALL35_LEDGER", "result": "PASS", "actual": "3 focused historical tests pass; 35/18,276/18,413/26; no original source execution."},
+    {"id": "FRESH_PRODUCER_CONSUMER", "result": "PASS_SCOPED", "actual": "Own run: producer exit 0, source deleted, consumer source opens 0/full builds 0; I03 SUPPORTED, I05 150, Batch 2 COMPLETED including the invalid manual QUERY."},
+    {"id": "KNOWN_S2A_KERNEL", "result": "HOLD_EXTERNAL", "actual": "Candidate pre553_direct_estate_i03.py 8b4d5ca; S2A G5 f88a6c61 actual native wrong fact under coherent body_json/projected+locator poison; public fix 5727db0 not native; not rerun."},
+    {"id": "TEST_PATCH_ADOPTION", "result": "HOLD_EXTERNAL", "actual": "Own patched 75/75; canonical 68/7; patch not adopted; 3 patched test blobs exact; 182 product hashes unchanged."},
+    {"id": "G4_RESOURCE", "result": "PASS_SCOPED_SMALL", "actual": "5 respondents; one source; 13 family estate; 14 Parquet; full C11 0; 626,671 B retained; 913,391 B stage; 218,910,720 B RSS; 100k NOT_RUN."}
+  ],
+  "resource_evidence": {
+    "respondents": 5,
+    "questions": 3,
+    "country_variable": true,
+    "source_reads": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 3,
+      "RespondentEvent": 15,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 15,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "parquet_members": 14,
+    "retained_bytes": 626671,
+    "stage_bytes": 913391,
+    "process_self_peak_rss_bytes": 218910720,
+    "journal_cleaned": true,
+    "second_persistent_body_corpus": false,
+    "100k_6gib": "NOT_RUN",
+    "1006_baseline": "NOT_RUN"
+  },
+  "external_holds": [
+    "S2-A native body-truth kernel: pre553_direct_estate_i03.py 8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e; prior independent G5 f88a6c61 actual native wrong fact under coherent poison; public fix 5727db0 author-only; not rerun.",
+    "Browser test owner adoption of exact patch e79990e0...; canonical tests remain 68/7; patched 75/75 is not protected adoption.",
+    "R03/issuer owner: exact eligible QUERY issuance or Batch QUERY NOT_ISSUED/HOLD; manual compilation.issued replacement must refuse.",
+    "S2-C/S2-D accepted engine remains read-only; no writer/schema edit.",
+    "Original35 source/science/respondent/source-read entitlement HOLD; only generated TEST_ONLY nonrespondent SAV/DTA was used.",
+    "Production S1-D CURRENT issuer HOLD; no production permission minted.",
+    "#998 full joined and #1001 full scale unaccepted; #1006 baseline not run.",
+    "Protected merge HOLD; integration UNMERGED.",
+    "N11/N12 actor/host authority HOLD.",
+    "100k respondent/6 GiB integrated gate NOT_RUN.",
+    "Q3 S2-C writer remains USER_PAUSED; no writer/resume."
+  ],
+  "three_courts": {
+    "engineering": "P0 body bridge, direct q101 I03, discovery/I05, compiler-issued discovery normal/completed, and all35 ledger are real. P1 Batch QUERY/F4 is a self-issued prohibited catalog query that replaces compiler issuance; material bridge/issuer defect.",
+    "science": "Sourcefree TEST_ONLY 5-respondent 3-question plus country fixture; no original35 science, source rights, production CURRENT, or weighted/population native positive. The F4 numeric 8-cell/denom-5 result is mechanically actual but attached to a PROHIBITED operation.",
+    "authority": "Original35/source/science, production CURRENT, protected merge, N11/N12, S2A native kernel, test adoption, #998/#1001/#1006 and 100k remain separate holds. No merge."
+  },
+  "self_disclosed_weakest_point": "The P0 saved body and discovery/direct-q101 readers are genuine, but the R3 proof's most visible F4/QUERY Batch positive is not compiler-issued: the compiler issued only one DISCOVERY; the harness constructs a second query record and replaces compilation.issued. The selected joint query is a PROHIBITED operation absent from plan.records. This is the material false positive. Separately, the known S2A native kernel and unadopted test patch prevent full original native/terminal acceptance even after the query issue is repaired.",
+  "opponent_proven_improvement": "Browser A/B/B-R5 and native executor produced a real Q2 body bridge, 13-family persisted estate, direct q101 I03/country negative, discovery/I05/fate join, changed/restore, fresh process, and 75/75 patched test evidence. Those are banked. The R3 query minting is not a valid improvement and must be withdrawn or owner-issued.",
+  "next_custody": "One bounded owner repair: remove the manual Query workload/record replacement and either mark Batch QUERY NOT_ISSUED/HOLD using the actual compiler DISCOVERY workload, or have the R03/issuer owner issue an exact eligible QUERY job and make the join require the unchanged compiler record with a negative replacement test. Browser test owner adopts the exact patch; S2A native owner fixes the known body-truth kernel separately; then rerun patched 75 and the R3 harness and submit a new immutable SHA for fresh nonauthor G5. No new A/B campaign, no Q3 writer, no 100k, no protected merge.",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "g5": "FAIL",
+  "integration": "UNMERGED",
+  "accepted_scoped": false,
+  "sourcefree_packet_complete": false,
+  "original_task_complete": false,
+  "stop_state": "REVISE_EXACT_DEFECT",
+  "known_session_cost": "UNKNOWN",
+  "review_evidence": [
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/refs.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/coverage-matrix.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/issuer-binding-witness.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/issuer-binding-summary.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/baseline-75-canonical.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/patched-75.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/product-patch-readback.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/test-patch-review.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/r3-harness-summary.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/r3-harness-own-run.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/fresh-own-summary.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/fresh-own-boundary.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/completed-compiler-issued.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/completed-resume-witness.json",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/all35-ledger-tests.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/s1c-18.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/s1b-33.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/s2d-five-readers.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/decoder-56.txt",
+    "WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/evidence/known-kernel.txt"
+  ]
+}

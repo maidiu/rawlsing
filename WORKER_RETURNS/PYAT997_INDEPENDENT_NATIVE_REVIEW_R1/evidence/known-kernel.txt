@@ -1,0 +1,21 @@
+Known S2-A native kernel negative carried as dependency (NOT rerun by this reviewer).
+
+S2-A G5 commit: f88a6c61b89f6c18157f2f789de1b7873bc9e747
+S2-A code/test cut: 1cb7977b78022f8def26b769714b4c7ac519ece0
+S2-A baseline: 9d96a9cac7d10f59f2c30d8045dd1696fa3ab969
+S2-A public fix: 5727db0ebecab2c9ae393a49e9bce1be3076a589 (author-only; public selector, not native I03)
+
+Observed by that prior independent G5 (quoted, not re-executed here):
+- coherent canonical body_json fixed / projected RespondentEvent.native changed /
+  event_locator.native changed / physical manifest coherently re-pinned;
+- public select_events returned 0 (native expected 1) with no refusal;
+- actual native execute_i03 returned changed fact e8b384... with no error;
+- native oracle fact 8867cb...
+- Root cause: DirectEstateI03Session._build trusts projected selector columns and
+  never validates canonical body_json/event ref for every row.
+
+Current #997 candidate native reader blob:
+rawlsing_next/pre553_direct_estate_i03.py = 8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e
+This is the frozen older kernel named in the 997 contract. The candidate's native
+I03/F4/normal/resume proof uses this reader. No poison was rerun here; this is an
+external native-owner dependency, not a 997-specific query-issuer repair.

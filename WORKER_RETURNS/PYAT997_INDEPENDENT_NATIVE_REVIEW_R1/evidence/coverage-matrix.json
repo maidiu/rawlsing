@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT997_INDEPENDENT_NATIVE_REVIEW_COVERAGE@1",
+  "reviewed_cut": {
+    "native_evidence_head": "11d6f480349a09b871414c3dc1c3f4fa3e680797",
+    "browser_candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+    "executable_product_cut": "534fb6602cce60fd991abd7972ebd95c92f3146c",
+    "product_identical_to_browser": true,
+    "test_patch_sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+    "test_patch_adopted": false
+  },
+  "rows": [
+    {
+      "obligation": "P0 one physical source snapshot/decode/cellpass, 13 typed families -> accepted S2-C persisted estate",
+      "status": "PASS_SCOPED",
+      "evidence": "75 patched tests; SourceSavedBodySink; R3 family counts; one source read/decode/cell; 14 Parquet members; journal cleaned; no full C11 build.",
+      "limits": "5 respondents TEST_ONLY; no original35 source."
+    },
+    {
+      "obligation": "P0 direct q101 I03 positive, country negative, changed source meaning and exact restore",
+      "status": "PASS_SCOPED",
+      "evidence": "Patched 75/75; q101 SUPPORTED denominator 5/cell total 5; country UNAVAILABLE/RISK_SET_UNAVAILABLE; changed q101 cell and exact baseline-byte restore.",
+      "limits": "Test patch unadopted; generated TEST_ONLY fixture only."
+    },
+    {
+      "obligation": "P0 missing body member, wrong root/current, source/transport drift, cleanup",
+      "status": "PASS_SCOPED",
+      "evidence": "Patched test_pyat997_s1e_source_saved_body_bridge and saved_source_bridge negatives; 75/75.",
+      "limits": "Sourcefree fixture; no production CURRENT."
+    },
+    {
+      "obligation": "P1 compiler-issued QUERY Batch unit bound to exact original source-qualified ELIGIBLE operation",
+      "status": "FAIL",
+      "evidence": "compile_governed_frontier issued workload has 0 QUERY requests and 1 DISCOVERY; R3 harness manually constructs NativeWorkload requests=(joint query,) and IssuedWorkloadRecord and replaces compilation.issued. The joint q101/q102/q103 catalog query is absent from plan.records and all 12 F4-like frontier operations are PROHIBITED.",
+      "limits": "No legitimate query issuance witness; q101 direct I03 is separate and is not a Batch QUERY unit."
+    },
+    {
+      "obligation": "P1 actual issued discovery/I05 native receipts and no false positive",
+      "status": "PASS_SCOPED",
+      "evidence": "R3 harness actual discovery 150 candidates/147 linked operations; 389 eligible pending; 2140 rows; 536 ELIGIBLE/1076 HELD/528 PROHIBITED; no false held promotion in tests.",
+      "limits": "The manual query unit is excluded from operation attribution but is still executed and claimed as F4 Batch; no UNKNOWN/DEFERRED/INAPPLICABLE rows in this fixture."
+    },
+    {
+      "obligation": "P1 Batch QUERY + DISCOVERY, NORMAL, COMPLETED, PARTIAL, ABSENT resume",
+      "status": "PARTIAL",
+      "evidence": "Compiler-issued discovery-only NORMAL/COMPLETED passes (completed-compiler-issued.json); R3 NORMAL/PARTIAL/ABSENT with two units uses the self-issued query; canonical 75 tests use discovery-only and pass; accepted S2-D five readers 7/7 on direct estate.",
+      "limits": "No genuine compiler-issued QUERY unit; R3 two-unit partial/absent is not accepted; completed/partial/absent with compiler-issued discovery are not a multi-unit Batch."
+    },
+    {
+      "obligation": "P1 postconsumer fate join all source/operation/issuer/release/native identities; HELD/UNKNOWN/pending no-drop",
+      "status": "PARTIAL",
+      "evidence": "2140 rows, 147 discovery positives, 389 pending, 1076 HELD/528 PROHIBITED; B R5 frontier/census/measure/source-realization guards pass; explicit wrong root/current/missing receipt refusals.",
+      "limits": "The join compares against replaced compilation.issued; no UNKNOWN/DEFERRED/INAPPLICABLE row exercised; F4 query not in the operation census."
+    },
+    {
+      "obligation": "Original 35-source historical no-drop ledger 35/18,276/18,413/26",
+      "status": "PASS",
+      "evidence": "3 focused R157 historical tests passed; exact roster/unjoined counts; no original source execution."
+    },
+    {
+      "obligation": "G4 bounded source/first-consumer resource accounting",
+      "status": "PASS_SCOPED_SMALL",
+      "evidence": "5 respondents; source/decode/cell 1; full C11 0; retained 626,671 B; stage 913,391 B; parent RSS 218,910,720 B; 14 Parquet members; no 100k.",
+      "limits": "No 100k/6GiB or integrated 1006 baseline."
+    },
+    {
+      "obligation": "Fresh producer exit, source deleted, cold consumer, no source/full-C11 fallback",
+      "status": "PASS_SCOPED",
+      "evidence": "Own fresh producer/consumer run: producer exit 0; source deleted; consumer source opens 0; full C11 builds 0; I03 SUPPORTED; I05 150; Batch 2 COMPLETED (including the invalid manual QUERY)."
+    },
+    {
+      "obligation": "Known S2-A native body-truth kernel negative",
+      "status": "HOLD_EXTERNAL",
+      "evidence": "Candidate pre553_direct_estate_i03.py blob 8b4d5ca2...; S2A G5 f88a6c61 actual native changed fact under coherent projected+locator poison; public fix 5727db0 author-only; not rerun."
+    },
+    {
+      "obligation": "Test patch adoption by Browser owner",
+      "status": "HOLD_EXTERNAL",
+      "evidence": "Own patched 75/75; canonical 68/7; patch not adopted; product 182 hashes unchanged; three patched test blobs exact."
+    }
+  ],
+  "verdict": "REVISE_EXACT_DEFECT: P0/source bridge and discovery/direct-q101 evidence are real, but the claimed compiler-issued Batch QUERY/F4 is a self-issued/prohibited catalog query, not an eligible operation or compiler-issued workload. Full original S1-E not accepted."
+}

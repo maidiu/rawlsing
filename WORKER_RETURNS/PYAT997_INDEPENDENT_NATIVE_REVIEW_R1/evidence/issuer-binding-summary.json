@@ -1,0 +1,46 @@
+{
+  "compiler_issued": {
+    "decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-392b6f751af2c6a4-2026-11-13|fde89d88d7bc156a3abde8854b1222af25095d89b3205f1a6bc7bb50633819d6",
+    "record_expected_jobs": [
+      [
+        "DISCOVERY",
+        "DiscoveryAuthority@1.0.0|urn:rawlsing:pre553:DiscoveryAuthority:sha256:aa0e2d29bf665d2063074e4c78de914c12a3c8157570ad4493282955c8b28286|aa0e2d29bf665d2063074e4c78de914c12a3c8157570ad4493282955c8b28286",
+        ""
+      ]
+    ],
+    "scope": "TEST_ONLY_SOURCEFREE",
+    "workload_discoveries": 1,
+    "workload_requests": 0
+  },
+  "f4_like_claim_classes": [
+    "CO_TRAVEL",
+    "JOINT"
+  ],
+  "f4_like_dispositions": [
+    "PROHIBITED"
+  ],
+  "f4_like_frontier_operation_count": 12,
+  "joint_query_in_compiler_plan": [],
+  "manual_r3_issued": {
+    "decision_ref": "TEST_ONLY_DECISION|urn:test:pyat997:r3:66d07e771a897e3e|60b6ec5ca9f5989d586970ea9a6e8e4c860624dbc3cf76e343df8bfc5582a838",
+    "record_expected_jobs": [
+      [
+        "DISCOVERY",
+        "DiscoveryAuthority@1.0.0|urn:rawlsing:pre553:DiscoveryAuthority:sha256:aa0e2d29bf665d2063074e4c78de914c12a3c8157570ad4493282955c8b28286|aa0e2d29bf665d2063074e4c78de914c12a3c8157570ad4493282955c8b28286",
+        ""
+      ],
+      [
+        "QUERY",
+        "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:57939b2585cea2a1dff0f453f2bf088847318c1e6ffbce6815fbed7376ae3ef5|57939b2585cea2a1dff0f453f2bf088847318c1e6ffbce6815fbed7376ae3ef5",
+        "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fea27176c3c26531c6835cec81e95246c912ec6e2ed9956b3847a1ee34c4099|8fea27176c3c26531c6835cec81e95246c912ec6e2ed9956b3847a1ee34c4099"
+      ]
+    ],
+    "same_compiler_record": false,
+    "same_compiler_workload": false,
+    "scope": "TEST_ONLY_SOURCEFREE",
+    "workload_discoveries": 1,
+    "workload_requests": 1
+  },
+  "red": true,
+  "rightful_owner_repair_path": "Do not replace compilation.issued. Either execute only the actual compiler-issued DISCOVERY workload and mark Batch QUERY NOT_ISSUED, or obtain an owner-level R03/issuer change that emits the exact QUERY job for the eligible operation with its own decision/envelope, then rebuild the postconsumer join against that unchanged compiler record."
+}
