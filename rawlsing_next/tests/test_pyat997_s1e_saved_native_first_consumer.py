@@ -637,7 +637,12 @@ def test_original_r03_compiler_issuer_cannot_be_replaced_by_matching_manual_reco
             record for record in compilation.plan.records
             if record.status == "SUPPORTED" and record.query_refs
         )
-        query_ref = exact_ref(entry.query_refs[0])
+        raw = entry.query_refs[0]
+        if isinstance(raw, Mapping):
+            raw = {name: raw[name] for name in (
+                "kind", "object_id", "content_hash",
+            )}
+        query_ref = exact_ref(raw)
         query = original.workload.catalog.resolve_query_exact(query_ref)
         predicate_ref = exact_ref(query.condition_predicate_ref)
         kwargs["requests"] = (I03ExecutionRequest(query_ref, predicate_ref),)
