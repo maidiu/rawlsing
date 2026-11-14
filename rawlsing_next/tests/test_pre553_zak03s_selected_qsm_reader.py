@@ -19,6 +19,7 @@ from data.ddm_build_copy.ddm_v550_question_relation_authority import (
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
 from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot, EmpiricalQuerySpec
+from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
 from rawlsing_next.pre553_route_b_production import I03ExecutionRequest
 from rawlsing_next.pre553_zak03s_selected_qsm_reader import (
     SelectedQsmRequest,
@@ -190,7 +191,7 @@ def test_wrong_row_and_version_fail_before_actual_reader(tmp_path):
         (replace(selection, expected_authority_version="wrong"), "version"),
         (replace(selection, expected_rule_id="other"), "rule identity"),
         (replace(selection, var_code="X"), "unavailable"),
-        (replace(selection, native_question_ref=fx["qrefs"]["X"]), "not an I03 query target"),
+        (replace(selection, native_question_ref=fx["qrefs"]["X"]), "same-code native"),
     ):
         with pytest.raises(SelectedQsmRouteError, match=reason):
             _run(fx, bad, catalog, requests)
@@ -217,7 +218,7 @@ def test_historical_block_and_modern_permission_revocation_and_restore(tmp_path)
     deny_sel, deny_catalog, deny_requests = _setup(
         fx, a_path, a_sha, a_row, a_ver, deny=True
     )
-    with pytest.raises(Exception, match="positive authority required"):
+    with pytest.raises(Pre553AuthorityError, match="positive authority required"):
         _run(fx, deny_sel, deny_catalog, deny_requests)
 
     restored = _run(fx, a, catalog, requests)
@@ -232,7 +233,7 @@ def test_unbound_current_reader_refused_even_with_good_qsm(tmp_path):
     # The historical file does not grant unqualified I03 execution.
     with pytest.raises(SelectedQsmRouteError, match="target-use permission triple"):
         _run(fx, selection, catalog, fx["requests"][:1])
-    with pytest.raises(SelectedQsmRouteError, match="not an I03 query target"):
+    with pytest.raises(SelectedQsmRouteError, match="same-code native"):
         _run(
             fx, replace(selection, native_question_ref=fx["qrefs"]["X"]),
             catalog, requests,
