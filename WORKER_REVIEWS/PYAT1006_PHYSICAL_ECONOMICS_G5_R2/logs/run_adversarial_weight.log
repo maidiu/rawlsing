@@ -1,0 +1,97 @@
+{
+  "all_exact": true,
+  "fixture": {
+    "events": 416,
+    "respondents": 128,
+    "weight_count": 128,
+    "weight_refs_sha256": "72939ed907e93c1e03dce70dcc9f0ee8fe3615a8bec0eee01d1dc1ba745c11d3",
+    "weight_texts": [
+      "0.1",
+      "0.2",
+      "0.30000000000000004",
+      "1/3",
+      "11/13",
+      "13/11",
+      "17/19",
+      "2/9",
+      "5/7",
+      "7/3"
+    ]
+  },
+  "queries": {
+    "weighted": {
+      "baseline_candidate_exact": true,
+      "baseline_oracle_exact": true,
+      "public": [
+        {
+          "denominator": 64,
+          "numerator": 64,
+          "projection_sha256": "076d1fa30f5490ea1baf3befbe674964b643cd80d13fdbae99628549301df46e",
+          "ref": {
+            "content_hash": "076d1fa30f5490ea1baf3befbe674964b643cd80d13fdbae99628549301df46e",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:076d1fa30f5490ea1baf3befbe674964b643cd80d13fdbae99628549301df46e"
+          },
+          "replay_ref": {
+            "content_hash": "3efffde42fe8c070b308af68e1179de655b8851e88de9c55eb31d5721b0fef5a",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3efffde42fe8c070b308af68e1179de655b8851e88de9c55eb31d5721b0fef5a"
+          },
+          "state": "SUPPORTED",
+          "weighted_denominator": {
+            "$exact_fraction": [
+              1492972,
+              21945
+            ]
+          },
+          "weighted_numerator": {
+            "$exact_fraction": [
+              1492972,
+              21945
+            ]
+          }
+        }
+      ]
+    },
+    "weighted_f4": {
+      "baseline_candidate_exact": true,
+      "baseline_oracle_exact": true,
+      "public": [
+        {
+          "denominator": 4,
+          "numerator": 4,
+          "projection_sha256": "09524cb5e59eda09be7d510889260cda07dbf0545d165b13c4207371f9cdc682",
+          "ref": {
+            "content_hash": "09524cb5e59eda09be7d510889260cda07dbf0545d165b13c4207371f9cdc682",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:09524cb5e59eda09be7d510889260cda07dbf0545d165b13c4207371f9cdc682"
+          },
+          "replay_ref": {
+            "content_hash": "59f1a1732081e6f392dad95d5c4051e9021d846c66d272e772795fdeaa9c6f67",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:59f1a1732081e6f392dad95d5c4051e9021d846c66d272e772795fdeaa9c6f67"
+          },
+          "state": "SUPPORTED",
+          "weighted_denominator": {
+            "$exact_fraction": [
+              22490,
+              4389
+            ]
+          },
+          "weighted_numerator": {
+            "$exact_fraction": [
+              22490,
+              4389
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "release": {
+    "content_hash": "20d45dd57e40a86c87f0228b655620eb390dee31fcb41db49bc95d2b38c4e74c",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-R2-ADVERSARIAL-WEIGHT"
+  },
+  "status": "MEASURED"
+}

@@ -1,0 +1,1153 @@
+{
+  "profiled": {
+    "call_boundaries": {
+      "calls": {
+        "canonical_json": {
+          "i02_build": 73499,
+          "verify": 22512
+        },
+        "canonicalize": {
+          "i02_build": 5747831,
+          "verify": 3488028
+        },
+        "carrier_canonical_json": {
+          "i02_build": 192100,
+          "verify": 192004
+        },
+        "carrier_field_column": {
+          "i02_build": 224646,
+          "verify": 224490
+        },
+        "check_direct_relations": {
+          "i02_build": 1
+        },
+        "check_relations": {
+          "i02_build": 1
+        },
+        "direct_i02_proof": {
+          "i02_build": 1
+        },
+        "hash_candidate_projection": {
+          "i02_build": 1
+        },
+        "hash_replay_manifest": {
+          "i02_build": 1
+        },
+        "index_add": {
+          "i02_build": 6490
+        },
+        "insert_object": {
+          "i02_build": 22501
+        },
+        "logical_root": {
+          "i02_build": 1
+        },
+        "object_row": {
+          "i02_build": 22513,
+          "verify": 22501
+        },
+        "reread_reencode": {
+          "verify": 1
+        },
+        "root_hash": {
+          "i02_build": 14,
+          "verify": 1
+        },
+        "row": {
+          "i02_build": 22513,
+          "verify": 22501
+        },
+        "semantic_hash": {
+          "i02_build": 20490,
+          "verify": 20496
+        },
+        "sink_add": {
+          "i02_build": 22501
+        },
+        "sink_flush": {
+          "i02_build": 53
+        },
+        "sourcefree_canonical_json": {
+          "i02_build": 51537
+        },
+        "sourcefree_semantic_hash": {
+          "i02_build": 2
+        },
+        "v1_header": {
+          "verify": 1
+        },
+        "validate_public_object": {
+          "i02_build": 20496
+        },
+        "walk_authority_refs": {
+          "i02_build": 22501
+        }
+      },
+      "seconds": {
+        "canonical_json": {
+          "i02_build": 19.05941034341231,
+          "verify": 5.552269116276875
+        },
+        "canonicalize": {
+          "i02_build": 79.56578831584193,
+          "verify": 44.01151383947581
+        },
+        "carrier_canonical_json": {
+          "i02_build": 14.502054148586467,
+          "verify": 13.096555324504152
+        },
+        "carrier_field_column": {
+          "i02_build": 13.334979276871309,
+          "verify": 12.029698482947424
+        },
+        "check_direct_relations": {
+          "i02_build": 0.033464805921539664
+        },
+        "check_relations": {
+          "i02_build": 0.3925022550392896
+        },
+        "direct_i02_proof": {
+          "i02_build": 79.03597200592048
+        },
+        "hash_candidate_projection": {
+          "i02_build": 1.142559542087838
+        },
+        "hash_replay_manifest": {
+          "i02_build": 1.522857696050778
+        },
+        "index_add": {
+          "i02_build": 0.043077604845166206
+        },
+        "insert_object": {
+          "i02_build": 13.824264984345064
+        },
+        "logical_root": {
+          "i02_build": 2.5188173081260175
+        },
+        "object_row": {
+          "i02_build": 17.788427386432886,
+          "verify": 16.03856519027613
+        },
+        "reread_reencode": {
+          "verify": 37.08621639502235
+        },
+        "root_hash": {
+          "i02_build": 0.015655608847737312,
+          "verify": 0.18273351714015007
+        },
+        "row": {
+          "i02_build": 22.221133047016338,
+          "verify": 19.656520493794233
+        },
+        "semantic_hash": {
+          "i02_build": 6.198861048789695,
+          "verify": 5.580342460423708
+        },
+        "sink_add": {
+          "i02_build": 22.622714002849534
+        },
+        "sink_flush": {
+          "i02_build": 0.3130556724499911
+        },
+        "sourcefree_canonical_json": {
+          "i02_build": 2.1718692677095532
+        },
+        "sourcefree_semantic_hash": {
+          "i02_build": 0.000622207997366786
+        },
+        "v1_header": {
+          "verify": 0.18330806796438992
+        },
+        "validate_public_object": {
+          "i02_build": 13.015103827929124
+        },
+        "walk_authority_refs": {
+          "i02_build": 0.02302563958801329
+        }
+      }
+    },
+    "chunk_rows": 512,
+    "cprofile": {
+      "top": [
+        {
+          "cumtime_seconds": 116.38548405700001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "function": "write_direct_estate",
+          "line": 460,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 0.00031809000000000004
+        },
+        {
+          "cumtime_seconds": 116.305512988,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R2/probes/r2_writer_profile.py",
+          "function": "wrapper",
+          "line": 57,
+          "primitive_calls": 3,
+          "total_calls": 3,
+          "tottime_seconds": 0.00019548700000000002
+        },
+        {
+          "cumtime_seconds": 92.72252533300001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R2/probes/r2_writer_profile.py",
+          "function": "wrapper",
+          "line": 42,
+          "primitive_calls": 628345,
+          "total_calls": 10442225,
+          "tottime_seconds": 13.916675862000002
+        },
+        {
+          "cumtime_seconds": 79.035961439,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_direct_i02_sourcefree.py",
+          "function": "build_sourcefree_direct_i02",
+          "line": 617,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 4.3906e-05
+        },
+        {
+          "cumtime_seconds": 79.035917533,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_direct_i02_sourcefree.py",
+          "function": "_build_sourcefree_direct_i02_impl",
+          "line": 329,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 0.43805914700000004
+        },
+        {
+          "cumtime_seconds": 60.79058684500001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "canonical_json",
+          "line": 215,
+          "primitive_calls": 662674,
+          "total_calls": 662674,
+          "tottime_seconds": 0.9578374940000001
+        },
+        {
+          "cumtime_seconds": 53.047132562,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "canonicalize",
+          "line": 181,
+          "primitive_calls": 1205562,
+          "total_calls": 9283959,
+          "tottime_seconds": 12.470227632
+        },
+        {
+          "cumtime_seconds": 42.322696694,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "<dictcomp>",
+          "line": 206,
+          "primitive_calls": 723578,
+          "total_calls": 1651015,
+          "tottime_seconds": 2.8812408990000002
+        },
+        {
+          "cumtime_seconds": 41.817314583000005,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "function": "_row",
+          "line": 187,
+          "primitive_calls": 45014,
+          "total_calls": 45014,
+          "tottime_seconds": 0.47040374700000004
+        },
+        {
+          "cumtime_seconds": 37.385525013000006,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "function": "tap",
+          "line": 490,
+          "primitive_calls": 22514,
+          "total_calls": 22514,
+          "tottime_seconds": 0.047794557
+        },
+        {
+          "cumtime_seconds": 37.086049951,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "function": "_verify_emitted_physical_payloads",
+          "line": 329,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 0.568176197
+        },
+        {
+          "cumtime_seconds": 35.564991843,
+          "file": "~",
+          "function": "<built-in method builtins.isinstance>",
+          "line": 0,
+          "primitive_calls": 61196819,
+          "total_calls": 79366495,
+          "tottime_seconds": 13.371960465
+        },
+        {
+          "cumtime_seconds": 33.768078100000004,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_parquet_carrier.py",
+          "function": "_object_row",
+          "line": 89,
+          "primitive_calls": 45014,
+          "total_calls": 45014,
+          "tottime_seconds": 0.7395995280000001
+        },
+        {
+          "cumtime_seconds": 25.668675743,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "semantic_hash",
+          "line": 220,
+          "primitive_calls": 96000,
+          "total_calls": 96000,
+          "tottime_seconds": 0.25545211900000003
+        },
+        {
+          "cumtime_seconds": 24.961617752000002,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_parquet_carrier.py",
+          "function": "_field_column",
+          "line": 83,
+          "primitive_calls": 449136,
+          "total_calls": 449136,
+          "tottime_seconds": 0.557353691
+        },
+        {
+          "cumtime_seconds": 22.593654133,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "function": "add",
+          "line": 229,
+          "primitive_calls": 22501,
+          "total_calls": 22501,
+          "tottime_seconds": 0.064965036
+        },
+        {
+          "cumtime_seconds": 22.522906162,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/typing.py",
+          "function": "__instancecheck__",
+          "line": 1291,
+          "primitive_calls": 9084838,
+          "total_calls": 9084838,
+          "tottime_seconds": 4.50345261
+        },
+        {
+          "cumtime_seconds": 22.152864275000002,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "__init__",
+          "line": 377,
+          "primitive_calls": 40986,
+          "total_calls": 40986,
+          "tottime_seconds": 1.1516495340000001
+        },
+        {
+          "cumtime_seconds": 18.019453552,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/typing.py",
+          "function": "__subclasscheck__",
+          "line": 1566,
+          "primitive_calls": 9084838,
+          "total_calls": 9084838,
+          "tottime_seconds": 6.6232461670000005
+        },
+        {
+          "cumtime_seconds": 15.585332168,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "<listcomp>",
+          "line": 211,
+          "primitive_calls": 595130,
+          "total_calls": 1269676,
+          "tottime_seconds": 1.0765486850000001
+        },
+        {
+          "cumtime_seconds": 14.794239938,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_parquet_carrier.py",
+          "function": "_object_from_row",
+          "line": 131,
+          "primitive_calls": 22501,
+          "total_calls": 22501,
+          "tottime_seconds": 0.601937107
+        },
+        {
+          "cumtime_seconds": 13.760579384000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_external_i02_certificate.py",
+          "function": "_insert_object",
+          "line": 95,
+          "primitive_calls": 22501,
+          "total_calls": 22501,
+          "tottime_seconds": 0.206698812
+        },
+        {
+          "cumtime_seconds": 12.978695400000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "validate_public_carrier_object",
+          "line": 370,
+          "primitive_calls": 20496,
+          "total_calls": 20496,
+          "tottime_seconds": 0.154538112
+        },
+        {
+          "cumtime_seconds": 10.832976371,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "verify_public_object_integrity",
+          "line": 343,
+          "primitive_calls": 20496,
+          "total_calls": 20496,
+          "tottime_seconds": 0.089236125
+        },
+        {
+          "cumtime_seconds": 9.295135139000001,
+          "file": "~",
+          "function": "<built-in method builtins.issubclass>",
+          "line": 0,
+          "primitive_calls": 9107339,
+          "total_calls": 9107339,
+          "tottime_seconds": 3.3892041990000004
+        },
+        {
+          "cumtime_seconds": 9.016600444,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py",
+          "function": "dumps",
+          "line": 183,
+          "primitive_calls": 662674,
+          "total_calls": 662674,
+          "tottime_seconds": 1.283398156
+        },
+        {
+          "cumtime_seconds": 8.615168561,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "semantic_projection",
+          "line": 483,
+          "primitive_calls": 40992,
+          "total_calls": 40992,
+          "tottime_seconds": 0.148989532
+        },
+        {
+          "cumtime_seconds": 8.083965518000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "_detach_semantic_descendants",
+          "line": 266,
+          "primitive_calls": 40992,
+          "total_calls": 1148300,
+          "tottime_seconds": 1.338316907
+        },
+        {
+          "cumtime_seconds": 7.851913119000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "<dictcomp>",
+          "line": 269,
+          "primitive_calls": 40992,
+          "total_calls": 269912,
+          "tottime_seconds": 0.5558973380000001
+        },
+        {
+          "cumtime_seconds": 7.219297689,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py",
+          "function": "encode",
+          "line": 183,
+          "primitive_calls": 662674,
+          "total_calls": 662674,
+          "tottime_seconds": 1.225251758
+        },
+        {
+          "cumtime_seconds": 6.68515843,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/fixture_1006.py",
+          "function": "iter_routing",
+          "line": 265,
+          "primitive_calls": 10001,
+          "total_calls": 10001,
+          "tottime_seconds": 0.139468308
+        },
+        {
+          "cumtime_seconds": 5.905939321,
+          "file": "<frozen abc>",
+          "function": "__subclasscheck__",
+          "line": 121,
+          "primitive_calls": 9084839,
+          "total_calls": 9084839,
+          "tottime_seconds": 2.659965172
+        },
+        {
+          "cumtime_seconds": 5.691214027,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py",
+          "function": "iterencode",
+          "line": 205,
+          "primitive_calls": 662625,
+          "total_calls": 662625,
+          "tottime_seconds": 5.691214027
+        },
+        {
+          "cumtime_seconds": 4.609557849000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "_freeze_semantic_descendants",
+          "line": 251,
+          "primitive_calls": 432825,
+          "total_calls": 1107192,
+          "tottime_seconds": 0.9730764590000001
+        },
+        {
+          "cumtime_seconds": 4.483331379,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "__post_init__",
+          "line": 285,
+          "primitive_calls": 635324,
+          "total_calls": 635324,
+          "tottime_seconds": 1.093269917
+        },
+        {
+          "cumtime_seconds": 4.419659734000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/fixture_1006.py",
+          "function": "iter_events",
+          "line": 220,
+          "primitive_calls": 6491,
+          "total_calls": 6491,
+          "tottime_seconds": 0.023315236000000003
+        },
+        {
+          "cumtime_seconds": 4.353776825000001,
+          "file": "~",
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "line": 0,
+          "primitive_calls": 173530,
+          "total_calls": 173530,
+          "tottime_seconds": 4.353776825000001
+        },
+        {
+          "cumtime_seconds": 4.3008306350000005,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/fixture_1006.py",
+          "function": "_event",
+          "line": 181,
+          "primitive_calls": 6490,
+          "total_calls": 6490,
+          "tottime_seconds": 0.10328000300000001
+        },
+        {
+          "cumtime_seconds": 4.221067914000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_ingest.py",
+          "function": "_walk_authority_refs",
+          "line": 433,
+          "primitive_calls": 28511,
+          "total_calls": 600285,
+          "tottime_seconds": 0.972453984
+        },
+        {
+          "cumtime_seconds": 4.193199423,
+          "file": "~",
+          "function": "<built-in method builtins.any>",
+          "line": 0,
+          "primitive_calls": 1651017,
+          "total_calls": 1651017,
+          "tottime_seconds": 1.422451257
+        },
+        {
+          "cumtime_seconds": 4.08516706,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "exact_ref",
+          "line": 320,
+          "primitive_calls": 315392,
+          "total_calls": 315392,
+          "tottime_seconds": 0.6252157730000001
+        },
+        {
+          "cumtime_seconds": 3.5413229750000004,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_parquet_carrier.py",
+          "function": "_encode",
+          "line": 45,
+          "primitive_calls": 384104,
+          "total_calls": 1099666,
+          "tottime_seconds": 1.304823805
+        },
+        {
+          "cumtime_seconds": 3.2994468940000004,
+          "file": "~",
+          "function": "<built-in method time.monotonic>",
+          "line": 0,
+          "primitive_calls": 20884456,
+          "total_calls": 20884456,
+          "tottime_seconds": 3.2994468940000004
+        },
+        {
+          "cumtime_seconds": 3.2459741490000003,
+          "file": "~",
+          "function": "<built-in method _abc._abc_subclasscheck>",
+          "line": 0,
+          "primitive_calls": 9084839,
+          "total_calls": 9084839,
+          "tottime_seconds": 2.715432251
+        },
+        {
+          "cumtime_seconds": 2.7707400030000002,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "<genexpr>",
+          "line": 204,
+          "primitive_calls": 7267662,
+          "total_calls": 7267662,
+          "tottime_seconds": 2.246129479
+        },
+        {
+          "cumtime_seconds": 2.75660637,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "<dictcomp>",
+          "line": 257,
+          "primitive_calls": 228910,
+          "total_calls": 228910,
+          "tottime_seconds": 0.33090762900000004
+        },
+        {
+          "cumtime_seconds": 2.518803869,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_external_i02_certificate.py",
+          "function": "_logical_root",
+          "line": 207,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 0.21163304300000002
+        },
+        {
+          "cumtime_seconds": 2.452629505,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/functools.py",
+          "function": "__get__",
+          "line": 981,
+          "primitive_calls": 14015,
+          "total_calls": 36030,
+          "tottime_seconds": 0.11126914
+        },
+        {
+          "cumtime_seconds": 2.359765889,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "_text",
+          "line": 158,
+          "primitive_calls": 2118054,
+          "total_calls": 2118054,
+          "tottime_seconds": 1.663500836
+        },
+        {
+          "cumtime_seconds": 2.306692505,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_external_i02_certificate.py",
+          "function": "absorb",
+          "line": 210,
+          "primitive_calls": 60013,
+          "total_calls": 60013,
+          "tottime_seconds": 0.103327414
+        },
+        {
+          "cumtime_seconds": 2.2271611890000003,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "object_id",
+          "line": 161,
+          "primitive_calls": 12010,
+          "total_calls": 12010,
+          "tottime_seconds": 0.01431012
+        },
+        {
+          "cumtime_seconds": 2.174312128,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "content_hash",
+          "line": 154,
+          "primitive_calls": 12010,
+          "total_calls": 12010,
+          "tottime_seconds": 0.017376074000000002
+        },
+        {
+          "cumtime_seconds": 2.1037926590000002,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "_sha256",
+          "line": 164,
+          "primitive_calls": 692356,
+          "total_calls": 692356,
+          "tottime_seconds": 0.625663183
+        },
+        {
+          "cumtime_seconds": 2.052868402,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "ref",
+          "line": 165,
+          "primitive_calls": 12010,
+          "total_calls": 12010,
+          "tottime_seconds": 0.023745011
+        },
+        {
+          "cumtime_seconds": 2.0216137830000003,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_empirical_objects.py",
+          "function": "ref",
+          "line": 475,
+          "primitive_calls": 207451,
+          "total_calls": 207451,
+          "tottime_seconds": 0.23231028
+        },
+        {
+          "cumtime_seconds": 1.7756320630000002,
+          "file": "<frozen abc>",
+          "function": "__instancecheck__",
+          "line": 117,
+          "primitive_calls": 3142781,
+          "total_calls": 3142781,
+          "tottime_seconds": 1.012584481
+        },
+        {
+          "cumtime_seconds": 1.7531773380000002,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/fixture_1006.py",
+          "function": "iter_weights",
+          "line": 314,
+          "primitive_calls": 2001,
+          "total_calls": 2001,
+          "tottime_seconds": 0.030960696000000003
+        },
+        {
+          "cumtime_seconds": 1.6910056660000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "function": "_key",
+          "line": 175,
+          "primitive_calls": 154964,
+          "total_calls": 154964,
+          "tottime_seconds": 0.119459806
+        },
+        {
+          "cumtime_seconds": 1.6875993120000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/fixture_1006.py",
+          "function": "iter_coordinates",
+          "line": 290,
+          "primitive_calls": 2001,
+          "total_calls": 2001,
+          "tottime_seconds": 0.028075899
+        },
+        {
+          "cumtime_seconds": 1.528339008,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py",
+          "function": "loads",
+          "line": 299,
+          "primitive_calls": 214505,
+          "total_calls": 214505,
+          "tottime_seconds": 0.24173376400000002
+        },
+        {
+          "cumtime_seconds": 1.5228460050000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_direct_i02_sourcefree.py",
+          "function": "_hash_original_replay_manifest",
+          "line": 203,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 0.13644656200000002
+        },
+        {
+          "cumtime_seconds": 1.515716512,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "_field_ref",
+          "line": 354,
+          "primitive_calls": 85960,
+          "total_calls": 85960,
+          "tottime_seconds": 0.06955043000000001
+        },
+        {
+          "cumtime_seconds": 1.2919956730000002,
+          "file": "~",
+          "function": "<built-in method builtins.sorted>",
+          "line": 0,
+          "primitive_calls": 2296917,
+          "total_calls": 2296927,
+          "tottime_seconds": 1.2428703620000001
+        },
+        {
+          "cumtime_seconds": 1.277016283,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "_require_exact_ref",
+          "line": 116,
+          "primitive_calls": 109970,
+          "total_calls": 109970,
+          "tottime_seconds": 0.051377365
+        },
+        {
+          "cumtime_seconds": 1.210772967,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py",
+          "function": "decode",
+          "line": 332,
+          "primitive_calls": 214505,
+          "total_calls": 214505,
+          "tottime_seconds": 0.387993546
+        },
+        {
+          "cumtime_seconds": 1.14254444,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_direct_i02_sourcefree.py",
+          "function": "_hash_original_candidate_projection",
+          "line": 156,
+          "primitive_calls": 1,
+          "total_calls": 1,
+          "tottime_seconds": 0.09703953600000001
+        },
+        {
+          "cumtime_seconds": 1.1416586370000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_parquet_carrier.py",
+          "function": "_decode",
+          "line": 63,
+          "primitive_calls": 192004,
+          "total_calls": 549694,
+          "tottime_seconds": 0.378377148
+        },
+        {
+          "cumtime_seconds": 1.102629901,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/_pre553_external_i02_certificate.py",
+          "function": "value",
+          "line": 101,
+          "primitive_calls": 112505,
+          "total_calls": 112505,
+          "tottime_seconds": 0.11313389700000001
+        },
+        {
+          "cumtime_seconds": 0.946544347,
+          "file": "~",
+          "function": "<method 'commit' of 'sqlite3.Connection' objects>",
+          "line": 0,
+          "primitive_calls": 44,
+          "total_calls": 44,
+          "tottime_seconds": 0.946544347
+        },
+        {
+          "cumtime_seconds": 0.8783875520000001,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "function": "_ref",
+          "line": 42,
+          "primitive_calls": 62980,
+          "total_calls": 62980,
+          "tottime_seconds": 0.13013192
+        },
+        {
+          "cumtime_seconds": 0.823591951,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_parquet_carrier.py",
+          "function": "<listcomp>",
+          "line": 55,
+          "primitive_calls": 228980,
+          "total_calls": 228980,
+          "tottime_seconds": 0.431256868
+        },
+        {
+          "cumtime_seconds": 0.785021406,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "semantic_projection",
+          "line": 144,
+          "primitive_calls": 16020,
+          "total_calls": 16020,
+          "tottime_seconds": 0.077377586
+        },
+        {
+          "cumtime_seconds": 0.766286122,
+          "file": "~",
+          "function": "<method 'fullmatch' of 're.Pattern' objects>",
+          "line": 0,
+          "primitive_calls": 692358,
+          "total_calls": 692358,
+          "tottime_seconds": 0.766286122
+        },
+        {
+          "cumtime_seconds": 0.763047582,
+          "file": "~",
+          "function": "<built-in method _abc._abc_instancecheck>",
+          "line": 0,
+          "primitive_calls": 3142781,
+          "total_calls": 3142781,
+          "tottime_seconds": 0.763039201
+        },
+        {
+          "cumtime_seconds": 0.713209712,
+          "file": "~",
+          "function": "<built-in method builtins.getattr>",
+          "line": 0,
+          "primitive_calls": 534298,
+          "total_calls": 534298,
+          "tottime_seconds": 0.5153326610000001
+        },
+        {
+          "cumtime_seconds": 0.612155231,
+          "file": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/rawlsing_next/pre553_c11_integrity.py",
+          "function": "_internal_value",
+          "line": 86,
+          "primitive_calls": 64140,
+          "total_calls": 64140,
+          "tottime_seconds": 0.12786304
+        },
+        {
+          "cumtime_seconds": 0.5644886370000001,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py",
+          "function": "raw_decode",
+          "line": 343,
+          "primitive_calls": 214505,
+          "total_calls": 214505,
+          "tottime_seconds": 0.5644886370000001
+        },
+        {
+          "cumtime_seconds": 0.555338071,
+          "file": "~",
+          "function": "<built-in method _hashlib.openssl_sha256>",
+          "line": 0,
+          "primitive_calls": 159001,
+          "total_calls": 159001,
+          "tottime_seconds": 0.555338071
+        },
+        {
+          "cumtime_seconds": 0.538198609,
+          "file": "~",
+          "function": "<method 'update' of '_hashlib.HASH' objects>",
+          "line": 0,
+          "primitive_calls": 210321,
+          "total_calls": 210321,
+          "tottime_seconds": 0.538198609
+        },
+        {
+          "cumtime_seconds": 0.5139045990000001,
+          "file": "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py",
+          "function": "__init__",
+          "line": 105,
+          "primitive_calls": 662674,
+          "total_calls": 662674,
+          "tottime_seconds": 0.5139045990000001
+        }
+      ]
+    },
+    "derived": {
+      "candidate_hash_seconds": 1.142559542087838,
+      "direct_i02_proof_seconds": 79.03597200592048,
+      "insert_object_seconds": 13.824264984345064,
+      "logical_root_seconds": 2.5188173081260175,
+      "profile": {
+        "canonicalize_tottime_seconds": 12.470227632,
+        "first_pass_objects": 22501,
+        "isinstance_tottime_seconds": 13.371960465,
+        "semantic_hash_calls": 96000,
+        "semantic_hash_per_object": 4.266477045464646,
+        "semantic_projection_calls": 40992,
+        "sqlite_execute_share_of_wall": 0.03740815214155086,
+        "sqlite_execute_tottime_seconds": 4.353776825000001
+      },
+      "relations_seconds": 0.42596706096082926,
+      "replay_hash_seconds": 1.522857696050778,
+      "reread_reencode_seconds": 37.08621639502235,
+      "root_hash_seconds": 0.19838912598788738,
+      "row_first_seconds": 22.221133047016338,
+      "row_total_seconds": 41.87765354081057,
+      "row_verify_seconds": 19.656520493794233,
+      "sink_add_seconds": 22.622714002849534,
+      "sink_flush_seconds": 0.3130556724499911,
+      "stage_sum_seconds": 116.32057752693072,
+      "validate_public_object_seconds": 13.015103827929124
+    },
+    "events": 6490,
+    "family_counts": {
+      "AuthoritySnapshot": 5,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 2000,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 5,
+      "RespondentEvent": 6490,
+      "RespondentIdentity": 2000,
+      "RoutingEligibilityFact": 10000,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 2000
+    },
+    "profile": true,
+    "respondents": 2000,
+    "retained_bytes": 6299889,
+    "schema": "PYAT1006_R2_WRITER_PROFILE@1",
+    "wall_seconds": 116.38577624806203
+  },
+  "scale_limit": "2,000 respondents; 10k/100k values are independent baseline receipts, not extrapolations",
+  "schema": "PYAT1006_R2_WRITER_PROFILE_SUMMARY@1",
+  "unprofiled": {
+    "call_boundaries": {
+      "calls": {
+        "canonical_json": {
+          "i02_build": 73499,
+          "verify": 22512
+        },
+        "canonicalize": {
+          "i02_build": 5747831,
+          "verify": 3488028
+        },
+        "carrier_canonical_json": {
+          "i02_build": 192100,
+          "verify": 192004
+        },
+        "carrier_field_column": {
+          "i02_build": 224646,
+          "verify": 224490
+        },
+        "check_direct_relations": {
+          "i02_build": 1
+        },
+        "check_relations": {
+          "i02_build": 1
+        },
+        "direct_i02_proof": {
+          "i02_build": 1
+        },
+        "hash_candidate_projection": {
+          "i02_build": 1
+        },
+        "hash_replay_manifest": {
+          "i02_build": 1
+        },
+        "index_add": {
+          "i02_build": 6490
+        },
+        "insert_object": {
+          "i02_build": 22501
+        },
+        "logical_root": {
+          "i02_build": 1
+        },
+        "object_row": {
+          "i02_build": 22513,
+          "verify": 22501
+        },
+        "reread_reencode": {
+          "verify": 1
+        },
+        "root_hash": {
+          "i02_build": 14,
+          "verify": 1
+        },
+        "row": {
+          "i02_build": 22513,
+          "verify": 22501
+        },
+        "semantic_hash": {
+          "i02_build": 20490,
+          "verify": 20496
+        },
+        "sink_add": {
+          "i02_build": 22501
+        },
+        "sink_flush": {
+          "i02_build": 53
+        },
+        "sourcefree_canonical_json": {
+          "i02_build": 51537
+        },
+        "sourcefree_semantic_hash": {
+          "i02_build": 2
+        },
+        "v1_header": {
+          "verify": 1
+        },
+        "validate_public_object": {
+          "i02_build": 20496
+        },
+        "walk_authority_refs": {
+          "i02_build": 22501
+        }
+      },
+      "seconds": {
+        "canonical_json": {
+          "i02_build": 6.195754507090896,
+          "verify": 1.924029839457944
+        },
+        "canonicalize": {
+          "i02_build": 19.60466556227766,
+          "verify": 11.27771336841397
+        },
+        "carrier_canonical_json": {
+          "i02_build": 3.9733062537852675,
+          "verify": 3.8330536622088403
+        },
+        "carrier_field_column": {
+          "i02_build": 3.545059939613566,
+          "verify": 3.409350947709754
+        },
+        "check_direct_relations": {
+          "i02_build": 0.03344329399988055
+        },
+        "check_relations": {
+          "i02_build": 0.3984262910671532
+        },
+        "direct_i02_proof": {
+          "i02_build": 27.62902152305469
+        },
+        "hash_candidate_projection": {
+          "i02_build": 0.45735758799128234
+        },
+        "hash_replay_manifest": {
+          "i02_build": 0.7166187739931047
+        },
+        "index_add": {
+          "i02_build": 0.02752643101848662
+        },
+        "insert_object": {
+          "i02_build": 4.900961979990825
+        },
+        "logical_root": {
+          "i02_build": 1.0818142259959131
+        },
+        "object_row": {
+          "i02_build": 4.990636005997658,
+          "verify": 4.816823650384322
+        },
+        "reread_reencode": {
+          "verify": 13.364194794092327
+        },
+        "root_hash": {
+          "i02_build": 0.01531147537752986,
+          "verify": 0.18643652996979654
+        },
+        "row": {
+          "i02_build": 6.68524007126689,
+          "verify": 6.342913139844313
+        },
+        "semantic_hash": {
+          "i02_build": 2.096429912606254,
+          "verify": 2.0271786365192384
+        },
+        "sink_add": {
+          "i02_build": 7.206507805734873
+        },
+        "sink_flush": {
+          "i02_build": 0.5182446702383459
+        },
+        "sourcefree_canonical_json": {
+          "i02_build": 0.7821948979981244
+        },
+        "sourcefree_semantic_hash": {
+          "i02_build": 0.00024530384689569473
+        },
+        "v1_header": {
+          "verify": 0.18699884414672852
+        },
+        "validate_public_object": {
+          "i02_build": 3.8155944221653044
+        },
+        "walk_authority_refs": {
+          "i02_build": 0.011575223878026009
+        }
+      }
+    },
+    "chunk_rows": 512,
+    "cprofile": null,
+    "derived": {
+      "candidate_hash_seconds": 0.45735758799128234,
+      "direct_i02_proof_seconds": 27.62902152305469,
+      "insert_object_seconds": 4.900961979990825,
+      "logical_root_seconds": 1.0818142259959131,
+      "relations_seconds": 0.43186958506703377,
+      "replay_hash_seconds": 0.7166187739931047,
+      "reread_reencode_seconds": 13.364194794092327,
+      "root_hash_seconds": 0.2017480053473264,
+      "row_first_seconds": 6.68524007126689,
+      "row_total_seconds": 13.028153211111203,
+      "row_verify_seconds": 6.342913139844313,
+      "sink_add_seconds": 7.206507805734873,
+      "sink_flush_seconds": 0.5182446702383459,
+      "stage_sum_seconds": 41.19496432249434,
+      "validate_public_object_seconds": 3.8155944221653044
+    },
+    "events": 6490,
+    "family_counts": {
+      "AuthoritySnapshot": 5,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 2000,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 5,
+      "RespondentEvent": 6490,
+      "RespondentIdentity": 2000,
+      "RoutingEligibilityFact": 10000,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 2000
+    },
+    "profile": false,
+    "respondents": 2000,
+    "retained_bytes": 6299889,
+    "schema": "PYAT1006_R2_WRITER_PROFILE@1",
+    "wall_seconds": 41.42482407181524
+  }
+}

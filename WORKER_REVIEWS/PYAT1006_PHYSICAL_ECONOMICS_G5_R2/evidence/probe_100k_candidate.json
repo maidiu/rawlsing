@@ -1,0 +1,186 @@
+{
+  "admission_counter": {
+    "by_phase": {},
+    "total_reads": 0
+  },
+  "admission_seconds": 1.7046152239199728,
+  "capsule": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R2/data/cases/hist-100k/capsule.json",
+  "capsule_sha256": "15fec64a47fe0e5b3c87104a6585ec1733ebf99d528c7ab53a0557d42530ca13",
+  "family_counts": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 100000,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "RespondentEvent": 324477,
+    "RespondentIdentity": 100000,
+    "RoutingEligibilityFact": 500000,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 100000
+  },
+  "host": {
+    "hostname": "oldMac.lan",
+    "machine": "x86_64",
+    "platform": "darwin",
+    "pyarrow": "26.0.1",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "label": "EXPERIMENT_NOT_IMPLEMENTED",
+  "mode": "candidate",
+  "queries": {
+    "selected": {
+      "cpu_seconds": 263.165977,
+      "facts": [
+        {
+          "projection_sha256": "87c3f0589e4ee1a8a3a695b2bbb0b7585ed7f87cb10dcb15074cb5c8b446a986",
+          "raw_denominator_support": 50000,
+          "raw_numerator_support": 50000,
+          "ref": {
+            "content_hash": "87c3f0589e4ee1a8a3a695b2bbb0b7585ed7f87cb10dcb15074cb5c8b446a986",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:87c3f0589e4ee1a8a3a695b2bbb0b7585ed7f87cb10dcb15074cb5c8b446a986"
+          },
+          "replay_ref": {
+            "content_hash": "957e6a2286242cb5caeb5e81508a6b49cc8ca25ac40b80b47ce4ab52ff4b71b4",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:957e6a2286242cb5caeb5e81508a6b49cc8ca25ac40b80b47ce4ab52ff4b71b4"
+          },
+          "typed_state": "SUPPORTED",
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "predicate_ref": {
+        "content_hash": "05e92d7b23fdb58c4f13cb63bd41690114c671515abb08b6fdd658d00b35af88",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:05e92d7b23fdb58c4f13cb63bd41690114c671515abb08b6fdd658d00b35af88"
+      },
+      "query_ref": {
+        "content_hash": "8e2a69583887050d05e95f26af307667d04e3770248372e1825f694b317eddeb",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8e2a69583887050d05e95f26af307667d04e3770248372e1825f694b317eddeb"
+      },
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "98997d91f0521bdb5549ec7c201671b1b6aad187eb7e045798fd9599cdbf905d",
+                "gid_transitions": 633,
+                "reads": 634,
+                "rows_decoded": 324477,
+                "seconds": 0.6734067085199058,
+                "unique_gids": 634
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "c2eee3f4452b0fbc1f17847ec4c0eafa483abe9d5b27146816edffa7e780c827",
+                "gid_transitions": 2512,
+                "reads": 2513,
+                "rows_decoded": 1285984,
+                "seconds": 3.2092016502283514,
+                "unique_gids": 977
+              }
+            },
+            "reads": 3147,
+            "rows_decoded": 1610461,
+            "seconds": 3.882608358748257
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "2608ec982049bda8ee3534e9d990640d1bdaef75fe0cef38f775522d6259fa4a",
+                "gid_transitions": 195,
+                "reads": 196,
+                "rows_decoded": 100000,
+                "seconds": 0.14342093653976917,
+                "unique_gids": 196
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "98997d91f0521bdb5549ec7c201671b1b6aad187eb7e045798fd9599cdbf905d",
+                "gid_transitions": 633,
+                "reads": 634,
+                "rows_decoded": 324477,
+                "seconds": 0.2647925363853574,
+                "unique_gids": 634
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "4d8bfea60fa20eb6da8315bd8ce5bfb7c949964e4e19a9b8b26f7df2d300fbd6",
+                "gid_transitions": 976,
+                "reads": 977,
+                "rows_decoded": 500000,
+                "seconds": 0.6872310787439346,
+                "unique_gids": 977
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "2608ec982049bda8ee3534e9d990640d1bdaef75fe0cef38f775522d6259fa4a",
+                "gid_transitions": 195,
+                "reads": 196,
+                "rows_decoded": 100000,
+                "seconds": 0.13706882623955607,
+                "unique_gids": 196
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "98997d91f0521bdb5549ec7c201671b1b6aad187eb7e045798fd9599cdbf905d",
+                "gid_transitions": 633,
+                "reads": 634,
+                "rows_decoded": 324477,
+                "seconds": 0.2733893129043281,
+                "unique_gids": 634
+              }
+            },
+            "reads": 2637,
+            "rows_decoded": 1348954,
+            "seconds": 1.5059026908129454
+          }
+        },
+        "total_reads": 5784
+      },
+      "release_refs": [
+        {
+          "content_hash": "31e8dbf3da5a0610e3b1813173fc5051f679eed1791c7742f83da1df97ef8349",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-PYAT1006-hist-100k"
+        }
+      ],
+      "temp_sqlite_peak_bytes": 1301057536,
+      "wall_seconds": 294.0872561200522
+    }
+  },
+  "release": {
+    "content_hash": "31e8dbf3da5a0610e3b1813173fc5051f679eed1791c7742f83da1df97ef8349",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-hist-100k"
+  },
+  "release_ref": {
+    "content_hash": "31e8dbf3da5a0610e3b1813173fc5051f679eed1791c7742f83da1df97ef8349",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-hist-100k"
+  },
+  "rss_peak_bytes": 2859024384,
+  "schema": "PYAT1006_R2_LOCALITY_PROBE@1",
+  "sort_audit": {
+    "calls": 100009,
+    "fallback_key_calls": 100004,
+    "fallback_other_calls": 4,
+    "physical_respondent_returns": 1,
+    "physical_respondent_values": 100000
+  },
+  "status": "MEASURED"
+}

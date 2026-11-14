@@ -1,0 +1,83 @@
+{
+  "commands": [
+    {
+      "command": "inline python: copy R1 1k/10k/100k estates to R2, verify 65/65 author manifest, production diff, capsule member hashes and pinned fields",
+      "evidence": "evidence/identity_verification.json",
+      "exit": 0,
+      "result": "author manifest 65/65 verified; production diff empty; R1 capsule SHAs equal author reviewer_sources; R2 copies byte-identical for 15 members, pinned fields equal",
+      "step": "identity_copy_and_capsule_pin_check"
+    },
+    {
+      "command": "r2_run.py --label 1k-baseline -- python probes/r2_locality_probe.py --capsule data/cases/diag-1k/capsule.json --mode baseline --queries selected,f2_reverse,f4_three,weighted",
+      "exit": 0,
+      "log": "logs/run_1k_baseline.log",
+      "result": "4 queries measured; tree RSS 340,369,408 B; all facts match R1 baseline",
+      "step": "1k_baseline"
+    },
+    {
+      "command": "r2_run.py --label 1k-candidate -- python probes/r2_locality_probe.py --capsule data/cases/diag-1k/capsule.json --mode candidate --queries selected,f2_reverse,f4_three,weighted",
+      "exit": 0,
+      "log": "logs/run_1k_candidate.log",
+      "result": "selected/F2/F4/weighted exact; reads 61/63/61/63; 4 physical respondent sorts / 4,000 values; tree RSS 209,793,024 B",
+      "step": "1k_candidate"
+    },
+    {
+      "command": "r2_run.py --label 10k-baseline -- python probes/r2_locality_probe.py --capsule data/cases/diag-10k/capsule.json --mode baseline --queries selected,f2_reverse,f4_three",
+      "exit": 0,
+      "log": "logs/run_10k_baseline.log",
+      "result": "selected/F2/F4 52.195/51.264/56.011 s; reads 20,157/20,153/20,161; tree RSS 687,104,000 B",
+      "step": "10k_baseline"
+    },
+    {
+      "command": "r2_run.py --label 10k-candidate -- python probes/r2_locality_probe.py --capsule data/cases/diag-10k/capsule.json --mode candidate --queries selected,f2_reverse,f4_three",
+      "exit": 0,
+      "log": "logs/run_10k_candidate.log",
+      "result": "selected/F2/F4 22.896/21.721/25.372 s; reads 588/614/588; exact parity; tree RSS 566,874,112 B",
+      "step": "10k_candidate"
+    },
+    {
+      "command": "r2_run.py --label 100k-candidate -- python probes/r2_locality_probe.py --capsule data/cases/hist-100k/capsule.json --mode candidate --queries selected",
+      "exit": 0,
+      "log": "logs/run_100k_candidate.log",
+      "result": "wall 294.087 s; CPU 263.166 s; reads 5,784; fact ref 87c3f058... equals R1 baseline; release exact; temp SQLite 1,301,057,536 B; tree RSS 2,803,986,432 B",
+      "step": "100k_candidate_selected"
+    },
+    {
+      "command": "python probes/r2_adversarial_weight.py --outdir data/adversarial-weight",
+      "exit": 0,
+      "log": "logs/run_adversarial_weight.log",
+      "result": "128 respondents, exact unequal fractional weights; two-cell weighted and four-cell weighted F4 exact baseline/candidate/native oracle",
+      "step": "adversarial_unequal_weight"
+    },
+    {
+      "command": "r2_run.py --label guard-probe -- python probes/r2_guard_probe.py data/guard-probe",
+      "exit": 0,
+      "log": "logs/run_guard_probe.log",
+      "result": "48-respondent oracle/changed/restore exact; denied CURRENT, wrong source, omitted locator and omitted member refuse; candidate selected exact with C11Repository init and pq.read_table blocked",
+      "step": "guard_probe"
+    },
+    {
+      "command": "r2_run.py --label writer-profile-2k -- python probes/r2_writer_profile.py --outdir data/writer-profile",
+      "exit": 0,
+      "log": "logs/run_writer_profile_2k.log",
+      "result": "unprofiled 41.425 s; cProfile 116.386 s; 96,000 semantic hashes / 40,992 projections / 22,501 objects; SQLite execute 3.74% of profile wall",
+      "step": "writer_profile_2k"
+    },
+    {
+      "command": "python -m pytest -q -o addopts='' -p no:cacheprovider WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/followthrough_r2/test_locality_candidate.py",
+      "exit": 0,
+      "log": "logs/author_locality_candidate_tests.txt",
+      "result": "2 passed in 9.27s",
+      "step": "author_locality_candidate_tests"
+    }
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": ".:WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R2/probes",
+    "TMPDIR": "WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R2/data/tmp"
+  },
+  "note": "Two probe preflight runs failed on pyarrow version attribute and mappingproxy JSON before any measured result; both were fixed in the review probe and the successful runs below produced the committed receipts.",
+  "python": "/Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python",
+  "schema": "PYAT1006_R2_COMMANDS@1",
+  "workdir": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing"
+}
