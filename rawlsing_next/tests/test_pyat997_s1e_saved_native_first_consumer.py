@@ -565,9 +565,10 @@ def test_original_r03_compiler_issuer_cannot_be_replaced_by_matching_manual_reco
     original = compilation.issued
     assert not original.workload.requests
     assert len(original.workload.discoveries) == 1
-    forged_decision = _historical_test_only_ref(
-        "TEST_ONLY_DECISION", "pyat997-manual-" + attack,
-    )
+    forged_decision = (original.workload.decision_ref
+        if attack == "self_reissued_u_root" else _historical_test_only_ref(
+            "TEST_ONLY_DECISION", "pyat997-manual-" + attack,
+        ))
     kwargs = {"decision_ref": forged_decision}
     expected_jobs = original.record.expected_jobs
     if attack == "self_issued_query":
@@ -608,7 +609,9 @@ def test_original_r03_compiler_issuer_cannot_be_replaced_by_matching_manual_reco
     with pytest.raises(SourceReceiptJoinError, match=(
         "R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT"
         if attack == "self_issued_query" else
-        "R03_COMPILER_ORIGINAL_ISSUER_IDENTITY_DRIFT"
+        ("R03_COMPILER_SOURCE_U_ENVELOPE_DRIFT"
+         if attack == "self_reissued_u_root" else
+         "R03_COMPILER_ORIGINAL_ISSUER_IDENTITY_DRIFT")
     )):
         join_saved_source_operation_fates(
             handoff=handoff, estate_receipt=estate, admission=admission,
