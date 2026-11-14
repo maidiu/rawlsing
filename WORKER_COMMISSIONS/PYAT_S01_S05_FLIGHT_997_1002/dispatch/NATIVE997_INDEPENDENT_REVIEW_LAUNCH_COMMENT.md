@@ -4,3 +4,5 @@ NativeR3return11d6f480349a09b871414c3dc1c3f4fa3e680797 remoteverified;10ownproof
 
 ActualindependentDeepSeekreview job `pyat997-independent-native-review-r1`, sessionses_e30a442d8ffeYBbXi7rPUpPxoc, child27646, isolatedreview/pyat997-native-independent-r1 at11d6f480; distinctfromBrowser997A/B andlocalnativeproofauthor. ActualfirstturnMAXmetadata proofbanked whereavailable; finitekqueueterminalnotification. Ownreviewevidenceonly, canonicalproduct/testsreadonly; exactproposedpatchprivatecopyexecutionallowed, noowneradoptionclaim. Fulloriginal997G1-G5, no simplerI03smoke substitute; carryknownnativeS2AG3holdwithoutduplicatekernelcourt/unauthorizedfix, exactREVlSE/HOLDifindispensable. UseraskedDeepSeekreview, actualdispatchperformed, notmerelyaGitHubcomment. GoalwakeupsPAUSED.
 
+
+[Actual user-requested independent review launch and exact scopes](https://github.com/maidiu/rawlsing/blob/feca7c21bb7a56470aab32de78efc5c19c51415d/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/NATIVE997_R3_AND_REVIEW_DISPOSITION.json).
