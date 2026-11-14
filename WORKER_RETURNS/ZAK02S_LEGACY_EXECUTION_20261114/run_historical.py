@@ -317,6 +317,10 @@ def main():
                               and o["return"]["baseline_input_answered_var_n"] == 2
                               for x in o.get("return", {}).get("candidates", [])))
         observe("V550J", "negative_disjoint_respondents", sym,
+                {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R4"]},
+                lambda: invoke_550j(joint, pd, ["R4"]),
+                lambda o: o.get("return", {}).get("rows") == 0)
+        observe("V550J", "negative_unanswered_member", sym,
                 {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R3"]},
                 lambda: invoke_550j(joint, pd, ["R3"]),
                 lambda o: o.get("return", {}).get("rows") == 0)
