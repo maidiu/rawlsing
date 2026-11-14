@@ -1,0 +1,47 @@
+AGENT TYPE: SameDeepSeekexecutor correcting actualissuer-proofbreach
+INTELLIGENCE LEVEL: I3 / FlashMAX
+
+```text
+LAUNCH — PYAT 998 finite existing flight
+REPOSITORY: maidiu/rawlsing
+AGENT_TYPE: Same DeepSeek native executor correcting exact independent G5 false compiler-issuance claim without changing product or policy
+INTELLIGENCE_LEVEL: I3
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+EXECUTION_SURFACE: S0_S1_S2_S3
+MCR: LITE
+COMMISSION_KIND: REPAIR
+CONTRACT_ID: PYAT997-EXACT-COMPILER-ISSUANCE-PROOF-CORRECTION-R4
+CONTRACT_SOURCE_CUT: WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/sources/issue_997.md@cecfc154262eaa140d003e9e704811f44b940455
+BRANCH: agent/pyat997-native-proof-r1
+STARTUP_SHA: 11d6f480349a09b871414c3dc1c3f4fa3e680797
+ACTIVE_WORKER_NO_DISTURBANCE: Only S2A exclusiveauthor currentlylocal; #997 Browserproduct readonly2c476; #1006 remote readonlybaseline; uniqueproofworktree no sharedwrite
+WORK_SCOPE_AND_FLIGHT: PARENT=User commissioned S01-S05 flight997-1002; TRANCHE=Exact issue998 finite assigned deliverables below; NO_DROP=All original contract invariants and inherited functionality retained
+TERMINAL_CONSUMER_AND_EFFECT: CONSUMER=Actual native first readers and qualified downstream integration; EFFECT=Executable scoped proof or staging and exact next dependency, never unrelated model-only green
+FROZEN_ORACLE_AND_COUNTEREXAMPLE: POS=Exact issued contract actual native positive and changed restored output; NEG=Real poison refusal with conserved negative facts references receipts and authority
+EXECUTION_AND_AUTHOR_PREFLIGHT: RUNNER=Existing OpenCode Go DeepSeek Flash MAX actual local service; PREFLIGHT=Verify exact branch code and exclusive ownership then execute without duplicate discovery
+CLOSURE_AND_OUT_OF_SCOPE: ACCEPT_AT=Assigned finite issue deliverables with immutable code evidence and scoped verdict; EXCLUDE=Original35 rights minting productionCURRENT protectedmerge new architecture duplicate physical engine
+SCIENCE_SOURCE_ACTOR_AUTHORITY: Sourcefree engineering only except genuinely authenticated current source rights in1002; independent scientific and authority limits preserved
+POST_RETURN_INDEPENDENT_REVIEW: This is native evidence execution not G5; Browser997 owner and genuinely distinct reviewer receive exactactualoutput before accepting bridge or998join
+MODEL: opencode-go/deepseek-v4.1-flash#max
+PROVIDER/EDITOR_HARNESS: Existing local OpenCode service unchanged; account quota costs UNKNOWN no switch authorized
+FROZEN_FAILED_CLAIM: 11d6f480349a09b871414c3dc1c3f4fa3e680797 R3 falsely calls manually added PROHIBITED catalogquery compiler-issued Batch/F4; independentreview8b03c121a2f6d9c7a9c2e0513a03545780d14c3c reproduces0compilerQUERYvs1manualQUERY
+REPRODUCER_AND_ROOT_CAUSE: REPRO=Exactindependent witness_issuer_binding.py andissuer-binding-witness.json from8b03c121a; ROOT_CAUSE=R3constructsmanualNativeWorkload/IssuedRecord thenreplace(compilation,issued=manual), querynotinanyplanquery_refs/all12matchingF4opsPROHIBITED
+AFFECTED_DEPENDENCIES: FalseP1queryissuance/BatchF4/two-unitPARTIALABSENTproof; genuineP0/directI03/discovery/normal-completed/testpatch/freshsourceproofpreserved
+REGRESSION_AND_DELTA_REVIEW: REGRESSION=Exactcompileroutput/record/expectedjobs/queryplan/opELIGIBLEbinding mustremainunchanged andmanualsubstitutionstayRED; REVIEW_SCOPE=Ownproofcorrectiononly, no Browserproduct/P1guard/native/kernel/testpolicychange orscopewaiver
+
+SAMEoriginalnativeexecutor/session/worktree, samebranchagent/pyat997-native-proof-r1 at11d6f480. G5REJECTEDyourR3claim. Readactualindependentreview WORKER_RETURNS/PYAT997_INDEPENDENT_NATIVE_REVIEW_R1/{00_HANDOFF.md,receipt.json,witness_issuer_binding.py,evidence/issuer-binding-witness.json} at8b03c121a2f6d9c7a9c2e0513a03545780d14c3c. Authorcodeharness_native_materializelines239-271 createdaQUERYunitAFTERcompileand replaced .issued; catalogpresenceisnotpermission/planmembership. Independentwitnessshows12matchingJOINT/CO_TRAVEL SAMPLEoperationsPROHIBITEDandselectedqueryabsentallplan.records.query_refs. Yourinstructionalreadyexplicitlyprohibitedmanualappend/unsupportedforcedissue. TEST_ONLYdoesnotwaivescientificfates. Do notrepeatthat approach/arguethelabel/looseningexpectedclassification.
+
+WRITE ONLY NEW WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/compiler_issuance_correction_r4/ ownharness/config/logs/receipt/Browserhandoff. Canonicalproduct/tests/BrowserP1guard/sourcecompiler/eligibilitypolicy/acceptednative/S2A/1006/priorreturnsREADONLY. Preservepriorfalseclaims as immutablehistoryandexplicitlywithdrawthem innewmachine/humanreceipt. No newproduct/evaluator/issuer/registry/authoritysystem orsciencepolicychange.
+
+NEXT AUTHORIZED CORRECTION (ONE bounded pass):
+1 ReproducetheG5exactmismatch andbankcorrection: truecompiler.issuedhas0QUERY1DISCOVERY; R3F4numericalcomputationisrealbutPROHIBITED/unissued, so withdrawcompiler-issuedBatchQUERY/F4/PARTIAL/ABSENTclaim. PreservevalidP0,75testpatchproof,directq101asmechanicalstandalonequerynotoriginalP1issuance, discovery/I05, compiler-issuedNORMAL+COMPLETED andall35ledger. No newtestmatrix/repeat75required.
+2 UseUNCHANGED compile_governed_frontier anditsUNCHANGED returned .issued ONLY. Snapshotexactrecord/workload/envelope/expectedjobs beforeexecution; assertrefs/normalizedhashesunchangedthroughhandoff/nativeexecute/join. No replace(compilation,issued=...), manualnewNativeWorkload/IssuedWorkloadRecord or appendingrequest/discovery aftercompile. OrdinaryexistingTEST_ONLYfixtureinputs/resolverofactualcompilerrecord allowed, notcaller-authoredreplacementgrant.
+3 Beforedeclaringquerycapabilitymissing, consult EXISTINGacceptedS1C/R03 fixture/tests andoriginal998 source/operationclaimcontract for examples thatactuallyissueeligiblequeryunits. If an alreadyqualified fixture/claim kind/domain/authority pattern givesgenuinequeryoutput underunchangedsciencepolicy, reuseitsproperinputs throughSAMEgenericQ2sourcebodybridge. Do NOT switchprohibitedclaimclass/forceALLOW/addad-hocauthorityjusttogetgreen. Fixtureinputs musttruthfullyrepresentexactexistingTEST_ONLYscience/routing/universe/measurementpolicy, preserve originalPROHIBITEDcasesnegative. Noinventedscientifictheoryorunreviewedpolicy.
+4 IFactualcompilerlegitimatelyissuesaneligiblequeryunit, prove exact operationELIGIBLE/planquery_ref/workloadrequest/issuerrecord/Batchreceipt/postconsumerrowchain forSAMEsavedQ2estate; genuineactualchangedcell->changednumericalBatch/F4 (whereactuallyeligible) andexactbaselinebytes/restorerefs. Useactualcompilerrecord/resolver, notcatalogbypass. Same-sourceactualNORMAL/COMPLETED/PARTIAL/ABSENTwherethattrueworkloadhasenoughunits, freshconsumer/nooriginalsource/fullC11fallback. If onlyoneunitthenPARTIALtwo-unitnotproved; don't inventanotherjob.
+5 IFunchangedcompilerdoesnotissuequeriesforanyexistingqualifiedinputyoucanuse, STOPthatpositiveproof, keepNOT_ISSUED/PROHIBITED visible, emitminimalrunnablecase andexactlowering/fate/configreason withsourcepositions. No broaderdiscoveryorperpetualfixturesearch. ProvideONE smallestBrowserHigh/R03ownerquestion: whichexistinglawfulsourcefreeclaim/fixture shouldissueactualeligibleQUERY, orwhatexistingmissingbinding mustrightfulownerimplement? No request to waivePROHIBITED, no genericGO/newscience/sourceperm, no newengine. This isactualindispensablecontract, notcapacityfiller.
+
+P1PRODUCTDEFECTNOTYOURWRITEGRANT: join_saved_source_operation_fates acceptedmanualsubstitutionwhencomparing againstalreadyreplacedcompilation.issued.record. ExistingBrowserP1owner is receivingexactG5REDforguardrepair; do noteditproducthere orclaimfullG5closedbecausecorrectedharnessstopsdoingattack. Yournewreceiptmustretainthatnativeproductnegativeuntilrightfulownerfix+sameindependentreviewerreceives. ExacttestpatchadoptionstillBrowserowned. KnownS2Anativebodytruthownerexceptionheld, no codewriteauthorityfollowsfromthisR4.
+
+Evidencegradeexplicitlyauthorcorrection/existingcompilerproof, notaccepted997/998G5. Don'trelabelrealjointmathproofasissued/eligible. Engineering, scientific, and authority courts separate. GeneratedTEST_ONLYdataonly/nooriginal35/sourcefiles/scientificproduction/CURRENT/protectedmerge/100kclaims. No model/provider/account/effort/region/harness/VMchanges. Terminalnotificationsonly, goalwakeupsPAUSED. Commit/pushonlyownNEWreturnsubdir/directremotereadback; returnconcretecorrectedpositiveoractualminimalRED+exactBrowserquestion. No moreplans/apologies; fixactualproofasdirected.
+
+```
