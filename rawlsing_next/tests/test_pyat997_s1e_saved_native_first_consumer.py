@@ -16,7 +16,9 @@ pytest.importorskip("pyarrow")
 from rawlsing_next.pre553_batch_runner import (
     BatchManifest, BatchUnitSpec, BatchExecutionRunner,
 )
-from rawlsing_next.pre553_empirical_objects import exact_ref
+from rawlsing_next.pre553_empirical_objects import exact_ref, semantic_hash
+from rawlsing_next.pre553_native_workload_binding import _ref as _historical_test_only_ref
+from rawlsing_next.pre553_route_b_production import I03ExecutionRequest
 from rawlsing_next.pre553_native_workload_binding import TestOnlyDecisionResolver
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission, SavedReleaseIdentity
 from rawlsing_next.pre553_saved_workload_integration import (
@@ -542,3 +544,99 @@ def test_agent_b_r5_original_frontier_and_frozen_census_cut(
             resolver=resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
             runner=runner,
         )
+
+
+
+@pytest.mark.parametrize("attack", [
+    "self_issued_query", "different_discovery_decision", "self_reissued_u_root",
+])
+def test_original_r03_compiler_issuer_cannot_be_replaced_by_matching_manual_records(
+    tmp_path, attack,
+):
+    """G5 RED: the resolver may accept a caller-generated TEST_ONLY record,
+    but that record is not automatically the original compiler's issuance.
+
+    Do not change the frontier/plan/Q2 fates or grant PROHIBITED work.
+    The legitimate actual compiler emits ONE DISCOVERY and ZERO QUERY.
+    """
+    handoff, estate, admission, compilation, _resolver, _ = _full(
+        tmp_path / ("issuer-substitution-" + attack)
+    )
+    original = compilation.issued
+    assert not original.workload.requests
+    assert len(original.workload.discoveries) == 1
+    forged_decision = _historical_test_only_ref(
+        "TEST_ONLY_DECISION", "pyat997-manual-" + attack,
+    )
+    kwargs = {"decision_ref": forged_decision}
+    expected_jobs = original.record.expected_jobs
+    if attack == "self_issued_query":
+        # This query is *in the catalog* and directly executable, but R03
+        # did not issue it as a Batch job. TEST_ONLY catalog membership is not
+        # an operation-level science grant.
+        entry = next(
+            record for record in compilation.plan.records
+            if record.status == "SUPPORTED" and record.query_refs
+        )
+        query_ref = exact_ref(entry.query_refs[0])
+        query = original.workload.catalog.resolve_query_exact(query_ref)
+        predicate_ref = exact_ref(query.condition_predicate_ref)
+        kwargs["requests"] = (I03ExecutionRequest(query_ref, predicate_ref),)
+        expected_jobs = tuple(sorted((
+            *expected_jobs, ("QUERY", query_ref.key, predicate_ref.key),
+        )))
+    if attack == "self_reissued_u_root":
+        kwargs["original_u_root"] = "9" * 64
+    forged_workload = replace(original.workload, **kwargs)
+    forged_record = replace(
+        original.record,
+        decision_ref=forged_decision,
+        expected_jobs=expected_jobs,
+        original_u_root=forged_workload.original_u_root,
+        envelope_sha256=semantic_hash(forged_workload.envelope()),
+    )
+    forged_issued = replace(
+        original, workload=forged_workload, record=forged_record,
+        envelope_sha256=forged_record.envelope_sha256,
+    )
+    forged_compilation = replace(compilation, issued=forged_issued)
+    forged_resolver = TestOnlyDecisionResolver(forged_record)
+    manifest, _ = _issued_manifest(forged_workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    with pytest.raises(SourceReceiptJoinError, match=(
+        "R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT"
+        if attack == "self_issued_query" else
+        "R03_COMPILER_ORIGINAL_ISSUER_IDENTITY_DRIFT"
+    )):
+        join_saved_source_operation_fates(
+            handoff=handoff, estate_receipt=estate, admission=admission,
+            compilation=forged_compilation, workload=forged_workload,
+            resolver=forged_resolver, host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE,
+            runner=runner,
+        )
+    assert runner.receipts == ()
+
+
+def test_unaltered_compiler_discovery_is_admissible_without_execution(tmp_path):
+    """Do not mistake an unexecuted lawful discovery for an invalid issuer."""
+    handoff, estate, admission, compilation, resolver, _ = _full(
+        tmp_path / "unchanged-compiler-discovery"
+    )
+    workload = compilation.issued.workload
+    assert not workload.requests
+    assert len(workload.discoveries) == 1
+    manifest, _ = _issued_manifest(workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    joined = join_saved_source_operation_fates(
+        handoff=handoff, estate_receipt=estate, admission=admission,
+        compilation=compilation, workload=workload, resolver=resolver,
+        host=_NATIVE_HOST, purpose=_NATIVE_PURPOSE, runner=runner,
+    )
+    assert joined.audit["native_completed_units_rechecked"] == 0
+    assert joined.audit["positive_native_linked_operations"] == 0
+    assert joined.audit["pending_eligible_operations"] > 0
+    assert runner.receipts == ()
