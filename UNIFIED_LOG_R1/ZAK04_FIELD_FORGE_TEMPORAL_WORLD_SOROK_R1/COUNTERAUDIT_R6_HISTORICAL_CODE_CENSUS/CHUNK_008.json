@@ -1,0 +1,1096 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    94,
+    108
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N035_V550_V552J_AUTHORITY_TRANSPORT/CORPUS/ORIGINAL/375b24b10d09__ddm_v551_directionality_expectation.py",
+      "sha": "375b24b10d09c5a3ed83008290ac48a8e1cab8a2",
+      "role": "OTHER",
+      "n": 283,
+      "bytes": 9489,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 72
+        },
+        {
+          "kind": "def",
+          "name": "_to_bool",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_safe_float",
+          "line": 99
+        },
+        {
+          "kind": "def",
+          "name": "build_v551_directionality_expected_bridge",
+          "line": 109
+        },
+        {
+          "kind": "def",
+          "name": "build_v551_directionality_stamp_audit",
+          "line": 175
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v551_directionality_stamp_coverage",
+          "line": 254
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"V551 directionality expectation and response-row stamp coverage.  The denominator is defined by V550's variable/question-level directional authority.  Row"
+    },
+    {
+      "path": "data/ddm_build_copy/repair_v550_bridge_artifacts.py",
+      "sha": "a0f38f208704adf65956a867cd78b4919513860e",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 157,
+      "bytes": 7003,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 47
+        },
+        {
+          "kind": "def",
+          "name": "_write_json",
+          "line": 53
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 58
+        }
+      ],
+      "imports": [
+        "28:from data.ddm_build_copy.ddm_v550_bridge import _apply_v551_eligibility",
+        "29:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "30:from data.ddm_build_copy.ddm_v550_schema import V551_BRIDGE_INDEX_SCHEMA, validate_bridge_index",
+        "31:from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Repair only the V550 bridge artifacts for an existing shard.  This is intentionally narrow: - it does not recompute question outputs"
+    },
+    {
+      "path": "data/ddm_build_copy/repair_v550_shard_status.py",
+      "sha": "a208df0d6b6c235aa6d787bcc0043817a580a125",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 141,
+      "bytes": 6237,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 24
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "name": "_write_json",
+          "line": 41
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 48
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Repair stale V550 shard status metadata from existing artifacts.  This script does not recompute any question outputs, bridge tables, or readiness coverag"
+    },
+    {
+      "path": "data/ddm_build_copy/run_20var_allwaves_v550_552j_smoke_impl.py",
+      "sha": "5e4178be34dedcc88f774822800c51239e4a9cc7",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 2186,
+      "bytes": 101630,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "RuntimeConfig",
+          "line": 132
+        },
+        {
+          "kind": "def",
+          "name": "_now",
+          "line": 156
+        },
+        {
+          "kind": "def",
+          "name": "_log",
+          "line": 160
+        },
+        {
+          "kind": "def",
+          "name": "_strip_accents",
+          "line": 164
+        },
+        {
+          "kind": "def",
+          "name": "_norm",
+          "line": 169
+        },
+        {
+          "kind": "def",
+          "name": "_family_wave_id",
+          "line": 173
+        },
+        {
+          "kind": "def",
+          "name": "_abs",
+          "line": 177
+        },
+        {
+          "kind": "def",
+          "name": "_response_map_build_inputs",
+          "line": 182
+        },
+        {
+          "kind": "def",
+          "name": "_default_response_option_map",
+          "line": 194
+        },
+        {
+          "kind": "def",
+          "name": "_redact",
+          "line": 199
+        },
+        {
+          "kind": "def",
+          "name": "_run",
+          "line": 205
+        },
+        {
+          "kind": "def",
+          "name": "_invoke_run",
+          "line": 254
+        },
+        {
+          "kind": "def",
+          "name": "_truthy",
+          "line": 266
+        },
+        {
+          "kind": "def",
+          "name": "_load_json",
+          "line": 274
+        },
+        {
+          "kind": "def",
+          "name": "_load_yaml",
+          "line": 285
+        },
+        {
+          "kind": "def",
+          "name": "validate_explicit_scope",
+          "line": 292
+        },
+        {
+          "kind": "def",
+          "name": "_validate_relation_identifier",
+          "line": 310
+        },
+        {
+          "kind": "def",
+          "name": "_load_env_file",
+          "line": 316
+        },
+        {
+          "kind": "def",
+          "name": "inspect_database_contract",
+          "line": 329
+        },
+        {
+          "kind": "def",
+          "name": "_connect_database_for_preflight",
+          "line": 415
+        },
+        {
+          "kind": "def",
+          "name": "inspect_structural_registry_scope_coverage",
+          "line": 423
+        },
+        {
+          "kind": "def",
+          "name": "inspect_selected_response_coverage",
+          "line": 545
+        },
+        {
+          "kind": "def",
+          "name": "summarize_overlay_authority_coverage",
+          "line": 606
+        },
+        {
+          "kind": "def",
+          "name": "run_preflight",
+          "line": 660
+        },
+        {
+          "kind": "def",
+          "name": "_iter_quc_rows",
+          "line": 855
+        },
+        {
+          "kind": "def",
+          "name": "_parquet_rows",
+          "line": 864
+        },
+        {
+          "kind": "def",
+          "name": "summarize_quc_functional_gate",
+          "line": 873
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v550_manifest_gate",
+          "line": 916
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v551_functional_gate",
+          "line": 953
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v552_functional_gate",
+          "line": 967
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v550j_functional_gate",
+          "line": 1003
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v551j_functional_gate",
+          "line": 1053
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v552j_functional_gate",
+          "line": 1183
+        },
+        {
+          "kind": "def",
+          "name": "_source_aliases",
+          "line": 1208
+        },
+        {
+          "kind": "def",
+          "name": "_wave_aliases",
+          "line": 1224
+        },
+        {
+          "kind": "def",
+          "name": "_registry_var_codes",
+          "line": 1249
+        },
+        {
+          "kind": "def",
+          "name": "_joint_registry_payload_hash",
+          "line": 1279
+        },
+        {
+          "kind": "def",
+          "name": "_joint_registry_status_is_executable",
+          "line": 1284
+        },
+        {
+          "kind": "def",
+          "name": "resolve_joint_authority",
+          "line": 1288
+        },
+        {
+          "kind": "def",
+          "name": "summarize_joint_authority_coverage",
+          "line": 1365
+        },
+        {
+          "kind": "def",
+          "name": "_sql_normalized",
+          "line": 1398
+        },
+        {
+          "kind": "def",
+          "name": "_select_question_variables",
+          "line": 1402
+        },
+        {
+          "kind": "def",
+          "name": "_build_question_filter",
+          "line": 1498
+        },
+        {
+          "kind": "def",
+          "name": "_stage_result",
+          "line": 1518
+        },
+        {
+          "kind": "def",
+          "name": "run_v550_shard",
+          "line": 1532
+        },
+        {
+          "kind": "def",
+          "name": "run_v551",
+          "line": 1584
+        },
+        {
+          "kind": "def",
+          "name": "run_v552",
+          "line": 1601
+        },
+        {
+          "kind": "def",
+          "name": "run_v550j",
+          "line": 1615
+        },
+        {
+          "kind": "def",
+          "name": "_append_existing_context",
+          "line": 1676
+        },
+        {
+          "kind": "def",
+          "name": "run_v551j",
+          "line": 1684
+        },
+        {
+          "kind": "def",
+          "name": "run_v552j",
+          "line": 1716
+        },
+        {
+          "kind": "def",
+          "name": "_fail",
+          "line": 1734
+        },
+        {
+          "kind": "def",
+          "name": "run_wave",
+          "line": 1741
+        },
+        {
+          "kind": "def",
+          "name": "write_summaries",
+          "line": 1902
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 1995
+        },
+        {
+          "kind": "def",
+          "name": "_config_from_args",
+          "line": 2033
+        },
+        {
+          "kind": "def",
+          "name": "_parse_only_scope",
+          "line": 2062
+        },
+        {
+          "kind": "def",
+          "name": "_run_scope",
+          "line": 2076
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 2124
+        }
+      ],
+      "imports": [
+        "41:from data.ddm_build_copy.ddm_v550j_registry_contract import (",
+        "45:from data.ddm_build_copy.ddm_v550_response_relation import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Truthful 20-variable universality smoke for the explicit 36-wave scope.  Mandatory base spine for every wave:     V550 -> V551 -> V552"
+    },
+    {
+      "path": "data/ddm_build_copy/run_20var_allwaves_v550_552j_smoke.py",
+      "sha": "446196773920cd0296c9d78ecaae4e5dbef93d4c",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 149,
+      "bytes": 21642,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "validate_explicit_scope",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "_joint_coverage_state",
+          "line": 27
+        },
+        {
+          "kind": "def",
+          "name": "resolve_joint_authority",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "summarize_joint_authority_coverage",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 41
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 46
+        },
+        {
+          "kind": "def",
+          "name": "_bridge_run_id",
+          "line": 53
+        },
+        {
+          "kind": "def",
+          "name": "_verification_gate",
+          "line": 60
+        },
+        {
+          "kind": "def",
+          "name": "run_v551",
+          "line": 64
+        },
+        {
+          "kind": "def",
+          "name": "run_v552",
+          "line": 67
+        },
+        {
+          "kind": "def",
+          "name": "run_v551j",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "run_v552j",
+          "line": 73
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v551_functional_gate",
+          "line": 76
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v550j_functional_gate",
+          "line": 80
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v552_functional_gate",
+          "line": 83
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v551j_functional_gate",
+          "line": 86
+        },
+        {
+          "kind": "def",
+          "name": "summarize_v552j_functional_gate",
+          "line": 89
+        },
+        {
+          "kind": "def",
+          "name": "run_wave",
+          "line": 93
+        },
+        {
+          "kind": "def",
+          "name": "write_summaries",
+          "line": 139
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 147
+        }
+      ],
+      "imports": [
+        "11:from data.ddm_build_copy.ddm_v550_question_relation_authority import active_closed_35_waves"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Governed CLOSED_35_WAVES smoke over the merged typed producer graph.\"\"\" from __future__ import annotations import sys from pathlib import Path"
+    },
+    {
+      "path": "data/ddm_build_copy/run_v550_552_extraction_audit.py",
+      "sha": "b5f83066e9cad567ac9df4f8b51e7f07d455329d",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 474,
+      "bytes": 19457,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "ArtifactLoadResult",
+          "line": 34
+        },
+        {
+          "kind": "def",
+          "name": "_load_parquet_result",
+          "line": 56
+        },
+        {
+          "kind": "def",
+          "name": "_load_json_result",
+          "line": 115
+        },
+        {
+          "kind": "def",
+          "name": "_manifest_identity_error",
+          "line": 146
+        },
+        {
+          "kind": "def",
+          "name": "_artifact_declaration",
+          "line": 180
+        },
+        {
+          "kind": "def",
+          "name": "_load_v551_v3_run",
+          "line": 193
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 315
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 334
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Standalone V550-V552 extraction audit runner bound to V551 v3.0.\"\"\" from __future__ import annotations  import argparse"
+    },
+    {
+      "path": "data/ddm_build_copy/run_v550_shards_from_plan.py",
+      "sha": "5dae48858046201cd5f69d8937b39f0fc9c15097",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 946,
+      "bytes": 35537,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "RunningShard",
+          "line": 26
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 41
+        },
+        {
+          "kind": "def",
+          "name": "_load_plan_rows",
+          "line": 167
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 172
+        },
+        {
+          "kind": "def",
+          "name": "_parse_countries",
+          "line": 182
+        },
+        {
+          "kind": "def",
+          "name": "_build_command",
+          "line": 198
+        },
+        {
+          "kind": "def",
+          "name": "_shard_is_complete",
+          "line": 280
+        },
+        {
+          "kind": "def",
+          "name": "_shard_status",
+          "line": 292
+        },
+        {
+          "kind": "def",
+          "name": "_load_existing_state",
+          "line": 298
+        },
+        {
+          "kind": "def",
+          "name": "_active_readiness_lock_for_shard",
+          "line": 312
+        },
+        {
+          "kind": "def",
+          "name": "_find_stale_shard_pids",
+          "line": 324
+        },
+        {
+          "kind": "def",
+          "name": "_kill_stale_shard_processes",
+          "line": 359
+        },
+        {
+          "kind": "def",
+          "name": "_pid_alive",
+          "line": 390
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_max_workers",
+          "line": 400
+        },
+        {
+          "kind": "def",
+          "name": "_launch",
+          "line": 414
+        },
+        {
+          "kind": "def",
+          "name": "_tail_log",
+          "line": 430
+        },
+        {
+          "kind": "def",
+          "name": "_sample_cpu_pressure",
+          "line": 441
+        },
+        {
+          "kind": "def",
+          "name": "_cpu_capacity",
+          "line": 465
+        },
+        {
+          "kind": "def",
+          "name": "_sample_memory_pressure",
+          "line": 469
+        },
+        {
+          "kind": "def",
+          "name": "_sample_db_pressure",
+          "line": 545
+        },
+        {
+          "kind": "def",
+          "name": "_pause_shard",
+          "line": 582
+        },
+        {
+          "kind": "def",
+          "name": "_resume_shard",
+          "line": 597
+        },
+        {
+          "kind": "def",
+          "name": "_stoppable_running",
+          "line": 611
+        },
+        {
+          "kind": "def",
+          "name": "_drain_output",
+          "line": 615
+        },
+        {
+          "kind": "def",
+          "name": "_manage_pressure",
+          "line": 652
+        },
+        {
+          "kind": "def",
+          "name": "_emit_heartbeat",
+          "line": 727
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 757
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Launch V550 shard runs from a shard plan with bounded parallelism.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_v550j_w03_authority.py",
+      "sha": "d3952f63d42680a9c36bbb38bae6c1bed978fddf",
+      "role": "TEST_OR_PROBE",
+      "n": 192,
+      "bytes": 7175,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "_StubRegistry",
+          "line": 27
+        },
+        {
+          "kind": "class",
+          "name": "_MissingRuleRegistry",
+          "line": 43
+        },
+        {
+          "kind": "def",
+          "name": "_association_frame",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_001_threshold_has_no_duplicate_dict_key_and_is_threaded_to_compiler_and_validator",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_002_registry_block_cannot_survive_in_publishable_index",
+          "line": 114
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_002_registry_block_demotes_diagnostic_candidate",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_002_missing_governed_rule_fails_closed",
+          "line": 143
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_002_registry_loader_rejects_missing_publishability",
+          "line": 155
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_003_draft_family_registry_is_not_executable",
+          "line": 173
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_003_missing_family_registry_status_is_typed_failure",
+          "line": 184
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_003_no_applicable_family_is_typed_not_applicable",
+          "line": 190
+        }
+      ],
+      "imports": [
+        "16:from data.ddm_build_copy.ddm_v550j_registry_classifier import AssociationLaneRegistry",
+        "17:from data.ddm_build_copy.ddm_v550j_registry_contract import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-A regressions for V550J-001/002/003.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_vozhd_src001_v552j_scope.py",
+      "sha": "3c0cba1f7aed2f0c6b384f186a5a8f034c6263dc",
+      "role": "TEST_OR_PROBE",
+      "n": 57,
+      "bytes": 1787,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_scope",
+          "line": 9
+        },
+        {
+          "kind": "def",
+          "name": "test_v552j_exact_scope_keeps_matching_country_and_shard",
+          "line": 19
+        },
+        {
+          "kind": "def",
+          "name": "test_v552j_exact_scope_rejects_wrong_shard_even_when_country_matches",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "name": "test_v552j_exact_scope_rejects_wrong_country",
+          "line": 39
+        },
+        {
+          "kind": "def",
+          "name": "test_v552j_multi_country_shard_scope_still_requires_exact_shard",
+          "line": 48
+        }
+      ],
+      "imports": [],
+      "top": "from __future__ import annotations  import pytest  from data.ddm_build_copy.compile_v552j_structural_handoff import _coherent_scope"
+    },
+    {
+      "path": "data/ddm_build_copy/test_w02_postg5_v550_v551_bridge_hotfix.py",
+      "sha": "4584b0d338bada80bf816bd9ca26a87ddfd20f82",
+      "role": "TEST_OR_PROBE",
+      "n": 174,
+      "bytes": 7126,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_applicable_row",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "test_v551_required_bridge_contract_is_subset_of_v550_schema",
+          "line": 49
+        },
+        {
+          "kind": "def",
+          "name": "test_schema_limited_serialization_preserves_all_authoritative_applicability_states",
+          "line": 57
+        },
+        {
+          "kind": "def",
+          "name": "test_row_level_directional_certification_cannot_manufacture_applicability",
+          "line": 112
+        },
+        {
+          "kind": "def",
+          "name": "test_question_use_hash_binds_directional_applicability_status",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "test_valid_empty_quc_and_bridge_expose_applicability_schema",
+          "line": 140
+        },
+        {
+          "kind": "def",
+          "name": "test_valid_empty_quc_serialization_and_sidecar_use_canonical_schema",
+          "line": 151
+        }
+      ],
+      "imports": [
+        "9:from data.ddm_build_copy.ddm_v550_authority_contract import (",
+        "15:from data.ddm_build_copy.ddm_v550_question_use import (",
+        "20:from data.ddm_build_copy.ddm_v550_schema import (",
+        "24:from data.ddm_build_copy.ddm_v550_storage import (",
+        "29:from data.ddm_build_copy.ddm_v551_atoms import validate_v551_bridge_input_contract"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Post-G5 regressions for the V550 -> V551 bridge applicability hotfix.\"\"\" from __future__ import annotations  import json"
+    },
+    {
+      "path": "data/ddm_build_copy/test_w02_v550_boundary.py",
+      "sha": "43618931166f178c6f2514ed70df29ef13930f2a",
+      "role": "TEST_OR_PROBE",
+      "n": 124,
+      "bytes": 4652,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_applicable_row",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "test_applicability_survives_nonpromotable_response_and_structure_state",
+          "line": 34
+        },
+        {
+          "kind": "def",
+          "name": "test_row_level_directional_certification_cannot_create_applicability",
+          "line": 47
+        },
+        {
+          "kind": "def",
+          "name": "test_nonrelation_or_nondirectional_topology_is_not_applicable",
+          "line": 59
+        },
+        {
+          "kind": "def",
+          "name": "test_v550_overlay_compatibility_helper_never_projects_signed_fields",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "test_manual_review_overlay_stays_unsigned_and_preserves_raw_intensity",
+          "line": 95
+        },
+        {
+          "kind": "def",
+          "name": "test_bridge_numeric_label_helpers_have_single_effective_definition",
+          "line": 114
+        }
+      ],
+      "imports": [
+        "8:from data.ddm_build_copy.ddm_v550_authority_contract import (",
+        "14:from data.ddm_build_copy.ddm_v550_bridge import _apply_directionality_overlay"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"W02-A regression tests for the V550 applicability/projection boundary.\"\"\" from __future__ import annotations  import ast"
+    },
+    {
+      "path": "data/ddm_build_copy/test_w02a_postg5_v550_v551_raw_direction.py",
+      "sha": "7db9d738919c183621833cc81db2b09b80e8ed93",
+      "role": "TEST_OR_PROBE",
+      "n": 336,
+      "bytes": 12523,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_qmeta",
+          "line": 18
+        },
+        {
+          "kind": "def",
+          "name": "_semantics",
+          "line": 40
+        },
+        {
+          "kind": "def",
+          "name": "_distribution_and_bridge",
+          "line": 68
+        },
+        {
+          "kind": "def",
+          "name": "_bridge_direction_by_value",
+          "line": 101
+        },
+        {
+          "kind": "def",
+          "name": "test_governed_response_direction_survives_distribution_to_bridge_positive_negative_neutral",
+          "line": 108
+        },
+        {
+          "kind": "def",
+          "name": "test_special_missing_response_does_not_acquire_direction",
+          "line": 124
+        },
+        {
+          "kind": "def",
+          "name": "test_bridge_fail_closed_special_flags_strip_even_poisoned_direction",
+          "line": 135
+        },
+        {
+          "kind": "def",
+          "name": "test_question_relation_polarity_or_certification_cannot_manufacture_category_direction",
+          "line": 166
+        },
+        {
+          "kind": "def",
+          "name": "test_unmatched_response_option_cannot_manufacture_raw_direction",
+          "line": 198
+        },
+        {
+          "kind": "def",
+          "name": "test_schema_limited_parquet_preserves_raw_direction",
+          "line": 224
+        },
+        {
+          "kind": "def",
+          "name": "test_v550_bridge_does_not_emit_v551_signed_projection_fields",
+          "line": 240
+        },
+        {
+          "kind": "def",
+          "name": "test_legacy_directionality_overlay_helper_is_not_a_raw_direction_transport_path",
+          "line": 252
+        },
+        {
+          "kind": "def",
+          "name": "test_v551_consumes_delivered_raw_direction_without_missing_direction_repair",
+          "line": 273
+        }
+      ],
+      "imports": [
+        "8:from data.ddm_build_copy import ddm_v551_atoms as v551",
+        "9:from data.ddm_build_copy.ddm_v550_bridge import (",
+        "14:from data.ddm_build_copy.ddm_v550_distributions import build_distribution_tables",
+        "15:from data.ddm_build_copy.ddm_v550_schema import V551_BRIDGE_INDEX_SCHEMA"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"POSTG5-W02A regressions for V550 -> V551 raw response direction transport.\"\"\" from __future__ import annotations  import pandas as pd"
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v550j_boundary_static.py",
+      "sha": "3b322c478838f5d21e83b5c3904d1512475e0651",
+      "role": "TEST_OR_PROBE",
+      "n": 37,
+      "bytes": 1586,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "test_amended_producer_and_consumer_are_syntactically_valid",
+          "line": 16
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_producer_manifest_surface_declares_shared_typed_contract_and_hash",
+          "line": 21
+        },
+        {
+          "kind": "def",
+          "name": "test_v551j_no_longer_accepts_legacy_unhashed_v550j_boundary",
+          "line": 31
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Static contract guards for the G3B V550J -> V551J amendment.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v550j_producer_boundary.py",
+      "sha": "10139acee0fefe1a437e3e564aab3aac61e5ef86",
+      "role": "TEST_OR_PROBE",
+      "n": 113,
+      "bytes": 3381,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_sha",
+          "line": 20
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_write_table_declares_exact_post_serialization_parquet_sha256",
+          "line": 24
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_complete_core_surface_is_present_and_allowed",
+          "line": 43
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_valid_empty_core_surface_is_not_integrity_failure",
+          "line": 57
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_no_governed_family_is_typed_not_applicable",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_partial_core_surface_is_unresolved_not_silently_allowed",
+          "line": 85
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_failed_validation_is_nonpass_integrity",
+          "line": 101
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-B amendment regressions for the V550J producer boundary.\"\"\"  from __future__ import annotations "
+    }
+  ]
+}
