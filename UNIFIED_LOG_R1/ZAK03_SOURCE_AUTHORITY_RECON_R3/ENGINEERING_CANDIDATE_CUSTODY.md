@@ -1,0 +1,11 @@
+# ZAK-03S — engineering candidate custody in a reconnaissance-only return
+
+All code/harness/CI work was undertaken earlier on distinct isolated **draft unmerged** PRs. This R3 return **does not modify or execute them**. Their original code, tests, workflow and handoff remain at the immutable source commits below, not copied into the documentary analysis as if they were accepted current code.
+
+- **Agent A — PR #1042**, `ad17076cc95b9383ab3b28879f471026bcba9ff7`: optional selected QSM file/row/version/scoped I03 Route-B reader; separate modern target-use permission; `rawlsing_next/pre553_zak03s_selected_qsm_reader.py` blob `07bd2b2c88787e8b2091e652c677864be2ba5244`; test blob `b1223ce1f0e7b3da700e51428e79767ef60058fe`; workflow blob `14c38a9ff4dd9781757d157c0d0594c17963cdd9`. Authored positive/wrong-source/permission/restoration cases not run. Runner `43632091614` failed without job steps.
+- **Agent B — PR #1043**, `0d90c2470b0b476dcb74ce157b706b10f8392f4f`: inherits A and fixes scope and provenance problems; adapter blob `d3c6c4e8a32398a3c4977ed287684bd95d058df3`, test blob `5ef5ae473420dd314256898e44c10cb3b9821741`; exact QSM question ID and singleton target/universe checks; source receipt distinguishes producer from importing reader. Runner `43634055876` failed without steps; no S2.
+- **Current protected actual importer**, `pre553_issued_workload.py@6a5c12f04323d74001f9632063ec907f4fc4468e#28174766f61a15f7296f575d615462d6410cfcb6`, `admit`/`execute_issued_workload` around lines 235–365; composes Route-B, I03/I05 and Batch with issuer currentness checks but no observed QSM wrapper import in that source cut.
+- **Historical predecessor — PR #903**, `7451042624a789ba4a93de2f3137a03305905373`, nine inherited obligations represented in source/authority/documentary registers; original frozen launch discrepancy is not a runtime defect.
+- **ZAK-01** user-admitted scoped evidence not reopened or downgraded by this custody note.
+
+Evidence IDs `ZAK03:EV056–058`, search `ZAK03:SEARCH:R3-001`, and unjoin `ZAK03:UNJOIN:R3-A-B-FIRST-IMPORT` identify this candidate/current-reader disjunction. Running code, compiling, installing dependencies, CI reruns or granting source/science/actor permission is outside this reconnaissance.
