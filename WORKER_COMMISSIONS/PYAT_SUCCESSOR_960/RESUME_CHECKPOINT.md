@@ -1,3 +1,13 @@
+## Current intake — #997 exact compiler correction R4
+
+Received and remotely verified `f5d9aa3d460b804d4a266bdf28c86362a00ffcb6`. The correction executes the unchanged compiler record: zero QUERY requests and one DISCOVERY. Author evidence records NORMAL and COMPLETED with the same 150 references, zero saved-path source opens and zero full C11 constructions. This is a corrected author return, not new G5 acceptance.
+
+The prior compiler-issued QUERY/F4 and two-unit PARTIAL/ABSENT claims remain withdrawn. The existing compiler query path was not recovered for this fixture; the separate single-target TEST_ONLY compiler is not an automatic substitute. No missing calculation engine is established. Independent G5 remains REVISE_EXACT_DEFECT because the P1 join admitted caller-substituted issuance.
+
+Next: existing Browser/R03 owner identifies the lawful intended query issuance path or exact missing issuer binding, and the P1 owner repairs original-record/eligible-operation binding. Receive the already independently checked test patch through its owner. Separately, native S2-A body validation still needs the exact frozen-file exception. No local product edits or new jobs were launched; all local sessions were idle at intake. #998 full vertical depends on qualified #997 and S2-A; scale/source/scientific/CURRENT/protected-merge holds remain. Recurring goal wake-ups stay paused.
+
+Machine disposition: `WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/NATIVE997_R4_RETURN_DISPOSITION.json`.
+
 ## Independent997 G5 REVISE — self-issued prohibited QUERY invalidates R3 claim; genuineP0/discovery banked
 
 Review8b03c121a2f6d9c7a9c2e0513a03545780d14c3c directremoteverified/ownreviewartifacts only. Actualcompiler0QUERY1DISCOVERY; R3manualNativeWorkload/IssuedRecord+replace(compilation,issued=manual)addsqueryabsentoriginalplan andall12matchingJOINT/CO_TRAVEL SAMPLEopsPROHIBITED. P1joinaccepts againstalreadysubstitutedrecord. REVISE_EXACT_DEFECT/G5FAIL. R3compiler-issuedBatchQUERY/F4/source-qualifiedjoint andmanualtwo-unitPARTIAL/ABSENT claimsWITHDRAWN; realjointmathnotdenied, no missingevaluatorinferred. Immutablepriorartifactsretainedashistorywiththiscorrection.
