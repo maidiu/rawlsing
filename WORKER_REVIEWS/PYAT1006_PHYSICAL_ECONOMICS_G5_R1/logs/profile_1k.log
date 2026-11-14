@@ -1,0 +1,127 @@
+{
+  "ab": {
+    "hash_ref_order": {
+      "gids": {
+        "RoutingEligibilityFact.parquet": 10
+      },
+      "reads": 917,
+      "seconds": 2.863352661021054
+    },
+    "physical_insertion_order": {
+      "gids": {
+        "RoutingEligibilityFact.parquet": 10
+      },
+      "reads": 26,
+      "seconds": 1.176332478178665
+    }
+  },
+  "queries": {
+    "f2_reverse": {
+      "build": 0.16415626998059452,
+      "eval": 4.662804049206898,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 840,
+          "rows_decoded": 413469,
+          "unique_gids": 7
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 917,
+          "rows_decoded": 460984,
+          "unique_gids": 10
+        }
+      },
+      "reads": 1785,
+      "wall": 4.826960319187492
+    },
+    "f4_three": {
+      "build": 0.18975750496611,
+      "eval": 5.011382040102035,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 839,
+          "rows_decoded": 413296,
+          "unique_gids": 7
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 917,
+          "rows_decoded": 460984,
+          "unique_gids": 10
+        }
+      },
+      "reads": 1784,
+      "wall": 5.201139545068145
+    },
+    "repeated": {
+      "build": 0.17291063419543207,
+      "eval": 3.2488157427869737,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 66,
+          "rows_decoded": 32436,
+          "unique_gids": 7
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 917,
+          "rows_decoded": 460984,
+          "unique_gids": 10
+        }
+      },
+      "reads": 1011,
+      "wall": 3.421726376982406
+    },
+    "selected": {
+      "build": 0.20612855581566691,
+      "eval": 5.132759540108964,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 839,
+          "rows_decoded": 413296,
+          "unique_gids": 7
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 917,
+          "rows_decoded": 460984,
+          "unique_gids": 10
+        }
+      },
+      "reads": 1784,
+      "wall": 5.338888095924631
+    },
+    "weighted": {
+      "build": 0.16672808304429054,
+      "eval": 5.337939276825637,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 839,
+          "rows_decoded": 413296,
+          "unique_gids": 7
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 917,
+          "rows_decoded": 460984,
+          "unique_gids": 10
+        },
+        "WeightMeasureFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 249,
+          "rows_decoded": 124512,
+          "unique_gids": 2
+        }
+      },
+      "reads": 2033,
+      "wall": 5.504667359869927
+    }
+  },
+  "status": "MEASURED"
+}

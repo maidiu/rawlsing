@@ -1,0 +1,311 @@
+{
+  "admission_counter": {
+    "by_phase": {},
+    "total_reads": 0
+  },
+  "admission_seconds": 1.6694064140319824,
+  "capsule": "WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/hist-100k/capsule.json",
+  "family_counts": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 100000,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "RespondentEvent": 324477,
+    "RespondentIdentity": 100000,
+    "RoutingEligibilityFact": 500000,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 100000
+  },
+  "host": {
+    "cap_bytes": 6442450944,
+    "hostname": "oldMac.lan",
+    "mac_ver": "22.6.0",
+    "machine": "x86_64",
+    "min_free_disk_bytes": 3221225472,
+    "platform": "darwin",
+    "psutil": "7.2.2",
+    "pyarrow": "26.0.1",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_executable": "/Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python"
+  },
+  "queries": {
+    "selected": {
+      "build_calls": 1,
+      "facts": [
+        {
+          "raw_denominator_support": 50000,
+          "ref": {
+            "content_hash": "87c3f0589e4ee1a8a3a695b2bbb0b7585ed7f87cb10dcb15074cb5c8b446a986",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:87c3f0589e4ee1a8a3a695b2bbb0b7585ed7f87cb10dcb15074cb5c8b446a986"
+          },
+          "typed_state": "SUPPORTED"
+        }
+      ],
+      "object_materializations": {
+        "query_eval": 500000
+      },
+      "query_eval_seconds": 517.0920142568648,
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  272,
+                  309,
+                  365,
+                  527,
+                  550,
+                  496,
+                  510,
+                  297,
+                  205,
+                  65,
+                  160,
+                  265,
+                  524,
+                  424,
+                  183,
+                  148,
+                  15,
+                  584,
+                  153,
+                  494
+                ],
+                "gid_sequence_sha256": "b7081b84b1a98852abd4d787f3152a4e2f6c6c390501c96c411e76e34c0442b8",
+                "gid_transitions": 100049,
+                "reads": 100050,
+                "rows_decoded": 51210273,
+                "seconds": 72.78239689324982,
+                "unique_gids": 634
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  420,
+                  477,
+                  563,
+                  813,
+                  848,
+                  764,
+                  787,
+                  459,
+                  316,
+                  100,
+                  247,
+                  408,
+                  807,
+                  653,
+                  282,
+                  228,
+                  23,
+                  900,
+                  236,
+                  762
+                ],
+                "gid_sequence_sha256": "3bc2e43b3b745af64aa6b38fcc6854a258c9e39eea08b05c3127bfb176720089",
+                "gid_transitions": 101437,
+                "reads": 101438,
+                "rows_decoded": 51923040,
+                "seconds": 96.54949645232409,
+                "unique_gids": 977
+              }
+            },
+            "reads": 201488,
+            "rows_decoded": 103133313,
+            "seconds": 169.33189334557392
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "gid_sequence_sha256": "2608ec982049bda8ee3534e9d990640d1bdaef75fe0cef38f775522d6259fa4a",
+                "gid_transitions": 195,
+                "reads": 196,
+                "rows_decoded": 100000,
+                "seconds": 0.06607688264921308,
+                "unique_gids": 196
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "gid_sequence_sha256": "98997d91f0521bdb5549ec7c201671b1b6aad187eb7e045798fd9599cdbf905d",
+                "gid_transitions": 633,
+                "reads": 634,
+                "rows_decoded": 324477,
+                "seconds": 0.2628585915081203,
+                "unique_gids": 634
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "gid_sequence_sha256": "4d8bfea60fa20eb6da8315bd8ce5bfb7c949964e4e19a9b8b26f7df2d300fbd6",
+                "gid_transitions": 976,
+                "reads": 977,
+                "rows_decoded": 500000,
+                "seconds": 0.3397710816934705,
+                "unique_gids": 977
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "gid_sequence_sha256": "2608ec982049bda8ee3534e9d990640d1bdaef75fe0cef38f775522d6259fa4a",
+                "gid_transitions": 195,
+                "reads": 196,
+                "rows_decoded": 100000,
+                "seconds": 0.06936995033174753,
+                "unique_gids": 196
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "gid_sequence_sha256": "98997d91f0521bdb5549ec7c201671b1b6aad187eb7e045798fd9599cdbf905d",
+                "gid_transitions": 633,
+                "reads": 634,
+                "rows_decoded": 324477,
+                "seconds": 0.2635758921969682,
+                "unique_gids": 634
+              }
+            },
+            "reads": 2637,
+            "rows_decoded": 1348954,
+            "seconds": 1.0016523983795196
+          }
+        },
+        "total_reads": 204125
+      },
+      "respondent_family_calls": {
+        "RoutingEligibilityFact": 100000
+      },
+      "session_build_seconds": 25.934190777130425,
+      "wall_seconds": 543.0262050339952
+    }
+  },
+  "release_ref": {
+    "content_hash": "31e8dbf3da5a0610e3b1813173fc5051f679eed1791c7742f83da1df97ef8349",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-hist-100k"
+  },
+  "rss_peak_bytes": 3002982400,
+  "schema": "PYAT1006_G5_ROWGROUP_PROFILE@1",
+  "status": "MEASURED"
+}
