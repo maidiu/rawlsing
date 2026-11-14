@@ -178,6 +178,11 @@ def _verify_original_governed_issuer(
     The separate ``compile_universal_workload`` single-target QUERY path is
     not silently imported into S1-E governed-frontier acceptance. A future
     governed QUERY compiler needs its own explicit versioned contract.
+
+    This is a source-grounded producer-contract consistency check, not a
+    credential-independent attestation of an entirely substituted compilation.
+    A separately retained trusted compiler cut is still needed to defeat a
+    coordinated rewrite of the original plan, frontier and CURRENT resolver.
     """
     issued = compilation.issued
     if (compilation.schema != GOVERNED_FRONTIER_SCHEMA
