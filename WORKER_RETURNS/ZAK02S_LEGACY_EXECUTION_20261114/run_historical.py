@@ -117,6 +117,10 @@ def invoke_551j(module, pd, mode):
         "v550j_item_response_direction": "positive",
     }
     rows = [dict(base), dict(base)]
+    if mode == "unexplained":
+        # Keep two genuine relation components so the unresolved-component
+        # blocker is isolated from the independent insufficient-relations gate.
+        rows.append({**base, "component_certification_contribution": "unresolved_component"})
     if mode == "ambiguous":
         rows[1]["v551_atom_match_status"] = "AMBIGUOUS_V551_ATOM_MATCH"
     if mode == "conflict":
@@ -250,7 +254,10 @@ def main():
     f08 = mods["ddm_v550_question_use"]
     record = {"source": "GSS", "wave": "1973", "canonical_wave": "1973",
               "var_code": "USWAR", "question_id": "Q-USWAR"}
-    row_a = {**record, "override_id": "A"}
+    # Disjoint selector keys: A matches the variable-code basis only,
+    # B matches the question-ID basis only. This isolates the distinct-identity
+    # refusal instead of accidentally testing duplicate question matches.
+    row_a = {**record, "question_id": "Q-ALT", "override_id": "A"}
     row_b = {**record, "var_code": "OTHER", "override_id": "B"}
     def sel(frame):
         chosen, basis, _ = f08._select_override(record, pd.DataFrame(frame))
@@ -261,13 +268,13 @@ def main():
     observe("F08", "negative_conflicting_matches", "_select_override",
             {"record": record, "overrides": [row_a, row_b]},
             lambda: sel([row_a, row_b]),
-            lambda o: o.get("exception_type") == "RuntimeError" and "ambiguous manual override" in o.get("exception", ""))
+            lambda o: o.get("exception_type") == "RuntimeError" and "matched multiple distinct override rows" in o.get("exception", ""))
     observe("F08", "negative_duplicate", "_select_override",
             {"record": record, "overrides": [row_a, row_a]},
             lambda: sel([row_a, row_a]), lambda o: o.get("exception_type") == "RuntimeError")
     observe("F08", "negative_unmatched", "_select_override",
-            {"record": record, "overrides": [{**row_a, "wave": "1980"}]},
-            lambda: sel([{**row_a, "wave": "1980"}]),
+            {"record": record, "overrides": [{**row_a, "wave": "1980", "canonical_wave": "1980"}]},
+            lambda: sel([{**row_a, "wave": "1980", "canonical_wave": "1980"}]),
             lambda o: o.get("return", {}).get("override_id") is None)
     observe("F08", "restore", "_select_override", {"record": record, "overrides": [row_a]},
             lambda: sel([row_a]), lambda o: o.get("return", {}).get("override_id") == "A")
