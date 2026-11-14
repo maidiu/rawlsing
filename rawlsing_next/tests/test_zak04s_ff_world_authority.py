@@ -28,7 +28,12 @@ def _case():
     assert values["t0_routes"]["training"] == "ELIGIBLE"
     assert values["t1_routes"]["training"] == "BLOCKED_BY_MODELED_RULE"
     assert values["t0_n10e_steps"][0]["content_hash"] == values["consumer_result_hash"]
-    assert values["coordinator_original_ref"] is not None
+    assert values["coordinator_original_ref"] == data["coordinator_original_ref"].as_dict()
+    assert values["source_universe_ref"] == data["source_universe_ref"].as_dict()
+    assert values["release_ref"] == data["release_ref"].as_dict()
+    assert values["source_rows_hash"] == data["source_rows_hash"]
+    assert values["t0_clock"]["valid_at"] == "2026-06-01"
+    assert values["t1_clock"]["valid_at"] == "2027-09-01"
     return data, execution, request, baseline
 
 
