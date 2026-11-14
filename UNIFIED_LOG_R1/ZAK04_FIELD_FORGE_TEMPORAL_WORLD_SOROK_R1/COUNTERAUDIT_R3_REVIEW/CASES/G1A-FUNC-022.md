@@ -4,6 +4,9 @@ Old source `25830fe7462bb9e29bc4087e6ae14f3f84cec377`: V557 renderer blob `7ad1d
 
 ## Historical input and shape flaw
 
+The V557 renderer producer's *actual inbound source* is `build_v557_renderer_contract(run_id,input_root,output_root,input_inspection,...)`, which reads `manifest/v556_readiness_report.json`, `packets/v556_pressureflow_attractor_packet.json`, `manifest/v553_wave_harmonization_report.json` and optionally `v553_wave_harmonization/v553_wave_harmonization_evidence.parquet` (old source L142–169). These are **R3:SH:022:V556_INPUT**, distinct from the V557 *output* contract **R3:SH:022:V557_PACKET**. Do not mistake a V557 output artifact for its own source input.
+
+
 Completion-grade V557 produces a packet `payload.renderer_input_contract`, `payload.runtime_wiring_contract`, `payload.source_to_generation_separation_ledger` and render blockers; `ready_for_v558=True` and `ready_for_runtime_consumption=False`. But the V558 normalizer requires **also** nonempty `payload.future_consumer_notes` and `payload.app_wiring_boundaries` to set `v558_handoff_requirements_present=True` (L287–315). Those keys are not in completion-grade V557 packet at L195–263. This is a source-verified producer/consumer shape mismatch, confirmed by Dva R0-04 §1.6 L114–118. The normalizer still generates statuses, but the handoff requirement cannot be declared complete merely because the V557 packet exists. R3:EV:022:V557/:V558_GATE/:DVA.
 
 ## Old V558+ actual produced capital
