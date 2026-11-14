@@ -29,3 +29,9 @@ The former `V551-CONDITIONAL` pre-R1 source-case may indicate an independently v
 - Actual historical-to-modern function conservation: **not complete**; 16 provisional canonical T, 139/192 domain cells not inspected; no new native execution or actual production first-reader proof. Source-only and archival custody must not be mistaken for functional completion.
 
 All original evidence was preserved; **not all semantic claims have been validated**. Return to the unresolved V551 conditional-determinicity, V551J sidecar invocation, V552 distribution reader, and modern reader/candidate provenance only under read-only authority. Future engineering, if warranted, requires a separate commission.
+
+## R3 retrospective alias and hostile-adjudication links
+- Prior `V551-CONDITIONAL` / `ZAK02:PRIORLINK:010` has been promoted to a **separate provisional historical capability** `ZAK02:T:0017` because it independently generates a source-qualified conditional index and a rejection audit. Parent T0007 remains original directional atom/candidate adjudication; `GAP:0018` now refers forward to `GAP:0019/0020`. No archived original row is deleted.
+- Earlier T0001 wording was over-inclusive: it is now **binary presence/absence only**; T0011 single-answer and T0012 V548 branch identity were always independently accounted and remain unrenumbered.
+- V550 paired cloud's distinct answered-both, anchor, baseline and support populations are appended under T0016 S mechanisms, not counted as four extra T. Source-level durable replay is separately recorded from any unverified semantic consumer.
+- The rival's Round 3 S1 review is described in `ROUND3_HOSTILE_ADJUDICATION.md`; no full hostile-receipt file/hash was provided, so the reported SHA-256 prefix is not falsely admitted as an exact artifact.

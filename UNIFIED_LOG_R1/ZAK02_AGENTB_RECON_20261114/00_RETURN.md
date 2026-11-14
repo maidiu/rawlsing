@@ -72,3 +72,19 @@ The original opponent 12-T/144-cell return is retained above as **frozen predece
 **Current R1 amended quantities:** 16 provisional T and 192 domain cells (38 FOUND, 15 UNRESOLVED, 139 NOT_INSPECTED); 27 mechanism crosswalk edges; original 9/9 IDs accounted; no new S2/native/independent acceptance. R3 adds six custody EV0068–EV0073, five bounded discovery receipts SEARCH030–034, one explicit conditional-determinicity anti-join GAP0018, and two migration/custody registers. None of these archival rows changes the discovery denominator.
 
 **Artifact boundary:** PR #904 holds original 19 S0–S1 case rows; PR #1041 Agent A and PR #1044 Agent B preserve withdrawn executable-harness work without an S2 witness. No source file is modified here; no merge or production tests are authorized.
+
+## Round 3 adversarial amendment — source-first, no engineering
+
+The Round 2 counts above are historical snapshots of that receipt and are **superseded for current census by the R3 counts below**. The exact earlier documentary receipt remains in Git history/archived ZIPs, not deleted.
+
+| Independent R1 completeness dimension | Current R3 grade |
+|---|---|
+| Contract identities | 9/9 original names preserved; no new obligation discharged |
+| Historical discovery | 17 provisional T; source estate OPEN_DISCOVERY, seven intermediate strata remain largely uninspected |
+| T×domain matrix | **55/204 inspected bounded cells; 149 NOT_INSPECTED, 15 UNRESOLVED, 40 FOUND** |
+| Mechanism/consumer | **36 source-level edges**; conditional parameter inert at selected V552 builder; V550 denominator and semantic reader proof unresolved; zero native same-grain current consumer acceptances |
+| Evidence and independent closure | **94 atomic evidence claims**; S1 static source, no new native/test-only execution, no independent acceptance |
+
+R3 resolved the rival's four exact critiques as documentary source findings. `T0017` now represents the source-qualified V551 conditional index and exclusions, while `T0001` is narrowed to binary presence/absence; predecessor T0011/T0012 unchanged. See `ROUND3_HOSTILE_ADJUDICATION.md` and `CASES/ZAK02-T-0017.md`. All original PRE-MAIN and implementation code is untouched.
+
+**Required terminal sentence:** Contract identities: **9/9 accounted (not discharged)**. Historical discovery: **17 provisional T; OPEN_DISCOVERY**. Applicable T×domain matrix: **55/204 bounded inspected** with **15 UNRESOLVED, 149 NOT_INSPECTED**. Mechanism and consumer reconciliation: **36 mapped S/M/T edges, 0 independently qualified current native first readers; actual source permission unresolved**. Independent evidence grade: **S1 source-only; independent hostile user relay, no accepted independent reviewer**. Legitimate next use: **source-first identification of active conditional producer, selected semantic cloud consumer, authority/scientific decisions, without engineering**. Not claimable: **all functions found, historical native execution, V552 conditional conservation, V550 same-grain equivalence or zero-loss receiving**.
