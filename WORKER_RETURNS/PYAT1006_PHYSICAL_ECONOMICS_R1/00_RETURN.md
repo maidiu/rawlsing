@@ -49,6 +49,7 @@ repaired, hidden, or promoted by this follow-through.
   (`REVISE_EXACT_DEFECT`, draft PR #1034).
 - Follow-through branch: `codex/pyat1006-locality-writer-profile-20261113-r1`,
   descendant of `51aabffef90399359008e00890f551a1e56c0da9`.
+- Follow-through commit: `1ca1c735a577a7524a0a26c15df8879cd88704e3`.
   The tested production tree remains the frozen head above.
 - Write lease used: **only new files** under
   `WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/`.

@@ -22,6 +22,7 @@ full court or #1007 rights is claimed.
 - Author session: `ses_e2969dd1affeEwT1XKJtlWJeI4` (same #1006 author).
 - Follow-through branch: `codex/pyat1006-locality-writer-profile-20261113-r1`,
   descendant of `51aabffef90399359008e00890f551a1e56c0da9`.
+- Follow-through commit: `1ca1c735a577a7524a0a26c15df8879cd88704e3`.
 - Tested production head: `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`.
 - Independent review: `0169fac9f3840800796c664eee462bbb8984bb42`.
 - Write scope: only new/changed harness/report/evidence under
