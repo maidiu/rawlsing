@@ -48,6 +48,17 @@ from rawlsing_next.pre553_physical_decoder import PhysicalSourceIncidence
 
 
 CONTRACT = "ZAK03S_QSM_SELECTED_TO_ROUTE_B_I03@1.0.0"
+POSITIVE_QSM_DISPOSITIONS = frozenset({
+    "GOVERNED_QSMV2_RELATION_AUTHORITY",
+    "GOVERNED_MANUAL_RELATION_AUTHORITY",
+    "FROZEN_ACCEPTED_GSS",
+    "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+    "GOVERNED_NEUTRAL_COVERAGE",
+    "GOVERNED_CONTEXT_ONLY",
+    "GOVERNED_NON_RELATIONAL",
+    "ACTIVE",
+})
+
 COVERAGE_ONLY_STATUSES = frozenset({
     "RESOLVED_DIRECTIONAL_AUTHORITY",
     "RESOLVED_NEUTRAL_COVERAGE_AUTHORITY",
@@ -101,6 +112,11 @@ def _file_sha(path: Path) -> str:
 def _exact_selection(selection: SelectedQsmRequest, projection: GovernedC11Projection):
     _must(isinstance(selection, SelectedQsmRequest), "exact selected QSM request required")
     _must(isinstance(projection, GovernedC11Projection), "exact governed projection required")
+    _must(
+        isinstance(selection.authority_path, (str, Path))
+        and bool(str(selection.authority_path).strip()),
+        "explicit selected QSM path is required; environment fallback forbidden",
+    )
     path = active_authority_path(selection.authority_path)
     _must(path.is_file(), "selected QSM file unavailable")
     _must(_file_sha(path) == selection.expected_file_sha256, "selected QSM file SHA mismatch")
@@ -128,6 +144,8 @@ def _exact_selection(selection: SelectedQsmRequest, projection: GovernedC11Proje
           "selected QSM rule identity changed")
     _must(result.status in COVERAGE_ONLY_STATUSES,
           "selected QSM row does not allow question-coverage lineage")
+    _must(row.get("authority_status", "").upper() in POSITIVE_QSM_DISPOSITIONS,
+          "historical QSM authority disposition is not positive")
     _must(
         canonical_source_family(row.get("source_family")) ==
         canonical_source_family(selection.source_family)
