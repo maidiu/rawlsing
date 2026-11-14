@@ -1,0 +1,155 @@
+{
+  "schema": "PYAT997_R4_COMPILER_ISSUANCE_CORRECTION@1",
+  "status": "CORRECTED_COMPILER_ISSUED_DISCOVERY_PASS__QUERY_NOT_ISSUED__NOT_G5",
+  "compiler_issues_query": false,
+  "compiler_record": {
+    "decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-cfc02dd9c78ecc3f-2026-11-13|7c5b8e6a47621e519a9c593ff61d6b4fb89c4fcc786f1b72c435db8dc24ba4fa",
+    "expected_jobs": [
+      [
+        "DISCOVERY",
+        "DiscoveryAuthority@1.0.0|urn:rawlsing:pre553:DiscoveryAuthority:sha256:8a4d8fa80d9cc44124a894d4c6e8bece4a5cade5a6078d078fbf3e66442e2f88|8a4d8fa80d9cc44124a894d4c6e8bece4a5cade5a6078d078fbf3e66442e2f88",
+        ""
+      ]
+    ],
+    "requests": 0,
+    "discoveries": 1,
+    "envelope_sha256": "a7c9521c06780904290523cf51c26f52a1ba785a0202342bb72aead62d3eca2f",
+    "record_equal": true,
+    "workload_equal": true
+  },
+  "compiler_issued_normal": {
+    "units": 1,
+    "states": [
+      "COMPLETED"
+    ],
+    "output_refs": 150
+  },
+  "compiler_issued_completed": {
+    "completed_results": 1,
+    "resumed_results": 0,
+    "output_refs": 150,
+    "refs_equal_full": true
+  },
+  "direct_q101_standalone": {
+    "fact_refs": [
+      {
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b7666641c966a6530412dfb4730539852fbf6f6ca21e6bdd77e958b5a0048231",
+        "content_hash": "b7666641c966a6530412dfb4730539852fbf6f6ca21e6bdd77e958b5a0048231"
+      }
+    ],
+    "typed_states": [
+      "SUPPORTED"
+    ],
+    "note": "mechanical direct q101 only; not a compiler-issued Batch QUERY"
+  },
+  "f4_like_operations": [
+    {
+      "operation_id": "urn:r61:op:441da4d3ad9b5cd1823a007e09e89ae61c9267cb1d3b6ec2f3abac6ab9248857",
+      "claim_class": "JOINT",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:64a6a2d7f219526a1dcb234ec1af92c7760484752d7c5ade73f78e5ef3562233",
+      "claim_class": "CO_TRAVEL",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:8f566d281b0c1cedaecf4ab96d18ba5b27f6f157f3ea3db182c11d7b39dbeb21",
+      "claim_class": "CO_TRAVEL",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:8f571164b0fa8ea3d3039b68d1f9dc8bb896ba232f0191db97d66044c2143e6b",
+      "claim_class": "JOINT",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:91d990d7484cb73a72d04afc399ed0bca33683638b8d7dc6bc84bed66f868962",
+      "claim_class": "CO_TRAVEL",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:a776aa582750ab10183dc46df3b150fc4bcdc514e927e61573e2fd865b9136ea",
+      "claim_class": "CO_TRAVEL",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:afcfc4d454680a0ef25a178ad034291a20ee63246badb3e2d790244177f3ee31",
+      "claim_class": "CO_TRAVEL",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:c49219a32804f258637a145d09500d0e7eb7d017a65ed651fc2939a554c07391",
+      "claim_class": "CO_TRAVEL",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:d1139ea4268c8331e5e7d4e6c67297a765dd4d94e98a9069bd3841379a4bda17",
+      "claim_class": "JOINT",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:d2f725a569c727a78133f6f1c6a66b054ecd8aaf5f32e69ffef0f2cdf3f3aaa9",
+      "claim_class": "JOINT",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:dae27e6f9600b9280e2f6dc56b26bb918e4b312e33048e30e0b24872e238f36f",
+      "claim_class": "JOINT",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    },
+    {
+      "operation_id": "urn:r61:op:e85bb52afddbd331cbc160ab22f311314975bcfc956499cd40e45534ef25345d",
+      "claim_class": "JOINT",
+      "disposition": "PROHIBITED",
+      "measure": "SAMPLE"
+    }
+  ],
+  "f4_like_disposition": [
+    "PROHIBITED"
+  ],
+  "joint_query_in_compiler_plan": [],
+  "query_not_issued": true,
+  "batch_query_unit": "NOT_ISSUED",
+  "partial_absent": "NOT_PROVED__ONE_COMPILER_ISSUED_DISCOVERY_UNIT",
+  "manual_query_claim": "WITHDRAWN",
+  "source_opens": 0,
+  "full_c11_builds": 0,
+  "resource": {
+    "retained_bytes": 626698,
+    "stage_bytes": 913418,
+    "parent_maxrss": 223649792,
+    "source_reads": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "parquet_members": 14
+  },
+  "prior_r3_withdrawal": {
+    "withdrawn": [
+      "compiler-issued Batch QUERY",
+      "compiler-issued F4",
+      "two-unit PARTIAL/ABSENT",
+      "R3 self-issued manual NativeWorkload/IssuedWorkloadRecord substitution"
+    ],
+    "preserved": [
+      "P0 one-source 13-family persisted estate",
+      "direct q101 mechanical I03",
+      "discovery/I05",
+      "75/75 test-patch proof",
+      "fresh source/body proof"
+    ]
+  }
+}

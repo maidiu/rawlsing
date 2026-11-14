@@ -1,0 +1,155 @@
+{
+  "schema": "PYAT997_COMPILER_ISSUANCE_CORRECTION_R4@1",
+  "task_id": "PYAT997-EXACT-COMPILER-ISSUANCE-PROOF-CORRECTION-R4",
+  "branch": "agent/pyat997-native-proof-r1",
+  "startup_sha": "11d6f480349a09b871414c3dc1c3f4fa3e680797",
+  "candidate": "2c476e739a263dd0069b54706c6cfa63b07190c1",
+  "status": "CORRECTION_COMPLETE__R3_QUERY_CLAIM_WITHDRAWN__COMPILER_ISSUED_DISCOVERY_PASS__NO_ELIGIBLE_QUERY_FOUND__NOT_G5",
+  "product_edits": "NONE",
+  "canonical_test_edits": "NONE",
+  "canonical_product_diff": "EMPTY",
+  "sourcefree": true,
+  "original35_used": false,
+  "production_current_used": false,
+  "new_issuer_or_authority": false,
+  "1006_run": false,
+  "correction_harness": {
+    "path": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/compiler_issuance_correction_r4/correction_harness.py",
+    "proof": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/compiler_issuance_correction_r4/evidence/correction.json",
+    "log": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/compiler_issuance_correction_r4/evidence/correction_run.txt",
+    "witness_reproduction": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/compiler_issuance_correction_r4/evidence/witness_reproduction.txt",
+    "method": "unchanged compile_governed_frontier captured before R3 manual replacement; actual .issued record/workload used unchanged; actual compiler-issued DISCOVERY workload executed through saved Q2 admission; no NativeWorkload/IssuedWorkloadRecord construction and no replace(compilation, issued=...)."
+  },
+  "actual_compiler_record": {
+    "requests": 0,
+    "discoveries": 1,
+    "decision_ref": "TEST_ONLY_DECISION|urn:rawlsing:b49:test_only_decision:r03-discovery-cfc02dd9c78ecc3f-2026-11-13|7c5b8e6a47621e519a9c593ff61d6b4fb89c4fcc786f1b72c435db8dc24ba4fa",
+    "expected_jobs": [
+      [
+        "DISCOVERY",
+        "DiscoveryAuthority@1.0.0|urn:rawlsing:pre553:DiscoveryAuthority:sha256:8a4d8fa80d9cc44124a894d4c6e8bece4a5cade5a6078d078fbf3e66442e2f88|8a4d8fa80d9cc44124a894d4c6e8bece4a5cade5a6078d078fbf3e66442e2f88",
+        ""
+      ]
+    ],
+    "envelope_sha256": "a7c9521c06780904290523cf51c26f52a1ba785a0202342bb72aead62d3eca2f",
+    "record_equal_before_after": true,
+    "workload_equal_before_after": true
+  },
+  "compiler_issued_execution": {
+    "normal": {
+      "units": 1,
+      "states": ["COMPLETED"],
+      "output_refs": 150
+    },
+    "completed": {
+      "completed_results": 1,
+      "resumed_results": 0,
+      "output_refs": 150,
+      "refs_equal_full": true
+    },
+    "partial_absent": "NOT_PROVED__ONE_COMPILER_ISSUED_DISCOVERY_UNIT",
+    "source_opens": 0,
+    "full_c11_repository_builds": 0
+  },
+  "direct_q101_standalone": {
+    "fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:b7666641c966a6530412dfb4730539852fbf6f6ca21e6bdd77e958b5a0048231",
+    "typed_state": "SUPPORTED",
+    "status": "MECHANICAL_DIRECT_I03_ONLY_NOT_COMPILER_ISSUED_BATCH_QUERY"
+  },
+  "withdrawn_r3_claims": [
+    "compiler-issued Batch QUERY",
+    "compiler-issued F4",
+    "two-unit compiler-issued PARTIAL/ABSENT",
+    "R3 manual NativeWorkload/IssuedWorkloadRecord replacement of compilation.issued"
+  ],
+  "preserved_valid_evidence": [
+    "P0 one-source 13-family persisted S2-C estate",
+    "direct q101 mechanical I03 SUPPORTED 5/5",
+    "discovery/I05 150 candidate receipts and 147 positive-linked operations",
+    "75/75 test-patch proof remains a separate Browser-owned test artifact",
+    "fresh source/body boundary from R2/R3 (its manual Batch QUERY is not accepted)",
+    "all35 historical ledger in the independent review"
+  ],
+  "minimal_red": {
+    "compiler_has_query_unit": false,
+    "manual_r3_has_query_unit": true,
+    "same_compiler_record": false,
+    "same_compiler_workload": false,
+    "joint_query_in_compiler_plan": [],
+    "f4_like_disposition": ["PROHIBITED"],
+    "f4_like_count": 12,
+    "exact_source_positions": [
+      "rawlsing_next/pre553_universal_workload.py::compile_governed_frontier -> build_test_only_discovery_workload (DISCOVERY only)",
+      "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/issued_batch_f4_r3/harness.py::_materialize -> replace(compilation, issued=manual)",
+      "rawlsing_next/pre553_source_postconsumer_receipts.py::join_saved_source_operation_fates compares against compilation.issued.record, so manual replacement is not detected"
+    ],
+    "witness": "WORKER_RETURNS/PYAT997_NATIVE_FIRST_CONSUMER_PROOF_R1/compiler_issuance_correction_r4/evidence/witness_reproduction.txt",
+    "evidence_grade": "ACTUAL_RED__EXISTING_COMPILER_ISSUANCE"
+  },
+  "existing_fixture_consultation": {
+    "result": "No unchanged compile_governed_frontier example found that issues a QUERY unit. Existing accepted tests use its issued discovery workload; compile_universal_workload is a separate single-target test-only path and is not the unchanged compile_governed_frontier .issued contract.",
+    "searched_paths": [
+      "rawlsing_next/tests/test_pyat960_s1e_native_fact.py",
+      "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py",
+      "rawlsing_next/tests/test_universal_workload.py",
+      "rawlsing_next/tests/test_universal_world_binding.py",
+      "rawlsing_next/tests/test_pyat940_s1d_a_counter_cache_binding.py",
+      "rawlsing_next/tests/test_pyat940_s1d_b_cache_custody.py"
+    ],
+    "no_policy_switch": true,
+    "no_prohibited_class_promotion": true
+  },
+  "f4_like_operation_sample": [
+    "12 F4-like JOINT/CO_TRAVEL SAMPLE operations with targets q101,q102,q103",
+    "all 12 disposition PROHIBITED",
+    "selected compiler catalog joint query absent from every plan.records query_refs",
+    "no eligible QUERY unit emitted by unchanged compiler"
+  ],
+  "resource": {
+    "respondents": 5,
+    "questions": 3,
+    "source_reads": 1,
+    "decode_calls": 1,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "family_counts": {
+      "QuestionVariableBinding": 3,
+      "RespondentEvent": 15,
+      "RoutingEligibilityFact": 15,
+      "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "RespondentIdentity": 5,
+      "EmpiricalUniverse": 1
+    },
+    "parquet_members": 14,
+    "retained_bytes": 626698,
+    "stage_bytes": 913418,
+    "parent_maxrss_bytes": 223649792,
+    "process_tree_note": "single correction harness process; no child process",
+    "full_100k_6gib": "NOT_RUN"
+  },
+  "gates": {
+    "G1": "FAIL_ORIGINAL_QUERY_ISSUANCE__CORRECTION_EXACT",
+    "G2": "PARTIAL_SCOPED: compiler-issued discovery NORMAL/COMPLETED, P0/direct q101/discovery real; compiler-issued QUERY absent.",
+    "G3": "PARTIAL_SCOPED: F4-like claim class remains PROHIBITED; no eligible compiler QUERY receipt; valid negatives preserved.",
+    "G4": "PASS_SCOPED_SMALL: 5 respondents, one source read/decode/cell, 14 Parquet, full C11 0, retained 626,655 B, stage 913,375 B, parent 219,000,832 B; 100k NOT_RUN.",
+    "G5": "FAIL/REVISE from independent review; this author correction is not acceptance."
+  },
+  "product_p1_negative": {
+    "status": "OPEN__NOT_EDITED",
+    "detail": "join_saved_source_operation_fates accepted a manually replaced compilation.issued in the R3 attack. Browser P1 owner must repair the guard and same independent reviewer must receive it. Correction harness stopping the attack does not close the product defect."
+  },
+  "external_holds": [
+    "Browser/R03 owner must state which existing lawful sourcefree claim/fixture should issue an eligible QUERY under unchanged compile_governed_frontier, or provide the exact missing owner binding.",
+    "S2-A native kernel HOLD (pre553_direct_estate_i03.py 8b4d5ca) remains separate.",
+    "Original35 source/rights/science, production CURRENT, protected merge, #998 full joined, #1001 100k/6 GiB, #1006, N11/N12 remain holds.",
+    "Test patch adoption remains Browser-owned."
+  ],
+  "browser_question": "Which existing lawful TEST_ONLY sourcefree claim/fixture is intended to issue an actual eligible QUERY unit under the unchanged compile_governed_frontier, or what exact missing R03/issuer binding must its rightful owner implement? The current compiler emits zero QUERY requests and all 12 q101/q102/q103 F4-like operations are PROHIBITED.",
+  "disposition": "CORRECTED_EVIDENCE__R3_QUERY_CLAIM_WITHDRAWN__MINIMAL_RED_AND_HOLD",
+  "engineering_grade": "R4_AUTHOR_CORRECTION_AND_EXISTING_COMPILER_RED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "TEST_ONLY_SOURCEFREE__NO_PRODUCTION_ISSUER_OR_CURRENT",
+  "known_session_cost": "UNKNOWN"
+}
