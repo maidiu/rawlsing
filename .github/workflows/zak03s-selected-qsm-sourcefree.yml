@@ -1,0 +1,44 @@
+name: ZAK03S selected-QSM current-reader sourcefree court
+on:
+  push:
+    branches:
+      - agent/zak03s-current-rule-effect-20261114
+      - agent/zak03s-followupper-b-20261114-r1
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_zak03s_selected_qsm_reader.py'
+      - 'rawlsing_next/tests/test_pre553_zak03s_selected_qsm_reader.py'
+      - '.github/workflows/zak03s-selected-qsm-sourcefree.yml'
+permissions:
+  contents: read
+jobs:
+  selected-reader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest pandas pyreadstat pyarrow duckdb
+      - name: Compile isolated selected-source adapter
+        run: |
+          python -m py_compile rawlsing_next/pre553_zak03s_selected_qsm_reader.py rawlsing_next/tests/test_pre553_zak03s_selected_qsm_reader.py
+      - name: Execute four-case selected-QSM / real Route-B court
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest rawlsing_next/tests/test_pre553_zak03s_selected_qsm_reader.py -q -o addopts='' --junitxml=zak03s-selected-qsm-junit.xml
+      - name: Preserve original Route-B and calibration contracts
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest rawlsing_next/tests/test_pre553_route_b_production.py data/ddm_build_copy/tests/test_r1_question_relation_authority.py -q -o addopts='' --junitxml=zak03s-inherited-junit.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zak03s-selected-qsm-court
+          path: |
+            zak03s-selected-qsm-junit.xml
+            zak03s-inherited-junit.xml
+          if-no-files-found: ignore
