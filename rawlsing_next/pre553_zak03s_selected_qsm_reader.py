@@ -30,6 +30,7 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     ExactRef,
     Pre553IntegrityError,
+    exact_ref,
     semantic_hash,
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
@@ -193,10 +194,14 @@ def execute_selected_qsm_route_b(
     for request in i03_requests:
         _must(isinstance(request, I03ExecutionRequest), "exact I03 execution request required")
         query = runtime_catalog.resolve_query_exact(request.query_ref)
-        _must(universe.ref in query.empirical_universe_refs,
-              "selected QSM universe absent from actual I03 query")
-        _must(selection.native_question_ref in query.target_refs,
-              "selected historical question not an I03 query target")
+        _must(
+            universe.ref in tuple(exact_ref(ref, "query empirical universe") for ref in query.empirical_universe_refs),
+            "selected QSM universe absent from actual I03 query",
+        )
+        _must(
+            selection.native_question_ref in tuple(exact_ref(ref, "query target") for ref in query.target_refs),
+            "selected historical question not an I03 query target",
+        )
         grain = query.requested_output_grain
         _must(
             grain.get("target_use_ref") == selection.target_use_ref.as_dict()
