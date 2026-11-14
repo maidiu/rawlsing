@@ -1,0 +1,10 @@
+# R4 versus R3 — substantive improvements without mechanism laundering
+
+1. **Original-first instead of roadmap matching:** Seven materially distinct historical code-producing capabilities, no synthetic source labels. V548/V549/V549b code located and exact blobs pinned; V550 ECPD vs IAM response distribution separated; V550J membership vs association index split.
+2. **Fatal denominator correction to R3 omission lead:** source code + Chetiri R00 refute R3's use of P(response|position) for V550 `position_distribution`. Reader must correct only the assertion, keep Trii observations about V551 exclusion and V552 pressure rollup.
+3. **Current successor credit where due:** I05 exact grammar, C11/I03 fact queries, RHD actual same-respondent replay and authority; no false claim these are merely planned or absent. Historical greedy score, selected source permission and actor first reader remain unproved.
+4. **Historical Long Memory retirement parsed properly:** the lossy cloud diagnostic carrier is designated retired under C4 author adjudication, not the underlying conditional/joint/branch knowledge; adoption/scope and current first consumer must be separately checked.
+5. **Original reader splits:** V549 and V549b read V548 source; V550J membership is used internally and then omitted in the V551J canonical inputs; association measurements are read inside V550J's meaning summary but not core V551J packet.
+6. **Potential de-dup overlap:** G1A-003/004/005/008 are original source-family aliases; this file does not automatically register 7 new canonical estate IDs or overwrite earlier 23 cases. Exact qualified owner cross-referencing required.
+
+**Counts**: 7 provisional standalone T cases, 70 original/current/intermediate cells, 28 mechanism edges, 42 claim-specific evidence refs, 7 reverse-consumer entries, 21 explicit bounded receipts. Of 70 new cells, 32 FOUND physical/doc locators and 38 NOT_INSPECTED; zero global absence/no native claim. Combined displayed corpus conditional 30 tentative cases, 300 cells; historical unique T and semantic completeness OPEN. These numerical counts are not function conservation success or independent adjudication.
