@@ -1,0 +1,1210 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    38,
+    52
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/ddm_v550_merge.py",
+      "sha": "68cd690fdc13949b0fcedc947ebe2f3cdbca9676",
+      "role": "CORE_MODULE",
+      "n": 140,
+      "bytes": 5435,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_table_path_for_shard",
+          "line": 45
+        },
+        {
+          "kind": "def",
+          "name": "load_shard_manifests",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "merge_shard_tables",
+          "line": 59
+        },
+        {
+          "kind": "def",
+          "name": "merge_v551_bridge_indexes",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "validate_shard_schema_compatibility",
+          "line": 111
+        },
+        {
+          "kind": "def",
+          "name": "deduplicate_rows",
+          "line": 134
+        }
+      ],
+      "imports": [
+        "12:from data.ddm_build_copy.ddm_v550_bridge import validate_bridge_df",
+        "13:from data.ddm_build_copy.ddm_v550_schema import SHARD_OUTPUT_TABLES",
+        "14:from data.ddm_build_copy.ddm_v550_storage import read_table_any"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Merge compiler helpers for V550 shard bundles.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_metrics.py",
+      "sha": "e7675f4080bb30e6526027a34db747b7be7f85c9",
+      "role": "CORE_MODULE",
+      "n": 248,
+      "bytes": 9608,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "safe_series",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "weighted_counts",
+          "line": 21
+        },
+        {
+          "kind": "def",
+          "name": "classify_weight_status",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "entropy_from_counts",
+          "line": 54
+        },
+        {
+          "kind": "def",
+          "name": "distribution_entropy",
+          "line": 67
+        },
+        {
+          "kind": "def",
+          "name": "conditional_entropy",
+          "line": 77
+        },
+        {
+          "kind": "def",
+          "name": "cramers_v",
+          "line": 100
+        },
+        {
+          "kind": "def",
+          "name": "normalized_mutual_information",
+          "line": 123
+        },
+        {
+          "kind": "def",
+          "name": "dominant_response",
+          "line": 143
+        },
+        {
+          "kind": "def",
+          "name": "uplift_vs_baseline",
+          "line": 162
+        },
+        {
+          "kind": "def",
+          "name": "evidence_stratum_from_row",
+          "line": 166
+        },
+        {
+          "kind": "def",
+          "name": "evidence_stratum_v2_from_row",
+          "line": 193
+        },
+        {
+          "kind": "def",
+          "name": "numeric_wrapper_audit_from_row",
+          "line": 216
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Metrics helpers for V550.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_position_distribution.py",
+      "sha": "651329254244e9f42a8d88c2721ccae6bd768073",
+      "role": "CORE_MODULE",
+      "n": 141,
+      "bytes": 5716,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_respondent_slice",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "name": "_first_text",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "build_position_distribution_rows",
+          "line": 60
+        }
+      ],
+      "imports": [
+        "10:from data.ddm_build_copy.ddm_v550_branching import INDICATOR_FIELDS",
+        "11:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "12:from data.ddm_build_copy.ddm_v550_metrics import classify_weight_status"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Respondent position-distribution helpers for V550.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_process_guard.py",
+      "sha": "1326b943940d5a0ea6d2d1a871fab2903330f519",
+      "role": "CORE_MODULE",
+      "n": 82,
+      "bytes": 2004,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_pid_alive",
+          "line": 13
+        },
+        {
+          "kind": "def",
+          "name": "readiness_lock_path",
+          "line": 23
+        },
+        {
+          "kind": "def",
+          "name": "claim_readiness_lock",
+          "line": 27
+        },
+        {
+          "kind": "def",
+          "name": "release_readiness_lock",
+          "line": 51
+        },
+        {
+          "kind": "def",
+          "name": "active_readiness_lock_for_shard",
+          "line": 59
+        }
+      ],
+      "imports": [
+        "10:from data.ddm_build_copy.ddm_v550_storage import atomic_write_json"
+      ],
+      "top": "\"\"\"Readiness lock helpers for coordinating V550 shard launches.\"\"\"  from __future__ import annotations  import json"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_question_relation_authority.py",
+      "sha": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+      "role": "CORE_MODULE",
+      "n": 905,
+      "bytes": 38848,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "QuestionRelationAuthorityError",
+          "line": 112
+        },
+        {
+          "kind": "class",
+          "name": "AuthorityResolution",
+          "line": 117
+        },
+        {
+          "kind": "class",
+          "name": "AuthorityIndex",
+          "line": 203
+        },
+        {
+          "kind": "def",
+          "name": "_text",
+          "line": 210
+        },
+        {
+          "kind": "def",
+          "name": "_bool",
+          "line": 222
+        },
+        {
+          "kind": "def",
+          "name": "_token",
+          "line": 233
+        },
+        {
+          "kind": "def",
+          "name": "canonical_source_family",
+          "line": 237
+        },
+        {
+          "kind": "def",
+          "name": "canonical_country_code",
+          "line": 243
+        },
+        {
+          "kind": "def",
+          "name": "canonical_wave",
+          "line": 248
+        },
+        {
+          "kind": "def",
+          "name": "canonical_question_key",
+          "line": 294
+        },
+        {
+          "kind": "def",
+          "name": "active_authority_path",
+          "line": 298
+        },
+        {
+          "kind": "def",
+          "name": "_sha256",
+          "line": 310
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_hash_value",
+          "line": 318
+        },
+        {
+          "kind": "def",
+          "name": "_recompute_row_hash",
+          "line": 334
+        },
+        {
+          "kind": "def",
+          "name": "_resolution_key",
+          "line": 341
+        },
+        {
+          "kind": "def",
+          "name": "_validate_registry",
+          "line": 351
+        },
+        {
+          "kind": "def",
+          "name": "derive_legacy_latinobarometro_1995_residual",
+          "line": 441
+        },
+        {
+          "kind": "def",
+          "name": "_build_index",
+          "line": 500
+        },
+        {
+          "kind": "def",
+          "name": "_load_index_cached",
+          "line": 559
+        },
+        {
+          "kind": "def",
+          "name": "load_question_relation_authority",
+          "line": 564
+        },
+        {
+          "kind": "def",
+          "name": "active_closed_35_waves",
+          "line": 570
+        },
+        {
+          "kind": "def",
+          "name": "resolve_question_relation_authority",
+          "line": 584
+        },
+        {
+          "kind": "def",
+          "name": "_clear_structural_coordinates",
+          "line": 684
+        },
+        {
+          "kind": "def",
+          "name": "_artifact_display_path",
+          "line": 692
+        },
+        {
+          "kind": "def",
+          "name": "_authority_metadata",
+          "line": 699
+        },
+        {
+          "kind": "def",
+          "name": "apply_question_relation_authority",
+          "line": 727
+        },
+        {
+          "kind": "def",
+          "name": "validate_active_universe",
+          "line": 861
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Canonical full-universe question-to-ontology authority resolver for V550.  This module deliberately owns only question-level structural authority.  Respon"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_question_use.py",
+      "sha": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131",
+      "role": "CORE_MODULE",
+      "n": 2772,
+      "bytes": 115511,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_has_any_directionality_value",
+          "line": 220
+        },
+        {
+          "kind": "def",
+          "name": "_question_use_contract_hash",
+          "line": 339
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 647
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_key",
+          "line": 658
+        },
+        {
+          "kind": "def",
+          "name": "_to_bool",
+          "line": 662
+        },
+        {
+          "kind": "def",
+          "name": "_safe_float",
+          "line": 667
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_source",
+          "line": 679
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_wave",
+          "line": 684
+        },
+        {
+          "kind": "def",
+          "name": "_overlay_candidate_frame",
+          "line": 689
+        },
+        {
+          "kind": "def",
+          "name": "_overlay_candidate_names",
+          "line": 725
+        },
+        {
+          "kind": "def",
+          "name": "_override_match_frame",
+          "line": 731
+        },
+        {
+          "kind": "def",
+          "name": "_role_from_doc_fields",
+          "line": 746
+        },
+        {
+          "kind": "def",
+          "name": "_merge_role_hint",
+          "line": 775
+        },
+        {
+          "kind": "def",
+          "name": "_load_csv_frame",
+          "line": 786
+        },
+        {
+          "kind": "def",
+          "name": "_cached_override_frame",
+          "line": 805
+        },
+        {
+          "kind": "def",
+          "name": "_cached_itinerary_frame",
+          "line": 810
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_gss_first_pass_authority_frame",
+          "line": 814
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_gss2010_structural_overlay_frame",
+          "line": 831
+        },
+        {
+          "kind": "def",
+          "name": "load_question_use_overrides",
+          "line": 873
+        },
+        {
+          "kind": "def",
+          "name": "load_question_wave_itinerary",
+          "line": 878
+        },
+        {
+          "kind": "def",
+          "name": "load_gss2010_first_pass_authority",
+          "line": 883
+        },
+        {
+          "kind": "def",
+          "name": "load_gss_first_pass_authority",
+          "line": 892
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_gss_semantic_authority_frame",
+          "line": 920
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_gss_position_conditioning_overlay_frame",
+          "line": 949
+        },
+        {
+          "kind": "def",
+          "name": "_cached_semantic_authority_frame",
+          "line": 981
+        },
+        {
+          "kind": "def",
+          "name": "_cached_position_conditioning_overlay_frame",
+          "line": 1010
+        },
+        {
+          "kind": "def",
+          "name": "_combine_gss_overlay_frames",
+          "line": 1038
+        },
+        {
+          "kind": "def",
+          "name": "load_gss_semantic_authority_overlay",
+          "line": 1063
+        },
+        {
+          "kind": "def",
+          "name": "load_gss_position_conditioning_overlay",
+          "line": 1080
+        },
+        {
+          "kind": "def",
+          "name": "load_gss2010_structural_overlay",
+          "line": 1097
+        },
+        {
+          "kind": "def",
+          "name": "_select_override",
+          "line": 1106
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_authority_role",
+          "line": 1187
+        },
+        {
+          "kind": "def",
+          "name": "_apply_authority_designation",
+          "line": 1264
+        },
+        {
+          "kind": "def",
+          "name": "_select_itinerary",
+          "line": 1357
+        },
+        {
+          "kind": "def",
+          "name": "_apply_manual_override",
+          "line": 1388
+        },
+        {
+          "kind": "def",
+          "name": "_apply_manual_designation_gate",
+          "line": 1455
+        },
+        {
+          "kind": "def",
+          "name": "_apply_gss2010_structural_overlay",
+          "line": 1482
+        },
+        {
+          "kind": "def",
+          "name": "_apply_semantic_detail_overlay",
+          "line": 1514
+        },
+        {
+          "kind": "def",
+          "name": "_apply_position_conditioning_overlay",
+          "line": 1541
+        },
+        {
+          "kind": "def",
+          "name": "_apply_question_directionality_overlay",
+          "line": 1577
+        },
+        {
+          "kind": "def",
+          "name": "_attitude_cloud_semantics_blocked",
+          "line": 1603
+        },
+        {
+          "kind": "def",
+          "name": "_source_structure_blank",
+          "line": 1646
+        },
+        {
+          "kind": "def",
+          "name": "infer_semantic_role",
+          "line": 1657
+        },
+        {
+          "kind": "def",
+          "name": "_contains_any",
+          "line": 1718
+        },
+        {
+          "kind": "def",
+          "name": "infer_semantic_detail",
+          "line": 1722
+        },
+        {
+          "kind": "def",
+          "name": "allowed_uses_for_role",
+          "line": 1977
+        },
+        {
+          "kind": "def",
+          "name": "evidence_role_for_semantic_role",
+          "line": 1982
+        },
+        {
+          "kind": "def",
+          "name": "_response_topology_for_row",
+          "line": 1995
+        },
+        {
+          "kind": "def",
+          "name": "_future_topology_evidence_eligible",
+          "line": 2104
+        },
+        {
+          "kind": "def",
+          "name": "_directional_certification_status_for_row",
+          "line": 2108
+        },
+        {
+          "kind": "def",
+          "name": "_current_directional_atom_eligible_for_row",
+          "line": 2145
+        },
+        {
+          "kind": "def",
+          "name": "build_question_use_contract",
+          "line": 2160
+        },
+        {
+          "kind": "def",
+          "name": "build_question_use_contract_row",
+          "line": 2357
+        }
+      ],
+      "imports": [
+        "22:from data.ddm_build_copy.ddm_v550_source_structure import _is_ses_relation_evidence",
+        "23:from data.ddm_build_copy.ddm_v550_family_overlay import (",
+        "34:from data.ddm_build_copy.ddm_v550_authority_contract import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Question-use contract helpers for V550 (universal authority repair).  This module centralizes the semantic-role classification that downstream builders mu"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_readiness.py",
+      "sha": "556ce74cdde48e344c083b8bae1678d6cadd72de",
+      "role": "CORE_MODULE",
+      "n": 486,
+      "bytes": 24017,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_query_df",
+          "line": 35
+        },
+        {
+          "kind": "def",
+          "name": "_readiness_log",
+          "line": 39
+        },
+        {
+          "kind": "def",
+          "name": "_sql_filter_clause",
+          "line": 45
+        },
+        {
+          "kind": "def",
+          "name": "load_scope_manifest",
+          "line": 69
+        },
+        {
+          "kind": "def",
+          "name": "ensure_live_substrate",
+          "line": 133
+        },
+        {
+          "kind": "def",
+          "name": "respondent_position_coverage",
+          "line": 143
+        },
+        {
+          "kind": "def",
+          "name": "weight_coverage",
+          "line": 157
+        },
+        {
+          "kind": "def",
+          "name": "mapping_status_coverage",
+          "line": 172
+        },
+        {
+          "kind": "def",
+          "name": "response_coverage",
+          "line": 248
+        },
+        {
+          "kind": "def",
+          "name": "build_readiness",
+          "line": 330
+        },
+        {
+          "kind": "def",
+          "name": "discover_shardable_source_waves",
+          "line": 412
+        }
+      ],
+      "imports": [
+        "13:from data.ddm_build_copy.ddm_v550_io import clean_text",
+        "14:from data.ddm_build_copy.ddm_v550_metrics import dominant_response",
+        "15:from data.ddm_build_copy.ddm_v550_shared_cache import cached_query_frame, shared_cache_root"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Readiness and scope computation for V550.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_response_options.py",
+      "sha": "13e999ca1eacf8826c623833c7f3fe24ddcad558",
+      "role": "CORE_MODULE",
+      "n": 559,
+      "bytes": 25129,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_row_value",
+          "line": 43
+        },
+        {
+          "kind": "def",
+          "name": "_row_any",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "_wave_lookup_variants",
+          "line": 61
+        },
+        {
+          "kind": "def",
+          "name": "_option_source_group",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_option_group",
+          "line": 93
+        },
+        {
+          "kind": "def",
+          "name": "normalize_response_code",
+          "line": 101
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_code",
+          "line": 117
+        },
+        {
+          "kind": "def",
+          "name": "_safe_int",
+          "line": 122
+        },
+        {
+          "kind": "def",
+          "name": "response_semantics_contract_hash",
+          "line": 132
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_requested_codebook_files",
+          "line": 144
+        },
+        {
+          "kind": "def",
+          "name": "load_question_context_tables",
+          "line": 179
+        },
+        {
+          "kind": "def",
+          "name": "_parse_row_options",
+          "line": 207
+        },
+        {
+          "kind": "def",
+          "name": "_apply_response_directionality",
+          "line": 274
+        },
+        {
+          "kind": "def",
+          "name": "build_response_option_map",
+          "line": 324
+        }
+      ],
+      "imports": [
+        "15:from data.ddm_build_copy.ddm_v550_io import (",
+        "36:from data.ddm_build_copy.ddm_v550_family_overlay import canonical_family_key, canonical_wave_key, wave_aliases",
+        "37:from data.ddm_build_copy.ddm_v550_response_semantics_authority import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V550 response-option normalization map.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_response_relation.py",
+      "sha": "089eeec8d7d11676fd61fcce56569ec9d0df79a1",
+      "role": "CORE_MODULE",
+      "n": 217,
+      "bytes": 7941,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "validate_relation_identifier",
+          "line": 37
+        },
+        {
+          "kind": "def",
+          "name": "choose_response_relation",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "_relation_parts",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "discover_response_relations",
+          "line": 81
+        },
+        {
+          "kind": "def",
+          "name": "relation_columns",
+          "line": 102
+        },
+        {
+          "kind": "def",
+          "name": "resolve_response_relation",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "scope_manifest_from_response_rows",
+          "line": 137
+        },
+        {
+          "kind": "def",
+          "name": "load_scope_manifest_from_response_relation",
+          "line": 180
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Resolve the governed respondent-long relation used by V550.  The live host can expose both a historical facet-ready view and a later authority-enriched vi"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_response_semantics_authority.py",
+      "sha": "53e8f96d23fb4c5c3862c099694d15b34ac58f9e",
+      "role": "CORE_MODULE",
+      "n": 472,
+      "bytes": 18130,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 59
+        },
+        {
+          "kind": "def",
+          "name": "_truthy",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "name": "_sha256",
+          "line": 77
+        },
+        {
+          "kind": "def",
+          "name": "response_option_map_content_sha256",
+          "line": 85
+        },
+        {
+          "kind": "class",
+          "name": "ResponseSemanticsContractBinding",
+          "line": 113
+        },
+        {
+          "kind": "def",
+          "name": "_binding_key",
+          "line": 121
+        },
+        {
+          "kind": "def",
+          "name": "load_v551_registry_key_set",
+          "line": 128
+        },
+        {
+          "kind": "def",
+          "name": "load_response_semantics_contract_bindings",
+          "line": 174
+        },
+        {
+          "kind": "def",
+          "name": "lookup_governed_response_semantics_contract",
+          "line": 256
+        },
+        {
+          "kind": "def",
+          "name": "_append_reason",
+          "line": 264
+        },
+        {
+          "kind": "def",
+          "name": "_mark_group_unresolved",
+          "line": 271
+        },
+        {
+          "kind": "def",
+          "name": "bind_governed_response_semantics_contracts",
+          "line": 292
+        },
+        {
+          "kind": "def",
+          "name": "assert_v551_applicable_contract_compatibility",
+          "line": 425
+        }
+      ],
+      "imports": [
+        "21:from data.ddm_build_copy.ddm_v550_family_overlay import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Exact V550 -> V551 response-semantics contract binding authority.  `response_semantics_contract_hash` is a governed packet identity minted by the frozen r"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_schema.py",
+      "sha": "487b392b79a77f5e1d2e2949072bdea8d2bc63b4",
+      "role": "CORE_MODULE",
+      "n": 2293,
+      "bytes": 81378,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "infer_dtype",
+          "line": 2157
+        },
+        {
+          "kind": "def",
+          "name": "dataframe_schema_json",
+          "line": 2169
+        },
+        {
+          "kind": "def",
+          "name": "write_schema_json",
+          "line": 2188
+        },
+        {
+          "kind": "def",
+          "name": "validate_columns",
+          "line": 2193
+        },
+        {
+          "kind": "def",
+          "name": "_normalized_tokens",
+          "line": 2198
+        },
+        {
+          "kind": "def",
+          "name": "validate_no_forbidden_cloud_features",
+          "line": 2205
+        },
+        {
+          "kind": "def",
+          "name": "forbidden_cloud_feature_row_count",
+          "line": 2260
+        },
+        {
+          "kind": "def",
+          "name": "validate_bridge_index",
+          "line": 2274
+        },
+        {
+          "kind": "def",
+          "name": "validate_v551_numeric_wrapper_audit",
+          "line": 2278
+        },
+        {
+          "kind": "def",
+          "name": "validate_v551_relation_review_surface",
+          "line": 2282
+        },
+        {
+          "kind": "def",
+          "name": "validate_v551_blocked_signal_audit",
+          "line": 2286
+        },
+        {
+          "kind": "def",
+          "name": "validate_shard_manifest",
+          "line": 2290
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Schema helpers for V550 canonical outputs.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_shards.py",
+      "sha": "af53ab305b29a467655af9f1f976e8b86b511aed",
+      "role": "CORE_MODULE",
+      "n": 85,
+      "bytes": 2633,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "slugify",
+          "line": 15
+        },
+        {
+          "kind": "def",
+          "name": "shard_id_for",
+          "line": 21
+        },
+        {
+          "kind": "class",
+          "name": "ShardPlanRow",
+          "line": 26
+        },
+        {
+          "kind": "def",
+          "name": "plan_dataframe_to_json",
+          "line": 74
+        }
+      ],
+      "imports": [
+        "12:from data.ddm_build_copy.ddm_v550_manifest import utc_now"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Shard planning and shard-path helpers for V550 Pax execution.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_shared_cache.py",
+      "sha": "ea71f2edff6b490b30d24c8ac11c6734e244da38",
+      "role": "CORE_MODULE",
+      "n": 189,
+      "bytes": 6123,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "CacheEntry",
+          "line": 22
+        },
+        {
+          "kind": "def",
+          "name": "shared_cache_root",
+          "line": 40
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_for_signature",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "cache_signature",
+          "line": 65
+        },
+        {
+          "kind": "def",
+          "name": "cache_entry",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "name": "load_cached_frame",
+          "line": 75
+        },
+        {
+          "kind": "def",
+          "name": "write_cached_frame",
+          "line": 90
+        },
+        {
+          "kind": "def",
+          "name": "cached_query_frame",
+          "line": 100
+        },
+        {
+          "kind": "def",
+          "name": "question_structural_mapping_select_columns",
+          "line": 128
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v550_storage import atomic_write_json, utc_now"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Shared on-disk cache helpers for V550 readiness/build queries.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py",
+      "sha": "9ac6feb919f45bcd33e6976dcde9dda4c8617895",
+      "role": "CORE_MODULE",
+      "n": 680,
+      "bytes": 29747,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "SharedSubstratePaths",
+          "line": 109
+        },
+        {
+          "kind": "def",
+          "name": "utc_now",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 122
+        },
+        {
+          "kind": "def",
+          "name": "_slug",
+          "line": 134
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_code_series",
+          "line": 140
+        },
+        {
+          "kind": "def",
+          "name": "_json_hash",
+          "line": 147
+        },
+        {
+          "kind": "def",
+          "name": "_file_sha256",
+          "line": 152
+        },
+        {
+          "kind": "def",
+          "name": "_set_file_private",
+          "line": 160
+        },
+        {
+          "kind": "def",
+          "name": "_set_dir_private",
+          "line": 167
+        },
+        {
+          "kind": "def",
+          "name": "shared_substrate_paths",
+          "line": 175
+        },
+        {
+          "kind": "def",
+          "name": "_ordered_unique",
+          "line": 192
+        },
+        {
+          "kind": "def",
+          "name": "_selection_role",
+          "line": 203
+        },
+        {
+          "kind": "def",
+          "name": "_registry_family_waves",
+          "line": 214
+        },
+        {
+          "kind": "def",
+          "name": "_registry_item_rows",
+          "line": 221
+        },
+        {
+          "kind": "def",
+          "name": "_row_identity_key",
+          "line": 241
+        },
+        {
+          "kind": "def",
+          "name": "resolve_shared_substrate_requirements",
+          "line": 249
+        },
+        {
+          "kind": "def",
+          "name": "canonicalize_shared_respondent_substrate",
+          "line": 332
+        },
+        {
+          "kind": "def",
+          "name": "logical_shared_substrate_hash",
+          "line": 464
+        },
+        {
+          "kind": "def",
+          "name": "_selection_payload_hash",
+          "line": 481
+        },
+        {
+          "kind": "def",
+          "name": "_selection_surfaces",
+          "line": 485
+        },
+        {
+          "kind": "def",
+          "name": "_duplicate_scalar_response_key_count",
+          "line": 504
+        },
+        {
+          "kind": "def",
+          "name": "validate_shared_respondent_substrate",
+          "line": 517
+        },
+        {
+          "kind": "def",
+          "name": "write_shared_respondent_substrate_atomic",
+          "line": 565
+        },
+        {
+          "kind": "def",
+          "name": "load_shared_respondent_substrate",
+          "line": 640
+        },
+        {
+          "kind": "def",
+          "name": "shared_substrate_cache_signature_matches",
+          "line": 659
+        }
+      ],
+      "imports": [
+        "16:from data.ddm_build_copy.ddm_v550_schema import write_schema_json",
+        "18:from data.ddm_build_copy.ddm_v550j_registry_contract import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Shared respondent-substrate helpers for V550/V550J co-execution.\"\"\"  from __future__ import annotations "
+    }
+  ]
+}
