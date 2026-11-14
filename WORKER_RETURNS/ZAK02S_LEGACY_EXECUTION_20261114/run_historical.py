@@ -394,6 +394,10 @@ def main():
                 {"candidates": 49, "progress_item_step": 50, "reporter": True},
                 lambda: invoke_549b(reporter, pd, 49, True),
                 lambda o: o.get("return", {}).get("anchors", 0) >= 1)
+        observe("V549b", "positive_50_without_reporter", sym,
+                {"candidates": 50, "reporter": False},
+                lambda: invoke_549b(reporter, pd, 50, False),
+                lambda o: o.get("return", {}).get("anchors", 0) >= 1)
         observe("V549b", "negative_conditional_50th_report", sym,
                 {"candidates": 50, "progress_item_step": 50, "reporter": True},
                 lambda: invoke_549b(reporter, pd, 50, True),
@@ -404,9 +408,36 @@ def main():
                 lambda: invoke_549b(reporter, pd, 50, False),
                 lambda o: o.get("return", {}).get("anchors", 0) >= 1)
 
+    # Exact-return restoration checks are independent of a single selected field.
+    # Missing imported families must remain explicitly NOT_RUN, never auto-PASS.
+    restoration_pairs = {
+        "F08": ("positive", "restore"),
+        "V550J": ("positive_same_respondent", "restore"),
+        "V551J": ("positive", "restore"),
+        "V552": ("positive_coverage_and_score", "restore"),
+        "V552J": ("positive_single_fact", "restore"),
+        "V549b": ("positive_50_without_reporter", "restore_without_reporter"),
+    }
+    restoration_equivalence = {}
+    for family, (before_phase, restore_phase) in restoration_pairs.items():
+        before = next((r for r in RESULTS if r["case"] == family and r["phase"] == before_phase), None)
+        after = next((r for r in RESULTS if r["case"] == family and r["phase"] == restore_phase), None)
+        if before is None or after is None or "return" not in before["observed"] or "return" not in after["observed"]:
+            restoration_equivalence[family] = {
+                "status": "NOT_RUN_OR_NO_RETURN", "before": before_phase, "restore": restore_phase,
+            }
+        else:
+            exact = before["observed"]["return"] == after["observed"]["return"]
+            restoration_equivalence[family] = {
+                "status": "PASS_EXACT_RETURN" if exact else "FAIL_RESTORE_DIFFERENCE",
+                "before": before_phase, "restore": restore_phase, "exact_return_equal": bool(exact),
+            }
+    restore_failures = sum(1 for r in restoration_equivalence.values() if r["status"] == "FAIL_RESTORE_DIFFERENCE")
     import numpy
     summary = {"source_commit": PIN, "source_blobs": actual_blobs,
                "expected_source_blobs": BLOBS,
+               "restoration_equivalence": restoration_equivalence,
+               "restoration_failures": restore_failures,
                "family_execution_status": {family: (
                    "EXECUTED_SOURCEFREE_CASES" if any(
                        x["case"] == family and x["grade"] == "S2_SYNTHETIC_PINNED_FUNCTION" for x in RESULTS
@@ -439,7 +470,7 @@ def main():
                               "exception": x["observed"].get("exception")})}
                          for x in RESULTS]}, separators=(",", ":"), default=str), flush=True)
     print("ZAK02S_JSON_END", flush=True)
-    return 0 if summary["fail"] == 0 else 1
+    return 0 if summary["fail"] == 0 and restore_failures == 0 else 1
 
 
 if __name__ == "__main__":
