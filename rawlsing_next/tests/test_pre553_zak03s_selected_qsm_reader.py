@@ -26,19 +26,19 @@ from rawlsing_next.pre553_zak03s_selected_qsm_reader import (
     SelectedQsmRouteError,
     execute_selected_qsm_route_b,
 )
-from rawlsing_next.tests.test_pre553_empirical_query import _h, _ref
+from rawlsing_next.tests.test_pre553_empirical_query import _h, _ref, _query
 from rawlsing_next.tests.test_pre553_route_b_production import _fixture
 
 
 def _synthetic_qsm(path: Path, *, variant: str, status="GOVERNED_NEUTRAL_COVERAGE",
-                   disposition_override=None):
+                   disposition_override=None, question_id="Y"):
     registry = pd.read_csv(CALIBRATION_AUTHORITY_PATH, dtype=str, keep_default_na=False)
     columns = list(registry.columns)
     k = 0
     row = registry.iloc[k].to_dict()
     row.update({
         "source_family": "SURVEY", "canonical_wave": "W1",
-        "country_code_scope": "US", "question_id": "Y", "var_code": "Y",
+        "country_code_scope": "US", "question_id": question_id, "var_code": "Y",
         "authority_rule_id": "SYNTH-QSM-Y",
         "relation_use_status": status,
         "authority_status": disposition_override or (
@@ -125,7 +125,7 @@ def _setup(fx, path, sha, row_sha, version, *, deny=False):
         expected_authority_version=version,
         expected_rule_id="SYNTH-QSM-Y",
         source_family="SURVEY", canonical_wave="W1", country_code="US",
-        var_code="Y", native_question_ref=fx["qrefs"]["Y"],
+        var_code="Y", historical_question_id="Y", native_question_ref=fx["qrefs"]["Y"],
         target_use_ref=use_ref, target_use_authority_ref=authority.authority_ref,
         target_use_operation="ZAK03S-RAW-I03-USE",
     )
@@ -255,4 +255,67 @@ def test_unbound_current_reader_refused_even_with_good_qsm(tmp_path):
         _run(
             fx, replace(selection, native_question_ref=fx["qrefs"]["X"]),
             catalog, requests,
+        )
+
+
+
+def test_same_variable_but_different_historical_question_id_cannot_be_laundered(tmp_path):
+    fx = _fixture()
+    path = tmp_path / "qsm_other_question_same_variable.csv"
+    sha, row, version = _synthetic_qsm(
+        path, variant="DIFFERENT-QUESTION", question_id="OTHER-QUESTION"
+    )
+    selection, catalog, requests = _setup(fx, path, sha, row, version)
+    # An exact file hash and an unchanged Y physical variable are insufficient:
+    # the historical question identity is a separate semantic determinant.
+    with pytest.raises(SelectedQsmRouteError, match="historical QSM question ID"):
+        _run(fx, selection, catalog, requests)
+    # Merely copying the other question ID into caller-supplied selection
+    # cannot manufacture the issuer's OTHER-QUESTION -> native Y mapping.
+    with pytest.raises(SelectedQsmRouteError, match="requires issued native mapping"):
+        _run(
+            fx, replace(selection, historical_question_id="OTHER-QUESTION"),
+            catalog, requests,
+        )
+
+
+def test_one_historical_row_cannot_authorize_unselected_joint_question(tmp_path):
+    fx = _fixture()
+    path = tmp_path / "qsm_y_only.csv"
+    sha, row, version = _synthetic_qsm(path, variant="ONE-QUESTION")
+    selection, catalog, requests = _setup(fx, path, sha, row, version)
+    original = _run(fx, selection, catalog, requests)
+    assert original.route.i03_results[0].facts
+
+    source_stub = {
+        "universe": fx["projection"].universes[0],
+        "qrefs": fx["qrefs"],
+        "risk_refs": {"R": fx["risk"]},
+        "source_auth": fx["projection"].authority_snapshots[0],
+    }
+    authority = next(
+        item for item in catalog.authorities
+        if item.authority_ref == selection.target_use_authority_ref
+    )
+    joint = _authorized_query(
+        _query(
+            source_stub, fx["qauth"], fx["all_p"], ("X", "Y"),
+            tag="zak03s-unselected-extra-X",
+        ),
+        selection.target_use_ref,
+        authority,
+    )
+    with_joint = RuntimeObjectCatalog(
+        authorities=catalog.authorities,
+        predicates=catalog.predicates,
+        queries=(*catalog.queries, joint),
+        discovery_authorities=catalog.discovery_authorities,
+    )
+    # The independent underlying Route-B engine remains capable of joint
+    # queries with the proper separate authorities. Only this one-row
+    # historical-QSM adapter refuses to upgrade Y's custody into X+Y.
+    with pytest.raises(SelectedQsmRouteError, match="additional I03 targets"):
+        _run(
+            fx, selection, with_joint,
+            (I03ExecutionRequest(joint.ref, fx["all_p"].ref),),
         )
