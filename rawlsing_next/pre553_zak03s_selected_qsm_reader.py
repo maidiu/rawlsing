@@ -20,6 +20,7 @@ from typing import Any, Mapping
 from data.ddm_build_copy.ddm_v550_question_relation_authority import (
     active_authority_path,
     canonical_country_code,
+    canonical_question_key,
     canonical_source_family,
     canonical_wave,
     load_question_relation_authority,
@@ -83,6 +84,7 @@ class SelectedQsmRequest:
     canonical_wave: str
     country_code: str
     var_code: str
+    historical_question_id: str
     native_question_ref: ExactRef
     target_use_ref: ExactRef
     target_use_authority_ref: AuthorityRef
@@ -142,6 +144,19 @@ def _exact_selection(selection: SelectedQsmRequest, projection: GovernedC11Proje
           "selected QSM rule version changed")
     _must(row.get("authority_rule_id") == selection.expected_rule_id,
           "selected QSM rule identity changed")
+    _must(
+        canonical_question_key(row.get("question_id")) ==
+        canonical_question_key(selection.historical_question_id),
+        "historical QSM question ID differs from selected request",
+    )
+    # This one-row sourcefree adapter only proves a *same-code* physical
+    # binding. A historical question_id distinct from its var_code needs an
+    # independently issued QSM-to-native-QVB mapping; guessing it is unsafe.
+    _must(
+        canonical_question_key(row.get("question_id")) ==
+        canonical_question_key(row.get("var_code")),
+        "nonidentical QSM question/variable requires issued native mapping",
+    )
     _must(result.status in COVERAGE_ONLY_STATUSES,
           "selected QSM row does not allow question-coverage lineage")
     _must(row.get("authority_status", "").upper() in POSITIVE_QSM_DISPOSITIONS,
@@ -216,13 +231,19 @@ def execute_selected_qsm_route_b(
     for request in i03_requests:
         _must(isinstance(request, I03ExecutionRequest), "exact I03 execution request required")
         query = runtime_catalog.resolve_query_exact(request.query_ref)
+        # An individual selected historical row does not authorize a
+        # different survey universe or additional joint-query questions.
+        # The unchanged I03 engine remains free to run independently
+        # qualified joins through its other authorized entrances.
         _must(
-            universe.ref in tuple(exact_ref(ref, "query empirical universe") for ref in query.empirical_universe_refs),
-            "selected QSM universe absent from actual I03 query",
+            tuple(exact_ref(ref, "query empirical universe")
+                  for ref in query.empirical_universe_refs) == (universe.ref,),
+            "one selected QSM row cannot cover additional I03 universes",
         )
         _must(
-            selection.native_question_ref in tuple(exact_ref(ref, "query target") for ref in query.target_refs),
-            "selected historical question not an I03 query target",
+            tuple(exact_ref(ref, "query target")
+                  for ref in query.target_refs) == (selection.native_question_ref,),
+            "one selected QSM row cannot cover additional I03 targets",
         )
         grain = query.requested_output_grain
         _must(
@@ -265,6 +286,8 @@ def execute_selected_qsm_route_b(
         "qsm_lookup": resolution.lookup_key,
         "source_universe_ref": universe.ref.as_dict(),
         "native_question_ref": selection.native_question_ref.as_dict(),
+        "historical_question_id": selection.historical_question_id,
+        "historical_var_code": selection.var_code,
         "target_use_ref": selection.target_use_ref.as_dict(),
         "target_use_authority_ref": selection.target_use_authority_ref.as_dict(),
         "target_use_operation": selection.target_use_operation,
