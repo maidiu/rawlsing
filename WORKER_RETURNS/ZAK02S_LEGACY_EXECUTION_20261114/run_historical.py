@@ -408,7 +408,7 @@ def main():
                 lambda: invoke_549b(reporter, pd, 50, False),
                 lambda o: o.get("return", {}).get("anchors", 0) >= 1)
 
-    # Exact-return restoration checks are independent of a single selected field.
+    # Restoration compares the returned fields captured by this harness, not every historical DataFrame column.
     # Missing imported families must remain explicitly NOT_RUN, never auto-PASS.
     restoration_pairs = {
         "F08": ("positive", "restore"),
@@ -429,7 +429,7 @@ def main():
         else:
             exact = before["observed"]["return"] == after["observed"]["return"]
             restoration_equivalence[family] = {
-                "status": "PASS_EXACT_RETURN" if exact else "FAIL_RESTORE_DIFFERENCE",
+                "status": "PASS_CAPTURED_RESULT_EQUAL" if exact else "FAIL_CAPTURED_RESULT_DIFFERENCE",
                 "before": before_phase, "restore": restore_phase, "exact_return_equal": bool(exact),
             }
     restore_failures = sum(1 for r in restoration_equivalence.values() if r["status"] == "FAIL_RESTORE_DIFFERENCE")
