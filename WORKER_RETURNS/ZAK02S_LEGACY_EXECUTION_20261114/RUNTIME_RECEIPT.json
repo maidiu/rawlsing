@@ -1,0 +1,89 @@
+{
+  "schema": "zak02s_runtime_receipt_r1",
+  "as_of": "2026-11-14",
+  "result": "NOT_RUN_S2",
+  "repository": "maidiu/rawlsing",
+  "protected_base": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "historical_code_pin": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+  "previous_zak02_return": "2030007c96cf2681f4aee6f3cb609d2648ec518b",
+  "branch": "agent/zak02s-legacy-execution-20261114",
+  "draft_pr": 1041,
+  "runner": "WORKER_RETURNS/ZAK02S_LEGACY_EXECUTION_20261114/run_historical.py",
+  "workflow": ".github/workflows/zak02s-pinned-historical-execution.yml",
+  "source_blob_expectations": {
+    "ddm_v550_question_use.py": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131",
+    "ddm_v550j_joint_patterns.py": "644aab23675b26134040d1df5cc25538b613e163",
+    "ddm_v551j_packets.py": "740bae4cfd4da7ed8aa2c9a2321c47f26ba7c7e8",
+    "ddm_v552_structural.py": "0df56d70cb3880dee723df00aea2207acd525260",
+    "ddm_v552j_handoff.py": "476e617370e8947ee1f38b0718243ecfc5ba9e5c",
+    "build_question_response_attitude_cloud_summary_v549b.py": "bf874a95ea5172817b0d1bdf21b43600aac5cbfe"
+  },
+  "github_actions_attempts": [
+    {
+      "run_id": 43631412889,
+      "event": "push",
+      "head": "a9349f495255bc050a4657c978793f04d1955549",
+      "conclusion": "failure",
+      "steps": null,
+      "logs_url": null,
+      "artifact_count": 0
+    },
+    {
+      "run_id": 43631432512,
+      "event": "pull_request",
+      "head": "a9349f495255bc050a4657c978793f04d1955549",
+      "conclusion": "failure",
+      "steps": null,
+      "logs_url": null,
+      "artifact_count": 0
+    },
+    {
+      "run_id": 43631720658,
+      "event": "push",
+      "head": "3ab088bf983c8c488a6b9b47277ab76ccf27bcc9",
+      "conclusion": "failure",
+      "steps": null
+    },
+    {
+      "run_id": 43631725231,
+      "event": "pull_request",
+      "head": "3ab088bf983c8c488a6b9b47277ab76ccf27bcc9",
+      "conclusion": "failure",
+      "steps": null,
+      "logs_url": null
+    }
+  ],
+  "paired_canonical_failures": [
+    {
+      "run_id": 43631432464,
+      "conclusion": "failure",
+      "steps": null
+    },
+    {
+      "run_id": 43631725135,
+      "conclusion": "failure",
+      "steps": null
+    }
+  ],
+  "logs_failure": "GitHub connector fetch_workflow_job_logs returned 404 BlobNotFound for new failing jobs",
+  "local_git_probe": {
+    "command": "git ls-remote https://github.com/maidiu/rawlsing.git HEAD",
+    "result": "fatal: unable to access: Could not resolve host: github.com"
+  },
+  "historical_operations_executed": 0,
+  "s2_positive_negative_restore_artifact": null,
+  "hypothesized_fixture_cases_not_results": [
+    "F08",
+    "V550J",
+    "V551J",
+    "V552",
+    "V552J",
+    "V549b"
+  ],
+  "root_cause_of_ci_job_failure": "UNKNOWN; jobs have no recorded steps; no Python error established",
+  "independent_receiving": false,
+  "original_production_execution": false,
+  "scientific_grant": false,
+  "protected_merge": false,
+  "next_command": "python -u WORKER_RETURNS/ZAK02S_LEGACY_EXECUTION_20261114/run_historical.py --legacy /tmp/zak02s-legacy --out /tmp/zak02s-results.json"
+}
