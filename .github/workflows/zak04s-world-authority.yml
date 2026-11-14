@@ -30,6 +30,12 @@ jobs:
           PYTHONPATH: .
           PYTHONDONTWRITEBYTECODE: '1'
         run: python -m pytest rawlsing_next/tests/test_universal_world_binding.py -q -o addopts='' --junitxml=zak04s-regressions.xml
+      - name: Existing admitted C-to-D and V558 CONTEXT-positive custody (not a joined FF-to-P41 claim)
+        env:
+          PYTHONPATH: .
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -m pytest rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py::test_actual_c_relation_admits_without_reownership_and_is_lossless rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py::test_positive_relation_m1_derives_adopted_context_and_reaches_v558 -q -o addopts='' --junitxml=zak04s-context.xml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -37,4 +43,5 @@ jobs:
           path: |
             zak04s-test.xml
             zak04s-regressions.xml
+            zak04s-context.xml
           if-no-files-found: ignore
