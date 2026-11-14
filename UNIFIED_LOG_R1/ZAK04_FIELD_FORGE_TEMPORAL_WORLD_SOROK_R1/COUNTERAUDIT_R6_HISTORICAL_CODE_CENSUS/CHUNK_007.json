@@ -1,0 +1,1218 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    80,
+    94
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/ddm_v553_schema.py",
+      "sha": "b41b4485839fcdfe9c0203627940fcc2ff3853df",
+      "role": "CORE_MODULE",
+      "n": 968,
+      "bytes": 26974,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "validate_required_columns",
+          "line": 920
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Schema definitions for the provisional V553 temporal pressure layer.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v553_temporal_identity.py",
+      "sha": "bbbef13111ed80d015a8f3fa47dec06b8cdf4e67",
+      "role": "CORE_MODULE",
+      "n": 172,
+      "bytes": 5644,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 21
+        },
+        {
+          "kind": "def",
+          "name": "_explicit_temporal_year",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "name": "normalize_temporal_report_identity",
+          "line": 49
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Pure identity and calendar-anchor validation for V553 temporal input.  This module deliberately has no parquet/Arrow dependency, so identity validation ca"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+      "sha": "5304b70f9f6522c5ae3893eff215c1d445681983",
+      "role": "CORE_MODULE",
+      "n": 4188,
+      "bytes": 241869,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 77
+        },
+        {
+          "kind": "def",
+          "name": "_report_source",
+          "line": 88
+        },
+        {
+          "kind": "def",
+          "name": "_required_source",
+          "line": 97
+        },
+        {
+          "kind": "def",
+          "name": "_report_country",
+          "line": 104
+        },
+        {
+          "kind": "def",
+          "name": "_required_country",
+          "line": 113
+        },
+        {
+          "kind": "def",
+          "name": "_report_wave_year",
+          "line": 120
+        },
+        {
+          "kind": "def",
+          "name": "_run_id_from_path",
+          "line": 134
+        },
+        {
+          "kind": "def",
+          "name": "_int",
+          "line": 141
+        },
+        {
+          "kind": "def",
+          "name": "_pressure_band",
+          "line": 150
+        },
+        {
+          "kind": "def",
+          "name": "_bounded_score",
+          "line": 160
+        },
+        {
+          "kind": "def",
+          "name": "_optional_float",
+          "line": 170
+        },
+        {
+          "kind": "def",
+          "name": "_is_audit_fact_lane",
+          "line": 184
+        },
+        {
+          "kind": "def",
+          "name": "_interp",
+          "line": 199
+        },
+        {
+          "kind": "def",
+          "name": "_load_report",
+          "line": 203
+        },
+        {
+          "kind": "def",
+          "name": "_load_optional",
+          "line": 233
+        },
+        {
+          "kind": "def",
+          "name": "_parse_json_array",
+          "line": 245
+        },
+        {
+          "kind": "def",
+          "name": "_json_array",
+          "line": 264
+        },
+        {
+          "kind": "def",
+          "name": "_json_singleton_array",
+          "line": 275
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_latest_v552j_root",
+          "line": 280
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_repo_path",
+          "line": 294
+        },
+        {
+          "kind": "def",
+          "name": "_wave_v552j_context",
+          "line": 304
+        },
+        {
+          "kind": "def",
+          "name": "_copy_harmonization_sidecar",
+          "line": 376
+        },
+        {
+          "kind": "def",
+          "name": "_build_pressure_rows",
+          "line": 446
+        },
+        {
+          "kind": "def",
+          "name": "_build_interpolated_pressure_rows",
+          "line": 606
+        },
+        {
+          "kind": "def",
+          "name": "_build_source_wave_anchor_manifest",
+          "line": 673
+        },
+        {
+          "kind": "def",
+          "name": "_build_temporal_anchor_index",
+          "line": 713
+        },
+        {
+          "kind": "def",
+          "name": "_build_harmonization_authority_index",
+          "line": 719
+        },
+        {
+          "kind": "def",
+          "name": "_authorize_v553_multi_wave_key",
+          "line": 750
+        },
+        {
+          "kind": "def",
+          "name": "_build_interpolation_policy_ledger",
+          "line": 850
+        },
+        {
+          "kind": "def",
+          "name": "_build_rupture_event_slot_ledger",
+          "line": 887
+        },
+        {
+          "kind": "def",
+          "name": "_build_cohort_window_requirement_index",
+          "line": 926
+        },
+        {
+          "kind": "def",
+          "name": "_build_absence_noncomparability_register",
+          "line": 955
+        },
+        {
+          "kind": "def",
+          "name": "_build_country_year_pressure_field",
+          "line": 1084
+        },
+        {
+          "kind": "def",
+          "name": "_build_pressure_component_breakdown",
+          "line": 1202
+        },
+        {
+          "kind": "def",
+          "name": "_build_interpolation_manifest",
+          "line": 1243
+        },
+        {
+          "kind": "def",
+          "name": "_build_event_override_manifest",
+          "line": 1273
+        },
+        {
+          "kind": "def",
+          "name": "_build_temporal_authority_ledger",
+          "line": 1293
+        },
+        {
+          "kind": "def",
+          "name": "_build_comparability_audit",
+          "line": 1354
+        },
+        {
+          "kind": "def",
+          "name": "_build_rupture_block_audit",
+          "line": 1378
+        },
+        {
+          "kind": "def",
+          "name": "_build_downstream_v554_handoff_index",
+          "line": 1402
+        },
+        {
+          "kind": "def",
+          "name": "_stable_temporal_pressure_key",
+          "line": 1430
+        },
+        {
+          "kind": "def",
+          "name": "_canonical_semantic_signature",
+          "line": 1456
+        },
+        {
+          "kind": "def",
+          "name": "_v553_comparable_temporal_key",
+          "line": 1467
+        },
+        {
+          "kind": "def",
+          "name": "_shared_structural_axis_fields",
+          "line": 1557
+        },
+        {
+          "kind": "def",
+          "name": "_v553_temporal_key_profile",
+          "line": 1574
+        },
+        {
+          "kind": "def",
+          "name": "_v553_temporal_key_row",
+          "line": 1745
+        },
+        {
+          "kind": "def",
+          "name": "_first_or_unknown",
+          "line": 1762
+        },
+        {
+          "kind": "def",
+          "name": "_merge_nonempty_resolution",
+          "line": 1772
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_wave_anchor_index",
+          "line": 1789
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_harmonization_difference_ledger",
+          "line": 1827
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_pressure_basis_ledger",
+          "line": 1871
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_confidence_penalty_ledger",
+          "line": 1912
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_temporal_key_tables",
+          "line": 1948
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_temporal_pressure_observation_index",
+          "line": 2432
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_cross_wave_delta_index",
+          "line": 2596
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_interpolation_segment_index",
+          "line": 2675
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_run_manifest",
+          "line": 2730
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_temporal_gap_and_absence_index",
+          "line": 2772
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_structural_rupture_candidate_index",
+          "line": 2806
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_temporal_pressure_field_contract",
+          "line": 2837
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_v554_handoff_index",
+          "line": 2948
+        },
+        {
+          "kind": "def",
+          "name": "_build_v553_forbidden_inference_audit",
+          "line": 3026
+        },
+        {
+          "kind": "def",
+          "name": "_write_v553_semantic_implementation_report",
+          "line": 3053
+        },
+        {
+          "kind": "def",
+          "name": "build_v553_temporal_pressure_field",
+          "line": 3169
+        },
+        {
+          "kind": "def",
+          "name": "validate_v553_temporal_pressure_readiness",
+          "line": 4108
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "15:from data.ddm_build_copy.ddm_v551j_io import read_table, write_frame_artifact, write_json_artifact, ensure_output_dirs",
+        "25:from data.ddm_build_copy.ddm_v553_repo_discovery import latest_run_root_for_wave",
+        "26:from data.ddm_build_copy.ddm_v553_temporal_identity import (",
+        "29:from data.ddm_build_copy.ddm_v552j_handoff import _packet_structural_dimension_resolution",
+        "30:from data.ddm_build_copy.ddm_v553_schema import (",
+        "71:from data.ddm_build_copy.ddm_v5_build_standard import build_layer_build_record, build_thin_build_ledger"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Thin V553 temporal pressure field compiler.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v554_seed_contract.py",
+      "sha": "b11b73fc171f6b37976fa579d54700505a69f84c",
+      "role": "CORE_MODULE",
+      "n": 1441,
+      "bytes": 67858,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "_bounded_score",
+          "line": 61
+        },
+        {
+          "kind": "def",
+          "name": "_json_list",
+          "line": 71
+        },
+        {
+          "kind": "def",
+          "name": "_load_json",
+          "line": 75
+        },
+        {
+          "kind": "def",
+          "name": "_load_optional_frame",
+          "line": 85
+        },
+        {
+          "kind": "def",
+          "name": "_json_object",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "_first_nonempty",
+          "line": 107
+        },
+        {
+          "kind": "def",
+          "name": "_wave_year_from_row",
+          "line": 115
+        },
+        {
+          "kind": "def",
+          "name": "_seed_permission",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "_forbidden_uses",
+          "line": 140
+        },
+        {
+          "kind": "def",
+          "name": "_seed_row",
+          "line": 157
+        },
+        {
+          "kind": "def",
+          "name": "_build_seed_affordance_index",
+          "line": 229
+        },
+        {
+          "kind": "def",
+          "name": "_build_demographic_slice_contract",
+          "line": 555
+        },
+        {
+          "kind": "def",
+          "name": "_build_regional_slice_contract",
+          "line": 589
+        },
+        {
+          "kind": "def",
+          "name": "_build_required_mediation_slot_index",
+          "line": 620
+        },
+        {
+          "kind": "def",
+          "name": "_build_absence_register",
+          "line": 654
+        },
+        {
+          "kind": "def",
+          "name": "_build_blocker_ledger",
+          "line": 690
+        },
+        {
+          "kind": "def",
+          "name": "_build_prohibition_ledger",
+          "line": 715
+        },
+        {
+          "kind": "def",
+          "name": "_build_v555_handoff_index",
+          "line": 750
+        },
+        {
+          "kind": "def",
+          "name": "_build_audits",
+          "line": 787
+        },
+        {
+          "kind": "def",
+          "name": "build_v554_seed_contract",
+          "line": 897
+        },
+        {
+          "kind": "def",
+          "name": "validate_v554_seed_contract_readiness",
+          "line": 1405
+        }
+      ],
+      "imports": [
+        "17:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "18:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, read_table, write_frame_artifact, write_json_artifact",
+        "19:from data.ddm_build_copy.ddm_v5_build_standard import build_layer_build_record"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Completion-grade V554 seed affordance contract builder.  This layer turns V553 temporal pressure and harmonization evidence into bounded seed affordance l"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v555_life_course_mediation.py",
+      "sha": "f41ef8657f5f9fb07f57dc53ebaffadca3bbaf32",
+      "role": "CORE_MODULE",
+      "n": 519,
+      "bytes": 25979,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 27
+        },
+        {
+          "kind": "def",
+          "name": "_bounded_score",
+          "line": 38
+        },
+        {
+          "kind": "def",
+          "name": "_json_list",
+          "line": 48
+        },
+        {
+          "kind": "def",
+          "name": "_load_json",
+          "line": 57
+        },
+        {
+          "kind": "def",
+          "name": "_load_optional_frame",
+          "line": 67
+        },
+        {
+          "kind": "def",
+          "name": "_summarize_list",
+          "line": 76
+        },
+        {
+          "kind": "def",
+          "name": "_frame_records",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "name": "_seed_affordance_rows",
+          "line": 88
+        },
+        {
+          "kind": "def",
+          "name": "_slot_rows",
+          "line": 96
+        },
+        {
+          "kind": "def",
+          "name": "_build_registers",
+          "line": 131
+        },
+        {
+          "kind": "def",
+          "name": "build_v555_life_course_mediation",
+          "line": 250
+        }
+      ],
+      "imports": [
+        "18:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "19:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, read_table, write_frame_artifact, write_json_artifact",
+        "20:from data.ddm_build_copy.ddm_v5_build_standard import build_layer_build_record"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Completion-grade V555 life-course mediation contract builder.  This layer receives the bounded V554 seed contract and turns it into explicit mediation-slo"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v556_pressureflow.py",
+      "sha": "a6e689936f299787a845e3bd154db677d18dc472",
+      "role": "CORE_MODULE",
+      "n": 339,
+      "bytes": 17114,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_pressureflow_rows",
+          "line": 27
+        },
+        {
+          "kind": "def",
+          "name": "_build_registers",
+          "line": 59
+        },
+        {
+          "kind": "def",
+          "name": "build_v556_pressureflow_attractor",
+          "line": 124
+        }
+      ],
+      "imports": [
+        "18:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "19:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, read_table, write_frame_artifact, write_json_artifact",
+        "20:from data.ddm_build_copy.ddm_v5_build_standard import build_layer_build_record",
+        "21:from data.ddm_build_copy.ddm_v555_life_course_mediation import _bounded_score, _clean, _json_list, _load_json, _load_optional_frame, _summarize_list"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Completion-grade V556 pressure-flow / attractor contract builder.  This layer receives the bounded V555 mediation contract and turns it into pressure-flow"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v557_renderer_contract.py",
+      "sha": "7ad1dba128537e6b769617cec7de8220f4139e72",
+      "role": "CORE_MODULE",
+      "n": 399,
+      "bytes": 18814,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_prompt_audit_rows",
+          "line": 28
+        },
+        {
+          "kind": "def",
+          "name": "_build_requirements",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "build_v557_renderer_contract",
+          "line": 142
+        }
+      ],
+      "imports": [
+        "18:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "19:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, read_table, write_frame_artifact, write_json_artifact",
+        "20:from data.ddm_build_copy.ddm_v5_build_standard import build_layer_build_record",
+        "21:from data.ddm_build_copy.ddm_v555_life_course_mediation import _bounded_score, _clean, _json_list, _load_json, _load_optional_frame"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Completion-grade V557 renderer contract builder.  This layer receives the bounded V556 pressure-flow contract and turns it into a renderer-ready boundary "
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v558_plus_governance.py",
+      "sha": "99bb369b5463a9b7a68c0b1f3d84368337d1d51b",
+      "role": "CORE_MODULE",
+      "n": 1289,
+      "bytes": 54708,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "_boolish",
+          "line": 64
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 72
+        },
+        {
+          "kind": "def",
+          "name": "_read_v558_bundle",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "name": "_governance_inventory",
+          "line": 115
+        },
+        {
+          "kind": "def",
+          "name": "_first_blocker_code",
+          "line": 130
+        },
+        {
+          "kind": "def",
+          "name": "_status_from_inputs",
+          "line": 139
+        },
+        {
+          "kind": "def",
+          "name": "_make_gate_rows",
+          "line": 214
+        },
+        {
+          "kind": "def",
+          "name": "_generation_permission_rows",
+          "line": 335
+        },
+        {
+          "kind": "def",
+          "name": "_runtime_constraint_rows",
+          "line": 363
+        },
+        {
+          "kind": "def",
+          "name": "_prompt_audit_rows",
+          "line": 402
+        },
+        {
+          "kind": "def",
+          "name": "_adapter_rows",
+          "line": 448
+        },
+        {
+          "kind": "def",
+          "name": "_evaluator_rows",
+          "line": 548
+        },
+        {
+          "kind": "def",
+          "name": "_memory_rows",
+          "line": 596
+        },
+        {
+          "kind": "def",
+          "name": "_narrative_rows",
+          "line": 686
+        },
+        {
+          "kind": "def",
+          "name": "_surface_generation_rows",
+          "line": 728
+        },
+        {
+          "kind": "def",
+          "name": "_runtime_safety_rows",
+          "line": 754
+        },
+        {
+          "kind": "def",
+          "name": "_app_handoff_rows",
+          "line": 783
+        },
+        {
+          "kind": "def",
+          "name": "_bundle_artifact",
+          "line": 809
+        },
+        {
+          "kind": "def",
+          "name": "build_v558_plus_governance",
+          "line": 843
+        },
+        {
+          "kind": "def",
+          "name": "validate_v558_plus_governance",
+          "line": 1230
+        }
+      ],
+      "imports": [
+        "19:from data.ddm_build_copy.ddm_v5_build_standard import build_review_gate_record",
+        "20:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, write_frame_artifact, write_json_artifact"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V558+ runtime governance bundle.  This layer sits after the current V558 review gates and prepares the deployment/evaluation/memory/narrative go"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v558_runtime_graft_readiness.py",
+      "sha": "005637ad329e35a161a14581f51fd08754081c3e",
+      "role": "CORE_MODULE",
+      "n": 462,
+      "bytes": 20555,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_resolve_default_governance_root",
+          "line": 31
+        },
+        {
+          "kind": "def",
+          "name": "_clean_text",
+          "line": 48
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 60
+        },
+        {
+          "kind": "def",
+          "name": "_report_status",
+          "line": 70
+        },
+        {
+          "kind": "def",
+          "name": "_write_json",
+          "line": 95
+        },
+        {
+          "kind": "def",
+          "name": "_read_v557_bundle",
+          "line": 102
+        },
+        {
+          "kind": "def",
+          "name": "_governance_inventory",
+          "line": 119
+        },
+        {
+          "kind": "def",
+          "name": "build_v558_numeric_runtime_graft_readiness",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "validate_v558_runtime_graft_readiness",
+          "line": 440
+        }
+      ],
+      "imports": [
+        "15:from data.ddm_build_copy.ddm_v5_build_standard import build_review_gate_record"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V558 numeric runtime graft readiness report.  This stays deliberately non-runtime: it decides whether the current V557 outputs are safe to enter"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v558_runtime_input_gate.py",
+      "sha": "bb160ca3fd05bf9b404090f379be06d192cb918e",
+      "role": "CORE_MODULE",
+      "n": 701,
+      "bytes": 31906,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_resolve_default_governance_root",
+          "line": 34
+        },
+        {
+          "kind": "def",
+          "name": "_clean_text",
+          "line": 51
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 63
+        },
+        {
+          "kind": "def",
+          "name": "_report_status",
+          "line": 73
+        },
+        {
+          "kind": "def",
+          "name": "_write_json",
+          "line": 98
+        },
+        {
+          "kind": "def",
+          "name": "_write_parquet",
+          "line": 105
+        },
+        {
+          "kind": "def",
+          "name": "_stringify",
+          "line": 111
+        },
+        {
+          "kind": "def",
+          "name": "_read_v557_bundle",
+          "line": 120
+        },
+        {
+          "kind": "def",
+          "name": "_governance_inventory",
+          "line": 145
+        },
+        {
+          "kind": "def",
+          "name": "_input_field_audit",
+          "line": 152
+        },
+        {
+          "kind": "def",
+          "name": "build_v558_runtime_input_gate",
+          "line": 164
+        },
+        {
+          "kind": "def",
+          "name": "validate_v558_runtime_input_gate",
+          "line": 669
+        }
+      ],
+      "imports": [
+        "18:from data.ddm_build_copy.ddm_v5_build_standard import build_review_gate_record"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V558 runtime input gate and normalized runtime input object.  This is the first V558+ implementation pass. It does not implement runtime generat"
+    },
+    {
+      "path": "data/ddm_build_copy/merge_determinicity_shards_v550.py",
+      "sha": "6f46e8caaaba6e5a326fe52e787ff4c0817ed0fb",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 195,
+      "bytes": 10350,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 24
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 42
+        }
+      ],
+      "imports": [
+        "17:from data.ddm_build_copy.ddm_v550_manifest import build_merge_manifest",
+        "18:from data.ddm_build_copy.ddm_v550_merge import deduplicate_rows, merge_shard_tables, merge_v551_bridge_indexes, validate_shard_schema_compatibility",
+        "19:from data.ddm_build_copy.ddm_v550_schema import SHARD_OUTPUT_TABLES, V551_BRIDGE_INDEX_SCHEMA, validate_shard_manifest",
+        "20:from data.ddm_build_copy.ddm_v550_storage import V550Paths, atomic_promote_latest, atomic_write_json, write_table"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Merge V550 shard bundles into a canonical repository run.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/plan_v550_wave_shards.py",
+      "sha": "9716bb562c83e663b2f1f709901176adad12bf9f",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 441,
+      "bytes": 19459,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "name": "make_run_id",
+          "line": 58
+        },
+        {
+          "kind": "def",
+          "name": "_append_shared_substrate_command_args",
+          "line": 64
+        },
+        {
+          "kind": "def",
+          "name": "_clean_text",
+          "line": 75
+        },
+        {
+          "kind": "def",
+          "name": "_parse_country_count",
+          "line": 87
+        },
+        {
+          "kind": "def",
+          "name": "_static_plan_from_template",
+          "line": 117
+        },
+        {
+          "kind": "def",
+          "name": "_db_launchable_plan",
+          "line": 207
+        },
+        {
+          "kind": "def",
+          "name": "_apply_plan_filters",
+          "line": 306
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 318
+        }
+      ],
+      "imports": [
+        "21:from data.ddm_build_copy.ddm_v550_readiness import discover_shardable_source_waves",
+        "22:from data.ddm_build_copy.ddm_v550_readiness import load_scope_manifest",
+        "23:from data.ddm_build_copy.ddm_v550_storage import load_env_database_url, try_connect_database",
+        "24:from data.ddm_build_copy.ddm_v550_shards import shard_id_for"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Planner for V550 wave shards.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/rebuild_v550_bridge_from_checkpoints.py",
+      "sha": "15ec3e052243d6cde001c7f3bbb3ff60c80cf3bc",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 824,
+      "bytes": 42868,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 95
+        },
+        {
+          "kind": "def",
+          "name": "_load_shared_substrate_cache",
+          "line": 152
+        },
+        {
+          "kind": "def",
+          "name": "_load_checkpoint_frame",
+          "line": 178
+        },
+        {
+          "kind": "def",
+          "name": "_question_universe_qdir",
+          "line": 188
+        },
+        {
+          "kind": "def",
+          "name": "_question_universe_checkpoint_count",
+          "line": 192
+        },
+        {
+          "kind": "def",
+          "name": "_question_rows_from_question_universe_checkpoints",
+          "line": 199
+        },
+        {
+          "kind": "def",
+          "name": "_discover_latest_complete_shard_root",
+          "line": 223
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_source_paths",
+          "line": 247
+        },
+        {
+          "kind": "def",
+          "name": "_bridge_table_from_checkpoints",
+          "line": 260
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 264
+        },
+        {
+          "kind": "def",
+          "name": "_process_label",
+          "line": 270
+        },
+        {
+          "kind": "def",
+          "name": "_output_table_path",
+          "line": 275
+        },
+        {
+          "kind": "def",
+          "name": "_post_assembly_snapshot_dir",
+          "line": 287
+        },
+        {
+          "kind": "def",
+          "name": "_write_post_assembly_snapshot",
+          "line": 291
+        },
+        {
+          "kind": "def",
+          "name": "_load_post_assembly_snapshot",
+          "line": 304
+        },
+        {
+          "kind": "def",
+          "name": "_load_existing_bridge_meta_and_frame",
+          "line": 320
+        },
+        {
+          "kind": "def",
+          "name": "_load_scope_frame",
+          "line": 343
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_readiness_root",
+          "line": 354
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 366
+        }
+      ],
+      "imports": [
+        "34:from data.ddm_build_copy.ddm_v550_bridge import build_bridge_causal_summary, build_bridge_lane_audits, write_v551_bridge_index_for_shard",
+        "35:from data.ddm_build_copy.ddm_v550_branching import branch_nodes_rows, indicator_answer_matrix_rows, indicator_summary_rows, outlier_cohort_rows, prepare_question_frame, secondary_indicator_summary_rows",
+        "36:from data.ddm_build_copy.ddm_v550_clouds import BRANCH_POSITION_SIGNATURE_COLUMNS, BRANCH_RELATION_CO_SIGNATURE_COLUMNS, QUESTION_RESPONSE_ATTITUDE_CLOUD_COLUMNS, build_attitude_cloud_rows, build_co_signature_rows, build_position_signature_rows, should_emit_cloud_tables",
+        "37:from data.ddm_build_copy.ddm_v550_manifest import build_shard_manifest, utc_now",
+        "38:from data.ddm_build_copy.ddm_v550_position_distribution import POSITION_DISTRIBUTION_COLUMNS, build_position_distribution_rows",
+        "55:from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash",
+        "56:from data.ddm_build_copy.ddm_v550_schema import V551_BRIDGE_INDEX_SCHEMA",
+        "57:from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, try_connect_database, write_table",
+        "58:from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import SharedSubstratePaths, load_shared_respondent_substrate",
+        "59:from data.ddm_build_copy.ddm_v550_validation import validate_v551_bridge_rows",
+        "60:from data.ddm_build_copy.ddm_v550_validation import validate_attitude_cloud_rows, validate_position_signature_rows, validate_relation_signature_rows"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Replay the post-question V550 shard outputs from checkpoint artifacts.  This runner does not rerun per-question execution, but it does: - reload the respo"
+    },
+    {
+      "path": "data/ddm_build_copy/rebuild_v550_wave_clouds.py",
+      "sha": "a3fee6d04760dc1e41a9671651ee9d538e7220be",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 541,
+      "bytes": 28753,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 57
+        },
+        {
+          "kind": "def",
+          "name": "_load_shared_substrate_cache",
+          "line": 95
+        },
+        {
+          "kind": "def",
+          "name": "_load_question_rows_from_checkpoints",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "_load_response_option_map_live",
+          "line": 134
+        },
+        {
+          "kind": "def",
+          "name": "_sql_literal",
+          "line": 155
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_token",
+          "line": 159
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_key",
+          "line": 163
+        },
+        {
+          "kind": "def",
+          "name": "_wave_aliases_for_source_family",
+          "line": 167
+        },
+        {
+          "kind": "def",
+          "name": "_wave_candidates_for_replay",
+          "line": 222
+        },
+        {
+          "kind": "def",
+          "name": "_count_question_rows",
+          "line": 250
+        },
+        {
+          "kind": "def",
+          "name": "_question_rows_from_cache_replay",
+          "line": 263
+        },
+        {
+          "kind": "def",
+          "name": "_question_rows_replay",
+          "line": 276
+        },
+        {
+          "kind": "def",
+          "name": "_prefetch_cache_dir",
+          "line": 289
+        },
+        {
+          "kind": "def",
+          "name": "_prefetch_cache_path",
+          "line": 295
+        },
+        {
+          "kind": "def",
+          "name": "_load_prefetch_cache",
+          "line": 299
+        },
+        {
+          "kind": "def",
+          "name": "_write_prefetch_cache",
+          "line": 314
+        },
+        {
+          "kind": "def",
+          "name": "_reset_cloud_checkpoint_dir",
+          "line": 319
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 328
+        }
+      ],
+      "imports": [
+        "34:from data.ddm_build_copy.ddm_v550_branching import prepare_question_frame",
+        "35:from data.ddm_build_copy.ddm_v550_clouds import (",
+        "44:from data.ddm_build_copy.ddm_v550_question_use import build_question_use_contract_row",
+        "45:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "46:from data.ddm_build_copy.ddm_v550_readiness import load_scope_manifest",
+        "47:from data.ddm_build_copy.ddm_v550_schema import forbidden_cloud_feature_row_count, validate_no_forbidden_cloud_features",
+        "48:from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, load_env_database_url, read_table_any, try_connect_database, write_table",
+        "49:from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import SharedSubstratePaths, load_shared_respondent_substrate"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Replay the V550 cloud layer for an existing shard without rebuilding the full shard.\"\"\"  from __future__ import annotations "
+    }
+  ]
+}
