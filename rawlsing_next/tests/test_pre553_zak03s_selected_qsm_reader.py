@@ -30,7 +30,8 @@ from rawlsing_next.tests.test_pre553_empirical_query import _h, _ref
 from rawlsing_next.tests.test_pre553_route_b_production import _fixture
 
 
-def _synthetic_qsm(path: Path, *, variant: str, status="GOVERNED_NEUTRAL_COVERAGE"):
+def _synthetic_qsm(path: Path, *, variant: str, status="GOVERNED_NEUTRAL_COVERAGE",
+                   disposition_override=None):
     registry = pd.read_csv(CALIBRATION_AUTHORITY_PATH, dtype=str, keep_default_na=False)
     columns = list(registry.columns)
     k = 0
@@ -40,7 +41,7 @@ def _synthetic_qsm(path: Path, *, variant: str, status="GOVERNED_NEUTRAL_COVERAG
         "country_code_scope": "US", "question_id": "Y", "var_code": "Y",
         "authority_rule_id": "SYNTH-QSM-Y",
         "relation_use_status": status,
-        "authority_status": (
+        "authority_status": disposition_override or (
             "BLOCKED_SOURCE_AUTHORITY" if status.startswith("BLOCKED_")
             else "GOVERNED_NON_DIRECTIONAL_DISPOSITION"
         ),
@@ -220,6 +221,23 @@ def test_historical_block_and_modern_permission_revocation_and_restore(tmp_path)
     )
     with pytest.raises(Pre553AuthorityError, match="positive authority required"):
         _run(fx, deny_sel, deny_catalog, deny_requests)
+
+    # A superficially permitted relation status with an explicitly blocked
+    # authority disposition may not bypass the historical source denial.
+    inconsistent_path = tmp_path / "qsm_inconsistent.csv"
+    i_sha, i_row, i_ver = _synthetic_qsm(
+        inconsistent_path, variant="INCONSISTENT",
+        disposition_override="BLOCKED_SOURCE_AUTHORITY",
+    )
+    inconsistent = replace(
+        a, authority_path=inconsistent_path, expected_file_sha256=i_sha,
+        expected_row_hash=i_row, expected_authority_version=i_ver,
+    )
+    with pytest.raises(SelectedQsmRouteError, match="disposition is not positive"):
+        _run(fx, inconsistent, catalog, requests)
+
+    with pytest.raises(SelectedQsmRouteError, match="explicit selected QSM path"):
+        _run(fx, replace(a, authority_path=None), catalog, requests)
 
     restored = _run(fx, a, catalog, requests)
     assert restored.binding_receipt == first.binding_receipt
