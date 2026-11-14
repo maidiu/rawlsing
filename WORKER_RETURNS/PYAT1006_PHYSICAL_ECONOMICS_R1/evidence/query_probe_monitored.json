@@ -1,0 +1,38 @@
+{
+  "schema": "PYAT1006_QUERY_PROBE_MONITORED@1",
+  "note": "Values recorded from the actual run_monitored console receipt after the query_probe process exited. The 50k probe measured all three queries but its own final status remained PARTIAL_RUNNING because a harness repeat-section bug raised after measurement; timings are real.",
+  "shapes": {
+    "scale-50k": {
+      "seconds": 1093.1558104280848,
+      "returncode": 1,
+      "killed_for_cap": false,
+      "timed_out": false,
+      "process_tree": {
+        "tree_peak_rss_bytes": 1833365504,
+        "max_single_process_peak_rss_bytes": 1833365504,
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "sample_count": 38085,
+        "max_process_count": 1,
+        "sampling_interval_seconds": 0.02
+      },
+      "disk_after_free_bytes": 14998564864
+    },
+    "hist-100k": {
+      "seconds": 2347.2365384970326,
+      "returncode": 0,
+      "killed_for_cap": false,
+      "timed_out": false,
+      "process_tree": {
+        "tree_peak_rss_bytes": 3690455040,
+        "max_single_process_peak_rss_bytes": 3690455040,
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "sample_count": 78346,
+        "max_process_count": 1,
+        "sampling_interval_seconds": 0.02
+      },
+      "disk_after_free_bytes": 14003752960
+    }
+  }
+}
