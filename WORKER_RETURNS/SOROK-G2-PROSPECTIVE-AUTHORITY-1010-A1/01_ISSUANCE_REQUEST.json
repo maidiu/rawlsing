@@ -1,0 +1,140 @@
+{
+  "schema": "SOROK_G2_MINIMUM_SOURCE_OWNER_ISSUANCE_REQUEST@1",
+  "disposition": "NOT_ISSUED__G2_HELD",
+  "source_cut": "44e664eff316e0f644b1326bf5d7b1d23594c179",
+  "scope": "SOURCEFREE_S2_G2_ONLY",
+  "not_native_science": true,
+  "rule_label_requested_not_issued": "V3_ACTOR_PROSPECTIVE_ALTERNATIVE_EVALUATION_AND_EVENT_ADMISSION",
+  "competence": {
+    "actor_semantic_owner": "V3 actor/prospective semantic source owner to be explicitly identified and version-registered",
+    "response_authority": "CAN-008 transaction grammar; no activity-selection semantics implied",
+    "p3_owner": "P3Owner: owner-authenticated exact plan/proposal binding, currently TEST_ONLY",
+    "p2_owner": "P2Owner: existing sole event writer with prebound case/source",
+    "adp019": "Only when a proposed action is an external interaction",
+    "adp020": "Only if an issued semantic rule authorizes nondeterministic choices"
+  },
+  "required_receipts": {
+    "candidate_set": [
+      "schema_version",
+      "root",
+      "actor",
+      "branch",
+      "at_clock",
+      "public_access_event_refs_and_hashes",
+      "actor_access_and_world_material_hashes",
+      "source_closure_hash",
+      "semantic_rule_id_version_and_registry_hash",
+      "plural_stream_refs_roles_and_hashes",
+      "candidate_entries_and_hashes",
+      "candidate_set_hash",
+      "lawful_empty_or_ambiguity_status"
+    ],
+    "candidate_entry": [
+      "candidate_id",
+      "candidate_replay_hash",
+      "kind_and_event_family",
+      "source_rule_and_proposer",
+      "material_feasibility_receipt",
+      "temporal_binding",
+      "participants",
+      "objective_action_payload_and_hash_or_inaction_kind",
+      "readset_hash",
+      "negative_conditions"
+    ],
+    "evaluation_decision": [
+      "decision_id_hash",
+      "candidate_set_hash",
+      "root_actor_branch_clock",
+      "semantic_rule_and_registry_hash",
+      "qualified_plural_stream_contributions",
+      "material_negatives",
+      "decision_status",
+      "selected_candidate_id_hash_if_selected",
+      "inaction_or_defer_reason_if_applicable",
+      "readset_and_source_closure_hash",
+      "provenance_and_replay_identity"
+    ],
+    "p3_plan_binding": [
+      "event_id",
+      "exact_EventProposal_hash",
+      "P3_plan_hash",
+      "source_hash",
+      "registry_hash",
+      "root_actor_branch",
+      "plan_phase_and_scope",
+      "permitted_rules",
+      "reservation_or_constructor_prebind_receipt",
+      "before_and_after_P3_state_and_pending_check"
+    ],
+    "p2_selected_event_binding": [
+      "selected_decision_hash",
+      "selected_candidate_hash",
+      "P2_case_source_and_source_ref_hash",
+      "event_id_proposal_hash",
+      "participants_time_interval_history_refs",
+      "expected_world_head",
+      "actual_E1_event_id_hash_and_payload_mapping",
+      "idempotence_operation_id",
+      "cold_event_reader_receipt",
+      "later_distinct_actor_consumer_receipt"
+    ],
+    "evaluated_inaction": [
+      "issued_rule_id_and_hash",
+      "complete_candidate_set_and_criteria",
+      "explicit_inaction_status",
+      "immutable_non_event_decision_ledger_receipt",
+      "later_independent_inaction_consumer_receipt",
+      "zero_world_write_assertion"
+    ],
+    "adp_optional": [
+      "external_ADP019_envelope_and_ADMIT_receipt_if_external",
+      "ADP020_candidate_set_seed_stream_draw_decision_if_stochastic",
+      "NO_DRAW_if_no_authority_or_deterministic"
+    ]
+  },
+  "allowed_decisions": [
+    "SELECTED_ACTOR_ACTIVITY",
+    "EVALUATED_INACTION",
+    "DEFERRED_UNRESOLVED",
+    "REFUSED_UNLAWFUL"
+  ],
+  "invariants": [
+    "no synthetic mode-to-action promotion",
+    "no all-prospectives-as-choices conflation",
+    "no hidden scalar dominant motive",
+    "no mother-private access leak",
+    "no posthoc P2 case/source meaning substitution",
+    "no unissued Rule A/T or durable memory",
+    "no missing-rule-as-NO_CHANGE",
+    "no ADP019 render-as-occurrence",
+    "no ADP020 ambient or unauthorized draw",
+    "same operation exact once / cold fail-stop"
+  ],
+  "source_owner_exclusive_paths": [
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py"
+  ],
+  "first_narrow_adapter_after_issuance": "WORKER_RETURNS/SOROK-D03-E01-1010-AGENT-A-R1/d03_e01_performer.py",
+  "preserve_input_evidence": {
+    "run_log_path": "WORKER_RETURNS/SOROK-D03-E01-1010-NATIVE-EXEC-R1/evidence/integration-run-2-with-real-pending.log",
+    "run_log_blob": "1d2d27dd3a4ad3982ce7e283feed0bc616a9352c",
+    "inherited_pass_count": 37,
+    "inherited_run_seconds": 570.69,
+    "agent_a_reran_native_suite": false
+  },
+  "acceptance_tests": [
+    "actor-local speech absent / altered / perceived-only privacy",
+    "same speech changed history and plural contradictory streams",
+    "qualified ordinary unrelated activity and evaluated inaction",
+    "stale feasibility between candidate and world write",
+    "forged candidate/actor/source/registry/plan/P2 case and event mapping",
+    "unselected candidates never written or given P3 effects",
+    "ADP optional only on issued external / stochastic choice",
+    "exact-once commit/cold replay and pending reservation custody",
+    "distinct later actor performance reader rather than same-event C9 readback"
+  ],
+  "proof_boundary": "This is a contract request, not authority, G2 implementation, new native psychological law, or independent acceptance"
+}
