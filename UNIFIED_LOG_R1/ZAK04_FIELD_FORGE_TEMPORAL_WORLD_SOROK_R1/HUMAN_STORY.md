@@ -1,0 +1,23 @@
+# ZAK-04 — Historical machinery, surviving knowledge and unproved passage to world/person
+
+The old V551→V552 engine could turn certified signed atoms into weighted structural-pressure observations; V552J joined them to certified packet facts under scope and permission controls; V553 then interpolated between pressure anchors with explicit `interpolated` vs `anchor` statuses. Other branches developed independent richer Field Forge operations: **FFX Core A** enumerated exact same-unit position/disposition configurations and minority outcomes; **Core B** built separate metric geometries with disjoint measurement ancestry and forbade homology/causal conclusions; **Core C** computed respondent-level conditional redistribution with exact/backoff support and abstention. These are distinct capabilities, not a generic “FF structural guard.”
+
+The historical/candidate F6M path combines independently source-indexed joint summaries into target-stratum evidence, preserving native source baselines and explicit **uncovered target mass**. Incomplete support returns `PARTIAL_IDENTIFICATION_ONLY` with bounds rather than a fabricated complete probability. At R39, the bounded F6P test-only reader checked hashes, covered+uncovered mass, contradictory decisions, and forged real-use requests, reporting 32/0 and a severed/restored F6M dependency. That **does** establish identified sourcefree downstream work; it **does not** establish an approved PYAT N9 original-source reader. F7 strict temporal comparability separately requires positive evidence and order authority; it is not just V553 interpolation or an R05 clock toggle.
+
+Current protected code includes F5 structural admission, source-relation composition guards, FF conditional support, C→D typed FF and D→M4 scoped CONTEXT, R05/P41 learned world views, and separate objective-position materialization/publication. Their exact code/receipt identity is in `EVIDENCE.tsv`; none may automatically claim that the older A/B/C, weighted structural pressure, F6M numeric synthesis, or F7 source equivalence were completely superseded. N9 sourcefree world selection and SOROK sourcefree recipients are meaningful; source/structural/scientific/actor permission ceilings remain independent.
+
+### Worked comparison 1: incomplete source support
+
+Earlier F6M candidate receives two source-indexed strata and a planned source weight. If a source is present but below admissible raw support, its planned share remains unknown; for reported W2 the author observed uncovered `1/4`. A simple renormalized point estimate would conceal this missing contribution. The R39 F6P code explicitly checks that the covered subprobability plus uncovered mass equals one and refuses a contradictory complete distribution. Current `guard_estimand_composition` can guard permission, but **it does not itself compute the F6M probability mixture or bounds**. Thus numerical conservation at the protected PYAT N7→N9 boundary is unproved.
+
+### Worked comparison 2: two very different “structural” meanings
+
+FFX Core B accepts the same respondent risk set for separately measured position and disposition surfaces and refuses overlapping active ancestry. It emits distance/neighbor/stability diagnostics while explicitly forbidding claimed homology, global ontology, causal mechanism and actor psychology. Current F5 admission checks rule/authority to decide structural participation; neither its name nor refusal semantics proves it preserves the FFX geometry calculation. Both are valuable, with different inputs and scientific ceilings.
+
+### Worked comparison 3: world/source/person
+
+Protected R05 has a role distinction (`STRUCTURAL`/`CONTEXT`) and a trusted P41 execution context. The authorized D→M4 relation publication evidence is **CONTEXT**, not permission to rewrite a structural world. A forged FF ancestry path remains a code-level concern (NEG-07), but no successful exploit or real selected relation severance (NEG-08) has been established. An accepted objective position or rendered world context is also not a native person's lived memory, motivation, or licensed actor event.
+
+### Case navigation
+
+All 20 scoped T cases are in `CASES/`, keyed by the same T IDs as `FINDINGS.tsv`. Legacy G1A 28 source-location identities and all 21 modern roadmap children remain separately recorded as source/reference material; neither is miscounted as completed functional succession. The five closure grades and genuine unsearched domain cells are in `00_RETURN.md` and `COVERAGE.tsv`. This return is a research candidate pending independent omitted-capability challenge and professional acceptance.
