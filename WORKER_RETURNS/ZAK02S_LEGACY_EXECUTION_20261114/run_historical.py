@@ -406,4 +406,24 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as fatal:
+        # Preserve exact import/checkout/schema blockers as machine-readable
+        # evidence too. A fatal preflight is NOT a passed or attempted case.
+        payload = {
+            "source_commit_expected": PIN,
+            "result": "NOT_RUN_FATAL_PREFLIGHT",
+            "fatal_exception_type": type(fatal).__name__,
+            "fatal_exception": str(fatal),
+            "traceback": traceback.format_exc(),
+            "cases_completed_before_fatal": RESULTS,
+            "passed_cases": sum(int(c["check_pass"]) for c in RESULTS),
+            "unexecuted_operational_families": sorted({"F08", "V550J", "V551J", "V552", "V552J", "V549b"} - {c["case"] for c in RESULTS}),
+        }
+        if "--out" in sys.argv and sys.argv.index("--out") + 1 < len(sys.argv):
+            target = Path(sys.argv[sys.argv.index("--out") + 1])
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(json.dumps(payload, indent=2, sort_keys=True, default=str) + "\n")
+        print("ZAK02S_FATAL_PREFLIGHT " + json.dumps(payload, default=str), flush=True)
+        raise
