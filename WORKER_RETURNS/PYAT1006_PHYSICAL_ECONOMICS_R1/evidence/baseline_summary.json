@@ -1,0 +1,1697 @@
+{
+  "limits": {
+    "fixture": "SOURCEFREE SYNTHETIC, NOT ORIGINAL35 OR #1001",
+    "full_native_readers": "1k/10k/skew: attempted; 50k/100k: NOT_RUN in this run because the measured per-query cost already makes the standalone full vertical impractical inside the command budget",
+    "ten_fresh_100k": "NOT_RUN_MEASURED_COST",
+    "true_source_decode": "NOT_RUN_PENDING_997_HANDOFF"
+  },
+  "schema": "PYAT1006_BASELINE_SUMMARY@1",
+  "shapes": [
+    {
+      "batch": {
+        "manifest_hash": "6adfdf0697567a513f12d293db715c6aaeb1d293fb58d249ed7e0ac7fcd49a0a",
+        "seconds": 36.256535900058225,
+        "states": [
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED"
+        ],
+        "units": [
+          "selected",
+          "f2_forward",
+          "f2_reverse",
+          "f4_three",
+          "f4_four",
+          "i05"
+        ]
+      },
+      "cold": {
+        "admission_seconds": 0.026276614051312208,
+        "hash_calls": 30,
+        "session_build_calls": 41,
+        "session_build_seconds_total": 7.6158280074596405
+      },
+      "declared_counts": {
+        "AuthoritySnapshot": 5,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 1000,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 5,
+        "ReplayManifest": 1,
+        "RespondentEvent": 3245,
+        "RespondentIdentity": 1000,
+        "RoutingEligibilityFact": 5000,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 1000
+      },
+      "disk": {
+        "after": {
+          "free": 19972878336,
+          "total": 438000656384,
+          "used": 418027778048
+        },
+        "at_start": {
+          "free": 17839915008,
+          "total": 438000656384,
+          "used": 420160741376
+        }
+      },
+      "events": 3245,
+      "events_per_respondent": 3.245,
+      "extra": {},
+      "fresh": {
+        "admission_seconds": [
+          0.27725794701837003,
+          0.20539865782484412,
+          0.19899204606190324,
+          0.2900578819680959,
+          0.21153893996961415,
+          0.20612195506691933,
+          0.23048895108513534,
+          0.2157447161152959,
+          0.22055298392660916,
+          0.22587368893437088
+        ],
+        "admission_stats": {
+          "max": 0.2900578819680959,
+          "mean": 0.2282027767971158,
+          "min": 0.19899204606190324,
+          "n": 10,
+          "p50": 0.21814885002095252,
+          "p95": 0.28429791124071924
+        },
+        "failures": [],
+        "n": 10,
+        "query_seconds": [
+          4.856654771137983,
+          4.5935388170182705,
+          4.671158723067492,
+          5.331725490046665,
+          4.704471990000457,
+          5.170504227047786,
+          4.8554054540582,
+          4.549462642986327,
+          4.623636374948546,
+          4.488125856034458
+        ],
+        "query_stats": {
+          "max": 5.331725490046665,
+          "mean": 4.7844684346346185,
+          "min": 4.488125856034458,
+          "n": 10,
+          "p50": 4.687815356533974,
+          "p95": 5.259175921697169
+        },
+        "requested": 10,
+        "status": "MEASURED",
+        "tree_peak_rss_bytes": 287752192
+      },
+      "i05": {
+        "candidate_count": 1,
+        "covered_candidate_count": 1,
+        "receipt_refs": [
+          {
+            "content_hash": "8474cbe49acf2d868a84ddae27ed78180e0bfbca32e148041a15d365f4903e0d",
+            "kind": "DiscoveryResultReceipt@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:8474cbe49acf2d868a84ddae27ed78180e0bfbca32e148041a15d365f4903e0d"
+          }
+        ],
+        "replay_ref": {
+          "content_hash": "2d7352fa2cef0aa53c9c6d32f5fb969849f64463a75d135ebb4584e0005a7cb1",
+          "kind": "PRE553_I05_FRONTIER_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i05:frontier-replay:sha256:2d7352fa2cef0aa53c9c6d32f5fb969849f64463a75d135ebb4584e0005a7cb1"
+        },
+        "seconds": 11.925183458952233
+      },
+      "native_readers": {
+        "normal_receipt_states": [
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED"
+        ],
+        "normal_seconds": 35.47557811695151,
+        "partial_receipt_states": [
+          "COMPLETED"
+        ],
+        "partial_seconds": 5.163026988040656,
+        "resume_absent_seconds": 36.42309133708477,
+        "resume_completed_seconds": 2.2682671879883856,
+        "resume_partial_seconds": 31.516486116917804
+      },
+      "object_materializations_total": 275500,
+      "physical": {
+        "members": {
+          "AuthoritySnapshot.parquet": {
+            "bytes": 15594,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "ComparatorReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "DiscoveryBranchReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalCoordinateFact.parquet": {
+            "bytes": 299837,
+            "row_groups": 2,
+            "rows": 1000
+          },
+          "EmpiricalPredicateReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalUniverse.parquet": {
+            "bytes": 13227,
+            "row_groups": 1,
+            "rows": 1
+          },
+          "QuestionVariableBinding.parquet": {
+            "bytes": 15413,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "RespondentEvent.parquet": {
+            "bytes": 882883,
+            "row_groups": 7,
+            "rows": 3245
+          },
+          "RespondentIdentity.parquet": {
+            "bytes": 205792,
+            "row_groups": 2,
+            "rows": 1000
+          },
+          "RoutingEligibilityFact.parquet": {
+            "bytes": 1237125,
+            "row_groups": 10,
+            "rows": 5000
+          },
+          "SourceUniverseRelation.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "StructuralAdmissionReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "WeightMeasureFact.parquet": {
+            "bytes": 299176,
+            "row_groups": 2,
+            "rows": 1000
+          },
+          "event_locator.parquet": {
+            "bytes": 201451,
+            "row_groups": 7,
+            "rows": 3245
+          }
+        },
+        "parquet_bytes": 3185373,
+        "parquet_row_groups": 38,
+        "parquet_rows": 14501,
+        "proof_sqlite_peak_bytes": 43216896,
+        "retained_bytes": 3188505,
+        "stage_peak_bytes": 51093725
+      },
+      "process_tree": {
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "first_exceeded_seconds": null,
+        "last_sample_error": null,
+        "max_process_count": 1,
+        "max_single_process_peak_rss_bytes": 502263808,
+        "own_peak_rss_bytes": 502263808,
+        "sample_count": 8243,
+        "sampling_interval_seconds": 0.02,
+        "tree_peak_rss_bytes": 502263808
+      },
+      "queries": {
+        "f2_forward": {
+          "denominators": [
+            500
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "b785e275d17c4c38467a144b8744a135eabca6ef01860113b19787db527690b1",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b785e275d17c4c38467a144b8744a135eabca6ef01860113b19787db527690b1"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 5.073066262993962
+        },
+        "f2_reverse": {
+          "denominators": [
+            333
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "7c759606bda1f985b834f8ba68d323660d8193c31b6a512a05a3971eaccfbd51",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7c759606bda1f985b834f8ba68d323660d8193c31b6a512a05a3971eaccfbd51"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 4.622300008079037
+        },
+        "f4_four": {
+          "denominators": [
+            28
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "9d5a2869aff5fc6c07ddd47dc84f1a14d9074935492d85824188e9d887d2cee3",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9d5a2869aff5fc6c07ddd47dc84f1a14d9074935492d85824188e9d887d2cee3"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 5.151650110958144
+        },
+        "f4_three": {
+          "denominators": [
+            313
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "8eeac67df3fa24b45006922781d93563d083d0e0171262a36ffac992aadce1f3",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:8eeac67df3fa24b45006922781d93563d083d0e0171262a36ffac992aadce1f3"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 5.684873289894313
+        },
+        "selected": {
+          "denominators": [
+            500
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "e73ce924cae9a3159852366c39465eb9149a788c01ee20cb0d07a5e6127abc3b",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e73ce924cae9a3159852366c39465eb9149a788c01ee20cb0d07a5e6127abc3b"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 4.94451587414369
+        },
+        "weighted": {
+          "denominators": [
+            500
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "cb6355da3684d81fef797524a327f670247a8f20a1a6036421868093b0f4c3bc",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:cb6355da3684d81fef797524a327f670247a8f20a1a6036421868093b0f4c3bc"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 5.512980383820832
+        }
+      },
+      "query_probe_monitored": null,
+      "respondents": 1000,
+      "same_process": {
+        "max": 4.874844686826691,
+        "mean": 4.746289733890444,
+        "min": 4.6286274660378695,
+        "n": 10,
+        "p50": 4.748064932995476,
+        "p95": 4.8600754015962595
+      },
+      "shape": "diag-1k",
+      "status": "MEASURED",
+      "write": {
+        "direct_i02_proof_seconds": 11.576843512011692,
+        "hash_bytes": 46402269,
+        "hash_calls": 15,
+        "physical_reread_reencode_seconds": 5.34098651795648,
+        "root_hash_seconds": 0.11732856882736087,
+        "row_body_bytes": {
+          "AuthoritySnapshot": 17192,
+          "EmpiricalCoordinateFact": 4992000,
+          "EmpiricalUniverse": 3028,
+          "QuestionVariableBinding": 16192,
+          "RespondentEvent": 15830885,
+          "RespondentIdentity": 2036000,
+          "RoutingEligibilityFact": 25625408,
+          "WeightMeasureFact": 5158000
+        },
+        "row_calls": {
+          "AuthoritySnapshot": 10,
+          "EmpiricalCoordinateFact": 2000,
+          "EmpiricalUniverse": 2,
+          "QuestionVariableBinding": 10,
+          "RespondentEvent": 6496,
+          "RespondentIdentity": 2000,
+          "RoutingEligibilityFact": 10000,
+          "WeightMeasureFact": 2000
+        },
+        "row_projection_seconds": 4.56697169598192,
+        "sink_flush_calls": {
+          "AuthoritySnapshot": 1,
+          "ComparatorReplayBinding": 1,
+          "DiscoveryBranchReplayBinding": 1,
+          "EmpiricalCoordinateFact": 2,
+          "EmpiricalPredicateReplayBinding": 1,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 1,
+          "RespondentEvent": 7,
+          "RespondentIdentity": 2,
+          "RoutingEligibilityFact": 10,
+          "SourceUniverseRelation": 1,
+          "StructuralAdmissionReplayBinding": 1,
+          "WeightMeasureFact": 2
+        },
+        "total_seconds": 17.44180676713586
+      }
+    },
+    {
+      "batch": {
+        "manifest_hash": "d3f7f8f9c3bcf634ee6920d6797699a83fa64df56e2d882d4323da2a8c9ffa03",
+        "seconds": 316.5015735588968,
+        "states": [
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED"
+        ],
+        "units": [
+          "selected",
+          "f2_reverse",
+          "f4_three",
+          "i05"
+        ]
+      },
+      "cold": {
+        "admission_seconds": 0.12736909580416977,
+        "hash_calls": 30,
+        "session_build_calls": 34,
+        "session_build_seconds_total": 81.66291659651324
+      },
+      "declared_counts": {
+        "AuthoritySnapshot": 5,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 10000,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 5,
+        "ReplayManifest": 1,
+        "RespondentEvent": 32450,
+        "RespondentIdentity": 10000,
+        "RoutingEligibilityFact": 50000,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 10000
+      },
+      "disk": {
+        "after": {
+          "free": 16500715520,
+          "total": 438000656384,
+          "used": 421499940864
+        },
+        "at_start": {
+          "free": 15636910080,
+          "total": 438000656384,
+          "used": 422363746304
+        }
+      },
+      "events": 32450,
+      "events_per_respondent": 3.245,
+      "extra": {},
+      "fresh": {
+        "admission_seconds": [
+          0.3691218579187989,
+          0.35752158192917705,
+          0.3485576370730996,
+          0.34134359494782984,
+          0.35463746008463204,
+          0.36166999605484307,
+          0.3419333281926811,
+          0.40094734099693596,
+          0.3392284829169512,
+          0.3726382360327989
+        ],
+        "admission_stats": {
+          "max": 0.40094734099693596,
+          "mean": 0.35875995161477475,
+          "min": 0.3392284829169512,
+          "n": 10,
+          "p50": 0.35607952100690454,
+          "p95": 0.3882082437630743
+        },
+        "failures": [],
+        "n": 10,
+        "query_seconds": [
+          58.63156884210184,
+          55.22049755207263,
+          60.29073455184698,
+          60.24634153093211,
+          53.507208049995825,
+          56.54669123003259,
+          54.72503976197913,
+          60.164965364849195,
+          57.882747213123366,
+          56.91779809189029
+        ],
+        "query_stats": {
+          "max": 60.29073455184698,
+          "mean": 57.4133592188824,
+          "min": 53.507208049995825,
+          "n": 10,
+          "p50": 57.40027265250683,
+          "p95": 60.270757692435296
+        },
+        "requested": 10,
+        "rss_bytes": [
+          525889536,
+          539992064,
+          548675584,
+          488173568,
+          462589952,
+          478408704,
+          504295424,
+          532303872,
+          508055552,
+          497381376
+        ],
+        "status": "MEASURED",
+        "tree_peak_rss_bytes": 547074048
+      },
+      "i05": {
+        "candidate_count": 1,
+        "covered_candidate_count": 1,
+        "receipt_refs": [
+          {
+            "content_hash": "30551bed578775d1aa314af1fffc640265979c4458a3ab793344a0caa85c8346",
+            "kind": "DiscoveryResultReceipt@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:30551bed578775d1aa314af1fffc640265979c4458a3ab793344a0caa85c8346"
+          }
+        ],
+        "replay_ref": {
+          "content_hash": "0b792b765ed480c41b972c157c113cc5a3fec5943c19a1e7cb78a4cae4eec45b",
+          "kind": "PRE553_I05_FRONTIER_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i05:frontier-replay:sha256:0b792b765ed480c41b972c157c113cc5a3fec5943c19a1e7cb78a4cae4eec45b"
+        },
+        "seconds": 145.30674534500577
+      },
+      "native_readers": {
+        "normal_receipt_states": [
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED"
+        ],
+        "normal_seconds": 416.87757643009536,
+        "partial_receipt_states": [
+          "COMPLETED"
+        ],
+        "partial_seconds": 149.6760603270959,
+        "resume_absent_seconds": 481.10778130218387,
+        "resume_completed_seconds": 30.739186156075448,
+        "resume_partial_seconds": 308.5361197530292
+      },
+      "object_materializations_total": 2355000,
+      "physical": {
+        "members": {
+          "AuthoritySnapshot.parquet": {
+            "bytes": 15702,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "ComparatorReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "DiscoveryBranchReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalCoordinateFact.parquet": {
+            "bytes": 2986905,
+            "row_groups": 20,
+            "rows": 10000
+          },
+          "EmpiricalPredicateReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalUniverse.parquet": {
+            "bytes": 13387,
+            "row_groups": 1,
+            "rows": 1
+          },
+          "QuestionVariableBinding.parquet": {
+            "bytes": 15492,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "RespondentEvent.parquet": {
+            "bytes": 8716891,
+            "row_groups": 64,
+            "rows": 32450
+          },
+          "RespondentIdentity.parquet": {
+            "bytes": 2047738,
+            "row_groups": 20,
+            "rows": 10000
+          },
+          "RoutingEligibilityFact.parquet": {
+            "bytes": 12343731,
+            "row_groups": 98,
+            "rows": 50000
+          },
+          "SourceUniverseRelation.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "StructuralAdmissionReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "WeightMeasureFact.parquet": {
+            "bytes": 2978846,
+            "row_groups": 20,
+            "rows": 10000
+          },
+          "event_locator.parquet": {
+            "bytes": 1984145,
+            "row_groups": 64,
+            "rows": 32450
+          }
+        },
+        "parquet_bytes": 31117712,
+        "parquet_row_groups": 294,
+        "parquet_rows": 144911,
+        "proof_sqlite_peak_bytes": 437809152,
+        "retained_bytes": 31120868,
+        "stage_peak_bytes": 524699536
+      },
+      "process_tree": {
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "first_exceeded_seconds": null,
+        "last_sample_error": "NoSuchProcess",
+        "max_process_count": 1,
+        "max_single_process_peak_rss_bytes": 1394810880,
+        "own_peak_rss_bytes": 1394810880,
+        "sample_count": 95358,
+        "sampling_interval_seconds": 0.02,
+        "tree_peak_rss_bytes": 1394810880
+      },
+      "queries": {
+        "f2_forward": {
+          "denominators": [
+            5000
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "81e9a2502601971fef560d486cf85e97a8b024e07b5033b0c41acbce99a7c1a5",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:81e9a2502601971fef560d486cf85e97a8b024e07b5033b0c41acbce99a7c1a5"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 52.43020649906248
+        },
+        "f2_reverse": {
+          "denominators": [
+            3333
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "73605e9f4de144da025d1f09b256e36801af0be42774c68424295baf71482728",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:73605e9f4de144da025d1f09b256e36801af0be42774c68424295baf71482728"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 58.742116265930235
+        },
+        "f4_four": {
+          "denominators": [
+            286
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "fca030043c2f11c7a0e9a27f5ae4f625d95c45a12cbee32927bcc5e2e83c5fc1",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:fca030043c2f11c7a0e9a27f5ae4f625d95c45a12cbee32927bcc5e2e83c5fc1"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 49.55636531999335
+        },
+        "f4_three": {
+          "denominators": [
+            3137
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "0a18767352f6ccc06a95291ffc8763e6dc2ca03244533c32c97bb1befb596f11",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:0a18767352f6ccc06a95291ffc8763e6dc2ca03244533c32c97bb1befb596f11"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 60.48570263502188
+        },
+        "selected": {
+          "denominators": [
+            5000
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "3bfe0eefaaf0fd68aba8ff359a96f591c3a2129842849d0b53baab9eebde118f",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3bfe0eefaaf0fd68aba8ff359a96f591c3a2129842849d0b53baab9eebde118f"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 51.06870981492102
+        },
+        "weighted": {
+          "denominators": [
+            5000
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "da051fd0b73f0a03fac9dc65f2c5d2015d1af2bbd0478ae10c90edb9ebf1b44e",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:da051fd0b73f0a03fac9dc65f2c5d2015d1af2bbd0478ae10c90edb9ebf1b44e"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 61.314347844105214
+        }
+      },
+      "query_probe_monitored": null,
+      "respondents": 10000,
+      "same_process": {
+        "max": 68.66979163093492,
+        "mean": 59.73231421725359,
+        "min": 51.762828491861,
+        "n": 10,
+        "p50": 58.28811487252824,
+        "p95": 67.72973351697438
+      },
+      "same_process_values": [
+        65.44379226583987,
+        51.977959281997755,
+        53.52277215383947,
+        56.834008146077394,
+        51.762828491861,
+        58.42571283504367,
+        66.58077359991148,
+        68.66979163093492,
+        65.9549868570175,
+        58.15051691001281
+      ],
+      "shape": "diag-10k",
+      "status": "MEASURED",
+      "write": {
+        "direct_i02_proof_seconds": 130.4157591657713,
+        "hash_bytes": 468926864,
+        "hash_calls": 15,
+        "physical_reread_reencode_seconds": 60.0328329000622,
+        "root_hash_seconds": 1.1021387735381722,
+        "row_body_bytes": {
+          "AuthoritySnapshot": 17432,
+          "EmpiricalCoordinateFact": 50520000,
+          "EmpiricalUniverse": 3112,
+          "QuestionVariableBinding": 16372,
+          "RespondentEvent": 160264918,
+          "RespondentIdentity": 20480000,
+          "RoutingEligibilityFact": 259854080,
+          "WeightMeasureFact": 52300000
+        },
+        "row_calls": {
+          "AuthoritySnapshot": 10,
+          "EmpiricalCoordinateFact": 20000,
+          "EmpiricalUniverse": 2,
+          "QuestionVariableBinding": 10,
+          "RespondentEvent": 64963,
+          "RespondentIdentity": 20000,
+          "RoutingEligibilityFact": 100000,
+          "WeightMeasureFact": 20000
+        },
+        "row_projection_seconds": 46.571805756306276,
+        "sink_flush_calls": {
+          "AuthoritySnapshot": 1,
+          "ComparatorReplayBinding": 1,
+          "DiscoveryBranchReplayBinding": 1,
+          "EmpiricalCoordinateFact": 20,
+          "EmpiricalPredicateReplayBinding": 1,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 1,
+          "RespondentEvent": 64,
+          "RespondentIdentity": 20,
+          "RoutingEligibilityFact": 98,
+          "SourceUniverseRelation": 1,
+          "StructuralAdmissionReplayBinding": 1,
+          "WeightMeasureFact": 20
+        },
+        "total_seconds": 191.8077968400903
+      }
+    },
+    {
+      "batch": {
+        "manifest_hash": "890eade055975fd7204c1867954fcf09f70586a8b31ffb017e91f3ca3ba16b73",
+        "seconds": 22.71737888804637,
+        "states": [
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED"
+        ],
+        "units": [
+          "selected",
+          "f4_three",
+          "i05"
+        ]
+      },
+      "cold": {
+        "admission_seconds": 0.018114313017576933,
+        "hash_calls": 30,
+        "session_build_calls": 33,
+        "session_build_seconds_total": 7.017818570137024
+      },
+      "declared_counts": {
+        "AuthoritySnapshot": 5,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 1000,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 5,
+        "ReplayManifest": 1,
+        "RespondentEvent": 5245,
+        "RespondentIdentity": 1000,
+        "RoutingEligibilityFact": 5000,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 1000
+      },
+      "disk": {
+        "after": {
+          "free": 16074125312,
+          "total": 438000656384,
+          "used": 421926531072
+        },
+        "at_start": {
+          "free": 16088956928,
+          "total": 438000656384,
+          "used": 421911699456
+        }
+      },
+      "events": 5245,
+      "events_per_respondent": 5.245,
+      "extra": {},
+      "fresh": {
+        "admission_seconds": [
+          0.24441477609798312,
+          0.2065394560340792,
+          0.2090626759454608,
+          0.20430670701898634,
+          0.2059063739143312
+        ],
+        "admission_stats": {
+          "max": 0.24441477609798312,
+          "mean": 0.21404599780216813,
+          "min": 0.20430670701898634,
+          "n": 5,
+          "p50": 0.2065394560340792,
+          "p95": 0.23734435606747864
+        },
+        "failures": [],
+        "n": 5,
+        "query_seconds": [
+          4.620522913057357,
+          4.485433415975422,
+          4.562955434899777,
+          4.547623686958104,
+          4.563295402098447
+        ],
+        "query_stats": {
+          "max": 4.620522913057357,
+          "mean": 4.555966170597822,
+          "min": 4.485433415975422,
+          "n": 5,
+          "p50": 4.562955434899777,
+          "p95": 4.609077410865575
+        },
+        "requested": 5,
+        "status": "MEASURED",
+        "tree_peak_rss_bytes": 215044096
+      },
+      "i05": {
+        "candidate_count": 1,
+        "covered_candidate_count": 1,
+        "receipt_refs": [
+          {
+            "content_hash": "e18394668c4798bee35cad7162f88ce99882eadfe1726190016f52451b490959",
+            "kind": "DiscoveryResultReceipt@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:e18394668c4798bee35cad7162f88ce99882eadfe1726190016f52451b490959"
+          }
+        ],
+        "replay_ref": {
+          "content_hash": "9c0381f50231583d28b839bb05633e627666504e7fb9a6baf5a6414d14ec51e7",
+          "kind": "PRE553_I05_FRONTIER_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i05:frontier-replay:sha256:9c0381f50231583d28b839bb05633e627666504e7fb9a6baf5a6414d14ec51e7"
+        },
+        "seconds": 12.28429584717378
+      },
+      "native_readers": {
+        "normal_receipt_states": [
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED",
+          "COMPLETED"
+        ],
+        "normal_seconds": 38.90952391619794,
+        "partial_receipt_states": [
+          "COMPLETED"
+        ],
+        "partial_seconds": 6.170548242982477,
+        "resume_absent_seconds": 38.13512646500021,
+        "resume_completed_seconds": 2.6228274540044367,
+        "resume_partial_seconds": 33.76448361389339
+      },
+      "object_materializations_total": 230500,
+      "physical": {
+        "members": {
+          "AuthoritySnapshot.parquet": {
+            "bytes": 15587,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "ComparatorReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "DiscoveryBranchReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalCoordinateFact.parquet": {
+            "bytes": 299585,
+            "row_groups": 2,
+            "rows": 1000
+          },
+          "EmpiricalPredicateReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalUniverse.parquet": {
+            "bytes": 13230,
+            "row_groups": 1,
+            "rows": 1
+          },
+          "QuestionVariableBinding.parquet": {
+            "bytes": 15413,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "RespondentEvent.parquet": {
+            "bytes": 1351477,
+            "row_groups": 11,
+            "rows": 5245
+          },
+          "RespondentIdentity.parquet": {
+            "bytes": 206075,
+            "row_groups": 2,
+            "rows": 1000
+          },
+          "RoutingEligibilityFact.parquet": {
+            "bytes": 1236559,
+            "row_groups": 10,
+            "rows": 5000
+          },
+          "SourceUniverseRelation.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "StructuralAdmissionReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "WeightMeasureFact.parquet": {
+            "bytes": 299070,
+            "row_groups": 2,
+            "rows": 1000
+          },
+          "event_locator.parquet": {
+            "bytes": 298300,
+            "row_groups": 11,
+            "rows": 5245
+          }
+        },
+        "parquet_bytes": 3750171,
+        "parquet_row_groups": 46,
+        "parquet_rows": 18501,
+        "proof_sqlite_peak_bytes": 56639488,
+        "retained_bytes": 3753303,
+        "stage_peak_bytes": 65941275
+      },
+      "process_tree": {
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "first_exceeded_seconds": null,
+        "last_sample_error": null,
+        "max_process_count": 1,
+        "max_single_process_peak_rss_bytes": 710381568,
+        "own_peak_rss_bytes": 710381568,
+        "sample_count": 8471,
+        "sampling_interval_seconds": 0.02,
+        "tree_peak_rss_bytes": 710381568
+      },
+      "queries": {
+        "f2_forward": {
+          "denominators": [
+            500
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "5bf2b1e3b8df1acd7d395604265b72335083c1f502d0bf5d8f66bc2bba3b272a",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:5bf2b1e3b8df1acd7d395604265b72335083c1f502d0bf5d8f66bc2bba3b272a"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 4.981956576928496
+        },
+        "f2_reverse": {
+          "denominators": [
+            333
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "99f3ede94107424413dfba3da76a8d63dd08a238fe35a4530f8593c67340ba64",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:99f3ede94107424413dfba3da76a8d63dd08a238fe35a4530f8593c67340ba64"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 4.795330852968618
+        },
+        "f4_four": {
+          "denominators": [
+            28
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "d7be9963bb94d81a5521fd830a8e9e0d6959e16d70d79cbffa320f917ab6133a",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d7be9963bb94d81a5521fd830a8e9e0d6959e16d70d79cbffa320f917ab6133a"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 4.745711620897055
+        },
+        "f4_three": {
+          "denominators": [
+            313
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "f933f4d4209b0f08b8415aad2a765c08714054a21a97930a4a2f478a65176e70",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f933f4d4209b0f08b8415aad2a765c08714054a21a97930a4a2f478a65176e70"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 5.363255921984091
+        },
+        "selected": {
+          "denominators": [
+            500
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "652cacf6e58f20657ff85701950b42781ed8c39918f0cf9725f78bb2eaaabadd",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:652cacf6e58f20657ff85701950b42781ed8c39918f0cf9725f78bb2eaaabadd"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 4.8324614288285375
+        },
+        "weighted": {
+          "denominators": [
+            500
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "d84e2996c4f795b40fc42d7d5682ac53dd01ec91187666255fdcee63f07df12d",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d84e2996c4f795b40fc42d7d5682ac53dd01ec91187666255fdcee63f07df12d"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 5.425885810051113
+        }
+      },
+      "query_probe_monitored": null,
+      "respondents": 1000,
+      "same_process": {
+        "max": 4.906339043052867,
+        "mean": 4.845020831841976,
+        "min": 4.811193065950647,
+        "n": 5,
+        "p50": 4.812395890010521,
+        "p95": 4.901775023248047
+      },
+      "shape": "skew-1k",
+      "status": "MEASURED",
+      "write": {
+        "direct_i02_proof_seconds": 13.139546223916113,
+        "hash_bytes": 60389659,
+        "hash_calls": 15,
+        "physical_reread_reencode_seconds": 6.417825756128877,
+        "root_hash_seconds": 0.13102274225093424,
+        "row_body_bytes": {
+          "AuthoritySnapshot": 17192,
+          "EmpiricalCoordinateFact": 4992000,
+          "EmpiricalUniverse": 3028,
+          "QuestionVariableBinding": 16192,
+          "RespondentEvent": 25747928,
+          "RespondentIdentity": 2036000,
+          "RoutingEligibilityFact": 25625408,
+          "WeightMeasureFact": 5158000
+        },
+        "row_calls": {
+          "AuthoritySnapshot": 10,
+          "EmpiricalCoordinateFact": 2000,
+          "EmpiricalUniverse": 2,
+          "QuestionVariableBinding": 10,
+          "RespondentEvent": 10500,
+          "RespondentIdentity": 2000,
+          "RoutingEligibilityFact": 10000,
+          "WeightMeasureFact": 2000
+        },
+        "row_projection_seconds": 5.355501061538234,
+        "sink_flush_calls": {
+          "AuthoritySnapshot": 1,
+          "ComparatorReplayBinding": 1,
+          "DiscoveryBranchReplayBinding": 1,
+          "EmpiricalCoordinateFact": 2,
+          "EmpiricalPredicateReplayBinding": 1,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 1,
+          "RespondentEvent": 11,
+          "RespondentIdentity": 2,
+          "RoutingEligibilityFact": 10,
+          "SourceUniverseRelation": 1,
+          "StructuralAdmissionReplayBinding": 1,
+          "WeightMeasureFact": 2
+        },
+        "total_seconds": 19.90616694581695
+      }
+    },
+    {
+      "batch": {},
+      "cold": {
+        "admission_seconds": 0.6870602089911699,
+        "events": 162240,
+        "hash_calls": null,
+        "members": 350000,
+        "session_build_calls": null,
+        "session_build_seconds": 14.554960049921647,
+        "session_build_seconds_total": null,
+        "temporary_bytes_during_session": 650412032
+      },
+      "declared_counts": {
+        "AuthoritySnapshot": 5,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 50000,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 5,
+        "ReplayManifest": 1,
+        "RespondentEvent": 162240,
+        "RespondentIdentity": 50000,
+        "RoutingEligibilityFact": 250000,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 50000
+      },
+      "disk": {
+        "after": {
+          "free": 17129787392,
+          "total": 438000656384,
+          "used": 420870868992
+        },
+        "at_start": {
+          "free": 19039895552,
+          "total": 438000656384,
+          "used": 418960760832
+        }
+      },
+      "events": 162240,
+      "events_per_respondent": 3.2448,
+      "extra": {
+        "query_probe_note": "The 50k query probe measured all three requested queries; its status remained PARTIAL_RUNNING because a harness repeat-section bug raised after the measurements. The query timings are real."
+      },
+      "fresh": {
+        "n": 0,
+        "status": "NOT_RUN_WORKER_NOT_MEASURED_OR_SKIPPED"
+      },
+      "i05": {},
+      "native_readers": {},
+      "object_materializations_total": null,
+      "physical": {
+        "members": {
+          "AuthoritySnapshot.parquet": {
+            "bytes": 15619,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "ComparatorReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "DiscoveryBranchReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalCoordinateFact.parquet": {
+            "bytes": 14874396,
+            "row_groups": 98,
+            "rows": 50000
+          },
+          "EmpiricalPredicateReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalUniverse.parquet": {
+            "bytes": 13283,
+            "row_groups": 1,
+            "rows": 1
+          },
+          "QuestionVariableBinding.parquet": {
+            "bytes": 15430,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "RespondentEvent.parquet": {
+            "bytes": 43487954,
+            "row_groups": 317,
+            "rows": 162240
+          },
+          "RespondentIdentity.parquet": {
+            "bytes": 10224108,
+            "row_groups": 98,
+            "rows": 50000
+          },
+          "RoutingEligibilityFact.parquet": {
+            "bytes": 61739548,
+            "row_groups": 489,
+            "rows": 250000
+          },
+          "SourceUniverseRelation.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "StructuralAdmissionReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "WeightMeasureFact.parquet": {
+            "bytes": 14851733,
+            "row_groups": 98,
+            "rows": 50000
+          },
+          "event_locator.parquet": {
+            "bytes": 9900720,
+            "row_groups": 317,
+            "rows": 162240
+          }
+        },
+        "parquet_bytes": 155137666,
+        "parquet_row_groups": 1425,
+        "parquet_rows": 724491,
+        "proof_sqlite_peak_bytes": 2169520128,
+        "retained_bytes": null,
+        "stage_peak_bytes": 2605780098
+      },
+      "process_tree": {
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "first_exceeded_seconds": null,
+        "last_sample_error": null,
+        "max_process_count": 1,
+        "max_single_process_peak_rss_bytes": 233308160,
+        "own_peak_rss_bytes": 233308160,
+        "sample_count": 55854,
+        "sampling_interval_seconds": 0.02,
+        "tree_peak_rss_bytes": 233308160
+      },
+      "queries": {
+        "f2_reverse": {
+          "denominators": [
+            16667
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "c897e8aa67a1072e513a4799c1846205e8d4d81ea96474810c482ee35bbde2cb",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c897e8aa67a1072e513a4799c1846205e8d4d81ea96474810c482ee35bbde2cb"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 295.45699997991323
+        },
+        "f4_three": {
+          "denominators": [
+            15685
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "4f45b0dfd557e0ea61113eafe82a61370655930d7aadd2cc0b0e05185fa46d80",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4f45b0dfd557e0ea61113eafe82a61370655930d7aadd2cc0b0e05185fa46d80"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 497.7987301601097
+        },
+        "selected": {
+          "denominators": [
+            25000
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "8151bd6043e27decd1cdead03923a799b459508973ddd44f32966b4ef9fa972d",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:8151bd6043e27decd1cdead03923a799b459508973ddd44f32966b4ef9fa972d"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 297.98601607000455
+        }
+      },
+      "query_probe_monitored": {
+        "disk_after_free_bytes": 14998564864,
+        "killed_for_cap": false,
+        "process_tree": {
+          "cap_bytes": 6442450944,
+          "cap_exceeded": false,
+          "max_process_count": 1,
+          "max_single_process_peak_rss_bytes": 1833365504,
+          "sample_count": 38085,
+          "sampling_interval_seconds": 0.02,
+          "tree_peak_rss_bytes": 1833365504
+        },
+        "returncode": 1,
+        "seconds": 1093.1558104280848,
+        "timed_out": false
+      },
+      "query_probe_status": "PARTIAL_RUNNING",
+      "respondents": 50000,
+      "same_process": null,
+      "shape": "scale-50k",
+      "status": "MEASURED_PARTIAL_STOPPED_AFTER_WRITE",
+      "write": {
+        "direct_i02_proof_seconds": 1126.258989171125,
+        "hash_bytes": 2324657794,
+        "hash_calls": 15,
+        "physical_reread_reencode_seconds": 391.7982889141422,
+        "root_hash_seconds": 6.604547998402268,
+        "row_body_bytes": {
+          "AuthoritySnapshot": 17272,
+          "EmpiricalCoordinateFact": 250600000,
+          "EmpiricalUniverse": 3056,
+          "QuestionVariableBinding": 16252,
+          "RespondentEvent": 794781476,
+          "RespondentIdentity": 102000000,
+          "RoutingEligibilityFact": 1287270008,
+          "WeightMeasureFact": 259100000
+        },
+        "row_calls": {
+          "AuthoritySnapshot": 10,
+          "EmpiricalCoordinateFact": 100000,
+          "EmpiricalUniverse": 2,
+          "QuestionVariableBinding": 10,
+          "RespondentEvent": 324796,
+          "RespondentIdentity": 100000,
+          "RoutingEligibilityFact": 500000,
+          "WeightMeasureFact": 100000
+        },
+        "row_projection_seconds": 269.4767839764245,
+        "sink_flush_calls": {
+          "AuthoritySnapshot": 1,
+          "ComparatorReplayBinding": 1,
+          "DiscoveryBranchReplayBinding": 1,
+          "EmpiricalCoordinateFact": 98,
+          "EmpiricalPredicateReplayBinding": 1,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 1,
+          "RespondentEvent": 317,
+          "RespondentIdentity": 98,
+          "RoutingEligibilityFact": 489,
+          "SourceUniverseRelation": 1,
+          "StructuralAdmissionReplayBinding": 1,
+          "WeightMeasureFact": 98
+        },
+        "total_seconds": 1528.038584320806
+      }
+    },
+    {
+      "batch": {},
+      "cold": {
+        "admission_seconds": 1.5202536389697343,
+        "events": 324477,
+        "hash_calls": null,
+        "members": 700000,
+        "session_build_calls": null,
+        "session_build_seconds": 33.507773087127134,
+        "session_build_seconds_total": null,
+        "temporary_bytes_during_session": 1300910080
+      },
+      "declared_counts": {
+        "AuthoritySnapshot": 5,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 100000,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 5,
+        "ReplayManifest": 1,
+        "RespondentEvent": 324477,
+        "RespondentIdentity": 100000,
+        "RoutingEligibilityFact": 500000,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 100000
+      },
+      "disk": {
+        "after": {
+          "free": 11427790848,
+          "total": 438000656384,
+          "used": 426572865536
+        },
+        "at_start": {
+          "free": 15009591296,
+          "total": 438000656384,
+          "used": 422991065088
+        }
+      },
+      "events": 324477,
+      "events_per_respondent": 3.24477,
+      "extra": {},
+      "fresh": {
+        "n": 0,
+        "status": "NOT_RUN_WORKER_NOT_MEASURED_OR_SKIPPED"
+      },
+      "i05": {},
+      "native_readers": {},
+      "object_materializations_total": null,
+      "physical": {
+        "members": {
+          "AuthoritySnapshot.parquet": {
+            "bytes": 15644,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "ComparatorReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "DiscoveryBranchReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalCoordinateFact.parquet": {
+            "bytes": 29743711,
+            "row_groups": 196,
+            "rows": 100000
+          },
+          "EmpiricalPredicateReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "EmpiricalUniverse.parquet": {
+            "bytes": 13307,
+            "row_groups": 1,
+            "rows": 1
+          },
+          "QuestionVariableBinding.parquet": {
+            "bytes": 15445,
+            "row_groups": 1,
+            "rows": 5
+          },
+          "RespondentEvent.parquet": {
+            "bytes": 86984723,
+            "row_groups": 634,
+            "rows": 324477
+          },
+          "RespondentIdentity.parquet": {
+            "bytes": 20446391,
+            "row_groups": 196,
+            "rows": 100000
+          },
+          "RoutingEligibilityFact.parquet": {
+            "bytes": 123402709,
+            "row_groups": 977,
+            "rows": 500000
+          },
+          "SourceUniverseRelation.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "StructuralAdmissionReplayBinding.parquet": {
+            "bytes": 2975,
+            "row_groups": 1,
+            "rows": 0
+          },
+          "WeightMeasureFact.parquet": {
+            "bytes": 29720478,
+            "row_groups": 196,
+            "rows": 100000
+          },
+          "event_locator.parquet": {
+            "bytes": 19805981,
+            "row_groups": 634,
+            "rows": 324477
+          }
+        },
+        "parquet_bytes": 310163264,
+        "parquet_row_groups": 2841,
+        "parquet_rows": 1448965,
+        "proof_sqlite_peak_bytes": 4385796096,
+        "retained_bytes": null,
+        "stage_peak_bytes": 5257841984
+      },
+      "process_tree": {
+        "cap_bytes": 6442450944,
+        "cap_exceeded": false,
+        "first_exceeded_seconds": null,
+        "last_sample_error": "NoSuchProcess",
+        "max_process_count": 1,
+        "max_single_process_peak_rss_bytes": 295211008,
+        "own_peak_rss_bytes": 295211008,
+        "sample_count": 100193,
+        "sampling_interval_seconds": 0.02,
+        "tree_peak_rss_bytes": 295211008
+      },
+      "queries": {
+        "f2_reverse": {
+          "denominators": [
+            33333
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "d03a3c22ed013d1149d2daa6f5f4d55941ce9625526efaf24d93f67165d96def",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d03a3c22ed013d1149d2daa6f5f4d55941ce9625526efaf24d93f67165d96def"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 873.6545580220409
+        },
+        "f4_three": {
+          "denominators": [
+            31372
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "e50c73ae560af2e72d60dc18a96798c39578b47cce468b3ecb65e3eec9a120cf",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e50c73ae560af2e72d60dc18a96798c39578b47cce468b3ecb65e3eec9a120cf"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 908.5070434380323
+        },
+        "selected": {
+          "denominators": [
+            50000
+          ],
+          "fact_refs": [
+            {
+              "content_hash": "c556050a26e7864e30279b2d3360ca2fe5cc4e11ab6fece3d67edea23ad677b7",
+              "kind": "EmpiricalFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c556050a26e7864e30279b2d3360ca2fe5cc4e11ab6fece3d67edea23ad677b7"
+            }
+          ],
+          "fact_states": [
+            "SUPPORTED"
+          ],
+          "seconds": 562.3623609030619
+        }
+      },
+      "query_probe_monitored": {
+        "disk_after_free_bytes": 14003752960,
+        "killed_for_cap": false,
+        "process_tree": {
+          "cap_bytes": 6442450944,
+          "cap_exceeded": false,
+          "max_process_count": 1,
+          "max_single_process_peak_rss_bytes": 3690455040,
+          "sample_count": 78346,
+          "sampling_interval_seconds": 0.02,
+          "tree_peak_rss_bytes": 3690455040
+        },
+        "returncode": 0,
+        "seconds": 2347.2365384970326,
+        "timed_out": false
+      },
+      "query_probe_status": "MEASURED",
+      "respondents": 100000,
+      "same_process": null,
+      "shape": "hist-100k",
+      "status": "MEASURED_PARTIAL_STOPPED_AFTER_WRITE",
+      "write": {
+        "direct_i02_proof_seconds": 2249.7002738639712,
+        "hash_bytes": 4695959360,
+        "hash_calls": 15,
+        "physical_reread_reencode_seconds": 761.2242694969755,
+        "root_hash_seconds": 11.101061376044527,
+        "row_body_bytes": {
+          "AuthoritySnapshot": 17312,
+          "EmpiricalCoordinateFact": 502200000,
+          "EmpiricalUniverse": 3070,
+          "QuestionVariableBinding": 16282,
+          "RespondentEvent": 1592798558,
+          "RespondentIdentity": 204200000,
+          "RoutingEligibilityFact": 2580539904,
+          "WeightMeasureFact": 519400000
+        },
+        "row_calls": {
+          "AuthoritySnapshot": 10,
+          "EmpiricalCoordinateFact": 200000,
+          "EmpiricalUniverse": 2,
+          "QuestionVariableBinding": 10,
+          "RespondentEvent": 649587,
+          "RespondentIdentity": 200000,
+          "RoutingEligibilityFact": 1000000,
+          "WeightMeasureFact": 200000
+        },
+        "row_projection_seconds": 492.83403793303296,
+        "sink_flush_calls": {
+          "AuthoritySnapshot": 1,
+          "ComparatorReplayBinding": 1,
+          "DiscoveryBranchReplayBinding": 1,
+          "EmpiricalCoordinateFact": 196,
+          "EmpiricalPredicateReplayBinding": 1,
+          "EmpiricalUniverse": 1,
+          "QuestionVariableBinding": 1,
+          "RespondentEvent": 634,
+          "RespondentIdentity": 196,
+          "RoutingEligibilityFact": 977,
+          "SourceUniverseRelation": 1,
+          "StructuralAdmissionReplayBinding": 1,
+          "WeightMeasureFact": 196
+        },
+        "total_seconds": 3033.723348168889
+      }
+    }
+  ]
+}

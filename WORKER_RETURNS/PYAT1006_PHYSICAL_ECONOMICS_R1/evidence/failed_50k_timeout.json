@@ -1,0 +1,37 @@
+{
+  "disk_after": {
+    "free": 12595585024,
+    "total": 438000656384,
+    "used": 425405071360
+  },
+  "monitored": {
+    "disk_after": {
+      "free": 12595585024,
+      "total": 438000656384,
+      "used": 425405071360
+    },
+    "killed_for_cap": false,
+    "process_tree": {
+      "cap_bytes": 6442450944,
+      "cap_exceeded": false,
+      "first_exceeded_seconds": null,
+      "last_sample_error": null,
+      "max_process_count": 1,
+      "max_single_process_peak_rss_bytes": 1654665216,
+      "own_peak_rss_bytes": 1654665216,
+      "sample_count": 84786,
+      "sampling_interval_seconds": 0.02,
+      "tree_peak_rss_bytes": 1654665216
+    },
+    "returncode": -15,
+    "seconds": 2402.09969288297,
+    "timed_out": true
+  },
+  "note": "The earlier full 50k attempt (writer + 3 queries + 1 repeat + 1 fresh under one worker) timed out before the worker wrote its final metrics file. The process tree did NOT exceed the 6 GiB cap. The later split writer-only run completed and is the authoritative 50k writer receipt.",
+  "reason": "COMMAND_TIMEOUT_AT_2400s",
+  "schema": "PYAT1006_FAILED_SHAPE@1",
+  "shape": "scale-50k-full-attempt",
+  "stderr_tail": "",
+  "stdout_tail": "",
+  "wall_seconds": 2402.113905689912
+}
