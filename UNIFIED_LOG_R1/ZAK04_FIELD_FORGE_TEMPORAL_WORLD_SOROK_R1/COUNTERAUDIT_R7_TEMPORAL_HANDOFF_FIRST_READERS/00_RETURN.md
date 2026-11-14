@@ -1,0 +1,17 @@
+# ZAK-04 R7 — temporal source-first consumer audit, exact historical V553→V554 semantic seam
+
+**Parent frozen:** R6 draft PR #1052 HEAD `abb0e0c87d8a45593356c9ec6c1afda5ebb1d1cd`. Protected PRE-MAIN `6a5c12f04323d74001f9632063ec907f4fc4468e` unmodified. Historical code source cut `25830fe7462bb9e29bc4087e6ae14f3f84cec377` unmodified.
+
+**What changed:** 15 independent **mechanism/reader edges**, 0 newly invented original T identities. 12-status vocabulary court, code-sourced evidence rows, 15 negative tests identified but not executed, source-first graph and exact repair falsifiers. Same-source/S2 completion remains UNPROVED.
+
+**Recovered positive original functionality:** V553 independently promotes at least two resolved, measured, source-qualified probe-ready V552J wave anchors to `AUTHORIZED_SPARSE_TEMPORAL_KEY`. Its actual authorized observed temporal delta and source fact/packet IDs are distinguishable from diagnostic probe deltas. Sparse authorized field preserves unknown unobserved gaps with None and denies interpolation. Hence R6's `V552J temporal_field_allowed=False` remains correct at **V552J producer** but does NOT mean V553 cannot mint later qualified temporal field.
+
+**Major historical handoff gap:** The V553 producer writes authoritative `v553_temporal_pressure_field.parquet` plus `v553_v554_handoff_index.parquet` (only 2+ authorized anchors may promote seed use). Historical `build_v554_seed_contract`, however, reads `v553_country_year_pressure_field.parquet` plus global readiness and harmonization. The country-year values are overlay-count coverage/penalty heuristics, NOT source-keyed authorized signed structural pressure. No read of the authoritative per-key V553 field/handoff was found in the inspected full V554 file. The similarly named `v553_downstream_v554_handoff_index.parquet` is a **legacy shadow blocked** and is only named as a path in V554, not consumed.
+
+**Exact code-level defect:** V554 requires status `anchor_derived` for a positive regional pressure seed and `linear_interpolated` for constrained; the matched canonical V553 country-year producer emits `ready`/`ready_with_gaps`, `anchor`, `blocked_no_comparability`, or `cautious_interpolation_allowed`. Thus the positive regional path is unreachable **within this pinned producer→consumer pair**. National pressure seed can still be positive off global readiness; no blanket V554 failure claimed. Additional `if not _clean(report.get("ready_for_v553"))` stringifies False and can mislabel heuristic readiness, though downstream global gate remains separate.
+
+**Downstream limits:** V555 creates unresolved generic mediation slots (not a real family/carrier history). V556 hardcodes `allowed_v557_use=False` for candidate attractor requirements; V557 creates no dialogues and `allowed_v558_use=False`. Modern protected M1/M2 use distinct exact temporal/route authority semantics, not evidence of source-native old pipeline migration.
+
+**Scope:** S0–S1 pinned source read, not source-native empirical run or CI. No S2, S3, code, tests, merge, authority promotion, actual person/actor scientific simulation or accepted whole-mission conservation. Next bounded owner decision: native original source two-wave positive/negative and exact V553 keyed handoff → V554 first-reader comparability test. Do not merge old heuristic with observed signed field.
+
+**Terminal:** `ZAK04_R7_AUTHORITATIVE_SPARSE_TEMPORAL_CAPABILITY_RECOVERED__V554_READER_USES_HEURISTIC_LANE__REGIONAL_STATUS_POSITIVE_UNREACHABLE_AT_SOURCE__NATIVE_FIRST_READER_OPEN`.
