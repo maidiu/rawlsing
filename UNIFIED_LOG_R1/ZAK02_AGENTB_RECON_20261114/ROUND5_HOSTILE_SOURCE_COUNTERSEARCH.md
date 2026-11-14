@@ -21,3 +21,7 @@ A V551J component-denominator disagreement may be present in a candidate before 
 ## Explicit truth grades and future utility
 
 19 **provisional** historical T (OPEN DISCOVERY), 228 unchanged T×domain cells (45 located source locators; 15 unresolved; 168 uninspected); 54 distinct mechanism records, 133 evidence IDs, 35 reverse readers, 56 bounded searches, 39 unresolved cases. Original nine obligations 9/9 accounted and 0/9 newly discharged. No native original operation, scientific issuer, qualified first consumer, or integration acceptance granted. Future read-only priority: trace selected legacy report/sidecar producer and native issuer, then actual V550 field types and source feature qualifications. Engineering remains a separate commission.
+
+## R5 final R1 link closure
+
+Two independently grounded current operations now have explicit records: `ZAK02:OP:N0014_COMPAT_WRITER` → `ZAK02:SHAPE:V551J_CERTIFIED_COMPAT_ALIAS` → `ZAK02:REVERSE:034`, and `ZAK02:OP:N0014_SMOKE_READ` → `ZAK02:SHAPE:V551J_SMOKE_SUMMARY` → `ZAK02:REVERSE:035`. Both are **static implementation traces**, not executed first-consumer proof. Their four corresponding DATA_SHAPES and AUTHORITY_USE:T0014 updates prevent orphaned references.
