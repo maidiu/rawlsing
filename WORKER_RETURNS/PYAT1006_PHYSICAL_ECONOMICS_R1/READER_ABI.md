@@ -100,3 +100,7 @@ time is `NOT_RUN_PENDING_997`; no source rights or original35 claim is made.
 the measured stage boundaries, but must run their own integrated and
 independent-resource courts.  This standalone baseline is not #1001
 certification.
+
+The follow-through `followthrough_r2/` locality experiment is NOT part of this
+accepted ABI.  It is a runtime-only TEST_ONLY override (`EXPERIMENT_NOT_IMPLEMENTED`)
+and does not change any accepted reader signature or production file.

@@ -2,15 +2,39 @@
 
 ## 1. Verdict
 
-**`BASELINE_MEASURED_MATERIAL_QUERY_COST_FAILURE` / `STOP_PENDING_EXPLICIT_S2CD_HANDOFF`.**
+**`REVISE_EXACT_DEFECT_RECONCILED` — baseline material query-cost failure
+stands; one measured TEST_ONLY locality candidate is available for a conditional
+S2-C/D handoff.**
 
 No production code was edited.  The accepted S2-C writer and S2-D readers are
 sound at the tested sourcefree scope and exact oracle parity, but the measured
 100k query path is not economically usable as-is: selected I03 562.362 s,
 reverse F2 873.655 s, same-respondent 3-way F4 908.507 s on the same sealed
-release.  The one smallest owner-consistent proposal is in
-`PROGRAMMA_DELTA.md`; implementation awaits an explicit narrow S2-C/S2-D
-handoff.  No self-review/G5 is claimed.
+release.  Independent G5 `0169fac9...` corrected the original causal claim; the
+follow-through measured physical-order respondent traversal and preserved exact
+fact/replay while reducing 100k selected to 265.680 s / 5,784 reads.  The
+candidate is `EXPERIMENT_NOT_IMPLEMENTED`, not production or G5.  No self-review
+is claimed.
+
+## 1a. Independent G5 reconciliation — 2026-11-13 ET
+
+Fresh nonauthor review `0169fac9f3840800796c664eee462bbb8984bb42` (draft
+PR #1034) returned **`REVISE_EXACT_DEFECT`** and is accepted here as the
+controlling disposition of this baseline.  It independently reproduced the
+100k writer (`2,943.177 s`), selected query (`543.026 s`), 13-family census,
+representative oracle parity, changed/restore and guard suites, and identified
+three exact report defects which the follow-through at
+`followthrough_r2/` corrects:
+
+1. the old `_respondent_family` `ORDER BY ref` / small-LRU causal proposal was
+   **wrong**; the actual churn is native respondent traversal in ref-key order
+   across physically ordered row groups, plus the separate event cache;
+2. the claimed 36-test S2-D group is **29** for the named five files and **31**
+   only when the separate 2-test partial-binding suite is added;
+3. the 1k/10k "writer RSS" rows were whole-worker peaks, not writer-only.
+
+Known #999 coherent native body-poison RED remains external and is not
+repaired, hidden, or promoted by this follow-through.
 
 ## 2. Exact tested frozen head and permissions
 
@@ -20,9 +44,13 @@ handoff.  No self-review/G5 is claimed.
   `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`.
 - Accepted S2-C: `b7b697b69f0acea12174937ee824c19ac34ac284`.
 - Accepted S2-D G5: `ba8d760cd8e31a9baff9b45698bd4117f4baa456`.
-- Harness/return commit: `05e9ceacfd1a43aa8c21ff3144502550916deadd`.
-  The order-preserving documentation-only update after that commit is the
-  branch tip; the tested production tree remains the frozen head above.
+- Original harness commit: `05e9ceacfd1a43aa8c21ff3144502550916deadd`.
+- Independent G5: `0169fac9f3840800796c664eee462bbb8984bb42`
+  (`REVISE_EXACT_DEFECT`, draft PR #1034).
+- Follow-through branch: `codex/pyat1006-locality-writer-profile-20261113-r1`,
+  descendant of `51aabffef90399359008e00890f551a1e56c0da9`.
+- Follow-through commit: `1ca1c735a577a7524a0a26c15df8879cd88704e3`.
+  The tested production tree remains the frozen head above.
 - Write lease used: **only new files** under
   `WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/`.
 - All `rawlsing_next` production and accepted test files were READONLY.
@@ -90,8 +118,9 @@ Full table: `evidence/baseline_table.md`; raw compact receipts:
 | I05 s | 11.925 | 145.307 | NOT_RUN | NOT_RUN |
 | same-process selected p50/p95 (n) | 4.748/4.860 (10) | 58.288/67.730 (10) | NOT_RUN | NOT_RUN |
 | fresh-process selected p50/p95 (n) | 4.688/5.259 (10) | 57.400/60.271 (10) | NOT_RUN | NOT_RUN |
-| writer process-tree RSS B | 502,263,808 | 1,394,810,880 | 233,308,160 | 295,211,008 |
-| query process-tree RSS B | (same run) | (same run) | 1,833,365,504 | 3,690,455,040 |
+| whole-worker tree RSS B (1k/10k) | 502,263,808 | 1,394,810,880 | n/a | n/a |
+| writer-only tree RSS B (50k/100k; 1k/10k corrected) | 194,072,576 (1k) | 214,261,760 (10k, review) | 233,308,160 | 295,211,008 |
+| query phase tree RSS B | (whole-worker) | (whole-worker) | 1,833,365,504 | 3,690,455,040 |
 | 6 GiB cap | PASS | PASS | PASS | PASS |
 
 Native readers on the same releases: 1k/10k/skew exercised actual Batch,
@@ -117,14 +146,15 @@ Executed:
   I03: false EMPTY, missing member, tamper, self-rehash, posting forgery,
   symlink/root, duplicate/omitted locator, full-family census, fresh process,
   change/restore).
-- Accepted S2-D saved/adversarial/five-reader/source-scope suites:
-  **36 passed** (Batch, normal, completed/partial/absent, revoked CURRENT,
-  forged checkpoint binding before restore, wrong/mixed scope, source-scope
-  false refusal repair, fresh processes).
+- Accepted S2-D RUNBOOK five-file saved/adversarial/five-reader/source-scope
+  group: **29 passed**.  A separate partial-binding-order suite adds
+  **2 passed**.  The old "36 passed" claim was unreproducible and is withdrawn;
+  these are 29 + 2, not one 36-test selection.
 - Own fixture tests: **6 passed** (full family/oracle parity, changed/restore,
   false EMPTY/tamper/denied CURRENT/wrong root, no full graph/whole table/
   source open, high-cardinality skew occurrence identity, SIGKILL-before-commit
-  no manifest + restart).
+  no manifest + restart).  Follow-through locality tests add **2 passed**
+  (candidate exact oracle/change/restore and candidate hostile checks).
 - Source opens during saved readers: 0.  Full C11 graph builds: 0.  Whole
   `pq.read_table`: 0.  Persistent second body corpus: 0.
 - Current/external-root guards: denied authorizer refuses before estate bytes;
@@ -144,15 +174,37 @@ complete commission.
 ## 6. G4 — economical remediation
 
 The runnable baseline table (`evidence/baseline_table.md`) was published
-**before** any proposal.  The measured material failure is query-time
-economics, not the 6 GiB process cap.  The dominant query cost is the
-per-respondent family read in `pre553_direct_estate_i03.py::_respondent_family`:
-member rows are read in `ORDER BY ref` while the single-row-group cache is
-keyed by `gid`, causing repeated row-group decoding/thrash.  One smallest
-owner-consistent proposal (bounded row-group-coherent read/cache while
-preserving exact canonical results) is documented in `PROGRAMMA_DELTA.md`.
-It is **not implemented**; this worker has no production edit permission.
-Await `STOP_PENDING_EXPLICIT_S2CD_HANDOFF`.
+**before** any proposal.  The measured material failure is query-time economics, not the 6 GiB process
+cap.  Independent ROWGROUPREAD counters show the actual cause is **native
+respondent traversal in ref-key/hash order** while physical row groups follow
+insertion order: at 10k, routing reads are 10,043 in hash order versus 258 in
+physical order with the same per-respondent SQL; at 100k the selected query
+issued 101,438 routing reads and 100,050 event reads with zero consecutive-gid
+cache hits.  Within one respondent the side-family rows already occupy one
+(rarely two) gid, so per-respondent `(gid,off)` ordering cannot fix the churn;
+event reads use a separate cache in `VerifiedDirectEstate._events_from_postings`.
+
+The follow-through runtime experiment (production unchanged, labeled
+`EXPERIMENT_NOT_IMPLEMENTED`) changes only the module-global respondent sort in
+`_pre553_query_eval` to physical insertion order.  On the same reviewer-retained
+releases it preserves exact fact/projection/replay/release refs for selected,
+reverse F2 and 3-question F4, while reducing:
+- 100k selected: 580.548 s / 204,125 reads -> 265.680 s / 5,784 reads (2.19x);
+- 10k selected/F2/F4: 49.1/51.8/56.6 s -> 21.8/21.1/24.7 s (2.25/2.45/2.30x);
+- 1k selected/F2/F4: 4.4/4.5/5.0 s -> 2.0/2.0/2.5 s (2.15/2.28/2.03x).
+
+This is a measured candidate for a narrow S2-C/D owner handoff, not a
+production patch, optimized-engine acceptance or G5 acceptance.  100k
+reverse-F2/F4 remain `NOT_INDEPENDENTLY_REPRODUCED`; 10k matched F2/F4 is the
+scale proxy.  The writer profile at
+`followthrough_r2/WRITER_PROFILE.md` corrects the "SQLite proof" shorthand:
+the direct-I02 inclusive stage is dominated by canonical semantic
+projection/identity/object validation and body_json reconstruction, with
+SQLite execute only about 4.2% of the inflated 2k profile wall.  The one
+smallest owner-consistent writer proposal is a per-build memo of the already
+computed immutable semantic projection/hash for validation+insert; it is
+**not implemented** and must not remove any check.  See
+`followthrough_r2/PROGRAMMA_DELTA.md` for the ordinary follow-through delta.
 
 ## 7. Required #997 handoff and #998/#1001 boundaries
 

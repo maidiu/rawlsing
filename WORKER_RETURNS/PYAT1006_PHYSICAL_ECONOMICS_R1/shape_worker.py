@@ -625,9 +625,9 @@ def main(argv: list[str] | None = None) -> int:
         "status": result["status"],
         "shape": result["shape"],
         "write_seconds": result["write_seconds"],
-        "cold_admission_seconds": result["cold_admission_seconds"],
-        "selected_repeat": result["selected_repeat"]["stats"],
-        "retained_bytes": result["retained_bytes"],
+        "cold_admission_seconds": result.get("cold_admission_seconds"),
+        "selected_repeat": (result.get("selected_repeat") or {}).get("stats"),
+        "retained_bytes": result.get("retained_bytes"),
     }, indent=2, sort_keys=True))
     return 0 if result["status"] == "MEASURED" else 2
 

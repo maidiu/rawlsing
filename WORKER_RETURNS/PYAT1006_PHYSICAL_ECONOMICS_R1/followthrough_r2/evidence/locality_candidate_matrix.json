@@ -1,0 +1,797 @@
+{
+  "cases": {
+    "diag-10k": {
+      "baseline_tree_rss_bytes": 827486208,
+      "candidate_tree_rss_bytes": 812253184,
+      "capsule": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/diag-10k/capsule.json",
+      "capsule_sha256": "c3bb36aa99ff5b85eaeb9184972c41a21e37016a2994c2be08e694d0c8e12899",
+      "comparison": {
+        "f2_reverse": {
+          "baseline_cpu_seconds": 55.461096999999995,
+          "baseline_reads": 20153,
+          "baseline_wall_seconds": 51.79031934496015,
+          "candidate_cpu_seconds": 21.013265999999998,
+          "candidate_reads": 614,
+          "candidate_wall_seconds": 21.116124925902113,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        },
+        "f4_three": {
+          "baseline_cpu_seconds": 59.318242999999995,
+          "baseline_reads": 20161,
+          "baseline_wall_seconds": 56.62428760295734,
+          "candidate_cpu_seconds": 24.661502,
+          "candidate_reads": 588,
+          "candidate_wall_seconds": 24.664634638931602,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        },
+        "selected": {
+          "baseline_cpu_seconds": 52.508205000000004,
+          "baseline_reads": 20157,
+          "baseline_wall_seconds": 49.0661120719742,
+          "candidate_cpu_seconds": 21.816013,
+          "candidate_reads": 588,
+          "candidate_wall_seconds": 21.811735488008708,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        }
+      },
+      "queries": "selected,f2_reverse,f4_three",
+      "queries_detail": {
+        "f2_reverse": {
+          "baseline": {
+            "cpu_seconds": 55.461096999999995,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.006726423045620322,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.02703420864418149,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.03332603699527681,
+                  "reads": 98,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 50000,
+                  "unique_gids": 98
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.007382463663816452,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.028740945970639586,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                }
+              },
+              "total_reads": 20153,
+              "total_rows_decoded": 10285996
+            },
+            "temp_sqlite_peak_bytes": 129785856,
+            "wall_seconds": 51.79031934496015
+          },
+          "candidate": {
+            "cpu_seconds": 21.013265999999998,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.007414062973111868,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.02943428372964263,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.03174700774252415,
+                  "reads": 98,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 50000,
+                  "unique_gids": 98
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.006905164569616318,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.02635805867612362,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                }
+              },
+              "total_reads": 614,
+              "total_rows_decoded": 312088
+            },
+            "temp_sqlite_peak_bytes": 129785856,
+            "wall_seconds": 21.116124925902113
+          },
+          "read_factor": 32.82247557003257,
+          "wall_factor": 2.452643159040583
+        },
+        "f4_three": {
+          "baseline": {
+            "cpu_seconds": 59.318242999999995,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.006578381871804595,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.026833838783204556,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.032344611594453454,
+                  "reads": 98,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 50000,
+                  "unique_gids": 98
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0061547711957246065,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.029788970248773694,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                }
+              },
+              "total_reads": 20161,
+              "total_rows_decoded": 10290410
+            },
+            "temp_sqlite_peak_bytes": 129785856,
+            "wall_seconds": 56.62428760295734
+          },
+          "candidate": {
+            "cpu_seconds": 24.661502,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0068344431929290295,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.02740062540397048,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.03467481234110892,
+                  "reads": 98,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 50000,
+                  "unique_gids": 98
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.00663036247715354,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.029006005497649312,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                }
+              },
+              "total_reads": 588,
+              "total_rows_decoded": 299094
+            },
+            "temp_sqlite_peak_bytes": 129785856,
+            "wall_seconds": 24.664634638931602
+          },
+          "read_factor": 34.28741496598639,
+          "wall_factor": 2.2957683514021894
+        },
+        "selected": {
+          "baseline": {
+            "cpu_seconds": 52.508205000000004,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.006377974059432745,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.027375311823561788,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.033893554005771875,
+                  "reads": 98,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 50000,
+                  "unique_gids": 98
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.007462325738742948,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.029483592603355646,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                }
+              },
+              "total_reads": 20157,
+              "total_rows_decoded": 10288362
+            },
+            "temp_sqlite_peak_bytes": 129785856,
+            "wall_seconds": 49.0661120719742
+          },
+          "candidate": {
+            "cpu_seconds": 21.816013,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.006224161945283413,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.02615111297927797,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.032007330330088735,
+                  "reads": 98,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 50000,
+                  "unique_gids": 98
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.006931527517735958,
+                  "reads": 20,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 10000,
+                  "unique_gids": 20
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.028520926367491484,
+                  "reads": 64,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 32450,
+                  "unique_gids": 64
+                }
+              },
+              "total_reads": 588,
+              "total_rows_decoded": 299094
+            },
+            "temp_sqlite_peak_bytes": 129785856,
+            "wall_seconds": 21.811735488008708
+          },
+          "read_factor": 34.28061224489796,
+          "wall_factor": 2.249528108340987
+        }
+      }
+    },
+    "diag-1k": {
+      "baseline_tree_rss_bytes": 327856128,
+      "candidate_tree_rss_bytes": 215662592,
+      "capsule": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/diag-1k/capsule.json",
+      "capsule_sha256": "47fac15acb1707d177097ac664739712cc116925574fc09526afcf5d52138967",
+      "comparison": {
+        "f2_reverse": {
+          "baseline_cpu_seconds": 4.856224,
+          "baseline_reads": 1785,
+          "baseline_wall_seconds": 4.5451748399063945,
+          "candidate_cpu_seconds": 2.001533,
+          "candidate_reads": 63,
+          "candidate_wall_seconds": 1.9930682620033622,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        },
+        "f4_three": {
+          "baseline_cpu_seconds": 5.308262999999998,
+          "baseline_reads": 1784,
+          "baseline_wall_seconds": 5.001745134824887,
+          "candidate_cpu_seconds": 2.455488000000001,
+          "candidate_reads": 61,
+          "candidate_wall_seconds": 2.468312855111435,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        },
+        "selected": {
+          "baseline_cpu_seconds": 4.68024,
+          "baseline_reads": 1784,
+          "baseline_wall_seconds": 4.3898651408962905,
+          "candidate_cpu_seconds": 2.050211,
+          "candidate_reads": 61,
+          "candidate_wall_seconds": 2.0455988289322704,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        }
+      },
+      "queries": "selected,f2_reverse,f4_three",
+      "queries_detail": {
+        "f2_reverse": {
+          "baseline": {
+            "cpu_seconds": 4.856224,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0008443212136626244,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.003334457753226161,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.003668895224109292,
+                  "reads": 10,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 5000,
+                  "unique_gids": 10
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0008083600550889969,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.003646035911515355,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                }
+              },
+              "total_reads": 1785,
+              "total_rows_decoded": 887943
+            },
+            "temp_sqlite_peak_bytes": 12996608,
+            "wall_seconds": 4.5451748399063945
+          },
+          "candidate": {
+            "cpu_seconds": 2.001533,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0007465900853276253,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.0028772519435733557,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.0034231538884341717,
+                  "reads": 10,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 5000,
+                  "unique_gids": 10
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0006481332238763571,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.0030725502874702215,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                }
+              },
+              "total_reads": 63,
+              "total_rows_decoded": 30492
+            },
+            "temp_sqlite_peak_bytes": 12996608,
+            "wall_seconds": 1.9930682620033622
+          },
+          "read_factor": 28.333333333333332,
+          "wall_factor": 2.2804913040648915
+        },
+        "f4_three": {
+          "baseline": {
+            "cpu_seconds": 5.308262999999998,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0008395379409193993,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.003094547661021352,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.003220029640942812,
+                  "reads": 10,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 5000,
+                  "unique_gids": 10
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.000644646817818284,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.003386738244444132,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                }
+              },
+              "total_reads": 1784,
+              "total_rows_decoded": 887770
+            },
+            "temp_sqlite_peak_bytes": 12996608,
+            "wall_seconds": 5.001745134824887
+          },
+          "candidate": {
+            "cpu_seconds": 2.455488000000001,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0006565467920154333,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.002817355329170823,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.003122072434052825,
+                  "reads": 10,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 5000,
+                  "unique_gids": 10
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0006370320916175842,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.002635685261338949,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                }
+              },
+              "total_reads": 61,
+              "total_rows_decoded": 29807
+            },
+            "temp_sqlite_peak_bytes": 12996608,
+            "wall_seconds": 2.468312855111435
+          },
+          "read_factor": 29.24590163934426,
+          "wall_factor": 2.0263821599709964
+        },
+        "selected": {
+          "baseline": {
+            "cpu_seconds": 4.68024,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0006015568505972624,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.0038094623014330864,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.0031643870752304792,
+                  "reads": 10,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 5000,
+                  "unique_gids": 10
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0006929230876266956,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.0038077631033957005,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                }
+              },
+              "total_reads": 1784,
+              "total_rows_decoded": 887770
+            },
+            "temp_sqlite_peak_bytes": 12996608,
+            "wall_seconds": 4.3898651408962905
+          },
+          "candidate": {
+            "cpu_seconds": 2.050211,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0007892968133091927,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.0039076111279428005,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.0039024916477501392,
+                  "reads": 10,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 5000,
+                  "unique_gids": 10
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0008626380003988743,
+                  "reads": 2,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 1000,
+                  "unique_gids": 2
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.003898140974342823,
+                  "reads": 7,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 3245,
+                  "unique_gids": 7
+                }
+              },
+              "total_reads": 61,
+              "total_rows_decoded": 29807
+            },
+            "temp_sqlite_peak_bytes": 12996608,
+            "wall_seconds": 2.0455988289322704
+          },
+          "read_factor": 29.24590163934426,
+          "wall_factor": 2.1460049149459297
+        }
+      }
+    },
+    "hist-100k": {
+      "baseline_tree_rss_bytes": 2950258688,
+      "candidate_tree_rss_bytes": 2805817344,
+      "capsule": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/hist-100k/capsule.json",
+      "capsule_sha256": "4dba2ce7904da14a5bedbc4165dc903aa5055bc474caf2fb969eec071caccb40",
+      "comparison": {
+        "selected": {
+          "baseline_cpu_seconds": 587.982663,
+          "baseline_reads": 204125,
+          "baseline_wall_seconds": 580.5479552608449,
+          "candidate_cpu_seconds": 247.82665899999998,
+          "candidate_reads": 5784,
+          "candidate_wall_seconds": 265.68012275802903,
+          "fact_refs_equal": true,
+          "projection_sha256_equal": true,
+          "release_refs_equal": true,
+          "replay_refs_equal": true
+        }
+      },
+      "queries": "selected",
+      "queries_detail": {
+        "selected": {
+          "baseline": {
+            "cpu_seconds": 587.982663,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.0701845872681588,
+                  "reads": 196,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 100000,
+                  "unique_gids": 196
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.25889746798202395,
+                  "reads": 634,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 324477,
+                  "unique_gids": 634
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.3399198001716286,
+                  "reads": 977,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 500000,
+                  "unique_gids": 977
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.06879400205798447,
+                  "reads": 196,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 100000,
+                  "unique_gids": 196
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.2733425067272037,
+                  "reads": 634,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 324477,
+                  "unique_gids": 634
+                }
+              },
+              "total_reads": 204125,
+              "total_rows_decoded": 104482267
+            },
+            "temp_sqlite_peak_bytes": 1301057536,
+            "wall_seconds": 580.5479552608449
+          },
+          "candidate": {
+            "cpu_seconds": 247.82665899999998,
+            "reads": {
+              "families": {
+                "EmpiricalCoordinateFact.parquet": {
+                  "read_seconds": 0.06652267812751234,
+                  "reads": 196,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 100000,
+                  "unique_gids": 196
+                },
+                "RespondentEvent.parquet": {
+                  "read_seconds": 0.2523892652243376,
+                  "reads": 634,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 324477,
+                  "unique_gids": 634
+                },
+                "RoutingEligibilityFact.parquet": {
+                  "read_seconds": 0.33940931456163526,
+                  "reads": 977,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 500000,
+                  "unique_gids": 977
+                },
+                "WeightMeasureFact.parquet": {
+                  "read_seconds": 0.0661128805950284,
+                  "reads": 196,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 100000,
+                  "unique_gids": 196
+                },
+                "event_locator.parquet": {
+                  "read_seconds": 0.2674050035420805,
+                  "reads": 634,
+                  "reads_per_unique_gid": 1.0,
+                  "rows_decoded": 324477,
+                  "unique_gids": 634
+                }
+              },
+              "total_reads": 5784,
+              "total_rows_decoded": 2959415
+            },
+            "temp_sqlite_peak_bytes": 1301057536,
+            "wall_seconds": 265.68012275802903
+          },
+          "read_factor": 35.291320885200555,
+          "wall_factor": 2.185138840023742
+        }
+      }
+    }
+  },
+  "label": "EXPERIMENT_NOT_IMPLEMENTED",
+  "review_g5_commit": "0169fac9f3840800796c664eee462bbb8984bb42",
+  "review_g5_verdict": "REVISE_EXACT_DEFECT",
+  "schema": "PYAT1006_LOCALITY_CANDIDATE_SUMMARY@1"
+}
