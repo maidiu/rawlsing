@@ -21,7 +21,7 @@ columns = [
     "rowgroups", "stage peak B", "proof SQLite B", "cold admit s",
     "session build s", "temp SQLite B", "selected s", "same p50/p95 (n)",
     "fresh p50/p95 (n)", "F2 rev s", "F4 3 s", "I05 s", "batch s",
-    "writer tree RSS B", "query tree RSS B",
+    "whole-worker tree RSS B", "query phase tree RSS B",
 ]
 lines.append("| " + " | ".join(columns) + " |")
 lines.append("|" + "---|" * len(columns))
@@ -89,6 +89,7 @@ for member, row in sorted(hundred["physical"]["members"].items()):
 lines.append("")
 lines.append("## Counts and negative facts\n")
 lines.append("- 100k shape: 100,000 distinct respondents, 324,477 RespondentEvent rows (3.24477 events/respondent), 1,448,965 total Parquet rows, 2,841 row groups.\n")
+lines.append("- Independent G5 `0169fac9f3840800796c664eee462bbb8984bb42` returned `REVISE_EXACT_DEFECT`; it reproduced the 100k writer/selected cost and corrected this report's old causal claim and test count. The 1k/10k RSS rows below are whole-worker peaks; writer-only 1k is 194,072,576 B and writer-only 10k is 214,261,760 B (independent review). 50k/100k were writer-only because they stopped after write.\n")
 lines.append("- `_row`/body_json reconstruction is called twice per object: once at write and once in the post-write reread/re-encode proof. At 100k, row calls: RespondentEvent 649,587; RoutingEligibilityFact 1,000,000; RespondentIdentity 200,000; EmpiricalCoordinateFact 200,000; WeightMeasureFact 200,000. Total `_row` time 492.834 s.\n")
 lines.append("- 100k retained Parquet 310,163,264 B; staging peak 5,257,841,984 B; temporary I02 proof SQLite peak 4,385,796,096 B; session temporary SQLite 1,300,910,080 B. These are distinct files/phase costs, not one copy.\n")
 lines.append("- 100k writer process-tree peak 295,211,008 B; 100k query process-tree peak 3,690,455,040 B; both below 6 GiB. 50k query peak 1,833,365,504 B.\n")
@@ -96,17 +97,17 @@ lines.append("- 100k cold admission 1.520 s; cold all-event posting-index build 
 lines.append("- 50k cold admission 0.687 s; session build 14.555 s; selected 297.986 s; F2 reverse 295.457 s; F4 3-way 497.799 s.\n")
 lines.append("- Source opens on the fixture producer: 0 (synthetic in-process generator). Full C11 repository builds on the saved path: 0 (tripwire). Whole `pq.read_table` calls: 0 (tripwire). Persistent second body corpus: none; each release has 13 family Parquet members + locator + manifest.\n")
 lines.append("- Exact small-oracle parity: 48-respondent weighted fixture with A/B/C/D question families, reverse F2, same-respondent 3-way and 4-way joint, repeated occurrence, weighted query and I05; saved fact refs, semantic projections, release refs and I05 receipts equal native oracle. Changed C value changes the fact; old root restores exact old fact. Tests in `test_1006_baseline.py`: 6 passed.\n")
-lines.append("- Accepted hostile regression suite reused proportionately: 31 passed (S2-C/S2-D direct estate) and 36 passed (S2-D saved admission/adversarial/five readers/source scope). See `evidence/`.\n")
+lines.append("- Accepted hostile regression suite reused proportionately: 31 passed (S2-C/S2-D direct estate); 29 passed for the RUNBOOK five-file S2-D group; a separate partial-binding-order suite passed 2; own baseline tests passed 6. The old 36-passed claim is withdrawn and is not a single test selection. See `evidence/`.\n")
 lines.append("")
 lines.append("## Historical-shape difference\n")
 lines.append("The Nov 11 historical W03 shape was 100k rows / 200k events. Preserving F2/F4 with genuine same-respondent 3+ question joints requires at least 3 events for each fully joint respondent; this fixture therefore uses 100k distinct respondents / 324,477 events (A,B,C always; sparse D; repeated MR; typed missing B). This is the closest executable shape under the frozen requirement, not an apples-to-apples W03 rerun. No comparison or improvement claim against the historic W03 777.5 s / 5,923,426,304 B persistence RSS is made.\n")
 lines.append("")
 lines.append("## Dominant measured cost\n")
-lines.append("At 100k the writer's dominant stage is the direct I02 semantic/identity/SQLite proof: 2,249.700 s of 3,033.723 s write (74.2%), with 761.224 s reread/re-encode proof (25.1%) and 492.834 s `_row`/body_json (overlapping both passes). Root hashing is 11.101 s (0.37%). Query economics are dominated by per-respondent native query evaluation after a 33.508 s session build: selected 562.362 s, F2 reverse 873.655 s, F4 3-way 908.507 s at 100k. The cold session is not the dominant query cost.\n")
+lines.append("At 100k the direct I02 proof is 2,249.700 s inclusive (74.2% of write), with 761.224 s reread/re-encode proof (25.1%) and 492.834 s `_row`/body_json overlapping both passes; root hashing is 11.101 s (0.37%). A 2k profiled decomposition shows the direct proof contains first-pass body construction/Parquet flush, object validation/insertion, projection/replay hashing and SQLite work; canonical projection/identity/object validation and body_json reconstruction dominate, while SQLite execute is only about 4.2% of the inflated 2k profile wall. Query economics are dominated by native respondent traversal in ref-key order across physically ordered row groups: at 100k selected there were 204,125 row-group reads / 103,133,313 decoded rows after a 33.508 s session build. A runtime-only physical-order candidate preserves exact facts/replay and reduces 100k selected to 5,784 reads / 265.680 s, but is EXPERIMENT_NOT_IMPLEMENTED pending owner handoff.\n")
 lines.append("")
 lines.append("## Rejected assumptions\n")
 lines.append("- The 6 GiB process-tree cap was not the failure at 100k: writer 295 MB, query 3.69 GB. The material failure is time/query economics and repeated cold evaluation, not RSS.\n")
-lines.append("- O(N) session build is real but bounded (33.5 s at 100k, 1.3 GB temp SQLite); it is not the dominant selected-query cost.\n")
+lines.append("- O(N) session build is real but bounded (33.5 s at 100k, 1.3 GB temp SQLite); it is not the dominant selected-query cost. The dominant query cause is cross-respondent ref-key traversal across physical row groups; per-respondent `(gid,off)` ordering cannot fix it.\n")
 lines.append("- The accepted writer does not create a full C11 graph, does not reopen source and does not retain a second body corpus; its cost is exact canonical body/identity proof and JSON/SQLite work.\n")
 lines.append("")
 lines.append("## NOT_RUN / holds\n")

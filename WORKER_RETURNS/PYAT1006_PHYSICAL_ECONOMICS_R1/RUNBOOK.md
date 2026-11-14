@@ -141,7 +141,37 @@ $PY -m pytest -q -o addopts='' -p no:cacheprovider \
   $R/test_1006_baseline.py --basetemp=$R/.local-data/pytest-tmp
 ```
 
-Observed: 31 passed (S2-C/S2-D focused), 36 passed (S2-D saved/adversarial/
-five-reader/source-scope), 6 passed (own fixture/oracle/restore/hostile tests).
+Observed: 31 passed (S2-C/S2-D focused); 29 passed for the RUNBOOK five-file
+S2-D group; 2 passed for the separate partial-binding suite; 6 passed for the
+own fixture/oracle/restore/hostile tests.  The old "36 passed" claim is
+withdrawn.  Follow-through locality tests add 2 passed.
+
 This worker did not perform independent G5 review; those are accepted test
-reuses and own nonauthor test receipts, not self-acceptance.
+reuses and own nonauthor test receipts, not self-acceptance.  Independent G5
+`0169fac9...` returned `REVISE_EXACT_DEFECT`; its 29-test and writer-only-RSS
+corrections are reflected above.
+
+## Follow-through r2 — locality candidate and writer profile
+
+Reviewer-retained sourcefree releases are read-only at
+`/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/`.
+The exact capsule hashes are in `followthrough_r2/evidence/locality_candidate_matrix.json`.
+Production remains unchanged; the candidate is `EXPERIMENT_NOT_IMPLEMENTED`.
+
+```bash
+R=WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1
+PY=$R/.venv/bin/python
+export PYTHONPATH=.:$R PYTHONDONTWRITEBYTECODE=1
+
+# matched before/after locality pairs on the same reviewer-retained estates
+$PY $R/followthrough_r2/run_locality_matrix.py   --outdir $R/followthrough_r2/.local-data/matrix-1k10k   --cases diag-1k,diag-10k --timeout 1800
+$PY $R/followthrough_r2/run_locality_matrix.py   --outdir $R/followthrough_r2/.local-data/matrix-100k   --cases hist-100k --timeout 1800
+$PY $R/followthrough_r2/summarize_locality.py
+
+# semantic oracle/change/restore/hostile test for the runtime candidate
+$PY -m pytest -q -o addopts='' -p no:cacheprovider   $R/followthrough_r2/test_locality_candidate.py   --basetemp=$R/followthrough_r2/.local-data/pytest
+
+# writer call-boundary profile (2k absolute and cProfile)
+$PY $R/followthrough_r2/writer_profile.py   --outdir $R/followthrough_r2/.local-data/writer-profile-2k-absolute   --respondents 2000 --no-cprofile
+$PY $R/followthrough_r2/writer_profile.py   --outdir $R/followthrough_r2/.local-data/writer-profile-2k   --respondents 2000
+```

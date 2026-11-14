@@ -14,7 +14,7 @@ ALL ROWS ARE SOURCEFREE SYNTHETIC TEST_ONLY. NOT ORIGINAL35, NOT #1001, NOT PROD
 
 ## Shape table
 
-| shape | status | resp | events | ev/resp | write s | I02 proof s | reread/reencode s | row proj s | root hash s | Parquet B | rowgroups | stage peak B | proof SQLite B | cold admit s | session build s | temp SQLite B | selected s | same p50/p95 (n) | fresh p50/p95 (n) | F2 rev s | F4 3 s | I05 s | batch s | writer tree RSS B | query tree RSS B |
+| shape | status | resp | events | ev/resp | write s | I02 proof s | reread/reencode s | row proj s | root hash s | Parquet B | rowgroups | stage peak B | proof SQLite B | cold admit s | session build s | temp SQLite B | selected s | same p50/p95 (n) | fresh p50/p95 (n) | F2 rev s | F4 3 s | I05 s | batch s | whole-worker tree RSS B | query phase tree RSS B |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | diag-1k | MEASURED | 1000 | 3245 | 3.2450 | 17.442 | 11.577 | 5.341 | 4.567 | 0.117 | 3185373 | 38 | 51093725 | 43216896 | 0.026 | 7.616 total/41 | NOT_RUN | 4.945 | 4.748/4.860 (10) | 4.688/5.259 (10) | 4.622 | 5.685 | 11.925 | 36.257 | 502263808 | NOT_RUN |
 | diag-10k | MEASURED | 10000 | 32450 | 3.2450 | 191.808 | 130.416 | 60.033 | 46.572 | 1.102 | 31117712 | 294 | 524699536 | 437809152 | 0.127 | 81.663 total/34 | NOT_RUN | 51.069 | 58.288/67.730 (10) | 57.400/60.271 (10) | 58.742 | 60.486 | 145.307 | 316.502 | 1394810880 | NOT_RUN |
@@ -53,6 +53,8 @@ ALL ROWS ARE SOURCEFREE SYNTHETIC TEST_ONLY. NOT ORIGINAL35, NOT #1001, NOT PROD
 
 - 100k shape: 100,000 distinct respondents, 324,477 RespondentEvent rows (3.24477 events/respondent), 1,448,965 total Parquet rows, 2,841 row groups.
 
+- Independent G5 `0169fac9f3840800796c664eee462bbb8984bb42` returned `REVISE_EXACT_DEFECT`; it reproduced the 100k writer/selected cost and corrected this report's old causal claim and test count. The 1k/10k RSS rows below are whole-worker peaks; writer-only 1k is 194,072,576 B and writer-only 10k is 214,261,760 B (independent review). 50k/100k were writer-only because they stopped after write.
+
 - `_row`/body_json reconstruction is called twice per object: once at write and once in the post-write reread/re-encode proof. At 100k, row calls: RespondentEvent 649,587; RoutingEligibilityFact 1,000,000; RespondentIdentity 200,000; EmpiricalCoordinateFact 200,000; WeightMeasureFact 200,000. Total `_row` time 492.834 s.
 
 - 100k retained Parquet 310,163,264 B; staging peak 5,257,841,984 B; temporary I02 proof SQLite peak 4,385,796,096 B; session temporary SQLite 1,300,910,080 B. These are distinct files/phase costs, not one copy.
@@ -67,7 +69,7 @@ ALL ROWS ARE SOURCEFREE SYNTHETIC TEST_ONLY. NOT ORIGINAL35, NOT #1001, NOT PROD
 
 - Exact small-oracle parity: 48-respondent weighted fixture with A/B/C/D question families, reverse F2, same-respondent 3-way and 4-way joint, repeated occurrence, weighted query and I05; saved fact refs, semantic projections, release refs and I05 receipts equal native oracle. Changed C value changes the fact; old root restores exact old fact. Tests in `test_1006_baseline.py`: 6 passed.
 
-- Accepted hostile regression suite reused proportionately: 31 passed (S2-C/S2-D direct estate) and 36 passed (S2-D saved admission/adversarial/five readers/source scope). See `evidence/`.
+- Accepted hostile regression suite reused proportionately: 31 passed (S2-C/S2-D direct estate); 29 passed for the RUNBOOK five-file S2-D group; a separate partial-binding-order suite passed 2; own baseline tests passed 6. The old 36-passed claim is withdrawn and is not a single test selection. See `evidence/`.
 
 
 ## Historical-shape difference
@@ -77,14 +79,14 @@ The Nov 11 historical W03 shape was 100k rows / 200k events. Preserving F2/F4 wi
 
 ## Dominant measured cost
 
-At 100k the writer's dominant stage is the direct I02 semantic/identity/SQLite proof: 2,249.700 s of 3,033.723 s write (74.2%), with 761.224 s reread/re-encode proof (25.1%) and 492.834 s `_row`/body_json (overlapping both passes). Root hashing is 11.101 s (0.37%). Query economics are dominated by per-respondent native query evaluation after a 33.508 s session build: selected 562.362 s, F2 reverse 873.655 s, F4 3-way 908.507 s at 100k. The cold session is not the dominant query cost.
+At 100k the direct I02 proof is 2,249.700 s inclusive (74.2% of write), with 761.224 s reread/re-encode proof (25.1%) and 492.834 s `_row`/body_json overlapping both passes; root hashing is 11.101 s (0.37%). A 2k profiled decomposition shows the direct proof contains first-pass body construction/Parquet flush, object validation/insertion, projection/replay hashing and SQLite work; canonical projection/identity/object validation and body_json reconstruction dominate, while SQLite execute is only about 4.2% of the inflated 2k profile wall. Query economics are dominated by native respondent traversal in ref-key order across physically ordered row groups: at 100k selected there were 204,125 row-group reads / 103,133,313 decoded rows after a 33.508 s session build. A runtime-only physical-order candidate preserves exact facts/replay and reduces 100k selected to 5,784 reads / 265.680 s, but is EXPERIMENT_NOT_IMPLEMENTED pending owner handoff.
 
 
 ## Rejected assumptions
 
 - The 6 GiB process-tree cap was not the failure at 100k: writer 295 MB, query 3.69 GB. The material failure is time/query economics and repeated cold evaluation, not RSS.
 
-- O(N) session build is real but bounded (33.5 s at 100k, 1.3 GB temp SQLite); it is not the dominant selected-query cost.
+- O(N) session build is real but bounded (33.5 s at 100k, 1.3 GB temp SQLite); it is not the dominant selected-query cost. The dominant query cause is cross-respondent ref-key traversal across physical row groups; per-respondent `(gid,off)` ordering cannot fix it.
 
 - The accepted writer does not create a full C11 graph, does not reopen source and does not retain a second body corpus; its cost is exact canonical body/identity proof and JSON/SQLite work.
 
