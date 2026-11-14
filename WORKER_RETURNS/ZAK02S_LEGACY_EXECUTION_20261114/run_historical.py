@@ -69,6 +69,8 @@ def invoke_550j(module, pd, member_ids):
          "allowed_as_association_feature": True, "weight_value": 1.0},
         {"respondent_id": "R2", "var_code": "ATTITUDE", "response_value_normalized": "NO",
          "allowed_as_association_feature": True, "weight_value": 1.0},
+        {"respondent_id": "R3", "var_code": "ATTITUDE", "response_value_normalized": "",
+         "allowed_as_association_feature": True, "weight_value": 1.0},
     ])
     members = pd.DataFrame([
         {"run_id": "SYN", "source_id": "SYN", "source": "GSS", "wave": "1973",
@@ -87,9 +89,13 @@ def invoke_550j(module, pd, member_ids):
         run_id="SYN", source_id="SYN", source="GSS", wave="1973",
         canonical_wave="1973", country_code="US",
     )
+    baseline_meta = {
+        "baseline_input_context_n": len(respondents),
+        "baseline_input_answered_var_n": int(respondents["response_value_normalized"].ne("").sum()),
+    }
     if trace is None or trace.empty:
-        return {"rows": 0, "candidates": []}
-    return {"rows": len(trace), "candidates": [
+        return {"rows": 0, "candidates": [], **baseline_meta}
+    return {"rows": len(trace), **baseline_meta, "candidates": [
         {key: row.get(key) for key in (
             "associated_response_value", "n_overlap_unweighted",
             "baseline_answered_n_unweighted", "pattern_answered_var_n_unweighted",
@@ -271,7 +277,8 @@ def main():
             lambda o: o.get("exception_type") == "RuntimeError" and "matched multiple distinct override rows" in o.get("exception", ""))
     observe("F08", "negative_duplicate", "_select_override",
             {"record": record, "overrides": [row_a, row_a]},
-            lambda: sel([row_a, row_a]), lambda o: o.get("exception_type") == "RuntimeError")
+            lambda: sel([row_a, row_a]), lambda o: o.get("exception_type") == "RuntimeError"
+            and "via source_wave_var_code: 2 rows" in o.get("exception", ""))
     observe("F08", "negative_unmatched", "_select_override",
             {"record": record, "overrides": [{**row_a, "wave": "1980", "canonical_wave": "1980"}]},
             lambda: sel([{**row_a, "wave": "1980", "canonical_wave": "1980"}]),
@@ -282,7 +289,7 @@ def main():
     joint = mods["ddm_v550j_joint_patterns"]
     sym = "_association_candidate_trace_rows_fast"
     observe("V550J", "positive_same_respondent", sym,
-            {"baseline": [["R1", "YES"], ["R2", "NO"]], "members": ["R1"]},
+            {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R1"]},
             lambda: invoke_550j(joint, pd, ["R1"]),
             lambda o: any(x["associated_response_value"] == "YES"
                           and x["n_overlap_unweighted"] == 1
@@ -290,13 +297,15 @@ def main():
                           and x["pattern_answered_var_n_unweighted"] == 1
                           and x["denominator_basis"] == "answered_var_within_pattern"
                           and x["baseline_denominator_basis"] == "eligible_context"
+                          and o["return"]["baseline_input_context_n"] == 3
+                          and o["return"]["baseline_input_answered_var_n"] == 2
                           for x in o.get("return", {}).get("candidates", [])))
     observe("V550J", "negative_disjoint_respondents", sym,
-            {"baseline": [["R1", "YES"], ["R2", "NO"]], "members": ["R3"]},
+            {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R3"]},
             lambda: invoke_550j(joint, pd, ["R3"]),
             lambda o: o.get("return", {}).get("rows") == 0)
     observe("V550J", "restore", sym,
-            {"baseline": [["R1", "YES"], ["R2", "NO"]], "members": ["R1"]},
+            {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R1"]},
             lambda: invoke_550j(joint, pd, ["R1"]),
             lambda o: any(x["n_overlap_unweighted"] == 1 for x in o.get("return", {}).get("candidates", [])))
 
@@ -348,7 +357,9 @@ def main():
                 lambda flip=flip: invoke_552j(handoff, pd, ["FACT_A", "FACT_Z"], flip=flip),
                 lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_Z"
                 and o["return"]["matched_fact_count"] == 2
-                and o["return"]["joined_fact_ids"] == ["FACT_Z"])
+                and o["return"]["joined_fact_ids"] == ["FACT_Z"]
+                and o["return"]["join_permissions"] == ["ALLOW"]
+                and o["return"]["join_audit"] == ["MATCHED_EXACT_SCOPE"])
     observe("V552J", "negative_wrong_run", sym, {"facts": ["FACT_A"], "mismatched_run": True},
             lambda: invoke_552j(handoff, pd, ["FACT_A"], mismatched=True),
             lambda o: o.get("return", {}).get("selected_fact_id") == ""
