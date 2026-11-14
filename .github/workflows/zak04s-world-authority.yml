@@ -1,0 +1,47 @@
+name: ZAK04S R05-to-P41 scoped world-authority execution
+on:
+  pull_request:
+    branches: [integration/pre-main-reconciliation-r1]
+    paths:
+      - 'rawlsing_next/pre553_universal_world_binding.py'
+      - 'rawlsing_next/tests/test_universal_world_binding.py'
+      - 'rawlsing_next/tests/test_zak04s_ff_world_authority.py'
+      - '.github/workflows/zak04s-world-authority.yml'
+permissions:
+  contents: read
+jobs:
+  zak04s-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bounded sourcefree test dependencies
+        run: python -m pip install pytest pandas pyreadstat pyarrow duckdb
+      - name: Exercise actual trusted R05 coordinator and real P41 service
+        env:
+          PYTHONPATH: .
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -m pytest rawlsing_next/tests/test_zak04s_ff_world_authority.py -q -s -o addopts='' --junitxml=zak04s-test.xml
+      - name: Existing R05/P41 regressions
+        env:
+          PYTHONPATH: .
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -m pytest rawlsing_next/tests/test_universal_world_binding.py -q -o addopts='' --junitxml=zak04s-regressions.xml
+      - name: Existing admitted C-to-D and V558 CONTEXT-positive custody (not a joined FF-to-P41 claim)
+        env:
+          PYTHONPATH: .
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -m pytest rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py::test_actual_c_relation_admits_without_reownership_and_is_lossless rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py::test_positive_relation_m1_derives_adopted_context_and_reaches_v558 -q -o addopts='' --junitxml=zak04s-context.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zak04s-executed-junit
+          path: |
+            zak04s-test.xml
+            zak04s-regressions.xml
+            zak04s-context.xml
+          if-no-files-found: ignore
