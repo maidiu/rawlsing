@@ -1,0 +1,20 @@
+--- remote review head
+78fd1854935d52eb5cd26e944b01a536111c8c1e	refs/heads/review/pyat997-native-independent-r1
+--- local/remote head
+78fd1854935d52eb5cd26e944b01a536111c8c1e
+78fd1854935d52eb5cd26e944b01a536111c8c1e
+--- receipt/handoff hashes local
+receipt.json b5d7b16d1eb6907bfea539c63d6107949cc935403b08d9701a417ef83b56dc7f
+00_HANDOFF.md bbaec1e3fc928fdc1c7e17e12ce51cbffd2560d42d551ce3b6c3dcbd860af46c
+witness_issuer_binding.py 831fe169712926ff33e8f6795eff61b1535c67ac89e6a8b46125e2aaff4c0dff
+--- receipt/handoff hashes remote
+receipt.json b5d7b16d1eb6907bfea539c63d6107949cc935403b08d9701a417ef83b56dc7f
+00_HANDOFF.md bbaec1e3fc928fdc1c7e17e12ce51cbffd2560d42d551ce3b6c3dcbd860af46c
+witness_issuer_binding.py 831fe169712926ff33e8f6795eff61b1535c67ac89e6a8b46125e2aaff4c0dff
+--- diff vs startup
+ .../receipt.json                                   |  222 ++++
+ .../witness_completed_compiler_issued.py           |   67 +
+ .../witness_completed_resume.py                    |   67 +
+ .../witness_issuer_binding.py                      |  114 ++
+ 26 files changed, 3609 insertions(+)
+--- non-return paths in diff
