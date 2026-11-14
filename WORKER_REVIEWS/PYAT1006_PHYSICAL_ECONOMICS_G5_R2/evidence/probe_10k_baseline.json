@@ -1,0 +1,448 @@
+{
+  "admission_counter": {
+    "by_phase": {},
+    "total_reads": 0
+  },
+  "admission_seconds": 0.21708319406025112,
+  "capsule": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing/WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R2/data/cases/diag-10k/capsule.json",
+  "capsule_sha256": "f922eebdcbbb29b693690b39048fdff2ab064e93b761910e83e259021a8bd813",
+  "family_counts": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 10000,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "RespondentEvent": 32450,
+    "RespondentIdentity": 10000,
+    "RoutingEligibilityFact": 50000,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 10000
+  },
+  "host": {
+    "hostname": "oldMac.lan",
+    "machine": "x86_64",
+    "platform": "darwin",
+    "pyarrow": "26.0.1",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "label": "EXPERIMENT_NOT_IMPLEMENTED",
+  "mode": "baseline",
+  "queries": {
+    "f2_reverse": {
+      "cpu_seconds": 54.57103300000001,
+      "facts": [
+        {
+          "projection_sha256": "f4021919eea95df27cfe05d0e14249e57b30efbf82de52e2af840f48631a97e3",
+          "raw_denominator_support": 3333,
+          "raw_numerator_support": 3333,
+          "ref": {
+            "content_hash": "f4021919eea95df27cfe05d0e14249e57b30efbf82de52e2af840f48631a97e3",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f4021919eea95df27cfe05d0e14249e57b30efbf82de52e2af840f48631a97e3"
+          },
+          "replay_ref": {
+            "content_hash": "d3c42cdb89e1093b338e575bd1db759811bca30065860042133fa14878b3bca4",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:d3c42cdb89e1093b338e575bd1db759811bca30065860042133fa14878b3bca4"
+          },
+          "typed_state": "SUPPORTED",
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "predicate_ref": {
+        "content_hash": "18ba47ae978154897372a306f23c4d950f53dca04704267b84539ab303ba601e",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:18ba47ae978154897372a306f23c4d950f53dca04704267b84539ab303ba601e"
+      },
+      "query_ref": {
+        "content_hash": "32d2be0e84e7ed796056a0d26a73881bb33c42bdfb852e6d7ac9ba4e1739345a",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:32d2be0e84e7ed796056a0d26a73881bb33c42bdfb852e6d7ac9ba4e1739345a"
+      },
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "d724ed4a9ef8c5e2ee1c44461c8844c5ff2ead8f58d062012002d158bf203747",
+                "gid_transitions": 9843,
+                "reads": 9844,
+                "rows_decoded": 5021048,
+                "seconds": 7.409204982686788,
+                "unique_gids": 64
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "aeb6094e793f28fa59f23310c800d70b6ee87bf8ecafbf30d8ef6b14657e06a5",
+                "gid_transitions": 10042,
+                "reads": 10043,
+                "rows_decoded": 5130048,
+                "seconds": 9.989867930067703,
+                "unique_gids": 98
+              }
+            },
+            "reads": 19887,
+            "rows_decoded": 10151096,
+            "seconds": 17.39907291275449
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "0309058c71626f624864fe0a6b1d7bbb52a0712fb39841fc02e499e97eefc0f4",
+                "gid_transitions": 19,
+                "reads": 20,
+                "rows_decoded": 10000,
+                "seconds": 0.007071198197081685,
+                "unique_gids": 20
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "7a61ce53d17eb721f1f7ead1b73d46792741cf9b82591734c084441e9eeacffe",
+                "gid_transitions": 63,
+                "reads": 64,
+                "rows_decoded": 32450,
+                "seconds": 0.041270123329013586,
+                "unique_gids": 64
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "89cb372b98cc613d970626368b209850db17cb5dbc2c049a936e82b0db2fd4f6",
+                "gid_transitions": 97,
+                "reads": 98,
+                "rows_decoded": 50000,
+                "seconds": 0.035654305247589946,
+                "unique_gids": 98
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "0309058c71626f624864fe0a6b1d7bbb52a0712fb39841fc02e499e97eefc0f4",
+                "gid_transitions": 19,
+                "reads": 20,
+                "rows_decoded": 10000,
+                "seconds": 0.007663095835596323,
+                "unique_gids": 20
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "7a61ce53d17eb721f1f7ead1b73d46792741cf9b82591734c084441e9eeacffe",
+                "gid_transitions": 63,
+                "reads": 64,
+                "rows_decoded": 32450,
+                "seconds": 0.02682131971232593,
+                "unique_gids": 64
+              }
+            },
+            "reads": 266,
+            "rows_decoded": 134900,
+            "seconds": 0.11848004232160747
+          }
+        },
+        "total_reads": 20153
+      },
+      "release_refs": [
+        {
+          "content_hash": "93f85fa9527392dff2e583a4ec5ebd2f6d504c2fca443c137a215598a54d2605",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-PYAT1006-diag-10k"
+        }
+      ],
+      "temp_sqlite_peak_bytes": 129785856,
+      "wall_seconds": 51.26421884307638
+    },
+    "f4_three": {
+      "cpu_seconds": 59.00044199999999,
+      "facts": [
+        {
+          "projection_sha256": "1219cb6509abf83a44d07eb49b38c6eacac89efa2f57785a649a459c8d8e2e27",
+          "raw_denominator_support": 3137,
+          "raw_numerator_support": 3137,
+          "ref": {
+            "content_hash": "1219cb6509abf83a44d07eb49b38c6eacac89efa2f57785a649a459c8d8e2e27",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1219cb6509abf83a44d07eb49b38c6eacac89efa2f57785a649a459c8d8e2e27"
+          },
+          "replay_ref": {
+            "content_hash": "cfcc7fe00b7752ec5c34bc763ebb6c151e06c46a3904c57715e5c98ebc272e7e",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:cfcc7fe00b7752ec5c34bc763ebb6c151e06c46a3904c57715e5c98ebc272e7e"
+          },
+          "typed_state": "SUPPORTED",
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "predicate_ref": {
+        "content_hash": "feeea9d8a7dd1b8f873d2ae3ed1152845748cfac7fd5567b20b2083b3bb805cb",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:feeea9d8a7dd1b8f873d2ae3ed1152845748cfac7fd5567b20b2083b3bb805cb"
+      },
+      "query_ref": {
+        "content_hash": "f7f38efbb4be09a36ee46b1d844fa80843ff50a46277fea02926cd5c54772409",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f7f38efbb4be09a36ee46b1d844fa80843ff50a46277fea02926cd5c54772409"
+      },
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "4e450a468ac5307136b51cc23c228e82ff6f3f55fe17a18a1d9dc4a9786b5516",
+                "gid_transitions": 9851,
+                "reads": 9852,
+                "rows_decoded": 5025462,
+                "seconds": 7.360663949046284,
+                "unique_gids": 64
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "aeb6094e793f28fa59f23310c800d70b6ee87bf8ecafbf30d8ef6b14657e06a5",
+                "gid_transitions": 10042,
+                "reads": 10043,
+                "rows_decoded": 5130048,
+                "seconds": 9.920630658743903,
+                "unique_gids": 98
+              }
+            },
+            "reads": 19895,
+            "rows_decoded": 10155510,
+            "seconds": 17.281294607790187
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "0309058c71626f624864fe0a6b1d7bbb52a0712fb39841fc02e499e97eefc0f4",
+                "gid_transitions": 19,
+                "reads": 20,
+                "rows_decoded": 10000,
+                "seconds": 0.006615308579057455,
+                "unique_gids": 20
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "7a61ce53d17eb721f1f7ead1b73d46792741cf9b82591734c084441e9eeacffe",
+                "gid_transitions": 63,
+                "reads": 64,
+                "rows_decoded": 32450,
+                "seconds": 0.038601894630119205,
+                "unique_gids": 64
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "89cb372b98cc613d970626368b209850db17cb5dbc2c049a936e82b0db2fd4f6",
+                "gid_transitions": 97,
+                "reads": 98,
+                "rows_decoded": 50000,
+                "seconds": 0.03986162762157619,
+                "unique_gids": 98
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "0309058c71626f624864fe0a6b1d7bbb52a0712fb39841fc02e499e97eefc0f4",
+                "gid_transitions": 19,
+                "reads": 20,
+                "rows_decoded": 10000,
+                "seconds": 0.006923707202076912,
+                "unique_gids": 20
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "7a61ce53d17eb721f1f7ead1b73d46792741cf9b82591734c084441e9eeacffe",
+                "gid_transitions": 63,
+                "reads": 64,
+                "rows_decoded": 32450,
+                "seconds": 0.027059644926339388,
+                "unique_gids": 64
+              }
+            },
+            "reads": 266,
+            "rows_decoded": 134900,
+            "seconds": 0.11906218295916915
+          }
+        },
+        "total_reads": 20161
+      },
+      "release_refs": [
+        {
+          "content_hash": "93f85fa9527392dff2e583a4ec5ebd2f6d504c2fca443c137a215598a54d2605",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-PYAT1006-diag-10k"
+        }
+      ],
+      "temp_sqlite_peak_bytes": 129785856,
+      "wall_seconds": 56.01082000695169
+    },
+    "selected": {
+      "cpu_seconds": 55.193675,
+      "facts": [
+        {
+          "projection_sha256": "5a510bd690b172d6844dac6cb856692e0ba1289195bd51af34b9060926388ed9",
+          "raw_denominator_support": 5000,
+          "raw_numerator_support": 5000,
+          "ref": {
+            "content_hash": "5a510bd690b172d6844dac6cb856692e0ba1289195bd51af34b9060926388ed9",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:5a510bd690b172d6844dac6cb856692e0ba1289195bd51af34b9060926388ed9"
+          },
+          "replay_ref": {
+            "content_hash": "5233c14e1874c68db597b16c632e15dcfffcfce7c34b4fb5eba3b8d9496848ba",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:5233c14e1874c68db597b16c632e15dcfffcfce7c34b4fb5eba3b8d9496848ba"
+          },
+          "typed_state": "SUPPORTED",
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "predicate_ref": {
+        "content_hash": "355a4c51a55d901c9db03b451d6803be8baf82f5f7651c381f62e10a23f1af89",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:355a4c51a55d901c9db03b451d6803be8baf82f5f7651c381f62e10a23f1af89"
+      },
+      "query_ref": {
+        "content_hash": "4d1d26a2e4ed0e4a81ab226fbc85c772b291bd5b008b1a1920c3925be2e73c08",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:4d1d26a2e4ed0e4a81ab226fbc85c772b291bd5b008b1a1920c3925be2e73c08"
+      },
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "465298ca320241699a15dfdf77e287ac7ccf8c7949db1145a0d79b056b1afad1",
+                "gid_transitions": 9847,
+                "reads": 9848,
+                "rows_decoded": 5023414,
+                "seconds": 7.309178947005421,
+                "unique_gids": 64
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "aeb6094e793f28fa59f23310c800d70b6ee87bf8ecafbf30d8ef6b14657e06a5",
+                "gid_transitions": 10042,
+                "reads": 10043,
+                "rows_decoded": 5130048,
+                "seconds": 9.76712094177492,
+                "unique_gids": 98
+              }
+            },
+            "reads": 19891,
+            "rows_decoded": 10153462,
+            "seconds": 17.07629988878034
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "0309058c71626f624864fe0a6b1d7bbb52a0712fb39841fc02e499e97eefc0f4",
+                "gid_transitions": 19,
+                "reads": 20,
+                "rows_decoded": 10000,
+                "seconds": 0.006616675294935703,
+                "unique_gids": 20
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "7a61ce53d17eb721f1f7ead1b73d46792741cf9b82591734c084441e9eeacffe",
+                "gid_transitions": 63,
+                "reads": 64,
+                "rows_decoded": 32450,
+                "seconds": 0.030287676956504583,
+                "unique_gids": 64
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "89cb372b98cc613d970626368b209850db17cb5dbc2c049a936e82b0db2fd4f6",
+                "gid_transitions": 97,
+                "reads": 98,
+                "rows_decoded": 50000,
+                "seconds": 0.03852266282774508,
+                "unique_gids": 98
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "0309058c71626f624864fe0a6b1d7bbb52a0712fb39841fc02e499e97eefc0f4",
+                "gid_transitions": 19,
+                "reads": 20,
+                "rows_decoded": 10000,
+                "seconds": 0.01397029566578567,
+                "unique_gids": 20
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "gid_sequence_sha256": "7a61ce53d17eb721f1f7ead1b73d46792741cf9b82591734c084441e9eeacffe",
+                "gid_transitions": 63,
+                "reads": 64,
+                "rows_decoded": 32450,
+                "seconds": 0.028824636479839683,
+                "unique_gids": 64
+              }
+            },
+            "reads": 266,
+            "rows_decoded": 134900,
+            "seconds": 0.11822194722481072
+          }
+        },
+        "total_reads": 20157
+      },
+      "release_refs": [
+        {
+          "content_hash": "93f85fa9527392dff2e583a4ec5ebd2f6d504c2fca443c137a215598a54d2605",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-PYAT1006-diag-10k"
+        }
+      ],
+      "temp_sqlite_peak_bytes": 129785856,
+      "wall_seconds": 52.19476789818145
+    }
+  },
+  "release": {
+    "content_hash": "93f85fa9527392dff2e583a4ec5ebd2f6d504c2fca443c137a215598a54d2605",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-diag-10k"
+  },
+  "release_ref": {
+    "content_hash": "93f85fa9527392dff2e583a4ec5ebd2f6d504c2fca443c137a215598a54d2605",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-diag-10k"
+  },
+  "rss_peak_bytes": 689573888,
+  "schema": "PYAT1006_R2_LOCALITY_PROBE@1",
+  "sort_audit": {
+    "calls": 0,
+    "fallback_key_calls": 0,
+    "fallback_other_calls": 0,
+    "physical_respondent_returns": 0,
+    "physical_respondent_values": 0
+  },
+  "status": "MEASURED"
+}

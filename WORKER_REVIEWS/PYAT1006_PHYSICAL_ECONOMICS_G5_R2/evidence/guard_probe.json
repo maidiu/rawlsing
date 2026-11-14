@@ -1,0 +1,42 @@
+{
+  "all_guards_refused": true,
+  "guards": {
+    "denied_current": {
+      "error": "DirectEstateError: current source/operation authority refused",
+      "refused": true
+    },
+    "omitted_family_member": {
+      "error": "committed estate member missing",
+      "refused": true
+    },
+    "omitted_locator": {
+      "error": "committed estate member missing",
+      "refused": true
+    },
+    "wrong_source_root": {
+      "error": "DirectEstateError: estate source/replay/universe/logical/physical roots mismatch",
+      "refused": true
+    }
+  },
+  "no_fallback": {
+    "candidate_selected_still_exact": true,
+    "full_c11_repository_init_blocked": true,
+    "whole_table_read_blocked": true
+  },
+  "oracle_parity": {
+    "baseline_equal_native_oracle": true,
+    "candidate_equal_baseline": true,
+    "changed_equal_changed_oracle": true,
+    "changed_selected_differs": true,
+    "queries": [
+      "selected",
+      "f2_reverse",
+      "f4_three",
+      "weighted",
+      "repeated"
+    ],
+    "restored_equal_baseline": true
+  },
+  "schema": "PYAT1006_R2_GUARD_PROBE@1",
+  "status": "MEASURED"
+}

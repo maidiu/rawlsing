@@ -1,0 +1,240 @@
+{
+  "adversarial_unequal_weight": {
+    "fixture": "sourcefree 128 respondents, 416 events, exact weights 1/3,5/7,11/13,17/19,0.1,0.2,0.30000000000000004,7/3,2/9,13/11",
+    "weighted_f4_query": {
+      "baseline_candidate_exact": true,
+      "baseline_native_oracle_exact": true,
+      "cells": 4,
+      "fact_ref": "09524cb5e59eda09be7d510889260cda07dbf0545d165b13c4207371f9cdc682",
+      "nonzero_cell_examples": [
+        {
+          "fraction": "214/133"
+        },
+        {
+          "fraction": "116/33"
+        }
+      ]
+    },
+    "weighted_query": {
+      "baseline_candidate_exact": true,
+      "baseline_native_oracle_exact": true,
+      "cell_weighted_fractions": [
+        {
+          "denominator": 21945,
+          "numerator": 958736
+        },
+        {
+          "denominator": 21945,
+          "numerator": 534236
+        }
+      ],
+      "cells": 2,
+      "fact_ref": "076d1fa30f5490ea1baf3befbe674964b643cd80d13fdbae99628549301df46e"
+    }
+  },
+  "author_artifacts_modified": 0,
+  "commands_receipt": "evidence/commands.json",
+  "corrected_r1_axes": {
+    "causal_claim_and_proposal": {
+      "detail": "Old _respondent_family ORDER BY ref / small-LRU cause withdrawn. Actual cause is native respondent traversal in ref-key order across physically ordered row groups plus a separate event cache. R2 candidate removes 35.3x row-group reads at 100k selected with exact fact identity.",
+      "status": "CORRECTED"
+    },
+    "rss_labels": {
+      "detail": "1k/10k old rows are whole-worker peaks. Writer-only 10k 214,261,760 B (R1); 50k/100k already writer-only.",
+      "status": "CORRECTED"
+    },
+    "test_count": {
+      "detail": "Five-file S2-D group is 29; separate partial-binding is 2 (31 total); focused 31; own 6. No 36-test selection exists.",
+      "status": "CORRECTED"
+    }
+  },
+  "downstream_dispatch": "NONE",
+  "guards": {
+    "candidate_native_oracle_changed_restore_exact": true,
+    "denied_current_refused": true,
+    "no_full_graph_or_whole_table_fallback": true,
+    "omitted_family_member_refused": true,
+    "omitted_locator_refused": true,
+    "wrong_source_root_refused": true
+  },
+  "historical_r1_review": {
+    "commit": "0169fac9f3840800796c664eee462bbb8984bb42",
+    "draft_pr": "PR1034",
+    "status": "AUTHORITATIVE_HISTORICAL",
+    "verdict": "REVISE_EXACT_DEFECT"
+  },
+  "locality_candidate": {
+    "100k_selected": {
+      "author_paired_baseline_seconds": 580.5479552608449,
+      "author_paired_candidate_seconds": 265.68012275802903,
+      "candidate_denominator": 50000,
+      "candidate_fact_ref": "87c3f0589e4ee1a8a3a695b2bbb0b7585ed7f87cb10dcb15074cb5c8b446a986",
+      "candidate_query_event_gids": 634,
+      "candidate_query_event_reads": 634,
+      "candidate_query_routing_gids": 977,
+      "candidate_query_routing_reads": 2513,
+      "candidate_reads_query_eval": 3147,
+      "candidate_reads_session_build": 2637,
+      "candidate_release_ref_equal": true,
+      "candidate_state": "SUPPORTED",
+      "candidate_temp_sqlite_peak_bytes": 1301057536,
+      "candidate_tree_peak_rss_bytes": 2803986432,
+      "r1_baseline_fact_ref_equal": true,
+      "r1_baseline_reads": 204125,
+      "r1_baseline_wall_seconds": 543.0262050339952,
+      "r2_candidate_cpu_seconds": 263.165977,
+      "r2_candidate_reads": 5784,
+      "r2_candidate_wall_seconds": 294.0872561200522,
+      "timing_comparability": "same byte-identical estate/capsule pins/query/refs; R1 baseline and R2 candidate ran in different processes/loads, so wall factor is indicative; read counts and fact identity are exact"
+    },
+    "small_scopes": {
+      "10k_f2_reverse": {
+        "baseline_reads": 20153,
+        "baseline_s": 51.26421884307638,
+        "candidate_reads": 614,
+        "candidate_s": 21.720756787108257,
+        "exact": true
+      },
+      "10k_f4_three": {
+        "baseline_reads": 20161,
+        "baseline_s": 56.01082000695169,
+        "candidate_reads": 588,
+        "candidate_s": 25.3724346680101,
+        "exact": true
+      },
+      "10k_selected": {
+        "baseline_reads": 20157,
+        "baseline_s": 52.19476789818145,
+        "candidate_reads": 588,
+        "candidate_s": 22.895846465136856,
+        "exact": true
+      },
+      "1k_f2_reverse": {
+        "baseline_reads": 1785,
+        "baseline_s": 4.7150080180726945,
+        "candidate_reads": 63,
+        "candidate_s": 2.2952543238643557,
+        "exact": true
+      },
+      "1k_f4_three": {
+        "baseline_reads": 1784,
+        "baseline_s": 4.933664659969509,
+        "candidate_reads": 61,
+        "candidate_s": 2.575093226041645,
+        "exact": true
+      },
+      "1k_selected": {
+        "baseline_reads": 1784,
+        "baseline_s": 4.975085072917864,
+        "candidate_reads": 61,
+        "candidate_s": 2.2747001689858735,
+        "exact": true
+      },
+      "1k_weighted": {
+        "baseline_reads": 2033,
+        "baseline_s": 5.4668356738984585,
+        "candidate_reads": 63,
+        "candidate_s": 2.3648292399011552,
+        "exact": true
+      }
+    },
+    "sort_audit": {
+      "100k": {
+        "fallback_key_calls": 100004,
+        "fallback_other_calls": 4,
+        "physical_respondent_returns": 1,
+        "physical_respondent_values": 100000
+      },
+      "10k": {
+        "fallback_key_calls": 30012,
+        "fallback_other_calls": 12,
+        "physical_respondent_returns": 3,
+        "physical_respondent_values": 30000
+      },
+      "1k": {
+        "fallback_key_calls": 4016,
+        "fallback_other_calls": 17,
+        "physical_respondent_returns": 4,
+        "physical_respondent_values": 4000
+      }
+    }
+  },
+  "matched_estate_identity": {
+    "r1_capsule_sha256": {
+      "diag-10k": "c3bb36aa99ff5b85eaeb9184972c41a21e37016a2994c2be08e694d0c8e12899",
+      "diag-1k": "47fac15acb1707d177097ac664739712cc116925574fc09526afcf5d52138967",
+      "hist-100k": "4dba2ce7904da14a5bedbc4165dc903aa5055bc474caf2fb969eec071caccb40"
+    },
+    "r1_capsules_equal_author_reviewer_sources": true,
+    "r2_copies_member_files_equal": true,
+    "r2_copies_pinned_fields_equal": true,
+    "r2_copies_private_mode": "0700"
+  },
+  "measurements": "evidence/r2_measurements.json",
+  "not_run_holds": [
+    "100k F2/F4 candidate",
+    "candidate I05/grouped execution",
+    "candidate physical-insertion-order dependency for future reordering readers",
+    "100k all-seven native readers",
+    "100k 10 same-process and 10 fresh-process repetitions",
+    "production patch/ABI or owner handoff",
+    "writer optimization/memo gain",
+    "true source bridge (#997)",
+    "joined vertical (#998)",
+    "full 100k/6 GiB vertical (#1001)",
+    "source rights (#1007)",
+    "#999 native body truth RED",
+    "science/CURRENT/issuer/protected merge"
+  ],
+  "optimization_handoff": "NOT_GRANTED",
+  "permission_grade": "SOURCEFREE_TEST_ONLY",
+  "production_edits": 0,
+  "provider_cost": "UNOBSERVED",
+  "r1_data_modified": 0,
+  "resource_bound": {
+    "cap_bytes": 6442450944,
+    "cap_exceeded": false,
+    "disk_reserve_bytes": 3221225472,
+    "max_tree_peak_rss_bytes": 2803986432,
+    "max_tree_run": "100k candidate",
+    "min_free_disk_bytes": 15185276928,
+    "one_workload_child_at_a_time": true,
+    "resource_hold": false
+  },
+  "reviewer_role": "SAME_NONAUTHOR_G5_FINITE_RECHECK",
+  "reviewer_session": "ses_e285e6d52ffe5iAGMQAUd17dSx",
+  "schema": "PYAT1006_INDEPENDENT_G5_R2_RECHECK@1",
+  "tested_identities": {
+    "author_code_tests_commit": "1ca1c735a577a7524a0a26c15df8879cd88704e3",
+    "author_draft_pr": "PR1035",
+    "author_immutable_head": "2beb2b894076510cdedf8981aa73d15eafc7c816",
+    "author_manifest": "65/65 files verified",
+    "frozen_production_head": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "production_diff_vs_frozen": "EMPTY",
+    "review_branch": "codex/pyat1006-independent-locality-recheck-20261113-r2"
+  },
+  "verdict": "ACCEPT_SCOPED@SOURCEFREE_LOCALITY_EXPERIMENT_HANDOFF_READINESS",
+  "writer_profile": {
+    "attribution": "direct-I02 proof is inclusive of body/Parquet sink, insert, validation, relations, logical root and hashing; not SQLite-only",
+    "author_profiled_wall_seconds": 108.10590491793118,
+    "author_sqlite_share": 0.042199360002242725,
+    "author_unprofiled_wall_seconds": 38.27717962209135,
+    "first_pass_objects": 22501,
+    "profiled_wall_seconds": 116.38577624806203,
+    "scale": "2,000 respondents / 6,490 events / chunk 512; not a 100k extrapolation",
+    "semantic_hash_calls": 96000,
+    "semantic_hash_per_object": 4.266477045464646,
+    "semantic_projection_calls": 40992,
+    "sqlite_execute_seconds": 4.353776825000001,
+    "sqlite_execute_share_of_profile_wall": 0.03740815214155086,
+    "unprofiled_direct_i02_proof_seconds": 27.62902152305469,
+    "unprofiled_reread_reencode_seconds": 13.364194794092327,
+    "unprofiled_root_hash_seconds": 0.2017480053473264,
+    "unprofiled_row_first_seconds": 6.68524007126689,
+    "unprofiled_row_verify_seconds": 6.342913139844313,
+    "unprofiled_sink_add_seconds": 7.206507805734873,
+    "unprofiled_stage_sum_seconds": 41.19496432249434,
+    "unprofiled_wall_seconds": 41.42482407181524,
+    "writer_memo": "PROPOSAL_ONLY_NOT_IMPLEMENTED_NOT_MEASURED"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "killed_for_cap": false,
+  "label": "guard-probe",
+  "process_tree": {
+    "cap_bytes": 6442450944,
+    "cap_exceeded": false,
+    "max_process_count": 1,
+    "max_single_process_peak_rss_bytes": 139632640,
+    "min_free_disk_bytes": 15297708032,
+    "peak_watch_bytes": 4064027,
+    "sample_count": 132,
+    "sampling_interval_seconds": 0.05,
+    "tree_peak_rss_bytes": 139632640
+  },
+  "returncode": 0,
+  "seconds": 8.382895939983428,
+  "stderr_tail": "",
+  "stdout_tail": "{\n  \"guards\": {\n    \"denied_current\": {\n      \"error\": \"DirectEstateError: current source/operation authority refused\",\n      \"refused\": true\n    },\n    \"omitted_family_member\": {\n      \"error\": \"committed estate member missing\",\n      \"refused\": true\n    },\n    \"omitted_locator\": {\n      \"error\": \"committed estate member missing\",\n      \"refused\": true\n    },\n    \"wrong_source_root\": {\n      \"error\": \"DirectEstateError: estate source/replay/universe/logical/physical roots mismatch\",\n      \"refused\": true\n    }\n  },\n  \"oracle_parity\": {\n    \"baseline_equal_native_oracle\": true,\n    \"candidate_equal_baseline\": true,\n    \"changed_equal_changed_oracle\": true,\n    \"changed_selected_differs\": true,\n    \"queries\": [\n      \"selected\",\n      \"f2_reverse\",\n      \"f4_three\",\n      \"weighted\",\n      \"repeated\"\n    ],\n    \"restored_equal_baseline\": true\n  },\n  \"status\": \"MEASURED\"\n}\n",
+  "timed_out": false
+}
