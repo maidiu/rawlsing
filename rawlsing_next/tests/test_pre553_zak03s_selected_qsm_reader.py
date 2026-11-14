@@ -160,6 +160,8 @@ def test_two_independent_selected_qsm_files_actual_i03_i05_and_restore(tmp_path)
     assert valid.binding_receipt["qsm_artifact_sha256"] == a_sha
     assert valid.binding_receipt["qsm_row_sha256"] == a_row
     assert valid.binding_receipt["i05_historical_qsm_authority_established"] is False
+    assert valid.binding_receipt["selected_binding_first_importing_reader"] == "NOT_PROVED"
+    assert valid.binding_receipt["issued_batch_consumption_of_selected_qsm"] is False
     assert valid.binding_receipt["original35_native_or_historical_production"] is False
 
     # Same modern authority objects, but the wrong actual historical source.
