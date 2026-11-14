@@ -242,150 +242,176 @@ def main():
     actual = git(legacy, "rev-parse", "HEAD")
     if actual != PIN:
         raise RuntimeError(f"historical checkout mismatch: {actual} != {PIN}")
-    actual_blobs = {name: git(legacy, "hash-object", ROOT + name) for name in BLOBS}
-    if actual_blobs != BLOBS:
-        raise RuntimeError(f"historical blob mismatch: {actual_blobs}")
     sys.path.insert(0, str(legacy))
     import pandas as pd
-    mods = {}
-    for short in BLOBS:
-        name = short.removesuffix(".py")
-        dotted = f"data.ddm_build_copy.{name}"
-        module = importlib.import_module(dotted)
-        expected = (legacy / ROOT / short).resolve()
-        if Path(module.__file__).resolve() != expected:
-            raise RuntimeError(f"not historical import {dotted}: {module.__file__}")
-        mods[name] = module
+    actual_blobs = {}
 
-    f08 = mods["ddm_v550_question_use"]
-    record = {"source": "GSS", "wave": "1973", "canonical_wave": "1973",
-              "var_code": "USWAR", "question_id": "Q-USWAR"}
-    # Disjoint selector keys: A matches the variable-code basis only,
-    # B matches the question-ID basis only. This isolates the distinct-identity
-    # refusal instead of accidentally testing duplicate question matches.
-    row_a = {**record, "question_id": "Q-ALT", "override_id": "A"}
-    row_b = {**record, "var_code": "OTHER", "override_id": "B"}
-    def sel(frame):
-        chosen, basis, _ = f08._select_override(record, pd.DataFrame(frame))
-        return {"override_id": None if chosen is None else chosen.get("override_id"),
-                "basis": basis}
-    observe("F08", "positive", "_select_override", {"record": record, "overrides": [row_a]},
-            lambda: sel([row_a]), lambda o: o.get("return", {}).get("override_id") == "A")
-    observe("F08", "negative_conflicting_matches", "_select_override",
-            {"record": record, "overrides": [row_a, row_b]},
-            lambda: sel([row_a, row_b]),
-            lambda o: o.get("exception_type") == "RuntimeError" and "matched multiple distinct override rows" in o.get("exception", ""))
-    observe("F08", "negative_duplicate", "_select_override",
-            {"record": record, "overrides": [row_a, row_a]},
-            lambda: sel([row_a, row_a]), lambda o: o.get("exception_type") == "RuntimeError"
-            and "via source_wave_var_code: 2 rows" in o.get("exception", ""))
-    observe("F08", "negative_unmatched", "_select_override",
-            {"record": record, "overrides": [{**row_a, "wave": "1980", "canonical_wave": "1980"}]},
-            lambda: sel([{**row_a, "wave": "1980", "canonical_wave": "1980"}]),
-            lambda o: o.get("return", {}).get("override_id") is None)
-    observe("F08", "restore", "_select_override", {"record": record, "overrides": [row_a]},
-            lambda: sel([row_a]), lambda o: o.get("return", {}).get("override_id") == "A")
+    def load_module(family, short):
+        """Do not let one failed historical import suppress unrelated operations."""
+        try:
+            found = git(legacy, "hash-object", ROOT + short)
+            actual_blobs[short] = found
+            if found != BLOBS[short]:
+                raise RuntimeError(f"historical blob mismatch for {short}: {found} != {BLOBS[short]}")
+            dotted = f"data.ddm_build_copy.{short.removesuffix('.py')}"
+            module = importlib.import_module(dotted)
+            expected = (legacy / ROOT / short).resolve()
+            if Path(module.__file__).resolve() != expected:
+                raise RuntimeError(f"not historical import {dotted}: {module.__file__}")
+            return module
+        except Exception as exc:
+            RESULTS.append({
+                "case": family, "phase": "module_preflight", "symbol": short,
+                "synthetic_inputs": {"historical_module": short},
+                "observed": {"exception_type": type(exc).__name__, "exception": str(exc),
+                             "traceback_tail": traceback.format_exc(limit=3).strip()[-1200:]},
+                "check_pass": False, "grade": "NOT_RUN_IMPORT_BLOCKER",
+                "historical_original_production": False,
+            })
+            print(f"BLOCKED {family}:module_preflight {type(exc).__name__}: {exc}", flush=True)
+            return None
 
-    joint = mods["ddm_v550j_joint_patterns"]
-    sym = "_association_candidate_trace_rows_fast"
-    observe("V550J", "positive_same_respondent", sym,
-            {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R1"]},
-            lambda: invoke_550j(joint, pd, ["R1"]),
-            lambda o: any(x["associated_response_value"] == "YES"
-                          and x["n_overlap_unweighted"] == 1
-                          and x["baseline_answered_n_unweighted"] == 2
-                          and x["pattern_answered_var_n_unweighted"] == 1
-                          and x["denominator_basis"] == "answered_var_within_pattern"
-                          and x["baseline_denominator_basis"] == "eligible_context"
-                          and o["return"]["baseline_input_context_n"] == 3
-                          and o["return"]["baseline_input_answered_var_n"] == 2
-                          for x in o.get("return", {}).get("candidates", [])))
-    observe("V550J", "negative_disjoint_respondents", sym,
-            {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R3"]},
-            lambda: invoke_550j(joint, pd, ["R3"]),
-            lambda o: o.get("return", {}).get("rows") == 0)
-    observe("V550J", "restore", sym,
-            {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R1"]},
-            lambda: invoke_550j(joint, pd, ["R1"]),
-            lambda o: any(x["n_overlap_unweighted"] == 1 for x in o.get("return", {}).get("candidates", [])))
+    f08 = load_module("F08", "ddm_v550_question_use.py")
+    if f08 is not None:
+        record = {"source": "GSS", "wave": "1973", "canonical_wave": "1973",
+                  "var_code": "USWAR", "question_id": "Q-USWAR"}
+        # Disjoint selector keys: A matches the variable-code basis only,
+        # B matches the question-ID basis only. This isolates the distinct-identity
+        # refusal instead of accidentally testing duplicate question matches.
+        row_a = {**record, "question_id": "Q-ALT", "override_id": "A"}
+        row_b = {**record, "var_code": "OTHER", "override_id": "B"}
+        def sel(frame):
+            chosen, basis, _ = f08._select_override(record, pd.DataFrame(frame))
+            return {"override_id": None if chosen is None else chosen.get("override_id"),
+                    "basis": basis}
+        observe("F08", "positive", "_select_override", {"record": record, "overrides": [row_a]},
+                lambda: sel([row_a]), lambda o: o.get("return", {}).get("override_id") == "A")
+        observe("F08", "negative_conflicting_matches", "_select_override",
+                {"record": record, "overrides": [row_a, row_b]},
+                lambda: sel([row_a, row_b]),
+                lambda o: o.get("exception_type") == "RuntimeError" and "matched multiple distinct override rows" in o.get("exception", ""))
+        observe("F08", "negative_duplicate", "_select_override",
+                {"record": record, "overrides": [row_a, row_a]},
+                lambda: sel([row_a, row_a]), lambda o: o.get("exception_type") == "RuntimeError"
+                and "via source_wave_var_code: 2 rows" in o.get("exception", ""))
+        observe("F08", "negative_unmatched", "_select_override",
+                {"record": record, "overrides": [{**row_a, "wave": "1980", "canonical_wave": "1980"}]},
+                lambda: sel([{**row_a, "wave": "1980", "canonical_wave": "1980"}]),
+                lambda o: o.get("return", {}).get("override_id") is None)
+        observe("F08", "restore", "_select_override", {"record": record, "overrides": [row_a]},
+                lambda: sel([row_a]), lambda o: o.get("return", {}).get("override_id") == "A")
 
-    packets = mods["ddm_v551j_packets"]
-    sym = "_v2_packet_status"
-    observe("V551J", "positive", sym, {"components": 2, "mode": "valid"},
-            lambda: invoke_551j(packets, pd, "valid"),
-            lambda o: o.get("return", {}).get("status", "").startswith("CERTIFIED_JOINT"))
-    for mode, expectation in [
-        ("ambiguous", "BLOCKED_AMBIGUOUS_COMPONENT_MATCH"),
-        ("conflict", "BLOCKED_CROSS_CONTRACT_CONFLICT"),
-        ("unexplained", "BLOCKED_PACKET_CONTRACT"),
-        ("insufficient", "CONTEXT_ONLY_PATTERN"),
-        ("authority_gap", "REVIEW_REQUIRED_AUTHORITY_GAP"),
-        ("measurement_gap", "REVIEW_REQUIRED_COMPONENT_GAP"),
-    ]:
-        observe("V551J", "negative_" + mode, sym, {"components": 2, "mode": mode},
-                lambda mode=mode: invoke_551j(packets, pd, mode),
-                lambda o, expectation=expectation: o.get("return", {}).get("status") == expectation)
-    observe("V551J", "restore", sym, {"components": 2, "mode": "valid"},
-            lambda: invoke_551j(packets, pd, "valid"),
-            lambda o: o.get("return", {}).get("status", "").startswith("CERTIFIED_JOINT"))
+    joint = load_module("V550J", "ddm_v550j_joint_patterns.py")
+    if joint is not None:
+        sym = "_association_candidate_trace_rows_fast"
+        observe("V550J", "positive_same_respondent", sym,
+                {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R1"]},
+                lambda: invoke_550j(joint, pd, ["R1"]),
+                lambda o: any(x["associated_response_value"] == "YES"
+                              and x["n_overlap_unweighted"] == 1
+                              and x["baseline_answered_n_unweighted"] == 2
+                              and x["pattern_answered_var_n_unweighted"] == 1
+                              and x["denominator_basis"] == "answered_var_within_pattern"
+                              and x["baseline_denominator_basis"] == "eligible_context"
+                              and o["return"]["baseline_input_context_n"] == 3
+                              and o["return"]["baseline_input_answered_var_n"] == 2
+                              for x in o.get("return", {}).get("candidates", [])))
+        observe("V550J", "negative_disjoint_respondents", sym,
+                {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R3"]},
+                lambda: invoke_550j(joint, pd, ["R3"]),
+                lambda o: o.get("return", {}).get("rows") == 0)
+        observe("V550J", "restore", sym,
+                {"baseline": [["R1", "YES"], ["R2", "NO"], ["R3", "UNANSWERED"]], "members": ["R1"]},
+                lambda: invoke_550j(joint, pd, ["R1"]),
+                lambda o: any(x["n_overlap_unweighted"] == 1 for x in o.get("return", {}).get("candidates", [])))
 
-    structural = mods["ddm_v552_structural"]
-    sym = "_surface + build_v552_pressure_observation_index"
-    observe("V552", "positive_coverage_and_score", sym, {"selected_counts": [1, 1], "denominator": 2},
-            lambda: invoke_552(structural, pd, [1, 1]),
-            lambda o: o.get("return", {}).get("surface", {}).get("status") == "COMPLETE_SELECTED_RESPONSE_CATEGORY_COVERAGE"
-            and o["return"]["downstream_permission_status"] == "ALLOW"
-            and o["return"]["pressure_score_status"] == "OBSERVED_NONZERO")
-    observe("V552", "negative_overcount_but_score_independent", sym,
-            {"selected_counts": [2, 2], "denominator": 2},
-            lambda: invoke_552(structural, pd, [2, 2]),
-            lambda o: o.get("return", {}).get("surface", {}).get("status") == "BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR"
-            and o["return"]["surface"]["coverage"] == 2.0
-            and o["return"]["downstream_permission_status"] == "ALLOW")
-    observe("V552", "restore", sym, {"selected_counts": [1, 1], "denominator": 2},
-            lambda: invoke_552(structural, pd, [1, 1]),
-            lambda o: o.get("return", {}).get("surface", {}).get("status") == "COMPLETE_SELECTED_RESPONSE_CATEGORY_COVERAGE")
+    packets = load_module("V551J", "ddm_v551j_packets.py")
+    if packets is not None:
+        sym = "_v2_packet_status"
+        observe("V551J", "positive", sym, {"components": 2, "mode": "valid"},
+                lambda: invoke_551j(packets, pd, "valid"),
+                lambda o: o.get("return", {}).get("status", "").startswith("CERTIFIED_JOINT"))
+        for mode, expectation in [
+            ("ambiguous", "BLOCKED_AMBIGUOUS_COMPONENT_MATCH"),
+            ("conflict", "BLOCKED_CROSS_CONTRACT_CONFLICT"),
+            ("unexplained", "BLOCKED_PACKET_CONTRACT"),
+            ("insufficient", "CONTEXT_ONLY_PATTERN"),
+            ("authority_gap", "REVIEW_REQUIRED_AUTHORITY_GAP"),
+            ("measurement_gap", "REVIEW_REQUIRED_COMPONENT_GAP"),
+        ]:
+            observe("V551J", "negative_" + mode, sym, {"components": 2, "mode": mode},
+                    lambda mode=mode: invoke_551j(packets, pd, mode),
+                    lambda o, expectation=expectation: o.get("return", {}).get("status") == expectation)
+        observe("V551J", "restore", sym, {"components": 2, "mode": "valid"},
+                lambda: invoke_551j(packets, pd, "valid"),
+                lambda o: o.get("return", {}).get("status", "").startswith("CERTIFIED_JOINT"))
 
-    handoff = mods["ddm_v552j_handoff"]
-    sym = "_packet_structural_dimension_resolution + build_v552j_join"
-    observe("V552J", "positive_single_fact", sym, {"facts": ["FACT_A"]},
-            lambda: invoke_552j(handoff, pd, ["FACT_A"]),
-            lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_A"
-            and o["return"]["joined_fact_ids"] == ["FACT_A"])
-    for phase, flip in [("negative_equal_score_twin", False), ("negative_permuted_twin", True)]:
-        observe("V552J", phase, sym, {"facts": ["FACT_A", "FACT_Z"], "reverse_input": flip},
-                lambda flip=flip: invoke_552j(handoff, pd, ["FACT_A", "FACT_Z"], flip=flip),
-                lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_Z"
-                and o["return"]["matched_fact_count"] == 2
-                and o["return"]["joined_fact_ids"] == ["FACT_Z"]
-                and o["return"]["join_permissions"] == ["ALLOW"]
-                and o["return"]["join_audit"] == ["MATCHED_EXACT_SCOPE"])
-    observe("V552J", "negative_wrong_run", sym, {"facts": ["FACT_A"], "mismatched_run": True},
-            lambda: invoke_552j(handoff, pd, ["FACT_A"], mismatched=True),
-            lambda o: o.get("return", {}).get("selected_fact_id") == ""
-            and o["return"]["joined_fact_ids"] == [])
-    observe("V552J", "restore", sym, {"facts": ["FACT_A"]},
-            lambda: invoke_552j(handoff, pd, ["FACT_A"]),
-            lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_A")
+    structural = load_module("V552", "ddm_v552_structural.py")
+    if structural is not None:
+        sym = "_surface + build_v552_pressure_observation_index"
+        observe("V552", "positive_coverage_and_score", sym, {"selected_counts": [1, 1], "denominator": 2},
+                lambda: invoke_552(structural, pd, [1, 1]),
+                lambda o: o.get("return", {}).get("surface", {}).get("status") == "COMPLETE_SELECTED_RESPONSE_CATEGORY_COVERAGE"
+                and o["return"]["downstream_permission_status"] == "ALLOW"
+                and o["return"]["pressure_score_status"] == "OBSERVED_NONZERO")
+        observe("V552", "negative_overcount_but_score_independent", sym,
+                {"selected_counts": [2, 2], "denominator": 2},
+                lambda: invoke_552(structural, pd, [2, 2]),
+                lambda o: o.get("return", {}).get("surface", {}).get("status") == "BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR"
+                and o["return"]["surface"]["coverage"] == 2.0
+                and o["return"]["downstream_permission_status"] == "ALLOW")
+        observe("V552", "restore", sym, {"selected_counts": [1, 1], "denominator": 2},
+                lambda: invoke_552(structural, pd, [1, 1]),
+                lambda o: o.get("return", {}).get("surface", {}).get("status") == "COMPLETE_SELECTED_RESPONSE_CATEGORY_COVERAGE")
 
-    reporter = mods["build_question_response_attitude_cloud_summary_v549b"]
-    sym = "build_answer_presence_anchors"
-    observe("V549b", "positive_under_threshold", sym,
-            {"candidates": 49, "progress_item_step": 50, "reporter": True},
-            lambda: invoke_549b(reporter, pd, 49, True),
-            lambda o: o.get("return", {}).get("anchors", 0) >= 1)
-    observe("V549b", "negative_conditional_50th_report", sym,
-            {"candidates": 50, "progress_item_step": 50, "reporter": True},
-            lambda: invoke_549b(reporter, pd, 50, True),
-            lambda o: o.get("exception_type") == "NameError"
-            and ("answer_type" in o.get("exception", "") or "cand_item_id" in o.get("exception", "")))
-    observe("V549b", "restore_without_reporter", sym,
-            {"candidates": 50, "reporter": False},
-            lambda: invoke_549b(reporter, pd, 50, False),
-            lambda o: o.get("return", {}).get("anchors", 0) >= 1)
+    handoff = load_module("V552J", "ddm_v552j_handoff.py")
+    if handoff is not None:
+        sym = "_packet_structural_dimension_resolution + build_v552j_join"
+        observe("V552J", "positive_single_fact", sym, {"facts": ["FACT_A"]},
+                lambda: invoke_552j(handoff, pd, ["FACT_A"]),
+                lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_A"
+                and o["return"]["joined_fact_ids"] == ["FACT_A"])
+        for phase, flip in [("negative_equal_score_twin", False), ("negative_permuted_twin", True)]:
+            observe("V552J", phase, sym, {"facts": ["FACT_A", "FACT_Z"], "reverse_input": flip},
+                    lambda flip=flip: invoke_552j(handoff, pd, ["FACT_A", "FACT_Z"], flip=flip),
+                    lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_Z"
+                    and o["return"]["matched_fact_count"] == 2
+                    and o["return"]["joined_fact_ids"] == ["FACT_Z"]
+                    and o["return"]["join_permissions"] == ["ALLOW"]
+                    and o["return"]["join_audit"] == ["MATCHED_EXACT_SCOPE"])
+        observe("V552J", "negative_wrong_run", sym, {"facts": ["FACT_A"], "mismatched_run": True},
+                lambda: invoke_552j(handoff, pd, ["FACT_A"], mismatched=True),
+                lambda o: o.get("return", {}).get("selected_fact_id") == ""
+                and o["return"]["joined_fact_ids"] == [])
+        observe("V552J", "restore", sym, {"facts": ["FACT_A"]},
+                lambda: invoke_552j(handoff, pd, ["FACT_A"]),
+                lambda o: o.get("return", {}).get("selected_fact_id") == "FACT_A")
+
+    reporter = load_module("V549b", "build_question_response_attitude_cloud_summary_v549b.py")
+    if reporter is not None:
+        sym = "build_answer_presence_anchors"
+        observe("V549b", "positive_under_threshold", sym,
+                {"candidates": 49, "progress_item_step": 50, "reporter": True},
+                lambda: invoke_549b(reporter, pd, 49, True),
+                lambda o: o.get("return", {}).get("anchors", 0) >= 1)
+        observe("V549b", "negative_conditional_50th_report", sym,
+                {"candidates": 50, "progress_item_step": 50, "reporter": True},
+                lambda: invoke_549b(reporter, pd, 50, True),
+                lambda o: o.get("exception_type") == "NameError"
+                and ("answer_type" in o.get("exception", "") or "cand_item_id" in o.get("exception", "")))
+        observe("V549b", "restore_without_reporter", sym,
+                {"candidates": 50, "reporter": False},
+                lambda: invoke_549b(reporter, pd, 50, False),
+                lambda o: o.get("return", {}).get("anchors", 0) >= 1)
 
     import numpy
     summary = {"source_commit": PIN, "source_blobs": actual_blobs,
+               "expected_source_blobs": BLOBS,
+               "family_execution_status": {family: (
+                   "EXECUTED_SOURCEFREE_CASES" if any(
+                       x["case"] == family and x["grade"] == "S2_SYNTHETIC_PINNED_FUNCTION" for x in RESULTS
+                   ) else "NOT_RUN_IMPORT_BLOCKER"
+               ) for family in ("F08", "V550J", "V551J", "V552", "V552J", "V549b")},
                "runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                "environment": {"python": sys.version.split()[0], "pandas": pd.__version__,
                                "numpy": numpy.__version__},
