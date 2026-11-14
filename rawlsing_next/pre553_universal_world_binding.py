@@ -659,8 +659,30 @@ def _validate_r05_receipt(receipt: Any, request: R05WorldConsumerRequest,
 
 def _validate_ff_admission(request: R05WorldConsumerRequest,
                            fields: tuple[R05WorldField, ...]) -> str | None:
+    """Refuse caller-minted FF attribution to otherwise genuine P41 world facts.
+
+    P41-owned STRUCTURAL fields without FF claims retain existing validated
+    source, clock and receipt semantics.  R05 has no host-retained, selected
+    Field Forge admission/relation/transport closure.  Request-level refs,
+    admission objects and transport booleans are not such an issuer.  Until
+    an actual source-qualified FF bridge is added by its competent owner,
+    do not silently ignore these claims and return a P41-only world as if
+    it were an admitted Field Forge consequence.
+    """
     if any(field.role == "CONTEXT" for field in fields):
         return "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+    ff_claim = (
+        request.ff_structural_authority_ref is not None
+        or request.ff_structural_admission is not None
+        or request.relation_transport_ref is not None
+        or request.relation_transport_authorized
+        or any(
+            field.relation_ref is not None or field.field_ref is not None
+            for field in fields
+        )
+    )
+    if ff_claim:
+        return "R05_FF_ANCESTRY_NOT_TRUSTED"
     return None
 
 
