@@ -1,0 +1,165 @@
+{
+  "schema": "SOROK_G2_SOURCE_INSPECTION_WITNESSES@1",
+  "source_cut": "44e664eff316e0f644b1326bf5d7b1d23594c179",
+  "execution": "GitHub authenticated source read; exact substring assertions; NOT native runtime tests",
+  "checks": [
+    {
+      "id": "batch_loop",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py",
+      "git_blob_sha": "a777692782003e05de6c46280b5861e97516dc90",
+      "assertions": [
+        {
+          "fragment": "for index in range(start_index, len(proposals)):",
+          "found": true
+        },
+        {
+          "fragment": "self.owner.realize(",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "batch_parse",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py",
+      "git_blob_sha": "231cab97b4bc5e2f40de3c45d179a68ba58585c5",
+      "assertions": [
+        {
+          "fragment": "3 <= len(value) <= 5",
+          "found": true
+        },
+        {
+          "fragment": "owner.validate_proposal(proposal)",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "fixed_provider",
+      "path": "WORKER_RETURNS/SOROK-D03-E01-1010-AGENT-A-R1/test_d03_e01_performer.py",
+      "git_blob_sha": "0cd3aa1e57e63b5f36a4e1fcb197c52a89e8c93d",
+      "assertions": [
+        {
+          "fragment": "class ExactActorProvider:",
+          "found": true
+        },
+        {
+          "fragment": "self.proposals.append(EventProposal(",
+          "found": true
+        },
+        {
+          "fragment": "def call(self, request):",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "d03_noaction",
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/immediate_uptake.py",
+      "git_blob_sha": "7ff9087fea3061678116ab7da3bc6f11f665f6db",
+      "assertions": [
+        {
+          "fragment": "\"native_action\": \"NOT_ISSUED_BY_D03_RULE\"",
+          "found": true
+        },
+        {
+          "fragment": "\"material_feasibility\": \"NOT_EVALUATED_WORLD_PROPOSAL_SEPARATE\"",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "p3_binding",
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+      "git_blob_sha": "a5c638142ad8b2ea4b0dae5d8b9fa7d313be5e80",
+      "assertions": [
+        {
+          "fragment": "if mode != \"TEST_ONLY\":",
+          "found": true
+        },
+        {
+          "fragment": "self._plans_by_event = {plan[\"event_id\"]: plan for plan in self.plans}",
+          "found": true
+        },
+        {
+          "fragment": "plan = self._plans_by_event.get(proposal.event_id)",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "p3_rule",
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/test_rules.py",
+      "git_blob_sha": "00b1006f9035d811d841abf9d6a723f01365dda4",
+      "assertions": [
+        {
+          "fragment": "\"ZERO_POSITIVE_REGISTRY\"",
+          "found": true
+        },
+        {
+          "fragment": "plan.get(\"proposal_hash\") == digest(proposal)",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "p2_bound_source",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "git_blob_sha": "a6b289558898d16a58056df36dd647a0a28ec547",
+      "assertions": [
+        {
+          "fragment": "proposal.source_refs != (self.source_ref,)",
+          "found": true
+        },
+        {
+          "fragment": "s.admit_event(case=self.case, source=self.source,",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "can008",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY.md",
+      "git_blob_sha": "976c59086b938992114f68621f149687670e306d",
+      "assertions": [
+        {
+          "fragment": "not** pressure->piety",
+          "found": true
+        },
+        {
+          "fragment": "zero stochastic response operations",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "adp019",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_019_V3_EXTERNAL_ADMISSION/AUTHORITY.md",
+      "git_blob_sha": "5c38772ea193e5a3f20da23c16df086a153ab2f2",
+      "assertions": [
+        {
+          "fragment": "not a proposal generator",
+          "found": true
+        },
+        {
+          "fragment": "candidate rendering is not occurrence",
+          "found": true
+        }
+      ]
+    },
+    {
+      "id": "adp020",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_020_V3_CAUSAL_RNG/AUTHORITY.md",
+      "git_blob_sha": "1911352f4bd5b04dfeaa0f26930e6702998bb76d",
+      "assertions": [
+        {
+          "fragment": "RNG cannot generate or repair candidates",
+          "found": true
+        },
+        {
+          "fragment": "missing semantic rule authority is a no-draw",
+          "found": true
+        }
+      ]
+    }
+  ]
+}
