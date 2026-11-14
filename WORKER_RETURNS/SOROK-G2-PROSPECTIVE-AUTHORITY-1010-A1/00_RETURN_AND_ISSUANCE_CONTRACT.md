@@ -5,7 +5,7 @@
 **Grade:** SOURCE-GROUNDED S0–S1 investigation and issuance request, **NOT ISSUED AUTHORITY**, NOT an implemented G2, NOT independent receiving, NOT native psychological science.
 **Original committed source/input:** `44e664eff316e0f644b1326bf5d7b1d23594c179`, with 37-test log at `WORKER_RETURNS/SOROK-D03-E01-1010-NATIVE-EXEC-R1/evidence/integration-run-2-with-real-pending.log` (Git blob `1d2d27dd3a4ad3982ce7e283feed0bc616a9352c`).
 **Source of mission:** user G2 commission and #1010 G2, bounded by #1013's separate Browser/Codex handoff and #939 fleet STOP.
-**Files changed by Agent A:** This document, `01_ISSUANCE_REQUEST.json`, `02_EXECUTED_SOURCE_WITNESSES.json`; no product code, native registry, author-owned P3/P2 writer, or protected PRE-MAIN modified.
+**Files changed by Agent A:** This document, `01_ISSUANCE_REQUEST.json`, `02_EXECUTED_SOURCE_WITNESSES.json`, `03_VERIFY_SOURCE_WITNESSES.py`; no product code, native registry, author-owned P3/P2 writer, or protected PRE-MAIN modified.
 
 ## 1. Determination and actual strongest result
 
@@ -90,13 +90,14 @@ Only AFTER source issuance and verified non-overlapping writer rights:
 
 ## 7. Exact adversarial handoff / proof boundaries
 
-**Artifact**: isolated branch `agent/sorok-g2-issuance-contract-20261113-a1` descended from `44e664eff316e0f644b1326bf5d7b1d23594c179`; the *commit SHA must be taken from GitHub's resulting immutable commit*, not this text. Three new source-owned S0–S1 files; no product edits. Confirm files with `git diff --name-only 44e664eff316e0f644b1326bf5d7b1d23594c179..HEAD`.
+**Artifact**: isolated branch `agent/sorok-g2-issuance-contract-20261113-a1` descended from `44e664eff316e0f644b1326bf5d7b1d23594c179`; the *commit SHA must be taken from GitHub's resulting immutable commit*, not this text. Four new source-owned S0–S1 files; no product edits. Confirm files with `git diff --name-only 44e664eff316e0f644b1326bf5d7b1d23594c179..HEAD`.
 
 **Read-only reproduction commands in a checkout of this branch:**
 
 ~~~sh
 python3 -m json.tool WORKER_RETURNS/SOROK-G2-PROSPECTIVE-AUTHORITY-1010-A1/01_ISSUANCE_REQUEST.json >/dev/null
 python3 -m json.tool WORKER_RETURNS/SOROK-G2-PROSPECTIVE-AUTHORITY-1010-A1/02_EXECUTED_SOURCE_WITNESSES.json >/dev/null
+python3 -B WORKER_RETURNS/SOROK-G2-PROSPECTIVE-AUTHORITY-1010-A1/03_VERIFY_SOURCE_WITNESSES.py
 python3 -B -m pytest -q -p no:cacheprovider --tb=short \
   WORKER_RETURNS/SOROK-E01-J1-995-R1/test_j1_three_head_join.py \
   WORKER_RETURNS/SOROK-D03-E01-1010-AGENT-A-R1/test_d03_e01_performer.py \
@@ -108,7 +109,7 @@ python3 -B -m pytest -q -p no:cacheprovider --tb=short \
   WORKER_RETURNS/SOROK-D03-E01-1010-NATIVE-EXEC-R1/test_real_p3_pending.py
 ~~~
 
-The eight-file suite's `37 passed` is **inherited from its frozen committed log**, NOT a rerun by this agent. Agent A ran source assertions against authenticated GitHub blobs and structurally checked the issuance request JSON, not a new G2 runtime. No source-owner issuance, native psychological rule, evaluated Nadia selection/inaction, plan-creation right, qualified event content mapping, independent G5, protected merge, distinct later performed actor consumer or S3 was produced.
+The eight-file suite's `37 passed` is **inherited from its frozen committed log**, NOT a rerun by this agent. Agent A ran 22/22 source assertions against authenticated GitHub blobs and structurally checked the issuance request JSON, not a new G2 runtime. The Python verifier is provided for a local checkout; it is not claimed here as executed. No source-owner issuance, native psychological rule, evaluated Nadia selection/inaction, plan-creation right, qualified event content mapping, independent G5, protected merge, distinct later performed actor consumer or S3 was produced.
 
 **Likely successor attacks:** (1) discover an issued actor-specific evaluation rule missed here; (2) show P2's current case/source is expressively sufficient with owner-issued prebinding; (3) prove a genuine separate later actor consumer beyond C9 same-event conditioning; (4) find unsafe cross-process direct P3 store writer outside cooperative lock; (5) show candidate/feasibility/time changes lack atomic binding in a future implementation. A materially better route should replace this missing-authority conclusion when the source actually proves it.
 
