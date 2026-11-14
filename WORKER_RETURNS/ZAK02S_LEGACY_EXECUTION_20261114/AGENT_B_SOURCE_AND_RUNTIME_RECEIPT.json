@@ -1,0 +1,119 @@
+{
+  "schema": "zak02s_agent_b_independent_source_and_runtime_receipt_r1",
+  "as_of": "2026-11-14",
+  "source_grade": "S1_IMMUTABLE_GITHUB_CODE_INSPECTION",
+  "historical_function_execution_grade": "NOT_RUN_S2",
+  "baseline_protected": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "agent_a_frozen_head": "c31f3ffa77cee92c51a72fe635d89cc9b170ce38",
+  "prior_zak02_s0s1": "2030007c96cf2681f4aee6f3cb609d2648ec518b",
+  "historical_source_commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+  "branch": "agent/zak02s-followupper-20261114",
+  "original_zak02_task_ids": [
+    "ZAK02-TASK-01",
+    "ZAK02-TASK-02",
+    "ZAK02-TASK-03",
+    "ZAK02-TASK-04",
+    "ZAK02-HOSTILE",
+    "ZAK02-OUTPUT-01",
+    "ZAK02-OUTPUT-02",
+    "ZAK02-OUTPUT-03",
+    "ZAK02-OUTPUT-04"
+  ],
+  "original_historical_functions_modified": false,
+  "agent_b_changes": [
+    {
+      "kind": "FIXTURE_NEGATIVE",
+      "family": "F08",
+      "description": "Require exact duplicate-key refusal message rather than any RuntimeError"
+    },
+    {
+      "kind": "FIXTURE_DISCRIMINATION",
+      "family": "V550J",
+      "description": "Separate input context 3 respondents from 2 answered; separately deny disjoint R4 and unanswered R3"
+    },
+    {
+      "kind": "FIXTURE_NEGATIVE",
+      "family": "V552J",
+      "description": "Check exact-score twin picks FACT_Z, still authorizes ALLOW and MATCHED_EXACT_SCOPE at join"
+    },
+    {
+      "kind": "RUNNER_ISOLATION",
+      "family": "ALL_SIX",
+      "description": "Per-family historical import/blob guard records explicit NOT_RUN_IMPORT_BLOCKER; other families continue"
+    },
+    {
+      "kind": "RESTORATION_DIFFERENTIAL",
+      "family": "ALL_SIX",
+      "description": "Compare captured result fields of positive and restored paths; add identical 50-candidate no-reporter V549b control"
+    },
+    {
+      "kind": "CI_DIAGNOSTIC",
+      "family": "ALL_SIX",
+      "description": "Trigger Agent B branch and py_compile before dependencies; workflow accepted but recorded no steps"
+    }
+  ],
+  "verified_original_source_contracts": [
+    {
+      "family": "F08",
+      "blob": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131",
+      "finding": "_select_override distinguishes >1 same-basis rows from multiple distinct matched rows"
+    },
+    {
+      "family": "V550J",
+      "blob": "644aab23675b26134040d1df5cc25538b613e163",
+      "finding": "baseline eligible_df excludes blank response; membership uses respondent_id_norm inner merge; answered-variable counts produced after join"
+    },
+    {
+      "family": "V551J",
+      "blob": "740bae4cfd4da7ed8aa2c9a2321c47f26ba7c7e8",
+      "finding": "_v2_packet_status requires >=2 relation components and checks ambiguity, cross-contract conflicts and measurement/authority gaps"
+    },
+    {
+      "family": "V552",
+      "blob": "0df56d70cb3880dee723df00aea2207acd525260",
+      "finding": "coverage detection and independent scoring/permission both occur in original function"
+    },
+    {
+      "family": "V552J",
+      "blob": "476e617370e8947ee1f38b0718243ecfc5ba9e5c",
+      "finding": "matched sort descending score then fact ID; build_v552j_join can grant ALLOW to selected fact without a tie veto"
+    },
+    {
+      "family": "V549b",
+      "blob": "bf874a95ea5172817b0d1bdf21b43600aac5cbfe",
+      "finding": "50th candidate report f-string references answer_type and cand_item_id before binding"
+    }
+  ],
+  "github_actions_attempts": [
+    {
+      "run_id": 43633871982,
+      "head": "928f4188110e985b7e84444bea5d7cf4e1149464",
+      "conclusion": "failure",
+      "job_steps": null
+    },
+    {
+      "run_id": 43634144706,
+      "head": "69b5ae62b98d02de7d1e4be48abff22fc59b4c0c",
+      "conclusion": "failure",
+      "job_steps": null
+    },
+    {
+      "run_id": 43634190440,
+      "head": "6e5e90f1c80b84653808729c9aaa8aa0cc1ad0bc",
+      "conclusion": "failure",
+      "job_steps": null
+    },
+    {
+      "run_id": 43634301755,
+      "head": "1f8f5a64ef688304499a53194ff5f8b359b45638",
+      "conclusion": "failure",
+      "job_steps": null
+    }
+  ],
+  "execution_results": null,
+  "result_reason": "No Actions job contained recorded steps. Container cannot resolve github.com for authorized checkout. No historical function is claimed to have executed.",
+  "engineering": "SOURCE-GROUNDED HARNESS REPAIRS, S2 NOT_RUN",
+  "scientific": "NO_NEW_EMPIRICAL_OR_CAUSAL_ISSUANCE",
+  "authority": "ISOLATED_DRAFT_ONLY_NO_INDEPENDENT_RECEIVING_NO_PROTECTED_MERGE",
+  "terminal": "ZAK02S_PARTIAL_WITH_EXACT_RUNTIME_BLOCKERS"
+}

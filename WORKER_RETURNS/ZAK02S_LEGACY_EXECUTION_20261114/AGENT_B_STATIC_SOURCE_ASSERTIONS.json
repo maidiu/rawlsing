@@ -1,0 +1,105 @@
+{
+  "schema": "zak02s_agent_b_s1_static_assertions_r1",
+  "source_grade": "S1_STATIC_ONLY_NOT_EXECUTED_HISTORICAL_FUNCTIONS",
+  "source_commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+  "runner_blob": "0010ff654ed76ec8e599f176a8263304f31241ca",
+  "assertions": [
+    {
+      "name": "BLOB_F08",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Exact GitHub pinned blob SHA-1 is matched"
+    },
+    {
+      "name": "BLOB_V550J",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Exact GitHub pinned blob SHA-1 is matched"
+    },
+    {
+      "name": "BLOB_V551J",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Exact GitHub pinned blob SHA-1 is matched"
+    },
+    {
+      "name": "BLOB_V552",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Exact GitHub pinned blob SHA-1 is matched"
+    },
+    {
+      "name": "BLOB_V552J",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Exact GitHub pinned blob SHA-1 is matched"
+    },
+    {
+      "name": "BLOB_V549b",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Exact GitHub pinned blob SHA-1 is matched"
+    },
+    {
+      "name": "F08_DISTINCT_AND_DUPLICATE",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Two distinct refusal mechanisms exist in historical source"
+    },
+    {
+      "name": "V550J_RESPONDENT_INNER_JOIN",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Historical same-person join and denominator source fields exist"
+    },
+    {
+      "name": "V551J_COMPONENT_GATES",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Historical component and authority/measurement gates present"
+    },
+    {
+      "name": "V552_INDEPENDENT_COVERAGE_AND_ALLOW",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Original coverage diagnosis and separate pressure permission exist"
+    },
+    {
+      "name": "V552J_TIE_AND_JOIN",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Original descending tie ordering, selected first match, and downstream permission code exist"
+    },
+    {
+      "name": "V549b_CONDITIONAL_REPORT_BRANCH",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Source contains nested 50th reporter format expression using unbound local names"
+    },
+    {
+      "name": "RUNNER_PER_FAMILY_SOURCE_GUARD",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Six separately guarded imports and explicit nonexecution blocker grade"
+    },
+    {
+      "name": "RUNNER_DISJOINT_AND_NONANSWER",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Two different respondent counterexamples are preserved"
+    },
+    {
+      "name": "RUNNER_DENOMINATOR_SEPARATION",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Input context 3 versus answered 2 asserted"
+    },
+    {
+      "name": "RUNNER_TIE_PERMISSION",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Twin-fact test checks downstream effect, not winner only"
+    },
+    {
+      "name": "RUNNER_RESTORE_DIFFERENTIAL",
+      "result": "S1_STATIC_PASS",
+      "explanation": "Captured-result restoration equality and matched 50-candidate control asserted"
+    }
+  ],
+  "total": 17,
+  "passes": 17,
+  "failures": 0,
+  "unexecuted_s2_families": [
+    "F08",
+    "V550J",
+    "V551J",
+    "V552",
+    "V552J",
+    "V549b"
+  ],
+  "independent_receiving": false
+}
