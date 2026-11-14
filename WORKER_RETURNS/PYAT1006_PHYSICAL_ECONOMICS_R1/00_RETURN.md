@@ -20,8 +20,9 @@ handoff.  No self-review/G5 is claimed.
   `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`.
 - Accepted S2-C: `b7b697b69f0acea12174937ee824c19ac34ac284`.
 - Accepted S2-D G5: `ba8d760cd8e31a9baff9b45698bd4117f4baa456`.
-- Harness return commit/head: see `MANIFEST.json` and the final commit message;
-  the base production tree is the frozen head above.
+- Harness/return commit: `05e9ceacfd1a43aa8c21ff3144502550916deadd`.
+  The order-preserving documentation-only update after that commit is the
+  branch tip; the tested production tree remains the frozen head above.
 - Write lease used: **only new files** under
   `WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/`.
 - All `rawlsing_next` production and accepted test files were READONLY.
