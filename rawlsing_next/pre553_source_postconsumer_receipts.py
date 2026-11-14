@@ -26,10 +26,15 @@ from rawlsing_next.pre553_empirical_objects import (
 from rawlsing_next.pre553_issued_workload import (
     NativeWorkload, IssuedWorkloadRecord, admit,
 )
+from rawlsing_next.pre553_native_workload_binding import (
+    TestOnlyIssuedWorkload, _ref as _historical_test_only_ref,
+)
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_source_direct_parquet_estate import EstateReceipt
 from rawlsing_next.pre553_source_i02_handoff import SourceI02Handoff
-from rawlsing_next.pre553_universal_workload import GovernedFrontierCompilation
+from rawlsing_next.pre553_universal_workload import (
+    GovernedFrontierCompilation, GOVERNED_FRONTIER_SCHEMA,
+)
 from rawlsing_next.universal_grammar.native_map import native_receipt_anti_join
 
 SCHEMA = "PYAT997_S1E_SOURCEFREE_SAVED_POSTCONSUMER_FATES@1"
@@ -154,6 +159,100 @@ def _verify_realized_q2_body_witness(source_fate: Mapping[str, Any]) -> None:
 
 
 
+def _verify_original_governed_issuer(
+    compilation: GovernedFrontierCompilation,
+    workload: NativeWorkload,
+    record: IssuedWorkloadRecord,
+    *, host: str, purpose: str,
+) -> None:
+    """Conserve the EXISTING R03 compiler's one-DISCOVERY issuance contract.
+
+    ``compile_governed_frontier`` calls ``build_test_only_discovery_workload``:
+    one DISCOVERY, no QUERY, and exact deterministic issuer refs derived from
+    its own plan hash + as_of. A caller may replace the dataclass's ``issued``
+    member and even provide a matching test-only resolver; comparing those
+    two forged objects is not an original-compiler proof. Reconstruct the
+    historical producer contract using its existing _ref, not a new issuer.
+
+    This check is specific to the existing governed-frontier compiler schema.
+    The separate ``compile_universal_workload`` single-target QUERY path is
+    not silently imported into S1-E governed-frontier acceptance. A future
+    governed QUERY compiler needs its own explicit versioned contract.
+
+    This is a source-grounded producer-contract consistency check, not a
+    credential-independent attestation of an entirely substituted compilation.
+    A separately retained trusted compiler cut is still needed to defeat a
+    coordinated rewrite of the original plan, frontier and CURRENT resolver.
+    """
+    issued = compilation.issued
+    if (compilation.schema != GOVERNED_FRONTIER_SCHEMA
+            or type(issued) is not TestOnlyIssuedWorkload
+            or issued.workload != workload or issued.record != record
+            or (host, purpose) != (compilation.host, compilation.purpose)):
+        raise SourceReceiptJoinError("ORIGINAL_GOVERNED_COMPILATION_REQUIRED")
+    plan_hash = compilation.plan.content_hash
+    authorities = compilation.runtime_catalog.discovery_authorities
+    if len(authorities) != 1:
+        raise SourceReceiptJoinError("R03_COMPILER_DISCOVERY_CENSUS_DRIFT")
+    discovery = authorities[0].ref
+    prefix = "r03-discovery-" + plan_hash[:16]
+    expected_decision = _historical_test_only_ref(
+        "TEST_ONLY_DECISION", f"{prefix}-{compilation.as_of}",
+    )
+    expected_source_permission = _historical_test_only_ref(
+        "TEST_ONLY_SOURCE_PERMISSION", prefix,
+    )
+    expected_science_permission = _historical_test_only_ref(
+        "TEST_ONLY_SCIENTIFIC_PERMISSION", prefix,
+    )
+    # Do not allow an admitted catalog QUERY to become a compiler-issued
+    # governed operation. The current compiler emits precisely ONE discovery.
+    if (workload.requests != ()
+            or workload.discoveries != (discovery,)
+            or record.expected_jobs != (("DISCOVERY", discovery.key, ""),)
+            or workload.catalog != compilation.runtime_catalog
+            or workload.expected_frontier_root != plan_hash
+            or record.expected_frontier_root != plan_hash):
+        raise SourceReceiptJoinError("R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT")
+    if (workload.decision_ref != expected_decision
+            or record.decision_ref != expected_decision
+            or record.source_permission_ref != expected_source_permission
+            or record.scientific_permission_refs != (expected_science_permission,)
+            or record.host != compilation.host
+            or record.purpose != compilation.purpose):
+        raise SourceReceiptJoinError("R03_COMPILER_ORIGINAL_ISSUER_IDENTITY_DRIFT")
+    # Original builder derives the prospective U root from the original
+    # inventory and administered native-item census, NOT a caller's record.
+    # It is still sourcefree; no original-source right is conferred here.
+    try:
+        import json
+        desc = json.loads(workload.descriptor)
+        native_item_ids = desc["native_item_ids"]
+        if (not isinstance(native_item_ids, list)
+                or any(not isinstance(item, str) for item in native_item_ids)):
+            raise ValueError("invalid original native item ids")
+        expected_u_root = semantic_hash({
+            "inventory": compilation.inventory_hash,
+            "source_sha256": compilation.source_sha256,
+            "native_item_ids": native_item_ids,
+        })
+    except (KeyError, TypeError, ValueError, UnicodeError) as exc:
+        raise SourceReceiptJoinError("R03_COMPILER_DESCRIPTOR_DRIFT") from exc
+    if (dict(issued.descriptor) != desc
+            or issued.envelope_sha256 != record.envelope_sha256
+            or workload.original_u_root != expected_u_root
+            or record.original_u_root != expected_u_root
+            or workload.source_factory_ref != _historical_test_only_ref(
+                "SOURCE_FACTORY", compilation.source_sha256,
+            )
+            or record.native_universe_refs != (
+                workload.projection.universes[0].ref,
+            )
+            or record.original_wave_identity is not None
+            or workload.original_wave_identity is not None):
+        raise SourceReceiptJoinError("R03_COMPILER_SOURCE_U_ENVELOPE_DRIFT")
+
+
 def join_saved_source_operation_fates(
     *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
     admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
@@ -218,6 +317,11 @@ def join_saved_source_operation_fates(
             or record.scope != "TEST_ONLY_SOURCEFREE"
             or record != compilation.issued.record):
         raise SourceReceiptJoinError("TEST_ONLY_CURRENT_ISSUER_NOT_EXACT")
+    # The CURRENT resolver authenticates the record it was asked for, not
+    # whether a caller replaced a compiler output with its own record.
+    _verify_original_governed_issuer(
+        compilation, workload, record, host=host, purpose=purpose,
+    )
     # Q2's frozen handoff contains mutable nested preimages. Its source-
     # realization claim must agree with the source-side witness and the
     # independently recorded Q2 operation-source census before any native

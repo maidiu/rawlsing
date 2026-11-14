@@ -26,10 +26,13 @@ from rawlsing_next.tests.test_pyat960_s1e_support import source_fixture, build
 
 
 def _saved(root: Path, *, source_format="SAV", values=(0., 1., 2., 0., 1.),
-           monkeypatch=None):
+           monkeypatch=None, fixture_override=None):
     root.mkdir(mode=0o700)
-    fixture = source_fixture(root / "source", source_format=source_format,
-                             values=values)
+    fixture = (
+        fixture_override if fixture_override is not None
+        else source_fixture(root / "source", source_format=source_format,
+                            values=values)
+    )
     private = root / "private"
     private.mkdir(mode=0o700)
     cert = root / "direct.sqlite"
@@ -102,7 +105,8 @@ def test_one_source_snapshot_real_cold_thirteen_body_members(
 def test_actual_source_cell_changed_cold_body_changed_then_exact_restore(tmp_path):
     baseline = _saved(tmp_path / "before")
     changed = _saved(tmp_path / "after", values=(0., 1., 1., 0., 1.))
-    restored = _saved(tmp_path / "restore")
+    restored = _saved(
+        tmp_path / "restore", fixture_override=baseline[0])
     (_, hand0, sink0, private0, rec0) = baseline
     (_, hand1, sink1, private1, rec1) = changed
     (_, hand2, sink2, private2, rec2) = restored
