@@ -1,5 +1,12 @@
 # 00_RETURN — ZAK-02 bounded read-only unified reconnaissance, 2026-11-14
 
+## **CURRENT R4 COUNTS AND SOURCE-LEVEL VERDICT — 2026-11-14**
+
+This is the current report header. Previous R1/R2/R3 snapshots below are retained as history and must **not** be read as current totals. Documentary PR #1046 previous HEAD `7abaff676c401d15c4bc675d9c7c0c7627c6a5c6`. **19 provisional historical T; historical discovery OPEN**, no accepted unique original estate denominator. **Original nine ZAK-02 obligations 9/9 recorded, 0/9 newly functionally discharged**; earlier 19 operation rows preserved by archive/crosswalk, not T. **Coverage 60/228 bounded inspected** (45 `FOUND` source locators; 15 `UNRESOLVED`; 168 `NOT_INSPECTED`); historical domain succession remains mostly unsearched. **47 mechanism edges** are source-level comparisons, **49 operation rows**, **120 claim-pinned evidence entries**, **33 reverse-consumer records**, **50 bounded search receipts**, **35 unjoins**. **Zero independently admitted source-native scientific first readers, no native execution, no independent receiving**, no authority promotion or engineering. The first-reader record distinguishes V550 producer, checkpoint writer, replay and bridge context/disabled lanes from actual science consumption. Full results in `ROUND4_FUNCTIONAL_COUNTERSEARCH.md` and `CASES/ZAK02-T-0018.md` / `0019.md`.
+
+**R4 governing distinction:** source-retained versus executed; code importer versus qualified semantic consumer; old V551J sidecar versus selected V551J review_surface; source-level negative/conditional counterexample versus observed native failure. User-authorized documentary branch only, protected untouched.
+
+
 **Disposition:** `ZAK02_UNIFIED_R1_READONLY_S1__HISTORICAL_OPEN_DISCOVERY__NO_ENGINEERING`.
 
 **Publication grant:** The user expressly permits documentary GitHub commits and draft PRs while forbidding engineering, harness construction, tests or CI dispatch. All previously frozen protected sources remain unchanged.

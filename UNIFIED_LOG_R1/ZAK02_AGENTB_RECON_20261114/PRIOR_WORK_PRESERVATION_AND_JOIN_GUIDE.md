@@ -35,3 +35,8 @@ All original evidence was preserved; **not all semantic claims have been validat
 - Earlier T0001 wording was over-inclusive: it is now **binary presence/absence only**; T0011 single-answer and T0012 V548 branch identity were always independently accounted and remain unrenumbered.
 - V550 paired cloud's distinct answered-both, anchor, baseline and support populations are appended under T0016 S mechanisms, not counted as four extra T. Source-level durable replay is separately recorded from any unverified semantic consumer.
 - The rival's Round 3 S1 review is described in `ROUND3_HOSTILE_ADJUDICATION.md`; no full hostile-receipt file/hash was provided, so the reported SHA-256 prefix is not falsely admitted as an exact artifact.
+
+
+## R4 preservation and revised crosswalk appendix
+
+Original opponent 28-file and Agent B eight-file ZIPs remain byte-identical archival blobs and their old provisionally overlapping T identities are unchanged. New T0018–T0019 link to old generic V550 source/bridge functionality without rewriting or duplicating older accepted IDs. `FINDINGS.tsv`, `OPERATION_TRACES.tsv`, `MECHANISM_RECONCILIATION.tsv`, `EVIDENCE.tsv`, `DATA_SHAPES.tsv`, `COVERAGE.tsv`, `SOURCE_SEARCH_LOG.tsv`, `REVERSE_CONSUMERS.tsv`, `UNJOINS.tsv` and their two standalone `CASES/` now capture Round4. `ROUND4_FUNCTIONAL_COUNTERSEARCH.md` is a documentary review supplement, not central atlas admission. The R1 shared column headers are unchanged. Earlier 17/204 counts were R3 historical snapshots; R4 authoritative top-count is 19/228.

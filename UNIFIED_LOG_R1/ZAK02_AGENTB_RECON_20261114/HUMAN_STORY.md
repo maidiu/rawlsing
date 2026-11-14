@@ -1,5 +1,12 @@
 # HUMAN_STORY — ZAK-02 original-to-modern knowledge reconciliation
 
+## **CURRENT R4 COUNTS AND SOURCE-LEVEL VERDICT — 2026-11-14**
+
+This is the current report header. Previous R1/R2/R3 snapshots below are retained as history and must **not** be read as current totals. Documentary PR #1046 previous HEAD `7abaff676c401d15c4bc675d9c7c0c7627c6a5c6`. **19 provisional historical T; historical discovery OPEN**, no accepted unique original estate denominator. **Original nine ZAK-02 obligations 9/9 recorded, 0/9 newly functionally discharged**; earlier 19 operation rows preserved by archive/crosswalk, not T. **Coverage 60/228 bounded inspected** (45 `FOUND` source locators; 15 `UNRESOLVED`; 168 `NOT_INSPECTED`); historical domain succession remains mostly unsearched. **47 mechanism edges** are source-level comparisons, **49 operation rows**, **120 claim-pinned evidence entries**, **33 reverse-consumer records**, **50 bounded search receipts**, **35 unjoins**. **Zero independently admitted source-native scientific first readers, no native execution, no independent receiving**, no authority promotion or engineering. The first-reader record distinguishes V550 producer, checkpoint writer, replay and bridge context/disabled lanes from actual science consumption. Full results in `ROUND4_FUNCTIONAL_COUNTERSEARCH.md` and `CASES/ZAK02-T-0018.md` / `0019.md`.
+
+**R4 governing distinction:** source-retained versus executed; code importer versus qualified semantic consumer; old V551J sidecar versus selected V551J review_surface; source-level negative/conditional counterexample versus observed native failure. User-authorized documentary branch only, protected untouched.
+
+
 This is a **read-only, source-grounded, incomplete** functional reconstruction. Historical T is a knowledge-producing capability, not a Python definition; 12 provisional T cases are listed below.
 
 ## A concrete data journey
@@ -66,3 +73,12 @@ Start with `PRIOR_WORK_PRESERVATION_AND_JOIN_GUIDE.md` for a nonduplicative cust
 **Omitted-function challenge:** V550 position-signature and relation co-signature output builders are real independent candidate capabilities; they are NOT automatically the V550J joint-pattern signatures consumed by V551J. See `SEARCH:040`, `GAP:0024`, and `EV:0092`–`0094`. Their ownership/semantic grain is unresolved, so they are not prematurely counted as additional conserved T.
 
 **T0001 identity is narrowed:** source binary answer-presence/absence associations only. T0011 stays single-answer top-code cohort; T0012 stays V548 branch-node conditional cohort. No old alias or evidence row deleted; T0017 is not a second copy of T0007. This is a provisional 17-T research census with OPEN_DISCOVERY, not 17 conserved functions.
+
+
+## R4 human story — what changes if the source process resumes or answers arrive in another order
+
+An old V550 source with two source-authorized questions can produce a different cloud merely by visiting the questions in a different order, because cross-question pairs are formed **against already cached questions**. If question B is eligible as a feature but not an anchor, and B comes first, an anchor A visited later can emit A/B. If A comes first and B later, B does not emit A/B; A could not compare future B. The same thing can happen in a mixed resume when B's per-question checkpoint is skipped after the cloud cache is cleared. This does not prove any actual survey result was harmed: native source row/grain, selected cloud mode and production execution are still open (`EV0095`–`EV0101`).
+
+The V550 position-signature and relation co-signature operations deserve separate cases because each ranks different scientific candidates and has a different downstream evidence status. Position reaches V551 as context. Relation co-signature reaches V551 as disabled diagnostic. Their similarly named V550J joint-pattern successors are different output products and were not proved same-grain (`EV0102`–`EV0107`, `EV0115`).
+
+Finally, the old V551J reviewable-evidence sidecar represents noncertified evidence as an explicit review-only artifact, but the selected current V551J compiler writes a new review_surface, and V552J reads that new surface. A separate older lineage resolver still expects the old sidecar and insists it be nonempty. A competent owner must distinguish these two routes rather than mark either as globally broken or interchangeable (`EV0108`–`EV0114`).
