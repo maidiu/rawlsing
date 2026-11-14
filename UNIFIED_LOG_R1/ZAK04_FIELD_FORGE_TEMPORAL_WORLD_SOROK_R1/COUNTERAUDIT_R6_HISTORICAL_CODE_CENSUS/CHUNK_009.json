@@ -1,0 +1,1067 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    108,
+    122
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_output_manifest_contract.py",
+      "sha": "11aae5738f9fbefacb758949e911c62e54dea9df",
+      "role": "TEST_OR_PROBE",
+      "n": 33,
+      "bytes": 1499,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "test_v551j_compiler_source_is_syntactically_valid",
+          "line": 13
+        },
+        {
+          "kind": "def",
+          "name": "test_v551j_output_manifest_carries_shared_typed_boundary_and_file_hashes",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "test_v551j_consumes_verified_producer_declared_v550j_hashes",
+          "line": 28
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Static W03-B regression for the V551J shared producer boundary.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_scope_identity.py",
+      "sha": "c894d065cdb82070a6629f3906639c189eb7a3d5",
+      "role": "TEST_OR_PROBE",
+      "n": 161,
+      "bytes": 5640,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_sha",
+          "line": 24
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_pattern_and_item_scope_must_be_singular",
+          "line": 28
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_pattern_run_must_match_requested_run",
+          "line": 39
+        },
+        {
+          "kind": "def",
+          "name": "test_supplied_atoms_must_be_exact_producer_declared_file",
+          "line": 50
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-B exact producer-scope and declared-path regressions.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_shard_scope.py",
+      "sha": "2fd5b890f17f081fddff1c1109eec7e8b2dd1e9c",
+      "role": "TEST_OR_PROBE",
+      "n": 196,
+      "bytes": 7050,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_frame",
+          "line": 16
+        },
+        {
+          "kind": "def",
+          "name": "_write_manifest",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "name": "test_multi_country_v550j_scope_uses_declared_shard_identity",
+          "line": 62
+        },
+        {
+          "kind": "def",
+          "name": "test_single_country_shard_derives_is_scalar_from_verified_country_list",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "test_single_country_shard_preserves_matching_scalar_country",
+          "line": 86
+        },
+        {
+          "kind": "def",
+          "name": "test_valid_empty_single_country_v550j_scope_keeps_scalar_and_shard_identity",
+          "line": 97
+        },
+        {
+          "kind": "def",
+          "name": "test_observed_frame_country_disagreement_with_producer_country_list_fails_closed",
+          "line": 110
+        },
+        {
+          "kind": "def",
+          "name": "test_single_country_scalar_list_contradiction_fails_closed",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "test_multi_country_shard_rejects_scalar_country_identity",
+          "line": 126
+        },
+        {
+          "kind": "def",
+          "name": "test_multi_country_scope_cannot_be_coerced_to_country_without_shard",
+          "line": 134
+        },
+        {
+          "kind": "def",
+          "name": "test_wrong_manifest_run_remains_fail_closed",
+          "line": 142
+        },
+        {
+          "kind": "def",
+          "name": "test_corrected_singleton_scope_matches_existing_downstream_exact_identity_and_mismatches_fail",
+          "line": 150
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"W03 shard-grain scope identity regressions.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_typed_output_state.py",
+      "sha": "dd520596073560f81d4f7d422b85db790ec9df61",
+      "role": "TEST_OR_PROBE",
+      "n": 85,
+      "bytes": 2109,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "test_zero_candidates_is_valid_empty_not_integrity_failure",
+          "line": 7
+        },
+        {
+          "kind": "def",
+          "name": "test_review_only_packets_preserve_evidence_but_deny_downstream",
+          "line": 23
+        },
+        {
+          "kind": "def",
+          "name": "test_certified_packets_allow_downstream",
+          "line": 39
+        },
+        {
+          "kind": "def",
+          "name": "test_contract_validation_failure_is_integrity_failure_not_empty_evidence",
+          "line": 55
+        },
+        {
+          "kind": "def",
+          "name": "test_no_strict_never_grants_downstream_permission",
+          "line": 71
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-B typed V551J output-state regressions.\"\"\"  from data.ddm_build_copy.compile_v551j_joint_evidence_packets import _derive_v551j_boundary_state "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_v3_consumer.py",
+      "sha": "4a3ab0f6e9cbe14f3c5a9dda1afa6e86c9d29a95",
+      "role": "TEST_OR_PROBE",
+      "n": 310,
+      "bytes": 12117,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_sha",
+          "line": 30
+        },
+        {
+          "kind": "def",
+          "name": "_pattern_frames",
+          "line": 34
+        },
+        {
+          "kind": "def",
+          "name": "_adjudication_row",
+          "line": 63
+        },
+        {
+          "kind": "def",
+          "name": "_atom_row",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_coverage_row",
+          "line": 107
+        },
+        {
+          "kind": "def",
+          "name": "_write_bundle",
+          "line": 129
+        },
+        {
+          "kind": "def",
+          "name": "_verify",
+          "line": 187
+        },
+        {
+          "kind": "def",
+          "name": "test_complete_v3_bundle_is_allowed_and_preserves_neutral_review_semantics",
+          "line": 198
+        },
+        {
+          "kind": "def",
+          "name": "test_partial_v3_coverage_demotes_even_if_producer_manifest_says_allow",
+          "line": 215
+        },
+        {
+          "kind": "def",
+          "name": "test_missing_promotable_atom_is_unexplained_integrity_failure",
+          "line": 234
+        },
+        {
+          "kind": "def",
+          "name": "test_wrong_declared_artifact_hash_fails_closed",
+          "line": 244
+        },
+        {
+          "kind": "def",
+          "name": "test_fail_integrity_manifest_fails_closed",
+          "line": 259
+        },
+        {
+          "kind": "def",
+          "name": "test_wrong_run_scope_identity_fails_closed",
+          "line": 277
+        },
+        {
+          "kind": "def",
+          "name": "test_empty_v3_bundle_is_typed_not_applicable",
+          "line": 291
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-B regressions for the V551 v3 -> V551J consumer boundary.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_v3_fail_closed.py",
+      "sha": "9682a523c31115dab162c6a561516d0691804fcf",
+      "role": "TEST_OR_PROBE",
+      "n": 163,
+      "bytes": 6163,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "test_missing_v551_manifest_fails_closed",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "test_malformed_v551_manifest_fails_closed",
+          "line": 42
+        },
+        {
+          "kind": "def",
+          "name": "test_wrong_v551_contract_version_fails_before_artifact_use",
+          "line": 54
+        },
+        {
+          "kind": "def",
+          "name": "test_unresolved_v551_state_publishes_only_typed_state_not_packets",
+          "line": 86
+        },
+        {
+          "kind": "def",
+          "name": "test_not_applicable_v551_state_is_typed_skip_without_packets",
+          "line": 128
+        }
+      ],
+      "imports": [
+        "19:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Hostile fail-closed regressions for the W03-B V551 producer boundary.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_v550j_surface.py",
+      "sha": "6e3de2a1690c0bb59eda879a3ff12cb06c22bd80",
+      "role": "TEST_OR_PROBE",
+      "n": 275,
+      "bytes": 10518,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_sha",
+          "line": 36
+        },
+        {
+          "kind": "def",
+          "name": "_frame",
+          "line": 40
+        },
+        {
+          "kind": "def",
+          "name": "_scope",
+          "line": 49
+        },
+        {
+          "kind": "def",
+          "name": "_write_surface",
+          "line": 62
+        },
+        {
+          "kind": "def",
+          "name": "_verify",
+          "line": 124
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_declared_serialized_hash_version_and_typed_state_pass",
+          "line": 140
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_tampered_serialized_bytes_fail_before_row_semantics",
+          "line": 155
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_missing_producer_hash_fails_closed",
+          "line": 166
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_legacy_missing_contract_is_not_accepted",
+          "line": 176
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_unsupported_compiler_version_fails_closed",
+          "line": 186
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_missing_typed_state_fails_closed",
+          "line": 196
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_unknown_evidence_status_fails_closed",
+          "line": 206
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_nonpass_run_integrity_fails_closed",
+          "line": 217
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_wrong_producer_run_fails_closed",
+          "line": 229
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_wrong_declared_path_fails_closed",
+          "line": 241
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_wrong_scope_fails_closed",
+          "line": 251
+        },
+        {
+          "kind": "def",
+          "name": "test_v550j_valid_empty_is_integrity_valid_and_not_downstream",
+          "line": 261
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-B V550J producer-surface binding regressions.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w03_v551j_v550j_typed_stop.py",
+      "sha": "4e8b8a31dba45ab170b40e43ceeb282af32b7b2e",
+      "role": "TEST_OR_PROBE",
+      "n": 58,
+      "bytes": 2398,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "test_valid_empty_v550j_surface_stops_cleanly_without_packet_artifacts",
+          "line": 17
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"W03-B valid-empty V550J -> V551J typed-stop regression.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/test_w06_v552j_join.py",
+      "sha": "b607fe0254d1d52fb8069677528473d193875a0b",
+      "role": "TEST_OR_PROBE",
+      "n": 377,
+      "bytes": 21583,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "packet",
+          "line": 18
+        },
+        {
+          "kind": "def",
+          "name": "fact",
+          "line": 41
+        },
+        {
+          "kind": "def",
+          "name": "state",
+          "line": 74
+        },
+        {
+          "kind": "class",
+          "name": "TestW06BV552JSemantics",
+          "line": 82
+        },
+        {
+          "kind": "class",
+          "name": "TestW06BV552JProducerBoundary",
+          "line": 201
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy import ddm_v552j_handoff as handoff"
+      ],
+      "top": "from __future__ import annotations  import ast import json import shutil"
+    },
+    {
+      "path": "data/ddm_build_copy/tests/test_postg5_v550_v551_response_semantics_contract.py",
+      "sha": "94715f682d46dc7addfd47dabab9d9b4b0b5fe1d",
+      "role": "TEST_OR_PROBE",
+      "n": 308,
+      "bytes": 12338,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_legacy_whole_frame_response_semantics_hash",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "_rows",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "test_binding_authority_matches_frozen_v551_registry_key_set_mechanically",
+          "line": 139
+        },
+        {
+          "kind": "def",
+          "name": "test_legacy_live_build_whole_frame_hash_cannot_be_v551_exact_contract_key",
+          "line": 149
+        },
+        {
+          "kind": "def",
+          "name": "test_whole_frame_content_hash_is_artifact_identity_not_v551_contract_key",
+          "line": 161
+        },
+        {
+          "kind": "def",
+          "name": "test_live_binding_attaches_exact_frozen_contract_identity",
+          "line": 170
+        },
+        {
+          "kind": "def",
+          "name": "test_special_rows_inherit_packet_identity_without_creating_scale_contract",
+          "line": 180
+        },
+        {
+          "kind": "def",
+          "name": "test_unknown_or_incomplete_governed_semantics_fail_closed",
+          "line": 191
+        },
+        {
+          "kind": "def",
+          "name": "test_prebuilt_exact_governed_identity_is_preserved",
+          "line": 204
+        },
+        {
+          "kind": "def",
+          "name": "test_bound_applicable_rows_pass_mechanical_v551_consumer_key_check",
+          "line": 216
+        },
+        {
+          "kind": "def",
+          "name": "test_prebuilt_conflicting_identity_fails_closed_instead_of_family_fallback",
+          "line": 225
+        },
+        {
+          "kind": "def",
+          "name": "test_distinct_governed_contracts_do_not_collapse_and_lookup_is_deterministic",
+          "line": 236
+        },
+        {
+          "kind": "def",
+          "name": "test_authority_packet_identity_can_be_shared_without_being_inferred_from_family",
+          "line": 250
+        },
+        {
+          "kind": "def",
+          "name": "test_binding_manifest_keeps_artifact_hash_separate_from_semantic_identity",
+          "line": 262
+        },
+        {
+          "kind": "def",
+          "name": "test_afrobarometer_r1_preflight_has_exact_six_certified_registry_keys",
+          "line": 276
+        },
+        {
+          "kind": "def",
+          "name": "test_scoped_serialization_preserves_exact_contract_identities_when_pyarrow_available",
+          "line": 288
+        }
+      ],
+      "imports": [
+        "8:from data.ddm_build_copy.ddm_v550_response_semantics_authority import (",
+        "20:from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash"
+      ],
+      "top": "from __future__ import annotations  import hashlib import json import pandas as pd"
+    },
+    {
+      "path": "data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py",
+      "sha": "3e75c2df922fd1f1b879d528439f9eaa562fdc42",
+      "role": "TEST_OR_PROBE",
+      "n": 364,
+      "bytes": 14712,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_sha",
+          "line": 36
+        },
+        {
+          "kind": "def",
+          "name": "_write_pickle_parquet",
+          "line": 40
+        },
+        {
+          "kind": "def",
+          "name": "_write_overlay",
+          "line": 45
+        },
+        {
+          "kind": "def",
+          "name": "_compat_frame",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "_audit_frame",
+          "line": 101
+        },
+        {
+          "kind": "def",
+          "name": "_artifact_decl",
+          "line": 123
+        },
+        {
+          "kind": "def",
+          "name": "_write_v552j_publication",
+          "line": 136
+        },
+        {
+          "kind": "def",
+          "name": "_descriptor",
+          "line": 222
+        },
+        {
+          "kind": "def",
+          "name": "_portable_parquet",
+          "line": 236
+        },
+        {
+          "kind": "def",
+          "name": "test_v553_harmonization_consumes_fully_verified_v552j_publication_without_legacy_packet",
+          "line": 241
+        },
+        {
+          "kind": "def",
+          "name": "test_valid_empty_publication_is_distinct_from_missing_or_corrupt",
+          "line": 274
+        },
+        {
+          "kind": "def",
+          "name": "test_incomplete_publication_missing_required_handoff_index_fails_closed",
+          "line": 284
+        },
+        {
+          "kind": "def",
+          "name": "test_corrupt_canonical_input_index_fails_closed_as_unreadable",
+          "line": 296
+        },
+        {
+          "kind": "def",
+          "name": "test_unreadable_canonical_handoff_index_fails_closed",
+          "line": 307
+        },
+        {
+          "kind": "def",
+          "name": "test_schema_invalid_canonical_index_fails_closed_even_when_hash_and_row_count_match",
+          "line": 326
+        },
+        {
+          "kind": "def",
+          "name": "test_path_existence_alone_never_marks_surface_valid",
+          "line": 345
+        },
+        {
+          "kind": "def",
+          "name": "test_v553_compile_entrypoints_use_canonical_consumer_adapter",
+          "line": 356
+        }
+      ],
+      "imports": [
+        "11:from data.ddm_build_copy import ddm_v553_canonical_harmonization as adapter",
+        "12:from data.ddm_build_copy import ddm_v553_harmonization as legacy",
+        "17:from data.ddm_build_copy.ddm_v552j_handoff import (",
+        "23:from data.ddm_build_copy.ddm_v553_canonical_harmonization import ("
+      ],
+      "top": "from __future__ import annotations  import hashlib import json from pathlib import Path"
+    },
+    {
+      "path": "data/ddm_build_copy/v550_552_extraction_audit.py",
+      "sha": "45455d3afdad41fab701a8a17992a2d8ca183686",
+      "role": "OTHER",
+      "n": 478,
+      "bytes": 21657,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 85
+        },
+        {
+          "kind": "def",
+          "name": "_bool",
+          "line": 97
+        },
+        {
+          "kind": "def",
+          "name": "_int_value",
+          "line": 103
+        },
+        {
+          "kind": "def",
+          "name": "_require_columns",
+          "line": 115
+        },
+        {
+          "kind": "def",
+          "name": "_require_v3_versions",
+          "line": 121
+        },
+        {
+          "kind": "def",
+          "name": "_coverage_status",
+          "line": 130
+        },
+        {
+          "kind": "def",
+          "name": "_producer_v551_v3_state",
+          "line": 155
+        },
+        {
+          "kind": "def",
+          "name": "build_v550_552_extraction_audit_package",
+          "line": 346
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"V550-V552 extraction diagnostics bound to the canonical V551 v3.0 contract.  This module is diagnostic infrastructure. It preserves the producer's typed b"
+    },
+    {
+      "path": "data/ddm_build_copy/watch_v550_process_guard.py",
+      "sha": "ed96bd4ba303fb6acf9b8bab1c10905ee53a1884",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 161,
+      "bytes": 4625,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "Proc",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 22
+        },
+        {
+          "kind": "def",
+          "name": "_ps",
+          "line": 56
+        },
+        {
+          "kind": "def",
+          "name": "_match_pids",
+          "line": 80
+        },
+        {
+          "kind": "def",
+          "name": "_alive",
+          "line": 90
+        },
+        {
+          "kind": "def",
+          "name": "_terminate",
+          "line": 100
+        },
+        {
+          "kind": "def",
+          "name": "_kill",
+          "line": 112
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 124
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Watch for a primary V550 process and kill a guarded V550 process if it starts while the primary is alive.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "sha": "9005308fb06686b593783666e77d06619645b2bb",
+      "role": "OTHER",
+      "n": 1301,
+      "bytes": 64415,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "M4IntegrityError",
+          "line": 67
+        },
+        {
+          "kind": "class",
+          "name": "PermissionWideningError",
+          "line": 71
+        },
+        {
+          "kind": "class",
+          "name": "ClosureIntegrityError",
+          "line": 75
+        },
+        {
+          "kind": "class",
+          "name": "ReferenceClassError",
+          "line": 79
+        },
+        {
+          "kind": "class",
+          "name": "V557DecisionState",
+          "line": 83
+        },
+        {
+          "kind": "class",
+          "name": "V557ExceptionState",
+          "line": 91
+        },
+        {
+          "kind": "def",
+          "name": "_text",
+          "line": 109
+        },
+        {
+          "kind": "def",
+          "name": "_hash",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "_freeze",
+          "line": 125
+        },
+        {
+          "kind": "def",
+          "name": "_uses",
+          "line": 141
+        },
+        {
+          "kind": "def",
+          "name": "_ref_key",
+          "line": 150
+        },
+        {
+          "kind": "def",
+          "name": "_is_forbidden_class",
+          "line": 154
+        },
+        {
+          "kind": "def",
+          "name": "_safe_storage_locator",
+          "line": 165
+        },
+        {
+          "kind": "class",
+          "name": "ExactRef",
+          "line": 177
+        },
+        {
+          "kind": "class",
+          "name": "AuthorityRef",
+          "line": 192
+        },
+        {
+          "kind": "def",
+          "name": "exact_ref",
+          "line": 206
+        },
+        {
+          "kind": "class",
+          "name": "StructuralObject",
+          "line": 215
+        },
+        {
+          "kind": "def",
+          "name": "make_structural_object",
+          "line": 254
+        },
+        {
+          "kind": "def",
+          "name": "make_external_stub",
+          "line": 270
+        },
+        {
+          "kind": "def",
+          "name": "structural_objects_from_m1",
+          "line": 281
+        },
+        {
+          "kind": "def",
+          "name": "structural_object_from_m2",
+          "line": 322
+        },
+        {
+          "kind": "def",
+          "name": "_v556_cardinality_marker",
+          "line": 382
+        },
+        {
+          "kind": "def",
+          "name": "structural_object_from_m3",
+          "line": 394
+        },
+        {
+          "kind": "class",
+          "name": "V557GovernanceRecord",
+          "line": 476
+        },
+        {
+          "kind": "def",
+          "name": "_governance_material",
+          "line": 491
+        },
+        {
+          "kind": "def",
+          "name": "govern_v557",
+          "line": 503
+        },
+        {
+          "kind": "class",
+          "name": "V557PublicationEntry",
+          "line": 529
+        },
+        {
+          "kind": "class",
+          "name": "V557PublicationBundle",
+          "line": 547
+        },
+        {
+          "kind": "def",
+          "name": "_publication_material",
+          "line": 558
+        },
+        {
+          "kind": "def",
+          "name": "build_v557_publication_bundle",
+          "line": 570
+        },
+        {
+          "kind": "class",
+          "name": "ProducerLocator",
+          "line": 591
+        },
+        {
+          "kind": "def",
+          "name": "_locator_material",
+          "line": 616
+        },
+        {
+          "kind": "def",
+          "name": "make_producer_locator",
+          "line": 638
+        },
+        {
+          "kind": "class",
+          "name": "ReferenceEdge",
+          "line": 673
+        },
+        {
+          "kind": "def",
+          "name": "_edge_material",
+          "line": 687
+        },
+        {
+          "kind": "def",
+          "name": "make_reference_edge",
+          "line": 701
+        },
+        {
+          "kind": "class",
+          "name": "ExternalResolutionBinding",
+          "line": 728
+        },
+        {
+          "kind": "def",
+          "name": "make_external_resolution_binding",
+          "line": 736
+        },
+        {
+          "kind": "class",
+          "name": "RepositoryEntry",
+          "line": 748
+        },
+        {
+          "kind": "class",
+          "name": "IndexRecord",
+          "line": 771
+        },
+        {
+          "kind": "class",
+          "name": "LogicalIndexManifest",
+          "line": 782
+        },
+        {
+          "kind": "def",
+          "name": "exact_resolution_key",
+          "line": 793
+        },
+        {
+          "kind": "def",
+          "name": "_index_material",
+          "line": 802
+        },
+        {
+          "kind": "def",
+          "name": "make_index_manifest",
+          "line": 812
+        },
+        {
+          "kind": "class",
+          "name": "V558RepositoryBundle",
+          "line": 823
+        },
+        {
+          "kind": "def",
+          "name": "_repository_material_from_ref",
+          "line": 838
+        },
+        {
+          "kind": "def",
+          "name": "_validate_v556_participant_edges",
+          "line": 858
+        },
+        {
+          "kind": "def",
+          "name": "build_v558_repository_bundle",
+          "line": 905
+        },
+        {
+          "kind": "class",
+          "name": "ContextQueryItem",
+          "line": 986
+        },
+        {
+          "kind": "class",
+          "name": "ContextQuery",
+          "line": 999
+        },
+        {
+          "kind": "def",
+          "name": "_query_material",
+          "line": 1006
+        },
+        {
+          "kind": "def",
+          "name": "make_context_query",
+          "line": 1013
+        },
+        {
+          "kind": "class",
+          "name": "ResolverPolicy",
+          "line": 1025
+        },
+        {
+          "kind": "class",
+          "name": "SelectionRecord",
+          "line": 1039
+        },
+        {
+          "kind": "class",
+          "name": "ResolvedEntry",
+          "line": 1059
+        },
+        {
+          "kind": "class",
+          "name": "ResolutionReceipt",
+          "line": 1070
+        },
+        {
+          "kind": "class",
+          "name": "ResolutionResult",
+          "line": 1086
+        },
+        {
+          "kind": "def",
+          "name": "_selection",
+          "line": 1093
+        },
+        {
+          "kind": "def",
+          "name": "_entry_body",
+          "line": 1121
+        },
+        {
+          "kind": "def",
+          "name": "_transitive_entries",
+          "line": 1135
+        },
+        {
+          "kind": "def",
+          "name": "_validate_repository_checksum",
+          "line": 1159
+        },
+        {
+          "kind": "def",
+          "name": "resolve_v558",
+          "line": 1175
+        }
+      ],
+      "imports": [
+        "16:from rawlsing_next.m1_temporal_v554_admission_dedup import (",
+        "23:from rawlsing_next.m2_v555_atomic_route import (",
+        "30:from rawlsing_next.m3_v556_higher_order_structural import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Clean-sideline runtime for frozen M4 V557 publication / V558 repository law.  This module contains no reads from stage-close artifacts. All semantic autho"
+    }
+  ]
+}

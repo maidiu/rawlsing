@@ -1,0 +1,821 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    10,
+    24
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/build_v550j_prepared_substrate.py",
+      "sha": "5226fef27903bf55984e0ca4134b6d42404305c2",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 524,
+      "bytes": 23716,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 38
+        },
+        {
+          "kind": "def",
+          "name": "_stable_hash",
+          "line": 50
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_code_series",
+          "line": 55
+        },
+        {
+          "kind": "def",
+          "name": "build_family_item_lookup",
+          "line": 62
+        },
+        {
+          "kind": "def",
+          "name": "_prepared_cache_dir",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "name": "_prepared_manifest_path",
+          "line": 86
+        },
+        {
+          "kind": "def",
+          "name": "_prepared_parquet_path",
+          "line": 90
+        },
+        {
+          "kind": "def",
+          "name": "_ensure_prepared_columns",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "_should_harmonize",
+          "line": 227
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_hash",
+          "line": 250
+        },
+        {
+          "kind": "def",
+          "name": "_validate_prepared_substrate",
+          "line": 255
+        },
+        {
+          "kind": "def",
+          "name": "_cache_signature_matches",
+          "line": 298
+        },
+        {
+          "kind": "def",
+          "name": "load_or_build_v550j_prepared_substrate",
+          "line": 316
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "15:from data.ddm_build_copy.ddm_v550_schema import write_schema_json",
+        "16:from data.ddm_build_copy.ddm_v550_storage import atomic_write_json",
+        "17:from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (",
+        "29:from data.ddm_build_copy.ddm_v550j_joint_patterns import _family_item_map"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build and cache prepared V550J response substrates.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/check_v550_wave_readiness.py",
+      "sha": "e69f376791b03e1be4cb7541c53fd452ac1dd424",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 210,
+      "bytes": 8760,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 29
+        },
+        {
+          "kind": "def",
+          "name": "_write_table_bundle",
+          "line": 52
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 64
+        }
+      ],
+      "imports": [
+        "20:from data.ddm_build_copy.ddm_v550_readiness import build_readiness, load_scope_manifest",
+        "21:from data.ddm_build_copy.ddm_v550_process_guard import claim_readiness_lock, release_readiness_lock",
+        "22:from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, try_connect_database, write_table"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Run V550 readiness as a standalone validation artifact.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+      "sha": "b42b00cadca6284ff99889116e8aebbc109e940e",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 2516,
+      "bytes": 135731,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_load_question_filter",
+          "line": 146
+        },
+        {
+          "kind": "def",
+          "name": "_load_yaml",
+          "line": 172
+        },
+        {
+          "kind": "def",
+          "name": "_safe_clean",
+          "line": 179
+        },
+        {
+          "kind": "def",
+          "name": "_registry_status_is_executable",
+          "line": 191
+        },
+        {
+          "kind": "def",
+          "name": "_validate_bounded_authority_registry",
+          "line": 195
+        },
+        {
+          "kind": "def",
+          "name": "_single_scope_value",
+          "line": 279
+        },
+        {
+          "kind": "def",
+          "name": "_select_threshold_profile",
+          "line": 295
+        },
+        {
+          "kind": "def",
+          "name": "_json_safe_value",
+          "line": 340
+        },
+        {
+          "kind": "def",
+          "name": "_stable_hash",
+          "line": 350
+        },
+        {
+          "kind": "def",
+          "name": "_file_sha256",
+          "line": 355
+        },
+        {
+          "kind": "def",
+          "name": "_derive_v550j_producer_boundary_state",
+          "line": 363
+        },
+        {
+          "kind": "def",
+          "name": "_response_value_series",
+          "line": 383
+        },
+        {
+          "kind": "def",
+          "name": "_facet_ready_view_name",
+          "line": 394
+        },
+        {
+          "kind": "def",
+          "name": "_family_waves",
+          "line": 415
+        },
+        {
+          "kind": "def",
+          "name": "_family_wave_values",
+          "line": 424
+        },
+        {
+          "kind": "def",
+          "name": "_family_wave_is_eligible",
+          "line": 442
+        },
+        {
+          "kind": "def",
+          "name": "_write_table",
+          "line": 450
+        },
+        {
+          "kind": "def",
+          "name": "_load_sql_query_in_chunks",
+          "line": 489
+        },
+        {
+          "kind": "def",
+          "name": "_append_family_table_frames",
+          "line": 628
+        },
+        {
+          "kind": "def",
+          "name": "_enforce_governed_association_lane_authority",
+          "line": 637
+        },
+        {
+          "kind": "class",
+          "name": "ProgressReporter",
+          "line": 699
+        },
+        {
+          "kind": "def",
+          "name": "_family_ids_from_frames",
+          "line": 758
+        },
+        {
+          "kind": "def",
+          "name": "_semantic_extraction_metrics",
+          "line": 764
+        },
+        {
+          "kind": "def",
+          "name": "_validate_v550j_run_outputs",
+          "line": 805
+        },
+        {
+          "kind": "def",
+          "name": "_load_response_map",
+          "line": 964
+        },
+        {
+          "kind": "def",
+          "name": "_normalize_semantics_key_value",
+          "line": 973
+        },
+        {
+          "kind": "def",
+          "name": "_expand_response_semantics_lookup",
+          "line": 984
+        },
+        {
+          "kind": "def",
+          "name": "_load_cached_country_slice",
+          "line": 1016
+        },
+        {
+          "kind": "def",
+          "name": "_load_all_countries_context_slice",
+          "line": 1133
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 1208
+        }
+      ],
+      "imports": [
+        "30:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "31:from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash",
+        "32:from data.ddm_build_copy.ddm_v550_schema import write_schema_json",
+        "33:from data.ddm_build_copy.ddm_v550_shared_cache import cache_entry, cache_signature, load_cached_frame, shared_cache_root, write_cached_frame",
+        "34:from data.ddm_build_copy.ddm_v550_storage import atomic_write_json, connect_from_env, read_table_any",
+        "35:from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (",
+        "40:from data.ddm_build_copy.ddm_v550j_joint_patterns import (",
+        "53:from data.ddm_build_copy.ddm_v550j_registry_classifier import AssociationLaneRegistry",
+        "54:from data.ddm_build_copy.ddm_v550j_registry_contract import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile V550J joint-response pattern outputs for one V550 shard.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v551j_cross_wave_semantic_diff.py",
+      "sha": "11ead1eda21902db1c1372afd305234dd4d1df89",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 125,
+      "bytes": 5428,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 22
+        },
+        {
+          "kind": "def",
+          "name": "_log_stage",
+          "line": 38
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 47
+        }
+      ],
+      "imports": [
+        "15:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, write_frame_artifact, write_json_artifact",
+        "16:from data.ddm_build_copy.ddm_v551j_semantic_diff import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the provisional V551J-D cross-wave semantic diff.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+      "sha": "2df97875172778c3f4616c0799c08667b57db407",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 1640,
+      "bytes": 90297,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_contract_csv_text",
+          "line": 21
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 148
+        },
+        {
+          "kind": "def",
+          "name": "_load",
+          "line": 188
+        },
+        {
+          "kind": "def",
+          "name": "_row_count",
+          "line": 192
+        },
+        {
+          "kind": "def",
+          "name": "_log_stage",
+          "line": 196
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 205
+        },
+        {
+          "kind": "def",
+          "name": "_truthy",
+          "line": 217
+        },
+        {
+          "kind": "def",
+          "name": "_scope_values",
+          "line": 221
+        },
+        {
+          "kind": "def",
+          "name": "_single_scope_value",
+          "line": 234
+        },
+        {
+          "kind": "def",
+          "name": "_read_json_object",
+          "line": 243
+        },
+        {
+          "kind": "def",
+          "name": "_scope_from_producer_payload",
+          "line": 254
+        },
+        {
+          "kind": "def",
+          "name": "_expected_v551_scope",
+          "line": 273
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_v551_manifest_path",
+          "line": 363
+        },
+        {
+          "kind": "def",
+          "name": "_manifest_artifact_map",
+          "line": 369
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_declared_artifact",
+          "line": 386
+        },
+        {
+          "kind": "def",
+          "name": "_require_frame_columns",
+          "line": 404
+        },
+        {
+          "kind": "def",
+          "name": "_verify_frame_scope",
+          "line": 411
+        },
+        {
+          "kind": "def",
+          "name": "_validate_v551_candidate_conservation",
+          "line": 444
+        },
+        {
+          "kind": "def",
+          "name": "_verify_v551_v3_bundle",
+          "line": 551
+        },
+        {
+          "kind": "def",
+          "name": "_verify_v550j_producer_surface",
+          "line": 684
+        },
+        {
+          "kind": "def",
+          "name": "_clear_v551j_stage_outputs",
+          "line": 836
+        },
+        {
+          "kind": "def",
+          "name": "_write_v550j_typed_stop",
+          "line": 851
+        },
+        {
+          "kind": "def",
+          "name": "_write_v551_typed_stop",
+          "line": 955
+        },
+        {
+          "kind": "def",
+          "name": "_derive_v551j_boundary_state",
+          "line": 1068
+        },
+        {
+          "kind": "def",
+          "name": "_enrich_output_artifacts",
+          "line": 1090
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 1121
+        }
+      ],
+      "imports": [
+        "34:from data.ddm_build_copy.ddm_v550_manifest import utc_now",
+        "35:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, file_hash, read_table, write_frame_artifact, write_json_artifact",
+        "36:from data.ddm_build_copy.ddm_v551j_review import (",
+        "41:from data.ddm_build_copy.ddm_v551j_certification import build_v551j_certified_packet_index, build_v551j_status_conflict_audit, certify_v551j_v2_2_3",
+        "42:from data.ddm_build_copy.ddm_v551j_packets import (",
+        "49:from data.ddm_build_copy.ddm_v551j_schema import (",
+        "68:from data.ddm_build_copy.ddm_v551j_validation import validate_candidate_trace_schema, validate_review_surface_schema, validate_reviewable_evidence_sidecar_schema, validate_certification_audit_schema, validate_certification_readiness_report_schema, validate_certification_rejection_audit_schema, validate_certified_packet_index_schema, validate_v551j_v2_2_3_outputs, validate_written_v551j_artifacts",
+        "69:from data.ddm_build_copy.ddm_v551j_contract import recompute_joint_measurement_contract_hash, recompute_v551j_component_contract_hash, recompute_v551j_v2_2_3_packet_contract_hash",
+        "70:from data.ddm_build_copy.ddm_v550_schema import write_schema_json"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile V551J candidate evidence packets.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v552j_runtime_safe_structural_handoff.py",
+      "sha": "d2f04b80cd2434c3027e910cdb77fda599d0fae3",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 202,
+      "bytes": 9565,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 41
+        },
+        {
+          "kind": "def",
+          "name": "_log_stage",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 83
+        }
+      ],
+      "imports": [
+        "17:from data.ddm_build_copy.ddm_v550_schema import write_schema_json",
+        "18:from data.ddm_build_copy.ddm_v551j_io import ensure_output_dirs, write_frame_artifact, write_json_artifact",
+        "19:from data.ddm_build_copy.ddm_v552j_handoff import build_v552j_structural_handoff, validate_v552j_structural_handoff",
+        "20:from data.ddm_build_copy.ddm_v552j_validation import ("
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the provisional V552J runtime-safe structural handoff adapter.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v552j_structural_handoff.py",
+      "sha": "a3e6bf17386b58beb0c14b2d79d9e4a9e405c300",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 167,
+      "bytes": 20104,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 16
+        },
+        {
+          "kind": "def",
+          "name": "_logical_hash",
+          "line": 23
+        },
+        {
+          "kind": "def",
+          "name": "_read_manifest",
+          "line": 29
+        },
+        {
+          "kind": "def",
+          "name": "_scope_from_manifest",
+          "line": 39
+        },
+        {
+          "kind": "def",
+          "name": "_coherent_scope",
+          "line": 46
+        },
+        {
+          "kind": "def",
+          "name": "_artifact_declarations",
+          "line": 57
+        },
+        {
+          "kind": "def",
+          "name": "_find_declaration",
+          "line": 62
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_declared_path",
+          "line": 74
+        },
+        {
+          "kind": "def",
+          "name": "_verify_and_read_declared",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "name": "_verify_frame_scope",
+          "line": 92
+        },
+        {
+          "kind": "def",
+          "name": "verify_v551j_producer_bundle",
+          "line": 102
+        },
+        {
+          "kind": "def",
+          "name": "verify_v552_producer_bundle",
+          "line": 131
+        },
+        {
+          "kind": "def",
+          "name": "_v553_compatibility_frame",
+          "line": 140
+        },
+        {
+          "kind": "def",
+          "name": "_write_frame",
+          "line": 146
+        },
+        {
+          "kind": "def",
+          "name": "_write_csv",
+          "line": 148
+        },
+        {
+          "kind": "def",
+          "name": "compile_v552j_run",
+          "line": 151
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 163
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 165
+        }
+      ],
+      "imports": [
+        "11:from data.ddm_build_copy.ddm_v551j_schema import V551J_COMPILER_VERSION,V551J_SCHEMA_VERSION",
+        "12:from data.ddm_build_copy.ddm_v552_structural import V552_COMPILER_VERSION,V552_SCHEMA_VERSION",
+        "13:from data.ddm_build_copy.ddm_v552j_handoff import V552J_JOIN_COMPILER_VERSION,V552J_JOIN_SCHEMA_VERSION,build_v552j_join"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the producer-bound V552J join from verified V551J and V552 manifests.\"\"\" from __future__ import annotations import argparse, hashlib, json, re, sh"
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v552j_thin_layer.py",
+      "sha": "9a4f0b9701d996cbfd7fe66f0a0b51b00c44cff4",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 35,
+      "bytes": 987,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 25
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v5_thin_end_to_end import build_thin_layer  # noqa: E402"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the V552J thin layer artifact.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v553_temporal_pressure_field.py",
+      "sha": "f55de42ca118ede8276f9a939283d0085358608b",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 52,
+      "bytes": 1793,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 32
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v553_temporal_pressure import build_v553_temporal_pressure_field, validate_v553_temporal_pressure_readiness  # noqa: E402"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the V553 temporal pressure field artifact.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v553_thin_layer.py",
+      "sha": "8ecd5986f04599445fd918df8fa56623728862e7",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 48,
+      "bytes": 1521,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 17
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 29
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v5_thin_end_to_end import build_thin_layer  # noqa: E402"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the V553 thin layer artifact.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v553_wave_harmonization_from_repo.py",
+      "sha": "bcb93c5708740e8c5c5ba0aa59b919890bc64df2",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 244,
+      "bytes": 11591,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 26
+        },
+        {
+          "kind": "def",
+          "name": "_load_explicit_descriptors",
+          "line": 42
+        },
+        {
+          "kind": "def",
+          "name": "_write_text",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "_write_json",
+          "line": 89
+        },
+        {
+          "kind": "def",
+          "name": "_parquet_safe_frame",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 107
+        }
+      ],
+      "imports": [
+        "18:from data.ddm_build_copy.ddm_v5_build_standard import build_thin_build_ledger",
+        "19:from data.ddm_build_copy.ddm_v553_canonical_harmonization import build_v553_wave_harmonization",
+        "20:from data.ddm_build_copy.ddm_v553_harmonization import WaveDescriptor, validate_v553_wave_harmonization_report",
+        "21:from data.ddm_build_copy.ddm_v553_repo_discovery import build_wave_descriptors_from_repo",
+        "22:from data.ddm_build_copy.ddm_v553_schema import V553_HARMONIZATION_DIFFERENCE_LEDGER_SCHEMA, V553_WAVE_HARMONIZATION_EVIDENCE_SCHEMA"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile V553 harmonization from the latest wave runs discovered in the repo.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v553_wave_harmonization.py",
+      "sha": "606851a86a9ce332971de0b1bfbb035382f83d3f",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 138,
+      "bytes": 6077,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 23
+        },
+        {
+          "kind": "def",
+          "name": "_load_wave_specs",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "_write_text",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "_write_json",
+          "line": 49
+        },
+        {
+          "kind": "def",
+          "name": "_parquet_safe_frame",
+          "line": 54
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 67
+        }
+      ],
+      "imports": [
+        "18:from data.ddm_build_copy.ddm_v553_canonical_harmonization import build_v553_wave_harmonization  # noqa: E402",
+        "19:from data.ddm_build_copy.ddm_v553_harmonization import validate_v553_wave_harmonization_report  # noqa: E402",
+        "20:from data.ddm_build_copy.ddm_v553_schema import V553_HARMONIZATION_DIFFERENCE_LEDGER_SCHEMA, V553_WAVE_HARMONIZATION_EVIDENCE_SCHEMA"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the V553 wave harmonization readiness package.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v558_numeric_runtime_graft_readiness.py",
+      "sha": "abb7d1d72677dde7f6be0d8996d1e438f8dcf33b",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 55,
+      "bytes": 1841,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 21
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 31
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v558_runtime_graft_readiness import (  # noqa: E402"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the V558 numeric runtime graft readiness report.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v558_plus_governance.py",
+      "sha": "b092270f223d20d09b98103f26db46fd2a7b8cc5",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 59,
+      "bytes": 2034,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 21
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 33
+        }
+      ],
+      "imports": [
+        "14:from data.ddm_build_copy.ddm_v558_plus_governance import (  # noqa: E402"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Compile the V558+ runtime governance bundle.\"\"\"  from __future__ import annotations "
+    }
+  ]
+}

@@ -1,0 +1,1185 @@
+{
+  "source_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "total": 129,
+  "range": [
+    0,
+    10
+  ],
+  "records": [
+    {
+      "path": "data/ddm_build_copy/assess_v550_shard_completion.py",
+      "sha": "18604771bdfcadca4797cb29024427e002ec09a7",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 112,
+      "bytes": 4984,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 22
+        },
+        {
+          "kind": "def",
+          "name": "_read_json",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "_count_files",
+          "line": 38
+        },
+        {
+          "kind": "def",
+          "name": "_print_block",
+          "line": 44
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 54
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Assess an existing V550 shard without recomputing any outputs.  This script is intentionally read-only. It inspects the shard run folder and an optional r"
+    },
+    {
+      "path": "data/ddm_build_copy/backfill_v550_question_completes.py",
+      "sha": "fca81cb90db03e99ac208d0d743ecb5dca5df8bd",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 91,
+      "bytes": 3263,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 32
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 46
+        }
+      ],
+      "imports": [
+        "29:from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Backfill missing question_universe .complete markers for a V550 shard.  This is a recovery utility for shards where question parquet outputs exist, but so"
+    },
+    {
+      "path": "data/ddm_build_copy/build_branch_co_signature_summary_v549.py",
+      "sha": "eb143ffef48e099217b74079252dfce86a6e65ef",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 801,
+      "bytes": 33929,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "BranchNode",
+          "line": 58
+        },
+        {
+          "kind": "class",
+          "name": "ProgressReporter",
+          "line": 65
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 82
+        },
+        {
+          "kind": "def",
+          "name": "load_env",
+          "line": 94
+        },
+        {
+          "kind": "def",
+          "name": "connect_db",
+          "line": 98
+        },
+        {
+          "kind": "def",
+          "name": "facet_ready_view_exists",
+          "line": 105
+        },
+        {
+          "kind": "def",
+          "name": "infer_question_family",
+          "line": 113
+        },
+        {
+          "kind": "def",
+          "name": "infer_response_mode",
+          "line": 141
+        },
+        {
+          "kind": "def",
+          "name": "safe_int",
+          "line": 150
+        },
+        {
+          "kind": "def",
+          "name": "normalize_code",
+          "line": 162
+        },
+        {
+          "kind": "def",
+          "name": "normalize_series",
+          "line": 177
+        },
+        {
+          "kind": "def",
+          "name": "safe_json",
+          "line": 189
+        },
+        {
+          "kind": "def",
+          "name": "load_question_master",
+          "line": 201
+        },
+        {
+          "kind": "def",
+          "name": "build_question_relation_registry",
+          "line": 265
+        },
+        {
+          "kind": "def",
+          "name": "write_registry",
+          "line": 318
+        },
+        {
+          "kind": "def",
+          "name": "slugify",
+          "line": 334
+        },
+        {
+          "kind": "def",
+          "name": "write_slice_checkpoint",
+          "line": 338
+        },
+        {
+          "kind": "def",
+          "name": "append_csv_rows",
+          "line": 358
+        },
+        {
+          "kind": "def",
+          "name": "reset_outputs",
+          "line": 366
+        },
+        {
+          "kind": "def",
+          "name": "load_v547",
+          "line": 383
+        },
+        {
+          "kind": "def",
+          "name": "load_v548",
+          "line": 390
+        },
+        {
+          "kind": "def",
+          "name": "parse_conditions",
+          "line": 397
+        },
+        {
+          "kind": "def",
+          "name": "crosstab_cramers_v",
+          "line": 406
+        },
+        {
+          "kind": "def",
+          "name": "infer_effect_direction",
+          "line": 429
+        },
+        {
+          "kind": "def",
+          "name": "confidence",
+          "line": 442
+        },
+        {
+          "kind": "def",
+          "name": "build_branch_mask",
+          "line": 449
+        },
+        {
+          "kind": "def",
+          "name": "load_source_frame",
+          "line": 494
+        },
+        {
+          "kind": "def",
+          "name": "summarize_branch",
+          "line": 560
+        },
+        {
+          "kind": "def",
+          "name": "write_duckdb",
+          "line": 610
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 633
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Build branch_co_signature_summary from live survey_microdata tables.  This V549 builder treats branch membership from V548 recursive trees as the anchor a"
+    },
+    {
+      "path": "data/ddm_build_copy/build_determinicity_repository_v550.py",
+      "sha": "04f3a3646d8b468660385087d92541f03f860cb0",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 2457,
+      "bytes": 123595,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_response_var_lookup_key",
+          "line": 67
+        },
+        {
+          "kind": "def",
+          "name": "_process_label",
+          "line": 128
+        },
+        {
+          "kind": "def",
+          "name": "_to_bool",
+          "line": 133
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 148
+        },
+        {
+          "kind": "def",
+          "name": "_load_response_option_map",
+          "line": 212
+        },
+        {
+          "kind": "def",
+          "name": "_wave_match_candidates",
+          "line": 259
+        },
+        {
+          "kind": "def",
+          "name": "_build_question_list",
+          "line": 268
+        },
+        {
+          "kind": "def",
+          "name": "_question_structural_mapping_select_columns",
+          "line": 303
+        },
+        {
+          "kind": "def",
+          "name": "_load_wave_question_mapping",
+          "line": 307
+        },
+        {
+          "kind": "def",
+          "name": "_assert_columns",
+          "line": 411
+        },
+        {
+          "kind": "def",
+          "name": "_assert_live_contracts",
+          "line": 417
+        },
+        {
+          "kind": "def",
+          "name": "_assert_facet_ready_view_contract",
+          "line": 447
+        },
+        {
+          "kind": "def",
+          "name": "_iter_wave_scopes",
+          "line": 507
+        },
+        {
+          "kind": "def",
+          "name": "_safe_weight_status",
+          "line": 517
+        },
+        {
+          "kind": "def",
+          "name": "_clean",
+          "line": 522
+        },
+        {
+          "kind": "def",
+          "name": "_first_nonempty",
+          "line": 534
+        },
+        {
+          "kind": "def",
+          "name": "_first_clean_value",
+          "line": 545
+        },
+        {
+          "kind": "def",
+          "name": "_ordered_clean_variants",
+          "line": 553
+        },
+        {
+          "kind": "def",
+          "name": "_response_semantics_source_variants",
+          "line": 572
+        },
+        {
+          "kind": "def",
+          "name": "_response_semantics_wave_variants",
+          "line": 583
+        },
+        {
+          "kind": "def",
+          "name": "_response_semantics_var_variants",
+          "line": 595
+        },
+        {
+          "kind": "def",
+          "name": "_response_semantics_value_variants",
+          "line": 604
+        },
+        {
+          "kind": "def",
+          "name": "_response_semantics_key_candidates",
+          "line": 614
+        },
+        {
+          "kind": "def",
+          "name": "_lookup_response_semantics",
+          "line": 631
+        },
+        {
+          "kind": "def",
+          "name": "_question_rows",
+          "line": 679
+        },
+        {
+          "kind": "def",
+          "name": "_prefetch_question_rows_by_country",
+          "line": 722
+        },
+        {
+          "kind": "def",
+          "name": "_prepare_v550_question_row_cache",
+          "line": 801
+        },
+        {
+          "kind": "def",
+          "name": "_question_rows_from_cache",
+          "line": 866
+        },
+        {
+          "kind": "def",
+          "name": "_load_question_checkpoint_tables",
+          "line": 920
+        },
+        {
+          "kind": "def",
+          "name": "_slugify",
+          "line": 934
+        },
+        {
+          "kind": "def",
+          "name": "_question_key",
+          "line": 940
+        },
+        {
+          "kind": "def",
+          "name": "_checkpoint_table_dir",
+          "line": 947
+        },
+        {
+          "kind": "def",
+          "name": "_question_checkpoint_path",
+          "line": 953
+        },
+        {
+          "kind": "def",
+          "name": "_question_checkpoint_complete_path",
+          "line": 958
+        },
+        {
+          "kind": "def",
+          "name": "_question_use_contract_checkpoint_hash",
+          "line": 963
+        },
+        {
+          "kind": "def",
+          "name": "_question_checkpoint_exists",
+          "line": 972
+        },
+        {
+          "kind": "def",
+          "name": "_write_question_checkpoint",
+          "line": 995
+        },
+        {
+          "kind": "def",
+          "name": "_mark_question_complete",
+          "line": 1000
+        },
+        {
+          "kind": "def",
+          "name": "_combine_checkpoint_tables",
+          "line": 1005
+        },
+        {
+          "kind": "def",
+          "name": "_combine_wave_checkpoint_tables",
+          "line": 1016
+        },
+        {
+          "kind": "def",
+          "name": "_cloud_replay_allowed",
+          "line": 1044
+        },
+        {
+          "kind": "def",
+          "name": "_question_use_contract_replay_hash",
+          "line": 1052
+        },
+        {
+          "kind": "def",
+          "name": "_load_replayed_cloud_tables",
+          "line": 1097
+        },
+        {
+          "kind": "def",
+          "name": "_concat_frames",
+          "line": 1194
+        },
+        {
+          "kind": "def",
+          "name": "_log_progress",
+          "line": 1201
+        },
+        {
+          "kind": "def",
+          "name": "_process_label",
+          "line": 1206
+        },
+        {
+          "kind": "def",
+          "name": "_resolve_finalize_source",
+          "line": 1211
+        },
+        {
+          "kind": "def",
+          "name": "_finalize_wave_checkpoint_tables",
+          "line": 1222
+        },
+        {
+          "kind": "def",
+          "name": "_write_json_report",
+          "line": 1276
+        },
+        {
+          "kind": "def",
+          "name": "_wave_warning_report",
+          "line": 1281
+        },
+        {
+          "kind": "def",
+          "name": "_wave_report_dir",
+          "line": 1399
+        },
+        {
+          "kind": "def",
+          "name": "_harmonize_question_frame",
+          "line": 1403
+        },
+        {
+          "kind": "def",
+          "name": "_summary_question_meta",
+          "line": 1563
+        },
+        {
+          "kind": "def",
+          "name": "_carry_forward_summary",
+          "line": 1633
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 1708
+        }
+      ],
+      "imports": [
+        "26:from data.ddm_build_copy.ddm_v550_branching import (",
+        "35:from data.ddm_build_copy.ddm_v550_clouds import (",
+        "46:from data.ddm_build_copy.ddm_v550_manifest import build_manifest, utc_now",
+        "47:from data.ddm_build_copy.ddm_v550_distributions import build_distribution_tables",
+        "48:from data.ddm_build_copy.ddm_v550_metrics import classify_weight_status, dominant_response, distribution_entropy",
+        "49:from data.ddm_build_copy.ddm_v550_position_distribution import POSITION_DISTRIBUTION_COLUMNS, build_position_distribution_rows",
+        "50:from data.ddm_build_copy.ddm_v550_question_use import build_question_use_contract, build_question_use_contract_row",
+        "51:from data.ddm_build_copy.ddm_v550_source_structure import build_source_structure_population_audit, load_question_structure_register, match_source_structure_row, write_source_structure_population_audit",
+        "52:from data.ddm_build_copy.ddm_v550_readiness import POSITION_FIELDS, build_readiness, load_scope_manifest",
+        "53:from data.ddm_build_copy.ddm_v550_family_overlay import canonical_family_key, canonical_wave_key, wave_aliases, waves_equivalent",
+        "54:from data.ddm_build_copy.ddm_v550_response_options import build_response_option_map, normalize_response_code, response_semantics_contract_hash",
+        "55:from data.ddm_build_copy.ddm_v550_shared_cache import cached_query_frame, question_structural_mapping_select_columns, shared_cache_root",
+        "56:from data.ddm_build_copy.ddm_v550_storage import connect_from_env, ensure_directories, make_run_id, read_table_any, write_manifest, write_table",
+        "57:from data.ddm_build_copy.ddm_v550_clouds import CLOUD_ENGINE_VERSION",
+        "58:from data.ddm_build_copy.ddm_v550_validation import validate_attitude_cloud_rows",
+        "59:from data.ddm_build_copy.ddm_v550_support import DEFAULT_SUPPORT_CAP",
+        "60:from data.ddm_build_copy.ddm_v550_source_structure import _normalized_join_key",
+        "61:from data.ddm_build_copy.ddm_v550_io import normalize_family",
+        "62:from data.ddm_build_copy.ddm_v550_var_aliases import question_var_code_variants, resolve_question_var_aliases"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V550 determinicity repository.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/build_determinicity_wave_shard_v550.py",
+      "sha": "82ffc18df29a8e5ebd78cde97c89d463b3842df6",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 2107,
+      "bytes": 114937,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "_semantic_clean",
+          "line": 122
+        },
+        {
+          "kind": "def",
+          "name": "_file_sha256",
+          "line": 134
+        },
+        {
+          "kind": "def",
+          "name": "_build_authority_receipt",
+          "line": 142
+        },
+        {
+          "kind": "def",
+          "name": "_ordered_semantic_variants",
+          "line": 189
+        },
+        {
+          "kind": "def",
+          "name": "_sign_safe_response_value_variants",
+          "line": 207
+        },
+        {
+          "kind": "def",
+          "name": "_ascii_fold",
+          "line": 227
+        },
+        {
+          "kind": "def",
+          "name": "_source_identity_variants_cached",
+          "line": 233
+        },
+        {
+          "kind": "def",
+          "name": "_source_identity_variants",
+          "line": 261
+        },
+        {
+          "kind": "def",
+          "name": "_wave_identity_variants_cached",
+          "line": 266
+        },
+        {
+          "kind": "def",
+          "name": "_wave_identity_variants",
+          "line": 289
+        },
+        {
+          "kind": "def",
+          "name": "_terminal_identifier_token",
+          "line": 293
+        },
+        {
+          "kind": "def",
+          "name": "_identifier_tokens_cached",
+          "line": 302
+        },
+        {
+          "kind": "def",
+          "name": "_identifier_tokens",
+          "line": 317
+        },
+        {
+          "kind": "def",
+          "name": "_exact_identifier_tokens",
+          "line": 321
+        },
+        {
+          "kind": "def",
+          "name": "_row_identity_tokens",
+          "line": 325
+        },
+        {
+          "kind": "def",
+          "name": "_response_value_identity",
+          "line": 330
+        },
+        {
+          "kind": "def",
+          "name": "_semantic_signature",
+          "line": 338
+        },
+        {
+          "kind": "def",
+          "name": "_authority_identity_signature",
+          "line": 356
+        },
+        {
+          "kind": "def",
+          "name": "_fallback_candidates_are_coherent",
+          "line": 360
+        },
+        {
+          "kind": "def",
+          "name": "_coerce_bool",
+          "line": 370
+        },
+        {
+          "kind": "def",
+          "name": "_response_authority_requirement",
+          "line": 377
+        },
+        {
+          "kind": "def",
+          "name": "_response_map_matches_for_question",
+          "line": 399
+        },
+        {
+          "kind": "def",
+          "name": "build_response_authority_match_audit",
+          "line": 412
+        },
+        {
+          "kind": "def",
+          "name": "assert_response_authority_match_gate",
+          "line": 453
+        },
+        {
+          "kind": "def",
+          "name": "_lookup_response_semantics_sign_safe",
+          "line": 460
+        },
+        {
+          "kind": "def",
+          "name": "_filter_response_map_for_wave",
+          "line": 556
+        },
+        {
+          "kind": "def",
+          "name": "_process_label",
+          "line": 677
+        },
+        {
+          "kind": "def",
+          "name": "_missing_question_checkpoint_keys",
+          "line": 682
+        },
+        {
+          "kind": "def",
+          "name": "_to_bool",
+          "line": 691
+        },
+        {
+          "kind": "def",
+          "name": "_slugify",
+          "line": 706
+        },
+        {
+          "kind": "def",
+          "name": "_dedupe_nonblank",
+          "line": 712
+        },
+        {
+          "kind": "def",
+          "name": "_load_question_filter",
+          "line": 721
+        },
+        {
+          "kind": "def",
+          "name": "_question_filter_candidate_names",
+          "line": 750
+        },
+        {
+          "kind": "def",
+          "name": "_question_filter_token_variants",
+          "line": 761
+        },
+        {
+          "kind": "def",
+          "name": "_apply_question_filter_exact_first",
+          "line": 773
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 833
+        },
+        {
+          "kind": "def",
+          "name": "_require_readiness_artifact",
+          "line": 988
+        },
+        {
+          "kind": "def",
+          "name": "_launch_readiness_from_scope",
+          "line": 997
+        },
+        {
+          "kind": "def",
+          "name": "_readiness_bundle_paths",
+          "line": 1012
+        },
+        {
+          "kind": "def",
+          "name": "_write_readiness_bundle",
+          "line": 1018
+        },
+        {
+          "kind": "def",
+          "name": "_load_readiness_bundle",
+          "line": 1086
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 1107
+        }
+      ],
+      "imports": [
+        "29:from data.ddm_build_copy.ddm_v550_family_overlay import canonical_family_key, canonical_wave_key, load_family_overlay, wave_aliases",
+        "61:from data.ddm_build_copy.ddm_v550_bridge import build_bridge_causal_summary, build_bridge_lane_audits, write_v551_bridge_index_for_shard, validate_bridge_df",
+        "62:from data.ddm_build_copy.ddm_v550_manifest import build_shard_manifest",
+        "63:from data.ddm_build_copy.ddm_v550_process_guard import active_readiness_lock_for_shard",
+        "64:from data.ddm_build_copy.ddm_v550_readiness import build_readiness, load_scope_manifest",
+        "65:from data.ddm_build_copy.ddm_v550_source_structure import build_source_structure_population_audit, load_question_structure_register, match_source_structure_row, write_source_structure_population_audit",
+        "66:from data.ddm_build_copy.ddm_v550_source_structure import _normalized_join_key",
+        "67:from data.ddm_build_copy.ddm_v550_clouds import (",
+        "77:from data.ddm_build_copy.ddm_v550_branching import (",
+        "86:from data.ddm_build_copy.ddm_v550_distributions import build_distribution_tables",
+        "87:from data.ddm_build_copy.ddm_v550_position_distribution import POSITION_DISTRIBUTION_COLUMNS, build_position_distribution_rows",
+        "88:from data.ddm_build_copy.ddm_v550_question_use import build_question_use_contract, build_question_use_contract_row",
+        "89:from data.ddm_build_copy.ddm_v550_response_options import build_response_option_map as build_response_option_map_live, normalize_response_code, response_semantics_contract_hash",
+        "90:from data.ddm_build_copy.ddm_v550_var_aliases import question_var_code_variants",
+        "91:from data.ddm_build_copy.ddm_v550_io import normalize_family",
+        "92:from data.ddm_build_copy.ddm_v550_schema import (",
+        "103:from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, read_table_any, try_connect_database, write_table",
+        "104:from data.ddm_build_copy.ddm_v550_response_relation import (",
+        "109:from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (",
+        "117:from data.ddm_build_copy.ddm_v550_validation import validate_attitude_cloud_rows, validate_position_signature_rows, validate_relation_signature_rows, validate_v551_bridge_rows",
+        "118:from data.ddm_build_copy.ddm_v550_shards import shard_id_for",
+        "119:from data.ddm_build_copy.ddm_v550_support import DEFAULT_SUPPORT_CAP"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build one V550 source/wave shard.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py",
+      "sha": "bf874a95ea5172817b0d1bdf21b43600aac5cbfe",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 1092,
+      "bytes": 48253,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "clean",
+          "line": 67
+        },
+        {
+          "kind": "def",
+          "name": "normalize_family",
+          "line": 78
+        },
+        {
+          "kind": "def",
+          "name": "slugify",
+          "line": 85
+        },
+        {
+          "kind": "def",
+          "name": "load_env",
+          "line": 89
+        },
+        {
+          "kind": "def",
+          "name": "connect_db",
+          "line": 93
+        },
+        {
+          "kind": "def",
+          "name": "normalize_code",
+          "line": 100
+        },
+        {
+          "kind": "def",
+          "name": "normalize_series",
+          "line": 115
+        },
+        {
+          "kind": "def",
+          "name": "safe_float",
+          "line": 127
+        },
+        {
+          "kind": "def",
+          "name": "safe_int",
+          "line": 137
+        },
+        {
+          "kind": "def",
+          "name": "load_master",
+          "line": 144
+        },
+        {
+          "kind": "def",
+          "name": "load_structure_register",
+          "line": 149
+        },
+        {
+          "kind": "def",
+          "name": "load_relation_registry",
+          "line": 159
+        },
+        {
+          "kind": "def",
+          "name": "load_v547",
+          "line": 169
+        },
+        {
+          "kind": "def",
+          "name": "load_v548",
+          "line": 174
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 179
+        },
+        {
+          "kind": "def",
+          "name": "load_respondents",
+          "line": 201
+        },
+        {
+          "kind": "def",
+          "name": "load_wide_responses",
+          "line": 234
+        },
+        {
+          "kind": "def",
+          "name": "crosstab_cramers_v",
+          "line": 259
+        },
+        {
+          "kind": "def",
+          "name": "infer_effect_direction",
+          "line": 280
+        },
+        {
+          "kind": "def",
+          "name": "confidence",
+          "line": 293
+        },
+        {
+          "kind": "class",
+          "name": "ProgressReporter",
+          "line": 300
+        },
+        {
+          "kind": "def",
+          "name": "choose_country",
+          "line": 317
+        },
+        {
+          "kind": "def",
+          "name": "build_branch_masks_for_question",
+          "line": 322
+        },
+        {
+          "kind": "def",
+          "name": "get_candidate_registry",
+          "line": 378
+        },
+        {
+          "kind": "def",
+          "name": "top_answer_codes",
+          "line": 409
+        },
+        {
+          "kind": "def",
+          "name": "build_single_answer_anchors",
+          "line": 421
+        },
+        {
+          "kind": "def",
+          "name": "build_answer_presence_anchors",
+          "line": 548
+        },
+        {
+          "kind": "def",
+          "name": "build_branch_node_anchors",
+          "line": 664
+        },
+        {
+          "kind": "def",
+          "name": "dedupe_and_rank",
+          "line": 773
+        },
+        {
+          "kind": "def",
+          "name": "write_parquet",
+          "line": 783
+        },
+        {
+          "kind": "def",
+          "name": "write_duckdb",
+          "line": 789
+        },
+        {
+          "kind": "def",
+          "name": "write_slice_checkpoint",
+          "line": 803
+        },
+        {
+          "kind": "def",
+          "name": "combine_slice_parquets",
+          "line": 839
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 848
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Build question_response_attitude_cloud_summary from live survey microdata.  This is the runtime implementation for V549b. It anchors attitude clouds to qu"
+    },
+    {
+      "path": "data/ddm_build_copy/build_question_use_contract_v550.py",
+      "sha": "05aab190ab22010dddfc9ce6a8dd38ebb3f71cf5",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 73,
+      "bytes": 2483,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 19
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 47
+        }
+      ],
+      "imports": [
+        "16:from data.ddm_build_copy.ddm_v550_question_use import build_question_use_contract"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V550 question-use contract.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/build_recursive_breakage_tree_nodes_v548.py",
+      "sha": "1fc72071a048cd5f7771a2164de1698e05423f88",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 713,
+      "bytes": 27150,
+      "defs": [
+        {
+          "kind": "class",
+          "name": "ProgressReporter",
+          "line": 63
+        },
+        {
+          "kind": "def",
+          "name": "load_env",
+          "line": 80
+        },
+        {
+          "kind": "def",
+          "name": "connect_db",
+          "line": 84
+        },
+        {
+          "kind": "def",
+          "name": "facet_ready_view_exists",
+          "line": 91
+        },
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 99
+        },
+        {
+          "kind": "def",
+          "name": "discover_existing_path",
+          "line": 111
+        },
+        {
+          "kind": "def",
+          "name": "slugify",
+          "line": 118
+        },
+        {
+          "kind": "def",
+          "name": "json_default",
+          "line": 124
+        },
+        {
+          "kind": "def",
+          "name": "family_from_dataset_scope",
+          "line": 136
+        },
+        {
+          "kind": "def",
+          "name": "load_question_summary",
+          "line": 140
+        },
+        {
+          "kind": "def",
+          "name": "normalize_code",
+          "line": 151
+        },
+        {
+          "kind": "def",
+          "name": "normalize_series_to_target",
+          "line": 166
+        },
+        {
+          "kind": "def",
+          "name": "sanitize_position_columns",
+          "line": 182
+        },
+        {
+          "kind": "def",
+          "name": "fetch_question_frame",
+          "line": 202
+        },
+        {
+          "kind": "def",
+          "name": "to_label_frame",
+          "line": 247
+        },
+        {
+          "kind": "def",
+          "name": "distribution_json",
+          "line": 256
+        },
+        {
+          "kind": "def",
+          "name": "mi_score",
+          "line": 266
+        },
+        {
+          "kind": "def",
+          "name": "score_position_features",
+          "line": 279
+        },
+        {
+          "kind": "def",
+          "name": "choose_predictor",
+          "line": 291
+        },
+        {
+          "kind": "def",
+          "name": "choose_indicator_value",
+          "line": 304
+        },
+        {
+          "kind": "def",
+          "name": "confidence_for_node",
+          "line": 339
+        },
+        {
+          "kind": "def",
+          "name": "node_id_for",
+          "line": 349
+        },
+        {
+          "kind": "def",
+          "name": "build_node_rows",
+          "line": 355
+        },
+        {
+          "kind": "def",
+          "name": "build_tree_for_question",
+          "line": 522
+        },
+        {
+          "kind": "def",
+          "name": "append_csv_rows",
+          "line": 555
+        },
+        {
+          "kind": "def",
+          "name": "load_existing_rows",
+          "line": 563
+        },
+        {
+          "kind": "def",
+          "name": "write_duckdb_table",
+          "line": 573
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 597
+        }
+      ],
+      "imports": [],
+      "top": "#!/usr/bin/env python3 \"\"\"Build recursive_breakage_tree_nodes from live survey_microdata tables.  This V548 builder uses the existing V547 question determinicity summary as the roo"
+    },
+    {
+      "path": "data/ddm_build_copy/build_response_option_map_v550.py",
+      "sha": "32ff5c3bb5279c366b82860056fd0a6613679298",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 187,
+      "bytes": 8607,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 33
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 62
+        }
+      ],
+      "imports": [
+        "20:from data.ddm_build_copy.ddm_v550_manifest import build_manifest",
+        "21:from data.ddm_build_copy.ddm_v550_response_options import build_response_option_map",
+        "22:from data.ddm_build_copy.ddm_v550_storage import connect_from_env, ensure_directories, make_run_id, write_manifest, write_table"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the V550 response-option normalization map.\"\"\"  from __future__ import annotations "
+    },
+    {
+      "path": "data/ddm_build_copy/build_v550_source_structure_population.py",
+      "sha": "69033a3d460bf7b5fdf80530a736118ecfb90e81",
+      "role": "ENTRYPOINT_OR_ADMIN",
+      "n": 101,
+      "bytes": 5361,
+      "defs": [
+        {
+          "kind": "def",
+          "name": "parse_args",
+          "line": 29
+        },
+        {
+          "kind": "def",
+          "name": "main",
+          "line": 45
+        }
+      ],
+      "imports": [
+        "21:from data.ddm_build_copy.ddm_v550_readiness import load_scope_manifest",
+        "22:from data.ddm_build_copy.ddm_v550_source_structure import build_source_structure_population_audit, load_question_structure_register, write_source_structure_population_audit",
+        "23:from data.ddm_build_copy.ddm_v550_storage import load_env_database_url, try_connect_database"
+      ],
+      "top": "#!/usr/bin/env python3 \"\"\"Build the source-structure population audit for a source/wave pair.\"\"\"  from __future__ import annotations "
+    }
+  ]
+}
