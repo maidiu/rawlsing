@@ -51,7 +51,7 @@ This also repairs a **blind spot in the PYAT→SOROK division**: PYAT's nine str
 
 ## 2. Repository audit: actual adjacent mechanisms and the missing junction
 
-**Frozen SOROK cut:** #1030 \`ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9c\` was NOT the SHA; correct exact cut is \`ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9\`. Paths here use that frozen read. The distinction below does not pretend independent execution of a new cross-actor effect.
+**Frozen SOROK cut:** PR #1030 at exact HEAD `ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9`. Paths below use this verified source cut; no cross-actor world-effect execution is claimed.
 
 **C02 parent work:**
 [\`developmental_recursion/parent_activity.py\`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py):
