@@ -1,0 +1,1152 @@
+{
+  "admission_counter": {
+    "by_phase": {},
+    "total_reads": 0
+  },
+  "admission_seconds": 0.04109314293600619,
+  "capsule": "WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/diag-1k/capsule.json",
+  "family_counts": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 1000,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "RespondentEvent": 3245,
+    "RespondentIdentity": 1000,
+    "RoutingEligibilityFact": 5000,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 1000
+  },
+  "host": {
+    "cap_bytes": 6442450944,
+    "hostname": "oldMac.lan",
+    "mac_ver": "22.6.0",
+    "machine": "x86_64",
+    "min_free_disk_bytes": 3221225472,
+    "platform": "darwin",
+    "psutil": "7.2.2",
+    "pyarrow": "26.0.1",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_executable": "/Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python"
+  },
+  "queries": {
+    "f2_reverse": {
+      "build_calls": 1,
+      "facts": [
+        {
+          "raw_denominator_support": 333,
+          "ref": {
+            "content_hash": "92d295112f30a5a849080743f20aa93136c1a1b2b7999eceb8a48496aa3f70f9",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:92d295112f30a5a849080743f20aa93136c1a1b2b7999eceb8a48496aa3f70f9"
+          },
+          "typed_state": "SUPPORTED"
+        }
+      ],
+      "object_materializations": {
+        "query_eval": 5000
+      },
+      "query_eval_seconds": 4.662804049206898,
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  1,
+                  0,
+                  1,
+                  0,
+                  4,
+                  3,
+                  2,
+                  4,
+                  3,
+                  4,
+                  6,
+                  5,
+                  1,
+                  3,
+                  0,
+                  5,
+                  4,
+                  0,
+                  6,
+                  0
+                ],
+                "gid_sequence_sha256": "67f95bd1f227929b9b38c9c2abf987b889585a3f9700a29e58f2f4c548c1abf9",
+                "gid_transitions": 839,
+                "reads": 840,
+                "rows_decoded": 413469,
+                "seconds": 0.6529578263871372,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  2,
+                  0,
+                  3,
+                  0,
+                  7,
+                  6,
+                  5,
+                  4,
+                  3,
+                  7,
+                  5,
+                  6,
+                  9,
+                  2,
+                  5,
+                  1,
+                  9,
+                  7,
+                  0,
+                  9
+                ],
+                "gid_sequence_sha256": "14072564dd71e291fa76b541a5532a7a1cb484223cd59995b3da64ee8c541a87",
+                "gid_transitions": 916,
+                "reads": 917,
+                "rows_decoded": 460984,
+                "seconds": 0.8769456066656858,
+                "unique_gids": 10
+              }
+            },
+            "reads": 1757,
+            "rows_decoded": 874453,
+            "seconds": 1.529903433052823
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0008453179616481066,
+                "unique_gids": 2
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.003151492914184928,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "gid_sequence_sha256": "f4972c7d08e0c80337aff8d177d66062c2be8a625f71e02b927f3c9aa3a2f48e",
+                "gid_transitions": 9,
+                "reads": 10,
+                "rows_decoded": 5000,
+                "seconds": 0.0030952098313719034,
+                "unique_gids": 10
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0006489839870482683,
+                "unique_gids": 2
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.0034282489214092493,
+                "unique_gids": 7
+              }
+            },
+            "reads": 28,
+            "rows_decoded": 13490,
+            "seconds": 0.011169253615662456
+          }
+        },
+        "total_reads": 1785
+      },
+      "respondent_family_calls": {
+        "RoutingEligibilityFact": 1000
+      },
+      "session_build_seconds": 0.16415626998059452,
+      "wall_seconds": 4.826960319187492
+    },
+    "f4_three": {
+      "build_calls": 1,
+      "facts": [
+        {
+          "raw_denominator_support": 313,
+          "ref": {
+            "content_hash": "bfd55044a8dd3af53d17170e7033a6a24baf222a6b2ffd2c18e2f5d51801ea46",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:bfd55044a8dd3af53d17170e7033a6a24baf222a6b2ffd2c18e2f5d51801ea46"
+          },
+          "typed_state": "SUPPORTED"
+        }
+      ],
+      "object_materializations": {
+        "query_eval": 5000
+      },
+      "query_eval_seconds": 5.011382040102035,
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  1,
+                  0,
+                  1,
+                  0,
+                  4,
+                  3,
+                  2,
+                  4,
+                  3,
+                  4,
+                  5,
+                  1,
+                  3,
+                  0,
+                  5,
+                  4,
+                  0,
+                  6,
+                  0,
+                  5
+                ],
+                "gid_sequence_sha256": "504b3f9e5d86de89b58fbfb766ac4c6976d733607480614ea215de234c604946",
+                "gid_transitions": 838,
+                "reads": 839,
+                "rows_decoded": 413296,
+                "seconds": 0.6371237698476762,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  2,
+                  0,
+                  3,
+                  0,
+                  7,
+                  6,
+                  5,
+                  4,
+                  3,
+                  7,
+                  5,
+                  6,
+                  9,
+                  2,
+                  5,
+                  1,
+                  9,
+                  7,
+                  0,
+                  9
+                ],
+                "gid_sequence_sha256": "14072564dd71e291fa76b541a5532a7a1cb484223cd59995b3da64ee8c541a87",
+                "gid_transitions": 916,
+                "reads": 917,
+                "rows_decoded": 460984,
+                "seconds": 0.8818882743362337,
+                "unique_gids": 10
+              }
+            },
+            "reads": 1756,
+            "rows_decoded": 874280,
+            "seconds": 1.51901204418391
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0007635061629116535,
+                "unique_gids": 2
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.0024245763197541237,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "gid_sequence_sha256": "f4972c7d08e0c80337aff8d177d66062c2be8a625f71e02b927f3c9aa3a2f48e",
+                "gid_transitions": 9,
+                "reads": 10,
+                "rows_decoded": 5000,
+                "seconds": 0.0031193990726023912,
+                "unique_gids": 10
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0006642721127718687,
+                "unique_gids": 2
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.0027516158297657967,
+                "unique_gids": 7
+              }
+            },
+            "reads": 28,
+            "rows_decoded": 13490,
+            "seconds": 0.009723369497805834
+          }
+        },
+        "total_reads": 1784
+      },
+      "respondent_family_calls": {
+        "RoutingEligibilityFact": 1000
+      },
+      "session_build_seconds": 0.18975750496611,
+      "wall_seconds": 5.201139545068145
+    },
+    "repeated": {
+      "build_calls": 1,
+      "facts": [
+        {
+          "raw_denominator_support": 38,
+          "ref": {
+            "content_hash": "fbfe40fd208af9ff45256a939950cbe807ca335aafaa9981e7bd69a75b34b8ee",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:fbfe40fd208af9ff45256a939950cbe807ca335aafaa9981e7bd69a75b34b8ee"
+          },
+          "typed_state": "SUPPORTED"
+        }
+      ],
+      "object_materializations": {
+        "query_eval": 5000
+      },
+      "query_eval_seconds": 3.2488157427869737,
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  4,
+                  3,
+                  2,
+                  0,
+                  1,
+                  5,
+                  1,
+                  4,
+                  6,
+                  3,
+                  1,
+                  0,
+                  6,
+                  2,
+                  6,
+                  1,
+                  3,
+                  4,
+                  1,
+                  5
+                ],
+                "gid_sequence_sha256": "81fb446c841078d7b5ffeeef17891048617c5b1d418c34c632ad74be1756137d",
+                "gid_transitions": 65,
+                "reads": 66,
+                "rows_decoded": 32436,
+                "seconds": 0.05866860644891858,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  2,
+                  0,
+                  3,
+                  0,
+                  7,
+                  6,
+                  5,
+                  4,
+                  3,
+                  7,
+                  5,
+                  6,
+                  9,
+                  2,
+                  5,
+                  1,
+                  9,
+                  7,
+                  0,
+                  9
+                ],
+                "gid_sequence_sha256": "14072564dd71e291fa76b541a5532a7a1cb484223cd59995b3da64ee8c541a87",
+                "gid_transitions": 916,
+                "reads": 917,
+                "rows_decoded": 460984,
+                "seconds": 0.9979966750834137,
+                "unique_gids": 10
+              }
+            },
+            "reads": 983,
+            "rows_decoded": 493420,
+            "seconds": 1.0566652815323323
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0006332250777631998,
+                "unique_gids": 2
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.003016270464286208,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "gid_sequence_sha256": "f4972c7d08e0c80337aff8d177d66062c2be8a625f71e02b927f3c9aa3a2f48e",
+                "gid_transitions": 9,
+                "reads": 10,
+                "rows_decoded": 5000,
+                "seconds": 0.002952552866190672,
+                "unique_gids": 10
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0005922648124396801,
+                "unique_gids": 2
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.0029599396511912346,
+                "unique_gids": 7
+              }
+            },
+            "reads": 28,
+            "rows_decoded": 13490,
+            "seconds": 0.010154252871870995
+          }
+        },
+        "total_reads": 1011
+      },
+      "respondent_family_calls": {
+        "RoutingEligibilityFact": 1000
+      },
+      "session_build_seconds": 0.17291063419543207,
+      "wall_seconds": 3.421726376982406
+    },
+    "selected": {
+      "build_calls": 1,
+      "facts": [
+        {
+          "raw_denominator_support": 500,
+          "ref": {
+            "content_hash": "44f08bba676a3ceeb98c69eb3a6cf45b888581e99e5bf73dceb304d271cf67e6",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:44f08bba676a3ceeb98c69eb3a6cf45b888581e99e5bf73dceb304d271cf67e6"
+          },
+          "typed_state": "SUPPORTED"
+        }
+      ],
+      "object_materializations": {
+        "query_eval": 5000
+      },
+      "query_eval_seconds": 5.132759540108964,
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  1,
+                  0,
+                  1,
+                  0,
+                  4,
+                  3,
+                  2,
+                  4,
+                  3,
+                  4,
+                  5,
+                  1,
+                  3,
+                  0,
+                  5,
+                  4,
+                  0,
+                  6,
+                  0,
+                  5
+                ],
+                "gid_sequence_sha256": "504b3f9e5d86de89b58fbfb766ac4c6976d733607480614ea215de234c604946",
+                "gid_transitions": 838,
+                "reads": 839,
+                "rows_decoded": 413296,
+                "seconds": 0.7631906303577125,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  2,
+                  0,
+                  3,
+                  0,
+                  7,
+                  6,
+                  5,
+                  4,
+                  3,
+                  7,
+                  5,
+                  6,
+                  9,
+                  2,
+                  5,
+                  1,
+                  9,
+                  7,
+                  0,
+                  9
+                ],
+                "gid_sequence_sha256": "14072564dd71e291fa76b541a5532a7a1cb484223cd59995b3da64ee8c541a87",
+                "gid_transitions": 916,
+                "reads": 917,
+                "rows_decoded": 460984,
+                "seconds": 0.9732493979390711,
+                "unique_gids": 10
+              }
+            },
+            "reads": 1756,
+            "rows_decoded": 874280,
+            "seconds": 1.7364400282967836
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0008656610734760761,
+                "unique_gids": 2
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.004581050714477897,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "gid_sequence_sha256": "f4972c7d08e0c80337aff8d177d66062c2be8a625f71e02b927f3c9aa3a2f48e",
+                "gid_transitions": 9,
+                "reads": 10,
+                "rows_decoded": 5000,
+                "seconds": 0.003943538060411811,
+                "unique_gids": 10
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0007081669755280018,
+                "unique_gids": 2
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.003905255114659667,
+                "unique_gids": 7
+              }
+            },
+            "reads": 28,
+            "rows_decoded": 13490,
+            "seconds": 0.014003671938553452
+          }
+        },
+        "total_reads": 1784
+      },
+      "respondent_family_calls": {
+        "RoutingEligibilityFact": 1000
+      },
+      "session_build_seconds": 0.20612855581566691,
+      "wall_seconds": 5.338888095924631
+    },
+    "weighted": {
+      "build_calls": 1,
+      "facts": [
+        {
+          "raw_denominator_support": 500,
+          "ref": {
+            "content_hash": "27dee7630bea6956152efad39ae7391ccc287e4791dd55ae7e6197d43954484a",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:27dee7630bea6956152efad39ae7391ccc287e4791dd55ae7e6197d43954484a"
+          },
+          "typed_state": "SUPPORTED"
+        }
+      ],
+      "object_materializations": {
+        "query_eval": 5500
+      },
+      "query_eval_seconds": 5.337939276825637,
+      "reads": {
+        "by_phase": {
+          "query_eval": {
+            "families": {
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  1,
+                  0,
+                  1,
+                  0,
+                  4,
+                  3,
+                  2,
+                  4,
+                  3,
+                  4,
+                  5,
+                  1,
+                  3,
+                  0,
+                  5,
+                  4,
+                  0,
+                  6,
+                  0,
+                  5
+                ],
+                "gid_sequence_sha256": "504b3f9e5d86de89b58fbfb766ac4c6976d733607480614ea215de234c604946",
+                "gid_transitions": 838,
+                "reads": 839,
+                "rows_decoded": 413296,
+                "seconds": 0.666322729550302,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  2,
+                  0,
+                  3,
+                  0,
+                  7,
+                  6,
+                  5,
+                  4,
+                  3,
+                  7,
+                  5,
+                  6,
+                  9,
+                  2,
+                  5,
+                  1,
+                  9,
+                  7,
+                  0,
+                  9
+                ],
+                "gid_sequence_sha256": "14072564dd71e291fa76b541a5532a7a1cb484223cd59995b3da64ee8c541a87",
+                "gid_transitions": 916,
+                "reads": 917,
+                "rows_decoded": 460984,
+                "seconds": 0.8957981809508055,
+                "unique_gids": 10
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "b57b5eae4cf8f9f5348c31d5c918817ce33338fe305e6b6bae0645c5889f77ab",
+                "gid_transitions": 248,
+                "reads": 249,
+                "rows_decoded": 124512,
+                "seconds": 0.21923973131924868,
+                "unique_gids": 2
+              }
+            },
+            "reads": 2005,
+            "rows_decoded": 998792,
+            "seconds": 1.7813606418203562
+          },
+          "session_build": {
+            "families": {
+              "EmpiricalCoordinateFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0006012511439621449,
+                "unique_gids": 2
+              },
+              "RespondentEvent.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.003036611480638385,
+                "unique_gids": 7
+              },
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "gid_sequence_sha256": "f4972c7d08e0c80337aff8d177d66062c2be8a625f71e02b927f3c9aa3a2f48e",
+                "gid_transitions": 9,
+                "reads": 10,
+                "rows_decoded": 5000,
+                "seconds": 0.003090927377343178,
+                "unique_gids": 10
+              },
+              "WeightMeasureFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1
+                ],
+                "gid_sequence_sha256": "83b97b859aa5f81b2f0f86ba2a675efaf515ad2d5e2b8652cf2de7e1c2267350",
+                "gid_transitions": 1,
+                "reads": 2,
+                "rows_decoded": 1000,
+                "seconds": 0.0005838118959218264,
+                "unique_gids": 2
+              },
+              "event_locator.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "gid_sequence_sha256": "594a7c1b42ceaed6f882eee1f0d362e8b307fb3627533e4dd314ce3cf6ad94d6",
+                "gid_transitions": 6,
+                "reads": 7,
+                "rows_decoded": 3245,
+                "seconds": 0.0026523226406425238,
+                "unique_gids": 7
+              }
+            },
+            "reads": 28,
+            "rows_decoded": 13490,
+            "seconds": 0.009964924538508058
+          }
+        },
+        "total_reads": 2033
+      },
+      "respondent_family_calls": {
+        "RoutingEligibilityFact": 1000,
+        "WeightMeasureFact": 500
+      },
+      "session_build_seconds": 0.16672808304429054,
+      "wall_seconds": 5.504667359869927
+    }
+  },
+  "release_ref": {
+    "content_hash": "2c115a6a560b9fcc1bb4e3cc204e044ef5fbc0635a3066fa563be39b340d5d8f",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT1006-diag-1k"
+  },
+  "routing_order_ab": {
+    "hash_ref_order": {
+      "objects": {
+        "ab_hash_ref_order": 5000
+      },
+      "reads": {
+        "by_phase": {
+          "ab_hash_ref_order": {
+            "families": {
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  2,
+                  0,
+                  3,
+                  0,
+                  7,
+                  6,
+                  5,
+                  4,
+                  3,
+                  7,
+                  5,
+                  6,
+                  9,
+                  2,
+                  5,
+                  1,
+                  9,
+                  7,
+                  0,
+                  9
+                ],
+                "gid_sequence_sha256": "14072564dd71e291fa76b541a5532a7a1cb484223cd59995b3da64ee8c541a87",
+                "gid_transitions": 916,
+                "reads": 917,
+                "rows_decoded": 460984,
+                "seconds": 1.0229079462587833,
+                "unique_gids": 10
+              }
+            },
+            "reads": 917,
+            "rows_decoded": 460984,
+            "seconds": 1.0229079462587833
+          }
+        },
+        "total_reads": 917
+      },
+      "rows": 5000,
+      "seconds": 2.863352661021054
+    },
+    "physical_insertion_order": {
+      "objects": {
+        "ab_physical_insertion_order": 5000
+      },
+      "reads": {
+        "by_phase": {
+          "ab_physical_insertion_order": {
+            "families": {
+              "RoutingEligibilityFact.parquet": {
+                "cache_hit_ratio_if_single_cache": 0.0,
+                "consecutive_same_gid": 0,
+                "first_gids": [
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  2,
+                  1,
+                  2,
+                  3,
+                  2,
+                  3,
+                  4,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  6,
+                  7
+                ],
+                "gid_sequence_sha256": "17c284113d21e0db2985a6552a93a064ef22c0fbdf3688deceffebca3642f901",
+                "gid_transitions": 25,
+                "reads": 26,
+                "rows_decoded": 13072,
+                "seconds": 0.029909734847024083,
+                "unique_gids": 10
+              }
+            },
+            "reads": 26,
+            "rows_decoded": 13072,
+            "seconds": 0.029909734847024083
+          }
+        },
+        "total_reads": 26
+      },
+      "rows": 5000,
+      "seconds": 1.176332478178665
+    }
+  },
+  "rss_peak_bytes": 355405824,
+  "schema": "PYAT1006_G5_ROWGROUP_PROFILE@1",
+  "status": "MEASURED"
+}

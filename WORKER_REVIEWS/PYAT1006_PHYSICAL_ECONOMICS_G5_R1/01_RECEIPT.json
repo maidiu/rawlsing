@@ -1,0 +1,140 @@
+{
+  "schema": "PYAT1006_INDEPENDENT_G5_RECEIPT@1",
+  "reviewer_session": "ses_e285e6d52ffe5iAGMQAUd17dSx",
+  "reviewer_role": "FRESH_NONAUTHOR_INDEPENDENT_RECEIVING",
+  "not_author_or_reviewer_sessions": [
+    "ses_e2969dd1affeEwT1XKJtlWJeI4",
+    "pyat1007_author",
+    "sorok1023_reviewer"
+  ],
+  "verdict": "REVISE_EXACT_DEFECT",
+  "tested_identities": {
+    "author_immutable_head": "51aabffef90399359008e00890f551a1e56c0da9",
+    "author_code_tests_commit": "05e9ceacfd1a43aa8c21ff3144502550916deadd",
+    "frozen_production_head": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+    "s2d": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+    "review_branch": "codex/pyat1006-independent-economics-review-20261113-r1",
+    "production_diff_vs_9d96a9ca": "EMPTY",
+    "author_manifest": "43/43 files verified"
+  },
+  "permission_grade": "SOURCEFREE_TEST_ONLY",
+  "scope": {
+    "accepted_axes": [
+      "author artifact identity",
+      "13-family sourcefree materialization and typed absences",
+      "100k distinct respondents 324477 events physical census",
+      "100k writer, staging, retained and writer RSS budget",
+      "100k selected query cost",
+      "10k and 1k matched query and native-reader costs",
+      "representative native fact/replay/oracle parity",
+      "changed and restored exact fact parity",
+      "accepted hostile/guard suites and no-fallback tripwires",
+      "cold fresh-process admission and cold negatives"
+    ],
+    "held_or_not_independently_reproduced": [
+      "G4 causal attribution and proposed remediation",
+      "claimed 36 S2-D test count (actual 29 for the named five-file group)",
+      "100k reverse F2 and F4 three-way",
+      "100k all-seven native readers",
+      "100k 10 same-process and 10 fresh-process repetitions",
+      "true source snapshot/decode bridge (#997)",
+      "joined integration (#998)",
+      "full 100k whole-vertical 6 GiB certification (#1001)",
+      "engine-wide native body truth (#999 known RED)",
+      "original35 rights, science, CURRENT/issuer, protected merge"
+    ]
+  },
+  "exact_defects": [
+    {
+      "id": "G4_CAUSAL_AND_PROPOSAL",
+      "detail": "Author attributes query cache churn to per-respondent ORDER BY ref inside _respondent_family and proposes per-respondent (gid,off) ordering / small LRU. Actual counter on the same per-respondent SQL: 10k routing row-group reads 10,043 in native hash/ref respondent order versus 258 in physical insertion order (1k: 917 versus 26). 2,000 sampled 10k respondents have routing rows in one gid for 1,984 and two gids for 16; coordinate/weight one gid for all; events one gid for 1,992 and two for 8. The actual cause is respondent traversal sorted by ref key in pre553_empirical_query.py:448 and :697 while row groups are physically ordered. Event reads use a separate cache in VerifiedDirectEstate._events_from_postings and are not covered by the proposal.",
+      "evidence": [
+        "evidence/query_profile_diag-10k.json",
+        "evidence/query_profile_hist-100k.json",
+        "evidence/family_gid_shape_10k.json",
+        "logs/profile_10k.log"
+      ]
+    },
+    {
+      "id": "TEST_COUNT_36_UNREPRODUCIBLE",
+      "detail": "Return claims 36 passed for S2-D saved admission/adversarial/five readers/source scope. Exact RUNBOOK five-file command passes 29 (logs/accepted_s2d_saved_adversarial_five_readers_source_scope.txt); author evidence files sum to 29 (26+3). Adding the separate partial-binding suite gives 31, not 36.",
+      "evidence": [
+        "evidence/commands.json",
+        "logs/accepted_s2d_saved_adversarial_five_readers_source_scope.txt",
+        "logs/accepted_s2d_partial_binding_order.txt"
+      ]
+    },
+    {
+      "id": "WRITER_RSS_LABEL_1K_10K",
+      "detail": "Author 1k/10k 'writer process-tree RSS' rows are whole shape-worker peaks including queries/native readers, not writer-only. Review writer-only 10k is 214,261,760 B versus the table's 1,394,810,880 B. 50k/100k rows are writer-only because those runs stopped after write.",
+      "evidence": [
+        "evidence/measured_shapes.json",
+        "logs/make_estate_10k.log"
+      ]
+    }
+  ],
+  "key_measurements": {
+    "100k_write_seconds": 2943.177128002979,
+    "100k_direct_i02_proof_seconds": 2218.464875538135,
+    "100k_reread_reencode_seconds": 710.9603452370502,
+    "100k_row_seconds": 507.7032798335422,
+    "100k_root_hash_seconds": 11.005014941561967,
+    "100k_staging_peak_bytes": 5209185593,
+    "100k_proof_sqlite_bytes": 4337704960,
+    "100k_retained_bytes": 310178695,
+    "100k_writer_tree_rss_bytes": 281415680,
+    "100k_min_free_disk_bytes": 9426497536,
+    "100k_cold_admission_seconds": 1.6694064140319824,
+    "100k_session_build_seconds_profile": 25.934190777130425,
+    "100k_session_build_seconds_isolated": 37.58792509208433,
+    "100k_session_sqlite_bytes": 1301057536,
+    "100k_selected_seconds": 543.0262050339952,
+    "100k_selected_eval_seconds": 517.0920142568648,
+    "100k_selected_process_rss_bytes": 3002982400,
+    "100k_selected_rowgroup_reads_total": 204125,
+    "100k_selected_query_phase_rowgroup_reads": 201488,
+    "100k_selected_query_phase_rows_decoded": 103133313,
+    "100k_selected_routing_reads": 101438,
+    "100k_selected_event_reads": 100050,
+    "100k_selected_fact_state": "SUPPORTED",
+    "100k_selected_denominator": 50000,
+    "10k_write_seconds": 197.20214131707326,
+    "10k_selected_seconds": 54.005904130870476,
+    "10k_f2_reverse_seconds": 52.47157760406844,
+    "10k_f4_three_seconds": 57.87085263384506,
+    "10k_routing_reads_hash_order": 10043,
+    "10k_routing_reads_physical_order": 258,
+    "1k_selected_seconds": 5.32732218503952,
+    "1k_native_normal_seconds": 37.32599813910201,
+    "1k_i05_seconds": 11.927911607082933,
+    "1k_batch_seconds": 36.732546949060634,
+    "1k_same_process_p50": 4.775259564048611,
+    "1k_fresh_process_p50": 4.645544079598039
+  },
+  "tests": {
+    "accepted_s2c_s2d_focused": "31 passed",
+    "accepted_s2d_five_file_runbook_group": "29 passed (claimed 36 contradicted)",
+    "accepted_s2d_partial_binding_order": "2 passed",
+    "own_baseline_tests": "6 passed"
+  },
+  "resource_bound": {
+    "cap_bytes": 6442450944,
+    "cap_exceeded": false,
+    "min_free_disk_bytes": 9426497536,
+    "disk_reserve_bytes": 3221225472,
+    "resource_hold": false
+  },
+  "known_red_preserved": {
+    "999_native_coherent_body_poison": "wrong native fact; owner native_build exception pending; not repaired or re-commissioned",
+    "997_issuer_binding": "0 QUERY / 1 DISCOVERY corrected prior false caller-query claims; not duplicated",
+    "998_1001_1007_1008_1010": "separate or outside-control; no action"
+  },
+  "provider_cost": "UNOBSERVED",
+  "production_edits": 0,
+  "author_artifacts_modified": 0,
+  "optimization_grant": "NONE",
+  "downstream_dispatch": "NONE",
+  "commands_receipt": "evidence/commands.json",
+  "evidence_index": "03_EVIDENCE.md"
+}

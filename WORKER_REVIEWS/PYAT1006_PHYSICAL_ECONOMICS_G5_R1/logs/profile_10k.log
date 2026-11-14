@@ -1,0 +1,81 @@
+{
+  "ab": {
+    "hash_ref_order": {
+      "gids": {
+        "RoutingEligibilityFact.parquet": 98
+      },
+      "reads": 10043,
+      "seconds": 28.410811364185065
+    },
+    "physical_insertion_order": {
+      "gids": {
+        "RoutingEligibilityFact.parquet": 98
+      },
+      "reads": 258,
+      "seconds": 11.733885522931814
+    }
+  },
+  "queries": {
+    "f2_reverse": {
+      "build": 2.085979165043682,
+      "eval": 50.38559843902476,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 9844,
+          "rows_decoded": 5021048,
+          "unique_gids": 64
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 10043,
+          "rows_decoded": 5130048,
+          "unique_gids": 98
+        }
+      },
+      "reads": 20153,
+      "wall": 52.47157760406844
+    },
+    "f4_three": {
+      "build": 2.0076425338629633,
+      "eval": 55.8632100999821,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 9852,
+          "rows_decoded": 5025462,
+          "unique_gids": 64
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 10043,
+          "rows_decoded": 5130048,
+          "unique_gids": 98
+        }
+      },
+      "reads": 20161,
+      "wall": 57.87085263384506
+    },
+    "selected": {
+      "build": 2.2064133579842746,
+      "eval": 51.7994907728862,
+      "query_families": {
+        "RespondentEvent.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 9848,
+          "rows_decoded": 5023414,
+          "unique_gids": 64
+        },
+        "RoutingEligibilityFact.parquet": {
+          "cache_hit_ratio": 0.0,
+          "reads": 10043,
+          "rows_decoded": 5130048,
+          "unique_gids": 98
+        }
+      },
+      "reads": 20157,
+      "wall": 54.005904130870476
+    }
+  },
+  "status": "MEASURED"
+}

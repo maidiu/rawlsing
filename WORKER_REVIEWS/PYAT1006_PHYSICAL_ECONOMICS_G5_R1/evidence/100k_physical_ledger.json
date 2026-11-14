@@ -1,0 +1,142 @@
+{
+  "declared": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 100000,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "ReplayManifest": 1,
+    "RespondentEvent": 324477,
+    "RespondentIdentity": 100000,
+    "RoutingEligibilityFact": 500000,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 100000
+  },
+  "distinct_respondents": 100000,
+  "event_respondent_distribution": {
+    "3": 83916,
+    "4": 8391,
+    "5": 6993,
+    "6": 700
+  },
+  "events": 324477,
+  "family_counts": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 100000,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "RespondentEvent": 324477,
+    "RespondentIdentity": 100000,
+    "RoutingEligibilityFact": 500000,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 100000
+  },
+  "file_set": [
+    "AuthoritySnapshot.parquet",
+    "ComparatorReplayBinding.parquet",
+    "DiscoveryBranchReplayBinding.parquet",
+    "EmpiricalCoordinateFact.parquet",
+    "EmpiricalPredicateReplayBinding.parquet",
+    "EmpiricalUniverse.parquet",
+    "QuestionVariableBinding.parquet",
+    "RespondentEvent.parquet",
+    "RespondentIdentity.parquet",
+    "RoutingEligibilityFact.parquet",
+    "SourceUniverseRelation.parquet",
+    "StructuralAdmissionReplayBinding.parquet",
+    "WeightMeasureFact.parquet",
+    "event_locator.parquet",
+    "manifest.json"
+  ],
+  "ledger": {
+    "AuthoritySnapshot.parquet": {
+      "bytes": 15684,
+      "row_groups": 1,
+      "rows": 5
+    },
+    "ComparatorReplayBinding.parquet": {
+      "bytes": 2975,
+      "row_groups": 1,
+      "rows": 0
+    },
+    "DiscoveryBranchReplayBinding.parquet": {
+      "bytes": 2975,
+      "row_groups": 1,
+      "rows": 0
+    },
+    "EmpiricalCoordinateFact.parquet": {
+      "bytes": 29739830,
+      "row_groups": 196,
+      "rows": 100000
+    },
+    "EmpiricalPredicateReplayBinding.parquet": {
+      "bytes": 2975,
+      "row_groups": 1,
+      "rows": 0
+    },
+    "EmpiricalUniverse.parquet": {
+      "bytes": 13278,
+      "row_groups": 1,
+      "rows": 1
+    },
+    "QuestionVariableBinding.parquet": {
+      "bytes": 15437,
+      "row_groups": 1,
+      "rows": 5
+    },
+    "RespondentEvent.parquet": {
+      "bytes": 86950094,
+      "row_groups": 634,
+      "rows": 324477
+    },
+    "RespondentIdentity.parquet": {
+      "bytes": 20450901,
+      "row_groups": 196,
+      "rows": 100000
+    },
+    "RoutingEligibilityFact.parquet": {
+      "bytes": 123457753,
+      "row_groups": 977,
+      "rows": 500000
+    },
+    "SourceUniverseRelation.parquet": {
+      "bytes": 2975,
+      "row_groups": 1,
+      "rows": 0
+    },
+    "StructuralAdmissionReplayBinding.parquet": {
+      "bytes": 2975,
+      "row_groups": 1,
+      "rows": 0
+    },
+    "WeightMeasureFact.parquet": {
+      "bytes": 29715254,
+      "row_groups": 196,
+      "rows": 100000
+    },
+    "event_locator.parquet": {
+      "bytes": 19802439,
+      "row_groups": 634,
+      "rows": 324477
+    }
+  },
+  "manifest_sha256": "083161d7e33dfdec0b0c799cbf7f8bb522b43759a4171c14d017d477a6665f34",
+  "respondent_rows": 100000,
+  "total_bytes": 310175545,
+  "total_row_groups": 2841,
+  "total_rows": 1448965,
+  "typed_absences": {
+    "ComparatorReplayBinding": "TypedAbsence(state='DEFERRED', detail=None)",
+    "DiscoveryBranchReplayBinding": "TypedAbsence(state='DEFERRED', detail=None)",
+    "EmpiricalPredicateReplayBinding": "TypedAbsence(state='NOT_APPLICABLE', detail=None)",
+    "SourceUniverseRelation": "TypedAbsence(state='DISTINCT_BY_DEFAULT', detail=None)",
+    "StructuralAdmissionReplayBinding": "TypedAbsence(state='NOT_APPLICABLE', detail=None)"
+  }
+}

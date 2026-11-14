@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT1006_G5_COMMANDS@1",
+  "workdir": "/Users/matthewsmith/.codex/worktrees/pyat1007-dual-series-prep/Rawlsing",
+  "python": "/Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing/WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/.venv/bin/python",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/tmp",
+    "PYTHONPATH": ".:WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1:WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/probes"
+  },
+  "commands": [
+    {
+      "step": "author_manifest_and_representative_fresh_probe",
+      "command": "python WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/probes/verify_artifacts.py",
+      "exit": 0,
+      "log": "logs/verify_artifacts.log",
+      "result": "43/43 author manifest files verified; all production blobs equal 9d96a9ca; representative member hashes and manifest equal; fresh-process all 7 native queries plus I05 equal native oracle and author receipt"
+    },
+    {
+      "step": "accepted_s2c_s2d_focused",
+      "command": "python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py rawlsing_next/tests/test_pre553_direct_estate_i03.py",
+      "exit": 0,
+      "log": "logs/accepted_s2c_s2d_focused.txt",
+      "result": "31 passed in 5.35s"
+    },
+    {
+      "step": "accepted_s2d_saved_adversarial_five_readers_source_scope_runbook_command",
+      "command": "python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py rawlsing_next/tests/test_pyat991_s2d_five_readers.py rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py",
+      "exit": 0,
+      "log": "logs/accepted_s2d_saved_adversarial_five_readers_source_scope.txt",
+      "result": "29 passed in 13.36s; author return claims 36 for this named group, contradicted"
+    },
+    {
+      "step": "accepted_s2d_partial_binding_order",
+      "command": "python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat991_s2d_partial_binding_order.py",
+      "exit": 0,
+      "log": "logs/accepted_s2d_partial_binding_order.txt",
+      "result": "2 passed in 2.07s"
+    },
+    {
+      "step": "own_baseline_tests",
+      "command": "python -m pytest -q -o addopts='' -p no:cacheprovider WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/test_1006_baseline.py --basetemp=WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/pytest-tmp/own",
+      "exit": 0,
+      "log": "logs/own_baseline_tests.txt",
+      "result": "6 passed in 19.09s; oracle/changed-restore/false-empty-tamper-root-current/no-fallback/crash-skew"
+    },
+    {
+      "step": "regenerate_diag_1k",
+      "command": "python WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/probes/make_estate.py --name diag-1k --respondents 1000 --outdir WORKER_REVIEWS/PYAT1006_PHYSICAL_ECONOMICS_G5_R1/data/diag-1k --include-weights",
+      "exit": 0,
+      "log": "logs/make_estate_1k.log",
+      "result": "write 17.315s; retained 3,188,505 B; writer tree 216,109,056 B"
+    },
+    {
+      "step": "profile_diag_1k",
+      "command": "python probes/profile_query.py --capsule data/diag-1k/capsule.json --outdir data/diag-1k --queries selected,f2_reverse,f4_three,weighted,repeated --ab-routing",
+      "exit": 0,
+      "log": "logs/profile_1k.log",
+      "result": "selected 5.339s; routing ROWGROUPREAD 917 reads / 10 gids; physical respondent order 26 reads"
+    },
+    {
+      "step": "regenerate_diag_10k",
+      "command": "python probes/make_estate.py --name diag-10k --respondents 10000 --outdir data/diag-10k --include-weights",
+      "exit": 0,
+      "log": "logs/make_estate_10k.log",
+      "result": "write 197.202s; stage peak 518,296,128 B; writer tree 214,261,760 B"
+    },
+    {
+      "step": "profile_diag_10k",
+      "command": "python probes/profile_query.py --capsule data/diag-10k/capsule.json --outdir data/diag-10k --queries selected,f2_reverse,f4_three --ab-routing",
+      "exit": 0,
+      "log": "logs/profile_10k.log",
+      "result": "selected 54.006s; F2 reverse 52.472s; F4 three 57.871s; routing hash-order 10,043 reads vs physical-order 258 reads"
+    },
+    {
+      "step": "family_gid_shape_10k",
+      "command": "python probes/family_gid_shape.py --capsule data/diag-10k/capsule.json --out evidence/family_gid_shape_10k.json --limit 2000",
+      "exit": 0,
+      "log": "logs/family_gid_shape_10k.log",
+      "result": "2000 respondents: routing one gid for 1,984 and two gids for 16; coordinate/weight one gid for all; events one gid 1,992, two gids 8"
+    },
+    {
+      "step": "regenerate_hist_100k",
+      "command": "python probes/make_estate.py --name hist-100k --respondents 100000 --outdir data/hist-100k --include-weights",
+      "exit": 0,
+      "log": "logs/make_estate_100k.log",
+      "result": "write 2943.177s; retained 310,178,695 B; staging peak 5,209,185,593 B; proof SQLite 4,337,704,960 B; writer tree 281,415,680 B; min free disk 9,426,497,536 B"
+    },
+    {
+      "step": "profile_hist_100k_selected",
+      "command": "python probes/profile_query.py --capsule data/hist-100k/capsule.json --outdir data/hist-100k --queries selected",
+      "exit": 0,
+      "log": "logs/profile_100k_selected.log",
+      "result": "selected 543.026s; admission 1.669s; session build 25.934s; 204,125 row-group reads; 103,133,313 rows decoded in query phase; routing 101,438 reads/977 gids, events 100,050 reads/634 gids, zero consecutive-gid cache hits; fact SUPPORTED denominator 50000"
+    },
+    {
+      "step": "author_suite_diag_1k",
+      "command": "python WORKER_RETURNS/PYAT1006_PHYSICAL_ECONOMICS_R1/run_suite.py --outdir data/suite-1k --shapes diag-1k",
+      "exit": 0,
+      "log": "logs/author_suite_1k.log",
+      "result": "selected 5.327s; native NORMAL 37.326s; I05 11.928s; batch 36.733s; same-process p50 4.775s; fresh-process p50 4.646s"
+    },
+    {
+      "step": "session_temp_sqlite_100k",
+      "command": "python inline DirectEstateI03Session build on data/hist-100k/capsule.json",
+      "exit": 0,
+      "log": "logs/session_temp_sqlite_100k.log",
+      "result": "session build 37.588s; temporary SQLite 1,301,057,536 B; events 324477; members 700000; temporary directory removed"
+    },
+    {
+      "step": "100k_physical_ledger",
+      "command": "python inline pyarrow ParquetFile census over data/hist-100k exact estate",
+      "exit": 0,
+      "log": "evidence/100k_physical_ledger.json",
+      "result": "13 family members plus locator and manifest; 1,448,965 total Parquet rows (with locator); 2,841 row groups; 100,000 distinct RespondentIdentity refs; 324,477 events; family counts match manifest; no SQLite retained"
+    }
+  ]
+}
