@@ -1,0 +1,13 @@
+# SCOPE_CONTRACT — ZAK-04 Unified R1
+
+I was assigned **ALL_APPLICABLE_TO_MODERN_TERRITORY / OPEN_DISCOVERY—NOT YET CLOSED** against **DEFINED_PIPELINE_REGION**: source-qualified learned/FF F5 and F6; F7 temporal order; objective N9/N10W R05/P41 world first readers; and the SOROK/V3 actor permission boundary. Entry: admitted source and empirical learned facts; exit: typed world receipt and explicitly held/qualified Sorok first-consumer boundary. Upstream source catalogs and current C11/I03/I05 are ZAK-01–03 territory; whole-estate conservation/atlas adoption is ZAK-08 / appointed VMESTYE integrator; actor psychological issuance is competent SOROK owner.
+
+**Historical axis:** open discovery of all historically material T capabilities applicable to that modern territory, beginning V540–V553/J and antecedents, plus later V554–V558 and Field Forge branches, Vozhd/Verkhovod/Dva/Trii/Chetiri/Long Memory. **Discovered directly named seed cases in this return: 20; not claimed to be the complete assigned historical denominator.** Twenty-three? No: the exact case denominator is the number of FINDINGS rows, 20. The inherited G1-A 28-source register and its 34 locator rows are **not** the T denominator.
+
+**Modern axis:** F5/F6/F7→N9/N10W and Sorok/person first-reader boundaries. Original commission SHA `9d24323494cc852ada078010f09bfcf9ceb911d9`; protected baseline `6a5c12f04323d74001f9632063ec907f4fc4468e`; ZAK-04 author R2 `5789a8a5ef179966640490b9d03df96c34847385`; draft PR #1040 candidate `9a5b78d0022e948dd606ac772a99184390c2f6b3` **UNMERGED / NOT_PROVED**; F6M R29 `1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa`; F6P R39 `016870e86913e6f7a811a51db6aba2d741bcfe58`.
+
+**Identity inventory:** `ZAK04-TASK-01..04`, `ZAK04-HOSTILE`, `ZAK04-OUTPUT-01..03`, and original `ZAK04-MCR-AF-INVESTIGATION-20261110`; legacy 15-row downstream ledger remains linked without row deletion. Other original LMX44/LMQ30 and AR identities are not recounted as unique historical T.
+
+**Exclusions and evidence:** no original35 source-native, no S3, no engineering, no branch code changes, no tests or CI, no actor/source/structural permission promotion; no protected merge. Historical successor-domain full search NOT_INSPECTED for each named T; this is a **large real coverage gap**. Independent omitted-function challenge not completed.
+
+**Documentary authority:** user explicitly requested adaptation and GitHub publication. This is an additive isolated `UNIFIED_LOG_R1/ZAK04_FIELD_FORGE_TEMPORAL_WORLD_SOROK_R1/` sidecar, **not a change to the protected VMESTYE atlas**. The shared R1 schema is followed with exact headers; original owner adoption and independent receiving have not occurred.
