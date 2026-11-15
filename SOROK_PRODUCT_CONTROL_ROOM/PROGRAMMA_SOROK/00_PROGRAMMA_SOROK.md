@@ -1,5 +1,7 @@
 # PROGRAMMA SOROK — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **2026-11-15 NEW USER-AUTHORIZED TWO-JOB EXECUTION (CANDIDATE CUSTODY ONLY):** B05 R3 exact zero-rent ADMITTED guard and C05 actor-view/within-clock/perception challenge are now ACTIVE_VERIFIED on isolated existing OpenCode sessions. This supersedes only the prior finite queue STOP dispatch state below; historical acceptance/rejection remains intact. One bounded correction/independent receiving per authorized stream, then STOP. P5/P6 and sourcefree MI/MII/MIII protected merges verified as inherited capital. No protected merge or native actor-science authority. Exact jobs/sources/leases in the [existing HQ queue](../../WORKER_RETURNS/SOROK_HQ_CLASSIFIED_QUEUE_20261115_R1/00_QUEUE.md).
+
 > **2026-11-15 SOURCE-QUALIFIED CANDIDATE WRITE-THROUGH — FINITE CLASSIFIED QUEUE TERMINAL CUT.** Existing guide/currentness intake only, **not adopted protected guide authority**. CG-C/CG-A packet IDs below do not rename original CAN/C-function IDs or native gates. Exact historical cuts below remain intact; see the [HQ queue with source, owner, consumer, gap and next action](../../WORKER_RETURNS/SOROK_HQ_CLASSIFIED_QUEUE_20261115_R1/00_QUEUE.md).
 
 | Capability record | Exact source / independent receipt | Current grade and remaining gap |

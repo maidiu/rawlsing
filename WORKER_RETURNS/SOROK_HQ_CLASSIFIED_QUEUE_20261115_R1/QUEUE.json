@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T10:31:58.448258+00:00",
+  "updated_utc": "2026-11-15T23:00:16.417417+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -522,13 +522,40 @@
   "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT",
   "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff.",
   "dispatch_decisions": {
-    "1037": "STOP_UNACCEPTED_FINITE_ALLOWANCE_USED",
-    "C05": "SCOPED_MECHANICS_RECEIVED_STOP_FULL_ACTOR_QUALIFICATION_UNPROVED",
-    "other_classified_jobs": "HELD_OR_USER_OPERATED_NO_FILLER",
-    "queue": "NO_RELEASED_EXECUTABLE_JOB_NO_NEW_DISPATCH"
+    "B05_R3": "ACTIVE_SOURCE_OWNED_AUTHOR",
+    "C05_CHALLENGE": "ACTIVE_INDEPENDENT_HOSTILE_TESTS_ONLY",
+    "other_classified_jobs": "HELD_UNCHANGED_NO_FILLER"
   },
-  "queue_status": "FINITE_EXECUTABLE_LANES_TERMINAL_REMAINDERS_HELD",
-  "live_assigned_jobs": [],
+  "queue_status": "TWO_NEW_USER_AUTHORIZED_JOBS_ACTIVE",
+  "live_assigned_jobs": [
+    {
+      "job": "sorok1037-b05-zero-status-repair-20261115-r3",
+      "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "pid": 18191,
+      "base": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+      ],
+      "state": "ACTIVE_VERIFIED"
+    },
+    {
+      "job": "sorok-c05-actor-view-temporal-challenge-20261115-r3",
+      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "pid": 18201,
+      "base": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+      "owned": [],
+      "state": "ACTIVE_VERIFIED"
+    }
+  ],
   "terminal_receipts_verified": 10,
-  "missing_terminal_receipts": []
+  "missing_terminal_receipts": [],
+  "new_two_job_handoff": {
+    "date": "2026-11-15",
+    "B05_R3": "explicit fresh authorization #1037comment6901893989; one correction then separate G5 STOP",
+    "C05": "three executed actor-view/temporal challenges; bounded demonstrated owner correction only, separate nonauthor receiving",
+    "worker_cap": 3,
+    "completion_mode": "existing durable notification only; no timer",
+    "sourcefree_only": true,
+    "protected_merge_authorized": false
+  }
 }

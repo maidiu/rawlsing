@@ -1,5 +1,17 @@
 # W8-R FINAL WORK-NOW — ONE CHOSEN OUTCOME, ALL ACTIVE MEMBERS, ACTUAL FIRST READER
 
+## New explicit two-job authorization — 2026-11-15
+
+Supersedes the prior terminal/STOP dispatch state only for these two finite jobs; all earlier source/review verdicts remain historical and unchanged.
+
+| Job | Exact start | Actual session / job / PID | Scope and next action |
+|---|---|---|---|
+| B05 R3 | `270eb29cd4487b6865b61adc9d671952554d425d` | `ses_e21a481bfffefyvpxaeFaAOFvQ` / `sorok1037-b05-zero-status-repair-20261115-r3` / 18191 | Existing R2 author, exclusive B05 reader source. Reproduce zero-rent false ADMITTED, positive-rent/strict authentic debit guard; freeze then same separate nonauthor G5; STOP. |
+| C05 actor-view/temporal court | accepted implementation `5d771dd86767655534b23576075e5da2db4fba78`; checkout review `c0cbe82f62a4e9516bf466575de3692c5c3081df` | `ses_e2186e745ffecK1Ilg4cw26pVu` / `sorok-c05-actor-view-temporal-challenge-20261115-r3` / 18201 | Independent tests only: hidden relationship information, within-clock event-time ordering, known relation versus perceived event and plurality. Actual RED/PASS and cold; any bounded correction goes to separate original author, then nonauthor receiving. |
+
+First assistant metadata verifies both isolated cwd paths and `opencode-go/deepseek-v4.1-flash` `max`. No unexpected active OpenCode session at launch, prior assigned jobs terminal, protected head `6a5c12f04323d74001f9632063ec907f4fc4468e` unchanged. Protected merges P5 #775/P6 #779/MIII #891/MII #905/MI #907 verified, inherited implementations preserved. Cost/quota not independently observable; no account/provider change. Three-worker cap, existing authenticated server/controller and durable completion notifications, no timer or new fleet. No PYAT/Browser/protected operations. All other gates remain held.
+
+
 ## 2026-11-15 candidate incremental currentness — original W8 cut preserved below
 
 **Finite queue terminal cut — no released construction.** C04 child-facing custody and CG-A sourcefree bridge have scoped receiving. C05 mechanical relation/history/depth/later-consumer custody is now independently received at code `5d771dd86767655534b23576075e5da2db4fba78` / report `1cf1a37113cb7a48137734648b523a0a6deccd92`, [review `c0cbe82f62a4e9516bf466575de3692c5c3081df`](https://github.com/maidiu/rawlsing/pull/1072). Actual reader read_actor_relative_context combines later existing P2/C01 event access with dated C12 illustrative relation inputs. This is not full original C05 actor qualification, native relation knowledge, autonomous choice or a phase-gate promotion.
