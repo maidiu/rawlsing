@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T08:54:36.317253+00:00",
+  "updated_utc": "2026-11-15T09:12:15.375097+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -127,9 +127,11 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-continuing-relations-20261115-r1",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
+      "state": "AUTHOR_CANDIDATE_FROZEN_NOT_ACCEPTED",
       "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
-      "qualified_scope": "C04 child-facingcustody ONLY; motherselector/language/parentmetadata/D03residualholds preserved"
+      "qualified_scope": "C04 child-facingcustody ONLY; motherselector/language/parentmetadata/D03residualholds preserved",
+      "result_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "implementation_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7"
     },
     {
       "issue": 1037,
@@ -156,6 +158,30 @@
       "prior_review_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
       "permitted_correction_number": 1,
       "future_reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe"
+    },
+    {
+      "issue": "C05",
+      "role": "independent nonauthor C05 G5",
+      "name": "sorok-c05-independent-g5",
+      "base": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "code_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+      "out": "WORKER_REVIEWS/SOROK_C05_CONTINUING_RELATIONS_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+      "branch": "codex/sorok-c05-independent-g5-20261115-r1",
+      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "owner": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "launch": {
+        "job_id": "sorok-c05-independent-g5-20261115-r1",
+        "child_pid": 95313,
+        "supervisor_pid": 95312,
+        "observer_pid": 95314,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-independent-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "nonauthor": true,
+      "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1"
     }
   ],
   "runtime_verification": [
@@ -316,6 +342,22 @@
         "protected-only6a5c12f0 lineage not ancestor; preserve in separately authorized receiving"
       ],
       "next_action": "bank scoped verdict, stop; no further CG-A repair/review/staging task authorized"
+    },
+    {
+      "task": "C05 author",
+      "state": "AUTHOR_CANDIDATE_FOR_NONAUTHOR_G5_NOT_ACCEPTED",
+      "code_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+      "report_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1067",
+      "author_evidence": "5 new C05 +6 C01 +6 C04identity +12C04custody +5P2 pass; later event/severrestore/freshcold",
+      "review_state": "RUNNING",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "limits": [
+        "caller-supplied illustrative relation/exposure inputs",
+        "depth1-2 only, one exercised scope",
+        "fork/concurrentoperation uniqueness unproved",
+        "no native relation/psychology/volition/generatedspeech/G2/J1/D04/D05/J2 or protected acceptance"
+      ]
     }
   ],
   "guide_records_affected": [
