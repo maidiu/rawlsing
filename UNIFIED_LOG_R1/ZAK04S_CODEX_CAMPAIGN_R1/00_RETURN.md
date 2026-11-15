@@ -1,0 +1,71 @@
+# ZAK-04S R1 return — F6M numerical partial bounds, alternative producer cut, and the current receiver boundary
+
+**Return identity:** `ZAK04S_CODEX_CAMPAIGN_R1` / one bounded documentary checkpoint. **Parent lineage:** R7 `69804f88abc8e84cf91ee256aa66fb607a49f5a7`, draft PR #1052 HEAD `abb0e0c87d8a45593356c9ec6c1afda5ebb1d1cd`. **Protected cut:** `6a5c12f04323d74001f9632063ec907f4fc4468e` (read-only). **Historical candidate cut:** `1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa`. **Actual model metadata:** `opencode-go/deepseek-v4.1-flash` variant `max`, session `ses_e22bd21eeffeH5GWvx2XBKwSEw`. **Round start (UTC):** approximately `2026-11-15T03:32:36Z`; package prepared before the `04:02:36Z` hard stop. No second round, no subagents, no tests, no scripts, no commits/pushes.
+
+## 1. Answer in one paragraph
+
+The recovered F6M candidate is a real numerical target-joint partial-identification producer: it retains source-native baselines, emits a covered subprobability, an explicit uncovered target mass, lower/upper sensitivity bounds, and `PARTIAL_IDENTIFICATION_ONLY` when the target is not fully covered. Its actual first reader is the separately pinned F6P consumer, which imports the F6M module, verifies the replay hash, enforces `covered_sum + uncovered = 1`, refuses a complete distribution when uncovered mass is positive, refuses contradictions and forged real-use, and returns typed evidence states. That reader/consumer chain is a **static sourcefree/test-only** chain, not a selected N9/N7 production chain. At protected HEAD, the I07 `guard_estimand_composition` operation validates semantic equivalence, overlap and composition authority but returns only an `OperationGuardReceipt`; it does not calculate a mixture, covered subprobability or uncovered mass. A bounded current-tree symbol/path search found **no** numeric F6M producer or `covered_subprobability`/`uncovered_target_mass` consumer in protected code; only documentary/roadmap references remain. A branch-only PDEV01 test port does stage the F6M bundle as a `native_bundle` sidecar and carries it to WP2, but explicitly sets `join_state=NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN` and does not install an F6M→E04 join; its staged N9/N10W candidate has no F6 import or partial-bound read. The predecessor producer at `1428c2e9...` uses the older `uncovered += share` rule for a present-but-ineligible source; the repaired candidate at `1f1c72f8...` replaces that with proportional `missing_share = share * (1 - eligible_weight/denom)`. That is a material alternative-cut difference, but this return does not claim the predecessor is the original operational producer or that the repair is scientifically accepted.
+
+**Positive meaning:** partial-identification behavior and its static consumer survive at identified sourcefree cuts, with meaningful negatives (false full, inconsistent mass, self-conditioning, unknown design/weight, revoked source, prohibited real use).
+**Negative meaning:** the numerical producer is not the I07 permission guard; no protected current selected N9/N7 numeric receiver is proved; and the branch test port's sidecar is not a common-world join or actor authority.
+
+## 2. Exact findings
+
+### 2.1 F6M producer (repaired candidate)
+- Source: `1f1c72f8...:WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py`; blob `2df811d76db258d98d89ffb43c830cb221ff9a7d`.
+- Entry points: `synthesize` L186, `conditional` L389, `complementary_binary_bounds` L446.
+- Outputs: `candidate.covered_subprobability`, `candidate.uncovered_target_mass` (L364), `candidate.uncertainty.source_disagreement_and_uncovered_bounds`, `candidate.uncertainty.bias_sensitivity_bounds`, `decision=PARTIAL_IDENTIFICATION_ONLY` when `distribution is None or uncovered > 0` (L380), `target_joint_status=NO_COMPLETE_TARGET_JOINT`.
+- Negative/authority states: `REAL_USE_STATUS=UNVERIFIED_INTEGRATION_BOUNDARY` (L22), `real_use_authorized=False` (L257), and `conditional` returns `UNAVAILABLE` on incomplete/zero-uncovered/forged real-use paths.
+
+### 2.2 Alternative producer cut (predecessor)
+- Source: `1428c2e9...:rawlsing_next/pre553_heterogeneous_synthesis.py`; blob `fc5e37fa5b2f0eb689593b42d95479d1327cb94c`; `synthesize` L181.
+- Exact semantic difference found: at L287 the predecessor adds the entire target share to `uncovered` when a source is ineligible (`uncovered += share`); the repaired candidate at L307-L312 defines the planned source set, computes `eligible_weight`, `missing_share = share * (1 - eligible_weight/denom)`, and `uncovered += missing_share`. The repair preserves the planned contribution of a present source that fails the aggregate support gate and avoids renormalizing its weight onto survivors.
+- Ceiling: this is a source-code difference; no historical execution or original-owner acceptance is claimed.
+
+### 2.3 F6P actual first reader
+- Source: `016870e8...:WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py`; blob `8fa992899293f454d7abded36831a4b4a362df8e`.
+- Static import: `from rawlsing_next import pre553_heterogeneous_synthesis as f6m` (vendor native directory on its branch).
+- Entry: `consume_f6m_evidence` L189; conservation check L235; `FALSE_FULL` L245; `PROHIBITED_MODEL_USE` L56.
+- It verifies bundle hash and owner-admission forgery, rejects route/selection fields, refuses a complete distribution with uncovered mass, rejects excluded-source-with-zero-uncovered as false full, and exposes partial bounds, exclusions, sampling and transport ceilings. This is a genuine static importing reader of the F6M contract, but the file itself declares `SOURCEFREE_TEST_ONLY...` and no selected-world authority.
+
+### 2.4 Current protected I07 guard
+- Source: `6a5c12f...:rawlsing_next/pre553_source_relations.py`; blob `5b67e3f98a5faf95a6c82700af2346fef6e306a5`.
+- `guard_estimand_composition` L794-L834 returns `OperationGuardReceipt` after requiring `SOURCE_SEMANTIC_EQUIVALENCE`, `OVERLAP_NON_DUPLICATION` and `ESTIMAND_COMPOSITION` exact refs. It performs no numeric mixture, no covered mass and no uncovered-mass calculation.
+- This confirms the prior distinction at a new exact cut: **authorization guard != numerical producer**. It does not prove the F6M calculation is globally lost.
+
+### 2.5 Current-tree bounded absence
+- `git ls-tree -r --name-only HEAD -- "*pre553_heterogeneous_synthesis.py"` returned no rows. `git grep -n "covered_subprobability" HEAD` matched only roadmap/prior-return documentation, not executable code. `git grep -n "partial_identification" HEAD -- "*.py"` returned no rows. `git grep -n "native_bundle\|f6_sidecars" HEAD -- "*.py"` returned no rows.
+- `git ls-tree -r --name-only HEAD -- "rawlsing_next/*n9*" "rawlsing_next/*n10*"` returned no rows. This is a **bounded symbol/path NOT_FOUND at declared scope**, not proof of global or differently named absence.
+
+### 2.6 Branch-only test port (cross-reference, not protected current)
+- PDEV01 return: `aa18b6b85...:WORKER_RETURNS/PDEV01-F6-COMPARISON/00_RETURN.md` (blob `b5caa05aee48646bc8ce5a49fde6a9843cae00de`).
+- Staged WP2 port: `.../stage/wp2/wp2.py` (blob `55e567e4d0780c251bf949268d3d477abdc76a9b`), L45/L49 import F6M and call `synthesize`/`conditional`; L94 builds `f6_sidecars={k:dict(bundle_hash=v['native_bundle']['content_hash'], conditional=v['native_conditional_consumer'])}` and sets `join_state='NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN'`; L95 terminal `OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD`, `installation=False`.
+- PDEV01 static check: `evidence/n9-f6-static-check.json` (blob `b6afc5e12b82194171ed545ed39b56de6a868403`) records `f6_import_or_read:false` for `rawlsing_next/pre553_n9_n10w_progressive_candidate.py` (blob `84d404147547767be8ecd4b6e1541f5fa3a8c8a2` at `aa18b6b85`). Independent `git grep "F6\|f6\|partial"` on that exact branch file returned no rows.
+- Exact mismatch reported by PDEV01: the test port expects a `native_bundle`/`native_conditional_consumer` sidecar shape; F6P returns `F6P_PARTIAL_BOUND_EVIDENCE@1`, causing `KeyError: 'native_bundle'` when substituted. Therefore F6P evidence is not accepted by that WP2 port, and the port is not a selected N9 consumer.
+
+## 3. Five separate completeness grades
+
+1. **Commission/identity accounting:** `1/1` assigned first finite stratum addressed (`F6M output → plausible F6P/N7/N9 consumers and alternative producer cuts`); inherited aliases `G1A-FUNC-026`, `R5:SEAM:07/08/09/33/35`, `ZAK04:EV:G1A_026:OLD` preserved by reference; `0` new canonical T minted. Grade: `ACCOUNTING_COMPLETE_AT_DECLARED_STRATUM`.
+2. **Historical capability discovery:** 1 primary historical T re-inspected (G1A-FUNC-026), 1 predecessor producer cut, 1 static consumer. T discovery remains **OPEN_DISCOVERY**; no claim that the historical F6 family is exhaustively discovered.
+3. **Cross-domain matrix coverage:** declared `10` cells for this tract; inspected `6`; not inspected `4`; results: FOUND `5`, bounded NOT_FOUND `1`, UNRESOLVED `0` at the inspected cells, four historical successor domains `NOT_INSPECTED`. (Detailed rows in `COVERAGE.tsv`.)
+4. **Mechanism and consumer reconciliation:** `6` identified mechanisms (predecessor uncovered rule, repaired proportional uncovered rule, F6P verification/conservation, F6P typed refusals, I07 permission guard, WP2 sidecar hold) traced `6/6`; qualifying current non-test first readers `0`; static importing readers `1` (F6P); branch test-only port `1` (PDEV01 WP2); same-grain current selected N9 reader `NOT_PROVED`.
+5. **Evidentiary/independent closure:** all claims S1 static source observation; `0` S2/native executions in this round; `NOT_RUN` for tests/CI; independent reviewer not assigned here; review status `OUTSTANDING`. `ACCOUNTING_COMPLETE_AT_DECLARED_STRATUM`, **not** `FUNCTIONAL_CONSERVATION_EXECUTED`.
+
+## 4. Terminal completion sentence
+
+**Contract identities:** 1/1 assigned stratum. **Historical discovery:** bounded F6M/F6P source tract inspected; historical T universe remains open. **Applicable T×domain matrix:** 6/10 inspected, 4 NOT_INSPECTED, 0 UNRESOLVED at inspected cells. **Mechanism and consumer reconciliation:** 6/6 identified mechanisms traced; 0 proven selected current N9/SOROK readers; 1 static F6P reader; 1 branch-only test port. **Independent evidence grade:** S1 static, no S2, reviewer OUTSTANDING. **What the findings can legitimately be used for next:** a bounded owner decision whether to preserve F6M/F6P as a test oracle and whether any protected current N9 producer is expected to receive partial-identification bounds. **What cannot yet be claimed:** global loss, current operational succession, native source/science/actor authority, or whole-machine conservation.
+
+**Terminal:** `ZAK04_R1_F6M_PARTIAL_BOUNDS_RECOVERED_AT_SOURCE__F6P_STATIC_READER_PROVED__CURRENT_I07_GUARD_NOT_NUMERIC__CURRENT_N9_SELECTED_READER_NOT_PROVED__PRODUCER_VARIANT_DIFFERENCE_PINNED__T_UNIVERSE_STILL_OPEN`.
+
+## 5. Holds and unfinished cells
+
+- **SOURCE GAP (task-entry):** the designated ZAK00 owner matrix `e725ec39d021f4f7d8080298a95ea519ada2de01::WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/03_FULL_FLIGHT_DEPENDENCY_AND_OWNER_MAP.md` was not present in the host worktree, and the session's external-directory policy denied reading another worktree copy. It was **not** substituted with a different document. The exact predecessor return was read in full. This is a declared task-entry source gap, not a claim that the matrix is absent repository-wide.
+- **HELD:** R35 F6C full A/A0/B world comparison and `wp2_consumer_substitution_receipt` not read at substance; only commit metadata and PDEV01 cross-reference used. Marked NOT_INSPECTED, not absent.
+- **HELD:** historical pre-Vozhd/Vozhd/Verkhovod/Dva/Trii/Chetiri/Long Memory fate of F6M/F6P. Not searched this round.
+- **UNPROVED:** any protected current numeric producer under a different symbol or a different N9 name; a bounded symbol/path search cannot prove global absence.
+- **UNPROVED:** F6P→current receiver contract; PDEV01 reports `KeyError: native_bundle` at its staged WP2 port, but this is a branch-only test observation, not a protected runtime receipt.
+- **UNPROVED:** science/actor authority. No source, population, transport, actor or psychology permission is issued or implied.
+
+## 6. Files in this return
+
+`00_RETURN.md`, `HUMAN_STORY.md`, `SCOPE_CONTRACT.md`, `FINDINGS.tsv`, `OPERATION_TRACES.tsv`, `AUTHORITY_USE.tsv`, `EVIDENCE.tsv`, `COVERAGE.tsv`, `UNJOINS.tsv`, `CHANGED_FILES.txt`, `MECHANISM_RECONCILIATION.tsv`, `SOURCE_SEARCH_LOG.tsv`, `REVERSE_CONSUMERS.tsv`, `DATA_SHAPES.tsv`, `SOURCE_STRATUM_QUEUE.md`, `MANIFEST.md`, and `CASES/ZAK04S_F6M_F6P_CURRENT_RECEIVER.md`.
