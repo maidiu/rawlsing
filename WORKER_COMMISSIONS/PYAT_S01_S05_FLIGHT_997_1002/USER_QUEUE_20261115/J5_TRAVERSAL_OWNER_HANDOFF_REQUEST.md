@@ -1,0 +1,9 @@
+## Native-integrity prerequisite now qualified; precise traversal-owner handoff remains
+
+#999's same independent reviewer accepted `ce7704253f6a2381310c3eb2c7412a2d85c5596c` at `S2A_NATIVE_AUTHENTICATED_SEMANTIC_RANGES`; review `c18b7e087d5d5b178ed5acc92f9c82250a1743de`, combined return `b3075129fa6aef08de900b79e50bd5d47de5143a`. Native reader blob is `1dc82ab5658051f35dc1d81cbac30688e84a1623`. This clears the specific independently qualified native-body-truth prerequisite, not production adoption or all other gates.
+
+The accepted #1035/#1036 experiment remains `ACCEPT_SCOPED@SOURCEFREE_LOCALITY_EXPERIMENT_HANDOFF_READINESS`, independent cut `3e0ed0794498506520ae62c997a5c852ac672061`. No repeat of that accepted locality court is commissioned.
+
+For the existing competent semantic I03 evaluator/iterator owner: please provide the current exact custody and narrow compatibility/grant disposition for the already tested physical cross-respondent traversal candidate. The relevant `_pre553_query_eval.py` blob is `9808a6b72c716e26ebce5cbd76ef5ef6f3b5c920` at ce770; the three respondent-sort sites are lines364,448,697. A `_respondent_family`-only or physical-writer grant does not cover this candidate. Any proposal must preserve native body-truth, CURRENT/root, exact weighted/output/ref/replay semantics and specify the accepted successor/branch. No source edit is authorized merely by this request.
+
+The new J5 many-operation reuse court is separately running read-only on frozen valid sourcefree fixtures, with a five-minute total native benchmark cap. It does not prescribe this optimization, bypass the cold-grouped guard, rerun the accepted locality comparison, or adopt ce770 into its older baseline mid-run. Production construction remains held on the exact owner's handoff and the measured selected path. No writer/layout/engine replacement or protected merge follows.

@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_J1_CANONICAL_SCOPED_ACCEPTANCE@1",
+  "decision": "ACCEPT_SCOPED",
+  "scope": "S2A_NATIVE_AUTHENTICATED_SEMANTIC_RANGES",
+  "terminal": "S2A_TERMINAL_CLOSED@ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+  "code_test_sha": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+  "combined_return_sha": "b3075129fa6aef08de900b79e50bd5d47de5143a",
+  "independent_review_sha": "c18b7e087d5d5b178ed5acc92f9c82250a1743de",
+  "independent_receipt_path": "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/REVIEW_RECEIPT.json",
+  "native_reader_blob": "1dc82ab5658051f35dc1d81cbac30688e84a1623",
+  "public_selector_blob": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+  "canonical_baseline_states": [
+    {
+      "cut": "f88a6c61b89f6c18157f2f789de1b7873bc9e747",
+      "public_refused": false,
+      "public_count": 0,
+      "native_refused": false,
+      "native_fact_silently_changed": true
+    },
+    {
+      "cut": "a59c6a5a85451330500bd6a939c3faee6dbc94ad",
+      "public_refused": true,
+      "native_refused": false,
+      "native_fact_silently_changed": true
+    },
+    {
+      "cut": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+      "public_refused": true,
+      "native_refused": true,
+      "native_fact_created": false,
+      "native_fact_silently_changed": false
+    }
+  ],
+  "superseded_author_cells": {
+    "immutable_author_receipt": "b3075129fa6aef08de900b79e50bd5d47de5143a:WORKER_RETURNS/PYAT999_NATIVE_BODY_TRUTH_20261115/receipt.json",
+    "red_reproduced.public_select_count": "0 belongs to f88/1cb, not a59; a59 public refused",
+    "red_reproduced.public_refused": "false superseded by true for a59; native RED is valid",
+    "author_baseline_native_red": "PRESERVED_VALID",
+    "disposition": "NONBLOCKING_PROVENANCE_CORRECTION; no product defect or new author contest"
+  },
+  "evidence_grade": "S2_SOURCEFREE_TEST_ONLY__UNMERGED",
+  "not_promoted": [
+    "Original35 source/scientific rights",
+    "ProductionCURRENT",
+    "Protectedmerge",
+    "100k/6GiB/process-treeRSS",
+    "FullS01\u2013S05/#998 integration",
+    "Automatic adoption into R6 or existing benchmark cuts"
+  ]
+}
