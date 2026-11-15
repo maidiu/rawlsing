@@ -1,0 +1,87 @@
+{
+  "adverse_review_commit": "6dc921841a748ee7121887c0484068249a526b17",
+  "adverse_review_pr": 1069,
+  "base_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "branch": "codex/sorok1037-b05-zero-status-repair-20261115-r3",
+  "immutable_probes": {
+    "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/g5_cold_probe_1027.py": {
+      "blob": "6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab",
+      "byte_identical_to_review": true,
+      "bytes": 13940,
+      "review_blob": "6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab",
+      "sha256": "f9cc6e56cf6899bea1b09c820b4b3dc0ad52a97b5864bc9121a34229dc1820aa"
+    },
+    "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/g5_probe_1027.py": {
+      "blob": "7cd5a23044426961d6f33e13b1ccf44f54916f81",
+      "byte_identical_to_review": true,
+      "bytes": 31661,
+      "review_blob": "7cd5a23044426961d6f33e13b1ccf44f54916f81",
+      "sha256": "da1d4389fdae9d092f3bb777777e5f5ea76a71fea943730ff6cf029e3414fa5a"
+    },
+    "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/g5_r2_focused_probe.py": {
+      "blob": "d5d41240d32170ab0f2bed292afa747662283287",
+      "byte_identical_to_review": true,
+      "bytes": 20284,
+      "review_blob": "d5d41240d32170ab0f2bed292afa747662283287",
+      "sha256": "0300e8ddc694a85260589a92a9632c3661835a3a096c9294e09287bbf8acd4d8"
+    },
+    "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/g5_review_probe.py": {
+      "blob": "3e98929dbb526edf6fab60f74132cafe03d63239",
+      "byte_identical_to_review": true,
+      "bytes": 31064,
+      "review_blob": "3e98929dbb526edf6fab60f74132cafe03d63239",
+      "sha256": "fb42f9fd48d455bedf236d6f578e8aab94de449b4bf1e07adb315c99115a6c57"
+    }
+  },
+  "issue": 1037,
+  "product": {
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py": {
+      "blob": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+      "bytes": 34431,
+      "preserved_blob": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+      "r3_changed": false,
+      "sha256": "114f38e5303815d890188809309de56f2ff001d8fc8adb02243a6b1fc83d241a"
+    },
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py": {
+      "before_r3_blob": "a193fb5bfb6a1955209bedf0e66be974dcfa8e1b",
+      "blob": "9de3b5a295431fac2b0f9833ed520262df04b363",
+      "bytes": 24104,
+      "change": "ADMITTED strict positive rent and strict checkpoint-backed cash decrease; 10 insertions / 6 deletions",
+      "sha256": "bb67d3e03baf28943076cf5902e308c26ccbb7678672a297817a358a6296c774"
+    }
+  },
+  "reviewed_code": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "reviewer_report": {
+    "blob": "32d853287710c7a15d7761223660119592655bbc",
+    "byte_identical": true,
+    "bytes": 6191,
+    "path": "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/evidence/reviewer_g5_r2_focused_probe_report.json",
+    "sha256": "f941df6986a5ea4378abbd730d2828d6ceb3a562323e0041adbe130b92797588",
+    "source_review_sha256": "f941df6986a5ea4378abbd730d2828d6ceb3a562323e0041adbe130b92797588"
+  },
+  "round": "B05_ZERO_STATUS_REPAIR_R3",
+  "schema": "SOROK1037_B05_ZERO_STATUS_REPAIR_R3_PINS@1",
+  "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "tests": {
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py": {
+      "blob": "8e3775ebb51547aefa4490227a95a7eeff0008a9",
+      "bytes": 16944,
+      "sha256": "d40d57f21a48e84a7c60b3ef1ff90a7671ac7c476bff93dc24a2284ef11012e6"
+    },
+    "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py": {
+      "blob": "e61dca9f81ddc3fcb5fcf33272934232c2ae16a2",
+      "bytes": 10737,
+      "sha256": "8f74ce13b7dfa992c475f84451c71350cdf6b8e762ae97c91bd8d8cfbc9b5cde"
+    },
+    "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/tests/test_b05_zero_status_semantics.py": {
+      "blob": "0576b17433737f0f8831d81940848c7762d87d64",
+      "bytes": 10152,
+      "sha256": "28eb1028f2d0758b2deb20551f8f5beecc3cf1ea3dd0f0e8367d65253aaea375"
+    },
+    "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py": {
+      "blob": "a28db531306b3ad4dcebc76915d079f14ac0ea0f",
+      "bytes": 16374,
+      "sha256": "d6cd8faaa82bc0adadbe19f23a9e78d3c7442bace4e923fb6d239a77a2777aa7"
+    }
+  }
+}
