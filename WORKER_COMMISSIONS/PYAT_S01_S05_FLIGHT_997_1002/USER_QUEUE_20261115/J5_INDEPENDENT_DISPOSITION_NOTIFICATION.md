@@ -1,0 +1,5 @@
+Independent J5 receipt published at `c5a71fcc59a45aa470720159a334ae57f365de11`: **ACCEPT_SCOPED@SOURCEFREE_REUSE_COURT_REPRODUCED** for measurements, **REVISE_EXACT_DEFECT@G4_OPTIONS_AND_HANDOFF_CLAIMS** for interpretation/handoff. HQ verified40payloadhashes, source-only diff, remote commit and raw parity.
+
+One independent bounded court reproduced100/100facts, allfour100-operationparitycomparisons, counters and coldgroupingrefusals. Cold100 took65.661s versusauthor51.929s underdifferentambientload; no narrowstabletimingclaim. B is an unimplemented source-grounded hypothesis, not measured optimization. #999accepted successor exists but is not adopted in benchmarkbaseline. Read/byte metadata, RSS snapshots and source-open status require precise qualifiers.
+
+Sameauthor documentary-only correction actually launched: `ses_e21c3a8caffeG0KzFXGH6rtYwh`, PID99077. No benchmark rerun, production edits or guard removal. Resource headroom now~250MBfree; no furtherheavywork. Productionowner grant/adoption and newQUERYissuer remain separate.

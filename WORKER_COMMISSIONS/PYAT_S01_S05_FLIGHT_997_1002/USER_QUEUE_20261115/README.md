@@ -73,3 +73,8 @@ J5 native court completed under its300s cap; the30minute actor deadline interrup
 ### 2026-11-15T17:12:12.059490+00:00 — VOSKRES exact-cell repair verified and published
 
 All11 exact source coordinates and quotes now pass, along with payload hashes and table widths. Corrected candidate af0c61111 published and remotely verified. Original independent reviewer resumed on exclusive correction-closure branch, PID97411, to close only the11 changed findings; no new whole audit. Author pass is not independent acceptance. Historical execution and conditional-index scientific succession holds preserved.
+
+
+### 2026-11-15T17:28:39.555269+00:00 — J5 independent measurements accepted; exact handoff correction
+
+Review c5a71fcc5 independently reproduces100/100facts/counters and accepts measurement scope, but revises unmeasuredB proposal,stale999handoff,unsupportedtimingstability and resourceproxywording. Verified40reviewpayloadhashes andremoteref. Sameauthor/PID99077 correctsdocs only; rawmeasurements/logs untouched. Cold100review65.661s vsauthor51.929s, notstablelab. No newbenchmarksorproductionpatches. Disk~262MBfree:noheavywork.
