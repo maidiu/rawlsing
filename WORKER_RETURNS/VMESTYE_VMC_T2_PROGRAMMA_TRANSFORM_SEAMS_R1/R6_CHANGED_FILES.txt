@@ -1,0 +1,35 @@
+VMC-T2 R6 hostile-review exact changed-file manifest
+Owner issue: #870 / draft PR #1085
+Preserved parent R5: 355b49217087159a0ed93ae2c076f4a4c23b287b
+Preserved parents R4/R3: edfe7bb9fab1fd295621e9447745ddab4bb67bfb / 5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac
+Protected source (read only): 6a5c12f04323d74001f9632063ec907f4fc4468e
+Original source cut: 9253064bc9423a0f0ccda4fbdea43c2f54f800c6
+T1 R6 unreceived author cut: bb83248e6e7140122d0f01171409954fc9d0cf70
+
+R6 MODIFIED existing owner evidence only:
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/REVERSE_CONSUMER_TRACES.tsv -- 15 precise source/callsite field edits; still 542 IDs; no fake definition-as-external-caller
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/INTENDED_ACTUAL_TRANSFORMATION_MAP.tsv -- 4 exact J/V553 semantic field edits; still 52 IDs
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/DISCREPANCY_AND_OWNER_ACTIONS.tsv -- 3 precise evidence/first-reader edits; still 68 IDs
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_T1_T2_CROSS_REFERENCES.tsv -- 3 evidence/consumer edits, existing 7 IDs preserved
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/00_RETURN.md -- append-only controlling R6 addendum; preserves full R3/R4/R5 report text
+
+R6 NEW documentary files:
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R6_HOSTILE_ROW_DELTA.tsv -- 25 byte-for-value before-R5 / after-R6 source-qualified cell deltas
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R6_T1_R6_ROW_SOURCE_OVERLAYS.tsv -- four exact row source overlays, never alters h_t1_r3_head
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/validate_vmc_t2_r6.mjs -- strict pinned-Git R3->R4->R5->R6 ledger/cell comparison plus same-count mutation negatives, structural-only grade explicitly lower
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R6_HOSTILE_REVIEW_AND_REPAIR.md -- six adversarial findings, causal repair, bounds/reader grades
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R6_CHANGED_FILES.txt -- this manifest
+
+FULLY PRESERVED:
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R1_235_TO_T1_R3_52_CROSSWALK.tsv, SHA 2b4e4e81cb2d242e9f4eb648cb66a79fc41b43a8, 235 source IDs
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_ROW_LEVEL_DELTA.tsv, SHA 3ee9fcd27664a579919955c805e6975768553904, 17 changes
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R5_HOSTILE_ROW_DELTA.tsv, SHA 86bbef7e75663bf7131d12da439990a52954eabb, 23 changes
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/validate_vmc_t2_r3.mjs / validate_vmc_t2_r5.mjs as historical validation code
+WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_TARGETED_RETURN.md / R5_HOSTILE_REVIEW_AND_REPAIR.md / other previous history
+T1 #871; ZL16 #1077/#1079; ZL17 #1076/#1080; canonical ZL15; protected PRE-MAIN; HQ SHARED results.
+
+BOUNDED ACTUAL CHECK:
+Live GitHub exact R3->R4 (4 modified/13 append), R4->R5 (21 modified/2 append), R5->R6 (25 modified/0 append) complete row/field/ID anti-diffs PASS. Source R08 actual L1224-1225 and V553 L2048 externally inspected.
+R6 standalone Node script published but NOT_EXECUTED in checked-out repo. No source-native, CI, Python, original35, S2/S3, actor/science/issuer, authority, or protected merge.
+
+Revert only R6: restore four modified TSVs and 00_RETURN.md exactly from frozen R5 SHA 355b49217087159a0ed93ae2c076f4a4c23b287b; retain the new R6 files as historical records or delete only on this author branch. No protected refs or shared canonical updates authorized.
