@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_COUNTRY_REUSE_G5_CORRECTION_CONFORMANCE@1",
+  "corrected_candidate": "0b37420cf9daa4a49fa2b1e67da9850736836603",
+  "original_review": "c5a71fcc59a45aa470720159a334ae57f365de11",
+  "result": "ALL_C1_C7_AND_Q1_Q7_CORRECTED_OR_CARRIED",
+  "remaining_material_false_claims": [],
+  "C1": {
+    "finding": "B was labeled a measured candidate/implementation although no B code, patch or A/B run exists.",
+    "old": "G4 title/Why B/recommendation and 00_RETURN used 'measured candidate' / 'smallest measured candidate'.",
+    "corrected": "G4_OPTIONS.md labels B 'source-grounded hypothesis, NOT measured'; status hypothesis only; no B implementation/patch/A-B run; bounded owner-approved measurement required. 00_RETURN, G3, PROGRAMMA_DELTA and SELF_CRITIQUE align.",
+    "status": "CORRECTED"
+  },
+  "C2": {
+    "finding": "#999 accepted successor exists but was not adopted in the 9d96a9c measurement cut; old text said pending/required.",
+    "old": "G1 §7, 00_RETURN §4, PROGRAMMA_DELTA obligation 3, SELF_CRITIQUE item 12, G4 prerequisites.",
+    "corrected": "G1/00_RETURN/G4/SELF_CRITIQUE record ce7704253f6a2381310c3eb2c7412a2d85c5596c accepted at c18b7e087d5d5b178ed5acc92f9c82250a1743de, created after author start, NOT adopted; old baseline valid-fixture only; adopt/qualify + exact reader/evaluator/file grant; do not wait for new acceptance.",
+    "status": "CORRECTED"
+  },
+  "C3": {
+    "finding": "Wall stability and 'three same-command passes' were not in frozen commands; independent pass measured 65.661 s.",
+    "old": "SELF_CRITIQUE item 5 / G3 §1 / 00_RETURN / G2 / PROGRAMMA_DELTA claimed or implied stable ~51.9-52.2 s and 1.02x-1.26x over three passes.",
+    "corrected": "Author one pass 51.929 s / 1.021x; independent 65.661 s / 1.199x with identical receipts; no stable throughput or three-pass claim; earlier sentence withdrawn; 1,000-distinct projections 519.29 s author / 656.61 s review, both over 300 s; 1,000-repeat is repeat-only.",
+    "status": "CORRECTED"
+  },
+  "C4": {
+    "finding": "Source-open was mislabeled as a zero tripwire; it is INAPPLICABLE for the sourcefree fixture.",
+    "old": "00_RETURN 'C11Repository / whole-table / source opens 0/0/0 tripwires'; G4 falsifier 'zero source opens'.",
+    "corrected": "00_RETURN/G2/SELF_CRITIQUE/G4 state C11Repository.__init__ = 0 and pq.read_table = 0 are the real tripwires; source-open is INAPPLICABLE and not a measured tripwire.",
+    "status": "CORRECTED"
+  },
+  "C5": {
+    "finding": "Process-tree RSS was mislabeled as a sampled high-water and SELF_CRITIQUE falsely equated it with self max RSS.",
+    "old": "00_RETURN/G2 'process-tree RSS peak'; SELF_CRITIQUE item 8 'peak equals self max RSS'.",
+    "corrected": "RSS is max(before tree snapshot, after tree snapshot, self ru_maxrss); author tree sample 137,236,480 B vs self 136,503,296 B = 733,184 B difference; review pass 127,598,592 B equality is pass-specific, not invariant.",
+    "status": "CORRECTED"
+  },
+  "C6": {
+    "finding": "Proxy counters were over-promoted as physical I/O/decompression/tripwires; _build share presented as phase decomposition.",
+    "old": "00_RETURN/G2 headline read/byte/'_build' rows; SELF_CRITIQUE items 6-7/14.",
+    "corrected": "Row-group reads/bytes are metadata-call/sum proxies; _build share is instrumentation-inclusive; family/event object counts are native work, not negative tripwires; no direct per-phase time decomposition; no physical I/O/decompression claim.",
+    "status": "CORRECTED"
+  },
+  "C7": {
+    "finding": "Measurement acceptance was conflated with production/security/science/J3/new-QUERY-issuer qualification.",
+    "old": "00_RETURN header/§4; G5 pending; PROGRAMMA_DELTA; SELF_CRITIQUE item 10.",
+    "corrected": "00_RETURN/G5/PROGRAMMA_DELTA/SELF_CRITIQUE explicitly separate sourcefree measurement acceptance from production, security, science, original35, J3/new governed QUERY issuer, optimized-engine and protected-merge acceptance.",
+    "status": "CORRECTED"
+  },
+  "Q1": {"finding": "row-group/bytes metadata proxies", "status": "CARRIED", "where": "00_RETURN, G2, SELF_CRITIQUE item 7"},
+  "Q2": {"finding": "_build instrumentation-inclusive", "status": "CARRIED", "where": "00_RETURN, G2 §4, SELF_CRITIQUE item 6"},
+  "Q3": {"finding": "object counts native work not tripwires", "status": "CARRIED", "where": "G2 table, SELF_CRITIQUE item 9"},
+  "Q4": {"finding": "grouped wall contended (author 1.021x, review 1.199x)", "status": "CARRIED", "where": "G3, 00_RETURN, SELF_CRITIQUE item 5"},
+  "Q5": {"finding": "1,000-distinct projections 519.29/656.61 s, both over budget, not run", "status": "CARRIED", "where": "00_RETURN, G2, G3, SELF_CRITIQUE item 1"},
+  "Q6": {"finding": "1,000-repeat probe is repeat-only, 1 build/999 hits", "status": "CARRIED", "where": "G3, 00_RETURN, SELF_CRITIQUE item 1"},
+  "Q7": {"finding": "both cold guards preserved; no new engine/layout/production patch", "status": "CARRIED", "where": "G1, G3, G4, 00_RETURN, G5, PROGRAMMA_DELTA"},
+  "immutability_checks": {
+    "corrected_manifest_payloads": 47,
+    "payload_hashes_match": 47,
+    "payload_hashes_bad": 0,
+    "raw_evidence_logs_probes_changed_vs_f7a765": 0,
+    "production_changed_vs_9d96": 0,
+    "changed_paths_vs_6cb7866": [
+      "00_RETURN.md",
+      "CORRECTION_MAP.md",
+      "G1_SOURCE_CONTRACT.md",
+      "G2_COLD_COST.md",
+      "G3_GROUPED_OR_BARRIER.md",
+      "G4_OPTIONS.md",
+      "G5_REVIEW_PENDING.md",
+      "MANIFEST.json",
+      "PROGRAMMA_DELTA.md",
+      "RUNBOOK.md",
+      "SELF_CRITIQUE.md"
+    ],
+    "canonical_current_stale_overclaims": 0,
+    "stale_text_locations": "CORRECTION_MAP.md historical old-cell quotations and SELF_CRITIQUE explicit withdrawal only"
+  },
+  "closure": "No remaining material false claim among the exact C1-C7/qualifier findings. Original REVISE remains historical; corrected handoff is accepted scoped. No further review round for these fixed claims."
+}
