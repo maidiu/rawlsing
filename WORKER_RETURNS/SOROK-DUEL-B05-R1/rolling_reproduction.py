@@ -373,14 +373,51 @@ def apply_household_rent(session, *, operation_id: str, period_id: str,
         )
 
 
+def _rent_read_provenance(session, episode: Mapping[str, Any],
+                          receipt: Mapping[str, Any], *,
+                          operation_id: str) -> str:
+    root = session.read_root()["root_hash"]
+    branch = session.branch_id
+    body = episode.get("body") or {}
+    if (episode.get("actor_id") != "A"
+            or body.get("schema") != RENT_RECEIPT_SCHEMA
+            or body.get("grade") != GRADE
+            or body.get("root") != root
+            or body.get("branch") != branch
+            or body.get("operation_id") != operation_id):
+        raise RecursionRefusal("B05_RENT_PROVENANCE_MISMATCH")
+    if (receipt.get("schema") != RENT_RECEIPT_SCHEMA
+            or receipt.get("grade") != GRADE
+            or receipt.get("root") != root
+            or receipt.get("branch") != branch
+            or receipt.get("operation_id") != operation_id):
+        raise RecursionRefusal("B05_RENT_PROVENANCE_MISMATCH")
+    status = receipt.get("status")
+    if (status not in {"ADMITTED", "REFUSED", "UNCHANGED"}
+            or body.get("status") != status):
+        raise RecursionRefusal("B05_RENT_PROVENANCE_MISMATCH")
+    if receipt.get("clock") != episode.get("clock"):
+        raise RecursionRefusal("B05_RENT_PROVENANCE_MISMATCH")
+    return status
+
+
 def read_household_obligation(session, operation_id: str) -> dict:
     """Read a rent receipt and verify its source chain and stable household doc."""
-    if p6_house is None:
+    if p6_house is None or hp is None:
         raise RecursionRefusal("B05_COMPOSITION_UNAVAILABLE")
-    episodes = _rent_episodes(session, operation_id)
+    rows = [
+        row for row in session.product.store.episodes(session.branch_id)
+        if row.get("kind") == RENT_KIND
+    ]
+    episodes = [
+        row for row in rows
+        if (row.get("body") or {}).get("operation_id") == operation_id
+    ]
     if len(episodes) != 1:
         raise RecursionRefusal("B05_RENT_NOT_FOUND")
     receipt = dict((episodes[0].get("body") or {}).get("receipt") or {})
+    status = _rent_read_provenance(
+        session, episodes[0], receipt, operation_id=operation_id)
     household = p6_house.read_household(session)
     dwelling = p6_house.read_dwelling(session)
     if (dwelling["source"] != receipt.get("dwelling_source")
@@ -395,11 +432,29 @@ def read_household_obligation(session, operation_id: str) -> dict:
             or type(before_cash) is not int or type(after_cash) is not int
             or type(rent) is not int or rent < 0):
         raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
-    if receipt.get("status") == "ADMITTED" and before_cash - rent != after_cash:
+    if status == "ADMITTED" and before_cash - rent != after_cash:
         raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
-    if receipt.get("status") != "ADMITTED" and before_cash != after_cash:
+    if status != "ADMITTED" and before_cash != after_cash:
         raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
+    current_rent = dwelling["costs"].get("monthly_rent")
+    if type(current_rent) is not int or rent != current_rent:
+        raise RecursionRefusal("B05_RENT_PROVENANCE_MISMATCH")
     period_id = receipt.get("period_id")
+    if not _text(period_id) or receipt.get("period_status") != "COMPLETE":
+        raise RecursionRefusal("B05_RENT_PERIOD_MISMATCH")
+    try:
+        progress = hp.period_progress(session, period_id)
+    except RecursionRefusal as exc:
+        raise RecursionRefusal("B05_RENT_PERIOD_MISMATCH") from exc
+    if progress.get("status") != "COMPLETE":
+        raise RecursionRefusal("B05_RENT_PERIOD_MISMATCH")
+    period_episodes = [
+        row for row in rows
+        if ((row.get("body") or {}).get("receipt") or {}).get("period_id")
+        == period_id
+    ]
+    if len(period_episodes) != 1 or period_episodes[0] is not episodes[0]:
+        raise RecursionRefusal("B05_RENT_OPERATION_NOT_UNIQUE")
     valid, historical = _rent_chain(
         session, episodes[0].get("episode_id"), receipt)
     if not valid:

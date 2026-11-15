@@ -1,0 +1,44 @@
+{
+  "schema": "SOROK1037_PROGRAMMA_DELTA@1",
+  "issue": 1037,
+  "delta": [
+    {
+      "add": "B04 read_purchase binds episode/body/receipt root, branch, parent, alias, operation, status, clock, owner and purchase_source; ADMITTED reads require the existing C02 parent-history owner chain.",
+      "effect": "forged foreign-root/branch/actor/parent/operation purchase evidence is refused; genuine admitted purchases still read warm and cold."
+    },
+    {
+      "add": "B05 read_household_obligation binds episode actor/body/receipt root, branch, operation, status, clock, current dwelling rent, COMPLETE period identity and uniqueness of the period rent receipt.",
+      "effect": "forged foreign-root/branch/actor/period rent evidence and a second same-period rent receipt are refused; genuine rent reads warm and cold and never double-debit."
+    },
+    {
+      "add_refusal_codes": [
+        "PURCHASE_READ_PROVENANCE_MISMATCH",
+        "PURCHASE_READ_PARENT_MISMATCH",
+        "B05_RENT_PROVENANCE_MISMATCH",
+        "B05_RENT_PERIOD_MISMATCH",
+        "B05_RENT_OPERATION_NOT_UNIQUE"
+      ],
+      "effect": "typed read-side refusals only; writers and stored schemas unchanged."
+    }
+  ],
+  "closed_defects": [
+    "G5-B04-RECEIPT-FOREIGN-ROOT (false READ)",
+    "G5-B05-RENT-RECEIPT-FOREIGN-ROOT (false evidence READ, no second debit)"
+  ],
+  "unchanged": [
+    "B04/B05 writers, receipt schemas and lock behavior",
+    "B01/B02/B03 product",
+    "P2 writers and world material facts",
+    "C02/C03/C04/P6/D03 production",
+    "protected PRE-MAIN"
+  ],
+  "nonclaims": [
+    "not G5",
+    "not native/human/scientific acceptance",
+    "no motive or volition result",
+    "no currency conversion or new ledger",
+    "no protected merge"
+  ],
+  "verdict": "AUTHOR_CANDIDATE_FOR_G5",
+  "stop": true
+}

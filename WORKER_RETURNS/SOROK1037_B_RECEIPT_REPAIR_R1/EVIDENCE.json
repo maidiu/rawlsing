@@ -1,0 +1,214 @@
+{
+  "schema": "SOROK1037_B_RECEIPT_REPAIR_EVIDENCE@1",
+  "issue": 1037,
+  "verdict": "AUTHOR_CANDIDATE_FOR_G5",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+  "role": "bounded B04_B05_repair_author",
+  "host": {
+    "hostname": "oldMac.lan",
+    "platform": "Darwin 22.6.0 x86_64",
+    "python": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+    "pytest": "9.1.1",
+    "contention": "other independent jobs active on oldMac.lan; elapsed and RSS are observations, not isolated benchmarks"
+  },
+  "start_sha": "fb061dec16c8386b9caa1b5ea75ec7645aff88a7",
+  "branch": "codex/sorok1037-b-receipt-repair-20261115-r1",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+  "changed_product_paths": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+  ],
+  "own_paths_only": [
+    "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/"
+  ],
+  "product_source": {
+    "B04": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+      "head_fb061dec_blob": "7901b4fe80248c8ecb731440464454c799fa73b8",
+      "composed_c724d1a8_blob": "7901b4fe80248c8ecb731440464454c799fa73b8",
+      "repaired_blob": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+      "repaired_sha256": "114f38e5303815d890188809309de56f2ff001d8fc8adb02243a6b1fc83d241a"
+    },
+    "B05": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py",
+      "head_fb061dec_blob": "9500d80e85fba969f8e5fb8f3d233fc11f39c9d0",
+      "composed_c724d1a8_blob": "9500d80e85fba969f8e5fb8f3d233fc11f39c9d0",
+      "repaired_blob": "b944b8f0b6e0d700e85141256df01cdaef8d59e2",
+      "repaired_sha256": "c22e1b3dd7de69d5bf7afa4b1309c0be6c9e72598b18a4a9f2e15c2260709778"
+    },
+    "diff": "evidence/repair.diff",
+    "writer_abi_changed": false,
+    "new_ledger_or_currency_conversion": false
+  },
+  "hostile_asset_custody": {
+    "source_sha": "dfd09434ebbdb99971ac22a02533399c303ebbec",
+    "g5_probe_py": {
+      "path": "g5_probe.py",
+      "blob": "7cd5a23044426961d6f33e13b1ccf44f54916f81",
+      "sha256": "da1d4389fdae9d092f3bb777777e5f5ea76a71fea943730ff6cf029e3414fa5a",
+      "byte_identical": true
+    },
+    "g5_cold_probe_py": {
+      "path": "g5_cold_probe.py",
+      "blob": "6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab",
+      "sha256": "f9cc6e56cf6899bea1b09c820b4b3dc0ad52a97b5864bc9121a34229dc1820aa",
+      "byte_identical": true
+    },
+    "witness_docs": "evidence/witness_1027/"
+  },
+  "author_tests": {
+    "path": "tests/test_b04_b05_receipt_provenance.py",
+    "blob": "a28db531306b3ad4dcebc76915d079f14ac0ea0f",
+    "sha256": "d6cd8faaa82bc0adadbe19f23a9e78d3c7442bace4e923fb6d239a77a2777aa7",
+    "count": 6
+  },
+  "red_green": {
+    "witness_red": {
+      "when": "before any product edit",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b-receipt-repair/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/g5_probe.py",
+      "exit": 1,
+      "checks": 63,
+      "failed_checks": 2,
+      "defect_acceptance": {
+        "G5-B04-RECEIPT-FOREIGN-ROOT": "ACCEPTED_READ",
+        "G5-B05-RENT-RECEIPT-FOREIGN-ROOT": "ACCEPTED_READ"
+      },
+      "elapsed_seconds": 23.72,
+      "peak_rss_bytes": 63848448,
+      "log": "evidence/red_witness_1027.log",
+      "report": "evidence/red_hostile_report_1027.json"
+    },
+    "witness_green": {
+      "when": "after exact repair",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b-receipt-repair/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/g5_probe.py",
+      "exit": 1,
+      "checks": 63,
+      "failed_checks": 0,
+      "defect_acceptance": {
+        "G5-B04-RECEIPT-FOREIGN-ROOT": false,
+        "G5-B05-RENT-RECEIPT-FOREIGN-ROOT": false
+      },
+      "refusals": {
+        "G5-B04-RECEIPT-FOREIGN-ROOT": "PURCHASE_READ_PROVENANCE_MISMATCH",
+        "G5-B05-RENT-RECEIPT-FOREIGN-ROOT": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "elapsed_seconds": 30.21,
+      "peak_rss_bytes": 63307776,
+      "log": "evidence/green_witness_1027.log",
+      "report": "evidence/green_hostile_report.json",
+      "oracle_caveat": "The unmodified witness always appends both historical defect rows and returns exit 1; GREEN is established by 63/63 check pass and defects[].accepted=false, not by exit code or its verdict field."
+    }
+  },
+  "suites": {
+    "baseline_original_43_before_repair": {
+      "command": "TMPDIR=<scratch>/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q <14 B01-B05 test files>",
+      "exit": 0,
+      "result": "43 passed",
+      "elapsed_seconds": 837.81,
+      "peak_rss_bytes": 72138752,
+      "log": "evidence/red_baseline_43_full.log",
+      "time": "evidence/red_baseline_43_full.time",
+      "note": "Started before any edit. The only cold-subprocess tests are in B04 operations and B05 rolling and completed before the mid-run B04 mtime; the B05 edit completed after this run ended. The completed run exercised the frozen source."
+    },
+    "author_provenance_tests": {
+      "command": "TMPDIR=<scratch>/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py",
+      "exit": 0,
+      "result": "6 passed",
+      "elapsed_seconds": 105.40,
+      "peak_rss_bytes": 71061504,
+      "log": "evidence/green_new_tests.log"
+    },
+    "normal_two_purchases_one_rent_cold": {
+      "command": "TMPDIR=<scratch>/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/g5_cold_probe.py",
+      "exit": 0,
+      "result": "ok=true; warm_ok=true; child_exit=0",
+      "observations": {
+        "periods": ["period:2026-h1", "period:2026-h2"],
+        "purchases": 2,
+        "rents": 1,
+        "parent_cash": 20,
+        "household_cash": 43,
+        "market_quantity": 0,
+        "owned_quantity": 2,
+        "replay1": "REFUSED:PURCHASE_REPLAY_STALE",
+        "replay2": "REPLAY",
+        "rent_replay": "REPLAY",
+        "duplicate_rent": "B05_RENT_ALREADY_RECORDED",
+        "head_unchanged": true
+      },
+      "elapsed_seconds": 38.78,
+      "peak_rss_bytes": 49303552,
+      "log": "evidence/green_cold_probe.log",
+      "report": "evidence/green_cold_report.json"
+    },
+    "inherited_original_43_after_repair": {
+      "command": "TMPDIR=<scratch>/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q <14 B01-B05 test files>",
+      "exit": 0,
+      "result": "43 passed",
+      "elapsed_seconds": 1159.07,
+      "peak_rss_bytes": 64176128,
+      "log": "evidence/green_baseline_43.log",
+      "time": "evidence/green_baseline_43.time",
+      "exit_file": "evidence/green_baseline_43.exit"
+    },
+    "selected_c03_c04_readonly_regression": {
+      "command": "TMPDIR=<scratch>/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py",
+      "exit": 0,
+      "result": "3 passed",
+      "elapsed_seconds": 117.96,
+      "peak_rss_bytes": 68329472,
+      "log": "evidence/green_c03c04_selected.log",
+      "product_edits": "NONE"
+    }
+  },
+  "coverage": {
+    "wrong_root_branch_actor_parent_household_period_operation": true,
+    "same_rent_period_second_receipt": "B05_RENT_OPERATION_NOT_UNIQUE",
+    "coherent_rehashed_forgery": {
+      "B04": "PURCHASE_READ_PARENT_MISMATCH via actual C02 owner history",
+      "B05": "B05_RENT_OPERATION_NOT_UNIQUE for a second same-period receipt"
+    },
+    "changed_restored": [
+      "B04 market branch/root changed then exact restore (witness)",
+      "B04 ownership row removed then exact restore (witness)",
+      "B05 household document root changed then exact restore (author test)",
+      "B05 dwelling changed/restored and cold reopen (witness/original tests)"
+    ],
+    "normal_actual_paths": [
+      "two parent purchases across B02 periods",
+      "one household rent on completed h1",
+      "warm first readers and fresh-process cold reopen",
+      "typed replays and stale replay refusal",
+      "parent-vs-household funds preserved"
+    ]
+  },
+  "native_holds": {
+    "RULE_A": "NO_NATIVE_OR_HUMAN_AUTHORITY; sourcefree engineering only",
+    "T": "NO_MOTIVE_OR_VOLITION_INFERENCE; feasibility/read state is not desire or performed action",
+    "NO_CHANGE": [
+      "P2 writers unchanged",
+      "C03/C04/P6/D03 unchanged",
+      "no protected PRE-MAIN write or merge",
+      "no new engine, scheduler, ledger, or currency conversion",
+      "no Browser session monitoring/contact",
+      "no PYAT edits"
+    ],
+    "SCIENTIFIC_OR_PROTECTED_ACCEPTANCE": "NONE"
+  },
+  "known_weaknesses": [
+    "A fully rehashed sole B05 rent receipt for a completed period with no prior actual receipt remains indistinguishable without a writer-side authenticated operation registry or cash ledger; adding one is outside this narrow repair.",
+    "B04 operation authenticity depends on the existing C02 parent-history chain; a forged sibling episode fails closed and can also make genuine parent reads refuse until removed.",
+    "Historical genuine receipts remain readable with historical=true; provenance binding is not a currentness requirement.",
+    "Host was under concurrent independent load; timing/RSS are not benchmarks."
+  ],
+  "cost": {
+    "provider_tokens_usd": "UNOBSERVED",
+    "checkpoint_org_quota": "UNOBSERVED",
+    "observed_local": {
+      "wall_seconds_total_measured_runs": 2312.95,
+      "peak_rss_bytes_max": 72138752
+    }
+  },
+  "terminal": "AUTHOR_CANDIDATE_FOR_G5; distinct nonauthor G5 required; no protected merge; STOP"
+}
