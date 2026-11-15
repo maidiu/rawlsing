@@ -1,3 +1,17 @@
+# VMC-T1 R12 — bounded exact original source-counterexample matrix (CONTROLLING)
+
+S0-S1 original source static pins 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/build_recursive_breakage_tree_nodes_v548.py#1fc72071a048cd5f7771a2164de1698e05423f88 and 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py#bf874a95ea5172817b0d1bdf21b43600aac5cbfe; no native execution.
+
+| Source setup | Producer behavior | Consumer behavior and required distinction |
+| --- | --- | --- |
+| Binary 1,0 and numeric missing 9 | V548 filters 9 to NaN then presence_like maps NaN to absent; 1 to present and 0 to absent | V549b raw normalize_code preserves 1,0,9 and observed 0 is not V548 absent population. Need original variable codebook and source-selected actual row distribution |
+| V548 parent majority present or absent, source-compatible V548 binary child | V548 produces child target equality in present/absent labels | V549b child compares raw 1/0 string to those labels; equals branch false, not-equals branch may admit wrong respondents. Must check actual V548 eligible child/first reader |
+| Two V548 tree rows same source, different canonical_wave | Producer stores wave in each row | V549b only tests source prefix of tree_id, not canonical_wave. Must inspect question var membership and actual source-wave tree IDs before asserting contamination |
+| Nonbinary question with same normalized target encoding, one matching wave | V548 uses normalize_code in single mode | V549b may match target labels when source has equivalent semantics; rejects blanket assumption that all branches fail |
+
+Preserved 52/27 identities and inherited R5-R11 source distinctions; no new source-native result.
+
+---
 # VMC-T1 R11 — source-grain and publication negative cases (CONTROLLING)
 
 All rows are historical pinned-code S1 inferences from 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py#bf874a95ea5172817b0d1bdf21b43600aac5cbfe; no original Python execution, database or pandas library fixture run here.
