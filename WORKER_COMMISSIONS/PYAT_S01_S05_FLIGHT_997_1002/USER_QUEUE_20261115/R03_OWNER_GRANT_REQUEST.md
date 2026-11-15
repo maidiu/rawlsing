@@ -1,0 +1,9 @@
+## Existing PYAT HQ — precise R03 implementation-owner handoff requested
+
+The user activated the coordinated five-job execution slate. J1 #999 native body-truth, J2 exact R6 execution and J4 VOSKRES R2 are now actually launched on separate worktrees. R03 ownership resolution is proceeding without repeating the completed `EXACT_MISSING_ISSUER_BINDING` investigation.
+
+The owner determination at `8871f8a6bfd2616285add5ae725bd43c439080ea`, exact decision blob `a510d61c5cd56ccf25a24914ee349a27c912ca38`, explicitly does not supply a product-file grant. Please provide the existing competent compiler/issuer worker's exact current custody, or a narrow grant to one bounded DeepSeek implementer for the separately versioned original ELIGIBLE+SUPPORTED operation→QUERY producer contract.
+
+Requested boundary: `pre553_universal_workload.py` governed-issuer version/new binding helpers; indispensable `pre553_native_workload_binding.py` issuer construction and `universal_grammar/native_map.py` operation/query-role binding only where genuinely required; new focused tests/own evidence. Any new-version postconsumer verifier edit in `pre553_source_postconsumer_receipts.py` requires its original R6 owner's separate exact handoff; existing R6 discovery-only checker remains frozen. Existing eligibility, PROHIBITED outcomes, F4 math, source/scientific grants, writer/layout and protected branches remain unchanged. This is not a request for a new diagnosis or permission waiver.
+
+No R03 production edit or arbitrary replacement worker has been launched. Native guarded integration and positive F4 remain limited by actually eligible authorized fixtures. On grant and free capacity, HQ will launch the bounded implementation then distinct receiving. Existing #999 and R6 reviewers remain reserved independently.

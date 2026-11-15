@@ -1,0 +1,23 @@
+{
+  "job_id": "pyat997-r6-native-exec-20261115",
+  "session": "ses_e21dca51cffeZbHOKtgec7Uzik",
+  "grant_id": "user-five-slate-pyat997-r6-native-exec-20261115",
+  "argv": [
+    "/usr/local/bin/python3",
+    "-c",
+    "import subprocess,sys,json,threading,urllib.request,base64,time\nfrom pathlib import Path\nsid,cap,proof=sys.argv[1:4]\nproc=subprocess.Popen(sys.argv[4:])\nPath(proof).write_text(json.dumps({\"session\":sid,\"cli_pid\":proc.pid,\"cap_seconds\":int(cap),\"started_epoch\":time.time()}))\ndef stop():\n cfg=json.loads(Path(\"/Users/matthewsmith/.config/opencode/service.json\").read_text())\n req=urllib.request.Request(\"http://127.0.0.1:49374/api/session/\"+sid+\"/interrupt?resume=false\",data=b\"\",method=\"POST\")\n req.add_header(\"Authorization\",\"Basic \"+base64.b64encode((\"opencode:\"+cfg[\"password\"]).encode()).decode())\n try:\n  with urllib.request.urlopen(req,timeout=15) as response: status=response.status\n except Exception as exc: status=type(exc).__name__\n Path(proof).with_suffix(\".deadline.json\").write_text(json.dumps({\"session\":sid,\"interrupt\":status,\"at_epoch\":time.time()}))\n try:proc.wait(timeout=15)\n except subprocess.TimeoutExpired:proc.terminate()\ntimer=threading.Timer(int(cap),stop);timer.start()\ntry:code=proc.wait()\nfinally:timer.cancel()\nsys.exit(code)\n",
+    "ses_e21dca51cffeZbHOKtgec7Uzik",
+    "1800",
+    "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/pyat997-r6-native-exec-20261115-cli.json",
+    "/Users/matthewsmith/.opencode/bin/opencode",
+    "run",
+    "--session",
+    "ses_e21dca51cffeZbHOKtgec7Uzik",
+    "--model",
+    "opencode-go/deepseek-v4.1-flash#max",
+    "--format",
+    "json",
+    "--auto",
+    "USER-ACTIVATED FIVE-JOB EXISTING PYAT HQ SLATE. Read YOUR full job and common sections8\u201310 at /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-hq-execution-queue-20261115/WORKER_COMMISSIONS/PYAT_S01_S05_FLIGHT_997_1002/USER_QUEUE_20261115/sources/FIVE_JOB_USER_EXECUTION_SLATE.txt. The full original contract governs, not just this dispatch summary. No replacementHQ, subagents, provider/model/account/effort/VMchange, original35/source/science rights or protectedmerge. Existing opencode-go/deepseek-v4.1-flash#max;1017checkpointUNVERIFIED. ONE30minute bounded pass, package by25min; at deadline preserve exactpartial/evidence/nextaction, no falseacceptance, no nativebackgroundjobsleftbehind. Existingqualifiedruntimeonly, no unapprovedinstalls. HQhandles terminalintake and next reviewer.\nJ2 R6EXECUTION ONLY. Branchagent/pyat997-r6-execute-20261115 documentaryc368ff30189d8fdd5c1a8036a5b6e265d822f80b/code-test9ac034dd0734cdd000b4b73583f883dbcec2dfa6. ReadcompleteWORKER_RETURNS/PYAT997_P1_ISSUER_BINDING_R6/00_HANDOFF.md. Solewrite ownWORKER_RETURNS/PYAT997_R6_EXECUTION_20261115/ plus disposable sourcefreefixture scratch; productandtestsREADONLY. Runexactsevenfilehandoffpytest plus ORIGINAL8b03c121a2f6d9c7a9c2e0513a03545780d14c3c manualQUERYsubstitution witness. ALL fullJ2court positives/negatives/changedrestore/fatereceipts exactR6; original0QUERY1DISCOVERY, inventedQUERY+matchingresolverrefuses. No sibling1029executiontransfer/fabricatedF4/eligibility/R6guardchange. Actualfailure\u2192exactcounterexample/cause/preciseownerhandoff; no silentcodepatch/wholesalemerge. QualifyexistingnativePython/Arrow/etc; no VMconfiguration/install. Validcontrolledsourcefreeexecution allowed with999tamperriskdisclosed; no integrityfixclaim/full100k. Capturefullcommandsoutputs/exitcodes/fixtures/code+testSHAs/resources. J3newQUERYseparate, not prerequisite. Freezeevidence/publishownfilesorreportexactfiles. Sameoriginalreviewer ses_e30a442d8ffeYBbXi7rPUpPxoc receivesafterHQintake. STOPfinitepass."
+  ]
+}

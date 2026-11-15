@@ -29,3 +29,9 @@ Each docket includes all user completion checks in QUEUE.json. Freeze author imp
 Existing local OpenCode active-session endpoint returned empty. Exact #999author session, #999G5 and #997G5 identities exist. #999worktree branch/head/nativeblob match the grant; live lease is not activated. #1033 and #1060remote heads match supplied cuts. Disk observed~7.59GB available. #1060frozen objects need retrieval before localsourcework. R03decision recovered from exact GitHubblob when its path was unavailable in the localobjectview. No absence hypothesis or replacement investigation follows.
 
 The supported model alias is opencode-go/deepseek-v4.1-flash#max; no1017backend attestation is claimed. Preserve terminal notifications and paused recurring goal wakes. No worker has been launched by this queue.
+
+## User activation supersedes queue-only state
+
+The subsequently supplied FIVE-JOB EXECUTION SLATE explicitly authorizes dispatch of eligible work. Three actual jobs launched: J1existing999author PID56575; J2isolatedR6executor PID56582; J4VOSKREScomposedauthor PID56587. All three active at startup service check and actual-turn modelGoFlashMAX verified. Full session/worktree/branch/lease scope, exactcut and launch receipts are in ACTIVATION/ACTIVATION_REPORT.json. No1017backend attestation.
+
+J3ownershipresolution starts now; preciseproductgrant remains missing and no productwrite is authorized by its completed source determination. J5 waits for freecapacity, not blanket upstreamcompletion; its readerwrite gate remains999G5+ownfilegrant. S1-Ac900/6286independent34+136acceptance verified and staysclosed. Terminalnotificationsonly; no recurringgoalwakes. Initialjobsarefinite30minute passes and partialreturns must staypartial. No newHQ, no duplicateZAKresearch and no protected/source/science authority.
