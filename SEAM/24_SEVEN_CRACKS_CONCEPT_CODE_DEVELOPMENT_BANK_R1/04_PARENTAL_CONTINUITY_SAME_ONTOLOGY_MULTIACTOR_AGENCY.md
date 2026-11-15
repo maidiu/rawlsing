@@ -1,12 +1,12 @@
 # SC-04 — Two independent continuing parents, one developmental ontology, plural actor-local states
 
-**Status:** multi-actor and material adjacency in source; independently acquired parental psyche → independently selected later act **NOT DEMONSTRATED**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-02](02_MATERNAL_OBSERVATION_INVERSE_HISTORY_AND_FIRST_CONSUMER.md) · [SC-03](03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md) · [SC-05](05_CHILD_OPEN_ENDED_ACQUISITION_AND_EVIDENCE_CHAIN.md) · [SC-06](06_ORDINARY_LIFE_PROCESS_AND_CAUSAL_COVERAGE.md) · [SC-07](07_RELATIONAL_TOPOLOGY_MOTIFS_AND_C5_ABLATION.md). Grounding: [SEAM/20 `3](../20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md), [SEAM/19](../19_SOROK_Z_CONTRADICTORY_REPRODUCTION_AFFORDANCE_APPROPRIATION_KERNEL_R1.md), [SEAM/22](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md).
+**Status:** multi-actor/sourcefree parent-material adjacency in the **unmerged #1030 candidate**, not accepted whole runtime; acquired parental psyche → independently selected later act **NOT DEMONSTRATED**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-02](02_MATERNAL_OBSERVATION_INVERSE_HISTORY_AND_FIRST_CONSUMER.md) · [SC-03](03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md) · [SC-05](05_CHILD_OPEN_ENDED_ACQUISITION_AND_EVIDENCE_CHAIN.md) · [SC-06](06_ORDINARY_LIFE_PROCESS_AND_CAUSAL_COVERAGE.md) · [SC-07](07_RELATIONAL_TOPOLOGY_MOTIFS_AND_C5_ABLATION.md). Grounding: [SEAM/20 §3](../20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md), [SEAM/19](../19_SOROK_Z_CONTRADICTORY_REPRODUCTION_AFFORDANCE_APPROPRIATION_KERNEL_R1.md), [SEAM/22](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md).
 
 ## The demand is not “two parent personality objects”
 
 SEAM/20 insists on **at least seven noncollapsed states**: (i) mother's objective actor body/past/iceberg/current conscious perspective, (ii) father's, (iii) mother's fallible model of father, (iv) father's fallible model of mother, (v) objective relationship if admitted, (vi) objective household/material arrangement if admitted, (vii) genealogy/child-generation relation if admitted. A child subsequently adds its own body/access/perceived relations; kin, co-workers, siblings, care networks and institutions are not optional *possibilities*.
 
-These are semantic identities/views over competent existing owners—not seven mandatory databases. Relationship ≠ household; perceived-other ≠ other person's true psyche; child biological parent ≠ caregiver; mutual declaration ≠ shared inner life. A woman can materially support a child but interpret her own activity differently from the father or child; the same objectively performed deed can have nonidentical actor-access histories. These asymmetries deepen Leontiev's activity/motive/action distinctions and Dreier/Lahire's plural contextual lives without turning them into universal numeric psychological laws.
+These are semantic identities/views over competent existing owners—not seven mandatory databases **and not a claim that all seven currently have executable owners**. Relationship ≠ household; perceived-other ≠ other person's true psyche; child biological parent ≠ caregiver; mutual declaration ≠ shared inner life. A woman can materially support a child but interpret her own activity differently from the father or child; the same objectively performed deed can have nonidentical actor-access histories. These asymmetries **can be interrogated with** Leontiev's activity/motive/action distinctions and Dreier/Lahire's plural contextual lives; those theories do not by themselves provide a measured multi-actor selection law.
 
 ## Code that already exists, and precisely what it does not
 
@@ -19,7 +19,11 @@ These are semantic identities/views over competent existing owners—not seven m
 - [`P6 situated.reconsider`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py) → [`actor_initiative._select_visit/visit_adjacent_room`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/actor_initiative.py): strong **narrow** precedent of checkpointed actor-local model selection, one-use eligible move, real P2 performed world action. Focal actor A and specific location/action; not general maternal choice.
 - [ADP-015](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md): accepted semantic separations and genealogical identity; not a current universal couple runtime.
 
-## Prospective smallest legitimate composition—not a global ParentEngine
+### Owner collision to avoid
+
+The [#1008 mother C03/C04 Browser duel](https://github.com/maidiu/rawlsing/issues/1008), [#1010 Nadia D03/E01 Browser duel](https://github.com/maidiu/rawlsing/issues/1010), and [#1003 J1 Codex integration](https://github.com/maidiu/rawlsing/issues/1003) already own selected producer/chooser/performer repairs. This card is **a research constraint on those existing contracts, not permission to reimplement them**. The inspected #1030 parent sourcefree commit is a historical branch snapshot, not evidence that it has been integrated with #1010 or a native V3 rule.
+
+### Prospective smallest legitimate composition—not a global ParentEngine
 
 ```text
 P2/ADP-015: two distinct verified actor identities + admissible objective
@@ -27,7 +31,9 @@ P2/ADP-015: two distinct verified actor identities + admissible objective
   -> actor-local personal history and CAN/ADP acquisition for EACH actor
      # mother's/father's compressed prelife is real for that actor
   -> current objective P2 world and actor-specific opportunity set
-  -> existing actor-selected prospectives pattern, only if generalized
+  -> candidate actor-selected prospectives only after source-verified
+     competent chooser/actor-rights grant; P6 actor A's visit cannot
+     automatically select a mother's livelihood/care decision
      via qualified owner to THIS actor and THIS action family
   -> SELECT/DEFER/ATTEMPT, with source/rule and replay, rather than
      caller-written intention
@@ -38,7 +44,7 @@ P2/ADP-015: two distinct verified actor identities + admissible objective
   -> later newly selected activity by both agents; neither freezes at birth
 ```
 
-**The key positive result** is neither an LLM chat response nor an adult backstory. It's a parental *performed act that changes when real acquired maternal or paternal history changes while the current objective opportunities are held fixed*. Do not silently invent choice weights from survey ideology.
+**The key positive result** is neither an LLM chat response nor an adult backstory. A P4 caller-supplied deed may prove event custody **without proving maternal autonomy**. It's a parental *performed act that changes when real acquired maternal or paternal history changes while the current objective opportunities are held fixed*. Do not silently invent choice weights from survey ideology.
 
 ### The shared-household junction is separately missing
 
@@ -62,4 +68,4 @@ A wage shift can change the parent's `cash_units/free_hours`; it cannot be presu
 
 **PYAT:** separate employer/institution/time and household/kin structural possibility from observed adult survey answers; identify source-qualified rights/power versus modeled individual choice; never write an actor's private motive. F6 partial ID, F7 time and N9/N10 world constraint apply.
 
-**Status:** strong conceptual requirement with real bounded P2/P6 evidence; **full two-parent formed, independent, jointly acting continuation unproved**. Feeds SC-05/06 and the eventual player-facing child Other.
+**Status:** strong conceptual requirement with separate, unmerged **SOURCEFREE_TEST_ONLY/SOURCEFREE_S2_ONLY** P2/P6 evidence; **full two-parent formed, independent, jointly acting continuation unproved**. Feeds SC-05/06 and the eventual player-facing child Other.
