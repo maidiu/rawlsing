@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T07:57:27.970729+00:00",
+  "updated_utc": "2026-11-15T08:28:08.642523+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -53,8 +53,9 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1038-custody-g5-20261115-r1",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
-      "owner": "ses_e22146664ffeDffEDH4nsj8nsY"
+      "state": "ACCEPT_SCOPED_CHILD_CUSTODY_PROSPECTIVE_READSET_ONLY",
+      "owner": "ses_e22146664ffeDffEDH4nsj8nsY",
+      "result_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b"
     },
     {
       "issue": 982,
@@ -99,6 +100,32 @@
       "state": "RUNNING",
       "author_session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
       "separate_nonauthor": true
+    },
+    {
+      "issue": "C05",
+      "role": "continuing-relations bounded implementer",
+      "name": "sorok-c05-continuing-relations",
+      "base": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "out": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+        "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+      "branch": "codex/sorok-c05-continuing-relations-20261115-r1",
+      "session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "owner": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "launch": {
+        "job_id": "sorok-c05-continuing-relations-20261115-r1",
+        "child_pid": 75900,
+        "supervisor_pid": 75899,
+        "observer_pid": 75901,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-continuing-relations-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "qualified_scope": "C04 child-facingcustody ONLY; motherselector/language/parentmetadata/D03residualholds preserved"
     }
   ],
   "runtime_verification": [
@@ -159,15 +186,6 @@
   ],
   "pending": [
     {
-      "task": "C05",
-      "state": "WAITING_C04_CUSTODY_G5_AND_CAPACITY",
-      "original_dependencies": [
-        "C01",
-        "C04"
-      ],
-      "owner": "HQ future source-owned implementer"
-    },
-    {
       "task": "D04 read-only prep",
       "state": "PREPARATION_RECORDED_NO_IMPLEMENTATION",
       "owner": "HQ read-only"
@@ -218,6 +236,24 @@
       "terminal_exit": 0,
       "independent_review": "RUNNING",
       "explicit_residual": "B05 coherent sole fabricated rent receipt for completed period; reviewer must adjudicate actual-operation binding"
+    },
+    {
+      "task": "1038 C03/C04 independent G5",
+      "state": "ACCEPT_SCOPED_CHILD_CUSTODY_MATERIAL_PROSPECTIVE_READSET_ONLY",
+      "code_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1062",
+      "residuals": [
+        "parent self-read embedded metadata exactness",
+        "D03 caller receipt root/branch/clock/operation binding",
+        "mother selector and language owner HELD"
+      ],
+      "releases": "C05 separately authorized bounded implementation only"
     }
-  ]
+  ],
+  "guide_records_affected": [
+    "PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
+    "PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md"
+  ],
+  "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT"
 }
