@@ -277,6 +277,88 @@ def _rent_chain(session, episode_id: str, receipt: Mapping[str, Any]) -> tuple[b
     return True, current_cash != after_cash
 
 
+def _checkpoint_household(checkpoint: Mapping[str, Any], *, world_type: Any,
+                          root: str, branch: str,
+                          actor_ids: tuple[str, ...]) -> dict | None:
+    state = checkpoint.get("state")
+    snapshot = state.get("world") if isinstance(state, Mapping) else None
+    if not isinstance(snapshot, Mapping):
+        return None
+    try:
+        world = world_type.restore(dict(snapshot))
+        document = world.resources.get(p6_house.HOUSEHOLD_SLOT)
+        if not isinstance(document, Mapping):
+            return None
+        return p6_house._read_household_document(
+            document, world, root, branch, actor_ids)
+    except Exception:
+        return None
+
+
+def _rent_transition(receipt: Mapping[str, Any]) -> tuple:
+    return (
+        receipt.get("root"), receipt.get("branch"), receipt.get("clock"),
+        receipt.get("household_cash_before"),
+        receipt.get("household_cash_after"),
+        receipt.get("household_material_hash_before"),
+        receipt.get("household_material_hash_after"),
+    )
+
+
+def _require_actual_rent_transition(session, receipt: Mapping[str, Any], *,
+                                    clock: int, rows: list[dict]) -> None:
+    """Prove an ADMITTED receipt from the existing C12 checkpoint history.
+
+    ``apply_household_rent`` writes one A-household-cash checkpoint inside its
+    ``_StoreWrite`` unit at the same clock as the receipt, immediately after the
+    prior checkpoint.  The receipt is admitted only if two adjacent durable
+    checkpoints reproduce its exact before/after cash and household material
+    hashes.  A caller-computed self-consistent receipt has no such owner
+    transition.  The same transition may back exactly one rent operation, so an
+    appended sibling cannot copy a real debit as its own evidence.
+    """
+    root_row = session.read_root()
+    root = root_row["root_hash"]
+    branch = session.branch_id
+    actor_ids = tuple(root_row.get("actor_ids") or ())
+    world_type = type(session.world())
+    before_cash = receipt.get("household_cash_before")
+    after_cash = receipt.get("household_cash_after")
+    before_hash = receipt.get("household_material_hash_before")
+    after_hash = receipt.get("household_material_hash_after")
+    source = receipt.get("household_document_source")
+    previous_checkpoint = None
+    previous_household = None
+    matched = False
+    for checkpoint in session.product.store.checkpoints(branch):
+        household = _checkpoint_household(
+            checkpoint, world_type=world_type, root=root, branch=branch,
+            actor_ids=actor_ids)
+        if (previous_household is not None and household is not None
+                and checkpoint.get("clock") == clock
+                and previous_checkpoint.get("clock") <= clock
+                and _household_cash(previous_household) == before_cash
+                and previous_household["material_hash"] == before_hash
+                and _household_cash(household) == after_cash
+                and household["material_hash"] == after_hash
+                and previous_household["source"] == source
+                and household["source"] == source):
+            matched = True
+            break
+        previous_checkpoint = checkpoint
+        previous_household = household
+    if not matched:
+        raise RecursionRefusal("B05_RENT_OPERATION_UNPROVEN")
+    identity = _rent_transition(receipt)
+    shared = [
+        row for row in rows
+        if _rent_transition(
+            (row.get("body") or {}).get("receipt") or {}) == identity
+    ]
+    if len(shared) != 1:
+        raise RecursionRefusal("B05_RENT_OPERATION_UNPROVEN")
+
+
 def _apply_household_rent(session, *, operation_id: str, period_id: str,
                          expected_clock: int | None = None) -> dict:
     """Charge one completed period's household rent against fixed-A cash."""
@@ -459,6 +541,9 @@ def read_household_obligation(session, operation_id: str) -> dict:
         session, episodes[0].get("episode_id"), receipt)
     if not valid:
         raise RecursionRefusal("B05_RENT_SOURCE_STALE")
+    if status == "ADMITTED":
+        _require_actual_rent_transition(
+            session, receipt, clock=episodes[0].get("clock"), rows=rows)
     current_hash = household["material_hash"]
     return {
         "schema": HOUSEHOLD_OBLIGATION_SCHEMA,

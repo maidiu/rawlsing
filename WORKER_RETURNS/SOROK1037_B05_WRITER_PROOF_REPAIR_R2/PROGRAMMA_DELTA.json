@@ -1,0 +1,50 @@
+{
+  "schema": "SOROK1037_PROGRAMMA_DELTA@1",
+  "issue": 1037,
+  "round": "B05_WRITER_PROOF_REPAIR_R2",
+  "delta": [
+    {
+      "add": "B05 read_household_obligation now requires an ADMITTED rent receipt to match the actual existing A-household-cash checkpoint transition written by apply_household_rent's _StoreWrite + _checkpoint path: adjacent durable C12 checkpoints at the receipt/episode clock must independently reproduce the receipt's before/after cash and household material hashes and current household source.",
+      "effect": "a sole caller-rehashed ADMITTED receipt with no actual rent debit is refused B05_RENT_OPERATION_UNPROVEN instead of being read as current historical evidence."
+    },
+    {
+      "add": "The actual transition tuple (root, branch, clock, before/after cash, before/after household material hash) may back exactly one rent episode.",
+      "effect": "an appended sibling cannot copy a real transition as evidence for another period; ambiguous evidence fails closed."
+    },
+    {
+      "add_refusal_codes": [
+        "B05_RENT_OPERATION_UNPROVEN"
+      ],
+      "effect": "typed read-side refusal only; no writer ABI, schema, store or lock change."
+    }
+  ],
+  "closed_defects": [
+    "SOROK1037-RED-B05-SOLE-REHASHED-RENT (false ADMITTED/currentness READ with no actual rent operation)"
+  ],
+  "preserved": [
+    "B04 source and all B04 refusals",
+    "B05 root/branch/actor/period/source/rent/arithmetic/uniqueness checks",
+    "genuine zero UNCHANGED and held REFUSED reads",
+    "genuine historical h1 after h2 and replay/retry without a second debit",
+    "normal two purchases + one rent warm and fresh-process cold",
+    "pre-existing dwelling-source stale refusal and exact restore"
+  ],
+  "unchanged": [
+    "B05 writer apply_household_rent and _StoreWrite path",
+    "B04/B05 receipt schemas and lock behavior",
+    "B01/B02/B03 product",
+    "P2 writers and world material facts",
+    "C02/C03/C04/P6/D03 production",
+    "protected PRE-MAIN"
+  ],
+  "nonclaims": [
+    "not G5",
+    "not native/human/scientific acceptance",
+    "no motive or volition result",
+    "no currency conversion or new ledger",
+    "no protected merge",
+    "fully privileged checkpoint fabrication outside observed append_episode threat model"
+  ],
+  "verdict": "AUTHOR_R2_CANDIDATE_FOR_SAME_NONAUTHOR_FOCUSED_RERECEIVING",
+  "stop": true
+}
