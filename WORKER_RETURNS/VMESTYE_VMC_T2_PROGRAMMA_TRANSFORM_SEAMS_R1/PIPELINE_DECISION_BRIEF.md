@@ -1,0 +1,45 @@
+# VMC-T2 R3 — Where the data changes, and where it should change
+
+This is a **three-court** transformation map. The stable 52 T1R2-* IDs come from **T1 R3 `effa0a9e…`** (52 candidate distinct contracts, 38 direct historic source-code anchors and 14 C6-reported function families), not the obsolete 235-label R1 source index. There are 235 separately preserved R1 fates, not 235 independent transformations. A C6 historically selected AR release/hash is not proof that the source *originally ran* or that the present PROGRAMMA pipeline selects it.
+
+## The branching PROGRAMMA DAG under investigation
+
+The adopted *general* route (exact contract adoption often held) has several branches:
+- **S01 original source/frame issuer → R157/source configuration → S03 C11 validated events/release:** canonical source+wave+question+physical slot, population and option/scope rules, selected roles/consent, missing/collision refusal. The present C11 facade really creates `RespondentEvent`, coordinates and weights and validates its release; it has **not** been shown to select every legacy F01/F02/F03/F08 authority rule.
+- **S04 I03/I05/Batch:** I03 has typed exact empirical facts; I05 has protected bounded recursive generation, including an actual internal handoff and activation path. Diagnostics calculate MI/NMI/CramersV in `pre553_diagnostics.py:622–779` but are explicitly `diagnostic_only`; they do **not** select V547 top predictors, create V548's historical majority/deviation four-way partition, or assert V549b top-N semantics. Those statistical transformations require separate source-science decisions and selected arguments.
+- **S06 Field Forge / structural I04 → S07 M1/M2/M3/M4:** Q86 supplies real bounded two-way support, not generalized k-person/k-question J compilation; protected M2 has seven-field atomic routing, M3 has typed higher-order object construction, M4 has a governed publication repository and typed GT12 Q86 bridge. These are **real different current functions**. No auto-equivalence to historical signed V551 atom→V552 pressure, wave harmonization, or original V557/V558 legacy names.
+- **S09 N9 / N10E / N10W → S10 N11 / N12 → S11 Sorok:** M5 has materialized, replay-safe structural context *code*, but its known sourcefree consumer is explicitly `TEST_ONLY`, with no proven operative original35 N9 first selection. M6/actor-safe rendering is bounded; GT0 is a zero-effect path. Actual first consumer and consent/actor behavior must be independently shown before claiming terminal closure. N9 PREV3 imports `prev3_objective_position_materializer`, which is absent at protected cut on that specific path; this does not establish absence of the rest of N9/M5.
+
+## Contract-specific earliest divergences (selected high-impact examples)
+
+| Historical data mutation and purpose | Intended PROGRAMMA seam (owner to decide continuation) | Protected present truth | Earliest failing or unproved edge |
+| --- | --- | --- | --- |
+| F03 **selected directional** source QUC row overwrites six coordinates and role/eligibility; a refusal/neutral path must remain distinct | S01 source issuer → S03 C11/FF authority materialization, source and Pyat C11/FF | B_COUNTRY FQRA routing exists, C11 generic coordinates exist; no selected old six-coordinate authority application | selected AR/row → respondent's six source-governed coordinates |
+| F03 **non-directional** clears six signed coordinates and eligibility | S03 source-backed projection with FF signed-read exclusion | generic neutral input possible; neither clearance nor signed-output block shown | non-directional source predicate → absence of signed atom |
+| F03 **no-match preserve** vs **no-match refuse** distinct negative outputs | S03 deterministic collision/no-match selector and S06 allowed-use | general C11 checks not a historical no-row branch | selected release+scope predicate → preserve or denial + first FF reader |
+| F08 QUC specific override selects row, preserves role≠permission, rejects duplicate conflict | source issuer → C11/FF selected AR-0047–50 and source-version decision | authority refs/general validation; no protected selected override conflict branch | conflicting selected issuer rows → licensed relation vs refusal |
+| V547 position/response MI→top predictor and pair gain | optional S04 I03 science-qualified diagnostic → I05 decision consumer | diagnostics product exists, explicitly diagnostic-only; no selected predictor/gain consumer | diagnostic measure → selected branch/predictor |
+| V548 four disjoint respondent masks and targeted recurrence | S04 I05 conditional generation with explicit source-science grammar | native_map recursion executes and hands off but *different* bounded generation; no historic four-mask source rule | source-defined majority/deviation masks → I05 frontier membership |
+| V549/V549b branch associations, presence tests, per-anchor top-N | S04 I03 conditional query + FF science-qualified summaries | I03 exact query/diagnostics exists, not those historical selected calculations | selected branch/gate → anchor-specific result matrix |
+| V551 signed atom and coverage → V552 canonical component/pressure | S06 FF source/science-selected signed relations, downstream M3 or N9 only if required | M3 structural object and admission code exist but no V552 signed pressure equation/current first reader | adjudicated signed evidence → aggregated pressure with negative and denominator |
+| J registry/prepared/same-person join and refusal | S04 I03 joint k-tuple; S06 FF; selected source and science | Q86 two-way joint supported; no general same-person k≥3 J pattern enumerator | member identity/as-of → no cross-person mixing or false relation |
+| V553 source-wave harmonize or V554/557 thin admin carriers | S06 conditional source-wave harmonization if adopted; admin packets not runtime data transformation | M1 temporal admission and M4 publication exist but don't mean V553 historical harmonization; admin carrier not runtime | licensed cross-wave panel/scope → harmonized permissible output |
+| LMX-043 staged→validated→atomic commit; failure rollback; restart idempotent replay | N9/Long Memory custody / Authority39/40 with owner selection | M5 materialization and sourcefree test do not prove Long Memory atomic native promotion or restart replay | staging/validation receipt → atomic selection and replay once |
+| Sorok-first observable conduct to actor sensory access and interpretation | S11 actor/Sorok owner owns sensory/consent semantics | M6 safe expression and GT0 effect-zero paths exist; no selected actor perceptual behavior or consent authority proven | world observable effects → admissible actor cues → interpretation → behavior |
+
+## Current-first accounting
+
+The reverse inventory contains eleven bounded, source-code-qualified **current** abilities: C11 release, I03 analytical, I05 recurrence, diagnostic-only measure, Q86 FF bridge, M2 atom route, M3 higher-order composition, M4 repository, M5 structural-context prior, M6 actor-safe expression and GT0 zero-effect. Some lack an external real reader. They remain independent until a certified historical→current claim is proven. No file/module census can prove *all* dynamic imports, reflection, or programmatic invocations.
+
+The backward evidence is **typed**: 44 exact lexical callsite witnesses (line/sha, candidate until call scope qualified); 160 inspected non-test protected Python modules (source SHAs); 62 component + 82 seam + 49 GAP + 51 named-child records from design, separately graded. Do not add roadmap edges and call them code.
+
+## Owner actions and priority
+
+1. **P0** source issuer/Authority39–40 and Pyat: pin exact release, original document/version, predicate, scope/universe, row-level negative/refusal; choose semantic adoption or explicit no-retirement hold. Earliest impact is wrong respondent coordinates or unlawful signed evidence.
+2. **P1** statistical/scientific Pyat I03/I05/FF owner: decide V547–V549 branch predicates, safe denominator and recursion stop, signed V551→V552 equation, conditional J same-person; select exact input/authority then verify current first meaningful consumer or qualify justified retirement.
+3. **P1/P2** structural/publishing N9 owner: trace M2/M3→M4→M5 accepted material; distinguish typed candidate from actual selected downstream use, replay and adverse refusal. For LM043, verify commit/rollback/restart transition, not mere serialization.
+4. **S11** Sorok/actor and consent owners: test only separately authorized perceptual effects; neither stable text nor a safe expression function certifies actor observation or use consent.
+
+All 63 finite action rows say exactly which requirement decision is different from which code/reader check; none authorizes implementation. If the owner cannot certify preservation, classify `HELD_UNRESOLVED` rather than silently saying "missing" or "retired".
+
+**Frozen:** protected `256d46bf…`; T1 historical R3 `effa0a9e…` (under independent review). **NOT_RUN:** original sources, science/actor tests, native execution, independent acceptance. #787/#788/#789/#790 paused, reused documentary evidence only.
