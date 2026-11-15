@@ -119,28 +119,30 @@ def test_v1_postconsumer_guards_reject_even_consistent_v2_query_injection(
 def test_sourcefree_public_compiler_rederives_frozen_frontier_and_preserves_prohibitions(
     tmp_path,
 ):
+    root = tmp_path / "r03-v2-public"
+    root.mkdir(parents=True, exist_ok=True)
     fixture = s1e._fixed_fixture(s1e._native_fixture(
-        tmp_path / "r03-v2-public",
-        values=(0., 1., 0., 1., 0.),
+        root, values=(0., 1., 0., 1., 0.),
     ))
-    private = tmp_path / "r03-v2-public" / "private"
+    private = root / "private"
     private.mkdir(parents=True, exist_ok=True)
     sink = SourceSavedBodySink(
-        certificate_path=tmp_path / "r03-v2-public" / "source-i02.sqlite",
+        certificate_path=root / "source-i02.sqlite",
         authorized_private_root=private, chunk_rows=2,
     )
     handoff = s1e.build(
-        tmp_path / "r03-v2-public", fixture,
+        root, fixture,
         name="source-i02.sqlite", body_sink=sink, chunk_size=2,
     )
     release = SavedReleaseIdentity(sink.receipt.reconstructed_v1_release_ref)
     bundle = s1e._native_bundle(
         handoff, fixture, fixture["projection"], release,
     )
+    from rawlsing_next.tests.test_pyat960_s1e_native_fact import _NATIVE_AS_OF
     issue = compile_and_issue_governed_queries_v2(
         bundle=bundle, inventory=fixture["inventory"],
         policy=fixture["policy"], frontier=fixture["frontier"],
-        as_of=s1e._NATIVE_HOST, host=s1e._NATIVE_HOST,
+        as_of=_NATIVE_AS_OF, host=s1e._NATIVE_HOST,
         purpose=s1e._NATIVE_PURPOSE,
     )
     assert issue.schema == GOVERNED_QUERY_ISSUER_SCHEMA
