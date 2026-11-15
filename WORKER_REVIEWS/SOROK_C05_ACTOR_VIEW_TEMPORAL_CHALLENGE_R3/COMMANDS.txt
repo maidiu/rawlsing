@@ -1,0 +1,71 @@
+SOROK C05 R3 hostile actor-view/temporal court — literal commands
+Reviewer: ses_e2186e745ffecK1Ilg4cw26pVu
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+Branch: codex/sorok-c05-actor-view-temporal-challenge-20261115-r3
+Base prior review: c0cbe82f62a4e9516bf466575de3692c5c3081df
+Accepted source: 5d771dd86767655534b23576075e5da2db4fba78
+Final author report: 1cf1a37113cb7a48137734648b523a0a6deccd92
+Protected PRE-MAIN: 6a5c12f04323d74001f9632063ec907f4fc4468e (read-only)
+Interpreter: /private/tmp/rawlsing-oct28-p1r1/venv/bin/python (3.11.3)
+Every probe command used:
+  TMPDIR=$PWD/.local-logs/sorok-c05-actor-view-temporal-challenge-20261115-r3/tmp
+  PYTHONDONTWRITEBYTECODE=1
+  -B
+No pytest suite was needed for this hostile court; the probes call the actual
+C05 readers and a fresh-process cold child. No product file was written.
+
+1) Challenge 1 — hidden relation cardinality
+TMPDIR="$PWD/.local-logs/sorok-c05-actor-view-temporal-challenge-20261115-r3/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_ACTOR_VIEW_TEMPORAL_CHALLENGE_R3/newprobes/c05_challenge1_leakage.py
+EXIT=0; 13.24 real s; max RSS 50,917,376 B
+A/B same event; withheld count 0 -> 1; C positive; sever/restore/cold exact
+stdout: evidence/c05_challenge1_stdout.log
+time:   evidence/c05_challenge1_time.log
+report: evidence/c05_challenge1_report.json
+
+2) Challenge 2 — same-clock later relation in earlier event
+TMPDIR="$PWD/.local-logs/sorok-c05-actor-view-temporal-challenge-20261115-r3/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_ACTOR_VIEW_TEMPORAL_CHALLENGE_R3/newprobes/c05_challenge2_temporal.py
+EXIT=0; 11.86 real s; max RSS 45,944,832 B
+event doc/access unchanged; same-clock ENTER/PROMOTE enter prior context;
+later-clock CHANGE excluded; cold exact
+stdout: evidence/c05_challenge2_stdout.log
+time:   evidence/c05_challenge2_time.log
+report: evidence/c05_challenge2_report.json
+
+3) Challenge 3 — known relation versus perceived event; plural relations
+TMPDIR="$PWD/.local-logs/sorok-c05-actor-view-temporal-challenge-20261115-r3/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_ACTOR_VIEW_TEMPORAL_CHALLENGE_R3/newprobes/c05_challenge3_relation_perception.py
+EXIT=0; 5.36 real s; max RSS 45,039,616 B
+event NOT_PERCEIVED vs relation QUALIFIED; basis C12_EVENT_PERCEPTION present;
+two relations in plural output; first-sorted singular summary; cold exact
+stdout: evidence/c05_challenge3_stdout.log
+time:   evidence/c05_challenge3_time.log
+report: evidence/c05_challenge3_report.json
+
+4) Source/blob pins
+git ls-tree HEAD WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py
+shasum -a 256 <the two product files>
+git rev-parse HEAD / 5d771dd86767655534b23576075e5da2db4fba78 / 1cf1a37113cb7a48137734648b523a0a6deccd92 / c0cbe82f62a4e9516bf466575de3692c5c3081df / 6a5c12f04323d74001f9632063ec907f4fc4468e
+Outputs: evidence/revisions.txt, evidence/blob_pins.txt, BLOB_PINS.json
+
+5) Probe pins
+git hash-object WORKER_REVIEWS/SOROK_C05_ACTOR_VIEW_TEMPORAL_CHALLENGE_R3/newprobes/*.py
+shasum -a 256 WORKER_REVIEWS/SOROK_C05_ACTOR_VIEW_TEMPORAL_CHALLENGE_R3/newprobes/*.py
+Outputs: evidence/probe_pins.txt, PROBE_PINS.json
+
+6) Module resolution
+TMPDIR=<R3 tmp> PYTHONDONTWRITEBYTECODE=1 python -B -c "<import continuing_relations, supporting_actor, p2_owner; print __file__>"
+Output: evidence/module_paths.txt (all paths under this checkout)
+
+7) Downstream consumer search
+grep -R -n "read_actor_relative_context\|read_relation_history\|withheld_relation_count\|relation_aware\|context_effect\|C12_EVENT_PERCEPTION" --include='*.py' --exclude-dir=.git --exclude-dir=.local-logs --exclude-dir=WORKER_REVIEWS WORKER_RETURNS
+Result: no product downstream consumer outside the C05 module and its tests/probes.
+Output: evidence/downstream_consumers.txt
+
+Harness corrections disclosed in evidence/HARNESS_CORRECTIONS.md:
+- independent-start P2 worlds had different admission receipts; final fixture uses
+  one real event/state with sequential relation writes;
+- copied state root was refused by S37 SESSION_ROOT_MOVED; not bypassed;
+- Challenge 3 local KeyError corrected to document["context"]["private_state"].
+No product/oracle was weakened.
+
+No protected writes/merge, no B05, no CI/installs/VM/controller/global perms,
+no Browser/PYAT/SEAM, no #939 fleet, no science issuance.

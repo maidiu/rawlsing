@@ -1,0 +1,47 @@
+C05 R3 C12/owner order trace (Challenge 2, source 5d771dd, product blob d2120fa9)
+
+Real owner event 1: TEST_ONLY_BP4_WORLD_EVT_de61f0fe8ebf9eb0642225d542fd0b1a0b13b9e4d0b9244742745e74aa74cbc8
+  clock: 228
+  world_event seq: 14
+  owner operation: r3:ch2:event1 (present in owner operations DB)
+
+Relation write after that event, same logical clock 228:
+  P2_CONTINUING_RELATION_CHANGE seq 54, head seq 55 (ENTER, operation r3:ch2:enter)
+  P2_CONTINUING_RELATION_CHANGE seq 56, head seq 57 (PROMOTE, operation r3:ch2:promote)
+  owner operations DB: r3:ch2:enter and r3:ch2:promote are absent
+  relation segment source is the change/head self-hash chain, not an owner operation receipt
+
+Later clock control:
+  owner event 2: TEST_ONLY_BP4_WORLD_EVT_bdd86949272e018d0c4fc882cb60e2932fd153726f5d795201056fe0a89d2b44
+    clock 234, world_event seq 15, owner operation r3:ch2:event2
+  relation CHANGE at clock 234: P2_CONTINUING_RELATION_CHANGE seq 64, head seq 65
+    owner operation r3:ch2:change absent
+
+Reader behavior:
+  read_actor_relative_context(session, P_ID, event1) takes event.clock = 228 and calls
+    read_relation_history(..., as_of_clock=228) (continuing_relations.py:714-717).
+  _representation filters relation episodes by body.clock <= 228 (lines 459-462).
+  It does not consult the world_event seq (14), the relation episode seq (54/56),
+  the owner operation ordering, or a within-clock cutoff.
+  Therefore the relation writes after event1 at clock 228 enter event1's context.
+  The later CHANGE at clock 234 is excluded by the clock filter; that is the PASS control.
+
+Source line map:
+  continuing_relations.py:455-462  _representation clock <= as_of_clock
+  continuing_relations.py:549-564  withheld count
+  continuing_relations.py:584      actor-facing withheld_relation_count
+  continuing_relations.py:660-695  _context_effect, relations[0], unconditional C12_EVENT_PERCEPTION basis
+  continuing_relations.py:698-728  read_actor_relative_context event_clock -> read_relation_history
+  continuing_relations.py:727      relation_scope withheld_relation_count
+  continuing_relations.py:960-964  record_relation_change accepts clock == world_clock
+  continuing_relations.py:968-977  prospective state machine at the same clock
+  bp4/store.py:145-149/_next_seq separate episode/world_event sequence spaces
+  bp4/store.py:151-177 append_episode (self-hash episode)
+  bp4/store.py:179-193 append_world_event (separate seq)
+
+Cold replay:
+  The final state opened in a fresh process returned the same event1 context as the
+  warm post-later-clock read, including the same-clock ENTER/PROMOTE and excluding
+  the 234 CHANGE. See evidence/c05_challenge2_report.json checks:
+  event_document_unchanged=true, later_clock_change_not_included_in_event_228=true,
+  cold_event_228_context_exact=true.

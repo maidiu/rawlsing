@@ -1,0 +1,79 @@
+{
+  "schema": "SOROK_C05_R3_EVIDENCE@1",
+  "issue": "C05",
+  "job": "sorok-c05-actor-view-temporal-challenge-20261115-r3",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "source_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+  "final_author_report": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "prior_review_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "product_pins": {
+    "continuing_relations.py": {
+      "blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+      "sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2"
+    },
+    "supporting_actor.py": {
+      "blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92",
+      "unchanged": true
+    }
+  },
+  "governing_readback": "GOVERNING_READBACK.md",
+  "challenge_reports": {
+    "challenge1": {
+      "path": "evidence/c05_challenge1_report.json",
+      "sha256": "54d264fab1687b7218e57f446e8a0eb02c9be7a35aca48c9e3c04bcfe09f7c34",
+      "actual_red": "actor-facing withheld_relation_count 0->1 for hidden unexposed relation; same event and all other compared actor fields",
+      "cold_exact": true
+    },
+    "challenge2": {
+      "path": "evidence/c05_challenge2_report.json",
+      "sha256": "3e80a79d965a5444f4271d833b8d517abd58f789edb2b4b6b50613428c829643",
+      "actual_red": "same-clock later ENTER/PROMOTE enters prior event 228 relation context; event doc/access unchanged",
+      "later_clock_control": true,
+      "cold_exact": true
+    },
+    "challenge3": {
+      "path": "evidence/c05_challenge3_report.json",
+      "sha256": "556a226d4daaf1bab0fb0399ab3d5b3ff7074d45e889d6dd52ef3e70a98ac89b",
+      "actual_red": false,
+      "actual_pass": "event_access NOT_PERCEIVED distinct from relation QUALIFIED; plural output present; first-sorted singular summary",
+      "static_projection_risk": "context_effect.basis C12_EVENT_PERCEPTION while event_access NOT_PERCEIVED; no product downstream consumer found",
+      "plural_output_present": true,
+      "cold_exact": true
+    }
+  },
+  "actual_first_consumer": "continuing_relations.read_relation_history / read_actor_relative_context",
+  "downstream_product_consumers_found": false,
+  "downstream_search": "evidence/downstream_consumers.txt",
+  "static_risks": [
+    "no controller-only withheld-count API or separation",
+    "context_effect basis/plural fields are public but have no product downstream consumer in this checkout",
+    "C12 event and relation episode sequence spaces are separate; relation writes are caller-appended C12 episodes, not P2 owner operations"
+  ],
+  "commands_and_corrections": {
+    "commands": "COMMANDS.txt",
+    "harness_corrections": "evidence/HARNESS_CORRECTIONS.md",
+    "challenge_summary": "evidence/challenge_summary.json",
+    "c12_order_trace": "evidence/c12_order_trace.txt",
+    "probe_pins": "PROBE_PINS.json",
+    "blob_pins": "BLOB_PINS.json"
+  },
+  "three_verdicts": {
+    "engineering": "REVISE_EXACT_DEFECT",
+    "scientific": "HELD",
+    "authority": "PASS_SCOPED_SOURCEFREE_TEST_ONLY__NATIVE_PROTECTED_HELD"
+  },
+  "prior_mechanical_acceptance": "PRESERVED_NOT_REOPENED",
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "holds": [
+    "native C4/ADP-015 relation authority and actor-qualified knowledge",
+    "CAN/V3 scientific rule, event-time perception science and psychology",
+    "G2 selection, generated language, complete J1/Nadia response",
+    "J2, D04/D05, durable acquisition",
+    "human/scientific/source-rights receiving and protected merge",
+    "#939 fleet, PYAT/Browser/SEAM, new campaign/duel",
+    "concurrency/fork and whole C05 person life"
+  ],
+  "terminal": "STOP"
+}

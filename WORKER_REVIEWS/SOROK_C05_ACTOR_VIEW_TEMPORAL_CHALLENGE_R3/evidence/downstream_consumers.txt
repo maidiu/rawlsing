@@ -1,0 +1,14 @@
+C05 R3 downstream-consumer search
+Command: grep -R -n "read_actor_relative_context\|read_relation_history\|withheld_relation_count\|relation_aware\|context_effect\|C12_EVENT_PERCEPTION" --include='*.py' --exclude-dir=.git --exclude-dir=.local-logs --exclude-dir=WORKER_REVIEWS WORKER_RETURNS
+Exclusions: the C05 module itself, the original C05 author test root, and the R2 repair test/probe root are excluded from the "consumer" list; their imports are test/probe use, not a product downstream consumer.
+Result: NO PRODUCT DOWNSTREAM CONSUMER of these fields was found outside the C05 module and its tests/probes.
+The actual first consumer is the public actor-facing reader itself:
+  WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py
+    read_relation_history
+    read_actor_relative_context
+    _context_effect
+No D02/D03/J2, persona, UI, model-provider or world consumer imports these fields in this checkout.
+Therefore:
+  - the withheld-cardinality difference is an actual public actor-facing API supply, not a controller-only diagnostic;
+  - the context_effect basis/plural fields are actual public actor-facing projection fields, but no executed downstream person/model consumer was found;
+  - the absence of a downstream consumer does not cure the public reader output and must not be represented as an executed actor-knowledge result.
