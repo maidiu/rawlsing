@@ -7,7 +7,7 @@ Same original nonauthor reviewer `ses_e30c25800ffeT8XbyTuHekRCme` returned **ACC
 - Independent review: `c18b7e087d5d5b178ed5acc92f9c82250a1743de`.
 - Terminal: `S2A_TERMINAL_CLOSED@ce7704253f6a2381310c3eb2c7412a2d85c5596c`.
 
-The original coherent projected-event/locator poison now raises typed DirectEstateError in actual native I03 and public selection before any fact. Legitimate facts/refs/denominators/risk/replay, repeats/ranks/routing/UNKNOWN/None/empty and changed/restored inputs pass. Independent Darwin: seven new tests, 64 S2-A focused, 31 S2-C, 31 S2-D; Linux: 86 inherited. Counts overlap and are not summed. The 256-respondent resource proof does not establish 100k or process-tree RSS.
+The original coherent projected-event/locator poison now raises typed DirectEstateError in actual native I03 and public selection before any fact. Legitimate facts/refs/denominators/risk/replay, repeats/ranks/routing/UNKNOWN/None/empty and changed/restored inputs pass. Independent Darwin: seven tests in the expanded S2-A file, 64 S2-A focused, 31 S2-C, 31 S2-D; Linux: 86 inherited. Counts overlap and are not summed. The 256-respondent resource proof does not establish 100k or process-tree RSS.
 
 [Immutable reviewer receipt and witnesses](https://github.com/maidiu/rawlsing/tree/c18b7e087d5d5b178ed5acc92f9c82250a1743de/WORKER_RETURNS/PYAT999_NATIVE_G5_20261115).
 
