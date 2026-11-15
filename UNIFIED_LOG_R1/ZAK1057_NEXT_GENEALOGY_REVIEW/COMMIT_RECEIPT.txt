@@ -1,0 +1,18 @@
+REVIEW: ZAK1057:NEXT:GENEALOGY_REVIEW
+GOVERNING_CUT: 81c7b5a05ebc2d16d5729ab6a8b190ce88fc7507
+PROTECTED_SOURCE_CUT: 6a5c12f04323d74001f9632063ec907f4fc4468e
+BRANCH: docs/zak1057-next-genealogy-review-mainmac-20261115-r1
+BASE: 81c7b5a05ebc2d16d5729ab6a8b190ce88fc7507
+PRIMARY_REVIEW_COMMIT: 9a7a42ce2455798b5418f9d2a6a3b3ef76481102
+TARGETS:
+  A: 315ccde2aeef3db90c41451d468c14023b434c78 UNIFIED_LOG_R1/ZAK1057_R4_02_DISCOVERY_GENEALOGY/
+  B: 4fba611048ba1a9a8dfc4d4e605daee8eda676d0 UNIFIED_LOG_R1/ZAK1057_R4_02_BRANCH_GENEALOGY/
+VERDICTS:
+  A: ACCEPT_SCOPED_S1
+  B: REVISE_EXACT_DOCUMENTARY_DEFECT
+  RECONCILED_SUBSET: ACCEPT_SCOPED_S1
+SOLE_OUTPUT_ROOT: UNIFIED_LOG_R1/ZAK1057_NEXT_GENEALOGY_REVIEW/
+PAYLOAD_HASHES: see MANIFEST.json
+RUNTIME: model_id_exposed opencode-go/deepseek-v4.1-flash; claimed V4.1-Flash1017 MAX; actual MAX state, token/cache/cost/retries UNKNOWN; subagents NONE; session identity UNKNOWN
+SCOPE: documentary review only; no engineering, tests, CI, scientific execution, raw respondent reads, protected merge or central-index edit
+NOTE: this receipt is a second commit on the same documentary branch; the primary review commit remains 9a7a42ce2455798b5418f9d2a6a3b3ef76481102
