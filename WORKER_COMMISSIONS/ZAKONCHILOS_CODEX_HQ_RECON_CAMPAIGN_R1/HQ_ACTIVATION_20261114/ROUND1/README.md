@@ -9,3 +9,9 @@ User authorized three concurrent documentary runs, 30 minutes each, then wrap an
 | 04 | PR1053 69804f88abc8e84cf91ee256aa66fb607a49f5a7 | F6M numeric outputs to F6P/N7/N9 recipients | UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R1 on docs/zak1057-04-mainmac-20261114-r1 |
 
 Source research has begun; findings NOT_RECEIVED. HQ will verify scope/source claims, publish frozen lane cuts and append their links/dispositions here serially after terminal intake. This is an additive campaign index rooted in unchanged #1054 d2583643, not a replacement atlas or independent acceptance. No engineering or scientific execution.
+
+## 03 initial return — received, exact corrections underway
+
+Frozen documentary return [133c67d41](https://github.com/maidiu/rawlsing/tree/133c67d4182357c7f1e42ebc1d327b18317360b0/UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R1), received after 9m18s. Eighteen primary source blobs matched. Banked source distinction: protected I04 structural admission is a distinct mechanism; candidate historical selected-rule binding and R157 are not protected adoption. No native selected-QSM effect was demonstrated.
+
+HQ found malformed coverage rows/conflicting counts and an overbroad consumer statement: RouteObligation.from_structural_admission is a real non-test static admission-receipt consumer, although it does not invoke I04. Same worker is correcting only these exact documentary defects inside the original round deadline. No acceptance/global absence or new engineering conclusion. See 03_INITIAL_INTAKE.json; original return preserved. Reported97provider-step cost sum $0.144556842, not invoice.

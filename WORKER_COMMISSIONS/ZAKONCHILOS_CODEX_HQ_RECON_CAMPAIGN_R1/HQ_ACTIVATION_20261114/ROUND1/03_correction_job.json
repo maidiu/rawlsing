@@ -1,0 +1,24 @@
+{
+  "job_id": "zak1057-03-round1-receiving-correction",
+  "session": "ses_e22bd2212ffeuDpE5KDgQ8bGEV",
+  "grant_id": "user-zak1057-round1-03-within-original-cap",
+  "argv": [
+    "/usr/local/bin/python3",
+    "-c",
+    "import subprocess,sys,json,threading,urllib.request,base64,time\nfrom pathlib import Path\nsid,cap,proof=sys.argv[1:4]\nproc=subprocess.Popen(sys.argv[4:])\nPath(proof).write_text(json.dumps({\"session\":sid,\"cli_pid\":proc.pid,\"cap_seconds\":int(cap),\"started_epoch\":time.time()}))\ndef stop():\n cfg=json.loads(Path(\"/Users/matthewsmith/.config/opencode/service.json\").read_text())\n req=urllib.request.Request(\"http://127.0.0.1:49374/api/session/\"+sid+\"/interrupt?resume=false\",data=b\"\",method=\"POST\")\n req.add_header(\"Authorization\",\"Basic \"+base64.b64encode((\"opencode:\"+cfg[\"password\"]).encode()).decode())\n try:\n  with urllib.request.urlopen(req,timeout=15) as response: status=response.status\n except Exception as exc: status=type(exc).__name__\n Path(proof).with_suffix(\".deadline.json\").write_text(json.dumps({\"session\":sid,\"interrupt\":status,\"at_epoch\":time.time()}))\n try:proc.wait(timeout=15)\n except subprocess.TimeoutExpired:proc.terminate()\ntimer=threading.Timer(int(cap),stop);timer.start()\ntry:code=proc.wait()\nfinally:timer.cancel()\nsys.exit(code)\n",
+    "ses_e22bd2212ffeuDpE5KDgQ8bGEV",
+    "1138",
+    "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-03-round1-receiving-correction-cli.json",
+    "/Users/matthewsmith/.opencode/bin/opencode",
+    "run",
+    "--format",
+    "json",
+    "--session",
+    "ses_e22bd2212ffeuDpE5KDgQ8bGEV",
+    "--agent",
+    "zak1057-recon",
+    "--model",
+    "opencode-go/deepseek-v4.1-flash#max",
+    "SAME ROUND 1, EXACT RECEIVING CORRECTION ONLY. Your initial return was banked unchanged by HQ. Use the REMAINING original 30-minute allowance; no new tranche/research round. Fix only these demonstrated documentary defects in your own return, preserve original evidence and source-grade limits:\n1 COVERAGE.tsv has malformed rows (csv.DictReader finds a None overflow column) and 21 actual rows, not narrative 8 or 4. Normalize to exact R1 header/field count, do not discard coverage. Derive literal counts from actual rows and make 00_RETURN summary/terminal sentence/SCOPE consistent. Six mechanism rows likewise have conflicting summary counts; count exact relation values rather than prose guesses. Keep14 inherited T, no newT.\n2 Qualify universal caller absence: HQ whole-tree name search confirms no direct non-test invocation of evaluate_structural_empirical_admission at frozen protectedcut, NOT absence of all downstream admission consumers/current alternatives. RouteObligation.from_structural_admission is a REAL non-test static consumer of an AdmissionEvaluation and its canonical StructuralEmpiricalAdmission receipt, performs exact validations and derives route facts (pre553_analytical_state_and_route.py lines~301 onward). Describe it accurately as receipt/evaluation consumer, not merely a type reference; it does not itself invoke I04. Trace this one existing receiver's immediately relevant callers if accessible within remaining time; don't open newglobalresearch. No selected QSM/runtime invocation is proved.\n3 Keep broader conclusions bounded to inspected protectedcut and explicit candidates, not active PYATmachine globally. Candidate selector and R157 retain positive source evidence. Count/format QA is static documents only: no tests or Rawlsing execution.\n4 Re-check literal widths/IDs using allowed tools only; do not run Python/shellscripts. If no structuralvalidator tool permitted, edit rows carefully and state what you checked; HQ will perform static csv QA. Repair own manifest to honest actual hashes or explicit HQ_PENDING_HASH without fabricated values. Leave one precise next source-only question and no engineering dispatch.\nWrite complete corrected documents to same ownreturn; finish within ORIGINAL deadline 2026-11-15T04:02:36.785088+00:00. No git commit/push: HQ publishes once correction returned. No schema redesign, new theories, agents or another round. Reply with changed files and exact corrections."
+  ]
+}
