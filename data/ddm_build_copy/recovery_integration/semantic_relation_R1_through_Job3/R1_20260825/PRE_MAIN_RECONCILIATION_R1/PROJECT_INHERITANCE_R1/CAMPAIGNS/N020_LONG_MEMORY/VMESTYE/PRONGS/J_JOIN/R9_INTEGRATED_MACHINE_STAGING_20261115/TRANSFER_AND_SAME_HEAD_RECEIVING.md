@@ -1,3 +1,9 @@
+# R10 current-source custody note — overrides preceding R9 author's old versions only
+
+Latest author T1 R12 PR #871 `5cc46ca7d60c08d79261b7e02b196f9da2788b8d`; T2 R7 PR #1085 `f5c709899b9b7aa92205099d34f9fbe365693e02`. Distinct independent #815 / #816 have **not yet logged qualified receipt on either exact new HEAD**. The sole canonical draft #864 writer SHA is still `31d2642ce7667d72efc08c3f6d42a2674b10d5ea` with no confirmed transfer, so the current R10 package remains in existing isolated PR #1086. See `R10_T1_R12_T2_R7_SOURCE_INTAKE/` for complete reversible source rows and negative cases. A new independent #815/#816 source preflight of the frozen R10 staging HEAD can happen now, but future **canonical same-HEAD JOIN_REVIEW must examine one newer source-qualified authorized canonical DATA head**. No author-side source assurance or comment request is itself formal acceptance.
+
+---
+
 # ZL15 — explicit single-writer transfer and review dependency
 
 ## Exact source

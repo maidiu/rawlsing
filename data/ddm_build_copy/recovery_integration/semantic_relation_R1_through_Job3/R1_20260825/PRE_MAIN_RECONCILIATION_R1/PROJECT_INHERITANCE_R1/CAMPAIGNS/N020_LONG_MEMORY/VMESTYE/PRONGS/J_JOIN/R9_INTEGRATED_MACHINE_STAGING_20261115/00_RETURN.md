@@ -1,3 +1,15 @@
+# ZL15 R10 AUTHOR-SOURCE UPDATE / CONTROLLING STAGING RETURN
+
+This updated exact HEAD supersedes the R9 **staging source cut**, not its preserved R9 original Git commit. **T1 author** [#871 R12](https://github.com/maidiu/rawlsing/commit/5cc46ca7d60c08d79261b7e02b196f9da2788b8d) and **T2 author** [#1085 R7](https://github.com/maidiu/rawlsing/commit/f5c709899b9b7aa92205099d34f9fbe365693e02) replace R9's T1 R5/T2 R3 as the *latest author evidence*. All original thirteen R5 prongs, #864 R8 canonical DATA, its 2607 source anti-join, 1536 conflicts and 4420 stage-court labels are unchanged. No P0/P1/P2 re-run. The 52 latest source IDs intersect exactly (52/52), with **T1 R5→R12 8 IDs/73 changed cells** and **T2 R3→R7 7 IDs/19 changed cells**. 11 new conditional source-negative/first-reader risks staged without asserting original respondent/native outcomes.
+
+**Current return files:** [full new 52-row H→P→C](R10_T1_R12_T2_R7_SOURCE_INTAKE/R10_HISTORICAL_TO_CURRENT_52.tsv), [92 complete field before/afters](R10_T1_R12_T2_R7_SOURCE_INTAKE/R10_AUTHOR_R5_R12_AND_R3_R7_EXACT_FIELD_DELTAS.tsv), [11 source-negative cases](R10_T1_R12_T2_R7_SOURCE_INTAKE/R10_SOURCE_NEGATIVE_CONSEQUENCE_COURT.tsv), plus 10 immutable source-file blob mirrors. Revised `THE_ACTUAL_MACHINE.md`, `MASTER_MAP.md` and `REVERSE_NAVIGATION.md` include the new source findings. Earlier original R9 cells remain pinned by [R9 archived commit](https://github.com/maidiu/rawlsing/commit/a11b1c3c340813f78d94bfc4e853ec3153013490).
+
+**Authority:** #815 and #816 comments inspected; both demand independent receiving but no exact R12/R7 `ACCEPT_SCOPED_S1` independently issued. PR #864 exclusive canonical writer lease/transfer not evidenced; #864 official DATA remains at `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`. Therefore this is source-graded **R10 ISOLATED STAGING**, not canon, not future current/source issuer, native original35, independent same-head receiving or protected merge. **Terminal:** `HOLD_SCOPE_EXACT__R10_T1_R12_T2_R7_INTEGRATED_STAGING__CANONICAL_864_LEASE_AND_INDEPENDENT_RECEIVING_MISSING`.
+
+---
+
+# Archived R9 return (preserved for source provenance)
+
 # VMESTYE ZL15 R9 — integrated machine candidate staging / complete bounded return
 
 **Terminal:** `HOLD_EXACT_SCOPE__R9_INTEGRATED_MACHINE_STAGING_PUBLISHED__WRITER_LEASE_NOT_TRANSFERRED__T1_T2_FORMAL_RECEIVING_PENDING__NO_CANONICAL_DATA_EDIT`
