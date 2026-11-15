@@ -1,0 +1,5 @@
+# ZL15-B P2 single-round scope
+
+P0 frozen B PR1078@ab09f8f8fd77f44945f22517f56739b9734d9a17, A PR1075@3039a60749f4f226c35f9760dfba3a8ac5a4cab3; P1 frozen B PR1078@4f53c9150c9697a888e15135ec25ccdbf3d31feb, A PR1075@fd5c8e77b03e32d7d238e38b09e5b2202de4f797, both registered in #1057, so P2 is authorized as a **single response/reassessment**. Frozen phases never overwritten. Protected 6a5c12f04323d74001f9632063ec907f4fc4468e; candidate PR864 canonical untouched. Narrow P2 material: three exact A P1 contests, an independent 8/8 pure documentary source-tuple erratum for B P0, and one bounded V549b reporter hazard. No other general searching or source-era census; no S2/native/actor/engineering, original respondent, issuer, branch reset, SHARED writer, protected merge, or independent receiving claims.
+
+Author B P2 grades RESOLVED/PARTIAL at evidence/disagreement scope only; SHARED/ will be adjudicated solely by HQ custodian and canonical/reader acceptances by #815/#816/#817. B six P1 objections remain contested until A's own P2 answer/independent reviewer; do not conflate A P1 with those answers.
