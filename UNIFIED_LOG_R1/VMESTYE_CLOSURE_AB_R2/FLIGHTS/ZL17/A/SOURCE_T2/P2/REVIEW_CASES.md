@@ -1,0 +1,25 @@
+# SOURCE_T2 P2 — effect-bearing cases and negative falsifiers
+
+## R08 signed reader: three relevant output events, two code-call stages
+
+The protected `pre553_evidence_world_consumer.configure_evidence_world_context` first requires signed EvidenceConsumerReader values for *every* prefix and compares source ID, dataset, wave, edition, byte digest, source design, clocks, permission and model rule across the sequence. The subsequent `pre553_universal_world_binding._progressive_step` **conditionally** imports/reads the same R08 consumer again if prefix.evidence_reader exists, invokes `evaluate_positioned_subject_possibility`, requires an identical result hash/evidence/fact, **then** changes the returned progressive step's numerical `denominator` and `cells` to signed values. The downstream progressive provider returns that step; however the containing module explicitly says TEST_ONLY. One named reverse row may express both sites and the precise first output effect; two linkable rows may be easier to navigate. Neither is a source-issued/non-test first reader. Negative: inconsistent source wave, temporal clock, permission, risk set, model rule or consumer result must reject in static code; no actual mutation execution was performed. Evidence P2 EV0009/10.
+
+## I07 and Batch: retain existing helpful current code, don't pretend old selected rule applied
+
+T2 R3 `COMP:ROADMAP:S07.2` already contains the literal function symbol `pre553_source_relations.guard_estimand_composition`; its `ROADMAP_NAMED_CHILD` source grade says `NOT_CALLER_PROOF`. Protected I07 code produces a distinct OperationGuardReceipt from source semantic equivalence, overlap nonduplication and estimand composition checks, or refuses. This is **not** the historical F6M numerical bounds and not proof of a current non-test reader. Source index omission concerns the current-first graph edge, not total documentary absence. Batch uses exact `semantic_input_refs` and protects completed receipt provenance after an externally admitted source release; it does not select the historic F03 six structural coordinates or F08 override. No new Batch envelope is demanded. Evidence P2 EV0003/4/5/6.
+
+## F6M branch historical numeric recovery
+
+At exact `1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa` the historical code function `synthesize` explicitly produces source-native baseline, plus experimental conditional target mixture. It computes `covered_subprobability`, `uncovered_target_mass`, `source_disagreement_and_uncovered_bounds`, and `bias_sensitivity_bounds`. When uncovered mass or unqualified source scope prevents full target distribution, it returns partial identification or backoff. Top docstring declares NO authenticated source owner issuer and all output experimental even if caller declares real source. The exact same protected current path returns a GitHub 404 at `6a5c12f04323d74001f9632063ec907f4fc4468e`; that is one *path-scoped* negative, not evidence that all relocated module equivalents are absent. No new historical T is minted: link existing F6M identity to exact candidate source. Needed next action only when science owner decides the estimand remains mandatory: selected real source/issuer, proper numerical output and actual N9 first read or competent retirement. Evidence P2 EV0011/12.
+
+## Q86 and V553/V554 alternatives
+
+GT2 Field Forge accepts exactly matched risk set, one source universe and RAW unweighted support and refuses other values. GT12 positive eligible relation can produce M4 V554 CONTEXT-only publication and V558 resolution. These are narrow positive/static negative; not F03 or F6M and not native actor. M1 modern V554 `SIG001` direct is lawful only with `V553_NOT_REQUIRED_FOR_THIS_USE`/complete direct; `SIG002/3` require V553-owned temporal meaning; K05/8/9 and K06/7 distinguish negative, missing and unknown. This IF split must not be collapsed into unconditional V553 dependency. Historical V553 source-keyed wave harmonization and retained historical V554 numerical country/year pressure-seed are *two different older* operations, distinct from current M1; old seed actual selected reader/retirement still unknown. Evidence P2 EV0007/8/13/14/15.
+
+## Three courts, no false positive
+
+- Engineering: static called current bodies/negative source branches true at cited SHA only; no tests, no native proof.
+- Scientific: F6M numeric formulas exist historically branch-only, but no qualified source/estimand/selected non-test N9; F03/F08 and V554 old selected rule continuation remain open proof, not automatic lost function.
+- Authority: source hash or generic ExactRef is not an issuer decision. TEST_ONLY signed R08 and CONTEXT-only Q86 do not mint actor/consent/current selection.
+
+The next **actual** owners are the T2 #870 documentary author for two graph edits, source/science issuer and Pyat for F6M and F03/F08/old V554 decisions, and independently qualified #816/#815 reviewers at the later new #814 HEAD; B can post its own P2 as a separate peer response.
