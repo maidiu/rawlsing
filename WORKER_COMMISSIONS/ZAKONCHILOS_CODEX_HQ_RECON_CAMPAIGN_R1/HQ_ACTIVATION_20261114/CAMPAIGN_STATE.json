@@ -714,7 +714,7 @@
   "independent_review_boundary": "A materially complete source-stratum group; distinct nonauthor reviewer within three-run cap. No fourth full-time worker, no format-only acceptance.",
   "wake_policy": "Existing finite terminal notifications only; recurring goal wake-ups remain off; once-daily material checkpoint when HQ is operating, no new daemon/timer.",
   "scope": "Documentary source S0/S1 only; no engineering/scientific run or authority promotion.",
-  "status": "ROUND1_ALL_THREE_STOPPED__DOCUMENTARY_RETURNS_PUBLISHED__EXPANSION_REPORT_DELIVERED",
+  "status": "ROUND2_THREE_RUNNING_MODEL_VERIFIED",
   "round1_launch_utc": "2026-11-15T03:32:36.490519+00:00",
   "actual_turn_proofs": [
     "WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/HQ_ACTIVATION_20261114/ROUND1/02_actual_turn.json",
@@ -953,5 +953,1219 @@
   },
   "expansion_decision": "No second round launched. One bounded independent group source challenge recommended before territory expansion; explicit source/runtime limits remain.",
   "closing_active_local_sessions": 0,
-  "reported_worker_cost_usd": 0.640398354
+  "reported_worker_cost_usd": 0.640398354,
+  "round2": {
+    "started_utc": "2026-11-15T04:08:09.686274+00:00",
+    "deadline_utc": "2026-11-15T04:38:09.686274+00:00",
+    "user_authorization": "do another round; same30-minute perworker bound",
+    "workers": [
+      {
+        "lane": "REVIEW",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-round2-review",
+        "branch": "docs/zak1057-round2-review-mainmac-20261114-r1",
+        "output": "UNIFIED_LOG_R1/ZAK1057_ROUND2_INDEPENDENT_REVIEW/",
+        "session": "ses_e229d86a6ffe9BFB5nqre0lFuC",
+        "agent": "zak1057-review",
+        "rules": [
+          {
+            "action": "*",
+            "resource": "*",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "glob",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "grep",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "read",
+            "resource": "*.env",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.env.*",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*auth.json",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*service.json",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.sav",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.dta",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.csv",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.parquet",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.sqlite",
+            "effect": "deny"
+          },
+          {
+            "action": "shell",
+            "resource": "git show *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git ls-tree *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git grep *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git log *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git rev-parse *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git status *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git diff *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "rg *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "sed *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "head *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "tail *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "wc *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "date *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "shasum *",
+            "effect": "allow"
+          },
+          {
+            "action": "external_directory",
+            "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-hq/*",
+            "effect": "allow"
+          },
+          {
+            "action": "edit",
+            "resource": "UNIFIED_LOG_R1/ZAK1057_ROUND2_INDEPENDENT_REVIEW/*",
+            "effect": "allow"
+          },
+          {
+            "action": "edit",
+            "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-round2-review/UNIFIED_LOG_R1/ZAK1057_ROUND2_INDEPENDENT_REVIEW*",
+            "effect": "allow"
+          }
+        ],
+        "effective_agent": {
+          "id": "zak1057-review",
+          "name": "zak1057-review",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "request": {
+            "settings": {},
+            "headers": {},
+            "body": {}
+          },
+          "system": "You research immutable source and author only your designated documentary return. Never run tests, scientific code, CI, scripts, subagents or engineering. Shell is for read-only source inspection. Do not read respondent data or credentials. HQ commits and pushes your bounded return after intake.\n",
+          "description": "Independent source review only",
+          "mode": "primary",
+          "hidden": false,
+          "permissions": [
+            {
+              "action": "*",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "*",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.*",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.example",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.local/share/opencode/shell/*/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.local/share/opencode/tool-output/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.config/opencode/*",
+              "effect": "allow"
+            },
+            {
+              "action": "*",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "glob",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "grep",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "read",
+              "resource": "*.env",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*auth.json",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*service.json",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.sav",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.dta",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.csv",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.parquet",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.sqlite",
+              "effect": "deny"
+            },
+            {
+              "action": "shell",
+              "resource": "git show *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git ls-tree *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git grep *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git log *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git rev-parse *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git status *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git diff *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "rg *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "sed *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "head *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "tail *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "wc *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "date *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "shasum *",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-hq/*",
+              "effect": "allow"
+            },
+            {
+              "action": "edit",
+              "resource": "UNIFIED_LOG_R1/ZAK1057_ROUND2_INDEPENDENT_REVIEW/*",
+              "effect": "allow"
+            },
+            {
+              "action": "edit",
+              "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-round2-review/UNIFIED_LOG_R1/ZAK1057_ROUND2_INDEPENDENT_REVIEW*",
+              "effect": "allow"
+            },
+            {
+              "action": "browser",
+              "resource": "*",
+              "effect": "deny"
+            }
+          ]
+        },
+        "startup_sha": "2bddbcde9dd5a5776d65bafeed5186be5bbbbca1",
+        "job_id": "zak1057-review-documentary-round2",
+        "child_pid": 23148,
+        "supervisor_pid": 23147,
+        "observer_pid": 23149,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-review-documentary-round2",
+        "launch_is_not_completion": true
+      },
+      {
+        "lane": "03",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-03",
+        "branch": "docs/zak1057-03-mainmac-20261114-r1",
+        "output": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/",
+        "session": "ses_e22bd2212ffeuDpE5KDgQ8bGEV",
+        "agent": "zak1057-recon",
+        "rules": [
+          {
+            "action": "*",
+            "resource": "*",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "glob",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "grep",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "read",
+            "resource": "*.env",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.env.*",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*auth.json",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*service.json",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.sav",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.dta",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.csv",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.parquet",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.sqlite",
+            "effect": "deny"
+          },
+          {
+            "action": "shell",
+            "resource": "git show *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git ls-tree *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git grep *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git log *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git rev-parse *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git status *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git diff *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "rg *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "sed *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "head *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "tail *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "wc *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "date *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "shasum *",
+            "effect": "allow"
+          },
+          {
+            "action": "external_directory",
+            "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-hq/*",
+            "effect": "allow"
+          },
+          {
+            "action": "edit",
+            "resource": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/*",
+            "effect": "allow"
+          },
+          {
+            "action": "edit",
+            "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-03/UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2*",
+            "effect": "allow"
+          }
+        ],
+        "effective_agent": {
+          "id": "zak1057-recon",
+          "name": "zak1057-recon",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "request": {
+            "settings": {},
+            "headers": {},
+            "body": {}
+          },
+          "system": "You research immutable source and author only your designated documentary return. Never run tests, scientific code, CI, scripts, subagents or engineering. Shell is for read-only source inspection. Do not read respondent data or credentials. HQ commits and pushes your bounded return after intake.\n",
+          "description": "Bounded documentary research only",
+          "mode": "primary",
+          "hidden": false,
+          "permissions": [
+            {
+              "action": "*",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "*",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.*",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.example",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.local/share/opencode/shell/*/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.local/share/opencode/tool-output/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.config/opencode/*",
+              "effect": "allow"
+            },
+            {
+              "action": "*",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "glob",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "grep",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "read",
+              "resource": "*.env",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*auth.json",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*service.json",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.sav",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.dta",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.csv",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.parquet",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.sqlite",
+              "effect": "deny"
+            },
+            {
+              "action": "shell",
+              "resource": "git show *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git ls-tree *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git grep *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git log *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git rev-parse *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git status *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git diff *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "rg *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "sed *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "head *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "tail *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "wc *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "date *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "shasum *",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-hq/*",
+              "effect": "allow"
+            },
+            {
+              "action": "edit",
+              "resource": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/*",
+              "effect": "allow"
+            },
+            {
+              "action": "edit",
+              "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-03/UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2*",
+              "effect": "allow"
+            },
+            {
+              "action": "browser",
+              "resource": "*",
+              "effect": "deny"
+            }
+          ]
+        },
+        "startup_sha": "0098b058b569471e140710f11d0efe029ecb0c50",
+        "job_id": "zak1057-03-documentary-round2",
+        "child_pid": 23154,
+        "supervisor_pid": 23152,
+        "observer_pid": 23155,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-03-documentary-round2",
+        "launch_is_not_completion": true
+      },
+      {
+        "lane": "04",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-04",
+        "branch": "docs/zak1057-04-mainmac-20261114-r1",
+        "output": "UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R2/",
+        "session": "ses_e22bd21eeffeH5GWvx2XBKwSEw",
+        "agent": "zak1057-recon",
+        "rules": [
+          {
+            "action": "*",
+            "resource": "*",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "glob",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "grep",
+            "resource": "*",
+            "effect": "allow"
+          },
+          {
+            "action": "read",
+            "resource": "*.env",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.env.*",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*auth.json",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*service.json",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.sav",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.dta",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.csv",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.parquet",
+            "effect": "deny"
+          },
+          {
+            "action": "read",
+            "resource": "*.sqlite",
+            "effect": "deny"
+          },
+          {
+            "action": "shell",
+            "resource": "git show *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git ls-tree *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git grep *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git log *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git rev-parse *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git status *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "git diff *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "rg *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "sed *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "head *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "tail *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "wc *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "date *",
+            "effect": "allow"
+          },
+          {
+            "action": "shell",
+            "resource": "shasum *",
+            "effect": "allow"
+          },
+          {
+            "action": "external_directory",
+            "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-hq/*",
+            "effect": "allow"
+          },
+          {
+            "action": "edit",
+            "resource": "UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R2/*",
+            "effect": "allow"
+          },
+          {
+            "action": "edit",
+            "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-04/UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R2*",
+            "effect": "allow"
+          }
+        ],
+        "effective_agent": {
+          "id": "zak1057-recon",
+          "name": "zak1057-recon",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "request": {
+            "settings": {},
+            "headers": {},
+            "body": {}
+          },
+          "system": "You research immutable source and author only your designated documentary return. Never run tests, scientific code, CI, scripts, subagents or engineering. Shell is for read-only source inspection. Do not read respondent data or credentials. HQ commits and pushes your bounded return after intake.\n",
+          "description": "Bounded documentary research only",
+          "mode": "primary",
+          "hidden": false,
+          "permissions": [
+            {
+              "action": "*",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "*",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.*",
+              "effect": "ask"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.example",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.local/share/opencode/shell/*/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.local/share/opencode/tool-output/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/*",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/.config/opencode/*",
+              "effect": "allow"
+            },
+            {
+              "action": "*",
+              "resource": "*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "glob",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "grep",
+              "resource": "*",
+              "effect": "allow"
+            },
+            {
+              "action": "read",
+              "resource": "*.env",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.env.*",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*auth.json",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*service.json",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.sav",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.dta",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.csv",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.parquet",
+              "effect": "deny"
+            },
+            {
+              "action": "read",
+              "resource": "*.sqlite",
+              "effect": "deny"
+            },
+            {
+              "action": "shell",
+              "resource": "git show *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git ls-tree *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git grep *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git log *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git rev-parse *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git status *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "git diff *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "rg *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "sed *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "head *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "tail *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "wc *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "date *",
+              "effect": "allow"
+            },
+            {
+              "action": "shell",
+              "resource": "shasum *",
+              "effect": "allow"
+            },
+            {
+              "action": "external_directory",
+              "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-hq/*",
+              "effect": "allow"
+            },
+            {
+              "action": "edit",
+              "resource": "UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R2/*",
+              "effect": "allow"
+            },
+            {
+              "action": "edit",
+              "resource": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-04/UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R2*",
+              "effect": "allow"
+            },
+            {
+              "action": "browser",
+              "resource": "*",
+              "effect": "deny"
+            }
+          ]
+        },
+        "startup_sha": "ba20eeeea2243edd71febe0af0bc184d1cfeef1e",
+        "job_id": "zak1057-04-documentary-round2",
+        "child_pid": 23160,
+        "supervisor_pid": 23159,
+        "observer_pid": 23161,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-04-documentary-round2",
+        "launch_is_not_completion": true
+      }
+    ],
+    "actual_turns": [
+      {
+        "lane": "REVIEW",
+        "session": "ses_e229d86a6ffe9BFB5nqre0lFuC",
+        "message_id": "msg_1dd642963001nnfAbFb7uI0pA1",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "agent": "zak1057-review"
+      },
+      {
+        "lane": "03",
+        "session": "ses_e22bd2212ffeuDpE5KDgQ8bGEV",
+        "message_id": "msg_1dd642a28001F649Jn9PqvIC9R",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "agent": "zak1057-recon"
+      },
+      {
+        "lane": "04",
+        "session": "ses_e22bd21eeffeH5GWvx2XBKwSEw",
+        "message_id": "msg_1dd642abb001UFVOc8vAeXLKtm",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "agent": "zak1057-recon"
+      }
+    ],
+    "active_at_launch_check": {
+      "ses_e229d86a6ffe9BFB5nqre0lFuC": {
+        "type": "running"
+      },
+      "ses_e22bd2212ffeuDpE5KDgQ8bGEV": {
+        "type": "running"
+      },
+      "ses_e22bd21eeffeH5GWvx2XBKwSEw": {
+        "type": "running"
+      }
+    }
+  }
 }
