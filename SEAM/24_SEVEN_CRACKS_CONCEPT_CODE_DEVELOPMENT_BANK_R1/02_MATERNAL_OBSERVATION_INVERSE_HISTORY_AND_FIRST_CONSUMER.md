@@ -18,6 +18,14 @@ The inverse expression in SEAM/20, `P(H,Z|A,D,W) ∝ P(A|H,Z,D,W)P(H,Z|D,W)`, is
 
 **A hypothetical sourcefree response-consistency checker must be explicitly graded.** It cannot become a source-native `P(A|H,Z,D,W)` merely through an LLM ranking biographies. A fictional observation attached to a source-qualified adult *distribution* is NOT a recorded report by this generated mother. Committed candidate selection is itself a model assumption, not posterior inference. It may permit many mutually incompatible internal histories to be compatible with the same external answer. It must not force a woman who nominates obedience to practice authoritarian parenting, nor infer unique attachment, political ideology, marriage motives or permanent Enneagram gravity.
 
+### The observed-role measurement trap
+
+A survey field labeled `female`, `woman`, or `mother` is a source-specific reported/classified observation, **not automatically evidence of gestational capacity, a child-bearing history, a social caregiving role, or a universal cultural kin category**. The mother/father birth-conditioned route in SEAM/20 is the selected **pilot generation path**, not a proof that every viable human household or kin structure follows it. Historical kin role, biological lineage, sexual/reproductive event, co-residence and care must remain distinct. Without data, the scenario roles are model-graded and the unqualified mapping is HELD.
+
+### The sourcefree chooser can cheat the first-reader test
+
+If a model is shown a beautiful invented maternal biography and emits the intended deed, the test has **not** proved that the *registered actor-local acquired state* caused the action. Falsifier: keep the exact P2 world/opportunities, actor-state and causal receipts fixed, alter only explanatory biography prose or ideological labels—action must remain invariant under the controlled chooser. Conversely, sever/replace the genuinely consumed CAN/ADP state while holding narration and current world fixed; any warranted change must be attributable to the documented first-reader and rule, not an instruction in the prompt. A generated mother is **not validated by history-consistent prose**.
+
 ## Proposed owner-to-owner computation (candidate, not current API)
 
 ```text
