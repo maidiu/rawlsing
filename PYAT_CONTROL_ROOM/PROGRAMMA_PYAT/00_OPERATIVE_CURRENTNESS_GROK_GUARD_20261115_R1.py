@@ -25,7 +25,8 @@ MANDATORY_NODES = {
     "PYAT_PRIORITY", "S1E_R6", "S2A", "PHYSICAL_BASELINE", "LOCALITY_R2",
     "J5_100_DISTINCT", "STAGED_COMBINED", "DUAL_PREP", "SOURCE_RIGHTS",
     "FIELD_FORGE", "PERSON_PILOT", "BACKWARD_SEAM", "SEAM_SUMMIT",
-    "VOSKRES", "VMESTYE",
+    "VOSKRES", "VMESTYE", "W05_PHYSICAL_CODE_CANDIDATE",
+    "R03_GOVERNED_ISSUER_V2_CANDIDATE", "PREFF_COMPOSED_AUTHOR_TREE",
 }
 MANDATORY_TOKENS = [
     "Nov 13", "S04", "FF01", "N10E", "N10W", "FIABC", "backward",
@@ -94,6 +95,14 @@ def main() -> int:
         fail("original 0 QUERY / 1 DISCOVERY scope missing")
     if items["J5_100_DISTINCT"]["integration"] != "PR_TARGETS_MAIN_TOO_LARGE_NOT_PRODUCT":
         fail("J5 documentary candidate presented as product adoption")
+    w05 = items["W05_PHYSICAL_CODE_CANDIDATE"]
+    r03 = items["R03_GOVERNED_ISSUER_V2_CANDIDATE"]
+    comp = items["PREFF_COMPOSED_AUTHOR_TREE"]
+    if (w05["grade"] != "AUTHOR_CODE_CANDIDATE_NOT_TESTED_NOT_INDEPENDENT_G5"
+            or r03["grade"] != "AUTHOR_TEST_ONLY_GOVERNED_QUERY_CODE_NOT_TESTED"
+            or comp["grade"] != "COMPOSITE_AUTHOR_ONLY_NEITHER_CODE_PATCH_TESTED"
+            or r03["code"] != comp["code"]):
+        fail("new R03/W05 unreceived code promoted or composite split")
     doc = DOC.read_text(encoding="utf-8").lower()
     for token in MANDATORY_TOKENS:
         if token.lower() not in doc:
@@ -113,6 +122,13 @@ def main() -> int:
     integration = live_branch_sha("integration/pyat998-r6-s2a-joined-staging-20261115-r1")
     if integration != source["code"]:
         fail(f"#1073 branch moved from {source['code']} to {integration}; RENEW EVIDENCE")
+    for name, item in (
+        ("implementation/pyat1006-verified-native-physical-traversal-20261115-r1", w05),
+        ("implementation/pyat997-r03-governed-query-issuer-v2-20261115-r1", r03),
+    ):
+        current = live_branch_sha(name)
+        if current != item["code"]:
+            fail(f"new pre-Forge branch {name} moved from {item['code']} to {current}; RENEW EVIDENCE")
     print("PASS_PINNED_BRANCH_HEADS_AND_STATIC_DOC; G5/RIGHTS/ISSUE_COMMENTS_STILL_REQUIRE_LIVE_RECHECK")
     return 0
 
