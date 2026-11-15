@@ -94,6 +94,32 @@ for label, rel in (
         check("CURRENT PROTECTED STATUS" in p.read_text(encoding="utf-8")[:1600],
               label + " front door retains misleading historical candidate status")
 
+# Prospective shared-rule amendment: these existing five HQ-C1 operative
+# clauses must be present in all three self-sufficient jurisdictional front
+# doors. This is textual propagation, NOT runtime closure or owner acceptance.
+for label, rel in (
+    ("shared", PROG + "00_PROGRAMMA_RAWLSING.md"),
+    ("Pyat", PYAT + "00_PROGRAMMA_PYAT.md"),
+    ("Sorok", SOROK + "00_PROGRAMMA_SOROK.md"),
+):
+    p = ROOT / rel
+    if p.is_file():
+        body = p.read_text(encoding="utf-8")
+        for rule_id, marker in (
+            ("HQ-C1-004", "Retire a branch only after checking"),
+            ("HQ-C1-008", "current executable/import closure"),
+            ("HQ-C1-009", "four distinct outcomes"),
+            ("HQ-C1-010", "ACTUAL REQUIRED DOWNSTREAM FUNCTION"),
+            ("HQ-C1-011", "PROGRAMMA functional statuses/dependency edges"),
+        ):
+            start = "<!-- HQ_RULE_START id=" + rule_id + " "
+            finish = "<!-- HQ_RULE_END id=" + rule_id + " -->"
+            if start not in body or finish not in body:
+                check(False, label + " missing existing HQ rule " + rule_id)
+                continue
+            span = body.split(start, 1)[1].split(finish, 1)[0]
+            check(marker in span, label + " rule " + rule_id + " misses functional/branch closure amendment")
+
 for rel, snippets in (
     (SOROK + "06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md",
      ("## Post-W8 source-qualified original-product proof", "## B occurrence", "## PSR1 actual")),
