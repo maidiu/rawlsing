@@ -10,6 +10,10 @@ SEAM/20 correctly refuses `survey answer → private motive`. The goal is the op
 
 Why worth developing: it produces genuine conditional plurality. Two mothers with *identical observed survey cells* can be different persons for historically concrete reasons, rather than the generator hiding its private motives in a demographic lookup. It also provides the actor who must later generate encounter possibilities, caregiving and parental difference.
 
+### R4 principal staging within maternal development
+
+After the initially source-conditioned mother is admitted, **her few compressed forward recursions cover multiple years**. In the **final proposed event stack** (provisionally 2–3 LLM calls overall), the LLM may propose **several alternative conception trajectories as the *last* event**, conditioned on the mother's state *when that stack was proposed*. The mother changes through intervening actual events; her **later state at the candidate conception time** determines which option becomes conditionally selected/realized under legitimate constraints. Do not prompt the proposing model with an omniscient exact future mother. Partner meeting/marriage and older-sibling histories may precede the focal conception; father backward-conditioning follows the selected maternal pathway and is not an independent preselected encounter. See [R4](10_R4_PRINCIPAL_MATERNAL_FORWARD_CONCEPTION_FATHER_BACKFILL_AND_SIBLING_HISTORY.md). This is principal **design intent**, not a current LLM-calling API.
+
 ## The exact scientific distinction: observed answer ≠ private history
 
 Define an observation's `t_obs` and source survey question semantics, response universe/weights/missingness and respondent unit. The mother's actual fictional developmental chronology might contain childhood before `t_obs`, the encounter before/after `t_obs`, and birth before/after `t_obs`; **survey observations are not timeless immutable traits**.
