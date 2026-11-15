@@ -1,0 +1,141 @@
+{
+  "schema": "SOROK_C05_FOCUSED_R2_EVIDENCE@1",
+  "issue": "C05",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE_C05_OPERATION_CUSTODY",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+  "final_report_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "implementation_tests_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+  "frozen_start_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "original_implementation_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "original_review_sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+  "source_pins": {
+    "continuing_relations.py": {
+      "base_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+      "final_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+      "final_sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2",
+      "diff": "one line in promote_relation: _state_machine(scope['changes'])"
+    },
+    "supporting_actor.py": {
+      "blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92",
+      "unchanged": true
+    },
+    "focused_test": {
+      "blob": "5df2c164bc4912a2ee13cbaf228969c2d4b96a90",
+      "sha256": "68234a95b3dc448552edbd54899c2e2b5a3351839f18e5ba800f386b1184785e"
+    }
+  },
+  "source_delta": "only continuing_relations.py 1/1 and focused test 198/0 from frozen start; metadata/evidence-only commits after implementation; supporting_actor unchanged",
+  "listed_suites": {
+    "summary_file": "evidence/suite_summary.json",
+    "summary_sha256": "9c276b2f0aa5bb4c7fd778fceae4b3083270aab0c8124adc5c2c438999522870",
+    "total_passed": 35,
+    "total_failed": 0,
+    "all_exit_zero": true,
+    "rows": [
+      {"id": "focused_r2", "suite": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py", "passed": 1, "exit": 0, "real_seconds": 7.19, "max_rss_bytes": 56725504},
+      {"id": "original_c05", "suite": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py", "passed": 5, "exit": 0, "real_seconds": 42.18, "max_rss_bytes": 61513728},
+      {"id": "c01", "suite": "WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py", "passed": 6, "exit": 0, "real_seconds": 14.08, "max_rss_bytes": 56315904},
+      {"id": "c04_identity", "suite": "WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py", "passed": 6, "exit": 0, "real_seconds": 26.23, "max_rss_bytes": 64487424},
+      {"id": "c04_custody", "suite": "WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py", "passed": 12, "exit": 0, "real_seconds": 54.9, "max_rss_bytes": 68943872},
+      {"id": "p2_owner", "suite": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py", "passed": 5, "exit": 0, "real_seconds": 14.83, "max_rss_bytes": 58519552}
+    ]
+  },
+  "defect_probe": {
+    "script": "newprobes/c05_defect_probe.py",
+    "probe_blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e",
+    "probe_sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70",
+    "byte_identical_to_original_review": true,
+    "byte_identical_to_author_copy": true,
+    "literal_exit": 2,
+    "literal_exit_meaning": "expected: unchanged probe oracle no longer observes the old bug; not a repair failure",
+    "report": "evidence/c05_defect_report.json",
+    "report_sha256": "d91901bfddb967b1dfdb891754c503996eb2e7d57527c0d4c15df44a4a36eeb8",
+    "second_call_refusal": "RELATION_PROMOTION_NOT_DEEPER",
+    "wrote_episode_on_refusal": false,
+    "scope_severed_after_write": false,
+    "c12_verify_unchanged": true,
+    "before": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+    "after": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+    "first_retry_after_refusal": "UNCHANGED"
+  },
+  "base_red": {
+    "review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+    "original_report": "evidence/c05_defect_report_RED_original_b5b810c.json",
+    "original_report_sha256": "31369bf626d95972d5933fd4e5d1446a79895bf781cec67cc7df1443d306eacc",
+    "author_receipt": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_defect_report_RED_at_bc45f699a.json",
+    "author_receipt_sha256": "8f5f0a79190068b0ce714ee2d76a6f2e93934f262bfd401e16f4f3f0a853f38d",
+    "semantic_match": true,
+    "base_fields": {"second_call_refusal": "RELATION_CUSTODY_SEVERED", "wrote_episode_on_refusal": true, "scope_severed_after_write": true, "before_episodes_changes_heads": [49, 2, 2], "after_episodes_changes_heads": [51, 3, 3], "relation_status": "QUALIFIED to HOLD_CUSTODY_SEVERED"},
+    "independently_reexecuted_on_frozen_product": false
+  },
+  "closure_probe": {
+    "script": "newprobes/c05_closure_probe.py",
+    "report": "evidence/c05_closure_report.json",
+    "report_sha256": "b815af9f4090c55dfceba5e68f187a64a49e31f3c8069374cd3e187e6212c1c3",
+    "checks_total": 12,
+    "checks_passed": 12,
+    "checks_failed": 0,
+    "first_promotion_recorded": true,
+    "history_depth_two": true,
+    "context_qualified_perceived": true,
+    "promotion_history_hash_state_entries_only": true,
+    "original_operation_retry_unchanged": true,
+    "different_new_depth2_refused_before_append": true,
+    "zero_counts_delta": true,
+    "world_events_perceptions_checkpoints_unchanged": true,
+    "relation_episodes_unchanged": true,
+    "history_and_context_byte_exact": true,
+    "c12_verify_ok": true,
+    "original_retry_after_refusal_unchanged": true
+  },
+  "normal_negative_cold_probe": {
+    "script": "newprobes/c05_probe.py",
+    "probe_blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+    "probe_sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7",
+    "byte_identical_to_original_review": true,
+    "byte_identical_to_author_copy": true,
+    "report": "evidence/c05_probe_report.json",
+    "report_sha256": "f993a666a0246f059d5fa46b1095c8061f24e688a761b41fa006662b55250d57",
+    "checks_total": 89,
+    "checks_passed": 89,
+    "checks_failed": 0,
+    "exit": 0,
+    "real_seconds": 160.63,
+    "max_rss_bytes": 57630720,
+    "cold_child_exit": 0,
+    "cold_snapshot_exact": true,
+    "cold_retry_status": "UNCHANGED",
+    "observations": ["caller_exposure_is_not_event_perception", "coherent_append_only_relation_accepted"]
+  },
+  "author_adapter_disclosure": {
+    "exists": true,
+    "description": "temporary symlink inside author's own checkout for probe hardcoded old scratch path",
+    "used_by_this_review": false,
+    "reviewer_ran_directly_in_authorized_scratch": true,
+    "author_claims_no_write_to_reviewer_checkout": true
+  },
+  "scope": {
+    "accepted": "bounded mechanical operation/custody of caller-authorized sourcefree illustrative relations",
+    "caller_supplied_exposure_and_relation": true,
+    "both_parties_mandatory": true,
+    "owner_receipt_qualifying_relation_knowledge": "NONE",
+    "reader_relation_label": "DATED_EXPOSURE_ONLY",
+    "relation_labeled_PERCEIVED": false,
+    "coherent_append_still_accepted_as_caller_input": true,
+    "self_hash_is_owner_signature": false,
+    "original_full_c05_actor_qualification": "UNPROVED"
+  },
+  "holds": [
+    "owner/source receipt for relation knowledge",
+    "relation PERCEIVED actor truth and native ADP-015/C4 authority",
+    "autonomy, psychology, generated language, G2 selection, complete J1, J2",
+    "D04/D05 and durable acquisition",
+    "human/scientific/source-rights receiving and protected merge",
+    "#939 fleet, PYAT/Browser, new campaign/duel",
+    "fork/concurrency uniqueness, depth >2, whole C05 person life",
+    "C04 parent metadata/D03 caller-receipt residuals"
+  ],
+  "terminal": "STOP"
+}

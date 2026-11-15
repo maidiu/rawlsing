@@ -1,0 +1,94 @@
+{
+  "schema": "SOROK_C05_FOCUSED_R2_PROBE_PINS@1",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "source_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+  "probes": {
+    "c05_defect_probe.py": {
+      "blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e",
+      "sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70",
+      "byte_identical_to_b5b810c": true,
+      "byte_identical_to_author_copy": true,
+      "author_copy_blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e"
+    },
+    "c05_probe.py": {
+      "blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+      "sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7",
+      "byte_identical_to_b5b810c": true,
+      "byte_identical_to_author_copy": true,
+      "author_copy_blob": "c89e22a7c4ba683fe99994f2833b8b710e888401"
+    },
+    "c05_observe.py": {
+      "blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f",
+      "sha256": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850",
+      "byte_identical_to_b5b810c": true,
+      "byte_identical_to_author_copy": true,
+      "author_copy_blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f"
+    },
+    "c05_cold_child.py": {
+      "blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc",
+      "sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff",
+      "byte_identical_to_b5b810c": true,
+      "byte_identical_to_author_copy": true,
+      "author_copy_blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc"
+    },
+    "c05_closure_probe.py": {
+      "blob": "0a4a4e3b84e659e380bbfa11853d6ca126efb04a",
+      "sha256": "16837b16f5a9a67ad0fd7e34db355fb7505e7bc72a3c2027967d453488426d46",
+      "new_reviewer_probe": true
+    }
+  },
+  "reports": {
+    "base_red_original_b5b810c": {
+      "path": "evidence/c05_defect_report_RED_original_b5b810c.json",
+      "sha256": "31369bf626d95972d5933fd4e5d1446a79895bf781cec67cc7df1443d306eacc"
+    },
+    "defect_post_fix": {
+      "path": "evidence/c05_defect_report.json",
+      "sha256": "d91901bfddb967b1dfdb891754c503996eb2e7d57527c0d4c15df44a4a36eeb8"
+    },
+    "normal89": {
+      "path": "evidence/c05_probe_report.json",
+      "sha256": "f993a666a0246f059d5fa46b1095c8061f24e688a761b41fa006662b55250d57"
+    },
+    "closure": {
+      "path": "evidence/c05_closure_report.json",
+      "sha256": "b815af9f4090c55dfceba5e68f187a64a49e31f3c8069374cd3e187e6212c1c3"
+    },
+    "suite_summary": {
+      "path": "evidence/suite_summary.json",
+      "sha256": "9c276b2f0aa5bb4c7fd778fceae4b3083270aab0c8124adc5c2c438999522870"
+    }
+  },
+  "author_receipts": {
+    "red_report": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_defect_report_RED_at_bc45f699a.json",
+      "sha256": "8f5f0a79190068b0ce714ee2d76a6f2e93934f262bfd401e16f4f3f0a853f38d",
+      "semantic_match_to_original": true
+    },
+    "post_fix_report": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_defect_report_POST_FIX.json",
+      "sha256": "ebdf5da8e665598ae5859ce4e1dd9a186891786a56f6dfe398d9b0bbff37c720",
+      "semantic_match_to_independent": true
+    },
+    "normal89_report": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_probe_report.json",
+      "sha256": "b072782c595876485e1a92c2699c7768d8ac017cb03fb99276fdbf8b633f6a7d",
+      "check_names_and_pass_vector_match_independent": true
+    },
+    "focused_red_log": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/logs/c05_r2_focused_RED.log",
+      "sha256": "05c3c1951ba1abfdcd5616fd03774683cc91cbebe8aea22eb8678ae1de52c969"
+    },
+    "focused_green_log": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/logs/c05_r2_focused_GREEN.log",
+      "sha256": "95e2c4474bc480f1c3ef3eff6544101cd20cd3b43773ca6f12400f84c083ce71"
+    }
+  },
+  "author_adapter_disclosure": {
+    "exists": true,
+    "description": "temporary symlink inside the author's own checkout for the probe hardcoded old scratch path",
+    "used_by_this_receiving": false,
+    "reviewer_direct_run_in_authorized_scratch": true
+  },
+  "terminal": "STOP"
+}

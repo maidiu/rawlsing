@@ -1,0 +1,62 @@
+{
+  "after_second": {
+    "c12_verify_ok": true,
+    "changes": 3,
+    "checkpoints": 33,
+    "episodes": 51,
+    "heads": 3,
+    "perceptions": 42,
+    "promotions": [
+      {
+        "operation_id": "defect:promote:1",
+        "previous_episode_id": "TEST_ONLY_BP4_EP_8ccb5ed77da80b9cd05f4045fc8499fbc05e15822f986a9e000b57de0bdf123d",
+        "promoted_depth": 2,
+        "sequence": 2
+      },
+      {
+        "operation_id": "defect:promote:2",
+        "previous_episode_id": "TEST_ONLY_BP4_EP_7f1c95b124c607041b412787084c73ac0b7aac8e55e7a89da4ecceaafe32d833",
+        "promoted_depth": 2,
+        "sequence": 3
+      }
+    ],
+    "relation_status": "HOLD_CUSTODY_SEVERED",
+    "world_events": 14
+  },
+  "before_second": {
+    "c12_verify_ok": true,
+    "changes": 2,
+    "checkpoints": 33,
+    "episodes": 49,
+    "heads": 2,
+    "perceptions": 42,
+    "promotions": [
+      {
+        "operation_id": "defect:promote:1",
+        "previous_episode_id": "TEST_ONLY_BP4_EP_8ccb5ed77da80b9cd05f4045fc8499fbc05e15822f986a9e000b57de0bdf123d",
+        "promoted_depth": 2,
+        "sequence": 2
+      }
+    ],
+    "relation_status": "QUALIFIED",
+    "world_events": 14
+  },
+  "c12_verify_unchanged": true,
+  "candidate_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "defect": "promote_relation's pre-write depth check uses only RELATION_STATE_CHANGES, so a prior PROMOTE is invisible; a second depth-2 PROMOTE is appended, then _verify_scope rejects promoted_depth <= current depth and the committed episode severs the scope.",
+  "first_promotion": {
+    "primary_episode_id": "TEST_ONLY_BP4_EP_7f1c95b124c607041b412787084c73ac0b7aac8e55e7a89da4ecceaafe32d833",
+    "representation_depth": 2,
+    "status": "RECORDED"
+  },
+  "retry_first_after_second": {
+    "refusal": "RELATION_CUSTODY_SEVERED"
+  },
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "schema": "SOROK_C05_REPEAT_PROMOTION_DEFECT@1",
+  "scope_severed_after_write": true,
+  "second_call_refusal": "RELATION_CUSTODY_SEVERED",
+  "second_call_returned": null,
+  "state_root": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-c05-independent-g5/scratch/defect-zesg48fm/p2",
+  "wrote_episode_on_refusal": true
+}

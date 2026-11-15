@@ -1,0 +1,96 @@
+SOROK C05 focused R2 rereceiving — literal commands
+Reviewer session: ses_e2186e745ffecK1Ilg4cw26pVu
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+Branch: codex/sorok-c05-focused-g5-r2-20261115-r1
+Frozen final report: 1cf1a37113cb7a48137734648b523a0a6deccd92
+Implementation/tests: 5d771dd86767655534b23576075e5da2db4fba78
+Frozen start / defect base: bc45f699a22708aae3df7e34b1ba3b272a362565
+Original implementation: 9cf13763b0061400e2c936eaf1d0a2f4b76a03f7
+Original independent review: b5b810cdd7b51b20efcc42d4ce76960f9e410706
+Interpreter: /private/tmp/rawlsing-oct28-p1r1/venv/bin/python (3.11.3)
+Pytest: 9.1.1
+Every command used TMPDIR=$PWD/.local-logs/sorok-c05-focused-r2/tmp,
+PYTHONDONTWRITEBYTECODE=1, -B; pytest used -q -p no:cacheprovider.
+Product was read-only. No product repair, no provider/global permission change.
+
+1) Byte-identical original defect probe at corrected source
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_FOCUSED_RERECEIVING_R2/newprobes/c05_defect_probe.py
+EXIT=2 (EXPECTED: unchanged old-bug oracle no longer reproduces; not repair failure)
+second_call_refusal=RELATION_PROMOTION_NOT_DEEPER
+wrote_episode_on_refusal=false
+scope_severed_after_write=false
+before/after episodes=49/49, changes=2/2, heads=2/2
+world_events/perceptions/checkpoints=14/14, 42/42, 33/33
+relation_status QUALIFIED -> QUALIFIED; first retry UNCHANGED
+2.91 real s; max RSS 37,203,968 B
+stdout: evidence/c05_defect_post_fix_stdout.log
+time:   evidence/c05_defect_post_fix_time.log
+report: evidence/c05_defect_report.json (sha256 d91901bfddb967b1dfdb891754c503996eb2e7d57527c0d4c15df44a4a36eeb8)
+
+2) Focused R2 author assertion test
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py
+EXIT=0; 1 passed; 7.19 real s; max RSS 56,725,504 B
+stdout: evidence/focused_r2_stdout.log
+time:   evidence/focused_r2_time.log
+
+3) Original C05 suite
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py
+EXIT=0; 5 passed; 42.18 real s; max RSS 61,513,728 B
+stdout: evidence/suite1_original_c05_stdout.log
+time:   evidence/suite1_original_c05_time.log
+
+4) C01 supporting actor suite
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py
+EXIT=0; 6 passed; 14.08 real s; max RSS 56,315,904 B
+stdout: evidence/suite2_c01_stdout.log
+time:   evidence/suite2_c01_time.log
+
+5) C04 first-consumer identity suite
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py
+EXIT=0; 6 passed; 26.23 real s; max RSS 64,487,424 B
+stdout: evidence/suite3_c04_identity_stdout.log
+time:   evidence/suite3_c04_identity_time.log
+
+6) C04 custody suite
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py
+EXIT=0; 12 passed; 54.90 real s; max RSS 68,943,872 B
+stdout: evidence/suite4_c04_custody_stdout.log
+time:   evidence/suite4_c04_custody_time.log
+
+7) P2 owner suite
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py
+EXIT=0; 5 passed; 14.83 real s; max RSS 58,519,552 B
+stdout: evidence/suite5_p2_owner_stdout.log
+time:   evidence/suite5_p2_owner_time.log
+
+8) Byte-identical original 89-check normal/negative/cold probe
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_FOCUSED_RERECEIVING_R2/newprobes/c05_probe.py
+EXIT=0; 89/89 checks; 160.63 real s; max RSS 57,630,720 B
+cold child exit 0; cold snapshot exact true; cold retry UNCHANGED
+report: evidence/c05_probe_report.json (sha256 f993a666a0246f059d5fa46b1095c8061f24e688a761b41fa006662b55250d57)
+stdout: evidence/c05_normal89_stdout.log
+time:   evidence/c05_normal89_time.log
+
+9) Independent closure probe
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_FOCUSED_RERECEIVING_R2/newprobes/c05_closure_probe.py
+EXIT=0; 12/12 checks; 5.63 real s; max RSS 46,501,888 B
+report: evidence/c05_closure_report.json (sha256 b815af9f4090c55dfceba5e68f187a64a49e31f3c8069374cd3e187e6212c1c3)
+stdout: evidence/c05_closure_stdout.log
+time:   evidence/c05_closure_time.log
+
+10) Source/probe pins
+git ls-tree 1cf1a371 <product/test files>
+git rev-parse HEAD / 5d771dd86767655534b23576075e5da2db4fba78 / bc45f699a22708aae3df7e34b1ba3b272a362565
+git diff --numstat bc45f699a 1cf1a371 -- <product/tests>
+git diff --stat 5d771dd86767655534b23576075e5da2db4fba78 1cf1a371 -- <product/tests>
+git show b5b810c:.../evidence/c05_defect_report.json (preserved base RED)
+githash/shasum of all copied probes and author copies
+Outputs: evidence/revisions.txt, evidence/blob_pins.txt, evidence/source_delta_*,
+evidence/c05_one_line_repair.diff, PROBE_PINS.json, BLOB_PINS.json
+
+11) Module resolution
+TMPDIR="$PWD/.local-logs/sorok-c05-focused-r2/tmp" PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -c "<import contracts, supporting_actor, continuing_relations, p2_owner; start scratch P2; import bp4.world and s45_projection.projection; print __file__>"
+Output: evidence/module_paths.txt (all paths under this checkout)
+
+No CI, installs, VM, new controller, global permissions, secrets, protected merge or #939 fleet were used.
+No product repair or further author round was launched. The author's disclosed temporary symlink adapter was not used by this receiving; byte-identical probes ran directly in the authorized old reviewer scratch and the focused R2 scratch.
