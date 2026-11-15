@@ -34,6 +34,40 @@ FIRST USE: independently consuming next owner and positive/null outcome
 
 This is a **review/checking projection**, not permission to make all native APIs conform to an invented uniform interface. If a field is absent, record a missing proof obligation rather than hallucinate its value.
 
+### Existing functions and honest next-owner seams
+
+| Verified sourcefree / source-bounded precedent | What it currently warrants | A **candidate** next consumption (not already implemented) |
+|---|---|---|
+| [PYAT `compose_positioned_subject_possibility`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/rawlsing_next/pre553_analytical_composition.py) + [`provide_empirical_possibility_slice`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/rawlsing_next/pre553_empirical_possibility_provider.py) | Qualified conditional evidence / bounded possibility at historical source cut; not a person or partner sampler | separately grade a candidate maternal *observable* configuration and its target-population/time scope |
+| [SOROK `p3.P3Owner`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py#L162) | Frozen focal actor `TEST_ONLY` source-bound psychology sidecar | same-ontology compressed parent proposal and **later parent-owned** psychological first reader, only through competent SOROK owner |
+| [SOROK `model_cycle._parse_proposals`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py#L508) | Validated **ordered** batch of 3–5 event documents | **not** a candidate-father selector or adult-history conditional sampler; separate owner/admissibility investigation |
+| [SOROK `read_parent_material_prospectives`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py#L284) | Five current material alternatives, all unchosen | parent-local, historically acquired-state-sensitive **attempt/inaction** selector, not raw survey→intent |
+| [SOROK `_record_parent_activity`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py#L1009) | Actual parent material event, **parent-local** receipt (`NONE_PARENT_LOCAL_ONLY`) | possible world-owner-qualified **other actor opportunity** effects, not automatic care/knowledge |
+| [SOROK `situated.reconsider`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py#L134) | Bounded focal A checkpointed actor-local candidate/selected action precedent | investigate whether *the selection principle* can be lawfully used for independently developing other actors; NOT portable by default |
+| CAN-010/011, ADP-010/015/016/017 accepted semantics | Actor/experience/genealogy/memory guards with open kinds and refusals | missing authorized acquisition, historical joining, learned directed-relation and C5 first consumers remain **HELD** |
+
+**A review-only algorithm sketch, not a new runtime:**
+
+§§§text
+QUALIFY external maternal observation/source tip with existing PYAT owner
+PROPOSE multiple compressed forward life histories via SOROK causal semantics
+CHECK each against separately graded observed-tip emission semantics
+COMMIT one mother/actual fictional prelife; retain rivals only as alternatives
+PROPOSE encounters from her admitted trajectory; qualify and SELECT E
+GENERATE father *after E* conditional on E + selected branch birth B
+CHECK father previous candidate claims against represented world facts
+REJECT contradicting candidates; carry unknowns; never rewrite mother
+CONTINUE distinct parents in one world under actor-local rights and access
+ADMIT child generation/organism; model ordinary life only at its real grade
+IF domain-eligible actual actor experience/practice + rule: form scoped state
+ELSE: UNKNOWN, REFUSE or actual NO_CHANGE as appropriate
+IF later actor-selection rule exists: admit selected attempted/performed deed
+VERIFY public effect + actor-specific access + cold continuity
+OPTIONALLY compare directed relation and slow C5 hypotheses, with no-K
+§§§
+
+The capital verbs identify **required owner actions**, not functions asserted to exist. This sequence is a *prospective causal test program*, not an orchestration design or seven new acceptance gates.
+
 ## 1. SC-01 — Semantic openness as **acquired discrimination grounded in activity**, not a source-disposition vocabulary
 
 **Retained science:** CAN-011 provides `V3MS_MEDIATOR / V3MS_TENSION / V3MS_PRACTICE` and optional semantic ref; older Field Forge PRF suggests PRE-V3 refs for particular disposition nodes. There is **no demonstrated conflict** unless a future implementer universalizes the older *optional/specific* provenance path. The deeper general insight is a difference between **objective referent available**, **actor senses/uses/discriminates it**, and **actor can explicitly name or articulate it**. Culturally different learning routes can produce capable nonverbal actors, linguistically articulate but practically inexperienced actors, or both.
@@ -116,7 +150,7 @@ Their **common abstraction** is not a shared numeric update. It is common owner/
 
 This is the most promising computational economy linking parent and child **without conflating their regimes**. Parent **pre-contact back-generation** uses low-detail forward-compatible histories; child **continuing development** needs ordinary-life processes plus selected high-detail events; player-time interaction is finer. One shared actor-state ontology, distinct resolutions.
 
-**Creative criterion:** compression should be tested not against “does this sound like a whole life?” but against **which later owner-qualified questions it can still answer**. A period summary is *adequate for a specific consumer* only if it preserves information needed for that consumer's allowed inference:
+**Creative criterion:** compression should be tested not against “does this sound like a whole life?” but against **which later owner-qualified questions it can still answer**. A period summary is *adequate for a specific consumer* only if it preserves information needed for that consumer's allowed inference: **But optimizing only for today's expected consumers can erase future discoveries.** Preserve a small, source-graded floor of significant admitted world effects and actor-history references even when no current learning rule reads them; label all omitted domains as unknown. This is a design **hypothesis** about future-proofing, not authority to store a complete childhood.
 
 | Future question | Possible minimum retained witness | Too-lossy substitute |
 |---|---|---|
