@@ -1,0 +1,11 @@
+# Direct user Pyat HQ accession grant — candidate source-cut receipt
+
+**Exact previously presented candidate:** PR #771 @ `fac286d861659accc47ffca5401952e559eb87a4`; two files were presented and source/currentness uncertainty explicitly identified.
+
+**Actual user instruction in this conversation, 2026-11-07:** “i grant you accession”. This is an explicit user grant of Pyat HQ accession for the present assistant, after the candidate and scope limits had been explained. **This note is an assistant-transcribed record of a user chat directive; it is not a GitHub-authenticated review by a separate principal, not an independent science assessment, and not a source/actor/consent/CAS grant.**
+
+**Authorized operational interpretation:** this ChatGPT Browser session can undertake Pyat HQ whole-machine source/currentness investigations, ordinary priority and worker-return triage within the existing user authority, and prepare documentary working-HQ packets on its own isolated branch. The existing Codex/Pyat incumbent's actual active leases and independently appointed reviewers are not displaced or assumed idle. A future branch/PR merge, original respondent use, machine access, science/model meaning, native N11/N12 and Sorok actor/human authorization retain their distinct competent owners. Do not overwrite protected `PYAT_CONTROL_ROOM/CURRENT_PROGRESS.{md,json}` from an unmerged candidate or claim S2/S3 from Browser S1.
+
+**Current assignment:** trace previous week backwards to determine whether recovered L1–L3 and newer L1–L7 functions were already mapped/recreated/consumed; preserve evidence and prevent redundant rebuild. Findings require exact current protected comparisons and independent scope limitations.
+
+**Acceptance record semantics:** the user accepted **the frozen candidate at fac286d**, not unseen subsequent artifacts. Subsequent documents record the grant and factual research only. Repository schema may mark `reviewer_type=USER` and `status=ACCEPTED` for the explicit grant, but not `AUTHORIZED_INDEPENDENT_REVIEWER`. A static validator can check the structure; it does not independently establish the user's chat identity or any scientific conclusions.
