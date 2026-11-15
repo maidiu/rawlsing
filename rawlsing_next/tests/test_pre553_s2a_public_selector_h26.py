@@ -509,7 +509,7 @@ def test_public_selector_revocation_and_wrong_root_refuse(tmp_path, monkeypatch)
 
 
 
-def test_public_coherent_projection_body_truth_and_native_owner_hold(
+def test_public_coherent_projection_body_truth_and_native_refusal(
     tmp_path, monkeypatch,
 ):
     tag = "S2A-BODY-TRUTH"
@@ -567,21 +567,23 @@ def test_public_coherent_projection_body_truth_and_native_owner_hold(
             tuple(hidden_estate.select_events(
                 respondent, target, native_only=True,
             ))
-    # The native I03 module is frozen by the current grant.  It still returns
-    # a changed fact for the paired projected+locator poison.  This test
-    # documents the known owner HOLD; it does not turn the native path green.
+        with pytest.raises(DirectEstateError, match="canonical|posting|coverage"):
+            s2c._executor(
+                poison_root, hidden, source, qauth, predicate, query,
+            ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
+    # The owner-granted native body-truth repair must now refuse the same
+    # coherent projection+locator poison before constructing a fact.
     native_root, native_receipt = s2c._cold(
-        tmp_path, candidate, source["universe"].ref, "body-truth-native-hold",
+        tmp_path, candidate, source["universe"].ref, "body-truth-native-refuse",
     )
     native_hidden, _, _ = _coherent_projection_poison(
         native_receipt, match_respondent=respondent,
         match_target=target, field="native", value=foreign,
     )
-    native_fact = s2c._executor(
-        native_root, native_hidden, source, qauth, predicate, query,
-    ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
-    assert native_fact.facts != oracle.facts
-    assert native_fact.facts[0].ref != oracle.facts[0].ref
+    with pytest.raises(DirectEstateError, match="canonical|posting|coverage"):
+        s2c._executor(
+            native_root, native_hidden, source, qauth, predicate, query,
+        ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)
     # Untampered public and native restoration remain exact.
     assert _public_refs(_open(root, receipt), respondent, target,
                         native_only=True) == baseline
@@ -600,6 +602,9 @@ def test_public_invalid_canonical_body_and_ref_refuse(tmp_path, monkeypatch):
     )
     respondent = source["respondents"]["R1"].ref
     target = source["qrefs"]["Y"]
+    qauth = native._query_authority(tag)
+    predicate = native._branch_predicate(source, qauth)
+    query = native._query(source, qauth, predicate, ("Y",), tag=tag)
     for field, value in (
         ("body_json", "{}"),
         ("ref", _ref("QUESTION_NATIVE", "S2A-BODY-INVALID-REF").key),
@@ -619,3 +624,7 @@ def test_public_invalid_canonical_body_and_ref_refuse(tmp_path, monkeypatch):
             tuple(_open(root, hidden).select_events(
                 respondent, target, native_only=True,
             ))
+        with pytest.raises(DirectEstateError, match="canonical|posting|coverage"):
+            s2c._executor(
+                root, hidden, source, qauth, predicate, query,
+            ).execute_i03(query_ref=query.ref, predicate_ref=predicate.ref)

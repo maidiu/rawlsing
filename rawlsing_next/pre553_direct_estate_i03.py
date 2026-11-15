@@ -36,7 +36,7 @@ from rawlsing_next.pre553_c11_integrity import RespondentIdentity
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalCoordinateFact, EmpiricalUniverse, ExactRef, RespondentEvent,
     RoutingEligibilityFact, SourceUniverseRelation, WeightMeasureFact,
-    exact_ref,
+    canonical_json, exact_ref,
 )
 from rawlsing_next.pre553_parquet_carrier import _object_from_row
 from rawlsing_next.pre553_source_direct_parquet_estate import (
@@ -188,6 +188,67 @@ class DirectEstateI03Session:
             self._temporary.cleanup()
             self._temporary = None
 
+    def _validate_event_body_truth(
+        self, body: Mapping[str, Any], posting: Mapping[str, Any],
+    ) -> None:
+        """Bind projected/locator event selector fields to canonical body_json.
+
+        This is the native first-reader counterpart of the public selector's
+        body-truth check.  It is intentionally before SQLite index insertion and
+        before any I03 fact can be constructed.  The canonical event body is
+        reconstructed through the existing codec; no new codec or resident
+        C11 graph is introduced.
+        """
+        try:
+            event = _object_from_row(json.loads(body["body_json"]))
+        except Exception as exc:
+            raise DirectEstateError(
+                "cold I03 canonical event body/ref does not match projected body"
+            ) from exc
+        if type(event) is not RespondentEvent:
+            raise DirectEstateError(
+                "cold I03 canonical event body/ref does not match projected body"
+            )
+        if (
+            body["ref"] != event.ref.key
+            or body["kind"] != event.ref.kind
+            or body["object_id"] != event.ref.object_id
+            or body["content_hash"] != event.ref.content_hash
+            or body["family"] != "RespondentEvent"
+        ):
+            raise DirectEstateError(
+                "cold I03 canonical event body/ref does not match projected body"
+            )
+        occurrence_projection = canonical_json({
+            "group": event.event_group_id,
+            "id": event.response_event_id_or_deterministic_index,
+            "topology": event.multiplicity_order_rank_fields,
+        })
+        if (
+            body["typed_state"] != str(event.typed_state)
+            or body["universe"] != _key(event.empirical_universe_ref)
+            or body["respondent"] != _key(event.scoped_respondent_ref)
+            or body["native"] != _key(event.native_question_ref)
+            or body["canonical"] != _key(
+                event.canonical_question_ref_if_authorized
+            )
+            or body["component"] != _key(event.component_or_subitem_ref)
+            or body["occurrence"] != occurrence_projection
+        ):
+            raise DirectEstateError(
+                "cold I03 event posting disagrees with exact canonical native body"
+            )
+        if (
+            posting["respondent"] != body["respondent"]
+            or posting["native"] != body["native"]
+            or posting["canonical"] != body["canonical"]
+            or posting["component"] != body["component"]
+            or posting["state"] != body["typed_state"]
+        ):
+            raise DirectEstateError(
+                "cold I03 event posting disagrees with exact canonical native body"
+            )
+
     def _build(self) -> None:
         import pyarrow.parquet as pq
         db = self._require_live()
@@ -231,8 +292,10 @@ class DirectEstateI03Session:
             self._require_live()
             bodies = physical_events.read_row_group(
                 gid, columns=[
-                    "ref", "respondent", "native", "canonical",
-                    "component", "typed_state",
+                    "ref", "kind", "object_id", "content_hash",
+                    "family", "typed_state", "universe", "respondent",
+                    "native", "canonical", "component", "occurrence",
+                    "body_json",
                 ],
             ).to_pylist()
             postings = locator.read_row_group(gid).to_pylist()
@@ -241,15 +304,11 @@ class DirectEstateI03Session:
             inserts = []
             for offset, (body, row) in enumerate(zip(bodies, postings)):
                 if (row["group"] != gid or row["offset"] != offset
-                        or row["ref"] != body["ref"]
-                        or row["respondent"] != body["respondent"]
-                        or row["native"] != body["native"]
-                        or row["canonical"] != body["canonical"]
-                        or row["component"] != body["component"]
-                        or row["state"] != body["typed_state"]):
+                        or row["ref"] != body["ref"]):
                     raise DirectEstateError(
                         "cold I03 event posting lacks exact positional/selector coverage"
                     )
+                self._validate_event_body_truth(body, row)
                 inserts.append((
                     row["respondent"], row["ref"], row["native"],
                     row["canonical"], row["component"], row["state"],
