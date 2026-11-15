@@ -749,6 +749,163 @@ class VerifiedDirectEstate:
         if examined != self.manifest["event_locator_count"]:
             raise DirectEstateError("incomplete physical locator scan")
 
+    def _stage_validated_public_selector(
+        self, db: Any, *, respondent: str, target: ExactRef | None,
+        native_only: bool, include_component: bool,
+        states: frozenset[str] | None,
+    ) -> None:
+        """Validate every physical event posting, then stage selected refs.
+
+        This is the same complete positional/selector parity law already used
+        by native ``DirectEstateI03Session._build``.  Validation is independent
+        of the caller's respondent/target/state filter and is completed before
+        any event can be returned.  The temporary SQLite table contains only
+        selected locator refs/positions, never duplicate event bodies.
+        """
+        import sqlite3
+        import pyarrow.parquet as pq
+
+        body = pq.ParquetFile(self.directory / "RespondentEvent.parquet")
+        locator = pq.ParquetFile(self.directory / "event_locator.parquet")
+        seen = 0
+        try:
+            if body.num_row_groups != locator.num_row_groups:
+                raise DirectEstateError(
+                    "event locator lacks exact positional/selector coverage"
+                )
+            for gid in range(body.num_row_groups):
+                self._live()
+                bodies = body.read_row_group(
+                    gid,
+                    columns=[
+                        "ref", "kind", "object_id", "content_hash",
+                        "family", "typed_state", "universe", "respondent",
+                        "native", "canonical", "component", "occurrence",
+                        "body_json",
+                    ],
+                ).to_pylist()
+                postings = locator.read_row_group(gid).to_pylist()
+                if len(bodies) != len(postings):
+                    raise DirectEstateError(
+                        "event locator lacks exact positional/selector coverage"
+                    )
+                selected: list[tuple[Any, ...]] = []
+                refs: list[tuple[str]] = []
+                for offset, (body_row, posting) in enumerate(zip(bodies, postings)):
+                    if (posting["group"] != gid or posting["offset"] != offset):
+                        raise DirectEstateError(
+                            "event locator lacks exact positional/selector coverage"
+                        )
+                    if posting["ref"] != body_row["ref"]:
+                        raise DirectEstateError(
+                            "event locator targets different native body"
+                        )
+                    # The projected Parquet selector columns are not truth.
+                    # Reconstruct the canonical event body through the existing
+                    # codec and bind its exact ref/type/full selector projection
+                    # before consulting the locator or applying any filter.
+                    try:
+                        event_body = _object_from_row(
+                            json.loads(body_row["body_json"])
+                        )
+                    except Exception as exc:
+                        raise DirectEstateError(
+                            "canonical event body/ref does not match projected body"
+                        ) from exc
+                    if type(event_body) is not RespondentEvent:
+                        raise DirectEstateError(
+                            "canonical event body/ref does not match projected body"
+                        )
+                    if (
+                        body_row["ref"] != event_body.ref.key
+                        or body_row["kind"] != event_body.ref.kind
+                        or body_row["object_id"] != event_body.ref.object_id
+                        or body_row["content_hash"] != event_body.ref.content_hash
+                        or body_row["family"] != "RespondentEvent"
+                    ):
+                        raise DirectEstateError(
+                            "canonical event body/ref does not match projected body"
+                        )
+                    occurrence_projection = canonical_json({
+                        "group": event_body.event_group_id,
+                        "id": event_body.response_event_id_or_deterministic_index,
+                        "topology": event_body.multiplicity_order_rank_fields,
+                    })
+                    if (
+                        body_row["typed_state"] != str(event_body.typed_state)
+                        or body_row["universe"] != _key(
+                            event_body.empirical_universe_ref
+                        )
+                        or body_row["respondent"] != _key(
+                            event_body.scoped_respondent_ref
+                        )
+                        or body_row["native"] != _key(
+                            event_body.native_question_ref
+                        )
+                        or body_row["canonical"] != _key(
+                            event_body.canonical_question_ref_if_authorized
+                        )
+                        or body_row["component"] != _key(
+                            event_body.component_or_subitem_ref
+                        )
+                        or body_row["occurrence"] != occurrence_projection
+                    ):
+                        raise DirectEstateError(
+                            "physical event posting disagrees with exact native body"
+                        )
+                    if (
+                        posting["respondent"] != body_row["respondent"]
+                        or posting["native"] != body_row["native"]
+                        or posting["canonical"] != body_row["canonical"]
+                        or posting["component"] != body_row["component"]
+                        or posting["state"] != body_row["typed_state"]
+                    ):
+                        raise DirectEstateError(
+                            "physical event posting disagrees with exact native body"
+                        )
+                    seen += 1
+                    refs.append((posting["ref"],))
+                    if posting["respondent"] != respondent:
+                        continue
+                    if states is not None and posting["state"] not in states:
+                        continue
+                    if target is not None:
+                        key = target.key
+                        if posting["native"] != key:
+                            if native_only:
+                                continue
+                            if (posting["canonical"] != key
+                                    and (not include_component
+                                         or posting["component"] != key)):
+                                continue
+                    selected.append((
+                        posting["ref"], posting["respondent"],
+                        posting["native"], posting["canonical"],
+                        posting["component"], posting["state"], gid, offset,
+                    ))
+                if refs:
+                    try:
+                        db.executemany("INSERT INTO seen(ref) VALUES(?)", refs)
+                    except sqlite3.IntegrityError as exc:
+                        raise DirectEstateError(
+                            "duplicate exact event ref in physical selector corpus"
+                        ) from exc
+                if selected:
+                    db.executemany(
+                        "INSERT INTO selected VALUES(?,?,?,?,?,?,?,?)",
+                        selected,
+                    )
+            if (
+                seen != self.manifest["event_locator_count"]
+                or seen != self.manifest["family_counts"]["RespondentEvent"]
+            ):
+                raise DirectEstateError(
+                    "event locator lacks exact positional/selector coverage"
+                )
+        finally:
+            body.close()
+            locator.close()
+
     def select_events(
         self, respondent_ref: ExactRef, target: ExactRef | None = None, *,
         native_only: bool = False, include_component: bool = False,
@@ -767,11 +924,59 @@ class VerifiedDirectEstate:
             raise DirectEstateError("exact respondent and question selectors required") from exc
         if type(respondent_ref) is not ExactRef or (target is not None and type(target) is not ExactRef):
             raise DirectEstateError("exact respondent and question selectors required")
-        yield from self._events_from_postings(self._locators(
-            respondent=respondent_ref.key, target=target,
-            native_only=native_only, include_component=include_component,
-            states=states,
-        ))
+
+        def _selected() -> Iterator[RespondentEvent]:
+            import sqlite3
+
+            with tempfile.TemporaryDirectory(
+                prefix=".s2a-public-select-", dir=self.root,
+            ) as temporary:
+                db = sqlite3.connect(str(Path(temporary) / "selected.sqlite"))
+                try:
+                    db.execute("PRAGMA cache_size=-1024")
+                    db.execute(
+                        "CREATE TABLE selected("
+                        "ref TEXT NOT NULL, respondent TEXT NOT NULL, "
+                        "native TEXT NOT NULL, canonical TEXT NOT NULL, "
+                        "component TEXT NOT NULL, state TEXT NOT NULL, "
+                        "gid INTEGER NOT NULL, off INTEGER NOT NULL)"
+                    )
+                    db.execute("CREATE TABLE seen(ref TEXT PRIMARY KEY)")
+                    self._stage_validated_public_selector(
+                        db, respondent=respondent_ref.key, target=target,
+                        native_only=native_only,
+                        include_component=include_component, states=states,
+                    )
+                    db.commit()
+                    self._live()
+                    cursor = db.execute(
+                        "SELECT ref, respondent, native, canonical, component, "
+                        "state, gid, off FROM selected ORDER BY ref"
+                    )
+                    postings = (
+                        {
+                            "ref": row[0], "respondent": row[1],
+                            "native": row[2], "canonical": row[3],
+                            "component": row[4], "state": row[5],
+                            "group": row[6], "offset": row[7],
+                        }
+                        for row in cursor
+                    )
+                    import pyarrow.parquet as pq
+                    event_file = pq.ParquetFile(
+                        self.directory / "RespondentEvent.parquet"
+                    )
+                    try:
+                        yield from self._events_from_postings(
+                            postings, parquet_file=event_file,
+                            row_group_cache={},
+                        )
+                    finally:
+                        event_file.close()
+                finally:
+                    db.close()
+
+        yield from _selected()
 
     def _events_from_postings(
         self, postings: Iterator[Mapping[str, Any]], *,
