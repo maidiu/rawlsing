@@ -1,14 +1,14 @@
 # SC-06 — Actual ordinary-life process and loss-aware coverage, not an invented childhood
 
-**Status:** SEAM/22/23 proposed three-resolution mechanism; current competent full-life producer + first consumer **NOT DEMONSTRATED**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-03](03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md) · [SC-04](04_PARENTAL_CONTINUITY_SAME_ONTOLOGY_MULTIACTOR_AGENCY.md) · [SC-05](05_CHILD_OPEN_ENDED_ACQUISITION_AND_EVIDENCE_CHAIN.md) · [SC-07](07_RELATIONAL_TOPOLOGY_MOTIFS_AND_C5_ABLATION.md). Governing: [SEAM/22 `3](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md), [SEAM/23 `3](../23_C5_SHADOW_GRAVITY_MATERIAL_CARE_COVERAGE_ATTRACTOR_TEST_R1.md), [SEAM/19 Z](../19_SOROK_Z_CONTRADICTORY_REPRODUCTION_AFFORDANCE_APPROPRIATION_KERNEL_R1.md).
+**Status:** SEAM/22/23 proposed three-resolution mechanism; current competent full-life producer + first consumer **NOT DEMONSTRATED**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-03](03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md) · [SC-04](04_PARENTAL_CONTINUITY_SAME_ONTOLOGY_MULTIACTOR_AGENCY.md) · [SC-05](05_CHILD_OPEN_ENDED_ACQUISITION_AND_EVIDENCE_CHAIN.md) · [SC-07](07_RELATIONAL_TOPOLOGY_MOTIFS_AND_C5_ABLATION.md). Governing: [SEAM/22 §3](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md), [SEAM/23 §3](../23_C5_SHADOW_GRAVITY_MATERIAL_CARE_COVERAGE_ATTRACTOR_TEST_R1.md), [SEAM/19 Z](../19_SOROK_Z_CONTRADICTORY_REPRODUCTION_AFFORDANCE_APPROPRIATION_KERNEL_R1.md).
 
 ## Three different computational economies must stay distinct
 
 1. **Parents' compressed PRE-CONTACT developmental generation** from SEAM/20: construct an already formed, viable adult cheaply with the **same CAN/ADP developmental ontology** as the child, with explicit epistemic loss. Distinct function: selected candidate history supports an adult's subsequent independent acts.
-2. **Continuing ORDINARY LIFE for parents, child, peers and carers:** simulate recurring periods of real work, bodily need, feeding, movement, sleep, carrying, tool use, peer play, background language, social institutions, absence and inaction. This produces the actual developmental opportunity and experience distributions in which child repertoire may arise.
+2. **Continuing ORDINARY LIFE for parents, child, peers and carers:** simulate recurring periods of real work, bodily need, feeding, movement, sleep, carrying, tool use, peer play, background language, social institutions, absence and inaction. This *could* produce a **model-graded** distribution of developmental opportunities, **if** the ordinary-life producer, actor rights and temporal/currentness have been implemented and exercised. No source-native frequency or authentic childhood total is thereby proved.
 3. **High-resolution consequential encounters and player-time:** detailed events when actor access, activity order, conflicting interpretations, new practiced skill, rupture or world consequence demand specificity.
 
-**Do not conflate 1 with 2.** A compressed adult prehistory isn't a demand to compress the child's emergent psychology into five scenes. The child's acquired repertoire is open-ended; generation economy is about *how to produce enough life* for it to develop, not a restriction on content. Sparse 3–5 focal episodes are compatible with dense cheap underlying modeled ordinary activity **only if the latter actually exists at the declared grade**.
+**Do not conflate 1 with 2.** A compressed adult prehistory isn't a demand to compress the child's emergent psychology into five scenes. The child's acquired repertoire is open-ended; generation economy is about *how to produce enough life* for it to develop, not a restriction on content. The **3–5 prospective event documents** in `model_cycle._parse_proposals` refer to a **batch**, not the total number of a life’s experiences or a universal sparse childhood schedule. Focal episodes can coexist with lower-resolution modeled activity **only if that activity actually exists at the declared grade**.
 
 ## Why this is important to the science and the product
 
@@ -47,7 +47,7 @@ As-of period t: existing P2/world actors, body states, objective material
 Possible **read-only** capsule semantics (not a new independent event ledger):
 
 ```yaml
-actor: child/source-bound actor ID
+actor: actual fictional actor ID (NOT survey respondent ID)
 interval: as-of start/end + effective child body/eligibility context
 world_basis: prior P2 as-of, material, coactor and period refs
 process: exact rule/code version, source-vs-model grade, named RNG receipts
@@ -61,11 +61,17 @@ omissions: whether individual microepisodes were simulated or only aggregates
 replay: prior world hash, output hash, source/time/branch identity
 ```
 
+### Temporal and economic gate (not yet satisfied)
+
+A P2 `clock` is not automatically a human calendar age, day, year, month or elapsed developmental window. Any compressed period requires a separately authorized mapping of modeled elapsed time, actor age/body eligibility, concurrent coactor windows, actual objective-effect time and branch/world currentness. No artificial repeated process can double-spend money, double-count a caregiver's hours, generate absent co-presence, or claim events occurring outside its own admitted interval. Sourcefree B02 period qualification is a foothold, not a human developmental calendar law.
+
+The cheapest relevant test is a **measured comparison**: (a) exact low-cost event families, (b) coarse model aggregates with declared sufficient statistics and information loss, and (c) only expensive focal events. Measure cold/replay, memory/storage and latency, but also **whether the same eligible later consumer reaches a justified action/unknown**. A lower-runtime capsule with false learning inference fails, even if its prose is convincing. #1011's two-event pilot does **not** depend on solving childhood period compression; do not impose this as an acceptance gate.
+
 ### Vital economic/scientific fork
 
-**Event-generating cheap simulator:** actual modeled events with sufficiently low-cost writer/receipts; coverage derives from them. Requires scalability, bounded snapshot frequency, actor/access conservation.
+**Event-generating cheap simulator (proposal):** actual model events with a sufficiently low-cost, **owner-authorized** writer/receipts; coverage derives from them. Requires scalability, bounded snapshot frequency, actor/access conservation.
 
-**Coarse aggregate-generating simulator:** directly draws period-level counts/transition measures without modeling each microevent. Can be much cheaper **but** no individual microevent or its detailed memory exists; any learning rule consuming aggregate requires separately qualified assumptions of sufficiency. A count of 20 responses is not a conditional response probability if signals/opportunities/order are lost.
+**Coarse aggregate-generating simulator (proposal):** draws model-graded period counts/transition measures **without** claiming each microevent occurred as a committed P2 episode. Can be much cheaper **but** no individual microevent or its detailed memory exists; any learning rule consuming aggregate requires separately qualified assumptions of sufficiency. A count of 20 responses is not evidence for an actor's learned contingency if the eligible signal opportunities, pairing/order, access and counterfactual non-signal windows have been lost. Even a statistically sufficient summary is sufficient **only relative to a specified learning model**, not to all future questions.
 
 The future engine may combine both; no “complete exact life” claim follows merely from having coverage. A high-resolution episode cannot retcon an event omitted from the aggregate without an explicit history-selection and admissible sampling rule.
 
@@ -88,4 +94,4 @@ The future engine may combine both; no “complete exact life” claim follows m
 
 **Upstream SC-03/04**, **downstream SC-05/07**: this record is the *bridge* between generated parental life and emergent, historically acquired child organization, not a competing adult prelife compressor.
 
-**Status:** strong product-scientific necessity; specific event generator, cross-actor material effects, summary sufficiency and performance unproved.
+**Status:** original SEAM/22–23 product/science requirement with sourcefree event-admission precedents; specific real ordinary-life generator, cross-actor transfer, clock/age mapping, summary sufficiency and cost qualification **unproved**.
