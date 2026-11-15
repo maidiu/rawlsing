@@ -6,7 +6,7 @@
 
 **DO NOT replace SEAM/20's generative computational order with forward-only random coupling or with a generic PYAT→P6 affordance adapter.**
 
-1. PYAT qualifies and may draw a **correlated observable maternal demographic/material/survey-response cloud**, with real respondent design, source, conditional support, historical as-of and uncertainty; an adult response is not her psyche.
+1. PYAT can currently qualify **bounded observed respondent/distributional relationships** in particular sourcefree/source-governed cuts; a **correlated synthetic maternal demographic/material/survey-response draw** is the *intended, separately gated consumer*, not an already issued capability. Preserve respondent design, source, support, historical as-of, uncertainty; an adult answer is not psyche.
 2. SOROK generates **several compressed, forward-developed maternal candidate histories using the SAME developmental ontology as the eventual child**, checks compatibility with her observed surface at the proper evidence grade, and commits one actual fictional iceberg, with underdetermination visible.
 3. The independently active mother's committed trajectory provides **multiple materially and historically feasible encounter alternatives**. Choose an eligible intersection; the choice is not an LLM assertion of fact.
 4. **Only then** generate the father **backward-conditionally** on that intersection **and the branch's stipulated eventual birth**, with a separately coherent earlier life that reaches the intersection without rewriting the mother's committed past. Computational order and in-world causal order differ.
@@ -48,7 +48,7 @@ The IDs label **questions to develop**, not granted capabilities or planned work
 - **UNKNOWN/HELD/NOT_MODELED:** a legitimate result, not zero, typical development, negative evidence, or an invitation to fill narrative gaps.
 - **Not allowed:** raw survey→private motive; partner marginal→measured couple; co-presence→learning; narrated past→admitted event; compression→remembered ungenerated episodes; typed motif→attractor→Enneagram type as automatic cause.
 
-**Pinned source contexts:** PRE-MAIN baseline `6a5c12f04323d74001f9632063ec907f4fc4468e`; sourcefree SOROK parent/P3/P6 inspected in PR #1030 at `ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9`; SEAM/19–23 on PR #989 at `50a720205ad4d44bbc53bce3d1d4b6399b60360c`. If code advances, **add a new source-cut annotation**, don't silently replace the old positive/negative claim.
+**Pinned source contexts (historical snapshots, NOT one jointly executed tree):** PRE-MAIN baseline `6a5c12f04323d74001f9632063ec907f4fc4468e`; sourcefree SOROK parent/P3/P6 inspected in **unmerged candidate** PR #1030 at `ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9`; SEAM/19–23 on PR #989 at `50a720205ad4d44bbc53bce3d1d4b6399b60360c`. If code advances, **add a new source-cut annotation**, don't silently replace the old positive/negative claim.
 
 ### Concrete connected work, without duplicating it
 
@@ -76,12 +76,20 @@ No one UM gets to promote a plausible interpretation to an issued scientific law
 | Decision | Current disposition | Disagreement / next discriminating question |
 |---|---|---|
 | SEAM/20 order governs | **PRESERVE** | No forward-only replacement or parent/child compression conflation |
-| CAN-011 permits open-ended acquired contents | **SUPPORTED SEMANTIC BOUNDARY** | Which existing referent/semantic owner can admit a new learned object? SC-01 |
+| CAN-011 permits extensible state **schema**, not acquired-content issuance | **SUPPORTED SCHEMA; NO GENERAL LEARNING RULE** | Older PFF's optional/prospective reference convention is a possible implementation trap, **not a demonstrated conflict/bug**; what source-qualified actor-domain rule can create content? SC-01 |
 | Adult survey cloud admits unique parent iceberg | **REFUSE** | How can multiple candidates be generated without pseudo-posterior? SC-02 |
 | Father past can be appended retroactively | **NOT DEMONSTRATED** | Exact branch/clock/world-consistency admission? SC-03 |
 | Registered parent has continuously developing P3 | **NOT DEMONSTRATED** | Competent actor-local continuation and actual later chooser? SC-04 |
 | Child exposure entails formation | **REFUSE** | Domain-specific tested U plus actual access? SC-05 |
 | Three narrative scenes represent complete childhood | **REFUSE** | Loss-aware generated ordinary-life coverage? SC-06 |
 | Repeated learned nodes imply C5 basin | **REFUSE** | Earned relation-mode and H0/H1 ablation? SC-07 |
+
+### Shipping / nonblocking precedence
+
+This bank is **not seven prerequisite tickets for #1011**. [#1011](https://github.com/maidiu/rawlsing/issues/1011) has a bounded dependency-gated SOURCEFREE pilot: an actual qualified upstream conditional changes a generated person/world configuration; two temporally separated admitted events, a continuing-person reader, changed/restore counterfactual, negative custody, and cold replay. **SC-03 full backward father genesis, SC-06 economical childhood coverage and SC-07 C5 are NOT preconditions to that finite pilot**, and cannot be silently imposed as additional acceptance criteria. They inform eventual Neo-V3 and additional experimental verticals under their own existing owners. The closer blocker for #1011 is its actual #998/#1009/approved SOROK actor interface dependency, not a new SEAM bank. Existing #1003/#1005 sourcefree SOROK receiving also remains independently dependency-gated.
+
+### Scientific validation boundary
+
+A synthetic event/learning counterfactual with successful replay validates **software wiring under its registered rule**, not estimates of historical coupling, fertility, caregiving, learning or human motivational dynamics. Claims about real people require independent, domain-matched human source/evaluation evidence; sample and time transport must be qualified rather than narrated. No adult survey can license a personal psychological edge or conditional partner probability by itself.
 
 **R1 completion condition:** seven grounded, internally cross-referenced research records are reviewable together. This is documentary banking only. An implementation-ready decision requires a separate owner-qualified proof/authority process, and the terminal goal is still **a historically particular, independently acting, continuing playable Other**.
