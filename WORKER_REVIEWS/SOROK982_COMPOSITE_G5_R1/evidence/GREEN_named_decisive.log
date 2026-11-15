@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+rootdir: /Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing
+collecting ... collected 3 items
+
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py::test_old_authentic_receipt_cannot_be_replayed_as_current_operation PASSED [ 33%]
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py::test_stale_authentic_receipt_is_not_current_authorization PASSED [ 66%]
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py::test_explicit_internal_trust_boundary_not_mistaken_for_protected_source PASSED [100%]
+
+============================== 3 passed in 39.33s ==============================
+       39.84 real        36.42 user         2.13 sys
+            64782336  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               22992  page reclaims
+                 322  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                3047  voluntary context switches
+               18783  involuntary context switches
+        257976454848  instructions retired
+        135125508373  cycles elapsed
+            62373888  peak memory footprint

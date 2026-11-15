@@ -1,0 +1,51 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_old_authentic_receipt_cannot_be_replayed_as_current_operation ______
+
+tmp_path = PosixPath('/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing/.local-logs/sorok982-composite-g5/tmp/pytest-of-matthewsmith/pytest-1/test_old_authentic_receipt_can0')
+
+    def test_old_authentic_receipt_cannot_be_replayed_as_current_operation(tmp_path):
+        state = tmp_path / "stale-receipt"
+        run_p6.experience(state, Namespace(command="new", request_id=None,
+                                           situated_house=True))
+        run_p6.experience(state, Namespace(command="approach", request_id="old"))
+        old = json.loads((state / "p4_receipts.json").read_text())["turns"][-1]["receipt"]
+        old_event = old["performed"]
+        run_p6.experience(state, Namespace(command="wait", duration=4,
+                                           request_id="later"))
+        owner = run_p6.open_owner(state / "actual-p2")
+        try:
+            session = owner.base_owner.fanin.session
+            world, house = read_house(session)
+            packet = {"cues": [old["outward_cue"]],
+                      "recent_self_actions": [], "recent_speech": []}
+            interval = {"start": old_event["clock"] - 1, "end": world.clock}
+            assert world.clock > old_event["clock"]
+>           assert current_p3_actor_access(
+                session, interval, world, house, packet,
+                source_receipt=old) is False
+E               AssertionError: assert True is False
+E                +  where True = current_p3_actor_access(<s47.session.S47Session object at 0x10de8e6d0>, {'start': 247, 'end': 253}, WorldState(clock=253, positions={'A': 'workshop', 'B': 'workshop', 'U': 'workshop'}, actor_state={'A': {'actor_id': 'T...BP4_OBJECTIVE_WORLD@1', owner='TEST_ONLY_BP4_WORLD_OWNER', grade='TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE', native=False), {'branch': 'first_session', 'epoch': 248, 'history': {'bench-installation': {'clock': 234, 'depends_on': [], 'id': 'be...ses the left strap.', 'glance': 'A photograph leans against the wall on the shelf.', 'room': 'living room'}, ...}, ...}, {'cues': [{'channels': ['AUDITORY'], 'clock': 248, 'condition_source': 'ef7b8da3f75ff09d6261159c4641cf4459f061a04413a8dfdc6e2ca6f100e2e0', 'detail': {'near': True}, ...}], 'recent_self_actions': [], 'recent_speech': []}, source_receipt={'interval': {'activity_id': 'TEST_ONLY_S46_MATERIAL_INSPECT', 'actor_id': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'actor_knowle...ck': 248, 'event_id': 'TEST_ONLY_BP4_WORLD_EVT_1e2bf940207a2ee21e1c702f2eb1f6423e978bd5c226238ac5af72e4d71c09d6', ...}})
+
+WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py:33: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py::test_old_authentic_receipt_cannot_be_replayed_as_current_operation
+1 failed in 29.85s
+       30.75 real        24.65 user         2.19 sys
+            61222912  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               22102  page reclaims
+                  37  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                1297  voluntary context switches
+               57858  involuntary context switches
+         81740866044  instructions retired
+         66824977137  cycles elapsed
+            59150336  peak memory footprint

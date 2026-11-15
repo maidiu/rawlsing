@@ -1,0 +1,126 @@
+{
+  "schema": "SOROK_CGA_982_COMPOSITE_G5_RECEIVING@1",
+  "commission": "SOROK CG-A #982 composite independent nonauthor G5 receiving",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE_S2_FOR_HQ",
+  "integration": "INTEGRATION_READY_FOR_HQ",
+  "evidence_grade": "SOURCEFREE_S2_CG_A_P3_TO_P6_CAUSAL_BRIDGE",
+  "metadata_correction": {
+    "superseded_grade": "SOURCEFREE_S2_INSTRUMENTATION_ONLY_CANDIDATE...",
+    "superseded_g03_label": "G03_FULL: NOT_EVALUATED_G02_MISSING",
+    "reason": "G03-I0/#949 is a distinct commission and is not CG-A's evidence grade or obligation"
+  },
+  "reviewer": {
+    "session": "ses_e221462b9ffeDc6SKxZGtXojUH",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant_max_claimed": true,
+    "nonauthor": true,
+    "never_982_author_or_repairer": true,
+    "product_edits": 0,
+    "provider_calls": 0,
+    "github_actions": false,
+    "browser": false,
+    "cost_metadata": "UNOBSERVED"
+  },
+  "source": {
+    "report_head": "d5cf0c9c9925eb75c21c9a70793947f857917959",
+    "code_test_head": "ff30c13eea54e37e2dc8edfa73a7c7447127b735",
+    "code_test_parent": "4cbf67398d742eeab0853d047b6c2239c84b8348",
+    "pr_992_code_test": "6f1bc8894d1151d0921140e72bb43f5d1bb50fae",
+    "agent_b_source": "5d63d452c96d49a035355d9372b1ec3ddd4af6ba",
+    "pr_976_source": "37c5842e04892421c9ce74a39956c3cdcf57f0f5",
+    "published_composite_head": "d5cf0c9c9925eb75c21c9a70793947f857917959",
+    "origin_main": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+    "protected_only_6a5c12f0_is_ancestor": false,
+    "ancestry_verified": true,
+    "implementation_delta_paths": [
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py",
+      "WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_current_operation_binding.py",
+      "WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py",
+      "WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py",
+      "WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py"
+    ],
+    "report_only_after_code": true
+  },
+  "blobs": {
+    "situated_base": "1433d6885706e7638f7ca5f511de85c93cbbe263",
+    "situated_final": "56d9b2e399c349ab0fcc52619ee48b3a119f19df",
+    "response_py": "730d5692c16a4039981d25a632bf97d428eae526",
+    "run_p4_py": "b99d8e82ed8ba25b9d090c5d7041eadb7ebd19d4",
+    "sourcefree_p3_bridge_py": "a041785f88956fc65464e124bc4007d8a4914f95",
+    "test_p4_scope_owner_py": "728799b1250e61d3aafc7eeb2c3ed003f514a157",
+    "test_g5_stale_receipt_py": "a1453e799d98b4c47d26c56a12d1d2695bd42557",
+    "test_d1_receipt_currentness_py": "30701f83ee7dcc37aa3cf958a7224cd6229b6816",
+    "test_receiver_977_baseline_py": "2b489ba1edd0698ead4899fe64abe19e9f7f4cce",
+    "test_current_operation_binding_py": "4216590b74c048d48a4f4dcc44fae5eb18b3764e"
+  },
+  "asset_authenticity": {
+    "g5_hostile_source": "c597024bb250f014f9a616006f10172ed53e4357",
+    "d1_contract_source": "4952f62ea1aa175d6ea6b83d8f6beb488e12befb",
+    "receiver_source": "9d3d8ae419998a3e13d88f58147756149e3dddb5",
+    "byte_identical": true
+  },
+  "red": {
+    "cut": "4cbf67398d742eeab0853d047b6c2239c84b8348",
+    "command": "python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py",
+    "exit": 1,
+    "passed": 0,
+    "failed": 1,
+    "seconds": 29.85,
+    "assertion": "assert True is False",
+    "log": "evidence/RED_base_4cbf67398_hostile.log"
+  },
+  "green": {
+    "repair_7": {"exit": 0, "passed": 7, "failed": 0, "seconds": 162.66, "max_rss": 64974848, "log": "evidence/GREEN_repair_7.log"},
+    "p4_scope_7": {"exit": 0, "passed": 7, "failed": 0, "seconds": 149.87, "max_rss": 63111168, "log": "evidence/GREEN_p4_scope_7.log"},
+    "agent_b_scope_6": {"exit": 0, "passed": 6, "failed": 0, "seconds": 149.88, "max_rss": 58404864, "log": "evidence/GREEN_agent_b_scope_6.log"},
+    "ab_p4cli_p5_14": {"exit": 0, "passed": 14, "failed": 0, "seconds": 489.50, "max_rss": 61026304, "log": "evidence/GREEN_ab_p4cli_p5_14.log"},
+    "p6_45": {"exit": 0, "passed": 45, "failed": 0, "seconds": 915.33, "max_rss": 68431872, "log": "evidence/GREEN_p6_45.log"},
+    "baseline_37": {"exit": 0, "passed": 37, "failed": 0, "seconds": 3241.23, "max_rss": 69795840, "log": "evidence/GREEN_37_baseline.log"},
+    "named_decisive_3": {"exit": 0, "passed": 3, "failed": 0, "seconds": 39.33, "max_rss": 64782336, "log": "evidence/GREEN_named_decisive.log"},
+    "reviewer_independent_2": {"exit": 0, "passed": 2, "failed": 0, "seconds": 53.11, "max_rss": 60628992, "log": "evidence/GREEN_reviewer_independent_r3.log"}
+  },
+  "reviewer_probe_corrections": [
+    {"run": 1, "error": "KeyError p3_record_readset; live packet field is readset", "passed": 1, "failed": 1, "seconds": 86.82, "log": "evidence/GREEN_reviewer_independent.log", "safety_assertion_weakened": false},
+    {"run": 2, "error": "WorldState is not subscriptable; use .actor_state", "passed": 1, "failed": 1, "seconds": 40.71, "log": "evidence/GREEN_reviewer_independent_r2.log", "safety_assertion_weakened": false},
+    {"run": 3, "result": "2 passed", "seconds": 53.11, "log": "evidence/GREEN_reviewer_independent_r3.log"}
+  ],
+  "same_clock_identity_probe": {
+    "script": "evidence/inspect_same_clock.py",
+    "output": "evidence/same_clock_identity_probe.txt",
+    "result": "APPROACH and ORIENT receipts share root, branch, actor, start/end, state_id, receipt_hash, episode_id and domain_issuance_id; substitution still refuses and the session's own receipt is accepted",
+    "within_session_issuer_parent_revocation_test": "test_real_current_cue_requires_issuer_parent_not_just_event_identity PASSED in baseline_37"
+  },
+  "first_consumer": {
+    "probe": "WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1/test_review_independent_g5.py::test_first_consumer_checks_owner_interval_before_outer_turn_commit",
+    "inside_interpret": {"ledger_pending": true, "ledger_turns": 0},
+    "after_return": {"turns": 1, "private_receipt_matches_packet": true, "latest_state_current": true, "unique_conduct_matches_event": true},
+    "cold_reopen": "positive conserved twice",
+    "later_wait": "old receipt and widened interval refuse"
+  },
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS_WITH_EXPLICIT_RECOVERY_HOLDS",
+    "G5": "PASS"
+  },
+  "holds": {
+    "qualified_p3_read_actor_observed": "RAW_INTERNAL_TRUST",
+    "native_memory": "MISSING_RULE",
+    "native_action": "NOT_ISSUED_BY_P3_RULE",
+    "stimulus_to_mediator_relevance": "UNISSUED_NATIVE_RULE",
+    "can_008_rule_a": "NOT_ISSUED",
+    "can_011_rule_t": "NOT_ISSUED",
+    "memory_transfer_no_change": "NOT_ISSUED",
+    "actor_or_human_rights": "HELD",
+    "production_grant": "NOT_ISSUED",
+    "scientific_authority": "HELD",
+    "full_crash_recovery": "HELD",
+    "world_house_direct_helper_trust": "RAW_INTERNAL_TRUST",
+    "protected_merge": "NOT_PERFORMED",
+    "staging_campaign": "NOT_LAUNCHED",
+    "push_or_pr": "NOT_PERFORMED"
+  },
+  "integration_note": "INTEGRATION_READY_FOR_HQ is a source/PR-publication readiness verdict, not a protected merge authorization. HQ must confirm the protected target and preserve the protected-only 6a5c12f0 MCR-lite lineage in its staging.",
+  "stop": true
+}
