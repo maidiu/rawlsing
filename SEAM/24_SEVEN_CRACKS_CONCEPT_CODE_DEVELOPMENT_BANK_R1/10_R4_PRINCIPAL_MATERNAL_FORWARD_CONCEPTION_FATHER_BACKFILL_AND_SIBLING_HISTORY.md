@@ -94,8 +94,8 @@ FINAL PRE-FOCAL MATERNAL EVENT:
 RECONSTRUCT THE REQUIRED RELATIONSHIP CHRONOLOGY:
     identify earlier necessary meeting/partnership/genealogy constraints
     PYAT/source+scenario-qualified possible paternal observable profile
-    SOROK generate independent father from earlier spawn; recuse forward
-       [sic: recurse] with locked objectively required intersections only
+    SOROK generate independent father from earlier spawn; recurse forward
+       with locked objectively required intersections only
     validate father's earlier trajectory and first encounter
     if candidate includes years of couple life, enact independent
        father/mother joint development and distinct perceived-other history
