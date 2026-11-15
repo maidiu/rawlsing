@@ -1,0 +1,6 @@
+# F6M nonpooled numerical partial identification is not I07 permission guard
+**Identity:** inherited historic F6M numerical mixture/bounds versus present `guard_estimand_composition` I07; no new independent T minted here. Evidence presently is T1/T2 author source-level narrative, not a direct old F6M source-body replay in this flight.
+**Historic input:** per-source qualified estimates and target population/period, missing target mass, source overlap and nonpooling policy. **Historical operation:** if a lawful transport/mixture exists, emit covered and uncovered mass and partial-identification bounds; refuse unjustified point identification. **Current related operation:** guard validates estimand/permission/overlap eligibility. It does **not by itself** establish numerical mixture/bound emission.
+**Current output/first reader:** the numerical result producer and N7→N9 actual recipient are UNPROVED in this P0; neither code silence at I07 nor a reported guard proves whole-machine functional loss or retirement.
+**Decision-changing next check:** identify historical source code and exact numerical receipt, then search the selected current numerical emitter (not the guard alone) and owner-approved equivalent or authorized nonnecessity; test the refusal/no-pooling case. **Owner:** source/science/F6 + #816.
+Evidence EV0016,EV0017.

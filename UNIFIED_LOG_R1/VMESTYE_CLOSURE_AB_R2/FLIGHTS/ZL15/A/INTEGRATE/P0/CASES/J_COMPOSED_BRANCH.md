@@ -1,0 +1,7 @@
+# V550J–V552J — stage composed knowledge, not a dead socket
+**Inherited:** ZAK02:T:0005 same-person joint pattern; T0006 outside-family conditional risk; T0008 ordered component certification. ZL03 R5 is accepted S0–S1 documentary input; ZAK02 R10 crossreference unreceived.
+**Input:** source/wave/country and respondent ID membership, family patterns, answers, eligible outside-variable baseline. **Operations:** prepare common country substrate; joint co-occurrence; condition outside-family answer risk on same-person pattern; certify ordered components and J role; V552J can reduce selected handoff fields. **Output:** distinct joint member/answered/eligible denominators and component identity, not a string naming similarity.
+**Positive:** original code/story supplies joint candidate and static V551J packet producer. **Negative:** old V552 ordinary conditional socket unused in one route does not prove the J branch absent. A reduced V552J proxy may lose component vectors even while a permitted minimal probe remains. **Intermediate:** Dva/Trii/Chetiri historical custody is source-grade; not automatically the current equivalent.
+**Current:** bounded Q86 two-way and FF related code are not automatically the whole k-person pattern. **Reader:** original/static packet→V552J; present selected non-test first reader NOT_PROVED.
+**Owner/falsifier:** J source/science owner plus #815/#816; compare one selected same-person pattern and its per-member denominator through final consumer, with refusal.
+Evidence EV0011,EV0016,EV0018.

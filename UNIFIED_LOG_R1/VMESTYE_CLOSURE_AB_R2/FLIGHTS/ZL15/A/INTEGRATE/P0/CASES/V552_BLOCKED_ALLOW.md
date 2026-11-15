@@ -1,0 +1,7 @@
+# V552 — a coverage BLOCKED does not automatically gate an allowed score
+**Exact code:** `9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/ddm_v552_structural.py#0df56d70cb3880dee723df00aea2207acd525260:L130-L175`. **Identity:** T1R2-V552-PRESSURE (T1 R5 unreceived).
+**Input:** signed V551 component rows including `n_unweighted`, shared `n_respondents`, validity, percentages/weights and V551 debt status. **Operation:** `_surface` classifies selected-response coverage; when category count exceeds respondent denominator it returns `BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR`. The scorer independently checks debt/eligibility/usable weights and need not gate on coverage status.
+**Concrete counterexample:** T1 R5 static illustrative two categories 60+60 over respondent 100, signed [+1,0]; blocked coverage 1.2 can coexist with score +.5 and `ALLOW`. This was **not executed** on actual Python/respondent data. The present successor should not blindly reproduce a possibly invalid allowance.
+**Old output:** distinct coverage and pressure permission/measure-class; historical downstream first reader not newly proved. **Modern:** source/estimand guards and I03/FF are not proven equivalent numerical/permission behavior.
+**Falsifier:** source-science issuer compares a real authorized old row and specified modern alternative including blocked/allow negative. **Status:** candidate semantic contradiction held, not a missing current function declaration.
+Evidence EV0009,EV0015.
