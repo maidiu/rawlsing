@@ -164,16 +164,13 @@ def test_v2_saved_postconsumer_consumes_only_new_compiler_issued_jobs(
     workload = issue.issued.workload
     assert workload.requests
     manifest, predicates = s1e._issued_manifest(workload, admission)
-    runner = BatchExecutionRunner(
-        manifest=manifest, repository=admission, saved_mode=True,
-    )
     from rawlsing_next.pre553_saved_workload_integration import execute_saved_batch
-    result = execute_saved_batch(
+    runner = execute_saved_batch(
         admission, manifest=manifest, predicate_ref_by_query=predicates,
     )
-    assert len(result.receipts) == len(manifest.units)
-    # This independently executed Batch may have separate custody; the R6
-    # join still verifies each first reader itself from the actual runner.
+    assert len(runner.receipts) == len(manifest.units)
+    # This is the SAME real saved-runner result later checked by S1-E.
+    # A separate newly created but unexecuted Batch runner would prove nothing.
     joined = join_saved_source_operation_fates(
         handoff=handoff, estate_receipt=estate, admission=admission,
         compilation=v1, workload=workload,
@@ -186,10 +183,13 @@ def test_v2_saved_postconsumer_consumes_only_new_compiler_issued_jobs(
         row["postconsumer_receipt_refs"] == ()
         for row in joined.rows if row["disposition"] != "ELIGIBLE"
     )
-    assert joined.audit["native_completed_units_rechecked"] >= 0
-    # Positive original source-realized query attribution is strictly more
-    # demanding than issuing/executing the sourcefree job. If this fixture
-    # has no complete query-role→Q2-realized mapping, it stays PENDING.
+    assert joined.audit["native_completed_units_rechecked"] == len(manifest.units)
+    # POSITIVE is only allowed if the exact source-side Q2 realization and
+    # the complete original compiled query role agree with that executed unit.
+    assert any(
+        row["postconsumer_state"] == "TEST_ONLY_SAVED_NATIVE_QUERY_RECEIPTED"
+        for row in joined.rows
+    )
 
 
 def test_v2_changed_operation_bindings_refuse_even_matching_current_record(
