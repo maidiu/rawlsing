@@ -1,0 +1,11 @@
+# A historical pressure value changes meaning before it reaches a person
+
+**Worked thought experiment, NOT_RUN:** An exact V552 source publishes two genuinely different pressures at 0.2 and 0.8. V552J may derive the source-fact association through semantic similarity scoring instead of an exact producer link. V553 then averages the pressures within one source/key group to 0.5, retains one primary fact ID and drops the other original exact identity into diagnostic JSON. That output can have an authorized-sounding `AUTHORIZED_SPARSE_TEMPORAL_KEY` status, but the value and its full authorizing source lineage are not the two independent old facts. This is not a reason to erase V553's real sparse temporal function; it is a reason to restrict claims about its fidelity.
+
+Old V554 compounds the distinction: its seed consumer reads secondary country-year pressure summaries rather than V553's governed keyed field and exact `v553_v554_handoff_index`. Its `anchor_derived` positive regional status does not match the canonical producer anchor labels `ready`, `ready_with_gaps` or `anchor`. An old national seed may still be positive from global readiness; this is a different meaning than an authorized keyed structural pressure.
+
+The historically **accepted** Vozhd Dva terminal rules explicitly preserve exact issuer-bound V552 fact, V552J admission/use, structural source→target direction, 0..n governed stratum/Horizon refs, temporal comparability and typed gaps with the aggregate absent. The accepted V554 F1/F2/B1 rule permits a truly non-temporal source-qualified path without fake temporal pressure. Its original accepted W0 authority did not implement the production consumer.
+
+Today protected M1 defines a *distinct* SIG004 FF-admitted relation input that creates exact F1/F2/B1 and hands them to a real M4 code reader under a sealed producer-use token. That is more than a mere plan; it remains much less than a demonstrated native original-source→world→Sorok actor continuation.
+
+Preserve **fact identity**, **semantic transformation**, **source/target-use issuer**, **real first reader**, and **what an actor actually knows/does** as different evidence cells. No historical averaging, rule approval, test declaration, M4 permission atom or structural string gives authority to improvise a person's psyche.

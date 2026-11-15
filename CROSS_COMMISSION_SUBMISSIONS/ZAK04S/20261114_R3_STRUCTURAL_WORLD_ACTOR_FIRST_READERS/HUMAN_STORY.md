@@ -1,0 +1,9 @@
+# From the right structural fact to what a person is actually allowed to say
+
+A protected M1 can already read a separately admitted Field Forge relation and produce exact F1/F2/B1 objects. M4 takes those objects through real governance and V558 query code: it checks exact IDs, needed dependencies and permission sets, but its resolved result contains **no** ResolvedStructuralContext. That is intentional; M5 independently requires a CURRENT context basis, reruns the exact M4 selection and materializes/verifies a real RSC object. Partial, stale or denied context does not silently become a positive RSC.
+
+The important limit arrives at the person. M5 can produce a structural-peer-use receipt for a separately declared V3 requirement, but sets `actor_state_effect=False` and says structural eligibility is not mutation authority. The PSEPF zero-positive guard has an empty default accepted authority registry, and the M6 actor-safe ingress explicitly rejects any M5 RSC/currentness/peer receipt as first-person behavioral evidence. A claimed person's knowledge requires its own current and actor-bound claim entry, not a scientist's certainty about the world.
+
+Finally, an actual bounded renderer calls M6's positive actor-safe gate but its current plan-authority status is `BLOCKED_NAMED_AUTHORITY_REQUIRED`; a positive render requires separately issued semantic plan and execution authority. Thus present *code path* and *selected executed native persona* are sharply different: the latter remains unproved.
+
+An entirely separate R05/P41/R112 sourcefree world service does read structural and empirical values, but declares `operative_N9=False`, `operative_N10W=False`, `actor_executions=0` and refuses `SOROK_ACTOR`. No source license joins it to the real M4/M5 chain or to actual social-reproduction/psychological development simply because it shares a word like 'structural.'
