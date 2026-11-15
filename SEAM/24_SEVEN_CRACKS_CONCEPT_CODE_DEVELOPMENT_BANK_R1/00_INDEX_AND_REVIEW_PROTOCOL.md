@@ -31,6 +31,12 @@
 
 **R2 document grade:** source-grounded, hostile-self-reviewed **candidate for UM debate**, NOT author-accepted scientific or executable architecture. The R1 file names are stable identifiers for comment/revision continuity; R2 fixes live in the current branch. Preserve separate human peer review and competence-owner permission.
 
+### Constructive R3 synthesis (non-authoritative overlay)
+
+**[Read 09 — R3 creative/productive science×engineering synthesis, real-function map and three economical proof probes](09_R3_CONSTRUCTIVE_GENERATIVE_SYNTHESIS_AND_EXPERIMENTS.md).** This is a **proposal layer over SC-01–SC-07**, NOT seven new tasks, a replacement for the individually reviewable cards, or a decision to implement a shared meta-API. Its central conjecture is that the seven scientific questions may reuse three existing-owner **proof junctions**: (i) proposed → committed individual history, (ii) one public world event → differential actor-specific objective effects/access, and (iii) experienced/practiced history → later owner-issued actor selection. It contains a function-level positive/negative code map, seven candidate creative realizations, one controlled cross-stage example, and refutations SOROK can raise.
+
+**Review priority:** R2's confirmed defects and unknowns govern; R3's new ideas remain **HYPOTHESES**. If an R3 idea survives, revise the relevant SC card and its source/grade/owner contract explicitly. If refuted, retain the refutation rather than accumulating another parallel architecture. Full SEAM/20 computational order and existing #1011/nonblocking boundary remain intact.
+
 ### Seven separately reviewable records
 
 | ID | Concept × code development record | Immediate upstream | Critical downstream |
