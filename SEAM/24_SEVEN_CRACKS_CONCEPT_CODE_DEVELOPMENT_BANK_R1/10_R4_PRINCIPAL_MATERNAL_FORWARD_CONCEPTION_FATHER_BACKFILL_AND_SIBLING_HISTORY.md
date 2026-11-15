@@ -122,6 +122,15 @@ LATER first readers read admitted world+acquired actor states,
 - A final-only birth target helps choose a focal child branch but risks teleology if it biases every mother's initial event; record conditioning grade and resist hidden causal force.
 - Older sibling prelife may be represented in fewer events **only if** their actor causal state supports later independent behavior; a role label is not a real sibling.
 
+### Where CURRENT SOURCEFREE code stops
+
+- [`model_cycle.RecursionCycle._parse_proposals`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py#L508) accepts **3–5 ordered event documents in a batch**. This is **not a selector among 3–5 competing conception possibilities**. Nothing in that parser proves the mother's later acquired state selects a candidate from a previously proposed terminal event. The principal's suggested **2–3 *LLM calls over years*** must not be confused with the current parser's 3–5 **event documents per call/batch**.
+- [`parent_decision.read_parent_material_prospectives`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py#L284) provides *unchosen* material alternatives. It is a promising precedent for conditioned **candidate enumeration**, **not** a mother's independent state-informed choice or a conception chooser.
+- [`situated.reconsider`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py#L134) is a narrow focal-A checkpointed selected action precedent. It must not be generalized into a mother, father or sibling decision mechanism without a qualified actor/action owner and proper access/state.
+- [`p3.P3Owner`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py#L162) remains **TEST_ONLY** for one identity. It does not by itself give mother, father and every older sibling independently developing P3 psychologies.
+
+**Resulting exact gap:** candidate conception-path **proposal** → intervening compressed **realized developmental updates** → later mother-specific **conditional selection** → backward father and earlier genealogy construction → **shared-years causal reconciliation** → focal conception/birth admission → multiple continuing actor first consumers. Existing pieces have partial analogues; the sequence is not yet a demonstrated combined program.
+
 ## 7. Negative controls and minimal proofs for the UMs
 
 1. **No clairvoyant proposal:** generate a candidate conception list from mother M(ti). Alter legitimately admitted intermediate events, leading to different mother M(t_last); test different selected option or legitimate refusal. The LLM cannot pre-read M(t_last) at candidate-generation time.
