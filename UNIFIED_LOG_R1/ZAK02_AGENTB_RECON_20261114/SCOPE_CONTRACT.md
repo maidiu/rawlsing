@@ -1,5 +1,10 @@
 # SCOPE_CONTRACT — ZAK-02 corrected read-only R1 sidecar
 
+## R8 original-first three-agent intake
+
+At shared #1054 `d25836436c16efda51ca1935c1c979b396eb61bd` and ZAK04 #1053 `69804f88abc8e84cf91ee256aa66fb607a49f5a7`: **new provisional** historical T0021 V550 indicator-answer conditional distribution and T0022 V551J-D provisional audit; T0005 respondent membership child, not new historical T. Source grain XS:003–010, V552J probe-only vs separate V553 two-wave temporal positive and V554 heuristic-reader mismatch. New records `R8_ZAK04_THREE_AGENT_HISTORICAL_INTAKE.md` and two CASES. **22 provisional T, 264 matrix cells**, not historical or functional completion. Nine original obligations preserved; no engineering/tests/CI/merge/authority; PR1040 R05 detour abandoned.
+
+
 ## Cross-commission R7 (source-grounded historical primary)
 
 ZAK03/PR1048 14 original T references reconciled against ZAK02 primary, with QSM issuer corpus separate, 14/14 alias decisions and distinct new marginal-position `ZAK02:T:0020`. **20 provisional historical T, 240 matrix cells (47 source found, 15 unresolved, 178 NOT_INSPECTED)**. F03 original source now decomposed into file/row/version, six-coordinate directional, context/admin/blocked, pre-existing certified QUC branch and newly flagged *row=None status-unconditional* exception affecting ambiguous/W6 if caller reaches it. See `ZAK02_ZAK03_CROSS_HANDOFF_RETURN.md`, `ZAK02_ZAK03_HISTORICAL_PRIMARY_ALIASES.tsv` and `CASES/ZAK02-T-0020.md`. Historical discovery remains open. 9/9 original obligations accounted, **0 newly discharged**; no native S2, engineering, CI, source/actor/science authority or protected merge.
