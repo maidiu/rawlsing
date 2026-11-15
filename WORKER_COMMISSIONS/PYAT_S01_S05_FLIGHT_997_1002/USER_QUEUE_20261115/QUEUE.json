@@ -112,7 +112,7 @@
       "id": "R6_997",
       "priority": 2,
       "initial_slot": "B",
-      "status": "LAUNCHED__ACTIVE_AT_STARTUP_CHECK",
+      "status": "EXECUTION_RETURN_RECEIVED__ORIGINAL_INDEPENDENT_G5_LAUNCHED",
       "task": "Execute existing R6 guard/test cut and receive independently; do not implement new QUERY issuer",
       "pr": 1033,
       "code_test_sha": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
@@ -169,7 +169,17 @@
           },
           "actual_agent": "build"
         }
-      }
+      },
+      "execution_return": "cb5f4c6653f5a40ad6e875fca7f999b11afc0e3c",
+      "review_launch": {
+        "job_id": "pyat997-r6-independent-g5-20261115",
+        "child_pid": 60998,
+        "supervisor_pid": 60997,
+        "observer_pid": 60999,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/pyat997-r6-independent-g5-20261115",
+        "launch_is_not_completion": true
+      },
+      "review_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-r6-g5-20261115"
     },
     {
       "id": "VOSKRES_R2",
