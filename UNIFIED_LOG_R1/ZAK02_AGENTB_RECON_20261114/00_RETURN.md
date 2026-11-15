@@ -1,5 +1,10 @@
 # 00_RETURN — ZAK-02 bounded read-only unified reconnaissance, 2026-11-14
 
+## Cross-commission R7 (source-grounded historical primary)
+
+ZAK03/PR1048 14 original T references reconciled against ZAK02 primary, with QSM issuer corpus separate, 14/14 alias decisions and distinct new marginal-position `ZAK02:T:0020`. **20 provisional historical T, 240 matrix cells (47 source found, 15 unresolved, 178 NOT_INSPECTED)**. F03 original source now decomposed into file/row/version, six-coordinate directional, context/admin/blocked, pre-existing certified QUC branch and newly flagged *row=None status-unconditional* exception affecting ambiguous/W6 if caller reaches it. See `ZAK02_ZAK03_CROSS_HANDOFF_RETURN.md`, `ZAK02_ZAK03_HISTORICAL_PRIMARY_ALIASES.tsv` and `CASES/ZAK02-T-0020.md`. Historical discovery remains open. 9/9 original obligations accounted, **0 newly discharged**; no native S2, engineering, CI, source/actor/science authority or protected merge.
+
+
 ## R6 source-level countersearch and present counts
 
 19 provisional T, 54 operations, 59 edges, 145 evidence rows, 38 reverse consumers, 60 searches, 43 holds, 86 shapes. 228 matrix cells remain 45 FOUND, 15 UNRESOLVED, 168 NOT_INSPECTED. Old certified alias filename exists; old V0 certificate field schema does not. Legacy V553 old-ID extraction, thin proxy, and semantic-diff filenames now individually reconciled. R5 EV124–133 IDs normalized to EV0124–0133. See `ROUND6_CERTIFIED_SCHEMA_AND_CONSUMER_RECONCILIATION.md`. No program execution or engineering.
