@@ -153,7 +153,7 @@ if(strictRoot){
  };
  for(const [kind,probs]of Object.entries(strictResults))for(const e of probs)errors.push(kind+':'+e);
  // These are real source line reads, not production execution.
- const src=(ref,n)=>show(ref,n).toString('utf8').split(/\r?\n/);
+ const src=(ref,n)=>execFileSync('git',['-C',strictRoot,'show',ref+':'+n],{maxBuffer:8*1024*1024}).toString('utf8').split(/\r?\n/);
  const world=src(cuts.PREMAIN,'rawlsing_next/pre553_universal_world_binding.py');
  verify(world[1223]?.includes('step["denominator"]')&&world[1224]?.includes('step["cells"]'),'R08_SOURCE_EFFECT_NOT_AT_1224_1225');
  const oldTemporal=src(cuts.ORIGINAL,'data/ddm_build_copy/ddm_v553_temporal_pressure.py');
