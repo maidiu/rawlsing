@@ -358,6 +358,20 @@ def _group_core_fingerprint(core: _GroupCore) -> str:
     })
 
 
+def _query_respondents(index: _ReleaseIndex) -> Iterable[RespondentIdentity]:
+    """Choose authenticated-native physical traversal, or legacy canonical order.
+
+    This changes only *which respondent is visited next*, not the meaning of
+    source/risk/target/authority resolution, weighted arithmetic, or canonical
+    result/replay ordering. The native opt-in is set after its full physical
+    event-body/locator checks, using the saved RespondentIdentity insertion
+    order. All non-direct indices retain existing canonical ref-key sorting.
+    """
+    if index.native_verified_physical_respondent_order:
+        return index.respondents.values()
+    return sorted(index.respondents.values(), key=lambda respondent: respondent.ref.key)
+
+
 def _respondent_root(index: _ReleaseIndex) -> str:
     return semantic_hash([
         respondent.ref.as_dict()
@@ -445,7 +459,7 @@ def _evaluate_index_group_core(
 
     used.extend([index.universe, index.release.replay_manifest])
     used_auth.extend(_validate_public_object_authorities(index.universe, registry))
-    for respondent in sorted(index.respondents.values(), key=lambda item: item.ref.key):
+    for respondent in _query_respondents(index):
         per_target_states: list[str] = []
         for i, component in enumerate(plan.components):
             fact = _routing_fact_for(
@@ -694,7 +708,7 @@ def _evaluate_index_group(
                     target_refs=tuple(component.target_ref for component in plan.components),
                 )
             )
-        for respondent in sorted(index.respondents.values(), key=lambda item: item.ref.key):
+        for respondent in _query_respondents(index):
             per_target_states: list[str] = []
             for i, component in enumerate(plan.components):
                 fact = _routing_fact_for(
