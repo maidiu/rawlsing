@@ -1,0 +1,75 @@
+SOROK CG-A #982 composite G5 independent receiving source state
+Generated: 2026-11-15T08:44:50Z
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing
+Review branch: codex/sorok982-composite-g5-20261115-r1
+Review session: ses_e221462b9ffeDc6SKxZGtXojUH
+Model: opencode-go/deepseek-v4.1-flash (variantMAX available; cost/token metadata UNOBSERVED)
+
+SOURCE CUT UNDER REVIEW
+HEAD (report head)          d5cf0c9c9925eb75c21c9a70793947f857917959
+Code/test head              ff30c13eea54e37e2dc8edfa73a7c7447127b735
+Code/test parent            4cbf67398d742eeab0853d047b6c2239c84b8348
+PR #992 report head         4cbf67398d742eeab0853d047b6c2239c84b8348
+PR #992 code/test head      6f1bc8894d1151d0921140e72bb43f5d1bb50fae
+Agent B source              5d63d452c96d49a035355d9372b1ec3ddd4af6ba
+PR #976 source              37c5842e04892421c9ce74a39956c3cdcf57f0f5
+origin composite head       d5cf0c9c9925eb75c21c9a70793947f857917959
+origin/main                 25830fe7462bb9e29bc4087e6ae14f3f84cec377
+
+ANCESTRY
+5d63d452 -> 4cbf67398: YES
+4cbf67398 -> ff30c13ee: YES; ff30c13ee^ == 4cbf67398
+ff30c13ee -> d5cf0c9c: YES
+37c5842e0 -> d5cf0c9c: YES
+origin/main -> d5cf0c9c: YES; merge-base 25830fe74
+d5cf0c9c...origin/main left/right count: 5609 0
+6a5c12f04323d74001f9632063ec907f4fc4468e -> d5cf0c9c: NO (protected-only MCR-lite lineage; HQ staging must preserve it)
+
+IMPLEMENTATION DELTA 4cbf67398..ff30c13ee (exactly 5 paths)
+A WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_current_operation_binding.py
+A WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py
+A WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py
+A WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py
+M WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
+
+REPORT-ONLY DELTA ff30c13ee..d5cf0c9c
+Only WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/ report, matrix, handoff and evidence files are added.
+
+BLOBS AT HEAD
+WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py                    56d9b2e399c349ab0fcc52619ee48b3a119f19df
+  base 4cbf67398 blob                                                      1433d6885706e7638f7ca5f511de85c93cbbe263
+WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/response.py                      730d5692c16a4039981d25a632bf97d428eae526
+WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py                        b99d8e82ed8ba25b9d090c5d7041eadb7ebd19d4
+WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/sourcefree_p3_bridge.py         a041785f88956fc65464e124bc4007d8a4914f95
+WORKER_RETURNS/SOROK-CGA-P4-SOURCE-OWNER-R1/test_p4_scope_owner.py          728799b1250e61d3aafc7eeb2c3ed003f514a157
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py          a1453e799d98b4c47d26c56a12d1d2695bd42557
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py    30701f83ee7dcc37aa3cf958a7224cd6229b6816
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py     2b489ba1edd0698ead4899fe64abe19e9f7f4cce
+WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_current_operation_binding.py 4216590b74c048d48a4f4dcc44fae5eb18b3764e
+
+FROZEN ASSET AUTHENTICITY
+a1453e799d98b4c47d26c56a12d1d2695bd42557
+  = c597024bb250f014f9a616006f10172ed53e4357:WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_hostile_stale_receipt.py
+  = 4952f62ea1aa175d6ea6b83d8f6beb488e12befb:WORKER_RETURNS/SOROK-CGA-G5-D1-REPAIR-R1/test_g5_stale_receipt.py
+  = HEAD:WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py
+30701f83ee7dcc37aa3cf958a7224cd6229b6816
+  = 4952f62ea1aa175d6ea6b83d8f6beb488e12befb:WORKER_RETURNS/SOROK-CGA-G5-D1-REPAIR-R1/test_d1_receipt_currentness.py
+  = HEAD:WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py
+2b489ba1edd0698ead4899fe64abe19e9f7f4cce
+  = 9d3d8ae419998a3e13d88f58147756149e3dddb5:WORKER_RETURNS/SOROK-CGA-INDEPENDENT-RECEIVING-R1/test_receiver.py
+  = HEAD:WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py
+
+P4 #992 SCOPE-OWNER PRESERVATION
+response.py, run_p4.py, sourcefree_p3_bridge.py and test_p4_scope_owner.py
+are byte-identical at 6f1bc889, 4cbf67398, ff30c13ee and d5cf0c9c (blobs above).
+
+SHA256 OF HEAD SOURCE/TEST FILES
+7e13cc596c6ad22dc37c008cd007bb4e989e338a6b158df6d05c5adb1306b6e1  WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py
+ac2203ad2b5ddc3a9690288a78bb51b11246206a6989f76fa68f2ceee84a0ebd  WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/response.py
+4e794ad727298b4d98fe57c411355307027d3e3d6f44a2081c9fbd5546f70c9f  WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py
+5551cc468aee9ce8da2b03aa84fbcd5cdf82f4eabd861bfdaea6da422b0cae9f  WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/sourcefree_p3_bridge.py
+3e2f4202c799a8e008c3feb3a3e4d2022a7846fd50e83e0da1113f035403e450  WORKER_RETURNS/SOROK-CGA-P4-SOURCE-OWNER-R1/test_p4_scope_owner.py
+2a70f392adc8271a1efa80469396c011e01d8e33a2717cef4b6af8353a60ed58  WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_g5_stale_receipt.py
+683829c8871e8e5e4871b76e680822a30f3bcf65fa9549faa46d8d0ebe1f8637  WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_d1_receipt_currentness.py
+b1b60761403c1266735e2cb0ecc7ccb09dfebddcdf467448a732af837dd4f548  WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_receiver_977_baseline.py
+1f2df0453359cac79155fdd1bfaa0aff77c97d47575bcb88ca9aedb772b590a8  WORKER_RETURNS/SOROK-CGA-982-COMPOSITE-R1/test_current_operation_binding.py

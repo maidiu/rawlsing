@@ -1,0 +1,90 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+______ test_first_consumer_checks_owner_interval_before_outer_turn_commit ______
+
+tmp_path = PosixPath('/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing/.local-logs/sorok982-composite-g5/tmp/pytest-of-matthewsmith/pytest-6/test_first_consumer_checks_own0')
+
+    def test_first_consumer_checks_owner_interval_before_outer_turn_commit(tmp_path):
+        state = tmp_path / "first-consumer"
+        _run(state, "new", None)
+        captured = []
+    
+        def interpret(packet):
+            captured.append(deepcopy(packet))
+            ledger = json.loads((state / "p4_receipts.json").read_text())
+            # The P6 access decision is made inside run_p4.act's conduct callback,
+            # after PACE persisted the S46 state and before the outer turn append.
+            assert ledger["pending"] is not None
+            assert len(ledger["turns"]) == 0
+            p3 = packet["sourcefree_p3"]
+            assert p3["actor_access_evidence"]
+            assert {row["basis"] for row in p3["actor_access_evidence"]} == {
+                "P6_OUTWARD_CURRENT_OPERATION_DERIVED"
+            }
+            assert p3["stimulus_to_mediator_relevance"] == "UNISSUED_NATIVE_RULE"
+            assert p3["world_readset"] and p3["p3_record_readset"]
+            assert set(p3["world_readset"]).isdisjoint(p3["p3_record_readset"])
+            return {"attention": "noticed", "interpretation": "first consumer only",
+                    "action": "continue", "cue_event_id": None, "channel": None}
+    
+>       public = _run(state, "approach", "first", interpret=interpret, bridge=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1/test_review_independent_g5.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1/test_review_independent_g5.py:23: in _run
+    return run_p6.experience(
+WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py:127: in experience
+    outcome = act(owner, ledger_file, ledger, args,
+WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py:251: in act
+    receipt, public = perform(session, action)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py:122: in perform_with_time
+    decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode, **bridge_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py:451: in reconsider
+    decision = interpret(deepcopy(packet))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+packet = {'actor': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'room': 'workshop', 'clock': 249, 'elapsed': 1, ...}
+
+    def interpret(packet):
+        captured.append(deepcopy(packet))
+        ledger = json.loads((state / "p4_receipts.json").read_text())
+        # The P6 access decision is made inside run_p4.act's conduct callback,
+        # after PACE persisted the S46 state and before the outer turn append.
+        assert ledger["pending"] is not None
+        assert len(ledger["turns"]) == 0
+        p3 = packet["sourcefree_p3"]
+        assert p3["actor_access_evidence"]
+        assert {row["basis"] for row in p3["actor_access_evidence"]} == {
+            "P6_OUTWARD_CURRENT_OPERATION_DERIVED"
+        }
+        assert p3["stimulus_to_mediator_relevance"] == "UNISSUED_NATIVE_RULE"
+>       assert p3["world_readset"] and p3["p3_record_readset"]
+                                       ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'p3_record_readset'
+
+WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1/test_review_independent_g5.py:64: KeyError
+=========================== short test summary info ============================
+FAILED WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1/test_review_independent_g5.py::test_first_consumer_checks_owner_interval_before_outer_turn_commit
+1 failed, 1 passed in 86.82s (0:01:26)
+       89.48 real        43.54 user         6.06 sys
+            53788672  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              102759  page reclaims
+                 272  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                2354  voluntary context switches
+              203223  involuntary context switches
+        116348286354  instructions retired
+        116864289845  cycles elapsed
+            55947264  peak memory footprint
