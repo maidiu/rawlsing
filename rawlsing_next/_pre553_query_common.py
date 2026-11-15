@@ -168,6 +168,10 @@ class _ReleaseIndex:
     runtime_authorities: Any | None = None
     runtime_repository: C11Repository | None = None
     runtime_predicate_grammar_authority_ref: Any | None = None
+    # Only the independently authenticated DirectEstateI03Session may opt in.
+    # Its respondent mapping was inserted in saved physical row-group order.
+    # Legacy C11 and other indexes retain canonical ref-key iteration.
+    native_verified_physical_respondent_order: bool = False
 
 
 @dataclass(frozen=True)

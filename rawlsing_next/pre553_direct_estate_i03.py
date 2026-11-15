@@ -469,6 +469,10 @@ class DirectEstateI03Session:
             routing_by_respondent=_ColdFamilyRows(self, "RoutingEligibilityFact"),
             weights_by_respondent=_ColdFamilyRows(self, "WeightMeasureFact"),
             source_relations=self._relations,
+            # Opt in ONLY after VerifiedDirectEstate/DirectEstateI03Session
+            # has authenticated body/locator and respondent identities.
+            # The dict preserves their saved physical insertion order.
+            native_verified_physical_respondent_order=True,
         )
         return ((universe_ref, index),)
 
