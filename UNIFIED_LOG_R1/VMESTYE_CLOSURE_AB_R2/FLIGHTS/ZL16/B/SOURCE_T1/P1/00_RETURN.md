@@ -10,7 +10,7 @@ Both independent P0s source-verified the two **R5 repairs D23/D25**: V549b liter
 
 ## Three decision-specific contests
 
-### CONTEST:0001 — A's conditional V549b output-abort claim omitted an earlier abort and a mis-scoped bypass
+### CONTEST:0001 — A's valid inner-loop abort claim omitted a separate outer-loop negative
 
 **Target:** A `ZL16A-D01`, `VMCR2:ZL16:A:UNJOIN:001` and `REVIEW_CASES.md §02` [A EV:003/004]. A correctly describes the inner `answer_type` exception as requiring a qualifying anchor and 50 inner candidate iterations; the stated no-anchor bypass is true **for that particular exception**. The separate outer-loop negative below can occur without a qualifying anchor, so the negative and first-reader inventory remains incomplete.
 
