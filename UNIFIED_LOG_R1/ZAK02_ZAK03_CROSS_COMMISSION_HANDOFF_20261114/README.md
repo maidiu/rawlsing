@@ -35,3 +35,7 @@ Both continue to investigate their own half of a shared bridge. This eliminates 
 ## Non-negotiable limitations
 
 No changes to `integration/pre-main-reconciliation-r1`; no integration/merge of PRs #1046/#1048/#1042/#1043; no source, scientific, actor, reviewer or original35 authority; no S2/S3/CI tests; no new engine/adapter; no global search-negative inference from indexed lookup failures. Source-search misses require broad repository/file/caller/output/chronology countersearch and a bounded search receipt. The original nine mission obligations for each commission remain intact; cross-links do **not** close them.
+
+## 2026-11-14 triad addendum — ZAK-04S and broader ZAK-04
+
+**Now coordinate three commissioned agents through one shared *read-only* index, not a single simultaneously edited file:** `THREE_AGENT_WORKFLOW.md`, `SHARED_SEAM_REGISTER.tsv` (14 seam overlays, explicitly noncanonical) and `PROMPT_ZAK04S.md` extend this handoff. ZAK02S/03S prompts have additive instructions below. The original two-agent mapping and evidence remain unchanged. Broad ZAK04 R7 PR #1053 supplies source-graded downstream evidence; the narrow ZAK04S PR #1040 is a separate code candidate with NEG07/NEG08 **NOT_RUN**. No agent is allowed to unilaterally edit this shared index or the other agents' PRs. A designated integrator serializes source-verified intake. No three-stage mandatory serial pipeline is implied.
