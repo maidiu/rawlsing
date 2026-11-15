@@ -1,0 +1,377 @@
+{
+  "budget_seconds": 300.0,
+  "cold": {
+    "batch": {
+      "admission_seconds": 0.24820462800562382,
+      "cold_100_decision": {
+        "forecast_100_seconds": 54.94935790193267,
+        "one_op_seconds": 0.5494935790193267,
+        "remaining_budget_seconds": 299.01598663802724,
+        "run_100": true
+      },
+      "cold_qualification_forecast": {
+        "basis": "measured cold session-per-operation batch",
+        "exceeds_300s_budget": true,
+        "grade": "EXTRAPOLATION_NOT_MEASURED",
+        "operations": 1000,
+        "projected_wall_seconds": 519.2870779597433
+      },
+      "counters": {
+        "c11_repository_tripwire_hits": 0,
+        "event_object_materializations": 29343,
+        "family_calls": 19828,
+        "family_object_materializations": 94068,
+        "family_rows_yielded": 94068,
+        "read_table_calls": 0,
+        "read_table_tripwire_hits": 0,
+        "row_group_compressed_bytes": 576774322,
+        "row_group_reads": 43130,
+        "row_group_rows": 690080,
+        "row_group_uncompressed_bytes": 2363218327,
+        "selected_event_calls": 17134,
+        "selected_events_yielded": 16443,
+        "session_build_seconds": 6.380133387167007,
+        "session_builds": 100,
+        "session_enter_seconds": 8.13841930712806,
+        "session_opens": 100,
+        "session_temp_max_bytes": 1703936
+      },
+      "cpu_system_seconds": 5.5553230000000005,
+      "cpu_user_seconds": 50.896823000000005,
+      "disk_free_after_bytes": 4786143232,
+      "disk_free_before_bytes": 4786765824,
+      "distinct_core_operations": 80,
+      "distinct_query_refs": 100,
+      "kind": "COLD_REPEATED_SAVED_EXECUTION",
+      "measure_variants": 20,
+      "operations_completed": 100,
+      "operations_per_second": 1.9257170887613015,
+      "operations_requested": 100,
+      "process_tree_rss_after_bytes": 137236480,
+      "process_tree_rss_before_bytes": 80445440,
+      "process_tree_rss_peak_bytes": 137236480,
+      "retained_estate_bytes": 2153366,
+      "schema": "PYAT_COUNTRY_REUSE_COLD_BATCH@1",
+      "scratch_dir_bytes_after": 2153366,
+      "self_maxrss_bytes": 136503296,
+      "self_rss_after_bytes": 136380416,
+      "self_rss_before_bytes": 79659008,
+      "typed_state_counts": {
+        "SUPPORTED": 100
+      },
+      "utc_start": "2026-11-15T08:27:23.190980+00:00",
+      "wall_seconds": 51.92870779597433
+    },
+    "one_op": {
+      "cell_state_counts": {
+        "OBSERVED_POSITIVE": 2
+      },
+      "core_id": "core-000",
+      "counters": {
+        "c11_repository_tripwire_hits": 0,
+        "event_object_materializations": 513,
+        "family_calls": 128,
+        "family_object_materializations": 640,
+        "family_rows_yielded": 640,
+        "read_table_calls": 0,
+        "read_table_tripwire_hits": 0,
+        "row_group_compressed_bytes": 5721849,
+        "row_group_reads": 426,
+        "row_group_rows": 6816,
+        "row_group_uncompressed_bytes": 23326183,
+        "selected_event_calls": 384,
+        "selected_events_yielded": 384,
+        "session_build_seconds": 0.0883841419708915,
+        "session_builds": 1,
+        "session_enter_seconds": 0.10533239197684452,
+        "session_opens": 1,
+        "session_temp_max_bytes": 1703936
+      },
+      "cpu_system_seconds": 0.07416099999999999,
+      "cpu_user_seconds": 0.5545559999999998,
+      "fact_ref": {
+        "content_hash": "90e2c05ba091cd41c4cac0332702f15b6f0f32097eb02f6b90b1884a52b30f6c",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:90e2c05ba091cd41c4cac0332702f15b6f0f32097eb02f6b90b1884a52b30f6c"
+      },
+      "fact_sha256": "d5e1df1649063cfea356ae0977fbd2a6cee02b170b0cffba93d64938ea7beee0",
+      "facts_count": 1,
+      "family": "marginal",
+      "kind": "COLD_SINGLE_OPERATION_CALIBRATION",
+      "measure": "RAW",
+      "measure_basis_ref": {
+        "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:i03:measure_basis:RAW"
+      },
+      "op_id": "marginal_A",
+      "predicate_ref": {
+        "content_hash": "4b606988feafda76179871b089fd7cb4b42f0d5e63f5b5bf109eb01d22aaf8ef",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4b606988feafda76179871b089fd7cb4b42f0d5e63f5b5bf109eb01d22aaf8ef"
+      },
+      "process_tree_rss_after_bytes": 80527360,
+      "process_tree_rss_before_bytes": 66895872,
+      "process_tree_rss_peak_bytes": 80527360,
+      "query_ref": {
+        "content_hash": "b566e92425b31899aa21d96026a8de3bda48ef932ec5382948875ec16c568f53",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b566e92425b31899aa21d96026a8de3bda48ef932ec5382948875ec16c568f53"
+      },
+      "raw_denominator_support": 128,
+      "raw_numerator_support": 128,
+      "release_refs": [
+        {
+          "content_hash": "92db570ab1d722fb56d4eb2084b3ca20c3875f622dbdc5b9c0837f812b786310",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-PYAT-COUNTRY-REUSE-20261115"
+        }
+      ],
+      "replay_ref": {
+        "content_hash": "443bd08726a6ba7f71fceff59d2a421283a482dda0f06a49c70aae4d5a02957d",
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:443bd08726a6ba7f71fceff59d2a421283a482dda0f06a49c70aae4d5a02957d"
+      },
+      "self_maxrss_bytes": 79810560,
+      "self_rss_after_bytes": 79646720,
+      "self_rss_before_bytes": 66101248,
+      "target_topology_cells": 2,
+      "targets": [
+        "A"
+      ],
+      "typed_state": "SUPPORTED",
+      "wall_seconds": 0.5494935790193267,
+      "weighted_denominator_support": null,
+      "weighted_numerator_support": null
+    }
+  },
+  "estate": {
+    "exact_path": "releases/e9eb4a7bba2e6674a03cffaebb5c3063e33eb89fde34c0f435a2530304afe54f",
+    "family_counts": {
+      "AuthoritySnapshot": 5,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 128,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 5,
+      "RespondentEvent": 416,
+      "RespondentIdentity": 128,
+      "RoutingEligibilityFact": 640,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 128
+    },
+    "i02": {
+      "logical": "a2ed53bdc7724634a616ecbaa43057b38f040f97589e66a4459538bcc62597a8",
+      "physical": "f0c645ce2b2fd548a8c4540074e6bed7c497bfbac516a112bfdde95e92464b28",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-PYAT-COUNTRY-REUSE-20261115|7958f31a70aa57bdfd9f36c1a6bc59035d4534862bcf3276c0956576ebcff845",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:f6b61df767303027c160cea8611fae4d1264917418aae30a20d3d7d8659df588|f6b61df767303027c160cea8611fae4d1264917418aae30a20d3d7d8659df588",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|SOURCE-PYAT-COUNTRY-REUSE-20261115|d698b8213d39a85faf8b30b41ed58f78988e049076e2455edcf9089151a64ae3",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:20eb977b93a22911b499168e95817bd13eff4ee150224e5892e460126dd724cc|20eb977b93a22911b499168e95817bd13eff4ee150224e5892e460126dd724cc"
+    },
+    "manifest_sha256": "22640e2dca76011a3abb27ba4e97a174bf101a8814cb0691a16dd77d1e7e1fc0",
+    "release_ref": {
+      "content_hash": "92db570ab1d722fb56d4eb2084b3ca20c3875f622dbdc5b9c0837f812b786310",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-COUNTRY-REUSE-20261115"
+    },
+    "retained_bytes": 2153366,
+    "root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-court-20261115/WORKER_RETURNS/PYAT_COUNTRY_REUSE_COURT_20261115/.local-data/estate-128"
+  },
+  "finished_utc": "2026-11-15T08:28:44.060033+00:00",
+  "grade": "SOURCEFREE_TEST_ONLY",
+  "guard": {
+    "carrier_guard": {
+      "disposition": "REFUSED",
+      "error": {
+        "message": "grouped saved I03 scope awaits distinct S2-D qualification",
+        "type": "CarrierExecutionBindingError"
+      },
+      "scope_receipt": {
+        "capacity_fallbacks": 0,
+        "closed": false,
+        "core_build_attempts": 0,
+        "core_builds": 0,
+        "core_hits": 0,
+        "early_capacity_fallbacks": 0,
+        "fallbacks": 0,
+        "fingerprint_failures": 0,
+        "max_cached_members": 500000,
+        "max_groups": 256,
+        "open_groups": 0,
+        "raw_materializations": 0,
+        "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+        "weighted_materializations": 0
+      },
+      "wall_seconds": 0.0003525479696691036
+    },
+    "cold_index_contract": {
+      "coordinates_respondent_count": 128,
+      "events_by_respondent_type": "mappingproxy",
+      "events_respondent_count": 128,
+      "index_id_first_call": 4661903888,
+      "index_id_second_call": 4639446224,
+      "index_identity_missing_release_fields": [
+        "semantic_release_hash",
+        "source_release_manifest_hash"
+      ],
+      "release_fields": [
+        "release_ref",
+        "replay_manifest"
+      ],
+      "release_has_semantic_release_hash": false,
+      "release_has_source_release_manifest_hash": false,
+      "release_type": "_DirectReleaseIdentity",
+      "respondents": 128,
+      "routing_respondent_count": 128,
+      "runtime_authorities_is_none": true,
+      "runtime_predicate_grammar_authority_ref_is_none": true,
+      "runtime_repository_is_none": true,
+      "same_index_object_across_two_calls": false,
+      "source_relations": 0,
+      "weights_respondent_count": 128
+    },
+    "evaluator_guard": {
+      "disposition": "REFUSED",
+      "error": {
+        "message": "grouped native I03 cache not yet qualified for cold sourcefree estate",
+        "type": "EmpiricalQueryExecutionError"
+      },
+      "wall_seconds": 0.08334933099104092
+    },
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "notes": [
+      "Both public entry points refuse before any grouped core is published.",
+      "The index inspection is read-only and does not call the grouped cache."
+    ],
+    "op_id": "marginal_A",
+    "schema": "PYAT_COUNTRY_REUSE_GUARD_PROBE@1"
+  },
+  "native_oracle": {
+    "build_seconds": 0.5735256390180439,
+    "grouped_default64": {
+      "cpu_system_seconds": 0.021536999999999473,
+      "cpu_user_seconds": 3.889944,
+      "group_scope_receipt": {
+        "capacity_fallbacks": 16,
+        "closed": false,
+        "core_build_attempts": 64,
+        "core_builds": 64,
+        "core_hits": 20,
+        "early_capacity_fallbacks": 16,
+        "fallbacks": 0,
+        "fingerprint_failures": 0,
+        "max_cached_members": 500000,
+        "max_groups": 64,
+        "open_groups": 64,
+        "raw_materializations": 64,
+        "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+        "weighted_materializations": 20
+      },
+      "operations_completed": 100,
+      "self_maxrss_bytes": 158154752,
+      "wall_seconds": 3.927034599997569
+    },
+    "grouped_max256": {
+      "cpu_system_seconds": 0.08204200000000039,
+      "cpu_user_seconds": 4.099549000000003,
+      "group_scope_receipt": {
+        "capacity_fallbacks": 0,
+        "closed": false,
+        "core_build_attempts": 80,
+        "core_builds": 80,
+        "core_hits": 20,
+        "early_capacity_fallbacks": 0,
+        "fallbacks": 0,
+        "fingerprint_failures": 0,
+        "max_cached_members": 500000,
+        "max_groups": 256,
+        "open_groups": 80,
+        "raw_materializations": 80,
+        "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+        "weighted_materializations": 20
+      },
+      "operations_completed": 100,
+      "self_maxrss_bytes": 158154752,
+      "wall_seconds": 4.215811970003415
+    },
+    "release_ref": {
+      "content_hash": "92db570ab1d722fb56d4eb2084b3ca20c3875f622dbdc5b9c0837f812b786310",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-COUNTRY-REUSE-20261115"
+    },
+    "ungrouped": {
+      "cpu_system_seconds": 0.026861000000000246,
+      "cpu_user_seconds": 4.252763000000002,
+      "group_scope_receipt": null,
+      "operations_completed": 100,
+      "self_maxrss_bytes": 155230208,
+      "wall_seconds": 4.303958506963681
+    }
+  },
+  "operations": {
+    "core_operations": 80,
+    "distinct_operations": 100,
+    "distinct_query_refs": 100,
+    "measure_variants": 20
+  },
+  "parity": {
+    "cold_vs_native_ungrouped": {
+      "exact": true,
+      "mismatch_count": 0,
+      "operations_compared": 100
+    },
+    "grouped256_vs_cold": {
+      "exact": true,
+      "mismatch_count": 0,
+      "operations_compared": 100
+    },
+    "grouped256_vs_native_ungrouped": {
+      "exact": true,
+      "mismatch_count": 0,
+      "operations_compared": 100
+    },
+    "grouped64_vs_native_ungrouped": {
+      "exact": true,
+      "mismatch_count": 0,
+      "operations_compared": 100
+    }
+  },
+  "repeat_probe": {
+    "elapsed_before_probe_seconds": 66.1185558050056,
+    "grouped_cpu_user_seconds": 15.552056000000007,
+    "grouped_per_iteration_max_seconds": 0.10195115196984261,
+    "grouped_per_iteration_min_seconds": 0.01375704602105543,
+    "grouped_per_iteration_p50_seconds": 0.015189972997177392,
+    "grouped_receipt": {
+      "capacity_fallbacks": 0,
+      "closed": false,
+      "core_build_attempts": 1,
+      "core_builds": 1,
+      "core_hits": 999,
+      "early_capacity_fallbacks": 0,
+      "fallbacks": 0,
+      "fingerprint_failures": 0,
+      "max_cached_members": 500000,
+      "max_groups": 2,
+      "open_groups": 1,
+      "raw_materializations": 1000,
+      "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+      "weighted_materializations": 0
+    },
+    "grouped_wall_seconds": 15.683000300021376,
+    "iterations": 1000,
+    "op_id": "marginal_A",
+    "schema": "PYAT_COUNTRY_REUSE_REPEAT_PROBE@1",
+    "scope": "REPEAT_INVOCATIONS_NOT_DISTINCT_OPERATIONS",
+    "ungrouped_cpu_user_seconds": 51.541382999999996,
+    "ungrouped_wall_seconds": 52.03488346899394,
+    "wall_speedup": 3.3179163727314993
+  },
+  "schema": "PYAT_COUNTRY_REUSE_COURT@1",
+  "started_utc": "2026-11-15T08:26:30.219566+00:00",
+  "status": "COURT_MEASURED",
+  "total_court_wall_seconds": 133.84122322697658
+}

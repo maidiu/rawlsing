@@ -1,0 +1,209 @@
+{
+  "cold": {
+    "batch_wall_seconds": 51.92870779597433,
+    "c11_repository_tripwire_hits": 0,
+    "compressed_read_amplification_vs_estate": 267.84778899638985,
+    "cpu_system_seconds": 5.5553230000000005,
+    "cpu_user_seconds": 50.896823000000005,
+    "event_materializations_per_op": 293.43,
+    "event_object_materializations": 29343,
+    "family_object_materializations": 94068,
+    "family_rows_per_op": 940.68,
+    "family_rows_yielded": 94068,
+    "forecast_1000_exceeds_budget": true,
+    "forecast_1000_seconds": 519.2870779597433,
+    "one_op_seconds": 0.5494935790193267,
+    "ops_per_second": 1.9257170887613015,
+    "per_op_max": 1.0578604610054754,
+    "per_op_mean": 0.5191155171871651,
+    "per_op_min": 0.3171710380120203,
+    "per_op_p50": 0.5187330024782568,
+    "per_op_p95": 0.73836725030269,
+    "process_tree_rss_peak_bytes": 137236480,
+    "read_table_calls": 0,
+    "row_group_compressed_bytes": 576774322,
+    "row_group_reads": 43130,
+    "row_group_reads_per_op": 431.3,
+    "row_group_rows": 690080,
+    "row_group_rows_per_op": 6900.8,
+    "row_group_uncompressed_bytes": 2363218327,
+    "self_maxrss_bytes": 136503296,
+    "session_build_seconds": 6.380133387167007,
+    "session_build_share": 0.1228633189224403,
+    "session_enter_seconds": 8.13841930712806,
+    "session_enter_share": 0.1567229313524142,
+    "session_temp_max_bytes": 1703936,
+    "uncompressed_read_amplification_vs_estate": 1097.4531626300407
+  },
+  "court_wall_seconds": 133.84122322697658,
+  "estate": {
+    "events": 416,
+    "family_rows": 1451,
+    "respondents": 128,
+    "retained_bytes": 2153366,
+    "routing": 640,
+    "weights": 128
+  },
+  "grouped_in_memory": {
+    "core_hit_fraction": 0.2,
+    "default64_receipt": {
+      "capacity_fallbacks": 16,
+      "closed": false,
+      "core_build_attempts": 64,
+      "core_builds": 64,
+      "core_hits": 20,
+      "early_capacity_fallbacks": 16,
+      "fallbacks": 0,
+      "fingerprint_failures": 0,
+      "max_cached_members": 500000,
+      "max_groups": 64,
+      "open_groups": 64,
+      "raw_materializations": 64,
+      "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+      "weighted_materializations": 20
+    },
+    "grouped_default64_wall_seconds": 3.927034599997569,
+    "grouped_max256_wall_seconds": 4.215811970003415,
+    "max256_receipt": {
+      "capacity_fallbacks": 0,
+      "closed": false,
+      "core_build_attempts": 80,
+      "core_builds": 80,
+      "core_hits": 20,
+      "early_capacity_fallbacks": 0,
+      "fallbacks": 0,
+      "fingerprint_failures": 0,
+      "max_cached_members": 500000,
+      "max_groups": 256,
+      "open_groups": 80,
+      "raw_materializations": 80,
+      "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+      "weighted_materializations": 20
+    },
+    "saved_seconds_per_core_hit": 0.004407326848013327,
+    "speedup": 1.020908555122347,
+    "substrate_note": "in-memory C11Repository, not cold saved consumer",
+    "ungrouped_wall_seconds": 4.303958506963681,
+    "wall_reduction_fraction": 0.02048034078805545
+  },
+  "guard": {
+    "carrier": {
+      "disposition": "REFUSED",
+      "error": {
+        "message": "grouped saved I03 scope awaits distinct S2-D qualification",
+        "type": "CarrierExecutionBindingError"
+      },
+      "scope_receipt": {
+        "capacity_fallbacks": 0,
+        "closed": false,
+        "core_build_attempts": 0,
+        "core_builds": 0,
+        "core_hits": 0,
+        "early_capacity_fallbacks": 0,
+        "fallbacks": 0,
+        "fingerprint_failures": 0,
+        "max_cached_members": 500000,
+        "max_groups": 256,
+        "open_groups": 0,
+        "raw_materializations": 0,
+        "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+        "weighted_materializations": 0
+      },
+      "wall_seconds": 0.0003525479696691036
+    },
+    "cold_index_contract": {
+      "coordinates_respondent_count": 128,
+      "events_by_respondent_type": "mappingproxy",
+      "events_respondent_count": 128,
+      "index_id_first_call": 4661903888,
+      "index_id_second_call": 4639446224,
+      "index_identity_missing_release_fields": [
+        "semantic_release_hash",
+        "source_release_manifest_hash"
+      ],
+      "release_fields": [
+        "release_ref",
+        "replay_manifest"
+      ],
+      "release_has_semantic_release_hash": false,
+      "release_has_source_release_manifest_hash": false,
+      "release_type": "_DirectReleaseIdentity",
+      "respondents": 128,
+      "routing_respondent_count": 128,
+      "runtime_authorities_is_none": true,
+      "runtime_predicate_grammar_authority_ref_is_none": true,
+      "runtime_repository_is_none": true,
+      "same_index_object_across_two_calls": false,
+      "source_relations": 0,
+      "weights_respondent_count": 128
+    },
+    "evaluator": {
+      "disposition": "REFUSED",
+      "error": {
+        "message": "grouped native I03 cache not yet qualified for cold sourcefree estate",
+        "type": "EmpiricalQueryExecutionError"
+      },
+      "wall_seconds": 0.08334933099104092
+    }
+  },
+  "operations": {
+    "cell_state_counts": {
+      "OBSERVED_POSITIVE": 287,
+      "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET": 93
+    },
+    "cores": 80,
+    "distinct": 100,
+    "raw_denominator_max": 128,
+    "raw_denominator_min": 2,
+    "raw_denominator_p50": 21.0,
+    "typed_states": {
+      "SUPPORTED": 100
+    },
+    "weighted_denominator_max": 320.0,
+    "weighted_denominator_min": 30.0,
+    "weighted_variants": 20
+  },
+  "parity": {
+    "cold_vs_native_ungrouped": {
+      "exact": true,
+      "mismatches": 0
+    },
+    "grouped256_vs_cold": {
+      "exact": true,
+      "mismatches": 0
+    },
+    "grouped256_vs_native_ungrouped": {
+      "exact": true,
+      "mismatches": 0
+    },
+    "grouped64_vs_native_ungrouped": {
+      "exact": true,
+      "mismatches": 0
+    }
+  },
+  "repeat_invocations": {
+    "grouped_receipt": {
+      "capacity_fallbacks": 0,
+      "closed": false,
+      "core_build_attempts": 1,
+      "core_builds": 1,
+      "core_hits": 999,
+      "early_capacity_fallbacks": 0,
+      "fallbacks": 0,
+      "fingerprint_failures": 0,
+      "max_cached_members": 500000,
+      "max_groups": 2,
+      "open_groups": 1,
+      "raw_materializations": 1000,
+      "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+      "weighted_materializations": 0
+    },
+    "grouped_wall_seconds": 15.683000300021376,
+    "iterations": 1000,
+    "p50_seconds": 0.015189972997177392,
+    "scope": "REPEAT_INVOCATIONS_NOT_DISTINCT_OPERATIONS",
+    "ungrouped_wall_seconds": 52.03488346899394,
+    "wall_speedup": 3.3179163727314993
+  },
+  "schema": "PYAT_COUNTRY_REUSE_DERIVED@1"
+}
