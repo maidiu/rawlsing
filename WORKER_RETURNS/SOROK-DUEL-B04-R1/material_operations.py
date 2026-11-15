@@ -643,6 +643,52 @@ def purchase_drum_kit(session, parent_id: str, *, operation_id: str,
             )
 
 
+def _purchase_read_provenance(session, episode: Mapping[str, Any],
+                              receipt: Mapping[str, Any], *, parent_id: str,
+                              alias: str, operation_id: str) -> str:
+    root = session.read_root()["root_hash"]
+    branch = session.branch_id
+    body = episode.get("body") or {}
+    if (body.get("schema") != PURCHASE_RECEIPT_SCHEMA
+            or body.get("grade") != GRADE
+            or body.get("root") != root
+            or body.get("branch") != branch
+            or body.get("actor_id") != parent_id
+            or body.get("alias") != alias
+            or body.get("operation_id") != operation_id):
+        raise RecursionRefusal("PURCHASE_READ_PROVENANCE_MISMATCH")
+    if (receipt.get("schema") != PURCHASE_RECEIPT_SCHEMA
+            or receipt.get("grade") != GRADE
+            or receipt.get("root") != root
+            or receipt.get("branch") != branch
+            or receipt.get("operation_id") != operation_id
+            or receipt.get("parent_id") != parent_id
+            or receipt.get("parent_alias") != alias
+            or receipt.get("buyer") != "REGISTERED_PARENT"):
+        raise RecursionRefusal("PURCHASE_READ_PROVENANCE_MISMATCH")
+    status = receipt.get("status")
+    if status not in {"ADMITTED", "REFUSED"} or body.get("status") != status:
+        raise RecursionRefusal("PURCHASE_READ_PROVENANCE_MISMATCH")
+    if receipt.get("clock") != episode.get("clock"):
+        raise RecursionRefusal("PURCHASE_READ_PROVENANCE_MISMATCH")
+    return status
+
+
+def _purchase_source_expected(receipt: Mapping[str, Any], operation_id: str,
+                              parent_id: str) -> str:
+    return digest({
+        "schema": PURCHASE_RECEIPT_SCHEMA,
+        "operation_id": operation_id,
+        "parent_id": parent_id,
+        "owner_actor_id": receipt.get("owner_actor_id"),
+        "object_id": receipt.get("object_id"),
+        "unit_price": receipt.get("unit_price"),
+        "market_source": receipt.get("market_source_before"),
+        "parent_before": receipt.get("parent_material_source_before"),
+        "parent_after": receipt.get("parent_material_source_after"),
+    })
+
+
 def read_purchase(session, parent_id: str, operation_id: str, *,
                   as_actor: str | None) -> dict:
     if as_actor != parent_id:
@@ -653,14 +699,23 @@ def read_purchase(session, parent_id: str, operation_id: str, *,
     if len(episodes) != 1:
         raise RecursionRefusal("PURCHASE_NOT_FOUND")
     receipt = dict((episodes[0].get("body") or {}).get("receipt") or {})
+    status = _purchase_read_provenance(
+        session, episodes[0], receipt, parent_id=parent_id, alias=alias,
+        operation_id=operation_id)
     market = read_market_inventory(session)
     owned = read_owned_objects(session)
     acquisition = next(
         (row for row in owned.get("objects") or []
          if row.get("acquisition_id") == operation_id), None)
-    if receipt.get("status") == "ADMITTED":
+    if status == "ADMITTED":
         if acquisition is None:
             raise RecursionRefusal("PURCHASE_READ_STALE")
+        holder = session.world().actor_state.get("A", {}).get("actor_id")
+        if receipt.get("owner_actor_id") not in (holder, parent_id):
+            raise RecursionRefusal("PURCHASE_READ_PROVENANCE_MISMATCH")
+        expected_source = _purchase_source_expected(receipt, operation_id, parent_id)
+        if receipt.get("purchase_source") != expected_source:
+            raise RecursionRefusal("PURCHASE_READ_PROVENANCE_MISMATCH")
         if (acquisition.get("purchase_source") != receipt.get("purchase_source")
                 or acquisition.get("market_source") != receipt.get("market_source_before")
                 or acquisition.get("object_id") != receipt.get("object_id")
@@ -672,10 +727,14 @@ def read_purchase(session, parent_id: str, operation_id: str, *,
         raise RecursionRefusal("PURCHASE_READ_STALE")
     material = None
     parent_status = "READ"
+    parent_error = None
     try:
         material = _read_material(session, parent_id=parent_id, as_actor=parent_id)
     except RecursionRefusal as exc:
         parent_status = "REFUSED:" + str(exc)
+        parent_error = exc
+    if status == "ADMITTED" and material is None:
+        raise RecursionRefusal("PURCHASE_READ_PARENT_MISMATCH") from parent_error
     feasible = None
     feasible_status = "READ"
     try:

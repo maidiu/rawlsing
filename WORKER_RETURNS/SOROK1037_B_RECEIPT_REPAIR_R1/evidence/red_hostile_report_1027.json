@@ -1,0 +1,357 @@
+{
+  "checks": [
+    {
+      "check": "baseline feasibility admissible",
+      "detail": "ADMISSIBLE",
+      "pass": true
+    },
+    {
+      "check": "baseline market stock",
+      "pass": true
+    },
+    {
+      "check": "baseline ownership absent",
+      "pass": true
+    },
+    {
+      "check": "baseline parent cash",
+      "pass": true
+    },
+    {
+      "check": "wrong request currency refused at purchase reader",
+      "detail": {
+        "raised": "PURCHASE_CURRENCY_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "wrong currency left parent cash",
+      "pass": true
+    },
+    {
+      "check": "wrong currency left stock",
+      "pass": true
+    },
+    {
+      "check": "wrong currency left ownership absent",
+      "pass": true
+    },
+    {
+      "check": "unknown currency held by material reader",
+      "detail": [
+        "UNKNOWN_CURRENCY"
+      ],
+      "pass": true
+    },
+    {
+      "check": "wrong purchase owner refused",
+      "detail": {
+        "raised": "PURCHASE_OWNER_UNKNOWN"
+      },
+      "pass": true
+    },
+    {
+      "check": "unknown parent refused",
+      "detail": {
+        "raised": "PURCHASE_PARENT_UNAVAILABLE"
+      },
+      "pass": true
+    },
+    {
+      "check": "wrong owner/parent left parent cash",
+      "pass": true
+    },
+    {
+      "check": "wrong owner/parent left stock",
+      "pass": true
+    },
+    {
+      "check": "wrong market branch refused",
+      "detail": {
+        "raised": "P6_MARKET_SOURCE_OR_ROOT_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "market source restored exactly",
+      "pass": true
+    },
+    {
+      "check": "household-low feasibility refused",
+      "detail": [
+        "REFUSED_AFFORDABILITY"
+      ],
+      "pass": true
+    },
+    {
+      "check": "parent funds unaffected by household low",
+      "pass": true
+    },
+    {
+      "check": "parent purchase admitted on parent funds",
+      "pass": true
+    },
+    {
+      "check": "one purchase debits exactly 40 parent cash",
+      "pass": true
+    },
+    {
+      "check": "one purchase decrements exactly one stock",
+      "pass": true
+    },
+    {
+      "check": "one purchase writes exactly one ownership row",
+      "pass": true
+    },
+    {
+      "check": "household cash untouched by parent purchase",
+      "pass": true
+    },
+    {
+      "check": "purchase replay is not a second debit",
+      "pass": true
+    },
+    {
+      "check": "purchase replay left parent cash",
+      "pass": true
+    },
+    {
+      "check": "purchase replay left stock",
+      "pass": true
+    },
+    {
+      "check": "purchase replay left one ownership row",
+      "pass": true
+    },
+    {
+      "check": "parent-low purchase refused",
+      "detail": [
+        "PURCHASE_INSUFFICIENT_FUNDS"
+      ],
+      "pass": true
+    },
+    {
+      "check": "parent-low left household cash",
+      "pass": true
+    },
+    {
+      "check": "parent-low left stock",
+      "pass": true
+    },
+    {
+      "check": "parent-low left one ownership row",
+      "pass": true
+    },
+    {
+      "check": "unknown acoustics held",
+      "detail": [
+        "UNKNOWN_ACOUSTICS"
+      ],
+      "pass": true
+    },
+    {
+      "check": "prohibited tenancy refused",
+      "detail": [
+        "REFUSED_TENANCY"
+      ],
+      "pass": true
+    },
+    {
+      "check": "dwelling source restored exactly",
+      "pass": true
+    },
+    {
+      "check": "dwelling content restored exactly",
+      "detail": {
+        "note": "a re-commit is a new dated fact; exact hash restore uses the original document below"
+      },
+      "pass": true
+    },
+    {
+      "check": "baseline feasibility outcome restored exactly",
+      "pass": true
+    },
+    {
+      "check": "original dwelling document hash restored exactly",
+      "pass": true
+    },
+    {
+      "check": "wrong household root refused",
+      "detail": {
+        "raised": "P6_HOUSEHOLD_SOURCE_OR_ROOT_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "wrong household actor refused",
+      "detail": {
+        "raised": "P6_HOUSEHOLD_OWNER_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "household restored exactly",
+      "pass": true
+    },
+    {
+      "check": "changed space changes feasibility",
+      "detail": [
+        "REFUSED_SPACE"
+      ],
+      "pass": true
+    },
+    {
+      "check": "changed legitimate input exact restore",
+      "detail": {
+        "changed_source": "e218b33af2bc",
+        "restored_source": "dd198ee70885"
+      },
+      "pass": true
+    },
+    {
+      "check": "period boundary before is h1",
+      "pass": true
+    },
+    {
+      "check": "period boundary at is h2",
+      "pass": true
+    },
+    {
+      "check": "midperiod split old term",
+      "pass": true
+    },
+    {
+      "check": "midperiod split new term",
+      "pass": true
+    },
+    {
+      "check": "outside plan as-of refused",
+      "detail": {
+        "raised": "P6_PERIOD_OUTSIDE_PLAN"
+      },
+      "pass": true
+    },
+    {
+      "check": "materialize to exact boundary",
+      "pass": true
+    },
+    {
+      "check": "h1 complete at boundary",
+      "pass": true
+    },
+    {
+      "check": "h2 before at boundary",
+      "pass": true
+    },
+    {
+      "check": "period replay does not duplicate state",
+      "detail": {
+        "produced": 0,
+        "status": "ALREADY_CURRENT"
+      },
+      "pass": true
+    },
+    {
+      "check": "rent admitted once",
+      "pass": true
+    },
+    {
+      "check": "rent debits exactly one month",
+      "pass": true
+    },
+    {
+      "check": "rent replay not a second debit",
+      "pass": true
+    },
+    {
+      "check": "rent replay cash unchanged",
+      "pass": true
+    },
+    {
+      "check": "same period second rent operation refused",
+      "detail": {
+        "raised": "B05_RENT_ALREADY_RECORDED"
+      },
+      "pass": true
+    },
+    {
+      "check": "second rent attempt cash unchanged",
+      "pass": true
+    },
+    {
+      "check": "partial purchase evidence refused",
+      "detail": {
+        "raised": "PURCHASE_READ_STALE"
+      },
+      "pass": true
+    },
+    {
+      "check": "restored ownership reads",
+      "pass": true
+    },
+    {
+      "check": "restored ownership quantity",
+      "pass": true
+    },
+    {
+      "check": "forged foreign-root receipt refused",
+      "detail": {
+        "accepted": true,
+        "status": "READ"
+      },
+      "pass": false
+    },
+    {
+      "check": "C02 history rejects the same forged receipt",
+      "detail": {
+        "raised": "PARENT_MATERIAL_HISTORY_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "forged foreign-root rent refused",
+      "detail": {
+        "accepted": true,
+        "status": "READ"
+      },
+      "pass": false
+    },
+    {
+      "check": "forged rent did not change household cash",
+      "pass": true
+    }
+  ],
+  "defects": [
+    {
+      "accepted": true,
+      "actual": "read_purchase accepted forged ADMITTED receipt with root=ffffffffffff and branch=foreign-branch",
+      "expected": "typed refusal binding receipt root/branch/parent to the current session and actual B04 operation",
+      "first_reader": "material_operations.read_purchase",
+      "id": "G5-B04-RECEIPT-FOREIGN-ROOT",
+      "source_cause": "read_purchase validates acquisition fields but never compares the nested receipt root/branch/parent_id to the current session, while C02 _purchase_history_source does check them",
+      "suggested_owner_fix": "B04 owner adds receipt root/branch/parent_id equality before returning READ"
+    },
+    {
+      "accepted": true,
+      "actual": "read_household_obligation accepted forged ADMITTED rent receipt with root=eeeeeeeeeeee and branch=foreign-branch",
+      "expected": "typed refusal binding receipt root/branch and exact rent operation/debit to the current session",
+      "first_reader": "rolling_reproduction.read_household_obligation",
+      "id": "G5-B05-RENT-RECEIPT-FOREIGN-ROOT",
+      "source_cause": "the B05 reader checks sources and arithmetic but not receipt root/branch, and does not require the receipt to correspond to a single actual rent operation for the period",
+      "suggested_owner_fix": "B05 owner adds receipt root/branch and period-operation binding before READ"
+    }
+  ],
+  "elapsed_seconds": 23.253,
+  "final": {
+    "branch": "first_session",
+    "clock": 429,
+    "episode_count": 65,
+    "household_cash": 43,
+    "market_source": "aff423f1ef69ea1b811f8a3765eae8f526654f159c770cdeab03eef17b60a193",
+    "owned_source": "e13470d29ff894004eee8675fb746bc3b0b5c6e62b311f772750bc95a2c02d4b",
+    "parent_cash": 60,
+    "root": "d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6"
+  },
+  "schema": "SOROK1023_G5_HOSTILE_REPORT@1",
+  "verdict": "REVISE_EXACT_DEFECT"
+}
