@@ -1,0 +1,163 @@
+{
+  "packet_id": "S2-A",
+  "task_id": "PYAT999-NATIVE-G5-20261115",
+  "old_obligations": ["P2-01"],
+  "contract_id": "PYAT999-S2A-NATIVE-BODY-TRUTH-G5-R1",
+  "contract_source_cut": "USER_QUEUE_20261115/sources/FIVE_JOB_USER_EXECUTION_SLATE.txt",
+  "owner_grant_source": "USER_QUEUE_20261115/sources/999_OWNER_GRANT.md",
+  "governing_issues": ["https://github.com/maidiu/rawlsing/issues/919", "https://github.com/maidiu/rawlsing/issues/923", "https://github.com/maidiu/rawlsing/issues/999", "https://github.com/maidiu/rawlsing/issues/909"],
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "reviewer_independence": "Same distinct nonauthor G5, not S2-A author/fixer",
+  "review_branch": "review/pyat999-native-g5-20261115",
+  "review_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat999-native-g5-20261115",
+  "startup_sha": "a59c6a5a85451330500bd6a939c3faee6dbc94ad",
+  "code_test_sha": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+  "combined_return_sha": "b3075129fa6aef08de900b79e50bd5d47de5143a",
+  "baseline_f88_sha": "f88a6c61b89f6c18157f2f789de1b7873bc9e747",
+  "accepted_s2c": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2d": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "source_blob_pins": {
+    "rawlsing_next/pre553_direct_estate_i03.py@startup": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "rawlsing_next/pre553_direct_estate_i03.py@repair": "1dc82ab5658051f35dc1d81cbac30688e84a1623",
+    "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py@repair": "84db13b94888065a99dbdb77b1aa73eab3653bd8",
+    "rawlsing_next/pre553_source_direct_parquet_estate.py@a59": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+    "public_prior_repair": "5727db0ebecab2c9ae393a49e9bce1be3076a589"
+  },
+  "writer_lease_and_scope": "REVIEW_ONLY. Author delta is exactly the owner-granted native file/symbol `DirectEstateI03Session._build` plus same-file helper, and the S2-A test/return. Public selector blob, writer/schema/manifest/layout, native evaluator, S2-D and prior returns are unchanged.",
+  "actual_first_consumer": "CarrierNeutralResearchExecutor.execute_i03 -> DirectEstateI03Session._build/_validate_event_body_truth -> _select_respondent_events; public VerifiedDirectEstate.select_events also checked",
+  "evidence_grade": "S2_SOURCEFREE_TEST_ONLY",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Owner grant and original #919/#923 H26-H30 read; exact startup a59, code/test ce770, combined return b307, native before/after blobs and frozen public blob pinned. All production deltas are inside the granted native class/helper; no public, writer, schema, manifest, evaluator, S2-D or prior-return change. Baseline provenance corrected separately below."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Actual sourcefree native I03 positive, repeated/ranked occurrence, canonical/component/state selection, routing/UNKNOWN-vs-zero, None-vs-empty, legitimate changed input→changed fact→exact restore and public/native ref equality pass. 7 new tests, 64 S2-A focused, 31 S2-C, 31 S2-D focused pass."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "The exact f88 coherent projected-column+locator poison is refused before facts at b307/ce770 with typed DirectEstateError in both native I03 and public select_events; no false EMPTY and no changed fact. Invalid body_json/ref/object_id/content_hash/kind and coherent native/canonical/component/respondent/state/occurrence poisons refuse. Existing accepted negatives remain green."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_FIXTURE",
+      "receipt": "Independent 256 synthetic respondents/events probe: retained 9758503 B, selected index 16384 B, public body reconstructions 257, native body reconstructions 1025, 3/10 family opens, 257/1021 row-group reads, source-extension opens none, C11 builds 0, pq.read_table 0, public select 0.1986/0.1977s, native I03 0.6199/0.6025s, parent 152604672 B, child 61644800 B; parent/child snapshots only, no process-tree claim; 100k/6 GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "PASS",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; distinct nonauthor",
+      "receipt": "ACCEPT_SCOPED at S2A_NATIVE_AUTHENTICATED_SEMANTIC_RANGES. The combined public+native descendant is independently accepted at sourcefree TEST_ONLY grade; baseline provenance correction is nonblocking and recorded."
+    }
+  },
+  "mandatory_cases": [
+    {
+      "id": "ORIGINAL_F88_COHERENT_ATTACK",
+      "result": "PASS_REFUSED",
+      "command": "python3 -B s2a_coherent_body_attack.py <proofroot>",
+      "actual": "public DirectEstateError: physical event posting disagrees with exact native body; native DirectEstateError: cold I03 event posting disagrees with exact canonical native body; native fact was not created."
+    },
+    {
+      "id": "INVALID_BODY_REF_AND_SELECTOR_FIELDS",
+      "result": "PASS",
+      "command": "pytest test_pre553_s2a_public_selector_h26.py",
+      "actual": "7 passed in 3.91s; body_json/ref/object_id/content_hash/kind and coherent native/respondent/canonical/component/state/occurrence poisons refuse public and native."
+    },
+    {
+      "id": "REPEATS_RANKS_ROUTING_UNKNOWN_EMPTY_NONE",
+      "result": "PASS",
+      "command": "S2-A focused four files",
+      "actual": "64 passed in 8.72s; repeated/ranked order, canonical/component aliases, native_only precedence, states=None vs frozenset(), routing UNKNOWN vs true empty pass."
+    },
+    {
+      "id": "NATIVE_POSITIVE_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "new 7 + 64 focused",
+      "actual": "untampered facts/release refs equal oracle; changed legitimate event changes exact fact; restored root matches exact fact/release/refs."
+    },
+    {
+      "id": "S2C_D_REGRESSION",
+      "result": "PASS",
+      "command": "S2-C 31 and S2-D 31 focused",
+      "actual": "31 passed in 4.53s; 31 passed in 13.12s."
+    },
+    {
+      "id": "LINUX_INHERITED",
+      "result": "PASS",
+      "command": "existing Lima s2b /tmp/pyat997-venv: four inherited S2-C/proc files",
+      "actual": "86 passed in 35.25s; new 7 independently Darwin only in this recheck (author reported Linux 64; not independently rerun here)."
+    }
+  ],
+  "baseline_provenance": {
+    "f88_actual": "public select_events 0 vs native 1 with no public/native refusal; native fact changed e8b384... vs 8867...",
+    "a59_actual": "public select_events refused with DirectEstateError: physical event posting disagrees with exact native body; native still silently changed fact e8b384... vs 8867...",
+    "current_b307_actual": "public and native both refused the same coherent poison; no fact created.",
+    "author_baseline_public_claim_supported": false,
+    "correction": "The author baseline 'public 0 on pristine a59' is not reproduced. a59 already contains the public body-truth repair (public blob e862/5727); the old public 0 behavior belongs to f88/1cb. The native RED at a59 is real and is fixed at b307. This is a nonblocking evidence/provenance correction, not a product defect."
+  },
+  "test_assertion_changes": {
+    "old_native_hold": "The old test asserted the known broken native fact inequality as a HOLD. It was changed to assert typed DirectEstateError refusal.",
+    "valid_negatives_weakened": false,
+    "reason": "The old inequality documented the defect, not required correct behavior; the replacement is the required repair regression."
+  },
+  "preserved_functions": [
+    "Accepted S2-C writer/schema/manifest/layout and public selector blob unchanged",
+    "Native I03 evaluator science and _selected_events semantics unchanged",
+    "S2-D saved native readers and prior G5 evidence unchanged",
+    "Same canonical codec; no second body corpus, global inventory, full C11 graph or pq.read_table fallback"
+  ],
+  "open_defects": [],
+  "nonblocking_deferred": [
+    "Native/public body validation reconstructs every event body and adds bounded cost; 100k/6 GiB is NOT_RUN and no process-tree peak claim is made.",
+    "Author's Linux 64/new 7 evidence was not independently rerun; independent Linux 86 inherited and Darwin 7/64 pass are recorded."
+  ],
+  "external_holds": [
+    {"owner": "original35/source science/rights", "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source/respondent bytes used"},
+    {"owner": "production current/host/actor issuer", "minimal_missing_witness": "independent production CURRENT/rights; TEST_ONLY direct estate only"},
+    {"owner": "integrated 100k/6 GiB", "minimal_missing_witness": "full integrated resource gate; NOT_RUN"},
+    {"owner": "protected merge/N11-N12", "minimal_missing_witness": "protected receiving authority; UNMERGED"}
+  ],
+  "resource_evidence": {
+    "fixture": "256 synthetic respondents/events; sourcefree; not 100k",
+    "retained_bytes": 9758503,
+    "peak_selected_index_bytes": 16384,
+    "public_body_reconstructions": 257,
+    "native_body_reconstructions": 1025,
+    "public_family_opens": 3,
+    "native_family_opens": 10,
+    "public_row_group_reads": 257,
+    "native_row_group_reads": 1021,
+    "cold_public_select_seconds": 0.1986271949717775,
+    "repeat_public_select_seconds": 0.1976835390087217,
+    "cold_native_i03_seconds": 0.6198535139556043,
+    "repeat_native_i03_seconds": 0.6025252639665268,
+    "parent_peak_rss_bytes": 152604672,
+    "child_peak_rss_bytes": 61644800,
+    "child_cold_select_seconds": 0.2220096550299786,
+    "source_extension_opens": [],
+    "full_c11_builds": 0,
+    "whole_table_read_table_fallbacks": 0,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at material local fixture; not integrated 100k",
+    "process_tree_peak_rss_bytes": null,
+    "process_tree_note": "Only parent/child snapshots measured; no process-tree peak claimed.",
+    "integrated_100k_6GiB": "NOT_RUN"
+  },
+  "disposition": "ACCEPT_SCOPED@S2A_NATIVE_AUTHENTICATED_SEMANTIC_RANGES",
+  "terminal_state": "S2A_TERMINAL_CLOSED@ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT; TEST_ONLY_SOURCEFREE",
+  "stop_state": "TERMINAL_CLOSED",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_new_7.txt",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_s2a_64.txt",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_s2c_31.txt",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_s2d_31.txt",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_coherent_attack.out",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/f88_coherent_attack.out",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/a59_public_coherent_attack.out",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_resource_probe.out",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/linux_inherited_86.txt"
+  ]
+}

@@ -1,0 +1,22 @@
+Current b307/ce770 Darwin:
+new 7: 7 passed in 3.91s
+S2-A 64: 64 passed in 8.72s
+S2-C 31: 31 passed in 4.53s
+S2-D 31: 31 passed in 13.12s
+
+Current coherent attack:
+python3 -B s2a_coherent_body_attack.py <proofroot>
+=> public DirectEstateError: physical event posting disagrees with exact native body
+=> native DirectEstateError: cold I03 event posting disagrees with exact canonical native body
+=> no fact created.
+
+Baseline provenance:
+f88 coherent: public 0/native changed fact (old defect).
+a59 coherent: public refuses; native changed fact.
+current b307: public/native both refuse.
+
+Linux existing Lima s2b:
+inherited 86 passed in 35.25s; new 7 Darwin (not independently Linux in this recheck).
+
+Resource current:
+256 respondents/events; retained 9758503 B; selected index 16384 B; public body reconstructions 257; native body reconstructions 1025; source opens none; C11 builds 0; pq.read_table 0; parent 152604672 B; child 61644800 B; 100k NOT_RUN.
