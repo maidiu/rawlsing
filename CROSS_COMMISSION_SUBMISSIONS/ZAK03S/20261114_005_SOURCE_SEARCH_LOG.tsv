@@ -1,0 +1,6 @@
+search_id	domain	source_cut	paths_and_queries	method	bounded_result	grade
+Z03S:R11:SEARCH01	PROTECTED_Z06	6a5c12f04323d74001f9632063ec907f4fc4468e	pre553_authority_maintenance.py and pre553_empirical_authority.py	exact source reads	real current authority lifecycle recovered; QSM file-row selection unproved	S1
+Z03S:R11:SEARCH02	PROTECTED_U43	6a5c12f04323d74001f9632063ec907f4fc4468e	pre553_issued_workload.py and pre553_native_workload_binding.py	exact source reads	U43 current issued contract distinct from Z06; completed-vs-partial path recovered	S1
+Z03S:R11:SEARCH03	EXISTING_TESTS	6a5c12f04323d74001f9632063ec907f4fc4468e	test_universal_workload_custody.py and test_pre553_authority_maintenance.py	read existing test definitions	R91 revokes pending item, Z06 currentness tests authored; no execution this turn	NOT_RUN
+Z03S:R11:SEARCH04	DEFAULT_INDEX	DEFAULT_NOT_PROTECTED	AuthorityMaintenanceExecutor; resolve_current_exact; resume_joined_workloads; JoinedWorkloadCheckpoint	GitHub code index	Z06 found; existing protected resume missed by index; no global absence	BOUND
+Z03S:R11:SEARCH05	CROSS_AGENT	PR1046@bc71b590;PR1054@d2583643	ZAK02 primary and SHARED_SEAM_REGISTER XS:002/005	exact documentary source reads	no new historical T; modern seam only	CROSS_REFERENCE
