@@ -48,7 +48,7 @@ This is a **review/checking projection**, not permission to make all native APIs
 
 **A review-only algorithm sketch, not a new runtime:**
 
-§§§text
+```text
 QUALIFY external maternal observation/source tip with existing PYAT owner
 PROPOSE multiple compressed forward life histories via SOROK causal semantics
 CHECK each against separately graded observed-tip emission semantics
@@ -64,7 +64,7 @@ ELSE: UNKNOWN, REFUSE or actual NO_CHANGE as appropriate
 IF later actor-selection rule exists: admit selected attempted/performed deed
 VERIFY public effect + actor-specific access + cold continuity
 OPTIONALLY compare directed relation and slow C5 hypotheses, with no-K
-§§§
+```
 
 The capital verbs identify **required owner actions**, not functions asserted to exist. This sequence is a *prospective causal test program*, not an orchestration design or seven new acceptance gates.
 
