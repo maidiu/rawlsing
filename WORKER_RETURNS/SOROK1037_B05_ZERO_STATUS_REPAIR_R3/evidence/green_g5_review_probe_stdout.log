@@ -1,0 +1,36 @@
+PASS sole-rehash: no cash moved by append-only receipt :: {"cash_after": 55, "cash_before": 55}
+PASS sole-rehashed receipt for completed period with no prior actual rent is refused (expected by #1037 operation binding) :: {"refused": "B05_RENT_OPERATION_UNPROVEN"}
+PASS b05 control: genuine rent admitted
+PASS b05 control: genuine rent reads
+PASS b05 foreign nested root refused :: {"raised": "B05_RENT_PROVENANCE_MISMATCH"}
+PASS b05 foreign nested branch refused :: {"raised": "B05_RENT_PROVENANCE_MISMATCH"}
+PASS b05 foreign body root refused :: {"raised": "B05_RENT_PROVENANCE_MISMATCH"}
+PASS b05 wrong episode actor refused :: {"raised": "B05_RENT_PROVENANCE_MISMATCH"}
+PASS b05 exchanged nested receipt operation refused :: {"raised": "B05_RENT_PROVENANCE_MISMATCH"}
+PASS b05 foreign/incomplete period refused :: {"raised": "B05_RENT_PERIOD_MISMATCH"}
+PASS b05 receipt rent not current dwelling rent refused :: {"raised": "B05_RENT_PROVENANCE_MISMATCH"}
+PASS b05 same-period second receipt refused :: {"raised": "B05_RENT_OPERATION_NOT_UNIQUE"}
+PASS b05 genuine receipt is fail-closed while forged same-period sibling exists :: {"raised": "B05_RENT_OPERATION_NOT_UNIQUE"}
+PASS b05 control: append-only forgeries never moved cash
+PASS b05 historical: h1 rent admitted
+PASS b05 historical: h2 rent admitted
+PASS b05 historical genuine h1 receipt still reads with historical=true :: {"cash": 31, "historical": true}
+PASS b05 current genuine h2 receipt reads with historical=false :: {"cash": 31, "historical": false}
+PASS b05 historical: two periods debit exactly twice
+PASS b05 genuine historical receipt after lawful dwelling change is not falsely accepted :: {"raised": "B05_RENT_SOURCE_STALE"}
+PASS b05 changed/restored dwelling exact read restore
+PASS b04 control: genuine purchase admitted
+PASS b04 control: genuine purchase reads
+PASS b04 ownership row removed refuses :: {"raised": "PURCHASE_READ_STALE"}
+PASS b04 changed/restored ownership exact read restore
+PASS b04 exchanged nested receipt operation refused :: {"raised": "PURCHASE_READ_PROVENANCE_MISMATCH"}
+PASS b04 foreign nested root/branch refused :: {"raised": "PURCHASE_READ_PROVENANCE_MISMATCH"}
+PASS b04 foreign root forgery left stored parent cash :: {"expected": 60, "stored_parent_cash": 60}
+PASS b04 foreign root forgery left market source
+PASS b04 c02 control: genuine purchase admitted
+PASS b04 chain-extending rehashed forgery is refused by the actual C02 parent-material owner chain, not accepted on local hashes :: {"refused": "PURCHASE_READ_PARENT_MISMATCH"}
+PASS b04 chain forgery left stored parent cash undebited :: {"expected": 60, "stored_parent_cash": 60}
+PASS b04 chain forgery left market source unchanged
+PASS b04 forged receipt hash was self-consistent before refusal
+REVIEW_RESIDUAL {"b05_sole_rehashed_receipt": {"accepted": false, "detail": {"refused": "B05_RENT_OPERATION_UNPROVEN"}, "source_bound": {"branch": "first_session", "operation_id": "g5review:b05:sole-rehashed", "period_id": "period:2026-h1", "prior_actual_rent": false, "root": "d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6"}}, "reproduced": false}
+REVIEW_FAILED_CHECKS []

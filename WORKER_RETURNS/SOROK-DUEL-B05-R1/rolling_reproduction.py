@@ -267,9 +267,11 @@ def _rent_chain(session, episode_id: str, receipt: Mapping[str, Any]) -> tuple[b
     if (type(before_cash) is not int or type(after_cash) is not int
             or type(rent) is not int or rent < 0):
         return False, False
-    if receipt.get("status") == "ADMITTED" and before_cash - rent != after_cash:
-        return False, False
-    if receipt.get("status") != "ADMITTED" and before_cash != after_cash:
+    if receipt.get("status") == "ADMITTED":
+        if (rent <= 0 or after_cash >= before_cash
+                or before_cash - rent != after_cash):
+            return False, False
+    elif before_cash != after_cash:
         return False, False
     current_cash = _household_cash(household)
     if current_cash is None:
@@ -514,9 +516,11 @@ def read_household_obligation(session, operation_id: str) -> dict:
             or type(before_cash) is not int or type(after_cash) is not int
             or type(rent) is not int or rent < 0):
         raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
-    if status == "ADMITTED" and before_cash - rent != after_cash:
-        raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
-    if status != "ADMITTED" and before_cash != after_cash:
+    if status == "ADMITTED":
+        if (rent <= 0 or after_cash >= before_cash
+                or before_cash - rent != after_cash):
+            raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
+    elif before_cash != after_cash:
         raise RecursionRefusal("B05_RENT_RECEIPT_INVALID")
     current_rent = dwelling["costs"].get("monthly_rent")
     if type(current_rent) is not int or rent != current_rent:

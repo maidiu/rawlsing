@@ -1,0 +1,55 @@
+{
+  "schema": "SOROK1037_PROGRAMMA_DELTA@1",
+  "issue": 1037,
+  "round": "B05_ZERO_STATUS_REPAIR_R3",
+  "delta": [
+    {
+      "add": "B05 read_household_obligation and the existing _rent_chain replay validator require an ADMITTED rent receipt to have monthly_rent > 0, household_cash_after < household_cash_before and exact debit before_cash - rent == after_cash, in addition to the accepted R2 adjacent durable-checkpoint transition.",
+      "effect": "a sole appended ADMITTED zero-rent receipt matching public no-cash say checkpoints is refused B05_RENT_RECEIPT_INVALID instead of being read as actual rent evidence."
+    },
+    {
+      "add_refusal_codes": [
+        "B05_RENT_RECEIPT_INVALID"
+      ],
+      "effect": "reuses the existing invalid-receipt refusal; no new ledger, writer, schema, store, lock or currency."
+    }
+  ],
+  "closed_defects": [
+    "SOROK1037-R2-RED-B05-ZERO-FALSE-ADMITTED (false ADMITTED zero-rent operation evidence, not a duplicate debit)"
+  ],
+  "preserved": [
+    "original R2 positive-rent missing-debit refusal B05_RENT_OPERATION_UNPROVEN",
+    "B04 source and all B04 refusals",
+    "B05 root/branch/actor/period/source/rent/uniqueness checks",
+    "genuine zero UNCHANGED and insufficient-resource REFUSED reads",
+    "genuine positive rent, historical h1/h2, replay/retry without a second debit",
+    "changed/restored checkpoint, dwelling and ownership cases",
+    "normal two purchases + one rent warm and fresh-process cold"
+  ],
+  "unchanged": [
+    "B05 writer apply_household_rent and _StoreWrite path",
+    "receipt schemas, store and locks",
+    "B01/B02/B03 product",
+    "P2 writers and world material facts",
+    "C02/C03/C04/P6/D03 production",
+    "protected PRE-MAIN"
+  ],
+  "actual_first_consumer": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:read_household_obligation",
+  "downstream_material_readers": [
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py:read_household",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py:read_dwelling",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py:period_progress"
+  ],
+  "engineering_verdict": "AUTHOR_CANDIDATE_FOR_SAME_NONAUTHOR_FOCUSED_RERECEIVING",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HELD",
+  "nonclaims": [
+    "not independent G5",
+    "no native/science/human/actor authority or psychological fact",
+    "no motive or volition inference",
+    "no currency conversion or new ledger",
+    "no protected merge",
+    "fully privileged checkpoint fabrication outside observed public-action/append_episode threat model"
+  ],
+  "stop": true
+}
