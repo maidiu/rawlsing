@@ -1,0 +1,74 @@
+{
+  "after_second": {
+    "c12_verify_ok": true,
+    "changes": 2,
+    "checkpoints": 33,
+    "episodes": 49,
+    "heads": 2,
+    "perceptions": 42,
+    "promotions": [
+      {
+        "operation_id": "defect:promote:1",
+        "previous_episode_id": "TEST_ONLY_BP4_EP_8ccb5ed77da80b9cd05f4045fc8499fbc05e15822f986a9e000b57de0bdf123d",
+        "promoted_depth": 2,
+        "sequence": 2
+      }
+    ],
+    "relation_status": "QUALIFIED",
+    "world_events": 14
+  },
+  "before_second": {
+    "c12_verify_ok": true,
+    "changes": 2,
+    "checkpoints": 33,
+    "episodes": 49,
+    "heads": 2,
+    "perceptions": 42,
+    "promotions": [
+      {
+        "operation_id": "defect:promote:1",
+        "previous_episode_id": "TEST_ONLY_BP4_EP_8ccb5ed77da80b9cd05f4045fc8499fbc05e15822f986a9e000b57de0bdf123d",
+        "promoted_depth": 2,
+        "sequence": 2
+      }
+    ],
+    "relation_status": "QUALIFIED",
+    "world_events": 14
+  },
+  "c12_verify_unchanged": true,
+  "candidate_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "defect": "promote_relation's pre-write depth check uses only RELATION_STATE_CHANGES, so a prior PROMOTE is invisible; a second depth-2 PROMOTE is appended, then _verify_scope rejects promoted_depth <= current depth and the committed episode severs the scope.",
+  "first_promotion": {
+    "primary_episode_id": "TEST_ONLY_BP4_EP_7f1c95b124c607041b412787084c73ac0b7aac8e55e7a89da4ecceaafe32d833",
+    "representation_depth": 2,
+    "status": "RECORDED"
+  },
+  "retry_first_after_second": {
+    "branch": "first_session",
+    "change": "PROMOTE",
+    "clock": 222,
+    "current_status": "ACTIVE",
+    "current_value": "guest",
+    "grade": "SOURCEFREE_S2_ONLY",
+    "head_episode_hash": "fa1ffed7aa3c3b695372f29ce5adeb2255b678d4e45bc5d26a2d7ba6f4486d98",
+    "head_episode_id": "TEST_ONLY_BP4_EP_fa1ffed7aa3c3b695372f29ce5adeb2255b678d4e45bc5d26a2d7ba6f4486d98",
+    "native": false,
+    "operation_id": "defect:promote:1",
+    "primary_episode_hash": "7f1c95b124c607041b412787084c73ac0b7aac8e55e7a89da4ecceaafe32d833",
+    "primary_episode_id": "TEST_ONLY_BP4_EP_7f1c95b124c607041b412787084c73ac0b7aac8e55e7a89da4ecceaafe32d833",
+    "private_state": "NOT_READ",
+    "relation": "defect-household",
+    "relation_key": "9710b7a4062c0c3cc8bf5c0cc8a155f07f383c893fe9e1a6dd484729871c8f59",
+    "representation_depth": 2,
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "schema": "SOROK_P2_CONTINUING_RELATION_READ@1",
+    "status": "UNCHANGED"
+  },
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "schema": "SOROK_C05_REPEAT_PROMOTION_DEFECT@1",
+  "scope_severed_after_write": false,
+  "second_call_refusal": "RELATION_PROMOTION_NOT_DEEPER",
+  "second_call_returned": null,
+  "state_root": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/.local-logs/sorok-c05-independent-g5/scratch/defect-_1hx6klv/p2",
+  "wrote_episode_on_refusal": false
+}

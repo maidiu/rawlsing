@@ -1,0 +1,71 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_second_depth2_promotion_refuses_before_any_write _____________
+
+tmp_path = PosixPath('/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/.local-logs/sorok-c05-promotion-r2/tmp/pytest-of-matthewsmith/pytest-0/test_second_depth2_promotion_r0')
+
+    def test_second_depth2_promotion_refuses_before_any_write(tmp_path):
+        fanin = load_p2().start(tmp_path / "p2")
+        try:
+            session = fanin.session
+            focal = session.read_root()["actor_ids"][0]
+            register_supporting_actor(
+                session, alias="RP", actor_id=P_ID, role="parent",
+                private_state={"motive": "r2-parent-private"})
+            register_supporting_actor(
+                session, alias="RO", actor_id=O_ID, role="neighbor",
+                private_state={"motive": "r2-neighbor-private"})
+            record_relation_change(
+                session, actor_id=P_ID, other_actor_id=O_ID,
+                relation=RELATION, change="ENTER", clock=session.world().clock,
+                operation_id="r2:enter", exposed_actor_ids=[P_ID, O_ID],
+                value="guest")
+            case = fanin.deps["case_for"](True)
+            owner = P2Owner(
+                fanin, case=case, source=fanin.deps["source_for"](case),
+                participants=(focal, P_ID, O_ID))
+            try:
+                before = owner.snapshot()
+                proposal = EventProposal(
+                    "r2:event", before.clock + 6, "ADMIT_EVENT",
+                    (owner.source_ref,), (focal, P_ID, O_ID), {})
+                result = owner.realize("r2:op", proposal, before)
+                event_id = result.consequences[
+                    "supporting_participants"][0]["event_id"]
+                event_clock = session.event(event_id)["clock"]
+                first = promote_relation(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, depth=2, clock=session.world().clock,
+                    operation_id="r2:promote:1")
+                assert first["status"] == "RECORDED"
+                assert first["representation_depth"] == 2
+                history = read_relation_history(
+                    session, P_ID, as_of_clock=event_clock)
+                context = read_actor_relative_context(
+                    session, P_ID, event_id)
+                assert history["status"] == "QUALIFIED"
+                assert history["relations"][0]["representation_depth"] == 2
+                assert context["relation_scope"]["status"] == "QUALIFIED"
+                assert context["event_access"]["status"] == "PERCEIVED"
+                baseline = counts(session)
+                assert baseline["changes"] == 2
+                assert baseline["heads"] == 2
+    
+                retry = promote_relation(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, depth=2, clock=first["clock"],
+                    operation_id="r2:promote:1")
+                assert retry["status"] == "UNCHANGED"
+                assert retry["primary_episode_id"] == first["primary_episode_id"]
+                assert counts(session) == baseline
+    
+>               with pytest.raises(
+                        RecursionRefusal, match="RELATION_PROMOTION_NOT_DEEPER"):
+E                       AssertionError: Regex pattern did not match.
+E                         Expected regex: 'RELATION_PROMOTION_NOT_DEEPER'
+E                         Actual message: 'RELATION_CUSTODY_SEVERED'
+
+WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py:107: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py::test_second_depth2_promotion_refuses_before_any_write
+1 failed in 4.48s
