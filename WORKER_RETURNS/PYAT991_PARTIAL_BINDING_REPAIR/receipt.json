@@ -1,0 +1,165 @@
+{
+  "packet_id": "S2-D",
+  "task_id": "PYAT991-S2D-PARTIAL-BINDING-REPAIR",
+  "old_obligations": ["P2-05"],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "persona_role": "S2D_PARTIAL_BINDING_ORDER_A_REPAIR",
+  "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat991-s2d-a-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
+  "startup_sha": "f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f",
+  "base_sha": "f5b9c2acdb79b0bc9fabcf8eabcffe580611b34f",
+  "g5_reviewed_cut": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+  "owner_ack_sha": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
+  "accepted_s2c": {
+    "executable": "b7b697b69f0acea12174937ee824c19ac34ac284",
+    "tree": "dc416d1f23100d4d52b19bc2120226964bc0be43"
+  },
+  "changed_paths": [
+    "rawlsing_next/pre553_issued_workload.py",
+    "rawlsing_next/tests/test_pyat991_s2d_partial_binding_order.py",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/receipt.json",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/forged_partial_after.out",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/g5_before_repair.json",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/g5_after_repair.json",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/canonical_g5_forged_partial.py",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/focused-38.txt",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/native-69.txt",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/resource_recovery_probe.py",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/final_g4_observations.json",
+    "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/g4_run.out"
+  ],
+  "source_blob_pins": {
+    "repaired_issued_workload": "b02810677ae66231e5e59b09aefe9bd63a31aaa3",
+    "new_partial_regression": "4591e6300624b1e80c7f4e8e92c91ddb2155fca9",
+    "batch_runner": "49e3974c658d66a270815d9faa3798b40d4488b1",
+    "saved_admission": "22749addc1fca5f0b90e12728847c390aafa7a84",
+    "saved_workload_integration": "cc8aa32512378261406d765f0b049c748cb3e11f",
+    "g5_before_evidence": "09a66ba4fa58e98c29bad88dbe4ec2925931b18e",
+    "g5_after_evidence": "216584f17f13f1d73bdf9bf51b31616a7e165c00"
+  },
+  "g5_finding": {
+    "id": "G5-S2D-PARTIAL-FORGED-BINDING-BEFORE-RESTORE",
+    "state": "CLOSED_CORRECTED_PENDING_SAME_G5_DELTA",
+    "before": {
+      "completed_control_restore_output_calls": 0,
+      "partial_restore_output_calls": 2,
+      "error": "JoinedWorkloadCheckpoint saved binding mismatch after protected restores"
+    },
+    "after": {
+      "completed_control_restore_output_calls": 0,
+      "partial_restore_output_calls": 0,
+      "error": "JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH before protected restore",
+      "canonical_harness_exit": 2,
+      "canonical_harness_defect": false
+    },
+    "repair": "In resume_joined_workloads PARTIAL, exact saved admission type/binding/source checks now occur after fresh CURRENT and immediately before any _validate_entry_material/_validate_entry_outputs/_restore_receipt/_restore_output_material. A second current recheck follows the saved binding check.",
+    "files": [
+      "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/g5_before_repair.json",
+      "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/g5_after_repair.json",
+      "WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/forged_partial_after.out"
+    ]
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS_SCOPED",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "All seven actual owner paths, exact S2-C estate/release/source/catalog binding, exact saved checkpoint binding; Batch C11 path and legacy source path preserved."
+    },
+    "G2": {
+      "state": "PASS_SCOPED",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Actual Batch/NORMAL/COMPLETED/PARTIAL/ABSENT plus I03/I05; fresh-process normal/completed/partial/absent and prior fresh I03/I05; legitimate PARTIAL still resumes exact prefix/final outputs; changed/restore preserved."
+    },
+    "G3": {
+      "state": "PASS_SCOPED",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Forged coherently rehashed COMPLETED and PARTIAL bindings refuse with zero protected restores; revoked CURRENT refuses before factory/restore; wrong source/root/body, mixed foreign universe/release and missing binding refuse; valid foreign-scope negatives remain."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_FIXTURE",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Final bounded probe: retained 320484 B, observed stage peak 555487 B, parent RSS 121479168 B, sampled parent-root process-tree aggregate peak 184696832 B, 15 bounded family objects yielded, source/build/whole-table calls 0, normal 0.1322s, partial 0.0716s, resume 0.0357/0.1015/0.1254s, SIGKILL child -9, fresh PARTIAL resume exact output match, no orphan PIDs. 100k/6GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "READY_FOR_SAME_G5_DELTA_RECHECK",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+      "receipt": "Prior all-seven G5 REVISE was exactly the PARTIAL ordering defect; repair and G4 observables are now banked. No self-acceptance."
+    }
+  },
+  "actual_tests": {
+    "focused_38": "38 passed in 17.31s",
+    "native_69": "69 passed in 61.07s",
+    "canonical_g5_after": "exit 2 expected because defect=false; completed and partial restore calls 0; binding mismatch before restore",
+    "focused_log": "focused-38.txt",
+    "native_log": "native-69.txt"
+  },
+  "seven_reader_status": {
+    "I03": "PASS_SCOPED_ACTUAL_COLD",
+    "I05": "PASS_SCOPED_ACTUAL_COLD",
+    "Batch": "PASS_SCOPED_ACTUAL_NATIVE_SCHEDULER",
+    "NORMAL": "PASS_SCOPED_ACTUAL_ISSUED_PATH",
+    "COMPLETED": "PASS_SCOPED_ACTUAL_RESUME__FORGED_REFUSAL_0_RESTORE",
+    "PARTIAL": "PASS_SCOPED_ACTUAL_RESUME__ORDERING_REPAIRED__0_RESTORE",
+    "ABSENT": "PASS_SCOPED_ACTUAL_RESUME"
+  },
+  "g4_observations": {
+    "fixture": "S1-D/S3 sourcefree synthetic 4 respondents/2 occasions; not 100k",
+    "host": "Darwin/macOS Python 3.11.3",
+    "retained_disk_bytes": 320484,
+    "peak_root_tree_bytes": 320484,
+    "peak_staging_bytes": 555487,
+    "peak_staging_monitor_samples": 66,
+    "parent_peak_rss_bytes": 121479168,
+    "process_tree_aggregate_rss_bytes_sampled_peak": 184696832,
+    "process_tree_rss_sampling": "2 ms ps sampling of parent-root tree incl live children; sampled peak, not hardware maximum",
+    "process_tree_samples": 91,
+    "bounded_family_objects_yielded": 15,
+    "normal_seconds": 0.1322043,
+    "partial_seconds": 0.0715802,
+    "completed_resume_seconds": 0.0357226,
+    "partial_resume_seconds": 0.1014868,
+    "absent_resume_seconds": 0.1253911,
+    "source_factory_calls": 0,
+    "full_c11_build_calls": 0,
+    "whole_table_read_table_calls": 0,
+    "orphan_child_pids": [],
+    "crash_child_returncode": -9,
+    "crash_child_killed_by_signal": true,
+    "resumed_after_sigkill_returncode": 0,
+    "resumed_after_sigkill_output_match": true,
+    "checkpoint_semantics": "caller-owned immutable material; no new persistent store/journal",
+    "integrated_100k_6GiB": "NOT_RUN",
+    "evidence": "final_g4_observations.json and g4_run.out"
+  },
+  "external_holds": [
+    "production current/as-of issuer/revocation",
+    "original35 source/science/rights",
+    "Q2/S1-E body-sink and postconsumer operation/fate join",
+    "S2-B G5-R1 independent recheck",
+    "integrated 100k respondents/6 GiB",
+    "distinct S2-D G5 final acceptance",
+    "Linux execution of the new modules"
+  ],
+  "own_worst_vulnerability": "The G4 process-tree value is a 2 ms sampled parent-root sum, not an exact instantaneous maximum; child lifecycle interleaving can miss a peak. The crash witness is one controlled pre-resume SIGKILL, not a universal failpoint matrix. PARTIAL proof uses the existing caller-owned checkpoint material and a TEST_ONLY current resolver; no production current. The fresh-process capsule still uses a test-only projection transport.",
+  "missing_proof": "No production current/issuer, original35/source science, integrated 100k/6GiB, Linux run of the repaired modules, or distinct final G5 acceptance.",
+  "engineering_grade": "S2_SOURCEFREE_SAVED_ALL_SEVEN_FIXTURE__G3_ORDER_REPAIRED__G4_OBSERVED__PENDING_G5",
+  "scientific_grade": "NONE_VERIFIED; TEST_ONLY sourcefree engineering only",
+  "authority_grade": "TEST_ONLY_SOURCEFREE; production current and original35 HOLD",
+  "disposition": "READY_FOR_RECEIVING",
+  "stop_state": "REPAIRED_PARTIAL_ORDER__G4_OBSERVED__PENDING_SAME_G5_DELTA",
+  "integration": "UNMERGED",
+  "independent_receiver_decision": {
+    "state": "PENDING_SAME_G5_DELTA_RECHECK",
+    "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme"
+  },
+  "known_session_cost": "UNKNOWN",
+  "sourcefree": true,
+  "original35_claimed": false,
+  "production_current_claimed": false,
+  "protected_merge": "NONE"
+}

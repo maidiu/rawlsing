@@ -1,0 +1,64 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1",
+  "governing_decision": "HQD-2026-10-03-190",
+  "status": "B_CONSOLIDATION_ACCEPTED_WITH_ROUTING_CORRECTIONS__A_HOSTILE_REVIEW_BOUND__R7_R9_BOUND__SOURCE_HOLDS_PRESERVED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "reviewed_returns": {
+    "A": {
+      "remote_tip": "f522af5a7a01432159830dfbf26325c0e320adaf",
+      "substantive_candidate": "5f9a93af1cc98d75d392794534484e41248efb5f",
+      "dispatcher_blob": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+      "adoption": "NO",
+      "next": "HOSTILE_REVIEW"
+    },
+    "B": {
+      "remote_tip": "49c4d1735589005e22423b1800a8c5e2dab40981",
+      "substantive_candidate": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
+      "status": "ACCEPTED_WITH_ROUTING_CORRECTIONS"
+    }
+  },
+  "active_lanes": {
+    "review": {
+      "branch": "agent/reviewer-pyat-hq190-a-dispatcher-hostile-acceptance-r1",
+      "commission_tip": "2185e1dcf8d87acb74fe854a5196e7f2cf79cb6b",
+      "preferred_model": "DeepSeek V4.1 Flash",
+      "state": "BOUND_NOT_YET_CONFIRMED_LAUNCHED"
+    },
+    "r7": {
+      "branch": "agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+      "commission_tip": "909c5175ec322c6e8d56093e62b0b14a030b6787",
+      "state": "BOUND_NOT_YET_CONFIRMED_LAUNCHED"
+    },
+    "r9": {
+      "branch": "agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1",
+      "commission_tip": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+      "state": "BOUND_NOT_YET_CONFIRMED_LAUNCHED"
+    }
+  },
+  "commission_io_law": {
+    "artifacts_bind": "STABLE_SUBSTANTIVE_CANDIDATE_OR_REVIEW_RESULT_SHA",
+    "pushed_tip": "REPORTED_OUT_OF_BAND_AND_RE_RESOLVED_BY_HQ",
+    "self_referential_sha_chasing": "PROHIBITED"
+  },
+  "c4": {
+    "freeze": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "freeze_blockers": 0,
+    "warrant_blockers": 1,
+    "live_execution_blockers": 1,
+    "advisory": 9,
+    "counterexamples": 1,
+    "adopted": false,
+    "hq182_hold_lifted": false,
+    "external_packet_ready": true
+  },
+  "held": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "LAUNCH_DEEPSEEK_HQ190_A_AND_SPACE_BUNNY_HQ190_B_C_IN_PARALLEL__HQ_ADJUDICATES_FIRST_RETURN_AND_REFILLS_READY_SLOT"
+}

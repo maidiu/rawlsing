@@ -1,0 +1,33 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261006-PYAT-HQ222-FOUR-PARALLEL-SUCCESSORS-R1",
+  "decision": "HQD-2026-10-06-222",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "lanes": [
+    {
+      "id": "F7_FINAL_AUTHORITY_CLOSURE",
+      "branch": "agent/rabochii-pyat-hq222-f7-final-authority-closure-r1",
+      "commission_tip": "e88cfeb10c8e2099093125fb31b497906341c0cc",
+      "model_intelligence": "LongCat 2.5 Preview Free — High"
+    },
+    {
+      "id": "N10E_HOSTILE_REVIEW",
+      "branch": "agent/reviewer-pyat-hq222-n10e-provider-replay-lifecycle-r1",
+      "commission_tip": "49becbe6671bc99c835bd3cd09f43c20b9056933",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "C5_GT2_HOSTILE_REVIEW",
+      "branch": "agent/reviewer-pyat-hq222-c5-gt2-structural-positive-realization-r1",
+      "commission_tip": "c128cf7f6550265f1edf4f5ad79a5d7661946b06",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "V555_FIELD_FORGE_BASIS_AUTHORITY_ADJUDICATION",
+      "branch": "agent/rabochii-pyat-hq222-v555-field-forge-basis-authority-adjudication-r1",
+      "commission_tip": "590b7a8f95cc385695e67977189bbd72b2a9a4ac",
+      "model_intelligence": "GPT-5.6 Sol High"
+    }
+  ],
+  "next_action": "RUN_ALL_FOUR_IN_PARALLEL__INTAKE_EACH_RETURN_IMMEDIATELY"
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "SOROK_MI_COMPONENT_COST@1",
+  "grade": "CONTROLLED_SOURCEFREE_COMPONENT_TIMING_NOT_LIVE",
+  "constructor_seconds": 1.7021776949986815,
+  "cpu_seconds": 1.9361660000000003,
+  "process_peak_rss_bytes": 53014528,
+  "spans": [
+    {
+      "operation": "admit_surface",
+      "seconds": 0.017901301151141524,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "admit_surface",
+      "seconds": 0.01547187496908009,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "configure_experimental_history",
+      "seconds": 0.013466058997437358,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "queue_lead_before_lease",
+      "depth": 0,
+      "seconds": 0.029061377979815006
+    },
+    {
+      "operation": "lease",
+      "seconds": 0.08837997308000922,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "record_candidate",
+      "seconds": 0.021359554026275873,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "admit_material_history",
+      "seconds": 0.0011337148025631905,
+      "depth": 1,
+      "inclusive": true
+    },
+    {
+      "operation": "_build_history_graph",
+      "seconds": 0.13055721600539982,
+      "depth": 1,
+      "inclusive": true
+    },
+    {
+      "operation": "commit_candidate",
+      "seconds": 0.3278769289609045,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "query_depth",
+      "seconds": 0.058670192025601864,
+      "depth": 0,
+      "inclusive": true
+    },
+    {
+      "operation": "_build_history_graph",
+      "seconds": 0.0319402317982167,
+      "depth": 1,
+      "inclusive": true
+    },
+    {
+      "operation": "query_relations",
+      "seconds": 0.05609920108690858,
+      "depth": 0,
+      "inclusive": true
+    }
+  ],
+  "nested_spans_are_not_additive": true,
+  "provider_calls": 0,
+  "candidate_origin": "deterministic sourcefree test proposal",
+  "source_sha": "0b0eb94c714049dadd3f82cc0af97c44ff4f74b4",
+  "source_blobs": {
+    "rawlsing_next/sorok_history/owner.py": "4352415bc120e37abab4da989c00193221266af6",
+    "rawlsing_next/tests/test_sorok_history_episodes.py": "a97bfbf9ea2fa83183e70ab52b164936c9e8944b",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py": "bc71f6d06614661c4c83704d771972c77c39027c"
+  },
+  "admission_status": "INDEX_READY",
+  "depth_hash": "252e83f0126ee89b604d6e7cb31354db7e03ca7603af38d9750e31c4c15d0a8e",
+  "relations_hash": "9cff0b689a9b20ca9133b1c3f7944280e3b4041468bc361dfde251bf5aefce88",
+  "target_count": 2
+}

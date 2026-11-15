@@ -1,0 +1,78 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260917T1941-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260917T1803-0400",
+  "status": "CHETIRI_FINAL_P2_LOCK1_LOCK2_SEALED__EE_P2X_FINAL_EQUAL_WORK_EXECUTION_ACTIVE",
+  "governance": {
+    "lock1": "FROZEN_UNCHANGED",
+    "lock2_hash": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "lock2_replay_hash": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+    "f2_return": "22667bd395e7293f99b285daddad36fe3a4377ef",
+    "f2_fresh_process": "PASS",
+    "no_golden_path": true,
+    "full_35_wave_calibration": true
+  },
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2F2",
+      "branch": "agent/rabochii-prev3-ee-p2f2-wvs7-mechanical-pre553-issuer-r1",
+      "return_head": "22667bd395e7293f99b285daddad36fe3a4377ef",
+      "disposition": "PASS__LOCK2_MATERIALIZED__FINAL_ABC_WAKE_ACCEPTED"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "grain": "FINAL_TWO_SOURCE_A_B_C_EQUAL_WORK_P2_MEASURED_EXECUTION_ONLY",
+      "execution_surface": "LOCAL_DARWIN_X86_64__CPYTHON_3_11_3__PYREADSTAT_1_3_6__PYARROW_25_0_1",
+      "source_order": [
+        "LITS_I",
+        "WVS7"
+      ],
+      "candidate_order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "hard_forbidden": [
+        "NO_LOCK1_MUTATION",
+        "NO_LOCK2_MUTATION",
+        "NO_GOLDEN_PATH",
+        "NO_NEW_WVS_ACCELERATOR",
+        "NO_CANDIDATE_OR_WORKLOAD_REDESIGN",
+        "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION"
+      ]
+    }
+  ],
+  "final_p2": {
+    "mandatory_sources": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "source_order": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "lock1": "SEALED",
+    "lock2": "SEALED",
+    "measured_execution": "AUTHORIZED__EE_P2X_ACTIVE",
+    "post_p2": [
+      "HQ_MEASURED_SYNTHESIS",
+      "P3_HOSTILE_KILL_COURT",
+      "HQ_HOSTILE_ADJUDICATION",
+      "FINAL_HQ_CARRIER_SELECTION"
+    ]
+  },
+  "terminal": "CHETIRI_FINAL_P2_LOCK1_LOCK2_SEALED__EE_P2X_FINAL_EQUAL_WORK_EXECUTION_ACTIVE"
+}

@@ -1,0 +1,15 @@
+# VOZHD PYAT R18 — HARVEST and real source-inheritance correction
+
+**Status**: `R18_WG5_WG5I_PAUSED_PENDING_ACCEPTED_REUSE_FIRST_SCOPE_RECONCILIATION`.
+
+Canonical PRE-MAIN full progress pair R18 published at `1376c233575b93114e5f58a8a479e10d0a7d1985`, and independent user-accepted procedural HQ succession R16 remains bounded at its previous exact grant. R18 is corrective scientific project inventory; no original source, semantic, actor, N11/N12 or production change.
+
+**Why correction:** User correctly challenged R17's claim that source/semantic original35 reconstruction remained basically to be created. The five HARVEST001–005L archives in the top-level Library, their external adjudications, and direct PRE-MAIN ancestral Verkhovod handoff show: accepted three 18,792 question-structure carriers with 562 conserved manual-review rows; 35 exact source-wave identities; accepted V525b 6,211 semantic/driver master and careful non-lossless later D62 shadowing; 18,276 governed question implementation spine across 35 waves/9 families; P10/G1A 65,354 authority accounting units with 0 unresolved preservation gaps and 76 individually held states. All these unit counts are DIFFERENT. No new semantic authority needed simply because local execution not yet accepted.
+
+**Actual original native positive:** Trii AS2B LiTS-I full source-backed C11 release @`923f2c00b6145182a5e2be5038f579845951da19`: 29,002 respondents, 58,004 events, 8 native I03 PASS; substantial WVS7 real-source original evidence. Claims prior original source execution was entirely unproved were false.
+
+**Still narrowly unresolved:** HQ277 says real Route B `execute_route_b_production` accepts prepared `i03_requests`; I05 enumerates prepared finite authority; Batch executes prepared `BatchManifest`. At present no independently accepted universal prospective eligible original35 item-operation workfront-to-native fact/consumer witness observed. That does NOT prove any existing planner is absent: trace actual previously accepted CURRENT producer and authority lineage FIRST, then repair ONLY missing bridge or prove currently composed positive. This is the sole corrected meaning of “complete original-science workload”.
+
+**R36 old unlaunched prompts:** WG5 `1e609a3fc2fb378138ed5e0f3cd805f22902dcb6` and WG5I `7c24ef20ed52dfa06fc5bb11decaf865efd54494` were overbroad and duplicated established manual/semantic/source science; their scope is `PAUSED__DO_NOT_LAUNCH_AS_WRITTEN`. They remain archived exact commissions; no Mac sessions auto-created by GitHub. If an agent has actually been launched, require explicit active-session acknowledgement of correction. No scientific grants changed.
+
+**Binding full explanation:** `PYAT_CONTROL_ROOM/R18_WG5_WG5I_SCIENTIFIC_SCOPE_CORRECTION_AND_INHERITANCE_RECOGNITION_20261018.md`. NEXT HQ WORK: reuse-first proof from accepted 35-wave governed U/semantic/operation inheritance to exact current prospective I03Requests / DiscoveryAuthority / BatchManifest producer, then independent omission test of only uncovered cases. Continue F1–F8 real world-product integration in parallel, not second simulator in Pyat.

@@ -1,0 +1,49 @@
+{
+  "B1": {
+    "content_hash": "fc292cd4b45fb818830d17e121a99dc140d9b6964904c44c312977d8a7e44e0b",
+    "custody_class": "COMPUTED_INTERNAL_M1__NOT_PUBLISHED",
+    "independently_recomputed": true,
+    "object_id": "urn:rawlsing:v554:b1:sha256:08af268c49c64c1fe70e286f83ba833171876afa783a6901de19553cd98752e1",
+    "published": false,
+    "sufficient_for_v555_authority_row": false
+  },
+  "F1": {
+    "committed_evidence_exact_match": true,
+    "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+    "custody_class": "CURRENT_ARTIFACT__PUBLISHED",
+    "independently_recomputed": true,
+    "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "sufficient_for_v555_authority_row": true
+  },
+  "adopted_selector_bundle_used": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING@1.0.0 (f7d4d231..)",
+  "answer_to_required_work_item_7": "F1 custody is sufficient for a future V555 authority row. B1 is NOT a missing publication/materialization step; it is an authority exclusion, so no materialization step can close it.",
+  "authority_adoption": "NONE",
+  "branch": "agent/rabochii-pyat-hq224-v555-gt2-f1-b1-custody-r1",
+  "commission": "PYAT-HQ224-V555-GT2-F1-B1-CUSTODY-R1",
+  "commission_tip": "ab5278d1dde791b76ff698afd0c96bbf12303e06",
+  "disposition": "V555_GT2_F1_B1_CUSTODY_PARTIAL__NAMED_GAP",
+  "evidence_base": "71f9f5593a9ebc59fe585a0d6ae9f1de100b1a74",
+  "hostile_checks_all_fail_capable": true,
+  "hostile_checks_total": 8,
+  "hq223_gap_status": "F1 CUSTODY CLOSED; B1 CUSTODY CLOSED-AS-BY-DESIGN (named authority gap)",
+  "implementation_mutation": "NONE",
+  "named_gap": {
+    "id": "HQ224-GAP-001__B1_PUBLICATION_AUTHORITY_ABSENT_BY_ADOPTED_LAW",
+    "not_a_materialization_gap": true,
+    "statement": "No current-rule B1 custody exists or may be created. The adopted rule forbids B1; the publication authority allows only F1 and excludes B1_PUBLICATION; committed evidence states 'B1 must be None'.",
+    "who_can_close_it": "an authority decision to widen publication authority; explicitly out of scope for this custody lane"
+  },
+  "one_line": "F1 custody is recovered exactly and is sufficient for a future V555 authority row. B1 has no current-rule custody and none may be manufactured: the adopted SIG-004 V554 rule forbids B1 publication. Artifact custody does NOT supply structural-route authority, and this lane did not pretend otherwise.",
+  "return_artifacts": [
+    "01_CURRENT_SIG004_RULE_AND_BUNDLE.json",
+    "02_EXACT_F1_CUSTODY.json",
+    "03_EXACT_B1_CUSTODY.json",
+    "04_RECONSTRUCTION_AND_CURRENTNESS_PROOF.json"
+  ],
+  "schema": "PYAT_HQ224_05_FINAL_DISPOSITION@1",
+  "self_adoption": "NONE",
+  "source_free": true,
+  "structural_authority_not_inferred": true,
+  "structural_authority_note": "source/channel/receiver structural authority is the sibling archaeology lane; this lane recovers exact artifact custody only",
+  "superseded_fixture_rule_used": false
+}

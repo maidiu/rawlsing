@@ -1,0 +1,45 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.1.0",
+  "checkpoint_id": "20260924T0058-0400",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "governing_decision": "HQD-2026-09-24-090",
+  "files": {
+    "current_md": {
+      "path": "HQ_HANDOFF/checkpoints/20260924T0058-0400/CURRENT.md",
+      "git_blob_sha": "1140f860e21c5a1b6011dc1977d9454c729b6dc1"
+    },
+    "current_json": {
+      "path": "HQ_HANDOFF/checkpoints/20260924T0058-0400/CURRENT.json",
+      "git_blob_sha": "2b3b4fdfbb1cfbfbccc646ea592e44cf912b377c"
+    },
+    "decision_ledger": {
+      "path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+      "git_blob_sha": "09a77378063b0e39d0a427cdf1d182bace85ddc8"
+    },
+    "launcher": {
+      "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+      "git_blob_sha": "852cffd259e2cd73092ae179a7cb6a5e0506e8aa"
+    },
+    "launcher_qualification": {
+      "path": "HQ_HANDOFF/launchers/FIABC_DISPOSITIVE_SIX_CELL_LAUNCHER_QUALIFICATION_R3.json",
+      "git_blob_sha": "49a758b5ac3abe8f1262cc68b913eed807426091"
+    },
+    "repair_acceptance": {
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-W3-I01-I02-FANIN-R1/02_HQ_ACCEPTANCE.json",
+      "git_blob_sha": "71ddb109c281f7d9cacb97ac0ed80e68d3cc82a9"
+    }
+  },
+  "execution_seal": {
+    "protected_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "protected_head": "bc832181b4284ac110d2be44fc83504e04de081e",
+    "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "qualification": {
+    "tests_passed": 204,
+    "subtests_passed": 28,
+    "succession_preflight_pass": true
+  },
+  "next_action": "FRESH_TERMINAL_MEASURED_SIX_CELL_FIABC_P2X",
+  "immutability_law": "CHECKPOINT_DIRECTORY_IMMUTABLE_AFTER_SEAL__LATEST_IS_MUTABLE_POINTER_ONLY"
+}

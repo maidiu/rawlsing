@@ -1,0 +1,180 @@
+{
+  "cold_cli": {
+    "max_s": 12.872721,
+    "min_s": 3.853599,
+    "n": 13,
+    "p50_s": 6.340182,
+    "p95_s": 9.688124
+  },
+  "cold_component_timings": "NOT_MEASURED_SEPARATE_CLI_PROCESS",
+  "cold_replay_failures": 0,
+  "commands": [
+    {
+      "command": "new",
+      "exit": 0,
+      "seconds": 8.395974821876734,
+      "stderr": ""
+    },
+    {
+      "command": "view",
+      "exit": 0,
+      "seconds": 3.8535992379765958,
+      "stderr": ""
+    },
+    {
+      "command": "view",
+      "exit": 0,
+      "seconds": 3.8698468080256134,
+      "stderr": ""
+    },
+    {
+      "command": "view",
+      "exit": 0,
+      "seconds": 3.9178613419644535,
+      "stderr": ""
+    },
+    {
+      "command": "go living room",
+      "exit": 0,
+      "seconds": 6.856465504039079,
+      "stderr": ""
+    },
+    {
+      "command": "look sandals",
+      "exit": 0,
+      "seconds": 9.688124124892056,
+      "stderr": ""
+    },
+    {
+      "command": "view",
+      "exit": 0,
+      "seconds": 7.312185476068407,
+      "stderr": ""
+    },
+    {
+      "command": "mii-status",
+      "exit": 0,
+      "seconds": 4.963412360986695,
+      "stderr": ""
+    },
+    {
+      "command": "mii-enable-learning",
+      "exit": 0,
+      "seconds": 4.9189206508453935,
+      "stderr": ""
+    },
+    {
+      "command": "look photo",
+      "exit": 0,
+      "seconds": 12.872720849933103,
+      "stderr": ""
+    },
+    {
+      "command": "mii-export",
+      "exit": 0,
+      "seconds": 6.4454083510208875,
+      "stderr": ""
+    },
+    {
+      "command": "mii-stop-learning",
+      "exit": 0,
+      "seconds": 6.340182224987075,
+      "stderr": ""
+    },
+    {
+      "command": "mii-reset",
+      "exit": 0,
+      "seconds": 6.1076047900132835,
+      "stderr": ""
+    }
+  ],
+  "component_timings": {
+    "availability_s": {
+      "max_s": 7.3e-05,
+      "min_s": 3.9e-05,
+      "n": 5,
+      "p50_s": 4.2e-05,
+      "p95_s": 4.4e-05
+    },
+    "composition_s": {
+      "max_s": 0.003072,
+      "min_s": 0.000731,
+      "n": 5,
+      "p50_s": 0.002021,
+      "p95_s": 0.00273
+    },
+    "initialization_s": {
+      "max_s": 7.624245,
+      "min_s": 2.944188,
+      "n": 5,
+      "p50_s": 3.095371,
+      "p95_s": 3.100926
+    },
+    "ledger_s": {
+      "max_s": 0.001905,
+      "min_s": 0.001132,
+      "n": 5,
+      "p50_s": 0.001862,
+      "p95_s": 0.00189
+    },
+    "recognition_update_s": {
+      "max_s": 0.002415,
+      "min_s": 0.000128,
+      "n": 5,
+      "p50_s": 0.000168,
+      "p95_s": 0.00022
+    },
+    "total_s": {
+      "max_s": 7.629005,
+      "min_s": 2.94843,
+      "n": 5,
+      "p50_s": 3.10049,
+      "p95_s": 3.105771
+    }
+  },
+  "features": {
+    "available": [
+      "bench",
+      "mug"
+    ],
+    "exposures": 6,
+    "mode": "NEUTRAL",
+    "offered": {
+      "availability": "AVAILABLE",
+      "selection_basis": "NEUTRAL_AMBIENT",
+      "target": "bench",
+      "text": "The bench stands beside the doorway."
+    },
+    "omitted_available": [
+      "mug"
+    ],
+    "recognized": []
+  },
+  "gallery_fixture": {
+    "identity": "the stamped brass hinge",
+    "look_exit": 0,
+    "look_seconds": 6.102779,
+    "new_exit": 0,
+    "new_seconds": 8.326264
+  },
+  "peak_rss_mib": {
+    "children": 50.73,
+    "self": 46.066
+  },
+  "provider_calls": 0,
+  "provider_tokens": 0,
+  "schema": "SOROK_MII_MEASUREMENT@1",
+  "storage_bytes": {
+    "actual_p2": 1515656,
+    "p6_gaze": 1381,
+    "state": 1601466
+  },
+  "warm_import": {
+    "max_s": 7.629411,
+    "min_s": 2.948865,
+    "n": 5,
+    "p50_s": 3.100916,
+    "p95_s": 3.106134
+  },
+  "workload": "one sourcefree house; cold separate-process CLI; warm same-process imports"
+}

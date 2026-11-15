@@ -1,0 +1,27 @@
+name: Pyat exact S6/H1/PE return source ledger custody (read-only)
+on:
+  push:
+    branches: [agent/pyat-s6-h1-pe-evidence-source-intake-20261031-r1]
+permissions:
+  contents: read
+jobs:
+  source-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - name: Fetch immutable returns as inert source objects
+        run: |
+          git fetch --no-tags --filter=blob:none origin 2c5cf86beb12b7dbeda5532614784737ad30d89d 815edc1bd74094522afb8c9dad1742ecb77ec800 9647d851a2d9b6e93e6711eec7a65325fb83aaa1
+          git fetch --no-tags --filter=blob:none origin 6a658ad347ad0a714f40cbce04b5cd6d1f5b5ab5 3042fca8a2165e07871d408118e1741686020cdc ebdb51a5c79209b2e552cfce648f7847b19386c2 d93e8c2441dfa394e56fc1f5bcf43a0b4388adcb 32dac59b3741dcc54f507321c7826e65174af372
+      - name: Inspect S6/H1/PE actual JSONL manifests, no source execution
+        run: python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/16_verify_s6_h1_pe_return_custody.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-s6-h1-pe-actual-source-index
+          path: pyat-s6-h1-receipts/
+          if-no-files-found: error

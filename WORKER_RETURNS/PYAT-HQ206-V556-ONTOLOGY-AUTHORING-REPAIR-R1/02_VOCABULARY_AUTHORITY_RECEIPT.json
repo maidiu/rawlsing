@@ -1,0 +1,76 @@
+{
+  "schema": "PYAT_HQ206_VOCABULARY_AUTHORITY_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ206-V556-ONTOLOGY-AUTHORING-REPAIR-R1",
+  "rule": "No vocabulary was invented for this repair. Every refused or constrained term is quoted from adopted law, and every removed term is traceable to TD_R03.",
+  "vocabularies": [
+    {
+      "name": "BLOCKED_STRONG_NOUNS",
+      "source": "Field Forge R2 adopted owner and negative ceilings; OBL040 and OBL041 exact authority ceilings",
+      "terms": ["DOMINATION", "HEGEMONY", "SUBHEGEMONY", "CAPITAL", "FIELD_SPECIFIC_CAPITAL", "FIELD", "CONVERSION", "HOMOLOGY", "PRESSURE_FOOTPRINT", "PRESSURE_PATHWAY", "PRESSURE_COUPLING", "PRESSURE_COUPLING_PROFILE", "STRUCTURAL_MECHANISM"],
+      "enforcement": "refused in any string enum value or exact-ref kind at authoring time",
+      "why_not_invented": "these are the exact strong nouns adopted law already blocks; the repair quotes them rather than composing a new list"
+    },
+    {
+      "name": "TD_R03_NON_INFERABLE_F1_PREMISE_KINDS",
+      "source": "TD_R03 §5 interaction non-inference law",
+      "terms": ["COEXISTING_STRUCTURAL_INCIDENCE", "SHARED_UPSTREAM_STRUCTURAL_CHANNEL", "PARALLEL_STRUCTURAL_OCCURRENCE"],
+      "role": "PREMISES a future governed rule may examine; never the rule itself",
+      "enforcement": "refused in any authorable relation-kind enum",
+      "history": "these three were the previous tranche's constituting relation kinds, which inverted the adopted non-inference law"
+    },
+    {
+      "name": "AUTHORIZED_INTERACTION_RELATION_KINDS",
+      "source": "TD_R03 §6 interaction authority and cardinality verdict",
+      "terms": [],
+      "role": "the authorable relation-kind set, which is EMPTY",
+      "why_empty": "TD_R03 §6: no complete governed V556 interaction-rule authority was found in the audited architecture; a production F1 row requires a governed interaction rule that authorizes its exact relation kind",
+      "consequence": "V556_INTERACTION_RELATION is lawfully VALID_EMPTY in this tranche"
+    },
+    {
+      "name": "TD_R03_CANDIDATE_RELATION_KINDS_NOT_CANONIZED",
+      "source": "TD_R03 §5 interaction vocabulary is rule-governed",
+      "terms": ["FLOW_CONTINUATION", "REROUTING", "CROSS_ROUTE_BUFFERING", "CROSS_ROUTE_AMPLIFICATION", "CROSS_ROUTE_BLOCKAGE", "COMPETITION_OR_COUNTER_PRESSURE", "CONTRADICTION", "REINFORCEMENT_OR_DESTABILIZATION_POSSIBILITY", "FEEDBACK", "CONDITIONAL_COUPLING"],
+      "role": "recorded for traceability only; NOT authorable",
+      "why_not_canonized": "TD_R03 states it does not canonize those terms merely by naming them"
+    },
+    {
+      "name": "_FORBIDDEN_PARTICIPANT_ROLE_TOKENS",
+      "source": "review F2/P2 plus the already-present person-state role set",
+      "terms": ["ACTOR", "PERSON", "PSYCH", "BELIEF", "DESIRE", "MOTIV", "AFFECT", "TRAIT", "PREFERENCE", "IDEOLOGY", "WISH", "STRIVING", "SUBCONSCIOUS", "BIOGRAPH", "PERSONA", "PSYCHE", "APPETITE"],
+      "role": "token-based structural refusal of actor-semantic participant labels",
+      "why_tokens_not_enum": "a token test refuses the whole semantic class rather than only the two labels the review happened to probe, so a new actor-semantic label cannot be coined around a fixed enum"
+    },
+    {
+      "name": "MULTIPLICITY_POLICIES",
+      "source": "review R7/F10; the adopted M3 seam keeps multiplicity_policy as free text",
+      "terms": ["EXACT_OCCURRENCE_INDEX", "ROUTE_INDEXED_OCCURRENCE_SET"],
+      "role": "frozen named vocabulary for the substrate; the seam is unchanged",
+      "note": "the previous tranche accepted any non-empty string, so WHATEVER_I_LIKE was authorable"
+    },
+    {
+      "name": "PERMITTED_INCIDENCE_KINDS",
+      "source": "retained from the previous tranche; not an F1 relation kind",
+      "terms": ["STRUCTURAL_INCIDENCE_PRESENT", "STRUCTURAL_INCIDENCE_ABSENT"],
+      "role": "the topology canary's incidence discriminator",
+      "why_safe": "incidence presence/absence is a topological observation about two governed endpoints, not a claim that a pressure relation exists, so it does not collide with the TD_R03 §5 non-inference law"
+    }
+  ],
+  "participant_role_semantics": {
+    "admitted": "actor-independent structural role labels only",
+    "example_admitted_roles": ["STRUCTURAL_ENDPOINT_A", "STRUCTURAL_ENDPOINT_B"],
+    "refused_example": ["ACTOR_DESIRE", "ACTOR_BELIEF"],
+    "note": "M3 line 9 holds that objective actor identifiers are not person-state; this repair keeps that distinction and refuses the person-semantic side outright"
+  },
+  "numeric_ceiling": {
+    "refused_leaf_types": ["number", "integer"],
+    "source": "TD_R03 §5 and §8",
+    "why": "TD_R03 places quantitative combination behind a nullable numeric-formula ref unset by default, and forbids asserting numeric attractor strength or threshold without formula authority. A numeric LEAF would be exactly the smuggled scalar the review probe P9 demonstrated.",
+    "consequence": "no numeric pressure magnitude, scalar coupling value or aggregate strength can be authored through any positive path"
+  },
+  "state_family_unchanged": {
+    "adopted_families": ["V556_ATTRACTOR_PREREQUISITE", "V556_INTERACTION_RELATION", "V556_TOPOLOGY"],
+    "new_families_introduced": 0,
+    "invented_family_refused_at_rule_author": true,
+    "invented_family_refused_at_registry_build": true
+  }
+}

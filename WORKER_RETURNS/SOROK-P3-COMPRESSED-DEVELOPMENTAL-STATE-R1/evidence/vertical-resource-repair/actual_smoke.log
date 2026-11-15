@@ -1,0 +1,110 @@
+F
+=================================== FAILURES ===================================
+_______ test_primary_actual_formation_read_later_and_no_mediator_control _______
+
+self = <developmental_recursion.model_cycle.RecursionCycle object at 0x109231bd0>
+store = {'expected_owner_state': {'actor': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'branch': 'first_session', 'clock': 222, 'root': '3bc....}, 'mode': 'BOOTSTRAP', 'request_hash': 'f8fc24f0d481bacb332cca40c843b8c179d4fa2d5bebb89dc48baf1ccc621be2', ...}, ...}
+batch_id = 'batch-000001'
+proposals = [EventProposal(event_id='vertical:event:1', event_time=228, operation='ADMIT_EVENT', source_refs=('P2_INPUT:4cc71dca6d...'TEST_ONLY_BP1_R26V_ACTOR_A', 'TEST_ONLY_BP1_R26V_ACTOR_B'), circumstances={}, interval={'mode': 'ACTUAL', 'span': 4})]
+before = {'actor': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'branch': 'first_session', 'clock': 222, 'root': '3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7', ...}
+
+    def _run_batch(
+        self,
+        store: dict[str, Any],
+        batch_id: str,
+        proposals: Sequence[EventProposal],
+        before: Mapping[str, Any],
+    ) -> tuple[dict[str, Any], dict[str, Any]]:
+        try:
+>           raw = self.engine.run_batch(batch_id, list(proposals))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py:390: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py:434: in run_batch
+    realized = self.owner.realize(
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/p3_fixture_support.py:401: in timed_realize
+    return original_realize(operation_id, proposal, expected)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py:657: in realize
+    self.store.reserve(
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py:746: in reserve
+    plan_view = _plan_view(
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py:340: in _plan_view
+    authority, grade = _plan_authority(plan)
+                       ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plan = {'activation_roles': ['peer'], 'actor': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'branch': 'first_session', 'counterpart': 'vertical:counterpart', ...}
+
+    def _plan_authority(plan: Mapping[str, Any]) -> tuple[str, str]:
+        provenance = plan.get("provenance")
+        authority_values = []
+        grade_values = []
+        for source in (plan, provenance):
+            if not isinstance(source, Mapping):
+                continue
+            if "authority" in source:
+                authority_values.append(_text(source["authority"], "PLAN_AUTHORITY_INVALID"))
+            if "grade" in source:
+                grade_values.append(_text(source["grade"], "PLAN_GRADE_INVALID"))
+        if not authority_values or not grade_values:
+>           raise RecursionRefusal("PLAN_AUTHORITY_OR_GRADE_MISSING")
+E           developmental_recursion.contracts.RecursionRefusal: PLAN_AUTHORITY_OR_GRADE_MISSING
+
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py:274: RecursionRefusal
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-136/test_primary_actual_formation_0')
+
+    def test_primary_actual_formation_read_later_and_no_mediator_control(tmp_path: Path) -> None:
+        case = build_case(tmp_path)
+        control = build_case(tmp_path / "control", history_outcomes=())
+        try:
+>           first, second, final = first_two_batch_results(case)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py:50: in first_two_batch_results
+    results = run_chain(case)
+              ^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/p3_fixture_support.py:389: in run_chain
+    return run_chain_timed(case)[0]
+           ^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/p3_fixture_support.py:408: in run_chain_timed
+    first = case.cycle.bootstrap(context={"fixture": "vertical-bootstrap"})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py:228: in bootstrap
+    batch, after = self._run_batch(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <developmental_recursion.model_cycle.RecursionCycle object at 0x109231bd0>
+store = {'expected_owner_state': {'actor': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'branch': 'first_session', 'clock': 222, 'root': '3bc....}, 'mode': 'BOOTSTRAP', 'request_hash': 'f8fc24f0d481bacb332cca40c843b8c179d4fa2d5bebb89dc48baf1ccc621be2', ...}, ...}
+batch_id = 'batch-000001'
+proposals = [EventProposal(event_id='vertical:event:1', event_time=228, operation='ADMIT_EVENT', source_refs=('P2_INPUT:4cc71dca6d...'TEST_ONLY_BP1_R26V_ACTOR_A', 'TEST_ONLY_BP1_R26V_ACTOR_B'), circumstances={}, interval={'mode': 'ACTUAL', 'span': 4})]
+before = {'actor': 'TEST_ONLY_BP1_R26V_ACTOR_A', 'branch': 'first_session', 'clock': 222, 'root': '3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7', ...}
+
+    def _run_batch(
+        self,
+        store: dict[str, Any],
+        batch_id: str,
+        proposals: Sequence[EventProposal],
+        before: Mapping[str, Any],
+    ) -> tuple[dict[str, Any], dict[str, Any]]:
+        try:
+            raw = self.engine.run_batch(batch_id, list(proposals))
+            result = detached(raw)
+        except Exception as exc:
+            self._hold(store, "ENGINE_ERROR", _report(exc))
+>           raise AmbiguousModelCall(
+                f"engine batch failed; saved recursion history retained: {_report(exc)}"
+            ) from exc
+E           developmental_recursion.model_cycle.AmbiguousModelCall: engine batch failed; saved recursion history retained: RecursionRefusal: PLAN_AUTHORITY_OR_GRADE_MISSING
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py:394: AmbiguousModelCall
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 7.49s

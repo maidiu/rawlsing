@@ -1,0 +1,47 @@
+{
+  "court": "SUB_VOZHD_W_WVS7_HB01_POST_SAV_AUTHORITY_CLOSURE_JOIN_R1",
+  "status": "ACTIVE__SOURCE_ACCESS_SOLVED__D12_66_OF_66_ACCEPTED__D11_3_OF_66_ACCEPTED__AUTHORITY_CLOSURE_REQUIRED",
+  "consumed": {
+    "D03_D12": "e404bc097f48a09265f1aec06e3d011a892f69c4",
+    "D11": "76180820663bcd61ec4fbb298a273853094393a8"
+  },
+  "raw_source": {
+    "status": "SOLVED",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613
+  },
+  "d12": {
+    "status": "ACCEPTED",
+    "coverage": "66/66",
+    "replay_ref_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+  },
+  "d11": {
+    "status": "ACCEPTED_PARTIAL",
+    "accepted": "3/66",
+    "positive_recovery_required": 63
+  },
+  "d03": {
+    "status": "ROUTING_UNKNOWN",
+    "targets": 9,
+    "source_access_blocker": false
+  },
+  "routing": {
+    "unresolved": 222,
+    "total": 585,
+    "hq_projection_scope_choices": ["KEEP_IN_CERTIFIED_PROJECTION__ROUTING_UNKNOWN_REMAINS_BLOCKING", "EXCLUDE_TARGET_FROM_CERTIFIED_PROJECTION_BY_EXPLICIT_HQ_SCOPE_DECISION"]
+  },
+  "next_parallel": [
+    "SUB_VOZHD_W_D11_63_SCOPE_DOCUMENTARY_AUTHORITY_RECOVERY",
+    "VOZHD_HQ_ROUTING_D03_NECESSITY_EXCLUSION_COURT"
+  ],
+  "downstream_authorized": {
+    "C05_R2A": false,
+    "FULL_GSR07": false,
+    "HB05": false,
+    "HB06": false,
+    "HB07": false,
+    "C09": false
+  },
+  "hb01_self_adopted": false
+}

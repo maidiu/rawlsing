@@ -1,0 +1,62 @@
+{
+  "schema": "V555_GT2_SIG004_NEGATIVE_PRECEDENCE_CANDIDATE@1.0.0",
+  "status": "CANDIDATE__NOT_ADOPTED",
+  "precedence": [
+    {
+      "rank": 1,
+      "input": "malformed object / wrong producer contract / schema-hash corruption",
+      "result": "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE",
+      "class": "PRESEMANTIC_CONSTRUCTION_FAILURE"
+    },
+    {
+      "rank": 2,
+      "input": "upstream integrity failure",
+      "result": "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE",
+      "class": "PRESEMANTIC_CONSTRUCTION_FAILURE"
+    },
+    {
+      "rank": 3,
+      "input": "upstream VALID_EMPTY",
+      "result": "VALID_EMPTY",
+      "class": "COHERENT_EMPTY"
+    },
+    {
+      "rank": 4,
+      "input": "upstream explicit denial or ineligible structural use",
+      "result": "V554_STRUCTURAL_USE_DENIED",
+      "class": "STRUCTURAL_NEGATIVE"
+    },
+    {
+      "rank": 5,
+      "input": "upstream missing/unknown equivalence or missing required static upstream authority",
+      "result": "ROUTE_STATIC_AUTHORITY_MISSING",
+      "class": "MISSING_AUTHORITY"
+    },
+    {
+      "rank": 6,
+      "input": "recognized positive SIG-004 profile but no matching adopted V555 route row",
+      "result": "NO_GOVERNED_ROUTE_AUTHORITY",
+      "class": "NO_ROUTE_RULE"
+    },
+    {
+      "rank": 7,
+      "input": "matching route profile but source/channel/receiver closure missing or dangling",
+      "result": "ROUTE_STATIC_AUTHORITY_MISSING",
+      "class": "MISSING_AUTHORITY"
+    },
+    {
+      "rank": 8,
+      "input": "complete exact positive profile + adopted row + complete route-static closure",
+      "result": "ROUTE_CANDIDATE_AUTHORIZED",
+      "class": "POSITIVE"
+    }
+  ],
+  "noncollapse": [
+    "MISSING != VALID_EMPTY",
+    "INTEGRITY_FAILURE != STRUCTURAL_NEGATIVE",
+    "NO_GOVERNED_ROUTE_AUTHORITY != ROUTE_STATIC_AUTHORITY_MISSING",
+    "V554_STRUCTURAL_USE_DENIED != VALID_EMPTY"
+  ],
+  "present_candidate_result": "ROUTE_STATIC_AUTHORITY_MISSING",
+  "present_reason": "decisive exact source/channel/receiver authority closure is absent; candidate route row is therefore not selectable"
+}

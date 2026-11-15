@@ -1,0 +1,172 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-SPACE-BUNNY-OPENCODE-DELIVERY-R1",
+  "governing_decision": "USER_DIRECTED_PYAT_SPACE_BUNNY_OPENCODE_DELIVERY_20261002_R1",
+  "status": "OPENCODE_WORKFLOW_DELIVERED__ACTIVATION_PENDING__C4_HOLDS_PRESERVED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "previous_checkpoint": {
+    "checkpoint_id": "20261002-PYAT-HQ182-ALT-B-RETURN-ADJUDICATED-NOT-ADOPTED-R1",
+    "handoff_commit": "3efc9b31e38e1e555a1ef10623bfaf2b1602d982",
+    "current_json_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ182-ALT-B-RETURN-ADJUDICATED-NOT-ADOPTED-R1/CURRENT.json",
+    "manifest_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ182-ALT-B-RETURN-ADJUDICATED-NOT-ADOPTED-R1/MANIFEST.json"
+  },
+  "operating_packet": {
+    "entrypoint": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md",
+    "manifest": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/MANIFEST.json",
+    "installed": false,
+    "dispatcher_qualified": false,
+    "workers_launched_by_delivery": false
+  },
+  "adoption_status": "NOT_ADOPTED_INTO_BUILD",
+  "adoption_law": "ADJUDICATION_RECORDED__BUILD_ADVANCE_WITHHELD_PENDING_EXTERNAL_ASTRA_CROSS_MODEL_ADJUDICATION",
+  "held": [
+    "ADOPTION_OF_C4_FREEZE_INTO_BUILD",
+    "BUILD_ADVANCE_TOWARD_WARRANT",
+    "SOURCE_LOCATOR_DISCOVERY_AND_FILL",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4_EXECUTION",
+    "LANE_A_ADJUDICATION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "authority_effect": {
+    "workflow_routing_changed": true,
+    "source_free_orchestration_setup_on_user_launch": true,
+    "new_blanket_C1_C11_commissions_authorized": false,
+    "raw_source_execution_authorized": false,
+    "warrant_issued": false,
+    "c4_adopted_into_build": false,
+    "production_code_mutated": false,
+    "actor_implementation_authorized": false
+  },
+  "active_workers": [
+    {
+      "id": "C4_FINAL_REVIEW_A",
+      "branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+      "commission_tip": "42f54d6345ed31669f8c37d7dc23b8e042968986",
+      "observed_head_at_checkpoint": "fe6103cd50c634b92233f49815cc6d4abe49964d",
+      "grain": "RETURN_PRESENT__A_ADJUDICATION_HELD",
+      "library_access": "NO",
+      "pass_wake": "EXTERNAL_COMPARISON_INPUT_ONLY__NO_AUTOMATIC_ADOPTION",
+      "blocker_effect": "NO_C4_ADOPTION_OR_SOURCE_GATE_CHANGE",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "PRODUCTION_MUTATION",
+        "WARRANT_ISSUANCE"
+      ]
+    },
+    {
+      "id": "C4_FINAL_REVIEW_B",
+      "branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+      "commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+      "observed_head_at_checkpoint": "3a5b2cbc7f1978384268376f3ee493c7c095780b",
+      "grain": "ADJUDICATED_NOT_ADOPTED__RETURN_PRESERVED",
+      "library_access": "NO",
+      "pass_wake": "EXTERNAL_COMPARISON_INPUT_ONLY__NO_AUTOMATIC_ADOPTION",
+      "blocker_effect": "NO_C4_ADOPTION_OR_SOURCE_GATE_CHANGE",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "PRODUCTION_MUTATION",
+        "WARRANT_ISSUANCE"
+      ]
+    }
+  ],
+  "active_workers_scope": "These are named pending C4 reconciliation edges, not newly launched workers. Complete project frontier is not reconstructed by this documentary delivery. OPS-01 must reconcile current authorized work before dispatch; legacy task-board entries are not a launch queue.",
+  "dependency_graph": [
+    {
+      "id": "OPS-01",
+      "status": "READY_ON_USER_LAUNCH",
+      "prerequisites": [
+        "VERIFY_LIVE_CHECKPOINT",
+        "SOLE_INTEGRATING_HQ"
+      ],
+      "wake_effect": "BIND_OPS02_AND_PREPARE_OPS04",
+      "prohibited_early_actions": [
+        "REDISPATCH_STALE_BOARD",
+        "AUTOMATIC_ADOPTION"
+      ]
+    },
+    {
+      "id": "OPS-02",
+      "status": "PLANNED_NOT_ISSUED",
+      "prerequisites": [
+        "OPS-01",
+        "EXACT_SETUP_COMMISSION"
+      ],
+      "wake_effect": "OPS03_INDEPENDENT_FIXTURE_QUALIFICATION",
+      "prohibited_early_actions": [
+        "GLOBAL_CONFIG_OVERWRITE",
+        "RAW_SOURCE_ACCESS"
+      ]
+    },
+    {
+      "id": "OPS-03",
+      "status": "PLANNED_NOT_ISSUED",
+      "prerequisites": [
+        "OPS-02"
+      ],
+      "wake_effect": "DISPATCH_ONLY_READY_EXACT_AUTHORIZED_WORK",
+      "prohibited_early_actions": [
+        "CLAIM_RUNTIME_QUALIFIED_BEFORE_PASS"
+      ]
+    },
+    {
+      "id": "OPS-04",
+      "status": "DOCUMENTARY_PREPARATION_ONLY",
+      "prerequisites": [
+        "OPS-01"
+      ],
+      "wake_effect": "EXACT_C4_DECISION_PACKET",
+      "prohibited_early_actions": [
+        "ADOPTION_OF_C4_FREEZE_INTO_BUILD",
+        "BUILD_ADVANCE_TOWARD_WARRANT",
+        "SOURCE_LOCATOR_DISCOVERY_AND_FILL",
+        "WARRANT_ISSUANCE",
+        "RAW_SOURCE_ACCESS",
+        "LIVE_C4_EXECUTION",
+        "LANE_A_ADJUDICATION",
+        "C7_IMPLEMENTATION",
+        "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+      ]
+    },
+    {
+      "id": "C4_ADOPTION_AND_EXECUTION",
+      "status": "HELD",
+      "prerequisites": [
+        "COMPETENT_SEPARATE_CROSS_MODEL_DECISION",
+        "EXACT_RUNTIME_AND_WARRANT_GATES"
+      ],
+      "wake_effect": "ONLY_AS_LATER_SEPARATELY_AUTHORIZED",
+      "prohibited_early_actions": [
+        "TREAT_THIS_DELIVERY_AS_ADOPTION",
+        "SOURCE_LOCATOR_DISCOVERY",
+        "RAW_SOURCE_ACCESS"
+      ]
+    }
+  ],
+  "inherited_c4_record": {
+    "decision": "HQD-2026-10-02-182",
+    "hq_disposition": "UPHELD_AT_DECLARED_GRAIN__NOT_ADOPTED_INTO_BUILD",
+    "external_comparison": {
+      "adjudicator": "ASTRA__SEPARATE_MACHINE",
+      "retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
+      "lane_a_branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+      "lane_a_commission_tip": "42f54d6345ed31669f8c37d7dc23b8e042968986",
+      "lane_b_branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+      "lane_b_commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+      "lane_b_return_head": "3a5b2cbc7f1978384268376f3ee493c7c095780b",
+      "shared_review_base": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+      "hq_decision_lane_b": "HQD-2026-10-02-182"
+    },
+    "evidence_status": "HISTORICAL_ADJUDICATION_PRESERVED__NOT_RERATIFIED_BY_DELIVERY",
+    "known_reconciliation_questions": [
+      "R7 quote says from this path alone; HQ182 substituted from the repository",
+      "38 SHA256 prefixes must be distinguished from two complete Git SHA1 tree identities; 40 truncated identities overstates count"
+    ],
+    "docket": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/C4_RECONCILIATION_DOCKET.md",
+    "corrections_adopted_by_delivery": false
+  },
+  "next_action": "USER_LAUNCH_OPENCODE_HQ__OPS01_RECONCILE__OPS02_SETUP__OPS03_QUALIFY__C4_HOLDS_PRESERVED"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "PREMAIN_FIABC_LITS_EXECUTED_ROLE_CLOSURE_REPAIR_SOURCE_FREE_QUALIFICATION@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-lits-executed-role-closure-repair-r1",
+  "qualified_implementation_head": "11d86982bd671674f4b320599a5ff18066e0e209",
+  "parent_implementation_and_retention_tip": "28cf3d174dcd80b2590f2afc7ab5b8f4acdbc1d8",
+  "prior_failed_source_attempt_banked_at": "19154c16fd37d697738db344e6f3328d34e17397",
+  "bounded_governed_court": {
+    "receipt_path": "source_free_governed_court_receipt.json",
+    "result": "PASS",
+    "evidence_execution_sha": "11d86982bd671674f4b320599a5ff18066e0e209",
+    "semantic_candidate_sha": "5726648a5fa9de5bbdf67d653f921d59d9cb1a70",
+    "python": "3.11.3",
+    "protocol_self_test_and_bounded_court_meta_tests": "PASS; included in additional source-free test run",
+    "governed_tests": 8,
+    "passed": 147,
+    "failed": 0,
+    "exit_code": 0,
+    "duration_seconds": 15.828295
+  },
+  "additional_source_free_tests": {
+    "command_scope": [
+      "rawlsing_next/tests/test_rabochii_execution_protocol.py",
+      "rawlsing_next/tests/test_rabochii_bounded_court.py",
+      "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py"
+    ],
+    "passed": 50,
+    "failed": 0,
+    "skipped": 1,
+    "exit_code": 0
+  },
+  "combined_source_free_i05_and_checkpoint_court": {
+    "command_scope": "governed 8-file court plus I05 discovery and physical decoder test modules",
+    "passed": 177,
+    "failed": 0,
+    "skipped": 1,
+    "exit_code": 0
+  },
+  "candidate_neutrality": {
+    "candidate_processes_started": 0,
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "candidate_owned_state_reused": false
+  },
+  "source_access": {
+    "lits_source_opens": 0,
+    "lits_source_hash_passes": 0,
+    "lits_decoder_calls": 0
+  },
+  "wvs7_identity_conservation": {
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "evidence": "source_free governed court PASS; inherited WVS preservation assertions unchanged"
+  },
+  "source_backed_execution_performed": false,
+  "candidate_abc_executed": false,
+  "measured_p2x_executed": false,
+  "p3_executed": false,
+  "ff02_executed": false,
+  "structural_admission_executed": false
+}

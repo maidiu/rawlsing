@@ -1,0 +1,46 @@
+{
+  "schema": "PYAT_HQ247_AT07_WARRANT_EXPLICIT_DOCUMENTARY_ADOPTION@1",
+  "decision_id": "HQD-2026-10-08-247",
+  "date": "2026-10-08",
+  "status": "ADOPTED_PROSPECTIVE_DOCUMENTARY_WARRANT_ONLY",
+  "authority": "PYAT_HQ",
+  "candidate_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+  "canonical_warrant_path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+  "canonical_warrant_git_blob": "d1c835119a08bb27124c87b15485d6b83b91659f",
+  "independent_review_commit": "d659b5462c25be347d67f5a4f9873f5f1f645fc9",
+  "independent_review_disposition": "C1_AT07_ISSUER_WARRANT_R3_ACCEPTABLE__READY_FOR_DISTINCT_EXPLICIT_HQ_ADOPTION",
+  "hq_independent_check": "R3 warrant and corrected normative root and handoff file Git blobs independently confirmed; no new jurisdiction conflict",
+  "normative_root_contract_blob": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+  "normative_handoff_contract_blob": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+  "allowed_scope": {
+    "fixture": "AT07_BIDIRECTIONAL_100",
+    "source_free": true,
+    "release": "REL-c1-at07",
+    "release_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+    "source_universe_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "actual_effective_time": null
+  },
+  "unissued": {
+    "root_approval": null,
+    "owner_installation": null,
+    "independent_verifier_ack": null,
+    "active_issuer_epoch": null,
+    "registrar_credential": null,
+    "model_rule_R4": null
+  },
+  "i01_current_kinds": 18,
+  "courts": {
+    "hostile_proposed_unexecuted": 43,
+    "productive_proposed_unexecuted": 10
+  },
+  "negative_ceiling": "NO_ROOT_INSTALL_OR_ACTIVATION__NO_OPERATIONAL_ISSUER__NO_MODEL_RULE_R4__NO_NEW_I01_KIND__NO_REAL_SOURCE__NO_ACTOR_V3__NO_F7_SECURITY",
+  "mandatory_future_order": [
+    "SEPARATE_C1_OWNER_DESIGNATION_AND_ROOT_PROPOSAL",
+    "DISTINCT_HQ_ROOT_APPROVAL",
+    "OWNER_EXACT_INSTALL",
+    "INDEPENDENT_VERIFIER_ACK",
+    "DISTINCT_HQ_EPOCH_ACTIVATION"
+  ],
+  "identity_rule": "Accepted HQ documentary authority is exact decision plus immutable reviewed R3 Git tuple, not an issued PRE553 AuthoritySnapshot, credential, cryptographic root or working registrar. Earlier immutable proposed candidate remains unchanged."
+}

@@ -1,0 +1,52 @@
+{
+  "admitted_source_scope": {
+    "content_hash": "ab4de5365b5eb12a8592d54898ddde47b0c0c5c542378767e2f5f7d8f0a3e0cf",
+    "kind": "SOURCE_ARTIFACT",
+    "object_id": "SOURCE-G5-ADMITTED-SOURCE-SCOPE"
+  },
+  "defect": true,
+  "expected": "saved admission preserves the exact admitted SOURCE_ARTIFACT scope as lawful exact scope metadata and returns the native SUPPORTED fact; only foreign source/universe/release/authority scope must refuse",
+  "native_oracle": {
+    "fact_ref": {
+      "content_hash": "c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8"
+    },
+    "raw_denominator_support": 2,
+    "state": "SUPPORTED"
+  },
+  "original_contract_basis": "EmpiricalQuerySpec.scope_refs and EmpiricalPredicate.scope_refs are required set-like exact scope references with no universe/release-only type whitelist; the native I03 owner accepts the exact admitted source artifact as scope metadata. The saved admission's arbitrary whitelist discards a valid native request.",
+  "saved_admitted_source_scope": {
+    "error": "saved consumer scope contains a foreign scope reference",
+    "error_type": "SavedC11AdmissionError",
+    "state": "REFUSED"
+  },
+  "saved_base_positive": {
+    "fact_ref": {
+      "content_hash": "064b866d646f7b7b9076842a3e26ee19df6262a1bd07a5e2e8ac87cd60955278",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:064b866d646f7b7b9076842a3e26ee19df6262a1bd07a5e2e8ac87cd60955278"
+    },
+    "state": "SUPPORTED"
+  },
+  "saved_estate_native_i03": {
+    "fact_ref": {
+      "content_hash": "c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8"
+    },
+    "raw_denominator_support": 2,
+    "state": "SUPPORTED"
+  },
+  "schema": "PYAT991_S2D_G5_SCOPE_WITNESS@1",
+  "scoped_predicate_ref": {
+    "content_hash": "6c0471476e98eb835c114b889801862ff9a4e91a65f9d2a36f66bbccb4e0de2d",
+    "kind": "EmpiricalPredicate@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:6c0471476e98eb835c114b889801862ff9a4e91a65f9d2a36f66bbccb4e0de2d"
+  },
+  "scoped_query_ref": {
+    "content_hash": "82f89958eb8f113ebd63bfe645afdda0f49b9f00b7b633b5ba23c266b89eb113",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:82f89958eb8f113ebd63bfe645afdda0f49b9f00b7b633b5ba23c266b89eb113"
+  }
+}

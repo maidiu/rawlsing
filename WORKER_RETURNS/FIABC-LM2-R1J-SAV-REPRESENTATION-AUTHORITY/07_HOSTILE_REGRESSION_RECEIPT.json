@@ -1,0 +1,39 @@
+{
+  "schema": "FIABC_LM2_R1J_HOSTILE_REGRESSION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "github_actions": {
+    "run_id": 35578937508,
+    "job_id": 106267056438,
+    "implementation_sha": "1e2b64e9e520db9b9fbe7b42ab0170da6ba90725",
+    "workflow": ".github/workflows/fiabc-lm2-r1j-sav-representation-authority.yml",
+    "result": "35 passed in 40.79s"
+  },
+  "holdings": {
+    "int_and_float_globally_distinct": true,
+    "generic_numeric_coercion_added": false,
+    "exact_q291_scope_only": true,
+    "nearby_unauthorized_representations_fail": true,
+    "special_codes_noncanonical": true,
+    "system_missing_separate": true,
+    "canonical_question_mapping_absent": true,
+    "r1e_mapping_ceiling_unchanged": true,
+    "non_wvs_behavior_unchanged": true,
+    "candidate_outputs_absent": true,
+    "lock2_preserved": true
+  },
+  "first_run_failure": {
+    "run_id": 35578453752,
+    "reason": "module initialization order bug before semantic court",
+    "corrected_without_scope_broadening": true
+  },
+  "forbidden_execution": {
+    "sav_zip_opened": false,
+    "new_source_read": false,
+    "candidate_abc": false,
+    "i03": false,
+    "i05": false,
+    "measured_p2x": false,
+    "r15": false,
+    "r16": false
+  }
+}

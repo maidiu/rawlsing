@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Fail-closed clean-sideline runtime for frozen M3 / V556 higher-order structure."""
+"""Fail-closed M3 / V556 higher-order structure with exact result-schema authority.
+
+R2 preserves the V555 participant/source authority seam from R1 and adds the
+C07-required result-contract firewall.  A positive V556 object now requires an
+exact active rule whose content hash commits to an exact result-contract
+binding, an exact active/current result-contract binding, and payload
+conformance to that binding's closed objective-world schema.  Actor indexing is
+explicitly typed and objective actor identifiers are not person-state.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -15,8 +23,13 @@ from rawlsing_next.m2_v555_atomic_route import (
     semantic_hash,
 )
 
-M3_CONTRACT_ID = "M3_V555_V556_HIGHER_ORDER_STRUCTURAL_EXACT_SEAM_CONTRACT@1.0.0"
-SCR556_CONTRACT_ID = "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v1"
+M3_CONTRACT_ID = "M3_V555_V556_HIGHER_ORDER_STRUCTURAL_EXACT_SEAM_CONTRACT@2.0.0"
+SCR556_CONTRACT_ID = "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v2"
+RESULT_SCHEMA_REF_KIND = "M3ResultSchema@2.0.0"
+RESULT_CONTRACT_BINDING_REF_KIND = "M3ResultContractBinding@2.0.0"
+RESULT_JURISDICTION = "PRE_V3_OBJECTIVE_WORLD"
+PERSON_STATE_SEMANTICS = "FORBIDDEN"
+ACTOR_INDEXING_MODES = frozenset({"NO_ACTOR_INDEX", "OBJECTIVE_ACTOR_INDEXED"})
 V556_SEMANTIC_FAMILIES = frozenset({
     "V556_INTERACTION_RELATION",
     "V556_TOPOLOGY",
@@ -32,6 +45,7 @@ _RULE_FIELDS = frozenset({
     "maximum_cardinality_or_unbounded_marker", "multiplicity_policy",
     "same_route_reuse_policy", "source_composition_policy",
     "allowed_typed_outcome_states", "producer_allowed_uses",
+    "result_contract_binding_ref",
 })
 _BINDING_FIELDS = frozenset({
     "v555_route_identity_ref", "role", "ordinal_or_null", "multiplicity_index",
@@ -44,13 +58,57 @@ _COMPOSITION_FIELDS = frozenset({
 })
 _REQ_FIELDS = frozenset({
     "higher_order_semantics_required", "rule_authority", "participant_bindings",
-    "source_composition_authority", "governed_result", "intended_use",
+    "source_composition_authority", "result_contract_binding", "governed_result",
+    "intended_use",
 })
+_RESULT_CONTRACT_FIELDS = frozenset({
+    "binding_id", "binding_version", "binding_content_hash", "authorization_state",
+    "bound_rule_id", "bound_rule_version", "result_schema_ref",
+    "result_semantic_owner_ref", "result_semantic_owner_current_selection_ref",
+    "semantic_jurisdiction", "actor_indexing_mode", "person_state_semantics",
+    "result_schema",
+})
+_SCHEMA_FIELDS = frozenset({"schema_id", "schema_version", "semantic_class", "root"})
 _FROZEN_STATES = frozenset({
     "SUPPORTED", "VALID_EMPTY", "DENIED", "NONCOMPARABLE", "UNKNOWN_AUTHORITY",
     "CONFLICTING_AUTHORITY", "INVALID_PARTICIPANT_SET", "UNRESOLVABLE_PARTICIPANT",
 })
-_FORBIDDEN_SEMANTIC_KEYS = ("actor", "persona", "phenomenolog", "render", "voice", "belief", "psyche")
+_RESULT_AUTH_STATES = frozenset({"AUTHORIZED_CURRENT", "DENIED", "STALE", "OUT_OF_SCOPE"})
+_OBJECTIVE_SCHEMA_CLASSES = frozenset({
+    "OBJECTIVE_STRUCTURAL_RESULT",
+    "OBJECTIVE_ACTOR_POSITION",
+    "OBJECTIVE_ACTOR_OPPORTUNITY",
+    "OBJECTIVE_WORLD_STATUS",
+    "OBJECTIVE_MEASUREMENT",
+})
+_OBJECTIVE_ROLES = frozenset({
+    "OBJECTIVE_STRUCTURAL_RELATION",
+    "OBJECTIVE_ACTOR_INDEX",
+    "OBJECTIVE_INSTITUTION",
+    "OBJECTIVE_POSITION",
+    "OBJECTIVE_OPPORTUNITY",
+    "OBJECTIVE_CONSTRAINT",
+    "OBJECTIVE_STATUS",
+    "OBJECTIVE_MEASUREMENT",
+    "OBJECTIVE_REFERENCE",
+    "OBJECTIVE_GROUPING",
+    "OBJECTIVE_TEXT_LABEL",
+})
+_PERSON_STATE_ROLES = frozenset({
+    "PERSONALITY_OR_PSYCHOMETRIC_TYPE",
+    "SUBJECTIVE_BELIEF_IDEOLOGY",
+    "AFFECT",
+    "APPRAISAL",
+    "PREFERENCE",
+    "MOTIVATION",
+    "SUBJECTIVE_DISPOSITION",
+    "PSYCHOLOGICAL_TRAIT",
+    "ACTOR_UPTAKE",
+    "ACTOR_INTERPRETATION",
+    "ACTOR_RESPONSE",
+    "DURABLE_PERSON_STATE",
+    "DEVELOPMENTAL_BIOGRAPHICAL_STATE",
+})
 
 
 class M3DecisionState(str, Enum):
@@ -62,6 +120,9 @@ class M3DecisionState(str, Enum):
     CONFLICTING_AUTHORITY = "CONFLICTING_AUTHORITY"
     INVALID_PARTICIPANT_SET = "INVALID_PARTICIPANT_SET"
     UNRESOLVABLE_PARTICIPANT = "UNRESOLVABLE_PARTICIPANT"
+    INTEGRITY_FAILURE = "INTEGRITY_FAILURE"
+    RESULT_CONTRACT_NOT_CURRENT = "RESULT_CONTRACT_NOT_CURRENT"
+    RESULT_SCHEMA_NONCONFORMING = "RESULT_SCHEMA_NONCONFORMING"
 
 
 @dataclass(frozen=True)
@@ -89,6 +150,14 @@ class _Unresolvable(ValueError):
 
 
 class _Denied(ValueError):
+    pass
+
+
+class _SchemaIntegrity(ValueError):
+    pass
+
+
+class _SchemaNonconformance(ValueError):
     pass
 
 
@@ -165,9 +234,31 @@ def _route_ref(m2: Any) -> dict[str, str] | None:
     return {"kind": V555_SEMANTIC_FAMILY, "object_id": rid, "content_hash": semantic_hash(route)}
 
 
+def _rule_body_material(value: Mapping[str, Any], normalized_binding_ref: Mapping[str, str]) -> dict[str, Any]:
+    roles = value["participant_roles"]
+    states = value["allowed_typed_outcome_states"]
+    uses = value["producer_allowed_uses"]
+    return {
+        "contract_id": M3_CONTRACT_ID,
+        "rule_id": value["rule_id"],
+        "rule_version": value["rule_version"],
+        "semantic_family": value["semantic_family"],
+        "participant_roles": list(roles),
+        "participant_order_policy": value["participant_order_policy"],
+        "minimum_cardinality": value["minimum_cardinality"],
+        "maximum_cardinality_or_unbounded_marker": value["maximum_cardinality_or_unbounded_marker"],
+        "multiplicity_policy": value["multiplicity_policy"],
+        "same_route_reuse_policy": value["same_route_reuse_policy"],
+        "source_composition_policy": value["source_composition_policy"],
+        "allowed_typed_outcome_states": sorted(set(states)),
+        "producer_allowed_uses": sorted(set(uses)),
+        "result_contract_binding_ref": dict(normalized_binding_ref),
+    }
+
+
 def _rule_key(value: Any) -> tuple[tuple[str, ...], dict[str, Any]]:
     if not isinstance(value, Mapping) or set(value) != _RULE_FIELDS:
-        raise _Authority("rule_authority fields do not match frozen SCR556 contract")
+        raise _Authority("rule_authority fields do not match versioned SCR556 R2 contract")
     try:
         aid = _text(value["authority_id"], "rule.authority_id")
         aver = _text(value["authority_version"], "rule.authority_version")
@@ -180,8 +271,11 @@ def _rule_key(value: Any) -> tuple[tuple[str, ...], dict[str, Any]]:
         multiplicity = _text(value["multiplicity_policy"], "rule.multiplicity_policy")
         reuse = _text(value["same_route_reuse_policy"], "rule.same_route_reuse_policy")
         composition = _text(value["source_composition_policy"], "rule.source_composition_policy")
-    except ValueError as exc:
+        binding_ref = _ref(value["result_contract_binding_ref"], "rule.result_contract_binding_ref")
+    except (_Unresolvable, ValueError) as exc:
         raise _Authority(str(exc)) from exc
+    if binding_ref["kind"] != RESULT_CONTRACT_BINDING_REF_KIND:
+        raise _Authority("rule result_contract_binding_ref kind is not versioned M3 result binding")
     if family not in V556_SEMANTIC_FAMILIES:
         raise _Authority("rule semantic family is not frozen V556 higher-order structure")
     roles = value["participant_roles"]
@@ -218,6 +312,24 @@ def _rule_key(value: Any) -> tuple[tuple[str, ...], dict[str, Any]]:
         raise _Authority(str(exc)) from exc
     if not set(states_out) <= _FROZEN_STATES:
         raise _Authority("rule names a non-frozen V556 typed outcome state")
+    normalized_for_hash = {
+        **value,
+        "rule_id": rid,
+        "rule_version": rver,
+        "semantic_family": family,
+        "participant_roles": roles_out,
+        "participant_order_policy": order,
+        "minimum_cardinality": minimum,
+        "maximum_cardinality_or_unbounded_marker": maximum,
+        "multiplicity_policy": multiplicity,
+        "same_route_reuse_policy": reuse,
+        "source_composition_policy": composition,
+        "allowed_typed_outcome_states": states_out,
+        "producer_allowed_uses": uses_out,
+    }
+    expected_rule_hash = semantic_hash(_rule_body_material(normalized_for_hash, binding_ref))
+    if rhash != expected_rule_hash:
+        raise _Authority("rule_content_hash does not commit to the versioned R2 rule/result binding material")
     key = (aid, aver, ahash, rid, rver, rhash)
     return key, {
         "authority_id": aid, "authority_version": aver, "authority_content_hash": ahash,
@@ -228,6 +340,7 @@ def _rule_key(value: Any) -> tuple[tuple[str, ...], dict[str, Any]]:
         "multiplicity_policy": multiplicity, "same_route_reuse_policy": reuse,
         "source_composition_policy": composition,
         "allowed_typed_outcome_states": states_out, "producer_allowed_uses": uses_out,
+        "result_contract_binding_ref": binding_ref,
     }
 
 
@@ -246,6 +359,19 @@ def _active_key_set(values: Sequence[Sequence[str]], width: int, name: str) -> s
     return out
 
 
+def _active_ref_set(values: Sequence[Mapping[str, Any]], name: str) -> set[tuple[str, str, str]]:
+    if isinstance(values, (str, bytes)) or not isinstance(values, Sequence):
+        raise _Authority(f"{name} must be a sequence of exact refs")
+    out: set[tuple[str, str, str]] = set()
+    for i, raw in enumerate(values):
+        try:
+            ref = _ref(raw, f"{name}[{i}]")
+        except _Unresolvable as exc:
+            raise _Authority(str(exc)) from exc
+        out.add(_ref_key(ref))
+    return out
+
+
 def _binding_material(binding: Mapping[str, Any]) -> dict[str, Any]:
     return {
         "v555_route_identity_ref": dict(binding["v555_route_identity_ref"]),
@@ -257,7 +383,7 @@ def _binding_material(binding: Mapping[str, Any]) -> dict[str, Any]:
 
 def _participants(
     upstream: Sequence[M2Evaluation], raw_bindings: Any, rule: Mapping[str, Any],
-) -> tuple[tuple[dict[str, Any], ...], tuple[Mapping[str, Any], ...], tuple[dict[str, str], ...]]:
+) -> tuple[tuple[dict[str, Any], ...], tuple[M2Evaluation, ...], tuple[dict[str, str], ...]]:
     if isinstance(upstream, (str, bytes)) or not isinstance(upstream, Sequence):
         raise _Unresolvable("upstream must be a sequence of exact M2Evaluation values")
     index: dict[tuple[str, str, str], M2Evaluation] = {}
@@ -378,17 +504,270 @@ def _composition_key(value: Any) -> tuple[tuple[str, ...], dict[str, Any]]:
     }
 
 
-def _contains_forbidden_semantics(value: Any) -> bool:
-    if isinstance(value, Mapping):
-        for key, child in value.items():
-            if isinstance(key, str) and any(token in key.lower() for token in _FORBIDDEN_SEMANTIC_KEYS):
-                return True
-            if _contains_forbidden_semantics(child):
-                return True
-        return False
-    if isinstance(value, Sequence) and not isinstance(value, (str, bytes)):
-        return any(_contains_forbidden_semantics(x) for x in value)
-    return False
+def _schema_role(value: Any, path: str) -> str:
+    try:
+        role = _text(value, f"{path}.semantic_role")
+    except ValueError as exc:
+        raise _SchemaIntegrity(str(exc)) from exc
+    if role in _PERSON_STATE_ROLES:
+        raise _SchemaIntegrity(f"{path} declares forbidden person-state semantic role {role}")
+    if role not in _OBJECTIVE_ROLES:
+        raise _SchemaIntegrity(f"{path} semantic role is not an admitted objective-world role")
+    return role
+
+
+def _validate_schema_node(node: Any, path: str = "$") -> set[str]:
+    if not isinstance(node, Mapping):
+        raise _SchemaIntegrity(f"{path} schema node must be a mapping")
+    try:
+        node_type = _text(node.get("type"), f"{path}.type")
+    except ValueError as exc:
+        raise _SchemaIntegrity(str(exc)) from exc
+    role = _schema_role(node.get("semantic_role"), path)
+    roles = {role}
+    if node_type == "object":
+        expected = {"type", "semantic_role", "fields", "required", "additional_fields"}
+        if set(node) != expected:
+            raise _SchemaIntegrity(f"{path} object schema fields are not exact")
+        fields = node["fields"]
+        required = node["required"]
+        if not isinstance(fields, Mapping):
+            raise _SchemaIntegrity(f"{path}.fields must be a mapping")
+        if isinstance(required, (str, bytes)) or not isinstance(required, Sequence):
+            raise _SchemaIntegrity(f"{path}.required must be a sequence")
+        try:
+            required_names = tuple(_text(x, f"{path}.required") for x in required)
+        except ValueError as exc:
+            raise _SchemaIntegrity(str(exc)) from exc
+        if len(required_names) != len(set(required_names)) or not set(required_names) <= set(fields):
+            raise _SchemaIntegrity(f"{path}.required must be duplicate-free subset of fields")
+        if node["additional_fields"] is not False:
+            raise _SchemaIntegrity(f"{path} additional_fields must be false; open result schemas are forbidden")
+        for name, child in fields.items():
+            try:
+                field_name = _text(name, f"{path}.field_name")
+            except ValueError as exc:
+                raise _SchemaIntegrity(str(exc)) from exc
+            roles |= _validate_schema_node(child, f"{path}.{field_name}")
+        return roles
+    if node_type == "array":
+        expected = {"type", "semantic_role", "items", "min_items", "max_items_or_unbounded_marker"}
+        if set(node) != expected:
+            raise _SchemaIntegrity(f"{path} array schema fields are not exact")
+        minimum = node["min_items"]
+        maximum = node["max_items_or_unbounded_marker"]
+        if not isinstance(minimum, int) or isinstance(minimum, bool) or minimum < 0:
+            raise _SchemaIntegrity(f"{path}.min_items must be nonnegative integer")
+        if maximum != "UNBOUNDED" and (not isinstance(maximum, int) or isinstance(maximum, bool) or maximum < minimum):
+            raise _SchemaIntegrity(f"{path}.max_items_or_unbounded_marker invalid")
+        roles |= _validate_schema_node(node["items"], f"{path}[]")
+        return roles
+    if node_type == "string":
+        expected = {"type", "semantic_role", "allowed_values_or_unbounded_marker"}
+        if set(node) != expected:
+            raise _SchemaIntegrity(f"{path} string schema fields are not exact")
+        allowed = node["allowed_values_or_unbounded_marker"]
+        if allowed != "UNBOUNDED":
+            if isinstance(allowed, (str, bytes)) or not isinstance(allowed, Sequence) or not allowed:
+                raise _SchemaIntegrity(f"{path} string enum must be non-empty sequence or UNBOUNDED")
+            try:
+                values = tuple(_text(x, f"{path}.allowed_values") for x in allowed)
+            except ValueError as exc:
+                raise _SchemaIntegrity(str(exc)) from exc
+            if len(values) != len(set(values)):
+                raise _SchemaIntegrity(f"{path} string enum contains duplicates")
+        return roles
+    if node_type == "exact_ref":
+        expected = {"type", "semantic_role", "allowed_kinds_or_unbounded_marker"}
+        if set(node) != expected:
+            raise _SchemaIntegrity(f"{path} exact_ref schema fields are not exact")
+        kinds = node["allowed_kinds_or_unbounded_marker"]
+        if kinds != "UNBOUNDED":
+            if isinstance(kinds, (str, bytes)) or not isinstance(kinds, Sequence) or not kinds:
+                raise _SchemaIntegrity(f"{path} allowed exact-ref kinds invalid")
+            try:
+                parsed = tuple(_text(x, f"{path}.allowed_kinds") for x in kinds)
+            except ValueError as exc:
+                raise _SchemaIntegrity(str(exc)) from exc
+            if len(parsed) != len(set(parsed)):
+                raise _SchemaIntegrity(f"{path} exact-ref kind list contains duplicates")
+        return roles
+    if node_type in {"integer", "number", "boolean"}:
+        if set(node) != {"type", "semantic_role"}:
+            raise _SchemaIntegrity(f"{path} scalar schema fields are not exact")
+        return roles
+    raise _SchemaIntegrity(f"{path} schema node type is not supported")
+
+
+def _schema_ref(schema: Any) -> tuple[dict[str, str], Mapping[str, Any], set[str]]:
+    if not isinstance(schema, Mapping) or set(schema) != _SCHEMA_FIELDS:
+        raise _SchemaIntegrity("result_schema fields are not exact")
+    try:
+        schema_id = _text(schema["schema_id"], "result_schema.schema_id")
+        schema_version = _text(schema["schema_version"], "result_schema.schema_version")
+        semantic_class = _text(schema["semantic_class"], "result_schema.semantic_class")
+    except ValueError as exc:
+        raise _SchemaIntegrity(str(exc)) from exc
+    if semantic_class not in _OBJECTIVE_SCHEMA_CLASSES:
+        raise _SchemaIntegrity("result schema semantic_class is outside PRE-V3 objective-world classes")
+    roles = _validate_schema_node(schema["root"])
+    normalized = {
+        "schema_id": schema_id,
+        "schema_version": schema_version,
+        "semantic_class": semantic_class,
+        "root": schema["root"],
+    }
+    return {
+        "kind": RESULT_SCHEMA_REF_KIND,
+        "object_id": f"{schema_id}@{schema_version}",
+        "content_hash": semantic_hash(normalized),
+    }, normalized, roles
+
+
+def _validate_payload_node(node: Mapping[str, Any], value: Any, path: str, roles_seen: set[str]) -> None:
+    node_type = node["type"]
+    role = node["semantic_role"]
+    roles_seen.add(role)
+    if node_type == "object":
+        if not isinstance(value, Mapping):
+            raise _SchemaNonconformance(f"{path} must be object")
+        fields = node["fields"]
+        required = set(node["required"])
+        unknown = set(value) - set(fields)
+        missing = required - set(value)
+        if unknown:
+            raise _SchemaNonconformance(f"{path} contains undeclared fields {sorted(unknown)!r}")
+        if missing:
+            raise _SchemaNonconformance(f"{path} missing required fields {sorted(missing)!r}")
+        for key, child_value in value.items():
+            _validate_payload_node(fields[key], child_value, f"{path}.{key}", roles_seen)
+        return
+    if node_type == "array":
+        if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
+            raise _SchemaNonconformance(f"{path} must be array")
+        minimum = node["min_items"]
+        maximum = node["max_items_or_unbounded_marker"]
+        if len(value) < minimum or (maximum != "UNBOUNDED" and len(value) > maximum):
+            raise _SchemaNonconformance(f"{path} array cardinality outside schema")
+        for i, child in enumerate(value):
+            _validate_payload_node(node["items"], child, f"{path}[{i}]", roles_seen)
+        return
+    if node_type == "string":
+        if not isinstance(value, str):
+            raise _SchemaNonconformance(f"{path} must be string")
+        allowed = node["allowed_values_or_unbounded_marker"]
+        if allowed != "UNBOUNDED" and value not in set(allowed):
+            raise _SchemaNonconformance(f"{path} value is outside exact schema enum")
+        return
+    if node_type == "exact_ref":
+        try:
+            ref = _ref(value, path)
+        except _Unresolvable as exc:
+            raise _SchemaNonconformance(str(exc)) from exc
+        kinds = node["allowed_kinds_or_unbounded_marker"]
+        if kinds != "UNBOUNDED" and ref["kind"] not in set(kinds):
+            raise _SchemaNonconformance(f"{path} exact-ref kind outside schema")
+        return
+    if node_type == "integer":
+        if not isinstance(value, int) or isinstance(value, bool):
+            raise _SchemaNonconformance(f"{path} must be integer")
+        return
+    if node_type == "number":
+        if not isinstance(value, (int, float)) or isinstance(value, bool):
+            raise _SchemaNonconformance(f"{path} must be number")
+        return
+    if node_type == "boolean":
+        if not isinstance(value, bool):
+            raise _SchemaNonconformance(f"{path} must be boolean")
+        return
+    raise _SchemaNonconformance(f"{path} schema type unsupported")
+
+
+def _result_contract(
+    value: Any,
+    rule: Mapping[str, Any],
+    active_refs: set[tuple[str, str, str]],
+) -> tuple[dict[str, Any], dict[str, str]]:
+    if not isinstance(value, Mapping) or set(value) != _RESULT_CONTRACT_FIELDS:
+        raise _SchemaIntegrity("result_contract_binding fields are not exact")
+    try:
+        bid = _text(value["binding_id"], "result_contract.binding_id")
+        bver = _text(value["binding_version"], "result_contract.binding_version")
+        bhash = _hash(value["binding_content_hash"], "result_contract.binding_content_hash")
+        auth_state = _text(value["authorization_state"], "result_contract.authorization_state")
+        bound_rule_id = _text(value["bound_rule_id"], "result_contract.bound_rule_id")
+        bound_rule_version = _text(value["bound_rule_version"], "result_contract.bound_rule_version")
+        jurisdiction = _text(value["semantic_jurisdiction"], "result_contract.semantic_jurisdiction")
+        actor_mode = _text(value["actor_indexing_mode"], "result_contract.actor_indexing_mode")
+        person_state = _text(value["person_state_semantics"], "result_contract.person_state_semantics")
+        supplied_schema_ref = _ref(value["result_schema_ref"], "result_contract.result_schema_ref")
+        owner_ref = _ref(value["result_semantic_owner_ref"], "result_contract.result_semantic_owner_ref")
+        owner_current_ref = _ref(
+            value["result_semantic_owner_current_selection_ref"],
+            "result_contract.result_semantic_owner_current_selection_ref",
+        )
+    except (_Unresolvable, ValueError) as exc:
+        raise _SchemaIntegrity(str(exc)) from exc
+    if auth_state not in _RESULT_AUTH_STATES:
+        raise _SchemaIntegrity("result contract authorization_state is not recognized")
+    if bound_rule_id != rule["rule_id"] or bound_rule_version != rule["rule_version"]:
+        raise _SchemaIntegrity("result contract is not bound to the exact rule id/version")
+    if jurisdiction != RESULT_JURISDICTION:
+        raise _SchemaIntegrity("result contract jurisdiction must be PRE_V3_OBJECTIVE_WORLD")
+    if actor_mode not in ACTOR_INDEXING_MODES:
+        raise _SchemaIntegrity("result contract actor_indexing_mode invalid")
+    if person_state != PERSON_STATE_SEMANTICS:
+        raise _SchemaIntegrity("result contract must explicitly forbid person-state semantics")
+    computed_schema_ref, schema, schema_roles = _schema_ref(value["result_schema"])
+    if supplied_schema_ref != computed_schema_ref:
+        raise _SchemaIntegrity("result_schema_ref does not resolve to exact supplied schema content")
+    schema_has_actor = "OBJECTIVE_ACTOR_INDEX" in schema_roles
+    if actor_mode == "NO_ACTOR_INDEX" and schema_has_actor:
+        raise _SchemaIntegrity("NO_ACTOR_INDEX result contract may not declare objective actor-index fields")
+    if actor_mode == "OBJECTIVE_ACTOR_INDEXED" and not schema_has_actor:
+        raise _SchemaIntegrity("OBJECTIVE_ACTOR_INDEXED result contract must declare objective actor-index field")
+    material = {
+        "contract_id": M3_CONTRACT_ID,
+        "binding_id": bid,
+        "binding_version": bver,
+        "authorization_state": auth_state,
+        "bound_rule_id": bound_rule_id,
+        "bound_rule_version": bound_rule_version,
+        "result_schema_ref": supplied_schema_ref,
+        "result_semantic_owner_ref": owner_ref,
+        "result_semantic_owner_current_selection_ref": owner_current_ref,
+        "semantic_jurisdiction": jurisdiction,
+        "actor_indexing_mode": actor_mode,
+        "person_state_semantics": person_state,
+        "result_schema": schema,
+    }
+    if bhash != semantic_hash(material):
+        raise _SchemaIntegrity("result contract binding hash does not match exact semantic material")
+    binding_ref = {
+        "kind": RESULT_CONTRACT_BINDING_REF_KIND,
+        "object_id": f"{bid}@{bver}",
+        "content_hash": bhash,
+    }
+    if binding_ref != rule["result_contract_binding_ref"]:
+        raise _SchemaIntegrity("active rule does not commit to this exact result contract binding")
+    if _ref_key(binding_ref) not in active_refs:
+        raise _SchemaIntegrity("exact result contract binding is unavailable from current authority snapshot")
+    normalized = {
+        **material,
+        "binding_content_hash": bhash,
+        "binding_ref": binding_ref,
+    }
+    return normalized, binding_ref
+
+
+def _validate_result_payload(contract: Mapping[str, Any], payload: Any) -> None:
+    roles_seen: set[str] = set()
+    _validate_payload_node(contract["result_schema"]["root"], payload, "$.semantic_payload", roles_seen)
+    actor_seen = "OBJECTIVE_ACTOR_INDEX" in roles_seen
+    if contract["actor_indexing_mode"] == "NO_ACTOR_INDEX" and actor_seen:
+        raise _SchemaNonconformance("NO_ACTOR_INDEX payload contains objective actor-index role")
+    if contract["actor_indexing_mode"] == "OBJECTIVE_ACTOR_INDEXED" and not actor_seen:
+        raise _SchemaNonconformance("OBJECTIVE_ACTOR_INDEXED payload lacks required objective actor-index role")
 
 
 def _result(state: M3DecisionState | None, reason: str, behavior: str, bindings=(), obj=None, handoffs=(), replay=None) -> M3Evaluation:
@@ -401,12 +780,13 @@ def evaluate_m3_v556_higher_order_structural(
     *,
     active_rule_keys: Sequence[Sequence[str]] = (),
     active_source_composition_keys: Sequence[Sequence[str]] = (),
+    active_result_contract_refs: Sequence[Mapping[str, Any]] = (),
 ) -> M3Evaluation:
-    """Evaluate only governed V556 higher-order structure over exact V555 routes.
+    """Evaluate governed V556 structure over exact V555 routes under R2 firewall.
 
-    `active_rule_keys` and `active_source_composition_keys` are exact immutable
-    authority-snapshot keys supplied by the caller; this module owns no semantic
-    registry and never treats branch/latest labels as authority.
+    The caller supplies exact current rule/composition/result-contract authority
+    snapshots.  No result schema is inferred, defaulted, label-resolved, or
+    minted from the payload.
     """
     if not isinstance(request, Mapping):
         return _result(M3DecisionState.UNKNOWN_AUTHORITY, "M3 request must be exact mapping", "V556_EVALUATION_FAILED")
@@ -436,13 +816,25 @@ def evaluate_m3_v556_higher_order_structural(
         })
         return _result(None, "no exact governed V556 higher-order meaning required; no filler object", ZERO_V556_OBJECTS, handoffs=handoffs, replay=replay)
     if set(request) != _REQ_FIELDS:
-        return _result(M3DecisionState.UNKNOWN_AUTHORITY, "M3 request fields are not exact; actor/persona/raw upstream/filler fields forbidden", "V556_EVALUATION_FAILED")
+        return _result(M3DecisionState.UNKNOWN_AUTHORITY, "M3 request fields are not exact; raw upstream/filler fields forbidden", "V556_EVALUATION_FAILED")
     try:
         active_rules = _active_key_set(active_rule_keys, 6, "active_rule_keys")
         active_composition = _active_key_set(active_source_composition_keys, 4, "active_source_composition_keys")
+        active_results = _active_ref_set(active_result_contract_refs, "active_result_contract_refs")
         rule_key, rule = _rule_key(request["rule_authority"])
         if rule_key not in active_rules:
             raise _Authority("rule authority is not in exact active V556 authority snapshot")
+        try:
+            result_contract, result_binding_ref = _result_contract(
+                request["result_contract_binding"], rule, active_results
+            )
+        except _SchemaIntegrity as exc:
+            return _result(M3DecisionState.INTEGRITY_FAILURE, str(exc), "V556_EVALUATION_FAILED")
+        auth_state = result_contract["authorization_state"]
+        if auth_state == "DENIED":
+            return _result(M3DecisionState.DENIED, "exact result-contract authority denies this rule/result use", "V556_EVALUATED")
+        if auth_state in {"STALE", "OUT_OF_SCOPE"}:
+            return _result(M3DecisionState.RESULT_CONTRACT_NOT_CURRENT, f"result-contract authority is {auth_state}", "V556_EVALUATED")
         bindings, bound_routes, source_refs = _participants(upstream, request["participant_bindings"], rule)
         distinct_sources = {_ref_key(x) for x in source_refs}
         composition: Mapping[str, Any] | None = None
@@ -488,14 +880,28 @@ def evaluate_m3_v556_higher_order_structural(
             raise _Authority("governed result state is not allowed by exact active V556 rule")
         state = M3DecisionState(state_name)
         payload = governed["semantic_payload"]
-        if _contains_forbidden_semantics(payload):
-            raise _Denied("actor/persona/phenomenology/render semantics are outside V556 jurisdiction")
         canonical_bindings = tuple(_binding_material(x) for x in bindings)
+        if state is M3DecisionState.SUPPORTED:
+            if not isinstance(payload, Mapping) or not payload:
+                return _result(M3DecisionState.RESULT_SCHEMA_NONCONFORMING, "SUPPORTED V556 meaning requires non-empty schema-bound payload", "V556_EVALUATED", canonical_bindings)
+            try:
+                _validate_result_payload(result_contract, payload)
+            except _SchemaNonconformance as exc:
+                return _result(M3DecisionState.RESULT_SCHEMA_NONCONFORMING, str(exc), "V556_EVALUATED", canonical_bindings)
         identity_material = {
             "m3_contract_id": M3_CONTRACT_ID,
             "scr556_contract_id": SCR556_CONTRACT_ID,
             "semantic_family": rule["semantic_family"],
             "rule_authority": rule,
+            "result_contract_binding_ref": result_binding_ref,
+            "result_schema_ref": result_contract["result_schema_ref"],
+            "result_semantic_owner_ref": result_contract["result_semantic_owner_ref"],
+            "result_semantic_owner_current_selection_ref": result_contract[
+                "result_semantic_owner_current_selection_ref"
+            ],
+            "semantic_jurisdiction": result_contract["semantic_jurisdiction"],
+            "actor_indexing_mode": result_contract["actor_indexing_mode"],
+            "person_state_semantics": result_contract["person_state_semantics"],
             "participant_bindings": list(canonical_bindings),
             "source_composition_authority": composition,
             "semantic_payload": payload,
@@ -506,21 +912,27 @@ def evaluate_m3_v556_higher_order_structural(
         replay = semantic_hash(identity_material)
         if state is not M3DecisionState.SUPPORTED:
             return _result(state, "exact governed V556 rule produced nonpositive/empty typed outcome", "V556_EVALUATED", canonical_bindings, replay=replay)
-        if not isinstance(payload, Mapping) or not payload:
-            raise _Denied("SUPPORTED V556 meaning requires non-empty higher-order semantic payload; filler forbidden")
         obj = {
             "object_id": f"urn:rawlsing:v556:higher-order:sha256:{replay}",
             "semantic_family": rule["semantic_family"],
             "typed_outcome_state": state.value,
             "rule_authority": rule,
+            "result_contract_binding_ref": result_binding_ref,
+            "result_schema_ref": result_contract["result_schema_ref"],
+            "result_semantic_owner_ref": result_contract["result_semantic_owner_ref"],
+            "result_semantic_owner_current_selection_ref": result_contract[
+                "result_semantic_owner_current_selection_ref"
+            ],
+            "semantic_jurisdiction": result_contract["semantic_jurisdiction"],
+            "actor_indexing_mode": result_contract["actor_indexing_mode"],
+            "person_state_absent": True,
             "participant_bindings": canonical_bindings,
             "source_composition_authority": composition,
             "semantic_payload": payload,
             "producer_allowed_uses": tuple(sorted(allowed_uses)),
             "replay_key_hash": replay,
-            "actor_independent": True,
         }
-        return _result(state, "exact active V556 authority and exact V555 participant seam verified", "V556_EVALUATED", canonical_bindings, obj=obj, replay=replay)
+        return _result(state, "exact active V556 rule/result-schema authority and exact V555 participant seam verified", "V556_EVALUATED", canonical_bindings, obj=obj, replay=replay)
     except _Unresolvable as exc:
         return _result(M3DecisionState.UNRESOLVABLE_PARTICIPANT, str(exc), "V556_EVALUATION_FAILED")
     except _Participant as exc:
@@ -529,3 +941,19 @@ def evaluate_m3_v556_higher_order_structural(
         return _result(M3DecisionState.DENIED, str(exc), "V556_EVALUATED")
     except (_Authority, ValueError, TypeError, KeyError) as exc:
         return _result(M3DecisionState.UNKNOWN_AUTHORITY, str(exc) or "exact V556 authority unresolved", "V556_EVALUATION_FAILED")
+
+
+__all__ = [
+    "M3_CONTRACT_ID",
+    "SCR556_CONTRACT_ID",
+    "RESULT_SCHEMA_REF_KIND",
+    "RESULT_CONTRACT_BINDING_REF_KIND",
+    "RESULT_JURISDICTION",
+    "PERSON_STATE_SEMANTICS",
+    "ACTOR_INDEXING_MODES",
+    "V556_SEMANTIC_FAMILIES",
+    "ZERO_V556_OBJECTS",
+    "M3DecisionState",
+    "M3Evaluation",
+    "evaluate_m3_v556_higher_order_structural",
+]

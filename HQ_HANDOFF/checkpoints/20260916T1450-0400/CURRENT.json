@@ -1,0 +1,47 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260916T1450-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260916T1334-0400",
+  "status":"EE_R3_RETURNS_RECONCILED__EE_R4_THREE_BOUNDED_LANES_ACTIVE",
+  "latest_substantive_hq_authority":"b1c5ddeead65774af82cefffa30d9ce0d2f0f6b8",
+  "r3_returns":{
+    "EE-R3A":{"head":"9a31f6ddd984a43076cb89043a70ab19195332f5","status":"PASS","effect":"CANONICAL_18012_RESPONSE_SELECTOR_RESEALED"},
+    "EE-R3B":{"head":"1dc316b4a388949c1736aa65a20c8d43cfb2c8ba","status":"PASS","R2_count":24897,"R7_count":28325,"R27_count":24630,"effect":"LITS_OP001_OP006_COMMON_PREMISES_READY__D04_WAKEABLE"},
+    "EE-R3C":{"head":"b8f7c83035ed0a47f0b1cd95546d7fb1e2cb642c","status":"PASS_ZERO_POSITIVE","unresolved":55},
+    "EE-R3D":{"head":"fbd151af338c6b56c5d8072015425ab6cb05bbc3","status":"PASS_ZERO_POSITIVE","unresolved":19,"effect":"R3F_FIRST_WVS_PROVING_PAIR_FAILED_AUTHORITY"},
+    "EE-R3E":{"head":"dd218b1182b29259a19837c89222cbc47024b2ec","status":"PASS","effect":"OP020_OP022_WVS_LITS_COMMON_EXECUTION_LAWS_FROZEN"},
+    "EE-R3F":{"head":"9082b85d0963c6505e2b9dc9b417cfb881b8cb1b","status":"PASS_POST_SIBLING_RECONCILED","WVS_ready":["OP001","OP002"],"WVS_new_gap":["OP003","OP004","OP005","OP006"],"LiTS_ready":["OP001","OP002","OP003","OP004","OP005","OP006"]},
+    "EE-R3G":{"head":"a4271919340a5d16702178b2d4efc2a1b2df602d","status":"BOUNDED_BLOCKER","blocker":"CURRENT_ABC_EXECUTABLE_OWNER_REFS_UNRESOLVED","capability_absence_proved":false}
+  },
+  "selection_floor":{
+    "total":18,
+    "common_premise_ready":14,
+    "blocked":4,
+    "blocked_cells":["WVS7::OP003","WVS7::OP004","WVS7::OP005","WVS7::OP006"],
+    "candidate_execution_owner_registry_ready":false
+  },
+  "active_workers":[
+    {"id":"EE-R4A","human_name":"WVS Authority-Complete Proving Pair","branch":"agent/rabochii-prev3-ee-r4a-wvs-authority-complete-proving-pair-r1","commission_tip":"b1c5ddeead65774af82cefffa30d9ce0d2f0f6b8","library_access":"NO"},
+    {"id":"EE-R4B","human_name":"A/B/C Exact Executable Owner Registry","branch":"agent/rabochii-prev3-ee-r4b-abc-executable-owner-registry-r1","commission_tip":"b1c5ddeead65774af82cefffa30d9ce0d2f0f6b8","library_access":"NO"},
+    {"id":"EE-R4C","human_name":"Response Semantic Batch Partition","branch":"agent/rabochii-prev3-ee-r4c-response-semantic-batch-partition-r1","commission_tip":"b1c5ddeead65774af82cefffa30d9ce0d2f0f6b8","library_access":"NO"}
+  ],
+  "dependency_graph":{
+    "WVS_OP003_OP006":"WAIT_EE_R4A",
+    "ABC_EXECUTABLE_OWNER_PINS":"WAIT_EE_R4B",
+    "ABC_27_CELL_PHYSICAL_REQUALIFICATION":"WAIT_R4A_R4B",
+    "FINAL_ABC_BAKEOFF":"WAIT_18_CELL_COMMON_PREMISE_PLUS_27_CELL_PHYSICAL_READY",
+    "RESPONSE_SEMANTIC_PRODUCTION":"ACTIVE_EE_R4C_PARALLEL",
+    "D04":"WAKEABLE_AFTER_R3B_ADOPTION__NOT_CARRIER_SELECTION_GATE"
+  },
+  "architecture_holding":[
+    "PREV3_IS_GOVERNED_SOCIOLOGICAL_RESEARCH_MACHINE",
+    "THEORY_DOCUMENTATION_ENRICHES_AND_CONSTRAINS_BUT_NEED_NOT_PRESTATE_EVERY_LAWFUL_EMPIRICAL_MAPPING",
+    "PREV3_WORLD_NE_V3_LIFE",
+    "ABC_PRODUCTION_CARRIER_GATE_NE_BAN_ON_REVERSIBLE_RESEARCH"
+  ],
+  "frozen_laws":["NO_ALL_LANES_BARRIER","MISSING_AUTHORITY_NE_CANDIDATE_FAILURE","SEMANTIC_PARITY_PRECEDES_PHYSICAL_PERFORMANCE","NO_CANDIDATE_WINS_BY_OMITTED_WORK","HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"],
+  "terminal":"EE_R4_THREE_BOUNDED_LANES_ACTIVE"
+}

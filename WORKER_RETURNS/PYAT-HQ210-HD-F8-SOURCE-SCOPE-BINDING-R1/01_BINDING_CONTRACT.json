@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_HQ210_BINDING_CONTRACT@1.0.0",
+  "lane": "PYAT-HQ210-HD-F8-SOURCE-SCOPE-BINDING-R1",
+  "startup_base": "7cc1ce20238e06e4b785b6a804cc885cd19d641a",
+  "commission_tip": "904895d8ad072824f38464f579904e5193d55667",
+  "branch": "agent/rabochii-pyat-hq210-hd-f8-binding-r1",
+  "owner_seam": "SERVICE_APPLICABILITY_TO_F8_SOURCE_SCOPE_BINDING",
+  "kind": "THIN_SAME_GRAIN_ADAPTER_OR_BINDER__NOT_NEW_WORLD_ONTOLOGY",
+  "new_module": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+  "new_court": "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py",
+  "binding_statement": "BINDING_GRANTS_ELIGIBILITY_SCOPE_ONLY__NO_SELECTION_NO_RANKING_NO_POOLING_NO_CONDITIONING_NO_GEOMETRY_OR_DISTRIBUTION_TRANSFORM_NO_PERMISSION_GRANT_NO_ACTOR_INFERENCE",
+
+  "the_gap_closed": {
+    "proved_by": "HQ208 03_CONSUMER_SEAM_CROSSWALK.json at 6e2649c4d111fd0ec176c9fa29ce1da27ccc448e",
+    "exact_gap_verbatim": "no binding from CandidateClassApplicabilityReceipt/replay identity to PositionedSubjectPossibilityModelRule.source_universe_refs or exact query-source validation",
+    "now": "bind_service_applicability_to_f8_scope reads one exact adopted CandidateClassApplicabilityReceipt, validates the receipt's authority label, request/receipt grain, service grain, candidate class and release grain, and constrains the F8 model rule's source scope to lie inside the positively admitted set. evaluate_bound_positioned_subject_possibility then validates one exact F8 query source at one exact release and hands query/rule/evidence to the ADOPTED, UNMODIFIED F8 evaluator."
+  },
+
+  "inputs_carried_exact": [
+    "applicability request identity (service_request_set_identity, service_id, target_use_ref)",
+    "receipt identity and replay identity (applicability_receipt_id, applicability_receipt_replay_identity)",
+    "candidate class ref and candidate_class_coverage",
+    "per-source admission provenance (admission_authority_ref, admission_provenance_refs, release_identity_ref, bound_to_requested_release)",
+    "service / target / population / geography / time / release grain as carried by the receipt request_key plus the bound release_identity_ref",
+    "already-bound target-use permission refs (carried as INPUTS, never re-issued)",
+    "separate lifecycle/currentness result ONLY when a currentness claim is actually requested"
+  ],
+
+  "positive_powers_exactly_two": [
+    {
+      "n": 1,
+      "power": "assert_query_source_admitted",
+      "effect": "validates ONE exact F8 query source against a positive admitted entry in an exact applicability receipt, and returns its admission provenance",
+      "returns": "a per-source validation mapping carrying admitted=true, the public applicability state, the admission provenance, and explicit not_conditioning / not_a_selection_among_sources / no_ranking_or_priority_implied flags",
+      "never": "chooses a substitute source, and never returns a ranked or preferred source"
+    },
+    {
+      "n": 2,
+      "power": "expose_unranked_admitted_source_set",
+      "effect": "exposes the COMPLETE UNRANKED admitted source_universe_refs set for independent source-indexed F8 evaluation",
+      "coverage_rule": "exposing the SET is itself an exhaustive claim, so COMPLETE candidate_class_coverage is required in EVERY binding mode, not only in EXHAUSTIVE_UNRANKED_SET",
+      "never": "aggregates, pools, orders, weights or reorders"
+    }
+  ],
+
+  "no_third_power": {
+    "declared_modes": ["SINGLE_SOURCE_VALIDATION", "EXHAUSTIVE_UNRANKED_SET"],
+    "there_is_no": ["ranked mode", "best mode", "preferred mode", "latest mode", "local mode", "pooled mode", "exhaustive-without-COMPLETE mode"],
+    "structural_evidence": "the binding dataclass exposes exactly two source-touching methods that return values (the two powers) and seven methods that raise. The court pins both the set of returning methods and the set of raising methods."
+  },
+
+  "f8_law_preserved": {
+    "binding_f8_finding": "F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY",
+    "algorithm_id_expected": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+    "algorithm_id_asserted_at_bind_and_at_evaluate": true,
+    "drift_guard": "if F8 ever reports a different algorithm_id or model_rule_id, bind and evaluate both refuse with F8_ALGORITHM_NOT_EXACT_CONDITIONAL_LOOKUP / F8_MODEL_RULE_NOT_RECOGNISED rather than silently binding against a changed law",
+    "f8_owner_blob_before_and_after": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "f8_owner_modified": false,
+    "f8_owner_verified_by": "the court runs git hash-object on the F8 module and compares to the HQ208-recorded blob; it is not merely imported",
+    "pass_through": "evaluate_bound_positioned_subject_possibility passes the caller's own query, rule and evidence objects to evaluate_positioned_subject_possibility. It never edits, reorders, widens, narrows, reweights or retargets them, and never inspects or alters conditioners.",
+    "the_selection_not_transformation_trap": "narrowing the admitted set can change WHICH pre-materialized slice F8 selects. That is output SELECTION, not output TRANSFORMATION. The court pins this directly: the same evidence slice yields byte-identical exact_geometry and the same result_state under both a wide and a narrowed binding."
+  },
+
+  "eligibility_is_not_conditioning": {
+    "rule": "ELIGIBILITY != CONDITIONING",
+    "enforcement": [
+      "the binding exposes no method that constructs, adds, drops, widens or re-points a ConditionerBinding",
+      "the binding never reads a conditioner attribute; the court proves this by AST scan for conditioner_bindings, retained_conditioner_ids, effective_time_or_interval, geometry, uncertainty_state, raw_support, walkback_steps and positive_proxy_authority_refs, and requires the touched set to be EMPTY",
+      "conditioned_f8_geometry() raises BINDING_REFUSES_F8_CONDITIONING"
+    ],
+    "consistency_with_the_adopted_owner": "the applicability owner's DECISION_MATRIX sets may_condition_F8 = False on every decision including ADMITTED; this binder does not create a path around that."
+  },
+
+  "adopted_owners_not_modified": {
+    "rawlsing_next/pre553_service_source_applicability.py": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+    "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "rawlsing_next/objective_consumer_bounded_evidence.py": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+    "minimal_api_wiring_change_required": false,
+    "note": "no wiring change to any adopted owner was needed. The commission permitted one only if exact implementation proved it unavoidable, and it was not: the binding reads the adopted public surface (receipt accessors, rule.source_universe_refs, rule.rule_hash) and constructs nothing inside another owner's namespace."
+  },
+
+  "explicit_nondependencies_honoured": {
+    "c1": "not waited for. No C1 analytical/joint/multi-arity claim is made. The three C1 analytical modules remain absent and are not imported.",
+    "f7": "not waited for. No positive temporal comparison, pressure or temporal-conditioning claim is made. TEMPORAL_COMPARABILITY_OR_PRESSURE is a refused purpose.",
+    "why_they_are_genuinely_unnecessary_here": "this seam binds a static exact-release source scope. It reads no temporal comparison, computes no delta, and constructs no trajectory, so neither C1 composition nor F7 temporal constitution is on its path."
+  },
+
+  "binding_grain": {
+    "granularity": "one binding per (service_request_set_identity, candidate_class_ref, release_identity_ref, exact F8 model rule)",
+    "per_source_grain": "every admitted source is carried as a SEPARATE source-indexed entry with its own provenance row; multiple admitted sources are never merged",
+    "cardinality": "the admitted set cardinality is explicitly NOT a sample size"
+  }
+}

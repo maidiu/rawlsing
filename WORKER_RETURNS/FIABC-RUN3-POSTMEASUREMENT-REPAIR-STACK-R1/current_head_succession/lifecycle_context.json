@@ -1,0 +1,157 @@
+{
+  "candidate_b_no_cache": {
+    "stages": [
+      "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+      "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+    ],
+    "stop_law": "Frozen Candidate-B law is SOURCE_BACKED_VIRTUAL_C11 with zero retained transformed empirical payload; do not invent an optional cache solely to test stale/corrupt-cache behavior.",
+    "stop_law_ref": "PURE_B_NO_CACHE"
+  },
+  "candidate_local_failure_scope": {
+    "law": "ONLY_CURRENT_CELL_IS_FAILED__LATER_LAWFUL_CELLS_REMAIN_REACHABLE",
+    "next_by_cell": {
+      "LITS_I/A": "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "LITS_I/B": "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "LITS_I/C": "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "WVS7/A": "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "WVS7/B": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "WVS7/C": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+    }
+  },
+  "candidate_outputs_seen": 0,
+  "candidate_owned_roots_consulted": [],
+  "candidate_processes_started": 0,
+  "cell_order": [
+    {
+      "candidate": "A",
+      "source": "LITS_I"
+    },
+    {
+      "candidate": "B",
+      "source": "LITS_I"
+    },
+    {
+      "candidate": "C",
+      "source": "LITS_I"
+    },
+    {
+      "candidate": "A",
+      "source": "WVS7"
+    },
+    {
+      "candidate": "B",
+      "source": "WVS7"
+    },
+    {
+      "candidate": "C",
+      "source": "WVS7"
+    }
+  ],
+  "common_court_failure_scope": {
+    "law": "BLOCK_COURT_UNTIL_RESUME",
+    "terminal_disposition": "BLOCKED_BY_COMMON_COURT_AUTHORITY"
+  },
+  "common_source_failure_scope": {
+    "law": "BLOCK_REMAINING_GOVERNED_STAGES_OF_CURRENT_SOURCE__THEN_ADVANCE_TO_NEXT_SOURCE_OR_FINAL_COURT_GATE",
+    "terminal_disposition": "BLOCKED_BY_COMMON_SOURCE_AUTHORITY"
+  },
+  "evidence_refs": [
+    {
+      "claim": "current six-cell execution manifest",
+      "content_sha256": "9acc2f38b763619dc5ac2b7cd2dd175ba251d85d83cc36f9a57ee685baa00af2",
+      "evidence_class": "COURT_ADJUDICATION",
+      "git_blob_sha": "49692c1c8527680c97af073039b36125edd7e56d",
+      "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+      "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+      "repo": "maidiu/rawlsing",
+      "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+    },
+    {
+      "claim": "current six-cell court contract",
+      "content_sha256": "ab500ffe2829e8f2727dd28ae647933010b91cc5381e7b20828882419cb598a5",
+      "evidence_class": "COURT_ADJUDICATION",
+      "git_blob_sha": "839141fa41dde455b59501380f90e81f2b6f3ea3",
+      "path": "WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json",
+      "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+      "repo": "maidiu/rawlsing",
+      "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+    },
+    {
+      "claim": "current failure-scope and lifecycle orchestrator",
+      "content_sha256": "7fb731549322e88a8d36f77e9777825b66f840af9bd1abd3c1dba2d831bcaf95",
+      "evidence_class": "CURRENT_IMPLEMENTATION",
+      "git_blob_sha": "33605355d9f2b6236d20fa207fbca59d357823e0",
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+      "repo": "maidiu/rawlsing",
+      "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+    },
+    {
+      "claim": "current source-candidate process isolation adapter",
+      "content_sha256": "2db8aa2a5313fc781ba6e82ccea2d61973794b4b2d67d6f01f1d0f3ebbf447a4",
+      "evidence_class": "CURRENT_IMPLEMENTATION",
+      "git_blob_sha": "b36faf5af98b49a4b11c408402229cff02aad7bc",
+      "path": "rawlsing_next/ee_p2x_process_isolated_backend.py",
+      "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+      "repo": "maidiu/rawlsing",
+      "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+    },
+    {
+      "claim": "accepted final source-independent HQ preflight/fan-in return",
+      "content_sha256": "b6231f0a0c1a42f0876f8b0f517d623e34e9cc40c2dc89eb8803131b4f4f6739",
+      "evidence_class": "GOVERNED_EXECUTION_RECEIPT",
+      "git_blob_sha": "a256f465887cb1d2215dc27b8887a28ae32f8d47",
+      "path": "WORKER_RETURNS/FIABC-HQ-FINAL-PREFLIGHT-FANIN/RETURN.json",
+      "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+      "repo": "maidiu/rawlsing",
+      "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+    }
+  ],
+  "failure_scope_ambiguous": false,
+  "failure_scope_misclassified": false,
+  "frozen_before_candidate_execution": true,
+  "generated_from_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "lifecycle_order_matches": true,
+  "lits_a_s01": {
+    "classification": "MEASURED_CURRENT_WORK__NOT_HISTORICAL_PRESERVATION",
+    "manifest_tuple": [
+      "READY__RUN_LOCALLY",
+      null,
+      true,
+      true,
+      "S02_C11_REACHABILITY"
+    ],
+    "stage": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD"
+  },
+  "ranking_or_selection": false,
+  "schema": "RAWLSING_FIABC_P10_LIFECYCLE_FAILURE_SCOPE_CONTEXT@1.0.0",
+  "stage_catalog": [
+    "S00_SOURCE_PREFLIGHT_IDENTITY",
+    "S01_CANDIDATE_PREPARATION_BUILD",
+    "S02_C11_REACHABILITY",
+    "S03_PARITY_ORACLE_GATE",
+    "S04_I03_EXECUTION",
+    "S05_I05_LEARNED_PRODUCTION",
+    "S06_PROVENANCE_AUDIT",
+    "S07_COLD_RESEARCH",
+    "S08_WARM_REPEATED_RESEARCH",
+    "S09_DELETION_REGEN_OR_A_PERSISTENCE",
+    "S10_SOURCE_RELEASE_INVALIDATION",
+    "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+    "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+    "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE",
+    "S14_INTERRUPTION_RECOVERY",
+    "S15_FRESH_PROCESS_REPLAY",
+    "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+  ],
+  "state": "PROVED",
+  "terminal_history_fresh_for_retry": true,
+  "wvs7_c_zero_accelerator_no_cache": {
+    "stages": [
+      "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+      "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+    ],
+    "stop_law": "Current WVS7 Candidate C has exactly zero authorized accelerators; stale/corrupt accelerator-state stages are not applicable and may not be replaced by a WVS-specific CACC.",
+    "stop_law_ref": "C_ZERO_ACCELERATOR_NO_CACHE"
+  }
+}

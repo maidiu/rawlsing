@@ -1,0 +1,59 @@
+{
+  "schema": "RAWLSING_EE_P2X_WVS7_COMMON_PREEXECUTION_AND_CANDIDATE_BLOCKERS@1.0.0",
+  "status": "BLOCKED__LOCK2_I05_FRONTIER_SEALED_BUT_WVS7_C11_CARRIER_EXECUTION_BINDINGS_NOT_MATERIALIZED",
+  "source": {
+    "id": "WVS7",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "bytes": 185163494,
+    "candidate_neutral_decoder_preflight": "PASS_EXACT_RUNTIME_AND_SOURCE_DECODER_PREFLIGHT__CANDIDATE_NEUTRAL"
+  },
+  "lock2": {
+    "hash": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "replay_hash": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+    "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "frontier_shape": {"total": 46, "families": [10, 1, 10, 25]},
+    "preoutcome_status": "SEALED__NO_WVS_OUTCOME_ACCESS_DURING_F2"
+  },
+  "preexecution_gate": {
+    "semantic_c11_oracle": "NOT_MATERIALIZABLE__NO_CALLABLE_WVS_GOVERNED_C11_PROJECTION",
+    "identity_oracle": "NOT_MATERIALIZABLE_FOR_CANDIDATE_EXECUTION",
+    "performance": "INADMISSIBLE",
+    "law": "No candidate output may define or modify an oracle."
+  },
+  "ordered_candidate_cells": [
+    {
+      "candidate": "A",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-WVS7-A-R5-COMPACT-CARRIER",
+      "proved_gap": "No accepted WVS7 R5 compact carrier, R5LongShardedReader binding, or callable preparation binding exists; building one from the SAV would create forbidden carrier/projection work."
+    },
+    {
+      "candidate": "B",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-WVS7-B-GOVERNED-PROJECTION-BINDING",
+      "proved_gap": "Lock2 and EE-R6A bind Q291G5/Q291P5 authority and the 46-candidate pre-outcome frontier, but not a callable WVS GovernedC11Projection.  Deriving one would add prohibited semantic/projection implementation."
+    },
+    {
+      "candidate": "C",
+      "status": "BLOCKED__CURRENT_C_PORTABILITY_FAILURE",
+      "blocker_id": "R8C-WVS7-C-FROZEN-LITS1-CACC-SHAPE",
+      "proved_gap": "The owner is fixed to exact LiTS-I source/CACC1 field and CACC2 determinant scope.  No WVS-specific accelerator may be created and no current-C lawful zero-accelerator fallback is supplied."
+    }
+  ],
+  "common_effects": {
+    "wvs_candidate_source_opens": 0,
+    "wvs_candidate_source_decodes": 0,
+    "i03": "NOT_RUN__PREEXECUTION_GATE_UNSATISFIED",
+    "i05_46_candidate_learned_product": "NOT_RUN__PREEXECUTION_GATE_UNSATISFIED",
+    "lifecycle_deletion_replay": "NOT_RUN__NO_ACCEPTED_CANDIDATE_EXECUTION_STATE",
+    "performance_metrics": "NOT_GENERATED__NO_SURROGATE",
+    "ranking_or_selection": false
+  },
+  "authority_basis": {
+    "r8c": "c97293834e7e295d07cafa9da6ce155fc769fceb",
+    "p2f2": "22667bd395e7293f99b285daddad36fe3a4377ef",
+    "final_p2_handoff": "bab973096ce50bbc55e1cb5b1210083883c03d10"
+  },
+  "stop_law_application": "COMMON_SOURCE_AUTHORITY_AND_EXECUTION_BINDING_FAILURE_BLOCKS_WVS7_A_B_C__NO_SUBSTITUTE_OR_FABRICATED_METRIC",
+  "ranking_or_selection": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "REUSE_FIRST_READER_IS_ACTUALLY_EXECUTED",
+      "actual_consumer": "test_05 -> P2ProductFanin.start -> P2ProductFanin.verify_public",
+      "claimed_dependency": "The claimed current P2 reuse reaches its real start/verification reader in this run; retained JSON cannot stand in for that reader.",
+      "positive_node": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/test_reuse_ledger.py::test_05_p2_consumer_and_interval_owner_are_present",
+      "fault": {
+        "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/p2_product_fanin/integration.py",
+        "old": "\"ok\": bool(result.get(\"ok\")),",
+        "new": "\"ok\": False,"
+      }
+    }
+  ]
+}

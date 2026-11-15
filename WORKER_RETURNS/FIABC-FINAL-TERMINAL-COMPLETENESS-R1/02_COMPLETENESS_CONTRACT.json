@@ -1,0 +1,40 @@
+{
+  "schema": "RAWLSING_FIABC_FINAL_TERMINAL_COMPLETENESS_CONTRACT@1.0.0",
+  "worker": "FIABC FINAL TERMINAL COMPLETENESS GATE — R1",
+  "implementation_head": "d7d91f9d6548240ffc215d2b56a59f43b6dbae3f",
+  "blobs": {
+    "terminal_control": "09e8b633346c76a8025f36060d0718896255eed4",
+    "completeness_module": "8b855eb5f866ff442a69bdac523a81eb44abdfbc",
+    "hostile_tests": "fc0e4b8056f5ac7cc3941d24d033af026f318327"
+  },
+  "pass_law": {
+    "completed_qualifying_cell": [
+      "every frozen required/reachable dispositive metric is present and MEASURED",
+      "metric definition hash and manifest exactly match canonical T4 definitions",
+      "CPU/RSS/wall process accounting is sealed and exactly one MAIN process envelope exists",
+      "I/O event stream is sealed",
+      "scratch high-water stream is sealed",
+      "required lifecycle actions are present at the exact stage/action identity",
+      "fresh-process terminal projection remains governed by the pre-existing T5 terminal law"
+    ],
+    "typed_exceptions": {
+      "not_applicable": "only NOT_APPLICABLE_BY_FROZEN_COURT under exact frozen applicability law",
+      "authorized_stop": "only NOT_REACHED_AUTHORIZED_STOP downstream of an executable authorized stop; forbidden in a completed qualifying cell",
+      "preserved_no_numeric": "only exact PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY with numeric_credit_allowed=false and missing_numeric_is_zero=false"
+    },
+    "forbidden": [
+      "MEASUREMENT_NOT_CAPTURED on a required/reachable dispositive metric",
+      "fake numeric zero for N/A, stop, preserved, or uncaptured evidence",
+      "metric definition drift",
+      "partial I/O or endpoint-size proxy accepted as complete I/O",
+      "endpoint scratch size accepted as scratch high-water",
+      "candidate ranking, scoring, winner selection, or cross-candidate comparison"
+    ]
+  },
+  "integration": {
+    "s16": "seal_live_cell_terminal revalidates canonical T4 telemetry against current execution manifest and stage receipts before writing a PASS cell terminal; completeness receipt is embedded in the cell terminal.",
+    "s17": "verify_live_final_terminal re-runs completeness from the canonical telemetry receipt for each of six cells and requires identity equality with the S16 completeness receipt before I08 final verification.",
+    "worker_a_seam": "Worker A may change instrumentation only by causing canonical T4 slots/seals to become truthful MEASURED or exact typed nonnumeric states. No synthetic values are accepted by this gate."
+  },
+  "selection_neutral": true
+}

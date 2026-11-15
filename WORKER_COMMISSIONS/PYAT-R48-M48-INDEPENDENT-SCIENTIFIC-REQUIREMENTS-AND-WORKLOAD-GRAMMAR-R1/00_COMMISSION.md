@@ -1,0 +1,53 @@
+# PYAT R48 M48 — Independent scientific requirements and source-native operation law
+
+**AUTHORITY:** Independent adversarial SCIENTIFIC REQUIREMENTS / OPERATION ELIGIBILITY architect. NOT R48 integrator, HQ, adopted semantic issuer, source custodian, original source reader, F6/F7/model adopter, N11 assessor, Sorok actor writer. Required to **challenge** R47's missing-single-compiler framing, not rubber-stamp it.
+
+**HQ DUAL ECONOMY — specific actual recommendation:** **Codex GPT-6.1 High**, HIGH effort; **INTELLIGENCE I3+ scientific-method design**, **EXECUTION S1–S2** read-only private repo + sourcefree algorithmic specification/proof canaries (Python optional, no raw source). Why highest: deciding valid finite empirical discovery eligibility, survey routing/statistical design, cross-sectional/multisource/temporal/subject reverse-inference boundaries, and source-native scientific authority semantics requires a novel cross-disciplinary integrated judgment rather than mechanical catalog construction. **Browser GPT-6 High** is capable of a strong architecture *lead* (R48-A) but does not provide a model-diverse independent high-intelligence scientific challenge to that lead; **DeepSeek V4.1-Flash MAX** should be used instead for source-document and existing-artifact forensics (R48-H), not this ultimate method constitution. Do NOT treat the name GPT-6.1 as a blanket capability guarantee. User decides when/which of two Codex accounts to allocate; do not start on a rate-limited account or interrupt others. If Codex unavailable, keep lane **PUBLISHED_NOT_RUNNING** and let user deliberately choose a qualified alternative; no automatic substitution with lower intelligence.
+**BRANCH TO CREATE:** `agent/vozhd-pyat-r48-m48-independent-scientific-requirements-r1`.
+**EXACT STARTUP:** The unique 40-hex commit in `PYAT_CONTROL_ROOM/R48_MULTI_LANE_INDEPENDENT_ARCHITECTURE_DISPATCH_SEAL_20261019.md` on PRE-MAIN. Create branch yourself from seal, verify its HEAD; first check for existing branch/local session. No duplicate.
+**SOURCE PRIVACY:** No opening original respondents or exporting raw survey records. May inspect authority text, code and nonrespondent examples; use sealed sourcefree declarative examples and previous scientific receipts at their inherited grades. Do not issue missing scientific rights.
+
+## Governing reading, independent starting point
+
+Read whole `CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md`, Pyat `00_READ_ME_FIRST.md`, fresh-HQ `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`, PRE-MAIN primary authority and current Pyat progress. **Do not read R48-A's eventual conclusions or R48-H's ongoing deductions until your independent frozen scientific requirements are committed.** Read original shared evidence rather than each other's interpretation.
+
+Mandatory existing prior:
+- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md`: HQ277 WG0–WG4 hypothesis/absence vs unproved. Do not infer current runtime automatically defines the full scientific task.
+- Chetiri `data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/VOZHD_CHETIRI_COMPILER_PERSISTENCE/18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`: autonomous discovery, reverse positioned-subject possibility, and structural stratal learned world are three noncollapsible terminal purposes.
+- Long Memory `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/39_LONG_MEMORY_INHERITANCE_AND_CURRENT_MACHINE_ZERO_LOSS_DELTA_RECONCILIATION_AUTHORITY.md` and PRE-MAIN inherited W47 `PROJECT_INHERITANCE_R1/SOURCE_CORPORA/W47_AUTHORITY_SEMANTIC_INHERITANCE/00_WORKER_RETURN.md` under `PRE_MAIN_RECONCILIATION_R1`; treat historical actual decisions/current adoption separately.
+- PRE553 existing `rawlsing_next/pre553_discovery_exact.py`, `pre553_empirical_query.py`, `pre553_batch_runner.py`, `pre553_route_b_production.py` public and input contracts; I03/I05/Batch and S44/U43/B43/F43/J42/I44 downstream engineering returns. Original E04 and A42 plus F1–F8/N9/N10E/N10W actual consumers; original 0/1890.
+- Older existing V550/551/552/J, P2/P3, HARVEST, P10/E_pre/accepted provider relationship, accepted original 35 source registry, and user archive candidates. Tree listings supplied in initiating chat are **not** automatically attached to new Codex worker; filenames alone prove neither adoption nor quality.
+
+## The independently derived scientific question
+
+**What must the scientific frontier MEAN before any engine can enumerate and query a real respondent universe?** Work backwards from terminal capabilities. Source/questionnaire existence does NOT alone imply a meaningful operation. A frozen grammar may enable empirical search without freezing discovery outcomes or forcing one manual preselected question list.
+
+Reconstruct **the full typology**, with examples from *actual historically adjudicated* source documents when available, for:
+1. Measurement anatomy: wave/edition/country/shard, survey unit (individual/household/etc), administered item *instances*, response scales/special states, multiple response/repeated/ranked, question family relations, source codebook identity.
+2. Actual administered and applicable respondent universe `U`: selected-adult/household hierarchy, filter/routing, codes versus labels, missing-not-asked/structural omission, sampling frames, necessary weight/design correction, multiple country and wave distinctness.
+3. Prospective scientifically meaningful candidate operation universe `E_pre`: univariate distributions, cross-conditional distributions, k-way join co-travel, minority/counterpattern, autonomy of discovery under exact finite source grammatical possibilities, recursive refinements and stopping/expansion law, opposed/null/underpowered estimates, risk-set/statistical limits.
+4. Nontrivial directed/role-bearing semantics: target-versus-condition asymmetric roles, same respondent vs aggregate, distinct genuine structural admissions, exact P2/P3/Job3 authority, negative forbidden/inapplicable versus merely unresolved or uninspected.
+5. F1–F8 downstream scientific bridges: what can be inferred from an original cross-sectional sample, when F5 field structure requires separate observation/model, when F6 comparative transport needs valid target estimand/population and incomparable disagreement/partial bounds, when F7 temporal series needs observed wave comparability, F8 uncertainty and as-of, and what N9/E04 consumers may request.
+6. Reverse inference: how an empirical distribution constrains possibilities of a lawfully positioned person without assigning personal belief/psychological state and without smuggling an actor authorization upstream.
+7. Finite stopping, provenance, hierarchy and no-drop: how to bound the candidate grammar without silently throwing away entire scientifically valid query families or treating combinatorial all-pairs as science.
+
+**Crucial:** Separate (A) SOURCE-SPECIFIC GOVERNED FACTS/decisions that need static created/adjudicated resources, (B) GENERIC algorithmically derivable/composable scientific grammar operations that code can enumerate, (C) conditional assertions needing independent competent scientist judgment, (D) source/host/purpose legal permission *not scientifically inferable*, (E) emitted *learned-world* empirical objects downstream of source execution. State exact deciding evidence and whose authority, without inventing one.
+
+## Physical deliverables (not a mere essay)
+
+Under `WORKER_RETURNS/PYAT-R48-M48-INDEPENDENT-SCIENTIFIC-REQUIREMENTS-R1/` write:
+- `00_RETURN.md`: independent verdict, tested assumptions, highest-fatal architectural risk, concrete HQ action.
+- `01_DOWNSTREAM_SCIENTIFIC_REQUIREMENT_CENSUS.md`: purposes and actually required observational/learned/reverse/structural grain; actual consumers vs incomplete future requirements.
+- `02_SOURCE_ITEM_MEASUREMENT_AND_RISK_SET_LAW.md`: governed U, exactly what code can derive, what competent source science must decide, partial and unavailable.
+- `03_EXACT_SCIENTIFIC_OPERATION_GRAMMAR_AND_E_PRE.md`: classes, generation algorithm/pseudocode, closure, finite/safe eligibility, false mathematical combinability refusal and no-drop.
+- `04_AUTHORITY_RESOURCES_VS_RUNTIME_COMPILER_DECISION.md`: scientifically justified resource/static/compiler/hybrid alternatives, recommended solution per function not by convenience.
+- `05_F1_F8_POSITIONED_SUBJECT_STRUCTURAL_TEMPORAL_REQUIREMENTS.md`: crosswave/F6/F7/FF/N9/actor proper epistemic boundaries.
+- `06_ADVERSARIAL_ELIGIBILITY_CANARIES.csv`: at least twelve grounded classes, which invalid grant/route/selection/weight/state/denominator or inference must be denied or carried as unknown, observable falsifier, which current module consumes it.
+- `07_SCOPED_IMPLEMENTATION_BOUNDARY_AND_OWNER_DECISIONS.md`: exact next software vs new scientific resource creation, finite proposals, independence from inaccessible raw sources, local permission constraints and executable first original tranche without shrinking all35.
+- `08_EXACT_SOURCE_ANCHORS.json`: source path, pinned commit or blob, exact claim and adoption grade. Never substitute document name for content.
+
+**Scientific hostile proof:** The entire operation frontier must be prospectively determined by legitimate source-item and inference grammar (not by empirical frequencies), yet automatic discovery can discover conditional results inside it. Demonstrate a true nontrivial hostile comparison where (i) naive all-pairs invents illegitimate meaning and (ii) a too-conservative curated whitelist loses a valid minority/conditional or novel discovery, and show the principled generator resolution.
+
+**Original no-drop:** 35 waves remain; one lawfully permitted tranche may be first genuine execute. Unpermitted original `U/E_pre` count is NULL with cause, not zero. Preserve no coerced false authority from historical LiTS 8 I03 or WVS7 sourcefree/old-right evidence.
+
+**Final outcome requirement:** Deliver a specific scientific contract sufficiently precise for an actual programmer/authority specialist to build or create necessary components, plus exact objects that require separate human/scientific decisions—not an indefinite "issuer must supply U/E_pre" label. Scientific needs-first findings may **contradict** R48 lead; do not converge prematurely. Finish, commit and push exact HEAD; verify remote equality and clean branch; report tests, source grades and cost. Never alter production semantic authority.

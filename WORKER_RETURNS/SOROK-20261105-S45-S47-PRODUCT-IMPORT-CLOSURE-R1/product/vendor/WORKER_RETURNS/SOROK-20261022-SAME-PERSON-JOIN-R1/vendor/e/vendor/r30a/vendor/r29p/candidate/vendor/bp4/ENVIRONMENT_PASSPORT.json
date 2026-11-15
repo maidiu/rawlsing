@@ -1,0 +1,133 @@
+{
+  "schema": "SOROK_BP4_ENVIRONMENT_AND_EXECUTION_RECEIPT@1",
+  "branch": "agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1",
+  "sealed_startup": "e699fed59925a3d7b3f02805f85771ae2df32be8",
+  "checkout_head": "e699fed59925a3d7b3f02805f85771ae2df32be8",
+  "model": "DeepSeek V4.1-Flash, reasoning MAX, one accountable agent; no model/harness switch",
+  "harness": "OpenCode (user-selected)",
+  "runtime": {
+    "python": "3.11.3",
+    "python_full": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "pytest": "9.1.1",
+    "git": "git version 2.39.1",
+    "sqlite": "3.40.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "machine": "x86_64"
+  },
+  "capabilities": {
+    "git": true,
+    "python": true,
+    "pytest": true,
+    "sqlite": true,
+    "subprocess": true,
+    "cold_process": true
+  },
+  "executed": {
+    "pytest": "15 passed; junit/bp4_court.xml",
+    "cli_demo": "exit 0; logs/cli_demo.log",
+    "evidence_driver": "exit 0; evidence/{product_positive,cold_replay,fork_divergence,severance_trials,source_provenance}.json",
+    "cold_replay": "two fresh interpreter processes; clock/claims/c9/c8 equal",
+    "fork": "shared root true; branch divergence true",
+    "severances": "5/5 baseline -> fault -> restored"
+  },
+  "source_rows": [
+    {
+      "path": "bp4/bootstrap.py",
+      "git_blob": "ac049e0adc1dfe4a774bdbd3233b4a24ea3cd41a",
+      "sha256": "b6afdd1537942b41f1fb89d33a0c668230cf3c0b87b9ead79e2415b33789e6d3"
+    },
+    {
+      "path": "bp4/store.py",
+      "git_blob": "69a58f43dc70d320f2fc476eeac324c82c37ee59",
+      "sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b"
+    },
+    {
+      "path": "bp4/world.py",
+      "git_blob": "802c2fce13ed2bf71a6daa1f12a631a9985820f1",
+      "sha256": "848bb6d3e3e0375a11077a3cf6984509366863e81e9deb212fd30d7878782ddd"
+    },
+    {
+      "path": "bp4/canon.py",
+      "git_blob": "83e8075265f7f722f711d84c4c8e2451437d2d27",
+      "sha256": "31e0ff2022000f0b721b9b0ceb6eb358295de4442bb044b14d3f4b60b79e4276"
+    },
+    {
+      "path": "bp4/c10.py",
+      "git_blob": "94618b7a21ef71559e34778aec2315a30b5e09b9",
+      "sha256": "97a0b288443ea14884b962d3ef1a7d6e98a72c36a922f37f7190565854557fcb"
+    },
+    {
+      "path": "bp4/__init__.py",
+      "git_blob": "b64784eed1dd6621765e354ee70304ea854a5328",
+      "sha256": "18de93276f6a35e0cc850c0cbfb71df73cee67d29944e37b51c36f760016929f"
+    },
+    {
+      "path": "bp4/cli.py",
+      "git_blob": "ad60ffa4a7588c63422760b0070b39eba3f557b8",
+      "sha256": "d61b9e0526f0e49fd789a11cd6744d95dd4c1d496ddb9da14166e68eeb9a38c0"
+    },
+    {
+      "path": "bp4/product.py",
+      "git_blob": "69cb5d7416e36b6f100ab36ffda8a8d9a92db0a8",
+      "sha256": "a965b95fcd76d993c4fea5867b4c81af9b48f77f8023e34ad8d3e8222a2e46a7"
+    },
+    {
+      "path": "bp4/bp2_compat.py",
+      "git_blob": "889fa70091678ffe0951b704308cbc2ed4f8816d",
+      "sha256": "dc8581c6adf8cb5905ac30dbc4310fe74a4da50cd8055c88ee48bc056c1342d8"
+    },
+    {
+      "path": "bp4/perception.py",
+      "git_blob": "d4dbcc4f5c42709ba78a15ff8c3b2a41a679f2a5",
+      "sha256": "1499e43853915a3fd836a7ee42e40c62d592938b3ef32e54309d652388b0f292"
+    },
+    {
+      "path": "tests/conftest.py",
+      "git_blob": "4141fc4b4b41e157188b0599190084488c0666da",
+      "sha256": "bbac25115f9fbb9eb7ad1c8405e1a8624e8f11c3d5e8fe83adcb246645d06d97"
+    },
+    {
+      "path": "tests/test_bp4_severance.py",
+      "git_blob": "53a519f707295d7c06f77aa8f20b069acb6bc2d8",
+      "sha256": "7a4f5d6fed7ae9e26b5c0d7fd572440af1e0a7b5daf35eaf4edf9c2ce1941d16"
+    },
+    {
+      "path": "tests/test_bp4_conservation.py",
+      "git_blob": "e1d867de06f6febd68006db91b4b8e8b4a9ebd3f",
+      "sha256": "598bd9dfc139c062a7057abff4e9bae948e1c4479412a00b6c912373acef4473"
+    },
+    {
+      "path": "tests/test_bp4_product.py",
+      "git_blob": "50ff28d0c32fe00b4e60c5519a87d45230cb5b02",
+      "sha256": "5aed37ffedd6c6b2379a5c4bbbc8da27c93b3bf2964e999eaa48ced7530dae8d"
+    },
+    {
+      "path": "run_bp4.py",
+      "git_blob": "ca5dd9e62d1d7ee3d4d8b36861c1e8938062b78b",
+      "sha256": "f052457009d9a20818366779239dd977c05bba77192244d140f4f06cb56a3b23"
+    },
+    {
+      "path": "repro/evidence_driver.py",
+      "git_blob": "127c7eddf60a492b0c21efcf16dffe60b5544392",
+      "sha256": "364ebd26c0a571fa77deb763b9e0ffa95b29430b857b6574d80485838d1d3c1c"
+    },
+    {
+      "path": "repro/cold_worker.py",
+      "git_blob": "758e016df141ce60ac8c714debe391949538a11a",
+      "sha256": "931053bc5a6fef92303ccec444af58e727c1d7df3ee015010b42acfb4c89d7f2"
+    }
+  ],
+  "not_run": [
+    "native C12/C11/person",
+    "Pyat N11/N12",
+    "ADP007/010/016/017/019/020 issuance",
+    "CAN008 RULE_A / CAN011 RULE_T issuance",
+    "C8 D1/D2/D3 native trust",
+    "actual BP2 joined envelope (separate campaign)",
+    "production install",
+    "population inference"
+  ],
+  "write_scope": "WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1",
+  "secrets_or_private_data": false,
+  "sanitization": "no tokens, credentials, respondent data or non-repo absolute paths recorded"
+}

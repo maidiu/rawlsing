@@ -1,0 +1,28 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260915T1600-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260915T1240-0400",
+  "status":"ASTRA_W6_RETURNS_ADOPTED__W7_EIGHT_SUCCESSORS_ACTIVE",
+  "latest_substantive_hq_authority":"9880201829750a71e94b2a34ae350b488dc6736b",
+  "fanin_commit":"05167b4cd30dc751cce797a16baa397bc7d0457d",
+  "active_registry_commit":"9880201829750a71e94b2a34ae350b488dc6736b",
+  "completed_adopted":{"passes":["D01","D05","D06","D07","D08","D16","N04-R3"],"local_blockers":["D02","D12","D15"]},
+  "active_workers":[
+    {"id":"ASTRA-D01Q","branch":"agent/rabochii-prev3-astra-d01q-independent-requalification-r1","commission_tip":"9165aeb64d00c9f2a2be88af53e22ce0adb5121b","observed_head_at_checkpoint":"9165aeb64d00c9f2a2be88af53e22ce0adb5121b","grain":"PSC04_M02_REPAIR_ZERO_REPAIR_INDEPENDENT_QUALIFICATION_ONLY","library_access":"NO","pass_wake":"D04_AFTER_D03","blocker_effect":"D01Q_D04_LOCAL_ONLY","hard_forbidden":["REPAIR","SEMANTIC_WIDENING","STRUCTURAL_OR_CAUSAL_PROMOTION","PERSON_STATE","OBL063_REVIVAL"]},
+    {"id":"ASTRA-D09","branch":"agent/rabochii-prev3-astra-d09-calibration-disposition-r1","commission_tip":"1826ab473e839c3bb6f1cdcca45f8d178f8a9124","observed_head_at_checkpoint":"1826ab473e839c3bb6f1cdcca45f8d178f8a9124","grain":"PSC06_M10_M01_EXPLICIT_VALUE_MODE_CALIBRATION_DISPOSITION_ONLY","library_access":"NO","pass_wake":"D10","blocker_effect":"D09_D10_LOCAL_ONLY","hard_forbidden":["NUMERIC_INFERENCE","RULE_CURRENTNESS","ACTOR_FACT","PERSON_STATE"]},
+    {"id":"ASTRA-D17","branch":"agent/rabochii-prev3-astra-d17-physical-comparison-r1","commission_tip":"601225c16f92bf5cc24ee7d4aafd22c0b554dbb5","observed_head_at_checkpoint":"601225c16f92bf5cc24ee7d4aafd22c0b554dbb5","grain":"C09_FROZEN_TWO_SOURCE_PARITY_FIRST_PHYSICAL_COMPARISON_ONLY","library_access":"EXACT_ONLY","pass_wake":"BOUNDED_PHYSICAL_RESULT","blocker_effect":"D17_LOCAL_ONLY","hard_forbidden":["WORKLOAD_SUBSTITUTION","ARCHITECTURE_RETIREMENT","PROJECT_WIDE_RANKING"]},
+    {"id":"N04-R4A","branch":"agent/rabochii-prev3-n04r4a-response-semantics-binding-r1","commission_tip":"4b1883aa6520c0f5a899d4cd119a2827537340d7","observed_head_at_checkpoint":"4b1883aa6520c0f5a899d4cd119a2827537340d7","grain":"N04_R3_18012_RESPONSE_CATEGORY_SEMANTICS_REF_BINDING_R1_ONLY","library_access":"NO","pass_wake":"N04_RERELEASE_SUBSETS","blocker_effect":"RESPONSE_SEMANTICS_IDS_ONLY","hard_forbidden":["TEXT_LABEL_INFERENCE","NEW_SEMANTIC_AUTHORITY","JURISDICTION_COLLAPSE"]},
+    {"id":"N04-R4B","branch":"agent/rabochii-prev3-n04r4b-routing-binding-r1","commission_tip":"d73db166bd7bc06fda38c9c2347bbba66014fc1b","observed_head_at_checkpoint":"d73db166bd7bc06fda38c9c2347bbba66014fc1b","grain":"N04_R3_159_ROUTING_APPLICABILITY_REF_BINDING_R1_ONLY","library_access":"NO","pass_wake":"N04_RERELEASE_SUBSETS","blocker_effect":"ROUTING_IDS_ONLY","hard_forbidden":["ROUTING_AS_SEMANTIC_CURRENTNESS","TEXT_LABEL_INFERENCE","NEW_ROUTING_AUTHORITY"]},
+    {"id":"N04-R4C","branch":"agent/rabochii-prev3-n04r4c-candidate-kind-adjudication-r1","commission_tip":"39ab174f7aa86be52010e7046e1cbec204c523aa","observed_head_at_checkpoint":"39ab174f7aa86be52010e7046e1cbec204c523aa","grain":"N04_R3_42_AUTHORITY_OWNED_CANDIDATE_KIND_DISPOSITION_R1_ONLY","library_access":"NO","pass_wake":"N04_RERELEASE_OR_TYPED_RESIDUAL","blocker_effect":"42_IDS_ONLY","hard_forbidden":["COMPILER_DEFAULT_AS_AUTHORITY","STRUCTURAL_ADMISSION_MINT","MECHANISM_RULE_MINT","MODEL_JUDGMENT"]},
+    {"id":"ASTRA-D02-R2","branch":"agent/rabochii-prev3-astra-d02r2-governed-source-runtime-r1","commission_tip":"27fd6658955d888da37cc24acfc98540eae26508","observed_head_at_checkpoint":"27fd6658955d888da37cc24acfc98540eae26508","grain":"PSC04_PRE553_ACCEPTED_PYREADSTAT_RUNTIME_SURFACE_RECOVERY_R1_ONLY","library_access":"NO","pass_wake":"D03_CAPABILITY_PATH","blocker_effect":"D02_D03_D04_LOCAL_ONLY","hard_forbidden":["DECODER_SUBSTITUTION","PANDAS_FALLBACK","LEARNED_RESULT_EXECUTION"]},
+    {"id":"ASTRA-D19","branch":"agent/rabochii-prev3-astra-d19-independent-producer-qualification-r1","commission_tip":"bdb82e3ed770a35af4082d06d32950309a219bab","observed_head_at_checkpoint":"bdb82e3ed770a35af4082d06d32950309a219bab","grain":"PREV3_M05_EXACT_EXISTING_PRODUCER_INDEPENDENT_QUALIFICATION_ONLY","library_access":"NO","pass_wake":"GENERIC_PRODUCER_QUALIFIED_ONLY","blocker_effect":"D19_LOCAL_ONLY","hard_forbidden":["REPAIR","CLAIM_SPECIFIC_TOPOLOGY","SIG004_RESCUE","PERSON_STATE"]}
+  ],
+  "dependency_graph":{"D10":{"status":"WAIT_D09","accepted":["D05","D06","D07","D08"]},"D03":{"status":"WAIT_D02_R2"},"D04":{"status":"WAIT_D01Q_AND_D03"},"D13":{"status":"BLOCKED_D12_REAL_WITNESS"},"D15_ROUTE":{"status":"BLOCKED_PRODUCER_FAMILY_BINDING"}},
+  "n04_r3_residuals":{"response_category_semantics_ref":18012,"routing_applicability_ref":159,"candidate_kind":42,"review_required":41,"typed_unresolved":22},
+  "decision_ledger":{"through":"HQD-2026-09-15-034","durable_supplements":["98279580ffcccdd764663107aa65835fb6929228","a806d788d5a2ae25f65cc89f761ca340e80873bc","05167b4cd30dc751cce797a16baa397bc7d0457d","9880201829750a71e94b2a34ae350b488dc6736b"]},
+  "boundaries":["NO_ALL_LANES_BARRIER","LOCAL_BLOCKER_ONLY","NO_NEW_GENERIC_ARCHITECTURE_ABSENT_PROVED_WORKLOAD_DEFECT","PRE_V3_OBJECTIVE_WORLD_ONLY","V3_OWNS_PERSON_STATE","OBL063_QUARANTINED","HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"],
+  "terminal":"W7_EIGHT_SUCCESSORS_ACTIVE__PARALLEL_REAL_CONSTRUCTION_CONTINUES"
+}

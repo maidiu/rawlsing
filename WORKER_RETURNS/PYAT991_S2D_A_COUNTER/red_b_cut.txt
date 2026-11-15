@@ -1,0 +1,98 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_________ test_nonuniverse_scope_refs_are_preserved_not_over_narrowed __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-679/test_nonuniverse_scope_refs_ar0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106c41d10>
+
+    def test_nonuniverse_scope_refs_are_preserved_not_over_narrowed(
+        tmp_path, monkeypatch,
+    ):
+        tag = "S2D-A-SCOPE-COUNTER"
+        source, candidate = _source_with_candidate(
+            monkeypatch, tag,
+            [{"id": "R1", "responses": {"Y": 0}},
+             {"id": "R2", "responses": {"Y": 1}}],
+        )
+        qauth, predicate, query, base_catalog = _i03_parts(source, tag)
+        # The exact admitted release is a lawful additional scope reference; it is
+        # not a foreign universe and does not select a second source.
+        extra = (exact_ref(source["release_ref"]),)
+        scoped_predicate = _with_extra_scopes(predicate, extra)
+        scoped_query = _with_extra_scopes(query, extra)
+        # Make the query condition exactly bind the extra-scoped predicate.
+        fields = dict(scoped_query.semantic_fields)
+        fields["condition_predicate_ref"] = scoped_predicate.ref
+        dependency_refs = tuple(
+            sorted(
+                {*(exact_ref(value) for value in scoped_query.dependency_refs),
+                 scoped_predicate.ref},
+                key=lambda ref: ref.key,
+            )
+        )
+        scoped_query = EmpiricalQuerySpec(
+            typed_state=scoped_query.typed_state,
+            authority_snapshot_refs=scoped_query.authority_snapshot_refs,
+            dependency_refs=dependency_refs,
+            producer_replay_locator_or_reference_root=(
+                scoped_query.producer_replay_locator_or_reference_root
+            ),
+            **fields,
+        )
+        catalog = _catalog_with(
+            authorities=base_catalog.authorities,
+            predicate=scoped_predicate, query=scoped_query,
+        )
+        oracle = native._run(source, qauth, scoped_predicate, scoped_query)
+        assert oracle.facts[0].typed_state == "SUPPORTED"
+        assert oracle.facts[0].raw_denominator_support == 2
+    
+        root, receipt = s2c._cold(
+            tmp_path, candidate, source["universe"].ref, "scoped-counter",
+        )
+        admission = _admission(root, receipt, source, catalog)
+>       observed = execute_saved_i03(
+            admission, query_ref=scoped_query.ref,
+            predicate_ref=scoped_predicate.ref,
+        )
+
+rawlsing_next/tests/test_pyat991_s2d_a_counter.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_saved_workload_integration.py:35: in execute_saved_i03
+    return admission.execute_i03(query_ref=query_ref, predicate_ref=predicate_ref)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_saved_c11_admission.py:382: in execute_i03
+    self._require_query_scope(query)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_saved_c11_admission.SavedC11Admission object at 0x110d5a840>
+query = EmpiricalQuerySpec(object_id='urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d5a6b7e592268199d7ae7bce9a79577b70781dc2fdd6cdd1af41bf0313b5b404', typed_state='QUERY_AUTHORIZED_RESOLVABLE')
+
+    def _require_query_scope(self, query: Any) -> None:
+        universes = tuple(
+            sorted(
+                {
+                    exact_ref(value, "query.empirical_universe_refs")
+                    for value in query.empirical_universe_refs
+                },
+                key=lambda ref: ref.key,
+            )
+        )
+        if universes != (self._universe_ref,):
+            raise SavedC11AdmissionError(
+                "saved consumer query is not the exact admitted estate universe"
+            )
+        scopes = {
+            exact_ref(value, "query.scope_refs").key
+            for value in getattr(query, "scope_refs", ())
+        }
+        if scopes != {self._universe_ref.key}:
+>           raise SavedC11AdmissionError(
+                "saved consumer query scope is not the exact admitted estate universe"
+            )
+E           rawlsing_next.pre553_saved_c11_admission.SavedC11AdmissionError: saved consumer query scope is not the exact admitted estate universe
+
+rawlsing_next/pre553_saved_c11_admission.py:315: SavedC11AdmissionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pyat991_s2d_a_counter.py::test_nonuniverse_scope_refs_are_preserved_not_over_narrowed
+1 failed, 1 passed in 1.18s

@@ -1,0 +1,34 @@
+name: Pyat Programma N9-to-N10W sourcefree first-consumer
+on:
+  push:
+    branches:
+      - agent/pyat-programma-hq-n10w-consumer-integration-r1
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_n9_n10w_progressive_candidate.py'
+      - 'rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py'
+      - '.github/workflows/pyat-programma-n10w-sourcefree.yml'
+permissions:
+  contents: read
+jobs:
+  n10w-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test harness only
+        run: python -m pip install pytest
+      - name: Execute inherited E03 actual owners with sourcefree fixed oracle
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py -q -o addopts='' --junitxml=pyat-programma-n10w-junit.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-programma-n10w-sourcefree-tests
+          path: pyat-programma-n10w-junit.xml
+          if-no-files-found: ignore

@@ -1,0 +1,139 @@
+{
+  "actual_repairs": {
+    "pre553_issued_workload": "capture_joined_checkpoint now supports mixed query+discovery partial outputs instead of assuming every pending output is a query; this was the exact R04 composite partial-prefix defect.",
+    "pre553_universal_world_binding": "R05->P41 wrapper now consumes actual STEP conditioner identity instead of hard-coded X=1; fixed default test conditions unchanged."
+  },
+  "base_commit": "8779504a638ff39d6904ed2faf5a718242084c4e",
+  "boundaries": [
+    "TEST_ONLY synthetic nonrespondent source and modeled temporal pair; not original respondents, source science, F5/F6/F7 science, or production adoption.",
+    "No source reader/compiler/decoder/downstream engine rebuilt; no new worker/model/provider.",
+    "No original source/respondent reads; no N11/N12/Sorok/J52W52/CI/prod effects.",
+    "No claim of independent acceptance."
+  ],
+  "branch": "agent/pyat-same-source-resume-consumer-20261103-r1",
+  "code_changes": [
+    {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "sha256": "0e3e38233e142214e0ce4e733f6eb252b95136a21d837426ae67361ba172e121"
+    },
+    {
+      "path": "rawlsing_next/pre553_universal_world_binding.py",
+      "sha256": "59f97493d9ce786d1d97837bed9ff1432d9a8beebd83e938a47fba993fdbcfac"
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_world_binding.py",
+      "sha256": "793d11066b2d8e20e3770cfc1bfe45a4ec20d0eee42155410ffb2f8d5e19a6ab"
+    }
+  ],
+  "commands": {
+    "full_related_suite": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_workload_custody.py rawlsing_next/tests/test_universal_world_binding.py rawlsing_next/tests/test_universal_learned_consumer.py -q -o addopts='' --junitxml=WORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/junit.xml",
+    "new_bridge_only": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41 -q -o addopts=''"
+  },
+  "commission": "WORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/COMMISSION.md",
+  "lineage_witness": {
+    "conditioners": [
+      [
+        "B",
+        1
+      ]
+    ],
+    "consumer_result_hash": "2252b32a93579d476558d46091117e4ea5d78685131f773497e1488d8105ec37",
+    "evidence_ref": {
+      "content_hash": "d5fc26289c483758d9d7d9484208da8a974a55a1c0bedfbafd80d3b94d310d4f",
+      "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+      "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:d5fc26289c483758d9d7d9484208da8a974a55a1c0bedfbafd80d3b94d310d4f"
+    },
+    "kind": "ONE_SYNTHETIC_SOURCE_RELEASE_UNIVERSE_THROUGH_R04_R05_P41",
+    "learned_receipt_ref": {
+      "content_hash": "405ade2cf95e22da6e0f423c802db57454a0fab7d6beba90e0b279bc03f87254",
+      "kind": "LearnedWorldCompositionReceipt@1.0.0",
+      "object_id": "urn:rawlsing:pre553:i4:composition-receipt:sha256:405ade2cf95e22da6e0f423c802db57454a0fab7d6beba90e0b279bc03f87254"
+    },
+    "m1_disposition_ref": {
+      "content_hash": "88309e21f0a180a4862942ac5c701e07b85ee952bce7b4e8af11be510718e5a9",
+      "kind": "LearnedEmpiricalDisposition@1.0.0",
+      "object_id": "urn:rawlsing:pre553:m1:LearnedEmpiricalDisposition:sha256:88309e21f0a180a4862942ac5c701e07b85ee952bce7b4e8af11be510718e5a9"
+    },
+    "m2_release_ref": {
+      "content_hash": "321db5db952e5599733e7704c915b6f8621c56e209c4d2c91f7e7def86db0855",
+      "kind": "LearnedProductReleaseCore",
+      "object_id": "urn:rawlsing:pre553:m2:release:sha256:321db5db952e5599733e7704c915b6f8621c56e209c4d2c91f7e7def86db0855"
+    },
+    "p41_temporal_view_hash": "1da2ddff797668d841229d71e6ba271be275d2288efcebbf8fcb2904edeea316",
+    "r04_producer_predicate_ref": {
+      "content_hash": "9c35dbb4813764857a1945431af27c2f6e07aed0ce84acbde2c01e9723754424",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:9c35dbb4813764857a1945431af27c2f6e07aed0ce84acbde2c01e9723754424"
+    },
+    "r04_producer_query_ref": {
+      "content_hash": "dafab1dd5a4a112706b71385d979ff0190506516744818090c6a41f6b8b5dea0",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:dafab1dd5a4a112706b71385d979ff0190506516744818090c6a41f6b8b5dea0"
+    },
+    "r04_route_replay_identity": "9784c4d95e4b60a882c2cb35e434402b9db4611ec4d5f54e3a97614715abfb4b",
+    "r04_selected_receipt_ref": {
+      "content_hash": "072bf6e08466928fdd0784826cba7d51ba29905d87dbff1ce94554e772a69d47",
+      "kind": "DiscoveryResultReceipt@1.0.0",
+      "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:072bf6e08466928fdd0784826cba7d51ba29905d87dbff1ce94554e772a69d47"
+    },
+    "release_ref": {
+      "content_hash": "1e4dfd00b2f9630a382642c3a4b99a3346bf64ab4b2d4ffce1fdb81782c922c6",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "source_rows_hash": "833f8afd88dec4bf9f7c07ab5dac5d789be9b802270e7d4ddf8993dbabd8685f",
+    "source_universe_ref": {
+      "content_hash": "b820786234c76b55218976ecf35f91f97a00c017f6f42412847f011b6da90922",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:b820786234c76b55218976ecf35f91f97a00c017f6f42412847f011b6da90922"
+    },
+    "t0_routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "t1_routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "RESOURCE_CONSTRAINED",
+      "training": "BLOCKED_BY_MODELED_RULE"
+    },
+    "trace_path": "WORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/TRACE.json",
+    "trace_sha256": "e53906f58c3cf9c75ef9be6294ba43b03dd5b15ded7f5b533de89326cdcec690"
+  },
+  "mode": "EXISTING_AUTHOR_SAME_SESSION__ONE_BOUNDED_BRIDGE",
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "negative_evidence": {
+    "actual_upstream_evidence_severance": "R05_N10E_EVIDENCE_BINDING_MISMATCH",
+    "restored_view_hash": "1da2ddff797668d841229d71e6ba271be275d2288efcebbf8fcb2904edeea316",
+    "revoked_refused_before_native": "WorkloadAdmissionError",
+    "wrong_source_refused_before_native": "WorkloadAdmissionError"
+  },
+  "next": "Distinct independent reviewer under existing law inspects only the same-source bridge and the two narrow repairs; author does not self-accept.",
+  "positive_evidence": [
+    "R04 mixed query+discovery workload reached a real partial prefix with one completed unit; checkpoint state PARTIAL.",
+    "Cold restore plus resume completed the pending unit without rerunning the completed unit.",
+    "Resumed output_refs, receipt count, route replay identity and empirical fact refs equal the uninterrupted full execution.",
+    "Actual resumed RouteBProductionResult object graph fed existing M1; actual LearnedWorldCompositionResult fed existing R05 and unchanged P41.",
+    "Actual P41 view is R05_WORLD_SELECTED_VIEW with temporal_changed=True and T0 training ELIGIBLE, T1 training BLOCKED_BY_MODELED_RULE."
+  ],
+  "proof_limits": [
+    "Fresh-process replay reaches the same positive P41 view state and same upstream source SHA / R04 replay identity / selected receipt, but exact downstream M1/consumer/view hashes are not asserted bit-identical across processes because the test-only M1 evidence ordering is not byte-stable in this synthetic mixed graph; this is recorded rather than hidden.",
+    "The R04 composite workload is constructed from existing synthetic R03 query and governed discovery owners on one synthetic source; it is not an original-source workload.",
+    "No context structural pooling, cross-unit linked query, original temporal pair, or original scientific issuance is granted or claimed."
+  ],
+  "reused_existing_owners": [
+    "R03 compile_universal_workload/compile_governed_frontier",
+    "R04 execute_issued_workload/Batch/capture_joined_checkpoint/restore_joined_workloads",
+    "R05 build_m1_adjudication_input_bundle/adjudicate_learned_empirical/compose_learned_world",
+    "existing actual pinned P41 runtime f27d1101048638bba395143a48efb7ef00bfcda4"
+  ],
+  "schema": "PYAT_SAME_SOURCE_RESUME_CONSUMER_RETURN@1",
+  "scope": "TEST_ONLY_SYNTHETIC_SOURCEFREE_R04_JOINED_TO_R05_LEARNED_TO_ACTUAL_UNCHANGED_P41",
+  "status": "CANDIDATE__TEST_ONLY__INDEPENDENT_REVIEW_REQUIRED",
+  "test_results": {
+    "full_related_suite": "34 passed in 256.88s",
+    "junit_xml_sha256": "f731a3e69e5ccc9d76b2970a234b39e029c4168a34a9fdee8480e0ef1e531a00",
+    "new_bridge_only": "1 passed in 48.63s",
+    "pytest_log_sha256": "675c8ac9eda22a6f426cf5c7f15caf2068ea9e0ef1a934c9fd6d8f22e83259f2"
+  }
+}

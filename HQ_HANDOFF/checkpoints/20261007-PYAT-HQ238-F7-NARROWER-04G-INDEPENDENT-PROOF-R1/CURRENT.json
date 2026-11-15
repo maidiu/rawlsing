@@ -1,0 +1,48 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261007-PYAT-HQ238-F7-NARROWER-04G-INDEPENDENT-PROOF-R1",
+  "decision": "HQD-2026-10-07-238",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261007-PYAT-HQ237-TWO-RETURNS-N10E-R3-REVIEW-F7-EVIDENCE-PENDING-R1",
+  "f7_return": {
+    "branch": "agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1",
+    "head": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+    "disposition": "F7_COORDINATED_CUSTODY_SUBSTITUTION_INDEPENDENTLY_REPRODUCED__ARCHITECTURE_DECISION_REQUIRED",
+    "blocker": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+    "status": "OPEN__SINGLE_CELL_REBIND_WITH_VICTIM_ANCHORS_FORGES",
+    "independent_runtime": "GOVERNED_CPYTHON_3_11_3",
+    "production_mutation": false
+  },
+  "f7_architecture": {
+    "documentary_return_head": "7a9a0a5917b888c15b3ead051fb116b7549b37c9",
+    "full_adoption": false,
+    "decision": "EXACT_TCB_AND_END_TO_END_DESIGN_PENDING"
+  },
+  "active_lanes": [
+    {
+      "id": "F7_TRUSTED_DECISION_BOUNDARY_DESIGN",
+      "branch": "agent/rabochii-pyat-hq238-f7-end-to-end-trusted-decision-boundary-r1",
+      "commission_tip": "16ee0054622077c84f815c71c04468bc39411d61",
+      "agent": "Browser/GitHub",
+      "model": "GPT-5.6 Sol High",
+      "status": "NEW__NEEDS_LAUNCH",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ238-F7-END-TO-END-TRUSTED-DECISION-BOUNDARY-R1/00_COMMISSION.md"
+    },
+    {
+      "id": "N10E_C1_R3_AUTHORITY_HOSTILE_REVIEW",
+      "branch": "agent/reviewer-pyat-hq237-n10e-c1-model-authority-r3-r1",
+      "commission_tip": "3b3ffafc245dceaf2edee84c4ccc59b508da69a5",
+      "agent": "Browser/GitHub",
+      "model": "GPT-5.6 Sol High",
+      "status": "EXISTING__NOT_RETURNED",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ237-N10E-C1-MODEL-AUTHORITY-R3-HOSTILE-REVIEW-R1/00_COMMISSION.md"
+    }
+  ],
+  "holds": {
+    "f7": "NO_FULL_ADOPTION_OR_NATIVE_IPC_IMPL_OR_UNAUTHORIZED_TCB_DOWNGRADE",
+    "n10e": "NO_R3_ADOPTION_OR_IMPL_PENDING_HOSTILE_GREEN_PLUS_EXPLICIT_HQ_ADOPTION",
+    "n6": "ONLY_LOCAL_CONTEXT__OC05_NONCURRENT"
+  },
+  "next_action": "RUN_F7_HQ238_END_TO_END_DESIGN_IN_PARALLEL_WITH_EXISTING_N10E_HQ237_R3_HOSTILE_REVIEW__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

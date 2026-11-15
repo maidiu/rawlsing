@@ -1,0 +1,154 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261008-PYAT-HQ255-FIVE-HQ254-RETURNS-DEEPSEEK-P01-AND-EE14-T1-R1",
+  "decision": "HQD-2026-10-08-255",
+  "date": "2026-10-08",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+  "inherited_handoff_commit": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+  "decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ255_ALL_FIVE_HQ254_RETURNS_ROUTED_FRONTIER_R1.md",
+  "returns": [
+    {
+      "lane": "HQ254_R01_T01_INDEPENDENT_STATIC",
+      "commission_tip": "7d7c44c94196d5e66d21e45d78c40890ac25b8fa",
+      "head": "5a5d30bbf7018c5fe2e0505b9050d59959ac05a3",
+      "disposition": "STATIC_T0_SUPPORTED__PERMISSION_DEFECT_CONFIRMED__NO_INDEPENDENT_RUNTIME"
+    },
+    {
+      "lane": "HQ254_P01_PERMISSION_CANDIDATE",
+      "commission_tip": "428be7595fce3ecf6ae3cb37852bee884d9ce2e1",
+      "head": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+      "disposition": "SOURCE_PLUS_TEST_CANDIDATE_QUARANTINED__POST_CANDIDATE_REVIEW_REQUIRED"
+    },
+    {
+      "lane": "HQ254_U01_EE14_USE",
+      "commission_tip": "2d89dc1f552a5c5721cbbebd34a0976be53ce024",
+      "head": "7784ed5479945aa63f61f8b6d525f22981c07db8",
+      "disposition": "NO_EXACT_T1_GRANT_IDENTIFIED_IN_BOUNDED_SEARCH__NARROW_NORMATIVE_DECISION"
+    },
+    {
+      "lane": "HQ254_S01_SECOND_FAMILY",
+      "commission_tip": "2b985362e207d813bfb3506dbaef6748d820bc5e",
+      "head": "69566e8fd84d78ffa500bc23bb9c88ce32d7fb01",
+      "disposition": "LITS_I_Q301_RETAINED_JOINT_CANDIDATE_ONLY__FF02_NO_STRUCTURAL_ADMISSION"
+    },
+    {
+      "lane": "HQ254_E01_AUSTRIA_A048",
+      "commission_tip": "a264c028a7921bb92e5ab56b4d79399f4149a09f",
+      "head": "111adb35cac4a04041f20422c4593a2feee3d1d4",
+      "disposition": "A048_SCIENTIFICALLY_PLAUSIBLE__COUNTRY_DESIGN_MEASUREMENT_SOURCE_VERSION_PAIR_AUTHORITY_UNPROVED"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "HQ255_R01_DEEPSEEK_P01_INDEPENDENT",
+      "branch": "agent/deepseek-harness-pyat-hq255-p01-permission-candidate-independent-review-r1",
+      "commission_tip": "d44678d49ae81da423c5c91c53db3ec7e31a3ccf",
+      "parent_sha": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+      "agent": "DeepSeek-Harness / OpenCode",
+      "model": "DeepSeek V4.1 Flash (effective provider ID verify on host)",
+      "machine": "governed Mac, independent sparse shared-store worktree",
+      "sparse": "SPARSE_REQUIRED__EXACT_01_MANIFEST",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "library_access": "NO",
+      "return": "WORKER_RETURNS/PYAT-HQ255-R01-P01-POST-CANDIDATE-INDEPENDENT-HOSTILE-REVIEW-R1/",
+      "pass_wake": "INDEPENDENT_CODE_AND_RUNTIME_VERDICT_ON_EXACT_P01_CANDIDATE__NO_SELF_ADOPTION"
+    },
+    {
+      "id": "HQ255_N01_EE14_T1_NORMATIVE",
+      "branch": "agent/rabochii-pyat-hq255-ee14-source-free-t1-selected-use-normative-proposal-r1",
+      "commission_tip": "0aa79a0dc7b4004607e3f4f0327bcd2ceeddf5cc",
+      "parent_sha": "eece4356dd4afb5ba5e6ebe91cd078061f461fb3",
+      "agent": "Browser/GitHub semantic documentary",
+      "model": "GPT-6 Sol High",
+      "machine": "Browser GitHub, no local worktree required",
+      "sparse": "NOT_APPLICABLE_REMOTE_DOCUMENTARY",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "library_access": "NO",
+      "return": "WORKER_RETURNS/PYAT-HQ255-N01-EE14-T1-FIXTURE-USE-NORMATIVE-PROPOSAL-R1/",
+      "pass_wake": "EXACT_EE14_FIXTURE_USE_POSITIVE_DRAFT_OR_HOLD_TO_HQ__NO_GRANT"
+    }
+  ],
+  "holds": {
+    "p01": "P01_BENCH_AND_SOURCE_CANDIDATE_NOT_ADOPTED__R01_INDEPENDENT_POST_CANDIDATE_REVIEW_REQUIRED",
+    "t1": "EE14_NEW_USE_NOT_YET_APPROVED__G1_C1_PRODUCER_TRUST_OPEN__G2_PERMISSION_REVIEW_OPEN",
+    "source": "NO_NEW_RAW_OR_RETAINED_3P4GB_SOURCE_READ__Q86C_REAL_TRIPLE_AND_A048_PAIR_UNISSUED",
+    "second_family": "LITS_I_SOURCE_NATIVE_AND_FF_ADMISSION_NOT_WARRANTED",
+    "evs": "AUSTRIA_1990_PRIMARY_DESIGN_WEIGHT_VERSION_AND_MEASUREMENT_GAP",
+    "f7": "F7_RR04G_NATIVE_R3_HQ248_OPEN_001_T1_TRUST_UNBUILT",
+    "n10e": "AT07_NO_INDEPENDENT_ROOT_EPOCH_OR_REGISTERED_POSITIVE",
+    "v3": "ACTOR_DEFERRED"
+  },
+  "dependency_graph": [
+    {
+      "id": "P01_BINDER_IDENTITY_FIX",
+      "status": "QUARANTINED_CANDIDATE_R01_DEEPSEEK_REVIEW_ISSUED",
+      "prerequisites": [
+        "FROZEN_P01_SOURCE_AND_TESTS",
+        "INDEPENDENT_REVIEWER_AND_HOST"
+      ],
+      "pass_wake": "INDEPENDENT_ACCEPT_OR_NARROW_REPAIR_WITH_OWN_EXECUTION_RECEIPTS",
+      "forbidden": [
+        "SELF_ADOPTION",
+        "INFER_EE14_GRANT"
+      ]
+    },
+    {
+      "id": "EE14_SOURCE_FREE_T1_USE",
+      "status": "N01_NORMATIVE_PROPOSAL_ISSUED__NO_GRANT",
+      "prerequisites": [
+        "U01_BOUNDED_ADOPTED_USE_SEARCH",
+        "T01_T0_REAL_RUN"
+      ],
+      "pass_wake": "EXACT_MODEL_USE_OWNER_DECISION_AND_TRUSTED_INGRESS_SERVICE_CONTRACT",
+      "forbidden": [
+        "GRANT_BY_CLASS_FIELD",
+        "IMMEDIATE_WORLD_CLAIM"
+      ]
+    },
+    {
+      "id": "LITS_I_SECOND_FAMILY_STRUCTURAL",
+      "status": "SOURCE_BACKED_RETAINED_NO_STRUCTURAL_ADMISSION",
+      "prerequisites": [
+        "EXACT_RETAINED_QUERY_PREIMAGE_AND_ROLE",
+        "SCOPED_SOURCE_FIELD_FORGE_PERMISSION"
+      ],
+      "pass_wake": "SEPARATE_SOURCE_CUSTODY_AND_AUTHORITY_WARRANT_FIRST",
+      "forbidden": [
+        "RAW_DTA",
+        "LOCAL_3P4GB_CHECKPOINT_UNAUTHORIZED"
+      ]
+    },
+    {
+      "id": "EVS_A048_TEMPORAL",
+      "status": "SCIENTIFICALLY_PLAUSIBLE_DOCUMENTARY_ONLY",
+      "prerequisites": [
+        "AUSTRIA_1990_COUNTRY_METHOD",
+        "FROZEN_SHA_GESIS_VERSION_BRIDGE",
+        "COMPETENT_ESTIMAND",
+        "PAIR_POSITIVE_RELATION"
+      ],
+      "pass_wake": "PRIMARY_METHOD_VERSION_PACKET_THEN_SEPARATE_REVIEW",
+      "forbidden": [
+        "ASSUME_COMPARABLE",
+        "SOURCE_EXECUTE"
+      ]
+    },
+    {
+      "id": "E1_E2_WORLD_AND_ACTOR",
+      "status": "NOT_READY",
+      "prerequisites": [
+        "SOURCE_BACKED_RICH_RESULT",
+        "TWO_STRUCTURAL_FAMILIES",
+        "AUTHORIZED_TEMPORAL_PAIR_AND_WORLD_CONSUMER"
+      ],
+      "pass_wake": "SEPARATE_GOVERNED_END_TO_END",
+      "forbidden": [
+        "V3",
+        "FALSE_PASS"
+      ]
+    }
+  ],
+  "next_action": "LAUNCH_HQ255_DEEPSEEK_R01_AND_SOL_N01_IN_PARALLEL__INDEPENDENT_REVIEW_P01_AND_EE14_USE_PROPOSAL"
+}

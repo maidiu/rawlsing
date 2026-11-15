@@ -1,0 +1,50 @@
+{
+  "schema": "SOROK_P3_FINAL_INDEPENDENT_REVIEW_SOURCE_CLOSURE@1",
+  "reviewcut": "d1a6817b3210880812f68090bcd2b1109ec68ef9",
+  "reviewcut_parent": "a04f9b0f110c3cfb80473e2fbc02cba18a99a4a9",
+  "reviewcut_subject": "Preserve bounded two-batch intake and delegate complete proof execution",
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "protected_is_ancestor": true,
+  "branch": "review/sorok-p3-final-runtime-20261106-r1",
+  "review_evidence_root": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/final-independent-review/",
+  "runtime_hashes": {
+    "p3/__init__.py": "873181592c5ef91fc9ad1c1db46b2a2f8e424bff46b2c454992fd39ca5827653",
+    "p3/compression.py": "49df70d60cbc3b37ec3e484c5a7c64e14ac174faafe8fcaa02e5428c583be4f4",
+    "p3/p3_owner.py": "b7b508637258907e4d18df3030b45e040fff83dc6adc992985922e50a9e009f7",
+    "p3/projections.py": "ca405dda778191537ce38b0b63ff6b6ba8104dcd1ea676d6b458d454b362005b",
+    "p3/state_store.py": "76e5ee55fd8e5b4c9b0fefa48737644163c7794b687f4c0e342d0eba63eb252a",
+    "p3/test_rules.py": "27272cd43c26b6aa114ee65c97ca07eb56accecbd440841c29696b98e203b4b4",
+    "tests/p3_fixture_support.py": "5d2dfa081ae9152cbc3fc955d4f3aebebd5f1205f585bab07f655bdae57e550c",
+    "tests/test_p3_vertical_slice.py": "e969d30181d10879b3cd5b73260e2e52121646614c0582144d46232c178d1a1b",
+    "tests/test_p3_owner.py": "4f627eba7ae61a8a670523f1e8ac612c14207649b21b4d93545405827475d660",
+    "tests/test_state_store.py": "313a73fcdbb7e83dcf771f34a6f1fb6f420efed276a4e4996e6e34c9fb7a1e20",
+    "run_p3_vertical_slice.py": "49450f2f8d40187aba956d0368b72ddc187f1261d13dc047e78ef834eb6f770f"
+  },
+  "inherited_engine_hashes": {
+    "P2Owner": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+    "engine.py": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+    "contracts.py": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "model_cycle.py": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5"
+  },
+  "scratch_source": {
+    "path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-p3-final-scratch",
+    "origin": "git archive HEAD from reviewcut d1a6817",
+    "test_or_runtime_edits": false,
+    "scratch_diff": "EMPTY",
+    "note": "The scratch copy was used only for execution and diagnostic probes. No reviewed runtime/test file was edited in the review branch or source."
+  },
+  "source_reconciliation": {
+    "reviewcut_is_frozen_startup": true,
+    "protected_unchanged": true,
+    "previous_author_evidence_preserved": true,
+    "author_full13_and_inherited_regression_are_separate_lanes": true,
+    "this_review_evidence_is_independent_not_author_matrix": true
+  },
+  "commands": [
+    "git rev-parse HEAD -> d1a6817b3210880812f68090bcd2b1109ec68ef9",
+    "git show -s --format='%H %P %s' HEAD -> d1a6817... a04f9b0... Preserve bounded two-batch intake...",
+    "git merge-base --is-ancestor c852d7516e23fcb6cf2215e9be7c5fa268503516 HEAD -> 0",
+    "sha256 of p3/*.py, tests/p3_fixture_support.py, tests/test_p3_vertical_slice.py, tests/test_p3_owner.py, tests/test_state_store.py, run_p3_vertical_slice.py -> see runtime_hashes",
+    "git archive HEAD -> scratch; no scratch test/runtime diff"
+  ]
+}

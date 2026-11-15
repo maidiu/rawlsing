@@ -1,0 +1,40 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.1.0",
+  "checkpoint_id": "20260923T2322-0400",
+  "semantic_pre_main_tip": "de29f38c2a4da297ba1709092c038d03631e9504",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "governing_decisions": [
+    "HQD-2026-09-23-087",
+    "HQD-2026-09-23-088"
+  ],
+  "files": {
+    "current_md": {
+      "path": "HQ_HANDOFF/checkpoints/20260923T2322-0400/CURRENT.md",
+      "git_blob_sha": "e5e7ca9813428d545fd987752e5afe695344ce0e"
+    },
+    "current_json": {
+      "path": "HQ_HANDOFF/checkpoints/20260923T2322-0400/CURRENT.json",
+      "git_blob_sha": "d64edc08bd079be1faa981017c86782705942c8a"
+    },
+    "decision_ledger": {
+      "path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+      "git_blob_sha": "c72728099e19174611ab613c4586fa2c67a2299c"
+    },
+    "launcher": {
+      "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+      "git_blob_sha": "fb79e4962fa4bc55dc94527d8834bf0c764b5471"
+    },
+    "launcher_qualification": {
+      "path": "HQ_HANDOFF/launchers/FIABC_DISPOSITIVE_SIX_CELL_LAUNCHER_QUALIFICATION_20260923.json",
+      "git_blob_sha": "86de4e0ffecca7d252b80a9c6e0d13a53604872e"
+    }
+  },
+  "execution_seal": {
+    "protected_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "protected_head": "b53ff08921af263b9db4d1ad038f35fbc12b990a",
+    "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "next_action": "TERMINAL_MEASURED_SIX_CELL_FIABC_P2X",
+  "immutability_law": "CHECKPOINT_DIRECTORY_IMMUTABLE_AFTER_SEAL__LATEST_IS_MUTABLE_POINTER_ONLY"
+}

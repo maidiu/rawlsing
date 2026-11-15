@@ -1,0 +1,78 @@
+{
+  "profile_schema": "RAWLSING_FIABC_SUCCESSION_GOVERNING_PROFILE@1.0.0",
+  "repo": "maidiu/rawlsing",
+  "wave2_fanin_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "schema_provenance": {
+    "resolved_commit_sha": "b832b156602d4c3a59df8908b5973c0dba8f44e4",
+    "path": "WORKER_RETURNS/FIABC-W2-B05/01_SUCCESSION_MANIFEST_SCHEMA.json",
+    "git_blob_sha": "484678375abcdd94151b72b425629ccb535be5eb"
+  },
+  "court_scope": {
+    "sources": ["LITS_I", "WVS7"],
+    "candidates": ["A", "B", "C"],
+    "claim_scope_id": "P2X_LITS_I_WVS7_RAW_SOURCE_LOCAL_WORKLOAD",
+    "workload_ref": {
+      "repo": "maidiu/rawlsing",
+      "path": "HQ_HANDOFF/CHETIRI_FINAL_P2_COURT_MANIFEST_R1.json",
+      "ref": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "resolved_commit_sha": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "evidence_class": "COURT_ADJUDICATION"
+    }
+  },
+  "comparison_terminal": {
+    "terminal_id": "I05_LEARNED_EMPIRICAL_PRODUCT__WITH_EXACT_SEMANTIC_REPLAY_AND_OUTPUT_IDENTITY",
+    "required_closure": [
+      "exact source/workload identity",
+      "exact accepted semantic/routing/design authority closure",
+      "exact query/predicate/frontier identities",
+      "constituent exact I03 fact refs and typed states",
+      "complete I05 declared-frontier coverage/discovery receipt",
+      "learned empirical product identity",
+      "semantic identity",
+      "replay identity",
+      "exact output identity",
+      "typed negative/unresolved/fail-closed distinctions",
+      "exact provenance/dependency roots"
+    ],
+    "boundary_adjudication_ref": {
+      "repo": "maidiu/rawlsing",
+      "path": "WORKER_RETURNS/FIABC-W2-L01/02_COMPARISON_TERMINAL_ADJUDICATION.md",
+      "ref": "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d",
+      "resolved_commit_sha": "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d",
+      "git_blob_sha": "cebb25f8fd715ede472d390a53ec8a1dea3e8e42",
+      "evidence_class": "BOUNDARY_ADJUDICATION"
+    }
+  },
+  "semantic_authority_closure": {
+    "terminal": "FIABC_W2_L02_P2X_CLAIM_SCOPED_SEMANTIC_AUTHORITY_CLOSED",
+    "closure_ref": {
+      "repo": "maidiu/rawlsing",
+      "path": "WORKER_RETURNS/FIABC-W2-L02/03_CLAIM_SCOPED_ANTI_OMISSION_PROOF.md",
+      "ref": "0c0dd1f23bc59017552afdbd5af2021f051d48f7",
+      "resolved_commit_sha": "0c0dd1f23bc59017552afdbd5af2021f051d48f7",
+      "git_blob_sha": "5317df5cf338fa6768b313e57bcebc8a42cd5ab4",
+      "evidence_class": "COURT_ADJUDICATION"
+    },
+    "scope_law": "Candidate-neutral closure only for the exact LiTS-I and WVS7 source-local RAW/unweighted P2X workloads; no default weight, population generalization, cross-universe pooling, or candidate-owned semantics."
+  },
+  "function_boundary": {
+    "all_functions": [
+      "F001", "F002", "F003", "F004", "F005", "F006", "F007", "F008", "F009", "F010",
+      "F011", "F012", "F013", "F014", "F015", "F016", "F017", "F018", "F019", "F020",
+      "F021", "F022", "F023", "F024", "F025", "F026", "F027", "F028", "F029", "F030",
+      "F031", "F032", "F033", "F034", "F035", "F036"
+    ],
+    "required_before_terminal": [
+      "F001", "F002", "F003", "F004", "F005", "F006", "F007", "F008", "F009", "F010",
+      "F011", "F012", "F013", "F014", "F015", "F016", "F017", "F018", "F020", "F021",
+      "F022", "F023", "F024", "F031", "F032", "F033", "F034", "F035", "F036"
+    ],
+    "authority_preservation_only": ["F020"],
+    "deferred_beyond_terminal": ["F019", "F025", "F026", "F027", "F028", "F029", "F030"],
+    "notes": {
+      "F012": "Quantitative diagnostic capability is preterminal where invoked; no historical standalone metric table is required.",
+      "F020": "Signed geometry/directionality authority must survive by the terminal; structural signed-projection execution remains downstream.",
+      "F024": "Typed governance distinctions survive by the terminal; downstream structural certification/promotion execution remains excluded."
+    }
+  }
+}

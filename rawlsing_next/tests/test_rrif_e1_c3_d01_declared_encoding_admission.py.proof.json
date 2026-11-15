@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "RRIF_C3_D01_DECLARED_SOURCE_SHA_ENCODING_MUST_RETAIN_PHYSICAL_ONLY_AUTHORITY",
+      "actual_consumer": "pre553_physical_decoder._compatibility_config emits the D01 exact-source physical encoding authority consumed by test_declared_encoding_allowlist_is_exact_and_distinct_from_compatibility_lane",
+      "claimed_dependency": "exact SHA in DECLARED_ENCODING_ALLOWLIST and exact encoding -> SOURCE_DECLARED_ENCODING_ONLY, not COMPATIBILITY_ONLY",
+      "positive_node": "rawlsing_next/tests/test_rrif_e1_c3_d01_declared_encoding_admission.py::test_declared_encoding_allowlist_is_exact_and_distinct_from_compatibility_lane",
+      "fault": {
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "old": "return {\"encoding\": encoding, \"authority_status\": SOURCE_DECLARED_ENCODING_ONLY}",
+        "new": "return {\"encoding\": encoding, \"authority_status\": COMPATIBILITY_ONLY}"
+      }
+    }
+  ]
+}

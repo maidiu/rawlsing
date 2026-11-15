@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT_HQ210_REPLAY_AND_PROVENANCE_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ210-HD-F8-SOURCE-SCOPE-BINDING-R1",
+  "startup_tip": "904895d8ad072824f38464f579904e5193d55667",
+
+  "binding_identity": {
+    "how_derived": "semantic_hash over a seed containing the binding request material, the applicability receipt replay identity, the receipt id, the F8 rule hash, the admitted source set, and the currentness result",
+    "covers": [
+      "the exact binding request (id, service request identity, candidate class, service, target use, release, bound permission refs, mode, requested source, currentness claim, requested purpose)",
+      "the applicability receipt's replay identity and receipt id",
+      "the exact F8 model rule hash",
+      "the exact admitted source set",
+      "the currentness result"
+    ],
+    "verify_api": "verify_service_f8_scope_binding_replay re-derives the binding from (request, receipt, rule, currentness_result) and refuses with BINDING_REPLAY_MISMATCH unless both the replay identity and the full material are identical",
+    "court_proof": "test_binding_replay_is_stable_and_re_derivation_must_match re-derives and asserts both identity and material equality"
+  },
+
+  "provenance_chain_carried_into_binding_material": [
+    "applicability_receipt_id",
+    "applicability_receipt_replay_identity",
+    "applicability_authorised_authority (the exact ratified label)",
+    "service_request_set_identity, service_id, target_use_ref",
+    "candidate_class_ref and candidate_class_coverage",
+    "release_identity_ref",
+    "bound_target_use_permission_refs with bound_permission_refs_are_inputs_not_grants = true",
+    "per-source admission_provenance rows: source_universe_ref, release_identity_ref, admitted, bound_to_requested_release, admission_authority_ref, admission_provenance_refs, public_typed_state",
+    "per-source non_admitted_source_states rows: source_universe_ref, applicability_decision, public_typed_state, reason_code",
+    "f8_model_rule_refs, f8_rule_hash, f8_algorithm_id, f8_does_not_transform_possibility_geometry = true",
+    "binding_mode, currentness_result, binding_statement",
+    "non_collapse_laws, forbidden_binding_purposes, grants_no_authority = true"
+  ],
+
+  "provenance_fail_closed_at_evaluation": {
+    "rule_replay": "the F8 model rule presented at evaluation must have the SAME rule_hash the binding was made against, else BINDING_RULE_REPLAY_MISMATCH. The binder validates one exact rule and never re-points it.",
+    "receipt_replay": "when the receipt is supplied to evaluate_bound_positioned_subject_possibility, its replay identity must equal the identity recorded at binding time, else BINDING_REPLAY_MISMATCH; and its receipt id must match, else BINDING_RECEIPT_IDENTITY_MISMATCH. A receipt mutated after binding is therefore detected.",
+    "court_proof": "test_receipt_mutated_after_binding_is_detected_at_evaluation builds a second receipt over the same class with a different admitted set, shows the replay identities differ, and shows evaluation refuses.",
+    "when_receipt_omitted": "omitting the receipt does not weaken the binding; it only means the call re-validates the binding's own recorded identity rather than re-deriving it from a receipt. This is stated explicitly in the docstring."
+  },
+
+  "admission_provenance_not_a_selection_reason": {
+    "position": "the binding carries ADMISSION PROVENANCE, never a selection reason",
+    "why": "no selection occurs. Recording why a source was chosen over another would either fabricate a selection or misrepresent an independent per-source determination as a comparative judgement. This is the HQ204-derived position and the adopted applicability owner states it as well (no_selection_reason_record_exists = true).",
+    "each_admitted_entry_carries": "the exact positive admission authority ref plus admission_provenance_refs and its exact release identity",
+    "court_proof": "test_binding_carries_exact_receipt_replay_identity_and_admission_provenance asserts the provenance is present and non-empty, and asserts a non-None admission authority"
+  },
+
+  "determinism_evidence": {
+    "focused_courts_run": 3,
+    "results": ["148 passed", "148 passed", "148 passed"],
+    "variation_applied": "runs 1 and 2 with PYTHONHASHSEED=0; run 3 with PYTHONHASHSEED=12345 to demonstrate order-independence rather than a lucky fixed seed",
+    "env": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1, pytest -p no:cacheprovider",
+    "conclusion": "the binding's identity and the courts are deterministic and hash-seed independent"
+  },
+
+  "no_silent_widening_or_narrowing": {
+    "binding_never_widens": "an F8 model rule declaring a source outside the admitted set is refused with F8_RULE_SOURCE_OUTSIDE_ADMITTED_SET. The binder narrows eligibility; it never widens the F8 source scope.",
+    "binding_never_completes_the_rule": "in EXHAUSTIVE mode a rule that does not span every admitted source is refused with F8_RULE_SOURCE_SET_NOT_EXHAUSTIVE. The binder never adds a source to the F8 rule on the caller's behalf.",
+    "binding_never_edits_inputs": "no conditioner, geometry, uncertainty, raw support, walkback step or proxy authority is read or written; the court proves the read-side by AST scan",
+    "pass_through_is_by_identity": "the court asserts out.query_ref equals the caller's own q.ref, that the evidence object is the same object with unchanged retained_conditioner_ids, and that exact_geometry equals the pre-materialized geometry"
+  },
+
+  "coverage_honesty_in_replay": {
+    "candidate_class_coverage_is_carried": true,
+    "the_set_exposure_power_requires_complete_in_every_mode": true,
+    "why_that_hardening": "exposing the admitted SET is an exhaustive claim. Enforcing COMPLETE only in EXHAUSTIVE_UNRANKED_SET would have let a caller bind a SINGLE_SOURCE_VALIDATION binding over an INCOMPLETE class and then call expose_unranked_admitted_source_set to obtain a partial set as if it were the admissible set. The court pins this exact laundering attempt and it refuses.",
+    "incomplete_coverage_still_permits": "validating one known-admitted source (power 1), which is the narrow truthful capability"
+  },
+
+  "currentness_handling_in_replay": {
+    "default": "CURRENTNESS_NOT_REQUESTED; the binding asserts nothing about currency",
+    "requested_and_supplied": "the observed result is carried",
+    "requested_and_missing": "refused CURRENTNESS_MISSING_WHEN_CLAIMED",
+    "requested_and_conflicting_or_unknown": "refused CURRENTNESS_MISSING_OR_CONFLICTING",
+    "supplied_without_request": "refused CURRENTNESS_RESULT_WITHOUT_CLAIM",
+    "never": "infers currency from applicability; a current source may still be NOT_APPLICABLE and an APPLICABLE source may still be EXPIRED_OR_STALE"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "SOROK_DEVELOPMENTAL_RECURSION_CONTEXT_RECHECK_SOURCE_CLOSURE@1",
+  "exact_subject": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+  "subject_parent": "668161c654077adf89be193ab1399daef65e34d1",
+  "subject_message": "Receive full independent review and preflight native language context before effects",
+  "protected_baseline": "33c40a315d3c231cb2021bd8e60f3261547efa62",
+  "protected_is_ancestor": true,
+  "branch": "review/sorok-recursion-context-preflight-20261106-r1",
+  "review_scope": "Only the new R2 language-context grounding delta in developmental_recursion/p2_owner.py and tests/test_p2_owner.py::test_invalid_language_context_is_refused_before_actual_interval.",
+  "delta": {
+    "p2_owner.py": "Adds a pre-effect check at validate_proposal: non-null language_context must be a Mapping with a nonempty string milieu_id and the milieu_id must be in s43.registry.registry_document()['unit_library'] values.",
+    "test_p2_owner.py": "Adds test_invalid_language_context_is_refused_before_actual_interval with malformed/unknown contexts and a valid native-context realization.",
+    "diff_base": "668161c654077adf89be193ab1399daef65e34d1",
+    "diff_stat": "11 lines p2_owner.py; 36 lines test_p2_owner.py; plus lead receipts/docs outside this scoped review."
+  },
+  "actual_source_paths": {
+    "p2_owner": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+    "test": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py",
+    "native_s43_session": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/session.py",
+    "native_s43_registry": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/registry.py",
+    "native_s43_repertoire": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/repertoire.py"
+  },
+  "hashes": {
+    "p2_owner.py": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+    "tests/test_p2_owner.py": "860698c8e2adacb55542b13b7a943225656828c58ebb25fba95cda0557eeb77b",
+    "engine.py": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+    "model_cycle.py": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5",
+    "contracts.py": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "s43_registry_hash": "d6773bc699236d0e735e3692005c700db1aa9554fbbf024988822dd8652024c4"
+  },
+  "field_evidence": {
+    "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/evidence/context_preflight_before.json",
+    "candidate": "668161c65 (implementation7c4907d0b)",
+    "before_clock": 222,
+    "after_clock": 226,
+    "state_changed": true,
+    "owner_operations": 1,
+    "review_disposition": "CLOSED at 81b01f654: exact string context refuses with P2_LANGUAGE_CONTEXT_SCHEMA before state/interval/operation/journal changes."
+  },
+  "module_identity": {
+    "preflight_import": "s43.registry",
+    "session_mro_class": "s43.session.S43Session",
+    "same_module_path": true,
+    "registry_schema": "S43_FINITE_EXPRESSIVE_REPERTOIRE_REGISTRY@1",
+    "milieus": ["family", "public", "workshop"],
+    "native_default": {"milieu_id": "workshop"}
+  },
+  "previous_review": {
+    "root": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-INDEPENDENT-REVIEW-R1/",
+    "commit": "ec8724b6db51cb5fd10216660ad6fe3d7c970b58",
+    "status": "UNCHANGED_BY_THIS_REVIEW",
+    "verdict": "REVISE for subject 418639192 (historical; not re-adjudicated)"
+  },
+  "commands": [
+    "git rev-parse HEAD -> 81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+    "git show -s --format='%H %P' HEAD -> 81b01f654... 668161c...",
+    "git diff 668161c65..81b01f654 -- p2_owner.py/test_p2_owner.py -> context preflight/test delta",
+    "shasum -a 256 p2_owner.py test_p2_owner.py engine.py model_cycle.py contracts.py -> values above",
+    "git merge-base --is-ancestor 33c40a315d3c231cb2021bd8e60f3261547efa62 HEAD -> 0"
+  ]
+}

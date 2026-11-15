@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_EE_P2X_LITS_I_A_TERMINAL_BINDING_BLOCKER@1.0.0",
+  "status": "BLOCKED__FROZEN_REAL_OWNER_EXECUTOR_AND_CARRIER_NEUTRAL_I05_BINDING_NOT_MATERIALIZED",
+  "source": {
+    "id": "LITS_I",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+  },
+  "candidate": {
+    "id": "A",
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "owner_path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+    "owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "qualifying_first_build_receipt": "01_LITS_I_A_FIRST_BUILD_STAGE.json"
+  },
+  "proved_available_surface": {
+    "r5b_bridge": {
+      "authority_commit": "02d32036db49c70ff137f1730d0ff95b571040d3",
+      "path": "WORKER_RETURNS/EE-R5B/05_BOUNDED_W4_ADAPTER.py",
+      "binding": "adapt_step(..., owner_executor=Callable[..., Mapping[str, Any]])",
+      "qualification_boundary": "synthetic bound-owner receipts only; provider deliberately injected"
+    },
+    "route_a_owner": {
+      "callable": "build_r5_source_backed_c11_repository(reader, projection)",
+      "required_inputs": ["exact R5LongShardedReader", "explicit GovernedC11Projection"]
+    },
+    "banked_lits_projection": {
+      "authority_commit": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+      "identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "c11_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+      "replay": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+      "note": "The accepted Route-B session exposes a source-backed repository, not a frozen Route-A owner-executor composition."
+    },
+    "d04": {
+      "authority_commit": "e631de162c582423639b7067a4f36b29f8aa4d89",
+      "required_product_sha256": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+      "required_semantic_replay_hash": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+      "available_artifacts": [
+        "WORKER_RETURNS/ASTRA-D04-R2/00_RETURN.md",
+        "WORKER_RETURNS/ASTRA-D04-R2/01_TYPED_LEARNED_EMPIRICAL_PRODUCT.json",
+        "WORKER_RETURNS/ASTRA-D04-R2/02_77_ROLE_EXECUTION_RECEIPT.json",
+        "WORKER_RETURNS/ASTRA-D04-R2/03_SOURCE_AND_REPLAY_RECEIPT.json"
+      ],
+      "missing_binding": "no tracked carrier-neutral callable D04 runner that accepts Candidate-A C11/repository output"
+    }
+  },
+  "inadmissible_actions_rejected": [
+    "write a new composite Route-A owner executor",
+    "create a replacement W4/D04 harness",
+    "reuse the historical D04 product as a Candidate-A execution result",
+    "infer or substitute a carrier-to-D04 binding"
+  ],
+  "stop_law_application": "SOURCE_LOCAL_CANDIDATE_A_TERMINAL_BINDING_BLOCKER__NO_A_PERFORMANCE_OR_PARITY_CLAIM__CONTINUE_ORDERED_LITS_I_CANDIDATE_B",
+  "ranking_or_selection": false
+}

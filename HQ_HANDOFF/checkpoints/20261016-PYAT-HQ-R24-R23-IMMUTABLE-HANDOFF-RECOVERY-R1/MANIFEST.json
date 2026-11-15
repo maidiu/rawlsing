@@ -1,0 +1,67 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.0.0",
+  "checkpoint_id": "20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "canonical_control_base": "646ac11ab8f1d49d56464c484ec5e0f4eba8f34e",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/MANIFEST.json",
+  "current_md_blob": "d95ed53fa9422625ded4123fefc2785d7fe485cf",
+  "current_json_blob": "28120c489f3d34efeb3d85ec2f63463b3109d51e",
+  "files_and_blobs": {
+    "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/CURRENT.md": "d95ed53fa9422625ded4123fefc2785d7fe485cf",
+    "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/CURRENT.json": "28120c489f3d34efeb3d85ec2f63463b3109d51e",
+    "HQ_HANDOFF/DECISION_LEDGER.jsonl": "aad3a74e0dc8c4ec0dc0be02d7478b7dd85a7f23",
+    "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md": "e552bd3e617151704f34e904a4d064c0c959c927",
+    "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json": "247751568a096dc94a20b4110c5d6f261b6318f5",
+    "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md": "c5bd2b76d25763d3ff634114bb7f37ae5a2df43a",
+    "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json": "6db8d15755dd51842829d687a75a73db04f27a11"
+  },
+  "sha256": {
+    "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/CURRENT.md": "83725c0c9ba7c8f371e5625206d0a8898341f39dd052df048fca8f05c3118656",
+    "HQ_HANDOFF/checkpoints/20261016-PYAT-HQ-R24-R23-IMMUTABLE-HANDOFF-RECOVERY-R1/CURRENT.json": "1c5b55084bb31d4e17c672f97bfe65b6a91a54c908f2f57efbc0f4626cb92c3f",
+    "HQ_HANDOFF/DECISION_LEDGER.jsonl": "42a988837921f622de0e4829986cd5115077349e556e310071b3b30a241db4c0",
+    "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md": "9e5987fa8a5c496d4fd422d2c3de6193bca6b6479a79b7282c2602adf4abb6ce",
+    "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json": "8516c5aef343ac6ced0b908bc5eff7b181a0c0c4f18a3e88f3cfaf5c05483740",
+    "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md": "18fe44987fcc774436c571ef26ea53e7b79e23c49aa2c2e2f93b2286abd29a92",
+    "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json": "4792c42d930f738d8d5d35328b22d6fe63bc6bb65f93dd69858a830702ab2fdd"
+  },
+  "binding_law": "All file bindings resolve at actual packet commit named by subsequent LATEST. Report7 is the packet-time snapshot; a later report revision may document pointer publication without altering immutable packet. Sorok report4 is preserved exact. Manifest does not embed own future commit.",
+  "ledger_predecessor": {
+    "commit": "646ac11ab8f1d49d56464c484ec5e0f4eba8f34e",
+    "git_blob": "d3c13c95167cbbd20cb8d216f2e8acc6f3c70c81",
+    "byte_length": 563315,
+    "sha256": "1cbad9f80e876787ce11809fcb56516837e38bd01a9fab2a6e5cec175f0cf2a2"
+  },
+  "historical_packet": {
+    "handoff_commit": "2936ccaca35d8a0414869efdd2870f1ea244f1c2",
+    "checkpoint_id": "20261010-PYAT-HQ280-WG0-C-L-RETURN-INTAKE-AND-INDEPENDENT-WG0-R-REVIEW-COMMISSION-R1",
+    "manifest_git_blob": "516728ca3e92f364c786051b26744b9c837707f7"
+  },
+  "source_decisions": [
+    {
+      "id": "R19",
+      "commit": "850f6509e81ef504ca610bcdcf23c3a7b7a6078d",
+      "path": "PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/02_ACCEPTED_HQ_SUCCESSOR_CONTROL_AND_REVIEW.md",
+      "git_blob": "788db164c93d4eaa2020226187067c15758c734e"
+    },
+    {
+      "id": "R21",
+      "commit": "ad4c7704d88e58a80ac62dfafabbce66f1518608",
+      "path": "PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/05_R21_DEEP_HQ_LAW_RECOVERY_AND_WG0CLR_ADJUDICATION_20261016.md",
+      "git_blob": "87d0610280e8f38b572853d156cbb14533837626"
+    },
+    {
+      "id": "R22",
+      "commit": "ecb5de4f5f90015e5f10b9f3b12e76ee145fee58",
+      "path": "PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/07_R22_SIX_WORKER_FANIN_AND_SCIENTIFIC_DECISIONS_20261016.md",
+      "git_blob": "85da53ce201ecd8546a1a6c98e10f73a11fc8684"
+    },
+    {
+      "id": "R23",
+      "commit": "2bfd6b6b3eef6f2080b05dcf535f9af577908fbc",
+      "path": "PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/08_R23_PARALLEL_PRODUCTIVE_LANES_AND_PROTECTED_HANDOFF_HOLD_20261016.md",
+      "git_blob": "a4d8bdca7f410c769457a6bf4a5226ff63d6f535"
+    }
+  ]
+}

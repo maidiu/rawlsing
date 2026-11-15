@@ -1,0 +1,62 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0111-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0110-0400",
+  "status": "P2X_R6S_BACKEND_FANNED_IN__LOCAL_MEASURED_EXECUTION_AUTHORIZED",
+  "decisions": [
+    "HQD-2026-09-19-075",
+    "HQD-2026-09-19-076"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6S_PASS_ADOPTION_20260919.md",
+  "resume_path": "HQ_HANDOFF/EE_P2X_R6S_BACKEND_FANIN_AND_RESUME_20260919.md",
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "prior_held_head": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "current_head": "548d7ae9be4a8a624601b5d468fb2e19693ca597",
+    "execution_surface": "LOCAL-MACHINE CODEX",
+    "library_access": "EXACT_ONLY",
+    "status": "AUTHORIZED_TO_RESUME_LOCAL_MEASURED_EXECUTION",
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY"
+  },
+  "fanin": {
+    "commit": "548d7ae9be4a8a624601b5d468fb2e19693ca597",
+    "parent": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "files": [
+      {
+        "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+        "blob_sha1": "ca32b9c8ec6bfcbbdc039fba0a10646dcc5357e2"
+      },
+      {
+        "path": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+        "blob_sha1": "3a3e228843656e023673310c26acbd41ecdc1b3b"
+      },
+      {
+        "path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+        "blob_sha1": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+      },
+      {
+        "path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+        "blob_sha1": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe"
+      }
+    ]
+  },
+  "exact_sources": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "548d7ae9be4a8a624601b5d468fb2e19693ca597",
+      "temporal_classification": "AUTHORIZED_ACTIVE_MEASURED_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX",
+      "library_access": "EXACT_ONLY",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS"
+    }
+  ],
+  "terminal": "P2X_ACTIVE_LOCAL_MEASURED_EXECUTION__R6S_BACKEND_FANNED_IN"
+}

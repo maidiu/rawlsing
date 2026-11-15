@@ -1,0 +1,360 @@
+{
+  "task_id": "PYAT991-S2D-G5-RECHECK",
+  "packet_id": "S2-D",
+  "old_obligations": [
+    "P2-05"
+  ],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "contract_frozen_at_sha": "d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "persona_role": "S2D_SAME_DISTINCT_NONAUTHOR_G5_DELTA_RECHECK",
+  "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat991-s2d-g5-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
+  "exclusive_allowlist": "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/",
+  "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "accepted_s2c_executable": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2c_tree": "dc416d1f23100d4d52b19bc2120226964bc0be43",
+  "prior_g5_return_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+  "prior_g5_code_cut_sha": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+  "repair_delivery_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+  "tested_code_cut_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+  "a_branch_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+  "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+  "changed_paths": [
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py",
+    "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/"
+  ],
+  "review_changed_paths": [
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/receipt.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/scope_foreign_split.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/"
+  ],
+  "exact_delta": {
+    "code": "16 changed lines in pre553_saved_c11_admission.py: private _source_ref derived from estate.i02.source via _ref_from_key; exact source ref added to the allowed scope set alongside exact universe/release. No fixture tag or hash whitelist.",
+    "new_test": "rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py (226 lines, 3 tests)",
+    "return": "WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/",
+    "shared_owner_changes": "NONE; accepted S2-C, native I03/I05, Batch/issued/checkpoint/current/Q2 and all prior returns remain read-only.",
+    "blob_pins": {
+      "repaired_admission": "10e1a13752f482406e47f3da45b83c10d7c5dd99",
+      "new_source_scope_test": "ccad68294d9471d678ced5b43d68e623390654e0",
+      "prior_admission": "7d1807be4e25cad18a6d0890b9a563ee04204ea9"
+    }
+  },
+  "scope_finding": {
+    "id": "G5-S2D-SCOPE-WHITELIST",
+    "prior_state": "OPEN REVISE_EXACT_DEFECT at prior G5 a59db5e / 2b1f8d, SEV-1",
+    "current_state": "CLOSED_CORRECTED",
+    "admitted_source_scope": {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-G5-ADMITTED-SOURCE-SCOPE",
+      "content_hash": "ab4de5365b5eb12a8592d54898ddde47b0c0c5c542378767e2f5f7d8f0a3e0cf",
+      "derivation": "exact ref decoded from receipt.i02.source; product uses estate.i02.source, not a fixture tag/hash whitelist"
+    },
+    "canonical_witness_before": {
+      "defect": true,
+      "native_owner": "SUPPORTED denominator 2 fact c2105164...",
+      "native_saved_estate": "SUPPORTED same fact",
+      "saved_admission": "REFUSED: saved consumer scope contains a foreign scope reference",
+      "evidence": "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/g5_scope_before_repair_historical.json"
+    },
+    "canonical_witness_after": {
+      "defect": false,
+      "native_owner": "SUPPORTED denominator 2 fact c2105164ca700da1e205185f5a27723c556c797ce7be5945350f3694f3fef3e8",
+      "native_saved_estate": "SUPPORTED same fact c2105164...",
+      "saved_admission": "ACCEPTED same fact c2105164...",
+      "base_saved_i03": "SUPPORTED fact 064b866d646f7b7b9076842a3e26ee19df6262a1bd07a5e2e8ac87cd60955278",
+      "evidence": "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/recheck_scope.out"
+    },
+    "foreign_source_negative": {
+      "query_only_foreign_source": "REFUSED: saved consumer scope contains a foreign scope reference",
+      "predicate_only_foreign_source": "REFUSED: saved consumer scope contains a foreign scope reference",
+      "evidence": "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/scope_foreign_split.out",
+      "note": "No kind-wide allow: the exact admitted source key is required; a same-kind foreign source is refused in both query and predicate."
+    },
+    "i05_source_scope_positive": "The 29-focused suite includes exact admitted source scope on I05 atom predicates and query template with native candidate/fact/receipt parity.",
+    "original_contract_basis": "EmpiricalQuerySpec.scope_refs and EmpiricalPredicate.scope_refs are required set-like exact scope references with no universe/release-only type whitelist; the native I03/I05 owners accept the exact admitted source artifact. The S2-D G1 exact permitted scope must preserve it while refusing foreign source/universe/release/authority scope.",
+    "repair_verdict": "CORRECTED; no kind-wide permission and no foreign-source positive."
+  },
+  "gates": {
+    "G1": {
+      "state": "HOLD_EXTERNAL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "Exact accepted S2-C estate/release/catalog/binding and exact I03/I05 source/universe/release scope are now enforced; the prior source-scope false refusal is corrected. Full S2-D G1 still requires the five shared-reader owner ACKs for Batch/NORMAL/COMPLETED/PARTIAL/ABSENT."
+    },
+    "G2": {
+      "state": "HOLD_EXTERNAL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "Actual cold/change/restore/fresh I03/I05 and the exact admitted-source scope positive pass; Batch/NORMAL/COMPLETED/PARTIAL/ABSENT remain unimplemented BLOCKED_OWNERSHIP and are not claimed."
+    },
+    "G3": {
+      "state": "HOLD_EXTERNAL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "I03/I05 foreign source/universe/release refusal, revoked current, wrong root, missing body, immutable binding, negative/valid-empty/mixed frontier pass; the exact admitted source scope is accepted. Five-reader hostile/resume cases remain blocked."
+    },
+    "G4": {
+      "state": "HOLD_EXTERNAL",
+      "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+      "receipt": "Prior independent tiny-fixture resource evidence at 2b1f8d is inherited with exact source cut; 16-line validation-only repair does not change physical layout. Retained 193570 B, peak staging 28672 B, 24 materializations, source opens 0, full C11 0, whole-table 0, parent RSS 112869376 B, child RSS 52043776 B; Batch/resume/100k/6 GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "HOLD_EXTERNAL",
+      "reviewer": "PYAT991-S2D-G5 same distinct nonauthor reviewer, session ses_e30c25800ffeT8XbyTuHekRCme; not A and not B",
+      "receipt": "Delta recheck: canonical scope witness before/after, exact admitted source positive, foreign-source query/predicate negatives, I05 source positive, focused29 pass. G5-S2D-SCOPE-WHITELIST is CLOSED. Full all-seven ACCEPT_SCOPED is unavailable because Batch/NORMAL/COMPLETED/PARTIAL/ABSENT remain BLOCKED_OWNERSHIP; overall verdict HOLD_EXTERNAL."
+    }
+  },
+  "two_reader_subresult": {
+    "grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+    "status": "PASS_SCOPED_ACTUAL_COLD__EXACT_ADMITTED_SOURCE_SCOPE_CORRECTED",
+    "actual_first_readers": [
+      "SavedC11Admission.execute_i03 -> CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query",
+      "SavedC11Admission.execute_i05 -> execute_exact_bounded_discovery"
+    ],
+    "evidence": "29 focused tests plus independent canonical witness; base/change/restore, exact admitted source scope, foreign source split negatives, I05 discovery and current/negative paths pass."
+  },
+  "seven_reader_status": {
+    "I03": "PASS_SCOPED_ACTUAL_COLD__EXACT_ADMITTED_SOURCE_SCOPE_CORRECTED",
+    "I05": "PASS_SCOPED_ACTUAL_COLD__EXACT_ADMITTED_SOURCE_SCOPE_PRESERVED",
+    "Batch": "BLOCKED_OWNERSHIP__pre553_batch_runner.py::BatchExecutionRunner.__init__",
+    "NORMAL": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::execute_issued_workload",
+    "COMPLETED": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint",
+    "PARTIAL": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint",
+    "ABSENT": "BLOCKED_OWNERSHIP__pre553_issued_workload.py::resume_joined_workloads/checkpoint"
+  },
+  "mandatory_cases": [
+    {
+      "id": "FOCUSED_29_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py -q -o addopts=''",
+      "actual": "29 passed in 7.43s (prior 26 + 3 new source-scope tests)."
+    },
+    {
+      "id": "G5_SCOPE_CANONICAL_AFTER",
+      "result": "PASS",
+      "command": "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py <proofroot>",
+      "actual": "defect=false; native oracle and native saved-estate I03 SUPPORTED denominator 2 fact c2105164...; saved admission ACCEPTED same fact; base saved I03 SUPPORTED 064b... . Original canonical script unchanged."
+    },
+    {
+      "id": "G5_FOREIGN_SOURCE_QUERY_AND_PREDICATE",
+      "result": "PASS",
+      "command": "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/scope_foreign_split.py <proofroot>",
+      "actual": "both_refused=true; query-only foreign source REFUSED; predicate-only foreign source REFUSED; exact admitted source accepted in canonical witness. No kind-wide permission."
+    },
+    {
+      "id": "G5_NEW_SOURCE_SCOPE_TESTS",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider -v rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py",
+      "actual": "3 passed in 1.24s: exact admitted source scope on I03 query+predicate, foreign source refusal, exact source scope on I05 discovery."
+    },
+    {
+      "id": "I03_ACTUAL_COLD_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "focused29",
+      "actual": "Actual cold/fresh native I03 exact; changed native input changes fact; exact restore base; current/root/body refusals preserved."
+    },
+    {
+      "id": "I05_ACTUAL_COLD_CHANGE_RESTORE",
+      "result": "PASS",
+      "command": "focused29",
+      "actual": "Actual cold/fresh native I05 exact; changed/restore, zero/valid-empty and mixed frontier paths pass; current refusal preserved."
+    },
+    {
+      "id": "BATCH_OWNER_HOLD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "focused29 actual Batch guard",
+      "actual": "BatchExecutionRunner.__init__ still refuses saved admission; no fake Batch pass."
+    },
+    {
+      "id": "NORMAL_OWNER_HOLD",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "typed saved integration stub",
+      "actual": "execute_issued_workload owner ACK absent; execute_saved_normal raises exact typed hold."
+    },
+    {
+      "id": "COMPLETED_PARTIAL_ABSENT_OWNER_HOLDS",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "typed saved integration stubs",
+      "actual": "resume_joined_workloads / JoinedWorkloadCheckpoint owner ACK absent; all three resume paths raise exact typed holds."
+    }
+  ],
+  "prior_qualification_corrections": [
+    {
+      "item": "A-C01 receipt-fact conservation",
+      "correction": "The prior G5 text's A-C01 receipt-fact conservation phrase lacks a current S2-D test/witness and is removed from this delta qualification. It remains prior S2-G/S2-F historical evidence only; no current S2-D test is cited for it."
+    }
+  ],
+  "closed_findings": [
+    {
+      "id": "G5-S2D-SCOPE-WHITELIST",
+      "prior_severity": "SEV-1",
+      "disposition": "CLOSED_CORRECTED at 5478210b7aeedf608a3e9754bf891d4d0262817f",
+      "evidence": "canonical before/after witness; exact native/saved-estate/wrapper fact c2105164...; base 064b...; query/predicate foreign-source split refused; I05 source positive"
+    }
+  ],
+  "material_open_defects": [],
+  "open_defects": [],
+  "blocked_ownership": [
+    {
+      "reader": "Batch",
+      "owner": "BatchExecutionRunner owner",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "function": "BatchExecutionRunner.__init__",
+      "minimum_edit": "accept exact SavedC11Admission or narrow saved repository and resolve exact SavedReleaseIdentity; no full C11 graph"
+    },
+    {
+      "reader": "NORMAL",
+      "owner": "S1-D/issued-workload owner",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "function": "execute_issued_workload",
+      "minimum_edit": "optional exact saved_admission path skipping source_factory/build_source_backed_c11_repository while preserving current/fates"
+    },
+    {
+      "reader": "COMPLETED/PARTIAL/ABSENT",
+      "owner": "S1-D/issued-workload checkpoint owner",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "function": "resume_joined_workloads / JoinedWorkloadCheckpoint / capture_joined_checkpoint",
+      "minimum_edit": "bind exact saved estate identity to entries and use the saved path on resume while preserving prior receipts/outputs and current"
+    }
+  ],
+  "external_holds": [
+    {
+      "owner": "shared Batch/issued-workload owners",
+      "minimal_missing_witness": "exact narrow ACK/lease for Batch, NORMAL and COMPLETED/PARTIAL/ABSENT saved integration"
+    },
+    {
+      "owner": "S1-D/native I03 scope owner",
+      "minimal_missing_witness": "exact decision for the native full-repository mixed-foreign-universe positive; saved adapter refuses it but native owner still accepts"
+    },
+    {
+      "owner": "S1-D production current/revocation",
+      "minimal_missing_witness": "independent production current/as-of/revocation issuer; TEST_ONLY callback only"
+    },
+    {
+      "owner": "Q2/S1-E body-sink/fate owner",
+      "minimal_missing_witness": "body-sink composition and postconsumer native receipt/fate join; absent from accepted S2-C tree"
+    },
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; none read or claimed"
+    },
+    {
+      "owner": "Linux new-module runner",
+      "minimal_missing_witness": "new S2-D modules not executed on Linux; Darwin-only evidence; accepted S2-C Linux producer evidence is prior, not a new-module claim"
+    },
+    {
+      "owner": "integrated 100k/6 GiB",
+      "minimal_missing_witness": "full integrated sourcefree workload; NOT_RUN"
+    },
+    {
+      "owner": "S2-B G5-R1 independent recheck",
+      "minimal_missing_witness": "independent verdict at 092db6...; not claimed"
+    }
+  ],
+  "resource_evidence": {
+    "measurement_label": "INHERITED_FROM_PRIOR_INDEPENDENT_CUT_2B1F8D__16_LINE_VALIDATION_ONLY_REPAIR__PHYSICAL_UNCHANGED",
+    "resource_probe_rerun_after_repair": false,
+    "physical_layout_changed": false,
+    "source_cut": "2b1f8d878e455b1f6ecb48683895b8a40dcbad72",
+    "current_cut": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "fixture": "2 respondents / 2 events; synthetic sourcefree; not 100k",
+    "retained_disk_bytes": 193570,
+    "peak_root_tree_bytes": 193570,
+    "peak_staging_bytes": 28672,
+    "object_materializations": 24,
+    "source_opens_parent": 0,
+    "source_opens_child": 0,
+    "full_c11_builds": 0,
+    "whole_table_fallbacks": 0,
+    "cold_i03_seconds": 0.0158,
+    "repeat_i03_seconds": 0.0138,
+    "cold_i05_seconds": 0.0261,
+    "repeat_i05_seconds": 0.0265,
+    "parent_peak_rss_bytes": 112869376,
+    "child_process_peak_rss_bytes": 52043776,
+    "i03_fact_state": "SUPPORTED",
+    "i03_denominator": 2,
+    "i05_candidate_count": 1,
+    "i05_covered_count": 1,
+    "i05_fact_count": 2,
+    "i05_receipt_count": 1,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at fixture grade",
+    "integrated_100k_6GiB": "NOT_RUN",
+    "host": "Darwin/macOS Python 3.11.3; Linux new modules NOT_RUN",
+    "measurement_note": "Prior independent tiny-fixture resource evidence is inherited at the exact prior source cut; the repair is validation-only and does not change physical layout. No new process-tree benchmark, 100k, or 6 GiB claim."
+  },
+  "engineering_grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL__SOURCE_SCOPE_CORRECTED__FIVE_OWNER_BLOCKS",
+  "scientific_grade": "NONE_VERIFIED; TEST_ONLY sourcefree engineering only",
+  "authority_grade": "HOLD; production current/as-of issuer and shared owner ACKs absent",
+  "three_court_grades": {
+    "engineering": "Two-reader subresult qualified at S2_SOURCEFREE_SAVED_I03_I05_ACTUAL; overall full S2-D HOLD_EXTERNAL for five exact owner ACKs",
+    "scientific": "NONE_VERIFIED; TEST_ONLY only",
+    "authority": "HOLD; no production CURRENT/issuer or original35 rights"
+  },
+  "original_gate_mapping": {
+    "original_G1": "PARTIAL/HOLD_EXTERNAL: exact admitted-source scope corrected; five readers blocked by owner ACKs.",
+    "original_G2": "PARTIAL/HOLD_EXTERNAL: actual I03/I05 cold/change/restore pass; Batch/NORMAL/COMPLETED/PARTIAL/ABSENT not implemented.",
+    "original_G3": "PARTIAL/HOLD_EXTERNAL: source-scope false refusal closed; foreign source/universe/release/current/root/body refusals preserved; five-reader hostiles blocked.",
+    "original_G4": "PARTIAL/HOLD_EXTERNAL: inherited I03/I05 fixture resources; Batch/resume/100k/6 GiB NOT_RUN.",
+    "original_G5": "HOLD_EXTERNAL: same distinct nonauthor reviewer accepts the corrected two-reader subresult and closes G5-S2D-SCOPE-WHITELIST; cannot accept allseven while five readers are blocked."
+  },
+  "independent_receiver_decision": "HOLD_EXTERNAL",
+  "disposition": "HOLD_EXTERNAL",
+  "stop_state": "HOLD_EXTERNAL",
+  "integration": "UNMERGED",
+  "integration_state": "UNMERGED",
+  "original_task_remaining_hold": "FULL_ORIGINAL_S2D_REMAINS_OPEN: I03/I05 actual subresult corrected and qualified; Batch/NORMAL/COMPLETED/PARTIAL/ABSENT BLOCKED_OWNERSHIP; no all-seven ACCEPT_SCOPED, production current/issuer, original35/science, 100k/6GiB or protected merge. Q2/Q3 goal not complete.",
+  "next_turn": "HQ handles the five exact shared-owner ACKs and external production/native holds. The G5-S2D-SCOPE-WHITELIST finding is CLOSED; no new A/B round, optional hardening, scope expansion or reviewer patch. Re-receive only if a shared-owner repair or other material original-contract change is authorized.",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/focused_29.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/new_3_source_scope.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/recheck_scope.out",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/g5_scope_before_repair_historical.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/scope_foreign_split.out",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/prior_g5_resource_inherited.json",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/prior_g5_resource_inherited.out",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/diffs.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/refs.txt",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/scope_foreign_split.py",
+    "WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/evidence/remote_verification.txt"
+  ],
+  "review_commands": [
+    "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py -q -o addopts='' => 29 passed in 7.43s",
+    "python3 -m pytest -p no:cacheprovider -v rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py => 3 passed in 1.24s",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py <proofroot> => defect=false; native==direct-saved==wrapper fact c2105164...; base 064b...",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT991_S2D_G5_RECHECK/scope_foreign_split.py <proofroot> => both_refused=true; query-only and predicate-only foreign source refused"
+  ],
+  "signature": {
+    "signed_by_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "persona_role": "S2D_SAME_DISTINCT_NONAUTHOR_G5_DELTA_RECHECK",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "tested_delivery_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "tested_code_cut_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "prior_g5_return_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+    "decision": "HOLD_EXTERNAL",
+    "scope": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL",
+    "no_repair_performed": true,
+    "signed_at_utc": "2026-11-13T05:45:00Z",
+    "review_return_commit_sha": "25507ec497ead250ddc5d4ddbecbce480b1f01ce"
+  },
+  "remote_verification": {
+    "remote": "origin",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "return_commit_sha": "25507ec497ead250ddc5d4ddbecbce480b1f01ce",
+    "repair_delivery_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "prior_g5_return_sha": "a59db5e36f5b8c1d0149a1eb0ee6815d6cc96569",
+    "a_branch_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "code_diff_vs_repair_cut": "EMPTY",
+    "receipt_json_valid": true,
+    "handoff_present": true,
+    "verified_at_utc": "2026-11-13T05:55:00Z"
+  }
+}

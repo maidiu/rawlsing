@@ -1,0 +1,45 @@
+# VOZHD PYAT HQ259 — exact reviewed G2 permission-coherence integration and GESIS workbook primary evidence — R1
+
+**DECISION:** `HQD-2026-10-09-259`
+**CLASS:** `BOUNDED_HQ_INTAKE__EXACT_REVIEWED_G2_CODE_ADOPTED_IN_CONTROL__AUSTRIA_METHOD_DOCUMENTARY_ACCEPTED_NO_TEMPORAL_AUTHORITY`
+**LIVE CONTROL PARENT:** `f57be2d9e221eb089e3475b5f5be40ca41544510`; sealed HQ258 checkpoint `20261008-PYAT-HQ258-G2-INDEPENDENT-REVIEW-ACCEPTED-I01-E03-ISSUED-R1`, immutable handoff `08219a5f64e89ced2e7ee554a3f392cdf7b25f6e`.
+**SEMANTIC PRE-MAIN ANCHOR:** `1f47063c3205a45888b3c55e81e7485943ed1390` remains unchanged.
+**ABSOLUTE HOLDS:** EE14 T1 issuer competence/grant G0, C1 authenticated ingress G1, B5/C1-03R selected CURRENT/as-of G3, actor/native/AT07, source reads, temporal pairing, second structural family. This adoption does **not** authorize any of them.
+
+## I. HQ258 I01 exact review-supported integration: DONE at G2 grain
+
+Worker `agent/space-bunny-pyat-hq258-g2-binder-reviewed-exact-integration-candidate-r1 @ f1b65dfaf71e521d3f47c6ba2922a72f60df31f7`, 2 ahead/0 behind `97adfeb89ae357ae7a9baba13159946cc5973c6b`; one true source+test candidate commit `105510d9ee45bf18ea1086e55221700ecf7ec2b4` then documentary return commit. Changed exactly two approved source paths and four return files. The worker verified direct origin, imported exact accepted blobs via Git object reads, committed *before* running the tests on a clean committed candidate. Reported source-free `16/16` new permission court, `199/199` four accepted baseline courts, `215/215` combined exit 0. Broader sweep `380 passed + nine collection errors` (missing pandas/pyarrow and unrelated harness), not full PASS. Honest/swap/reverse/subset probes matched the independently accepted contract; no dependency drift.
+
+Independently frozen original DeepSeek hostile review:
+`agent/deepseek-harness-pyat-hq257-p02-committed-court-independent-review-r1 @ f31c6d1394a877d7fa3eec89b678aa0d0f47f6a5`, `ACCEPT_EXACT_GRAIN`; exact review on frozen P02 `cb4a8c5548dbe559825681e4a9f9d49af2ac7e8d`: `16/16`, `199/199`, `215/215` exit0 clean committed source. Full `ExactRef.key` compares (kind, object_id, content_hash); mismatch set refuses. Reordered/duplicate binding refs allowed as set-equivalent, but material may preserve original order/duplicate entries. Permission mismatch checked after target-use, before release. These semantics are *known*, not silent changes.
+
+**Guarded HQ control source adoption:** imported exactly, into new staging branch off **live HQ258 HEAD** `f57be2d9e221eb089e3475b5f5be40ca41544510`, the two reviewed immutable Git blobs from I01:
+- `rawlsing_next/pre553_service_f8_source_scope_binding.py` = **`848d2d0eedb04b792747e9d6aaa49bb39d108a2c`**, +33/-0 from prior baseline `4ba00b8ecf73f70ad0f6481e255fd0117744418a`.
+- `rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py` = **`cdb4dc22fd1b403dee69bee626a43b6bc41c2b0a`**, 362 lines, previously absent.
+
+Both Git blob IDs **read back byte-identically** after import. No other code or tests imported, no cherry-pick of worker returns. HQ258 vs HQ257 control delta was **six HQ documentary files only**, so no producer/binder dependencies changed between I01 tested code base and this guarded HQ integration. HQ authorizes adoption strictly at that exact **binder request↔applicability receipt G2** contract, subject to final guarded fast-forward and readback. No independent local Python was run by HQ itself; independent DeepSeek original-candidate runtime plus clean committed I01 integration runtime are the actual execution receipts.
+
+**Adopted G2 rule:** a `SERVICE_APPLICABILITY_TO_F8_SOURCE_SCOPE_BINDING` request may not produce a binding if its `bound_target_use_permission_refs` differ as an exact `ExactRef.key` **set** from `CandidateClassApplicabilityReceipt.request_key.target_use_permission_refs`; refuse with `BINDING_PERMISSION_IDENTITY_MISMATCH` before binding. This is **coherence**, not a grant, custody certificate, source selection/rank, scalar probability, or T1 service. Accepted non-expanding edge observations: duplicate refs do not change set equivalence but remain in material; permissions-before-release multi-grain refusal precedence; forged receipt internals outside genuine owner typed boundary. No changes to model-use policy.
+
+**No deployment/cutover claim:** this is incorporation into the canonical `integration/pre-main-reconciliation-r1` code tree at exact narrow tested grain, not an external runtime deployment, not independently issued source/use/issuer authorization, and not a change of the frozen semantic PRE-MAIN tip.
+
+## II. HQ258 E03 public Austrian EVS 1990 methodology workbook: accepted documentary identity, design STILL HELD
+
+Worker `agent/deepseek-harness-pyat-hq258-evs1990-method-workbook-independent-r1 @ b14ac57d6d530011760800a2800c86c85491d6d6`, 1 ahead/0 behind exact `f3b4877554930141f447668eab9025ecc062d5a1`; exactly four return documents, **no** source/test/HQ mutation. On a governed local public-document retrieval, **both** GESIS URLs `https://access.gesis.org/dbk/70780` and `https://access.gesis.org/dbk/70775` returned HTTP200 **byte-identical** public Excel `ZA7503_Method_Information.xlsx`, size **92,628 bytes**, SHA256 **`401048862995440764950a3fa3ec9ec5349bff674a58de7725db848de6655734`**. This is a documentary witness, not raw respondent files and not verification of SRC12/SRC14 SAV file SHA.
+
+Exact primary worksheet `EVS Surveys 1981-2017!A9:N9`: EVS 1990 Austria, ISO AT, national GESIS study number **ZA4479** (cell E9), `doi:10.4232/1.10790` *integrated study DOI* (F9), PI **Paul M. Zulehner**, collector **Fessel - GIK Institut (Vienna)**, fieldwork **1990-04-09 to 1990-06-01**, face-to-face standardized questionnaire, **n=1,460** total (not A048 eligible denominator), `Weight=yes` **availability only**, German. `Contents!C13` identifies integrated EVS1990 **ZA4460 v3.0.0**: national `ZA4479` and integrated `ZA4460` are distinct objects, no conflict. The earlier apparent `ZA4754` in another integrated study table is inconsistent, **likely** catalogue copy error but not a formally corrected erratum. No invented 1990 source-release SHA or archive pairing.
+
+**Crucial scientific limitation:** the **entire** official workbook lacks an Austrian national sampling frame, random-vs-quota method, target-population citizenship/age restriction, sampling stages/PSU/strata/selection probability, and weight construction. `n=1460` and `Weight=yes` cannot qualify a design-based variance, common 1990↔2008 estimand, or A048 C7/EE12 temporal result. The actual 1990 questionnaire and 2008 counterpart already recovered; no repeat needed. Different readout/show-list stimulus requires separately reviewed measurement compatibility. Retained frozen SRC12/SRC14 survey-file SHA equivalence to released official studies still unproved.
+
+**Next evidence action:** official GESIS/AUSSDA **ZA4479 national Austria 1990 study description/technical field methodology**, plus ZA4460 integrated study front matter for cross-check. Request public PDF/HTML method details: frame, target, selection stages, replacement/substitution, strata/PSUs, response, national weights calibration vs inclusion, 1460 status. No more identical workbook browsing; if absent, request exact custodian documentation (not microdata).
+
+## III. Authority and productive frontier
+
+- **EE14 G0** deliberately remains `HOLD__COMPETENT_EE14_ISSUER_AND_EXACT_SELECTED_USE_NOT_ESTABLISHED` from HQ256 N02, accepted HQ257/HQ258. No new model permission from G2's now-correct binder. Need an actual separately legitimate issuer-competence and positive selected-use act, including exact consumer/source/release/grade, not a new search loop. Historical snapshot/no CURRENT may be a separately chosen limited intermediate; HQ249 current/as-of scientific objective demands real B5/C1-03R.
+- **C1 G1** authentic producer origin/provenance for rich C1 evidence is **not** certified by F8 result hash. Must bind service ingress to trusted owner execution/replay and refuse substituted provenance/authority even when mathematical parity holds.
+- **LiTS I** retained source-backed native Q301 joint is the second family **candidate**, not second structural admission; FF02 `ready=true, executed=false`, zero structural admissions, N7/N9 not operational. Do not open the 3.4GB local checkpoint/raw LiTS without separate exact authority.
+- **SRC02 Q86C** proposed real triple not source-authorized; 19,210 existing Q86A/B risk not R_ABC.
+- **F7 native R3**, AT07 independently registered issuer, V3 actors, E1/E2 estate/world serving remain held at relevant consumed edges, not false universal blockers.
+
+**HQ NEXT:** `G2_GUARDED_CONTROL_ADOPTION_DONE__EE14_ISSUER_HOLD__SOURCE_METHOD_ZA4479_CUSTODIAN_DOCUMENTATION_NEXT__LITS_SECOND_FAMILY_SOURCE_PRODUCT_WARRANT_SEPARATE`.
+**TERMINAL:** `HQ259_G2_REVIEWED_BINDER_TWO_EXACT_BLOBS_ADOPTED_IN_CONTROL__EVS_1990_PRIMARY_WORKBOOK_IDENTITY_CREDITED_NO_DESIGN__T1_EE14_HOLD__NO_OTHER_AUTHORITY`.

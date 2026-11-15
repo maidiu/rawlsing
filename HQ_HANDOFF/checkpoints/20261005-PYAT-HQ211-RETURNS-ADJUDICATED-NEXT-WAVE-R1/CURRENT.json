@@ -1,0 +1,78 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ211-RETURNS-ADJUDICATED-NEXT-WAVE-R1",
+  "status": "C1_CURRENT_DAG_AND_V556_REPAIR_ACTIVE__HD_F8_HOSTILE_REVIEW_ACTIVE__F7_IMPLEMENTATION_BOUND_QUEUED__R9_FINAL_ADOPTION_HELD",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head_pre_checkpoint": "3925a86e2ea545b1ad67f20aa295484bbe1af2f2",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "decision": "HQD-2026-10-05-211",
+  "accepted": [
+    {
+      "id": "C1_PRUNE_REPAIR",
+      "return_tip": "0574e095c4676680e671806febb7a76b35343389",
+      "status": "REPAIR_ACCEPTED__PRODUCTION_ADOPTION_PENDING_CURRENT_DAG_JOIN"
+    },
+    {
+      "id": "F7_TEMPORAL_CONTRACT",
+      "return_tip": "c57a96897788108db7b194e4e51691d1ca8ab729",
+      "status": "DOCUMENTARY_TEMPORAL_COMPARABILITY_CONTRACT_OF_RECORD__IMPLEMENTATION_NOT_YET_ADOPTED"
+    },
+    {
+      "id": "R9_REPAIR_EVIDENCE",
+      "return_tip": "51e7fe0fe2eb7a37c41f0b51c005458dc0cd0847",
+      "status": "TECHNICAL_REPAIRS_ACCEPTED__GOVERNED_QUALIFICATION_UNAVAILABLE__FINAL_ADOPTION_HELD"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "C1_CURRENT_DAG",
+      "agent": "Space Bunny source-free integration worker",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1",
+      "commission_tip": "1f05964479be110345472fc5239acefa9ea4775d",
+      "grain": "CURRENT_DAG_SURGICAL_ADOPTION_JOIN"
+    },
+    {
+      "id": "V556_REPAIR",
+      "agent": "Space Bunny bounded implementation repair worker",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1",
+      "commission_tip": "694b220cfbb14353c59eeec503f0ae0d9cab97bc",
+      "grain": "BOUNDED_UNBOUNDED_VALUE_GATE_REPAIR"
+    }
+  ],
+  "active_reviews": [
+    {
+      "id": "HD_F8_REVIEW",
+      "agent": "DeepSeek Harness independent hostile reviewer",
+      "model_intelligence": "DeepSeek V4.1 Flash",
+      "branch": "agent/reviewer-pyat-hq211-hd-f8-binding-r1",
+      "commission_tip": "b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5",
+      "candidate_tip": "8d352f7d80983cbf49e7e57511f8cf6d5b80966d"
+    }
+  ],
+  "queued": [
+    {
+      "id": "F7_IMPLEMENTATION",
+      "status": "BOUND_QUEUED__DO_NOT_LAUNCH_UNTIL_IMPLEMENTER_SLOT_FREES",
+      "agent": "Space Bunny source-free implementation worker",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq211-f7-implementation-r1",
+      "commission_tip": "de9439753db60b6868fc286e56066760d59fbbc6"
+    }
+  ],
+  "dependency_holding": "FIRST_IMPLEMENTER_RETURN_WAKES_F7_UNLESS_BLOCKING_SAME_LANE_REPAIR_REQUIRED",
+  "operating_law": "PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md",
+  "holds": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION",
+    "HQ182_C4_NON_ADOPTION_HOLD",
+    "HOST_DISK_POLICY_CAPACITY_LIVE_RUN_BLOCKER"
+  ],
+  "astra_referral": false,
+  "next_action": "LAUNCH_HQ211_ACTIVE_THREE__ON_FIRST_IMPLEMENTER_RETURN_WAKE_F7_QUEUE__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ210-THREE-SUCCESSOR-PARALLEL-R1",
+  "status": "F7_REPAIR__HD_F8_BINDING__V556_FINAL_REVIEW_ACTIVE__R9_C1_CONTINUE_INDEPENDENTLY",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head_pre_checkpoint": "bcdd4cc2051720037a922f5537345d6685f5ee7f",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "decision": "HQD-2026-10-05-210",
+  "new_workers": [
+    {
+      "id": "F7_REPAIR",
+      "status": "NEW__NEEDS_LAUNCH",
+      "agent": "Browser/GitHub documentary repair worker",
+      "model_intelligence": "GPT-5.6 Sol High",
+      "branch": "agent/rabochii-pyat-hq210-f7-contract-repair-r1",
+      "commission_tip": "7a6ecae8002088630c5ffb2eea286efda1b3316b"
+    },
+    {
+      "id": "HD_F8_BINDING",
+      "status": "NEW__NEEDS_LAUNCH",
+      "agent": "Space Bunny source-free implementation worker",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq210-hd-f8-binding-r1",
+      "commission_tip": "904895d8ad072824f38464f579904e5193d55667"
+    },
+    {
+      "id": "V556_FINAL_REVIEW",
+      "status": "NEW__NEEDS_LAUNCH",
+      "agent": "DeepSeek Harness independent hostile reviewer",
+      "model_intelligence": "DeepSeek V4.1 Flash",
+      "branch": "agent/reviewer-pyat-hq210-v556-final-r1",
+      "commission_tip": "bb453566e96ab11bb6f54574c2e45962ec32a9e4"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "R9_REPAIR",
+      "status": "EXISTING__ACTIVE_NOT_YET_RETURNED",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq207-r9-repair-r1",
+      "commission_tip": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+      "observed_head_at_checkpoint": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+      "grain": "BOUNDED_SOURCE_FREE_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "R9_FINAL_ACCEPTANCE",
+      "blocker_effect": "R9_ONLY",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "WARRANT_ISSUANCE",
+        "LIVE_C4",
+        "C7_IMPLEMENTATION",
+        "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+      ]
+    },
+    {
+      "id": "C1_PRUNE",
+      "status": "EXISTING__ACTIVE_NOT_YET_RETURNED",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq206-c1-prune-r1",
+      "commission_tip": "32d86985b8af3f2ee175f5a170ee21c7101785b6",
+      "observed_head_at_checkpoint": "32d86985b8af3f2ee175f5a170ee21c7101785b6",
+      "grain": "BOUNDED_PRUNE_ONLY_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "C1_FINAL_ACCEPTANCE",
+      "blocker_effect": "C1_ONLY",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "SEMANTIC_REDESIGN",
+        "SELF_ADOPTION"
+      ]
+    }
+  ],
+  "dependency_holding": "R9_AND_C1_DO_NOT_BLOCK_HQ210_THREE_SUCCESSOR_LANES",
+  "operating_law": "PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md",
+  "holds": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION",
+    "HQ182_C4_NON_ADOPTION_HOLD",
+    "HOST_DISK_POLICY_CAPACITY_LIVE_RUN_BLOCKER"
+  ],
+  "astra_referral": false,
+  "next_action": "LAUNCH_HQ210_THREE_SUCCESSORS__INTAKE_ANY_RETURN_IMMEDIATELY__CONTINUE_R9_C1"
+}

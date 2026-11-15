@@ -1,5 +1,13 @@
 """Exact C11 indexing and empirical predicate evaluation for PRE553 I03."""
+from collections.abc import Iterator
+
+from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _RespondentEvents
+from rawlsing_next._pre553_verified_semantic_range import CertifiedRespondentEvents
+from rawlsing_next._pre553_external_i02_certificate import _DiskSelectedRespondent
 from rawlsing_next._pre553_query_common import *
+from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
+
+_SELECTOR_CONTRACT_VERSION = 1
 
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
     if isinstance(event, RoutingEligibilityFact):
@@ -9,6 +17,49 @@ def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: E
     return target == native or (canonical is not None and target == canonical)
 
 
+def _select_respondent_events(
+    index: _ReleaseIndex, respondent_key: str, target: ExactRef, *,
+    native_only: bool = False, include_component: bool = False,
+    states: frozenset[str] | None = None,
+) -> Iterator[RespondentEvent | _EventRead]:
+    """Internal selector contract v1, consumed by the existing I03 evaluator.
+
+    Native fallback yields RespondentEvent; compact selection yields _EventRead.
+    Both expose schema_id, exact ref, typed_state, native/canonical/component
+    refs, authority_snapshot_refs, raw/canonical values, multiplicity/order/rank
+    and response occurrence identity. Normalize refs with existing exact-ref
+    helpers. Compact refs are detached exports; semantic values are frozen.
+    Full native bodies and source/universe fields require the sealed index and
+    exact resolver. Ordinary events_by_respondent sequence iteration is native.
+
+    Preserve occurrence order and duplicates. native_only overrides component
+    and canonical matching; states=None includes all states, an empty set none.
+    Missing respondent keys raise KeyError. This handoff adds no authority:
+    CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query owns
+    per-call source/authority checks, sealed-index validation and fact/replay
+    semantics, including complete respondent universes and zero domains.
+    """
+    events = index.events_by_respondent[respondent_key]
+    # S2-C's versioned saved-read session is explicitly recognized, rather
+    # than accepting an arbitrary duck-typed selector as a native I03 issuer.
+    from rawlsing_next.pre553_direct_estate_i03 import DirectSelectedRespondent
+    if isinstance(events, (_RespondentEvents, CertifiedRespondentEvents,
+                           _DiskSelectedRespondent, DirectSelectedRespondent)):
+        yield from events.select(
+            target, native_only=native_only, include_component=include_component, states=states,
+        )
+        return
+    for event in events:
+        if native_only:
+            matches = _ref_field(event, "native_question_ref") == target
+        else:
+            matches = _question_matches(event, target) or (
+                include_component and _ref_field(event, "component_or_subitem_ref", allow_none=True) == target
+            )
+        if matches and (states is None or event.typed_state in states):
+            yield event
+
+
 def _coordinate_matches(coordinate: EmpiricalCoordinateFact, ref: ExactRef) -> bool:
     native = _ref_field(coordinate, "native_coordinate_ref")
     canonical = _ref_field(coordinate, "canonical_coordinate_ref_if_authorized", allow_none=True)
@@ -16,7 +67,8 @@ def _coordinate_matches(coordinate: EmpiricalCoordinateFact, ref: ExactRef) -> b
 
 
 def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:
-    universes = [o for o in release.public_objects if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
+    public = release.public_objects
+    universes = [o for o in release._public_non_events if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
     if len(universes) != 1:
         raise EmpiricalQueryResolutionError("exact universe must resolve once inside sealed C11 release")
     universe = universes[0]
@@ -27,15 +79,12 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             if key in respondents and respondents[key] != record:
                 raise EmpiricalQueryResolutionError("conflicting exact respondent identity")
             respondents[key] = record
-    if not respondents:
-        respondents = {}
-
     events: dict[str, list[RespondentEvent]] = {key: [] for key in respondents}
     coords: dict[str, list[EmpiricalCoordinateFact]] = {key: [] for key in respondents}
     routing: dict[str, list[RoutingEligibilityFact]] = {key: [] for key in respondents}
     weights: dict[str, list[WeightMeasureFact]] = {key: [] for key in respondents}
     relations: list[SourceUniverseRelation] = []
-    for obj in release.public_objects:
+    for obj in release._public_non_events:
         if isinstance(obj, SourceUniverseRelation):
             if universe_ref.as_dict() in tuple(obj.source_universe_refs):
                 relations.append(obj)
@@ -57,31 +106,57 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             routing[respondent_ref.key].append(obj)
         else:
             weights[respondent_ref.key].append(obj)
-    for mapping in (events, coords, routing, weights):
-        for key in mapping:
-            mapping[key].sort(key=lambda obj: obj.ref.key)
+    def freeze_rows(rows):
+        return MappingProxyType({
+            key: tuple(sorted(objects, key=lambda obj: obj.ref.key))
+            for key, objects in rows.items()
+        })
+
     return _ReleaseIndex(
         release=release,
         universe=universe,
-        respondents=respondents,
-        events_by_respondent=events,
-        coordinates_by_respondent=coords,
-        routing_by_respondent=routing,
-        weights_by_respondent=weights,
+        respondents=MappingProxyType(respondents),
+        events_by_respondent=(
+            MappingProxyType({
+                key: public.by_respondent.get((universe_ref, key), ()) for key in respondents
+            })
+            if isinstance(public, _CompactPublicObjects) else freeze_rows(events)
+        ),
+        coordinates_by_respondent=freeze_rows(coords),
+        routing_by_respondent=freeze_rows(routing),
+        weights_by_respondent=freeze_rows(weights),
         source_relations=tuple(sorted(relations, key=lambda r: r.ref.key)),
     )
 
 
 def _validate_public_object_authorities(
-    obj: CanonicalSemanticObject,
+    obj: CanonicalSemanticObject | _EventRead,
     registry: AuthorityRegistry,
 ) -> tuple[AuthorityRef, ...]:
-    snapshots = validate_object_authority_closure(obj, registry)
-    for snapshot in snapshots:
+    runtime = None
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+        runtime = current_runtime_authorities()
+    except ImportError:
+        runtime = None
+
+    resolved: list[AuthorityRef] = []
+    for raw_ref in obj.authority_snapshot_refs:
+        ref = _authority(raw_ref, f"{obj.schema_id}.authority_snapshot_ref")
+        try:
+            snapshot = registry.resolve_exact(ref).snapshot
+        except Pre553AuthorityError:
+            if runtime is None or not runtime.is_positive_runtime_predicate_authority(ref):
+                raise
+            resolved.append(ref)
+            continue
         if snapshot.typed_state != "ALLOW":
             raise Pre553AuthorityError(
                 f"{obj.schema_id} authority closure contains nonpositive exact snapshot")
-    return tuple(snapshot.authority_ref for snapshot in snapshots)
+        resolved.append(snapshot.authority_ref)
+    if obj.schema_id != "AuthoritySnapshot" and not resolved:
+        raise Pre553AuthorityError("public semantic object lacks authority closure")
+    return tuple(resolved)
 
 
 def _leaf_exact_values(
@@ -103,8 +178,12 @@ def _leaf_match(
     respondent: RespondentIdentity,
     index: _ReleaseIndex,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
+    predicate_grammar_authority_ref: AuthorityRef | Mapping[str, Any] | None = None,
+    runtime_authorities: Pre553RuntimeAuthoritySet | None = None,
+    repository: C11Repository | None = None,
+    derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:
     leaf_type = node.get("leaf_type")
     respondent_key = respondent.ref.key
@@ -147,6 +226,56 @@ def _leaf_match(
                 result = result or semantic in values
         return result
 
+    if leaf_type == "SURVEY_RESPONSE_EVENT" and node.get("operation") is not None:
+        runtime_authorities = runtime_authorities or index.runtime_authorities
+        predicate_grammar_authority_ref = (
+            predicate_grammar_authority_ref or index.runtime_predicate_grammar_authority_ref
+        )
+        repository = repository or index.runtime_repository
+        if runtime_authorities is None or predicate_grammar_authority_ref is None or repository is None:
+            try:
+                from rawlsing_next.pre553_runtime_context import current_runtime_binding
+                binding = current_runtime_binding()
+            except ImportError:
+                binding = None
+            if binding is not None:
+                runtime_authorities = runtime_authorities or binding.authorities
+                predicate_grammar_authority_ref = (
+                    predicate_grammar_authority_ref
+                    or binding.predicate_grammar_authority_ref
+                )
+                repository = repository or binding.repository
+        if runtime_authorities is None or predicate_grammar_authority_ref is None:
+            raise Pre553AuthorityError(
+                "governed public predicate dialect requires exact interpreter authority")
+        if repository is None:
+            raise Pre553AuthorityError(
+                "predicate dialect release realization requires exact C11Repository")
+        contract = runtime_authorities.resolve_predicate_dialect(
+            predicate_grammar_authority_ref, node
+        )
+        question_ref, response_ref, native_value, scope_ref = contract.validate_leaf(node)
+        runtime_authorities.require_realized_release(
+            scope_ref,
+            repository=repository,
+            runtime_release_ref=index.release.release_ref,
+        )
+        result = False
+        for event in _select_respondent_events(index, respondent_key, question_ref, native_only=True):
+            used.append(event)
+            used_auth.extend(_validate_public_object_authorities(event, registry))
+            if event.typed_state != "SUBSTANTIVE_RESPONSE":
+                continue
+            result = result or runtime_authorities.match_exact_event_representation(
+                frozen_scope_ref=scope_ref,
+                runtime_release_ref=index.release.release_ref,
+                question_ref=question_ref,
+                response_value_ref=response_ref,
+                source_native_value=native_value,
+                event_raw_response_value=event.raw_response_value,
+            )
+        return result
+
     if leaf_type == "SURVEY_RESPONSE_EVENT":
         question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
         _exact(node.get("component_or_event_selector_ref"), "component_or_event_selector_ref")
@@ -162,9 +291,8 @@ def _leaf_match(
         if operator not in {"EQ", "IN", "STATE_EQ"}:
             raise EmpiricalQueryResolutionError("response predicate operator must be EQ/IN/STATE_EQ")
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
-        events = [e for e in index.events_by_respondent[respondent_key] if _question_matches(e, question_ref)]
         result = False
-        for event in events:
+        for event in _select_respondent_events(index, respondent_key, question_ref):
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("predicate response/topology authority does not bind matched C11 event")
             used.append(event)
@@ -206,9 +334,7 @@ def _leaf_match(
         if desired is None:
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
-        for event in index.events_by_respondent[respondent_key]:
-            if not _question_matches(event, question_ref):
-                continue
+        for event in _select_respondent_events(index, respondent_key, question_ref):
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)
@@ -220,8 +346,8 @@ def _leaf_match(
         branch_id = node.get("branch_definition_id")
         if not isinstance(branch_id, str) or not branch_id.strip():
             raise EmpiricalQueryResolutionError("branch_definition_id is required")
-        _exact(node.get("resolved_predicate_hash_or_exact_membership_ref"),
-               "resolved_predicate_hash_or_exact_membership_ref")
+        membership_ref = _exact(node.get("resolved_predicate_hash_or_exact_membership_ref"),
+                                "resolved_predicate_hash_or_exact_membership_ref")
         _exact(node.get("parent_ancestry_ref"), "parent_ancestry_ref")
         branch_auth = _authority(node.get("branch_algorithm_authority_ref"),
                                  "branch_algorithm_authority_ref")
@@ -229,13 +355,63 @@ def _leaf_match(
         _exact(node.get("branch_source_scope_ref"), "branch_source_scope_ref")
         if registry.resolve_exact(branch_auth).snapshot.typed_state != "ALLOW":
             raise Pre553AuthorityError("branch predicate authority is not positive")
-        member_values = _require_sequence(node.get("exact_member_respondent_refs"),
-                                          "exact_member_respondent_refs", allow_empty=True)
-        member_refs = _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+        if derived_branch_memberships is not None and membership_ref in derived_branch_memberships:
+            member_refs = derived_branch_memberships[membership_ref]
+        else:
+            member_values = _require_sequence(node.get("exact_member_respondent_refs"),
+                                              "exact_member_respondent_refs", allow_empty=True)
+            member_refs = frozenset(
+                _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+            )
         used_auth.append(branch_auth)
         return respondent.ref in member_refs
 
     raise Pre553SemanticCollapseError("unknown or forbidden empirical predicate leaf")
+
+
+def _compile_derived_branch_memberships(
+    node: Mapping[str, Any],
+) -> dict[ExactRef, frozenset[ExactRef]]:
+    """Compile exact derived-cohort membership once for one verified predicate AST.
+
+    The predicate's semantic identity is verified before evaluation.  This cache is
+    execution-local and nonauthoritative: it only avoids reparsing/re-sorting the
+    same immutable exact member refs for every respondent.
+    """
+    compiled: dict[ExactRef, frozenset[ExactRef]] = {}
+
+    def walk(raw: Mapping[str, Any]) -> None:
+        op = raw.get("op")
+        if op == "LEAF":
+            if raw.get("leaf_type") != "DERIVED_BRANCH_COHORT":
+                return
+            membership_ref = _exact(
+                raw.get("resolved_predicate_hash_or_exact_membership_ref"),
+                "resolved_predicate_hash_or_exact_membership_ref",
+            )
+            member_values = _require_sequence(
+                raw.get("exact_member_respondent_refs"),
+                "exact_member_respondent_refs",
+                allow_empty=True,
+            )
+            member_refs = frozenset(
+                _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+            )
+            prior = compiled.get(membership_ref)
+            if prior is not None and prior != member_refs:
+                raise EmpiricalQueryResolutionError(
+                    "one exact derived-branch membership ref resolves to conflicting member sets"
+                )
+            compiled[membership_ref] = member_refs
+            return
+        children = raw.get("children")
+        if children is None:
+            return
+        for child in _require_sequence(children, f"{op} children", allow_empty=False):
+            walk(_require_mapping(child, f"{op} child"))
+
+    walk(node)
+    return compiled
 
 
 def _eval_predicate(
@@ -244,25 +420,35 @@ def _eval_predicate(
     respondent: RespondentIdentity,
     index: _ReleaseIndex,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
+    derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:
     op = node.get("op")
     if op == "LEAF":
-        return _leaf_match(node, respondent=respondent, index=index, registry=registry,
-                           used=used, used_auth=used_auth)
+        return _leaf_match(
+            node, respondent=respondent, index=index, registry=registry,
+            used=used, used_auth=used_auth,
+            derived_branch_memberships=derived_branch_memberships,
+        )
     if op == "NOT":
         children = _require_sequence(node.get("children"), "NOT children")
         if len(children) != 1:
             raise EmpiricalQueryResolutionError("NOT requires exactly one child")
-        return not _eval_predicate(_require_mapping(children[0], "NOT child"),
-                                   respondent=respondent, index=index, registry=registry,
-                                   used=used, used_auth=used_auth)
+        return not _eval_predicate(
+            _require_mapping(children[0], "NOT child"),
+            respondent=respondent, index=index, registry=registry,
+            used=used, used_auth=used_auth,
+            derived_branch_memberships=derived_branch_memberships,
+        )
     if op in {"AND", "OR"}:
         children = _require_sequence(node.get("children"), f"{op} children")
         values = [
-            _eval_predicate(_require_mapping(child, f"{op} child"), respondent=respondent,
-                            index=index, registry=registry, used=used, used_auth=used_auth)
+            _eval_predicate(
+                _require_mapping(child, f"{op} child"), respondent=respondent,
+                index=index, registry=registry, used=used, used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
+            )
             for child in children
         ]
         return all(values) if op == "AND" else any(values)

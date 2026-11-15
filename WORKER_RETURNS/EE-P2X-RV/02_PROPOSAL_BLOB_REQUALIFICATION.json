@@ -1,0 +1,102 @@
+{
+  "schema": "RAWLSING_EE_P2X_RV_PROPOSAL_BLOB_REQUALIFICATION@1.0.0",
+  "status": "PASS__MINIMAL_CHANGE_REQUALIFICATION_COMPLETE",
+  "proposal_commit": "a842a067636af2836172222cea9f5b1367bcce63",
+  "commission_tip": "db88478a9ae3f0e73aa9bf6eb7091a6dcc598171",
+  "qualified_semantic_candidate": "5540c6c586d5d7ebdbe37814a6e51d64bcc8c06c",
+  "governed_evidence_execution": "d7bcf77768203a10d118f19f0235c02c822087fe",
+  "post_court_cleanup_head": "13e73f7219bc8e1e42c2a95020c5e53a9e97bb27",
+  "preserved_exact_proposal_blobs": [
+    {
+      "path": "WORKER_RETURNS/EE-P2X/09_LOCAL_COURT_FROZEN_EXPECTATIONS.json",
+      "proposal_git_blob_sha1": "1e336d0c7700997819876d6a5faa65389baf5dc3",
+      "qualified_git_blob_sha1": "1e336d0c7700997819876d6a5faa65389baf5dc3",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/10_LOCAL_COURT_RECEIPT_CONTRACT.json",
+      "proposal_git_blob_sha1": "7e729e6934fea270bf7d180faeeec33877e89fcf",
+      "qualified_git_blob_sha1": "7e729e6934fea270bf7d180faeeec33877e89fcf",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/10A_COURT_RUN_MANIFEST_CONTRACT.json",
+      "proposal_git_blob_sha1": "2d2293171167317338c39c57b848bec33e5f8aac",
+      "qualified_git_blob_sha1": "2d2293171167317338c39c57b848bec33e5f8aac",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/11_seed_ee_p2x_local_receipts.py",
+      "proposal_git_blob_sha1": "694d751fcb4cbaf59250532ce1261c25fcc4b9e1",
+      "qualified_git_blob_sha1": "694d751fcb4cbaf59250532ce1261c25fcc4b9e1",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/12_verify_ee_p2x_local_court.py",
+      "proposal_git_blob_sha1": "4394bb61beba08259349cac3afbfa599f9f1a9aa",
+      "qualified_git_blob_sha1": "4394bb61beba08259349cac3afbfa599f9f1a9aa",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE_AS_NORMALIZED_VERIFIER_BEHIND_DRIVER_BINDING"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/13_WVS7_C_PRESERVED_PORTABILITY_FAILURE.json",
+      "proposal_git_blob_sha1": "15cc59fe96c00a7178e0d9c318903e64c9e1d118",
+      "qualified_git_blob_sha1": "15cc59fe96c00a7178e0d9c318903e64c9e1d118",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE"
+    },
+    {
+      "path": "rawlsing_next/tests/test_ee_p2x_local_court_receipts.py",
+      "proposal_git_blob_sha1": "94cb87c0eaf812a430f73c1aa15e6233d3afa9e7",
+      "qualified_git_blob_sha1": "94cb87c0eaf812a430f73c1aa15e6233d3afa9e7",
+      "disposition": "BYTE_IDENTICAL__COMPATIBLE"
+    }
+  ],
+  "changed_proposal_blobs": [
+    {
+      "path": "WORKER_RETURNS/EE-P2X/LOCAL_EXECUTOR_README.md",
+      "proposal_git_blob_sha1": "632e57d12374eb7d88932df3766aeea2d90d31bb",
+      "qualified_git_blob_sha1": "b6b9e29cf6bbc19de79fe431672ed33f5d18fd0a",
+      "proved_incompatibility": [
+        "The proposal asserted that no continuation-reducer or Darwin driver preparation return was present.",
+        "The proposal instructed the executor to hand-maintain attempted_cells and coverage rather than consuming the qualified driver's durable stage ledger.",
+        "The proposal did not describe actual per-stage receipt schemas, output-artifact binding, supervisor-token capture, or the driver-only COMMON_COURT_BLOCKER disposition."
+      ],
+      "repair": "Replaced stale pre-driver executor instructions with the exact qualified driver/map/ledger/receipt/supervisor-token interface and the additive driver-bound verification flow.",
+      "scope": "DOCUMENTATION_AND_EXECUTOR_PROTOCOL_ONLY__NO_COURT_SEMANTICS_REDESIGNED"
+    }
+  ],
+  "additive_qualified_artifacts": [
+    {
+      "path": "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json",
+      "git_blob_sha1": "50c9a53d0d77131df7c619114b476afce0b0bb0f",
+      "purpose": "Exact adopted reducer and qualified-driver interface contract; supplements rather than rewrites the preserved normalized contracts."
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/11A_sync_ee_p2x_driver_manifest.py",
+      "git_blob_sha1": "1a3124e801654b07d1f2c77af61c9e11ffcc4b40",
+      "purpose": "Deterministically synchronize normalized manifest facts from the driver's durable ledger without creating measurements."
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+      "git_blob_sha1": "da8f3434f791c9f6495238b28817de4b3e328ad3",
+      "purpose": "Validate exact driver/map/ledger/per-stage receipt/output/token interfaces, exact reducer transitions and then invoke the preserved normalized verifier."
+    },
+    {
+      "path": "rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py",
+      "git_blob_sha1": "eb9fe9184e569ced70661d2f9eaf247f53b7267f",
+      "purpose": "Browser-only hostile integration qualification; no empirical carriers or performance values."
+    },
+    {
+      "path": "rawlsing_next/tests/test_ee_p2x_rv_governed_browser_court.py",
+      "git_blob_sha1": "7242712f8f97122f06e474762bacd88321bd773b",
+      "purpose": "Governed bounded-court bridge over the 11 normalized tests, 19 driver tests and 10 driver-integration tests."
+    }
+  ],
+  "transient_qualification_artifact": {
+    "path": ".rabochii/court_spec.json",
+    "final_qualification_git_blob_sha1": "bd574316b9734934ca380dbe284bd966763da61f",
+    "semantic_candidate_sha": "5540c6c586d5d7ebdbe37814a6e51d64bcc8c06c",
+    "evidence_execution_sha": "d7bcf77768203a10d118f19f0235c02c822087fe",
+    "post_qualification_disposition": "REMOVED_FROM_WORKER_BRANCH_AFTER_GOVERNED_PASS"
+  },
+  "holding": "Seven original proposal surfaces remain byte-identical. Exactly one original proposal blob changed because it contained a proved stale pre-driver interface description. All executable requalification work is additive and bounded to the actual adopted driver/reducer interface."
+}

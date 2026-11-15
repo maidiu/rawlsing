@@ -1,0 +1,275 @@
+{
+  "packet_id": "S2-D",
+  "task_id": "PYAT991-S2D-PHASE1",
+  "old_obligations": ["P2-05"],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "contract_frozen_at_sha": "d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "persona_role": "S2D_PHASE1_A",
+  "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat991-s2d-a-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a",
+  "startup_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "base_sha": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2c": {
+    "verdict": "ACCEPT_SCOPED__S2C_TERMINAL_CLOSED@b7b697b69f0acea12174937ee824c19ac34ac284",
+    "tree": "dc416d1f23100d4d52b19bc2120226964bc0be43",
+    "documentary_head": "f4f1558fd1043fb65a8140f3bed427d2221a4637",
+    "g5": "31 focused + 91 inherited PASS on Linux Lima s2b",
+    "local_results": "/Users/matthewsmith/s2b-work/pyat-s2c-g5-terminal-evidence/LOCAL_S2C_G5_TERMINAL_RESULTS.json",
+    "local_results_sha256": "b331632fa798eeac89dd86a6284d6b17ad406e36fa6158a1d74afd078226f260",
+    "local_return": "/Users/matthewsmith/s2b-work/pyat-s2c-g5-terminal-evidence/LOCAL_S2C_G5_TERMINAL_RETURN.md",
+    "local_return_sha256": "1744c7d52a3ed9f3aafd5f6518743903c3d8c2b562d3bf1e8c1e155da57dadb3",
+    "accepted_code_blobs": {
+      "rawlsing_next/pre553_source_direct_parquet_estate.py": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+      "rawlsing_next/pre553_direct_estate_i03.py": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+      "rawlsing_next/pre553_carrier_execution.py": "ad1164f21f5f7422a03a19b1b856636edb89cb03",
+      "rawlsing_next/pre553_empirical_query.py": "8885e637eb176946c8496671ff49ee70665b3bc6"
+    }
+  },
+  "lease": {
+    "id": "PYAT991_PHASE1_EXCLUSIVE_NEW_MODULES_R1",
+    "path": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/S2D_PHASE1_LEASE.json",
+    "shared_owner_ack": "PENDING_REQUEST https://github.com/maidiu/rawlsing/issues/919#issuecomment-6848800312",
+    "new_write_paths_used": [
+      "rawlsing_next/pre553_saved_c11_admission.py",
+      "rawlsing_next/pre553_saved_workload_integration.py",
+      "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py",
+      "WORKER_RETURNS/PYAT991_S2D_A/"
+    ],
+    "shared_files_edited": [],
+    "s2c_files_edited": false,
+    "existing_owner_files_edited": false
+  },
+  "changed_paths": [
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/pre553_saved_workload_integration.py",
+    "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py",
+    "WORKER_RETURNS/PYAT991_S2D_A/receipt.json",
+    "WORKER_RETURNS/PYAT991_S2D_A/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT991_S2D_A/resource_probe.py",
+    "WORKER_RETURNS/PYAT991_S2D_A/resource.json",
+    "WORKER_RETURNS/PYAT991_S2D_A/focused-15.txt"
+  ],
+  "source_blob_pins": {
+    "new_modules": {
+      "rawlsing_next/pre553_saved_c11_admission.py": "2f2f53639f61c0ef0feacd8775d0d383e9db5e03",
+      "rawlsing_next/pre553_saved_workload_integration.py": "fd3fa4378d2c15f85ee1fa0f68714307bc1de54c",
+      "rawlsing_next/tests/test_pyat991_s2d_saved_admission.py": "e0a2c1f0711e2e82e677e294d66945460d8a8699"
+    },
+    "startup_shared_ro": {
+      "rawlsing_next/pre553_batch_runner.py": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "rawlsing_next/pre553_issued_workload.py": "47db61752d08fa5c774436b2c29e489a8d91c3f2",
+      "rawlsing_next/pre553_carrier_execution.py": "ad1164f21f5f7422a03a19b1b856636edb89cb03",
+      "rawlsing_next/pre553_empirical_query.py": "8885e637eb176946c8496671ff49ee70665b3bc6",
+      "rawlsing_next/pre553_discovery_exact.py": "1b82b6df993bf14afa5e78782d988cba6e76b668"
+    },
+    "q2_s1e_not_in_accepted_s2c_tree": {
+      "accepted_code": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94",
+      "independent_g5": "41f479315cd42b31c28b4f4c91d225207f119c8f",
+      "note": "The accepted S2-C tree at b7b697 does not contain pre553_source_i02_handoff.py or pre553_source_i02_streams.py. Q2 remains an external accepted compatibility handoff; this packet did not merge it."
+    }
+  },
+  "gates": {
+    "G1": {
+      "state": "PARTIAL",
+      "receipt": "Accepted S2-C physical root/reader API is pinned and a new exact SavedC11Admission wrapper is implemented without a C11LogicalRelease/C11Repository graph. Existing I03 and I05 owners are reused. G1 is not complete for Batch, NORMAL, COMPLETED, PARTIAL or ABSENT because the shared owner ACK is absent."
+    },
+    "G2": {
+      "state": "PARTIAL",
+      "receipt": "Actual process-exited cold I03 and I05 execute on the accepted S2-C estate; fresh-process I03 and I05 execute without source or C11 graph; I03 changed/restore is exact. The five remaining real readers are BLOCKED_OWNERSHIP, not passed."
+    },
+    "G3": {
+      "state": "PARTIAL",
+      "receipt": "Actual cold I03 refuses revoked current, wrong independently held manifest and missing body, and the original Batch guard actually refuses the saved admission. Full mixed-universe, forged-checkpoint, partial-discovery and interrupted-resume matrix is not run because those readers are blocked."
+    },
+    "G4": {
+      "state": "PARTIAL",
+      "receipt": "Actual fixture resource evidence for cold I03/I05 is recorded: retained 193222 B, 17 files, cold I03 0.016766 s, repeat 0.014585 s, fresh child 54771712 B and 0.019359 s, no C11 graph/whole-table fallback. Peak staging/orphan, Batch/resume resources and integrated 100k/6GiB are NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": null,
+      "receipt": "No independent S2-D G5. B has not attacked this A turn; distinct G5 follows B/A."
+    }
+  },
+  "mandatory_cases": [
+    {
+      "id": "S2D_I03_COLD_NATIVE_PARITY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_cold_saved_i03_matches_native_oracle_without_c11_or_source -q -o addopts=''",
+      "actual": "Actual S2-C estate cold reopened; native I03 fact refs and semantic projections equal oracle; C11Repository.__init__ and pq.read_table were forbidden during the observed path; no source. Fact state SUPPORTED, denominator 2."
+    },
+    {
+      "id": "S2D_I05_COLD_NATIVE_PARITY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_cold_saved_i05_matches_native_frontier_without_c11_or_source -q -o addopts=''",
+      "actual": "Existing execute_exact_bounded_discovery over DirectEstateI03Session returns exactly the native oracle candidate count 1, covered 1, fact refs 2 and the same DiscoveryResultReceipt identity; no C11 graph/whole-table fallback/source."
+    },
+    {
+      "id": "S2D_FRESH_PROCESS_I03",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_fresh_process_saved_i03_after_producer_source_is_gone -q -o addopts=''",
+      "actual": "Separate Python interpreter receives only the estate path, external pins, exact release and public query/predicate/authority preimages. It returns exact fact refs/projections/release refs; no source or C11 repository is passed. Child RSS 54771712 B in the resource probe; 0.019359 s."
+    },
+    {
+      "id": "S2D_FRESH_PROCESS_I05",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_fresh_process_saved_i05_after_producer_source_is_gone -q -o addopts=''",
+      "actual": "Separate interpreter returns exact candidate/covered counts, empirical fact refs and DiscoveryResultReceipt refs for the accepted saved estate; no source/C11 graph."
+    },
+    {
+      "id": "S2D_I03_CHANGED_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_changed_cold_estate_changes_native_i03_and_restore_is_exact -q -o addopts=''",
+      "actual": "Changed valid source/estate changes the native fact ref and matches its changed native oracle; reopening the original estate restores the exact original fact ref/signature."
+    },
+    {
+      "id": "S2D_I03_NEGATIVES",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_revoked_current_wrong_pin_and_missing_body_refuse -q -o addopts=''",
+      "actual": "Revoked current refuses after a valid prior query; wrong independently held manifest refuses; missing RespondentEvent.parquet refuses as a missing member, never EMPTY/UNKNOWN."
+    },
+    {
+      "id": "S2D_BATCH_GUARD_EXACT_REFUSAL",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_batch_guard_actually_refuses_until_owner_ack -q -o addopts=''",
+      "actual": "BatchExecutionRunner.__init__ actually raises 'repository must be accepted I02 C11Repository' for the saved admission. This is an honest ownership blocker; no monkeypatch or fake C11 graph was used."
+    },
+    {
+      "id": "S2D_NORMAL_COMPLETED_PARTIAL_ABSENT",
+      "result": "BLOCKED_OWNERSHIP",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat991_s2d_saved_admission.py::test_shared_owner_readers_are_typed_holds_not_fake_seven_pass -q -o addopts=''",
+      "actual": "New integration functions raise exact SavedWorkloadOwnerHandoffRequired with path/function/minimum edit for the shared owners. No all-seven PASS is claimed."
+    },
+    {
+      "id": "S2D_G5",
+      "result": "NOT_RUN",
+      "command": "not run",
+      "actual": "No independent nonauthor S2-D receiver in this A turn."
+    }
+  ],
+  "actual_first_consumer": {
+    "I03": "rawlsing_next.pre553_saved_c11_admission.SavedC11Admission.execute_i03 -> pre553_saved_workload_integration.execute_saved_i03 -> existing CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query over DirectEstateI03Session",
+    "I05": "SavedC11Admission.execute_i05 -> existing execute_exact_bounded_discovery over DirectEstateI03Session",
+    "estate": "accepted S2-C VerifiedDirectEstate at b7b697",
+    "release_identity": "estate.reconstructed_v1_release_ref; direct i02.release is distinct and never treated as a v1 seal"
+  },
+  "test_evidence": {
+    "focused_command": "python3 -m pytest rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py -q -o addopts=''",
+    "focused_result": "15 passed in 4.06s",
+    "focused_log": "WORKER_RETURNS/PYAT991_S2D_A/focused-15.txt",
+    "new_test_count": 8,
+    "accepted_s2c_test_count": 7,
+    "product_shared_tests": "NOT_RUN/READ_ONLY; no shared file changed"
+  },
+  "resource_evidence": {
+    "probe": "WORKER_RETURNS/PYAT991_S2D_A/resource_probe.py",
+    "results": "WORKER_RETURNS/PYAT991_S2D_A/resource.json",
+    "artifact_files": 17,
+    "retained_disk_bytes": 193222,
+    "peak_root_tree_bytes": 193222,
+    "peak_staging_bytes": null,
+    "cold_i03_seconds": 0.01676621299702674,
+    "repeat_i03_seconds": 0.014584831005777232,
+    "fresh_child_peak_rss_bytes": 54771712,
+    "fresh_child_elapsed_seconds": 0.019359204001375474,
+    "source_opens_in_child": 0,
+    "full_c11_builds": 0,
+    "i03_fact_state": "SUPPORTED",
+    "i03_denominator": 2,
+    "i05_candidate_count": 1,
+    "i05_covered_count": 1,
+    "i05_fact_count": 2,
+    "i05_receipt_count": 1,
+    "integrated_100k_6GiB": "NOT_RUN",
+    "measurement_note": "Single fixture; peak staging/orphan disk was not separately measured; child RSS is one child process, not a multi-process-tree benchmark."
+  },
+  "first_consumer_status": {
+    "I03": "PASS_SCOPED_ACTUAL_COLD",
+    "I05": "PASS_SCOPED_ACTUAL_COLD",
+    "Batch": "BLOCKED_OWNERSHIP__BatchExecutionRunner.__init__",
+    "NORMAL": "BLOCKED_OWNERSHIP__execute_issued_workload",
+    "COMPLETED": "BLOCKED_OWNERSHIP__resume_joined_workloads/checkpoint",
+    "PARTIAL": "BLOCKED_OWNERSHIP__resume_joined_workloads/checkpoint",
+    "ABSENT": "BLOCKED_OWNERSHIP__resume_joined_workloads/checkpoint"
+  },
+  "owner_handoffs": [
+    {
+      "reader": "Batch",
+      "owner": "BatchExecutionRunner owner",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "function": "BatchExecutionRunner.__init__",
+      "minimum_edit": "Accept exact SavedC11Admission (or a narrowly approved saved repository surface) at the line-402 guard and resolve its exact SavedReleaseIdentity; never build/accept a full C11LogicalRelease/repository."
+    },
+    {
+      "reader": "NORMAL",
+      "owner": "S1-D/issued-workload owner",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "function": "execute_issued_workload",
+      "minimum_edit": "Add optional saved_admission and skip source_factory/build_source_backed_c11_repository when supplied; retain current, fates and existing Batch/I03/I05 owners."
+    },
+    {
+      "reader": "COMPLETED/PARTIAL/ABSENT",
+      "owner": "S1-D/issued-workload checkpoint owner",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "function": "resume_joined_workloads / JoinedWorkloadCheckpoint / capture_joined_checkpoint",
+      "minimum_edit": "Bind exact manifest/I02/reconstructed-v1-release/admission to checkpoint entries and use the saved-admission path in partial/absent while preserving current, prior receipts/outputs and no-drop receipts."
+    },
+    {
+      "reader": "current",
+      "owner": "S1-D current issuer + shared carrier/query owner",
+      "path": "rawlsing_next/pre553_empirical_query.py; pre553_carrier_execution.py; pre553_issued_workload.py",
+      "function": "exact current/revocation composition",
+      "minimum_edit": "Use the existing CurrentDecisionResolver/admit composition with saved consumers; do not treat the S2-C TEST_ONLY callback as production CURRENT."
+    }
+  ],
+  "joint_s1e": {
+    "accepted_q2": "8b51dc8f1dd5bb622dda8bad3b11f6c5d703da94 / G5 41f479315cd42b31c28b4f4c91d225207f119c8f; SOURCEFREE_PROVISIONAL_TEST_ONLY_COMPATIBILITY; not cold estate",
+    "accepted_s2c_tree_contains_q2_handoff": false,
+    "q2_producer_gap": "Q2 SourceI02Handoff/body sink is not present in the accepted S2-C tree; this A used the accepted S2-C test/native candidate producer for the actual saved estate. Actual production source->S2-C body-sink composition remains an external Q2/S2-C handoff.",
+    "postconsumer_fate_join": "Q2 operation_fates are pre-consumer with issued_receipt_refs=() and native HOLD; no postconsumer native receipt->operation/fate join is present in the startup tree. This remains S1-E/S1-C owner work and is not claimed."
+  },
+  "engineering_grade": "S2_SOURCEFREE_SAVED_I03_I05_ACTUAL__FIVE_OWNER_BLOCKS",
+  "scientific_grade": "NONE_VERIFIED; sourcefree TEST_ONLY engineering only; no original35/source/science",
+  "authority_grade": "HOLD; S1-D production current absent; shared owner ACK absent; accepted S2-C G5 is producer evidence only",
+  "open_defects": [
+    {
+      "severity": "SEV-1",
+      "case": "Batch, NORMAL, COMPLETED, PARTIAL and ABSENT are not integrated.",
+      "disposition": "BLOCKED_OWNERSHIP. Exact owner paths/functions/minimum edits are recorded; no shared file edit or fake C11 graph was used."
+    },
+    {
+      "severity": "SEV-2",
+      "case": "Peak staging/orphan disk and full process-tree resource are not measured; only single-child RSS and retained root are measured.",
+      "disposition": "NOT_RUN / honest resource boundary."
+    },
+    {
+      "severity": "SEV-2",
+      "case": "Actual Q2 source->S2-C body-sink composition and postconsumer fate/receipt join are absent from the accepted S2-C tree.",
+      "disposition": "External S1-E/S2-C owner handoff."
+    }
+  ],
+  "external_holds": [
+    {"owner": "shared Batch/issued-workload owners", "minimal_missing_witness": "narrow owner ACK/lease for exact saved admission, normal and resume integration"},
+    {"owner": "S1-D production current/revocation", "minimal_missing_witness": "actual independent current decision resolver and revocation evidence; TEST_ONLY callback only here"},
+    {"owner": "Q2/S1-E source producer and fate join", "minimal_missing_witness": "accepted body-sink->S2-C composition and postconsumer native receipt->operation/fate join"},
+    {"owner": "S2-B G5-R1 independent recheck", "minimal_missing_witness": "independent verdict at 092db6...; not claimed"},
+    {"owner": "original35/source science/rights", "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; none read or claimed"},
+    {"owner": "integrated 100k respondents/6GiB", "minimal_missing_witness": "complete accepted vertical workload; NOT_RUN"},
+    {"owner": "independent S2-D G5", "minimal_missing_witness": "distinct nonauthor after B/A; NOT_RUN"}
+  ],
+  "own_worst_vulnerability": "The new admission is only exercised for I03/I05; the five shared readers have no actual saved execution. A hostile test could also construct a caller-supplied current callback that returns True; this is explicitly TEST_ONLY, not S1-D production current. The I05 path uses the existing discovery owner directly because the accepted S2-C carrier refuses saved I05.",
+  "missing_proof": "No actual Batch/NORMAL/COMPLETED/PARTIAL/ABSENT saved execution, no shared-owner ACK, no production current/revocation integration, no Q2 body-sink/fate join, no Linux run of the new modules, no full 100k/6GiB, no independent S2-D G5.",
+  "strongest_next_falsifier": "Try to make a forged caller current callback, a fake SavedC11Admission/release identity or an altered public catalog reach a native I03/I05 fact after the estate is opened; separately inspect whether the I05 session can be reused across query boundaries or whether a non-exact subclass/deep-frozen catalog can bypass the new type checks.",
+  "disposition": "BLOCKED_OWNERSHIP",
+  "stop_state": "IMPLEMENTED_I03_I05__HOLD_SHARED_OWNER_ACK",
+  "integration": "UNMERGED",
+  "known_session_cost": "UNKNOWN",
+  "sourcefree": true,
+  "original35_claimed": false,
+  "production_current_claimed": false,
+  "protected_merge": "NONE"
+}

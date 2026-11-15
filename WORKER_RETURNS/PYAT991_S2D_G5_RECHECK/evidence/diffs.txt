@@ -1,0 +1,82 @@
+prior G5 cut 2b1f8d -> repair 5478210 code/test diff:
+ rawlsing_next/pre553_saved_c11_admission.py        |  16 +-
+ .../tests/test_pyat991_s2d_g5_source_scope.py      | 226 +++++++++++++++++++++
+ 2 files changed, 241 insertions(+), 1 deletion(-)
+
+exact 16-line admission delta:
+diff --git a/rawlsing_next/pre553_saved_c11_admission.py b/rawlsing_next/pre553_saved_c11_admission.py
+index 7d1807be4..10e1a1375 100644
+--- a/rawlsing_next/pre553_saved_c11_admission.py
++++ b/rawlsing_next/pre553_saved_c11_admission.py
+@@ -156,6 +156,7 @@ class SavedC11Admission:
+         "_runtime_catalog",
+         "_executor",
+         "_universe_ref",
++        "_source_ref",
+         "_frozen",
+     )
+ 
+@@ -235,11 +236,14 @@ class SavedC11Admission:
+         universe_ref = _ref_from_key(
+             estate.i02.universe, "EmpiricalUniverse@1.0.0"
+         )
++        source_kind = estate.i02.source.split("|", 1)[0]
++        source_ref = _ref_from_key(estate.i02.source, source_kind)
+         object.__setattr__(self, "_estate", estate)
+         object.__setattr__(self, "_release_ref", release_ref)
+         object.__setattr__(self, "_runtime_catalog", private_catalog)
+         object.__setattr__(self, "_executor", executor)
+         object.__setattr__(self, "_universe_ref", universe_ref)
++        object.__setattr__(self, "_source_ref", source_ref)
+         object.__setattr__(self, "_frozen", True)
+         estate._live()
+ 
+@@ -283,6 +287,12 @@ class SavedC11Admission:
+     def estate_path(self) -> str:
+         return self._estate.directory.as_posix()
+ 
++    @property
++    def source_ref(self) -> ExactRef:
++        """Exact admitted source artifact, derived from the estate's I02 root."""
++
++        return self._source_ref
++
+     def binding_receipt(self) -> SavedBindingReceipt:
+         return SavedBindingReceipt(
+             schema="PYAT991_S2D_SAVED_C11_ADMISSION@1",
+@@ -320,7 +330,11 @@ class SavedC11Admission:
+             raise SavedC11AdmissionError(
+                 "saved consumer scope names a foreign C11 release"
+             )
+-        allowed = {self._universe_ref.key, self._release_ref.key}
++        allowed = {
++            self._universe_ref.key,
++            self._release_ref.key,
++            self._source_ref.key,
++        }
+         if any(ref.key not in allowed for ref in parsed):
+             raise SavedC11AdmissionError(
+                 "saved consumer scope contains a foreign scope reference"
+
+repair delivery names:
+A	WORKER_RETURNS/PYAT991_S2D_G5/00_HANDOFF.md
+A	WORKER_RETURNS/PYAT991_S2D_G5/evidence/diffs.txt
+A	WORKER_RETURNS/PYAT991_S2D_G5/evidence/focused_26.txt
+A	WORKER_RETURNS/PYAT991_S2D_G5/evidence/refs.txt
+A	WORKER_RETURNS/PYAT991_S2D_G5/evidence/remote_verification.txt
+A	WORKER_RETURNS/PYAT991_S2D_G5/evidence/scope_witness_evidence.json
+A	WORKER_RETURNS/PYAT991_S2D_G5/evidence/scope_witness_run.out
+A	WORKER_RETURNS/PYAT991_S2D_G5/receipt.json
+A	WORKER_RETURNS/PYAT991_S2D_G5/resource.json
+A	WORKER_RETURNS/PYAT991_S2D_G5/resource_probe.py
+A	WORKER_RETURNS/PYAT991_S2D_G5/resource_run.out
+A	WORKER_RETURNS/PYAT991_S2D_G5/scope_false_refusal.py
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/00_HANDOFF.md
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/canonical_g5_scope_witness.py
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/focused-29.txt
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_after_repair.json
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_after_repair.out
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/g5_scope_witness_before_repair.json
+A	WORKER_RETURNS/PYAT991_S2D_SOURCE_SCOPE_REPAIR/receipt.json
+M	rawlsing_next/pre553_saved_c11_admission.py
+A	rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py

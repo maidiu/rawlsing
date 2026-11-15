@@ -1,0 +1,255 @@
+# FIABC CANONICAL TERMINAL READINESS REPAIR — R1 RETURN
+
+## Identity
+
+- Exact canonical base SHA: `3206bad6419e02c3aa12fff38e288e4faf13d82d`
+- Worker branch: `agent/rabochii-premain-fiabc-terminal-readiness-r1`
+- Bounded repair head before return-packet commits: `00cc1c0fbe945cd7bbc6a8187aaf5533c9fb9b38`
+- Exact final worker SHA: the authoritative branch-head SHA produced by the commit containing this return file is reported in the worker terminal response. A commit cannot truthfully embed its own resulting SHA in its own content without a cryptographic self-reference; no false pre-commit SHA is asserted here.
+- Canonical PRE-MAIN was **not** fast-forwarded by this worker.
+
+## Changed paths
+
+Bounded repair:
+
+1. `rawlsing_next/pre553_independent_parity_oracle.py`
+2. `rawlsing_next/fiabc_final_oracle_freeze_producers.py`
+3. `WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh`
+4. `WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh`
+5. `WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh`
+
+Return packet:
+
+6. `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/00_RETURN.md`
+7. `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/01_CHANGED_FILES.md`
+8. `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/02_STATIC_AUDIT.json`
+9. `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/03_LOCAL_QUALIFICATION_COMMAND.md`
+
+## LiTS 50/77 authority provenance
+
+The existing candidate-neutral oracle/constitution owner, `rawlsing_next/pre553_independent_parity_oracle.py`, already enforced the LiTS terminal constitution with literal values 50 candidates and 77 query roles. The independent execution manifest `WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json` independently binds `learned_candidates: 50` and `learned_roles: 77`.
+
+This repair mints no authority. It names the already-governing values exactly once at the current owner:
+
+```python
+LITS_CANDIDATE_COUNT = 50
+LITS_QUERY_ROLE_COUNT = 77
+```
+
+All semantically identical LiTS 50/77 checks in that owner now consume those names.
+
+## Exact symbol-ownership repair
+
+`rawlsing_next/fiabc_final_oracle_freeze_producers.py` now imports `LITS_CANDIDATE_COUNT` and `LITS_QUERY_ROLE_COUNT` from `pre553_independent_parity_oracle.py`. Because those imports are module-scope names, the producer now resolves/re-exports the symbols expected by `rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py`.
+
+The producer defines no competing 50/77 constants.
+
+## Exact interpreter-selection repair
+
+Each required shell launch surface now:
+
+1. prefers `python3` when present;
+2. otherwise selects `python`;
+3. fails immediately if neither executable exists;
+4. verifies that the selected interpreter has Python major version 3;
+5. stores the selected executable in `PYTHON_BIN` and uses it for every subsequent Python operation.
+
+No bare operational `python ...` invocation remains in the three required scripts.
+
+The source-free qualification script additionally pins the exact repaired oracle and producer Git blobs before allowing those two paths through its existing FIABC reconciliation drift filter. This is required so the canonical qualification does not reject the bounded repair it is meant to qualify.
+
+## Proof of semantic non-change
+
+Static base→worker comparison establishes:
+
+- oracle code, after mechanically substituting the two new names back to literals 50/77 and removing the two definitions, is byte-for-byte equal to the base oracle file;
+- producer code, after removing the two new import lines, is byte-for-byte equal to the base producer file;
+- all identity-bearing assignment lines in both modules are unchanged;
+- LiTS frontier seal, source SHA, learned-product identity, semantic replay identity, projection/release identities, typed-terminal law, candidate ordering, WVS successor Lock2/Lock2 replay/discovery authority, and oracle law were not altered;
+- no telemetry metric, candidate implementation, workload constitution, architecture-selection law, or empirical source semantics were changed.
+
+## Static court
+
+All 12 required checks PASS:
+
+1. `LITS_CANDIDATE_COUNT` resolves from the exact authoritative owner.
+2. Value is exactly `50`.
+3. `LITS_QUERY_ROLE_COUNT` resolves from the exact authoritative owner.
+4. Value is exactly `77`.
+5. Producer resolves/re-exports both names and defines no competing values.
+6. Existing test import now has a valid symbol path.
+7. FIABC/WVS/P2/PRE553 semantic identities are unchanged.
+8. All three required launch scripts choose and verify Python 3 fail-closed.
+9. No bare operational `python` invocation remains in those scripts.
+10. Source-free qualification contains no `LITS_PATH`, `WVS_PATH`, `produce-lits`, `standardize-wvs`, `freeze-t3`, `--run`, or `--resume`; its pre-existing import/compile/pytest/static-assertion payload order is preserved after the new interpreter guard.
+11. Pre-candidate preflight still uses `--preflight` and contains no candidate `--run` or `--resume`; its pre-existing payload command order is preserved.
+12. The measured runner still has one measured-driver `--run`; the frozen manifest remains exactly six cells in order `LITS_I/A`, `LITS_I/B`, `LITS_I/C`, `WVS7/A`, `WVS7/B`, `WVS7/C`, and the driver retains its exact source/candidate order guards and serialized continuation loop.
+
+Machine-readable evidence is in `02_STATIC_AUDIT.json`.
+
+## Local qualification follow-up
+
+The user subsequently ran the required source-free local qualification from exact worker head `97329d51aac6bec495114b5e89e60260c2fcc846` and reported:
+
+```text
+154 passed, 9 failed, 28 subtests passed in 9.16s
+```
+
+The green terminal was therefore correctly not emitted.
+
+Static browser/GitHub diagnosis found all nine failures to be qualification-test/fixture drift rather than production semantic-law failures:
+
+- one completeness hostile test expected `TC_REQUIRED_METRIC_ABSENT`, but current exact 35-key set validation lawfully fails first with `TC_METRIC_SET_DRIFT`;
+- one R1J preflight test required the successor discovery SHA to be textually inlined even though the active backend binds that exact SHA through `WVS_DISCOVERY_AUTHORITY`;
+- seven legacy Darwin driver-mechanics fixtures directly supplied synthetic backend receipts without the now-governing exact T3 process envelope required by T4 live accounting.
+
+The bounded follow-up changed only those test/qualification surfaces. It did **not** weaken the production T3/T4 seam: the dedicated T3 process-envelope and T4 live-accounting test suites remain in the source-free qualification command.
+
+See `04_LOCAL_QUALIFICATION_FAILURE_FOLLOWUP.md` for exact diagnosis and repair.
+
+A fresh local source-free qualification rerun is required; this worker did not execute it.
+
+## Second local qualification follow-up
+
+The user reran source-free qualification from `c0fa63e0817bca56566049e86bf192934964868a`. Pytest was fully green:
+
+```text
+163 passed, 28 subtests passed in 9.49s
+```
+
+Qualification then stopped only in its final static cross-lane assertion because the shell script referenced non-existent `oracle.WVS7_LOCK2_REPLAY`.
+
+The authoritative oracle export is `WVS7_LOCK2_REPLAY_IDENTITY`, and its value exactly equals `WVS7_SUCCESSOR_LOCK2_REPLAY` in live terminal control. The qualification assertion was corrected to that exact symbol. No production Python module or semantic identity changed.
+
+See `05_LOCAL_QUALIFICATION_FINAL_ASSERTION_FOLLOWUP.md`. A fresh local rerun remains required; this Browser/GitHub worker did not execute it.
+
+## Final local source-free qualification closure
+
+The user completed the source-free local qualification from exact worker head `6e2b817c80fc8745354e4a54103ba97a04c4437d`.
+
+Reported result:
+
+```text
+163 passed, 28 subtests passed
+RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE
+```
+
+The user reported a clean worktree and confirmed the run stopped before pre-candidate freeze, oracle generation/standardization, Candidate A/B/C, and measured P2X.
+
+**Disposition: PASS. The source-free canonical qualification court is closed.**
+
+This is user-executed local evidence; the Browser/GitHub worker did not execute the local runtime itself. See `06_LOCAL_SOURCE_FREE_QUALIFICATION_GREEN.md`.
+
+The next phase is pre-candidate freeze under separate governing authorization; it was not started here.
+
+## Execution branch transition holding
+
+The subsequent local pre-candidate attempt failed closed before source access because the launch scripts still carried the historical `aa155257...` qualified-head guard and required the governed P2X execution branch.
+
+Repository history confirms the branch requirement is intentional, while the old code-head guard is stale.
+
+The governed next step is therefore:
+
+1. keep the dedicated execution-branch identity `agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1`;
+2. fast-forward that existing branch from its old ancestor head to this repaired terminal-readiness line;
+3. run pre-candidate preflight from that execution branch.
+
+Both pre-candidate and measured launch scripts now bind the actual green-qualified code head `6e2b817c80fc8745354e4a54103ba97a04c4437d` plus qualification-closure head `cbda295ec2e265709f1634b643e27abf704582d3`, and permit after-green drift only inside the terminal-readiness return directory and final launch-pack directory.
+
+Do **not** relax the scripts to execute from the terminal-readiness worker branch. See `07_EXECUTION_BRANCH_TRANSITION_AND_PREFLIGHT_GUARD_REPAIR.md`.
+
+## LiTS typed-representation blocker after lawful pre-candidate entry
+
+The governed P2X execution branch was fast-forwarded correctly to `e8909490cdc619beb884029cdabdc7027db663cf`. The user then ran pre-candidate preflight.
+
+Reported passes:
+
+- Lock-1 runtime;
+- exact LiTS/WVS source hashes;
+- WVS candidate-neutral standardization.
+
+LiTS candidate-neutral oracle production then failed closed with:
+
+```text
+SourceBackedC11FacadeError:
+unbound response value/state; no label/frequency/missingness inference
+```
+
+No T3 freeze, succession preflight, Candidate A/B/C, or measured P2X ran.
+
+Documentary comparison establishes a physical-key contract transition: the accepted real LiTS-B pass used owner blob `7c509c...` with canonicalized value keys, while the current facade `8a7611...` uses the exact typed R5 physical-key contract. No LiTS-specific representation authority currently closes that transition.
+
+A speculative numeric-normalization patch was investigated and explicitly removed before user adoption because it lacked sufficient exact representation proof.
+
+Current holding: **BLOCK pending LiTS representation-authority closure.**
+
+A candidate-neutral representation diagnostic has been added at `08_LITS_REPRESENTATION_DIAGNOSTIC.py`. See `09_LITS_REPRESENTATION_BLOCKER_HOLDING.md`.
+
+## LiTS representation-authority closure
+
+The user returned the candidate-neutral diagnostic receipt with SHA-256
+`74fc2c53610ad2af5867e4c36728604a812cf9ad3d7b0e4bceebda68fe4ac74b`.
+It established that all 57,989 observed q301_2/q301_7 cells are exact float64
+tokens for 1.0 through 7.0; the 15 exact system-missing cells already match.
+It also proved that the speculative historical helper does not match current
+typed rules because `Decimal(str(value))` carries exponent -1.
+
+A bounded successor representation authority was therefore added. It permits
+only the exact source, variables/ordinals, decoder/runtime, enumerated float64
+tokens, exact banked Decimal tokens, exact system-missing form, historical
+physical-key owner blob, and accepted projection/release/replay identities.
+The current typed-key law is unchanged and no generic coercion was introduced.
+
+Authority content hash:
+`9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d`.
+
+See `10_LITS_REPRESENTATION_AUTHORITY_CLOSURE.md` and
+`11_LITS_REPRESENTATION_AUTHORITY_OBJECT.json`.
+
+## LiTS representation repair source-free qualification
+
+The complete governed source-free qualification passed from exact clean code
+head `d1833f9ebe363258575c6bd95737eb8f1b0f4154`:
+
+```text
+172 passed, 28 subtests passed in 21.87s
+RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE
+```
+
+No source bytes, oracle, T3 freeze, Candidate A/B/C, or measured P2X were run.
+See `12_LITS_REPRESENTATION_SOURCE_FREE_QUALIFICATION_GREEN.md`.
+
+## Latest execution-guard rebind
+
+The pre-candidate and measured launch scripts now require qualified code head
+`d1833f9ebe363258575c6bd95737eb8f1b0f4154` and qualification closure head
+`2d93017626a2815d84fd13123ac872047614c353`. The dedicated execution-branch
+requirement and post-green path allowlist remain unchanged. See
+`13_LITS_REPRESENTATION_EXECUTION_GUARD_REBIND.md`.
+
+## Runtime statement
+
+The latest repair executed the complete source-free qualification at exact code
+head `d1833f9ebe363258575c6bd95737eb8f1b0f4154`. No source-backed runtime court
+was executed by this repair worker.
+
+This worker also did **not**:
+
+- open or materialize LiTS/WVS raw survey carriers;
+- run Candidate A/B/C;
+- generate the LiTS oracle;
+- standardize/freeze the WVS oracle;
+- run the pre-candidate T3 freeze;
+- run measured P2X;
+- trigger GitHub Actions.
+
+## Next lawful local command
+
+Rebind both launch guards to the exact newly qualified code/closure heads,
+fast-forward the existing governed P2X execution branch, and then rerun the
+candidate-neutral pre-candidate script. Candidate A/B/C and measured P2X remain
+forbidden until that script reaches its exact green terminal.
+
+## Terminal
+
+`FIABC_LITS_REPRESENTATION_AUTHORITY_REPAIR__SOURCE_FREE_QUALIFIED__READY_FOR_GOVERNED_EXECUTION_BRANCH_REBIND`

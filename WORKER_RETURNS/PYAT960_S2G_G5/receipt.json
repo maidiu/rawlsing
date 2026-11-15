@@ -1,0 +1,437 @@
+{
+  "task_id": "PYAT960-S2G-G5",
+  "packet_id": "S2-G",
+  "old_obligations": [
+    "P2-08"
+  ],
+  "contract_sha": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
+  "contract_frozen_at_sha": "63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
+  "persona_role": "G5_INDEPENDENT_NONAUTHOR_TERMINAL_RECEIVER",
+  "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s2g-g5-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-g5",
+  "exclusive_allowlist": "WORKER_RETURNS/PYAT960_S2G_G5/",
+  "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "startup_sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "delivery_sha": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+  "code_cut_sha": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
+  "a_prior_implementation_sha": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
+  "b_delivery_sha": "220ebd3311fb0607079ed6a6e9a364d6681e5378",
+  "b_code_cut_sha": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
+  "changed_paths": [
+    "rawlsing_next/pre553_durable_learned_lifecycle.py",
+    "rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py",
+    "rawlsing_next/tests/test_pyat960_s2g_fresh_process.py",
+    "rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py",
+    "rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py",
+    "WORKER_RETURNS/PYAT960_S2G_A/",
+    "WORKER_RETURNS/PYAT960_S2G_B/",
+    "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/"
+  ],
+  "review_changed_paths": [
+    "WORKER_RETURNS/PYAT960_S2G_G5/receipt.json",
+    "WORKER_RETURNS/PYAT960_S2G_G5/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT960_S2G_G5/repro_multirelease.py",
+    "WORKER_RETURNS/PYAT960_S2G_G5/repro_resources.py",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/"
+  ],
+  "exact_diff_verification": {
+    "delivery_vs_code_cut": "6f3a105..a3d1e33 changes only WORKER_RETURNS/PYAT960_S2G_A_COUNTER/{00_HANDOFF.md,receipt.json,evidence/selected_153.txt}; code/test tree identical.",
+    "code_cut_vs_b_cut": "a3d1e33 changes only rawlsing_next/pre553_durable_learned_lifecycle.py (+43) and new rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py (+105); no existing owner modified.",
+    "startup_vs_delivery": "Only the new adapter, four S2-G test files, and A/B/A-counter return evidence are added; no existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner changed.",
+    "blob_identities": {
+      "adapter_a3d1e33_git_blob_sha1": "0d7860271914fb301beb4a4f914cd1c483ba9ad0",
+      "a_counter_test_git_blob_sha1": "0bace27d010fcb2977d04f69ac9f308d23361e55",
+      "b_adversarial_test_git_blob_sha1": "c6860fa6aa68e239549edcbb569cc8f3b61f689b",
+      "contract_source_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b"
+    }
+  },
+  "writer_lease_and_scope": "G5 review only in pyat960-s2g-g5; no implementation/test/native-owner/earlier-return/controller/other-worktree writes; only WORKER_RETURNS/PYAT960_S2G_G5/",
+  "source_ABI_owner": "Existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owners unchanged. New isolated adapter is LOCAL; affected dependency tasks S2-E, S2-G, S1-D.",
+  "actual_first_consumer": "rawlsing_next.pre553_learned_world_composition.evaluate_learned_world_consumer over the cold-reconstructed M1/M2/B5 product and accepted S2-F closure; base positive and multi-release adversarial product both invoked the actual existing reader.",
+  "evidence_grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+  "gates": {
+    "G1": {
+      "state": "FAIL",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Normal single-release base contract is retained and cold-reconstructed, but the exact source/release contract is not complete: a multi-release S2-F closure can supply a receipt declaring releases A+B and a selected fact whose exact provenance is A, while the consumer determinants/M1 additional dependency use B. The adapter checks that B is in the receipt's declared release set, the closure registry and the M1 additional refs, but not that the selected fact's exact provenance release is B. The actual existing world consumer then returns LEARNED_CONSUMER_EXACT_SUPPORTED. This is a positive wrong-source/release contract failure, not a membership-only paperwork issue."
+    },
+    "G2": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Normal positive/change/restore survives: base artifact root 852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5, M1 9a7f5e31..., M2 3423ef93..., B5 2dd50039..., consumer 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597; B01 real native cell change changes the chain and restores exactly; 153 selected tests and 19 S2-F tests pass. The defect is not a failure of the normal happy path; it is a missing source-release hostile binding."
+    },
+    "G3": {
+      "state": "FAIL",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "The exact wrong-source release hostile case is accepted instead of refused: selected fact exact provenance release REL-m01 (95de34f0...), receipt declared releases REL-m01 + REL-m01-missing-weight, consumer determinant REL-m01-missing-weight (87a5584d...), actual consumer LEARNED_CONSUMER_EXACT_SUPPORTED hash 4790c38f7fdcd87386fd1a26e3f281cdfbfb0e792c8f95c29658a640f7c07f92, composition 461f512048c9949ed7760366dff155c759b31bf0877d04ec8ef89e99e97925ea. B-D1/B-D2/B-D3/A-C01 and self-rehashed checkpoint/current/as-of refusals pass, but the multi-release source-release ownership falsifier fails."
+    },
+    "G4": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Atomic CAS/staging/fsync, crash-before-manifest recovery, cold process, external pin, one compressed artifact + 512-byte manifest, no duplicate complete archive, source opens 0, cap PASS at fixture grade. Independent base measurement: retained 32,499 B (31,987 compressed + 512 manifest), logical 283,854 B, cold 0.0692 s in-process / 0.2339 s fresh child, repeat 0.0694 s, parent RSS 112,869,376 B, child RSS 41,525,248 B, source opens 0; integrated 100k/6 GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "PYAT960-S2G-G5 independent nonauthor receiver, session ses_e30c25800ffeT8XbyTuHekRCme; not A ses_e3120ba1cffeO1w43uU5MLh4yq and not B ses_e3120b9efffegreD5YfH7dOO15",
+      "receipt": "Independent receiving replays the 153 owner/adapter/counter and 19 S2-F tests, base positive/change/restore/current/as-of/crash refusals, and adds the multi-release source-ownership falsifier. The falsifier is a reproduced material wrong-source positive at the actual existing consumer. Closed outcome REVISE_EXACT_DEFECT; no ACCEPT_SCOPED and no implementation patch by the reviewer."
+    }
+  },
+  "mandatory_case_ids": [
+    "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+    "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+    "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+    "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+    "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+    "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+    "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+    "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+    "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS",
+    "A_C01_RECEIPT_FACT_OMISSION_REFUSED",
+    "B01_REAL_NATIVE_FACT_CHANGE_M1_M2_B5_RESTORE",
+    "B02_CROSS_CHAIN_M1_EVIDENCE_REFUSED",
+    "B03_ASOF_CHECKPOINT_PIN_AND_RETAINED_HISTORY",
+    "B04_REPLAY_RECEIPT_PROTOCOL_HISTORY_CONSERVATION",
+    "B05_FRESH_PROCESS_COLD_RESOURCE_ENVELOPE",
+    "G5_MR01_MULTI_RELEASE_SOURCE_OWNERSHIP"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py rawlsing_next/tests/test_pyat960_s2g_fresh_process.py rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py -v",
+      "actual": "19 passed. Base artifact M1/M2/B5 exact; independent base consume LEARNED_CONSUMER_EXACT_SUPPORTED hash 2690cdbe...; fresh child exact."
+    },
+    {
+      "id": "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+      "result": "PASS",
+      "command": "same focused suite; G02/G02b and B01 in selected 153",
+      "actual": "PASS. B01 real native physical-cell change changes S2-F/M1/M2/B5/artifact/consumer; exact base restore returns root 852498f7... and consumer 2690cdbe...."
+    },
+    {
+      "id": "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+      "result": "PASS",
+      "command": "same focused suite; G03/G03b/B03",
+      "actual": "PASS. Current TEST_ONLY attestation, supersession, as-of selection/checkpoint, true no-current and retained-history prefix checks pass; unpinned/foreign checkpoints refuse."
+    },
+    {
+      "id": "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+      "result": "PASS",
+      "command": "same focused suite; G04/G04b",
+      "actual": "PASS. Revoked, wrong-purpose, stale-checkpoint, wrong-selection/key, wrong-root and missing-pin attestations refuse; valid TEST_ONLY current works in fresh process."
+    },
+    {
+      "id": "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+      "result": "PASS",
+      "command": "same focused suite; G05/B04",
+      "actual": "PASS. Self-rehashed fake checkpoint, tampered replay/learned-receipt/protocol/M2 provenance and wrong as-of refuse; original artifact still opens."
+    },
+    {
+      "id": "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+      "result": "PASS",
+      "command": "same focused suite; G06",
+      "actual": "PASS. Missing determinant receipt/family rule/history and changed M2 dependency refuse."
+    },
+    {
+      "id": "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+      "result": "PASS",
+      "command": "same focused suite; G07",
+      "actual": "PASS. Artifact without pointer refuses current; valid pointer restores; crash before manifest leaves no visible artifact."
+    },
+    {
+      "id": "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_learned_world_composition.py rawlsing_next/tests/test_pre553_learned_empirical_adjudication.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py rawlsing_next/tests/test_pyat960_s2g_fresh_process.py rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py -q",
+      "actual": "153 passed in 51.62s. Separate S2-F regression: 19 passed in 9.47s."
+    },
+    {
+      "id": "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS",
+      "result": "PASS",
+      "command": "python3 WORKER_RETURNS/PYAT960_S2G_G5/repro_resources.py <private-proofroot>; fresh runner",
+      "actual": "Independent base: 32,499 B retained (31,987 compressed + 512 manifest), logical 283,854; parent cold 0.0692 s/repeat 0.0694 s; parent RSS 112,869,376 B; fresh child cold 0.2339 s/RSS 41,525,248 B; source opens 0; cap PASS; 100k NOT_RUN. Author child 41,558,016 B preserved."
+    },
+    {
+      "id": "A_C01_RECEIPT_FACT_OMISSION_REFUSED",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py::test_a_counter_receipt_fact_omission_is_refused -q",
+      "actual": "1 passed at a3d1e33; the preserved B-cut RED evidence shows B code 0071aefb accepted mutant root 92ba894b... with consumer 2690cdbe...; current code refuses."
+    },
+    {
+      "id": "B01_REAL_NATIVE_FACT_CHANGE_M1_M2_B5_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_real_native_fact_change_m1_m2_b5_then_exact_restore -q",
+      "actual": "1 passed."
+    },
+    {
+      "id": "B02_CROSS_CHAIN_M1_EVIDENCE_REFUSED",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_cross_chain_m1_evidence_is_refused_by_actual_consumer -q",
+      "actual": "1 passed; foreign M1 chain refuses at cold consume, base remains exact."
+    },
+    {
+      "id": "B03_ASOF_CHECKPOINT_PIN_AND_RETAINED_HISTORY",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_unpinned_and_foreign_asof_checkpoints_refused -q",
+      "actual": "1 passed."
+    },
+    {
+      "id": "B04_REPLAY_RECEIPT_PROTOCOL_HISTORY_CONSERVATION",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_tampered_b5_replay_and_receipt_history_refused -q",
+      "actual": "1 passed."
+    },
+    {
+      "id": "B05_FRESH_PROCESS_COLD_RESOURCE_ENVELOPE",
+      "result": "PASS",
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_fresh_process_cold_resource_envelope -q",
+      "actual": "1 passed; fresh child exact, source_opens=[], child RSS under 6 GiB."
+    },
+    {
+      "id": "G5_MR01_MULTI_RELEASE_SOURCE_OWNERSHIP",
+      "result": "FAIL",
+      "command": "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<private-proofroot> python3 WORKER_RETURNS/PYAT960_S2G_G5/repro_multirelease.py <private-proofroot>",
+      "actual": "exit 1 with defect_if_accepted=true. Base positive control is supported (2690cdbe..., root 852498f7...). Multi-release S2-F closure root 8ab33706... has receipt declared releases REL-m01 + REL-m01-missing-weight; selected fact exact provenance is REL-m01 only (95de34f0...); consumer determinant release is REL-m01-missing-weight (87a5584d...); M1 disposition 18b73963..., M2 53c1e6fa..., B5 decb1199...; actual consumer returns LEARNED_CONSUMER_EXACT_SUPPORTED with consumer hash 4790c38f... and composition 461f5120..., instead of refusing the source-release mismatch."
+    }
+  ],
+  "first_consumer": {
+    "base_positive": {
+      "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+      "consumer_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+      "consumer_result_hash": "2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597",
+      "source_opens": 0
+    },
+    "multi_release_wrong_source": {
+      "s2f_root_identity": "8ab33706ad8f413f157aecfcfcf261b8a5b442568375bc96d669868cd4b6a040",
+      "artifact_root_identity": "32d19b29d2df59356ff25250f0f5d1998a8a61cf4a4c22d4759f16d681ae4e48",
+      "selected_fact_ref": "urn:rawlsing:pre553:EmpiricalFact:sha256:cc3f9b07d4f8e83b269f0a47bb2c28aa8849802ae80cd5e973bd5c802462970a",
+      "selected_fact_release_provenance": "REL-m01 / 95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+      "consumer_determinant_release": "REL-m01-missing-weight / 87a5584ddb81f369913dba370ffbbfe5ffc7be91bd8446a1fd9bad1c646b2ab0",
+      "receipt_declared_releases": [
+        "REL-m01 / 95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+        "REL-m01-missing-weight / 87a5584ddb81f369913dba370ffbbfe5ffc7be91bd8446a1fd9bad1c646b2ab0"
+      ],
+      "m1_disposition_ref": "18b73963e1ceed396c3f4a250a8363de5bccb2715f73c3f93ab4b3f8e7583fea",
+      "m2_release_ref": "53c1e6fa0448aa65039cd74f03871b837b5b9a2f93b0782741774b2ecd1def35",
+      "b5_selection_ref": "decb1199fd753eaef349879cc06c32c838705bd4271ffac1b7c55308bf90887f",
+      "consumer_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+      "consumer_result_hash": "4790c38f7fdcd87386fd1a26e3f281cdfbfb0e792c8f95c29658a640f7c07f92",
+      "composition_identity": "461f512048c9949ed7760366dff155c759b31bf0877d04ec8ef89e99e97925ea"
+    },
+    "reader": "rawlsing_next.pre553_learned_world_composition.evaluate_learned_world_consumer",
+    "cold_process": "fresh Python 3.11.3 subprocess, source_opens=[], consumer hash 2690cdbe..., matches_expected=true for base"
+  },
+  "preserved_functions": [
+    "153 selected owner/M1/M2/B5/world/S2-G/B/A-counter tests pass at the tested code tree (51.62 s).",
+    "19 S2-F regression tests pass (9.47 s).",
+    "Base artifact root 852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5, M1 9a7f5e31..., M2 3423ef93..., B5 2dd50039..., consumer 2690cdbe... preserved.",
+    "B-D1 cross-chain M1, B-D2 unpinned/foreign as-of, B-D3 replay/learned-receipt/protocol conservation and A-C01 receipt-fact omission repairs remain verified.",
+    "No existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner modified; adapter ABI LOCAL.",
+    "No protected merge, original35/source-native read, production current issuer, scientific rule, or integrated 100k claim."
+  ],
+  "material_open_defects": [
+    {
+      "id": "G5-MR01-MULTI-RELEASE-SOURCE-OWNERSHIP",
+      "severity": "SEV-0",
+      "gate": "G1 exact source/release contract and G3 hostile wrong-source refusal",
+      "case": "A multi-release S2-F closure can supply a receipt declaring releases A+B and selected fact provenance A while the consumer determinant release is B. The adapter checks B against the receipt's declared refs, closure registry and M1 additional refs, but never checks the selected fact's exact provenance release. The actual existing world consumer accepts and serves LEARNED_CONSUMER_EXACT_SUPPORTED.",
+      "expected": "Cold consume refuses because the selected fact's exact source release A is not the determinant/consumer release B; no positive product may bind release B to a fact whose exact provenance is A.",
+      "actual": "LEARNED_CONSUMER_EXACT_SUPPORTED with consumer hash 4790c38f7fdcd87386fd1a26e3f281cdfbfb0e792c8f95c29658a640f7c07f92 and composition 461f5120...; base positive 2690cdbe... remains exact.",
+      "reproduction": {
+        "command": "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<private-proofroot> python3 WORKER_RETURNS/PYAT960_S2G_G5/repro_multirelease.py <private-proofroot>",
+        "input": "Base accepted native sourcefree M01/S2-F closure plus a second real release REL-m01-missing-weight; receipt source_release_refs A+B; M1 bundle facts A with additional_dependency_refs B; consumer query/witness release B; actual existing world consumer.",
+        "exit": 1,
+        "evidence": "WORKER_RETURNS/PYAT960_S2G_G5/evidence/multirelease_evidence.json and multirelease_run.out"
+      },
+      "owner": "rawlsing_next/pre553_durable_learned_lifecycle.py::consumer_composition (after _validate_discovery_consumption, around lines 1281-1305); _m1_evidence_binding line 1234 checks only that the determinant release is in M1 additional refs, not the selected fact provenance.",
+      "minimal_repair": "After selecting the discovery fact, require the determinant release exact key to appear in that fact's source_empirical_provenance_refs (and add a multi-release hostile regression); preserve the base/M1/M2/B5/current/as-of paths. Do not add a new engine, issuer, or broad hardening.",
+      "consequence": "The actual existing first reader can serve a positive product with a source release that is not the selected fact's release. This is a false positive source/release claim, not a counts-only or cosmetic issue."
+    }
+  ],
+  "open_defects": [
+    {
+      "severity": "SEV-0",
+      "case": "G5-MR01-MULTI-RELEASE-SOURCE-OWNERSHIP",
+      "disposition": "REVISE_EXACT_DEFECT; hand exact finding to HQ/original owner for one bounded repair and retest, then a distinct nonauthor G5 re-receives. No reviewer patch."
+    }
+  ],
+  "nonblocking_deferred": [
+    "Multi-product B5 history completeness beyond the exercised one- and two-release supersession/as-of chains was not independently falsified; no positive consequence was reproduced. A same-release re-registration attempt was blocked by the existing B5 composer before producing a valid artifact, so it is not claimed as a defect.",
+    "Production current/as-of issuer/revocation service is absent; TEST_ONLY attestation is not production authority.",
+    "Accepted complete S2-E/S2-D upstream and full joined S2-G are absent; integrated 100k/6 GiB NOT_RUN.",
+    "Real M1 scientific family validator/science rule is TEST_ONLY synthetic; scientific grade NONE_VERIFIED.",
+    "A's receipt used 60105d28 as contract_frozen_at_sha from the earlier #940 packet; B corrected the S2-G freeze to 63836a168cc99b0ed8f87f7f7a6e76192f7a1898. This is a documentary error, not a product defect.",
+    "A's execution_environment_passport historical 64-hex Git-blob field is a documentary mismatch; B did not edit A's historical evidence."
+  ],
+  "external_holds": [
+    {
+      "owner": "Pair 2 / accepted S2-E and S2-D upstream",
+      "minimal_missing_witness": "independently accepted complete saved-reader/producer integration; full joined S2-G and integrated 100k remain HOLD_EXTERNAL"
+    },
+    {
+      "owner": "production current/as-of issuer",
+      "minimal_missing_witness": "real independently authenticated issuer/revocation/current root; only TEST_ONLY stand-in exists"
+    },
+    {
+      "owner": "S2-G full M1/M2/B5 scientific lifecycle owner",
+      "minimal_missing_witness": "competent M1 family validator/science rule and full product-current operating chain; this is sourcefree engineering custody only"
+    },
+    {
+      "owner": "original35/source-native scientific authority",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; not read or claimed"
+    },
+    {
+      "owner": "protected integration",
+      "minimal_missing_witness": "protected merge/receiving decision; integration is UNMERGED"
+    }
+  ],
+  "resource_evidence": {
+    "fixture_grade": "synthetic native M01/M1/M2/B5 plus accepted isolated S2-F closure; not 100k",
+    "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+    "retained_disk_bytes": 32499,
+    "peak_disk_bytes": 32499,
+    "compressed_blob_bytes": 31987,
+    "manifest_bytes": 512,
+    "logical_bytes": 283854,
+    "peak_scratch_bytes": 31987,
+    "process_tree_peak_rss_bytes": 41525248,
+    "parent_peak_rss_bytes": 112869376,
+    "cold_seconds_parent": 0.06920769099815516,
+    "repeat_seconds_parent": 0.06937932899745647,
+    "cold_seconds_child": 0.23394935199758038,
+    "source_opens": 0,
+    "rows": {
+      "b5_events": 3,
+      "m2_closures": 5,
+      "m1_determinant_material_keys": 25,
+      "artifact_files": 2
+    },
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS at fixture grade",
+    "integrated_100k": "NOT_RUN",
+    "reason_not_run": "accepted S2-E/S2-D integrated sourcefree pipeline is not present; local workload is synthetic fixture grade",
+    "measurement_note": "Independent parent RSS/cold/repeat from repro_resources.py; independent fresh-child RSS/cold from the existing runner; retained/peak disk is the fresh single-artifact root; no multi-process benchmark or duplicate archive."
+  },
+  "known_reds": [
+    {
+      "id": "A_C01_B_CUT_RED",
+      "status": "PRESERVED_RED_AT_B_CUT_0071AEFB",
+      "evidence": "WORKER_RETURNS/PYAT960_S2G_A_COUNTER/evidence/b_cut_receipt_fact_omission_red.txt and b_cut_receipt_fact_omission_acceptance.json; current a3d1e33 test green in the 153-test run."
+    },
+    {
+      "id": "G5_MR01_MULTI_RELEASE_SOURCE_OWNERSHIP",
+      "status": "CURRENT_RED",
+      "evidence": "WORKER_RETURNS/PYAT960_S2G_G5/evidence/multirelease_evidence.json"
+    }
+  ],
+  "self_disclosed_weakest_point": "The current adapter's strongest missing proof is exact source-release ownership at the selected-fact boundary: it binds the receipt, closure, M1 additional refs and consumer query to a release set, but not the selected fact's exact provenance release. The reproduced multi-release case serves a positive product for release B using a fact from release A. Base normal M1/M2/B5, change/restore, current/as-of, no-current, crash/recovery, replay/protocol and custody paths pass. Production issuer, accepted S2-E/S2-D, scientific M1 rule, original35, integrated 100k and protected merge remain external holds.",
+  "own_worst_vulnerability": "The source-release gap above is my own worst finding; a reviewer must add the exact fact-provenance release check and a multi-release hostile regression. The fully coherent new-pin boundary remains inherent: a completely coherent rewrite plus a caller-supplied new pin is a different artifact by construction; the external pin is the sole trust anchor.",
+  "missing_proof": "No production current/as-of issuer/revocation; no accepted S2-E/S2-D joined upstream; no scientific M1 family rule; no original35 source; no integrated 100k/6 GiB; no independent G5 acceptance yet.",
+  "strongest_next_falsifier": "After the source-release repair, construct a multi-product B5 history with two coexisting releases and a current artifact whose learned receipt names a valid product subset but not the complete product history; only a reproduced first-consumer consequence is a defect. Do not demand speculative hardening.",
+  "opponent_proven_improvement": {
+    "accepted_strengths": [
+      "B-D1 cross-chain M1 binding refuses a foreign M1 artifact at the actual consumer.",
+      "B-D2 unpinned/foreign as-of checkpoint refusal and retained-history prefix binding.",
+      "B-D3 replay/learned-receipt/protocol/M2 provenance conservation.",
+      "B-D4 same-chain native physical-cell change and exact restore.",
+      "A-C01 receipt-owned empirical/validation fact conservation at current code.",
+      "Base artifact root 852498f7..., M1/M2/B5/checkpoint and consumer 2690cdbe... preserved; 153 owner/S2-G/B/A-counter and 19 S2-F tests pass."
+    ],
+    "repaired_weaknesses": [
+      "B's multi-release source-ownership next falsifier is still a real gap: release B can be declared by the receipt and used by the consumer while the selected fact is release A."
+    ],
+    "concessions": [
+      "The base chain is a real native-owner chain; no replacement engine or protected merge was performed.",
+      "The isolated TEST_ONLY grade is honest; production issuer and science remain holds."
+    ]
+  },
+  "original_gate_mapping": {
+    "original_G1": "FAIL at isolated grade: multi-release source/release exact binding missing; normal M1/M2/B5 contract preserved.",
+    "original_G2": "PASS for the normal native fact -> M1 -> M2 -> B5 -> existing world consumer, changed input and exact restore; the wrong-source multi-release input is the G1/G3 failure.",
+    "original_G3": "FAIL: wrong-source release positive accepted by the actual first consumer; B-D1/B-D2/B-D3/A-C01 and other hostile refusals pass.",
+    "original_G4": "PASS at isolated fixture grade for CAS/fsync/crash/recovery/resources/source-open; integrated 100k/6 GiB NOT_RUN.",
+    "original_G5": "FAIL/REVISE: distinct nonauthor receiver found the multi-release source-ownership defect."
+  },
+  "three_court_grades": {
+    "engineering": "REVISE_EXACT_DEFECT at S2_SOURCEFREE_ISOLATED_FIXTURE; no ACCEPT_SCOPED",
+    "scientific": "NONE_VERIFIED; TEST_ONLY synthetic validator only; no original35/scientific issuer",
+    "authority": "TEST_ONLY external current/as-of stand-in only; production issuer/current authority HOLD"
+  },
+  "abi": {
+    "classification": "LOCAL",
+    "detail": "New isolated custody adapter plus tests; no existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner or interface modified. The exact defect repair is local adapter validation; no running contract silently changed.",
+    "affected_task_ids": [
+      "S2-E",
+      "S2-G",
+      "S1-D"
+    ],
+    "breaking_interface": false,
+    "source_or_authority_change": false,
+    "scientific_hold": true
+  },
+  "independent_receiver_decision": "REVISE_EXACT_DEFECT",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "stop_state": "REVISE_EXACT_DEFECT",
+  "integration": "UNMERGED",
+  "integration_state": "UNMERGED",
+  "g5": {
+    "state": "FAIL",
+    "status": "REVISE_EXACT_DEFECT",
+    "reviewer": "PYAT960-S2G-G5 independent nonauthor receiver (session ses_e30c25800ffeT8XbyTuHekRCme)",
+    "receipt": "153 owner/adapter/counter + 19 S2-F tests pass; base positive/change/restore/current/as-of/crash pass; multi-release source-ownership positive fails. No ACCEPT_SCOPED; hand exact finding to HQ for one bounded repair/retest."
+  },
+  "original_task_remaining_hold": "FULL_ORIGINAL_S2G_REMAINS_OPEN__HOLD_EXTERNAL on accepted S2-E/S2-D, production current/as-of issuer, scientific M1 rule and 100k; this review is scoped REVISE_EXACT_DEFECT, not original-task completion.",
+  "next_turn": "HQ/original owner receives exact G5-MR01: add the selected-fact provenance release check in consumer_composition plus a multi-release hostile test; preserve base/M1/M2/B5/current/as-of paths; rerun 153 owner/S2-G/B/A-counter and 19 S2-F tests; freeze new code SHA; then a distinct nonauthor G5 re-receives. No broad A/B reconnaissance, no new engine, no optional hardening, no reviewer patch. If the bounded-repair allowance is exhausted, HQ adjudicates the exact unresolved case.",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/multirelease_evidence.json",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/multirelease_run.out",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/selected_153.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/s2f_19.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/s2g_focused_v.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/s2g_resource_evidence.json",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/resource_run.out",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/fresh_child.out",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/b_cut_receipt_fact_omission_red.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/b_cut_receipt_fact_omission_acceptance.json",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/diffs.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/refs.txt",
+    "WORKER_RETURNS/PYAT960_S2G_G5/evidence/remote_verification.txt"
+  ],
+  "review_commands": [
+    "python3 -m pytest -p no:cacheprovider <five owner files + four S2-G test files> -q => 153 passed in 51.62s",
+    "python3 -m pytest -p no:cacheprovider <four S2-F test files> -q => 19 passed in 9.47s",
+    "python3 -m pytest -p no:cacheprovider -v <four S2-G test files> => 19 passed in 31.58s",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT960_S2G_G5/repro_resources.py <proofroot> => base positive; 32,499 B; source opens 0",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 rawlsing_next/tests/test_pyat960_s2g_fresh_process.py <artifact> <root> <s2f> 2690cdbe... => exact; source_opens=[]; child RSS 41,525,248 B",
+    "PYTHONPATH=$PWD PYTHONDONTWRITEBYTECODE=1 TMPDIR=<proofroot> python3 WORKER_RETURNS/PYAT960_S2G_G5/repro_multirelease.py <proofroot> => exit 1; multi-release wrong-source positive accepted (LEARNED_CONSUMER_EXACT_SUPPORTED 4790c38f...)"
+  ],
+  "signature": {
+    "signed_by_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "persona_role": "G5_INDEPENDENT_NONAUTHOR_TERMINAL_RECEIVER",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "branch": "agent/pyat960-s2g-g5-r1",
+    "tested_delivery_sha": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+    "tested_code_cut_sha": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
+    "decision": "REVISE_EXACT_DEFECT",
+    "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+    "no_repair_performed": true,
+    "signed_at_utc": "2026-11-12T15:40:00Z",
+    "review_return_commit_sha": "c6cf991deac5fffec2495138c3ba8975b0296723"
+  },
+  "remote_verification": {
+    "remote": "origin",
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat960-s2g-g5-r1",
+    "return_commit_sha": "c6cf991deac5fffec2495138c3ba8975b0296723",
+    "delivery_sha": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+    "code_cut_sha": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
+    "a_branch_sha": "6f3a10552e074c3f1fd54c861290c8300c99dbb2",
+    "b_branch_sha": "220ebd3311fb0607079ed6a6e9a364d6681e5378",
+    "code_diff_vs_code_cut": "EMPTY",
+    "receipt_json_valid": true,
+    "handoff_present": true,
+    "verified_at_utc": "2026-11-12T20:38:16Z"
+  }
+}

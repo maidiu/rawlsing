@@ -1,0 +1,4 @@
+# Pyat R104 — actual goal anchored in inherited authority
+
+Useraskedhighestvision/trajectorysourceingoval itselfandunremittinggovernanceofagentsteps. ActualreferencedpastedgoalfileandworkingGOALnowbeginwith exactexistingAstraPROGRAM/DAG/FUNCTIONS/C/AT/wake/frozenPass3/4refs, userR61vision/currentclarification and laterU53A/UR/M3repairoverlays/currentauthority. Requiredreanchoringonresume/compaction/materialboundary; everycommission/adjudicationmustadvanceparentfunctionatcorrectscope. FinerR101/R102notespreservedsubordinateviaR103. Originalobjectivepreserved. No newstrategy/source/code/scienceauthority, no resumedgoal/heartbeat. BothpausedandR101holdretained.
+

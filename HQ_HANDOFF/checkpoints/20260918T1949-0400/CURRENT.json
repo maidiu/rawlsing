@@ -1,0 +1,68 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1949-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1934-0400",
+  "status": "R6N_LOCAL_CONTINUATION_ACTIVE__BROWSER_INFRASTRUCTURE_NONRESULT_RECORDED__ZERO_ACTIVE_BINDINGS__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-066"
+  ],
+  "continuation_path": "HQ_HANDOFF/EE_P2R6N_EXECUTION_SURFACE_CONTINUATION_20260918.md",
+  "infrastructure_nonresults": [
+    {
+      "id": "EE-P2R6N-BROWSER",
+      "original_commission_tip": "6e9a7388a1dd4b2499158b25638cb27ef6cd9d3f",
+      "disposition": "NOT_EXECUTED__BROWSER_REPOSITORY_WRITE_GATE_PREVENTED_GOVERNED_PROOF_DRIVER_MATERIALIZATION",
+      "classification": "EXECUTION_SURFACE_INFRASTRUCTURE_NONRESULT"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "EE-P2R6N",
+      "branch": "agent/rabochii-prev3-ee-p2r6n-positive-r6a-proof-r1",
+      "commission_tip": "127ba42ade3f5aacdecf12cd24f55bf18178150b",
+      "observed_head_at_checkpoint": "127ba42ade3f5aacdecf12cd24f55bf18178150b",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX",
+      "maximum_intelligence": "LUNA",
+      "library_access": "NO",
+      "pass_wake": "HQ_CORRECTED_BINDING_ADJUDICATION_ONLY"
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "binding_state": {
+    "active_positive_binding_count": 0,
+    "banked_corrected_preimage_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  },
+  "dependency_graph": {
+    "EE-P2R6N": {
+      "status": "ACTIVE_LOCAL_CONTINUATION",
+      "wake": "HQ_CORRECTED_BINDING_ADJUDICATION"
+    },
+    "CORRECTED_BINDING_ADOPTION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_R6A_POSITIVE_BINDING_PROOF"
+      ]
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT"
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT"
+    },
+    "EE-P2X": {
+      "status": "HELD"
+    }
+  },
+  "terminal": "R6N_LOCAL_CONTINUATION_ACTIVE__ZERO_ACTIVE_BINDINGS__P2X_HELD"
+}

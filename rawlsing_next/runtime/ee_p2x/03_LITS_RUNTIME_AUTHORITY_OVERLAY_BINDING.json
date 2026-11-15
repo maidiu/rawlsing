@@ -1,0 +1,76 @@
+{
+  "schema": "FIABC_LITS_I_RUNTIME_AUTHORITY_OVERLAY_BINDING@2.0.0",
+  "predecessor_packaging_binding": {
+    "path": "rawlsing_next/runtime/ee_p2x/RUNTIME_PACKAGING_BINDING.json",
+    "git_blob_sha": "b7f54e7e291790c0558cb7acd2a7697f66310d98"
+  },
+  "historical_lits_materializer": {
+    "source_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "source_path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+    "git_blob_sha": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+  },
+  "active_lits_runtime_materializer": {
+    "path": "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+    "git_blob_sha": "4f493748d8d9569352c624215d9f767367fa10e8"
+  },
+  "source_free_successor_components": {
+    "rawlsing_next/_pre553_query_eval.py": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+    "rawlsing_next/_pre553_query_predicate.py": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py": "1bb84723b2f9c33eedae87736564d36cc9504ff0",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py": "37eeccb91477c5f4f76a91bf491624d4398ad384",
+    "rawlsing_next/fiabc_lits_astra_substantive_parity.py": "9bfd01f224015c2e40ae7ee7d1a0c04e269c731a",
+    "rawlsing_next/fiabc_lits_cross_schema_candidate_identity.py": "e45d4cc918fb731982025cdbb6b1cd36ea203509",
+    "rawlsing_next/fiabc_lits_i_d03_risk_set_authority.py": "65e87a45339a2c29443c7c619d2687dbd5b90056",
+    "rawlsing_next/fiabc_lits_i_f02_event_representation_authority.py": "0ee29ee14f21ec48c431e215ef5c6ca08dfad869",
+    "rawlsing_next/fiabc_lits_i_i03_operation_authority.py": "7887434179eac86e0bf76e4192cbe01425293b0e",
+    "rawlsing_next/fiabc_lits_i_representation_authority.py": "94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9",
+    "rawlsing_next/fiabc_live_terminal_control.py": "95739544dceea60298a6e90a87a9062b4fed6df1",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_empirical_authority.py": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "rawlsing_next/pre553_physical_decoder.py": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+    "rawlsing_next/pre553_independent_parity_oracle.py": "5a3aec636cc0326f1dfdf5d792938b186883ddec",
+    "rawlsing_next/pre553_runtime_authority.py": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+    "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "4f493748d8d9569352c624215d9f767367fa10e8"
+  },
+  "adopted_source_specific_authorities": {
+    "lits_i03_operation_successor": "615418b5fe4a43b38bbdd426b3fd608e2e28987906665a99092f441f44a0b4b2",
+    "lits_d03_risk_set_successor": "67055bb6d81c1d320ad9156fdb63b813016af7db9207e1c4b66026158aa970dc",
+    "lits_f02_event_representation_successor": "96f32bef2d098ae67debd3487cc0f30d8fe4b2a3aacb775c037b854ef499b688",
+    "lits_part_a_projection_authority": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+  },
+  "cross_schema_identity_law": {
+    "contract": "FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0",
+    "historical_native_domain": "G02_EXECUTION_CANDIDATE_HASH",
+    "current_native_domain": "PRE553_I05_CANDIDATE_HASH",
+    "native_hash_equality_required": false,
+    "logical_candidate_count": 50
+  },
+  "checkpoint_law": {
+    "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@3.0.0",
+    "canonical_current_empirical_closure_required": true,
+    "astra_regression_projection_is_canonical_storage": false,
+    "legacy_v1_v2_resume_authorized": false
+  },
+  "scope": {
+    "source": "LITS_I",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "authority_activation": "EXPLICIT_PRE553_RUNTIME_AUTHORITY_SET_ONLY",
+    "unknown_source_or_release": "FAIL_CLOSED",
+    "measured_p2x_authorized": false
+  },
+  "wvs7_preservation": {
+    "runtime_package_blob": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "projection_materializer_blob": "ec685803a7416032037ee415e8faf7bf60db8f1b",
+    "lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "frozen_typed_terminal_counts": {
+      "COVERAGE_LIMITED": 46
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ150-POST-HQ149-THREE-RETURN-RECONCILIATION-R1",
+  "status": "HQ149_RETURNS_RECONCILED__C1_03A_REPAIR_BOUND__C1_03R_E03_ASTRA_BOUND__C5_REVIEW_BOUND__C7_BLOCKED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "predecessor_checkpoint": "20261001-PYAT-HQ149-POST-HQ148-RECONCILIATION-R1",
+  "predecessor_handoff_commit": "f08e33cd98653b2a0e02e1884955220ef1c13f42",
+  "governing_decision": "HQD-2026-10-01-150",
+  "implementation_grounding": {
+    "live_control_before_hq150": "26933640b75f833aae42eec71f650ec11e908a0a",
+    "rawlsing_next_control_changes_during_hq150_governance": 0,
+    "disposition": "CONTROL_GOVERNANCE_ONLY__NO_IMPLEMENTATION_MUTATION"
+  },
+  "reconciled_returns": {
+    "c1_03a_review": {
+      "branch": "agent/reviewer-pyat-hq149-c1-03a-r1",
+      "return_head": "6bc1cb8ecd5568d6e78e83916763f125e8b888c8",
+      "disposition": "CHANGES_REQUIRED",
+      "blockers": [
+        "C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001",
+        "C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001",
+        "C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001"
+      ]
+    },
+    "c1_03r_correction": {
+      "branch": "agent/deepseek-pyat-hq149-c1-03r-owner-closure-correction-r1",
+      "return_head": "1f270880f7e3353003ef6199d76d7ff28303301d",
+      "disposition": "EXISTING_LIFECYCLE_OWNER_CHANGE_REQUIRED",
+      "escalation": "E03_REQUIRED_UNREPRESENTABLE_GRAIN"
+    },
+    "c5_n5": {
+      "branch": "agent/opencode-pyat-hq149-c5-n5-current-structural-context-r1",
+      "return_head": "151d39260a803635f622323b14e42d96c7976d25",
+      "disposition": "PASS_C5_N5_SOURCE_FREE_CURRENT_PRODUCT__INDEPENDENT_REVIEW_REQUIRED",
+      "hq_intake": "CLEAN_ENOUGH_FOR_INDEPENDENT_REVIEW__NOT_ADOPTED",
+      "claimed_court": {
+        "passed": 120,
+        "failed": 0
+      }
+    },
+    "c7_n8e": {
+      "status": "C4_CURRENT_PRODUCTION_REQUIRED",
+      "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001"
+    }
+  },
+  "active_workers": [
+    {
+      "id": "C1-03A-REVIEW-REPAIR-R1",
+      "branch": "agent/opencode-pyat-hq150-c1-03a-review-repair-r1",
+      "commission_tip": "2906f6a408f89c6af609e541304e90091fcf2eb5",
+      "observed_head_at_checkpoint": "2906f6a408f89c6af609e541304e90091fcf2eb5",
+      "grain": "SOURCE_FREE_AT14_AT16_INDEPENDENT_REVIEW_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "BIND_NARROW_INDEPENDENT_BROWSER_REREVIEW__NOT_DIRECT_ADOPTION",
+      "blocker_effect": "C1_03_JOIN_WAITS_C1_03A_ACCEPTANCE",
+      "hard_forbidden": [
+        "NO_C1_02_MUTATION",
+        "NO_RAW_SOURCE_ACCESS",
+        "NO_C4",
+        "NO_C1_03_JOIN",
+        "NO_C1_R",
+        "NO_V3_ACTOR_PERSON"
+      ]
+    },
+    {
+      "id": "C1-03R-ASTRA-E03-OWNER-GAP-R1",
+      "branch": "agent/astra-pyat-hq150-c1-03r-e03-owner-gap-r1",
+      "commission_tip": "b93cedf8716411a657a6065d273645af96a1cf59",
+      "observed_head_at_checkpoint": "b93cedf8716411a657a6065d273645af96a1cf59",
+      "grain": "OMEGA_E03_REQUIRED_UNREPRESENTABLE_GRAIN_DECISION",
+      "library_access": "NO",
+      "pass_wake": "HQ_BIND_EXACT_OWNER_REPAIR_OR_EXISTING_CONTRACT_ROUTE_PER_ASTRA_DECISION",
+      "blocker_effect": "C1_03R_AND_C1_03_JOIN_WAIT_ON_ASTRA_DECISION",
+      "hard_forbidden": [
+        "NO_OWNER_MUTATION_IN_ASTRA_LANE",
+        "NO_RAW_SOURCE_ACCESS",
+        "NO_AUTHORITY_INVENTION",
+        "NO_C4",
+        "NO_STRUCTURAL_WORLD",
+        "NO_V3_ACTOR_PERSON"
+      ]
+    },
+    {
+      "id": "C5-N5-INDEPENDENT-REVIEW-R1",
+      "branch": "agent/reviewer-pyat-hq150-c5-n5-r1",
+      "commission_tip": "47793858e27a528ff7f089918f3736fe6b794f52",
+      "observed_head_at_checkpoint": "47793858e27a528ff7f089918f3736fe6b794f52",
+      "grain": "SOURCE_FREE_CURRENT_GT2_STRUCTURAL_CONTEXT_AT22_AT24_INDEPENDENT_REVIEW",
+      "library_access": "NO",
+      "pass_wake": "HQ_ADJUDICATE_AND_IF_APPROVED_BANK_ACCEPTED_C5_N5_INTEGRATION",
+      "blocker_effect": "NONE_ON_C1_03__INDEPENDENT_FORWARD_N5_LANE",
+      "hard_forbidden": [
+        "NO_IMPLEMENTATION_MUTATION",
+        "NO_RAW_SOURCE_ACCESS",
+        "NO_C4",
+        "NO_C7",
+        "NO_V3_ACTOR_PERSON"
+      ]
+    }
+  ],
+  "dependency_graph": {
+    "c1_03_join": {
+      "status": "BLOCKED",
+      "prerequisites": [
+        "HQ_ADOPTED_C1_03A_AT14_AT16",
+        "HQ_ADOPTED_C1_03R_AT18_AT19",
+        "HQ_ADOPTED_N10E_AT17_ALREADY_SATISFIED"
+      ],
+      "wake_effect": "BIND_SCOPED_C1_03_JOIN_REVIEW",
+      "prohibited_early_actions": [
+        "NO_C1_R",
+        "NO_C1_03_COMPLETION_CLAIM"
+      ]
+    },
+    "c1_03r_owner_gap": {
+      "status": "BLOCKED_PENDING_ASTRA_E03",
+      "trigger": "E03_REQUIRED_UNREPRESENTABLE_GRAIN",
+      "exact_requirement": "AT19_REPLACEMENT_OR_NO_CURRENT",
+      "counterexample": "CURRENT_AUTHORITY_INVALIDATION_RECEIPT_REQUIRES_REPLACEMENT_PAIR_FOR_EVERY_AFFECTED_DEPENDENT",
+      "wake_effect": "FOLLOW_ASTRA_DECISION_WITH_BOUNDED_OWNER_REPAIR_OR_EXACT_EXISTING_CONTRACT_ROUTE"
+    },
+    "c5_n5": {
+      "status": "INDEPENDENT_REVIEW_BOUND__NOT_LAUNCHED_BY_HQ",
+      "wake_effect": "ON_APPROVAL_HQ_ADJUDICATE_ADOPTION"
+    },
+    "c7_n8e": {
+      "status": "BLOCKED_C4_CURRENT_PRODUCTION_REQUIRED",
+      "prerequisites": [
+        "TWO_EXACT_CURRENT_WAVE_PRODUCTS_AT_COMMON_COMPARISON_GRAIN",
+        "PAIR_SPECIFIC_POSITIVE_COMPARISON_COMPARABILITY_AUTHORITY"
+      ],
+      "wake_effect": "ONLY_AFTER_CURRENT_PAIR_AND_AUTHORITY_BINDING_CONSIDER_C7"
+    }
+  },
+  "next_action": "USER_LAUNCH_C1_03A_SPACE_BUNNY_REPAIR__C5_BROWSER_REVIEW__ASTRA_HIGH_E03_C1_03R_OWNER_GAP_IN_PARALLEL__HQ_RECONCILES_RETURNS",
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION_WITHOUT_EXACT_LATER_WARRANT",
+    "NO_C7_IMPLEMENTATION",
+    "NO_ACCEPTED_LIFECYCLE_OWNER_CHANGE_BEFORE_ASTRA_E03_DECISION",
+    "NO_C1_03_JOIN",
+    "NO_C1_R",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

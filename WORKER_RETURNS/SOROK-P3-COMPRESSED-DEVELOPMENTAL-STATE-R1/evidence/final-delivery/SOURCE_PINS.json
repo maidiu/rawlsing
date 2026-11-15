@@ -1,0 +1,61 @@
+{
+  "schema": "SOROK_P3_FINAL_DELIVERY_SOURCE_PINS@1",
+  "delivery_cut": "9abb3eee3d59c76ce20d5131d5b60151f7ca98ae",
+  "runtime_evidence_cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+  "implementation_cut": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "runtime_source": {
+    "p3/p3_owner.py": "e735ada798533a8f568739e823767bb2e2b4272c3c03d84dc2cd47f73cf65df1",
+    "p3/state_store.py": "173d4d6d3e94580804cac90039a01bfe6e3adfffcda9e806a56132b10ecc06bf",
+    "p3/compression.py": "49df70d60cbc3b37ec3e484c5a7c64e14ac174faafe8fcaa02e5428c583be4f4",
+    "p3/test_rules.py": "27272cd43c26b6aa114ee65c97ca07eb56accecbd440841c29696b98e203b4b4",
+    "p3/projections.py": "ca405dda778191537ce38b0b63ff6b6ba8104dcd1ea676d6b458d454b362005b",
+    "run_p3_vertical_slice.py": "1a895a4b68ae190679827197d2c58591afd0985c3ee30387bba1432b8d145462",
+    "tests/p3_fixture_support.py": "7c3490178921c0765c8dfd42c9fb3f39d0c4696d2d048340094d746120b958eb",
+    "tests/test_p3_vertical_slice.py": "0501754503a2af007154494654ed7f1edf5957e91ae56892949392f51b39c7ff",
+    "tests/test_p3_owner.py": "40ac01033ab367d601a6ddcd43bd913928fc5933a26b3c734697376816aeafe1",
+    "tests/test_state_store.py": "03429d6d1803ed2c5d0a4038d2a7d529b375c33b7d43a41bf9fb9e44abdc8344",
+    "tests/test_p3_goal_residuals.py": "7fcd6c48a33b0aecb0f689149b235d714599b50d115f1272a7e06dd2b14260d8",
+    "B1/bfirst.py": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+  },
+  "accepted_review": {
+    "return_commit": "e85b6f6a733ef5bbd664679bdf9613c04003e3de",
+    "reviewcut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "verdict": "ACCEPT_SCOPED_TEST_ONLY_RUNTIME__M1_M2_M3_CLOSED",
+    "disposition": "FOCUSED_RECHECK_DISPOSITION.json",
+    "disposition_sha256": "e341eb133e74e12b39a2000fc72ddf38d7743be4681c29c2d8060b54d31d5127",
+    "review_return_sha256": "4652537e259d16939e39cbac9fa4f26cdef9349a37b9b23084f3b96f07d7d86e",
+    "independent_executions": "store/owner 61P/1skip; units 37P; M1/M2 3P; PRIMARY, cold, denial/crossroot, crash, resource"
+  },
+  "evidence": {
+    "full13_matrix_summary_sha256": "dc56815499a7a562eb44279b8e7d8ececbc6449baa4db9f386c60135309125db",
+    "resource_sha256": "36c2102c04f75b25c2a09f44f2be9579b07d99cfa6bbd2fb3d22b48cbd567bed",
+    "inherited_regression_return_sha256": "03d390faaa9b71a7242cff1ce0812375dff3c5caab668202b8db1d1f39d85346",
+    "goal_audit_matrix_sha256": "cf6c89a90861255e75a04c0684d82eb6d5e439a471fd5ddec83b026b57964623",
+    "residual_proofs_sha256": "8f9545cf5800ee23c8d5a1b4fb53947b87b1e5afa390d927eb839edd9b9c4436",
+    "residual_return_sha256": "5bc677cea0aaeafbc1c43899c239115af72aff62473aaea724cb1c969543193b",
+    "selective_prep_summary_sha256": "07578e7fdb12e111d42161ba634ef9a1f383687192a1021067773dc2fb2bb31c"
+  },
+  "provenance_correction": {
+    "description": "16275d03 also updated three existing PROGRAMMA_SOROK records; no runtime/source hash or authority change.",
+    "programma_records": [
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md"
+    ],
+    "hq_disposition": "CORRECTED_RECORDS_SCOPE__NO_RUNTIME_OR_AUTHORITY_CHANGE"
+  },
+  "remaining": {
+    "additive_review": "PENDING",
+    "additive_author_tests": {
+      "path": "tests/test_p3_goal_residuals.py",
+      "tests": 3,
+      "passed": 3,
+      "seconds": 27.14,
+      "sha256": "7fcd6c48a33b0aecb0f689149b235d714599b50d115f1272a7e06dd2b14260d8"
+    },
+    "selective_pr": "NOT_CREATED",
+    "protected_receiving": "HELD",
+    "same_history_limit": "equal source/history/root/actor/branch/clock/later objective world; full P2 state_hash differs across separately initialized deterministic fixtures; exact P2 root snapshot/fork/remap API unavailable"
+  }
+}

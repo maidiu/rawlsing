@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_HQ230_IMPLEMENTATION_IMPACT_MAP@1",
+  "status": "DOCUMENTARY_ONLY__NO_CODE_EDITED",
+  "required_later_changes": [
+    {
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "change": [
+        "add POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE to AUTHORITY_KINDS",
+        "add exact negative ceiling to AUTHORITY_KIND_CEILINGS"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "change": [
+        "add PositionedSubjectModelRule@1.0.0 to PUBLIC_OBJECT_FAMILIES",
+        "add POSITIONED_SUBJECT_MODEL_RULE_STATE with MODEL_RULE_AUTHORIZED",
+        "implement canonical PositionedSubjectModelRule family whose projection reproduces 59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2"
+      ],
+      "architecture_change": "bounded public family addition"
+    },
+    {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "change": [
+        "bind per-invocation model rule to exact stable_model_rule_ref and owner-native model authority",
+        "verify stable basis compatibility while retaining existing full instance rule_hash",
+        "retain separate walkback authority and per-request determinants"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "change": [
+        "resolve/validate exact owner-native model authority through AuthorityRegistry",
+        "bind stable model-rule ref in request/receipt identity",
+        "refuse fixture-only ref as lifecycle owner"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "change": [
+        "ensure stable model-rule ExactRef is a real dependency parent of every consuming product",
+        "ensure authority->stable-rule edge enters SemanticDeterminantGraph; current determinant_exact_refs cannot remain identity-only if graph ignores them"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "rawlsing_next/pre553_authority_maintenance.py",
+      "change": [
+        "no generic lifecycle law change required",
+        "existing seal/promotion/invalidation/currentness semantics are reused"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "change": [
+        "add owner-native authority/rule fixture path without rewriting historical fixture-only records"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "N10E lifecycle runner/courts",
+      "change": [
+        "seal/promote actual successor authority",
+        "resolve sealed successor snapshot",
+        "construct successor stable rule ref",
+        "recompose product from successor snapshot/rule",
+        "hostile fixed-authority rule mutation and missing-edge attacks"
+      ],
+      "architecture_change": false
+    },
+    {
+      "path": "C1 source-free active tests/identity packet",
+      "change": [
+        "requalify active owner-native path and freeze new identities while preserving R8 historical evidence"
+      ],
+      "architecture_change": false
+    }
+  ],
+  "explicitly_not_required": [
+    "promotion of PositionedSubjectEmpiricalPossibilityField into public I01 family",
+    "changes to person/V3 boundary",
+    "changes to walkback ownership",
+    "changes to Z08 model semantics",
+    "raw-source execution",
+    "broad PRE553 authority ontology redesign"
+  ],
+  "architecture_warrant_required": false
+}

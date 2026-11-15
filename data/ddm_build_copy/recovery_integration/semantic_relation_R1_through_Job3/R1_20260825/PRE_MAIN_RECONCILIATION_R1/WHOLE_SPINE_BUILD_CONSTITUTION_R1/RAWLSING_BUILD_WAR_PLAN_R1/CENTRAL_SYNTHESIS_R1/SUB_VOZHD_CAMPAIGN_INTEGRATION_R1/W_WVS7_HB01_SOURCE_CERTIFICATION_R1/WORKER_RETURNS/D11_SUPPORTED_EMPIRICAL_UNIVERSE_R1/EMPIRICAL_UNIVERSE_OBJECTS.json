@@ -1,0 +1,283 @@
+{
+  "accepted_count": 3,
+  "fail_closed_unmaterialized_count": 63,
+  "objects": [
+    {
+      "authority_snapshot_refs": [
+        {
+          "authority_content_hash": "f5d4fd3047b13f2ff0ebdbab3ef92438d62055a1d1d47eb6c14e4f8d62f267a3",
+          "authority_id": "WVS7-HB01-D11-COUNTRY-UNIVERSE-AUSTRALIA-2018",
+          "authority_version": "1.0.0"
+        }
+      ],
+      "content_hash": "d12b091f134ba652d5dfabf67ea109bc3bd7e194838b23dea166eb01ee8e1552",
+      "dependency_refs": [
+        {
+          "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+          "kind": "SCOPED_RESPONDENT_REPLAY",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+        },
+        {
+          "content_hash": "698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3",
+          "kind": "SOURCE_SCOPE_MEMBER_SET",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3"
+        }
+      ],
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:d12b091f134ba652d5dfabf67ea109bc3bd7e194838b23dea166eb01ee8e1552",
+      "producer_replay_locator_or_reference_root": {
+        "content_hash": "9cb4f163f4b241d126eacad3dac36b01e2a0aef25489c0eceb7b51ac541e2040",
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d11-supported-universe-root:sha256:9cb4f163f4b241d126eacad3dac36b01e2a0aef25489c0eceb7b51ac541e2040"
+      },
+      "schema_id": "EmpiricalUniverse",
+      "schema_version": "1.0.0",
+      "semantic_fields": {
+        "canonical_wave_if_governed": null,
+        "country_geography": "Australia",
+        "field_or_reference_time": "2018-04-03/2018-08-06",
+        "harmonization_authority_ref": null,
+        "instrument_release": "WVS Wave 7 (2017) Questionnaire",
+        "raw_source_identity": {
+          "source_artifact": "WVS Wave 7.sav",
+          "source_scope": {
+            "A_YEAR": 2018,
+            "B_COUNTR": 36,
+            "S025": 362018
+          },
+          "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+        },
+        "raw_wave": "WVS Wave 7",
+        "respondent_namespace": {
+          "content_hash": "698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3",
+          "kind": "SOURCE_SCOPE_MEMBER_SET",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3"
+        },
+        "sampling_design_regime": {
+          "actual_sampling_design": "Sequential mixed-mode; self-completion online/paper; fieldwork 2018-04-03 through 2018-08-06; N=1813; response=30.2%",
+          "positive_design_detail": null
+        },
+        "sampling_geography": "Australia national private-household resident population age 18+",
+        "source_artifact_import_lineage": {
+          "d12_replay_ref": {
+            "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+            "kind": "SCOPED_RESPONDENT_REPLAY",
+            "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+          },
+          "d12_scope_ledger_sha256": "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9",
+          "source_archive": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
+          "source_artifact": "WVS Wave 7.sav",
+          "source_row_count": 1813,
+          "source_row_ordinal_first": 3231,
+          "source_row_ordinal_last": 5043,
+          "source_scope": {
+            "A_YEAR": 2018,
+            "B_COUNTR": 36,
+            "S025": 362018
+          },
+          "source_scope_member_set_ref": {
+            "content_hash": "698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3",
+            "kind": "SOURCE_SCOPE_MEMBER_SET",
+            "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3"
+          },
+          "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+        },
+        "source_family": "WORLD_VALUES_SURVEY_WAVE_7",
+        "source_relation_refs": [],
+        "study_product_release": {
+          "archive": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
+          "contained_source": "WVS Wave 7.sav"
+        },
+        "target_population_and_sample_frame": {
+          "sample_frame": "Address-based sampling; mail primary contact",
+          "target_population_or_coverage": "Adults 18+ resident in private households in Australia"
+        }
+      },
+      "typed_state": "UNIVERSE_IDENTIFIED"
+    },
+    {
+      "authority_snapshot_refs": [
+        {
+          "authority_content_hash": "b087527a9cf8656bba48996a4bd34feeda2ecab31f8fd2125e25d19ae200d129",
+          "authority_id": "WVS7-HB01-D11-COUNTRY-UNIVERSE-GREAT-BRITAIN-2022",
+          "authority_version": "1.0.0"
+        }
+      ],
+      "content_hash": "caea5e499919fdc3da062cf8f371841e40b03120cd2dca1f96915a08ad55cbff",
+      "dependency_refs": [
+        {
+          "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+          "kind": "SCOPED_RESPONDENT_REPLAY",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+        },
+        {
+          "content_hash": "26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c",
+          "kind": "SOURCE_SCOPE_MEMBER_SET",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c"
+        }
+      ],
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:caea5e499919fdc3da062cf8f371841e40b03120cd2dca1f96915a08ad55cbff",
+      "producer_replay_locator_or_reference_root": {
+        "content_hash": "50d2502e446d5f8c9fa3649f1fae3c6feafd444e311f84333dc12b439032d35f",
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d11-supported-universe-root:sha256:50d2502e446d5f8c9fa3649f1fae3c6feafd444e311f84333dc12b439032d35f"
+      },
+      "schema_id": "EmpiricalUniverse",
+      "schema_version": "1.0.0",
+      "semantic_fields": {
+        "canonical_wave_if_governed": null,
+        "country_geography": "United Kingdom - Great Britain",
+        "field_or_reference_time": "2022",
+        "harmonization_authority_ref": null,
+        "instrument_release": "WVS Wave 7 (2017) Questionnaire",
+        "raw_source_identity": {
+          "source_artifact": "WVS Wave 7.sav",
+          "source_scope": {
+            "A_YEAR": 2022,
+            "B_COUNTR": 826,
+            "S025": 8262022
+          },
+          "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+        },
+        "raw_wave": "WVS Wave 7",
+        "respondent_namespace": {
+          "content_hash": "26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c",
+          "kind": "SOURCE_SCOPE_MEMBER_SET",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c"
+        },
+        "sampling_design_regime": {
+          "actual_sampling_design": "Two-stage address probability sample: stratified random PPS selection of postcode sectors, then 30 addresses per selected sector from PAF; one adult age 18+ randomly selected within participating household.",
+          "positive_design_detail": "273 postcode sectors in Great Britain; 56 in Scotland and 45 in Wales. Stratifiers: country/region, population-density tertiles, percentage owner-occupied. Rare multi-household addresses randomly subsampled electronically."
+        },
+        "sampling_geography": "Great Britain (England, Scotland and Wales), adult population age 18+",
+        "source_artifact_import_lineage": {
+          "d12_replay_ref": {
+            "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+            "kind": "SCOPED_RESPONDENT_REPLAY",
+            "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+          },
+          "d12_scope_ledger_sha256": "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9",
+          "source_archive": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
+          "source_artifact": "WVS Wave 7.sav",
+          "source_row_count": 2609,
+          "source_row_ordinal_first": 27005,
+          "source_row_ordinal_last": 29613,
+          "source_scope": {
+            "A_YEAR": 2022,
+            "B_COUNTR": 826,
+            "S025": 8262022
+          },
+          "source_scope_member_set_ref": {
+            "content_hash": "26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c",
+            "kind": "SOURCE_SCOPE_MEMBER_SET",
+            "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c"
+          },
+          "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+        },
+        "source_family": "WORLD_VALUES_SURVEY_WAVE_7",
+        "source_relation_refs": [],
+        "study_product_release": {
+          "archive": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
+          "contained_source": "WVS Wave 7.sav"
+        },
+        "target_population_and_sample_frame": {
+          "sample_frame": "Royal Mail Postcode Address File (PAF), Small User version, excluding high-volume business addresses.",
+          "target_population_or_coverage": "Adult population age 18+ in Great Britain (England, Scotland and Wales). No groups excluded or under-represented; Scotland and Wales intentionally over-represented for analysis, with post-survey weighting for national representativeness."
+        }
+      },
+      "typed_state": "UNIVERSE_IDENTIFIED"
+    },
+    {
+      "authority_snapshot_refs": [
+        {
+          "authority_content_hash": "2ddf8b883c2fb4b774e848dadcb2faab8b13ac630dec979ec0573e349c05e9ca",
+          "authority_id": "WVS7-HB01-D11-COUNTRY-UNIVERSE-NORTHERN-IRELAND-2022",
+          "authority_version": "1.0.0"
+        }
+      ],
+      "content_hash": "d8fb874e9d2579c7d0b735f64cbef12366a7ab33dee738768a2739616d6009a0",
+      "dependency_refs": [
+        {
+          "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+          "kind": "SCOPED_RESPONDENT_REPLAY",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+        },
+        {
+          "content_hash": "f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347",
+          "kind": "SOURCE_SCOPE_MEMBER_SET",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347"
+        }
+      ],
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:d8fb874e9d2579c7d0b735f64cbef12366a7ab33dee738768a2739616d6009a0",
+      "producer_replay_locator_or_reference_root": {
+        "content_hash": "4dde353a4df933851a62a58b52a45a002d5ec22b1773747a9289a46b5c176b9a",
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d11-supported-universe-root:sha256:4dde353a4df933851a62a58b52a45a002d5ec22b1773747a9289a46b5c176b9a"
+      },
+      "schema_id": "EmpiricalUniverse",
+      "schema_version": "1.0.0",
+      "semantic_fields": {
+        "canonical_wave_if_governed": null,
+        "country_geography": "United Kingdom - Northern Ireland",
+        "field_or_reference_time": "2022",
+        "harmonization_authority_ref": null,
+        "instrument_release": "WVS Wave 7 (2017) Questionnaire",
+        "raw_source_identity": {
+          "source_artifact": "WVS Wave 7.sav",
+          "source_scope": {
+            "A_YEAR": 2022,
+            "B_COUNTR": 909,
+            "S025": 9092022
+          },
+          "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+        },
+        "raw_wave": "WVS Wave 7",
+        "respondent_namespace": {
+          "content_hash": "f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347",
+          "kind": "SOURCE_SCOPE_MEMBER_SET",
+          "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347"
+        },
+        "sampling_design_regime": {
+          "actual_sampling_design": "Two-stage address probability sample: stratified random PPS selection of postcode sectors, then 30 addresses per selected sector from PAF; one adult age 18+ randomly selected within participating household.",
+          "positive_design_detail": "45 postcode sectors, 30 addresses each. Stratifiers: population-density tertiles and percentage owner-occupied. Rare multi-household addresses randomly subsampled electronically."
+        },
+        "sampling_geography": "Northern Ireland, entire adult population age 18+",
+        "source_artifact_import_lineage": {
+          "d12_replay_ref": {
+            "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+            "kind": "SCOPED_RESPONDENT_REPLAY",
+            "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+          },
+          "d12_scope_ledger_sha256": "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9",
+          "source_archive": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
+          "source_artifact": "WVS Wave 7.sav",
+          "source_row_count": 447,
+          "source_row_ordinal_first": 63239,
+          "source_row_ordinal_last": 63685,
+          "source_scope": {
+            "A_YEAR": 2022,
+            "B_COUNTR": 909,
+            "S025": 9092022
+          },
+          "source_scope_member_set_ref": {
+            "content_hash": "f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347",
+            "kind": "SOURCE_SCOPE_MEMBER_SET",
+            "object_id": "urn:rawlsing:pre553:gsr07:wvs7:source-scope-member-set:sha256:f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347"
+          },
+          "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+        },
+        "source_family": "WORLD_VALUES_SURVEY_WAVE_7",
+        "source_relation_refs": [],
+        "study_product_release": {
+          "archive": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
+          "contained_source": "WVS Wave 7.sav"
+        },
+        "target_population_and_sample_frame": {
+          "sample_frame": "Royal Mail Postcode Address File (PAF), Small User version, excluding high-volume business addresses.",
+          "target_population_or_coverage": "Entire adult population age 18+ of Northern Ireland; no groups excluded, over-represented, or under-represented."
+        }
+      },
+      "typed_state": "UNIVERSE_IDENTIFIED"
+    }
+  ],
+  "schema": "wvs7-hb01-d11-supported-empirical-universes-v1"
+}

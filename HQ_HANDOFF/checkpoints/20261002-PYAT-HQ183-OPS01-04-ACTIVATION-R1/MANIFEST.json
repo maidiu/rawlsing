@@ -1,0 +1,37 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF_MANIFEST@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1",
+  "files": [
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1/CURRENT.md",
+      "blob_sha": "053d44de6ac8282fc71fbdcb85af8941d5fa216e"
+    },
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1/CURRENT.json",
+      "blob_sha": "d40f3f239f60aff3614fd95c87c7e88fed5c11b2"
+    }
+  ],
+  "governing_decision": "HQD-2026-10-02-183",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "seal_law": "MANIFEST_BINDS_EXACT_CURRENT_MD_AND_CURRENT_JSON_BLOBS_AT_HANDOFF_COMMIT",
+  "adoption_status": "NOT_ADOPTED_INTO_BUILD__HQ182_HOLD_UNLIFTED",
+  "retrieval": {
+    "law": "ALL_MATERIAL_FETCHABLE_FROM_ORIGIN",
+    "control_branch": "integration/pre-main-reconciliation-r1",
+    "activation_branch": "agent/opencode-pyat-hq183-ops01-ops04-activation-r1",
+    "recheck_branch": "agent/opencode-pyat-hq183-c4-disputed-claims-recheck-r1",
+    "recheck_tip": "dd00896848c98de5e6ff124fd50f8508431fc0ff",
+    "ops01": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-01/",
+    "ops02": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02/",
+    "ops03": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-03/",
+    "ops04": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/",
+    "dispatcher": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs",
+    "qualifier": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/qualify_ops03.mjs"
+  },
+  "external_adjudicator": "ASTRA__SEPARATE_MACHINE",
+  "pending_for_astra": [
+    "C4 reconciliation adoption decision",
+    "HQ183 disputed-claims re-check return",
+    "corrections C1-C5 against HQ182 and both lanes"
+  ]
+}

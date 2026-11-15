@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ213_SINGLE_SOURCE_AND_POWER_REPAIR@1.0.0",
+  "lane": "PYAT-HQ213-HD-F8-BINDING-BOUNDED-REPAIR-R1",
+  "startup_tip": "a946d431f84dfe263c3508089b5c78422683fd03",
+  "exact_repair_base": "8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+  "hostile_review": "33062ccfcca5c121bd699a98af11460440cd15ba",
+  "repair_1": {
+    "review_finding": "F1 MEDIUM blocking -- SINGLE_SOURCE_VALIDATION's requested source did not constrain evaluation",
+    "option_chosen": "A -- enforce single-source refinement",
+    "option_b_considered_and_rejected_because": "Option B would delete the mode and the requested source entirely, which would have removed a lawful narrowing capability the binder already needs. Option A keeps the capability and makes it real. An inert mode was not preserved for API cosmetics.",
+    "root_cause_found_beyond_the_review_statement": "The binding dataclass did not carry requested_source_universe_ref AT ALL. The binding request recorded it, so it entered the binding-request material, but the constructed binding dropped it. That is why the refinement could not constrain anything at evaluation time: there was no field on the binding to constrain against.",
+    "changes": [
+      "added requested_source_universe_ref as a field on ServiceApplicabilityF8SourceScopeBinding (frozen dataclass) and passed it at the construction site",
+      "added private method _require_single_source_binding() which refuses BINDING_MODE_MISMATCH and SINGLE_SOURCE_BINDING_MISSING_REQUESTED_SOURCE rather than silently degrading to the admitted-set check",
+      "in assert_query_source_admitted, when binding_mode is SINGLE_SOURCE_VALIDATION, the query source must equal the requested source, checked BEFORE the admitted-set membership check",
+      "at bind time, the requested source must also be present in the bound F8 rule's source_universe_refs",
+      "the enforced refinement is emitted in the binding material, so it participates in the replay identity"
+    ],
+    "typed_refusal_codes_added": [
+      "F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE",
+      "REQUESTED_SOURCE_NOT_IN_F8_RULE_SOURCE_SCOPE",
+      "BINDING_MODE_MISMATCH",
+      "SINGLE_SOURCE_BINDING_MISSING_REQUESTED_SOURCE"
+    ],
+    "ordering_note": "The REQUESTED_SOURCE_NOT_ADMITTED refusal was deliberately left PRIMARY. The new rule-scope check was first inserted before that check, which changed the refusal reason for a non-admitted requested source and broke the pre-existing court. The new check was relocated to run AFTER admission, so a non-admitted requested source still refuses with its original, more specific reason.",
+    "narrowing_law_preserved": "A single-source binding may still narrow to a source subset that the EXHAUSTIVE_UNRANKED_SET mode refuses (F8_RULE_SOURCE_SET_NOT_EXHAUSTIVE). Narrowing eligibility is not transformation.",
+    "authority_effect": "Strictly narrowing. Every source evaluable under a single-source binding was already positively admitted, so no unauthorized source became reachable and the repair cannot widen the admitted set.",
+    "court_witness_for_the_exact_review_case": "test_single_source_binding_for_a_REFUSES_evaluation_on_admitted_b -- A and B both positively admitted under one release, F8 rule spanning both, binding made SINGLE_SOURCE_VALIDATION for A, evaluation attempted on B. Under the defect this returned EXACT_SUPPORTED; it now refuses with F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE."
+  },
+  "repair_2": {
+    "review_finding": "F2 MEDIUM blocking -- 'the two positive powers, and only two' was false as an API statement",
+    "truthful_enumeration": {
+      "public_callables_total": 6,
+      "public_callables_that_return": 5,
+      "old_claimed_returning_count": 2,
+      "two_source_touching_powers": [
+        "assert_query_source_admitted",
+        "expose_unranked_admitted_source_set"
+      ],
+      "non_power_returning_callables": [
+        "bind_service_applicability_to_f8_scope",
+        "evaluate_bound_positioned_subject_possibility",
+        "verify_service_f8_scope_binding_replay"
+      ],
+      "guard_only_callables_returning_nothing": [
+        "assert_complete_coverage_from_binding"
+      ],
+      "exported_exception_type_not_a_returning_callable": "ServiceF8ScopeBindingError"
+    },
+    "why_the_delegating_evaluator_is_not_a_new_power": "evaluate_bound_positioned_subject_possibility invokes the adopted F8 evaluator UNCHANGED after source-scope validation and grants no selection, ranking, transformation, pooling, currentness, permission or actor semantics of its own. It returns a full F8 result but introduces no power over sources.",
+    "the_claim_that_remains_exact": "There is no THIRD POWER OVER SOURCES. No first/best/latest/local/preferred/ranked/weighted source is obtainable, because no such method exists and all seven selection/permission-shaped methods refuse loudly when attempted.",
+    "machine_checkable_constants_added": [
+      "TWO_SOURCE_TOUCHING_POWERS",
+      "NON_POWER_RETURNING_CALLABLES",
+      "GUARD_ONLY_CALLABLES",
+      "DELEGATING_EVALUATOR_IS_NOT_A_POWER_BECAUSE",
+      "NO_THIRD_POWER_OVER_SOURCES"
+    ],
+    "docstring_rewritten": true,
+    "no_third_power_verified_by": "recursive value inspection of the emitted binding material for any rank/score/priority/preference/weight/best/first/latest/local leaf, with the negative disclaimer keys pinned and excluded so the scan targets real rank leaves rather than the assertions of their absence."
+  },
+  "negative_control_proving_the_court_is_not_tautological": {
+    "method": "the repaired binder was replaced by the PRE-REPAIR binder extracted from the exact repair base 8d352f7d80983cbf49e7e57511f8cf6d5b80966d, in a shadow tree outside the repository, and the identical repair court was run against it",
+    "repair_court_against_pre_repair_binder": "19 failed, 22 passed",
+    "repair_court_against_repaired_binder": "41 passed",
+    "repair_5_witness_separately_controlled": "with the pre-repair binding court also restored (5 pytest.skip calls), test_no_write_terrain_guard_in_the_binder_court_skips fails as intended; against the repaired court (0 pytest.skip calls) it passes",
+    "conclusion": "Every one of the five repairs has at least one witness that FAILS on the pre-repair code and PASSES on the repaired code. No witness is satisfied by re-running identical inputs."
+  }
+}

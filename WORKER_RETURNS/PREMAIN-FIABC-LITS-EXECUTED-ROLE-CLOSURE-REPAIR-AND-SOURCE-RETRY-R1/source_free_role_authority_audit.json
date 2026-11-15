@@ -1,0 +1,49 @@
+{
+  "compiled_candidate_count": 50,
+  "compiled_role_count": 77,
+  "decoder_called": false,
+  "method": "Materialized the exact source-free runtime with incidence=None and compiled the current I05 frontier only; no query execution.",
+  "missing_exact_authority_snapshot": {
+    "affected_current_i03_fact": {
+      "fact_ref": {
+        "content_hash": "c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc"
+      },
+      "predicate_ref": {
+        "content_hash": "3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508"
+      },
+      "query_ref": {
+        "content_hash": "3419fd8377bd3b681315191bd22a3c37a95443946c0a0477b2c591e6690bfbd0",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3419fd8377bd3b681315191bd22a3c37a95443946c0a0477b2c591e6690bfbd0"
+      },
+      "typed_state": "SUPPORTED"
+    },
+    "affected_role_predicate_ref": {
+      "content_hash": "3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508"
+    },
+    "authority_ref": {
+      "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+      "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+      "authority_version": "1.0.0-candidate"
+    },
+    "contract_status": "CANDIDATE__HQ_ADOPTION_REQUIRED",
+    "governing_runtime_authority_contract": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json",
+    "lawful_source_free_recovery": false,
+    "present_in_runtime_catalog_authority_snapshots": false,
+    "reason": "No exact AuthoritySnapshot preimage for this ref is in the runtime catalog or the runtime authority set historical snapshot resolver. The source-free authority fixture records candidate adoption status; minting or substituting a positive snapshot would alter authority semantics.",
+    "resolve_exact_runtime_authority_available": false
+  },
+  "schema": "FIABC_LITS_ROLE_AUTHORITY_CLOSURE_SOURCE_FREE_AUDIT@1.0.0",
+  "source_opened": false,
+  "source_sha_checked": false,
+  "unique_executed_role_objects": {
+    "EmpiricalPredicate@1.0.0": 27,
+    "EmpiricalQuerySpec@1.0.0": 60
+  }
+}

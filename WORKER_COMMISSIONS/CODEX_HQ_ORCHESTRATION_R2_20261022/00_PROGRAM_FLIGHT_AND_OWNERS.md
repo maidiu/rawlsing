@@ -1,0 +1,18 @@
+# Codex-HQ orchestration R2 — one shared controller, dual separate HQs, lawful parallel missions
+
+**Date:** 2026-10-22. **Status:** documentary work-package commissions ready for user dispatch only where exact startup, permission and real facility are verified. **No workers auto-launched**. Governing R2: CROSS_HQ_CONTROL_ROOM/CODEX_HQ_OPENCODE_CONTINUOUS_ORCHESTRATION_R2_SUCCESSION_RESUME_GRANT_ENFORCEMENT_AMENDMENT_20261022.md. Inherited R1 P0–P5/O01–O08 and all original scientific/source/actor authority retain separate force.
+
+**Independent flights:**
+- PYAT-HQ-ELIGIBILITY: Existing mainMac Codex director alone prepares a full-HQ candidate dossier and performs genuine whole-machine judgment. Requires an independent fully separate reviewer and subsequent exact user appointment; cannot self-appoint or mutate operative HQ state. It is **not** controller implementation.
+- INFRA-SHARED-BUILD: A qualified, user-selected infrastructure owner builds ONE isolated private durable controller P0/P0.5/P1/P2 and P3 shadow tests, without any live Rawlsing source/product code or automatic worker launches. The host and controller repo actually chosen must be verified before write; no provider/credential assumptions.
+- SOROK-INFRA-ADAPTER: Already appointed Sorok Codex HQ produces independent Sorok-specific P0.5 incumbent-thread identity/capability, sourcefree authorization/mock fixtures, actor firewall and P3 replay/hostile tests compatible with the shared controller. It coordinates read-only schemas and integration seams with shared build owner; no duplicate daemon, no direct product coding, no Sorok user-manual auto launch.
+
+**Dependency:** Pyat full-HQ appointment is NOT prerequisite to independent P0/P1/P2 fake HQ fixture infrastructure; it IS a prerequisite to claiming the Pyat incumbent can command as fully accredited HQ through controller. Exact P0.5 thread continuity comes before any verified incumbent-resume claim. Sorok's active incumbent is already appointed but current transport USER_MANUAL remains until explicit later P4 activation. Same-rule conflicts require typed grant refusal, not self-interpretation.
+
+**Current exact evidence cut:** Pyat R58 immutable packet facf870d2482972c50925e7dbf9b9e04da408b71 and current pointer; R56 C1 final reviewer a54893657ba65e44c1049f763208b0b4b6ed5eb9 accepted LOCAL sourcefree composition only. Sorok current canonical rev34 last observed; refresh head before acting. Existing user stopped J52/W52 and other Pyat R01/R08/R09 grant held.
+
+**One shared controller ownership law:** infrastructure build owner owns durable kernel and main service API; Sorok adapter owner owns separate documentary fixtures/contracts and controlled integration PR only into already authorized shared infrastructure workspace after coordination. Neither changes Pyat/Sorok product code. Avoid competing writes; integration after separate reviewed commits. Distinct independent infrastructure reviewer for real closed loop, no author self-review.
+
+**Actual execution before dispatch:** each selected session records real model, reasoning effort, harness, host, Git startup, branch/worktree independence, quota or UNKNOWN, privacy/provider grant, relevant code rights and reviewer incompatibilities. If the user has not actually created/authorized a private controller repository/workspace or chosen real local execution surface, prepare sourcefree P0 reports and ask precisely for the missing facility; no invented repo/session.
+
+**Return:** separate exact immutable SHAs, status, consumed evidence and tests for each of three flights; HQ fan-in must not adopt role or scientific rights. Leave P4 LIVE_ACTIVATION=NO until explicit new human authorization.

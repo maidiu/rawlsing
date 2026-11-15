@@ -1,0 +1,195 @@
+{
+  "schema": "FIABC_FINAL_PROGRESS_DRIVER_RETURN_PROGRESS_SCHEMA@1.0.0",
+  "emitted_schema": "RAWLSING_FIABC_DRIVER_PROGRESS@1.0.0",
+  "sink": "<work_root>/fiabc_driver_progress.jsonl",
+  "human_stream": "stderr",
+  "machine_result_stream": "stdout",
+  "event_identity_law": "sha256(canonical_json({schema, manifest_sha256, stable_event_identity_basis}))",
+  "common": {
+    "schema": "RAWLSING_FIABC_DRIVER_PROGRESS@1.0.0",
+    "event_identity": "sha256",
+    "manifest": {
+      "schema": "string",
+      "sha256": "string",
+      "git_blob_sha1": "string"
+    },
+    "court_administration_only": true,
+    "evidentiary_measurement": false
+  },
+  "event_types": {
+    "STAGE": {
+      "state": [
+        "START",
+        "PASS",
+        "SKIP",
+        "PRESERVE",
+        "BLOCKED",
+        "CANDIDATE_LOCAL_FAILURE"
+      ],
+      "address": "string",
+      "overall": {
+        "index": "integer",
+        "total": "integer"
+      },
+      "executable": {
+        "index": "integer|null",
+        "total": "integer",
+        "is_executable": "boolean"
+      },
+      "cell": "null | {index: integer, total: integer}",
+      "source": "string",
+      "candidate": "string",
+      "source_name": "string",
+      "candidate_name": "string",
+      "stage": {
+        "id": "string",
+        "name": "string",
+        "index": "integer|null",
+        "total": "integer|null",
+        "is_court_final": "boolean"
+      },
+      "manifest_disposition": "string",
+      "terminal_disposition": "string|null",
+      "next_stage": "string|null",
+      "elapsed_stage_ns": "integer|null",
+      "elapsed_clock": "time.perf_counter_ns",
+      "resource_snapshot": "null | {platform, ru_maxrss_raw, ru_maxrss_unit, cpu_user_seconds, cpu_system_seconds}"
+    },
+    "CELL_TERMINAL": {
+      "state": [
+        "PASS",
+        "BLOCKED",
+        "CANDIDATE_LOCAL_FAILURE"
+      ],
+      "cell": {
+        "index": "integer",
+        "total": "integer"
+      },
+      "source": "string",
+      "candidate": "string",
+      "source_name": "string",
+      "candidate_name": "string",
+      "terminal_dispositions": "array[string]",
+      "cell_terminal_status": "COMPLETE",
+      "resource_snapshot": "object|null"
+    },
+    "COURT_TERMINAL": {
+      "state": [
+        "PASS",
+        "BLOCKED",
+        "CANDIDATE_LOCAL_FAILURE"
+      ],
+      "terminal": "exact driver terminal string",
+      "next_stage": "string",
+      "ledger_sha256": "sha256",
+      "overall_total": "integer",
+      "executable_total": "integer",
+      "cell_total": "integer",
+      "resource_snapshot": "object|null"
+    }
+  },
+  "sealed_manifest_derived_context": {
+    "cell_total": 6,
+    "stage_total_per_cell": 17,
+    "current_entry": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+    "overall_total_from_entry_through_s17": 102,
+    "executable_total_from_entry_through_s17": 89,
+    "production_logic_hardcodes_these_counts": false
+  },
+  "examples": {
+    "first_stage_start": {
+      "event_type": "STAGE",
+      "state": "START",
+      "address": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "overall": {
+        "index": 1,
+        "total": 102
+      },
+      "executable": {
+        "index": 1,
+        "total": 89,
+        "is_executable": true
+      },
+      "cell": {
+        "index": 1,
+        "total": 6
+      },
+      "source": "LITS_I",
+      "candidate": "A",
+      "stage": {
+        "id": "S01_CANDIDATE_PREPARATION_BUILD",
+        "name": "CANDIDATE_PREPARATION_BUILD",
+        "index": 2,
+        "total": 17,
+        "is_court_final": false
+      },
+      "manifest_disposition": "READY__RUN_LOCALLY",
+      "terminal_disposition": null,
+      "next_stage": null,
+      "elapsed_stage_ns": null
+    },
+    "first_stage_pass": {
+      "event_type": "STAGE",
+      "state": "PASS",
+      "address": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "overall": {
+        "index": 1,
+        "total": 102
+      },
+      "executable": {
+        "index": 1,
+        "total": 89,
+        "is_executable": true
+      },
+      "cell": {
+        "index": 1,
+        "total": 6
+      },
+      "stage": {
+        "id": "S01_CANDIDATE_PREPARATION_BUILD",
+        "index": 2,
+        "total": 17
+      },
+      "terminal_disposition": "PASS",
+      "next_stage": "LITS_I/A/S02_C11_REACHABILITY",
+      "elapsed_stage_ns": "observed monotonic integer"
+    },
+    "final_s17_start": {
+      "event_type": "STAGE",
+      "state": "START",
+      "address": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+      "overall": {
+        "index": 102,
+        "total": 102
+      },
+      "executable": {
+        "index": 89,
+        "total": 89,
+        "is_executable": true
+      },
+      "cell": null,
+      "stage": {
+        "id": "S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+        "index": null,
+        "total": null,
+        "is_court_final": true
+      }
+    },
+    "court_success": {
+      "event_type": "COURT_TERMINAL",
+      "state": "PASS",
+      "terminal": "COURT_SEQUENCE_COMPLETE__S17_VERIFIED",
+      "next_stage": "__COURT_COMPLETE__",
+      "ledger_sha256": "<ledger_sha256>",
+      "overall_total": 102,
+      "executable_total": 89,
+      "cell_total": 6
+    },
+    "court_candidate_local_failure": {
+      "event_type": "COURT_TERMINAL",
+      "state": "CANDIDATE_LOCAL_FAILURE",
+      "terminal": "COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+      "next_stage": "__COURT_COMPLETE__"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "branch": "agent/codex-fiabc-run3-postmeasurement-repair-stack-r1",
+  "candidate_outputs_seen": 0,
+  "candidate_owned_roots_consulted": [],
+  "candidate_processes_started": 0,
+  "fresh_checkout": {
+    "clean_after_preflight": true,
+    "clean_before_producer": true,
+    "head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "path": "/private/tmp/fiabc-succession-fresh-3d8f2ad62"
+  },
+  "hq_review_required": true,
+  "implementation_parent": "a0e20d561310ed9f9fedeb4996eb733316a8bd80",
+  "measured_driver_run": false,
+  "preflight_check_count": 11,
+  "preflight_command": "PYTHONDONTWRITEBYTECODE=1 /private/tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m rawlsing_next.fiabc_succession_preflight --manifest /private/tmp/fiabc-succession-3d8f2ad62/succession_manifest.json --lifecycle-context /private/tmp/fiabc-succession-3d8f2ad62/lifecycle_context.json --repo-root /private/tmp/fiabc-succession-fresh-3d8f2ad62 --output /private/tmp/fiabc-succession-3d8f2ad62/preflight_result.json",
+  "preflight_exit_code": 0,
+  "preflight_failure_codes": [],
+  "preflight_result_path": "current_head_succession/preflight_result.json",
+  "preflight_result_sha256": "15277b2b7bd9c92b2b4524872d8d49505aef16e076578436c3c31d44abd8b192",
+  "preflight_status": "PASS",
+  "producer_command": "PYTHONDONTWRITEBYTECODE=1 /private/tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m rawlsing_next.fiabc_succession_producer --repo-root /private/tmp/fiabc-succession-fresh-3d8f2ad62 --manifest-output /private/tmp/fiabc-succession-3d8f2ad62/succession_manifest.json --lifecycle-output /private/tmp/fiabc-succession-3d8f2ad62/lifecycle_context.json --receipt-output /private/tmp/fiabc-succession-3d8f2ad62/producer_receipt.json --expected-head 3d8f2ad62600b6777dcb23a28404a067502e77a0 > /private/tmp/fiabc-succession-3d8f2ad62/producer_stdout.json",
+  "producer_exit_code": 0,
+  "qualified_implementation_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "raw_lits_or_wvs_sources_opened_or_hashed": false,
+  "repair_qualification": {
+    "elapsed_seconds": 38.31,
+    "errors": 0,
+    "failures": 0,
+    "junit_path": "10_SOURCE_FREE_TEST_REPORT.xml",
+    "junit_sha256": "16ae66aa383b13fc574b03e3ef2f5736e236750024754c88c2d1bd4c9a8f6cca",
+    "skipped": 0,
+    "test_count": 115
+  },
+  "repository": "maidiu/rawlsing",
+  "runtime": {
+    "implementation": "CPython",
+    "platform": "macOS-13.2.1-x86_64",
+    "pyarrow": "25.0.1",
+    "pyreadstat": "1.3.6",
+    "pytest": "9.0.2",
+    "python": "3.11.3"
+  },
+  "schema": "FIABC_CURRENT_HEAD_LIVE_SUCCESSION_QUALIFICATION@1.0.0",
+  "status": "PASS",
+  "succession_qualification_tests": {
+    "elapsed_seconds": 12.68,
+    "errors": 0,
+    "failures": 0,
+    "junit_path": "11_SUCCESSION_TEST_REPORT.xml",
+    "junit_sha256": "55da529528e0c4784d91f37dd3a6aca788ec9bd98ef3e2c4963b826e6e76e835",
+    "junit_testcase_count": 52,
+    "pytest_test_count": 24,
+    "skipped": 0,
+    "subtest_count": 28
+  },
+  "terminal": "READY__RUN3_REPAIR_STACK_AND_CURRENT_HEAD_SUCCESSION_SOURCE_FREE_QUALIFIED__HQ_PROMOTION_REQUIRED",
+  "worktree_refs_unchanged": {
+    "premain": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
+    "protected_execution": "bc832181b4284ac110d2be44fc83504e04de081e"
+  }
+}

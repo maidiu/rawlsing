@@ -1,0 +1,30 @@
+{
+  "schema": "FIABC_HQ_LITS_ORACLE_BOUNDARY@1.0.0",
+  "browser_proved": {
+    "exact_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "accepted_product_identity": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+    "accepted_semantic_replay": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+    "exact_candidate_count": 50,
+    "exact_query_role_count": 77,
+    "source_free_frontier_reconstruction": true,
+    "candidate_execution": false,
+    "source_read": false
+  },
+  "historical_astra_support": {
+    "P0_positive_controls": 5,
+    "P1_joint_dependence": 1,
+    "P2_conditioned_frontier": 18,
+    "P3_conditional_reversal": 1,
+    "P4_joint_5x5_target_support": 25,
+    "terminal_counts": {
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    }
+  },
+  "missing_for_exact_current_t5_oracle": [
+    "CURRENT_STANDARDIZED_CONSTITUENT_I03_FACT_REFS",
+    "CURRENT_CONSTITUENT_I03_CLOSURE_IDENTITY",
+    "CURRENT_OBSERVATION_SHAPED_EXACT_REF_MANIFEST"
+  ],
+  "holding": "LOCAL_CANDIDATE_NEUTRAL_MATERIALIZATION_REQUIRED_BEFORE_CANDIDATE_START__NO_SEMANTIC_ARCHAEOLOGY_OR_REDESIGN_REQUIRED"
+}

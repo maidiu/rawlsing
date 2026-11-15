@@ -1,0 +1,168 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ182-ALT-B-RETURN-ADJUDICATED-NOT-ADOPTED-R1",
+  "governing_decision": "HQD-2026-10-02-182",
+  "status": "C4_FINAL_REVIEW_ALT_B_RETURN_ADJUDICATED__FREEZE_ACCEPTED_AT_SOURCE_FREE_GRAIN__NOT_ADOPTED_INTO_BUILD__HELD_FOR_EXTERNAL_ASTRA_COMPARISON__RAW_SOURCE_EXECUTION_HELD",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "adoption_status": "NOT_ADOPTED_INTO_BUILD",
+  "adoption_law": "ADJUDICATION_RECORDED__BUILD_ADVANCE_WITHHELD_PENDING_EXTERNAL_ASTRA_CROSS_MODEL_ADJUDICATION",
+  "adjudicator": "HQ_VOZHD__OPENCODE__SPACE_BUNNY_FREE",
+  "subject_return": {
+    "lane": "ALT_B",
+    "branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+    "return_head": "3a5b2cbc7f1978384268376f3ee493c7c095780b",
+    "commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+    "parent_verified": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+    "commits_over_tip": 1,
+    "files_added": 8,
+    "files_modified": 0,
+    "files_deleted": 0,
+    "insertions": 1891,
+    "all_under_return_dir": true,
+    "rawlsing_next_changes": 0,
+    "lane_a_content_imported": false,
+    "worker_disposition": "APPROVE_AT_DECLARED_GRAIN"
+  },
+  "hq_disposition": "UPHELD_AT_DECLARED_GRAIN__NOT_ADOPTED_INTO_BUILD",
+  "hq_independent_rederivation": {
+    "method": "READ_ONLY_GIT_OBJECT_INSPECTION_AND_STATIC_ANALYSIS__NO_EXECUTION__NO_RAW_SOURCE_ACCESS",
+    "verified_exact": [
+      {
+        "claim": "rawlsing_next tree unchanged across lineage",
+        "hq_result": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+        "points_checked": 7,
+        "points": ["9a5752a8", "8f7efe690", "01256977", "39015a90", "f8c8e2e4", "8ff40d37", "2836f625"],
+        "all_identical": true
+      },
+      {
+        "claim": "count discrepancy is first-parent vs total-reachable",
+        "hq_first_parent_count": 3,
+        "hq_total_reachable_count": 5,
+        "extra_reachable": ["1df64cc596b5602c952518c87b1c71cc1fcfb35f", "eba2f4249fb7cd315851ff687269bc43ade19ce8"],
+        "extras_are_declared_merge_side": true,
+        "unreviewed_work_found": false
+      },
+      {
+        "claim": "fan-in lineage is documentary only",
+        "hq_files_added": 47,
+        "hq_files_modified": 0,
+        "hq_files_deleted": 0,
+        "hq_all_under_WORKER_RETURNS": true
+      },
+      {
+        "claim": "warrant candidate digest",
+        "hq_recomputed_sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+        "matches_declared": true
+      },
+      {
+        "claim": "Route-B producer is correct and unique",
+        "hq_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "hq_rawlsing_next_file_count": 330,
+        "hq_contract_declaration_sites": 1,
+        "hq_execute_route_b_production_def_sites": 1,
+        "established_by": "UNIQUENESS_SEARCH_NOT_FANIN_NAMING"
+      }
+    ],
+    "confirmed_and_material": [
+      {
+        "id": "R9",
+        "worker_classification": "BLOCKS_WARRANT_ISSUANCE",
+        "hq_verdict": "CONFIRMED__AND_PRECISELY_SCOPED",
+        "c4b_per_source_slots": [
+          "full_file_sha256_passes",
+          "path_opens",
+          "decoder_invocations",
+          "metadata_header_reads",
+          "selected_reads",
+          "full_reads",
+          "retries"
+        ],
+        "c4b_sources": 7,
+        "candidate_per_source_accounting_present": false,
+        "candidate_global_account_types": 10,
+        "candidate_global_accounts_are_per_source_bound": false,
+        "hq_characterisation": "TAXONOMY_RICHER_THAN_C4B__PER_SOURCE_BINDING_LOST__ISSUANCE_BLOCKER_NOT_FREEZE_BLOCKER"
+      },
+      {
+        "id": "R10",
+        "worker_classification": "ADVISORY_BOOKKEEPING",
+        "hq_verdict": "CONFIRMED_EXACT",
+        "location": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/05_ORACLE_AND_COMPARISON_LAW.json:44",
+        "field": "T3_freeze_sha256",
+        "value_in_repo": "7dfb6...",
+        "defect": "TRUNCATED_LITERAL_IN_MACHINE_READABLE_IDENTITY_FIELD_BESIDE_TWO_FULL_LENGTH_DIGESTS_IN_SAME_OBJECT"
+      }
+    ],
+    "corrected_by_hq": [
+      {
+        "id": "R7",
+        "worker_classification": "BLOCKS_LIVE_EXECUTION",
+        "worker_stated_scale": "venv in temp dir, interpreter uncommitted, only a 16-byte hash prefix, no lock",
+        "hq_verdict": "CONFIRMED_ALL_FOUR_GROUNDS__WORKER_MATERIALLY_UNDERSTATED_SCOPE",
+        "hq_findings": [
+          {
+            "ground": "non_durable_venv",
+            "hq_evidence": "C4C3 01_ENVIRONMENT_LOCK.json states verbatim that the venv lives in a per-session temporary directory and is NOT durable and NOT reproducible from the repository",
+            "note": "C4C3_SELF_DECLARATION_NOT_REVIEWER_INFERENCE"
+          },
+          {
+            "ground": "interpreter_uncommitted",
+            "hq_evidence": "qualified interpreter resolves under LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/ and LOCAL_COURTS/ is untracked in this repository",
+            "truncated_identity_literals_in_c4c3_lock": 40,
+            "example_truncated_literal": "11d6f541a870a141249ce98d45834a67",
+            "note": "WORKER_CITED_ONE_16_BYTE_PREFIX_ACTUAL_SCALE_IS_40_FIELDS"
+          },
+          {
+            "ground": "no_dependency_lock",
+            "hq_evidence": "repository_dependency_lock_exists is the only lock reference in the fan-in runtime law"
+          }
+        ],
+        "hq_severity": "UPGRADED__NOT_MERE_PRECONDITION_BUT_SELF_DECLARED_NON_DURABILITY_IN_QUALIFIED_SURFACE__MUST_BE_RESOLVED_BEFORE_ANY_GOVERNED_RUN"
+      }
+    ]
+  },
+  "residual_register_as_adjudicated": {
+    "blocking_executable_freeze_acceptance": 0,
+    "blocking_warrant_issuance": 1,
+    "blocking_live_execution": 1,
+    "advisory_nonblocking": 9,
+    "counterexamples_requiring_escalation": 0,
+    "banked_into_build": false
+  },
+  "authority_effect": {
+    "scope_freeze_accepted_at_source_free_grain": true,
+    "adopted_into_build": false,
+    "hq_may_resolve_and_fill_source_locators_under_this_decision": false,
+    "hq_may_issue_warrant_under_this_decision": false,
+    "raw_source_execution_authorized": false,
+    "source_locators_discovered": 0,
+    "warrant_issued": false,
+    "c4_executed": false,
+    "production_code_mutated": false,
+    "lane_a_adjudicated": false,
+    "lane_a_read_by_this_adjudicator": false
+  },
+  "held": [
+    "ADOPTION_OF_C4_FREEZE_INTO_BUILD",
+    "BUILD_ADVANCE_TOWARD_WARRANT",
+    "SOURCE_LOCATOR_DISCOVERY_AND_FILL",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4_EXECUTION",
+    "LANE_A_ADJUDICATION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "external_comparison": {
+    "adjudicator": "ASTRA__SEPARATE_MACHINE",
+    "retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
+    "lane_a_branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+    "lane_a_commission_tip": "42f54d6345ed31669f8c37d7dc23b8e042968986",
+    "lane_b_branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+    "lane_b_commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+    "lane_b_return_head": "3a5b2cbc7f1978384268376f3ee493c7c095780b",
+    "shared_review_base": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "hq_decision_lane_b": "HQD-2026-10-02-182"
+  },
+  "next_action": "AWAIT_EXTERNAL_ASTRA_CROSS_MODEL_ADJUDICATION__HQ_ADOPTION_WITHHELD__NO_BUILD_ADVANCE__NO_RAW_SOURCE_ACCESS"
+}

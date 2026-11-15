@@ -1,0 +1,64 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1843-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1840-0400",
+  "status": "R6K_BROWSER_VALIDATED_RELEASE_SNAPSHOT_PREP_ACTIVE__ZERO_ACTIVE_BINDINGS__A5F36_BANKED__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-061"
+  ],
+  "commission_path": "HQ_HANDOFF/EE_P2R6K_COMMISSION_20260918.md",
+  "active_workers": [
+    {
+      "id": "EE-P2R6K",
+      "branch": "agent/rabochii-prev3-ee-p2r6k-validated-release-snapshot-prep-r1",
+      "commission_tip": "7a50166ef3ae939713e83bf220f87972792634d0",
+      "observed_head_at_checkpoint": "7a50166ef3ae939713e83bf220f87972792634d0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "BROWSER",
+      "library_access": "NO",
+      "pass_wake": "HQ_ADJUDICATION_THEN_EXACT_LOCAL_SNAPSHOT_MATERIALIZATION"
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "binding_state": {
+    "active_positive_binding_count": 0,
+    "banked_corrected_preimage_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  },
+  "dependency_graph": {
+    "EE-P2R6K": {
+      "status": "ACTIVE"
+    },
+    "LOCAL_RELEASE_SNAPSHOT_MATERIALIZATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_R6K"
+      ]
+    },
+    "CORRECTED_BINDING_POSITIVE_R6A_PROOF": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "RESTORABLE_VALIDATED_RELEASE_SNAPSHOT"
+      ]
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT"
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT"
+    },
+    "EE-P2X": {
+      "status": "HELD"
+    }
+  },
+  "terminal": "R6K_ACTIVE__ZERO_ACTIVE_BINDINGS__P2X_HELD"
+}

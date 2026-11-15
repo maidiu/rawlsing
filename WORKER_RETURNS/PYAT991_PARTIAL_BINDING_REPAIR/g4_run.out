@@ -1,0 +1,81 @@
+Exception in thread Thread-1 (_run):
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 1038, in _bootstrap_inner
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/threading.py", line 975, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a/WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/resource_recovery_probe.py", line 109, in _run
+    self.peak = max(self.peak, _size(p))
+                               ^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a/WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/resource_recovery_probe.py", line 94, in _size
+    return sum(p.stat().st_size for p in path.rglob("*") if p.is_file())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a/WORKER_RETURNS/PYAT991_PARTIAL_BINDING_REPAIR/resource_recovery_probe.py", line 94, in <genexpr>
+    return sum(p.stat().st_size for p in path.rglob("*") if p.is_file())
+               ^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py", line 1013, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/s2d-final-g4-root/s2d-recovered-177u71t9/saved-estate/.s2c-stage-rbmqv1i2/QuestionVariableBinding.parquet'
+{
+  "bounded_family_objects_yielded": 15,
+  "bounded_materializations_note": "family object yields under normal+partial saved execution; not a mandatory full graph",
+  "checkpoint_semantics": "caller-owned immutable checkpoint material; no new persistent store/journal",
+  "child_modes": {
+    "absent": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"output_refs\": [{\"content_hash\": \"30fd80d0ba890b27439a0dd48a85392b059c7eea9aec6d2affd7e93fc900a0db\", \"kind\": \"EmpiricalFact@1.0.0\", \"object_id\": \"urn:rawlsing:pre553:EmpiricalFact:sha256:30fd80d0ba89"
+    },
+    "completed": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"output_refs\": [{\"content_hash\": \"30fd80d0ba890b27439a0dd48a85392b059c7eea9aec6d2affd7e93fc900a0db\", \"kind\": \"EmpiricalFact@1.0.0\", \"object_id\": \"urn:rawlsing:pre553:EmpiricalFact:sha256:30fd80d0ba89"
+    },
+    "normal": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"output_refs\": [{\"content_hash\": \"c42add4affd52cfedc374f72fbfe601d9181c2f1800c8403e50781c5371ac6bd\", \"kind\": \"EmpiricalFact@1.0.0\", \"object_id\": \"urn:rawlsing:pre553:EmpiricalFact:sha256:c42add4affd5"
+    },
+    "partial": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"output_refs\": [{\"content_hash\": \"30fd80d0ba890b27439a0dd48a85392b059c7eea9aec6d2affd7e93fc900a0db\", \"kind\": \"EmpiricalFact@1.0.0\", \"object_id\": \"urn:rawlsing:pre553:EmpiricalFact:sha256:30fd80d0ba89"
+    }
+  },
+  "crash_child_killed_by_signal": true,
+  "crash_child_returncode": -9,
+  "crash_stderr": "",
+  "crash_stdout": "",
+  "fixture": "S1-D/S3 sourcefree synthetic 4 respondents/2 occasions; not 100k",
+  "full_c11_build_calls": 0,
+  "integrated_100k_6GiB": "NOT_RUN",
+  "limits": [
+    "RSS aggregate is sampled; child completions can interleave",
+    "no production CURRENT, original35, source science or 100k claim",
+    "crash is a single pre-resume SIGKILL of the owned child, not a universal failpoint matrix"
+  ],
+  "normal_seconds": 0.13220429699867964,
+  "orphan_child_pids": [],
+  "parent_peak_rss_bytes": 121479168,
+  "partial_seconds": 0.0715801669866778,
+  "peak_root_tree_bytes": 320484,
+  "peak_staging_bytes": 555487,
+  "peak_staging_monitor_samples": 66,
+  "peak_staging_observed": 555487,
+  "process_tree_aggregate_rss_bytes_sampled_peak": 184696832,
+  "process_tree_rss_sampling_note": "2 ms ps sampling of the parent-root process tree (which includes live child processes); sampled peak, not a hardware maximum",
+  "process_tree_samples": 91,
+  "resume_seconds": {
+    "absent": 0.1253911030071322,
+    "completed": 0.03572255600010976,
+    "partial": 0.10148681999999098
+  },
+  "resumed_after_sigkill_output_match": true,
+  "resumed_after_sigkill_returncode": 0,
+  "resumed_after_sigkill_stderr": "",
+  "retained_disk_bytes": 320484,
+  "schema": "PYAT991_S2D_FINAL_G4_OBSERVATIONS@1",
+  "source_factory_calls": 0,
+  "whole_table_read_table_calls": 0
+}

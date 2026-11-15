@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1",
+  "governing_decision": "HQD-2026-10-03-191",
+  "status": "A_SUPERVISED_BASE_ADOPTED__R7_HOSTILE_REVIEW_BOUND__R9_BLOCKER_UPHELD_AND_BUDGET_COURT_BOUND__PRQ07_DISCHARGED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "dispatcher": {
+    "adopted_blob": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+    "capability_ceiling": "SUPERVISED_REPAIR_BASE_ONLY",
+    "review_tip": "1aae86c831ead4f9cd5ca97b39c081322fe2d9bd",
+    "successor": {
+      "branch": "agent/rabochii-pyat-hq191-a2-dispatcher-unattended-hardening-r1",
+      "commission_tip": "0d65e325e73be0bb4b5e873308bed1a8f10b5cc4"
+    }
+  },
+  "r7": {
+    "return_tip": "def6d369878cb273ca06f97e08c4fb0a2964611e",
+    "substantive_result": "11f68e122c728dd8be6a6fd45bd7e8ef959060b7",
+    "worker_claim": "R7_CLOSED__CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE",
+    "hq_blocker_removed": false,
+    "hostile_review": {
+      "branch": "agent/reviewer-pyat-hq191-r7-darwin-environment-hostile-acceptance-r1",
+      "commission_tip": "0e28823c7fa60e8b4869c3c6143b8b43b738f10a"
+    }
+  },
+  "r9": {
+    "return_tip": "c887b5a727eb0fe7806d6cd43a08b77dc8fb66dd",
+    "substantive_result": "be1af859aad89ccc64180a4f57953d66fd7692f9",
+    "disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS",
+    "successor": {
+      "branch": "agent/rabochii-pyat-hq191-r9-budget-enforcement-court-r1",
+      "commission_tip": "631e7586001a5f2736656c4a7d6c1bf055d8c0d1"
+    }
+  },
+  "prq07": "DISCHARGED_BY_COMPLETED_INDEPENDENT_C4_REVIEW_CHAIN",
+  "c4": {
+    "freeze_blockers": 0,
+    "warrant_blockers": 1,
+    "live_execution_blockers": 1,
+    "advisory": 9,
+    "counterexamples": 1,
+    "adopted": false,
+    "hq182_hold_lifted": false,
+    "external_packet_ready": true
+  },
+  "active_lanes": {
+    "review": "agent/reviewer-pyat-hq191-r7-darwin-environment-hostile-acceptance-r1",
+    "implementer_1": "agent/rabochii-pyat-hq191-a2-dispatcher-unattended-hardening-r1",
+    "implementer_2": "agent/rabochii-pyat-hq191-r9-budget-enforcement-court-r1"
+  },
+  "held": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "LAUNCH_HQ191_R7_REVIEW_AND_HQ191_A2_R9_IN_PARALLEL__ROUTE_CORRECTED_C4_PACKET_TO_RESERVED_ASTRA_DECISION"
+}
