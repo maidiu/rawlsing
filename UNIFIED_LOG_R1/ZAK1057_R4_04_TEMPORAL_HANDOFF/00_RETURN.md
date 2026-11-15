@@ -62,7 +62,7 @@ Imported `R7:EDGE:11` (V555 mediation slots): V555 instantiates fixed unresolved
 
 | Distinction | Fate at V554 first reader |
 |---|---|
-| Source/time identity (one family/country/calendar anchor) | Preserved as a gate and in readiness/harmonization identity, but V554 itself does not re-run identity normalization. |
+| Source/time identity (one family/country/calendar anchor) | V554 re-checks source/wave/country via require_survey_identity but does not re-run calendar-year normalization or duplicate-year rejection. |
 | Harmonization/comparability authority | Consumed as scalar scores and wave names/pairs; shared-column and shared-ID detail is not used for numeric seed construction. |
 | Sparse authorized keyed evidence | Produced and exported with explicit per-key permission/gaps; **not consumed** by V554 numeric seed. `ready_for_v554` gates, but the keyed value is not an input. |
 | Country/year aggregation | **Consumed** as the regional numeric seed, though it is an overlay-count heuristic, not the signed source-keyed pressure. |
