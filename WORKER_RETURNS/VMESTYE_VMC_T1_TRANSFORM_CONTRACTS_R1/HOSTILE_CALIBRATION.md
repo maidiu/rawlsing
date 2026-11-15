@@ -1,3 +1,17 @@
+# VMC-T1 R10 — selected original source path matrix (CONTROLLING)
+
+All branches source-static only at 9253064bc9423a0f0ccda4fbdea43c2f54f800c6; no source-native execution.
+
+| Conditional predicate | Original source consequence | What is NOT proved |
+| --- | --- | --- |
+| Mixed blank+named respondents, V548 branch qualifying in both ALL and named slices; named mode in ALL | 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py#bf874a95ea5172817b0d1bdf21b43600aac5cbfe L664-L780 generates equal branch anchor_id from different respondent risk sets and groups topN on only anchor_id | Actual original branch and numerical rank effect |
+| Source-specific nonresponse code 8/9/99/etc occurs | 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py#bf874a95ea5172817b0d1bdf21b43600aac5cbfe L100-L124 defined normalize_series scrubber unused; live loader L234-L256 normalizes raw to observed string using normalize_code | Any universal nonresponse interpretation, actual source-selected bias |
+| B discovered partial with handoff but no readiness/input, explicit A has other files | 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/ddm_v553_temporal_pressure.py#5304b70f9f6522c5ae3893eff215c1d445681983 L304-L373 chooses each file independently, L347-L359 loads input gated on readiness but handoff independently | Actual historical cross-run bytes or issuer-valid consumption |
+| Handoff nonempty but input empty | 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/ddm_v553_temporal_pressure.py#5304b70f9f6522c5ae3893eff215c1d445681983 L1957-L1983 uses handoff as primary; only checks input-positive/handoff-empty; opposite case has no mirror error here | That canonical validator would accept mixed files; that any original native run succeeded |
+
+Existing R5-R9 source findings and all identities conserved.
+
+---
 # VMC-T1 R9 — four hostile conditional source cases (CONTROLLING)
 
 These are source-static branch cases from historical 9253064bc9423a0f0ccda4fbdea43c2f54f800c6, not executed original Python/DB, no source-selected data, no CI/validator run.
