@@ -1,0 +1,155 @@
+{
+  "schema": "SOROK_ISSUE_1038_G5_RECEIPT@1",
+  "verdict": "ACCEPT_SCOPED@C03_C04_SOURCEFREE_CUSTODY@ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+  "accepted_scope": "child-facing C04 custody (C12 direct uptake, P6 child_speech_experience, D03/J1 consumer) and C03 material-prospective candidate readset, SOURCEFREE_S2_ONLY",
+  "not_accepted": [
+    "parent self-read embedded-receipt metadata exactness (status/schema/grade/alias/operation_id/child ids/text_source/language_generation_owner/private_state/period_context/hidden_reason_source/custody/durable_acquisition/native_science)",
+    "D03 caller-receipt root/branch/clock/operation_id binding",
+    "mother-owned event selection",
+    "generated language",
+    "complete J1/Nadia performed response",
+    "native Rule A/T and NO_CHANGE",
+    "durable acquisition",
+    "D04/D05",
+    "scientific/human/source-rights receiving",
+    "protected merge",
+    "new #939 fleet"
+  ],
+  "reviewer": {
+    "role": "independent nonauthor C03/C04 custody G5 reviewer",
+    "session": "ses_e22146664ffeDffEDH4nsj8nsY",
+    "prior_authorship": "none in Browser A/B, A final, or #1030",
+    "provider": "opencode-go/deepseek-v4.1-flash variant max",
+    "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+    "branch": "codex/sorok1038-custody-g5-20261115-r1",
+    "product_readonly": true,
+    "own_write_paths": [
+      "WORKER_REVIEWS/SOROK1038_C03_C04_CUSTODY_G5_R1/",
+      ".local-logs/sorok1038-custody-g5/"
+    ]
+  },
+  "candidate": {
+    "head": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+    "protected_pre_main_ancestor": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "ancestry": [
+      "0ba01215936df0b28027afe6f1596e6e610dacf7",
+      "fa91ccc09fea4ef0b646f437c6d2b05aed04af2a",
+      "4e1cd301b994e4df58e89052642fde5c16fa3542",
+      "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9"
+    ],
+    "delta_from_4e1cd30": {
+      "files": 43,
+      "insertions": 2118,
+      "deletions": 1,
+      "only_product_code_change": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py"
+    }
+  },
+  "source_blobs": {
+    "parent_speech.py": {
+      "git_blob": "71caad03c5bf4ed66fd0b903e55f0083f3368837",
+      "sha256": "d6ffd5455748ffbc75efc64d1bb24ad4bdd31d7fa4a989e46de88fedf32ff5bc"
+    },
+    "test_c04_hostile_execution_r1.py": {
+      "git_blob": "350d840efa21fa926f07817aad29d147a8b1c975",
+      "sha256": "8165e641ff485212afd6aeb9fe0e19df777c16d09b97879c1206cf33999e502e"
+    },
+    "test_c04_first_consumer_identity.py": {"git_blob": "5fe96f524e8db5c2169328d5c124c916d56d1b8e"},
+    "test_c04_custody.py": {"git_blob": "58bdfc451f06ea27becf91d7969f5835a4efc85b"},
+    "test_c03_prospectives.py": {"git_blob": "f4d41a58e9f44cdb0bab57f351e32885e50397f5"},
+    "test_j1_three_head_join.py": {"git_blob": "ff40f49e3f2d14aa661729ff14644f55ddb2bd2e"},
+    "test_c03_c04_consumer.py": {"git_blob": "8e3775ebb51547aefa4490227a95a7eeff0008a9"},
+    "commands.sh": {"git_blob": "cad075a3548e327c10d6b5fff7bf0db2eee4e913"},
+    "SUMMARY.md": {"git_blob": "73b4b3de35ea57bc28f3ec872af3644be71ef58f"},
+    "probe_hostile.py": {"git_blob": "52857992f13886efc1303d92af375b2a010b7d97"}
+  },
+  "environment": {
+    "platform": "macOS 13.7.8 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "interpreter": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+    "tmpdir": ".local-logs/sorok1038-custody-g5/tmp",
+    "pytest_flags": ["-B", "-q", "-p", "no:cacheprovider"],
+    "pycache_disabled": true,
+    "host_note": "concurrent unrelated jobs were running; timings are not an isolated benchmark"
+  },
+  "mandated_suite_results": [
+    {"suite": "test_c04_first_consumer_identity.py", "passed": 6, "failed": 0, "exit": 0, "seconds": 68.69, "peak_rss_bytes": 64913408},
+    {"suite": "test_c04_custody.py", "passed": 12, "failed": 0, "exit": 0, "seconds": 149.88, "peak_rss_bytes": 63512576},
+    {"suite": "test_c03_prospectives.py", "passed": 5, "failed": 0, "exit": 0, "seconds": 113.72, "peak_rss_bytes": 59572224},
+    {"suite": "test_j1_three_head_join.py", "passed": 10, "failed": 0, "exit": 0, "seconds": 493.10, "peak_rss_bytes": 70471680},
+    {"suite": "test_c03_c04_consumer.py", "passed": 3, "failed": 0, "exit": 0, "seconds": 103.38, "peak_rss_bytes": 68128768},
+    {"suite": "test_c04_hostile_execution_r1.py", "passed": 21, "failed": 0, "exit": 0, "seconds": 219.29, "peak_rss_bytes": 68362240},
+    {"suite": "test_d03_immediate_uptake.py", "passed": 7, "failed": 0, "exit": 0, "seconds": 144.45, "peak_rss_bytes": 67891200},
+    {"suite": "test_d02_b_two_event_uptake.py", "passed": 2, "failed": 0, "exit": 0, "seconds": 14.57, "peak_rss_bytes": 66560000},
+    {"suite": "test_c02_c03_b_period_decision.py", "passed": 11, "failed": 0, "exit": 0, "seconds": 329.30, "peak_rss_bytes": 75689984},
+    {"suite": "test_b04_operations.py", "passed": 4, "failed": 0, "exit": 0, "seconds": 99.85, "peak_rss_bytes": 64491520},
+    {"suite": "test_b05_zero_and_held.py", "passed": 2, "failed": 0, "exit": 0, "seconds": 22.36, "peak_rss_bytes": 65564672},
+    {"suite": "test_house.py", "passed": 8, "failed": 0, "exit": 0, "seconds": 264.26, "peak_rss_bytes": 71606272}
+  ],
+  "own_probe_results": {
+    "test_g5_custody.py": {"passed": 8, "failed": 0, "exit": 0, "seconds": 126.99, "peak_rss_bytes": 63807488},
+    "g5_probe_matrix.py": {"records": 195, "exit": 0, "seconds": 100.74, "max_rss_bytes": 56733696},
+    "first_own_run": {"passed": 7, "failed": 1, "exit": 1, "note": "self-oracle included parent-side J1 decision evidence in a child-privacy assertion; corrected to the actual child/D03 boundary before the accepted run; no product change"}
+  },
+  "red_green": {
+    "pre_repair_sha": "4e1cd301b994e4df58e89052642fde5c16fa3542",
+    "pre_repair_method": "git archive into review scratch plus the frozen candidate hostile test file only",
+    "pre_repair_result": {"failed": 6, "passed": 15, "exit": 1, "seconds": 205.69, "max_rss_bytes": 63045632},
+    "pre_repair_failures": [
+      "embedded receipt text",
+      "embedded receipt event_kind",
+      "embedded receipt event_authored_by",
+      "embedded receipt decision_action",
+      "embedded receipt hidden_reason_hash",
+      "embedded receipt public_utterance"
+    ],
+    "candidate_result": {"passed": 21, "failed": 0, "exit": 0},
+    "author_red_note": "author 8 failed / 13 passed RED included two disclosed harness errors; corrected committed test gives 6 failed / 15 passed pre-repair"
+  },
+  "independent_matrix_summary": {
+    "child_consumers": "C12 direct uptake, P6 child_speech_experience, and D03/J1 refused all receipt fields, episode custody mutations, event seal mutations, event/receipt divergence, false-hearing forgery, severance, duplicates, missing parent receipt, and selector mismatches tested",
+    "accepted_legit": "both valid selectors, event-only, operation-only, authentic heard and authentic unheard, second legitimate public speech",
+    "privacy": "hidden reason and hidden-reason hash absent from child uptake, P6, child experience, and D03; outer hidden mutation did not leak; receipt hidden mutation refused without echoing the marker",
+    "false_hearing": "forged child perception refused; restoration returned NOT_PERCEIVED; later co-presence did not rewrite history",
+    "c03": "five candidates, chosen_candidate null, performed_event null, all options not chosen/performed; debt 61 and care 8 made purchase MATERIALLY_INELIGIBLE while quiet nonpurchase stayed ELIGIBLE_NOT_SELECTED; no world/event/episode/speech/purchase/rent write",
+    "cold": "two fresh interpreter processes reopened the same on-disk case and returned exact event hash/text, PERCEIVED uptake/P6, J1 UPSTREAM proven, D03 computed, subsequent held, one speech, one purchase, zero rent, hidden absent, P3 head unchanged"
+  },
+  "residuals": [
+    {
+      "id": "PARENT_SELF_READ_METADATA_NOT_EXACT",
+      "consumer": "read_parent_utterance / _verify_utterance_custody",
+      "accepted_forged_fields": ["alias", "operation_id", "child_actor_id", "child_alias", "status", "schema", "grade", "text_source", "language_generation_owner", "private_state", "period_context", "hidden_reason_source", "custody", "durable_acquisition", "native_science"],
+      "refused_forged_fields": ["text", "event_kind", "event_authored_by", "actor_id", "root", "branch", "clock", "decision_id", "event_id", "event_hash", "child_perception_channel", "hidden_reason", "hidden_reason_hash", "decision_action", "public_utterance"],
+      "child_facing_effect": "none observed; child/P6/D03 refuse the required forged fields",
+      "scope": "parent-only reader; not accepted as exact parent self-read custody"
+    },
+    {
+      "id": "D03_CALLER_RECEIPT_PARTIAL_BINDING",
+      "consumer": "D03/J1 compose_j1",
+      "accepted_forged_fields": ["root", "branch", "clock", "operation_id"],
+      "refused_forged_fields": ["decision_id", "event_hash", "actor_id", "alias", "text", "status"],
+      "output_effect": "none observed; author-disclosed"
+    },
+    {
+      "id": "PRIVILEGED_COHERENT_REWRITE",
+      "detail": "a writer able to rewrite BP4 event, C04 episode, and C12 perceptions together can satisfy local self-hashes; outside local read-side custody"
+    },
+    {"id": "BRANCH_FORK_REPLAY", "detail": "UNOBSERVED; no public C04 fork entry point at this cut"},
+    {"id": "PROVIDER_COST", "detail": "UNOBSERVED; no provider used"},
+    {"id": "NATIVE_HUMAN_SOURCE", "detail": "HELD; not observed or granted"}
+  ],
+  "holds": [
+    "mother-owned event selection HELD",
+    "language_generation_owner NOT_IMPLEMENTED",
+    "complete J1/Nadia performed response HELD",
+    "native Rule A/T HELD",
+    "NO_CHANGE HELD",
+    "durable acquisition MISSING_RULE",
+    "D04/D05 HELD",
+    "scientific/human/source-rights receiving HELD",
+    "protected merge NOT AUTHORIZED",
+    "#939 fleet restart NOT AUTHORIZED"
+  ],
+  "programma_delta": "C03/C04 child-facing sourcefree custody and material-prospective candidate readset independently received scoped. May release separately authorized C05 custody work. Does not release G2, generated language, complete J1, D04/D05, native/science/human/source rights, protected merge, or a new fleet. No next job launched.",
+  "stop": true
+}
