@@ -1,0 +1,184 @@
+{
+  "schema": "ZAK1057_ROUND2_INDEPENDENT_REVIEW_VERDICT@1.0.0",
+  "review_id": "ZAK1057:R2:REVIEW:001",
+  "reviewer": {
+    "role": "GENUINELY_DISTINCT_NONAUTHOR_DOCUMENTARY_REVIEWER",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "session": "ses_e229d86a6ffe9BFB5nqre0lFuC",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-round2-review",
+    "startup_sha": "2bddbcde9dd5a5776d65bafeed5186be5bbbbca1",
+    "author_of_reviewed_tracts": false,
+    "authority_ceiling": "S0_S1_STATIC_DOCUMENTARY_REVIEW_ONLY__NO_RUNTIME__NO_SOURCE_OR_SCIENTIFIC_ISSUANCE__NO_PROTECTED_ADOPTION"
+  },
+  "cuts": {
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "shared_1054": "d25836436c16efda51ca1935c1c979b396eb61bd",
+    "frozen_corpus": {
+      "02": "005ee95001439edd3e2f7f307d95bb546d6b6c2a::UNIFIED_LOG_R1/ZAK02S_CODEX_CAMPAIGN_R1",
+      "03": "0098b058b569471e140710f11d0efe029ecb0c50::UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R1",
+      "04": "ba20eeeea2243edd71febe0af0bc184d1cfeef1e::UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R1"
+    },
+    "historical_source": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+    "f6m_repaired_cut": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+    "f6m_predecessor_cut": "1428c2e9",
+    "f6p_cut": "016870e86913e6f7a811a51db6aba2d741bcfe58",
+    "candidate_selected_rule": "b5600da96358f8526471d635a1befa8daa3f098b",
+    "candidate_r157": "d81bc2c67baf933461ae6cfca468f24779cc7e44"
+  },
+  "overall": {
+    "verdict": "TWO_ACCEPT_SCOPED_S1__ONE_REVISE_EXACT_DOCUMENTARY_DEFECT__ZERO_HOLD",
+    "new_canonical_T_minted": 0,
+    "runtime_or_scientific_execution": "NOT_RUN",
+    "global_claims_accepted": false,
+    "reviewer_self_acceptance": false,
+    "summary": "The 02 artifact-vs-capability and 03 I04 rule/RouteObligation tract claims survive exact source checking at their declared S1 scope. The 04 tract contains one material exact documentary defect: its predecessor/repaired missing-share comparison misstates when the predecessor adds a whole target-stratum share to uncovered mass. The predecessor adds the whole share only when no source is eligible for that stratum; when only some planned sources are ineligible it renormalizes their weight onto survivors and emits a complete distribution. The repaired candidate instead retains proportional missing mass. The F6M/F6P/I07/N9 conclusions otherwise survive."
+  },
+  "tracts": [
+    {
+      "lane": "02",
+      "corpus_commit": "005ee95001439edd3e2f7f307d95bb546d6b6c2a",
+      "status": "ACCEPT_SCOPED_S1",
+      "accepted_scope": "The claim-specific Trii/Chetiri treatment of V550 recursive_branch_nodes, the distinction between retiring the diagnostic artifact and retaining the branch-conditioned capability class, and the exact/adaptive/recursive-handoff current comparison.",
+      "verified_positive_claims": [
+        "branch_nodes_rows computes node and conditional entropy, selects the greatest positive gain, expands only the two most frequent values, and emits a path-based diagnostic node table.",
+        "Trii D11 calls historical V548 branch-cohort meaning STRANDED because recursive_branch_nodes is derived_determinicity and excluded from canonical V551 v3; D12 grades the current artifact LOSSY_INSUFFICIENT while retaining branch-conditioned distributions, recursive fork discovery, and exact membership as terminal capabilities; D15 dispositions the artifact SUPERSEDED_IMPLEMENTATION while selecting bounded exact plus adaptive discovery.",
+        "Chetiri-corpus N011 grades recursive_branch_nodes DIAGNOSTIC_ON_DEMAND and the derived lane RETIRE_FROM_CANONICAL_PRODUCTION, while C08 requires recomputation/possible retention on governed changes.",
+        "Current pre553 exact discovery refuses diagnostic tokens as validation truth; adaptive discovery is order-only; recursive handoff replays exact same-respondent membership from a persisted predicate; no protected rawlsing_next reader of recursive_branch_nodes was found."
+      ],
+      "no_conflation_finding": "The return does not conflate diagnostic artifact retirement with capability abandonment. It explicitly says the old table is superseded/lossy while the capability class remains terminally required and is not proved restored.",
+      "diagnostic_vs_invalidation_finding": "The alleged diagnostic-vs-invalidation contradiction is not sustained as a logical contradiction. A diagnostic-on-demand, noncanonical artifact can still require invalidation and recomputation when source, routing, discovery algorithm, or other governed inputs change; C08's possible retention of compiled intermediates is a lifecycle/recompute duty, not a claim of canonical empirical status. The return already qualifies it as a lifecycle/retention requirement, and HQ's own 02_DISPOSITION.json concurs that diagnostic/on-demand status and invalidation/caching duties are not inherently contradictory. The phrase 'real tension ... must resolve' overstates the conflict. Optional clarity edit, not a blocking defect.",
+      "scope_clarification": "The historical V550 bridge (data/ddm_build_copy/ddm_v550_bridge.py, blob 29edd5e24f095334683035f2ce1ec95674fe274b, BRIDGE_TABLE_MAP around L98-L112, table reads around L1141 and table iteration L1465-L1484) still reads/carries recursive_branch_nodes as a retained historical adapter. The return's detailed claim is correctly scoped to rawlsing_next ('no rawlsing_next reader'); the plain-English 'no current code reads the old table' should be read as no current operational/rawlsing_next reader, not a whole-tree historical-adapter absence.",
+      "bounded_omission": {
+        "path": "rawlsing_next/pre553_learned_world_composition.py",
+        "blob": "adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+        "lines": "L1748-L1761",
+        "observed": "A non-test learned-world composition path calls compose_positioned_subject_possibility with recursive_handoff=admitted.recursive_handoff, so it consumes the current RecursiveBranchHandoff capability.",
+        "effect": "This is a current handoff consumer not listed in the T0024 case table. It does not read or revive recursive_branch_nodes and therefore does not contradict the artifact-continuity negative; it strengthens the 'different-input capability chain' distinction."
+      },
+      "smallest_revision": "None required for acceptance. Optional wording: replace 'real tension ... must resolve' with 'a separate lifecycle/recomputation duty compatible with diagnostic status; C08 decides retention/recompute, not canonical promotion', and read 'no current code reads the old table' as 'no current operational/rawlsing_next reader' because the retained historical V550 bridge still reads the table as an adapter.",
+      "evidence_ids": ["ZAK1057R2:EV:001", "ZAK1057R2:EV:002", "ZAK1057R2:EV:003", "ZAK1057R2:EV:004", "ZAK1057R2:EV:005", "ZAK1057R2:EV:006", "ZAK1057R2:EV:007", "ZAK1057R2:EV:008", "ZAK1057R2:EV:009", "ZAK1057R2:EV:010", "ZAK1057R2:EV:011", "ZAK1057R2:EV:026"],
+      "case": "CASES/ZAK1057-REVIEW-02-ARTIFACT-VS-CAPABILITY.md"
+    },
+    {
+      "lane": "03",
+      "corpus_commit": "0098b058b569471e140710f11d0efe029ecb0c50",
+      "status": "ACCEPT_SCOPED_S1",
+      "accepted_scope": "The claim-specific I04 evaluator, StructuralAdmissionRule, target-use permission field, RouteObligation receipt consumer, protected issued-workload path, and candidate selected-rule boundary.",
+      "verified_positive_claims": [
+        "pre553_structural_admission.StructuralAdmissionRule requires exact target-use permission refs, structural target/semantic identity, directionality/role semantics, predicate/target semantics, native scope, estimand/measure, negatives, and a TARGET_USE_PERMISSION binding.",
+        "The only direct StructuralAdmissionRule constructor found at the protected cut is the test fixture at rawlsing_next/tests/test_pre553_structural_admission.py:103; no non-test protected producer derives a rule from a selected F03/QSM row.",
+        "RouteObligation.from_structural_admission is a real non-test static consumer that reads every route fact from the canonical StructuralEmpiricalAdmission receipt and requires a private trust token; its own callers at the frozen cut are tests only.",
+        "The actual issued-workload importer executes I03/I05/Batch and does not import or call I04; protected B49/native adapter are TEST_ONLY and the candidate selected-rule selector is not protected.",
+        "The historical F03 owner is a QSM question-relation authority with source/wave/country/question/variable keys and directional structural coordinates; the protected I04 input identity is a caller-supplied content-addressed rule, not that selected QSM row."
+      ],
+      "field_producer_map": {
+        "StructuralAdmissionRule": "No non-test protected producer located. Definition at rawlsing_next/pre553_structural_admission.py L201-L330; sole direct constructor at rawlsing_next/tests/test_pre553_structural_admission.py L103.",
+        "target_use_permission_refs": "Copied from the caller-supplied I04 rule into the admission receipt at pre553_structural_admission.py L735-L793. The same field name is also produced by distinct non-I04 owner paths: f07_second_canary_prev3_admission.py L238, pre553_ee14_c1_owner_authenticated_ingress.py L851/L886, gt12_d_to_m4_typed_bridge.py L241. Those instances are not StructuralAdmissionRule provenance and must not be joined by field name.",
+        "selected_QSM_to_I04_binding": "NOT_PROVED. Candidate b5600da9 pre553_inherited_source_rules.py is a source-rule selector/compiler; it does not construct StructuralAdmissionRule. Candidate R157 source_configuration/factory.py builds C11 projections with structural_replay from config, not an I04 rule."
+      },
+      "bounded_omission": {
+        "observed": "The field-name family target_use_permission_refs is broader than I04. F07 second-canary, EE14 C1 owner-authenticated ingress, and GT12-to-M4 typed bridge each produce or relay instances through different admission/materialization contracts.",
+        "documentary_lead": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/73_TRII_MANUAL_AUTHORITY_AND_STRUCTURAL_REENTRY_SCOPE_CORRECTION.md, blob de40588f959c09b5aff636f9965ce9e30e6cab4e, L100-L165, states that exact I04 StructuralAdmissionRule authorities and their structural semantic/target-use permissions are part of the binding structural re-entry law. It names the required authority class but no producer or selected QSM row; it is a documentary lead for the next question, not a counterexample.",
+        "effect": "The return's I04-specific claim remains true. The omission is a lawful next-source distinction, not a selected-QSM producer counterexample: no inspected parallel producer binds an I04 StructuralAdmissionRule to an F03/QSM row/version."
+      },
+      "smallest_revision": "None required for acceptance. The author's next question is correctly stated: identify any producer that constructs an exact StructuralAdmissionRule and cites a selected historical QSM row/version, rather than a caller-supplied content hash.",
+      "evidence_ids": ["ZAK1057R2:EV:012", "ZAK1057R2:EV:013", "ZAK1057R2:EV:014", "ZAK1057R2:EV:015", "ZAK1057R2:EV:016", "ZAK1057R2:EV:017", "ZAK1057R2:EV:018"],
+      "case": "CASES/ZAK1057-REVIEW-03-RULE-PRODUCER-CONSUMER.md"
+    },
+    {
+      "lane": "04",
+      "corpus_commit": "ba20eeeea2243edd71febe0af0bc184d1cfeef1e",
+      "status": "REVISE_EXACT_DOCUMENTARY_DEFECT",
+      "accepted_scope": "F6M numerical output shape, F6P static consumer behavior, I07 permission-guard distinctness, protected N9 synthetic-candidate scope, and the bounded NOT_PROVED status of a selected current F6 numeric receiver.",
+      "verified_positive_claims": [
+        "The repaired F6M candidate emits covered_subprobability and uncovered_target_mass, refuses a complete distribution when uncovered mass is positive, and sets PARTIAL_IDENTIFICATION_ONLY / NO_COMPLETE_TARGET_JOINT when coverage is incomplete.",
+        "F6P genuinely imports F6M, verifies the bundle hash, enforces covered_sum + uncovered == 1, rejects complete-with-uncovered, null-with-zero-uncovered, excluded-source-with-zero-uncovered, and prohibited model use.",
+        "Protected I07 guard_estimand_composition returns an OperationGuardReceipt from semantic-equivalence, overlap, and estimand-composition authority; it computes no mixture, covered mass, or uncovered mass.",
+        "The protected N9 candidate is a synthetic 58-respondent A/B/C/Y progressive chain over N10E/C1/F8 and has no F6M or partial-bound import; immediate owner modules also contain no F6 token.",
+        "No protected .py file matching covered_subprobability, uncovered_target_mass, or partial_identification was found by the declared symbol search; this is a bounded F6-name negative, not global absence."
+      ],
+      "material_defect": {
+        "claim": "The predecessor producer uses 'uncovered += share' when a present source is ineligible / for a present-but-ineligible source.",
+        "exact_source": "1428c2e9:rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+        "lines": "L284-L287",
+        "observed_fact": "denom = sum(weights of eligible sources). The statement 'uncovered += share' is inside 'if not denom', i.e. only when NO source is eligible for that stratum. When some planned sources are ineligible but at least one is eligible, the predecessor renormalizes alpha = weight/denom over survivors and emits a complete distribution with zero uncovered mass. It does not add the whole target share for each present-but-ineligible source.",
+        "why_material": "The predecessor/repaired missing-share difference is an explicit deliverable and the claimed trigger is factually wrong. The broader conclusion (the repaired variant preserves planned missing mass instead of renormalizing it onto survivors) survives, but the exact alternative-cut description and the downstream FALSE_FULL risk are misstated. MECHANISM_RECONCILIATION.tsv edge ZAK04S:MECH:R1:001 also reverses the direction of the comparison: for partial ineligibility the predecessor uncovered mass is zero and the repaired mass is positive, not the reverse.",
+        "smallest_revision": "Correct the same predecessor claim in all 04 occurrences: 00_RETURN.md section 1 and section 2.2; CASES/ZAK04S_F6M_F6P_CURRENT_RECEIVER.md section 3; HUMAN_STORY.md; DATA_SHAPES.tsv rows ZAK04S:SHAPE:R1:B_IN and A_IN; OPERATION_TRACES.tsv row ZAK04S:OP:R1:BEFORE_A; MECHANISM_RECONCILIATION.tsv edge ZAK04S:MECH:R1:001; UNJOINS.tsv row ZAK04S:UNJOIN:R1:004; and EVIDENCE.tsv row ZAK04S:EV:R1:005. Replace the current predecessor sentence/claim with: 'When no source is eligible for a stratum, the predecessor adds the whole target-stratum share to uncovered. When some planned sources are ineligible but at least one is eligible, it renormalizes weights onto the eligible survivors, assigns no uncovered mass to the excluded present source, and may emit a complete distribution; F6P's excluded-source-with-zero-uncovered FALSE_FULL check is the relevant downstream risk. The repaired candidate instead computes denom over all planned sources, retains proportional missing_share, and adds that mass to uncovered.' Preserve the repaired-code and F6P findings unchanged.",
+        "verdict_effect": "REVISE_EXACT_DOCUMENTARY_DEFECT for lane 04; no runtime demand and no reopening of the accepted F6P/I07/N9 findings."
+      },
+      "secondary_observation": {
+        "claim": "The repaired producer treats a source with no table for a stratum as outside the stratum-specific mixture definition, but F6P's _exclusions includes every excluded source and rejects any exclusions with zero uncovered as FALSE_FULL_COVERAGE.",
+        "exact_sources": [
+          "1f1c72f8:...pre553_heterogeneous_synthesis.py#L307-L330",
+          "016870e8:...f6p_partial_bound_evidence_consumer.py#L96-L111 and L240-L245"
+        ],
+        "effect": "A complete producer distribution can reach F6P with a NO_SOURCE_STRATUM exclusion and be refused as false full. This does not refute 'F6P is a static reader'; it is a precise owner-facing reconciliation question and should be stated separately from support-failure missing mass. Optional clarification, not an independent verdict trigger."
+      },
+      "bounded_omission": {
+        "path": "rawlsing_next/pre553_universal_world_binding.py; rawlsing_next/pre553_evidence_world_consumer.py",
+        "blobs": ["fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d", "75ff3b9a73b1533c5fa6619e36577b69a4c65aed"],
+        "observed": "The protected world-serving alternative consumes R08 signed evidence, N10E empirical slices, P41/sourcefree-world execution, and progressive conditioner prefixes. No F6, heterogeneous-synthesis, covered-subprobability, uncovered_target_mass, or partial-identification token appears in these paths or sourcefree_world/*.py.",
+        "effect": "The actual world-serving alternative has a different input contract and is not evidence of an omitted F6 numeric receiver. The R1 NOT_PROVED status for selected current F6 consumption survives."
+      },
+      "smallest_revision_summary": "Correct the predecessor trigger and renormalization description in the 00_RETURN and CASE; optionally add the NO_SOURCE_STRATUM versus support-failure distinction. Keep all accepted F6P, I07, N9, and bounded-negative findings.",
+      "evidence_ids": ["ZAK1057R2:EV:019", "ZAK1057R2:EV:020", "ZAK1057R2:EV:021", "ZAK1057R2:EV:022", "ZAK1057R2:EV:023", "ZAK1057R2:EV:024", "ZAK1057R2:EV:025"],
+      "case": "CASES/ZAK1057-REVIEW-04-F6-MISSING-SHARE.md"
+    }
+  ],
+  "material_counterexamples": [
+    {
+      "counterexample_id": "ZAK1057R2:CE:001",
+      "tract": "04",
+      "verdict_effect": "REVISE_EXACT_DOCUMENTARY_DEFECT",
+      "summary": "Predecessor whole-share uncovered rule is guarded by 'if not denom' (no eligible source), not by any present-but-ineligible source; partial ineligibility renormalizes onto survivors."
+    },
+    {
+      "counterexample_id": "ZAK1057R2:CE:002",
+      "tract": "02",
+      "verdict_effect": "NO_VERDICT_CHANGE__BOUNDED_CLARIFICATION",
+      "summary": "Diagnostic-on-demand and C08 invalidation/recompute are compatible; the return's 'real tension' is an owner lifecycle decision, not a diagnostic-vs-invalidation contradiction."
+    },
+    {
+      "counterexample_id": "ZAK1057R2:CE:003",
+      "tract": "04",
+      "verdict_effect": "NO_VERDICT_CHANGE__OWNER_FACING_OBSERVATION",
+      "summary": "The repaired producer's NO_SOURCE_STRATUM exclusions can trigger F6P's excluded-source-with-zero-uncovered FALSE_FULL refusal; distinguish no-table exclusion from support-failure missing mass."
+    }
+  ],
+  "counts": {
+    "tracts_reviewed": 3,
+    "accept_scoped_s1": 2,
+    "revise_exact_documentary_defect": 1,
+    "hold_exact_evidence": 0,
+    "new_canonical_T": 0,
+    "atomic_evidence_rows": 26,
+    "search_receipts": 16,
+    "counterexample_rows": 3,
+    "coverage_rows": 17,
+    "review_cases": 3,
+    "runtime_receipts": 0
+  },
+  "what_cannot_be_claimed": [
+    "No whole historical, native, original35, scientific, actor, source, or protected-integration acceptance.",
+    "No global missing-function or global-loss claim.",
+    "No selected QSM-to-I04 binding.",
+    "No selected current F6 numeric receiver.",
+    "No statement that source presence proves execution or adoption."
+  ],
+  "review_files": [
+    "REVIEW_VERDICT.json",
+    "00_RETURN.md",
+    "HUMAN_STORY.md",
+    "SCOPE_CONTRACT.md",
+    "COVERAGE.tsv",
+    "EVIDENCE/EVIDENCE.tsv",
+    "EVIDENCE/SOURCE_SEARCH_LOG.tsv",
+    "EVIDENCE/COUNTEREXAMPLES.tsv",
+    "CASES/ZAK1057-REVIEW-02-ARTIFACT-VS-CAPABILITY.md",
+    "CASES/ZAK1057-REVIEW-03-RULE-PRODUCER-CONSUMER.md",
+    "CASES/ZAK1057-REVIEW-04-F6-MISSING-SHARE.md",
+    "CHANGED_FILES.txt",
+    "MANIFEST.json"
+  ]
+}
