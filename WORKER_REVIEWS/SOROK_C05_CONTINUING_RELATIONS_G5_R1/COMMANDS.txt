@@ -1,0 +1,82 @@
+SOROK C05 independent nonauthor G5 receiving — literal commands
+Reviewer session: ses_e2186e745ffecK1Ilg4cw26pVu
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+Branch: codex/sorok-c05-independent-g5-20261115-r1
+Frozen HEAD: bc45f699a22708aae3df7e34b1ba3b272a362565
+Frozen implementation/tests: 9cf13763b0061400e2c936eaf1d0a2f4b76a03f7
+Frozen start: ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9
+Interpreter: /private/tmp/rawlsing-oct28-p1r1/venv/bin/python (3.11.3)
+Pytest: 9.1.1
+Every product/test/probe command used:
+  TMPDIR=$PWD/.local-logs/sorok-c05-independent-g5/tmp
+  PYTHONDONTWRITEBYTECODE=1
+  -B
+No product write; no provider/global permission change.
+
+1) Exact listed suite 1
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py
+EXIT=0; 5 passed; 45.14 real s; max RSS 63,811,584 B
+stdout: evidence/suite1_c05_stdout.log
+time:   evidence/suite1_c05_time.log
+
+2) Exact listed suite 2
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py
+EXIT=0; 6 passed; 14.55 real s; max RSS 57,913,344 B
+stdout: evidence/suite2_c01_stdout.log
+time:   evidence/suite2_c01_time.log
+
+3) Exact listed suite 3
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py
+EXIT=0; 6 passed; 27.70 real s; max RSS 63,545,344 B
+stdout: evidence/suite3_c04_identity_stdout.log
+time:   evidence/suite3_c04_identity_time.log
+
+4) Exact listed suite 4
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py
+EXIT=0; 12 passed; 55.24 real s; max RSS 66,351,104 B
+stdout: evidence/suite4_c04_custody_stdout.log
+time:   evidence/suite4_c04_custody_time.log
+
+5) Exact listed suite 5
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py
+EXIT=0; 5 passed; 14.65 real s; max RSS 62,291,968 B
+stdout: evidence/suite5_p2_owner_stdout.log
+time:   evidence/suite5_p2_owner_time.log
+
+Listed total: 34 passed, 0 failed, all exit 0.
+
+6) Independent normal/negative/cold probe
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_CONTINUING_RELATIONS_G5_R1/newprobes/c05_probe.py
+EXIT=0; 89/89 checks passed; 179.35 real s; max RSS 54,431,744 B
+cold child exit 0; cold snapshot exact true; cold retry UNCHANGED and counts unchanged
+report: evidence/c05_probe_report.json
+stdout: evidence/c05_probe_stdout.log
+time:   evidence/c05_probe_time.log
+
+7) Independent repeat-promotion defect witness
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_C05_CONTINUING_RELATIONS_G5_R1/newprobes/c05_defect_probe.py
+EXIT=0; 2.87 real s; max RSS 40,181,760 B
+second depth-2 promotion: RELATION_CUSTODY_SEVERED (expected RELATION_PROMOTION_NOT_DEEPER)
+wrote_episode_on_refusal true; relation_status after HOLD_CUSTODY_SEVERED;
+world_events/perceptions/checkpoints unchanged; C12 verify ok
+report: evidence/c05_defect_report.json
+stdout: evidence/c05_defect_stdout.log
+time:   evidence/c05_defect_time.log
+
+8) Source/blob/revision pins
+git rev-parse HEAD
+git rev-parse 9cf13763b0061400e2c936eaf1d0a2f4b76a03f7
+git rev-parse ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9
+git ls-tree HEAD WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py
+shasum -a 256 <the three files>
+git diff --stat 9cf13763b HEAD -- <the two product paths and the author test>
+git diff --name-status ee82397a9 9cf13763b
+git diff ee82397a9 9cf13763b -- .../supporting_actor.py
+Outputs: evidence/blob_pins.txt, evidence/revisions.txt, evidence/source_delta_name_status.txt, evidence/source_delta_stat.txt, evidence/c01_one_line_diff.txt
+
+9) Module resolution
+TMPDIR="$PWD/.local-logs/sorok-c05-independent-g5/tmp" PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -c "<import contracts, supporting_actor, continuing_relations, p2_owner; start scratch P2; import bp4.world and s45_projection.projection; print __file__>"
+Output: evidence/module_paths.txt (all paths under this checkout)
+
+No CI, GitHub Actions, VM, dependency install, new controller, global permission, PYAT, Browser, protected merge or #939 action was used.
+No product repair, no second review loop, no nested agents, no automatic next job.

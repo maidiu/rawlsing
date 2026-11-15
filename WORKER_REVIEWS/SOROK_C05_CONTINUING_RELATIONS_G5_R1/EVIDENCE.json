@@ -1,0 +1,151 @@
+{
+  "schema": "SOROK_C05_INDEPENDENT_EVIDENCE@1",
+  "issue": "C05",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+  "branch": "codex/sorok-c05-independent-g5-20261115-r1",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "report_commit": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "implementation_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "start_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+  "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+  "source_pins": {
+    "supporting_actor.py": {
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "git_blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92"
+    },
+    "continuing_relations.py": {
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py",
+      "git_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+      "sha256": "f4442b35e9d5fbf12b0fcc43fa99814a6a17f70aa16d877ba4a1fb4a621a7c3b"
+    },
+    "test_c05_continuing_relations.py": {
+      "path": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py",
+      "git_blob": "4741264d5b23195731d7fe7f0f77e72ec847442e",
+      "sha256": "115b0fd74837386340bb0bad4ef8eea3d7aba0c23671c72ed831f111ae69a79a"
+    },
+    "ORIGINAL_C05.json": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-classified-queue-20261115/C05-g5/ORIGINAL_C05.json",
+      "sha256": "6b36ca536ef808ef4f50470b494e2dfc44f9b41cdc8d53b97743fce195aed12b"
+    }
+  },
+  "product_change_scope": {
+    "implementation_to_report_product_diff": "empty",
+    "start_to_implementation_product_delta": [
+      "continuing_relations.py new (1091 lines)",
+      "supporting_actor.py SUPPORTING_ROLES one line from {parent} to {parent, neighbor}",
+      "author C05 test new (652 lines)"
+    ],
+    "reviewer_product_write": false,
+    "other_checkout_write": false
+  },
+  "listed_suites": {
+    "summary_file": "evidence/suite_summary.json",
+    "total_passed": 34,
+    "total_failed": 0,
+    "all_exit_zero": true,
+    "rows": [
+      {"suite": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py", "passed": 5, "exit": 0, "real_seconds": 45.14, "max_rss_bytes": 63811584, "stdout": "evidence/suite1_c05_stdout.log", "time_log": "evidence/suite1_c05_time.log"},
+      {"suite": "WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py", "passed": 6, "exit": 0, "real_seconds": 14.55, "max_rss_bytes": 57913344, "stdout": "evidence/suite2_c01_stdout.log", "time_log": "evidence/suite2_c01_time.log"},
+      {"suite": "WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py", "passed": 6, "exit": 0, "real_seconds": 27.7, "max_rss_bytes": 63545344, "stdout": "evidence/suite3_c04_identity_stdout.log", "time_log": "evidence/suite3_c04_identity_time.log"},
+      {"suite": "WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py", "passed": 12, "exit": 0, "real_seconds": 55.24, "max_rss_bytes": 66351104, "stdout": "evidence/suite4_c04_custody_stdout.log", "time_log": "evidence/suite4_c04_custody_time.log"},
+      {"suite": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py", "passed": 5, "exit": 0, "real_seconds": 14.65, "max_rss_bytes": 62291968, "stdout": "evidence/suite5_p2_owner_stdout.log", "time_log": "evidence/suite5_p2_owner_time.log"}
+    ]
+  },
+  "independent_probe": {
+    "script": "newprobes/c05_probe.py",
+    "report": "evidence/c05_probe_report.json",
+    "stdout": "evidence/c05_probe_stdout.log",
+    "time_log": "evidence/c05_probe_time.log",
+    "exit": 0,
+    "checks_total": 89,
+    "checks_passed": 89,
+    "checks_failed": 0,
+    "real_seconds": 179.35,
+    "max_rss_bytes": 54431744,
+    "cold": {
+      "child_exit": 0,
+      "snapshot_exact": true,
+      "retry_status": "UNCHANGED",
+      "retry_counts_unchanged": true
+    },
+    "observations": [
+      {
+        "name": "caller_exposure_is_not_event_perception",
+        "detail": "a never-participant live observer gets NOT_PERCEIVED event access and QUALIFIED relation only after explicit caller exposure; no earlier entry or promotion is retro-filled"
+      },
+      {
+        "name": "coherent_append_only_relation_accepted",
+        "detail": "a coherent ENTER change and custody head appended directly through the public C12 append API, without the module writer or any relation owner receipt, is read as QUALIFIED and relation-aware; self-hash chain is not owner authentication"
+      }
+    ]
+  },
+  "defect": {
+    "id": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE",
+    "script": "newprobes/c05_defect_probe.py",
+    "report": "evidence/c05_defect_report.json",
+    "stdout": "evidence/c05_defect_stdout.log",
+    "time_log": "evidence/c05_defect_time.log",
+    "exit": 0,
+    "real_seconds": 2.87,
+    "max_rss_bytes": 40181760,
+    "before": {
+      "relation_status": "QUALIFIED",
+      "changes": 2,
+      "heads": 2,
+      "episodes": 49,
+      "world_events": 14,
+      "perceptions": 42,
+      "checkpoints": 33,
+      "c12_verify_ok": true
+    },
+    "second_call": {
+      "operation_id": "defect:promote:2",
+      "expected": "RELATION_PROMOTION_NOT_DEEPER",
+      "actual": "RELATION_CUSTODY_SEVERED",
+      "wrote_episode_on_refusal": true,
+      "change_delta": 1,
+      "head_delta": 1,
+      "episode_delta": 2,
+      "promoted_depth": 2,
+      "sequence": 3
+    },
+    "after": {
+      "relation_status": "HOLD_CUSTODY_SEVERED",
+      "changes": 3,
+      "heads": 3,
+      "episodes": 51,
+      "world_events": 14,
+      "perceptions": 42,
+      "checkpoints": 33,
+      "c12_verify_ok": true
+    },
+    "exact_first_retry_after_write": "RELATION_CUSTODY_SEVERED",
+    "cause": "pre-write depth check uses only RELATION_STATE_CHANGES, excluding prior PROMOTE, so machine depth stays 1; second depth-2 PROMOTE is appended, then _verify_scope rejects promoted_depth <= current depth and severs the scope after commit",
+    "minimum_correction": "compute current depth including prior PROMOTE; refuse RELATION_PROMOTION_NOT_DEEPER before append; verify inside the _StoreWrite transaction so failure rolls back; add a second-promotion-with-new-operation test"
+  },
+  "module_paths": "evidence/module_paths.txt",
+  "revisions": "evidence/revisions.txt",
+  "blob_pins": "evidence/blob_pins.txt",
+  "source_delta": [
+    "evidence/source_delta_name_status.txt",
+    "evidence/source_delta_stat.txt",
+    "evidence/c01_one_line_diff.txt"
+  ],
+  "secret_scan": "no raw fixture private strings in evidence JSON",
+  "holds": [
+    "native ADP-015/C4 relation authority",
+    "maternal psychology, independent volition, autonomy",
+    "generated language and language_generation_owner",
+    "G2 mother-owned event selection",
+    "complete J1/Nadia performed response",
+    "D04/D05 and durable acquisition",
+    "human/scientific/source-rights receiving",
+    "protected merge and #939 fleet restart",
+    "concurrent same-operation uniqueness and branch-fork replay",
+    "provider/checkpoint/organization/quota/cost UNOBSERVED"
+  ],
+  "stop": true
+}

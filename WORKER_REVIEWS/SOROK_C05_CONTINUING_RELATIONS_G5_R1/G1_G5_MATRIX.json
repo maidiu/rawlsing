@@ -1,0 +1,72 @@
+{
+  "schema": "SOROK_C05_INDEPENDENT_G1_G5_MATRIX@1",
+  "issue": "C05",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "candidate_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "report_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "start_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "exact HEAD bc45f699a and implementation 9cf13763b",
+        "product blobs 98cb4ceb3e5e201815c0ac46ba93f773601d818c, 343cf08a23da7a34305fdbb897102086f2124ee3, test 4741264d5b23195731d7fe7f0f77e72ec847442e",
+        "implementation-to-report product diff empty",
+        "start-to-implementation product delta: one allowlist line plus new module/test",
+        "product read-only; only this return and own scratch written"
+      ],
+      "limit": "sourcefree grade; no native ADP-015/C4 owner"
+    },
+    "G2_build_actual_first_consumer": {
+      "status": "PASS_SOURCEFREE_NORMAL",
+      "evidence": [
+        "34/34 listed tests exit 0",
+        "89/89 independent normal/negative/cold checks",
+        "real P2Owner ADMIT_EVENT at clocks 228/234/240",
+        "separate parent/neighbor/Nadia contexts",
+        "normal depth 1 vs 2 reader difference",
+        "fresh-process cold exact; exact retry UNCHANGED"
+      ],
+      "limit": "event content inherited sourcefree P2/S45/S39, not G2/G4 authored language"
+    },
+    "G3_falsification": {
+      "status": "FAIL_REVISE_EXACT_DEFECT",
+      "evidence": [
+        "second depth-2 promotion with new operation ID commits change+head then raises RELATION_CUSTODY_SEVERED",
+        "scope becomes HOLD_CUSTODY_SEVERED; exact first-promotion retry also refuses",
+        "coherent append-only relation change/head accepted as caller input",
+        "present unexposed and absent exposed contexts behave as documented"
+      ],
+      "limit": "exposure caller-supplied; self-hash not owner authentication; no native actor truth"
+    },
+    "G4_boundaries_preservation": {
+      "status": "PARTIAL_PASS_PRESERVATION__RELATION_DEPTH_STATE_MACHINE_FAILS",
+      "evidence": [
+        "C01 6, C04 identity 6, C04 custody 12, P2 owner 5 pass",
+        "change-primary and change-head sever give custody HOLD with event access intact",
+        "world/events/perceptions/checkpoints unchanged on sever and defect write",
+        "restore exact; cold exact no duplicates"
+      ],
+      "limit": "concurrent same-operation and branch-fork replay UNOBSERVED; no concurrency campaign"
+    },
+    "G5_independent_receiving": {
+      "status": "REVISE_EXACT_DEFECT",
+      "evidence": [
+        "one exact reproducible in-scope public-writer defect",
+        "shortest witness newprobes/c05_defect_probe.py",
+        "product unpatched"
+      ],
+      "limit": "no ACCEPT_SCOPED; no self-G5"
+    }
+  },
+  "defect": {
+    "id": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE",
+    "before": "QUALIFIED; 2 changes, 2 heads, 49 episodes; C12 verify ok",
+    "second_call": "RELATION_CUSTODY_SEVERED; expected RELATION_PROMOTION_NOT_DEEPER",
+    "after": "HOLD_CUSTODY_SEVERED; 3 changes, 3 heads, 51 episodes; C12 verify ok; world/events/perceptions/checkpoints unchanged",
+    "exact_retry_after": "RELATION_CUSTODY_SEVERED",
+    "minimum_correction": "use full changes for current depth, refuse before write, verify inside transaction"
+  },
+  "boundary": "caller-supplied exposure and coherent append are sourcefree fixture input; not PERCEIVED relation knowledge, native authority, psychology, G2 or J1",
+  "terminal": "STOP"
+}

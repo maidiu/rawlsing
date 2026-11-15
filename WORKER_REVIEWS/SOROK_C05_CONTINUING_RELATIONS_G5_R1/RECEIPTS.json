@@ -1,0 +1,133 @@
+{
+  "schema": "SOROK_C05_INDEPENDENT_RECEIPTS@1",
+  "issue": "C05",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "main_probe_report": "evidence/c05_probe_report.json",
+  "defect_probe_report": "evidence/c05_defect_report.json",
+  "listed_suites": "evidence/suite_summary.json",
+  "positive": {
+    "real_later_owner_event_and_separate_contexts": [
+      "later_owner_event_realized",
+      "later_event_hash_and_id_seal",
+      "owner_event_identity",
+      "later_event_separate_access_first",
+      "first_event_party_context_TEST_ONLY_C05_REVIEW_PARENT",
+      "first_event_party_context_TEST_ONLY_C05_REVIEW_NEIGHBOR",
+      "second_owner_event_realized",
+      "relation_qualified_without_copresence",
+      "change_recorded",
+      "parties_see_full_dated_history",
+      "leave_recorded",
+      "reenter_recorded",
+      "leave_reenter_state_machine"
+    ],
+    "dated_relation_and_later_consumer": [
+      "entry_recorded",
+      "parties_qualified_at_entry",
+      "later_consumer_sees_depth_two",
+      "nonparticipant_exposed_relation_qualified"
+    ],
+    "normal_depth_1_to_2": [
+      "pre_promotion_depth_one_without_label_only",
+      "promotion_recorded",
+      "promotion_future_only_reader_difference",
+      "as_of_before_promotion_stays_depth_one",
+      "earlier_event_contexts_byte_exact_after_promotion",
+      "promotion_does_not_rewrite_entries"
+    ],
+    "c01_role_extension": [
+      "c01_role_allowlist_is_parent_plus_neighbor",
+      "c01_registered_roles",
+      "c01_duplicate_registration_unchanged",
+      "c01_private_state_self_only",
+      "c01_root_unchanged",
+      "c01_review_actors_live"
+    ]
+  },
+  "negative": {
+    "unexposed_present_actor": [
+      "first_event_nadia_present_but_unexposed",
+      "present_unexposed_nadia_second"
+    ],
+    "unexposed_absent_or_never_participant": [
+      "first_event_absent_unexposed_TEST_ONLY_C05_REVIEW_OBSERVER",
+      "first_event_absent_unexposed_TEST_ONLY_C05_REVIEW_OUTSIDER",
+      "unexposed_observer_qualified_hold_no_fact",
+      "unexposed_outsider_qualified_hold_no_fact",
+      "outsider_still_hold"
+    ],
+    "late_exposure_no_retro_fill": [
+      "late_exposure_no_retro_fill",
+      "second_event_nadia_partial_change_only",
+      "late_exposed_nonparty_sees_only_own_entry",
+      "late_exposure_does_not_retro_fill_other_viewer",
+      "leave_reenter_not_retrofilled_to_unexposed"
+    ],
+    "private_state_boundary": [
+      "private_state_absent_first_contexts",
+      "private_state_absent_first_event",
+      "private_state_absent_first_world",
+      "event_private_not_read"
+    ],
+    "refusals_without_writes": [
+      "refusal_reuse_mismatch",
+      "refusal_missing_party_exposure",
+      "refusal_stranger_exposure",
+      "refusal_future_clock",
+      "refusal_backdated_clock",
+      "refusal_private_leak",
+      "refusal_unknown_reader",
+      "refusals_wrote_nothing"
+    ],
+    "no_duplicates_from_retry": [
+      "entry_retry_unchanged_no_duplicate",
+      "promotion_retry_unchanged_no_duplicate",
+      "no_duplicate_changes_or_heads_after_leave"
+    ]
+  },
+  "changed_restore": {
+    "change_primary_sever": [
+      "sever_change_primary_exposed_viewers_custody_hold",
+      "sever_change_primary_event_access_preserved",
+      "sever_change_primary_outsider_not_disclosed",
+      "sever_change_primary_world_events_perceptions_checkpoints_same",
+      "restore_change_primary_contexts_exact"
+    ],
+    "change_head_sever": [
+      "sever_change_head_exposed_viewers_custody_hold",
+      "sever_change_head_event_access_preserved",
+      "sever_change_head_outsider_not_disclosed",
+      "sever_change_head_world_events_perceptions_checkpoints_same",
+      "restore_change_head_contexts_exact"
+    ]
+  },
+  "cold": {
+    "receipts": [
+      "cold_child_exit_zero",
+      "cold_snapshot_exact",
+      "cold_retry_unchanged_no_duplicate",
+      "cold_private_state_absent"
+    ],
+    "child_exit": 0,
+    "snapshot_exact": true,
+    "retry_status": "UNCHANGED",
+    "counts_unchanged": true
+  },
+  "defect": {
+    "id": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE",
+    "expected": "RELATION_PROMOTION_NOT_DEEPER",
+    "actual": "RELATION_CUSTODY_SEVERED",
+    "write_committed": true,
+    "relation_status_after": "HOLD_CUSTODY_SEVERED",
+    "world_events_perceptions_checkpoints_unchanged": true,
+    "c12_verify_ok_after": true,
+    "exact_first_retry_after": "RELATION_CUSTODY_SEVERED"
+  },
+  "boundary": {
+    "caller_exposure_is_not_perception": true,
+    "coherent_append_only_relation_accepted": true,
+    "self_hash_proves_owner_operation": false,
+    "accepted_as_native_actor_truth": false
+  },
+  "terminal": "STOP"
+}

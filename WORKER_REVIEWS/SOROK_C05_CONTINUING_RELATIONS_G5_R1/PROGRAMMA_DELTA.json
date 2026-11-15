@@ -1,0 +1,61 @@
+{
+  "schema": "SOROK_PROGRAMMA_DELTA@1",
+  "issue": "C05",
+  "title": "Continuing relations and variable-depth supporting actors",
+  "terminal_disposition": "REVISE_EXACT_DEFECT",
+  "capability_grade": "SOURCEFREE_S2_C05_NOT_ACCEPTED",
+  "source_grade": "SOURCEFREE_S2_ONLY",
+  "candidate_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "report_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "start_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+  "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "added_to_product": [],
+  "preserved": [
+    "Nadia focal root and C01 registration/private-state/access semantics",
+    "C04 child-facing custody and C03 material prospective readset scope",
+    "P2 owner performed-event path and BP4 event hash/ID seal",
+    "no new world/psyche/biography store, scheduler, owner or clock",
+    "product source unchanged by this receiving"
+  ],
+  "accepted": [],
+  "not_accepted": [
+    "C05 continuing relations and variable-depth supporting actors as a whole",
+    "bounded depth-1 to depth-2 promotion state machine under repeated promotion",
+    "caller exposure as independent perception proof or owner-authenticated relation knowledge",
+    "coherent append-only relation change/head as owner operation proof"
+  ],
+  "defect": {
+    "id": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE",
+    "component": "developmental_recursion/continuing_relations.py",
+    "write_path": "promote_relation",
+    "witness": "WORKER_REVIEWS/SOROK_C05_CONTINUING_RELATIONS_G5_R1/newprobes/c05_defect_probe.py",
+    "observed": "second depth-2 promotion with new operation ID appends change+head, raises RELATION_CUSTODY_SEVERED instead of RELATION_PROMOTION_NOT_DEEPER, and leaves the relation scope HOLD_CUSTODY_SEVERED",
+    "minimum_correction": "compute current depth including prior PROMOTE; refuse before append; verify inside transaction and roll back on failure; add a second-promotion test"
+  },
+  "normal_path_preserved": [
+    "dated ENTER/CHANGE/LEAVE/re-ENTER over actual world clocks",
+    "real later P2 owner event with separate viewer contexts",
+    "normal depth 1 vs 2 reader difference without past rewrite",
+    "late exposure no retro-fill",
+    "change/head sever custody HOLD with event access intact and exact restore",
+    "fresh-process cold exactness and retry idempotence",
+    "C01 role extension parent + neighbor only",
+    "C01/C04/P2 listed suites 34/34 pass"
+  ],
+  "not_released": [
+    "native ADP-015/C4 relation authority",
+    "household/genealogy issuance",
+    "maternal psychology, independent volition, autonomy",
+    "generated language and language_generation_owner",
+    "G2 mother-owned event selection",
+    "complete J1/Nadia performed response",
+    "D04/D05 and durable acquisition",
+    "human/scientific/source-rights receiving",
+    "protected merge and #939 fleet restart",
+    "PYAT/Browser management/contact, new campaign or duel",
+    "concurrent same-operation uniqueness and branch-fork replay"
+  ],
+  "next_gate": "one owner correction for the promotion depth/refusal and transaction rollback, followed by a separate focused rereceiving; no automatic next job or cycle",
+  "stop": true
+}

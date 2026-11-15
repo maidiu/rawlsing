@@ -1,0 +1,76 @@
+{
+  "schema": "SOROK_C05_ORIGINAL_CONTRACT_DISPOSITION@1",
+  "issue": "C05",
+  "original_contract": {
+    "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-classified-queue-20261115/C05-g5/ORIGINAL_C05.json",
+    "sha256": "6b36ca536ef808ef4f50470b494e2dfc44f9b41cdc8d53b97743fce195aed12b",
+    "depends_on": ["C01", "C04"],
+    "grade": "SOURCEFREE_S2_ONLY",
+    "terminal_consumer": "later shared event and separate mother/Nadia/other context"
+  },
+  "positive_oracle": {
+    "contract": "At least one other enters/leaves or changes relationship over dated period with actor-limited access",
+    "disposition": "EXERCISED_NORMAL_PATH_NOT_ACCEPTED_DUE_TO_DEPTH_DEFECT",
+    "evidence": [
+      "caller-authorized ENTER at clock 222, CHANGE at 234, late CHANGE at 240, LEAVE then re-ENTER at 240",
+      "real P2Owner ADMIT_EVENT at clocks 228, 234, 240",
+      "separate parent/neighbor/Nadia/observer/outsider views",
+      "actor-limited caller exposure; present unexposed actor held; absent exposed observer relation-qualified only after exposure"
+    ],
+    "scope": "caller-authorized sourcefree illustrative relation facts; not native ADP-015/C4, perception proof, psychology or autonomy"
+  },
+  "negative_oracle": {
+    "contract": "Past rewritten on promotion, relationships collapse to child profile, mutual omniscience",
+    "disposition": "NORMAL_PATH_PASS",
+    "evidence": [
+      "normal depth-2 promotion leaves ENTER/CHANGE bytes and hashes unchanged and earlier event contexts byte-exact",
+      "Nadia remains partly held; parties see counterpart, not child-profile collapse",
+      "unexposed/partial viewers do not receive relation token/party/private fact; no mutual omniscience",
+      "private fixture values absent from actor-facing contexts, event and world"
+    ],
+    "note": "The repeat-promotion defect is a relation-custody/state-machine failure, not a past rewrite by a normal promotion."
+  },
+  "restoration_or_replay": {
+    "contract": "Cold lineage reads same separate actor states and relationship history",
+    "disposition": "COLD_PASS_FOR_INTACT_STATE",
+    "evidence": [
+      "fresh process exact root/clock/actors/registrations/dated histories/contexts/row counts",
+      "exact cold ENTER retry UNCHANGED with no new rows",
+      "no registration/change/head/speech duplicates",
+      "public API cannot recover a scope already severed by the repeat-promotion defect"
+    ]
+  },
+  "variable_depth": {
+    "contract_title": "Continuing relations and variable-depth supporting actors",
+    "normal_gate": "PASS_NORMAL_1_TO_2",
+    "normal_evidence": [
+      "depth 1 before promotion, depth 2 after promotion at same as_of clock 240",
+      "promotions document plus representation_depth differ; entries and visible_history_hash identical",
+      "as_of 239 remains depth 1; earlier event contexts exact; stored bytes unchanged"
+    ],
+    "falsification_gate": "FAIL_REPEAT_PROMOTION",
+    "defect": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE",
+    "note": "No unbounded-depth or whole-brain requirement is invented; only the claimed finite depth-1 to depth-2 state machine is tested."
+  },
+  "c01_c04_dependency": {
+    "c01": "6 passed; role allowlist deliberately parent + neighbor; registration/private/access/idempotence preserved",
+    "c04_prerequisite_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+    "c04_scope": "child-facing custody and C03 material prospective readset only",
+    "c04_identity": "6 passed",
+    "c04_custody": "12 passed",
+    "p2_owner": "5 passed",
+    "c04_residuals": "parent metadata exactness and D03 caller-receipt binding remain held and are not promoted"
+  },
+  "separate_1037_line": {
+    "status": "DO_NOT_IMPORT_TEST_OR_REPAIR",
+    "observed": "reviewed only as an ownership lesson; B05 repair not imported, tested, repaired or generalized",
+    "lesson_applied": "self-consistent hashes/receipts are not proof of an actual owner operation; C05 caller exposure/append is scoped as explicit sourcefree input, not owner authentication"
+  },
+  "disposition": {
+    "candidate_accepted": false,
+    "verdict": "REVISE_EXACT_DEFECT",
+    "reason": "one in-scope normal-public-writer defect: repeated depth-2 promotion commits a self-severing change+head and permanently severs the relation scope",
+    "minimum_correction": "include prior PROMOTE in current-depth check; refuse RELATION_PROMOTION_NOT_DEEPER before append; verify in the write transaction so failure rolls back; add a second-promotion test"
+  },
+  "terminal": "STOP"
+}
