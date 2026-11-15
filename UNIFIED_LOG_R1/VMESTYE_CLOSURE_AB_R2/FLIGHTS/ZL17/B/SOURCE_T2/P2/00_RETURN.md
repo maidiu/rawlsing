@@ -1,0 +1,18 @@
+# ZL17 B #816 — SOURCE_T2 P2 frozen response
+
+**P2 recommended verdict:** `REVISE_EXACT_DEFECT / HOLD_EXACT_EVIDENCE` at T2 documentary S1; **B's assigned A/B SOURCE_T2 exchange answered at B P2 scope**. No formal receiving or source-native issuance. A P1 exact [PR #1076](https://github.com/maidiu/rawlsing/pull/1076) `d3fa153d1d5ca617dad4c7f178a9a1dda5785e6d`; B P1 prior [PR #1080](https://github.com/maidiu/rawlsing/pull/1080) `7fd0ca9f9fedf73662a39e73aa069a45fb2538f0`; original B blind P0 `3d147fcfa956d2289086d054cd11835e5db58fd2`, A P0 `9dc9d14d23356b0328afd0c2b83096456b2dca88`, source T2 R3 `5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac`, protected `6a5c12f04323d74001f9632063ec907f4fc4468e`.
+
+**Three answer rows** (literal shared `CONTESTS.tsv` 13-field header, A contest IDs unchanged):
+1. `A:CONTEST:0001` **PARTIAL**: A right that B01 needs two-stage R08 source signed verification and actual later conditional `step["denominator"]` / `step["cells"]` replacement. Two static `TEST_ONLY` reader rows added in B P2. T2 reverse indexed repair owner #870, operative N9/N10W Sorok issuer held.
+2. `A:CONTEST:0002` **PARTIAL**: A right I07 current-first `OperationGuardReceipt` merits bounded `REVISE_EXACT_DEFECT` indexing now; T2 S07.2 named symbol not same as current-first operation or reader. Non-test consumer `OPEN_PROOF_GAP`; numerical F6M remains separate.
+3. `A:CONTEST:0003` **RESOLVED at B S1 source-grain only**: three operations preserved — old V553 keyed wave, old V554 country-year numerical seed, current M1 V554 conditional gate. Old selected numeric first consumer/retirement and actual source issuer remain typed HOLD.
+
+**Products:** `CONTESTS.tsv` (3 response rows); `EVIDENCE.tsv` (8 source/evidence rows), `SOURCE_SEARCH_LOG.tsv` (4 bounded receipts), `REVERSE_CONSUMERS.tsv` (6 static current/old alternatives), `REVIEW_CASES.md`, `SCOPE_CONTRACT.md`, `CHANGED_FILES.txt`. No new historical T, false global absence, or new normalized atlas authored. **B P1's original six challenges remain independently frozen** and are not self-answered on A's behalf.
+
+**C1–C5 and four verdicts:** C1 entire estate HOLD; C2 candidate IDs accounted at supplied table grain, aliases nonadditive; C3 I07 current-first and R08 qualified index delta exact and pending #870, historical V554 issuer reader HOLD; C4 independent A/B source P0 and one bounded P1/P2, not credential independent formal receiving; C5 finite three owner/falsifier repairs. `ESTATE_DISCOVERY_CLOSED_AT_PINNED_SCOPE=NOT_CLAIMED`; `FUNCTIONAL_MAP_COMPLETE_WITH_TYPED_GAPS=NOT_CLAIMED`; `CURRENT_MACHINE_ZERO_LOSS_PROVED=HOLD`; `ALL35_NATIVE_WORLD_PRODUCT_ACCEPTED=HOLD`.
+
+**Engineering, Scientific, Authority courts:** static code and exact source negative/conditional site proof at S0/S1 only; no S2/executable, no selected historical science or source proof, no real actor/Sorok/consent or issuer authority. **Executed:** NONE – GitHub document and code reads and isolated branch writes ONLY. No product/tests/CI/native respondent/S2/S3/protected merge or HQ shared TSV writes.
+
+**Next real reader:** #870 VMC-T2 owner for two exact current-first/consumer index repairs and one triple-grain V553/V554 held annotation; independent #816 A reviewer receives B P2 and can return one bounded P2 on its isolated PR; #814 accepts only qualified reviewed deltas under its own lease. **JOIN_REVIEW** must start a NEW blind P0 after new exact frozen #814 integration head and distinct #815 matching review, not reuse SOURCE_T2. No P3 or new excavation by default.
+
+**Status:** `COMPLETE_AT_ZL17_SOURCE_T2_DOCUMENTARY_S1__B_P2_RETURNED` with T2 source-repair and actor/science/issuer holds, awaiting independent receiving only.
