@@ -4,7 +4,7 @@
 
 ## 1. The exact correction to our R2/R3 description
 
-Our earlier “mother's actual history → select a feasible encounter E → infer father conditional on E and a future birth B” **compresses away the principal's decisive mechanism**. The mother is not matching an already-defined father or even simply picking a meeting from a set of external co-location opportunities. A **very small number of compressed forward mother-development recursions** (the principal envisages perhaps **2–3 LLM/recursion calls**, provisional engineering budget, *not* a fixed rule) move her through *multiple fictional years*. In each step, **the LLM integrates the currently grounded computational mother-persona**, her existing past/identity/material-social habitus and actual world to **propose** an event stack and conditional alternatives.
+Our earlier “mother's actual history → select a feasible encounter E → infer father conditional on E and a future birth B” **compresses away the principal's decisive mechanism**. The mother is not matching an already-defined father or even simply picking a meeting from a set of external co-location opportunities. A **very small number of compressed forward mother-development recursions** (the principal envisages perhaps **2–3 LLM/recursion calls**, provisional engineering budget, *not* a fixed rule) move her through *multiple fictional years*. In each step, **the LLM integrates the currently grounded computational mother-persona**, her existing past/identity/material-social habitus and actual world to **propose** an event stack. **The principal's provisional specific staging places the *multiple conception alternatives in the last event position of the FINAL LLM call's stack***; earlier calls develop the mother across previous years. This is a design expectation, not a demonstrated fixed call count.
 
 The proposer **does not know exactly who the mother will have become at the future final event**, because intermediate qualified recursions have not occurred. The mother undergoes those events; her **later computed state at the point of selecting/encountering the conception possibility** determines **which conception trajectory is realized**, and *how its circumstances are incorporated into her actual life* subject to objective biological/material/temporal admissibility. LLM suggestion is neither event performance nor authoritative actor intention.
 
@@ -79,7 +79,9 @@ mother state M(t0) and world W(t0)
 
 FOR i in a SMALL number of compressed mother-development calls:
     LLM proposes CONDITIONAL event stack at current M(ti), W(ti)
-    proposals cover a future span; some may involve relationship pathways
+    proposals cover a future span; early calls develop her earlier life
+    FINAL LLM call proposes multiple possible CONCEPTION paths in the
+       LAST EVENT POSITION of its own multi-year event stack
     SOROK checks possibility, time, actor rights, causal refs and scope
     as event time advances, mother ACTUALLY develops through admitted acts
     select later options only using M(t_event) after intervening recursions
@@ -88,6 +90,8 @@ FINAL PRE-FOCAL MATERNAL EVENT:
     mother at actual candidate event-time chooses/undergoes one
     admissible CONCEPTION POSSIBILITY from available alternatives
     # actual agency and biological occurrence are distinct
+    # maternal identity at this event could not have been known
+    # precisely when the final LLM call first proposed its stack
     # this may imply first/second/third/... child and much earlier meeting
     mark candidate pathway CONDITIONALLY SELECTED, not finally performed
 
