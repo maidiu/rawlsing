@@ -36,12 +36,14 @@ A mechanism that skips these distinctions can generate “psychology” efficien
 
 ## One economical prospective *domain-specific* learning example
 
-Use the evidence-backed phenomenon of an infant learning about **local action–response contingency**, not universal generalized trust/attachment/security. The actual research (see scientific bounds in [SEAM/22 `2](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md)) supports scoped contingency sensitivity; it cannot set a lawful numeric Rawlsing learning rate without additional work.
+Use the experimentally investigated phenomenon of infant **vocal action–response contingency** as a **bounded laboratory analogue**, not a demonstrated general caregiver-attachment, lifelong expectation or universal human developmental law. Venditti et al. (2024; DOI [10.1111/infa.12614](https://doi.org/10.1111/infa.12614)) compared contingent with yoked feedback among **64 infants aged approximately seven to eight months**, including nonhuman agent conditions. Effects were specific to their observed vocalization behavior, not measured durable personhood. The actual research (see scientific bounds in [SEAM/22 §2](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md)) supports scoped contingency sensitivity; it cannot set a lawful numeric Rawlsing learning rate without additional work.
 
 ```text
 P2 child actor/body in qualified eligible infant period
+  # NOT YET a general operative infant-action issuer; owner check required
   -> child actually emits bodily/vocal/gestural signal (or does not)
-  -> multiple potential carers/agents ACT independently under real work,
+  -> available carers/agents ACT if a qualified P2/coactor
+     producer can actually issue their actions, under real work,
      availability, sensory/media and institutional conditions
   -> one agent may respond, not respond, or be unavailable
   -> P2 commits actual event & objective material consequence
@@ -54,9 +56,13 @@ P2 child actor/body in qualified eligible infant period
   -> P2 admits performed attempt and independent consequences
 ```
 
-This is a **candidate scientific test**, not an authorized CAN-010 update function. One caregiver failing a response due to a work shift cannot automatically create “rejection trauma.” Identical totals of infant signals and adult responses do not imply identical contingency; temporal pairing and access matter. No rule = unknown, not “nothing learned.” If child cannot receive the agent's actual response, don't assert acquisition. If child first learns one agent's responsiveness, do not generalize to every human.
+This is a **candidate sourcefree mechanism test**, not an authorized CAN-010 update function or a licensed age/gesture generalization. The cited trial tests a narrow vocalization channel; extending to gesture, motor exploration, all caregiver settings or long-term development requires separate evidence and body/measurement predicates. One caregiver failing a response due to a work shift cannot automatically create “rejection trauma.” Identical totals of infant signals and adult responses do not imply identical contingency; temporal pairing and access matter. No rule = unknown, not “nothing learned.” If child cannot receive the agent's actual response, don't assert acquisition. If child first learns one agent's responsiveness, do not generalize to every human.
 
 Other domains (self-initiated motor skill, practice with tools, natural signed-language access, overhearing adult speech, acquired critical perspective) may require *different* specific evidence and admissible U rules. The **ontology remains common** but no single socialization coefficient is mandated.
+
+### External evidence and inferred effect are different things
+
+A study showing a short-term response under contingent experimental feedback does **not** estimate how a particular fictional infant experiences years of care or later becomes an adult. An in-simulation difference under a hand-written rule proves only its constructed semantics. Domain-specific biological applicability, cross-cultural transport, longer-term learning and human predictive validity must be separately tested; otherwise those effects remain sourcefree hypotheses.
 
 ## Required result and negative tests
 
