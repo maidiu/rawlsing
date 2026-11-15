@@ -23,7 +23,7 @@ PYAT contributes the qualified material/social availability of practices, instit
 - [PYAT `pre553_analytical_composition.py`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/rawlsing_next/pre553_analytical_composition.py) / [`pre553_empirical_possibility_provider.py`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/rawlsing_next/pre553_empirical_possibility_provider.py): observed / conditioned possibility sources, **not exhaustive human semantic ontology**.
 - [CAN-011 registry and update proposal](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_011_V3_MIDDLE_STATE/AUTHORITY.md): sparse state kinds, optional ref, required rule/causal history and refusal.
 - [SOROK `p3/p3_owner.py`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py) and [`p3/test_rules.py`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/test_rules.py): bounded `SOURCEFREE_TEST_ONLY` B1 mediators; no native general creation rule or general learned semantic issuer demonstrated.
-- [ADP-017 actor knowledge/access boundary](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/ADP_017_V3_ACTOR_KNOWLEDGE/AUTHORITY.md) — **check exact path/authority at receiving**; actor's ability to act, know, name and recount must not be conflated.
+- [ADP-017 actor knowledge/access boundary](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/ADP_017_V3_ACTOR_ACCESS/AUTHORITY.md) — actor access/knowledge remains separately governed; actor's ability to act, know, name and recount must not be conflated.
 
 ## Prospective code interpretation (not a new approved API)
 
@@ -51,7 +51,7 @@ LaterActorFirstReader:
     -> chosen attempt/performed P2 act (or lawful quiet)
 ```
 
-**Do not invent** `QualifedWorldReferent` as a second global semantic registry by default. First locate the original P2 object/practice/event, CAN-011 semantic authority and the precise existing owner able to reference it. `semantic_object_ref?` may be legitimately absent; it is not license for free-form hallucinated knowledge. Distinguish an actor's practical discrimination from their explicit linguistic explanation.
+**Do not invent** `QualifiedWorldReferent` as a second global semantic registry by default. First locate the original P2 object/practice/event, CAN-011 semantic authority and the precise existing owner able to reference it. `semantic_object_ref?` may be legitimately absent; it is not license for free-form hallucinated knowledge. Distinguish an actor's practical discrimination from their explicit linguistic explanation.
 
 ### Discriminating evidence/proof
 
