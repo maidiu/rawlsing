@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T08:39:47.843519+00:00",
+  "updated_utc": "2026-11-15T08:54:36.317253+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -75,8 +75,11 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok982-composite-g5-20261115-r1",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
-      "owner": "ses_e221462b9ffeDc6SKxZGtXojUH"
+      "state": "ACCEPT_SCOPED_SOURCEFREE_S2_FOR_HQ_STOP",
+      "owner": "ses_e221462b9ffeDc6SKxZGtXojUH",
+      "result_sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+      "accepted_code_sha": "ff30c13eea54e37e2dc8edfa73a7c7447127b735",
+      "protected_merge_authorized": false
     },
     {
       "issue": 1037,
@@ -295,11 +298,30 @@
       "acceptance": "NOT_ACCEPTED",
       "permitted_correction": "ONE_R2_RUNNING",
       "further_unbounded_cycles": false
+    },
+    {
+      "task": "982 CG-A composite G5",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_S2_FOR_HQ_STOP",
+      "code_sha": "ff30c13eea54e37e2dc8edfa73a7c7447127b735",
+      "source_report_sha": "d5cf0c9c9925eb75c21c9a70793947f857917959",
+      "review_sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1066",
+      "grade": "SOURCEFREE_S2_CG_A_P3_TO_P6_CAUSAL_BRIDGE",
+      "integration": "HQ_SOURCE_PUBLICATION_READY_NOT_PROTECTED_MERGE",
+      "holds": [
+        "raw internal actor_observed/world/house trust",
+        "native Rule A/T/psychological relevance/memory/NO_CHANGE",
+        "full crash recovery",
+        "human/scientific/production rights",
+        "protected-only6a5c12f0 lineage not ancestor; preserve in separately authorized receiving"
+      ],
+      "next_action": "bank scoped verdict, stop; no further CG-A repair/review/staging task authorized"
     }
   ],
   "guide_records_affected": [
     "PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
     "PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md"
   ],
-  "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT"
+  "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT",
+  "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff."
 }
