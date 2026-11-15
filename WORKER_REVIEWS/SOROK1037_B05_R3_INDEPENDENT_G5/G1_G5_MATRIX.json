@@ -1,0 +1,67 @@
+{
+  "schema": "SOROK1037_B05_R3_G5_MATRIX@1",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "accepted_code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+  "base_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HELD",
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "candidate cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc; base 270eb29cd4487b6865b61adc9d671952554d425d",
+        "only B05 read-side rolling_reproduction.py changed; +10/-6",
+        "B05 before a193fb5bfb6a1955209bedf0e66be974dcfa8e1b; candidate 9de3b5a295431fac2b0f9833ed520262df04b363; sha256 bb67d3e03baf28943076cf5902e308c26ccbb7678672a297817a358a6296c774",
+        "B04 unchanged 3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+        "no writer/schema/store/lock/ledger/registry/key/currency change",
+        "exact probes byte-identical; author probes not executed in place; product read-only; assigned scratch only"
+      ]
+    },
+    "G2_build_normal_first_consumers": {
+      "status": "PASS",
+      "evidence": [
+        "zero probe 17/17, exit 0, zero forgery B05_RENT_RECEIPT_INVALID",
+        "positive probe 34/34, exit 0, positive sole forgery B05_RENT_OPERATION_UNPROVEN",
+        "exact #1027 63/63 checks, both defects accepted=false, literal exit 1 historical quirk",
+        "cold probe exit 0, ok=true, warm_ok=true, child_exit=0, two purchases + one rent, head unchanged",
+        "R3 4, R2 5, legacy 6, selected C03/C04 3, inherited 43 all passed",
+        "genuine zero UNCHANGED, held REFUSED, positive ADMITTED and h1/h2 historical reads preserved"
+      ]
+    },
+    "G3_falsification": {
+      "status": "PASS",
+      "evidence": [
+        "own malformed ADMITTED no-decrease: B05_RENT_RECEIPT_INVALID",
+        "own malformed ADMITTED wrong debit: B05_RENT_RECEIPT_INVALID",
+        "own well-formed ADMITTED with no actual checkpoint transition: B05_RENT_OPERATION_UNPROVEN",
+        "own same-period copied ADMITTED receipt: B05_RENT_OPERATION_NOT_UNIQUE; genuine fail-closed; no second debit",
+        "checkpoint sever/restore, sibling transition copy, B04 foreign-root/C02 chain and changed/restored cases preserved",
+        "no new in-scope false ADMITTED found"
+      ]
+    },
+    "G4_boundaries_preservation": {
+      "status": "PASS_WITH_LIMITS",
+      "evidence": [
+        "no writer/ledger/schema/store/lock/currency/psychology/motive change",
+        "historical h1 true/h2 false, replay/retry, changed/restored, B04 purchase/refusals, cold preserved",
+        "no new ledger, scheduler, native authority or protected merge"
+      ],
+      "limits": [
+        "fully privileged checkpoint fabrication outside observed public-action/append threat model",
+        "UNCHANGED/REFUSED no-debit statuses remain readable by authorized R3 scope",
+        "timings/RSS under concurrent host load; provider and checkpoint/org/quota UNOBSERVED"
+      ]
+    },
+    "G5_independent_nonauthor_receiving": {
+      "status": "ACCEPT_SCOPED_SOURCEFREE",
+      "accepted_code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "basis": "frozen zero probe 17/17; positive probe 34/34; #1027 63/63 with both defects false; cold and required suites pass; own independent negative/positive witness 12/12",
+      "protected_or_scientific_authority": "NONE",
+      "terminal": "STOP"
+    }
+  }
+}

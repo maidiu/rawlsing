@@ -1,0 +1,66 @@
+{
+  "schema": "SOROK1037_B05_R3_G5_PROGRAMMA_DELTA@1",
+  "issue": 1037,
+  "round": "B05_R3_INDEPENDENT_G5",
+  "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HELD",
+  "accepted_code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+  "base_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "product_change_by_reviewer": "NONE",
+  "closed": [
+    {
+      "defect": "SOROK1037-R2-RED-B05-ZERO-FALSE-ADMITTED",
+      "status": "CLOSED_AT_R3",
+      "effect": "sole forged ADMITTED zero-rent receipt matching public no-cash say checkpoints now refuses B05_RENT_RECEIPT_INVALID"
+    }
+  ],
+  "preserved": [
+    "original positive sole-rehash refusal B05_RENT_OPERATION_UNPROVEN",
+    "B04 source and all B04 refusals",
+    "B05 root/branch/actor/period/source/rent/uniqueness and R2 checkpoint/unique-transition proof",
+    "genuine zero UNCHANGED and held REFUSED reads without debit checkpoints",
+    "genuine positive ADMITTED, historical h1 true/h2 false, replay/retry without a second debit",
+    "changed/severed/restored checkpoint, dwelling and B04 ownership cases",
+    "normal two purchases + one rent and fresh-process cold",
+    "exact #1027 63 controls with both foreign-root defects accepted=false"
+  ],
+  "new_evidence": [
+    "own independent negative witness: malformed ADMITTED no-decrease/wrong-debit -> B05_RENT_RECEIPT_INVALID; well-formed no-transition -> B05_RENT_OPERATION_UNPROVEN; same-period copy -> B05_RENT_OPERATION_NOT_UNIQUE",
+    "own witness distinguishes genuine zero UNCHANGED, held REFUSED, positive ADMITTED and historical h1/h2"
+  ],
+  "unchanged": [
+    "B05 writer apply_household_rent and _StoreWrite path",
+    "receipt schemas, store and locks",
+    "B01/B02/B03 product",
+    "P2 writers and world material facts",
+    "C02/C03/C04/P6/D03 production",
+    "protected PRE-MAIN"
+  ],
+  "limits": [
+    "sourcefree engineering only",
+    "fully privileged checkpoint fabrication outside observed public-action/append threat model",
+    "UNCHANGED/REFUSED no-debit statuses remain readable by authorized R3 scope",
+    "provider and checkpoint/org/quota UNOBSERVED"
+  ],
+  "evidence": {
+    "receiving": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/00_RECEIVING.md",
+    "verdict": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/VERDICT.json",
+    "matrix": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/G1_G5_MATRIX.json",
+    "own_negative_probe": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r3_independent_probe.py",
+    "own_negative_report": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/evidence/g5_r3_independent_probe_report.json",
+    "zero_probe_report": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/evidence/zero_probe_report.json",
+    "positive_probe_report": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/evidence/positive_probe_report.json",
+    "immutable_r2_red_report": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/evidence/immutable_r2_red_report.json"
+  },
+  "nonclaims": [
+    "no native science or human/actor authority",
+    "no motive, desire or volition result",
+    "no protected PRE-MAIN merge",
+    "no new ledger, scheduler, currency conversion or writer change",
+    "no full P6/MII/J1 campaign",
+    "no isolated performance or provider cost claim",
+    "no R4 or automatic further correction"
+  ],
+  "terminal": "STOP"
+}

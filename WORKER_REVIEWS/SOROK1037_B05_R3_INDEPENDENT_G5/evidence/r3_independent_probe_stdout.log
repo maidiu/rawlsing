@@ -1,0 +1,13 @@
+PASS own negative: ADMITTED positive rent with no cash decrease is rejected by the actual reader :: {"raised": "B05_RENT_RECEIPT_INVALID"}
+PASS own negative: ADMITTED rent does not equal the cash decrease is rejected by the actual reader :: {"raised": "B05_RENT_RECEIPT_INVALID"}
+PASS own negative: malformed ADMITTED forgeries moved no cash :: {"cash": 55}
+PASS own negative: well-formed ADMITTED debit with no actual checkpoint transition remains unproven :: {"raised": "B05_RENT_OPERATION_UNPROVEN"}
+PASS own negative: no-transition forgery moved no cash :: {"cash": 55}
+PASS genuine zero: writer UNCHANGED and reader READ without debit :: {"cash": 55, "reader": "READ", "receipt": "UNCHANGED", "writer": "UNCHANGED"}
+PASS genuine held: writer REFUSED and reader READ without debit :: {"cash": 5, "reader": "READ", "receipt": "REFUSED", "writer": "REFUSED"}
+PASS genuine positive: ADMITTED debits exactly and reads :: {"cash": 31, "h1": "ADMITTED", "h2": "ADMITTED"}
+PASS genuine positive historical chain: h1 true, h2 false :: {"h1_historical": true, "h2_historical": false}
+PASS own replay boundary: same-period copied ADMITTED receipt is refused by actual reader :: {"raised": "B05_RENT_OPERATION_NOT_UNIQUE"}
+PASS own replay boundary: genuine receipt is fail-closed while the copy exists :: {"raised": "B05_RENT_OPERATION_NOT_UNIQUE"}
+PASS own replay boundary: no second debit :: {"cash": 43}
+R3_NEGATIVE_FAILED_CHECKS []

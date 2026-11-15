@@ -1,0 +1,227 @@
+{
+  "checks": [
+    {
+      "check": "sole-rehash: no cash moved by append-only receipt",
+      "detail": {
+        "cash_after": 55,
+        "cash_before": 55
+      },
+      "pass": true
+    },
+    {
+      "check": "sole-rehashed receipt for completed period with no prior actual rent is refused (expected by #1037 operation binding)",
+      "detail": {
+        "refused": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 control: genuine rent admitted",
+      "pass": true
+    },
+    {
+      "check": "b05 control: genuine rent reads",
+      "pass": true
+    },
+    {
+      "check": "b05 foreign nested root refused",
+      "detail": {
+        "raised": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 foreign nested branch refused",
+      "detail": {
+        "raised": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 foreign body root refused",
+      "detail": {
+        "raised": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 wrong episode actor refused",
+      "detail": {
+        "raised": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 exchanged nested receipt operation refused",
+      "detail": {
+        "raised": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 foreign/incomplete period refused",
+      "detail": {
+        "raised": "B05_RENT_PERIOD_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 receipt rent not current dwelling rent refused",
+      "detail": {
+        "raised": "B05_RENT_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 same-period second receipt refused",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_NOT_UNIQUE"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 genuine receipt is fail-closed while forged same-period sibling exists",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_NOT_UNIQUE"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 control: append-only forgeries never moved cash",
+      "pass": true
+    },
+    {
+      "check": "b05 historical: h1 rent admitted",
+      "pass": true
+    },
+    {
+      "check": "b05 historical: h2 rent admitted",
+      "pass": true
+    },
+    {
+      "check": "b05 historical genuine h1 receipt still reads with historical=true",
+      "detail": {
+        "cash": 31,
+        "historical": true
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 current genuine h2 receipt reads with historical=false",
+      "detail": {
+        "cash": 31,
+        "historical": false
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 historical: two periods debit exactly twice",
+      "pass": true
+    },
+    {
+      "check": "b05 genuine historical receipt after lawful dwelling change is not falsely accepted",
+      "detail": {
+        "raised": "B05_RENT_SOURCE_STALE"
+      },
+      "pass": true
+    },
+    {
+      "check": "b05 changed/restored dwelling exact read restore",
+      "pass": true
+    },
+    {
+      "check": "b04 control: genuine purchase admitted",
+      "pass": true
+    },
+    {
+      "check": "b04 control: genuine purchase reads",
+      "pass": true
+    },
+    {
+      "check": "b04 ownership row removed refuses",
+      "detail": {
+        "raised": "PURCHASE_READ_STALE"
+      },
+      "pass": true
+    },
+    {
+      "check": "b04 changed/restored ownership exact read restore",
+      "pass": true
+    },
+    {
+      "check": "b04 exchanged nested receipt operation refused",
+      "detail": {
+        "raised": "PURCHASE_READ_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b04 foreign nested root/branch refused",
+      "detail": {
+        "raised": "PURCHASE_READ_PROVENANCE_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b04 foreign root forgery left stored parent cash",
+      "detail": {
+        "expected": 60,
+        "stored_parent_cash": 60
+      },
+      "pass": true
+    },
+    {
+      "check": "b04 foreign root forgery left market source",
+      "pass": true
+    },
+    {
+      "check": "b04 c02 control: genuine purchase admitted",
+      "pass": true
+    },
+    {
+      "check": "b04 chain-extending rehashed forgery is refused by the actual C02 parent-material owner chain, not accepted on local hashes",
+      "detail": {
+        "refused": "PURCHASE_READ_PARENT_MISMATCH"
+      },
+      "pass": true
+    },
+    {
+      "check": "b04 chain forgery left stored parent cash undebited",
+      "detail": {
+        "expected": 60,
+        "stored_parent_cash": 60
+      },
+      "pass": true
+    },
+    {
+      "check": "b04 chain forgery left market source unchanged",
+      "pass": true
+    },
+    {
+      "check": "b04 forged receipt hash was self-consistent before refusal",
+      "pass": true
+    }
+  ],
+  "elapsed_seconds": 43.444,
+  "failed_checks": [],
+  "finished": 1794785654.540258,
+  "residual": {
+    "b05_sole_rehashed_receipt": {
+      "accepted": false,
+      "detail": {
+        "refused": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "source_bound": {
+        "branch": "first_session",
+        "operation_id": "g5review:b05:sole-rehashed",
+        "period_id": "period:2026-h1",
+        "prior_actual_rent": false,
+        "root": "d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6"
+      }
+    },
+    "reproduced": false
+  },
+  "schema": "SOROK1037_B_RECEIPT_G5_REVIEW_PROBE@1",
+  "started": 1794785611.096373,
+  "verdict": "NO_RESIDUAL_FALSE_ACCEPT"
+}

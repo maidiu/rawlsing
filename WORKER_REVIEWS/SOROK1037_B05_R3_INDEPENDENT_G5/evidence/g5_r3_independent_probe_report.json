@@ -1,0 +1,152 @@
+{
+  "cases": {
+    "admitted_no_decrease": {
+      "cash_after": 55,
+      "cash_before": 55,
+      "clock": 429,
+      "expected": "B05_RENT_RECEIPT_INVALID",
+      "operation": "g5review:r3:admitted-no-decrease",
+      "rent": 12
+    },
+    "admitted_no_transition": {
+      "cash_after": 55,
+      "cash_before": 67,
+      "clock": 429,
+      "expected": "B05_RENT_OPERATION_UNPROVEN",
+      "operation": "g5review:r3:admitted-no-transition",
+      "rent": 12
+    },
+    "admitted_wrong_debit": {
+      "cash_after": 50,
+      "cash_before": 55,
+      "clock": 429,
+      "expected": "B05_RENT_RECEIPT_INVALID",
+      "operation": "g5review:r3:admitted-wrong-debit",
+      "rent": 12
+    },
+    "genuine_held": {
+      "cash": 5,
+      "reader": "READ",
+      "writer": "REFUSED"
+    },
+    "genuine_positive": {
+      "cash": 31,
+      "h1": "ADMITTED",
+      "h1_historical_after_h2": true,
+      "h2": "ADMITTED",
+      "h2_historical": false
+    },
+    "genuine_zero": {
+      "cash": 55,
+      "reader": "READ",
+      "writer": "UNCHANGED"
+    },
+    "replay_boundary": {
+      "cash_after": 43,
+      "cash_before": 43,
+      "copy": "g5review:r3:replay-copy",
+      "expected": "B05_RENT_OPERATION_NOT_UNIQUE",
+      "real": "g5review:r3:replay-real"
+    }
+  },
+  "checks": [
+    {
+      "check": "own negative: ADMITTED positive rent with no cash decrease is rejected by the actual reader",
+      "detail": {
+        "raised": "B05_RENT_RECEIPT_INVALID"
+      },
+      "pass": true
+    },
+    {
+      "check": "own negative: ADMITTED rent does not equal the cash decrease is rejected by the actual reader",
+      "detail": {
+        "raised": "B05_RENT_RECEIPT_INVALID"
+      },
+      "pass": true
+    },
+    {
+      "check": "own negative: malformed ADMITTED forgeries moved no cash",
+      "detail": {
+        "cash": 55
+      },
+      "pass": true
+    },
+    {
+      "check": "own negative: well-formed ADMITTED debit with no actual checkpoint transition remains unproven",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "pass": true
+    },
+    {
+      "check": "own negative: no-transition forgery moved no cash",
+      "detail": {
+        "cash": 55
+      },
+      "pass": true
+    },
+    {
+      "check": "genuine zero: writer UNCHANGED and reader READ without debit",
+      "detail": {
+        "cash": 55,
+        "reader": "READ",
+        "receipt": "UNCHANGED",
+        "writer": "UNCHANGED"
+      },
+      "pass": true
+    },
+    {
+      "check": "genuine held: writer REFUSED and reader READ without debit",
+      "detail": {
+        "cash": 5,
+        "reader": "READ",
+        "receipt": "REFUSED",
+        "writer": "REFUSED"
+      },
+      "pass": true
+    },
+    {
+      "check": "genuine positive: ADMITTED debits exactly and reads",
+      "detail": {
+        "cash": 31,
+        "h1": "ADMITTED",
+        "h2": "ADMITTED"
+      },
+      "pass": true
+    },
+    {
+      "check": "genuine positive historical chain: h1 true, h2 false",
+      "detail": {
+        "h1_historical": true,
+        "h2_historical": false
+      },
+      "pass": true
+    },
+    {
+      "check": "own replay boundary: same-period copied ADMITTED receipt is refused by actual reader",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_NOT_UNIQUE"
+      },
+      "pass": true
+    },
+    {
+      "check": "own replay boundary: genuine receipt is fail-closed while the copy exists",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_NOT_UNIQUE"
+      },
+      "pass": true
+    },
+    {
+      "check": "own replay boundary: no second debit",
+      "detail": {
+        "cash": 43
+      },
+      "pass": true
+    }
+  ],
+  "elapsed_seconds": 39.727,
+  "failed_checks": [],
+  "finished": 1794785872.57461,
+  "schema": "SOROK1037_R3_INDEPENDENT_REVIEW_PROBE@1",
+  "started": 1794785832.847747
+}
