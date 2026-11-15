@@ -1,7 +1,7 @@
 # MANIFEST — ZAK04S_CODEX_CAMPAIGN_R1
 
 **Return root:** `UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R1/`
-**Status:** one bounded documentary checkpoint, S0/S1 static source only.
+**Status:** one bounded documentary checkpoint, S0/S1 static source only, plus the ZAK1057 round2 exact documentary correction (derivative branch; original return `ba20eeeea2243edd71febe0af0bc184d1cfeef1e` preserved immutable).
 **Model/session:** `opencode-go/deepseek-v4.1-flash#max`, session `ses_e22bd21eeffeH5GWvx2XBKwSEw`.
 **Source cuts:** protected `6a5c12f04323d74001f9632063ec907f4fc4468e`; historical `1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa`; predecessor `1428c2e92bce1a49efd87378cb23df936d646dc5`; consumer `016870e86913e6f7a811a51db6aba2d741bcfe58`; PDEV01 `aa18b6b8547c954d844bb0dcf94f70e2e14f15b0`.
 
@@ -25,6 +25,14 @@
 | `SOURCE_STRATUM_QUEUE.md` | 6 tracts | Finite queue with DONE/HELD/QUEUED states |
 | `CASES/ZAK04S_F6M_F6P_CURRENT_RECEIVER.md` | 1 | Standalone required T case |
 | `CHANGED_FILES.txt` | 1 | Actual published file list |
+
+## ZAK1057 round2 correction
+
+- **Authority for correction:** independent review `9666515a5a2e349a3ab93635e4f0de40f91d6d36:UNIFIED_LOG_R1/ZAK1057_ROUND2_INDEPENDENT_REVIEW/CASES/ZAK1057-REVIEW-04-F6-MISSING-SHARE.md` and HQ source-confirmed erratum `2780d148d695f339f49b4dddbdf70648776e588d:WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/HQ_ACTIVATION_20261114/ROUND2/04_ROUND1_EXACT_ERRATUM.{json,md}`.
+- **Corrected claim:** the predecessor adds the whole target-stratum share to `uncovered` only when **no source is eligible** (`if not denom: uncovered += share`). When some planned sources are ineligible but at least one is eligible, it renormalizes weights onto survivors, assigns no uncovered mass to the excluded present source, and may emit a complete distribution; F6P's excluded-source-with-zero-uncovered `FALSE_FULL_COVERAGE` check is the relevant downstream risk. The repaired candidate computes `denom` over all planned sources, retains proportional `missing_share`, and adds it to `uncovered`; for partial ineligibility the predecessor has zero uncovered mass while the repaired candidate has positive uncovered mass.
+- **Files corrected:** `00_RETURN.md` (§1, §2.2), `CASES/ZAK04S_F6M_F6P_CURRENT_RECEIVER.md` (§3, §7, §10), `HUMAN_STORY.md`, `DATA_SHAPES.tsv` (`ZAK04S:SHAPE:R1:B_IN`, `ZAK04S:SHAPE:R1:A_IN`), `OPERATION_TRACES.tsv` (`ZAK04S:OP:R1:BEFORE_A`, plus the repaired `BEFORE_B` negative wording), `MECHANISM_RECONCILIATION.tsv` (`ZAK04S:MECH:R1:001`), `UNJOINS.tsv` (`ZAK04S:UNJOIN:R1:004`), `EVIDENCE.tsv` (`ZAK04S:EV:R1:005`), plus this manifest, `MANIFEST_SHA256.tsv`, and `HQ_RECEIVING_NOTE.md`.
+- **Preserved:** repaired-F6M output, F6P static-reader/refusal findings, I07 permission-guard distinctness, protected N9 synthetic-candidate scope, world-serving alternative, and the bounded `NOT_PROVED` current F6 receiver status.
+- **Ceiling:** this is author-side documentary correction, not independent acceptance. The original lane04 `REVISE` verdict remains recorded pending receiving; no product code, runtime, science, source/actor authority or protected branch is touched.
 
 ## Integrity statement
 
