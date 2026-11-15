@@ -4,7 +4,7 @@
 
 ## The actual model—DO NOT invert this inversion
 
-The mother exists first **computationally** as a source-conditioned, independently historically generated person. Her actual life supplies multiple feasible encounter alternatives. One eligible encounter is selected. The father is then generated **backward-conditionally on that selected intersection AND the selected branch's eventual child birth**; his in-world history is causally earlier, even though the software constructs it later.
+The mother is computationally developed through **few long-span forward recursions**, with LLM **proposed event stacks and alternative conception pathways** based on her state *at proposal time*. After intervening events have actually changed her, **her state upon reaching the final conception-event possibility** determines which pathway is selected/realized within material and biological constraints. The choice may imply an earlier meeting, years of relationship and prior children. **Only then** is the father computationally generated backward-conditionally on the selected pathway's obligatory earlier meeting and focal conception/birth; his in-world past precedes that intersection. This corrects the old encounter-first shorthand. [R4 principal clarification](10_R4_PRINCIPAL_MATERNAL_FORWARD_CONCEPTION_FATHER_BACKFILL_AND_SIBLING_HISTORY.md).
 
 The father must be a genuinely different person: his own demographic/material/response cloud (source-graded), his own compressed pre-encounter life under the same CAN/ADP developmental ontology, his own actor-local interpretations and projects. **He is not sampled forward as an unrelated person whom a simulator is then obliged to match to the mother**, and he is not reverse-engineered to agree with her psychology.
 
@@ -30,18 +30,25 @@ PYAT's F7 temporal and F6 nonpooled discipline, positional/region/institution an
 - [`p2_owner.P2Owner`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py): bounded sourcefree event admission; check historical state/branch contracts before proposing any father-backhistory writer.
 - [PYAT `pre553_universal_world_binding.select_world_view`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/rawlsing_next/pre553_universal_world_binding.py#L227): refuses mixed source units (`CROSS_UNIT_LINKED_QUERY_UNAVAILABLE`), unsupported context structural authority and unobserved temporal pair. It cannot be called a linked couple creator.
 
+### Central late-instantiation challenge
+
+If the mother has already become who she is through a *years-long relationship* before the father was instantiated as an independently developing actor, we cannot treat those years as a complete two-person life without further proof. **Proposed** remedy: mother-dependent conception path is conditionally selected; father independently back-recurses to the obligatory first meeting, then both actors jointly develop through actual relationship years; candidate selection is finalized only if this history remains compatible with mother-state-at-arrival and admitted world constraints. Otherwise REFUSE the candidate before sealing. This is a **research hypothesis, not current implementation** and not permission to rewrite the mother's committed *pre-intersection* history. Any older siblings must have already lived and developed prior to focal conception, with independent genealogy where relevant. [R4 details](10_R4_PRINCIPAL_MATERNAL_FORWARD_CONCEPTION_FATHER_BACKFILL_AND_SIBLING_HISTORY.md).
+
 ## Proposed candidate-stage architecture (not current API)
 
 ```text
 COMMITTED MOTHER: frozen ACTUALLY REPRESENTED H_m/world events,
                   partial as-of W_m(t) with UNKNOWN/unmodeled domains
-  -> SOROK encounter proposals from her actual trajectory
-  -> world/eligibility owner checks t_E, location, institution, access, role,
-     network/rights; retain MULTIPLE eligible and refused alternatives
-  -> select E with named causal stream
+  -> LLM proposes long-span maternal events and conception alternatives
+     from then-current mother M(t_i), NOT omniscient future mother
+  -> actual intermediate events change M; at later t_C maternal state
+     selects eligible conception PATHWAY with prior meeting constraints
+  -> locate obligatory earlier first intersection E (t_E <= t_C), and
+     any earlier births/siblings; keep selected trajectory conditional
 
 FATHER INVERSE CANDIDATE (not yet shared-world committed):
-  -> PYAT candidate F observable/cloud conditioned on E and stipulated B
+  -> PYAT candidate F observable/cloud conditioned on earlier E,
+     selected conception pathway C and stipulated focal birth B
      [SOURCEFUL support only if actually identified; else TEST_ONLY SCENARIO]
   -> SOROK construct independent H_f over t < t_E in isolated candidate scope
   -> validate father's work/place/role/care/resources/actor state as-of t_E
@@ -55,8 +62,11 @@ FATHER INVERSE CANDIDATE (not yet shared-world committed):
      OR REFUSE / produce another independent candidate, never rewrite H_m
   -> join distinct actor IDs/actor-local histories under one admitted
      shared-world root/branch and objective E event (or exact HOLD)
-  -> forward continuation: distinct actor states/perceptions + actual events
-  -> relationship/household/child generation admitted SEPARATELY
+  -> father independently recurses from spawn to E, then both actors
+     develop through objective relation years with distinct perceptions
+  -> prior sibling actor genealogies/births/development before focal C
+  -> only then conception/focal birth/child initialization separately
+     admitted, and all family actors continue afterward
 ```
 
 **Possible reconciliation strategies to compare, not decree:**
