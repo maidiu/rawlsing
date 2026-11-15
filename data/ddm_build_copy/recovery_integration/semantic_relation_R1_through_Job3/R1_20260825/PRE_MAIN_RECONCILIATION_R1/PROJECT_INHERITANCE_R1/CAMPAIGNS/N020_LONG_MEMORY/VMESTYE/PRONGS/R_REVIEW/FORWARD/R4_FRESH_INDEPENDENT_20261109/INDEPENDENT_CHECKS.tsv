@@ -1,0 +1,27 @@
+check_id	check_family	observed_source_claim	result	proof_ceiling	exact_witness
+C01	AUTHOR_HEAD	PR #864 at d10602355c77564b2b6d50601ebba4fed4ac7d58	PASS	S0	GitHub PR metadata / commit d106
+C02	PROTECTED_HEAD	integration/pre-main-reconciliation-r1 at 256d46bf425cc37e114465cddbe3c60e535766ab	PASS	S0	Git ref readback
+C03	REVIEW_SEPARATION	Separate branch from #864 author and #866 prior reviewer; no author changes	PASS	S0	new review branch lease
+C04	R4_DELTA_SCOPE	R4 commit direct parent ffd994...; 9 files / 3 data tables; original other data source blobs fixed	PASS	S1	Git commit d106 / diff + frozen hash
+C05	IMPL_KEYS	884/884 exact implementation IDs; unique / full row width	PASS	S1	DATA/IMPLEMENTATIONS.tsv blob 2ca792f...
+C06	IMPL_D05_TYPES	883 NOT_PROVED_CODE_SYMBOL and one exact N10E code symbol	PASS	S1	full R4/R3 row comparison
+C07	IMPL_REPORT_PRESERVATION	884/884 original reported_code_locator byte-identical to R3; only code_symbol changed	PASS	S1	R3 blob 6b64c... vs R4 2ca792...
+C08	N10E_REAL_CODE	provider module exact Git blob 23167aa...; def starts line 531; static only	PASS	S1	protected 256d... code blob
+C09	E001_NEW_EDGE	exactly 1 new R4 relation JR-R4-E001-FINDING-TO-RECIPIENT, finding to typed recipient	PASS	S1	RELATIONS.tsv r3 8502 vs r4 8503
+C10	E001_SOURCE_WITNESS	historical E001 JSON source 37915a... blob d31eef... matches evidence ID/source	PASS	S1	frozen Sorok source and DATA/EVIDENCE.tsv
+C11	E001_STAGE_FIVE	5/5 E001 stage rows and 5/5 stage relation evidence IDs linked with IDENTITY_ONLY grade; no succession positive	PASS	S1	stage/rel diff exact
+C12	OTHER_STAGE_HOLES	90 unrelated stage evidence holes remain UNRESOLVED_EVIDENCE	PASS	S1	GENERATION_STAGE_COURT.tsv
+C13	SOROK_RECIPIENT	J-SEAM-NODE-5fb36... literal SOROK:E001; native actual status NOT_PROVED	PASS	S1	SEAM_DEPENDENCY_NODES.tsv
+C14	N11_N12_OWNER_GATE	N11/N12 transfers to Sorok recipient held; N10W->N11 source MUST preserved	PASS	S1	CANDIDATE_TRANSFERS.tsv and SEAM_DEPENDENCIES.tsv
+C15	PYAT_SOROK_NAMESPACE	source explicitly distinguishes empirical C11 vs Sorok actor C11; NONE_PROVEN native importer	PASS_TYPED_HOLD	S1	historical Sorok E001 JSON record
+C16	P0_LEFT_NO_DROP	6125/6125 exact P0 ids and source fields; 1869 exact prong and 4256 typed other; 0 new functions	PASS	S1	P0 census blob 65c1... + P0_LEFT_DISPOSITIONS.tsv
+C17	P0_TYPE_PARTITION	4256: 473 explicit semantic gap + 59 administrative + 3724 classification-only; no false function increment	PASS	S1	P0_LEFT_DISPOSITIONS.tsv
+C18	F03_F08_SEPARATION	Separate old F03 and F08 source negative candidate bridges; current first reader not proved	PASS_TYPED_HOLD	S1	CROSS_PRONG_BRIDGES.tsv unchanged blob 19919e...
+C19	CONSUMER_332	332 consumer edges remain actual open/not verified	PASS_TYPED_HOLD	S1	CONSUMER_EDGES.tsv blob a7c09f...
+C20	AUTHORITY_370	370 authority rows, zero applied YES, zero enforced-refusal YES	PASS_TYPED_HOLD	S1	AUTHORITY_APPLICATIONS.tsv blob bd833f...
+C21	NEGATIVES_INDEPENDENT	14/14 tampered in-memory independent controls refused	PASS	S1_STATIC_ONLY	HOSTILE_NEGATIVES.tsv / no project runner
+C22	FIVE_COLD_NAVIGATIONS	P0; F03; F08; N10E; E001→N11/N12→N10W; authority/consumer	PASS_SCOPED	S1	trace cases in review report
+C23	R4_CODE_DIFF	884 code_symbol-only changes; no unrelated implementation fields	PASS	S1	full R3/R4 884 primary key diff
+C24	R4_GRAPH_DIFF	1 added candidate relation; 5 existing stage relations only evidence/grade/comment changed; 5 stage rows only evidence/disposition/falsifier changed	PASS	S1	full R3/R4 8502/8503 and 4420 compare
+C25	NATIVE_AND_RUNNER	No project S2, sourcefree native original35 S3, actor importer or science issuer run by reviewer	NOT_RUN	S0	no qualified runner/permissions
+C26	REVIEW_VERDICT	ACCEPT_SCOPED_S0_S1_FORWARD_DOCUMENTARY for two R2 residuals; no merge/current zero loss	ACCEPT_SCOPED	S1	this exact-head independent court
