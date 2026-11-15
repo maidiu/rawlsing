@@ -1042,7 +1042,7 @@ def promote_relation(session, *, actor_id: str, other_actor_id: str,
         episode for episode in scope["changes"]
         if (episode.get("body") or {}).get("change") in RELATION_STATE_CHANGES
     ]
-    machine = _state_machine(state_changes)
+    machine = _state_machine(scope["changes"])
     if machine["status"] == "ABSENT":
         raise RecursionRefusal("RELATION_PROMOTION_EMPTY")
     if depth <= machine["depth"]:

@@ -1,0 +1,8 @@
+{
+  "c12_verify_unchanged": true,
+  "defect": "promote_relation's pre-write depth check uses only RELATION_STATE_CHANGES, so a prior PROMOTE is invisible; a second depth-2 PROMOTE is appended, then _verify_scope rejects promoted_depth <= current depth and the committed episode severs the scope.",
+  "report": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_defect_report.json",
+  "scope_severed_after_write": true,
+  "second_call_refusal": "RELATION_CUSTODY_SEVERED",
+  "wrote_episode_on_refusal": true
+}

@@ -1,0 +1,92 @@
+{
+  "schema": "SOROK_C05_R2_RECEIPTS@1",
+  "frozen_start": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "corrected_product": {
+    "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py",
+    "base_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+    "new_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+    "new_sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2",
+    "diff": "one line: pre-write promotion depth machine uses full verified scope changes including prior PROMOTE"
+  },
+  "unchanged_product": {
+    "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+    "git_blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+    "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92"
+  },
+  "new_test": {
+    "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py",
+    "git_blob": "5df2c164bc4912a2ee13cbaf228969c2d4b96a90",
+    "sha256": "68234a95b3dc448552edbd54899c2e2b5a3351839f18e5ba800f386b1184785e"
+  },
+  "independent_probes_copied_byte_identical": {
+    "c05_defect_probe.py": {
+      "git_blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e",
+      "sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70"
+    },
+    "c05_probe.py": {
+      "git_blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+      "sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7"
+    },
+    "c05_observe.py": {
+      "git_blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f",
+      "sha256": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850"
+    },
+    "c05_cold_child.py": {
+      "git_blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc",
+      "sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff"
+    }
+  },
+  "reports": {
+    "defect_RED": {
+      "path": "evidence/c05_defect_report_RED_at_bc45f699a.json",
+      "sha256": "8f5f0a79190068b0ce714ee2d76a6f2e93934f262bfd401e16f4f3f0a853f38d"
+    },
+    "defect_POST_FIX": {
+      "path": "evidence/c05_defect_report_POST_FIX.json",
+      "sha256": "ebdf5da8e665598ae5859ce4e1dd9a186891786a56f6dfe398d9b0bbff37c720"
+    },
+    "normal89_probe": {
+      "path": "evidence/c05_probe_report.json",
+      "sha256": "b072782c595876485e1a92c2699c7768d8ac017cb03fb99276fdbf8b633f6a7d"
+    }
+  },
+  "logs": {
+    "focused_RED": {
+      "path": "evidence/logs/c05_r2_focused_RED.log",
+      "sha256": "05c3c1951ba1abfdcd5616fd03774683cc91cbebe8aea22eb8678ae1de52c969"
+    },
+    "focused_GREEN": {
+      "path": "evidence/logs/c05_r2_focused_GREEN.log",
+      "sha256": "95e2c4474bc480f1c3ef3eff6544101cd20cd3b43773ca6f12400f84c083ce71"
+    },
+    "defect_RED": {
+      "path": "evidence/logs/c05_defect_probe_RED.stdout.log",
+      "sha256": "bf2647f99101742dbf016375e24928d38058ea50002eb6b9cc22f613a55ce74b"
+    },
+    "defect_POST_FIX": {
+      "path": "evidence/logs/c05_defect_probe_POST_FIX.stdout.log",
+      "sha256": "93cd3fd7d90760d344849d69f338c32381e213cb3a55d92a55457af8dc1464c9"
+    },
+    "normal89_probe": {
+      "path": "evidence/logs/c05_normal89_probe.stdout.log",
+      "sha256": "ac706d3ee7f90d06bce2f1545fd9bfaf08c6d385d47130b317b4d13ddd348012"
+    }
+  },
+  "suite_logs": {
+    "original_c05": "evidence/logs/original_c05_suite.log",
+    "c01": "evidence/logs/c01_suite.log",
+    "c04_identity": "evidence/logs/c04_identity_suite.log",
+    "c04_custody": "evidence/logs/c04_custody_suite.log",
+    "p2_owner": "evidence/logs/p2_owner_suite.log"
+  },
+  "isolation_redirect": {
+    "probe_hardcoded_path": ".local-logs/sorok-c05-independent-g5",
+    "leased_target": ".local-logs/sorok-c05-promotion-r2/probe-red-scratch",
+    "method": "temporary symlink; probe bytes and oracle unchanged",
+    "note": "no write reached the reviewer's original scratch path",
+    "includes_hardcoded_cold_child_tmpdir": true
+  },
+  "token_cost": "UNOBSERVED",
+  "checkpoint_org_quota": "UNOBSERVED",
+  "candidate_sha": "5d771dd86767655534b23576075e5da2db4fba78"
+}
