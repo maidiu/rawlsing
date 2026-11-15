@@ -1,0 +1,22 @@
+check_id	check_type	source_exact_ref	observed	expected	result	proof_ceiling
+C01	AUTHOR_CURRENTNESS	PR829 HEAD	c4103797648bb8ae8fe37521db6c148c23a06e74	dispatch pin	PASS	S0
+C02	PROTECTED_BRANCH_CURRENTNESS	integration/pre-main-reconciliation-r1	9253064bc9423a0f0ccda4fbdea43c2f54f800c6	author base SHA	PASS	S0
+C03	P0_GATE	PR821 150ea6e...; HQ 2301fe...	R5 scoped ACCEPT; HQ P1 released	no S2/S3 license	PASS	S0
+C04	P0_CENSUS_BLOB_READ	blob 65c1bbe4a602341c5caacca2d58dced31a23f382	5371334 bytes; 6125 records; 25 fields; 32 estates	nonempty exact source	PASS	S1
+C05	P0_TUPLE_JOIN	P0 blob vs EVIDENCE.tsv 167 five-tuples	0 exact matches; DVA estate id/sha/path absent	source-aware matching	FAIL_OUTSIDE_SCOPE	S1
+C06	P0_ESTATES	P0_ESTATE_AND_CUTS.tsv; ESTATE_COVERAGE.tsv	DVA_INHERITANCE_RETURN not declared	avoid invented eligible IDs	PASS_TYPED_NEGATIVE	S1
+C07	DVA_CAPITAL	DURABLE_VS_PREMISE_DEPENDENT_CAPITAL.csv@b06184f...	40 source; 40 evidence; 0 missing/extra/loc bad	40 exact source items	PASS	S1
+C08	DVA_UPSTREAM	UPSTREAM_ASSUMPTION_LEDGER.csv@b06184f...	14 source; 14 evidence; 0 missing/extra/loc bad	14 exact assumed_input	PASS	S1
+C09	DVA_SUCCESSION	DVA_TO_LATER_FUNCTION_SUCCESSION.csv@b06184f...	19 source; 19 evidence; 0 missing/extra/loc bad	19 exact dva_function	PASS	S1
+C10	DVA_BRANCH	DVA_BRANCH_GENEALOGY.csv@b06184f...	42 source; 42 evidence; 0 missing/extra/loc bad	42 exact branch	PASS	S1
+C11	DVA_REFS	EXACT_REF_LEDGER.csv@b06184f...	16 source; 16 evidence; 0 missing/extra/loc bad	16 exact evidence_id	PASS	S1
+C12	DVA_CONSERVATION	ARCHITECTURE_NEUTRAL_CONSERVATION_REQUIREMENTS.md@b06184f...	20 CR headings; 20 exact evidence	CR01-CR20	PASS	S1
+C13	DIRECT_SOURCE_BLOBS	EVIDENCE.tsv DIRECT-001..016	16 fetched; 16 Git blob SHA matches	16 direct sources	PASS	S1
+C14	FROZEN_HEADERS	P0_SCHEMA_AND_LEASES.md §3B vs five TSVs	5/5 byte exact; FINDINGS 17 columns	frozen P1 V1	PASS	S1
+C15	ROW_WIDTH_KEYS_FK	PR829 nine files	151/24/42/167/167/191 rows; no ragged TSVs duplicate primary IDs or orphan local FKs	strict rows and same-prong references	PASS	S1
+C16	EXECUTION_GRADE	OPERATION_TRACES.tsv rows 2..25	24 HISTORICAL_REPORTED yet design-only	no execution promotion	FAIL_REVISE	S1
+C17	ADP002_SCOPE	ADP002 AUTHORITY.md cdf93f6...	route-born semantics reserved ADP003	no unsupported rule selection	FAIL_REVISE	S1
+C18	ADP004_W3	W3 LAUNCH_REGISTER.md@bb0d37d...	W3-01 launch cell not issued applied rule	actual ADP004 completion unproved	PASS_TYPED_HOLD	S1
+C19	CURRENT_V554_V555_BLOBS	protected 9253064... vs 0232a28...	b11b73f... and f41ef865... unchanged	exact code cut	PASS	S1
+C20	FIRST_READER	OPERATION_TRACES.tsv first_consumer_id	24/24 UNRESOLVED	do not infer actual downstream call	PASS_TYPED_HOLD	S1
+C21	PROJECT_PYTHON_ORIGINAL_NATIVE	independent reviewer host	S2 NOT_RUN; S3 NOT_RUN	qualified runner/native required	NOT_RUN	S0_ONLY
