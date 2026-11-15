@@ -1,11 +1,9 @@
-# Actual HQ activation checkpoint
+# Current round 1 activation
 
-Campaign appointment received; full standing order, charter and both governing references read. Host and existing service verified; no workers launched and no model tokens purchased by this preflight.
+User explicitly amended budget to three workers, one 30-minute round each, then wrap/package/publish and HQ evaluate. Dollar ceiling is not invented; no automatic second round or paid-overflow fallback.
 
-**READY_NEEDS_BUDGET_CEILING.** Section “Economy” of `03_REVIEW_PROGRESS_COST_CONTROLS.md` requires “explicit financial ceiling prior to unattended paid runs.” The user was asked once for a total cap or explicit subscription-only/no-overflow restriction. Existing credential presence and historical provider step costs are not a current balance or ceiling.
+All three documentary workers launched through the existing finite supervisor/event notifier on the original approved Go/DeepSeek Flash MAX setup. Per-session custom-agent permissions were read back before launch: default deny, source-inspection commands only and edits restricted to the lane return. No subagents, engineering, tests, CI or protected writes. Thirty-minute one-shot session interrupt bound; start wrapping at 25 minutes. No recurring monitor.
 
-All eleven seed/coordination/campaign PR heads were refreshed and pinned in SOURCE_CUTS.json. The central 1054 source remains untouched. Separate HQ and three additive worker worktrees are reserved; exact worktree/branch/SHA/write scope and bounded first questions are in CAMPAIGN_STATE.json and the three complete standing orders. No session/PID is fabricated.
+Exact session/worktree/PID/launch and policy evidence is under ROUND1/. Actual generation metadata must still be verified from each new first turn; configured model alone is not proof.
 
-After the cap arrives, configure and verify actual docs-only OpenCode permissions (default Build is unsuitable), launch at most three existing-provider sessions through the finite notification machinery, verify actual first-turn model and record spend, then independently receive substantive tranches and update the serial source seam ledger. Do not repeat the historical census, create a daemon, run tests or start product engineering.
-
-Reviewer boundary: independently challenge original capability omissions, cross-domain semantics and reverse first readers after a meaningful bounded tranche group. Preserve S0/S1 vs execution/science/authority ceilings. Global discovery remains OPEN.
+HQ will inspect and publish each source-graded return in its isolated branch and serially link all returns in the campaign central index rooted in existing #1054. No overwrite of #1054 or other authors. Evaluate finite findings and horizon risk before another round.
