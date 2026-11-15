@@ -1,0 +1,30 @@
+VMC-T2 R5 exact changed-file inventory — prior R3/R4 histories retained
+Owner branch: research/vmestye-vmc-t2-programma-transform-seams-r1
+R4 predecessor immutable: edfe7bb9fab1fd295621e9447745ddab4bb67bfb
+Protected read-only source: 6a5c12f04323d74001f9632063ec907f4fc4468e
+T1 latest unreceived historical source: bb83248e6e7140122d0f01171409954fc9d0cf70
+
+MODIFIED EXISTING AUTHOR FILES IN R5 (prior historical IDs preserved):
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/INTENDED_ACTUAL_TRANSFORMATION_MAP.tsv — 13 historical source/consumer field corrections (52 rows still)
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/REVERSE_CONSUMER_TRACES.tsv — 6 R4-added current/typed reverse row corrections (542 rows still); original R3 534 rows byte-identical
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/DISCREPANCY_AND_OWNER_ACTIONS.tsv — 2 R4 supplemental action fields corrected; all original 63 R3 rows byte-identical; total 68
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_T1_T2_CROSS_REFERENCES.tsv — 1 R4 field corrected, 2 T1-R6 source consequence IDs appended; now 7
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/00_RETURN.md — append-only controlling R5 addendum; old R3/R4 text preserved
+
+NEW AUTHOR R5 FILES:
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R5_HOSTILE_ROW_DELTA.tsv — all 23 R5 changes with original field values and complete replacements, 21 field changes + two append-row IDs
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R5_HOSTILE_REVIEW_AND_REPAIR.md — six hostile findings, causal repair, 3x5 source/native/authority ceilings
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/validate_vmc_t2_r5.mjs — R5-specific runnable documentary validator; Node execution NOT_RUN; GitHub-backed in-memory audit/9 negatives PASS
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R5_CHANGED_FILES.txt — this inventory
+
+RETAINED UNCHANGED:
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/validate_vmc_t2_r3.mjs — original R3-only validator, not R5-compatible
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_ROW_LEVEL_DELTA.tsv — original R4 17-row reversible ledger
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_TARGETED_RETURN.md — historical R4 report, superseded by R5 corrections where inconsistent
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R4_CHANGED_FILES.txt — prior R4 manifest as historical record
+- WORKER_RETURNS/VMESTYE_VMC_T2_PROGRAMMA_TRANSFORM_SEAMS_R1/R1_235_TO_T1_R3_52_CROSSWALK.tsv — unchanged 235 historical IDs and Git blob 2b4e4e81cb2d242e9f4eb648cb66a79fc41b43a8
+- All other original R3 deliverables, owner T1, ZL16/ZL17 peers, ZL15 canonical atlas and HQ SHARED records.
+
+REVERSAL: to revert only R5 on isolated T2 owner branch, restore these four modified TSV files and 00_RETURN.md from immutable R4 HEAD edfe7bb9fab1fd295621e9447745ddab4bb67bfb, leave new R5 files as nonauthoritative history or remove with exact recorded SHAs. Never target protected PRE-MAIN. To revert R4 as well use immutable R3 5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac.
+
+Tests/CI/native original35/respondents/S2/S3/science/source/actor/issuer acceptance/protected merge NOT_RUN/NOT_GRANTED.
