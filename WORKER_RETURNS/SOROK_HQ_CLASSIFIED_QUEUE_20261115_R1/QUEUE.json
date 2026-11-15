@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T10:11:17.459583+00:00",
+  "updated_utc": "2026-11-15T10:31:58.448258+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -260,11 +260,13 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-focused-rereceiving-20261115-r2",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
+      "state": "ACCEPT_SCOPED_OPERATION_CUSTODY_ONLY_STOP",
       "same_nonauthor": true,
       "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
       "original_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
-      "automatic_additional_author_rounds": 0
+      "automatic_additional_author_rounds": 0,
+      "result_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+      "original_full_c05_actor_qualification": "UNPROVED"
     }
   ],
   "runtime_verification": [
@@ -496,6 +498,21 @@
       "acceptance": "NOT_ACCEPTED",
       "scope": "caller-authorized illustrative relation/exposure operation/custody only; owner-attested actor knowledge/native relation authority unproved",
       "automatic_further_author_rounds": 0
+    },
+    {
+      "task": "C05 final same-nonauthor receiving",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_C05_OPERATION_CUSTODY_STOP",
+      "code_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+      "report_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "review_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1072",
+      "accepted_scope": "bounded mechanical operation/custody of caller-authorized illustrative relation/exposure facts",
+      "defect_status": "repeat promotion fixed; refusal before append, zero deltas, intact history/context, idempotent retry and cold",
+      "evidence": "35 listed tests, 89 normal/negative/cold checks, 12 independent closure checks; not an aggregate unique count",
+      "original_full_c05_actor_qualification": "UNPROVED",
+      "relation_knowledge_owner_receipt": "NONE",
+      "coherent_append_authority": "accepted as caller-authorized input, not authenticated actor knowledge",
+      "next_action": "bank scoped engineering result and stop; no dependent job released"
     }
   ],
   "guide_records_affected": [
@@ -506,7 +523,12 @@
   "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff.",
   "dispatch_decisions": {
     "1037": "STOP_UNACCEPTED_FINITE_ALLOWANCE_USED",
-    "C05": "SAME_NONAUTHOR_FINAL_FOCUSED_RERECEIVING_RUNNING",
-    "other_classified_jobs": "HELD_OR_USER_OPERATED_NO_FILLER"
-  }
+    "C05": "SCOPED_MECHANICS_RECEIVED_STOP_FULL_ACTOR_QUALIFICATION_UNPROVED",
+    "other_classified_jobs": "HELD_OR_USER_OPERATED_NO_FILLER",
+    "queue": "NO_RELEASED_EXECUTABLE_JOB_NO_NEW_DISPATCH"
+  },
+  "queue_status": "FINITE_EXECUTABLE_LANES_TERMINAL_REMAINDERS_HELD",
+  "live_assigned_jobs": [],
+  "terminal_receipts_verified": 10,
+  "missing_terminal_receipts": []
 }
