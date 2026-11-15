@@ -1,0 +1,99 @@
+{
+  "lane": "REVIEW",
+  "job": "zak1057-review-documentary-round2",
+  "session": "ses_e229d86a6ffe9BFB5nqre0lFuC",
+  "exit_code": 0,
+  "started_utc": "2026-11-15T04:08:11.013362+00:00",
+  "finished_utc": "2026-11-15T04:29:13.171980+00:00",
+  "elapsed_seconds": 1262.158618,
+  "delivery_sha": "9666515a5a2e349a3ab93635e4f0de40f91d6d36",
+  "reviewed_scope": "Frozen round1 only: 02@005ee950;03@0098b058;04@ba20eeee. New round2 author tracts not independently accepted.",
+  "tract_verdicts": {
+    "02": "ACCEPT_SCOPED_S1",
+    "03": "ACCEPT_SCOPED_S1",
+    "04": "REVISE_EXACT_DOCUMENTARY_DEFECT"
+  },
+  "hq_disposition": "RECEIVE_BOUNDED_INDEPENDENT_REVIEW__CONFIRM_04_DEFECT__PUBLISH_EXACT_CENTRAL_ERRATUM",
+  "primary_reference_checks": {
+    "single_file_matches": 20,
+    "multi_file_matches": 7,
+    "correct_blob_with_wrong_path_corrected_by_hq": 1,
+    "directory_search_observations": 2
+  },
+  "artifact_qualifications": [
+    "EV006 correct blob c7aa757091336beec0158c5b99914ffcd039178a but wrong path. Actual path data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/VOZHD_CHETIRI_COMPILER_PERSISTENCE/18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md",
+    "SOURCE_SEARCH_LOG row S002 has 14 fields versus 13 header fields: its search_result is inspected / FOUND; combine these two cells when consuming. No evidence content deleted.",
+    "MANIFEST.json explicitly HQ_HASH_PENDING. Exact payload hashes supplied by this HQ intake, not fabricated author hashes."
+  ],
+  "source_verification": "HQ directly read predecessor if-not-denom/eligible renormalization and repaired planned-denominator/missing-share code; reviewer defect upheld.",
+  "reported_cost_usd": 0.16095576,
+  "cost_grade": "112 OpenCode step-cost fields; estimate, not invoice/account allowance",
+  "worker_status": "ROUND2_REVIEW_STOP; no further dispatch",
+  "payload_manifest": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "2c0191be66241f68291455cbfc4a2328df5ec28823478dcd65a8f215f6dc26cc",
+      "bytes": 12582
+    },
+    {
+      "path": "CASES/ZAK1057-REVIEW-02-ARTIFACT-VS-CAPABILITY.md",
+      "sha256": "904520478d141ff37ad58a4e496eee47670f6d302ca90fe261bb11191f2f9f28",
+      "bytes": 6313
+    },
+    {
+      "path": "CASES/ZAK1057-REVIEW-03-RULE-PRODUCER-CONSUMER.md",
+      "sha256": "8332fb238ce449d72dd5a56bd5da9e61c0bd80f33c7bcd759a60aafddab0fef7",
+      "bytes": 7710
+    },
+    {
+      "path": "CASES/ZAK1057-REVIEW-04-F6-MISSING-SHARE.md",
+      "sha256": "ebb36374bba90c737c19c2dc063f6c43f8b07952fa5e2053dee45cd1f922c160",
+      "bytes": 9259
+    },
+    {
+      "path": "CHANGED_FILES.txt",
+      "sha256": "e817abcc9e30cc11e3f9f9a57cafa0397c9f4baa474d2ed759b40ab0c898c30d",
+      "bytes": 337
+    },
+    {
+      "path": "COVERAGE.tsv",
+      "sha256": "944454d7abe42aa0c32ee738d574dff619dd50edd4c02b06cc97ed1f3360da4f",
+      "bytes": 6666
+    },
+    {
+      "path": "EVIDENCE/COUNTEREXAMPLES.tsv",
+      "sha256": "d064e46d17c4ed5f180af4c73b60e45f699d7204b7f01740291656d7736bc161",
+      "bytes": 3494
+    },
+    {
+      "path": "EVIDENCE/EVIDENCE.tsv",
+      "sha256": "0ca141b986729d3463dc61570bacb53b8c9d03ea4ab86546ff60bee2df2102d9",
+      "bytes": 15775
+    },
+    {
+      "path": "EVIDENCE/SOURCE_SEARCH_LOG.tsv",
+      "sha256": "56df0d854749c36b63b06a0c2a362b9bae5d256eb314aeb8fd0d21a9f063d724",
+      "bytes": 6473
+    },
+    {
+      "path": "HUMAN_STORY.md",
+      "sha256": "82b34716fd8e4c4e786e8619e0afd8ed7b27498391719f8ad661617458fd4a6c",
+      "bytes": 8090
+    },
+    {
+      "path": "MANIFEST.json",
+      "sha256": "7df773ed1cfbd8da9341a153834cc33922040a0b9a210449fae3ff14347228b1",
+      "bytes": 1188
+    },
+    {
+      "path": "REVIEW_VERDICT.json",
+      "sha256": "00a83a9f23068279663b8d1a4b6247ea297d6f785daf0adc98f19f8f03611154",
+      "bytes": 19972
+    },
+    {
+      "path": "SCOPE_CONTRACT.md",
+      "sha256": "5e85af06749131a757fed26ae8f992c5e978e1f9860f72869896050a9c7dfbd3",
+      "bytes": 4020
+    }
+  ]
+}

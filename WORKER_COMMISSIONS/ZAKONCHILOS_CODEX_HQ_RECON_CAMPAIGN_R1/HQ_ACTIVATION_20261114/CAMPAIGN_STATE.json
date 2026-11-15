@@ -714,7 +714,7 @@
   "independent_review_boundary": "A materially complete source-stratum group; distinct nonauthor reviewer within three-run cap. No fourth full-time worker, no format-only acceptance.",
   "wake_policy": "Existing finite terminal notifications only; recurring goal wake-ups remain off; once-daily material checkpoint when HQ is operating, no new daemon/timer.",
   "scope": "Documentary source S0/S1 only; no engineering/scientific run or authority promotion.",
-  "status": "ROUND2_THREE_RUNNING_MODEL_VERIFIED",
+  "status": "ROUND2_COMPLETE__RESEARCH_OPEN__REPORT_BEFORE_EXPANSION",
   "round1_launch_utc": "2026-11-15T03:32:36.490519+00:00",
   "actual_turn_proofs": [
     "WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/HQ_ACTIVATION_20261114/ROUND1/02_actual_turn.json",
@@ -722,10 +722,10 @@
     "WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/HQ_ACTIVATION_20261114/ROUND1/04_actual_turn.json"
   ],
   "last_material_intake": {
-    "lane": "03",
+    "lane": "REVIEW",
     "round": 2,
-    "delivery_sha": "e27154883288a3265844791be0782edeaae61979",
-    "disposition": "RECEIVE_USABLE_BOUNDED_S1_PRODUCER_TRACT__SUMMARY_CITATIONS_QUALIFIED"
+    "delivery_sha": "9666515a5a2e349a3ab93635e4f0de40f91d6d36",
+    "disposition": "RECEIVE_BOUNDED_INDEPENDENT_REVIEW__CONFIRM_04_DEFECT__PUBLISH_EXACT_CENTRAL_ERRATUM"
   },
   "material_intakes": [
     {
@@ -922,7 +922,7 @@
       "worker_status": "ROUND1_STOP; no next round dispatched"
     }
   },
-  "expansion_decision": "No second round launched. One bounded independent group source challenge recommended before territory expansion; explicit source/runtime limits remain.",
+  "expansion_decision": "No third round authorized or launched; no repeat search without new source lead.",
   "closing_active_local_sessions": 0,
   "reported_worker_cost_usd": 0.640398354,
   "round2": {
@@ -1315,7 +1315,9 @@
         "supervisor_pid": 23147,
         "observer_pid": 23149,
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-review-documentary-round2",
-        "launch_is_not_completion": true
+        "launch_is_not_completion": true,
+        "status": "ROUND2_REVIEW_RETURNED_STOP__TWO_ACCEPT_ONE_REVISE",
+        "last_checkpoint_sha": "9666515a5a2e349a3ab93635e4f0de40f91d6d36"
       },
       {
         "lane": "03",
@@ -2141,7 +2143,15 @@
       "ses_e22bd21eeffeH5GWvx2XBKwSEw": {
         "type": "running"
       }
-    }
+    },
+    "closing_campaign_active_sessions": {
+      "ses_e229d86a6ffe9BFB5nqre0lFuC": "NOT_ACTIVE",
+      "ses_e22bd2212ffeuDpE5KDgQ8bGEV": "NOT_ACTIVE",
+      "ses_e22bd21eeffeH5GWvx2XBKwSEw": "NOT_ACTIVE"
+    },
+    "closing_child_pids": "23148/23154/23160 absent",
+    "status": "ALL_THREE_RETURNED_STOP__NO_AUTOMATIC_THIRD_ROUND",
+    "reported_worker_cost_usd": 0.521986476
   },
   "round2_intakes": {
     "04": {
@@ -2410,6 +2420,105 @@
           "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/UNJOINS.tsv",
           "sha256": "98a6783e1218e9c348f2fbe7089fb926ccc6fa65747b82ba8d67820e79110090",
           "bytes": 5442
+        }
+      ]
+    },
+    "REVIEW": {
+      "lane": "REVIEW",
+      "job": "zak1057-review-documentary-round2",
+      "session": "ses_e229d86a6ffe9BFB5nqre0lFuC",
+      "exit_code": 0,
+      "started_utc": "2026-11-15T04:08:11.013362+00:00",
+      "finished_utc": "2026-11-15T04:29:13.171980+00:00",
+      "elapsed_seconds": 1262.158618,
+      "delivery_sha": "9666515a5a2e349a3ab93635e4f0de40f91d6d36",
+      "reviewed_scope": "Frozen round1 only: 02@005ee950;03@0098b058;04@ba20eeee. New round2 author tracts not independently accepted.",
+      "tract_verdicts": {
+        "02": "ACCEPT_SCOPED_S1",
+        "03": "ACCEPT_SCOPED_S1",
+        "04": "REVISE_EXACT_DOCUMENTARY_DEFECT"
+      },
+      "hq_disposition": "RECEIVE_BOUNDED_INDEPENDENT_REVIEW__CONFIRM_04_DEFECT__PUBLISH_EXACT_CENTRAL_ERRATUM",
+      "primary_reference_checks": {
+        "single_file_matches": 20,
+        "multi_file_matches": 7,
+        "correct_blob_with_wrong_path_corrected_by_hq": 1,
+        "directory_search_observations": 2
+      },
+      "artifact_qualifications": [
+        "EV006 correct blob c7aa757091336beec0158c5b99914ffcd039178a but wrong path. Actual path data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/VOZHD_CHETIRI_COMPILER_PERSISTENCE/18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md",
+        "SOURCE_SEARCH_LOG row S002 has 14 fields versus 13 header fields: its search_result is inspected / FOUND; combine these two cells when consuming. No evidence content deleted.",
+        "MANIFEST.json explicitly HQ_HASH_PENDING. Exact payload hashes supplied by this HQ intake, not fabricated author hashes."
+      ],
+      "source_verification": "HQ directly read predecessor if-not-denom/eligible renormalization and repaired planned-denominator/missing-share code; reviewer defect upheld.",
+      "reported_cost_usd": 0.16095576,
+      "cost_grade": "112 OpenCode step-cost fields; estimate, not invoice/account allowance",
+      "worker_status": "ROUND2_REVIEW_STOP; no further dispatch",
+      "payload_manifest": [
+        {
+          "path": "00_RETURN.md",
+          "sha256": "2c0191be66241f68291455cbfc4a2328df5ec28823478dcd65a8f215f6dc26cc",
+          "bytes": 12582
+        },
+        {
+          "path": "CASES/ZAK1057-REVIEW-02-ARTIFACT-VS-CAPABILITY.md",
+          "sha256": "904520478d141ff37ad58a4e496eee47670f6d302ca90fe261bb11191f2f9f28",
+          "bytes": 6313
+        },
+        {
+          "path": "CASES/ZAK1057-REVIEW-03-RULE-PRODUCER-CONSUMER.md",
+          "sha256": "8332fb238ce449d72dd5a56bd5da9e61c0bd80f33c7bcd759a60aafddab0fef7",
+          "bytes": 7710
+        },
+        {
+          "path": "CASES/ZAK1057-REVIEW-04-F6-MISSING-SHARE.md",
+          "sha256": "ebb36374bba90c737c19c2dc063f6c43f8b07952fa5e2053dee45cd1f922c160",
+          "bytes": 9259
+        },
+        {
+          "path": "CHANGED_FILES.txt",
+          "sha256": "e817abcc9e30cc11e3f9f9a57cafa0397c9f4baa474d2ed759b40ab0c898c30d",
+          "bytes": 337
+        },
+        {
+          "path": "COVERAGE.tsv",
+          "sha256": "944454d7abe42aa0c32ee738d574dff619dd50edd4c02b06cc97ed1f3360da4f",
+          "bytes": 6666
+        },
+        {
+          "path": "EVIDENCE/COUNTEREXAMPLES.tsv",
+          "sha256": "d064e46d17c4ed5f180af4c73b60e45f699d7204b7f01740291656d7736bc161",
+          "bytes": 3494
+        },
+        {
+          "path": "EVIDENCE/EVIDENCE.tsv",
+          "sha256": "0ca141b986729d3463dc61570bacb53b8c9d03ea4ab86546ff60bee2df2102d9",
+          "bytes": 15775
+        },
+        {
+          "path": "EVIDENCE/SOURCE_SEARCH_LOG.tsv",
+          "sha256": "56df0d854749c36b63b06a0c2a362b9bae5d256eb314aeb8fd0d21a9f063d724",
+          "bytes": 6473
+        },
+        {
+          "path": "HUMAN_STORY.md",
+          "sha256": "82b34716fd8e4c4e786e8619e0afd8ed7b27498391719f8ad661617458fd4a6c",
+          "bytes": 8090
+        },
+        {
+          "path": "MANIFEST.json",
+          "sha256": "7df773ed1cfbd8da9341a153834cc33922040a0b9a210449fae3ff14347228b1",
+          "bytes": 1188
+        },
+        {
+          "path": "REVIEW_VERDICT.json",
+          "sha256": "00a83a9f23068279663b8d1a4b6247ea297d6f785daf0adc98f19f8f03611154",
+          "bytes": 19972
+        },
+        {
+          "path": "SCOPE_CONTRACT.md",
+          "sha256": "5e85af06749131a757fed26ae8f992c5e978e1f9860f72869896050a9c7dfbd3",
+          "bytes": 4020
         }
       ]
     }
