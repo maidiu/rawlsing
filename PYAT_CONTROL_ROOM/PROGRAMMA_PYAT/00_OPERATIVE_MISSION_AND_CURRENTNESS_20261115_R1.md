@@ -62,6 +62,10 @@ A reader must report all four; no one `CURRENT` flag is sufficient:
 - A real source-qualified sampler/selection *consumer* for a prospective mother reported-answer cloud is **not identified/implemented** in SEAM/20. Source files do not measure personal historical unconscious states; inverse compressed adult history and response-emission remain SCIENTIFIC/MODEL_GRADED design problems.
 - Source-bound temporal/actor genealogy: encounter-conditioned father has independently earlier history with no retroactive alteration of already committed mother world; live actor- and household-effects require SOROK owner, not raw PYAT fields. `parent_activity` reports `NONE_PARENT_LOCAL_ONLY` until actual shared world effect qualified. Birth/child learning not evidenced by two-event first-person smoke.
 
+## E0. Runnable anti-stale guard — necessary but not sufficient
+
+From a qualified clone, run `python3 PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_OPERATIVE_CURRENTNESS_GROK_GUARD_20261115_R1.py` **without `--offline`** to check both live protected and #1073 integration branch heads against this dated register, plus the complete read-first/roadmap navigation, exact five-step order, S04 three-way branches, native/SEAM epistemic ceilings and mandatory identified returns. Any source commit drift returns a **HOLD**: refresh the ledger and read new issue/review decisions rather than papering over it. `--offline` only checks the frozen documents and explicitly reports `OFFLINE_NOT_CURRENT`. **Even a full PASS does not verify live PR comment dispositions, writer leases, current science/source permissions or independent G5—these must be separately read.** On a new protected receiving commit, refresh this register and its guard in that same authorized transaction; this Nov15 SHA is never a forever-current authority.
+
 ## E. Next-action and anti-drift procedure for every new PYAT HQ
 
 Before any task recommendation or edit, **fail closed** unless you can give:
