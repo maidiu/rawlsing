@@ -1,6 +1,6 @@
 # SC-03 — Backward-conditioned father, independent past, one causal world
 
-**Status:** SEAM/20 inverse order **PRESERVED**; father conditional support and historical admission **OPEN**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-02](02_MATERNAL_OBSERVATION_INVERSE_HISTORY_AND_FIRST_CONSUMER.md) · [SC-04](04_PARENTAL_CONTINUITY_SAME_ONTOLOGY_MULTIACTOR_AGENCY.md) · [SC-06](06_ORDINARY_LIFE_PROCESS_AND_CAUSAL_COVERAGE.md). Governing: [SEAM/20 ``0,3–5](../20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md), [SEAM/23 `2/4](../23_C5_SHADOW_GRAVITY_MATERIAL_CARE_COVERAGE_ATTRACTOR_TEST_R1.md).
+**Status:** SEAM/20 inverse order **PRESERVED**; father conditional support and historical admission **OPEN**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-02](02_MATERNAL_OBSERVATION_INVERSE_HISTORY_AND_FIRST_CONSUMER.md) · [SC-04](04_PARENTAL_CONTINUITY_SAME_ONTOLOGY_MULTIACTOR_AGENCY.md) · [SC-06](06_ORDINARY_LIFE_PROCESS_AND_CAUSAL_COVERAGE.md). Governing: [SEAM/20 §§0,3–5](../20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md), [SEAM/23 §§2/4](../23_C5_SHADOW_GRAVITY_MATERIAL_CARE_COVERAGE_ATTRACTOR_TEST_R1.md).
 
 ## The actual model—DO NOT invert this inversion
 
@@ -12,9 +12,9 @@ The stipulated branch birth is a condition of this **candidate-story constructio
 
 ## Why this deserves its own concept/code record
 
-The severe engineering problem is **two chronologies**. Father construction happens after a mother-world trajectory has been generated, but father's earlier actions might have world effects: moving, working, acquiring property, participating in institutions or changing someone else's possibilities. A timeline-coherent private biography is not sufficient if its events conflict with the already constructed objective shared world.
+The **potential engineering integrity problem** involves two different orderings: computational construction and in-world causal chronology. **We have not proved a new general historical merge is required.** Father construction happens after a mother-world trajectory has been generated, but father's earlier actions might have world effects: moving, working, acquiring property, participating in institutions or changing someone else's possibilities. A timeline-coherent private biography is insufficient **where** it asserts effects that contradict *actually sealed, overlapping* mother-world facts. But the mother-world is **not** a complete transcript of all past activity: absence of recorded father effects is NOT evidence they never occurred.
 
-Conversely, simply forcing all pre-encounter father acts to have zero world effects would hollow out his independence and violate Z's material generativity. The goal is a **candidate historical reconciliation** with immutable commitments and bounded uncertainty, not global retroactive rewrites or a magical historical merge operation.
+Conversely, requiring every compressed pre-encounter father activity to have a fully performed P2 event would defeat the stated **low-cost historical construction** and impose unsupported completeness. **Differentiate** (a) established shared-world events, (b) candidate father-local performed or period-modeled effects, (c) proposed context constraints, and (d) unknown/unmodeled consequences. Only actual first-consumer-relevant overlaps require exact compatibility. The goal is a **candidate historical reconciliation** with immutable commitments and bounded uncertainty, not global retroactive rewrites or a magical historical merge operation.
 
 PYAT's F7 temporal and F6 nonpooled discipline, positional/region/institution and opportunity qualification constrain eligibility; SOROK's actual P2/ADP-015 chronology and actor-specific states own admitted fictional effects. One sourceful mother–father couple probability **cannot be fabricated from two WVS respondents**.
 
@@ -29,7 +29,8 @@ PYAT's F7 temporal and F6 nonpooled discipline, positional/region/institution an
 ## Proposed candidate-stage architecture (not current API)
 
 ```text
-COMMITTED MOTHER: frozen actor history H_m, world-as-of snapshots W_m(t)
+COMMITTED MOTHER: frozen ACTUALLY REPRESENTED H_m/world events,
+                  partial as-of W_m(t) with UNKNOWN/unmodeled domains
   -> SOROK encounter proposals from her actual trajectory
   -> world/eligibility owner checks t_E, location, institution, access, role,
      network/rights; retain MULTIPLE eligible and refused alternatives
@@ -40,24 +41,33 @@ FATHER INVERSE CANDIDATE (not yet shared-world committed):
      [SOURCEFUL support only if actually identified; else TEST_ONLY SCENARIO]
   -> SOROK construct independent H_f over t < t_E in isolated candidate scope
   -> validate father's work/place/role/care/resources/actor state as-of t_E
-  -> reconcile objective past effects with FROZEN mother/world history:
+  -> compare father claims with FROZEN, SHARED, actually represented
+     mother/world facts (NOT a fabricated complete world past):
        time/order, ownership/currency, institutional events, overlap,
        any encounter effects on mother, named RNG, causal ancestry
 
-  -> ACCEPT candidate if it coexists under exact world/branch contract
+  -> ACCEPT candidate only at its stated evidence scope if it coexists
+     with all *represented* relevant facts under world/branch contract
      OR REFUSE / produce another independent candidate, never rewrite H_m
-  -> jointly establish two separate actor roots and objective E event
+  -> join distinct actor IDs/actor-local histories under one admitted
+     shared-world root/branch and objective E event (or exact HOLD)
   -> forward continuation: distinct actor states/perceptions + actual events
   -> relationship/household/child generation admitted SEPARATELY
 ```
 
 **Possible reconciliation strategies to compare, not decree:**
+- **Cheapest first:** father prehistory is an actor-local, model-graded compressed candidate with as-of constraints and explicit unknown material effects; at encounter, verify its *represented* resource/role/location/history consistency against the existing world, rather than demanding all missing microevents be retroactively written into P2.
+- If a past father event must become an **actual shared-world fact**, require the competent existing owner to reconcile its effects against already sealed overlapping facts; if this cannot be done, HOLD rather than silently assign a root/clock or invent a new temporal event store.
 - Candidate father history can reference shared earlier world facts without re-enacting them.
 - A father candidate may have actor-local earlier activity with bounded effects on world facts that do not conflict with the frozen mother-world history; the competent owner must prove admissibility, not merely string equality.
 - If both histories would require mutually incompatible changes to already committed world history, refuse this candidate, or branch to an **uncommitted** alternative mother-world construction with its own provenance. Never silently mutate the accepted mother.
 - Do not materialize father-specific earlier events by appending them at t_E and lying about their performed time.
 
 This is a proposed **world/history admissibility** obligation under existing owners, not permission to install a general retroactive event store.
+
+### Important non-equivalences
+
+A father may be constructed later in computation without any *backwards causal influence*: the birth condition is a candidate-selection constraint, not an event that caused his past. Nor does an unrecorded pre-encounter event equal a false event. World-source silence is generally **UNKNOWN**, not a negative witness. A conflict is real only if two asserted, same-scope, temporally overlapping consequences cannot coexist. Historical candidate snapshots may carry partial, model-graded constraints without falsely presenting whole-life performed P2 events. Keep actor-local private recollections distinct from objective-world events.
 
 ## Hostile counterfactuals and acceptance evidence
 
@@ -75,4 +85,4 @@ This is a proposed **world/history admissibility** obligation under existing own
 
 **UM-SOROK:** where is the current owner of *candidate, uncommitted historical world effects*? Can the existing P2/branch/ADP-015 contract reconcile two earlier biographies without general past insertion? What minimal acceptance receipt distinguishes a real linked earlier world from two prose biographies?
 
-**Depends on SC-02** for sealed maternal H; **feeds SC-04** continuing parental coagency and **SC-06** later household/care world. **Status:** plausible necessity; no claimed admitted backward-produced father or successful shared chronology run.
+**Depends on SC-02** for sealed maternal H; **feeds SC-04** continuing parental coagency and **SC-06** later household/care world. **Status:** prospective *consistency and witness-scope* obligation, **not** proof a general historical merge is necessary; no claimed accepted father-generation run or retrospectively admitted shared P2 history.
