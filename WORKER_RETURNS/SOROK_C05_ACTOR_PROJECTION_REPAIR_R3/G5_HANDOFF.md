@@ -63,7 +63,9 @@ merge.
 5. Run the C05 R2 focused promotion test: expect 1 passed. Run original C05,
    C01, C04 identity, C04 custody, P2: original C05 must show exactly the two
    intentionally obsolete failures (withheld key and HOLD_UNKNOWN_SCOPE); the
-   other suites pass.
+   other suites pass. The prior 89-check independent probe is also copied
+   byte-identically and post-fix exits 1 with
+   `KeyError: withheld_relation_count` at its first unexposed assertion.
 
 ## Exact commands
 

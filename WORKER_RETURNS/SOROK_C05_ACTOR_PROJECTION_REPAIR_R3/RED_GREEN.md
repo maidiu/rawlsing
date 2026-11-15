@@ -128,6 +128,7 @@ It proves:
 | C05 R3 new projection/ordering tests | 4 passed |
 | C05 R2 focused promotion repair | 1 passed |
 | Original C05 author suite (bytes immutable) | 3 passed, 2 failed |
+| Prior 89-check independent probe (bytes immutable) | obsolete failed, exit 1 |
 | C01 supporting actor | 6 passed |
 | C04 first-consumer identity | 6 passed |
 | C04 custody | 12 passed |
@@ -138,7 +139,10 @@ ABI: the old `withheld_relation_count` assertion (`KeyError`) and the old
 `HOLD_UNKNOWN_SCOPE` assertion (`HOLD_NOT_EXPOSED` now intentionally
 indistinguishable). They are recorded unchanged, not skipped or rewritten. The
 old challenge-3 oracle similarly fails only its obsolete
-`C12_EVENT_PERCEPTION`-without-perception assertion.
+`C12_EVENT_PERCEPTION`-without-perception assertion. The prior 89-check
+independent probe was copied byte-identically and post-fix exits 1 with
+`KeyError: withheld_relation_count` at its first unexposed assertion; this is
+the same intentional ABI removal, not a product failure of the new contract.
 
 Timings and RSS are observations under host load, not isolated benchmarks.
 Provider/token/cost and checkpoint/org/quota are `UNOBSERVED`.

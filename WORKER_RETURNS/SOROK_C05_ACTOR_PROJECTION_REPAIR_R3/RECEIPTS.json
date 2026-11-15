@@ -21,39 +21,170 @@
     "sha256": "944fd881f7a7046b0b58851a933ce59e6ed3f238e17c30c4f65f0c4ccb902f51"
   },
   "probes": {
-    "c05_challenge1_leakage.py": {"blob":"46d14bfadf1a20e1b69e8e7162d250a4c01daf19","sha256":"b7c0a465e24e73fb1de4208264a76594932d61c8290cad5e4cdc93025da0e982","byte_identical_to_court":true},
-    "c05_challenge2_temporal.py": {"blob":"3b987f1a95d6af22606c7db315190266b82e1dda","sha256":"b47d0e4712c6eb8763626e801f9f1c7bb4185c403587070b68fb2c8dfc5f46f8","byte_identical_to_court":true},
-    "c05_challenge3_relation_perception.py": {"blob":"7c8f662201eae01e70bf9ffc72dede1058cbb8ac","sha256":"73ad97342e1a9db9bd1d9a0d0207aea62097ef62d9a0453dc74e269809a6947b","byte_identical_to_court":true},
-    "c05_r3_common.py": {"blob":"8b11ec1224eae09c5c4c904b200567da0d9c8dcd","sha256":"b251b3be4fa16a49d369f2596f1cdc19d1a2541ea64d06e373273304cfc92800","byte_identical_to_court":true},
-    "c05_r3_cold_child.py": {"blob":"98f040cb4fdc3c473ff8f7d3d946636a32808c8f","sha256":"02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8","byte_identical_to_court":true}
+    "c05_challenge1_leakage.py": {
+      "blob": "46d14bfadf1a20e1b69e8e7162d250a4c01daf19",
+      "sha256": "b7c0a465e24e73fb1de4208264a76594932d61c8290cad5e4cdc93025da0e982",
+      "byte_identical_to_court": true
+    },
+    "c05_challenge2_temporal.py": {
+      "blob": "3b987f1a95d6af22606c7db315190266b82e1dda",
+      "sha256": "b47d0e4712c6eb8763626e801f9f1c7bb4185c403587070b68fb2c8dfc5f46f8",
+      "byte_identical_to_court": true
+    },
+    "c05_challenge3_relation_perception.py": {
+      "blob": "7c8f662201eae01e70bf9ffc72dede1058cbb8ac",
+      "sha256": "73ad97342e1a9db9bd1d9a0d0207aea62097ef62d9a0453dc74e269809a6947b",
+      "byte_identical_to_court": true
+    },
+    "c05_r3_common.py": {
+      "blob": "8b11ec1224eae09c5c4c904b200567da0d9c8dcd",
+      "sha256": "b251b3be4fa16a49d369f2596f1cdc19d1a2541ea64d06e373273304cfc92800",
+      "byte_identical_to_court": true
+    },
+    "c05_r3_cold_child.py": {
+      "blob": "98f040cb4fdc3c473ff8f7d3d946636a32808c8f",
+      "sha256": "02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8",
+      "byte_identical_to_court": true
+    },
+    "c05_probe.py": {
+      "blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+      "sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7",
+      "byte_identical_to_prior_review": true
+    },
+    "c05_observe.py": {
+      "blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f",
+      "sha256": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850",
+      "byte_identical_to_prior_review": true
+    },
+    "c05_cold_child.py": {
+      "blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc",
+      "sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff",
+      "byte_identical_to_prior_review": true
+    }
   },
   "raw_reports": {
-    "challenge1_RED": {"path":"evidence/c05_challenge1_report_RED_at_5d771dd.json","sha256":"bfdd1d754fb253d69260a3711a7dc586fbde88d1213430bef6f75ff97ab1e0b1","literal_probe_exit":0},
-    "challenge2_RED": {"path":"evidence/c05_challenge2_report_RED_at_5d771dd.json","sha256":"07d138e40d769e96d9cb5a1fd770dc77e21f99657d259503fb04be072b0c653d","literal_probe_exit":0},
-    "challenge2_POST_FIX": {"path":"evidence/c05_challenge2_report_POST_FIX.json","sha256":"4044256df12401d832a635cd49104f85014820b4d50a6489d21213543a0e1c44","literal_probe_exit":0},
-    "challenge3_RED": {"path":"evidence/c05_challenge3_report_RED_at_5d771dd.json","sha256":"cacca579a30879913b579cf38ff4eddaf94aff9bdfaaddfd4c90ba2c86e2edc3","literal_probe_exit":0},
-    "challenge3_POST_FIX": {"path":"evidence/c05_challenge3_report_POST_FIX.json","sha256":"6868143a43d277c752aff57d03875a08dde20aad5a0e2487bc84b52298a18e6c","literal_probe_exit":2},
-    "challenge_summary": {"path":"evidence/challenge_summary.json","sha256":"372fcbf97da1da78b44c5bc67b5ddc60488544695458d0abe5452e8d73a6a031"}
+    "challenge1_RED": {
+      "path": "evidence/c05_challenge1_report_RED_at_5d771dd.json",
+      "sha256": "bfdd1d754fb253d69260a3711a7dc586fbde88d1213430bef6f75ff97ab1e0b1",
+      "literal_probe_exit": 0
+    },
+    "challenge2_RED": {
+      "path": "evidence/c05_challenge2_report_RED_at_5d771dd.json",
+      "sha256": "07d138e40d769e96d9cb5a1fd770dc77e21f99657d259503fb04be072b0c653d",
+      "literal_probe_exit": 0
+    },
+    "challenge2_POST_FIX": {
+      "path": "evidence/c05_challenge2_report_POST_FIX.json",
+      "sha256": "4044256df12401d832a635cd49104f85014820b4d50a6489d21213543a0e1c44",
+      "literal_probe_exit": 0
+    },
+    "challenge3_RED": {
+      "path": "evidence/c05_challenge3_report_RED_at_5d771dd.json",
+      "sha256": "cacca579a30879913b579cf38ff4eddaf94aff9bdfaaddfd4c90ba2c86e2edc3",
+      "literal_probe_exit": 0
+    },
+    "challenge3_POST_FIX": {
+      "path": "evidence/c05_challenge3_report_POST_FIX.json",
+      "sha256": "6868143a43d277c752aff57d03875a08dde20aad5a0e2487bc84b52298a18e6c",
+      "literal_probe_exit": 2
+    },
+    "challenge_summary": {
+      "path": "evidence/challenge_summary.json",
+      "sha256": "372fcbf97da1da78b44c5bc67b5ddc60488544695458d0abe5452e8d73a6a031"
+    }
   },
   "test_logs": {
-    "new_assertions": {"path":"evidence/logs/c05_r3_new_tests_GREEN.log","sha256":"10046e6a44b19b1677ee7a00af833152bef4bb5015ac190d4274a6e40eee987a","passed":4,"failed":0,"exit":0,"seconds":30.41,"max_rss_bytes":61845504},
-    "r2_promotion": {"path":"evidence/logs/c05_r2_promotion_test_final.log","sha256":"0d98e9ab86d04ad241737d1f2ccb40a7899353be2bf59e8f3062a8033618aba8","passed":1,"failed":0,"exit":0,"seconds":7.84,"max_rss_bytes":58302464},
-    "original_c05": {"path":"evidence/logs/original_c05_suite_final.log","sha256":"5036a05bf3338f31bd359d02fee630c6fba5189b38da9e95f4c4cda02331f9bc","passed":3,"failed":2,"exit":1,"seconds":48.02,"max_rss_bytes":62861312},
-    "c01": {"path":"evidence/logs/c01_suite_final.log","sha256":"82ad27979f3fc8c4d937bca91a409bedca8b27b3b6b7e58c1e1efb77634de60b","passed":6,"failed":0,"exit":0,"seconds":14.21,"max_rss_bytes":58281984},
-    "c04_identity": {"path":"evidence/logs/c04_identity_final.log","sha256":"b2ebace4ac873a783a7e0c2234d47110931f5b764e1434ee08c675722a9431ed","passed":6,"failed":0,"exit":0,"seconds":30.62,"max_rss_bytes":64086016},
-    "c04_custody": {"path":"evidence/logs/c04_custody_final.log","sha256":"d639a280cf80bb06ced4f0d5a223ffc747dfdff7fe725b81efb293cade1e7c6f","passed":12,"failed":0,"exit":0,"seconds":64.58,"max_rss_bytes":66920448},
-    "p2_owner": {"path":"evidence/logs/p2_owner_final.log","sha256":"7fcde02c646eba5b73e056dafa9b44a08a5601d59cabe4bb0501eba951282fc9","passed":5,"failed":0,"exit":0,"seconds":18.58,"max_rss_bytes":59793408}
+    "new_assertions": {
+      "path": "evidence/logs/c05_r3_new_tests_GREEN.log",
+      "sha256": "10046e6a44b19b1677ee7a00af833152bef4bb5015ac190d4274a6e40eee987a",
+      "passed": 4,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 30.41,
+      "max_rss_bytes": 61845504
+    },
+    "r2_promotion": {
+      "path": "evidence/logs/c05_r2_promotion_test_final.log",
+      "sha256": "0d98e9ab86d04ad241737d1f2ccb40a7899353be2bf59e8f3062a8033618aba8",
+      "passed": 1,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 7.84,
+      "max_rss_bytes": 58302464
+    },
+    "original_c05": {
+      "path": "evidence/logs/original_c05_suite_final.log",
+      "sha256": "5036a05bf3338f31bd359d02fee630c6fba5189b38da9e95f4c4cda02331f9bc",
+      "passed": 3,
+      "failed": 2,
+      "exit": 1,
+      "seconds": 48.02,
+      "max_rss_bytes": 62861312
+    },
+    "c01": {
+      "path": "evidence/logs/c01_suite_final.log",
+      "sha256": "82ad27979f3fc8c4d937bca91a409bedca8b27b3b6b7e58c1e1efb77634de60b",
+      "passed": 6,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 14.21,
+      "max_rss_bytes": 58281984
+    },
+    "c04_identity": {
+      "path": "evidence/logs/c04_identity_final.log",
+      "sha256": "b2ebace4ac873a783a7e0c2234d47110931f5b764e1434ee08c675722a9431ed",
+      "passed": 6,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 30.62,
+      "max_rss_bytes": 64086016
+    },
+    "c04_custody": {
+      "path": "evidence/logs/c04_custody_final.log",
+      "sha256": "d639a280cf80bb06ced4f0d5a223ffc747dfdff7fe725b81efb293cade1e7c6f",
+      "passed": 12,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 64.58,
+      "max_rss_bytes": 66920448
+    },
+    "p2_owner": {
+      "path": "evidence/logs/p2_owner_final.log",
+      "sha256": "7fcde02c646eba5b73e056dafa9b44a08a5601d59cabe4bb0501eba951282fc9",
+      "passed": 5,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 18.58,
+      "max_rss_bytes": 59793408
+    },
+    "prior89_probe": {
+      "path": "evidence/logs/prior89_probe_POST_FIX.time.log",
+      "sha256": "36585a50c78060e99c616b78af6471d443ac61be8bd2ea669c684f6babf494a2",
+      "passed": 0,
+      "failed": 1,
+      "exit": 1,
+      "seconds": 2.51,
+      "max_rss_bytes": 46018560,
+      "note": "obsolete KeyError on intentionally removed withheld_relation_count"
+    }
   },
   "harness_path_adapter": {
     "probe_hardcoded_path": ".local-logs/sorok-c05-actor-view-temporal-challenge-20261115-r3",
     "leased_target": ".local-logs/sorok-c05-actor-projection-repair-20261115-r3/probe-court-scratch",
     "method": "temporary symlink; probe bytes and oracle unchanged",
-    "includes_hardcoded_cold_child_tmpdir": true
+    "includes_hardcoded_cold_child_tmpdir": true,
+    "prior89_probe_hardcoded_path": ".local-logs/sorok-c05-independent-g5",
+    "prior89_probe_leased_target": ".local-logs/sorok-c05-actor-projection-repair-20261115-r3/probe-g5-scratch"
   },
   "command_environment": {
     "interpreter": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
     "tmpdir": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/.local-logs/sorok-c05-actor-projection-repair-20261115-r3/tmp",
-    "pytest_flags": ["-B", "-q", "-p", "no:cacheprovider"],
+    "pytest_flags": [
+      "-B",
+      "-q",
+      "-p",
+      "no:cacheprovider"
+    ],
     "pycache_disabled": true
   },
   "token_cost": "UNOBSERVED",

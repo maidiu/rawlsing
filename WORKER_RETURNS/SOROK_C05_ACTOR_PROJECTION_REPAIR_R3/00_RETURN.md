@@ -146,6 +146,7 @@ max RSS 61,845,504 B. It proves:
 | C05 R3 new assertions | 4 passed | 0 |
 | C05 R2 focused promotion repair | 1 passed | 0 |
 | Original C05 author suite (bytes immutable) | 3 passed, 2 failed | 1 |
+| Prior 89-check independent probe (bytes immutable) | obsolete failed, `KeyError` | 1 |
 | C01 supporting actor | 6 passed | 0 |
 | C04 first-consumer identity | 6 passed | 0 |
 | C04 custody | 12 passed | 0 |
@@ -155,8 +156,11 @@ The two original C05 failures are exactly the intentionally corrected actor
 ABI: old `withheld_relation_count` (`KeyError`) and old
 `HOLD_UNKNOWN_SCOPE` (now the intentionally indistinguishable
 `HOLD_NOT_EXPOSED`). The old challenge-3 oracle also fails only its obsolete
-`C12_EVENT_PERCEPTION`-without-perception assertion. Original test bytes were
-not modified, skipped or rewritten.
+`C12_EVENT_PERCEPTION`-without-perception assertion. The prior 89-check
+independent probe was copied byte-identically and post-fix exits 1 with
+`KeyError: withheld_relation_count` at its first unexposed assertion; that is
+the same intentional ABI removal. Original test/probe bytes were not modified,
+skipped or rewritten.
 
 ## Proved / inherited / unproved
 

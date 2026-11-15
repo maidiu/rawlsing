@@ -61,6 +61,21 @@
       "blob": "98f040cb4fdc3c473ff8f7d3d946636a32808c8f",
       "sha256": "02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8",
       "byte_identical_to_court": true
+    },
+    "c05_probe.py": {
+      "blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+      "sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7",
+      "byte_identical_to_prior_review": true
+    },
+    "c05_observe.py": {
+      "blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f",
+      "sha256": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850",
+      "byte_identical_to_prior_review": true
+    },
+    "c05_cold_child.py": {
+      "blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc",
+      "sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff",
+      "byte_identical_to_prior_review": true
     }
   },
   "red_post_fix": {
@@ -166,6 +181,17 @@
       "seconds": 18.58,
       "max_rss_bytes": 59793408,
       "log": "evidence/logs/p2_owner_final.log"
+    },
+    {
+      "id": "prior89_independent_probe",
+      "passed": 0,
+      "failed": 1,
+      "exit": 1,
+      "seconds": 2.51,
+      "max_rss_bytes": 46018560,
+      "log": "evidence/logs/prior89_probe_POST_FIX.time.log",
+      "log_sha256": "36585a50c78060e99c616b78af6471d443ac61be8bd2ea669c684f6babf494a2",
+      "note": "obsolete oracle KeyError on intentionally removed withheld_relation_count; bytes unchanged"
     }
   ],
   "source_owner_consumer_trace": {
@@ -237,5 +263,20 @@
     "self_g5": false
   },
   "stop": true,
-  "candidate_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6"
+  "candidate_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+  "prior89_probe": {
+    "source": "b5b810cdd7b51b20efcc42d4ce76960f9e410706 WORKER_REVIEWS/SOROK_C05_CONTINUING_RELATIONS_G5_R1/newprobes/c05_probe.py",
+    "byte_identical": {
+      "c05_probe.py": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7",
+      "c05_observe.py": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850",
+      "c05_cold_child.py": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff"
+    },
+    "post_fix_literal_exit": 1,
+    "post_fix_observation": "KeyError: withheld_relation_count at first unexposed relation assertion; obsolete oracle, not rewritten or skipped",
+    "stdout_log": "evidence/logs/prior89_probe_POST_FIX.stdout.log",
+    "time_log": "evidence/logs/prior89_probe_POST_FIX.time.log",
+    "time_log_sha256": "36585a50c78060e99c616b78af6471d443ac61be8bd2ea669c684f6babf494a2",
+    "real_seconds": 2.51,
+    "max_rss_bytes": 46018560
+  }
 }
