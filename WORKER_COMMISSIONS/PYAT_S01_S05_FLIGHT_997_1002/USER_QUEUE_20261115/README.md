@@ -1,6 +1,6 @@
 # Existing PYAT HQ — finite execution queue, November15
 
-**QUEUED, NOT LAUNCHED.** This implements the user's request to sequence the supplied orders. No new paid worker, source read, native benchmark, replacement HQ or protected action has started. Existing ZAK research/PR1054/1058 custody remains separate. This is an entry in the existing S01–S05 flight-board family, not a new orchestration system.
+**ACTIVATED by the subsequent user FIVE-JOB EXECUTION SLATE. Three actual workers launched; see the activation section and exact receipts below.** The earlier queue-only snapshot is retained as history. Existing ZAK research/PR1054/1058 custody remains separate. This is an entry in the existing S01–S05 flight-board family, not a replacement HQ or new orchestration system.
 
 ## Initial three independent lanes
 
