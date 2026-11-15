@@ -10,6 +10,10 @@ The father must be a genuinely different person: his own demographic/material/re
 
 The stipulated branch birth is a condition of this **candidate-story construction**, not evidence that all couples reproduce, that all eligible encounters create a relationship, or that PYAT measures couple-level likelihood. ADP-015 maintains encounter ≠ relationship ≠ household ≠ parenthood ≠ child-generation ≠ child initialization. Others can be caregivers; biological father need not share household.
 
+### Scope of the mother/father entry case
+
+The maternal-to-paternal inverse sequence is **governing for this selected generative route**; it must not be silently generalized into an ontology of universally married, co-resident, heterosexual, two-carer or binary social-gender households. Separately distinguish survey-coded gender, biological parentage, gestation, kin-recognized parenthood and actual care. A father candidate can be biological lineage without co-residence or long-term parenting; other caregivers, children, institutions, chosen kin and households must remain independently generatable where source/model conditions permit. **Do not retrofit observed survey gender categories into biologically validated reproductive roles**.
+
 ## Why this deserves its own concept/code record
 
 The **potential engineering integrity problem** involves two different orderings: computational construction and in-world causal chronology. **We have not proved a new general historical merge is required.** Father construction happens after a mother-world trajectory has been generated, but father's earlier actions might have world effects: moving, working, acquiring property, participating in institutions or changing someone else's possibilities. A timeline-coherent private biography is insufficient **where** it asserts effects that contradict *actually sealed, overlapping* mother-world facts. But the mother-world is **not** a complete transcript of all past activity: absence of recorded father effects is NOT evidence they never occurred.
