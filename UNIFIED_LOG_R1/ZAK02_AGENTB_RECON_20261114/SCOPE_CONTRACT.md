@@ -1,5 +1,10 @@
 # SCOPE_CONTRACT — ZAK-02 corrected read-only R1 sidecar
 
+## R9 — omitted V550 subgroup functions and identity loss at V551 bridge
+
+Three new source-distinct provisional historical T0023 V550 two-position conditional entropy gain, T0024 V550 entropy-selected recursive branch topology and T0025 V550 support-gated subgroup dominant response deviation classification. SOURCE FIRST proof only. Shared reduced V550→V551 bridge does not carry original indicator/category/branch node keys; source_row_hash and empirical_object_id omit producer specific identity, so distinct original rows can collide at interface. Optional V551 conditional builder deduplicates on hash but selected/native invocation NOT established. Full source/counterevidence report in R9_V550_SUBGROUP_BRIDGE_AND_IDENTITY_COUNTERSEARCH.md. Historical primary inventory 25 T provisional, 300 coverage cells; source/science/actor first reader and historical estate OPEN. Original 9 duties preserved. NO engineering/CI/tests/S2/S3/merge.
+
+
 ## R8 original-first three-agent intake
 
 At shared #1054 `d25836436c16efda51ca1935c1c979b396eb61bd` and ZAK04 #1053 `69804f88abc8e84cf91ee256aa66fb607a49f5a7`: **new provisional** historical T0021 V550 indicator-answer conditional distribution and T0022 V551J-D provisional audit; T0005 respondent membership child, not new historical T. Source grain XS:003–010, V552J probe-only vs separate V553 two-wave temporal positive and V554 heuristic-reader mismatch. New records `R8_ZAK04_THREE_AGENT_HISTORICAL_INTAKE.md` and two CASES. **22 provisional T, 264 matrix cells**, not historical or functional completion. Nine original obligations preserved; no engineering/tests/CI/merge/authority; PR1040 R05 detour abandoned.
