@@ -1,0 +1,5 @@
+# A-P0 read-only schema repair ledger
+
+Original frozen P0 was published at `9dc9d14d23356b0328afd0c2b83096456b2dca88`, `UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL17/A/SOURCE_T2/P0/REVERSE_CONSUMERS.tsv`, blob `990293e1609c065d4e8f7def4c52d0191350e717`. Its ten records carry 11 fields rather than original R1 required 12 (missing `grade`). The error is in A P0; B P0 correctly used the 12-field header. Original source R1 standard is `e4aa144ce69fd943910accb923159e576e4db06e::WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/REFERENCES/VMESTYE_ZAKONCHILOS_UNIFIED_RECONNAISSANCE_LOGGING_USER_SUPPLIED_R1.md#c3905872130e5c4c95998d1107efb26607d0d553:4B`.
+
+This P1 `REVERSE_CONSUMERS.tsv` carries exactly the same ten reverse IDs and original first eleven cells, unchanged, plus one explicit source/consumer proof-grade cell. No new historical T, new code evidence, invented actual reader or upgrade to S2/native. P0 remains immutable. The P1 compatibility projection should be used for technical import, citing both P0 original SHA and P1 repair SHA.
