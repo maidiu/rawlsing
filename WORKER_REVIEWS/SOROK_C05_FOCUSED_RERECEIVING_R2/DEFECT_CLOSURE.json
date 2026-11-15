@@ -1,0 +1,122 @@
+{
+  "schema": "SOROK_C05_R2_DEFECT_CLOSURE@1",
+  "issue": "C05",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "original_review": {
+    "sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "defect_id": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE"
+  },
+  "frozen_final_report": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "implementation_tests": "5d771dd86767655534b23576075e5da2db4fba78",
+  "frozen_start": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "original_implementation": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "one_line_correction": {
+    "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py",
+    "base_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+    "corrected_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+    "corrected_sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2",
+    "diff": "-    machine = _state_machine(state_changes)\n+    machine = _state_machine(scope[\"changes\"])",
+    "state_changes_still_used_for": "promotion history_hash only",
+    "supporting_actor_blob_unchanged": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+    "other_product_change": "none",
+    "post_code_commits_metadata_only": true,
+    "source_delta": "evidence/c05_one_line_repair.diff"
+  },
+  "base_red_preserved": {
+    "immutable_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+    "probe_blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e",
+    "probe_sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70",
+    "original_reviewer_report": "evidence/c05_defect_report_RED_original_b5b810c.json",
+    "original_report_sha256": "31369bf626d95972d5933fd4e5d1446a79895bf781cec67cc7df1443d306eacc",
+    "author_receipt": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_defect_report_RED_at_bc45f699a.json",
+    "author_receipt_sha256": "8f5f0a79190068b0ce714ee2d76a6f2e93934f262bfd401e16f4f3f0a853f38d",
+    "semantic_match_to_original": true,
+    "second_call_refusal": "RELATION_CUSTODY_SEVERED",
+    "wrote_episode_on_refusal": true,
+    "scope_severed_after_write": true,
+    "before": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+    "after": {"episodes": 51, "changes": 3, "heads": 3, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "HOLD_CUSTODY_SEVERED"},
+    "retry_first_after_write": "RELATION_CUSTODY_SEVERED",
+    "note": "original report bytes differ from the author receipt only in the checkout-specific state_root; graded fields are identical"
+  },
+  "author_adapter_disclosure": {
+    "exists": true,
+    "author_disclosure": "temporary symlink from the probe's hardcoded old-reviewer scratch path inside the author's own checkout to the author's leased R2 scratch",
+    "author_claims_no_write_to_reviewer_checkout": true,
+    "reviewer_used_author_adapter": false,
+    "reviewer_run": "copied probes byte-identically from b5b810c and ran directly in the authorized old reviewer scratch and focused R2 scratch; no symlink"
+  },
+  "corrected_run": {
+    "same_probe_blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e",
+    "same_probe_sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70",
+    "literal_exit": 2,
+    "literal_exit_meaning": "expected: unchanged probe oracle still asserts the old bug; not a repair failure",
+    "report": "evidence/c05_defect_report.json",
+    "report_sha256": "d91901bfddb967b1dfdb891754c503996eb2e7d57527c0d4c15df44a4a36eeb8",
+    "second_call_refusal": "RELATION_PROMOTION_NOT_DEEPER",
+    "wrote_episode_on_refusal": false,
+    "scope_severed_after_write": false,
+    "c12_verify_unchanged": true,
+    "before": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+    "after": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+    "retry_first_after_refusal": "UNCHANGED with original primary episode ID",
+    "static_probe_defect_text": "The probe's static 'defect' description still describes the old bug by design; the live graded fields above are the corrected semantic result."
+  },
+  "independent_closure_probe": {
+    "script": "newprobes/c05_closure_probe.py",
+    "report": "evidence/c05_closure_report.json",
+    "report_sha256": "b815af9f4090c55dfceba5e68f187a64a49e31f3c8069374cd3e187e6212c1c3",
+    "checks_total": 12,
+    "checks_passed": 12,
+    "checks_failed": 0,
+    "fields": {
+      "first_promotion_recorded": true,
+      "history_depth_two": true,
+      "context_qualified_perceived": true,
+      "promotion_history_hash_is_state_entries_only": true,
+      "original_operation_retry_unchanged": true,
+      "different_new_depth2_refused_before_append": true,
+      "zero_counts_delta": true,
+      "world_events_perceptions_checkpoints_unchanged": true,
+      "relation_episodes_unchanged": true,
+      "history_and_context_byte_exact": true,
+      "c12_verify_ok": true,
+      "original_retry_after_refusal_unchanged": true
+    },
+    "before_after_counts": {
+      "episodes": [56, 56],
+      "changes": [2, 2],
+      "world_events": [15, 15],
+      "perceptions": [47, 47],
+      "checkpoints": [36, 36]
+    }
+  },
+  "focused_author_test": {
+    "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py",
+    "git_blob": "5df2c164bc4912a2ee13cbaf228969c2d4b96a90",
+    "sha256": "68234a95b3dc448552edbd54899c2e2b5a3351839f18e5ba800f386b1184785e",
+    "independent_run": {"passed": 1, "failed": 0, "exit": 0, "real_seconds": 7.19, "max_rss_bytes": 56725504},
+    "author_red_receipt": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/logs/c05_r2_focused_RED.log",
+      "sha256": "05c3c1951ba1abfdcd5616fd03774683cc91cbebe8aea22eb8678ae1de52c969",
+      "result": "1 failed, exit 1; expected RELATION_PROMOTION_NOT_DEEPER, actual RELATION_CUSTODY_SEVERED"
+    },
+    "author_green_receipt": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/logs/c05_r2_focused_GREEN.log",
+      "sha256": "95e2c4474bc480f1c3ef3eff6544101cd20cd3b43773ca6f12400f84c083ce71",
+      "result": "1 passed, exit 0, 6.80 s, max RSS 58,249,216 B"
+    },
+    "base_red_independently_reexecuted_by_this_reviewer": false,
+    "base_red_note": "product frozen; the immutable independent base RED is the b5b810c original probe report/receipt above"
+  },
+  "closure": {
+    "status": "CLOSED",
+    "write_before_refusal": false,
+    "relation_scope_after_refusal": "QUALIFIED",
+    "history_context_exact": true,
+    "original_retry_after_refusal": "UNCHANGED",
+    "cold_exact_from_focused_test_and_89_probe": true,
+    "remaining_same_path_defect": "none observed"
+  }
+}

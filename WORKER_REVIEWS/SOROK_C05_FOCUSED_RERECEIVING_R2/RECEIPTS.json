@@ -1,0 +1,85 @@
+{
+  "schema": "SOROK_C05_FOCUSED_R2_RECEIPTS@1",
+  "issue": "C05",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "accepted_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "final_report": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "frozen_start": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "original_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+  "red": {
+    "base": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+    "immutable_independent_report": "evidence/c05_defect_report_RED_original_b5b810c.json",
+    "sha256": "31369bf626d95972d5933fd4e5d1446a79895bf781cec67cc7df1443d306eacc",
+    "author_receipt": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/evidence/c05_defect_report_RED_at_bc45f699a.json",
+    "author_receipt_sha256": "8f5f0a79190068b0ce714ee2d76a6f2e93934f262bfd401e16f4f3f0a853f38d",
+    "semantic_match": true,
+    "second_call_refusal": "RELATION_CUSTODY_SEVERED",
+    "wrote_episode_on_refusal": true,
+    "scope_severed_after_write": true,
+    "before_episodes_changes_heads": [49, 2, 2],
+    "after_episodes_changes_heads": [51, 3, 3],
+    "relation_status": "QUALIFIED to HOLD_CUSTODY_SEVERED"
+  },
+  "green": {
+    "byte_identical_probe": "evidence/c05_defect_report.json",
+    "sha256": "d91901bfddb967b1dfdb891754c503996eb2e7d57527c0d4c15df44a4a36eeb8",
+    "literal_exit": 2,
+    "literal_exit_meaning": "expected old-bug oracle non-reproduction; not failure",
+    "second_call_refusal": "RELATION_PROMOTION_NOT_DEEPER",
+    "wrote_episode_on_refusal": false,
+    "scope_severed_after_write": false,
+    "before_episodes_changes_heads": [49, 2, 2],
+    "after_episodes_changes_heads": [49, 2, 2],
+    "world_events_perceptions_checkpoints": "14/42/33 before and after",
+    "relation_status": "QUALIFIED/QUALIFIED",
+    "first_retry_after_refusal": "UNCHANGED"
+  },
+  "focused_test": {
+    "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py",
+    "independent": {"passed": 1, "exit": 0, "real_seconds": 7.19, "max_rss_bytes": 56725504},
+    "author_red_log_sha256": "05c3c1951ba1abfdcd5616fd03774683cc91cbebe8aea22eb8678ae1de52c969",
+    "author_green_log_sha256": "95e2c4474bc480f1c3ef3eff6544101cd20cd3b43773ca6f12400f84c083ce71"
+  },
+  "closure": {
+    "report": "evidence/c05_closure_report.json",
+    "sha256": "b815af9f4090c55dfceba5e68f187a64a49e31f3c8069374cd3e187e6212c1c3",
+    "checks_passed": 12,
+    "checks_failed": 0,
+    "history_and_context_byte_exact": true,
+    "promotion_history_hash_state_entries_only": true,
+    "zero_deltas": true,
+    "c12_verify_ok": true,
+    "original_retry_after_refusal": "UNCHANGED"
+  },
+  "normal_negative_cold": {
+    "probe_blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+    "probe_sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7",
+    "report": "evidence/c05_probe_report.json",
+    "report_sha256": "f993a666a0246f059d5fa46b1095c8061f24e688a761b41fa006662b55250d57",
+    "checks_passed": 89,
+    "cold_child_exit": 0,
+    "cold_snapshot_exact": true,
+    "cold_retry_status": "UNCHANGED"
+  },
+  "suite_receipts": {
+    "summary": "evidence/suite_summary.json",
+    "total_passed": 35,
+    "all_exit_zero": true
+  },
+  "source_pins": {
+    "continuing_relations_final_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+    "continuing_relations_sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2",
+    "supporting_actor_blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+    "supporting_actor_sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92",
+    "focused_test_blob": "5df2c164bc4912a2ee13cbaf228969c2d4b96a90",
+    "focused_test_sha256": "68234a95b3dc448552edbd54899c2e2b5a3351839f18e5ba800f386b1184785e"
+  },
+  "scope": {
+    "accepted": "bounded mechanical operation/custody of caller-authorized sourcefree illustrative relations",
+    "owner_receipt_qualifying_relation_knowledge": "NONE",
+    "caller_exposure_not_perception": true,
+    "coherent_append_still_accepted_as_caller_input": true,
+    "original_full_c05_actor_qualification": "UNPROVED"
+  },
+  "terminal": "STOP"
+}

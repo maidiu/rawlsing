@@ -1,0 +1,263 @@
+{
+  "after_counts": {
+    "changes": 2,
+    "checkpoints": 36,
+    "episodes": 56,
+    "perceptions": 47,
+    "world_events": 15
+  },
+  "baseline_counts": {
+    "changes": 2,
+    "checkpoints": 36,
+    "episodes": 56,
+    "perceptions": 47,
+    "world_events": 15
+  },
+  "candidate_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+  "checks": [
+    {
+      "name": "first_promotion_recorded",
+      "pass": true
+    },
+    {
+      "name": "history_depth_two",
+      "pass": true
+    },
+    {
+      "name": "context_qualified_perceived",
+      "pass": true
+    },
+    {
+      "name": "promotion_history_hash_is_state_entries_only",
+      "pass": true
+    },
+    {
+      "name": "original_operation_retry_unchanged",
+      "pass": true
+    },
+    {
+      "name": "different_new_depth2_refused_before_append",
+      "pass": true
+    },
+    {
+      "name": "zero_counts_delta",
+      "pass": true
+    },
+    {
+      "name": "world_events_perceptions_checkpoints_unchanged",
+      "pass": true
+    },
+    {
+      "name": "relation_episodes_unchanged",
+      "pass": true
+    },
+    {
+      "name": "history_and_context_byte_exact",
+      "pass": true
+    },
+    {
+      "name": "c12_verify_ok",
+      "pass": true
+    },
+    {
+      "name": "original_retry_after_refusal_unchanged",
+      "pass": true
+    }
+  ],
+  "context": {
+    "branch": "first_session",
+    "context_effect": {
+      "basis": [
+        "DATED_RELATION_HISTORY",
+        "C12_EVENT_PERCEPTION"
+      ],
+      "both_parties_event_access": true,
+      "history_complete": true,
+      "reason": "QUALIFIED_RELATION_CONTEXT",
+      "relation_aware": true,
+      "relation_status": "ACTIVE",
+      "relation_value": "guest",
+      "representation_depth": 2
+    },
+    "event_access": {
+      "event": {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A keeps a hand near the bench edge.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d96bb375dfeec6f2410b25c8c79132421513893e5435977c6e1fadf6be7afd3",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      "receipt": {
+        "channel": "co_present",
+        "clock": 228
+      },
+      "status": "PERCEIVED"
+    },
+    "event_clock": 228,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d96bb375dfeec6f2410b25c8c79132421513893e5435977c6e1fadf6be7afd3",
+    "grade": "SOURCEFREE_S2_ONLY",
+    "native": false,
+    "private_state": "NOT_READ",
+    "read_boundary": {
+      "event": "C01_ACTOR_RELATIVE_RECEIPT",
+      "physical_copresence": "NOT_CONSULTED",
+      "private_state": "NEVER_RETURNED",
+      "relation": "DATED_EXPOSURE_ONLY"
+    },
+    "relation_scope": {
+      "custody": "VERIFIED",
+      "relations": [
+        {
+          "counterpart": {
+            "actor_id": "TEST_ONLY_C05_R2_CLOSURE_NEIGHBOR",
+            "alias": "CO"
+          },
+          "entries": [
+            {
+              "change": "ENTER",
+              "clock": 222,
+              "episode_hash": "95ef88e140652cd8ddf52c9b954ad3b1655e376c263b3a06ce7b1fd986d2f272",
+              "episode_id": "TEST_ONLY_BP4_EP_95ef88e140652cd8ddf52c9b954ad3b1655e376c263b3a06ce7b1fd986d2f272",
+              "operation_id": "closure:enter",
+              "private_state": "NOT_READ",
+              "value": "guest"
+            }
+          ],
+          "history_complete": true,
+          "parties": [
+            {
+              "actor_id": "TEST_ONLY_C05_R2_CLOSURE_NEIGHBOR",
+              "alias": "CO"
+            },
+            {
+              "actor_id": "TEST_ONLY_C05_R2_CLOSURE_PARENT",
+              "alias": "CP"
+            }
+          ],
+          "prior_exposure": "QUALIFIED",
+          "private_state": "NOT_READ",
+          "promotions": [
+            {
+              "clock": 228,
+              "depth": 2,
+              "episode_hash": "c0b665df9d23046e4048186e6793106e33e6e5a969b98e95cfd86fd53608f57e",
+              "episode_id": "TEST_ONLY_BP4_EP_c0b665df9d23046e4048186e6793106e33e6e5a969b98e95cfd86fd53608f57e",
+              "history_hash": "2109dc69a8a918abfdbee30e56a4e55f1c795c13cb04e7f168d1e4b4b3340ab6",
+              "operation_id": "closure:promote:1"
+            }
+          ],
+          "relation": "closure-household",
+          "relation_key": "e124913fb27366bdbd1839aa89f45cc611142e677169fbe09b53cd09ab04c383",
+          "representation_depth": 2,
+          "status": "ACTIVE",
+          "value": "guest",
+          "viewer_is_party": true,
+          "visible_history_hash": "2109dc69a8a918abfdbee30e56a4e55f1c795c13cb04e7f168d1e4b4b3340ab6"
+        }
+      ],
+      "representation_depth": 2,
+      "status": "QUALIFIED",
+      "withheld_relation_count": 0
+    },
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "schema": "SOROK_P2_ACTOR_RELATIVE_CONTEXT@1",
+    "viewer": {
+      "actor_id": "TEST_ONLY_C05_R2_CLOSURE_PARENT",
+      "alias": "CP",
+      "kind": "SUPPORTING_ACTOR",
+      "role": "parent"
+    }
+  },
+  "first_promotion": {
+    "primary_episode_id": "TEST_ONLY_BP4_EP_c0b665df9d23046e4048186e6793106e33e6e5a969b98e95cfd86fd53608f57e",
+    "representation_depth": 2,
+    "status": "RECORDED"
+  },
+  "history": {
+    "as_of_clock": 228,
+    "branch": "first_session",
+    "custody": "VERIFIED",
+    "grade": "SOURCEFREE_S2_ONLY",
+    "native": false,
+    "private_state": "NOT_READ",
+    "read_boundary": {
+      "physical_copresence": "NOT_CONSULTED",
+      "private_state": "NEVER_RETURNED",
+      "unexposed_scope": "QUALIFIED_HOLD"
+    },
+    "relations": [
+      {
+        "counterpart": {
+          "actor_id": "TEST_ONLY_C05_R2_CLOSURE_NEIGHBOR",
+          "alias": "CO"
+        },
+        "entries": [
+          {
+            "change": "ENTER",
+            "clock": 222,
+            "episode_hash": "95ef88e140652cd8ddf52c9b954ad3b1655e376c263b3a06ce7b1fd986d2f272",
+            "episode_id": "TEST_ONLY_BP4_EP_95ef88e140652cd8ddf52c9b954ad3b1655e376c263b3a06ce7b1fd986d2f272",
+            "operation_id": "closure:enter",
+            "private_state": "NOT_READ",
+            "value": "guest"
+          }
+        ],
+        "history_complete": true,
+        "parties": [
+          {
+            "actor_id": "TEST_ONLY_C05_R2_CLOSURE_NEIGHBOR",
+            "alias": "CO"
+          },
+          {
+            "actor_id": "TEST_ONLY_C05_R2_CLOSURE_PARENT",
+            "alias": "CP"
+          }
+        ],
+        "prior_exposure": "QUALIFIED",
+        "private_state": "NOT_READ",
+        "promotions": [
+          {
+            "clock": 228,
+            "depth": 2,
+            "episode_hash": "c0b665df9d23046e4048186e6793106e33e6e5a969b98e95cfd86fd53608f57e",
+            "episode_id": "TEST_ONLY_BP4_EP_c0b665df9d23046e4048186e6793106e33e6e5a969b98e95cfd86fd53608f57e",
+            "history_hash": "2109dc69a8a918abfdbee30e56a4e55f1c795c13cb04e7f168d1e4b4b3340ab6",
+            "operation_id": "closure:promote:1"
+          }
+        ],
+        "relation": "closure-household",
+        "relation_key": "e124913fb27366bdbd1839aa89f45cc611142e677169fbe09b53cd09ab04c383",
+        "representation_depth": 2,
+        "status": "ACTIVE",
+        "value": "guest",
+        "viewer_is_party": true,
+        "visible_history_hash": "2109dc69a8a918abfdbee30e56a4e55f1c795c13cb04e7f168d1e4b4b3340ab6"
+      }
+    ],
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "schema": "SOROK_P2_CONTINUING_RELATION_READ@1",
+    "status": "QUALIFIED",
+    "viewer": {
+      "actor_id": "TEST_ONLY_C05_R2_CLOSURE_PARENT",
+      "alias": "CP",
+      "kind": "SUPPORTING_ACTOR",
+      "role": "parent"
+    },
+    "withheld_relation_count": 0
+  },
+  "passed": true,
+  "report_commit": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "schema": "SOROK_C05_R2_INDEPENDENT_CLOSURE@1",
+  "second_refusal": "RELATION_PROMOTION_NOT_DEEPER",
+  "state_root": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-c05-focused-r2/scratch/closure-0smu0azc/p2"
+}

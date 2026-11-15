@@ -1,0 +1,85 @@
+{
+  "schema": "SOROK_C05_FOCUSED_R2_G1_G5_MATRIX@1",
+  "issue": "C05",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE_C05_OPERATION_CUSTODY",
+  "accepted_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "final_report": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "frozen_start": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "original_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "final report 1cf1a371 and implementation/tests 5d771dd pinned",
+        "only product change from bc45f699a is one line in promote_relation",
+        "supporting_actor.py unchanged 98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+        "no owner/transaction/schema/ledger/actor change",
+        "metadata-only commits after code",
+        "product read-only"
+      ],
+      "scope": "sourcefree mechanical repair only; no native ADP-015/C4 owner"
+    },
+    "G2_build_actual_first_consumer": {
+      "status": "PASS_FOCUSED_CLOSURE_AND_NORMAL",
+      "evidence": [
+        "focused R2 test 1 passed",
+        "original C05 5, C01 6, C04 identity 6, C04 custody 12, P2 owner 5 passed",
+        "byte-identical 89/89 normal/negative/cold probe",
+        "independent closure probe 12/12",
+        "real P2 owner event and later consumer preserved"
+      ],
+      "scope": "event content inherited sourcefree P2/S45/S39; not G2 language or autonomous selection"
+    },
+    "G3_falsification": {
+      "status": "PASS_DEFECT_CLOSED",
+      "evidence": [
+        "byte-identical original defect probe at corrected source",
+        "literal exit 2 expected; old bug oracle not reproduced",
+        "second refusal RELATION_PROMOTION_NOT_DEEPER before append",
+        "zero episode/change/head/world/perception/checkpoint delta",
+        "relation QUALIFIED; history/context byte-exact; original retry UNCHANGED",
+        "base RED preserved from b5b810c; author receipt semantically matches"
+      ],
+      "scope": "caller exposure/append boundaries remain; no owner signature or perception proof"
+    },
+    "G4_preservation_restore_cold": {
+      "status": "PASS_PRESERVATION_SCOPED",
+      "evidence": [
+        "earlier event contexts, normal depth 1 to 2, partial exposure and private boundaries remain green",
+        "change/head sever restore and new-process cold remain green",
+        "C01/C04/P2 suites pass; C12 verify ok after refusal"
+      ],
+      "scope": "concurrency, branch-fork replay, depth >2 and whole-life C05 unproved/unobserved"
+    },
+    "G5_independent_receiving": {
+      "status": "ACCEPT_SCOPED_SOURCEFREE_C05_OPERATION_CUSTODY",
+      "evidence": [
+        "exact in-scope defect closed at the same public writer path with zero write",
+        "no material regression observed",
+        "one final verdict and STOP"
+      ],
+      "scope": "operation/custody of caller-authorized sourcefree illustrative relations only; original full C05 actor qualification unproved"
+    }
+  },
+  "accepted_scope": [
+    "caller-authorized sourcefree illustrative relation value/change/exposure",
+    "both relation parties mandatory in caller exposure",
+    "dated append-only continuity/history",
+    "finite depth 1 to 2",
+    "qualified custody holds",
+    "existing later P2 event consumer",
+    "bounded mechanical operation/custody only"
+  ],
+  "not_accepted": [
+    "owner receipt qualifying relation knowledge",
+    "relation PERCEIVED actor truth",
+    "coherent append authority as owner authentication",
+    "native ADP-015/C4 relation authority",
+    "autonomy, psychology, generated language, G2 selection, complete J1, J2, D04/D05",
+    "human/scientific/source-rights receiving and protected merge",
+    "fork/concurrency uniqueness, depth >2, whole C05 person life"
+  ],
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "terminal": "STOP"
+}

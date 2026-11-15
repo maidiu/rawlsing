@@ -1,0 +1,13 @@
+diff --git a/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py b/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py
+index 343cf08a2..d2120fa9f 100644
+--- a/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py
++++ b/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py
+@@ -1042,7 +1042,7 @@ def promote_relation(session, *, actor_id: str, other_actor_id: str,
+         episode for episode in scope["changes"]
+         if (episode.get("body") or {}).get("change") in RELATION_STATE_CHANGES
+     ]
+-    machine = _state_machine(state_changes)
++    machine = _state_machine(scope["changes"])
+     if machine["status"] == "ABSENT":
+         raise RecursionRefusal("RELATION_PROMOTION_EMPTY")
+     if depth <= machine["depth"]:
