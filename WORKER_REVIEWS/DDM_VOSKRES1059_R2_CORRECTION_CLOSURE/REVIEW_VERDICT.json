@@ -1,0 +1,120 @@
+{
+  "schema": "DDM_VOSKRES1059_R2_CORRECTION_CLOSURE_VERDICT@1",
+  "candidate": {
+    "commit": "af0c61111a0bf5b5df63db2fecde777279aaba4e",
+    "root": "WORKER_RETURNS/DDM_VOSKRES1059_R2/",
+    "first_r2": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+    "first_passes": "819dc54c69633dd75b6d13ac0ee8c3bbfd624853"
+  },
+  "original_review": {
+    "commit": "1b525d00ee55a78e18d78e8f1afcb81bb9682bb8",
+    "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "status": "UNCHANGED_PRESERVED_SUPERSEDED_HISTORICAL_REVIEW"
+  },
+  "reviewer": {
+    "session": "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+    "role": "SAME_DISTINCT_INDEPENDENT_G5_CORRECTION_CLOSURE"
+  },
+  "mode": {
+    "grade": "DOCUMENTARY_SOURCE_ONLY_CORRECTION_CLOSURE",
+    "scientific_execution": false,
+    "tests_or_ci": false,
+    "raw_respondent_bytes": false,
+    "product_edit_or_protected_merge": false,
+    "subagents": false,
+    "new_whole_audit": false
+  },
+  "verdict": "ACCEPT_SCOPED_S1",
+  "accepted_scope": "Documentary correction closure for the 11 original defect IDs at af0c61111a0bf5b5df63db2fecde777279aaba4e. No production acceptance, no scientific-conservation execution, no runtime/historical claim.",
+  "conformance": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "ids": [
+      "G1-D1",
+      "G1-D2",
+      "G2-D1",
+      "G2-D2",
+      "G2-D3",
+      "G2-D4",
+      "G3-D1",
+      "G3-D2",
+      "G4-D1",
+      "G4-D2",
+      "G4-D3"
+    ]
+  },
+  "gates": {
+    "G1": {
+      "verdict": "ACCEPT_SCOPED_S1",
+      "corrections": [
+        "G1-11 added for B_R1/COST_CARDINALITY.tsv:9 depth<=3; exact file SHA-256 and physical row 9/per_operation_cardinality cell.",
+        "All 11 G1 rows carry source commit, file SHA-256, physical 1-based row, column, and exact cell value; G1-02/G1-10 prose-only keys removed."
+      ],
+      "residual": "None material. Non-gating: G1-02 source_column names the row-key claim cell while the superseded O(k^2) text is in the operation cell; row 14 + superseded text are unambiguous. If literal false-cell naming is desired, use operation."
+    },
+    "G2": {
+      "verdict": "ACCEPT_SCOPED_S1",
+      "corrections": [
+        "IN-11..14 add canonical manifest.json, structural join index, join audit, and v552j_v553_handoff_manifest.json.",
+        "IN-09/IN-10 corrected canonical-only/provenance roles; IN-15..17 add legacy packet, dereferenced V551J frames, and V552 optional pressure tables; V-04/V-05 split canonical and legacy paths.",
+        "J-07/J-08 include the V551J candidate bundle.",
+        "J-02/J-10 and G3 section 5 record joint_pattern_respondent_membership and exact-respondent identity stranded at V550J."
+      ],
+      "residual": "None material. Exact respondent rows and historical run rows remain unavailable/HELD."
+    },
+    "G3": {
+      "verdict": "ACCEPT_SCOPED_S1",
+      "corrections": [
+        "Concrete JCFG-GSS-ABORTION-CONDITIONS / gss_abortion_condition_family (GSS 2010 US; abdefect, abhlth, abrape, abany, absingle, abnomore) selected and traced to exact missing artifacts.",
+        "True diamond input graph replaces the false serial headline; no V550J->V551 atom or V551J->V552 fact edge.",
+        "Historical execution remains HELD: 0/9, no substrate, no positive-load row."
+      ],
+      "residual": "Historical output rows/positive load remain HELD_EXACT_EVIDENCE. Non-gating citation offsets: CURRENT_STATE.json line 27 should be 26; question_family_registry.yaml range 7-85 should include line 6 for family_id."
+    },
+    "G4": {
+      "verdict": "ACCEPT_SCOPED_S1",
+      "corrections": [
+        "G4-03/G4-06 use NONE_IN_PRODUCTION and separate producer/guard/test-only consumers.",
+        "G4-07 uses primary cut-scoped search at 3e0ed079 and 6a5c12; PROGRAMMA is a lead only.",
+        "G4-08 records pre553_legacy_compat.py COMPATIBILITY_GATE_DENIES_J_PARITY, not a carrier or conservation proof."
+      ],
+      "residual": "Conditional-index complete producer/consumer remains unproved/HELD; external caller NOT_INSPECTED; no global-loss claim."
+    },
+    "G5": {
+      "verdict": "ACCEPT_SCOPED_S1",
+      "review_status": "PERFORMED_REVIEW_COMPLETE",
+      "corrections": [
+        "Independent closure performed on the exact candidate; original verdict preserved unchanged; no self-acceptance."
+      ],
+      "residual": "No further review round for these 11 IDs. HQ publishes; finite external evidence obligations remain as stated."
+    }
+  },
+  "historical_holds": [
+    {
+      "hold_id": "G3-HISTORICAL-OUTPUTS",
+      "status": "HELD_EXACT_EVIDENCE",
+      "artifact": "Actual V550J/V551J/V552J/V553 output rows or positive-load receipt for the selected GSS family.",
+      "preserved": "C4R1 POSITIVE_LOAD_PROVED=NO, 0/9; section85 CURRENT_STATE real chain NOT_RUN; no respondent substrate."
+    },
+    {
+      "hold_id": "G4-CONDITIONAL-PRODUCER-READER",
+      "status": "HELD_EXACT_EVIDENCE",
+      "artifact": "Real build_conditional_determinicity_index invocation with nonempty rows/run id, or a real numeric/structural reader.",
+      "preserved": "No in-tree caller/__main__; V552 local dead socket; V551J no ingest; external caller NOT_INSPECTED; no global-loss claim."
+    }
+  ],
+  "external_evidence_obligations": [
+    "Close G3-HISTORICAL-OUTPUTS only with authorized historical output/positive-load evidence; do not fabricate a run or use raw source outside grant.",
+    "Close G4-CONDITIONAL-PRODUCER-READER only with a real producer invocation or real reader; PROGRAMMA remains a lead.",
+    "No production acceptance, runtime equivalence, scientific equivalence, or protected merge is granted by this closure."
+  ],
+  "non_gating_notes": [
+    "G1-02 source_column identifies the claim row-key cell; superseded O(k^2) text is in operation. Row 14 + superseded text are unambiguous; literal false-cell naming would use operation.",
+    "G3/SOURCE_LEDGER CURRENT_STATE.json citation says 2,27; real_empirical_j_chain_status is line 26 (line 27 is response_portability_status).",
+    "G3/SOURCE_LEDGER question_family_registry.yaml range says 7-85; family_id is line 6; authority CSV line 6 independently establishes the family."
+  ],
+  "no_production_acceptance": true,
+  "original_revise_preserved": true
+}

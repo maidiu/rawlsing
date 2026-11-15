@@ -1,0 +1,67 @@
+{
+  "schema": "DDM_VOSKRES1059_R2_CORRECTION_CLOSURE_MANIFEST@1",
+  "candidate": {
+    "commit": "af0c61111a0bf5b5df63db2fecde777279aaba4e",
+    "root": "WORKER_RETURNS/DDM_VOSKRES1059_R2/",
+    "first_r2": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+    "first_passes": "819dc54c69633dd75b6d13ac0ee8c3bbfd624853"
+  },
+  "original_review": {
+    "commit": "1b525d00ee55a78e18d78e8f1afcb81bb9682bb8",
+    "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "status": "UNCHANGED_PRESERVED_SUPERSEDED_HISTORICAL_REVIEW"
+  },
+  "reviewer": {
+    "session": "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+    "role": "SAME_DISTINCT_INDEPENDENT_G5_CORRECTION_CLOSURE"
+  },
+  "verdict": "ACCEPT_SCOPED_S1",
+  "scope": "DOCUMENTARY_SOURCE_ONLY_CORRECTION_CLOSURE",
+  "conformance": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0
+  },
+  "intended_directory": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/",
+  "staging_directory": "voskres1059-r2-correction-closure-20261115/ (root)",
+  "staging_reason": "Harness external_directory permission denied creation of the new review subdirectory; new worktree root was writable. HQ must place files in the intended directory.",
+  "files": [
+    {
+      "intended_path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/00_RETURN.md",
+      "staged_path": "WORKER_REVIEWS_DDM_VOSKRES1059_R2_CORRECTION_CLOSURE_00_RETURN.md",
+      "sha256": "ca5354568fcce97fb6d0a9ad1aa09e1e3ae2873c94478c79b5a3ae5d606f1fef",
+      "purpose": "closure return"
+    },
+    {
+      "intended_path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/REVIEW_VERDICT.json",
+      "staged_path": "WORKER_REVIEWS_DDM_VOSKRES1059_R2_CORRECTION_CLOSURE_REVIEW_VERDICT.json",
+      "sha256": "54250cea4b7295ce5cdc0400c480d0fe9dcd9196b99cdf8d728c9a2eba6a1d11",
+      "purpose": "machine closure verdict"
+    },
+    {
+      "intended_path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/11_ID_CONFORMANCE.tsv",
+      "staged_path": "WORKER_REVIEWS_DDM_VOSKRES1059_R2_CORRECTION_CLOSURE_11_ID_CONFORMANCE.tsv",
+      "sha256": "ebcc3c8d6ac91309898388be861a2751431703cfab30de9b3b9eb3681d113e63",
+      "purpose": "11-ID conformance"
+    },
+    {
+      "intended_path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/G5_SOURCE_CHECKS.tsv",
+      "staged_path": "WORKER_REVIEWS_DDM_VOSKRES1059_R2_CORRECTION_CLOSURE_G5_SOURCE_CHECKS.tsv",
+      "sha256": "f2c009e18dbad00c3916b2084b76ebe8ac300963b4d8501df71fd76fedc4275c",
+      "purpose": "concise source checks"
+    }
+  ],
+  "historical_holds": [
+    "G3-HISTORICAL-OUTPUTS: 0/9 positive load; exact output rows/positive-load receipt not available.",
+    "G4-CONDITIONAL-PRODUCER-READER: complete producer invocation/reader unproved; external caller NOT_INSPECTED."
+  ],
+  "non_gating_notes": [
+    "G1-02 source_column names claim row-key cell; superseded O(k^2) text is operation; row 14 + text unambiguous.",
+    "G3/SOURCE_LEDGER CURRENT_STATE.json citation 2,27; real_empirical_j_chain_status is line 26.",
+    "G3/SOURCE_LEDGER question_family_registry.yaml range 7-85; family_id is line 6."
+  ],
+  "no_production_acceptance": true,
+  "no_scientific_execution": true,
+  "publication": "HQ publishes; no commit/push by reviewer."
+}
