@@ -1,0 +1,123 @@
+{
+  "review_id": "ZAK1057:R3:REVIEW:03",
+  "lane": "03",
+  "reviewer_role": "genuinely distinct nonauthor documentary reviewer",
+  "frozen_target": {
+    "commit": "e27154883288a3265844791be0782edeaae61979",
+    "root": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/",
+    "payload_manifest_verified": "19/19 SHA-256 and byte matches against HQ 03_INTAKE_DISPOSITION.json",
+    "evidence_tsv_sha256": "76a548956d4b84223bda80e303671c31f4e3a83bc411f5950f327626c0f50031",
+    "return_md_sha256": "1462882ae523f11f7761a7e1b81ea10f935128be25b90c0bdb03b4f4cd515b39"
+  },
+  "hq_receiving_cut": "2780d148d695f339f49b4dddbdf70648776e588d",
+  "protected_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "historical_cut": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+  "candidate_cuts": [
+    "b5600da96358f8526471d635a1befa8daa3f098b",
+    "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+    "ad17076cc95b9383ab3b28879f471026bcba9ff7",
+    "0d90c247"
+  ],
+  "verdict": "ACCEPT_SCOPED_S1",
+  "accepted_scope": "The five round-two distinctions are source-accurate at S1 static documentary grade. Existing independently accepted round-one 03 claims are preserved and not re-reviewed.",
+  "distinctions": [
+    {
+      "id": "D1",
+      "claim": "StructuralAdmissionRule is caller-supplied and has no protected non-test constructor/deserializer/materializer at the inspected cut.",
+      "source": "6a5c12f0:rawlsing_next/pre553_structural_admission.py blob fe8f706afbb5739d026846952681081b2937e9a8 L201-349; test fixture 6a5c12f0:rawlsing_next/tests/test_pre553_structural_admission.py blob c754382d1c8a96bece0084233bb8ec144425b170 L102-128",
+      "verdict": "ACCURATE_BOUNDED",
+      "notes": "Only direct constructor found is the test fixture; no from_dict/to_dict/JSON loader/materializer in the module; whole-tree Python class search has no hit outside rawlsing_next. Bounded named-symbol/direct-constructor negative, not global absence."
+    },
+    {
+      "id": "D2",
+      "claim": "Checked RequiredAuthorityBinding resolution is distinct from carried target_use_permission_refs.",
+      "source": "6a5c12f0:rawlsing_next/pre553_structural_admission.py blob fe8f706afbb5739d026846952681081b2937e9a8 L175-199 L253-254 L278-284 L447-478 L514-526 L696-704 L740-742 L793 L803-809; test fixture blob c754382d1c8a96bece0084233bb8ec144425b170 L32 L89-96 L102-128",
+      "verdict": "ACCURATE_PROVENANCE_ONLY",
+      "notes": "The gate resolves bindings and checks target-use/source scope; the declared permission ExactRef tuple is copied into the receipt and is not added to the authority closure. No equality check between the fixture ExactRef and AuthorityRef. This supports a carried-versus-checked provenance observation, not an authorization defect or alternative grant. The return's own qualification is correct. The 00_RETURN phrase 'same tag' is imprecise; EV006 is exact."
+    },
+    {
+      "id": "D3",
+      "claim": "RouteObligation.from_structural_admission is a real static receipt consumer, but operational invocation is not demonstrated; the issued-workload path does not invoke I04.",
+      "source": "6a5c12f0:rawlsing_next/pre553_analytical_state_and_route.py blob 3a5e3db8a0897900d0b2606813bda7c3f586d46e L297-450 L1506-1593; 6a5c12f0:rawlsing_next/pre553_carrier_execution.py blob ee9b3af02bfca9238eb72ea45d94073d47769a07 L73-147; 6a5c12f0:rawlsing_next/pre553_issued_workload.py blob 28174766f61a15f7296f575d615462d6410cfcb6 L1-33 L280-367",
+      "verdict": "ACCURATE_NO_RUNTIME",
+      "notes": "Receiver callers are tests only. Supplementary locator L1506-1593 is the adjacent anti-laundering verifier, not the receiver body; the claim is supported by L297-450. Runtime absence remains NOT_PROVED; no execution forced."
+    },
+    {
+      "id": "D4",
+      "claim": "The selected-QSM candidate binds to Route B/I03 and does not produce an I04 rule or receipt.",
+      "source": "ad17076c:rawlsing_next/pre553_zak03s_selected_qsm_reader.py blob 07bd2b2c88787e8b2091e652c677864be2ba5244 L74-97 L112-183 L186-282; test call site ad17076c:rawlsing_next/tests/test_pre553_zak03s_selected_qsm_reader.py L136; later 0d90c247 L300",
+      "verdict": "ACCURATE_CANDIDATE_ONLY",
+      "notes": "Actual output is SelectedQsmRouteResult(route=RouteBProductionResult, binding_receipt=...); first consumer is execute_route_b_production then tests only. Receipt records i05_historical_qsm_authority_established False; later candidate adds issued_batch_consumption_of_selected_qsm False. No StructuralAdmissionRule and no I04 call. Unmerged and unexecuted."
+    },
+    {
+      "id": "D5",
+      "claim": "B49/R157 are candidate source/C11 producers, and FF/service producers are adjacent owners, not I04 rule producers.",
+      "source": "b5600da9:rawlsing_next/pre553_inherited_source_rules.py blob 5f6efaceb18d92a362d065d12fdca4076d53fa16 L255-326 L409-503; b5600da9:rawlsing_next/pre553_source_native_preimage_adapter.py blob e27c116b9a5654a8709aff1042322dc51d3296d3 L49-52 L280-365; d81bc2c6:rawlsing_next/source_configuration/factory.py blob 3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a L421-499; 6a5c12f0 F07 blob 06c312209148ab5bdd2c2077f3c887bdc9f948c8 L216-264 L282; wave1 FF blob c5fb675fd6f95cb7dc9e0ad505224803839cc645 L1-7 L439-464; GT12 bridge; service applicability blob 3e40caca29e8c96ee1f412f919cfc7dba63f96c4; F8 blob 848d2d0eedb04b792747e9d6aaa49bb39d108a2c; EE14 blob 74e6ee826e8b6a2adebe84969fedcea5716d5b63",
+      "verdict": "ACCURATE_DIFFERENT_OWNERS",
+      "notes": "B49/R157 do not construct StructuralAdmissionRule or I04 permission refs. F07/GT12/FF/service paths use different contracts and field shapes and do not import or call I04. No I04 provenance edge is closed."
+    }
+  ],
+  "round_one_preservation": {
+    "preserved": true,
+    "claims": [
+      "I04 StructuralAdmissionRule is caller-supplied",
+      "RouteObligation.from_structural_admission is a real static receipt consumer whose callers are tests",
+      "issued-workload path does not invoke I04",
+      "candidate source-rule selector is not protected adoption"
+    ],
+    "note": "Round-one 03 ACCEPT_SCOPED_S1 preserved; this review addresses only the round-two delta."
+  },
+  "material_defects": [],
+  "non_material_notes": [
+    "00_RETURN paragraph citation numbers are misaligned; HQ already directs use of EVIDENCE.tsv. This review used EVIDENCE.tsv.",
+    "EV007 supplementary locator L1506-1593 is the adjacent assert_route_not_laundered verifier, not the receiver body; the claim is supported by L297-450. Overbroad locator, not a false claim.",
+    "00_RETURN phrase 'same tag' is imprecise for the fixture ExactRef/AuthorityRef; EV006 is exact.",
+    "EV023 'whole-tree' is a protected Git/Python class-symbol search; documentary/data-inventory mentions exist outside rawlsing_next, but no code constructor found.",
+    "The 00_RETURN body paragraph does not name gt12_c_to_d_relation_bridge.py, but the producer/consumer map row acknowledges 'GT12 FF rule'; that bridge is an FF relation producer, not I04."
+  ],
+  "bounded_omitted_producer_challenge": {
+    "question": "Could a generic materializer, hash-inverse, documentary inventory lead, or adjacent FF producer construct a protected non-test StructuralAdmissionRule?",
+    "alternatives_tested": [
+      "pre553_carrier_execution.materialize_public_object: public schema map has StructuralEmpiricalAdmission but not StructuralAdmissionRule; exact canonical public preimage only",
+      "StructuralAdmissionRule.semantic_material plus verify_content_hash_binding: one-way hash projection/verification, no inverse constructor",
+      "LW-F16 inventory row and H046 disposition mentions of PRE553_STRUCTURAL_ADMISSION_RULE and GT1/GT2 hash a445e43d: documentary crosswalk text, no code constructor",
+      "gt12_c_to_d_relation_bridge make_gt12_c_to_d_admission_rule/admit_gt12_c_relation: FieldForgeRelationAdmissionRule, not I04 StructuralAdmissionRule"
+    ],
+    "result": "CHALLENGE_SURVIVES_BOUNDED",
+    "ceiling": "Bounded named-symbol/direct-constructor negative, not global absence; generated/dynamic constructors outside Git and runtime reflection remain invisible; no execution required."
+  },
+  "unresolved_edges": [
+    "Protected non-test invocation of evaluate_structural_empirical_admission: NOT_PROVED",
+    "Non-test caller of RouteObligation.from_structural_admission: NOT_FOUND at inspected cut; callers are tests",
+    "C11 StructuralAdmissionReplayBinding PRESENT produced from ADMITTED: NOT_PROVED",
+    "Selected-QSM to I04 rule/receipt production: NOT_FOUND at inspected cuts; candidate stops at Route B/I03",
+    "Historical selected QSM exact file/version/row payload and original execution receipt: UNKNOWN",
+    "Adoption of B49/R157/selected-QSM/FF/service candidates: NOT_PROVED",
+    "Generated/dynamic constructors outside Git or runtime reflection: not visible",
+    "No security defect, missing engine, replacement requirement, or protected integration claimed"
+  ],
+  "runtime": {
+    "start_utc": "2026-11-15T04:56:42Z",
+    "start_local": "2026-11-14T23:56:42-0500",
+    "end_utc": "2026-11-15T05:07:04Z",
+    "end_local": "2026-11-15T00:07:04-0500",
+    "elapsed_seconds": 622,
+    "model_context": "opencode-go/deepseek-v4.1-flash",
+    "max_variant_exposed": "UNKNOWN",
+    "provider_routing_exposed": "UNKNOWN",
+    "provider_or_model_change": false,
+    "subagents": false,
+    "token_usage": "UNKNOWN",
+    "cost_estimate_usd": "UNKNOWN",
+    "cost_grade": "No billing or allowance fields exposed; not an invoice",
+    "retries": "0 observed command retries; provider retries UNKNOWN"
+  },
+  "publication": {
+    "branch": "docs/zak1057-r3-review-03-mainmac-20261115-r1",
+    "base_commit": "2780d148d695f339f49b4dddbdf70648776e588d",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-r3-review-03",
+    "push_status": "PENDING_AT_WRITE"
+  },
+  "payload_hashes": "See MANIFEST.json and CHANGED_FILES.txt in the return root; frozen target hashes above.",
+  "authority_ceiling": "S1 static documentary only; no S2/S3, native run, scientific/actor/source issuance, security defect finding, replacement requirement, adoption, or protected merge."
+}
