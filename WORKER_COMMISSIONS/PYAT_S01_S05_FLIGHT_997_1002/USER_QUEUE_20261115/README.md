@@ -39,3 +39,7 @@ J3ownershipresolution starts now; preciseproductgrant remains missing and no pro
 ## J2 execution returned; independent receiving launched
 
 R6 execution cb5f4c665:89sevenfilePASS, threeissuerrefusals+onependingadmissioncase withinfourfocusedPASS,18fatePASS.21evidence-only paths;9code/testblobs andoriginalwitnessbytes checked. HistoricalwitnessRED alone is not actualR6refusalproof; that and genuineexecuteddiscovery are explicitreviewattacks. Same originalreviewer ses_e30a442d8ffeYBbXi7rPUpPxoc now launched as pyat997-r6-independent-g5-20261115 PID60998 against exactreturn in exclusivereview/pyat997-r6-g5-20261115. No author acceptance. See RETURNS/J2_R6_EXECUTION_INTAKE.json. Other two authorized lanes continue;threeworkers total, no extra fleet.
+
+## J1 repair returned; original independent G5 launched
+
+Authorcodece7704253/returnb3075129f received, notaccepted. Canonicalbody/ref validation added inside grantednative_build/privatehelper; unchangedpublicselector, evaluator,writer/layout/I02. Returnedexactcoherentpoison nowtypedrefusesbeforefact. Darwin/Linuxsourcefree suites and256respondentresourceevidence inspected atauthorgrade; overlappingtestcountsnotadded. Sevenpinsmatch. Same originalreviewerses_e30c25800ffeT8XbyTuHekRCme launched PID63140 against exactcombineddescendant inreview/pyat999-native-g5-20261115. BaselinepublicREDprovenance is explicitreviewquestion; no inventedcorrection/extraAB. SeeRETURNS/J1_NATIVE_BODY_TRUTH_INTAKE.json. ThreecurrentlanesareJ1G5,J2G5,VOSKRESauthor. NoJ5productiongrantor999acceptanceimplied.
