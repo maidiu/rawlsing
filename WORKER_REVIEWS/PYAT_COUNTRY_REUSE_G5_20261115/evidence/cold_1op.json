@@ -1,0 +1,82 @@
+{
+  "cell_state_counts": {
+    "OBSERVED_POSITIVE": 2
+  },
+  "core_id": "core-000",
+  "counters": {
+    "c11_repository_tripwire_hits": 0,
+    "event_object_materializations": 513,
+    "family_calls": 128,
+    "family_object_materializations": 640,
+    "family_rows_yielded": 640,
+    "read_table_calls": 0,
+    "read_table_tripwire_hits": 0,
+    "row_group_compressed_bytes": 5721849,
+    "row_group_reads": 426,
+    "row_group_rows": 6816,
+    "row_group_uncompressed_bytes": 23326183,
+    "selected_event_calls": 384,
+    "selected_events_yielded": 384,
+    "session_build_seconds": 0.08250452304491773,
+    "session_builds": 1,
+    "session_enter_seconds": 0.1000301240128465,
+    "session_opens": 1,
+    "session_temp_max_bytes": 1703936
+  },
+  "cpu_system_seconds": 0.06997299999999998,
+  "cpu_user_seconds": 0.5040419999999999,
+  "fact_ref": {
+    "content_hash": "90e2c05ba091cd41c4cac0332702f15b6f0f32097eb02f6b90b1884a52b30f6c",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:90e2c05ba091cd41c4cac0332702f15b6f0f32097eb02f6b90b1884a52b30f6c"
+  },
+  "fact_sha256": "d5e1df1649063cfea356ae0977fbd2a6cee02b170b0cffba93d64938ea7beee0",
+  "facts_count": 1,
+  "family": "marginal",
+  "kind": "COLD_SINGLE_OPERATION_CALIBRATION",
+  "measure": "RAW",
+  "measure_basis_ref": {
+    "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+    "kind": "MEASURE_BASIS",
+    "object_id": "urn:test:i03:measure_basis:RAW"
+  },
+  "op_id": "marginal_A",
+  "predicate_ref": {
+    "content_hash": "4b606988feafda76179871b089fd7cb4b42f0d5e63f5b5bf109eb01d22aaf8ef",
+    "kind": "EmpiricalPredicate@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4b606988feafda76179871b089fd7cb4b42f0d5e63f5b5bf109eb01d22aaf8ef"
+  },
+  "process_tree_rss_after_bytes": 81080320,
+  "process_tree_rss_before_bytes": 67702784,
+  "process_tree_rss_peak_bytes": 81080320,
+  "query_ref": {
+    "content_hash": "b566e92425b31899aa21d96026a8de3bda48ef932ec5382948875ec16c568f53",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b566e92425b31899aa21d96026a8de3bda48ef932ec5382948875ec16c568f53"
+  },
+  "raw_denominator_support": 128,
+  "raw_numerator_support": 128,
+  "release_refs": [
+    {
+      "content_hash": "92db570ab1d722fb56d4eb2084b3ca20c3875f622dbdc5b9c0837f812b786310",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-COUNTRY-REUSE-20261115"
+    }
+  ],
+  "replay_ref": {
+    "content_hash": "443bd08726a6ba7f71fceff59d2a421283a482dda0f06a49c70aae4d5a02957d",
+    "kind": "PRE553_I03_QUERY_REPLAY",
+    "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:443bd08726a6ba7f71fceff59d2a421283a482dda0f06a49c70aae4d5a02957d"
+  },
+  "self_maxrss_bytes": 80326656,
+  "self_rss_after_bytes": 80175104,
+  "self_rss_before_bytes": 66887680,
+  "target_topology_cells": 2,
+  "targets": [
+    "A"
+  ],
+  "typed_state": "SUPPORTED",
+  "wall_seconds": 0.49875105603132397,
+  "weighted_denominator_support": null,
+  "weighted_numerator_support": null
+}

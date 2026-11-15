@@ -1,0 +1,113 @@
+{
+  "all_exit_zero": true,
+  "commands": [
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/probe/preflight.py"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115",
+      "exit_code": 0,
+      "finished_utc": "2026-11-15T17:14:01.658201+00:00",
+      "name": "preflight",
+      "started_utc": "2026-11-15T17:14:01.415312+00:00",
+      "stderr_log": "logs/preflight.stderr.log",
+      "stderr_tail": "",
+      "stdout_log": "logs/preflight.stdout.log",
+      "stdout_tail": "{\n  \"cpu_count\": 16,\n  \"estate_disk\": [\n    499828957184,\n    494862368768,\n    4966588416\n  ],\n  \"git_branch\": \"review/pyat-country-reuse-g5-20261115\",\n  \"git_head\": \"6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb\",\n  \"load_average_1_5_15\": [\n    2.09521484375,\n    2.75830078125,\n    2.822265625\n  ],\n  \"other_rawlsing_process_count\": 0,\n  \"packages\": {\n    \"duckdb\": \"1.5.2\",\n    \"numpy\": \"2.3.2\",\n    \"pandas\": \"2.3.1\",\n    \"pyarrow\": \"22.0.0\",\n    \"pyreadstat\": \"1.3.2\"\n  },\n  \"python\": \"3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]\",\n  \"utc\": \"2026-11-15T17:14:01Z\"\n}\n",
+      "wall_seconds": 0.24233766901306808
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/probe/build_estate.py"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115",
+      "exit_code": 0,
+      "finished_utc": "2026-11-15T17:14:05.817164+00:00",
+      "name": "build_estate",
+      "started_utc": "2026-11-15T17:14:01.658234+00:00",
+      "stderr_log": "logs/build_estate.stderr.log",
+      "stderr_tail": "",
+      "stdout_log": "logs/build_estate.stdout.log",
+      "stdout_tail": "{\n  \"core_ops\": 80,\n  \"distinct_ops\": 100,\n  \"estate_root\": \"/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/.local-data/estate-128\",\n  \"events\": 416,\n  \"exact_path\": \"releases/e9eb4a7bba2e6674a03cffaebb5c3063e33eb89fde34c0f435a2530304afe54f\",\n  \"manifest_sha256\": \"22640e2dca76011a3abb27ba4e97a174bf101a8814cb0691a16dd77d1e7e1fc0\",\n  \"release\": {\n    \"content_hash\": \"92db570ab1d722fb56d4eb2084b3ca20c3875f622dbdc5b9c0837f812b786310\",\n    \"kind\": \"C11LogicalRelease\",\n    \"object_id\": \"REL-PYAT-COUNTRY-REUSE-20261115\"\n  },\n  \"retained_bytes\": 2153366,\n  \"weighted_variants\": 20\n}\n",
+      "wall_seconds": 4.158333017025143
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/probe/run_court.py"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115",
+      "exit_code": 0,
+      "finished_utc": "2026-11-15T17:16:47.580641+00:00",
+      "name": "run_court",
+      "started_utc": "2026-11-15T17:14:05.817199+00:00",
+      "stderr_log": "logs/run_court.stderr.log",
+      "stderr_tail": "",
+      "stdout_log": "logs/run_court.stdout.log",
+      "stdout_tail": "{\n  \"cold_100_ops_per_second\": 1.5229730086344495,\n  \"cold_100_wall_seconds\": 65.66104549000738,\n  \"cold_1op_seconds\": 0.49875105603132397,\n  \"cold_c11_tripwire_hits\": 0,\n  \"cold_read_table_calls\": 0,\n  \"cold_row_group_reads\": 43130,\n  \"cold_session_builds\": 100,\n  \"grouped_default64\": {\n    \"cpu_system_seconds\": 0.09022899999999989,\n    \"cpu_user_seconds\": 4.726575999999994,\n    \"group_scope_receipt\": {\n      \"capacity_fallbacks\": 16,\n      \"closed\": false,\n      \"core_build_attempts\": 64,\n      \"core_builds\": 64,\n      \"core_hits\": 20,\n      \"early_capacity_fallbacks\": 16,\n      \"fallbacks\": 0,\n      \"fingerprint_failures\": 0,\n      \"max_cached_members\": 500000,\n      \"max_groups\": 64,\n      \"open_groups\": 64,\n      \"raw_materializations\": 64,\n      \"schema\": \"PRE553_I03_GROUPED_EXECUTION_SCOPE@1\",\n      \"weighted_materializations\": 20\n    },\n    \"operations_completed\": 100,\n    \"self_maxrss_bytes\": 152346624,\n    \"wall_seconds\": 5.214827364019584\n  },\n  \"grouped_max256\": {\n    \"cpu_system_seconds\": 0.11538199999999943,\n    \"cpu_user_seconds\": 5.171711000000002,\n    \"group_scope_receipt\": {\n      \"capacity_fallbacks\": 0,\n      \"closed\": false,\n      \"core_build_attempts\": 80,\n      \"core_builds\": 80,\n      \"core_hits\": 20,\n      \"early_capacity_fallbacks\": 0,\n      \"fallbacks\": 0,\n      \"fingerprint_failures\": 0,\n      \"max_cached_members\": 500000,\n      \"max_groups\": 256,\n      \"open_groups\": 80,\n      \"raw_materializations\": 80,\n      \"schema\": \"PRE553_I03_GROUPED_EXECUTION_SCOPE@1\",\n      \"weighted_materializations\": 20\n    },\n    \"operations_completed\": 100,\n    \"self_maxrss_bytes\": 139911168,\n    \"wall_seconds\": 5.694217029958963\n  },\n  \"guard_carrier\": \"REFUSED\",\n  \"guard_evaluator\": \"REFUSED\",\n  \"parity\": {\n    \"cold_vs_native_ungrouped\": {\n      \"exact\": true,\n      \"mismatch_count\": 0,\n      \"operations_compared\": 100\n    },\n    \"grouped256_vs_cold\": {\n      \"exact\": true,\n      \"mismatch_count\": 0,\n      \"operations_compared\": 100\n    },\n    \"grouped256_vs_native_ungrouped\": {\n      \"exact\": true,\n      \"mismatch_count\": 0,\n      \"operations_compared\": 100\n    },\n    \"grouped64_vs_native_ungrouped\": {\n      \"exact\": true,\n      \"mismatch_count\": 0,\n      \"operations_compared\": 100\n    }\n  },\n  \"repeat_probe\": {\n    \"elapsed_before_probe_seconds\": 85.53002744197147,\n    \"grouped_cpu_user_seconds\": 15.744683000000009,\n    \"grouped_per_iteration_max_seconds\": 0.07314702100120485,\n    \"grouped_per_iteration_min_seconds\": 0.013556918012909591,\n    \"grouped_per_iteration_p50_seconds\": 0.015531893004663289,\n    \"grouped_receipt\": {\n      \"capacity_fallbacks\": 0,\n      \"closed\": false,\n      \"core_build_attempts\": 1,\n      \"core_builds\": 1,\n      \"core_hits\": 999,\n      \"early_capacity_fallbacks\": 0,\n      \"fallbacks\": 0,\n      \"fingerprint_failures\": 0,\n      \"max_cached_members\": 500000,\n      \"max_groups\": 2,\n      \"open_groups\": 1,\n      \"raw_materializations\": 1000,\n      \"schema\": \"PRE553_I03_GROUPED_EXECUTION_SCOPE@1\",\n      \"weighted_materializations\": 0\n    },\n    \"grouped_wall_seconds\": 15.925201434001792,\n    \"iterations\": 1000,\n    \"op_id\": \"marginal_A\",\n    \"schema\": \"PYAT_COUNTRY_REUSE_REPEAT_PROBE@1\",\n    \"scope\": \"REPEAT_INVOCATIONS_NOT_DISTINCT_OPERATIONS\",\n    \"ungrouped_cpu_user_seconds\": 54.503766,\n    \"ungrouped_wall_seconds\": 56.23827931104461,\n    \"wall_speedup\": 3.531401442180231\n  },\n  \"status\": \"COURT_MEASURED\",\n  \"total_court_wall_seconds\": 161.06610828998964\n}\n",
+      "wall_seconds": 161.76288704801118
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/probe/state_probe.py"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115",
+      "exit_code": 0,
+      "finished_utc": "2026-11-15T17:16:51.506373+00:00",
+      "name": "state_probe",
+      "started_utc": "2026-11-15T17:16:47.580771+00:00",
+      "stderr_log": "logs/state_probe.stderr.log",
+      "stderr_tail": "",
+      "stdout_log": "logs/state_probe.stdout.log",
+      "stdout_tail": "{\n  \"probes\": {\n    \"impossible_A1_A0_to_C\": {\n      \"cells\": 2,\n      \"exact\": true,\n      \"raw_denominator\": 0,\n      \"state\": \"ZERO_SUPPORT\"\n    },\n    \"marginal_B\": {\n      \"cells\": 3,\n      \"exact\": true,\n      \"raw_denominator\": 128,\n      \"state\": \"SUPPORTED\"\n    },\n    \"marginal_D\": {\n      \"cells\": 2,\n      \"exact\": true,\n      \"raw_denominator\": 12,\n      \"state\": \"SUPPORTED\"\n    },\n    \"mr_repeated_a1\": {\n      \"cells\": 10,\n      \"exact\": true,\n      \"raw_denominator\": 5,\n      \"state\": \"SUPPORTED\"\n    }\n  }\n}\n",
+      "wall_seconds": 3.92504259099951
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/probe/summarize.py"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115",
+      "exit_code": 0,
+      "finished_utc": "2026-11-15T17:16:51.568220+00:00",
+      "name": "summarize",
+      "started_utc": "2026-11-15T17:16:51.506403+00:00",
+      "stderr_log": "logs/summarize.stderr.log",
+      "stderr_tail": "",
+      "stdout_log": "logs/summarize.stdout.log",
+      "stdout_tail": "  \"open_groups\": 80,\n      \"raw_materializations\": 80,\n      \"schema\": \"PRE553_I03_GROUPED_EXECUTION_SCOPE@1\",\n      \"weighted_materializations\": 20\n    },\n    \"saved_seconds_per_core_hit\": 0.056547606000094675,\n    \"speedup\": 1.198614157846745,\n    \"substrate_note\": \"in-memory C11Repository, not cold saved consumer\",\n    \"ungrouped_wall_seconds\": 6.825169149960857,\n    \"wall_reduction_fraction\": 0.16570316356311546\n  },\n  \"guard\": {\n    \"carrier\": {\n      \"disposition\": \"REFUSED\",\n      \"error\": {\n        \"message\": \"grouped saved I03 scope awaits distinct S2-D qualification\",\n        \"type\": \"CarrierExecutionBindingError\"\n      },\n      \"scope_receipt\": {\n        \"capacity_fallbacks\": 0,\n        \"closed\": false,\n        \"core_build_attempts\": 0,\n        \"core_builds\": 0,\n        \"core_hits\": 0,\n        \"early_capacity_fallbacks\": 0,\n        \"fallbacks\": 0,\n        \"fingerprint_failures\": 0,\n        \"max_cached_members\": 500000,\n        \"max_groups\": 256,\n        \"open_groups\": 0,\n        \"raw_materializations\": 0,\n        \"schema\": \"PRE553_I03_GROUPED_EXECUTION_SCOPE@1\",\n        \"weighted_materializations\": 0\n      },\n      \"wall_seconds\": 0.0004408439854159951\n    },\n    \"cold_index_contract\": {\n      \"coordinates_respondent_count\": 128,\n      \"events_by_respondent_type\": \"mappingproxy\",\n      \"events_respondent_count\": 128,\n      \"index_id_first_call\": 4453368784,\n      \"index_id_second_call\": 4459473296,\n      \"index_identity_missing_release_fields\": [\n        \"semantic_release_hash\",\n        \"source_release_manifest_hash\"\n      ],\n      \"release_fields\": [\n        \"release_ref\",\n        \"replay_manifest\"\n      ],\n      \"release_has_semantic_release_hash\": false,\n      \"release_has_source_release_manifest_hash\": false,\n      \"release_type\": \"_DirectReleaseIdentity\",\n      \"respondents\": 128,\n      \"routing_respondent_count\": 128,\n      \"runtime_authorities_is_none\": true,\n      \"runtime_predicate_grammar_authority_ref_is_none\": true,\n      \"runtime_repository_is_none\": true,\n      \"same_index_object_across_two_calls\": false,\n      \"source_relations\": 0,\n      \"weights_respondent_count\": 128\n    },\n    \"evaluator\": {\n      \"disposition\": \"REFUSED\",\n      \"error\": {\n        \"message\": \"grouped native I03 cache not yet qualified for cold sourcefree estate\",\n        \"type\": \"EmpiricalQueryExecutionError\"\n      },\n      \"wall_seconds\": 0.21325082698604092\n    }\n  },\n  \"operations\": {\n    \"cell_state_counts\": {\n      \"OBSERVED_POSITIVE\": 287,\n      \"OBSERVED_ZERO_IN_SUPPORTED_RISK_SET\": 93\n    },\n    \"cores\": 80,\n    \"distinct\": 100,\n    \"raw_denominator_max\": 128,\n    \"raw_denominator_min\": 2,\n    \"raw_denominator_p50\": 21.0,\n    \"typed_states\": {\n      \"SUPPORTED\": 100\n    },\n    \"weighted_denominator_max\": 320.0,\n    \"weighted_denominator_min\": 30.0,\n    \"weighted_variants\": 20\n  },\n  \"parity\": {\n    \"cold_vs_native_ungrouped\": {\n      \"exact\": true,\n      \"mismatches\": 0\n    },\n    \"grouped256_vs_cold\": {\n      \"exact\": true,\n      \"mismatches\": 0\n    },\n    \"grouped256_vs_native_ungrouped\": {\n      \"exact\": true,\n      \"mismatches\": 0\n    },\n    \"grouped64_vs_native_ungrouped\": {\n      \"exact\": true,\n      \"mismatches\": 0\n    }\n  },\n  \"repeat_invocations\": {\n    \"grouped_receipt\": {\n      \"capacity_fallbacks\": 0,\n      \"closed\": false,\n      \"core_build_attempts\": 1,\n      \"core_builds\": 1,\n      \"core_hits\": 999,\n      \"early_capacity_fallbacks\": 0,\n      \"fallbacks\": 0,\n      \"fingerprint_failures\": 0,\n      \"max_cached_members\": 500000,\n      \"max_groups\": 2,\n      \"open_groups\": 1,\n      \"raw_materializations\": 1000,\n      \"schema\": \"PRE553_I03_GROUPED_EXECUTION_SCOPE@1\",\n      \"weighted_materializations\": 0\n    },\n    \"grouped_wall_seconds\": 15.925201434001792,\n    \"iterations\": 1000,\n    \"p50_seconds\": 0.015531893004663289,\n    \"scope\": \"REPEAT_INVOCATIONS_NOT_DISTINCT_OPERATIONS\",\n    \"ungrouped_wall_seconds\": 56.23827931104461,\n    \"wall_speedup\": 3.531401442180231\n  },\n  \"schema\": \"PYAT_COUNTRY_REUSE_DERIVED@1\"\n}\n",
+      "wall_seconds": 0.06122021999908611
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "-p",
+        "no:cacheprovider",
+        "rawlsing_next/tests/test_pre553_i03_grouping.py",
+        "rawlsing_next/tests/test_pre553_direct_estate_i03.py::test_cold_i03_rejects_grouped_cache_and_i05_outside_s2c_scope"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-g5-20261115",
+      "exit_code": 0,
+      "finished_utc": "2026-11-15T17:17:00.213300+00:00",
+      "name": "focused_existing_tests",
+      "started_utc": "2026-11-15T17:16:51.568265+00:00",
+      "stderr_log": "logs/focused_existing_tests.stderr.log",
+      "stderr_tail": "",
+      "stdout_log": "logs/focused_existing_tests.stdout.log",
+      "stdout_tail": "................                                                         [100%]\n16 passed in 8.07s\n",
+      "wall_seconds": 8.644417068979237
+    }
+  ],
+  "grade": "SOURCEFREE_TEST_ONLY",
+  "schema": "PYAT_COUNTRY_REUSE_COMMANDS@1",
+  "started_utc": "2026-11-15T17:17:00.213343+00:00",
+  "total_wall_seconds": 178.800464629021
+}

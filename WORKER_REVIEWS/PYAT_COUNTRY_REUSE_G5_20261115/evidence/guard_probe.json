@@ -1,0 +1,67 @@
+{
+  "carrier_guard": {
+    "disposition": "REFUSED",
+    "error": {
+      "message": "grouped saved I03 scope awaits distinct S2-D qualification",
+      "type": "CarrierExecutionBindingError"
+    },
+    "scope_receipt": {
+      "capacity_fallbacks": 0,
+      "closed": false,
+      "core_build_attempts": 0,
+      "core_builds": 0,
+      "core_hits": 0,
+      "early_capacity_fallbacks": 0,
+      "fallbacks": 0,
+      "fingerprint_failures": 0,
+      "max_cached_members": 500000,
+      "max_groups": 256,
+      "open_groups": 0,
+      "raw_materializations": 0,
+      "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+      "weighted_materializations": 0
+    },
+    "wall_seconds": 0.0004408439854159951
+  },
+  "cold_index_contract": {
+    "coordinates_respondent_count": 128,
+    "events_by_respondent_type": "mappingproxy",
+    "events_respondent_count": 128,
+    "index_id_first_call": 4453368784,
+    "index_id_second_call": 4459473296,
+    "index_identity_missing_release_fields": [
+      "semantic_release_hash",
+      "source_release_manifest_hash"
+    ],
+    "release_fields": [
+      "release_ref",
+      "replay_manifest"
+    ],
+    "release_has_semantic_release_hash": false,
+    "release_has_source_release_manifest_hash": false,
+    "release_type": "_DirectReleaseIdentity",
+    "respondents": 128,
+    "routing_respondent_count": 128,
+    "runtime_authorities_is_none": true,
+    "runtime_predicate_grammar_authority_ref_is_none": true,
+    "runtime_repository_is_none": true,
+    "same_index_object_across_two_calls": false,
+    "source_relations": 0,
+    "weights_respondent_count": 128
+  },
+  "evaluator_guard": {
+    "disposition": "REFUSED",
+    "error": {
+      "message": "grouped native I03 cache not yet qualified for cold sourcefree estate",
+      "type": "EmpiricalQueryExecutionError"
+    },
+    "wall_seconds": 0.21325082698604092
+  },
+  "grade": "SOURCEFREE_TEST_ONLY",
+  "notes": [
+    "Both public entry points refuse before any grouped core is published.",
+    "The index inspection is read-only and does not call the grouped cache."
+  ],
+  "op_id": "marginal_A",
+  "schema": "PYAT_COUNTRY_REUSE_GUARD_PROBE@1"
+}
