@@ -1,0 +1,5 @@
+J5 per-country reuse author measurements are preserved at `f7a7652258907129988504e53fae286da1dbf45d`; publication metadata at `6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb`, draft PR #1064. All46 frozen payload hashes verified; no production edits. The native court completed within its300s budget; the actor30minute deadline interrupted final metadata only. No rerun dispatched.
+
+Author reports100 distinct cold operations in51.93s with exact fact parity, while existing cold grouped guards refuse. The1000-invocation hot-grouped result consists of repeats, not1000 distinct cold operations. Counters, resource sampling and smallest-change conclusions are not yet independently accepted.
+
+Distinct DeepSeekFlashMAX independent reviewer actually launched: `ses_e1fd393eaffe9gBoKYHYHQYhr0`, PID96753, branch `review/pyat-country-reuse-g5-20261115`. No production reader/evaluator patch or layout change is authorized by these measurements. Native #999 accepted successor remains separate from this older controlled benchmark baseline. Terminal notifications only.

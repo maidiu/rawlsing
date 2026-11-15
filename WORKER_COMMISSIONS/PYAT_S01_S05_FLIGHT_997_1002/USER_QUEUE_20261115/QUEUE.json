@@ -1,6 +1,6 @@
 {
   "schema": "EXISTING_PYAT_HQ_FINITE_QUEUE@1",
-  "status": "ACTIVATED_BY_USER_FIVE_JOB_SLATE__THREE_LAUNCHED",
+  "status": "J1_J2_ACCEPTED__J4_TWO_CELL_CORRECTION__J5_INDEPENDENT_REVIEW_RUNNING__J3_OWNER_HOLD",
   "common": {
     "scope": "Existing PYAT HQ finite five-job execution slate, activated by subsequent explicit user dispatch order; not a replacement HQ or ZAK continuation",
     "dispatch_authorized_by_this_queue": true,
@@ -202,7 +202,7 @@
       "id": "VOSKRES_R2",
       "priority": 3,
       "initial_slot": "C",
-      "status": "INDEPENDENT_REVISE_EXACT_DEFECT__SAME_AUTHOR_CORRECTION_LAUNCHED",
+      "status": "11_ID_CORRECTION_RETURNED__2_EXACT_CELL_DISCREPANCIES__SAME_AUTHOR_REPAIR_LAUNCHED",
       "issue": 1059,
       "pr": 1060,
       "frozen_r1_sha": "819dc54c69633dd75b6d13ac0ee8c3bbfd624853",
@@ -288,12 +288,21 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-exact-defect-correction-20261115",
         "launch_is_not_completion": true
       },
-      "accepted_subset_preserved": true
+      "accepted_subset_preserved": true,
+      "latest_job": "voskres1059-r2-two-cell-locator-correction-20261115",
+      "latest_launch": {
+        "job_id": "voskres1059-r2-two-cell-locator-correction-20261115",
+        "child_pid": 96868,
+        "supervisor_pid": 96867,
+        "observer_pid": 96869,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-two-cell-locator-correction-20261115",
+        "launch_is_not_completion": true
+      }
     },
     {
       "id": "R03_QUERY_ISSUER",
       "priority": 4,
-      "status": "OWNER_GRANT_RESOLUTION_STARTED__CAPACITY_FULL",
+      "status": "HOLD_EXACT_COMPILER_ISSUER_FILE_SYMBOL_GRANT",
       "owner_decision_sha": "8871f8a6bfd2616285add5ae725bd43c439080ea",
       "owner_decision_blob": "a510d61c5cd56ccf25a24914ee349a27c912ca38",
       "owner_decision_path": "WORKER_RETURNS/PYAT997_R03_ISSUER_OWNER_DETERMINATION_20261115/00_DECISION.md",
@@ -321,12 +330,13 @@
       ],
       "unlocks": [
         "Legitimate governedQUERY producer; separate integration/admission required"
-      ]
+      ],
+      "current_check": "No owner response after grant request6891211985; checked issue997 current comments at 2026-11-15T17:08:24.021722+00:00"
     },
     {
       "id": "COUNTRY_REUSE_COURT",
       "priority": 5,
-      "status": "LAUNCHED_READONLY_SOURCEFREE_MANY_OPERATION_COURT",
+      "status": "AUTHOR_MEASUREMENTS_FROZEN__DISTINCT_INDEPENDENT_G5_LAUNCHED",
       "authority_issues": [
         960,
         1006,
@@ -376,7 +386,19 @@
         "Ownexactreader/evaluatorfilegrant",
         "Qualifiedadoption/compatibilityofacceptednativepatch",
         "Measuredsmallestcompetentimplementationchoice"
-      ]
+      ],
+      "author_return_sha": "6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb",
+      "immutable_measurement_sha": "f7a7652258907129988504e53fae286da1dbf45d",
+      "review_job": "pyat-country-reuse-independent-g5-20261115",
+      "review_session": "ses_e1fd393eaffe9gBoKYHYHQYhr0",
+      "review_launch": {
+        "job_id": "pyat-country-reuse-independent-g5-20261115",
+        "child_pid": 96753,
+        "supervisor_pid": 96752,
+        "observer_pid": 96754,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/pyat-country-reuse-independent-g5-20261115",
+        "launch_is_not_completion": true
+      }
     }
   ],
   "initial_three": [
@@ -386,5 +408,6 @@
   ],
   "review_scheduling": "Each frozen author hands to its named distinct reviewer using freed slot, preserving3workerceiling. No extraA/Bloop. Return intake advances only authorized dependent action.",
   "later_selection": "Fill first free eligible slot with R03ownership/implementation or reusecourtprep based on actual grants/input cuts; do not require blanket finish of all initial dockets.",
-  "activation_report": "ACTIVATION/ACTIVATION_REPORT.json"
+  "activation_report": "ACTIVATION/ACTIVATION_REPORT.json",
+  "latest_material_checkpoint_utc": "2026-11-15T17:08:24.021722+00:00"
 }

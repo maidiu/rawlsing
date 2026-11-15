@@ -1,0 +1,22 @@
+{
+  "job_id": "voskres1059-r2-two-cell-locator-correction-20261115",
+  "session": "ses_e21db80e0ffeKBwDuXJ2L1mYT1",
+  "grant_id": "user-five-slate-voskres1059-r2-two-cell-locator-correction-20261115",
+  "argv": [
+    "/usr/local/bin/python3",
+    "-c",
+    "import subprocess,sys,json,threading,urllib.request,base64,time\nfrom pathlib import Path\nsid,cap,proof=sys.argv[1:4]\nproc=subprocess.Popen(sys.argv[4:])\nPath(proof).write_text(json.dumps({\"session\":sid,\"cli_pid\":proc.pid,\"cap_seconds\":int(cap),\"started_epoch\":time.time()}))\ndef stop():\n cfg=json.loads(Path(\"/Users/matthewsmith/.config/opencode/service.json\").read_text())\n req=urllib.request.Request(\"http://127.0.0.1:49374/api/session/\"+sid+\"/interrupt?resume=false\",data=b\"\",method=\"POST\")\n req.add_header(\"Authorization\",\"Basic \"+base64.b64encode((\"opencode:\"+cfg[\"password\"]).encode()).decode())\n try:\n  with urllib.request.urlopen(req,timeout=15) as response: status=response.status\n except Exception as exc: status=type(exc).__name__\n Path(proof).with_suffix(\".deadline.json\").write_text(json.dumps({\"session\":sid,\"interrupt\":status,\"at_epoch\":time.time()}))\n try:proc.wait(timeout=15)\n except subprocess.TimeoutExpired:proc.terminate()\ntimer=threading.Timer(int(cap),stop);timer.start()\ntry:code=proc.wait()\nfinally:timer.cancel()\nsys.exit(code)\n",
+    "ses_e21db80e0ffeKBwDuXJ2L1mYT1",
+    "1800",
+    "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-two-cell-locator-correction-20261115-cli.json",
+    "/Users/matthewsmith/.opencode/bin/opencode",
+    "run",
+    "--session",
+    "ses_e21db80e0ffeKBwDuXJ2L1mYT1",
+    "--model",
+    "opencode-go/deepseek-v4.1-flash#max",
+    "--format",
+    "json",
+    "Same-author finite correction INTAKE found precisely TWO remaining source-coordinate discrepancies in your new G1 ledger. Preserve your returned11-ID corrections, no new research/review. Exclusive sameworktree /Users/matthewsmith/Desktop/Rawlsing_Worktrees/voskres1059-r2-author-20261115 branch docs/voskres1059-r2-composed-author-20261115. Solewrites WORKER_RETURNS/DDM_VOSKRES1059_R2/. Actual CHECK: iterate G1_CANONICAL_ACCOUNTING.tsv rows; gitshow source_commit:source_file; verify SHA256; csvread; 1-based physical source_row_number; find source_column header; compare exact cell. G1-01 recorded source_cell_value=\"O(k^2) joint evaluations\" but actual row8/cardinality_symbolic=\"k = available indicators <=12; joint mask and joint conditional entropy per non-primary pair with joint n>=50\". G1-09 recorded source_cell_value=\"PRESENT_STRONGER: modern receipts carry identity/state; old existence check can trust stale checkpoint\" but actual row6/stage1_successor_fate=\"Batch receipts and immutable unit receipts (pre553_batch_runner.py 386-470)\". Correct precise coordinate/quoted old cell for the actual false assertion being superseded, not simply substitute unrelated true text. Search same frozen exact source row/columns for actual false assertion; preserve bounded semantic correction, distinguish paraphrase vs exact source field. Other9 rows passed exact filehash/row/column/cell check. All payload hashes/TSV widths passed. Update G1, correctionmap and manifest only as indispensable; execute all11 exact cell checks and return results. No product edits/scientific execution/new AB or global inventory. Aim10minutes, cap30 including packaging; preserve historical firstpasses and independent REVISE verdict, do not claim G5 accepted. HQ will publish because gitdenied. Same GoDeepSeekFlashMAX. STOP after two discrepancies corrected."
+  ]
+}

@@ -63,3 +63,8 @@ J5nativeintegrityprerequisiteisnowfulfilledontheexactaccepteddescendant; itscurr
 ## J4 independent REVISE; one exact correction launched
 
 Review1b525d00e found11materialdocumentarydefects acrossG1–G4;G5performedbutnotaccepted. Preservedsourcecore/threecomputationalcorrections donotmakecanonicalaccountingorinputgraphcomplete. SameauthorresumedPID78498 foronly11IDs: stablemachinecells/missingBdepthrow,completecanonical+legacyV553inputs,550Jrespondentmembershiploss,concreteboundedGSSfamily/actualdiamond,properFORGEproducer/guard/firstreaderroles andJparitygate. Historicalrows/conditionalproducerinvocationremainheld,notnewpermissionneeds. No newgeneralA/Borarchaeology. ExactchecklistinRETURNS/J4_R2_EXACT_DEFECTS.json;statusandacceptedsubsetinJ4_R2_INDEPENDENT_REVISE_DISPOSITION.json. J5continues;J1/J2acceptanceunchanged.
+
+
+### 2026-11-15T17:08:24.021722+00:00 — J5 preserved, independent review launched; J4 exact correction intake
+
+J5 native court completed under its300s cap; the30minute actor deadline interrupted publication metadata only. All46 frozen payload hashes verified; production diff is empty. Metadata published at6cb7866d6. Distinct Go DeepSeekFlashMAX reviewer ses_e1fd393eaffe9gBoKYHYHQYhr0/PID96753 is launched on its own branch. Author estimates are not independently accepted optimization results. J4 returned11-ID corrections; two exact source-cell quotes still mismatch their cited coordinates, so same author/PID96868 is correcting those two only. J3 exact compiler/issuer grant remains unanswered. J1/J2 remain independently scoped accepted, unmerged. Terminal notifications only; no recurring checker.
