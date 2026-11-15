@@ -1,0 +1,19 @@
+{
+  "schema": "SOROK_HQ_SNAPSHOT_POINTER@1",
+  "status": "STAGED_DURABLE_HQ_OPERATING_STATE__NOT_CANONICAL_OWNER_CAS",
+  "repository": "maidiu/rawlsing",
+  "branch": "control/sorok-hq-resumable-checkpoint-20261030-r1",
+  "state_snapshot_commit": "5572483d540ea5b359e2d497dace5778b0067ddb",
+  "source_premain_at_snapshot": "650bc7d88e83905bb59fee1d14105bd06cacf07c",
+  "as_of_date": "2026-10-30",
+  "read_in_order": [
+    "SOROK_PRODUCT_CONTROL_ROOM/HQ_STATE/00_RESUME_HERE.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/HQ_STATE/01_VERIFIED_STATE_20261030.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/HQ_STATE/02_FLIGHT_AND_SOURCE_CUTS.json",
+    "SOROK_PRODUCT_CONTROL_ROOM/HQ_STATE/03_COPY_PASTE_RESUME_MESSAGE.md"
+  ],
+  "refresh_rule": "On later work, verify actual returns and live HEAD, append new immutable source-graded state, then update this pointer on an eligible checkpoint branch by CAS; do not overwrite previous evidence or infer original science.",
+  "canonical_progress_status": "SEPARATE_SOROK_MD36_JSON35_OWNER_CAS_HELD",
+  "last_r4_return_count": 8,
+  "warning": "Pointer commit references the preceding state snapshot to avoid a self-hashing commit."
+}
