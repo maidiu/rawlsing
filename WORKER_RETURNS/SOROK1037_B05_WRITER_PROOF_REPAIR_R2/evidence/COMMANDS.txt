@@ -1,0 +1,87 @@
+SOROK #1037 B05 writer-proof repair R2 — exact commands
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing
+Base: c7018020f002bb7f509a83fba0bf2a6a5955cc00
+Branch: codex/sorok1037-b05-writer-proof-repair-20261115-r2
+Author session: ses_e21a481bfffefyvpxaeFaAOFvQ
+
+Environment for every command:
+  export TMPDIR="$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp"
+  export PYTHONDONTWRITEBYTECODE=1
+  PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+
+0. Extract frozen reviewer probe byte-identically / copy exact #1027 assets:
+   git show 5b65a35b1f54cd13da0a340eed1c9b92783a0ce1:WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/g5_review_probe.py \
+     > WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_review_probe.py
+   cp WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/g5_probe.py \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_probe_1027.py
+   cp WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/g5_cold_probe.py \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_cold_probe_1027.py
+   Blob pins: 3e98929dbb526edf6fab60f74132cafe03d63239,
+              7cd5a23044426961d6f33e13b1ccf44f54916f81,
+              6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab.
+
+1. RED on unchanged base (before B05 edit):
+   /usr/bin/time -l "$PY" \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_review_probe.py
+   -> literal exit 2; 33/34 checks; sole-rehashed ADMITTED receipt accepted READ.
+
+2. Minimal source edit:
+   WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py only
+   b944b8f0b6e0d700e85141256df01cdaef8d59e2 -> a193fb5bfb6a1955209bedf0e66be974dcfa8e1b
+   sha256 5ac75cb66c61fb120f56900e976a8cdcd4e153fd4b0d37d9a93a0c95ab578331
+
+3. GREEN with the unchanged frozen probe:
+   /usr/bin/time -l "$PY" \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_review_probe.py
+   -> literal exit 0; 34/34 checks; residual false accept absent;
+      sole forged receipt refused B05_RENT_OPERATION_UNPROVEN.
+
+4. Exact #1027 witness (byte-identical, own root):
+   /usr/bin/time -l "$PY" \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_probe_1027.py
+   -> literal exit 1 (historical oracle quirk preserved);
+      63/63 checks pass; both defects[].accepted=false;
+      typed refusals PURCHASE_READ_PROVENANCE_MISMATCH and
+      B05_RENT_PROVENANCE_MISMATCH.
+
+5. Exact #1027 cold probe (byte-identical, own root):
+   /usr/bin/time -l "$PY" \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_cold_probe_1027.py
+   -> exit 0; ok=true; warm_ok=true; child_exit=0;
+      two purchases + one rent cold; head unchanged.
+
+6. New focused R2 tests (5):
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py
+   -> exit 0; 5 passed.
+
+7. Author provenance tests (6):
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py
+   -> exit 0; 6 passed.
+
+8. Inherited original B01-B05 43 tests (14 files):
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_interleave_retry.py
+   -> exit 0; 43 passed (run once on final source).
+
+9. Selected read-only C03/C04 consumer (3):
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py
+   -> exit 0; 3 passed; no product edit.
+
+No /tmp redirect; checkout-local scratch only. No product write outside the
+leased B05 file. No hosted CI, provider, account, model or global change.

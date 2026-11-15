@@ -1,0 +1,246 @@
+{
+  "schema": "SOROK1037_B05_WRITER_PROOF_REPAIR_R2_EVIDENCE@1",
+  "issue": 1037,
+  "verdict": "AUTHOR_R2_CANDIDATE_FOR_SAME_NONAUTHOR_FOCUSED_RERECEIVING",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "role": "bounded_single_correction_author",
+  "independence": {
+    "fresh_author_session": true,
+    "separate_from_nonauthor_reviewer": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+    "prior_nonauthor_review_reused_as_red_witness": true,
+    "review_probe_extracted_byte_identically": true,
+    "author_cannot_self_g5": true
+  },
+  "host": {
+    "hostname": "oldMac.lan",
+    "platform": "Darwin 22.6.0 x86_64",
+    "macos": "13.7.8",
+    "python": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+    "pytest": "9.1.1",
+    "load_at_close": "3.91 4.97 6.13",
+    "contention": "other independent jobs active; elapsed and RSS are observations, not isolated benchmarks"
+  },
+  "model_auth_metadata": {
+    "actual_model": "OpenCodeGo DeepSeekV4.1FlashMAX as declared by user",
+    "served_checkpoint_org_quota": "UNOBSERVED",
+    "provider_tokens_usd_cost": "UNOBSERVED",
+    "provider_model_account_auth_globalpermission_server_changes": "NONE",
+    "paid_fallback": "NONE"
+  },
+  "start_state": {
+    "base_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+    "branch": "codex/sorok1037-b05-writer-proof-repair-20261115-r2",
+    "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing",
+    "reviewed_commit": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+    "reviewed_code": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+    "review_verdict": "REVISE_EXACT_DEFECT",
+    "review_defect": "B05 sole rehashed ADMITTED rent receipt for a completed period with no actual rent debit returned READ/historical=false"
+  },
+  "changed_product_paths": [
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+  ],
+  "own_paths": [
+    "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/"
+  ],
+  "product_source": {
+    "B05": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py",
+      "before_r2_blob": "b944b8f0b6e0d700e85141256df01cdaef8d59e2",
+      "r2_blob": "a193fb5bfb6a1955209bedf0e66be974dcfa8e1b",
+      "r2_sha256": "5ac75cb66c61fb120f56900e976a8cdcd4e153fd4b0d37d9a93a0c95ab578331",
+      "change": "read-side only; +85 lines; no writer/ABI change"
+    },
+    "B04": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+      "preserved_blob": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+      "preserved_sha256": "114f38e5303815d890188809309de56f2ff001d8fc8adb02243a6b1fc83d241a",
+      "r2_changed": false
+    },
+    "other_product_changes": "NONE",
+    "new_ledger_registry_secret_key_writer_store": "NONE"
+  },
+  "minimal_owner_proof_abi": {
+    "used_existing_evidence": "session.product.store.checkpoints(branch)",
+    "required_transition": "two adjacent durable C12 checkpoints at the receipt/episode clock: prior checkpoint cash and household material hash equal receipt before values; immediately following checkpoint cash and household material hash equal receipt after values; both household documents bind the current root/branch/source",
+    "operation_binding": "receipt/episode/body operation_id, actor A, root, branch and clock remain bound by existing checks; the transition tuple root/branch/clock/before_cash/after_cash/before_material_hash/after_material_hash may back exactly one rent episode",
+    "refusal_code": "B05_RENT_OPERATION_UNPROVEN",
+    "statuses_requiring_transition": ["ADMITTED"],
+    "statuses_preserved_without_debit": ["UNCHANGED", "REFUSED"],
+    "caller_computed_hash_alone": "NOT ACCEPTED",
+    "new_abi": "NONE"
+  },
+  "red_green": {
+    "red": {
+      "when": "before any R2 product edit",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_review_probe.py",
+      "literal_exit": 2,
+      "checks": 34,
+      "failed_checks": 1,
+      "failed": "sole-rehashed receipt for completed period with no prior actual rent is refused",
+      "observed": {
+        "status": "READ",
+        "historical": false,
+        "receipt_status": "ADMITTED",
+        "household_cash": 55
+      },
+      "elapsed_seconds": 51.11,
+      "peak_rss_bytes": 52416512,
+      "report": "evidence/red_g5_review_probe_report.json",
+      "stdout": "evidence/red_g5_review_probe_stdout.log",
+      "time": "evidence/red_g5_review_probe_time.log"
+    },
+    "green": {
+      "when": "after the single minimal B05 read-side edit",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_review_probe.py",
+      "literal_exit": 0,
+      "checks": 34,
+      "failed_checks": 0,
+      "residual": "none",
+      "forged_receipt_refusal": "B05_RENT_OPERATION_UNPROVEN",
+      "elapsed_seconds": 58.72,
+      "peak_rss_bytes": 55476224,
+      "report": "evidence/green_g5_review_probe_report.json",
+      "stdout": "evidence/green_g5_review_probe_stdout.log",
+      "time": "evidence/green_g5_review_probe_time.log"
+    },
+    "same_probe_blob": "3e98929dbb526edf6fab60f74132cafe03d63239"
+  },
+  "exact_1027_witness": {
+    "asset": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_probe_1027.py",
+    "blob": "7cd5a23044426961d6f33e13b1ccf44f54916f81",
+    "sha256": "da1d4389fdae9d092f3bb777777e5f5ea76a71fea943730ff6cf029e3414fa5a",
+    "byte_identical": true,
+    "literal_exit": 1,
+    "literal_exit_quirk_preserved": true,
+    "checks": 63,
+    "failed_checks": 0,
+    "defects": {
+      "G5-B04-RECEIPT-FOREIGN-ROOT": {
+        "accepted": false,
+        "actual": "typed refusal PURCHASE_READ_PROVENANCE_MISMATCH"
+      },
+      "G5-B05-RENT-RECEIPT-FOREIGN-ROOT": {
+        "accepted": false,
+        "actual": "typed refusal B05_RENT_PROVENANCE_MISMATCH"
+      }
+    },
+    "elapsed_seconds": 21.5,
+    "peak_rss_bytes": 60768256,
+    "report": "evidence/green_witness_1027_report.json",
+    "stdout": "evidence/green_witness_1027_stdout.log",
+    "time": "evidence/green_witness_1027_time.log"
+  },
+  "exact_1027_cold": {
+    "asset": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/g5_cold_probe_1027.py",
+    "blob": "6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab",
+    "sha256": "f9cc6e56cf6899bea1b09c820b4b3dc0ad52a97b5864bc9121a34229dc1820aa",
+    "byte_identical": true,
+    "literal_exit": 0,
+    "ok": true,
+    "warm_ok": true,
+    "child_exit": 0,
+    "observations": {
+      "purchases": 2,
+      "rents": 1,
+      "parent_cash": 20,
+      "household_cash": 43,
+      "market_quantity": 0,
+      "duplicate_rent": "B05_RENT_ALREADY_RECORDED",
+      "head_unchanged": true
+    },
+    "elapsed_seconds": 16.58,
+    "peak_rss_bytes": 61751296,
+    "report": "evidence/green_cold_1027_report.json",
+    "stdout": "evidence/green_cold_1027_stdout.log",
+    "time": "evidence/green_cold_1027_time.log"
+  },
+  "suites": {
+    "focused_r2": {
+      "path": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py",
+      "blob": "e61dca9f81ddc3fcb5fcf33272934232c2ae16a2",
+      "sha256": "8f74ce13b7dfa992c475f84451c71350cdf6b8e762ae97c91bd8d8cfbc9b5cde",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py",
+      "exit": 0,
+      "result": "5 passed",
+      "covers": [
+        "sole caller-rehashed ADMITTED receipt with no owner transition refuses (no-effect append)",
+        "actual transition severed by hiding the owner checkpoint pair refuses, then exact restore reads",
+        "forged sibling cannot copy an actual transition for another period",
+        "genuine zero and held rents still read without a debit transition",
+        "genuine historical h1/h2 and replay still read"
+      ],
+      "elapsed_seconds": 41.73,
+      "peak_rss_bytes": 69537792,
+      "log": "evidence/focused_tests_stdout.log",
+      "time": "evidence/focused_tests_time.log"
+    },
+    "author_provenance": {
+      "path": "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py",
+      "blob": "a28db531306b3ad4dcebc76915d079f14ac0ea0f",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py",
+      "exit": 0,
+      "result": "6 passed",
+      "elapsed_seconds": 51.67,
+      "peak_rss_bytes": 70066176,
+      "log": "evidence/author_tests_stdout.log",
+      "time": "evidence/author_tests_time.log"
+    },
+    "inherited_original_43": {
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q <14 B01-B05 test files>",
+      "exit": 0,
+      "result": "43 passed",
+      "run_on_final_source": true,
+      "elapsed_seconds": 520.56,
+      "peak_rss_bytes": 77344768,
+      "log": "evidence/inherited_43_stdout.log",
+      "time": "evidence/inherited_43_time.log",
+      "exit_file": "evidence/inherited_43_exit.txt"
+    },
+    "selected_c03_c04_readonly": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py",
+      "blob": "8e3775ebb51547aefa4490227a95a7eeff0008a9",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-writer-proof-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py",
+      "exit": 0,
+      "result": "3 passed",
+      "product_edit": false,
+      "elapsed_seconds": 65.14,
+      "peak_rss_bytes": 72785920,
+      "log": "evidence/consumer_c03c04_stdout.log",
+      "time": "evidence/consumer_c03c04_time.log"
+    }
+  },
+  "preserved_behavior": {
+    "b04_foreign_root_and_c02_chain_refusals": "PASS in the frozen review probe and #1027 witness",
+    "b04_ownership_changed_restored": "PASS",
+    "b05_foreign_root_branch_actor_exchange_period_rent": "typed refusals preserved",
+    "b05_same_period_second_receipt": "B05_RENT_OPERATION_NOT_UNIQUE preserved",
+    "genuine_historical_h1_after_h2": "READ historical=true; h2 historical=false; exactly two debits",
+    "genuine_zero_rent": "UNCHANGED; READ; no cash movement",
+    "genuine_held_rent": "REFUSED; READ; no cash movement",
+    "replay_retry": "REPLAY; no second debit; late same-period operation remains B05_RENT_ALREADY_RECORDED",
+    "changed_restored_dwelling": "B05_RENT_SOURCE_STALE then exact baseline READ",
+    "cold_reopen": "two purchases + one rent; head unchanged"
+  },
+  "boundaries": {
+    "product_readonly_except_B05": true,
+    "b04_source_blob_preserved": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+    "p2_writers_unchanged": true,
+    "p3_c03_c04_p6_d03_protected_premain_unchanged": true,
+    "no_new_ledger_registry_currency_or_scheduler": true,
+    "no_psychology_or_motive_inference": true,
+    "no_native_or_human_authority": true,
+    "no_protected_merge": true,
+    "no_ci_github_actions_vm_new_controller_global_permissions": true,
+    "other_jobs_CG_A_C05_untouched": true
+  },
+  "limitations": [
+    "The proof uses the existing durable checkpoint history; it cannot distinguish a fully privileged world rewrite that also fabricates a matching checkpoint pair. That is outside the observed public append_episode threat model, exactly as the independent reviewer scoped the B04 privileged-rewrite residual.",
+    "A forged sibling that copies an actual transition causes fail-closed refusal of the genuine receipt while present; this is evidence ambiguity, not a false accept.",
+    "Timings/RSS are observations under concurrent host load, not isolated benchmarks.",
+    "Provider checkpoint/organization/quota and token/USD cost are UNOBSERVED.",
+    "No native science, human/actor authority, J1/Nadia G2 acceptance or protected PRE-MAIN merge is claimed."
+  ],
+  "terminal": "AUTHOR_R2_CANDIDATE_FOR_SAME_NONAUTHOR_FOCUSED_RERECEIVING",
+  "stop": "One exact correction complete. No further automatic repair round is authorized by this return."
+}
