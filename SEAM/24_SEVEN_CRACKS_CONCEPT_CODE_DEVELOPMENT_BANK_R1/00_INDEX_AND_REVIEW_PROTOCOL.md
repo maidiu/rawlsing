@@ -25,6 +25,12 @@
 - [SEAM/23 — fast/slow organization, C5/PFF, H0/H1/H2 ablation](../23_C5_SHADOW_GRAVITY_MATERIAL_CARE_COVERAGE_ATTRACTOR_TEST_R1.md)
 - [SEAM/18 — biocultural adequacy challenge](../18_SCIENTIFIC_BIOCULTURAL_ONTOGENESIS_ADEQUACY_CRITERION_R1.md)
 
+### Hostile R2 audit and corrected claims
+
+**Read [08 — Adversarial self-audit, error ledger, open holds and red-team targets](08_ADVERSARIAL_SELF_AUDIT_AND_OPEN_FALSIFIERS_R2.md) before accepting any card.** Author-identified faults include an incorrect seventh SEAM/20 relational state, a two-world-roots mistake in SC-03, an overgeneralized PFF/CAN-011 conflict, falsely expansive source/coupling implications, fragile father's prior-world assumptions, clock/coverage ambiguity, and prematurely fused relation/C5 tests. The author has corrected the text; none of the missing implementations, empirical likelihoods or human developmental laws is thereby established.
+
+**R2 document grade:** source-grounded, hostile-self-reviewed **candidate for UM debate**, NOT author-accepted scientific or executable architecture. The R1 file names are stable identifiers for comment/revision continuity; R2 fixes live in the current branch. Preserve separate human peer review and competence-owner permission.
+
 ### Seven separately reviewable records
 
 | ID | Concept × code development record | Immediate upstream | Critical downstream |
