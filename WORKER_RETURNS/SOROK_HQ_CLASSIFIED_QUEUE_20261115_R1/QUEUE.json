@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T09:51:17.818034+00:00",
+  "updated_utc": "2026-11-15T10:11:17.459583+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -232,11 +232,39 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-promotion-exact-repair-20261115-r2",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
+      "state": "AUTHOR_R2_CANDIDATE_FROZEN_PENDING_SAME_G5",
       "review_sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
       "same_original_author": true,
       "future_reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-      "bounded_correction_number": 1
+      "bounded_correction_number": 1,
+      "result_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "implementation_sha": "5d771dd86767655534b23576075e5da2db4fba78"
+    },
+    {
+      "issue": "C05",
+      "role": "same independent nonauthor final focused R2 receiving",
+      "name": "sorok-c05-focused-rereceiving-r2",
+      "base": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "code_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+      "out": "WORKER_REVIEWS/SOROK_C05_FOCUSED_RERECEIVING_R2",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+      "branch": "codex/sorok-c05-focused-g5-r2-20261115-r1",
+      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "owner": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "launch": {
+        "job_id": "sorok-c05-focused-rereceiving-20261115-r2",
+        "child_pid": 3872,
+        "supervisor_pid": 3871,
+        "observer_pid": 3873,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-focused-rereceiving-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "same_nonauthor": true,
+      "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "original_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+      "automatic_additional_author_rounds": 0
     }
   ],
   "runtime_verification": [
@@ -454,6 +482,20 @@
       "exposure_boundary": "caller-authorized illustrative inputs; no owner receipt proves relation knowledge; coherent append accepted, not independent perception/native authority",
       "next_action": "One exact same-author promotion/no-write correction running; then same nonauthor focused readback",
       "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "task": "C05 one-line promotion R2 author",
+      "state": "AUTHOR_R2_CANDIDATE_SAME_NONAUTHOR_FINAL_RECEIVING",
+      "code_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+      "report_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1071",
+      "source_delta": "one line: prewrite depth uses full verified change history including PROMOTE",
+      "author_evidence": "original bug probe corrected semantic refusal/no writes/intact qualified history; focused1, original34 suites and89 normal-negative-cold checks PASS",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "review_state": "RUNNING_FINAL_FOCUSED_RERECEIVING",
+      "acceptance": "NOT_ACCEPTED",
+      "scope": "caller-authorized illustrative relation/exposure operation/custody only; owner-attested actor knowledge/native relation authority unproved",
+      "automatic_further_author_rounds": 0
     }
   ],
   "guide_records_affected": [
@@ -464,7 +506,7 @@
   "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff.",
   "dispatch_decisions": {
     "1037": "STOP_UNACCEPTED_FINITE_ALLOWANCE_USED",
-    "C05": "ONE_EXACT_SAME_AUTHOR_PROMOTION_CORRECTION_RUNNING",
+    "C05": "SAME_NONAUTHOR_FINAL_FOCUSED_RERECEIVING_RUNNING",
     "other_classified_jobs": "HELD_OR_USER_OPERATED_NO_FILLER"
   }
 }
