@@ -1,0 +1,42 @@
+{
+  "schema": "SOROK_C05_INDEPENDENT_BLOB_PINS@1",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "branch": "codex/sorok-c05-independent-g5-20261115-r1",
+  "commits": {
+    "head_report": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+    "head_tree": "9cafe4ad10b4548250845b575feacfe385b58639",
+    "implementation": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+    "implementation_tree": "d1faf316060208ef5c9a33b5ffa30a87b849011e",
+    "start": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+    "prerequisite_review": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b"
+  },
+  "product": {
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py": {
+      "git_blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92"
+    },
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py": {
+      "git_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+      "sha256": "f4442b35e9d5fbf12b0fcc43fa99814a6a17f70aa16d877ba4a1fb4a621a7c3b"
+    }
+  },
+  "author_test": {
+    "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py": {
+      "git_blob": "4741264d5b23195731d7fe7f0f77e72ec847442e",
+      "sha256": "115b0fd74837386340bb0bad4ef8eea3d7aba0c23671c72ed831f111ae69a79a"
+    }
+  },
+  "original_contract": {
+    "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-classified-queue-20261115/C05-g5/ORIGINAL_C05.json",
+    "sha256": "6b36ca536ef808ef4f50470b494e2dfc44f9b41cdc8d53b97743fce195aed12b"
+  },
+  "product_diff_implementation_to_report": "empty",
+  "product_change_summary": "supporting_actor.py one-line role allowlist; continuing_relations.py new; author C05 test new; no other product file",
+  "reviewer_probe_files": [
+    "newprobes/c05_observe.py",
+    "newprobes/c05_probe.py",
+    "newprobes/c05_cold_child.py",
+    "newprobes/c05_defect_probe.py"
+  ]
+}
