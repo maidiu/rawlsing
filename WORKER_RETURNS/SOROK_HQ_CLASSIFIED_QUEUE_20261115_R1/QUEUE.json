@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T08:28:08.642523+00:00",
+  "updated_utc": "2026-11-15T08:39:47.843519+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -97,9 +97,10 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b-receipt-independent-g5-20261115-r1",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
+      "state": "REVISE_EXACT_DEFECT_B05_SOLE_FORGED_RENT",
       "author_session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
-      "separate_nonauthor": true
+      "separate_nonauthor": true,
+      "result_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1"
     },
     {
       "issue": "C05",
@@ -126,6 +127,32 @@
       "state": "RUNNING",
       "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
       "qualified_scope": "C04 child-facingcustody ONLY; motherselector/language/parentmetadata/D03residualholds preserved"
+    },
+    {
+      "issue": 1037,
+      "role": "single post-G5 B05 writer-proof correction author",
+      "name": "sorok1037-b05-writer-proof-r2",
+      "base": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "out": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing",
+      "branch": "codex/sorok1037-b05-writer-proof-repair-20261115-r2",
+      "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "owner": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "launch": {
+        "job_id": "sorok1037-b05-writer-proof-repair-20261115-r2",
+        "child_pid": 80008,
+        "supervisor_pid": 80004,
+        "observer_pid": 80009,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b05-writer-proof-repair-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "prior_review_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+      "permitted_correction_number": 1,
+      "future_reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe"
     }
   ],
   "runtime_verification": [
@@ -221,6 +248,12 @@
         "C05",
         "D04"
       ]
+    },
+    {
+      "task": "1037 focused same-nonauthor R2 readback",
+      "state": "WAITING_FROZEN_R2_CANDIDATE",
+      "owner_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "next_action": "Only after actual minimal correction; exact decisive RED/normal/cold readback, otherwise owner ABI HOLD; no second correction loop"
     }
   ],
   "requires_semantic_adjudication": [
@@ -249,6 +282,19 @@
         "mother selector and language owner HELD"
       ],
       "releases": "C05 separately authorized bounded implementation only"
+    },
+    {
+      "task": "1037 independent G5",
+      "state": "REVISE_EXACT_DEFECT",
+      "code_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "review_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1065",
+      "defect": "B05 sole append-only rehashed ADMITTED rent receipt accepted READ though no actual rent operation/debit",
+      "original_foreign_root_attacks": "REFUSED_INDEPENDENTLY",
+      "inherited_tests": "43_PASS",
+      "acceptance": "NOT_ACCEPTED",
+      "permitted_correction": "ONE_R2_RUNNING",
+      "further_unbounded_cycles": false
     }
   ],
   "guide_records_affected": [
