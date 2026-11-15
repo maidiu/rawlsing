@@ -259,6 +259,7 @@ def join_saved_source_operation_fates(
     workload: NativeWorkload, resolver: Any,
     host: str, purpose: str, runner: BatchExecutionRunner,
     allow_test_only: bool = True,
+    issuer_v2: Any | None = None,
 ) -> PostconsumerFateJoin:
     """Verify actual saved-native receipts and join to every original operation.
 
@@ -285,7 +286,7 @@ def join_saved_source_operation_fates(
         raise SourceReceiptJoinError("Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT")
     if (compilation.source_sha256 != handoff.source_sha256
             or workload.projection.expected_source_sha256 != handoff.source_sha256
-            or compilation.issued.workload != workload
+            or (issuer_v2 is None and compilation.issued.workload != workload)
             or admission.binding_receipt().runtime_catalog != workload.catalog.receipt()):
         raise SourceReceiptJoinError("ISSUED_WORKLOAD_AND_SOURCE_IDENTITY_DRIFT")
     # Q2 independently certified the complete S1-C inventory/frontier
@@ -314,14 +315,35 @@ def join_saved_source_operation_fates(
         allow_test_only=allow_test_only,
     )
     if (type(record) is not IssuedWorkloadRecord
-            or record.scope != "TEST_ONLY_SOURCEFREE"
-            or record != compilation.issued.record):
+            or record.scope != "TEST_ONLY_SOURCEFREE"):
         raise SourceReceiptJoinError("TEST_ONLY_CURRENT_ISSUER_NOT_EXACT")
-    # The CURRENT resolver authenticates the record it was asked for, not
-    # whether a caller replaced a compiler output with its own record.
-    _verify_original_governed_issuer(
-        compilation, workload, record, host=host, purpose=purpose,
-    )
+    # The CURRENT resolver authenticates its record, but only the compiler
+    # can prove WHICH original operation/jobs it issued. The default v1
+    # source-to-fate join therefore remains strictly one-DISCOVERY, zero QUERY.
+    if issuer_v2 is None:
+        if record != compilation.issued.record:
+            raise SourceReceiptJoinError("TEST_ONLY_CURRENT_ISSUER_NOT_EXACT")
+        _verify_original_governed_issuer(
+            compilation, workload, record, host=host, purpose=purpose,
+        )
+    else:
+        # This is an EXPLICIT, separately versioned TEST_ONLY issuer cut,
+        # not a relaxation of R6 or independent original-source science.
+        # The original R03 compiler's frozen discovery proof is reconstructed
+        # again by the v2 factory, not trusted from the caller's envelope.
+        from rawlsing_next.pre553_governed_query_issuer_v2 import (
+            GovernedQueryIssuanceV2, _issue_compiled_governed_queries_v2,
+        )
+        if (type(issuer_v2) is not GovernedQueryIssuanceV2
+                or issuer_v2.original_compilation != compilation
+                or issuer_v2.issued.workload != workload
+                or issuer_v2.issued.record != record
+                or issuer_v2 != _issue_compiled_governed_queries_v2(
+                    compilation
+                )):
+            raise SourceReceiptJoinError(
+                "R03_V2_ORIGINAL_GOVERNED_OPERATION_ISSUER_DRIFT"
+            )
     # Q2's frozen handoff contains mutable nested preimages. Its source-
     # realization claim must agree with the source-side witness and the
     # independently recorded Q2 operation-source census before any native
