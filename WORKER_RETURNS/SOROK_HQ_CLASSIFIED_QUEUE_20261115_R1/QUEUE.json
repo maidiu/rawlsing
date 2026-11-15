@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T06:39:16.546201+00:00",
+  "updated_utc": "2026-11-15T07:57:27.970729+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -31,8 +31,9 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b-receipt-repair-20261115-r1",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
-      "owner": "ses_e22146cc1ffeLXXJyO5aDi0REe"
+      "state": "AUTHOR_CANDIDATE_FROZEN_PENDING_G5",
+      "owner": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "result_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00"
     },
     {
       "issue": 1038,
@@ -75,6 +76,29 @@
       },
       "state": "RUNNING",
       "owner": "ses_e221462b9ffeDc6SKxZGtXojUH"
+    },
+    {
+      "issue": 1037,
+      "role": "independent nonauthor B04/B05 G5",
+      "name": "sorok1037-b-receipt-independent-g5",
+      "base": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "out": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing",
+      "branch": "codex/sorok1037-b-receipt-g5-20261115-r1",
+      "session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "owner": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "launch": {
+        "job_id": "sorok1037-b-receipt-independent-g5-20261115-r1",
+        "child_pid": 68590,
+        "supervisor_pid": 68589,
+        "observer_pid": 68591,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b-receipt-independent-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "author_session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "separate_nonauthor": true
     }
   ],
   "runtime_verification": [
@@ -135,11 +159,6 @@
   ],
   "pending": [
     {
-      "task": "1037 independent G5",
-      "state": "WAITING_FROZEN_AUTHOR_CANDIDATE",
-      "owner": "nonauthor NOT_LAUNCHED"
-    },
-    {
       "task": "C05",
       "state": "WAITING_C04_CUSTODY_G5_AND_CAPACITY",
       "original_dependencies": [
@@ -189,5 +208,16 @@
   "requires_semantic_adjudication": [
     "G2 actor alternative evaluation/selection/inaction source rule"
   ],
-  "routine_user_relay_required": false
+  "routine_user_relay_required": false,
+  "returns": [
+    {
+      "task": "1037 author",
+      "state": "AUTHOR_CANDIDATE_NOT_ACCEPTED",
+      "sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1061",
+      "terminal_exit": 0,
+      "independent_review": "RUNNING",
+      "explicit_residual": "B05 coherent sole fabricated rent receipt for completed period; reviewer must adjudicate actual-operation binding"
+    }
+  ]
 }
