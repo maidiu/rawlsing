@@ -29,7 +29,7 @@ The repository's earlier [R47 FUNC001 discovery](https://github.com/maidiu/rawls
 
 **Reconciled conclusion:** `R47_FUNCTIONAL_COMPONENTS_PRESENT_SOURCEFREE__COMPETENT_ORIGINAL_SELECTION_ISSUER_NOT_PROVED__ACTUAL_SELECTED_SOURCE_FIRST_IMPORTER_NOT_PROVED`. Do **not** call the entire operation compiler absent, and do **not** call original35 issued scientific execution closed. The named historical candidate QSM CSV content SHA256 `0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13` still lacks demonstrated *currently selected* exact `row_payload_hash` / `authority_version` / `authority_rule_id` / `source_family` / `canonical_wave` / `country_code_scope` / `question_id` / `var_code` / current issuer and permission closure. Its F03 certified-QUC exception must be preserved as an independent semantics problem, not flattened into generic RAW. [source](https://github.com/maidiu/rawlsing/blob/9253064bc9423a0f0ccda4fbdea43c2f54f800c6/data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/SHA256SUMS.csv#L1-L16); [source](https://github.com/maidiu/rawlsing/blob/9253064bc9423a0f0ccda4fbdea43c2f54f800c6/data/ddm_build_copy/ddm_v550_question_relation_authority.py#L584-L782).
 
-## R8-02. Seventeen evidence-backed current-reader edges (individual function, not module equivalence)
+## R8-02. Sixteen evidence-backed current-reader edges (individual function, not module equivalence)
 
 | Edge | Shared seams | Exact current function / reader | Positive present operation | Missing historical/current proof | Pinned source |
 | --- | --- | --- | --- | --- | --- |
