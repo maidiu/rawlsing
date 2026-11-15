@@ -1,0 +1,61 @@
+{
+  "accepted": false,
+  "compiler_issued": {
+    "discoveries": 1,
+    "expected_jobs": [
+      [
+        "DISCOVERY",
+        "DiscoveryAuthority@1.0.0|urn:rawlsing:pre553:DiscoveryAuthority:sha256:b5d49899273f4a8488ebdc376b34ce7a90bffef3a98e5c4dc2a4e10400f9ff6c|b5d49899273f4a8488ebdc376b34ce7a90bffef3a98e5c4dc2a4e10400f9ff6c",
+        ""
+      ]
+    ],
+    "requests": 0
+  },
+  "empty_runner_join": {
+    "error": "R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT",
+    "positive_attribution": 0,
+    "refused": true
+  },
+  "executed_runner_join": {
+    "error": "R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT",
+    "positive_attribution": 0,
+    "refused": true
+  },
+  "f4_like_claim_classes": [
+    "CO_TRAVEL",
+    "JOINT"
+  ],
+  "f4_like_dispositions": [
+    "PROHIBITED"
+  ],
+  "f4_like_operation_count": 12,
+  "joint_query_in_compiler_plan": [],
+  "manual_batch": {
+    "executed_native_query_and_discovery": true,
+    "states": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "units": 2
+  },
+  "manual_r3_issued": {
+    "discoveries": 1,
+    "expected_jobs": [
+      [
+        "DISCOVERY",
+        "DiscoveryAuthority@1.0.0|urn:rawlsing:pre553:DiscoveryAuthority:sha256:b5d49899273f4a8488ebdc376b34ce7a90bffef3a98e5c4dc2a4e10400f9ff6c|b5d49899273f4a8488ebdc376b34ce7a90bffef3a98e5c4dc2a4e10400f9ff6c",
+        ""
+      ],
+      [
+        "QUERY",
+        "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:1c8fc0aca9b2649a8aaa1fc797d84802541121b9a2a993e457abccf45c99f528|1c8fc0aca9b2649a8aaa1fc797d84802541121b9a2a993e457abccf45c99f528",
+        "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:1ef8cae0fb941211bfb81911b0f237e5bc7cc03f49a02e8e6797c27051a2dae4|1ef8cae0fb941211bfb81911b0f237e5bc7cc03f49a02e8e6797c27051a2dae4"
+      ]
+    ],
+    "matching_resolver": "TestOnlyDecisionResolver",
+    "requests": 1,
+    "same_compiler_record": false
+  },
+  "passed": true,
+  "source": "original R3 8b03 harness manual q101/q102/q103 QUERY"
+}

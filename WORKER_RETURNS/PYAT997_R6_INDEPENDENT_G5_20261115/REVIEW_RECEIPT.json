@@ -1,0 +1,261 @@
+{
+  "schema": "PYAT997_R6_INDEPENDENT_G5_REVIEW_RECEIPT@1.0.0",
+  "job": "J2 #997 R6 G5",
+  "reviewer": {
+    "role": "SAME_ORIGINAL_INDEPENDENT_NONAUTHOR_REVIEWER",
+    "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "browser_a_b_or_native_executor_author": false,
+    "subagents_or_new_engine": false
+  },
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat997-r6-g5-20261115",
+  "branch": "review/pyat997-r6-g5-20261115",
+  "reviewed_head": "cb5f4c6653f5a40ad6e875fca7f999b11afc0e3c",
+  "code_test_cut": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+  "documentary_cut": "c368ff30189d8fdd5c1a8036a5b6e265d822f80b",
+  "prior_rejection": "8b03c121a2f6d9c7a9c2e0513a03545780d14c3c",
+  "product_code_identical_code_cut_to_head": true,
+  "product_edits_by_reviewer": false,
+  "source_tests_edits_by_reviewer": false,
+  "runtime": {
+    "host": "Darwin 22.3.0 x86_64",
+    "python": "3.11.3",
+    "executable": "/usr/local/bin/python3",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "installs_or_vm_changes": false
+  },
+  "code_test_blobs": {
+    "rawlsing_next/pre553_source_postconsumer_receipts.py": "37ffb13687cc760a8ce93f693c66a675f0fb32fd",
+    "rawlsing_next/pre553_universal_workload.py": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+    "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py": "b60310350789bce539ff263302b436eb8a57d8dc",
+    "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+    "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py": "3ca7396a50312b7b8daf2d29e4119aba71d63db9",
+    "rawlsing_next/tests/test_pyat960_s1e_source_i02.py": "4c0a0041e15813970ea26dcde1fbef7980c93c4f",
+    "rawlsing_next/tests/test_pyat960_s1e_body_transport.py": "e6ad684626f7b13e2382ad732ab48194627d9bac",
+    "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py": "4afbc5adc02478a5e1bb1a7bbbee503007ff0e23",
+    "rawlsing_next/tests/test_pre553_direct_estate_i03.py": "970996b889e841d7e283b59ca245e9cac7594a55"
+  },
+  "test_adoption": {
+    "reviewed_three_file_patch_sha256": "e79990e0c650924ab989a5cdc1b0777d1314032281ebcec0148261783cf4ca35",
+    "source_bridge_blob_exact": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+    "source_saved_body_bridge_blob_exact": "3ca7396a50312b7b8daf2d29e4119aba71d63db9",
+    "native_first_consumer_blob": "b60310350789bce539ff263302b436eb8a57d8dc",
+    "native_file_contains_new_R6_issuer_tests": true,
+    "adopted_in_R6_canonical_tree": true,
+    "no_weakening_found": true,
+    "test_patch_only_touches_three_test_files": true,
+    "r6_product_guard_change_is_separate": true
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS_SCOPED",
+      "receipt": "Exact R6 head/code-test cut/blobs and seven-file court pinned. Compiler-issued workload is 0 QUERY/1 DISCOVERY. The new R6 guard reconstructs the original governed-frontier issuer contract; no manual QUERY or replacement compilation accepted. Test adoption is canonical."
+    },
+    "G2": {
+      "state": "PASS_SCOPED",
+      "receipt": "Actual compiler-issued discovery executed through native I05 and one-unit Batch; q101 direct I03 SUPPORTED 5/5, three country/negative UNAVAILABLE facts; 13 family saved estate; exact changed-source fact/restore in 89-file court."
+    },
+    "G3": {
+      "state": "PASS_SCOPED",
+      "receipt": "Original R3 manual q101/q102/q103 QUERY + matching TestOnlyDecisionResolver + executed 2-unit native Batch refused R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT with 0 positive attribution; empty and executed runner both refused. Wrong source/science permission refused R03_COMPILER_ORIGINAL_ISSUER_IDENTITY_DRIFT; wrong decision/U/job refused; HELD/pending/prohibited retained; 18 S1-C fate tests pass."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_SMALL",
+      "receipt": "Seven-file 89/89 fresh run: 24.55 s, 160,866,304 B maximum RSS, 127,463,424 B peak footprint; 5 respondents TEST_ONLY; no 100k/6 GiB claim. Genuine discovery 1 source read/decode/cell pass, 13 family counts, full C11 0, consumer source opens 0."
+    },
+    "G5": {
+      "state": "PASS_SCOPED",
+      "receipt": "Same original independent reviewer accepts the R6 sourcefree issuer-binding correction at the stated scoped grade. No R6-specific runnable counterexample found. Separate #999 S2-A native body-truth hold remains; no false integrity or full original S1-E acceptance."
+    }
+  },
+  "decision": "ACCEPT_SCOPED",
+  "scope": "R6_SOURCEFREE_ISSUER_BINDING_AND_SAVED_NATIVE_FIRST_CONSUMER_FATE_JOIN",
+  "g5": "PASS_SCOPED",
+  "integration": "UNMERGED",
+  "terminal_closed": false,
+  "original_task_complete": false,
+  "full_original_s1e": false,
+  "original35_source_or_science": "HOLD_EXTERNAL",
+  "production_current": "HOLD_EXTERNAL",
+  "protected_merge": "HOLD_EXTERNAL",
+  "full_100k": "NOT_RUN",
+  "known_s2a_native_body_truth": "HOLD_EXTERNAL",
+  "r03_new_query_producer": "J3_SEPARATE_NOT_PREREQUISITE",
+  "courts": [
+    {
+      "name": "exact seven-file R6 handoff suite",
+      "command": "python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py rawlsing_next/tests/test_pyat960_s1e_source_i02.py rawlsing_next/tests/test_pyat960_s1e_body_transport.py rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py rawlsing_next/tests/test_pre553_direct_estate_i03.py",
+      "exit_code": 0,
+      "result": "89 passed in 24.95s",
+      "repeat_measured": "89 passed in 24.55s; max RSS 160,866,304 B; peak footprint 127,463,424 B",
+      "evidence": "evidence/seven-file-pytest.txt; evidence/seven-file-time.txt"
+    },
+    {
+      "name": "R6 issuer-substitution targeted court",
+      "command": "python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py -k 'original_r03_compiler_issuer_cannot_be_replaced or unaltered_compiler_discovery' -v",
+      "exit_code": 0,
+      "result": "4 passed, 20 deselected in 3.22s",
+      "evidence": "evidence/issuer-tests-4.txt"
+    },
+    {
+      "name": "original R3 manual QUERY + matching resolver through actual R6 join",
+      "command": "python3 -B WORKER_RETURNS/PYAT997_R6_INDEPENDENT_G5_20261115/witness_original_r3_r6_refusal.py",
+      "exit_code": 0,
+      "result": "PASS: both empty and executed runner refused R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT; 0 positive attribution; manual 2-unit native Batch executed; compiler 0 QUERY/1 DISCOVERY; 12 F4-like operations PROHIBITED.",
+      "evidence": "evidence/original-r3-r6-refusal.json"
+    },
+    {
+      "name": "wrong source/science permission",
+      "command": "python3 -B WORKER_RETURNS/PYAT997_R6_INDEPENDENT_G5_20261115/witness_permission_refusals.py",
+      "exit_code": 0,
+      "result": "both refused R03_COMPILER_ORIGINAL_ISSUER_IDENTITY_DRIFT with 0 runner receipts and 0 positive attribution",
+      "evidence": "evidence/permission-refusals.json"
+    },
+    {
+      "name": "genuine compiler-issued discovery native first consumer",
+      "command": "python3 -B WORKER_RETURNS/PYAT997_R6_INDEPENDENT_G5_20261115/witness_genuine_discovery.py",
+      "exit_code": 0,
+      "result": "compiler 0 QUERY/1 DISCOVERY; q101 I03 SUPPORTED 5/5; I05 8 receipts; Batch 1 COMPLETED; join 22 rows/6 positive/2 pending/14 held; source opens 0; full C11 0",
+      "evidence": "evidence/genuine-discovery.json"
+    },
+    {
+      "name": "S1-C source-operation fate receipts",
+      "command": "python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py",
+      "exit_code": 0,
+      "result": "18 passed in 83.69s",
+      "evidence": "evidence/s1c-18.txt"
+    },
+    {
+      "name": "historical all35 no-drop ledger",
+      "command": "python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat940_s1b_b01_b04.py::test_b01_all_historical_r157_configs_and_unjoined_census_are_exact rawlsing_next/tests/test_pyat940_s1b_b01_historical_parity.py::test_b01_historical_roster_totals_and_unjoined_census_are_exact rawlsing_next/tests/test_pyat940_s1b_b05_b06.py::test_b06_unjoined_items_remain_preparation_and_never_invent_slots",
+      "exit_code": 0,
+      "result": "3 passed in 35.39s; 35/18,276/18,413/26 historical ledger; no original execution",
+      "evidence": "evidence/all35-ledger-tests.txt"
+    }
+  ],
+  "original_attack": {
+    "source_script": "exact R3 harness copied from 8b03c121a2f6d9c7a9c2e0513a03545780d14c3c",
+    "historical_old_witness_exit": 1,
+    "historical_old_witness_meaning": "diagnoses old substitution, not R6 refusal",
+    "r6_actual_empty_runner": {
+      "refused": true,
+      "error": "R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT",
+      "positive_attribution": 0
+    },
+    "r6_actual_executed_runner": {
+      "refused": true,
+      "error": "R03_COMPILER_ISSUED_JOB_OR_PLAN_DRIFT",
+      "positive_attribution": 0
+    },
+    "manual_batch_states": [
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "compiler_issued": {
+      "requests": 0,
+      "discoveries": 1,
+      "expected_jobs": [
+        "DISCOVERY"
+      ]
+    },
+    "manual_r3_issued": {
+      "requests": 1,
+      "discoveries": 1,
+      "matching_resolver": "TestOnlyDecisionResolver"
+    },
+    "f4_like_operations": {
+      "count": 12,
+      "dispositions": [
+        "PROHIBITED"
+      ],
+      "claim_classes": [
+        "JOINT",
+        "CO_TRAVEL"
+      ]
+    }
+  },
+  "genuine_positive": {
+    "source_sha256": "ceb5e900edda6e26d1aced9d4d7c67da0e3e7c5de3aa38ae5e399a46a1ef954a",
+    "i02_replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:d38b8a3d5af4c2f0b30991d3ab02b8596fe708ee5b938044621430ae189f6a61|d38b8a3d5af4c2f0b30991d3ab02b8596fe708ee5b938044621430ae189f6a61",
+    "i03_fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:82860707f44b754a9e07634d9efc72bc43a4d8fa91ca042a89e5f85fdd3a9ea5|82860707f44b754a9e07634d9efc72bc43a4d8fa91ca042a89e5f85fdd3a9ea5",
+    "i03_typed_state": "SUPPORTED",
+    "i03_raw": [
+      5,
+      5
+    ],
+    "i05_receipt_count": 8,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "join": {
+      "rows": 22,
+      "positive_native_linked_operations": 6,
+      "pending_eligible_operations": 2,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      }
+    },
+    "source_opens_after_consumer": 0,
+    "full_c11_builds": 0,
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 5,
+      "WeightMeasureFact": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0
+    }
+  },
+  "resource": {
+    "seven_file": {
+      "wall_seconds": 25.35,
+      "max_rss_bytes": 160866304,
+      "peak_memory_footprint_bytes": 127463424,
+      "tests": 89
+    },
+    "s1c_18_seconds": 83.69,
+    "all35_seconds": 35.39,
+    "fixture": "TEST_ONLY generated 5-respondent SAV; 3 questions plus country in attack fixture; q101/country in canonical positive",
+    "100k_6gib": "NOT_RUN",
+    "1006_baseline": "NOT_RUN"
+  },
+  "limits_and_holds": [
+    "The R6 guard is a source-grounded historical producer-consistency check, not a credential-independent external attestation of a fully replaced plan/frontier/CURRENT compiler cut; a coordinated full replacement needs a separately retained trusted compiler preimage. No fictional seal is claimed.",
+    "S2-A native body-truth / coherent projected+locator corruption remains a separate unresolved owner dependency (#999); no false integrity acceptance.",
+    "R03 genuine governed QUERY/F4 producer remains separate J3; not prerequisite to R6 scope and not claimed.",
+    "Original35 source/science/rights, production CURRENT, protected merge, #998 full joined, #1001 full scale, #1006 baseline, N11/N12 and 100k/6 GiB remain HOLD/NOT_RUN.",
+    "No product/test/source edits, no source/science authority, no protected merge, no subagent, no new engine, no full 100k.",
+    "Worktree has two pre-existing tracked deletions (.gitignore, README.md) from checkout population; reviewer did not author or restore them."
+  ],
+  "custody": {
+    "sole_writes": "WORKER_RETURNS/PYAT997_R6_INDEPENDENT_G5_20261115/",
+    "background_jobs_left": false,
+    "review_evidence": [
+      "REVIEW_RECEIPT.json",
+      "00_HANDOFF.md",
+      "witness_original_r3_r6_refusal.py",
+      "witness_permission_refusals.py",
+      "witness_genuine_discovery.py",
+      "evidence/seven-file-pytest.txt",
+      "evidence/seven-file-time.txt",
+      "evidence/issuer-tests-4.txt",
+      "evidence/original-r3-r6-refusal.json",
+      "evidence/permission-refusals.json",
+      "evidence/genuine-discovery.json",
+      "evidence/s1c-18.txt",
+      "evidence/all35-ledger-tests.txt",
+      "evidence/r3_harness_8b03/harness.py"
+    ]
+  }
+}
