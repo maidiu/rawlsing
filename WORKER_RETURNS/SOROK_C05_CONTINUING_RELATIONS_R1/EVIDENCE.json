@@ -1,0 +1,221 @@
+{
+  "schema": "SOROK_C05_SOURCEFREE_EVIDENCE@1",
+  "issue": "C05",
+  "title": "Continuing relations and variable-depth supporting actors",
+  "terminal_disposition": "C05_SOURCEFREE_CANDIDATE_FOR_NONAUTHOR_G5",
+  "capability_grade": "SOURCEFREE_S2_C05",
+  "source_grade": "SOURCEFREE_S2_ONLY",
+  "start_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+  "implementation_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "branch": "codex/sorok-c05-continuing-relations-20261115-r1",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+  "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+  "prerequisite_scope": "scoped C04 child-facing custody + C03 material prospective readset only; not mother autonomy, language ownership, or full C04 parent metadata acceptance",
+  "frozen_candidate": {
+    "product_files": [
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py"
+    ],
+    "test_files": [
+      "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py"
+    ],
+    "only_product_semantic_change_outside_new_module": "supporting role allowlist deliberately extended from parent to parent + neighbor; no root/focal/source/registration/participation/access semantics changed"
+  },
+  "source_blobs": {
+    "supporting_actor.py": {
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "git_blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92"
+    },
+    "continuing_relations.py": {
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py",
+      "git_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+      "sha256": "f4442b35e9d5fbf12b0fcc43fa99814a6a17f70aa16d877ba4a1fb4a621a7c3b"
+    },
+    "test_c05_continuing_relations.py": {
+      "path": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py",
+      "git_blob": "4741264d5b23195731d7fe7f0f77e72ec847442e",
+      "sha256": "115b0fd74837386340bb0bad4ef8eea3d7aba0c23671c72ed831f111ae69a79a"
+    }
+  },
+  "environment": {
+    "platform": "macOS 13.7.8 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "interpreter": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+    "tmpdir": ".local-logs/sorok-c05-continuing-relations/tmp",
+    "pytest_flags": ["-B", "-q", "-p", "no:cacheprovider"],
+    "pycache_disabled": true,
+    "host_note": "concurrent unrelated jobs were running; timings are not an isolated benchmark",
+    "provider_token_cost": "UNOBSERVED",
+    "controller_org_quota": "UNOBSERVABLE"
+  },
+  "test_runs": [
+    {
+      "suite": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py",
+      "passed": 5,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 55.31,
+      "real_seconds": 55.69,
+      "max_rss_bytes": 60870656,
+      "log": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/evidence/logs/c05_tests_final.log"
+    },
+    {
+      "suite": "WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py",
+      "passed": 6,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 16.51,
+      "max_rss_bytes": 56037376,
+      "log": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/evidence/logs/c01_regression.log"
+    },
+    {
+      "suite": "WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py",
+      "passed": 6,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 31.55,
+      "max_rss_bytes": 69439488,
+      "log": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/evidence/logs/c04_first_consumer_regression.log"
+    },
+    {
+      "suite": "WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py",
+      "passed": 12,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 70.62,
+      "max_rss_bytes": 72499200,
+      "log": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/evidence/logs/c04_custody_regression.log"
+    },
+    {
+      "suite": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py",
+      "passed": 5,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 19.94,
+      "max_rss_bytes": 60014592,
+      "log": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/evidence/logs/p2_owner_regression.log"
+    }
+  ],
+  "abi": {
+    "module": "developmental_recursion.continuing_relations",
+    "writer": "record_relation_change(session, *, actor_id, other_actor_id, relation, change, clock, operation_id, exposed_actor_ids=None, value=None, private_state=None)",
+    "promotion": "promote_relation(session, *, actor_id, other_actor_id, relation, depth, clock, operation_id)",
+    "history_reader": "read_relation_history(session, actor_id, *, other_actor_id=None, relation=None, as_of_clock=None)",
+    "terminal_consumer": "read_actor_relative_context(session, actor_id, event_id)",
+    "change_kind": "P2_CONTINUING_RELATION_CHANGE",
+    "head_kind": "P2_CONTINUING_RELATION_HEAD",
+    "change_schema": "SOROK_P2_CONTINUING_RELATION_CHANGE@1",
+    "head_schema": "SOROK_P2_CONTINUING_RELATION_HEAD@1",
+    "read_schema": "SOROK_P2_CONTINUING_RELATION_READ@1",
+    "context_schema": "SOROK_P2_ACTOR_RELATIVE_CONTEXT@1",
+    "reused_capital": [
+      "C01 register_supporting_actor / read_supporting_actor / resolve_participants",
+      "C01 read_actor_access C12 perception+participation path",
+      "supporting_actor._StoreWrite C12 transaction boundary",
+      "P2Owner ADMIT_EVENT existing-owner sourcefree performed event",
+      "C12 append_episode/episodes store and S47 world/clock",
+      "BP4 event hash and event-ID content-address seal",
+      "S45 public event projection"
+    ],
+    "new_world_or_psyche_store": false,
+    "new_scheduler_or_owner": false
+  },
+  "positive_oracle": {
+    "status": "PROVED_SOURCEFREE_EXECUTED",
+    "same_world_actors": [
+      "root focal TEST_ONLY_BP1_R26V_ACTOR_A (Nadia)",
+      "supporting TEST_ONLY_C05_PARENT alias P role parent",
+      "supporting TEST_ONLY_C05_NEIGHBOR alias O role neighbor"
+    ],
+    "dated_relation": "ENTER at world clock 222 observed with P/O exposure only; CHANGE at 234; LEAVE and re-ENTER at 234",
+    "later_events": [
+      "real P2Owner ADMIT_EVENT at 228 with focal, P and O; all PERCEIVED",
+      "real P2Owner ADMIT_EVENT at 234 with focal and P; O NOT_PERCEIVED but relation-qualified"
+    ],
+    "consumer_use": "read_actor_relative_context combines the later event receipt with only the dated exposed relation entries; P/O contexts differ from Nadia HOLD/partial contexts; context_effect changes on LEAVE and re-ENTER",
+    "promotion": "depth 1 -> depth 2 after later change; earlier event contexts and ENTER episode bytes/hash unchanged",
+    "cold": "fresh interpreter process returns exact registrations, history, contexts, world hash and counts"
+  },
+  "negative_oracle": {
+    "status": "PROVED_SOURCEFREE_EXECUTED",
+    "past_rewrite_on_promotion": "not observed; stored ENTER episode byte-identical and earlier contexts exact",
+    "relationships_collapse_to_child_profile": "not observed; P counterpart is O, O counterpart is P, Nadia sees HOLD/partial only",
+    "mutual_omniscience": "not observed; Nadia unexposed at first event and partial later; P/O private values absent from actor-facing contexts",
+    "same_event_different_access": "at second event P/Nadia PERCEIVED, O NOT_PERCEIVED; relation context differs by viewer",
+    "unexposed_actor_private_field": "Nadia first-event context has no relation token/party/private value; P/O secrets and relation private note absent from contexts, event and world",
+    "stranger_identity": "RELATION_ACTOR_UNKNOWN",
+    "future_clock": "RELATION_CLOCK_FUTURE",
+    "backdated_clock": "RELATION_CLOCK_BACKDATED",
+    "forged_receipt_root_branch_alias_value": "HOLD_CUSTODY_SEVERED at history and context",
+    "changed_operation_reuse": "RELATION_OPERATION_REUSE_MISMATCH",
+    "missing_party_exposure": "RELATION_EXPOSURE_MISSING_PARTY",
+    "private_value_leak": "RELATION_PRIVATE_STATE_LEAK",
+    "retro_history_fill": "not observed; later-exposed Nadia sees only CHANGE, history_complete false, prior_exposure HOLD_NOT_EXPOSED",
+    "sever_restore": "CHANGE episode severance gives HOLD_CUSTODY_SEVERED with event access intact and unrelated world/event/perception/checkpoint facts unchanged; restore returns exact pre-sever contexts",
+    "retry_idempotence": "ENTER and PROMOTE retries returned UNCHANGED with identical primary IDs and unchanged row counts",
+    "denied_scope": "HOLD_NOT_EXPOSED for Nadia; HOLD_UNKNOWN_SCOPE for a live actor querying a different relation"
+  },
+  "residuals": [
+    {
+      "id": "CALLER_SUPPLIED_RELATION_SEMANTICS",
+      "detail": "relation token, change, value and exposure are illustrative caller facts, not autonomous actor choice or native ADP-015/C4 authority"
+    },
+    {
+      "id": "FINITE_DEPTH",
+      "detail": "representation depth is 1 or 2; deeper variable-depth representation is not implemented"
+    },
+    {
+      "id": "SINGLE_SCOPE_PROOF",
+      "detail": "module supports multiple scopes; executed positive proof uses one relation scope"
+    },
+    {
+      "id": "RAW_C12_PRIVATE_STATE_VISIBLE",
+      "detail": "as in C01, raw private values live in the C12 episode and are developer-visible to a raw-store holder; actor-facing readers return NOT_READ"
+    },
+    {
+      "id": "BRANCH_FORK_REPLAY",
+      "detail": "UNOBSERVED; fresh-process cold reopen is proved, C12 fork replay was not exercised"
+    },
+    {
+      "id": "CONCURRENT_SAME_OPERATION",
+      "detail": "sequential retry is proved; concurrent same-operation uniqueness is not claimed"
+    },
+    {
+      "id": "INHERITED_EVENT_CONTENT",
+      "detail": "later event is real sourcefree P2 owner admission; any speech content is inherited S45/S39 engineering, not C04 parent speech or G2 selection"
+    },
+    {
+      "id": "C04_RESIDUALS_EXCLUDED",
+      "detail": "parent self-read metadata exactness and D03 caller-receipt root/branch/clock/operation binding remain excluded"
+    }
+  ],
+  "holds": [
+    "native ADP-015/C4 relation authority HELD",
+    "maternal psychology / independent volition / autonomy HELD",
+    "generated language and language_generation_owner HELD",
+    "G2 mother-owned event selection HELD",
+    "complete J1/Nadia performed response HELD",
+    "D04/D05 HELD",
+    "protected merge NOT AUTHORIZED",
+    "#939 fleet restart NOT AUTHORIZED",
+    "human/scientific/source-rights receiving HELD"
+  ],
+  "scope_compliance": {
+    "provider_model_account_auth_global_permission_changed": false,
+    "paid_fallback": false,
+    "new_server_vm_controller": false,
+    "nested_agents": false,
+    "timers_or_second_campaign": false,
+    "pyat": false,
+    "protected_merge": false,
+    "browser_management_or_contact": false,
+    "d04_d05_implementation": false,
+    "tmp_write": false,
+    "global_permission_alteration": false,
+    "committed_paths_only_leased": true,
+    "self_g5": false
+  },
+  "stop": true
+}
