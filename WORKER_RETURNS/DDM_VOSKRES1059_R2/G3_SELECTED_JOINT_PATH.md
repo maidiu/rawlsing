@@ -1,45 +1,107 @@
-# G3 — One composed respondent-joint knowledge path (source-executable, not historically executed)
+# G3 — Concrete bounded-nine respondent-joint family: JCFG-GSS-ABORTION-CONDITIONS
 
-## Selection
+## 1. Concrete family identity (not a generic field tuple)
 
-Selected path family: **V550J same-respondent joint pattern → V551 directional atom → V551J certified joint packet → V552 structural pressure fact → V552J exact-scope join → V553 canonical/probe consumer**.
+**Family:** `gss_abortion_condition_family`
+**Bounded joint configuration:** `JCFG-GSS-ABORTION-CONDITIONS`
+**Source / wave / country:** `GSS` / `2010` / `US`
+**Adjudication:** `V550JADJ-0005`
+**Decision:** `ACCEPTED_EXISTING_GSS_EXECUTABLE_CONTROL`
+**Authority release:** `V550J-BOUNDED-AUTHORITY-2026-08-02-R1`
+**Item count / minimum answered:** 6 / 3
+**Signed boundary authority:** true
+**P3 bound item count / source-local-only item count:** 0 / 6
+**Authority ceiling:** `GOVERNED_BOUNDED_CANARY_ONLY`; `NO_PRODUCTION_COMPLETENESS_CLAIM`
 
-This is one concrete code path, not a family-level census. The exact historical run/row is **NOT AVAILABLE** in authorized non-raw custody: no V551J/V552J/V553 output row, no V550J run manifest with positive load, and no respondent substrate was found in the inspected repository objects. Prior G1A C4R1 already records `POSITIVE_LOAD_PROVED = NO`, `0/9` bounded source-family/wave scopes, and "archive does not contain the respondent-level substrate" (`data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/G1A_C4R1_V550J_V551J_V552J_INFORMATION_CONSERVATION_RETURN.md`, blob `efe49ce5b9b93d19a49e321a44e8148987fad67b`, §§0,5). Therefore this file separates:
+**Ordered items (from `bounded_joint_configuration_item_crosswalk.csv` rows 12-17):**
 
-- **SOURCE_EXECUTABLE**: the code-level input→computation→output→consumer chain below.
-- **HISTORICAL_EXECUTED**: absent. No numerical historical value, run id, wall time, or row count is claimed.
+| order | var_code | question_implementation_id | p2_lineage_id | condition_label |
+|---:|---|---|---|---|
+| 1 | `abdefect` | `question_impl.phase0.8da159b3ddb964ba6920` | `p2lineage_639a0997464b39d19a7eb44f` | fetal_defect |
+| 2 | `abhlth` | `question_impl.phase0.dc8a1f84391d374d3994` | `p2lineage_6eb15213aa7dc0324c5767d8` | woman_health |
+| 3 | `abrape` | `question_impl.phase0.6bd976214617dc817176` | `p2lineage_7327e9857bf33d69a3737e87` | rape |
+| 4 | `abany` | `question_impl.phase0.1569f26ce284ee346a1c` | `p2lineage_ad9d097fefd6086c987c98fa` | any_reason |
+| 5 | `absingle` | `question_impl.phase0.bbbde435f9f054f959b6` | `p2lineage_88c9ec1cabb9e2b4cf482110` | unmarried |
+| 6 | `abnomore` | `question_impl.phase0.7555028a2eafddb1c875` | `p2lineage_5664ff0044b0691645d96b3b` | no_more_children |
 
-No synthetic stand-in, raw respondent bytes, scientific function execution, test, benchmark, or product edit was used.
+All six share `response_families=["binary_contrast"]`, `response_values=["", "1", "2"]`, labeled `yes=1`/`no=2`, `directional_certification_statuses=["CERTIFIED"]`, `response_semantics_statuses=["manual_authority_all_eight"]`, and response-semantics contract hash `9573e1f8fb4e0b7126fa44c74892a2acb70db046e5d2e110079a30fe15730821`.
 
-## Path identities (fields, not invented data)
+The registry's `item_role_groups` also lists `abpoor`; the bounded authority row explicitly narrows to the six exact variables present in the 2010 fixture, so `abpoor` is outside this selected bounded configuration.
 
-The path is instantiated by any exact `(run_id, source/source_family, canonical_wave, country_code, family_id, pattern_id, item_order, question_id, var_code)` tuple that satisfies the gates. All fields named below are real producer/consumer fields:
+**Metadata evidence**
 
-| Stage | Input grain and identity | Computation | Output artifact and fields | Numeric/semantic gain | Loss / refusal | Qualification | Actual consumer |
-|---|---|---|---|---|---|---|---|
-| J1 V550J prepared substrate | source/wave/country respondent rows; `respondent_id`, `var_code`, `response_value_normalized`, `weight_value` | load prepared parquet or build once per source/wave/country; validate signature over authority compendium, family registry, response-semantics contract, view schema, compiler version | prepared frame + manifest; `prepared_required` fails closed | one same-person/country preparation reused across active families | signature mismatch rebuilds/refuses; no universal cross-run permission; family statistics still per family | `prepared_required` or allowed build mode; signature match | V550J family compiler |
-| J2 V550J pattern | prepared frame; family item rows | group by `respondent_id` into same-person joint configurations; emit ordered items; count pattern members; compute `pattern_count_unweighted`, `pattern_count_weighted`, `pattern_probability`, `support_status`, `support_gate_status`, `support_score`; association context uses `p_response_given_pattern = observed_weight / pattern_var_weight`, `p_response_baseline = baseline_count / baseline_total`, `lift = p_given_pattern / baseline_share`; the field named `mutual_information` is `log2(max(1e-12, p_given_pattern/baseline_share)) * pattern_count_unweighted / max(1, family_count)` | `joint_response_pattern_index`, `joint_response_pattern_item_index`, relation signature, association/position/meaning tables | same-respondent joint premise and item membership, with multiple explicit denominators | association `mutual_information` is **not** joint MI; denominators (`pattern_member_n_unweighted`, `pattern_var_answered_n_*`, `response_overlap_n_*`, `baseline_answered_n_*`, `eligible_rows_for_var`) must not be collapsed; low support suppressed | family registry, support gates, association publication lane | V551J compiler |
-| J3 V551 atom | V550 `answer_distribution` / `country_answer_distribution` direct-lane bridge rows; `response_value_normalized`, `response_direction`, `response_intensity`, `n_unweighted`, `n_weighted`, `pct_*`, semantics/authority hashes | direct-lane adjudication; `PROMOTABLE` only when applicability and hashes survive; signed side/intensity projection; atom identity/contract hashes | `relation_evidence_atoms`; `atom_id`, `candidate_id`, `empirical_distribution_id`, `v551_signed_side`, `v551_signed_intensity`, `n_respondents`, `support_status`, `measurement_contract_hash`, `atom_contract_hash` | canonical signed direction/intensity attached to the same question/response distribution | only two direct tables are approved; derived determinicity is excluded; special/missing/nonpromotable rows do not become atoms; no new conditional probability is estimated | direct lane; approved source table; substantive/nonmissing/nonspecial; contract validation | V551J component matcher; V552 structural builder |
-| J4 V551J component | V551 atom + one V550J pattern item | match only in exact `source_family` + `canonical_wave` + `country_code`; exact `question_id` + `var_code`, then exact `response_value_normalized`; reject >1 distinct `atom_contract_hash` as ambiguous; dedupe equivalent duplicates; one component per item | `v551j_joint_component_index`; `component_id`, `item_order`, `v551_atom_match_status`, `v551_atom_match_basis`, `component_contract_hash`, `component_certification_contribution` | a same-person pattern item is joined to its exact directional atom, preserving order and component role | missing/context/special items are typed unmatched; no nearest-neighbor or name-based substitution; unmatched relation item blocks certification | exact identity; one effective atom; no ambiguous hash | V551J packet builder |
-| J5 V551J packet | component index + V550J pattern measurements | require ≥2 matched relation components; all semantic/direction/target/structural gates; packet measurements from V550J pattern (`joint_pattern_count_unweighted/weighted`, `joint_probability`, `joint_support_*`, `joint_effective_n`), not from atom counts; atom measurements kept separate; `certification_status`; `ready_for_v552j_joint_evidence`; `ready_for_v553=False` | `v551j_joint_packet_candidate_index`, `v551j_certified_joint_packet_index`, `v551j_review_surface`; `packet_id`, `pattern_id`, ordered component vectors, certification/review lanes, blockers | a certified same-person joint observation with directional atom semantics and explicit component order | does **not** reconstruct `P(response | empirical A AND B)`; one or unresolved components block certification; association MI is not used as the packet measurement | ≥2 relation components; no ambiguous/unexplained blockers; authority/direction/target/structural gates; measurement-separation PASS | V552J producer verifier |
-| J6 V552 structural fact | V551 atoms + coverage + adjudication | V551 signed projection validation; require one unique positive `n_respondents` for the response surface; choose weighted pct only when weight status permits, else unweighted/normalized counts; `canonical_signed_component = sign * magnitude`; normalize selected distribution weights; `pressure_score = Σ(normalized_weight × canonical_signed_component)` in [-1,1]; zero is `OBSERVED_ZERO`; heterogeneous/absent denominator is `APPLICABLE_BUT_UNRESOLVED` | `v552_pressure_component_index`, `v552_pressure_observation_index`, `v552_structural_fact_index`, `v552_temporal_key_source_index`; `pressure_score`, `pressure_score_status`, `measurement_evidence_status`, `structural_fact_id`, `v552_temporal_key_source_id` | turns the signed atom distribution into an exact structural pressure observation with explicit denominator/weight basis and replay hash | no scale reinterpretation; no unresolved-mass renormalization; no raw conditional reconstruction; single positive denominator required | V551 v3 input contract; component eligibility; unique positive `n_respondents`; weight-status gate | V552J exact-scope matcher |
-| J7 V552J join | V551J certified/review packet + V552 structural fact/temporal key | verify both producer bundles (manifest/schema/compiler/scope/SHA-256/row count); exact same run/source/wave/country-or-shard scope; semantic score: relation axis 4, target 3, driver facet 3, question 2; score ≥5 resolves partial, ≥8 exact; `join_permission=ALLOW` only for certified + both producers ALLOW + fact permission ALLOW + observed pressure; review becomes `REVIEW_ONLY`; context/denied preserved | `v552j_structural_join_index`, `v552j_join_audit`, `v552j_v553_input_index`, `v552j_to_v553_handoff_index`; `v552j_join_id`, `packet_id`, `v552_structural_fact_id`, `pressure_score`, `join_permission`, `ready_for_v553_probe`, `ready_for_v553_temporal_field=False` | permission-bound convergence of the joint packet and the structural fact at one exact scope | **component index and same-grain packet vectors are not carried into V552J** (prior C4R1 seven gaps); scalar readiness/quality scores are not semantic successors; no temporal field | exact scope; semantic threshold; certified lane; producer/fact ALLOW; observed pressure | V553 canonical adapter / temporal pressure |
-| J8 V553 consumer | V552J join/input/handoff + V552 facts/keys | canonical adapter verifies manifest/schema/compiler/scope/hash/row count, join/input/handoff equality, declared vs actual probe/temporal counts; temporal pressure resolves structural dimension, builds a structural-channel or horizon/probe key; `temporal_field_allowed=False` ⇒ probe-only; single-wave `ready_for_v553_probe` is not temporal authority | V553 canonical wave bundle; `v553_input_id`, `temporal_pressure_key`, `key_authority_status=probe_temporal_key`, `pressure_value_kind=probe_only`, `blocking_reason=comparability_pending` | a replayable V553 probe candidate derived from the joint packet and structural fact | no multi-wave temporal field; no V551J dereference; omitted component semantics not restored; review/deny rows stay blocked | canonical surface valid; structural dimension resolved; probe flag; temporal field false | `ddm_v553_canonical_harmonization.inspect_v552j_canonical_surface` → `build_v553_wave_harmonization`; `ddm_v553_temporal_pressure` resolution/consumer |
+- `data/ddm_build_copy/manifests/question_family_registry.yaml:7-85`, blob `54eb6dd138b5e30305b0308fcdb8f078994b1c40` (family id, eligible waves, item roles, response-role rules).
+- `section85/authority/bounded_joint_configuration_authority.csv:6`, blob `92d5f21a8f3d11314b665449ebb84a48fc7eb718` (JCFG row, GSS/2010/US, six items, authority ceiling).
+- `section85/authority/bounded_joint_configuration_item_crosswalk.csv:12-17`, blob `ab7fc8f8b01b4f41bffd4d30df4990d923f8df61` (ordered item identities and response semantics).
+- `section85/CURRENT_STATE.json:2,27`, blob `4439d305667a19917ad0ff2b79cf0dd5035fe610` (`archive_contains_respondent_level_substrate=false`; `real_empirical_j_chain_status=NOT_RUN_REQUIRES_LIVE_RESPONDENT_DATABASE_AND_PYARROW`).
 
-## Exact code anchors
+## 2. Historical execution status — HELD
 
-- V550J pattern computation: `data/ddm_build_copy/ddm_v550j_joint_patterns.py:4250-4410` (formula and denominators), `:4925-4979` (family/table compilation), blob `644aab23675b26134040d1df5cc25538b613e163`.
-- V551 atom promotion: `data/ddm_build_copy/ddm_v551_atoms.py:21` (`APPROVED_DIRECT_TABLES`), `:123` (direct-lane mask), `:141-158` (adjudication/atom build), blob `d07e9a0c8f552b9a53bb1e775281fdf9a68e29e0`.
-- V551J exact matching: `data/ddm_build_copy/ddm_v551j_packets.py:1114-1160` (exact scope/question/var/response and ambiguity rule), `:1289-1312` (component index), `:1481-1662` (packet/certification), blob `740bae4cfd4da7ed8aa2c9a2321c47f26ba7c7e8`.
-- V552 pressure: `data/ddm_build_copy/ddm_v552_structural.py:120-200` (component/observation and denominator/pressure formula), `:253-259` (conditional socket unused), blob `0df56d70cb3880dee723df00aea2207acd525260`.
-- V552J join: `data/ddm_build_copy/ddm_v552j_handoff.py:79-142` (scope/match/permission), `compile_v552j_structural_handoff.py:80-190` (producer verification and V553 indexes), blobs `476e617370e8947ee1f38b0718243ecfc5ba9e5c`, `a3e6bf17386b58beb0c14b2d79d9e4a9e405c300`.
-- V553 consumer: `data/ddm_build_copy/ddm_v553_canonical_harmonization.py:500-640` (actual canonical first reader), `data/ddm_build_copy/ddm_v553_temporal_pressure.py:1600-1665,2030-2095,2120-2140` (probe/structural key consumer), blobs `1951ada5cb7453108939eae9af91fcbfc90ad517`, `5304b70f9f6522c5ae3893eff215c1d445681983`.
+`HISTORICAL_EXECUTED = NO`.
 
-## Historical-row status — explicit
+Prior C4R1 records `POSITIVE_LOAD_PROVED=NO`, `0/9` bounded source-family/wave scopes, and no respondent-level substrate (`.../G1A_C4R1_V550J_V551J_V552J_INFORMATION_CONSERVATION_RETURN.md`, blob `efe49ce5b9b93d19a49e321a44e8148987fad67b`, §5). `section85/CURRENT_STATE.json` independently records the real J chain as `NOT_RUN_REQUIRES_LIVE_RESPONDENT_DATABASE_AND_PYARROW` and the archive as lacking respondent-level substrate.
 
-`HISTORICAL_ROW_AVAILABLE = NO` under authorized non-raw custody. The repository contains code, schemas, manifests and prior documentary returns, but no V551J/V552J/V553 output parquet/CSV and no positive-load run evidence for this path. Prior C4R1 records `0/9` positive-load scopes and the missing respondent substrate. Consequently:
+No raw SAV/respondent read, synthetic execution, invented pattern id, or fake output row was used. The family trace below is therefore a **source-executable expected path with exact missing artifacts**, not a historical execution claim.
 
-- no numeric historical `pattern_count`, `pressure_score`, `join_permission`, or `v553_input_id` is reported;
-- the graph is `SOURCE_EXECUTABLE`, not `HISTORICAL_EXECUTED`;
-- the prior C4R1 `INFORMATION_LOSS_GAP` findings are treated as banked prior evidence, not re-proved numeric losses;
-- no claim that a historical row did or did not exist is made beyond the inspected custody.
+## 3. Actual input graph — diamond, not a serial chain
+
+```
+(V550 ordinary distributions: answer_distribution / country_answer_distribution)
+        |
+        v
+  V551 direct atoms (signed direction/intensity, counts)
+        |                                   \
+        |                                    v
+        |                             V552 structural pressure facts
+        |                                    |
+(V550J prepared same-person patterns)       |
+        |                                   |
+        +---------> V551J component match <--+
+                         |
+                         v
+                 V551J certified/review packets
+                         |
+                         +---------> V552J exact-scope join <---- V552 facts/keys
+                                                |
+                                                v
+                                      V553 canonical/probe consumer
+```
+
+There is **no V550J → V551 atom edge** and **no V551J → V552 fact edge**. V551 atoms come from ordinary V550 direct distributions; V550J patterns and V551 atoms converge at V551J; V551 atoms also feed V552 facts; V551J packets and V552 facts converge at V552J.
+
+## 4. Concrete family trace through all stages
+
+Expected paths below substitute the selected scope `GSS` / `2010` / `US`; `<run_id>` and `<shard_id>` are exact producer run identities that do not exist in the inspected repository.
+
+| Stage | Expected producer/path or authority | Exact status for this family | Missing link / observed evidence |
+|---|---|---|---|
+| 0. Registry/crosswalk | `question_family_registry.yaml`; `bounded_joint_configuration_authority.csv`; `bounded_joint_configuration_item_crosswalk.csv` | PRESENT | Family/authority metadata present; no run row. |
+| 1. V550J prepared substrate | `data/ddm_repository_copy/v550j/cache/prepared_response_substrate/source=GSS/wave=2010/country_code=US/v550j_prepared_response_substrate.parquet` + `..._manifest.json` | MISSING | No prepared parquet/manifest for GSS/2010/US in inspected tree; `prepared_required` would fail closed (`build_v550j_prepared_substrate.py:373-374`). |
+| 2. V550J run: pattern, item, relation, membership | `data/ddm_repository_copy/v550j/runs/<run_id>/<shard_id>/joint_patterns/v550j_manifest.json`, `joint_response_pattern_index.parquet`, `joint_response_pattern_item_index.parquet`, `joint_pattern_relation_signature.parquet`, `joint_pattern_respondent_membership.parquet`; expected shard id `GSS__2010` | MISSING | No V550J run/manifest or pattern_id/row for this family. Writer paths: `compile_v550j_joint_response_patterns.py:2051,2218`; membership build/emit: `ddm_v550j_joint_patterns.py:3514-3550,5280`; shard id construction from source__wave. |
+| 3. V551 direct atoms | `data/ddm_repository_copy/v551/runs/<run_id>/relation_evidence_atoms.parquet` + `manifest.json` | MISSING | No V551 run/manifest or atom rows. V551 atoms derive from ordinary V550 direct distributions, not from V550J (`ddm_v551_atoms.py:21,123,141-158`). |
+| 4. V551J candidate/certified/review packets | `data/ddm_repository_copy/v551j/runs/<run_id>/packets/v551j_joint_packet_candidate_index.parquet`, `v551j_certified_joint_packet_index.parquet`, `v551j_review_surface.parquet`; `manifest/manifest.json` | MISSING | No V551J run/packet. Exact match requires source_family=`GSS`, canonical_wave=`2010`, country_code=`US`, then item question_id/var_code/response; no rows exist (`ddm_v551j_packets.py:1114-1160`; writer `compile_v551j_joint_evidence_packets.py:1591-1597`). |
+| 5. V552 structural facts | `data/ddm_repository_copy/v552/runs/<run_id>/structural/v552_structural_fact_index.parquet`, `structural/v552_temporal_key_source_index.parquet` + `manifest.json` | MISSING | No V552 run/manifest or fact/row. Facts derive from V551 atoms, not from V551J (`ddm_v552_structural.py:100-199`; writer subdir `compile_v552_structural_ddm.py:241-246,340-350`). |
+| 6. V552J join | `data/ddm_repository_copy/v552j/runs/<run_id>/manifest.json`, `packets/v552j_structural_join_index.parquet`, `audits/v552j_join_audit.parquet`, `packets/v552j_v553_input_index.parquet`, `packets/v552j_to_v553_handoff_index.parquet` | MISSING | No V552J run/manifest/join. Exact scope and semantic match cannot be evaluated without the V551J packet and V552 fact rows (`ddm_v552j_handoff.py:79-142`). |
+| 7. V553 canonical/probe output | Caller-supplied `--output-root`; no repository default V553 run root | MISSING | No V553 run/manifest/output or probe row. Canonical adapter requires the V552J manifest/join/audit/input/handoff (`ddm_v553_canonical_harmonization.py:47-51,86-88,414-545`). |
+
+## 5. Exact-respondent membership loss (distinct from aggregate pattern/item membership)
+
+V550J persists `joint_pattern_respondent_membership` with `respondent_id`, `respondent_id_norm`, `pattern_weight_value`, `answered_item_count`, `pattern_id`, `family_id`, source/wave/country and related pattern metadata (`ddm_v550j_joint_patterns.py:3514-3550`; emitted at `:5280`). The V551J compiler has no membership path in its required inputs (`compile_v551j_joint_evidence_packets.py:1140-1210`). D11 records the exact-respondent grain as `STRANDED` after V550J: aggregate joint-pattern semantics survive; exact respondent identity does not (`.../06a46105705d__RESULT.md:153-172`, blob `06a46105705d8beb159b16336eb671ee0381e726`).
+
+Therefore this path's V551J/V552J/V553 rows can preserve pattern/item/component membership but **cannot** be used to re-identify the same respondents or reconstruct respondent-level joints from the downstream carrier.
+
+## 6. Numerical semantics and qualifications (source-executable)
+
+- **V550J pattern:** same-person pattern counts (`pattern_count_unweighted`, `pattern_count_weighted`), probabilities, support status/gate/score, and multiple denominators. The association field named `mutual_information` is a scaled pointwise log-ratio (`log2(p_pattern/p_baseline) * pattern_count_unweighted/family_count`), not joint MI. Denominators are non-collapsible.
+- **V551 atom:** direct-lane promotion only for `answer_distribution`/`country_answer_distribution`; signed direction/intensity plus `n_unweighted`, `n_weighted`, `pct_*`, semantics/authority hashes. Derived determinicity is excluded from atoms.
+- **V551J packet:** exact scope + question/var + response matching; at least two matched relation components; all authority/direction/target/structural gates; packet measurements from V550J pattern, not from V551 atom counts. It does not reconstruct `P(response | A AND B)`.
+- **V552 fact:** requires one unique positive `n_respondents`; `pressure_score = Σ(normalized_weight × canonical_signed_component)` in [-1,1]; `OBSERVED_ZERO`/`OBSERVED_NONZERO`; heterogeneous/absent denominator is `APPLICABLE_BUT_UNRESOLVED`, not renormalized.
+- **V552J:** exact scope + semantic score (relation 4, target 3, driver facet 3, question 2); `ALLOW` only for certified + both producer permissions ALLOW + fact permission ALLOW + observed pressure; temporal field always false.
+- **V553:** canonical manifest/join/audit/input/handoff checks; probe-only key when `temporal_field_allowed=False`; single-wave `ready_for_v553_probe` is not temporal-field authority.
+
+## 7. Source-executable vs historical-executed
+
+`SOURCE_EXECUTABLE = YES` for the expected family path and code-level producers/consumers above.
+`HISTORICAL_EXECUTED = NO`; exact output rows, pattern ids, packet ids, join ids and V553 ids remain `HELD_EXACT_EVIDENCE`.
+
+No claim of historical numerical transformation, positive load, or functional conservation is made.

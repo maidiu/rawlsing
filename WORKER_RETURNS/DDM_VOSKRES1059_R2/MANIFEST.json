@@ -1,70 +1,90 @@
 {
-  "schema": "DDM_VOSKRES1059_R2_CANDIDATE_MANIFEST@1",
+  "schema": "DDM_VOSKRES1059_R2_CORRECTION_MANIFEST@1",
   "candidate": "docs/voskres1059-r2-composed-author-20261115",
   "frozen_r1": "819dc54c69633dd75b6d13ac0ee8c3bbfd624853",
+  "frozen_first_r2": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+  "correction_review_commit": "1b525d00ee55a78e18d78e8f1afcb81bb9682bb8",
   "original_source_pin": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
   "modern_spec_cut": "b9325f094b27d28c20006af9780a91b3254dcab8",
   "modern_forge_cut": "3e0ed0794498506520ae62c997a5c852ac672061",
+  "modern_secondary_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
   "write_scope": "WORKER_RETURNS/DDM_VOSKRES1059_R2/",
-  "grade": "DOCUMENTARY_SOURCE_ONLY_CANDIDATE_NOT_ACCEPTED",
+  "grade": "DOCUMENTARY_SOURCE_ONLY_CORRECTED_CANDIDATE_PENDING_HQ_VERIFICATION_NOT_ACCEPTED",
+  "review_status_preserved": "ORIGINAL_FROZEN_REVIEW_REVISE_EXACT_DEFECT",
+  "counts": {
+    "G1_supersession_rows": 11,
+    "G2_composed_edges": 23,
+    "G2_V553_input_rows": 17,
+    "G4_old_to_forge_rows": 10,
+    "self_critical_held_rows": 17,
+    "source_ledger_rows": 45,
+    "correction_matrix_rows": 11
+  },
   "files": [
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/00_RETURN.md",
-      "sha256": "2753fdbe8188339a9659176b72dac27696d387716fcad7b2620a9b6ebb5c7c5c",
-      "purpose": "main author return"
+      "sha256": "809b35b1d57c71e680c445bbe756ec17dfc474c47a97a86b925d369c3cd057d4",
+      "purpose": "main corrected return"
+    },
+    {
+      "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/CORRECTION_MATRIX.tsv",
+      "sha256": "ef070b774a33e9e7cfe4327c4f414a7db83860c59d71daf2e42d7ad8735a1660",
+      "purpose": "11-ID defect to corrected cell to primary evidence map"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G1_CANONICAL_ACCOUNTING.tsv",
-      "sha256": "88c1f52733dd20e8bd283006dc99d4dc268c317d9bc2023b2c1b460f11e6b620",
-      "purpose": "G1 canonical machine-cell supersessions"
+      "sha256": "502464767822a2c9a438e1de6d5df738f08ad7a09346148fd64aa160b6cb8b6b",
+      "purpose": "G1 canonical machine-cell supersessions with stable coordinates; 11 rows"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G2_COMPOSED_GRAPH.tsv",
-      "sha256": "cff962896df2501f2140d71a62f25f4abe7d003c220956fac8d237ee0388c039",
-      "purpose": "G2 ordinary and joint composed graph edges"
+      "sha256": "a94a9a409793198e253f66ca00d5a2c2618135520d19767942119060f3630a77",
+      "purpose": "G2 ordinary/joint/V553 edges; 23 rows"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G2_V553_INPUTS.tsv",
-      "sha256": "13c46e2fbaa4edbb302735ece93dcca61bda9101613be2a572befdb044ad6448",
-      "purpose": "all actual V553 input surfaces"
+      "sha256": "b1b5f8cf09efd8ded8f45b6f7aa710fb37c5f5f9e2073080cf93d1e686e26788",
+      "purpose": "canonical and legacy V553 input surfaces; 17 rows"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G3_SELECTED_JOINT_PATH.md",
-      "sha256": "8973bfebea4f74ba21e126317564c921eccd4b61c736fc3470baa2e802bbb518",
-      "purpose": "one concrete respondent-joint path with source-executable/historical split"
+      "sha256": "ce277685e4bce3c8632547537ac9eaf647b7c88ad49509d7bf156cb0882a9ab3",
+      "purpose": "concrete JCFG-GSS-ABORTION-CONDITIONS diamond path with exact missing links"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G4_CONDITIONAL_INDEX_TRACE.md",
       "sha256": "136818903fd5e885809c02078813ebd5a3ce16db8600a23b7919cc0cb1706102",
-      "purpose": "independent V551 conditional-index trace and held disposition"
+      "purpose": "accepted S1 conditional-index trace, unchanged"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G4_OLD_TO_FORGE.tsv",
-      "sha256": "d54e656ac59ed640fa1f5da84895b4c5433cec9404724356ef7986234a27ff3d",
-      "purpose": "G4 old-to-FORGE product/first-reader/conservation table"
+      "sha256": "15aab50e985189d4058d57392c2d9a8c0a8bcfb8ad3f54c36755660c0ad6f954",
+      "purpose": "G4 producer/guard/test roles, primary absence search, legacy J-parity gate"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/SELF_CRITICAL_HELD_EDGES.tsv",
-      "sha256": "f66dc71bab44ee7030819675fbb89b3e8c9079335eb4b31d3ef809681f8f67a9",
-      "purpose": "held edges and non-claims"
+      "sha256": "d0001550f81b1881cc18fe5249be0e5dfedfc28746e700092d14fcf78a3795b2",
+      "purpose": "held edges including respondent-membership and legacy/canonical distinctions"
     },
     {
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/SOURCE_LEDGER_R2.tsv",
-      "sha256": "e7ad47a9cc759ac25f0aa253ff5965da572cc17e07778a57cb055babe39a25f1",
-      "purpose": "exact source snapshot/blob/line ledger"
+      "sha256": "1afa75092ad0af95a5f543fef603d63227f268dc0610a13c0411a67db8e946e5",
+      "purpose": "exact source snapshots/blobs/lines for review corrections; 45 rows"
     }
   ],
   "claims": {
-    "G1": "canonical machine cells corrected for O(k^2), unconditional depth-3, existence-only checkpoint",
-    "G2": "ordinary V550-V551-V552 and joint V550J-V551J-V552J-V553 graph with 551->551J, 552->552J and all inspected V553 inputs",
-    "G3": "one source-executable respondent-joint path; historical execution NOT established",
-    "G4": "old-to-FORGE actual product/first-reader table; conditional index independently traced",
-    "G5": "NOT PERFORMED; distinct independent reviewer required"
+    "G1": "11 stable-coordinate supersessions including B_R1/COST_CARDINALITY.tsv:9 depth cell; O(k^2), unconditional depth-3 and existence-only corrected",
+    "G2": "canonical and legacy V553 inputs separated; V551J candidate bundle included; V550J respondent membership and exact-respondent loss included",
+    "G3": "concrete JCFG-GSS-ABORTION-CONDITIONS family traced to exact missing artifacts; true diamond; historical execution HELD",
+    "G4": "producer/guard/test-only roles separated; cut-scoped modern absence search; pre553_legacy_compat J-parity denial recorded",
+    "G5": "NOT PERFORMED by author; original frozen review remains REVISE until HQ verification"
   },
   "limits": [
     "No tests, CI, product edit, scientific function execution, raw respondent bytes or synthetic stand-in.",
-    "No historical V551J/V552J/V553 output row was available in authorized custody.",
-    "Prior C4R1 seven same-grain information-loss gaps and 0/9 positive load are banked prior evidence, not re-proved numerically here.",
+    "No historical V551J/V552J/V553 output row or positive-load run for the selected family.",
+    "Exact respondent identity is stranded at V550J; downstream carriers preserve aggregate pattern/item/component membership only.",
+    "Legacy V552J packet is canonical-nonrequired but legacy-read; it is not globally obsolete.",
+    "No production first reader for GovernedDiagnosticProduct at inspected cuts; only tests consume it.",
     "Conditional index has no proved in-tree producer invocation or reader; V552 local non-use is not global loss.",
     "Old runtime/cardinality remains HISTORICAL_RUNTIME_UNKNOWN."
   ]

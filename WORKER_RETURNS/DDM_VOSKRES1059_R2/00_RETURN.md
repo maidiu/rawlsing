@@ -1,82 +1,118 @@
-# DDM VOSKRES #1059 — R2 composed author return
+# DDM VOSKRES #1059 — R2 exact-defect correction return
 
-**Candidate:** `docs/voskres1059-r2-composed-author-20261115`
-**Frozen R1 input:** `819dc54c69633dd75b6d13ac0ee8c3bbfd624853`
+**Candidate branch:** `docs/voskres1059-r2-composed-author-20261115`
+**Frozen first R2:** `7ebd363dedc36cdc34b3a6ef53e32603f291c84e` (parent `819dc54c69633dd75b6d13ac0ee8c3bbfd624853`)
+**Correction review:** `1b525d00ee55a78e18d78e8f1afcb81bb9682bb8` — `REVISE_EXACT_DEFECT`, 11 reproducible defects
 **Original source pin:** `25830fe7462bb9e29bc4087e6ae14f3f84cec377`
-**Modern cuts inspected:** spec `b9325f094b27d28c20006af9780a91b3254dcab8`; FORGE `3e0ed0794498506520ae62c997a5c852ac672061`
-**Write scope used:** `WORKER_RETURNS/DDM_VOSKRES1059_R2/` only
-**Grade:** `DOCUMENTARY_SOURCE_ONLY_CANDIDATE / NOT_ACCEPTED / G5_NOT_PERFORMED`
-**Status:** `FROZEN_CANDIDATE_FOR_HQ_DISTINCT_REVIEW`
+**Modern cuts checked:** `3e0ed0794498506520ae62c997a5c852ac672061`; `6a5c12f04323d74001f9632063ec907f4fc4468e`
+**Scope:** same author/session, one bounded correction pass; write scope `WORKER_RETURNS/DDM_VOSKRES1059_R2/` only
+**Grade:** `DOCUMENTARY_SOURCE_ONLY_CORRECTED_CANDIDATE / G5_ORIGINAL_REVIEW_REMAINS_REVISE / NOT_SELF_ACCEPTED`
 
-## 1. Custody and inputs read
+## 1. What changed
 
-Read the mandatory `sources/1059_METHODOLOGICAL_CORRECTION.md` (6890316242) plus frozen R1 A/B/HQ returns, their ledgers, reconciliations and source ledgers. Reused existing ZAK02/03/04 references and the banked G1A C4R1 V550J/V551J/V552J information-conservation return/crosswalk; no new A/B inventory, clone, archive extraction, broad ZAK census, raw data, test, CI, product edit or scientific execution was performed.
+All 11 review IDs are addressed in `CORRECTION_MATRIX.tsv`. No new A/B survey, general inventory, source read, raw respondent bytes, scientific execution, test, CI, product edit, protected merge, provider/model/VM change or subagent was used. The original R1 A/B/HQ and first-R2 commits are preserved as immutable; this pass modifies only the R2 return files.
 
-No A/B/HQ R1 file was edited. This pass added only the R2 files listed in `MANIFEST.json`.
+### G1 — canonical accounting
 
-## 2. G1 — canonical machine-cell corrections
+`G1_CANONICAL_ACCOUNTING.tsv` now has 11 supersession rows, each with stable machine coordinates:
 
-`G1_CANONICAL_ACCOUNTING.tsv` records ten explicit supersessions, including:
+- `source_file`, `source_commit`, `source_file_sha256`, `source_row_number` (1-based including the header), `source_column`, exact `source_cell_value`;
+- the corrected value in `canonical_correction`;
+- exact source evidence and snapshot.
 
-1. **Not all-pairs O(k²):** V550 secondary scoring does one k-candidate scan, selects one primary by max(MI, Cramér's V, n), then evaluates at most k−1 remaining candidates against that primary (`ddm_v550_branching.py:209-265,269,276-289`). At k≤12 this is ≤11 candidate-vs-primary joint evaluations, not all pairs.
-2. **Depth 3 is a default, not a universal cap:** `branch_nodes_rows(..., max_depth: int = 3)` and `--max-depth` default 3; recursion stops on depth/support/remaining-indicator/no-gain. `pure_or_near_pure` is a label, not the early-return test (`branching.py:372,391,397-399,419-425`; `build_determinicity_wave_shard_v550.py:856,1633`).
-3. **Not existence-only resume:** the skip decision requires the complete marker, a readable nonempty `question_use_contract` parquet, a nonempty saved hash, and equality with the recomputed question-use-contract hash (`build_determinicity_repository_v550.py:963-992`; shard `:1509`). Scope limit is explicit: one table plus marker, not every checkpoint body/source version.
+Corrections preserved: one primary plus at most k−1 candidate-vs-primary comparisons (not O(k²)); configurable `max_depth` default 3 (not an unconditional cap); complete marker + `question_use_contract` hash resume guard (not existence-only). `G1-11` adds the previously missing `B_R1/COST_CARDINALITY.tsv:9` depth cell. The prose row keys are gone; `A_R1/SOURCE_LEDGER.tsv` rows 5 and 14 are addressed by number and `claim` column, and the duplicate CORR-A-01 text is not used as a target.
 
-These are machine cells, not narrative caveats. The A/B first-pass files remain immutable and are superseded here only.
+### Exact 11-cell verification
 
-## 3. G2 — composed graph
+Verified against `git show <source_commit>:<source_file>`, file SHA-256, 1-based physical row, header lookup, and exact cell comparison. All 11 match after the two locator corrections.
 
-`G2_COMPOSED_GRAPH.tsv` contains 21 edges for:
+| Cell | Source coordinate | Exact cell result |
+|---|---|---|
+| G1-01 | A COST row 8 / `cardinality_symbolic` | PASS — corrected to `k = available indicators <=12; joint mask and joint conditional entropy per non-primary pair with joint n>=50`; the false `per non-primary pair` assertion is quoted, while the row's separate `O(k^2)` preparation label is explicitly distinguished as paraphrase/label |
+| G1-02 | A SOURCE_LEDGER row 14 / `claim` | PASS |
+| G1-03 | A COST row 9 / `cardinality_symbolic` | PASS |
+| G1-04 | A TSM row 11 / `old_function_and_evidence` | PASS |
+| G1-05 | B TSM row 4 / `operation` | PASS |
+| G1-06 | B SOURCE_LEDGER row 12 / `claim` | PASS |
+| G1-07 | A COST row 6 / `lifetime_invalidation` | PASS |
+| G1-08 | A TSM row 6 / `old_function_and_evidence` | PASS |
+| G1-09 | A TSM row 6 / `stage2_forge_evidence_3e0ed07` | PASS — corrected locator; actual `stage1_successor_fate` is `Batch receipts and immutable unit receipts (pre553_batch_runner.py 386-470)` and is not the false cell |
+| G1-10 | A SOURCE_LEDGER row 5 / `claim` | PASS |
+| G1-11 | B COST row 9 / `per_operation_cardinality` | PASS |
 
-- ordinary `V550 → V551 → V552` (extraction/preparation, distributions, bridge lanes, adjudication/atoms/coverage, pressure/structural facts);
-- joint `V550J → V551J → V552J → V553` (prepared substrate, same-person patterns, exact V551 atom matching, component/certification, producer-bound join, V553 canonical/probe consumption);
-- explicit `551 → 551J` edge: V551 atoms are matched into components, while the **V551 conditional index is not an input to V551J**;
-- explicit `552 → 552J` edge: V552 structural facts and temporal-key source index are verified inputs; V552 conditional determinicity is not an input;
-- all inspected actual V553 inputs are listed separately in `G2_V553_INPUTS.tsv`: V552J input/handoff indexes, readiness, V552 structural/temporal indexes, authority overlays, thin readiness, harmonization sidecar, and upstream V551J provenance pointer (not dereferenced).
+### G2 — composed graph and V553 inputs
 
-Key boundary found: V552J carries a reduced carrier. It does not load the V551J component index or same-grain component vectors; V553 canonical adapter does not dereference V551J. This is consistent with prior C4R1's seven information-loss gaps, which are cited as banked prior evidence rather than re-proved numerically.
+`G2_COMPOSED_GRAPH.tsv` now has 23 edges. `G2_V553_INPUTS.tsv` now has 17 input rows.
 
-## 4. G3 — one selected respondent-joint path
+- **Canonical V553 inputs** now include `manifest.json`, `packets/v552j_structural_join_index.parquet`, `audits/v552j_join_audit.parquet`, and `manifest/v552j_v553_handoff_manifest.json`, with their exact identity/hash/row-count/equality checks.
+- **Legacy V553 inputs are separated** from canonical: `packets/v552j_structural_handoff_packet.json`, dereferenced V551J certified/reviewable frames, and V552 optional pressure tables are real inputs to `ddm_v553_harmonization._load_wave_bundle`, not provenance-only. The canonical adapter still does not dereference V551J; that finding is now explicitly canonical-path-only.
+- **V551J candidate bundle** `v551j_joint_packet_candidate_index.parquet` is added to J-07/J-08; it is required for review-row enrichment.
+- **V550J respondent membership** `joint_pattern_respondent_membership` is now a named V550J output (J-02), with a distinct V550J→V551J loss row (J-10): aggregate pattern/item membership survives; exact `respondent_id`/`respondent_id_norm`/weight/answered-item grain does not.
 
-`G3_SELECTED_JOINT_PATH.md` reconstructs one concrete path:
+### G3 — concrete family and true diamond
 
-`V550J same-person pattern → V551 directional atom → V551J certified joint packet → V552 structural pressure fact → V552J exact-scope join → V553 canonical/probe consumer`
+`G3_SELECTED_JOINT_PATH.md` now selects the concrete bounded-nine family:
 
-It gives the exact input grain, computation/formula, output fields, scientific gain, loss/refusal, qualification and actual consumer at each stage. Critical numerical semantics:
+`JCFG-GSS-ABORTION-CONDITIONS` / `gss_abortion_condition_family`, GSS 2010 US, six ordered items `abdefect`, `abhlth`, `abrape`, `abany`, `absingle`, `abnomore`, with exact `question_implementation_id`/`p2_lineage_id` identities, authority release `V550J-BOUNDED-AUTHORITY-2026-08-02-R1`, adjudication `V550JADJ-0005`.
 
-- V550J pattern counts/probabilities/support use multiple explicit denominators; its `mutual_information` field is a scaled log-ratio, not joint MI.
-- V551 atom promotion is restricted to the two direct distribution tables; derived determinicity is excluded.
-- V552 pressure requires a unique positive respondent denominator and computes `Σ(normalized_weight × canonical_signed_component)` in [-1,1]; heterogeneous/absent denominator is unresolved, not renormalized.
-- V552J ALLOW requires exact scope, semantic match threshold, certified lane, both producer permissions ALLOW, fact permission ALLOW and observed pressure; temporal field is never allowed.
-- V553 canonical consumer verifies join/input/handoff equality and declared probe/temporal counts; temporal pressure remains `probe_only`, with `temporal_field_allowed=False`.
+It traces the family through expected V550J prepared substrate, V550J pattern/item/relation/membership, V551 atoms, V551J candidate/certified/review packets, V552 facts, V552J join and V553 output, marking each missing run/manifest/row explicitly. The headline is corrected to the actual diamond:
 
-**Historical row status:** `NOT_AVAILABLE`. No V551J/V552J/V553 output row or positive-load run exists in authorized non-raw custody; prior C4R1 records 0/9 positive-load scopes and missing respondent substrate. The path is `SOURCE_EXECUTABLE`, not `HISTORICAL_EXECUTED`. No numeric historical count/score/id is invented.
+`(V550 ordinary distributions → V551 atoms) || (V550J patterns) → V551J; V551 atoms → V552 facts; V551J + V552 facts → V552J → V553`.
 
-## 5. G4 — old → FORGE and the conditional index
+There is no V550J→V551 atom edge and no V551J→V552 fact edge. `HISTORICAL_EXECUTED = NO`; the C4R1 0/9 positive-load and missing-substrate HOLD is preserved.
 
-`G4_OLD_TO_FORGE.tsv` maps old mechanisms/products to modern actual products, first readers/call sites and evidence:
+### G4 — old→FORGE first readers and J-parity gate
 
-- old per-country/prepared reuse → modern `I03GroupedExecutionScope` + `execute_empirical_query`, with cold `DirectEstateI03Session` group refusal at the inspected cut;
-- old direct distributions → modern exact marginal `EmpiricalFact`, consumed by `execute_empirical_query` and analytical composition;
-- old indicator/secondary MI → modern exact arity-2 `GovernedDiagnosticProduct`, explicitly diagnostic-only and different grain;
-- old recursive/outlier products → modern exact bounded discovery/I05 route, `COMPARE_UNKNOWN` for full product parity;
-- old V550J/V551J/V552J/V553 joint products → modern exact joint facts + C1 composition are related, not same-grain; prior C4R1 seven gaps remain held;
-- old checkpoint guard → modern batch/release receipts are related but not parity-proved.
+`G4_OLD_TO_FORGE.tsv` corrected:
 
-`G4_CONDITIONAL_INDEX_TRACE.md` independently traces the V551 conditional index producer/eligibility, bridge metadata, V552 accept-but-unused socket, V551J non-ingestion, and prior PROGRAMMA `NO_CURRENT_MATCH_VERIFIED` row. Disposition: `HELD_LOCAL_UNCONSUMED_AUXILIARY_CAPABILITY_WITH_NO_PROVED_HISTORICAL_PRODUCER_OR_READER`. Local V552 non-use is **not** promoted to global loss; V551J existence is **not** treated as conservation; name/function similarity is **not** equivalence.
+- `G4-03`/`G4-06`: `NONE_IN_PRODUCTION` first reader; `produce_governed_diagnostics` is the producer, `assert_diagnostic_only_use` is a guard, and only `rawlsing_next/tests/test_pre553_diagnostics.py` consumes the product at the inspected cuts.
+- `G4-07`: cut-scoped primary search added at both `3e0ed079` and `6a5c12` (`git grep -n conditional_determinicity -- rawlsing_next` → no match, exit 1); PROGRAMMA G3A row is retained only as a lead; `pre553_legacy_compat.py:112-123` parity denial is cited.
+- `G4-08`: `pre553_legacy_compat.py:4-6,112-123` added as the actual modern J-parity gate, disposition `COMPATIBILITY_GATE_DENIES_J_PARITY` — not a carrier, not a conservation proof, and not global absence of joint capability. Independent I03 exact math is preserved.
 
-## 6. Self-critical held edges
+`G4_CONDITIONAL_INDEX_TRACE.md` is unchanged; its `HELD_LOCAL_UNCONSUMED_AUXILIARY_CAPABILITY_WITH_NO_PROVED_HISTORICAL_PRODUCER_OR_READER` disposition and the local-non-use vs global-loss distinction remain accepted S1.
 
-`SELF_CRITICAL_HELD_EDGES.tsv` records 14 explicit holds, including: no historical execution row; no old runtime/cardinality; no causal proof that old sharing caused modern cost loss; old MI population mismatch and V550J MI mislabel; no modern same-grain V551 atom/J carrier; grouped cold estate not qualified; conditional index external-caller possibility remains `NOT_INSPECTED`; source inspection alone proves no functional conservation.
+## 2. Defect→correction map
 
-## 7. What is not claimed
+See `CORRECTION_MATRIX.tsv` for all 11 IDs:
 
-No `ACCOUNTING_COMPLETE`; no functional-conservation execution; no historical-runtime superiority; no native/modern equivalence; no production adoption; no science/source right; no G5 acceptance; no protected merge; no CI/test/product change. This is one frozen documentary candidate for HQ intake and a distinct source-aware reviewer.
+- `G1-D1`, `G1-D2`
+- `G2-D1`, `G2-D2`, `G2-D3`, `G2-D4`
+- `G3-D1`, `G3-D2`
+- `G4-D1`, `G4-D2`, `G4-D3`
 
-## 8. Publication note for HQ
+No exact defect is knowingly left unresolved. Residual HOLDs are evidence holds, not unfixed review defects:
 
-The worktree already showed all tracked R1/root files as deleted (`git status` `D` entries) before this pass; this return did not delete or modify them. Because the worktree checkout is sparse/empty, **stage only `WORKER_RETURNS/DDM_VOSKRES1059_R2/`** when publishing; do not `git add -A`, which would commit pre-existing deletions of A/B/HQ R1 and root files. No git commit was made in this pass; HQ publishes if commit is unavailable to the author.
+- historical V550J/V551J/V552J/V553 output rows or positive-load receipt for the selected family;
+- a real V551 conditional-index producer invocation/reader;
+- external historical invocation of the conditional index remains `NOT_INSPECTED`.
 
-## 9. Next action
+## 3. Evidence and updated manifest
 
-HQ terminal intake → distinct source-qualified adversarial G5 reviewer against this frozen candidate. One candidate, no self-G5, no new A/B survey, no additional discretionary hardening. Stop at accepted scope or exact reproducible defect/HOLD.
+`SOURCE_LEDGER_R2.tsv` now records the exact review-source cuts, blob hashes, line ranges and hashes for:
+
+- G1 raw cells and stable-coordinate sources;
+- canonical and legacy V553 inputs;
+- V551J candidate bundle;
+- V550J respondent membership and D11 §8;
+- GSS family registry/authority/crosswalk and CURRENT_STATE;
+- diagnostics producer/guard/test consumers;
+- cut-scoped primary search and `pre553_legacy_compat.py` J-parity gate;
+- expected V550J/V551/V551J/V552/V552J run paths and artifact names.
+
+`MANIFEST.json` is updated for the corrected payload, its file hashes and counts. `00_RETURN.md`, `CORRECTION_MATRIX.tsv` and all corrected payload files are included in the manifest.
+
+## 4. Preserved limits and honest holds
+
+- No historical execution, numerical transformation, positive load, throughput or full functional-conservation claim.
+- No raw respondent bytes, synthetic stand-in, invented run, fake pattern id or fabricated row.
+- No claim that the legacy V552J packet is globally obsolete/non-input; it is canonical-nonrequired but legacy-read.
+- No claim that exact respondent identity survives V551J/V552J/V553.
+- No claim that modern diagnostics are a production-consumed successor to old MI/secondary/recursive products.
+- No claim that the modern J-parity gate proves global absence of joint capability; it denies object parity for lack of authority.
+- No G5 acceptance claim. The original frozen review remains `REVISE_EXACT_DEFECT` until HQ verification of this correction package.
+
+## 5. Publication and stop
+
+No git commit/push was made in this correction pass; HQ publishes. HQ should verify the explicit 11-ID checklist, then update #1060/#1059. Any focused independent closure must reuse the already-proved source and only the changed claims, not launch a new whole audit.
+
+`STOP_FINITE_CORRECTION`.
