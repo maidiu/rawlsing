@@ -1,0 +1,318 @@
+{
+  "review": "1b525d00ee55a78e18d78e8f1afcb81bb9682bb8",
+  "defects": [
+    {
+      "defect_id": "G1-D1",
+      "severity": "MATERIAL",
+      "candidate_cell": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G1_CANONICAL_ACCOUNTING.tsv (no row for B_R1/COST_CARDINALITY.tsv:9)",
+      "bad_value_or_omission": "nodes <= 2^(depth+1)-1 with depth<=3",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_B_R1/COST_CARDINALITY.tsv",
+          "blob": "ed7499943a33e24af9c9ff55d6bab6874a0e85b9",
+          "lines": "9"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v550_branching.py",
+          "blob": "8f6d40e0d016d66e5a3b334b31747eaef752873f",
+          "lines": "372,397-399,419-425"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/build_determinicity_wave_shard_v550.py",
+          "blob": "82ffc18df29a8e5ebd78cde97c89d463b3842df6",
+          "lines": "856,1633"
+        }
+      ],
+      "consequence": "A false unconditional depth-3 cap remains authoritative in an actual machine TSV. A consumer joining B_R1/COST_CARDINALITY.tsv to G1 finds no supersession. The candidate's own SELF_CRITICAL_HELD_EDGES.tsv H-09 says depth is a default, so the omission is internally inconsistent.",
+      "least_correction": "Add G1-11 for B_R1/COST_CARDINALITY.tsv:9 using the G1-03 correction and the exact source lines above; update MANIFEST.json:58.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G1-D2",
+      "severity": "MATERIAL",
+      "candidate_cell": "G1_CANONICAL_ACCOUNTING.tsv:3,11 (G1-02, G1-10)",
+      "bad_value_or_omission": "source_row_key uses prose prefixes 'row beginning ...' for A_R1/SOURCE_LEDGER.tsv; no source_row_number/source_column/source_file_sha256. The G1-10 prefix also occurs inside the correction row CORR-A-01 at A_R1/SOURCE_LEDGER.tsv:33.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G1_CANONICAL_ACCOUNTING.tsv",
+          "blob": "eb81f979a22483a871a8d4845b50bacd275f76d2",
+          "lines": "3,11"
+        },
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_A_R1/SOURCE_LEDGER.tsv",
+          "blob": "086eab1a51fa17c13b5d44337d364a1c134b9f62",
+          "lines": "5,14,33"
+        }
+      ],
+      "consequence": "The ten rows are a supersession ledger, not an unambiguous usable canonical view. A programmatic consumer cannot uniformly locate the superseded cells; the G1-10 prefix can match both the false claim and its correction.",
+      "least_correction": "Add stable machine coordinates to every G1 row: source_file_sha256, source_row_number, source_column, source_cell_value; or publish a canonical corrected TSV with a superseded_by column. Replace the prose keys with row numbers 5 and 14 and column 'claim'.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G2-D1",
+      "severity": "MATERIAL",
+      "candidate_cell": "G2_V553_INPUTS.tsv:2-11 (labeled all actual V553 input surfaces)",
+      "bad_value_or_omission": "Missing canonical V553 inputs: manifest.json; packets/v552j_structural_join_index.parquet; audits/v552j_join_audit.parquet; manifest/v552j_v553_handoff_manifest.json. The candidate's own V-02 says join row count and manifest/schema/compiler/scope/hash/row count are checked.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G2_V553_INPUTS.tsv",
+          "blob": "62e28635f7f6aa03371fd4fb5af245d7dedf98c1",
+          "lines": "2-11"
+        },
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G2_COMPOSED_GRAPH.tsv",
+          "blob": "12ed6273e679bb1a3768a0e7146cbf1f85a789ef",
+          "lines": "20"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v553_canonical_harmonization.py",
+          "blob": "1951ada5cb7453108939eae9af91fcbfc90ad517",
+          "lines": "47-51,86-88,414-520"
+        }
+      ],
+      "consequence": "The 'ALL actual V553 inputs' claim is false. A consumer cannot reconstruct the canonical manifest/join/audit/row-count equality checks from the listed inputs.",
+      "least_correction": "Add V553-IN-11..14 for the canonical manifest, join index, join audit, and handoff manifest, with reader inspect_v552j_canonical_surface and exact source lines.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G2-D2",
+      "severity": "MATERIAL",
+      "candidate_cell": "G2_V553_INPUTS.tsv IN-09/IN-10; G2_COMPOSED_GRAPH.tsv V-04",
+      "bad_value_or_omission": "The legacy V553 wave bundle still reads packets/v552j_structural_handoff_packet.json and dereferences V551J certified/reviewable frames plus V552 optional pressure tables. IN-09 says V551J is provenance-only; IN-10 says the packet is obsolete/non-authoritative without the legacy read.",
+      "exact_evidence": [
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v553_harmonization.py",
+          "blob": "153f3dbeab19e6be15947f7bcbb5377dae1dfc8a",
+          "lines": "386-404"
+        },
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G2_COMPOSED_GRAPH.tsv",
+          "blob": "12ed6273e679bb1a3768a0e7146cbf1f85a789ef",
+          "lines": "22"
+        }
+      ],
+      "consequence": "The actual V553 input graph is incomplete for the legacy harmonization path: the packet, dereferenced V551J frames, and V552 optional pressure tables are real inputs. The canonical adapter's no-dereference finding remains true only for the canonical path.",
+      "least_correction": "Add V553-IN-15..17 for the legacy packet, V551J certified/reviewable frames, and V552 optional pressure tables; label reader ddm_v553_harmonization._load_wave_bundle; keep canonical rows distinct.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G2-D3",
+      "severity": "MATERIAL",
+      "candidate_cell": "G2_COMPOSED_GRAPH.tsv:16 (J-07)",
+      "bad_value_or_omission": "J-07 lists V551J certified/review bundles only; it omits v551j_joint_packet_candidate_index.parquet.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G2_COMPOSED_GRAPH.tsv",
+          "blob": "12ed6273e679bb1a3768a0e7146cbf1f85a789ef",
+          "lines": "16"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/compile_v552j_structural_handoff.py",
+          "blob": "a3e6bf17386b58beb0c14b2d79d9e4a9e405c300",
+          "lines": "108,117-121"
+        }
+      ],
+      "consequence": "V552J producer verification and review-row enrichment require the candidate bundle; the J-07 input list is incomplete.",
+      "least_correction": "Add v551j_joint_packet_candidate_index.parquet to J-07/J-08 input fields and evidence.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G2-D4",
+      "severity": "MATERIAL",
+      "candidate_cell": "G2_COMPOSED_GRAPH.tsv:11 (J-02); G3_SELECTED_JOINT_PATH.md:21-26",
+      "bad_value_or_omission": "joint_pattern_respondent_membership is omitted. Exact respondent identity is persisted by V550J but has no V551J membership path; only aggregate pattern/item membership survives.",
+      "exact_evidence": [
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v550j_joint_patterns.py",
+          "blob": "644aab23675b26134040d1df5cc25538b613e163",
+          "lines": "3514-3550,5280"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+          "blob": "2df97875172778c3f4616c0799c08667b57db407",
+          "lines": "1140-1210"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N006_TRII_EMPIRICAL_SUBSTRATE/CORPUS/ORIGINAL/06a46105705d__RESULT.md",
+          "blob": "06a46105705d8beb159b16336eb671ee0381e726",
+          "lines": "section 8: exact respondent grain stops at V550J; compile_v551j has no membership-path argument"
+        }
+      ],
+      "consequence": "A substantive knowledge-loss edge is missing from the composed graph. The concrete respondent-joint path cannot be complete without stating that exact respondent grain is stranded at V550J.",
+      "least_correction": "Add joint_pattern_respondent_membership as a V550J output and a V550J->V551J loss/refusal row: aggregate pattern/item membership survives; exact respondent identity does not. Cite the lines above.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G3-D1",
+      "severity": "MATERIAL",
+      "candidate_cell": "G3_SELECTED_JOINT_PATH.md:16",
+      "bad_value_or_omission": "No concrete family_id/source/wave/country or item set is selected. The path is instantiated only by a generic field tuple; this is a schema, not a concrete respondent-joint family.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G3_SELECTED_JOINT_PATH.md",
+          "blob": "a2d791bfdf58cca34f6be794951a7586bd7acfef",
+          "lines": "5,16"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/manifests/question_family_registry.yaml",
+          "blob": "54eb6dd138b5e30305b0308fcdb8f078994b1c40",
+          "lines": "6 (gss_abortion_condition_family)"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "section85/authority/bounded_joint_configuration_authority.csv",
+          "blob": "92d5f21a8f3d11314b665449ebb84a48fc7eb718",
+          "lines": "6 (JCFG-GSS-ABORTION-CONDITIONS, GSS 2010 US, six items)"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "section85/authority/bounded_joint_configuration_item_crosswalk.csv",
+          "blob": "ab7fc8f8b01b4f41bffd4d30df4990d923f8df61",
+          "lines": "12-17 (abdefect, abhlth, abrape, abany, absingle, abnomore)"
+        }
+      ],
+      "consequence": "The candidate fails the required concrete respondent-joint family trace. The missing links are not stated; the available bounded-nine aggregate authority was not used.",
+      "least_correction": "Select JCFG-GSS-ABORTION-CONDITIONS / gss_abortion_condition_family (GSS 2010 US; six items above), or another bounded-nine family, and trace it through V550J prepared substrate, V550J pattern/item/relation, V551 atoms, V551J packet, V552 fact, V552J join, and V553 output, marking each missing run/manifest/row explicitly.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G3-D2",
+      "severity": "MATERIAL",
+      "candidate_cell": "G3_SELECTED_JOINT_PATH.md:5",
+      "bad_value_or_omission": "The headline asserts V550J pattern -> V551 directional atom -> V551J -> V552 fact -> V552J as a serial chain. The actual graph is a diamond: V551 atoms come from ordinary V550 direct distributions; V550J patterns and V551 atoms converge at V551J; V551 atoms also feed V552 facts; V551J packets and V552 facts converge at V552J.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G3_SELECTED_JOINT_PATH.md",
+          "blob": "a2d791bfdf58cca34f6be794951a7586bd7acfef",
+          "lines": "5,22-26"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v551j_packets.py",
+          "blob": "740bae4cfd4da7ed8aa2c9a2321c47f26ba7c7e8",
+          "lines": "1114-1160"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v552_structural.py",
+          "blob": "0df56d70cb3880dee723df00aea2207acd525260",
+          "lines": "100-199"
+        },
+        {
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "data/ddm_build_copy/ddm_v552j_handoff.py",
+          "blob": "476e617370e8947ee1f38b0718243ecfc5ba9e5c",
+          "lines": "79-142"
+        }
+      ],
+      "consequence": "The headline falsely serializes independent inputs. The table itself names the ordinary V550 distribution inputs at J3 and the V551 atom + V550J pattern item at J4, so the headline and body are inconsistent.",
+      "least_correction": "Replace the headline with the actual parallel/diamond input graph; no V550J->V551 atom edge and no V551J->V552 fact edge.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G4-D1",
+      "severity": "MATERIAL",
+      "candidate_cell": "G4_OLD_TO_FORGE.tsv:4,7 (G4-03, G4-06) modern_first_reader_and_call_site",
+      "bad_value_or_omission": "The first-reader column names producers/guards as readers: produce_governed_diagnostics (producer), assert_diagnostic_only_use (guard), execute_empirical_query -> produce_governed_diagnostics (producers). No production first reader exists; only tests consume GovernedDiagnosticProduct.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G4_OLD_TO_FORGE.tsv",
+          "blob": "c622f84305d941e3f7321cd1b33bbc105bba3a62",
+          "lines": "4,7"
+        },
+        {
+          "cut": "3e0ed0794498506520ae62c997a5c852ac672061",
+          "path": "rawlsing_next/pre553_diagnostics.py",
+          "blob": "32a2d063f3b69fc983b352e69e032dd214a3e8d7",
+          "lines": "493-628,622-784"
+        },
+        {
+          "cut": "3e0ed0794498506520ae62c997a5c852ac672061",
+          "path": "rawlsing_next/tests/test_pre553_diagnostics.py",
+          "blob": "d50474524b4f557e53e2571b8d6bb6a859944001",
+          "lines": "produce_governed_diagnostics / assert_diagnostic_only_use calls; test-only consumers"
+        }
+      ],
+      "consequence": "The table overstates modern production consumption. The dispositions are diagnostic-only/different-grain, but the first-reader cell is not an actual first reader.",
+      "least_correction": "Replace with NONE_IN_PRODUCTION for a first reader; record producer/guard roles and test-only consumers separately; add exact paths/blobs/lines.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G4-D2",
+      "severity": "MATERIAL",
+      "candidate_cell": "G4_OLD_TO_FORGE.tsv:8 (G4-07) modern_evidence",
+      "bad_value_or_omission": "The modern absence rests on prior PROGRAMMA row G1A-FUNC-012, not a cut-scoped primary search. The conclusion is true, but the proof is not primary.",
+      "exact_evidence": [
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G4_OLD_TO_FORGE.tsv",
+          "blob": "c622f84305d941e3f7321cd1b33bbc105bba3a62",
+          "lines": "8"
+        },
+        {
+          "cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/FUNCTION_PARITY.jsonl",
+          "blob": "6f47c1625418970f61f587480db568357be966ad",
+          "lines": "12 (G1A-FUNC-012, NO_CURRENT_MATCH_VERIFIED, current_candidate_declared_first_consumer=null)"
+        },
+        {
+          "cut": "3e0ed0794498506520ae62c997a5c852ac672061",
+          "path": "rawlsing_next",
+          "blob": "NO_MATCH_IN_TREE",
+          "lines": "git grep -n conditional_determinicity -> exit 1 (no match); identical empty result at 6a5c12"
+        }
+      ],
+      "consequence": "The conclusion is verified, but the candidate's documentary evidence is a prior parity row rather than a cut-scoped search. This is the exact PROGRAMMA-as-lead issue the correction warns against.",
+      "least_correction": "Add the cut-scoped git grep result at 3e0ed079 and 6a5c12; keep PROGRAMMA as a lead; add pre553_legacy_compat.py:112-123.",
+      "owner": "R2 author; HQ publishes"
+    },
+    {
+      "defect_id": "G4-D3",
+      "severity": "MATERIAL",
+      "candidate_cell": "G4_OLD_TO_FORGE.tsv:9 (G4-08) modern_product_or_mechanism / modern_evidence",
+      "bad_value_or_omission": "The actual modern J-parity gate is omitted: pre553_legacy_compat.py explicitly does not import/discover/parse/execute V550-V552 artifacts and disables V551J/V552J object parity for lack of authority.",
+      "exact_evidence": [
+        {
+          "cut": "3e0ed0794498506520ae62c997a5c852ac672061",
+          "path": "rawlsing_next/pre553_legacy_compat.py",
+          "blob": "5498ff8b979379386f1d5fa7a44ed22131721ece",
+          "lines": "4-6,112-123"
+        },
+        {
+          "cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "path": "rawlsing_next/pre553_legacy_compat.py",
+          "blob": "5498ff8b979379386f1d5fa7a44ed22131721ece",
+          "lines": "4-6,112-123"
+        },
+        {
+          "cut": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+          "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/G4_OLD_TO_FORGE.tsv",
+          "blob": "c622f84305d941e3f7321cd1b33bbc105bba3a62",
+          "lines": "9"
+        }
+      ],
+      "consequence": "The old-to-FORGE table omits the exact modern product/evidence for the J-family parity question. The negative conclusion is still correct, but the table is incomplete.",
+      "least_correction": "Add pre553_legacy_compat.py:4-6,112-123 as the actual modern J-parity gate, disposition COMPATIBILITY_GATE_DENIES_J_PARITY, not a carrier and not a conservation proof.",
+      "owner": "R2 author; HQ publishes"
+    }
+  ]
+}

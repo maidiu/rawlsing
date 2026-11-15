@@ -202,7 +202,7 @@
       "id": "VOSKRES_R2",
       "priority": 3,
       "initial_slot": "C",
-      "status": "FROZEN_AUTHOR_CANDIDATE_RECEIVED__DISTINCT_INDEPENDENT_REVIEW_LAUNCHED",
+      "status": "INDEPENDENT_REVISE_EXACT_DEFECT__SAME_AUTHOR_CORRECTION_LAUNCHED",
       "issue": 1059,
       "pr": 1060,
       "frozen_r1_sha": "819dc54c69633dd75b6d13ac0ee8c3bbfd624853",
@@ -265,7 +265,30 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-independent-g5-20261115",
         "launch_is_not_completion": true
       },
-      "review_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/voskres1059-r2-independent-20261115"
+      "review_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/voskres1059-r2-independent-20261115",
+      "independent_review_sha": "1b525d00ee55a78e18d78e8f1afcb81bb9682bb8",
+      "exact_defect_ids": [
+        "G1-D1",
+        "G1-D2",
+        "G2-D1",
+        "G2-D2",
+        "G2-D3",
+        "G2-D4",
+        "G3-D1",
+        "G3-D2",
+        "G4-D1",
+        "G4-D2",
+        "G4-D3"
+      ],
+      "correction_launch": {
+        "job_id": "voskres1059-r2-exact-defect-correction-20261115",
+        "child_pid": 78498,
+        "supervisor_pid": 78497,
+        "observer_pid": 78499,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-exact-defect-correction-20261115",
+        "launch_is_not_completion": true
+      },
+      "accepted_subset_preserved": true
     },
     {
       "id": "R03_QUERY_ISSUER",

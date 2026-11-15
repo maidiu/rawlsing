@@ -1,0 +1,102 @@
+{
+  "docket": "J4_VOSKRES_R2",
+  "terminal_receipt": {
+    "job_id": "voskres1059-r2-independent-g5-20261115",
+    "session": "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+    "pid": 65557,
+    "started_utc": "2026-11-15T07:57:21.301008+00:00",
+    "finished_utc": "2026-11-15T08:20:50.682737+00:00",
+    "exit_code": 0
+  },
+  "frozen_candidate": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+  "independent_review": "1b525d00ee55a78e18d78e8f1afcb81bb9682bb8",
+  "review_root": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/",
+  "decision": "REVISE_EXACT_DEFECT",
+  "G1_G4": "REVISE_EXACT_DEFECT",
+  "G5": "REVIEW_PERFORMED__NOT_ACCEPTED",
+  "verification": {
+    "review_only_changed_files": 6,
+    "manifest_hash_matches": 4,
+    "tsv_tables": 2,
+    "width_failures": 0,
+    "defects": 11,
+    "HQ_primary_reproduction": "B_R1/COST_CARDINALITY.tsv line9 still depth<=3; deterministicmachinecoordinate problem and sourcegrounded missinginputs documentedbyindependentreview"
+  },
+  "accepted_subset": {
+    "G1": [
+      "G1-01/G1-02: one primary selection plus at most k-1 primary-vs-candidate joint evaluations; not all-pairs O(k^2). Source ddm_v550_branching.py:269,276-289.",
+      "G1-03..G1-06: max_depth default 3 is configurable; stop on depth/support/no-indicators/no-gain; top-two expansion. Source ddm_v550_branching.py:372,397-399,419-425; build_determinicity_wave_shard_v550.py:856,1633.",
+      "G1-07..G1-10: resume requires complete marker + readable/nonempty question_use_contract parquet + nonempty saved hash equality to recomputed question-use-contract hash; narrow one-table/marker scope stated. Source build_determinicity_repository_v550.py:963-992; build_determinicity_wave_shard_v550.py:1509.",
+      "Raw A/B/HQ R1 first-pass files preserved unchanged."
+    ],
+    "G2": [
+      "Ordinary O-01..O-07 V550->V551->V552 stage edges are source-grounded.",
+      "Joint J-01..J-09 V550J->V551J->V552J stage edges are source-grounded.",
+      "V-01..V-04 V553 canonical adapter and wave-bundle behavior are source-grounded.",
+      "V552J carries a reduced carrier; it does not load the V551J component index or same-grain component vectors. ddm_v552j_handoff.py:79-142.",
+      "V553 canonical adapter does not dereference V551J and leaves V551J root/certified/reviewable fields empty. ddm_v553_canonical_harmonization.py:500-640.",
+      "V553 canonical surface checks join/input/handoff row-count equality, exact frame equality, declared-vs-actual probe/temporal counts, and temporal_field_allowed=False. ddm_v553_canonical_harmonization.py:508-545.",
+      "Prior C4R1 seven same-grain information-loss gaps and 0/9 positive load are accurately cited as banked prior evidence."
+    ],
+    "G3": [
+      "Stage formulas are source-grounded: V550J pattern counts/probabilities/denominators; V551 direct-lane atom promotion; V551J exact scope/question/var/response matching and certification; V552 pressure denominator/weight/sign rules; V552J exact-scope semantic score and permission gates; V553 canonical/probe-only consumer.",
+      "The mutual_information mislabel, non-collapsible denominators, V551 derived-lane exclusion, V552 unresolved-denominator refusal, and V552J temporal-field prohibition are correctly stated.",
+      "Historical execution HOLD is valid: C4R1 POSITIVE_LOAD_PROVED=NO, 0/9 coverage, no respondent substrate; section85/CURRENT_STATE.json confirms NOT_RUN and archive_contains_respondent_level_substrate=false."
+    ],
+    "G4": [
+      "G4_CONDITIONAL_INDEX_TRACE.md: producer definition at ddm_v551_conditional.py:157-236; no in-tree importer/caller or __main__; V552 accepts but does not substantively use the input; V551J does not ingest it; no modern same-grain match.",
+      "The disposition HELD_LOCAL_UNCONSUMED_AUXILIARY_CAPABILITY_WITH_NO_PROVED_HISTORICAL_PRODUCER_OR_READER is correct and preserves the local-non-use vs global-loss distinction.",
+      "Modern absence is independently verified at 3e0ed079 and 6a5c12: no conditional_determinicity in rawlsing_next; v551j/v552j only in pre553_legacy_compat.py and tests; pre553_diagnostics.py blob 32a2d063f3b69fc983b352e69e032dd214a3e8d7 at both cuts.",
+      "G4-01/G4-02/G4-04/G4-05/G4-09/G4-10 are honest about partial, related, different-grain, or unproved conservation."
+    ],
+    "G5": [
+      "Independent source-aware G5 performed; no self-acceptance; no production or full scientific-conservation execution.",
+      "All 9 R2 payload hashes match MANIFEST.json; A/B/HQ R1 unchanged.",
+      "The historical-execution HOLDs are preserved; no raw respondent bytes, synthetic stand-in, invented run, tests, CI, or product edit.",
+      "Accepted documentary subset: G1 technical corrections; G2 ordinary/joint stage graph and V552J/V553 canonical behavior; G3 stage formulas and historical HOLD; G4 conditional-index trace and modern J-parity denial."
+    ]
+  },
+  "exact_defect_ids": [
+    "G1-D1",
+    "G1-D2",
+    "G2-D1",
+    "G2-D2",
+    "G2-D3",
+    "G2-D4",
+    "G3-D1",
+    "G3-D2",
+    "G4-D1",
+    "G4-D2",
+    "G4-D3"
+  ],
+  "repair": {
+    "same_author": "ses_e21db80e0ffeKBwDuXJ2L1mYT1",
+    "job": "voskres1059-r2-exact-defect-correction-20261115",
+    "launch": {
+      "job_id": "voskres1059-r2-exact-defect-correction-20261115",
+      "child_pid": 78498,
+      "supervisor_pid": 78497,
+      "observer_pid": 78499,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-exact-defect-correction-20261115",
+      "launch_is_not_completion": true
+    },
+    "branch": "docs/voskres1059-r2-composed-author-20261115",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/voskres1059-r2-author-20261115",
+    "startup": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+    "sole_scope": "WORKER_RETURNS/DDM_VOSKRES1059_R2/",
+    "authority": "One defect-only correction of actualmaterialsourcecounterexamples, notnewgeneralA/B/historycampaign",
+    "required_return": "Every11ID\u2192correctedmachinecell/file\u2192primarysource;stablecoordinates,membership/legacy/canonicalinputs,concreteGSSfamily,diamondgraph,properreader/guardlabels",
+    "receiving_after_return": "Proportionateexactcorrectionconformance underexistingmeaningfulindependentreview; anyindependentclosureonlychangedclaims,notrepeatwholeaudit"
+  },
+  "preserved_holds": [
+    "No actualhistoricaloutputrow/positive-loadreceipt",
+    "No actualconditionalindexproducerinvocation/reader",
+    "No syntheticstandin/rawgovernedsource/scientificfunctionexecution",
+    "No productioncode orprotectedadoption"
+  ],
+  "reviewer_cost_usd_estimate": 0.210075342,
+  "steps": 136,
+  "cost_grade": "OpenCodeestimate,notinvoiceorallowance",
+  "parallel": "J5sourcefreecourtcontinues. J1/J2acceptedunchanged. R03exactgrantstillnotverified,noarbitraryimplementation/fillerworker.",
+  "wake": "Terminalnotificationsonly;recurringgoalwakesoff"
+}
