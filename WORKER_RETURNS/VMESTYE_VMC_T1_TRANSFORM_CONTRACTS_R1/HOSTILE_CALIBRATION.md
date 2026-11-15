@@ -1,3 +1,15 @@
+# VMC-T1 R7 — hostile assignment-order witness (controls R6)
+
+| Before `cand_index=50` in V549b answer-presence builder | `answer_code` state | Source-level reporter outcome |
+| --- | --- | --- |
+| First 49 binary items each skip before the `for answer_code` loop (missing var, all-null, or no recognized 0/1/present/absent code) | Unbound | 50th outer report evaluates `answer_code` before current assignment; potential conditional `UnboundLocalError` |
+| Any earlier item recognizes textual `present` or `absent` only, while neither 1/0 cohort meets `MIN_ANCHOR_N` | Bound in the loop (ultimately `0`), no admitted anchor needed | Outer report prints stale previous `answer_code` and `item_id`; **no unbound error** |
+| Eligible numeric 1/0 anchor with 50 or more inner candidates | Prior variable bound | Independent inner reporter references undefined `answer_type` at `other_index=50`, potential `NameError`; this may precede outer item 50 |
+
+Source: historical code `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`, blob `bf874a95ea5172817b0d1bdf21b43600aac5cbfe` L563–611; main reporter L857/L940–941. **Unexecuted static branch analysis**; no original source-native event. The table corrects the R6 insufficient “no qualifying literal anchor” witness. Other R6 wave/selected-only V553 and R5 D23/D25 evidence retained. D14 and D27 primary SHA restored to singular `476e617370e8947ee1f38b0718243ecfc5ba9e5c`, unlike legitimate other D01–D21 heterogeneous source descriptions.
+
+---
+
 # VMC-T1 R6 — bounded source calibration and two REVIEW P2 reconciliations (controlling addendum)
 
 All examples below are source-path thought experiments, **not executed historical Python or respondent samples**. Preserve the inherited R5 calibration and original D23/D25 corrections underneath.
