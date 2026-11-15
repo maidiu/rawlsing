@@ -1,3 +1,18 @@
+# VMC-T1 R8 — V552J to V553 source reader conditional matrix (CONTROLLING)
+
+This is a static interpretation of original source `9253064bc9423a0f0ccda4fbdea43c2f54f800c6` with exact blobs V552J `476e617370e8947ee1f38b0718243ecfc5ba9e5c`, adapter `a3e6bf17386b58beb0c14b2d79d9e4a9e405c300`, V553 temporal `5304b70f9f6522c5ae3893eff215c1d445681983`, V553 canonical `1951ada5cb7453108939eae9af91fcbfc90ad517`. No historical Python, respondent data or source-native observations were run.
+
+| Input / handoff state or diagnostic | Canonical source inspection | Temporal consuming source branch | Correct evidence grade |
+| --- | --- | --- | --- |
+| V552J input rows nonempty, handoff empty | Declared artifact/equal-row integrity is not established | Main temporal loop uses `primary_df=handoff_df.copy()` and L1981–1982 raises `V553_EMPTY_HANDOFF_WITH_STRUCTURAL_INPUT_ROWS` before row processing, notwithstanding `_wave_v552j_context`'s unused input fallback | **STATIC_CONDITIONAL_HARD_NEGATIVE**, not observed original execution |
+| Both empty | Canonical can classify valid empty if signed required manifests and constraints pass | Temporal enters separate fallback/unknown permission profile path at L1983 onward, not a native processing receipt for present rows | **STATIC_VALID_EMPTY_OR_FALLBACK**, not actor/world output |
+| Handoff present with selected-only diagnostic JSON | Canonical validates column presence, schema and input/handoff equality, NOT all alternatives/ordered component authority | Recomputed resolver output is merged with existing nonempty fields; selected-only `source_v552_structural_fact_ids_diagnostic_json` is preserved instead of automatically expanded; V553 audit L2084–2086 uses merged value | **STATIC_FIELD_PERSISTENCE**, alternative carrier/sidecar and original first native reader held |
+| Two tied exact-scope V552 facts | V552J resolver can enumerate matches but join projection carries chosen only | Other recomputed fields, including potential `source_v552_fact_matches`, may exist; no basis to assert complete loss in every output or native consumer | **OPEN_PROOF_GAP** for full authority conservation, not automatic lost function |
+
+**Falsifiers**: one same-scope two-fact source-selected case for full alternatives, one handoff-empty input-positive negative, inspected by authorized owner at original cut if actual native proof is required. This addendum supersedes R7's overly broad “static reader found” summary without changing its factual import/callsite positive. No change to D23/D25, V549b progress correction, 52 T identities or 27 finite holds.
+
+---
+
 # VMC-T1 R7 — hostile assignment-order witness (controls R6)
 
 | Before `cand_index=50` in V549b answer-presence builder | `answer_code` state | Source-level reporter outcome |
