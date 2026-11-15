@@ -506,6 +506,21 @@ def join_saved_source_operation_fates(
     query_unit = {
         u.job_ref.key: u for u in manifest.units if u.job_kind == "QUERY"
     }
+    # The explicit v2 issuer alone supplies the operation→compiled-query-role
+    # map. Its exact reproduction was required above; v1 remains zero-QUERY.
+    v2_roles: dict[str, tuple[tuple[str, str, str], ...]] = {}
+    if issuer_v2 is not None:
+        staged: dict[str, list[tuple[str, str, str]]] = {}
+        for binding in issuer_v2.operation_jobs:
+            staged.setdefault(binding.operation_id, []).append((
+                binding.query_role,
+                binding.query_ref.key,
+                binding.predicate_ref.key,
+            ))
+        v2_roles = {
+            operation_id: tuple(sorted(rows))
+            for operation_id, rows in staged.items()
+        }
     plan_by_op: dict[str, Any] = {}
     for entry in compilation.plan.records:
         if entry.operation_id in plan_by_op:
@@ -565,8 +580,46 @@ def join_saved_source_operation_fates(
         joined_state = "NONELIGIBLE_FATE_PRESERVED"
         if state == "ELIGIBLE":
             joined_state = "ELIGIBLE_PENDING_VERIFIED_NATIVE_RECEIPT"
-            if (old.get("source_realized") is True and entry is not None
-                    and entry.status == "SUPPORTED" and entry.expected_candidate_keys
+            role_rows = v2_roles.get(operation_id, ()) if issuer_v2 is not None else ()
+            if (role_rows and old.get("source_realized") is True
+                    and entry is not None and entry.status == "SUPPORTED"):
+                verified_units = []
+                for _role, query_key, predicate_key in role_rows:
+                    unit = query_unit.get(query_key)
+                    bound = request_predicates.get(query_key)
+                    if unit is None or bound is None:
+                        raise SourceReceiptJoinError(
+                            "R03_V2_OPERATION_QUERY_NOT_ISSUED"
+                        )
+                    if bound.key != predicate_key:
+                        raise SourceReceiptJoinError(
+                            "R03_V2_OPERATION_QUERY_PREDICATE_DRIFT"
+                        )
+                    verified_units.append(unit)
+                selected_units = tuple(sorted({
+                    unit.unit_ref.key: unit for unit in verified_units
+                }.values(), key=lambda unit: unit.unit_ref.key))
+                if selected_units and all(
+                    unit.unit_ref.key in completed for unit in selected_units
+                ):
+                    refs = tuple(sorted(
+                        completed[unit.unit_ref.key].receipt_ref.key
+                        for unit in selected_units
+                    ))
+                    result_refs = tuple(sorted({
+                        ref for unit in selected_units
+                        for ref in output_refs[unit.unit_ref.key]
+                    }))
+                    batch_refs = refs
+                    if not refs:
+                        raise SourceReceiptJoinError(
+                            "EMPTY_POSITIVE_RECEIPT_SET"
+                        )
+                    joined_state = "TEST_ONLY_SAVED_NATIVE_QUERY_RECEIPTED"
+                    positively_linked += 1
+            if (not refs and old.get("source_realized") is True
+                    and entry is not None and entry.status == "SUPPORTED"
+                    and entry.expected_candidate_keys
                     and set(entry.expected_candidate_keys) <= set(discovery_candidates)):
                 selected_candidates = [
                     discovery_candidates[c] for c in sorted(set(entry.expected_candidate_keys))
@@ -581,8 +634,9 @@ def join_saved_source_operation_fates(
                 }))
                 joined_state = "TEST_ONLY_SAVED_NATIVE_DISCOVERY_RECEIPTED"
                 positively_linked += 1
-            elif (old.get("source_realized") is True and entry is not None
-                    and entry.status == "SUPPORTED" and entry.query_refs):
+            elif (not refs and old.get("source_realized") is True
+                    and entry is not None and entry.status == "SUPPORTED"
+                    and entry.query_refs):
                 qids = {_key(ref) for ref in entry.query_refs}
                 if all(q in query_unit for q in qids):
                     selected = [query_unit[q] for q in sorted(qids)]

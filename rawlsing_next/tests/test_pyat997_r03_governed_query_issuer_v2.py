@@ -25,8 +25,31 @@ from rawlsing_next.pre553_source_postconsumer_receipts import (
 )
 from rawlsing_next.tests import test_pyat997_s1e_saved_native_first_consumer as s1e
 from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
-from rawlsing_next.pre553_saved_c11_admission import SavedReleaseIdentity
-from rawlsing_next.pre553_batch_runner import BatchExecutionRunner
+from rawlsing_next.pre553_saved_c11_admission import (
+    SavedC11Admission, SavedReleaseIdentity,
+)
+from rawlsing_next.pre553_batch_runner import (
+    BatchExecutionRunner, BatchManifest, BatchUnitSpec,
+)
+
+
+def _v2_admission(admission: SavedC11Admission, catalog) -> SavedC11Admission:
+    """Re-admit the SAME saved estate with the exact v2 issued execution catalog.
+
+    No source is opened here: this verifies the same manifest/release/current
+    pins and only adds the exact compiled role objects that v2 actually issued.
+    """
+    from pathlib import Path
+
+    return SavedC11Admission.open(
+        root=Path(admission.estate_path).parents[1],
+        exact_path=admission.estate_path,
+        independently_held_manifest_sha256=admission.manifest_sha256,
+        independently_held_i02=admission.i02,
+        release_ref=admission.release_ref,
+        runtime_catalog=catalog,
+        current_authorizer=lambda _roots: True,
+    )
 
 
 def test_v1_discovery_is_unchanged_and_v2_jobs_come_only_from_original_eligible_roles(
@@ -77,13 +100,14 @@ def test_v2_valid_issued_query_runs_actual_saved_batch_without_source_reopen(
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
     assert workload.requests
+    admission = _v2_admission(admission, workload.catalog)
     manifest, predicates = s1e._issued_manifest(workload, admission)
     results = s1e.execute_saved_batch(
         admission, manifest=manifest, predicate_ref_by_query=predicates,
     )
     assert len(results.receipts) == len(manifest.units)
     assert all(x.state == "COMPLETED" for x in results.receipts)
-    assert any(x.unit_kind == "QUERY" for x in manifest.units)
+    assert any(x.job_kind == "QUERY" for x in manifest.units)
     # An executing saved QUERY is NOT an original-scientific F4 result, and
     # does NOT gain source-realized original operation status by itself.
 
@@ -97,6 +121,7 @@ def test_v1_postconsumer_guards_reject_even_consistent_v2_query_injection(
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
     assert workload.requests
+    admission = _v2_admission(admission, workload.catalog)
     manifest, _ = s1e._issued_manifest(workload, admission)
     runner = BatchExecutionRunner(
         manifest=manifest, repository=admission, saved_mode=True,
@@ -125,7 +150,7 @@ def test_sourcefree_public_compiler_rederives_frozen_frontier_and_preserves_proh
         root, values=(0., 1., 0., 1., 0.),
     ))
     private = root / "private"
-    private.mkdir(parents=True, exist_ok=True)
+    private.mkdir(parents=True, exist_ok=True, mode=0o700)
     sink = SourceSavedBodySink(
         certificate_path=root / "source-i02.sqlite",
         authorized_private_root=private, chunk_rows=2,
@@ -163,6 +188,7 @@ def test_v2_saved_postconsumer_consumes_only_new_compiler_issued_jobs(
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
     assert workload.requests
+    admission = _v2_admission(admission, workload.catalog)
     manifest, predicates = s1e._issued_manifest(workload, admission)
     from rawlsing_next.pre553_saved_workload_integration import execute_saved_batch
     runner = execute_saved_batch(
@@ -200,6 +226,7 @@ def test_v2_changed_operation_bindings_refuse_even_matching_current_record(
     )
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
+    admission = _v2_admission(admission, workload.catalog)
     manifest, _ = s1e._issued_manifest(workload, admission)
     runner = BatchExecutionRunner(
         manifest=manifest, repository=admission, saved_mode=True,
@@ -215,5 +242,62 @@ def test_v2_changed_operation_bindings_refuse_even_matching_current_record(
             resolver=TestOnlyDecisionResolver(issue.issued.record),
             host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
             runner=runner, issuer_v2=forged,
+        )
+    assert runner.receipts == ()
+
+
+def test_v2_issuer_refuses_caller_injected_query_in_original_issuance(
+    tmp_path,
+):
+    _, _, _, v1, _, _ = s1e._full(tmp_path / "r03-v2-injected-original")
+    query = next(iter(v1.runtime_catalog.queries))
+    predicate = next(iter(v1.runtime_catalog.predicates))
+    from rawlsing_next.pre553_route_b_production import I03ExecutionRequest
+    forged_workload = replace(
+        v1.issued.workload,
+        requests=(I03ExecutionRequest(query.ref, predicate.ref),),
+    )
+    forged = replace(
+        v1, issued=replace(v1.issued, workload=forged_workload),
+    )
+    with pytest.raises(
+        WorkloadBindingRefusal,
+        match="R03_V2_ORIGINAL_ISSUER_MUST_BE_AUTHENTIC",
+    ):
+        _issue_compiled_governed_queries_v2(forged)
+
+
+def test_v2_join_refuses_manifest_query_not_issued_by_v2(tmp_path):
+    handoff, estate, admission, v1, _, _ = s1e._full(
+        tmp_path / "r03-v2-unissued-saved-query",
+    )
+    issue = _issue_compiled_governed_queries_v2(v1)
+    workload = issue.issued.workload
+    admission = _v2_admission(admission, workload.catalog)
+    manifest, _ = s1e._issued_manifest(workload, admission)
+    issued = {request.query_ref.key for request in workload.requests}
+    unissued = next(
+        query for query in workload.catalog.queries
+        if query.ref.key not in issued
+    )
+    forged_manifest = BatchManifest((
+        *manifest.units,
+        BatchUnitSpec(
+            "QUERY", unissued.ref,
+            (admission.release_ref,), (workload.decision_ref,),
+        ),
+    ))
+    runner = BatchExecutionRunner(
+        manifest=forged_manifest, repository=admission, saved_mode=True,
+    )
+    with pytest.raises(
+        SourceReceiptJoinError, match="UNISSUED_SAVED_QUERY",
+    ):
+        join_saved_source_operation_fates(
+            handoff=handoff, estate_receipt=estate, admission=admission,
+            compilation=v1, workload=workload,
+            resolver=TestOnlyDecisionResolver(issue.issued.record),
+            host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+            runner=runner, issuer_v2=issue,
         )
     assert runner.receipts == ()

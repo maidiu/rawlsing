@@ -14,8 +14,12 @@ from __future__ import annotations
 from dataclasses import dataclass, replace
 from typing import Any, Mapping
 
+from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+from rawlsing_next.pre553_discovery_exact import (
+    _Atom, _Template, _compile_frontier,
+)
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef, exact_ref, semantic_hash,
+    ExactRef, canonicalize, exact_ref, semantic_hash,
 )
 from rawlsing_next.pre553_issued_workload import operation_jobs
 from rawlsing_next.pre553_native_workload_binding import (
@@ -94,6 +98,204 @@ class GovernedQueryIssuanceV2:
         return semantic_hash(self.material())
 
 
+def _reconstruct_compiled_candidates(
+    compilation: GovernedFrontierCompilation,
+    runtime: RuntimeObjectCatalog,
+) -> dict[str, Any]:
+    """Re-run the existing exact lowerer to materialize its query-role objects.
+
+    The governed compilation retains only role refs, not their exact query and
+    predicate preimages. Those preimages are deterministic functions of the
+    same frozen grammar the compiler already used. Reusing ``_compile_frontier``
+    (the accepted lowerer, not a second engine) recovers exactly the objects
+    that the original candidate identities refer to, so issued QUERY units can
+    be resolved by the saved I03 owner without a new evaluator.
+    """
+    plan = compilation.plan
+    grammar = plan.native_grammar()
+    derived_by_atom: dict[str, Any] = {}
+    for record in plan.records:
+        derived_by_atom.update(record.derived_predicates)
+    predicates = {obj.ref.key: obj for obj in runtime.predicates}
+    queries = {obj.ref.key: obj for obj in runtime.queries}
+    atoms: dict[str, Any] = {}
+    for item in grammar["atoms"]:
+        ref = exact_ref(item["predicate_ref"], "R03 v2 lowered atom ref")
+        obj = derived_by_atom.get(item["atom_id"]) or predicates.get(ref.key)
+        if obj is None:
+            raise WorkloadBindingRefusal("R03_V2_LOWERED_ATOM_UNAVAILABLE")
+        atoms[item["atom_id"]] = _Atom(
+            item["atom_id"], str(item.get("kind", "RESPONSE")), obj, ()
+        )
+    templates: dict[str, Any] = {}
+    for item in grammar["query_templates"]:
+        ref = exact_ref(item["query_ref"], "R03 v2 template query ref")
+        obj = queries.get(ref.key)
+        if obj is None:
+            raise WorkloadBindingRefusal("R03_V2_LOWERED_TEMPLATE_UNAVAILABLE")
+        templates[item["template_id"]] = _Template(item["template_id"], obj)
+    candidates = _compile_frontier(grammar, atoms, templates)
+    by_id: dict[str, Any] = {}
+    for candidate in candidates:
+        if candidate.candidate_id in by_id:
+            raise WorkloadBindingRefusal("R03_V2_DUPLICATE_RECOMPILED_CANDIDATE")
+        by_id[candidate.candidate_id] = candidate
+    return by_id
+
+
+def _verify_planned_candidates(
+    plan: Any, candidates: Mapping[str, Any],
+) -> None:
+    """Require the plan's frozen candidate census to match exact re-derivation."""
+    planned: dict[str, Any] = {}
+    for row in plan.expected_candidates:
+        candidate_id = row.get("candidate_id")
+        if not isinstance(candidate_id, str) or candidate_id in planned:
+            raise WorkloadBindingRefusal("R03_V2_PLANNED_CANDIDATE_CENSUS_DRIFT")
+        planned[candidate_id] = row
+    if set(planned) != set(candidates):
+        raise WorkloadBindingRefusal("R03_V2_PLANNED_CANDIDATE_CENSUS_DRIFT")
+    for candidate_id, row in planned.items():
+        candidate = candidates[candidate_id]
+        if candidate.candidate_hash != row.get("candidate_hash"):
+            raise WorkloadBindingRefusal("R03_V2_PLANNED_CANDIDATE_IDENTITY_DRIFT")
+        planned_roles = [
+            (
+                role.get("role"),
+                canonicalize(role.get("predicate_ref")),
+                canonicalize(role.get("query_ref")),
+            )
+            for role in row.get("query_roles", ())
+            if isinstance(role, Mapping)
+        ]
+        actual_roles = [
+            (
+                role.role,
+                canonicalize(role.predicate.ref.as_dict()),
+                canonicalize(role.query.ref.as_dict()),
+            )
+            for role in candidate.query_roles
+        ]
+        if planned_roles != actual_roles:
+            raise WorkloadBindingRefusal(
+                "R03_V2_PLANNED_QUERY_ROLE_IDENTITY_DRIFT"
+            )
+
+
+def _operation_query_roles(
+    compilation: GovernedFrontierCompilation,
+    candidates: Mapping[str, Any],
+) -> tuple[
+    tuple[tuple[str, str, str, str], ...],
+    tuple[tuple[Any, Any], ...],
+    set[str],
+]:
+    """Return exact operation/role bindings and their object preimages."""
+    plan = compilation.plan
+    eligible_ids = set(compilation.frontier_eligible_operation_ids)
+    dispositions = compilation.operation_dispositions or {}
+    bindings: set[tuple[str, str, str, str]] = set()
+    role_objects: dict[tuple[str, str], tuple[Any, Any]] = {}
+    unissued: set[str] = set()
+    for record in plan.records:
+        if record.status != SUPPORTED:
+            if record.query_role_refs:
+                raise WorkloadBindingRefusal("R03_V2_NONSUPPORTED_QUERY_ROLE")
+            continue
+        if (record.operation_id not in eligible_ids
+                or dispositions.get(record.operation_id) != ELIGIBLE):
+            raise WorkloadBindingRefusal(
+                "R03_V2_NONELIGIBLE_SUPPORTED_OPERATION"
+            )
+        candidate_keys = tuple(record.expected_candidate_keys)
+        if not candidate_keys:
+            raise WorkloadBindingRefusal(
+                "R03_V2_SUPPORTED_CANDIDATES_UNAVAILABLE"
+            )
+        planned_rows: set[tuple[str, str, str]] = set()
+        for candidate_key in candidate_keys:
+            candidate = candidates.get(candidate_key)
+            if candidate is None or candidate.rule_id != record.rule_id:
+                raise WorkloadBindingRefusal(
+                    "R03_V2_SUPPORTED_CANDIDATE_BINDING_DRIFT"
+                )
+            for role in candidate.query_roles:
+                planned_rows.add((
+                    role.role, role.predicate.ref.key, role.query.ref.key,
+                ))
+        actual_rows = {
+            (
+                row.get("role"),
+                exact_ref(row["predicate_ref"], "R03 v2 role predicate").key,
+                exact_ref(row["query_ref"], "R03 v2 role query").key,
+            )
+            for row in record.query_role_refs
+            if isinstance(row, Mapping)
+        }
+        if actual_rows != planned_rows:
+            raise WorkloadBindingRefusal("R03_V2_COMPILED_QUERY_ROLE_DRIFT")
+        if not actual_rows:
+            unissued.add(record.operation_id)
+            continue
+        for candidate_key in candidate_keys:
+            candidate = candidates[candidate_key]
+            for role in candidate.query_roles:
+                if role.role not in record.coverage_roles:
+                    raise WorkloadBindingRefusal("R03_V2_UNDECLARED_QUERY_ROLE")
+                # A role query binds its exact role predicate as its condition.
+                if exact_ref(
+                    role.query.condition_predicate_ref,
+                    "R03 v2 role query condition",
+                ) != role.predicate.ref:
+                    raise WorkloadBindingRefusal(
+                        "R03_V2_ROLE_QUERY_PREDICATE_DRIFT"
+                    )
+                bindings.add((
+                    record.operation_id,
+                    role.role,
+                    role.query.ref.key,
+                    role.predicate.ref.key,
+                ))
+                role_objects.setdefault(
+                    (role.predicate.ref.key, role.query.ref.key),
+                    (role.predicate, role.query),
+                )
+    ordered = tuple(sorted(bindings))
+    return (
+        ordered,
+        tuple(role_objects[key] for key in sorted(role_objects)),
+        unissued,
+    )
+
+
+def _extend_runtime_catalog(
+    runtime: RuntimeObjectCatalog,
+    role_objects: tuple[tuple[Any, Any], ...],
+) -> RuntimeObjectCatalog:
+    """Add the exact issued role preimages to the immutable execution catalog."""
+    predicates = {obj.ref.key: obj for obj in runtime.predicates}
+    queries = {obj.ref.key: obj for obj in runtime.queries}
+    for predicate, query in role_objects:
+        for label, target, obj in (
+            ("predicate", predicates, predicate),
+            ("query", queries, query),
+        ):
+            previous = target.get(obj.ref.key)
+            if previous is not None:
+                if canonicalize(previous.as_dict()) != canonicalize(obj.as_dict()):
+                    raise WorkloadBindingRefusal(
+                        f"R03_V2_ROLE_{label.upper()}_IDENTITY_DRIFT"
+                    )
+                continue
+            target[obj.ref.key] = obj
+    return RuntimeObjectCatalog(
+        authorities=tuple(runtime.authorities),
+        predicates=tuple(predicates.values()),
+        queries=tuple(queries.values()),
+        discovery_authorities=tuple(runtime.discovery_authorities),
+    )
+
+
 def _issue_compiled_governed_queries_v2(
     compilation: GovernedFrontierCompilation,
 ) -> GovernedQueryIssuanceV2:
@@ -120,58 +322,29 @@ def _issue_compiled_governed_queries_v2(
     if plan.expected_candidate_error is not None:
         raise WorkloadBindingRefusal("R03_V2_EXPECTED_CANDIDATES_UNAVAILABLE")
     eligible_ids = set(compilation.frontier_eligible_operation_ids)
-    claimed_dispositions = compilation.operation_dispositions or {}
     runtime = compilation.runtime_catalog
 
+    candidates = _reconstruct_compiled_candidates(compilation, runtime)
+    _verify_planned_candidates(plan, candidates)
+    bindings, role_objects, unissued = _operation_query_roles(
+        compilation, candidates,
+    )
+    role_by_key = {
+        (predicate.ref.key, query.ref.key): (predicate.ref, query.ref)
+        for predicate, query in role_objects
+    }
     seen_requests: dict[str, I03ExecutionRequest] = {}
-    bindings: set[tuple[str, str, str, str]] = set()
-    unissued: set[str] = set()
-    for record in plan.records:
-        if record.status != SUPPORTED:
-            if record.query_role_refs:
-                raise WorkloadBindingRefusal("R03_V2_NONSUPPORTED_QUERY_ROLE")
-            continue
-        if (record.operation_id not in eligible_ids
-                or claimed_dispositions.get(record.operation_id) != ELIGIBLE):
-            raise WorkloadBindingRefusal("R03_V2_NONELIGIBLE_SUPPORTED_OPERATION")
-        valid_query_refs = {
-            exact_ref(
-                {key: row[key] for key in ("kind", "object_id", "content_hash")},
-                "R03 v2 supported query ref",
-            ).key
-            for row in record.query_refs
-        }
-        if not record.query_role_refs:
-            unissued.add(record.operation_id)
-            continue
-        for row in record.query_role_refs:
-            if not isinstance(row, Mapping):
-                raise WorkloadBindingRefusal("R03_V2_INVALID_QUERY_ROLE")
-            role = row.get("role")
-            if not isinstance(role, str) or role not in record.coverage_roles:
-                raise WorkloadBindingRefusal("R03_V2_UNDECLARED_QUERY_ROLE")
-            query_ref = exact_ref(row["query_ref"], "R03 v2 role query")
-            predicate_ref = exact_ref(
-                row["predicate_ref"], "R03 v2 role predicate"
+    for _operation_id, _role, query_key, predicate_key in bindings:
+        predicate_ref, query_ref = role_by_key[(predicate_key, query_key)]
+        request = I03ExecutionRequest(query_ref, predicate_ref)
+        earlier = seen_requests.get(query_key)
+        if earlier is not None and earlier != request:
+            # BatchUnitSpec addresses one QUERY by query ref: two different
+            # predicates for that ref cannot be merged into one job.
+            raise WorkloadBindingRefusal(
+                "R03_V2_AMBIGUOUS_QUERY_PREDICATE_ROLE"
             )
-            if query_ref.key not in valid_query_refs:
-                raise WorkloadBindingRefusal("R03_V2_ROLE_QUERY_NOT_FROM_LOWERING")
-            # Exact public object preimages and their existing authority law.
-            runtime.resolve_query_exact(query_ref)
-            runtime.resolve_predicate_exact(predicate_ref)
-            request = I03ExecutionRequest(query_ref, predicate_ref)
-            earlier = seen_requests.get(query_ref.key)
-            if earlier is not None and earlier != request:
-                # BatchUnitSpec addresses one QUERY by query ref: two different
-                # predicates for that ref cannot be merged into one job.
-                raise WorkloadBindingRefusal(
-                    "R03_V2_AMBIGUOUS_QUERY_PREDICATE_ROLE"
-                )
-            seen_requests[query_ref.key] = request
-            bindings.add((
-                record.operation_id, role, query_ref.key, predicate_ref.key,
-            ))
-
+        seen_requests[query_key] = request
     requests = tuple(sorted(
         seen_requests.values(),
         key=lambda request: (request.query_ref.key, request.predicate_ref.key),
@@ -186,8 +359,18 @@ def _issue_compiled_governed_queries_v2(
             query_ref=by_query[query_key].query_ref,
             predicate_ref=by_query[query_key].predicate_ref,
         )
-        for operation_id, role, query_key, _predicate_key in sorted(bindings)
+        for operation_id, role, query_key, _predicate_key in bindings
     )
+    extended_catalog = _extend_runtime_catalog(runtime, role_objects)
+    for request in requests:
+        query = extended_catalog.resolve_query_exact(request.query_ref)
+        extended_catalog.resolve_predicate_exact(request.predicate_ref)
+        if exact_ref(
+            query.condition_predicate_ref, "R03 v2 issued query condition",
+        ) != request.predicate_ref:
+            raise WorkloadBindingRefusal(
+                "R03_V2_ROLE_QUERY_PREDICATE_DRIFT"
+            )
     identity = semantic_hash({
         "schema": GOVERNED_QUERY_ISSUER_SCHEMA,
         "original": compilation.content_hash,
@@ -203,6 +386,7 @@ def _issue_compiled_governed_queries_v2(
     workload = replace(
         old.workload,
         decision_ref=decision,
+        catalog=extended_catalog,
         requests=requests,
     )
     envelope = semantic_hash(workload.envelope())
