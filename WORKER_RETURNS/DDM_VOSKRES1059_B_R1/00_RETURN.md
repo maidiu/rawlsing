@@ -28,12 +28,14 @@ then to V549/V549b/V550J computation and preparation.
 
 ## Strongest reverse findings (all source-only unless marked)
 
-1. **V552 accepts `conditional_determinicity` and never uses it.** The CLI reads the parquet and
-   passes it into `build_v552_structural_outputs`
-   (`compile_v552_structural_ddm.py:299-309`), but the builder references it only in the signature
-   and an empty `conditional_determinicity_status_audit` schema row. The V551 derived determinicity
-   lane can be indexed, but the inspected V552 producer does not consume that index. This is a
-   concrete semantic dead end, not a performance issue. (`ddm_v552_structural.py:253-259`, blob
+1. **V552 records `conditional_determinicity` as an input and never uses it.** The CLI reads the
+   parquet and passes it into `build_v552_structural_outputs`
+   (`compile_v552_structural_ddm.py:299-309`); the V552 input-provenance manifest schema requires
+   its path/hash/row count (`ddm_v550_schema.py:1617-1631`); yet the builder references it only in
+   the signature and an empty `conditional_determinicity_status_audit` schema row. V551J also does
+   not read the conditional index; its `conditional_support_packet` comes from V550J association
+   rows, not from V551 conditional determinicity. This is a provenance-only semantic dead end, not
+   a performance issue. (`ddm_v552_structural.py:253-259`, blob
    `0df56d70cb3880dee723df00aea2207acd525260`; caller blob
    `0f9a28749ed5858a4814ec8e8fa6b53000f343de`.)
 2. **V551 promotes only the two direct response distributions.** `APPROVED_DIRECT_TABLES =
@@ -88,6 +90,13 @@ then to V549/V549b/V550J computation and preparation.
    each mask is reused across all candidate items for that branch and scored by Cramér's V.
    Checkpoints are per source slice; CSV and DuckDB are appended incrementally.
    (`build_branch_co_signature_summary_v549.py:494-557,467-607,718-768`.)
+10. **Downstream V551J/V552J gates are exact-scope and permission-heavy.** V551J only creates a
+    `joint_relation_evidence_packet` when an atom and an exact same-person pattern join; otherwise
+    it degrades to context/known-absence (`ddm_v551j_packets.py:244-253,631-642,684-695`). V552J
+    joins V551J packets to V552 structural facts and permits V553 probe only for certified packets
+    where both producer permissions are ALLOW and pressure is observed; V553 temporal field is
+    always false (`ddm_v552j_handoff.py:131-140`). This is a real reader-side loss/gate to test,
+    not a demonstration of a historical bug.
 
 ## Explicit limits
 

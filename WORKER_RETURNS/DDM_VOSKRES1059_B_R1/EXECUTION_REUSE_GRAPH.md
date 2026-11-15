@@ -52,6 +52,15 @@ V552: atoms -> pressure -> structural facts
   (ddm_v552_structural.py:148-259)
   conditional_determinicity parameter accepted at :253 but unused; empty audit at :257-258
   CLI reads the parquet and passes it (compile_v552_structural_ddm.py:299-309); builder ignores it
+  V552 input-provenance manifest still requires conditional path/hash/row count
+  (ddm_v550_schema.py:1617-1631) -> provenance-only
+
+V551J: atoms + V550J pattern/item/relation/association indexes -> packets
+  joint_relation_evidence_packet only if atom_joined AND pattern_joined
+  (ddm_v551j_packets.py:244-253,631-642); no conditional-determinicity index input
+V552J: V551J certified/review packets + V552 structural facts/temporal keys -> join
+  permission ALLOW only certified + both producer permissions ALLOW + observed pressure
+  V553 temporal field always false (ddm_v552j_handoff.py:131-140)
 ```
 
 ### Reuse boundaries actually present

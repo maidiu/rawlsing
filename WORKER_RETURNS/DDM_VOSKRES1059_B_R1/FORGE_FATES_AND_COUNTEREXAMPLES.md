@@ -74,3 +74,8 @@ receipt was independently inspected. No equivalence is claimed from names.
    denominators on a multi-country fixture; preserve typed special states.
 5. **V549/V549b archaeology-only**: do not port branch summaries until predictor-column
    availability is proved; the V549 loader blanking is a counterexample, not a performance fact.
+
+8. **Downstream permission is not downstream consumption.** V552J emits a V553 *probe* permission
+   with `v553_temporal_field_allowed=False` and requires both producer permissions ALLOW plus
+   observed pressure (`ddm_v552j_handoff.py:131-140`). A join index row is not evidence that a V553
+   consumer exists or that signed pressure becomes a structural fact.

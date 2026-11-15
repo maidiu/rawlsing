@@ -44,3 +44,14 @@
 6. Are old V549/V549b branch summaries evidence of real scientific splits, or artifacts of blank
    predictors? Needs v548 tree predictor inventory and one non-governed synthetic check only if
    authorized in a later tract.
+
+
+## Added after second bounded reader sweep
+
+- Does any pipeline script actually pass `--conditional-determinicity-path` in a real run? The
+  capability exists and is manifest-recorded, but no invocation was inspected.
+- V551J packet certification internals (`ddm_v551j_certification.py`) were not inspected; the exact
+  certified/review split and whether conditional determinicity could enter through a sidecar remain
+  open.
+- No real V553 consumer was inspected. V552J's temporal-field prohibition is proven; whether V553
+  actually enforces/enjoys it is not.
