@@ -149,8 +149,9 @@ defect.
 ## 4. Isolation note
 
 The reviewer probes hardcode
-`.local-logs/sorok-c05-independent-g5/`. To keep writes inside the R2 lease, a
-temporary symlink redirected that path to
+`.local-logs/sorok-c05-independent-g5/` (including the 89-check probe’s
+cold-child `TMPDIR`). To keep writes inside the R2 lease, a temporary symlink
+redirected that path to
 `.local-logs/sorok-c05-promotion-r2/probe-red-scratch/`. Probe bytes and
 oracles were not edited. The RED report was copied to its immutable name before
 the post-fix run overwrote the probe’s default report path.
