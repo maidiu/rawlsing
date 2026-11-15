@@ -1,0 +1,74 @@
+SOROK #1037 B05 R3 independent G5 — exact commands
+Checkout: /Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing
+Candidate: cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc
+Branch: codex/sorok1037-b05-r3-independent-g5-20261115-r3 (candidate author branch codex/sorok1037-b05-zero-status-repair-20261115-r3)
+
+Environment for every command:
+  export TMPDIR="$PWD/.local-logs/sorok1037-b05-r3-independent-g5-20261115-r3/tmp"
+  export PYTHONDONTWRITEBYTECODE=1
+  PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+
+1. Unchanged zero probe (original blob d5d41240...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r2_focused_probe.py
+   -> exit 0; 17/17; zero forged ADMITTED refused B05_RENT_RECEIPT_INVALID
+
+2. Original positive probe (blob 3e98929...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_review_probe.py
+   -> exit 0; 34/34; positive sole rehash refused B05_RENT_OPERATION_UNPROVEN
+
+3. Exact #1027 witness (blob 7cd5a23...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_probe_1027.py
+   -> literal exit 1; 63/63 checks; both defects accepted=false
+
+4. Exact #1027 cold probe (blob 6fc86dc...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_cold_probe_1027.py
+   -> exit 0; ok=true; warm_ok=true; child_exit=0
+
+5. R3 focused author tests:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/tests/test_b05_zero_status_semantics.py
+   -> exit 0; 4 passed
+
+6. R2 focused regression:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py
+   -> exit 0; 5 passed
+
+7. Legacy B04/B05 tests:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py
+   -> exit 0; 6 passed
+
+8. Selected read-only C03/C04 consumer:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py
+   -> exit 0; 3 passed
+
+9. Inherited original B01-B05 43 tests once on final source:
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_interleave_retry.py
+   -> exit 0; 43 passed
+
+10. Own independent R3 negative/positive witness:
+    /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r3_independent_probe.py
+    -> exit 0; 12/12 checks
+       malformed ADMITTED no-decrease/wrong-debit -> B05_RENT_RECEIPT_INVALID
+       well-formed ADMITTED no-transition -> B05_RENT_OPERATION_UNPROVEN
+       same-period copy -> B05_RENT_OPERATION_NOT_UNIQUE
+       genuine zero UNCHANGED / held REFUSED / positive ADMITTED read
+       h1 historical=true after h2, h2 historical=false
+
+No /tmp redirect; assigned checkout-local scratch only. No product write, no CI, no R4.
