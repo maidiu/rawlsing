@@ -1,0 +1,193 @@
+{
+  "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
+  "updated_utc": "2026-11-15T06:39:16.546201+00:00",
+  "host": "oldMac.lan",
+  "controller_supports_persistent_dependency_dispatch": false,
+  "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
+  "worker_cap": 3,
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "protected_merge_authorized": false,
+  "old_fleet_939": "STOP",
+  "pyat": "OUT_OF_SCOPE",
+  "active_leases": [
+    {
+      "issue": 1037,
+      "role": "bounded B04/B05 repair AUTHOR",
+      "name": "sorok1037-b-receipt-repair",
+      "base": "fb061dec16c8386b9caa1b5ea75ec7645aff88a7",
+      "out": "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+        "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+      "branch": "codex/sorok1037-b-receipt-repair-20261115-r1",
+      "session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "launch": {
+        "job_id": "sorok1037-b-receipt-repair-20261115-r1",
+        "child_pid": 31949,
+        "supervisor_pid": 31947,
+        "observer_pid": 31950,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b-receipt-repair-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "owner": "ses_e22146cc1ffeLXXJyO5aDi0REe"
+    },
+    {
+      "issue": 1038,
+      "role": "independent nonauthor C03/C04 custody G5 REVIEWER",
+      "name": "sorok1038-custody-g5",
+      "base": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "out": "WORKER_REVIEWS/SOROK1038_C03_C04_CUSTODY_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+      "branch": "codex/sorok1038-custody-g5-20261115-r1",
+      "session": "ses_e22146664ffeDffEDH4nsj8nsY",
+      "launch": {
+        "job_id": "sorok1038-custody-g5-20261115-r1",
+        "child_pid": 31968,
+        "supervisor_pid": 31966,
+        "observer_pid": 31969,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1038-custody-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "owner": "ses_e22146664ffeDffEDH4nsj8nsY"
+    },
+    {
+      "issue": 982,
+      "role": "independent nonauthor existing CG-A composite G5 REVIEWER",
+      "name": "sorok982-composite-g5",
+      "base": "d5cf0c9c9925eb75c21c9a70793947f857917959",
+      "out": "WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing",
+      "branch": "codex/sorok982-composite-g5-20261115-r1",
+      "session": "ses_e221462b9ffeDc6SKxZGtXojUH",
+      "launch": {
+        "job_id": "sorok982-composite-g5-20261115-r1",
+        "child_pid": 31998,
+        "supervisor_pid": 31993,
+        "observer_pid": 31999,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok982-composite-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "owner": "ses_e221462b9ffeDc6SKxZGtXojUH"
+    }
+  ],
+  "runtime_verification": [
+    {
+      "issue": 1037,
+      "session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "verified_assistant": [
+        {
+          "role": "assistant",
+          "providerID": "opencode-go",
+          "modelID": "deepseek-v4.1-flash",
+          "variant": "max",
+          "path": {
+            "cwd": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+            "root": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing"
+          },
+          "error": null
+        }
+      ],
+      "process": "31949 00:31 /Users/matthewsmith/.opencode/bin/opencode"
+    },
+    {
+      "issue": 1038,
+      "session": "ses_e22146664ffeDffEDH4nsj8nsY",
+      "verified_assistant": [
+        {
+          "role": "assistant",
+          "providerID": "opencode-go",
+          "modelID": "deepseek-v4.1-flash",
+          "variant": "max",
+          "path": {
+            "cwd": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+            "root": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing"
+          },
+          "error": null
+        }
+      ],
+      "process": "31968 00:34 /Users/matthewsmith/.opencode/bin/opencode"
+    },
+    {
+      "issue": 982,
+      "session": "ses_e221462b9ffeDc6SKxZGtXojUH",
+      "verified_assistant": [
+        {
+          "role": "assistant",
+          "providerID": "opencode-go",
+          "modelID": "deepseek-v4.1-flash",
+          "variant": "max",
+          "path": {
+            "cwd": "/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing",
+            "root": "/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing"
+          },
+          "error": null
+        }
+      ],
+      "process": "31998 00:33 /Users/matthewsmith/.opencode/bin/opencode"
+    }
+  ],
+  "pending": [
+    {
+      "task": "1037 independent G5",
+      "state": "WAITING_FROZEN_AUTHOR_CANDIDATE",
+      "owner": "nonauthor NOT_LAUNCHED"
+    },
+    {
+      "task": "C05",
+      "state": "WAITING_C04_CUSTODY_G5_AND_CAPACITY",
+      "original_dependencies": [
+        "C01",
+        "C04"
+      ],
+      "owner": "HQ future source-owned implementer"
+    },
+    {
+      "task": "D04 read-only prep",
+      "state": "PREPARATION_RECORDED_NO_IMPLEMENTATION",
+      "owner": "HQ read-only"
+    },
+    {
+      "task": "G2",
+      "state": "HOLD_SOURCE_AUTHORITATIVE_SELECTION_EVALUATION_INACTION_RULE",
+      "source": "2b40cea98df539b183f8d29c5b419e20d6d26294",
+      "owner": "competent V3 actor/prospective semantic source issuer NOT_IDENTIFIED_NOT_ISSUED"
+    },
+    {
+      "task": "1003 E01/J1",
+      "state": "WAITING_QUALIFIED_MOTHER_NADIA_PERFORMANCE_B04_B05_C04_HANDOFF",
+      "original_dependencies": [
+        "B04",
+        "C04",
+        "D03"
+      ],
+      "D04_D05_not_automatic_E01_prerequisites": true
+    },
+    {
+      "task": "1012 D04/D05",
+      "state": "WAITING_USER_OPERATED_BROWSER_HANDOFF_AND_PERFORMED_J1",
+      "owner": "USER_OPERATED_BROWSER_NOT_CODEX",
+      "codex_launch_authorized": false
+    },
+    {
+      "task": "1005 E02/J2",
+      "state": "WAITING_E01_B05_C05_D04",
+      "original_dependencies": [
+        "E01",
+        "B05",
+        "C05",
+        "D04"
+      ]
+    }
+  ],
+  "requires_semantic_adjudication": [
+    "G2 actor alternative evaluation/selection/inaction source rule"
+  ],
+  "routine_user_relay_required": false
+}
