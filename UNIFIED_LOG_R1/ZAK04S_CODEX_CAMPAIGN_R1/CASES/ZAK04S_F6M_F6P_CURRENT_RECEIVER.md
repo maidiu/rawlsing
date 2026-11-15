@@ -60,13 +60,14 @@ This is a real static importing reader. It is not a selected-world receiver and 
 
 - `pre553_source_relations.py#guard_estimand_composition` L794-L834 returns an `OperationGuardReceipt`. It requires exact semantic-equivalence, overlap and composition authority refs; on failure it raises `OUT_OF_SCOPE`. It has no mixture, covered mass or uncovered mass output. This is the I07 composition **permission guard**, not the numeric producer. Its material schema does name `weight_or_mixture_rule_ref` (L90), but that is an authority reference, not a calculation.
 - `rawlsing_next/pre553_analytical_composition.py` uses `coverage_state` at L382/L440/L1105/L1119/L1141, but those values (`RECURSIVE_DEPTH_CONTINUATION`, `DISCOVERY_EXACT_FRONTIER`, `DIRECT_EXACT_SINGLE_QUERY`) are query-frontier reachability states, not target-population uncovered mass. This is a name-collision caution, not an F6M receiver.
-- `git ls-tree -r --name-only HEAD -- "*pre553_heterogeneous_synthesis.py"` has no rows; `git grep` for `covered_subprobability`, `partial_identification`, `native_bundle`, `f6_sidecars` finds no executable producer/consumer. This is a bounded symbol/path negative at HEAD, not global absence.
+- Full enumeration of HEAD (9954 paths) and protected 6a (9709 paths) confirms no `rawlsing_next/pre553_heterogeneous_synthesis.py` under that exact basename; the primary candidate is recovered at `1f1c72f8...` under the worker-return path. `git grep` for `covered_subprobability`, `partial_identification`, `native_bundle`, `f6_sidecars` finds no executable F6M producer/consumer. This is a bounded F6-symbol/path negative, not global absence.
+- The same full enumeration finds the protected N9 candidate `rawlsing_next/pre553_n9_n10w_progressive_candidate.py` (blob `84d404...`) plus five N10E test/proof paths. The earlier wildcard lookup that returned empty is preserved as EV020, a false-negative lookup, not absence evidence. Reading the N9 file shows a synthetic 58-respondent A/B/C/Y chain over N10E/C1/F8 with no F6M import; immediate owner modules also contain no F6 token. Therefore this file is not an F6 numeric reader; deeper transitive paths remain NOT_PROVED.
 
 **Branch-only PDEV01 test port at `aa18b6b85...`:**
 
 - `stage/wp2/wp2.py` imports F6M, calls `synthesize` and `conditional` (L45/L49), and builds a read-only envelope at L94 with `native_bundle` hash plus `conditional` sidecars.
 - It sets `join_state='NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN'`, `installation=False`, terminal `OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD`, model/actor executions zero (L94-L95).
-- Its named N9/N10W candidate has no F6 import or partial-bound token. PDEV01 also reports that substituting the F6P schema into the port’s `native_bundle` expectation yields `KeyError: 'native_bundle'`.
+- The protected N9 candidate is present at HEAD and 6a but is a synthetic 58-respondent A/B/C/Y progressive chain over N10E/C1/F8; it has no F6M or partial-bound import in the file or its immediate owner modules. PDEV01 also reports that substituting the F6P schema into the port’s `native_bundle` expectation yields `KeyError: 'native_bundle'`.
 
 **Finding:** F6M/F6P are a preserved sourcefree test-grade chain. The current protected I07 operation preserves permission semantics only. No selected current N9/SOROK numeric reader is proved.
 
@@ -84,7 +85,7 @@ This is a real static importing reader. It is not a selected-world receiver and 
 - `ZAK04S:EV:R1:004`–`005` predecessor.
 - `ZAK04S:EV:R1:006`–`008` F6P.
 - `ZAK04S:EV:R1:009`–`010` I07 guard.
-- `ZAK04S:EV:R1:011`–`014` PDEV01 WP2/N9.
+- `ZAK04S:EV:R1:011`–`014` PDEV01 WP2; `015`–`017` full enumeration and N9 correction; `020`–`024` failed lookup, N9 read, importer search, protected 6a identity, ZAK00 matrix.
 - `ZAK04S:EV:R1:015`–`017` bounded current search.
 - Prior: `ZAK04:EV:G1A_026:OLD`, `R5:EV:07:BEFORE`, `R5:EV:08:BEFORE`, `R5:EV:35:BEFORE`; `ZAK04:SEARCH:G1A_026`; `R5:SEAM:07/08/33/35`.
 
@@ -93,9 +94,9 @@ This is a real static importing reader. It is not a selected-world receiver and 
 - **F6M numeric producer:** `STRANDED_CANDIDATE` / `SOURCE_LOCATED_NOT_NATIVE_EXECUTION_CONFIRMED`; reusable only as a sourcefree oracle until an owner-qualified diff and first reader exist.
 - **F6P consumer:** `STATIC_READER_PROVED` at sourcefree test grade; not an adopted selected reader.
 - **I07 guard:** `PARTIAL_RELATED_GUARD`; no numerical equivalence.
-- **Current N9/SOROK reader:** `OPEN_PROOF_GAP` at declared search scope, not global loss.
+- **Current N9 source:** present at HEAD and 6a; its F6 numeric role is `NOT_PROVED` at the read file and immediate owner modules. Not global loss.
 - **Next discriminating check:** identify whether any protected N9/N10W producer is *expected* to consume partial-identification bounds; if yes, name its exact input shape and owner. If no, the documented gap is a conscious retirement/absence decision, not a lost implementation.
 
 ## 10. Plain English
 
-Old F6M received independent survey joint tables and a target population. It built only what the sources could support: a covered subprobability, an explicit uncovered mass and sensitivity bounds, refusing a full point when coverage failed. F6P really read that product and checked its conservation and refusals. The earlier producer variant used a cruder whole-share uncovered rule; the repaired variant proportioned the missing mass by planned eligible weight. Today the protected code contains an I07 permission guard that asks whether composition is authorized but never computes the mixture. A branch-only WP2 test port carries the F6M bundle as an unjoined sidecar and its N9 candidate does not read it. Therefore the numerical knowledge is documented and statically consumable at F6P, but current selected-world conservation is not proved; that remains an owner decision, not a build order.
+Old F6M received independent survey joint tables and a target population. It built only what the sources could support: a covered subprobability, an explicit uncovered mass and sensitivity bounds, refusing a full point when coverage failed. F6P really read that product and checked its conservation and refusals. The earlier producer variant used a cruder whole-share uncovered rule; the repaired variant proportioned the missing mass by planned eligible weight. Today the protected code contains an I07 permission guard that asks whether composition is authorized but never computes the mixture. A branch-only WP2 test port carries the F6M bundle as an unjoined sidecar. The protected N9 candidate exists, but it is a synthetic A/B/C/Y chain over N10E/C1/F8 and does not read F6M. Therefore the numerical knowledge is documented and statically consumable at F6P, but current selected-world conservation is not proved; that remains an owner decision, not a build order.

@@ -17,6 +17,7 @@ I was assigned **one bounded historical-to-current output family** — the recov
 - F6M predecessor producer at `1428c2e9...` (blob `fc5e37fa5b2f0eb689593b42d95479d1327cb94c`).
 - F6P consumer `consume_f6m_evidence` at `016870e8...` (blob `8fa992899293f454d7abded36831a4b4a362df8e`).
 - PDEV01 branch comparison `aa18b6b85...` (test-only staged WP2 port and N9 static check).
+- Protected current N9 candidate `rawlsing_next/pre553_n9_n10w_progressive_candidate.py` at HEAD and 6a, blob `84d404147547767be8ecd4b6e1541f5fa3a8c8a2`, plus its N10E test/proof paths; read but not an F6 numeric consumer.
 - Prior inherited IDs preserved: `G1A-FUNC-026`, `ZAK04:EV:G1A_026:OLD`, `ZAK04:EV:SOURCE:G1A_026`, `R5:SEAM:07_F6M_NUMERICAL_MIX`, `R5:SEAM:08_F6P_EVIDENCE_CONSUMER`, `R5:SEAM:09_F6M_VERSUS_N10E`, `R5:SEAM:33_I07_GUARDS_VS_F6M`, `R5:SEAM:35_F6_N9_POLICY_RECEIVER`. This return is additive and does not supersede them.
 
 Declared unsearched historical strata: pre-Vozhd, Vozhd, Verkhovod, Dva, Trii, Chetiri, Long Memory, R35 F6C full A/A0/B comparative, and R28/R29 author execution receipts. They are queue items, not negative findings.
@@ -25,8 +26,8 @@ Declared unsearched historical strata: pre-Vozhd, Vozhd, Verkhovod, Dva, Trii, C
 
 `DEFINED_PIPELINE_REGION`:
 - entry: F6M/F6P product boundary;
-- exit: protected current PYAT `rawlsing_next/pre553_source_relations.py` I07 composition guard at HEAD and the named current N7/N9 candidate path family;
-- IF/ALTERNATE boundary: branch-only PDEV01 staged WP2 test port and branch-only N9/N10W progressive candidate; not protected current production.
+- exit: protected current PYAT `rawlsing_next/pre553_source_relations.py` I07 composition guard at HEAD, the protected N9 candidate `rawlsing_next/pre553_n9_n10w_progressive_candidate.py`, and the named current N7/N9 path family;
+- IF/ALTERNATE boundary: branch-only PDEV01 staged WP2 test port; the protected N9 candidate is in current code but its F6 numeric consumption is NOT_PROVED.
 
 Not in scope: SOROK particular actor behavior, N10E single-source possibility slices except as contrast, production edits, tests, CI, provider changes, protected merges, raw respondent data, or engineering repair.
 
@@ -36,4 +37,4 @@ Available tools: read-only file reads, `git show`, `git ls-tree`, `git grep`, `g
 
 ## Assignment sentence on coverage
 
-Declared matrix for this tract: **1 historical T (G1A-FUNC-026) × 10 applicable domain/locus cells = 10 cells**. Inspected in this round: 6. Not inspected: 4. Current qualifying non-test first readers: **0**. Static named/importing readers: **1 (F6P)**. Branch test-only ports: **1 (PDEV01 WP2)**. Bounded current symbol/path **NOT_FOUND** result: **1 family** (numeric F6M producer/consumer under declared symbols at HEAD). These are small finite counts, not a global denominator.
+Declared matrix for this tract: **1 historical T (G1A-FUNC-026) × 10 applicable domain/locus cells = 10 cells**. Inspected in this round: 6. Not inspected: 4. Current qualifying non-test first readers: **0**. Static named/importing readers: **1 (F6P)**. Branch test-only ports: **1 (PDEV01 WP2)**. Protected N9 source found: **1 file plus five N10E test/proof paths**, with F6 numeric consumption **NOT_PROVED**. Bounded F6-symbol/path NOT_FOUND: **1 family** (numeric F6M producer/consumer under declared F6 symbols at HEAD). These are small finite counts, not a global denominator.
