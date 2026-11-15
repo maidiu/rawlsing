@@ -1,0 +1,81 @@
+{
+  "review_id": "ZAK1057:NEXT:QSM_BATCH_REVIEW",
+  "role": "distinct_nonauthor_documentary_reviewer",
+  "verdict": "REVISE_EXACT_DOCUMENTARY_DEFECT",
+  "hq_cut": "81c7b5a05ebc2d16d5729ab6a8b190ce88fc7507",
+  "frozen_target": {
+    "commit": "ac736ecbf13cb390faf676571a72598d03833847",
+    "root": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R4/"
+  },
+  "protected_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "candidate_cuts": [
+    "ad17076cc95b9383ab3b28879f471026bcba9ff7",
+    "0d90c2470b0b476dcb74ce157b706b10f8392f4f"
+  ],
+  "factual_claims_surviving": [
+    "SelectedQsmRouteResult carries route plus a sibling plain Mapping binding_receipt with binding_root",
+    "the static candidate test asserts equal I03 fact refs while binding_root and qsm_resolution differ; not executed",
+    "RouteBProductionResult, I03ExecutionRequest/QueryExecutionResult and ExactBoundedDiscoveryResult have no QSM field",
+    "Batch JOB_KINDS is QUERY/DISCOVERY only; semantic_input_refs and provenance_refs require ExactRef tuples",
+    "the candidate binding_receipt is a Mapping with a hex binding_root, not an ExactRef",
+    "NativeWorkload has no QSM field; envelope is closed and hash-checked; execute_issued_workload calls execute_route_b_production directly and has no selected-QSM parameter",
+    "no protected QSM symbol/import and no non-test caller of the candidate selected-QSM adapter was found in the inspected scope",
+    "learned_world_composition consumes RouteBProductionResult without QSM; native_workload_binding issues execute_issued_workload without QSM"
+  ],
+  "proposed_requirements_lacking_authority": [
+    "no Batch unit/result slot exists: false as generic capacity; Batch semantic_input_refs and provenance_refs accept any ExactRef and receipts conserve semantic inputs",
+    "Batch needs a unit kind: not established; an exact ref plus an explicit semantic-input convention is sufficient within existing generic slots",
+    "issued workload needs a QSM field or sub-request in the issued envelope: one possible architecture, not source-established necessity",
+    "Batch/result representation must be added to preserve the binding: not established; existing receipt conservation already carries any supplied ExactRef",
+    "typed binding/envelope/slot additions as adopted engineering requirements: no authority"
+  ],
+  "smallest_actual_unresolved_edge": "No existing canonical selected-QSM ExactRef/canonical object and no demonstrated issued-workload carrier/call path that passes it to the selected-QSM gate. Generic Batch slots can carry an ExactRef if one is produced; the concrete representation and carrier are owner design decisions.",
+  "critical_distinctions": {
+    "equal_facts_different_bindings_inherently_defect": false,
+    "no_dedicated_qsm_field_or_job_kind_proves_generic_transport_impossible": false,
+    "plain_mapping_without_ExactRef_automatically_requires_new_Batch_slots": false,
+    "classification": "ABSENT_DEMONSTRATED_WIRING_NOT_MISSING_ENGINE_AND_NOT_VIOLATED_EMPIRICAL_CONTRACT"
+  },
+  "source_checks": {
+    "candidate_reader_blob": "d3c6c4e8a32398a3c4977ed287684bd95d058df3",
+    "candidate_test_blob": "5ef5ae473420dd314256898e44c10cb3b9821741",
+    "earlier_candidate_reader_blob": "07bd2b2c88787e8b2091e652c677864be2ba5244",
+    "route_b_blob": "5b28d6c0c4f9bc032088cf660834ad574b8c8446",
+    "batch_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "issued_workload_blob": "28174766f61a15f7296f575d615462d6410cfcb6",
+    "query_common_blob": "40b1a9c974332db64d10b95d87682fd04be95063",
+    "discovery_exact_blob": "1b82b6df993bf14afa5e78782d988cba6e76b668",
+    "learned_world_blob": "adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+    "carrier_execution_blob": "ee9b3af02bfca9238eb72ea45d94073d47769a07",
+    "native_workload_binding_blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+    "empirical_objects_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+  },
+  "omission_challenge": {
+    "search": "binding_root|binding_receipt|SelectedQsmRouteResult|projection_binding_receipt|semantic_input_refs= at 0d90c247 and 6a5c12f0",
+    "result": "binding_root only in candidate reader/test; projection/repository binding receipts are different generic mappings; no protected semantic_input_refs producer supplies a QSM binding; non-test native_workload_binding caller supplies no QSM",
+    "overturns_return": false,
+    "boundary": "bounded named-symbol/path search; dynamic external callers not excluded"
+  },
+  "proof_ceilings": [
+    "S1 static documentary only",
+    "candidate test read not executed",
+    "no runtime, adoption, native/scientific/source issuance, security defect or missing-engine claim",
+    "no implementation authority and no adapter design",
+    "prior I04 constructor investigation not reopened"
+  ],
+  "runtime": {
+    "model_id_exposed": "opencode-go/deepseek-v4.1-flash",
+    "claimed_configuration": "V4.1-Flash1017 MAX",
+    "max_setting_actually_active": "UNKNOWN",
+    "provider_change": false,
+    "subagents_used": false,
+    "token_cache_cost_retries": "UNKNOWN",
+    "start_utc": "2026-11-15T07:12:09Z"
+  },
+  "publication": {
+    "branch": "docs/zak1057-qsm-batch-review-20261115-r1",
+    "base": "81c7b5a05ebc2d16d5729ab6a8b190ce88fc7507",
+    "receipt": "COMMIT_RECEIPT.txt",
+    "scope": "documentary branch only; no author file, prior return, central index or product code edited"
+  }
+}
