@@ -43,7 +43,7 @@ C11 can carry a `StructuralAdmissionReplayBinding` with `state` `PRESENT`/`NOT_A
 
 ## 6. First reader — actual result
 
-**No non-test production importer was found.** A whole-tree search for `evaluate_structural_empirical_admission(` returned the definition, `rawlsing_next/tests/c1_at14_at16_fixture.py`, `test_pre553_analytical_state_and_route.py`, `test_pre553_diagnostics.py`, `test_pre553_structural_admission.py` and `test_pre553_whole_machine_hostile_acceptance.py`. `AdmissionEvaluation` is referenced by `pre553_analytical_state_and_route.RouteObligation.from_structural_admission` only as the type from which to derive a route obligation, and by `objective_consumer_bounded_evidence.OC02` as a named current seam. Neither calls the evaluator. `ZAK03S:EV103;EV114;EV115`.
+**No direct non-test invocation of I04 was found, but a real receipt consumer exists.** A whole-tree search for `evaluate_structural_empirical_admission(` returned the definition, `rawlsing_next/tests/c1_at14_at16_fixture.py`, `test_pre553_analytical_state_and_route.py`, `test_pre553_diagnostics.py`, `test_pre553_structural_admission.py` and `test_pre553_whole_machine_hostile_acceptance.py`. Separately, `pre553_analytical_state_and_route.RouteObligation.from_structural_admission` is a real non-test static consumer of an `AdmissionEvaluation` and its canonical `StructuralEmpiricalAdmission` receipt: it requires exact owner types, reads every authoritative route fact from the receipt, validates decision/reason/target-use/authority/fact refs, and derives route facts. It does not invoke I04; its own callers are tests only. `objective_consumer_bounded_evidence.OC02` names I04 as a current seam but does not invoke it. `ZAK03S:EV103;EV114;EV115`.
 
 The actual issued-workload reader `pre553_issued_workload.execute_issued_workload` (blob `28174766…`) admits a `NativeWorkload`, calls `execute_route_b_production`, executes `CarrierNeutralResearchExecutor.execute_i03`/`execute_i05`, and runs `BatchExecutionRunner`. It does not import or call I04. Batch receipts record unit kind, ref, state and result refs, not a structural admission. `ZAK03S:EV112;EV113`.
 
@@ -64,7 +64,7 @@ No protected code derives a `StructuralAdmissionRule` from an F03/QSM row. The r
 
 ## 9. Dispositions and future utility
 
-**Disposition:** `OPEN_PROOF_GAP` at S1 source-evidence grade. The I04 rule schema and C11 carrier are reusable structural-admission capital. The missing piece is a selected-rule/version producer and a real non-test first reader. This is not a recommendation to build; it is a precise owner-held question.
+**Disposition:** `OPEN_PROOF_GAP` at S1 source-evidence grade. The I04 rule schema and C11 carrier are reusable structural-admission capital. The missing piece is a selected-rule/version producer and a direct non-test I04 invoker; one non-test receipt consumer exists, but its own callers are tests. This is not a recommendation to build; it is a precise owner-held question.
 
 **Smallest discriminating check:** hold the source fact and target-use permission fixed; change `structural_semantic_identity_refs`/`focal_structural_proposition_ref`; observe whether I04 changes state. Then check whether any rule is bound to a selected historical QSM row/version. A positive answer would narrow the gap; a negative confirms a generic policy seam.
 

@@ -1,5 +1,7 @@
 # HUMAN_STORY.md — What the old relation rule knew, and what the modern machine actually authorizes
 
+**Boundary:** every modern statement below is about protected cut `6a5c12f04323d74001f9632063ec907f4fc4468e` and the explicitly named candidates. It is not a claim about the active PYAT machine globally, nor about unsearched branches or future deployments.
+
 ## The short version
 
 The old F03 machine answered a narrow but consequential question: **may this exact source-specific question be used as directional relation evidence, only as context, not at all, or under a special certified exception?** It read a selected QSM authority row keyed by source family, wave, country, question and variable, then copied structural coordinates and set eligibility, pressure and review states. The answer was not a statistical result. It was a **permission-and-meaning decision** about what a later empirical bridge was allowed to represent.
@@ -16,7 +18,7 @@ So the honest modern answer is: **the structural-admission vocabulary exists, bu
 
 **Old (illustrative, not a sampled respondent record):** a V550 bridge row for source family GSS, wave 2010, country US, question `QX`, variable `Y` enters F03. The selected QSM row says the relation is directional. F03 copies the six structural coordinates, records polarity/reversal, marks `RELATION_EVIDENCE` certified and sets pressure eligibility. If the row instead says context-only, F03 clears the coordinates but retains contextual coverage. If it says administrative or blocked, F03 clears the coordinates, denies pressure and marks review. If the active registry has no matching row but a separate QUC row is certified, carries `RELATION_EVIDENCE`, is currently directional-eligible, is allowed as V551 relation evidence and has `structural_mapping_status=COMPLETE`, F03 preserves that qualified prior evidence. Change any one of those five conditions and the preservation branch fails.
 
-**Modern:** the same source responses can become C11 `RespondentEvent` objects, then an I03 `EmpiricalFact` such as “the observed RAW share of `Y=1` in this risk set is …”. That fact may be true and useful. I03 does not thereby say the question is a directional structural relation. To get structural meaning, a caller must supply an I04 `StructuralAdmissionRule` with an exact structural target and a `TARGET_USE_PERMISSION` binding; I04 then returns `ADMITTED` or a typed nonpositive state. But no protected production path currently calls I04, and no protected code binds the rule to the historical QSM row.
+**Modern:** the same source responses can become C11 `RespondentEvent` objects, then an I03 `EmpiricalFact` such as “the observed RAW share of `Y=1` in this risk set is …”. That fact may be true and useful. I03 does not thereby say the question is a directional structural relation. To get structural meaning, a caller must supply an I04 `StructuralAdmissionRule` with an exact structural target and a `TARGET_USE_PERMISSION` binding; I04 then returns `ADMITTED` or a typed nonpositive state. No protected path directly invokes I04, and no protected code binds the rule to the historical QSM row. A real non-test static receiver, `RouteObligation.from_structural_admission`, consumes the canonical admission receipt and derives route facts, but its own callers are tests only.
 
 ## Why the target-use flag is not the old rule
 
@@ -39,7 +41,7 @@ The physical source path is explicit and governed: decoded cells → `GovernedC1
 
 ## What is not proved
 
-No selected QSM row/version is bound to a modern rule. No non-test production importer invokes I04. No C11 `PRESENT` binding is proved to come from an `ADMITTED` evaluation. No I05/Batch receipt is proved to carry F03 structural meaning. The historical selected file and execution receipt remain unknown. These are open proof gaps, not a claim that the old function was globally lost.
+No selected QSM row/version is bound to a modern rule. No direct non-test invocation of I04 is proved; a real non-test receipt consumer exists, but its own callers are tests. No C11 `PRESENT` binding is proved to come from an `ADMITTED` evaluation. No I05/Batch receipt is proved to carry F03 structural meaning. The historical selected file and execution receipt remain unknown. These are open proof gaps, not a claim that the old function was globally lost.
 
 ## Case index
 
