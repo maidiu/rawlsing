@@ -1,0 +1,70 @@
+{
+  "schema": "SOROK_PROGRAMMA_DELTA@1",
+  "issue": "C05",
+  "job": "sorok-c05-actor-view-temporal-challenge-20261115-r3",
+  "title": "C05 hostile actor-view and temporal integrity court",
+  "terminal_disposition": "REVISE_EXACT_DEFECT",
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "PASS_SCOPED_SOURCEFREE_TEST_ONLY__NATIVE_PROTECTED_HELD",
+  "source_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+  "final_report_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "prior_review_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "added_to_product": [],
+  "prior_mechanical_acceptance_preserved": [
+    "caller-authorized illustrative relation record/custody",
+    "repeated depth-2 promotion refusal-before-write",
+    "normal later event/context consumer",
+    "change/head sever/restore and cold results",
+    "C01/C04/P2 inherited suites and boundaries"
+  ],
+  "new_actual_red": [
+    {
+      "id": "C05_ACTOR_FACING_HIDDEN_RELATION_CARDINALITY",
+      "challenge": 1,
+      "finding": "actor-facing withheld_relation_count changes 0->1 for an unexposed viewer when a hidden relation is added; all other compared actor-facing fields equal",
+      "first_consumer": "continuing_relations.read_relation_history / read_actor_relative_context",
+      "smallest_correction": "remove or controller-segregate the count from actor-facing documents; keep status/custody/relations"
+    },
+    {
+      "id": "C05_LATER_SAME_CLOCK_RELATION_IN_PRIOR_EVENT_CONTEXT",
+      "challenge": 2,
+      "finding": "real event at clock 228 is qualified by later same-clock ENTER/PROMOTE; event doc/access unchanged; later-clock change excluded; no retrospective/within-clock label",
+      "first_consumer": "continuing_relations.read_actor_relative_context",
+      "smallest_correction": "label relation context retrospective as-of event clock; event-time cutoff requires source-qualified ordering HOLD_SOURCE_AUTHORITY"
+    }
+  ],
+  "actual_pass": [
+    "same event ID/hash/clock in controlled Challenge 1 reads",
+    "genuinely exposed relation positive for the nonparticipant viewer",
+    "change/head sever custody for exposed viewer and no custody disclosure for unexposed viewer",
+    "event document/access unchanged in Challenge 2; later-clock change excluded; cold exact",
+    "event access NOT_PERCEIVED distinct from relation QUALIFIED in Challenge 3",
+    "two simultaneous relations present in plural output; first-sorted singular summary is not a salience rule",
+    "private-state NOT_READ and cold exactness in all three challenges"
+  ],
+  "static_risks": [
+    "context_effect.basis includes C12_EVENT_PERCEPTION while event_access is NOT_PERCEIVED; no product downstream consumer found; projection ambiguity only",
+    "no controller-only withheld-count API/separation in the module",
+    "no downstream product consumer of C12_EVENT_PERCEPTION/relation_aware/context_effect outside the C05 module/tests/probes; the next actor/person consumer is not built",
+    "C12 world-event and relation-episode sequences are separate; relation changes are caller-appended C12 episodes, not P2 owner operations"
+  ],
+  "owner_decisions": [
+    "C05 read/projection owner: bounded actor-facing projection correction",
+    "original C05/CAN/ADP issuer: true event-time actor knowledge/within-clock ordering HOLD_SOURCE_AUTHORITY",
+    "no native/scientific/actor/human/protected acceptance"
+  ],
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "not_released": [
+    "native C4/ADP-015 relation authority and actor-qualified knowledge",
+    "CAN/V3 scientific rule, event-time perception science or psychology",
+    "G2 selection, generated language, complete J1/Nadia response",
+    "J2, D04/D05, durable acquisition",
+    "human/scientific/source-rights receiving and protected merge",
+    "#939 fleet, PYAT/Browser/SEAM, new campaign/duel",
+    "concurrency/fork and whole C05 person life"
+  ],
+  "next_gate": "HQ may route ONE bounded source correction to the original author and return the frozen candidate to this same nonauthor for focused rereceiving; no ongoing duel or automatic next job",
+  "stop": true
+}

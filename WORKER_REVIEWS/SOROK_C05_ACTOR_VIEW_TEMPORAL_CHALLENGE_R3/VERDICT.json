@@ -1,0 +1,106 @@
+{
+  "schema": "SOROK_C05_R3_ACTOR_VIEW_TEMPORAL_VERDICT@1",
+  "issue": "C05",
+  "job": "sorok-c05-actor-view-temporal-challenge-20261115-r3",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "same_independent_C05_nonauthor",
+  "independent_author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "branch": "codex/sorok-c05-actor-view-temporal-challenge-20261115-r3",
+  "base_prior_review": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "accepted_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "final_author_report": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "governing_readback": "GOVERNING_READBACK.md",
+  "product_pins": {
+    "continuing_relations.py": {
+      "blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+      "sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2"
+    },
+    "supporting_actor.py": {
+      "blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92",
+      "unchanged": true
+    }
+  },
+  "overall_disposition": "REVISE_EXACT_DEFECT",
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "PASS_SCOPED_SOURCEFREE_TEST_ONLY__NATIVE_PROTECTED_HELD",
+  "prior_mechanical_acceptance": {
+    "review": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+    "status": "PRESERVED_NOT_REOPENED",
+    "scope": "caller-authorized illustrative relation record/custody, repeated-promotion refusal-before-write, normal later consumer, cold/sever controls",
+    "new_contrary_witness_at_actor_view_boundary": true
+  },
+  "challenges": {
+    "challenge1_hidden_cardinality": {
+      "actual_red": true,
+      "finding": "the same event/reader changes actor-facing withheld_relation_count 0->1 when an unexposed relation is added; all other compared actor-facing fields are equal",
+      "positive_pass": "genuinely exposed P/R relation is QUALIFIED for Q; Q still does not perceive the event; unexposed hidden relation stays withheld",
+      "sever_restore": "exposed viewer gets custody HOLD; unexposed viewer gets no custody disclosure; restore exact",
+      "cold": "exact; hidden count persists",
+      "static_risk": "no controller-only separation exists; the count is in the public actor-facing document",
+      "owner_decision": "remove/segregate actor-facing withheld count; keep status/custody/relations; no new ledger",
+      "report": "evidence/c05_challenge1_report.json",
+      "report_sha256": "54d264fab1687b7218e57f446e8a0eb02c9be7a35aca48c9e3c04bcfe09f7c34"
+    },
+    "challenge2_same_clock_temporal": {
+      "actual_red": true,
+      "finding": "an ENTER/PROMOTE appended after a real event at the same logical clock changes that event's relation context from HOLD to QUALIFIED/depth2; the event document/hash/access are unchanged",
+      "pass_controls": "event doc/access unchanged; later-clock CHANGE excluded; cold exact; event/relation sequence spaces separate; owner operations contain events not relation writes",
+      "static_risk": "read_actor_relative_context uses event.clock only; no operation/seq cutoff; output is not labeled retrospective vs event-time",
+      "owner_decision": "label retrospective as-of event clock; event-time cutoff requires source-qualified within-clock ordering/receipt (HOLD_SOURCE_AUTHORITY); do not rewrite history",
+      "report": "evidence/c05_challenge2_report.json",
+      "report_sha256": "3e80a79d965a5444f4271d833b8d517abd58f789edb2b4b6b50613428c829643",
+      "order_trace": "evidence/c12_order_trace.txt"
+    },
+    "challenge3_relation_vs_perception": {
+      "actual_red": false,
+      "actual_pass": true,
+      "static_projection_risk": true,
+      "finding": "event_access.status NOT_PERCEIVED and relation_scope QUALIFIED are correctly distinct; the public context_effect.basis still contains C12_EVENT_PERCEPTION even though this viewer did not perceive the event",
+      "pass": "event access NOT_PERCEIVED is distinct from relation QUALIFIED; relation awareness preserved; two simultaneous relations present; first-sorted singular summary is not a salience rule; cold/private exact",
+      "static_risk": "no product downstream consumer of C12_EVENT_PERCEPTION/relation_aware/context_effect outside the C05 module and tests/probes; first consumer is the public reader. The basis is an actor-facing projection ambiguity, not an executed downstream misinference.",
+      "owner_decision": "make context_effect viewer-specific (event_perception from own access; C12_EVENT_PERCEPTION only when PERCEIVED); keep relation_aware separate; no salience selector",
+      "report": "evidence/c05_challenge3_report.json",
+      "report_sha256": "556a226d4daaf1bab0fb0399ab3d5b3ff7074d45e889d6dd52ef3e70a98ac89b"
+    }
+  },
+  "actual_first_consumer": {
+    "reader": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py:read_relation_history / read_actor_relative_context",
+    "downstream_product_consumers_found": false,
+    "downstream_search": "evidence/downstream_consumers.txt",
+    "note": "no D02/D03/J2/persona/UI/model consumer imports these fields in this checkout; the next actor/person consumer is not built"
+  },
+  "commands": {
+    "challenge1": {"script": "newprobes/c05_challenge1_leakage.py", "exit": 0, "real_seconds": 13.24, "max_rss_bytes": 50917376},
+    "challenge2": {"script": "newprobes/c05_challenge2_temporal.py", "exit": 0, "real_seconds": 11.86, "max_rss_bytes": 45944832},
+    "challenge3": {"script": "newprobes/c05_challenge3_relation_perception.py", "exit": 0, "real_seconds": 5.36, "max_rss_bytes": 45039616}
+  },
+  "challenge_summary": "evidence/challenge_summary.json",
+  "harness_corrections": "evidence/HARNESS_CORRECTIONS.md",
+  "smallest_admissible_correction": {
+    "scope": "bounded C05 read-side/projection correction; no new ledger, psychology or owner receipt",
+    "items": [
+      "remove or controller-segregate withheld_relation_count from actor-facing read_relation_history/read_actor_relative_context",
+      "make context_effect viewer-specific: event_perception from own event_access; C12_EVENT_PERCEPTION basis only when PERCEIVED; keep relation_aware separate",
+      "label relation context retrospective as-of event clock, or supply a source-qualified within-clock cutoff; do not use it as prior event cause"
+    ],
+    "event_time_actor_knowledge": "HOLD_SOURCE_AUTHORITY for original C05/CAN/ADP issuer; no fabricated psychology"
+  },
+  "scope": {
+    "accepted_for_this_review": "sourcefree hostile actor-view/temporal test only",
+    "prior_mechanical_custody": "preserved at its prior fixture boundary",
+    "original_full_c05_actor_qualification": "UNPROVED",
+    "native_c4_adp015_actor_knowledge": "HELD",
+    "scientific_psychology_or_can_v3_rule": "HELD",
+    "protected_merge_or_authority": "HELD",
+    "b05": "NOT TOUCHED",
+    "protected_merges_not_rebuilt": [
+      "P5 #775", "P6 #779", "MIII #891", "MII #905", "MI #907"
+    ]
+  },
+  "terminal": "STOP",
+  "next_route": "HQ may route ONE bounded source correction to the original author and return the frozen candidate to this nonauthor for focused rereceiving; no ongoing duel or automatic cycle"
+}

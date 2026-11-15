@@ -1,0 +1,52 @@
+{
+  "schema": "SOROK_C05_R3_RECEIPTS@1",
+  "source_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+  "final_report": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+  "prior_review": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "challenge1": {
+    "report": "evidence/c05_challenge1_report.json",
+    "sha256": "54d264fab1687b7218e57f446e8a0eb02c9be7a35aca48c9e3c04bcfe09f7c34",
+    "actual_red": "hidden relation changes actor-facing withheld_relation_count 0->1 with same event and all other compared fields equal",
+    "positive": "visible relation exposed to Q is QUALIFIED; Q still does not perceive the event",
+    "sever_restore": "exposed viewer custody HOLD; unexposed viewer no custody disclosure; restore exact",
+    "cold_exact": true,
+    "event_id": "TEST_ONLY_BP4_WORLD_EVT_898ae8cb9207116abba705ac250853781f9c070cd66c6c8a41c2c6750faef25d"
+  },
+  "challenge2": {
+    "report": "evidence/c05_challenge2_report.json",
+    "sha256": "3e80a79d965a5444f4271d833b8d517abd58f789edb2b4b6b50613428c829643",
+    "actual_red": "same-clock ENTER/PROMOTE after event 228 enters event 228 relation context; event doc/access unchanged",
+    "pass_controls": "later-clock 234 CHANGE excluded; cold exact; event/relation sequence spaces separate; owner operations contain events not relation writes",
+    "event1": "TEST_ONLY_BP4_WORLD_EVT_de61f0fe8ebf9eb0642225d542fd0b1a0b13b9e4d0b9244742745e74aa74cbc8",
+    "event2": "TEST_ONLY_BP4_WORLD_EVT_bdd86949272e018d0c4fc882cb60e2932fd153726f5d795201056fe0a89d2b44",
+    "witness_reproduced": true,
+    "cold_exact": true,
+    "owner_ops": ["r3:ch2:event1", "r3:ch2:event2"],
+    "relation_ops_absent_from_owner": ["r3:ch2:enter", "r3:ch2:promote", "r3:ch2:change"]
+  },
+  "challenge3": {
+    "report": "evidence/c05_challenge3_report.json",
+    "sha256": "556a226d4daaf1bab0fb0399ab3d5b3ff7074d45e889d6dd52ef3e70a98ac89b",
+    "event_access": "NOT_PERCEIVED",
+    "relation_scope": "QUALIFIED",
+    "actual_red": false,
+    "actual_pass": "event_access NOT_PERCEIVED is distinct from relation QUALIFIED; two relations are present; first-sorted singular summary is not a salience rule",
+    "static_projection_risk": "context_effect.basis includes C12_EVENT_PERCEPTION while event_access is NOT_PERCEIVED; no product downstream consumer was found",
+    "plural_output": ["r3-known-two", "r3-known-one"],
+    "summary_first_sorted_key": true,
+    "cold_exact": true,
+    "downstream_consumers_found": false
+  },
+  "actual_first_consumer": "continuing_relations.read_relation_history / read_actor_relative_context",
+  "downstream_consumers": "evidence/downstream_consumers.txt",
+  "challenge_summary": "evidence/challenge_summary.json",
+  "harness_corrections": "evidence/HARNESS_CORRECTIONS.md",
+  "three_verdicts": {
+    "engineering": "REVISE_EXACT_DEFECT",
+    "scientific": "HELD",
+    "authority": "PASS_SCOPED_SOURCEFREE_TEST_ONLY__NATIVE_PROTECTED_HELD"
+  },
+  "prior_mechanical_acceptance": "PRESERVED_NOT_REOPENED",
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "terminal": "STOP"
+}
