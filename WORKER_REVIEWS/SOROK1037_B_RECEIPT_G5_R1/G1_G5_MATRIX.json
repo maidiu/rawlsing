@@ -1,0 +1,106 @@
+{
+  "schema": "SOROK1037_G5_MATRIX@1",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "scope": "B01_B05_SOURCEFREE_receipt_repair_at_code_c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+  "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+  "reviewer_independence": "fresh nonauthor; not original material author or repair author ses_e22146cc1ffeLXXJyO5aDi0REe",
+  "probed_code_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+  "branch": "codex/sorok1037-b-receipt-g5-20261115-r1",
+  "parent_sha": "fb061dec16c8386b9caa1b5ea75ec7645aff88a7",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "exact probed code c7018020f002bb7f509a83fba0bf2a6a5955cc00 on codex/sorok1037-b-receipt-g5-20261115-r1",
+        "parent fb061dec16c8386b9caa1b5ea75ec7645aff88a7",
+        "only B04 material_operations.py and B05 rolling_reproduction.py product files changed",
+        "B04 before blob 7901b4fe80248c8ecb731440464454c799fa73b8 equals #996 fb061dec and c724d1a8",
+        "B05 before blob 9500d80e85fba969f8e5fb8f3d233fc11f39c9d0 equals #996 fb061dec and c724d1a8",
+        "B04 after blob 3c1d326bfa2f8a78c92a84e5cc5e039e04376441; sha256 114f38e5303815d890188809309de56f2ff001d8fc8adb02243a6b1fc83d241a",
+        "B05 after blob b944b8f0b6e0d700e85141256df01cdaef8d59e2; sha256 c22e1b3dd7de69d5bf7afa4b1309c0be6c9e72598b18a4a9f2e15c2260709778",
+        "exact #1027 witness blob 7cd5a23044426961d6f33e13b1ccf44f54916f81 and cold blob 6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab byte-identical and unchanged",
+        "exclusive reviewer root WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/ and checkout-local scratch",
+        "module paths resolve only inside this checkout; no hot imports from another checkout",
+        "product unchanged after all runs; git worktree clean except reviewer artifacts"
+      ],
+      "limits": [
+        "sourcefree fixtures only; no native source or actor/science rights",
+        "before-state RED is author/#1027 evidence, not re-executed by product mutation"
+      ]
+    },
+    "G2_build_actual_first_consumers": {
+      "status": "PASS_NORMAL_READERS_AND_COLD",
+      "evidence": [
+        "exact #1027 cold probe: exit 0; ok=true; warm_ok=true; child_exit=0",
+        "normal two purchases h1/h2 and one rent; parent cash 20; household cash 43; market quantity 0; two ownership rows",
+        "fresh-process cold reopen reads both purchases and rent; earlier purchase stale-refused on replay; latest purchase REPLAY; rent REPLAY; second same-period rent B05_RENT_ALREADY_RECORDED; head unchanged",
+        "author provenance tests: 6 passed",
+        "inherited original 43 B01-B05 tests: 43 passed",
+        "selected C03/C04 normal consumers: 3 passed, product read-only",
+        "genuine B04 purchase and B05 rent read in own probe; B05 historical h1 historical=true after h2"
+      ],
+      "limits": [
+        "no full P6/MII/J1 suite",
+        "timings under concurrent host load"
+      ]
+    },
+    "G3_independent_hostile_falsification": {
+      "status": "FAIL_REVISE_EXACT_DEFECT",
+      "passing_attacks": [
+        "exact #1027 witness: 63/63 raw checks; both foreign-root defect rows accepted=false with typed refusals",
+        "B05 foreign nested root, foreign branch, foreign body root, wrong episode actor, exchanged nested receipt operation, foreign/incomplete period, wrong rent, same-period second receipt all refused",
+        "B05 append-only forgeries did not move household cash",
+        "B05 genuine receipt is fail-closed while a forged same-period sibling exists (availability loss, not false accept)",
+        "B04 foreign nested root/branch with coherent owned row refused PURCHASE_READ_PROVENANCE_MISMATCH",
+        "B04 exchanged nested receipt operation refused",
+        "B04 ownership row removed then exact restored",
+        "B04 chain-extending rehashed purchase with coherent owned row refused PURCHASE_READ_PARENT_MISMATCH by actual C02 parent-material owner history; stored parent cash and market source unchanged",
+        "B04 forged receipt hash was self-consistent before refusal; refusal did not trust local hash alone"
+      ],
+      "defects": [
+        {
+          "id": "SOROK1037-RED-B05-SOLE-REHASHED-RENT",
+          "first_reader": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:read_household_obligation",
+          "input": "one appended P2_HOUSEHOLD_RENT episode via public session.product.store.append_episode; correct current root/branch/actor A/operation, completed period:2026-h1 with no prior actual rent, current monthly rent 12, current household/dwelling sources, cash before 67 / after 55, coherent before/after material hashes",
+          "expected": "typed refusal because no actual apply_household_rent writer operation/debit exists",
+          "actual": "READ; historical=false; receipt_status=ADMITTED; household_cash=55 unchanged",
+          "classification": "append-only false evidence/currentness acceptance; NOT a duplicate debit",
+          "cause": "reader enforces root/branch/actor/period/source/rent/arithmetic and uniqueness among appended receipts, but not correspondence to the actual writer debit; a sole fabricated receipt is unique and self-consistent",
+          "in_scope": true,
+          "in_scope_basis": "#1037 requires proof that it is the one actual period rent operation and exact operation identity, explicitly not merely self-consistent hashes"
+        }
+      ],
+      "repair": "NONE; product read-only by commission"
+    },
+    "G4_boundaries_preservation_cold_restore": {
+      "status": "PARTIAL_PASS_PRESERVATION__SCOPED_OPERATION_BOUNDARY_FAILS",
+      "preserved": [
+        "B04/B05 writers, receipt schemas, locks and P2 material facts unchanged",
+        "C02/C03/C04/P6/D03 and protected PRE-MAIN unchanged",
+        "no new scheduler/ledger/currency conversion",
+        "no psychology, motive, desire or volition inference",
+        "historical genuine h1 rent reads historical=true after later h2 rent; h2 historical=false",
+        "genuine h1 after lawful dwelling change refused B05_RENT_SOURCE_STALE by pre-existing source binding; exact restore returns identical baseline",
+        "changed/restored B04 ownership exact; #1027 witness market/household/dwelling restores exact",
+        "fresh-process cold unchanged"
+      ],
+      "failed_boundary": "required actual-rent operation authenticity is not established for a sole appended receipt",
+      "limits": [
+        "B04 fully privileged world rewrite residual is outside observed append-only threat model and was not used as a broad rewrite",
+        "B04 forged sibling causes fail-closed availability loss for genuine reads; not a false accept",
+        "host contention affects elapsed/RSS; not an isolated benchmark",
+        "provider tokens/USD and checkpoint/org/quota UNOBSERVED"
+      ]
+    },
+    "G5_independent_nonauthor_receiving": {
+      "status": "REVISE_EXACT_DEFECT",
+      "acceptance": "NOT_ACCEPTED",
+      "accept_scoped_target_not_earned": "ACCEPT_SCOPED@B01_B05_SOURCEFREE_c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "basis": "one exact reproducible append-only in-scope B05 false accept using existing public reader",
+      "owner_repair": "bind ADMITTED rent receipt to the actual writer debit in existing durable C12 checkpoint/state history (or return a narrow owner ABI note); reject a sole appended receipt with no actual debit transition",
+      "protected_or_scientific_authority": "NONE",
+      "terminal": "STOP"
+    }
+  }
+}

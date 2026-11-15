@@ -1,0 +1,53 @@
+{
+  "schema": "SOROK1037_G5_PROGRAMMA_DELTA@1",
+  "issue": 1037,
+  "verdict": "REVISE_EXACT_DEFECT",
+  "source_free_only": true,
+  "probed_code_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+  "product_change_by_reviewer": "NONE",
+  "findings": [
+    {
+      "disposition": "CLOSED_AT_PROBED_CANDIDATE",
+      "defect": "G5-B04-RECEIPT-FOREIGN-ROOT",
+      "effect": "forged foreign nested root/branch purchase with coherent ownership row now refuses PURCHASE_READ_PROVENANCE_MISMATCH; genuine purchase reads warm and cold"
+    },
+    {
+      "disposition": "CLOSED_AT_PROBED_CANDIDATE",
+      "defect": "G5-B05-RENT-RECEIPT-FOREIGN-ROOT",
+      "effect": "foreign nested root/branch rent refuses B05_RENT_PROVENANCE_MISMATCH; same-period second receipt refuses B05_RENT_OPERATION_NOT_UNIQUE; no second debit"
+    },
+    {
+      "disposition": "OPEN_REPRODUCIBLE_IN_SCOPE",
+      "defect": "SOROK1037-RED-B05-SOLE-REHASHED-RENT",
+      "first_reader": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:read_household_obligation",
+      "effect": "one fully rehashed ADMITTED rent receipt for a completed period with no prior actual rent, correct current root/branch/actor/operation and coherent sources/cash/hashes, appended only through session.product.store.append_episode, returns READ with historical=false while household cash is unchanged",
+      "classification": "append-only false evidence/currentness acceptance; NOT a duplicate debit",
+      "in_scope": true,
+      "basis": "#1037 requires proof that the receipt is the one actual period rent operation and exact operation identity, not merely self-consistent hashes or uniqueness among appended receipts"
+    },
+    {
+      "disposition": "OUT_OF_OBSERVED_THREAT_MODEL",
+      "defect": "B04 fully privileged rewrite of parent material plus world/material facts",
+      "effect": "disclosed by author as a theoretical residual; not reproduced with a broad privileged rewrite and not used to condemn B04; B04 append-only chain forgery fails closed via C02 parent-material history"
+    }
+  ],
+  "owner_repair": "B05 owner: bind ADMITTED rent receipts to the actual apply_household_rent debit in existing durable C12 checkpoint/state history (A cash before/after, after household material hash, clock and operation); refuse B05_RENT_OPERATION_UNPROVEN or equivalent when no actual debit transition exists. A sole appended receipt must refuse. Use existing checkpoint/store evidence; do not add a new ledger by default and do not weaken existing checks.",
+  "evidence": {
+    "receiving": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/00_RECEIVING.md",
+    "verdict": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/VERDICT.json",
+    "matrix": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/G1_G5_MATRIX.json",
+    "own_probe": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/g5_review_probe.py",
+    "own_report": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/evidence/g5_review_probe_report.json",
+    "exact_1027_report": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/evidence/g5_probe_1027_report.json",
+    "cold_report": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/evidence/g5_cold_probe_1027_report.json"
+  },
+  "nonclaims": [
+    "not native science or human/actor authority",
+    "no motive, desire or volition result",
+    "no protected PRE-MAIN merge",
+    "no new ledger, scheduler, currency conversion or writer change",
+    "no full P6/MII/J1 campaign",
+    "no isolated performance or provider cost claim"
+  ],
+  "terminal": "STOP"
+}

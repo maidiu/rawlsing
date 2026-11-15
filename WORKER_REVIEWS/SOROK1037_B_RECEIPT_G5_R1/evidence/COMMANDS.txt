@@ -1,0 +1,52 @@
+SOROK #1037 independent G5 receiving — exact commands
+Checkout: /Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing
+Probed code: c7018020f002bb7f509a83fba0bf2a6a5955cc00
+Branch: codex/sorok1037-b-receipt-g5-20261115-r1
+
+Environment for every command:
+  export TMPDIR="$PWD/.local-logs/sorok1037-b-receipt-g5/tmp"
+  export PYTHONDONTWRITEBYTECODE=1
+  PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+
+1. Exact #1027 witness (unmodified asset; copied byte-identically into own root):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/g5_probe_1027.py
+   -> literal exit 1; 63/63 checks pass; both defects[].accepted=false
+
+2. Exact #1027 cold probe (unmodified asset):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/g5_cold_probe_1027.py
+   -> exit 0; ok=true; warm_ok=true; child_exit=0
+
+3. Author provenance tests:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py
+   -> exit 0; 6 passed
+
+4. Inherited original B01-B05 43 tests:
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_interleave_retry.py
+   -> exit 0; 43 passed
+
+5. Selected read-only C03/C04 consumer regression:
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py
+   -> exit 0; 3 passed
+
+6. Own reviewer source-bound forgery probe:
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1/g5_review_probe.py
+   -> literal exit 2 (own oracle: 2 = replicated in-scope residual);
+      33/34 checks pass; the one failure is the B05 sole rehashed receipt READ.
+
+No /tmp redirect; checkout-local scratch only. No product write, no hosted CI.
