@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T09:12:15.375097+00:00",
+  "updated_utc": "2026-11-15T09:17:59.838200+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -154,10 +154,11 @@
         "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b05-writer-proof-repair-20261115-r2",
         "launch_is_not_completion": true
       },
-      "state": "RUNNING",
+      "state": "AUTHOR_R2_CANDIDATE_FROZEN_PENDING_SAME_G5",
       "prior_review_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
       "permitted_correction_number": 1,
-      "future_reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe"
+      "future_reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "result_sha": "270eb29cd4487b6865b61adc9d671952554d425d"
     },
     {
       "issue": "C05",
@@ -182,6 +183,31 @@
       "state": "RUNNING",
       "nonauthor": true,
       "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1"
+    },
+    {
+      "issue": 1037,
+      "role": "same nonauthor final focused R2 receiving",
+      "name": "sorok1037-b05-focused-rereceiving-r2",
+      "base": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "out": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing",
+      "branch": "codex/sorok1037-focused-g5-r2-20261115-r1",
+      "session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "owner": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "launch": {
+        "job_id": "sorok1037-b05-focused-rereceiving-20261115-r2",
+        "child_pid": 97148,
+        "supervisor_pid": 97147,
+        "observer_pid": 97149,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b05-focused-rereceiving-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "RUNNING",
+      "original_adverse_review": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+      "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "same_nonauthor": true,
+      "additional_author_corrections_permitted": 0
     }
   ],
   "runtime_verification": [
@@ -280,9 +306,10 @@
     },
     {
       "task": "1037 focused same-nonauthor R2 readback",
-      "state": "WAITING_FROZEN_R2_CANDIDATE",
+      "state": "RUNNING_FINAL_FOCUSED_RECEIVING",
       "owner_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
-      "next_action": "Only after actual minimal correction; exact decisive RED/normal/cold readback, otherwise owner ABI HOLD; no second correction loop"
+      "next_action": "One exact final independent verdict; if still material failure STOP/owner ABI HOLD, no automatic further repair",
+      "code_sha": "270eb29cd4487b6865b61adc9d671952554d425d"
     }
   ],
   "requires_semantic_adjudication": [
@@ -358,6 +385,19 @@
         "fork/concurrentoperation uniqueness unproved",
         "no native relation/psychology/volition/generatedspeech/G2/J1/D04/D05/J2 or protected acceptance"
       ]
+    },
+    {
+      "task": "1037 B05 one R2 correction",
+      "state": "AUTHOR_R2_CANDIDATE_SAME_NONAUTHOR_RERECEIVING_RUNNING",
+      "code_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1068",
+      "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "source_delta": "B05 read-side only, +85 lines; existing C12 transition proof, B04 unchanged",
+      "author_evidence": "34-check original independent probe RED33/34->GREEN34/34; exact63 controls/normalcold/5focused/6legacy/43inherited/3consumer PASS",
+      "acceptance": "NOT_ACCEPTED_PENDING_SAME_NONAUTHOR",
+      "nonauthor_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "correction_budget_used": 1,
+      "automatic_additional_author_corrections": 0
     }
   ],
   "guide_records_affected": [
