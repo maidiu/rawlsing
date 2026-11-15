@@ -13,6 +13,8 @@ The candidate is this return directory at the author worktree:
 
 with exact evidence in `evidence/` and logs in `logs/`. Production remains unchanged at accepted S2-D `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`; writer remains accepted S2-C `b7b697b69f0acea12174937ee824c19ac34ac284`.
 
+**Publication surface:** branch `agent/pyat-country-reuse-court-20261115` was pushed to origin; frozen evidence commit `f7a7652258907129988504e53fae286da1dbf45d`; draft PR [#1064](https://github.com/maidiu/rawlsing/pull/1064). A later metadata commit may record this publication surface; the evidence files are unchanged by that bookkeeping.
+
 The reviewer must be distinct from the author and from the prior #1006 author/reviewer. A same-session or same-author check is not G5.
 
 ## Required review axes
