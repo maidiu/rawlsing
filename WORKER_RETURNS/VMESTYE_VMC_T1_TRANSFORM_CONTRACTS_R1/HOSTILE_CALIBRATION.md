@@ -1,3 +1,18 @@
+# VMC-T1 R9 — four hostile conditional source cases (CONTROLLING)
+
+These are source-static branch cases from historical 9253064bc9423a0f0ccda4fbdea43c2f54f800c6, not executed original Python/DB, no source-selected data, no CI/validator run.
+
+| Conditional case | Pinned source observation | Correct grade and first falsifier |
+| --- | --- | --- |
+| blank country + named country in V549b, unfiltered scan | bf874a95ea5172817b0d1bdf21b43600aac5cbfe L914–930 maps blank to ALL group but ALL actually uses all source_resp; country-specific subset also emitted | CONDITIONAL_OVERLAP; source-selected respondent IDs and first reader to see if intentionally aggregate or miscount |
+| canonical validates run A; later same-scope run B exists in temporal discovered latest directory | 1951ada5cb7453108939eae9af91fcbfc90ad517 L403–566/620–628 validates/writes A paths; 5304b70f9f6522c5ae3893eff215c1d445681983 L280–373 prioritizes discovered B; 41e0c85d4179a49b71560d1a55de351f2fe18ec7 L158–213/255–274 latest same-source/wave/country by mtime | CONDITIONAL_UNBOUND_CUSTODY; A and B exact SHA/path and temporal actual read required |
+| selected V552J fact/score set, V553 recomputes different primary | 476e617370e8947ee1f38b0718243ecfc5ba9e5c L79–95/131–140 primary projection; a3e6bf17386b58beb0c14b2d79d9e4a9e405c300 L140–155 alias; 5304b70f9f6522c5ae3893eff215c1d445681983 L1772–1786/2047–2115 nonempty merge retains source primary ID, score, dimensions and diagnostic | STATIC_NONOVERRIDE; two source-selected different fact IDs and output audit/authority sidecar; not proof of historical mismatch |
+| canonical verifies populated input+matching handoff, same bytes persist until temporal read | 1951ada5cb7453108939eae9af91fcbfc90ad517 L500–518 input/handoff equality verified; 5304b70f9f6522c5ae3893eff215c1d445681983 L1980–1983 hard failure requires missing handoff and present input | R8 guard is real but not an ordinary stable certified-path failure; exact root drift/mutation/bypass needed |
+
+Preserve R5 D23/D25 and R7/R8 original claims; all 52 T and 27 D identities; no new native-science or authority result.
+
+---
+
 # VMC-T1 R8 — V552J to V553 source reader conditional matrix (CONTROLLING)
 
 This is a static interpretation of original source `9253064bc9423a0f0ccda4fbdea43c2f54f800c6` with exact blobs V552J `476e617370e8947ee1f38b0718243ecfc5ba9e5c`, adapter `a3e6bf17386b58beb0c14b2d79d9e4a9e405c300`, V553 temporal `5304b70f9f6522c5ae3893eff215c1d445681983`, V553 canonical `1951ada5cb7453108939eae9af91fcbfc90ad517`. No historical Python, respondent data or source-native observations were run.
