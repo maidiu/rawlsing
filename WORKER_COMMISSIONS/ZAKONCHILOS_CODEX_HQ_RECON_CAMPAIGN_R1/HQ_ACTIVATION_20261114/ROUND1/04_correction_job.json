@@ -1,0 +1,24 @@
+{
+  "job_id": "zak1057-04-round1-source-search-correction",
+  "session": "ses_e22bd21eeffeH5GWvx2XBKwSEw",
+  "grant_id": "user-zak1057-round1-04-within-original-cap",
+  "argv": [
+    "/usr/local/bin/python3",
+    "-c",
+    "import subprocess,sys,json,threading,urllib.request,base64,time\nfrom pathlib import Path\nsid,cap,proof=sys.argv[1:4]\nproc=subprocess.Popen(sys.argv[4:])\nPath(proof).write_text(json.dumps({\"session\":sid,\"cli_pid\":proc.pid,\"cap_seconds\":int(cap),\"started_epoch\":time.time()}))\ndef stop():\n cfg=json.loads(Path(\"/Users/matthewsmith/.config/opencode/service.json\").read_text())\n req=urllib.request.Request(\"http://127.0.0.1:49374/api/session/\"+sid+\"/interrupt?resume=false\",data=b\"\",method=\"POST\")\n req.add_header(\"Authorization\",\"Basic \"+base64.b64encode((\"opencode:\"+cfg[\"password\"]).encode()).decode())\n try:\n  with urllib.request.urlopen(req,timeout=15) as response: status=response.status\n except Exception as exc: status=type(exc).__name__\n Path(proof).with_suffix(\".deadline.json\").write_text(json.dumps({\"session\":sid,\"interrupt\":status,\"at_epoch\":time.time()}))\n try:proc.wait(timeout=15)\n except subprocess.TimeoutExpired:proc.terminate()\ntimer=threading.Timer(int(cap),stop);timer.start()\ntry:code=proc.wait()\nfinally:timer.cancel()\nsys.exit(code)\n",
+    "ses_e22bd21eeffeH5GWvx2XBKwSEw",
+    "942",
+    "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-04-round1-source-search-correction-cli.json",
+    "/Users/matthewsmith/.opencode/bin/opencode",
+    "run",
+    "--format",
+    "json",
+    "--session",
+    "ses_e22bd21eeffeH5GWvx2XBKwSEw",
+    "--agent",
+    "zak1057-recon",
+    "--model",
+    "opencode-go/deepseek-v4.1-flash#max",
+    "SAME ROUND1 EXACT SOURCE-SEARCH CORRECTION, not new research round. Initial return banked unchanged by HQ. Remaining ORIGINAL30minute time only. Preserve confirmed F6M/F6P positive source distinctions and alternativeproducer semantic difference. No engineering/tests/scientific execution.\nMATERIAL COUNTEREXAMPLE: your EV017 and 00_RETURN2.5 claim no N9/N10 filename at HEAD69804/protected6a is FALSE. `git ls-tree -r --name-only SHA -- \"rawlsing_next/*n9*\"` did not perform your intended glob. HQ fulltree enumeration at BOTH6a5c12f04323d74001f9632063ec907f4fc4468e and69804f88abc8e84cf91ee256aa66fb607a49f5a7 found rawlsing_next/pre553_n9_n10w_progressive_candidate.py plus tests/n10e_at17_successor_requal.py, n10e_empirical_slice_fixture.py, n10e_empirical_slice_fresh_process_runner.py. This is NOT absence. Correct the source-search receipt, EV017, prose, coverage and all conclusions relying on the false lookup. Preserve original failed lookup as historical counterevidence. Perform fulltree enumeration then filter actual paths, not git-ls-tree wildcard assumption. Also recheck EV015 heterogeneous path absence by full enumeration (primary candidate is recovered at1f1c72 elsewhere, no globalclaim).\nRead actual protected rawlsing_next/pre553_n9_n10w_progressive_candidate.py and immediate relevant importing callers at exactfrozencut, sufficient to decide whether THAT file consumes F6M numeric evidence directly/indirectly or still NOT_PROVED. Do not infer no numericreader from missing F6 token alone; qualify bounded search and inspect data/reader shape. No expansiontoallN9architecture oranothercampaign.\nTask-entry ZAK00 matrix is available through SAME allowed gitshow: e725ec39d021f4f7d8080298a95ea519ada2de01:WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/03_FULL_FLIGHT_DEPENDENCY_AND_OWNER_MAP.md. HQ git cat-file confirms BLOB. Readvia gitshow; previousother-worktree denial is not missing source authority. Correct exactsource-gapstate instead of requestingnewpermission.\nVerify primary sourceblobs for all materialrows; EV018 is protectedcode but NO_BLOB: fill actualblob. TenTSVwidths already valid; keep schemas/IDs. Derive coverage prose from actualrows; correctcounts after restoredsource. Keep zero nativeexec, no selectedscience proof, no globalabsence, no newT/no independentacceptance. Write only your same return and finish by ORIGINALdeadline 2026-11-15T04:02:36.955495+00:00. No commit/push: HQpublishes. Do not launch furtheragents/rounds; return exact correctedclaim and residuals."
+  ]
+}
