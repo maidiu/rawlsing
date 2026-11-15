@@ -680,8 +680,8 @@
       "observer_pid": 17137,
       "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-04-documentary-round1",
       "launch_is_not_completion": true,
-      "status": "INITIAL_SOURCE_RETURN_BANKED__FALSE_ABSENCE_CORRECTION_WITHIN_SAME_ROUND",
-      "last_checkpoint_sha": "32d920d6e12408b17185cbf358bbfa7117003894",
+      "status": "ROUND1_STOP__CORRECTED_S1_TRACT_RECEIVED__GROUP_REVIEW_PENDING",
+      "last_checkpoint_sha": "ba20eeeea2243edd71febe0af0bc184d1cfeef1e",
       "latest_job": {
         "job_id": "zak1057-04-round1-source-search-correction",
         "child_pid": 20117,
@@ -714,7 +714,7 @@
   "independent_review_boundary": "A materially complete source-stratum group; distinct nonauthor reviewer within three-run cap. No fourth full-time worker, no format-only acceptance.",
   "wake_policy": "Existing finite terminal notifications only; recurring goal wake-ups remain off; once-daily material checkpoint when HQ is operating, no new daemon/timer.",
   "scope": "Documentary source S0/S1 only; no engineering/scientific run or authority promotion.",
-  "status": "THREE_DOCUMENTARY_ROUND1_RUNNING_ACTUAL_MODEL_VERIFIED",
+  "status": "ROUND1_ALL_THREE_STOPPED__DOCUMENTARY_RETURNS_PUBLISHED__EXPANSION_REPORT_DELIVERED",
   "round1_launch_utc": "2026-11-15T03:32:36.490519+00:00",
   "actual_turn_proofs": [
     "WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/HQ_ACTIVATION_20261114/ROUND1/02_actual_turn.json",
@@ -917,7 +917,41 @@
       "reported_cost_usd": 0.195224334,
       "cost_grade": "113provider stepcostfields, not invoice or balance",
       "worker_status": "ROUND1_STOP; no second round launched"
+    },
+    "04": {
+      "lane": "04",
+      "job": "zak1057-04-round1-source-search-correction",
+      "session": "ses_e22bd21eeffeH5GWvx2XBKwSEw",
+      "exit_code": 0,
+      "started_utc": "2026-11-15T03:46:54.877596+00:00",
+      "finished_utc": "2026-11-15T03:54:01.931920+00:00",
+      "original_deadline": "2026-11-15T04:02:36.955495+00:00",
+      "delivery_sha": "ba20eeeea2243edd71febe0af0bc184d1cfeef1e",
+      "initial_return_preserved": "32d920d6e12408b17185cbf358bbfa7117003894",
+      "disposition": "RECEIVE_USABLE_BOUNDED_S1_SOURCE_TRACT_WITH_EXPLICIT_HOLDS",
+      "verified_primary_source_references": 21,
+      "coverage": {
+        "FOUND": 6,
+        "NOT_INSPECTED": 4
+      },
+      "mechanism_rows": 7,
+      "false_absence": "RETRACTED_AND_PRESERVED_AS_EV020",
+      "material_result": "F6M numeric producer and F6P static reader located; I07 distinct permission guard; actual protected N9 synthetic progressive candidate located and inspected, selected F6 numeric receiving still NOT_PROVED. No global loss claim.",
+      "HQ_qualifications": [
+        "N9 artifact header historical global-absence assertion is not fresh global evidence",
+        "Normalized summary6to7mechanisms from literalrows; all documentpayloads hashed and TSVwidthsvalid"
+      ],
+      "independent_group_receiving": "PENDING; HQ source checks do not equal separate omission review",
+      "reported_cost": {
+        "initial": 0.107267262,
+        "correction": 0.071239596,
+        "sum": 0.178506858,
+        "grade": "94provider step-costfields, not invoice/account balance"
+      },
+      "worker_status": "ROUND1_STOP; no next round dispatched"
     }
   },
-  "expansion_decision": "NO_SECOND_ROUND_LAUNCHED; report supplied before expansion;04existingcorrectionpending, bounded group source review recommended"
+  "expansion_decision": "No second round launched. One bounded independent group source challenge recommended before territory expansion; explicit source/runtime limits remain.",
+  "closing_active_local_sessions": 0,
+  "reported_worker_cost_usd": 0.640398354
 }
