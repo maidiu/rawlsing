@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/newprobes/c05_challenge1_leakage.py", line 219, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/newprobes/c05_challenge1_leakage.py", line 96, in main
+    "a_no_withheld": a_doc["history"][
+                     ^^^^^^^^^^^^^^^^^
+KeyError: 'withheld_relation_count'
+       10.23 real         9.39 user         0.68 sys
+            48889856  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               73827  page reclaims
+                  26  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                 835  voluntary context switches
+                2823  involuntary context switches
+         43182648711  instructions retired
+         21739457616  cycles elapsed
+            43294720  peak memory footprint

@@ -15,6 +15,12 @@ consumer then combines that actor-relative event access with only the dated
 relation entries the actor was exposed to. An unexposed or partially exposed
 scope is a qualified HOLD, never a negative proof that no relation exists.
 
+Actor-facing reads never expose a withheld-relation count or otherwise distinguish
+an absent scope from a fully unexposed one. A relation context is explicitly a
+retrospective projection as of the event clock; it is not event-time prior
+knowledge and is not usable as a prior-event cause without a source-qualified
+within-clock ordering/receipt rule.
+
 This is sourcefree engineering at ``SOURCEFREE_S2_ONLY``, not native ADP-015/C4
 relation authority, household membership, genealogy, psychology or autonomy.
 """
@@ -40,7 +46,6 @@ RELATION_PRIVATE = "NOT_READ"
 RELATION_STATUS_QUALIFIED = "QUALIFIED"
 RELATION_STATUS_NOT_EXPOSED = "HOLD_NOT_EXPOSED"
 RELATION_STATUS_CUSTODY = "HOLD_CUSTODY_SEVERED"
-RELATION_STATUS_UNKNOWN = "HOLD_UNKNOWN_SCOPE"
 
 
 def _text(value: Any) -> bool:
@@ -546,25 +551,19 @@ def _history_envelope(session, actor_id: str, *,
         key = _relation_key(
             [pair[0]["actor_id"], pair[1]["actor_id"]], relation)
         selected = {key: scopes[key]} if key in scopes else {}
-    relations, withheld, custody_severed = [], 0, False
+    relations, custody_severed = [], False
     for key in sorted(selected):
         scope = selected[key]
         if scope.get("status") != "VERIFIED":
             if _viewer_potentially_exposed(
                     scope, actor_id, as_of_clock=as_of_clock):
                 custody_severed = True
-            else:
-                withheld += 1
             continue
         representation = _representation(scope, actor_id,
                                          as_of_clock=as_of_clock)
-        if representation is None:
-            withheld += 1
-        else:
+        if representation is not None:
             relations.append(representation)
-    if query_specified and not selected:
-        status = RELATION_STATUS_UNKNOWN
-    elif custody_severed:
+    if custody_severed:
         status = RELATION_STATUS_CUSTODY
     elif relations:
         status = RELATION_STATUS_QUALIFIED
@@ -581,7 +580,6 @@ def _history_envelope(session, actor_id: str, *,
         "status": status,
         "custody": "SEVERED" if custody_severed else "VERIFIED",
         "relations": relations,
-        "withheld_relation_count": withheld,
         "private_state": RELATION_PRIVATE,
         "native": False,
         "read_boundary": {
@@ -598,10 +596,11 @@ def read_relation_history(session, actor_id: str, *,
                           as_of_clock: int | None = None) -> dict:
     """Read dated relation history visible to exactly this actor.
 
-    A missing or unexposed scope is a qualified HOLD, never a claim that no
-    relation exists. A severed C12 relation chain returns a custody HOLD for a
-    viewer who could have been exposed; an unexposed viewer is not told that an
-    unseen relation exists.
+    An absent scope and a fully unexposed scope return the same qualified HOLD;
+    actor-facing output never carries a withheld count or another signal that
+    would distinguish them. A severed C12 relation chain returns a custody HOLD
+    only for a viewer who could have been exposed; an unexposed viewer is not
+    told that an unseen relation exists.
     """
     if not _text(actor_id):
         raise RecursionRefusal("RELATION_ACTOR_UNKNOWN")
@@ -658,17 +657,27 @@ def _access_or_hold(session, actor_id: str, event_id: str) -> dict:
 
 
 def _context_effect(session, event_id: str,
-                    history: Mapping[str, Any]) -> dict:
+                    history: Mapping[str, Any],
+                    event_perception: str) -> dict:
+    common = {
+        "event_perception": event_perception,
+        "event_perception_source": "VIEWER_EVENT_ACCESS",
+        "event_perception_scope": "VIEWER_ONLY",
+    }
     if history.get("status") == RELATION_STATUS_CUSTODY:
         return {
+            **common,
             "relation_aware": False,
+            "relation_count": 0,
             "reason": RELATION_STATUS_CUSTODY,
             "basis": ["QUALIFIED_CUSTODY_HOLD"],
         }
     relations = history.get("relations") or []
     if not relations:
         return {
+            **common,
             "relation_aware": False,
+            "relation_count": 0,
             "reason": history.get("status"),
             "basis": ["QUALIFIED_HOLD"],
         }
@@ -680,18 +689,24 @@ def _context_effect(session, event_id: str,
             for party in relation["parties"]
         ]
         both = all(status == "PERCEIVED" for status in accesses)
+    basis = ["DATED_RELATION_HISTORY"]
+    if event_perception == "PERCEIVED":
+        basis.append("C12_EVENT_PERCEPTION")
     return {
+        **common,
         "relation_aware": True,
+        "relation_count": len(relations),
         "reason": "QUALIFIED_RELATION_CONTEXT",
-        "basis": [
-            "DATED_RELATION_HISTORY",
-            "C12_EVENT_PERCEPTION",
-        ],
+        "basis": basis,
+        "summary_relation_key": relation.get("relation_key"),
+        "summary_selection": "MECHANICAL_FIRST_SORTED_RELATION_KEY",
+        "summary_is_salience_or_psychology": False,
         "relation_status": relation.get("status"),
         "relation_value": relation.get("value"),
         "history_complete": relation.get("history_complete"),
         "representation_depth": relation.get("representation_depth"),
         "both_parties_event_access": both,
+        "both_parties_event_access_scope": "RELATION_PARTIES_ONLY",
     }
 
 
@@ -701,7 +716,9 @@ def read_actor_relative_context(session, actor_id: str,
 
     The event is an actual existing-owner world event. Event access is the C01
     actor-relative C12 receipt path. Relation context is only the dated history
-    this actor was exposed to. Physical co-presence is not relation knowledge.
+    this actor was exposed to, projected retrospectively as of the event clock.
+    Physical co-presence is not relation knowledge and same-clock later writes
+    are not event-time prior knowledge.
     """
     if not _text(actor_id) or not _text(event_id):
         raise RecursionRefusal("RELATION_CONTEXT_SCHEMA")
@@ -716,6 +733,7 @@ def read_actor_relative_context(session, actor_id: str,
     history = read_relation_history(
         session, actor_id, as_of_clock=event_clock)
     relation_scope = {
+        "temporal_scope": "RETROSPECTIVE_AS_OF_EVENT_CLOCK",
         "status": history["status"],
         "custody": history["custody"],
         "representation_depth": max(
@@ -724,7 +742,6 @@ def read_actor_relative_context(session, actor_id: str,
             or [RELATION_BASE_DEPTH]
         ) if history["relations"] else 0,
         "relations": history["relations"],
-        "withheld_relation_count": history["withheld_relation_count"],
     }
     return {
         "schema": RELATION_CONTEXT_SCHEMA,
@@ -736,13 +753,25 @@ def read_actor_relative_context(session, actor_id: str,
         "branch": session.branch_id,
         "event_access": access,
         "relation_scope": relation_scope,
+        "relation_temporal": {
+            "relation_projection": "RETROSPECTIVE_AS_OF_EVENT_CLOCK",
+            "event_time_relation_knowledge": "NOT_AVAILABLE",
+            "event_time_relation_status": "HOLD_SOURCE_AUTHORITY",
+            "within_clock_cutoff": "UNAVAILABLE",
+            "usable_as_prior_event_cause": False,
+            "reason": (
+                "NO_SOURCE_QUALIFIED_WITHIN_CLOCK_ORDERING_OR_RECEIPT_RULE"
+            ),
+        },
         "context_effect": _context_effect(
-            session, event_id, history),
+            session, event_id, history, access.get("status")),
         "private_state": RELATION_PRIVATE,
         "native": False,
         "read_boundary": {
             "event": "C01_ACTOR_RELATIVE_RECEIPT",
             "relation": "DATED_EXPOSURE_ONLY",
+            "relation_temporal": "RETROSPECTIVE_AS_OF_EVENT_CLOCK",
+            "event_time_relation_knowledge": "NOT_AVAILABLE",
             "physical_copresence": "NOT_CONSULTED",
             "private_state": "NEVER_RETURNED",
         },
