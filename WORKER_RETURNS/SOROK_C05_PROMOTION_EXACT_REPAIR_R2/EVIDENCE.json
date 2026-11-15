@@ -1,0 +1,132 @@
+{
+  "schema": "SOROK_C05_R2_EVIDENCE@1",
+  "issue": "C05",
+  "repair": "C05_REPEAT_DEPTH2_PROMOTION_PREWRITE_DEPTH_STATE",
+  "terminal_disposition": "AUTHOR_C05_R2_CANDIDATE_FOR_SAME_NONAUTHOR",
+  "capability_grade": "SOURCEFREE_S2_C05",
+  "source_grade": "SOURCEFREE_S2_ONLY",
+  "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "frozen_start": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+  "candidate_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+  "original_implementation_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+  "independent_review_sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+  "branch": "codex/sorok-c05-promotion-repair-20261115-r2",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+  "exact_defect": {
+    "id": "C05_REPEAT_DEPTH2_PROMOTION_COMMITS_SELF_SEVERING_EPISODE",
+    "base_blob": "343cf08a23da7a34305fdbb897102086f2124ee3",
+    "location": "promote_relation pre-write depth check",
+    "cause": "pre-write depth machine used only RELATION_STATE_CHANGES, omitting prior PROMOTE episodes, so current depth stayed 1; a second depth-2 PROMOTE with a new operation ID appended change+head, then post-append verification rejected it and severed the scope",
+    "correction": "one line: _state_machine(scope[\"changes\"]) includes every verified change including prior PROMOTE; state_changes remains only for the promotion history_hash",
+    "corrected_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+    "corrected_sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2",
+    "unrelated_rollback_framework_added": false,
+    "reason_no_transaction_change": "the full-history pre-write depth guard refuses the observed new-operation path before _append_change; the corrected independent probe and focused test show zero episode/head/world/perception/checkpoint delta, so no reproduced same-path post-append failure remained"
+  },
+  "immutable_red_to_corrected": {
+    "defect_probe_source": "byte-identical independent reviewer probe",
+    "defect_probe_sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70",
+    "base_RED": {
+      "literal_exit": 0,
+      "literal_exit_meaning": "reviewer bug oracle reproduced",
+      "second_call_refusal": "RELATION_CUSTODY_SEVERED",
+      "wrote_episode_on_refusal": true,
+      "scope_severed_after_write": true,
+      "c12_verify_unchanged": true,
+      "before": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+      "after": {"episodes": 51, "changes": 3, "heads": 3, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "HOLD_CUSTODY_SEVERED"},
+      "retry_first_after_second": "RELATION_CUSTODY_SEVERED",
+      "report_sha256": "8f5f0a79190068b0ce714ee2d76a6f2e93934f262bfd401e16f4f3f0a853f38d"
+    },
+    "post_fix": {
+      "literal_exit": 2,
+      "literal_exit_meaning": "expected: unchanged reviewer oracle no longer observes the old bug; not a test failure of the repair",
+      "second_call_refusal": "RELATION_PROMOTION_NOT_DEEPER",
+      "wrote_episode_on_refusal": false,
+      "scope_severed_after_write": false,
+      "c12_verify_unchanged": true,
+      "before": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+      "after": {"episodes": 49, "changes": 2, "heads": 2, "world_events": 14, "perceptions": 42, "checkpoints": 33, "relation_status": "QUALIFIED"},
+      "retry_first_after_second": "UNCHANGED with original primary episode ID",
+      "report_sha256": "ebdf5da8e665598ae5859ce4e1dd9a186891786a56f6dfe398d9b0bbff37c720"
+    },
+    "focused_assertion_test": {
+      "path": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py",
+      "RED": {"passed": 0, "failed": 1, "exit": 1, "seconds": 4.48, "failure": "expected RELATION_PROMOTION_NOT_DEEPER, actual RELATION_CUSTODY_SEVERED"},
+      "GREEN": {"passed": 1, "failed": 0, "exit": 0, "seconds": 6.8, "max_rss_bytes": 58249216}
+    }
+  },
+  "normal_path_preserved": {
+    "original_c05_suite": {"passed": 5, "failed": 0, "exit": 0, "seconds": 43.39, "max_rss_bytes": 62324736},
+    "independent_89_check_probe": {"checks_total": 89, "checks_passed": 89, "checks_failed": 0, "exit": 0, "real_seconds": 160.38, "max_rss_bytes": 55271424, "cold_exit": 0, "cold_snapshot_exact": true, "cold_retry_status": "UNCHANGED"},
+    "first_depth2_promotion_succeeds": true,
+    "same_original_operation_retry_unchanged": true,
+    "different_new_depth2_operation_refuses_before_write": true,
+    "history_and_context_remain_qualified_and_exact": true,
+    "earlier_events_contexts_preserved": true,
+    "partial_exposure_and_private_boundaries_preserved": true
+  },
+  "listed_regressions_final_source": [
+    {"suite": "WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py", "passed": 6, "failed": 0, "exit": 0, "seconds": 12.72, "max_rss_bytes": 56705024},
+    {"suite": "WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py", "passed": 6, "failed": 0, "exit": 0, "seconds": 25.84, "max_rss_bytes": 63750144},
+    {"suite": "WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py", "passed": 12, "failed": 0, "exit": 0, "seconds": 55.4, "max_rss_bytes": 68902912},
+    {"suite": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py", "passed": 5, "failed": 0, "exit": 0, "seconds": 14.4, "max_rss_bytes": 55726080}
+  ],
+  "source_pins": {
+    "continuing_relations.py": {"base_blob": "343cf08a23da7a34305fdbb897102086f2124ee3", "new_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a", "new_sha256": "72e213220ed2855a5bd303985a7a584cb14b1a3b2e704b26aa4b8161fef068d2"},
+    "supporting_actor.py": {"blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c", "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92", "unchanged": true},
+    "test_c05_promotion_repair_r2.py": {"blob": "5df2c164bc4912a2ee13cbaf228969c2d4b96a90", "sha256": "68234a95b3dc448552edbd54899c2e2b5a3351839f18e5ba800f386b1184785e"},
+    "c05_defect_probe.py": {"blob": "31a888cb9189686d321f29ab27e95aa8fe5f9d9e", "sha256": "1172fec4621c353bee5736423c42e5278dc3a1148112c676cd53f7b687105a70", "byte_identical_to_reviewer": true},
+    "c05_probe.py": {"blob": "c89e22a7c4ba683fe99994f2833b8b710e888401", "sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7", "byte_identical_to_reviewer": true},
+    "c05_observe.py": {"blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f", "sha256": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850", "byte_identical_to_reviewer": true},
+    "c05_cold_child.py": {"blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc", "sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff", "byte_identical_to_reviewer": true}
+  },
+  "exposure_and_append_boundary_preserved": {
+    "caller_supplied_exposure_and_relation": true,
+    "both_parties_mandatory_in_exposure": true,
+    "owner_or_source_receipt_qualifying_relation_knowledge": "NONE",
+    "reader_relation_label": "DATED_EXPOSURE_ONLY",
+    "coherent_public_append_of_change_and_head_still_accepted": true,
+    "self_hash_chain_is_not_owner_signature": true,
+    "claimed_as_native_actor_truth_or_perception": false,
+    "scope": "operation/custody of caller-authorized sourcefree illustrative relations only"
+  },
+  "holds": [
+    "native ADP-015/C4 relation authority HELD",
+    "household/genealogy issuance HELD",
+    "maternal psychology / independent volition / autonomy HELD",
+    "generated language and language_generation_owner HELD",
+    "G2 mother-owned event selection HELD",
+    "complete J1/Nadia performed response HELD",
+    "D04/D05 and durable acquisition HELD",
+    "human/scientific/source-rights receiving HELD",
+    "protected merge NOT AUTHORIZED",
+    "#939 fleet restart NOT AUTHORIZED",
+    "PYAT/Browser management/contact NOT AUTHORIZED",
+    "concurrent same-operation uniqueness UNPROVED",
+    "branch-fork replay UNOBSERVED",
+    "depth 1-2 only"
+  ],
+  "residuals": [
+    "caller-supplied illustrative relation/exposure remains a fixture boundary, not native authority or independent perception",
+    "coherent append-only change+head remains accepted because custody is self-hash chaining, not owner signature",
+    "raw C12 private values remain developer-visible to a raw-store holder; actor-facing readers return NOT_READ",
+    "C04 parent self-read metadata and D03 caller-receipt residuals remain held",
+    "provider/checkpoint/organization/quota/token cost UNOBSERVED",
+    "timings are observations under load, not isolated benchmarks"
+  ],
+  "scope_compliance": {
+    "only_leased_module_plus_own_return": true,
+    "supporting_actor_readonly_unchanged": true,
+    "c04_p3_p2_b_g2_readonly": true,
+    "no_global_permissions_auth_model_provider_server_change": true,
+    "no_paid_fallback_or_dependency_install": true,
+    "no_vm_new_controller_nested_agents_ci_github_actions": true,
+    "no_protected_merge_pyat_browser_939_fleet": true,
+    "no_b05_reopen_or_edit": true,
+    "no_tmp_write": true,
+    "self_g5": false
+  },
+  "stop": true
+}
