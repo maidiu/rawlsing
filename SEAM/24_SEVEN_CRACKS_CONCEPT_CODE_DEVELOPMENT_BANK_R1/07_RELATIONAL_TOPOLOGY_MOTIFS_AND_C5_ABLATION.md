@@ -12,6 +12,12 @@ The [Hook et al. Enneagram systematic review](https://pubmed.ncbi.nlm.nih.gov/33
 
 Scientific risk: a pattern of co-activated nodes may reflect a third external cause, sampling bias, one context's pressures, or an LLM's storytelling interpretation. “Attractor” requires more than repeated edge labels; its dynamical claims of stability/return/splitting across perturbation need a formally specified evolution rule, disconfirming perturbations and **external** developmental evidence before claims about real humans. A synthetic experiment can only test the rule we wrote. A purely computational predictive summary is an important competitor, but declaring *all* relational organization merely a cache would prematurely erase the original C5 claim.
 
+### Absolute Horizon is not C5
+
+The [Governing Spirit](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md) distinguishes **Absolute Horizon**—the historically changing ordering of what the person regards as ultimately binding and what may be sacrificed for what—from source strata, religiosity, goodness, typology and mere self-preservation. **A recurrent C5 motivational motif is not automatically Horizon**; a dominant motif may colonize a person's apparent ultimacy, or be criticized by criteria acquired elsewhere. Neither a single K attractor nor an Enneagram affinity can be used as the universal ordering of every value or project. This is a **design distinction**, not a claim that an actual Horizon transition law is already implemented.
+
+**Non-deprivation counterexample:** acquired commitment can organize craft, beauty, curiosity, humor, play, solidarity and pleasure, not just threat/trauma. A C5 proposal whose meaningful edges exist only after deprivation is insufficient even if its wound stories sound plausible. Ordinary non-crisis lives must remain causally interesting. The field must allow plural and contradictory commitments without declaring every person converges on one ultimate psychological basin.
+
 ## Inherited authority and current code
 
 - [Original PRE-A0 SOROK C5 architecture](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md): actor relational field, typed directed/context-conditioned links, motif/compartment and possible slow type-agnostic attractor; **prospective architecture**.
