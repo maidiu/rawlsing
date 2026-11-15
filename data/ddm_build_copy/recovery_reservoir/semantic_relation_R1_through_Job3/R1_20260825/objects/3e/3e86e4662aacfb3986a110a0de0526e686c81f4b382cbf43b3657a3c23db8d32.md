@@ -1,2 +1,0 @@
-# T10 governing doctrine
-A T10 matrix requires a genuine crossed structure: at least two targets repeated across at least two conditions and at least two conditions repeated across at least two targets. Target IDs that absorb condition language must be reconstructed before the invariant is tested. One-to-one target/condition batteries are not matrices. Exact source parent/member identity and current semantic coordinates are admissible evidence; R14/page excerpt similarity is prohibited. R6 is calibration, not the maximum universe.
