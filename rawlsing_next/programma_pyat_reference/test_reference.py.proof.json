@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "W1H_CONDITIONAL_PREREQUISITES_REMAIN_CONDITIONAL",
+      "actual_consumer": "rawlsing_next/programma_pyat_reference/reference.py::select_edges",
+      "claimed_dependency": "An unconditional-only query excludes the source-defined CONDITIONAL_PREREQUISITE edges, including N8E to N8S.",
+      "positive_node": "rawlsing_next/programma_pyat_reference/test_reference.py::ReferenceTests::test_conditional_edges_not_universal",
+      "fault": {
+        "path": "rawlsing_next/programma_pyat_reference/reference.py",
+        "old": "if unconditional and e['type']=='CONDITIONAL_PREREQUISITE':continue",
+        "new": "if False and e['type']=='CONDITIONAL_PREREQUISITE':continue"
+      }
+    },
+    {
+      "claim_id": "W1H_SOURCEFREE_REFERENCE_DOES_NOT_PROMOTE_NATIVE_PILOT",
+      "actual_consumer": "rawlsing_next/programma_pyat_reference/reference.py::query",
+      "claimed_dependency": "Query output preserves the implementation BOUNDARY: sourcefree reference evidence does not complete the source-native empirical pilot.",
+      "positive_node": "rawlsing_next/programma_pyat_reference/test_reference.py::ReferenceTests::test_actual_source_not_consumer_or_fixture",
+      "fault": {
+        "path": "rawlsing_next/programma_pyat_reference/reference.py",
+        "old": "'source_native_empirical_pilot': 'HOLD'",
+        "new": "'source_native_empirical_pilot': 'PASS'"
+      }
+    }
+  ]
+}
