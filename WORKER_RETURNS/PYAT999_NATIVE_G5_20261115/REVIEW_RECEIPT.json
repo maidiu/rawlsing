@@ -1,11 +1,18 @@
 {
   "packet_id": "S2-A",
   "task_id": "PYAT999-NATIVE-G5-20261115",
-  "old_obligations": ["P2-01"],
+  "old_obligations": [
+    "P2-01"
+  ],
   "contract_id": "PYAT999-S2A-NATIVE-BODY-TRUTH-G5-R1",
   "contract_source_cut": "USER_QUEUE_20261115/sources/FIVE_JOB_USER_EXECUTION_SLATE.txt",
   "owner_grant_source": "USER_QUEUE_20261115/sources/999_OWNER_GRANT.md",
-  "governing_issues": ["https://github.com/maidiu/rawlsing/issues/919", "https://github.com/maidiu/rawlsing/issues/923", "https://github.com/maidiu/rawlsing/issues/999", "https://github.com/maidiu/rawlsing/issues/909"],
+  "governing_issues": [
+    "https://github.com/maidiu/rawlsing/issues/919",
+    "https://github.com/maidiu/rawlsing/issues/923",
+    "https://github.com/maidiu/rawlsing/issues/999",
+    "https://github.com/maidiu/rawlsing/issues/909"
+  ],
   "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
   "reviewer_independence": "Same distinct nonauthor G5, not S2-A author/fixer",
   "review_branch": "review/pyat999-native-g5-20261115",
@@ -33,7 +40,7 @@
     },
     "G2": {
       "state": "PASS",
-      "receipt": "Actual sourcefree native I03 positive, repeated/ranked occurrence, canonical/component/state selection, routing/UNKNOWN-vs-zero, None-vs-empty, legitimate changed input→changed fact→exact restore and public/native ref equality pass. 7 new tests, 64 S2-A focused, 31 S2-C, 31 S2-D focused pass."
+      "receipt": "Actual sourcefree native I03 positive, repeated/ranked occurrence, canonical/component/state selection, routing/UNKNOWN-vs-zero, None-vs-empty, legitimate changed input\u2192changed fact\u2192exact restore and public/native ref equality pass. 7 new tests, 64 S2-A focused, 31 S2-C, 31 S2-D focused pass."
     },
     "G3": {
       "state": "PASS",
@@ -111,10 +118,22 @@
     "Author's Linux 64/new 7 evidence was not independently rerun; independent Linux 86 inherited and Darwin 7/64 pass are recorded."
   ],
   "external_holds": [
-    {"owner": "original35/source science/rights", "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source/respondent bytes used"},
-    {"owner": "production current/host/actor issuer", "minimal_missing_witness": "independent production CURRENT/rights; TEST_ONLY direct estate only"},
-    {"owner": "integrated 100k/6 GiB", "minimal_missing_witness": "full integrated resource gate; NOT_RUN"},
-    {"owner": "protected merge/N11-N12", "minimal_missing_witness": "protected receiving authority; UNMERGED"}
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; no source/respondent bytes used"
+    },
+    {
+      "owner": "production current/host/actor issuer",
+      "minimal_missing_witness": "independent production CURRENT/rights; TEST_ONLY direct estate only"
+    },
+    {
+      "owner": "integrated 100k/6 GiB",
+      "minimal_missing_witness": "full integrated resource gate; NOT_RUN"
+    },
+    {
+      "owner": "protected merge/N11-N12",
+      "minimal_missing_witness": "protected receiving authority; UNMERGED"
+    }
   ],
   "resource_evidence": {
     "fixture": "256 synthetic respondents/events; sourcefree; not 100k",
@@ -158,6 +177,18 @@
     "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/f88_coherent_attack.out",
     "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/a59_public_coherent_attack.out",
     "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/current_resource_probe.out",
-    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/linux_inherited_86.txt"
-  ]
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/linux_inherited_86.txt",
+    "WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/evidence/remote_verification.txt"
+  ],
+  "remote_verification": {
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "review/pyat999-native-g5-20261115",
+    "review_content_commit_sha": "ed9786d4eefb2ebb59374cfb559201da7d044cbe",
+    "combined_return_sha": "b3075129fa6aef08de900b79e50bd5d47de5143a",
+    "code_test_sha": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+    "product_diff_vs_b307": "EMPTY",
+    "remote_receipt_json_valid": true,
+    "reviewer_product_edits": false,
+    "verified_at_utc": "2026-11-15T03:10:00Z"
+  }
 }

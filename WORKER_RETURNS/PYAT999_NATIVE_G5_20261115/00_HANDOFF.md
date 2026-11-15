@@ -142,3 +142,10 @@ external HOLDs. Integration UNMERGED. S1-A 6286/c900 accepted 34+136 is closed
 and not reopened.
 
 Return: `WORKER_RETURNS/PYAT999_NATIVE_G5_20261115/`.
+
+## Remote verification
+
+Review content commit `ed9786d4eefb2ebb59374cfb559201da7d044cbe` was pushed to
+`origin/review/pyat999-native-g5-20261115`. Direct remote verification found the
+product tree unchanged from combined return `b3075129f` and the remote receipt
+valid. See `evidence/remote_verification.txt`.
