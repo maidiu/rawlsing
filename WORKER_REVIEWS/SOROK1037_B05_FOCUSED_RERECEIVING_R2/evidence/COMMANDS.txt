@@ -1,0 +1,62 @@
+SOROK #1037 B05 focused R2 re-receiving — exact commands
+Checkout: /Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing
+Candidate: 270eb29cd4487b6865b61adc9d671952554d425d
+Branch: codex/sorok1037-b05-writer-proof-repair-20261115-r2
+
+Environment for every command:
+  export TMPDIR="$PWD/.local-logs/sorok1037-b05-focused-r2/tmp"
+  export PYTHONDONTWRITEBYTECODE=1
+  PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+
+1. Unchanged reviewer probe (original blob 3e98929...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_review_probe.py
+   -> exit 0; 34/34; original positive sole-rehash refused B05_RENT_OPERATION_UNPROVEN
+
+2. Exact #1027 witness (blob 7cd5a23...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_probe_1027.py
+   -> literal exit 1; 63/63 checks; both defects accepted=false
+
+3. Exact #1027 cold probe (blob 6fc86dc...):
+   /usr/bin/time -l "$PY" WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_cold_probe_1027.py
+   -> exit 0; ok=true; warm_ok=true; child_exit=0
+
+4. Focused R2 author tests:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py
+   -> exit 0; 5 passed
+
+5. Legacy author tests:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py
+   -> exit 0; 6 passed
+
+6. Inherited original B01-B05 43 tests (once on final R2 source):
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py \
+     WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_fork_provenance.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py \
+     WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_dwelling.py \
+     WORKER_RETURNS/SOROK-DUEL-B03-R1/test_b03_same_root_psyche.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py \
+     WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_cross_batch.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_zero_and_held.py \
+     WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_interleave_retry.py
+   -> exit 0; 43 passed
+
+7. Selected read-only C03/C04 consumer:
+   /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+     WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py
+   -> exit 0; 3 passed
+
+8. Own focused R2 probe (zero / held / historical / retry / sever / sibling):
+   /usr/bin/time -l "$PY" \
+     WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_r2_focused_probe.py
+   -> literal exit 2 (own oracle: 2 = false ADMITTED proof reproduced)
+      16/17 checks; forged ADMITTED zero-rent receipt accepted READ
+
+No /tmp redirect; checkout-local scratch only. No product write, no CI, no new repair round.

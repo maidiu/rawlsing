@@ -1,0 +1,218 @@
+{
+  "checks": [
+    {
+      "check": "zero probe: public no-cash actions succeed and do not advance clock",
+      "detail": {
+        "clock": 429,
+        "current": 429,
+        "first": "OK",
+        "second": "OK"
+      },
+      "pass": true
+    },
+    {
+      "check": "zero probe: append changed no household cash",
+      "detail": {
+        "cash_after": 55,
+        "cash_before": 55
+      },
+      "pass": true
+    },
+    {
+      "check": "zero probe: forged ADMITTED zero-rent receipt is not accepted as actual operation proof",
+      "detail": {
+        "historical": false,
+        "household_cash": 55,
+        "receipt_status": "ADMITTED",
+        "status": "READ"
+      },
+      "pass": false
+    },
+    {
+      "check": "positive probe: unchanged-cash public checkpoints do not prove a forged debit",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "pass": true
+    },
+    {
+      "check": "zero genuine: existing writer produces UNCHANGED",
+      "detail": {
+        "status": "UNCHANGED"
+      },
+      "pass": true
+    },
+    {
+      "check": "zero genuine: UNCHANGED reads without a debit checkpoint",
+      "detail": {
+        "cash": 55,
+        "receipt_status": "UNCHANGED",
+        "status": "READ"
+      },
+      "pass": true
+    },
+    {
+      "check": "held: existing writer produces REFUSED",
+      "detail": {
+        "status": "REFUSED"
+      },
+      "pass": true
+    },
+    {
+      "check": "held: REFUSED reads without a debit checkpoint",
+      "detail": {
+        "cash": 5,
+        "receipt_status": "REFUSED",
+        "status": "READ"
+      },
+      "pass": true
+    },
+    {
+      "check": "sever: hiding actual-clock checkpoints refuses the genuine rent",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "pass": true
+    },
+    {
+      "check": "sever: exact checkpoint restore returns exact baseline read",
+      "pass": true
+    },
+    {
+      "check": "sibling: forged h2 copy of the h1 transition is refused",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "pass": true
+    },
+    {
+      "check": "sibling: genuine h1 is fail-closed while the copy exists",
+      "detail": {
+        "raised": "B05_RENT_OPERATION_UNPROVEN"
+      },
+      "pass": true
+    },
+    {
+      "check": "historical: genuine h1 remains historical=true after h2",
+      "detail": {
+        "historical": true
+      },
+      "pass": true
+    },
+    {
+      "check": "historical: current h2 remains historical=false",
+      "detail": {
+        "historical": false
+      },
+      "pass": true
+    },
+    {
+      "check": "historical: exactly two debits",
+      "pass": true
+    },
+    {
+      "check": "retry: replay is REPLAY without a second debit",
+      "pass": true
+    },
+    {
+      "check": "retry: late same-period operation remains already recorded",
+      "detail": {
+        "raised": "B05_RENT_ALREADY_RECORDED"
+      },
+      "pass": true
+    }
+  ],
+  "elapsed_seconds": 41.388,
+  "failed_checks": [
+    {
+      "check": "zero probe: forged ADMITTED zero-rent receipt is not accepted as actual operation proof",
+      "detail": {
+        "historical": false,
+        "household_cash": 55,
+        "receipt_status": "ADMITTED",
+        "status": "READ"
+      },
+      "pass": false
+    }
+  ],
+  "finished": 1794735374.92678,
+  "residual": {
+    "reproduced": true,
+    "zero_false_admitted": {
+      "accepted": true,
+      "detail": {
+        "historical": false,
+        "household_cash": 55,
+        "receipt_status": "ADMITTED",
+        "status": "READ"
+      },
+      "source_bound": {
+        "actual_writer_zero_status": "UNCHANGED",
+        "branch": "first_session",
+        "cash_after_append": 55,
+        "cash_before_append": 55,
+        "checkpoints_at_receipt_clock": [
+          {
+            "cash": 55,
+            "checkpoint_clock": 429,
+            "index": 47,
+            "material_hash": "8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+            "source": "acd91d4ef9b4b8f09814a8b476d861cfe3f2c4f360ae0acccc15f7ef08ddc88e",
+            "world_clock": 429
+          },
+          {
+            "cash": 55,
+            "checkpoint_clock": 429,
+            "index": 48,
+            "material_hash": "8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+            "source": "acd91d4ef9b4b8f09814a8b476d861cfe3f2c4f360ae0acccc15f7ef08ddc88e",
+            "world_clock": 429
+          },
+          {
+            "cash": 55,
+            "checkpoint_clock": 429,
+            "index": 49,
+            "material_hash": "8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+            "source": "acd91d4ef9b4b8f09814a8b476d861cfe3f2c4f360ae0acccc15f7ef08ddc88e",
+            "world_clock": 429
+          },
+          {
+            "cash": 55,
+            "checkpoint_clock": 429,
+            "index": 50,
+            "material_hash": "8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+            "source": "acd91d4ef9b4b8f09814a8b476d861cfe3f2c4f360ae0acccc15f7ef08ddc88e",
+            "world_clock": 429
+          }
+        ],
+        "clock": 429,
+        "forged_receipt": {
+          "household_cash_after": 55,
+          "household_cash_before": 55,
+          "household_material_hash_after": "8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+          "household_material_hash_before": "8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+          "monthly_rent": 0,
+          "status": "ADMITTED"
+        },
+        "operation_id": "g5review:r2:zero-false-admitted",
+        "period_id": "period:2026-h1",
+        "public_actions": [
+          {
+            "api": "session.product.say",
+            "status": "OK",
+            "text": "g5-r2-zero-probe-1"
+          },
+          {
+            "api": "session.product.say",
+            "status": "OK",
+            "text": "g5-r2-zero-probe-2"
+          }
+        ],
+        "root": "d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6"
+      }
+    }
+  },
+  "schema": "SOROK1037_R2_FOCUSED_REVIEW_PROBE@1",
+  "started": 1794735333.538643,
+  "verdict": "REVISE_EXACT_DEFECT"
+}

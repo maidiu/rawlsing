@@ -1,0 +1,93 @@
+{
+  "schema": "SOROK1037_B05_FOCUSED_R2_MATRIX@1",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "scope": "B05_focused_rereceiving_at_270eb29cd4487b6865b61adc9d671952554d425d",
+  "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+  "candidate": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "base": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+  "branch": "codex/sorok1037-b05-writer-proof-repair-20261115-r2",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "exact candidate 270eb29cd4487b6865b61adc9d671952554d425d; base c7018020; branch codex/sorok1037-b05-writer-proof-repair-20261115-r2",
+        "only B05 rolling_reproduction.py read side changed; +85 lines",
+        "B05 before b944b8f0b6e0d700e85141256df01cdaef8d59e2; candidate a193fb5bfb6a1955209bedf0e66be974dcfa8e1b; sha256 5ac75cb66c61fb120f56900e976a8cdcd4e153fd4b0d37d9a93a0c95ab578331",
+        "B04 blob unchanged 3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+        "no writer/store/schema/lock/ledger/registry/key/currency change",
+        "exact assets 3e98929..., 7cd5a23..., 6fc86dc... byte-identical; no author probe executed in place",
+        "exclusive reviewer root; product read-only"
+      ],
+      "limits": [
+        "sourcefree fixtures only; no native/actor/science right",
+        "fully privileged checkpoint fabrication outside observed append-only threat model"
+      ]
+    },
+    "G2_build_normal_first_consumers": {
+      "status": "PASS_NORMAL_READERS_AND_COLD",
+      "evidence": [
+        "unchanged review probe 34/34; original positive sole-rehashed receipt now refused B05_RENT_OPERATION_UNPROVEN",
+        "exact #1027 witness 63/63 checks; both defects accepted=false; literal exit 1 historical quirk",
+        "exact cold probe ok=true; two purchases + one rent; parent cash 20, household cash 43, market 0, two ownership rows; head unchanged",
+        "author focused R2 5 passed; legacy 6 passed; inherited 43 passed once on final source; selected C03/C04 3 passed",
+        "genuine zero UNCHANGED and held REFUSED read; historical h1 true, h2 false; replay/retry no second debit"
+      ],
+      "limits": [
+        "no full P6/MII/J1 suite",
+        "timings under concurrent host load"
+      ]
+    },
+    "G3_falsification": {
+      "status": "FAIL_REVISE_EXACT_DEFECT",
+      "passing_attacks": [
+        "original positive sole rehash with no checkpoint transition -> B05_RENT_OPERATION_UNPROVEN",
+        "checkpoint sever -> B05_RENT_OPERATION_UNPROVEN -> exact restore baseline",
+        "sibling copy of real h1 transition to h2 -> both refuse",
+        "positive forged rent on unchanged public no-cash checkpoints -> B05_RENT_OPERATION_UNPROVEN",
+        "exact #1027 foreign root/branch B04/B05 refusals",
+        "B04 ownership changed/restored and C02 chain forgery refusal",
+        "same-period second receipt, foreign actor/exchange/period/rent controls preserved"
+      ],
+      "defects": [
+        {
+          "id": "SOROK1037-R2-RED-B05-ZERO-FALSE-ADMITTED",
+          "first_reader": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:read_household_obligation",
+          "input": "public commit_dwelling rent 0; materialize h1 COMPLETE; two public session.product.say actions at clock 429; append sole ADMITTED zero-rent receipt with before/after cash 55/55 and matching checkpoint hashes",
+          "expected": "not READ as ADMITTED; actual writer for zero is UNCHANGED",
+          "actual": "READ; historical=false; receipt_status=ADMITTED; household_cash=55",
+          "cash_change": "none (55 -> 55)",
+          "classification": "false ADMITTED evidence/currentness proof; NOT a duplicate debit",
+          "cause": "the new proof matches any adjacent same-clock checkpoint pair with the receipt's before/after values, not a strict rent debit or this operation; public no-cash actions create such a pair",
+          "in_scope": true,
+          "threat_model": "public product actions + public append_episode; no privileged world rewrite"
+        }
+      ],
+      "repair": "NONE; focused receiving is read-only; no new repair round dispatched"
+    },
+    "G4_boundaries_preservation": {
+      "status": "PARTIAL_PASS_PRESERVATION__ZERO_STATUS_BOUNDARY_FAILS",
+      "preserved": [
+        "B04 source and refusals",
+        "B05 writer, receipt schema, store and lock",
+        "genuine zero UNCHANGED and held REFUSED",
+        "historical h1/h2, replay/retry, normal warm/cold",
+        "dwelling-source stale and exact restore",
+        "no new ledger/currency/psychology/motive inference"
+      ],
+      "failed_boundary": "ADMITTED status/operation semantics for zero rent; a public non-rent checkpoint pair proves a false ADMITTED rent",
+      "limits": [
+        "timings/RSS observations; provider and checkpoint/org/quota UNOBSERVED"
+      ]
+    },
+    "G5_focused_nonauthor_receiving": {
+      "status": "REVISE_EXACT_DEFECT",
+      "acceptance": "NOT_ACCEPTED",
+      "accept_scoped_target": "ACCEPT_SCOPED@B01_B05_SOURCEFREE_270eb29cd4487b6865b61adc9d671952554d425d",
+      "basis": "remaining exact append-only/public-action false ADMITTED zero-rent proof",
+      "original_red": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1 remains historical; R2 closes its positive sole-rehash case",
+      "protected_or_scientific_authority": "NONE",
+      "terminal": "STOP"
+    }
+  }
+}
