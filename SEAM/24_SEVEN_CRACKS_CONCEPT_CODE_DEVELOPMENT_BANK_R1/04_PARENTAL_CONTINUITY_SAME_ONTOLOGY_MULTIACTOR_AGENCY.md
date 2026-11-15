@@ -2,6 +2,10 @@
 
 **Status:** multi-actor/sourcefree parent-material adjacency in the **unmerged #1030 candidate**, not accepted whole runtime; acquired parental psyche → independently selected later act **NOT DEMONSTRATED**. **Connects:** [index](00_INDEX_AND_REVIEW_PROTOCOL.md) · [SC-02](02_MATERNAL_OBSERVATION_INVERSE_HISTORY_AND_FIRST_CONSUMER.md) · [SC-03](03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md) · [SC-05](05_CHILD_OPEN_ENDED_ACQUISITION_AND_EVIDENCE_CHAIN.md) · [SC-06](06_ORDINARY_LIFE_PROCESS_AND_CAUSAL_COVERAGE.md) · [SC-07](07_RELATIONAL_TOPOLOGY_MOTIFS_AND_C5_ABLATION.md). Grounding: [SEAM/20 §3](../20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md), [SEAM/19](../19_SOROK_Z_CONTRADICTORY_REPRODUCTION_AFFORDANCE_APPROPRIATION_KERNEL_R1.md), [SEAM/22](../22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md).
 
+## R4 principal clarification — family exists before focal child
+
+The mother forward-recurses through a few LLM-proposed event stacks over years; her **actual state at arrival to the candidate conception event** selects a plausible pathway. Father is **then** back-generated conditional on the earlier intersection and focal conception/birth, independently recurses from his own spawn to that first meeting, and both parents must genuinely develop through intervening joint years. If the focal child is not firstborn, **older children must already have been born, developed their own actor-local histories and influenced the family's world**. Their genealogy may involve a different biological parent. They, the parents, and other coactors keep developing after focal birth; they are not decor. The unresolved conditional-commitment problem is specified in [R4](10_R4_PRINCIPAL_MATERNAL_FORWARD_CONCEPTION_FATHER_BACKFILL_AND_SIBLING_HISTORY.md). This is not an asserted P2/P3 implementation.
+
 ## The demand is not “two parent personality objects”
 
 SEAM/20 insists on **at least seven noncollapsed states**: (i) mother's objective actor body/past/iceberg/current conscious perspective, (ii) father's, (iii) mother's fallible model of father, (iv) father's fallible model of mother, (v) objective relationship if admitted, (vi) objective household/material arrangement if admitted, (vii) **actor-specific joint event history and co-presence/access**—what each could hear, miss, misunderstand, conceal, store or forget. This exactly follows SEAM/20 §3. **Genealogy and child-generation are further separate ADP-015 obligations at birth**, not a replacement for the seventh joint-event/access state. A child subsequently adds its own body/access/perceived relations; kin, co-workers, siblings, care networks and institutions are not optional *possibilities*.
@@ -41,7 +45,8 @@ P2/ADP-015: two distinct verified actor identities + admissible objective
   -> objective material/relationship consequences under rightful owners
   -> separate received-event and interpretation processes for each actor
   -> subsequent actor-local CAN/ADP updates if a rule actually authorizes
-  -> later newly selected activity by both agents; neither freezes at birth
+  -> later newly selected activity by parents, any older siblings and
+     relevant coactors; none freezes at focal birth
 ```
 
 **The key positive result** is neither an LLM chat response nor an adult backstory. A P4 caller-supplied deed may prove event custody **without proving maternal autonomy**. It's a parental *performed act that changes when real acquired maternal or paternal history changes while the current objective opportunities are held fixed*. Do not silently invent choice weights from survey ideology.
@@ -58,7 +63,7 @@ A wage shift can change the parent's `cash_units/free_hours`; it cannot be presu
 2. Two actors experience the same objective interaction with incompatible perceptions; neither perception overwrites objective event or other's inner state.
 3. Mother's real paid work with parent-only update: **must not** automatically add child experience or household resources. Shared-transfer test refused unless authorized.
 4. Mother and father can form a relationship without household; child has a third caregiver; father disappears but retains legitimate indirect consequences.
-5. Birth changes child actor/relationship graph without cloning parent acquired states.
+5. Birth changes child actor/relationship graph without cloning parent acquired states. **Older siblings are not initialized as personality labels at the focal child's birth:** their qualified own histories are already part of the family dialectic.
 6. Reopen after birth: both parent actors can acquire new states and independently act; a parent prelife summary is **not** a frozen persona script.
 7. Bad-caller attack: P4 parent activity or speech called by an external agent cannot be attributed to independently generated parental volition.
 
@@ -68,4 +73,4 @@ A wage shift can change the parent's `cash_units/free_hours`; it cannot be presu
 
 **PYAT:** separate employer/institution/time and household/kin structural possibility from observed adult survey answers; identify source-qualified rights/power versus modeled individual choice; never write an actor's private motive. F6 partial ID, F7 time and N9/N10 world constraint apply.
 
-**Status:** strong conceptual requirement with separate, unmerged **SOURCEFREE_TEST_ONLY/SOURCEFREE_S2_ONLY** P2/P6 evidence; **full two-parent formed, independent, jointly acting continuation unproved**. Feeds SC-05/06 and the eventual player-facing child Other.
+**Status:** strong conceptual requirement with separate, unmerged **SOURCEFREE_TEST_ONLY/SOURCEFREE_S2_ONLY** P2/P6 evidence; **mother-selected conception, back-generated father, prior-sibling independent development and multi-actor continuity remain unproved**. Feeds SC-05/06 and the eventual player-facing child Other.
