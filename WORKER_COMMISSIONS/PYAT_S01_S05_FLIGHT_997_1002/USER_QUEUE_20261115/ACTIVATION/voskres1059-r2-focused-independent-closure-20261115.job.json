@@ -1,0 +1,22 @@
+{
+  "job_id": "voskres1059-r2-focused-independent-closure-20261115",
+  "session": "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+  "grant_id": "user-five-slate-voskres1059-r2-focused-independent-closure-20261115",
+  "argv": [
+    "/usr/local/bin/python3",
+    "-c",
+    "import subprocess,sys,json,threading,urllib.request,base64,time\nfrom pathlib import Path\nsid,cap,proof=sys.argv[1:4]\nproc=subprocess.Popen(sys.argv[4:])\nPath(proof).write_text(json.dumps({\"session\":sid,\"cli_pid\":proc.pid,\"cap_seconds\":int(cap),\"started_epoch\":time.time()}))\ndef stop():\n cfg=json.loads(Path(\"/Users/matthewsmith/.config/opencode/service.json\").read_text())\n req=urllib.request.Request(\"http://127.0.0.1:49374/api/session/\"+sid+\"/interrupt?resume=false\",data=b\"\",method=\"POST\")\n req.add_header(\"Authorization\",\"Basic \"+base64.b64encode((\"opencode:\"+cfg[\"password\"]).encode()).decode())\n try:\n  with urllib.request.urlopen(req,timeout=15) as response: status=response.status\n except Exception as exc: status=type(exc).__name__\n Path(proof).with_suffix(\".deadline.json\").write_text(json.dumps({\"session\":sid,\"interrupt\":status,\"at_epoch\":time.time()}))\n try:proc.wait(timeout=15)\n except subprocess.TimeoutExpired:proc.terminate()\ntimer=threading.Timer(int(cap),stop);timer.start()\ntry:code=proc.wait()\nfinally:timer.cancel()\nsys.exit(code)\n",
+    "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+    "1800",
+    "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-five-slate-20261115/voskres1059-r2-focused-independent-closure-20261115-cli.json",
+    "/Users/matthewsmith/.opencode/bin/opencode",
+    "run",
+    "--session",
+    "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+    "--model",
+    "opencode-go/deepseek-v4.1-flash#max",
+    "--format",
+    "json",
+    "SAME INDEPENDENT REVIEWER: finite correction closure ONLY for your original11 reproducible documentary defects. No new whole audit, source inventory, engineering or additional author contest. Explicitly cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/voskres1059-r2-correction-closure-20261115 for all tools, despite old session default location. Exclusive branch review/voskres1059-r2-correction-closure-20261115. Frozen corrected candidate af0c61111a0bf5b5df63db2fecde777279aaba4e, root WORKER_RETURNS/DDM_VOSKRES1059_R2/. Your unchanged original verdict1b525d00ee55a78e18d78e8f1afcb81bb9682bb8 at WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/ via gitshow. FirstR2 7ebd363dedc36cdc34b3a6ef53e32603f291c84e, firstpasses819dc54c69633dd75b6d13ac0ee8c3bbfd624853 immutable. Read CORRECTION_MATRIX.tsv mappingall11 and delta against7ebd. HQ verified ALL11 G1 commit/fileSHA256/physical1basedrow/header/exactoldcell matches and all manifestpayloadhashes/TSVwidths; two quote/column mismatches corrected bysameauthor beforefreeze. Check those results, then decisive corrected primary source claims for your11 IDs only: Bdepthrow, unambiguouscelljoin; canonicalvslegacyV553numericinputs/manifests; candidatebundle; respondentmembership loss; concreteGSSfamily andtrueordinary/jointdiamond; productionfirstreader vsproducer/guard/test; cutscopedabsence andlegacyJparitygate. Reuse alreadyprovedsource inyourreview; don'trepeatwholehistoricalsearch orunrelatedscience. Rejectnewoverclaims ifdeltaintroducesthem, don'tmanufactureanotherroundforresidualexplicitmissinghistory. Historical executedrows/positive load0of9 remainsHELD, conditional-index completeproducer/consumer remainsunproved. No synthetic/historyruntime/scientificequivalencepromotion. If11 corrected, ACCEPT_SCOPED_S1 documentary correction at exact candidate with finite external evidence obligations, originalREVISE preservedas superseded historicalreview. Otherwise REVISE_EXACT_DOCUMENTARY_DEFECT with precise runnable/sourcewitness only. No production acceptance.\nSolewrites WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/ with verdictJSON,11-IDconformanceTSV, conciseevidence/sourcechecks,manifesthashes,00_RETURN. No product edits/tests/CI/rawsource/scienceexecution/providerchanges/subagents/protectedmerge. Existing read-only gitshow/shell and ownrootwrite permissions; ifgitcommit denied returnfilesHQ. Aim15minutes/cap30, no recurringpolling. Same OpenCodeGoDeepSeekFlashMAX, served1017unknown. Publishifallowed andSTOP after finite closure."
+  ]
+}
