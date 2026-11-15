@@ -1,5 +1,10 @@
 # SCOPE_CONTRACT — ZAK-02 corrected read-only R1 sidecar
 
+## R10 scope amendment — three named independent V550 functions discovered without estate closure
+
+**Historical axis:** ZAK02 named selected V549b–V552J family plus recursive original-first omissions, original `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`; exact source now includes T0026 V550 position indicator response-information score and T0027/28 question/within-country answer distributions. This does **not** claim whole V540–V558 or closed discovery. **Modern axis:** defined selected V550 checkpoint/writer → V551 bridge/atoms and first modern C11/I03/FF/V553/world readers only at verified source boundaries; ZAK03/ZAK04 own adjacent science/actor use. **Coverage:** 28 provisional historical T; assigned complete historical T denominator **OPEN DISCOVERY—NOT YET CLOSED**. 336 cells: 63 source-located, 15 unresolved, 258 not inspected. Missing pre-Vozhd/Verkhovod/Dva/Trii/Chetiri/Long Memory/current alternate-path searches remain explicitly NOT_INSPECTED, not inferred absent. **Rights:** documentary S0–S1 and PR1046 only; no source, actor, scientific or review promotion; no tests, CI, agents, code or protected merge. Original nine obligations preserved.
+
+
 ## R9 — omitted V550 subgroup functions and identity loss at V551 bridge
 
 Three new source-distinct provisional historical T0023 V550 two-position conditional entropy gain, T0024 V550 entropy-selected recursive branch topology and T0025 V550 support-gated subgroup dominant response deviation classification. SOURCE FIRST proof only. Shared reduced V550→V551 bridge does not carry original indicator/category/branch node keys; source_row_hash and empirical_object_id omit producer specific identity, so distinct original rows can collide at interface. Optional V551 conditional builder deduplicates on hash but selected/native invocation NOT established. Full source/counterevidence report in R9_V550_SUBGROUP_BRIDGE_AND_IDENTITY_COUNTERSEARCH.md. Historical primary inventory 25 T provisional, 300 coverage cells; source/science/actor first reader and historical estate OPEN. Original 9 duties preserved. NO engineering/CI/tests/S2/S3/merge.
