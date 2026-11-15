@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T23:32:15.571530+00:00",
+  "updated_utc": "2026-11-15T23:59:42.660038+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -537,6 +537,22 @@
       "static_risk": "C12_EVENT_PERCEPTION basis for nonperceiving viewer; no downstream runtime misinference executed",
       "event_time_knowledge": "HOLD_SOURCE_AUTHORITY; no qualified cross-owner order",
       "next": "one original-author bounded projection correction then same nonauthor review"
+    },
+    {
+      "task": "B05 R3 independent G5",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_STOP",
+      "code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "pr": 1089,
+      "negative": "own public-action/append probe12/12; originalzero17/17; originalpositive34/34; original63controls",
+      "cold": "fresh-process two purchases/one rent head unchanged",
+      "science": "HELD",
+      "authority": "HELD; no protected merge",
+      "limits": [
+        "no-debit status operation authenticity not certified",
+        "fully privileged checkpoint fabrication excluded"
+      ],
+      "next_action": "STOP; no new integration/dependent dispatch"
     }
   ],
   "guide_records_affected": [
@@ -546,27 +562,12 @@
   "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT",
   "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff.",
   "dispatch_decisions": {
-    "B05_R3": "AUTHOR_CANDIDATE_CAB1F2D6_SAME_NONAUTHOR_G5_RUNNING",
+    "B05_R3": "ACCEPT_SCOPED_SOURCEFREE_STOP_NO_R4",
     "C05_CHALLENGE": "EXECUTED_RED_BANKED_1088_ONE_ORIGINAL_AUTHOR_PROJECTION_CORRECTION_RUNNING",
     "other_classified_jobs": "HELD_UNCHANGED_NO_FILLER"
   },
-  "queue_status": "TWO_NEW_USER_AUTHORIZED_JOBS_ACTIVE",
-  "live_assigned_jobs": [
-    {
-      "job": "sorok1037-b05-r3-independent-g5-20261115-r3",
-      "session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
-      "pid": 27543,
-      "base": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
-      "state": "ACTIVE_VERIFIED"
-    },
-    {
-      "job": "sorok-c05-actor-projection-repair-20261115-r3",
-      "session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
-      "pid": 28232,
-      "base": "1cf1a37113cb7a48137734648b523a0a6deccd92",
-      "state": "ACTIVE_VERIFIED"
-    }
-  ],
+  "queue_status": "B05_R3_RECEIVED_STOP_C05_BOUNDED_CORRECTION_ASSIGNED",
+  "live_assigned_jobs": [],
   "terminal_receipts_verified": 10,
   "missing_terminal_receipts": [],
   "new_two_job_handoff": {
