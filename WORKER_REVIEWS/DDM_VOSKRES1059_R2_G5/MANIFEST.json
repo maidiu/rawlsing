@@ -1,0 +1,72 @@
+{
+  "schema": "DDM_VOSKRES1059_R2_G5_REVIEW_MANIFEST@1",
+  "candidate": {
+    "ref": "docs/voskres1059-r2-composed-author-20261115",
+    "commit": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
+    "parent": "819dc54c69633dd75b6d13ac0ee8c3bbfd624853"
+  },
+  "reviewer": {
+    "session": "ses_e21ca08a9ffe4wtn6NR7YhSTer",
+    "role": "DISTINCT_INDEPENDENT_SOURCE_AWARE_G5",
+    "author_of_A_B_R2": false
+  },
+  "mode": {
+    "grade": "DOCUMENTARY_SOURCE_ONLY",
+    "source_pin": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+    "modern_cuts_checked": [
+      "3e0ed0794498506520ae62c997a5c852ac672061",
+      "6a5c12f04323d74001f9632063ec907f4fc4468e"
+    ],
+    "scientific_execution": false,
+    "tests_or_ci": false,
+    "raw_respondent_bytes": false,
+    "product_edit_or_protected_merge": false,
+    "subagents": false
+  },
+  "verdict": {
+    "overall": "REVISE_EXACT_DEFECT",
+    "G1": "REVISE_EXACT_DEFECT",
+    "G2": "REVISE_EXACT_DEFECT",
+    "G3": "REVISE_EXACT_DEFECT",
+    "G4": "REVISE_EXACT_DEFECT",
+    "G5": "REVISE_EXACT_DEFECT"
+  },
+  "G5_review_status": "PERFORMED_REVIEW_COMPLETE",
+  "files": [
+    {
+      "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/00_REVIEW.md",
+      "sha256": "5bccd2167949f698437e90d231e7d60962e3cea960186ad4e4a73ee554803aa2",
+      "purpose": "main independent review"
+    },
+    {
+      "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/REVIEW_VERDICT.json",
+      "sha256": "48948ea2aff492245441cc0f7030b7bc04bf3a62afab7f07eb33cb2b572377b3",
+      "purpose": "machine G1-G5 verdict"
+    },
+    {
+      "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/G5_SOURCE_CHECKS.tsv",
+      "sha256": "9f369bf031bffab75a55a9d29169dc63f2a8029576d7699705d40becece0ec3b",
+      "purpose": "exact source/path/blob/line checks"
+    },
+    {
+      "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_G5/G5_DEFECTS.tsv",
+      "sha256": "d9a9818c72631f8c6c59bfe94d7bc33702a0611730e7e798c504b02aae4c0996",
+      "purpose": "material defects and least corrections"
+    }
+  ],
+  "candidate_payload_hashes_verified": {
+    "manifest": "WORKER_RETURNS/DDM_VOSKRES1059_R2/MANIFEST.json",
+    "count": 9,
+    "result": "9_OF_9_MATCH"
+  },
+  "preserved": {
+    "raw_first_pass": "A/B/HQ R1 unchanged at 7ebd363d relative to parent 819dc54c",
+    "historical_holds": [
+      "G3-HISTORICAL-OUTPUTS",
+      "G4-CONDITIONAL-PRODUCER-READER"
+    ],
+    "no_self_acceptance": true,
+    "no_production_or_scientific_execution": true
+  },
+  "publication": "HQ publishes to #1060/#1059; reviewer does not commit/push or merge."
+}
