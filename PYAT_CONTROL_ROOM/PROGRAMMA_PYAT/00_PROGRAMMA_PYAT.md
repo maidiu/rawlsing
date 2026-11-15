@@ -1,5 +1,7 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **NOVEMBER 15 ENGINEERING SOURCEFREE ADOPTION — REVIEW CANDIDATE ONLY:** [S01–S05 exact accepted-source integration, priority R03 missing QUERY issuance and W05/J1-correct distinct-query economics](05_ROADMAP/S01_S05_ACCEPTED_ENGINEERING_ADOPTION_20261115_R1.md). #998 existing staging includes accepted S1-A/C and S2-B/C/D/E plus #980; separate isolated candidate now adds 17 **exact accepted** #997 R6 and #999 S2-A product/test blobs at `46453681e8fcd2d7eca6b14257fc8d99a98ac23c`. Full joined vertical and G5 **NOT_RUN**; protected CAS4 `CURRENT_PROGRESS` rev8 **UNCHANGED**, #1000 `MERGE_AUTHORITY_HELD`. This is a current candidate locator, not protected PRE-MAIN adoption or any new source/science/actor grant. Preserve R3C/R3S, all S01–S11 and PP26, Oct28, original35 eventual scope and MCR-lite.
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
 
