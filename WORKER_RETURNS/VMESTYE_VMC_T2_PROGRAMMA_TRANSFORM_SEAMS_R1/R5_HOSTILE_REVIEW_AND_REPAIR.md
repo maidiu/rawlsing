@@ -6,7 +6,7 @@
 
 - R3 author `5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac`; R4 author `edfe7bb9fab1fd295621e9447745ddab4bb67bfb`; R5 exact frozen HEAD is the GitHub commit on this R5 file/PR #1085 after final publication.
 - Protected `integration/pre-main-reconciliation-r1@6a5c12f04323d74001f9632063ec907f4fc4468e` verified read-only; legacy V549b/V552J source `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`.
-- T1 R6 [PR #871] (https://github.com/maidiu/rawlsing/pull/871) author `bb83248e6e7140122d0f01171409954fc9d0cf70` is independently unaccepted, but source-grounded and directly relevant; #870 had already received its detailed handoff before R4, which R4 negligently failed to join. Current original ZL16 A/B P2 remained frozen at `5c81147a1038fd83fe48e91c855215a0e05796f7` / `1bc0061506d06d987a9e229f374a770dca0787c4`.
+- T1 R6 [PR #871](https://github.com/maidiu/rawlsing/pull/871) author `bb83248e6e7140122d0f01171409954fc9d0cf70` is independently unaccepted, but source-grounded and directly relevant; #870 had already received its detailed handoff before R4, which R4 negligently failed to join. Current original ZL16 A/B P2 remained frozen at `5c81147a1038fd83fe48e91c855215a0e05796f7` / `1bc0061506d06d987a9e229f374a770dca0787c4`.
 - ZL17 A/B SOURCE_T2 P2 author reviews already incorporated at `069c7b3f005154c11dd5d2a2f1dc30105621528d` / `2ce786c29cb6942b17d63947d9db104a3ffb9f4a`; no new cycles.
 - Old T2 R3 validator `validate_vmc_t2_r3.mjs` remains intact at its existing path for historical reproducibility; it must NOT be called evidence of R4/R5 PASS.
 
