@@ -8,11 +8,11 @@
 on the nonprotected campaign branch `docs/vmestye-zakonchilos-browser-duels-r2-20261115` (or its explicitly designated successor). This namespace contains immutable frozen-author **pointers**, material source/claim disagreements, C1–C5 gate state and next stage dependencies. It is **NOT** the normalized VMESTYE function atlas and cannot accept any product/owner claims.
 
 **Per-flight, per-side, per-phase documentary returns (one agent = one writer):**
-`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL15/<A|B>/<P0|P1|P2>/`
-`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL16/<A|B>/<P0|P1|P2>/`
-`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL17/<A|B>/<P0|P1|P2>/`
-`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/P4R/<A|B>/<P0|P1|P2>/`
-Each author/reviewer uses its **own isolated branch/draft PR**; the location strings are stable and joinable but **must not be concurrently written on the shared HQ branch**. In B's later stage, reference A's original `PR@40hex::path#blob:line` and claim IDs rather than copy the whole corpus.
+`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL15/<A|B>/<INTEGRATE|JOIN_REVIEW>/<P0|P1|P2>/`
+`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL16/<A|B>/<SOURCE_T1|JOIN_REVIEW>/<P0|P1|P2>/`
+`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL17/<A|B>/<SOURCE_T2|JOIN_REVIEW>/<P0|P1|P2>/`
+`UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/P4R/<A|B>/TERMINAL/<P0|P1|P2>/`
+The <track> namespace prevents first-stage T1/T2 reviews from overwriting later JOIN_REVIEW evidence. Each author/reviewer uses its **own isolated branch/draft PR**; the location strings are stable and joinable but **must not be concurrently written on the shared HQ branch**. In B's later stage, reference A's original `PR@40hex::path#blob:line` and claim IDs rather than copy the whole corpus.
 
 **Only accepted canonical VMESTYE integration writer:** existing #814 ZL-15 A on draft [PR #864](https://github.com/maidiu/rawlsing/pull/864) or a clearly named noncolliding handoff branch after an explicit verified lease; full normalized `VMESTYE/DATA/{FUNCTION_ATLAS,OPERATION_TRACES,RELATIONS,EVIDENCE,AUTHORITY_APPLICATIONS,DECISION_EVENTS,IMPLEMENTATIONS,CONSUMER_EDGES}.tsv` remains the *sole authoritative candidate atlas*. The SHARED exchange has no right to mirror or overwrite the canonical atlas.
 
@@ -27,7 +27,7 @@ Each author/reviewer uses its **own isolated branch/draft PR**; the location str
 
 ## C. Common document/core package per side
 For any substantive new original T or edge, use unchanged original R1 `FINDINGS.tsv`, `OPERATION_TRACES.tsv`, `AUTHORITY_USE.tsv`, `EVIDENCE.tsv`, `COVERAGE.tsv`, `UNJOINS.tsv`, `MECHANISM_RECONCILIATION.tsv`, `DATA_SHAPES.tsv`, `SOURCE_SEARCH_LOG.tsv`, `REVERSE_CONSUMERS.tsv`, `00_RETURN.md`, `HUMAN_STORY.md`, `SCOPE_CONTRACT.md`, `CHANGED_FILES.txt` and standalone `CASES/` **for genuine newly material T**. Literal columns/header/type per the linked R1; no per-agent novel schema. New refs/fields belong in R1 `EXTENSIONS.tsv`; never change 13 inherited headers to fit one user.
-For a **review-only** Browser side, do not duplicate every existing T table or generate fake zero-coverage T rows. Return a `00_RETURN.md`, `SCOPE_CONTRACT.md`, `EVIDENCE.tsv` (R1 literal header), `SOURCE_SEARCH_LOG.tsv` (R1 literal header), `REVIEW_CASES.md`, `CONTESTS.tsv` (header below), `CHANGED_FILES.txt`, plus only materially relevant R1 delta files. This is a role-specific minimal compatible package; it does not relax any original issue output requirement. For #817 final court, also return its original five required documents in addition to the shared pointers.
+The role-local \`CONTESTS.tsv\` uses exactly the same literal header as \`SHARED/CONTESTED_CLAIMS.tsv\`; a side's status is a proposed finding, not an accepted shared disposition.\nFor a **review-only** Browser side, do not duplicate every existing T table or generate fake zero-coverage T rows. Return a `00_RETURN.md`, `SCOPE_CONTRACT.md`, `EVIDENCE.tsv` (R1 literal header), `SOURCE_SEARCH_LOG.tsv` (R1 literal header), `REVIEW_CASES.md`, `CONTESTS.tsv` (header below), `CHANGED_FILES.txt`, plus only materially relevant R1 delta files. This is a role-specific minimal compatible package; it does not relax any original issue output requirement. For #817 final court, also return its original five required documents in addition to the shared pointers.
 
 ## D. Stable ID and reference grammar
 - Agent scope `ZL15:A`, `ZL15:B`, `ZL16:A`, `ZL16:B`, `ZL17:A`, `ZL17:B`, `P4R:A`, `P4R:B`; phase `P0|P1|P2`; each claim `VMCR2:ZL15:A:CLAIM:0001`, evidence `VMCR2:ZL15:A:EV:0001`, contest `VMCR2:ZL15:B:CONTEST:0001`. Source historic IDs must never be replaced with newly coined IDs or double-counted; stable prior T source ID remains referenced.
