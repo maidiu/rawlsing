@@ -1,0 +1,30 @@
+{
+  "schema": "FIABC_RUN3_REPRESENTATION_HOSTILE_NEGATIVES@1.0.0",
+  "status": "PASS_SOURCE_FREE",
+  "bridge": "rawlsing_next/fiabc_lits_common_representation.py",
+  "rejected": [
+    "wrong source SHA",
+    "Python int where authority requires decoder float64",
+    "Decimal where authority requires decoder float64",
+    "numeric-looking string",
+    "adjacent float 1.0000000000000002",
+    "changed physical missing state",
+    "changed source-missing declaration",
+    "wrong variable ordinal paired with target name",
+    "wrong target name paired with ordinal",
+    "wrong source family",
+    "wrong instrument release"
+  ],
+  "accepted": [
+    "authority-enumerated decoder float64 representation",
+    "exact system-missing representation",
+    "unchanged off-target cell pass-through"
+  ],
+  "semantic_shortcuts": {
+    "generic_numeric_coercion": false,
+    "label_or_frequency_inference": false,
+    "missingness_inference": false,
+    "candidate_c_specific_bridge": false
+  },
+  "test": "test_bounded_lits_representation_bridge_hostile_negatives"
+}

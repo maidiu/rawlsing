@@ -1,0 +1,70 @@
+{
+  "schema_id": "GT34_OBL031_HQ_ADOPTION@1.0.0",
+  "decision": "ADOPT_AS_CURRENT_FOR_EXACT_GRAIN_ONLY",
+  "obligation": "OBL031",
+  "authority_ref": {
+    "authority_id": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY",
+    "authority_version": "1.1.3",
+    "authority_content_hash": "e080f7089f27f5851152dfb2ea9b9765159cd647be995a1f41fa65945d27c87c"
+  },
+  "semantic_candidate": "a616a07638218a741c3e07753b1f4fd77a87dc73",
+  "implementation": {
+    "path": "rawlsing_next/gt34_obl031_q69b_comparator_resolver_r4.py",
+    "blob": "ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e",
+    "dependency_blobs": {
+      "r2": "5df5e1fe5459d642aa3aa7f5dc0c3c36cb3ef757",
+      "r3": "71191c004a650b4f6fc778110a84a7ffd9c8786f",
+      "r4": "ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e"
+    },
+    "repair_grain": "EXACT_FROZEN_D08GrammarBinding_TYPE_AND_VALUE_ONLY"
+  },
+  "obl057_binding": {
+    "authority_id": "GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "acec40d03b5602aaa553f1f63cf2506bffe0491c008678ff973e39c3f7dcedd4",
+    "adoption_commit": "ffd580daf88cce0a3be3a87c461c165916bad9cc",
+    "adoption_artifact_blob": "d6270869655c86729150f81fc0e11e0f82ac7a22",
+    "adoption_json_blob": "1f9ce9e9019cbe6451a8a49e5e4bd893b2196755",
+    "current_selection_receipt_blob": "ee54aa2965e13ba39b77f169170dc857b0fea6aa"
+  },
+  "r3_hostile_failure": {
+    "matrix_freeze": "881c2c509dbcb23836b9bbb66c10348d21bbd75b",
+    "execution": "a96ae6844e2c630d08b9f605cfb1a67f12d31daa",
+    "run": 34193702341,
+    "job": 101956805489,
+    "passed": 95,
+    "failed": 1,
+    "defect": "EQUALITY_SPOOF_TYPE_CONFUSION_COULD_BYPASS_CANONICAL_D08_BINDING"
+  },
+  "r4_court": {
+    "execution": "4b662f9e840a607e2875b630ff1134071441e8f9",
+    "run": 34193895137,
+    "job": 101957368066,
+    "protocol_tests": 20,
+    "focused_tests": 67,
+    "artifact": 10043158897,
+    "zip_sha256": "aeacbabaf14c28b02961736ff0e296ea26364b4b9802528cce7f727ac9d13ef3"
+  },
+  "hostile": {
+    "matrix_freeze": "12835dae0a23c9deaaa47457839f18f99cfa7460",
+    "execution": "4831f2821dfc6944e5c9d801379db5220ddecf48",
+    "run": 34194103134,
+    "job": 101957989720,
+    "protocol_tests": 20,
+    "hostile_tests": 98,
+    "artifact": 10043230691,
+    "zip_sha256": "fb3468f6e0e7f75141b7e4fb7b827cb2334fa31f3fea8458e035f0fc7e4d81f8"
+  },
+  "runtime_state": {
+    "real_first_canary_actor_encounter": "ABSENT",
+    "current_real_invocation": "ACTOR_FACT_MISSING_OR_UNAUTHORIZED",
+    "current_comparator_predicate": "NOT_CREATED",
+    "positive_mechanics": "NONCURRENT_SYNTHETIC_TEST_ONLY"
+  },
+  "downstream": {
+    "OBL031": "CLOSED",
+    "OBL032": "BLOCKED_ON_OBL061",
+    "positive_v3_execution": "NOT_AUTHORIZED",
+    "project_current_first_canary_oee": "NOT_AUTHORIZED"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0225-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0224-0400",
+  "status": "P2X_R6T_BACKEND_FANNED_IN__LOCAL_MEASURED_EXECUTION_REAUTHORIZED_AT_LITS_A_S02",
+  "decisions": [
+    "HQD-2026-09-19-079",
+    "HQD-2026-09-19-080"
+  ],
+  "resume_path": "HQ_HANDOFF/EE_P2X_R6T_BACKEND_FANIN_AND_RESUME_20260919.md",
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "prior_stopped_head": "d0187a01f21959f4834a7f774f92d06187f1efb3",
+    "current_head": "39dab544dd80fbca69032cfde097494130d4b182",
+    "execution_surface": "LOCAL-MACHINE CODEX",
+    "maximum_intelligence": "LUNA",
+    "library_access": "EXACT_ONLY",
+    "resume_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "status": "AUTHORIZED_TO_RESUME_LOCAL_MEASURED_EXECUTION"
+  },
+  "fanin": {
+    "commit": "39dab544dd80fbca69032cfde097494130d4b182",
+    "parent": "d0187a01f21959f4834a7f774f92d06187f1efb3",
+    "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "blob_sha1": "fb30167ebc060939e17eb15c71b93c000033eb4f"
+  },
+  "terminal": "P2X_ACTIVE_LOCAL_MEASURED_EXECUTION__R6T_BACKEND_FANNED_IN"
+}

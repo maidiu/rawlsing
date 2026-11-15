@@ -1,0 +1,59 @@
+{
+  "schema": "rawlsing_v550_v552j_gate_status_v1",
+  "register_revision_sha256": "b89bffbde1ece404c6a21af218764654bab3b034b75951339d1b16d116c3aa72",
+  "integration_branch": "agent/v550-v552j-repair-integration",
+  "integration_commit_before_gate_record": "f281f8f6af36e0cd5515647b94b950defef2bdf3",
+  "merged_worker_prs": [
+    {"worker":"W01-A","pr":8,"merge_commit":"a36e1c9dd25b5cffbe0a7b20c518ceb0e0db95d7"},
+    {"worker":"W02-A","pr":9,"merge_commit":"985f6ec4c50e1078c5627d09c981467af862f9b3"},
+    {"worker":"W05-A","pr":10,"merge_commit":"7d4703148057fe1d2fdd7bbf94df306abf8b21de"},
+    {"worker":"W03-A","pr":11,"merge_commit":"1b039c260c8714cc5174e8e70342db2d9e6e0d61"},
+    {"worker":"W04-A","pr":12,"merge_commit":"f52a84ac1d73452a53260ff5e1acb4f1fb1a56b2"},
+    {"worker":"W06-A2","pr":13,"merge_commit":"0e9a7a994c7facf922dbc9a072e3d802f8e84999"},
+    {"worker":"W05-B","pr":14,"merge_commit":"216454dd599c04de125606c6ceb8cf5a69dc2580"},
+    {"worker":"W03-B","pr":15,"merge_commit":"167de1659a0fd6c6996eb6ec5230f7ab0fbbc5dd"},
+    {"worker":"W01-B","pr":16,"merge_commit":"67b4ba8c5c9367ab06b2ee4ccb86d83445decc49"},
+    {"worker":"W02-B","pr":17,"merge_commit":"91f1a82e67b53ef3eeeacf9c2ed8b9b26cd26ea0"},
+    {"worker":"W06-B","pr":18,"merge_commit":"598ec25ad1563418503213119115919cf258c8c2"},
+    {"worker":"W06-C","pr":19,"merge_commit":"4f2d61746a611079f88cfff7d4531eb367668c0f"},
+    {"worker":"W01-final","pr":20,"merge_commit":"4ec1d2b727a2d7416959f5768ad06b913646efdf"},
+    {"worker":"W05-final","pr":21,"merge_commit":"529533886a363900ee4a1c4d76b85b1deedf7532"},
+    {"worker":"W03-final-scope","pr":22,"merge_commit":"1dbcf161df51dfa251bba71a5dce3dacd613757b","assisted_integration_issue":"SRC-001"}
+  ],
+  "vozhd_final_integration_commits": [
+    {"commit":"4f2c0f85378444f18850b1782fef4b6032c53181","purpose":"V552J exact shard coherence when country is also present"},
+    {"commit":"cc2f301d70906fd9017cd0197d49b4c8ef3e3f9d","purpose":"actual V552J comparator regression"},
+    {"commit":"39684ed541f8ac66a7ab7a7d06fc03ac57f30665","purpose":"67/67 resolution ledger"},
+    {"commit":"f281f8f6af36e0cd5515647b94b950defef2bdf3","purpose":"SRC-001 reconciliation record"}
+  ],
+  "gates": {
+    "G0": {"status":"PASS"},
+    "G1A": {"status":"PASS"},
+    "G1B": {"status":"PASS"},
+    "G2": {"status":"PASS"},
+    "G3A": {"status":"PASS"},
+    "G3B": {"status":"PASS"},
+    "G4": {"status":"PASS"},
+    "G5": {
+      "status":"PASS",
+      "basis":[
+        "all 67 effective mandatory issues terminally RESOLVED in RESOLUTION_LEDGER.json",
+        "SRC-001 main/runtime reconciliation terminally recorded",
+        "W01-final Section85 exact producer binding merged",
+        "W05-final cross-stage lineage/orchestration closure merged",
+        "W06-C bounded EVS/typed-state/downstream negative-control regression merged",
+        "final single-country V551J/V552J scope seam repaired without weakening exact matching"
+      ],
+      "validation_limitation":"No respondent-backed EVS end-to-end run or generated real-data CLOSED_35_WAVES producer sweep was executable in the connected worker environments. G5 PASS is code/contract/integration acceptance and does not assert those unexecuted full-data runs."
+    }
+  },
+  "terminal_accounting": {
+    "effective_mandatory":67,
+    "resolved":67,
+    "deferred_monitored":5,
+    "closed_findings":7,
+    "superseded_mandatory":["V550-004"],
+    "superseded_deferred":["WATCH-004"]
+  },
+  "next_action": "Merge agent/v550-v552j-repair-integration to main. Preserve the explicit full-data validation limitation for the next runtime-capable execution environment."
+}

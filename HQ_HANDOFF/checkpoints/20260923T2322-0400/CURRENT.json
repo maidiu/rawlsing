@@ -1,0 +1,63 @@
+{
+  "schema": "RAWLSING_HQ_CURRENT_FIABC_TERMINAL_LAUNCHER_READY@1.0.0",
+  "checkpoint_id": "20260923T2322-0400",
+  "status": "RAWLSING_FIABC_PRE_CANDIDATE_STOP_SEALED__DETERMINISTIC_TERMINAL_LAUNCHER_QUALIFIED__MEASURED_SIX_CELL_COURT_NEXT",
+  "governing_decisions": [
+    "HQD-2026-09-23-087",
+    "HQD-2026-09-23-088"
+  ],
+  "semantic_pre_main_tip": "de29f38c2a4da297ba1709092c038d03631e9504",
+  "protected_execution": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "head": "b53ff08921af263b9db4d1ad038f35fbc12b990a",
+    "mutation_forbidden": true
+  },
+  "frozen_answer_key": {
+    "LITS_I_oracle_identity_sha256": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+    "WVS7_oracle_identity_sha256": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00",
+    "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "launcher": {
+    "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "implementation_commit": "355a71cc27b8e95188a66d81eccc52abe2ee9d0a",
+    "git_blob_sha1": "fb79e4962fa4bc55dc94527d8834bf0c764b5471",
+    "qualification_commit": "9ab9d43a5d9218a69ae025214739a3470240cddd",
+    "qualification_receipt": "HQ_HANDOFF/launchers/FIABC_DISPOSITIVE_SIX_CELL_LAUNCHER_QUALIFICATION_20260923.json",
+    "syntax_pass": true,
+    "hostile_static_assertions_pass": true,
+    "invokes_produce_lits": false,
+    "invokes_freeze_t3": false,
+    "invokes_git_mutation": false,
+    "deterministic_control_flow": true,
+    "performance_outputs_empirical": true
+  },
+  "next_action": {
+    "kind": "TERMINAL_MEASURED_SIX_CELL_FIABC_P2X",
+    "operator_inputs": [
+      "FIABC_REPO_ROOT",
+      "LITS_PATH",
+      "WVS_PATH",
+      "WORK_ROOT",
+      "PYTHON_BIN(optional)"
+    ],
+    "model_guidance_required": false
+  },
+  "dependency_graph": {
+    "P2_SIX_CELL_EXECUTION": {
+      "status": "AUTHORIZED"
+    },
+    "P2_HQ_SYNTHESIS": {
+      "status": "BLOCKED_PENDING_MEASURED_SIX_CELL_RETURN"
+    },
+    "P3_HOSTILE_KILL": {
+      "status": "BLOCKED_PENDING_P2_PROVISIONAL_FAVORITE"
+    },
+    "FINAL_ARCHITECTURE_SELECTION": {
+      "status": "BLOCKED_PENDING_P3"
+    },
+    "FF02": {
+      "status": "DOWNSTREAM_NOT_PREREQUISITE"
+    }
+  }
+}

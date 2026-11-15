@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "L01_SIGNED_R08_CELLS_REACH_NATIVE_NONPARENT_SOURCE_BALANCE",
+      "actual_consumer": "progressive_world_view -> consume_world_conditioned_prefixes -> rawlsing_next.sourcefree_world.nonparent.consume: source_balance_reads[0].source_balance_count",
+      "claimed_dependency": "Signed R08 EvidenceConsumerReader.read cells -> pre553_universal_world_binding._progressive_step signed step cells -> selected-world per-prefix native nonparent empirical values and source balance",
+      "positive_node": "rawlsing_next/tests/test_l01_evidence_world_consumer.py::test_signed_r08_evidence_reaches_actual_nonparent_numbers_and_world_routes",
+      "fault": {
+        "path": "rawlsing_next/pre553_universal_world_binding.py",
+        "old": "        step[\"cells\"] = [dict(cell) for cell in signed_values[\"cells\"]]",
+        "new": "        step[\"cells\"] = [dict(cell, raw_numerator_support=0) for cell in signed_values[\"cells\"]]"
+      }
+    }
+  ]
+}

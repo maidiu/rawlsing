@@ -1,0 +1,52 @@
+{
+  "schema": "PREMAIN_FIABC_LITS_CANONICAL_EMPIRICAL_CLOSURE_SOURCE_FREE_QUALIFICATION@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "qualified_implementation_head": "8e35e9b0d41c6a404a84ea511761d5123323af35",
+  "governed_court": {
+    "workflow_name": "Rabochii Governed Bounded Court",
+    "run_number": 718,
+    "run_id": 35901809773,
+    "job_id": 107319619554,
+    "conclusion": "success",
+    "protocol_self_test": {
+      "passed": 20,
+      "failed": 0
+    },
+    "bounded_court": {
+      "passed": 145,
+      "failed": 0,
+      "duration_seconds": 49.89
+    },
+    "evidence_execution_sha": "8e35e9b0d41c6a404a84ea511761d5123323af35",
+    "pr_synthetic_sha": "12c196619176d56411a1823558780cde9a77c5e6",
+    "uploaded_receipt_artifact": {
+      "artifact_id": 10768834199,
+      "zip_sha256": "5a3410d5734dfce9278971abd0ce29a6b3f7d428bb7d00772c805e8b9f0e0a14"
+    }
+  },
+  "hostile_proofs": [
+    "complete fact/query/predicate public-object round trip",
+    "fact raw-support hash tampering rejection",
+    "complete-cell fragment mutation rejection",
+    "risk-member fragment mutation rejection",
+    "query preimage mutation rejection",
+    "predicate/query substitution rejection",
+    "C11 release/replay drift rejection",
+    "50-candidate / 77-role closure",
+    "v1/v2 incomplete checkpoint fail-closed",
+    "zero-source v3 resume",
+    "zero ASTRA-storage dependency on canonical resume",
+    "zero structural admission",
+    "WVS7 frozen identity conservation through inherited governed court"
+  ],
+  "candidate_neutrality": {
+    "candidate_processes_started": 0,
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "candidate_owned_state_reused": false
+  },
+  "source_backed_execution_performed": false,
+  "candidate_abc_executed": false,
+  "measured_p2x_executed": false,
+  "ff02_executed": false
+}

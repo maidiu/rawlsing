@@ -1,0 +1,87 @@
+registry_version: bounded-r184-v1
+source_family: Afrobarometer
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-AFRO-R1-MIP-RANKED
+  joint_configuration_id: JCFG-AFRO-R1-MIP-RANKED
+  source_family: Afrobarometer
+  family_type: ranked_priority_configuration
+  family_structure_type: ranked_priority_configuration
+  expected_multi_target: true
+  family_label: Afrobarometer ranked national-problem priorities
+  eligible_waves:
+  - R1
+  minimum_items_answered: 2
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: afro_struct_338388735c9d7618
+    p2_authority_effect: P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY
+    joint_configuration_adjudication_id: V550JADJ-0001
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    adjudication_rationale: The two items are sequential first- and second-ranked
+      answers to the same national-problem priority task. Their rank positions are
+      identity-bearing and must remain distinct inside one respondent-level ranked
+      configuration.
+    authorized_inference: Co-occurrence and ordered rank configuration for these two
+      source-native responses.
+    forbidden_inferences:
+    - signed support/opposition
+    - rank collapse
+    - category-code comparability outside this source-wave
+    - cross-source portability
+  item_role_groups:
+    first_ranked_priority:
+    - var_code: mip1
+      condition_label: Country's most important problems - 1
+      joint_configuration_adjudication_id: V550JADJ-0001
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_e2d5afb23b92db2f37c421d3
+      question_implementation_id: question_impl.phase0.e8dc21a068cc141b3efd
+      p2_source_structure_id: afro_struct_338388735c9d7618
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    second_ranked_priority:
+    - var_code: mip2
+      condition_label: Country's second most important problems - 2
+      joint_configuration_adjudication_id: V550JADJ-0001
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_78ccc8f09a7cf1897cc4adae
+      question_implementation_id: question_impl.phase0.cc272e2364e864acb793
+      p2_source_structure_id: afro_struct_338388735c9d7618
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+  - applies_to_roles:
+    - first_ranked_priority
+    - second_ranked_priority
+    target_entity_template: jcfg-afro-r1-mip-ranked_{condition_label}
+    target_domain: ranked_priority_configuration
+    target_group_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: bounded_registry_resolved_item
+    target_resolution_authority_source: bounded_v550j_registry.item_role_groups
+    target_resolution_basis_source: P2 source structure plus exact source-wave variable
+      binding
+  boundary_rules: []
+registry_content_hash: af639b67477988f44f647b033a8170c52083a51bc46cfe9ebe45bcd126215bbc

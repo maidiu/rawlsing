@@ -1,0 +1,227 @@
+[
+  {
+    "rule_id": "S14-T01",
+    "candidate_template_class": "SAME_PROPOSITION_DIFFERENT_TARGET",
+    "generation_channel": "GOVERNED_SEMANTIC_COLLISION",
+    "linked_requirement_ids": [
+      "JE-01_GENERALITY_SELECTIVITY",
+      "JE-08_INSTITUTIONAL_CLASS_DIFFERENTIATION",
+      "JE-09_RECIPROCITY_SYMMETRY",
+      "JE-13_BOUNDARY_LOCATION",
+      "JE-14_CONFIGURATION_BREADTH",
+      "JE-15_TARGET_CONDITION_INTERACTION"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "target IDs + predicate/proposition authority + implementation IDs",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T02",
+    "candidate_template_class": "SAME_PROPOSITION_DIFFERENT_CONDITION",
+    "generation_channel": "GOVERNED_SEMANTIC_COLLISION",
+    "linked_requirement_ids": [
+      "JE-02_CONDITION_EXCEPTION",
+      "JE-11_INTERNAL_TENSION_TOPOLOGY",
+      "JE-13_BOUNDARY_LOCATION",
+      "JE-14_CONFIGURATION_BREADTH",
+      "JE-15_TARGET_CONDITION_INTERACTION"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "condition IDs + proposition/target authority + implementation IDs",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T03",
+    "candidate_template_class": "GENERAL_PRINCIPLE_SPECIFIC_APPLICATION",
+    "generation_channel": "GOVERNED_ROLE_PAIR",
+    "linked_requirement_ids": [
+      "JE-03_PRINCIPLE_APPLICATION",
+      "JE-09_RECIPROCITY_SYMMETRY",
+      "JE-11_INTERNAL_TENSION_TOPOLOGY"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "principle role + application role + target + provenance",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T04",
+    "candidate_template_class": "GOAL_MEANS",
+    "generation_channel": "GOVERNED_ROLE_PAIR",
+    "linked_requirement_ids": [
+      "JE-04_GOAL_MEANS",
+      "JE-10_PRIORITY_TRADEOFF",
+      "JE-11_INTERNAL_TENSION_TOPOLOGY"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "goal role + means role(s) + common end + provenance",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T05",
+    "candidate_template_class": "COMMITMENT_PERSONAL_COST",
+    "generation_channel": "GOVERNED_ROLE_PAIR",
+    "linked_requirement_ids": [
+      "JE-05_COMMITMENT_COST",
+      "JE-10_PRIORITY_TRADEOFF"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "commitment role + cost role + cost type + provenance",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T06",
+    "candidate_template_class": "NORM_EXPECTED_CONDUCT",
+    "generation_channel": "NORM_BEHAVIOR_ROLE_PAIR",
+    "linked_requirement_ids": [
+      "JE-06_NORM_CONDUCT_ALIGNMENT"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "norm role + conduct role + actor/target/action identity + endpoint authority",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T07",
+    "candidate_template_class": "GENERAL_TARGET_SUBTARGET",
+    "generation_channel": "AUTHORITATIVE_HIERARCHY",
+    "linked_requirement_ids": [
+      "JE-01_GENERALITY_SELECTIVITY",
+      "JE-07_GENERAL_SUBTYPE_DIFFERENTIATION",
+      "JE-13_BOUNDARY_LOCATION"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "general target + subtype taxonomy + member implementations",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T08",
+    "candidate_template_class": "INSTITUTION_CLASS_DIFFERENTIATION",
+    "generation_channel": "GOVERNED_PARALLEL_TARGET_CLASS",
+    "linked_requirement_ids": [
+      "JE-08_INSTITUTIONAL_CLASS_DIFFERENTIATION",
+      "JE-14_CONFIGURATION_BREADTH"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "institution targets/classes + proposition roles + implementation IDs",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T09",
+    "candidate_template_class": "RECIPROCAL_ROLE_REVERSAL",
+    "generation_channel": "EXPLICIT_ROLE_REVERSAL",
+    "linked_requirement_ids": [
+      "JE-09_RECIPROCITY_SYMMETRY"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "paired role identities + direction + proposition authority",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T10",
+    "candidate_template_class": "TARGET_CONDITION_MATRIX",
+    "generation_channel": "SOURCE_OR_AUTHORITY_GOVERNED_MATRIX",
+    "linked_requirement_ids": [
+      "JE-15_TARGET_CONDITION_INTERACTION"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "target IDs + condition IDs + cell implementations + matrix provenance",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T11",
+    "candidate_template_class": "COMPLEMENTARY_ROLE_CONVERGENCE",
+    "generation_channel": "SOURCE_NATIVE_COMMON_ROLE_SET",
+    "linked_requirement_ids": [
+      "JE-16_ROLE_CONVERGENCE_WITHOUT_SCALING"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "role set + narrow proposition + member implementations + source structure",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T12",
+    "candidate_template_class": "SOURCE_NATIVE_ROUTED_SEQUENCE",
+    "generation_channel": "SOURCE_NATIVE_ROUTING_STRUCTURE",
+    "linked_requirement_ids": [
+      "JE-12_ROUTED_CONTINGENCY"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "gate implementation + route predicate + contingent implementations + universe",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T13",
+    "candidate_template_class": "EXPLICIT_PRIORITY_TRADEOFF_CANDIDATE",
+    "generation_channel": "SOURCE_NATIVE_EXPLICIT_TRADEOFF",
+    "linked_requirement_ids": [
+      "JE-10_PRIORITY_TRADEOFF"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "goods/ends roles + tradeoff frame + response topology",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T14",
+    "candidate_template_class": "BOUNDED_RECALL_AID_ENQUEUE",
+    "generation_channel": "RECALL_ONLY",
+    "linked_requirement_ids": [],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": false,
+    "candidate_identity_payload": "recall locator + named S14 template + governed endpoint IDs",
+    "negative_anti_join_law": "Apply R6/P3/P3C negative, exclusion, wrong-layer, noncanonical and blocked authority before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  },
+  {
+    "rule_id": "S14-T15",
+    "candidate_template_class": "NORM_PRACTICAL_REALIZATION",
+    "generation_channel": "SOURCE_FIRST_NORM_PRAXIS_ROLE_BRIDGE",
+    "linked_requirement_ids": [
+      "JE-17_NORM_PRACTICAL_REALIZATION"
+    ],
+    "linked_requirement_ids_all_valid": true,
+    "direct_emit_capability": true,
+    "candidate_identity_payload": "norm member IDs + praxis member IDs + manifestation subtype + praxis shore kind + relation polarity + realization distance + actor/target/action-or-state alignment + bridge authority + source-wave identity",
+    "negative_anti_join_law": "Apply central strict-T06 antijoin, central T15/T06 boundary decisions, source-coverage defects, and R6/P3/P3C negative/exclusion/wrong-layer/noncanonical/blocked authority within jurisdiction before emitting a novel candidate; preserve the anti-join reason.",
+    "p4_law": "Measurement compatibility is a separate L08 status. Do not inherit value portability from semantic relation identity.",
+    "composability_law": "Respondent composability is a separate L07 status. Non-composability may runtime-block an exact relation implementation but does not erase semantic relation validity."
+  }
+]

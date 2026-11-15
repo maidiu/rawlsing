@@ -1,0 +1,36 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ218-V556-ADOPTED-TWO-FINAL-REREVIEWS-R1",
+  "decision": "HQD-2026-10-05-218",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "v556": {
+    "status": "ADOPTED_CLOSED_AT_REVIEWED_BOUNDED_GRAIN",
+    "candidate": "9129bd54adbe73fdc09f8a3c02e4b91902d56661",
+    "hostile_review": "747271cc1726c8fc7e40f2de21f5047a32abeaeb",
+    "independent_runtime_evidence": "63ff08303c8f8ee02e871973dc0852bb5eb1ed4e",
+    "implementation_merge": "3730adfb7019bf2f6f95553f2232df875e01975d",
+    "review_merge": "20a29010c4c26a7a3696649c495dea17aa94ab7e",
+    "evidence_merge": "56aa0d0990afe854a97c1e144586b78ad27f3045"
+  },
+  "final_rereviews": [
+    {
+      "id": "HD_F8_AUTHENTICATION_FINAL",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/reviewer-pyat-hq218-hd-f8-authentication-final-rereview-r1",
+      "commission_tip": "e6185d4fd6ce9a1708cb54242ba247fe494ec329",
+      "model_intelligence": "GPT-5.6 Sol High",
+      "candidate": "cff8449e1752f816ad82d1b18626e2290913f8b9"
+    },
+    {
+      "id": "F7_FINAL",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/reviewer-pyat-hq218-f7-final-rereview-r1",
+      "commission_tip": "7867a777b1b26024ec620b0e82ea9ffdb9fb6ddc",
+      "model_intelligence": "GPT-5.6 Sol High",
+      "candidate": "136223506eaaf8d7c031a2822f2bfb6ac5bd420e"
+    }
+  ],
+  "hqd216_exact_object": "e0e7ce0e596e4e5ea7ec96c265ec949b9fe801a2:PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md",
+  "fanin_authorized": false,
+  "next_action": "RUN_TWO_HQ218_FINAL_REREVIEWS_IN_PARALLEL__INTAKE_EACH_RETURN_IMMEDIATELY"
+}

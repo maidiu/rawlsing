@@ -1,0 +1,43 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ147-N10E-AT17-ADOPTED-C1-03-OVERNIGHT-R1",
+  "status": "C1_02_ADOPTED__N10E_AT17_ADOPTED__C1_03A_C1_03R_ACTIVE__C1_03_JOIN_WAITS_TWO_REVIEWS",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20261001-PYAT-HQ146-C1-03A-C1-03R-PARALLEL-BOUND-R1",
+  "governing_decision": "HQD-2026-10-01-147",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "n10e": {
+    "adopted": true,
+    "grain": "SOURCE_FREE_AT17_PROVIDER_CORE",
+    "integration_branch": "integration/pyat-hq147-n10e-at17-source-free-accepted-r1",
+    "integration_head": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+    "rereview_head": "43cdc1a8d1077be78a879ef06232a454736084d9"
+  },
+  "c1_03a": {
+    "branch": "agent/opencode-pyat-hq146-c1-03a-negative-route-consumer-r1",
+    "commission_tip": "da29402473ad671625feb49fad5142a1d689978b",
+    "scope": [
+      "AT14",
+      "AT15",
+      "AT16"
+    ],
+    "state": "BOUND_OR_IN_FLIGHT"
+  },
+  "c1_03r": {
+    "branch": "agent/deepseek-pyat-hq146-c1-03r-replay-invalidation-r1",
+    "commission_tip": "8ce2a1aaa457fb1b08da9fca917dbb342bb98d41",
+    "scope": [
+      "AT18",
+      "AT19"
+    ],
+    "state": "BOUND_OR_IN_FLIGHT"
+  },
+  "c1_03_join_rule": "WAIT_ONLY_FOR_INDEPENDENTLY_ACCEPTED_C1_03A_AND_C1_03R",
+  "next_action": "CONTINUE_C1_03A_SPACE_BUNNY_AND_C1_03R_DEEPSEEK__REVIEW_EACH_RETURN__THEN_BIND_C1_03_JOIN",
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION",
+    "NO_C1_R_BEFORE_C1_03_JOIN",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

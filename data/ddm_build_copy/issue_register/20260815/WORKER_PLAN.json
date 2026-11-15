@@ -1,0 +1,104 @@
+{
+  "schema": "rawlsing_worker_plan_v1",
+  "register_revision_sha256": "b89bffbde1ece404c6a21af218764654bab3b034b75951339d1b16d116c3aa72",
+  "planning_base_main": "ce76af9170727924768255cd7df63fa7298b6633",
+  "integration_branch": "agent/v550-v552j-repair-integration",
+  "coverage": {
+    "active": 67,
+    "assigned": 67,
+    "unique": true,
+    "excluded_superseded": ["V550-004", "WATCH-004"],
+    "owner_counts": {"Vozhd": 1, "W01": 6, "W02": 12, "W03": 8, "W04": 18, "W05": 17, "W06": 5}
+  },
+  "contract_freeze": {
+    "CF-001": "run_id remains the inherited pipeline lineage identity; verify producer run identity/scope at every boundary; do not redesign IDs.",
+    "CF-002": "separate typed run_integrity_status, evidence_status, downstream_permission_status; no row-count/file-presence/free-text readiness.",
+    "CF-003": "manifest distinguishes artifact_file_sha256 vs logical_content_sha256; consumers verify producer-declared file hash + contract version.",
+    "CF-004": "source/wave/country-or-shard exact identity is required before semantic/fuzzy matching.",
+    "CF-005": "Parquet is mandatory canonical machine output for governed runs in this repair; CSV is optional diagnostic only.",
+    "CF-006": "publish stage outputs atomically/stale-safe; consumers use only current manifest-declared artifacts.",
+    "CF-007": "V551 alone owns canonical signed projection.",
+    "CF-008": "canonical V551 surfaces: directional_candidate_adjudication, relation_evidence_atoms, directional_distribution_coverage, manifest.",
+    "CF-009": "all-wave authority is CLOSED_35_WAVES; Asian Barometer W6 excluded.",
+    "CF-010": "workers do not edit register governance files; Vozhd maintains central resolution evidence."
+  },
+  "gates": {
+    "G0": {"requires": ["plan committed"], "releases": ["W01-A", "W02-A", "W03-A", "W05-A", "W06-A"]},
+    "G1A": {"requires": ["SRC-002", "W02-A"], "means": "V550 applicability/raw boundary + exact V551 scale authority merged", "releases": ["W04-A"]},
+    "G1B": {"requires": ["SRC-004", "W03-A"], "means": "V550J governed dependency/producer boundary ready", "releases": ["W03-B after G2"]},
+    "G2": {"requires": ["G1A", "W04-A"], "means": "new V551 canonical contract merged", "releases": ["W02-B", "W03-B", "dependent W01/W05/W06 adaptations"]},
+    "G3A": {"requires": ["G2", "W02-B"], "means": "V552 ready"},
+    "G3B": {"requires": ["G1B", "G2", "W03-B"], "means": "V551J ready"},
+    "G4": {"requires": ["G3A", "G3B", "W06-B"], "means": "V552J join ready", "releases": ["W01-B final", "W05-B final", "W06-C"]},
+    "G5": {"requires": ["G4", "W01-B", "W05-B", "W06-C", "SRC-001"], "means": "67 issues terminal + 35-wave/Section85/EVS/downstream checks pass", "releases": ["merge integration to main"]}
+  },
+  "workers": {
+    "Vozhd": {
+      "issues": ["SRC-001"],
+      "role": "contracts/integration",
+      "writes": ["issue register governance + central resolution ledger"],
+      "duties": ["gate commits", "merge review", "SRC-001 final reconciliation"]
+    },
+    "W01": {
+      "issues": ["SRC-002", "SRC-004", "ORCH-002", "ORCH-003", "ORCH-009", "ORCH-010"],
+      "role": "source authority + Section85",
+      "phases": {
+        "A": {"after": "G0", "issues": ["SRC-002", "SRC-004", "ORCH-009"], "branch": "agent/v550-v552j-w01-source-section85-a", "writes": ["data/ddm_build_copy/authority/**", "data/ddm_registries/**", "section85/**"]},
+        "B": {"after": "G2; final pieces after G3B/G4", "issues": ["ORCH-002", "ORCH-003", "ORCH-010"], "branch": "agent/v550-v552j-w01-section85-b", "writes": ["section85/**"]}
+      }
+    },
+    "W02": {
+      "issues": ["V550-001", "V550-002", "V550-003", "V550-005", "V550-006", "V552-001", "V552-002", "V552-003", "V552-004", "V552-005", "V552-006", "V552-007"],
+      "role": "V550 then V552",
+      "phases": {
+        "A": {"after": "G0", "issues": ["V550-001", "V550-002", "V550-003", "V550-005", "V550-006"], "branch": "agent/v550-v552j-w02-v550", "writes": ["ddm_v550_authority_contract.py", "ddm_v550_question_use.py", "ddm_v550_bridge.py", "W02 tests"]},
+        "B": {"after": "G2", "issues": ["V552-001", "V552-002", "V552-003", "V552-004", "V552-005", "V552-006", "V552-007"], "branch": "agent/v550-v552j-w02-v552", "writes": ["ddm_v552_structural.py", "compile_v552_structural_ddm.py", "ddm_v552_validation.py", "W02 tests"], "hooks": ["LIN-007", "LIN-008", "ORCH-007", "ORCH-008"]}
+      }
+    },
+    "W03": {
+      "issues": ["V550J-001", "V550J-002", "V550J-003", "V551J-001", "V551J-002", "V551J-003", "V551J-004", "V551J-005"],
+      "role": "V550J then V551J",
+      "phases": {
+        "A": {"after": "G0", "issues": ["V550J-001", "V550J-002", "V550J-003"], "branch": "agent/v550-v552j-w03-v550j", "writes": ["compile_v550j_joint_response_patterns.py", "ddm_v550j_registry_classifier.py", "ddm_v550j_registry_contract.py", "W03 tests"]},
+        "B": {"after": "G1B+G2", "issues": ["V551J-001", "V551J-002", "V551J-003", "V551J-004", "V551J-005"], "branch": "agent/v550-v552j-w03-v551j", "writes": ["compile_v551j_joint_evidence_packets.py", "ddm_v551j_contract.py", "ddm_v551j_packets.py", "ddm_v551j_validation.py", "W03 tests"], "hooks": ["LIN-007", "LIN-008", "ORCH-007", "ORCH-008"]}
+      }
+    },
+    "W04": {
+      "issues": ["SRC-003", "V551-001", "V551-002", "V551-003", "V551-004", "V551-005", "V551-006", "V551-007", "V551-008", "V551-009", "V551-010", "V551-011", "V551-012", "V551-013", "V551-014", "V551-015", "V551-016", "V551-017"],
+      "role": "sole V551 semantic owner",
+      "phases": {
+        "A": {"after": "G1A", "issues": ["SRC-003", "V551-001", "V551-002", "V551-003", "V551-004", "V551-005", "V551-006", "V551-007", "V551-008", "V551-009", "V551-010", "V551-011", "V551-012", "V551-013", "V551-014", "V551-015", "V551-016", "V551-017"], "branch": "agent/v550-v552j-w04-v551", "writes": ["ddm_v551_atoms.py", "compile_v551_relation_evidence_atoms.py", "ddm_v551_directionality_expectation.py", "ddm_v550_schema.py only for V551 contract", "W04 tests"], "hooks": ["LIN-007", "LIN-008", "ORCH-007", "ORCH-008"]}
+      }
+    },
+    "W05": {
+      "issues": ["SRC-005", "LIN-001", "LIN-002", "LIN-003", "LIN-004", "LIN-005", "LIN-006", "LIN-007", "LIN-008", "LIN-009", "LIN-010", "LIN-011", "ORCH-001", "ORCH-005", "ORCH-006", "ORCH-007", "ORCH-008"],
+      "role": "lineage/orchestration/publication integrity",
+      "phases": {
+        "A": {"after": "G0", "issues": ["SRC-005", "LIN-005", "LIN-006", "LIN-009", "LIN-011", "ORCH-005", "ORCH-006"], "branch": "agent/v550-v552j-w05-infra-a", "writes": ["resolve_pipeline_lineage.py", "compile_v5_paired_wave_preflight.py", "run_20var_allwaves_v550_552j_smoke.py", "W05 helper modules/tests"], "prepare": ["LIN-007", "LIN-008", "ORCH-007", "ORCH-008"]},
+        "B": {"after": "G2; finalize after G4", "issues": ["LIN-001", "LIN-002", "LIN-003", "LIN-004", "LIN-007", "LIN-008", "LIN-010", "ORCH-001", "ORCH-007", "ORCH-008"], "branch": "agent/v550-v552j-w05-infra-b", "writes": ["same W05 domain"], "closure": "cross-cutting issues stay PARTIAL until all stage hooks merge and W05 verifies end-to-end"}
+      }
+    },
+    "W06": {
+      "issues": ["ORCH-004", "V552J-001", "V552J-002", "V552J-003", "V552J-004"],
+      "role": "QA then V552J",
+      "phases": {
+        "A": {"after": "G0; semantic final after G2", "issues": ["ORCH-004"], "branch": "agent/v550-v552j-w06-qa-a", "writes": ["run_v550_552_extraction_audit.py", "v550_552_extraction_audit.py", "W06 tests"], "test_only": ["WATCH-001", "WATCH-002", "WATCH-006"]},
+        "B": {"after": "G3A+G3B", "issues": ["V552J-001", "V552J-002", "V552J-003", "V552J-004"], "branch": "agent/v550-v552j-w06-v552j", "writes": ["ddm_v552j_handoff.py", "compile_v552j_structural_handoff.py", "W06 tests"], "hooks": ["LIN-007", "LIN-008", "ORCH-007", "ORCH-008"]},
+        "C": {"after": "G4", "issues": [], "branch": "agent/v550-v552j-w06-final-regression", "writes": ["W06 test/fixture artifacts only"], "deliver": ["EVS 1999/Iceland canary", "35-wave typed-state regression", "WATCH-001/002/006 non-leakage"]}
+      }
+    }
+  },
+  "merge_protocol": [
+    "workers never push to main",
+    "each phase starts from current integration gate commit",
+    "draft PR targets integration branch",
+    "later phase uses new branch from post-gate integration commit",
+    "no incompatible producer-only contract merge without compatibility adapter",
+    "main updated only after G5"
+  ],
+  "worker_return": {
+    "fields": ["worker_id", "phase_id", "base_commit", "branch", "primary_issue_ids", "issue_results", "files_changed_before_after_sha256", "reconciliation_classification", "contract_changes", "tests", "cross_worker_dependencies", "commit_sha", "draft_pr", "no_unowned_files_changed"],
+    "issue_status": ["RESOLVED", "PARTIAL_AWAITING_CROSS_HOOK", "BLOCKED_BY_AUTHORITY", "NO_LONGER_REPRODUCES_WITH_EVIDENCE"],
+    "reconciliation": ["KEEP_MAIN", "KEEP_RUNTIME", "MERGE_BOTH", "REMOVE_REGRESSION", "FIX_SHARED_DEFECT", "IMPLEMENT_NEW_REQUIREMENT"]
+  }
+}

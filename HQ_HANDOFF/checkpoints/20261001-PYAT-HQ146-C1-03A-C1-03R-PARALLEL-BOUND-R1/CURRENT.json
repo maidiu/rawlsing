@@ -1,0 +1,44 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ146-C1-03A-C1-03R-PARALLEL-BOUND-R1",
+  "status": "C1_02_ADOPTED__C1_03A_C1_03R_BOUND__N10E_REREVIEW_ACTIVE__C1_03_JOIN_PENDING",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20261001-PYAT-HQ145-C1-02-ADOPTED-N10E-REREVIEW-BOUND-R1",
+  "governing_decision": "HQD-2026-10-01-146",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "c1_03a": {
+    "branch": "agent/opencode-pyat-hq146-c1-03a-negative-route-consumer-r1",
+    "commission_tip": "da29402473ad671625feb49fad5142a1d689978b",
+    "launch_surface": "OPENCODE",
+    "model": "SPACE_BUNNY_FREE",
+    "scope": [
+      "AT14",
+      "AT15",
+      "AT16"
+    ]
+  },
+  "c1_03r": {
+    "branch": "agent/deepseek-pyat-hq146-c1-03r-replay-invalidation-r1",
+    "commission_tip": "8ce2a1aaa457fb1b08da9fca917dbb342bb98d41",
+    "launch_surface": "DEEPSEEK_HARNESS",
+    "model": "DEEPSEEK_V4_1_FLASH",
+    "mode": "STANDARD",
+    "scope": [
+      "AT18",
+      "AT19"
+    ]
+  },
+  "at17": {
+    "owner": "N10E",
+    "rereview_branch": "agent/reviewer-pyat-hq145-n10e-proof-provenance-rereview-r1",
+    "state": "PENDING_ACCEPTANCE"
+  },
+  "c1_03_join_rule": "WAIT_FOR_ACCEPTED_C1_03A__ACCEPTED_C1_03R__ACCEPTED_N10E_AT17",
+  "next_action": "RUN_C1_03A_SPACE_BUNNY_AND_C1_03R_DEEPSEEK_IN_PARALLEL__N10E_REREVIEW_CONTINUES",
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION",
+    "NO_C1_R_BEFORE_C1_03_JOIN",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

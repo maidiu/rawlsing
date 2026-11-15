@@ -1,0 +1,732 @@
+{
+  "worker_id": "W01",
+  "status": "PASS",
+  "checks": {
+    "coverage_100pct": true,
+    "immutable_first_13_exact": true,
+    "zero_blank_mutable": true,
+    "all_json_fields_parse": true,
+    "all_T07_reserved": true,
+    "retain_count_zero": true,
+    "accept_partial_inside_membership_and_canonical": true,
+    "blocked_precise_reason": true,
+    "all_T06_structured": true,
+    "reject_not_based_on_missing_authority": true,
+    "no_lexical_topic_driver_as_authority": true
+  },
+  "accept_partial_sample_requirement": {
+    "available_count": 8,
+    "required_if_available_min": 25,
+    "tested_count": 8,
+    "note": "Fewer than 25 ACCEPT/PARTIAL atoms exist; all available positives were hostile-checked.",
+    "items": [
+      {
+        "decision_atom_id": "R15ATOM-73147c2d2e93e63bd964",
+        "rule_scope": "T08",
+        "source_wave": "Afrobarometer::R1",
+        "ok": true,
+        "rationale": "T08 accepted only for exact in-wave institution targets with governed class mappings and a common trust/confidence predicate; cross-wave/noninstitution co-members remain unauthorized."
+      },
+      {
+        "decision_atom_id": "R15ATOM-87243ed0289dc4d05127",
+        "rule_scope": "T08",
+        "source_wave": "Afrobarometer::R1",
+        "ok": true,
+        "rationale": "T08 accepted only for exact in-wave institution targets with governed class mappings and a common trust/confidence predicate; cross-wave/noninstitution co-members remain unauthorized."
+      },
+      {
+        "decision_atom_id": "R15ATOM-4f2d6ec89d99e48daf81",
+        "rule_scope": "T08",
+        "source_wave": "Asian Barometer::W5",
+        "ok": true,
+        "rationale": "T08 accepted only for exact in-wave institution targets with governed class mappings and a common trust/confidence predicate; cross-wave/noninstitution co-members remain unauthorized."
+      },
+      {
+        "decision_atom_id": "R15ATOM-47a7742f54298f52c6d3",
+        "rule_scope": "T08",
+        "source_wave": "Asian Barometer::W5",
+        "ok": true,
+        "rationale": "T08 accepted only for exact in-wave institution targets with governed class mappings and a common trust/confidence predicate; cross-wave/noninstitution co-members remain unauthorized."
+      },
+      {
+        "decision_atom_id": "R15ATOM-77a18cd9572ca30f487a",
+        "rule_scope": "T03",
+        "source_wave": "GSS::2002",
+        "ok": true,
+        "rationale": "Two source-wave 2002 general/application structures are explicit; all other frozen members remain outside the proposed relations."
+      },
+      {
+        "decision_atom_id": "R15ATOM-934f4518a83783e518ba",
+        "rule_scope": "T03",
+        "source_wave": "GSS::2002",
+        "ok": true,
+        "rationale": "Exact source text supplies the bounded general→specific relation; no broad prosocial construct inference is used."
+      },
+      {
+        "decision_atom_id": "R15ATOM-3e772a2bbcddbe19dbd6",
+        "rule_scope": "T08",
+        "source_wave": "WVS::W1",
+        "ok": true,
+        "rationale": "T08 accepted only for exact in-wave institution targets with governed class mappings and a common trust/confidence predicate; cross-wave/noninstitution co-members remain unauthorized."
+      },
+      {
+        "decision_atom_id": "R15ATOM-aa9a634e551c22dc25b4",
+        "rule_scope": "T08",
+        "source_wave": "WVS::W1",
+        "ok": true,
+        "rationale": "T08 accepted only for exact in-wave institution targets with governed class mappings and a common trust/confidence predicate; cross-wave/noninstitution co-members remain unauthorized."
+      }
+    ]
+  },
+  "bulk_reject_hostile_sample": {
+    "required_min": 25,
+    "tested_count": 64,
+    "selection_note": "T06 recall score used only to select hardest adversarial rows for manual/structured boundary review; it did not authorize or reject any relation.",
+    "items": [
+      {
+        "decision_atom_id": "R15ATOM-4caa4fba5abc11b59b1e",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-c97f51194fcf4c78",
+        "selection_only_recall_jaccard": 0.0588,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-3d3c6f5296490aa7f1fa",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-95d8cf594045a274",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-72ad013228efd33ba85c",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-7502f5426d7506b0",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-c5a45b24e02db5d43d33",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-bc59635387aecd4f",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-f3aed142f982106a0511",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-8cb6c480525dfa10",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-ab6cf8ccf2eda5a8cb84",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-dcd4bf674125757f",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-ca36f523d1a4f1521a21",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-6db5deed607b819d",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-0b0760558ba888fd76cc",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-09c601617bb04493",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-1ab32ea3788f9046313d",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-9a6937f4266c4689",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-4910bfe88e98a2707bc5",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-62a9dd980edab397",
+        "selection_only_recall_jaccard": 0.0,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTOR_MISMATCH",
+        "boundary_finding": "Norm actor is government as authority-holder; endpoint actor is respondent/respondent-household conduct or exposure, so actor identity fails."
+      },
+      {
+        "decision_atom_id": "R15ATOM-299745f8075615efd47a",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-46d1604e974f19a8",
+        "selection_only_recall_jaccard": 0.1739,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "NOT_REACHED_NEGATIVE_RR_NORM",
+        "boundary_finding": "Electoral fairness evaluation; evaluative description of an election, not a norm governing conduct/rule."
+      },
+      {
+        "decision_atom_id": "R15ATOM-5df27bf3a2d0fe6e4adf",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-c92416b82fe0d43e",
+        "selection_only_recall_jaccard": 0.1429,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "NOT_REACHED_NEGATIVE_RR_NORM",
+        "boundary_finding": "Electoral fairness evaluation; evaluative description of an election, not a norm governing conduct/rule."
+      },
+      {
+        "decision_atom_id": "R15ATOM-97bac7e71a32ee5e5a05",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-94c6cbb84021a189",
+        "selection_only_recall_jaccard": 0.0909,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-e73a762019ffa86b59fa",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-6ad9c605e35d3644",
+        "selection_only_recall_jaccard": 0.0833,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Norm concerns whether only one party may stand/hold office; endpoint reports respondent election participation/vote/campaign conduct, not party authorization or office eligibility."
+      },
+      {
+        "decision_atom_id": "R15ATOM-1c03344c60de7147b056",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-5792e4c5b2047f3c",
+        "selection_only_recall_jaccard": 0.08,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-dff83d577b6cde5fced9",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-769245f51ba744c0",
+        "selection_only_recall_jaccard": 0.0769,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-05d7d3a29866ed38a4d3",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-304a6976331febf3",
+        "selection_only_recall_jaccard": 0.0741,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Norm concerns whether only one party may stand/hold office; endpoint reports respondent election participation/vote/campaign conduct, not party authorization or office eligibility."
+      },
+      {
+        "decision_atom_id": "R15ATOM-f2ddca4c8d15396cdc78",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-80ef9332ed43b096",
+        "selection_only_recall_jaccard": 0.069,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-a0a0d3e56e32eaee6cac",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-1d0d5a2f07c28755",
+        "selection_only_recall_jaccard": 0.0667,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-b2eb34bf1d559ab00e12",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T06",
+        "origin": "R11T06X-297fdee155b7a4d9",
+        "selection_only_recall_jaccard": 0.0667,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-e39c26202719078e0512",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-70d733fd46738574",
+        "selection_only_recall_jaccard": 0.1429,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-293137a3b39d3d44953e",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-2fbb7bdefa5a7f16",
+        "selection_only_recall_jaccard": 0.12,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-68e2b9b51628ecad46ae",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-25950878d3b2a9a3",
+        "selection_only_recall_jaccard": 0.12,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-b3fc15b68a97985b2c6e",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-d494c1f8d1e64789",
+        "selection_only_recall_jaccard": 0.12,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-3c4e8d1aaa0f398487e8",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-8886227a5bcc8811",
+        "selection_only_recall_jaccard": 0.12,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-8b10485675eb247bbefa",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-a4e2357d48510fe0",
+        "selection_only_recall_jaccard": 0.12,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-9e9b4d2932e8bfc4000d",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-7811b78d6d5bfad6",
+        "selection_only_recall_jaccard": 0.12,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-274bf744c34c413f9bee",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-8821965e1d03f258",
+        "selection_only_recall_jaccard": 0.1154,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-e240870759b8305b5b59",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-38f3c21ad56383e4",
+        "selection_only_recall_jaccard": 0.1154,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-817e075ca7246c2f93c0",
+        "source_wave": "GSS::2002",
+        "rule_scope": "T06",
+        "origin": "R11T06X-bedbe32f7c7223c3",
+        "selection_only_recall_jaccard": 0.1154,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-f29c0917657471644262",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-9c257bdb9ee21e57",
+        "selection_only_recall_jaccard": 0.1053,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-4af1dd7b70047e0ef8d1",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-ae5e1627e0f519ba",
+        "selection_only_recall_jaccard": 0.0952,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-94c05e60fb01f3cb6b1d",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-8eafecd24f3e830e",
+        "selection_only_recall_jaccard": 0.05,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-78f3266d6041ead733c9",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-074d8d94aeaba79b",
+        "selection_only_recall_jaccard": 0.05,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-59c479a340e7d239680a",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-df67d6e8b2c159d8",
+        "selection_only_recall_jaccard": 0.0476,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-91e42d961793ad28500f",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-d21fb6c7e349fdae",
+        "selection_only_recall_jaccard": 0.0476,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-d015f8e8e39b11a9c549",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-13f967462c94b7ec",
+        "selection_only_recall_jaccard": 0.0455,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-4f8b2f14e8476e33f943",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-6f2bfc26b0cc4413",
+        "selection_only_recall_jaccard": 0.0455,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-a87e4e12c78f6030c6d3",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-f7cd73081a3fc841",
+        "selection_only_recall_jaccard": 0.0455,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-d32880ce7aa5dc068343",
+        "source_wave": "WVS::W1",
+        "rule_scope": "T06",
+        "origin": "R11T06X-f61c37966e23d596",
+        "selection_only_recall_jaccard": 0.0455,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "ACTION_MISMATCH",
+        "boundary_finding": "Exact source norm does not match the endpoint’s governed action/exposure contract; shared domain/wording is not used as relation authority."
+      },
+      {
+        "decision_atom_id": "R15ATOM-343306ab9e0dd21d23e8",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T03",
+        "origin": "R11COLL-f12bcaaea8fcb2cd",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T03 rejected: No explicit general-principle ↔ concrete-application pair survives exact member review; parallel norms, duplicate forms, shared targets, or broad domain adjacency are not a T03 relation."
+      },
+      {
+        "decision_atom_id": "R15ATOM-ea61307e213b6447615b",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T03",
+        "origin": "R11COLL-8d627d4ac03cad10",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T03 rejected: No explicit general-principle ↔ concrete-application pair survives exact member review; parallel norms, duplicate forms, shared targets, or broad domain adjacency are not a T03 relation."
+      },
+      {
+        "decision_atom_id": "R15ATOM-1cd26f7d57dbeda19a43",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T03",
+        "origin": "R11COLL-2469a0b8b33a151a",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T03 rejected: No explicit general-principle ↔ concrete-application pair survives exact member review; parallel norms, duplicate forms, shared targets, or broad domain adjacency are not a T03 relation."
+      },
+      {
+        "decision_atom_id": "R15ATOM-5ccb689b6fc8bee1a0b8",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T04",
+        "origin": "R11COLL-f12bcaaea8fcb2cd",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T04 rejected: No distinct member states a governed end while another states an explicit means tied to that same end; internal wording, thematic usefulness, or co-membership is insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-23901f8d2d1266f7c3ee",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T04",
+        "origin": "R11COLL-8d627d4ac03cad10",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T04 rejected: No distinct member states a governed end while another states an explicit means tied to that same end; internal wording, thematic usefulness, or co-membership is insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-e63837d9b99ee4368c7e",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T04",
+        "origin": "R11COLL-2469a0b8b33a151a",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T04 rejected: No distinct member states a governed end while another states an explicit means tied to that same end; internal wording, thematic usefulness, or co-membership is insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-7ab261a36449abb9a3f4",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T05",
+        "origin": "R11COLL-f12bcaaea8fcb2cd",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T05 rejected: No exact pair supplies both explicit commitment/endorsement and an explicit personal/fiscal/risk/autonomy cost-bearing application of that same commitment."
+      },
+      {
+        "decision_atom_id": "R15ATOM-bb59c311d502e5465241",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T05",
+        "origin": "R11COLL-8d627d4ac03cad10",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T05 rejected: No exact pair supplies both explicit commitment/endorsement and an explicit personal/fiscal/risk/autonomy cost-bearing application of that same commitment."
+      },
+      {
+        "decision_atom_id": "R15ATOM-58a08eb0a35fa7f7958c",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T05",
+        "origin": "R11COLL-2469a0b8b33a151a",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T05 rejected: No exact pair supplies both explicit commitment/endorsement and an explicit personal/fiscal/risk/autonomy cost-bearing application of that same commitment."
+      },
+      {
+        "decision_atom_id": "R15ATOM-02331648c6337ea95e33",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T08",
+        "origin": "R11COLL-f12bcaaea8fcb2cd",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T08 rejected: no governed target/class structure establishes a multi-class institution differentiation relation for this exact opportunity."
+      },
+      {
+        "decision_atom_id": "R15ATOM-919335b48acee21ca1dd",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T08",
+        "origin": "R11COLL-38d6588399d97587",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T08 rejected: mapped institution targets do not span two or more governed classes; target plurality inside a single class is insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-2af12998a563f7bf8c1a",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T08",
+        "origin": "R11T08-276172cdcfd82360",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T08 rejected: mapped institution targets do not span two or more governed classes; target plurality inside a single class is insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-80685e44291c8ceb16cc",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T09",
+        "origin": "R11COLL-f12bcaaea8fcb2cd",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T09 rejected: No exact source-semantic actor→recipient proposition is paired with the same proposition under explicit reversed actor/recipient roles."
+      },
+      {
+        "decision_atom_id": "R15ATOM-cdc4e37a78ef3a06621b",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T09",
+        "origin": "R11COLL-8d627d4ac03cad10",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T09 rejected: No exact source-semantic actor→recipient proposition is paired with the same proposition under explicit reversed actor/recipient roles."
+      },
+      {
+        "decision_atom_id": "R15ATOM-e4487f380c4e068b53d2",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T09",
+        "origin": "R11COLL-2469a0b8b33a151a",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T09 rejected: No exact source-semantic actor→recipient proposition is paired with the same proposition under explicit reversed actor/recipient roles."
+      },
+      {
+        "decision_atom_id": "R15ATOM-12135aff7a4befaad611",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T10",
+        "origin": "R11OBJ-ASB-R14-W5-PROBLEMS_Q106A_Q106E",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T10 rejected: The exact source object is a repeated/parallel list or one-dimensional battery rather than a governed crossed target × condition matrix with cell identity."
+      },
+      {
+        "decision_atom_id": "R15ATOM-1adb6acb044c079c47c2",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T10",
+        "origin": "R11OBJ-ASB-R14-W5-SOCIAL_MEDIA_PURPOSE_Q51A_Q51D",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T10 rejected: The exact source object is a repeated/parallel list or one-dimensional battery rather than a governed crossed target × condition matrix with cell identity."
+      },
+      {
+        "decision_atom_id": "R15ATOM-7910df6aef2092998b10",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T10",
+        "origin": "R11OBJ-ASB-R14-W5-ELECTION_PARTICIPATION_Q35_Q38",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T10 rejected: The exact source object is a repeated/parallel list or one-dimensional battery rather than a governed crossed target × condition matrix with cell identity."
+      },
+      {
+        "decision_atom_id": "R15ATOM-150e1bea4a3893c9ec52",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T09;T10",
+        "origin": "R11ALIGN-a2cf8118b15c067f",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "Composite T09;T10 rejected: exact aligned objects establish neither reciprocal direction nor a crossed target×condition matrix."
+      },
+      {
+        "decision_atom_id": "R15ATOM-5db45be72a3da3b1789e",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T09;T10",
+        "origin": "R11ALIGN-001e2f68eae446df",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "Composite T09;T10 rejected: exact aligned objects establish neither reciprocal direction nor a crossed target×condition matrix."
+      },
+      {
+        "decision_atom_id": "R15ATOM-682e088045d96a82219d",
+        "source_wave": "Asian Barometer::W5",
+        "rule_scope": "T09;T10",
+        "origin": "R11ALIGN-7c4c36a2340ee873",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "Composite T09;T10 rejected: exact aligned objects establish neither reciprocal direction nor a crossed target×condition matrix."
+      },
+      {
+        "decision_atom_id": "R15ATOM-19c3efbecc5523f7f83e",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T11",
+        "origin": "R11COLL-f12bcaaea8fcb2cd",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T11 rejected: Exact members do not provide distinct authorized roles converging on one narrow common proposition; duplicates, broad role diversity, shared target, or construct adjacency are insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-262ac9714ad7330c5115",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T11",
+        "origin": "R11COLL-8d627d4ac03cad10",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T11 rejected: Exact members do not provide distinct authorized roles converging on one narrow common proposition; duplicates, broad role diversity, shared target, or construct adjacency are insufficient."
+      },
+      {
+        "decision_atom_id": "R15ATOM-dfefc28c54752bd218a1",
+        "source_wave": "Afrobarometer::R1",
+        "rule_scope": "T11",
+        "origin": "R11COLL-2469a0b8b33a151a",
+        "selection_only_recall_jaccard": null,
+        "worker_recommendation": "WORKER_RECOMMEND_REJECT",
+        "link_status": "N/A",
+        "boundary_finding": "T11 rejected: Exact members do not provide distinct authorized roles converging on one narrow common proposition; duplicates, broad role diversity, shared target, or construct adjacency are insufficient."
+      }
+    ]
+  },
+  "t08_mapping_defect_blocks": [
+    "R11T08-9037427d3ceb2142",
+    "R11COLL-4acc46fdd00f65fa"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "SOROK_P3_FINAL_REVIEW_REPAIR@1",
+  "basis": {
+    "review_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
+    "reviewcut": "d1a6817b3210880812f68090bcd2b1109ec68ef9",
+    "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+    "review_verdict": "REVISE_CONDITIONAL_FULL_P3"
+  },
+  "scope": "M1 and M2 runtime repair only. M3 measurement and full13 harness corrections remain with the author lane. No native, scientific, production, receiving or merge claim.",
+  "m1": {
+    "defect": "PsycheStore.finish accepted a result without an effects-receipt link; forged receipt_ref and accessible surface were not checked.",
+    "repair": [
+      "p3_owner._result now records the durable effects receipt hash in consequences and uses P3_PSYCH:<receipt.response_hash> as receipt_ref.",
+      "p3_owner._effect binds the actor/user projection into the effects receipt before finish.",
+      "state_store._validate_result requires an effects-receipt hash link, the exact receipt response-hash ref, and receipt-bound accessible/actor-surface equality when the receipt carries projection evidence.",
+      "state_store.commit_effects accepts optional compression/projection evidence, includes both in request_hash, and stores them plus content hashes before receipt_hash."
+    ],
+    "negative_tests": [
+      "RESULT_RECEIPT_LINK_MISSING",
+      "RESULT_RECEIPT_LINK_MISMATCH",
+      "RESULT_RECEIPT_REF_MISMATCH",
+      "RESULT_ACCESSIBLE_RECEIPT_MISMATCH",
+      "RESULT_COMPRESSION_EVIDENCE_MISMATCH"
+    ]
+  },
+  "m2": {
+    "defect": "compression.bind ran after commit_effects; a failure in that window left PSYCH_COMMITTED and recovery completed without compression evidence.",
+    "repair": [
+      "p3_owner._effect computes compression.bind before commit_effects and passes the envelope into the receipt.",
+      "PSYCH_COMMITTED recovery reads compression and projection from the durable receipt in _existing_effect; it never recomputes or drops them.",
+      "state_store.finish rejects a result whose compression evidence differs from the receipt."
+    ],
+    "test": "tests/test_p3_owner.py::test_compression_evidence_survives_psych_committed_crash injects a finish failure after PSYCH_COMMITTED, closes the owner, cold-reopens the exact P2/P3 roots, completes recovery, and asserts the receipt compression envelope is preserved byte-for-byte in the result."
+  },
+  "files_sha256": {
+    "p3/p3_owner.py": "e735ada798533a8f568739e823767bb2e2b4272c3c03d84dc2cd47f73cf65df1",
+    "p3/state_store.py": "173d4d6d3e94580804cac90039a01bfe6e3adfffcda9e806a56132b10ecc06bf",
+    "tests/test_p3_owner.py": "40ac01033ab367d601a6ddcd43bd913928fc5933a26b3c734697376816aeafe1",
+    "tests/test_state_store.py": "03429d6d1803ed2c5d0a4038d2a7d529b375c33b7d43a41bf9fb9e44abdc8344",
+    "INTEGRATION_CONTRACT.md": "88c86e10e2e6a1c4f90e7283318b1c18ed1d8674bc0472d5e18abaf333af4bcd"
+  },
+  "actual_commands": [
+    "python3 -m pytest tests/test_state_store.py tests/test_p3_owner.py -q",
+    "python3 -m pytest tests/test_compression.py tests/test_projections.py tests/test_projection_receiving.py tests/test_rules.py -q"
+  ],
+  "actual_results": {
+    "store_owner": "61 passed, 1 skipped in 40.62s",
+    "units": "37 passed in 8.23s",
+    "skip": "existing missing-store dependency guard"
+  },
+  "logs": [
+    "evidence/final-review-repair/store_owner.log",
+    "evidence/final-review-repair/units.log"
+  ],
+  "environment_note": "The host volume was at 100% capacity (190 MiB free) during the first evidence run; one store test failed to open SQLite with disk I/O error. Old temporary pytest/opencode artifacts were removed (regenerable, no repository or user document data), the single case passed immediately, and the full logged run above is clean. Full vertical-suite execution is not claimed here; the author lane owns that harness and matrix.",
+  "remaining": {
+    "M3": "OPEN_AUTHOR_LANE: tests/p3_fixture_support.py measurement subtracts main DB bytes only and ignores WAL.",
+    "full13": "PENDING_AUTHOR_HARNESS_REPAIR_AND_CORRECTED_CUT_REEXECUTION",
+    "independent_recheck": "PENDING_CORRECTED_CUT_FOCUSED_NONAUTHOR_REVIEW"
+  }
+}

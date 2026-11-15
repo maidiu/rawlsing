@@ -1,0 +1,78 @@
+{
+  "subject": "bf657e1c9287649617d074b748da0374d19d7e9b",
+  "protected_base": "33c40a315d3c231cb2021bd8e60f3261547efa62",
+  "remote_run": "https://github.com/maidiu/rawlsing/actions/runs/42192263450",
+  "remote_result": "failure",
+  "changed_test_proof_step": [
+    {
+      "completedAt": "2026-11-06T09:05:54Z",
+      "conclusion": "success",
+      "name": "Check changed tests and execute their claim-specific fault witnesses",
+      "number": 8,
+      "startedAt": "2026-11-06T09:04:56Z",
+      "status": "completed"
+    }
+  ],
+  "legacy_court_result": "3 failed, 144 passed in 43.23s",
+  "failed_nodes": [
+    "rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py::RuntimePackagingRebindTests::test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope",
+    "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_live_candidate_c_and_packaging_bind_final_hq_state",
+    "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_t5_contract_binds_final_successor_and_lits_current_law"
+  ],
+  "expected_vs_actual": {
+    "query_eval": {
+      "expected": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "actual_in_protected_and_candidate": "64555ce46807b815c6e26cb46b35622c73efe5ab"
+    },
+    "candidate_c_binder": {
+      "expected": "47893688ed455ced2c2f2311ad0aead6fb5bf2d2",
+      "actual_in_protected_and_candidate": "c2451b1b9d54b9588455022e0d6625083bb955d2"
+    }
+  },
+  "unchanged_source_pins": [
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "protected_blob": "64555ce46807b815c6e26cb46b35622c73efe5ab",
+      "candidate_blob": "64555ce46807b815c6e26cb46b35622c73efe5ab",
+      "unchanged": true
+    },
+    {
+      "path": "rawlsing_next/pre553_candidate_c_production_binding.py",
+      "protected_blob": "c2451b1b9d54b9588455022e0d6625083bb955d2",
+      "candidate_blob": "c2451b1b9d54b9588455022e0d6625083bb955d2",
+      "unchanged": true
+    },
+    {
+      "path": "rawlsing_next/runtime/ee_p2x/03_LITS_RUNTIME_AUTHORITY_OVERLAY_BINDING.json",
+      "protected_blob": "e9117e7757ceb81e32c133730632c8d20c5cb24e",
+      "candidate_blob": "e9117e7757ceb81e32c133730632c8d20c5cb24e",
+      "unchanged": true
+    },
+    {
+      "path": "WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json",
+      "protected_blob": "839141fa41dde455b59501380f90e81f2b6f3ea3",
+      "candidate_blob": "839141fa41dde455b59501380f90e81f2b6f3ea3",
+      "unchanged": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py",
+      "protected_blob": "fea5a0457062ce639f42d75c470ec89a9dbea531",
+      "candidate_blob": "fea5a0457062ce639f42d75c470ec89a9dbea531",
+      "unchanged": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py",
+      "protected_blob": "d9a6c263bf44d86994cb562e835efffe7734c6f0",
+      "candidate_blob": "d9a6c263bf44d86994cb562e835efffe7734c6f0",
+      "unchanged": true
+    },
+    {
+      "path": ".rabochii/court_spec.json",
+      "protected_blob": "67eb1c668c6d03a31f678d6b09db3288bd1ef810",
+      "candidate_blob": "67eb1c668c6d03a31f678d6b09db3288bd1ef810",
+      "unchanged": true
+    }
+  ],
+  "disposition": "Own missing-proof-contract failure repaired and remotely passed. Remaining three legacy Pyat hash-pin failures are inherited unchanged from protected source; preserve RED. No test weakening, pin rewriting, court replacement or unrelated Pyat repair. Protected receiving remains subject to its competent owner.",
+  "evidence_limit": "Baseline inheritance established by exact file/constant identities, not a separately executed protected-baseline court."
+}

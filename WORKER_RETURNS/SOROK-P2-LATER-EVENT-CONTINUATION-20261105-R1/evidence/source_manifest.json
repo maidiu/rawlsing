@@ -1,0 +1,183 @@
+{
+  "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "callables": {
+    "event_local_c9_reader": "s47.session.S47Session.read_c9_conditioning",
+    "later_event_producer": "s43.session.S43Session.admit_event",
+    "later_event_reader": "s45.session.S45Session.read_event -> s42.reader.read_event",
+    "projected_attend": "s45_projection.adapter.S45Projection.attend",
+    "projected_do_help": "s45_projection.adapter.S45Projection.do_help",
+    "projected_say": "s45_projection.adapter.S45Projection.say",
+    "s41_continuation_performer": "s41.performer.perform_continuation_attempt",
+    "s41_continuation_producer": "s41.event.ContinuationProducer.generate",
+    "s42_history_builder": "s42.event.make_history_records",
+    "s42_occurrence_builder": "s42.event.build_ongoing_occurrence",
+    "source_bound_expression_reader": "s43.session.S43Session.read_s43_event"
+  },
+  "return_files": [
+    {
+      "bytes": 821,
+      "path": "README.md",
+      "sha256": "2d73d38280c2823205e9d4c0ab4cf99ac6733330a590b80fb1fd12016483b3fb"
+    },
+    {
+      "bytes": 6662,
+      "path": "00_RETURN.md",
+      "sha256": "e3701666f752e8233784ee87fc39561686ea6b28229a9d31e81236c5774102b5"
+    },
+    {
+      "bytes": 2247,
+      "path": "PROGRAMMA_DELTA.md",
+      "sha256": "f2cbdc19e4772f240214cf98ca9fbbf9d3e9a418f1c5d9c99a1953c8ef8b5a2c"
+    },
+    {
+      "bytes": 2805,
+      "path": "PROGRAMMA_DELTA.json",
+      "sha256": "f83a852a260452c8cf6bfe4b8a4e589425c4b0aca9369eab6a1fa376f5da1911"
+    },
+    {
+      "bytes": 368,
+      "path": "p2_continuation/__init__.py",
+      "sha256": "c31ed4b245da9304eefaecbbf3656a484b64dc8539136337dab6fc53ded0aa5a"
+    },
+    {
+      "bytes": 1748,
+      "path": "p2_continuation/bootstrap.py",
+      "sha256": "0384d666f1176e4cedacab2743637d68e1b504f2cb2eef020b0abb2b107a049a"
+    },
+    {
+      "bytes": 21109,
+      "path": "p2_continuation/continuation.py",
+      "sha256": "e71e2ecb7c902cc80c895af379e6f264225f7d31b3f4e5f0fba8782d9159ecff"
+    },
+    {
+      "bytes": 3904,
+      "path": "p2_continuation/cli.py",
+      "sha256": "d9bd486f0e0bd8c1bdefec68866a9235c4db7ce0e19c5dc06da1775161265796"
+    },
+    {
+      "bytes": 1037,
+      "path": "tests/conftest.py",
+      "sha256": "7ce15d08bf9c794991445f22de8fc8208929b0297b545ffb33c0c0ad2fb1c99d"
+    },
+    {
+      "bytes": 4923,
+      "path": "tests/test_p2_continuation.py",
+      "sha256": "ca0f699f339de3f530040c5ef992cae5c35dbd366d3c598427ab463ba9456fce"
+    }
+  ],
+  "schema": "SOROK_P2_LATER_EVENT_SOURCE_MANIFEST@1",
+  "shipped_product_source_manifest": {
+    "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b"
+  },
+  "source_files": [
+    {
+      "bytes": 13094,
+      "git_blob_sha1": "41fe95c107ed5a33dc2453640b38de73862fd483",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/model.py",
+      "sha256": "1c86ce518beb40cacb8ddac5461dcdedf7cad50f703e6bbbd7da5e097748e8f1"
+    },
+    {
+      "bytes": 5304,
+      "git_blob_sha1": "40bc135db626ea98783d9b97037de2aad46fa795",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/performer.py",
+      "sha256": "919a0bf416bf5373aeb58511ff676ed244ce7d0bee882a291668e76909841c52"
+    },
+    {
+      "bytes": 4510,
+      "git_blob_sha1": "47dfc84d34a0c2a42cb0f6cc9340617f1632f45c",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/s40/performer.py",
+      "sha256": "094c87865c0cda9c2974bccf6213de7abe32ffbde85a114344dd54c7849bd14d"
+    },
+    {
+      "bytes": 14521,
+      "git_blob_sha1": "f0f7ec63ca2c0834ecc3f859093ce0530880c74e",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/s40/session.py",
+      "sha256": "abe771cc22c60eb806916040a5dea8423369c9824c1d1b22410d689ff84a8222"
+    },
+    {
+      "bytes": 14010,
+      "git_blob_sha1": "924b320842159f5b8c9e6836b780d7106d442a8a",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/event.py",
+      "sha256": "1a078c4d94ec2b4b198354963f90b0c5e7cf71af2ecc3bda2b8441a98222457e"
+    },
+    {
+      "bytes": 2272,
+      "git_blob_sha1": "4af06a221e7916902d21121c65b9112b75e70034",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/performer.py",
+      "sha256": "435525a4455e8c5f79dfee43bbd81c79fd95576f5bd4a1698f6d2f077a791838"
+    },
+    {
+      "bytes": 7015,
+      "git_blob_sha1": "0aa6c3503e8d520a9bd6af58af4cabf3b7cc2366",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/event.py",
+      "sha256": "b33389a298f828610d04e45bde08fc1a8577a23275b4475cb8e5749cb68589ce"
+    },
+    {
+      "bytes": 16352,
+      "git_blob_sha1": "073f115b0aa71b9e609cd84a22b79907fe1b724e",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py",
+      "sha256": "5acdbb26b4dedcca9707483c3513f98358ffcf238b846dd959cdbabb28f1219d"
+    },
+    {
+      "bytes": 15669,
+      "git_blob_sha1": "12c3e8a548bfb1bfe89b71b67bbc4f1adc29df3e",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py",
+      "sha256": "d8548d7317f63aa6e999e867626c509d9b0b99599479bba5ba4212f0440c867b"
+    },
+    {
+      "bytes": 5953,
+      "git_blob_sha1": "bc1a276770957414455cef49f0c79f601adca714",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/session.py",
+      "sha256": "da04f4b16c722945b8c9d9679010941a20ed82b75bb9cbf9c156c6daf89a78cb"
+    },
+    {
+      "bytes": 10882,
+      "git_blob_sha1": "5847a0e2bfd82fd9353d512476298a9b90833b24",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/performer.py",
+      "sha256": "09d8ea48128dd154ac6dc5483a943518d4479a62d1ec912fb77d510fcf157d76"
+    },
+    {
+      "bytes": 5581,
+      "git_blob_sha1": "9f9e82790c5130ecbbc25e9b2f01b352de97f869",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/reader.py",
+      "sha256": "71a39b52aebca7cdced4d381769559b2cccfd7aab7bab924f29d8a41caf4e1ab"
+    },
+    {
+      "bytes": 32297,
+      "git_blob_sha1": "5b5dc0238dcf9fa4e9f2635655d9e8dfdbf6678c",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+      "sha256": "fad26a91d4368d8de665b815bc174678bca97ece6a5a78cc131a5ef6e6db7ab9"
+    },
+    {
+      "bytes": 5949,
+      "git_blob_sha1": "8d255a0b14c92e16a123c12881c4fbc8311b24c5",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/session.py",
+      "sha256": "d8b51e5700666dbda9122c1ec89984df112abd4930247a9c7f1eff5baece95cf"
+    },
+    {
+      "bytes": 6681,
+      "git_blob_sha1": "f7c8a322f8c0dbb865983be9fcd7c3a821e4c462",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/model.py",
+      "sha256": "fb429b37b9b78de20e52ea79d824e69056c834190060dc49de3aa02c37e5b0f8"
+    },
+    {
+      "bytes": 19863,
+      "git_blob_sha1": "1f5e99e8377cc9abdf3d8779158c7d602a4b3a15",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py",
+      "sha256": "6e8fdc28a9171d9f9287dd49b86c9aa4e5de6745d24906c6e376baf6551454c2"
+    },
+    {
+      "bytes": 7126,
+      "git_blob_sha1": "60b5e61f19c5f4b09c06d3c4fac0a24a0ff59a87",
+      "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/session.py",
+      "sha256": "467e91a1f4488ab47d46212473d228ddcd93444b78f007501e4f4a123c915d39"
+    },
+    {
+      "bytes": 8290,
+      "git_blob_sha1": "6a5d8df2bf3be9469cf376b8482b345a7b712b68",
+      "path": "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/adapter.py",
+      "sha256": "8599934d5b70506c3347e8a40a635bf9855311c1fac6e00b5a0295732113d11e"
+    }
+  ]
+}

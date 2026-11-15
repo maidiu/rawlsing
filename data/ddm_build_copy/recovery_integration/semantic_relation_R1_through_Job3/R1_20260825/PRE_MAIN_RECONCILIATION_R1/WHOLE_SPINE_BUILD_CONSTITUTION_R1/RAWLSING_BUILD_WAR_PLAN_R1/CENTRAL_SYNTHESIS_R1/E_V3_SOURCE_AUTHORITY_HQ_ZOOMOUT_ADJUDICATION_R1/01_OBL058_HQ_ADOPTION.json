@@ -1,0 +1,46 @@
+{
+  "schema_id": "HQ_OBL058_ADOPTION@1.0.0",
+  "decision": "ADOPT_AS_CURRENT_AUTHORITY_CONTRACT_AT_ORIGINAL_CHARTER_GRAIN",
+  "obligation": "OBL058",
+  "authority_id": "OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.5.0",
+  "receipt_schema": "OBL058_CAUSAL_USE_PERMISSION_RECEIPT@6.0.0",
+  "mechanism": "OBL058_CAUSAL_USE_PERMISSION_AUTHORITY_CLIENT_BOUNDARY_R12@1.0.0",
+  "frozen_candidate": "fe0e3211ac2ae908e92fdc5a0351991747e6cbbb",
+  "exact_blobs": {
+    "r6": "3f35a6f8901140e0e98dd3426f207a0e3482e8c9",
+    "r8_native": "c3867ba6bd94ac896797e354dd424ccefa80672a",
+    "r9": "13f6e9af7c640ebffb6df1dcba6870e7b895f936",
+    "r12_python": "307b28f6c6dac96c711732d40b8949c45f1a2db9",
+    "r12_native_client": "924f5bbcdffda0d0ce937d365e6bd1a24f73d119"
+  },
+  "producer": {
+    "tip": "73e88fcba21556d830fc81bab8761087d97e3bbf",
+    "evidence": "d95865abc7c86da8ba64c9106ed11b2c231e0b6c",
+    "run": 34319175950,
+    "job": 102361816213,
+    "court": "40 passed",
+    "artifact": 10091200070,
+    "zip_sha256": "376fbb1b353a9b2ed07df5df280183f0f7c58a9373d5aff8ee2f229fedb25e0a"
+  },
+  "independent_review": {
+    "tip": "7506351dc5543f7932a78e672005c732d3973309",
+    "evidence": "a4569b18dd7b4aa342610da2e9db274ce4ad5e5f",
+    "semantic_result": "FAIL__OBL058_R12_INDEPENDENT_REVIEW__NATIVE_CAPABILITY_SOURCE_ORIGIN_NOT_AUTHENTICATED",
+    "blocker": "BLOCKER__OBL058_R12_CAPABILITY_BOOTSTRAP_TRUSTS_EXPECTED_CACHE_PATH_AND_BUILTIN_BINDING_WITHOUT_AUTHENTICATING_LOADED_NATIVE_BINARY_TO_FROZEN_SOURCE",
+    "hq_scope_classification": "VALID_TECHNICAL_FINDING__OUTSIDE_OBL058_SEMANTIC_ACCEPTANCE_SCOPE_UNDER_CURRENT_PROJECT_EXECUTION_TRUST_MODEL",
+    "run": 34324458294,
+    "job": 102378398595,
+    "court": "28 passed",
+    "artifact": 10093177027,
+    "zip_sha256": "21e752e017e297e23418a8dcc68298158a78ad5667cd9c961a236e6f33c246f3"
+  },
+  "current_effects": {
+    "positive_permission_fact_created": false,
+    "positive_obl056_entry_created": false,
+    "actor_or_runtime_mutation": false,
+    "obl055_executed": false,
+    "encounter_created": false,
+    "project_current_oee": false
+  },
+  "trust_note": "Native executable-to-frozen-source build attestation is not a current project-wide acceptance requirement. Future change must be prospective and cross-cutting, not hidden inside OBL058."
+}

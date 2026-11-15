@@ -1,0 +1,114 @@
+{
+  "schema": "SOROK_SELECTED_CODE_AND_AUTHORITY_DISPOSITION@1",
+  "purpose": "Final binding-source disposition required by the existing commission; not a new discovery campaign or implementation grant.",
+  "candidates": [
+    {
+      "component": "S48",
+      "source_cut": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "path": "WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/s48/session.py",
+      "git_blob": "3de86536497999e7272cc1e4e703185356955088",
+      "sha256": "8fc4e3f3c8f32a99174e06c28e1e7bfe046746a73fb7fdf6b57a57b985c450cb",
+      "disposition": "Existing single-event turn runner requires exactly one prospective item; incompatible with settled3\u20135 batch boundary. Retained, not rebuilt as the event owner; new coordinator reuses S47 below it.",
+      "grade": "EXISTING_SOURCEFREE_CANDIDATE__NO_NEW_ADOPTION",
+      "inspection": "DIRECT_EXACT_GIT_CODE_READ; no new execution claimed"
+    },
+    {
+      "component": "S49",
+      "source_cut": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "path": "WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/s49/session.py",
+      "git_blob": "70205dd6366f94b32f478863433469f46e5b31e5",
+      "sha256": "9932029c529a399ffedb24545ea5d0f6884a5fe8719ffc39c8af9fe1db0f3625",
+      "disposition": "Existing independent-B producer has ACTUAL_SOURCE_GRADE=UNAVAILABLE_CURRENT_B_ACTOR_OWNED_CONTEXT; controlled mode remains TEST_ONLY. No independently owned B inferred.",
+      "grade": "EXISTING_SOURCEFREE_CANDIDATE__NO_NEW_ADOPTION",
+      "inspection": "DIRECT_EXACT_GIT_CODE_READ; no new execution claimed"
+    },
+    {
+      "component": "S50",
+      "source_cut": "515b9a8ee45672c97051df4efef679117a679525",
+      "evidence": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/01_SELECTED_REUSE_LEDGER.json:s50",
+      "disposition": "Exact historical projection exists; current actual B BackboneState and matching historical dependency closure unavailable. No fake default state substituted.",
+      "grade": "EXACT_CODE_EXISTS__ACTUAL_ROOT_AND_CONSUMER_HELD"
+    },
+    {
+      "component": "S51",
+      "source_cut": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "path": "WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/s51/session.py",
+      "git_blob": "a6ab590fd6e1dfca32401c123812911b11b6c651",
+      "sha256": "6ef8e92eb3ea2d83cfdb5aba1121ed42f1706a0df9bc3f36aff2b91a47596a82",
+      "disposition": "Existing S49-derived situated object/hypothesis/access/relevance candidate. Retained as sourcefree lineage; canonical B history/access preconditions are not supplied by this tranche.",
+      "grade": "EXISTING_SOURCEFREE_CANDIDATE__NO_NEW_ADOPTION",
+      "inspection": "DIRECT_EXACT_GIT_CODE_READ; no new execution claimed"
+    },
+    {
+      "component": "S52",
+      "source_cut": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+      "git_blob": "c347d8a902f4f451852aca1054e9a3cd99d4c3f0",
+      "sha256": "3ed6dadf2c809a0f6e2d4094c41e34be3e51b4a984a219898e20f6a7b299e32e",
+      "disposition": "Existing S51-derived paid candidate/repertoire/performer. It records counterpart required and independent participation not observed; no independent paid activity or current adoption is inferred.",
+      "grade": "EXISTING_SOURCEFREE_CANDIDATE__NO_NEW_ADOPTION",
+      "inspection": "DIRECT_EXACT_GIT_CODE_READ; no new execution claimed"
+    }
+  ],
+  "authority_documents": [
+    {
+      "name": "CAN_008",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY.md",
+      "sha256": "e0d40620ed55936d12bc6fe84f8daad4add284bb85891d907a1c562bb31280eb",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "976c59086b938992114f68621f149687670e306d"
+    },
+    {
+      "name": "CAN_010",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_010_V3_NEED_EXPECTATION_STRIVING/AUTHORITY.md",
+      "sha256": "66ccc52b2323d3a20e5c7a26264e1a8e1f267f4f3926d33424bf0806f48da81d",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "8a25c734797e2db9550f1d51c64ae9c2290dbd03"
+    },
+    {
+      "name": "CAN_011",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_011_V3_MIDDLE_STATE/AUTHORITY.md",
+      "sha256": "b09eb1fb10630dcd6abfbd1062b8e5d5f6d01f70166b04d8b2a0c5d01f34e611",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "1ed04e62a363493bc7032a99139454a3126e6ea0"
+    },
+    {
+      "name": "CAN_012",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_012_V3_RUPTURE_METABOLIZATION/AUTHORITY.md",
+      "sha256": "278ce82f03c6849eea2dafd401a436cb6263fa013182948dc5ae4d97c5d85063",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "72f95e34698eb561d03af9005844f18cd520c8b9"
+    },
+    {
+      "name": "ADP_015",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md",
+      "sha256": "c93f67451adf0c3fe1d6d1f2fafb08e5fa2aec81d60903125fab67697e59af19",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456"
+    },
+    {
+      "name": "ADP_016",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_016_V3_CAUSAL_MEMORY/AUTHORITY.md",
+      "sha256": "387e18e8e9b5def693b77ec2de3f58a8150cc82e49499159fcf9c22f53c7fd53",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c"
+    },
+    {
+      "name": "ADP_017",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/ADP_017_V3_ACTOR_ACCESS/AUTHORITY.md",
+      "sha256": "a9cd426966d4e270faf0d8b1c720a7bce4177ff8b32a6fa2b0d7226d9afcbc0c",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "6b4162df27003bec413074178c46fea6360d71a0"
+    },
+    {
+      "name": "ADP_019",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_019_V3_EXTERNAL_ADMISSION/AUTHORITY.md",
+      "sha256": "14735f17865643a53f8bc819aa268cb3025653a13ab15a2488aba4a20383a3bc",
+      "disposition": "Semantic authority/source capital retained; this commission issues no native law, production release or original actor/source right.",
+      "protected_blob": "5c38772ea193e5a3f20da23c16df086a153ab2f2"
+    }
+  ],
+  "MUST018": "Attractor transition remains a separate original authority, explicitly reserved by CAN008 authority section4/DD12 and CAN012 sections1/16. No attractor/type transition is implemented or issued here.",
+  "current_reuse": "Actual accepted S39\u2013S47/P2 owners, sourcefree material interval/event/C9 and actor perception readers. Existing historical/semantic capital is not classified as absent merely because it is not adopted.",
+  "missing_native_chain": "A qualified rule-bearing native developmental/memory writer with issued original sources and compatible actual root, not another scheduler or a fabricated psychological delta."
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "EE_P2X_LOCAL_ATTEMPT_RUNTIME_DEPENDENCY_BLOCKER@1.0.0",
+  "command": "PYTHONPATH=/tmp/ee-p2x-r1 /tmp/ee-p2x-venv/bin/python rawlsing_next/ee_p2x_darwin_court_driver.py --resume --continuation-map WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json --work-root /private/tmp/ee-p2x-exec-r1 --repo-root /tmp/ee-p2x-r1 --lits-path /Users/matthewsmith/Desktop/Rawlsing/data/LiTS/LITS-2006-data.dta --wvs-path /Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav --backend-module rawlsing_next.ee_p2x_darwin_stage_backend",
+  "exit_code": 1,
+  "classification": "INFRASTRUCTURE_ATTEMPT_NONRESULT__NOT_A_MEASURED_CANDIDATE_CONCLUSION",
+  "runtime_gate": {
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "system": "Darwin",
+    "machine": "x86_64"
+  },
+  "missing_supporting_dependencies": [
+    "duckdb (LITS-I/A S02)",
+    "pandas (LITS-I/B and WVS7 A/B)"
+  ],
+  "driver_terminal_context": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION remained RUNNING after typed candidate-local attempt receipts; final verifier reported BLOCKER__DRIVER_STAGE_RUNNING__COURT__S17_FINAL_COMPLETENESS_AND_VERIFICATION and the backend failure-reporting path raised ValueError for COURT/ALL.",
+  "source_hashes_verified": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "no_source_substitution_or_semantic_change": true
+}

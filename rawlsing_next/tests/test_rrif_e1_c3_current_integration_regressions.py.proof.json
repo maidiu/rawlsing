@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "RRIF_C3_EE_P2X_REAL_DECODER_CONSUMER_MUST_BIND_IO_OBJECT_ID_TO_EXACT_SOURCE_SHA",
+      "actual_consumer": "ee_p2x_darwin_stage_backend._decode actual SAV decoder consumer publishes source-read event with source identity; test_actual_decoder_consumer_decode_regression",
+      "claimed_dependency": "ctx.source_sha256 -> _t4_io_event object_id CANONICAL_SOURCE::<exact SHA> in the real backend consumer, not a generic/decorative log identity",
+      "positive_node": "rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py::test_actual_decoder_consumer_decode_regression",
+      "fault": {
+        "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+        "old": "object_id=\"CANONICAL_SOURCE::\"+ctx.source_sha256, rewrite_of=None,",
+        "new": "object_id=\"CANONICAL_SOURCE::BROKEN::\"+ctx.source_sha256, rewrite_of=None,"
+      }
+    }
+  ]
+}

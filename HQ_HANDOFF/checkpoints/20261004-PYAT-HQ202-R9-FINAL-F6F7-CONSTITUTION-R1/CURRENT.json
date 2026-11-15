@@ -1,0 +1,41 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261004-PYAT-HQ202-R9-FINAL-F6F7-CONSTITUTION-R1",
+  "governing_decision": "HQD-2026-10-04-202",
+  "status": "R9_HARDENED_BINDING_FINAL_REVIEW__F6F7_CONSTITUTION_REVIEW_AND_DESIGN__ASTRA_TIME_GRAIN",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "r9": {
+    "candidate": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+    "adopted": false,
+    "review": {
+      "branch": "agent/reviewer-pyat-hq202-r1",
+      "commission_tip": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f"
+    }
+  },
+  "f6f7": {
+    "ontology_return": "d3f0619429a400552c2f3c397be57cdfbadb2f54",
+    "adopted": false,
+    "review": {
+      "branch": "agent/reviewer-pyat-hq202-r2",
+      "commission_tip": "f6725724d54d685f6c3dd8604a65f5f0b806a4ff"
+    },
+    "temporal_contract": {
+      "branch": "agent/rabochii-pyat-hq202-r1",
+      "commission_tip": "d452b66bc261e4139ca9c28a19b9d849676aff42"
+    },
+    "cross_source_contract": {
+      "branch": "agent/rabochii-pyat-hq202-r2",
+      "commission_tip": "501e7d5d4623d0ee92913a73d092da7918b981d5"
+    },
+    "astra_packet": "PYAT_CONTROL_ROOM/ASTRA_CONSULTS/HQ202_TIME_GRAIN_FORK_R1.md"
+  },
+  "next_action": "LAUNCH_HQ202_FIVE_NODE_ORTHOGONAL_FRONTIER",
+  "held": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

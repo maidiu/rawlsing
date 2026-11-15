@@ -1,0 +1,50 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ153-C1-03A-FACTORY-AUTHENTICITY-R1",
+  "status": "C1_03A_R2_PROGRESS_ACCEPTED__REREVIEW_HELD__R3_FACTORY_AUTHENTICITY_BOUND__C5_ACCEPTED__C1_03R_ASTRA_A_BOUND",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "predecessor_checkpoint": "20261001-PYAT-HQ152-C1-03A-TRUST-BOUNDARY-CORRECTION-R1",
+  "predecessor_handoff_commit": "4500594d02dfded439c734db035efa36b68c5598",
+  "governing_decision": "HQD-2026-10-01-153",
+  "c1_03a": {
+    "r2_return": "ad67be387fd9da350f07858b41729309e1c2e67f",
+    "hq_intake": "CHANGES_REQUIRED__REREVIEW_HELD_FOR_FINAL_FACTORY_AUTHENTICITY",
+    "reported_court": {
+      "passed": 185,
+      "failed": 0
+    },
+    "r3_branch": "agent/opencode-pyat-hq153-c1-03a-factory-authenticity-correction-r3",
+    "r3_commission_tip": "b885227b1b3f0ccaa8c892357dfc40251ab1d1cc",
+    "launch_surface": "OPENCODE__SPACE_BUNNY_FREE",
+    "pass_wake": "BIND_NARROW_BROWSER_SOL_HIGH_INDEPENDENT_REREVIEW"
+  },
+  "c1_03r": {
+    "branch": "agent/opencode-pyat-hq151-c1-03r-astra-a-owner-extension-r1",
+    "commission_tip": "9705742b3466e764d310f73b9bc3115073991e9f",
+    "observed_head": "9705742b3466e764d310f73b9bc3115073991e9f",
+    "state": "BOUND_NO_RETURN_OBSERVED"
+  },
+  "c5_n5": {
+    "state": "ADOPTED_HQD_151",
+    "head": "151d39260a803635f622323b14e42d96c7976d25"
+  },
+  "c1_03_join": {
+    "status": "BLOCKED",
+    "prerequisites": [
+      "HQ_ADOPTED_C1_03A",
+      "HQ_ADOPTED_C1_03R",
+      "AT17_ALREADY_ADOPTED"
+    ]
+  },
+  "next_action": "USER_LAUNCH_C1_03A_FACTORY_AUTHENTICITY_R3_SPACE_BUNNY__C1_03R_ASTRA_A_MAY_RUN_IN_PARALLEL__HQ_RECONCILES_RETURNS",
+  "prohibitions": [
+    "NO_C1_03A_REREVIEW_BEFORE_R3_PASS",
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_WITHOUT_EXACT_LATER_WARRANT",
+    "NO_C7_IMPLEMENTATION",
+    "NO_C1_03_JOIN",
+    "NO_C1_R",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

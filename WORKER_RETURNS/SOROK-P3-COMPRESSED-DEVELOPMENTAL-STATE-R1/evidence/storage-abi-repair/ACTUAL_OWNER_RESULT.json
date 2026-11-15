@@ -1,0 +1,25 @@
+{
+  "schema": "SOROK_P3_STORE_ABI_REPAIR_ACTUAL_OWNER_RESULT@1",
+  "command": "python3 -m pytest -q tests/test_p3_owner.py",
+  "counts": {
+    "passed": 6,
+    "failed": 1,
+    "skipped": 1,
+    "seconds": 22.4
+  },
+  "store_provenance_and_kind_positives": "PASS",
+  "previously_failing_owner_positives_now_pass": [
+    "test_formation_stored_records_pure_views_and_later_response",
+    "test_later_no_mediator_control_uses_inspect_alone",
+    "test_idempotent_replay_and_reopened_owner_return_immutable_result"
+  ],
+  "remaining_failure": {
+    "test": "test_real_subprocess_crash_boundary_recovers_prepared_base",
+    "error": "ModuleNotFoundError: No module named 'developmental_recursion'",
+    "owner": "owner crash-child import path",
+    "store_defect": false,
+    "action_in_this_lease": "not edited; owner/test outside store lease"
+  },
+  "actual_p2_positive_chain_observed": true,
+  "full_p3_acceptance": "NOT_CLAIMED"
+}

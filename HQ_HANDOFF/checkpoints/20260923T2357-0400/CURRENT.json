@@ -1,0 +1,28 @@
+{
+  "schema": "RAWLSING_HQ_CURRENT_FIABC_LAUNCHER_R2@1.0.0",
+  "checkpoint_id": "20260923T2357-0400",
+  "status": "RAWLSING_FIABC_LAUNCHER_SELF_CONTAMINATION_REPAIRED__MEASURED_RUN_ENVIRONMENT_UNCHANGED__FRESH_RETRY_AUTHORIZED",
+  "decision": "HQD-2026-09-23-089",
+  "launcher": {
+    "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "repair_commit": "d0838133148d89866fcbbeefaf31d5b64adf036a",
+    "git_blob_sha1": "43d250b36cc6dbba831b686a225b14497a2232e8",
+    "qualification_commit": "a5f91eb73809594ccbaa1f83df2e246f2dabb183",
+    "premeasurement_scoped_python_B": true,
+    "measured_run_python_B": false,
+    "global_PYTHONDONTWRITEBYTECODE": false
+  },
+  "protected_execution_head": "b53ff08921af263b9db4d1ad038f35fbc12b990a",
+  "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+  "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384",
+  "failed_attempt": {
+    "candidate_processes": 0,
+    "candidate_outputs": 0,
+    "measured_p2x": false
+  },
+  "retry": {
+    "fresh_work_root_required": true,
+    "preserve_failed_work_root": true,
+    "fresh_or_clean_checkout_required": true
+  }
+}

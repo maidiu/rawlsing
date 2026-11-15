@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "note": "Synthetic structural returns only; no semantic authority produced.",
+  "cases": [
+    {
+      "name": "baseline",
+      "expected": "PASS",
+      "observed": "PASS",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "name": "t07_not_blocked",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "exit_code": 2,
+      "pass": true
+    },
+    {
+      "name": "reserved_duplicate_wrong_reason",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "exit_code": 2,
+      "pass": true
+    },
+    {
+      "name": "immutable_field_mutation",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "exit_code": 2,
+      "pass": true
+    },
+    {
+      "name": "blank_mutable",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "exit_code": 2,
+      "pass": true
+    },
+    {
+      "name": "invalid_json",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "exit_code": 2,
+      "pass": true
+    },
+    {
+      "name": "retain_without_known_r6",
+      "expected": "FAIL",
+      "observed": "FAIL",
+      "exit_code": 2,
+      "pass": true
+    }
+  ]
+}

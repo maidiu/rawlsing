@@ -1,0 +1,66 @@
+{
+  "schema_id": "RABOCHII_EXECUTION_STATE@1.0.0",
+  "profile": "IMPLEMENT",
+  "phase": "IMPLEMENT",
+  "semantic_candidate_sha": "0000000000000000000000000000000000000000",
+  "branch_tip_sha": "0000000000000000000000000000000000000000",
+  "evidence_execution_sha": null,
+  "terminal_definition_revision": 1,
+  "revision_authority_ref": null,
+  "frozen_terminal_claim_ids": [
+    "C1"
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "type": "DETERMINISTIC_EXECUTION",
+      "status": "READY",
+      "proof_mode": "EXACT",
+      "required_proofs": 1,
+      "proof_owners": []
+    }
+  ],
+  "current_action": {
+    "advances_claim_id": "C1",
+    "description": "Execute the smallest lawful action that advances C1."
+  },
+  "mutation_envelope": {
+    "allowed_paths": [],
+    "forbidden_paths": [
+      "main",
+      "integration/pre-main-reconciliation-r1"
+    ]
+  },
+  "capabilities": {
+    "repo_read": true,
+    "repo_write": true,
+    "local_checkout": false,
+    "container_execution": false,
+    "ci_dispatch": false,
+    "ci_observation": false,
+    "library_access": false,
+    "library_materialization": false,
+    "network": false
+  },
+  "liveness": {
+    "mode": "IMPLEMENTATION_DIFF",
+    "last_progress_ref": null
+  },
+  "fresh_state": {
+    "checked": false,
+    "branch_tip_sha": null,
+    "observed_proof_owner_ids": []
+  },
+  "terminal": {
+    "status": "OPEN",
+    "blocker_class": null,
+    "blocking_claim_ids": []
+  },
+  "checkpoint_state": {
+    "mode": "WRITE_AHEAD",
+    "last_completed_stage": null,
+    "volatile_result_pending": false,
+    "recompute_cost": "LOW",
+    "durable_checkpoint_ref": null
+  }
+}

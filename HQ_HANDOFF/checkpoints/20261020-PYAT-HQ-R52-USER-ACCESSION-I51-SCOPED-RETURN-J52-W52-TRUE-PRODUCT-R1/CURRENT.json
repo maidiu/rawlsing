@@ -1,0 +1,203 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261020-PYAT-HQ-R52-USER-ACCESSION-I51-SCOPED-RETURN-J52-W52-TRUE-PRODUCT-R1",
+  "owner": "Pyat",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20261020-PYAT-HQ-R51-B49-G50-REAL-RETURNS-I51-JOIN-PRODUCT-R1",
+  "predecessor_handoff_commit": "d5f56ba07aaaa993fef93b9cd6d666d37d712a48",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "current_progress_revision": 36,
+  "decision": "PYAT_CONTROL_ROOM/HQ_ACCESSION_20261020/00_R52_POST_REVIEW_USER_ACCEPTANCE_AND_I51_INTAKE.md",
+  "accession": {
+    "frozen_candidate_sha": "dc6e7a233b9fc0cd26234fb18eb27e8bb8fc4343",
+    "outgoing_review_sha": "bd1fa0dfaf46f83915459af11edafe818ada336a",
+    "review_blob": "3002425b69fc23333a7871e917ccb50573654e43",
+    "user_explicit_acceptance": "2026-10-20 Chyelovyek-Vozhd grants accession conditioned on fulfilling outgoing HQ; verified and fulfilled with R52 actual I51 adjudication and formal post-review record",
+    "attestation": "PYAT_CONTROL_ROOM/HQ_ACCESSION_20261020/01_R52_POST_REVIEW_OPERATIVE_ATTESTATION.json",
+    "scope": "PYAT_HQ_EXISTING_PROJECT_COMMAND_ONLY",
+    "new_source_science_actor_rights": false,
+    "historical_candidate_immutable": true
+  },
+  "last_post_checkpoint_return": {
+    "worker": "I51",
+    "remote_head": "9bbf9e0509411beb210331d28160324b005a784e",
+    "commission_startup": "104c14ae6a6a1f7e28912c15d08c98ab35c9c0aa",
+    "return_blob": "69d152c5d701f90d2ba0eebffd78b92e809509ca",
+    "receipt_blob": "3c400a133617b16d5c57a2e9bf61054c4fe671ae",
+    "scope": "SOURCEFREE_TEST_ONLY_B49_SELECTED_NATIVE_SOURCE_G50_17_OP_UNIVARIATE_DIST_TO_ORIGINAL_U43_I03_BATCH",
+    "sourcefree_symbolic_op_count": 17,
+    "joined_true_native_dist_count": 1,
+    "tests": "10 newly native pass, 5 mutation witnesses, 2 cold 10 tests each, B49 prior 70 and G50 prior 13",
+    "baseline_fact": "245098cf814e67594c60120226cfea5591f160c25379254b0b155fcb9c9c6911",
+    "source_mutation_fact": "e3e7799bc9e21c99e27079e7dfac84e0e87ad3203c2641a7781abec10a97748d",
+    "engineering": "REVISE_MULTI_TARGET_AND_REAL_I05_AND_E04_TERMINAL_HOLD",
+    "science": "ACCEPT_SCOPED_SOURCEFREE_SYNTHETIC_MECHANISM_ONLY",
+    "authority": "HOLD",
+    "worker_full_relaunch_prohibited": true
+  },
+  "selected_pre553_physical_route": "B__SOURCE_BACKED_VIRTUAL_C11",
+  "dispatch": {
+    "seal": "PYAT_CONTROL_ROOM/R52_EXACT_J52_W52_PRODUCT_COMPLETION_DISPATCH_SEAL_20261020.md",
+    "immutable_startup": "31f2d739d88d17629948ebe62e650f953b92aea0",
+    "J52": {
+      "branch": "agent/rabochii-pyat-r52-j52-source-to-multitarget-i05-e04-native-consumer-r1",
+      "commission": "WORKER_COMMISSIONS/PYAT-R52-J52-REAL-MULTITARGET-I05-E04-NATIVE-CONSUMER-COMPLETION-R1/00_COMMISSION.md",
+      "commission_blob": "7c6b403150bad4973e5c2b628dd9bb3d382893b8",
+      "model": "DeepSeek V4.1-Flash MAX",
+      "host": "S3 QUALIFIED PRIVATE LOCAL RUNTIME",
+      "host_capacity": "UNKNOWN",
+      "state": "PUBLISHED_NOT_AUTOMATICALLY_LAUNCHED",
+      "library_access": "NO",
+      "grain": "TEST_ONLY real B49 derived G50 n-ary native I05 U43 and old nonperson E04 where permitted"
+    },
+    "W52": {
+      "branch": "agent/rabochii-pyat-r52-w52-ff-f6-f7-existing-n9-nonperson-world-r1",
+      "commission": "WORKER_COMMISSIONS/PYAT-R52-W52-STRUCTURAL_PARTIAL_TEMPORAL_REAL_NONPERSON_WORLD_CONSUMER-R1/00_COMMISSION.md",
+      "commission_blob": "136a5f71862e683bc783c270043c39387b600b48",
+      "model": "DeepSeek V4.1-Flash MAX",
+      "host": "S3 QUALIFIED PRIVATE LOCAL RUNTIME",
+      "host_capacity": "UNKNOWN",
+      "state": "PUBLISHED_NOT_AUTOMATICALLY_LAUNCHED",
+      "library_access": "NO",
+      "grain": "Retained/sourcefree F43 objective bounded selected world into existing E04/P41 where permitted"
+    }
+  },
+  "active_workers": [],
+  "pending_user_launched_worker_checks": [
+    {
+      "id": "J52",
+      "branch": "agent/rabochii-pyat-r52-j52-source-to-multitarget-i05-e04-native-consumer-r1",
+      "commission_tip": "31f2d739d88d17629948ebe62e650f953b92aea0",
+      "observed_head_at_checkpoint": null,
+      "grain": "B49 G50 I05 E04 sourcefree native and same consumer no-drop",
+      "library_access": "NO",
+      "pass_wake": "only after user-launch observed AND valid governed native full return",
+      "blocker_effect": "B49 actual sourcefree joint/conditional still unsupported; not source-positive permission",
+      "hard_forbidden": [
+        "RAW_SAV_DTA",
+        "SOURCE_LICENSE_CREATION",
+        "ORIGINAL_METHOD_ISSUANCE",
+        "EARLY_N11_N12_ACTOR",
+        "PRODUCTION_OWNER_CODE_EDIT"
+      ]
+    },
+    {
+      "id": "W52",
+      "branch": "agent/rabochii-pyat-r52-w52-ff-f6-f7-existing-n9-nonperson-world-r1",
+      "commission_tip": "31f2d739d88d17629948ebe62e650f953b92aea0",
+      "observed_head_at_checkpoint": null,
+      "grain": "Retained structural and sourcefree bounded/temporal actual N9 E04 consumer",
+      "library_access": "NO",
+      "pass_wake": "only after independent user-selected S3 host/session and real issued worker return",
+      "blocker_effect": "F43 method to actual new nonperson original reader not proved beyond J42",
+      "hard_forbidden": [
+        "NEW_STRUCTURAL_SEMANTIC_GRANTS",
+        "UNISSUED_F6_TRANSPORT",
+        "ACTUAL_F7_PAIR_FABRICATION",
+        "EARLY_N11_N12_ACTOR"
+      ]
+    }
+  ],
+  "dependency_graph": [
+    {
+      "node": "J52_SOURCEFREE_JOIN",
+      "status": "COMMISSION_PUBLISHED_NOT_AUTO_LAUNCHED",
+      "prerequisites": [
+        "B49_QUALIFIED_AUTHORED",
+        "G50_QUALIFIED_AUTHORED",
+        "I51_REAL_UNIVARIATE_JOIN_AUTHOR_REVISE",
+        "S3_USER_VERIFIED_HOST"
+      ],
+      "wake_effect": "native CONDITIONAL/JOINT source-derived G50 I05 U43 selected B E04 when lawful",
+      "prohibited_early_actions": [
+        "TREAT_SOURCEFREE_AS_ORIGINAL",
+        "RELAUNCH_I51",
+        "FAKE_E04_READER"
+      ]
+    },
+    {
+      "node": "W52_OBJECTIVE_N9_E04",
+      "status": "COMMISSION_PUBLISHED_NOT_AUTO_LAUNCHED",
+      "prerequisites": [
+        "F43_METHOD_RETURN",
+        "J42_EXISTING_E04_TEST_ONLY_CONSUMER",
+        "DISTINCT_UNSERVED_F43_FIELD",
+        "S3_USER_VERIFIED_SEPARATE_HOST"
+      ],
+      "wake_effect": "F5 F6 uncertainty F7 grade actually consumed by N9/E04 with proper source index and clock",
+      "prohibited_early_actions": [
+        "F6_JOINT_INDIVIDUAL_POOLING",
+        "OBSERVED_F7_PSEUDO_PAIR",
+        "FF_SEMANTIC_ISSUANCE"
+      ]
+    },
+    {
+      "node": "CURRENT_SRC27_SOURCE_AND_D2_D5_SCIENCE",
+      "status": "COMPETENT_OWNER_DECISION_NOT_RECEIVED",
+      "prerequisites": [
+        "REAL_APPLICABLE_D1_LICENCE_AND_PRIVATE_HOST",
+        "D2_ADMINISTERED_U",
+        "D3_RISK_ROUTE_UNIT",
+        "D4_VALID_ESTIMAND_DESIGN",
+        "D5_PROSPECTIVE_ISSUED_METHOD_POLICY"
+      ],
+      "wake_effect": "first original real selected B source-positive wave/tranche, remaining34 source identities held",
+      "prohibited_early_actions": [
+        "RAW_DATA_TO_GITHUB_OR_BROWSER",
+        "AUTO_SOURCE_GRANT",
+        "SYNTHETIC_U_AS_ORIGINAL"
+      ]
+    },
+    {
+      "node": "N11_ORIGINAL35_F1_F8",
+      "status": "NOT_READY",
+      "prerequisites": [
+        "35_SOURCE_EXPECTED_ANIDROP",
+        "ACTUAL_ORIGINAL_QUALIFIED_MEASURED_RECEIPTS",
+        "F5_TO_F8_INDEPENDENT_GROUNDED_WORLD_USES",
+        "SOURCE_AND_METHOD_GRANTS",
+        "INDEPENDENT_N11_COURT"
+      ],
+      "wake_effect": "separate science accepted N11 maturity manifest",
+      "prohibited_early_actions": [
+        "N11_SELF_ACCEPT",
+        "SYNTHETIC_SOURCE_PROMOTION"
+      ]
+    },
+    {
+      "node": "N12_TO_SOROK",
+      "status": "HOLD",
+      "prerequisites": [
+        "N11_INDEPENDENT_ACCEPTED",
+        "SEPARATE_N12_USER_HQ_WAKE",
+        "REAL_SOROK_C0_PERSON_PURPOSE_AND_MODEL_RIGHTS"
+      ],
+      "wake_effect": "explicit PREV3/V3 weld and Sorok actor changes under Sorok governance",
+      "prohibited_early_actions": [
+        "AUTO_N12_WAKE",
+        "PYAT_ACTOR_GRANTS"
+      ]
+    }
+  ],
+  "estate": {
+    "original_wave_sources": 35,
+    "source_files_SAV": 31,
+    "source_files_DTA": 4,
+    "original_U_count": null,
+    "original_E_pre_count": null,
+    "current_original_measured_cells": 0,
+    "n11_total_accounting_cells": 1890,
+    "register_links": 151,
+    "action_tasks": 101,
+    "unmatched_mappings": 81,
+    "n11": "NOT_READY",
+    "n12": "HOLD",
+    "f5_f6_f7_original_science": "OPEN",
+    "sourcefree_technical_positive": true
+  },
+  "source_or_science_grants_created": false,
+  "source_microdata_read": false,
+  "production_code_touched": false,
+  "Sorok_interference": false,
+  "next_action": "Do not relaunch I51/B49/G50. User-select qualified S3 session(s) to execute SEALED J52 and optionally orthogonal W52; HQ separately act on exact SRC27 D1 authentic source host rights and D2–D5 prospective source operation decisions; grade actual consumer/source receipt without claiming original0 turned positive. Keep original35, N11 HOLD and Sorok separate."
+}

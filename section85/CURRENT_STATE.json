@@ -1,0 +1,38 @@
+{
+  "archive_contains_respondent_level_substrate": false,
+  "archive_truth_audit_status": "PASS_STATIC_CANARY_ARCHIVE_TRUTH_AUDIT",
+  "authority_validation_checks": 6,
+  "authority_validation_status": "PASS_BOUNDED_V550J_AUTHORITY_VALIDATION",
+  "bounded_adapter_tests": {
+    "failed": 0,
+    "passed": 14
+  },
+  "configuration_count": 9,
+  "configured_item_count": 26,
+  "database_change": "NONE_R184_UNCHANGED",
+  "existing_v550j_regression": {
+    "failed": 0,
+    "passed": 65,
+    "skipped": 4
+  },
+  "joint_configuration_authority_release_id": "V550J-BOUNDED-AUTHORITY-2026-08-02-R1",
+  "live_host_plan_scope_count": 9,
+  "live_respondent_database_contract_checker": "PACKAGED_NOT_RUN_REQUIRES_LIVE_PIPELINE_DATABASE",
+  "next_action": "On the live Codex host, pass the respondent-database contract checker; then run GSS control and eight non-GSS V550J\u2192V551J\u2192V552J canaries.",
+  "p3_bound_item_count": 3,
+  "parent_git_commit": "9cee93851dfe7deb6bfdd092862519e24a4fc9b9",
+  "parent_p3_authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+  "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
+  "real_empirical_j_chain_status": "NOT_RUN_REQUIRES_LIVE_RESPONDENT_DATABASE_AND_PYARROW",
+  "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+  "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+  "self_contained_reproduction": {
+    "association_mode": "off",
+    "authority_files": 14,
+    "exact_hash_matches": 14,
+    "plan_scopes": 9,
+    "status": "PASS_SECTION85_SELF_CONTAINED_REPRODUCTION"
+  },
+  "source_local_only_item_count": 23,
+  "status": "PASS_BOUNDED_AUTHORITY_READY_FOR_LIVE_EMPIRICAL_CANARY"
+}

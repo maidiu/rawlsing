@@ -1,0 +1,48 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261007-PYAT-HQ244-F7-NATIVE-STAGE-A-N10E-R2-WARRANT-REVIEW-R1",
+  "decision": "HQD-2026-10-07-244",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261007-PYAT-HQ243-SPACE-BUNNY-F7-ROUTING-CORRECTION-R1",
+  "returns": {
+    "f7": {
+      "head": "d6ce7101c76c85bd358b7c59568935ec69dfa912",
+      "disposition": "F7_T1_NATIVE_P07_OWNER_PARTIAL__NAMED_API_OR_NATIVE_BLOCKER",
+      "native_owner_completed": false,
+      "governed_native_compile_probe_reported": true
+    },
+    "n10e": {
+      "head": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_R2_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW",
+      "warrant_adopted": false
+    }
+  },
+  "active_lanes": [
+    {
+      "id": "F7_NATIVE_P07_STAGE_A_NONAUTHORIZING",
+      "branch": "agent/space-bunny-pyat-hq244-f7-native-owner-stage-a-custody-resolve-r1",
+      "commission_tip": "e7822b37f22370b83d921baab1b31bc6aa405b41",
+      "agent": "Space Bunny via OpenCode",
+      "model": "Space Bunny Max preferred; verify effective provider/variant",
+      "machine": "Mac isolated governed sparse worktree",
+      "status": "NEW__NEEDS_LAUNCH",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/00_COMMISSION.md"
+    },
+    {
+      "id": "N10E_AT07_ISSUER_WARRANT_R2_INDEPENDENT_HOSTILE_REVIEW",
+      "branch": "agent/reviewer-pyat-hq244-n10e-at07-issuer-warrant-r2-r1",
+      "commission_tip": "eca9de918c31a4fffeda10ffd7b9acb36f1b29b4",
+      "agent": "Browser/GitHub independent authority hostile reviewer",
+      "model": "GPT-5.6 Sol High",
+      "status": "NEW__NEEDS_LAUNCH",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ244-N10E-AT07-ISSUER-WARRANT-R2-INDEPENDENT-HOSTILE-REVIEW-R1/00_COMMISSION.md"
+    }
+  ],
+  "holds": {
+    "f7": "RR04G_OPEN__NO_NATIVE_OWNER_IMPL_PASS__STAGE_A_NONAUTHORIZING_ONLY__NO_EXTERNAL_F7_RELIANCE",
+    "n10e": "R2_ISSUER_WARRANT_CANDIDATE_UNADOPTED__NO_ROOT_ISSUER_CREDENTIAL_R4_OR_IMPL",
+    "n6": "LOCAL_GT2_CONTEXT_ONLY__OC05_NONCURRENT"
+  },
+  "next_action": "RUN_F7_HQ244_NONAUTHORIZING_NATIVE_STAGE_A_SPACE_BUNNY_AND_N10E_HQ244_R2_WARRANT_HOSTILE_BROWSER_SOL_IN_PARALLEL__INTAKE_ANY_RETURN"
+}

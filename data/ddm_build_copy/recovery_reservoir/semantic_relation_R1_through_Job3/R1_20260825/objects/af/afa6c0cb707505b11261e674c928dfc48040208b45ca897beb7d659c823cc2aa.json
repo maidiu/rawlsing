@@ -1,0 +1,80 @@
+{
+  "release": "R10E_P2",
+  "worker_id": "W04",
+  "mutation_namespace": "R10E_P2::W04::S2_S2B_SUCCESSOR_DECISIONS",
+  "input_workbench": "/mnt/data/r10e_p2_w04/kit/W04/W04_R10E_P2_S2_S2B_WORKBENCH.csv",
+  "output_workbench": "/mnt/data/r10e_p2_w04/output/W04_R10E_P2_S2_S2B_WORKBENCH_COMPLETED.csv",
+  "assigned_count": 1142,
+  "returned_count": 1142,
+  "unique_returned_ids": 1142,
+  "duplicate_ids": [],
+  "missing_ids": [],
+  "extra_ids": [],
+  "order_preserved": true,
+  "immutable_columns_unchanged": true,
+  "immutable_change_count": 0,
+  "terminal_completion_errors": [],
+  "workstream_counts": {
+    "S2_STRUCTURAL_CHOICE_ADJUDICATION": 482,
+    "S2B_BEHAVIOR_EXPOSURE_ENDPOINT_REVIEW": 552,
+    "S2_SOURCE_TOPOLOGY_REVIEW": 108
+  },
+  "s2_terminal_counts": {
+    "PRESERVE_SOURCE_TOPOLOGY": 575,
+    "REVISE_TOPOLOGY": 15
+  },
+  "s2b_terminal_counts": {
+    "REJECT_ENDPOINT": 173,
+    "ACCEPT_ENDPOINT": 375,
+    "BLOCKED": 4
+  },
+  "response_authority_gap_count": 5,
+  "response_authority_gap_outcomes": [
+    {
+      "id": "question_impl.phase0.5391cd50b606af941c4b",
+      "code": "Q860A",
+      "workstream": "S2_STRUCTURAL_CHOICE_ADJUDICATION",
+      "terminal": "REVISE_TOPOLOGY",
+      "evidence": "ABV_Questionnaire_ENG_v2.pdf::Q860A::questionnaire pp.38-39; Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv::Q860A"
+    },
+    {
+      "id": "question_impl.phase0.d30bda7b67f372310f48",
+      "code": "Q860B",
+      "workstream": "S2_STRUCTURAL_CHOICE_ADJUDICATION",
+      "terminal": "REVISE_TOPOLOGY",
+      "evidence": "ABV_Questionnaire_ENG_v2.pdf::Q860B::questionnaire pp.38-39; Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv::Q860B"
+    },
+    {
+      "id": "question_impl.phase0.6b7055edebcd5d8e42f9",
+      "code": "Q860C",
+      "workstream": "S2_STRUCTURAL_CHOICE_ADJUDICATION",
+      "terminal": "REVISE_TOPOLOGY",
+      "evidence": "ABV_Questionnaire_ENG_v2.pdf::Q860C::questionnaire pp.38-39; Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv::Q860C"
+    },
+    {
+      "id": "question_impl.phase0.ab74a009914cd4d1c7b9",
+      "code": "Q860D",
+      "workstream": "S2_STRUCTURAL_CHOICE_ADJUDICATION",
+      "terminal": "REVISE_TOPOLOGY",
+      "evidence": "ABV_Questionnaire_ENG_v2.pdf::Q860D::questionnaire pp.38-39; Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv::Q860D"
+    },
+    {
+      "id": "question_impl.phase0.71c8ce8553f749870730",
+      "code": "btipolpart",
+      "workstream": "S2B_BEHAVIOR_EXPOSURE_ENDPOINT_REVIEW",
+      "terminal": "REJECT_ENDPOINT",
+      "evidence": "WVS Wave 7 (2017) Codebook.pdf::btipolpart::BTI political-participation contextual score; Rawlsing_P2_WVS_Deep_Question_Node_Catalog_v1.csv::btipolpart"
+    }
+  ],
+  "blocker_count": 4,
+  "blocker_ids": [
+    "question_impl.phase0.4ba1de8bd7530e0eabfe",
+    "question_impl.phase0.583cbfac18f7731a0b20",
+    "question_impl.phase0.931edd00aea9b48e0fd0",
+    "question_impl.phase0.71eff8f59d97a5c15347"
+  ],
+  "no_job3_relations_created": true,
+  "no_respondent_joins_created": true,
+  "no_upstream_authority_mutated": true,
+  "status": "PASS"
+}

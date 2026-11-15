@@ -1,0 +1,65 @@
+{
+  "schema": "RAWLSING_CANONICAL_REINTEGRATION_TERMINAL_READBACK@1.0.0",
+  "status": "PASS__CUMULATIVE_ANCESTRY_AND_TREE_GRAIN_VERIFIED__NO_ARCHITECTURE_SELECTION",
+  "observed_head": "b90c6d145477ee41be363782646f5a5d22723377",
+  "checkpoint_id": "20260921T2050-0400",
+  "canonical_ref": "integration/pre-main-reconciliation-r1",
+  "alias_ref": "integration/pre-main-fiabc-canonical-reintegration-r1",
+  "ancestry": {
+    "premain": {
+      "sha": "d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d",
+      "behind_by": 0
+    },
+    "fiabc": {
+      "sha": "91723d443f56acb05af63acc0d3a34fb9a97e3f4",
+      "behind_by": 0
+    },
+    "main": {
+      "sha": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+      "behind_by": 0
+    },
+    "qualified_fiabc_code_head": {
+      "sha": "aa15525750085f4e223d579010688660a9ae1b6b",
+      "behind_by": 0
+    }
+  },
+  "immutable_checkpoint": {
+    "handoff_commit": "39c7b27032f2c9c352954ff0c7cb9bf068acbf2c",
+    "manifest_blob": "828b9f372b37a34c34973c504c1ca83c7a03ac14",
+    "current_md_blob_expected": "cba59460fa305b93a38dc80f20455293c48d5568",
+    "current_md_blob_observed": "cba59460fa305b93a38dc80f20455293c48d5568",
+    "current_json_blob_expected": "23a536ad52cdf49d830fe27f653025625a80278f",
+    "current_json_blob_observed": "23a536ad52cdf49d830fe27f653025625a80278f"
+  },
+  "tree_grain_readback": {
+    "reconciled_vs_fiabc_changed_paths": 213,
+    "rawlsing_next_changed_paths": [
+      "rawlsing_next/rabochii_return_beacon.py",
+      "rawlsing_next/rabochii_return_beacon_actionable.py",
+      "rawlsing_next/rabochii_return_beacon_sweep.py",
+      "rawlsing_next/tests/test_rabochii_return_beacon.py",
+      "rawlsing_next/tests/test_rabochii_return_beacon_actionable.py",
+      "rawlsing_next/tests/test_rabochii_return_beacon_sweep.py"
+    ],
+    "fiabc_p2_pre553_critical_runtime_changed_paths": [],
+    "return_beacon_final_state": "MANUAL_WORKFLOW_DISPATCH_ONLY__AUTOMATIC_ACTIONS_DISABLED"
+  },
+  "architecture": {
+    "obligation": "OBL001",
+    "status": "RETURN_REQUIRED",
+    "winner_selected": false
+  },
+  "next_gate": {
+    "command": "bash WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+    "source_free": true,
+    "candidates_forbidden_before_pass": true,
+    "measured_p2x_forbidden_before_pass": true
+  },
+  "host_actions_during_reintegration": {
+    "user_mac_used": false,
+    "raw_survey_carriers_opened": false,
+    "candidates_run": false,
+    "measured_p2x_run": false,
+    "github_actions_run": false
+  }
+}

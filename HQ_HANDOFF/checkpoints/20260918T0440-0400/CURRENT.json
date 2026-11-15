@@ -1,0 +1,171 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T0440-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T0406-0400",
+  "status": "EE_P2X_BROWSER_PREPARATION_COMPLETE__LOCAL_DARWIN_P2_EXECUTION_AUTHORIZED",
+  "governance": {
+    "p2x_rv_return": "320a7098707d0110db8e59f9638e2057ccb27969",
+    "p2x_rv_disposition": "PASS__ADOPTED__QUALIFIED_RECEIPT_VERIFIER_FANIN_COMPLETE",
+    "p2x_prior_head": "6d13e1e88643e77ae076336dd8ddb20ee1cd6b3f",
+    "p2x_resume_head": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "reducer_return": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+    "reducer_map_path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "reducer_map_git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+    "reducer_map_sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422",
+    "driver_path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "driver_git_blob_sha1": "c3a368270f6f7a6f613efb78e31972e64a092c88",
+    "driver_binding_path": "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json",
+    "driver_binding_git_blob_sha1": "50c9a53d0d77131df7c619114b476afce0b0bb0f",
+    "driver_bound_verifier_path": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+    "driver_bound_verifier_git_blob_sha1": "da8f3434f791c9f6495238b28817de4b3e328ad3",
+    "executor_readme_git_blob_sha1": "b6b9e29cf6bbc19de79fe431672ed33f5d18fd0a",
+    "adoption_path": "HQ_HANDOFF/EE_P2X_RV_ADOPTION_FINAL_FANIN_AND_LOCAL_WAKE_20260918.md",
+    "decision_ledger_id": "HQD-2026-09-18-038",
+    "lock1": "FROZEN_UNCHANGED",
+    "lock2": "SEALED__8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "local_measured_continuation": "AUTHORIZED__EXISTING_EE_P2X__QUALIFYING_DARWIN_HOST_ONLY",
+    "measured_synthesis": "FORBIDDEN_PENDING_LAWFUL_COMPLETE_EE_P2X_RETURN"
+  },
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R1",
+      "branch": "agent/rabochii-prev3-ee-p2r1-universal-carrier-i03-i05-binding-r1",
+      "return_head": "9511f44728a8469d685463ec0fc880864c9187de",
+      "disposition": "PASS__ADOPTED__QUALIFIED_CODE_FANIN_COMPLETE"
+    },
+    {
+      "id": "EE-P2X-CONTINUATION-REDUCER-R1",
+      "branch": "agent/rabochii-prev3-ee-p2x-continuation-reducer-browser-r1",
+      "return_head": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+      "disposition": "PASS__ADOPTED__EXACT_CONTINUATION_STATE_MACHINE_BOUND"
+    },
+    {
+      "id": "EE-P2XD",
+      "branch": "agent/rabochii-prev3-ee-p2xd-darwin-mechanical-court-driver-preparation-r1",
+      "return_head": "2a26306c990b6d16bbe5ca90807ae7db59b687e6",
+      "disposition": "PASS__ADOPTED__QUALIFIED_DRIVER_FANIN_COMPLETE"
+    },
+    {
+      "id": "EE-P2X-RV",
+      "branch": "agent/rabochii-prev3-ee-p2x-rv-local-receipt-verifier-preparation-r1",
+      "commission_tip": "db88478a9ae3f0e73aa9bf6eb7091a6dcc598171",
+      "return_head": "320a7098707d0110db8e59f9638e2057ccb27969",
+      "disposition": "PASS__ADOPTED__QUALIFIED_RECEIPT_VERIFIER_FANIN_COMPLETE"
+    }
+  ],
+  "preserved_evidence": {
+    "lits_a_first_build_commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+    "lits_a_first_build": "BANKED_ADMISSIBLE__REPETITION_FORBIDDEN",
+    "lits_b_cacheless_c11": "BANKED_ADMISSIBLE__REPETITION_FORBIDDEN",
+    "p2x_prior_terminal_return": "29e434a385719f9835e0bcd252fb24bc37675a99",
+    "repetition": "FORBIDDEN_UNLESS_EXACT_CONTRACT_INVALIDATION_PROVED"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "resume_from": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "grain": "FINAL_TWO_SOURCE_A_B_C_EQUAL_WORK_P2_MEASURED_EXECUTION_ONLY",
+      "library_access": "EXACT_ONLY",
+      "execution_surface": "LOCAL_DARWIN_ONLY",
+      "local_execution_authorized": true,
+      "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "blocker_effect": "RETURN_EXACT_SMALLEST_TYPED_BLOCKER__DO_NOT_SYNTHESIZE",
+      "hard_forbidden": [
+        "NO_REBASE_OR_REPLACEMENT_BRANCH",
+        "NO_LOCK1_MUTATION",
+        "NO_LOCK2_MUTATION",
+        "NO_CANDIDATE_OR_WORKLOAD_REDESIGN",
+        "NO_NEW_WVS_ACCELERATOR",
+        "NO_THIRD_CACC",
+        "NO_GOLDEN_PATH",
+        "NO_SURROGATE_PERFORMANCE_DATA",
+        "NO_CROSS_UNIVERSE_METRIC_POOLING",
+        "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+        "NO_REPEAT_COMPLETED_LITS_B_CACHELESS_C11",
+        "NO_RANKING_SCORING_RECOMMENDATION_SELECTION",
+        "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION"
+      ]
+    }
+  ],
+  "continuation_state": {
+    "authority_ref": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43:WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "final_stage": "S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+    "wake_on_pass": "HQ_MEASURED_SYNTHESIS",
+    "source_order": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "wvs_c_stage": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+    "wvs_c_disposition": "WVS7_C__CURRENT_PORTABILITY_FAILURE",
+    "wvs_c_effect": "CANDIDATE_LOCAL__DOES_NOT_BLOCK_WVS_A_OR_B",
+    "pure_b_optional_cache_tests": "NOT_APPLICABLE__DO_NOT_MANUFACTURE_CACHE"
+  },
+  "local_execution_contract": {
+    "host_os": "Darwin",
+    "host_arch": "x86_64",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "rss_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES",
+    "driver_modes": [
+      "--preflight",
+      "--status",
+      "--run",
+      "--resume",
+      "--verify-only"
+    ],
+    "stage_ledger_schema": "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0",
+    "supervisor_token_schema": "RAWLSING_EE_P2X_LOCAL_SUPERVISOR_ACTION@1.0.0",
+    "final_verifier": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+    "final_pass_terminal": "PASS__FINAL_TWO_SOURCE_P2_EVIDENCE_COMPLETE"
+  },
+  "p2x_rv_qualification": {
+    "workflow_run_id": 35324632723,
+    "job_id": 105534740675,
+    "semantic_candidate": "5540c6c586d5d7ebdbe37814a6e51d64bcc8c06c",
+    "evidence_execution": "d7bcf77768203a10d118f19f0235c02c822087fe",
+    "protocol_self_tests": "20/20 PASS",
+    "commissioned_inner_suite": "40/40 PASS",
+    "governed_outer_court": "1/1 PASS",
+    "artifact_zip_sha256": "8b66f78ef41aa9cae01be03f0d1acde66da194843889870775aa5038fda84eb4"
+  },
+  "dependency_graph": {
+    "EE_P2X_RV": {
+      "status": "CLOSED__ADOPTED_PASS__QUALIFIED_FANIN_COMPLETE",
+      "wake_effect": "LOCAL_DARWIN_EXECUTION_HOLD_LIFTED",
+      "prohibited_early_actions": []
+    },
+    "EE_P2X": {
+      "status": "ACTIVE__LOCAL_DARWIN_EXECUTION_AUTHORIZED",
+      "prerequisites": [
+        "LOCK1_SEALED",
+        "LOCK2_SEALED",
+        "EE_P2R1_ADOPTED_PASS",
+        "ADOPTED_CONTINUATION_MAP",
+        "EE_P2XD_QUALIFIED_FANIN",
+        "EE_P2X_RV_QUALIFIED_FANIN"
+      ],
+      "wake_effect": "HQ_MEASURED_SYNTHESIS_ONLY_ON_LAWFUL_COMPLETE_RETURN",
+      "prohibited_early_actions": [
+        "HQ_MEASURED_SYNTHESIS",
+        "FINAL_CARRIER_SELECTION",
+        "REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+        "REPEAT_COMPLETED_LITS_B_CACHELESS_C11"
+      ]
+    }
+  },
+  "terminal": "EE_P2X_BROWSER_PREPARATION_COMPLETE__LOCAL_DARWIN_P2_EXECUTION_AUTHORIZED"
+}

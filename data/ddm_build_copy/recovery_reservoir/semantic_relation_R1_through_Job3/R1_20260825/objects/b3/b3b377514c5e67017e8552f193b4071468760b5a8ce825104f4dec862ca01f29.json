@@ -1,0 +1,170 @@
+{
+  "worker_id": "W02",
+  "job": "Job3-R3",
+  "candidate_count": 272,
+  "disposition_counts": {
+    "REJECT": 189,
+    "ACCEPT": 83
+  },
+  "candidate_scope_defect_suspected_count": 20,
+  "rule_disposition_counts": {
+    "S14-T01": {
+      "ACCEPT": 50,
+      "REJECT": 29
+    },
+    "S14-T02": {
+      "ACCEPT": 11,
+      "REJECT": 0
+    },
+    "S14-T06": {
+      "ACCEPT": 0,
+      "REJECT": 1
+    },
+    "S14-T11": {
+      "ACCEPT": 1,
+      "REJECT": 159
+    },
+    "S14-T12": {
+      "ACCEPT": 6,
+      "REJECT": 0
+    },
+    "S14-T13": {
+      "ACCEPT": 15,
+      "REJECT": 0
+    }
+  },
+  "check_count": 17,
+  "checks": [
+    {
+      "check": "row_count_exact",
+      "status": "PASS",
+      "detail": "272 rows"
+    },
+    {
+      "check": "candidate_ids_exact",
+      "status": "PASS",
+      "detail": "returned candidate IDs equal frozen shard candidate IDs"
+    },
+    {
+      "check": "candidate_ids_unique",
+      "status": "PASS",
+      "detail": "candidate IDs unique"
+    },
+    {
+      "check": "terminal_values_only",
+      "status": "PASS",
+      "detail": "{'REJECT': 189, 'ACCEPT': 83}"
+    },
+    {
+      "check": "no_blocker_without_block",
+      "status": "PASS",
+      "detail": "No evidence gap remained unresolved after source-native review; zero BLOCKED rows."
+    },
+    {
+      "check": "accept_type_exact",
+      "status": "PASS",
+      "detail": "all ACCEPT relation types equal frozen candidate_template_class"
+    },
+    {
+      "check": "immutable_payload_integrity_except_return",
+      "status": "PASS",
+      "detail": "44 governed payload files checked; mismatches=[]"
+    },
+    {
+      "check": "rule_disposition_replay",
+      "status": "PASS",
+      "detail": {
+        "S14-T01": {
+          "ACCEPT": 50,
+          "REJECT": 29
+        },
+        "S14-T02": {
+          "ACCEPT": 11,
+          "REJECT": 0
+        },
+        "S14-T06": {
+          "ACCEPT": 0,
+          "REJECT": 1
+        },
+        "S14-T11": {
+          "ACCEPT": 1,
+          "REJECT": 159
+        },
+        "S14-T12": {
+          "ACCEPT": 6,
+          "REJECT": 0
+        },
+        "S14-T13": {
+          "ACCEPT": 15,
+          "REJECT": 0
+        }
+      }
+    },
+    {
+      "check": "t11_source_battery_replay",
+      "status": "PASS",
+      "detail": "same-battery positives=[('O12C-d7878c95c4fad65ab719ef8b', ['v282', 'v283'], ['2008_CIVIC_INTERVENTION', '2008_CIVIC_INTERVENTION'])]; cross-battery rejects=159; mismatches=[]"
+    },
+    {
+      "check": "t02_source_condition_continuity",
+      "status": "PASS",
+      "detail": "11/11 explicit condition pairs; anomalies=[]"
+    },
+    {
+      "check": "t12_exact_gate_contingent_membership",
+      "status": "PASS",
+      "detail": "6/6 candidate member sets equal frozen gate+contingent payloads; mismatches=[]"
+    },
+    {
+      "check": "t13_explicit_tradeoff_payload",
+      "status": "PASS",
+      "detail": "15/15 have explicit tradeoff_frame and goods_end_roles; missing=[]"
+    },
+    {
+      "check": "t06_exact_action_scope_resolution",
+      "status": "PASS",
+      "detail": "political action: using violence | do you justify: fighting with the police"
+    },
+    {
+      "check": "scope_defect_flags_exact",
+      "status": "PASS",
+      "detail": "20 flagged; exact predefined source-proven scope pathology set matched"
+    },
+    {
+      "check": "no_pre_r3_worker_reuse_markers",
+      "status": "PASS",
+      "detail": "semantic return prose contains no old-worker-pack reuse markers; hits=[]"
+    },
+    {
+      "check": "t12_native_text_route_proof",
+      "status": "PASS",
+      "detail": "all 6 T12 routes directly recovered from flattened native text; pages={'O12C-b6428ca2dee17fc1efecca67': [13], 'O12C-bc0d8b33da305e426bf1acbc': [20], 'O12C-842489fd8347a9bee0e2f74e': [27], 'O12C-9ddbd732861900c53fc2c6f1': [27], 'O12C-a1fbb848d1e4039c85d43c6a': [20], 'O12C-d740a4e74c4b8452cc9f5b6f': [7]}; missing=[]"
+    },
+    {
+      "check": "t11_recurrence_native_q82_proof",
+      "status": "PASS",
+      "detail": "EVS 2008 native Q82 header plus v282 justice-information and v283 own-affairs statements recovered on adjacent source pages."
+    }
+  ],
+  "status": "PASS",
+  "t12_source_route_pages": {
+    "O12C-b6428ca2dee17fc1efecca67": [
+      13
+    ],
+    "O12C-bc0d8b33da305e426bf1acbc": [
+      20
+    ],
+    "O12C-842489fd8347a9bee0e2f74e": [
+      27
+    ],
+    "O12C-9ddbd732861900c53fc2c6f1": [
+      27
+    ],
+    "O12C-a1fbb848d1e4039c85d43c6a": [
+      20
+    ],
+    "O12C-d740a4e74c4b8452cc9f5b6f": [
+      7
+    ]
+  }
+}

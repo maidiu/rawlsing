@@ -1,0 +1,946 @@
+{
+  "actual_fact": {
+    "constructor_input": {
+      "authority_snapshot_refs": [
+        {
+          "authority_content_hash": "a62630cdc2c81161bcce4c3be7f3757bb4a7e279c9cb334e0b9b013d7339a435",
+          "authority_id": "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+          "authority_version": "1.0.0"
+        },
+        {
+          "authority_content_hash": "943fa2c44710480948f1dc7a5ae2fe512b806462776e89dcd6de761c5c956d0a",
+          "authority_id": "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+          "authority_version": "1.0.0"
+        },
+        {
+          "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+          "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+          "authority_version": "1.0.0"
+        },
+        {
+          "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+          "authority_id": "GT12-A3-GT2-I03-QUERY",
+          "authority_version": "1.0.0"
+        },
+        {
+          "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e",
+          "authority_id": "GT12-A3-GT2-TARGET-USE",
+          "authority_version": "1.0.0"
+        }
+      ],
+      "dependency_refs": "EXTERNAL_CLOSURE__dependency_refs",
+      "producer_replay_locator_or_reference_root": {
+        "content_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+      },
+      "semantic_fields": {
+        "condition_predicate_ref": {
+          "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+        },
+        "denominator_member_refs": "EXTERNAL_CLOSURE__respondent_refs",
+        "empirical_query_spec_ref": {
+          "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+          }
+        ],
+        "execution_detail": "exact governed target distribution resolved",
+        "measure_basis_ref": {
+          "content_hash": "77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:rawlsing:gt12b:raw-measure:sha256:77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170"
+        },
+        "measure_kind": "RAW",
+        "query_execution_contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+        "raw_denominator_support": 19210,
+        "raw_numerator_support": 19210,
+        "raw_resolved_target_support": 19210,
+        "replay_ref": {
+          "content_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+          "kind": "PRE553_I03_QUERY_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+        },
+        "response_state_semantics_ref": {
+          "content_hash": "fd55863b0d1eb8f961928f0eeeec94c43dd4f6bc3b63bce141a841f0c1a9a261",
+          "kind": "RESPONSE_STATE_SEMANTICS",
+          "object_id": "Afrobarometer:R5:Q86:SOURCE_NATIVE_RESPONSE_STATES"
+        },
+        "risk_set_member_refs": "EXTERNAL_CLOSURE__respondent_refs",
+        "risk_set_ref": {
+          "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+          "kind": "RISK_SET",
+          "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+        },
+        "risk_set_type": "COMMON_ELIGIBLE_RISK_SET",
+        "source_empirical_provenance_refs": "EXTERNAL_CLOSURE__source_empirical_provenance_refs",
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "target_domain_identity": "afb1ff07c202e4f235eaa26541ac394d4730fbb519edcc287c4fbb5ba5fb5454",
+        "target_topology": {
+          "arity": 2,
+          "complete_cell_semantic_projection": [
+            {
+              "cell": [
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 2112,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 4493,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                {
+                  "typed_response_state": "DK"
+                }
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 178,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 1,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                {
+                  "typed_response_state": "NOT_ASKED"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                {
+                  "typed_response_state": "REFUSAL"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 491,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 11232,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                {
+                  "typed_response_state": "DK"
+                }
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 63,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 1,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                {
+                  "typed_response_state": "NOT_ASKED"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                {
+                  "typed_response_state": "REFUSAL"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "DK"
+                },
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 40,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "DK"
+                },
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 250,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "DK"
+                },
+                {
+                  "typed_response_state": "DK"
+                }
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 334,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "DK"
+                },
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "DK"
+                },
+                {
+                  "typed_response_state": "NOT_ASKED"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "DK"
+                },
+                {
+                  "typed_response_state": "REFUSAL"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "MISSING"
+                },
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "MISSING"
+                },
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 9,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "MISSING"
+                },
+                {
+                  "typed_response_state": "DK"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "MISSING"
+                },
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 6,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "MISSING"
+                },
+                {
+                  "typed_response_state": "NOT_ASKED"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "MISSING"
+                },
+                {
+                  "typed_response_state": "REFUSAL"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                {
+                  "typed_response_state": "DK"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                {
+                  "typed_response_state": "NOT_ASKED"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                {
+                  "typed_response_state": "REFUSAL"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                {
+                  "typed_response_state": "DK"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                {
+                  "typed_response_state": "NOT_ASKED"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                {
+                  "typed_response_state": "REFUSAL"
+                }
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED",
+          "target_domain_identity": "afb1ff07c202e4f235eaa26541ac394d4730fbb519edcc287c4fbb5ba5fb5454"
+        },
+        "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
+        "weighted_denominator_support_if_authorized": null,
+        "weighted_numerator_support_if_authorized": null
+      },
+      "typed_state": "SUPPORTED"
+    },
+    "ref": {
+      "content_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"
+    }
+  },
+  "actual_query": {
+    "constructor_semantic_projection": {
+      "authority_snapshot_refs": [
+        {
+          "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+          "authority_id": "GT12-A3-GT2-I03-QUERY",
+          "authority_version": "1.0.0"
+        },
+        {
+          "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e",
+          "authority_id": "GT12-A3-GT2-TARGET-USE",
+          "authority_version": "1.0.0"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+        },
+        {
+          "content_hash": "f6f40ddfc63f0953df7b8098ec381f3021c28626b7f14c3a586af298a61b3f3e",
+          "kind": "GT12_FROZEN_CANARY_CONTRACT",
+          "object_id": "urn:rawlsing:gt12b:frozen-contract:sha256:f6f40ddfc63f0953df7b8098ec381f3021c28626b7f14c3a586af298a61b3f3e"
+        },
+        {
+          "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+          "kind": "RISK_SET",
+          "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+        },
+        {
+          "content_hash": "105da4745dbcafd391d8987e3e59093d769e7bb154c1543d71c0c1fa8be61e2d",
+          "kind": "TARGET_DOMAIN_REPLAY",
+          "object_id": "Afrobarometer:R5:Q86A:TARGET_DOMAIN_REPLAY"
+        },
+        {
+          "content_hash": "a76eb90265baa8c741c0538886c2fb4f04ce6a07a1acceb8e5db8f9f170853ca",
+          "kind": "TARGET_DOMAIN_REPLAY",
+          "object_id": "Afrobarometer:R5:Q86B:TARGET_DOMAIN_REPLAY"
+        },
+        {
+          "content_hash": "e69e8de7c227d1d77c54c1113c68472873128e9fa76b0b2c9ba998b105fd208f",
+          "kind": "TARGET_USE",
+          "object_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "content_hash": "08aa586be8cd225b3eeda3b5047dd7b17f5df41f29c3967bbf9b2959b6149e52",
+        "kind": "GT12_I03_QUERY_REPLAY_ROOT",
+        "object_id": "urn:rawlsing:gt12b:query-replay:sha256:08aa586be8cd225b3eeda3b5047dd7b17f5df41f29c3967bbf9b2959b6149e52"
+      },
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "semantic_fields": {
+        "condition_predicate_ref": {
+          "content_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:rawlsing:gt12b:raw-measure:sha256:77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+            "authority_id": "GT12-A3-GT2-I03-QUERY",
+            "authority_version": "1.0.0"
+          }
+        ],
+        "requested_output_grain": {
+          "frozen_risk_set_identity": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+          "frozen_risk_set_semantic_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+          "gt12_claim_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+          "measure_kind": "RAW",
+          "permission_ceiling": "EMPIRICAL_INPUT_TO_FROZEN_EXACT_CONDITIONAL_SUPPORT_ONLY__NO_CAUSAL_OR_ACTOR_PROMOTION",
+          "response_state_semantics_ref": {
+            "content_hash": "fd55863b0d1eb8f961928f0eeeec94c43dd4f6bc3b63bce141a841f0c1a9a261",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "Afrobarometer:R5:Q86:SOURCE_NATIVE_RESPONSE_STATES"
+          },
+          "risk_set_type": "COMMON_ELIGIBLE_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "target_use_authority_ref": {
+            "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e",
+            "authority_id": "GT12-A3-GT2-TARGET-USE",
+            "authority_version": "1.0.0"
+          },
+          "target_use_operation": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+          "target_use_ref": {
+            "content_hash": "e69e8de7c227d1d77c54c1113c68472873128e9fa76b0b2c9ba998b105fd208f",
+            "kind": "TARGET_USE",
+            "object_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"
+          },
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "risk_set_ref": {
+          "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+          "kind": "RISK_SET",
+          "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+        },
+        "scope_refs": [
+          {
+            "content_hash": "4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 2,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1",
+                {
+                  "typed_response_state": "DK"
+                },
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE",
+                "DK",
+                "NOT_ASKED",
+                "REFUSAL",
+                "MISSING"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+                  "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "a76eb90265baa8c741c0538886c2fb4f04ce6a07a1acceb8e5db8f9f170853ca",
+                "kind": "TARGET_DOMAIN_REPLAY",
+                "object_id": "Afrobarometer:R5:Q86B:TARGET_DOMAIN_REPLAY"
+              },
+              "target_ref": {
+                "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+                "kind": "QUESTION_IMPLEMENTATION",
+                "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+                  "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            },
+            {
+              "domain": [
+                "0",
+                "1",
+                {
+                  "typed_response_state": "DK"
+                },
+                {
+                  "typed_response_state": "NOT_ASKED"
+                },
+                {
+                  "typed_response_state": "REFUSAL"
+                },
+                {
+                  "typed_response_state": "MISSING"
+                }
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE",
+                "DK",
+                "NOT_ASKED",
+                "REFUSAL",
+                "MISSING"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+                  "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "105da4745dbcafd391d8987e3e59093d769e7bb154c1543d71c0c1fa8be61e2d",
+                "kind": "TARGET_DOMAIN_REPLAY",
+                "object_id": "Afrobarometer:R5:Q86A:TARGET_DOMAIN_REPLAY"
+              },
+              "target_ref": {
+                "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+                "kind": "QUESTION_IMPLEMENTATION",
+                "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+                  "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "target_refs": [
+          {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          }
+        ]
+      },
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE"
+    },
+    "ref": {
+      "content_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+    }
+  },
+  "authority_snapshot_refs": [
+    {
+      "authority_content_hash": "a62630cdc2c81161bcce4c3be7f3757bb4a7e279c9cb334e0b9b013d7339a435",
+      "authority_id": "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+      "authority_version": "1.0.0"
+    },
+    {
+      "authority_content_hash": "943fa2c44710480948f1dc7a5ae2fe512b806462776e89dcd6de761c5c956d0a",
+      "authority_id": "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+      "authority_version": "1.0.0"
+    },
+    {
+      "authority_content_hash": "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4",
+      "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+      "authority_version": "1.0.0"
+    },
+    {
+      "authority_content_hash": "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16",
+      "authority_id": "GT12-A3-GT2-I03-QUERY",
+      "authority_version": "1.0.0"
+    },
+    {
+      "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e",
+      "authority_id": "GT12-A3-GT2-TARGET-USE",
+      "authority_version": "1.0.0"
+    }
+  ],
+  "closure_rehydration": {
+    "denominator_member_refs": {
+      "count": 19210,
+      "exact_sequence_equal_to_risk_set_members": true,
+      "source": "respondent_refs"
+    },
+    "dependency_refs": {
+      "count": 76846,
+      "law": "canonical ExactRef set(query_ref,predicate_ref,replay_ref,source_empirical_provenance_refs)"
+    },
+    "event_refs": {
+      "canonical_order": "ExactRef.key ascending",
+      "count": 38420,
+      "kind": "RespondentEvent@1.0.0",
+      "object_id_template": "urn:rawlsing:pre553:RespondentEvent:sha256:{hash}",
+      "shards": [
+        {
+          "bytes": 1229440,
+          "count": 38420,
+          "path": "payload/event_ref_hashes.bin",
+          "sha256": "2fa09161ad457750dc3c80865811731908bdeb1c82dfdd36e958f178ede041b1",
+          "start_index": 0
+        }
+      ]
+    },
+    "respondent_refs": {
+      "canonical_order": "ExactRef.key ascending",
+      "count": 19210,
+      "kind": "C11Internal:RespondentIdentity",
+      "object_id_template": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:{hash}",
+      "shards": [
+        {
+          "bytes": 614720,
+          "count": 19210,
+          "path": "payload/respondent_ref_hashes.bin",
+          "sha256": "9c34860a8a2a474e667e72ec5141e199b853672efb851bddebbd2dcde0d7a80b",
+          "start_index": 0
+        }
+      ]
+    },
+    "risk_set_member_refs": {
+      "count": 19210,
+      "source": "respondent_refs"
+    },
+    "routing_refs": {
+      "canonical_order": "ExactRef.key ascending",
+      "count": 38420,
+      "kind": "RoutingEligibilityFact@1.0.0",
+      "object_id_template": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:{hash}",
+      "shards": [
+        {
+          "bytes": 1229440,
+          "count": 38420,
+          "path": "payload/routing_ref_hashes.bin",
+          "sha256": "9ab1b53264a159d9446c8cfaef4c63c7c9786cd12e6e96d143ee57e6ad894825",
+          "start_index": 0
+        }
+      ]
+    },
+    "source_empirical_provenance_refs": {
+      "count": 76843,
+      "law": "canonical ExactRef set(release_ref,replay_manifest_ref,empirical_universe_ref,routing_refs,event_refs)"
+    }
+  },
+  "execution": {
+    "deterministic_replay_exact_result_equality": true,
+    "raw_denominator_support": 19210,
+    "raw_resolved_target_support": 19210,
+    "semantic_component_order": [
+      "Q86B",
+      "Q86A"
+    ],
+    "typed_state": "SUPPORTED"
+  },
+  "execution_checkpoint_commit": "43cf3df0fc9002a38d72ad57f1fe4dfe1f3736fb",
+  "forbidden_material": {
+    "e2b_execution": false,
+    "raw_respondent_response_values": false,
+    "sav": false,
+    "source_rows": false
+  },
+  "identity": {
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+  },
+  "recovery_note": "EXTRACT_ONLY_RECOVERY_FROM_DURABLE_EXECUTE_CHECKPOINT__NO_GT2_REEXECUTION",
+  "release": {
+    "internal_records": 19212,
+    "public_objects": 96057,
+    "ref": {
+      "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295",
+      "kind": "C11LogicalRelease",
+      "object_id": "R5_GT12_Q86A_Q86B_FROZEN"
+    },
+    "replay_manifest_ref": {
+      "content_hash": "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa",
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa"
+    }
+  },
+  "schema": "GT12_R4A_CURRENT_GT2_CONSTRUCTOR_COMPLETE_TRANSPORT@3",
+  "stages": [
+    {
+      "elapsed_seconds": 0.01105,
+      "exact": true,
+      "rss_kb_max": 98984,
+      "stage": "RECOVERY_HASH_VERIFY"
+    },
+    {
+      "claim_rows": 19210,
+      "elapsed_seconds": 11.415068,
+      "projection_ref": "113191743eb0bbfbefb8b1dbe3ac9737bf860260a2a80b25dab07d15954a64f7",
+      "rss_kb_max": 280696,
+      "stage": "RECOVERY_PROJECT",
+      "stage_seconds": 6.331142
+    },
+    {
+      "elapsed_seconds": 23.322088,
+      "rss_kb_max": 499292,
+      "stage": "RECOVERY_CANDIDATE",
+      "stage_seconds": 11.906804
+    },
+    {
+      "elapsed_seconds": 23.773967,
+      "events": 38420,
+      "respondents": 19210,
+      "routing": 38420,
+      "rss_kb_max": 499292,
+      "stage": "RECOVERY_CLOSURES"
+    },
+    {
+      "elapsed_seconds": 25.74323,
+      "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "rss_kb_max": 499292,
+      "stage": "RECOVERY_PLAN"
+    },
+    {
+      "authority_refs": 5,
+      "dependency_refs": 76846,
+      "elapsed_seconds": 25.988617,
+      "provenance_refs": 76843,
+      "rss_kb_max": 499292,
+      "stage": "RECOVERY_CONSTRUCTOR_FIELDS",
+      "target_cells": 36
+    }
+  ],
+  "worker_terminal": "PASS__GT12_R4A_CURRENT_GT2_EXECUTED__ACTUAL_QUERY_FACT_OBTAINED__CONSTRUCTOR_COMPLETE_PAYLOAD_EXTRACTED"
+}

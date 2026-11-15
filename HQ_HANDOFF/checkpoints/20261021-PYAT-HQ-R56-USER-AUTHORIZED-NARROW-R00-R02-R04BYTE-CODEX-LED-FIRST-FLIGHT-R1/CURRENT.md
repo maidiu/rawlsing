@@ -1,0 +1,13 @@
+# Pyat R56 — explicit narrow engineering unpause, Codex-led continuation
+
+**2026-10-21, revision 42.** **User explicitly granted** the previously published exact R55 proposed narrow R53/R54 implementation amendment. Operative grant: sourcefree R00 policy/oracle/claim-transition code/test work in three paths; once R00 independent contract frozen, disjoint parallel R02 and R04.byte code/tests in four paths, plus independent native review. Exact grant text/path list and evidence→permission distinctions: `PYAT_CONTROL_ROOM/R56_USER_EXPLICIT_NARROW_IMPLEMENTATION_STOP_AMENDMENT_AND_CODEX_DIRECTED_FLIGHT_20261021.md`.
+
+Prior immutable R55 packet: `6cd0ac4086ad2ad22d981304e4e2b6c2b533195d` under previous checkpoint; final director `40511175ca7c2dd6b858e4bc3d4c4bd874d93f16` / M3 `fb20c987947791f1606faca460bd194b2e9b017e`; inherited U53A `d7988b3d5d313902d883d2d8c244fd2526058410`. New explicit grant is **not** a report-only approval, but does not mean work has already begun or passed. No worker automatically launched here.
+
+**Operational handoff:** User selects the existing mainMac **Codex-led** workflow for the first flight. Codex should verify the exact current canonical ref, create/route appropriate HQ-sealed distinct worker ownership and safe branch starts under existing HQ project-command law, sourcefree only, then R00 first; freeze independent R00 policy/expected contract before authorizing R02/R04.byte in parallel. Browser→DeepSeek V4.1-Flash MAX→Codex High only necessary→user-chosen Middle; reserve Astra for genuinely I3+ architectural/scientific novelty. At each real model boundary checkpoint and ask user to switch. Never invent worker launches, quota or grants.
+
+**Science and authority boundaries:** R04.byte is locally qualified only, joined R04 waits for R03. J52/W52 remain USER_STOPPED, other R01/R03/R04.joined/R05/R06/R07/R08/R09 not granted, original35 U/E_pre null, original newly measured 0/1890 accounting cells, N11 NOT_READY and N12 HOLD; Sorok independently actor-owned, current counterpart revision29. Candidate code confined to seven explicitly named implementation paths, no production promotion, original source reads, protected CI R09, source/FF/F6/F7/actor original science or original survey rights.
+
+**HQ scope remains:** accepted user-scoped Pyat command, prior 11 partial max-strict proof categories and official checker NOT_RUN unchanged. Engineering code permission bounded GRANTED; scientific/original HOLD; production/release HOLD. The full ten-node Astra program remains the broader forward trajectory.
+
+**Checkpoint validity:** manifest must bind exact Git blob identities of CURRENT.md/CURRENT.json; LATEST.json must point to immutable packet commit and be verified before this can be called sealed.

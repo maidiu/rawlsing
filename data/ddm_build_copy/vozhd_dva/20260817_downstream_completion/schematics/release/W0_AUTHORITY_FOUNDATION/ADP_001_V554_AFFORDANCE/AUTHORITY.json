@@ -1,0 +1,555 @@
+{
+  "authority_id": "V554_AFFORDANCE_RULE_REGISTRY",
+  "authority_version": "1.0.0",
+  "requirement_id": "MUST-001",
+  "authority_packet": "ADP-001",
+  "semantic_owner": "V554",
+  "target_use": "STRUCTURAL_MEDIATION_INPUT",
+  "status": "AUTHORITY_CREATED__ARCHITECTURE_UNCHANGED",
+  "authority_verdict": "PASS",
+  "final_token": "ADP_001_V554_AFFORDANCE_AUTHORITY = PASS",
+  "consumer_release_sufficiency": "PARTIAL",
+  "launch_base_sha": "655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc",
+  "jurisdiction": {
+    "actor_independent_structural_authority_only": true,
+    "creates_new_v554_semantic_family": false,
+    "creates_v555_route_semantics": false,
+    "creates_v556_interaction_topology": false,
+    "creates_actor_history_or_biography": false,
+    "authorizes_interpolation": false,
+    "authorizes_numeric_thresholds": false,
+    "authorizes_descriptive_rematching": false,
+    "preserves_direct_upstream_dag_references": true,
+    "preserves_native_scope": true,
+    "preserves_exact_negative_authority": true,
+    "validation_failure_is_semantic_denial": false
+  },
+  "accepted_v554_architecture": {
+    "semantic_families": [
+      "BOUNDED_STRUCTURAL_AFFORDANCE",
+      "STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION"
+    ],
+    "boundary": "V554_V555_HANDOFF",
+    "f1_positive_state": "ELIGIBLE",
+    "f1_output_epistemic_class": "DERIVED_STRUCTURAL_AFFORDANCE_NOT_RUNTIME_FACT",
+    "f1_runtime_status": "NOT_INSTANTIATED"
+  },
+  "exact_consumers": {
+    "authority_dependency_consumers": [
+      "ADP-002/V555_MEDIATION_ROUTE_RULE_REGISTRY"
+    ],
+    "implementation_consumers": [
+      "V554-P2",
+      "V554-P3",
+      "V554-P4",
+      "V554-P5",
+      "V555-P1"
+    ],
+    "not_direct_consumers": [
+      "V556_INTERACTION_TOPOLOGY",
+      "V3_ACTOR_DEVELOPMENTAL_RUNTIME"
+    ]
+  },
+  "rule_registry": [
+    {
+      "rule_id": "V554-AR-001-EXACT-GOVERNED-STRUCTURAL-MEDIATION-INPUT",
+      "rule_version": "1.0.0",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT",
+      "affordance_kind": "STRUCTURAL_MEDIATION_INPUT",
+      "positive_permission": "ALLOW_AS_STRUCTURAL_MEDIATION_INPUT",
+      "positive_f1_state": "ELIGIBLE",
+      "evaluation_mode": "CONJUNCTIVE_FAIL_CLOSED",
+      "signature_ids": [
+        "V554-SIG-001-NONTEMPORAL-EXACT",
+        "V554-SIG-002-TEMPORAL-POINT-EXACT",
+        "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT"
+      ],
+      "forbidden_decision_inputs": [
+        "SEED_STRENGTH_SCORE",
+        "CONFIDENCE_SCORE",
+        "SPECIFICITY_SCORE",
+        "CERTIFIABILITY_SCORE",
+        "READINESS_SCORE_OR_LABEL",
+        "REVIEWABILITY",
+        "HARMONIZATION_SCORE",
+        "PROBE_SCORE",
+        "SEMANTIC_SCORE_FALLBACK",
+        "INTERPOLATED_VALUE",
+        "SECONDARY_AGGREGATE_AS_AUTHORITY"
+      ]
+    }
+  ],
+  "common_signature_requirements": {
+    "required_exact_refs": [
+      "FOCAL_V552_STRUCTURAL_FACT_REF",
+      "EXACT_V552J_ASSOCIATION_ADMISSION_USE_PERMISSION_REF",
+      "FINAL_SOURCE_FAMILY_COUNTRY_GEOGRAPHIC_IDENTITY",
+      "NATIVE_SCOPE_GRAIN",
+      "GOVERNED_STRUCTURAL_REFERENCE_SET_AND_REFERENCE_CONTRACT_VERSION",
+      "REQUIRED_SEMANTIC_AUTHORITY_REFS",
+      "REQUIRED_STRUCTURAL_DIRECTIONALITY_AUTHORITY_REFS",
+      "REQUIRED_STRUCTURAL_POSITION_AUTHORITY_REFS",
+      "REQUIRED_DOWNSTREAM_USE_AUTHORITY_REFS",
+      "RELATION_AXIS_REF_WHEN_IDENTITY_BEARING",
+      "DRIVER_SOURCE_POSITION_REF_WHEN_REQUIRED",
+      "TARGET_RECEIVING_POSITION_REF_WHEN_REQUIRED",
+      "STRUCTURAL_CHANNEL_REF_WHEN_GOVERNED_AND_IDENTITY_BEARING",
+      "ALL_GOVERNED_ROLE_QUALIFIED_FINITE_STRATUM_REFS_PRESENT",
+      "GOVERNED_HORIZON_AND_EXPLICIT_ABSOLUTE_HORIZON_REFS_IF_PRESENT",
+      "INHERITED_RELATION_INCOMPATIBILITY_COEXISTENCE_REFS_IF_PRESENT",
+      "RELEVANT_NEGATIVE_LIMIT_REFERENCE_AVAILABILITY_REFS",
+      "PRODUCER_MANIFEST_SCHEMA_COMPILER_REFERENCE_CONTRACT_LINEAGE"
+    ],
+    "optional_ref_law": "A contextual ref may be absent without blocking only if the governing upstream identity/reference contract explicitly makes it optional for the candidate. V554 cannot reclassify an identity-bearing or statically required authority as optional.",
+    "exact_join_required": true,
+    "descriptive_rematch_forbidden": true
+  },
+  "eligible_signature_grammar": [
+    {
+      "signature_id": "V554-SIG-001-NONTEMPORAL-EXACT",
+      "temporal_use_mode": "NON_TEMPORAL_STRUCTURAL",
+      "requires_v553_temporal_key": false,
+      "requires_v553_observation": false,
+      "requires_v553_relation": false,
+      "basis": "EXACT_V552_V552J_AND_GOVERNED_STRUCTURAL_AUTHORITY_DAG",
+      "fallback_allowed": false
+    },
+    {
+      "signature_id": "V554-SIG-002-TEMPORAL-POINT-EXACT",
+      "temporal_use_mode": "TEMPORAL_POINT",
+      "requires_v553_temporal_key": true,
+      "requires_v553_observation": true,
+      "requires_v553_relation": false,
+      "requires_exact_observed_anchor": true,
+      "observed_zero_is_measurement": true,
+      "interpolation_backfill_proxy_allowed": false,
+      "fallback_allowed": false
+    },
+    {
+      "signature_id": "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT",
+      "temporal_use_mode": "TEMPORAL_RELATIONAL",
+      "requires_v553_temporal_key": true,
+      "requires_v553_observation_refs": true,
+      "requires_v553_relation": true,
+      "requires_explicit_comparison_authority": true,
+      "noncomparability_blocks": true,
+      "structural_direction_distinct_from_temporal_delta_direction": true,
+      "aggregate_relation_reconstruction_allowed": false,
+      "fallback_allowed": false
+    }
+  ],
+  "signature_mode_law": {
+    "mode_is_part_of_rule_invocation": true,
+    "silent_downgrade_forbidden": true,
+    "separate_candidate_evaluation_allowed": "Only when a separately identified target-use invocation independently establishes the alternate signature mode."
+  },
+  "admissible_source_epistemic_classes": [
+    {
+      "class_id": "V554-SRC-EC-01-GOVERNED-STRUCTURAL-FACT",
+      "producer_meaning": "Exact V552 measured structural fact/value/status/provenance"
+    },
+    {
+      "class_id": "V554-SRC-EC-02-GOVERNED-ASSOCIATION-ADMISSION-USE-AUTHORITY",
+      "producer_meaning": "Exact V552J fact association, admission and downstream-use permission/denial lineage"
+    },
+    {
+      "class_id": "V554-SRC-EC-03-GOVERNED-STRUCTURAL-SEMANTIC-DIRECTION-POSITION-AUTHORITY",
+      "producer_meaning": "Exact earlier semantic, structural-directionality, structural-position, relation-axis, source/target/channel/use authority"
+    },
+    {
+      "class_id": "V554-SRC-EC-04-GOVERNED-TEMPORAL-STRUCTURAL-OBJECT",
+      "producer_meaning": "Exact V553 TEMPORAL_KEY/TEMPORAL_OBSERVATION/TEMPORAL_RELATION admitted under TD-R00 law"
+    },
+    {
+      "class_id": "V554-SRC-EC-05-GOVERNED-NEGATIVE-OR-LIMIT-AUTHORITY",
+      "producer_meaning": "Exact producer-owned denial, temporal limit, noncomparability, typed gap/absence, uncertainty or reference-availability state"
+    },
+    {
+      "class_id": "V554-SRC-EC-06-GOVERNED-REFERENCE-PROVENANCE",
+      "producer_meaning": "Exact producer manifest/schema/compiler/reference-contract identity required for replay"
+    }
+  ],
+  "inadmissible_authority_classes": [
+    "LEGACY_V554_SEED",
+    "SEED_TYPE_LABEL",
+    "SEED_STRENGTH_READINESS_CONFIDENCE_SPECIFICITY_CERTIFIABILITY",
+    "SECONDARY_REVERSIBLE_AGGREGATE_AS_PRIMARY_AUTHORITY",
+    "COUNTRY_YEAR_PROJECTION_AS_PRIMARY_AUTHORITY",
+    "INTERPOLATED_IMPUTED_BACKFILLED_NEAREST_WAVE_OR_RUNTIME_PROXY_VALUE",
+    "FILE_PRESENCE_DISCOVERY_REVIEWABILITY_HARMONIZATION_PROBE_READINESS",
+    "SEMANTIC_SCORE_OR_DESCRIPTIVE_FUZZY_MATCH",
+    "V555_ROUTE_OR_ROUTE_CONDITION",
+    "V556_INTERACTION_TOPOLOGY",
+    "GENERATED_ACTOR_POSITION_MEMBERSHIP_HISTORY_BIOGRAPHY_PSYCHOLOGY",
+    "VALIDATION_LOGGING_OR_INTEGRITY_OUTPUT_AS_SEMANTIC_AUTHORITY"
+  ],
+  "f1_positive_eligibility": {
+    "canonical_positive_states": [
+      "ELIGIBLE"
+    ],
+    "requires_exact_signature_match": true,
+    "requires_all_static_authority": true,
+    "requires_positive_target_use_permission": true,
+    "applicable_hard_denial_forbids_f1": true,
+    "unresolved_static_conflict_forbids_f1": true,
+    "legal_runtime_deferred_conditions_may_coexist": true,
+    "integrity_must_pass_before_semantic_evaluation": true,
+    "forbidden_f1_states": [
+      "CONDITIONAL",
+      "UNKNOWN",
+      "MISSING",
+      "DENIED",
+      "BLOCKED",
+      "NUMERIC_READINESS"
+    ]
+  },
+  "legal_f2_condition_kinds": [
+    {
+      "kind_id": "V554-F2-K01-RUNTIME-POSITION-REQUIRED",
+      "condition_class": "APPLICABILITY_REQUIREMENT",
+      "effect": "DEFER_UNTIL_RUNTIME_BINDING",
+      "may_coexist_with_positive_f1": true,
+      "requires_exact_requirement_ref": true,
+      "semantic_owner": "V554",
+      "forbidden_assertion": "ACTOR_HAS_POSITION"
+    },
+    {
+      "kind_id": "V554-F2-K02-RUNTIME-TEMPORAL-RESOLUTION-REQUIRED",
+      "condition_class": "APPLICABILITY_REQUIREMENT",
+      "effect": "DEFER_UNTIL_RUNTIME_BINDING",
+      "may_coexist_with_positive_f1": true,
+      "requires_exact_v553_temporal_ref": true,
+      "v554_proxy_selection_allowed": false,
+      "semantic_owner": "V554"
+    },
+    {
+      "kind_id": "V554-F2-K03-RUNTIME-NATIVE-SCOPE-EVALUATION-REQUIRED",
+      "condition_class": "APPLICABILITY_REQUIREMENT",
+      "effect": "DEFER_UNTIL_RUNTIME_BINDING",
+      "may_coexist_with_positive_f1": true,
+      "native_scope_relabel_or_imputation_allowed": false,
+      "semantic_owner": "V554"
+    },
+    {
+      "kind_id": "V554-F2-K04-INHERITED-INFORMATIONAL-CONSTRAINT",
+      "condition_class": "USE_LIMIT",
+      "effect": "INFORMATIONAL_CONSTRAINT",
+      "may_coexist_with_positive_f1": true,
+      "requires_exact_producer_ref": true,
+      "creates_eligibility": false,
+      "authorizes_numeric_weight": false,
+      "semantic_owner": "V554_TARGET_USE_EFFECT_ONLY__SOURCE_MEANING_PRODUCER_OWNED"
+    },
+    {
+      "kind_id": "V554-F2-K05-INHERITED-EXPLICIT-USE-DENIAL",
+      "condition_class": "USE_LIMIT",
+      "effect": "HARD_USE_BLOCK",
+      "may_coexist_with_positive_f1": false,
+      "requires_exact_applicable_denial_ref": true,
+      "semantic_owner": "V554_TARGET_USE_EFFECT_ONLY__SOURCE_DENIAL_PRODUCER_OWNED"
+    },
+    {
+      "kind_id": "V554-F2-K06-REQUIRED-STATIC-AUTHORITY-MISSING",
+      "condition_class": "APPLICABILITY_REQUIREMENT",
+      "effect": "UNRESOLVED_AUTHORITY",
+      "may_coexist_with_positive_f1": false,
+      "may_be_reclassified_as_runtime_deferred": false,
+      "records_required_authority_slot": true,
+      "semantic_owner": "V554"
+    },
+    {
+      "kind_id": "V554-F2-K07-REQUIRED-STATIC-AUTHORITY-UNKNOWN-OR-CONFLICTING",
+      "condition_class": "APPLICABILITY_REQUIREMENT",
+      "effect": "UNRESOLVED_AUTHORITY",
+      "may_coexist_with_positive_f1": false,
+      "heuristic_tie_break_allowed": false,
+      "semantic_owner": "V554"
+    },
+    {
+      "kind_id": "V554-F2-K08-REQUIRED-TEMPORAL-SUPPORT-NONCOMPARABLE",
+      "condition_class": "USE_LIMIT",
+      "effect": "HARD_USE_BLOCK",
+      "may_coexist_with_positive_f1": false,
+      "applies_to_signature": "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT",
+      "requires_exact_v553_negative_ref": true,
+      "signature_downgrade_allowed": false,
+      "semantic_owner": "V554_TARGET_USE_EFFECT_ONLY__SOURCE_NEGATIVE_PRODUCER_OWNED"
+    },
+    {
+      "kind_id": "V554-F2-K09-REQUIRED-TEMPORAL-SUPPORT-ABSENT-OR-GAPPED",
+      "condition_class": "USE_LIMIT",
+      "effect": "HARD_USE_BLOCK",
+      "may_coexist_with_positive_f1": false,
+      "requires_exact_typed_gap_or_absence_ref": true,
+      "distinct_from_observed_zero": true,
+      "distinct_from_missing_static_rule_authority": true,
+      "semantic_owner": "V554_TARGET_USE_EFFECT_ONLY__SOURCE_NEGATIVE_PRODUCER_OWNED"
+    }
+  ],
+  "f2_kind_closure": {
+    "tranche_one_complete": true,
+    "can_001_role": "CAN-001 may bind canonical predicate ID/serialization and owner/evaluator representation for these kinds but may not create new semantic kinds.",
+    "forbidden_f2_semantics": [
+      "V555_MEDIATOR_CHANNEL_RECEIVER_ROUTE_SELECTION",
+      "ROUTE_TRAVERSAL_EXPOSURE_RESPONSE",
+      "V556_CROSS_ROUTE_OR_CROSS_PRESSURE_INTERACTION",
+      "ACTUAL_ACTOR_POSITION_OR_FAMILY_MEMBERSHIP",
+      "NUMERIC_BUFFER_AMPLIFY_READINESS_STRENGTH",
+      "INTERPOLATION_OR_RUNTIME_PROXY_SELECTION",
+      "GENERIC_VALIDATION_HASH_SCHEMA_REFERENCE_CORRUPTION"
+    ]
+  },
+  "registry_decision_states": [
+    "ELIGIBLE_NO_RUNTIME_REQUIREMENT",
+    "ELIGIBLE_WITH_DEFERRED_REQUIREMENTS",
+    "INELIGIBLE_EXPLICIT_DENIAL",
+    "INELIGIBLE_NEGATIVE_TEMPORAL_AUTHORITY",
+    "NONASSERTABLE_MISSING_STATIC_AUTHORITY",
+    "NONASSERTABLE_UNKNOWN_OR_CONFLICTING_STATIC_AUTHORITY",
+    "NOT_APPLICABLE_SIGNATURE_OR_SOURCE_CLASS",
+    "VALID_EMPTY",
+    "INTEGRITY_FAILURE"
+  ],
+  "state_law": {
+    "positive": "Only canonical F1 ELIGIBLE is positive. Observed zero is a measurement and cannot fail an invented magnitude threshold.",
+    "negative_or_denial": "Exact producer-owned negative authority stays producer-owned; V554 records exact source ref plus scoped V554 target-use effect only.",
+    "missing": "Missing statically required authority forbids F1 and yields K06 where semantically meaningful; optional absent refs remain absent and are never filled by inference.",
+    "unknown_or_conflicting": "Required static UNKNOWN or unresolved exact conflict forbids F1 and yields K07; UNKNOWN is not low confidence.",
+    "deferred": "Only K01-K03 are tranche-one runtime-deferred kinds. Deferred never means static authority is missing.",
+    "valid_empty": "A coherent run with zero eligible candidates is VALID_EMPTY; emit no dummy F1 or minimum-count filler.",
+    "not_applicable": "An inadmissible source class or unmatched signature is NOT_APPLICABLE_SIGNATURE_OR_SOURCE_CLASS, not semantic denial.",
+    "integrity_failure": "Schema/hash/reference/fact-coherence corruption is presemantic INTEGRITY_FAILURE and cannot become F2/B1 semantic denial."
+  },
+  "precedence_law": [
+    {
+      "precedence": 0,
+      "id": "P0-INTEGRITY-PRECONDITION",
+      "law": "Schema/hash/reference/fact-coherence/reference-contract integrity must pass before semantic evaluation; failure -> INTEGRITY_FAILURE and no fabricated semantic F2/B1."
+    },
+    {
+      "precedence": 1,
+      "id": "P1-PRODUCER-GOVERNED-PRECEDENCE",
+      "law": "Follow explicit producer-governed precedence among exact producer authority states; V554 invents no upstream tie-break."
+    },
+    {
+      "precedence": 2,
+      "id": "P2-EXPLICIT-DENIAL-HARD-NEGATIVE",
+      "law": "A trustworthy exact applicable target-use denial/hard negative blocks F1 regardless of scores, magnitude, readiness, file presence or other positive-looking context."
+    },
+    {
+      "precedence": 3,
+      "id": "P3-REQUIRED-STATIC-AUTHORITY-COMPLETENESS",
+      "law": "Any missing, unknown or unresolved conflicting required static authority forbids F1; it may not be laundered into DEFERRED unless it is explicitly a legal runtime-bound K01-K03 predicate rather than static authority."
+    },
+    {
+      "precedence": 4,
+      "id": "P4-CONJUNCTIVE-POSITIVE-ELIGIBILITY",
+      "law": "Only after P0-P3 pass may an exact matching signature emit F1 ELIGIBLE."
+    },
+    {
+      "precedence": 5,
+      "id": "P5-RUNTIME-DEFERRED-F2",
+      "law": "K01-K03 may coexist with positive F1 and defer immediate runtime use without mutating F1 or asserting satisfaction."
+    },
+    {
+      "precedence": 6,
+      "id": "P6-INFORMATIONAL-CONSTRAINT",
+      "law": "K04 is preserved after the decision and cannot create eligibility, overrule denial or become numeric weighting."
+    }
+  ],
+  "tie_behavior": {
+    "exact_duplicates": "DEDUP_STABLE_ID_AND_VERSION_ONLY",
+    "simultaneous_distinct_candidates": "PRESERVE_DISTINCT_NO_AVERAGE_NO_WINNER",
+    "same_jurisdiction_conflict_with_explicit_producer_precedence": "APPLY_EXACT_PRODUCER_PRECEDENCE",
+    "same_jurisdiction_conflict_without_governed_precedence": "NONASSERTABLE_UNKNOWN_OR_CONFLICTING_STATIC_AUTHORITY",
+    "explicit_denial_plus_unrelated_missing_authority": "If denial applicability itself is exact/trustworthy, denial is primary and missing requirement remains separately preserved; if denial applicability cannot be resolved, fail nonassertable rather than guess denial.",
+    "forbidden_tie_breakers": [
+      "SCORE",
+      "MAJORITY",
+      "LATEST_ROW",
+      "DESCRIPTIVE_SPECIFICITY",
+      "TEMPORAL_SIGNATURE_DOWNGRADE"
+    ]
+  },
+  "provenance_required_fields": [
+    "AUTHORITY_ID_VERSION",
+    "RULE_ID_VERSION",
+    "SIGNATURE_ID",
+    "TARGET_USE",
+    "FOCAL_V552_FACT_REF",
+    "SUPPORTING_V552_FACT_REFS_IF_ANY",
+    "V552J_ASSOCIATION_ADMISSION_USE_REFS",
+    "V553_KEY_OBSERVATION_RELATION_LIMIT_REFS_IF_ANY",
+    "REQUIRED_SEMANTIC_DIRECTION_POSITION_USE_REFERENCE_SET_REFS",
+    "NEGATIVE_DENIAL_MISSING_CONFLICT_REFS_OR_REQUIRED_AUTHORITY_SLOTS",
+    "NATIVE_SOURCE_GEOGRAPHIC_STRATAL_HORIZON_REFS",
+    "PRODUCER_MANIFEST_SCHEMA_COMPILER_REFERENCE_CONTRACT_VERSIONS_HASHES",
+    "REGISTRY_DECISION_STATE",
+    "EMITTED_F1_ID_IF_ANY",
+    "EMITTED_F2_IDS_KINDS_IF_ANY",
+    "ITEM_EPISTEMIC_CLASS",
+    "CAUSAL_USE_PERMISSION",
+    "DETERMINISTIC_AUTHORITY_BUNDLE_FINGERPRINT"
+  ],
+  "replay_implications": [
+    "Same authority/rule/signature versions plus same exact authority bundle must produce the same F1/F2 decision independent of row order, wall clock, enumeration order or legacy scores.",
+    "Runtime satisfaction of K01-K03 never mutates F1; immutable condition identity is preserved for downstream evaluation.",
+    "Changed upstream object/rule/predicate canonicalization/reference-contract version changes provenance/fingerprint rather than silently reusing an old decision.",
+    "Descriptive rematching is forbidden during replay.",
+    "Presence or absence of secondary aggregates cannot change canonical eligibility."
+  ],
+  "forbidden_inference_rules": [
+    "NO_INTERPOLATION_IMPUTATION_BACKFILL_NEAREST_WAVE_AS_AUTHORITY",
+    "NO_READINESS_CONFIDENCE_SPECIFICITY_CERTIFIABILITY_HARMONIZATION_PROBE_SEMANTIC_SCORE_THRESHOLDS",
+    "NO_DESCRIPTIVE_OR_FUZZY_REMATCHING",
+    "NO_AGGREGATE_AS_EXACT_SPARSE_AUTHORITY_SUBSTITUTE",
+    "NO_STRUCTURAL_DIRECTION_FROM_TEMPORAL_DELTA_DIRECTION",
+    "NO_ACTOR_MEMBERSHIP_FROM_GEOGRAPHY_OR_PREVALENCE",
+    "NO_ACTUAL_PARENT_COPARENT_CHILD_HOUSEHOLD_FAMILY_FACT_FROM_STRUCTURAL_REQUIREMENT",
+    "NO_V555_ROUTE_MEDIATOR_CONDITION_TRAVERSAL_SEMANTICS_IN_V554",
+    "NO_V556_INTERACTION_TOPOLOGY_IN_V554",
+    "NO_SCALAR_NETTING_WINNER_SELECTION_AMONG_SIMULTANEOUS_AFFORDANCES",
+    "NO_MISSING_OR_UNKNOWN_STATIC_AUTHORITY_TO_POSITIVE_OR_DEFERRED_ELIGIBILITY",
+    "NO_VALIDATION_FAILURE_TO_SEMANTIC_DENIAL",
+    "NO_MISSING_STRATUM_OR_ABSOLUTE_HORIZON_DEFAULT_MAPPING",
+    "NO_IMPLICIT_NUMERIC_MAGNITUDE_ELIGIBILITY_THRESHOLD",
+    "NO_FAILED_TEMPORAL_SIGNATURE_FALLBACK"
+  ],
+  "compatibility_constraints": {
+    "allowed_direction": "CANONICAL_F1_F2_B1_TO_COMPATIBILITY_PROJECTION_ONLY",
+    "legacy_to_canonical_authority_allowed": false,
+    "named_consumer_required": true,
+    "sunset_obligation_required": true,
+    "non_authoritative_tag_required": true,
+    "legacy_scores_can_authorize_or_deny": false,
+    "interpolated_country_year_pressure_can_authorize": false,
+    "hardcoded_seed_or_slot_structure_can_authorize": false,
+    "descriptive_rematch_allowed": false,
+    "legacy_id_alias_law": "Only deterministic exact one-to-one aliasing is allowed; canonical ID remains authoritative.",
+    "removal_invariance": "Removing all compatibility views must leave canonical F1/F2/B1 semantics and replay unchanged."
+  },
+  "hostile_fixtures": [
+    {
+      "fixture_id": "HF-001",
+      "case": "EXACT_NONTEMPORAL_POSITIVE",
+      "expected": "ONE_ELIGIBLE_F1_NO_REQUIRED_RUNTIME_F2"
+    },
+    {
+      "fixture_id": "HF-002",
+      "case": "OBSERVED_ZERO_WITH_COMPLETE_POSITIVE_AUTHORITY",
+      "expected": "ELIGIBLE_ZERO_IS_MEASUREMENT_NO_THRESHOLD_DENIAL"
+    },
+    {
+      "fixture_id": "HF-003",
+      "case": "EXACT_TEMPORAL_RELATION_WITH_GOVERNED_COMPARABILITY",
+      "expected": "ELIGIBLE_STRUCTURAL_DIRECTION_REMAINS_DISTINCT"
+    },
+    {
+      "fixture_id": "HF-004",
+      "case": "EXPLICIT_DENIAL_WITH_MAXIMAL_LEGACY_SCORES",
+      "expected": "NO_F1_K05_DENIAL_WINS"
+    },
+    {
+      "fixture_id": "HF-005",
+      "case": "MISSING_REQUIRED_STATIC_DIRECTION_USE_OR_POSITION_AUTHORITY",
+      "expected": "NO_F1_K06_NONASSERTABLE_MISSING_STATIC_AUTHORITY"
+    },
+    {
+      "fixture_id": "HF-006",
+      "case": "UNKNOWN_OR_CONFLICTING_STATIC_AUTHORITY_WITHOUT_GOVERNED_PRECEDENCE",
+      "expected": "NO_F1_K07_NO_HEURISTIC_TIE_BREAK"
+    },
+    {
+      "fixture_id": "HF-007",
+      "case": "RUNTIME_CLASS_SECT_PARTY_INSTITUTION_HOUSEHOLD_OR_FAMILY_POSITION_REQUIRED",
+      "expected": "ELIGIBLE_F1_PLUS_K01_DEFERRED_NO_ACTOR_OR_BIOGRAPHY_ASSERTION"
+    },
+    {
+      "fixture_id": "HF-008",
+      "case": "RELATIONAL_SIGNATURE_WITH_EXACT_NONCOMPARABILITY",
+      "expected": "NO_F1_K08_NO_SIGNATURE_DOWNGRADE"
+    },
+    {
+      "fixture_id": "HF-009",
+      "case": "REQUIRED_TEMPORAL_SUPPORT_TYPED_GAP_OR_ABSENCE",
+      "expected": "NO_F1_K09_DISTINCT_FROM_ZERO_AND_STATIC_AUTHORITY_MISSING"
+    },
+    {
+      "fixture_id": "HF-010",
+      "case": "INTERPOLATION_ONLY_APPARENT_SUPPORT_WITH_HIGH_READINESS",
+      "expected": "NO_F1_INTERPOLATION_INADMISSIBLE"
+    },
+    {
+      "fixture_id": "HF-011",
+      "case": "SEMANTIC_SCORE_DESCRIPTIVE_REMATCH_OR_AGGREGATE_RECONSTRUCTION",
+      "expected": "FAIL_CLOSED_INADMISSIBLE_OR_INTEGRITY_FAILURE_NEVER_POSITIVE"
+    },
+    {
+      "fixture_id": "HF-012",
+      "case": "SIMULTANEOUS_COMPETING_EXACT_FACTS",
+      "expected": "PRESERVE_SEPARATE_CANDIDATES_AND_F1S_NO_SCALAR_NETTING"
+    },
+    {
+      "fixture_id": "HF-013",
+      "case": "OPTIONAL_STRATUM_OR_ABSOLUTE_HORIZON_AUTHORITY_ABSENT",
+      "expected": "ELIGIBILITY_MAY_REMAIN_POSITIVE_WITH_EMPTY_OPTIONAL_REFS_NO_INVENTION"
+    },
+    {
+      "fixture_id": "HF-014",
+      "case": "IDENTITY_BEARING_STRATUM_OR_AH_AUTHORITY_REQUIRED_BUT_MISSING",
+      "expected": "NO_F1_K06"
+    },
+    {
+      "fixture_id": "HF-015",
+      "case": "NATION_STATE_NATIVE_SCOPE_WITH_LATER_LOCALITY_QUERY",
+      "expected": "F1_RETAINS_NATIVE_SCOPE_PLUS_K03_WHERE_REQUIRED_NO_LOCALITY_RELABEL"
+    },
+    {
+      "fixture_id": "HF-016",
+      "case": "SCHEMA_HASH_REFERENCE_OR_FACT_COHERENCE_CORRUPTION",
+      "expected": "INTEGRITY_FAILURE_NO_SEMANTIC_F2_OR_DENIAL"
+    },
+    {
+      "fixture_id": "HF-017",
+      "case": "ALLOW_DENY_CONFLICT_WITH_AND_WITHOUT_EXPLICIT_PRODUCER_PRECEDENCE",
+      "expected": "OBEY_GOVERNED_PRECEDENCE_IF_PRESENT_ELSE_NO_F1_K07"
+    },
+    {
+      "fixture_id": "HF-018",
+      "case": "COHERENT_RUN_WITH_ZERO_MATCHING_CANDIDATES",
+      "expected": "VALID_EMPTY_ZERO_F1_NO_DUMMY_SEED"
+    }
+  ],
+  "consumer_release_detail": {
+    "ADP-002": "SUFFICIENT_AFTER_VOZHD_ACCEPTANCE_AND_BANKING_OF_ADP_001",
+    "V554-P2": "PARTIAL_PENDING_CAN_001_AND_ORDERED_CANONICAL_INGRESS_DEPENDENCIES",
+    "V554-P3": "PARTIAL_PENDING_CAN_001_AND_V554_P2",
+    "V554-P4": "PARTIAL_PENDING_CANONICAL_F1_F2_IMPLEMENTATION_AND_COMPATIBILITY_CONSOLIDATION",
+    "V554-P5": "PARTIAL_PENDING_PRIOR_V554_PACKETS_AND_CANONICAL_BOUNDARY_PROOF",
+    "V555-P1": "BLOCKED_PENDING_COMPLETED_CANONICAL_V554_PUBLICATION_EXT_003"
+  },
+  "direct_evidence_inspected": [
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/LAUNCH_REGISTER.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/state/CURRENT_STATE.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R00_V553/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V553_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R01_V554/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V554_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/seam_integrity/SI_R00_V553_V554/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/seam_integrity/SI_R01_V554_V555/RESULT.md",
+    "data/ddm_build_copy/ddm_v553_schema.py",
+    "data/ddm_build_copy/ddm_v553_temporal_identity.py",
+    "data/ddm_build_copy/ddm_v554_seed_contract.py",
+    "data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py",
+    "data/ddm_build_copy/tests/vozhd_dva_wave0/vertical_continuity.py"
+  ],
+  "evidence_constraints": {
+    "historical_zip_used": false,
+    "sibling_w0_worker_results_used": false,
+    "present_terrain_treated_as_authority": false
+  }
+}

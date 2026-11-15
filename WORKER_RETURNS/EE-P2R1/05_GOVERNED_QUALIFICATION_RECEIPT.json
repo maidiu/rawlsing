@@ -1,0 +1,110 @@
+{
+  "schema": "EE_P2R1_GOVERNED_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal": "EE_P2R1_PASS__UNIVERSAL_35_WAVE_AWARE_CARRIER_C11_I03_I05_EXECUTION_SEAM_CLOSED__P2X_RESUME_READY",
+  "branch": "agent/rabochii-prev3-ee-p2r1-universal-carrier-i03-i05-binding-r1",
+  "authority": {
+    "sealed_checkpoint": "20260918T0048-0400",
+    "handoff_commit": "d6db99b8a2c48205ac6acca89cdb4cd728c96f46",
+    "commission": "WORKER_COMMISSIONS/EE-P2R1/00_COMMISSION.md",
+    "adopted_p2x_return": "29e434a385719f9835e0bcd252fb24bc37675a99"
+  },
+  "implementation": {
+    "path": "rawlsing_next/pre553_carrier_execution.py",
+    "blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "contract": "PRE553_CARRIER_NEUTRAL_C11_I03_I05_EXECUTION_BINDING@1.0.0",
+    "surfaces": [
+      "materialize_public_object",
+      "RuntimeObjectCatalog",
+      "bind_governed_c11_projection",
+      "bind_repository_builder",
+      "CarrierNeutralResearchExecutor.execute_i03",
+      "CarrierNeutralResearchExecutor.execute_i05",
+      "learned_empirical_execution_receipt"
+    ],
+    "semantic_inference_in_generic_seam": false,
+    "candidate_semantic_branching": false,
+    "hash_inversion": false
+  },
+  "exact_runtime_catalog": {
+    "wvs7_f2_commit": "22667bd395e7293f99b285daddad36fe3a4377ef",
+    "authorities": 6,
+    "predicates": 11,
+    "queries": 3,
+    "discovery_authorities": 1,
+    "frozen_candidate_frontier": 46,
+    "qualification": "PASS__EXACT_F2_PREIMAGES_MATERIALIZED__LOCK2_FRONTIER_RECOMPILED",
+    "hostile_mutated_hash_rejected": true,
+    "hostile_missing_preimage_rejected": true
+  },
+  "full_35_wave_calibration": {
+    "authority_commit": "7d4703148057fe1d2fdd7bbf94df306abf8b21de",
+    "authority_path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+    "governed_pair_count": 35,
+    "golden_path_literal_hits": [],
+    "calibration_kind": "CONTRACT_AUTHORITY_FAILURE_BEHAVIOR_ONLY__NOT_35_CARRIER_EXECUTION",
+    "law": "WAVE_SPECIFIC_AUTHORITY_AND_OUTPUTS != WAVE_SPECIFIC_GENERIC_CODE",
+    "status": "PASS"
+  },
+  "lits_i_candidate_c": {
+    "r10l_projection_recovery_commit": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+    "banked_projection_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "b13_runtime_binding_commit": "46acf0b162bdcac5f47ce9cce0d9bb1d039fae2d",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "c11_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "predicate_catalog_hash": "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293",
+    "risk_partition_hash": "ed3b76242a588a5e2d4dacbb76f17ceef6185cd27a4080a2e8fb436056abfabf",
+    "discovery_authority_hash": "2e153a153c59bd0b920f8db376478ad1b07000710e79a158471490c11b610cea",
+    "official_frontier_hash": "7aca4dbe1ccd36c48444d6858d378084e41aa30b3197662b6225753d5fc82e24",
+    "role_binding_count": 19,
+    "distinct_runtime_predicate_count": 18,
+    "sole_alias": [
+      "A000",
+      "A1RAPP"
+    ],
+    "synthetic_substitution": false,
+    "status": "PASS__REAL_ACCEPTED_ROUTE_C_CACC1_CACC2_BINDINGS_MATERIALIZED"
+  },
+  "adapter_matrix": {
+    "LITS_I": {
+      "A": "READY__PRESERVED_R5_PLUS_ACCEPTED_PROJECTION_TO_COMMON_RUNNER",
+      "B": "READY__CACHELESS_SOURCE_BACKED_C11_TO_COMMON_RUNNER",
+      "C": "READY__REAL_CACC1_CACC2_BINDINGS_MATERIALIZED_TO_COMMON_RUNNER"
+    },
+    "WVS7": {
+      "A": "PREPARATION_READY__GENERIC_R5_OWNER_PLUS_EXACT_GOVERNED_PROJECTION",
+      "B": "PREPARATION_READY__SOURCE_BACKED_OWNER_PLUS_EXACT_GOVERNED_PROJECTION",
+      "C": "WVS7_C__CURRENT_PORTABILITY_FAILURE"
+    },
+    "wvs_c_reason": "accepted Candidate-C repository path requires CACC1 and accepted I05 path requires CACC1+CACC2; no zero-accelerator repository/I05 entrypoint exists",
+    "wvs_c_blocks_A_or_B": false,
+    "wvs_accelerator_invented": false
+  },
+  "governed_court": {
+    "transient_pr": 386,
+    "merged": false,
+    "state": "closed",
+    "evidence_execution_sha": "320684df6e251f87a822537db44def4753e0bb73",
+    "workflow_run_id": 35312810502,
+    "job_id": 105498143824,
+    "artifact_id": 10533594958,
+    "artifact_zip_sha256": "d66826f2cd16001aab3cb2e7cebdf1274e6b713ee659c0ee17db1182416f6bd5",
+    "protocol_tests": "20/20 PASS",
+    "bounded_tests": "52/52 PASS",
+    "conclusion": "success"
+  },
+  "scope_audit": {
+    "empirical_source_access": false,
+    "candidate_performance_measurement": false,
+    "architecture_ranking_or_selection": false,
+    "semantic_pre_main_mutation": false,
+    "lock_mutation": false,
+    "wvs_specific_accelerator": false,
+    "third_accelerator": false,
+    "semantic_redesign": false,
+    "candidate_redesign": false,
+    "repeated_lits_A_expensive_build": false,
+    "repeated_lits_B_completed_c11_stage": false
+  },
+  "successor_wake": "WAKE_EXISTING_EE_P2X_FROM_PRESERVED_EVIDENCE__DO_NOT_REPEAT_COMPLETED_LITS_A_BUILD_OR_LITS_B_C11_STAGE"
+}

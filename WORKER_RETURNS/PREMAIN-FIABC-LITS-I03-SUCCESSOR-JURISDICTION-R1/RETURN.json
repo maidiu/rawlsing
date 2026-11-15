@@ -1,0 +1,98 @@
+{
+  "schema": "PREMAIN_FIABC_LITS_I03_SUCCESSOR_JURISDICTION_R1_RETURN@1.0.0",
+  "status": "PASS",
+  "terminal": "PREMAIN_FIABC_LITS_I03_SUCCESSOR_JURISDICTION_R1__RUNTIME_CATALOG_AND_PARENT_OPERATION_EXACTLY_ENFORCED__WVS7_CONSERVED__SOURCE_FREE_GREEN__NO_CANDIDATES_RUN",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-lits-i03-successor-jurisdiction-r1",
+  "exact_base": "4513eae0ec2c55c3252871c77cd52fc3dd0f07cd",
+  "exact_qualified_implementation_head_before_return_packet": "59c093e3354619373aaa3bcc688a4e3bce0054b7",
+  "final_head_note": "The return-packet commit cannot embed its own SHA; the immutable branch-tip commit adding this packet is reported at handoff.",
+  "governed_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "governed_execution_head_observed": "78caf7eb4396dd576cf478c860372b7e26455cd9",
+  "runtime_catalog_identity": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+  "parent_operation": "AS2B_LITS1_I03_QUERY",
+  "successor_operation": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+  "runtime_catalog_identity_executable_jurisdiction": true,
+  "parent_operation_executable_jurisdiction": true,
+  "wvs7_changed": false,
+  "implementation_files_changed": [
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+    "rawlsing_next/fiabc_lits_i_i03_operation_authority.py",
+    "rawlsing_next/pre553_empirical_query.py",
+    "rawlsing_next/pre553_runtime_authority.py",
+    "rawlsing_next/pre553_runtime_context.py",
+    "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+    "rawlsing_next/tests/test_fiabc_lits_i_i03_operation_authority.py"
+  ],
+  "qualification": {
+    "focused": {
+      "github_actions_run_id": 35790373170,
+      "github_actions_job_id": 106957146667,
+      "python": "CPython 3.11.16",
+      "protocol_self_test": "20 passed",
+      "result": "149 passed, 28 subtests passed",
+      "test_files": [
+        "rawlsing_next/tests/test_fiabc_lits_i_i03_operation_authority.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+        "rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py",
+        "rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py",
+        "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py",
+        "rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py",
+        "rawlsing_next/tests/test_fiabc_succession_preflight.py"
+      ]
+    },
+    "broad_source_free": {
+      "github_actions_run_id": 35790682199,
+      "github_actions_job_id": 106958138269,
+      "python": "CPython 3.11.16",
+      "protocol_self_test": "20 passed",
+      "result": "251 passed, 28 subtests passed",
+      "test_files": [
+        "rawlsing_next/tests/test_fiabc_lits_i_i03_operation_authority.py",
+        "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py",
+        "rawlsing_next/tests/test_fiabc_lits_a_absent_root_current_court.py",
+        "rawlsing_next/tests/test_fiabc_post_r1j_root_source_independent_courts.py",
+        "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+        "rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py",
+        "rawlsing_next/tests/test_fiabc_t6_live_r35_convergence.py",
+        "rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py",
+        "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py",
+        "rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py",
+        "rawlsing_next/tests/test_fiabc_t4_live_accounting.py",
+        "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+        "rawlsing_next/tests/test_fiabc_succession_preflight.py",
+        "rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py",
+        "rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py",
+        "rawlsing_next/tests/test_pre553_empirical_objects_authority.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py"
+      ]
+    }
+  },
+  "prohibited_execution": {
+    "user_mac_used": false,
+    "raw_survey_files_opened": false,
+    "source_backed_i05_run": false,
+    "candidate_a_b_c_run": false,
+    "measured_p2x_run": false,
+    "p3_run": false,
+    "architecture_selection": false,
+    "governed_execution_branch_mutated": false,
+    "source_backed_lits_rerun": false
+  },
+  "return_files": [
+    "WORKER_RETURNS/PREMAIN-FIABC-LITS-I03-SUCCESSOR-JURISDICTION-R1/00_RETURN.md",
+    "WORKER_RETURNS/PREMAIN-FIABC-LITS-I03-SUCCESSOR-JURISDICTION-R1/01_JURISDICTION_HOLDING.md",
+    "WORKER_RETURNS/PREMAIN-FIABC-LITS-I03-SUCCESSOR-JURISDICTION-R1/02_PATCH_AND_CALL_CHAIN.md",
+    "WORKER_RETURNS/PREMAIN-FIABC-LITS-I03-SUCCESSOR-JURISDICTION-R1/03_HOSTILE_TEST_MATRIX.md",
+    "WORKER_RETURNS/PREMAIN-FIABC-LITS-I03-SUCCESSOR-JURISDICTION-R1/04_WVS7_NONINTERFERENCE.md",
+    "WORKER_RETURNS/PREMAIN-FIABC-LITS-I03-SUCCESSOR-JURISDICTION-R1/RETURN.json"
+  ]
+}

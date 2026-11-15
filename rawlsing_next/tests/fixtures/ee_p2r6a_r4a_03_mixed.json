@@ -1,0 +1,116 @@
+{
+  "schema": "EE_P2R4A_PARENT_CHILD_GRAMMAR_COMPOSITION_AUTHORITY@1.0.0",
+  "status": "CANDIDATE__HQ_ADOPTION_REQUIRED",
+  "candidate_authority_ref": {
+    "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+    "authority_version": "1.0.0-candidate",
+    "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55"
+  },
+  "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+  "identity_material": {
+    "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+    "authority_version": "1.0.0-candidate",
+    "authority_kind": "PREDICATE_GRAMMAR_SUCCESSOR_CANDIDATE",
+    "parent_authority_refs": [
+      {
+        "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+        "authority_version": "AS2A-BANKED-1.0.0",
+        "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+      },
+      {
+        "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+      }
+    ],
+    "allowed_input_grammar_refs": [
+      {
+        "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+        "authority_version": "AS2A-BANKED-1.0.0",
+        "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+      },
+      {
+        "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+      }
+    ],
+    "exact_workload_scope": {
+      "workload_id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+      "d02_commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+      "d02_frontier_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+        "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+      }
+    },
+    "permitted_mixed_composition": {
+      "ast_operation": "AND",
+      "required_input_mix": "AT_LEAST_ONE_EXACT_PARENT_GRAMMAR_PREDICATE_AND_AT_LEAST_ONE_EXACT_F02_CHILD_GRAMMAR_PREDICATE",
+      "maximum_arity": 3,
+      "frozen_consumers": [
+        "D02_P2_HIGHER_ORDER_K3__AND_CARTESIAN_GROUPS",
+        "D02_P3_CONDITIONAL_REVERSAL__REVERSAL_GRID_STRATUM_CONJUNCTION"
+      ],
+      "other_boolean_operations": "NOT_GRANTED_FOR_MIXED_GRAMMAR"
+    },
+    "leaf_operation_families": [
+      {
+        "grammar_ref": {
+          "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+          "authority_version": "AS2A-BANKED-1.0.0",
+          "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+        },
+        "operation_family": "EXISTING_ACCEPTED_PRE553_PARENT_LEAF_DIALECT__UNCHANGED_BY_EXACT_PARENT_AUTHORITY_REF"
+      },
+      {
+        "grammar_ref": {
+          "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+        },
+        "operation_family": "F02_SURVEY_RESPONSE_EVENT_NATIVE_EQUALITY",
+        "exact_operation": "survey_response_EQ"
+      }
+    ],
+    "respondent_binding_compatibility_ref": {
+      "kind": "RespondentBindingCompatibilityAuthorityCandidate@1.0.0",
+      "object_id": "urn:rawlsing:prev3:p2r4a:respondent-binding:sha256:3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+      "content_hash": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74"
+    },
+    "identity_preservation": {
+      "input_predicates": "BYTE_AND_EXACTREF_PRESERVED",
+      "f02_selector_hashes": [
+        "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+        "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+        "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+        "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+        "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+        "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+      ],
+      "b12_runtime_lineage": "EXACT_ACCEPTED_B12_RUNTIME_PREDICATE_REFS_CONSUMED_BY_P2R1__NO_REMINT_OR_REWRITE",
+      "query_template_hashes": [
+        "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+        "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+        "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+      ]
+    },
+    "negative_cases": [
+      "UNLISTED_INPUT_GRAMMAR",
+      "UNLISTED_BINDING_RELATION",
+      "UNLISTED_RELEASE_OR_WORKLOAD",
+      "MIXED_OR",
+      "MIXED_NOT",
+      "ADJACENT_CHILD_GRAMMAR",
+      "CROSS_SOURCE_COMPOSITION",
+      "CROSS_RELEASE_COMPOSITION",
+      "INPUT_PREDICATE_REWRITE",
+      "SELECTOR_REMINT",
+      "PARENT_PREDICATE_REMINT",
+      "POST_OUTCOME_AUTHORITY_MUTATION"
+    ],
+    "no_adjacent_family_inference": true,
+    "fail_closed": true
+  }
+}

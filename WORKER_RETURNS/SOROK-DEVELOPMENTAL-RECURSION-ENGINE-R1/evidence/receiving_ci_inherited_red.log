@@ -1,0 +1,105 @@
+governed-court	Execute bounded court	﻿2026-11-06T09:05:55.0968205Z ##[group]Run python -m rawlsing_next.rabochii_bounded_court .rabochii/court_spec.json --receipt .rabochii/court_receipt.json
+governed-court	Execute bounded court	2026-11-06T09:05:55.0968736Z ^[[36;1mpython -m rawlsing_next.rabochii_bounded_court .rabochii/court_spec.json --receipt .rabochii/court_receipt.json^[[0m
+governed-court	Execute bounded court	2026-11-06T09:05:55.1012307Z shell: /usr/bin/bash -e {0}
+governed-court	Execute bounded court	2026-11-06T09:05:55.1012502Z env:
+governed-court	Execute bounded court	2026-11-06T09:05:55.1012687Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.18/x64
+governed-court	Execute bounded court	2026-11-06T09:05:55.1012933Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.18/x64/lib/pkgconfig
+governed-court	Execute bounded court	2026-11-06T09:05:55.1013164Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.18/x64
+governed-court	Execute bounded court	2026-11-06T09:05:55.1013376Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.18/x64
+governed-court	Execute bounded court	2026-11-06T09:05:55.1013588Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.18/x64
+governed-court	Execute bounded court	2026-11-06T09:05:55.1013802Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.18/x64/lib
+governed-court	Execute bounded court	2026-11-06T09:05:55.1014051Z   RABOCHII_EVIDENCE_EXECUTION_SHA: bf657e1c9287649617d074b748da0374d19d7e9b
+governed-court	Execute bounded court	2026-11-06T09:05:55.1014384Z   RABOCHII_PR_SYNTHETIC_SHA: 9332b94e9fa52c88d2b2a00fc35c79b8364dd801
+governed-court	Execute bounded court	2026-11-06T09:05:55.1014597Z ##[endgroup]
+governed-court	Execute bounded court	2026-11-06T09:06:36.2221215Z ........................................................................ [ 48%]
+governed-court	Execute bounded court	2026-11-06T09:06:38.4250271Z ..............................................................F......... [ 97%]
+governed-court	Execute bounded court	2026-11-06T09:06:38.4939587Z FF.                                                                      [100%]
+governed-court	Execute bounded court	2026-11-06T09:06:38.4940355Z =================================== FAILURES ===================================
+governed-court	Execute bounded court	2026-11-06T09:06:38.4941278Z _ RuntimePackagingRebindTests.test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope _
+governed-court	Execute bounded court	2026-11-06T09:06:38.4941852Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4942460Z self = <test_fiabc_w3_i04_runtime_packaging_rebind.RuntimePackagingRebindTests testMethod=test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope>
+governed-court	Execute bounded court	2026-11-06T09:06:38.4943133Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4943558Z     def test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope(self) -> None:
+governed-court	Execute bounded court	2026-11-06T09:06:38.4944703Z         overlay_path = RUNTIME / "03_LITS_RUNTIME_AUTHORITY_OVERLAY_BINDING.json"
+governed-court	Execute bounded court	2026-11-06T09:06:38.4945256Z         overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
+governed-court	Execute bounded court	2026-11-06T09:06:38.4945715Z         self.assertEqual(
+governed-court	Execute bounded court	2026-11-06T09:06:38.4946074Z             overlay["schema"],
+governed-court	Execute bounded court	2026-11-06T09:06:38.4946775Z             "FIABC_LITS_I_RUNTIME_AUTHORITY_OVERLAY_BINDING@2.0.0",
+governed-court	Execute bounded court	2026-11-06T09:06:38.4947212Z         )
+governed-court	Execute bounded court	2026-11-06T09:06:38.4947526Z         self.assertEqual(
+governed-court	Execute bounded court	2026-11-06T09:06:38.4947967Z             overlay["predecessor_packaging_binding"]["git_blob_sha"],
+governed-court	Execute bounded court	2026-11-06T09:06:38.4948416Z             git_blob_sha(MANIFEST),
+governed-court	Execute bounded court	2026-11-06T09:06:38.4948767Z         )
+governed-court	Execute bounded court	2026-11-06T09:06:38.4949078Z         self.assertEqual(
+governed-court	Execute bounded court	2026-11-06T09:06:38.4949478Z             overlay["historical_lits_materializer"]["git_blob_sha"],
+governed-court	Execute bounded court	2026-11-06T09:06:38.4949940Z             "9406bacfd928393f6a159a46216aa1f7ec129f34",
+governed-court	Execute bounded court	2026-11-06T09:06:38.4950346Z         )
+governed-court	Execute bounded court	2026-11-06T09:06:38.4950665Z         self.assertEqual(
+governed-court	Execute bounded court	2026-11-06T09:06:38.4951076Z             overlay["active_lits_runtime_materializer"]["git_blob_sha"],
+governed-court	Execute bounded court	2026-11-06T09:06:38.4951603Z             git_blob_sha(RUNTIME / "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"),
+governed-court	Execute bounded court	2026-11-06T09:06:38.4952052Z         )
+governed-court	Execute bounded court	2026-11-06T09:06:38.4952474Z         for relative, expected in overlay["source_free_successor_components"].items():
+governed-court	Execute bounded court	2026-11-06T09:06:38.4953011Z             self.assertTrue((ROOT / relative).is_file(), relative)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4953536Z >           self.assertEqual(git_blob_sha(ROOT / relative), expected, relative)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4954194Z E           AssertionError: '64555ce46807b815c6e26cb46b35622c73efe5ab' != 'f808dfcd2008cc71e9203de3cadf1abe14223974'
+governed-court	Execute bounded court	2026-11-06T09:06:38.4954809Z E           - 64555ce46807b815c6e26cb46b35622c73efe5ab
+governed-court	Execute bounded court	2026-11-06T09:06:38.4955232Z E           + f808dfcd2008cc71e9203de3cadf1abe14223974
+governed-court	Execute bounded court	2026-11-06T09:06:38.4955645Z E            : rawlsing_next/_pre553_query_eval.py
+governed-court	Execute bounded court	2026-11-06T09:06:38.4956747Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4960781Z rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py:181: AssertionError
+governed-court	Execute bounded court	2026-11-06T09:06:38.4961409Z ___________ test_live_candidate_c_and_packaging_bind_final_hq_state ____________
+governed-court	Execute bounded court	2026-11-06T09:06:38.4961806Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4962093Z     def test_live_candidate_c_and_packaging_bind_final_hq_state():
+governed-court	Execute bounded court	2026-11-06T09:06:38.4962544Z         binder = _constants(C_BINDER)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4963017Z         assert binder["WVS7_CURRENT_PROJECTION_CACHE_IDENTITY"] == WVS_PROJECTION
+governed-court	Execute bounded court	2026-11-06T09:06:38.4963513Z >       assert _git_blob(C_BINDER) == C_BINDER_BLOB
+governed-court	Execute bounded court	2026-11-06T09:06:38.4964057Z E       AssertionError: assert 'c2451b1b9d54...625083bb955d2' == '47893688ed45...aead6fb5bf2d2'
+governed-court	Execute bounded court	2026-11-06T09:06:38.4964571Z E         
+governed-court	Execute bounded court	2026-11-06T09:06:38.4964919Z E         - 47893688ed455ced2c2f2311ad0aead6fb5bf2d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4965345Z E         + c2451b1b9d54b9588455022e0d6625083bb955d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4965664Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4965988Z rawlsing_next/tests/test_fiabc_final_preflight_fanin.py:160: AssertionError
+governed-court	Execute bounded court	2026-11-06T09:06:38.4966776Z _________ test_t5_contract_binds_final_successor_and_lits_current_law __________
+governed-court	Execute bounded court	2026-11-06T09:06:38.4967185Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4967481Z     def test_t5_contract_binds_final_successor_and_lits_current_law():
+governed-court	Execute bounded court	2026-11-06T09:06:38.4967926Z         t5 = _load(T5)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4968269Z         wvs = t5["wvs_successor_court"]
+governed-court	Execute bounded court	2026-11-06T09:06:38.4968700Z         assert wvs["discovery_authority"] == SUCCESSOR_DISCOVERY
+governed-court	Execute bounded court	2026-11-06T09:06:38.4969134Z         assert wvs["lock2"] == SUCCESSOR_LOCK2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4969549Z         assert wvs["lock2_replay"] == SUCCESSOR_REPLAY
+governed-court	Execute bounded court	2026-11-06T09:06:38.4969998Z         assert wvs["oracle_identity_sha256"] == WVS_ORACLE
+governed-court	Execute bounded court	2026-11-06T09:06:38.4970455Z         assert wvs["oracle_truth_payload_identity"] == WVS_TRUTH
+governed-court	Execute bounded court	2026-11-06T09:06:38.4970895Z         assert wvs["candidate_count"] == 46
+governed-court	Execute bounded court	2026-11-06T09:06:38.4971389Z         assert wvs["candidate_hash_stream_exact"] is True
+governed-court	Execute bounded court	2026-11-06T09:06:38.4972427Z     
+governed-court	Execute bounded court	2026-11-06T09:06:38.4972744Z         lits = t5["lits_a_current_court"]
+governed-court	Execute bounded court	2026-11-06T09:06:38.4973141Z         assert lits["absent_historical_root"] is True
+governed-court	Execute bounded court	2026-11-06T09:06:38.4973647Z         assert lits["current_entry_stage"] == "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD"
+governed-court	Execute bounded court	2026-11-06T09:06:38.4974171Z         assert lits["preserved_s01_numeric_credit"] is False
+governed-court	Execute bounded court	2026-11-06T09:06:38.4974611Z         assert lits["duplicate_prebuild_forbidden"] is True
+governed-court	Execute bounded court	2026-11-06T09:06:38.4974988Z     
+governed-court	Execute bounded court	2026-11-06T09:06:38.4975291Z         anchors = t5["preservation_anchors"]
+governed-court	Execute bounded court	2026-11-06T09:06:38.4975802Z         assert anchors["t1_runtime_packaging"]["wvs_runtime_package"]["blob"] == _git_blob(PACKAGE)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4976687Z         assert anchors["t1_runtime_packaging"]["wvs_projection_materializer"]["blob"] == _git_blob(MATERIALIZER)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4977459Z >       assert anchors["t2_current_binding"]["candidate_c_module"]["blob"] == _git_blob(C_BINDER)
+governed-court	Execute bounded court	2026-11-06T09:06:38.4978148Z E       AssertionError: assert '47893688ed45...aead6fb5bf2d2' == 'c2451b1b9d54...625083bb955d2'
+governed-court	Execute bounded court	2026-11-06T09:06:38.4978649Z E         
+governed-court	Execute bounded court	2026-11-06T09:06:38.4978974Z E         - c2451b1b9d54b9588455022e0d6625083bb955d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4979380Z E         + 47893688ed455ced2c2f2311ad0aead6fb5bf2d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4979676Z 
+governed-court	Execute bounded court	2026-11-06T09:06:38.4979981Z rawlsing_next/tests/test_fiabc_final_preflight_fanin.py:194: AssertionError
+governed-court	Execute bounded court	2026-11-06T09:06:38.4980538Z =========================== short test summary info ============================
+governed-court	Execute bounded court	2026-11-06T09:06:38.4981603Z FAILED rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py::RuntimePackagingRebindTests::test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope - AssertionError: '64555ce46807b815c6e26cb46b35622c73efe5ab' != 'f808dfcd2008cc71e9203de3cadf1abe14223974'
+governed-court	Execute bounded court	2026-11-06T09:06:38.4982615Z - 64555ce46807b815c6e26cb46b35622c73efe5ab
+governed-court	Execute bounded court	2026-11-06T09:06:38.4982976Z + f808dfcd2008cc71e9203de3cadf1abe14223974
+governed-court	Execute bounded court	2026-11-06T09:06:38.4983562Z  : rawlsing_next/_pre553_query_eval.py
+governed-court	Execute bounded court	2026-11-06T09:06:38.4984385Z FAILED rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_live_candidate_c_and_packaging_bind_final_hq_state - AssertionError: assert 'c2451b1b9d54...625083bb955d2' == '47893688ed45...aead6fb5bf2d2'
+governed-court	Execute bounded court	2026-11-06T09:06:38.4985209Z   
+governed-court	Execute bounded court	2026-11-06T09:06:38.4985522Z   - 47893688ed455ced2c2f2311ad0aead6fb5bf2d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4985906Z   + c2451b1b9d54b9588455022e0d6625083bb955d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4986856Z FAILED rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_t5_contract_binds_final_successor_and_lits_current_law - AssertionError: assert '47893688ed45...aead6fb5bf2d2' == 'c2451b1b9d54...625083bb955d2'
+governed-court	Execute bounded court	2026-11-06T09:06:38.4987689Z   
+governed-court	Execute bounded court	2026-11-06T09:06:38.4987991Z   - c2451b1b9d54b9588455022e0d6625083bb955d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4988358Z   + 47893688ed455ced2c2f2311ad0aead6fb5bf2d2
+governed-court	Execute bounded court	2026-11-06T09:06:38.4988734Z 3 failed, 144 passed in 43.23s
+governed-court	Execute bounded court	2026-11-06T09:06:38.5298451Z ##[error]Process completed with exit code 1.

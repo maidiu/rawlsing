@@ -1,0 +1,122 @@
+registry_version: bounded-r184-v1
+source_family: LiTS
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-LITS-2006-TRANSITION-EVALUATION
+  joint_configuration_id: JCFG-LITS-2006-TRANSITION-EVALUATION
+  source_family: LiTS
+  family_type: transition_evaluation_battery
+  family_structure_type: transition_evaluation_battery
+  expected_multi_target: true
+  family_label: LiTS transition-evaluation canary battery
+  eligible_waves:
+  - '2006'
+  minimum_items_answered: 2
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: lits_struct_24bdd9b458c7689bbb
+    p2_authority_effect: P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY
+    joint_configuration_adjudication_id: V550JADJ-0007
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    adjudication_rationale: The items are exact children of one source-native q301
+      parent and share a certified agreement response contract. The authority is for
+      an agreement/disagreement configuration only; the propositions retain distinct
+      targets and temporal meanings.
+    authorized_inference: Joint signed response-role profile across the three listed
+      transition-evaluation statements.
+    forbidden_inferences:
+    - single transition optimism score
+    - item-direction homogenization beyond certified response roles
+    - proposition identity
+    - cross-source portability
+  item_role_groups:
+    economy_vs_1989_evaluation:
+    - var_code: q301_1
+      condition_label: perception of present economic sit. w.r.t. 1989
+      joint_configuration_adjudication_id: V550JADJ-0007
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_48be642be88ee77aff1ab912
+      question_implementation_id: question_impl.phase0.98ca6998565911147d8e
+      p2_source_structure_id: lits_struct_24bdd9b458c7689bbb
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    children_future_evaluation:
+    - var_code: q301_8
+      condition_label: perception of children's future living conditions
+      joint_configuration_adjudication_id: V550JADJ-0007
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_30e868f42c5d0dd11ed15d3f
+      question_implementation_id: question_impl.phase0.364f1b8fd6b6478d652c
+      p2_source_structure_id: lits_struct_24bdd9b458c7689bbb
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    corruption_vs_1989_evaluation:
+    - var_code: q301_11
+      condition_label: perception of present corruption w.r.t. 1989
+      joint_configuration_adjudication_id: V550JADJ-0007
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_617916f7203f831254f82893
+      question_implementation_id: question_impl.phase0.48ab9a93a3f8ccfc21d1
+      p2_source_structure_id: lits_struct_24bdd9b458c7689bbb
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+  - applies_to_roles:
+    - economy_vs_1989_evaluation
+    - children_future_evaluation
+    - corruption_vs_1989_evaluation
+    target_entity_template: jcfg-lits-2006-transition-evaluation_{condition_label}
+    target_domain: transition_evaluation_battery
+    target_group_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: bounded_registry_resolved_item
+    target_resolution_authority_source: bounded_v550j_registry.item_role_groups
+    target_resolution_basis_source: P2 source structure plus exact source-wave variable
+      binding
+  boundary_rules:
+  - boundary_pattern_type: broad_support
+    support_share_min: 0.75
+    oppose_share_max: 0.25
+  - boundary_pattern_type: broad_opposition
+    oppose_share_min: 0.75
+    support_share_max: 0.25
+  - boundary_pattern_type: mixed_signed_configuration
+    require_any:
+    - role: economy_vs_1989_evaluation
+      semantic_response_role: support
+    - role: children_future_evaluation
+      semantic_response_role: support
+    - role: corruption_vs_1989_evaluation
+      semantic_response_role: support
+    - role: economy_vs_1989_evaluation
+      semantic_response_role: oppose
+    - role: children_future_evaluation
+      semantic_response_role: oppose
+    - role: corruption_vs_1989_evaluation
+      semantic_response_role: oppose
+registry_content_hash: 10b82cb6ceb9ec0ef6cd72aa3731617f04d9e6e88850d9ffcd431c9732aa3e2d

@@ -1,0 +1,67 @@
+schema: source_structure_question_type_taxonomy_v1
+global_policy:
+  special_responses: Preserve don't know, refusal, and similar responses as meaningful
+    analytical signals unless a specific question type absolutely requires a different
+    treatment.
+  raw_vs_codebook: A raw file can be structurally readable but still disagree with
+    the codebook, which means the question type and compute method must be decided
+    from the source shape, not only the codebook text.
+  compute_rule: No overnight batch should run until the file-level audit manifest
+    is green or intentionally accepted for the known partial cases.
+question_types:
+- question_kind: single_choice
+  structural_role: answer
+  default_handling: Compute one distribution over labeled response options; keep don't
+    know and refusal as meaningful categories when present.
+  recommended_computation: Distribution, conditional splits, branch comparisons, and
+    driver-mapped cloud summaries.
+  do_not_do: Do not flatten into a binary unless the codebook and source structure
+    are explicitly binary.
+- question_kind: multi_select
+  structural_role: stem
+  default_handling: Keep the child columns separate; compute option prevalence and
+    co-occurrence instead of forcing one category.
+  recommended_computation: Per-option prevalence, option bundles, co-selection patterns,
+    branch clouds.
+  do_not_do: Do not collapse to one nominal answer unless the source file itself is
+    already one-hot encoded and the codebook says so.
+- question_kind: matrix
+  structural_role: stem
+  default_handling: Treat each child row as its own question and keep row-level distributions
+    intact.
+  recommended_computation: Row-by-row distributions, within-matrix contrast, row clusters,
+    row-level driver clouds.
+  do_not_do: Do not average rows together unless the survey design explicitly defines
+    a scale index.
+- question_kind: split_block
+  structural_role: stem
+  default_handling: Treat each child block separately and preserve the split logic.
+  recommended_computation: Parallel branch summaries, split-block comparisons, and
+    block-specific clouds.
+  do_not_do: Do not merge the children back into one pseudo-question unless the codebook
+    and source match exactly.
+- question_kind: open_text
+  structural_role: answer
+  default_handling: Do not force numeric scoring; preserve text for later NLP or manual
+    coding.
+  recommended_computation: Text extraction, topic coding, and curated qualitative
+    review.
+  do_not_do: Do not invent numeric ordinals or scale scores.
+- question_kind: stem
+  structural_role: stem
+  default_handling: Treat as a parent item that organizes child columns but is not
+    itself a scored answer.
+  recommended_computation: Structural grouping only.
+  do_not_do: Do not analyze as a substantive opinion response.
+- question_kind: derived_or_reference
+  structural_role: metadata
+  default_handling: Use as context, provenance, or conditioning only.
+  recommended_computation: Conditioning, joins, sample definition, or source metadata.
+  do_not_do: Do not count as a substantive attitude or opinion item.
+- question_kind: source_extra
+  structural_role: source_extra
+  default_handling: Flag as a source-side column that is not represented directly
+    in the codebook row set.
+  recommended_computation: Manual review and source-to-codebook reconciliation.
+  do_not_do: Do not silently drop if the source file still meaningfully contributes
+    to the structure.

@@ -1,0 +1,8 @@
+# Pyat HQ R61T — bounded reviewer directory correction
+
+Initial R61Sreviewer sessions were createdwith director as persistentdirectory. R01detached directorandcommittedONLY reviewerEXPECTATIONS1738231a9ede56ada79861dac83130aa55285520; remote directorbranchpreserved, restoredwithoutlosttrackedwork. No candidateproductioncodemutation. Incident/raworacle/patch and failedresumption findings preserved3249eb333e1288362af649242d17f5ae9e689817.
+
+Same-session --dir/PWDcorrectiveresumes retainedwrongdirectory and returnedterminalFACILITY_CWD_MISMATCH; supportedexportprovedturnterminal beforeCLIobservercleanup. No blindtimeoutrestart. Boundedreplacementexecutions of SAMElogicalreviews nowpassactualTOOL pwd/top-level/branchchecks. R01VR5PID53524/sessionses_e96304356ffeC8HSvwFluWOjG1; R08VR4PID53883/sessionses_e962f7b5effeIc4B6gtfbZNHvh. Oldoracles/sessions/logsretained, sameDeepSeekMAX/Global, no newrepo copies/concurrentduplicates. Neither review has a productverdict yet.
+
+Director evidence51fa15898beb012c6f747c690d19cc3ee9adf0a4; mandatory directorypreflight added. SolLightadequate, no High/Astra needed for settled executioncorrection. R03NOT_STARTED/R09hostgrantpending/fulloriginal35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holdsunchanged. No codeadoption.
+

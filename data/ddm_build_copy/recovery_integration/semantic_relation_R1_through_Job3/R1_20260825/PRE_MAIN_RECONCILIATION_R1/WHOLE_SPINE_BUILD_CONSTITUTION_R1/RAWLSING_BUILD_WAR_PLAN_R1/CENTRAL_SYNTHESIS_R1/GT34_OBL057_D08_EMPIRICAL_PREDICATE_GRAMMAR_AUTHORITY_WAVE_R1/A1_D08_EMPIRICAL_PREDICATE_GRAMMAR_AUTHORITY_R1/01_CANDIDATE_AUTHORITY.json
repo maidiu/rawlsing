@@ -1,0 +1,63 @@
+{
+  "schema_id": "GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY_CANDIDATE@1.0.0",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "authority_ref": {
+    "authority_id": "GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "acec40d03b5602aaa553f1f63cf2506bffe0491c008678ff973e39c3f7dcedd4"
+  },
+  "authority_kind": "PREDICATE_GRAMMAR",
+  "governed_object_families": [
+    "EmpiricalPredicate@1.0.0"
+  ],
+  "governed_operations": [
+    "RESOLVE_EXACT_EMPIRICAL_POSITION_COORDINATE_EQ_PREDICATE"
+  ],
+  "operator_semantics_refs": [
+    {
+      "kind": "PREDICATE_OPERATOR_SEMANTICS",
+      "object_id": "D08_EMPIRICAL_POSITION_COORDINATE@1.0.0",
+      "content_hash": "53e3593784cebdd50f68f8d993786b7643ff64280b8b63efbd09bd6d6a6ae8cf"
+    },
+    {
+      "kind": "PREDICATE_OPERATOR_SEMANTICS",
+      "object_id": "D08_EMPIRICAL_POSITION_COORDINATE_EQ@1.0.0",
+      "content_hash": "4d1dd3a2514b86b5c1d633527bfa6d7ba2b0188b754d4f12c2edc89c4343dd69"
+    }
+  ],
+  "owner_jurisdiction_ref": {
+    "kind": "OWNER_JURISDICTION",
+    "object_id": "VOZHD_HQ_PRE_MAIN:GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_ONLY",
+    "content_hash": "900d13df2f3c8167be47be574549b8b98a1d87dc02d0f273104dbc353aa783bb"
+  },
+  "historical_semantic_court": {
+    "repository": "maidiu/rawlsing",
+    "commit": "db03fcbcb5e34c28b486070628377ead0408e13a",
+    "role": "SEMANTIC_COURT_EVIDENCE_ONLY__NOT_CURRENT_RUNTIME_AUTHORITY"
+  },
+  "runtime_contract": {
+    "basis": "PRE553_EXACT_AUTHORITY_REF_ID_VERSION_CONTENT_HASH",
+    "adoption_rule": "NO_RUNTIME_CURRENTNESS_UNTIL_EXPLICIT_VOZHD_HQ_ADOPTION_OF_THIS_EXACT_TUPLE",
+    "resolution_rule": "EXACT_TUPLE_ONLY__NO_LATEST_DEFAULT_FUZZY_FALLBACK",
+    "consumer_law": "POST_ADOPTION_CONSUMER_MUST_PIN_EXACT_AUTHORITY_TUPLE_AND_EXACT_HQ_ADOPTION_CURRENT_SELECTION_EVIDENCE"
+  },
+  "authority_ceiling": [
+    "NO_Q69B_COORDINATE_SEMANTICS",
+    "NO_RESPONDENT_INCIDENCE",
+    "NO_ACTOR_SEMANTICS",
+    "NO_OBL048_SUBJECT_CLASSIFICATION",
+    "NO_ADP010_EVENT_SEMANTICS",
+    "NO_COMPARATOR_MAPPING_SEMANTICS",
+    "NO_SOURCE_PORTABILITY_OR_POOLING",
+    "NO_PSEPF",
+    "NO_V3_MUTATION",
+    "NO_ARCHITECTURE_OR_TOPOLOGY"
+  ],
+  "hard_gates": {
+    "self_adoption": "FORBIDDEN",
+    "obl031_resume": "BLOCKED_UNTIL_EXPLICIT_HQ_OBL057_ADOPTION",
+    "obl032": "NOT_AUTHORIZED",
+    "positive_v3_execution": "NOT_AUTHORIZED",
+    "project_current_first_canary_oee": "NOT_AUTHORIZED"
+  }
+}

@@ -1,0 +1,4 @@
+# Pyat R103 — existing Astra parent, valid finer notes preserved
+
+Directusercorrection: donotfabricatereplacementprogram; preservenoteswherevalidandgearthemagainstAstra. ExactexistingPROGRAM/N-DAG/C-commissions/F-gates/ATcasesandlaterU53A/UR/M3repairrefs verified. R101/R102notesretainedbutsubordinate; many-to-manyparentcrosswalk and explicitnon-erasureofbroaderempirical/structural/objective/multifield/temporal/positioned-parentcoparent/LongMemory/full35scopebanked. GOAL/board/checkpointpointtoparents; wakebulletlabelsdisambiguatedfromCcommissions. No runtimecompletionclaimornewworker/adoption. R101holdandpausedheartbeatpreserved.
+

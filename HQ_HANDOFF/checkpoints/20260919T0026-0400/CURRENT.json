@@ -1,0 +1,53 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0026-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0023-0400",
+  "status": "R6S_BROWSER_COMBINED_WVS_PROJECTION_AND_BACKEND_REQUALIFICATION_ACTIVE__B_COUNTRY_COORDINATE_AUTHORITY_ADOPTED__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-19-074"
+  ],
+  "commission_path": "HQ_HANDOFF/EE_P2R6S_COMMISSION_20260919.md",
+  "active_workers": [
+    {
+      "id": "EE-P2R6S",
+      "branch": "agent/rabochii-prev3-ee-p2r6s-wvs7-country-coordinate-backend-fanin-r1",
+      "commission_tip": "c838a67eec9879b8a1c70f91d55cddd495980688",
+      "observed_head_at_checkpoint": "c838a67eec9879b8a1c70f91d55cddd495980688",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "BROWSER",
+      "library_access": "NO",
+      "pass_wake": "HQ_COMBINED_PROJECTION_BACKEND_ADJUDICATION_ONLY"
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "wvs_coordinate_authority": {
+    "hash": "9e7f98a7ad723743771d6bea39077553d2a3920ac4c077e90720bb9e44da029d",
+    "source_slot": "B_COUNTRY",
+    "global_role": "ADMINISTRATIVE_METADATA",
+    "frozen_use": "CURRENT_SURVEY_OR_INTERVIEW_COUNTRY_POSITION_COORDINATE"
+  },
+  "dependency_graph": {
+    "EE-P2R6S": {
+      "status": "ACTIVE",
+      "wake": "HQ_COMBINED_PROJECTION_BACKEND_ADJUDICATION"
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_PRODUCTION_BACKEND_PASS",
+        "SELECTIVE_BACKEND_FANIN_TO_EXISTING_P2X_BRANCH"
+      ]
+    }
+  },
+  "terminal": "R6S_ACTIVE__P2X_HELD"
+}

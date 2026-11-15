@@ -1,0 +1,69 @@
+[
+  {
+    "schema_version": "V550J-WVS-source-native-object-R14-v1",
+    "object_id": "WVS-R14-W7-Q165-Q168",
+    "family": "WVS",
+    "wave": "W7",
+    "questionnaire_locator": "/Users/matthewsmith/Desktop/Rawlsing/data/original codebook pdfs/WVS Wave 7 (2017) Questionnaire.pdf",
+    "questionnaire_sha256": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b",
+    "codebook_locator": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/World Values Survey Wave 7 codebook.csv",
+    "codebook_sha256": "d4d03785c142eae00686ec443853bcf90e21b1cc061e062d4e384ce0e7a51207",
+    "printed_parent_id": "Q165-Q168",
+    "printed_parent_text": "Q165-Q168",
+    "questionnaire_page": "13",
+    "bounded_parent_excerpt": "WVS 2017-2021: WAVE 7 \n \nThe general coding for missing codes is as follows (do not read them and code only if the respondent mentions them : \n-1 Don't know                          -3 Not applicable (filter) \n-2 No answer/refused              -5 Missing; Not applicable for other reasons \n \n13 of 27 \nRELIGIOUS VALUES \n(SHOW CARD 17) \nQ164.  How important is God in your life? Please use this scale to indicate. 10 means \u201cvery important\u201d and 1 means \n\u201cnot at all important.\u201d (Code one number): \nNot at all important Very important \n1 2 3 4 5 6 7 8 9 10 \n \nWhich, if any, of the following do you believe in?  \n Yes No \nQ165 God 1 2 \nQ166 Life after death 1 2 \nQ167 Hell 1 2 \nQ168 Heaven 1 2 \n \nPlease tell us if you strongly agree, agree, disagree, or strongly disagree with the following statements:   \n  Strongly \nagree \nAgree Disagree Strongly \ndisagree \nQ169 Whenever science and religion conflict, religion is always right 1 2 3 4 \nQ170 The only acceptable religion is my religion. 1 2 3 4 \n \n(SHOW CARD 18) \nQ171.  Apart from weddings and funerals, about how often do you attend religious services these days?  (Code one \nanswer): \n    1  More than once a week \n    2  Once a week \n    3  Once a month \n    4  Only on special holy days  \n    5  Once a year \n    6  Less often \n    7  Never, practically never \n \n(SHOW CARD 19) \nQ172. Apart from weddings and funerals, about how often do you pray?  (Code one answer): \n    1  Several times a day \n    2  Once a day \n    3  Several times each week \n    4  Only when attending religious services \n5  Only on special holy days  \n    6  Once a year \n    7  Less often \n    8  Never, practically never \n \nQ173. Independently of whether you attend religious services or not, would you say you are\u2026? (read out and code one \nanswer): \n    1  A religious person \n    2  Not a religious person \n    3  An atheist \n \nQ174.  With which one of the following statements do you agree most? The basic meaning of religion is: \n1.  To follow religious norms and ceremonies          2. To do good to other people  \n \nQ175. And with which of the following statements do you agree most? The basic meaning of religion is: \n1.  To make sense of life after death                           2.  To make sense of life in this world      \n  ",
+    "printed_children_sequence": [
+      "Q165",
+      "Q166",
+      "Q167",
+      "Q168"
+    ],
+    "members": [
+      "Q165",
+      "Q166",
+      "Q167",
+      "Q168"
+    ],
+    "crosswalk": [
+      {
+        "printed_item_id": "Q165",
+        "codebook_variable_id": "Q165",
+        "crosswalk_basis": "native printed identifier equals native codebook ID",
+        "codebook_label": "Believe in: God",
+        "questionnaire_evidence": "Native WVS Wave 7 page 13 explicitly groups Q165-Q168 as belief indicators and Q169-Q170 under one agreement instruction; native codebook rows reconcile every ID."
+      },
+      {
+        "printed_item_id": "Q166",
+        "codebook_variable_id": "Q166",
+        "crosswalk_basis": "native printed identifier equals native codebook ID",
+        "codebook_label": "Believe in: life after death",
+        "questionnaire_evidence": "Native WVS Wave 7 page 13 explicitly groups Q165-Q168 as belief indicators and Q169-Q170 under one agreement instruction; native codebook rows reconcile every ID."
+      },
+      {
+        "printed_item_id": "Q167",
+        "codebook_variable_id": "Q167",
+        "crosswalk_basis": "native printed identifier equals native codebook ID",
+        "codebook_label": "Believe in: hell",
+        "questionnaire_evidence": "Native WVS Wave 7 page 13 explicitly groups Q165-Q168 as belief indicators and Q169-Q170 under one agreement instruction; native codebook rows reconcile every ID."
+      },
+      {
+        "printed_item_id": "Q168",
+        "codebook_variable_id": "Q168",
+        "crosswalk_basis": "native printed identifier equals native codebook ID",
+        "codebook_label": "Believe in: heaven",
+        "questionnaire_evidence": "Native WVS Wave 7 page 13 explicitly groups Q165-Q168 as belief indicators and Q169-Q170 under one agreement instruction; native codebook rows reconcile every ID."
+      }
+    ],
+    "respondent_interviewer_role": "RESPONDENT",
+    "routing": "No skip instruction attached.",
+    "routing_evidence": "Native questionnaire block.",
+    "universe": "Survey respondent.",
+    "universe_evidence": "Respondent-facing questionnaire.",
+    "applicability": "WVS Wave 7.",
+    "applicability_evidence": "Native source title/wave.",
+    "completion_rule": "One response for each item in the explicitly instructed block.",
+    "completion_evidence": "Native WVS Wave 7 page 13 explicitly groups Q165-Q168 as belief indicators and Q169-Q170 under one agreement instruction; native codebook rows reconcile every ID.",
+    "evidence_class": "SOURCE_NATIVE_QUESTIONNAIRE_CODEBOOK_RECONCILIATION",
+    "state": "ACCEPTED_SOURCE_NATIVE_JOINT"
+  }
+]

@@ -1,0 +1,183 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1447-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1421-0400",
+  "status": "EE_P2R3_BLOCKER_ADOPTED__EE_P2R4A_R4B_ACTIVE__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-042",
+    "HQD-2026-09-18-043"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R3_BLOCKER_ADOPTION_AND_P2R4_PARALLEL_DISPATCH_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R3",
+      "branch": "agent/rabochii-prev3-ee-p2r3-d02-f02-predicate-contract-reconciliation-r1",
+      "commission_tip": "51c2dc6e9c553350a5aa51034d2c3f903629f333",
+      "return_head": "f1ade4f6ede6a660d181a910655c363d1a03ea7f",
+      "disposition": "QUALIFIED_BLOCK__ADOPTED",
+      "terminal": "EE_P2R3_BLOCK__FROZEN_F02_SELECTOR_AST_AND_MIXED_COMPOSITION_REQUIRE_PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_COMPOSITION_AUTHORITY_CHANGE",
+      "semantic_candidate": "f80532f554a531ca98148155b198a2a60cba97e1",
+      "evidence_execution": "8ca6034fcf79a84e91f2799e5c42b87343d6e112",
+      "workflow_run_id": 35381759254,
+      "job_id": 105719324071,
+      "artifact_id": 10562781473,
+      "artifact_digest": "sha256:acf6f31a1d3af88a2b1369a1bbfbc6ae800729040381a0aa15678fc3c9515ead"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "EE-P2R4A",
+      "branch": "agent/rabochii-prev3-ee-p2r4a-public-predicate-composition-authority-r1",
+      "commission_tip": "4e6987f2bf3d4bc663d33056b98667c8098c2fa5",
+      "observed_head_at_checkpoint": "4e6987f2bf3d4bc663d33056b98667c8098c2fa5",
+      "grain": "PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_MIXED_COMPOSITION_AUTHORITY_RECONCILIATION__WITH_D02_F02_EXACT_IDENTITY_PRESERVATION",
+      "library_access": "NO",
+      "execution_surface": "BROWSER",
+      "pass_wake": "HQ_ADJUDICATE_SUCCESSOR_AUTHORITY_CANDIDATE_ONLY",
+      "blocker_effect": "RETURN_SMALLEST_MISSING_SEMANTIC_AUTHORITY_OR_COMPETENT_EVIDENCE_OWNER__NO_PRODUCTION_CODE_CHANGE",
+      "hard_forbidden": [
+        "LIBRARY_OR_CARRIER_ACCESS",
+        "EMPIRICAL_OUTCOME_ACCESS",
+        "PERFORMANCE_MEASUREMENT",
+        "PRODUCTION_PRE553_EVALUATOR_OR_I05_MODIFICATION",
+        "R4B_C11_REALIZATION_WORK",
+        "F02_SELECTOR_REMINTING",
+        "D02_OR_F02_WORKLOAD_MUTATION",
+        "SOURCE_SPECIFIC_GENERIC_SEMANTICS",
+        "P2X_MOVEMENT",
+        "BE1_WORK",
+        "CANDIDATE_C_REPAIR",
+        "LOCK1_OR_LOCK2_MUTATION",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH"
+      ]
+    },
+    {
+      "id": "EE-P2R4B",
+      "branch": "agent/rabochii-prev3-ee-p2r4b-f02-composite-c11-realization-r1",
+      "commission_tip": "b3652140416418d4492c7d13d2e89a0be16dede9",
+      "observed_head_at_checkpoint": "b3652140416418d4492c7d13d2e89a0be16dede9",
+      "grain": "F02_EXACT_COMPOSITE_C11_RELEASE_PUBLIC_REALIZATION_AND_C11REPOSITORY_BINDING_ONLY",
+      "library_access": "NO",
+      "execution_surface": "BROWSER",
+      "pass_wake": "HQ_ADJUDICATE_EXACT_C11_REALIZATION_ONLY",
+      "blocker_effect": "RETURN_EXACT_I02_OR_RELEASE_IDENTITY_CONTRADICTION__OR_QUALIFIED_MECHANICAL_LOCAL_RESIDUAL_PACKET_IF_REAL_CARRIER_IS_INTRINSICALLY_REQUIRED",
+      "hard_forbidden": [
+        "LIBRARY_OR_CARRIER_ACCESS",
+        "EMPIRICAL_OUTCOME_ACCESS",
+        "PERFORMANCE_MEASUREMENT",
+        "R4A_PREDICATE_SEMANTIC_AUTHORITY_WORK",
+        "MIXED_I05_SEMANTIC_CHANGE",
+        "F02_SELECTOR_REMINTING",
+        "SUBSTITUTE_C11_RELEASE_IDENTITY",
+        "D02_OR_F02_WORKLOAD_MUTATION",
+        "P2X_MOVEMENT",
+        "BE1_WORK",
+        "CANDIDATE_C_REPAIR",
+        "LOCK1_OR_LOCK2_MUTATION",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH"
+      ]
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "grain": "FINAL_CHETIRI_P2_A_B_C_EQUAL_WORK_MEASURED_EXECUTION_ONLY",
+      "library_access": "EXACT_ONLY",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "local_maximum_intelligence_required": "NOT_APPLICABLE__NO_LOCAL_WORKER_COMMISSIONED",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "blocker_effect": "WAIT_FOR_HQ_ADOPTED_PREDICATE_COMPOSITION_AUTHORITY__EXACT_F02_C11_REALIZATION__QUALIFIED_PRODUCTION_BACKEND_FANIN",
+      "hard_forbidden": [
+        "LOCAL_RUN_OR_RESUME_WHILE_HELD",
+        "LOCK1_OR_LOCK2_MUTATION",
+        "CANDIDATE_OR_WORKLOAD_REDESIGN",
+        "SEMANTIC_OR_ROUTING_REDESIGN",
+        "NEW_WVS_ACCELERATOR",
+        "CROSS_UNIVERSE_METRIC_POOLING",
+        "SURROGATE_PERFORMANCE",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH",
+        "HQ_MEASURED_SYNTHESIS_BEFORE_COMPLETE_LAWFUL_RETURN"
+      ]
+    }
+  ],
+  "p2x_state": {
+    "head": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "local_execution_authorized": false,
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "preserved_ledger_sha256": "c941a1d77981e6ccf147024f15e9f87763567bb7eb7fc86ab6e1f9027e41b83c",
+    "measured_stage_executed": false
+  },
+  "candidate_c": {
+    "lits_status": "C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION",
+    "later_cacc2_deficit": "S05_I05_LEARNED_PRODUCTION__FROZEN_CACC2_LACKS_ALL_SIX_F02_SELECTOR_REFS",
+    "cacc3": "FORBIDDEN",
+    "hidden_ab_fallback": "FORBIDDEN"
+  },
+  "dispatch_law": {
+    "preference": "BROWSER_FIRST_WHERE_LOCAL_PHYSICAL_ENVIRONMENT_NOT_INTRINSIC",
+    "local_goal": "MECHANICAL_DETERMINISTIC_MINIMUM_AMBIGUITY",
+    "commission_required_fields": [
+      "execution_surface",
+      "library_access"
+    ],
+    "local_commission_required_field": "maximum_intelligence_required",
+    "allowed_local_intelligence_levels": [
+      "LUNA",
+      "TERRA",
+      "SOL LIGHT",
+      "SOL MEDIUM",
+      "SOL HIGH"
+    ],
+    "selection_rule": "LOWEST_TIER_SUFFICIENT_FOR_SAFE_FULL_EXECUTION"
+  },
+  "dependency_graph": {
+    "EE-P2R4A": {
+      "status": "ACTIVE",
+      "wake": "HQ_AUTHORITY_ADJUDICATION"
+    },
+    "EE-P2R4B": {
+      "status": "ACTIVE",
+      "wake": "HQ_C11_REALIZATION_ADJUDICATION"
+    },
+    "PRE553_PRODUCTION_IMPLEMENTATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "HQ_ADOPTED_REQUIRED_R4A_AUTHORITY",
+        "HQ_ADOPTED_REQUIRED_R4B_REALIZATION"
+      ]
+    },
+    "EE-P2X-BE1": {
+      "status": "DORMANT__ADOPTED_BLOCKER",
+      "prerequisites": [
+        "HQ_ADOPTED_QUALIFIED_COMMON_RUNTIME_IMPLEMENTATION"
+      ]
+    },
+    "EE-P2X": {
+      "status": "ACTIVE__LOCAL_EXECUTION_HELD",
+      "prerequisites": [
+        "HQ_ADOPTED_QUALIFIED_COMMON_RUNTIME_IMPLEMENTATION",
+        "HQ_ADOPTED_QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    },
+    "HQ_MEASURED_SYNTHESIS": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "COMPLETE_LAWFUL_EE_P2X_RETURN"
+      ]
+    }
+  },
+  "negative_authority": {
+    "SIG_004": "CLOSED_AT_CURRENT_AUTHORITY",
+    "LITS_Q301": "6_NOT_APPLICABLE__7_DONT_KNOW__SOURCE_LOCAL_ONLY",
+    "OBL063": "QUARANTINED",
+    "C09_OP014": "HISTORICAL_RUNNER_OUTAGE_NOT_CURRENT_FACT__NO_AUTOMATIC_WAKE"
+  },
+  "terminal": "P2R3_BLOCKER_ADOPTED__R4A_R4B_BROWSER_PARALLEL__NO_LOCAL_CODEX_YET__P2X_HELD"
+}

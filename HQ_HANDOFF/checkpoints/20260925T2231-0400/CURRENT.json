@@ -1,0 +1,82 @@
+{
+  "schema": "RAWLSING_HQ_CURRENT_CONTROL_AUTHORITY_CORRECTED_PRE_MACHINE_READINESS@1.0.0",
+  "checkpoint_id": "20260925T2231-0400",
+  "status": "CONTROL_BRANCH_AUTHORITY_CORRECTED__FRESH_DUAL_MACHINE_READINESS_RETRY_NEXT__NO_MEASUREMENT_AUTHORIZED",
+  "governing_decision": "HQD-2026-09-25-106",
+  "semantic_pre_main_tip": "03c55b0a5386282ded3c786ac4bf6ead9e42ed98",
+  "protected_execution": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
+  },
+  "canonical_measurement_control": {
+    "branch": "agent/vozhd-fiabc-split-r2-fanin-r1",
+    "observed_evidence_docs_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
+    "qualified_implementation_head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e",
+    "branch_tip_is_evidence_docs_descendant_of_qualified_implementation": true
+  },
+  "nonoperative_split_alias": {
+    "branch": "agent/vozhd-fiabc-source-split-alternate-runner-r1",
+    "head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e",
+    "measurement_control_authorized": false
+  },
+  "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+  "successor_binding": {
+    "path": "WORKER_RETURNS/EE-P2X/10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json",
+    "git_blob_sha1": "247725e51ed141cf31c112084590b69953765032"
+  },
+  "split_reuse_contract": {
+    "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/08_SPLIT_REUSE_CONTRACT.json",
+    "git_blob_sha1": "1a3ac01732fafb6a9a1c3e560156ed245fc3fb6b"
+  },
+  "exact_runtime": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
+    "system": "Darwin",
+    "machine": "x86_64"
+  },
+  "readiness_work_root_law": {
+    "during_machine_readiness": "ABSENT_OR_COMPLETELY_EMPTY",
+    "readiness_artifacts_must_be_outside_future_measured_work_root": true,
+    "cache_prefix_materialized_during_readiness": false,
+    "wvs_preprovision_materialized_during_readiness": false,
+    "verify_member_requires_same_work_root_still_empty": true,
+    "later_launcher_order": [
+      "VERIFY_MEMBER",
+      "SOURCE_IDENTITY",
+      "GOVERNED_PREFLIGHT_AND_SCAFFOLDING",
+      "SOURCE_SPECIFIC_PREPROVISION",
+      "REPO_BASELINE",
+      "CREATE_CACHE_PREFIX_AND_EXPORT_CACHE_NEUTRAL_ENV",
+      "MEASURED_ENTRY_ONLY_AFTER_SEPARATE_HQ_AUTHORIZATION"
+    ]
+  },
+  "first_wvs_readiness_block": {
+    "adjudication": "CORRECT_FAIL_CLOSED__COMMISSION_CONTRADICTION_NOT_MACHINE_FAILURE",
+    "old_root_reuse_authorized": false,
+    "retry_requires_brand_new_work_root": true
+  },
+  "dependency_graph": {
+    "CONTROL_AUTHORITY_CORRECTION": {
+      "status": "DONE",
+      "wake": "FRESH_DUAL_MACHINE_READINESS_RETRY"
+    },
+    "FRESH_DUAL_MACHINE_READINESS_RETRY": {
+      "status": "READY_NEXT_GATE"
+    },
+    "PAIR_VERIFICATION": {
+      "status": "BLOCKED_PENDING_TWO_CORRECTED_READINESS_PASS_RETURNS"
+    },
+    "MEASURED_COURT": {
+      "status": "BLOCKED_PENDING_PAIR_PASS_AND_SEPARATE_EXPLICIT_HQ_AUTHORIZATION"
+    },
+    "P2_COMPARISON": {
+      "status": "BLOCKED_UNTIL_LAWFUL_POST_MERGE_COURT"
+    }
+  },
+  "measured_execution_authorized": false,
+  "next_action": "RERUN_CORRECTED_LITS_AND_WVS_FRESH_MACHINE_READINESS__THEN_PAIR_VERIFY__THEN_SEPARATE_EXPLICIT_HQ_MEASUREMENT_AUTHORIZATION"
+}

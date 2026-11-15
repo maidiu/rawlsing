@@ -1,0 +1,35 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260930-PYAT-HQ143-C1-02-WITNESS-PAIRING-REPAIR-BOUND-R1",
+  "status": "C1_02_NARROW_WITNESS_REPAIR_BOUND__N10E_REVIEW_ACTIVE__C2_PREP_COMPLETE__C3_ADOPTED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20260930-PYAT-HQ142-C1-02-CORRECTION-REVIEW-BOUND-R1",
+  "governing_decision": "HQD-2026-09-30-143",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "c1_02": {
+    "corrected_return": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+    "independent_review_return": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
+    "review_disposition": "CHANGES_REQUIRED",
+    "sole_blocker": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+    "repair": {
+      "branch": "agent/opencode-pyat-hq143-c1-02-witness-pairing-repair-r1",
+      "base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+      "commission_tip": "5a83a659759e8a076d33adfa984ebba02255c40f",
+      "launch_surface": "OPENCODE",
+      "model": "SPACE_BUNNY_FREE",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+    },
+    "adopted": false
+  },
+  "n10e": {
+    "review_branch": "agent/reviewer-pyat-hq141-n10e-r1",
+    "state": "PARALLEL_REVIEW_ACTIVE_OR_AWAITING_RETURN"
+  },
+  "next_action": "RUN_C1_02_WITNESS_PAIRING_REPAIR_IN_OPENCODE_SPACE_BUNNY__N10E_REVIEW_CONTINUES_IN_PARALLEL",
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION",
+    "NO_C1_03_BEFORE_C1_02_ACCEPTANCE",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

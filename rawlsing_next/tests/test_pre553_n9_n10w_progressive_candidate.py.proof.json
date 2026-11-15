@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "E03_MULTI_CONDITIONER_PRODUCER_DENOMINATOR_CONSERVATION",
+      "actual_consumer": "ProgressiveChainResult.steps[1]/steps[2] sourced from actual C1 compose_positioned_subject_possibility and separately consumed by F8",
+      "claimed_dependency": "raw_denominator_support carried unchanged from C1 producer to joined progressive step; checked against independently hand-derived conditioned denominator",
+      "positive_node": "rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py::test_full_progressive_chain_matches_hand_derived_oracle",
+      "fault": {
+        "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+        "old": "raw_denominator_support=result.raw_denominator_support,",
+        "new": "raw_denominator_support=result.raw_denominator_support + 1,"
+      }
+    }
+  ]
+}

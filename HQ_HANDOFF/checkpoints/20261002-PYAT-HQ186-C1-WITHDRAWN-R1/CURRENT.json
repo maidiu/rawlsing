@@ -1,0 +1,85 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ186-C1-WITHDRAWN-R1",
+  "governing_decision": "HQD-2026-10-02-186",
+  "status": "C1_WITHDRAWN_IN_FULL__C2_C5_UPHELD__STAGE_BLOCKERS_UNCHANGED__HQ185_CHECKPOINT_RETRO_SEALED__POINTERS_RECONCILED__HQ182_HOLD_UNLIFTED__RAW_SOURCE_EXECUTION_HELD",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "supersedes": "HQ183_C1_ONLY",
+  "c1": {
+    "prior_verdict": "SOL_SHADOW_BYTE_IDENTITY_FALSE",
+    "new_verdict": "WITHDRAWN_IN_FULL__SOL_SHADOW_JUSTIFICATION_CORRECT",
+    "qualified_candidate_named_by_user": "46f3bec824c1c9da7037bacf94ec08923bc33506",
+    "m01_court_run_head": "74a067742a370d4f6296c56140c28cc8acc53e63",
+    "four_file_blob_comparison": [
+      {
+        "path": "rawlsing_next/pre553_route_b_production.py",
+        "at_46f3bec82": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "at_freeze": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "match": true
+      },
+      {
+        "path": "rawlsing_next/pre553_carrier_execution.py",
+        "at_46f3bec82": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+        "at_freeze": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+        "match": true
+      },
+      {
+        "path": "rawlsing_next/tests/test_pre553_route_b_production.py",
+        "at_46f3bec82": "d244eaaa48f878f8",
+        "at_freeze": "d244eaaa48f878f8",
+        "match": true
+      },
+      {
+        "path": "rawlsing_next/tests/test_pre553_carrier_execution.py",
+        "at_46f3bec82": "bc0db646a803b5bf",
+        "at_freeze": "bc0db646a803b5bf",
+        "match": true
+      }
+    ],
+    "producer_at_court_run_head": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "producer_matches_freeze": true,
+    "court_spec_change": "74a06774 changed only .rabochii/court_spec.json, repointing semantic_candidate_sha from a1545aee to 46f3bec82",
+    "court_tests_array_is_the_four_bounded_court_files": true,
+    "hq_error_mode": "READ_FIRST_M01_COURT_BINDING_295d270c3_INSTEAD_OF_FINAL_BINDING_74a06774__MISSED_FOUR_REBINDS",
+    "recurrence_note": "SAME_MODE_AS_HQ182_C2_WHERE_TRUNCATED_GREP_WAS_COMPLETED_BY_GUESSING",
+    "counterexample_produced": false,
+    "hq183_substitute_basis": "WITHDRAWN_AS_PRIMARY__C4A_COMBINED_COURT_OBSERVATION_RETAINED_AS_CORROBORATION_ONLY"
+  },
+  "findings_upheld": {
+    "C2": "R7_WORDING_FROM_THIS_PATH_ALONE__FINGERPRINT_INCOMPLETENESS",
+    "C3": "38_SHA256_PREFIXES_PLUS_2_COMPLETE_GIT_TREE_IDENTITIES",
+    "C4": "R9_NARROWED_PER_SOURCE_CONSTRAINTS_SURVIVE",
+    "C5": "R10_DIGEST_RECOVERED_FROM_C4B"
+  },
+  "residual_register_stage_separated": {
+    "blocking_freeze_acceptance": 0,
+    "blocking_warrant_issuance": 1,
+    "blocking_live_execution": 1,
+    "advisory": 9,
+    "counterexamples": 0,
+    "changed_by_this_correction": "NONE__C1_WITHDRAWAL_REMOVES_A_CLAIMED_COUNTEREXAMPLE"
+  },
+  "pointer_reconciliation": {
+    "defect": "LATEST_CLAIMED_HQD_185_WHILE_CHECKPOINT_ID_POINTED_AT_HQ184_AND_HANDOFF_COMMIT_HAD_NO_SEALED_CHECKPOINT",
+    "hq185_checkpoint_now_exists": true,
+    "latest_repointed": true
+  },
+  "corrected_packet": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/01_CORRECTED_DECISION_CLAIMS.md",
+  "hq183_packet_preserved_unmodified": true,
+  "adoption_status": "NOT_ADOPTED_INTO_BUILD__HQ182_HOLD_UNLIFTED",
+  "raw_source_access": 0,
+  "source_locators_discovered": 0,
+  "warrant_issued": false,
+  "c4_executed": false,
+  "production_mutation": 0,
+  "held": [
+    "ADOPTION_OF_C4_FREEZE_INTO_BUILD",
+    "HQ182_HOLD",
+    "SOURCE_LOCATOR_DISCOVERY_AND_FILL",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4_EXECUTION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0132-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0130-0400",
+  "status": "R6T_BROWSER_LITS_AS2A_PATH_REF_REPAIR_ACTIVE__P2X_HELD_AT_LITS_A_S02",
+  "decisions": [
+    "HQD-2026-09-19-077",
+    "HQD-2026-09-19-078"
+  ],
+  "commission_path": "HQ_HANDOFF/EE_P2R6T_COMMISSION_20260919.md",
+  "active_workers": [
+    {
+      "id": "EE-P2R6T",
+      "branch": "agent/rabochii-prev3-ee-p2r6t-lits-as2a-path-ref-repair-r1",
+      "commission_tip": "f325ef8b6502e38d1a811a5da2ae4dcfb357a3b7",
+      "observed_head_at_checkpoint": "f325ef8b6502e38d1a811a5da2ae4dcfb357a3b7",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "BROWSER",
+      "library_access": "NO",
+      "pass_wake": "HQ_REPAIRED_BACKEND_ADJUDICATION_ONLY"
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "d0187a01f21959f4834a7f774f92d06187f1efb3",
+      "temporal_classification": "HELD_AFTER_ADJUDICATED_COMMON_COURT_BLOCKER",
+      "execution_surface": "LOCAL-MACHINE CODEX",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "blocker_repair": {
+    "backend_current_blob": "ca32b9c8ec6bfcbbdc039fba0a10646dcc5357e2",
+    "pinned_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "correct_path_component": "banked_as2a",
+    "ledger_blob": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+    "package_blob": "174b931e8aa89111086e3d46159b47154bed7f16"
+  },
+  "dependency_graph": {
+    "EE-P2R6T": {
+      "status": "ACTIVE",
+      "wake": "HQ_REPAIRED_BACKEND_ADJUDICATION"
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "resume_stage": "LITS_I/A/S02_C11_REACHABILITY",
+      "prerequisites": [
+        "ADOPTED_R6T_PASS",
+        "SELECTIVE_REPAIRED_BACKEND_FANIN"
+      ]
+    }
+  },
+  "terminal": "R6T_ACTIVE__P2X_HELD_AT_LITS_A_S02"
+}

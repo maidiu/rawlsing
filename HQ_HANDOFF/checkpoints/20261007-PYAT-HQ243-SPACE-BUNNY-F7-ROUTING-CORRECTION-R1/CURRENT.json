@@ -1,0 +1,35 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261007-PYAT-HQ243-SPACE-BUNNY-F7-ROUTING-CORRECTION-R1",
+  "decision": "HQD-2026-10-07-243",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261007-PYAT-HQ242-F7-T1-PRODUCER-WARRANT-N10E-R2-R1",
+  "routing_correction": "SPACE_BUNNY_OPENCODE_LOCAL_MODEL_NOT_BROWSER_GPT_5_6_SOL",
+  "active_lanes": [
+    {
+      "id": "F7_NATIVE_P07_IMPLEMENTATION",
+      "branch": "agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1",
+      "commission_tip": "c4d46de7535359f0ebddc50ae5cad109124a4300",
+      "agent": "Space Bunny via OpenCode",
+      "model": "user-selected Space Bunny variant; Max preferred; verify actual installed ID",
+      "machine": "user Mac governed sparse worktree",
+      "status": "NEEDS_LAUNCH",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ242-F7-T1-NATIVE-P07-OWNER-IMPLEMENTATION-R1/00_COMMISSION.md"
+    },
+    {
+      "id": "N10E_R2_WARRANT",
+      "branch": "agent/rabochii-pyat-hq242-n10e-at07-issuer-warrant-correction-r2",
+      "commission_tip": "1cac84eac8846130bd12e9bf591ff3010c9c4b62",
+      "agent": "Browser/GitHub documentary",
+      "model": "GPT-5.6 Sol High",
+      "status": "NEEDS_LAUNCH",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/00_COMMISSION.md"
+    }
+  ],
+  "holds": {
+    "f7": "T1_PRODUCER_CANDIDATE_ONLY__RR04G_OPEN",
+    "n10e": "ISSUER_WARRANT_UNADOPTED__NO_R4"
+  },
+  "next_action": "RUN_F7_ON_SPACE_BUNNY_OPENCODE_MAC_AT_CORRECTED_TIP_AND_N10E_R2_ON_BROWSER_SOL_IN_PARALLEL__INTAKE_ANY_RETURN"
+}

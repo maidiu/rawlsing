@@ -1,0 +1,123 @@
+{
+  "base": {
+    "commit": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+    "ref": "integration/pre-main-reconciliation-r1",
+    "remote_verified": true
+  },
+  "blob_checks": "BLOB_CHECKS.json",
+  "branch": "codex/sorok-p3-selective-receiving-20261107-r1",
+  "branch_delta": {
+    "assembly_evidence_paths": 8,
+    "equals_allowlist_plus_assembly": true,
+    "paths": 194,
+    "programma_or_coordination_paths": 0,
+    "source_paths": 186
+  },
+  "category_counts": {
+    "focused_disposition": 1,
+    "focused_review": 15,
+    "goal_audit": 5,
+    "goal_residual": 8,
+    "runtime_evidence": 157
+  },
+  "dependency_closure": {
+    "base_present": [
+      {
+        "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/contracts.py",
+        "sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py",
+        "sha256": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py",
+        "sha256": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+        "sha256": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/projection.py",
+        "sha256": "6e7771000b0d50abcdc990192a2d834171640371e6e814694a918eb9286386fd"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/p2_product_fanin/integration.py",
+        "sha256": "fd1c626d8ea8c7c747da7d8dcf09ec421622d3086ee845c773180b1e7b9eb1e2"
+      }
+    ],
+    "closure_ok": true,
+    "e1_b1_included": {
+      "path": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py",
+      "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+    },
+    "missing": [],
+    "s1_runtime_import": false
+  },
+  "final_pr_draft": "FINAL_PR_DRAFT.md",
+  "focused_review_manifest_verified": true,
+  "no_programma_changes_in_candidate": true,
+  "no_runtime_or_test_edits": true,
+  "path_allowlist": "PATH_ALLOWLIST.txt",
+  "remaining": [
+    "nonauthor qualification of additive 140b585f/036787c1 residual proofs",
+    "HQ reconcile observed source-ref movement 16275d03->687dc0cf (runtime/test hashes unchanged; coordination/PROGRAMMA only)",
+    "HQ final PR publication, protected receiving and merge remain held"
+  ],
+  "runtime_and_test_source_hashes_exact": true,
+  "schema": "SOROK_P3_SELECTIVE_RECEIVING_ASSEMBLY@1",
+  "selected_counts": {
+    "focused_disposition": 1,
+    "focused_review_artifacts": 15,
+    "prepared_package": 170,
+    "total": 186
+  },
+  "source_ref_observation": {
+    "action": "Candidate uses frozen 16275 runtime/test blobs and excludes observed-head coordination/PROGRAMMA/final-delivery updates; HQ must reconcile the source-ref provenance before publication.",
+    "additive_evidence_selected_from_base_commits": true,
+    "branch": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
+    "frozen_cut_used": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "observed_head_adds_evidence_coordination_programma": true,
+    "observed_head_adds_no_runtime_or_test_change": true,
+    "observed_head_chain": [
+      "16275d03",
+      "9abb3eee",
+      "fd51a5d8",
+      "687dc0cf"
+    ],
+    "observed_head_parent": "fd51a5d871f00233cf5b32bc2e6082757526495b",
+    "observed_remote_head": "687dc0cfc0d1f32942bec1e07eff68a811b8f0df",
+    "runtime_and_test_hashes_unchanged": true
+  },
+  "sources": {
+    "focused_disposition": {
+      "cut": "9abb3eee3d59c76ce20d5131d5b60151f7ca98ae"
+    },
+    "focused_review": {
+      "cut": "e85b6f6a733ef5bbd664679bdf9613c04003e3de",
+      "m1_m2_m3": "CLOSED",
+      "reviewed_runtime": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+      "verdict": "ACCEPT_SCOPED_TEST_ONLY"
+    },
+    "goal_audit": {
+      "cut": "140b585f9b7321984725cf6f38ae95c2cb2bf89c",
+      "ref": "agent/sorok-p3-goal-audit-20261107-r1",
+      "remote_verified": true
+    },
+    "goal_residual_proof": {
+      "cut": "036787c1f0c227cdc47828ba521a62b76c57a903",
+      "ref": "agent/sorok-p3-goal-residual-proof-20261107-r1",
+      "remote_verified": true
+    },
+    "runtime_evidence": {
+      "cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+      "implementation": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
+      "ref": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
+      "remote_head_observed_at_assembly": "687dc0cfc0d1f32942bec1e07eff68a811b8f0df",
+      "remote_verified": true
+    }
+  },
+  "status": "ISOLATED_CANDIDATE_ASSEMBLED__NO_PR__NO_MERGE",
+  "tests_rerun": false
+}

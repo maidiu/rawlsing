@@ -1,0 +1,733 @@
+{
+  "worker_id": "W06",
+  "status": "PASS",
+  "generated_at_utc": "2026-08-12T09:55:54.458361+00:00",
+  "coverage": {
+    "expected_atoms": 12274,
+    "returned_atoms": 12274,
+    "unique_atom_ids": 12274,
+    "exact_order": true
+  },
+  "immutable_identity_exact": true,
+  "mutable_blank_count": 0,
+  "t07": {
+    "expected": 152,
+    "blocked_exact": 152
+  },
+  "recommendation_counts": {
+    "WORKER_BLOCKED_NEEDS_VOZHD": 1026,
+    "WORKER_RECOMMEND_REJECT": 10976,
+    "WORKER_RETAIN_EXISTING_GOVERNED_AUTHORITY": 269,
+    "WORKER_RECOMMEND_PARTIAL_ACCEPT": 3
+  },
+  "rule_counts": {
+    "T03": 155,
+    "T04": 155,
+    "T05": 155,
+    "T07": 152,
+    "T09": 155,
+    "T10": 90,
+    "T11": 226,
+    "T09;T10": 213,
+    "T06": 10945,
+    "T08": 28
+  },
+  "t06_rr_norm_histogram": {
+    "POSITIVE_RR_NORM": 223,
+    "NEGATIVE_RR_NORM": 82
+  },
+  "accept_partial_hostile_sample_target": 25,
+  "accept_partial_population_available": 3,
+  "accept_partial_population_below_target": true,
+  "accept_partial_sample_count": 3,
+  "accept_partial_samples": [
+    {
+      "decision_atom_id": "R15ATOM-9b422c4fd285ec3571b8",
+      "raw_origin_id": "R11ALIGN-a910dec2560f4c64",
+      "pass": true,
+      "hostile_check": "proposal exists; exact authorized subset is inside frozen membership; explicit rejected set is disjoint; exact source-governed evidence basis recorded."
+    },
+    {
+      "decision_atom_id": "R15ATOM-d90155bb9691e8e2036c",
+      "raw_origin_id": "R11T11M-b1321459ecfd853a",
+      "pass": true,
+      "hostile_check": "proposal exists; exact authorized subset is inside frozen membership; explicit rejected set is disjoint; exact source-governed evidence basis recorded."
+    },
+    {
+      "decision_atom_id": "R15ATOM-6254cd3c7db59645b596",
+      "raw_origin_id": "R11T11M-347c015ffd8f871b",
+      "pass": true,
+      "hostile_check": "proposal exists; exact authorized subset is inside frozen membership; explicit rejected set is disjoint; exact source-governed evidence basis recorded."
+    }
+  ],
+  "retain_hostile_sample_count": 25,
+  "retain_samples": [
+    {
+      "decision_atom_id": "R15ATOM-63fcbc5e40575f023293",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-a2d7e01d24c4f2ff2700"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-c2c7f4ccffaa51dc0f7a",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-ad7d2cf87cbdbd9c5250"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-a448feaa7700d902699c",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-2bd5aed20bf88ca634d9"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-0a2bcec40bdee8068b65",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-ad7d2cf87cbdbd9c5250"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-64827ef924a993db539b",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-7a8cf2e07f2c13f5fe2d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-c3236746816e28bf29fb",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-7a8cf2e07f2c13f5fe2d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-6abe250a668d33eb1f2b",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-06b40b117715681737b6"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-942ef22196d24f3f0170",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-b1fa93479e803ed0f291"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-508f218c423b9d602045",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-06b40b117715681737b6"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-a30b88fa9ab2846505b6",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-b1fa93479e803ed0f291"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-f237d958cd9cc31845b6",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-c46bc50ffa19ff74a6c1"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-3e98ab573e252b8afe9b",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-73bdcf157572752ed631",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-29f76fedb882a6acabee",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-d1559503a0ac2c82f416",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-413048a7e8a1d8e5b6cd",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-800d3c3bed42e522dfb8",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-b1a56ee07d76ab36512e",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-f6c2e773a85136e5227e",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-7bba051f5a81cbaa808c",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-4a926605db229487f22d"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-a02bc6800a671f57175f",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-c46bc50ffa19ff74a6c1"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-e540b08616e0ee173879",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-c46bc50ffa19ff74a6c1"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-b75a36d68e8d67ea45ec",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-3e90f4eb0e488e68f730"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-091d6ab0c0537dc5384c",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-3ce082f93626f1464c57",
+        "IQRA-R2-b1fa93479e803ed0f291"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    },
+    {
+      "decision_atom_id": "R15ATOM-f87f48ad6d82740cc39d",
+      "pass": true,
+      "same_rule_r6_relations": [
+        "IQRA-R2-3ce082f93626f1464c57",
+        "IQRA-R2-b1fa93479e803ed0f291"
+      ],
+      "hostile_check": "same-rule R6 active members fully contained; canary recovered independently."
+    }
+  ],
+  "bulk_reject_hostile_sample_target": 25,
+  "bulk_reject_sample_count": 25,
+  "bulk_reject_samples": [
+    {
+      "decision_atom_id": "R15ATOM-19aed4609c02d78882fb",
+      "source_family": "Afrobarometer",
+      "wave": "R9",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06X-0a6d0d3234069633",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-5237124978c8c669ca84",
+      "source_family": "Afrobarometer",
+      "wave": "R9",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06S-S14PAIR-b4a7d9ecb4d43396ae52",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-80872a9287a0829a00f6",
+      "source_family": "Afrobarometer",
+      "wave": "R9",
+      "rule_scope": "T10",
+      "raw_origin_id": "R11OBJ-Afrobarometer-R14-R9-Q86",
+      "pass": true,
+      "hostile_check": "T10 exact dimension count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-7a88abe5279b8aab49e3",
+      "source_family": "Afrobarometer",
+      "wave": "R9",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11COLL-ff15356374e88938",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-864020c178088cde9fb6",
+      "source_family": "Afrobarometer",
+      "wave": "R9",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11OBJ-Afrobarometer-R14-R9-Q86",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-e7073d338b7996782801",
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06X-004888b2ceb0ea33",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-040e9d26d9896b9b6d91",
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06S-S14PAIR-5625d012ddc16ab8fab7",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-f473f513f8a84dbc2d51",
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "rule_scope": "T10",
+      "raw_origin_id": "R11OBJ-ArabBarometer-R14-VIII-Q550A",
+      "pass": true,
+      "hostile_check": "T10 exact dimension count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-aaaabe6c3c473b3e9c45",
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11COLL-8aa0b657edc39863",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-4a63bca6e87ebc8ba432",
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11OBJ-ArabBarometer-R14-VIII-Q550A",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-6619bb34876f1b4c9d97",
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06X-05b9efe313fe9981",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-4200a0c5eb0c8e5b6fc5",
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06S-S14PAIR-2a0caf71544052e35805",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-1416bc84fe3a027aafe5",
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "rule_scope": "T08",
+      "raw_origin_id": "R11COLL-9b044e6a00a7b19c",
+      "pass": true,
+      "hostile_check": "T08 exact institution-class-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-be2fa18c610ace60c0b8",
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "rule_scope": "T08",
+      "raw_origin_id": "R11T08-961f65a0e42194cf",
+      "pass": true,
+      "hostile_check": "T08 exact institution-class-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-113f1259cf31e9afda75",
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "rule_scope": "T10",
+      "raw_origin_id": "R11OBJ-ASB-R14-W1-Q44_Q55",
+      "pass": true,
+      "hostile_check": "T10 exact dimension count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-8d119aff97f934e2c4a5",
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11OBJ-ASB-R14-W1-Q44_Q55",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-94c8855eea3fbf345da6",
+      "source_family": "EVS",
+      "wave": "1999",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06X-02c8fbbe28eaa17a",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-fa917b01bf316fec71ef",
+      "source_family": "EVS",
+      "wave": "1999",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06S-S14PAIR-1bae373d8f33dab99b05",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-88d416b58fbf7c74157c",
+      "source_family": "EVS",
+      "wave": "1999",
+      "rule_scope": "T08",
+      "raw_origin_id": "R11COLL-7f26073d6d9e567e",
+      "pass": true,
+      "hostile_check": "T08 exact institution-class-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-590d84a917adcba23e30",
+      "source_family": "EVS",
+      "wave": "1999",
+      "rule_scope": "T10",
+      "raw_origin_id": "R11OBJ-EVS-R14-1999-Q63",
+      "pass": true,
+      "hostile_check": "T10 exact dimension count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-86e8f1571ab793fd52c9",
+      "source_family": "EVS",
+      "wave": "1999",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11COLL-ff2cb76a380c99d6",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-fee2329aea0db35f6297",
+      "source_family": "EVS",
+      "wave": "1999",
+      "rule_scope": "T11",
+      "raw_origin_id": "R11OBJ-EVS-R14-1999-Q50",
+      "pass": true,
+      "hostile_check": "T11 exact role-count necessary-condition failure."
+    },
+    {
+      "decision_atom_id": "R15ATOM-0b3845e10a232bd4ffc6",
+      "source_family": "GSS",
+      "wave": "2010",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06X-00413ee62d36c1ce",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-19b0a23348579a861f46",
+      "source_family": "GSS",
+      "wave": "2010",
+      "rule_scope": "T06",
+      "raw_origin_id": "R11T06S-S14PAIR-6d0efe392616088452a4",
+      "pass": true,
+      "hostile_check": "T06 reject rests on exact Stage-A negative or exact Stage-B action mismatch, not missing authority."
+    },
+    {
+      "decision_atom_id": "R15ATOM-17ab4fe518b7da76d83a",
+      "source_family": "GSS",
+      "wave": "2010",
+      "rule_scope": "T08",
+      "raw_origin_id": "R11COLL-03f736449c25c010",
+      "pass": true,
+      "hostile_check": "T08 exact institution-class-count necessary-condition failure."
+    }
+  ],
+  "t06_stage_a_hostile_sample_count": 25,
+  "t06_stage_a_samples": [
+    {
+      "source_family": "Afrobarometer",
+      "wave": "R9",
+      "semantic_unit_id": "p2xsafe__11b0df96743582ee",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "semantic_unit_id": "p2xsafe__0c38b746fbb4aa04",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "semantic_unit_id": "p2xsafe__47f87a0749f11d1e",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "semantic_unit_id": "p2xsafe__6fcd4ea3ea865220",
+      "rr_norm_disposition": "NEGATIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "semantic_unit_id": "p2xsafe__b4380f705ec543f0",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "VIII",
+      "semantic_unit_id": "p2xsafe__f59d41fb0f98afc7",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "semantic_unit_id": "p2xsafe__9056e206933a0ccb",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "Asian Barometer",
+      "wave": "W1",
+      "semantic_unit_id": "p2xsafe__f3241e268307c93a",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__1a1c685ccc3daf0b",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__3de11d2a75a5135c",
+      "rr_norm_disposition": "NEGATIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__4f71f205ce4bb8a2",
+      "rr_norm_disposition": "NEGATIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__6c8ca5fa02e8ea22",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__8714dcb236d38f4a",
+      "rr_norm_disposition": "NEGATIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__a63d2279e3707744",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__c77877f4d1ee2f6d",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "1999",
+      "semantic_unit_id": "p2xsafe__f217afc3e68b1aa9",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "2010",
+      "semantic_unit_id": "p2xsafe__1a2557f20029ea50",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "2010",
+      "semantic_unit_id": "p2xsafe__388bdf5d7856c349",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "2010",
+      "semantic_unit_id": "p2xsafe__628a65a62c6e8691",
+      "rr_norm_disposition": "NEGATIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "2010",
+      "semantic_unit_id": "p2xsafe__94a945b89920f75f",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "2010",
+      "semantic_unit_id": "p2xsafe__d03c630d370ad6c9",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "South Asia",
+      "wave": "W1",
+      "semantic_unit_id": "p2xsafe__809ebb06e00de8cf",
+      "rr_norm_disposition": "NEGATIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "WVS",
+      "wave": "W4",
+      "semantic_unit_id": "p2xsafe__3723e29449b3a0c9",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "WVS",
+      "wave": "W4",
+      "semantic_unit_id": "p2xsafe__7ab1405242c46b33",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    },
+    {
+      "source_family": "WVS",
+      "wave": "W4",
+      "semantic_unit_id": "p2xsafe__fc05194dfd9537f5",
+      "rr_norm_disposition": "POSITIVE_RR_NORM",
+      "pass": true,
+      "hostile_check": "Disposition based on exact source semantics recorded in ledger; banned recall features not used as authority."
+    }
+  ],
+  "banned_authority_check": {
+    "pass": true,
+    "statement": "No lexical similarity, embeddings, shared driver/facet/domain, proximity, topic, equal-cardinality, or source co-membership was used as relation authority. Any recall metrics present in pack were treated only as hostile recall diagnostics."
+  },
+  "blocked_precision": {
+    "pass": true,
+    "blocked_reason_counts": {
+      "NO_GOVERNED_PRINCIPLE_APPLICATION_ROLE_ASSIGNMENT_FOR_NOVEL_RELATION": 149,
+      "NO_GOVERNED_GOAL_MEANS_COMMON_END_ROLE_ASSIGNMENT_FOR_NOVEL_RELATION": 153,
+      "NO_GOVERNED_COMMITMENT_COST_ROLE_TIE_FOR_NOVEL_RELATION": 153,
+      "T07_RESERVED_CENTRAL": 152,
+      "EXPLICIT_RECIPROCAL_ACTOR_RECIPIENT_REVERSAL_NOT_ESTABLISHED_FOR_NOVEL_RELATION": 155,
+      "PARALLEL_OBJECT_SHAPE_DOES_NOT_SUPPLY_GOVERNED_RECIPROCITY_OR_MATRIX_CELL_AUTHORITY": 145,
+      "ROLE_DIVERSITY_PRESENT_BUT_NARROW_COMMON_PROPOSITION_AND_COMPONENT_ASSIGNMENT_NOT_ESTABLISHED": 98,
+      "GOVERNED_CLASS_COPRESENCE_PRESENT_BUT_DIFFERENTIATION_RELATION_NOT_ESTABLISHED": 10,
+      "TARGET_AND_CONDITION_TERRAIN_PRESENT_BUT_GOVERNED_CELL_CROSSING_NOT_ESTABLISHED_FOR_NOVEL_MATRIX": 11
+    }
+  },
+  "reject_not_missing_authority_only": {
+    "pass": true,
+    "note": "All REJECT rows are T06 exact Stage-A/Stage-B failures or non-T06 explicit necessary-condition failures; insufficiency cases are BLOCKED."
+  },
+  "propagation_rule_count": 305,
+  "independent_overlay_validator": {
+    "status": "PASS",
+    "all_checks_pass": true
+  },
+  "exhaustive_final_crosscheck": {
+    "pass": true,
+    "retain_authorized_members_within_frozen": true,
+    "partial_accepts_full_explicit_partition": true,
+    "t07_exact": true
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "authority_ceiling_respected": {
+    "claimed_causality": false,
+    "claimed_cross_source_pooling": false,
+    "claimed_mechanism": false,
+    "claimed_mediation_strength": false,
+    "claimed_person_state": false,
+    "claimed_portability": false,
+    "claimed_route_activation": false,
+    "claimed_temporal_direction": false
+  },
+  "current_authorized_positive_consumer": {
+    "entry": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+    "lineage_preserved": [
+      "exact admission ref",
+      "exact FIELD FORGE relation ref",
+      "exact F1 identity",
+      "lineage_closure_fingerprint"
+    ],
+    "note": "This is the current adopted authority-bound descent for the GT2 relation lane. The same harness declares FORBIDDEN_PRODUCER_FAMILIES = {V553, V555, V556}, i.e. V555 is excluded from this lane by current adopted authority, not by accident.",
+    "public_entry": "run_current_r1c_e2b_actual_objects",
+    "published_object_semantic_class": "F1",
+    "source_stage": "M1_RELATION_V554_TO_V557",
+    "state": "REAL_CURRENT_POSITIVE_TERMINAL",
+    "v3_actor_transition": "DENY_ZERO_EFFECT",
+    "v554_v557_v558_publisher_family": "V554",
+    "v557_allowed_uses": [
+      "CONTEXT"
+    ],
+    "v557_decision_state": "ALLOW_CONTEXT_ONLY",
+    "v558_resolution_result": "RESOLUTION_COMPLETE",
+    "v558_resolver_allowed_uses": [
+      "CONTEXT"
+    ]
+  },
+  "information_conservation": {
+    "authority_refs_preserved": true,
+    "component_order_preserved": true,
+    "denominator_preserved": true,
+    "exact_counts_preserved": true,
+    "information_discarded_by_this_lane": "NONE",
+    "information_loss_declaration": "NONE__REFERENCE_PRESERVING",
+    "joint_domain_complete_36_of_36": true,
+    "minority_structure_preserved": true,
+    "permission_ceiling_narrowed_never_widened": true,
+    "replay_lineage_preserved": true,
+    "risk_set_preserved": true,
+    "risk_set_rows_preserved": 19210,
+    "source_identity_preserved": true,
+    "stereotype_or_mean_collapse": false,
+    "uncertainty_and_negative_refs_preserved": true,
+    "universe_preserved": true
+  },
+  "schema": "HQ221_V555_CONSUMER_AND_INFORMATION_CONSERVATION@1.0.0",
+  "v555_attempt": {
+    "canonical_route_identity": null,
+    "consumer_mutation_performed": false,
+    "consumer_owner": "rawlsing_next/m2_v555_atomic_route.py",
+    "control_proof": "Relabelling only the contract id makes the SAME positive F1/B1 and the SAME complete authority-correct route request produce ROUTE_CANDIDATE_AUTHORIZED, proving M2 is not globally broken and the block is exactly the contract-identity seam.",
+    "decision_state": "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE",
+    "exact_v554_f1_ref_returned": null,
+    "gap_classification": "EXISTING_DOWNSTREAM_CONSUMER_CONTRACT_GAP",
+    "inputs_supplied": {
+      "channel_structural_role_id": "V555-LCR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL",
+      "closure_bound_to_exact_f1": true,
+      "receiving_constraint_kind": "V555-RC-001-EXACT-STRUCTURAL-POSITION-REF",
+      "route_authority_id": "V555_MEDIATION_ROUTE_RULE_REGISTRY@1.0.0",
+      "route_rule_id": "V555-RR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL@1.0.0",
+      "route_shape_id": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER@1.0.0",
+      "upstream_b1_allowed_v555_structural_use": true,
+      "upstream_contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "upstream_m1_decision_state": "ELIGIBLE"
+    },
+    "not_an_implementation_gap_in_this_lane": true,
+    "reason": "M1 contract id mismatch",
+    "reproducible": true,
+    "root_cause": "M2 admits only the empirical/temporal M1 contract id M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0 (m2_v555_atomic_route.py:113 and :173). The relation basis is emitted by the relation-specific ingress under M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0. M2 contains no relation lane, no relation basis kind, and no import of the relation contract.",
+    "route_emitted": false,
+    "why_not_repairable_here": "Closing it requires changing frozen downstream M2 semantics, which this commission explicitly forbids."
+  }
+}

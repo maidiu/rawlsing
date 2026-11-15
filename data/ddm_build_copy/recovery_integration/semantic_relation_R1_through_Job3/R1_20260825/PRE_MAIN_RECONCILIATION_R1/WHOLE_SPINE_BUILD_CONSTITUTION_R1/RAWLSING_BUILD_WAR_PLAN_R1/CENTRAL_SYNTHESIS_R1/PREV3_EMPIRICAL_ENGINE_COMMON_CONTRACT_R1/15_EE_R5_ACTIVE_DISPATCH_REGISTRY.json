@@ -1,0 +1,23 @@
+{
+  "schema": "RAWLSING_EE_R5_ACTIVE_DISPATCH_REGISTRY@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "parent_hq_transition": "EE_R4_RETURN_FANIN",
+  "workers": [
+    {
+      "id": "EE-R5A",
+      "human_name": "WVS7 36-qid selection-critical response-semantic microcourt + proving-pair freeze",
+      "branch": "agent/rabochii-prev3-ee-r5a-wvs36-semantic-pair-freeze-r1",
+      "library_access": "NO_BY_DEFAULT",
+      "grain": "ADJUDICATE_ONLY_THE_EXACT_B03_W07_AFFIRMATIVE_NATIVE_36_QID_SET_FOR_CURRENT_QID_BOUND_RESPONSE_SEMANTIC_COMPLETENESS_AND_IF_AT_LEAST_TWO_PASS_FREEZE_THE_LEXICOGRAPHIC_FIRST_COMPLETE_TWO_QID_PROVING_PAIR_FOR_WVS7_OP003_OP006"
+    },
+    {
+      "id": "EE-R5B",
+      "human_name": "A/B/C 27-cell physical adapter requalification",
+      "branch": "agent/rabochii-prev3-ee-r5b-abc-27cell-physical-requalification-r1",
+      "library_access": "NO",
+      "grain": "REQUALIFY_THE_EXACT_3_CANDIDATE_X_9_OPERATION_PHYSICAL_ADAPTER_SURFACE_USING_THE_R4B_EXECUTABLE_OWNER_REGISTRY_AND_ALREADY_READY_COMMON_OPERATION_PROFILES_ONLY"
+    }
+  ],
+  "critical_path": "EE-R5A + EE-R5B -> exact 18-cell oracle/profile assembly -> final equal-work A/B/C bakeoff",
+  "parallel_non_gate": "EE-R4C nine-family response-semantic production queue"
+}

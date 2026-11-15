@@ -1,0 +1,43 @@
+{
+  "schema": "RAWLSING_FIABC_DISPOSITIVE_LAUNCHER_QUALIFICATION@1.4.0",
+  "status": "PASS__MECHANICAL_PREFLIGHT_CELL_RECEIPTS_ADMITTED__CANDIDATE_EXECUTION_STILL_FORBIDDEN",
+  "observed_stop": {
+    "work_root": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/FIABC-P2X-DISPOSITIVE-R1-RUN2",
+    "succession_producer_pass": true,
+    "driver_preflight_completed": true,
+    "launcher_stop": "FIABC_DISPOSITIVE_LAUNCH_BLOCKED: candidate cell artifacts appeared during preflight",
+    "classification": "LAUNCHER_FALSE_POSITIVE__MECHANICAL_PREFLIGHT_RECEIPTS_MISCLASSIFIED_AS_CANDIDATE_ARTIFACTS"
+  },
+  "authority": {
+    "driver_head": "bc832181b4284ac110d2be44fc83504e04de081e",
+    "driver_preflight_binding_behavior": "bind_initial_manifest_prefix writes preserved/skip receipts under cells/",
+    "mechanical_terminal_law": {
+      "execution_performed": false,
+      "measurement_performed": false
+    }
+  },
+  "repair": {
+    "commit": "68b36b3202141f855ca5cc5fa5e4200541fd8413",
+    "launcher_blob_sha1": "6382df7a6930d1def32ea3b555d9d0ef046d8472",
+    "removed": "blanket failure on any file under WORK_ROOT/cells",
+    "added": [
+      "allow only JSON files in source/candidate/receipts paths during preflight",
+      "require execution_performed is false",
+      "require measurement_performed is false",
+      "fail on any other file or receipt state"
+    ],
+    "measured_run_invocation_changed": false,
+    "protected_execution_code_changed": false
+  },
+  "static_assertions": {
+    "mechanical_receipt_check_present": true,
+    "requires_execution_false": true,
+    "requires_measurement_false": true,
+    "blanket_any_cell_file_rejection_absent": true,
+    "module_preflight_entrypoint_preserved": true,
+    "module_measured_entrypoint_preserved": true,
+    "measured_run_no_python_B": true,
+    "exact_execution_head": "bc832181b4284ac110d2be44fc83504e04de081e"
+  },
+  "holding": "RUN2 did not establish candidate execution merely by creating cell receipt files. Current driver preflight mechanically synthesizes frozen-law/preserved prefix receipts before measured run. The launcher now distinguishes those receipts from actual candidate execution."
+}

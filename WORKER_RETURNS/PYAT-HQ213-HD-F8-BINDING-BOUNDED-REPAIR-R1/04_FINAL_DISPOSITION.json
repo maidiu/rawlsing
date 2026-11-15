@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ213_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ213-HD-F8-BINDING-BOUNDED-REPAIR-R1",
+  "branch": "agent/rabochii-pyat-hq213-hd-f8-binding-repair-r1",
+  "startup_tip": "a946d431f84dfe263c3508089b5c78422683fd03",
+  "pushed_sha": "17737c09194bffd7f8f2f7d135f79d5f8ebfa7fc",
+  "remote_verified_equals_local": true,
+  "final_disposition": "HD_F8_BINDING_REPAIR_COMPLETE__READY_FOR_FINAL_HOSTILE_REREVIEW",
+  "the_two_blocking_defects": {
+    "repair_1_F1": "CLOSED. SINGLE_SOURCE_VALIDATION is now semantically binding. The root cause was deeper than the review stated: the binding discarded requested_source_universe_ref entirely, so there was no field to constrain against. The binding now carries it, validation requires query source == requested source, the requested source must be inside the bound F8 rule's source_universe_refs, and the enforced refinement is part of the replay identity. The A-bound/B-query case the review reported as returning EXACT_SUPPORTED now refuses.",
+    "repair_2_F2": "CLOSED. The declared public surface is now counted truthfully: six public callables, five of which return, enumerated as two source-touching powers plus a constructor, a delegating evaluator, a replay verifier, and a coverage guard that returns nothing. The delegating evaluator is declared a non-power with the precise reason the commission asked for. The claim 'exactly two' is no longer asserted anywhere."
+  },
+  "the_three_low_defects": {
+    "repair_3_F3": "CLOSED. The dead bound_to_requested_release False branch is removed AND made fail closed, and the adopted owner's single-release invariant that made it dead is now pinned by a test. A forged-receipt witness proves the binder no longer depends on that invariant for its own release safety.",
+    "repair_4_F4": "CLOSED. Docstring refusal count corrected from three to seven, the 'no third' wording replaced by the exact 'no third power over sources' claim, the conditioner AST scan widened from a chosen 8-name subset to the complete pinned 57-name attribute inventory, the currentness vocabulary closed against the adopted currentness contract's own states so no caller-defined positive vocabulary is accepted, and public API tests use the exact exported surface rather than dir().",
+    "repair_5_F5": "CLOSED. All 5 silent pytest.skip paths in the binding court removed; the write-terrain guards now fail loudly with explicit NOT-CERTIFIED messaging when an owner or the git facility is unavailable. Meta-guards in the repair court fail if any skip is reintroduced."
+  },
+  "no_defect_left_unrepaired": true,
+  "authority_and_law_answers": {
+    "authority_overreach": false,
+    "selection_or_ranking_leak": false,
+    "f8_transformation": false,
+    "owner_modified": false,
+    "architecture_reopened": false,
+    "new_authority_acquired": false,
+    "adopted_owners_byte_identical": true,
+    "seam_closes_the_HQ208_gap": true,
+    "seam_remains_real_non_transformative_non_selecting": true,
+    "environment": "reconstructed-equivalent as disclosed; mechanical results independently reproduced; not relabelled as governed certification",
+    "self_adoption": "none; no merge, no adoption of this lane by any other lane"
+  },
+  "preserved_from_the_review_that_must_not_be_discarded": [
+    "the binder closes the exact HQ208 gap with one thin same-grain adapter and no adopted-owner edit",
+    "all three adopted owners remain byte-identical, verified independently at two commits and in the shell",
+    "no selection, ranking, priority, preference, weight, first/best/latest/local power is reachable, proven by value inspection rather than by self-description",
+    "permutation invariance of both the replay identity and the exposed order",
+    "the COMPLETE/INCOMPLETE distinction is enforced more strictly than the literal commission text: set exposure requires COMPLETE in every mode, while single-source validation survives under INCOMPLETE",
+    "F8 is not transformed: identical evidence yields identical geometry and unchanged conditioner ids and algorithm identity",
+    "the law-drift guard refuses a changed F8 algorithm id and a changed rule hash rather than continuing silently",
+    "the refusal surface is self-owned with no foreign private type leaking"
+  ],
+  "evidence_summary": {
+    "commissioned_and_repair_courts": "190 collected, 190 passed, 0 skipped, deterministic across three hash seeds",
+    "negative_control": "the repair court fails 19 of its witnesses against the pre-repair binder extracted from the exact repair base, and passes 41 of 41 against the repaired binder",
+    "regression": "73 pre-existing slice files compared as sorted failure-identity sets: 139 ids before and after, delta zero in both directions, and none of them touch the binder or its owners",
+    "write_terrain": "exactly three files changed, all three adopted owners byte-identical"
+  },
+  "honest_caveats_for_the_rereviewer": [
+    "This lane's disposition is COMPLETE and READY FOR REREVIEW, not accepted. Acceptance requires the independent hostile rerereview the commission mandates.",
+    "The pre-existing 91 failures and 48 errors in the regression slice are unrelated to this binder and remain in the tree. They were deliberately NOT repaired: doing so would exceed the commissioned repair set.",
+    "The currentness vocabulary pin is derived from the adopted currentness contract's STATES. If that adopted contract's vocabulary is itself later revised, ACCEPTED_CURRENTNESS_RESULTS_ARE_ADOPTED will fail at import time rather than drift silently, but the vocabulary constants would need updating deliberately.",
+    "The binding gained a read-only import of objective_non_event_currentness_contract for its vocabulary constant. That file is an adopted module and was not modified, but it is a new dependency edge in the binder's import graph and is disclosed here for the rerereviewer to judge.",
+    "Repair 5 changes failure semantics in the binding court: paths that previously skipped now fail. That is the intent, but it means any environment lacking git will now see failures rather than skips.",
+    "The negative control used a shadow tree outside the repository with the pre-repair binder substituted. It proves the witnesses are sensitive to the defect; it is not a substitute for the rerereviewer's own independent reproduction."
+  ],
+  "bounds_observed": {
+    "no_raw_source": true,
+    "no_locator_discovery": true,
+    "no_warrant": true,
+    "no_live_C4": true,
+    "no_C7": true,
+    "no_actor_or_person_work": true,
+    "no_merge": true,
+    "no_broad_historical_import": true,
+    "no_clone_shared_store_law_followed": true,
+    "no_whole_branch_merge": true
+  },
+  "terminal": "HQ213_HD_F8_BINDING_REPAIR_RETURNED__FINAL_HOSTILE_REREVIEW_REQUIRED"
+}

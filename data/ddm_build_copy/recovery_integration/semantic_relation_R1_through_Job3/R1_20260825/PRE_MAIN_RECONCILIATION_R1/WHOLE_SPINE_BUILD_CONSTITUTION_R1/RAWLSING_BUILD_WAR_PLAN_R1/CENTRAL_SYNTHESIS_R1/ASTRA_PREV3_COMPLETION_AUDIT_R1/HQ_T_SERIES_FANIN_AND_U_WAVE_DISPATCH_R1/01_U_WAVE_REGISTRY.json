@@ -1,0 +1,53 @@
+{
+  "schema": "RAWLSING_PREV3_U_WAVE_REGISTRY@1.0.0",
+  "status": "FINAL_GENERIC_IMPLEMENTATION_QUALIFICATION_ACTIVE",
+  "hq_fanin_authority": "611cb6b18251615d34855e0da96df26d7164154c",
+  "workers": [
+    {
+      "id": "U01",
+      "branch": "agent/rabochii-prev3-w19-u01-t02-r4-batch-adapter-hostile-qualification-r1",
+      "commission_tip": "1a0f07ef73066a9379c14c8e8d112cf0817ad6ae",
+      "grain": "SDTF_R4_GENERIC_BATCH_ADAPTER_INDEPENDENT_HOSTILE_QUALIFICATION_R1_ONLY",
+      "library_access": "NO",
+      "input_return": "161b207f1efb6f8291c1dae3258bb710438f6b54",
+      "pass_wake": "HQ_ADOPTION_AND_CLOSURE_OF_T02_GENERIC_R4_BATCH_ADAPTER",
+      "blocker_effect": "EXACT_REPAIR_AND_FRESH_QUALIFICATION_ONLY",
+      "hard_forbidden": [
+        "NO_CONCRETE_RULE_MINTING",
+        "NO_RULE_CURRENT_SELECTION",
+        "NO_SOURCE_SEMANTIC_ADJUDICATION",
+        "NO_ACTOR_FACT",
+        "NO_TOPOLOGY",
+        "NO_V3",
+        "NO_OBL063"
+      ]
+    },
+    {
+      "id": "U02",
+      "branch": "agent/rabochii-prev3-w19-u02-t03-control-plane-hostile-qualification-r1",
+      "commission_tip": "1bf34c4571b2cd921af22e70c2bfeb7f56a9f2b8",
+      "grain": "PREV3_GENERIC_SOURCE_SEMANTIC_BATCH_CONTROL_PLANE_INDEPENDENT_HOSTILE_QUALIFICATION_R1_ONLY",
+      "library_access": "NO",
+      "input_return": "5f90f5b94b76babe37c289840afd89005f67dbfe",
+      "pass_wake": "HQ_ADOPTION_AND_CLOSURE_OF_T03_GENERIC_STRUCTURAL_BATCH_CONTROL_PLANE",
+      "blocker_effect": "EXACT_REPAIR_AND_FRESH_QUALIFICATION_ONLY",
+      "hard_forbidden": [
+        "NO_AUTOMATIC_SOURCE_SEMANTIC_INFERENCE",
+        "NO_AUTHORITY_ISSUANCE",
+        "NO_ACTOR_FACT",
+        "NO_CONCRETE_RULE",
+        "NO_TOPOLOGY",
+        "NO_V3",
+        "NO_OBL063"
+      ]
+    }
+  ],
+  "closure_gate": {
+    "requires": [
+      "U01_INDEPENDENT_QUALIFICATION_PASS_AND_HQ_ADOPTION",
+      "U02_INDEPENDENT_QUALIFICATION_PASS_AND_HQ_ADOPTION"
+    ],
+    "on_close": "GENERIC_IMPLEMENTATION_LAYER_CLOSED__NEXT_SUBSTANTIVE_WORK_CONSUMES_REAL_SOURCE_SEMANTIC_QUESTION_EVIDENCE_AND_RECONCILES_CURRENT_DESCENDANTS_OF_ASTRA_GAP_008_011_013_016_017",
+    "anti_drift_law": "NO_NEW_GENERIC_INFRASTRUCTURE_WAVE_MERELY_FOR_ELEGANCE_GENERALITY_OR_COMPLETENESS_AFTER_CLOSURE"
+  }
+}

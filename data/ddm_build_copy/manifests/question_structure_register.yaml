@@ -1,0 +1,57 @@
+status: green_question_structure_register_written
+row_count: 18792
+source_families:
+- Afrobarometer
+- Arab Barometer
+- Asian Barometer
+- EVS
+- GSS
+- "Latinobar\xF3metro"
+- LiTS
+- South Asia
+- WVS
+canonical_waves:
+- '1972'
+- '1973'
+- '1984'
+- '1990'
+- '1993'
+- '1995'
+- '2002'
+- '2006'
+- '2008'
+- '2010'
+- '2011'
+- '2016'
+- '2017'
+- '2024'
+- II
+- III
+- IV
+- R1
+- R5
+- R9
+- W1
+- W2
+- W3
+- W4
+- W5
+- W7
+- W8
+record_kinds:
+  codebook_row: 16564
+  source_column: 2228
+question_types:
+  single_choice: 16080
+  open_text: 1787
+  derived_or_reference: 457
+  split_block: 447
+  stem: 21
+manual_review_rows: 562
+output_file: /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/manifests/question_structure_register.csv
+notes:
+- This register merges the semantic driver atlas with file-level source structure.
+- access_pattern and access_expression are the forward-looking ingest hints for split
+  parents and children.
+- Don't know / refusal remain preserved at the structure layer and are not silently
+  erased.

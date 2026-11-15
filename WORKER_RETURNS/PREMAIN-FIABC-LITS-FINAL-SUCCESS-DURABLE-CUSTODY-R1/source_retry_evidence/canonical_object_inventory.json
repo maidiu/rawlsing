@@ -1,0 +1,52 @@
+{
+  "canonical_empirical_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+  "canonical_empirical_object_inventory": {
+    "AuthoritySnapshot@1.0.0": 24,
+    "DiscoveryAuthority@1.0.0": 1,
+    "DiscoveryResultReceipt@1.0.0": 50,
+    "EmpiricalFact@1.0.0": 60,
+    "EmpiricalPredicate@1.0.0": 35,
+    "EmpiricalQuerySpec@1.0.0": 63,
+    "EmpiricalUniverse@1.0.0": 1
+  },
+  "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+  "checkpoint_identity_sha256": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+  "exact_ref_count": 225,
+  "exact_ref_manifest_paths": [
+    "court/oracle_producers/LITS_I/current_standard_lits_oracle.json#/exact_ref_manifest",
+    "oracle_producer_verification_receipt.json#/current_observation_shaped_exact_ref_manifest"
+  ],
+  "execution_commit": "045d62709bb65084f3ae7b3dda062dfedfa942b4",
+  "frontier": {
+    "candidate_count": 50,
+    "coverage_state_counts": {
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    },
+    "empirical_fact_state_counts": {
+      "SUPPORTED": 60
+    },
+    "query_role_count": 77,
+    "typed_state_counts": {
+      "DISCOVERED_RESULT_SUPPORTED": 49,
+      "VALID_EMPTY": 1
+    }
+  },
+  "full_preimage_packet": {
+    "encoding": "Canonical public-object preimages plus exact preimage fragments",
+    "includes": [
+      "EmpiricalFact@1.0.0",
+      "EmpiricalQuerySpec@1.0.0",
+      "EmpiricalPredicate@1.0.0",
+      "AuthoritySnapshot@1.0.0",
+      "DiscoveryAuthority@1.0.0",
+      "DiscoveryResultReceipt@1.0.0",
+      "EmpiricalUniverse@1.0.0"
+    ],
+    "json_pointer": "/material/canonical_empirical_object_closure",
+    "path": "court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json"
+  },
+  "schema": "FIABC_LITS_CANONICAL_EMPIRICAL_OBJECT_INVENTORY@1.0.0",
+  "status": "PASS",
+  "structural_admission_object_count": 0
+}

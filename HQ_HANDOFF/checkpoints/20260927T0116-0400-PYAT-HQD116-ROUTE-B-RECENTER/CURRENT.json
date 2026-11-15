@@ -1,0 +1,57 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260927T0116-0400-PYAT-HQD116-ROUTE-B-RECENTER",
+  "status": "SEALED__HQD116_CONTROL_RECONCILED__FF02_SEMANTIC_GRAIN_CLOSED__D2_DEFERRED__ROUTE_B_COMPOSITOR_NEXT",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "observed_control_head_before_checkpoint": "bc207de1db6c1e48b81c7b27b2633ad1177077ff",
+  "architecture_program_decision": "HQD-2026-09-26-112",
+  "route_selection_decision": "HQD-2026-09-26-109",
+  "r2_1_baseline_decision": "HQD-2026-09-26-115",
+  "current_forward_program_decision": "HQD-2026-09-27-116",
+  "selected_pre553_physical_route": "B__SOURCE_BACKED_VIRTUAL_C11",
+  "implementation_authorized": false,
+  "source_execution_authorized": false,
+  "prev3_v3_implementation_authorized": false,
+  "constitutive_control_room_join": "PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md",
+  "primary_succession_handoff_path": "PYAT_CONTROL_ROOM/06_BROWSER_HQ_BOOTSTRAP.md",
+  "active_task": "PYAT_ROUTE_B_PRODUCTION_COMPOSITOR_R1__AWAITING_EXPLICIT_IMPLEMENTATION_COMMISSION",
+  "active_workers": [],
+  "dispatch_authorized": true,
+  "dispatch_scope": "BOUNDED_ROUTE_B_COMPOSITOR_SOURCE_FREE_IMPLEMENTATION_ONLY_AFTER_EXPLICIT_COMMISSION__NO_FIELD_FORGE_MUTATION__NO_RAW_SOURCE",
+  "ff02": {
+    "semantic_court": "CLOSED_AT_CURRENT_REQUIRED_GRAIN__49_POSITIVE_PLUS_1_VALID_EMPTY",
+    "exact_relation_object_preimage": "DEFERRED_PENDING_D2",
+    "relation_objects_instantiated": false,
+    "relation_current_selected": false,
+    "prev3_target_use_authorized": false,
+    "prev3_relation_admitted": false
+  },
+  "d2": {
+    "status": "DEFERRED",
+    "commission_tip": "59a6ed87fd7b91934164848a48a7a4ce86e95e4e",
+    "blocks_route_b_pipeline": false,
+    "blocks_exact_lits_relation_instantiation": true
+  },
+  "dependency_graph": {
+    "ROUTE_B_COMPOSITOR": {
+      "status": "READY_FOR_EXPLICIT_IMPLEMENTATION_COMMISSION",
+      "source_free_first": true,
+      "field_forge_mutation": false,
+      "pass_wake": "SEPARATE_LITS_I_WVS7_LIVE_SOURCE_PROVING_PAIR"
+    },
+    "FIELD_FORGE_REFINEMENT": {
+      "status": "ASLEEP_UNTIL_ACTUAL_LIVE_B_PACKET_PROVES_FIELD_FORGE_OWNED_GAP"
+    },
+    "LITS_D2": {
+      "status": "DEFERRED_NONCRITICAL_ROUTE_B_RESIDUAL",
+      "wake": "HQ_RESUMES_EXACT_LITS_RELATION_MATERIALIZATION_CURRENT_SELECTION"
+    },
+    "PREV3_TO_V3": {
+      "status": "DELIBERATELY_DEFERRED",
+      "prerequisites": [
+        "SOCIOLOGICAL_WORLD_MATURITY"
+      ]
+    }
+  }
+}

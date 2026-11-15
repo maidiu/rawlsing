@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_CURRENT_RECEIVING_SOURCEFREE_ASSEMBLY_V1",
+  "receiving_base": "9809203fd915a84bae056a67210e9213879840db",
+  "assembly": [
+    {
+      "path": "rawlsing_next/pre553_universal_world_binding.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "3b4a5c3706c5f63a6293feb9cc76a0389767412bfd51eaa8f5e0769b8a2a3ed1"
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_world_binding.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "bfb36cf263e636c17925ce15727b5b1d4715ed7029553a8bddca9d91b3fe3732"
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "9687abc2ed76fb4b7d8b0bf81a6999da6585ddff4a654e935a3650fdc9b5866a"
+    },
+    {
+      "path": "rawlsing_next/pre553_learned_world_composition.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "e1b726e71f369ebde8ab658cfcf9426e6f6ace9d022f9438227a91560139d2d0"
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_learned_consumer.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "4879e56b85bd9018b8fd6e66df948a0ad533f5dbad9617b849e02693bbfc2467"
+    },
+    {
+      "path": "rawlsing_next/pre553_universal_empirical_extension.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "58178b96d419533c847d8c8ab5f68d53b84e7683efb342c77415f519e68abca2"
+    },
+    {
+      "path": "rawlsing_next/pre553_universal_evidence_binding.py",
+      "exact_source_commit": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+      "sha256": "cd381932433aea1bd2dce84a2c5b689131f7bb63cf732be96707f732992f61b3"
+    },
+    {
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "exact_source_commit": "e6f7b04c49772e07c20ad36f65b9b270a28a49cf",
+      "sha256": "f584f40e12128cfb518438de66a0c765dfc13a8c0bacd730a82b70ac9beb5c7d"
+    },
+    {
+      "path": "rawlsing_next/tests/test_universal_workload_custody.py",
+      "exact_source_commit": "e6f7b04c49772e07c20ad36f65b9b270a28a49cf",
+      "sha256": "df082fc151e0b856a43d2d214834ff7490fcac4f745e981bf30d55b98d27ff6a"
+    }
+  ],
+  "behavior": "Existing R03 compiler/lowerer + R08 evidence + R05 native graph/learned results + R06 pinned actual P41 consumer; R04 pending checkpoint recovery retained",
+  "test_receipts": {
+    "receiving_plus_seven_lineage_files": "17 existing R06 PASS in202.09s; junit.xml/pytest.log",
+    "after_R04_resume_reuse": "8 PASS in21.80s; resume-consumer.xml/log, includes6existingcustody+actualconsumer+severance/restore"
+  },
+  "invariants": "All nine imported files byte-exact from existing candidate lineages; no rebuilt compiler or new science; current B5/M2 lifecycle/release preserved",
+  "review": "Prior exact owners independently accepted; new clean receiving assembly is HQ test evidence, not independently accepted yet",
+  "prior_R06_changed_receiving_review": "61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2",
+  "holds": [
+    "No protected receiving/merge",
+    "No original source or issuance/science",
+    "No CONTEXT structural/cross-unit pooling/measured temporal grant",
+    "No R09 host boundary/CI deployment",
+    "No N11/N12/Sorok/J52W52"
+  ],
+  "next": "Existing distinct reviewer checks only new clean-base/retained-resume combination; reuse all unchanged prior acceptance."
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ155-DUAL-C1-03-NARROW-CORRECTIONS-R1",
+  "status": "DUAL_REVIEW_CHANGES_REQUIRED__C1_03A_R4_BOUND__C1_03R_R2_BOUND__C1_03_JOIN_BLOCKED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "predecessor_checkpoint": "20261001-PYAT-HQ154-C1-03-DUAL-INDEPENDENT-REVIEW-BIND-R1",
+  "predecessor_handoff_commit": "e0b86b70a3b55e148af02dce03a824add536bb44",
+  "governing_decision": "HQD-2026-10-01-155",
+  "c1_03a": {
+    "review_return": "3ebde6d268abcb005a48e42eb6d0b52ec4a3c025",
+    "disposition": "CHANGES_REQUIRED",
+    "blocker": "C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001",
+    "correction_branch": "agent/opencode-pyat-hq155-c1-03a-refusal-authenticity-r4",
+    "correction_commission_tip": "0b03f1d44d25a4476779f3afa7dd0412cfc4debc",
+    "launch_surface": "OPENCODE__SPACE_BUNNY_FREE"
+  },
+  "c1_03r": {
+    "review_return": "380a79cde63d9ee239e5812f89283e997e16da96",
+    "disposition": "CHANGES_REQUIRED",
+    "blockers": [
+      "C1-03R-A-RVW-001",
+      "C1-03R-A-RVW-002",
+      "C1-03R-A-RVW-003",
+      "C1-03R-A-RVW-004"
+    ],
+    "correction_branch": "agent/opencode-pyat-hq155-c1-03r-owner-failclosed-r2",
+    "correction_commission_tip": "88d94930179528ce37daac854a7f6a78f7f0f308",
+    "launch_surface": "OPENCODE__SPACE_BUNNY_FREE"
+  },
+  "c1_03_join": {
+    "status": "BLOCKED",
+    "prerequisites": [
+      "HQ_ADOPTED_C1_03A",
+      "HQ_ADOPTED_C1_03R",
+      "AT17_ALREADY_ADOPTED"
+    ]
+  },
+  "c5_n5": {
+    "status": "ADOPTED_HQD_151"
+  },
+  "c7_n8e": {
+    "status": "BLOCKED_C4_CURRENT_PRODUCTION_REQUIRED",
+    "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001"
+  },
+  "next_action": "USER_LAUNCH_C1_03A_R4_AND_C1_03R_R2_SPACE_BUNNY_IN_PARALLEL__THEN_NARROW_INDEPENDENT_REREVIEWS",
+  "prohibitions": [
+    "NO_REOPEN_G5_AT15_AT16_C1_02",
+    "NO_REOPEN_ASTRA_OPTION_A_SEALED_SUCCESSOR_AT18",
+    "NO_C1_03_JOIN",
+    "NO_C1_R",
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_WITHOUT_EXACT_LATER_WARRANT",
+    "NO_C7_IMPLEMENTATION",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

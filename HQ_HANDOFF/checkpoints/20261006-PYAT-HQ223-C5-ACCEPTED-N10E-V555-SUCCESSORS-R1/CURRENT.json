@@ -1,0 +1,35 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261006-PYAT-HQ223-C5-ACCEPTED-N10E-V555-SUCCESSORS-R1",
+  "decision": "HQD-2026-10-06-223",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "c5": {
+    "status": "ACCEPTED_AT_REVIEWED_GT2_GRAIN",
+    "candidate": "e2ccdb5f5127ea539cb4117a898f37871c6c9c24",
+    "review": "e14db091fa5bc562b1010703b31627b33a4ae8cd"
+  },
+  "lanes": [
+    {
+      "id": "F7_FINAL_AUTHORITY_CLOSURE",
+      "status": "EXISTING__NO_PUSHED_RETURN_VISIBLE",
+      "branch": "agent/rabochii-pyat-hq222-f7-final-authority-closure-r1",
+      "remote_head": "e88cfeb10c8e2099093125fb31b497906341c0cc",
+      "model_intelligence": "LongCat 2.5 Preview Free — High"
+    },
+    {
+      "id": "N10E_EXACT_DETERMINANT_LIFECYCLE_REPAIR",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq223-n10e-exact-determinant-lifecycle-repair-r1",
+      "commission_tip": "988325dd9f65b70765eba7053057536a4b3fda84",
+      "model_intelligence": "LongCat 2.5 Preview Free — High"
+    },
+    {
+      "id": "V555_GT2_SIG004_AUTHORITY",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq223-v555-gt2-sig004-authority-r1",
+      "commission_tip": "66a2b82c13ec2b39a80e18a069f64f3277bf90c0",
+      "model_intelligence": "GPT-5.6 Sol High"
+    }
+  ],
+  "next_action": "RUN_THREE_LANES_IN_PARALLEL__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

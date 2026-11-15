@@ -1,0 +1,42 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261006-PYAT-HQ225-FOUR-PARALLEL-SUCCESSORS-R1",
+  "decision": "HQD-2026-10-06-225",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "lanes": [
+    {
+      "id": "F7_RESOLVER_AUTHENTICITY_REPAIR",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq225-f7-resolver-authenticity-repair-r1",
+      "commission_tip": "cfc023818ccf3a954db0e116a7e045c467375891",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "N10E_OWNER_AUTHENTIC_LIFECYCLE_REPAIR",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq225-n10e-owner-authentic-lifecycle-repair-r1",
+      "commission_tip": "b23e420f57fc385021cabbee89b7a554468cf832",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "V555_GT2_POSITION_BINDING_AUTHORITY",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq225-v555-gt2-position-binding-authority-r1",
+      "commission_tip": "2c4a3e66afe1182b7b06ad0745948065117507cf",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "V555_GT2_B1_ROUTE_CONSUMPTION_AUTHORITY",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq225-v555-gt2-b1-route-consumption-authority-r1",
+      "commission_tip": "d55dd69142b0557eafb8f28e5e2cdf6215149a00",
+      "model_intelligence": "GPT-5.6 Sol High"
+    }
+  ],
+  "deferred": [
+    "V555_GT2_STRUCTURAL_CHANNEL_AUTHORITY",
+    "V555_GT2_ROUTE_STATIC_CLOSURE_AUTHORITY",
+    "V555_IMPLEMENTATION"
+  ],
+  "next_action": "RUN_ALL_FOUR_IN_PARALLEL__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

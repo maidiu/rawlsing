@@ -1,0 +1,38 @@
+{
+  "schema": "EE_P2R6B_HQ_ADOPTED_BINDING_REGISTRY_SNAPSHOT@1.0.0",
+  "status": "ONE_ACTIVE_POSITIVE_BINDING__EXACT_SCOPE_SOURCE_AUTHORITY_EPOCH",
+  "snapshot_ref": {
+    "kind": "HQAdoptedBindingRegistrySnapshot",
+    "object_id": "urn:rawlsing:prev3:p2r6b:hq-binding-registry-snapshot:sha256:6f2eb0f93576b6ea2b9360fdb7c437f9f1810056494149c64b03d2c7834d03c4",
+    "content_hash": "6f2eb0f93576b6ea2b9360fdb7c437f9f1810056494149c64b03d2c7834d03c4"
+  },
+  "identity_law": "SHA256_CANONICAL(identity_material)",
+  "identity_material": {
+    "schema": "EE_P2R6B_HQ_ADOPTED_BINDING_REGISTRY_SNAPSHOT_MATERIAL@1.0.0",
+    "snapshot_scope": {
+      "frozen_scope_anchor_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
+      "uniqueness_key": "659a8929df10b31da4c82eaf5a6b8bd74234b6f21430422beff186cab804fc16"
+    },
+    "active_positive_bindings": [
+      {
+        "kind": "ReleaseRealizationBinding@1.0.0",
+        "object_id": "urn:rawlsing:prev3:p2r6j:release-realization-binding:sha256:a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+        "content_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+        "adopted_record_path": "WORKER_RETURNS/EE-P2R6J/04_PROPOSED_ACTIVE_RUNTIME_BINDING_RECORD.json",
+        "adopted_record_blob_sha1": "4ac8cd48aac62600e648ff9692488796c51c826f",
+        "production_proof_return": "ab7e7f6e764eba43e85fe5c8629fee6cc0ba2a5c"
+      }
+    ],
+    "active_positive_binding_count": 1
+  },
+  "supersedes_snapshot_ref": {
+    "kind": "HQAdoptedBindingRegistrySnapshot",
+    "object_id": "urn:rawlsing:prev3:p2r6b:hq-binding-registry-snapshot:sha256:209cca7eb759c8fc2df265a0673d180f699381b164e80b88acfa5199438e2b56",
+    "content_hash": "209cca7eb759c8fc2df265a0673d180f699381b164e80b88acfa5199438e2b56"
+  },
+  "interpretation": "POST_POSITIVE_R6A_ADOPTION_REGISTRY_FACT__EXACTLY_ONE_ACTIVE_RUNTIME_CONSUMABLE_BINDING",
+  "p2x_executed": false,
+  "post_outcome_mutation": false
+}

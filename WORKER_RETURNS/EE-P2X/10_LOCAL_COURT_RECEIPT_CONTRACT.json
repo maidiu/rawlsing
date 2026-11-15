@@ -1,0 +1,341 @@
+{
+  "schema": "RAWLSING_EE_P2X_LOCAL_COURT_RECEIPT_CONTRACT@1.0.0",
+  "authority_class": "PROPOSED_FOR_HQ_ADOPTION__NON_OPERATIVE_UNTIL_ADOPTED",
+  "layout": {
+    "root": "WORKER_RETURNS/EE-P2X/LOCAL_COURT",
+    "court_run_manifest": "00_COURT_RUN_MANIFEST.json",
+    "cell_receipts": "cells/{SOURCE}__{CANDIDATE}.json",
+    "learned_receipts": "learned/{SOURCE}__{CANDIDATE}.json",
+    "deletion_receipts": "deletion/{SOURCE}__{CANDIDATE}.json",
+    "persistence_receipts": "persistence/{SOURCE}__A.json",
+    "failure_receipts": "failures/{SOURCE}__{CANDIDATE_OR_COMMON}__{KIND}.json",
+    "final_verification": "90_FINAL_VERIFICATION_RECEIPT.json"
+  },
+  "court_run_manifest": {
+    "required": [
+      "schema",
+      "hq_handoff_commit",
+      "lock1_manifest_blob",
+      "lock2_hash",
+      "physical_host_identity_sha256",
+      "runtime",
+      "coverage",
+      "executed_stage_ids",
+      "source_metric_pooling",
+      "ranking_or_selection"
+    ],
+    "coverage_order": [
+      "LITS_I/A",
+      "LITS_I/B",
+      "LITS_I/C",
+      "WVS7/A",
+      "WVS7/B",
+      "WVS7/C"
+    ],
+    "coverage_states": [
+      "QUALIFYING_CELL_COMPLETE",
+      "AUTHORIZED_STOP",
+      "PRESERVED_FAILURE"
+    ],
+    "forbidden_executed_stage_ids": [
+      "LITS_I_A_FIRST_BUILD",
+      "LITS_I_B_CACHELESS_C11"
+    ],
+    "source_metric_pooling": "FORBIDDEN",
+    "ranking_or_selection": false
+  },
+  "metric_slot": {
+    "required": [
+      "state",
+      "value",
+      "unit",
+      "reason"
+    ],
+    "states": [
+      "MEASURED",
+      "PRESERVED_MEASURED",
+      "NOT_CAPTURED_PRESERVED_STAGE",
+      "NOT_APPLICABLE_BY_FROZEN_COURT",
+      "UNAVAILABLE_ON_HOST_WITH_REASON",
+      "NOT_REACHED_AUTHORIZED_STOP"
+    ],
+    "law": "MEASURED/PRESERVED_MEASURED require numeric value. Nonmeasured states require null plus reason. NOT_CAPTURED_PRESERVED_STAGE is restricted to repetition-forbidden preserved stages. NOT_REACHED_AUTHORIZED_STOP is legal only in an attempted cell with disposition AUTHORIZED_STOP."
+  },
+  "source_candidate_receipt": {
+    "schema": "RAWLSING_EE_P2X_SOURCE_CANDIDATE_RECEIPT@1.0.0",
+    "required": [
+      "schema",
+      "source",
+      "candidate",
+      "sequence_index",
+      "authority",
+      "host",
+      "runtime",
+      "bindings",
+      "event_ordinals",
+      "oracle",
+      "parity",
+      "performance_admission",
+      "metrics",
+      "behaviors",
+      "outputs",
+      "preserved_stage_consumption",
+      "disposition",
+      "ranking_or_selection"
+    ],
+    "bindings_required": [
+      "source_sha256",
+      "candidate_owner_blob",
+      "execution_seam_blob",
+      "projection_identity",
+      "runtime_catalog_identity",
+      "candidate_provider_identity"
+    ],
+    "event_ordinals_required": [
+      "oracle_frozen",
+      "candidate_output_first",
+      "parity_complete",
+      "performance_first_admitted"
+    ],
+    "oracle_required": [
+      "candidate_neutral",
+      "candidate_defined",
+      "oracle_identity_sha256"
+    ],
+    "parity_required": [
+      "semantic",
+      "exactref_identity",
+      "replay",
+      "integrity_fail_closed",
+      "frontier_typed_negative"
+    ],
+    "parity_states": [
+      "PASS",
+      "FAIL",
+      "NOT_RUN_AUTHORIZED_STOP"
+    ],
+    "performance_admission": [
+      "ADMITTED_AFTER_PARITY",
+      "NOT_ADMITTED"
+    ],
+    "metric_names": [
+      "source_open_count",
+      "source_decode_count",
+      "source_reread_count",
+      "bytes_read",
+      "bytes_written",
+      "bytes_rewritten",
+      "build_or_open_wall_ns",
+      "cpu_user_ns",
+      "cpu_system_ns",
+      "peak_rss_bytes",
+      "peak_scratch_bytes",
+      "peak_scratch_file_count",
+      "durable_authoritative_bytes",
+      "durable_transformed_regenerable_bytes",
+      "cold_i03_latency_ns",
+      "warm_i03_latency_ns",
+      "i05_learned_production_wall_ns",
+      "i05_learned_production_throughput_per_s",
+      "repeated_research_source_reread_count",
+      "repeated_research_source_redecode_count",
+      "delete_rebuild_wall_ns",
+      "source_release_invalidation_recomputation_units",
+      "semantic_authority_invalidation_recomputation_units",
+      "fresh_process_replay_wall_ns",
+      "audit_wall_ns",
+      "persistent_bytes_removable_with_zero_information_loss",
+      "implementation_moving_parts_count"
+    ],
+    "behavior_required": [
+      "stale_cache",
+      "corrupt_cache",
+      "interruption_session_recovery"
+    ],
+    "output_required": [
+      "exact_output_identity",
+      "product_identity",
+      "semantic_identity",
+      "replay_identity"
+    ],
+    "laws": [
+      "oracle_frozen < candidate_output_first when candidate output exists",
+      "performance_first_admitted is null unless every parity dimension PASS",
+      "if performance admitted then parity_complete < performance_first_admitted",
+      "candidate_defined must be false; candidate_neutral must be true",
+      "runtime and source/candidate owner/lock identities must equal frozen expectations",
+      "all six source/candidate positions must be covered by either cell receipt or authorized failure; WVS7/C must never have a cell execution receipt",
+      "Every attempted cell, including a failed/stopped cell, has a source-candidate receipt; stopped cells type unreached slots as NOT_REACHED_AUTHORIZED_STOP rather than omitting or fabricating them."
+    ]
+  },
+  "lits_learned_receipt": {
+    "schema": "RAWLSING_EE_P2X_LITS_LEARNED_PRODUCT_RECEIPT@1.0.0",
+    "required": [
+      "source",
+      "candidate",
+      "fresh_execution",
+      "product_origin",
+      "historic_product_substitution",
+      "candidate_count",
+      "independently_executed_roles",
+      "terminal_counts",
+      "product_sha256",
+      "semantic_replay_hash",
+      "execution_receipt_identity"
+    ],
+    "fixed": {
+      "source": "LITS_I",
+      "fresh_execution": true,
+      "product_origin": "CURRENT_CELL_EXECUTION",
+      "historic_product_substitution": false,
+      "candidate_count": 50,
+      "independently_executed_roles": 77,
+      "terminal_counts": {
+        "EVALUATED_SUPPORTED": 49,
+        "EVALUATED_VALID_EMPTY": 1
+      },
+      "product_sha256": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+      "semantic_replay_hash": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5"
+    },
+    "law": "historical ASTRA-D04-R2 product may be an oracle only; it may never be substituted as current-cell output"
+  },
+  "wvs_learned_receipt": {
+    "schema": "RAWLSING_EE_P2X_WVS_LEARNED_PRODUCT_RECEIPT@1.0.0",
+    "required": [
+      "source",
+      "candidate",
+      "lock2_hash",
+      "discovery_authority_hash",
+      "candidate_hashes",
+      "family_shape",
+      "predicate_hashes",
+      "query_hashes",
+      "frozen_before_outcome_access",
+      "altered_after_outcome_access",
+      "synthetic_fallback",
+      "product_identity",
+      "semantic_identity",
+      "replay_identity"
+    ],
+    "candidate_domain": [
+      "A",
+      "B"
+    ],
+    "laws": [
+      "candidate_hashes/predicate_hashes/query_hashes must byte-for-byte equal frozen expectations",
+      "family shape must equal 10/1/10/25",
+      "frozen_before_outcome_access=true",
+      "altered_after_outcome_access=false",
+      "synthetic_fallback=false",
+      "when both WVS A and B qualify, product/semantic/replay identities must be equal"
+    ]
+  },
+  "deletion_regeneration_receipt": {
+    "schema": "RAWLSING_EE_P2X_DELETION_REGEN_RECEIPT@1.0.0",
+    "applies_to": [
+      "B",
+      "C"
+    ],
+    "required": [
+      "source",
+      "candidate",
+      "deleted_classes",
+      "retained_classes",
+      "c11_reachable",
+      "i03_reachable",
+      "i05_reachable",
+      "fresh_process_regeneration",
+      "before",
+      "after",
+      "identity_equivalent"
+    ],
+    "fixed_deleted_classes": [
+      "P4_OPTIONAL_CACHE",
+      "P5_TRANSIENT_COMPILER_STATE"
+    ],
+    "fixed_retained_classes": [
+      "P1_SOURCE",
+      "P2_GOVERNED_SEMANTIC_AND_LEARNED_PRODUCTS",
+      "P3_REPLAY_PROVENANCE_DETERMINANTS"
+    ],
+    "identity_fields": [
+      "product",
+      "semantic",
+      "replay"
+    ],
+    "law": "before and after identities must be exact-equal; all C11/I03/I05 reachability booleans true; no deletion receipt required when an authorized pre-product failure terminates the cell"
+  },
+  "a_persistence_information_receipt": {
+    "schema": "RAWLSING_EE_P2X_A_PERSISTENCE_INFORMATION_RECEIPT@1.0.0",
+    "required": [
+      "source",
+      "candidate",
+      "contains_irrecoverable_information",
+      "information_authority",
+      "operational_persistence_value",
+      "rebuild_cost",
+      "expensive_to_rebuild_used_as_authority_basis"
+    ],
+    "candidate": "A",
+    "information_authority_states": [
+      "AUTHORITATIVE_INFORMATION",
+      "REGENERABLE_REPRESENTATION",
+      "MIXED__EXPLICITLY_ITEMIZED"
+    ],
+    "law": "expensive_to_rebuild_used_as_authority_basis=false; if contains_irrecoverable_information=false then information_authority must be REGENERABLE_REPRESENTATION"
+  },
+  "failure_stop_receipt": {
+    "schema": "RAWLSING_EE_P2X_FAILURE_STOP_RECEIPT@1.0.0",
+    "kinds": [
+      "CANDIDATE_LOCAL_CORRECTNESS_FAILURE",
+      "SOURCE_SPECIFIC_CANDIDATE_FAILURE",
+      "COMMON_SOURCE_AUTHORITY_FAILURE",
+      "WVS7_C_CURRENT_PORTABILITY_FAILURE",
+      "INTERRUPTED_PARTIAL_EXECUTION",
+      "PARITY_ORACLE_FAILURE"
+    ],
+    "required": [
+      "source",
+      "candidate",
+      "kind",
+      "blocking_scope",
+      "disposition",
+      "evidence_paths",
+      "later_lawful_cells_suppressed",
+      "synthetic_fallback_used"
+    ],
+    "blocking_scopes": [
+      "CANDIDATE_ONLY",
+      "SOURCE_ONLY",
+      "COURT_UNTIL_RESUME",
+      "NONBLOCKING_PRESERVED_CANDIDATE_EVIDENCE"
+    ],
+    "laws": [
+      "later_lawful_cells_suppressed=false for candidate-local/source-specific/WVS-C failures",
+      "synthetic_fallback_used=false always",
+      "WVS7_C_CURRENT_PORTABILITY_FAILURE exact disposition is WVS7_C__CURRENT_PORTABILITY_FAILURE and is nonblocking",
+      "COMMON_SOURCE_AUTHORITY_FAILURE and INTERRUPTED_PARTIAL_EXECUTION prevent PASS and become the final smallest failure disposition",
+      "PARITY_ORACLE_FAILURE may be candidate-local or source-local, but no performance is admissible for the affected scope",
+      "A failure receipt supplements rather than replaces the source-candidate receipt for any cell that was actually attempted."
+    ]
+  },
+  "final_verifier": {
+    "pass_terminal": "PASS__FINAL_TWO_SOURCE_P2_EVIDENCE_COMPLETE",
+    "failure_terminal": "EXACT_SMALLEST_BLOCKER_OR_FAILURE_DISPOSITION",
+    "never_manufacture_missing_evidence": true,
+    "forbidden_output_keys": [
+      "aggregate_score",
+      "magic_score",
+      "score",
+      "scores",
+      "ranking",
+      "rank",
+      "winner",
+      "selected_candidate",
+      "selection",
+      "recommendation",
+      "cross_universe_metric_pool",
+      "pooled_metrics"
+    ]
+  }
+}

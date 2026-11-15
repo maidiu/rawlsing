@@ -1,0 +1,165 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ209-OPERATING-DISCIPLINE-LIVE-STATE-R1",
+  "status": "HQ_OPERATING_DISCIPLINE_BOUND__F7_HD_V556_PUSHED_PENDING_INTAKE__R9_C1_ACTIVE_NOT_RETURNED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head_pre_checkpoint": "4f4a531c3a28bbc1224ef678204489866ef1c09d",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "decision": "HQD-2026-10-05-209",
+  "decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ209_OPERATING_DISCIPLINE_AND_LIVE_STATE_CORRECTION_R1.md",
+  "operating_law": "PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md",
+  "worker_state_source_of_truth": "DIRECT_ORIGIN_BRANCH_HEAD",
+  "lifecycle_labels": [
+    "NEW__NEEDS_LAUNCH",
+    "EXISTING__ACTIVE_NOT_YET_RETURNED",
+    "RETURNED_LOCALLY__PUSH_REQUIRED__EXPLICIT_LOCAL_TERMINAL_EVIDENCE_ONLY",
+    "PUSHED__READY_FOR_HQ_INTAKE",
+    "ADOPTED__CLOSED"
+  ],
+  "status_identity_required": [
+    "AGENT",
+    "MODEL_INTELLIGENCE",
+    "MACHINE_WHEN_KNOWN",
+    "WORKTREE_WHEN_KNOWN",
+    "BRANCH",
+    "EXACT_STARTUP_OR_RETURN_TIP"
+  ],
+  "local_checkout_topology": "ONE_CANONICAL_CLONE_OBJECT_STORE_PER_MACHINE__ONE_ISOLATED_SPARSE_WORKTREE_PER_CONCURRENT_BRANCH",
+  "pending_returns": [
+    {
+      "id": "F7_TEMPORAL_CONTRACT_REVIEW",
+      "status": "PUSHED__READY_FOR_HQ_INTAKE",
+      "agent": "DeepSeek Harness",
+      "model_intelligence": "DeepSeek V4.1 Flash",
+      "branch": "agent/reviewer-pyat-hq208-f7-temporal-contract-r1",
+      "commission_tip": "0c74e4beeb29967b4ea9a0599057a1d658f33b16",
+      "observed_head_at_checkpoint": "f1a0dbbc8491e0d23df9005abd55b83e0261424e",
+      "required_next": "HQ_INTAKE"
+    },
+    {
+      "id": "HD_F8_RERECONCILIATION",
+      "status": "PUSHED__READY_FOR_HQ_INTAKE",
+      "agent": "Browser/GitHub documentary worker",
+      "model_intelligence": "GPT-5.6 Sol High",
+      "branch": "agent/rabochii-pyat-hq208-hd-f8-rereconciliation-r1",
+      "commission_tip": "372552570b4c3ec19f91158abc9774e3cf21e522",
+      "observed_head_at_checkpoint": "6e2649c4d111fd0ec176c9fa29ce1da27ccc448e",
+      "required_next": "HQ_INTAKE"
+    },
+    {
+      "id": "V556_REPAIR",
+      "status": "PUSHED__READY_FOR_HQ_INTAKE",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny Max",
+      "branch": "agent/rabochii-pyat-hq206-v556-repair-r1",
+      "commission_tip": "1be02e9505df56291f61e46a79b37e49e8afdf9b",
+      "observed_head_at_checkpoint": "3a2dcafe024b2556af1df909deb5452841e45b7c",
+      "required_next": "HQ_INTAKE_THEN_MANDATORY_FINAL_HOSTILE_INDEPENDENT_REVIEW_BEFORE_ADOPTION"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "R9_BOUNDED_PORTING_REPAIR",
+      "status": "EXISTING__ACTIVE_NOT_YET_RETURNED",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq207-r9-repair-r1",
+      "commission_tip": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+      "observed_head_at_checkpoint": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+      "grain": "BOUNDED_SOURCE_FREE_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "R9_FINAL_ACCEPTANCE",
+      "blocker_effect": "R9_REMAINS_OPEN_UNTIL_RETURN_AND_HQ_ACCEPTANCE",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "WARRANT_ISSUANCE",
+        "LIVE_C4",
+        "C7_IMPLEMENTATION",
+        "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+      ]
+    },
+    {
+      "id": "C1_OVERIMPORT_PRUNE_REPAIR",
+      "status": "EXISTING__ACTIVE_NOT_YET_RETURNED",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq206-c1-prune-r1",
+      "commission_tip": "32d86985b8af3f2ee175f5a170ee21c7101785b6",
+      "observed_head_at_checkpoint": "32d86985b8af3f2ee175f5a170ee21c7101785b6",
+      "grain": "BOUNDED_PRUNE_ONLY_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "C1_FINAL_ACCEPTANCE",
+      "blocker_effect": "C1_RECONCILIATION_REMAINS_PARTIAL_UNTIL_PRUNE_RETURN_AND_HQ_ACCEPTANCE",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "SEMANTIC_REDESIGN",
+        "SELF_ADOPTION"
+      ]
+    }
+  ],
+  "adopted": {
+    "service_source_authority_ceiling": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
+    "f8_law": "F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY",
+    "conceptual_status": "NO_BROAD_MISSING_ONTOLOGY_CURRENTLY_INDICATED__BOUNDED_AUTHORITY_IMPLEMENTATION_QUALIFICATION_RESIDUALS_REMAIN"
+  },
+  "holds": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION",
+    "HQ182_C4_NON_ADOPTION_HOLD",
+    "HOST_DISK_POLICY_CAPACITY_LIVE_RUN_BLOCKER"
+  ],
+  "dependency_graph": {
+    "F7_REVIEW": {
+      "status": "RETURNED_PENDING_HQ_INTAKE",
+      "prerequisites": [],
+      "wake_effect": "MAY_AUTHORIZE_F7_IMPLEMENTATION_COMMISSION_IF_ACCEPTED",
+      "prohibited_early_actions": [
+        "ADOPT_UNREVIEWED_CONTRACT"
+      ]
+    },
+    "HD_F8": {
+      "status": "RETURNED_PENDING_HQ_INTAKE",
+      "prerequisites": [
+        "SERVICE_SOURCE_ADOPTED"
+      ],
+      "wake_effect": "MAY_CLOSE_OR_NARROW_HD_RESIDUALS",
+      "prohibited_early_actions": [
+        "F8_GEOMETRY_TRANSFORM"
+      ]
+    },
+    "V556": {
+      "status": "RETURNED_PENDING_HQ_INTAKE",
+      "prerequisites": [
+        "M3_SEAM_UNCHANGED"
+      ],
+      "wake_effect": "MANDATORY_FINAL_HOSTILE_REVIEW",
+      "prohibited_early_actions": [
+        "ADOPT_BEFORE_HOSTILE_REVIEW",
+        "ATTRACTOR_POPULATION"
+      ]
+    },
+    "R9": {
+      "status": "ACTIVE_NOT_RETURNED",
+      "prerequisites": [],
+      "wake_effect": "FINAL_ACCEPTANCE_AFTER_RETURN",
+      "prohibited_early_actions": [
+        "RAW_SOURCE_ACCESS"
+      ]
+    },
+    "C1": {
+      "status": "ACTIVE_NOT_RETURNED",
+      "prerequisites": [],
+      "wake_effect": "FINAL_ACCEPTANCE_AFTER_RETURN",
+      "prohibited_early_actions": [
+        "RELAUNCH_EXISTING_LANE",
+        "SEMANTIC_REDESIGN"
+      ]
+    }
+  },
+  "astra_referral": false,
+  "next_action": "INTAKE_F7_REVIEW__INTAKE_HD_RERECONCILIATION__INTAKE_V556_REPAIR_AND_BIND_FINAL_HOSTILE_REVIEW__CONTINUE_R9_C1_EXISTING_WORKERS"
+}

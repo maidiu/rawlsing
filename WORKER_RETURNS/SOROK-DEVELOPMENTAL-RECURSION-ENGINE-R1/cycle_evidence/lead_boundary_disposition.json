@@ -1,0 +1,9 @@
+{
+  "upstream_return": "0d60caf387d2539edabdc55ee3f666966657b6f9",
+  "disposition": "RECEIVED_WITH_LEAD_BOUNDARY_REPAIR_PENDING_INDEPENDENT_REVIEW",
+  "original_contract_defect": "Earlier ABI incorrectly deferred previous recursion completion until next batch succeeded.",
+  "repair": "Persist valid retrospective completion before next batch, preserving it when next execution fails.",
+  "tests": "19 passed in 0.26s; boundary-removal mutation target assertion RED; exact restoration target PASS",
+  "model_cycle_sha256": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5",
+  "upstream_evidence_limit": "Other files in cycle_evidence describe upstream author cut. Current lead repair is identified by this receipt and lead_boundary_mutation.json."
+}

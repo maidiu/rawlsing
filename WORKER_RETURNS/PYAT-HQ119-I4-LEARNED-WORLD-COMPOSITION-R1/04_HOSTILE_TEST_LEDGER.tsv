@@ -1,0 +1,36 @@
+id	test	result
+T01	full synthetic M01->M1->M2->B5 composition with exact contract	PASS
+T02	M01 graph cannot self-select M1 rule	PASS
+T03	missing product family ref fails closed	PASS
+T04	missing selection scope fails closed on B5 route	PASS
+T05	missing permission ceiling fails closed	PASS
+T06	M1 disposition ref preserved exactly into M2 subject	PASS
+T07	M1 typed state preserved exactly through M2	PASS
+T08	M1 authority/dependency/determinant/replay/explanation conserved	PASS
+T09	M2 release ref preserved exactly into B5	PASS
+T10	M2 closure members preserved exactly into B5 protocol	PASS
+T11	determinant-set hash recomputed and exact	PASS
+T12	M2 PublicationBinding does not make B5 PUBLISHED	PASS
+T13	M2 release existence does not register B5 subject	PASS
+T14	B5 registration does not publish	PASS
+T15	B5 publication does not select current	PASS
+T16	current selection requires explicit action and exact authority	PASS
+T17	latest/default/newest/fuzzy fallback impossible	PASS
+T18	RULE_NOT_SATISFIED does not become negative semantic truth	PASS
+T19	VALID_EMPTY preserved end-to-end	PASS
+T20	NONCOMPARABLE/BLOCKED/UNKNOWN/INTEGRITY_FAILURE preserved end-to-end	PASS
+T21	direct producer route only with explicit route authority/acceptance	PASS
+T22	missing required stage cannot switch to direct route	PASS
+T23	no consumer permission minted	PASS
+T24	no structural/causal/Field Forge/V3 effect	PASS
+T25	identical input/contract -> identical receipt	PASS
+T26	constitutive product-contract change -> new contract/receipt identity	PASS
+T27	publication-binding relayout does not alter semantic product/release	PASS
+T28	B5 history/checkpoint remains exact after default composition	PASS
+T29	replay/tamper failure closes	PASS
+T30	no Candidate A/B/C/FIABC/ASTRA/historical-stage import resurrection	PASS
+REG-M01	current test_pre553_route_b_production.py	PASS
+REG-M1	current test_pre553_learned_empirical_adjudication.py	PASS
+REG-M2	current test_pre553_learned_product_release.py	PASS
+REG-B5	current test_pre553_learned_product_lifecycle.py	PASS
+COURT	combined five-file governed court	135 PASS / 0 FAIL

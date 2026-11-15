@@ -1,0 +1,47 @@
+{
+  "schema": "FIABC_FINAL_MEASUREMENT_TELEMETRY_CLOSURE_RETURN@1.0.0",
+  "branch": "agent/rabochii-premain-fiabc-final-measurement-telemetry-r1",
+  "commission_head": "21e1c6f93a1b4b0b272ccfa9f6e5ba76bf509a65",
+  "sealed_hq_base": "445c2fd534db61de0d0d348a6d77a11faa419cc3",
+  "implementation_head": "d40415ae3ff5204e551ca648065802e43d795237",
+  "disposition": "IMPLEMENTATION_PASS__SOURCE_INDEPENDENT_EXECUTION_NOT_AVAILABLE_BROWSER_GITHUB_ONLY",
+  "metric_registry_count": 35,
+  "metric_production_count": 35,
+  "metric_backend_mirror_count": 35,
+  "metric_missing_producer_count": 0,
+  "metric_extra_producer_count": 0,
+  "metric_still_not_instrumentable": [],
+  "typed_not_applicable": {
+    "metric": "delete_rebuild_wall_ns",
+    "candidate": "A",
+    "reason": "S09 is frozen persistence-information audit rather than delete/rebuild action"
+  },
+  "implementation_files": {
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py": "d851b4143966c61fda8c066de22af06f24f7a763",
+    "rawlsing_next/fiabc_live_accounting_binding.py": "31aaf0dadffad260bb77ef65c530188a560b32a1",
+    "rawlsing_next/fiabc_telemetry_semantics.py": "3d57f35e20816f096bb37a56e557267d618abb9c",
+    "tests/test_fiabc_final_measurement_telemetry_closure.py": "0f357cb7bd82ed2318436f84e8dcc248a1648358"
+  },
+  "qualification": {
+    "test_execution": "NOT_EXECUTED",
+    "reason": "Commissioned BROWSER/GITHUB-only surface exposes no repository execution shell; no GitHub Actions run triggered.",
+    "static_gitHub_inspection": {
+      "accepted_registry": 35,
+      "production_manifest": 35,
+      "backend_mirror": 35,
+      "registry_to_production_missing": 0,
+      "production_to_registry_extra": 0,
+      "registry_to_backend_missing": 0,
+      "backend_to_registry_extra": 0
+    }
+  },
+  "prohibited_execution": {
+    "user_mac_used": false,
+    "lits_raw_opened": false,
+    "wvs_raw_opened": false,
+    "candidate_a_b_c_run": false,
+    "measured_p2x_run": false,
+    "sibling_merge_or_rebase": false
+  },
+  "terminal": "FIABC_FINAL_MEASUREMENT_TELEMETRY_CLOSURE_R1__IMPLEMENTATION_PASS__35_OF_35_FROZEN_METRICS_HAVE_LAWFUL_PRODUCTION_OR_TYPED_NA__NO_CANDIDATE_OR_MEASURED_P2X_EXECUTED__SOURCE_INDEPENDENT_TEST_EXECUTION_NOT_AVAILABLE_ON_BROWSER_GITHUB_SURFACE"
+}
