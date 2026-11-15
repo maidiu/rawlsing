@@ -93,3 +93,8 @@ Thus there are **two** legacy filename/contract differences, rather than merely 
 ## R5 self-adversarial correction
 
 The historical certified packet index alias *does* exist on the selected V551J producer, contrary to the previous two-name allegation. Old reviewable sidecar, two legacy readiness report names, and native selection remain unproved; a newer smoke reader supports fallback. The independent certification function guards component denominator conflicts. Type-dependent V550 Boolean and allowlist helper behavior remains an unexecuted source-level qualification, not actual evidence of invalid scientific output. See ROUND5_HOSTILE_SOURCE_COUNTERSEARCH.md.
+
+
+## R6: filename parity is not scientific conservation
+
+The selected old certified filename carries a newer schema without six old certification-provenance fields. Legacy V553 expects old plural IDs, silently skips absent columns, and doesn't reuse the separately loaded review frame in that module. Thin V552J checks JSON status rather than packet data. Legacy semantic diff names another old review_surface. Ten wrongly unpadded R5 evidence IDs are normalized. Source-only, no runtime or independent science claims.

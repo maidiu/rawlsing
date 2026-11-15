@@ -25,3 +25,8 @@ A V551J component-denominator disagreement may be present in a candidate before 
 ## R5 final R1 link closure
 
 Two independently grounded current operations now have explicit records: `ZAK02:OP:N0014_COMPAT_WRITER` → `ZAK02:SHAPE:V551J_CERTIFIED_COMPAT_ALIAS` → `ZAK02:REVERSE:034`, and `ZAK02:OP:N0014_SMOKE_READ` → `ZAK02:SHAPE:V551J_SMOKE_SUMMARY` → `ZAK02:REVERSE:035`. Both are **static implementation traces**, not executed first-consumer proof. Their four corresponding DATA_SHAPES and AUTHORITY_USE:T0014 updates prevent orphaned references.
+
+
+## R6 supersession notice
+
+R5's old certified filename observation survives, but source-level V0 certification schema preservation does not follow. See ROUND6_CERTIFIED_SCHEMA_AND_CONSUMER_RECONCILIATION.md and EV0134–0145. Preserve prior record as archival witness.

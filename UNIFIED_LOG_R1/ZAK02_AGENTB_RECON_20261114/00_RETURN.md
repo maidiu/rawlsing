@@ -1,5 +1,10 @@
 # 00_RETURN — ZAK-02 bounded read-only unified reconnaissance, 2026-11-14
 
+## R6 source-level countersearch and present counts
+
+19 provisional T, 54 operations, 59 edges, 145 evidence rows, 38 reverse consumers, 60 searches, 43 holds, 86 shapes. 228 matrix cells remain 45 FOUND, 15 UNRESOLVED, 168 NOT_INSPECTED. Old certified alias filename exists; old V0 certificate field schema does not. Legacy V553 old-ID extraction, thin proxy, and semantic-diff filenames now individually reconciled. R5 EV124–133 IDs normalized to EV0124–0133. See `ROUND6_CERTIFIED_SCHEMA_AND_CONSUMER_RECONCILIATION.md`. No program execution or engineering.
+
+
 ## R5 CURRENT COUNTS AND SOURCE-QUALIFIED CORRECTION
 
 **19 provisional T, 54 edges, 133 evidence, 35 reverse consumers, 56 searches, 39 gaps.** Matrix 228 cells: 45 located, 15 unresolved, 168 uninspected. R4 “two missing legacy packet names” is REFUTED for the certified index by the later compatibility write; old review sidecar and two legacy readiness names remain unresolved. A separate V551J denominator-failure hypothesis is refuted by terminal certification code. V550 helper Boolean/type and co-signature fallback are conditional source issues only. See `ROUND5_HOSTILE_SOURCE_COUNTERSEARCH.md`. No native run, engineering or independent acceptance.
