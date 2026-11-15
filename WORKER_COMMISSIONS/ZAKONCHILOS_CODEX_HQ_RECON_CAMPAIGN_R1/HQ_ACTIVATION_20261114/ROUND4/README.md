@@ -7,7 +7,7 @@ Two overlapping lane02 documentary returns and one lane03 return received. Their
 - [315ccde2a original requested root](https://github.com/maidiu/rawlsing/tree/315ccde2aeef3db90c41451d468c14023b434c78/UNIFIED_LOG_R1/ZAK1057_R4_02_DISCOVERY_GENEALOGY/)
 - [4fba6110 additional return from attachment](https://github.com/maidiu/rawlsing/tree/4fba611048ba1a9a8dfc4d4e605daee8eda676d0/UNIFIED_LOG_R1/ZAK1057_R4_02_BRANCH_GENEALOGY/)
 
-Preserve separate custody; do not count these as two distinct capabilities or independent reviews. The named W55A/W56 negative in the first return does not contradict the broader Job3/O12 governance evidence in the second; do not generalize it to all Vozhd. The second also adds Long Memory D07/D04 and open C4 obligations. Both support capability conservation obligations rather than preservation of the old diagnostic table; full equivalence remains unproved. Source identity and manifest checks in RECEIVED_RETURNS.json; new semantic claims await independent receiving.
+Preserve separate custody; do not count these as two distinct capabilities or independent reviews. Independent review supersedes the earlier HQ era endorsement: B's cited Job3/O12 paragraph/census/spawn is later Verkhovod/PRE-V3/MX synthesis, not a primary Vozhd/Job3 ruling. A's W55A/W56 negative remains bounded; a separate omitted Vozhd/Trii contract is a positive source lead outside both sets. The second also adds Long Memory D07/D04 and open C4 obligations. Both support capability conservation obligations rather than preservation of the old diagnostic table; full equivalence remains unproved. Source identity and manifest checks in RECEIVED_RETURNS.json; new semantic claims await independent receiving.
 
 ## Selected-QSM first-reader boundary
 
@@ -19,4 +19,4 @@ HQ qualification: Batch already has generic semantic_input_refs and outcome prov
 
 ## Pending
 
-Await the user-operated lane04 temporal-handoff return. No polling, live-status claim, engineering, native execution, protected merge or additional worker launch. New findings are bounded author/HQ source intake, not independent acceptance. Runtime1017/MAX and costs remain unverified in submitted receipts.
+Temporal consolidation and both independent reviews are now received. See NEXT_RECEIVING/README.md: genealogy A and reconciled subset accepted; B and QSM require exact documentary revisions; temporal remains consolidated author source evidence. No new worker or engineering launched; runtime1017/MAX/costs remain unverified.
