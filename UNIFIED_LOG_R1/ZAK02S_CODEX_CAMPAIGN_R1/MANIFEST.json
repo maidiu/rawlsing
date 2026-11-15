@@ -1,0 +1,109 @@
+{
+  "schema": "UNIFIED_LOG_R1_MANIFEST_V1",
+  "lane": "ZAK02S_CODEX_CAMPAIGN_R1",
+  "round": "ONE_BOUNDED_30_MINUTE_DOCUMENTARY_ROUND",
+  "startup_sha": "098ea6bea0ef37177fecb185a5c97dd8824216ba",
+  "original_lineage_cut": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+  "protected_cut_readonly": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "shared_1054_readonly": "d25836436c16efda51ca1935c1c979b396eb61bd",
+  "model_configuration": "opencode-go/deepseek-v4.1-flash#max",
+  "file_count": 17,
+  "markdown_count": 4,
+  "tsv_count": 11,
+  "txt_count": 1,
+  "json_count": 1,
+  "row_counts": {
+    "FINDINGS.tsv": 1,
+    "OPERATION_TRACES.tsv": 14,
+    "AUTHORITY_USE.tsv": 13,
+    "EVIDENCE.tsv": 29,
+    "COVERAGE.tsv": 17,
+    "UNJOINS.tsv": 9,
+    "MECHANISM_RECONCILIATION.tsv": 8,
+    "SOURCE_SEARCH_LOG.tsv": 9,
+    "REVERSE_CONSUMERS.tsv": 5,
+    "DATA_SHAPES.tsv": 5,
+    "SOURCE_STRATUM_QUEUE.tsv": 10
+  },
+  "coverage_status_counts": {
+    "FOUND": 12,
+    "UNRESOLVED": 1,
+    "NOT_INSPECTED": 4
+  },
+  "files": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "9b2814322c02bfc55b647342dd4b4a3394f81d47c9df096a4dcc7e2801b57018"
+    },
+    {
+      "path": "HUMAN_STORY.md",
+      "sha256": "107d034ac721ed766856c728b42b1293f3618289dbebae88d37a9375ac23771f"
+    },
+    {
+      "path": "SCOPE_CONTRACT.md",
+      "sha256": "960ed1b1e95ab68e8d3d0c40d9e98ce335622925592d89960ae8adf7b441293e"
+    },
+    {
+      "path": "FINDINGS.tsv",
+      "sha256": "c58d1da72758fa5894660ee63f3a2e1edc2a9b5ef9db752ff5a959560528bc0b"
+    },
+    {
+      "path": "OPERATION_TRACES.tsv",
+      "sha256": "0c3349f6911ae9ce57c60cbbf305b53ec2affc8dc9256e03ecf4b902db67b4ef"
+    },
+    {
+      "path": "AUTHORITY_USE.tsv",
+      "sha256": "bb4d9670e3761725bf33e6807ade57f8a9621b6510cb8d0f9848f603fae861ec"
+    },
+    {
+      "path": "EVIDENCE.tsv",
+      "sha256": "b64d04621d2680a5284f7220a662c0eff30e747aa8e1cf54759cb003ec1200c0"
+    },
+    {
+      "path": "COVERAGE.tsv",
+      "sha256": "bbeac5465015e59eaf01488151b866606edc54a382442ab4a98e70f8a91e08de"
+    },
+    {
+      "path": "UNJOINS.tsv",
+      "sha256": "ada26f91881b1e0cb248bf0f10bb64e361c5b04b20c38bbb6d9a6dd113500627"
+    },
+    {
+      "path": "CHANGED_FILES.txt",
+      "sha256": "3f5934650ec838dcb401a5a935218398ecf862e6ba5f4e0615caf1f4fe2b4b74"
+    },
+    {
+      "path": "MECHANISM_RECONCILIATION.tsv",
+      "sha256": "da33d68edc4cad552fea4dd0812b485dce40f0c69e6c35d9f651c25f1a52e5f8"
+    },
+    {
+      "path": "SOURCE_SEARCH_LOG.tsv",
+      "sha256": "5756dba35084490f551e41ba175884779dd3376588bfd1e6c1fd2ba873035f50"
+    },
+    {
+      "path": "REVERSE_CONSUMERS.tsv",
+      "sha256": "b0b9bfddfec77ec4bd5bbd85b95a9feb98d3e4df1059e8e076ae391ca108271c"
+    },
+    {
+      "path": "DATA_SHAPES.tsv",
+      "sha256": "b22d311d90f9129fe61d0a6212a67aaf79230b4c853677a32a8a7cbf9e738b42"
+    },
+    {
+      "path": "SOURCE_STRATUM_QUEUE.tsv",
+      "sha256": "b300e9b4206a3098ac7af27efb3718f249c3df85cb6afde58295208e9595fe3d"
+    },
+    {
+      "path": "CASES/ZAK02-T-0024.md",
+      "sha256": "f3b0d1e45db92f299154925aa218d2996d72ae81838a73ae05da9a7e6b81bb55"
+    },
+    {
+      "path": "MANIFEST.json",
+      "sha256": "SELF_NOT_HASHED"
+    }
+  ],
+  "integrity_notes": [
+    "Hashes computed with shasum -a 256 over literal file bytes at packaging time.",
+    "MANIFEST.json is not self-hashed; all other listed files are hashed.",
+    "No commit, push, test, CI, scientific execution or production edit was performed.",
+    "No prior owner branch, protected cut, shared #1054 index or respondent data was read or written."
+  ]
+}
