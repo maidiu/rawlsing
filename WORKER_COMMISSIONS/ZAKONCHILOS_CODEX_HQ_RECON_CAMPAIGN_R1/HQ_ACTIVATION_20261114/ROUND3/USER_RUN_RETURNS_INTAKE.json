@@ -1,0 +1,36 @@
+{
+  "user_operated_round": true,
+  "autonomous_dispatch": false,
+  "received_utc": "2026-11-15T05:25:57.730530+00:00",
+  "returns": {
+    "04_CORRECTION": {
+      "sha": "89768120d391c385ec81f15f3f035281c7361cb4",
+      "substantive_sha": "ed3cc22b8b2d7a449acd1fc32b86c02ee7ba18c0",
+      "branch": "docs/zak1057-05-correction-mainmac-20261114-r1",
+      "disposition": "RECEIVE_EXACT_DOCUMENTARY_CORRECTION__HQ_CHECKED__NO_NEW_INDEPENDENT_VERDICT",
+      "checks": "11 documentary files only versus original; TSV widths valid;18/18 manifest hashes/bytes; material EVIDENCE and MECHANISM correction matches previously source-confirmed erratum",
+      "independent_review": "Original revise verdict preserved; no reviewer acceptance of corrected descendant claimed",
+      "runtime_metadata": "User report exposes model context only; MAX/provider actual generation/token/cost not independently verified",
+      "cost_usd": "UNKNOWN"
+    },
+    "03_REVIEW": {
+      "sha": "157b74ed3f55757a11d632dddca2b15703e687a7",
+      "branch": "docs/zak1057-r3-review-03-mainmac-20261115-r1",
+      "target_sha": "e27154883288a3265844791be0782edeaae61979",
+      "verdict": "ACCEPT_SCOPED_S1",
+      "disposition": "RECEIVE_INDEPENDENT_BOUNDED_S1_REVIEW",
+      "checks": {
+        "payload_hash_matches": 10,
+        "manifest_failures": [],
+        "tsv_width_failures": 0,
+        "remote_ref_matches": true
+      },
+      "accepted_scope": "Five producer/authority/receipt/candidate/adjacent-owner distinctions; no selected-QSM\u2192I04 or runtime proof",
+      "nonmaterial_notes": "Known summary evidence numbering; supplementary receiver locator; same-tag wording; bounded Python-symbol scope; GT12 naming. See immutable reviewer verdict.",
+      "runtime_metadata": "Reviewer reports model context; actual MAX/provider routing/tokens/cost UNKNOWN",
+      "cost_usd": "UNKNOWN"
+    }
+  },
+  "remaining": "User reports final lane04 round2 independent review still pending; current PID/session status not observed. No poll or duplicate dispatch.",
+  "holds": "No engineering, native science, protected integration or global absence acceptance."
+}
