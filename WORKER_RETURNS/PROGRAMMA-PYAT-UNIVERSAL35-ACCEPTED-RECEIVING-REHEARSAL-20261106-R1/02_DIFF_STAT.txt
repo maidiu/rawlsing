@@ -1,0 +1,103 @@
+ SOURCE_PRE553_PLAN/LANES.json                      |   278 +
+ .../pre553_field_forge_empirical_ingress.py        |   406 +
+ rawlsing_next/pre553_original35_execution.py       |   432 +
+ rawlsing_next/pre553_original35_operations.py      |   972 +
+ rawlsing_next/pre553_original35_physical_stream.py |   222 +
+ rawlsing_next/pre553_source_read_admission.py      |   277 +
+ .../programma_pyat_original35_constructor.py       |   946 +
+ rawlsing_next/source_configuration/ABI.json        |    82 +
+ .../source_configuration/DEPENDENCIES.json         |    32 +
+ .../source_configuration/PACKAGE_DATA.json         |    23 +
+ rawlsing_next/source_configuration/README.md       |   101 +
+ rawlsing_next/source_configuration/__init__.py     |    72 +
+ rawlsing_next/source_configuration/cli.py          |   236 +
+ rawlsing_next/source_configuration/corrections.py  |   146 +
+ .../SOURCE_CONFIGURATION_CORRECTIONS.json          | 94518 +++++++++++++++++++
+ rawlsing_next/source_configuration/errors.py       |    22 +
+ rawlsing_next/source_configuration/evidence.py     |   152 +
+ .../evidence/CODEBOOK_ROWS.jsonl.gz                |   Bin 0 -> 2958501 bytes
+ .../evidence/EVIDENCE_MANIFEST.json                |    83 +
+ .../evidence/ITEM_EVIDENCE.jsonl.gz                |   Bin 0 -> 17433801 bytes
+ .../source_configuration/evidence/P2_PHASE0.csv.gz |   Bin 0 -> 1416424 bytes
+ .../evidence/PHYSICAL_SLOTS.jsonl.gz               |   Bin 0 -> 3071057 bytes
+ .../evidence/SOURCE_ROSTER.json                    |  1515 +
+ .../evidence/UNMATCHED_RELATIONS.json              |   734 +
+ rawlsing_next/source_configuration/factory.py      |   571 +
+ rawlsing_next/source_configuration/fixture.py      |   162 +
+ rawlsing_next/source_configuration/library.py      |   852 +
+ rawlsing_next/source_configuration/provider.py     |    91 +
+ rawlsing_next/source_configuration/reader.py       |   182 +
+ rawlsing_next/source_configuration/schema.py       |   125 +
+ .../schema/OWNER_API_MAPPING.json                  |    95 +
+ .../schema/source_configuration.schema.json        |   383 +
+ .../source_locator_bindings.json                   |   428 +
+ rawlsing_next/source_configuration/validator.py    |  1126 +
+ .../test_pre553_field_forge_empirical_ingress.py   |   435 +
+ .../tests/test_pre553_original35_execution.py      |   112 +
+ .../tests/test_pre553_original35_operations.py     |   428 +
+ .../test_pre553_original35_physical_stream.py      |   258 +
+ .../tests/test_pre553_source_read_admission.py     |   193 +
+ ...rogramma_pyat_original35_constructor_adapter.py |    60 +
+ .../tests/test_source_configuration_corrections.py |   267 +
+ .../test_source_configuration_current_port.py      |   181 +
+ .../tests/test_source_configuration_foundation.py  |   250 +
+ .../tests/test_source_configuration_library.py     |   176 +
+ .../foundation/FIXTURE_SPEC.json                   |   211 +
+ source_pre553_validation/foundation/P0_RETURN.json |   716 +
+ source_pre553_validation/foundation/README.md      |    36 +
+ .../foundation/VALIDATION_RESULTS.json             |   173 +
+ .../examples/SRC09_q101_fixture.config.json        |  1033 +
+ .../fixtures/SRC09_q101_nonrespondent.json         |   185 +
+ .../integration/SOURCE_LIBRARY_INDEX.json          | 13716 +++
+ 51 files changed, 123694 insertions(+)
+A	SOURCE_PRE553_PLAN/LANES.json
+A	rawlsing_next/pre553_field_forge_empirical_ingress.py
+A	rawlsing_next/pre553_original35_execution.py
+A	rawlsing_next/pre553_original35_operations.py
+A	rawlsing_next/pre553_original35_physical_stream.py
+A	rawlsing_next/pre553_source_read_admission.py
+A	rawlsing_next/programma_pyat_original35_constructor.py
+A	rawlsing_next/source_configuration/ABI.json
+A	rawlsing_next/source_configuration/DEPENDENCIES.json
+A	rawlsing_next/source_configuration/PACKAGE_DATA.json
+A	rawlsing_next/source_configuration/README.md
+A	rawlsing_next/source_configuration/__init__.py
+A	rawlsing_next/source_configuration/cli.py
+A	rawlsing_next/source_configuration/corrections.py
+A	rawlsing_next/source_configuration/corrections/SOURCE_CONFIGURATION_CORRECTIONS.json
+A	rawlsing_next/source_configuration/errors.py
+A	rawlsing_next/source_configuration/evidence.py
+A	rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz
+A	rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json
+A	rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz
+A	rawlsing_next/source_configuration/evidence/P2_PHASE0.csv.gz
+A	rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz
+A	rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json
+A	rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json
+A	rawlsing_next/source_configuration/factory.py
+A	rawlsing_next/source_configuration/fixture.py
+A	rawlsing_next/source_configuration/library.py
+A	rawlsing_next/source_configuration/provider.py
+A	rawlsing_next/source_configuration/reader.py
+A	rawlsing_next/source_configuration/schema.py
+A	rawlsing_next/source_configuration/schema/OWNER_API_MAPPING.json
+A	rawlsing_next/source_configuration/schema/source_configuration.schema.json
+A	rawlsing_next/source_configuration/source_locator_bindings.json
+A	rawlsing_next/source_configuration/validator.py
+A	rawlsing_next/tests/test_pre553_field_forge_empirical_ingress.py
+A	rawlsing_next/tests/test_pre553_original35_execution.py
+A	rawlsing_next/tests/test_pre553_original35_operations.py
+A	rawlsing_next/tests/test_pre553_original35_physical_stream.py
+A	rawlsing_next/tests/test_pre553_source_read_admission.py
+A	rawlsing_next/tests/test_programma_pyat_original35_constructor_adapter.py
+A	rawlsing_next/tests/test_source_configuration_corrections.py
+A	rawlsing_next/tests/test_source_configuration_current_port.py
+A	rawlsing_next/tests/test_source_configuration_foundation.py
+A	rawlsing_next/tests/test_source_configuration_library.py
+A	source_pre553_validation/foundation/FIXTURE_SPEC.json
+A	source_pre553_validation/foundation/P0_RETURN.json
+A	source_pre553_validation/foundation/README.md
+A	source_pre553_validation/foundation/VALIDATION_RESULTS.json
+A	source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json
+A	source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json
+A	source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json

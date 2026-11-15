@@ -1,0 +1,235 @@
+# Refreshed path diff
+
+## vs actual protected fce43498
+ SOURCE_PRE553_PLAN/LANES.json                      |   278 +
+ .../00_RETURN.md                                   |   100 +
+ .../01_ACCEPTED_HEADS_AND_BLOBS.json               |   385 +
+ .../02_DIFF_STAT.txt                               |   103 +
+ .../03_TEST_RECEIPTS.md                            |    92 +
+ .../04_ACTUAL_RUN_NEGATIVE_AND_OWNERS.md           |    61 +
+ .../evidence/a_component_tests.log                 |     2 +
+ .../evidence/d_component_tests.log                 |     2 +
+ .../evidence/e_component_tests.log                 |     2 +
+ .../evidence/joined_frontier_summary.json          |   130 +
+ .../evidence/joined_plan.log                       |     3 +
+ .../evidence/sourcefree_wrapper_positive.log       |     4 +
+ .../pre553_field_forge_empirical_ingress.py        |   406 +
+ rawlsing_next/pre553_original35_execution.py       |   526 +
+ rawlsing_next/pre553_original35_operations.py      |   972 +
+ rawlsing_next/pre553_original35_physical_stream.py |   222 +
+ rawlsing_next/pre553_source_read_admission.py      |   277 +
+ .../programma_pyat_original35_constructor.py       |   946 +
+ rawlsing_next/source_configuration/ABI.json        |    83 +
+ .../source_configuration/DEPENDENCIES.json         |    32 +
+ .../source_configuration/PACKAGE_DATA.json         |    23 +
+ rawlsing_next/source_configuration/README.md       |   101 +
+ rawlsing_next/source_configuration/__init__.py     |    74 +
+ rawlsing_next/source_configuration/cli.py          |   236 +
+ rawlsing_next/source_configuration/corrections.py  |   192 +
+ .../SOURCE_CONFIGURATION_CORRECTIONS.json          | 94712 +++++++++++++++++++
+ rawlsing_next/source_configuration/errors.py       |    22 +
+ rawlsing_next/source_configuration/evidence.py     |   152 +
+ .../evidence/CODEBOOK_ROWS.jsonl.gz                |   Bin 0 -> 2958501 bytes
+ .../evidence/EVIDENCE_MANIFEST.json                |    83 +
+ .../evidence/ITEM_EVIDENCE.jsonl.gz                |   Bin 0 -> 17433801 bytes
+ .../source_configuration/evidence/P2_PHASE0.csv.gz |   Bin 0 -> 1416424 bytes
+ .../evidence/PHYSICAL_SLOTS.jsonl.gz               |   Bin 0 -> 3071057 bytes
+ .../evidence/SOURCE_ROSTER.json                    |  1515 +
+ .../evidence/UNMATCHED_RELATIONS.json              |   734 +
+ rawlsing_next/source_configuration/factory.py      |   580 +
+ rawlsing_next/source_configuration/fixture.py      |   162 +
+ rawlsing_next/source_configuration/library.py      |   852 +
+ rawlsing_next/source_configuration/provider.py     |    91 +
+ rawlsing_next/source_configuration/reader.py       |   182 +
+ rawlsing_next/source_configuration/schema.py       |   125 +
+ .../schema/OWNER_API_MAPPING.json                  |    95 +
+ .../schema/source_configuration.schema.json        |   383 +
+ .../source_locator_bindings.json                   |   428 +
+ rawlsing_next/source_configuration/validator.py    |  1126 +
+ .../test_pre553_field_forge_empirical_ingress.py   |   435 +
+ .../tests/test_pre553_original35_execution.py      |   213 +
+ .../tests/test_pre553_original35_operations.py     |   428 +
+ .../test_pre553_original35_physical_stream.py      |   258 +
+ .../tests/test_pre553_source_read_admission.py     |   193 +
+ ...rogramma_pyat_original35_constructor_adapter.py |    60 +
+ .../tests/test_source_configuration_corrections.py |   303 +
+ .../test_source_configuration_current_port.py      |   181 +
+ .../tests/test_source_configuration_foundation.py  |   250 +
+ .../tests/test_source_configuration_library.py     |   176 +
+ .../foundation/FIXTURE_SPEC.json                   |   211 +
+ source_pre553_validation/foundation/P0_RETURN.json |   716 +
+ source_pre553_validation/foundation/README.md      |    36 +
+ .../foundation/VALIDATION_RESULTS.json             |   173 +
+ .../examples/SRC09_q101_fixture.config.json        |  1033 +
+ .../fixtures/SRC09_q101_nonrespondent.json         |   185 +
+ .../integration/SOURCE_LIBRARY_INDEX.json          | 13716 +++
+ 62 files changed, 125061 insertions(+)
+
+A	SOURCE_PRE553_PLAN/LANES.json
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/00_RETURN.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/01_ACCEPTED_HEADS_AND_BLOBS.json
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/02_DIFF_STAT.txt
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/03_TEST_RECEIPTS.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/04_ACTUAL_RUN_NEGATIVE_AND_OWNERS.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/a_component_tests.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/d_component_tests.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/e_component_tests.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/joined_frontier_summary.json
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/joined_plan.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/sourcefree_wrapper_positive.log
+A	rawlsing_next/pre553_field_forge_empirical_ingress.py
+A	rawlsing_next/pre553_original35_execution.py
+A	rawlsing_next/pre553_original35_operations.py
+A	rawlsing_next/pre553_original35_physical_stream.py
+A	rawlsing_next/pre553_source_read_admission.py
+A	rawlsing_next/programma_pyat_original35_constructor.py
+A	rawlsing_next/source_configuration/ABI.json
+A	rawlsing_next/source_configuration/DEPENDENCIES.json
+A	rawlsing_next/source_configuration/PACKAGE_DATA.json
+A	rawlsing_next/source_configuration/README.md
+A	rawlsing_next/source_configuration/__init__.py
+A	rawlsing_next/source_configuration/cli.py
+A	rawlsing_next/source_configuration/corrections.py
+A	rawlsing_next/source_configuration/corrections/SOURCE_CONFIGURATION_CORRECTIONS.json
+A	rawlsing_next/source_configuration/errors.py
+A	rawlsing_next/source_configuration/evidence.py
+A	rawlsing_next/source_configuration/evidence/CODEBOOK_ROWS.jsonl.gz
+A	rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json
+A	rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz
+A	rawlsing_next/source_configuration/evidence/P2_PHASE0.csv.gz
+A	rawlsing_next/source_configuration/evidence/PHYSICAL_SLOTS.jsonl.gz
+A	rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json
+A	rawlsing_next/source_configuration/evidence/UNMATCHED_RELATIONS.json
+A	rawlsing_next/source_configuration/factory.py
+A	rawlsing_next/source_configuration/fixture.py
+A	rawlsing_next/source_configuration/library.py
+A	rawlsing_next/source_configuration/provider.py
+A	rawlsing_next/source_configuration/reader.py
+A	rawlsing_next/source_configuration/schema.py
+A	rawlsing_next/source_configuration/schema/OWNER_API_MAPPING.json
+A	rawlsing_next/source_configuration/schema/source_configuration.schema.json
+A	rawlsing_next/source_configuration/source_locator_bindings.json
+A	rawlsing_next/source_configuration/validator.py
+A	rawlsing_next/tests/test_pre553_field_forge_empirical_ingress.py
+A	rawlsing_next/tests/test_pre553_original35_execution.py
+A	rawlsing_next/tests/test_pre553_original35_operations.py
+A	rawlsing_next/tests/test_pre553_original35_physical_stream.py
+A	rawlsing_next/tests/test_pre553_source_read_admission.py
+A	rawlsing_next/tests/test_programma_pyat_original35_constructor_adapter.py
+A	rawlsing_next/tests/test_source_configuration_corrections.py
+A	rawlsing_next/tests/test_source_configuration_current_port.py
+A	rawlsing_next/tests/test_source_configuration_foundation.py
+A	rawlsing_next/tests/test_source_configuration_library.py
+A	source_pre553_validation/foundation/FIXTURE_SPEC.json
+A	source_pre553_validation/foundation/P0_RETURN.json
+A	source_pre553_validation/foundation/README.md
+A	source_pre553_validation/foundation/VALIDATION_RESULTS.json
+A	source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json
+A	source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json
+A	source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json
+
+## vs prior receiving code c2d4bdcc3
+ .../PROGRAMMA/verify_canonical_programma_r1.py     |   34 +-
+ PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json            |  111 ++-
+ PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md              |   14 +
+ .../PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md            |    2 +
+ .../05_ROADMAP/NEXT_R_GAP49_NEXT_DECISIONS.md      |    2 +
+ .../PROGRAMMA_PYAT/05_ROADMAP/README.md            |    2 +
+ .../05_ROADMAP/REMAINING_REAL_PYAT_WORK.md         |    2 +
+ SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json   |   12 +-
+ SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md     |   12 +
+ .../00_HQ_WRITE_THROUGH_DECISION.md                |    2 +
+ .../PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md          |    4 +
+ ...6_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md |    4 +
+ .../07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json     |    1 +
+ ...NCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json |    1 +
+ ...NHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json |    1 +
+ ...TION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md |    4 +
+ .../13_GUIDE_COVERAGE_AND_FINAL_HANDOFF_R1.md      |    2 +
+ ...RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md |   37 +
+ .../00_READ_FIRST.md                               |   61 ++
+ .../01_EXACT_SOURCE_ATLAS.json                     |  808 +++++++++++++++
+ .../02_GATE_AND_HISTORICAL_FUNCTION_CROSSWALK.json | 1032 ++++++++++++++++++++
+ .../03_RUNTIME_FIRST_CONSUMER_AND_SUPERSESSION.md  |  102 ++
+ .../04_PRELIMINARY_SCIENCE_DECISION_COURT.md       |  113 +++
+ .../05_PROPOSED_RABOCHII_RESEARCH_FLIGHTS.md       |   73 ++
+ .../06_P3_START_AND_READINESS_CONTRACT.md          |  100 ++
+ .../07_SECONDARY_THEORY_READING_MAP.md             |   42 +
+ .../08_VERIFICATION_RECEIPT.json                   |   77 ++
+ ...EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md |   38 +
+ ...PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md |   81 ++
+ ...ITIONAL_SOURCE_AND_INTERPRETATION_READBACK.json |   99 ++
+ ...MATION_VS_ACTIVATION_SCIENCE_ADJUDICATION_R1.md |  112 +++
+ .../PROGRAMMA_SOROK/READ_FIRST.md                  |   10 +-
+ .../00_RETURN.md                                   |  100 ++
+ .../01_ACCEPTED_HEADS_AND_BLOBS.json               |  385 ++++++++
+ .../02_DIFF_STAT.txt                               |  103 ++
+ .../03_TEST_RECEIPTS.md                            |   92 ++
+ .../04_ACTUAL_RUN_NEGATIVE_AND_OWNERS.md           |   61 ++
+ .../evidence/a_component_tests.log                 |    2 +
+ .../evidence/d_component_tests.log                 |    2 +
+ .../evidence/e_component_tests.log                 |    2 +
+ .../evidence/joined_frontier_summary.json          |  130 +++
+ .../evidence/joined_plan.log                       |    3 +
+ .../evidence/sourcefree_wrapper_positive.log       |    4 +
+ rawlsing_next/pre553_original35_execution.py       |  126 ++-
+ rawlsing_next/source_configuration/ABI.json        |    1 +
+ rawlsing_next/source_configuration/__init__.py     |    4 +-
+ rawlsing_next/source_configuration/corrections.py  |   48 +-
+ .../SOURCE_CONFIGURATION_CORRECTIONS.json          |  194 ++++
+ rawlsing_next/source_configuration/factory.py      |    9 +
+ .../tests/test_pre553_original35_execution.py      |  103 +-
+ .../tests/test_source_configuration_corrections.py |   40 +-
+ 51 files changed, 4368 insertions(+), 36 deletions(-)
+
+M	CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+M	PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json
+M	PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md
+M	PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md
+M	PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEXT_R_GAP49_NEXT_DECISIONS.md
+M	PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md
+M	PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md
+M	SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json
+M	SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_HQ_WRITE_THROUGH_DECISION.md
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/13_GUIDE_COVERAGE_AND_FINAL_HANDOFF_R1.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/00_READ_FIRST.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/01_EXACT_SOURCE_ATLAS.json
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/02_GATE_AND_HISTORICAL_FUNCTION_CROSSWALK.json
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/03_RUNTIME_FIRST_CONSUMER_AND_SUPERSESSION.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/04_PRELIMINARY_SCIENCE_DECISION_COURT.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/05_PROPOSED_RABOCHII_RESEARCH_FLIGHTS.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/06_P3_START_AND_READINESS_CONTRACT.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/07_SECONDARY_THEORY_READING_MAP.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/08_VERIFICATION_RECEIPT.json
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/11_ADDITIONAL_SOURCE_AND_INTERPRETATION_READBACK.json
+A	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/P3_RULEBOUND_DEVELOPMENT_SOURCEPACK_R1/12_O05_FORMATION_VS_ACTIVATION_SCIENCE_ADJUDICATION_R1.md
+M	SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/READ_FIRST.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/00_RETURN.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/01_ACCEPTED_HEADS_AND_BLOBS.json
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/02_DIFF_STAT.txt
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/03_TEST_RECEIPTS.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/04_ACTUAL_RUN_NEGATIVE_AND_OWNERS.md
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/a_component_tests.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/d_component_tests.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/e_component_tests.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/joined_frontier_summary.json
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/joined_plan.log
+A	WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ACCEPTED-RECEIVING-REHEARSAL-20261106-R1/evidence/sourcefree_wrapper_positive.log
+M	rawlsing_next/pre553_original35_execution.py
+M	rawlsing_next/source_configuration/ABI.json
+M	rawlsing_next/source_configuration/__init__.py
+M	rawlsing_next/source_configuration/corrections.py
+M	rawlsing_next/source_configuration/corrections/SOURCE_CONFIGURATION_CORRECTIONS.json
+M	rawlsing_next/source_configuration/factory.py
+M	rawlsing_next/tests/test_pre553_original35_execution.py
+M	rawlsing_next/tests/test_source_configuration_corrections.py
