@@ -1,0 +1,100 @@
+{
+  "return_id": "ZAK03S:R4:RETURN:SELECTED_QSM_FIRST_CONSUMER",
+  "lane": "03",
+  "campaign": "ZAKONCHILOS_RECON_R1",
+  "governing_cut": "cfae8c2550ffa364829e0df0df730c457621581d",
+  "protected_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "candidate_cuts": [
+    "ad17076cc95b9383ab3b28879f471026bcba9ff7",
+    "0d90c2470b0b476dcb74ce157b706b10f8392f4f"
+  ],
+  "output_root": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R4/",
+  "terminal_status": "DONE_AT_BOUNDED_SOURCE_CUT__SELECTED_QSM_IDENTITY_ONLY_IN_SIBLING_BINDING__NO_IMPORTING_BATCH_READER",
+  "execution": "NOT_RUN",
+  "proof_grade": "S1_STATIC_DOCUMENTARY",
+  "direct_answer": {
+    "qsm_identity_in_i03_i05": "Only the coverage/lineage gate survives: native question/var coupling and current target-use triple as pre-execution checks. The QSM artifact SHA, row hash, rule id/version, resolution status, lookup key, and historical semantic direction do not enter I03/I05 facts or results.",
+    "i03_result": "QueryExecutionResult(query_ref, facts, source_scope_mode, release_refs); no QSM field.",
+    "i05_result": "ExactBoundedDiscoveryResult carries discovery/candidate/coverage/facts/receipts/replay; no QSM field; candidate records i05_historical_qsm_authority_established False.",
+    "qsm_binding_location": "SelectedQsmRouteResult.binding_receipt, a plain Mapping with binding_root; not an ExactRef and not a canonical object.",
+    "counterexample": "Two different selected QSM files/rows produce identical I03 fact refs while binding_root and qsm_resolution differ (0d90c247 test L146-184, especially L178-180)."
+  },
+  "batch_requirements": [
+    "JOB_KINDS is QUERY or DISCOVERY only; no QSM job kind",
+    "BatchUnitSpec/ExecutionOutcome/UnitExecutionReceipt accept only exact refs",
+    "A typed exact ref/canonical object for the selected-QSM binding is absent",
+    "An explicit Batch semantic-input or provenance convention for the QSM binding is absent"
+  ],
+  "issued_workload_requirements": [
+    "NativeWorkload has no selected-QSM field",
+    "NativeWorkload.envelope is closed and hash-compared to IssuedWorkloadRecord.envelope_sha256",
+    "expected_jobs derives from requests/discoveries only",
+    "execute_issued_workload calls execute_route_b_production directly and never execute_selected_qsm_route_b",
+    "NativeWorkloadResult has no selected-QSM binding field"
+  ],
+  "missing_edge_vs_engine": {
+    "engines_present": [
+      "candidate execute_selected_qsm_route_b",
+      "protected execute_route_b_production",
+      "protected I03/I05 execution",
+      "protected BatchExecutionRunner",
+      "protected issued-workload transport"
+    ],
+    "missing_edge": "No typed QSM binding object/ref, no issued-envelope field, no Batch unit/result slot, no issued-workload call path to the selected-QSM gate.",
+    "classification": "MISSING_PRODUCER_TO_CONSUMER_INTERFACE_EDGE_NOT_MISSING_ENGINE",
+    "implementation_authorized": false
+  },
+  "material_counterexample": {
+    "alternate_consumer": "6a5c12f0:rawlsing_next/pre553_learned_world_composition.py blob adbcc3316920c708580097dfe9f5aef4c9ca82fb",
+    "observation": "Consumes RouteBProductionResult and projects M01 replay-receipt/object-graph refs; no QSM import or field; cannot recover the selected QSM row identity."
+  },
+  "omission_challenge": {
+    "tested": [
+      "BatchUnitSpec.semantic_input_ref with binding receipt",
+      "ExecutionOutcome.provenance_refs with binding receipt",
+      "NativeWorkload envelope QSM field",
+      "precomputed route result passed to execute_issued_workload",
+      "ordinary I03 query content carrying QSM row identity"
+    ],
+    "result": "CHALLENGE_SURVIVES_BOUNDED",
+    "reason": "Binding receipt has no ExactRef; Batch accepts exact refs; envelope is closed and hash-checked; issued workload has no QSM parameter; I03 query carries target-use and native question, not QSM artifact/row/rule identity."
+  },
+  "preserved_priors": {
+    "shared_1054": "d25836436c16efda51ca1935c1c979b396eb61bd",
+    "round2_target": "e27154883288a3265844791be0782edeaae61979",
+    "round3_review": "157b74ed3f55757a11d632dddca2b15703e687a7",
+    "note": "Prior producer/provenance distinctions and accepted research preserved by reference; no I04 constructor search repeated."
+  },
+  "unresolved_edges": [
+    "Selected-QSM runtime execution: NOT_PROVED",
+    "Issued Batch consumption of selected QSM: NOT_PROVED; candidate records False",
+    "Typed exact QSM binding ref/canonical object: absent",
+    "Issuer-envelope QSM field and expected-job coverage: absent",
+    "External/dynamic Batch or issued-workload callers: not inspected",
+    "Historical QSM semantic direction/relation meaning into I03/I05: NOT_CARRIED",
+    "Adoption/integration: NOT_CLAIMED"
+  ],
+  "runtime": {
+    "start_utc": "2026-11-15T05:43:51Z",
+    "start_local": "2026-11-15T00:43:51-0500",
+    "end_utc": "2026-11-15T05:51:20Z",
+    "end_local": "2026-11-15T00:51:20-0500",
+    "elapsed_seconds": 449,
+    "model_context": "opencode-go/deepseek-v4.1-flash",
+    "max_1017_variant_exposed": "UNKNOWN",
+    "provider_routing_exposed": "UNKNOWN",
+    "provider_or_model_change": false,
+    "subagents": false,
+    "token_usage": "UNKNOWN",
+    "cost_estimate_usd": "UNKNOWN",
+    "cost_grade": "No billing or allowance fields exposed; not an invoice",
+    "retries": "0 observed command retries; provider retries UNKNOWN"
+  },
+  "publication": {
+    "branch": "docs/zak1057-r4-03-selected-rule-first-consumer-20261115-r1",
+    "base_commit": "cfae8c2550ffa364829e0df0df730c457621581d",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/zak1057-r4-03",
+    "push_status": "PENDING_AT_WRITE"
+  },
+  "authority_ceiling": "S1 static documentary only; no runtime, native, scientific/actor/source issuance, adoption, security defect, missing-engine claim, or implementation authority."
+}

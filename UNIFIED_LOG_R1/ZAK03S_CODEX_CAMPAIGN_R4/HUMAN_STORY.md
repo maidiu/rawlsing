@@ -1,0 +1,9 @@
+# HUMAN_STORY — ZAK03S R4 selected-rule first-consumer boundary
+
+The candidate selected-QSM reader does something useful and narrow: it proves that a specific historical question-relation row matches a specific modern source, wave, country, variable, native question, and unique C11 response slot, and that each I03 query carries a separate current target-use permission. Then it calls the real Route B reader. But the selected QSM row itself does not become part of the empirical result. The route result, the I03 result, and the I05 result have no QSM field. The clearest proof is the candidate's own test: two different selected QSM files produce the same I03 fact identity, while only the sibling binding receipt changes.
+
+That means the historical QSM identity is a gate and a coverage receipt, not an input to the computation. The historical relation meaning is not silently promoted into the facts. The later candidate says this explicitly: no first importing reader, no issued Batch consumption, no I05 historical QSM authority.
+
+Batch and the issued workload cannot consume the binding receipt as they stand. Batch units are QUERY or DISCOVERY, their inputs and receipts are exact refs, and the binding receipt is a plain mapping with a hex root but no exact ref or canonical object. The issued workload's envelope is closed and hash-checked against an external issuer record, and it calls Route B directly rather than the selected-QSM wrapper. These are interface gaps: the engines exist, but the typed provenance edge does not. Building that edge would be engineering; this round only locates it.
+
+The honest next step, if a later commission chooses it, is not a new engine. It is an exact interface decision: how to name the selected-QSM binding as an exact object, where to put it in the issued envelope, and how Batch should preserve it. No such authority is issued here.

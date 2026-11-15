@@ -1,0 +1,13 @@
+coverage_id	finite_question	source_inspected	result	residual	reviewer_ref
+ZAK03S:R4:C01	Candidate selected-QSM reader shape	ad17076c and 0d90c247 full reader	FOUND	Static; not executed	ZAK03S:R4:RETURN
+ZAK03S:R4:C02	Candidate static test fixture	0d90c247 test full relevant range	FOUND	Static test only	ZAK03S:R4:RETURN
+ZAK03S:R4:C03	Route B typed result	pre553_route_b_production.py L106-164/L495-631	FOUND	No QSM field	ZAK03S:R4:RETURN
+ZAK03S:R4:C04	I03 typed result	_pre553_query_common.py L105-122	FOUND	No QSM field	ZAK03S:R4:RETURN
+ZAK03S:R4:C05	I05 typed result	pre553_discovery_exact.py L127-142	FOUND	No QSM field	ZAK03S:R4:RETURN
+ZAK03S:R4:C06	Batch interface	pre553_batch_runner.py L23/L85-97/L100-257/L385-623	FOUND	No QSM kind or exact binding slot	ZAK03S:R4:RETURN
+ZAK03S:R4:C07	Issued workload interface	pre553_issued_workload.py L63-67/L85-101/L188-367	FOUND	No QSM field or call path	ZAK03S:R4:RETURN
+ZAK03S:R4:C08	Alternate route consumer	pre553_learned_world_composition.py L50/L740-767/L1043-1126	FOUND	No QSM reference	ZAK03S:R4:RETURN
+ZAK03S:R4:C09	Protected QSM import search	git grep SelectedQsm/selected_qsm/pre553_zak03s_selected_qsm over rawlsing_next	NOT_FOUND_BOUNDED	Named-symbol only	ZAK03S:R4:RETURN
+ZAK03S:R4:C10	Candidate non-test caller search	git grep execute_selected_qsm_route_b/SelectedQsmRouteResult over rawlsing_next	TEST_ONLY	No production reader	ZAK03S:R4:RETURN
+ZAK03S:R4:C11	Omission challenge	materializer/ref/envelope/call-path alternatives	CHALLENGE_SURVIVES_BOUNDED	Not global absence	ZAK03S:R4:RETURN
+ZAK03S:R4:C12	Runtime and adoption	NOT_RUN / NOT_CLAIMED	HELD	No execution or integration	ZAK03S:R4:RETURN

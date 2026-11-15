@@ -1,0 +1,7 @@
+consumer_id	producer	actual_consumer	edge_grade	observed	missing_or_held	reviewer_ref
+ZAK03S:R4:RC001	execute_selected_qsm_route_b / SelectedQsmRouteResult	Static test fixture only; no non-test caller outside module	TEST_ONLY	0d90c247 test L136; reader L201-311	Production/issued-workload reader NOT_PROVED	ZAK03S:R4:RETURN
+ZAK03S:R4:RC002	binding_receipt Mapping	Static test assertions only	TEST_ONLY	binding_root test L179; receipt fields test L160-165	No exact ref or canonical object consumer	ZAK03S:R4:RETURN
+ZAK03S:R4:RC003	RouteBProductionResult	learned_world_composition M01 adapter; issued_workload routes; tests	REAL_STATIC_AND_CANDIDATE	learned L50/L740-767/L1048/L1126; issued L312-315	No QSM-aware consumer	ZAK03S:R4:RETURN
+ZAK03S:R4:RC004	I03 QueryExecutionResult	RouteBProductionResult i03_results; tests	REAL_STATIC	QueryExecutionResult L105-122; route L159	No QSM field in result	ZAK03S:R4:RETURN
+ZAK03S:R4:RC005	I05 ExactBoundedDiscoveryResult	RouteBProductionResult i05_result; learned composition discovery receipts	REAL_STATIC	Discovery result L127-142; route L160; learned L803	No QSM qualification; candidate flag False	ZAK03S:R4:RETURN
+ZAK03S:R4:RC006	Issued workload NativeWorkload	execute_issued_workload and Batch runner	REAL_STATIC	issued L280-367; Batch L385-623	No selected-QSM input or consumption	ZAK03S:R4:RETURN
