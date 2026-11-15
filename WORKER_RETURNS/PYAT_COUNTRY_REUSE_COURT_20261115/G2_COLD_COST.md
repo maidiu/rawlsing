@@ -1,6 +1,8 @@
 # G2 — Actual cold saved-estate cost
 
-**Grade:** `SOURCEFREE_TEST_ONLY`, author measurement. Wall/CPU are **contended** (pre-timing load average 4.52/4.41/3.95 on 16 CPUs; zero other Rawlsing processes observed). They are not clean performance claims. Exact counters, fact refs and parity are the strong evidence.
+**Grade:** `SOURCEFREE_TEST_ONLY`, author measurement. **Receiving status:** independent review `c5a71fcc59a45aa470720159a334ae57f365de11` reproduced the exact facts and counters at the sourcefree measurement scope (`ACCEPT_SCOPED@SOURCEFREE_REUSE_COURT_REPRODUCED`); its cold 100-op wall was **65.661 s** versus the author's **51.929 s** with identical facts/counters. Wall/CPU are **contended** (author pre-timing load 4.52/4.41/3.95; review pre-timing load 2.10/2.76/2.82; both 16 CPUs, zero other Rawlsing processes). They are not clean or stable performance claims. Exact counters, fact refs and parity are the strong evidence.
+
+**Proxy qualifiers:** row-group read counts and compressed/uncompressed byte sums are **metadata-call/sum proxies**, not physical I/O counts or decompression timings. The `_build` share is an **instrumentation-inclusive wrapper ratio**, not a full phase time decomposition. Family/event object materialization counts are actual native evaluation materializations, not negative tripwires. Process-tree RSS is inferred as `max(before/after tree snapshots, self ru_maxrss)`, not a sampled tree high-water.
 
 ## 1. Frozen estate
 
@@ -62,71 +64,73 @@ Supplemental state probe (`evidence/state_probe.json`) on the same saved estate:
 
 `SavedC11Admission.execute_i03` opens one new `DirectEstateI03Session`; the session rebuilds its disposable posting index, evaluates, and closes.
 
+Author one pass; the independent review measured 0.499 s for the same operation with identical counters.
+
 | Measure | Value |
 |---|---:|
 | Operation | `marginal_A` |
-| Wall | 0.549 s |
+| Wall (author one pass) | 0.549 s |
 | CPU user | 0.555 s |
 | CPU system | 0.074 s |
-| Process-tree RSS peak | 80,527,360 B |
+| Process-tree RSS inference (`max(before, after, self ru_maxrss)`) | 80,527,360 B |
 | Cold session opens / builds | 1 / 1 |
-| Session enter / `_build` | 0.105 s / 0.088 s |
-| Row-group reads | 426 |
-| Row-group rows | 6,816 |
-| Compressed / uncompressed row bytes | 5,721,849 / 23,326,183 B |
-| Event / family object materializations | 513 / 640 |
+| Session enter / `_build` (instrumentation-inclusive) | 0.105 s / 0.088 s |
+| Row-group reads (metadata-call proxy) | 426 |
+| Row-group rows (metadata-call proxy) | 6,816 |
+| Compressed / uncompressed row bytes (metadata-sum proxy) | 5,721,849 / 23,326,183 B |
+| Event / family object materializations (native, not tripwire) | 513 / 640 |
 | Family rows yielded | 640 |
 | SQLite temp peak | 1,703,936 B |
-| Full `C11Repository` builds | 0 (tripwire) |
-| Whole-table `read_table` calls | 0 (tripwire) |
+| Full `C11Repository.__init__` calls | 0 (real tripwire) |
+| Whole-table `pq.read_table` calls | 0 (real tripwire) |
 
 ## 4. 100 distinct cold operations (the court)
 
-| Measure | Value |
-|---|---:|
-| Operations requested / completed | 100 / **100** |
-| Distinct query refs | 100 |
-| Wall | **51.929 s** |
-| Throughput | **1.926 ops/s** |
-| CPU user / system | 50.897 s / 5.555 s |
-| Per-op min / p50 / p95 / max | 0.317 / 0.519 / 0.738 / 1.058 s |
-| Per-op mean | 0.519 s |
-| Process-tree RSS peak | 137,236,480 B |
-| Self max RSS | 136,503,296 B |
-| Cold session opens / builds | 100 / 100 |
-| Session enter / `_build` cumulative | 8.138 s / 6.380 s |
-| Session build share of wall | 12.3% |
-| Session enter share of wall | 15.7% |
-| Row-group reads | **43,130** (431.3/op) |
-| Row-group rows | 690,080 (6,900.8/op) |
-| Compressed row bytes read | **576,774,322 B** (268× retained estate) |
-| Uncompressed row bytes read | **2,363,218,327 B** (1,097× retained estate) |
-| Family rows yielded | 94,068 (940.7/op) |
-| Family object materializations | 94,068 |
-| Event object materializations | 29,343 (293.4/op) |
-| SQLite temp peak | 1,703,936 B |
-| Retained estate after | 2,153,366 B |
-| Scratch directory after | 2,153,366 B (temp cleaned) |
-| Full `C11Repository` builds | 0 (tripwire) |
-| Whole-table `read_table` calls | 0 (tripwire) |
-| Source opens | 0 (synthetic in-process fixture) |
+| Measure | Author pass | Independent review |
+|---|---:|---:|
+| Operations requested / completed | 100 / **100** | 100 / **100** |
+| Distinct query refs | 100 | 100 |
+| Wall | **51.929 s** | **65.661 s** |
+| Throughput | **1.926 ops/s** | **1.523 ops/s** |
+| CPU user / system | 50.897 s / 5.555 s | 58.758 s / 7.262 s |
+| Per-op min / p50 / p95 / max | 0.317 / 0.519 / 0.738 / 1.058 s | ambient; not a stable constant |
+| Per-op mean | 0.519 s | ambient; not a stable constant |
+| Process-tree RSS inference (`max(before, after, self ru_maxrss)`) | 137,236,480 B (self ru_maxrss 136,503,296 B; sample difference 733,184 B) | 127,598,592 B (equality in that pass) |
+| Self max RSS | 136,503,296 B | 127,598,592 B |
+| Cold session opens / builds | 100 / 100 | 100 / 100 |
+| Session enter / `_build` cumulative | 8.138 s / 6.380 s | 10.979 s / 8.168 s |
+| Session `_build` instrumentation-inclusive share | 12.3% | 12.4% |
+| Session enter instrumentation-inclusive share | 15.7% | 16.7% |
+| Row-group reads (metadata-call proxy) | **43,130** (431.3/op) | identical |
+| Row-group rows (metadata-call proxy) | 690,080 (6,900.8/op) | identical |
+| Compressed row bytes (metadata-sum proxy) | **576,774,322 B** (268× retained estate) | identical |
+| Uncompressed row bytes (metadata-sum proxy) | **2,363,218,327 B** (1,097× retained estate) | identical |
+| Family rows yielded | 94,068 (940.7/op) | identical |
+| Family object materializations (native, not tripwire) | 94,068 | identical |
+| Event object materializations (native, not tripwire) | 29,343 (293.4/op) | identical |
+| SQLite temp peak | 1,703,936 B | 1,703,936 B |
+| Retained estate after | 2,153,366 B | 2,153,366 B |
+| Scratch directory after | 2,153,366 B (temp cleaned) | same |
+| Full `C11Repository.__init__` calls | **0** (real tripwire) | **0** |
+| Whole-table `pq.read_table` calls | **0** (real tripwire) | **0** |
+| Source opens | **INAPPLICABLE** (sourcefree synthetic fixture; not a measured tripwire) | **INAPPLICABLE** |
 
-The cold cost is **not mostly session construction**: `_build` is 6.38 s of 51.93 s (12.3%). The dominant repeated work is the per-operation exact respondent/family traversal and selected-event materialization: 43,130 row-group reads, 94,068 family rows and 29,343 event objects for 100 operations over a 1,451-row, 2.15 MB estate. Each operation re-reads the same small estate many times. This is the many-operation reuse target.
+The instrumentation-inclusive `_build` wrapper is 6.38 s of the author's 51.93 s (12.3%; review 8.17 s of 65.66 s, 12.4%). The dominant repeated work is **inferred** from the exact call/row counters — 43,130 row-group reads, 94,068 family rows and 29,343 event objects for 100 operations over a 1,451-row, 2.15 MB estate — not from a direct per-phase time decomposition. Each operation re-reads the same small estate many times. This is the many-operation reuse target; the read/byte counts are metadata proxies, not physical I/O or decompression timing.
 
 ## 5. Native parity
 
-For all 100 operations, the cold saved facts are byte-exact to the native in-memory `C11Repository` evaluator (same query, predicate, risk, weights, target plan, release):
+For all 100 operations, the cold saved facts are byte-exact to the native in-memory `C11Repository` evaluator (same query, predicate, risk, weights, target plan, release). The independent review reproduced all 100 per-operation fact SHA-256 values and the 100/100 parity:
 
-- `cold_vs_native_ungrouped`: **100/100 exact, 0 mismatches**.
+- `cold_vs_native_ungrouped`: **100/100 exact, 0 mismatches** (author and independent review).
 - Fact refs, replay refs, release refs, typed states, denominators and complete cell projections are included in the canonical fact hash comparison (`evidence/parity.json`).
 - The cold path builds no full `C11Repository`; the native oracle was built separately for comparison, not used as a cold proof.
 
 ## 6. 1,000 distinct operations decision
 
-The measured 1→100 forecast was 55.2 s; actual was 51.9 s. The measured 100-op wall projects **519.3 s** for 1,000 distinct cold operations (linear basis), which **exceeds the 300 s native benchmark budget**. Therefore 1,000 distinct cold operations were **NOT_RUN**.
+The measured 1→100 author forecast was 55.2 s; actual was 51.9 s. The measured 100-op wall projects **519.29 s** (author basis) / **656.61 s** (independent-review basis) for 1,000 distinct cold operations (linear basis), both **over the 300 s native benchmark budget**. Therefore 1,000 distinct cold operations were **NOT_RUN**.
 
 This is an `EXTRAPOLATION_NOT_MEASURED`, not a completed 1,000-operation result. A 1,000-repeat invocation probe was run separately on the existing grouped in-memory path; it is explicitly not 1,000 distinct operations (see G3).
 
 ## 7. Resource and contention qualifier
 
-Pre-timing snapshot: 16 vCPU, load average 4.52/4.41/3.95, zero other Rawlsing processes, 4.79 GB free disk. Post-run free disk was lower by normal transient/OS effects; the estate and temp files were cleaned. The CPU and wall numbers are contended/ambient, not clean isolated performance. The exact counters, fact hashes, refs and guard messages are unaffected by contention.
+Author pre-timing snapshot: 16 vCPU, load average 4.52/4.41/3.95, zero other Rawlsing processes, 4.79 GB free disk. Independent review: load 2.10/2.76/2.82, same runtime/counters, cold 65.661 s. The 27% wall difference with identical facts/counters is the direct counterexample to any clean/stable throughput claim. Post-run free disk was lower by normal transient/OS effects; the estate and temp files were cleaned. The CPU and wall numbers are contended/ambient, not clean isolated performance. The exact counters, fact hashes, refs and guard messages are unaffected by contention.

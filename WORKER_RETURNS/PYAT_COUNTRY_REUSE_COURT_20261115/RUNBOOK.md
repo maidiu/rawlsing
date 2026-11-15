@@ -1,7 +1,10 @@
 # RUNBOOK — exact reproduction
 
 **Worktree:** `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-court-20261115`
-**Frozen HEAD:** `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`
+**Measurement production cut:** `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`
+**Review/correction base HEAD:** `6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb` (production diff empty)
+**Frozen measurement commit:** `f7a7652258907129988504e53fae286da1dbf45d`
+**Independent G5 review:** `c5a71fcc59a45aa470720159a334ae57f365de11` (`WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/00_REVIEW.md`)
 **Runtime used:** `/usr/local/bin/python3`, Python 3.11.3, pyarrow 22.0.0, DuckDB 1.5.2, pyreadstat 1.3.2, NumPy 2.3.2, pandas 2.3.1.
 **No installs, no provider/model change, no background jobs.** All commands run sequentially.
 
@@ -24,7 +27,7 @@ This runs the following exact commands through bounded `subprocess.run` calls an
 | summarize | `python3 .../probe/summarize.py` | 0 | 0.048 s |
 | focused_existing_tests | `python3 -m pytest -q -o addopts= -p no:cacheprovider rawlsing_next/tests/test_pre553_i03_grouping.py rawlsing_next/tests/test_pre553_direct_estate_i03.py::test_cold_i03_rejects_grouped_cache_and_i05_outside_s2c_scope` | 0 | 7.664 s |
 
-Total `run_all` wall: **149.43 s**. The native court inside `run_court` was **133.84 s**, under the 300 s native benchmark budget. The 100-op cold batch itself was 51.93 s.
+Total `run_all` wall (author pass): **149.43 s**. The native court inside `run_court` was **133.84 s**, under the 300 s native benchmark budget. The 100-op cold batch was **51.93 s** (author) / **65.66 s** (independent review), with identical facts/counters. The independent review's total was **178.800 s** (court 161.763 s), ambient-contended. There is no stable throughput constant.
 
 ## Environment set by `run_all.py`
 
@@ -71,12 +74,12 @@ The focused tests are production tests, executed read-only. Actual result:
 16 passed in 7.30s
 ```
 
-The 16 include the existing grouped exact-parity/share tests, capacity, special states, zero support, unsupported topology, poisoned memo, authority deny and the cold grouped-refusal test. The `run_all.py` log records 16 passed in 7.664 s (including pytest startup).
+The 16 include the existing grouped exact-parity/share tests, capacity, special states, zero support, unsupported topology, poisoned memo, authority deny and the cold grouped-refusal test. The author `run_all.py` log records 16 passed in 7.664 s (including pytest startup); the independent review recorded 16 passed in 8.644 s.
 
 ## Publication note
 
-The worktree already showed `.gitignore` and `README.md` as deleted before this pass (sparse checkout). Do not `git add -A`; stage only `WORKER_RETURNS/PYAT_COUNTRY_REUSE_COURT_20261115/`. No production or accepted-test file was modified.
+The worktree already showed `.gitignore` and `README.md` as deleted before this pass (sparse checkout). Do not `git add -A`; stage only `WORKER_RETURNS/PYAT_COUNTRY_REUSE_COURT_20261115/`. No production or accepted-test file was modified. Branch `agent/pyat-country-reuse-court-20261115` is pushed; draft PR #1064 is the publication surface. This documentary correction is a later commit on the same branch; the measured `evidence/`, `logs/` and `probe/` payloads are unchanged from `f7a765…`.
 
 ## Stop condition
 
-This is one finite pass. No automatic repetitions, no polling loop, no background jobs, no 100k/10k rerun, no production patch, no guard removal, no protected merge. The return is frozen for distinct G5 review.
+This is one finite **documentary correction** pass. No rerun of the benchmark, no new fixtures, no automatic repetitions, no polling loop, no background jobs, no 100k/10k rerun, no production patch, no guard removal, no protected merge. The measurement was independently accepted at sourcefree scope; the corrected handoff is frozen for a distinct recheck. No self-acceptance.

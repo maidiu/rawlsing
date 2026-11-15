@@ -4,6 +4,7 @@
   "accepted_1006_g5": "3e0ed0794498506520ae62c997a5c852ac672061",
   "accepted_writer": "b7b697b69f0acea12174937ee824c19ac34ac284",
   "branch": "agent/pyat-country-reuse-court-20261115",
+  "correction_base": "6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb",
   "files": [
     {
       "bytes": 32,
@@ -11,49 +12,54 @@
       "sha256": "62d80cecf0f6fb7c0fb5f86205aa6f11aa7fbaf8fa50ae6170f145ac403e153f"
     },
     {
-      "bytes": 8963,
+      "bytes": 11681,
       "path": "00_RETURN.md",
-      "sha256": "795aa4e8dca2a96adf7b0dcdb9abba71db5972a655f585ebbf986b4317604dec"
+      "sha256": "904ea208916aed6ed194591ed76859f230f3637cde4479e60475ef9667855290"
     },
     {
-      "bytes": 8807,
+      "bytes": 8475,
+      "path": "CORRECTION_MAP.md",
+      "sha256": "eed7a1ad247c7f0fad2ecb0d8c81e771d6aaf6deadbe1b76232d17142d0ca5a9"
+    },
+    {
+      "bytes": 10350,
       "path": "G1_SOURCE_CONTRACT.md",
-      "sha256": "7e8b4cc959a3308c98f97e3bbb25ece98a79521af4a30615fe2d65cecde1f028"
+      "sha256": "b93aab088357543ccacf86350f377553a5cbebe95ea9327ffc4128b4f5fdaa54"
     },
     {
-      "bytes": 7724,
+      "bytes": 10185,
       "path": "G2_COLD_COST.md",
-      "sha256": "b044b02c12e04098c080116d797bf9947093b97aa1ab2f9139138860f9626fd8"
+      "sha256": "bffe1c0f6f358bca02f319bb3ab9e2ed71ab6b7da6a7f5b415d51a9146306158"
     },
     {
-      "bytes": 6102,
+      "bytes": 7182,
       "path": "G3_GROUPED_OR_BARRIER.md",
-      "sha256": "df5589d16e15c632083e578cfefdb47db2cf59f266fb8e41000906a1a77535db"
+      "sha256": "a232a3ae7a5aa8e7f2911079cfffe5faafa92431f3291caa7d0132fcc16a2e05"
     },
     {
-      "bytes": 6462,
+      "bytes": 7962,
       "path": "G4_OPTIONS.md",
-      "sha256": "b0001bc38fb0d2fff99d200aaab11ab815d4f82b9a9a6803e57f0619a14f42cc"
+      "sha256": "27769fe0f83d05c7b1dbb3b30e15811d28fa408757f3577bc9ff46fb7f7932ea"
     },
     {
-      "bytes": 3206,
+      "bytes": 5676,
       "path": "G5_REVIEW_PENDING.md",
-      "sha256": "7cf2ba5d0715aec1a884f4c013f7ee30ef31c97381c057fd9bc472079669de4f"
+      "sha256": "ba1a0c900242aa92caa2fb975d2eb5805b524db7d20d2b264fb4ff829d38252c"
     },
     {
-      "bytes": 1797,
+      "bytes": 2969,
       "path": "PROGRAMMA_DELTA.md",
-      "sha256": "93f4f390aafd1f0dcead5e3040287a55ca003fe1903ab9302a9c0c3c317eef4f"
+      "sha256": "e05e7c3b648f93cf0efedcc7412dfa0efefbe9374be53759a7aa249c89fdeb21"
     },
     {
-      "bytes": 4517,
+      "bytes": 5536,
       "path": "RUNBOOK.md",
-      "sha256": "517ea339b22dbff9762884d4ed95e6afb9e09bc9b92ac850b26895304367cb54"
+      "sha256": "4c5fe00ae4b5e21462a487c6c532830e27f772325fe46d7e1df63e3153e2017c"
     },
     {
-      "bytes": 5494,
+      "bytes": 7773,
       "path": "SELF_CRITIQUE.md",
-      "sha256": "8d3740b7fdd5420e68a7ac7b18b3b08dc9984a9c4a51c70eeceef7f70895ddbf"
+      "sha256": "3ab563aca7e7fa604dc8728abf1610dadab9c241c7267d33680e856866e8adc5"
     },
     {
       "bytes": 235710,
@@ -236,21 +242,32 @@
       "sha256": "347bacceaf5c24e60efb2b15ff35cf606ef2803f64cc1b96c08e9c75b6a287d5"
     }
   ],
-  "frozen_head": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
-  "g5": "PENDING_DISTINCT_REVIEW",
   "grade": "SOURCEFREE_TEST_ONLY",
+  "handoff_disposition": "REVISE_EXACT_DEFECT@G4_OPTIONS_AND_HANDOFF_CLAIMS__CORRECTED_FOR_RECHECK",
+  "independent_review": "c5a71fcc59a45aa470720159a334ae57f365de11",
+  "independent_review_path": "WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/00_REVIEW.md",
+  "measurement_disposition": "ACCEPT_SCOPED@SOURCEFREE_REUSE_COURT_REPRODUCED",
+  "measurement_freeze": "f7a7652258907129988504e53fae286da1dbf45d",
+  "measurement_production_cut": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "native_999_adoption": "NOT_ADOPTED_IN_9d96_MEASUREMENT_CUT",
+  "native_999_review": "c18b7e087d5d5b178ed5acc92f9c82250a1743de",
+  "native_999_successor": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
   "result": {
+    "b_status": "HYPOTHESIS_NOT_MEASURED",
     "cold_grouped_guard": "REFUSED",
-    "cold_ops_per_second": 1.9257170887613015,
+    "cold_ops_per_second_author": 1.9257170887613015,
+    "cold_ops_per_second_independent_review": 1.523,
     "cold_vs_native_exact": true,
-    "cold_wall_seconds": 51.92870779597433,
-    "compressed_row_bytes": 576774322,
+    "cold_wall_seconds_author": 51.92870779597433,
+    "cold_wall_seconds_independent_review": 65.661,
+    "compressed_row_bytes_metadata_proxy": 576774322,
     "distinct_cold_operations": 100,
     "in_memory_grouped_core_builds": 80,
     "in_memory_grouped_core_hits": 20,
-    "row_group_reads": 43130,
-    "thousand_distinct_cold": "NOT_RUN__FORECAST_519.3s_OVER_300s_BUDGET",
-    "uncompressed_row_bytes": 2363218327
+    "row_group_reads_metadata_proxy": 43130,
+    "thousand_distinct_cold": "NOT_RUN__EXTRAPOLATION_AUTHOR_519.29s_REVIEW_656.61s_OVER_300s",
+    "thousand_repeat_invocations": "REPEAT_ONLY_1_BUILD_999_HITS",
+    "uncompressed_row_bytes_metadata_proxy": 2363218327
   },
   "runtime": {
     "duckdb": "1.5.2",
@@ -261,7 +278,7 @@
     "python": "3.11.3"
   },
   "schema": "PYAT_COUNTRY_REUSE_COURT_MANIFEST@1",
-  "status": "COURT_MEASURED__COLD_MANY_OPERATION_REUSE_NOT_QUALIFIED__HANDOFF_READY",
+  "status": "MEASUREMENT_ACCEPT_SCOPED__HANDOFF_CORRECTED__NO_SELF_ACCEPTANCE",
   "voskres_corrected_accounting": "7ebd363dedc36cdc34b3a6ef53e32603f291c84e",
-  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-court-20261115"
+  "worktree": "."
 }

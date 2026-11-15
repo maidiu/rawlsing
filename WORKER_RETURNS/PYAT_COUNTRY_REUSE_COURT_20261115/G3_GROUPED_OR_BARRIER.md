@@ -2,31 +2,33 @@
 
 **Disposition:** `EXACT_COLD_QUALIFICATION_BARRIER` for the cold saved estate; `EXACT_PARITY` for the existing in-memory grouped path. **No cold grouped positive was manufactured.** The existing grouped path was exercised only through its lawful public interface on a sealed `C11Repository`, not as a cold saved consumer.
 
+**Receiving status:** the independent review `c5a71fcc59a45aa470720159a334ae57f365de11` reproduced the exact facts, counters, guards and receipts at the sourcefree measurement scope (`ACCEPT_SCOPED@SOURCEFREE_REUSE_COURT_REPRODUCED`), while returning `REVISE_EXACT_DEFECT@G4_OPTIONS_AND_HANDOFF_CLAIMS` for the handoff narrative. This corrected G3 is documentary; it is not a new measurement and not self-acceptance.
+
 ## 1. What was measured
 
 Same fixture, same 100 distinct query operations, same predicates/targets/measures/authorities/native evaluator.
 
 | Path | Substrate | Wall | Core builds | Core hits | Capacity fallbacks | Exact parity |
 |---|---|---:|---:|---:|---:|---|
-| Ungrouped | in-memory `C11Repository` | 4.304 s | n/a | n/a | n/a | reference |
-| Grouped, `max_groups=256` | in-memory `C11Repository` | 4.216 s | 80 | 20 | 0 | **100/100** |
-| Grouped, default `max_groups=64` | in-memory `C11Repository` | 3.927 s | 64 | 20 | **16** | **100/100** |
-| Cold saved, `group_scope=None` | `DirectEstateI03Session` per operation | **51.929 s** | n/a | n/a | n/a | **100/100 vs native** |
+| Ungrouped | in-memory `C11Repository` | 4.304 s (author one pass) | n/a | n/a | n/a | reference |
+| Grouped, `max_groups=256` | in-memory `C11Repository` | 4.216 s (author one pass; review 1.199× vs its ungrouped) | 80 | 20 | 0 | **100/100** |
+| Grouped, default `max_groups=64` | in-memory `C11Repository` | 3.927 s (author one pass) | 64 | 20 | **16** | **100/100** |
+| Cold saved, `group_scope=None` | `DirectEstateI03Session` per operation | **51.929 s author; 65.661 s independent** | n/a | n/a | n/a | **100/100 vs native** |
 | Cold saved, `group_scope` supplied | `DirectEstateI03Session` | **REFUSED** | 0 | 0 | 0 | no result |
 
-The in-memory grouped wall difference is **not a clean performance claim**: three same-command passes observed roughly 1.02×–1.26× with ambient load around 3.8–4.5 on 16 CPUs. The exact evidence is the receipt: **80 core builds + 20 core hits** at `max_groups=256`, and **64 builds + 20 hits + 16 capacity fallbacks** at the default 64. The 20 hits are precisely the 20 governed-weighted variants of 20 raw cores; the other 80 distinct cores do not share.
+The in-memory grouped wall difference is **not a clean performance claim**: the author's single frozen pass was 1.021× and the independent review's single pass was 1.199×, with identical receipts under ambient load. The exact evidence is the receipt: **80 core builds + 20 core hits** at `max_groups=256`, and **64 builds + 20 hits + 16 capacity fallbacks** at the default 64. The 20 hits are precisely the 20 governed-weighted variants of 20 raw cores; the other 80 distinct cores do not share. No narrow stable wall range is claimed.
 
 ## 2. Existing grouped path does amortize repeat invocations
 
 A separate 1,000-repeat invocation probe on the **in-memory** grouped path, one operation (`marginal_A`), measured:
 
-| Path | 1,000 invocations | Receipt |
+| Path | 1,000 invocations (author / review) | Receipt |
 |---|---:|---|
-| Ungrouped | 52.035 s | 1,000 full evaluations |
-| Grouped | **15.683 s** | 1 core build, **999 core hits**, 0 fallbacks |
-| Wall speedup | **3.32×** | p50 grouped invocation 15.2 ms |
+| Ungrouped | 52.035 s / 56.238 s | 1,000 full evaluations |
+| Grouped | **15.683 s / 15.925 s** | 1 core build, **999 core hits**, 0 fallbacks |
+| Wall speedup | **3.32× / 3.53×** | p50 grouped invocation 15.2 ms |
 
-This is `REPEAT_INVOCATIONS_NOT_DISTINCT_OPERATIONS`. It proves the existing scope is a useful repeat cache; it does **not** prove a 1,000-distinct-operation contract, and it is not a cold saved measurement.
+This is `REPEAT_INVOCATIONS_NOT_DISTINCT_OPERATIONS`. It proves the existing scope is a useful repeat cache; it does **not** prove a 1,000-distinct-operation contract, and it is not a cold saved measurement. The 1,000-distinct cold projection is **519.29 s author / 656.61 s independent review**, both over the 300 s budget (`EXTRAPOLATION_NOT_MEASURED`).
 
 ## 3. Cold grouped refusal: exact messages, no bypass
 
@@ -74,5 +76,6 @@ Exactness covers fact ref, replay ref, release refs, typed state, raw/weighted s
 
 - **Qualified existing grouped parity:** yes, at the narrow in-memory sealed-`C11Repository` scope; 100/100 exact, 20 measure-variant hits, 80 distinct core builds.
 - **Qualified cold saved grouped parity:** **NO**. Both public guards refuse; the release/index identity contract is missing and the index is transient.
-- **Amortization:** the existing scope amortizes repeated invocations (3.32× on 1,000 repeats) and measure variants (20/100), but not 100 distinct condition/target cores. No 1,000-distinct-operation positive exists.
+- **Amortization:** the existing scope amortizes repeated invocations (3.32× author / 3.53× review on 1,000 repeats) and measure variants (20/100), but not 100 distinct condition/target cores. No 1,000-distinct-operation positive exists.
+- **B is not measured:** no prepared-session/iterator implementation or B A/B run exists in this return. B remains a source-grounded hypothesis with a measured cold-cost target; a bounded owner-approved measurement is required before any gain claim.
 - **No production behavior changed; no guard removed.**

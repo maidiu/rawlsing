@@ -3,17 +3,21 @@
 **Court:** PYAT J5 per-country many-operation reuse court, 2026-11-15
 **Worktree:** `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-country-reuse-court-20261115`
 **Branch:** `agent/pyat-country-reuse-court-20261115`
-**Frozen base:** accepted S2-D `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`
+**Frozen measurement base:** accepted S2-D `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969`
+**Review/correction base HEAD:** `6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb` (narrative/manifest only; `git diff 9d96a9c…6cb7866 -- rawlsing_next` empty)
 **Accepted writer:** `b7b697b69f0acea12174937ee824c19ac34ac284`
-**Grade:** `SOURCEFREE_TEST_ONLY`; author measurement, not G5 acceptance, not a production grant.
+**Grade:** `SOURCEFREE_TEST_ONLY`; author measurement, independently reproduced at measurement scope (`ACCEPT_SCOPED@SOURCEFREE_REUSE_COURT_REPRODUCED`), handoff corrected after `REVISE_EXACT_DEFECT@G4_OPTIONS_AND_HANDOFF_CLAIMS`. Not a production/security/science grant; no self-acceptance of this correction.
 
 ## 1. Custody and verified cuts
 
 | Item | Exact value |
 |---|---|
-| Current HEAD | `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969` |
+| Review/correction base HEAD | `6cb7866d6ccfcade7a7aaa92cbbd6398a5a672bb` (documentary only; production diff empty) |
+| Measurement production cut | `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969` |
 | Branch | `agent/pyat-country-reuse-court-20261115` |
 | Accepted S2-D | `9d96a9cac7d10f59f2c30d8045dd1696fa3ab969` |
+| Independent J5 G5 measurement review | `c5a71fcc59a45aa470720159a334ae57f365de11` |
+| #999 accepted native body-truth repair | `ce7704253f6a2381310c3eb2c7412a2d85c5596c` (accepted at `c18b7e087d5d5b178ed5acc92f9c82250a1743de`; **not adopted** in `9d96a9c…`) |
 | Accepted S2-C writer | `b7b697b69f0acea12174937ee824c19ac34ac284` |
 | Accepted #1006 author evidence | `2beb2b894076510cdedf8981aa73d15eafc7c816` |
 | Accepted #1006 code/test | `1ca1c735a577a7524a0a26c15df8879cd88704e3` |
@@ -25,7 +29,7 @@ Production files were read-only. No production or accepted-test file was edited.
 
 ## 2. Exact current production identities
 
-`git hash-object` at the frozen HEAD:
+`git hash-object` at the measurement production cut / correction base:
 
 | File | Git blob |
 |---|---|
@@ -104,8 +108,8 @@ This is the exact legitimate reused-preparation identity boundary: **one source/
 
 - No production change, no guard removal, no 3-sort production patch.
 - No new index/store/engine; no full-object reopen; no source reopen.
-- No body-truth native edit (#999 successor still pending).
+- **#999 chronology:** the native repair `ce7704253f6a2381310c3eb2c7412a2d85c5596c`, independently accepted at `c18b7e087d5d5b178ed5acc92f9c82250a1743de`, was created **after this author started** and is **not adopted** in the `9d96a9c…` measurement cut. The `9d96a9c…` baseline is therefore a valid-fixture benchmark only, not adversarial security qualification of the accepted successor. Any J1/B production work must adopt/qualify the accepted successor under an exact reader/evaluator/file grant; it must not wait for a new #999 acceptance.
 - No science/eligibility change; no original35 rights; no governed QUERY issuance (J3 remains separate).
 - The 100 queries are TEST_ONLY sourcefree operations, not original governed issuance.
 - Prior #1006 100k/10k locality numbers are cited only as prior accepted evidence; this court did not rerun them.
-- No self-acceptance. G5 is pending a distinct reviewer.
+- The independent G5 measurement review reproduced the facts/counters and accepted them at the sourcefree scope; it returned `REVISE_EXACT_DEFECT` for the handoff claims. This corrected text is a documentary response, not self-acceptance. A distinct recheck of the corrected handoff remains required.
