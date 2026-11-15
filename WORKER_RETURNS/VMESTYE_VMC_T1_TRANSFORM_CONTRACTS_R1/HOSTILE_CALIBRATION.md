@@ -1,3 +1,19 @@
+# VMC-T1 R11 — source-grain and publication negative cases (CONTROLLING)
+
+All rows are historical pinned-code S1 inferences from 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py#bf874a95ea5172817b0d1bdf21b43600aac5cbfe; no original Python execution, database or pandas library fixture run here.
+
+| Positive source precondition | First observable internal effect | First hard boundary and required receiving proof |
+| --- | --- | --- |
+| two different nonnull raw responses for same respondent_id, var_code | SQL L239-L250 orders only respondent_id; L253-L255 pivot first reduces them to a single value, not a multiselect answer set | Need original table uniqueness/coding policy and exact selected output/first statistical reader; cannot claim any source actually duplicated |
+| qualifying anchor(s), no association candidates passing score and n gates for entire source/wave/country slice | L940-L956 accumulates anchors_all, but slice_rows_df is empty; L958-L964 skips all checkpoints for that slice | L975 anchor output read only from anchors_checkpoint_paths; source qualifies anchor but no published anchor if another slice allows program to complete; otherwise L972 overall fail |
+| qualifying anchor A has zero own candidates but anchor B in same slice has one scored candidate | slice_rows_df is nonempty, checkpoint includes full a1+a2+a3 anchors | **Counterexample to excessive claim:** A is published. Omission attaches to slice checkpoint, not each anchor independently |
+| row-positive slice, zero exclusions | L803-L818 writes zero-column CSV from DataFrame(); L978 iterates pd.read_csv for every existing exclusion path | Potential pandas EmptyDataError before final output: actual pandas/runtime and selected source data occurrence NOT_OBSERVED |
+| row-positive slice, at least one exclusion with columns | CSV has header and read path can proceed | No proof of unconditional output, original run or scientific equivalence; merely no empty-column trap in that case |
+
+Original H01 scope: question_type candidate registry includes single_choice, multi_select, matrix, split_block; this does not prove a particular source encoded multiple rows for one respondent/var. Original H02 scope: missing entire-slice row set distinct from missing rank for one anchor. Preserve all R5-R10 source bounds and existing 52/27 identities.
+
+---
+
 # VMC-T1 R10 — selected original source path matrix (CONTROLLING)
 
 All branches source-static only at 9253064bc9423a0f0ccda4fbdea43c2f54f800c6; no source-native execution.
