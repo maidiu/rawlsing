@@ -1,0 +1,21 @@
+receipt_id	case	observed_count	expected_count	result	exact_source_or_target	proof_ceiling
+R2-T01	P0 census exact row identities against left dispositions	6125	6125	PASS	P0 blob 65c1bbe4a602341c5caacca2d58dced31a23f382; P0_LEFT_DISPOSITIONS.tsv	S0-S1 exact source identity
+R2-T02	P0 matched distinct and prong observation rows	1869/1962	1869/1962	PASS	P0_LEFT_DISPOSITIONS.tsv; FULL_ID_ANTI_JOINS.tsv	No cross-grain function equivalence
+R2-T03	P0 left-only and outside-census observations	4256/645	4256/645	PASS	P0_LEFT_DISPOSITIONS.tsv; FULL_ID_ANTI_JOINS.tsv	Not lost/new functions
+R2-T04	Held conflict target PKs resolve	1536	1536	PASS	RELATIONS.tsv HELD_BY grade=UNRESOLVED_TYPED_OPEN -> CONFLICTS_AND_REPAIR_ORDER.conflict_id	Does not resolve semantics
+R2-T05	Held ZL08 P0 source tuple equality	241	241	PASS	RELATIONS.tsv J-P0-ZL01-* -> CONFLICTS_AND_REPAIR_ORDER; P0_LEFT_DISPOSITIONS.tsv	Source tuple only
+R2-T06	Finding times five distinct generation stages	4420	884*5	PASS	GENERATION_STAGE_COURT.tsv	Stage fate is unjoin until independently proven
+R2-T07	Old F03 and F08 source-keyed bridge separateness	2	2	PASS	CROSS_PRONG_BRIDGES.tsv; RELATIONS.tsv JR-R3-BRIDGE-F03_QREL/F08_Q_USE	No selected/current semantic equivalence
+R2-T08	Original G4 seams literal edge-kind-predicate/endpoints equality	82	82	PASS	Original blob 5a951626c0dde91b682eb23216c88dbfc054808d; SEAM_DEPENDENCIES.tsv; SEAM_DEPENDENCY_NODES.tsv	No native seam edge promotion
+R2-T09	Producer operation IDs resolve to edge primary keys	332	332	PASS	OPERATION_TRACES.tsv.producer_edge_id to CONSUMER_EDGES.edge_id	No actual non-test reader
+R2-T10	Current call-sha and actual-status preserved as holds	332	332	PASS	CONSUMER_EDGES.tsv actual_call_site_sha=NOT_PROVED; current_actual_status=OPEN_PROOF_GAP	Native NOT_RUN
+R2-T11	Authority applied or negative enforced positives	0/0	0/0	PASS	AUTHORITY_APPLICATIONS.tsv	10 historical documentary rule_selected YES != application
+R2-T12	Implementation code_sha content type	884	884	PASS	IMPLEMENTATIONS.tsv 883 NOT_PROVED_CODE + 1 genuine source SHA	Does not imply code_symbol correct
+R2-T13	Operation code_symbol_at_sha content type	332	332	PASS	OPERATION_TRACES.tsv 331 typed unknown + 1 verified source code	Does not imply current reader
+R2-T14	Implementation code_symbol incorrectly equals raw reported locator	884	0	FAIL_R2_D05	IMPLEMENTATIONS.tsv.code_symbol == IMPLEMENTATIONS.tsv.reported_code_locator	883 source-claim-only; 1 S1 independently read
+R2-T15	Unverified implementation code_symbol explicitly typed NOT_PROVED	0	883	FAIL_R2_D05	IMPLEMENTATIONS.tsv 883 SOURCE_CLAIM_NOT_CODE_READBACK rows	Report citations kept but not valid code-symbol fields
+R2-T16	E001 canonical finding reaches Sorok recipient graph node even ignoring edge direction	0	1	FAIL_R2_D06	RELATIONS.tsv 8502 rows; from J-F-ZL12-F-E001 to J-SEAM-NODE-5fb36fd14859ce80d2	No native equivalence inference
+R2-T17	E001 generation stage links with real exact historical source evidence	0	5	FAIL_R2_D06	GENERATION_STAGE_COURT.tsv E001 5/5 UNRESOLVED_EVIDENCE; existing J-EV-R3-SOROK-E001 at 37915a47	Exact historical E001 witness cannot prove current native
+R2-T18	Stage-court typed unresolved evidence holes	95	95	OBSERVED_HOLD	GENERATION_STAGE_COURT.tsv ZL12 90 ZL03 5	Honest unresolved except known E001 witness not linked
+R2-T19	Source F03 conditional row-none guards actual code read	5	5	PASS	9253064bc9423a0f0ccda4fbdea43c2f54f800c6 data/ddm_build_copy/ddm_v550_question_relation_authority.py lines 751-782 blob 62084cbed10a5975f79bd504bf4fb99025e4e64e	Static-only no issuer/native run
+R2-T20	N10E provider static code call readback	1	1	PASS	256d46bf425cc37e114465cddbe3c60e535766ab rawlsing_next/pre553_empirical_possibility_provider.py blob 23167aa25291fb148b1e3cf210ac33fe7769b783	Static-only original35 native NOT_RUN
