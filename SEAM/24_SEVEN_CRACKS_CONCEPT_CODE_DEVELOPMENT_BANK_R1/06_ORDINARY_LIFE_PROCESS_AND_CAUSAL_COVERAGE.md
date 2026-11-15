@@ -18,6 +18,10 @@ Adolph and colleagues' infant naturalistic experience work (discussed in SEAM/22
 
 The compression rule is therefore not only an optimization trick. **Its declared loss is a scientific constraint on what later developmental inference can legitimately consume.**
 
+### Ordinary life is not synonymous with coercive socialization
+
+The [Governing Spirit](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md) insists on desire, play, craft, beauty, humor, care, appetite and non-traumatic human remainder alongside domination and loss. Cheap background simulation must therefore preserve **noninstrumental ordinary acts** that are neither pedagogical tasks nor explanatory psychological injuries. At least one mundane pleasure/curiosity/craft mode must be representable without converting it into an acquired trait score or a future moral lesson. Structural analysis should also preserve **distant nonexperienced effects** (institutional closures, extraction, law, ecology) without falsely making every objective pressure a personal perception. This is a bounded representational check, not a required production vocabulary or invented statistical frequency.
+
 ## Present positive code assets and hard limits
 
 - [`parent_activity.py::_record_parent_activity`](https://github.com/maidiu/rawlsing/blob/ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py#L1009): actual guarded parent `PAID_WORK/CARE_DEPENDENT/PAY_DEBT` event, source/period/cash/time before/after; **`household_effect=NONE_PARENT_LOCAL_ONLY`**. It doesn't legally propagate caregiver redistribution to every child.
