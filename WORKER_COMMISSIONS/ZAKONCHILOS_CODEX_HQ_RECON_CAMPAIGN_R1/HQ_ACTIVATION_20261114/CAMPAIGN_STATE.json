@@ -722,39 +722,10 @@
     "WORKER_COMMISSIONS/ZAKONCHILOS_CODEX_HQ_RECON_CAMPAIGN_R1/HQ_ACTIVATION_20261114/ROUND1/04_actual_turn.json"
   ],
   "last_material_intake": {
-    "lane": "04",
-    "job": "zak1057-04-documentary-round1",
-    "session": "ses_e22bd21eeffeH5GWvx2XBKwSEw",
-    "exit_code": 0,
-    "started_utc": "2026-11-15T03:32:36.955495+00:00",
-    "finished_utc": "2026-11-15T03:45:49.219218+00:00",
-    "elapsed_seconds": 792.263723,
-    "banked_return_sha": "32d920d6e12408b17185cbf358bbfa7117003894",
-    "return_path": "UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R1/",
-    "disposition": "SOURCE_POSITIVE_SUBSET_BANKED__REVISE_EXACT_FALSE_ABSENCE",
-    "source_checks": {
-      "exact_primary_blob_checks": 16,
-      "matched": 16,
-      "tsv_tables": 10,
-      "tsv_width_failures": 0,
-      "positive": "F6M emits covered/uncovered mass; actual static F6P consumer checks mass conservation and false full states; I07 is permission receipt guard, not numerical synthesis",
-      "counterexample": "pre553_n9_n10w_progressive_candidate.py and n10e files ARE PRESENT at BOTH protected6a5c12 and workerHEAD69804. Git ls-tree literal glob lookup is not exhaustive enumeration. EV017 absence claim rejected.",
-      "matrix_access": "Designated e725ec39 owner-map path is a locally available Git blob; prior external-worktree denial does not block same-repository git show."
-    },
-    "scope": "Source-only S1; no historical/native execution or current selected N9 reader acceptance. Preserve candidate/science/authority boundaries.",
-    "next_action": {
-      "job_id": "zak1057-04-round1-source-search-correction",
-      "child_pid": 20117,
-      "supervisor_pid": 20116,
-      "observer_pid": 20118,
-      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-04-round1-source-search-correction",
-      "launch_is_not_completion": true
-    },
-    "correction_budget": "SAME session, only remaining original30-minute window; absolute deadline2026-11-15T04:02:36.955495Z; no second research round.",
-    "reported_provider_cost_usd": 0.107267262,
-    "cost_grade": "58provider step-cost fields, not invoice or current balance",
-    "new_T": 0,
-    "independent_review": "HQ direct source counterexample and positive source checks; whole material-tranche omission review pending."
+    "lane": "03",
+    "round": 2,
+    "delivery_sha": "e27154883288a3265844791be0782edeaae61979",
+    "disposition": "RECEIVE_USABLE_BOUNDED_S1_PRODUCER_TRACT__SUMMARY_CITATIONS_QUALIFIED"
   },
   "material_intakes": [
     {
@@ -1731,7 +1702,9 @@
         "supervisor_pid": 23152,
         "observer_pid": 23155,
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/zak1057-01a15c1e/zak1057-03-documentary-round2",
-        "launch_is_not_completion": true
+        "launch_is_not_completion": true,
+        "status": "ROUND2_RETURNED_STOP__BOUNDED_S1_RECEIVED_WITH_CITATION_HOLDS",
+        "last_checkpoint_sha": "e27154883288a3265844791be0782edeaae61979"
       },
       {
         "lane": "04",
@@ -2305,6 +2278,138 @@
           "path": "UNIFIED_LOG_R1/ZAK04S_CODEX_CAMPAIGN_R2/UNJOINS.tsv",
           "sha256": "1a70395783097a51d8a646cba53ef6a76000927e206dc4baff625f28538e701a",
           "bytes": 3962
+        }
+      ]
+    },
+    "03": {
+      "lane": "03",
+      "job": "zak1057-03-documentary-round2",
+      "session": "ses_e22bd2212ffeuDpE5KDgQ8bGEV",
+      "exit_code": 0,
+      "started_utc": "2026-11-15T04:08:11.153055+00:00",
+      "finished_utc": "2026-11-15T04:20:22.813645+00:00",
+      "elapsed_seconds": 731.66059,
+      "delivery_sha": "e27154883288a3265844791be0782edeaae61979",
+      "source_grade_disposition": "RECEIVE_USABLE_BOUNDED_S1_PRODUCER_TRACT__SUMMARY_CITATIONS_QUALIFIED",
+      "source_checks": {
+        "primary_commit_path_blob_matches": 22,
+        "directory_symbol_search_rows": 2,
+        "evidence_rows": 24,
+        "tsv_tables": 13,
+        "width_failures": 0,
+        "manifest_payload_hashes_and_bytes_matches": 18
+      },
+      "coverage": {
+        "FOUND": 7,
+        "UNRESOLVED": 1,
+        "NOT_INSPECTED": 13
+      },
+      "material_finding": "Selected-QSM-to-I03 candidate and actual I04 receipt receiver exist; selected-rule-to-I04 producer/runtime edge not demonstrated at inspected protected cut.",
+      "qualifications": [
+        "00_RETURN paragraph citations misnumbered: use corrected HQ note and actual EVIDENCE rows",
+        "Required-binding versus carried ExactRef distinction is not independently established security defect",
+        "Bounded named-symbol absence does not prove global absence or require a new engine",
+        "Proposed next constructor search repeats completed tract and is not commissioned"
+      ],
+      "review": "HQ source intake only; existing independent reviewer covers frozen round1, not round2",
+      "reported_cost_usd": 0.248841624,
+      "cost_grade": "88 OpenCode step-cost fields; estimate, not invoice or extra charge/account allowance evidence",
+      "worker_status": "ROUND2_LANE03_STOP; no continuation or third round",
+      "payload_manifest": [
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/00_RETURN.md",
+          "sha256": "1462882ae523f11f7761a7e1b81ea10f935128be25b90c0bdb03b4f4cd515b39",
+          "bytes": 11009
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/AUTHORITY_USE.tsv",
+          "sha256": "34df19ed8a64351d5aefdf040ef2f34ec619f9d14db962fdd9908114c056e033",
+          "bytes": 3902
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/CASES/ZAK03S_CASE_R2_RULE_PRODUCER_MAP.md",
+          "sha256": "b3ebc358c0ec6a421859a9e6bd0e7c4c50ba576a1f96d761debd46e9539d762f",
+          "bytes": 9497
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/CHANGED_FILES.txt",
+          "sha256": "ce715a0e0ccc3e20110f4e88813f2a2d4e51ccd7399ad3f6639e03bd9eebea01",
+          "bytes": 1417
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/COVERAGE.tsv",
+          "sha256": "f8ed01f76063bd2314eee0f6d1608453b062216e0c0525f95df3d1326e141f21",
+          "bytes": 6134
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/DATA_SHAPES.tsv",
+          "sha256": "1713ae06034f25215ef03ae46cf1336e9d15ae97886f691b317ea5aac2945d8a",
+          "bytes": 5845
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/EVIDENCE.tsv",
+          "sha256": "76a548956d4b84223bda80e303671c31f4e3a83bc411f5950f327626c0f50031",
+          "bytes": 13723
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/EXTENSIONS.tsv",
+          "sha256": "480d4af809e328e9df142265983e00a1573ffd26a81e0a9056a2f8294de83664",
+          "bytes": 1816
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/FINDINGS.tsv",
+          "sha256": "062001fe9d6a9df7b0a7414cabb88fdbd39c5ad2e34b6a9c51af385adcef09a3",
+          "bytes": 7790
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/HUMAN_STORY.md",
+          "sha256": "8d8e2e1dcc578c67502c68e6c2c8e7f743bb245403ad15121ba6177f2763ac08",
+          "bytes": 6285
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/MANIFEST_SHA256.tsv",
+          "sha256": "d8827993b0e2f6d0134eec93f2676c038e1f82164576c1db124f515e39d86fda",
+          "bytes": 1617
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/MECHANISM_RECONCILIATION.tsv",
+          "sha256": "638af4ae85d508bbf0edf14e37ad2789fcc25dd9e9e6a5a00fc03214f4e14d8c",
+          "bytes": 5966
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/OPERATION_TRACES.tsv",
+          "sha256": "1d9f48e049779192679e187dd0b19ecea10a5336217bc757c171992cf11612fd",
+          "bytes": 10869
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/PRODUCER_CONSUMER_MAP.tsv",
+          "sha256": "cd4e62ac9f4ae5083cbf8db3e96b24d93d033f0a9e3547277361a67170bddd79",
+          "bytes": 7455
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/README.md",
+          "sha256": "b64f6510460b2031aaf1b27ed18d30b515c8e2fce87f7635ccc82f24f14b6c13",
+          "bytes": 1121
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/REVERSE_CONSUMERS.tsv",
+          "sha256": "b3baee9c2f77c3f6038d47e7a49d6746ef5ae67c747bff8de5b8721edf754ee3",
+          "bytes": 3919
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/SCOPE_CONTRACT.md",
+          "sha256": "9cb6852fb60ee377015c6316c3af79ef0f8695dd9ab1a8ca239306b037c9de62",
+          "bytes": 6017
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/SOURCE_SEARCH_LOG.tsv",
+          "sha256": "79f5748c60b900e9e76d0fc8a39ce118c4531c6a73c6882ee697ff530b4915b6",
+          "bytes": 4703
+        },
+        {
+          "path": "UNIFIED_LOG_R1/ZAK03S_CODEX_CAMPAIGN_R2/UNJOINS.tsv",
+          "sha256": "98a6783e1218e9c348f2fbe7089fb926ccc6fa65747b82ba8d67820e79110090",
+          "bytes": 5442
         }
       ]
     }
