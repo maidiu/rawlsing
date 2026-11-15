@@ -1,11 +1,11 @@
-# Bilateral evidence transfer and separate receiving criteria
+# Three-way evidence transfer and separate receiving criteria
 
-**Applies only to:** ZAK02 documentary PR #1046 @ `708e5982a559259e48e095966cffabc45a53f8b3`; ZAK03 documentary PR #1048 @ `3a39b8144d6f9edcab3db1563e9bee2f6bf5ccb6`; historical `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`; protected `6a5c12f04323d74001f9632063ec907f4fc4468e`. Exact alias table: `CROSSWALK.tsv`. THIS IS NOT A MERGE OR ACCEPTANCE.
+**Current evidence cuts:** ZAK02 original-history R7 PR #1046 `45d99eb98ea4e509854b2896a33f2124209a9512`; ZAK03 PR #1048 `fad91c6a53a6ce5c891fb69c6d7e63cf43586029`; broader ZAK04S documentary chain through PR #1053 `69804f88abc8e84cf91ee256aa66fb607a49f5a7`; historical selected `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`, downstream historical `25830fe7462bb9e29bc4087e6ae14f3f84cec377`; protected `6a5c12f04323d74001f9632063ec907f4fc4468e`. Original 14-case alias table: `CROSSWALK.tsv`; shared source/consumer register `SHARED_SEAM_REGISTER.tsv`. THIS IS NOT A MERGE OR ACCEPTANCE. Historical engineering PR #1040 is an abandoned off-task detour, not an active mandate.
 
 ## Handoff A: ZAK-03S to ZAK-02S (historical discovery correction)
 
 1. **F03 wider source mechanisms:** ZAK03:T:0004 spans authority file selection (explicit > environment > root > default), strict source/wave/country/question/var match, ambiguity/no-match rejection, directional/neutral/context/administrative/blocked differentiated effects and certified QUC five-condition no-match. Reconcile with ZAK02:T:0002 without flattening or double-counting; resolve each meaning-bearing S/negative separately.
-2. **Different V550 position-distribution marginal:** ZAK03:T:0012 uses `data/ddm_build_copy/ddm_v550_position_distribution.py`, historical/protected Git blob `651329254244e9f42a8d88c2721ccae6bd768073`, lines 51–132. It computes respondent-position-category marginal shares (with respondent deduplication), **not** ZAK02:T:0018 `ddm_v550_clouds.py` position-feature association ranking. Historical owner should investigate a new T candidate, locate actual producer/writer and first reader, assess type/denominator, and preserve a negative that a response-conditioned association does not replace a marginal.
+2. **Different V550 position-distribution marginal:** ZAK03:T:0012 uses `data/ddm_build_copy/ddm_v550_position_distribution.py`, historical/protected Git blob `651329254244e9f42a8d88c2721ccae6bd768073`, lines 51–132. It computes respondent-position-category marginal shares (with respondent deduplication), **not** ZAK02:T:0018 `ddm_v550_clouds.py` position-feature association ranking. **Already done at ZAK02 R7:** the primary historical owner source-qualified this as new **provisional `ZAK02:T:0020`**, pinned three producers and the first V551 position_context reader; native original35 scientific first-reader parity remains unproved. Do not recommission the discovery. Preserve a negative that the response-conditioned association does not replace the marginal.
 3. **Curated QSM corpus/source selection:** ZAK03:T:0001 selected-source evidence, including curated 18,518-row Full Question Relation Authority R1 and 41 blocked cases, and B49/R157 at alternate cuts. These are source candidates; never promote historical source row/version or recovered alternate code to current protected adopted rule without proving issuer and selected path.
 4. **Current-source consumer leads:** ZAK03 source/reader R3 points to current source-local RAW, B49 candidate, C11, I03/I05/Batch and real issued-workload static reader. Transfer first-reader clues to historical-owner `UNJOINS`, but code connectivity does not equal observed native scientific consumption.
 
@@ -47,3 +47,16 @@ ZAK-02S: frozen HEAD + changed documentary files; mapped aliases; exact F03 and 
 ZAK-03S: frozen HEAD + changed documentary files; explicit cross-reference disposition for all 14 local T, source/row/version selection and current I03/I05/Batch first-reader matrix; separately bounded evidence of QSM adapter PR #1042/#1043 nonexecution; live scientific/authority proof gaps.
 
 **No protected action or automatic acceptance is requested.**
+
+
+## Handoff C — Broad ZAK-04S original-first downstream history (not abandoned R05 engineering)
+
+**Active ZAK-04S recon:** historic source-to-modern scientific function conservation across F5/F6/F7, V553–V558, FF, N9/N10W and Sorok; documentary PR #1045 and source-graded R2–R7 challenge chain ending PR #1053. The earlier PR #1040 R05/P41 repair/build attempt was abandoned as out of task due to HQ misunderstanding. Do not direct ZAK-04S or the other agents to execute its tests or fix runners.
+
+**ZAK02→ZAK04S:** Transfer historical V550 conditional/risk-set/position and V551 signed/conditional and V551J component authority, V552 pressure and V552J structural/temporal probe as exact source-qualified upstream inputs only. Do not infer FF causal license or V553 multiwave authorization from an earlier V552J probe-only status.
+
+**ZAK03→ZAK04S:** Transfer present selected source/QSM/target-use authority and actual C11/I03/I05/Batch output/readers as source-qualified candidate inputs, distinct from structured FF transport or actor authority. Mark static callsite versus selected source-native reader.
+
+**ZAK04S→ZAK02/ZAK03:** Transfer (i) independent V553 `AUTHORIZED_SPARSE_TEMPORAL_KEY` source-positive from two+ comparable anchors, (ii) actual V554 reading a different country-year heuristic lane and unmatched regional-status vocabulary, (iii) historical F6M numeric vs F6P reader vs current I07 authorization differences, (iv) V551 conditional vs FF count vs FFX respondent conditional estimands, and (v) later V555–V558, N9/N10W and Sorok first-reader/permission negatives. These are S1 source findings, not original35 native measurements or actor execution.
+
+**Single master but no simultaneous edits:** All 3 agents submit append-only documentary intake in their own PR/workspace. Source-verified, one-at-a-time updates to PR #1054 are for the designated integrator only. Old record versions are immutable citations; newer source findings explicitly supersede earlier descriptions rather than erasing them.
