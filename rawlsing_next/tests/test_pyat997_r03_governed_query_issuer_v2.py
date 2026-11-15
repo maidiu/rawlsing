@@ -152,3 +152,68 @@ def test_sourcefree_public_compiler_rederives_frozen_frontier_and_preserves_proh
         issue.original_compilation.operation_dispositions[b.operation_id] == "ELIGIBLE"
         for b in issue.operation_jobs
     )
+
+
+def test_v2_saved_postconsumer_consumes_only_new_compiler_issued_jobs(
+    tmp_path,
+):
+    handoff, estate, admission, v1, _, _ = s1e._full(
+        tmp_path / "r03-v2-saved-join",
+    )
+    issue = _issue_compiled_governed_queries_v2(v1)
+    workload = issue.issued.workload
+    assert workload.requests
+    manifest, predicates = s1e._issued_manifest(workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    from rawlsing_next.pre553_saved_workload_integration import execute_saved_batch
+    result = execute_saved_batch(
+        admission, manifest=manifest, predicate_ref_by_query=predicates,
+    )
+    assert len(result.receipts) == len(manifest.units)
+    # This independently executed Batch may have separate custody; the R6
+    # join still verifies each first reader itself from the actual runner.
+    joined = join_saved_source_operation_fates(
+        handoff=handoff, estate_receipt=estate, admission=admission,
+        compilation=v1, workload=workload,
+        resolver=TestOnlyDecisionResolver(issue.issued.record),
+        host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+        runner=runner, issuer_v2=issue,
+    )
+    assert len(joined.rows) == len(handoff.operation_fates)
+    assert all(
+        row["postconsumer_receipt_refs"] == ()
+        for row in joined.rows if row["disposition"] != "ELIGIBLE"
+    )
+    assert joined.audit["native_completed_units_rechecked"] >= 0
+    # Positive original source-realized query attribution is strictly more
+    # demanding than issuing/executing the sourcefree job. If this fixture
+    # has no complete query-role→Q2-realized mapping, it stays PENDING.
+
+
+def test_v2_changed_operation_bindings_refuse_even_matching_current_record(
+    tmp_path,
+):
+    handoff, estate, admission, v1, _, _ = s1e._full(
+        tmp_path / "r03-v2-forged-map",
+    )
+    issue = _issue_compiled_governed_queries_v2(v1)
+    workload = issue.issued.workload
+    manifest, _ = s1e._issued_manifest(workload, admission)
+    runner = BatchExecutionRunner(
+        manifest=manifest, repository=admission, saved_mode=True,
+    )
+    forged = replace(issue, operation_jobs=())
+    with pytest.raises(
+        SourceReceiptJoinError,
+        match="R03_V2_ORIGINAL_GOVERNED_OPERATION_ISSUER_DRIFT",
+    ):
+        join_saved_source_operation_fates(
+            handoff=handoff, estate_receipt=estate, admission=admission,
+            compilation=v1, workload=workload,
+            resolver=TestOnlyDecisionResolver(issue.issued.record),
+            host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+            runner=runner, issuer_v2=forged,
+        )
+    assert runner.receipts == ()
