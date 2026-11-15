@@ -1,0 +1,7 @@
+file	actual_rows	actual_columns	expected_rows	primary_key	syntax_grade	internal_fk_failures	semantic_verdict	review_correction
+FINDINGS.tsv	84	17	84	finding_id	PASS_WIDTH_COUNTS_UNIQUE_ID_REVIEWED	0	REVISE_NOT_SUFFICIENT_FOR_FUNCTIONAL_NO_DROP	S1 68 registered claims plus 16 code descriptions; no S2
+OPERATION_TRACES.tsv	16	21	16	trace_id	PASS_WIDTH_COUNTS_UNIQUE_ID_REVIEWED	0	REVISE_NOT_SUFFICIENT_FOR_FUNCTIONAL_NO_DROP	Static method tracing, not empirical producer-to-actual-first-reader run
+AUTHORITY_USE.tsv	16	16	16	authority_use_id	PASS_WIDTH_COUNTS_UNIQUE_ID_REVIEWED	0	REVISE_NOT_SUFFICIENT_FOR_FUNCTIONAL_NO_DROP	All 16 authority_status ISSUER_UNVERIFIED; cannot count applied grants
+EVIDENCE.tsv	84	19	84	evidence_id	PASS_WIDTH_COUNTS_UNIQUE_ID_REVIEWED	0	REVISE_NOT_SUFFICIENT_FOR_FUNCTIONAL_NO_DROP	68 direct registry identity receipts and 16 static code, no original science
+COVERAGE.tsv	84	16	84	coverage_id	PASS_WIDTH_COUNTS_UNIQUE_ID_REVIEWED	0	REVISE_NOT_SUFFICIENT_FOR_FUNCTIONAL_NO_DROP	84/84 UNJOINED; all 68 registry trace_presence ABSENT
+UNJOINS.tsv	100	19	100	unjoin_id	PASS_WIDTH_COUNTS_UNIQUE_ID_REVIEWED	0	REVISE_NOT_SUFFICIENT_FOR_FUNCTIONAL_NO_DROP	84 author TARGET_ABSENT reasons due to unread census invalidated; 16 AUTHORITY_UNPROVED remains
