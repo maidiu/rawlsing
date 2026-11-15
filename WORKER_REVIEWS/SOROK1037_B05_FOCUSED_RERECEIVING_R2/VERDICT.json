@@ -1,0 +1,272 @@
+{
+  "schema": "SOROK1037_B05_FOCUSED_R2_RECEIVING_VERDICT@1",
+  "issue": 1037,
+  "round": "B05_FOCUSED_R2_RERECEIVING",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "accept_scoped": false,
+  "accept_scoped_target": "ACCEPT_SCOPED@B01_B05_SOURCEFREE_270eb29cd4487b6865b61adc9d671952554d425d",
+  "accept_scoped_earned": false,
+  "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+  "reviewer_role": "same_independent_nonauthor_focused_rereceiving",
+  "independence": {
+    "same_reviewer_as_original_5b65": true,
+    "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+    "author_is_reviewer": false,
+    "original_author_session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+    "original_red_review_commit": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+    "original_red_review_immutable": true,
+    "product_write": false
+  },
+  "candidate": {
+    "sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+    "branch": "codex/sorok1037-b05-writer-proof-repair-20261115-r2",
+    "base": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+    "grade": "SOURCEFREE_S2_ONLY",
+    "checkout": "/Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing"
+  },
+  "host": {
+    "hostname": "oldMac.lan",
+    "platform": "Darwin 22.6.0 x86_64",
+    "macos": "13.7.8",
+    "python": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+    "pytest": "9.1.1",
+    "contention": "timings/RSS are observations, not isolated benchmarks"
+  },
+  "model_auth_metadata": {
+    "actual_model": "OpenCodeGo DeepSeekV4.1FlashMAX as declared",
+    "checkpoint_org_quota": "UNOBSERVED",
+    "provider_tokens_usd": "UNOBSERVED",
+    "provider_model_account_auth_globalpermission_server_changes": "NONE",
+    "paid_fallback": "NONE"
+  },
+  "product_blobs": {
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py": {
+      "before_r2_blob": "b944b8f0b6e0d700e85141256df01cdaef8d59e2",
+      "candidate_blob": "a193fb5bfb6a1955209bedf0e66be974dcfa8e1b",
+      "candidate_sha256": "5ac75cb66c61fb120f56900e976a8cdcd4e153fd4b0d37d9a93a0c95ab578331",
+      "change": "read-side only; +85 lines; no writer/ABI/store/schema/lock change"
+    },
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py": {
+      "blob": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+      "sha256": "114f38e5303815d890188809309de56f2ff001d8fc8adb02243a6b1fc83d241a",
+      "unchanged": true
+    },
+    "other_product_changes": "NONE",
+    "new_ledger_registry_secret_key_writer_store": "NONE"
+  },
+  "test_and_probe_blobs": {
+    "author_r2_focused_tests": {
+      "path": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py",
+      "git_blob": "e61dca9f81ddc3fcb5fcf33272934232c2ae16a2",
+      "sha256": "8f74ce13b7dfa992c475f84451c71350cdf6b8e762ae97c91bd8d8cfbc9b5cde",
+      "count": 5
+    },
+    "author_legacy_tests": {
+      "path": "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py",
+      "git_blob": "a28db531306b3ad4dcebc76915d079f14ac0ea0f",
+      "count": 6
+    },
+    "exact_1027_witness": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_probe_1027.py",
+      "git_blob": "7cd5a23044426961d6f33e13b1ccf44f54916f81",
+      "sha256": "da1d4389fdae9d092f3bb777777e5f5ea76a71fea943730ff6cf029e3414fa5a",
+      "byte_identical": true,
+      "modified": false
+    },
+    "exact_1027_cold_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_cold_probe_1027.py",
+      "git_blob": "6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab",
+      "sha256": "f9cc6e56cf6899bea1b09c820b4b3dc0ad52a97b5864bc9121a34229dc1820aa",
+      "byte_identical": true,
+      "modified": false
+    },
+    "unchanged_review_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_review_probe.py",
+      "git_blob": "3e98929dbb526edf6fab60f74132cafe03d63239",
+      "sha256": "fb42f9fd48d455bedf236d6f578e8aab94de449b4bf1e07adb315c99115a6c57",
+      "byte_identical": true,
+      "literal_exit": 0,
+      "checks": "34/34"
+    },
+    "own_r2_focused_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_r2_focused_probe.py",
+      "git_blob": "d5d41240d32170ab0f2bed292afa747662283287",
+      "sha256": "0300e8ddc694a85260589a92a9632c3661835a3a096c9294e09287bbf8acd4d8",
+      "literal_exit": 2,
+      "checks": "16/17",
+      "exit_semantics": "0=no false ADMITTED proof; 2=false ADMITTED proof reproduced; 1=harness/unexpected"
+    },
+    "selected_c03_c04": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py",
+      "git_blob": "8e3775ebb51547aefa4490227a95a7eeff0008a9",
+      "product_edit": false
+    }
+  },
+  "commands": [
+    {
+      "id": "unchanged_review_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_review_probe.py",
+      "exit": 0,
+      "result": "34/34 checks; no residual; original positive sole-rehash refused B05_RENT_OPERATION_UNPROVEN",
+      "elapsed_seconds": 37.76,
+      "peak_rss_bytes": 57102336
+    },
+    {
+      "id": "exact_1027_witness",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_probe_1027.py",
+      "literal_exit": 1,
+      "semantic_result": "63/63 checks pass; both defects accepted=false; typed refusals",
+      "elapsed_seconds": 15.89,
+      "peak_rss_bytes": 64147456
+    },
+    {
+      "id": "exact_1027_cold_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_cold_probe_1027.py",
+      "exit": 0,
+      "result": "ok=true; warm_ok=true; child_exit=0; two purchases + one rent; head unchanged",
+      "elapsed_seconds": 14.88,
+      "peak_rss_bytes": 55865344
+    },
+    {
+      "id": "author_focused_r2_tests",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py",
+      "exit": 0,
+      "result": "5 passed",
+      "elapsed_seconds": 35.01,
+      "peak_rss_bytes": 67796992
+    },
+    {
+      "id": "author_legacy_tests",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py",
+      "exit": 0,
+      "result": "6 passed",
+      "elapsed_seconds": 43.02,
+      "peak_rss_bytes": 68726784
+    },
+    {
+      "id": "inherited_43",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q <14 inherited B01-B05 test files>",
+      "exit": 0,
+      "result": "43 passed once on final R2 source",
+      "elapsed_seconds": 438.62,
+      "peak_rss_bytes": 80191488
+    },
+    {
+      "id": "selected_c03_c04",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/A_RETURN_R3/test_c03_c04_consumer.py",
+      "exit": 0,
+      "result": "3 passed; product read-only",
+      "elapsed_seconds": 56.43,
+      "peak_rss_bytes": 72790016
+    },
+    {
+      "id": "own_r2_focused_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-focused-r2/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_r2_focused_probe.py",
+      "literal_exit": 2,
+      "result": "16/17 checks; one failure = forged ADMITTED zero-rent receipt accepted READ",
+      "elapsed_seconds": 41.64,
+      "peak_rss_bytes": 60432384
+    }
+  ],
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "candidate 270eb29cd4487b6865b61adc9d671952554d425d on codex/sorok1037-b05-writer-proof-repair-20261115-r2; base c7018020",
+        "only B05 read-side source changed; +85 lines; B04 blob unchanged 3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+        "no writer/schema/store/lock/ledger/registry/key/currency change",
+        "exact assets byte-identical; no author probe executed in place",
+        "exclusive reviewer root and checkout-local scratch; no hot imports"
+      ]
+    },
+    "G2_build_normal_first_consumers": {
+      "status": "PASS_NORMAL_READERS_AND_COLD",
+      "evidence": [
+        "unchanged review probe 34/34; original positive sole-rehash closed",
+        "two purchases + one rent warm and fresh-process cold; parent cash 20, household cash 43, market 0, two ownership rows, head unchanged",
+        "5 focused R2 + 6 legacy + 43 inherited + 3 selected consumer passed",
+        "genuine zero UNCHANGED and held REFUSED read without debit proof",
+        "historical h1 historical=true, h2 false; replay/retry no second debit"
+      ]
+    },
+    "G3_falsification": {
+      "status": "FAIL_REVISE_EXACT_DEFECT",
+      "passing_controls": [
+        "original positive sole-rehashed rent now B05_RENT_OPERATION_UNPROVEN",
+        "exact #1027 foreign-root B04/B05 refusals",
+        "checkpoint sever -> B05_RENT_OPERATION_UNPROVEN -> exact restore",
+        "sibling copy of a real h1 transition to h2 -> both refuse",
+        "positive forged rent on unchanged public no-cash checkpoints refuses",
+        "zero genuine UNCHANGED and held REFUSED read",
+        "historical/replay/retry preserved",
+        "B04 chain/ownership controls unchanged"
+      ],
+      "failing_defect": "forged ADMITTED zero-rent receipt accepted with public no-cash say checkpoints; actual zero writer is UNCHANGED"
+    },
+    "G4_boundaries_preservation": {
+      "status": "PARTIAL_PASS_PRESERVATION__ZERO_STATUS_BOUNDARY_FAILS",
+      "preserved": [
+        "B04 and all B04 refusals",
+        "B05 writer, receipt schema, store and lock",
+        "genuine zero UNCHANGED and held REFUSED",
+        "historical h1/h2, replay/retry, normal warm/cold",
+        "dwelling-source stale and exact restore",
+        "no new ledger/currency/psychology/motive inference"
+      ],
+      "failed_boundary": "ADMITTED status/actual-operation semantics not preserved for zero rent; a non-rent public state pair proves a false ADMITTED rent"
+    },
+    "G5_focused_nonauthor_receiving": {
+      "status": "REVISE_EXACT_DEFECT",
+      "acceptance": "NOT_ACCEPTED",
+      "basis": "one remaining exact append-only/public-action false ADMITTED zero-rent proof",
+      "terminal": "STOP"
+    }
+  },
+  "residual_defect": {
+    "id": "SOROK1037-R2-RED-B05-ZERO-FALSE-ADMITTED",
+    "first_reader": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:read_household_obligation",
+    "source_lines": "checkpoint proof 280-359; ADMITTED transition call 541-546",
+    "scenario": [
+      "public house.commit_dwelling sets monthly_rent/rent_due_now 0",
+      "materialize period:2026-h1 COMPLETE at clock 429",
+      "two public session.product.say(...) actions succeed at clock 429 and move no cash",
+      "four adjacent checkpoints at clock 429 have cash 55 and material hash 8ee0b853d3b34cec760f642cd3203719055613d298950b0203d7629a351888da",
+      "append sole ADMITTED P2_HOUSEHOLD_RENT receipt with rent 0, before/after cash 55/55, before/after hash 8ee0.../8ee0..., current sources",
+      "read_household_obligation returns READ historical=false receipt_status=ADMITTED household_cash=55"
+    ],
+    "actual_writer_zero_status": "UNCHANGED",
+    "cash_before_append": 55,
+    "cash_after_append": 55,
+    "classification": "false ADMITTED evidence/currentness proof; NOT a duplicate debit",
+    "in_scope": true,
+    "in_scope_basis": "focused requirement: actual zero is UNCHANGED and no false ADMITTED proof; proof associates any same-clock state pair, not this rent operation",
+    "threat_model": "existing public product actions plus public append_episode; no privileged world rewrite",
+    "non_rent_cash_delta_note": "no existing public owner API provides a non-rent A-household-cash debit; base product repair only credits +2 and cannot satisfy a non-negative rent debit"
+  },
+  "original_red_status": {
+    "commit": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "defect": "sole positive rehashed ADMITTED rent receipt accepted READ",
+    "at_r2": "CLOSED_BY_R2",
+    "evidence": "unchanged review probe 34/34, B05_RENT_OPERATION_UNPROVEN",
+    "immutable": true
+  },
+  "supersession": {
+    "original_red_erased": false,
+    "original_positive_defect_closed": true,
+    "new_zero_defect_remains": true,
+    "r2_accepted": false
+  },
+  "minimal_correction_for_record_not_dispatched": "Require ADMITTED status semantics and a strict debit transition: monthly_rent > 0, household_cash_after < household_cash_before, and the actual checkpoint pair. Reject ADMITTED when monthly_rent == 0 or before == after; zero must remain UNCHANGED and insufficient cash REFUSED. No new ledger, key, writer or schema.",
+  "nonclaims": [
+    "no native/science/human/actor authority or psychological fact",
+    "no motive, desire or volition inference",
+    "no protected PRE-MAIN merge",
+    "no new ledger, scheduler, currency conversion or writer change",
+    "no full P6/MII/J1 campaign",
+    "no isolated performance or provider cost claim",
+    "no further automatic repair round"
+  ],
+  "terminal": "STOP",
+  "review_commit_sha": "REPORTED_IN_FINAL_CHAT_AFTER_FREEZE"
+}

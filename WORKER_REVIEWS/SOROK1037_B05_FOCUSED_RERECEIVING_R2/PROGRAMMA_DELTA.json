@@ -1,0 +1,64 @@
+{
+  "schema": "SOROK1037_B05_FOCUSED_R2_PROGRAMMA_DELTA@1",
+  "issue": 1037,
+  "round": "B05_FOCUSED_R2_RERECEIVING",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "source_free_only": true,
+  "candidate": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "product_change_by_reviewer": "NONE",
+  "closed": [
+    {
+      "defect": "SOROK1037-RED-B05-SOLE-REHASHED-RENT (positive sole receipt)",
+      "status": "CLOSED_AT_R2",
+      "effect": "unchanged review probe 34/34; forged positive ADMITTED receipt refuses B05_RENT_OPERATION_UNPROVEN"
+    }
+  ],
+  "preserved": [
+    "B04 source and all B04 refusals",
+    "B05 root/branch/actor/period/source/rent/arithmetic/uniqueness checks",
+    "genuine zero UNCHANGED and held REFUSED reads",
+    "historical h1 historical=true after h2; h2 false; replay/retry no second debit",
+    "normal two purchases + one rent warm and fresh-process cold",
+    "pre-existing dwelling-source stale refusal and exact restore",
+    "exact #1027 foreign-root refusals"
+  ],
+  "remaining": [
+    {
+      "defect": "SOROK1037-R2-RED-B05-ZERO-FALSE-ADMITTED",
+      "status": "OPEN_REPRODUCIBLE_IN_SCOPE",
+      "first_reader": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py:read_household_obligation",
+      "effect": "public no-cash say checkpoints at the receipt clock prove a sole forged ADMITTED zero-rent receipt; reader returns READ historical=false receipt_status=ADMITTED with cash unchanged; actual zero writer is UNCHANGED",
+      "classification": "false ADMITTED evidence/currentness proof; NOT a duplicate debit",
+      "threat_model": "existing public product actions plus public append_episode; no privileged world rewrite",
+      "in_scope": true
+    }
+  ],
+  "minimal_correction_for_record_not_dispatched": "Require ADMITTED strict debit semantics: monthly_rent > 0, household_cash_after < household_cash_before, actual checkpoint pair; reject ADMITTED when rent == 0 or before == after; zero UNCHANGED and insufficient-cash REFUSED unchanged. No new ledger/key/writer.",
+  "supersession": {
+    "original_red_commit": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+    "original_red_immutable": true,
+    "original_positive_case_closed": true,
+    "new_zero_case_remains": true,
+    "r2_accepted": false
+  },
+  "evidence": {
+    "receiving": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/00_RECEIVING.md",
+    "verdict": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/VERDICT.json",
+    "matrix": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/G1_G5_MATRIX.json",
+    "own_probe": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/g5_r2_focused_probe.py",
+    "own_report": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/evidence/g5_r2_focused_probe_report.json",
+    "unchanged_review_probe_report": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/evidence/g5_review_probe_report.json",
+    "exact_1027_report": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/evidence/g5_probe_1027_report.json",
+    "cold_report": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2/evidence/g5_cold_probe_1027_report.json"
+  },
+  "nonclaims": [
+    "not native science or human/actor authority",
+    "no motive, desire or volition result",
+    "no protected PRE-MAIN merge",
+    "no new ledger, scheduler, currency conversion or writer change",
+    "no full P6/MII/J1 campaign",
+    "no isolated performance or provider cost claim",
+    "no further automatic repair round"
+  ],
+  "terminal": "STOP"
+}
