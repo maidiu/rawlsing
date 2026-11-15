@@ -1,5 +1,7 @@
 # W8-R FINAL WORK-NOW — ONE CHOSEN OUTCOME, ALL ACTIVE MEMBERS, ACTUAL FIRST READER
 
+**B05 R3 author return / independent receiving active (2026-11-15):** Exact candidate `cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc`, [draft #1087](https://github.com/maidiu/rawlsing/pull/1087), B05 blob `9de3b5a295431fac2b0f9833ed520262df04b363`. ADMITTED positive-rent/strict exact debit guard supplements existing authentic checkpoint proof; B04 unchanged. Durable author receipt 22:59:19–23:27:44 UTC, exit0. Original zero witness RED16/17→GREEN17/17, positive34/34, original63/43 and relevant normal/cold/consumer evidence are author results, not acceptance. SAME separate nonauthor `ses_e21caf5dfffeSywXGrQ6qw65oe` now executes exact-cut G5 job `sorok1037-b05-r3-independent-g5-20261115-r3`, PID27543, isolated read-only product checkout; actual Go DeepSeek V4.1 Flash MAX/cwd verified, own new negative required. No automatic R4 or protected/scientific promotion. C05 challenge remains separately assigned; no unrelated jobs released.
+
 ## New explicit two-job authorization — 2026-11-15
 
 Supersedes the prior terminal/STOP dispatch state only for these two finite jobs; all earlier source/review verdicts remain historical and unchanged.

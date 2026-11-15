@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
-  "updated_utc": "2026-11-15T23:00:16.417417+00:00",
+  "updated_utc": "2026-11-15T23:29:49.153072+00:00",
   "host": "oldMac.lan",
   "controller_supports_persistent_dependency_dispatch": false,
   "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
@@ -513,6 +513,16 @@
       "relation_knowledge_owner_receipt": "NONE",
       "coherent_append_authority": "accepted as caller-authorized input, not authenticated actor knowledge",
       "next_action": "bank scoped engineering result and stop; no dependent job released"
+    },
+    {
+      "task": "B05 R3 author",
+      "state": "AUTHOR_CANDIDATE_NOT_ACCEPTED_G5_RUNNING",
+      "sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "pr": 1087,
+      "source_blob": "9de3b5a295431fac2b0f9833ed520262df04b363",
+      "zero_probe": "RED16/17->GREEN17/17_AUTHOR_EVIDENCE",
+      "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "automatic_r4": false
     }
   ],
   "guide_records_affected": [
@@ -522,28 +532,17 @@
   "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT",
   "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff.",
   "dispatch_decisions": {
-    "B05_R3": "ACTIVE_SOURCE_OWNED_AUTHOR",
+    "B05_R3": "AUTHOR_CANDIDATE_CAB1F2D6_SAME_NONAUTHOR_G5_RUNNING",
     "C05_CHALLENGE": "ACTIVE_INDEPENDENT_HOSTILE_TESTS_ONLY",
     "other_classified_jobs": "HELD_UNCHANGED_NO_FILLER"
   },
   "queue_status": "TWO_NEW_USER_AUTHORIZED_JOBS_ACTIVE",
   "live_assigned_jobs": [
     {
-      "job": "sorok1037-b05-zero-status-repair-20261115-r3",
-      "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
-      "pid": 18191,
-      "base": "270eb29cd4487b6865b61adc9d671952554d425d",
-      "owned": [
-        "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
-      ],
-      "state": "ACTIVE_VERIFIED"
-    },
-    {
-      "job": "sorok-c05-actor-view-temporal-challenge-20261115-r3",
-      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-      "pid": 18201,
-      "base": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
-      "owned": [],
+      "job": "sorok1037-b05-r3-independent-g5-20261115-r3",
+      "session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "pid": 27543,
+      "base": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
       "state": "ACTIVE_VERIFIED"
     }
   ],
