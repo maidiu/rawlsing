@@ -64,6 +64,7 @@ No one category may be inferred from another. A document's statement “G5” is
 - [07](07_INVARIANTS_DANGERS_FALSIFIERS.md) names threats/falsifiers, not evidence each has occurred in current code.
 - [08](08_FACTOR_COURT_AND_OPEN_DECISIONS.md) is a question/decision register, not a new binding requirement owner.
 - [09](09_1097_VERBATIM_HISTORICAL_LEDGERS.md) freezes issue prose verbatim with issue timestamp; reopen live #1097 for new changes.
+- [14](14_PRODUCT_SCIENCE_27_AND_GAP49_SNAPSHOT.md) freezes the **27 PP26 source rows** and exact **49 GAP headings** from [the protected-cut remaining-work source](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md), blob `1e4d70ec492a4212f5dc232e3822ddc72fb7b112`. It is not a reproduction of the full 121KB source file or new owner authority.
 
 ## F. Receiving and currentness
 
