@@ -1,0 +1,22 @@
+# SOROK two-job execution handoff — final receiving
+
+Both authorized finite streams are closed at their earned sourcefree engineering scopes. Five supervised jobs have durable terminal receipts, zero assigned runners remain active. No timer, automatic further repair, unrelated dispatch or protected merge. Actual OpenCode Go DeepSeek V4.1 Flash MAX/cwd was verified at each launch. Provider cost/quota/served checkpoint remains UNOBSERVED. Existing P5/P6/MI/MII/MIII capital preserved.
+
+| JOB | SOURCE_SHA | AUTHOR_SHA | REVIEWER_SHA | EXECUTED_TESTS | NEGATIVE_PROOF | COLD_PROOF | ACTUAL_FIRST_CONSUMER | ENGINEERING_VERDICT | SCIENCE_HOLD | AUTHORITY_HOLD | NEXT_ACTION |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| A — B05 R3 #1037 | `270eb29cd4487b6865b61adc9d671952554d425d` | `cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc` [#1087](https://github.com/maidiu/rawlsing/pull/1087) | `5c83a8321dce70fcc40c8f210af06a9edb1f8999` [#1089](https://github.com/maidiu/rawlsing/pull/1089) | independent original zero17/17,positive34/34,semantic63/63,inherited43;focused4/5/legacy6/consumer3; own12/12 | public-action/append zero/no-decrease/wrong-debit/missing-transition/replay forgery refused; legitimate zero/held/positive preserved | genuine two purchases/one rent fresh-process/head unchanged; changed/sever/restore/historical/retry | `rolling_reproduction.read_household_obligation`; household/dwelling and period readers | ACCEPT_SCOPED_SOURCEFREE | native actor/psychology/science HELD | no protected merge or J1/human/production authority | STOP; no R4 |
+| B — C05 actor projection/temporal court | accepted mechanical `5d771dd86767655534b23576075e5da2db4fba78`; hostile `df4e51e75298bc1393c6f4b3640449e678bc44ff` [#1088](https://github.com/maidiu/rawlsing/pull/1088) | code/tests `4b33b8be1127c2186931a66f23e3a2b05feaf0a6`; final evidence `fdce1cc266d914c8a28d290f881b42d745025d8c` [#1090](https://github.com/maidiu/rawlsing/pull/1090) | `24f532de43ab6d1ee8a6480a856ba6c6b56e7f53` [#1091](https://github.com/maidiu/rawlsing/pull/1091) | independent challenge24/24,15/15,14/14;adapted89/89;new4,promotion1,C016,C04identity6,C04custody12,P25 | hidden relation A/B permitted documents equal, hidden severance not disclosed; NOT_PERCEIVED viewer no false perception basis; plural preserved; explicit prior-cause denial | three challenge fresh-process cold/exposed sever/restore, same-clock event/access immutable; inherited mechanics preserved | `continuing_relations.read_relation_history` / `read_actor_relative_context`; no downstream product consumer found | ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION | true within-clock event-time knowledge HOLD_SOURCE_AUTHORITY; full actor-qualified knowledge UNPROVED | original C05/CAN/ADP issuer must qualify ordering/receipt; native/human/J1/J2/protected HELD | STOP; no further author/review cycle |
+
+Counts overlap and are not summed. B05 no-debit UNCHANGED/REFUSED operation authenticity is not certified; fully privileged checkpoint fabrication is outside observed public-action/append threat model.
+
+C05 accepts retrospective projection labels, not implemented event-time knowledge: later same-clock relation writes remain in explicitly retrospective context; `event_time_relation_knowledge=NOT_AVAILABLE`, `usable_as_prior_event_cause=false`. Caller relation/exposure records remain illustrative, not owner-authenticated actor knowledge. Inherited `both_parties_event_access` may reveal whether the relationship parties perceived; this remains an owner/privacy boundary, not viewer perception evidence. No full C05 acceptance or dependent release.
+
+Old C05 tests/probes requiring removed hidden count/old distinguishable status/false perception basis retain their literal failures. Independent minimally adapted copies disclose exact expectation deltas and preserve other assertions, yielding89/89. Old raw outcomes are not called green. Historical B05 REDs and C05 mechanical acceptance remain immutable.
+
+## Actual supervised execution (Eastern Standard Time, November 15)
+
+- `sorok1037-b05-zero-status-repair-20261115-r3`: 17:59:19–18:27:44 EST, exit 0.
+- `sorok-c05-actor-view-temporal-challenge-20261115-r3`: 17:59:19–18:28:40 EST, exit 0.
+- `sorok1037-b05-r3-independent-g5-20261115-r3`: 18:28:56–18:58:09 EST, exit 0.
+- `sorok-c05-actor-projection-repair-20261115-r3`: 18:31:24–18:58:39 EST, exit 0.
+- `sorok-c05-projection-r3-independent-g5-20261115-r3`: 19:01:16–19:30:36 EST, exit 0.

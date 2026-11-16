@@ -1,0 +1,610 @@
+{
+  "schema": "SOROK_HQ_FINITE_CLASSIFIED_QUEUE_SNAPSHOT_R1",
+  "updated_utc": "2026-11-16T00:32:40.715497+00:00",
+  "host": "oldMac.lan",
+  "controller_supports_persistent_dependency_dispatch": false,
+  "dispatch_mode": "HQ_ON_ACTUAL_COMPLETION_NOTIFICATION_NO_TIMER",
+  "worker_cap": 3,
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "protected_merge_authorized": false,
+  "old_fleet_939": "STOP",
+  "pyat": "OUT_OF_SCOPE",
+  "active_leases": [
+    {
+      "issue": 1037,
+      "role": "bounded B04/B05 repair AUTHOR",
+      "name": "sorok1037-b-receipt-repair",
+      "base": "fb061dec16c8386b9caa1b5ea75ec7645aff88a7",
+      "out": "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+        "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+      "branch": "codex/sorok1037-b-receipt-repair-20261115-r1",
+      "session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "launch": {
+        "job_id": "sorok1037-b-receipt-repair-20261115-r1",
+        "child_pid": 31949,
+        "supervisor_pid": 31947,
+        "observer_pid": 31950,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b-receipt-repair-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "AUTHOR_CANDIDATE_FROZEN_PENDING_G5",
+      "owner": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "result_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00"
+    },
+    {
+      "issue": 1038,
+      "role": "independent nonauthor C03/C04 custody G5 REVIEWER",
+      "name": "sorok1038-custody-g5",
+      "base": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "out": "WORKER_REVIEWS/SOROK1038_C03_C04_CUSTODY_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+      "branch": "codex/sorok1038-custody-g5-20261115-r1",
+      "session": "ses_e22146664ffeDffEDH4nsj8nsY",
+      "launch": {
+        "job_id": "sorok1038-custody-g5-20261115-r1",
+        "child_pid": 31968,
+        "supervisor_pid": 31966,
+        "observer_pid": 31969,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1038-custody-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "ACCEPT_SCOPED_CHILD_CUSTODY_PROSPECTIVE_READSET_ONLY",
+      "owner": "ses_e22146664ffeDffEDH4nsj8nsY",
+      "result_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b"
+    },
+    {
+      "issue": 982,
+      "role": "independent nonauthor existing CG-A composite G5 REVIEWER",
+      "name": "sorok982-composite-g5",
+      "base": "d5cf0c9c9925eb75c21c9a70793947f857917959",
+      "out": "WORKER_REVIEWS/SOROK982_COMPOSITE_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing",
+      "branch": "codex/sorok982-composite-g5-20261115-r1",
+      "session": "ses_e221462b9ffeDc6SKxZGtXojUH",
+      "launch": {
+        "job_id": "sorok982-composite-g5-20261115-r1",
+        "child_pid": 31998,
+        "supervisor_pid": 31993,
+        "observer_pid": 31999,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok982-composite-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "ACCEPT_SCOPED_SOURCEFREE_S2_FOR_HQ_STOP",
+      "owner": "ses_e221462b9ffeDc6SKxZGtXojUH",
+      "result_sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+      "accepted_code_sha": "ff30c13eea54e37e2dc8edfa73a7c7447127b735",
+      "protected_merge_authorized": false
+    },
+    {
+      "issue": 1037,
+      "role": "independent nonauthor B04/B05 G5",
+      "name": "sorok1037-b-receipt-independent-g5",
+      "base": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "out": "WORKER_REVIEWS/SOROK1037_B_RECEIPT_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing",
+      "branch": "codex/sorok1037-b-receipt-g5-20261115-r1",
+      "session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "owner": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "launch": {
+        "job_id": "sorok1037-b-receipt-independent-g5-20261115-r1",
+        "child_pid": 68590,
+        "supervisor_pid": 68589,
+        "observer_pid": 68591,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b-receipt-independent-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "REVISE_EXACT_DEFECT_B05_SOLE_FORGED_RENT",
+      "author_session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "separate_nonauthor": true,
+      "result_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1"
+    },
+    {
+      "issue": "C05",
+      "role": "continuing-relations bounded implementer",
+      "name": "sorok-c05-continuing-relations",
+      "base": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "out": "WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+        "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+      "branch": "codex/sorok-c05-continuing-relations-20261115-r1",
+      "session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "owner": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "launch": {
+        "job_id": "sorok-c05-continuing-relations-20261115-r1",
+        "child_pid": 75900,
+        "supervisor_pid": 75899,
+        "observer_pid": 75901,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-continuing-relations-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "AUTHOR_CANDIDATE_FROZEN_NOT_ACCEPTED",
+      "prerequisite_review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "qualified_scope": "C04 child-facingcustody ONLY; motherselector/language/parentmetadata/D03residualholds preserved",
+      "result_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "implementation_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7"
+    },
+    {
+      "issue": 1037,
+      "role": "single post-G5 B05 writer-proof correction author",
+      "name": "sorok1037-b05-writer-proof-r2",
+      "base": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "out": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing",
+      "branch": "codex/sorok1037-b05-writer-proof-repair-20261115-r2",
+      "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "owner": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "launch": {
+        "job_id": "sorok1037-b05-writer-proof-repair-20261115-r2",
+        "child_pid": 80008,
+        "supervisor_pid": 80004,
+        "observer_pid": 80009,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b05-writer-proof-repair-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "AUTHOR_R2_CANDIDATE_FROZEN_PENDING_SAME_G5",
+      "prior_review_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+      "permitted_correction_number": 1,
+      "future_reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "result_sha": "270eb29cd4487b6865b61adc9d671952554d425d"
+    },
+    {
+      "issue": "C05",
+      "role": "independent nonauthor C05 G5",
+      "name": "sorok-c05-independent-g5",
+      "base": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "code_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+      "out": "WORKER_REVIEWS/SOROK_C05_CONTINUING_RELATIONS_G5_R1",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+      "branch": "codex/sorok-c05-independent-g5-20261115-r1",
+      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "owner": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "launch": {
+        "job_id": "sorok-c05-independent-g5-20261115-r1",
+        "child_pid": 95313,
+        "supervisor_pid": 95312,
+        "observer_pid": 95314,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-independent-g5-20261115-r1",
+        "launch_is_not_completion": true
+      },
+      "state": "REVISE_EXACT_DEFECT_PROMOTION_SELF_SEVERS",
+      "nonauthor": true,
+      "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "result_sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706"
+    },
+    {
+      "issue": 1037,
+      "role": "same nonauthor final focused R2 receiving",
+      "name": "sorok1037-b05-focused-rereceiving-r2",
+      "base": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "out": "WORKER_REVIEWS/SOROK1037_B05_FOCUSED_RERECEIVING_R2",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/voskres1059-forward-a/Rawlsing",
+      "branch": "codex/sorok1037-focused-g5-r2-20261115-r1",
+      "session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "owner": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "launch": {
+        "job_id": "sorok1037-b05-focused-rereceiving-20261115-r2",
+        "child_pid": 97148,
+        "supervisor_pid": 97147,
+        "observer_pid": 97149,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok1037-b05-focused-rereceiving-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "FINAL_REVISE_ZERO_STATUS_STOP_CORRECTION_ALLOWANCE_USED",
+      "original_adverse_review": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+      "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "same_nonauthor": true,
+      "additional_author_corrections_permitted": 0,
+      "result_sha": "6dc921841a748ee7121887c0484068249a526b17"
+    },
+    {
+      "issue": "C05",
+      "role": "same original author exact promotion correction",
+      "name": "sorok-c05-promotion-exact-repair-r2",
+      "base": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "out": "WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2",
+      "owned": [
+        "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/continuing_relations.py"
+      ],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+      "branch": "codex/sorok-c05-promotion-repair-20261115-r2",
+      "session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "owner": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "launch": {
+        "job_id": "sorok-c05-promotion-exact-repair-20261115-r2",
+        "child_pid": 1516,
+        "supervisor_pid": 1515,
+        "observer_pid": 1517,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-promotion-exact-repair-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "AUTHOR_R2_CANDIDATE_FROZEN_PENDING_SAME_G5",
+      "review_sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+      "same_original_author": true,
+      "future_reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "bounded_correction_number": 1,
+      "result_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "implementation_sha": "5d771dd86767655534b23576075e5da2db4fba78"
+    },
+    {
+      "issue": "C05",
+      "role": "same independent nonauthor final focused R2 receiving",
+      "name": "sorok-c05-focused-rereceiving-r2",
+      "base": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "code_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+      "out": "WORKER_REVIEWS/SOROK_C05_FOCUSED_RERECEIVING_R2",
+      "owned": [],
+      "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+      "branch": "codex/sorok-c05-focused-g5-r2-20261115-r1",
+      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "owner": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "launch": {
+        "job_id": "sorok-c05-focused-rereceiving-20261115-r2",
+        "child_pid": 3872,
+        "supervisor_pid": 3871,
+        "observer_pid": 3873,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-c05-focused-rereceiving-20261115-r2",
+        "launch_is_not_completion": true
+      },
+      "state": "ACCEPT_SCOPED_OPERATION_CUSTODY_ONLY_STOP",
+      "same_nonauthor": true,
+      "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+      "original_review": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+      "automatic_additional_author_rounds": 0,
+      "result_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+      "original_full_c05_actor_qualification": "UNPROVED"
+    }
+  ],
+  "runtime_verification": [
+    {
+      "issue": 1037,
+      "session": "ses_e22146cc1ffeLXXJyO5aDi0REe",
+      "verified_assistant": [
+        {
+          "role": "assistant",
+          "providerID": "opencode-go",
+          "modelID": "deepseek-v4.1-flash",
+          "variant": "max",
+          "path": {
+            "cwd": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing",
+            "root": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing"
+          },
+          "error": null
+        }
+      ],
+      "process": "31949 00:31 /Users/matthewsmith/.opencode/bin/opencode"
+    },
+    {
+      "issue": 1038,
+      "session": "ses_e22146664ffeDffEDH4nsj8nsY",
+      "verified_assistant": [
+        {
+          "role": "assistant",
+          "providerID": "opencode-go",
+          "modelID": "deepseek-v4.1-flash",
+          "variant": "max",
+          "path": {
+            "cwd": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+            "root": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing"
+          },
+          "error": null
+        }
+      ],
+      "process": "31968 00:34 /Users/matthewsmith/.opencode/bin/opencode"
+    },
+    {
+      "issue": 982,
+      "session": "ses_e221462b9ffeDc6SKxZGtXojUH",
+      "verified_assistant": [
+        {
+          "role": "assistant",
+          "providerID": "opencode-go",
+          "modelID": "deepseek-v4.1-flash",
+          "variant": "max",
+          "path": {
+            "cwd": "/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing",
+            "root": "/Users/matthewsmith/.codex/worktrees/sorok982-composite-g5/Rawlsing"
+          },
+          "error": null
+        }
+      ],
+      "process": "31998 00:33 /Users/matthewsmith/.opencode/bin/opencode"
+    }
+  ],
+  "pending": [
+    {
+      "task": "D04 read-only prep",
+      "state": "PREPARATION_RECORDED_NO_IMPLEMENTATION",
+      "owner": "HQ read-only"
+    },
+    {
+      "task": "G2",
+      "state": "HOLD_SOURCE_AUTHORITATIVE_SELECTION_EVALUATION_INACTION_RULE",
+      "source": "2b40cea98df539b183f8d29c5b419e20d6d26294",
+      "owner": "competent V3 actor/prospective semantic source issuer NOT_IDENTIFIED_NOT_ISSUED"
+    },
+    {
+      "task": "1003 E01/J1",
+      "state": "WAITING_QUALIFIED_MOTHER_NADIA_PERFORMANCE_B04_B05_C04_HANDOFF",
+      "original_dependencies": [
+        "B04",
+        "C04",
+        "D03"
+      ],
+      "D04_D05_not_automatic_E01_prerequisites": true
+    },
+    {
+      "task": "1012 D04/D05",
+      "state": "WAITING_USER_OPERATED_BROWSER_HANDOFF_AND_PERFORMED_J1",
+      "owner": "USER_OPERATED_BROWSER_NOT_CODEX",
+      "codex_launch_authorized": false
+    },
+    {
+      "task": "1005 E02/J2",
+      "state": "WAITING_E01_B05_C05_D04",
+      "original_dependencies": [
+        "E01",
+        "B05",
+        "C05",
+        "D04"
+      ]
+    },
+    {
+      "task": "1037 focused same-nonauthor R2 readback",
+      "state": "FINAL_REVISE_STOP",
+      "owner_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "next_action": "No dispatch: current one-correction allowance exhausted; exact B05 zero ADMITTED status guard recorded for any later explicit bounded extension",
+      "code_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "review_sha": "6dc921841a748ee7121887c0484068249a526b17"
+    }
+  ],
+  "requires_semantic_adjudication": [
+    "G2 actor alternative evaluation/selection/inaction source rule"
+  ],
+  "routine_user_relay_required": false,
+  "returns": [
+    {
+      "task": "1037 author",
+      "state": "AUTHOR_CANDIDATE_NOT_ACCEPTED",
+      "sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1061",
+      "terminal_exit": 0,
+      "independent_review": "RUNNING",
+      "explicit_residual": "B05 coherent sole fabricated rent receipt for completed period; reviewer must adjudicate actual-operation binding"
+    },
+    {
+      "task": "1038 C03/C04 independent G5",
+      "state": "ACCEPT_SCOPED_CHILD_CUSTODY_MATERIAL_PROSPECTIVE_READSET_ONLY",
+      "code_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1062",
+      "residuals": [
+        "parent self-read embedded metadata exactness",
+        "D03 caller receipt root/branch/clock/operation binding",
+        "mother selector and language owner HELD"
+      ],
+      "releases": "C05 separately authorized bounded implementation only"
+    },
+    {
+      "task": "1037 independent G5",
+      "state": "REVISE_EXACT_DEFECT",
+      "code_sha": "c7018020f002bb7f509a83fba0bf2a6a5955cc00",
+      "review_sha": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1065",
+      "defect": "B05 sole append-only rehashed ADMITTED rent receipt accepted READ though no actual rent operation/debit",
+      "original_foreign_root_attacks": "REFUSED_INDEPENDENTLY",
+      "inherited_tests": "43_PASS",
+      "acceptance": "NOT_ACCEPTED",
+      "permitted_correction": "ONE_R2_RUNNING",
+      "further_unbounded_cycles": false
+    },
+    {
+      "task": "982 CG-A composite G5",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_S2_FOR_HQ_STOP",
+      "code_sha": "ff30c13eea54e37e2dc8edfa73a7c7447127b735",
+      "source_report_sha": "d5cf0c9c9925eb75c21c9a70793947f857917959",
+      "review_sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1066",
+      "grade": "SOURCEFREE_S2_CG_A_P3_TO_P6_CAUSAL_BRIDGE",
+      "integration": "HQ_SOURCE_PUBLICATION_READY_NOT_PROTECTED_MERGE",
+      "holds": [
+        "raw internal actor_observed/world/house trust",
+        "native Rule A/T/psychological relevance/memory/NO_CHANGE",
+        "full crash recovery",
+        "human/scientific/production rights",
+        "protected-only6a5c12f0 lineage not ancestor; preserve in separately authorized receiving"
+      ],
+      "next_action": "bank scoped verdict, stop; no further CG-A repair/review/staging task authorized"
+    },
+    {
+      "task": "C05 author",
+      "state": "AUTHOR_CANDIDATE_FOR_NONAUTHOR_G5_NOT_ACCEPTED",
+      "code_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+      "report_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1067",
+      "author_evidence": "5 new C05 +6 C01 +6 C04identity +12C04custody +5P2 pass; later event/severrestore/freshcold",
+      "review_state": "RUNNING",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "limits": [
+        "caller-supplied illustrative relation/exposure inputs",
+        "depth1-2 only, one exercised scope",
+        "fork/concurrentoperation uniqueness unproved",
+        "no native relation/psychology/volition/generatedspeech/G2/J1/D04/D05/J2 or protected acceptance"
+      ]
+    },
+    {
+      "task": "1037 B05 one R2 correction",
+      "state": "AUTHOR_R2_CANDIDATE_SAME_NONAUTHOR_RERECEIVING_RUNNING",
+      "code_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1068",
+      "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "source_delta": "B05 read-side only, +85 lines; existing C12 transition proof, B04 unchanged",
+      "author_evidence": "34-check original independent probe RED33/34->GREEN34/34; exact63 controls/normalcold/5focused/6legacy/43inherited/3consumer PASS",
+      "acceptance": "NOT_ACCEPTED_PENDING_SAME_NONAUTHOR",
+      "nonauthor_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "correction_budget_used": 1,
+      "automatic_additional_author_corrections": 0
+    },
+    {
+      "task": "1037 B05 final focused G5",
+      "state": "REVISE_EXACT_DEFECT_STOP_BOUNDED_CYCLE_COMPLETE",
+      "code_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+      "review_sha": "6dc921841a748ee7121887c0484068249a526b17",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1069",
+      "original_positive_sole_forgery": "CLOSED_INDEPENDENTLY_34_OF_34",
+      "remaining_defect": "ADMITTED zero-rent forgery matches legitimate same-clock public say/no-cash checkpoints; actual zero writer UNCHANGED",
+      "minimal_next_action_not_dispatched": "B05 ADMITTED must require rent>0 and after_cash<before_cash backed by actual checkpoint; zero remains UNCHANGED, held REFUSED",
+      "remaining_author_corrections_authorized": 0,
+      "acceptance": "NOT_ACCEPTED",
+      "classification": "bounded engineering status guard; no new science/architecture required"
+    },
+    {
+      "task": "C05 independent G5",
+      "state": "REVISE_EXACT_DEFECT_PROMOTION_COMMITS_SELF_SEVERING_HISTORY",
+      "code_sha": "9cf13763b0061400e2c936eaf1d0a2f4b76a03f7",
+      "report_sha": "bc45f699a22708aae3df7e34b1ba3b272a362565",
+      "review_sha": "b5b810cdd7b51b20efcc42d4ce76960f9e410706",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1070",
+      "passing": "34 listed tests and 89 independent normal/negative/cold checks",
+      "defect": "Second depth2 promotion under new operation omits prior PROMOTE from prewrite depth, commits change/head then fails validation, severing scope",
+      "exposure_boundary": "caller-authorized illustrative inputs; no owner receipt proves relation knowledge; coherent append accepted, not independent perception/native authority",
+      "next_action": "One exact same-author promotion/no-write correction running; then same nonauthor focused readback",
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "task": "C05 one-line promotion R2 author",
+      "state": "AUTHOR_R2_CANDIDATE_SAME_NONAUTHOR_FINAL_RECEIVING",
+      "code_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+      "report_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1071",
+      "source_delta": "one line: prewrite depth uses full verified change history including PROMOTE",
+      "author_evidence": "original bug probe corrected semantic refusal/no writes/intact qualified history; focused1, original34 suites and89 normal-negative-cold checks PASS",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "review_state": "RUNNING_FINAL_FOCUSED_RERECEIVING",
+      "acceptance": "NOT_ACCEPTED",
+      "scope": "caller-authorized illustrative relation/exposure operation/custody only; owner-attested actor knowledge/native relation authority unproved",
+      "automatic_further_author_rounds": 0
+    },
+    {
+      "task": "C05 final same-nonauthor receiving",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_C05_OPERATION_CUSTODY_STOP",
+      "code_sha": "5d771dd86767655534b23576075e5da2db4fba78",
+      "report_sha": "1cf1a37113cb7a48137734648b523a0a6deccd92",
+      "review_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+      "pr": "https://github.com/maidiu/rawlsing/pull/1072",
+      "accepted_scope": "bounded mechanical operation/custody of caller-authorized illustrative relation/exposure facts",
+      "defect_status": "repeat promotion fixed; refusal before append, zero deltas, intact history/context, idempotent retry and cold",
+      "evidence": "35 listed tests, 89 normal/negative/cold checks, 12 independent closure checks; not an aggregate unique count",
+      "original_full_c05_actor_qualification": "UNPROVED",
+      "relation_knowledge_owner_receipt": "NONE",
+      "coherent_append_authority": "accepted as caller-authorized input, not authenticated actor knowledge",
+      "next_action": "bank scoped engineering result and stop; no dependent job released"
+    },
+    {
+      "task": "B05 R3 author",
+      "state": "AUTHOR_CANDIDATE_NOT_ACCEPTED_G5_RUNNING",
+      "sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "pr": 1087,
+      "source_blob": "9de3b5a295431fac2b0f9833ed520262df04b363",
+      "zero_probe": "RED16/17->GREEN17/17_AUTHOR_EVIDENCE",
+      "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+      "automatic_r4": false
+    },
+    {
+      "task": "C05 actor-view temporal challenge",
+      "state": "REVISE_EXACT_DEFECT",
+      "sha": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+      "pr": 1088,
+      "actual_red": [
+        "hidden relationship count leaks",
+        "unlabeled later same-clock relation context enters prior event"
+      ],
+      "pass_boundary": "relation knowledge distinct from NOT_PERCEIVED event; plural relations retained",
+      "static_risk": "C12_EVENT_PERCEPTION basis for nonperceiving viewer; no downstream runtime misinference executed",
+      "event_time_knowledge": "HOLD_SOURCE_AUTHORITY; no qualified cross-owner order",
+      "next": "one original-author bounded projection correction then same nonauthor review"
+    },
+    {
+      "task": "B05 R3 independent G5",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_STOP",
+      "code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "pr": 1089,
+      "negative": "own public-action/append probe12/12; originalzero17/17; originalpositive34/34; original63controls",
+      "cold": "fresh-process two purchases/one rent head unchanged",
+      "science": "HELD",
+      "authority": "HELD; no protected merge",
+      "limits": [
+        "no-debit status operation authenticity not certified",
+        "fully privileged checkpoint fabrication excluded"
+      ],
+      "next_action": "STOP; no new integration/dependent dispatch"
+    },
+    {
+      "task": "C05 R3 source-owned projection correction",
+      "state": "AUTHOR_CANDIDATE_NOT_ACCEPTED_FINAL_G5_RUNNING",
+      "implementation_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+      "report_sha": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+      "pr": 1090,
+      "product_blob": "8006440bd420ce8526bb2f333cd201ac077cbd22",
+      "author_green": "new4,promotion1,C016,C04identity6,C04custody12,P25",
+      "literal_old_failures": "originalC05 3pass2obsoleteABI failures; prior89 stops on removed hidden key; raw failures preserved",
+      "true_event_time_knowledge": "HOLD_SOURCE_AUTHORITY; retrospective labels only",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "next_action": "final focused review then STOP; no further author round"
+    },
+    {
+      "task": "C05 R3 final independent receiving",
+      "state": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION_STOP",
+      "implementation_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+      "report_sha": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+      "review_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+      "pr": 1091,
+      "executed": "independent24/24,15/15,14/14,adapted89/89,author4,promotion1,C01/C04/P2",
+      "old_failures": "preserved with exact adapted-probe deltas; not misreported green",
+      "true_event_time_knowledge": "HOLD_SOURCE_AUTHORITY",
+      "full_c05_actor_qualified_knowledge": "UNPROVED",
+      "other_privacy_boundary": "both_parties_event_access may reveal party perception; not viewer knowledge",
+      "next_action": "STOP; no new job/merge"
+    }
+  ],
+  "guide_records_affected": [
+    "PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
+    "PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md"
+  ],
+  "guide_adoption": "CANDIDATE_ISOLATED_PATCH_NOT_PROTECTED_CURRENT",
+  "idle_capacity_policy": "Do not fill third slot: all other classified tasks depend on currently unearned gates or user-operated Browser handoff.",
+  "dispatch_decisions": {
+    "B05_R3": "ACCEPT_SCOPED_SOURCEFREE_STOP",
+    "C05_CHALLENGE": "ACCEPT_SCOPED_SOURCEFREE_ACTOR_PROJECTION_STOP_EVENT_TIME_HELD",
+    "other_classified_jobs": "NO_DISPATCH_HELD_OR_USER_OPERATED"
+  },
+  "queue_status": "TWO_JOB_HANDOFF_COMPLETE_SCOPED_RECEIVING_STOP",
+  "live_assigned_jobs": [],
+  "terminal_receipts_verified": 10,
+  "missing_terminal_receipts": [],
+  "new_two_job_handoff": {
+    "date": "2026-11-15",
+    "B05_R3": "explicit fresh authorization #1037comment6901893989; one correction then separate G5 STOP",
+    "C05": "three executed actor-view/temporal challenges; bounded demonstrated owner correction only, separate nonauthor receiving",
+    "worker_cap": 3,
+    "completion_mode": "existing durable notification only; no timer",
+    "sourcefree_only": true,
+    "protected_merge_authorized": false
+  },
+  "two_job_terminal_receipts_verified": 5
+}
