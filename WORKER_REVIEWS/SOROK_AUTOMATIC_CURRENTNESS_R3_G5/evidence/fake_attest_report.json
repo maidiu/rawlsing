@@ -1,0 +1,36 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R3_FAKE_ATTEST_REPORT@1",
+  "sandbox": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-r3-receiving-20261116-r1/fake-attest",
+  "author_secret_read": false,
+  "capability_created_in_sandbox_only": true,
+  "fake_launcher": {
+    "script": "launch.py --binding fake --job fake",
+    "process_tree": "fake launcher parent; supervisor and observer children; child under supervisor; all PIDs live",
+    "actual_installed_launcher_used": false,
+    "caller_flags_only": true,
+    "own_live_pids": true
+  },
+  "attest": {
+    "exit": 0,
+    "stdout": {
+      "child_pid": 91166,
+      "launch_id": "launch-aada117a2f29fc0b2459c69caa1d1912",
+      "role": "REVIEWER",
+      "run_dir": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-r3-receiving-20261116-r1/fake-attest/repo/controller-state/fake-attest",
+      "state": "TRUSTED_LAUNCH_ATTESTED",
+      "task_id": "AUTOMATIC_CURRENTNESS_R1"
+    },
+    "stderr": ""
+  },
+  "fake_review_intake": {
+    "exit": 0,
+    "status": "EVENT_RECORDED",
+    "review_state": "REVISE_EXACT_DEFECT",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "review_commit": "f8006235266aa618963b186e5c357bf92be830b3"
+  },
+  "conclusion": "PUBLIC_ATTEST_LAUNCH_BYPASS: a self-authored launch.py with caller flags and own live child process tree was enrolled as a trusted REVIEWER launch and the fabricated review run was intaked; this is an ordinary CLI authority bypass, not a real controller/operator boundary.",
+  "red": "REVISE_EXACT_DEFECT",
+  "shortest_fix": "Restrict attest-launch to the actual installed controller launcher (verified path/hash or launcher-issued nonce) or require competent operator authorization/enrollment; do not accept arbitrary launch.py/process-tree strings or caller-provided live PIDs as proof of supervision.",
+  "terminal": "STOP"
+}

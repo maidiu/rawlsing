@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
+  "task_id": "AUTOMATIC_CURRENTNESS_R1",
+  "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+  "implementation_code_sha": "fc322b1ea3b3769bae699aeea8c1d31c053fd042",
+  "test_code_sha": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "same_distinct_independent_nonauthor",
+  "review_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
+  "review_pr": null,
+  "verdict": "REVISE_EXACT_DEFECT",
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "accept_scoped": false,
+  "scope": "FOCUSED_MATERIAL_EVENT_AUTHORITY_RECEIVING_ONLY; R2 material routes and live source rechecked; public attest-launch self-enrollment bypass remains; no protected/native/full claim",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "full_original_claim": "NOT_ESTABLISHED",
+  "protected_ci": "UNAVAILABLE_BILLING",
+  "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+  "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+  "source_documents": [
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+      "git_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+      "git_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/VERDICT.json",
+      "git_blob": "8fd5a5bdfd980576d76999251cbc7f7c0b9e6111"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/EVIDENCE.json",
+      "git_blob": "f86c8b37f25e44acd8ac03b31954fd2cda118529"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/00_RECEIVING.md",
+      "git_blob": "013dbbb3620e90278561e60687052e6968ceec9f"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/G5_HANDOFF.md",
+      "git_blob": "8e51789360539da3e626b3652b24379ee6ac3268"
+    }
+  ],
+  "reviewed_at_utc": "2026-11-16T06:45:40.464809+00:00",
+  "reasons": [
+    "R2 material probe 7 fixed/0 gaps; fake unenrolled reviewer refused",
+    "public attest-launch accepted a caller-authored launch.py plus caller-owned live process tree as TRUSTED_LAUNCH_ATTESTED",
+    "fake self-consistent REVIEWER run was then intaked with job session ses_FAKE_ATTEST",
+    "actual run session is not bound to receipt/registry expected session; only expected fields are checked",
+    "issue/comment 403 remains source-authority hold; CI remains unavailable"
+  ],
+  "remaining_holds": {
+    "code": "REVISE_EXACT_DEFECT: attest-launch public self-enrollment bypass; bind installed launcher or operator authorization and actual session/source",
+    "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; no full currentness",
+    "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
+    "native_science_actor_human": "HELD",
+    "protected_merge": "none"
+  },
+  "runtime_intake": {
+    "manual_fabrication": false,
+    "path": "AUTOMATIC_INSTALLED_CONTROLLER_HOOK_AFTER_REAL_PROCESS_EXIT",
+    "expected_source": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+    "expected_role": "REVIEWER",
+    "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "review_job": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1"
+  },
+  "terminal": "STOP"
+}
