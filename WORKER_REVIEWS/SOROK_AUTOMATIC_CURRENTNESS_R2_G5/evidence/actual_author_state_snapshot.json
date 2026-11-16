@@ -1,0 +1,651 @@
+{
+  "generation": 49,
+  "checkpoint_id": "a8e4f3e9b35cf23c6e4473578d1ccd57ff84f739fb66e28899daa90b6d27457c",
+  "mechanism_worker_return": {
+    "event_id": "completion:38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f",
+    "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-repair-20261115-r2",
+    "job_id": "sorok-programma-automatic-currentness-repair-20261115-r2",
+    "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+    "grant_id": "sorok-programma-automatic-currentness-repair-20261115-r2-grant",
+    "role": "IMPLEMENTER",
+    "exit_code": 0,
+    "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/WORKER_RETURN.json",
+    "return_sha256": "7403e06eb52a57d6aee169dfd2416d7b2c5b0f689a3aff243f94dc082f2c4b08",
+    "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+    "runtime_blob": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0",
+    "test_blob": "202e81d85d78e4d158a43bfcfa55a818149bf8fd",
+    "execution_state": "RETURNED_REVIEW_PENDING",
+    "review_required": true,
+    "completion_sha256": "38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f"
+  },
+  "mechanism_review": {
+    "id": "AUTOMATIC_CURRENTNESS_R1",
+    "state": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
+    "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+    "review_receipt": null,
+    "review_run": null,
+    "verdict_artifact": null,
+    "verdict": null
+  },
+  "controller_integration": {
+    "installed_controller": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115",
+    "hook": "completion_events.py optional COMPLETION_SOROK_CURRENTNESS",
+    "hook_state": "REAL_MECHANISM_WORKER_RETURN_INTAKEN",
+    "original_controller_hashes": {
+      "launch.py": "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1",
+      "completion_events.py": "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63"
+    }
+  },
+  "reconciliation_required": [
+    {
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    },
+    {
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    },
+    {
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    },
+    {
+      "what_changed": "GITHUB_PR_STATUS_ADVANCED pr:1095",
+      "expected_evidence": "live state/merged/updated_at/head matching the expected baseline",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "reconcile the changed PR status and re-run the relevant receiving",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    }
+  ],
+  "reconciliation_resolved": [
+    {
+      "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+      "evidence": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/controller_demo_state/sorok-automatic-currentness-real-return-20261115T224855/events + completion.json; hook SOROK_CURRENTNESS_INTAKE_FAILED with argparse --config error; superseded by success 224953; no return artifact",
+      "owner": "SOROK HQ/controller owner",
+      "reason": "explicitly inspected failed infrastructure qualification attempt; retained as history",
+      "event_id": "resolve:6e782e1efb80a048d05233bff6b8624ad4c55860c1b8e817f4d254433347f293",
+      "resolution_key": "03b45b7389e2ecdbf298e8bb2401132457f82640d4e99aec41513ed5adadd2ff"
+    },
+    {
+      "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+      "evidence": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/controller_demo_state/sorok-automatic-currentness-real-return-20261115T224925/events + completion.json; hook SOROK_CURRENTNESS_INTAKE_FAILED RETURN_ARTIFACT_MISSING; superseded by success 224953",
+      "owner": "SOROK HQ/controller owner",
+      "reason": "explicitly inspected failed infrastructure qualification attempt; retained as history",
+      "event_id": "resolve:727e6a8ac878bb8bb91598aa74a55f0f8f19eac4dbf9694e392bcc9b99818fee",
+      "resolution_key": "a07f187e58eea865c078f9186d5c0075474276b8131d7e62a1a14953011c5784"
+    },
+    {
+      "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+      "item_digest": "23c01b5330c27dc1893e2f3a809ff3a6957f15f62aa3609ff98dc1dd2c88878f",
+      "source_digest": "bf05c85c0d640348d7c881174c2624f006de8b3ddbbd88f89292a5b44c3bedf0",
+      "checkpoint_id": "b707d33b8a0cb2802e5908d397f7fbad0259ddde631fbd7fe75633cea12c2c69",
+      "event_id": "resolve:962f14cf3997eeec62b5e0774f52fc59e68df8086e7fd2ca518c4c1f5f1705dc",
+      "recorded_at": "2026-11-16T05:09:10.199246+00:00",
+      "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+      "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+      "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+      "resolution_key": "66717f51add78226b46409ca9a8b68601ce15d2f5fa97ce9ed38aaee39ac082b"
+    },
+    {
+      "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+      "item_digest": "05143e5fec9ed886eb75e3e1e430f73f10179712fa849e37a5d0f2ecee9995bb",
+      "source_digest": "629c3b83002d58ce8118c5005f3394a689fb0d9b4dad75956035e662102c5595",
+      "checkpoint_id": "86dc81a5f5279a354ee402ecc0b56df53f5c6818eacde443e158d8d8280d21a3",
+      "event_id": "resolve:6914585156a154029ee0119e187505b714654225b7d834f451515cee4f84388a",
+      "recorded_at": "2026-11-16T05:09:10.346977+00:00",
+      "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+      "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+      "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+      "resolution_key": "78e1d846ef25d52c61887289a1c218d604dbb8fe4cc811f2ba06df8ae3a8e3fe"
+    },
+    {
+      "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+      "item_digest": "221ce0f96154cd1eeddac827c6dc8200578fdd32bcd664c7e3a9bfa9356b3b56",
+      "source_digest": "baff38d8159012b96aacc5fedc093db0079614fc743ed1e1692ed140a382174f",
+      "checkpoint_id": "94c707a5e28e63d634e7aca8ab6eb32833b5b40db9df1be02644fdb57041cf69",
+      "event_id": "resolve:fba9845e7fa9ece9e3a454e22386ad9574947472fea6e203a5202f2d1c4e4dfc",
+      "recorded_at": "2026-11-16T05:09:10.505120+00:00",
+      "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+      "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+      "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+      "resolution_key": "083690a124158ccd4eaaa54181489359e1d49d2c7f656c21c15bf21549d4eeb4"
+    },
+    {
+      "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+      "item_digest": "9a2905fdb00a60da8ccca7b756f9d527e9fd135ebac0f8a4b7dfae32a5d3d771",
+      "source_digest": "d0f76a057d33525b617327f38ec12ce8b23370256b27ee5e6d773ebe9582ad78",
+      "checkpoint_id": "3a9c5eeb5b47c5e1c157687fd4b43623ac32f416687d249c5f4117d05a5d3bc4",
+      "event_id": "resolve:59d39c6ce02c77712258a36b0f2b5972312f3e398ed2412281af9af8a9453248",
+      "recorded_at": "2026-11-16T05:09:10.659683+00:00",
+      "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+      "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+      "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+      "resolution_key": "77c41e5e0ad47e5b8519a345c1254f1495bc556ccb3519dea5360019af956162"
+    }
+  ],
+  "holds": [
+    {
+      "kind": "REAL_MECHANISM_WORKER_RETURN",
+      "scope": "AUTOMATIC_CURRENTNESS_R1",
+      "owner": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "reason": "RETURNED_REVIEW_PENDING"
+    },
+    {
+      "kind": "MECHANISM_REVIEW",
+      "scope": "AUTOMATIC_CURRENTNESS_R1",
+      "owner": "separate independent nonauthor",
+      "reason": "PENDING_EXTERNAL_NONAUTHOR_REVIEW"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1008",
+      "owner": "user-operated Browser",
+      "reason": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1010",
+      "owner": "user-operated Browser",
+      "reason": "A_B_A_COMPLETED_G2_HELD"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1012",
+      "owner": "user-operated Browser",
+      "reason": "NOT_LAUNCHED_WAITING_J1"
+    },
+    {
+      "kind": "CONTROLLER",
+      "scope": "issue_939",
+      "owner": "existing SOROK owner",
+      "reason": "USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS"
+    },
+    {
+      "kind": "CONTROLLER",
+      "scope": "persistent_dispatch",
+      "owner": "existing SOROK owner",
+      "reason": false
+    },
+    {
+      "kind": "SCIENCE_AUTHORITY",
+      "scope": "ALL",
+      "owner": "original CAN/ADP/Pyat/human issuers",
+      "reason": "native science, actor knowledge and human authority remain HELD"
+    }
+  ],
+  "tasks": {
+    "B01": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01",
+      "full_original_decision_blockers": [
+        "A01"
+      ],
+      "code_sha": null
+    },
+    "B02": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A02",
+      "full_original_decision_blockers": [
+        "A02"
+      ],
+      "code_sha": null
+    },
+    "B03": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01",
+      "full_original_decision_blockers": [
+        "A01"
+      ],
+      "code_sha": null
+    },
+    "B04": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A03,A04",
+      "full_original_decision_blockers": [
+        "A01",
+        "A03",
+        "A04"
+      ],
+      "code_sha": null
+    },
+    "B05": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "review_pr": 1089,
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "protected_ci": "UNAVAILABLE_BILLING",
+      "full_original_readiness": "HOLD_DECISION_A02,A03,A08",
+      "full_original_decision_blockers": [
+        "A02",
+        "A03",
+        "A08"
+      ],
+      "code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc"
+    },
+    "C01": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+      "full_original_decision_blockers": [],
+      "code_sha": null
+    },
+    "C02": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A04,A06,S01",
+      "full_original_decision_blockers": [
+        "A04",
+        "A06",
+        "S01"
+      ],
+      "code_sha": null
+    },
+    "C03": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01",
+      "full_original_decision_blockers": [
+        "A01",
+        "A04",
+        "A06",
+        "S01"
+      ],
+      "code_sha": null
+    },
+    "C04": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "review_pr": 1062,
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "protected_ci": "UNAVAILABLE_BILLING",
+      "full_original_readiness": "HOLD_DECISION_A07,S02,S03",
+      "full_original_decision_blockers": [
+        "A07",
+        "S02",
+        "S03"
+      ],
+      "code_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9"
+    },
+    "C05": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "review_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+      "review_pr": 1091,
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "protected_ci": "UNAVAILABLE_BILLING",
+      "full_original_readiness": "HOLD_DECISION_S07",
+      "full_original_decision_blockers": [
+        "S07"
+      ],
+      "code_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6"
+    },
+    "D01": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S04",
+      "full_original_decision_blockers": [
+        "S04"
+      ],
+      "code_sha": null
+    },
+    "D02": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S03,S07",
+      "full_original_decision_blockers": [
+        "S03",
+        "S07"
+      ],
+      "code_sha": null
+    },
+    "D03": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A07,S03",
+      "full_original_decision_blockers": [
+        "A07",
+        "S03"
+      ],
+      "code_sha": null
+    },
+    "D04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HELD_NOT_LAUNCHED",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07",
+      "full_original_decision_blockers": [
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "code_sha": null
+    },
+    "D05": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S04,S07",
+      "full_original_decision_blockers": [
+        "S04",
+        "S07"
+      ],
+      "code_sha": null
+    },
+    "E01": {
+      "sourcefree_state": "PARTIAL_CANDIDATE",
+      "execution_state": "PARTIAL_CANDIDATE",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03",
+      "full_original_decision_blockers": [
+        "A01",
+        "A02",
+        "A04",
+        "A06",
+        "A07",
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "code_sha": null
+    },
+    "E02": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07",
+      "full_original_decision_blockers": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S07"
+      ],
+      "code_sha": null
+    },
+    "E03": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A08",
+      "full_original_decision_blockers": [
+        "A08"
+      ],
+      "code_sha": null
+    },
+    "E04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A08",
+      "full_original_decision_blockers": [
+        "A08"
+      ],
+      "code_sha": null
+    },
+    "F01": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null
+    },
+    "F02": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null
+    },
+    "F03": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09,S03,S07",
+      "full_original_decision_blockers": [
+        "A09",
+        "S03",
+        "S07"
+      ],
+      "code_sha": null
+    },
+    "F04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null
+    },
+    "G01": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null
+    },
+    "G02": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A10,S05,S07",
+      "full_original_decision_blockers": [
+        "A10",
+        "S05",
+        "S07"
+      ],
+      "code_sha": null
+    },
+    "G03": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A10",
+      "full_original_decision_blockers": [
+        "A10"
+      ],
+      "code_sha": null
+    },
+    "G04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+      "full_original_decision_blockers": [],
+      "code_sha": null
+    }
+  },
+  "decision_count": 21,
+  "task_count": 27,
+  "outside_packets": {
+    "G03_I0": "RECEIVED_SCOPED_UNMERGED_PR993",
+    "CG_A": "RECEIVED_SCOPED_UNMERGED_PR1066",
+    "portal_768": "DESIGN_CANDIDATE_NOT_IMPLEMENTED"
+  },
+  "source_freeze": {
+    "packet_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "gmt_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+    "verifier_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py",
+    "verifier_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+    "workflow_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.github/workflows/sorok-operational-currentness-r1.yml",
+    "workflow_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+    "frozen_projection_sha256": "82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e",
+    "frozen_md_block_sha256": "75cb09204e18416d579875515100e738473b4dd946123d7c6260a3377852460f",
+    "original_scope": {
+      "functions": 144,
+      "seams": 38,
+      "gates": 83,
+      "assets": 304,
+      "inputs": 100
+    },
+    "operational_gmt_atlas": {
+      "commit": "67698cfd32f838b7a5fdc381b0168d9225f5352f",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md",
+      "blob": null,
+      "status": "DRAFT_DOCUMENTARY_CANDIDATE_NOT_PROTECTED_LAW"
+    },
+    "oath_r2": {
+      "commit": "1341c81dfe0e99da030e7dca356f55789a10c6f8",
+      "status": "DRAFT_PR1098_NOT_PROTECTED_LAW"
+    }
+  }
+}

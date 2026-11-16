@@ -1,0 +1,27 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R2_LIVE_VARIANTS@1",
+  "cases": {
+    "fresh": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "deleted_1089": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_REF_DELETED pr:1089",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "advanced_1095": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_HEAD_ADVANCED pr:1095",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "stale_fresh_flag": false
+  },
+  "note": "direct use of the reviewed compare/freshness functions on a copy of the authenticated live observation; no product or author state write"
+}

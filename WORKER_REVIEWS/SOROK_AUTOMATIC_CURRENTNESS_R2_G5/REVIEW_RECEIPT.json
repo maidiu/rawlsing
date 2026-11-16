@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
+  "task_id": "AUTOMATIC_CURRENTNESS_R1",
+  "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+  "implementation_code_sha": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0",
+  "test_code_sha": "202e81d85d78e4d158a43bfcfa55a818149bf8fd",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "distinct_independent_nonauthor",
+  "review_commit": "f8006235266aa618963b186e5c357bf92be830b3",
+  "review_pr": null,
+  "verdict": "REVISE_EXACT_DEFECT",
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "accept_scoped": false,
+  "scope": "FOCUSED_SOURCE_CORRECTION_RECEIVING_ONLY; five R1 reds rechecked; authenticated live refs/PR status observed; issue/comment 403 source-authority hold; material event/run auth still incomplete; no protected/native/full claim",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "full_original_claim": "NOT_ESTABLISHED",
+  "protected_ci": "UNAVAILABLE_BILLING",
+  "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+  "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+  "source_documents": [
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+      "git_blob": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+      "git_blob": "202e81d85d78e4d158a43bfcfa55a818149bf8fd"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/VERDICT.json",
+      "git_blob": "1e3fe0ae4200f15451ffc7867ba8b6d23bb4114e"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/EVIDENCE.json",
+      "git_blob": "80449ca7f659be735a5f4e8d88581fc31d085760"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/00_RECEIVING.md",
+      "git_blob": "539667770255c3f4453c7207a1731534cfb87775"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/G5_HANDOFF.md",
+      "git_blob": "c66b5b8df39702546ffceb18b8edea8a1dfd7203"
+    }
+  ],
+  "reviewed_at_utc": "2026-11-16T05:47:58.688618+00:00",
+  "reasons": [
+    "five R1 reds materially repaired",
+    "REJECTION is unauthenticated public intake and changed B01 to REJECTED",
+    "PROTECTED_INTEGRATION is unauthenticated public intake and minted B05 protected PASS",
+    "GITHUB_OBSERVATION accepts fabricated source identity/digest as live truth",
+    "self-consistent fabricated WORKER_RETURN and REVIEWER runs are accepted",
+    "review verdict comparison uses startswith, not exact equality"
+  ],
+  "remaining_holds": {
+    "code": "REVISE_EXACT_DEFECT on material event/run auth; exact verdict equality",
+    "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; only refs/SHA and four watched PR statuses observed",
+    "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
+    "native_science_actor_human": "HELD",
+    "protected_merge": "none"
+  },
+  "runtime_intake": {
+    "manual_fabrication": false,
+    "path": "AUTOMATIC_INSTALLED_CONTROLLER_HOOK_AFTER_REAL_PROCESS_EXIT",
+    "expected_source": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+    "expected_role": "REVIEWER",
+    "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu"
+  },
+  "terminal": "STOP"
+}

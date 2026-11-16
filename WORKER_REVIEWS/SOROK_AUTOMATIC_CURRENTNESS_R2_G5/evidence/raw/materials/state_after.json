@@ -1,0 +1,127 @@
+{
+  "generation": 5,
+  "checkpoint_id": "466d7c73657133c6357b72cad80c3fd8ac875c5109d07003edf759d46c638371",
+  "tasks": {
+    "B01": {
+      "sourcefree_state": "REJECTED",
+      "execution_state": "REJECTED",
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "protected_merge_sha": null,
+      "readiness": "READY_FOR_SCOPED_ENGINEERING"
+    },
+    "B05": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "protected_integration": "PROTECTED_SOURCEFREE",
+      "protected_ci": "PASS",
+      "protected_merge_sha": "ffffffffffffffffffffffffffffffffffffffff",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION"
+    }
+  },
+  "live_github": {
+    "schema": "SOROK_LIVE_GITHUB_OBSERVATION@1",
+    "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+    "source_identity": "FAKE_SOURCE",
+    "transport": "fake",
+    "fetched_at_utc": "2026-11-16T06:00:00+00:00",
+    "expires_at_utc": "2099-01-01T00:00:00+00:00",
+    "ttl_seconds": 900,
+    "refs": {},
+    "refs_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "api": {
+      "repo": {
+        "http_status": 200
+      },
+      "pulls": {},
+      "issues": {},
+      "comments": {},
+      "commits": {},
+      "token_available": true,
+      "token_error": null
+    },
+    "status_coverage": "REF_SHA_ONLY",
+    "status_checks": 0,
+    "status_success": 0,
+    "credential_helper_used": true,
+    "credential_error": null,
+    "evidence_digest": "evil"
+  },
+  "events": [
+    {
+      "event_id": "runtime:init:82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e",
+      "kind": "INIT",
+      "event_hash": "bcc3320963f188434ddf94ac7ef4d92a466b6034de06b1d0e8b5b3ce7f62e891"
+    },
+    {
+      "event_id": "evil-reject",
+      "kind": "REJECTION",
+      "event_hash": "43ae724fc630014ebbd6ed769e804b93509a4a704bb428ba10d9ff16e34d825c"
+    },
+    {
+      "event_id": "evil-protect",
+      "kind": "PROTECTED_INTEGRATION",
+      "event_hash": "b0bd9ae6fac34df3851f4ee3478366f53512c5810cee386a3278314cf40d10bd"
+    },
+    {
+      "event_id": "evil-live",
+      "kind": "GITHUB_OBSERVATION",
+      "event_hash": "29ac88cbe0677b1c6e72af55d13b105dbcaef17470bb542672f39f194670996a"
+    },
+    {
+      "event_id": "completion:9b583ecace3dcd663948e62e26d35af6f4e8d0e90fa071be28bec9991f10204f",
+      "kind": "WORKER_RETURN",
+      "event_hash": "846d548f83a19d419e6f1750f54a3c1ef4bd8421452336ebcfb0d8533d44e75b"
+    }
+  ],
+  "holds": [
+    {
+      "kind": "REAL_MECHANISM_WORKER_RETURN",
+      "scope": "AUTOMATIC_CURRENTNESS_R1",
+      "owner": "ses_FAKE_WORKER_NO_PROCESS",
+      "reason": "RETURNED_REVIEW_PENDING"
+    },
+    {
+      "kind": "MECHANISM_REVIEW",
+      "scope": "AUTOMATIC_CURRENTNESS_R1",
+      "owner": "separate independent nonauthor",
+      "reason": "PENDING_EXTERNAL_NONAUTHOR_REVIEW"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1008",
+      "owner": "user-operated Browser",
+      "reason": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1010",
+      "owner": "user-operated Browser",
+      "reason": "A_B_A_COMPLETED_G2_HELD"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1012",
+      "owner": "user-operated Browser",
+      "reason": "NOT_LAUNCHED_WAITING_J1"
+    },
+    {
+      "kind": "CONTROLLER",
+      "scope": "issue_939",
+      "owner": "existing SOROK owner",
+      "reason": "USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS"
+    },
+    {
+      "kind": "CONTROLLER",
+      "scope": "persistent_dispatch",
+      "owner": "existing SOROK owner",
+      "reason": false
+    },
+    {
+      "kind": "SCIENCE_AUTHORITY",
+      "scope": "ALL",
+      "owner": "original CAN/ADP/Pyat/human issuers",
+      "reason": "native science, actor knowledge and human authority remain HELD"
+    }
+  ]
+}

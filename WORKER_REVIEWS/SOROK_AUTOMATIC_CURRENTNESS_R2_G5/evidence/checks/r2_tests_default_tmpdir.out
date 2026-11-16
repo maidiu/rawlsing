@@ -1,0 +1,98 @@
+......FF.....F...                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_mechanism_review_requires_supervised_review_run _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1532/test_mechanism_review_requires0')
+
+    def test_mechanism_review_requires_supervised_review_run(tmp_path):
+        config = make_sandbox(tmp_path)
+        receipt = copy.deepcopy(json.loads(
+            (ROOT / "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/fixtures/"
+             "historical_reviews/B05_1089/REPLAY_RECEIPT.json").read_text()))
+        receipt.update({"task_id": rt.MECHANISM_ID, "verdict": "REVISE_EXACT_DEFECT",
+                        "implementation_commit": "a" * 40,
+                        "review_commit": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+                        "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+                        "source_documents": []})
+>       with pytest.raises(rt.CurrentnessError, match="REVIEW_SUPERVISED_RUN_REQUIRED"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'REVIEW_SUPERVISED_RUN_REQUIRED'
+E         Actual message: 'REVIEW_COMMIT_UNAVAILABLE: 5c83a8321dce70fcc40c8f210af06a9edb1f8999'
+
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py:252: AssertionError
+----------------------------- Captured stderr call -----------------------------
+fatal: not a git repository (or any of the parent directories): .git
+_______________________ test_fake_task_review_is_refused _______________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1532/test_fake_task_review_is_refus0')
+
+    def test_fake_task_review_is_refused(tmp_path):
+        config = make_sandbox(tmp_path)
+        receipt = copy.deepcopy(json.loads(
+            (ROOT / "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/fixtures/"
+             "historical_reviews/B05_1089/REPLAY_RECEIPT.json").read_text()))
+        receipt.update({"task_id": "C05", "reviewer_session": "ses_fake",
+                        "author_session": "ses_other_fake",
+                        "implementation_commit": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+                        "review_commit": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+                        "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+                        "source_documents": []})
+>       with pytest.raises(rt.CurrentnessError, match="REVIEW_SUPERVISED_RUN_REQUIRED"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'REVIEW_SUPERVISED_RUN_REQUIRED'
+E         Actual message: 'REVIEW_COMMIT_UNAVAILABLE: 5c83a8321dce70fcc40c8f210af06a9edb1f8999'
+
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py:267: AssertionError
+----------------------------- Captured stderr call -----------------------------
+fatal: not a git repository (or any of the parent directories): .git
+__________________ test_duplicate_and_out_of_order_are_typed ___________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1532/test_duplicate_and_out_of_orde0')
+
+    def test_duplicate_and_out_of_order_are_typed(tmp_path):
+        config = make_sandbox(tmp_path)
+        row = event("USER_STOP", payload={"scope": "OLD_FLEET"})
+        # unauthorized first, but duplicate/order are checked after auth; use a
+        # replay review event for idempotence instead.
+        receipt = json.loads((ROOT / "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/"
+                              "fixtures/historical_reviews/B05_1089/REPLAY_RECEIPT.json").read_text())
+        replay = {
+            "schema": rt.EVENT_SCHEMA, "event_id": "replay-b05",
+            "kind": "REVIEW_VERDICT", "recorded_utc": rt.now_utc(),
+            "source": {"trust": "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY"},
+            "receipt": receipt, "payload": {"task_id": "B05"},
+        }
+>       first = rt.intake_event(config, replay)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py:381: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py:1402: in intake_event
+    apply_event(state, event, config, frozen_contracts(config))
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py:1158: in apply_event
+    validated = _validate_review_receipt(
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py:844: in _validate_review_receipt
+    verified = verify_git_documents(config["_root"], commit, documents)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repo_root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1532/test_duplicate_and_out_of_orde0/repo')
+commit = '5c83a8321dce70fcc40c8f210af06a9edb1f8999'
+documents = [{'git_blob': '5629657d7db527f7dcea141b11540521d9ed31ee', 'path': 'WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/VERD...475c65d7db8725a64c4fbbbcf03fc767ae', 'path': 'WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/evidence/BLOB_PINS.json'}]
+
+    def verify_git_documents(repo_root: Path, commit: str, documents: list[dict]) -> list[dict]:
+        if not HASH_RE.fullmatch(str(commit)):
+            raise CurrentnessError("REVIEW_COMMIT_INVALID")
+        if subprocess.run(["git", "-C", str(repo_root), "cat-file", "-e", commit],
+                          capture_output=True, text=True).returncode != 0:
+>           raise CurrentnessError("REVIEW_COMMIT_UNAVAILABLE", commit)
+E           operational_currentness_runtime_r1.CurrentnessError: REVIEW_COMMIT_UNAVAILABLE: 5c83a8321dce70fcc40c8f210af06a9edb1f8999
+
+SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py:775: CurrentnessError
+----------------------------- Captured stderr call -----------------------------
+fatal: not a git repository (or any of the parent directories): .git
+=========================== short test summary info ============================
+FAILED SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py::test_mechanism_review_requires_supervised_review_run
+FAILED SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py::test_fake_task_review_is_refused
+FAILED SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py::test_duplicate_and_out_of_order_are_typed
+3 failed, 14 passed in 13.90s

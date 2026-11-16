@@ -1,0 +1,39 @@
+{
+  "schema": "SOROK_CURRENTNESS_EVENT_R1",
+  "event_id": "evil-live",
+  "kind": "GITHUB_OBSERVATION",
+  "recorded_utc": "2026-11-16T06:00:00+00:00",
+  "source": {
+    "trust": "ARBITRARY_LOCAL_TEST_STRING"
+  },
+  "payload": {
+    "live_observation": {
+      "schema": "SOROK_LIVE_GITHUB_OBSERVATION@1",
+      "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+      "source_identity": "FAKE_SOURCE",
+      "transport": "fake",
+      "fetched_at_utc": "2026-11-16T06:00:00+00:00",
+      "expires_at_utc": "2099-01-01T00:00:00+00:00",
+      "ttl_seconds": 900,
+      "refs": {},
+      "refs_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "api": {
+        "repo": {
+          "http_status": 200
+        },
+        "pulls": {},
+        "issues": {},
+        "comments": {},
+        "commits": {},
+        "token_available": true,
+        "token_error": null
+      },
+      "status_coverage": "REF_SHA_ONLY",
+      "status_checks": 0,
+      "status_success": 0,
+      "credential_helper_used": true,
+      "credential_error": null,
+      "evidence_digest": "evil"
+    }
+  }
+}

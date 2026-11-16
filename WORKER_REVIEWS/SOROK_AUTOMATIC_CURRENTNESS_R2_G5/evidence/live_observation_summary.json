@@ -1,0 +1,39 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R2_LIVE_OBSERVATION_SUMMARY@1",
+  "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+  "source_identity": "https://github.com/maidiu/rawlsing.git + maidiu/rawlsing",
+  "transport": "git_ls_remote+github_api_credential_helper",
+  "fetched_at_utc": "2026-11-16T05:34:20.196077+00:00",
+  "expires_at_utc": "2026-11-16T05:49:20.196113+00:00",
+  "refs_count": 16,
+  "refs_digest": "4c895ee3eea2bf2a6355fe9dc9a70a7f15246bdd1c15da08179f9fced8d3eff4",
+  "api": {
+    "repo_http": 200,
+    "pulls": {
+      "1062": 200,
+      "1066": 200,
+      "1089": 200,
+      "1091": 200,
+      "1095": 200
+    },
+    "issues": {
+      "939": 403,
+      "1008": 403,
+      "1010": 403
+    },
+    "comments": {},
+    "commits_count": 11
+  },
+  "status_coverage": "REF_SHA_ONLY",
+  "status_checks": 8,
+  "status_success": 5,
+  "credential_helper_used": true,
+  "credential_error": null,
+  "evidence_digest": "224ef5e0f85b0e59c3c13c5d9c252d1e8656fead4be7199f25b5fd5c66256eeb",
+  "reconciliation_required": [
+    "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+    "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+    "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+    "GITHUB_PR_STATUS_ADVANCED pr:1095"
+  ]
+}
