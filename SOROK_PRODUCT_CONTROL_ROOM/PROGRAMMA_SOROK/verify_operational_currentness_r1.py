@@ -18,6 +18,135 @@ COUNTS = {"G":6,"M":12,"T":9}
 PROTECTED = {"P3","P4","P5","P6","MI","MII","MIII"}
 HEX = re.compile(r"^[0-9a-f]{40}$")
 
+ORIGINAL_EDGES = {
+  "B01": [],
+  "B02": [
+    "B01"
+  ],
+  "B03": [
+    "B01"
+  ],
+  "B04": [
+    "B02",
+    "B03"
+  ],
+  "B05": [
+    "B02",
+    "B04"
+  ],
+  "C01": [
+    "B01"
+  ],
+  "C02": [
+    "C01",
+    "B02",
+    "B03"
+  ],
+  "C03": [
+    "C02",
+    "B04"
+  ],
+  "C04": [
+    "C03"
+  ],
+  "C05": [
+    "C01",
+    "C04"
+  ],
+  "D01": [],
+  "D02": [
+    "D01",
+    "B02",
+    "C01"
+  ],
+  "D03": [
+    "D02",
+    "C04"
+  ],
+  "D04": [
+    "D01",
+    "D03",
+    "B05"
+  ],
+  "D05": [
+    "D04"
+  ],
+  "E01": [
+    "B04",
+    "C04",
+    "D03"
+  ],
+  "E02": [
+    "E01",
+    "B05",
+    "C05",
+    "D04"
+  ],
+  "E03": [
+    "E02"
+  ],
+  "E04": [
+    "E03",
+    "D05"
+  ],
+  "F01": [
+    "E02"
+  ],
+  "F02": [
+    "F01"
+  ],
+  "F03": [
+    "F02"
+  ],
+  "F04": [
+    "F03",
+    "E04"
+  ],
+  "G01": [
+    "F04"
+  ],
+  "G02": [
+    "G01"
+  ],
+  "G03": [
+    "G02"
+  ],
+  "G04": [
+    "G02",
+    "G03"
+  ]
+}
+ORIGINAL_CLASSES = {
+  "B01": "M",
+  "B02": "M",
+  "B03": "M",
+  "B04": "M",
+  "B05": "M",
+  "C01": "M",
+  "C02": "T",
+  "C03": "T",
+  "C04": "T",
+  "C05": "T",
+  "D01": "M",
+  "D02": "M",
+  "D03": "T",
+  "D04": "T",
+  "D05": "M",
+  "E01": "M",
+  "E02": "T",
+  "E03": "G",
+  "E04": "G",
+  "F01": "M",
+  "F02": "G",
+  "F03": "T",
+  "F04": "M",
+  "G01": "G",
+  "G02": "T",
+  "G03": "G",
+  "G04": "G"
+}
+EXPECTED_SCOPED_PR = {"B05":1089,"C04":1062,"C05":1091}
+
 def validate(s, git=True):
     errors=[]
     tasks=s.get("tasks",[])
@@ -35,6 +164,9 @@ def validate(s, git=True):
         if not isinstance(deps,list) or len(deps)!=len(set(deps)) or any(d not in EXPECTED for d in deps):
             errors.append(str(name)+": invalid original dependencies")
         edges[name]=deps
+        if deps != ORIGINAL_EDGES.get(name):errors.append(str(name)+": original dependencies altered")
+        if t.get("class") != ORIGINAL_CLASSES.get(name):errors.append(str(name)+": original G/M/T label altered")
+        if name in EXPECTED_SCOPED_PR and t.get("review_pr") != EXPECTED_SCOPED_PR[name]:errors.append(str(name)+": latest known independent review displaced")
         if t.get("sourcefree_state") not in {"CANDIDATE","SCOPED_RECEIVED_UNMERGED","HELD_NOT_LAUNCHED","PARTIAL_CANDIDATE"}:
             errors.append(str(name)+": invalid engineering state")
         if t.get("full_original_claim")!="NOT_ESTABLISHED":
