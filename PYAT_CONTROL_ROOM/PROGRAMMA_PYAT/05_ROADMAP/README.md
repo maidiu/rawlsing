@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+> **K3 Browser execution correction (2026-11-16; candidate only):** The Browser is a valid documentary author environment; no external host/provider/CLI worktree attestation is required to publish an isolated source-static P0. Seeing the other author's **assignment prompt** is not exposure to their substantive findings and not a P0-invalidating violation. K3-A's existing four-file work should be published, K3-B should finish the existing current-source investigation; do not rerun solely for paperwork. See amended [#1112](https://github.com/maidiu/rawlsing/issues/1112). Actual independent review, source/science/actor rights, native testing and protected paired CAS are separate and held.
+
+
 > **USER-APPOINTED PYAT HQ DOCUMENTARY ACCESSION CANDIDATE (2026-11-16, NOT PROTECTED):** K1 R4 fda48f98ea519016a8815fea59ee9b46414b1559 accepted source-grade by independent K2A d2999a90ce17400ec61d93215788dca097d8803e and K2B 096a653c0551368818c570b6d1d8b0f6be2a44bf at identical HEAD. User grant authorizes bounded acting-HQ documentary dispatch, NOT independent science/source/actor/host or protected rights. K3 #1112 blind A/B independent P0 commission ready for user-selected external execution, not launched. Exact source/leases/status: PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/VMESTYE_K3_HQ_ACCESSION_20261116_R1/00_HQ_ACCESSION_AND_CURRENTNESS_HOLD.md. The source candidate updates CURRENT_PROGRESS.md and JSON together; protected rev8 remains controlling until separate independent receipt and qualified PRE-MAIN CAS. Existing #1097/#960 fast source→C11→cold repeated query goal unchanged; 26 PYAT-PC NOT_ADOPTED, no K4.
 
 

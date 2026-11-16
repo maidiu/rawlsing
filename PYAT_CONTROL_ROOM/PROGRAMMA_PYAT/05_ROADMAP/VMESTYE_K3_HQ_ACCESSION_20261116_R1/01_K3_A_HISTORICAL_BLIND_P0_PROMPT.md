@@ -1,3 +1,7 @@
+> **EXECUTION OVERRIDE — PYAT HQ 2026-11-16 [#1112](https://github.com/maidiu/rawlsing/issues/1112).** The Browser IS the intended S0–S1 GitHub research environment. Do not halt for externally witnessed provider/model/budget, local CLI worktree, or host attestation. Author on an isolated GitHub branch/root; declare source/static vs actual executions and any write conflict. Independent REVIEWER credentials are a separate concern from being an AUTHOR. Blindness excludes reading the other author's **substantive findings** before your own P0 freeze, NOT exposure to its assignment prompt or the shared #1112 commission. Resume the already prepared work: A publish existing four files with source-grade limits; B continue the existing current-code inquiry after A-PROMPT-ONLY exposure. No automatic restart. P1/P2 only if material disagreement; existing P0 C11 implementation continues. No source/science/actor/native/protected promotion.
+
+---
+
 # K3-A / BLIND P0 / historical-conservation prosecution
 
 AGENT_TYPE: independent Browser I3 HIGH, science-first. Separate user-selected competent host, isolated branch review/pyat-k3-a-historical-p0-20261116-r1, sole writer under WORKER_RETURNS/PYAT_K3_A_BLIND_P0_20261116_R1. You are a K3 historical P0 AUTHOR, not the K3 reviewer/HQ.

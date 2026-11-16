@@ -1,3 +1,9 @@
+# PYAT HQ K3 BROWSER EXECUTION RECOVERY — 2026-11-16 (REV9 CANDIDATE; NOT PROTECTED)
+
+Correction to user-appointed HQ K3 dispatch: Browser is the intended S0–S1 author host. K3-A's four source-static files are PREPARED_BUT_UNPUBLISHED; preserve and publish, no historical rerun. K3-B read K3-A **PROMPT ONLY**, not substantive findings; it may continue its original Browser investigation, publish its distinct current-first P0 and explicitly disclose the prompt view. External worker host/budget attestation and CLI worktrees are NOT preconditions for isolated GitHub documentary authoring. Only actual cross-reading of opponent's substantive return before P0 can raise independence conflict; separate independent reviewer/actual runtime/rights/protected CAS still demanded at their applicable scope. Governing in-place correction: [#1112](https://github.com/maidiu/rawlsing/issues/1112). No A/B P0 currently frozen, no K3 owner acceptance/K4, source/native/science/actor proof held. Existing #1097/#960 P0 engineering is FIRST. This remains a **proposed** paired rev9 branch, not protected.
+
+---
+
 # PYAT HQ 2026-11-16 accession + K3 dual P0 DISPATCH CANDIDATE (NOT PROTECTED)
 
 User appoints acting PYAT HQ with duty to abide by the HQ OATH; no science/source/actor/protected custody implied. Full accession: PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/VMESTYE_K3_HQ_ACCESSION_20261116_R1/00_HQ_ACCESSION_AND_CURRENTNESS_HOLD.md on this candidate branch.
