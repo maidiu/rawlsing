@@ -1,0 +1,248 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R1_G5_EVIDENCE@1",
+  "review": {
+    "issue": "SOROK automatic PROGRAMMA currentness",
+    "round": "SOROK_AUTOMATIC_CURRENTNESS_R1_G5",
+    "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "reviewer_role": "distinct_independent_nonauthor",
+    "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+    "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+    "branch": "codex/sorok-automatic-currentness-independent-20261115-r1",
+    "head": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+    "candidate_source_sha": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+    "implementation_sha": "53dd139a7179180d2b3d52dc53a9f581f15467ba",
+    "base_sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+    "runtime_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4",
+    "test_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347"
+  },
+  "verdict": "REVISE_EXACT_DEFECT",
+  "accept_scoped": false,
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "full_original_claim": "NOT_ESTABLISHED",
+  "captures": {
+    "live_github_absence": {
+      "source_tokens_found": [],
+      "baseline_local_only": true,
+      "baseline_file_mtime": 1577836800.0,
+      "readout_baseline_as_of": "2026-11-16T04:31:56.190698+00:00",
+      "changed_local_baseline_items": [],
+      "missing_baseline_items": [
+        "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE"
+      ],
+      "interpretation": "local file sha256 plus now_utc is not a live authenticated observation; unchanged stale and locally changed baselines do not create a freshness event"
+    },
+    "mechanism_review": {
+      "exit": 1,
+      "error": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1",
+      "state_after": "PENDING_EXTERNAL_NONAUTHOR_REVIEW"
+    },
+    "fabricated_task_review": {
+      "exit": 0,
+      "trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+      "review_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+      "real_review_job": "NONE"
+    },
+    "controls": {
+      "stop_source_trust": "ARBITRARY_LOCAL_TEST_STRING",
+      "resume_source_trust": "ARBITRARY_LOCAL_TEST_STRING",
+      "stops_after_stop": 1,
+      "stops_after_resume": 0,
+      "b02_after_stop": "STOPPED_BY_USER",
+      "b02_after_resume": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN"
+    },
+    "arbitrary_resolve": {
+      "evidence_text": "arbitrary unverified local text",
+      "owner": "fake-operator",
+      "items_after": 0,
+      "persisted": [
+        {
+          "event_id": "resolve:a469387c6e7e6ca8bf026734c9152e148781ad465308f30e1b71e2af4a0e32d6",
+          "evidence": "arbitrary unverified local text",
+          "owner": "fake-operator",
+          "reason": "fake resolution",
+          "what_changed": "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE"
+        }
+      ]
+    },
+    "author_17_tests_rerun": false
+  },
+  "toolchain": {
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "machine": "x86_64",
+    "review_python": "3.11.3",
+    "probe_python": "3.11.3",
+    "probe_command": "/usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/probes/currentness_gap_probe.py > WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_stdout.log 2> WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_time.log",
+    "probe_exit": 0,
+    "probe_real_seconds": 1.39,
+    "probe_max_rss_bytes": 23945216,
+    "tmpdir": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/tmp",
+    "sandbox": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/sandbox",
+    "scratch": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/scratch-gap-probe/repo"
+  },
+  "evidence_files": [
+    {
+      "path": "evidence/gap_probe_report.json",
+      "bytes": 79634,
+      "sha256": "00f241229cf0b815e771dc919f945637a7d8b52ee89213369a7903026f3174f3"
+    },
+    {
+      "path": "evidence/gap_probe_stdout.log",
+      "bytes": 719,
+      "sha256": "a7d851e475cc709391783822953eeb7e39eba90f1dceb7abce01361838de481f"
+    },
+    {
+      "path": "evidence/gap_probe_time.log",
+      "bytes": 777,
+      "sha256": "7022ad29dac1eafc172202ea4f3a529f33d69360a122c22c75b2a86bb3376e51"
+    },
+    {
+      "path": "evidence/live_github_absence.txt",
+      "bytes": 1487,
+      "sha256": "227923857dba8f24705fefd0c9c658927e1c65ddeaa7f47f0612d6d4788f4ca7"
+    },
+    {
+      "path": "evidence/sandbox_arbitrary_resolve.err",
+      "bytes": 102,
+      "sha256": "edc6879e5777f8944cc37d39631d44aeaddde8b6f3ceeb5de92adf217ffe1c47"
+    },
+    {
+      "path": "evidence/sandbox_arbitrary_resolve_persisted.json",
+      "bytes": 313,
+      "sha256": "56c95c3d08f2673f1a4bfc270a2852df7ec2f5a2be31c63f2eea17d8027656c1"
+    },
+    {
+      "path": "evidence/sandbox_fake_c05_review_intake.json",
+      "bytes": 312,
+      "sha256": "ab6ae75f3970961d877c64f5f0fd8a1c0e6de94a3aa2d230aa9ff267a78f3dd7"
+    },
+    {
+      "path": "evidence/sandbox_fake_review_intake.err",
+      "bytes": 70,
+      "sha256": "3e79a4fd7bef48473227111c09ef4ef3c2021a28cc355b9f07554a90405fcb17"
+    },
+    {
+      "path": "evidence/sandbox_init.json",
+      "bytes": 135,
+      "sha256": "09fa61db699d9574d110e2ca442ea4af2a509ff8014fd5729fda25908891dfb3"
+    },
+    {
+      "path": "evidence/sandbox_missing_before_resolve.json",
+      "bytes": 22031,
+      "sha256": "71201f3985c3f24daa2be02610e6fabaebc62cbae557992f5cd6296c296aca05"
+    },
+    {
+      "path": "evidence/sandbox_missing_reconcile.json",
+      "bytes": 22324,
+      "sha256": "05a84b22e3be42747f108f401b5eba337f0026b89655912d3d4ace99b20671f1"
+    },
+    {
+      "path": "evidence/sandbox_resume_intake.json",
+      "bytes": 264,
+      "sha256": "a6241a7ebad2926b480ec40ae58c2722fc2dc575a7590fb0aed2b081a4437c7c"
+    },
+    {
+      "path": "evidence/sandbox_startup.json",
+      "bytes": 21735,
+      "sha256": "b64f60d417db167c93e10b6e13902e95ec676eb5663f32aaaf24163ee77c7cd0"
+    },
+    {
+      "path": "evidence/sandbox_startup_changed_baseline.json",
+      "bytes": 21735,
+      "sha256": "0dd489bc2fa1b835da7bbe45a80b319cbdd6a5c59b66403dd39d11ec8d441d06"
+    },
+    {
+      "path": "evidence/sandbox_startup_missing_baseline.json",
+      "bytes": 22031,
+      "sha256": "71201f3985c3f24daa2be02610e6fabaebc62cbae557992f5cd6296c296aca05"
+    },
+    {
+      "path": "evidence/sandbox_status_after_fake_events.json",
+      "bytes": 20410,
+      "sha256": "e26ed829cd0025fe029823c84197c5fa24dc6471fa09b1655c8ee57973f91c00"
+    },
+    {
+      "path": "evidence/sandbox_status_after_resolve.json",
+      "bytes": 20117,
+      "sha256": "7ea186446556ab4d1f3dbd96bdc116d0b5c11902cf0c16543b3f0f33989875af"
+    },
+    {
+      "path": "evidence/sandbox_status_after_resolve_persisted.json",
+      "bytes": 20410,
+      "sha256": "e26ed829cd0025fe029823c84197c5fa24dc6471fa09b1655c8ee57973f91c00"
+    },
+    {
+      "path": "evidence/sandbox_status_before.json",
+      "bytes": 20100,
+      "sha256": "aaf18b8d3a2810125941fa158160833935614ad52efce59d38f1d562a7bbbd4f"
+    },
+    {
+      "path": "evidence/sandbox_status_changed_baseline.json",
+      "bytes": 20100,
+      "sha256": "aaf18b8d3a2810125941fa158160833935614ad52efce59d38f1d562a7bbbd4f"
+    },
+    {
+      "path": "evidence/sandbox_status_fake_review.json",
+      "bytes": 20100,
+      "sha256": "fbe68d699c2df102000608d10dd5b1f1182d7769812d82485d8f0bc5d84b05bf"
+    },
+    {
+      "path": "evidence/sandbox_stop_intake.json",
+      "bytes": 262,
+      "sha256": "2dbc0bcfe698b834a74db566be42dc32d0b5f21ada3ef9944edc1dba4ba37351"
+    }
+  ],
+  "source_pins": {
+    "runtime_sha256": "622c4187b2332d85a221bb1e1b39db4f70e833afc5cf0d55aa2a540d654ae337",
+    "test_sha256": "2f94fcfb1f982dc2cd58dcb9fc0e607c21d1da812e559478e2a4a46bc455f4ca",
+    "verifier_1095_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+    "workflow_1095_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+    "task_1095_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "gmt_1095_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+    "installed_launch_sha256": "4c5004ef91ee56ac056aca2921d4239cbf95d866ff015e7eae7d4deaf10ae829",
+    "installed_completion_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+    "installed_original_launch_sha256": "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1",
+    "installed_original_completion_sha256": "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63"
+  },
+  "boundaries": {
+    "P3": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+    "P4": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+    "P5": "5e266a80ccfc52da10741e15f6b9076138907758",
+    "P6": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+    "MI": "1f77f2036427a410429184780ef884ec4f253ad0",
+    "MII": "521ae459091c5d4e4009f442257d74d50b2c55db",
+    "MIII": "3e5b1611f5cb043b43ffd39b14c9d707923f1210",
+    "old_fleet": "issue_939 USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS; persistent_dispatch=false",
+    "browser": {
+      "issue_1008": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED",
+      "issue_1010": "A_B_A_COMPLETED_G2_HELD",
+      "issue_1012": "NOT_LAUNCHED_WAITING_J1"
+    },
+    "scoped_pins": {
+      "B05_1089": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "C04_1062": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "C05_1091": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53"
+    },
+    "cg_a_1066": "RECEIVED_SCOPED_UNMERGED_PR1066 typed outside the 27 DAG; full source pin not asserted",
+    "protected_ci": "PENDING_PROTECTED_CI_AND_ADOPTION / UNAVAILABLE_BILLING",
+    "historical_replays": "explicit replay only; not new review"
+  },
+  "no_mutation": {
+    "product_write": false,
+    "author_live_config_invoked_or_mutated": false,
+    "author_live_pair_invoked_or_mutated": false,
+    "sandbox_state_writes_only": true,
+    "installed_controller_modified": false,
+    "frozen_1095_assets_modified": false
+  },
+  "limitations": {
+    "author_17_tests_independently_rerun": false,
+    "full_crash_matrix_rerun": false,
+    "canonical_validator_rerun": false,
+    "end_to_end_success_demo": false,
+    "reason": "mission-critical G2/G3/G4 gaps falsified before full demonstration; no full acceptance claimed",
+    "grade": "SOURCEFREE_S2_ONLY"
+  },
+  "terminal": "STOP"
+}

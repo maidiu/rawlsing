@@ -1,0 +1,27 @@
+LIVE GITHUB SOURCE CHECK — operational_currentness_runtime_r1.py
+Search for network/GitHub client primitives:
+NO_NETWORK_OR_GITHUB_CLIENT_PRIMITIVE_FOUND
+
+Baseline path handling:
+161:    baseline = config.get("github_baseline")
+162:    config["_baseline"] = _absolute(root, baseline).resolve() if baseline else None
+266:    if config["_baseline"] and config["_baseline"].is_file():
+268:            "path": str(config["_baseline"]),
+269:            "sha256": sha256_file(config["_baseline"]),
+270:            "as_of": now_utc(),
+307:            "last_authenticated_at_utc": baseline["as_of"] if baseline else None,
+880:            "as_of": payload.get("as_of", now_utc()),
+883:            payload.get("as_of", now_utc()))
+974:                     f" ({baseline.get('as_of')})")
+1176:def _baseline_rows(config: dict) -> list[dict]:
+1177:    baseline = config.get("_baseline")
+1186:def baseline_observations(rows: list[dict]) -> dict:
+1235:        rows = _baseline_rows(config)
+1236:        observations = baseline_observations(rows)
+1289:            rows = _baseline_rows(config)
+1290:            observations = baseline_observations(rows)
+1293:                "event_id": "github-baseline:" + sha256_file(Path(config["_baseline"])),
+1298:                    "baseline_path": str(config["_baseline"]),
+1299:                    "baseline_sha256": sha256_file(Path(config["_baseline"])),
+1300:                    "as_of": now_utc(),
+1328:        "authenticated_github_baseline": baseline,
