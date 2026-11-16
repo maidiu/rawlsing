@@ -1,0 +1,58 @@
+{
+  "action": "RECEIVE",
+  "owner": "S47/P2 objective world; P6 house.py",
+  "task": "B01",
+  "unmet_full_original_prereqs": []
+}
+{
+  "reconciliation_required": [
+    {
+      "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "expires_at_utc": "2026-11-16T08:06:11.022205+00:00",
+      "fetched_at_utc": "2026-11-16T07:51:11.022180+00:00",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "source_digest": "ddeb8a1e69f67e5ee488f7ef8bc39a01b6bf534c8a9dec27bf2f3a9febfdf567",
+      "source_kind": "LIVE_GITHUB",
+      "status_coverage": "REF_SHA_ONLY",
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939"
+    },
+    {
+      "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "expires_at_utc": "2026-11-16T08:06:11.022205+00:00",
+      "fetched_at_utc": "2026-11-16T07:51:11.022180+00:00",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "source_digest": "ddeb8a1e69f67e5ee488f7ef8bc39a01b6bf534c8a9dec27bf2f3a9febfdf567",
+      "source_kind": "LIVE_GITHUB",
+      "status_coverage": "REF_SHA_ONLY",
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008"
+    },
+    {
+      "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "expires_at_utc": "2026-11-16T08:06:11.022205+00:00",
+      "fetched_at_utc": "2026-11-16T07:51:11.022180+00:00",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "source_digest": "ddeb8a1e69f67e5ee488f7ef8bc39a01b6bf534c8a9dec27bf2f3a9febfdf567",
+      "source_kind": "LIVE_GITHUB",
+      "status_coverage": "REF_SHA_ONLY",
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010"
+    },
+    {
+      "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+      "expected_evidence": "live state/merged/updated_at/head matching the expected baseline",
+      "expires_at_utc": "2026-11-16T08:06:11.022205+00:00",
+      "fetched_at_utc": "2026-11-16T07:51:11.022180+00:00",
+      "next_action": "reconcile the changed PR status and re-run the relevant receiving",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "source_digest": "ddeb8a1e69f67e5ee488f7ef8bc39a01b6bf534c8a9dec27bf2f3a9febfdf567",
+      "source_kind": "LIVE_GITHUB",
+      "status_coverage": "REF_SHA_ONLY",
+      "what_changed": "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    }
+  ]
+}

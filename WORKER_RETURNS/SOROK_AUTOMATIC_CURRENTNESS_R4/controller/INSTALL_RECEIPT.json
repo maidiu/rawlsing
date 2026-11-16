@@ -1,0 +1,41 @@
+{
+  "files": {
+    "completion_events.py": {
+      "diff": "controller/completion_events.diff",
+      "installed_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+      "original_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2"
+    },
+    "launch.py": {
+      "diff": "controller/launch.r4.diff",
+      "installed_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+      "original_sha256": "4a7c243c0db89822ba8e51a1dd41ab6f63ad2929bef5508d64a78294aee8a370"
+    },
+    "supervisor.py": {
+      "changed": false,
+      "installed_sha256": "6e914e59c92307e219f54c3fcdb99675299e178aa3af10c2f961e860d022ba02",
+      "original_sha256": "6e914e59c92307e219f54c3fcdb99675299e178aa3af10c2f961e860d022ba02"
+    }
+  },
+  "launcher_trust_anchor": {
+    "identity": {
+      "path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+      "schema": "SOROK_CONTROLLER_LAUNCHER_IDENTITY@1",
+      "sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2"
+    },
+    "identity_mode": "0600",
+    "identity_path": "/Users/matthewsmith/.local/share/rawlsing-controller/launch_attestation_identity.json",
+    "key_mode": "0600",
+    "key_not_committed": true,
+    "key_not_logged": true,
+    "key_path": "/Users/matthewsmith/.local/share/rawlsing-controller/launch_attestation.key"
+  },
+  "old_r4_attestation": {
+    "note": "R3 launcher attestation before R4 authorizer; preserved and migrated under explicit HQ operator enrollment; not edited.",
+    "path": "evidence/old_r4_launch_attestation.json"
+  },
+  "pyat_behavior_changed": false,
+  "schema": "SOROK_CONTROLLER_R4_LAUNCH_PROOF_INSTALL@1",
+  "scope": "SOROK_ONLY_LAUNCH_PROOF; non-SOROK bindings unchanged",
+  "state": "APPLIED",
+  "target": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127"
+}

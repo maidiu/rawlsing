@@ -2332,10 +2332,10 @@
   },
   "operational_currentness_runtime_r1": {
     "schema": "SOROK_OPERATIONAL_CURRENTNESS_RUNTIME_R1",
-    "generation": 52,
-    "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+    "generation": 54,
+    "checkpoint_id": "91fba5049b4d0c5fc0e1c0252d6e0ac41bb58e8938985e32a95651c82087bbf8",
     "created_utc": "2026-11-16T03:48:33.865483+00:00",
-    "updated_utc": "2026-11-16T06:46:11.213052+00:00",
+    "updated_utc": "2026-11-16T08:14:05.843631+00:00",
     "source_freeze": {
       "packet_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
       "gmt_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
@@ -2366,8 +2366,8 @@
     "pair": {
       "json_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json",
       "md_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
-      "generation": 52,
-      "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+      "generation": 54,
+      "checkpoint_id": "91fba5049b4d0c5fc0e1c0252d6e0ac41bb58e8938985e32a95651c82087bbf8",
       "reader_boundary": "LOCKED_GENERATION_MATCH_REQUIRED"
     },
     "authenticated_checkpoint": {
@@ -2409,6 +2409,16 @@
         "5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc": {
           "event_id": "completion:5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
           "job_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu"
+        },
+        "c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0": {
+          "event_id": "completion:c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0",
+          "job_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+          "session": "ses_e21a481bfffefyvpxaeFaAOFvQ"
+        },
+        "5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4": {
+          "event_id": "completion:5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4",
+          "job_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
           "session": "ses_e2186e745ffecK1Ilg4cw26pVu"
         }
       },
@@ -4516,6 +4526,82 @@
         "sequence": 43,
         "event_hash": "5ef4e51d9d129de39424cf0d6c84df31ad5066d336cc427d7c0b4e26103c3943",
         "previous_event_hash": "7156c95dba8cc2ff28de4934ba87eaf4012a4bf8e03a1064d353313f6a378eb7"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "completion:c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0",
+        "kind": "WORKER_RETURN",
+        "recorded_utc": "2026-11-16T07:54:25.623021+00:00",
+        "source": {
+          "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+          "role": "IMPLEMENTER",
+          "expected_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "expected_source_commit": null,
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+          "job_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+          "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "pid": 93975,
+          "grant_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4-grant",
+          "argv_sha256": "9d6ee9ac3bbc47f997273f216088d04652066d0de46dd1e155553d260038332f",
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "f4cd0d2f4334da84345688c05c3a1776211a4dc547325d5b72bbe22b2686ead8",
+          "binding_sha256": "cb2e53b1e8b1ef97610b72749d924e367e808db5e46afbe0b7f1494b8029677f",
+          "launch_sha256": "fd95f5977cd196ae5d2ad5a21ac064f94d7433d97b4296db3e2f2c0d545f19e0",
+          "process_sha256": "a38a50dceeae7d8ee445b5c87e3cd14fccbb658aca2d22140fcfbce21d23521d",
+          "completion_sha256": "c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0",
+          "source_commit": null,
+          "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R4/WORKER_RETURN.json"
+        },
+        "payload": {
+          "task_id": "AUTOMATIC_CURRENTNESS_R1",
+          "role": "IMPLEMENTER",
+          "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+          "exit_code": 0,
+          "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "source_commit": null
+        },
+        "sequence": 44,
+        "event_hash": "271c1d23981299471e470c2d3cdb65e7c89b6bc0773b022f7514c33848aa1a76",
+        "previous_event_hash": "5ef4e51d9d129de39424cf0d6c84df31ad5066d336cc427d7c0b4e26103c3943"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "completion:5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4",
+        "kind": "WORKER_RETURN",
+        "recorded_utc": "2026-11-16T08:14:05.716634+00:00",
+        "source": {
+          "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+          "role": "REVIEWER",
+          "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "expected_source_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
+          "job_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "pid": 2131,
+          "grant_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1-grant",
+          "argv_sha256": "f89d302f7feee46153d9dc3bb4a2021f9b5c8470c9357259604ea24f1b2d16f9",
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "3ea88580ba829798daf4ba530dbb4632f24e123925eca3bced5258016b356e34",
+          "binding_sha256": "47e2e20242a05331443ba0c242525bf845ede6c96aff50a21290fe257c1717ad",
+          "launch_sha256": "302a6979f002c0a33e8d51193e99adcef9da2c77155fcdecc15a43f89d0c1954",
+          "process_sha256": "b0728c1490625065a312123381c5c959a0f45a1ef2ef0a37458d85d851857577",
+          "completion_sha256": "5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4",
+          "source_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+          "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/REVIEW_RECEIPT.json"
+        },
+        "payload": {
+          "task_id": "AUTOMATIC_CURRENTNESS_R1",
+          "role": "REVIEWER",
+          "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+          "exit_code": 0,
+          "author_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "source_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8"
+        },
+        "sequence": 45,
+        "event_hash": "d4580ef223a979d49f3f9bfec3bf38e1957ebcb6fce0d970ff9c4bf087593fdc",
+        "previous_event_hash": "271c1d23981299471e470c2d3cdb65e7c89b6bc0773b022f7514c33848aa1a76"
       }
     ],
     "tasks": [
@@ -7585,25 +7671,25 @@
     "frozen_projection_adoption": "PENDING_INDEPENDENT_RECEIVING",
     "mechanism_review": {
       "id": "AUTOMATIC_CURRENTNESS_R1",
-      "state": "REVISE_EXACT_DEFECT",
-      "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+      "state": "ACCEPTED_SCOPED_PENDING_HQ_ADOPTION",
+      "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
       "review_receipt": {
         "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
         "task_id": "AUTOMATIC_CURRENTNESS_R1",
-        "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
-        "implementation_code_sha": "fc322b1ea3b3769bae699aeea8c1d31c053fd042",
-        "test_code_sha": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
+        "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+        "implementation_code_sha": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447",
+        "test_code_sha": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1",
         "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
         "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
         "reviewer_role": "same_distinct_independent_nonauthor",
-        "review_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
+        "review_commit": "723270372948d53602bcba88c8f0040026663b4a",
         "review_pr": null,
-        "verdict": "REVISE_EXACT_DEFECT",
-        "engineering_verdict": "REVISE_EXACT_DEFECT",
+        "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+        "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE",
         "scientific_verdict": "HELD",
         "authority_verdict": "HOLD_SOURCE_AUTHORITY",
-        "accept_scoped": false,
-        "scope": "FOCUSED_MATERIAL_EVENT_AUTHORITY_RECEIVING_ONLY; R2 material routes and live source rechecked; public attest-launch self-enrollment bypass remains; no protected/native/full claim",
+        "accept_scoped": true,
+        "scope": "EXACT_OPERATIONAL_CURRENTNESS_MECHANISM_UNDER_TRUSTED_LOCAL_OPERATOR_CONTROLLER_BOUNDARY; installed-launcher proof and actual-session binding; external issue/comment connector and CI holds; no full-original/native/protected claim",
         "grade": "SOURCEFREE_S2_ONLY",
         "full_original_claim": "NOT_ESTABLISHED",
         "protected_ci": "UNAVAILABLE_BILLING",
@@ -7612,74 +7698,74 @@
         "source_documents": [
           {
             "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
-            "git_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042"
+            "git_blob": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447"
           },
           {
             "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
-            "git_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651"
+            "git_blob": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/VERDICT.json",
-            "git_blob": "8fd5a5bdfd980576d76999251cbc7f7c0b9e6111"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/VERDICT.json",
+            "git_blob": "ce9bb67b93edd38ff5850f5febcb2dc1ba8a785d"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/EVIDENCE.json",
-            "git_blob": "f86c8b37f25e44acd8ac03b31954fd2cda118529"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/EVIDENCE.json",
+            "git_blob": "6d5c91e7fe8d2522374668d284c8ed96e633f381"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/00_RECEIVING.md",
-            "git_blob": "013dbbb3620e90278561e60687052e6968ceec9f"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/00_RECEIVING.md",
+            "git_blob": "ab0470702936601f47856fdc64b6eaffba65f777"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/G5_HANDOFF.md",
-            "git_blob": "8e51789360539da3e626b3652b24379ee6ac3268"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/G5_HANDOFF.md",
+            "git_blob": "d5492cfd9c751c1cbcfb3621a886f3c72d9ace3b"
           }
         ],
-        "reviewed_at_utc": "2026-11-16T06:45:40.464809+00:00",
+        "reviewed_at_utc": "2026-11-16T08:13:31.252214+00:00",
         "reasons": [
-          "R2 material probe 7 fixed/0 gaps; fake unenrolled reviewer refused",
-          "public attest-launch accepted a caller-authored launch.py plus caller-owned live process tree as TRUSTED_LAUNCH_ATTESTED",
-          "fake self-consistent REVIEWER run was then intaked with job session ses_FAKE_ATTEST",
-          "actual run session is not bound to receipt/registry expected session; only expected fields are checked",
-          "issue/comment 403 remains source-authority hold; CI remains unavailable"
+          "exact old R3 fake launcher reproduced bypass on old source; corrected source refuses actual-session mismatch",
+          "matching-session fake launcher refused LAUNCHER_PROOF_REQUIRED",
+          "actual installed launcher auto-attested with fixed path/hash and TRUSTED_LAUNCHER_ATTESTATION",
+          "34 focused tests pass with reviewer-generated sandbox key; material 7/0; fake unenrolled reviewer refused",
+          "issue/comment 403 is a source-authority HOLD and CI is unavailable; no full/native/protected claim"
         ],
         "remaining_holds": {
-          "code": "REVISE_EXACT_DEFECT: attest-launch public self-enrollment bypass; bind installed launcher or operator authorization and actual session/source",
           "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; no full currentness",
           "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
           "native_science_actor_human": "HELD",
+          "full_original": "NOT_ESTABLISHED",
           "protected_merge": "none"
         },
         "runtime_intake": {
           "manual_fabrication": false,
           "path": "AUTOMATIC_INSTALLED_CONTROLLER_HOOK_AFTER_REAL_PROCESS_EXIT",
-          "expected_source": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+          "expected_source": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
           "expected_role": "REVIEWER",
           "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-          "review_job": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1"
+          "review_job": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1"
         },
         "terminal": "STOP"
       },
       "review_run": {
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
-        "job_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
+        "job_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
         "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-        "grant_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1-grant",
-        "completion_sha256": "5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
-        "binding_sha256": "7e984a54407ade689abf25752bdbcf61d8ab844dad7c7550bbcb0d684d71ff9a",
-        "launch_sha256": "fa965ca579b1ab7825f45b55d9de6c852a9a35614d780a52dd232e0d2b7c0cd4",
-        "return_sha256": "f64a989901d22bf39fc54875d8b8b18cecd1210d6fea114012094187a3f7a171",
+        "grant_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1-grant",
+        "completion_sha256": "5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4",
+        "binding_sha256": "47e2e20242a05331443ba0c242525bf845ede6c96aff50a21290fe257c1717ad",
+        "launch_sha256": "302a6979f002c0a33e8d51193e99adcef9da2c77155fcdecc15a43f89d0c1954",
+        "return_sha256": "b026e72f6bf47b56cf66475f30d8f35daeeb41414bf9abae919015e5ff3af907",
         "role": "REVIEWER"
       },
       "verdict_artifact": {
-        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/VERDICT.json",
-        "git_blob": "8fd5a5bdfd980576d76999251cbc7f7c0b9e6111",
-        "verdict": "REVISE_EXACT_DEFECT"
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/VERDICT.json",
+        "git_blob": "ce9bb67b93edd38ff5850f5febcb2dc1ba8a785d",
+        "verdict": "ACCEPT_SCOPED_SOURCEFREE"
       },
-      "verdict": "REVISE_EXACT_DEFECT",
+      "verdict": "ACCEPT_SCOPED_SOURCEFREE",
       "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-      "review_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
-      "review_scope": "FOCUSED_MATERIAL_EVENT_AUTHORITY_RECEIVING_ONLY; R2 material routes and live source rechecked; public attest-launch self-enrollment bypass remains; no protected/native/full claim",
+      "review_commit": "723270372948d53602bcba88c8f0040026663b4a",
+      "review_scope": "EXACT_OPERATIONAL_CURRENTNESS_MECHANISM_UNDER_TRUSTED_LOCAL_OPERATOR_CONTROLLER_BOUNDARY; installed-launcher proof and actual-session binding; external issue/comment connector and CI holds; no full-original/native/protected claim",
       "replay": false
     },
     "next_non_dispatch_action": null,
@@ -7756,21 +7842,21 @@
       }
     ],
     "mechanism_worker_return": {
-      "event_id": "completion:951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2",
-      "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
-      "job_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+      "event_id": "completion:c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0",
+      "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+      "job_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
       "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
-      "grant_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3-grant",
+      "grant_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4-grant",
       "role": "IMPLEMENTER",
       "exit_code": 0,
-      "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/WORKER_RETURN.json",
-      "return_sha256": "4fc9476faf8b0b8bca81167a785797f652552b030f876389813f659f944a67e8",
-      "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
-      "runtime_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042",
-      "test_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
+      "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R4/WORKER_RETURN.json",
+      "return_sha256": "2b5c8bdd38d75931f44a34f8c2067ee162ebf90cb200880ddf598c2f5e0e7ecb",
+      "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+      "runtime_blob": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447",
+      "test_blob": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1",
       "execution_state": "RETURNED_REVIEW_PENDING",
       "review_required": true,
-      "completion_sha256": "951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2"
+      "completion_sha256": "c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0"
     },
     "mechanism_review_history": [
       {
@@ -7843,6 +7929,25 @@
           "binding_sha256": "7e984a54407ade689abf25752bdbcf61d8ab844dad7c7550bbcb0d684d71ff9a",
           "launch_sha256": "fa965ca579b1ab7825f45b55d9de6c852a9a35614d780a52dd232e0d2b7c0cd4",
           "return_sha256": "f64a989901d22bf39fc54875d8b8b18cecd1210d6fea114012094187a3f7a171",
+          "role": "REVIEWER"
+        },
+        "replay": false
+      },
+      {
+        "event_id": "completion:5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4",
+        "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+        "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+        "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "review_commit": "723270372948d53602bcba88c8f0040026663b4a",
+        "review_run": {
+          "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
+          "job_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "grant_id": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1-grant",
+          "completion_sha256": "5001d5e27ebfeeb91b4d3fe06774051c82af11424269c2202bb62cc7962c4cf4",
+          "binding_sha256": "47e2e20242a05331443ba0c242525bf845ede6c96aff50a21290fe257c1717ad",
+          "launch_sha256": "302a6979f002c0a33e8d51193e99adcef9da2c77155fcdecc15a43f89d0c1954",
+          "return_sha256": "b026e72f6bf47b56cf66475f30d8f35daeeb41414bf9abae919015e5ff3af907",
           "role": "REVIEWER"
         },
         "replay": false

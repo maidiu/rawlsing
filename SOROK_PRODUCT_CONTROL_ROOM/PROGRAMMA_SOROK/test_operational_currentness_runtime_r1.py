@@ -427,6 +427,7 @@ def make_controller_run(root: Path, *, job_id="sorok-currentness-test-job",
                         return_schema=rt.RETURN_SCHEMA,
                         return_payload=None,
                         session="ses_local_fixture_child",
+                        expected_session=None,
                         expected_source_commit=None):
     run = root / "controller-state" / job_id
     run.mkdir(parents=True)
@@ -446,7 +447,7 @@ def make_controller_run(root: Path, *, job_id="sorok-currentness-test-job",
                   "job_ids": [job_id],
                   "argv_sha256": rt.command_digest(argv)},
         "sorok_currentness": {"task_id": task_id, "role": role,
-                              "expected_session": job["session"],
+                              "expected_session": expected_session or job["session"],
                               "return_filename": "return.json"},
     }
     if expected_source_commit:
@@ -487,7 +488,7 @@ def enroll_test_run(config, run):
         "process_sha256": rt.sha256_file(run / "process.json"),
         "pid": process["pid"],
     })
-    auth_path.write_text(json.dumps({
+    authorization = {
         "schema": rt.OPERATOR_AUTH_SCHEMA,
         "authorization_id": "test-enroll-1",
         "role": "SOROK_HQ_OPERATOR",
@@ -504,7 +505,10 @@ def enroll_test_run(config, run):
         "allowed_source_digests": [source],
         "allowed_item_digests": [],
         "allowed_supersedes": [],
-    }) + "\n")
+    }
+    authorization["operator_signature"] = rt._sign_operator_authorization(
+        authorization)
+    auth_path.write_text(json.dumps(authorization) + "\n")
     config_path = Path(config["_root"]) / "config.json"
     data = json.loads(config_path.read_text())
     data["trusted_operator_authorization"] = str(auth_path)
