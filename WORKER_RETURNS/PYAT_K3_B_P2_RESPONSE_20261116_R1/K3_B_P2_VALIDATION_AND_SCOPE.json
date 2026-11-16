@@ -1,0 +1,110 @@
+{
+  "schema": "K3_B_P2_VALIDATION_AND_SCOPE@1",
+  "date_utc": "2026-11-16",
+  "role": "B_P2_AUTHOR_RESPONSE_ONLY",
+  "terminal": "K3B_P2_MATERIAL_RESPONSES_FROZEN__INDEPENDENT_K3_RECEIVING_NEXT",
+  "repository": "maidiu/rawlsing",
+  "frozen_inputs": {
+    "a_original_p0": "f1e52596e0803e4a32cb48b5f245324c292086d6",
+    "b_original_p0": "c16e03815fc11f1876e851dbc7b078cd97ff4fb3",
+    "a_p1_immutable": "9f18aee7e010c321139d03d038fb55a416a7849f",
+    "b_p1_immutable_parent": "8bde0da79a6030ce456fba74f86bb5ca061714d6",
+    "k1_r4": "fda48f98ea519016a8815fea59ee9b46414b1559",
+    "protected_pre_main_verified_ref": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "current_unmerged_engineering_pr1084": "357a0fbf50377788b050f5365089ed54a0548f23",
+    "current_unmerged_prepared_pr1103": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+    "historical_original_source_cut": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+    "proposal_status": "26 NOT_ADOPTED; no B P2 promotion",
+    "paired_protected_pyat_progress": "rev8 at last inspected protected cut; rev9 receiving not established"
+  },
+  "input_blobs_read": {
+    "a_p1_verdict": "cd92eacbfd2d7795a4f79ae1901100452f83085c",
+    "a_p1_objections": "3d64e762de4fa191cb581ee23f0d8264525b5e5b",
+    "a_p1_scope": "b84aa34c3d06a66cc407e5d9487bc5a02adaf080",
+    "b_p0_reverse": "e66b28354a02395a8c235e5e503096d8ff54d6ef",
+    "b_p0_edges": "62a025f6ee345eefb3d99e3962d22626b254c681",
+    "b_p0_narrative": "341d51c59e7b9f6dd79d74e7084098a8f4e40bb4"
+  },
+  "isolated_author": {
+    "branch": "review/pyat-k3-b-p2-response-20261116-r1",
+    "base_branch": "review/pyat-k3-b-current-p1-20261116-r1",
+    "base_exact_commit": "8bde0da79a6030ce456fba74f86bb5ca061714d6",
+    "add_only_root": "WORKER_RETURNS/PYAT_K3_B_P2_RESPONSE_20261116_R1/",
+    "output_expected_files": 3,
+    "original_a_p0_changed": false,
+    "original_b_p0_changed": false,
+    "original_a_p1_changed": false,
+    "original_b_p1_changed": false,
+    "protected_write": false
+  },
+  "files_read_back": {
+    "K3_B_P2_RESPONSE_TO_A_P1.md": {
+      "git_blob_sha": "b9dcc639bccb0fe1ffa93d27b57c67f61bacfa49",
+      "readback_chars": 16809
+    },
+    "K3_B_P2_DISPOSITION_AND_FALSIFIERS.tsv": {
+      "git_blob_sha": "bc713b0e2ea1119313808bbc44cd88bbca34ece1",
+      "readback_chars": 11009,
+      "rows": 6,
+      "columns": 17
+    },
+    "K3_B_P2_VALIDATION_AND_SCOPE.json": {
+      "self_sha": "RECORD_EXACT_BLOB_IN_PR_AND_ISSUE_COMMENT_AFTER_PUBLICATION"
+    }
+  },
+  "opposition": {
+    "contested_ids": [
+      "K3A-P1-01",
+      "K3A-P1-02",
+      "K3A-P1-03",
+      "K3A-P1-04",
+      "K3A-P1-05",
+      "K3A-P1-06"
+    ],
+    "dispositions": [
+      "PARTIAL_CONCEDE_AND_HOLD",
+      "CONCEDE_CORRECTION",
+      "CONCEDE_CORRECTION",
+      "CONCEDE_CORRECTION",
+      "PARTIAL_CONCEDE_AND_HOLD",
+      "PARTIAL_CONCEDE_AND_HOLD"
+    ],
+    "count": 6,
+    "concede_correction": 3,
+    "partial_concede_hold": 3,
+    "no_new_build": true,
+    "corrected_historical_risks": [
+      "same-cohort MI secondary ranking",
+      "Boolean False vs literal zero + source-eligible complement",
+      "even/odd 3-way F4 parity",
+      "V552 score diagnostic vs coverage vs J certified",
+      "V552J review-only diagnostic context != V553 allowed probe",
+      "V554 static absence templates vs actual blocker vs prohibition law"
+    ]
+  },
+  "five_adopted_tests": [
+    "CURRENT_NECESSITY",
+    "LAWFUL_ADEQUATE_SUCCESSOR",
+    "REAL_FIRST_READER",
+    "SUITABILITY_SOURCE_SCIENCE_RIGHTS",
+    "COMPARATIVE_GAIN"
+  ],
+  "documentary_validation": {
+    "results": "10/10 initial source/TSV field checks PASS before this manifest; full PR isolation compare and final manifest readback required",
+    "assessed_by": "B P2 author, not independent reviewer",
+    "source_grade": "S0/S1 GitHub direct code and historical-static evidence only"
+  },
+  "executed_by_this_author": {
+    "github_source_read": true,
+    "github_documentary_write": true,
+    "actual_python_tests": false,
+    "original_sav_dta_or_respondent_bytes": false,
+    "performance_benchmark": false,
+    "independent_g5": false,
+    "owner_requirement_adoption": false,
+    "source_science_actor_rights": false,
+    "protected_merge": false,
+    "K4": false
+  },
+  "remaining": "One A optional P2 or explicit waiver; then separate read-only K3 reviewer under #1112 and qualified PYAT owner; #1097/#960 P0 source-to-saved/1-10-100/6GiB continues independently"
+}
