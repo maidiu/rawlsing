@@ -1,21 +1,21 @@
-case_id	status	scope_or_attack
-P01	PASS	8503 original source relations byte-exact row identity
-P02	PASS	332 original source consumers byte-exact row identity
-P03	PASS	8508 relation rows, five new only
-P04	PASS	342 consumer rows, ten new only
-P05	PASS	no duplicate relation IDs
-P06	PASS	no duplicate edge IDs
-P07	PASS	REL001 type MUST_DEPENDENCY and F21->F20 conserved
-P08	PASS	REL001 REVIEW_ONLY and ALLOW both distinguished
-P09	PASS	EDGE005 candidate, components, validation report positional inputs
-P10	PASS	EDGE005 review sidecar not certifier input
-P11	PASS	70 unique R8-to-R17 delta identities
-P12	PASS	all delta after images for two changed rows exactly match DATA
-N01	REJECTED	restore strict certified-only condition excludes review-only
-N02	REJECTED	pretend review-only join implies ALLOW
-N03	REJECTED	omit both producer ALLOW prerequisites
-N04	REJECTED	omit observed selected V552 pressure
-N05	REJECTED	inject prebuilt review packet as certifier argument
-N06	REJECTED	omit contract validation report from certifier
-N07	REJECTED	collapse prelim and final strict certificate
-N08	REJECTED	elevate static current read to native executed
+check_id	result	kind	description
+P01	PASS	DOCUMENTARY_SOURCE_S0_S1	exact REL R17 HEAD readback
+P02	PASS	DOCUMENTARY_SOURCE_S0_S1	exact EDGE R17 HEAD readback
+P03	PASS	DOCUMENTARY_SOURCE_S0_S1	8508 relations preserved
+P04	PASS	DOCUMENTARY_SOURCE_S0_S1	342 edges preserved
+P05	PASS	DOCUMENTARY_SOURCE_S0_S1	70 reversible ledger rows
+P06	PASS	DOCUMENTARY_SOURCE_S0_S1	function MUST relation present
+P07	PASS	DOCUMENTARY_SOURCE_S0_S1	review-only branch retained
+P08	PASS	DOCUMENTARY_SOURCE_S0_S1	ALLOW conditions preserved
+P09	PASS	DOCUMENTARY_SOURCE_S0_S1	certifier three real inputs
+P10	PASS	DOCUMENTARY_SOURCE_S0_S1	review sidecar built after preliminary cert
+P11	PASS	DOCUMENTARY_SOURCE_S0_S1	actual reader OPEN_PROOF_GAP
+P12	PASS	DOCUMENTARY_SOURCE_S0_S1	two ledger-after images exactly match DATA
+N01	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	strict-only join
+N02	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	review upgraded to ALLOW
+N03	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	only one producer allow
+N04	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	unobserved pressure
+N05	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	review-sidecar input
+N06	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	validation report absent
+N07	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	strict publisher premature
+N08	REJECTED	EXECUTED_IN_MEMORY_SOURCE_MUTATION	native claim fabricated
