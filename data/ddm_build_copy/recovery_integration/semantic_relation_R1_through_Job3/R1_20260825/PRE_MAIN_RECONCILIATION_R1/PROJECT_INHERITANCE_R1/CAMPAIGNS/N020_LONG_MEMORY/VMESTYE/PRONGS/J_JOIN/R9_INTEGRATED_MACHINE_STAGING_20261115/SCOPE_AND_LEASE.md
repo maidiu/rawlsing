@@ -1,3 +1,9 @@
+# R11 governing lease/source qualification notice
+
+The author-side R11 hostile review corrected 24 invalid or unauthorized proposed normalized rows and built 645 exact historical source-witness stage records without modifying canonical DATA. This **does not modify the requirement** for an explicit exclusive #864 writer lease or independently qualified T1 #871 R12 / T2 #1085 R7 receiving. Existing canonical #864 R8 HEAD is `31d2642ce7667d72efc08c3f6d42a2674b10d5ea` and protected PRE-MAIN is `6a5c12f04323d74001f9632063ec907f4fc4468e`. No writer transfer was granted by this review or by GitHub push permission.
+
+---
+
 # ZL15 R9 — source, writer lease and admissibility control
 
 **The existing sole canonical source remains draft PR #864** at `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`; protected `integration/pre-main-reconciliation-r1` at `6a5c12f04323d74001f9632063ec907f4fc4468e`. This staging cut is a **linear descendant of #864's exact R8** on the *separate* branch `research/vmestye-zl15-r9-integrated-machine-staging-20261115`, not a competing canonical writer. The existing eight `VMESTYE/DATA/*.tsv` blobs are byte-identical to R8. The existing `PRONGS/J_JOIN/FULL_ID_ANTI_JOINS.tsv` and `CONFLICTS_AND_REPAIR_ORDER.tsv` also remain unchanged; copies in the R9 root point to the exact same original Git blobs.

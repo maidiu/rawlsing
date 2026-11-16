@@ -1,3 +1,15 @@
+# R11 — controlling source-honest master navigation
+
+The archived R9/R10 map below is superseded on **proposed table counts, executable source pins, asserted historical stage joins, and path evidence/owner columns**. Active R11 source-only staging facts: **24** material computational/scientific/compositional paths; **21** prospective NOT_ADOPTED PYAT requirements; **17** finite owner tasks; eight proposed executable-source-located ops and eight held consumers; nine candidate relations; nineteen evidence rows; **0 new authority applications / 0 new decision events**. Original R8 historical authority/event records remain unchanged.
+
+New exact stage navigation: [645 R8 original stage witnesses](R11_HOSTILE_REVIEW/R11_EXACT_T1_TO_STAGE_WITNESS_BRIDGES.tsv) and [260 T1×five-stage summaries](R11_HOSTILE_REVIEW/R11_T1_STAGE_52x5_SUMMARY.tsv) from the literal **129 T1-contract↔prong-source-finding** witness pairs. See [52 latest original→current source-author contracts](R10_T1_R12_T2_R7_SOURCE_INTAKE/R10_HISTORICAL_TO_CURRENT_52.tsv) and [24 path-to-T1 prospective links](R11_HOSTILE_REVIEW/R11_PATH_TO_T1_CANDIDATE_NAVIGATION.tsv). **All source witness joins are documentary; actual Dva/Trii/Chetiri/LongMemory semantic function fate and non-test PYAT first readers still independently HELD**. Do not infer these from stage labels or source names.
+
+Key false equivalence removed: source-reported F26 per-query signature response cache is **not** V550 country SQL prefetch or V550J prepared-family reuse. Exact J preparation/joint pattern executable bodies pinned; F26 direct body remains unverified and LMX043 is not executable. The old five proposed authority applications and thirteen no-op event rows were not lawful normalized applications; source-originals are in [24 quarantined rows](R11_HOSTILE_REVIEW/R11_QUARANTINED_INVALID_PROPOSALS.tsv). No official DATA mutation.
+
+---
+
+## Earlier R9/R10 master map (historical reference, former proposal counts superseded)
+
 # VMESTYE ZL15 R9 — historical/recovery-first master integration map (ISOLATED STAGING)
 **Source root:** PR #864 R8 at 31d2642ce7667d72efc08c3f6d42a2674b10d5ea, inherited 13 prong facts independently accepted by PR #859 R5 at 449a97480dfa5c9f7f2042d688fe1ed1869ffe91. Source cut protected integration/pre-main-reconciliation-r1 at 6a5c12f04323d74001f9632063ec907f4fc4468e.
 **Status:** NOT THE CANONICAL DATA HEAD. The incumbent author lease is not evidenced as transferred. Existing R8 DATA and P0/P1/P2 artifacts are unchanged. All rows below are source-qualified staging proposals or inherited exact identity with typed holds.

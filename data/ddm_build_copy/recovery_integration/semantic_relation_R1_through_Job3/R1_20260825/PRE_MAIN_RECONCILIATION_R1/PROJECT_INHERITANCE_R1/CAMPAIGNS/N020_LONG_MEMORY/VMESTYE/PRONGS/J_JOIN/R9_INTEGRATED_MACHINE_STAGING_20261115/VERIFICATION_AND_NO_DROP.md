@@ -1,3 +1,19 @@
+# R11 — controlling source-grade integrity and repair result
+
+Previous R9 verification below is **archived as an accurate *R9* snapshot only where its immutable blobs and denominators are concerned**. It was **wrong** to assert R9 proposed authority applications, decision-event rows, 10 verified executable operations or 23 correctly sourced path owners as presently admissible.
+
+**Current verified R11 staging:** 52 latest T1 R12 source IDs correspond 52 T2 R7 map IDs; 129 exact T1 frozen source finding matches yield 645 historical stage records and 260 52×five-stage summaries. Original R8 stage-court blob `d46c003d625ecdee2867519f233f5b7066cd60b8` (4,420), R8 anti-join `1833bd435cf4a126a0bfd75de847be0995dc9ccf` (2,607) and original typed conflict `c27cd5d5db2291fbe81646e27b74f186396ce3e8` (1,536) preserved. No stage witness identity is a semantic equivalence or actual native proof.
+
+`NORMALIZED_PROPOSED` new rows are source-staging only: **13 original-ID next-step proposals, 8 code-body located operations, 8 held consumers, 9 relations, 19 evidence records, 5 source-static implementations, ZERO newly issued authority applications, ZERO accepted decision events**. Original eight #864 canonical DATA blobs unchanged (including 370 old authority and 884 old events). Source code probes: 17/17 original R9 evidence blob locator files exist at pinned source cuts, two latest T1/T2 author evidence source files pinned, J F18 and F19 corrected exact old code files verified; the original 4/10 invalid operation-code pointers were not granted source validity. 24 invalid proposed rows quarantined in full original raw JSON and immutable parent.
+
+**Actually executed on current GitHub-read candidate bodies:** 12 source-grade positive integrity checks and 10 in-memory negative mutants, **22/22 PASS/REJECT**, with run receipt in [R11 hostile controls](R11_HOSTILE_REVIEW/R11_EXECUTED_SOURCE_AUDIT_AND_NEGATIVE_CONTROLS.tsv). Earlier test harness had a wrong N03 expression and case-sensitive T03; both repaired before this final 22/22 run. Tests are *not* official validator, CI, original historical code execution, S2/S3, native original35, independent source/science/actor receipt or authority. Canonical value-enum admissibility beyond TSV rectangularity/selected FK constraints remains independently unverified.
+
+**R11 decision: author hostile verdict R10 `REVISE_EXACT_DEFECT`; defects repaired at bounded S0–S1 staging; official canonical status remains `HOLD` for #864 sole-writer lease, independent T1 R12/T2 R7 source court receiving, future new canonical DATA HEAD and same-head independent #815/#816 receiving.** No protected merge or competing canonical branch update.
+
+---
+
+## R9 original no-drop verification (historical baseline, superseded candidate counts)
+
 # ZL15 R9 — source-grade integrity and whole-mission no-drop verification
 
 This receipt records **authenticated immutable GitHub reads and exact blob comparisons**, not test execution or scientific approval. It does not claim a runtime source code test or official canonical validator PASS.

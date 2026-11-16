@@ -1,3 +1,18 @@
+# R11 — controlling reverse source navigation
+
+**Claimed current result → actual current consumer/effect (or OPEN_PROOF_GAP) → selected issuer and source → historical input/respondent risk set and science → exact old operation/negative → R8 source finding and its DVA/TRII/CHETIRI/LONG_MEMORY stage witness → historic and current owner falsifier.** A real source witness is not automatically a true same-function transformation.
+
+1. Start with [24 corrected material paths](MATERIAL_INTEGRATED_PATHS.tsv); their `evidence_ids`, `competent_owner` and `current_successor_and_gap` columns are repaired; old R9 columns were shifted and contained literal undefined.
+2. If an old T1 candidate is named, find it in the [52 R12→R7 source-grade H→P→C rows](R10_T1_R12_T2_R7_SOURCE_INTAKE/R10_HISTORICAL_TO_CURRENT_52.tsv). Follow its **exact** `frozen_witness_source_record_keys` by [R11 645 witness rows](R11_HOSTILE_REVIEW/R11_EXACT_T1_TO_STAGE_WITNESS_BRIDGES.tsv), then choose one of the [260 stage summaries](R11_HOSTILE_REVIEW/R11_T1_STAGE_52x5_SUMMARY.tsv). Examine `stage_fate`, `join_disposition`, original source path, negative and next falsifier. Mixed statuses mean no single decided fate. All other R8 source stage rows still exist unchanged.
+3. For cache-reuse claims, distinguish V550 country prefetch [path02], **F26 query/response signature source report [path24, NO EXECUTABLE BODY PIN]**, V549 pivot/masks [path03], V550J prepared family [path10] and joint patterns [path11]. Never equate them, nor infer a new scientific T from reusable bytes.
+4. For author/current science, preserve actual T1 R12 V548/V549b missing, reporter, branch-label and wave negatives; V551J+V552→V552J source-bound join and chosen-only diagnostics, original V553 canonical/temporal static readers, strict V553 authorized key vs V554 related static country-year consumer; I07 guard only vs F6M numeric, R08 TEST_ONLY vs native, Sorok source identity vs real actor first reader.
+5. Inspect [R11 24 quarantined invalid candidate rows](R11_HOSTILE_REVIEW/R11_QUARANTINED_INVALID_PROPOSALS.tsv) before treating an older R9 `NORMALIZED_PROPOSED` row as source code, authority event or licensed new canonical transition. **Current proposals have zero newly claimed authority applications or decision transitions.**
+6. Require actual independent #815 historical T1 R12, #816 current T2 R7 source receiving and exclusive #864 writer before canonical DATA admission; then two reviews of the same truly NEW canonical head, not this isolated staging one. A source review request is not a delivered acceptance.
+
+---
+
+## Prior R9/R10 reverse navigation (still useful source cases; superseded candidate counts)
+
 # REVERSE_NAVIGATION — R9 recovered integrated machine staging
 Start at a claimed **knowledge effect** and walk backward through its actual or held consumer, selected authority, source population, transformation and negative. DO NOT interpret a shared label as a same-grain join.
 

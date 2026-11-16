@@ -1,3 +1,27 @@
+# ZL15 R11 — CONTROLLING HOSTILE-REPAIRED AUTHOR RETURN
+
+**Disposition:** `R11_S0_S1_REPAIRS_PUBLISHED__R10_HOSTILE_REVIEW_REVISE_EXACT_DEFECT_REPAIRED__CANONICAL_ADMISSION_HOLD`. This is an isolated updated candidate on PR #1086, not a new canonical head or independent receiving. Previous R9/R10 versions and all A/B P0–P2 source evidence remain immutable.
+
+**What was fixed after hostile review:** 24 source-invalid or premature normalized proposals quarantined in `R11_HOSTILE_REVIEW/R11_QUARANTINED_INVALID_PROPOSALS.tsv` (2 invented/unqualified operations, 2 held edges, 2 speculative dependent relations, 5 synthetic authority applications, 13 nonexistent decision events). Real source-body pins for V550J F18 `build_v550j_prepared_substrate.py#5226fef2:L255-409` and F19 `ddm_v550j_joint_patterns.py#644aab23:L3028-3341` verified. F26 old query-signature cache separated from V550 country prefetch; LMX043 explicitly inherited obligation only, not executable.
+
+**Missing historical navigation built:** exact **52 current T1 author contracts** `5cc46ca7...`→**129 frozen source-prong witness matches**→**645 source-qualified five-stage records** and **260 contract×stage summaries** from unchanged R8 `GENERATION_STAGE_COURT.tsv`. These are not inferred functional equivalence or 645 distinct scientific functions. 4,420 original stage records and all 13 prongs conserved.
+
+**Human machine corrected:** `MATERIAL_INTEGRATED_PATHS.tsv` now 24 source-grade computational/scientific/compositional paths with fixed evidence/gap/owner columns (no undefined owners); `THE_ACTUAL_MACHINE.md`, `MASTER_MAP.md`, `REVERSE_NAVIGATION.md` explicitly distinguish the witness graph from qualified original Dva/Trii/Chetiri/LM/current succession. Twenty-one future PYAT requirements are versioned **NOT_ADOPTED** and the finite queue has 17 named owners/falsifiers.
+
+**Current normalized candidate-only overlays:** 13 unchanged original ID next-step annotations, **8** executable-source-located operation rows, **8** unproved actual consumer rows, **9** typed candidate relations, **19** exact old/latest source evidence pointers, **5** static implementation locators; **0** new authority applications and **0** new decision events. The two latter tables still exist with headers but no unsupported rows. Original #864 DATA has 370 historic authority rows /884 documentary event rows and remains unaltered.
+
+**Hostile controls actually executed:** 12 source-table integrity conditions and 10 in-memory negative mutations all PASS/REJECT after the audit harness was corrected. [Detailed R11 hostile report](R11_HOSTILE_REVIEW/R11_HOSTILE_REVIEW_AND_REPAIR.md), [executed tests](R11_HOSTILE_REVIEW/R11_EXECUTED_SOURCE_AUDIT_AND_NEGATIVE_CONTROLS.tsv), [quarantine](R11_HOSTILE_REVIEW/R11_QUARANTINED_INVALID_PROPOSALS.tsv), [exact 645 witness rows](R11_HOSTILE_REVIEW/R11_EXACT_T1_TO_STAGE_WITNESS_BRIDGES.tsv), [260 stage summaries](R11_HOSTILE_REVIEW/R11_T1_STAGE_52x5_SUMMARY.tsv). These checks are NOT an official MCR-C or source-science-native test.
+
+**Immutable source cuts remain:** T1 #871 R12 `5cc46ca7d60c08d79261b7e02b196f9da2788b8d`; T2 #1085 R7 `f5c709899b9b7aa92205099d34f9fbe365693e02`; A/B ZL15 P2 `afa0b1b24fbef11ac265f319aa2a11c0ebbc1586` / `5ef0e05d4fbb332506644a6a4e50403694fc8a1e`; canonical draft #864 R8 `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`; protected `6a5c12f04323d74001f9632063ec907f4fc4468e`.
+
+**Still blocking canonical completion:** #815 historical-forward independent source receiving on exact T1 R12; #816 current-backward independent source receiving on T2 R7; verified exclusive #864 incumbent writer lease or transfer; sole writer's accepted new integrated normalized DATA HEAD; then **two independent reviews of THAT SAME new canonical HEAD**. Neither staged provenance checks nor the author-hostile review count as those decisions. No S2/S3/native original35/issuer/Sorok actor/requirements adoption/protected merge. Four distinct terminal outcomes remain HOLD; no generic recensus requested.
+
+**Terminal:** `ZL15_R11_HOSTILE_REPAIRED_STAGING_COMPLETE__EXACT_CANONICAL_LEASE_AND_INDEPENDENT_RECEIVING_HOLD`.
+
+---
+
+## Archived R10 and R9 return (the counts and authority/event proposals below are historical, superseded by R11)
+
 # ZL15 R10 AUTHOR-SOURCE UPDATE / CONTROLLING STAGING RETURN
 
 This updated exact HEAD supersedes the R9 **staging source cut**, not its preserved R9 original Git commit. **T1 author** [#871 R12](https://github.com/maidiu/rawlsing/commit/5cc46ca7d60c08d79261b7e02b196f9da2788b8d) and **T2 author** [#1085 R7](https://github.com/maidiu/rawlsing/commit/f5c709899b9b7aa92205099d34f9fbe365693e02) replace R9's T1 R5/T2 R3 as the *latest author evidence*. All original thirteen R5 prongs, #864 R8 canonical DATA, its 2607 source anti-join, 1536 conflicts and 4420 stage-court labels are unchanged. No P0/P1/P2 re-run. The 52 latest source IDs intersect exactly (52/52), with **T1 R5→R12 8 IDs/73 changed cells** and **T2 R3→R7 7 IDs/19 changed cells**. 11 new conditional source-negative/first-reader risks staged without asserting original respondent/native outcomes.
