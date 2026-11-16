@@ -39,9 +39,9 @@
     },
     "tests": {
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
-      "blob": "38465315646d3a4deec68ddff87651ca47f5f89b",
-      "sha256": "219226fefda8fc74afe0f8e8df87e0d67ce0ad83c487dbe7afd6860e8c882f8f",
-      "result": "15 passed"
+      "blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347",
+      "sha256": "2f94fcfb1f982dc2cd58dcb9fc0e607c21d1da812e559478e2a4a46bc455f4ca",
+      "result": "17 passed"
     },
     "paired_progress": {
       "json": {
@@ -170,7 +170,7 @@
     }
   },
   "adversarial_execution": {
-    "module_tests": "15 passed",
+    "module_tests": "17 passed",
     "covers": [
       "duplicate event idempotence",
       "out-of-order refusal",
@@ -182,6 +182,8 @@
       "mixed MD/JSON generation typed RED",
       "crash recovery roll-forward",
       "explicit reconciliation resolution",
+      "wrong review source document refusal",
+      "revocation transitivity",
       "real controller receipt binding",
       "baseline/unseen receipt reconciliation",
       "readout READY/HOLD/owner/unmet prerequisites"

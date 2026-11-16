@@ -120,6 +120,25 @@ def test_self_review_is_refused(tmp_path):
         rt._validate_review_receipt(config, receipt, replay=True)
 
 
+def test_wrong_review_source_document_is_refused(tmp_path):
+    config = make_sandbox(tmp_path)
+    receipt = copy.deepcopy(replay_receipt("B05_1089"))
+    receipt["source_documents"][0]["git_blob"] = "0" * 40
+    with pytest.raises(rt.CurrentnessError, match="REVIEW_DOCUMENT_BLOB_MISMATCH"):
+        rt._validate_review_receipt(config, receipt, replay=True)
+
+
+def test_revocation_invalidates_dependents(tmp_path):
+    config = make_sandbox(tmp_path)
+    rt.intake_event(config, event(
+        "REVOCATION", payload={"scope": "B02", "owner": "competent owner",
+                               "reason": "test revocation"}))
+    _whole, _md, state = read_pair(config)
+    by_id = {task["id"]: task for task in state["tasks"]}
+    assert by_id["B02"]["readiness"] == "REVOKED"
+    assert by_id["B04"]["readiness"] == "BLOCKED_BY_DEPENDENCY"
+
+
 def test_scope_inflation_is_refused(tmp_path):
     config = make_sandbox(tmp_path)
     receipt = copy.deepcopy(replay_receipt("B05_1089"))

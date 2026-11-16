@@ -83,7 +83,7 @@ Environment:
 9. Tests and canonical validators:
    "$PY" -m pytest -p no:cacheprovider -q \
      SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
-   -> 15 passed.
+   -> 17 passed.
    "$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py \
      --self-test --status
    -> exit 0; frozen #1095 cut PASS/NOT live.

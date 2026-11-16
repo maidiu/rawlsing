@@ -100,7 +100,7 @@ adds a real intake/reconciliation path over the existing paired
 - New product: `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py`
   (`blob 6164e595efcd176bb2ec9b75aa99074472a4c9b4`).
 - New test: `.../test_operational_currentness_runtime_r1.py`
-  (`blob 38465315646d3a4deec68ddff87651ca47f5f89b`; 15 passed).
+  (`blob 6cf53b66cf6eff3f4ced4a24f79e163ec50fd347`; 17 passed).
 - Paired progress: `CURRENT_PROGRESS.json` / `.md`, runtime key/block only;
   frozen projection and history preserved.
 - Minimal frontdoor/work-now invocation notes: `00_PROGRAMMA_SOROK.md`,

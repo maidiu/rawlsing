@@ -15,8 +15,8 @@ SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
   blob 6164e595efcd176bb2ec9b75aa99074472a4c9b4
   sha256 622c4187b2332d85a221bb1e1b39db4f70e833afc5cf0d55aa2a540d654ae337
 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
-  blob 38465315646d3a4deec68ddff87651ca47f5f89b
-  sha256 219226fefda8fc74afe0f8e8df87e0d67ce0ad83c487dbe7afd6860e8c882f8f
+  blob 6cf53b66cf6eff3f4ced4a24f79e163ec50fd347
+  sha256 2f94fcfb1f982dc2cd58dcb9fc0e607c21d1da812e559478e2a4a46bc455f4ca
 ```
 
 Frozen #1095 assets must remain exact:
@@ -50,7 +50,7 @@ git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SO
   SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
 ```
 
-Expected: `15 passed`. Add your own negative witness if useful; do not rewrite
+Expected: `17 passed`. Add your own negative witness if useful; do not rewrite
 the author tests.
 
 3. Run the canonical local validators (not a new #1095 G5):
@@ -124,7 +124,7 @@ and provide its commit SHA and path. Use this schema exactly:
     {"path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
      "git_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4"},
     {"path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
-     "git_blob": "38465315646d3a4deec68ddff87651ca47f5f89b"}
+     "git_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347"}
   ]
 }
 ```
