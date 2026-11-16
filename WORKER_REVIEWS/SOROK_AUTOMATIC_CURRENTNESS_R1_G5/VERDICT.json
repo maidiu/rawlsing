@@ -1,0 +1,174 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R1_G5_VERDICT@1",
+  "issue": "SOROK automatic PROGRAMMA currentness",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "distinct_independent_nonauthor",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "branch": "codex/sorok-automatic-currentness-independent-20261115-r1",
+  "candidate_source_sha": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+  "main_implementation_sha": "53dd139a7179180d2b3d52dc53a9f581f15467ba",
+  "base_sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+  "runtime_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4",
+  "test_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "accept_scoped": false,
+  "accept_scoped_target": null,
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "source_pins": {
+    "runtime": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+      "blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4",
+      "sha256": "622c4187b2332d85a221bb1e1b39db4f70e833afc5cf0d55aa2a540d654ae337"
+    },
+    "test": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+      "blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347",
+      "sha256": "2f94fcfb1f982dc2cd58dcb9fc0e607c21d1da812e559478e2a4a46bc455f4ca"
+    },
+    "frozen_1095": {
+      "verifier_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+      "workflow_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+      "task_source_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+      "gmt_source_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+      "g5_rerun": false
+    },
+    "installed_controller": {
+      "launch_sha256": "4c5004ef91ee56ac056aca2921d4239cbf95d866ff015e7eae7d4deaf10ae829",
+      "completion_events_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+      "original_launch_sha256": "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1",
+      "original_completion_sha256": "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63",
+      "optional_sorok_hook": true,
+      "pyat_behavior_changed": false
+    }
+  },
+  "negative_witnesses": {
+    "live_github_reconciliation_absent": {
+      "source_level": "no network/GitHub client primitive found; only local github_baseline file and local observations",
+      "baseline_original_sha256": "3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7",
+      "baseline_changed_sha256": "bfa1fb721031cd761b59ca6fd33d72debf190696a78557cbba16e2fab06b65af",
+      "baseline_file_mtime": "2020-01-01T00:00:00Z",
+      "readout_baseline_as_of": "2026-11-16T04:31:56.190698+00:00",
+      "stale_unchanged_baseline_items": [],
+      "changed_local_baseline_items": [],
+      "changed_local_baseline_accepted": true,
+      "missing_baseline_detected": "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE",
+      "network_client_tokens_found": [],
+      "conclusion": "local snapshot/self-declared trust is not authenticated fresh online reconciliation; stale unchanged or locally changed baseline can report no unresolved events without any live GitHub observation",
+      "correction_target": "add authenticated live GitHub fetch or a wired expiring external connector feed with ref/status/SHA, fetch time, expiry, deletion/change/unavailable detection; do not stamp as_of from a local file; require a fresh source observation before clearing an item; otherwise HOLD_SOURCE_AUTHORITY for the connector"
+    },
+    "mechanism_review_not_intakable": {
+      "command": "intake-review --receipt <valid mechanism receipt task_id=AUTOMATIC_CURRENTNESS_R1>",
+      "exit": 1,
+      "error": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1",
+      "cause": "apply_event calls _task_by_id before the mechanism branch at operational_currentness_runtime_r1.py:771-775",
+      "mechanism_review_state_after": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
+      "conclusion": "the required actual independent-review transition and post-review restart cannot be executed",
+      "correction_target": "handle MECHANISM_ID before _task_by_id and bind to a real supervised review job/immutable evidence"
+    },
+    "fabricated_task_review_accepted": {
+      "command": "intake-review --receipt <fake C05 receipt, arbitrary distinct sessions, source_trust=REAL_LOCAL_NONAUTHOR_REVIEW, review_commit=4b33b8be...>",
+      "exit": 0,
+      "c05_review_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+      "c05_review_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+      "real_review_job": "NONE",
+      "conclusion": "caller-declared session/trust strings and local git document pins are accepted as a real review; no supervised review/controller/role binding",
+      "correction_target": "require a real supervised review job/immutable evidence and competent intake role; reject arbitrary local JSON/trust fields"
+    },
+    "arbitrary_stop_resume_accepted": {
+      "stop_event_source_trust": "ARBITRARY_LOCAL_TEST_STRING",
+      "resume_event_source_trust": "ARBITRARY_LOCAL_TEST_STRING",
+      "stops_after_stop": 1,
+      "stops_after_resume": 0,
+      "b02_after_stop": "STOPPED_BY_USER",
+      "b02_after_resume": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "conclusion": "public intake-event accepts arbitrary local STOP and RESUME; a STOP can be cleared without operator/role/evidence",
+      "correction_target": "require competent operator/HQ role, scope and evidence for control events; fail visibly/idempotently, no stale READY"
+    },
+    "arbitrary_resolve_clears_unresolved_item": {
+      "item": "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE",
+      "resolve_evidence": "arbitrary unverified local text",
+      "resolve_owner": "fake-operator",
+      "exit": 0,
+      "items_after_resolve": 0,
+      "resolved_record": {
+        "what_changed": "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE",
+        "evidence": "arbitrary unverified local text",
+        "owner": "fake-operator"
+      },
+      "conclusion": "unresolved currentness items can be cleared with unauthenticated arbitrary resolve text",
+      "correction_target": "require authenticated source observation/competent resolution evidence; do not clear on arbitrary text"
+    }
+  },
+  "early_stop": {
+    "author_17_tests_independently_rerun": false,
+    "full_crash_matrix_rerun": false,
+    "canonical_validator_rerun": false,
+    "end_to_end_success_demo": false,
+    "reason": "fundamental live-GitHub and review-transition requirements falsified before full demonstration; no full acceptance claimed",
+    "author_17_tests_status": "AUTHOR_EVIDENCE_ONLY_NOT_INDEPENDENT"
+  },
+  "historical_boundaries": {
+    "protected_foundations": {
+      "P3": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+      "P4": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+      "P5": "5e266a80ccfc52da10741e15f6b9076138907758",
+      "P6": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+      "MI": "1f77f2036427a410429184780ef884ec4f253ad0",
+      "MII": "521ae459091c5d4e4009f442257d74d50b2c55db",
+      "MIII": "3e5b1611f5cb043b43ffd39b14c9d707923f1210"
+    },
+    "old_fleet": "issue_939 USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS; persistent_dispatch=false",
+    "browser": {
+      "issue_1008": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED",
+      "issue_1010": "A_B_A_COMPLETED_G2_HELD",
+      "issue_1012": "NOT_LAUNCHED_WAITING_J1"
+    },
+    "c04_1062": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+    "c05_1091": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+    "b05_1089": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+    "cg_a_1066": "RECEIVED_SCOPED_UNMERGED_PR1066 typed outside the 27 DAG; no full source pin in this runtime",
+    "required_ci": "PENDING_PROTECTED_CI_AND_ADOPTION / UNAVAILABLE_BILLING",
+    "historical_replays": "explicit replay only; replay_is_not_new_review=true"
+  },
+  "scope": {
+    "full_original_claim": "NOT_ESTABLISHED",
+    "native_science_actor_human_protected": "HELD",
+    "candidate_mechanism_accepted": false,
+    "product_write": false,
+    "author_live_config_invoked_or_mutated": false,
+    "sandbox_mutations_only": true,
+    "b05_reopened": false,
+    "visible_ready_from_stop": false,
+    "no_automatic_release": true
+  },
+  "review_receipt": {
+    "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/REVIEW_RECEIPT.json",
+    "review_commit": "EVIDENCE_COMMIT_RECORDED_BY_FINAL_RECEIPT",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "full_original_claim": "NOT_ESTABLISHED",
+    "protected_ci": "UNAVAILABLE_BILLING",
+    "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+    "runtime_intake": "TASK_UNKNOWN_NOT_EXECUTABLE_UNTIL_CORRECTED"
+  },
+  "evidentiary_paths": {
+    "receiving": "00_RECEIVING.md",
+    "handoff": "G5_HANDOFF.md",
+    "gap_probe": "probes/currentness_gap_probe.py",
+    "gap_report": "evidence/gap_probe_report.json",
+    "gap_stdout": "evidence/gap_probe_stdout.log",
+    "gap_time": "evidence/gap_probe_time.log",
+    "live_github_absence": "evidence/live_github_absence.txt",
+    "sandbox_status_after_fake_events": "evidence/sandbox_status_after_fake_events.json",
+    "sandbox_missing_reconcile": "evidence/sandbox_missing_reconcile.json",
+    "sandbox_arbitrary_resolve": "evidence/sandbox_arbitrary_resolve_persisted.json",
+    "commands": "COMMANDS.txt",
+    "receipts": "RECEIPTS.json",
+    "blob_pins": "BLOB_PINS.json",
+    "probe_pins": "PROBE_PINS.json"
+  },
+  "terminal": "STOP",
+  "next_gate": "one bounded source correction for (1) mechanism review intake/real job binding, (2) authenticated live GitHub freshness/reconciliation, (3) competent control/resolve authority; then one focused rereceiving of the exact fixed source. No automatic author round, campaign, protected merge or B05 reopen."
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R1_G5_PROBE_PINS@1",
+  "probe": {
+    "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/probes/currentness_gap_probe.py",
+    "bytes": 12527,
+    "sha256": "7f55b507381fc7e907a0cbb755b65006b44356885a18195ba2ab69a4a2ccaa85"
+  },
+  "successful_run": {
+    "command": "/usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/probes/currentness_gap_probe.py > WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_stdout.log 2> WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_time.log",
+    "cwd": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+    "interpreter": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+    "python_version": "3.11.3",
+    "exit": 0,
+    "real_seconds": 1.39,
+    "max_rss_bytes": 23945216
+  },
+  "artifacts": {
+    "report": {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_report.json",
+      "bytes": 79634,
+      "sha256": "00f241229cf0b815e771dc919f945637a7d8b52ee89213369a7903026f3174f3"
+    },
+    "stdout": {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_stdout.log",
+      "bytes": 719,
+      "sha256": "a7d851e475cc709391783822953eeb7e39eba90f1dceb7abce01361838de481f"
+    },
+    "time": {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_time.log",
+      "bytes": 777,
+      "sha256": "7022ad29dac1eafc172202ea4f3a529f33d69360a122c22c75b2a86bb3376e51"
+    }
+  },
+  "probe_result": {
+    "baseline_as_of": "2026-11-16T04:31:56.190698+00:00",
+    "baseline_mtime": 1577836800.0,
+    "fake_task_review_exit": 0,
+    "fake_task_review_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+    "items_after_arbitrary_resolve": 0,
+    "mechanism_review_error": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1",
+    "mechanism_review_exit": 1,
+    "missing_baseline_items": [
+      "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE"
+    ],
+    "network_client_tokens_found": [],
+    "report": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_report.json",
+    "stops_after_resume": 0,
+    "stops_after_stop": 1,
+    "verdict": "REVISE_EXACT_DEFECT"
+  },
+  "report_facts": {
+    "candidate": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+    "mechanism_review_exit": 1,
+    "mechanism_review_error": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1",
+    "fake_task_review_exit": 0,
+    "fake_task_review_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+    "stops_after_stop": 1,
+    "stops_after_resume": 0,
+    "missing_baseline_items": [
+      "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE"
+    ],
+    "items_after_arbitrary_resolve": 0,
+    "baseline_as_of": "2026-11-16T04:31:56.190698+00:00",
+    "baseline_mtime": 1577836800.0,
+    "network_client_tokens_found": [],
+    "gaps_reproduced": true
+  },
+  "scratch_repo": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/scratch-gap-probe/repo",
+  "note": "The probe asserts the failure witnesses. It is not an end-to-end success demo and does not rerun the author 17 tests. The source is read-only; all state/config writes are under the reviewer scratch/sandbox.",
+  "terminal": "STOP"
+}
