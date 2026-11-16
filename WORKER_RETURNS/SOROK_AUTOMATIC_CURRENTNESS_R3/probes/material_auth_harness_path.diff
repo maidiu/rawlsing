@@ -1,0 +1,11 @@
+--- WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/probes/material_auth_probe.reviewer_original.py	2026-11-16 01:04:57
++++ WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/probes/material_auth_probe.py	2026-11-16 01:04:58
+@@ -19,7 +19,7 @@
+ 
+ REPO = Path(__file__).resolve().parents[3]
+ REV = Path(__file__).resolve().parent.parent
+-SCRATCH = REPO / ".local-logs/sorok-programma-automatic-currentness-r2-receiving-20261116-r1/material-auth-probe"
++SCRATCH = REPO / ".local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe"
+ BASE = "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8"
+ RT = REPO / "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py"
+ PY = sys.executable

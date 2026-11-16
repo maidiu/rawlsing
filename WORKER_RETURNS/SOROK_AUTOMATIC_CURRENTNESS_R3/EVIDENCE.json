@@ -1,0 +1,210 @@
+{
+  "active_pid": 81644,
+  "admission_boundary": {
+    "controls": {
+      "control_cli": "only STOP/RESUME/REVOCATION/RESTORATION/SOURCE_AUTHORITY_HOLD",
+      "material_events_via_control_cli": "REFUSED PUBLIC_EVENT_INTAKE_DISABLED",
+      "public_cli": "REFUSED OPERATOR_AUTHORIZATION_UNAVAILABLE",
+      "restoration": "requires exact revoked event and later operator-authorized event digest"
+    },
+    "live_observation": {
+      "checks": [
+        "source provenance",
+        "observation digest",
+        "fresh/expiry",
+        "watch set"
+      ],
+      "trusted_source": "RUNTIME_INTERNAL_LIVE_FETCH",
+      "untrusted_cli": "REFUSED LIVE_GITHUB_OBSERVATION_UNTRUSTED_SOURCE"
+    },
+    "protected_integration": {
+      "checks": [
+        "trusted run",
+        "real merge commit",
+        "second parent equals source",
+        "task/foundation source",
+        "fresh live CI observation and digest"
+      ],
+      "fake_merge": "REFUSED PROTECTED_MERGE_LINEAGE_INVALID",
+      "role": "PROTECTED_INTEGRATOR",
+      "trusted_source": "TRUSTED_CONTROLLER_PROTECTED_INTEGRATION",
+      "untrusted_cli": "REFUSED UNTRUSTED_PROTECTED_INTEGRATION_SOURCE",
+      "without_ci": "PENDING_PROTECTED_CI_AND_ADOPTION; no foundation downgrade"
+    },
+    "rejection": {
+      "checks": [
+        "task",
+        "expected source",
+        "predecessor",
+        "artifact schema",
+        "real trusted run"
+      ],
+      "positive": "B01 REJECTED, claim_ready=false, bounded repair/receiving action",
+      "role": "REJECTOR",
+      "trusted_source": "TRUSTED_CONTROLLER_REJECTION",
+      "untrusted_cli": "REFUSED UNTRUSTED_REJECTION_SOURCE"
+    },
+    "reviewer": {
+      "checks": [
+        "trusted launch",
+        "distinct session/role/task/expected source",
+        "return receipt",
+        "exact verdict artifact equality"
+      ],
+      "fake_run": "REFUSED UNTRUSTED_CONTROLLER_RUN",
+      "prefix_verdict": "REFUSED REVIEW_VERDICT_ARTIFACT_MISMATCH",
+      "role": "REVIEWER",
+      "trusted_source": "REAL_LOCAL_SUPERVISED_REVIEW_RUN"
+    },
+    "state_maintenance": {
+      "migrate": "requires STATE_MAINTENANCE operator authorization",
+      "public_test": "REFUSED OPERATOR_AUTHORIZATION_UNAVAILABLE"
+    },
+    "trusted_launch_registry": {
+      "capability": "local HMAC receipt-integrity only; private file not logged or committed",
+      "enrollment_authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+      "fake_run_refusals": [
+        "UNTRUSTED_CONTROLLER_RUN",
+        "UNTRUSTED_RUN_PATH",
+        "LOCAL_CAPABILITY_SIGNATURE_MISMATCH",
+        "TRUSTED_LAUNCH_CALLER_INVALID"
+      ],
+      "launch_id": "launch-fe3962d5863908ef9a580557b488ec0e",
+      "migration": true,
+      "provenance": "HQ_EXPLICIT_ACTIVE_RUN_ENROLLMENT",
+      "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3"
+    }
+  },
+  "artifact_commit": "the commit containing WORKER_RETURN.json; not self-referential",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "base": "d2883f60b1f8b0d83221051844eca7e11b72dc01",
+  "branch": "codex/sorok-automatic-currentness-material-auth-20261116-r3",
+  "commission": "SOROK automatic PROGRAMMA currentness R3 material-event authority repair",
+  "controller": {
+    "completion_events_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+    "diff": "controller/launch.attestation.diff",
+    "install_receipt": "controller/INSTALL_RECEIPT.json",
+    "installed_launch_sha256": "4a7c243c0db89822ba8e51a1dd41ab6f63ad2929bef5508d64a78294aee8a370",
+    "original_backup": "controller/original/",
+    "patched_copy": "controller/patched/",
+    "supervisor_sha256": "6e914e59c92307e219f54c3fcdb99675299e178aa3af10c2f961e860d022ba02",
+    "unaffected_bindings": "no behavior when sorok_currentness is absent"
+  },
+  "corrected": {
+    "fake_reviewer_probe": {
+      "error": "UNTRUSTED_CONTROLLER_RUN",
+      "raw": "evidence/checks/final_fake_reviewer_probe.out",
+      "report": "evidence/fake_reviewer_run_report.json",
+      "verdict": "PASS"
+    },
+    "fixed": [
+      "caller-only mechanism review refused",
+      "arbitrary STOP refused",
+      "arbitrary resolution refused",
+      "untrusted REJECTION refused",
+      "untrusted PROTECTED_INTEGRATION refused",
+      "unauthenticated GITHUB_OBSERVATION refused",
+      "self-consistent fake WORKER_RETURN refused"
+    ],
+    "gaps": [],
+    "raw": "evidence/checks/final_material_auth_probe.out",
+    "report": "evidence/material_auth_probe_report.json",
+    "verdict": "PASS"
+  },
+  "job": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+  "limitations": [
+    "Issue/comment live status remains HTTP 403 through the existing connector; typed source-authority hold.",
+    "PR #1095 status advance remains visible and unrerun.",
+    "Actual independent review of this R3 source is pending; author cannot self-review.",
+    "Hosted CI is unavailable due to billing; no PASS or protected adoption claimed.",
+    "R3 hook pair update occurs after real process exit and requires HQ cold restart verification.",
+    "Sourcefree operational evidence only; native science/actor/human authority remains HELD."
+  ],
+  "local_checks": {
+    "canonical_programma": 0,
+    "changed_worker_commissions": 0,
+    "frozen_1095_no_git_status": 0,
+    "frozen_1095_plain": 0,
+    "frozen_1095_self_test_status": 0,
+    "mcr_py_compile": 0,
+    "mcr_self_test": 0,
+    "mcr_source_check_selector": "NOT_APPLICABLE_NO_CHANGED_LAUNCH_FILES",
+    "platform": "macOS local Python; not GitHub Actions/Ubuntu CI",
+    "pyat_visibility_plain": 0,
+    "pyat_visibility_self_test": 0,
+    "raw": "evidence/checks/final_local_workflow.out"
+  },
+  "pair_state_pre_exit": {
+    "checkpoint_id": "7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338",
+    "decision_nodes": 21,
+    "generation": 50,
+    "r3_hook_expected": "after real exit, record mechanism_worker_return=RETURNED_REVIEW_PENDING; not acceptance",
+    "review": "REVISE_EXACT_DEFECT at f8006235266aa618963b186e5c357bf92be830b3",
+    "tasks": 27,
+    "worker": "ea5e48cf3240e72e39cd19be3120ad727902eee2"
+  },
+  "preserved": {
+    "b05_1089": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+    "browser": "#1008/#1010 terminal scoped, #1012 not launched",
+    "c04_1062": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+    "c05_1091": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+    "frozen_1095_verifier_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+    "frozen_1095_workflow_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+    "frozen_gmt_source_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+    "frozen_task_source_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "issue_939": "STOP_NEVER_DISPATCH",
+    "native_science_actor_human": "HELD",
+    "protected_foundations": [
+      "P3#746",
+      "P4#751",
+      "P5#775",
+      "P6#779",
+      "MI#907",
+      "MII#905",
+      "MIII#891"
+    ],
+    "required_ci": "PENDING_PROTECTED_CI_AND_ADOPTION / UNAVAILABLE_BILLING"
+  },
+  "red_reproduction": {
+    "exit": "evidence/checks/red_material_auth_probe.exit",
+    "fixed": [
+      "caller-only mechanism review refused",
+      "arbitrary STOP refused",
+      "arbitrary resolution refused"
+    ],
+    "gaps": [
+      "untrusted REJECTION accepted and changed B01",
+      "untrusted PROTECTED_INTEGRATION accepted and minted PASS",
+      "unauthenticated GITHUB_OBSERVATION accepted as live",
+      "self-consistent fake WORKER_RETURN accepted"
+    ],
+    "raw": "evidence/checks/red_material_auth_probe.stdout.json",
+    "report": "evidence/checks/red_material_auth_probe_report.json",
+    "source": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+    "verdict": "REVISE_EXACT_DEFECT"
+  },
+  "rejected_r2": {
+    "evidence_commit": "f8006235266aa618963b186e5c357bf92be830b3",
+    "harness_path_diff": "probes/material_auth_harness_path.diff",
+    "implementation": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+    "review_commit": "53fad99fd8da86e4ab1cd12fdcfcd93fc8b2942f",
+    "reviewer_package": "git show 53fad99:WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/",
+    "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "unchanged_probe": "probes/material_auth_probe.reviewer_original.py",
+    "verdict": "REVISE_EXACT_DEFECT"
+  },
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R3_EVIDENCE@1",
+  "source_commit": "WORKER_RETURN.json implementation_commit (commit containing runtime/test/pair docs and R3 evidence)",
+  "stop": "No self-review, no protected merge, no fleet/Browser/PYAT/SEAM operation, no new provider or automatic dispatch.",
+  "terminal": "FROZEN_CORRECTED_CANDIDATE_FOR_SAME_FOCUSED_NONAUTHOR_RERECEIVING",
+  "tests": {
+    "breakdown": "17 original + 10 focused R3",
+    "original": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+    "original_test_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
+    "r3": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/tests/test_material_auth_boundary.py",
+    "r3_test_blob": "58ce992a97665ad39dffdfd8929fd0ea3279d3a6",
+    "raw": "evidence/checks/final_runtime_tests.out",
+    "result": "27 passed",
+    "runtime_blob": "190d55397468ce80e9c92e92771ed025c02d793c"
+  }
+}

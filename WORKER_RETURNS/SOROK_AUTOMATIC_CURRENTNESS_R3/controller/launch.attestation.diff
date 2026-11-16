@@ -1,0 +1,35 @@
+--- WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/controller/original/launch.py	2026-11-16 01:04:40
++++ WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/controller/patched/launch.py	2026-11-16 01:04:40
+@@ -67,6 +67,32 @@
+     receipt = {"job_id": job["job_id"], "child_pid": process["pid"], "supervisor_pid": supervisor.pid,
+                "observer_pid": observer.pid, "run_dir": str(run), "launch_is_not_completion": True}
+     save(run / "launch.json", receipt)
++    # Additive SOROK-only launch attestation. No behavior for bindings without
++    # a sorok_currentness object.
++    currentness = binding.get("sorok_currentness")
++    if isinstance(currentness, dict):
++        script = currentness.get("runtime_script")
++        config_path = currentness.get("config_path")
++        python = currentness.get("python", sys.executable)
++        if script and config_path:
++            try:
++                completed = subprocess.run(
++                    [python, script, "--config", config_path,
++                     "attest-launch", "--run-dir", str(run)],
++                    capture_output=True, text=True, timeout=30, shell=False)
++                save(run / "attestation.json", {
++                    "exit_code": completed.returncode,
++                    "stdout_sha256": hashlib.sha256(
++                        completed.stdout.encode()).hexdigest(),
++                    "stderr_sha256": hashlib.sha256(
++                        completed.stderr.encode()).hexdigest(),
++                    "stderr_tail": completed.stderr[-2000:],
++                })
++            except Exception as error:  # fail visibly, do not mint acceptance
++                save(run / "attestation.json", {
++                    "state": "ATTESTATION_HOOK_ERROR",
++                    "error": type(error).__name__,
++                })
+     return receipt
+ 
+ 

@@ -17,9 +17,11 @@ import copy
 import datetime
 import fcntl
 import hashlib
+import hmac
 import json
 import os
 import re
+import secrets
 import shutil
 import ssl
 import subprocess
@@ -33,6 +35,8 @@ from typing import Any, Mapping
 SCHEMA = "SOROK_OPERATIONAL_CURRENTNESS_RUNTIME_R1"
 EVENT_SCHEMA = "SOROK_CURRENTNESS_EVENT_R1"
 REVIEW_RECEIPT_SCHEMA = "SOROK_CURRENTNESS_REVIEW_RECEIPT@1"
+REJECTION_SCHEMA = "SOROK_CURRENTNESS_REJECTION@1"
+PROTECTED_INTEGRATION_SCHEMA = "SOROK_CURRENTNESS_PROTECTED_INTEGRATION@1"
 RETURN_SCHEMA = "SOROK_CURRENTNESS_WORKER_RETURN@1"
 CONFIG_SCHEMA = "SOROK_CURRENTNESS_RUNTIME_CONFIG_R1"
 RUNTIME_KEY = "operational_currentness_runtime_r1"
@@ -51,6 +55,8 @@ GMT_ATLAS_PATH = "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_
 WORKFLOW_BLOB = "f76c0d90d32e54d26d019b7f77c563b33fd5e97b"
 MECHANISM_ID = "AUTOMATIC_CURRENTNESS_R1"
 LIVE_GITHUB_SCHEMA = "SOROK_LIVE_GITHUB_OBSERVATION@1"
+CAPABILITY_SCHEMA = "SOROK_CURRENTNESS_LOCAL_CAPABILITY@1"
+TRUSTED_LAUNCH_SCHEMA = "SOROK_CURRENTNESS_TRUSTED_LAUNCH_REGISTRY@1"
 OPERATOR_AUTH_SCHEMA = "SOROK_CURRENTNESS_OPERATOR_AUTHORIZATION@1"
 EXPECTED_IDS = [f"{family}{n:02d}" for family, count in (
     ("B", 5), ("C", 5), ("D", 5), ("E", 4), ("F", 4), ("G", 4))
@@ -173,6 +179,8 @@ def load_config(path: Path) -> dict:
     operator_auth = config.get("trusted_operator_authorization")
     config["_operator_auth"] = (
         _absolute(root, operator_auth).resolve() if operator_auth else None)
+    config["_capability_path"] = config["_state_root"] / "runtime_capability.json"
+    config["_trusted_registry_path"] = config["_state_root"] / "trusted_launches.json"
     config["_github_live"] = dict(config.get("github_live") or {})
     config["_github_live"].setdefault(
         "remote", "https://github.com/maidiu/rawlsing.git")
@@ -432,6 +440,12 @@ def recompute(state: dict) -> None:
             blocked[task_id] = "STOPPED_BY_USER"
         elif _direct_scope(controls.get("holds", []), task_id):
             blocked[task_id] = "HELD_SOURCE_AUTHORITY"
+        elif task.get("sourcefree_state") == "REJECTED":
+            blocked[task_id] = "REJECTED"
+        elif task.get("sourcefree_state") == "REVISE_REQUIRED":
+            blocked[task_id] = "REVISE_REQUIRED"
+        elif task.get("sourcefree_state") == "HELD_SOURCE_AUTHORITY":
+            blocked[task_id] = "HELD_SOURCE_AUTHORITY"
     changed = True
     while changed:
         changed = False
@@ -482,6 +496,14 @@ def recompute(state: dict) -> None:
         task["full_original_ready"] = False
         task["owner"] = task.get("producer_owner")
         task["next_action"] = _next_action(task)
+        task["claim_ready"] = readiness in {
+            "READY_FOR_SCOPED_ENGINEERING", "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+            "READY_FOR_INDEPENDENT_RECEIVING", "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+            "PROTECTED_SOURCEFREE"}
+        task["bounded_repair_or_receiving_action"] = (
+            "REVISE_OR_RECEIVE_BOUNDED_ENGINEERING_NOT_FULL_CLAIM"
+            if readiness in ("REJECTED", "REVISE_REQUIRED", "BLOCKED_BY_DEPENDENCY")
+            else task["next_action"])
         if readiness == "READY_FOR_SCOPED_ENGINEERING":
             ready_scoped.append(task_id)
         if readiness in ("CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
@@ -522,6 +544,9 @@ def recompute(state: dict) -> None:
              "full_original_decision_blockers": row.get(
                  "full_original_decision_blockers", []),
              "full_original_readiness": row.get("full_original_readiness"),
+             "claim_ready": row.get("claim_ready"),
+             "bounded_repair_or_receiving_action": row.get(
+                 "bounded_repair_or_receiving_action"),
              "source_refs": row["source_refs"]}
             for row in tasks
         ],
@@ -762,7 +787,9 @@ def _verify_return_artifact(source: dict, binding: dict) -> dict:
         raise CurrentnessError("RETURN_ARTIFACT_HASH_MISMATCH")
     payload = read_json(path)
     if (not isinstance(payload, dict)
-            or payload.get("schema") not in (RETURN_SCHEMA, REVIEW_RECEIPT_SCHEMA)):
+            or payload.get("schema") not in (
+                RETURN_SCHEMA, REVIEW_RECEIPT_SCHEMA, REJECTION_SCHEMA,
+                PROTECTED_INTEGRATION_SCHEMA)):
         raise CurrentnessError("RETURN_ARTIFACT_SCHEMA")
     return {"path": str(path), "sha256": actual, "payload": payload}
 
@@ -809,7 +836,7 @@ def _verify_verdict_artifact(config: dict, commit: str,
     except (subprocess.CalledProcessError, ValueError, TypeError) as exc:
         raise CurrentnessError("REVIEWED_VERDICT_UNREADABLE", path) from exc
     actual = artifact.get("engineering_verdict") or artifact.get("verdict")
-    if not isinstance(actual, str) or not actual.startswith(verdict):
+    if not isinstance(actual, str) or actual != verdict:
         raise CurrentnessError("REVIEW_VERDICT_ARTIFACT_MISMATCH",
                                {"expected": verdict, "artifact": actual})
     return {"path": path, "git_blob": expected_blob, "verdict": actual}
@@ -858,6 +885,7 @@ def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool,
     if not run_dir:
         raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
     run = validate_controller_run(Path(run_dir), source)
+    _require_trusted_launch(config, Path(run_dir), run, run["binding"])
     if run["completion"].get("exit_code") != 0:
         raise CurrentnessError("REVIEW_RUN_ZERO_EXIT_REQUIRED")
     binding = run["binding"].get("sorok_currentness") or {}
@@ -893,6 +921,292 @@ def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool,
             "role": "REVIEWER",
         },
     }
+
+
+def _capability(config: dict) -> dict:
+    path = config["_capability_path"]
+    if not path.is_file():
+        capability = {
+            "schema": CAPABILITY_SCHEMA,
+            "capability_id": "cap-" + secrets.token_hex(16),
+            "key": secrets.token_hex(32),
+            "created_utc": now_utc(),
+        }
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(json.dumps(capability, indent=2) + "\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+    else:
+        capability = read_json(path)
+    if capability.get("schema") != CAPABILITY_SCHEMA:
+        raise CurrentnessError("LOCAL_CAPABILITY_SCHEMA")
+    return capability
+
+
+def _sign_capability(config: dict, payload: dict) -> dict:
+    capability = _capability(config)
+    signature = hmac.new(bytes.fromhex(capability["key"]),
+                         canonical(payload).encode("utf-8"),
+                         hashlib.sha256).hexdigest()
+    return {"capability_id": capability["capability_id"],
+            "signature": signature}
+
+
+def _verify_capability(config: dict, source: dict, payload: dict) -> None:
+    capability = _capability(config)
+    if source.get("capability_id") != capability["capability_id"]:
+        raise CurrentnessError("LOCAL_CAPABILITY_MISMATCH")
+    expected = hmac.new(bytes.fromhex(capability["key"]),
+                        canonical(payload).encode("utf-8"),
+                        hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(str(source.get("signature", "")), expected):
+        raise CurrentnessError("LOCAL_CAPABILITY_SIGNATURE_MISMATCH")
+
+
+def _registry_path(config: dict) -> Path:
+    return config["_trusted_registry_path"]
+
+
+def _registry_load(config: dict) -> dict:
+    path = _registry_path(config)
+    if not path.is_file():
+        return {"schema": TRUSTED_LAUNCH_SCHEMA, "entries": {}}
+    registry = read_json(path)
+    if registry.get("schema") != TRUSTED_LAUNCH_SCHEMA:
+        raise CurrentnessError("TRUSTED_LAUNCH_REGISTRY_SCHEMA")
+    if not isinstance(registry.get("entries"), dict):
+        raise CurrentnessError("TRUSTED_LAUNCH_REGISTRY_ENTRIES")
+    return registry
+
+
+def _pid_alive(pid: int) -> bool:
+    try:
+        result = subprocess.run(
+            ["ps", "-p", str(pid), "-o", "pid="],
+            capture_output=True, text=True, timeout=5)
+        return result.returncode == 0 and bool(result.stdout.strip())
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
+def _pid_ppid(pid: int) -> int | None:
+    try:
+        result = subprocess.run(
+            ["ps", "-p", str(pid), "-o", "ppid="],
+            capture_output=True, text=True, timeout=5)
+        text = result.stdout.strip()
+        return int(text) if result.returncode == 0 and text else None
+    except (OSError, subprocess.TimeoutExpired, ValueError):
+        return None
+
+
+def _pid_command(pid: int) -> str:
+    try:
+        result = subprocess.run(
+            ["ps", "-p", str(pid), "-o", "command="],
+            capture_output=True, text=True, timeout=5)
+        return result.stdout.strip() if result.returncode == 0 else ""
+    except (OSError, subprocess.TimeoutExpired):
+        return ""
+
+
+def _require_launcher_process_tree(launch: dict, process: dict) -> None:
+    parent = os.getppid()
+    command = _pid_command(parent)
+    if ("launch.py" not in command or "--binding" not in command
+            or "--job" not in command):
+        raise CurrentnessError("TRUSTED_LAUNCH_CALLER_INVALID", parent)
+    supervisor_pid = int(launch.get("supervisor_pid") or 0)
+    observer_pid = int(launch.get("observer_pid") or 0)
+    child_pid = int(process.get("pid") or 0)
+    if (_pid_ppid(supervisor_pid) != parent
+            or _pid_ppid(observer_pid) != parent
+            or _pid_ppid(child_pid) != supervisor_pid):
+        raise CurrentnessError("TRUSTED_LAUNCH_PROCESS_TREE_INVALID")
+
+
+def _registry_entry(config: dict, run_dir: Path, binding: dict,
+                    job: dict, launch: dict, process: dict, *,
+                    provenance: str, migration: bool) -> dict:
+    currentness = binding.get("sorok_currentness") or {}
+    entry = {
+        "launch_id": "launch-" + secrets.token_hex(16),
+        "provenance": provenance,
+        "migration": migration,
+        "attested_at_utc": now_utc(),
+        "expires_at_utc": _utc_add(7 * 24 * 3600),
+        "run_dir": str(run_dir.resolve()),
+        "job_id": job.get("job_id"),
+        "session": job.get("session"),
+        "grant_id": job.get("grant_id"),
+        "argv_sha256": command_digest(job.get("argv", [])),
+        "worktree": str(Path(binding.get("worktree", "")).resolve()),
+        "recipient_thread": binding.get("recipient_thread"),
+        "role": currentness.get("role"),
+        "task_id": currentness.get("task_id"),
+        "expected_session": currentness.get("expected_session"),
+        "expected_source_commit": currentness.get("expected_source_commit"),
+        "return_filename": currentness.get("return_filename"),
+        "child_pid": launch.get("child_pid"),
+        "job_sha256": sha256_file(run_dir / "job.json"),
+        "binding_sha256": sha256_file(run_dir / "binding.json"),
+        "launch_sha256": sha256_file(run_dir / "launch.json"),
+        "process_sha256": sha256_file(run_dir / "process.json"),
+        "process_started_utc": process.get("started_utc"),
+    }
+    entry["attestation"] = _sign_capability(config, entry)
+    return entry
+
+
+def _registry_add(config: dict, entry: dict) -> None:
+    with _lock(config, True):
+        registry = _registry_load(config)
+        if entry["run_dir"] in {row.get("run_dir") for row in registry["entries"].values()}:
+            raise CurrentnessError("TRUSTED_LAUNCH_ALREADY_ENROLLED", entry["run_dir"])
+        registry["entries"][entry["launch_id"]] = entry
+        write_json_atomic(_registry_path(config), registry)
+
+
+def _registry_find(config: dict, run_dir: Path) -> dict | None:
+    registry = _registry_load(config)
+    resolved = str(run_dir.resolve())
+    for entry in registry["entries"].values():
+        if entry.get("run_dir") == resolved:
+            return entry
+    return None
+
+
+def _verify_registry_entry(config: dict, entry: dict) -> None:
+    attestation = entry.get("attestation")
+    if not isinstance(attestation, dict):
+        raise CurrentnessError("TRUSTED_LAUNCH_ATTESTATION_MISSING")
+    unsigned = {key: value for key, value in entry.items() if key != "attestation"}
+    _verify_capability(config, attestation, unsigned)
+    try:
+        if _parse_utc(entry["expires_at_utc"]) <= datetime.datetime.now(
+                datetime.timezone.utc):
+            raise CurrentnessError("TRUSTED_LAUNCH_ATTESTATION_EXPIRED")
+    except (KeyError, ValueError, TypeError) as exc:
+        raise CurrentnessError("TRUSTED_LAUNCH_ATTESTATION_EXPIRED") from exc
+
+
+def _require_trusted_launch(config: dict, run_dir: Path, run: dict,
+                            binding: dict) -> dict:
+    entry = _registry_find(config, run_dir)
+    if entry is None:
+        raise CurrentnessError("UNTRUSTED_CONTROLLER_RUN", str(run_dir))
+    _verify_registry_entry(config, entry)
+    currentness = binding.get("sorok_currentness") or {}
+    checks = {
+        "job_id": run["job"].get("job_id"),
+        "session": run["job"].get("session"),
+        "grant_id": run["job"].get("grant_id"),
+        "child_pid": run["process"].get("pid"),
+        "role": currentness.get("role"),
+        "task_id": currentness.get("task_id"),
+        "job_sha256": run["hashes"].get("job_sha256"),
+        "binding_sha256": run["hashes"].get("binding_sha256"),
+        "launch_sha256": run["hashes"].get("launch_sha256"),
+        "process_sha256": run["hashes"].get("process_sha256"),
+    }
+    for key, value in checks.items():
+        if entry.get(key) != value:
+            raise CurrentnessError("TRUSTED_LAUNCH_MISMATCH", key)
+    return entry
+
+
+def _require_trusted_run_root(config: dict, run_dir: Path) -> None:
+    controller = config.get("_controller_state_root")
+    if not controller:
+        raise CurrentnessError("TRUSTED_RUN_ROOT_UNAVAILABLE")
+    allowed = {Path(controller).resolve(), Path(controller).resolve().parent}
+    if run_dir.resolve().parent not in allowed:
+        raise CurrentnessError("UNTRUSTED_RUN_PATH", str(run_dir))
+
+
+def attest_launch(config: dict, run_dir: Path) -> dict:
+    run_dir = run_dir.resolve()
+    _require_trusted_run_root(config, run_dir)
+    job = read_json(run_dir / "job.json")
+    binding = read_json(run_dir / "binding.json")
+    launch = read_json(run_dir / "launch.json")
+    process = read_json(run_dir / "process.json")
+    currentness = binding.get("sorok_currentness") or {}
+    if currentness.get("role") not in ("IMPLEMENTER", "REVIEWER", "REJECTOR",
+                                       "PROTECTED_INTEGRATOR"):
+        raise CurrentnessError("TRUSTED_LAUNCH_ROLE_MISSING")
+    if not currentness.get("task_id"):
+        raise CurrentnessError("TRUSTED_LAUNCH_TASK_MISSING")
+    if (launch.get("child_pid") != process.get("pid")
+            or job.get("job_id") != launch.get("job_id")
+            or job.get("job_id") != process.get("job_id")):
+        raise CurrentnessError("TRUSTED_LAUNCH_IDENTITY_MISMATCH")
+    if command_digest(job.get("argv", [])) != binding.get("grant", {}).get(
+            "argv_sha256"):
+        raise CurrentnessError("TRUSTED_LAUNCH_ARGV_MISMATCH")
+    if not _pid_alive(int(process.get("pid") or 0)):
+        raise CurrentnessError("TRUSTED_LAUNCH_PROCESS_NOT_LIVE",
+                               process.get("pid"))
+    _require_launcher_process_tree(launch, process)
+    entry = _registry_entry(
+        config, run_dir, binding, job, launch, process,
+        provenance="TRUSTED_LAUNCHER_ATTESTATION", migration=False)
+    _registry_add(config, entry)
+    return {"state": "TRUSTED_LAUNCH_ATTESTED", "launch_id": entry["launch_id"],
+            "run_dir": entry["run_dir"], "role": entry["role"],
+            "task_id": entry["task_id"], "child_pid": entry["child_pid"]}
+
+
+def enroll_existing_run(config: dict, run_dir: Path,
+                        authorization_id: str) -> dict:
+    run_dir = run_dir.resolve()
+    _require_trusted_run_root(config, run_dir)
+    job = read_json(run_dir / "job.json")
+    binding = read_json(run_dir / "binding.json")
+    launch = read_json(run_dir / "launch.json")
+    process = read_json(run_dir / "process.json")
+    currentness = binding.get("sorok_currentness") or {}
+    item = {
+        "what_changed": "TRUSTED_LAUNCH_ENROLLMENT " + str(job.get("job_id")),
+        "source_digest": digest({
+            "job_id": job.get("job_id"), "session": job.get("session"),
+            "grant_id": job.get("grant_id"),
+            "job_sha256": sha256_file(run_dir / "job.json"),
+            "binding_sha256": sha256_file(run_dir / "binding.json"),
+            "launch_sha256": sha256_file(run_dir / "launch.json"),
+            "process_sha256": sha256_file(run_dir / "process.json"),
+            "pid": process.get("pid"),
+        }),
+    }
+    authorization, authorization_sha = _authorize_operator(
+        config, purpose="TRUSTED_LAUNCH_ENROLLMENT", item=item,
+        authorization_id=authorization_id,
+        allowed_roles=("SOROK_HQ_OPERATOR",))
+    if currentness.get("role") not in ("IMPLEMENTER", "REVIEWER", "REJECTOR",
+                                       "PROTECTED_INTEGRATOR"):
+        raise CurrentnessError("TRUSTED_LAUNCH_ROLE_MISSING")
+    if (launch.get("child_pid") != process.get("pid")
+            or job.get("job_id") != launch.get("job_id")
+            or job.get("job_id") != process.get("job_id")):
+        raise CurrentnessError("TRUSTED_LAUNCH_IDENTITY_MISMATCH")
+    if not _pid_alive(int(process.get("pid") or 0)):
+        raise CurrentnessError("TRUSTED_LAUNCH_PROCESS_NOT_LIVE",
+                               process.get("pid"))
+    entry = _registry_entry(
+        config, run_dir, binding, job, launch, process,
+        provenance="HQ_EXPLICIT_ACTIVE_RUN_ENROLLMENT", migration=True)
+    entry["enrollment_authorization_id"] = authorization.get("authorization_id")
+    entry["enrollment_authorization_sha256"] = authorization_sha
+    entry["attestation"] = _sign_capability(
+        config, {key: value for key, value in entry.items()
+                 if key != "attestation"})
+    _registry_add(config, entry)
+    return {"state": "EXISTING_RUN_ENROLLED", "launch_id": entry["launch_id"],
+            "run_dir": entry["run_dir"], "role": entry["role"],
+            "task_id": entry["task_id"], "child_pid": entry["child_pid"],
+            "migration": True}
 
 
 def _operator_authorization(config: dict) -> tuple[dict, str]:
@@ -1070,12 +1384,58 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
         else:
             raise CurrentnessError("CONTROLLER_RUN_REQUIRED")
         artifact = _verify_return_artifact(source, run["binding"])
+        _require_trusted_launch(config, Path(source["controller_run_dir"]),
+                                run, run["binding"])
         binding = run["binding"].get("sorok_currentness") or {}
         role = payload.get("role") or binding.get("role")
         expected_session = binding.get("expected_session")
         if expected_session and run["job"].get("session") != expected_session:
             raise CurrentnessError("CONTROLLER_EXPECTED_SESSION_MISMATCH")
-        if task_id == MECHANISM_ID:
+        if role == "REJECTOR":
+            if artifact["payload"].get("schema") != REJECTION_SCHEMA:
+                raise CurrentnessError("REJECTION_ARTIFACT_SCHEMA")
+            rejection = artifact["payload"]
+            if rejection.get("task_id") != task_id:
+                raise CurrentnessError("REJECTION_TASK_MISMATCH")
+            expected_source = binding.get("expected_source_commit")
+            if expected_source and rejection.get("implementation_commit") != expected_source:
+                raise CurrentnessError("REJECTION_SOURCE_MISMATCH")
+            rejection_event = {
+                "schema": EVENT_SCHEMA,
+                "event_id": "rejection-run:" + run["hashes"]["completion_sha256"],
+                "kind": "REJECTION",
+                "recorded_utc": now_utc(),
+                "source": {"trust": "TRUSTED_CONTROLLER_REJECTION",
+                           "controller_run_dir": run["run_dir"],
+                           "completion_sha256": run["hashes"]["completion_sha256"]},
+                "payload": {"task_id": task_id,
+                            "implementation_commit": rejection.get(
+                                "implementation_commit"),
+                            "predecessor": rejection.get("predecessor"),
+                            "reason": rejection.get("reason")},
+            }
+            apply_event(state, rejection_event, config, contracts)
+        elif role == "PROTECTED_INTEGRATOR":
+            if artifact["payload"].get("schema") != PROTECTED_INTEGRATION_SCHEMA:
+                raise CurrentnessError("PROTECTED_INTEGRATION_ARTIFACT_SCHEMA")
+            protected = artifact["payload"]
+            if protected.get("task_id") != task_id:
+                raise CurrentnessError("PROTECTED_INTEGRATION_TASK_MISMATCH")
+            expected_source = binding.get("expected_source_commit")
+            if expected_source and protected.get("source_commit") != expected_source:
+                raise CurrentnessError("PROTECTED_INTEGRATION_SOURCE_MISMATCH")
+            protected_event = {
+                "schema": EVENT_SCHEMA,
+                "event_id": "protected-run:" + run["hashes"]["completion_sha256"],
+                "kind": "PROTECTED_INTEGRATION",
+                "recorded_utc": now_utc(),
+                "source": {"trust": "TRUSTED_CONTROLLER_PROTECTED_INTEGRATION",
+                           "controller_run_dir": run["run_dir"],
+                           "completion_sha256": run["hashes"]["completion_sha256"]},
+                "payload": protected,
+            }
+            apply_event(state, protected_event, config, contracts)
+        elif task_id == MECHANISM_ID:
             if role == "IMPLEMENTER":
                 if artifact["payload"].get("schema") != RETURN_SCHEMA:
                     raise CurrentnessError("MECHANISM_WORKER_RETURN_SCHEMA")
@@ -1161,33 +1521,127 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
                               replay=replay)
         return state
     if kind == "REJECTION":
+        if source.get("trust") != "TRUSTED_CONTROLLER_REJECTION":
+            raise CurrentnessError("UNTRUSTED_REJECTION_SOURCE")
         task = _task_by_id(state, payload["task_id"])
+        implementation = payload.get("implementation_commit")
+        if not HASH_RE.fullmatch(str(implementation or "")):
+            raise CurrentnessError("REJECTION_SOURCE_INVALID")
+        if task.get("code_sha") and implementation != task["code_sha"]:
+            raise CurrentnessError("REJECTION_SOURCE_MISMATCH")
+        if not payload.get("predecessor"):
+            raise CurrentnessError("REJECTION_PREDECESSOR_REQUIRED")
         task["sourcefree_state"] = "REJECTED"
         task["execution_state"] = "REJECTED"
         task["rejection_event_id"] = event["event_id"]
+        task["rejection_source_commit"] = implementation
+        task["rejection_predecessor"] = payload.get("predecessor")
+        task["claim_ready"] = False
         return state
     if kind == "PROTECTED_INTEGRATION":
-        task = _task_by_id(state, payload["task_id"])
-        ci_state = payload.get("ci_state")
+        if source.get("trust") != "TRUSTED_CONTROLLER_PROTECTED_INTEGRATION":
+            raise CurrentnessError("UNTRUSTED_PROTECTED_INTEGRATION_SOURCE")
+        target = payload.get("task_id")
+        source_commit = payload.get("source_commit")
         merge_sha = payload.get("merge_sha")
-        if ci_state != "PASS" or not merge_sha:
-            task["protected_integration"] = "PENDING_PROTECTED_CI_AND_ADOPTION"
-            task["protected_ci"] = ci_state or "NOT_RUN"
-            state["controls"]["holds"].append({
-                "scope": task["id"], "owner": payload.get("owner", "protected CI owner"),
-                "reason": "PROTECTED_CI_UNAVAILABLE_OR_UNMET", "event_id": event["event_id"],
+        if not HASH_RE.fullmatch(str(source_commit or "")):
+            raise CurrentnessError("PROTECTED_SOURCE_INVALID")
+        if not HASH_RE.fullmatch(str(merge_sha or "")):
+            raise CurrentnessError("PROTECTED_MERGE_INVALID")
+        lineage = subprocess.run(
+            ["git", "-C", str(config["_root"]), "show", "-s", "--format=%P",
+             merge_sha], capture_output=True, text=True)
+        parents = lineage.stdout.split()
+        if lineage.returncode != 0 or len(parents) != 2 or parents[1] != source_commit:
+            raise CurrentnessError("PROTECTED_MERGE_LINEAGE_INVALID")
+        live = state.get("authenticated_checkpoint", {}).get("live_github")
+        ci_observed = False
+        if payload.get("ci_state") == "PASS" and _live_fresh(state, live):
+            checks = ((live.get("api") or {}).get("checks") or {})
+            observed = checks.get(merge_sha) or {}
+            ci_observed = (
+                observed.get("conclusion") == "success"
+                and payload.get("ci_observation_digest") == live.get("evidence_digest"))
+        if target in EXPECTED_IDS:
+            task = _task_by_id(state, target)
+            if task.get("code_sha") and source_commit != task["code_sha"]:
+                raise CurrentnessError("PROTECTED_SOURCE_MISMATCH")
+            task["protected_merge_sha"] = merge_sha
+            task["protected_source_commit"] = source_commit
+            if ci_observed:
+                task["protected_integration"] = "PROTECTED_SOURCEFREE"
+                task["protected_ci"] = "PASS"
+            else:
+                task["protected_integration"] = "PENDING_PROTECTED_CI_AND_ADOPTION"
+                task["protected_ci"] = "UNAVAILABLE_BILLING"
+                state["controls"]["holds"].append({
+                    "scope": task["id"],
+                    "owner": payload.get("owner", "protected CI owner"),
+                    "reason": "PROTECTED_CI_UNAVAILABLE_OR_UNVERIFIED",
+                    "event_id": event["event_id"],
+                })
+        elif target in state.get("protected_foundations", {}):
+            foundation = state["protected_foundations"][target]
+            if merge_sha != foundation.get("merge_sha"):
+                raise CurrentnessError("PROTECTED_FOUNDATION_MERGE_MISMATCH")
+            state.setdefault("protected_integration_requests", []).append({
+                "task_id": target, "merge_sha": merge_sha,
+                "source_commit": source_commit,
+                "state": ("PROTECTED_SOURCEFREE" if ci_observed
+                          else "PENDING_PROTECTED_CI_AND_ADOPTION"),
+                "protected_ci": "PASS" if ci_observed else "UNAVAILABLE_BILLING",
+                "event_id": event["event_id"],
             })
         else:
-            task["protected_integration"] = "PROTECTED_SOURCEFREE"
-            task["protected_ci"] = "PASS"
-            task["protected_merge_sha"] = merge_sha
+            raise CurrentnessError("PROTECTED_TARGET_UNKNOWN", target)
+        return state
+    if kind == "RESTORATION":
+        scope = payload.get("scope")
+        if not scope:
+            raise CurrentnessError("CONTROL_SCOPE_MISSING")
+        target = payload.get("restores")
+        if not target:
+            raise CurrentnessError("RESTORATION_TARGET_REQUIRED")
+        revocation = next((row for row in state["controls"].get("revocations", [])
+                           if row.get("event_id") == target), None)
+        if revocation is None:
+            raise CurrentnessError("RESTORATION_TARGET_NOT_FOUND")
+        if revocation.get("scope") != scope:
+            raise CurrentnessError("RESTORATION_SCOPE_MISMATCH")
+        item = {"what_changed": "RESTORATION " + str(scope),
+                "scope": scope,
+                "source_digest": digest({
+                    "kind": kind, "scope": scope,
+                    "event_id": event.get("event_id"),
+                    "recorded_utc": event.get("recorded_utc"),
+                    "payload": payload})}
+        authorization, authorization_sha = _authorize_operator(
+            config, purpose="RESTORATION", item=item,
+            authorization_id=payload.get("authorization_id"),
+            allowed_roles=("SOROK_HQ_OPERATOR", "SOURCE_AUTHORITY_ISSUER"))
+        if _parse_utc(event["recorded_utc"]) <= _parse_utc(
+                revocation.get("recorded_at", "1970-01-01T00:00:00+00:00")):
+            raise CurrentnessError("RESTORATION_ORDER")
+        state["controls"]["revocations"] = [
+            row for row in state["controls"]["revocations"]
+            if row.get("event_id") != target]
+        state["controls"].setdefault("restorations", []).append({
+            "scope": scope, "event_id": event["event_id"],
+            "restores": target, "authorization_id": authorization.get(
+                "authorization_id"), "authorization_sha256": authorization_sha,
+            "recorded_at": event["recorded_utc"],
+        })
         return state
     if kind in ("SOURCE_AUTHORITY_HOLD", "USER_STOP", "REVOCATION", "USER_RESUME"):
         scope = payload.get("scope")
         if not scope:
             raise CurrentnessError("CONTROL_SCOPE_MISSING")
         item = {"what_changed": kind + " " + str(scope), "scope": scope,
-                "source_digest": event.get("event_hash")}
+                "source_digest": digest({
+                    "kind": kind, "scope": scope,
+                    "event_id": event.get("event_id"),
+                    "recorded_utc": event.get("recorded_utc"),
+                    "payload": payload})}
         roles = {
             "SOURCE_AUTHORITY_HOLD": ("SOURCE_AUTHORITY_ISSUER",),
             "USER_STOP": ("SOROK_HQ_OPERATOR",),
@@ -1269,6 +1723,10 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
         live = payload.get("live_observation")
         if not isinstance(live, dict) or live.get("schema") != LIVE_GITHUB_SCHEMA:
             raise CurrentnessError("LIVE_GITHUB_OBSERVATION_SCHEMA")
+        if source.get("trust") != "RUNTIME_INTERNAL_LIVE_FETCH":
+            raise CurrentnessError("LIVE_GITHUB_OBSERVATION_UNTRUSTED_SOURCE")
+        if source.get("observation_digest") != live.get("evidence_digest"):
+            raise CurrentnessError("LIVE_GITHUB_OBSERVATION_DIGEST_MISMATCH")
         if not _live_fresh(state, live):
             raise CurrentnessError("LIVE_GITHUB_OBSERVATION_STALE_OR_UNTRUSTED")
         state["authenticated_checkpoint"]["live_github"] = copy.deepcopy(live)
@@ -1369,7 +1827,34 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
     raise CurrentnessError("EVENT_KIND_UNKNOWN", kind)
 
 
-def intake_event(config: dict, event: dict) -> dict:
+CONTROL_EVENT_KINDS = frozenset({
+    "USER_STOP", "USER_RESUME", "REVOCATION", "RESTORATION",
+    "SOURCE_AUTHORITY_HOLD",
+})
+
+
+def intake_control_event(config: dict, event: dict) -> dict:
+    if event.get("kind") not in CONTROL_EVENT_KINDS:
+        raise CurrentnessError("PUBLIC_EVENT_INTAKE_DISABLED",
+                               str(event.get("kind")))
+    return intake_event(config, event, trusted=True)
+
+
+def intake_event(config: dict, event: dict, *, trusted: bool = False) -> dict:
+    if not trusted:
+        kind = event.get("kind")
+        if kind in ("USER_STOP", "USER_RESUME", "REVOCATION", "RESTORATION",
+                    "SOURCE_AUTHORITY_HOLD"):
+            raise CurrentnessError("OPERATOR_AUTHORIZATION_UNAVAILABLE")
+        if kind == "REJECTION":
+            raise CurrentnessError("UNTRUSTED_REJECTION_SOURCE")
+        if kind == "PROTECTED_INTEGRATION":
+            raise CurrentnessError("UNTRUSTED_PROTECTED_INTEGRATION_SOURCE")
+        if kind == "GITHUB_OBSERVATION":
+            raise CurrentnessError("LIVE_GITHUB_OBSERVATION_UNTRUSTED_SOURCE")
+        if kind in ("REVIEW_VERDICT", "WORKER_RETURN", "INFRASTRUCTURE_RETURN"):
+            raise CurrentnessError("TRUSTED_CONTROLLER_RUN_REQUIRED")
+        raise CurrentnessError("PUBLIC_EVENT_INTAKE_DISABLED")
     with _lock(config, True):
         whole = read_json(config["_pair_json"])
         md = config["_pair_md"].read_text(encoding="utf-8")
@@ -2155,10 +2640,11 @@ def startup(config: dict, *, reconcile: bool = False) -> dict:
                 "event_id": "github-live:" + str(live.get("evidence_digest")),
                 "kind": "GITHUB_OBSERVATION",
                 "recorded_utc": now_utc(),
-                "source": {"trust": "AUTHENTICATED_LIVE_GITHUB"},
+                "source": {"trust": "RUNTIME_INTERNAL_LIVE_FETCH",
+                           "observation_digest": live.get("evidence_digest")},
                 "payload": {"live_observation": live},
             }
-            intake_event(config, event)
+            intake_event(config, event, trusted=True)
         existing = {item.get("what_changed"): item for item in state.get(
             "reconciliation_required", [])}
         for item in items:
@@ -2174,7 +2660,7 @@ def startup(config: dict, *, reconcile: bool = False) -> dict:
                            else "AUTHENTICATED_LOCAL_STARTUP"},
                 "payload": {"item": item},
             }
-            intake_event(config, event)
+            intake_event(config, event, trusted=True)
         whole, md, state = read_pair(config)
         state = copy.deepcopy(state)
         state["reconciliation_required"] = items
@@ -2324,8 +2810,16 @@ def main(argv: list[str] | None = None) -> int:
     startup_parser = sub.add_parser("startup")
     startup_parser.add_argument("--reconcile", action="store_true")
     sub.add_parser("recover")
-    sub.add_parser("reconcile")
-    sub.add_parser("migrate")
+    reconcile_parser = sub.add_parser("reconcile")
+    reconcile_parser.add_argument("--operator-authorization-id")
+    migrate_parser = sub.add_parser("migrate")
+    migrate_parser.add_argument("--operator-authorization-id")
+    attest = sub.add_parser("attest-launch")
+    attest.add_argument("--run-dir", required=True, type=Path)
+    enroll = sub.add_parser("enroll-existing-run")
+    enroll.add_argument("--run-dir", required=True, type=Path)
+    enroll.add_argument("--authorization-id", required=True)
+    sub.add_parser("show-trusted-launches")
     completion = sub.add_parser("intake-completion")
     completion.add_argument("--run-dir", required=True, type=Path)
     completion.add_argument("--task-id")
@@ -2341,6 +2835,8 @@ def main(argv: list[str] | None = None) -> int:
     historical.add_argument("--verdict", required=True)
     event_parser = sub.add_parser("intake-event")
     event_parser.add_argument("--event", required=True, type=Path)
+    control = sub.add_parser("control-event")
+    control.add_argument("--event", required=True, type=Path)
     resolve = sub.add_parser("resolve-reconciliation")
     resolve.add_argument("--what-changed", required=True)
     resolve.add_argument("--fresh-observation-digest")
@@ -2350,6 +2846,26 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         config = load_config(args.config)
+        if args.command == "attest-launch":
+            print(json.dumps(attest_launch(config, args.run_dir), indent=2,
+                             sort_keys=True))
+            return 0
+        if args.command == "enroll-existing-run":
+            print(json.dumps(enroll_existing_run(
+                config, args.run_dir, args.authorization_id), indent=2,
+                sort_keys=True))
+            return 0
+        if args.command == "show-trusted-launches":
+            registry = _registry_load(config)
+            safe = {
+                "schema": registry.get("schema"),
+                "entries": [
+                    {key: value for key, value in entry.items()
+                     if key not in ("attestation",)}
+                    for entry in registry.get("entries", {}).values()],
+            }
+            print(json.dumps(safe, indent=2, sort_keys=True))
+            return 0
         if args.command == "init":
             with _lock(config, True):
                 whole = read_json(config["_pair_json"])
@@ -2398,6 +2914,15 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(recover(config), indent=2))
             return 0
         if args.command == "migrate":
+            item = {"what_changed": "STATE_MAINTENANCE migrate",
+                    "source_digest": digest({
+                        "command": "migrate",
+                        "pair_json": str(config["_pair_json"]),
+                    })}
+            _authorize_operator(
+                config, purpose="STATE_MAINTENANCE", item=item,
+                authorization_id=args.operator_authorization_id,
+                allowed_roles=("SOROK_HQ_OPERATOR",))
             with _lock(config, True):
                 whole = read_json(config["_pair_json"])
                 md = config["_pair_md"].read_text(encoding="utf-8")
@@ -2413,6 +2938,16 @@ def main(argv: list[str] | None = None) -> int:
                               "generation": state["generation"],
                               "checkpoint_id": state["checkpoint_id"]}, indent=2))
             return 0
+        if args.command in ("reconcile", "migrate"):
+            item = {"what_changed": "STATE_MAINTENANCE " + args.command,
+                    "source_digest": digest({
+                        "command": args.command,
+                        "pair_json": str(config["_pair_json"]),
+                    })}
+            _authorize_operator(
+                config, purpose="STATE_MAINTENANCE", item=item,
+                authorization_id=getattr(args, "operator_authorization_id", None),
+                allowed_roles=("SOROK_HQ_OPERATOR",))
         if args.command == "reconcile":
             with _lock(config, True):
                 whole = read_json(config["_pair_json"])
@@ -2437,7 +2972,7 @@ def main(argv: list[str] | None = None) -> int:
             event = _make_return_event(
                 config, args.run_dir, task_id=args.task_id,
                 return_path=args.return_path, scope=args.scope)
-            print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
+            print(json.dumps(intake_event(config, event, trusted=True), indent=2, sort_keys=True))
             return 0
         if args.command == "intake-review":
             if args.replay:
@@ -2458,7 +2993,7 @@ def main(argv: list[str] | None = None) -> int:
                     "payload": {"task_id": receipt.get("task_id"),
                                 "verdict": receipt.get("verdict")},
                 }
-                print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
+                print(json.dumps(intake_event(config, event, trusted=True), indent=2, sort_keys=True))
                 return 0
             if not args.review_run_dir:
                 raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
@@ -2483,8 +3018,8 @@ def main(argv: list[str] | None = None) -> int:
                 "payload": {"task_id": artifact.get("task_id"),
                             "verdict": artifact.get("verdict")},
             }
-            print(json.dumps(intake_event(config, review_event), indent=2,
-                             sort_keys=True))
+            print(json.dumps(intake_event(config, review_event, trusted=True),
+                             indent=2, sort_keys=True))
             return 0
         if args.command == "intake-historical-review":
             receipt = _load_review_receipt(args.receipt)
@@ -2504,6 +3039,8 @@ def main(argv: list[str] | None = None) -> int:
                 "process_sha256": sha256_file(run_dir / "process.json"),
                 "completion_sha256": sha256_file(run_dir / "completion.json"),
             }
+            run = validate_controller_run(run_dir, source)
+            _require_trusted_launch(config, run_dir, run, run["binding"])
             event = {
                 "schema": EVENT_SCHEMA,
                 "event_id": "historical-review:" + source["completion_sha256"],
@@ -2514,11 +3051,16 @@ def main(argv: list[str] | None = None) -> int:
                             "posthoc_registration": True,
                             "automatic_intake": False},
             }
-            print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
+            print(json.dumps(intake_event(config, event, trusted=True), indent=2, sort_keys=True))
             return 0
         if args.command == "intake-event":
             event = read_json(args.event)
             print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
+            return 0
+        if args.command == "control-event":
+            event = read_json(args.event)
+            print(json.dumps(intake_control_event(config, event), indent=2,
+                             sort_keys=True))
             return 0
         if args.command == "resolve-reconciliation":
             if not (args.fresh_observation_digest
@@ -2542,7 +3084,7 @@ def main(argv: list[str] | None = None) -> int:
                 "source": {"trust": "AUTHENTICATED_RESOLUTION_EVIDENCE"},
                 "payload": payload,
             }
-            print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
+            print(json.dumps(intake_event(config, event, trusted=True), indent=2, sort_keys=True))
             return 0
         raise CurrentnessError("COMMAND_UNKNOWN", args.command)
     except CurrentnessError as exc:
