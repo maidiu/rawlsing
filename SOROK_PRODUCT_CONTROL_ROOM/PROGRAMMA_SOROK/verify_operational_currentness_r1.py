@@ -380,7 +380,9 @@ def main():
     except OSError as exc:
         md = ""
         errors.append("PAIRED_MD_UNREADABLE " + str(exc))
-    if md.count(START) != 1 or md.count(END) != 1 or md.index(START) > md.index(END) if START in md and END in md else True:
+    valid_markers = (md.count(START) == 1 and md.count(END) == 1
+                     and md.find(START) < md.find(END))
+    if not valid_markers:
         errors.append("PAIRED_MD_MARKERS_MISSING_OR_DUPLICATE")
     elif not errors and md[md.index(START):md.index(END)+len(END)] != render(s):
         errors.append("PAIRED_MD_JSON_DRIFT")
