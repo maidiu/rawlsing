@@ -1,0 +1,21 @@
+check_id	case	R16_observation	R17_evidence	grade	verdict_and_falsifier
+R17-B-P01	Source authority exact	V552J strict-only overclaim	9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/ddm_v552j_handoff.py#476e6173...:L110-L161	CODE_S1	CERTIFIED_OR_REVIEW, positive review still requires same-scope matched structural fact
+R17-B-P02	Review-only negative	Review branch erased	R9-PROP-REL-001 exact +R17 PR patch; 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::ddm_v552j_handoff.py	STATIC_S1	review kind never ALLOW; matched review is REVIEW_ONLY; unmatched audit unresolved
+R17-B-P03	Strict ALLOW AND	Confused construction and authorization	R17 REL001 patch vs original build_v552j_join line 131	STATIC_S1	certified + both producer ALLOW + fact ALLOW + observed, otherwise DENY/REVIEW
+R17-B-P04	Function edge preserved	MUST false legitimacy risk	R17 REL001 still F21_J_STRUCT MUST_DEPENDENCY F20_J_PACKET	SOURCE_STATIC_CANDIDATE	original F21→F20 prerequisite retained, no native permission
+R17-B-P05	Certifier input	prebuilt review packet misreported	9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/compile_v551j_joint_evidence_packets.py#2df97875...:L1320-L1326	CODE_S1	3 explicit arguments candidate/component/validation report
+R17-B-P06	Review order negative	sidecar falsely certifier input	original _rebuild_review_surface call after certification; R17 EDGE005 patch	CODE_S1	prebuilt review sidecar not explicit input, not certifier grant
+R17-B-P07	Held current consumer	premature cert/native success	R17 EDGE005 OPEN_PROOF_GAP	STATIC_S1	no actual non-test current first-reader or issuer receipt
+R17-B-P08	R16 to R17 DATA cut	unbounded modifications	Git compare R16→R17 RELATIONS +1/-1; EDGES +1/-1; no other DATA	GIT_DIFF_S1	exact 2 changed material data rows
+R17-B-P09	R8 no drop	source-root loss	Git compare R8→R17 RELATIONS +5/-0; EDGES +10/-0	GIT_DIFF_S1	original 8503 and 332 source rows no deletion by Git
+R17-B-P10	Ledger integrity	rollback mismatch	R16/R17 70-row ledger parsed; 2 after JSON changes only	DOCUMENT_S1	all 70 IDs preserved, 0 duplicates, 68 unchanged
+R17-B-P11	Ledger after exact	edits not incorporated	R17 exact two after JSONs both contained in author PR patched rows	DOCUMENT_S1	two after-images match; before ABSENT_AT_R8 and rollback preserved
+R17-B-P12	Wrong relation reintroduction	R15 finding-as-authority hard edges	PR1099 R17 patch 002/007/009/011 remain removed	GIT_DIFF_S1	no false typed relation restoration; original protected authority unchanged
+R17-B-N01	False strict-only mutation	certified only allowed for construction	source branch iterates certified and review	NEGATIVE_STATIC	REJECT: must permit scoped review row
+R17-B-N02	False review promotion	review packet ALLOW	kind==review → REVIEW_ONLY	NEGATIVE_STATIC	REJECT: review not authorized
+R17-B-N03	False one upstream permission	single producer ALLOW enough	producer_allow conjuncts V551J and V552	NEGATIVE_STATIC	REJECT: both required
+R17-B-N04	False unobserved ALLOW	no observed score	observed gate in build_v552j_join	NEGATIVE_STATIC	REJECT: observed requirement
+R17-B-N05	False review-input certification	review_surface passed to certifier	three-argument certify source call	NEGATIVE_STATIC	REJECT: review rebuilt after
+R17-B-N06	False premature strict publication	preliminary certifier is final publisher	R15 edge publisher separate; R17 source hold unchanged	NEGATIVE_STATIC	REJECT: final strict separate
+R17-B-N07	False actual current consumer	source-static importer claimed native	all new edges still OPEN_PROOF_GAP	AUTHORITY_NEGATIVE	REJECT: no issued current first reader
+R17-B-N08	False canonical adoption	noncanonical PR#1099 treated as #864 HEAD	#864 still 31d2642... and protected unchanged	AUTHORITY_NEGATIVE	REJECT: #864 lease and receiving still required
