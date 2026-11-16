@@ -1,5 +1,7 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **ANVIL — C11 / pre-FORGE DDM / whole-downstream architecture workshop (OPEN, DOCUMENTARY, NOT AN ADOPTED DESIGN):** [Enter the preserved reasoning, retractions, measured evidence, 52/24/21 historical source ledger, downstream reverse requirements and factor court](05_ROADMAP/ANVIL/README.md). ANVIL is nested in this PROGRAMMA and must not substitute for current PROGRAMMA, competent science, exact code G5, paired CURRENT_PROGRESS or protected receiving.
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
 
