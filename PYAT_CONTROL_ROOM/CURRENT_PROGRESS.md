@@ -1,3 +1,13 @@
+# PYAT HQ 2026-11-16 accession + K3 dual P0 DISPATCH CANDIDATE (NOT PROTECTED)
+
+User appoints acting PYAT HQ with duty to abide by the HQ OATH; no science/source/actor/protected custody implied. Full accession: PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/VMESTYE_K3_HQ_ACCESSION_20261116_R1/00_HQ_ACCESSION_AND_CURRENTNESS_HOLD.md on this candidate branch.
+
+At exact R4 fda48f98ea519016a8815fea59ee9b46414b1559 K2A d2999a90ce17400ec61d93215788dca097d8803e and K2B 096a653c0551368818c570b6d1d8b0f6be2a44bf ACCEPT only documentary S1; 29 families/26 proposed NOT_ADOPTED, source-native/current parity still HELD. K3-A/B #1112 prompts prepared, NOT ACTUALLY LAUNCHED. Existing #1097/#960 P0 engine priority and owner grants unchanged.
+
+Old rev8 CAS4 protected history below is authoritative until an independent review and authorized protected receiving of this paired rev9 candidate. No new K4, BUILD, selected native/world/actor grant, or production green.
+
+---
+
 # PROGRAMMA PYAT CAS4 — PRE-553 UNIVERSAL35 DOCUMENTARY RECOVERY RECEIVED — 2026-11-06
 
 **Protected factual receiving:** [PR #709](https://github.com/maidiu/rawlsing/pull/709) merged the independently accepted universal35 recovery and currentness overlays from `6c243ffee042187092fead1e7a25f0f838578b9e`, with a receiving-only two-line canonical front-door status marker at `f4dc51fbd02dace3a893adc5397d5aa42adbff03`. PRE-MAIN moved from CAS3 `4df35cba8a254e50622d4cb3059625c82e0cb74b` to **`728b3b8aed7609abbe1f9245ccd307484a604265`**. Independent nonauthor receipt: `48c87186cc3ba873109f32edce10e16de220405e` **ACCEPT_SCOPED_DOCUMENTARY** at the unchanged dossier cut. Old draft [#705](https://github.com/maidiu/rawlsing/pull/705) is an immutable historical parent and must not be merged over CAS4.
