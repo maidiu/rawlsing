@@ -1,0 +1,102 @@
+{
+  "artifact": "VMESTYE_K2A_R3_INDEPENDENT_CHANGED_HEAD_RECHECK_R1",
+  "disposition": "REVISE_EXACT_MATERIAL_DEFECT",
+  "review_scope": "S0_S1_FROZEN_CHANGE_DELTA_NOT_GLOBAL_CENSUS",
+  "frozen_original_k1": "1d8e02b335cd460a0da3473757c1ad3f2add0837",
+  "frozen_author_R3_repaired_k1": "fa9b2d5551db9b0370759daf7a563a76fdf6ddc1",
+  "reviewed_author_pr": 1122,
+  "prior_K2A_review_pr": 1121,
+  "prior_K2A_reviewer_head": "236c2e19c4435ad9c1d2ba018e41a71a755d9a3f",
+  "independent_recheck_branch": "review/vmestye-k2a-r3-changed-head-recheck-fa9b2d-20261116-r1",
+  "reviewer_result_sha": "REPLACE_WITH_FINAL_PR_HEAD_IN_APPEND_ONLY_RECEIPT",
+  "reviewed_blobs_R3": {
+    "RECOVERED_KNOWLEDGE_PATHS.tsv": "6a1d770a4887ddd38a42e1c1f7db34e9cff72892",
+    "PYAT_CAPABILITY_CONSERVATION_ROSTER.tsv": "30cd3012c5143bb8f24dbd48de759fe9e88a9485",
+    "K1_DECLARED_CORPUS_ANTI_JOIN.tsv": "68fc9acfd833ed315e76198b12ddf42ded1ef7fa",
+    "RECOVERED_INTEGRATED_MACHINE.md": "f1ccf07a02647f9b9a23d52ec5d6e7672ee89c93",
+    "K2A_R3_REPAIR_VALIDATION_AND_SCOPE.json": "ff23fbf1cd135e6761a4b9aec89fa160b8fc8417"
+  },
+  "reviewed_original_code": {
+    "commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+    "ddm_v550_question_relation_authority.py": "62084cbed10a5975f79bd504bf4fb99025e4e64e:L603-L656,L727-L765",
+    "ddm_v550j_joint_patterns.py": "644aab23675b26134040d1df5cc25538b613e163:L3034-L3065,L3136-L3193",
+    "build_v550j_prepared_substrate.py": "5226fef27903bf55984e0ca4134b6d42404305c2:L94-L117,L181-L185,L255-L295,L298-L313,L339-L371,L489-L523",
+    "ddm_v550_position_distribution.py": "651329254244e9f42a8d88c2721ccae6bd768073:L35-L47,L74-L125",
+    "ddm_v551j_review.py": "ef06476f0fbb183ad665be21c664e2c49998fb94:L429-L499"
+  },
+  "old_contests_rechecked": {
+    "K2A-01": "CLOSED_SOURCE_GRADE_F03_W6_BLOCKED_STATUS_CAPTURED",
+    "K2A-02": "CLOSED_SOURCE_GRADE_F03_AMBIGUOUS_STATUS_CAPTURED",
+    "K2A-03": "CLOSED_SOURCE_GRADE_ALL_FALSE_SUBSTANTIVE_J_NEGATIVE_CAPTURED",
+    "K2A-04": "CLOSED_SOURCE_GRADE_CACHE_BODY_FRESHNESS_NEGATIVE_CAPTURED",
+    "K2A-05": "CLOSED_TYPED_10_EDGE_REPAIRS_WITH_EXPLICIT_SOURCE_AND_FIRST_READER_HOLDS",
+    "K2A-06": "CLOSED_95_LITERAL_PATH_REFERENCE_FIX_WITH_QUALIFIER_AND_SOURCE_PRESERVED"
+  },
+  "new_contest": {
+    "id": "R3-K2A-07",
+    "status": "REVISE_EXACT_MATERIAL_DEFECT",
+    "material_original_negative": "Validator can emit validation_status=fail for empty var_code_norm or substantive identity, but cache-hit and new-build callers discard returned report, still return prepared/manifest; build manifest cache_valid=true; optional signature comparison may skip blank expected hashes",
+    "affected_R3": [
+      "RECOVERED_KNOWLEDGE_PATHS.tsv:R9-PATH-10",
+      "PYAT_CAPABILITY_CONSERVATION_ROSTER.tsv:K1-CAP-10",
+      "RECOVERED_INTEGRATED_MACHINE.md:K2A_R3_D04"
+    ],
+    "minimum_repair": "Document validator report non-gating with distinct source-identity and failed-population negative, no source native assertion or modern build",
+    "owner": "existing VMESTYE #814 K1 source-documentary integrator; native source/scientific owner separate",
+    "falsifier": "source-free nonempty frame with var_code blank returns validation_status fail while prepared and cache_valid true; validate denied and restoration separately",
+    "native_executed": false
+  },
+  "independently_executed_documentary_checks": {
+    "old_to_new_author_commit_chain": "R3 sole parent original K1",
+    "R3_new_derived_files": 5,
+    "original_path_count": 29,
+    "R3_path_count": 29,
+    "same_path_keys": 29,
+    "original_capability_count": 29,
+    "R3_capability_count": 29,
+    "same_capability_keys": 29,
+    "R3_identity_rows": 288,
+    "identity_grain_and_id_mutations": 0,
+    "source_register_mutations": 0,
+    "qualification_status_mutations": 0,
+    "proposed_owner_mutations": 0,
+    "corrected_annotated_path_refs": 95,
+    "original_qualification_labels_preserved": 95,
+    "remaining_nonliteral_mapped_path_refs": 0,
+    "old_generic_edge_count": 10,
+    "R3_generic_edge_count": 0,
+    "named_declared_grains": {
+      "T1_T2_SOURCE_CONTRACT": 52,
+      "MATERIAL_INTEGRATED_PATH": 29,
+      "PROSPECTIVE_PYAT_REQUIREMENT": 26,
+      "P4R_FINITE_OWNER_QUEUE": 14,
+      "DECLARED_FAMILY_NOT_PER_CAPABILITY": 6,
+      "INHERITED_LONG_MEMORY_OBLIGATION": 44,
+      "INHERITED_LONG_MEMORY_PROOF_QUEUE": 30,
+      "INHERITED_HISTORICAL_F_FUNCTION": 29,
+      "INHERITED_HISTORICAL_AUTHORITY_RELEASE": 58
+    },
+    "declared_identity_total": 288,
+    "new_validator_non_gating_proof": "DIRECT_SOURCE_STATIC_CONTROL_FLOW",
+    "new_synthetic_fixture_python_executed": false
+  },
+  "holds": {
+    "other_K2_changed_head_review": "NOT_READ_NOT_COORDINATED",
+    "global_thirteen_prong_semantic_completeness": "HOLD",
+    "original35_native": "NOT_RUN",
+    "selected_science_source_actor_rights": "NONE",
+    "modern_PYAT_same_or_stronger_first_consumer": "HOLD",
+    "selected_V553_measured_temporal_reader": "HOLD",
+    "Long_Memory_44_30_unique_semantic_completion": "HOLD",
+    "1_10_100_performance_and_revocation": "NOT_RUN",
+    "PYAT_specification_adoption": 0,
+    "protected_programma_and_progress_receiving": "HQ_CURRENTNESS_HOLD",
+    "current_zero_loss": "HOLD",
+    "actor": "NOT_ISSUED",
+    "K3": "NOT_AUTHORIZED",
+    "human_identity_independence": "NOT_ATTESTED_BY_SHARED_GITHUB_LOGIN",
+    "reviewer_authored_R3": false,
+    "native_python_or_ci": "NOT_RUN"
+  },
+  "terminal": "K2A_R3_CHANGED_HEAD_RECHECK_REVISE_EXACT_MATERIAL_DEFECT__REPAIRED_K1_HEAD_fa9b2d5551db9b0370759daf7a563a76fdf6ddc1__K3_NOT_AUTHORIZED"
+}
