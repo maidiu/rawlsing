@@ -273,7 +273,7 @@ def test_control_events_require_authorization(tmp_path):
     with pytest.raises(rt.CurrentnessError, match="OPERATOR_AUTHORIZATION_UNAVAILABLE"):
         rt.intake_event(config, event(
             "USER_STOP", payload={"scope": "B02", "owner": "fake",
-                                  "reason": "fabricated"}))
+                                  "reason": "fabricated"}), trusted=True)
     _whole, _md, state = read_pair(config)
     assert state["controls"]["stops"] == []
 
@@ -304,13 +304,13 @@ def test_authorized_stop_and_superseding_resume(tmp_path):
     stop = event("USER_STOP", event_id="stop-b02",
                  payload={"scope": "B02", "authorization_id": "ops-test-1",
                           "reason": "authorized test stop"})
-    rt.intake_event(config, stop)
+    rt.intake_event(config, stop, trusted=True)
     _whole, _md, state = read_pair(config)
     assert state["controls"]["stops"]
     resume = event("USER_RESUME", event_id="resume-b02",
                    payload={"scope": "B02", "authorization_id": "ops-test-1",
                             "supersedes": "stop-b02", "reason": "authorized test resume"})
-    rt.intake_event(config, resume)
+    rt.intake_event(config, resume, trusted=True)
     _whole, _md, state = read_pair(config)
     assert not state["controls"]["stops"]
     assert state["controls"]["resumes"][-1]["supersedes"] == "stop-b02"
@@ -321,7 +321,7 @@ def test_unauthorized_resume_is_refused(tmp_path):
     with pytest.raises(rt.CurrentnessError, match="OPERATOR_AUTHORIZATION_UNAVAILABLE"):
         rt.intake_event(config, event(
             "USER_RESUME", payload={"scope": "B02", "supersedes": "stop-b02",
-                                    "authorization_id": "fake"}))
+                                    "authorization_id": "fake"}), trusted=True)
 
 
 def test_resolution_requires_authenticated_evidence(tmp_path, monkeypatch):
@@ -337,16 +337,17 @@ def test_resolution_requires_authenticated_evidence(tmp_path, monkeypatch):
         rt.intake_event(config, event(
             "RECONCILIATION_RESOLVED",
             payload={"what_changed": item["what_changed"],
-                     "evidence": "arbitrary text"}))
+                     "evidence": "arbitrary text"}), trusted=True)
     with pytest.raises(rt.CurrentnessError, match="RESOLUTION_FRESH_OBSERVATION_INVALID"):
         rt.intake_event(config, event(
             "RECONCILIATION_RESOLVED",
             payload={"what_changed": item["what_changed"],
-                     "fresh_observation_digest": "0" * 64}))
+                     "fresh_observation_digest": "0" * 64}), trusted=True)
     rt.intake_event(config, event(
         "RECONCILIATION_RESOLVED",
         payload={"what_changed": item["what_changed"],
-                 "fresh_observation_digest": live["evidence_digest"]}))
+                 "fresh_observation_digest": live["evidence_digest"]}),
+        trusted=True)
     _whole, _md, state = read_pair(config)
     assert not any(row["what_changed"] == item["what_changed"]
                    for row in state["reconciliation_required"])
@@ -378,15 +379,15 @@ def test_duplicate_and_out_of_order_are_typed(tmp_path):
         "source": {"trust": "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY"},
         "receipt": receipt, "payload": {"task_id": "B05"},
     }
-    first = rt.intake_event(config, replay)
-    second = rt.intake_event(config, replay)
+    first = rt.intake_event(config, replay, trusted=True)
+    second = rt.intake_event(config, replay, trusted=True)
     assert first["state"] == "EVENT_RECORDED"
     assert second["state"] == "DUPLICATE_EVENT"
     bad = copy.deepcopy(replay)
     bad["event_id"] = "replay-b05-out-of-order"
     bad["sequence"] = 99
     with pytest.raises(rt.CurrentnessError, match="OUT_OF_ORDER_EVENT"):
-        rt.intake_event(config, bad)
+        rt.intake_event(config, bad, trusted=True)
 
 
 def test_mixed_pair_and_crash_recovery(tmp_path, monkeypatch):
@@ -424,13 +425,15 @@ def test_mixed_pair_and_crash_recovery(tmp_path, monkeypatch):
 def make_controller_run(root: Path, *, job_id="sorok-currentness-test-job",
                         role="IMPLEMENTER", task_id=rt.MECHANISM_ID,
                         return_schema=rt.RETURN_SCHEMA,
-                        return_payload=None):
+                        return_payload=None,
+                        session="ses_local_fixture_child",
+                        expected_source_commit=None):
     run = root / "controller-state" / job_id
     run.mkdir(parents=True)
     worktree = root / "child-worktree"
     worktree.mkdir(exist_ok=True)
     argv = ["/usr/bin/true"]
-    job = {"job_id": job_id, "session": "ses_local_fixture_child",
+    job = {"job_id": job_id, "session": session,
            "grant_id": "g-local-fixture", "argv": argv}
     binding = {
         "schema": "LOCAL_COMPLETION_BINDING_V1",
@@ -446,18 +449,21 @@ def make_controller_run(root: Path, *, job_id="sorok-currentness-test-job",
                               "expected_session": job["session"],
                               "return_filename": "return.json"},
     }
+    if expected_source_commit:
+        binding["sorok_currentness"]["expected_source_commit"] = expected_source_commit
     (run / "job.json").write_text(json.dumps(job), encoding="utf-8")
     (run / "binding.json").write_text(json.dumps(binding), encoding="utf-8")
+    pid = os.getpid()
     (run / "launch.json").write_text(json.dumps({
-        "job_id": job_id, "child_pid": 4242, "supervisor_pid": 4241,
-        "observer_pid": 4243, "run_dir": str(run),
+        "job_id": job_id, "child_pid": pid, "supervisor_pid": pid - 1,
+        "observer_pid": pid + 1, "run_dir": str(run),
         "launch_is_not_completion": True}), encoding="utf-8")
     (run / "process.json").write_text(json.dumps({
         "job_id": job_id, "session": job["session"], "grant_id": job["grant_id"],
-        "pid": 4242, "started_utc": rt.now_utc()}), encoding="utf-8")
+        "pid": pid, "started_utc": rt.now_utc()}), encoding="utf-8")
     (run / "completion.json").write_text(json.dumps({
         "job_id": job_id, "session": job["session"], "grant_id": job["grant_id"],
-        "pid": 4242, "exit_code": 0, "finished_utc": rt.now_utc(),
+        "pid": pid, "exit_code": 0, "finished_utc": rt.now_utc(),
         "scope": "LOCAL_TEST",
         "recipient_thread": binding["recipient_thread"]}), encoding="utf-8")
     artifact = worktree / "return.json"
@@ -466,6 +472,46 @@ def make_controller_run(root: Path, *, job_id="sorok-currentness-test-job",
         "session": job["session"], "scope": "TEST",
         "artifact": {"message": "local fixture"}}), encoding="utf-8")
     return run, worktree, artifact
+
+
+def enroll_test_run(config, run):
+    auth_path = Path(config["_state_root"]) / "test_operator_authorization.json"
+    job = json.loads((run / "job.json").read_text())
+    process = json.loads((run / "process.json").read_text())
+    source = rt.digest({
+        "job_id": job["job_id"], "session": job["session"],
+        "grant_id": job["grant_id"],
+        "job_sha256": rt.sha256_file(run / "job.json"),
+        "binding_sha256": rt.sha256_file(run / "binding.json"),
+        "launch_sha256": rt.sha256_file(run / "launch.json"),
+        "process_sha256": rt.sha256_file(run / "process.json"),
+        "pid": process["pid"],
+    })
+    auth_path.write_text(json.dumps({
+        "schema": rt.OPERATOR_AUTH_SCHEMA,
+        "authorization_id": "test-enroll-1",
+        "role": "SOROK_HQ_OPERATOR",
+        "owner": "test operator",
+        "granted_by": "TEST_ONLY",
+        "granted_at_utc": rt.now_utc(),
+        "expires_at_utc": rt._utc_add(3600),
+        "allowed_kinds": ["TRUSTED_LAUNCH_ENROLLMENT", "USER_STOP",
+                          "USER_RESUME", "REVOCATION", "RESTORATION",
+                          "STATE_MAINTENANCE"],
+        "allowed_scopes": ["TRUSTED_LAUNCH_ENROLLMENT", "USER_STOP",
+                           "USER_RESUME", "REVOCATION", "RESTORATION",
+                           "STATE_MAINTENANCE", "AUTOMATIC_CURRENTNESS_R1"],
+        "allowed_source_digests": [source],
+        "allowed_item_digests": [],
+        "allowed_supersedes": [],
+    }) + "\n")
+    config_path = Path(config["_root"]) / "config.json"
+    data = json.loads(config_path.read_text())
+    data["trusted_operator_authorization"] = str(auth_path)
+    config_path.write_text(json.dumps(data) + "\n")
+    config = rt.load_config(config_path)
+    rt.enroll_existing_run(config, run, "test-enroll-1")
+    return config
 
 
 def test_mechanism_worker_return_is_review_pending(tmp_path, monkeypatch):
@@ -480,8 +526,9 @@ def test_mechanism_worker_return_is_review_pending(tmp_path, monkeypatch):
     artifact.write_text(json.dumps(payload), encoding="utf-8")
     monkeypatch.setattr(rt, "_verify_mechanism_worker_return",
                         lambda cfg, p, b: None)
+    config = enroll_test_run(config, run)
     event = rt._make_return_event(config, run, return_path=str(artifact))
-    rt.intake_event(config, event)
+    rt.intake_event(config, event, trusted=True)
     _whole, _md, state = read_pair(config)
     assert state["mechanism_worker_return"]["execution_state"] == "RETURNED_REVIEW_PENDING"
     assert state["mechanism_review"]["state"] == "PENDING_EXTERNAL_NONAUTHOR_REVIEW"

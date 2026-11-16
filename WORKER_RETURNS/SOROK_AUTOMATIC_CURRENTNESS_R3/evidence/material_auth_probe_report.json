@@ -1,0 +1,230 @@
+{
+  "base": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+  "fixed": [
+    "caller-only mechanism review refused",
+    "arbitrary STOP refused",
+    "arbitrary resolution refused",
+    "untrusted REJECTION refused",
+    "untrusted PROTECTED_INTEGRATION refused",
+    "unauthenticated GITHUB_OBSERVATION refused",
+    "self-consistent fake WORKER_RETURN refused"
+  ],
+  "gaps": [],
+  "implementation": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+  "note": "Probe asserts both repaired R1 reds and residual material-event authority gaps; existence of gaps is the review result.",
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R2_MATERIAL_AUTH_PROBE@1",
+  "state_snapshot": {
+    "b01": {
+      "bounded_engineering_now": "Implement verified material writer/household source binding",
+      "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+      "claim_ready": true,
+      "claims_not_yet_warranted": "Adult/child account and tenancy generalization",
+      "class": "M",
+      "decision_full_claim": [
+        "A01"
+      ],
+      "decision_issue_ids": [
+        "SA-01",
+        "SA-24"
+      ],
+      "decision_prerequisites": [
+        "K01"
+      ],
+      "decision_status": {
+        "A01": "EXECUTIVE_SELECTION_REQUIRED"
+      },
+      "depends_on": [],
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "full_original_claim": "NOT_ESTABLISHED",
+      "full_original_decision_blockers": [
+        "A01"
+      ],
+      "full_original_readiness": "HOLD_DECISION_A01",
+      "full_original_ready": false,
+      "id": "B01",
+      "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+      "owner": "S47/P2 objective world; P6 house.py",
+      "phase": "CG-B",
+      "producer_owner": "S47/P2 objective world; P6 house.py",
+      "protected_integration": "NONE",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "ready_for_independent_receiving": false,
+      "ready_for_scoped_engineering": true,
+      "return_event_id": null,
+      "review_event_id": null,
+      "scientific_authority": "HELD",
+      "source_refs": [
+        "packet:B01",
+        "gmt:B01"
+      ],
+      "sourcefree_state": "CANDIDATE",
+      "terminal_consumer": "P6 house reader and selected parent-choice input",
+      "title": "Select existing material writer and bounded household state ABI",
+      "unmet_full_original_prereqs": [],
+      "unmet_scoped_prereqs": []
+    },
+    "b05": {
+      "bounded_engineering_now": "Run bounded interleave, material-reader cold replay",
+      "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration.",
+      "claim_ready": true,
+      "claims_not_yet_warranted": "Whole multiyear causal reproduction/atomicity",
+      "class": "M",
+      "code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "decision_full_claim": [
+        "A02",
+        "A03",
+        "A08"
+      ],
+      "decision_issue_ids": [
+        "SA-01",
+        "SA-02",
+        "SA-03",
+        "SA-05",
+        "SA-21",
+        "SA-22"
+      ],
+      "decision_prerequisites": [
+        "K01"
+      ],
+      "decision_status": {
+        "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+        "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+        "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+      },
+      "depends_on": [
+        "B02",
+        "B04"
+      ],
+      "evidence_note": "Zero-rent/positive-rent receipt integrity only; not all B05 or actor-native economics",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "full_original_claim": "NOT_ESTABLISHED",
+      "full_original_decision_blockers": [
+        "A02",
+        "A03",
+        "A08"
+      ],
+      "full_original_readiness": "HOLD_DECISION_A02,A03,A08",
+      "full_original_ready": false,
+      "id": "B05",
+      "limitation": "Zero-rent/positive-rent receipt integrity only; not all B05 or actor-native economics",
+      "next_action": "Protected CI and separate adoption remain pending; do not claim protected integration.",
+      "owner": "existing P3/S46 + P2 material world",
+      "phase": "CG-B",
+      "producer_owner": "existing P3/S46 + P2 material world",
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "ready_for_independent_receiving": false,
+      "ready_for_scoped_engineering": false,
+      "return_event_id": null,
+      "review_event_id": null,
+      "review_pr": 1089,
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "scientific_authority": "HELD",
+      "source_refs": [
+        "packet:B05",
+        "gmt:B05"
+      ],
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "terminal_consumer": "later parent and Nadia contextual material reads, then live world",
+      "title": "Prove multicycle material duration and later first-consumer parity",
+      "unmet_full_original_prereqs": [
+        "B02",
+        "B04"
+      ],
+      "unmet_scoped_prereqs": []
+    },
+    "checkpoint_id": "301e1a44c3529f548fba03a1e92f1f09e663024532a09426c61cd121a7d6382a",
+    "generation": 1,
+    "live": {},
+    "mechanism_worker_return": {}
+  },
+  "steps": {
+    "arbitrary_resolve": {
+      "args": [
+        "resolve-reconciliation",
+        "--what-changed",
+        "LIVE_GITHUB_REF_FETCH_UNAVAILABLE"
+      ],
+      "exit": 1,
+      "seconds": 0.113,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: RESOLUTION_AUTHENTICATION_REQUIRED\n",
+      "stdout": ""
+    },
+    "arbitrary_stop": {
+      "args": [
+        "intake-event",
+        "--event",
+        "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/repo/evil-stop.json"
+      ],
+      "exit": 1,
+      "seconds": 0.11,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: OPERATOR_AUTHORIZATION_UNAVAILABLE\n",
+      "stdout": ""
+    },
+    "caller_only_mechanism_review": {
+      "args": [
+        "intake-review",
+        "--receipt",
+        "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/repo/mechanism_receipt.json"
+      ],
+      "exit": 1,
+      "seconds": 0.117,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: REVIEW_SUPERVISED_RUN_REQUIRED\n",
+      "stdout": ""
+    },
+    "fake_worker_return": {
+      "args": [
+        "intake-completion",
+        "--run-dir",
+        "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/fake-worker-run"
+      ],
+      "exit": 1,
+      "seconds": 0.114,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: UNTRUSTED_CONTROLLER_RUN: /Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/fake-worker-run\n",
+      "stdout": ""
+    },
+    "init": {
+      "args": [
+        "init"
+      ],
+      "exit": 0,
+      "seconds": 0.149,
+      "stderr": "",
+      "stdout": "{\n  \"state\": \"INITIALIZED\",\n  \"generation\": 1,\n  \"checkpoint_id\": \"301e1a44c3529f548fba03a1e92f1f09e663024532a09426c61cd121a7d6382a\"\n}\n"
+    },
+    "unauthenticated_live_observation": {
+      "args": [
+        "intake-event",
+        "--event",
+        "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/repo/evil-live.json"
+      ],
+      "exit": 1,
+      "seconds": 0.114,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: LIVE_GITHUB_OBSERVATION_UNTRUSTED_SOURCE\n",
+      "stdout": ""
+    },
+    "untrusted_protected_integration": {
+      "args": [
+        "intake-event",
+        "--event",
+        "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/repo/evil-protected.json"
+      ],
+      "exit": 1,
+      "seconds": 0.109,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: UNTRUSTED_PROTECTED_INTEGRATION_SOURCE\n",
+      "stdout": ""
+    },
+    "untrusted_rejection": {
+      "args": [
+        "intake-event",
+        "--event",
+        "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3/material-auth-probe/repo/evil-reject.json"
+      ],
+      "exit": 1,
+      "seconds": 0.113,
+      "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: UNTRUSTED_REJECTION_SOURCE\n",
+      "stdout": ""
+    }
+  },
+  "verdict": "PASS"
+}
