@@ -1,6 +1,20 @@
-# PYAT K3 HQ 29/26/14 SELECTION SOURCE-STATIC — 2026-11-16 (REV9 AUTHOR CANDIDATE)
+# PYAT K3 SOURCE-STATIC OWNER SELECTION + INDEPENDENT REVIEW RETURNED — 2026-11-16 (REV9 CANDIDATE, D01 REPAIRED)
 
-Frozen A/B P0→P1→P2. Exact 29 K1 families, 26 distinct R15 proposals (all NOT_ADOPTED), 14 finite #817 obligations selected and routed in `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/`. No new 14-run, P3, 26-build or K4. Non-author K3 reviewer/paired protected CAS still pending; protected rev8 remains controlling. #1097/#960 fast C11 operating priority unchanged.
+**Live K3 author phase: TERMINAL.** K1 R4 PR #1126 `fda48f98ea519016a8815fea59ee9b46414b1559` was separately reviewed against that same HEAD by K2A #1128 `d2999a90ce17400ec61d93215788dca097d8803e` and K2B #1127 `096a653c0551368818c570b6d1d8b0f6be2a44bf` at S0–S1 only. K3 A P0/P1/P2 are frozen at #1131 `f1e52596e0803e4a32cb48b5f245324c292086d6`, #1135 `9f18aee7e010c321139d03d038fb55a416a7849f`, #1137 `52b9b75de18ecb45d32fd29816021beb327f6a06`; B P0/P1/P2 at #1134 `c16e03815fc11f1876e851dbc7b078cd97ff4fb3`, #1136 `8bde0da79a6030ce456fba74f86bb5ca061714d6`, #1138 `7849ca601dd1447ead6c5dbf3454eeb2c64d28be`. **NO P3 or authorship redispatch.**
+
+**Acting PYAT documentary owner selection:** [#1130](https://github.com/maidiu/rawlsing/pull/1130) at its distinct owner-decision evidence cut `b519f5998d6eda40e8a4b0bb33c756fca9bf136d`: 29 K1 functional families, 26 distinct R15 proposed PYAT-PC requirements with individual original modalities and negatives (**all NOT_ADOPTED**), and all 14 #817 finite obligations with explicit unresolved edges/owners. 0 new requirements, 0 BUILDs, 0 K4 authorization. The 288 K1 mixed source identities are **221 literal + 67 sentinels**, not 288 established functions; 47 inherited authority joins and native/first-reader equivalence remain held.
+
+**Independent nonauthor S1 court returned:** [draft PR #1139](https://github.com/maidiu/rawlsing/pull/1139) at `9e9a0e0431e9e03b6a311376ccdd39aa112b9b88` (7 material objection adjudications). The 29/26/14 mapping was `ACCEPTABLE_SCOPED_S1`; the *old proposed paired progress* was `REVISE_EXACT_MATERIAL_DEFECT` because revision 9 claimed A/B author-rounds frozen but `activity_mode` still said K3 dispatch-ready, and live-operational JSON keys pointed to November 1 RRIF custody. That **K3-RCV-CAS-D01** discrepancy is repaired in this existing draft pair: K3 is now terminal; the RRIF cut is preserved in `historical_rrif_receiving_snapshot`, and live `publication_branch`/`canonical_read_cut`/`working_hq`/`active_receiving` are explicitly K3-scoped and nonprotected. The source-static independent review predates this narrow status correction; it does not certify scientific/native performance or independently review the new edit.
+
+**Receiving and authority distinction:** protected PRE-MAIN remains `6a5c12f04323d74001f9632063ec907f4fc4468e`, paired Pyat protected revision **8** until actual protected CAS. This file and JSON revision 9 are **DRAFT**, not a merged protected status. User-appointed documentary PYAT owner is not the original source scientist, actor/consent issuer, authenticated independent provider, or protected receiving custodian. No local agent lease or native runtime has been witnessed by this editorial repair. The next and ONLY documentary gate is scoped new-HEAD check, verified qualified receiving rights and protected CAS of these existing controls, not K3 remobilization.
+
+**P0 operations need not wait for additional history:** #1097/#960/#997/#1006/#998 govern authorized generic SAV/DTA → sealed durable thirteen-family C11 → full fresh-process 1/10/100 **distinct** query correctness/cost under 6 GiB process-tree RSS → chosen empirical/FF first reader. Source-specific rights/weights/routing, original35 native science, FIABC 144 PASS / 3 historical FAIL, F6/F7/N9 and Sorok actor/consent stay separate. ANVIL #1108 may pursue independently authorized bounded architecture work; documentary K3 does not license premature architecture freeze.
+
+---
+
+## Frozen historical K3 dispatch source-cuts (below): SUPERSEDED AS LIVE STATUS
+
+The following older November 16 sections are preserved for traceability only. Their phrases “P2 not executed,” “P1 issued,” “P0 not published” and “dispatch ready” describe earlier moments and are **not** current K3 tasks. Read the terminal record and current JSON at top.
 
 ---
 
