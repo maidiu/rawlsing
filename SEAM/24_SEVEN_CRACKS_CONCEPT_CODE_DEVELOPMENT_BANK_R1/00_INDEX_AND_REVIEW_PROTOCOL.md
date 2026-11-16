@@ -2,6 +2,12 @@
 
 **Status:** OPEN JOINT UM-PYAT / UM-SOROK DELIBERATION · **not** accepted native authority, implementation authorization, new engineering commission, scientific proof, or a claim of integrated runtime execution. **Date:** 2026-11-15. **Origin:** [UM-PYAT's seven-crack source-grounded finding](https://github.com/maidiu/rawlsing/pull/988#issuecomment-6890421143), challenged within the [joint SEAM #988](https://github.com/maidiu/rawlsing/pull/988) and [UM-SOROK #989](https://github.com/maidiu/rawlsing/pull/989). This bank is deliberately a **reviewable, revisable specification-in-formation**.
 
+## SEAM's actual governing task — parked research versus live boundary
+
+**[SEAM/25 — Return to PYAT↔SOROK boundary transformations and live open receiving register](../25_RETURN_TO_BOUNDARY_TRANSFORMATIONS_AND_OPEN_REGISTER_R1.md)** is now the **active joint-work front door**. **[R5 — Minimal conception-model delta, withdrawals and four local unresolved questions](11_R5_CONCEPTION_MODEL_DELTA_RESOLVED_AND_OPEN.md)** preserves the only additions from the recent parental discussion. **SC-01–SC-07, R2 and R3 are a secondary, reviewable internal research bank**, not the SEAM agenda or prerequisites for #1011. SEAM's charter ([SEAM/00](../00_READ_FIRST.md), [SEAM/02](../02_TRANSFORMATION_AND_INTERFACE_CONTRACT_R0.md), [SEAM/04](../04_SOURCE_BOUNDARIES_AND_OPEN_QUESTIONS_R0.md), and [SOROK independent position](../05_SOROK_OPENING_POSITION_R1.md)) governs the source-qualified **PYAT→SOROK interface and reverse world effects**. The developing person's detailed psychology, C5, and family-genesis algorithms are owned elsewhere unless they show a specific missing upstream/downtream interface and first-reader falsifier.
+
+**Important identity:** SEAM/24 **SC-01–SC-07** are research-card IDs; earlier SEAM/02 **SC-01–SC-13** are different and independent **boundary-test** IDs. Do not collapse them.
+
 ## Governing object, before any of the seven records
 
 **DO NOT replace SEAM/20's generative computational order with forward-only random coupling or with a generic PYAT→P6 affordance adapter.**
