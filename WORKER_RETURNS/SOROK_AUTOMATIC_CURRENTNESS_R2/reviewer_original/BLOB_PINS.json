@@ -1,0 +1,109 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R1_G5_BLOB_PINS@1",
+  "candidate_source_sha": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+  "base_sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+  "branch": "codex/sorok-automatic-currentness-independent-20261115-r1",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "pins": {
+    "runtime": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+      "git_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4",
+      "bytes": 71837,
+      "sha256": "622c4187b2332d85a221bb1e1b39db4f70e833afc5cf0d55aa2a540d654ae337"
+    },
+    "test": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+      "git_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347",
+      "bytes": 15766,
+      "sha256": "2f94fcfb1f982dc2cd58dcb9fc0e607c21d1da812e559478e2a4a46bc455f4ca"
+    },
+    "verifier_frozen_1095": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py",
+      "git_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+      "bytes": 20869,
+      "sha256": "3dd2dbd29b9f98756615e34f88502e18cae11dfba2bb5741eb04eeefbff48bdd"
+    },
+    "workflow_frozen_1095": {
+      "path": ".github/workflows/sorok-operational-currentness-r1.yml",
+      "git_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+      "bytes": 944,
+      "sha256": "d51b2abf31c72ca216a55bdec738da0039e8c3b07b46615275159e5ae1d62962"
+    },
+    "task_source_frozen_1095": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_task_packets_20261112.json",
+      "git_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+      "bytes": 80228,
+      "sha256": "724fbe66311330782c268f46827bb9c4cea67e56ff0c1149ac808d901eeb0c12"
+    },
+    "gmt_source_frozen_1095": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_gmt_overlay_20261112.json",
+      "git_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+      "bytes": 50660,
+      "sha256": "fbe17951b98ff4fe785309cdf45d4d0995cc2c08d98c956268aaa6b42c35fe6e"
+    },
+    "controller_original_launch": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/original/launch.py",
+      "git_blob": "01f3b29689b614e3a7c93eb6887bc37833d7f609",
+      "bytes": 3707,
+      "sha256": "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1"
+    },
+    "controller_original_completion": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/original/completion_events.py",
+      "git_blob": "927180d2024babd78bbf2cb5420cbb280c6b26e5",
+      "bytes": 6722,
+      "sha256": "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63"
+    },
+    "controller_patched_launch": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/patched/launch.py",
+      "git_blob": "2b825c95108a945bf0f5e2f132d431686c2fdce4",
+      "bytes": 3988,
+      "sha256": "4c5004ef91ee56ac056aca2921d4239cbf95d866ff015e7eae7d4deaf10ae829"
+    },
+    "controller_patched_completion": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/patched/completion_events.py",
+      "git_blob": "baf0493f1292b9d0f8b7e11c8a90a796f9136e1a",
+      "bytes": 8732,
+      "sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2"
+    }
+  },
+  "installed_controller": {
+    "launch": {
+      "path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+      "bytes": 3988,
+      "sha256": "4c5004ef91ee56ac056aca2921d4239cbf95d866ff015e7eae7d4deaf10ae829",
+      "expected_sha256": "4c5004ef91ee56ac056aca2921d4239cbf95d866ff015e7eae7d4deaf10ae829",
+      "match": true
+    },
+    "completion_events": {
+      "path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/completion_events.py",
+      "bytes": 8732,
+      "sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+      "expected_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+      "match": true
+    }
+  },
+  "author_pin_metadata_discrepancy": {
+    "observation": "author BLOB_PINS.json byte counts are stale for runtime/test, while git blob and sha256 match the reviewed source",
+    "runtime_author_bytes": 71610,
+    "runtime_actual_bytes": 71837,
+    "test_author_bytes": 14925,
+    "test_actual_bytes": 15766,
+    "effect": "metadata-only; reviewed source identity remains exact by blob/sha256, but author evidence is not byte-perfect"
+  },
+  "protected_boundaries": {
+    "P3": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+    "P4": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+    "P5": "5e266a80ccfc52da10741e15f6b9076138907758",
+    "P6": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+    "MI": "1f77f2036427a410429184780ef884ec4f253ad0",
+    "MII": "521ae459091c5d4e4009f442257d74d50b2c55db",
+    "MIII": "3e5b1611f5cb043b43ffd39b14c9d707923f1210"
+  },
+  "historical_scoped_pins": {
+    "B05_1089": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+    "C04_1062": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+    "C05_1091": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53"
+  },
+  "note": "#1066 CG-A is typed RECEIVED_SCOPED_UNMERGED_PR1066 outside the 27 DAG; no full source pin is asserted here. #1095 G5 was not rerun; frozen verifier/workflow/task/GMT assets above were read-only checked.",
+  "terminal": "STOP"
+}

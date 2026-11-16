@@ -2332,10 +2332,10 @@
   },
   "operational_currentness_runtime_r1": {
     "schema": "SOROK_OPERATIONAL_CURRENTNESS_RUNTIME_R1",
-    "generation": 20,
-    "checkpoint_id": "73472e3d45c649770b4a7b94ba9b1ea838b287a43d65ab8dfedfe6a5189b5b54",
+    "generation": 50,
+    "checkpoint_id": "7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338",
     "created_utc": "2026-11-16T03:48:33.865483+00:00",
-    "updated_utc": "2026-11-16T03:55:53.850636+00:00",
+    "updated_utc": "2026-11-16T05:48:51.470472+00:00",
     "source_freeze": {
       "packet_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
       "gmt_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
@@ -2351,13 +2351,23 @@
         "gates": 83,
         "assets": 304,
         "inputs": 100
+      },
+      "operational_gmt_atlas": {
+        "commit": "67698cfd32f838b7a5fdc381b0168d9225f5352f",
+        "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md",
+        "blob": null,
+        "status": "DRAFT_DOCUMENTARY_CANDIDATE_NOT_PROTECTED_LAW"
+      },
+      "oath_r2": {
+        "commit": "1341c81dfe0e99da030e7dca356f55789a10c6f8",
+        "status": "DRAFT_PR1098_NOT_PROTECTED_LAW"
       }
     },
     "pair": {
       "json_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json",
       "md_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
-      "generation": 20,
-      "checkpoint_id": "73472e3d45c649770b4a7b94ba9b1ea838b287a43d65ab8dfedfe6a5189b5b54",
+      "generation": 50,
+      "checkpoint_id": "7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338",
       "reader_boundary": "LOCKED_GENERATION_MATCH_REQUIRED"
     },
     "authenticated_checkpoint": {
@@ -2366,64 +2376,13 @@
         "sha256": "3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7",
         "as_of": "2026-11-16T03:54:06.994129+00:00"
       },
-      "last_authenticated_at_utc": "2026-11-16T03:54:06.994129+00:00",
+      "last_authenticated_at_utc": "2026-11-16T05:15:16.768923+00:00",
       "github_observations": {
-        "issue:939": {
-          "state": "open",
-          "updated_at": "2026-11-13T20:11:39Z",
-          "comments": 26,
-          "observed": true
-        },
-        "issue:1008": {
-          "state": "open",
-          "updated_at": "2026-11-13T20:11:03Z",
-          "comments": 0,
-          "observed": true
-        },
-        "issue:1010": {
-          "state": "open",
-          "updated_at": "2026-11-13T20:11:06Z",
-          "comments": 0,
-          "observed": true
-        },
-        "pr:1062": {
-          "state": "open",
-          "head_sha": "codex/sorok1038-custody-g5-20261115-r1",
-          "merge_sha": "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b",
-          "draft": true,
-          "observed": true
-        },
-        "pr:1066": {
-          "state": "open",
-          "head_sha": "codex/sorok982-composite-g5-20261115-r1",
-          "merge_sha": "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7",
-          "draft": true,
-          "observed": true
-        },
-        "pr:1089": {
-          "state": "open",
-          "head_sha": "codex/sorok1037-b05-r3-independent-g5-20261115-r3",
-          "merge_sha": "d3873f38be27a3bd8a12c79828b1a8160ae4c20e",
-          "draft": true,
-          "observed": true
-        },
-        "pr:1091": {
-          "state": "open",
-          "head_sha": "codex/sorok-c05-projection-r3-independent-g5-20261115-r3",
-          "merge_sha": "3ae6d7828d27f03ac8d01466b89c13cfda7bb977",
-          "draft": true,
-          "observed": true
-        },
-        "pr:1095": {
-          "state": "open",
-          "head_sha": "codex/sorok-operational-currentness-reconciliation-20261115-r1",
-          "merge_sha": "82108e626f52e2b568c732228624d42a32cde2e8",
-          "draft": true,
-          "observed": true
-        },
-        "row:1095": {
-          "state": "UNCLASSIFIED",
-          "observed": true
+        "live:b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded": {
+          "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+          "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+          "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+          "status_coverage": "REF_SHA_ONLY"
         }
       },
       "local_receipts": {
@@ -2431,8 +2390,329 @@
           "event_id": "completion:ec4b359332dc5024130fae27f986bd6843ce0c972744fdb8c472d09ad09055fa",
           "job_id": "sorok-automatic-currentness-real-return-20261115T224953",
           "session": "ses_local_fixture_child_r1"
+        },
+        "38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f": {
+          "event_id": "completion:38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f",
+          "job_id": "sorok-programma-automatic-currentness-repair-20261115-r2",
+          "session": "ses_e21a481bfffefyvpxaeFaAOFvQ"
+        },
+        "725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b": {
+          "event_id": "completion:725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
+          "job_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu"
         }
-      }
+      },
+      "live_github": {
+        "schema": "SOROK_LIVE_GITHUB_OBSERVATION@1",
+        "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+        "source_identity": "https://github.com/maidiu/rawlsing.git + maidiu/rawlsing",
+        "transport": "git_ls_remote+github_api_credential_helper",
+        "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+        "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+        "ttl_seconds": 900,
+        "ref_patterns": [
+          "refs/heads/codex/sorok-c05-projection-r3-independent-g5-20261115-r3",
+          "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1",
+          "refs/heads/codex/sorok1037-b05-r3-independent-g5-20261115-r3",
+          "refs/heads/codex/sorok1038-custody-g5-20261115-r1",
+          "refs/heads/codex/sorok982-composite-g5-20261115-r1",
+          "refs/heads/integration/pre-main-reconciliation-r1",
+          "refs/pull/1062/head",
+          "refs/pull/1062/merge",
+          "refs/pull/1066/head",
+          "refs/pull/1066/merge",
+          "refs/pull/1089/head",
+          "refs/pull/1089/merge",
+          "refs/pull/1091/head",
+          "refs/pull/1091/merge",
+          "refs/pull/1095/head",
+          "refs/pull/1095/merge"
+        ],
+        "refs": {
+          "refs/heads/codex/sorok-c05-projection-r3-independent-g5-20261115-r3": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+          "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+          "refs/heads/codex/sorok1037-b05-r3-independent-g5-20261115-r3": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+          "refs/heads/codex/sorok1038-custody-g5-20261115-r1": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+          "refs/heads/codex/sorok982-composite-g5-20261115-r1": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+          "refs/heads/integration/pre-main-reconciliation-r1": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+          "refs/pull/1062/head": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+          "refs/pull/1062/merge": "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b",
+          "refs/pull/1066/head": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+          "refs/pull/1066/merge": "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7",
+          "refs/pull/1089/head": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+          "refs/pull/1089/merge": "d3873f38be27a3bd8a12c79828b1a8160ae4c20e",
+          "refs/pull/1091/head": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+          "refs/pull/1091/merge": "3ae6d7828d27f03ac8d01466b89c13cfda7bb977",
+          "refs/pull/1095/head": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+          "refs/pull/1095/merge": "82108e626f52e2b568c732228624d42a32cde2e8"
+        },
+        "refs_digest": "4c895ee3eea2bf2a6355fe9dc9a70a7f15246bdd1c15da08179f9fced8d3eff4",
+        "api": {
+          "repo": {
+            "http_status": 200,
+            "body_sha256": "52711051903dccb81c05c8b7b173bfacfc3db10f9a998e20a7d4eec3ee48c60c",
+            "body": {
+              "id": 1332719445,
+              "node_id": "R_kgDOT2-vVQ",
+              "name": "rawlsing",
+              "full_name": "maidiu/rawlsing",
+              "private": true,
+              "owner": {
+                "login": "maidiu",
+                "id": 103524263,
+                "node_id": "U_kgDOBiunpw",
+                "avatar_url": "https://avatars.githubusercontent.com/u/103524263?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/maidiu",
+                "html_url": "https://github.com/maidiu",
+                "followers_url": "https://api.github.com/users/maidiu/followers",
+                "following_url": "https://api.github.com/users/maidiu/following{/other_user}",
+                "gists_url": "https://api.github.com/users/maidiu/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/maidiu/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/maidiu/subscriptions",
+                "organizations_url": "https://api.github.com/users/maidiu/orgs",
+                "repos_url": "https://api.github.com/users/maidiu/repos",
+                "events_url": "https://api.github.com/users/maidiu/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/maidiu/received_events",
+                "type": "User",
+                "user_view_type": "public",
+                "site_admin": false
+              },
+              "html_url": "https://github.com/maidiu/rawlsing",
+              "description": null,
+              "fork": false,
+              "url": "https://api.github.com/repos/maidiu/rawlsing",
+              "forks_url": "https://api.github.com/repos/maidiu/rawlsing/forks",
+              "keys_url": "https://api.github.com/repos/maidiu/rawlsing/keys{/key_id}",
+              "collaborators_url": "https://api.github.com/repos/maidiu/rawlsing/collaborators{/collaborator}",
+              "teams_url": "https://api.github.com/repos/maidiu/rawlsing/teams",
+              "hooks_url": "https://api.github.com/repos/maidiu/rawlsing/hooks",
+              "issue_events_url": "https://api.github.com/repos/maidiu/rawlsing/issues/events{/number}",
+              "events_url": "https://api.github.com/repos/maidiu/rawlsing/events",
+              "assignees_url": "https://api.github.com/repos/maidiu/rawlsing/assignees{/user}",
+              "branches_url": "https://api.github.com/repos/maidiu/rawlsing/branches{/branch}",
+              "tags_url": "https://api.github.com/repos/maidiu/rawlsing/tags",
+              "blobs_url": "https://api.github.com/repos/maidiu/rawlsing/git/blobs{/sha}",
+              "git_tags_url": "https://api.github.com/repos/maidiu/rawlsing/git/tags{/sha}",
+              "git_refs_url": "https://api.github.com/repos/maidiu/rawlsing/git/refs{/sha}",
+              "trees_url": "https://api.github.com/repos/maidiu/rawlsing/git/trees{/sha}",
+              "statuses_url": "https://api.github.com/repos/maidiu/rawlsing/statuses/{sha}",
+              "languages_url": "https://api.github.com/repos/maidiu/rawlsing/languages",
+              "stargazers_url": "https://api.github.com/repos/maidiu/rawlsing/stargazers",
+              "contributors_url": "https://api.github.com/repos/maidiu/rawlsing/contributors",
+              "subscribers_url": "https://api.github.com/repos/maidiu/rawlsing/subscribers",
+              "subscription_url": "https://api.github.com/repos/maidiu/rawlsing/subscription",
+              "commits_url": "https://api.github.com/repos/maidiu/rawlsing/commits{/sha}",
+              "git_commits_url": "https://api.github.com/repos/maidiu/rawlsing/git/commits{/sha}",
+              "comments_url": "https://api.github.com/repos/maidiu/rawlsing/comments{/number}",
+              "issue_comment_url": "https://api.github.com/repos/maidiu/rawlsing/issues/comments{/number}",
+              "contents_url": "https://api.github.com/repos/maidiu/rawlsing/contents/{+path}",
+              "compare_url": "https://api.github.com/repos/maidiu/rawlsing/compare/{base}...{head}",
+              "merges_url": "https://api.github.com/repos/maidiu/rawlsing/merges",
+              "archive_url": "https://api.github.com/repos/maidiu/rawlsing/{archive_format}{/ref}",
+              "downloads_url": "https://api.github.com/repos/maidiu/rawlsing/downloads",
+              "issues_url": "https://api.github.com/repos/maidiu/rawlsing/issues{/number}",
+              "pulls_url": "https://api.github.com/repos/maidiu/rawlsing/pulls{/number}",
+              "milestones_url": "https://api.github.com/repos/maidiu/rawlsing/milestones{/number}",
+              "notifications_url": "https://api.github.com/repos/maidiu/rawlsing/notifications{?since,all,participating}",
+              "labels_url": "https://api.github.com/repos/maidiu/rawlsing/labels{/name}",
+              "releases_url": "https://api.github.com/repos/maidiu/rawlsing/releases{/id}",
+              "deployments_url": "https://api.github.com/repos/maidiu/rawlsing/deployments",
+              "created_at": "2026-08-13T05:02:15Z",
+              "updated_at": "2026-09-15T03:48:03Z",
+              "pushed_at": "2026-11-16T04:58:01Z",
+              "git_url": "git://github.com/maidiu/rawlsing.git",
+              "ssh_url": "git@github.com:maidiu/rawlsing.git",
+              "clone_url": "https://github.com/maidiu/rawlsing.git",
+              "svn_url": "https://github.com/maidiu/rawlsing",
+              "homepage": null,
+              "size": 1137955,
+              "stargazers_count": 0,
+              "watchers_count": 0,
+              "language": "Python",
+              "has_issues": true,
+              "has_projects": true,
+              "has_downloads": false,
+              "has_wiki": false,
+              "has_pages": false,
+              "has_discussions": false,
+              "forks_count": 0,
+              "mirror_url": null,
+              "archived": false,
+              "disabled": false,
+              "open_issues_count": 546,
+              "license": null,
+              "allow_forking": true,
+              "is_template": false,
+              "web_commit_signoff_required": false,
+              "has_pull_requests": true,
+              "pull_request_creation_policy": "all",
+              "topics": [],
+              "visibility": "private",
+              "forks": 0,
+              "open_issues": 546,
+              "watchers": 0,
+              "default_branch": "main",
+              "permissions": {
+                "admin": true,
+                "maintain": true,
+                "push": true,
+                "triage": true,
+                "pull": true
+              },
+              "allow_squash_merge": true,
+              "allow_merge_commit": true,
+              "allow_rebase_merge": true,
+              "allow_auto_merge": false,
+              "delete_branch_on_merge": false,
+              "allow_update_branch": false,
+              "use_squash_pr_title_as_default": false,
+              "squash_merge_commit_message": "COMMIT_MESSAGES",
+              "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+              "merge_commit_message": "PR_TITLE",
+              "merge_commit_title": "MERGE_MESSAGE",
+              "network_count": 0,
+              "subscribers_count": 0
+            },
+            "error": null
+          },
+          "pulls": {
+            "1062": {
+              "state": "open",
+              "merged": false,
+              "draft": true,
+              "updated_at": "2026-11-15T08:23:58Z",
+              "head_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+              "merge_commit_sha": "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b",
+              "http_status": 200,
+              "body_sha256": "a7df5d851836928811cadb6968be254937634572a10f8f6ea0e9df50039138bb"
+            },
+            "1066": {
+              "state": "open",
+              "merged": false,
+              "draft": true,
+              "updated_at": "2026-11-15T08:53:29Z",
+              "head_sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+              "merge_commit_sha": "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7",
+              "http_status": 200,
+              "body_sha256": "303aca9fa60ceb9d58d0c73a49ce2ab41232a2d289c612b53e8e1c2ffee334dc"
+            },
+            "1089": {
+              "state": "open",
+              "merged": false,
+              "draft": true,
+              "updated_at": "2026-11-15T23:58:52Z",
+              "head_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+              "merge_commit_sha": "d3873f38be27a3bd8a12c79828b1a8160ae4c20e",
+              "http_status": 200,
+              "body_sha256": "58c08d2cd91f369f2f19056c65209f3cc92c04601b0dadd4a3ead38f855bfefc"
+            },
+            "1091": {
+              "state": "open",
+              "merged": false,
+              "draft": true,
+              "updated_at": "2026-11-16T00:31:25Z",
+              "head_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+              "merge_commit_sha": "3ae6d7828d27f03ac8d01466b89c13cfda7bb977",
+              "http_status": 200,
+              "body_sha256": "e0c0dbf1bffb96ceb093f71298ca4d2c54620b58e9d26321c22d8b3748d54c1e"
+            },
+            "1095": {
+              "state": "open",
+              "merged": false,
+              "draft": true,
+              "updated_at": "2026-11-16T04:10:35Z",
+              "head_sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+              "merge_commit_sha": "82108e626f52e2b568c732228624d42a32cde2e8",
+              "http_status": 200,
+              "body_sha256": "61ae4db24518ff07f5080b167b7304b0f23632f41bd69f9b49c01ecd87a93223"
+            }
+          },
+          "issues": {
+            "939": {
+              "http_status": 403,
+              "error": "HTTP_403",
+              "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+            },
+            "1008": {
+              "http_status": 403,
+              "error": "HTTP_403",
+              "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+            },
+            "1010": {
+              "http_status": 403,
+              "error": "HTTP_403",
+              "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+            }
+          },
+          "commits": {
+            "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "3acc22d419ba8a9ad5fa30b33f5d36ce9a561714879f8dd09ba607f6e4ff526f"
+            },
+            "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "757ab2c915b01ec50116adf6aa16d34f4c7b8a14ff65fa0c586fc1025e6769ed"
+            },
+            "3ae6d7828d27f03ac8d01466b89c13cfda7bb977": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "15e19cf261b53365e9578552eff6ee37148acde3c293bd945ba8b3171339a668"
+            },
+            "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "60c0d5f5d2c9d34ad91bff3a5f0e0b866652a5c73c057c87a2930992854e3ca2"
+            },
+            "5c83a8321dce70fcc40c8f210af06a9edb1f8999": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "0a1cac480657f4c38e44719cff5b86c5503d261ee872680d7091bcb3b856e82e"
+            },
+            "6a5c12f04323d74001f9632063ec907f4fc4468e": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "8ca6c645c9f1281e007f90c75b4ac74e8c5ba2a7e799cdc506d3e7448a408dba"
+            },
+            "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "b10588efc61452012ab4be3b35b09e85ed70426652575ce4a3d6b1a1b3afff94"
+            },
+            "82108e626f52e2b568c732228624d42a32cde2e8": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "43e59c97202bb01e929365667556819c46f569a8ee9c4d7777cde3a31865b654"
+            },
+            "8bdfbdd22c19d865b5049bde8213eb3bcaea973b": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "e3944ff70ba5c4f6427547ec71f750ff38589492118914ff3f4c756b2610f586"
+            },
+            "938b5b8d6aaf42b3788d851d92e77e9151c98cce": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "de4a30dfba5396c841d5c645f66230f1d4dde416fd1328d389672bd76fb55268"
+            },
+            "d3873f38be27a3bd8a12c79828b1a8160ae4c20e": {
+              "http_status": 200,
+              "error": null,
+              "body_sha256": "70a2fdf6a1a61559ceec76aae169e7e4b0f96578d0686b04d57ce9fb3aaaf41e"
+            }
+          },
+          "token_available": true,
+          "token_error": null
+        },
+        "status_coverage": "REF_SHA_ONLY",
+        "status_checks": 8,
+        "status_success": 5,
+        "credential_helper_used": true,
+        "credential_error": null,
+        "evidence_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded"
+      },
+      "legacy_baseline_not_live": true
     },
     "events": [
       {
@@ -2961,6 +3241,1195 @@
         "sequence": 19,
         "event_hash": "ac9e347c8aa0c888f9f0f26a541e28d07c945a8d1b9aea5fab8d0367112723d5",
         "previous_event_hash": "05c95fd38ae111f8c4159fd7c8372d4d4af005f013377aa4db2569853dac27a5"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "github-live:2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+        "kind": "GITHUB_OBSERVATION",
+        "recorded_utc": "2026-11-16T05:08:51.810095+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "live_observation": {
+            "schema": "SOROK_LIVE_GITHUB_OBSERVATION@1",
+            "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+            "source_identity": "https://github.com/maidiu/rawlsing.git + maidiu/rawlsing",
+            "transport": "git_ls_remote+github_api_credential_helper",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "ttl_seconds": 900,
+            "ref_patterns": [
+              "refs/heads/codex/sorok-c05-projection-r3-independent-g5-20261115-r3",
+              "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1",
+              "refs/heads/codex/sorok1037-b05-r3-independent-g5-20261115-r3",
+              "refs/heads/codex/sorok1038-custody-g5-20261115-r1",
+              "refs/heads/codex/sorok982-composite-g5-20261115-r1",
+              "refs/heads/integration/pre-main-reconciliation-r1",
+              "refs/pull/1062/head",
+              "refs/pull/1062/merge",
+              "refs/pull/1066/head",
+              "refs/pull/1066/merge",
+              "refs/pull/1089/head",
+              "refs/pull/1089/merge",
+              "refs/pull/1091/head",
+              "refs/pull/1091/merge",
+              "refs/pull/1095/head",
+              "refs/pull/1095/merge"
+            ],
+            "refs": {
+              "refs/heads/codex/sorok-c05-projection-r3-independent-g5-20261115-r3": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+              "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+              "refs/heads/codex/sorok1037-b05-r3-independent-g5-20261115-r3": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+              "refs/heads/codex/sorok1038-custody-g5-20261115-r1": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+              "refs/heads/codex/sorok982-composite-g5-20261115-r1": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+              "refs/heads/integration/pre-main-reconciliation-r1": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+              "refs/pull/1062/head": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+              "refs/pull/1062/merge": "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b",
+              "refs/pull/1066/head": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+              "refs/pull/1066/merge": "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7",
+              "refs/pull/1089/head": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+              "refs/pull/1089/merge": "d3873f38be27a3bd8a12c79828b1a8160ae4c20e",
+              "refs/pull/1091/head": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+              "refs/pull/1091/merge": "3ae6d7828d27f03ac8d01466b89c13cfda7bb977",
+              "refs/pull/1095/head": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+              "refs/pull/1095/merge": "82108e626f52e2b568c732228624d42a32cde2e8"
+            },
+            "refs_digest": "4c895ee3eea2bf2a6355fe9dc9a70a7f15246bdd1c15da08179f9fced8d3eff4",
+            "api": {
+              "repo": {
+                "http_status": 200,
+                "body_sha256": "260fd73b6011924cb8b4407fac8a9f1e1ab58482cd5ad2378d6af7a6025383a1",
+                "body": {
+                  "id": 1332719445,
+                  "node_id": "R_kgDOT2-vVQ",
+                  "name": "rawlsing",
+                  "full_name": "maidiu/rawlsing",
+                  "private": true,
+                  "owner": {
+                    "login": "maidiu",
+                    "id": 103524263,
+                    "node_id": "U_kgDOBiunpw",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/103524263?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/maidiu",
+                    "html_url": "https://github.com/maidiu",
+                    "followers_url": "https://api.github.com/users/maidiu/followers",
+                    "following_url": "https://api.github.com/users/maidiu/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/maidiu/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/maidiu/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/maidiu/subscriptions",
+                    "organizations_url": "https://api.github.com/users/maidiu/orgs",
+                    "repos_url": "https://api.github.com/users/maidiu/repos",
+                    "events_url": "https://api.github.com/users/maidiu/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/maidiu/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                  },
+                  "html_url": "https://github.com/maidiu/rawlsing",
+                  "description": null,
+                  "fork": false,
+                  "url": "https://api.github.com/repos/maidiu/rawlsing",
+                  "forks_url": "https://api.github.com/repos/maidiu/rawlsing/forks",
+                  "keys_url": "https://api.github.com/repos/maidiu/rawlsing/keys{/key_id}",
+                  "collaborators_url": "https://api.github.com/repos/maidiu/rawlsing/collaborators{/collaborator}",
+                  "teams_url": "https://api.github.com/repos/maidiu/rawlsing/teams",
+                  "hooks_url": "https://api.github.com/repos/maidiu/rawlsing/hooks",
+                  "issue_events_url": "https://api.github.com/repos/maidiu/rawlsing/issues/events{/number}",
+                  "events_url": "https://api.github.com/repos/maidiu/rawlsing/events",
+                  "assignees_url": "https://api.github.com/repos/maidiu/rawlsing/assignees{/user}",
+                  "branches_url": "https://api.github.com/repos/maidiu/rawlsing/branches{/branch}",
+                  "tags_url": "https://api.github.com/repos/maidiu/rawlsing/tags",
+                  "blobs_url": "https://api.github.com/repos/maidiu/rawlsing/git/blobs{/sha}",
+                  "git_tags_url": "https://api.github.com/repos/maidiu/rawlsing/git/tags{/sha}",
+                  "git_refs_url": "https://api.github.com/repos/maidiu/rawlsing/git/refs{/sha}",
+                  "trees_url": "https://api.github.com/repos/maidiu/rawlsing/git/trees{/sha}",
+                  "statuses_url": "https://api.github.com/repos/maidiu/rawlsing/statuses/{sha}",
+                  "languages_url": "https://api.github.com/repos/maidiu/rawlsing/languages",
+                  "stargazers_url": "https://api.github.com/repos/maidiu/rawlsing/stargazers",
+                  "contributors_url": "https://api.github.com/repos/maidiu/rawlsing/contributors",
+                  "subscribers_url": "https://api.github.com/repos/maidiu/rawlsing/subscribers",
+                  "subscription_url": "https://api.github.com/repos/maidiu/rawlsing/subscription",
+                  "commits_url": "https://api.github.com/repos/maidiu/rawlsing/commits{/sha}",
+                  "git_commits_url": "https://api.github.com/repos/maidiu/rawlsing/git/commits{/sha}",
+                  "comments_url": "https://api.github.com/repos/maidiu/rawlsing/comments{/number}",
+                  "issue_comment_url": "https://api.github.com/repos/maidiu/rawlsing/issues/comments{/number}",
+                  "contents_url": "https://api.github.com/repos/maidiu/rawlsing/contents/{+path}",
+                  "compare_url": "https://api.github.com/repos/maidiu/rawlsing/compare/{base}...{head}",
+                  "merges_url": "https://api.github.com/repos/maidiu/rawlsing/merges",
+                  "archive_url": "https://api.github.com/repos/maidiu/rawlsing/{archive_format}{/ref}",
+                  "downloads_url": "https://api.github.com/repos/maidiu/rawlsing/downloads",
+                  "issues_url": "https://api.github.com/repos/maidiu/rawlsing/issues{/number}",
+                  "pulls_url": "https://api.github.com/repos/maidiu/rawlsing/pulls{/number}",
+                  "milestones_url": "https://api.github.com/repos/maidiu/rawlsing/milestones{/number}",
+                  "notifications_url": "https://api.github.com/repos/maidiu/rawlsing/notifications{?since,all,participating}",
+                  "labels_url": "https://api.github.com/repos/maidiu/rawlsing/labels{/name}",
+                  "releases_url": "https://api.github.com/repos/maidiu/rawlsing/releases{/id}",
+                  "deployments_url": "https://api.github.com/repos/maidiu/rawlsing/deployments",
+                  "created_at": "2026-08-13T05:02:15Z",
+                  "updated_at": "2026-09-15T03:48:03Z",
+                  "pushed_at": "2026-11-16T04:58:01Z",
+                  "git_url": "git://github.com/maidiu/rawlsing.git",
+                  "ssh_url": "git@github.com:maidiu/rawlsing.git",
+                  "clone_url": "https://github.com/maidiu/rawlsing.git",
+                  "svn_url": "https://github.com/maidiu/rawlsing",
+                  "homepage": null,
+                  "size": 1137955,
+                  "stargazers_count": 0,
+                  "watchers_count": 0,
+                  "language": "Python",
+                  "has_issues": true,
+                  "has_projects": true,
+                  "has_downloads": false,
+                  "has_wiki": false,
+                  "has_pages": false,
+                  "has_discussions": false,
+                  "forks_count": 0,
+                  "mirror_url": null,
+                  "archived": false,
+                  "disabled": false,
+                  "open_issues_count": 545,
+                  "license": null,
+                  "allow_forking": true,
+                  "is_template": false,
+                  "web_commit_signoff_required": false,
+                  "has_pull_requests": true,
+                  "pull_request_creation_policy": "all",
+                  "topics": [],
+                  "visibility": "private",
+                  "forks": 0,
+                  "open_issues": 545,
+                  "watchers": 0,
+                  "default_branch": "main",
+                  "permissions": {
+                    "admin": true,
+                    "maintain": true,
+                    "push": true,
+                    "triage": true,
+                    "pull": true
+                  },
+                  "allow_squash_merge": true,
+                  "allow_merge_commit": true,
+                  "allow_rebase_merge": true,
+                  "allow_auto_merge": false,
+                  "delete_branch_on_merge": false,
+                  "allow_update_branch": false,
+                  "use_squash_pr_title_as_default": false,
+                  "squash_merge_commit_message": "COMMIT_MESSAGES",
+                  "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+                  "merge_commit_message": "PR_TITLE",
+                  "merge_commit_title": "MERGE_MESSAGE",
+                  "network_count": 0,
+                  "subscribers_count": 0
+                },
+                "error": null
+              },
+              "pulls": {
+                "1062": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "111a6bf2ee47e8df66eb99be4f948f6d6d73156bf41d091230217984b85b93a2"
+                },
+                "1066": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "111a6bf2ee47e8df66eb99be4f948f6d6d73156bf41d091230217984b85b93a2"
+                },
+                "1089": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "111a6bf2ee47e8df66eb99be4f948f6d6d73156bf41d091230217984b85b93a2"
+                },
+                "1091": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "111a6bf2ee47e8df66eb99be4f948f6d6d73156bf41d091230217984b85b93a2"
+                },
+                "1095": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "111a6bf2ee47e8df66eb99be4f948f6d6d73156bf41d091230217984b85b93a2"
+                }
+              },
+              "issues": {
+                "939": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+                },
+                "1008": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+                },
+                "1010": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+                }
+              },
+              "commits": {
+                "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "3acc22d419ba8a9ad5fa30b33f5d36ce9a561714879f8dd09ba607f6e4ff526f"
+                },
+                "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "757ab2c915b01ec50116adf6aa16d34f4c7b8a14ff65fa0c586fc1025e6769ed"
+                },
+                "3ae6d7828d27f03ac8d01466b89c13cfda7bb977": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "15e19cf261b53365e9578552eff6ee37148acde3c293bd945ba8b3171339a668"
+                },
+                "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "60c0d5f5d2c9d34ad91bff3a5f0e0b866652a5c73c057c87a2930992854e3ca2"
+                },
+                "5c83a8321dce70fcc40c8f210af06a9edb1f8999": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "0a1cac480657f4c38e44719cff5b86c5503d261ee872680d7091bcb3b856e82e"
+                },
+                "6a5c12f04323d74001f9632063ec907f4fc4468e": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "8ca6c645c9f1281e007f90c75b4ac74e8c5ba2a7e799cdc506d3e7448a408dba"
+                },
+                "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "b10588efc61452012ab4be3b35b09e85ed70426652575ce4a3d6b1a1b3afff94"
+                },
+                "82108e626f52e2b568c732228624d42a32cde2e8": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "43e59c97202bb01e929365667556819c46f569a8ee9c4d7777cde3a31865b654"
+                },
+                "8bdfbdd22c19d865b5049bde8213eb3bcaea973b": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "e3944ff70ba5c4f6427547ec71f750ff38589492118914ff3f4c756b2610f586"
+                },
+                "938b5b8d6aaf42b3788d851d92e77e9151c98cce": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "de4a30dfba5396c841d5c645f66230f1d4dde416fd1328d389672bd76fb55268"
+                },
+                "d3873f38be27a3bd8a12c79828b1a8160ae4c20e": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "70a2fdf6a1a61559ceec76aae169e7e4b0f96578d0686b04d57ce9fb3aaaf41e"
+                }
+              },
+              "token_available": true,
+              "token_error": null
+            },
+            "status_coverage": "REF_SHA_ONLY",
+            "status_checks": 8,
+            "status_success": 0,
+            "credential_helper_used": true,
+            "credential_error": null,
+            "evidence_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5"
+          }
+        },
+        "sequence": 20,
+        "event_hash": "480ead5190d5b00e93d3a6e2dcbd8180696edac8ff8061a6e85fb7fabfbc9946",
+        "previous_event_hash": "ac9e347c8aa0c888f9f0f26a541e28d07c945a8d1b9aea5fab8d0367112723d5"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:57644af23d52ba8fedba319fc700999d2c7d53549e50ea46eb7f38b70ac50dfe",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:51.839053+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+            "expected_evidence": "authenticated issue status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 21,
+        "event_hash": "d5eeb3f1dcf9631b1aaeca376e6b79ed10763044af26767cb8894e6ac98bfc8d",
+        "previous_event_hash": "480ead5190d5b00e93d3a6e2dcbd8180696edac8ff8061a6e85fb7fabfbc9946"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:e7bc3442f7b9b6d5db8ef2c25f6d0391a26e2cd2ff6992cb23c340c64a054e3b",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:51.865547+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+            "expected_evidence": "authenticated issue status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 22,
+        "event_hash": "c52406b3826de7469cb400dd3f2216a4d8b6ecd0ca48a66021f85475b7287583",
+        "previous_event_hash": "d5eeb3f1dcf9631b1aaeca376e6b79ed10763044af26767cb8894e6ac98bfc8d"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:bb3662f680292454ef9f18af0d3f18983f1ad82ba7c33b731e252faa1fac41b2",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:51.892007+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+            "expected_evidence": "authenticated issue status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 23,
+        "event_hash": "814aef4e510cf20a4c94abe1e2328d43409742821391c42cbd6b764b5903df77",
+        "previous_event_hash": "c52406b3826de7469cb400dd3f2216a4d8b6ecd0ca48a66021f85475b7287583"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:ad832aee28f1a5dd9a1753387b6241e0150dfc2ca02d92ef3b244f3e8a75802f",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:51.919087+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE pr:1062",
+            "expected_evidence": "authenticated issue/pull status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with pull/issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 24,
+        "event_hash": "a7d3596ec57a9e3547340f0f2a417c9c0c60c0f3425abcdb1f0cbf24d5acd68c",
+        "previous_event_hash": "814aef4e510cf20a4c94abe1e2328d43409742821391c42cbd6b764b5903df77"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:ac1b906c7728b750f8ec7f95534815bbea673cc6c144d8949707ea2b6d9fe28f",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:51.952011+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE pr:1066",
+            "expected_evidence": "authenticated issue/pull status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with pull/issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 25,
+        "event_hash": "0c32626fa816f2b9f3126ad35e81e4abfaf9071afbcbe17fb9a0355983697aee",
+        "previous_event_hash": "a7d3596ec57a9e3547340f0f2a417c9c0c60c0f3425abcdb1f0cbf24d5acd68c"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:0225a06918ec982f62ccf915ba5f3aee807d5b56330d6b79626943ed8d6e6a3a",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:51.977009+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE pr:1089",
+            "expected_evidence": "authenticated issue/pull status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with pull/issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 26,
+        "event_hash": "41ea5210a8bb6ba0d7eee7a23b97bb133928e68a852c04c24be9c8f5f5daf3a3",
+        "previous_event_hash": "0c32626fa816f2b9f3126ad35e81e4abfaf9071afbcbe17fb9a0355983697aee"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:77fa85cca10d0737db881bbb8932c58ec98ba22d0615fc2113dbde10991c6e97",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:52.003744+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE pr:1091",
+            "expected_evidence": "authenticated issue/pull status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with pull/issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 27,
+        "event_hash": "19e0f9f25c69582c20074d3b2499a8b71c54433a4c92b7bf61bc31ebf81bb3e7",
+        "previous_event_hash": "41ea5210a8bb6ba0d7eee7a23b97bb133928e68a852c04c24be9c8f5f5daf3a3"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:759673972239f7fe0abfe20999be4bdcb8c6f0f5473afc11ab13bb32b552cb41",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:52.033487+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE pr:1095",
+            "expected_evidence": "authenticated issue/pull status and updated_at",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "wire an authenticated connector with pull/issues read scope; keep status HOLD",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "2753e13304c041695d6e7be1c476c8f0946b9313f598a51ddcd58aa8401686c5",
+            "fetched_at_utc": "2026-11-16T05:08:51.807906+00:00",
+            "expires_at_utc": "2026-11-16T05:23:51.807942+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 28,
+        "event_hash": "06c77c352977b8ca2cf0fac2823079d010188cfd7651e5746c97f0a863e876d6",
+        "previous_event_hash": "19e0f9f25c69582c20074d3b2499a8b71c54433a4c92b7bf61bc31ebf81bb3e7"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:23c01b5330c27dc1893e2f3a809ff3a6957f15f62aa3609ff98dc1dd2c88878f",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:52.063444+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LOCAL_STARTUP"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+            "expected_evidence": "WORKER_RETURN event bound to this completion.json",
+            "owner": "SOROK HQ/controller owner",
+            "next_action": "run intake-completion for this run before treating it as current",
+            "source_kind": "LOCAL_CONTROLLER",
+            "source_digest": "bf05c85c0d640348d7c881174c2624f006de8b3ddbbd88f89292a5b44c3bedf0",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 29,
+        "event_hash": "80a972a2d2712be0f67b7064b106aff9d77f79d2cdea7065a95828210895f92f",
+        "previous_event_hash": "06c77c352977b8ca2cf0fac2823079d010188cfd7651e5746c97f0a863e876d6"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:05143e5fec9ed886eb75e3e1e430f73f10179712fa849e37a5d0f2ecee9995bb",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:52.092109+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LOCAL_STARTUP"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+            "expected_evidence": "WORKER_RETURN event bound to this completion.json",
+            "owner": "SOROK HQ/controller owner",
+            "next_action": "run intake-completion for this run before treating it as current",
+            "source_kind": "LOCAL_CONTROLLER",
+            "source_digest": "629c3b83002d58ce8118c5005f3394a689fb0d9b4dad75956035e662102c5595",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 30,
+        "event_hash": "463ba0dc99b52b6efee540cc8fa554ec3ea58a5b6c3dd7fbb297359909357780",
+        "previous_event_hash": "80a972a2d2712be0f67b7064b106aff9d77f79d2cdea7065a95828210895f92f"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:221ce0f96154cd1eeddac827c6dc8200578fdd32bcd664c7e3a9bfa9356b3b56",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:52.115865+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LOCAL_STARTUP"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+            "expected_evidence": "fresh live observation or competent operator/source authorization tied to the exact item",
+            "owner": "SOROK HQ/competent source owner",
+            "next_action": "treat the legacy arbitrary resolution as unverified history and resolve only with authenticated evidence",
+            "source_kind": "LEGACY",
+            "source_digest": "baff38d8159012b96aacc5fedc093db0079614fc743ed1e1692ed140a382174f",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 31,
+        "event_hash": "4a1bfca4f1984b42011c9c51f467a1db602a5e6255a51e85b9c2f2132a21de3e",
+        "previous_event_hash": "463ba0dc99b52b6efee540cc8fa554ec3ea58a5b6c3dd7fbb297359909357780"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:9a2905fdb00a60da8ccca7b756f9d527e9fd135ebac0f8a4b7dfae32a5d3d771",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:08:52.143987+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LOCAL_STARTUP"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+            "expected_evidence": "fresh live observation or competent operator/source authorization tied to the exact item",
+            "owner": "SOROK HQ/competent source owner",
+            "next_action": "treat the legacy arbitrary resolution as unverified history and resolve only with authenticated evidence",
+            "source_kind": "LEGACY",
+            "source_digest": "d0f76a057d33525b617327f38ec12ce8b23370256b27ee5e6d773ebe9582ad78",
+            "checkpoint_id": "7b6ffcb7efb7800ff33e99f2feef22e520ae9983cae30a16fe8acbb4c1950974"
+          }
+        },
+        "sequence": 32,
+        "event_hash": "ec4c97766e7763a6179f8596371ccd518457a334780978e854444faecd537773",
+        "previous_event_hash": "4a1bfca4f1984b42011c9c51f467a1db602a5e6255a51e85b9c2f2132a21de3e"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "resolve:962f14cf3997eeec62b5e0774f52fc59e68df8086e7fd2ca518c4c1f5f1705dc",
+        "kind": "RECONCILIATION_RESOLVED",
+        "recorded_utc": "2026-11-16T05:09:10.199246+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_RESOLUTION_EVIDENCE"
+        },
+        "payload": {
+          "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+          "reason": "authenticated local HQ operator reconciliation of inspected failed infrastructure qualification history",
+          "operator_authorization_id": "hq-legacy-infra-resolution-20261115-r2"
+        },
+        "sequence": 33,
+        "event_hash": "2384ff00cd1cb4bb58a5bc819ef138492c59cddeb0626e4b191e079259acf4c9",
+        "previous_event_hash": "ec4c97766e7763a6179f8596371ccd518457a334780978e854444faecd537773"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "resolve:6914585156a154029ee0119e187505b714654225b7d834f451515cee4f84388a",
+        "kind": "RECONCILIATION_RESOLVED",
+        "recorded_utc": "2026-11-16T05:09:10.346977+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_RESOLUTION_EVIDENCE"
+        },
+        "payload": {
+          "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+          "reason": "authenticated local HQ operator reconciliation of inspected failed infrastructure qualification history",
+          "operator_authorization_id": "hq-legacy-infra-resolution-20261115-r2"
+        },
+        "sequence": 34,
+        "event_hash": "29edd18736ba1c11ed321763a1d7837304dd46ea056c27b870a443dbc13d3e35",
+        "previous_event_hash": "2384ff00cd1cb4bb58a5bc819ef138492c59cddeb0626e4b191e079259acf4c9"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "resolve:fba9845e7fa9ece9e3a454e22386ad9574947472fea6e203a5202f2d1c4e4dfc",
+        "kind": "RECONCILIATION_RESOLVED",
+        "recorded_utc": "2026-11-16T05:09:10.505120+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_RESOLUTION_EVIDENCE"
+        },
+        "payload": {
+          "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+          "reason": "authenticated local HQ operator reconciliation of inspected failed infrastructure qualification history",
+          "operator_authorization_id": "hq-legacy-infra-resolution-20261115-r2"
+        },
+        "sequence": 35,
+        "event_hash": "6f3529ddc148fde8ac9211d814e01d4078926e4d1f39be829de6c6854481cd20",
+        "previous_event_hash": "29edd18736ba1c11ed321763a1d7837304dd46ea056c27b870a443dbc13d3e35"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "resolve:59d39c6ce02c77712258a36b0f2b5972312f3e398ed2412281af9af8a9453248",
+        "kind": "RECONCILIATION_RESOLVED",
+        "recorded_utc": "2026-11-16T05:09:10.659683+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_RESOLUTION_EVIDENCE"
+        },
+        "payload": {
+          "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+          "reason": "authenticated local HQ operator reconciliation of inspected failed infrastructure qualification history",
+          "operator_authorization_id": "hq-legacy-infra-resolution-20261115-r2"
+        },
+        "sequence": 36,
+        "event_hash": "b896d4fa1b741d77b3375dd4476889a61e321511198a183b30d46f974e8b394a",
+        "previous_event_hash": "6f3529ddc148fde8ac9211d814e01d4078926e4d1f39be829de6c6854481cd20"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "historical-review:c152a7410990cd22d52b1616cdc80f7c7c76a0e6fb343324ab9cdaea9b02db6e",
+        "kind": "HISTORICAL_REVIEW",
+        "recorded_utc": "2026-11-16T05:10:16.690577+00:00",
+        "source": {
+          "trust": "POSTHOC_REGISTERED_REAL_REVIEWER_RUN",
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-independent-20261115-r1",
+          "job_id": "sorok-programma-automatic-currentness-independent-20261115-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "pid": 64824,
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "f0425d95f440391b3998e27de200a8cf67b51604907ddac74b4541773ed1a806",
+          "binding_sha256": "744c1516e61146a5a4459f3386ae8d4b6f81c39f10fe2b0f848cec835dbf1a03",
+          "launch_sha256": "c6c83cf5c79a008d80455cdb6c67ad76edca5077accbda373bc1ac3fbe3cad05",
+          "process_sha256": "08ed46ec3e4588ed6db200a06e771e2a960f68ec0a795806f8418167572dc215",
+          "completion_sha256": "c152a7410990cd22d52b1616cdc80f7c7c76a0e6fb343324ab9cdaea9b02db6e"
+        },
+        "payload": {
+          "receipt": {
+            "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
+            "task_id": "AUTOMATIC_CURRENTNESS_R1",
+            "implementation_commit": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+            "implementation_code_sha": "6164e595efcd176bb2ec9b75aa99074472a4c9b4",
+            "test_code_sha": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347",
+            "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+            "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+            "reviewer_role": "distinct_independent_nonauthor",
+            "review_commit": "4de807fa3f27c3aab5d443083b6cb020c80fda31",
+            "review_pr": null,
+            "verdict": "REVISE_EXACT_DEFECT",
+            "engineering_verdict": "REVISE_EXACT_DEFECT",
+            "scientific_verdict": "HELD",
+            "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+            "accept_scoped": false,
+            "scope": "SOURCEFREE_S2_ONLY; automatic currentness runtime G5; no native science/actor/human authority",
+            "grade": "SOURCEFREE_S2_ONLY",
+            "full_original_claim": "NOT_ESTABLISHED",
+            "protected_ci": "UNAVAILABLE_BILLING",
+            "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+            "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+            "source_documents": [
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+                "git_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+                "git_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347"
+              },
+              {
+                "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/VERDICT.json",
+                "git_blob": "3926c907fb3720a64d9acd18453c1053253ee29b"
+              },
+              {
+                "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/EVIDENCE.json",
+                "git_blob": "4d25968f47f9d3b90e9d74c72aa07d5058e54cfc"
+              },
+              {
+                "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G5_HANDOFF.md",
+                "git_blob": "50218f1cd3882054ecce2c48ba68dbba3a885937"
+              }
+            ],
+            "reviewed_at_utc": "2026-11-16T04:37:04.331783+00:00",
+            "reasons": [
+              "mechanism review intake fails TASK_UNKNOWN before the mechanism branch",
+              "no authenticated live GitHub currentness; local baseline as_of is now_utc",
+              "fabricated ordinary task review accepted with caller-declared trust/sessions",
+              "arbitrary USER_STOP/USER_RESUME and arbitrary resolve text accepted",
+              "no full end-to-end demonstration; author 17 tests not independently rerun"
+            ],
+            "terminal": "STOP",
+            "runtime_intake_attempt": {
+              "attempted": true,
+              "command": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py --config .local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/scratch-gap-probe/repo/config.json intake-review --receipt WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/REVIEW_RECEIPT.json",
+              "exit": 1,
+              "stdout": "",
+              "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1\n",
+              "result": "REJECTED_BY_RUNTIME_DEFECT_TASK_UNKNOWN",
+              "mechanism_review_state_after": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
+              "logs": {
+                "stdout": ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/receipt_intake_attempt.out",
+                "stderr": ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/receipt_intake_attempt.err",
+                "post_status": ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/receipt_intake_post_status.json"
+              }
+            }
+          },
+          "verdict": "REVISE_EXACT_DEFECT",
+          "posthoc_registration": true,
+          "automatic_intake": false
+        },
+        "sequence": 37,
+        "event_hash": "4d653d5161f22b49dc368b73b2fcb1d2ea460528a32a1d0f8c2ca92f7031e97b",
+        "previous_event_hash": "b896d4fa1b741d77b3375dd4476889a61e321511198a183b30d46f974e8b394a"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "github-live:b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+        "kind": "GITHUB_OBSERVATION",
+        "recorded_utc": "2026-11-16T05:15:16.777709+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "live_observation": {
+            "schema": "SOROK_LIVE_GITHUB_OBSERVATION@1",
+            "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+            "source_identity": "https://github.com/maidiu/rawlsing.git + maidiu/rawlsing",
+            "transport": "git_ls_remote+github_api_credential_helper",
+            "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+            "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+            "ttl_seconds": 900,
+            "ref_patterns": [
+              "refs/heads/codex/sorok-c05-projection-r3-independent-g5-20261115-r3",
+              "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1",
+              "refs/heads/codex/sorok1037-b05-r3-independent-g5-20261115-r3",
+              "refs/heads/codex/sorok1038-custody-g5-20261115-r1",
+              "refs/heads/codex/sorok982-composite-g5-20261115-r1",
+              "refs/heads/integration/pre-main-reconciliation-r1",
+              "refs/pull/1062/head",
+              "refs/pull/1062/merge",
+              "refs/pull/1066/head",
+              "refs/pull/1066/merge",
+              "refs/pull/1089/head",
+              "refs/pull/1089/merge",
+              "refs/pull/1091/head",
+              "refs/pull/1091/merge",
+              "refs/pull/1095/head",
+              "refs/pull/1095/merge"
+            ],
+            "refs": {
+              "refs/heads/codex/sorok-c05-projection-r3-independent-g5-20261115-r3": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+              "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+              "refs/heads/codex/sorok1037-b05-r3-independent-g5-20261115-r3": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+              "refs/heads/codex/sorok1038-custody-g5-20261115-r1": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+              "refs/heads/codex/sorok982-composite-g5-20261115-r1": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+              "refs/heads/integration/pre-main-reconciliation-r1": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+              "refs/pull/1062/head": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+              "refs/pull/1062/merge": "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b",
+              "refs/pull/1066/head": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+              "refs/pull/1066/merge": "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7",
+              "refs/pull/1089/head": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+              "refs/pull/1089/merge": "d3873f38be27a3bd8a12c79828b1a8160ae4c20e",
+              "refs/pull/1091/head": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+              "refs/pull/1091/merge": "3ae6d7828d27f03ac8d01466b89c13cfda7bb977",
+              "refs/pull/1095/head": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+              "refs/pull/1095/merge": "82108e626f52e2b568c732228624d42a32cde2e8"
+            },
+            "refs_digest": "4c895ee3eea2bf2a6355fe9dc9a70a7f15246bdd1c15da08179f9fced8d3eff4",
+            "api": {
+              "repo": {
+                "http_status": 200,
+                "body_sha256": "52711051903dccb81c05c8b7b173bfacfc3db10f9a998e20a7d4eec3ee48c60c",
+                "body": {
+                  "id": 1332719445,
+                  "node_id": "R_kgDOT2-vVQ",
+                  "name": "rawlsing",
+                  "full_name": "maidiu/rawlsing",
+                  "private": true,
+                  "owner": {
+                    "login": "maidiu",
+                    "id": 103524263,
+                    "node_id": "U_kgDOBiunpw",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/103524263?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/maidiu",
+                    "html_url": "https://github.com/maidiu",
+                    "followers_url": "https://api.github.com/users/maidiu/followers",
+                    "following_url": "https://api.github.com/users/maidiu/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/maidiu/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/maidiu/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/maidiu/subscriptions",
+                    "organizations_url": "https://api.github.com/users/maidiu/orgs",
+                    "repos_url": "https://api.github.com/users/maidiu/repos",
+                    "events_url": "https://api.github.com/users/maidiu/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/maidiu/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                  },
+                  "html_url": "https://github.com/maidiu/rawlsing",
+                  "description": null,
+                  "fork": false,
+                  "url": "https://api.github.com/repos/maidiu/rawlsing",
+                  "forks_url": "https://api.github.com/repos/maidiu/rawlsing/forks",
+                  "keys_url": "https://api.github.com/repos/maidiu/rawlsing/keys{/key_id}",
+                  "collaborators_url": "https://api.github.com/repos/maidiu/rawlsing/collaborators{/collaborator}",
+                  "teams_url": "https://api.github.com/repos/maidiu/rawlsing/teams",
+                  "hooks_url": "https://api.github.com/repos/maidiu/rawlsing/hooks",
+                  "issue_events_url": "https://api.github.com/repos/maidiu/rawlsing/issues/events{/number}",
+                  "events_url": "https://api.github.com/repos/maidiu/rawlsing/events",
+                  "assignees_url": "https://api.github.com/repos/maidiu/rawlsing/assignees{/user}",
+                  "branches_url": "https://api.github.com/repos/maidiu/rawlsing/branches{/branch}",
+                  "tags_url": "https://api.github.com/repos/maidiu/rawlsing/tags",
+                  "blobs_url": "https://api.github.com/repos/maidiu/rawlsing/git/blobs{/sha}",
+                  "git_tags_url": "https://api.github.com/repos/maidiu/rawlsing/git/tags{/sha}",
+                  "git_refs_url": "https://api.github.com/repos/maidiu/rawlsing/git/refs{/sha}",
+                  "trees_url": "https://api.github.com/repos/maidiu/rawlsing/git/trees{/sha}",
+                  "statuses_url": "https://api.github.com/repos/maidiu/rawlsing/statuses/{sha}",
+                  "languages_url": "https://api.github.com/repos/maidiu/rawlsing/languages",
+                  "stargazers_url": "https://api.github.com/repos/maidiu/rawlsing/stargazers",
+                  "contributors_url": "https://api.github.com/repos/maidiu/rawlsing/contributors",
+                  "subscribers_url": "https://api.github.com/repos/maidiu/rawlsing/subscribers",
+                  "subscription_url": "https://api.github.com/repos/maidiu/rawlsing/subscription",
+                  "commits_url": "https://api.github.com/repos/maidiu/rawlsing/commits{/sha}",
+                  "git_commits_url": "https://api.github.com/repos/maidiu/rawlsing/git/commits{/sha}",
+                  "comments_url": "https://api.github.com/repos/maidiu/rawlsing/comments{/number}",
+                  "issue_comment_url": "https://api.github.com/repos/maidiu/rawlsing/issues/comments{/number}",
+                  "contents_url": "https://api.github.com/repos/maidiu/rawlsing/contents/{+path}",
+                  "compare_url": "https://api.github.com/repos/maidiu/rawlsing/compare/{base}...{head}",
+                  "merges_url": "https://api.github.com/repos/maidiu/rawlsing/merges",
+                  "archive_url": "https://api.github.com/repos/maidiu/rawlsing/{archive_format}{/ref}",
+                  "downloads_url": "https://api.github.com/repos/maidiu/rawlsing/downloads",
+                  "issues_url": "https://api.github.com/repos/maidiu/rawlsing/issues{/number}",
+                  "pulls_url": "https://api.github.com/repos/maidiu/rawlsing/pulls{/number}",
+                  "milestones_url": "https://api.github.com/repos/maidiu/rawlsing/milestones{/number}",
+                  "notifications_url": "https://api.github.com/repos/maidiu/rawlsing/notifications{?since,all,participating}",
+                  "labels_url": "https://api.github.com/repos/maidiu/rawlsing/labels{/name}",
+                  "releases_url": "https://api.github.com/repos/maidiu/rawlsing/releases{/id}",
+                  "deployments_url": "https://api.github.com/repos/maidiu/rawlsing/deployments",
+                  "created_at": "2026-08-13T05:02:15Z",
+                  "updated_at": "2026-09-15T03:48:03Z",
+                  "pushed_at": "2026-11-16T04:58:01Z",
+                  "git_url": "git://github.com/maidiu/rawlsing.git",
+                  "ssh_url": "git@github.com:maidiu/rawlsing.git",
+                  "clone_url": "https://github.com/maidiu/rawlsing.git",
+                  "svn_url": "https://github.com/maidiu/rawlsing",
+                  "homepage": null,
+                  "size": 1137955,
+                  "stargazers_count": 0,
+                  "watchers_count": 0,
+                  "language": "Python",
+                  "has_issues": true,
+                  "has_projects": true,
+                  "has_downloads": false,
+                  "has_wiki": false,
+                  "has_pages": false,
+                  "has_discussions": false,
+                  "forks_count": 0,
+                  "mirror_url": null,
+                  "archived": false,
+                  "disabled": false,
+                  "open_issues_count": 546,
+                  "license": null,
+                  "allow_forking": true,
+                  "is_template": false,
+                  "web_commit_signoff_required": false,
+                  "has_pull_requests": true,
+                  "pull_request_creation_policy": "all",
+                  "topics": [],
+                  "visibility": "private",
+                  "forks": 0,
+                  "open_issues": 546,
+                  "watchers": 0,
+                  "default_branch": "main",
+                  "permissions": {
+                    "admin": true,
+                    "maintain": true,
+                    "push": true,
+                    "triage": true,
+                    "pull": true
+                  },
+                  "allow_squash_merge": true,
+                  "allow_merge_commit": true,
+                  "allow_rebase_merge": true,
+                  "allow_auto_merge": false,
+                  "delete_branch_on_merge": false,
+                  "allow_update_branch": false,
+                  "use_squash_pr_title_as_default": false,
+                  "squash_merge_commit_message": "COMMIT_MESSAGES",
+                  "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+                  "merge_commit_message": "PR_TITLE",
+                  "merge_commit_title": "MERGE_MESSAGE",
+                  "network_count": 0,
+                  "subscribers_count": 0
+                },
+                "error": null
+              },
+              "pulls": {
+                "1062": {
+                  "state": "open",
+                  "merged": false,
+                  "draft": true,
+                  "updated_at": "2026-11-15T08:23:58Z",
+                  "head_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+                  "merge_commit_sha": "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b",
+                  "http_status": 200,
+                  "body_sha256": "a7df5d851836928811cadb6968be254937634572a10f8f6ea0e9df50039138bb"
+                },
+                "1066": {
+                  "state": "open",
+                  "merged": false,
+                  "draft": true,
+                  "updated_at": "2026-11-15T08:53:29Z",
+                  "head_sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+                  "merge_commit_sha": "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7",
+                  "http_status": 200,
+                  "body_sha256": "303aca9fa60ceb9d58d0c73a49ce2ab41232a2d289c612b53e8e1c2ffee334dc"
+                },
+                "1089": {
+                  "state": "open",
+                  "merged": false,
+                  "draft": true,
+                  "updated_at": "2026-11-15T23:58:52Z",
+                  "head_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+                  "merge_commit_sha": "d3873f38be27a3bd8a12c79828b1a8160ae4c20e",
+                  "http_status": 200,
+                  "body_sha256": "58c08d2cd91f369f2f19056c65209f3cc92c04601b0dadd4a3ead38f855bfefc"
+                },
+                "1091": {
+                  "state": "open",
+                  "merged": false,
+                  "draft": true,
+                  "updated_at": "2026-11-16T00:31:25Z",
+                  "head_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+                  "merge_commit_sha": "3ae6d7828d27f03ac8d01466b89c13cfda7bb977",
+                  "http_status": 200,
+                  "body_sha256": "e0c0dbf1bffb96ceb093f71298ca4d2c54620b58e9d26321c22d8b3748d54c1e"
+                },
+                "1095": {
+                  "state": "open",
+                  "merged": false,
+                  "draft": true,
+                  "updated_at": "2026-11-16T04:10:35Z",
+                  "head_sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+                  "merge_commit_sha": "82108e626f52e2b568c732228624d42a32cde2e8",
+                  "http_status": 200,
+                  "body_sha256": "61ae4db24518ff07f5080b167b7304b0f23632f41bd69f9b49c01ecd87a93223"
+                }
+              },
+              "issues": {
+                "939": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+                },
+                "1008": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+                },
+                "1010": {
+                  "http_status": 403,
+                  "error": "HTTP_403",
+                  "body_sha256": "14594de0a25568b07f118dc1f596815efbf2c8ac1cb88fdc4e8a6475e2b93a09"
+                }
+              },
+              "commits": {
+                "0e4a52550efcc8f9b97040abf3bccafc69ae6b9b": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "3acc22d419ba8a9ad5fa30b33f5d36ce9a561714879f8dd09ba607f6e4ff526f"
+                },
+                "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "757ab2c915b01ec50116adf6aa16d34f4c7b8a14ff65fa0c586fc1025e6769ed"
+                },
+                "3ae6d7828d27f03ac8d01466b89c13cfda7bb977": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "15e19cf261b53365e9578552eff6ee37148acde3c293bd945ba8b3171339a668"
+                },
+                "4b099f1fe16b0c3c4c645d4be2273f23618cc2f7": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "60c0d5f5d2c9d34ad91bff3a5f0e0b866652a5c73c057c87a2930992854e3ca2"
+                },
+                "5c83a8321dce70fcc40c8f210af06a9edb1f8999": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "0a1cac480657f4c38e44719cff5b86c5503d261ee872680d7091bcb3b856e82e"
+                },
+                "6a5c12f04323d74001f9632063ec907f4fc4468e": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "8ca6c645c9f1281e007f90c75b4ac74e8c5ba2a7e799cdc506d3e7448a408dba"
+                },
+                "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "b10588efc61452012ab4be3b35b09e85ed70426652575ce4a3d6b1a1b3afff94"
+                },
+                "82108e626f52e2b568c732228624d42a32cde2e8": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "43e59c97202bb01e929365667556819c46f569a8ee9c4d7777cde3a31865b654"
+                },
+                "8bdfbdd22c19d865b5049bde8213eb3bcaea973b": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "e3944ff70ba5c4f6427547ec71f750ff38589492118914ff3f4c756b2610f586"
+                },
+                "938b5b8d6aaf42b3788d851d92e77e9151c98cce": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "de4a30dfba5396c841d5c645f66230f1d4dde416fd1328d389672bd76fb55268"
+                },
+                "d3873f38be27a3bd8a12c79828b1a8160ae4c20e": {
+                  "http_status": 200,
+                  "error": null,
+                  "body_sha256": "70a2fdf6a1a61559ceec76aae169e7e4b0f96578d0686b04d57ce9fb3aaaf41e"
+                }
+              },
+              "token_available": true,
+              "token_error": null
+            },
+            "status_coverage": "REF_SHA_ONLY",
+            "status_checks": 8,
+            "status_success": 5,
+            "credential_helper_used": true,
+            "credential_error": null,
+            "evidence_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded"
+          }
+        },
+        "sequence": 38,
+        "event_hash": "7c053f8f659fc49a06658d03c7a53f80a7d98a6fcb5aa04be919a85c595eb4bb",
+        "previous_event_hash": "4d653d5161f22b49dc368b73b2fcb1d2ea460528a32a1d0f8c2ca92f7031e97b"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "reconciliation:366b313a68cc3032604a230cae663787ab3721f654a8d280822e42e65c9de43a",
+        "kind": "RECONCILIATION_REQUIRED",
+        "recorded_utc": "2026-11-16T05:15:16.831301+00:00",
+        "source": {
+          "trust": "AUTHENTICATED_LIVE_GITHUB"
+        },
+        "payload": {
+          "item": {
+            "what_changed": "GITHUB_PR_STATUS_ADVANCED pr:1095",
+            "expected_evidence": "live state/merged/updated_at/head matching the expected baseline",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "reconcile the changed PR status and re-run the relevant receiving",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+            "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+            "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+            "status_coverage": "REF_SHA_ONLY",
+            "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+          }
+        },
+        "sequence": 39,
+        "event_hash": "c214fcf5bf655a5962775efd5db12b85280132b78ff189f57469c56763c094ee",
+        "previous_event_hash": "7c053f8f659fc49a06658d03c7a53f80a7d98a6fcb5aa04be919a85c595eb4bb"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "completion:38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f",
+        "kind": "WORKER_RETURN",
+        "recorded_utc": "2026-11-16T05:22:20.322538+00:00",
+        "source": {
+          "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+          "role": "IMPLEMENTER",
+          "expected_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "expected_source_commit": null,
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-repair-20261115-r2",
+          "job_id": "sorok-programma-automatic-currentness-repair-20261115-r2",
+          "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "pid": 69246,
+          "grant_id": "sorok-programma-automatic-currentness-repair-20261115-r2-grant",
+          "argv_sha256": "00f3da237102124f870eb0355b796369dc8577298bcd54057acad5b8f0448292",
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "b022e700febf35cae07004ae16d1bc39e3eab756baeb2acc75383cdc1bf82eda",
+          "binding_sha256": "48bbc95f3173e17a717e6c7e6b4bba91eaa87b2b2656b53ba047534f998b8900",
+          "launch_sha256": "dab12ef597561cd9ca9e9ab04a69eaa29813df7a2a01c8110f5bbb0570b3eef1",
+          "process_sha256": "46ec56a169e0f5673be75b695c5d373dc9e7804084d98a52cf918192821f5594",
+          "completion_sha256": "38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f",
+          "source_commit": null,
+          "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/WORKER_RETURN.json"
+        },
+        "payload": {
+          "task_id": "AUTOMATIC_CURRENTNESS_R1",
+          "role": "IMPLEMENTER",
+          "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+          "exit_code": 0,
+          "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "source_commit": null
+        },
+        "sequence": 40,
+        "event_hash": "141f9a717e2c2d626bc566e56e44b12dbac359858207f93c94476b5032cea405",
+        "previous_event_hash": "c214fcf5bf655a5962775efd5db12b85280132b78ff189f57469c56763c094ee"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "completion:725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
+        "kind": "WORKER_RETURN",
+        "recorded_utc": "2026-11-16T05:48:51.319841+00:00",
+        "source": {
+          "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+          "role": "REVIEWER",
+          "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "expected_source_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+          "job_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "pid": 77063,
+          "grant_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1-grant",
+          "argv_sha256": "7df4c322ef5ef79383260ecfc62f389b745bc99419aa54fe96fa4dacb97ade59",
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "40be3904265413b59d842a02cf0cacde7829bbdff88a4c2e6265b435f09dd02b",
+          "binding_sha256": "851149ddb9a400b8ecaf70eb2e69fa734a2f4024c6250186ffa151123b49913b",
+          "launch_sha256": "73bb1081c8065e2720bad27c8204dadc83ad078f03db40a088401a3ba2507c7c",
+          "process_sha256": "a81e005f2f1d902731cc7b241138ffcc65d8bbb865c9fdb11c74d5e0fb0a8b3a",
+          "completion_sha256": "725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
+          "source_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+          "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/REVIEW_RECEIPT.json"
+        },
+        "payload": {
+          "task_id": "AUTOMATIC_CURRENTNESS_R1",
+          "role": "REVIEWER",
+          "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+          "exit_code": 0,
+          "author_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "source_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2"
+        },
+        "sequence": 41,
+        "event_hash": "1384504eeda4b87856a2b847fe90792bdd819e96942a6e105aa451c000aa1b55",
+        "previous_event_hash": "141f9a717e2c2d626bc566e56e44b12dbac359858207f93c94476b5032cea405"
       }
     ],
     "tasks": [
@@ -2990,7 +4459,26 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "S47/P2 objective world; P6 house.py",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A01"
+        ],
+        "bounded_engineering_now": "Implement verified material writer/household source binding",
+        "claims_not_yet_warranted": "Adult/child account and tenancy generalization",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-24"
+        ],
+        "decision_status": {
+          "A01": "EXECUTIVE_SELECTION_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A01"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A01"
       },
       {
         "id": "B02",
@@ -3022,7 +4510,29 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "P3 DevelopmentOwner and S46 clock; existing P2 owner",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A02"
+        ],
+        "bounded_engineering_now": "Implement bounded calendar-as-of and period split",
+        "claims_not_yet_warranted": "Authoritative person-time admission",
+        "decision_issue_ids": [
+          "SA-02",
+          "SA-04",
+          "SA-05",
+          "SA-06",
+          "SA-23"
+        ],
+        "decision_status": {
+          "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED"
+        },
+        "full_original_decision_blockers": [
+          "A02"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A02"
       },
       {
         "id": "B03",
@@ -3054,7 +4564,26 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "P2 world + bounded P6 material/house adapter",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A01"
+        ],
+        "bounded_engineering_now": "Write dwelling/market facts; validate space/noise/price",
+        "claims_not_yet_warranted": "General household holder authority",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-20"
+        ],
+        "decision_status": {
+          "A01": "EXECUTIVE_SELECTION_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A01"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A01"
       },
       {
         "id": "B04",
@@ -3088,7 +4617,34 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing world/event/material writer",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A01",
+          "A03",
+          "A04"
+        ],
+        "bounded_engineering_now": "Construct purchase/stock/source/idempotent debit/refusal",
+        "claims_not_yet_warranted": "General household economy and parent contribution semantics",
+        "decision_issue_ids": [
+          "SA-03",
+          "SA-20",
+          "SA-21",
+          "SA-23"
+        ],
+        "decision_status": {
+          "A01": "EXECUTIVE_SELECTION_REQUIRED",
+          "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+          "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A01",
+          "A03",
+          "A04"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A01,A03,A04"
       },
       {
         "id": "B05",
@@ -3134,7 +4690,36 @@
         "review_trust": "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY",
         "replay": true,
         "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
-        "protected_ci": "UNAVAILABLE_BILLING"
+        "protected_ci": "UNAVAILABLE_BILLING",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A02",
+          "A03",
+          "A08"
+        ],
+        "bounded_engineering_now": "Run bounded interleave, material-reader cold replay",
+        "claims_not_yet_warranted": "Whole multiyear causal reproduction/atomicity",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-02",
+          "SA-03",
+          "SA-05",
+          "SA-21",
+          "SA-22"
+        ],
+        "decision_status": {
+          "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+          "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+          "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A02",
+          "A03",
+          "A08"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A02,A03,A08"
       },
       {
         "id": "C01",
@@ -3166,7 +4751,21 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "C4/ADP-015 actor identity; shared P2 world",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "K01"
+        ],
+        "bounded_engineering_now": "Register stable independent parent/other identities and separate perceptions",
+        "claims_not_yet_warranted": "A separately registered actor is not yet a fully independently continuing mother; C01 scoped actor identity/participation can be accepted without completing C02 material history or scientific motive.",
+        "decision_issue_ids": [],
+        "decision_status": {
+          "K01": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST"
+        },
+        "full_original_decision_blockers": [],
+        "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED"
       },
       {
         "id": "C02",
@@ -3202,7 +4801,37 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "competent parent actor state owner coupled to P2 material world",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A04",
+          "A06",
+          "S01"
+        ],
+        "bounded_engineering_now": "Commit parent-local circumstance and author-labeled performed work/care/debt",
+        "claims_not_yet_warranted": "Independently selected long-term activity and finance",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-03",
+          "SA-04",
+          "SA-06",
+          "SA-07",
+          "SA-08",
+          "SA-10"
+        ],
+        "decision_status": {
+          "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+          "A06": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+          "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY"
+        },
+        "full_original_decision_blockers": [
+          "A04",
+          "A06",
+          "S01"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A04,A06,S01"
       },
       {
         "id": "C03",
@@ -3236,7 +4865,42 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "parent own decision and P2 world act writer",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A01",
+          "A04",
+          "A06",
+          "S01"
+        ],
+        "bounded_engineering_now": "Calculate material feasible choices, admit explicit decision and actual action",
+        "claims_not_yet_warranted": "Mother's independently generated motives and chosen action",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-04",
+          "SA-07",
+          "SA-08",
+          "SA-09",
+          "SA-10",
+          "SA-20",
+          "SA-21",
+          "SA-24"
+        ],
+        "decision_status": {
+          "A01": "EXECUTIVE_SELECTION_REQUIRED",
+          "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+          "A06": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+          "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY"
+        },
+        "full_original_decision_blockers": [
+          "A01",
+          "A04",
+          "A06",
+          "S01"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01"
       },
       {
         "id": "C04",
@@ -3280,7 +4944,36 @@
         "review_trust": "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY",
         "replay": true,
         "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
-        "protected_ci": "UNAVAILABLE_BILLING"
+        "protected_ci": "UNAVAILABLE_BILLING",
+        "decision_prerequisites": [
+          "K01",
+          "A05"
+        ],
+        "decision_full_claim": [
+          "A07",
+          "S02",
+          "S03"
+        ],
+        "bounded_engineering_now": "Write speech event, private/public separation, causal child read",
+        "claims_not_yet_warranted": "Self-generated parent intention, qualified hearing and Nadia uptake",
+        "decision_issue_ids": [
+          "SA-09",
+          "SA-10",
+          "SA-11",
+          "SA-12",
+          "SA-21"
+        ],
+        "decision_status": {
+          "A07": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+          "S02": "OPEN__CALLER_TEXT_NOT_GENERATED_INTENTION",
+          "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE"
+        },
+        "full_original_decision_blockers": [
+          "A07",
+          "S02",
+          "S03"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A07,S02,S03"
       },
       {
         "id": "C05",
@@ -3326,7 +5019,25 @@
         "review_trust": "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY",
         "replay": true,
         "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
-        "protected_ci": "UNAVAILABLE_BILLING"
+        "protected_ci": "UNAVAILABLE_BILLING",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "S07"
+        ],
+        "bounded_engineering_now": "Maintain relation identity, enter/leave, actor-local histories",
+        "claims_not_yet_warranted": "Substantive relationship formation and transfer",
+        "decision_issue_ids": [
+          "SA-25"
+        ],
+        "decision_status": {
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_S07"
       },
       {
         "id": "D01",
@@ -3354,7 +5065,26 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "P3Owner+PsycheStore; existing CAN/ADP science holds",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01",
+          "K02"
+        ],
+        "decision_full_claim": [
+          "S04"
+        ],
+        "bounded_engineering_now": "Reuse P3/PsycheStore actual indexed targets, cold state and holds",
+        "claims_not_yet_warranted": "Positive scientific acquisition from flagged response",
+        "decision_issue_ids": [
+          "SA-14"
+        ],
+        "decision_status": {
+          "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED"
+        },
+        "full_original_decision_blockers": [
+          "S04"
+        ],
+        "full_original_readiness": "HOLD_DECISION_S04"
       },
       {
         "id": "D02",
@@ -3390,7 +5120,38 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "thin read-only P3 context adapter over P2/Pyat/actor owners",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01",
+          "A05"
+        ],
+        "decision_full_claim": [
+          "S03",
+          "S07"
+        ],
+        "bounded_engineering_now": "Project bounded objective and actor-qualified readsets to P3",
+        "claims_not_yet_warranted": "Unrestricted recruitment/general knowledge or transfer",
+        "decision_issue_ids": [
+          "SA-05",
+          "SA-06",
+          "SA-11",
+          "SA-12",
+          "SA-13",
+          "SA-15",
+          "SA-16",
+          "SA-17",
+          "SA-18",
+          "SA-24"
+        ],
+        "decision_status": {
+          "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "S03",
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_S03,S07"
       },
       {
         "id": "D03",
@@ -3425,7 +5186,37 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "CAN-008-style actor response qualified by existing P3 current event",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K02",
+          "A05"
+        ],
+        "decision_full_claim": [
+          "A07",
+          "S03"
+        ],
+        "bounded_engineering_now": "Connect admitted speech to actual immediate sourcefree actor consumer",
+        "claims_not_yet_warranted": "Qualified appraisal/response generalization",
+        "decision_issue_ids": [
+          "SA-09",
+          "SA-11",
+          "SA-12",
+          "SA-13",
+          "SA-14",
+          "SA-15",
+          "SA-17",
+          "SA-19",
+          "SA-25"
+        ],
+        "decision_status": {
+          "A07": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+          "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE"
+        },
+        "full_original_decision_blockers": [
+          "A07",
+          "S03"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A07,S03"
       },
       {
         "id": "D04",
@@ -3461,7 +5252,39 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing P3 target/psyche owner and competent CAN/ADP holds",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K02"
+        ],
+        "decision_full_claim": [
+          "S04",
+          "S05",
+          "S06",
+          "S07"
+        ],
+        "bounded_engineering_now": "Store bounded target with valid refused/held routes",
+        "claims_not_yet_warranted": "Acquired practice, memory or actual evaluated nochange",
+        "decision_issue_ids": [
+          "SA-14",
+          "SA-16",
+          "SA-17",
+          "SA-18",
+          "SA-19",
+          "SA-25"
+        ],
+        "decision_status": {
+          "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+          "S05": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+          "S06": "OPEN__ADP_MEMORY_ISSUANCE_HELD",
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "S04",
+          "S05",
+          "S06",
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07"
       },
       {
         "id": "D05",
@@ -3495,7 +5318,32 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing P3 actual action/response consumer, P4/P6 reader",
-        "next_action": "Unmet scoped prerequisites: D04"
+        "next_action": "Unmet scoped prerequisites: D04",
+        "decision_prerequisites": [
+          "K02"
+        ],
+        "decision_full_claim": [
+          "S04",
+          "S07"
+        ],
+        "bounded_engineering_now": "Prove changed target affects actual later performed sourcefree act",
+        "claims_not_yet_warranted": "Warranted acquisition/portability beyond selected fixture",
+        "decision_issue_ids": [
+          "SA-14",
+          "SA-15",
+          "SA-16",
+          "SA-18",
+          "SA-25"
+        ],
+        "decision_status": {
+          "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "S04",
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_S04,S07"
       },
       {
         "id": "E01",
@@ -3532,7 +5380,58 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing P2 world, parent actor and focal P3 owner",
-        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
+        "next_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
+        "decision_prerequisites": [
+          "K01",
+          "A05"
+        ],
+        "decision_full_claim": [
+          "A01",
+          "A02",
+          "A04",
+          "A06",
+          "A07",
+          "S01",
+          "S02",
+          "S03"
+        ],
+        "bounded_engineering_now": "Compose actual material-parent-speech-child sourcefree vertical",
+        "claims_not_yet_warranted": "Full independent human motive/actor/experience claim",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-05",
+          "SA-07",
+          "SA-09",
+          "SA-10",
+          "SA-11",
+          "SA-12",
+          "SA-13",
+          "SA-15",
+          "SA-20",
+          "SA-24",
+          "SA-25"
+        ],
+        "decision_status": {
+          "A01": "EXECUTIVE_SELECTION_REQUIRED",
+          "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+          "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+          "A06": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+          "A07": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+          "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY",
+          "S02": "OPEN__CALLER_TEXT_NOT_GENERATED_INTENTION",
+          "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE"
+        },
+        "full_original_decision_blockers": [
+          "A01",
+          "A02",
+          "A04",
+          "A06",
+          "A07",
+          "S01",
+          "S02",
+          "S03"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03"
       },
       {
         "id": "E02",
@@ -3572,7 +5471,60 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "P3/S46 period + shared world and actor state owners",
-        "next_action": "Unmet scoped prerequisites: D04"
+        "next_action": "Unmet scoped prerequisites: D04",
+        "decision_prerequisites": [
+          "K01",
+          "K02"
+        ],
+        "decision_full_claim": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "S01",
+          "S03",
+          "S04",
+          "S05",
+          "S07"
+        ],
+        "bounded_engineering_now": "Prove multicycle material/parent/actor continuity and selective changes",
+        "claims_not_yet_warranted": "Unqualified full historical person or invented development",
+        "decision_issue_ids": [
+          "SA-01",
+          "SA-02",
+          "SA-03",
+          "SA-04",
+          "SA-05",
+          "SA-06",
+          "SA-08",
+          "SA-18",
+          "SA-19",
+          "SA-24",
+          "SA-25"
+        ],
+        "decision_status": {
+          "A01": "EXECUTIVE_SELECTION_REQUIRED",
+          "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+          "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+          "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+          "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY",
+          "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+          "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+          "S05": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "S01",
+          "S03",
+          "S04",
+          "S05",
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07"
       },
       {
         "id": "E03",
@@ -3606,7 +5558,26 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing P3 BatchEngine/P2 reservation/journal/C9 root receipts",
-        "next_action": "Unmet scoped prerequisites: E02"
+        "next_action": "Unmet scoped prerequisites: E02",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A08"
+        ],
+        "bounded_engineering_now": "Implement existing P3/P2 fail-stop and cross-owner replay",
+        "claims_not_yet_warranted": "Composite atomicity without chosen lock/receipt protocol",
+        "decision_issue_ids": [
+          "SA-21",
+          "SA-22"
+        ],
+        "decision_status": {
+          "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A08"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A08"
       },
       {
         "id": "E04",
@@ -3643,7 +5614,26 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "actual joint J1/J2 consumers",
-        "next_action": "Unmet scoped prerequisites: E03, D05"
+        "next_action": "Unmet scoped prerequisites: E03, D05",
+        "decision_prerequisites": [
+          "K01",
+          "K02"
+        ],
+        "decision_full_claim": [
+          "A08"
+        ],
+        "bounded_engineering_now": "Run first-consumer positive/negative/restore, cost and no-drop against scoped J",
+        "claims_not_yet_warranted": "Accepting unsupported J1/J2 behavioral semantics",
+        "decision_issue_ids": [
+          "SA-22"
+        ],
+        "decision_status": {
+          "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A08"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A08"
       },
       {
         "id": "F01",
@@ -3677,7 +5667,27 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "C12 root/fork, P4/P5/P6 actual house owner",
-        "next_action": "Unmet scoped prerequisites: E02"
+        "next_action": "Unmet scoped prerequisites: E02",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A09"
+        ],
+        "bounded_engineering_now": "Implement sourcefree cold root loader with unchanged history",
+        "claims_not_yet_warranted": "Valid fork-forward child life operation",
+        "decision_issue_ids": [
+          "SA-06",
+          "SA-23",
+          "SA-24"
+        ],
+        "decision_status": {
+          "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A09"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A09"
       },
       {
         "id": "F02",
@@ -3711,7 +5721,28 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "P4/P5/P6 and existing D002 seven-cell sourcefree path",
-        "next_action": "Unmet scoped prerequisites: F01"
+        "next_action": "Unmet scoped prerequisites: F01",
+        "decision_prerequisites": [
+          "K01",
+          "A05"
+        ],
+        "decision_full_claim": [
+          "A09"
+        ],
+        "bounded_engineering_now": "Wire existing P4/P5/P6 actual user action to sourcefree imported root",
+        "claims_not_yet_warranted": "General human/actor authority based only on fixture",
+        "decision_issue_ids": [
+          "SA-10",
+          "SA-13",
+          "SA-23"
+        ],
+        "decision_status": {
+          "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A09"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A09"
       },
       {
         "id": "F03",
@@ -3745,7 +5776,30 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "protected MI #907, MII #905, MIII #891",
-        "next_action": "Unmet scoped prerequisites: F02"
+        "next_action": "Unmet scoped prerequisites: F02",
+        "decision_prerequisites": [
+          "K01",
+          "A05"
+        ],
+        "decision_full_claim": [
+          "A09",
+          "S03",
+          "S07"
+        ],
+        "bounded_engineering_now": "Reuse already owned MI/MII/MIII exposure and movement mechanics",
+        "claims_not_yet_warranted": "Historically independent actor behavior from narrative prompting",
+        "decision_issue_ids": [],
+        "decision_status": {
+          "A09": "FORK_FORWARD_CONTRACT_REQUIRED",
+          "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "A09",
+          "S03",
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A09,S03,S07"
       },
       {
         "id": "F04",
@@ -3782,7 +5836,25 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "P3 root + P4/P5/P6 + C12 sourcefree boundary",
-        "next_action": "Unmet scoped prerequisites: F03, E04"
+        "next_action": "Unmet scoped prerequisites: F03, E04",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A09"
+        ],
+        "bounded_engineering_now": "Build cold fork/reopen and qualified P3 reader",
+        "claims_not_yet_warranted": "Fully lawful prior-vs-future mutation across generated roots",
+        "decision_issue_ids": [
+          "SA-23"
+        ],
+        "decision_status": {
+          "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A09"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A09"
       },
       {
         "id": "G01",
@@ -3816,7 +5888,23 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "joined CG-E/F root generator",
-        "next_action": "Unmet scoped prerequisites: F04"
+        "next_action": "Unmet scoped prerequisites: F04",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A09"
+        ],
+        "bounded_engineering_now": "Pin seed/config, create repeated sourcefree root manifest",
+        "claims_not_yet_warranted": "Unfounded general person equivalence",
+        "decision_issue_ids": [],
+        "decision_status": {
+          "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A09"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A09"
       },
       {
         "id": "G02",
@@ -3850,7 +5938,32 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "common generated-root programme",
-        "next_action": "Unmet scoped prerequisites: G01"
+        "next_action": "Unmet scoped prerequisites: G01",
+        "decision_prerequisites": [
+          "K01",
+          "K02"
+        ],
+        "decision_full_claim": [
+          "A10",
+          "S05",
+          "S07"
+        ],
+        "bounded_engineering_now": "Run fixed common generator across varied inputs and retain failures",
+        "claims_not_yet_warranted": "Generated lives as scientifically adequate human persons",
+        "decision_issue_ids": [
+          "SA-19"
+        ],
+        "decision_status": {
+          "A10": "GENERATOR_SCOPE_SELECTION_REQUIRED",
+          "S05": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+          "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+        },
+        "full_original_decision_blockers": [
+          "A10",
+          "S05",
+          "S07"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A10,S05,S07"
       },
       {
         "id": "G03",
@@ -3885,7 +5998,23 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing process usage/provider receipt instrumentation",
-        "next_action": "Unmet scoped prerequisites: G02"
+        "next_action": "Unmet scoped prerequisites: G02",
+        "decision_prerequisites": [
+          "K01"
+        ],
+        "decision_full_claim": [
+          "A10"
+        ],
+        "bounded_engineering_now": "Measure actual calls/tokens/latency/RSS/retries/seed failures",
+        "claims_not_yet_warranted": "Fictitious economics or hidden uncounted backend work",
+        "decision_issue_ids": [],
+        "decision_status": {
+          "A10": "GENERATOR_SCOPE_SELECTION_REQUIRED"
+        },
+        "full_original_decision_blockers": [
+          "A10"
+        ],
+        "full_original_readiness": "HOLD_DECISION_A10"
       },
       {
         "id": "G04",
@@ -3922,7 +6051,27 @@
         "ready_for_independent_receiving": false,
         "full_original_ready": false,
         "owner": "existing SOROK PROGRAMMA 144/38/83/304/100 and D002/A0-A5",
-        "next_action": "Unmet scoped prerequisites: G02, G03"
+        "next_action": "Unmet scoped prerequisites: G02, G03",
+        "decision_prerequisites": [
+          "K00",
+          "K01",
+          "K02"
+        ],
+        "decision_full_claim": [
+          "K00",
+          "K01",
+          "K02"
+        ],
+        "bounded_engineering_now": "Assemble exact lineage and scoped independent receiving evidence",
+        "claims_not_yet_warranted": "Sourcefree conservation and independent scoped receiving can close with native/human grants explicitly held; H01 blocks only their promotion, never this task's scoped completion.",
+        "decision_issue_ids": [],
+        "decision_status": {
+          "K00": "GOVERNING_SOURCE_PRESENT__LOCAL_CODEX_CUSTODY_UNVERIFIED",
+          "K01": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST",
+          "K02": "ESTABLISHED_BUT_NATIVE_RULES_HELD"
+        },
+        "full_original_decision_blockers": [],
+        "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED"
       }
     ],
     "controls": {
@@ -4011,6 +6160,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A01"
+          ],
+          "decision_status": {
+            "A01": "EXECUTIVE_SELECTION_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A01"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A01",
           "source_refs": [
             "packet:B01",
             "gmt:B01"
@@ -4031,6 +6193,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A02"
+          ],
+          "decision_status": {
+            "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED"
+          },
+          "full_original_decision_blockers": [
+            "A02"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A02",
           "source_refs": [
             "packet:B02",
             "gmt:B02"
@@ -4051,6 +6226,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A01"
+          ],
+          "decision_status": {
+            "A01": "EXECUTIVE_SELECTION_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A01"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A01",
           "source_refs": [
             "packet:B03",
             "gmt:B03"
@@ -4072,6 +6260,25 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A01",
+            "A03",
+            "A04"
+          ],
+          "decision_status": {
+            "A01": "EXECUTIVE_SELECTION_REQUIRED",
+            "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+            "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A01",
+            "A03",
+            "A04"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A01,A03,A04",
           "source_refs": [
             "packet:B04",
             "gmt:B04"
@@ -4093,6 +6300,25 @@
           "review_pr": 1089,
           "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
           "protected_ci": "UNAVAILABLE_BILLING",
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A02",
+            "A03",
+            "A08"
+          ],
+          "decision_status": {
+            "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+            "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+            "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A02",
+            "A03",
+            "A08"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A02,A03,A08",
           "source_refs": [
             "packet:B05",
             "gmt:B05"
@@ -4113,6 +6339,17 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "K01"
+          ],
+          "decision_status": {
+            "K01": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST"
+          },
+          "full_original_decision_blockers": [],
+          "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
           "source_refs": [
             "packet:C01",
             "gmt:C01"
@@ -4135,6 +6372,25 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A04",
+            "A06",
+            "S01"
+          ],
+          "decision_status": {
+            "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+            "A06": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+            "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY"
+          },
+          "full_original_decision_blockers": [
+            "A04",
+            "A06",
+            "S01"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A04,A06,S01",
           "source_refs": [
             "packet:C02",
             "gmt:C02"
@@ -4156,6 +6412,28 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A01",
+            "A04",
+            "A06",
+            "S01"
+          ],
+          "decision_status": {
+            "A01": "EXECUTIVE_SELECTION_REQUIRED",
+            "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+            "A06": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+            "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY"
+          },
+          "full_original_decision_blockers": [
+            "A01",
+            "A04",
+            "A06",
+            "S01"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01",
           "source_refs": [
             "packet:C03",
             "gmt:C03"
@@ -4176,6 +6454,26 @@
           "review_pr": 1062,
           "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
           "protected_ci": "UNAVAILABLE_BILLING",
+          "decision_prerequisites": [
+            "K01",
+            "A05"
+          ],
+          "decision_full_claim": [
+            "A07",
+            "S02",
+            "S03"
+          ],
+          "decision_status": {
+            "A07": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+            "S02": "OPEN__CALLER_TEXT_NOT_GENERATED_INTENTION",
+            "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE"
+          },
+          "full_original_decision_blockers": [
+            "A07",
+            "S02",
+            "S03"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A07,S02,S03",
           "source_refs": [
             "packet:C04",
             "gmt:C04"
@@ -4197,6 +6495,19 @@
           "review_pr": 1091,
           "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
           "protected_ci": "UNAVAILABLE_BILLING",
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "S07"
+          ],
+          "decision_status": {
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_S07",
           "source_refs": [
             "packet:C05",
             "gmt:C05"
@@ -4215,6 +6526,20 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "K02"
+          ],
+          "decision_full_claim": [
+            "S04"
+          ],
+          "decision_status": {
+            "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED"
+          },
+          "full_original_decision_blockers": [
+            "S04"
+          ],
+          "full_original_readiness": "HOLD_DECISION_S04",
           "source_refs": [
             "packet:D01",
             "gmt:D01"
@@ -4237,6 +6562,23 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "A05"
+          ],
+          "decision_full_claim": [
+            "S03",
+            "S07"
+          ],
+          "decision_status": {
+            "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "S03",
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_S03,S07",
           "source_refs": [
             "packet:D02",
             "gmt:D02"
@@ -4258,6 +6600,23 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K02",
+            "A05"
+          ],
+          "decision_full_claim": [
+            "A07",
+            "S03"
+          ],
+          "decision_status": {
+            "A07": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+            "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE"
+          },
+          "full_original_decision_blockers": [
+            "A07",
+            "S03"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A07,S03",
           "source_refs": [
             "packet:D03",
             "gmt:D03"
@@ -4280,6 +6639,28 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K02"
+          ],
+          "decision_full_claim": [
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "decision_status": {
+            "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+            "S05": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+            "S06": "OPEN__ADP_MEMORY_ISSUANCE_HELD",
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07",
           "source_refs": [
             "packet:D04",
             "gmt:D04"
@@ -4302,6 +6683,22 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K02"
+          ],
+          "decision_full_claim": [
+            "S04",
+            "S07"
+          ],
+          "decision_status": {
+            "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "S04",
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_S04,S07",
           "source_refs": [
             "packet:D05",
             "gmt:D05"
@@ -4324,6 +6721,41 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "A05"
+          ],
+          "decision_full_claim": [
+            "A01",
+            "A02",
+            "A04",
+            "A06",
+            "A07",
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "decision_status": {
+            "A01": "EXECUTIVE_SELECTION_REQUIRED",
+            "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+            "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+            "A06": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+            "A07": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+            "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY",
+            "S02": "OPEN__CALLER_TEXT_NOT_GENERATED_INTENTION",
+            "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE"
+          },
+          "full_original_decision_blockers": [
+            "A01",
+            "A02",
+            "A04",
+            "A06",
+            "A07",
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03",
           "source_refs": [
             "packet:E01",
             "gmt:E01"
@@ -4349,6 +6781,44 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "K02"
+          ],
+          "decision_full_claim": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "S01",
+            "S03",
+            "S04",
+            "S05",
+            "S07"
+          ],
+          "decision_status": {
+            "A01": "EXECUTIVE_SELECTION_REQUIRED",
+            "A02": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+            "A03": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+            "A04": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+            "S01": "OPEN__BOUNDED_PARENT_SELECTION_ONLY",
+            "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+            "S04": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+            "S05": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "S01",
+            "S03",
+            "S04",
+            "S05",
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07",
           "source_refs": [
             "packet:E02",
             "gmt:E02"
@@ -4371,6 +6841,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A08"
+          ],
+          "decision_status": {
+            "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A08"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A08",
           "source_refs": [
             "packet:E03",
             "gmt:E03"
@@ -4395,6 +6878,20 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "K02"
+          ],
+          "decision_full_claim": [
+            "A08"
+          ],
+          "decision_status": {
+            "A08": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A08"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A08",
           "source_refs": [
             "packet:E04",
             "gmt:E04"
@@ -4417,6 +6914,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A09"
+          ],
+          "decision_status": {
+            "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A09"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A09",
           "source_refs": [
             "packet:F01",
             "gmt:F01"
@@ -4439,6 +6949,20 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "A05"
+          ],
+          "decision_full_claim": [
+            "A09"
+          ],
+          "decision_status": {
+            "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A09"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A09",
           "source_refs": [
             "packet:F02",
             "gmt:F02"
@@ -4461,6 +6985,26 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "A05"
+          ],
+          "decision_full_claim": [
+            "A09",
+            "S03",
+            "S07"
+          ],
+          "decision_status": {
+            "A09": "FORK_FORWARD_CONTRACT_REQUIRED",
+            "S03": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "A09",
+            "S03",
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A09,S03,S07",
           "source_refs": [
             "packet:F03",
             "gmt:F03"
@@ -4485,6 +7029,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A09"
+          ],
+          "decision_status": {
+            "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A09"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A09",
           "source_refs": [
             "packet:F04",
             "gmt:F04"
@@ -4507,6 +7064,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A09"
+          ],
+          "decision_status": {
+            "A09": "FORK_FORWARD_CONTRACT_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A09"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A09",
           "source_refs": [
             "packet:G01",
             "gmt:G01"
@@ -4529,6 +7099,26 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01",
+            "K02"
+          ],
+          "decision_full_claim": [
+            "A10",
+            "S05",
+            "S07"
+          ],
+          "decision_status": {
+            "A10": "GENERATOR_SCOPE_SELECTION_REQUIRED",
+            "S05": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+            "S07": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD"
+          },
+          "full_original_decision_blockers": [
+            "A10",
+            "S05",
+            "S07"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A10,S05,S07",
           "source_refs": [
             "packet:G02",
             "gmt:G02"
@@ -4551,6 +7141,19 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K01"
+          ],
+          "decision_full_claim": [
+            "A10"
+          ],
+          "decision_status": {
+            "A10": "GENERATOR_SCOPE_SELECTION_REQUIRED"
+          },
+          "full_original_decision_blockers": [
+            "A10"
+          ],
+          "full_original_readiness": "HOLD_DECISION_A10",
           "source_refs": [
             "packet:G03",
             "gmt:G03"
@@ -4575,6 +7178,23 @@
           "review_pr": null,
           "protected_integration": "NONE",
           "protected_ci": null,
+          "decision_prerequisites": [
+            "K00",
+            "K01",
+            "K02"
+          ],
+          "decision_full_claim": [
+            "K00",
+            "K01",
+            "K02"
+          ],
+          "decision_status": {
+            "K00": "GOVERNING_SOURCE_PRESENT__LOCAL_CODEX_CUSTODY_UNVERIFIED",
+            "K01": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST",
+            "K02": "ESTABLISHED_BUT_NATIVE_RULES_HELD"
+          },
+          "full_original_decision_blockers": [],
+          "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
           "source_refs": [
             "packet:G04",
             "gmt:G04"
@@ -4624,6 +7244,12 @@
     },
     "holds": [
       {
+        "kind": "REAL_MECHANISM_WORKER_RETURN",
+        "scope": "AUTOMATIC_CURRENTNESS_R1",
+        "owner": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+        "reason": "RETURNED_REVIEW_PENDING"
+      },
+      {
         "kind": "BROWSER_OWNERSHIP",
         "scope": "issue_1008",
         "owner": "user-operated Browser",
@@ -4660,7 +7286,56 @@
         "reason": "native science, actor knowledge and human authority remain HELD"
       }
     ],
-    "reconciliation_required": [],
+    "reconciliation_required": [
+      {
+        "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+        "expected_evidence": "authenticated issue status and updated_at",
+        "owner": "SOROK HQ + authenticated GitHub connector",
+        "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+        "source_kind": "LIVE_GITHUB",
+        "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+        "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+        "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+        "status_coverage": "REF_SHA_ONLY",
+        "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+      },
+      {
+        "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+        "expected_evidence": "authenticated issue status and updated_at",
+        "owner": "SOROK HQ + authenticated GitHub connector",
+        "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+        "source_kind": "LIVE_GITHUB",
+        "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+        "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+        "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+        "status_coverage": "REF_SHA_ONLY",
+        "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+      },
+      {
+        "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+        "expected_evidence": "authenticated issue status and updated_at",
+        "owner": "SOROK HQ + authenticated GitHub connector",
+        "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+        "source_kind": "LIVE_GITHUB",
+        "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+        "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+        "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+        "status_coverage": "REF_SHA_ONLY",
+        "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+      },
+      {
+        "what_changed": "GITHUB_PR_STATUS_ADVANCED pr:1095",
+        "expected_evidence": "live state/merged/updated_at/head matching the expected baseline",
+        "owner": "SOROK HQ + authenticated GitHub connector",
+        "next_action": "reconcile the changed PR status and re-run the relevant receiving",
+        "source_kind": "LIVE_GITHUB",
+        "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+        "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+        "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+        "status_coverage": "REF_SHA_ONLY",
+        "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+      }
+    ],
     "baseline_replay": [
       {
         "event_id": "review:ec26aafdf4f8b9286d45141cdfd3f19575a524d55a0c3edc9f7714cdce1c0788",
@@ -4704,7 +7379,7 @@
     "controller_integration": {
       "installed_controller": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115",
       "hook": "completion_events.py optional COMPLETION_SOROK_CURRENTNESS",
-      "hook_state": "REAL_LOCAL_RETURN_INTAKEN",
+      "hook_state": "REAL_MECHANISM_REVIEW_INTAKEN",
       "original_controller_hashes": {
         "launch.py": "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1",
         "completion_events.py": "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63"
@@ -4716,9 +7391,102 @@
     "frozen_projection_adoption": "PENDING_INDEPENDENT_RECEIVING",
     "mechanism_review": {
       "id": "AUTOMATIC_CURRENTNESS_R1",
-      "state": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
-      "implementation_commit": null,
-      "review_receipt": null
+      "state": "REVISE_EXACT_DEFECT",
+      "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+      "review_receipt": {
+        "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
+        "task_id": "AUTOMATIC_CURRENTNESS_R1",
+        "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+        "implementation_code_sha": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0",
+        "test_code_sha": "202e81d85d78e4d158a43bfcfa55a818149bf8fd",
+        "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+        "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "reviewer_role": "distinct_independent_nonauthor",
+        "review_commit": "f8006235266aa618963b186e5c357bf92be830b3",
+        "review_pr": null,
+        "verdict": "REVISE_EXACT_DEFECT",
+        "engineering_verdict": "REVISE_EXACT_DEFECT",
+        "scientific_verdict": "HELD",
+        "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+        "accept_scoped": false,
+        "scope": "FOCUSED_SOURCE_CORRECTION_RECEIVING_ONLY; five R1 reds rechecked; authenticated live refs/PR status observed; issue/comment 403 source-authority hold; material event/run auth still incomplete; no protected/native/full claim",
+        "grade": "SOURCEFREE_S2_ONLY",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "protected_ci": "UNAVAILABLE_BILLING",
+        "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+        "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+        "source_documents": [
+          {
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+            "git_blob": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0"
+          },
+          {
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+            "git_blob": "202e81d85d78e4d158a43bfcfa55a818149bf8fd"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/VERDICT.json",
+            "git_blob": "1e3fe0ae4200f15451ffc7867ba8b6d23bb4114e"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/EVIDENCE.json",
+            "git_blob": "80449ca7f659be735a5f4e8d88581fc31d085760"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/00_RECEIVING.md",
+            "git_blob": "539667770255c3f4453c7207a1731534cfb87775"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/G5_HANDOFF.md",
+            "git_blob": "c66b5b8df39702546ffceb18b8edea8a1dfd7203"
+          }
+        ],
+        "reviewed_at_utc": "2026-11-16T05:47:58.688618+00:00",
+        "reasons": [
+          "five R1 reds materially repaired",
+          "REJECTION is unauthenticated public intake and changed B01 to REJECTED",
+          "PROTECTED_INTEGRATION is unauthenticated public intake and minted B05 protected PASS",
+          "GITHUB_OBSERVATION accepts fabricated source identity/digest as live truth",
+          "self-consistent fabricated WORKER_RETURN and REVIEWER runs are accepted",
+          "review verdict comparison uses startswith, not exact equality"
+        ],
+        "remaining_holds": {
+          "code": "REVISE_EXACT_DEFECT on material event/run auth; exact verdict equality",
+          "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; only refs/SHA and four watched PR statuses observed",
+          "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
+          "native_science_actor_human": "HELD",
+          "protected_merge": "none"
+        },
+        "runtime_intake": {
+          "manual_fabrication": false,
+          "path": "AUTOMATIC_INSTALLED_CONTROLLER_HOOK_AFTER_REAL_PROCESS_EXIT",
+          "expected_source": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+          "expected_role": "REVIEWER",
+          "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu"
+        },
+        "terminal": "STOP"
+      },
+      "review_run": {
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+        "job_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+        "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "grant_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1-grant",
+        "completion_sha256": "725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
+        "binding_sha256": "851149ddb9a400b8ecaf70eb2e69fa734a2f4024c6250186ffa151123b49913b",
+        "launch_sha256": "73bb1081c8065e2720bad27c8204dadc83ad078f03db40a088401a3ba2507c7c",
+        "return_sha256": "ef189c0f26b2cdf3738df7cd8b438106024bea9e26372b510efb2b344eba79c9",
+        "role": "REVIEWER"
+      },
+      "verdict_artifact": {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/VERDICT.json",
+        "git_blob": "1e3fe0ae4200f15451ffc7867ba8b6d23bb4114e",
+        "verdict": "REVISE_EXACT_DEFECT"
+      },
+      "verdict": "REVISE_EXACT_DEFECT",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "review_commit": "f8006235266aa618963b186e5c357bf92be830b3",
+      "review_scope": "FOCUSED_SOURCE_CORRECTION_RECEIVING_ONLY; five R1 reds rechecked; authenticated live refs/PR status observed; issue/comment 403 source-authority hold; material event/run auth still incomplete; no protected/native/full claim",
+      "replay": false
     },
     "next_non_dispatch_action": null,
     "recommended_next": {
@@ -4733,14 +7501,824 @@
         "evidence": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/controller_demo_state/sorok-automatic-currentness-real-return-20261115T224855/events + completion.json; hook SOROK_CURRENTNESS_INTAKE_FAILED with argparse --config error; superseded by success 224953; no return artifact",
         "owner": "SOROK HQ/controller owner",
         "reason": "explicitly inspected failed infrastructure qualification attempt; retained as history",
-        "event_id": "resolve:6e782e1efb80a048d05233bff6b8624ad4c55860c1b8e817f4d254433347f293"
+        "event_id": "resolve:6e782e1efb80a048d05233bff6b8624ad4c55860c1b8e817f4d254433347f293",
+        "resolution_key": "03b45b7389e2ecdbf298e8bb2401132457f82640d4e99aec41513ed5adadd2ff"
       },
       {
         "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
         "evidence": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/controller_demo_state/sorok-automatic-currentness-real-return-20261115T224925/events + completion.json; hook SOROK_CURRENTNESS_INTAKE_FAILED RETURN_ARTIFACT_MISSING; superseded by success 224953",
         "owner": "SOROK HQ/controller owner",
         "reason": "explicitly inspected failed infrastructure qualification attempt; retained as history",
-        "event_id": "resolve:727e6a8ac878bb8bb91598aa74a55f0f8f19eac4dbf9694e392bcc9b99818fee"
+        "event_id": "resolve:727e6a8ac878bb8bb91598aa74a55f0f8f19eac4dbf9694e392bcc9b99818fee",
+        "resolution_key": "a07f187e58eea865c078f9186d5c0075474276b8131d7e62a1a14953011c5784"
+      },
+      {
+        "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+        "item_digest": "23c01b5330c27dc1893e2f3a809ff3a6957f15f62aa3609ff98dc1dd2c88878f",
+        "source_digest": "bf05c85c0d640348d7c881174c2624f006de8b3ddbbd88f89292a5b44c3bedf0",
+        "checkpoint_id": "b707d33b8a0cb2802e5908d397f7fbad0259ddde631fbd7fe75633cea12c2c69",
+        "event_id": "resolve:962f14cf3997eeec62b5e0774f52fc59e68df8086e7fd2ca518c4c1f5f1705dc",
+        "recorded_at": "2026-11-16T05:09:10.199246+00:00",
+        "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+        "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+        "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+        "resolution_key": "66717f51add78226b46409ca9a8b68601ce15d2f5fa97ce9ed38aaee39ac082b"
+      },
+      {
+        "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+        "item_digest": "05143e5fec9ed886eb75e3e1e430f73f10179712fa849e37a5d0f2ecee9995bb",
+        "source_digest": "629c3b83002d58ce8118c5005f3394a689fb0d9b4dad75956035e662102c5595",
+        "checkpoint_id": "86dc81a5f5279a354ee402ecc0b56df53f5c6818eacde443e158d8d8280d21a3",
+        "event_id": "resolve:6914585156a154029ee0119e187505b714654225b7d834f451515cee4f84388a",
+        "recorded_at": "2026-11-16T05:09:10.346977+00:00",
+        "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+        "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+        "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+        "resolution_key": "78e1d846ef25d52c61887289a1c218d604dbb8fe4cc811f2ba06df8ae3a8e3fe"
+      },
+      {
+        "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855",
+        "item_digest": "221ce0f96154cd1eeddac827c6dc8200578fdd32bcd664c7e3a9bfa9356b3b56",
+        "source_digest": "baff38d8159012b96aacc5fedc093db0079614fc743ed1e1692ed140a382174f",
+        "checkpoint_id": "94c707a5e28e63d634e7aca8ab6eb32833b5b40db9df1be02644fdb57041cf69",
+        "event_id": "resolve:fba9845e7fa9ece9e3a454e22386ad9574947472fea6e203a5202f2d1c4e4dfc",
+        "recorded_at": "2026-11-16T05:09:10.505120+00:00",
+        "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+        "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+        "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+        "resolution_key": "083690a124158ccd4eaaa54181489359e1d49d2c7f656c21c15bf21549d4eeb4"
+      },
+      {
+        "what_changed": "LEGACY_UNVERIFIED_RESOLUTION UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925",
+        "item_digest": "9a2905fdb00a60da8ccca7b756f9d527e9fd135ebac0f8a4b7dfae32a5d3d771",
+        "source_digest": "d0f76a057d33525b617327f38ec12ce8b23370256b27ee5e6d773ebe9582ad78",
+        "checkpoint_id": "3a9c5eeb5b47c5e1c157687fd4b43623ac32f416687d249c5f4117d05a5d3bc4",
+        "event_id": "resolve:59d39c6ce02c77712258a36b0f2b5972312f3e398ed2412281af9af8a9453248",
+        "recorded_at": "2026-11-16T05:09:10.659683+00:00",
+        "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+        "authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+        "authorization_sha256": "b9c4c555d87d9f6e866bccafcba99bf1931605bc668b71ccbd428dc7eac1d6c5",
+        "resolution_key": "77c41e5e0ad47e5b8519a345c1254f1495bc556ccb3519dea5360019af956162"
+      }
+    ],
+    "mechanism_worker_return": {
+      "event_id": "completion:38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f",
+      "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-repair-20261115-r2",
+      "job_id": "sorok-programma-automatic-currentness-repair-20261115-r2",
+      "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "grant_id": "sorok-programma-automatic-currentness-repair-20261115-r2-grant",
+      "role": "IMPLEMENTER",
+      "exit_code": 0,
+      "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/WORKER_RETURN.json",
+      "return_sha256": "7403e06eb52a57d6aee169dfd2416d7b2c5b0f689a3aff243f94dc082f2c4b08",
+      "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+      "runtime_blob": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0",
+      "test_blob": "202e81d85d78e4d158a43bfcfa55a818149bf8fd",
+      "execution_state": "RETURNED_REVIEW_PENDING",
+      "review_required": true,
+      "completion_sha256": "38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f"
+    },
+    "mechanism_review_history": [
+      {
+        "event_id": "historical-review:c152a7410990cd22d52b1616cdc80f7c7c76a0e6fb343324ab9cdaea9b02db6e",
+        "historical": true,
+        "automatic_intake": false,
+        "posthoc_registration": true,
+        "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-independent-20261115-r1",
+        "job_id": "sorok-programma-automatic-currentness-independent-20261115-r1",
+        "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "completion_sha256": "c152a7410990cd22d52b1616cdc80f7c7c76a0e6fb343324ab9cdaea9b02db6e",
+        "implementation_commit": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+        "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "review_commit": "4de807fa3f27c3aab5d443083b6cb020c80fda31",
+        "verdict": "REVISE_EXACT_DEFECT",
+        "verified_documents": [
+          {
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+            "git_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4"
+          },
+          {
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+            "git_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/VERDICT.json",
+            "git_blob": "3926c907fb3720a64d9acd18453c1053253ee29b"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/EVIDENCE.json",
+            "git_blob": "4d25968f47f9d3b90e9d74c72aa07d5058e54cfc"
+          },
+          {
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G5_HANDOFF.md",
+            "git_blob": "50218f1cd3882054ecce2c48ba68dbba3a885937"
+          }
+        ]
+      },
+      {
+        "event_id": "completion:725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
+        "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+        "verdict": "REVISE_EXACT_DEFECT",
+        "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "review_commit": "f8006235266aa618963b186e5c357bf92be830b3",
+        "review_run": {
+          "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+          "job_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "grant_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1-grant",
+          "completion_sha256": "725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
+          "binding_sha256": "851149ddb9a400b8ecaf70eb2e69fa734a2f4024c6250186ffa151123b49913b",
+          "launch_sha256": "73bb1081c8065e2720bad27c8204dadc83ad078f03db40a088401a3ba2507c7c",
+          "return_sha256": "ef189c0f26b2cdf3738df7cd8b438106024bea9e26372b510efb2b344eba79c9",
+          "role": "REVIEWER"
+        },
+        "replay": false
+      }
+    ],
+    "mechanism_review_original": {
+      "event_id": "historical-review:c152a7410990cd22d52b1616cdc80f7c7c76a0e6fb343324ab9cdaea9b02db6e",
+      "historical": true,
+      "automatic_intake": false,
+      "posthoc_registration": true,
+      "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-independent-20261115-r1",
+      "job_id": "sorok-programma-automatic-currentness-independent-20261115-r1",
+      "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "completion_sha256": "c152a7410990cd22d52b1616cdc80f7c7c76a0e6fb343324ab9cdaea9b02db6e",
+      "implementation_commit": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+      "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+      "review_commit": "4de807fa3f27c3aab5d443083b6cb020c80fda31",
+      "verdict": "REVISE_EXACT_DEFECT",
+      "verified_documents": [
+        {
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+          "git_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4"
+        },
+        {
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+          "git_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347"
+        },
+        {
+          "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/VERDICT.json",
+          "git_blob": "3926c907fb3720a64d9acd18453c1053253ee29b"
+        },
+        {
+          "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/EVIDENCE.json",
+          "git_blob": "4d25968f47f9d3b90e9d74c72aa07d5058e54cfc"
+        },
+        {
+          "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G5_HANDOFF.md",
+          "git_blob": "50218f1cd3882054ecce2c48ba68dbba3a885937"
+        }
+      ]
+    },
+    "source_authority_holds": [],
+    "decision_nodes": [
+      {
+        "id": "K00",
+        "decision_kind": "SETTLED_PROGRAMMA_LAW",
+        "depends_on": [],
+        "status": "GOVERNING_SOURCE_PRESENT__LOCAL_CODEX_CUSTODY_UNVERIFIED",
+        "determination": "Reconcile exact full Nov11 SOROK documents and original source/owner/authority; do not redecide already settled rules",
+        "may_proceed_before_full_resolution": "Execute already source-bounded mechanics without new law",
+        "blocks_full_claim": "Any new governing theory/owner rule",
+        "issue_ids": [
+          "SA-24"
+        ],
+        "level": 0,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "SETTLED_LAW"
+      },
+      {
+        "id": "K01",
+        "decision_kind": "SETTLED_PROGRAMMA_LAW",
+        "depends_on": [
+          "K00"
+        ],
+        "status": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST",
+        "determination": "P2 objective world and existing time owner; P3 actor organization; parent/child separate; objective occurrence, actor experience and public narration never conflated",
+        "may_proceed_before_full_resolution": "Reuse existing qualified stores, receipts and owner ABIs",
+        "blocks_full_claim": "General world/actor semantics violating original owner boundaries",
+        "issue_ids": [
+          "SA-01",
+          "SA-04",
+          "SA-10",
+          "SA-13"
+        ],
+        "level": 1,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "SETTLED_LAW"
+      },
+      {
+        "id": "K02",
+        "decision_kind": "SETTLED_PROGRAMMA_LAW",
+        "depends_on": [
+          "K00"
+        ],
+        "status": "ESTABLISHED_BUT_NATIVE_RULES_HELD",
+        "determination": "Separate opportunity, activation/inhibition, immediate response, durable formation, memory and genuinely evaluated nochange; no elapsed-time trait delta",
+        "may_proceed_before_full_resolution": "Build typed sourcefree read/write/refusal/negative operations",
+        "blocks_full_claim": "Scientific claims conflating these processes",
+        "issue_ids": [
+          "SA-14",
+          "SA-18",
+          "SA-19",
+          "SA-25"
+        ],
+        "level": 1,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "SETTLED_LAW"
+      },
+      {
+        "id": "A01",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "K01"
+        ],
+        "status": "EXECUTIVE_SELECTION_REQUIRED",
+        "determination": "Select actual household account, tenancy/controller and focal Nadia versus adult/parent spending authority; preserve valid fixed-A workshop fixture",
+        "may_proceed_before_full_resolution": "Keep existing fixed-A house and material transactions as bounded fixture",
+        "blocks_full_claim": "J1/J2 childhood household financing and general account ABI",
+        "issue_ids": [
+          "SA-01",
+          "SA-03"
+        ],
+        "level": 2,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A02",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "K01"
+        ],
+        "status": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+        "determination": "Map calendar/as-of age and owner clock, require material conditions effective BEFORE relevant event admission, allow subsequent after-event progress; do not equate all action ticks with days",
+        "may_proceed_before_full_resolution": "Use explicit S46_TEST_ONLY one-tick/day fixture and incremental period reader",
+        "blocks_full_claim": "General multi-year event admission and changed-period causal first consumer",
+        "issue_ids": [
+          "SA-05",
+          "SA-06"
+        ],
+        "level": 2,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A03",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "A01",
+          "A02"
+        ],
+        "status": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+        "determination": "Choose recurring obligation cadence, due/partial/unpaid/discharged semantics, source-qualified balances and what remains outstanding after refusal; not automatic eviction",
+        "may_proceed_before_full_resolution": "Preserve bounded one-period rent attempt as test-only fixture",
+        "blocks_full_claim": "J2 ordinary material reproduction and rent/arrears claims",
+        "issue_ids": [
+          "SA-02",
+          "SA-03"
+        ],
+        "level": 3,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A04",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "A01",
+          "A02",
+          "K01"
+        ],
+        "status": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+        "determination": "Decide own mother employment/funding/care/energy and dated contributions distinct from fixed-A employment, with source-qualified activity and authority",
+        "may_proceed_before_full_resolution": "Preserve C02 parent-local material/readable work plus separate A B02 fixture",
+        "blocks_full_claim": "General independent mother longitudinal material history",
+        "issue_ids": [
+          "SA-04",
+          "SA-08"
+        ],
+        "level": 3,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A05",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "K01",
+          "A02"
+        ],
+        "status": "ESTABLISHED_EPISTEMIC_LAW__PROJECTION_ABI_NEEDS_PROOF",
+        "determination": "Qualify world/proposal context separately from actor-visible access; private other data excluded; present encounter selection need not require fresh stimulus for enduring anticipation",
+        "may_proceed_before_full_resolution": "Build distinct world and actor readsets with current source, provenance and privacy negatives",
+        "blocks_full_claim": "Actor can know hidden parent/world facts through provider, or first-consumer claim without qualification",
+        "issue_ids": [
+          "SA-11",
+          "SA-12",
+          "SA-13",
+          "SA-15"
+        ],
+        "level": 3,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "SETTLED_LAW"
+      },
+      {
+        "id": "A06",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "A04",
+          "K01"
+        ],
+        "status": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+        "determination": "Distinguish external/admin/harness commands from parent-owned choice and independent performed actor acts; keep parent event admission distinct",
+        "may_proceed_before_full_resolution": "Build parent event admission and bounded externally supplied test inputs with honest source",
+        "blocks_full_claim": "Independent-parent-agency claims from externally puppeted decisions",
+        "issue_ids": [
+          "SA-08",
+          "SA-10"
+        ],
+        "level": 4,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A07",
+        "decision_kind": "BOUNDED_MODEL_CHOICE",
+        "depends_on": [
+          "A05",
+          "A02"
+        ],
+        "status": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+        "determination": "Choose minimal source-qualified audibility/exposure/attention for selected mother-child encounter, keeping heard, not-heard and perceived-but-misunderstood distinct",
+        "may_proceed_before_full_resolution": "Use same-location auditory receipt clearly labeled as sourcefree fixture",
+        "blocks_full_claim": "General Nadia hearing and normal interpretation claims",
+        "issue_ids": [
+          "SA-11",
+          "SA-12"
+        ],
+        "level": 4,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "S01",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "A04",
+          "A06",
+          "K02"
+        ],
+        "status": "OPEN__BOUNDED_PARENT_SELECTION_ONLY",
+        "determination": "Parent practical selection across motives, projects, care, contradiction and mistaken beliefs; feasibility != wanting != acting",
+        "may_proceed_before_full_resolution": "Compute feasible alternatives; experiment with explicit nonnative budgeting hypothesis",
+        "blocks_full_claim": "General autonomous parental decision producer and valid motive explanations",
+        "issue_ids": [
+          "SA-07",
+          "SA-08",
+          "SA-25"
+        ],
+        "level": 5,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "S02",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "A06",
+          "A05",
+          "S01"
+        ],
+        "status": "OPEN__CALLER_TEXT_NOT_GENERATED_INTENTION",
+        "determination": "Parent's communicative intention and outward utterance from her own situated organization; hidden reason not proven causal by supplied text",
+        "may_proceed_before_full_resolution": "Commit actual parent-attributed speech events from caller fixture with private/public isolation",
+        "blocks_full_claim": "General independent parental speech generation",
+        "issue_ids": [
+          "SA-09"
+        ],
+        "level": 6,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "S03",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "K02",
+          "A05",
+          "A07"
+        ],
+        "status": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+        "determination": "Actor-local immediate interpretation/appraisal, conditional recruitment of history, simultaneous motives and response; neither stale cue nor universally fresh-event-only rule",
+        "may_proceed_before_full_resolution": "Run scoped P3 candidate rules with event access and real later reader",
+        "blocks_full_claim": "Scientifically adequate general CAN-008 and full Nadia psychological response",
+        "issue_ids": [
+          "SA-12",
+          "SA-15",
+          "SA-17",
+          "SA-25"
+        ],
+        "level": 5,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "S04",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "S03",
+          "K02",
+          "A02"
+        ],
+        "status": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+        "determination": "Durable acquired-practice formation versus prior competence, mere opportunity, assistance, activation or cue; source-qualified later performed use",
+        "may_proceed_before_full_resolution": "Reuse P3 state/target store, bounded hypothetical acquisition with exact sources",
+        "blocks_full_claim": "Native acquired practice and unrestricted developmental state",
+        "issue_ids": [
+          "SA-14",
+          "SA-17"
+        ],
+        "level": 6,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "S05",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "S03",
+          "S04",
+          "K02"
+        ],
+        "status": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+        "determination": "Target/occasion-sensitive evaluated psychological NO_CHANGE, not absence of rule or absence of a visible difference",
+        "may_proceed_before_full_resolution": "Keep MATERIAL UNCHANGED and MISSING_RULE separate; test bounded O07 rival",
+        "blocks_full_claim": "General psychological nochange or native Rule T negative",
+        "issue_ids": [
+          "SA-19"
+        ],
+        "level": 7,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "S06",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "K02",
+          "A05",
+          "S03"
+        ],
+        "status": "OPEN__ADP_MEMORY_ISSUANCE_HELD",
+        "determination": "Formation/access/recollection/first-person warrant separately from archived event and model narration",
+        "may_proceed_before_full_resolution": "Preserve memory custody, no first-person claims without rule and evidence",
+        "blocks_full_claim": "Native memory/recollection",
+        "issue_ids": [
+          "SA-18"
+        ],
+        "level": 6,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "S07",
+        "decision_kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "S03",
+          "S04",
+          "K01"
+        ],
+        "status": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD",
+        "determination": "Cross-relation transfer, contradictory organizations, latent/active inhibitions and changing relationships without forced winner",
+        "may_proceed_before_full_resolution": "Store multiple history/relations, withhold unauthorized portable effects",
+        "blocks_full_claim": "General transfer and unified dominant motive rules",
+        "issue_ids": [
+          "SA-16",
+          "SA-17",
+          "SA-25"
+        ],
+        "level": 7,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM"
+      },
+      {
+        "id": "A08",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "A01",
+          "A02",
+          "A04",
+          "A06"
+        ],
+        "status": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED",
+        "determination": "Select ordered parent/market/world/P3 lock, rollback, event-keyed idempotence and crash-recovery boundary under existing owners",
+        "may_proceed_before_full_resolution": "Build isolated owner transaction/replay tests and fail-stop markers",
+        "blocks_full_claim": "Composite whole-life event commit/reopen without partial orphan state",
+        "issue_ids": [
+          "SA-21",
+          "SA-22"
+        ],
+        "level": 5,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A09",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "A08",
+          "A02",
+          "A05"
+        ],
+        "status": "FORK_FORWARD_CONTRACT_REQUIRED",
+        "determination": "Select inherited source read versus fork-local authorized new effects, preserve immutable precontact and actor-private history",
+        "may_proceed_before_full_resolution": "Build cold importer with source-qualified refusal pending genuine fork write",
+        "blocks_full_claim": "J3 import/fork valid continuation",
+        "issue_ids": [
+          "SA-23"
+        ],
+        "level": 6,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "A10",
+        "decision_kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "depends_on": [
+          "A09",
+          "K02"
+        ],
+        "status": "GENERATOR_SCOPE_SELECTION_REQUIRED",
+        "determination": "Choose generator's sourcefree parameter variation, ordinary silence/holding coverage and controls against manual backsolving; separate native-person claim",
+        "may_proceed_before_full_resolution": "Build deterministic seeds and reproduce sourcefree fixture cohort",
+        "blocks_full_claim": "J4 multi-person generalization from a single curated script",
+        "issue_ids": [
+          "SA-20",
+          "SA-25"
+        ],
+        "level": 7,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+      },
+      {
+        "id": "H01",
+        "decision_kind": "EXTERNAL_AUTHORITY_HOLD",
+        "depends_on": [
+          "K00",
+          "K02"
+        ],
+        "status": "EXTERNAL_ISSUANCE_HELD",
+        "determination": "Original CAN/ADP Rules A/T, memory, Pyat source rights, independent actor/person rights, S14/human A5, protected CAS and native source reviewers remain separately competent",
+        "may_proceed_before_full_resolution": "All lawful sourcefree engineering, provenance, explicit unissued behavior",
+        "blocks_full_claim": "Native source/scientific/actor/human/production promotion",
+        "issue_ids": [
+          "SA-14",
+          "SA-18",
+          "SA-19",
+          "SA-24"
+        ],
+        "level": 2,
+        "full_original_claim": "NOT_ESTABLISHED",
+        "readiness": "HOLD_SOURCE_AUTHORITY"
+      }
+    ],
+    "decision_readiness": [
+      {
+        "id": "K00",
+        "kind": "SETTLED_PROGRAMMA_LAW",
+        "status": "GOVERNING_SOURCE_PRESENT__LOCAL_CODEX_CUSTODY_UNVERIFIED",
+        "readiness": "SETTLED_LAW",
+        "depends_on": [],
+        "blocks_full_claim": "Any new governing theory/owner rule"
+      },
+      {
+        "id": "K01",
+        "kind": "SETTLED_PROGRAMMA_LAW",
+        "status": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST",
+        "readiness": "SETTLED_LAW",
+        "depends_on": [
+          "K00"
+        ],
+        "blocks_full_claim": "General world/actor semantics violating original owner boundaries"
+      },
+      {
+        "id": "K02",
+        "kind": "SETTLED_PROGRAMMA_LAW",
+        "status": "ESTABLISHED_BUT_NATIVE_RULES_HELD",
+        "readiness": "SETTLED_LAW",
+        "depends_on": [
+          "K00"
+        ],
+        "blocks_full_claim": "Scientific claims conflating these processes"
+      },
+      {
+        "id": "A01",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "EXECUTIVE_SELECTION_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "K01"
+        ],
+        "blocks_full_claim": "J1/J2 childhood household financing and general account ABI"
+      },
+      {
+        "id": "A02",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "EXECUTIVE_MAPPING_REQUIRED__PRE_EVENT_RULE_ALREADY_SETTLED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "K01"
+        ],
+        "blocks_full_claim": "General multi-year event admission and changed-period causal first consumer"
+      },
+      {
+        "id": "A03",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "EXECUTIVE_SCOPE_SELECTION_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A01",
+          "A02"
+        ],
+        "blocks_full_claim": "J2 ordinary material reproduction and rent/arrears claims"
+      },
+      {
+        "id": "A04",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "EXECUTIVE_OWNER_ABI_SELECTION_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A01",
+          "A02",
+          "K01"
+        ],
+        "blocks_full_claim": "General independent mother longitudinal material history"
+      },
+      {
+        "id": "A05",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "ESTABLISHED_EPISTEMIC_LAW__PROJECTION_ABI_NEEDS_PROOF",
+        "readiness": "SETTLED_LAW",
+        "depends_on": [
+          "K01",
+          "A02"
+        ],
+        "blocks_full_claim": "Actor can know hidden parent/world facts through provider, or first-consumer claim without qualification"
+      },
+      {
+        "id": "A06",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "EXECUTIVE_ISSUER_AND_INTENT_BOUNDARY_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A04",
+          "K01"
+        ],
+        "blocks_full_claim": "Independent-parent-agency claims from externally puppeted decisions"
+      },
+      {
+        "id": "A07",
+        "kind": "BOUNDED_MODEL_CHOICE",
+        "status": "SOURCEFREE_SCENE_FIDELITY_SELECTION_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A05",
+          "A02"
+        ],
+        "blocks_full_claim": "General Nadia hearing and normal interpretation claims"
+      },
+      {
+        "id": "S01",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__BOUNDED_PARENT_SELECTION_ONLY",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "A04",
+          "A06",
+          "K02"
+        ],
+        "blocks_full_claim": "General autonomous parental decision producer and valid motive explanations"
+      },
+      {
+        "id": "S02",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__CALLER_TEXT_NOT_GENERATED_INTENTION",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "A06",
+          "A05",
+          "S01"
+        ],
+        "blocks_full_claim": "General independent parental speech generation"
+      },
+      {
+        "id": "S03",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__EXPERIMENTAL_RECRUITMENT_AND_RESPONSE",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "K02",
+          "A05",
+          "A07"
+        ],
+        "blocks_full_claim": "Scientifically adequate general CAN-008 and full Nadia psychological response"
+      },
+      {
+        "id": "S04",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__ORIGINAL_RULE_T_NOT_ISSUED",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "S03",
+          "K02",
+          "A02"
+        ],
+        "blocks_full_claim": "Native acquired practice and unrestricted developmental state"
+      },
+      {
+        "id": "S05",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__NO_SENSITIVE_NATIVE_EVALUATOR",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "S03",
+          "S04",
+          "K02"
+        ],
+        "blocks_full_claim": "General psychological nochange or native Rule T negative"
+      },
+      {
+        "id": "S06",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__ADP_MEMORY_ISSUANCE_HELD",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "K02",
+          "A05",
+          "S03"
+        ],
+        "blocks_full_claim": "Native memory/recollection"
+      },
+      {
+        "id": "S07",
+        "kind": "OPEN_SCIENTIFIC_MECHANISM",
+        "status": "OPEN__RELATION_SPECIFIC_AND_CONTRADICTION_RULES_HELD",
+        "readiness": "OPEN_SCIENTIFIC_MECHANISM",
+        "depends_on": [
+          "S03",
+          "S04",
+          "K01"
+        ],
+        "blocks_full_claim": "General transfer and unified dominant motive rules"
+      },
+      {
+        "id": "A08",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "ENGINEERING_TRANSACTION_CONTRACT_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A01",
+          "A02",
+          "A04",
+          "A06"
+        ],
+        "blocks_full_claim": "Composite whole-life event commit/reopen without partial orphan state"
+      },
+      {
+        "id": "A09",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "FORK_FORWARD_CONTRACT_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A08",
+          "A02",
+          "A05"
+        ],
+        "blocks_full_claim": "J3 import/fork valid continuation"
+      },
+      {
+        "id": "A10",
+        "kind": "EXECUTIVE_ARCHITECTURE_CHOICE",
+        "status": "GENERATOR_SCOPE_SELECTION_REQUIRED",
+        "readiness": "EXECUTIVE_OR_OWNER_DECISION_REQUIRED",
+        "depends_on": [
+          "A09",
+          "K02"
+        ],
+        "blocks_full_claim": "J4 multi-person generalization from a single curated script"
+      },
+      {
+        "id": "H01",
+        "kind": "EXTERNAL_AUTHORITY_HOLD",
+        "status": "EXTERNAL_ISSUANCE_HELD",
+        "readiness": "HOLD_SOURCE_AUTHORITY",
+        "depends_on": [
+          "K00",
+          "K02"
+        ],
+        "blocks_full_claim": "Native source/scientific/actor/human/production promotion"
       }
     ]
   }

@@ -25,8 +25,8 @@
 
 <!-- SOROK_RUNTIME_CURRENT_START -->
 ## SOROK automatic currentness — runtime reconciled
-<!-- SOROK_RUNTIME_GENERATION: 20 -->
-**Generation:** 20 | **Checkpoint:** `73472e3d45c649770b4a7b94ba9b1ea838b287a43d65ab8dfedfe6a5189b5b54` | **Updated:** 2026-11-16T03:55:53.850636+00:00
+<!-- SOROK_RUNTIME_GENERATION: 50 -->
+**Generation:** 50 | **Checkpoint:** `7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338` | **Updated:** 2026-11-16T05:48:51.470472+00:00
 **Frozen #1095 projection:** preserved as historical candidate; it is not rewritten as live intake.
 **Runtime adoption:** NO_PROTECTED_ADOPTION | **Protected CI:** PENDING_PROTECTED_CI_AND_ADOPTION
 **Authenticated GitHub checkpoint:** `3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7` (2026-11-16T03:54:06.994129+00:00)
@@ -34,6 +34,7 @@
 **Ready for scoped engineering:** NONE
 **Awaiting independent receiving:** B01, B02, B03, B04, C01, C02, C03, D01, D02, D03, E01
 **Holds and source-authority boundaries:**
+- REAL_MECHANISM_WORKER_RETURN | AUTOMATIC_CURRENTNESS_R1 | owner: ses_e21a481bfffefyvpxaeFaAOFvQ | RETURNED_REVIEW_PENDING
 - BROWSER_OWNERSHIP | issue_1008 | owner: user-operated Browser | A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED
 - BROWSER_OWNERSHIP | issue_1010 | owner: user-operated Browser | A_B_A_COMPLETED_G2_HELD
 - BROWSER_OWNERSHIP | issue_1012 | owner: user-operated Browser | NOT_LAUNCHED_WAITING_J1
@@ -41,7 +42,10 @@
 - CONTROLLER | persistent_dispatch | owner: existing SOROK owner | False
 - SCIENCE_AUTHORITY | ALL | owner: original CAN/ADP/Pyat/human issuers | native science, actor knowledge and human authority remain HELD
 **Reconciliation required:**
-- NONE at this authenticated checkpoint.
+- GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939 | expected: authenticated issue status and updated_at | owner: SOROK HQ + authenticated GitHub connector | next: wire an authenticated connector with issues read scope; keep status HOLD
+- GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008 | expected: authenticated issue status and updated_at | owner: SOROK HQ + authenticated GitHub connector | next: wire an authenticated connector with issues read scope; keep status HOLD
+- GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010 | expected: authenticated issue status and updated_at | owner: SOROK HQ + authenticated GitHub connector | next: wire an authenticated connector with issues read scope; keep status HOLD
+- GITHUB_PR_STATUS_ADVANCED pr:1095 | expected: live state/merged/updated_at/head matching the expected baseline | owner: SOROK HQ + authenticated GitHub connector | next: reconcile the changed PR status and re-run the relevant receiving
 **Real controller infrastructure returns:** 1 (review pending, not task acceptance)
 **Immutable historical review replays:** 3 (explicit replay, not new review)
 **Next non-dispatch action:** {"action": "RECEIVE", "owner": "S47/P2 objective world; P6 house.py", "task": "B01", "unmet_full_original_prereqs": []}

@@ -1,0 +1,68 @@
+# SOROK automatic currentness R1 — G5 exact command log
+# cwd: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+# shell: zsh; reviewer-owned scratch only; product read-only
+
+REPO=/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+REV=WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5
+RT=SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+LOGS=.local-logs/sorok-programma-automatic-currentness-independent-20261115-r1
+
+# 1. Identity / source pins
+git branch --show-current
+git rev-parse HEAD
+git cat-file -t 6164e595efcd176bb2ec9b75aa99074472a4c9b4
+git cat-file -t 6cf53b66cf6eff3f4ced4a24f79e163ec50fd347
+git cat-file -s 6164e595efcd176bb2ec9b75aa99074472a4c9b4
+git cat-file -s 6cf53b66cf6eff3f4ced4a24f79e163ec50fd347
+shasum -a 256 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+shasum -a 256 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
+git cat-file -p 6cf53b66cf6eff3f4ced4a24f79e163ec50fd347 | shasum -a 256
+
+# 2. Successful negative gap probe (all state under reviewer scratch)
+/usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B \
+  WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/probes/currentness_gap_probe.py \
+  > WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_stdout.log \
+  2> WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/evidence/gap_probe_time.log
+
+# 3. Public runtime CLI sequence exercised by the probe (same arguments)
+#    CFG points at the reviewer-owned sandbox pair/config; SANDBOX is under $LOGS.
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" init
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" startup --reconcile
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" status
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" intake-review --receipt "$SANDBOX/MECHANISM_REVIEW.json"
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" intake-review --receipt "$SANDBOX/FAKE_C05_REVIEW.json"
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" intake-event --event "$SANDBOX/STOP.json"
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" intake-event --event "$SANDBOX/RESUME.json"
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$CFG" resolve-reconciliation \
+  --what-changed AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE \
+  --evidence "arbitrary unverified local text" --owner fake-operator --reason "fake resolution"
+
+# Required mechanism receipt outcome (exit 1):
+# SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1
+
+# 4. Manual sandbox witnesses recorded in evidence/ (reviewer scratch)
+#    SANDBOX_CFG=$LOGS/sandbox/config.json
+#    The same init/startup/status/intake-review/intake-event/resolve-reconciliation
+#    commands were run with reviewer-authored fake C05 and event JSON; no product,
+#    author live pair, or author live config was written.
+#    Key observed files:
+#      evidence/sandbox_status_before.json
+#      evidence/sandbox_status_changed_baseline.json
+#      evidence/sandbox_status_fake_review.json
+#      evidence/sandbox_status_after_fake_events.json
+#      evidence/sandbox_missing_reconcile.json
+#      evidence/sandbox_status_after_resolve_persisted.json
+
+# 5. Receipt freeze (performed after the evidence commit)
+#    Evidence commit SHA is the receipt review_commit; receipt is a separate commit.
+#    Attempted intake on the sandbox after writing REVIEW_RECEIPT.json:
+# /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B "$RT" --config "$SANDBOX_CFG" \
+#   intake-review --receipt WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/REVIEW_RECEIPT.json
+#    Expected reviewer-visible runtime failure: TASK_UNKNOWN (mechanism dispatch defect).
+
+# 6. Evidence/receipt commits (no push, no product change)
+git add WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5
+git commit -m "review: freeze automatic currentness R1 G5 evidence (REVISE_EXACT_DEFECT)"
+# then write REVIEW_RECEIPT.json with the evidence commit SHA and commit only that file:
+git add WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/REVIEW_RECEIPT.json
+git commit -m "review: freeze automatic currentness R1 G5 receipt"
