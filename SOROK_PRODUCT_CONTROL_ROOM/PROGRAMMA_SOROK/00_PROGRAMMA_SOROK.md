@@ -1,5 +1,7 @@
 # PROGRAMMA SOROK — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **2026-11-15 SOURCE-GRADED WORK/DEPENDENCY ROSTER (ISOLATED CANDIDATE, NOT PROTECTED):** [32 — SOROK original 27-task G/M/T, 21 decision nodes, 25 source issues, full receiving/owner/first-consumer and external product backlog](32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md). It distinguishes seven already-protected sourcefree foundations, B05/C04/C05/CG-A independently accepted but unmerged, completed #1008/#1010 Browser returns, #1012/J1/J2 holds, and #1095 currentness engine reported active locally but not remotely verified. **Do not treat dated rows as live automatically reconciled authority.** #1095 static G5 is ADMIT_SCOPED candidate; live intake, dependency recomputation, cold start and protected CI still held. This pointer is documentary, not new science/HQ authority.
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: preserve the full historically developing person objective, build/reuse actual owner code, prove first-consumer causality, independent receiving where warranted, close at honest sourcefree grade. `MCR: LITE` defaults; full MCR-C applies only when expressly mandated or frozen. Native CAN/ADP, Pyat source, actor, human and product rights remain separate.
 
 
