@@ -333,14 +333,21 @@ def self_test(s, whole, md):
     expected_red("live-workers fabricated", lambda t: t["execution"].update(locally_verified_live_workers=0))
     expected_red("unreconciled source feed", lambda t: t.update(unreconciled_external_events="NONE"))
 
-    if md.replace("**Protected:**", "**Not-protected:**", 1) == md:
+    if "**Protected:**" not in md:
         failures.append("SELF_TEST_MD_MARKER_NOT_FOUND")
     else:
         altered = md.replace("**Protected:**", "**Not-protected:**", 1)
-        if START not in altered or END not in altered:
-            failures.append("SELF_TEST_MD_MARKERS_BROKEN")
-        elif altered[altered.index(START): altered.index(END)+len(END)] == render(s):
-            failures.append("SELF_TEST_MD_MISMATCH_NOT_DETECTED")
+        with tempfile.TemporaryDirectory() as td:
+            md_path = Path(td) / "altered.md"
+            md_path.write_text(altered)
+            result = subprocess.run(
+                [sys.executable, str(Path(__file__).resolve()), "--md-file",
+                 str(md_path), "--no-git", "--status"],
+                capture_output=True, text=True, timeout=30)
+            if (result.returncode != 1 or
+                    "SOROK_CURRENTNESS_RED: PAIRED_MD_JSON_DRIFT" not in result.stderr or
+                    "Traceback" in result.stderr):
+                failures.append("SELF_TEST_MD_MISMATCH_CLI_NOT_TYPED_RED")
 
     # Exercise actual CLI, not just validate(); must not traceback if MI is missing.
     mutated = copy.deepcopy(whole)
@@ -366,6 +373,8 @@ def main():
                         help="Checks frozen SHA identity; skips local merge ancestry/parent proof.")
     parser.add_argument("--state-file", type=Path, default=PROGRESS,
                         help="Explicit fixture input; never adopts or writes the supplied state.")
+    parser.add_argument("--md-file", type=Path, default=MARKDOWN,
+                        help="Optional fixture for adversarial MD/JSON projection tests.")
     args = parser.parse_args()
     errors = []
     try:
@@ -376,7 +385,7 @@ def main():
         errors.append("STATE_FILE_UNREADABLE " + str(exc))
     errors += validate(s, git=not args.no_git)
     try:
-        md = MARKDOWN.read_text()
+        md = args.md_file.read_text()
     except OSError as exc:
         md = ""
         errors.append("PAIRED_MD_UNREADABLE " + str(exc))
