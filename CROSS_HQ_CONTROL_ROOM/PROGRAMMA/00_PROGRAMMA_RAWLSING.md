@@ -1,5 +1,7 @@
 # PROGRAMMA RAWLSING — COMPLETE SHARED PRE-MAIN OPERATING FRONT DOOR
 
+> **PYAT ANVIL ARCHITECTURE WORKSHOP — OPEN DOCUMENTARY REASONING, NOT SHARED/ACTOR AUTHORITY:** [ANVIL full C11→DDM→Field Forge→world/person workshop](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/README.md). PYAT owns this scientific/engineering inquiry; SOROK and PRE-MAIN remain separately competent. No design, reviewer, CURRENT_PROGRESS or protected status is advanced by this pointer.
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: Understand → Specify → Execute → Falsify → Independently receive → Integrate. `MCR: LITE` is the low-ceremony default; `MCR: REQUIRED` preserves full MCR-C for expressly full-contract or previously frozen work. Do not dilute real science/source/actor rights, falsifiers, independent receiving or terminal scope. This overlay does not edit the frozen shared HQ rule tags below.
 
 
