@@ -1,0 +1,140 @@
+{
+  "original_challenge_probes": {
+    "c05_challenge1_leakage.py": {
+      "blob": "46d14bfadf1a20e1b69e8e7162d250a4c01daf19",
+      "sha256": "b7c0a465e24e73fb1de4208264a76594932d61c8290cad5e4cdc93025da0e982"
+    },
+    "c05_challenge2_temporal.py": {
+      "blob": "3b987f1a95d6af22606c7db315190266b82e1dda",
+      "sha256": "b47d0e4712c6eb8763626e801f9f1c7bb4185c403587070b68fb2c8dfc5f46f8"
+    },
+    "c05_challenge3_relation_perception.py": {
+      "blob": "7c8f662201eae01e70bf9ffc72dede1058cbb8ac",
+      "sha256": "73ad97342e1a9db9bd1d9a0d0207aea62097ef62d9a0453dc74e269809a6947b"
+    },
+    "c05_r3_cold_child.py": {
+      "blob": "98f040cb4fdc3c473ff8f7d3d946636a32808c8f",
+      "sha256": "02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8"
+    },
+    "c05_r3_common.py": {
+      "blob": "8b11ec1224eae09c5c4c904b200567da0d9c8dcd",
+      "sha256": "b251b3be4fa16a49d369f2596f1cdc19d1a2541ea64d06e373273304cfc92800"
+    }
+  },
+  "original_prior89_probes": {
+    "prior89_c05_cold_child.py": {
+      "blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc",
+      "sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff"
+    },
+    "prior89_c05_observe.py": {
+      "blob": "e588b00afed41d4556a63497a3f9aa8b57ace66f",
+      "sha256": "94cfa307161df9597103e01617a1625359213a7f71c4e48befb1ab4106f40850"
+    },
+    "prior89_c05_probe.py": {
+      "blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+      "sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7"
+    }
+  },
+  "original_prior89_source": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "pairs": [
+    {
+      "copy_blob": "d923cfdb5b2c90bc28c9b9019556724e864ab949",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge1_leakage.py",
+      "copy_sha256": "9b51e7f2374700a497ad527ba9760c698083f8b6c63c3bd5e9d4165dc0822477",
+      "diff_lines": 235,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_challenge1.diff",
+      "id": "challenge1",
+      "identical": false,
+      "original_blob": "46d14bfadf1a20e1b69e8e7162d250a4c01daf19",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge1_leakage.py",
+      "original_sha256": "b7c0a465e24e73fb1de4208264a76594932d61c8290cad5e4cdc93025da0e982"
+    },
+    {
+      "copy_blob": "781e1b101ce06f6d23d38f247f509d24d679e145",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge2_temporal.py",
+      "copy_sha256": "21639acd607deadbc8c1926c66441c98e70b4c298c48a066af09ddf06eda9d56",
+      "diff_lines": 97,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_challenge2.diff",
+      "id": "challenge2",
+      "identical": false,
+      "original_blob": "3b987f1a95d6af22606c7db315190266b82e1dda",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge2_temporal.py",
+      "original_sha256": "b47d0e4712c6eb8763626e801f9f1c7bb4185c403587070b68fb2c8dfc5f46f8"
+    },
+    {
+      "copy_blob": "0e33122f7ea9ec97dff56acdb11d89e1c3599722",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge3_relation_perception.py",
+      "copy_sha256": "0e9c31ddbf25a98c6d9c88e27ca1be4858be35e379018932b37f37c117e3bd59",
+      "diff_lines": 136,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_challenge3.diff",
+      "id": "challenge3",
+      "identical": false,
+      "original_blob": "7c8f662201eae01e70bf9ffc72dede1058cbb8ac",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge3_relation_perception.py",
+      "original_sha256": "73ad97342e1a9db9bd1d9a0d0207aea62097ef62d9a0453dc74e269809a6947b"
+    },
+    {
+      "copy_blob": "8c09a9f5955a0b4988dbd18a8d505ef9620daf94",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_pathadapted.py",
+      "copy_sha256": "84aaf9f87bf4cd1ff4a4e7a5125674fbc239a2074b9a727cda15ad3bd57dcf68",
+      "diff_lines": 33,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_prior89_path.diff",
+      "id": "prior89_path",
+      "identical": false,
+      "original_blob": "c89e22a7c4ba683fe99994f2833b8b710e888401",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/prior89_c05_probe.py",
+      "original_sha256": "1f44fef5f7648215db72eed2cc805f778cfbbadda0c9a830ea592397c5132fb7"
+    },
+    {
+      "copy_blob": "6947c7d8faa4621bb809eb12691aab422a1fad43",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_newabi.py",
+      "copy_sha256": "f2e6c73205d6a6f9df10528a44317cd318d770825571f46a9f98b24e8de18c6e",
+      "diff_lines": 51,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_prior89_newabi.diff",
+      "id": "prior89_newabi",
+      "identical": false,
+      "original_blob": "8c09a9f5955a0b4988dbd18a8d505ef9620daf94",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_pathadapted.py",
+      "original_sha256": "84aaf9f87bf4cd1ff4a4e7a5125674fbc239a2074b9a727cda15ad3bd57dcf68"
+    },
+    {
+      "copy_blob": "2cd82f6fc5503e01a426833a47e1d41d069a2929",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_cold_child_prior89.py",
+      "copy_sha256": "f5839a4147313ddb4aae63dffe1354c8e063fa2677bae6fbc7ba95e639f4b2dd",
+      "diff_lines": 11,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_prior89_cold_import.diff",
+      "id": "prior89_cold_import",
+      "identical": false,
+      "original_blob": "7feae9d8091d65fec612dddd4051f3b00e3a3bbc",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/prior89_c05_cold_child.py",
+      "original_sha256": "230d85a841f96161b4033244ad6206992e66c8bda681026fa85bbbc58dfbb8ff"
+    },
+    {
+      "copy_blob": "8b11ec1224eae09c5c4c904b200567da0d9c8dcd",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_r3_common.py",
+      "copy_sha256": "b251b3be4fa16a49d369f2596f1cdc19d1a2541ea64d06e373273304cfc92800",
+      "diff_lines": 0,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_r3_common.diff",
+      "id": "r3_common",
+      "identical": true,
+      "original_blob": "8b11ec1224eae09c5c4c904b200567da0d9c8dcd",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_r3_common.py",
+      "original_sha256": "b251b3be4fa16a49d369f2596f1cdc19d1a2541ea64d06e373273304cfc92800"
+    },
+    {
+      "copy_blob": "98f040cb4fdc3c473ff8f7d3d946636a32808c8f",
+      "copy_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_r3_cold_child.py",
+      "copy_sha256": "02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8",
+      "diff_lines": 0,
+      "diff_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/evidence/adaptation_r3_cold_child.diff",
+      "id": "r3_cold_child",
+      "identical": true,
+      "original_blob": "98f040cb4fdc3c473ff8f7d3d946636a32808c8f",
+      "original_path": "WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_r3_cold_child.py",
+      "original_sha256": "02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8"
+    }
+  ],
+  "schema": "SOROK_C05_PROJECTION_R3_PROBE_ADAPTATIONS@1",
+  "source_review": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+  "terminal": "STOP"
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "SOROK_C05_PROJECTION_R3_EVIDENCE@1",
+  "issue": "C05",
+  "accepted_source": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+  "final_report": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+  "prior_mechanical_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "prior_review": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "hostile_court": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "product_pins": {
+    "continuing_relations.py": {"blob": "8006440bd420ce8526bb2f333cd201ac077cbd22", "sha256": "a9e0595f92005fffb0c93720b7d63881994df71ed14fbbd140a723cd78f965d1"},
+    "supporting_actor.py": {"blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c", "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92", "unchanged": true},
+    "new_test": {"blob": "a50b4cd744d7b949170a0fd9c77f5e0ec4c927ec", "sha256": "944fd881f7a7046b0b58851a933ce59e6ed3f238e17c30c4f65f0c4ccb902f51"}
+  },
+  "correction_scope": "actor-facing projection and retrospective labels only; no mechanical write/custody/promotion semantics change",
+  "source_delta": "continuing_relations.py 52 insertions / 23 deletions from 5d771dd; new R3 test 412 lines; no other product/test change; metadata/evidence-only after 4b33b8be",
+  "test_results": "evidence/suite_summary.json",
+  "new_author_test": "evidence/new_author_r3_stdout.log",
+  "adapted_challenge_reports": {
+    "challenge1": {"path": "evidence/c05_challenge1_report.json", "sha256": "7748546d7a45db50b57b13ac8f58bf9156639ee5c476c6498b7ccf18ffeea8f3"},
+    "challenge2": {"path": "evidence/c05_challenge2_report.json", "sha256": "b1ea910f99c59bbb80bebfa4385b83ec39811fd9bd40ce0cfe33eff2f0d97030"},
+    "challenge3": {"path": "evidence/c05_challenge3_report.json", "sha256": "efda5d1b89a9d27fadab635a51370d63e9a310ed80ec415e3258e0f301550140"}
+  },
+  "adapted89_report": {"path": "evidence/c05_probe_report.json", "sha256": "e450c2be112cc2f5ffe543becdf475eb9387128cd8832547f3eb6c9ed9bcf9c2"},
+  "preserved_obsolete": {
+    "original_c05_log": "evidence/original_c05_stdout.log",
+    "original_challenge1_log": "evidence/original_challenge1_time.log",
+    "original_challenge2_report": "evidence/original_challenge2_post_fix_report.json",
+    "original_challenge3_report": "evidence/original_challenge3_post_fix_report.json",
+    "prior89_pathadapted_log": "evidence/prior89_pathadapted_time.log"
+  },
+  "probe_adaptations": "PROBE_ADAPTATIONS.json",
+  "probe_adaptation_diffs": [
+    "evidence/adaptation_challenge1.diff",
+    "evidence/adaptation_challenge2.diff",
+    "evidence/adaptation_challenge3.diff",
+    "evidence/adaptation_prior89_path.diff",
+    "evidence/adaptation_prior89_newabi.diff",
+    "evidence/adaptation_prior89_cold_import.diff"
+  ],
+  "probe_pins": "PROBE_PINS.json",
+  "blob_pins": "BLOB_PINS.json",
+  "scope": {
+    "accepted": "bounded sourcefree C05 actor projection; prior mechanical custody/promotion preserved",
+    "true_event_time_relation_knowledge": "HOLD_SOURCE_AUTHORITY",
+    "event_time_capability_implemented": false,
+    "original_full_c05_actor_qualification": "UNPROVED",
+    "native_science_human_protected": "HELD",
+    "both_parties_event_access": "inherited RELATION_PARTIES_ONLY summary; not viewer event_perception",
+    "downstream_product_consumers_found": false
+  },
+  "terminal": "STOP"
+}

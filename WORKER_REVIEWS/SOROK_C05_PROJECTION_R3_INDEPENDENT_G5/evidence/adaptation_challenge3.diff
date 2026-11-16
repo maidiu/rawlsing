@@ -1,0 +1,136 @@
+--- WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge3_relation_perception.py
++++ WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge3_relation_perception.py
+@@ -18,8 +18,8 @@
+     __import__("sys").path.insert(0, str(HERE))
+ 
+ from c05_r3_common import (  # noqa: E402
+-    O_ID, P_ID, R_ID, cold_document, counts, later_event, start_world,
+-    viewer_document,
++    O_ID, P_ID, R_ID, canonical, cold_document, counts, later_event,
++    start_world, viewer_document,
+ )
+ from developmental_recursion.continuing_relations import (  # noqa: E402
+     record_relation_change,
+@@ -55,6 +55,14 @@
+         effect = document["context"]["context_effect"]
+         access = document["access"]
+         relation_keys = sorted(relation["relation_key"] for relation in relations)
++        result2, proposal2, event2 = later_event(
++            owner, session, (focal, P_ID),
++            operation_id="r3:ch3:event2", proposal_id="r3:ch3:event2",
++            delta=6)
++        event2_clock = session.event(event2)["clock"]
++        document2 = viewer_document(session, P_ID, event2, event2_clock)
++        effect2 = document2["context"]["context_effect"]
++        access2 = document2["access"]
+         checks = {
+             "viewer_does_not_perceive_event": (
+                 access["status"] == "NOT_PERCEIVED"
+@@ -76,11 +84,19 @@
+             "relation_aware_true_while_event_not_perceived": (
+                 effect["relation_aware"] is True
+                 and effect["reason"] == "QUALIFIED_RELATION_CONTEXT"),
+-            "basis_includes_c12_event_perception_without_own_perception": (
+-                "C12_EVENT_PERCEPTION" in effect["basis"]
+-                and access["status"] == "NOT_PERCEIVED"),
++            "viewer_specific_event_perception": (
++                effect["event_perception"] == "NOT_PERCEIVED"
++                and effect["event_perception_source"]
++                == "VIEWER_EVENT_ACCESS"
++                and effect["event_perception_scope"] == "VIEWER_ONLY"
++                and effect["basis"] == ["DATED_RELATION_HISTORY"]
++                and "C12_EVENT_PERCEPTION" not in effect["basis"]),
+             "party_access_flag_false": (
+                 effect["both_parties_event_access"] is False),
++            "relation_count_plural": (
++                effect["relation_count"] == 2
++                and len(document["context"]["relation_scope"]["relations"])
++                == 2),
+             "plural_output_present": (
+                 len(document["context"]["relation_scope"]["relations"]) == 2),
+             "singular_summary_is_first_sorted": (
+@@ -88,7 +104,31 @@
+                 and effect["relation_status"] == first_relation["status"]
+                 and effect["relation_value"] == first_relation["value"]
+                 and effect["representation_depth"]
+-                == first_relation["representation_depth"]),
++                == first_relation["representation_depth"]
++                and effect["summary_selection"]
++                == "MECHANICAL_FIRST_SORTED_RELATION_KEY"
++                and effect["summary_is_salience_or_psychology"] is False
++                and effect["summary_relation_key"]
++                == first_relation["relation_key"]),
++            "perceived_positive_provenance": (
++                access2["status"] == "PERCEIVED"
++                and effect2["event_perception"] == "PERCEIVED"
++                and effect2["event_perception_source"]
++                == "VIEWER_EVENT_ACCESS"
++                and effect2["event_perception_scope"] == "VIEWER_ONLY"
++                and "C12_EVENT_PERCEPTION" in effect2["basis"]
++                and effect2["relation_aware"] is True
++                and effect2["relation_count"] == 2
++                and len(document2["context"]["relation_scope"][
++                    "relations"]) == 2),
++            "relation_party_access_summary_scoped": (
++                effect2["both_parties_event_access"] is False
++                and effect2["both_parties_event_access_scope"]
++                == "RELATION_PARTIES_ONLY"),
++            "no_withheld_actor_field": (
++                "withheld_relation_count" not in canonical(document)
++                and "withheld_relation_count" not in canonical(cold)
++                and "withheld_relation_count" not in canonical(document2)),
+             "cold_exact": cold == document,
+             "private_state_not_read": (
+                 document["context"]["private_state"] == "NOT_READ"
+@@ -97,13 +137,16 @@
+         }
+         report = {
+             "schema": "SOROK_C05_R3_CHALLENGE3@1",
+-            "source_sha": "5d771dd86767655534b23576075e5da2db4fba78",
++            "source_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
++            "final_report_sha": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+             "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+             "event_id": event_id,
+             "event_clock": event_clock,
+             "relation_one": REL_ONE,
+             "relation_two": REL_TWO,
+             "document": document,
++            "document2": document2,
++            "event2": event2,
+             "cold": cold,
+             "relation_keys": relation_keys,
+             "first_relation": first_relation,
+@@ -113,9 +156,21 @@
+                 access["status"] == "NOT_PERCEIVED"
+                 and document["context"]["relation_scope"]["status"]
+                 == "QUALIFIED"),
+-            "basis_actual_defect": (
+-                "C12_EVENT_PERCEPTION" in effect["basis"]
++            "basis_actual_pass": (
++                "C12_EVENT_PERCEPTION" not in effect["basis"]
+                 and access["status"] == "NOT_PERCEIVED"),
++            "perceived_positive": {
++                "event_access": access2["status"],
++                "event_perception": effect2["event_perception"],
++                "basis": effect2["basis"],
++                "relation_count": effect2["relation_count"],
++            },
++            "relation_party_access_summary": {
++                "both_parties_event_access": effect2[
++                    "both_parties_event_access"],
++                "scope": effect2["both_parties_event_access_scope"],
++                "note": "inherited relation-party summary; not viewer event_perception; may reveal whether both relation parties perceived",
++            },
+             "plural_actual": {
+                 "relations": len(relations),
+                 "summary_selects_first_sorted_key": (
+@@ -134,6 +189,9 @@
+             "relation_scope": document["context"]["relation_scope"]["status"],
+             "relation_aware": effect["relation_aware"],
+             "basis": effect["basis"],
++            "event_perception": effect["event_perception"],
++            "perceived_basis": effect2["basis"],
++            "perceived_event_perception": effect2["event_perception"],
+             "plural_relations": [relation["relation"] for relation in relations],
+             "summary_relation_status": effect["relation_status"],
+             "summary_first_sorted_key": (

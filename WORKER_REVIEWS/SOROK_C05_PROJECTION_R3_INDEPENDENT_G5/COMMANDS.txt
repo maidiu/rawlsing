@@ -1,0 +1,95 @@
+SOROK C05 projection R3 independent receiving — literal commands
+Reviewer: ses_e2186e745ffecK1Ilg4cw26pVu
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+Branch: codex/sorok-c05-projection-r3-independent-g5-20261115-r3
+Prior mechanical source: 5d771dd86767655534b23576075e5da2db4fba78
+Prior review: c0cbe82f62a4e9516bf466575de3692c5c3081df
+Hostile court: df4e51e75298bc1393c6f4b3640449e678bc44ff
+Implementation/tests: 4b33b8be1127c2186931a66f23e3a2b05feaf0a6
+Final report/evidence: fdce1cc266d914c8a28d290f881b42d745025d8c
+Protected PRE-MAIN: 6a5c12f04323d74001f9632063ec907f4fc4468e (read-only)
+Interpreter: /private/tmp/rawlsing-oct28-p1r1/venv/bin/python (3.11.3)
+Every command used TMPDIR=$PWD/.local-logs/sorok-c05-projection-r3-independent-g5-20261115-r3/tmp,
+PYTHONDONTWRITEBYTECODE=1, -B; pytest used -q -p no:cacheprovider.
+Product was read-only. Logs are under evidence/.
+
+1) New author R3 assertions
+/usr/bin/time -l python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/tests/test_c05_actor_projection_repair_r3.py
+EXIT=0; 4 passed; 28.59 real s; max RSS 60,055,552 B
+stdout: evidence/new_author_r3_stdout.log
+
+2) Own adapted challenge 1
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge1_leakage.py
+EXIT=0; 24/24 checks; 11.39 real s; max RSS 49,078,272 B
+report: evidence/c05_challenge1_report.json
+
+3) Own adapted challenge 2
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge2_temporal.py
+EXIT=0; 15/15 checks; 11.11 real s; max RSS 46,968,832 B
+report: evidence/c05_challenge2_report.json
+
+4) Own adapted challenge 3
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge3_relation_perception.py
+EXIT=0; 14/14 checks; 8.30 real s; max RSS 47,931,392 B
+report: evidence/c05_challenge3_report.json
+
+5) Adapted inherited 89-check normal/negative/cold probe
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_newabi.py
+EXIT=0; 89/89 checks; 168.99 real s; max RSS 56,733,696 B
+report: evidence/c05_probe_report.json
+Adaptation diff: evidence/adaptation_prior89_newabi.diff
+
+6) R2 focused promotion test
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK_C05_PROMOTION_EXACT_REPAIR_R2/tests/test_c05_promotion_repair_r2.py
+EXIT=0; 1 passed; 7.66 real s; max RSS 49,999,872 B
+stdout: evidence/r2_focused_stdout.log
+
+7) C01 supporting actor
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py
+EXIT=0; 6 passed; 13.84 real s; max RSS 55,848,960 B
+stdout: evidence/c01_stdout.log
+
+8) C04 first-consumer identity
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-C03-C04-A-FINAL-R1/test_c04_first_consumer_identity.py
+EXIT=0; 6 passed; 28.90 real s; max RSS 66,162,688 B
+stdout: evidence/c04_identity_stdout.log
+
+9) C04 custody
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-C03-C04-GOFIRST-A-R1/test_c04_custody.py
+EXIT=0; 12 passed; 58.18 real s; max RSS 63,930,368 B
+stdout: evidence/c04_custody_stdout.log
+
+10) P2 owner
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py
+EXIT=0; 5 passed; 15.15 real s; max RSS 57,311,232 B
+stdout: evidence/p2_owner_stdout.log
+
+11) Original C05 author suite (bytes immutable; obsolete assertions preserved)
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py
+EXIT=1; 3 passed, 2 failed; 41.38 real s; max RSS 61,128,704 B
+Failures: withheld_relation_count KeyError; HOLD_UNKNOWN_SCOPE vs HOLD_NOT_EXPOSED
+stdout: evidence/original_c05_stdout.log
+
+12) Original hostile challenge probes (bytes immutable; obsolete outcomes preserved)
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge1_leakage.py
+EXIT=1; KeyError: withheld_relation_count; 10.76 real s; max RSS 47,820,800 B
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge2_temporal.py
+EXIT=0; same-clock relation still observed retrospectively; 11.47 real s; max RSS 49,102,848 B
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge3_relation_perception.py
+EXIT=2; only obsolete C12-basis-without-own-perception assertion fails; 5.73 real s; max RSS 46,862,336 B
+Logs: evidence/original_challenge*_stdout.log/time.log
+
+13) Prior 89-check probe path-adapted, obsolete oracle
+python -B WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_pathadapted.py
+EXIT=1; KeyError: withheld_relation_count at first unexposed assertion; 2.43 real s; max RSS 46,567,424 B
+log: evidence/prior89_pathadapted_time.log
+
+14) Source/probe pins
+git ls-tree fdce1cc <product/new test paths>
+git rev-parse 4b33b8be... fdce1cc... 5d771dd... c0cbe82f... df4e51e... 6a5c...
+shasum -a 256 <product/new test/probe files>
+git hash-object <probe files>
+Outputs: BLOB_PINS.json, PROBE_PINS.json, PROBE_ADAPTATIONS.json, evidence/revisions.txt
+
+No protected writes/merge, no B05 reopen, no CI/install/VM/controller/global permissions,
+no Browser/PYAT/SEAM, no #939 fleet, no science issuance.

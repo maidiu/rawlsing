@@ -1,0 +1,634 @@
+{
+  "basis_actual_defect": false,
+  "checks": {
+    "basis_includes_c12_event_perception_without_own_perception": false,
+    "both_relations_present": true,
+    "cold_exact": true,
+    "party_access_flag_false": true,
+    "plural_output_present": true,
+    "prior_relations_qualified": true,
+    "private_state_not_read": true,
+    "relation_aware_true_while_event_not_perceived": true,
+    "singular_summary_is_first_sorted": true,
+    "viewer_does_not_perceive_event": true
+  },
+  "cold": {
+    "access": {
+      "branch": "first_session",
+      "event": null,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+      "grade": "SOURCEFREE_S2_ONLY",
+      "private_state": "NOT_READ",
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "schema": "SOROK_P2_ACTOR_ACCESS@1",
+      "status": "NOT_PERCEIVED",
+      "viewer": {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P"
+      }
+    },
+    "context": {
+      "branch": "first_session",
+      "context_effect": {
+        "basis": [
+          "DATED_RELATION_HISTORY"
+        ],
+        "both_parties_event_access": false,
+        "both_parties_event_access_scope": "RELATION_PARTIES_ONLY",
+        "event_perception": "NOT_PERCEIVED",
+        "event_perception_scope": "VIEWER_ONLY",
+        "event_perception_source": "VIEWER_EVENT_ACCESS",
+        "history_complete": true,
+        "reason": "QUALIFIED_RELATION_CONTEXT",
+        "relation_aware": true,
+        "relation_count": 2,
+        "relation_status": "ACTIVE",
+        "relation_value": "known-two",
+        "representation_depth": 1,
+        "summary_is_salience_or_psychology": false,
+        "summary_relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+        "summary_selection": "MECHANICAL_FIRST_SORTED_RELATION_KEY"
+      },
+      "event_access": {
+        "event": null,
+        "receipt": null,
+        "status": "NOT_PERCEIVED"
+      },
+      "event_clock": 228,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+      "grade": "SOURCEFREE_S2_ONLY",
+      "native": false,
+      "private_state": "NOT_READ",
+      "read_boundary": {
+        "event": "C01_ACTOR_RELATIVE_RECEIPT",
+        "event_time_relation_knowledge": "NOT_AVAILABLE",
+        "physical_copresence": "NOT_CONSULTED",
+        "private_state": "NEVER_RETURNED",
+        "relation": "DATED_EXPOSURE_ONLY",
+        "relation_temporal": "RETROSPECTIVE_AS_OF_EVENT_CLOCK"
+      },
+      "relation_scope": {
+        "custody": "VERIFIED",
+        "relations": [
+          {
+            "counterpart": {
+              "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+              "alias": "R3R"
+            },
+            "entries": [
+              {
+                "change": "ENTER",
+                "clock": 222,
+                "episode_hash": "8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+                "episode_id": "TEST_ONLY_BP4_EP_8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+                "operation_id": "r3:ch3:two",
+                "private_state": "NOT_READ",
+                "value": "known-two"
+              }
+            ],
+            "history_complete": true,
+            "parties": [
+              {
+                "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+                "alias": "R3R"
+              },
+              {
+                "actor_id": "TEST_ONLY_C05_R3_PARENT",
+                "alias": "R3P"
+              }
+            ],
+            "prior_exposure": "QUALIFIED",
+            "private_state": "NOT_READ",
+            "promotions": [],
+            "relation": "r3-known-two",
+            "relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+            "representation_depth": 1,
+            "status": "ACTIVE",
+            "value": "known-two",
+            "viewer_is_party": true,
+            "visible_history_hash": "16552b01d5955bfbfa95e938871f3016af0f754e7a0841d2f39381893d71ca1c"
+          },
+          {
+            "counterpart": {
+              "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+              "alias": "R3O"
+            },
+            "entries": [
+              {
+                "change": "ENTER",
+                "clock": 222,
+                "episode_hash": "03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+                "episode_id": "TEST_ONLY_BP4_EP_03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+                "operation_id": "r3:ch3:one",
+                "private_state": "NOT_READ",
+                "value": "known-one"
+              }
+            ],
+            "history_complete": true,
+            "parties": [
+              {
+                "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+                "alias": "R3O"
+              },
+              {
+                "actor_id": "TEST_ONLY_C05_R3_PARENT",
+                "alias": "R3P"
+              }
+            ],
+            "prior_exposure": "QUALIFIED",
+            "private_state": "NOT_READ",
+            "promotions": [],
+            "relation": "r3-known-one",
+            "relation_key": "6cd9ca6c21336993032c1aa2321d7f0b3b34e8fec56b5965727032d2b67ef348",
+            "representation_depth": 1,
+            "status": "ACTIVE",
+            "value": "known-one",
+            "viewer_is_party": true,
+            "visible_history_hash": "32e8487e821e76c9c402c010bef55d1f26680a757520a89870f9ac574d8c4904"
+          }
+        ],
+        "representation_depth": 1,
+        "status": "QUALIFIED",
+        "temporal_scope": "RETROSPECTIVE_AS_OF_EVENT_CLOCK"
+      },
+      "relation_temporal": {
+        "event_time_relation_knowledge": "NOT_AVAILABLE",
+        "event_time_relation_status": "HOLD_SOURCE_AUTHORITY",
+        "reason": "NO_SOURCE_QUALIFIED_WITHIN_CLOCK_ORDERING_OR_RECEIPT_RULE",
+        "relation_projection": "RETROSPECTIVE_AS_OF_EVENT_CLOCK",
+        "usable_as_prior_event_cause": false,
+        "within_clock_cutoff": "UNAVAILABLE"
+      },
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "schema": "SOROK_P2_ACTOR_RELATIVE_CONTEXT@1",
+      "viewer": {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P",
+        "kind": "SUPPORTING_ACTOR",
+        "role": "parent"
+      }
+    },
+    "counts": {
+      "changes": 2,
+      "checkpoints": 38,
+      "episodes": 57,
+      "heads": 2,
+      "perceptions": 46,
+      "world_events": 15
+    },
+    "event": {
+      "clock": 228,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+      "hash": "c1c319eab1ebf89ef394c03922f6de29bde121b64c63116eb9a7343b8a00b776",
+      "kind": "SPEECH"
+    },
+    "history": {
+      "as_of_clock": 228,
+      "branch": "first_session",
+      "custody": "VERIFIED",
+      "grade": "SOURCEFREE_S2_ONLY",
+      "native": false,
+      "private_state": "NOT_READ",
+      "read_boundary": {
+        "physical_copresence": "NOT_CONSULTED",
+        "private_state": "NEVER_RETURNED",
+        "unexposed_scope": "QUALIFIED_HOLD"
+      },
+      "relations": [
+        {
+          "counterpart": {
+            "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+            "alias": "R3R"
+          },
+          "entries": [
+            {
+              "change": "ENTER",
+              "clock": 222,
+              "episode_hash": "8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+              "episode_id": "TEST_ONLY_BP4_EP_8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+              "operation_id": "r3:ch3:two",
+              "private_state": "NOT_READ",
+              "value": "known-two"
+            }
+          ],
+          "history_complete": true,
+          "parties": [
+            {
+              "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+              "alias": "R3R"
+            },
+            {
+              "actor_id": "TEST_ONLY_C05_R3_PARENT",
+              "alias": "R3P"
+            }
+          ],
+          "prior_exposure": "QUALIFIED",
+          "private_state": "NOT_READ",
+          "promotions": [],
+          "relation": "r3-known-two",
+          "relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+          "representation_depth": 1,
+          "status": "ACTIVE",
+          "value": "known-two",
+          "viewer_is_party": true,
+          "visible_history_hash": "16552b01d5955bfbfa95e938871f3016af0f754e7a0841d2f39381893d71ca1c"
+        },
+        {
+          "counterpart": {
+            "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+            "alias": "R3O"
+          },
+          "entries": [
+            {
+              "change": "ENTER",
+              "clock": 222,
+              "episode_hash": "03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+              "episode_id": "TEST_ONLY_BP4_EP_03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+              "operation_id": "r3:ch3:one",
+              "private_state": "NOT_READ",
+              "value": "known-one"
+            }
+          ],
+          "history_complete": true,
+          "parties": [
+            {
+              "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+              "alias": "R3O"
+            },
+            {
+              "actor_id": "TEST_ONLY_C05_R3_PARENT",
+              "alias": "R3P"
+            }
+          ],
+          "prior_exposure": "QUALIFIED",
+          "private_state": "NOT_READ",
+          "promotions": [],
+          "relation": "r3-known-one",
+          "relation_key": "6cd9ca6c21336993032c1aa2321d7f0b3b34e8fec56b5965727032d2b67ef348",
+          "representation_depth": 1,
+          "status": "ACTIVE",
+          "value": "known-one",
+          "viewer_is_party": true,
+          "visible_history_hash": "32e8487e821e76c9c402c010bef55d1f26680a757520a89870f9ac574d8c4904"
+        }
+      ],
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "schema": "SOROK_P2_CONTINUING_RELATION_READ@1",
+      "status": "QUALIFIED",
+      "viewer": {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P",
+        "kind": "SUPPORTING_ACTOR",
+        "role": "parent"
+      }
+    }
+  },
+  "document": {
+    "access": {
+      "branch": "first_session",
+      "event": null,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+      "grade": "SOURCEFREE_S2_ONLY",
+      "private_state": "NOT_READ",
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "schema": "SOROK_P2_ACTOR_ACCESS@1",
+      "status": "NOT_PERCEIVED",
+      "viewer": {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P"
+      }
+    },
+    "context": {
+      "branch": "first_session",
+      "context_effect": {
+        "basis": [
+          "DATED_RELATION_HISTORY"
+        ],
+        "both_parties_event_access": false,
+        "both_parties_event_access_scope": "RELATION_PARTIES_ONLY",
+        "event_perception": "NOT_PERCEIVED",
+        "event_perception_scope": "VIEWER_ONLY",
+        "event_perception_source": "VIEWER_EVENT_ACCESS",
+        "history_complete": true,
+        "reason": "QUALIFIED_RELATION_CONTEXT",
+        "relation_aware": true,
+        "relation_count": 2,
+        "relation_status": "ACTIVE",
+        "relation_value": "known-two",
+        "representation_depth": 1,
+        "summary_is_salience_or_psychology": false,
+        "summary_relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+        "summary_selection": "MECHANICAL_FIRST_SORTED_RELATION_KEY"
+      },
+      "event_access": {
+        "event": null,
+        "receipt": null,
+        "status": "NOT_PERCEIVED"
+      },
+      "event_clock": 228,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+      "grade": "SOURCEFREE_S2_ONLY",
+      "native": false,
+      "private_state": "NOT_READ",
+      "read_boundary": {
+        "event": "C01_ACTOR_RELATIVE_RECEIPT",
+        "event_time_relation_knowledge": "NOT_AVAILABLE",
+        "physical_copresence": "NOT_CONSULTED",
+        "private_state": "NEVER_RETURNED",
+        "relation": "DATED_EXPOSURE_ONLY",
+        "relation_temporal": "RETROSPECTIVE_AS_OF_EVENT_CLOCK"
+      },
+      "relation_scope": {
+        "custody": "VERIFIED",
+        "relations": [
+          {
+            "counterpart": {
+              "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+              "alias": "R3R"
+            },
+            "entries": [
+              {
+                "change": "ENTER",
+                "clock": 222,
+                "episode_hash": "8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+                "episode_id": "TEST_ONLY_BP4_EP_8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+                "operation_id": "r3:ch3:two",
+                "private_state": "NOT_READ",
+                "value": "known-two"
+              }
+            ],
+            "history_complete": true,
+            "parties": [
+              {
+                "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+                "alias": "R3R"
+              },
+              {
+                "actor_id": "TEST_ONLY_C05_R3_PARENT",
+                "alias": "R3P"
+              }
+            ],
+            "prior_exposure": "QUALIFIED",
+            "private_state": "NOT_READ",
+            "promotions": [],
+            "relation": "r3-known-two",
+            "relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+            "representation_depth": 1,
+            "status": "ACTIVE",
+            "value": "known-two",
+            "viewer_is_party": true,
+            "visible_history_hash": "16552b01d5955bfbfa95e938871f3016af0f754e7a0841d2f39381893d71ca1c"
+          },
+          {
+            "counterpart": {
+              "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+              "alias": "R3O"
+            },
+            "entries": [
+              {
+                "change": "ENTER",
+                "clock": 222,
+                "episode_hash": "03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+                "episode_id": "TEST_ONLY_BP4_EP_03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+                "operation_id": "r3:ch3:one",
+                "private_state": "NOT_READ",
+                "value": "known-one"
+              }
+            ],
+            "history_complete": true,
+            "parties": [
+              {
+                "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+                "alias": "R3O"
+              },
+              {
+                "actor_id": "TEST_ONLY_C05_R3_PARENT",
+                "alias": "R3P"
+              }
+            ],
+            "prior_exposure": "QUALIFIED",
+            "private_state": "NOT_READ",
+            "promotions": [],
+            "relation": "r3-known-one",
+            "relation_key": "6cd9ca6c21336993032c1aa2321d7f0b3b34e8fec56b5965727032d2b67ef348",
+            "representation_depth": 1,
+            "status": "ACTIVE",
+            "value": "known-one",
+            "viewer_is_party": true,
+            "visible_history_hash": "32e8487e821e76c9c402c010bef55d1f26680a757520a89870f9ac574d8c4904"
+          }
+        ],
+        "representation_depth": 1,
+        "status": "QUALIFIED",
+        "temporal_scope": "RETROSPECTIVE_AS_OF_EVENT_CLOCK"
+      },
+      "relation_temporal": {
+        "event_time_relation_knowledge": "NOT_AVAILABLE",
+        "event_time_relation_status": "HOLD_SOURCE_AUTHORITY",
+        "reason": "NO_SOURCE_QUALIFIED_WITHIN_CLOCK_ORDERING_OR_RECEIPT_RULE",
+        "relation_projection": "RETROSPECTIVE_AS_OF_EVENT_CLOCK",
+        "usable_as_prior_event_cause": false,
+        "within_clock_cutoff": "UNAVAILABLE"
+      },
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "schema": "SOROK_P2_ACTOR_RELATIVE_CONTEXT@1",
+      "viewer": {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P",
+        "kind": "SUPPORTING_ACTOR",
+        "role": "parent"
+      }
+    },
+    "counts": {
+      "changes": 2,
+      "checkpoints": 38,
+      "episodes": 57,
+      "heads": 2,
+      "perceptions": 46,
+      "world_events": 15
+    },
+    "event": {
+      "clock": 228,
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+      "hash": "c1c319eab1ebf89ef394c03922f6de29bde121b64c63116eb9a7343b8a00b776",
+      "kind": "SPEECH"
+    },
+    "history": {
+      "as_of_clock": 228,
+      "branch": "first_session",
+      "custody": "VERIFIED",
+      "grade": "SOURCEFREE_S2_ONLY",
+      "native": false,
+      "private_state": "NOT_READ",
+      "read_boundary": {
+        "physical_copresence": "NOT_CONSULTED",
+        "private_state": "NEVER_RETURNED",
+        "unexposed_scope": "QUALIFIED_HOLD"
+      },
+      "relations": [
+        {
+          "counterpart": {
+            "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+            "alias": "R3R"
+          },
+          "entries": [
+            {
+              "change": "ENTER",
+              "clock": 222,
+              "episode_hash": "8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+              "episode_id": "TEST_ONLY_BP4_EP_8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+              "operation_id": "r3:ch3:two",
+              "private_state": "NOT_READ",
+              "value": "known-two"
+            }
+          ],
+          "history_complete": true,
+          "parties": [
+            {
+              "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+              "alias": "R3R"
+            },
+            {
+              "actor_id": "TEST_ONLY_C05_R3_PARENT",
+              "alias": "R3P"
+            }
+          ],
+          "prior_exposure": "QUALIFIED",
+          "private_state": "NOT_READ",
+          "promotions": [],
+          "relation": "r3-known-two",
+          "relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+          "representation_depth": 1,
+          "status": "ACTIVE",
+          "value": "known-two",
+          "viewer_is_party": true,
+          "visible_history_hash": "16552b01d5955bfbfa95e938871f3016af0f754e7a0841d2f39381893d71ca1c"
+        },
+        {
+          "counterpart": {
+            "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+            "alias": "R3O"
+          },
+          "entries": [
+            {
+              "change": "ENTER",
+              "clock": 222,
+              "episode_hash": "03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+              "episode_id": "TEST_ONLY_BP4_EP_03ca428c5243aa3a266f4ef5d368973d48c8d0789c15a4fc856cceac6c60f763",
+              "operation_id": "r3:ch3:one",
+              "private_state": "NOT_READ",
+              "value": "known-one"
+            }
+          ],
+          "history_complete": true,
+          "parties": [
+            {
+              "actor_id": "TEST_ONLY_C05_R3_NEIGHBOR",
+              "alias": "R3O"
+            },
+            {
+              "actor_id": "TEST_ONLY_C05_R3_PARENT",
+              "alias": "R3P"
+            }
+          ],
+          "prior_exposure": "QUALIFIED",
+          "private_state": "NOT_READ",
+          "promotions": [],
+          "relation": "r3-known-one",
+          "relation_key": "6cd9ca6c21336993032c1aa2321d7f0b3b34e8fec56b5965727032d2b67ef348",
+          "representation_depth": 1,
+          "status": "ACTIVE",
+          "value": "known-one",
+          "viewer_is_party": true,
+          "visible_history_hash": "32e8487e821e76c9c402c010bef55d1f26680a757520a89870f9ac574d8c4904"
+        }
+      ],
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "schema": "SOROK_P2_CONTINUING_RELATION_READ@1",
+      "status": "QUALIFIED",
+      "viewer": {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P",
+        "kind": "SUPPORTING_ACTOR",
+        "role": "parent"
+      }
+    }
+  },
+  "downstream_c12_event_perception_consumers": [],
+  "effect": {
+    "basis": [
+      "DATED_RELATION_HISTORY"
+    ],
+    "both_parties_event_access": false,
+    "both_parties_event_access_scope": "RELATION_PARTIES_ONLY",
+    "event_perception": "NOT_PERCEIVED",
+    "event_perception_scope": "VIEWER_ONLY",
+    "event_perception_source": "VIEWER_EVENT_ACCESS",
+    "history_complete": true,
+    "reason": "QUALIFIED_RELATION_CONTEXT",
+    "relation_aware": true,
+    "relation_count": 2,
+    "relation_status": "ACTIVE",
+    "relation_value": "known-two",
+    "representation_depth": 1,
+    "summary_is_salience_or_psychology": false,
+    "summary_relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+    "summary_selection": "MECHANICAL_FIRST_SORTED_RELATION_KEY"
+  },
+  "event_clock": 228,
+  "event_id": "TEST_ONLY_BP4_WORLD_EVT_6534ee9ec76cfe8a1fc0cecf991c07ce74598b413ad09db475ab25410e25c557",
+  "event_perception_separate_from_relation_knowledge": true,
+  "first_consumer": "read_actor_relative_context",
+  "first_relation": {
+    "counterpart": {
+      "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+      "alias": "R3R"
+    },
+    "entries": [
+      {
+        "change": "ENTER",
+        "clock": 222,
+        "episode_hash": "8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+        "episode_id": "TEST_ONLY_BP4_EP_8a24afb4f41c238df7fde5fd6dd5f34e9120715dd57d76e7787cd2786ecd477b",
+        "operation_id": "r3:ch3:two",
+        "private_state": "NOT_READ",
+        "value": "known-two"
+      }
+    ],
+    "history_complete": true,
+    "parties": [
+      {
+        "actor_id": "TEST_ONLY_C05_R3_OUTSIDER",
+        "alias": "R3R"
+      },
+      {
+        "actor_id": "TEST_ONLY_C05_R3_PARENT",
+        "alias": "R3P"
+      }
+    ],
+    "prior_exposure": "QUALIFIED",
+    "private_state": "NOT_READ",
+    "promotions": [],
+    "relation": "r3-known-two",
+    "relation_key": "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+    "representation_depth": 1,
+    "status": "ACTIVE",
+    "value": "known-two",
+    "viewer_is_party": true,
+    "visible_history_hash": "16552b01d5955bfbfa95e938871f3016af0f754e7a0841d2f39381893d71ca1c"
+  },
+  "plural_actual": {
+    "relations": 2,
+    "summary_is_not_a_salience_rule": true,
+    "summary_selects_first_sorted_key": true
+  },
+  "relation_keys": [
+    "3dacd40eb1a6696be7a8b0df07daab1e2b1e3236b2fbcb2a7cad7fcb37ab9c54",
+    "6cd9ca6c21336993032c1aa2321d7f0b3b34e8fec56b5965727032d2b67ef348"
+  ],
+  "relation_one": "r3-known-one",
+  "relation_two": "r3-known-two",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "schema": "SOROK_C05_R3_CHALLENGE3@1",
+  "source_sha": "5d771dd86767655534b23576075e5da2db4fba78"
+}
