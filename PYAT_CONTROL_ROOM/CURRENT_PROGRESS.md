@@ -1,3 +1,9 @@
+# PYAT K3 HQ 29/26/14 SELECTION SOURCE-STATIC — 2026-11-16 (REV9 AUTHOR CANDIDATE)
+
+Frozen A/B P0→P1→P2. Exact 29 K1 families, 26 distinct R15 proposals (all NOT_ADOPTED), 14 finite #817 obligations selected and routed in `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/`. No new 14-run, P3, 26-build or K4. Non-author K3 reviewer/paired protected CAS still pending; protected rev8 remains controlling. #1097/#960 fast C11 operating priority unchanged.
+
+---
+
 # K3 CONDITIONAL P2 AND INDEPENDENT REVIEW HANDOFF READY — 2026-11-16 (CANDIDATE ONLY)
 
 Two optional P2 commissions are PREPUBLISHED, not executed: [A answers B's P1](https://github.com/maidiu/rawlsing/pull/1131#issuecomment-6930278488) and [B answers A's P1](https://github.com/maidiu/rawlsing/pull/1134#issuecomment-6930280460). P2 is WAIVED if the opposing P1 has no decision-changing objection. Both P1 PRs/HEADs must exist and freeze before any response. A [separate reviewer commission](https://github.com/maidiu/rawlsing/issues/1112#issuecomment-6930306257) is prepublished and begins only after P1 and any needed P2; direct GitHub PR receipts, no manual HQ intermediate relay. All source/native/science/actor rights and protected CAS still held. Production #1097/#960 first.
