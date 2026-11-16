@@ -1,0 +1,7 @@
+# P1 delta, not new global review
+**C1:** A correctly holds estate closure (23 historical CONTROL categories/17 unbootstrapped do not imply 17 absent functions). B's GIT-0002/00E positive producer qualification may change *owner receiving*, while GIT-0252 is a negative decision-irrelevant archive pointer. No 48-body recommission.
+**C2:** A's canonical R17 source/identity preservation remains scoped S1; B old V550J cache mismatch is conditional S/M and not a unique historical T or actual loss. F26 query cache alias not inferred.
+**C3:** A's direct F03/V552J/I07 source science/negative distinctions stand. Current selected native first reader and actual Sorok person producer remain HELD; an E001 importer check is necessary but insufficient to generate historically situated actors, source/actor/consent owners separate.
+**C4:** Distinct #815/#816 same-head reviews verified, neither grants #817 formal independent credentials. A full P0 not read by B before B freeze; public A issue/PR summary visibility disclosed in B P0.
+**C5:** B contests only A Q03 positive-producer Sorok adopted-law decision and Q10 importer-vs-generator split; supports narrow F26 Q08; GIT-0252 STOP_DELTA_ONLY. A finite-stop hypothesis survives: named missing source item must change two different material decisions or no new search.
+**Four proposed verdicts remain:** ESTATE HOLD; MAP ACCEPT_SCOPED_S1_R17 / HOLD whole; ZERO_LOSS HOLD; ALL35_NATIVE HOLD_NOT_RUN.

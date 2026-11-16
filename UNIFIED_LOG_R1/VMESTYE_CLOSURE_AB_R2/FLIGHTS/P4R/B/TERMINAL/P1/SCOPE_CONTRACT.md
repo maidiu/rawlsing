@@ -1,0 +1,2 @@
+# P1 scope
+Compare only A's frozen P0 `93900aab2486eb43509f701f3cc66cee8bdf3ecb` against independently frozen B P0 `1ab961070977811604e07de2869335a201c5dde8` using bounded Sorok index-source GIT-0002/00E, GIT-0207/GIT-0252, original V550J cache and A F26 case. Current Pyat producer/source→Sorok C0/C12 positive producer→E001 consented recipient are *different* boundaries. No new original substantive T established. No global new corpus census, accepted HQ role, engineering/native grant, shared ledger edit or protected change.
