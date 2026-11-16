@@ -1,0 +1,67 @@
+{
+  "identity": "K1_A_P2_VALIDATION_AND_FREEZE_R1",
+  "date": "2026-11-16",
+  "inputs": {
+    "a0": "7a9b80380d3a21a39959c552082895e954d6c53c",
+    "a_p1": "893cc7d638d1dcaef1bdecf3b0360886df9ed016",
+    "b0_bank": "e39734cbf0237ce6117e0cc6fc58be19dc839d5b",
+    "b_p1": "e7bd64ace7fa8da8602b861f9488e30be66bde31",
+    "r17": "3f7e1168592dd2db02ae03ce26ac6a40cf71da23"
+  },
+  "p2_files": [
+    {
+      "filename": "P2_REPLIES.tsv",
+      "blob_sha": "e079dce6b0266252527aa40ad9c8c8389a907585",
+      "rows": 45,
+      "columns": 15
+    },
+    {
+      "filename": "P2_ALL_29_A0_FAMILY_REPLIES.tsv",
+      "blob_sha": "3800f5463d9cca301a4fd0b9108600aed95934dd",
+      "rows": 29,
+      "columns": 7
+    },
+    {
+      "filename": "P2_DECOMPOSED_CAPABILITY_TRACE.tsv",
+      "blob_sha": "d4b8b9cfb9099c914546167a9db1a8bdae2a1c25",
+      "rows": 19,
+      "columns": 11
+    },
+    {
+      "filename": "P2_REVISED_PYAT_CAPABILITY_CONSERVATION_ROSTER.tsv",
+      "blob_sha": "f8c34a7a2aec3581cbd844e7b0967855421f8ae1",
+      "rows": 29,
+      "columns": 26
+    },
+    {
+      "filename": "P2_REVISED_RECOVERED_KNOWLEDGE_PATHS.tsv",
+      "blob_sha": "1730c74fd9e447e9cfbcfd987b458280da68e5a7",
+      "rows": 29,
+      "columns": 24
+    },
+    {
+      "filename": "P2_REVISED_RECOVERED_INTEGRATED_MACHINE.md",
+      "blob_sha": "d2c58a6fb1629011aa18a25ffb024ece8fbb1521",
+      "rows": null,
+      "columns": null
+    },
+    {
+      "filename": "P2_INTEGRATOR_HANDOFF.md",
+      "blob_sha": "VERIFY_BY_FROZEN_PR",
+      "rows": null,
+      "columns": null
+    }
+  ],
+  "checks": {
+    "all_tsv_width_and_unique_key": "PASS",
+    "b_p1_contests_replied": "45/45",
+    "a0_families_replied": "29/29",
+    "p2_subcapabilities": "19_TYPED_NONADDITIVE",
+    "a0_source_and_p1_unchanged": "PASS",
+    "selected_native_science_actor_ci": "NOT_RUN",
+    "pyat_requirements_adopted": 0,
+    "whole_13_prong_semantic_completion": "HELD",
+    "K2": "NOT_RUN"
+  },
+  "final": "K1_A_P2_FROZEN__INTEGRATOR_RECEIVING_PENDING__K2_NOT_RUN"
+}
