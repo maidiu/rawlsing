@@ -1,0 +1,205 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R4_G5_VERDICT@1",
+  "commission": "SOROK automatic PROGRAMMA currentness R4 launch-auth receiving",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "same_distinct_independent_nonauthor",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "branch": "codex/sorok-automatic-currentness-r4-receiving-20261116-r1",
+  "candidate_source_sha": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+  "final_artifact_report_sha": "bf40e8ccf4f41235f17d4ab3a56787cb8537aa49",
+  "runtime_blob": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447",
+  "test_blob": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1",
+  "focused_r4_test_blob": "b3bb1fa938fe2adb716fcbfd85e6595d39f2502d",
+  "runtime_sha256": "9ae43c457f6f671dc1212f057047a18035dd1f566419ac2eba3e7d72c8cc2e95",
+  "test_sha256": "3a6507cd4e7007d9ac0099269818f7aaa92e63f8dc838dcbf4e04cc40e7281d1",
+  "focused_r4_test_sha256": "e71d2d08d17d4e69ac28ad44dac40d1862dfc4df3dc9fa86e98c8ad1ad0ea611",
+  "predecessor_reds": {
+    "R1": "fc49662603c3dd8148c847cd6f35f2172184fd5a",
+    "R2": "53fad99fd8da86e4ab1cd12fdcfcd93fc8b2942f",
+    "R3": "b83438438dcb82eec43d23f170cf5672269edf54 / a49be6e8bf728262dad62753f3066e99351b7af9"
+  },
+  "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "accept_scoped": true,
+  "accept_scoped_target": "ACCEPT_SCOPED_SOURCEFREE@e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+  "full_original_claim": "NOT_ESTABLISHED",
+  "protected_ci": "UNAVAILABLE_BILLING",
+  "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+  "scope": "EXACT_OPERATIONAL_CURRENTNESS_MECHANISM_UNDER_TRUSTED_LOCAL_OPERATOR_CONTROLLER_BOUNDARY; installed-launcher proof and actual-session binding; external issue/comment connector and CI holds; no full-original/native/protected claim",
+  "exact_fake_witness": {
+    "original_launcher_sha256": "c596188f68e4228e8a4a7bc7b5aa9072e42eb8df8690965d3431f837659f7252",
+    "matching_session_launcher_sha256": "7ede7468bd093f2ce570947cbe034e48bf52e5e75e4dfbb3f71b8ec396126b1b",
+    "old_source_0b2664a8": {
+      "attest_exit": 0,
+      "state": "TRUSTED_LAUNCH_ATTESTED",
+      "fake_review_exit": 0,
+      "result": "R3_RED_REPRODUCED"
+    },
+    "corrected_exact": {
+      "attest_exit": 1,
+      "error": "TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH",
+      "fake_review_exit": 1,
+      "fake_review_error": "UNTRUSTED_CONTROLLER_RUN",
+      "result": "REFUSED"
+    },
+    "corrected_matching_session": {
+      "attest_exit": 1,
+      "error": "LAUNCHER_PROOF_REQUIRED",
+      "result": "REFUSED"
+    },
+    "raw": "evidence/fake_attest_witness_report.json, evidence/raw/fake_attest_witness_old/, evidence/raw/fake_attest_witness_corrected/, evidence/raw/matching_session/, evidence/old_source_fake_review_intake.exit, evidence/corrected_source_fake_review_intake.exit"
+  },
+  "installed_launcher_positive": {
+    "path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+    "sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+    "launch_exit": 0,
+    "attestation_exit": 0,
+    "provenance": "TRUSTED_LAUNCHER_ATTESTATION",
+    "verdict": "PASS",
+    "raw": "evidence/installed_launcher_positive_report.json, evidence/installed_launcher_positive_stdout.log"
+  },
+  "material_and_review_retention": {
+    "material_probe": "7 fixed / 0 gaps / PASS",
+    "fake_unenrolled_reviewer": "UNTRUSTED_CONTROLLER_RUN",
+    "exact_verdict": "exact equality",
+    "raw": "evidence/material_auth_probe_stdout.log, evidence/fake_reviewer_probe_stdout.log"
+  },
+  "operator_and_session_binding": {
+    "actual_job_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "binding_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "receipt_reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "author_session_distinct": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+    "expected_source": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+    "high_risk_operator_enrollment_signed": true,
+    "unsigned_enrollment_refused": true,
+    "local_operator_boundary": "installed launcher plus signed high-risk operator authorization; excluded threat model is local privileged operator/code/key rewrite"
+  },
+  "live_source": {
+    "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+    "refs_count": 16,
+    "refs_digest": "4c895ee3eea2bf2a6355fe9dc9a70a7f15246bdd1c15da08179f9fced8d3eff4",
+    "repo_http": 200,
+    "pull_http": {
+      "1062": 200,
+      "1066": 200,
+      "1089": 200,
+      "1091": 200,
+      "1095": 200
+    },
+    "issue_http": {
+      "939": 403,
+      "1008": 403,
+      "1010": 403
+    },
+    "status_coverage": "REF_SHA_ONLY",
+    "fetched_at_utc": "2026-11-16T08:07:20.870355+00:00",
+    "expires_at_utc": "2026-11-16T08:22:20.870381+00:00",
+    "evidence_digest": "dafe2acbb4706aa4c0a914ad448012b42d423003641d5a638af3c62bf0db3475",
+    "current_items": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "source_authority_hold": "issue/comment read scope HTTP 403; only refs/SHA and watched PR status observed; no full issue/comment currentness",
+    "raw": "evidence/live_observation_summary.json, evidence/live_status_before.json, evidence/live_startup.json, evidence/live_status_after.json, evidence/what_next.out"
+  },
+  "real_lifecycle": {
+    "author_job": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+    "author_pid": 93975,
+    "author_pair_generation": 53,
+    "author_pair_checkpoint": "51a6661d324e2aeca1be102ecc6360aa0de272fbb4cf4613f490df6fb2da1a90",
+    "author_worker_return_execution_state": "RETURNED_REVIEW_PENDING",
+    "author_worker_return_sha256": "2b5c8bdd38d75931f44a34f8c2067ee162ebf90cb200880ddf598c2f5e0e7ecb",
+    "hook_state": "REAL_MECHANISM_WORKER_RETURN_INTAKEN",
+    "review_job": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1",
+    "review_binding_role": "REVIEWER",
+    "review_binding_source": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+    "review_binding_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "review_launch_enrolled": true,
+    "review_launcher_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+    "review_receipt_path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/REVIEW_RECEIPT.json",
+    "author_live_mutation_by_reviewer": false,
+    "raw": "evidence/actual_author_state_snapshot.json, evidence/raw/actual_worker_run/, evidence/raw/review_job/, evidence/raw/review_run/"
+  },
+  "local_checks": {
+    "host": "Darwin x86_64, macOS 13.7.8",
+    "python": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+    "tests": "34 passed, exit 0, 5.79s with reviewer TMPDIR and reviewer-generated sandbox launcher key/identity",
+    "frozen_verifier": "--self-test --status exit 0; plain exit 0; --no-git --status exit 0",
+    "mcr": "py_compile exit 0; --self-test exit 0",
+    "canonical": "verify_canonical_programma_r1.py exit 0",
+    "pyat": "plain exit 0; --self-test exit 0",
+    "changed_commissions": 0,
+    "live_what_next": "B01 RECEIVE with owner/prerequisites; four source items remain; exit 2",
+    "raw": "evidence/checks/, evidence/what_next.out, evidence/installed_launcher_positive_report.json"
+  },
+  "historical_boundaries": {
+    "tasks": 27,
+    "decision_nodes": 21,
+    "original_scope": {
+      "functions": 144,
+      "seams": 38,
+      "gates": 83,
+      "assets": 304,
+      "inputs": 100
+    },
+    "B05": {
+      "review_pr": 1089,
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "state": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "full_original_readiness": "HOLD_DECISION_A02,A03,A08"
+    },
+    "C04": {
+      "review_pr": 1062,
+      "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "full_original_readiness": "HOLD_DECISION_A07,S02,S03"
+    },
+    "C05": {
+      "review_pr": 1091,
+      "review_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+      "full_original_readiness": "HOLD_DECISION_S07"
+    },
+    "G03_I0": "RECEIVED_SCOPED_UNMERGED_PR993; full G03 held",
+    "CG_A_1066": "RECEIVED_SCOPED_UNMERGED_PR1066 outside the 27 DAG",
+    "protected_foundations": {
+      "P3": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+      "P4": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+      "P5": "5e266a80ccfc52da10741e15f6b9076138907758",
+      "P6": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+      "MI": "1f77f2036427a410429184780ef884ec4f253ad0",
+      "MII": "521ae459091c5d4e4009f442257d74d50b2c55db",
+      "MIII": "3e5b1611f5cb043b43ffd39b14c9d707923f1210"
+    },
+    "issue_939": "STOP_NEVER_DISPATCH",
+    "browser": {
+      "1008": "terminal scoped",
+      "1010": "terminal held",
+      "1012": "not launched"
+    },
+    "protected_ci": "UNAVAILABLE_BILLING / PENDING_PROTECTED_CI_AND_ADOPTION",
+    "native_science_actor_human": "HELD",
+    "protected_merge": "none"
+  },
+  "remaining_holds": {
+    "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; no full issue/comment currentness",
+    "protected_ci": "UNAVAILABLE_BILLING; no GitHub Actions PASS or protected adoption",
+    "native_science_actor_human": "HELD",
+    "full_original": "NOT_ESTABLISHED",
+    "protected_merge": "none"
+  },
+  "review_receipt": {
+    "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/REVIEW_RECEIPT.json",
+    "review_commit": "EVIDENCE_COMMIT_RECORDED_IN_FINAL_RECEIPT",
+    "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+    "scope": "EXACT_OPERATIONAL_CURRENTNESS_MECHANISM_UNDER_TRUSTED_LOCAL_OPERATOR_CONTROLLER_BOUNDARY",
+    "full_original_claim": "NOT_ESTABLISHED",
+    "protected_ci": "UNAVAILABLE_BILLING",
+    "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION"
+  },
+  "terminal": "STOP"
+}

@@ -1,0 +1,616 @@
+{
+  "generation": 53,
+  "checkpoint_id": "51a6661d324e2aeca1be102ecc6360aa0de272fbb4cf4613f490df6fb2da1a90",
+  "mechanism_worker_return": {
+    "event_id": "completion:c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0",
+    "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+    "job_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+    "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+    "grant_id": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4-grant",
+    "role": "IMPLEMENTER",
+    "exit_code": 0,
+    "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R4/WORKER_RETURN.json",
+    "return_sha256": "2b5c8bdd38d75931f44a34f8c2067ee162ebf90cb200880ddf598c2f5e0e7ecb",
+    "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+    "runtime_blob": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447",
+    "test_blob": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1",
+    "execution_state": "RETURNED_REVIEW_PENDING",
+    "review_required": true,
+    "completion_sha256": "c2ac7a3f82f19eea88238127dfeba80e51148b8b3073fc8816285cf6ef34d4f0"
+  },
+  "mechanism_review": {
+    "id": "AUTOMATIC_CURRENTNESS_R1",
+    "state": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
+    "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+    "review_receipt": null,
+    "review_run": null,
+    "verdict_artifact": null,
+    "verdict": null,
+    "reviewer_session": null,
+    "review_commit": null,
+    "review_scope": null,
+    "replay": false
+  },
+  "controller_integration": {
+    "installed_controller": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115",
+    "hook": "completion_events.py optional COMPLETION_SOROK_CURRENTNESS",
+    "hook_state": "REAL_MECHANISM_WORKER_RETURN_INTAKEN",
+    "original_controller_hashes": {
+      "launch.py": "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1",
+      "completion_events.py": "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63"
+    }
+  },
+  "reconciliation_required": [
+    {
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    },
+    {
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    },
+    {
+      "what_changed": "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "expected_evidence": "authenticated issue status and updated_at",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "wire an authenticated connector with issues read scope; keep status HOLD",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    },
+    {
+      "what_changed": "GITHUB_PR_STATUS_ADVANCED pr:1095",
+      "expected_evidence": "live state/merged/updated_at/head matching the expected baseline",
+      "owner": "SOROK HQ + authenticated GitHub connector",
+      "next_action": "reconcile the changed PR status and re-run the relevant receiving",
+      "source_kind": "LIVE_GITHUB",
+      "source_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "status_coverage": "REF_SHA_ONLY",
+      "checkpoint_id": "d012b735f123dda426f64bb3bfd86392901106fc36de83c393574d0499918d7d"
+    }
+  ],
+  "holds": [
+    {
+      "kind": "REAL_MECHANISM_WORKER_RETURN",
+      "scope": "AUTOMATIC_CURRENTNESS_R1",
+      "owner": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+      "reason": "RETURNED_REVIEW_PENDING"
+    },
+    {
+      "kind": "MECHANISM_REVIEW",
+      "scope": "AUTOMATIC_CURRENTNESS_R1",
+      "owner": "separate independent nonauthor",
+      "reason": "PENDING_EXTERNAL_NONAUTHOR_REVIEW"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1008",
+      "owner": "user-operated Browser",
+      "reason": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1010",
+      "owner": "user-operated Browser",
+      "reason": "A_B_A_COMPLETED_G2_HELD"
+    },
+    {
+      "kind": "BROWSER_OWNERSHIP",
+      "scope": "issue_1012",
+      "owner": "user-operated Browser",
+      "reason": "NOT_LAUNCHED_WAITING_J1"
+    },
+    {
+      "kind": "CONTROLLER",
+      "scope": "issue_939",
+      "owner": "existing SOROK owner",
+      "reason": "USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS"
+    },
+    {
+      "kind": "CONTROLLER",
+      "scope": "persistent_dispatch",
+      "owner": "existing SOROK owner",
+      "reason": false
+    },
+    {
+      "kind": "SCIENCE_AUTHORITY",
+      "scope": "ALL",
+      "owner": "original CAN/ADP/Pyat/human issuers",
+      "reason": "native science, actor knowledge and human authority remain HELD"
+    }
+  ],
+  "tasks": {
+    "B01": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01",
+      "full_original_decision_blockers": [
+        "A01"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "B02": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A02",
+      "full_original_decision_blockers": [
+        "A02"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "B03": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01",
+      "full_original_decision_blockers": [
+        "A01"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "B04": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A03,A04",
+      "full_original_decision_blockers": [
+        "A01",
+        "A03",
+        "A04"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "B05": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "review_pr": 1089,
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "protected_ci": "UNAVAILABLE_BILLING",
+      "full_original_readiness": "HOLD_DECISION_A02,A03,A08",
+      "full_original_decision_blockers": [
+        "A02",
+        "A03",
+        "A08"
+      ],
+      "code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "claim_ready": true
+    },
+    "C01": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+      "full_original_decision_blockers": [],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "C02": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A04,A06,S01",
+      "full_original_decision_blockers": [
+        "A04",
+        "A06",
+        "S01"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "C03": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01",
+      "full_original_decision_blockers": [
+        "A01",
+        "A04",
+        "A06",
+        "S01"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "C04": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "review_pr": 1062,
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "protected_ci": "UNAVAILABLE_BILLING",
+      "full_original_readiness": "HOLD_DECISION_A07,S02,S03",
+      "full_original_decision_blockers": [
+        "A07",
+        "S02",
+        "S03"
+      ],
+      "code_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+      "claim_ready": true
+    },
+    "C05": {
+      "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+      "execution_state": "SCOPED_RECEIVED_UNMERGED",
+      "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "review_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+      "review_pr": 1091,
+      "protected_integration": "PENDING_PROTECTED_CI_AND_ADOPTION",
+      "protected_ci": "UNAVAILABLE_BILLING",
+      "full_original_readiness": "HOLD_DECISION_S07",
+      "full_original_decision_blockers": [
+        "S07"
+      ],
+      "code_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+      "claim_ready": true
+    },
+    "D01": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S04",
+      "full_original_decision_blockers": [
+        "S04"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "D02": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S03,S07",
+      "full_original_decision_blockers": [
+        "S03",
+        "S07"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "D03": {
+      "sourcefree_state": "CANDIDATE",
+      "execution_state": "CANDIDATE_AUTHOR_TESTED",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A07,S03",
+      "full_original_decision_blockers": [
+        "A07",
+        "S03"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "D04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HELD_NOT_LAUNCHED",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07",
+      "full_original_decision_blockers": [
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "D05": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_S04,S07",
+      "full_original_decision_blockers": [
+        "S04",
+        "S07"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "E01": {
+      "sourcefree_state": "PARTIAL_CANDIDATE",
+      "execution_state": "PARTIAL_CANDIDATE",
+      "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03",
+      "full_original_decision_blockers": [
+        "A01",
+        "A02",
+        "A04",
+        "A06",
+        "A07",
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "code_sha": null,
+      "claim_ready": true
+    },
+    "E02": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07",
+      "full_original_decision_blockers": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S07"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "E03": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A08",
+      "full_original_decision_blockers": [
+        "A08"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "E04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A08",
+      "full_original_decision_blockers": [
+        "A08"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "F01": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "F02": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "F03": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09,S03,S07",
+      "full_original_decision_blockers": [
+        "A09",
+        "S03",
+        "S07"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "F04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "G01": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A09",
+      "full_original_decision_blockers": [
+        "A09"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "G02": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A10,S05,S07",
+      "full_original_decision_blockers": [
+        "A10",
+        "S05",
+        "S07"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "G03": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "HOLD_DECISION_A10",
+      "full_original_decision_blockers": [
+        "A10"
+      ],
+      "code_sha": null,
+      "claim_ready": false
+    },
+    "G04": {
+      "sourcefree_state": "HELD_NOT_LAUNCHED",
+      "execution_state": "HELD_NOT_LAUNCHED",
+      "readiness": "HOLD_DEPENDENCY",
+      "review_sha": null,
+      "review_pr": null,
+      "protected_integration": "NONE",
+      "protected_ci": null,
+      "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+      "full_original_decision_blockers": [],
+      "code_sha": null,
+      "claim_ready": false
+    }
+  },
+  "decision_count": 21,
+  "task_count": 27,
+  "outside_packets": {
+    "G03_I0": "RECEIVED_SCOPED_UNMERGED_PR993",
+    "CG_A": "RECEIVED_SCOPED_UNMERGED_PR1066",
+    "portal_768": "DESIGN_CANDIDATE_NOT_IMPLEMENTED"
+  },
+  "source_freeze": {
+    "packet_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "gmt_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+    "verifier_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py",
+    "verifier_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+    "workflow_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.github/workflows/sorok-operational-currentness-r1.yml",
+    "workflow_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+    "frozen_projection_sha256": "82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e",
+    "frozen_md_block_sha256": "75cb09204e18416d579875515100e738473b4dd946123d7c6260a3377852460f",
+    "original_scope": {
+      "functions": 144,
+      "seams": 38,
+      "gates": 83,
+      "assets": 304,
+      "inputs": 100
+    },
+    "operational_gmt_atlas": {
+      "commit": "67698cfd32f838b7a5fdc381b0168d9225f5352f",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md",
+      "blob": null,
+      "status": "DRAFT_DOCUMENTARY_CANDIDATE_NOT_PROTECTED_LAW"
+    },
+    "oath_r2": {
+      "commit": "1341c81dfe0e99da030e7dca356f55789a10c6f8",
+      "status": "DRAFT_PR1098_NOT_PROTECTED_LAW"
+    }
+  }
+}
