@@ -1,0 +1,1 @@
+Actual R3 independent REVISE automatically intaken. Fresh-process startup shows generation52, exact source0b2664a8, REVISE_EXACT_DEFECT and four explicit sourceholds. No acceptance. One executed caller-authored launcher/self-attestation and actual-versus-expected session bypass remains; same source owner to repair. No protectedmerge or unrelateddispatch.

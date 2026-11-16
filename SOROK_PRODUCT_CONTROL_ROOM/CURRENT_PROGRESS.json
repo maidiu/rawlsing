@@ -2332,10 +2332,10 @@
   },
   "operational_currentness_runtime_r1": {
     "schema": "SOROK_OPERATIONAL_CURRENTNESS_RUNTIME_R1",
-    "generation": 50,
-    "checkpoint_id": "7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338",
+    "generation": 52,
+    "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
     "created_utc": "2026-11-16T03:48:33.865483+00:00",
-    "updated_utc": "2026-11-16T05:48:51.470472+00:00",
+    "updated_utc": "2026-11-16T06:46:11.213052+00:00",
     "source_freeze": {
       "packet_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
       "gmt_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
@@ -2366,8 +2366,8 @@
     "pair": {
       "json_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json",
       "md_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
-      "generation": 50,
-      "checkpoint_id": "7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338",
+      "generation": 52,
+      "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
       "reader_boundary": "LOCKED_GENERATION_MATCH_REQUIRED"
     },
     "authenticated_checkpoint": {
@@ -2399,6 +2399,16 @@
         "725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b": {
           "event_id": "completion:725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
           "job_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu"
+        },
+        "951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2": {
+          "event_id": "completion:951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2",
+          "job_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+          "session": "ses_e21a481bfffefyvpxaeFaAOFvQ"
+        },
+        "5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc": {
+          "event_id": "completion:5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
+          "job_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
           "session": "ses_e2186e745ffecK1Ilg4cw26pVu"
         }
       },
@@ -4430,6 +4440,82 @@
         "sequence": 41,
         "event_hash": "1384504eeda4b87856a2b847fe90792bdd819e96942a6e105aa451c000aa1b55",
         "previous_event_hash": "141f9a717e2c2d626bc566e56e44b12dbac359858207f93c94476b5032cea405"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "completion:951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2",
+        "kind": "WORKER_RETURN",
+        "recorded_utc": "2026-11-16T06:30:18.269820+00:00",
+        "source": {
+          "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+          "role": "IMPLEMENTER",
+          "expected_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "expected_source_commit": null,
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+          "job_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+          "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "pid": 81644,
+          "grant_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3-grant",
+          "argv_sha256": "7bce8488688eed145f7fe02b567a1a2778d88c0244eaeeb608ad7eb505f0943b",
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "f50fc5aca2fe595aed170c8a8fc793f0783ca87ae1a83733f69c8a6ee7b2a95f",
+          "binding_sha256": "af34176cfe7f36681bc7e898295a4940af74380f1c411f4c1c4a3ea91458d2af",
+          "launch_sha256": "d6b8c349989e6ea9686d8887fee1d2f214c1356536c54de1cdc30b08b9fef1d7",
+          "process_sha256": "886bace3af8bfe2f4c5e60f572a23a3700b58d1e0e1aa6ecc985fc07a2f971fe",
+          "completion_sha256": "951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2",
+          "source_commit": null,
+          "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/WORKER_RETURN.json"
+        },
+        "payload": {
+          "task_id": "AUTOMATIC_CURRENTNESS_R1",
+          "role": "IMPLEMENTER",
+          "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+          "exit_code": 0,
+          "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+          "source_commit": null
+        },
+        "sequence": 42,
+        "event_hash": "7156c95dba8cc2ff28de4934ba87eaf4012a4bf8e03a1064d353313f6a378eb7",
+        "previous_event_hash": "1384504eeda4b87856a2b847fe90792bdd819e96942a6e105aa451c000aa1b55"
+      },
+      {
+        "schema": "SOROK_CURRENTNESS_EVENT_R1",
+        "event_id": "completion:5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
+        "kind": "WORKER_RETURN",
+        "recorded_utc": "2026-11-16T06:46:11.052838+00:00",
+        "source": {
+          "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+          "role": "REVIEWER",
+          "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "expected_source_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+          "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+          "job_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "pid": 90877,
+          "grant_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1-grant",
+          "argv_sha256": "6bfefd380c231dcfc6cf03d06634eee886c827389747837b0bf6e07f2386bb56",
+          "worktree": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+          "recipient_thread": "01a161c5-a44a-7b13-ad50-49e10112874d",
+          "job_sha256": "1561afa4dac4fdb25c0c4dbb2fb0bffc010d2285b8fbead2613e84e18fe8a21e",
+          "binding_sha256": "7e984a54407ade689abf25752bdbcf61d8ab844dad7c7550bbcb0d684d71ff9a",
+          "launch_sha256": "fa965ca579b1ab7825f45b55d9de6c852a9a35614d780a52dd232e0d2b7c0cd4",
+          "process_sha256": "6c011dc016f508e5b07b923e9b486602e8126588014cc5d8cb7ed47eaf955932",
+          "completion_sha256": "5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
+          "source_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+          "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/REVIEW_RECEIPT.json"
+        },
+        "payload": {
+          "task_id": "AUTOMATIC_CURRENTNESS_R1",
+          "role": "REVIEWER",
+          "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+          "exit_code": 0,
+          "author_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "source_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef"
+        },
+        "sequence": 43,
+        "event_hash": "5ef4e51d9d129de39424cf0d6c84df31ad5066d336cc427d7c0b4e26103c3943",
+        "previous_event_hash": "7156c95dba8cc2ff28de4934ba87eaf4012a4bf8e03a1064d353313f6a378eb7"
       }
     ],
     "tasks": [
@@ -4478,7 +4564,9 @@
         "full_original_decision_blockers": [
           "A01"
         ],
-        "full_original_readiness": "HOLD_DECISION_A01"
+        "full_original_readiness": "HOLD_DECISION_A01",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "B02",
@@ -4532,7 +4620,9 @@
         "full_original_decision_blockers": [
           "A02"
         ],
-        "full_original_readiness": "HOLD_DECISION_A02"
+        "full_original_readiness": "HOLD_DECISION_A02",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "B03",
@@ -4583,7 +4673,9 @@
         "full_original_decision_blockers": [
           "A01"
         ],
-        "full_original_readiness": "HOLD_DECISION_A01"
+        "full_original_readiness": "HOLD_DECISION_A01",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "B04",
@@ -4644,7 +4736,9 @@
           "A03",
           "A04"
         ],
-        "full_original_readiness": "HOLD_DECISION_A01,A03,A04"
+        "full_original_readiness": "HOLD_DECISION_A01,A03,A04",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "B05",
@@ -4719,7 +4813,9 @@
           "A03",
           "A08"
         ],
-        "full_original_readiness": "HOLD_DECISION_A02,A03,A08"
+        "full_original_readiness": "HOLD_DECISION_A02,A03,A08",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration."
       },
       {
         "id": "C01",
@@ -4765,7 +4861,9 @@
           "K01": "ESTABLISHED_BUT_CODE_CONFORMITY_UNDER_TEST"
         },
         "full_original_decision_blockers": [],
-        "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED"
+        "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "C02",
@@ -4831,7 +4929,9 @@
           "A06",
           "S01"
         ],
-        "full_original_readiness": "HOLD_DECISION_A04,A06,S01"
+        "full_original_readiness": "HOLD_DECISION_A04,A06,S01",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "C03",
@@ -4900,7 +5000,9 @@
           "A06",
           "S01"
         ],
-        "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01"
+        "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "C04",
@@ -4973,7 +5075,9 @@
           "S02",
           "S03"
         ],
-        "full_original_readiness": "HOLD_DECISION_A07,S02,S03"
+        "full_original_readiness": "HOLD_DECISION_A07,S02,S03",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration."
       },
       {
         "id": "C05",
@@ -5037,7 +5141,9 @@
         "full_original_decision_blockers": [
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_S07"
+        "full_original_readiness": "HOLD_DECISION_S07",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration."
       },
       {
         "id": "D01",
@@ -5084,7 +5190,9 @@
         "full_original_decision_blockers": [
           "S04"
         ],
-        "full_original_readiness": "HOLD_DECISION_S04"
+        "full_original_readiness": "HOLD_DECISION_S04",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "D02",
@@ -5151,7 +5259,9 @@
           "S03",
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_S03,S07"
+        "full_original_readiness": "HOLD_DECISION_S03,S07",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "D03",
@@ -5216,7 +5326,9 @@
           "A07",
           "S03"
         ],
-        "full_original_readiness": "HOLD_DECISION_A07,S03"
+        "full_original_readiness": "HOLD_DECISION_A07,S03",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "D04",
@@ -5284,7 +5396,9 @@
           "S06",
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07"
+        "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "D05",
@@ -5343,7 +5457,9 @@
           "S04",
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_S04,S07"
+        "full_original_readiness": "HOLD_DECISION_S04,S07",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: D04"
       },
       {
         "id": "E01",
@@ -5431,7 +5547,9 @@
           "S02",
           "S03"
         ],
-        "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03"
+        "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03",
+        "claim_ready": true,
+        "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds."
       },
       {
         "id": "E02",
@@ -5524,7 +5642,9 @@
           "S05",
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07"
+        "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: D04"
       },
       {
         "id": "E03",
@@ -5577,7 +5697,9 @@
         "full_original_decision_blockers": [
           "A08"
         ],
-        "full_original_readiness": "HOLD_DECISION_A08"
+        "full_original_readiness": "HOLD_DECISION_A08",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: E02"
       },
       {
         "id": "E04",
@@ -5633,7 +5755,9 @@
         "full_original_decision_blockers": [
           "A08"
         ],
-        "full_original_readiness": "HOLD_DECISION_A08"
+        "full_original_readiness": "HOLD_DECISION_A08",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: E03, D05"
       },
       {
         "id": "F01",
@@ -5687,7 +5811,9 @@
         "full_original_decision_blockers": [
           "A09"
         ],
-        "full_original_readiness": "HOLD_DECISION_A09"
+        "full_original_readiness": "HOLD_DECISION_A09",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: E02"
       },
       {
         "id": "F02",
@@ -5742,7 +5868,9 @@
         "full_original_decision_blockers": [
           "A09"
         ],
-        "full_original_readiness": "HOLD_DECISION_A09"
+        "full_original_readiness": "HOLD_DECISION_A09",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F01"
       },
       {
         "id": "F03",
@@ -5799,7 +5927,9 @@
           "S03",
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_A09,S03,S07"
+        "full_original_readiness": "HOLD_DECISION_A09,S03,S07",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F02"
       },
       {
         "id": "F04",
@@ -5854,7 +5984,9 @@
         "full_original_decision_blockers": [
           "A09"
         ],
-        "full_original_readiness": "HOLD_DECISION_A09"
+        "full_original_readiness": "HOLD_DECISION_A09",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F03, E04"
       },
       {
         "id": "G01",
@@ -5904,7 +6036,9 @@
         "full_original_decision_blockers": [
           "A09"
         ],
-        "full_original_readiness": "HOLD_DECISION_A09"
+        "full_original_readiness": "HOLD_DECISION_A09",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F04"
       },
       {
         "id": "G02",
@@ -5963,7 +6097,9 @@
           "S05",
           "S07"
         ],
-        "full_original_readiness": "HOLD_DECISION_A10,S05,S07"
+        "full_original_readiness": "HOLD_DECISION_A10,S05,S07",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: G01"
       },
       {
         "id": "G03",
@@ -6014,7 +6150,9 @@
         "full_original_decision_blockers": [
           "A10"
         ],
-        "full_original_readiness": "HOLD_DECISION_A10"
+        "full_original_readiness": "HOLD_DECISION_A10",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: G02"
       },
       {
         "id": "G04",
@@ -6071,7 +6209,9 @@
           "K02": "ESTABLISHED_BUT_NATIVE_RULES_HELD"
         },
         "full_original_decision_blockers": [],
-        "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED"
+        "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+        "claim_ready": false,
+        "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: G02, G03"
       }
     ],
     "controls": {
@@ -6173,6 +6313,8 @@
             "A01"
           ],
           "full_original_readiness": "HOLD_DECISION_A01",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:B01",
             "gmt:B01"
@@ -6206,6 +6348,8 @@
             "A02"
           ],
           "full_original_readiness": "HOLD_DECISION_A02",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:B02",
             "gmt:B02"
@@ -6239,6 +6383,8 @@
             "A01"
           ],
           "full_original_readiness": "HOLD_DECISION_A01",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:B03",
             "gmt:B03"
@@ -6279,6 +6425,8 @@
             "A04"
           ],
           "full_original_readiness": "HOLD_DECISION_A01,A03,A04",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:B04",
             "gmt:B04"
@@ -6319,6 +6467,8 @@
             "A08"
           ],
           "full_original_readiness": "HOLD_DECISION_A02,A03,A08",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration.",
           "source_refs": [
             "packet:B05",
             "gmt:B05"
@@ -6350,6 +6500,8 @@
           },
           "full_original_decision_blockers": [],
           "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:C01",
             "gmt:C01"
@@ -6391,6 +6543,8 @@
             "S01"
           ],
           "full_original_readiness": "HOLD_DECISION_A04,A06,S01",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:C02",
             "gmt:C02"
@@ -6434,6 +6588,8 @@
             "S01"
           ],
           "full_original_readiness": "HOLD_DECISION_A01,A04,A06,S01",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:C03",
             "gmt:C03"
@@ -6474,6 +6630,8 @@
             "S03"
           ],
           "full_original_readiness": "HOLD_DECISION_A07,S02,S03",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration.",
           "source_refs": [
             "packet:C04",
             "gmt:C04"
@@ -6508,6 +6666,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_S07",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Protected CI and separate adoption remain pending; do not claim protected integration.",
           "source_refs": [
             "packet:C05",
             "gmt:C05"
@@ -6540,6 +6700,8 @@
             "S04"
           ],
           "full_original_readiness": "HOLD_DECISION_S04",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:D01",
             "gmt:D01"
@@ -6579,6 +6741,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_S03,S07",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:D02",
             "gmt:D02"
@@ -6617,6 +6781,8 @@
             "S03"
           ],
           "full_original_readiness": "HOLD_DECISION_A07,S03",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:D03",
             "gmt:D03"
@@ -6661,6 +6827,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_S04,S05,S06,S07",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:D04",
             "gmt:D04"
@@ -6699,6 +6867,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_S04,S07",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: D04",
           "source_refs": [
             "packet:D05",
             "gmt:D05"
@@ -6756,6 +6926,8 @@
             "S03"
           ],
           "full_original_readiness": "HOLD_DECISION_A01,A02,A04,A06,A07,S01,S02,S03",
+          "claim_ready": true,
+          "bounded_repair_or_receiving_action": "Full original claim remains NOT_ESTABLISHED; preserve source/owner holds.",
           "source_refs": [
             "packet:E01",
             "gmt:E01"
@@ -6819,6 +6991,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_A01,A02,A03,A04,S01,S03,S04,S05,S07",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: D04",
           "source_refs": [
             "packet:E02",
             "gmt:E02"
@@ -6854,6 +7028,8 @@
             "A08"
           ],
           "full_original_readiness": "HOLD_DECISION_A08",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: E02",
           "source_refs": [
             "packet:E03",
             "gmt:E03"
@@ -6892,6 +7068,8 @@
             "A08"
           ],
           "full_original_readiness": "HOLD_DECISION_A08",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: E03, D05",
           "source_refs": [
             "packet:E04",
             "gmt:E04"
@@ -6927,6 +7105,8 @@
             "A09"
           ],
           "full_original_readiness": "HOLD_DECISION_A09",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: E02",
           "source_refs": [
             "packet:F01",
             "gmt:F01"
@@ -6963,6 +7143,8 @@
             "A09"
           ],
           "full_original_readiness": "HOLD_DECISION_A09",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F01",
           "source_refs": [
             "packet:F02",
             "gmt:F02"
@@ -7005,6 +7187,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_A09,S03,S07",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F02",
           "source_refs": [
             "packet:F03",
             "gmt:F03"
@@ -7042,6 +7226,8 @@
             "A09"
           ],
           "full_original_readiness": "HOLD_DECISION_A09",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F03, E04",
           "source_refs": [
             "packet:F04",
             "gmt:F04"
@@ -7077,6 +7263,8 @@
             "A09"
           ],
           "full_original_readiness": "HOLD_DECISION_A09",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: F04",
           "source_refs": [
             "packet:G01",
             "gmt:G01"
@@ -7119,6 +7307,8 @@
             "S07"
           ],
           "full_original_readiness": "HOLD_DECISION_A10,S05,S07",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: G01",
           "source_refs": [
             "packet:G02",
             "gmt:G02"
@@ -7154,6 +7344,8 @@
             "A10"
           ],
           "full_original_readiness": "HOLD_DECISION_A10",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: G02",
           "source_refs": [
             "packet:G03",
             "gmt:G03"
@@ -7195,6 +7387,8 @@
           },
           "full_original_decision_blockers": [],
           "full_original_readiness": "FULL_ORIGINAL_NOT_ESTABLISHED",
+          "claim_ready": false,
+          "bounded_repair_or_receiving_action": "Unmet scoped prerequisites: G02, G03",
           "source_refs": [
             "packet:G04",
             "gmt:G04"
@@ -7392,24 +7586,24 @@
     "mechanism_review": {
       "id": "AUTOMATIC_CURRENTNESS_R1",
       "state": "REVISE_EXACT_DEFECT",
-      "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+      "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
       "review_receipt": {
         "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
         "task_id": "AUTOMATIC_CURRENTNESS_R1",
-        "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
-        "implementation_code_sha": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0",
-        "test_code_sha": "202e81d85d78e4d158a43bfcfa55a818149bf8fd",
+        "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+        "implementation_code_sha": "fc322b1ea3b3769bae699aeea8c1d31c053fd042",
+        "test_code_sha": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
         "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
         "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-        "reviewer_role": "distinct_independent_nonauthor",
-        "review_commit": "f8006235266aa618963b186e5c357bf92be830b3",
+        "reviewer_role": "same_distinct_independent_nonauthor",
+        "review_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
         "review_pr": null,
         "verdict": "REVISE_EXACT_DEFECT",
         "engineering_verdict": "REVISE_EXACT_DEFECT",
         "scientific_verdict": "HELD",
         "authority_verdict": "HOLD_SOURCE_AUTHORITY",
         "accept_scoped": false,
-        "scope": "FOCUSED_SOURCE_CORRECTION_RECEIVING_ONLY; five R1 reds rechecked; authenticated live refs/PR status observed; issue/comment 403 source-authority hold; material event/run auth still incomplete; no protected/native/full claim",
+        "scope": "FOCUSED_MATERIAL_EVENT_AUTHORITY_RECEIVING_ONLY; R2 material routes and live source rechecked; public attest-launch self-enrollment bypass remains; no protected/native/full claim",
         "grade": "SOURCEFREE_S2_ONLY",
         "full_original_claim": "NOT_ESTABLISHED",
         "protected_ci": "UNAVAILABLE_BILLING",
@@ -7418,41 +7612,40 @@
         "source_documents": [
           {
             "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
-            "git_blob": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0"
+            "git_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042"
           },
           {
             "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
-            "git_blob": "202e81d85d78e4d158a43bfcfa55a818149bf8fd"
+            "git_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/VERDICT.json",
-            "git_blob": "1e3fe0ae4200f15451ffc7867ba8b6d23bb4114e"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/VERDICT.json",
+            "git_blob": "8fd5a5bdfd980576d76999251cbc7f7c0b9e6111"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/EVIDENCE.json",
-            "git_blob": "80449ca7f659be735a5f4e8d88581fc31d085760"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/EVIDENCE.json",
+            "git_blob": "f86c8b37f25e44acd8ac03b31954fd2cda118529"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/00_RECEIVING.md",
-            "git_blob": "539667770255c3f4453c7207a1731534cfb87775"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/00_RECEIVING.md",
+            "git_blob": "013dbbb3620e90278561e60687052e6968ceec9f"
           },
           {
-            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/G5_HANDOFF.md",
-            "git_blob": "c66b5b8df39702546ffceb18b8edea8a1dfd7203"
+            "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/G5_HANDOFF.md",
+            "git_blob": "8e51789360539da3e626b3652b24379ee6ac3268"
           }
         ],
-        "reviewed_at_utc": "2026-11-16T05:47:58.688618+00:00",
+        "reviewed_at_utc": "2026-11-16T06:45:40.464809+00:00",
         "reasons": [
-          "five R1 reds materially repaired",
-          "REJECTION is unauthenticated public intake and changed B01 to REJECTED",
-          "PROTECTED_INTEGRATION is unauthenticated public intake and minted B05 protected PASS",
-          "GITHUB_OBSERVATION accepts fabricated source identity/digest as live truth",
-          "self-consistent fabricated WORKER_RETURN and REVIEWER runs are accepted",
-          "review verdict comparison uses startswith, not exact equality"
+          "R2 material probe 7 fixed/0 gaps; fake unenrolled reviewer refused",
+          "public attest-launch accepted a caller-authored launch.py plus caller-owned live process tree as TRUSTED_LAUNCH_ATTESTED",
+          "fake self-consistent REVIEWER run was then intaked with job session ses_FAKE_ATTEST",
+          "actual run session is not bound to receipt/registry expected session; only expected fields are checked",
+          "issue/comment 403 remains source-authority hold; CI remains unavailable"
         ],
         "remaining_holds": {
-          "code": "REVISE_EXACT_DEFECT on material event/run auth; exact verdict equality",
-          "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; only refs/SHA and four watched PR statuses observed",
+          "code": "REVISE_EXACT_DEFECT: attest-launch public self-enrollment bypass; bind installed launcher or operator authorization and actual session/source",
+          "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; no full currentness",
           "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
           "native_science_actor_human": "HELD",
           "protected_merge": "none"
@@ -7460,32 +7653,33 @@
         "runtime_intake": {
           "manual_fabrication": false,
           "path": "AUTOMATIC_INSTALLED_CONTROLLER_HOOK_AFTER_REAL_PROCESS_EXIT",
-          "expected_source": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+          "expected_source": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
           "expected_role": "REVIEWER",
-          "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu"
+          "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "review_job": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1"
         },
         "terminal": "STOP"
       },
       "review_run": {
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
-        "job_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1",
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+        "job_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
         "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-        "grant_id": "sorok-programma-automatic-currentness-r2-receiving-20261116-r1-grant",
-        "completion_sha256": "725d31d29b00ea99c26f05a3e112f6d8a8371796054c7bfbb2418c5b32b11b8b",
-        "binding_sha256": "851149ddb9a400b8ecaf70eb2e69fa734a2f4024c6250186ffa151123b49913b",
-        "launch_sha256": "73bb1081c8065e2720bad27c8204dadc83ad078f03db40a088401a3ba2507c7c",
-        "return_sha256": "ef189c0f26b2cdf3738df7cd8b438106024bea9e26372b510efb2b344eba79c9",
+        "grant_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1-grant",
+        "completion_sha256": "5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
+        "binding_sha256": "7e984a54407ade689abf25752bdbcf61d8ab844dad7c7550bbcb0d684d71ff9a",
+        "launch_sha256": "fa965ca579b1ab7825f45b55d9de6c852a9a35614d780a52dd232e0d2b7c0cd4",
+        "return_sha256": "f64a989901d22bf39fc54875d8b8b18cecd1210d6fea114012094187a3f7a171",
         "role": "REVIEWER"
       },
       "verdict_artifact": {
-        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/VERDICT.json",
-        "git_blob": "1e3fe0ae4200f15451ffc7867ba8b6d23bb4114e",
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/VERDICT.json",
+        "git_blob": "8fd5a5bdfd980576d76999251cbc7f7c0b9e6111",
         "verdict": "REVISE_EXACT_DEFECT"
       },
       "verdict": "REVISE_EXACT_DEFECT",
       "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
-      "review_commit": "f8006235266aa618963b186e5c357bf92be830b3",
-      "review_scope": "FOCUSED_SOURCE_CORRECTION_RECEIVING_ONLY; five R1 reds rechecked; authenticated live refs/PR status observed; issue/comment 403 source-authority hold; material event/run auth still incomplete; no protected/native/full claim",
+      "review_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
+      "review_scope": "FOCUSED_MATERIAL_EVENT_AUTHORITY_RECEIVING_ONLY; R2 material routes and live source rechecked; public attest-launch self-enrollment bypass remains; no protected/native/full claim",
       "replay": false
     },
     "next_non_dispatch_action": null,
@@ -7562,21 +7756,21 @@
       }
     ],
     "mechanism_worker_return": {
-      "event_id": "completion:38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f",
-      "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-repair-20261115-r2",
-      "job_id": "sorok-programma-automatic-currentness-repair-20261115-r2",
+      "event_id": "completion:951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2",
+      "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+      "job_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
       "session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
-      "grant_id": "sorok-programma-automatic-currentness-repair-20261115-r2-grant",
+      "grant_id": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3-grant",
       "role": "IMPLEMENTER",
       "exit_code": 0,
-      "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/WORKER_RETURN.json",
-      "return_sha256": "7403e06eb52a57d6aee169dfd2416d7b2c5b0f689a3aff243f94dc082f2c4b08",
-      "implementation_commit": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
-      "runtime_blob": "d06cd8a9a736fac728ea6b5ea2c098aa4986cfa0",
-      "test_blob": "202e81d85d78e4d158a43bfcfa55a818149bf8fd",
+      "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/WORKER_RETURN.json",
+      "return_sha256": "4fc9476faf8b0b8bca81167a785797f652552b030f876389813f659f944a67e8",
+      "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+      "runtime_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042",
+      "test_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
       "execution_state": "RETURNED_REVIEW_PENDING",
       "review_required": true,
-      "completion_sha256": "38fd981bbb3770d7fe560883c469f876f59dfd700b413b1c0f143b17d0d3ba4f"
+      "completion_sha256": "951a5ea4d05219882e0d4f8d4dc2fc518a005ed2fc17230406c8e885e403fcf2"
     },
     "mechanism_review_history": [
       {
@@ -7630,6 +7824,25 @@
           "binding_sha256": "851149ddb9a400b8ecaf70eb2e69fa734a2f4024c6250186ffa151123b49913b",
           "launch_sha256": "73bb1081c8065e2720bad27c8204dadc83ad078f03db40a088401a3ba2507c7c",
           "return_sha256": "ef189c0f26b2cdf3738df7cd8b438106024bea9e26372b510efb2b344eba79c9",
+          "role": "REVIEWER"
+        },
+        "replay": false
+      },
+      {
+        "event_id": "completion:5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
+        "implementation_commit": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+        "verdict": "REVISE_EXACT_DEFECT",
+        "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+        "review_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
+        "review_run": {
+          "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+          "job_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+          "session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+          "grant_id": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1-grant",
+          "completion_sha256": "5f43601389fb7e8ffb76a2a10ead041f61b58fa7327943d011051fd34ed22bbc",
+          "binding_sha256": "7e984a54407ade689abf25752bdbcf61d8ab844dad7c7550bbcb0d684d71ff9a",
+          "launch_sha256": "fa965ca579b1ab7825f45b55d9de6c852a9a35614d780a52dd232e0d2b7c0cd4",
+          "return_sha256": "f64a989901d22bf39fc54875d8b8b18cecd1210d6fea114012094187a3f7a171",
           "role": "REVIEWER"
         },
         "replay": false
