@@ -1,0 +1,97 @@
+--- WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/c05_challenge2_temporal.py
++++ WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_challenge2_temporal.py
+@@ -19,8 +19,8 @@
+     __import__("sys").path.insert(0, str(HERE))
+ 
+ from c05_r3_common import (  # noqa: E402
+-    O_ID, P_ID, cold_document, counts, later_event, owner_operations,
+-    start_world, store_sequences, viewer_document,
++    O_ID, P_ID, canonical, cold_document, counts, later_event,
++    owner_operations, start_world, store_sequences, viewer_document,
+ )
+ from developmental_recursion.continuing_relations import (  # noqa: E402
+     promote_relation,
+@@ -40,6 +40,7 @@
+         "event_access_status": document["context"]["event_access"]["status"],
+         "event_hash": document["event"]["hash"],
+         "event_clock_doc": document["event"]["clock"],
++        "relation_temporal": document["context"].get("relation_temporal"),
+         "read_boundary": document["context"]["read_boundary"],
+     }
+ 
+@@ -99,7 +100,51 @@
+                 and before["context"]["relation_scope"]["status"]
+                 == "HOLD_NOT_EXPOSED"
+                 and before["context"]["context_effect"]["relation_aware"]
+-                is False),
++                is False
++                and before["context"]["context_effect"][
++                    "event_perception"] == "PERCEIVED"),
++            "viewer_event_perception_conditional_basis": (
++                after_promote["context"]["context_effect"][
++                    "event_perception"] == "PERCEIVED"
++                and after_promote["context"]["context_effect"][
++                    "event_perception_source"] == "VIEWER_EVENT_ACCESS"
++                and after_promote["context"]["context_effect"][
++                    "event_perception_scope"] == "VIEWER_ONLY"
++                and "C12_EVENT_PERCEPTION" in after_promote[
++                    "context"]["context_effect"]["basis"]),
++            "retrospective_temporal_labels": (
++                after_promote["context"]["relation_scope"][
++                    "temporal_scope"]
++                == "RETROSPECTIVE_AS_OF_EVENT_CLOCK"
++                and after_promote["context"]["relation_temporal"][
++                    "relation_projection"]
++                == "RETROSPECTIVE_AS_OF_EVENT_CLOCK"
++                and after_promote["context"]["relation_temporal"][
++                    "event_time_relation_knowledge"] == "NOT_AVAILABLE"
++                and after_promote["context"]["relation_temporal"][
++                    "event_time_relation_status"] == "HOLD_SOURCE_AUTHORITY"
++                and after_promote["context"]["relation_temporal"][
++                    "within_clock_cutoff"] == "UNAVAILABLE"
++                and after_promote["context"]["relation_temporal"][
++                    "usable_as_prior_event_cause"] is False
++                and after_promote["context"]["relation_temporal"][
++                    "reason"]
++                == "NO_SOURCE_QUALIFIED_WITHIN_CLOCK_ORDERING_OR_RECEIPT_RULE"
++                and after_promote["context"]["read_boundary"][
++                    "event_time_relation_knowledge"] == "NOT_AVAILABLE"
++                and after_promote["context"]["read_boundary"][
++                    "relation_temporal"] == "RETROSPECTIVE_AS_OF_EVENT_CLOCK"),
++            "same_clock_relation_is_retrospective_not_event_time": (
++                after_promote["context"]["relation_scope"]["status"]
++                == "QUALIFIED"
++                and after_promote["context"]["relation_temporal"][
++                    "usable_as_prior_event_cause"] is False
++                and after_promote["context"]["relation_temporal"][
++                    "event_time_relation_knowledge"] == "NOT_AVAILABLE"
++                and event_before == event_after),
++            "no_withheld_actor_field": (
++                "withheld_relation_count" not in canonical(after_promote)
++                and "withheld_relation_count" not in canonical(after_later)),
+             "same_clock_enter_changes_prior_context": (
+                 after_enter["history"]["status"] == "QUALIFIED"
+                 and after_enter["context"]["relation_scope"]["status"]
+@@ -143,8 +188,9 @@
+                 and "r3:ch2:change" not in operations),
+         }
+         report = {
+-            "schema": "SOROK_C05_R3_CHALLENGE2@1",
+-            "source_sha": "5d771dd86767655534b23576075e5da2db4fba78",
++            "schema": "SOROK_C05_R3_CHALLENGE2_PROJECTION@1",
++            "source_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
++            "final_report_sha": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+             "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+             "relation": RELATION,
+             "event1": event1,
+@@ -173,7 +219,9 @@
+             "witness_reproduced": (
+                 checks["same_clock_enter_changes_prior_context"]
+                 and checks["same_clock_promote_changes_prior_context"]
+-                and checks["prior_event_relation_view_changed"]),
++                and checks["prior_event_relation_view_changed"]
++                and checks["retrospective_temporal_labels"]
++                and checks["same_clock_relation_is_retrospective_not_event_time"]),
+             "pass_controls": (
+                 checks["event_document_unchanged"]
+                 and checks["event_access_still_perceived"]

@@ -1,0 +1,69 @@
+{
+  "schema": "SOROK_C05_PROJECTION_R3_RECEIPTS@1",
+  "accepted_source": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+  "final_report": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+  "prior_mechanical_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "prior_review": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "hostile_court": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "product": {
+    "continuing_relations.py": {"blob": "8006440bd420ce8526bb2f333cd201ac077cbd22", "sha256": "a9e0595f92005fffb0c93720b7d63881994df71ed14fbbd140a723cd78f965d1"},
+    "supporting_actor.py": {"blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c", "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92", "unchanged": true},
+    "new_test": {"blob": "a50b4cd744d7b949170a0fd9c77f5e0ec4c927ec", "sha256": "944fd881f7a7046b0b58851a933ce59e6ed3f238e17c30c4f65f0c4ccb902f51"}
+  },
+  "new_green_receipts": {
+    "new_author_r3": {"passed": 4, "failed": 0, "exit": 0, "real_seconds": 28.59, "max_rss_bytes": 60055552, "log": "evidence/new_author_r3_stdout.log"},
+    "adapted_challenge1": {"checks_passed": 24, "checks_failed": 0, "exit": 0, "real_seconds": 11.39, "max_rss_bytes": 49078272, "report": "evidence/c05_challenge1_report.json", "report_sha256": "7748546d7a45db50b57b13ac8f58bf9156639ee5c476c6498b7ccf18ffeea8f3"},
+    "adapted_challenge2": {"checks_passed": 15, "checks_failed": 0, "exit": 0, "real_seconds": 11.11, "max_rss_bytes": 46968832, "report": "evidence/c05_challenge2_report.json", "report_sha256": "b1ea910f99c59bbb80bebfa4385b83ec39811fd9bd40ce0cfe33eff2f0d97030"},
+    "adapted_challenge3": {"checks_passed": 14, "checks_failed": 0, "exit": 0, "real_seconds": 8.3, "max_rss_bytes": 47931392, "report": "evidence/c05_challenge3_report.json", "report_sha256": "efda5d1b89a9d27fadab635a51370d63e9a310ed80ec415e3258e0f301550140"},
+    "adapted89_new_abi": {"checks_passed": 89, "checks_failed": 0, "exit": 0, "real_seconds": 168.99, "max_rss_bytes": 56733696, "report": "evidence/c05_probe_report.json", "report_sha256": "e450c2be112cc2f5ffe543becdf475eb9387128cd8832547f3eb6c9ed9bcf9c2"},
+    "r2_focused_promotion": {"passed": 1, "failed": 0, "exit": 0, "real_seconds": 7.66, "max_rss_bytes": 49999872, "log": "evidence/r2_focused_stdout.log"},
+    "c01": {"passed": 6, "failed": 0, "exit": 0, "real_seconds": 13.84, "max_rss_bytes": 55848960, "log": "evidence/c01_stdout.log"},
+    "c04_identity": {"passed": 6, "failed": 0, "exit": 0, "real_seconds": 28.9, "max_rss_bytes": 66162688, "log": "evidence/c04_identity_stdout.log"},
+    "c04_custody": {"passed": 12, "failed": 0, "exit": 0, "real_seconds": 58.18, "max_rss_bytes": 63930368, "log": "evidence/c04_custody_stdout.log"},
+    "p2_owner": {"passed": 5, "failed": 0, "exit": 0, "real_seconds": 15.15, "max_rss_bytes": 57311232, "log": "evidence/p2_owner_stdout.log"}
+  },
+  "preserved_obsolete_receipts": {
+    "original_c05_author_suite": {"passed": 3, "failed": 2, "exit": 1, "real_seconds": 41.38, "max_rss_bytes": 61128704, "failures": ["withheld_relation_count KeyError", "HOLD_UNKNOWN_SCOPE vs HOLD_NOT_EXPOSED"], "log": "evidence/original_c05_stdout.log"},
+    "original_challenge1": {"exit": 1, "real_seconds": 10.76, "reason": "KeyError: withheld_relation_count", "log": "evidence/original_challenge1_time.log"},
+    "original_challenge2": {"exit": 0, "real_seconds": 11.47, "reason": "same-clock relation still observed in retrospective context; corrected ABI labels it", "report": "evidence/original_challenge2_post_fix_report.json", "report_sha256": "638b318b67b871d78874f7f889ede124a338ce44d0239d9208e509bc78ff354c"},
+    "original_challenge3": {"exit": 2, "real_seconds": 5.73, "reason": "only obsolete C12-basis-without-own-perception assertion fails", "report": "evidence/original_challenge3_post_fix_report.json", "report_sha256": "cee771f2b9e0c9a59c6090dee4ed30fef6f261ea45223e0d6b28efb98dbb4637"},
+    "prior89_pathadapted": {"exit": 1, "real_seconds": 2.43, "reason": "KeyError: withheld_relation_count at first unexposed assertion", "log": "evidence/prior89_pathadapted_time.log"}
+  },
+  "projection_assertions": {
+    "hidden_a_b_full_actor_documents_equal": true,
+    "withheld_field_absent": true,
+    "named_absent_unexposed_same_hold": true,
+    "hidden_sever_exact_no_custody_disclosure": true,
+    "visible_positive_and_sever_restore_exact": true,
+    "cold_exact_all_challenges": true,
+    "viewer_specific_event_perception": true,
+    "not_perceived_basis_omits_c12": true,
+    "perceived_basis_includes_c12": true,
+    "plural_relation_count_two": true,
+    "mechanical_first_sorted_summary_label": true,
+    "retrospective_labels_present": true,
+    "event_document_hash_access_unchanged": true,
+    "later_clock_change_excluded": true,
+    "usable_as_prior_event_cause_false": true,
+    "both_parties_event_access_scope": "RELATION_PARTIES_ONLY"
+  },
+  "true_event_time_relation_knowledge": {
+    "status": "HOLD_SOURCE_AUTHORITY",
+    "implemented": false,
+    "first_consumer": "continuing_relations.read_actor_relative_context",
+    "required_issuer": "original C05/CAN/ADP source owner"
+  },
+  "actual_first_consumer": "continuing_relations.read_relation_history / read_actor_relative_context",
+  "downstream_product_consumers_found": false,
+  "probe_adaptations": "PROBE_ADAPTATIONS.json",
+  "probe_pins": "PROBE_PINS.json",
+  "blob_pins": "BLOB_PINS.json",
+  "three_verdicts": {
+    "engineering": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION",
+    "scientific": "HELD",
+    "authority": "SCOPED_SOURCEFREE_RECEIVING_ONLY__NATIVE_PROTECTED_HELD"
+  },
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "terminal": "STOP"
+}

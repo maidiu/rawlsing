@@ -1,0 +1,170 @@
+F..F.                                                                    [100%]
+=================================== FAILURES ===================================
+_________ test_dated_relation_later_shared_event_and_separate_contexts _________
+
+tmp_path = PosixPath('/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-c05-projection-r3-independent-g5-20261115-r3/tmp/pytest-of-matthewsmith/pytest-6/test_dated_relation_later_shar0')
+
+    def test_dated_relation_later_shared_event_and_separate_contexts(tmp_path):
+        with world(tmp_path) as (fanin, session, focal, owner):
+            root = session.read_root()
+            prior = next(
+                row for row in session.events()
+                if read_actor_access(session, focal, row["event_id"])["status"]
+                == "PERCEIVED"
+                and read_actor_access(session, P_ID, row["event_id"])["status"]
+                == "NOT_PERCEIVED"
+            )
+            start_clock = session.world().clock
+            recorded = entry(
+                session, exposed=[P_ID, O_ID],
+                private_state={"note": REL_SECRET},
+            )
+            assert recorded["status"] == "RECORDED"
+            assert recorded["current_status"] == "ACTIVE"
+            assert recorded["representation_depth"] == 1
+            claimed = next(
+                row for row in session.product.store.episodes(session.branch_id)
+                if row["episode_id"] == recorded["primary_episode_id"]
+            )
+            claimed_body = canonical(claimed["body"])
+            baseline = counts(session)
+            retried = entry(
+                session, exposed=[P_ID, O_ID],
+                private_state={"note": REL_SECRET},
+            )
+            assert retried["status"] == "UNCHANGED"
+            assert retried["primary_episode_id"] == recorded["primary_episode_id"]
+            assert counts(session) == baseline
+    
+            result, proposal, before, event_id = later_event(
+                owner, session, (focal, P_ID, O_ID),
+                operation_id="c05:op:e1", event_id="c05:e1",
+            )
+            assert result.status == "REALIZED"
+            assert session.event(event_id)["clock"] == proposal.event_time
+            assert session.world().clock == proposal.event_time
+            assert owner.realize("c05:op:e1", proposal, before) == result
+            assert owner.snapshot().actor == focal
+            assert session.read_root()["actor_ids"] == root["actor_ids"]
+    
+            for actor_id, status in (
+                (focal, "PERCEIVED"), (P_ID, "PERCEIVED"),
+                (O_ID, "PERCEIVED"),
+            ):
+                assert read_actor_access(
+                    session, actor_id, event_id)["status"] == status
+            assert read_actor_access(
+                session, focal, prior["event_id"])["status"] == "PERCEIVED"
+            assert read_actor_access(
+                session, P_ID, prior["event_id"])["status"] == "NOT_PERCEIVED"
+    
+            parent = read_actor_relative_context(session, P_ID, event_id)
+            neighbor = read_actor_relative_context(session, O_ID, event_id)
+            child = read_actor_relative_context(session, focal, event_id)
+            assert parent["event_access"]["status"] == "PERCEIVED"
+            assert neighbor["event_access"]["status"] == "PERCEIVED"
+            assert child["event_access"]["status"] == "PERCEIVED"
+            assert parent["relation_scope"]["status"] == "QUALIFIED"
+            assert neighbor["relation_scope"]["status"] == "QUALIFIED"
+            assert child["relation_scope"]["status"] == "HOLD_NOT_EXPOSED"
+            assert child["relation_scope"]["relations"] == []
+>           assert child["relation_scope"]["withheld_relation_count"] == 1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'withheld_relation_count'
+
+WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py:203: KeyError
+_____ test_stranger_clock_forgery_operation_reuse_and_private_leak_refuse ______
+
+tmp_path = PosixPath('/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-c05-projection-r3-independent-g5-20261115-r3/tmp/pytest-of-matthewsmith/pytest-6/test_stranger_clock_forgery_op0')
+
+    def test_stranger_clock_forgery_operation_reuse_and_private_leak_refuse(
+            tmp_path):
+        from unittest.mock import patch
+    
+        with world(tmp_path) as (fanin, session, focal, owner):
+            recorded = entry(
+                session, exposed=[P_ID, O_ID],
+                private_state={"note": REL_SECRET},
+            )
+            _, _, _, event_id = later_event(
+                owner, session, (focal, P_ID, O_ID),
+                operation_id="c05:op:e1", event_id="c05:e1",
+            )
+            baseline = counts(session)
+            world_before = session.world().snapshot()
+    
+            with pytest.raises(
+                    RecursionRefusal, match="RELATION_ACTOR_UNKNOWN"):
+                record_relation_change(
+                    session, actor_id=P_ID,
+                    other_actor_id="TEST_ONLY_C05_STRANGER",
+                    relation=RELATION, change="ENTER",
+                    clock=session.world().clock, operation_id="bad:stranger",
+                )
+            with pytest.raises(RecursionRefusal, match="RELATION_ACTOR_UNKNOWN"):
+                read_relation_history(
+                    session, P_ID,
+                    other_actor_id="TEST_ONLY_C05_STRANGER",
+                    relation=RELATION)
+            with pytest.raises(RecursionRefusal, match="RELATION_CLOCK_FUTURE"):
+                record_relation_change(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, change="CHANGE",
+                    clock=session.world().clock + 1,
+                    operation_id="bad:future", exposed_actor_ids=[P_ID, O_ID],
+                )
+            with pytest.raises(
+                    RecursionRefusal, match="RELATION_CLOCK_BACKDATED"):
+                record_relation_change(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, change="CHANGE",
+                    clock=session.world().clock - 1,
+                    operation_id="bad:backdated",
+                    exposed_actor_ids=[P_ID, O_ID],
+                )
+            with pytest.raises(
+                    RecursionRefusal, match="RELATION_OPERATION_REUSE_MISMATCH"):
+                record_relation_change(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, change="ENTER",
+                    clock=recorded["clock"],
+                    operation_id="c05:rel:enter",
+                    exposed_actor_ids=[P_ID, O_ID], value="different",
+                    private_state={"note": REL_SECRET},
+                )
+            with pytest.raises(
+                    RecursionRefusal, match="RELATION_EXPOSURE_MISSING_PARTY"):
+                record_relation_change(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, change="CHANGE",
+                    clock=session.world().clock,
+                    operation_id="bad:exposure",
+                    exposed_actor_ids=[P_ID],
+                )
+            with pytest.raises(
+                    RecursionRefusal, match="RELATION_PRIVATE_STATE_LEAK"):
+                record_relation_change(
+                    session, actor_id=P_ID, other_actor_id=O_ID,
+                    relation=RELATION, change="CHANGE",
+                    clock=session.world().clock,
+                    operation_id="bad:leak", exposed_actor_ids=[P_ID, O_ID],
+                    value=REL_SECRET,
+                    private_state={"note": REL_SECRET},
+                )
+            assert counts(session) == baseline
+            assert session.world().snapshot() == world_before
+    
+            unknown = read_relation_history(
+                session, P_ID, other_actor_id=O_ID,
+                relation="different-relation")
+>           assert unknown["status"] == "HOLD_UNKNOWN_SCOPE"
+E           AssertionError: assert 'HOLD_NOT_EXPOSED' == 'HOLD_UNKNOWN_SCOPE'
+E             
+E             - HOLD_UNKNOWN_SCOPE
+E             + HOLD_NOT_EXPOSED
+
+WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py:496: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py::test_dated_relation_later_shared_event_and_separate_contexts
+FAILED WORKER_RETURNS/SOROK_C05_CONTINUING_RELATIONS_R1/tests/test_c05_continuing_relations.py::test_stranger_clock_forgery_operation_reuse_and_private_leak_refuse
+2 failed, 3 passed in 41.15s

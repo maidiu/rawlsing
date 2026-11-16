@@ -1,0 +1,89 @@
+{
+  "schema": "SOROK_C05_PROJECTION_R3_G1_G5@1",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION",
+  "accepted_source": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+  "final_report": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+  "prior_mechanical_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "prior_review": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "hostile_court": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "final product blob 8006440bd420ce8526bb2f333cd201ac077cbd22 / sha256 a9e0595f...",
+        "supporting_actor.py unchanged 98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+        "only continuing_relations.py and the new R3 test changed from prior accepted source",
+        "metadata/evidence-only commits after implementation 4b33b8be",
+        "product read-only; prior mechanical custody/promotion acceptance preserved"
+      ]
+    },
+    "G2_build_actual_first_consumer": {
+      "status": "PASS_SCOPED_PROJECTION",
+      "evidence": [
+        "new author R3 test 4 passed",
+        "adapted challenge1 24/24, challenge2 15/15, challenge3 14/14",
+        "adapted89 new-ABI 89/89",
+        "R2 promotion test 1 passed",
+        "C01 6, C04 identity 6, C04 custody 12, P2 owner 5",
+        "cold exact in all adapted probes",
+        "actual first consumer: C05 read_relation_history/read_actor_relative_context"
+      ],
+      "limit": "no downstream D02/D03/J2/persona/model consumer found"
+    },
+    "G3_falsification": {
+      "status": "PASS_SCOPED_FALSIFICATION",
+      "evidence": [
+        "same event/viewer A no-hidden vs B hidden: full permitted actor documents equal",
+        "withheld_relation_count absent; absent and unexposed named scopes same HOLD_NOT_EXPOSED",
+        "hidden severance exact; visible positive relation and custody sever/restore pass",
+        "viewer-specific event_perception; NOT_PERCEIVED basis omits C12; PERCEIVED basis includes it",
+        "plural relations retained; singular summary mechanical first-sorted, not salience",
+        "retrospective temporal labels; event doc/access unchanged; later-clock relation excluded; cold exact",
+        "original C05 3 pass/2 obsolete fail and prior89 pathadapted KeyError preserved unchanged"
+      ]
+    },
+    "G4_preservation_restore_cold": {
+      "status": "PASS_SCOPED_PRESERVATION",
+      "evidence": [
+        "ENTER/CHANGE/LEAVE, depth promotion, same-op retry and new-op refusal-before-write pass",
+        "change/head sever/restore and private-state NOT_READ pass",
+        "real P2 owner event and C01/C04/P2 regressions pass",
+        "cold exactness in both challenge and inherited 89-check probes"
+      ],
+      "limit": "both_parties_event_access inherited relation-party summary; true event-time knowledge HOLD_SOURCE_AUTHORITY"
+    },
+    "G5_independent_receiving": {
+      "status": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION",
+      "evidence": [
+        "frozen final source and report; independent adapted probes and suites",
+        "prior mechanical custody/promotion acceptance preserved",
+        "full C05 actor-qualified knowledge remains unproved"
+      ]
+    }
+  },
+  "accepted_scope": [
+    "actor-facing hidden-relation noninterference with no withheld count",
+    "absent and fully unexposed named scopes same HOLD_NOT_EXPOSED",
+    "viewer-specific event_perception and conditional C12_EVENT_PERCEPTION basis",
+    "plural relation retention with mechanical singular summary label",
+    "retrospective as-of-event-clock label and event-time HOLD_SOURCE_AUTHORITY",
+    "preserved accepted mechanical relation/custody/promotion semantics"
+  ],
+  "not_accepted": [
+    "true same-clock event-time relation knowledge",
+    "native ADP-015/C4 relation authority or actor-qualified knowledge",
+    "CAN/ADP/V3 science, psychology, autonomy or generated language",
+    "G2 selection, complete J1/Nadia response, J1/J2, D04/D05, durable acquisition",
+    "human/scientific/source-rights receiving and protected merge",
+    "#939 fleet, PYAT/Browser/SEAM, concurrency/fork, depth >2"
+  ],
+  "residuals": [
+    "both_parties_event_access is an inherited relation-party summary; can reveal whether both relation parties perceived; labeled RELATION_PARTIES_ONLY; not used for viewer event_perception",
+    "named hidden P/O query cannot be formed by a non-party due public query pair construction; hidden noninterference rests on default A/B full-document equality and hidden severance",
+    "true same-clock event-time relation knowledge needs source-qualified within-clock ordering/receipt from original C05/CAN/ADP issuer",
+    "no downstream product consumer beyond C05 public readers was found"
+  ],
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "terminal": "STOP"
+}

@@ -1,0 +1,51 @@
+--- WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_pathadapted.py
++++ WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_newabi.py
+@@ -249,24 +249,24 @@
+         check(f"unexposed_{label}_qualified_hold_no_fact",
+               envelope["status"] == "HOLD_NOT_EXPOSED"
+               and envelope["relations"] == []
+-              and envelope["withheld_relation_count"] == 1
++              and "withheld_relation_count" not in blob
+               and RELATION not in blob
+               and P_ID not in blob
+               and O_ID not in blob
+               and REL_SECRET not in blob,
+               envelope["status"])
+-    check("absolute_query_unknown_scope",
++    check("absolute_query_unified_hold",
+           read_relation_history(
+               session, P_ID, other_actor_id=O_ID, relation="other-relation"
+-          )["status"] == "HOLD_UNKNOWN_SCOPE")
++          )["status"] == "HOLD_NOT_EXPOSED")
+     check("owner_query_qualified",
+           read_relation_history(
+               session, P_ID, other_actor_id=O_ID, relation=RELATION
+           )["status"] == "QUALIFIED")
+-    check("nonparty_query_pair_unknown_scope",
++    check("nonparty_query_pair_unified_hold",
+           read_relation_history(
+               session, Q_ID, other_actor_id=P_ID, relation=RELATION
+-          )["status"] == "HOLD_UNKNOWN_SCOPE")
++          )["status"] == "HOLD_NOT_EXPOSED")
+     check("future_as_of_refused",
+           refusal_code(lambda: read_relation_history(
+               session, P_ID,
+@@ -415,7 +415,7 @@
+           ctx1[focal]["event_access"]["status"] == "PERCEIVED"
+           and ctx1[focal]["relation_scope"]["status"] == "HOLD_NOT_EXPOSED"
+           and ctx1[focal]["relation_scope"]["relations"] == []
+-          and ctx1[focal]["relation_scope"]["withheld_relation_count"] == 1)
++          and "withheld_relation_count" not in canonical(ctx1[focal]))
+     for actor_id in (Q_ID, R_ID):
+         check(f"first_event_absent_unexposed_{actor_id}",
+               ctx1[actor_id]["event_access"]["status"] == "NOT_PERCEIVED"
+@@ -651,7 +651,8 @@
+           and p_240["relations"][0]["history_complete"] is True
+           and p_240["relations"][0]["representation_depth"] == 2)
+     check("outsider_still_hold", r_240["status"] == "HOLD_NOT_EXPOSED"
+-          and r_240["relations"] == [] and r_240["withheld_relation_count"] == 1)
++          and r_240["relations"] == []
++          and "withheld_relation_count" not in canonical(r_240))
+     q_third = read_actor_relative_context(session, Q_ID, third_event)
+     check("nonparticipant_exposed_relation_qualified",
+           q_third["event_access"]["status"] == "NOT_PERCEIVED"

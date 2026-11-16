@@ -1,0 +1,33 @@
+--- WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/prior89_c05_probe.py
++++ WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_probe_prior89_pathadapted.py
+@@ -18,7 +18,7 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ REPO = HERE.parents[2]
+-SCRATCH = REPO / ".local-logs/sorok-c05-independent-g5/scratch"
++SCRATCH = REPO / ".local-logs/sorok-c05-projection-r3-independent-g5-20261115-r3/scratch"
+ EVIDENCE = HERE.parent / "evidence"
+ ENGINE = REPO / "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1"
+ if str(HERE) not in sys.path:
+@@ -26,7 +26,7 @@
+ if str(ENGINE) not in sys.path:
+     sys.path.insert(0, str(ENGINE))
+ 
+-from c05_observe import counts, relation_counts, snapshot  # noqa: E402
++from c05_observe_prior89 import counts, relation_counts, snapshot  # noqa: E402
+ from developmental_recursion.continuing_relations import (  # noqa: E402
+     RELATION_CHANGE_KIND,
+     RELATION_CHANGE_SCHEMA,
+@@ -950,10 +950,10 @@
+         },
+     }
+     env = dict(os.environ)
+-    env["TMPDIR"] = str(REPO / ".local-logs/sorok-c05-independent-g5/tmp")
++    env["TMPDIR"] = str(REPO / ".local-logs/sorok-c05-projection-r3-independent-g5-20261115-r3/tmp")
+     env["PYTHONDONTWRITEBYTECODE"] = "1"
+     completed = subprocess.run(
+-        [sys.executable, "-B", str(HERE / "c05_cold_child.py"),
++        [sys.executable, "-B", str(HERE / "c05_cold_child_prior89.py"),
+          json.dumps(config)],
+         cwd=str(REPO), capture_output=True, text=True, timeout=300, env=env,
+     )

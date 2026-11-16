@@ -1,0 +1,11 @@
+--- WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/original_probes/prior89_c05_cold_child.py
++++ WORKER_REVIEWS/SOROK_C05_PROJECTION_R3_INDEPENDENT_G5/newprobes/c05_cold_child_prior89.py
+@@ -9,7 +9,7 @@
+ if str(HERE) not in sys.path:
+     sys.path.insert(0, str(HERE))
+ 
+-from c05_observe import counts, snapshot  # noqa: E402
++from c05_observe_prior89 import counts, snapshot  # noqa: E402
+ from developmental_recursion.contracts import canonical  # noqa: E402
+ from developmental_recursion.continuing_relations import (  # noqa: E402
+     record_relation_change,
