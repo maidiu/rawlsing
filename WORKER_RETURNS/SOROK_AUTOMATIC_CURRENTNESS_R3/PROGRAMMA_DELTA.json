@@ -51,6 +51,12 @@
       "before": "stopped/revoked evidence had no restore proof",
       "grade": "SOURCEFREE_ENGINEERING_CANDIDATE",
       "id": "R3_CONTROLS"
+    },
+    {
+      "after": "new source returns to PENDING_EXTERNAL_NONAUTHOR_REVIEW; prior REVISE stays in history",
+      "before": "a new worker return could leave the prior REVISE label attached to the new source",
+      "grade": "SOURCEFREE_ENGINEERING_CANDIDATE",
+      "id": "R3_RESUBMISSION_REVIEW_STATE"
     }
   ],
   "preserved": {

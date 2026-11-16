@@ -53,6 +53,7 @@
       ],
       "fake_run": "REFUSED UNTRUSTED_CONTROLLER_RUN",
       "prefix_verdict": "REFUSED REVIEW_VERDICT_ARTIFACT_MISMATCH",
+      "resubmission": "new source after REVISE returns to PENDING_EXTERNAL_NONAUTHOR_REVIEW; prior verdict remains in history",
       "role": "REVIEWER",
       "trusted_source": "REAL_LOCAL_SUPERVISED_REVIEW_RUN"
     },
@@ -198,13 +199,13 @@
   "stop": "No self-review, no protected merge, no fleet/Browser/PYAT/SEAM operation, no new provider or automatic dispatch.",
   "terminal": "FROZEN_CORRECTED_CANDIDATE_FOR_SAME_FOCUSED_NONAUTHOR_RERECEIVING",
   "tests": {
-    "breakdown": "17 original + 10 focused R3",
+    "breakdown": "17 original + 11 focused R3",
     "original": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
     "original_test_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
     "r3": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/tests/test_material_auth_boundary.py",
-    "r3_test_blob": "58ce992a97665ad39dffdfd8929fd0ea3279d3a6",
+    "r3_test_blob": "fc8f18260127ca039453d2100c69602fef126e7b",
     "raw": "evidence/checks/final_runtime_tests.out",
-    "result": "27 passed",
-    "runtime_blob": "190d55397468ce80e9c92e92771ed025c02d793c"
+    "result": "28 passed",
+    "runtime_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042"
   }
 }

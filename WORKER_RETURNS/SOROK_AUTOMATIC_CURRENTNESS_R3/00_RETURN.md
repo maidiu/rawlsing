@@ -77,10 +77,12 @@ self-consistent fake worker run were accepted. The corrected source now returns
 - Reviewer probe, rejected source: `3 fixed / 4 gaps / REVISE_EXACT_DEFECT`.
 - Reviewer probe, corrected source: `7 fixed / 0 gaps / PASS`.
 - Fake reviewer probe: `PASS`, exact `UNTRUSTED_CONTROLLER_RUN`.
-- Runtime tests: `27 passed` — the original 17 plus 10 focused R3 tests for
+- Runtime tests: `28 passed` — the original 17 plus 11 focused R3 tests for
   public material-event refusal, trusted rejection, fake/real protected merge,
   fake reviewer, exact verdict, registry/run-path tamper, control CLI boundary,
-  state-maintenance auth, trusted reviewer acceptance, and revocation/restoration.
+  state-maintenance auth, trusted reviewer acceptance, revocation/restoration and
+  resubmission after a prior `REVISE` returning to review-pending without
+  erasing the historical verdict.
 - Local macOS workflow: frozen #1095 self-test/plain/no-git and all required
   canonical/Pyat/MCR checks exit `0`; changed `WORKER_COMMISSIONS` count `0`.
   These are local checks, not GitHub Actions PASS.

@@ -1462,7 +1462,22 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
                     "review_required": True,
                     "completion_sha256": run["hashes"]["completion_sha256"],
                 }
-                state["mechanism_review"]["implementation_commit"] = implementation
+                review = state["mechanism_review"]
+                if review.get("implementation_commit") != implementation:
+                    review.update({
+                        "state": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
+                        "implementation_commit": implementation,
+                        "verdict": None,
+                        "reviewer_session": None,
+                        "review_commit": None,
+                        "review_scope": None,
+                        "review_receipt": None,
+                        "review_run": None,
+                        "verdict_artifact": None,
+                        "replay": False,
+                    })
+                else:
+                    review["implementation_commit"] = implementation
                 state["controller_integration"]["hook_state"] = (
                     "REAL_MECHANISM_WORKER_RETURN_INTAKEN")
             elif role == "REVIEWER":

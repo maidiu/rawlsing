@@ -190,6 +190,44 @@ def test_trusted_reviewer_run_is_accepted(tmp_path):
     assert validated["review_run"]["session"] == receipt["reviewer_session"]
 
 
+def test_new_worker_return_after_revise_returns_to_pending(tmp_path, monkeypatch):
+    config = t.make_sandbox(tmp_path)
+    whole, md, state = rt.read_pair(config)
+    state = __import__("copy").deepcopy(state)
+    state["mechanism_review"] = {
+        "id": rt.MECHANISM_ID, "state": "REVISE_EXACT_DEFECT",
+        "implementation_commit": "a" * 40,
+        "verdict": "REVISE_EXACT_DEFECT", "review_commit": "c" * 40,
+        "review_receipt": {"stale": True}, "review_run": {"stale": True},
+    }
+    state["mechanism_review_history"] = [{
+        "implementation_commit": "a" * 40, "verdict": "REVISE_EXACT_DEFECT",
+        "review_commit": "c" * 40}]
+    state["generation"] += 1
+    state["updated_utc"] = rt.now_utc()
+    rt.recompute(state)
+    rt.commit_state(config, whole, md, state)
+    run, _w, art = t.make_controller_run(
+        tmp_path / "repo", job_id="r3-resubmit", role="IMPLEMENTER",
+        task_id=rt.MECHANISM_ID, return_schema=rt.RETURN_SCHEMA)
+    art.write_text(json.dumps({
+        "schema": rt.RETURN_SCHEMA, "task_id": rt.MECHANISM_ID,
+        "role": "IMPLEMENTER", "session": "ses_local_fixture_child",
+        "implementation_commit": "b" * 40, "runtime_blob": "d" * 40,
+        "test_blob": "e" * 40, "return_paths": {}}) + "\n")
+    monkeypatch.setattr(rt, "_verify_mechanism_worker_return",
+                        lambda cfg, p, b: None)
+    config = t.enroll_test_run(config, run)
+    rt.intake_event(config, rt._make_return_event(config, run, return_path=str(art)),
+                    trusted=True)
+    _whole, _md, state = rt.read_pair(config)
+    review = state["mechanism_review"]
+    assert review["state"] == "PENDING_EXTERNAL_NONAUTHOR_REVIEW"
+    assert review["implementation_commit"] == "b" * 40
+    assert review["review_receipt"] is None
+    assert state["mechanism_review_history"][0]["verdict"] == "REVISE_EXACT_DEFECT"
+
+
 def test_authorized_revocation_and_restoration(tmp_path):
     config = t.make_sandbox(tmp_path)
     config = operator_auth(config, kinds=["REVOCATION", "RESTORATION"],

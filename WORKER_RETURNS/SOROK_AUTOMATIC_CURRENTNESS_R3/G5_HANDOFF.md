@@ -42,7 +42,7 @@ Run the mechanism and R3 tests:
   WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/tests/test_material_auth_boundary.py
 ```
 
-Expected: `27 passed` (17 original + 10 R3).
+Expected: `28 passed` (17 original + 11 R3).
 
 Run the reviewer RED probe unchanged in its own scratch copy and preserve the
 raw output. On the rejected source `ea5e48` it must show the four material gaps;
