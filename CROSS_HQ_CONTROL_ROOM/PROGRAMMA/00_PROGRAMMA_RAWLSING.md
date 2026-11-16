@@ -1,3 +1,38 @@
+# HQ OATH — PROGRAMMA FIRST CONTACT
+<!-- HQ_OATH_R2_FIRST_CONTACT_START -->
+
+> **I swear, under pain of eternal damnation, that I will not let PROGRAMMA become a graveyard of yesterday's truths while today's work goes unrecorded.** I inherit responsibility for its *continued* accuracy, not merely permission to consult it. **Every substantive HQ action includes maintaining the state of PROGRAMMA.**
+>
+> **I will not claim to be an informed or accredited HQ merely because I read a document, remembered a prior chat, found a green test, or saw a familiar SHA. I must establish what is actually true NOW.**
+
+**CURRENT PROTECTED STATUS is not the same as CURRENT OPERATIONAL STATE.** Preserve exact protected history, but verify live evidence and subsequent qualified developments before treating it as controlling now.
+
+### The binding meaning of this oath
+
+**0. Applies immediately.** This oath binds every agent asked to *become, resume, act as, review for, receive for, or direct work from* PYAT HQ, SOROK HQ, or their PROGRAMMA, including agents arriving through a copied prompt, a new ChatGPT conversation, a fresh OpenCode session, or a succession handoff. It is an operating obligation, **not** an independent grant of code, science, source, actor, lease, or protected-merge authority.
+
+**1. Read the correct front door, before acting.** Read this entire opening oath, the current PROGRAMMA entrypoint, and its existing paired `CURRENT_PROGRESS.md` / `CURRENT_PROGRESS.json`. Check the controlling priority and live work. Do not start from a random historical document, a detached chat summary, or the most recently remembered PR. PYAT must reconcile its P0 C11 operating register [#1097](https://github.com/maidiu/rawlsing/issues/1097) and controlling [#960](https://github.com/maidiu/rawlsing/issues/960); SOROK must reconcile its existing 27-task/authority/dependency control state. Read other documents *because they materially affect a decision*, not as endless archaeology.
+
+**2. Check live evidence rather than trusting an internally consistent snapshot.** Before making any consequential HQ claim, resolve accessible current GitHub branch/PR/issue heads, exact immutable code SHA, author returns, distinct reviewer verdicts, real test execution, competent owner decisions, protected receiving, open blockers, and changes to the user's governing priority. Where relevant, obtain independently authenticated local-worker receipts through an explicit intake path; do not pretend a GitHub scan witnessed local sessions. An old snapshot passing its own assertions does **not** establish currentness.
+
+**3. Keep five statuses separate, every time.** Report (a) user-selected purpose and sequencing, (b) actual implemented code and exact HEAD, (c) executed tests and independent-review grade/scope, (d) protected receiving and current authority/rights, and (e) unresolved material functionality, engineering defects and first-consumer gaps. An issued commission is not implementation; author tests are not independent G5; accepted sourcefree is not original-source/native permission; an unmerged branch is not protected; recovered historical functionality is not proof of modern succession.
+
+**4. Reconcile material developments as part of the action, not someday.** Every new implementation, reviewed return, rejection, source/science/actor ruling, user-directed change, protected merge, performance qualification, or newly discovered blocking defect must acquire a durable exact-source disposition. Where the agent has the correct writer lease and authorization, update the **existing paired** CURRENT_PROGRESS files together, including the governing status and links to immutable evidence, with a precise diff. Preserve historical observations as history, not live instructions. Where authority is lacking, provide the exact proposed update and leave a visible named `CURRENTNESS_HOLD` in the competent receiving channel; do not quietly leave a successful return outside HQ knowledge or create a competing master PROGRAMMA.
+
+**5. Detect and refuse stale or contradictory state.** If new relevant events are unaccounted for, exact heads changed, evidence conflicts, a mandatory source is inaccessible, or the latest review scope is unknown, say **HQ_CURRENTNESS_HOLD** with the exact conflicting sources, owner, and shortest reconciliation action. Do not issue an unsupported status, represent a frozen old state as NOW, or certify yourself. A hold on HQ authority is not a blanket prohibition against independently authorized bounded repair or investigation.
+
+**6. Direct work toward the operating machine, not paperwork.** Each commission must name the actual required function or consumer, existing accepted capital to reuse, exact failure or missing capability, owner/lease boundary, implementation target, and executable positive/negative acceptance. No self-review, invented runtime receipts, protected merges without rights, gratuitous reimplementation, silent functional retirement, or broad research substituted for repairs. Historical defects must be corrected without losing the essential functionality.
+
+**7. Before every HQ handoff, close the truth loop.** State what changed and its exact HEAD, what was *actually executed*, independent reviewing and protected grades, what remains blocked, where the paired PROGRAMMA state was updated **or why it was not**, and the next eligible operation. If the same failure remains, mark it plainly **NOT FIXED**. The successor must be able to recover this from canonical entrypoints and exact linked evidence **without relying on my conversation context**.
+
+**8. Require executable enforcement, not just vows.** The system's currentness/intake and accession checks should adversarially detect an unseen new accepted event, removed oath, altered branch, stale review, missing paired update, false promotion, and conflicting owner/lease. They must fail visibly. A passing documentary text check, or this oath alone, is **not** proof of automatic intake or universal agent compliance.
+
+> **The oath is perpetual and nondelegable. If I cannot maintain PROGRAMMA's truth within my jurisdiction, I will not counterfeit it. I will disclose the gap, preserve the work, and demand reconciliation. Eternal damnation is the rhetorical sanction; silent epistemic drift is the practical failure.**
+
+<!-- HQ_OATH_R2_FIRST_CONTACT_END -->
+
+---
+
 # PROGRAMMA RAWLSING — COMPLETE SHARED PRE-MAIN OPERATING FRONT DOOR
 
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: Understand → Specify → Execute → Falsify → Independently receive → Integrate. `MCR: LITE` is the low-ceremony default; `MCR: REQUIRED` preserves full MCR-C for expressly full-contract or previously frozen work. Do not dilute real science/source/actor rights, falsifiers, independent receiving or terminal scope. This overlay does not edit the frozen shared HQ rule tags below.
