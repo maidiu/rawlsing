@@ -1,0 +1,11 @@
+# ZL17 A SOURCE_T2 P1 — scope and source custody
+
+A frozen blind P0 PR #1076 @ 9dc9d14d23356b0328afd0c2b83096456b2dca88 remains immutable. B independent blind P0 PR #1080 @ 3d147fcfa956d2289086d054cd11835e5db58fd2 was registered #1057 with exactly matching `source_cut=5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac` and `flight=ZL17|track=SOURCE_T2|phase=P0`. A then read only that pinned B P0, not opponent evolving branch or future P1/P2. Protected PRE-MAIN at `6a5c12f04323d74001f9632063ec907f4fc4468e`, no protected edits.
+
+This P1 is **only** role A's material adverse challenge to B P0 and an independently disclosed A P0 schema compatibility correction; it is not a new T source search, new #814 JOIN_REVIEW, independent credentialed receiving, or native execution.
+
+**Assignment axes:** named 52 T2 historical candidate contracts plus nonadditive 235 R1 fates and 74 LM, versus current source-qualified actual-reader reverse subset including R08, I07 and V553/V554/FF/BATCH boundaries. This P1 adds no new historical T; all original identities stay at their true commit. Retained original T2 protected reference S1 and candidate no issuance.
+
+**Five quality judgments:** Provenance PASS at pinned claims/code; Future utility PASS with three finite contest discriminators; Navigability PARTIAL pending VMC-T2 I07 and R08 trace; Comprehensibility PASS static output-level R08 and three-grain V554 examples; Comprehensiveness HELD whole estate and non-test reachability, even while 52/63/534/235 candidate row counts stand.
+
+C1 bounded source cut, C2 candidate index not historical all, C3 three contests and typed proof gaps, C4 both P0 cold sides now published but formal independent receiving separate, C5 finite source/owner handoff pending exchange. Four terminal verdicts remain HOLD/NOT_CLAIMED: estate closure, complete functional map, current machine zero-loss, original35 native acceptance. Engineering/Scientific/Authority source/semantic/issuer evidence graded separately at S0/S1. Executed: NONE; no tests, CI, native/S2/S3, source/actor/issuer/science, protected merge, SHARE writer or invented live Browser identity.

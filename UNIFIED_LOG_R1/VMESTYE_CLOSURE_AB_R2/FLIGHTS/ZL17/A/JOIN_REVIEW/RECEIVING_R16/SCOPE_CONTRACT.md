@@ -1,0 +1,7 @@
+# #816 ZL17 A — R16 independent current-backward receiving scope
+
+This is the user-directed **same-HEAD R16 re-receiving**, not a restart of SOURCE_T2 P0/P1/P2. Source #814 instruction: https://github.com/maidiu/rawlsing/issues/814#issuecomment-6906650210. Target R16 `14351c105c4542d2951d275173518e8e50478ffd`; original baseline R8 `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`; preceding reviewed R15 `71e16fc45992b66926b1a4cf1bd3dd8b96f5d7c8`; protected PRE-MAIN `6a5c12f04323d74001f9632063ec907f4fc4468e` remained unchanged. T2 R7 separate source receiving at `SOURCE_T2/RECEIVING_R7/`, author `f5c709899b9b7aa92205099d34f9fbe365693e02`.
+
+We read and compare material R16 graph source rows and original F18/F19/F20/F21 source input→operation→negative→first meaningful reader, especially review-only vs certified, early packet candidate vs strict final publisher. Not authorized to read original respondent as selected native science, issue actor/consent/source rights, execute project code/CI/Node, alter canonical #864, SHARED namespace or protected branch. No self-assigned credential-independent receiving status; source-graded reviewer only.
+
+Distinguish current protected actual I07 guard and TEST_ONLY R08 from old computational numerical F6M and source wave F03/F08. Keep exact target of #815 same R16 SHA and independent verdict distinct; no #817 until authorized canonical currentness.

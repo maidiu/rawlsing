@@ -1,0 +1,16 @@
+# ZL17 A SOURCE_T2 P1 — opponent P0 contests, immutable returns
+
+**P1 disposition:** `CONTESTS_SUBMITTED_SOURCE_GRADED__P2_AWAIT_FROZEN_B_P1`, no new credential-independent receiving or formal acceptance. Existing A P0 stays frozen: [PR #1076](https://github.com/maidiu/rawlsing/pull/1076) at `9dc9d14d23356b0328afd0c2b83096456b2dca88`. Opponent B P0 independently froze at [PR #1080](https://github.com/maidiu/rawlsing/pull/1080) `3d147fcfa956d2289086d054cd11835e5db58fd2` and registered [#1057](https://github.com/maidiu/rawlsing/issues/1057#issuecomment-6900666338). A P0 bulletin [#1057](https://github.com/maidiu/rawlsing/issues/1057#issuecomment-6900990241). Both target same unmerged T2 R3 `5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac`, protected `6a5c12f04323d74001f9632063ec907f4fc4468e`.
+
+**Three precise opponent contests**:
+- `VMCR2:ZL17:A:CONTEST:0001` B01 source positive accepted, but B's proposed single `read_prefix_evidence` edge must retain TWO source acts: early `configure_evidence_world_context` verification and conditional `_progressive_step` output-level override of denominator/cells; both TEST_ONLY. This sharpens first **effect-bearing** reader, not native actor truth.
+- `VMCR2:ZL17:A:CONTEST:0002` B02 correctly says I07 authorization ≠ historical F6M numerical mixture. But `OWNER_HOLD` alone underclassifies source-proved current-first I07 omission in T2's 534 reverse rows; one S1 current-only guard receipt/reader entry is a finite **documentary** repair, regardless of historical selected-science holds.
+- `VMCR2:ZL17:A:CONTEST:0003` B06 rightly distinguishes current M1 V554 vs old V553 but omits separate retained historical V554 `country:year` numerical seed; require third input/output/consumer fate, not forced preserved/retired conclusion.
+
+**Source proof and uncertainty:** All opponent evidence read solely from immutable B P0, never B P1 or unversioned branch. Exact contrary source tuples and positive/negative/conditional cases in `CONTESTS.tsv`, `EVIDENCE.tsv`, `SOURCE_SEARCH_LOG.tsv`, `REVIEW_CASES.md`. Source P1 cannot prove native non-test N9/N10W, F6M numeric effect, F03/F08 historical selected issuer, source/actor/science consent, or original35. Nothing executed.
+
+**Self-erratum:** A P0 `REVERSE_CONSUMERS.tsv` omitted the inherited R1 `grade` column. Separate P1 `REVERSE_CONSUMERS.tsv` is a 12-column, same-ID 10-row compatibility projection only; P0 frozen unmodified. B's R1 file was already correct.
+
+**Evidence judgments:** source identity and static code S1; semantic grain typed disputed; authority/issuer and true native first world reader held. Five R1 values: provenance PASS at cited SHA, future utility finite falsifiers, navigability P1 contested and A schema corrected, comprehensibility concrete before/after, comprehensiveness bounded only. C1/C2 no whole-estate lock, C3 typed under contest, C4 cold dual P0 present but formal receiving pending, C5 finite owner queue. Four terminal closure verdicts remain not proven.
+
+**Status:** `P1_SUBMITTED__AWAIT_FROZEN_B_P1_FOR_P2`; later `JOIN_REVIEW/P0` separately awaits NEW #814 integrated same HEAD as #815. No shared HQ file writes, no atlas, product code, tests/CI/S2/S3/native/source/actor/science grants or merge.

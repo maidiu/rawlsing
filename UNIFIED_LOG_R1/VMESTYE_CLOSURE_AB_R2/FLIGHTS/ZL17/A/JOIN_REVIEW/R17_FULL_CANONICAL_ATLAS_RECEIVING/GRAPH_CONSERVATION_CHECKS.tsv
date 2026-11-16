@@ -1,0 +1,25 @@
+check_id	result	source_grade_check	observed_result	evidence_and_method	proof_ceiling
+01	PASS	exact canonical #864 PR HEAD R17	PR #864==3f7e1168 and protected==6a5c12f0	GITHUB_PR_BRANCH_READBACK	NO_PROTECTED_MERGE
+02	PASS	original source paths	24/24 distinct, all old source/negative/current/owner present	MATERIAL_PATHS_24 + R15 source 24	S1_NAVIGATION_ONLY
+03	PASS	T2 contract preservation	52 IDs unique and 52/52 mapped among actions	T2 R7 map and owner actions	NOT_SELECTED_HISTORIC_NATIVE
+04	PASS	finite owner register	68 unique action rows (52 historical+16 current/alternative); owner/falsifier populated	T2 action register	GROUPED ALTERNATIVES NOT DISTINCT CURRENT ISSUERS
+05	PASS	reverse T2 census	542 IDs unique, split 160 file-census, 44 direct lexical, 11 current-first and seven alternates, remainder history	T2 R7 reverse	NOT_EXECUTED_CALL_GRAPH
+06	PASS	R11 stage identities	260/260 52×5 stage summary and 645/645 distinct source-stage witness rows	R11 source bridge and summary	WITNESS_NOT_EQUIVALENCE
+07	PASS	R17 reversible graph	70 valid JSON rows; 5 next-step restore and 65 additions/delete exact IDs	R15_R17_REVERSIBLE_DELTA	NOT_EXECUTED_ROLLBACK
+08	PASS	R8→R17 edge identity	332/332 original edge rows byte-identical; 342 total with 10 new	R8 and R17 CONSUMER_EDGES full text	ACTUAL_NONTEST_NOT_PROVED
+09	PASS	new consumer holds	ten new edges OPEN_PROOF_GAP, five SOURCE_OR_CURRENT_CONSUMER_NOT_ISSUED	R17 edge status	NO_AUTHORITY_PROMOTION
+10	PASS	new operation holds	ten added operations all actual_consumer_id NOT_PROVED_NON_TEST and test_receipt_ids NOT_RUN	R17 OPERATION_TRACES	NO_EXECUTED_NATIVE
+11	PASS	new implementation holds	ten new implementation rows all current_selection_status OPEN_PROOF_GAP	R17 IMPLEMENTATIONS	NO_ISSUER
+12	PASS	authority/event conservation	370 AUTHORITY_APPLICATIONS and 884 DECISION_EVENTS unchanged R8/R17 blobs	Git tree + actual TSV readback	NO_NEW_AUTHORITY
+13	PASS	original R8 relation preservation	Git R8..R17 RELATIONS +5/-0, R16..R17 one source field patched; 8503→8508	exact Git compare + R17 row/ledger	LARGE_BLOB_NOT_ALL_LINES_DIRECTLY_STREAMED
+14	PASS	original atlas identities	Git R8..R17 FUNCTION_ATLAS 5 same-ID next_step replacements; 1740 inherited count backed by writer full source readback	Git compare + 70 row ledger + #814 source readback	LARGE_BLOB_NOT_DIRECTLY_RECOUNTED_BY_REVIEWER
+15	PASS	R17 selected J semantics	V552J review kind may produce REVIEW_ONLY, ALLOW requires certified and both permissions and observed	original V552J body; R17 exact field source	NOT_NATIVE
+16	PASS	C11 issued input negative	source_factory source SHA mismatch raises SOURCE_FACTORY_RETURNED_WRONG_EDITION	protected issued workload source	NO_ORIGINAL_SELECTED_F03
+17	PASS	Q86/M4 narrow IF refusals	RAW SINGLE_UNIVERSE risk match and CONTEXT only; weighted and non-M1 refused	protected Q86 and M4 code	NO_F6M_ACTOR
+18	PASS	I07 semantic permission/numeric split	OperationGuardReceipt guarded overlap/composition; no F6M numeric emitter or non-test consumer granted	protected I07 source and branch-only candidate	NO_NATIVE
+19	PASS	R08 two-stage static reader	early signature/permission and later conditional denominator/cell replacement both TEST_ONLY	protected R08/world binding	NO_N9_NATIVE
+20	PASS	temporal source-grain split	M1 SIG001 DIRECT no-V553-required vs SIG002/3 V553 required; old country-year numeric V554 different	protected M1 + original V554	NO_STRICT_KEY_FIRST_READER
+21	PASS	E001 actor bound	one exact E001 source identity to Sorok recipient, N11/N12 and actual importer NONE_PROVEN	canonical E001 bridge	NO_SOROK_NATIVE
+22	PASS	T1 R12 currentness correction	old R9-PATH-06 source receiving status superseded by independently received #815 exact S1, no current science/native acceptance	T1 reviewer 10922d blob 4d532d	REVIEWER_VIEW_CORRECTION_ONLY
+23	PASS	T2 R7 currentness correction	old R9-PATH-19 pending #816 superseded by independent T2 source receiving, I07 current consumer still unproved	T2 reviewer ecff17 blob d63029	REVIEWER_VIEW_CORRECTION_ONLY
+24	PASS	non-build archaeology limit	F26 cache executable body unverified; three VOSKRES secondary report paths retained at report grade; no unjustified missing-code build claim	R15 source path 24 grades	FUTURE_OWNERS_SCIENCE
