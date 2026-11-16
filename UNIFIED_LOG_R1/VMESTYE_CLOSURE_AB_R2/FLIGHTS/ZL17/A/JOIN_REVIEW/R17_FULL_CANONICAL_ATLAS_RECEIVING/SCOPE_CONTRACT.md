@@ -1,0 +1,10 @@
+# Scope and provenance — ZL17 A independent canonical R17 reviewer
+Target live canonical #864 `3f7e1168592dd2db02ae03ce26ac6a40cf71da23`, common exact #815 head; baseline #864 prior R8 `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`; historical `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`; protected PRE-MAIN `6a5c12f04323d74001f9632063ec907f4fc4468e`; reviewed T1 R12 `5cc46ca7d60c08d79261b7e02b196f9da2788b8d`, T2 R7 `f5c709899b9b7aa92205099d34f9fbe365693e02`. Existing isolated reviewer PR #1076 parent `6878d91177b625a6f0a1264146be232fd130a963`.
+
+This is **R17 full atlas source-document/current-backward review**, a new phase in `JOIN_REVIEW`; **not** redoing SOURCE_T2 P0/P1/P2 or the two corrected R17 fields. Seven source groups across eight tables, 24 material paths, 52 candidate source contracts, 68 action rows, 542 source reverse records and 70 reversible edits. All counts retain their separate denominators. Full large DATA/RELATIONS and DATA/FUNCTION_ATLAS were not direct-streamed; Git exact compare and ledger plus #814 independent full-byte receipt used at their honest grades.
+
+Positive/negative source reading is only static S1; native S2/S3/original35, chosen source science, actor/Sorok importer and protected issuer absent. The six-court 3×5 structure is documented per engineering/scientific/authority source/input/output/negative/consumer where relevant; no artificial source authorization.
+
+**Defect repair rights:** only reviewer additive metadata-currentness projection was written, not #864 canonical DATA or R11 frozen historical machine narrative. Two old pending reviewer phrases now corrected via verified immutable earlier source receiving; this removes false workflow recurrence without forging native facts.
+
+Five quality values: pinned provenance PASS; finite future utility PASS; reverse navigability PASS 24/52/542 and ten held new edges; mechanistic comprehensibility PASS scoped positive and negative; comprehensiveness PASS at R17 proposed documentary atlas and declared evidence estate, **not** entire native world/whole-corpus function requirements. No reviewer self-accreditation.

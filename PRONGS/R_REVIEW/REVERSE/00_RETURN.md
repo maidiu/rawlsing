@@ -1,0 +1,3 @@
+# ZL-17 A final canonical full current-backward review
+
+Authoritative reviewer-specific return is in `UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL17/A/JOIN_REVIEW/R17_FULL_CANONICAL_ATLAS_RECEIVING/00_RETURN.md`, at the **same Git commit as this file**. Target canonical #864 `3f7e1168592dd2db02ae03ce26ac6a40cf71da23`, verdict `ACCEPT_SCOPED_S1_ATLAS_WITH_TYPED_GAPS`; old P0/P1/P2 unchanged, no native/actor/source/science grant or protected merge. 24 material backward traces, 70 reversible ledger, 52/68/542 T2 reverse and ten current `OPEN_PROOF_GAP` remain exact. Two stale reviewer currentness descriptions corrected only in reviewer-side overlay, with no canonical DATA mutation. Direct issue receipts #816 and #1057 identify this exact reviewer head.
