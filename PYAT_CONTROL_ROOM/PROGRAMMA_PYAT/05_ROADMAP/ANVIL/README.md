@@ -32,6 +32,7 @@ This workshop serves four duties:
 | 10 | [10 — Source/custody ledger](10_SOURCES_CUTS_AND_VERIFICATION.md) | Pinned files/issues/claims, code-vs-proof grades, continuing currentness |
 | 11 | [11 — Earlier architecture ancestry and forgotten constraints](11_PRIOR_WORK_AND_BOUNDARIES.md) | September A/B/C and November Stone/LAZARUS, original scope and limits |
 | 12 | [12 — Next workshop method and agenda](12_ANVIL_WORKSHOP_PROCEDURE.md) | Exhaustive requirements search and single-decision analytical process |
+| 13 | [13 — User's critical questions and decision boundaries](13_USER_QUESTIONS_AND_DECISION_BOUNDARIES.md) | Preserve the actual questions, objections, retractions and unresolved outcome |
 
 ## The workshop's decisive distinctions
 
