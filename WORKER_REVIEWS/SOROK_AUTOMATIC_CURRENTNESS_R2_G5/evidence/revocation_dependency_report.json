@@ -1,0 +1,44 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R2_REVOCATION_DEPENDENCY@1",
+  "stops": [
+    {
+      "scope": "B02",
+      "owner": "test operator",
+      "reason": "test stop",
+      "event_id": "stop-b02",
+      "recorded_at": "2026-11-16T05:38:25.679482+00:00",
+      "authorization_id": "test-auth",
+      "authorization_sha256": "8b9dcef87659101a6a133279fcd3771a9ecc08499e456b502ac15a88e668c3ec"
+    }
+  ],
+  "revocations": [
+    {
+      "scope": "B02",
+      "owner": "test operator",
+      "reason": "test revoke",
+      "event_id": "revoke-b02",
+      "recorded_at": "2026-11-16T05:38:25.679482+00:00",
+      "authorization_id": "test-auth",
+      "authorization_sha256": "8b9dcef87659101a6a133279fcd3771a9ecc08499e456b502ac15a88e668c3ec"
+    }
+  ],
+  "tasks": {
+    "B02": "REVOKED",
+    "B04": "BLOCKED_BY_DEPENDENCY",
+    "B05": "BLOCKED_BY_DEPENDENCY"
+  },
+  "events": [
+    {
+      "event_id": "runtime:init:82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e",
+      "kind": "INIT"
+    },
+    {
+      "event_id": "stop-b02",
+      "kind": "USER_STOP"
+    },
+    {
+      "event_id": "revoke-b02",
+      "kind": "REVOCATION"
+    }
+  ]
+}

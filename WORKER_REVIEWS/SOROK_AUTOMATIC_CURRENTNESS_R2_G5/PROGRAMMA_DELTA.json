@@ -1,0 +1,70 @@
+{
+  "schema": "SOROK_PROGRAMMA_DELTA_REVIEW@1",
+  "commission": "SOROK automatic PROGRAMMA currentness R2 focused receiving",
+  "candidate": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "accepted_scope": "NONE",
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "accepted_delta": [],
+  "fixed_r1_reds": [
+    "local baseline no longer treated as live freshness; authenticated live refs/SHA and PR status observed with own time/expiry/digest",
+    "mechanism review no longer TASK_UNKNOWN; caller-only receipt refuses REVIEW_SUPERVISED_RUN_REQUIRED",
+    "fabricated ordinary task review without supervised run refuses",
+    "arbitrary STOP/RESUME without operator authorization refuses; authorized stop/superseding resume works",
+    "arbitrary resolution text refuses; fresh live observation digest resolves an exact item"
+  ],
+  "not_accepted_delta": [
+    {
+      "claim": "all material event kinds are authenticated",
+      "status": "REVISE",
+      "reason": "REJECTION and PROTECTED_INTEGRATION are still unauthenticated public intake events; a fabricated protected PASS changed B05 protected state"
+    },
+    {
+      "claim": "authenticated live observation cannot be forged",
+      "status": "REVISE",
+      "reason": "public GITHUB_OBSERVATION accepts a fabricated source_identity/evidence_digest as authenticated live state"
+    },
+    {
+      "claim": "worker and reviewer returns bind an actual supervised run",
+      "status": "REVISE",
+      "reason": "self-consistent fabricated controller JSON and worktree accepted for WORKER_RETURN; fabricated REVIEWER run moved mechanism_review to ACCEPTED_SCOPED_PENDING_HQ_ADOPTION"
+    },
+    {
+      "claim": "review verdict exactness",
+      "status": "REVISE",
+      "reason": "verdict artifact comparison uses startswith rather than exact equality; broader fake-run admission already demonstrated"
+    }
+  ],
+  "preserved": [
+    "frozen #1095 verifier/workflow/task/GMT source blobs and reviewed static projection",
+    "27 B01-G04 tasks and 21 G/M/T decision nodes",
+    "seven protected P3/P4/P5/P6/MI/MII/MIII foundations",
+    "B05 #1089, C04 #1062, C05 #1091 scoped review pins",
+    "G03-I0 scoped accepted with full G03 held; CG-A #1066 outside 27 DAG",
+    "#939 STOP and no persistent dispatch",
+    "Browser #1008/#1010 terminal bounded and #1012 not launched",
+    "native science, actor knowledge, human authority, protected CI/adoption and protected merge HELD"
+  ],
+  "live_source_hold": {
+    "observed": "AUTHENTICATED_LIVE_GITHUB with 16 refs, repo/PR 200, issues 939/1008/1010 403",
+    "status": "REF_SHA_ONLY",
+    "items": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "authority": "HOLD_SOURCE_AUTHORITY for issue/comment connector scope; no full currentness certified"
+  },
+  "contribution": {
+    "sorok_engineering": "automatic refs/SHA and PR-status freshness and paired readout are a material improvement, but material-event auth is incomplete",
+    "sorok_science": "HELD; no native or actor knowledge claim",
+    "programma": "no PROGRAMMA delta accepted in this receiving; original owners and boundaries remain intact",
+    "hq": "correct the residual event auth boundary, then one focused rereceiving; no automatic author cycle or protected merge"
+  },
+  "next_action": "Authenticate REJECTION, PROTECTED_INTEGRATION, GITHUB_OBSERVATION, WORKER_RETURN and REVIEWER runs at a trusted controller/role/source/process/immutable-artifact boundary; require exact verdict equality; keep issue/comment 403 source HOLD and CI billing hold.",
+  "terminal": "STOP"
+}

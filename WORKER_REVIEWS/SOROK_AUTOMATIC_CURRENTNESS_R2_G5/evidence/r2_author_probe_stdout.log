@@ -1,0 +1,47 @@
+PASS fresh live observation persisted with time/expiry/digest
+PASS live status/updated source gap remains explicit
+PASS tampered local baseline head is not accepted
+PASS mechanism review is not TASK_UNKNOWN
+PASS fake task review without supervised run refused
+PASS arbitrary STOP/control refused
+PASS arbitrary reconciliation text refused; fresh digest resolves
+PASS live source unavailable is typed HOLD
+{
+  "schema": "SOROK_CURRENTNESS_R2_CORRECTNESS_PROBE@1",
+  "checks": [
+    {
+      "check": "fresh live observation persisted with time/expiry/digest",
+      "pass": true
+    },
+    {
+      "check": "live status/updated source gap remains explicit",
+      "pass": true
+    },
+    {
+      "check": "tampered local baseline head is not accepted",
+      "pass": true
+    },
+    {
+      "check": "mechanism review is not TASK_UNKNOWN",
+      "pass": true
+    },
+    {
+      "check": "fake task review without supervised run refused",
+      "pass": true
+    },
+    {
+      "check": "arbitrary STOP/control refused",
+      "pass": true
+    },
+    {
+      "check": "arbitrary reconciliation text refused; fresh digest resolves",
+      "pass": true
+    },
+    {
+      "check": "live source unavailable is typed HOLD",
+      "pass": true
+    }
+  ],
+  "failed": [],
+  "verdict": "PASS"
+}

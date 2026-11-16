@@ -1,0 +1,149 @@
+# SOROK automatic currentness R2 focused receiving — exact command log
+# cwd: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+# host: Darwin 22.6.0 x86_64 / macOS 13.7.8; shell: zsh
+# Product read-only. All writes under WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5
+# or .local-logs/sorok-programma-automatic-currentness-r2-receiving-20261116-r1.
+# No credentials, tokens or .env values are printed or stored.
+
+REPO=/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+REV=$REPO/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5
+LOGS=$REPO/.local-logs/sorok-programma-automatic-currentness-r2-receiving-20261116-r1
+PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+RT=$REPO/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+AUTH=/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing
+STATE=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115
+
+# 1. Source/identity pins
+cd "$REPO"
+git rev-parse HEAD
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_task_packets_20261112.json
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_gmt_overlay_20261112.json
+git hash-object .github/workflows/sorok-operational-currentness-r1.yml
+
+# 2. Preserve and run the exact R1 adverse probe
+#    r1_original is committed byte-identically at
+#    sha256 7f55b507381fc7e907a0cbb755b65006b44356885a18195ba2ab69a4a2ccaa85.
+#    r1_adapted changes only its own scratch/tmp/evidence paths; diff is
+#    probes/r1_path_adaptation.diff.
+/usr/bin/time -l "$PY" -B WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/probes/currentness_gap_probe.r1_adapted.py \
+  > "$REV/evidence/old_gap_probe_stdout.log" \
+  2> "$REV/evidence/old_gap_probe_time.log"
+# raw exit: 0; historical probe hardcodes REVISE, raw outcomes are the evidence.
+
+# 3. New 17 runtime tests (author tests, independent execution)
+#    TMPDIR must be under the checkout because the test sandbox expects git ancestry.
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+  SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py \
+  > "$REV/evidence/checks/r2_tests_stdout.log" \
+  2> "$REV/evidence/checks/r2_tests_time.log"
+# exit 0; 17 passed in 13.61s.
+# Default macOS TMPDIR was also run to document the fixture assumption:
+/usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+  SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py \
+  > "$REV/evidence/checks/r2_tests_default_tmpdir.out" \
+  2> "$REV/evidence/checks/r2_tests_default_tmpdir.time"
+# exit 1; 3 failed/14 passed, each REVIEW_COMMIT_UNAVAILABLE because the
+# temp fixture is not under a git worktree. This is a local compatibility limit.
+
+# 4. Author R2 correctness probe (independent execution)
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -B \
+  WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/probes/r2_correctness_probe.py \
+  > "$REV/evidence/r2_author_probe_stdout.log" \
+  2> "$REV/evidence/r2_author_probe_time.log"
+# exit 0; PASS 8/8; does not cover residual material-event auth.
+
+# 5. Independent material-event probe (public CLI)
+/usr/bin/time -l "$PY" -B \
+  WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5/probes/material_auth_probe.py \
+  > "$REV/evidence/material_auth_probe_stdout.log" \
+  2> "$REV/evidence/material_auth_probe_time.log"
+# exit 0; probe result REVISE_EXACT_DEFECT with four residual gaps.
+
+# 6. Required frozen/local canonical checks (macOS, not hosted Actions)
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --self-test --status
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --no-git --status
+"$PY" -m py_compile CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test
+# all exit 0; raw output in evidence/checks/.
+
+# 7. Workflow selector
+# .github/workflows/programma-canonical-pre-main.yml selects WORKER_COMMISSIONS
+# only for changed .md/.txt launch paths. The changed-commission selector found
+# no changed launch files, so the per-file source-check was not applicable.
+
+# 8. Live sandbox (copy of author pair; author live pair read-only, never mutated)
+#    live-sandbox config points repo_root at this reviewer checkout, pair at the
+#    reviewer copy, baseline at the author baseline, empty controller-state.
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" status \
+  > "$REV/evidence/live_status_before_reconcile.json" \
+  2> "$REV/evidence/live_status_before_reconcile.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" startup --reconcile \
+  > "$REV/evidence/live_startup_reconcile.json" \
+  2> "$REV/evidence/live_startup_reconcile.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" status \
+  > "$REV/evidence/live_status_after_reconcile.json" \
+  2> "$REV/evidence/live_status_after_reconcile.err"
+# exits 2/2/2 because four live source items remain visible.
+
+# 9. Live variants (same reviewer sandbox; no author mutation)
+#    Tampered local baseline copy -> status documents
+#    LOCAL_GITHUB_BASELINE_BRANCH_UNAVAILABLE pr:1062.
+#    Expired cached observation + invalid remote -> status documents
+#    LIVE_GITHUB_REF_FETCH_UNAVAILABLE, not READY.
+#    Deleted/advanced refs and stale expiry were checked directly against the
+#    reviewed compare/freshness functions on a copy of the live observation;
+#    see evidence/live_variants_report.json.
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" startup --reconcile \
+  > "$REV/evidence/cold_startup.json" \
+  2> "$REV/evidence/cold_startup.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" what-next \
+  > "$REV/evidence/what_next.out" \
+  2> "$REV/evidence/what_next.err"
+# cold startup/gen 53 and what-next exit 2; recommended B01 RECEIVE; four items.
+# Fresh digest resolution of pr:1095 was run only in the separate
+# .local-logs/.../resolve-sandbox copy; see evidence/fresh_resolution_positive.*.
+
+# 10. Fake REVIEWER run acceptance (reviewer-owned fabricated run, no product write)
+#    A self-consistent job/binding/launch/process/completion, worktree and
+#    REVIEW_RECEIPT/VERDICT were created under .local-logs/.../fake-review.
+#    This fabricated run was accepted by the reviewed runtime:
+TMPDIR=$LOGS/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B \
+  "$LOGS/fake-review/repo/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py" \
+  --config "$LOGS/fake-review/repo/config.json" intake-review \
+  --review-run-dir "$LOGS/fake-review/run" \
+  --receipt "$LOGS/fake-review/run/worktree/return/REVIEW_RECEIPT.json"
+# exit 0; mechanism_review.state=ACCEPTED_SCOPED_PENDING_HQ_ADOPTION.
+# Raw receipt/run files and state are under evidence/raw/fake_review/.
+
+# 11. Fake WORKER_RETURN acceptance (reviewer-owned fabricated run)
+TMPDIR=$LOGS/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/manual-red-sandbox/repo/config.json" \
+  intake-completion --run-dir "$LOGS/fake-worker-return/run"
+# exit 0; mechanism_worker_return session ses_FAKE_WORKER_NO_PROCESS.
+
+# 12. Authorized control positive and dependency invalidation
+#    auth.json with SOROK_HQ_OPERATOR and exact allowed kinds/scopes/supersedes.
+#    stop-b02 then later resume-b02: exit 0 each; B02/B04/B05 restored.
+#    stop-b02 + revoke-b02: B02 REVOKED, B04/B05 BLOCKED_BY_DEPENDENCY.
+#    Raw reports: evidence/control_positive_report.json,
+#    evidence/revocation_dependency_report.json.
+
+# 13. Freeze sequence (performed after this command log)
+# git add WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R2_G5
+# git commit -m "review: freeze automatic currentness R2 G5 evidence (REVISE_EXACT_DEFECT)"
+# The resulting evidence commit is the receipt review_commit.
+# Then create REVIEW_RECEIPT.json with runtime/test/VERDICT blobs at that commit,
+# commit only the receipt in a later commit, and let the prebound controller hook
+# intake it after the real reviewer process exits. No manual completion.

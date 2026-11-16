@@ -1,0 +1,32 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R2_CONTROL_POSITIVE@1",
+  "stops": [],
+  "resumes": [
+    {
+      "scope": "B02",
+      "event_id": "resume-b02",
+      "supersedes": "stop-b02",
+      "authorization_id": "test-auth",
+      "authorization_sha256": "5e106ea9f5a54adaa35b7c97c62915d1825680c63e85abfe053268fb3d93248f"
+    }
+  ],
+  "tasks": {
+    "B02": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+    "B04": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+    "B05": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION"
+  },
+  "events": [
+    {
+      "event_id": "runtime:init:82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e",
+      "kind": "INIT"
+    },
+    {
+      "event_id": "stop-b02",
+      "kind": "USER_STOP"
+    },
+    {
+      "event_id": "resume-b02",
+      "kind": "USER_RESUME"
+    }
+  ]
+}
