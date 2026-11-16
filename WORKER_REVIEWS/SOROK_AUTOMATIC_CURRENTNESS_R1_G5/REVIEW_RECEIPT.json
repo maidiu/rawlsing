@@ -1,0 +1,68 @@
+{
+  "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
+  "task_id": "AUTOMATIC_CURRENTNESS_R1",
+  "implementation_commit": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+  "implementation_code_sha": "6164e595efcd176bb2ec9b75aa99074472a4c9b4",
+  "test_code_sha": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "distinct_independent_nonauthor",
+  "review_commit": "4de807fa3f27c3aab5d443083b6cb020c80fda31",
+  "review_pr": null,
+  "verdict": "REVISE_EXACT_DEFECT",
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "accept_scoped": false,
+  "scope": "SOURCEFREE_S2_ONLY; automatic currentness runtime G5; no native science/actor/human authority",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "full_original_claim": "NOT_ESTABLISHED",
+  "protected_ci": "UNAVAILABLE_BILLING",
+  "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+  "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+  "source_documents": [
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+      "git_blob": "6164e595efcd176bb2ec9b75aa99074472a4c9b4"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+      "git_blob": "6cf53b66cf6eff3f4ced4a24f79e163ec50fd347"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/VERDICT.json",
+      "git_blob": "3926c907fb3720a64d9acd18453c1053253ee29b"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/EVIDENCE.json",
+      "git_blob": "4d25968f47f9d3b90e9d74c72aa07d5058e54cfc"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G5_HANDOFF.md",
+      "git_blob": "50218f1cd3882054ecce2c48ba68dbba3a885937"
+    }
+  ],
+  "reviewed_at_utc": "2026-11-16T04:37:04.331783+00:00",
+  "reasons": [
+    "mechanism review intake fails TASK_UNKNOWN before the mechanism branch",
+    "no authenticated live GitHub currentness; local baseline as_of is now_utc",
+    "fabricated ordinary task review accepted with caller-declared trust/sessions",
+    "arbitrary USER_STOP/USER_RESUME and arbitrary resolve text accepted",
+    "no full end-to-end demonstration; author 17 tests not independently rerun"
+  ],
+  "terminal": "STOP",
+  "runtime_intake_attempt": {
+    "attempted": true,
+    "command": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py --config .local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/scratch-gap-probe/repo/config.json intake-review --receipt WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/REVIEW_RECEIPT.json",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1\n",
+    "result": "REJECTED_BY_RUNTIME_DEFECT_TASK_UNKNOWN",
+    "mechanism_review_state_after": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
+    "logs": {
+      "stdout": ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/receipt_intake_attempt.out",
+      "stderr": ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/receipt_intake_attempt.err",
+      "post_status": ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/receipt_intake_post_status.json"
+    }
+  }
+}
