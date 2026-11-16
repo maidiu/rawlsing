@@ -1,0 +1,151 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R1_G5_RECEIPTS@1",
+  "review": {
+    "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+    "candidate_source_sha": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+    "branch": "codex/sorok-automatic-currentness-independent-20261115-r1"
+  },
+  "author_claim_receipts": {
+    "return": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/00_RETURN.md",
+      "bytes": 7887,
+      "sha256": "5d64e25cd1fda707f2c973cbd2c6197da802f286d651aad88eb8f10e44543cd5"
+    },
+    "evidence": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/EVIDENCE.json",
+      "bytes": 11397,
+      "sha256": "c95b234eac76be4e343e62e40ef8a558c0b05ed98d25eb4fe9010eb65d59e2c4"
+    },
+    "handoff": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/G5_HANDOFF.md",
+      "bytes": 6835,
+      "sha256": "33e2d437373d4b1f8f0c1211912632e5d0651112642cead091bf8b0a0ac11662"
+    },
+    "programma_delta": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/PROGRAMMA_DELTA.json",
+      "bytes": 3898,
+      "sha256": "88c1673e51c986a9a8745ff2e52263a48f38d4377d28fabd36a8c2da637cc906"
+    },
+    "blob_pins": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/evidence/BLOB_PINS.json",
+      "bytes": 5158,
+      "sha256": "83a9dcf12321def3f6ee1f6d25c102994ebeb6ea3aa88266f4a60ca6a397479d"
+    },
+    "author_tests": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/evidence/final_runtime_tests.out",
+      "bytes": 99,
+      "sha256": "9741b3d656a5f4c26c9fc721c4f9172b660fe99a8600475e80f7e7794ba06517",
+      "claim": "17 passed in 1.32s (author evidence only; not independently rerun)"
+    },
+    "author_tests_time": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/evidence/final_runtime_tests.time",
+      "bytes": 777,
+      "sha256": "8354209887fde55b2f336719110f74c3b6ec7ba6605a6d625cdd9a3740ae8bdb"
+    },
+    "install_receipt": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/INSTALL_RECEIPT.json",
+      "bytes": 903,
+      "sha256": "dfb633a372876a2bd5e04e884b850be108d42b5669655787679e3f416763ffa4"
+    },
+    "restore_receipt": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/RESTORE_RECEIPT.json",
+      "bytes": 904,
+      "sha256": "e9ef4d9c993f6d07d6c8afda33f2250a7d667bfb21de513f2ad0a37d19fe507d"
+    },
+    "controller_job": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/evidence/controller_runs/sorok-automatic-currentness-real-return-20261115T224953/job.json",
+      "bytes": 660,
+      "sha256": "c3d5b42c46f8fdd95facdee21a3a4aa429bf627b9e844a4e26212a3427926743",
+      "observed": {
+        "fixture_child": true,
+        "native_worker_event": false
+      }
+    },
+    "controller_binding": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/evidence/controller_runs/sorok-automatic-currentness-real-return-20261115T224953/binding.json",
+      "bytes": 1416,
+      "sha256": "f7746185cc443b7fb103dc5c30336c999ccf32b8108c1091eda813b950c19d45",
+      "observed": {
+        "session": "ses_local_fixture_child_r1",
+        "codex_binary": "/usr/bin/true",
+        "scope": "LOCAL_SOURCEFREE_INFRASTRUCTURE_QUALIFICATION_ONLY",
+        "actual_review_job": false
+      }
+    },
+    "controller_completion": {
+      "path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/evidence/controller_runs/sorok-automatic-currentness-real-return-20261115T224953/completion.json",
+      "bytes": 443,
+      "sha256": "ec4b359332dc5024130fae27f986bd6843ce0c972744fdb8c472d09ad09055fa"
+    }
+  },
+  "controller_receipts": {
+    "current_installed_hashes_observed": {
+      "launch_sha256": "4c5004ef91ee56ac056aca2921d4239cbf95d866ff015e7eae7d4deaf10ae829",
+      "completion_events_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+      "originals": [
+        "7712bbe36735bd572db4fe785290a1b4ba9c9a7fd42f441a6bd3e6b6a2bc15a1",
+        "a96293e3a6a77a20910e05752c34e8e912d2eab3e6fbaf95c2229a7910546a63"
+      ],
+      "pyat_behavior_changed": false
+    },
+    "author_real_run": "LOCAL_FIXTURE_CHILD_PROCESS_NOT_NATIVE; session=ses_local_fixture_child_r1; codex_binary=/usr/bin/true; exit=0; controller_hook=SOROK_CURRENTNESS_INTAKE_OK",
+    "reviewer_mutation": false,
+    "reviewer_note": "installed patched hook was read-only checked; no real worker/reviewer event was produced by the author fixture"
+  },
+  "review_receipts": {
+    "evidence_commit": "THIS_EVIDENCE_COMMIT",
+    "receipt_pending_path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/REVIEW_RECEIPT.json",
+    "receipt_pending": "the final receipt is committed separately and points review_commit at this evidence commit",
+    "receipt_intake_expected": "SOROK_CURRENTNESS_RUNTIME_RED: TASK_UNKNOWN: AUTOMATIC_CURRENTNESS_R1 (runtime defect; not reviewer acceptance)",
+    "evidence_files": [
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/EVIDENCE.json",
+        "bytes": 10522,
+        "sha256": "562055f87514aedea01d734f71369842d5db0687b63af51c571ccdd412516594"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/VERDICT.json",
+        "bytes": 9903,
+        "sha256": "9b68c92c5d05926c26f6c541d04305f8b606916ab2a7e7f1b07495549c059e3d"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G5_HANDOFF.md",
+        "bytes": 5332,
+        "sha256": "09a2272802a0c5fa826ce287f4001baf82216d1313808165d92e5225820f200d"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G1_G5_MATRIX.json",
+        "bytes": 2612,
+        "sha256": "f62ed9f79884c1c8ca2415b6527754bb60e0d6bc4717edaafe2ff8812eb4f182"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/G1_G5_MATRIX.md",
+        "bytes": 2903,
+        "sha256": "c81aa0deb04c85d4c889311cad8e66c1b80edb0e0fdb3ab340d8fda33140d32b"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/PROGRAMMA_DELTA.json",
+        "bytes": 3583,
+        "sha256": "870b66c24412e1a5107066c2ad3ff55005ee16543fab3ea6d4a50bc5c7e17073"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/BLOB_PINS.json",
+        "bytes": 5442,
+        "sha256": "3427f31252a51bc2253a87002ec732fcd877b6ec0c08ded0ca9b44a1cd69d331"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/PROBE_PINS.json",
+        "bytes": 3432,
+        "sha256": "f7997325c0b109676c126576426d7852988f2f074b04b92afaaa80bced799dd7"
+      },
+      {
+        "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R1_G5/COMMANDS.txt",
+        "bytes": 4325,
+        "sha256": "1b5b31fcd71bd902debf9613fdf3f7f6ea5d23000750ef76308663e2a9675a92"
+      }
+    ]
+  },
+  "author_pin_metadata_note": "author BLOB_PINS byte counts for runtime/test are stale; git blob/sha256 match; see BLOB_PINS.json",
+  "terminal": "STOP"
+}

@@ -1,0 +1,20 @@
+--- WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/probes/currentness_gap_probe.reviewer_original.py	2026-11-15 23:42:00
++++ WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/probes/currentness_gap_probe.py	2026-11-15 23:42:00
+@@ -23,7 +23,7 @@
+ import time
+ 
+ REPO = Path(__file__).resolve().parents[3]
+-SCRATCH = REPO / ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/scratch-gap-probe"
++SCRATCH = REPO / ".local-logs/sorok-programma-automatic-currentness-repair-20261115-r2/scratch-gap-probe"
+ EVIDENCE = Path(__file__).resolve().parent.parent / "evidence"
+ RT = REPO / "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py"
+ BASE = "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8"
+@@ -38,7 +38,7 @@
+ 
+ def run(*args: str) -> dict:
+     env = dict(os.environ)
+-    env["TMPDIR"] = str(REPO / ".local-logs/sorok-programma-automatic-currentness-independent-20261115-r1/tmp")
++    env["TMPDIR"] = str(REPO / ".local-logs/sorok-programma-automatic-currentness-repair-20261115-r2/tmp")
+     env["PYTHONDONTWRITEBYTECODE"] = "1"
+     started = time.monotonic()
+     completed = subprocess.run(

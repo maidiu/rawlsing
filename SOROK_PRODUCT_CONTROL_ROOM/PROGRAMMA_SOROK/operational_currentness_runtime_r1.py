@@ -21,9 +21,12 @@ import json
 import os
 import re
 import shutil
+import ssl
 import subprocess
 import sys
 import tempfile
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -43,8 +46,12 @@ UUID_RE = re.compile(r"^[0-9a-f-]{36}$")
 PACKET_BLOB = "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c"
 GMT_BLOB = "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d"
 VERIFIER_BLOB = "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9"
+GMT_ATLAS_COMMIT = "67698cfd32f838b7a5fdc381b0168d9225f5352f"
+GMT_ATLAS_PATH = "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md"
 WORKFLOW_BLOB = "f76c0d90d32e54d26d019b7f77c563b33fd5e97b"
 MECHANISM_ID = "AUTOMATIC_CURRENTNESS_R1"
+LIVE_GITHUB_SCHEMA = "SOROK_LIVE_GITHUB_OBSERVATION@1"
+OPERATOR_AUTH_SCHEMA = "SOROK_CURRENTNESS_OPERATOR_AUTHORIZATION@1"
 EXPECTED_IDS = [f"{family}{n:02d}" for family, count in (
     ("B", 5), ("C", 5), ("D", 5), ("E", 4), ("F", 4), ("G", 4))
     for n in range(1, count + 1)]
@@ -163,6 +170,15 @@ def load_config(path: Path) -> dict:
     controller = config.get("controller_state_root")
     config["_controller_state_root"] = (
         _absolute(root, controller).resolve() if controller else None)
+    operator_auth = config.get("trusted_operator_authorization")
+    config["_operator_auth"] = (
+        _absolute(root, operator_auth).resolve() if operator_auth else None)
+    config["_github_live"] = dict(config.get("github_live") or {})
+    config["_github_live"].setdefault(
+        "remote", "https://github.com/maidiu/rawlsing.git")
+    config["_github_live"].setdefault("api_repo", "maidiu/rawlsing")
+    config["_github_live"].setdefault("ttl_seconds", 900)
+    config["_github_live"].setdefault("cafile", "/etc/ssl/cert.pem")
     for key in ("_pair_json", "_pair_md"):
         if not config[key].is_file():
             raise CurrentnessError("PAIR_FILE_MISSING", str(config[key]))
@@ -224,6 +240,7 @@ def build_tasks(frozen: dict, packet: dict, gmt_index: dict) -> list[dict]:
         source = packet_index.get(task_id)
         if not isinstance(source, dict):
             raise CurrentnessError("TASK_SOURCE_MISSING", task_id)
+        overlay = gmt_index.get(task_id, {})
         task = {
             "id": task_id,
             "phase": source.get("phase"),
@@ -245,6 +262,13 @@ def build_tasks(frozen: dict, packet: dict, gmt_index: dict) -> list[dict]:
             ],
             "return_event_id": None,
             "review_event_id": None,
+            "decision_prerequisites": list(overlay.get(
+                "hard_prerequisites_to_expand_beyond_existing_fixture", [])),
+            "decision_full_claim": list(overlay.get(
+                "determinations_required_before_full_capability_claim", [])),
+            "bounded_engineering_now": overlay.get("safe_bounded_engineering_now"),
+            "claims_not_yet_warranted": overlay.get("claims_not_yet_warranted"),
+            "decision_issue_ids": list(overlay.get("issue_ids", [])),
         }
         for key in ("code_sha", "review_sha", "review_pr", "limitation",
                     "evidence_note"):
@@ -260,8 +284,19 @@ def initial_state(config: dict, whole: dict) -> dict:
         raise CurrentnessError("FROZEN_PROJECTION_MISSING")
     if frozen.get("schema") != "SOROK_OPERATIONAL_CURRENTNESS_R1":
         raise CurrentnessError("FROZEN_PROJECTION_SCHEMA")
-    packet, _gmt, gmt_index = frozen_contracts(config)
+    packet, gmt, gmt_index = frozen_contracts(config)
     tasks = build_tasks(frozen, packet, gmt_index)
+    decision_nodes = []
+    for node in gmt.get("decision_nodes", []):
+        decision = copy.deepcopy(node)
+        decision["full_original_claim"] = "NOT_ESTABLISHED"
+        decision_nodes.append(decision)
+    try:
+        atlas_blob = subprocess.check_output(
+            ["git", "-C", str(config["_root"]), "rev-parse",
+             f"{GMT_ATLAS_COMMIT}:{GMT_ATLAS_PATH}"], text=True).strip()
+    except (subprocess.CalledProcessError, OSError):
+        atlas_blob = None
     baseline = None
     if config["_baseline"] and config["_baseline"].is_file():
         baseline = {
@@ -290,6 +325,16 @@ def initial_state(config: dict, whole: dict) -> dict:
             "workflow_blob": git_blob_sha(workflow.read_bytes()) if workflow.is_file() else None,
             "frozen_projection_sha256": digest(frozen),
             "frozen_md_block_sha256": None,
+            "operational_gmt_atlas": {
+                "commit": GMT_ATLAS_COMMIT,
+                "path": GMT_ATLAS_PATH,
+                "blob": atlas_blob,
+                "status": "DRAFT_DOCUMENTARY_CANDIDATE_NOT_PROTECTED_LAW",
+            },
+            "oath_r2": {
+                "commit": "1341c81dfe0e99da030e7dca356f55789a10c6f8",
+                "status": "DRAFT_PR1098_NOT_PROTECTED_LAW",
+            },
             "original_scope": {
                 "functions": 144, "seams": 38, "gates": 83,
                 "assets": 304, "inputs": 100,
@@ -307,9 +352,12 @@ def initial_state(config: dict, whole: dict) -> dict:
             "last_authenticated_at_utc": baseline["as_of"] if baseline else None,
             "github_observations": {},
             "local_receipts": {},
+            "live_github": None,
+            "legacy_baseline_not_live": bool(baseline),
         },
         "events": [],
         "tasks": tasks,
+        "decision_nodes": decision_nodes,
         "controls": {"stops": [], "holds": [], "revocations": []},
         "browser": copy.deepcopy(frozen.get("browser", {})),
         "controllers": copy.deepcopy(frozen.get("controllers", {})),
@@ -335,7 +383,12 @@ def initial_state(config: dict, whole: dict) -> dict:
             "state": "PENDING_EXTERNAL_NONAUTHOR_REVIEW",
             "implementation_commit": config.get("implementation_commit"),
             "review_receipt": None,
+            "review_run": None,
         },
+        "mechanism_worker_return": None,
+        "mechanism_review_history": [],
+        "reconciliation_resolved": [],
+        "source_authority_holds": [],
         "next_non_dispatch_action": None,
     }
     event = {
@@ -463,6 +516,12 @@ def recompute(state: dict) -> None:
              "review_pr": row.get("review_pr"),
              "protected_integration": row.get("protected_integration"),
              "protected_ci": row.get("protected_ci"),
+             "decision_prerequisites": row.get("decision_prerequisites", []),
+             "decision_full_claim": row.get("decision_full_claim", []),
+             "decision_status": row.get("decision_status", {}),
+             "full_original_decision_blockers": row.get(
+                 "full_original_decision_blockers", []),
+             "full_original_readiness": row.get("full_original_readiness"),
              "source_refs": row["source_refs"]}
             for row in tasks
         ],
@@ -472,6 +531,39 @@ def recompute(state: dict) -> None:
         "controllers": state.get("controllers", {}),
         "protected_ci": state.get("protected_ci"),
     }
+    node_by_id = {node.get("id"): node for node in state.get("decision_nodes", [])}
+    for task in tasks:
+        statuses = {node_id: node_by_id.get(node_id, {}).get("status", "UNKNOWN")
+                    for node_id in task.get("decision_full_claim", [])}
+        task["decision_status"] = statuses
+        blockers = [node_id for node_id, status in statuses.items()
+                    if not str(status).startswith(("ESTABLISHED", "SETTLED",
+                                                    "GOVERNING_SOURCE_PRESENT"))]
+        task["full_original_decision_blockers"] = blockers
+        task["full_original_readiness"] = (
+            "HOLD_DECISION_" + ",".join(blockers) if blockers else
+            "FULL_ORIGINAL_NOT_ESTABLISHED")
+    for node in state.get("decision_nodes", []):
+        kind = node.get("decision_kind")
+        status = str(node.get("status", ""))
+        if kind == "EXTERNAL_AUTHORITY_HOLD":
+            readiness = "HOLD_SOURCE_AUTHORITY"
+        elif kind == "OPEN_SCIENTIFIC_MECHANISM":
+            readiness = "OPEN_SCIENTIFIC_MECHANISM"
+        elif status.startswith(("ESTABLISHED", "SETTLED",
+                                "GOVERNING_SOURCE_PRESENT")):
+            readiness = "SETTLED_LAW"
+        else:
+            readiness = "EXECUTIVE_OR_OWNER_DECISION_REQUIRED"
+        node["readiness"] = readiness
+        node["full_original_claim"] = "NOT_ESTABLISHED"
+    state["decision_readiness"] = [
+        {"id": node.get("id"), "kind": node.get("decision_kind"),
+         "status": node.get("status"), "readiness": node.get("readiness"),
+         "depends_on": node.get("depends_on", []),
+         "blocks_full_claim": node.get("blocks_full_claim")}
+        for node in state.get("decision_nodes", [])
+    ]
     state["holds"] = _compose_holds(state)
     state["recommended_next"] = _recommended_next(state, by_id)
     state["checkpoint_id"] = _checkpoint_id(state)
@@ -511,6 +603,23 @@ def _compose_holds(state: dict) -> list[dict]:
     for revoke in state.get("controls", {}).get("revocations", []):
         rows.append({"kind": "REVOCATION", "scope": revoke.get("scope"),
                      "owner": revoke.get("owner"), "reason": revoke.get("reason")})
+    for hold in state.get("source_authority_holds", []):
+        rows.append({"kind": "SOURCE_AUTHORITY_HOLD",
+                     "scope": hold.get("what_changed"),
+                     "owner": "competent source authority",
+                     "reason": "held by authenticated source-authority evidence"})
+    mechanism_return = state.get("mechanism_worker_return")
+    if isinstance(mechanism_return, dict):
+        rows.append({"kind": "REAL_MECHANISM_WORKER_RETURN",
+                     "scope": MECHANISM_ID,
+                     "owner": mechanism_return.get("session"),
+                     "reason": mechanism_return.get("execution_state")})
+    mechanism_review = state.get("mechanism_review") or {}
+    if str(mechanism_review.get("state", "")).startswith("PENDING"):
+        rows.append({"kind": "MECHANISM_REVIEW",
+                     "scope": MECHANISM_ID,
+                     "owner": "separate independent nonauthor",
+                     "reason": mechanism_review.get("state")})
     for key, value in state.get("browser", {}).items():
         rows.append({"kind": "BROWSER_OWNERSHIP", "scope": key,
                      "owner": "user-operated Browser", "reason": value})
@@ -652,7 +761,8 @@ def _verify_return_artifact(source: dict, binding: dict) -> dict:
     if source.get("return_sha256") and source["return_sha256"] != actual:
         raise CurrentnessError("RETURN_ARTIFACT_HASH_MISMATCH")
     payload = read_json(path)
-    if not isinstance(payload, dict) or payload.get("schema") != RETURN_SCHEMA:
+    if (not isinstance(payload, dict)
+            or payload.get("schema") not in (RETURN_SCHEMA, REVIEW_RECEIPT_SCHEMA)):
         raise CurrentnessError("RETURN_ARTIFACT_SCHEMA")
     return {"path": str(path), "sha256": actual, "payload": payload}
 
@@ -678,7 +788,35 @@ def verify_git_documents(repo_root: Path, commit: str, documents: list[dict]) ->
     return verified
 
 
-def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool) -> dict:
+def _verify_verdict_artifact(config: dict, commit: str,
+                             documents: list[dict], verdict: str) -> dict:
+    candidates = [doc for doc in documents
+                  if str(doc.get("path", "")).endswith("VERDICT.json")]
+    if not candidates:
+        raise CurrentnessError("REVIEWED_VERDICT_ARTIFACT_REQUIRED")
+    document = candidates[0]
+    path = document.get("path")
+    expected_blob = document.get("git_blob")
+    result = subprocess.run(
+        ["git", "-C", str(config["_root"]), "rev-parse", f"{commit}:{path}"],
+        capture_output=True, text=True)
+    if result.returncode != 0 or result.stdout.strip() != expected_blob:
+        raise CurrentnessError("REVIEWED_VERDICT_BLOB_MISMATCH", path)
+    try:
+        raw = subprocess.check_output(
+            ["git", "-C", str(config["_root"]), "show", f"{commit}:{path}"])
+        artifact = json.loads(raw)
+    except (subprocess.CalledProcessError, ValueError, TypeError) as exc:
+        raise CurrentnessError("REVIEWED_VERDICT_UNREADABLE", path) from exc
+    actual = artifact.get("engineering_verdict") or artifact.get("verdict")
+    if not isinstance(actual, str) or not actual.startswith(verdict):
+        raise CurrentnessError("REVIEW_VERDICT_ARTIFACT_MISMATCH",
+                               {"expected": verdict, "artifact": actual})
+    return {"path": path, "git_blob": expected_blob, "verdict": actual}
+
+
+def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool,
+                             source: dict | None = None) -> dict:
     if not isinstance(receipt, dict) or receipt.get("schema") != REVIEW_RECEIPT_SCHEMA:
         raise CurrentnessError("REVIEW_RECEIPT_SCHEMA")
     task_id = receipt.get("task_id")
@@ -702,22 +840,221 @@ def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool) -> di
                 "PENDING_PROTECTED_CI_AND_ADOPTION", "NO_PROTECTED_ADOPTION"):
             raise CurrentnessError("ADOPTION_INFLATION_REFUSED")
     documents = receipt.get("source_documents") or []
-    verified = []
     commit = receipt.get("review_commit")
+    verified = verify_git_documents(config["_root"], commit, documents)
     if replay:
         if receipt.get("source_trust") != "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY":
             raise CurrentnessError("REPLAY_TRUST_REQUIRED")
-        verified = verify_git_documents(config["_root"], commit, documents)
-    else:
-        if receipt.get("source_trust") != "REAL_LOCAL_NONAUTHOR_REVIEW":
-            raise CurrentnessError("REVIEW_TRUST_REQUIRED")
-        verified = verify_git_documents(config["_root"], commit, documents)
+        return {
+            "receipt": receipt, "verified_documents": verified,
+            "receipt_sha256": digest(receipt), "replay": True,
+            "review_run": None,
+        }
+    if not isinstance(source, dict):
+        raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
+    if source.get("trust") != "REAL_LOCAL_SUPERVISED_REVIEW_RUN":
+        raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
+    run_dir = source.get("review_run_dir")
+    if not run_dir:
+        raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
+    run = validate_controller_run(Path(run_dir), source)
+    if run["completion"].get("exit_code") != 0:
+        raise CurrentnessError("REVIEW_RUN_ZERO_EXIT_REQUIRED")
+    binding = run["binding"].get("sorok_currentness") or {}
+    if binding.get("role") != "REVIEWER":
+        raise CurrentnessError("REVIEW_RUN_ROLE_MISMATCH")
+    if binding.get("task_id") != task_id:
+        raise CurrentnessError("REVIEW_RUN_TASK_MISMATCH")
+    if binding.get("expected_session") and binding["expected_session"] != receipt.get(
+            "reviewer_session"):
+        raise CurrentnessError("REVIEW_RUN_SESSION_MISMATCH")
+    if binding.get("expected_source_commit") and binding[
+            "expected_source_commit"] != receipt.get("implementation_commit"):
+        raise CurrentnessError("REVIEW_RUN_SOURCE_MISMATCH")
+    artifact = _verify_return_artifact(source, run["binding"])
+    if artifact["payload"].get("schema") != REVIEW_RECEIPT_SCHEMA:
+        raise CurrentnessError("REVIEW_RUN_ARTIFACT_SCHEMA")
+    if digest(artifact["payload"]) != digest(receipt):
+        raise CurrentnessError("REVIEW_RUN_ARTIFACT_MISMATCH")
+    verdict_artifact = _verify_verdict_artifact(
+        config, commit, documents, verdict)
     return {
-        "receipt": receipt,
-        "verified_documents": verified,
-        "receipt_sha256": digest(receipt),
-        "replay": replay,
+        "receipt": receipt, "verified_documents": verified,
+        "verdict_artifact": verdict_artifact,
+        "receipt_sha256": digest(receipt), "replay": False,
+        "review_run": {
+            "run_dir": run["run_dir"], "job_id": run["job"]["job_id"],
+            "session": run["job"]["session"],
+            "grant_id": run["job"]["grant_id"],
+            "completion_sha256": run["hashes"]["completion_sha256"],
+            "binding_sha256": run["hashes"]["binding_sha256"],
+            "launch_sha256": run["hashes"]["launch_sha256"],
+            "return_sha256": artifact["sha256"],
+            "role": "REVIEWER",
+        },
     }
+
+
+def _operator_authorization(config: dict) -> tuple[dict, str]:
+    path = config.get("_operator_auth")
+    if not path or not Path(path).is_file():
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_UNAVAILABLE")
+    authorization = read_json(Path(path))
+    if not isinstance(authorization, dict):
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_SCHEMA")
+    if authorization.get("schema") != OPERATOR_AUTH_SCHEMA:
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_SCHEMA")
+    try:
+        if _parse_utc(authorization["expires_at_utc"]) <= datetime.datetime.now(
+                datetime.timezone.utc):
+            raise CurrentnessError("OPERATOR_AUTHORIZATION_EXPIRED")
+    except (KeyError, ValueError, TypeError) as exc:
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_EXPIRED") from exc
+    return authorization, sha256_file(Path(path))
+
+
+def _authorize_operator(config: dict, *, purpose: str, item: dict,
+                        authorization_id: str | None,
+                        allowed_roles: tuple[str, ...],
+                        supersedes: str | None = None) -> tuple[dict, str]:
+    authorization, authorization_sha = _operator_authorization(config)
+    if not authorization_id or authorization.get("authorization_id") != authorization_id:
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_ID_MISMATCH")
+    if purpose not in authorization.get("allowed_kinds", []):
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_KIND_DENIED", purpose)
+    if authorization.get("role") not in allowed_roles:
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_ROLE_DENIED",
+                               authorization.get("role"))
+    scope = str(item.get("what_changed", ""))
+    allowed_scopes = [str(value) for value in authorization.get("allowed_scopes", [])]
+    if not any(scope.startswith(value) for value in allowed_scopes):
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_SCOPE_DENIED", scope)
+    allowed_items = set(authorization.get("allowed_item_digests", []))
+    allowed_sources = set(authorization.get("allowed_source_digests", []))
+    if allowed_items or allowed_sources:
+        source_digest = item.get("source_digest")
+        if digest(item) not in allowed_items and source_digest not in allowed_sources:
+            raise CurrentnessError("OPERATOR_AUTHORIZATION_EVIDENCE_DIGEST_DENIED")
+    if supersedes is not None:
+        if supersedes not in authorization.get("allowed_supersedes", []):
+            raise CurrentnessError("OPERATOR_AUTHORIZATION_SUPERSEDES_DENIED")
+    return authorization, authorization_sha
+
+
+def _verify_mechanism_worker_return(config: dict, payload: dict,
+                                      binding: dict) -> None:
+    if payload.get("task_id") != MECHANISM_ID:
+        raise CurrentnessError("MECHANISM_WORKER_TASK_MISMATCH")
+    if payload.get("role") != "IMPLEMENTER":
+        raise CurrentnessError("MECHANISM_WORKER_ROLE_MISMATCH")
+    if not payload.get("session"):
+        raise CurrentnessError("MECHANISM_WORKER_SESSION_MISSING")
+    implementation = payload.get("implementation_commit")
+    if not HASH_RE.fullmatch(str(implementation or "")):
+        raise CurrentnessError("MECHANISM_WORKER_SOURCE_INVALID")
+    runtime_path = "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py"
+    test_path = "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py"
+    result = subprocess.run(
+        ["git", "-C", str(config["_root"]), "rev-parse",
+         f"{implementation}:{runtime_path}"], capture_output=True, text=True)
+    if result.returncode != 0 or result.stdout.strip() != payload.get("runtime_blob"):
+        raise CurrentnessError("MECHANISM_WORKER_RUNTIME_BLOB_MISMATCH")
+    result = subprocess.run(
+        ["git", "-C", str(config["_root"]), "rev-parse",
+         f"{implementation}:{test_path}"], capture_output=True, text=True)
+    if result.returncode != 0 or result.stdout.strip() != payload.get("test_blob"):
+        raise CurrentnessError("MECHANISM_WORKER_TEST_BLOB_MISMATCH")
+    return_paths = payload.get("return_paths") or {}
+    if not isinstance(return_paths, dict):
+        raise CurrentnessError("MECHANISM_WORKER_RETURN_PATHS")
+    worktree = Path(binding.get("worktree", "")).resolve()
+    for rel, expected in return_paths.items():
+        path = (worktree / rel).resolve()
+        if worktree not in path.parents and path != worktree:
+            raise CurrentnessError("MECHANISM_WORKER_RETURN_PATH_ESCAPE", rel)
+        if not path.is_file() or sha256_file(path) != expected:
+            raise CurrentnessError("MECHANISM_WORKER_RETURN_PATH_HASH", rel)
+
+
+def _apply_review_verdict(state: dict, receipt: dict, validated: dict,
+                          event_id: str, *, replay: bool) -> None:
+    implementation = receipt.get("implementation_commit")
+    if not HASH_RE.fullmatch(str(implementation or "")):
+        raise CurrentnessError("REVIEW_IMPLEMENTATION_INVALID")
+    if receipt["task_id"] == MECHANISM_ID:
+        current = state["mechanism_review"].get("implementation_commit")
+        if current and implementation != current:
+            raise CurrentnessError("STALE_EVIDENCE", MECHANISM_ID)
+        state["mechanism_review"].update({
+            "state": ("ACCEPTED_SCOPED_PENDING_HQ_ADOPTION"
+                      if receipt["verdict"].startswith("ACCEPT_SCOPED")
+                      else "REVISE_EXACT_DEFECT"
+                      if receipt["verdict"] == "REVISE_EXACT_DEFECT"
+                      else "HOLD_SOURCE_AUTHORITY"),
+            "implementation_commit": implementation,
+            "verdict": receipt["verdict"],
+            "reviewer_session": receipt.get("reviewer_session"),
+            "review_commit": receipt.get("review_commit"),
+            "review_scope": receipt.get("scope"),
+            "review_receipt": validated["receipt"],
+            "review_run": validated.get("review_run"),
+            "verdict_artifact": validated.get("verdict_artifact"),
+            "replay": replay,
+        })
+        state["mechanism_review_history"].append({
+            "event_id": event_id, "implementation_commit": implementation,
+            "verdict": receipt["verdict"],
+            "reviewer_session": receipt.get("reviewer_session"),
+            "review_commit": receipt.get("review_commit"),
+            "review_run": validated.get("review_run"),
+            "replay": replay,
+        })
+        if replay:
+            state["baseline_replay"].append({
+                "event_id": event_id, "task_id": MECHANISM_ID,
+                "review_commit": receipt.get("review_commit"),
+                "verdict": receipt["verdict"],
+                "replay_is_not_new_review": True,
+            })
+        return
+    task = _task_by_id(state, receipt["task_id"])
+    if not replay and validated.get("review_run") is None:
+        raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
+    if task.get("code_sha") and implementation != task["code_sha"]:
+        raise CurrentnessError("STALE_EVIDENCE", receipt["task_id"])
+    if receipt.get("review_commit") and not HASH_RE.fullmatch(receipt["review_commit"]):
+        raise CurrentnessError("REVIEW_COMMIT_INVALID")
+    verdict = receipt["verdict"]
+    task["review_event_id"] = event_id
+    task["review_receipt_sha256"] = validated["receipt_sha256"]
+    task["review_commit"] = receipt.get("review_commit")
+    task["review_scope"] = receipt.get("scope")
+    task["review_trust"] = receipt.get("source_trust")
+    task["review_run"] = validated.get("review_run")
+    task["replay"] = replay
+    if verdict.startswith("ACCEPT_SCOPED"):
+        task["sourcefree_state"] = "SCOPED_RECEIVED_UNMERGED"
+        task["execution_state"] = "SCOPED_RECEIVED_UNMERGED"
+        task["review_sha"] = receipt.get("review_commit")
+        task["review_pr"] = receipt.get("review_pr")
+        task["code_sha"] = receipt.get("implementation_commit")
+        task["protected_integration"] = "PENDING_PROTECTED_CI_AND_ADOPTION"
+        task["adoption"] = "PENDING_PROTECTED_CI_AND_ADOPTION"
+        task["protected_ci"] = receipt.get("protected_ci")
+    elif verdict == "REVISE_EXACT_DEFECT":
+        task["sourcefree_state"] = "REVISE_REQUIRED"
+        task["execution_state"] = "REVISE_REQUIRED"
+    else:
+        task["sourcefree_state"] = "REJECTED" if verdict == "REJECTED" else "HELD_SOURCE_AUTHORITY"
+        task["execution_state"] = task["sourcefree_state"]
+    if replay:
+        state["baseline_replay"].append({
+            "event_id": event_id, "task_id": receipt["task_id"],
+            "review_pr": receipt.get("review_pr"),
+            "review_commit": receipt.get("review_commit"),
+            "verdict": verdict,
+            "replay_is_not_new_review": True,
+        })
 
 
 def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dict:
@@ -728,13 +1065,65 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
         return state
     if kind in ("WORKER_RETURN", "INFRASTRUCTURE_RETURN"):
         task_id = payload.get("task_id")
-        run = None
         if source.get("controller_run_dir"):
             run = validate_controller_run(Path(source["controller_run_dir"]), source)
         else:
             raise CurrentnessError("CONTROLLER_RUN_REQUIRED")
         artifact = _verify_return_artifact(source, run["binding"])
-        if task_id in EXPECTED_IDS:
+        binding = run["binding"].get("sorok_currentness") or {}
+        role = payload.get("role") or binding.get("role")
+        expected_session = binding.get("expected_session")
+        if expected_session and run["job"].get("session") != expected_session:
+            raise CurrentnessError("CONTROLLER_EXPECTED_SESSION_MISMATCH")
+        if task_id == MECHANISM_ID:
+            if role == "IMPLEMENTER":
+                if artifact["payload"].get("schema") != RETURN_SCHEMA:
+                    raise CurrentnessError("MECHANISM_WORKER_RETURN_SCHEMA")
+                _verify_mechanism_worker_return(
+                    config, artifact["payload"], run["binding"])
+                implementation = artifact["payload"].get("implementation_commit")
+                expected_source = binding.get("expected_source_commit")
+                if expected_source and implementation != expected_source:
+                    raise CurrentnessError("MECHANISM_WORKER_SOURCE_MISMATCH")
+                state["mechanism_worker_return"] = {
+                    "event_id": event["event_id"],
+                    "controller_run_dir": run["run_dir"],
+                    "job_id": run["job"]["job_id"],
+                    "session": run["job"]["session"],
+                    "grant_id": run["job"]["grant_id"],
+                    "role": "IMPLEMENTER",
+                    "exit_code": run["completion"]["exit_code"],
+                    "return_path": artifact["path"],
+                    "return_sha256": artifact["sha256"],
+                    "implementation_commit": implementation,
+                    "runtime_blob": artifact["payload"].get("runtime_blob"),
+                    "test_blob": artifact["payload"].get("test_blob"),
+                    "execution_state": "RETURNED_REVIEW_PENDING",
+                    "review_required": True,
+                    "completion_sha256": run["hashes"]["completion_sha256"],
+                }
+                state["mechanism_review"]["implementation_commit"] = implementation
+                state["controller_integration"]["hook_state"] = (
+                    "REAL_MECHANISM_WORKER_RETURN_INTAKEN")
+            elif role == "REVIEWER":
+                if artifact["payload"].get("schema") != REVIEW_RECEIPT_SCHEMA:
+                    raise CurrentnessError("MECHANISM_REVIEW_RECEIPT_SCHEMA")
+                review_source = dict(source)
+                review_source["trust"] = "REAL_LOCAL_SUPERVISED_REVIEW_RUN"
+                review_source["review_run_dir"] = run["run_dir"]
+                validated = _validate_review_receipt(
+                    config, artifact["payload"], replay=False,
+                    source=review_source)
+                _apply_review_verdict(
+                    state, artifact["payload"], validated,
+                    event["event_id"], replay=False)
+                state["controller_integration"]["hook_state"] = (
+                    "REAL_MECHANISM_REVIEW_INTAKEN")
+            else:
+                raise CurrentnessError("MECHANISM_ROLE_UNKNOWN", role)
+        elif task_id in EXPECTED_IDS:
+            if role not in (None, "IMPLEMENTER"):
+                raise CurrentnessError("TASK_RETURN_ROLE_MISMATCH", role)
             task = _task_by_id(state, task_id)
             if task.get("code_sha") and payload.get("source_commit") != task["code_sha"]:
                 raise CurrentnessError("STALE_EVIDENCE", task_id)
@@ -760,77 +1149,16 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
             "event_id": event["event_id"], "job_id": run["job"]["job_id"],
             "session": run["job"]["session"],
         }
-        state["controller_integration"]["hook_state"] = "REAL_LOCAL_RETURN_INTAKEN"
         return state
     if kind == "REVIEW_VERDICT":
         receipt = event.get("receipt")
         if not isinstance(receipt, dict):
             raise CurrentnessError("REVIEW_RECEIPT_MISSING")
         replay = source.get("trust") == "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY"
-        validated = _validate_review_receipt(config, receipt, replay=replay)
-        task = _task_by_id(state, receipt["task_id"])
-        implementation = receipt.get("implementation_commit")
-        if not HASH_RE.fullmatch(str(implementation or "")):
-            raise CurrentnessError("REVIEW_IMPLEMENTATION_INVALID")
-        if receipt["task_id"] == MECHANISM_ID:
-            current = state["mechanism_review"].get("implementation_commit")
-            if current and implementation != current:
-                raise CurrentnessError("STALE_EVIDENCE", MECHANISM_ID)
-            state["mechanism_review"].update({
-                "state": ("ACCEPTED_SCOPED_PENDING_HQ_ADOPTION"
-                          if receipt["verdict"].startswith("ACCEPT_SCOPED")
-                          else "REVISE_EXACT_DEFECT"
-                          if receipt["verdict"] == "REVISE_EXACT_DEFECT"
-                          else "HOLD_SOURCE_AUTHORITY"),
-                "implementation_commit": implementation,
-                "reviewer_session": receipt.get("reviewer_session"),
-                "review_commit": receipt.get("review_commit"),
-                "review_scope": receipt.get("scope"),
-                "review_receipt": validated["receipt"],
-                "replay": replay,
-            })
-            if replay:
-                state["baseline_replay"].append({
-                    "event_id": event["event_id"], "task_id": MECHANISM_ID,
-                    "review_commit": receipt.get("review_commit"),
-                    "verdict": receipt["verdict"],
-                    "replay_is_not_new_review": True,
-                })
-            return state
-        if task.get("code_sha") and implementation != task["code_sha"]:
-            raise CurrentnessError("STALE_EVIDENCE", receipt["task_id"])
-        if receipt.get("review_commit") and not HASH_RE.fullmatch(receipt["review_commit"]):
-            raise CurrentnessError("REVIEW_COMMIT_INVALID")
-        verdict = receipt["verdict"]
-        task["review_event_id"] = event["event_id"]
-        task["review_receipt_sha256"] = validated["receipt_sha256"]
-        task["review_commit"] = receipt.get("review_commit")
-        task["review_scope"] = receipt.get("scope")
-        task["review_trust"] = receipt.get("source_trust")
-        task["replay"] = replay
-        if verdict.startswith("ACCEPT_SCOPED"):
-            task["sourcefree_state"] = "SCOPED_RECEIVED_UNMERGED"
-            task["execution_state"] = "SCOPED_RECEIVED_UNMERGED"
-            task["review_sha"] = receipt.get("review_commit")
-            task["review_pr"] = receipt.get("review_pr")
-            task["code_sha"] = receipt.get("implementation_commit")
-            task["protected_integration"] = "PENDING_PROTECTED_CI_AND_ADOPTION"
-            task["adoption"] = "PENDING_PROTECTED_CI_AND_ADOPTION"
-            task["protected_ci"] = receipt.get("protected_ci")
-        elif verdict == "REVISE_EXACT_DEFECT":
-            task["sourcefree_state"] = "REVISE_REQUIRED"
-            task["execution_state"] = "REVISE_REQUIRED"
-        else:
-            task["sourcefree_state"] = "REJECTED" if verdict == "REJECTED" else "HELD_SOURCE_AUTHORITY"
-            task["execution_state"] = task["sourcefree_state"]
-        if replay:
-            state["baseline_replay"].append({
-                "event_id": event["event_id"], "task_id": receipt["task_id"],
-                "review_pr": receipt.get("review_pr"),
-                "review_commit": receipt.get("review_commit"),
-                "verdict": verdict,
-                "replay_is_not_new_review": True,
-            })
+        validated = _validate_review_receipt(
+            config, receipt, replay=replay, source=source)
+        _apply_review_verdict(state, receipt, validated, event["event_id"],
+                              replay=replay)
         return state
     if kind == "REJECTION":
         task = _task_by_id(state, payload["task_id"])
@@ -858,52 +1186,176 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
         scope = payload.get("scope")
         if not scope:
             raise CurrentnessError("CONTROL_SCOPE_MISSING")
-        key = {"SOURCE_AUTHORITY_HOLD": "holds", "USER_STOP": "stops",
-               "REVOCATION": "revocations"}.get(kind)
+        item = {"what_changed": kind + " " + str(scope), "scope": scope,
+                "source_digest": event.get("event_hash")}
+        roles = {
+            "SOURCE_AUTHORITY_HOLD": ("SOURCE_AUTHORITY_ISSUER",),
+            "USER_STOP": ("SOROK_HQ_OPERATOR",),
+            "USER_RESUME": ("SOROK_HQ_OPERATOR",),
+            "REVOCATION": ("SOROK_HQ_OPERATOR", "SOURCE_AUTHORITY_ISSUER"),
+        }[kind]
+        authorization, authorization_sha = _authorize_operator(
+            config, purpose=kind, item=item,
+            authorization_id=payload.get("authorization_id"),
+            allowed_roles=roles, supersedes=payload.get("supersedes"))
         if kind == "USER_RESUME":
+            target = payload.get("supersedes")
+            if not target:
+                raise CurrentnessError("UNAUTHORIZED_RESUME_SUPERSEDES_REQUIRED")
+            stop = next((row for row in state["controls"]["stops"]
+                         if row.get("event_id") == target), None)
+            if stop is None:
+                raise CurrentnessError("UNAUTHORIZED_RESUME_TARGET_NOT_FOUND")
+            if stop.get("scope") != scope:
+                raise CurrentnessError("UNAUTHORIZED_RESUME_SCOPE_MISMATCH")
+            if _parse_utc(event["recorded_utc"]) <= _parse_utc(stop["recorded_at"]):
+                raise CurrentnessError("UNAUTHORIZED_RESUME_ORDER")
             state["controls"]["stops"] = [
                 row for row in state["controls"]["stops"]
-                if row.get("scope") != scope]
+                if row.get("event_id") != target]
+            state["controls"].setdefault("resumes", []).append({
+                "scope": scope, "event_id": event["event_id"],
+                "supersedes": target, "authorization_id": authorization.get(
+                    "authorization_id"), "authorization_sha256": authorization_sha,
+            })
             return state
+        key = {"SOURCE_AUTHORITY_HOLD": "holds", "USER_STOP": "stops",
+               "REVOCATION": "revocations"}[kind]
         state["controls"].setdefault(key, []).append({
-            "scope": scope, "owner": payload.get("owner"),
+            "scope": scope, "owner": authorization.get("owner", payload.get("owner")),
             "reason": payload.get("reason", kind), "event_id": event["event_id"],
+            "recorded_at": event["recorded_utc"],
+            "authorization_id": authorization.get("authorization_id"),
+            "authorization_sha256": authorization_sha,
         })
         return state
-    if kind == "GITHUB_OBSERVATION":
-        baseline_sha = payload.get("baseline_sha256")
-        if not baseline_sha:
-            raise CurrentnessError("GITHUB_BASELINE_SHA_MISSING")
-        state["authenticated_checkpoint"]["baseline"] = {
-            "path": payload.get("baseline_path"),
-            "sha256": baseline_sha,
-            "as_of": payload.get("as_of", now_utc()),
+    if kind == "HISTORICAL_REVIEW":
+        receipt = payload.get("receipt")
+        if not isinstance(receipt, dict):
+            raise CurrentnessError("HISTORICAL_REVIEW_RECEIPT_MISSING")
+        if source.get("trust") != "POSTHOC_REGISTERED_REAL_REVIEWER_RUN":
+            raise CurrentnessError("HISTORICAL_REVIEW_TRUST_REQUIRED")
+        run_dir = source.get("controller_run_dir")
+        if not run_dir:
+            raise CurrentnessError("HISTORICAL_REVIEW_RUN_REQUIRED")
+        run = validate_controller_run(Path(run_dir), source)
+        if run["completion"].get("exit_code") != 0:
+            raise CurrentnessError("HISTORICAL_REVIEW_ZERO_EXIT_REQUIRED")
+        if receipt.get("reviewer_session") == receipt.get("author_session"):
+            raise CurrentnessError("SELF_REVIEW_REFUSED")
+        if receipt.get("verdict") != payload.get("verdict"):
+            raise CurrentnessError("HISTORICAL_REVIEW_VERDICT_MISMATCH")
+        verified = verify_git_documents(
+            config["_root"], receipt.get("review_commit"),
+            receipt.get("source_documents") or [])
+        record = {
+            "event_id": event["event_id"], "historical": True,
+            "automatic_intake": False,
+            "posthoc_registration": True,
+            "controller_run_dir": run["run_dir"],
+            "job_id": run["job"]["job_id"],
+            "session": run["job"]["session"],
+            "completion_sha256": run["hashes"]["completion_sha256"],
+            "implementation_commit": receipt.get("implementation_commit"),
+            "reviewer_session": receipt.get("reviewer_session"),
+            "review_commit": receipt.get("review_commit"),
+            "verdict": receipt.get("verdict"),
+            "verified_documents": verified,
         }
+        state["mechanism_review_history"].append(record)
+        state["mechanism_review_original"] = record
+        return state
+    if kind == "GITHUB_OBSERVATION":
+        live = payload.get("live_observation")
+        if not isinstance(live, dict) or live.get("schema") != LIVE_GITHUB_SCHEMA:
+            raise CurrentnessError("LIVE_GITHUB_OBSERVATION_SCHEMA")
+        if not _live_fresh(state, live):
+            raise CurrentnessError("LIVE_GITHUB_OBSERVATION_STALE_OR_UNTRUSTED")
+        state["authenticated_checkpoint"]["live_github"] = copy.deepcopy(live)
         state["authenticated_checkpoint"]["last_authenticated_at_utc"] = (
-            payload.get("as_of", now_utc()))
-        state["authenticated_checkpoint"]["github_observations"] = copy.deepcopy(
-            payload.get("observations", {}))
+            live.get("fetched_at_utc"))
+        state["authenticated_checkpoint"]["legacy_baseline_not_live"] = True
+        state["authenticated_checkpoint"]["github_observations"] = {
+            "live:" + str(live.get("evidence_digest")): {
+                "source_trust": live.get("source_trust"),
+                "fetched_at_utc": live.get("fetched_at_utc"),
+                "expires_at_utc": live.get("expires_at_utc"),
+                "status_coverage": live.get("status_coverage"),
+            }}
         state["reconciliation_required"] = [
             item for item in state.get("reconciliation_required", [])
-            if not str(item.get("what_changed", "")).startswith(
-                ("AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED",
-                 "AUTHENTICATED_GITHUB_INTAKE_UNAVAILABLE"))]
+            if item.get("source_kind") != "LIVE_GITHUB"]
         return state
     if kind == "RECONCILIATION_RESOLVED":
         what = payload.get("what_changed")
-        if not what or not payload.get("evidence"):
+        if not what:
             raise CurrentnessError("RECONCILIATION_RESOLUTION_INCOMPLETE")
-        before = len(state.get("reconciliation_required", []))
-        state["reconciliation_required"] = [
-            item for item in state.get("reconciliation_required", [])
-            if item.get("what_changed") != what]
-        state.setdefault("reconciliation_resolved", []).append({
-            "what_changed": what, "evidence": payload.get("evidence"),
-            "owner": payload.get("owner"), "reason": payload.get("reason"),
-            "event_id": event["event_id"],
-        })
-        if len(state["reconciliation_required"]) == before:
+        match = next((row for row in state.get("reconciliation_required", [])
+                      if row.get("what_changed") == what), None)
+        if match is None:
             raise CurrentnessError("RECONCILIATION_ITEM_NOT_FOUND", what)
+        item_digest = digest(match)
+        resolution_key = digest({
+            "what_changed": what,
+            "source_kind": match.get("source_kind"),
+            "source_digest": match.get("source_digest"),
+        })
+        resolution = {
+            "what_changed": what, "item_digest": item_digest,
+            "resolution_key": resolution_key,
+            "source_digest": match.get("source_digest"),
+            "checkpoint_id": state.get("checkpoint_id"),
+            "event_id": event["event_id"], "recorded_at": event["recorded_utc"],
+        }
+        if payload.get("fresh_observation_digest"):
+            live = state.get("authenticated_checkpoint", {}).get("live_github")
+            if (not _live_fresh(state, live)
+                    or live.get("evidence_digest") != payload["fresh_observation_digest"]
+                    or match.get("source_kind") != "LIVE_GITHUB"):
+                raise CurrentnessError("RESOLUTION_FRESH_OBSERVATION_INVALID")
+            resolution.update({
+                "resolution_state": "RESOLVED_BY_FRESH_LIVE_OBSERVATION",
+                "evidence_digest": live.get("evidence_digest"),
+                "fetched_at_utc": live.get("fetched_at_utc"),
+            })
+            state["reconciliation_required"] = [
+                row for row in state["reconciliation_required"]
+                if row.get("what_changed") != what]
+        elif payload.get("source_hold_authorization_id"):
+            authorization, authorization_sha = _authorize_operator(
+                config, purpose="SOURCE_AUTHORITY_HOLD", item=match,
+                authorization_id=payload.get("source_hold_authorization_id"),
+                allowed_roles=("SOURCE_AUTHORITY_ISSUER",))
+            match["held_by_source_authority"] = True
+            match["held_at_utc"] = event["recorded_utc"]
+            match["source_hold_authorization_id"] = authorization.get(
+                "authorization_id")
+            state.setdefault("source_authority_holds", []).append({
+                "what_changed": what, "authorization_id": authorization.get(
+                    "authorization_id"), "authorization_sha256": authorization_sha,
+                "held_at_utc": event["recorded_utc"],
+            })
+            resolution.update({
+                "resolution_state": "HELD_BY_COMPETENT_SOURCE_AUTHORITY",
+                "authorization_id": authorization.get("authorization_id"),
+                "authorization_sha256": authorization_sha,
+            })
+        elif payload.get("operator_authorization_id"):
+            authorization, authorization_sha = _authorize_operator(
+                config, purpose="RECONCILIATION_RESOLUTION", item=match,
+                authorization_id=payload.get("operator_authorization_id"),
+                allowed_roles=("SOROK_HQ_OPERATOR",))
+            resolution.update({
+                "resolution_state": "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE",
+                "authorization_id": authorization.get("authorization_id"),
+                "authorization_sha256": authorization_sha,
+            })
+            state["reconciliation_required"] = [
+                row for row in state["reconciliation_required"]
+                if row.get("what_changed") != what]
+        else:
+            raise CurrentnessError("RESOLUTION_AUTHENTICATION_REQUIRED")
+        state.setdefault("reconciliation_resolved", []).append(resolution)
         return state
     if kind == "RECONCILIATION_REQUIRED":
         item = payload.get("item")
@@ -956,6 +1408,51 @@ def intake_event(config: dict, event: dict) -> dict:
         return {"state": "EVENT_RECORDED", "event_id": event["event_id"],
                 "event_hash": event_hash, "generation": state["generation"],
                 "checkpoint_id": state["checkpoint_id"]}
+
+
+def migrate_state(config: dict, state: dict) -> None:
+    packet, gmt, gmt_index = frozen_contracts(config)
+    state.setdefault("authenticated_checkpoint", {}).setdefault("live_github", None)
+    state["authenticated_checkpoint"].setdefault("legacy_baseline_not_live", True)
+    state.setdefault("mechanism_worker_return", None)
+    state.setdefault("mechanism_review_history", [])
+    state.setdefault("mechanism_review_original", None)
+    state.setdefault("reconciliation_resolved", [])
+    state.setdefault("source_authority_holds", [])
+    state.setdefault("decision_nodes", [])
+    state.setdefault("decision_readiness", [])
+    state.setdefault("frozen_projection_adoption",
+                     (state.get("frozen_projection") or {}).get(
+                         "adoption", "PENDING_INDEPENDENT_RECEIVING"))
+    review = state.setdefault("mechanism_review", {})
+    review.setdefault("review_run", None)
+    review.setdefault("verdict_artifact", None)
+    review.setdefault("verdict", None)
+    source_freeze = state.setdefault("source_freeze", {})
+    source_freeze.setdefault("operational_gmt_atlas", {
+        "commit": GMT_ATLAS_COMMIT, "path": GMT_ATLAS_PATH,
+        "blob": None,
+        "status": "DRAFT_DOCUMENTARY_CANDIDATE_NOT_PROTECTED_LAW"})
+    source_freeze.setdefault("oath_r2", {
+        "commit": "1341c81dfe0e99da030e7dca356f55789a10c6f8",
+        "status": "DRAFT_PR1098_NOT_PROTECTED_LAW"})
+    if not state["decision_nodes"]:
+        for node in gmt.get("decision_nodes", []):
+            decision = copy.deepcopy(node)
+            decision["full_original_claim"] = "NOT_ESTABLISHED"
+            state["decision_nodes"].append(decision)
+    for task in state.get("tasks", []):
+        overlay = gmt_index.get(task.get("id"), {})
+        task.setdefault("decision_prerequisites", list(overlay.get(
+            "hard_prerequisites_to_expand_beyond_existing_fixture", [])))
+        task.setdefault("decision_full_claim", list(overlay.get(
+            "determinations_required_before_full_capability_claim", [])))
+        task.setdefault("bounded_engineering_now",
+                        overlay.get("safe_bounded_engineering_now"))
+        task.setdefault("claims_not_yet_warranted",
+                        overlay.get("claims_not_yet_warranted"))
+        task.setdefault("decision_issue_ids", list(overlay.get("issue_ids", [])))
+    recompute(state)
 
 
 def _render_runtime_block(state: dict) -> str:
@@ -1183,72 +1680,394 @@ def _baseline_rows(config: dict) -> list[dict]:
     return data
 
 
-def baseline_observations(rows: list[dict]) -> dict:
-    observations = {}
+def _parse_utc(value: str):
+    return datetime.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+
+
+def _utc_add(seconds: int) -> str:
+    return (datetime.datetime.now(datetime.timezone.utc)
+            + datetime.timedelta(seconds=seconds)).isoformat()
+
+
+def _git_credential_token() -> tuple[str | None, str | None]:
+    """Use the existing git credential helper in memory; never log the secret."""
+    try:
+        completed = subprocess.run(
+            ["git", "credential", "fill"],
+            input="protocol=https\nhost=github.com\n\n",
+            capture_output=True, text=True, timeout=15)
+    except (OSError, subprocess.TimeoutExpired):
+        return None, "GIT_CREDENTIAL_HELPER_UNAVAILABLE"
+    if completed.returncode != 0:
+        return None, "GIT_CREDENTIAL_HELPER_REFUSED"
+    values = {}
+    for line in completed.stdout.splitlines():
+        if "=" in line:
+            key, value = line.split("=", 1)
+            values[key] = value
+    token = values.get("password")
+    return (token, None) if token else (None, "GIT_CREDENTIAL_TOKEN_MISSING")
+
+
+def _live_ref_patterns(config: dict) -> list[str]:
+    patterns = set()
+    try:
+        rows = _baseline_rows(config)
+    except CurrentnessError:
+        rows = []
     for row in rows:
         number = row.get("number")
         value = row.get("value") or {}
-        if "pr" in row:
-            key = "pr:" + str(number)
-            observations[key] = {
-                "state": "MERGED" if row.get("merged") else value.get("state", "OPEN"),
-                "head_sha": row.get("head"),
-                "merge_sha": row.get("merge"),
-                "observed": True,
-            }
-        elif isinstance(value, dict) and "head" in value and "base" in value:
-            observations["pr:" + str(number)] = {
-                "state": "MERGED" if value.get("merged") else value.get("state", "OPEN"),
-                "head_sha": value.get("head"),
-                "merge_sha": value.get("merge_commit_sha"),
-                "draft": value.get("draft"),
-                "observed": True,
-            }
-        elif "comments" in row:
-            key = "comment:" + str(number)
-            for comment in row.get("comments", []):
-                if comment.get("id"):
-                    observations[key + ":" + str(comment["id"])] = {
-                        "state": "REPORTED_COMMENT",
-                        "comment_id": comment.get("id"),
-                        "body_sha256": hashlib.sha256(
-                            comment.get("body", "").encode()).hexdigest(),
-                        "observed": True,
-                    }
+        if isinstance(value, dict) and "head" in value:
+            patterns.add(f"refs/pull/{number}/head")
+            patterns.add(f"refs/pull/{number}/merge")
+            head = value.get("head")
+            if isinstance(head, str) and head:
+                patterns.add("refs/heads/" + head.removeprefix("refs/heads/"))
         elif isinstance(value, dict) and "issue" in value:
-            issue = value["issue"]
-            key = "issue:" + str(number)
-            observations[key] = {
-                "state": issue.get("state", "OPEN"),
-                "updated_at": issue.get("updated_at"),
-                "comments": issue.get("comments"),
-                "observed": True,
-            }
+            continue
         else:
-            observations["row:" + str(number)] = {"state": "UNCLASSIFIED", "observed": True}
-    return observations
+            patterns.add(f"refs/pull/{number}/head")
+    live_cfg = config.get("_github_live", {})
+    for number in live_cfg.get("watch_prs", []):
+        patterns.add(f"refs/pull/{number}/head")
+        patterns.add(f"refs/pull/{number}/merge")
+    for branch in live_cfg.get("watch_branches", []):
+        patterns.add("refs/heads/" + str(branch).removeprefix("refs/heads/"))
+    return sorted(patterns)
 
 
-def reconciliation_items(config: dict, state: dict) -> list[dict]:
-    items = []
+def _git_ls_remote(config: dict, patterns: list[str]) -> tuple[dict, str, str]:
+    remote = config.get("_github_live", {}).get(
+        "remote", "https://github.com/maidiu/rawlsing.git")
+    try:
+        completed = subprocess.run(
+            ["git", "ls-remote", "--refs", remote, *patterns],
+            capture_output=True, text=True, timeout=60)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise CurrentnessError("LIVE_GITHUB_REF_FETCH_UNAVAILABLE",
+                               {"error": type(exc).__name__}) from exc
+    if completed.returncode != 0:
+        raise CurrentnessError("LIVE_GITHUB_REF_FETCH_UNAVAILABLE", {
+            "exit": completed.returncode,
+            "stderr_sha256": sha256_bytes(completed.stderr.encode()),
+        })
+    refs = {}
+    for line in completed.stdout.splitlines():
+        if "\t" in line:
+            sha, ref = line.split("\t", 1)
+            refs[ref] = sha
+    return refs, sha256_bytes(completed.stdout.encode()), remote
+
+
+def _api_get(config: dict, path: str, token: str | None) -> dict:
+    base = config.get("_github_live", {}).get(
+        "api_base", "https://api.github.com")
+    headers = {"Accept": "application/vnd.github+json",
+               "User-Agent": "sorok-currentness-runtime-r2"}
+    if token:
+        headers["Authorization"] = "Bearer " + token
+    request = urllib.request.Request(base + path, headers=headers)
+    cafile = config.get("_github_live", {}).get("cafile", "/etc/ssl/cert.pem")
+    context = ssl.create_default_context(cafile=cafile)
+    try:
+        with urllib.request.urlopen(request, timeout=25, context=context) as response:
+            body = response.read()
+            try:
+                parsed = json.loads(body)
+            except ValueError:
+                parsed = None
+            return {"http_status": response.status, "body_sha256": sha256_bytes(body),
+                    "body": parsed, "error": None}
+    except urllib.error.HTTPError as exc:
+        body = exc.read()
+        return {"http_status": exc.code, "body_sha256": sha256_bytes(body),
+                "body": None, "error": "HTTP_" + str(exc.code)}
+    except Exception as exc:  # noqa: BLE001
+        return {"http_status": None, "body_sha256": None, "body": None,
+                "error": type(exc).__name__}
+
+
+def fetch_live_github(config: dict) -> dict:
+    """Authenticated live ref/SHA fetch via git credentials; API as available."""
+    patterns = _live_ref_patterns(config)
+    refs, refs_digest, remote = _git_ls_remote(config, patterns)
+    token, token_error = _git_credential_token()
+    api_repo = config.get("_github_live", {}).get("api_repo", "maidiu/rawlsing")
+    api = {"repo": None, "pulls": {}, "issues": {}, "commits": {},
+           "token_available": bool(token), "token_error": token_error}
+    if token:
+        api["repo"] = _api_get(config, "/repos/" + api_repo, token)
+    status_checks = 0
+    status_success = 0
     try:
         rows = _baseline_rows(config)
-        observations = baseline_observations(rows)
-        known = state.get("authenticated_checkpoint", {}).get("github_observations", {})
-        for key, value in observations.items():
-            if known.get(key) != value:
-                items.append({
-                    "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED " + key,
-                    "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
-                    "owner": "SOROK HQ",
-                    "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
-                })
+    except CurrentnessError:
+        rows = []
+    for row in rows:
+        number = row.get("number")
+        value = row.get("value") or {}
+        if isinstance(value, dict) and "head" in value:
+            status_checks += 1
+            result = _api_get(config, f"/repos/{api_repo}/pulls/{number}", token)
+            if result.get("http_status") == 200 and isinstance(result.get("body"), dict):
+                body = result["body"]
+                api["pulls"][str(number)] = {
+                    "state": body.get("state"),
+                    "merged": body.get("merged"),
+                    "draft": body.get("draft"),
+                    "updated_at": body.get("updated_at"),
+                    "head_sha": (body.get("head") or {}).get("sha"),
+                    "merge_commit_sha": body.get("merge_commit_sha"),
+                    "http_status": 200,
+                    "body_sha256": result.get("body_sha256"),
+                }
+                status_success += 1
+            else:
+                api["pulls"][str(number)] = {
+                    "http_status": result.get("http_status"),
+                    "error": result.get("error"),
+                    "body_sha256": result.get("body_sha256"),
+                }
+        elif isinstance(value, dict) and "issue" in value:
+            status_checks += 1
+            result = _api_get(config, f"/repos/{api_repo}/issues/{number}", token)
+            if result.get("http_status") == 200 and isinstance(result.get("body"), dict):
+                body = result["body"]
+                api["issues"][str(number)] = {
+                    "state": body.get("state"),
+                    "updated_at": body.get("updated_at"),
+                    "comments": body.get("comments"),
+                    "http_status": 200,
+                    "body_sha256": result.get("body_sha256"),
+                }
+                status_success += 1
+            else:
+                api["issues"][str(number)] = {
+                    "http_status": result.get("http_status"),
+                    "error": result.get("error"),
+                    "body_sha256": result.get("body_sha256"),
+                }
+        else:
+            for comment in row.get("comments", []):
+                if comment.get("id"):
+                    status_checks += 1
+                    result = _api_get(
+                        config, f"/repos/{api_repo}/issues/{number}/comments", token)
+                    if result.get("http_status") == 200 and isinstance(result.get("body"), list):
+                        match = next((c for c in result["body"]
+                                      if c.get("id") == comment.get("id")), None)
+                        if match:
+                            api.setdefault("comments", {})[str(comment["id"])] = {
+                                "body_sha256": hashlib.sha256(
+                                    match.get("body", "").encode()).hexdigest(),
+                                "updated_at": match.get("updated_at"),
+                                "http_status": 200,
+                            }
+                            status_success += 1
+                        else:
+                            api.setdefault("comments", {})[str(comment["id"])] = {
+                                "http_status": 200, "error": "COMMENT_NOT_FOUND"}
+                    else:
+                        api.setdefault("comments", {})[str(comment["id"])] = {
+                            "http_status": result.get("http_status"),
+                            "error": result.get("error")}
+    for sha in sorted(set(refs.values())):
+        if token:
+            result = _api_get(config, f"/repos/{api_repo}/commits/{sha}", token)
+            api["commits"][sha] = {
+                "http_status": result.get("http_status"),
+                "error": result.get("error"),
+                "body_sha256": result.get("body_sha256"),
+            }
+    status_coverage = ("FULL" if status_checks and status_success == status_checks
+                       else "REF_SHA_ONLY")
+    fetched_at = now_utc()
+    ttl = int(config.get("_github_live", {}).get("ttl_seconds", 900))
+    live = {
+        "schema": LIVE_GITHUB_SCHEMA,
+        "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+        "source_identity": remote + " + " + api_repo,
+        "transport": "git_ls_remote+github_api_credential_helper",
+        "fetched_at_utc": fetched_at,
+        "expires_at_utc": _utc_add(ttl),
+        "ttl_seconds": ttl,
+        "ref_patterns": patterns,
+        "refs": refs,
+        "refs_digest": refs_digest,
+        "api": api,
+        "status_coverage": status_coverage,
+        "status_checks": status_checks,
+        "status_success": status_success,
+        "credential_helper_used": bool(token),
+        "credential_error": token_error,
+    }
+    live["evidence_digest"] = digest({key: live[key] for key in (
+        "source_identity", "fetched_at_utc", "refs", "refs_digest", "api",
+        "status_coverage")})
+    return live
+
+
+def _live_fresh(state: dict, live: dict | None) -> bool:
+    if not isinstance(live, dict):
+        return False
+    if not str(live.get("source_trust", "")).startswith("AUTHENTICATED_LIVE_GITHUB"):
+        return False
+    try:
+        return _parse_utc(live["expires_at_utc"]) > datetime.datetime.now(
+            datetime.timezone.utc)
+    except (KeyError, ValueError, TypeError):
+        return False
+
+
+def fresh_live_github(config: dict, state: dict) -> dict:
+    live = state.get("authenticated_checkpoint", {}).get("live_github")
+    if _live_fresh(state, live):
+        return live
+    return fetch_live_github(config)
+
+
+def _live_item(what: str, expected: str, next_action: str, live: dict,
+               state: dict) -> dict:
+    return {
+        "what_changed": what,
+        "expected_evidence": expected,
+        "owner": "SOROK HQ + authenticated GitHub connector",
+        "next_action": next_action,
+        "source_kind": "LIVE_GITHUB",
+        "source_digest": live.get("evidence_digest"),
+        "fetched_at_utc": live.get("fetched_at_utc"),
+        "expires_at_utc": live.get("expires_at_utc"),
+        "status_coverage": live.get("status_coverage"),
+        "checkpoint_id": state.get("checkpoint_id"),
+    }
+
+
+def compare_live_github(config: dict, state: dict, live: dict) -> list[dict]:
+    items = []
+    refs = live.get("refs", {})
+    api = live.get("api", {})
+    try:
+        rows = _baseline_rows(config)
+    except CurrentnessError:
+        rows = []
+        items.append(_live_item(
+            "LOCAL_GITHUB_BASELINE_MISSING",
+            "operator-owned expected-ref baseline file",
+            "restore the expected-ref baseline; live observations are preserved separately",
+            live, state))
+    for row in rows:
+        number = row.get("number")
+        value = row.get("value") or {}
+        if isinstance(value, dict) and "head" in value:
+            head_ref = f"refs/pull/{number}/head"
+            merge_ref = f"refs/pull/{number}/merge"
+            actual_head = refs.get(head_ref)
+            actual_merge = refs.get(merge_ref)
+            expected_head = value.get("head_sha") or value.get("head")
+            expected_merge = value.get("merge_commit_sha")
+            branch = value.get("head")
+            branch_ref = ("refs/heads/" + str(branch).removeprefix("refs/heads/")
+                          if branch else None)
+            if branch_ref and branch_ref not in refs:
+                items.append(_live_item(
+                    f"LOCAL_GITHUB_BASELINE_BRANCH_UNAVAILABLE pr:{number}",
+                    "expected live branch ref " + branch_ref,
+                    "reconcile the local expected-ref baseline against live GitHub",
+                    live, state))
+            elif branch_ref and expected_head and refs.get(branch_ref) != expected_head:
+                items.append(_live_item(
+                    f"LOCAL_GITHUB_BASELINE_BRANCH_MISMATCH pr:{number}",
+                    f"expected {expected_head}; live {refs.get(branch_ref)}",
+                    "do not accept a locally edited baseline; reconcile the actual live branch",
+                    live, state))
+            if actual_head is None:
+                items.append(_live_item(
+                    f"GITHUB_REF_DELETED pr:{number}",
+                    "live PR head ref or competent connector status",
+                    "inspect whether the PR was closed/deleted; keep dependent readiness on HOLD",
+                    live, state))
+            elif expected_head and actual_head != expected_head:
+                items.append(_live_item(
+                    f"GITHUB_HEAD_ADVANCED pr:{number}",
+                    f"expected {expected_head}; live {actual_head}",
+                    "reconcile the actual PR head and re-run the relevant receiving",
+                    live, state))
+            if expected_merge and actual_merge != expected_merge:
+                items.append(_live_item(
+                    f"GITHUB_MERGE_ADVANCED pr:{number}",
+                    f"expected {expected_merge}; live {actual_merge}",
+                    "reconcile the merge ref; do not treat old status as current",
+                    live, state))
+            actual_pull = (api.get("pulls") or {}).get(str(number))
+            if not isinstance(actual_pull, dict) or actual_pull.get("http_status") != 200:
+                items.append(_live_item(
+                    f"GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE pr:{number}",
+                    "authenticated issue/pull status and updated_at",
+                    "wire an authenticated connector with pull/issues read scope; keep status HOLD",
+                    live, state))
+            else:
+                if (value.get("state") != actual_pull.get("state")
+                        or value.get("merged") != actual_pull.get("merged")
+                        or value.get("updated_at") != actual_pull.get("updated_at")
+                        or expected_head != actual_pull.get("head_sha")):
+                    items.append(_live_item(
+                        f"GITHUB_PR_STATUS_ADVANCED pr:{number}",
+                        "live state/merged/updated_at/head matching the expected baseline",
+                        "reconcile the changed PR status and re-run the relevant receiving",
+                        live, state))
+        elif isinstance(value, dict) and "issue" in value:
+            actual_issue = (api.get("issues") or {}).get(str(number))
+            if not isinstance(actual_issue, dict) or actual_issue.get("http_status") != 200:
+                items.append(_live_item(
+                    f"GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:{number}",
+                    "authenticated issue status and updated_at",
+                    "wire an authenticated connector with issues read scope; keep status HOLD",
+                    live, state))
+            elif (value.get("state") != actual_issue.get("state")
+                  or value.get("updated_at") != actual_issue.get("updated_at")):
+                items.append(_live_item(
+                    f"GITHUB_ISSUE_ADVANCED issue:{number}",
+                    "live state/updated_at matching the expected baseline",
+                    "reconcile the changed issue state and dependent ownership",
+                    live, state))
+        else:
+            for comment in row.get("comments", []):
+                if not comment.get("id"):
+                    continue
+                cid = str(comment["id"])
+                actual = (api.get("comments") or {}).get(cid)
+                if not isinstance(actual, dict) or actual.get("http_status") != 200:
+                    items.append(_live_item(
+                        f"GITHUB_COMMENT_SOURCE_UNAVAILABLE comment:{number}:{cid}",
+                        "authenticated live comment body and updated_at",
+                        "wire an authenticated connector with issue-comment read scope; keep HOLD",
+                        live, state))
+                elif actual.get("body_sha256") != hashlib.sha256(
+                        comment.get("body", "").encode()).hexdigest():
+                    items.append(_live_item(
+                        f"GITHUB_COMMENT_ADVANCED comment:{number}:{cid}",
+                        "live comment body matching the expected baseline",
+                        "reconcile the changed comment and dependent currentness",
+                        live, state))
+    return items
+
+
+def reconciliation_items(config: dict, state: dict) -> tuple[list[dict], dict | None]:
+    items = []
+    live = None
+    try:
+        live = fresh_live_github(config, state)
+        items.extend(compare_live_github(config, state, live))
     except CurrentnessError as exc:
         items.append({
             "what_changed": exc.code,
-            "expected_evidence": "authenticated GitHub intake baseline file",
-            "owner": "existing SOROK HQ/controller owner",
-            "next_action": "restore the baseline or record explicit source gap",
+            "expected_evidence": "authenticated live GitHub refs/status/SHA or a competent expiring connector feed",
+            "owner": "SOROK HQ + authenticated GitHub connector",
+            "next_action": "restore network/credential access or record exact source HOLD; do not use the local snapshot as live truth",
+            "source_kind": "LIVE_GITHUB",
+            "source_digest": None,
+            "checkpoint_id": state.get("checkpoint_id"),
         })
     if config.get("_controller_state_root") and config["_controller_state_root"].is_dir():
         seen = state.get("authenticated_checkpoint", {}).get("local_receipts", {})
@@ -1260,52 +2079,109 @@ def reconciliation_items(config: dict, state: dict) -> list[dict]:
                     "expected_evidence": "WORKER_RETURN event bound to this completion.json",
                     "owner": "SOROK HQ/controller owner",
                     "next_action": "run intake-completion for this run before treating it as current",
+                    "source_kind": "LOCAL_CONTROLLER",
+                    "source_digest": sha,
+                    "checkpoint_id": state.get("checkpoint_id"),
                 })
-    return items
+    accepted_resolution_keys = {
+        row.get("what_changed") for row in state.get("reconciliation_resolved", [])
+        if row.get("resolution_state") in (
+            "RESOLVED_BY_FRESH_LIVE_OBSERVATION",
+            "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE")
+    }
+    for resolution in state.get("reconciliation_resolved", []):
+        if resolution.get("resolution_state") in (
+                "RESOLVED_BY_FRESH_LIVE_OBSERVATION",
+                "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE"):
+            continue
+        legacy_name = "LEGACY_UNVERIFIED_RESOLUTION " + str(resolution.get("what_changed"))
+        if legacy_name in accepted_resolution_keys:
+            continue
+        item = {
+            "what_changed": legacy_name,
+            "expected_evidence": "fresh live observation or competent operator/source authorization tied to the exact item",
+            "owner": "SOROK HQ/competent source owner",
+            "next_action": "treat the legacy arbitrary resolution as unverified history and resolve only with authenticated evidence",
+            "source_kind": "LEGACY",
+            "source_digest": digest(resolution),
+            "checkpoint_id": state.get("checkpoint_id"),
+        }
+        items.append(item)
+    resolved_keys = {
+        row.get("resolution_key") for row in state.get("reconciliation_resolved", [])
+        if row.get("resolution_key") and row.get("resolution_state") in (
+            "RESOLVED_BY_FRESH_LIVE_OBSERVATION",
+            "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE")
+    }
+    filtered = []
+    for item in items:
+        key = digest({
+            "what_changed": item.get("what_changed"),
+            "source_kind": item.get("source_kind"),
+            "source_digest": item.get("source_digest"),
+        })
+        if key in resolved_keys:
+            continue
+        filtered.append(item)
+    return filtered, live
 
 
 def startup(config: dict, *, reconcile: bool = False) -> dict:
     recover(config)
     whole, md, state = read_pair(config)
-    items = reconciliation_items(config, state)
-    resolved = {row.get("what_changed")
-                for row in state.get("reconciliation_resolved", [])}
-    items = [item for item in items if item.get("what_changed") not in resolved]
+    items, live = reconciliation_items(config, state)
+    resolved = {
+        row.get("resolution_key"): row
+        for row in state.get("reconciliation_resolved", [])
+        if row.get("resolution_key") and row.get("resolution_state") in (
+            "RESOLVED_BY_FRESH_LIVE_OBSERVATION",
+            "RESOLVED_BY_COMPETENT_OPERATOR_EVIDENCE")
+    }
+    filtered = []
+    for item in items:
+        key = digest({
+            "what_changed": item.get("what_changed"),
+            "source_kind": item.get("source_kind"),
+            "source_digest": item.get("source_digest"),
+        })
+        if key in resolved:
+            continue
+        filtered.append(item)
+    items = filtered
     if reconcile:
+        if live is not None:
+            event = {
+                "schema": EVENT_SCHEMA,
+                "event_id": "github-live:" + str(live.get("evidence_digest")),
+                "kind": "GITHUB_OBSERVATION",
+                "recorded_utc": now_utc(),
+                "source": {"trust": "AUTHENTICATED_LIVE_GITHUB"},
+                "payload": {"live_observation": live},
+            }
+            intake_event(config, event)
         existing = {item.get("what_changed"): item for item in state.get(
             "reconciliation_required", [])}
-        new_items = [item for item in items if item["what_changed"] not in existing]
-        for item in new_items:
+        for item in items:
+            if item["what_changed"] in existing:
+                continue
             event = {
                 "schema": EVENT_SCHEMA,
                 "event_id": "reconciliation:" + digest(item),
                 "kind": "RECONCILIATION_REQUIRED",
                 "recorded_utc": now_utc(),
-                "source": {"trust": "AUTHENTICATED_LOCAL_STARTUP"},
+                "source": {"trust": "AUTHENTICATED_LIVE_GITHUB"
+                           if item.get("source_kind") == "LIVE_GITHUB"
+                           else "AUTHENTICATED_LOCAL_STARTUP"},
                 "payload": {"item": item},
             }
             intake_event(config, event)
-        try:
-            rows = _baseline_rows(config)
-            observations = baseline_observations(rows)
-            event = {
-                "schema": EVENT_SCHEMA,
-                "event_id": "github-baseline:" + sha256_file(Path(config["_baseline"])),
-                "kind": "GITHUB_OBSERVATION",
-                "recorded_utc": now_utc(),
-                "source": {"trust": "AUTHENTICATED_GITHUB_INTAKE_BASELINE"},
-                "payload": {
-                    "baseline_path": str(config["_baseline"]),
-                    "baseline_sha256": sha256_file(Path(config["_baseline"])),
-                    "as_of": now_utc(),
-                    "observations": observations,
-                },
-            }
-            intake_event(config, event)
-        except CurrentnessError:
-            pass
         whole, md, state = read_pair(config)
-        items = state.get("reconciliation_required", [])
+        state = copy.deepcopy(state)
+        state["reconciliation_required"] = items
+        state["generation"] += 1
+        state["updated_utc"] = now_utc()
+        recompute(state)
+        commit_state(config, whole, md, state)
     return {"generation": state["generation"], "checkpoint_id": state["checkpoint_id"],
             "reconciliation_required": items,
             "readout": render_readout(state)}
@@ -1313,6 +2189,19 @@ def startup(config: dict, *, reconcile: bool = False) -> dict:
 
 def render_readout(state: dict) -> dict:
     baseline = state.get("authenticated_checkpoint", {}).get("baseline")
+    live = state.get("authenticated_checkpoint", {}).get("live_github")
+    live_summary = None
+    if isinstance(live, dict):
+        live_summary = {
+            "source_trust": live.get("source_trust"),
+            "source_identity": live.get("source_identity"),
+            "fetched_at_utc": live.get("fetched_at_utc"),
+            "expires_at_utc": live.get("expires_at_utc"),
+            "status_coverage": live.get("status_coverage"),
+            "evidence_digest": live.get("evidence_digest"),
+            "refs_digest": live.get("refs_digest"),
+            "fresh": _live_fresh(state, live),
+        }
     return {
         "schema": "SOROK_CURRENTNESS_READOUT_R1",
         "generation": state["generation"],
@@ -1326,6 +2215,7 @@ def render_readout(state: dict) -> dict:
         "runtime_adoption": state.get("adoption"),
         "protected_ci": state.get("protected_ci"),
         "authenticated_github_baseline": baseline,
+        "authenticated_github_live": live_summary,
         "ready_for_independent_receiving": state["readiness"].get(
             "ready_for_independent_receiving", []),
         "ready_for_scoped_engineering": state["readiness"].get(
@@ -1340,7 +2230,11 @@ def render_readout(state: dict) -> dict:
         "awaiting_independent_receiving": state["readiness"].get(
             "awaiting_independent_receiving", []),
         "task_readiness": state["readiness"].get("task_readiness", []),
+        "decision_readiness": state.get("decision_readiness", []),
         "mechanism_review": state.get("mechanism_review"),
+        "mechanism_review_history": state.get("mechanism_review_history", []),
+        "mechanism_review_original": state.get("mechanism_review_original"),
+        "mechanism_worker_return": state.get("mechanism_worker_return"),
         "holds": state.get("holds", []),
         "reconciliation_required": state.get("reconciliation_required", []),
         "reconciliation_resolved": state.get("reconciliation_resolved", []),
@@ -1364,12 +2258,17 @@ def _make_return_event(config: dict, run_dir: Path, *, task_id: str | None = Non
     process = read_json(run_dir / "process.json")
     completion = read_json(run_dir / "completion.json")
     worktree = Path(binding["worktree"]).resolve()
+    currentness = binding.get("sorok_currentness") or {}
+    task_id = task_id or currentness.get("task_id")
+    role = currentness.get("role")
     if return_path is None:
-        filename = binding.get("sorok_currentness", {}).get(
-            "return_filename", "return.json")
+        filename = currentness.get("return_filename", "return.json")
         return_path = str(worktree / filename)
     source = {
         "trust": "REAL_LOCAL_CONTROLLER_COMPLETION",
+        "role": role,
+        "expected_session": currentness.get("expected_session"),
+        "expected_source_commit": currentness.get("expected_source_commit"),
         "controller_run_dir": str(run_dir),
         "job_id": job["job_id"],
         "session": job["session"],
@@ -1387,7 +2286,7 @@ def _make_return_event(config: dict, run_dir: Path, *, task_id: str | None = Non
                           or launch.get("source_commit")
                           or job.get("source_commit")
                           or binding.get("source_commit")
-                          or binding.get("sorok_currentness", {}).get("source_commit")),
+                          or currentness.get("expected_source_commit")),
         "return_path": return_path,
     }
     event = {
@@ -1398,6 +2297,7 @@ def _make_return_event(config: dict, run_dir: Path, *, task_id: str | None = Non
         "source": source,
         "payload": {
             "task_id": task_id,
+            "role": role,
             "scope": scope or "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
             "exit_code": completion.get("exit_code"),
             "author_session": job.get("session"),
@@ -1425,21 +2325,28 @@ def main(argv: list[str] | None = None) -> int:
     startup_parser.add_argument("--reconcile", action="store_true")
     sub.add_parser("recover")
     sub.add_parser("reconcile")
+    sub.add_parser("migrate")
     completion = sub.add_parser("intake-completion")
     completion.add_argument("--run-dir", required=True, type=Path)
     completion.add_argument("--task-id")
     completion.add_argument("--return-path")
     completion.add_argument("--scope")
     review = sub.add_parser("intake-review")
-    review.add_argument("--receipt", required=True, type=Path)
+    review.add_argument("--receipt", type=Path)
+    review.add_argument("--review-run-dir", type=Path)
     review.add_argument("--replay", action="store_true")
+    historical = sub.add_parser("intake-historical-review")
+    historical.add_argument("--run-dir", required=True, type=Path)
+    historical.add_argument("--receipt", required=True, type=Path)
+    historical.add_argument("--verdict", required=True)
     event_parser = sub.add_parser("intake-event")
     event_parser.add_argument("--event", required=True, type=Path)
     resolve = sub.add_parser("resolve-reconciliation")
     resolve.add_argument("--what-changed", required=True)
-    resolve.add_argument("--evidence", required=True)
-    resolve.add_argument("--owner", default="SOROK HQ")
-    resolve.add_argument("--reason", default="explicit operator reconciliation")
+    resolve.add_argument("--fresh-observation-digest")
+    resolve.add_argument("--operator-authorization-id")
+    resolve.add_argument("--source-hold-authorization-id")
+    resolve.add_argument("--reason", default="explicit authenticated reconciliation")
     args = parser.parse_args(argv)
     try:
         config = load_config(args.config)
@@ -1458,15 +2365,53 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "status":
             whole, md, state = read_pair(config)
-            print(json.dumps(render_readout(state), indent=2, sort_keys=True))
-            return 2 if state.get("reconciliation_required") else 0
+            items, live = reconciliation_items(config, state)
+            readout = render_readout(state)
+            readout["reconciliation_required"] = items
+            readout["status_source_check"] = (
+                "LIVE_GITHUB_FETCH_PERFORMED" if live else
+                "LIVE_GITHUB_UNAVAILABLE_KEEP_HOLD")
+            if live:
+                readout["authenticated_github_live"] = {
+                    "source_trust": live.get("source_trust"),
+                    "source_identity": live.get("source_identity"),
+                    "fetched_at_utc": live.get("fetched_at_utc"),
+                    "expires_at_utc": live.get("expires_at_utc"),
+                    "status_coverage": live.get("status_coverage"),
+                    "evidence_digest": live.get("evidence_digest"),
+                    "refs_digest": live.get("refs_digest"),
+                    "fresh": True,
+                }
+            print(json.dumps(readout, indent=2, sort_keys=True))
+            return 2 if items else 0
         if args.command == "what-next":
             whole, md, state = read_pair(config)
-            print(json.dumps(render_readout(state)["recommended_next"], indent=2,
+            items, live = reconciliation_items(config, state)
+            readout = render_readout(state)
+            readout["reconciliation_required"] = items
+            print(json.dumps(readout["recommended_next"], indent=2,
                              sort_keys=True))
-            return 2 if state.get("reconciliation_required") else 0
+            print(json.dumps({"reconciliation_required": items}, indent=2,
+                             sort_keys=True))
+            return 2 if items else 0
         if args.command == "recover":
             print(json.dumps(recover(config), indent=2))
+            return 0
+        if args.command == "migrate":
+            with _lock(config, True):
+                whole = read_json(config["_pair_json"])
+                md = config["_pair_md"].read_text(encoding="utf-8")
+                state = whole.get(RUNTIME_KEY)
+                if not isinstance(state, dict):
+                    raise CurrentnessError("RUNTIME_NOT_INITIALIZED")
+                state = copy.deepcopy(state)
+                state["generation"] += 1
+                state["updated_utc"] = now_utc()
+                migrate_state(config, state)
+                commit_state(config, whole, md, state)
+            print(json.dumps({"state": "MIGRATED",
+                              "generation": state["generation"],
+                              "checkpoint_id": state["checkpoint_id"]}, indent=2))
             return 0
         if args.command == "reconcile":
             with _lock(config, True):
@@ -1495,21 +2440,79 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
             return 0
         if args.command == "intake-review":
-            receipt = _load_review_receipt(args.receipt)
-            event = {
+            if args.replay:
+                if not args.receipt:
+                    raise CurrentnessError("REPLAY_RECEIPT_REQUIRED")
+                receipt = _load_review_receipt(args.receipt)
+                event = {
+                    "schema": EVENT_SCHEMA,
+                    "event_id": "review:" + digest(receipt),
+                    "kind": "REVIEW_VERDICT",
+                    "recorded_utc": now_utc(),
+                    "source": {
+                        "trust": "IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY",
+                        "receipt_path": str(args.receipt),
+                        "receipt_sha256": sha256_file(args.receipt),
+                    },
+                    "receipt": receipt,
+                    "payload": {"task_id": receipt.get("task_id"),
+                                "verdict": receipt.get("verdict")},
+                }
+                print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
+                return 0
+            if not args.review_run_dir:
+                raise CurrentnessError("REVIEW_SUPERVISED_RUN_REQUIRED")
+            run_dir = args.review_run_dir.resolve()
+            event = _make_return_event(config, run_dir)
+            artifact_path = Path(event["source"]["return_path"])
+            artifact = read_json(artifact_path)
+            if not isinstance(artifact, dict) or artifact.get("schema") != REVIEW_RECEIPT_SCHEMA:
+                raise CurrentnessError("REVIEW_RUN_ARTIFACT_SCHEMA")
+            if args.receipt and digest(_load_review_receipt(args.receipt)) != digest(artifact):
+                raise CurrentnessError("REVIEW_RECEIPT_DOES_NOT_MATCH_RUN_ARTIFACT")
+            source = dict(event["source"])
+            source["trust"] = "REAL_LOCAL_SUPERVISED_REVIEW_RUN"
+            source["review_run_dir"] = str(run_dir)
+            review_event = {
                 "schema": EVENT_SCHEMA,
-                "event_id": "review:" + digest(receipt),
+                "event_id": "review-run:" + source["completion_sha256"],
                 "kind": "REVIEW_VERDICT",
                 "recorded_utc": now_utc(),
-                "source": {
-                    "trust": ("IMMUTABLE_HISTORICAL_INDEPENDENT_REVIEW_REPLAY"
-                              if args.replay else "REAL_LOCAL_NONAUTHOR_REVIEW"),
-                    "receipt_path": str(args.receipt),
-                    "receipt_sha256": sha256_file(args.receipt),
-                },
-                "receipt": receipt,
-                "payload": {"task_id": receipt.get("task_id"),
-                            "verdict": receipt.get("verdict")},
+                "source": source,
+                "receipt": artifact,
+                "payload": {"task_id": artifact.get("task_id"),
+                            "verdict": artifact.get("verdict")},
+            }
+            print(json.dumps(intake_event(config, review_event), indent=2,
+                             sort_keys=True))
+            return 0
+        if args.command == "intake-historical-review":
+            receipt = _load_review_receipt(args.receipt)
+            run_dir = args.run_dir.resolve()
+            source = {
+                "trust": "POSTHOC_REGISTERED_REAL_REVIEWER_RUN",
+                "controller_run_dir": str(run_dir),
+                "job_id": read_json(run_dir / "job.json")["job_id"],
+                "session": read_json(run_dir / "job.json")["session"],
+                "pid": read_json(run_dir / "process.json")["pid"],
+                "worktree": read_json(run_dir / "binding.json")["worktree"],
+                "recipient_thread": read_json(run_dir / "binding.json").get(
+                    "recipient_thread"),
+                "job_sha256": sha256_file(run_dir / "job.json"),
+                "binding_sha256": sha256_file(run_dir / "binding.json"),
+                "launch_sha256": sha256_file(run_dir / "launch.json"),
+                "process_sha256": sha256_file(run_dir / "process.json"),
+                "completion_sha256": sha256_file(run_dir / "completion.json"),
+            }
+            event = {
+                "schema": EVENT_SCHEMA,
+                "event_id": "historical-review:" + source["completion_sha256"],
+                "kind": "HISTORICAL_REVIEW",
+                "recorded_utc": now_utc(),
+                "source": source,
+                "payload": {"receipt": receipt, "verdict": args.verdict,
+                            "posthoc_registration": True,
+                            "automatic_intake": False},
             }
             print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
             return 0
@@ -1518,16 +2521,26 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
             return 0
         if args.command == "resolve-reconciliation":
+            if not (args.fresh_observation_digest
+                    or args.operator_authorization_id
+                    or args.source_hold_authorization_id):
+                raise CurrentnessError("RESOLUTION_AUTHENTICATION_REQUIRED")
+            payload = {"what_changed": args.what_changed,
+                       "reason": args.reason}
+            if args.fresh_observation_digest:
+                payload["fresh_observation_digest"] = args.fresh_observation_digest
+            if args.operator_authorization_id:
+                payload["operator_authorization_id"] = args.operator_authorization_id
+            if args.source_hold_authorization_id:
+                payload["source_hold_authorization_id"] = (
+                    args.source_hold_authorization_id)
             event = {
                 "schema": EVENT_SCHEMA,
-                "event_id": "resolve:" + digest({
-                    "what": args.what_changed, "evidence": args.evidence}),
+                "event_id": "resolve:" + digest(payload),
                 "kind": "RECONCILIATION_RESOLVED",
                 "recorded_utc": now_utc(),
-                "source": {"trust": "EXPLICIT_LOCAL_OPERATOR_RESOLUTION"},
-                "payload": {"what_changed": args.what_changed,
-                            "evidence": args.evidence, "owner": args.owner,
-                            "reason": args.reason},
+                "source": {"trust": "AUTHENTICATED_RESOLUTION_EVIDENCE"},
+                "payload": payload,
             }
             print(json.dumps(intake_event(config, event), indent=2, sort_keys=True))
             return 0

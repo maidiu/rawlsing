@@ -22,7 +22,7 @@ Operational readout (same reconciled pair):
   status
 ```
 
-`startup` returns typed `RECONCILIATION_REQUIRED` for new/unseen local receipts or unavailable/stale authenticated GitHub intake; it never upgrades a zero exit to acceptance. The runtime's controller hook is SOROK-only and absent from bindings without a `sorok_currentness` object. No native science, actor/human authority, protected merge or automatic job dispatch follows.
+`startup` returns typed `RECONCILIATION_REQUIRED` for new/unseen local receipts or unavailable/stale authenticated GitHub intake; it never upgrades a zero exit to acceptance. R2 adds authenticated live GitHub ref/SHA fetch through the existing git credential helper and API status/updated reads where the connector scope permits, with explicit `GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE` holds when it does not; it also reevaluates the original 21 G/M/T decision nodes without sourcefree/native/full-task inflation. See the dated atlas at `67698cfd32f838b7a5fdc381b0168d9225f5352f:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md` (candidate documentary evidence, not protected law). OATH R2 at `1341c81d…`/PR #1098 remains draft, not protected operating law. The runtime's controller hook is SOROK-only and absent from bindings without a `sorok_currentness` object. No native science, actor/human authority, protected merge or automatic job dispatch follows.
 
 
 

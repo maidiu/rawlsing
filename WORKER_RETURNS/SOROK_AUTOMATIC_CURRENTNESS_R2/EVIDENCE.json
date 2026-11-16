@@ -1,0 +1,176 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R2_EVIDENCE@1",
+  "commission": "SOROK automatic PROGRAMMA currentness R2 correction",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "job": "sorok-programma-automatic-currentness-repair-20261115-r2",
+  "active_pid": 69246,
+  "base_rejected_source": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5",
+  "source_commit": "WORKER_RETURN.json implementation_commit (commit containing corrected runtime/test/pair/docs)",
+  "branch": "codex/sorok-automatic-currentness-repair-20261115-r2",
+  "independent_red": {
+    "reviewer": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "commit": "fc49662603c3dd8148c847cd6f35f2172184fd5a",
+    "pr": 1102,
+    "verdict": "REVISE_EXACT_DEFECT",
+    "reviewer_files": "reviewer_original/",
+    "old_probe_raw": "reviewer_original/probes/currentness_gap_probe.py",
+    "old_probe_report": "reviewer_original/evidence/gap_probe_report.json",
+    "old_probe_reproduced_pre_edit": "evidence/red_gap_probe_report.json",
+    "old_probe_rerun_post_edit": "evidence/post_correction_old_gap_probe_report_final.json",
+    "old_probe_verdict_is_hardcoded_history_not_green_claim": true
+  },
+  "verdicts": {
+    "engineering": "AUTHOR_CANDIDATE_FOR_FOCUSED_INDEPENDENT_RERECEIVING",
+    "scientific": "HELD",
+    "authority": "HOLD_SOURCE_AUTHORITY",
+    "basis": "live refs/SHA and PR status fetched; issue/comment status connector scope unavailable; actual corrected-source review pending"
+  },
+  "five_corrections": {
+    "live_github": {
+      "state": "IMPLEMENTED_AND_ACTUALLY_EXERCISED",
+      "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+      "source_identity": "https://github.com/maidiu/rawlsing.git + maidiu/rawlsing",
+      "transport": "git_ls_remote+github_api_credential_helper",
+      "fetched_at_utc": "2026-11-16T05:15:16.768923+00:00",
+      "expires_at_utc": "2026-11-16T05:30:16.769066+00:00",
+      "evidence_digest": "b022f8aefe5b6465f38b7f74a15b1f83a2aafdc5b92cc18f3ed2e73643102ded",
+      "refs_fetched": 16,
+      "repo_api_http": 200,
+      "pull_api_http": {"1062": 200, "1066": 200, "1089": 200, "1091": 200, "1095": 200},
+      "issue_api_http": {"939": 403, "1008": 403, "1010": 403},
+      "status_coverage": "REF_SHA_ONLY",
+      "detected_real_advance": "GITHUB_PR_STATUS_ADVANCED pr:1095",
+      "local_baseline_not_used_as_fresh_stamp": true,
+      "tampered_or_advanced_local_baseline_detected": true,
+      "unavailable_live_source_typed": "LIVE_GITHUB_REF_FETCH_UNAVAILABLE",
+      "exact_gap": "issue/comment read scope unavailable through existing credential helper (HTTP 403); no hosted-CI or protected-adoption claim"
+    },
+    "mechanism_review_intake": {
+      "state": "MECHANISM_ID_HANDLED_BEFORE_TASK_LOOKUP",
+      "non_replay_requirement": "real supervised controller REVIEWER run, role/task/session/source/return artifact/verdict artifact binding",
+      "caller_only_receipt": "REFUSED REVIEW_SUPERVISED_RUN_REQUIRED",
+      "old_ac09_verdict": "REVISE_EXACT_DEFECT (recorded separately as posthoc real controller-run history)",
+      "corrected_source_review": "PENDING_REAL_SUPERVISED_REVIEWER_RUN"
+    },
+    "review_authenticity": {
+      "state": "SUPERVISED_RUN_REQUIRED",
+      "arbitrary_distinct_sessions_and_trust_flag": "REFUSED",
+      "source_only_receipt_without_verdict_artifact": "REFUSED",
+      "verdict_artifact": "REQUIRED (VERDICT.json git blob/content matches receipt verdict)",
+      "no_new_pki": true
+    },
+    "control_auth": {
+      "state": "OPERATOR_SOURCE_AUTHORIZATION_REQUIRED",
+      "arbitrary_stop": "REFUSED OPERATOR_AUTHORIZATION_UNAVAILABLE",
+      "arbitrary_resume": "REFUSED",
+      "authorized_stop_resume": "TYPED SCOPE/EVIDENCE/SUPERSESSION CHECK",
+      "controller_role_mints_source_or_science": false,
+      "issue_939_stop_preserved": true
+    },
+    "resolution_auth": {
+      "state": "FRESH_OBSERVATION_OR_COMPETENT_AUTHORIZATION_REQUIRED",
+      "arbitrary_evidence_text": "REFUSED",
+      "fresh_observation_digest": "REQUIRED AND MATCHED",
+      "legacy_arbitrary_resolution": "REOPENED AS LEGACY_UNVERIFIED_RESOLUTION",
+      "resolution_does_not_map_to_ready": true
+    }
+  },
+  "real_worker_transition": {
+    "current_job": "sorok-programma-automatic-currentness-repair-20261115-r2",
+    "current_pid": 69246,
+    "prebound_role": "IMPLEMENTER",
+    "prebound_task_id": "AUTOMATIC_CURRENTNESS_R1",
+    "return_path": "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R2/WORKER_RETURN.json",
+    "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-repair-20261115-r2",
+    "worker_return_artifact_committed": true,
+    "hook_will_record_after_process_exit": "mechanism_worker_return.execution_state=RETURNED_REVIEW_PENDING",
+    "zero_exit_is_not_acceptance": true,
+    "old_r1_author_completion": "evidence/old_controller_runs/sorok-programma-automatic-currentness-implementation-20261115-r1/",
+    "old_r1_reviewer_completion": "evidence/old_controller_runs/sorok-programma-automatic-currentness-independent-20261115-r1/",
+    "old_ac09_review_registration": {
+      "posthoc": true,
+      "automatic_intake": false,
+      "controller_run": "old reviewer completion",
+      "review_commit": "4de807fa3f27c3aab5d443083b6cb020c80fda31",
+      "final_receipt_commit": "fc49662603c3dd8148c847cd6f35f2172184fd5a",
+      "verdict": "REVISE_EXACT_DEFECT",
+      "implementation_commit": "ac09ac7f26fa2db8950f563e8f1decb0c32f5af5"
+    }
+  },
+  "dependency_reevaluation": {
+    "tasks": 27,
+    "decision_nodes": 21,
+    "sourcefree_vs_full_original": "SEPARATE",
+    "candidate_vs_protected": "SEPARATE",
+    "task_graph_preserved": true,
+    "decision_graph_loaded": true,
+    "example_B05": {
+      "sourcefree": "SCOPED_RECEIVED_UNMERGED / PENDING_PROTECTED_CI_AND_ADOPTION",
+      "full_original_claim": "NOT_ESTABLISHED",
+      "full_claim_blockers": ["A02", "A03", "A08"]
+    },
+    "unknown_semantic_gate_inputs": "EXPLICIT_HOLD_NOT_SCOPED_READY"
+  },
+  "current_runtime_state": {
+    "generation": 48,
+    "checkpoint_id": "20b7a8e387fca91486f1ec39e0d99b55c3ab72d816497ebff329e644a7b54be7",
+    "reconciliation_required": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "old_pair_no_unresolved_checkpoint_rejected": true,
+    "hq_currentness_hold_visible": true
+  },
+  "local_checks": {
+    "runtime_tests": {"command": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -p no:cacheprovider -q SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py", "result": "17 passed", "elapsed_seconds": 13.08},
+    "r2_correctness_probe": {"result": "PASS", "checks": 8, "raw": "evidence/checks/final_r2_probe2.out"},
+    "old_gap_probe_raw": {"result": "raw unchanged negative oracle", "fake_task_review_exit": 1, "mechanism_review_error": "REVIEW_SUPERVISED_RUN_REQUIRED", "arbitrary_stop_count": 0, "arbitrary_resolve_still_held": true, "raw": "evidence/checks/final_old_gap_probe.out"},
+    "frozen_1095": {"self_test_status": 0, "plain": 0, "no_git_status": 0},
+    "canonical_workflow_local_equivalents": {
+      "py_compile_verify_copy_paste_commission": 0,
+      "verify_copy_paste_commission_self_test": 0,
+      "verify_canonical_programma": 0,
+      "verify_pyat_product_priority_visibility_plain": 0,
+      "verify_pyat_product_priority_visibility_self_test": 0,
+      "changed_worker_commissions": 0,
+      "mcr_source_check_selector": "NOT_APPLICABLE_NO_CHANGED_LAUNCH_FILES"
+    }
+  },
+  "preserved": {
+    "frozen_1095_verifier_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+    "frozen_1095_workflow_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+    "frozen_task_source_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "frozen_gmt_source_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+    "protected_foundations": ["P3#746", "P4#751", "P5#775", "P6#779", "MI#907", "MII#905", "MIII#891"],
+    "b05_1089": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+    "c04_1062": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+    "c05_1091": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+    "cg_a_1066": "RECEIVED_SCOPED_UNMERGED",
+    "g03_i0": "ACCEPTED_SCOPED_UNMERGED / FULL_G03_HELD",
+    "browser": {"1008": "COMPLETED_BOUNDED_TERMINAL", "1010": "COMPLETED_BOUNDED_TERMINAL", "1012": "NOT_LAUNCHED_WAITING_J1"},
+    "issue_939": "STOP_NEVER_DISPATCH",
+    "required_ci": "PENDING_PROTECTED_CI_AND_ADOPTION / UNAVAILABLE_BILLING",
+    "native_science_actor_human": "HELD",
+    "four_1095_minor_notes": [
+      "prepended frozen JSON key preserved; runtime key appended last",
+      "six changed files include frozen task/GMT sources; exact blobs preserved",
+      "last_reported_oldmac_five_receipts label resolves to WORKER_RETURNS/SOROK_HQ_CLASSIFIED_QUEUE_20261115_R1/01_TWO_JOB_RECEIVING.md at 74f3fbbace77c6700381a5b95edcc8f1524d0670",
+      "#1008/#1010 strings unpinned; lower historic MI #791 copy historical"
+    ]
+  },
+  "source_refs": {
+    "oath_r2": {"commit": "1341c81dfe0e99da030e7dca356f55789a10c6f8", "status": "DRAFT_PR1098_NOT_PROTECTED_LAW"},
+    "operational_gmt_atlas": {"commit": "67698cfd32f838b7a5fdc381b0168d9225f5352f", "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_OPERATIONAL_GMT_WORK_DEPENDENCY_AND_RECEIVING_20261115_R1.md", "status": "CANDIDATE_DOCUMENTARY_NOT_PROTECTED_LAW"}
+  },
+  "limitations": [
+    "Issue/comment live status remains unavailable due to connector read scope; typed source-authority hold, not READY.",
+    "PR #1095 shows a real live status/updated advance requiring reconciliation.",
+    "Actual corrected-source independent review run is pending; author cannot self-review.",
+    "Hosted CI is unavailable due to account billing; no PASS or protected adoption claimed.",
+    "Sourcefree operational evidence only; native science/actor/human authority remains HELD."
+  ],
+  "terminal": "FROZEN_CORRECTED_CANDIDATE_FOR_FOCUSED_SAME_NONAUTHOR_RERECEIVING",
+  "stop": "No automatic R3, no extra product workers, no fleet/Browser/PYAT/SEAM operation, no protected merge."
+}
