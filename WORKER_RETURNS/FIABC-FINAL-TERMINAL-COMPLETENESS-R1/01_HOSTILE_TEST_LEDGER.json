@@ -1,0 +1,90 @@
+{
+  "schema": "RAWLSING_FIABC_FINAL_TERMINAL_COMPLETENESS_HOSTILE_LEDGER@1.0.0",
+  "worker": "FIABC FINAL TERMINAL COMPLETENESS GATE — R1",
+  "execution_status": "AUTHORED__NOT_EXECUTED_BY_WORKER__BROWSER_GITHUB_ONLY",
+  "no_real_source_execution": true,
+  "no_candidate_execution": true,
+  "no_measured_p2x": true,
+  "test_blob": "fc0e4b8056f5ac7cc3941d24d033af026f318327",
+  "cases": [
+    [
+      "one missing required metric",
+      "test_one_missing_required_metric_blocks",
+      "BLOCK",
+      "TC_REQUIRED_METRIC_ABSENT"
+    ],
+    [
+      "MEASUREMENT_NOT_CAPTURED required metric",
+      "test_measurement_not_captured_required_metric_blocks",
+      "BLOCK",
+      "TC_REQUIRED_METRIC_NOT_MEASURED"
+    ],
+    [
+      "legitimate N/A",
+      "test_legitimate_candidate_a_delete_rebuild_na_passes",
+      "PASS",
+      "NOT_APPLICABLE_BY_FROZEN_COURT"
+    ],
+    [
+      "invalid N/A on reachable metric",
+      "test_wrong_na_on_reachable_metric_blocks",
+      "BLOCK",
+      "TC_REQUIRED_METRIC_NOT_MEASURED"
+    ],
+    [
+      "authorized stop only downstream",
+      "test_authorized_stop_allows_only_downstream_stop_state",
+      "PASS_THEN_HOSTILE_BLOCK",
+      "NOT_REACHED_AUTHORIZED_STOP only after exact executable stop"
+    ],
+    [
+      "metric-definition hash drift",
+      "test_wrong_metric_definition_hash_blocks",
+      "BLOCK",
+      "TC_METRIC_DEFINITION_HASH_DRIFT"
+    ],
+    [
+      "missing CPU/RSS/wall process seal",
+      "test_missing_process_seal_blocks",
+      "BLOCK",
+      "TC_PROCESS_SEAL_INCOMPLETE"
+    ],
+    [
+      "incomplete I/O seal",
+      "test_incomplete_io_seal_blocks",
+      "BLOCK",
+      "TC_IO_SEAL_INCOMPLETE"
+    ],
+    [
+      "incomplete scratch seal",
+      "test_incomplete_scratch_seal_blocks",
+      "BLOCK",
+      "TC_SCRATCH_SEAL_INCOMPLETE"
+    ],
+    [
+      "Candidate B no-cache N/A",
+      "test_candidate_b_no_cache_skips_remain_lawful",
+      "PASS",
+      "PURE_B_NO_CACHE exact stop law"
+    ],
+    [
+      "WVS/C zero accelerator N/A",
+      "test_wvs_c_zero_accelerator_skip_creates_no_fake_cache_obligation",
+      "PASS",
+      "C_ZERO_ACCELERATOR_NO_CACHE exact stop law"
+    ],
+    [
+      "preserved work no numeric repetition",
+      "test_exact_preserved_no_numeric_disposition_allows_typed_missing",
+      "PASS",
+      "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY"
+    ],
+    [
+      "selection neutrality",
+      "test_completeness_receipt_cannot_rank_or_select",
+      "PASS",
+      "no rank/winner/score/selection"
+    ]
+  ],
+  "interpretation": "Expected outcomes are encoded as deterministic unit tests over synthetic receipts only. This worker did not invoke GitHub Actions or any runtime because the commission restricts the lane to browser/GitHub work and forbids real source/candidate execution."
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261007-PYAT-HQ230-N6-EVIDENCE-N10E-AUTHORITY-F7-R1",
+  "decision": "HQD-2026-10-07-230",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "lanes": [
+    {
+      "id": "N6_EXECUTION_PROVENANCE",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1",
+      "commission_tip": "f7d162bee8d6fa8b06bb5bd393f42ebbb39fd639",
+      "model_intelligence": "LongCat 2.5 Preview Free — High"
+    },
+    {
+      "id": "N10E_C1_MODEL_AUTHORITY_HQ_ADJUDICATION",
+      "status": "NEW__NEEDS_LAUNCH",
+      "branch": "agent/rabochii-pyat-hq230-n10e-c1-model-authority-hq-adjudication-r1",
+      "commission_tip": "d773d321f7c2cc55858408401684a8b5110d9c1a",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "F7_FINAL_REREVIEW",
+      "status": "EXISTING__ACTIVE__NOT_YET_RETURNED",
+      "branch": "agent/reviewer-pyat-hq228-f7-full-owner-path-final-rereview-r1",
+      "remote_head": "b4698896ae345af2984164cef775bb2bb25e875c",
+      "model_intelligence": "GPT-5.6 Sol High"
+    }
+  ],
+  "next_action": "RUN_THREE_LANES_IN_PARALLEL__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

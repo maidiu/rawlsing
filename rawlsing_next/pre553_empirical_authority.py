@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping
+from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
@@ -24,6 +24,7 @@ from rawlsing_next.pre553_empirical_objects import (
 
 AUTHORITY_KINDS = frozenset({
     "SOURCE_SEMANTICS_TOPOLOGY",
+    "PHYSICAL_NATIVE_REPRESENTATION_BINDING",
     "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
     "ROUTING_RISK_SET",
     "COORDINATE_SEMANTICS",
@@ -65,6 +66,8 @@ AUTHORITY_KIND_CEILINGS: Mapping[str, tuple[str, ...]] = MappingProxyType({
     "SOURCE_SEMANTICS_TOPOLOGY": (
         "native question/component meaning", "response values/special states",
         "response topology/multiplicity/order/rank"),
+    "PHYSICAL_NATIVE_REPRESENTATION_BINDING": (
+        "exact source-scoped decoder representation binding; no semantic coercion",),
     "NATIVE_CANONICAL_MAPPING_HARMONIZATION": (
         "native-to-canonical identifier/value transformation",),
     "ROUTING_RISK_SET": ("applicability", "routing", "risk-set semantics"),
@@ -144,7 +147,13 @@ def _scope_contains(scope_value: Any, required: Any) -> bool:
         return _material_key(scope_value) == _material_key(required)
     if isinstance(scope_value, Mapping):
         return _material_key(scope_value) == _material_key(required)
-    if isinstance(scope_value, (list, tuple, set, frozenset)):
+    if (
+        isinstance(scope_value, (set, frozenset))
+        or (
+            isinstance(scope_value, Sequence)
+            and not isinstance(scope_value, (str, bytes, bytearray))
+        )
+    ):
         needle = _material_key(required)
         return needle in {_material_key(item) for item in scope_value}
     return _material_key(scope_value) == _material_key(required)
@@ -226,7 +235,17 @@ class AuthorityRegistry:
         exact = require_exact_authority_ref(ref)
         snapshot = self._by_key.get(exact.key)
         if snapshot is None:
-            raise Pre553AuthorityError("exact historical authority unavailable; no fallback permitted")
+            try:
+                from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+                runtime = current_runtime_authorities()
+            except ImportError:
+                runtime = None
+            if runtime is not None:
+                snapshot = runtime.resolve_exact_runtime_authority(exact)
+            if snapshot is None:
+                raise Pre553AuthorityError(
+                    "exact historical authority unavailable; no fallback permitted"
+                )
         return AuthorityResolution(exact, snapshot)
 
     def require(

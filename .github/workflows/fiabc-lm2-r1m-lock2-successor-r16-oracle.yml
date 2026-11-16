@@ -1,0 +1,99 @@
+name: FIABC LM2 R1M Lock2 Successor R16 Oracle
+
+on:
+  push:
+    branches:
+      - agent/rabochii-premain-fiabc-lm2-r1m-lock2-successor-r16-oracle-r1
+    paths:
+      - ".github/workflows/fiabc-lm2-r1m-lock2-successor-r16-oracle.yml"
+      - ".rabochii/r1m_lock2_successor_r16_oracle.py"
+      - "rawlsing_next/fiabc_lm2_r1l_validation_authority_successor.py"
+  workflow_dispatch:
+
+jobs:
+  successor-r16-oracle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact sibling court branches
+        run: |
+          git fetch --no-tags origin \
+            agent/rabochii-premain-fiabc-lm2-r1l-a-validation-authority-provenance-r1 \
+            agent/rabochii-premain-fiabc-lm2-r1l-b-lock2-succession-court-r1 \
+            agent/rabochii-premain-fiabc-lm2-r1l-c-validation-repair-prep-r1
+          git cat-file -e 6eb66f354b6d29808be7f959acbe5fb6215fda26^{commit}
+          git cat-file -e 3e14440ed2c4d0359f458356c8b7a046fc03d1eb^{commit}
+          git cat-file -e ad06f9b1f5e8ae543cf53e99fad77620e6264007^{commit}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install source-free court dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas
+
+      - name: Requalify unchanged generic PRE553 and R1J boundaries
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q \
+            rawlsing_next/tests/test_pre553_discovery_exact.py \
+            rawlsing_next/tests/test_pre553_empirical_objects_authority.py \
+            rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py
+
+      - name: Execute R1M fan-in successor Lock2 R16 oracle court
+        env:
+          PYTHONPATH: .
+        run: python .rabochii/r1m_lock2_successor_r16_oracle.py
+
+      - name: Validate governed return packet
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          root = Path("WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE")
+          required = [
+              "00_RETURN.md",
+              "01_R1L_FANIN_ADJUDICATION.json",
+              "02_SUCCESSOR_DISCOVERY_AUTHORITY.json",
+              "03_46_CANDIDATE_REPLAY_CONSERVATION.json",
+              "04_SUCCESSOR_LOCK2.json",
+              "05_LOCK2_SUPERSESSION_RECEIPT.json",
+              "06_R16_EXECUTION_RECEIPT.json",
+              "07_FRESH_WVS_ORACLE.json",
+              "08_ORACLE_INDEPENDENCE_PROOF.json",
+              "09_R01_R18_FINAL_LEDGER.csv",
+              "10_COMMAND_TELEMETRY.json",
+              "RETURN.json",
+          ]
+          for name in required:
+              path = root / name
+              assert path.is_file(), name
+              if name.endswith(".json"):
+                  json.loads(path.read_text(encoding="utf-8"))
+          with (root / "09_R01_R18_FINAL_LEDGER.csv").open(encoding="utf-8") as handle:
+              rows = list(csv.DictReader(handle))
+          assert len(rows) == 18
+          assert all(row["final_disposition"].startswith("PASS") for row in rows)
+          ret = json.loads((root / "RETURN.json").read_text(encoding="utf-8"))
+          assert ret["status"] == "PASS"
+          assert ret["candidate_processes_started"] == 0
+          assert ret["candidate_outputs_seen"] == 0
+          PY
+
+      - name: Commit sealed R1M return packet
+        run: |
+          git config user.name "Rawlsing R1M Court"
+          git config user.email "actions@users.noreply.github.com"
+          git add WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE
+          git diff --cached --quiet && { echo "No R1M return files to commit"; exit 1; }
+          git commit -m "FIABC LM2 R1M seal successor Lock2 and R16 oracle"
+          git push origin HEAD:agent/rabochii-premain-fiabc-lm2-r1m-lock2-successor-r16-oracle-r1

@@ -1,0 +1,43 @@
+{
+  "byte_count": 185163494,
+  "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav",
+  "reader_configuration": {
+    "apply_value_formats": false,
+    "compatibility_mode": null,
+    "country_read": {
+      "usecols": [
+        "B_COUNTRY"
+      ]
+    },
+    "metadata_read": {
+      "metadataonly": true
+    },
+    "reader": "pyreadstat",
+    "reader_version": "1.3.6",
+    "user_missing": true
+  },
+  "receipt_identity": "fdde69f54bf788228b602b241b41fb738f04987ca80a37281e2288b0d4f59bf2",
+  "schema": "FIABC_LM2_WVS7_CANONICAL_SOURCE_RECEIPT@1.0.0",
+  "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "shape": {
+    "physical_cells": 59595860,
+    "rows": 97220,
+    "variables": 613
+  },
+  "source_authority": {
+    "canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "class": "ACCEPTED_WVS7_HB01_R6S_EXACT_SOURCE",
+    "hb01_closure_blob": "fd7c0b364a59d78454a510abacd4a5d0b6d4ce55",
+    "hb01_hq_adoption_commit": "3468673673db2f3de804d6e825585f86ff98e870",
+    "r6s_materializer_contract": "EE_P2R6S_WVS7_FROZEN_P2_PROJECTION_MATERIALIZER@1.0.0"
+  },
+  "source_id": "WVS7",
+  "status": "PASS",
+  "verification": {
+    "fail_closed_on_mismatch": true,
+    "matched_canonical_byte_count": true,
+    "matched_canonical_sha256": true,
+    "matched_canonical_shape": true,
+    "operation": "READ_RAW_BYTES_SHA256_THEN_METADATA_ONLY_SAV_READ"
+  }
+}

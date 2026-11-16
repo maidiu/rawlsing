@@ -1,0 +1,143 @@
+{
+  "schema": "PYAT_HQ211_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ211-V556-UNBOUNDED-GATE-REPAIR-R1",
+  "worker_role": "bounded_implementation_repair_worker",
+  "commission_tip": "694b220cfbb14353c59eeec503f0ae0d9cab97bc",
+  "exact_repair_base": "3a2dcafe024b2556af1df909deb5452841e45b7c",
+  "hostile_review": "agent/reviewer-pyat-hq210-v556-final-r1 @ 46bf1ac246f51d7499bccf56e41add78779e00ad",
+
+  "disposition": "V556_BOUNDED_REPAIR_COMPLETE__READY_FOR_FINAL_HOSTILE_REREVIEW",
+  "v556_adopted": false,
+
+  "disposition_allowed_values_considered": {
+    "V556_BOUNDED_REPAIR_COMPLETE__READY_FOR_FINAL_HOSTILE_REREVIEW": "SELECTED. All three blocking findings and both required-before-adoption findings are closed at the machinery level, every escape route is reproduced-then-closed, the positive core survives through a byte-identical seam, and the regression slice shows 15 failing IDs reduced to 0 with no new failure introduced.",
+    "V556_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT": "NOT SELECTED. No named defect remains open. The six residuals recorded below are pre-existing architecture gaps or honest evidence limits, not open repair items in this tranche's scope.",
+    "V556_BOUNDED_REPAIR_REVEALS_AUTHORITY_CONFLICT": "NOT SELECTED. No conflict with adopted authority was found. The seam is byte-identical, no architecture reopen is required, and the ceiling changes are tranche-local authoring policy expressed as named data."
+  },
+
+  "blocking_findings_closed": [
+    {
+      "review_finding": "HF-1",
+      "repair": "Repair 1",
+      "statement": "The UNBOUNDED value path is closed for semantic string and exact-ref kind leaves.",
+      "proof": "P1, P2 and P4 reached SUPPORTED before and are refused after. Two hand-authored-mapping variants confirm the gate cannot be evaded by bypassing the constructors. The gate runs in author_closed_result_schema, author_result_contract_binding and validate_result_contract_binding, therefore also in author_governed_rule and registry build, so it runs before any positive object is assembled."
+    },
+    {
+      "review_finding": "HF-2",
+      "repair": "Repairs 3 and 4",
+      "statement": "Both false receipt claims are now true of the machinery, not narrowed.",
+      "proof": "See repair_3_claim_ledger. The numeric claim and the whole-class semantic claim are now enforced as written, because the role ceiling became a positive allowlist and the value leaves became closed-only."
+    },
+    {
+      "review_finding": "HF-3",
+      "repair": "Repair 2",
+      "statement": "The interaction and attractor valid-empty claim is a machinery ceiling.",
+      "proof": "Both families were authorable and registrable to GOVERNED_RULES_PRESENT before; both are now refused at author_governed_rule AND at registry build, and a hand-built GovernedRule is refused at build."
+    }
+  ],
+
+  "required_before_adoption_findings_closed": [
+    {"review_finding": "HF-4", "repair": "Repair 5", "statement": "The court now carries independent literal witnesses for every attack route HQ210 found missing, and no longer proves itself from production's own vocabulary."},
+    {"review_finding": "HF-5", "repair": "Repair 4", "statement": "The role refusal is now the class the receipt claimed, via a positive per-family allowlist. All ten witnesses refused; zero accepted."}
+  ],
+
+  "low_severity_findings_closed": [
+    {"review_finding": "HF-6", "repair": "Repair 6", "statement": "The illustrative shape label and no-F2 claim remain documentary and are surfaced in the registry snapshot, where they are truthful; the court now asserts they are ABSENT from emitted rule/schema/contract material so no prose can imply otherwise. validate_payload_against_participants is now declared a court/helper utility in its own docstring, and the court asserts the seam never calls it and does not contain its name."},
+    {"review_finding": "HF-7", "repair": "Repair 7", "statement": "binding_ref.object_id is checked at authoring; actor-named schema classes are withdrawn and every class is linked to the family that authorizes it; a hand-built binding is deep-frozen at GovernedRule construction rather than waiting for registry build."}
+  ],
+
+  "repair_3_claim_ledger": {
+    "instruction": "Correct every return artifact claim disproved by P1/P2/P4/P5/P7. Either make the code deliver the strong claim, or narrow the prose to the mechanism actually enforced.",
+    "resolution_here": "The code now makes the strong claims true. No claim needed to be narrowed downward, because closing the routes was possible without inventing ontology.",
+    "claims": [
+      {
+        "claim": "02_VOCABULARY_AUTHORITY_RECEIPT.json -> numeric_ceiling.consequence: no numeric pressure magnitude can be authored through any positive path.",
+        "disproved_by": "P4",
+        "was": "FALSE - the string 0.87 rode an UNBOUNDED semantic leaf into a SUPPORTED object",
+        "now": "TRUE",
+        "enforced_by": "numeric node types refused outright; UNBOUNDED semantic value leaves refused at the constructor and at the validating gate; closed lists enforced by the byte-identical seam at evaluation"
+      },
+      {
+        "claim": "01_REPAIR_MATRIX.json R2 and 00_RETURN.md R2: the whole actor/person-semantic semantic class is blocked, and strong nouns and numeric leaves are refused.",
+        "disproved_by": "P5, P1, P2, P4",
+        "was": "TRUE ONLY FOR CLOSED LEAVES - ten actor-semantic labels were accepted, and an UNBOUNDED leaf delivered blocked strong nouns, arbitrary ref kinds and numeric magnitudes",
+        "now": "TRUE",
+        "enforced_by": "positive per-family participant-role allowlist that is total over its complement; UNBOUNDED removed from semantic value and kind leaves; blocked-noun check now runs on every declared value and kind"
+      }
+    ],
+    "note_on_where_the_corrections_live": "The superseded prose lives in the HQ206 repair lane's own return directory. HQ211 forbids writing outside WORKER_RETURNS/PYAT-HQ211-V556-UNBOUNDED-GATE-REPAIR-R1/, so those artifacts were NOT edited. This ledger is the correction of record and supersedes them."
+  },
+
+  "residual_items_named_not_fixed": [
+    {
+      "id": "R-1",
+      "item": "Full rawlsing_next suite regression is NOT reproducible in this sparse worktree (4 of 157 test files materialized).",
+      "why_not_fixed": "It is a scope limit, not a defect. A structural substitute is supplied: two changed files, zero production importers, byte-identical seam.",
+      "classification": "EVIDENCE_LIMITATION",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-2",
+      "item": "This environment had no pytest; it was installed into an isolated throwaway virtualenv with --break-system-packages.",
+      "why_not_fixed": "Disclosed rather than glossed. The commission forbids claiming a historical governed environment that is absent.",
+      "classification": "ENVIRONMENT_DISCLOSURE",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-3",
+      "item": "validate_payload_against_participants is not wired into any production evaluation path.",
+      "why_not_fixed": "Wiring it in would require a new seam, which HQ211 forbids. It is therefore declared a court/helper utility and its docstring no longer implies enforcement. This is the commission's second permitted option, taken explicitly rather than by leaving an ambiguous claim.",
+      "classification": "TRANCHE_SCOPE_DECISION",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-4",
+      "item": "The participant-role allowlist is tranche-local and currently contains exactly two roles for one family.",
+      "why_not_fixed": "Deliberately not widened. Opening a family requires a new governed rule authority; adding a role name to make the API look generic is exactly what HQ211 Repair 4 forbids.",
+      "classification": "TRANCHE_LOCAL_CEILING",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-5",
+      "item": "Structural cardinality UNBOUNDED remains lawful for array max_items and rule maximum cardinality.",
+      "why_not_fixed": "HQ211 Repair 1 explicitly scopes the prohibition to semantic value and kind leaves. Neither remaining surface can carry a semantic value or kind.",
+      "classification": "COMMISSION_SCOPED_NON_CHANGE",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-6",
+      "item": "Five of the new witnesses also pass against the unrepaired module, so they are preservation and anti-vacuity witnesses rather than proof the repair worked.",
+      "why_not_fixed": "Disclosed so the reviewer does not over-count the witness set. Only the 15 discriminating failure IDs carry that weight.",
+      "classification": "WITNESS_CLASSIFICATION",
+      "blocking_adoption": false
+    }
+  ],
+
+  "hard_holds": {
+    "raw_survey_files": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_implementation": false,
+    "attractor_population": false,
+    "new_v556_ontology": false,
+    "new_seam": false,
+    "architecture_reopen": false,
+    "adopted_m3_m2_seam_edits": false,
+    "self_adoption": false,
+    "merge": false,
+    "outside_return_dir_writes": false
+  },
+
+  "what_this_lane_does_not_establish": "It does not adopt V556. It does not establish that any V556 interaction rule authority or attractor prerequisite authority exists - both remain lawfully absent, and now that absence is enforced by machinery rather than by the accident of the shipped instance. It does not certify a full-suite regression baseline. V556 remains unadopted until a final hostile re-review passes.",
+
+  "reviewer_attention_requested": [
+    "Attack the UNBOUNDED refusal with routes not covered here, in particular any way to reach a positive object that bypasses author_closed_result_schema, author_result_contract_binding, author_governed_rule and V556RuleMaterialRegistry.build simultaneously.",
+    "Attempt to widen the participant-role allowlist or the authorable family set without a governed rule authority.",
+    "Confirm that the illustrative labels are still absent from emitted material and that the seam still never calls the payload-participant helper.",
+    "Reproduce the 92-test baseline at the repair base and the 111-test surface after the repair, independently."
+  ],
+
+  "terminal": "HQ211_V556_BOUNDED_REPAIR_RETURNED__FINAL_HOSTILE_REREVIEW_REQUIRED"
+}

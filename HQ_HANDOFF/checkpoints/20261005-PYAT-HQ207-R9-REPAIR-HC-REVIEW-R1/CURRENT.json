@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ207-R9-REPAIR-HC-REVIEW-R1",
+  "status": "R9_BOUNDED_REPAIR_AUTHORIZED__SERVICE_SOURCE_HOSTILE_REVIEW_ACTIVE__HQ206_PUSHES_PENDING",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head": "cfe648bd462ddf6fc1252182c5e784ec43bf4405",
+  "confirmed": {
+    "r9_review": "7a5cf25ab3fb98fe5311e0a394b4432a498f6546",
+    "hc_impl": "e7d3598494472a9aea7dd2c69f6aacb11585905c"
+  },
+  "active": {
+    "r9_repair": {
+      "branch": "agent/rabochii-pyat-hq207-r9-repair-r1",
+      "commission_tip": "70ca48345d97f26ac1d7061df2138ab3f14c474c"
+    },
+    "hc_review": {
+      "branch": "agent/reviewer-pyat-hq207-hc-r1",
+      "commission_tip": "01cda2106139fc4de2594229526a1b3ff1163bbf"
+    }
+  },
+  "pending_pushes": [
+    "agent/rabochii-pyat-hq206-c1-prune-r1",
+    "agent/rabochii-pyat-hq206-v556-repair-r1",
+    "agent/rabochii-pyat-hq206-f7-contract-r1"
+  ],
+  "next_action": "RUN_HQ207_TWO_NODE_FRONTIER__PUSH_THREE_HQ206_RETURNS"
+}

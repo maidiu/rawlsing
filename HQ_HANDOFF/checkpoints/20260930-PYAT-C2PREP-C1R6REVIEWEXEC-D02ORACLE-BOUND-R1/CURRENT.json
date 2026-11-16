@@ -1,0 +1,79 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260930-PYAT-C2PREP-C1R6REVIEWEXEC-D02ORACLE-BOUND-R1",
+  "status": "C2_02_PREPARATION_ADOPTED__D02_ARCHAEOLOGY_NEGATIVE_ACCEPTED__C1_R6_REVIEW_AND_EXECUTION_BOUND__D02_ORACLE_CONTRACT_BOUND__C3_ADOPTED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "predecessor_checkpoint": "20260930-PYAT-C1R6-C2R-D02ARCH-BOUND-R1",
+  "governing_decisions": [
+    "HQD-2026-09-27-124",
+    "HQD-2026-09-28-125",
+    "HQD-2026-09-29-126",
+    "HQD-2026-09-29-127",
+    "HQD-2026-09-29-128",
+    "HQD-2026-09-29-129",
+    "HQD-2026-09-29-130",
+    "HQD-2026-09-30-131",
+    "HQD-2026-09-30-132",
+    "HQD-2026-09-30-133"
+  ],
+  "c1": {
+    "r6_return_head": "663379caa7c9b8a80bca889d8d5b59d0486ff901",
+    "disposition": "PATCH_READY__EXECUTION_CAPABILITY_BLOCKED",
+    "review_branch": "agent/reviewer-pyat-hq133-c1-01-r6-r1",
+    "review_commission_tip": "609bd6ddc36ec89421f9f9bfcd9cdc7c6df976a3",
+    "execution_branch": "agent/codex-pyat-hq133-c1-01-r6-execution-r1",
+    "execution_commission_tip": "bdf5bc2bea525f71ab8f0af4451918a74e701f04",
+    "adopted": false
+  },
+  "c2": {
+    "review_head": "105e68c4e7b0d991299ef0bf33616b7a6d67349a",
+    "disposition": "APPROVE_AT_DECLARED_GRAIN",
+    "preparation_adopted": true,
+    "selected_sources": [
+      "02",
+      "06",
+      "08",
+      "12",
+      "14",
+      "26",
+      "27",
+      "35"
+    ],
+    "d02_blocker": "C2-02-BLOCK-D02-LOCATOR-001"
+  },
+  "d02": {
+    "archaeology_head": "e8d43c4769371b2d68ea73429fe595732ef6ef60",
+    "archaeology_disposition": "NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND",
+    "oracle_contract_branch": "agent/rabochii-pyat-hq133-d02-traversal-oracle-contract-r1",
+    "oracle_contract_commission_tip": "171b20efeca5125850043daca8c3c55d069ea001",
+    "raw_source_access_authorized": false
+  },
+  "c3": {
+    "source_free_integration_adopted": true,
+    "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6"
+  },
+  "active_frontier": [
+    {
+      "id": "C1-01-R6-REVIEW",
+      "branch": "agent/reviewer-pyat-hq133-c1-01-r6-r1",
+      "commission_tip": "609bd6ddc36ec89421f9f9bfcd9cdc7c6df976a3"
+    },
+    {
+      "id": "C1-01-R6-EXEC",
+      "branch": "agent/codex-pyat-hq133-c1-01-r6-execution-r1",
+      "commission_tip": "bdf5bc2bea525f71ab8f0af4451918a74e701f04"
+    },
+    {
+      "id": "D02-ORACLE-CONTRACT",
+      "branch": "agent/rabochii-pyat-hq133-d02-traversal-oracle-contract-r1",
+      "commission_tip": "171b20efeca5125850043daca8c3c55d069ea001"
+    }
+  ],
+  "next_action": "USER_LAUNCH_C1_R6_REVIEW__C1_R6_CODEX_EXECUTION__D02_ORACLE_CONTRACT__HQ_ADJUDICATES_RETURNS",
+  "raw_source_execution_authorized": false,
+  "c4_execution_authorized": false,
+  "actor_implementation_authorized": false,
+  "astra_escalation_triggered": false
+}

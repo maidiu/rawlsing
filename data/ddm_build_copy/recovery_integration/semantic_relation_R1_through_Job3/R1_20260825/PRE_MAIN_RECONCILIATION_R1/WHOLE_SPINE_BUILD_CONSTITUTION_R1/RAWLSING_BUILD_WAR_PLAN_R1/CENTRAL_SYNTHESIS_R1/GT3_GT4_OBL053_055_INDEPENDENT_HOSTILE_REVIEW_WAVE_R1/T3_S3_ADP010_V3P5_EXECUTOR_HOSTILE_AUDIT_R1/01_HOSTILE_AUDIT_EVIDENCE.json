@@ -1,0 +1,182 @@
+{
+  "schema_id": "GT34_T3_S3_ADP010_V3P5_EXECUTOR_HOSTILE_AUDIT_EVIDENCE@1.0.0",
+  "disposition": "FAIL__GT34_T3_OBL055_S3_ADP010_V3P5_EXECUTOR_AUTHENTICATION_AND_REPLAY_INTEGRITY_GAPS",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-t3-obl055-s3-adp010-executor-hostile-audit-r1",
+  "exact_working_ancestry_start": "d7c5f2270bdc2bdb78c347dd1c9b9c67205dd635",
+  "immutable_instruction_ref": "146eb938a568ae8b8c853b502860c29491956372",
+  "target": {
+    "semantic_candidate_sha": "5bed04b83f0dc61e500da26130892e46ce9c86ff",
+    "evidence_execution_sha": "c70808c993b7e236e5535a03e22fe89cc3759d1e",
+    "module": "rawlsing_next/v3_adp010_oee_executor.py",
+    "module_blob_sha": "cd6e978eea25384482ef2ab75547b8d33bcc4fb7",
+    "target_tests": "rawlsing_next/tests/test_v3_adp010_oee_executor.py",
+    "target_test_blob_sha": "0d29a69e9f88beb72ebfb4ddb85bdb5c40fc74d5",
+    "governed_court_run_id": 34017875248,
+    "governed_court_job_id": 101444831011,
+    "governed_court_head_sha": "c70808c993b7e236e5535a03e22fe89cc3759d1e",
+    "governed_court_conclusion": "success",
+    "target_tests_passed": 22
+  },
+  "accepted_authorities": {
+    "ADP-010": {
+      "authority_id": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE",
+      "authority_version": "1.0.0",
+      "registry_id": "V3_OEE_REALIZATION_RULE_REGISTRY",
+      "registry_version": "1.0.0",
+      "artifact_blob_sha": "0eac41d081b112255dcfc6dd42a6afab15a2928b",
+      "exact_core_rules": [
+        "OEE_CORE_AVAILABLE_BASIS_V1",
+        "OEE_CORE_OPPORTUNITY_FROM_EXPLICIT_BASIS_V1",
+        "OEE_CORE_ENCOUNTER_FROM_EXPLICIT_CONTACT_WITNESS_V1"
+      ],
+      "binding_requirements_used_in_audit": [
+        "exact input authority signatures/use permissions",
+        "phase/applicability/runtime requirements",
+        "causal witnesses",
+        "candidate identity",
+        "provenance/replay",
+        "rule hash",
+        "reconstructible candidate set"
+      ]
+    },
+    "ADP-008": {
+      "authority_id": "V3_DEVELOPMENTAL_PHASE_RULE",
+      "authority_version": "1.1.0",
+      "artifact_blob_sha": "c6564c5c2793e9ed86ec0c5cecbcf84ff6f427d6",
+      "required_phase": "V3DP_DEVELOPMENT_ACTIVE",
+      "phase_state_record": "V3DevelopmentalPhaseState"
+    },
+    "ADP-020": {
+      "authority_id": "ADP-020",
+      "authority_version": "1.0.0",
+      "artifact_blob_sha": "1f13dc7ccc69bda562613d6215acc996a9c092e4",
+      "core_v1_rng": "ZERO_DRAW"
+    }
+  },
+  "independent_hostile_court": {
+    "hostile_test_path": "rawlsing_next/tests/test_gt34_t3_s3_adp010_oee_executor_hostile_audit.py",
+    "hostile_test_candidate_sha": "266faab11a97e087e0a1356964f13d4d0468a0a2",
+    "evidence_execution_sha": "8b339dd2232a316f4c70fc0806867e6460128c05",
+    "governed_court_run_id": 34018914265,
+    "governed_court_job_id": 101447751674,
+    "conclusion": "success",
+    "protocol_self_tests_passed": 20,
+    "combined_court_tests_passed": 30,
+    "target_tests_included": 22,
+    "independent_hostile_probes_included": 8,
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "determinism_mode": "EXACT",
+    "court_spec_sha256": "ab7b71b3a469e66b00ef8015fc94cfc062f867c1da8c410c3ba7f4c291c865be",
+    "artifact_id": 9984817454,
+    "artifact_zip_sha256": "fbc294c2fc2545ec014d7e4d44010baff1a799f560f518c63dd11acf857bf9df",
+    "interpretation": "PASS means hostile reproductions are stable on the banked target; it is evidence for the T3 FAIL disposition, not a PASS for S3."
+  },
+  "findings": [
+    {
+      "id": "T3-F01",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "SUBJECT_INGRESS_NOT_AUTHENTICATED_TO_OWNER_MATERIALIZATION_USE_CHAIN",
+      "proof": "S3 accepts any nonempty subject_ref, arbitrary nonempty owner id/version, any sha256-shaped owner/object hashes, and generic ExactRef values for materialization_receipt and causal_use_permission. The hostile court admitted AVAILABLE with free-form subject_ref and refs labeled COLOCATION/SAME_GEOGRAPHY_TIME.",
+      "authority_conflict": "ADP-010 BASIS_TO_AVAILABLE requires exact basis identity, authority/version/epistemic class, causal-use permission, actor/context/time, and provenance/integrity. R2 requires an already owner-bound exact subject plus exact materialization receipt.",
+      "repair_grain": "Authenticate one exact externally supplied subject ingress contract; verify subject_ref, owner identity/hash, semantic object identity, materialization receipt, causal-use permission and provenance are mutually content-addressed and resolve to the same object. Do not create or classify the subject."
+    },
+    {
+      "id": "T3-F02",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "ADP008_PHASE_STATE_NOT_BOUND_TO_REPLAY_OR_RECORD_IDENTITY",
+      "proof": "Two different exact V3DevelopmentalPhaseState refs for the same actor and declared active base phase produce the same source_candidate_replay_hash, record_id and record_hash. The record body can therefore differ in phase_state_ref under one identity.",
+      "authority_conflict": "ADP-010 requires active phase and replay provenance; ADP-008 replay identity requires exact phase state/registry/rule provenance.",
+      "repair_grain": "Validate the exact ADP-008 phase-state record/receipt and bind its exact phase_state_ref/hash plus relevant accepted authority/registry identity into replay material."
+    },
+    {
+      "id": "T3-F03",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "APPLICABILITY_AUTHORITY_SIGNATURE_NOT_BOUND",
+      "proof": "Changing PositiveApplicabilityReceipt authority_id, authority_version and authority_content_hash while keeping its receipt ref fixed leaves opportunity candidate replay hash and record identity unchanged.",
+      "authority_conflict": "ADP-010 required rule semantics include exact input authority signatures/use permissions and required positive applicability.",
+      "repair_grain": "Authenticate the applicability receipt against its owning accepted authority and bind exact authority/version/content hash and receipt identity into candidate replay material."
+    },
+    {
+      "id": "T3-F04",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "CONTACT_WITNESS_AUTHORITY_AND_INDEPENDENCE_NOT_AUTHENTICATED",
+      "proof": "Changing contact witness authority_id/version/content_hash while keeping witness_ref fixed leaves ENCOUNTER identity unchanged. Any nonempty claimed authority passes. Independence is accepted by ref kind label only.",
+      "authority_conflict": "ADP-010 requires an exact contact witness independent of co-presence and exact input authority signatures/provenance.",
+      "repair_grain": "Require an independently competent contact-occurrence witness authority/receipt and cryptographically/content-addressedly bind authority, witness, independence proof, actor, subject, time, semantic and provenance."
+    },
+    {
+      "id": "T3-F05",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "COLOCATION_CAN_BE_LAUNDERED_BY_RELABELING",
+      "proof": "The hostile court produced OEE_ENCOUNTER_OCCURRED where the only positive provenance refs were COLOCATION and SAME_GEOGRAPHY_TIME, by wrapping them in caller-created CONTACT_OCCURRENCE_WITNESS / CONTACT_WITNESS_INDEPENDENCE labels under an unaccepted arbitrary authority.",
+      "authority_conflict": "ADP-010 explicitly forbids co-location, co-presence, same geography/time and structural proximity as ENCOUNTER evidence by themselves.",
+      "repair_grain": "Do not trust caller labels. Validate the witness's owning authority and exact occurrence receipt independently of proximity evidence."
+    },
+    {
+      "id": "T3-F06",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "VALIDATE_RECORD_DOES_NOT_RECOMPUTE_REPLAY_BINDINGS",
+      "proof": "Without changing record_id, record_hash or source_candidate_replay_hash, T3 changed source_candidate_id, context refs, applicability refs, phase_state_ref, constraint refs, prior ledger anchor and provenance refs; validate_record accepted the tampered record.",
+      "authority_conflict": "ADP-010 requires reconstructible replay/provenance, candidate identity, integrity, and malformed/tampered input fail-closed.",
+      "repair_grain": "Persist enough exact candidate material to recompute source_candidate_replay_hash and source_candidate_id, then validate all replay-committed fields against that recomputation. Fields not in record identity must still be transitively committed by validated candidate identity."
+    },
+    {
+      "id": "T3-F07",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "REQUIRED_RULE_AUTHORITY_HASH_PROVENANCE_NOT_MECHANICALLY_REQUIRED",
+      "proof": "A valid AVAILABLE record is emitted with no exact ADP-010 authority/registry/rule hash provenance ref. The implementation only requires arbitrary nonempty provenance refs.",
+      "authority_conflict": "ADP-010 provenance minimum explicitly includes ADP-010 authority/registry/rule hashes and registry required semantics include rule hash.",
+      "repair_grain": "Require exact accepted ADP-010 authority/registry/rule content-address provenance at admission/replay validation. T3 does not invent a new rule hash convention."
+    },
+    {
+      "id": "T3-F08",
+      "severity": "ADOPTION_BLOCKING",
+      "name": "SOURCE_CANDIDATE_ID_NOT_DERIVED_OR_VALIDATED",
+      "proof": "source_candidate_id can be replaced with arbitrary text while record_id/hash remain unchanged and validate_record still passes.",
+      "authority_conflict": "V3OEERealizationRecord requires source candidate ID and replay hash; replay identity must be deterministic/content-addressed.",
+      "repair_grain": "Derive and validate source_candidate_id from the exact candidate replay material/hash."
+    }
+  ],
+  "surfaces_that_passed": [
+    "exact ADP-010 authority and registry top-level IDs/versions are reproduced",
+    "BASIS->AVAILABLE->OPPORTUNITY->ENCOUNTER admission sequencing is enforced by public admission functions",
+    "same actor and same subject continuity are enforced across admitted parents",
+    "V3DP_DEVELOPMENT_ACTIVE literal and exact ADP-008 top-level authority/version/blob constants are checked",
+    "core-v1 RNG is ZERO_DRAW; rng_decision_receipt_ref is forbidden and no random source is used",
+    "direct witness kinds COLOCATION/COPRESENCE/etc are rejected",
+    "actor/subject/time/CONTACT_OCCURRENCE semantic equality is checked on caller-supplied witness object",
+    "no EXPOSURE API is exposed",
+    "no comparator/PSEPF/metabolism/CAN-008/V2 authority is created",
+    "no broader actor state is mutated by the bounded executor dataclasses/functions",
+    "admission-produced timezone-equivalent instants and reordered exact refs normalize deterministically",
+    "duplicate exact admission inputs are idempotent",
+    "the original S3 governed court really passed on exact evidence SHA c70808c993b7e236e5535a03e22fe89cc3759d1e"
+  ],
+  "smallest_repair_requirement": {
+    "scope": "S3 executor authentication/replay hardening only",
+    "must": [
+      "authenticate exact subject owner/materialization/use chain without creating/classifying subjects",
+      "authenticate exact ADP-008 phase-state evidence and bind it to replay",
+      "authenticate applicability owning authority and bind its signature/hash to replay",
+      "authenticate independently competent contact-occurrence witness authority/receipt and independence proof",
+      "make relabeled co-location/co-presence/proximity evidence insufficient even when caller changes ref kind strings",
+      "require exact ADP-010 authority/registry/rule hash provenance",
+      "make source_candidate_id derived and validate source_candidate_replay_hash by recomputation from reconstructible persisted material",
+      "make every mutable record field either directly identity-bound or transitively committed by a validated replay hash",
+      "rerun S3 original tests plus T3 hostile probes under governed court"
+    ],
+    "must_not": [
+      "modify or broaden S1/S2 semantic authority",
+      "create subject semantics or classification",
+      "create EXPOSURE",
+      "create comparator/PSEPF/metabolism/CAN-008/V2 authority",
+      "perform a real first-positive V3 canary invocation",
+      "move PRE-MAIN or main"
+    ]
+  },
+  "no_self_adoption": true,
+  "target_modified": false,
+  "sibling_inflight_conclusions_consumed": false
+}

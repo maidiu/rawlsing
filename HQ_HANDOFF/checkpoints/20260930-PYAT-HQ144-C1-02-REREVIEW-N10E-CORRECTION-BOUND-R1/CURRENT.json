@@ -1,0 +1,48 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260930-PYAT-HQ144-C1-02-REREVIEW-N10E-CORRECTION-BOUND-R1",
+  "status": "C1_02_PAIRING_REREVIEW_BOUND__N10E_PROOF_CORRECTION_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20260930-PYAT-HQ143-C1-02-WITNESS-PAIRING-REPAIR-BOUND-R1",
+  "governing_decision": "HQD-2026-09-30-144",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "c1_02": {
+    "repair_return": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+    "disposition": "PASS_BLOCKER_REPAIRED__NARROW_INDEPENDENT_REREVIEW_REQUIRED",
+    "counts": {
+      "passed": 109,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "rereview": {
+      "branch": "agent/reviewer-pyat-hq144-c1-02-witness-pairing-rereview-r1",
+      "commission_tip": "a7b6978ec4e7e856de0745d83d7fa36ba682f7eb",
+      "launch_surface": "BROWSER",
+      "model": "GPT-5.6_SOL_HIGH",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+    },
+    "adopted": false
+  },
+  "n10e": {
+    "review_return": "b89268d1824409d20a91a37a0a3ff7751a7ae75a",
+    "review_disposition": "CHANGES_REQUIRED",
+    "correction": {
+      "branch": "agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1",
+      "commission_tip": "a7f7eecdeaee58e4d8021b7c571b4956e6301464",
+      "launch_surface": "DEEPSEEK_HARNESS",
+      "model": "DEEPSEEK_V4_1_FLASH",
+      "mode": "STANDARD",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+    },
+    "provider_code_change_authorized": false,
+    "adopted": false
+  },
+  "next_action": "RUN_C1_02_NARROW_REREVIEW_AND_N10E_PROOF_PROVENANCE_CORRECTION_IN_PARALLEL__HQ_ADJUDICATES_RETURNS",
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION",
+    "NO_C1_03_BEFORE_C1_02_ACCEPTANCE",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

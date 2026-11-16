@@ -1,0 +1,57 @@
+{
+  "schema": "RAWLSING_PSC_W1_CARRIER_RESOLUTION_R2_DISPATCH@1.0.0",
+  "status": "FOUR_R2_SUCCESSORS_ACTIVE__SIX_W1_PASSES_BANKED",
+  "hq_authority": "aea759b8b4234081e6348b0adb721c3c3f345f1f",
+  "resolved_current_carrier": {
+    "accepted_name": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+    "bytes": 5257954,
+    "rows": 18276,
+    "unique_implementation_ids": 18276,
+    "families": 9,
+    "active_scopes": 35
+  },
+  "banked_passes": {
+    "N03": "497b8dfc6106e2761c61d07d8ba9ea472062892c",
+    "N04": "b5a215c26e409dc99cea583709a26078066e80e4",
+    "N05": "e2cdfa269853a882640c5a59836d2d53024f0e09",
+    "L01": "f50eb270ccba8ceca4fb07240e94c42dae1e1624",
+    "L02": "c723907332df0c2027ce65e6390efa1c2ac31620",
+    "L04": "b412ed40b287f7acdcb24c137fd2475c13be2388"
+  },
+  "workers": [
+    {
+      "id": "N01-R2",
+      "library": "REQUIRED_EXACT_CARRIER_ONLY",
+      "branch": "agent/rabochii-prev3-psc-w1r2-n01-current-denominator-exact-carrier-r1",
+      "commission_tip": "41654af51d7a8a67745ccb9b08efc70bb3db89ca",
+      "grain": "PREV3_CURRENT_ACTIVE_IMPLEMENTATION_DENOMINATOR_AND_REPO_ENUMERABLE_IDENTITY_CARRIER_R2_ONLY"
+    },
+    {
+      "id": "N02-R2",
+      "library": "REQUIRED_CURRENT_AUTHORITY_ONLY",
+      "branch": "agent/rabochii-prev3-psc-w1r2-n02-routing-full-current-carrier-r1",
+      "commission_tip": "aa7f874493427fddfb9d9ec0e645da9b24182e3c",
+      "grain": "PREV3_COMPLETE_CURRENT_18276_ROUTING_APPLICABILITY_AUTHORITY_LEDGER_R2_ONLY"
+    },
+    {
+      "id": "L03-R2",
+      "library": "REQUIRED",
+      "branch": "agent/rabochii-prev3-psc-w1r2-l03-gss-latin-documentary-review-r1",
+      "commission_tip": "bf3641cf0bd42943e2e628a9347c587d298546ac",
+      "grain": "PREV3_PSC03_LIBRARY_DOCUMENTARY_REVIEW_GSS_AND_LATINOBAROMETRO_R2_ONLY",
+      "assigned_families": ["GSS", "Latinobarómetro"]
+    },
+    {
+      "id": "L05-R2",
+      "library": "REQUIRED",
+      "branch": "agent/rabochii-prev3-psc-w1r2-l05-wvs-documentary-review-r1",
+      "commission_tip": "93c2005e7395abd362edc6b2e79b2e156e819f75",
+      "grain": "PREV3_PSC03_LIBRARY_DOCUMENTARY_REVIEW_WVS_R2_ONLY",
+      "assigned_families": ["WVS"]
+    }
+  ],
+  "family_order": ["Afrobarometer", "Arab Barometer", "Asian Barometer", "EVS", "GSS", "Latinobarómetro", "LiTS", "South Asia", "WVS"],
+  "sibling_authority_law": "NO_PROVISIONAL_SIBLING_OUTPUT_IS_AUTHORITY__HQ_FANIN_OWNER",
+  "next_hq_action": "JOIN_R2_RETURNS__COMPLETE_PSC01_DENOMINATOR_AND_ROUTING__REBOUND_N03__RELEASE_N04_COMPILER_AGAINST_ADOPTED_INPUTS__WAKE_PSC04_PSC05_PSC06_PER_ACCEPTED_BATCH"
+}

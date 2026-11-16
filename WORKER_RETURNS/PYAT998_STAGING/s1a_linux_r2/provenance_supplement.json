@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT998_STAGING_PROVENANCE_SUPPLEMENT@1",
+  "parent_staging_manifest": "WORKER_RETURNS/PYAT998_STAGING/provenance_manifest.json",
+  "parent_staged_files": 36,
+  "supplement_added_or_replaced_files": 3,
+  "staging_file_count_total": 39,
+  "accepted_s1a_review": {
+    "review_commit": "c900cf463694a8b21af7f3f8bd8da6a6b23d1d82",
+    "review_receipt": "WORKER_RETURNS/PYAT999_EARLY_GATES_G5/S1A_receipt.json",
+    "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "candidate_sha": "6286ea700a253ff142104f2e3ee62c9352a07644",
+    "disposition": "ACCEPT_SCOPED@S1A_SOURCEFREE_SEMANTIC_CACHE"
+  },
+  "entries": [
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "source_commit": "6286ea700a253ff142104f2e3ee62c9352a07644",
+      "source_blob": "f29247b33cb78e5f1e620620d6968ab433ce407a",
+      "staged_blob": "f29247b33cb78e5f1e620620d6968ab433ce407a",
+      "relationship": "exact accepted S1-A source blob; semantic cache key/race guards and source-backed facade retained"
+    },
+    {
+      "path": "rawlsing_next/tests/test_c1_agent_b_cache_differential.py",
+      "source_commit": "6286ea700a253ff142104f2e3ee62c9352a07644",
+      "source_blob": "d94946349e7f353df3f46adf4c60160db022d5c7",
+      "staged_blob": "d94946349e7f353df3f46adf4c60160db022d5c7",
+      "relationship": "exact accepted S1-A focused test blob"
+    },
+    {
+      "path": ".github/workflows/pyat-c1-agent-b-cache-proof.yml",
+      "source_commit": "6286ea700a253ff142104f2e3ee62c9352a07644",
+      "source_blob": "f740e6a10ac573a9de85d2666d4c4b6c3c25c897",
+      "staged_blob": "f740e6a10ac573a9de85d2666d4c4b6c3c25c897",
+      "relationship": "exact accepted S1-A workflow blob; workflow not executed in this staging pass"
+    }
+  ],
+  "overlap_resolution": "The S1-A facade is a product-file addition but is exact accepted source/test/workflow under the original 998 grant. No source-local redesign, no owner-authored overlapping edit, and no S2-C/D writer/layout/schema change.",
+  "s1a_compatibility": {
+    "focused_34": "34 passed in 3.21s",
+    "preservation_136": "136 passed in 105.79s",
+    "world_18": "18 passed in 275.24s",
+    "s2c_31": "31 passed in 5.73s",
+    "s2d_31": "31 passed in 14.08s",
+    "s2e_22": "22 passed in 20.86s",
+    "linux_s2b_81": "81 passed in 37.99s"
+  },
+  "preserved": [
+    "S1-B source factory/native functionality",
+    "S1-D current/checkpoint/world-binding semantics",
+    "S2-C physical writer and READONLY layout",
+    "S2-D all-seven saved readers",
+    "S2-E exact conservation source/tests",
+    "S2-F/S2-G #980 functionality"
+  ],
+  "holds": {
+    "s2e_method_owner_ack": "PENDING; frozen",
+    "s2a_public_selector": "REVISE_EXACT_DEFECT; no patch",
+    "phase2_joined_vertical": "HOLD_DEPENDENCY_997_S2A",
+    "full_100k_6gib": "NOT_RUN",
+    "protected_merge": "NONE"
+  }
+}

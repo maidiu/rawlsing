@@ -1,0 +1,58 @@
+{
+ "schema": "PYAT_HQ207_POWER_NONCOLLAPSE_REVIEW@1.0.0",
+ "attack": "E",
+ "verdict": "PASS on the MECHANISM - but the focused court's proof of this property is SELF-REFERENTIAL (see 08_COURT_COVERAGE_GAPS_ADDENDUM.json GAP-3)",
+ "method": "called assert_receipt_does_not_authorize(receipt, purpose) for EVERY purpose in FORBIDDEN_AUTHORIZED_PURPOSES against a real receipt containing an ADMITTED source, then inspected the per-decision power flags",
+ "E1_all_fourteen_purposes_refused": {
+  "result": "PASS - 14/14 raised",
+  "purposes_attacked": [
+   "POOLING",
+   "SOURCE_SELECTION",
+   "SOURCE_RANKING",
+   "SOURCE_PRIORITY",
+   "SOURCE_SEMANTIC_EQUIVALENCE",
+   "RESPONDENT_LINKAGE",
+   "OVERLAP_OR_NONDUPLICATION_AUTHORITY",
+   "ESTIMAND_COMPOSITION",
+   "BACKFILL_AUTHORITY",
+   "CURRENTNESS_AUTHORITY",
+   "TARGET_USE_PERMISSION_GRANT",
+   "F8_GEOMETRY_OR_DISTRIBUTION_TRANSFORM",
+   "INDIVIDUAL_INFERENCE",
+   "ACTOR_OR_PERSON_STATE"
+  ],
+  "note": "this matches the commission's eleven named powers plus three additional prohibited surfaces the module enumerates",
+  "court_self_reference_caveat": {
+   "finding": "the court parametrises over list(M.FORBIDDEN_AUTHORIZED_PURPOSES) - the same tuple the function checks - so a truncated production tuple would collect fewer cases and still pass",
+   "deeper_finding": "assert_receipt_does_not_authorize NEVER READS ITS `receipt` ARGUMENT (verified: the body validates `purpose`, then raises on membership in the forbidden tuple). The court therefore proves the FUNCTION refuses its own list, not that the RECEIPT carries no authority.",
+   "what_actually_carries_the_property": "DECISION_MATRIX, whose may_* flags are False for every decision - which I verified by value inspection, independently of the court",
+   "my_evidence_still_holds": "I called the function for all 14 purposes on a real receipt and got 14/14 refusals; the mechanism is confirmed. The caveat is about what the COURT proves, not about whether the property holds."
+  }
+ },
+ "E2_decision_matrix_power_flags": {
+  "result": "PASS",
+  "finding": "every may_* flag is False for every non-ADMITTED decision; on ADMITTED only the three admission-scoped flags are True (positive_admission, may_enter_source_set, may_constrain_downstream_query_scope)",
+  "specifically_false_even_on_ADMITTED": {
+   "may_rank_or_select": false,
+   "may_pool_respondents": false,
+   "may_grant_target_use_permission": false,
+   "may_authorise_backfill": false,
+   "may_condition_F8": false,
+   "may_transform_geometry_or_distribution": false,
+   "may_support_individual_inference": false
+  },
+  "significance": "even the strongest positive outcome cannot serve as conditioning, geometry transformation or individual inference. This is the 'eligibility is not conditioning' boundary holding at the data-structure level."
+ },
+ "E3_target_use_permission_cannot_become_a_grant": {
+  "result": "PASS",
+  "evidence": "may_grant_target_use_permission is False on all ten decision rows; the request declares target_use_permission_refs_are_bound_input_not_a_grant = True; TARGET_USE_PERMISSION_GRANT is in FORBIDDEN_AUTHORIZED_PURPOSES and was refused"
+ },
+ "E4_currentness_and_F8": {
+  "result": "PASS",
+  "evidence": "CURRENTNESS_AUTHORITY and F8_GEOMETRY_OR_DISTRIBUTION_TRANSFORM both refused; may_condition_F8 False; the module forecloses the specific HQ203/H-D frontier question by refusing to be conditioning authority at all"
+ },
+ "structural_vs_declarative": {
+  "finding": "the refusal is STRUCTURAL, not merely declarative: assert_receipt_does_not_authorize is a function that raises, and the power flags are a closed matrix keyed by decision. A caller cannot obtain authorisation by asserting it; the API has no grant path.",
+  "residual": "the receipt is a plain immutable dataclass, so a caller could in principle ignore the assert helper and read .as_dict() themselves. That is a caller-misconduct boundary, not an authority overreach: the module never ISSUES the power, and every machine-readable declaration on the receipt states it does not."
+ }
+}

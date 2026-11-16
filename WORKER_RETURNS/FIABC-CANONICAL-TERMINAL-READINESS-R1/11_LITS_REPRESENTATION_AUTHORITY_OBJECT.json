@@ -1,0 +1,70 @@
+{
+  "schema": "FIABC_LITS_I_REPRESENTATION_AUTHORITY_CLOSURE@1.0.0",
+  "status": "BOUNDED_AUTHORITY_CONSTRUCTED__SOURCE_FREE_QUALIFICATION_REQUIRED",
+  "source": {
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "format": "DTA",
+    "rows": 29002,
+    "variables": 1198
+  },
+  "runtime": {
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "decoder": "decode_dta(source, encoding=latin1)",
+    "apply_value_formats": false,
+    "user_missing": true
+  },
+  "diagnostic": {
+    "schema": "FIABC_LITS_I_DECODER_REPRESENTATION_DIAGNOSTIC@1.0.0",
+    "receipt_sha256": "74fc2c53610ad2af5867e4c36728604a812cf9ad3d7b0e4bceebda68fe4ac74b",
+    "response_cells": 58004,
+    "observed_cells": 57989,
+    "system_missing_cells": 15,
+    "unique_representation_classes": 16,
+    "current_rule_matched_cells": 15,
+    "banked_exact_rule_matched_cells": 15
+  },
+  "variables": {
+    "q301_2": {
+      "ordinal": 194,
+      "counts_by_native_code": {"1": 4377, "2": 6440, "3": 5226, "4": 6972, "5": 1882, "6": 1774, "7": 2327},
+      "system_missing": 4
+    },
+    "q301_7": {
+      "ordinal": 199,
+      "counts_by_native_code": {"1": 2889, "2": 6112, "3": 6511, "4": 10334, "5": 2479, "6": 224, "7": 442},
+      "system_missing": 11
+    }
+  },
+  "authority_ref": {
+    "authority_id": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d"
+  },
+  "authority_snapshot_hash": "9ac03b6d6e1464da29018ad1e6e803c490ff652a1ec4d9b18691b3e82d98ec7b",
+  "historical_replay": {
+    "accepted_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "accepted_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "banked_projection_builder_blob": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "c11_release_identity": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "c11_replay_identity": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+  },
+  "current_typed_contract": {
+    "facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "law": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0_UNCHANGED"
+  },
+  "negative_limits": [
+    "NO_GLOBAL_INT_FLOAT_DECIMAL_COERCION",
+    "NO_OTHER_VARIABLES",
+    "NO_OTHER_LITS_WAVES",
+    "NO_OTHER_SOURCES",
+    "NO_CURRENT_TYPED_KEY_EQUIVALENCE",
+    "NO_LABEL_OR_FREQUENCY_AUTHORITY",
+    "NO_MISSINGNESS_INFERENCE",
+    "NO_RESPONSE_SEMANTIC_REMAP",
+    "NO_CANONICAL_QUESTION_MAPPING",
+    "NO_CANDIDATE_OUTPUT_PARENTAGE",
+    "NO_SYSTEM_MISSING_REINTERPRETATION"
+  ]
+}

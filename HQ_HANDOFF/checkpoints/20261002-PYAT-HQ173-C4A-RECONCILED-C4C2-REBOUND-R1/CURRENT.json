@@ -1,0 +1,26 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ173-C4A-RECONCILED-C4C2-REBOUND-R1",
+  "governing_decision": "HQD-2026-10-02-173",
+  "status": "C4A_COMBINED_TREE_ACCEPTED_AT_STRUCTURAL_GRAIN__C3_COURT_SCOPE_CORRECTED__FF02_D2_AND_C4C2_READY",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "c4a": {
+    "head": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "merge": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb"
+  },
+  "ff02_d2": {
+    "branch": "agent/rabochii-pyat-r2-lits-ff02-d2-checkpoint-preimage-export-r1",
+    "tip": "59a6ed87fd7b91934164848a48a7a4ce86e95e4e"
+  },
+  "c4c2": {
+    "branch": "agent/codex-pyat-hq173-c4c2-combined-tree-runtime-r1",
+    "tip": "1d1676f4b0d8a1963acad5f2dbaa7ae8ffb91e6e"
+  },
+  "held": [
+    "RAW_SOURCE_EXECUTION",
+    "C4_LIVE_PRODUCTION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "LAUNCH_FF02_D2_AND_C4C2_IN_PARALLEL__THEN_HQ_FANIN_C4A_C4B_D2_C4C2"
+}

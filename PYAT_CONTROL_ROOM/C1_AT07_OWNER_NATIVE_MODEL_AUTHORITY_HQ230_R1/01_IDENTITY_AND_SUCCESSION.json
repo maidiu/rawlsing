@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ230_D1_IDENTITY_AND_SUCCESSION@1",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "decision": "A__NEW_OWNER_NATIVE_AUTHORITY_WITH_NON_GENEALOGICAL_FIXTURE_CROSSWALK",
+  "fixture_predecessor": {
+    "authority_ref": {
+      "authority_id": "C1-AT07-MODEL",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+    },
+    "status": "FIXTURE_ONLY__NOT_PRE553_AUTHORITY_SNAPSHOT",
+    "preserved_without_rewrite": true
+  },
+  "owner_native_successor": {
+    "authority_ref": {
+      "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65"
+    },
+    "authority_id_is_distinct": true,
+    "version": "1.0.0",
+    "parent_authority_refs": [],
+    "supersession_refs": [],
+    "reason_for_empty_genealogy": "The fixture predecessor is not an owner-native snapshot and is therefore not laundered into PRE553 revision genealogy."
+  },
+  "crosswalk": {
+    "ref": {
+      "kind": "C1FixtureModelAuthorityCrosswalk@1",
+      "object_id": "urn:rawlsing:pre553:c1-fixture-model-crosswalk:sha256:4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0",
+      "content_hash": "4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0"
+    },
+    "material": {
+      "schema": "C1_AT07_FIXTURE_TO_OWNER_NATIVE_MODEL_AUTHORITY_CROSSWALK@1",
+      "fixture_predecessor_authority_ref": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      },
+      "owner_native_successor_authority_ref": {
+        "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65"
+      },
+      "owner_native_model_rule_ref": {
+        "kind": "PositionedSubjectModelRule@1.0.0",
+        "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2",
+        "content_hash": "59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2"
+      },
+      "relation": "FUNCTIONAL_SUCCESSOR_WITH_EXPLICIT_NON_GENEALOGICAL_CROSSWALK",
+      "authority_parent_edge": false,
+      "authority_supersession_edge": false,
+      "same_hash_reinterpretation": false,
+      "semantic_conservation": {
+        "stable_rule_basis_hash": "de15a0fbf77eb71f5b405d9d42cba4eeb8844e3803868295ada41b18afd5372b",
+        "fixture_scope_preserved": true,
+        "real_source_effect": false,
+        "walkback_ownership_remains_separate": true
+      },
+      "historical_effect": "PRESERVE_EXISTING_C1_RECEIPTS_AND_TESTS_AS_HISTORICAL_SOURCE_FREE_EVIDENCE"
+    }
+  },
+  "downstream_identity_consequences": {
+    "stable_model_rule": "new exact rule ref required and authority-owned",
+    "per_invocation_model_rule_hash": "must change when owner-native authority/rule determinant replaces fixture-only model ref",
+    "historical_C1_receipts": "preserved byte-for-byte as historical source-free evidence; not rewritten",
+    "current_C1_or_N10E_requalified_products": "must be freshly reidentified under owner-native authority/rule",
+    "dependency_registrations": "must bind exact owner authority and stable rule ref; fixture-only authority must not appear as lifecycle-current owner"
+  }
+}

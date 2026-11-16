@@ -1,0 +1,62 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF_MANIFEST@1.0.0",
+  "checkpoint_id": "20260918T0317-0400",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T0210-0400",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20260918T0317-0400/CURRENT.md",
+  "current_md_git_blob_sha1": "fb1f313fe316d8a5307dca53c458271c487f46ed",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20260918T0317-0400/CURRENT.json",
+  "current_json_git_blob_sha1": "c947a99886f85238fa48c002d0b0e6acc1e02ca1",
+  "governing_files": [
+    {
+      "path": "HQ_HANDOFF/EE_P2X_CONTINUATION_REDUCER_ADOPTION_AND_EE_P2XD_COMMISSION_20260918.md"
+    },
+    {
+      "path": "WORKER_COMMISSIONS/EE-P2X/00_COMMISSION.md"
+    },
+    {
+      "path": "WORKER_COMMISSIONS/EE-P2XD/00_COMMISSION.md",
+      "ref": "8f2b5fec8808824a43e119789adecb4dc4bba127"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/00_RETURN.md",
+      "ref": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+      "ref": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+      "git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+      "sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422"
+    },
+    {
+      "path": "HQ_HANDOFF/EE_P2R1_ADOPTION_AND_P2X_RESUME_20260918.md"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R1/00_RETURN.md",
+      "ref": "9511f44728a8469d685463ec0fc880864c9187de"
+    }
+  ],
+  "adjudicated_return": {
+    "id": "EE-P2X-CONTINUATION-REDUCER-R1",
+    "return_head": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+    "disposition": "PASS__ADOPTED__EXACT_CONTINUATION_STATE_MACHINE_BOUND"
+  },
+  "commissioned_worker": {
+    "id": "EE-P2XD",
+    "branch": "agent/rabochii-prev3-ee-p2xd-darwin-mechanical-court-driver-preparation-r1",
+    "observed_head": "8f2b5fec8808824a43e119789adecb4dc4bba127",
+    "commission_tip": "8f2b5fec8808824a43e119789adecb4dc4bba127",
+    "base": "a954e2d6676843da8427ef2439b5d1ef33478359",
+    "library_access": "NO"
+  },
+  "preserved_active_worker": {
+    "id": "EE-P2X",
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head": "a954e2d6676843da8427ef2439b5d1ef33478359",
+    "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+    "local_entry": "COORDINATION_HOLD_PENDING_EE_P2XD_ADJUDICATION_AND_QUALIFIED_FANIN"
+  },
+  "lock1": "FROZEN",
+  "lock2": "SEALED__8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+  "measured_synthesis": "NOT_AUTHORIZED_PENDING_COMPLETE_EE_P2X_RETURN"
+}

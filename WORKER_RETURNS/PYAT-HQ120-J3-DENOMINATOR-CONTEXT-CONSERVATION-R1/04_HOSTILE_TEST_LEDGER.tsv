@@ -1,0 +1,22 @@
+hostile_id	requirement	test	result	key_witness
+H01	denominator ref preserved M01/I03 -> M1	test_j3_h01_denominator_refs_preserved_m01_i03_to_m1	PASS	M1 retains exact EmpiricalFact ref; fact contains exact denominator-member refs and raw denominator support
+H02	risk-set ref preserved	test_j3_h02_risk_set_ref_preserved	PASS	fact/query risk-set ref equality; M1 risk_set_refs contains exact ref
+H03	same-respondent premise preserved	test_j3_h03_same_respondent_premise_preserved	PASS	EXACT_SCOPED_RESPONDENT predicate survives in M1 predicate refs
+H04	target topology/order preserved	test_j3_h04_target_topology_and_order_preserved	PASS	J=2 SEMANTIC_ORDERED appears in query fact and M1 topology scope
+H05	component-vector ref preserved as exact dependency	test_j3_h05_component_vector_ref_is_exact_dependency	PASS	exact vector ref plus role ref are direct M1 dependency refs after minimal I4 repair
+H06	denominator/context dependency preserved M1 -> M2 dependency closure	test_j3_h06_context_dependency_preserved_m1_to_m2_dependency_closure	PASS	M2 dependency members exact-set-equal M1 dependency refs and include fact/vector/role refs
+H07	determinant identity changes when constitutive denominator/context changes	test_j3_h07_determinant_identity_changes_with_denominator_context	PASS	denominator-member change alters fact ref determinant_manifest_ref and disposition ref
+H08	denominator/context preserved M2 -> B5 protocol	test_j3_h08_context_preserved_m2_to_b5_protocol	PASS	B5 direct_dependency_refs and determinant_refs exactly equal M2 closure members
+H09	denominator/context preserved in I4 receipt/closure refs	test_j3_h09_i4_receipt_points_to_exact_context_closures	PASS	receipt binds exact M2 dependency/determinant closure and M1 determinant/replay refs
+H10	final exact dereference recovers original refs	test_j3_h10_final_exact_dereference_recovers_native_context	PASS	M2 closure_exact plus M01 fact graph recover original denominator/risk refs
+H11	no replacement by readiness/support scalar	test_j3_h11_no_readiness_or_support_scalar_replaces_context	PASS	exact fact/vector refs remain dependency members; no readiness/support-score field substitutes them
+H12	no denominator inference from row count	test_j3_h12_denominator_is_exact_member_count_not_source_row_count	PASS	raw denominator equals exact denominator-member cardinality; no ROW_COUNT semantic field
+H13	no missing weight => one	test_j3_h13_missing_weight_never_defaults_to_one	PASS	weighted fact is UNAVAILABLE with WEIGHT_MISSING and weighted denominator None
+H14	no component scalarization unless exact current scalarization law permits	test_j3_h14_component_scalarization_requires_exact_vector_law	PASS	heterogeneous complete vector has no scalar; complete unanimous governed vector scalarizes under exact rule authority
+H15	review/blocked/valid-empty state survives end to end	test_j3_h15_typed_valid_empty_blocked_and_review_like_states_survive	PASS	J-shaped VALID_EMPTY conserved; J-shaped BLOCKED and UNKNOWN/UNRESOLVED channels conserved; vector dependency retained
+H16	publication/current-selection does not mutate denominator/context	test_j3_h16_publication_and_current_selection_do_not_mutate_context	PASS	lifecycle side effect occurs while dependency/determinant refs remain identical
+H17	physical M2 publication-binding relayout does not mutate denominator/context	test_j3_h17_m2_physical_relayout_does_not_mutate_context	PASS	release and dependency closure identity/members unchanged after representation+binding
+H18	replay/tamper closes on changed denominator/context	test_j3_h18_tampered_denominator_fails_exact_m1_closure	PASS	changed fact preimage under old receipt closes as INTEGRITY_FAILURE
+H19	unrelated lifecycle event leaves empirical determinant closure unchanged	test_j3_h19_unrelated_lifecycle_event_leaves_j_determinant_closure_unchanged	PASS	separate lifecycle event cannot mutate prior immutable determinant closure
+H20	no Field Forge or PRE-V3 permission implication	test_j3_h20_no_field_forge_or_prev3_permission_implication	PASS	consumer_permission structural causal Field Forge actor/V3 effects remain false
+QUALIFICATION	final combined regression court	Rabochii Governed Bounded Court run 36334688621	PASS	165/165 bounded tests plus 20/20 protocol self-test

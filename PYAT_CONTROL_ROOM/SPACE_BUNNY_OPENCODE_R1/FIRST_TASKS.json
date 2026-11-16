@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_OPENCODE_ACTIVATION_PLAN@1",
+  "status": "PLAN_NOT_LIVE_QUEUE",
+  "baseline_control_head": "fe1b2729b0f9f1ff18044c2f655b74784e001217",
+  "tasks": [
+    {
+      "id": "OPS-01",
+      "state": "READY_FOR_HQ_ACTIVATION",
+      "depends_on": [],
+      "outcome": "Reconcile current frontier without redispatching completed work",
+      "source_access": false,
+      "production_mutation": false
+    },
+    {
+      "id": "OPS-02",
+      "state": "PLANNED_NOT_ISSUED",
+      "depends_on": [
+        "OPS-01"
+      ],
+      "outcome": "Bind and implement minimal project-local OpenCode orchestration",
+      "source_access": false,
+      "production_mutation": false
+    },
+    {
+      "id": "OPS-03",
+      "state": "PLANNED_NOT_ISSUED",
+      "depends_on": [
+        "OPS-02"
+      ],
+      "outcome": "Independent fixture-based qualification of dispatch, recovery and boundaries",
+      "source_access": false,
+      "production_mutation": false
+    },
+    {
+      "id": "OPS-04",
+      "state": "DOCUMENTARY_PREPARATION_AFTER_OPS01",
+      "depends_on": [
+        "OPS-01"
+      ],
+      "outcome": "Prepare exact C4 reconciliation decision without lifting adoption hold",
+      "source_access": false,
+      "production_mutation": false
+    }
+  ],
+  "dispatch_law": "USER_LAUNCH_THEN_EXACT_BOUND_COMMISSION__NO_TEMPLATE_AUTO_DISPATCH",
+  "source_runner": "DORMANT_UNTIL_SEPARATE_EXACT_WARRANT"
+}
+

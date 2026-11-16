@@ -1,0 +1,41 @@
+# R61 R03 — complete prospective-frontier to native issued workload, sourcefree
+
+**STATE: COMMISSION_ISSUED__NOT_LAUNCHED.** Competent secondary Browser Pyat HQ issued under the existing user's R61 grant after accepting both R8 scoped independent reviews. This instruction is for ONE author, not a new R01 repair, new architecture engine, direct measured survey run, or new experimental approval stage.
+
+REPOSITORY: `maidiu/rawlsing` (private)
+AUTHOR WORK BRANCH: `agent/opencode-pyat-r61-r03-total-native-workload-r1`
+EXACT SOURCE CODE BASE: `813775c07f0831605b6484a1d82afada30d85968` (R01 independently reviewed TEST_ONLY candidate). The reviewer return commits are evidentiary; do not merge reviewers' ownroot probe artifacts as source code. R02 scoped implementation is inherited at this base. Do not merge independent R08 code into this branch.
+USER CODE GRANT: `3189a0db1433095c95bfe0294af53a40355fa1dd:PYAT_CONTROL_ROOM/R61_USER_AUTHORIZED_GENERIC_REPAIR_FLIGHT_20261023.json` (R03 conditional exact paths).
+PREDECESSOR REVIEWS: R01 R8 `2c744a07b8ccbbe24fcc8dccf6ca8a8282ee7c9a` / `ACCEPT_SCOPED_LOCAL`; R02 `ACCEPTED_SCOPED_LOCAL_C1`. **Secondary HQ scope decision:** predecessor met for bounded R03 sourcefree TEST_ONLY author development; not full original-source/production/world acceptance.
+USER INTENT: R61K `b733b9eb685aaecb8d5417e9785f60ba4c5de5af` and R61M approved dual root/parent comparison where lawful, finite adaptive exploration of minority/counterpattern/hidden differentiation, explicit unexecuted statuses, no exhaustive logical combination mandate.
+OWNER: existing idle qualified OpenCode/DeepSeek native author session when its actual continuing identity/worktree is established; a new sole author session is permitted only if an existing session cannot be resumed and there is no competing writer. Reuse existing git stores/worktrees/sessions wherever safely available. No guess that a historical PID is live.
+MODEL: `DeepSeek V4.1-Flash`; REASONING=`MAX`; execution surface S3 local Python/pytest/git; I2-I3 multi-owner native engineering. Editor/harness user chooses **OpenCode** or **Deepseek-Harness**; confirm selected runtime, installed imports and MAX effort before any writes, no silent provider/effort fallback. Browser suitability: good for GitHub/documentary commissioning, S3 local runtime not verified for this full job. DeepSeek MAX suitability: R01/R08 actual S3 native work qualified on prior OpenCode surface; this distinct total integration remains to be proved by execution. Codex GPT-6.1 HIGH necessary? No demonstrated necessity; user's allowance unavailable. Otherwise Middle? Not invoked when qualified DeepSeek/MAX is available. Account, quota, machine and active worktree status UNKNOWN until local observation; use no other model by default.
+BRANCH CREATION: branch should be prepared at exact base; first check actual git remote/HEAD/status and no conflicting writer. If branch already exists, reuse only after verifying its legitimate owner/start rather than reset it. Create isolated sparse worktree as needed, not a full duplicate clone.
+
+**WRITE ALLOWLIST — ONLY these four code/test files:**
+- `rawlsing_next/pre553_native_workload_binding.py`
+- `rawlsing_next/pre553_universal_workload.py`
+- `rawlsing_next/tests/test_universal_workload.py`
+- `rawlsing_next/pre553_issued_workload.py`
+
+Plus ordinary own return documents/evidence under `WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/` (never modify source grant, producer core, R01/R02/R08, unrelated tests, CI, workflows, original survey files, HQ/checkpoints, J52/W52, Sorok or V3). Existing native owner C11/I03/I05/Batch and `pre553_recursive_handoff.py` are **READ/USE**, not edits.
+
+## One productive mission
+
+Take the already-governed prospective finite R01 `SourceInventory / GrammarPolicy / ScientificFrontier`, lower the *complete issued finite eligible workload* into the actual existing native C11 I03/I05/Batch machinery, record authentic issue/operation/fact/negative receipts, bind returned results to exact expected operations, and expose the full persisted exact result/typed-state ledger to downstream empirical/world consumers. This is not a new survey discovery algorithm; never create substitute native executors.
+
+Preserve every issued operation ID, source/instrument version, risk and respondent grain, measure direction and weighting authority, target/condition occurrence and typed values, root and immediate-parent named comparisons where valid, parent lineage, actual J/K/D distinct bounded semantics, epoch/currentness and native-call counts. Retain support, observed zero, scientific null/diffuse, zero denominator, unsupported runtime, held, pending, error, unknown, valid empty and resource-bound deferred as distinct relevant states; never interpret unrun as false or use a self-selected supported-only completion census. Respect bounded execution budgets instead of enumerating every logical possibility.
+
+**First end-to-end actual positive:** one prospective finite heterogeneous TEST_ONLY released inventory with more than one target/condition and branch, prove full independently frozen issued ID set -> actual native query/candidate execution/Batch -> authentic fact/result or exact negative -> total anti-join and cold restored state. Include a real D=3 parent/child progression and two separately named root and parent contrasts on changed fixture data, including a minority or nonwinning branch. Show which operations are unsupported and pending instead of omitting them. Run the same unchanged native API; not merely emit a proposal, handoff, status or new evaluator.
+
+**Smallest test/fault proof sufficient:** relevant existing R01/R02 native tests plus the new R03 end-to-end tests, one changed ancestor/condition/source-permission or operation-ID mutation that prevents downstream positive while baseline passes after restoring input, and cold restart/no duplicate execution. A green mock without the real native owner calls is not accepted. Do not spin up a new elaborate proof framework or reviewer on minor implementation details.
+
+If an actual external ungranted code-path, scientific interpretation, source issuer or host facility prevents the complete R03 operation, name that **exact single missing function**, the blocked parent operation and smallest executable alternative. Do not implement an easier fixture as completion or silently widen write scope. Stop only that dependent slice; proceed with truly independent legitimate work. If alternative solutions change the actual science, ontology or resulting product, pause the dependent choice for user adjudication; faithful engineering equivalences belong with HQ.
+
+ENGINEERING GREEN: full finite expected-set accounting and real C11/I03/I05/Batch sourcefree execution/receipts/consumer with cold/native dependency and bounded resources. 
+SCIENTIFIC GREEN: the approved R61K/M relational contrast and minority intentions remain conserved at exactly TEST_ONLY uncertainty/epistemic grade, without new estimands, structural-causal interpretation or fake same-person cross-source pooling.
+AUTHORITY GREEN: current R61 code paths and sourcefree TEST_ONLY only; exact reviewed lineage. No original 35/1890/E_pre right, FF/F6/F7 scientific method issuance, protected CI/prod, N11/N12 or Sorok actor grant.
+RED: easiest-only operation subset; missing unsupported/pending branches; guessed scientific baseline; native call replaced by synthetic wrapper; receipt/value/source/condition mismatch; fabricated completion or actual consumer independent of input.
+HOLD: actual prerequisite missing or unauthorized beyond these paths; never transform a HOLD into a passing dependency.
+
+RETURN: runnable code on this exact author branch, `WORKER_RETURNS/PYAT-R61-R03-TOTAL-NATIVE-WORKLOAD-R1/00_RETURN.md` and minimal evidence/test receipts/manifest with actual code blob identity and first downstream positive; nonforce push, exact remote readback, one precise residual if any. Distinct independent review after candidate is an existing R61 requirement, **not** author self-adoption. No extra review stage, no endless looping, no Codex usage. Bank terminal effects and return to secondary Browser Pyat HQ.

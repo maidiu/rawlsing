@@ -419,7 +419,7 @@ def test_sample_pooling_requires_semantic_equivalence_nonduplication_and_own_aut
         relations=(bundle["overlap"], bundle["pool"]),
         authority_registry=AuthorityRegistry((bundle["overlap_auth"], bundle["pool_auth"])),
     )
-    with pytest.raises(SourceRelationAuthorizationError):
+    with pytest.raises(SourceRelationIntegrityError):
         guard_sample_pooling(
             resolver=no_semantic, source_universe_refs=SOURCES,
             operation_scope=BASE_SCOPE, target_use=BASE_USE, effective_scope=BASE_EFFECTIVE,
@@ -480,7 +480,7 @@ def test_estimand_composition_requires_its_own_exact_relation_even_when_pooling_
             (bundle["sem_auth"], bundle["overlap_auth"], bundle["pool_auth"])
         ),
     )
-    with pytest.raises(SourceRelationAuthorizationError):
+    with pytest.raises(SourceRelationIntegrityError):
         guard_estimand_composition(
             resolver=no_composition, source_universe_refs=SOURCES,
             operation_scope=BASE_SCOPE, target_use=BASE_USE, effective_scope=BASE_EFFECTIVE,

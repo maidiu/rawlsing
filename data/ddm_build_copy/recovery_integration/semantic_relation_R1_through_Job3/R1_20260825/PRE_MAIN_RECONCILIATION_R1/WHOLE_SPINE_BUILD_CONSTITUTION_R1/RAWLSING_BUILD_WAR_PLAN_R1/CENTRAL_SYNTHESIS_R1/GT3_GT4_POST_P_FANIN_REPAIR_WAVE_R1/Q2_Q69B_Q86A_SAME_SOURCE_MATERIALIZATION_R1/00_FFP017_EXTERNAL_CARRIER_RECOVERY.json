@@ -1,0 +1,73 @@
+{
+  "schema_id": "GT34_Q2_FFP017_EXTERNAL_CARRIER_RECOVERY@1.0.0",
+  "execution_surface": "CHATGPT_LIBRARY_MATERIALIZATION_AND_BYTE_RECHECK",
+  "accepted_source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+  "respondent_carrier_sha256": "6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5",
+  "risk_set": {
+    "logical_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "rows": 19210,
+    "semantic_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "physical_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "library_ref": "libfile_2851ba4555a88191a427ba4785ceba81",
+    "file_id": "file_00000000031881f68ac1040f9e354c69",
+    "byte_recheck": "PASS"
+  },
+  "selected_response_facts": {
+    "rows": 670631,
+    "sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+    "library_ref": "libfile_2befdf759ad88191b608ff30bed717ed",
+    "file_id": "file_00000000b5f081f6b2e311e133a13ab9",
+    "byte_recheck": "PASS"
+  },
+  "selected_exposure_facts": {
+    "rows": 670631,
+    "sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+    "library_ref": "libfile_0cf848f0ca6c8191a5c992e473517a18",
+    "file_id": "file_00000000e06481f68c53413b0235a90f",
+    "byte_recheck": "PASS"
+  },
+  "j3_native_q86abc_respondent_facts": {
+    "rows": 19210,
+    "sha256": "c8e26789d271dd1b3975a82223d58414bfc8b33664a853beaf06cec3aedecc17",
+    "library_ref": "libfile_2355b085cff4819184c8a6fb3116bd9b",
+    "file_id": "file_00000000022481f684c24de0b39c1e54",
+    "byte_recheck": "PASS"
+  },
+  "q86a_risk_set_recovered": {
+    "rows": 19210,
+    "native_counts": {
+      "0": 2643,
+      "1": 15984,
+      "9": 575,
+      "-1": 8
+    },
+    "exposure_counts": {
+      "EXPOSED__PROVED": 19210
+    },
+    "canonical_rows_sha256": "8dbbd0bfa86a5770fa73e1b47daa389430af774728e1655c87abac204f8c4909",
+    "canonical_material_sha256": "60a16e091f0c1f6da7caaefdccea1c7dc8c4c03d552546253b165722b972c23a",
+    "risk_respondent_key_list_sha256": "2d93873cdbc03178a3b21b7f51f198e00b0c19a4f99588b01f2c6219f4be67f5",
+    "risk_key_alpha3_pairs_sha256": "fb4a2e93e6a1b75fe3f8d644705109540aa71d1688b62ec714352a7eb68d3019",
+    "ffp014_key_local_id_pairs_sha256": "a4ea782fcbc3f1f6e50061c80ba304ce91dddfc0e70ba2da79e40613b636928b"
+  },
+  "risk_country_binding": {
+    "2": "BOT",
+    "3": "BFO",
+    "4": "CVE",
+    "6": "KEN",
+    "7": "LES",
+    "10": "MLW",
+    "12": "MOZ",
+    "13": "NAM",
+    "16": "SAF",
+    "18": "UGA",
+    "21": "MAU"
+  },
+  "raw_sav_materialized": false,
+  "authority_effect": "NONE__RECOVERY_OF_ALREADY_ACCEPTED_EXTERNAL_CARRIERS_ONLY",
+  "identity_domain_law": {
+    "ffp014_respondent_local_id": "CARRIER_NATIVE_IDENTITY__DO_NOT_EQUATE_TO_PRE553_RESPONDENTIDENTITY_CONTENT_HASH",
+    "pre553_respondent_identity": "RECONSTRUCTED_FROM_SAME_FFP014_CARRIER_REF_PLUS_EXACT_COUNTRY_RESPNO_KEY",
+    "alignment": "EXACT_SHARED_CARRIER_NAMESPACE_PLUS_COUNTRY_RESPNO_KEY__NO_IDENTITY_COLLAPSE"
+  }
+}

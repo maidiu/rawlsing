@@ -1,0 +1,36 @@
+# PROGRAMMA-HQ-C2 — implementation return and competent owner handoff
+
+**Disposition:** `COMPLETE_DOCUMENTARY_CANDIDATE__PENDING_C3_AND_OWNER_CAS`. This is a one-agent S0–S1 source-qualified GitHub implementation, not a claim that current Pyat/Sorok HQs ingested the new law or that a native, scientific, owner or human outcome has advanced. **No live HQ was interrupted.**
+
+## Exact work provenance
+- Repository `maidiu/rawlsing` PRIVATE. Authorized branch `docs/programma-hq-three-complete-frontdoors-20261103-r1`, created from verified qualified PRE-MAIN `773bb412a820949f13a7178b6671327cd56a3bf1`. C1 six substantive audit documents and locator were read at actual frozen `f6ac322e24101fe65fc27f44f3f257eafcc318f1`; never used C1's isolated branch as protected base.
+- User authorized C1 P01–P08 and this branch implementation, expressly overriding **all section-count and brevity heuristics**. Correctness for an AI HQ's consequential operational decisions controls number, structure and length. User did not confer novel scientific, protected merge, native source or reviewer rights.
+- Actual first implementation commit `b76ca09d77ad0c9322698f66c9eecbd368d39fa1`. The source-pinned 28-rule manifest, 18 verbatim identical common clauses across three doors and 2 PRE-MAIN/4 Pyat/6 Sorok local clauses were read back and checked by S0–S1 exact-text parity. The Python validator is committed but **S2 in qualified repository runner: NOT_RUN**, and C3 full cold-source independence: NOT_RUN.
+- Model/host: present ChatGPT text/GitHub-connected environment, GPT-6; ChatGPT client effort/plan quota, editor variant and DeepSeek/Codex host eligibility not independently attested. The user did not request autonomous model switching; none occurred. S3 source/native/actor execution NOT_RUN.
+
+## Scope actually changed in one isolated staged proposal
+1. `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`: common operational shared law, source/owner hierarchy, exact currentness/flight/commission/review and one material transition (NOT a third executive HQ).
+2. `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md`: all common law locally embedded plus original35, F1–F8, 1,890 planned/non-occupancy, N11/N12, 0/A–M first versus selective resumed grok, merged five-test historical-function work selection, scoped source/reader roadmap write-through.
+3. `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md`: all common law locally embedded plus whole-person original/Astra/V3/Neo-V3 inheritance, I/T/A/E/C/V, selected ALL/ANY/IF, real first reader, event/Rule A/T and O07 NO_CHANGE, W8-R/W8-V exact scoped status, human Gate4→Gate5 and existing guide direct write-through.
+4. `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/SHARED_RULE_SOURCE_MANIFEST_R1.json`, `verify_three_frontdoors.py`: source identity and exact-rendition drift/no-drop validator, not new datastore or fourth HQ.
+5. `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md`: **only stale proposed-status banner** corrected for adopted PR #652 at `773bb412a820949f13a7178b6671327cd56a3bf1`; no science/rights promotion, unchanged five tests.
+6. `PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md`, `PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md`, `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`: short *candidate* compatibility shims, old full source/commit/blob links retained and reversible. C1's source-backed substantive requirements are all embedded in the new doors; full historic curriculum remains on-trigger evidence. No other old shared law silently deleted.
+7. This one return directory: no current progress/checkpoint, active worker, protected PRE-MAIN, native code/science, source issuer, W8-R guide or controller touched.
+
+## Material limits not to be erased in review
+- **Pyat:** PRE-MAIN `CURRENT_PROGRESS.md`/JSON at the inspected cut continues to say RRIF closed at narrow historical/sourcefree scope and PROGRAMMA remains **USER_STOPPED**. This user instruction only authorized **C2 document integration**, not release of unrelated original35/native work. G4 original 62 organ/82 seam map is inherited and may reside on isolated qualified guide branch; do not invent PRE-MAIN roadmap update.
+- **Sorok:** PRE-MAIN `CURRENT_PROGRESS.md` starts revision36 while JSON remains revision35; exact source mismatch must be handled by actual status owner. Source W8-R `a9ebf71e62d84e5dcc599662e976eca7fcd0e623` is candidate with 38 seams/zero full joins; W8-V `dd8a38bb66ca1c1e9bc336e7f536362e8a2e2e08` technical cold-read favorable but formal independence NOT_ISSUED. 598d/c784 negative and 7bf sourcefree limits remain. No source-native actual person, consenting human Gate5 or approved C11 weld is claimed.
+- **Boundary:** the new documents define material write-through obligations for *incumbent HQs after actual adoption*, but C2 **did not and must not** mark a pretend JOIN-E/S35/Pyat N11 material return as currently integrated. If a genuine future material result has no authorized guide receiving, the incumbent status owner should explicitly publish `PENDING_GUIDE_INTEGRATION` with exact candidate SHA, old adopted head and affected IDs.
+
+## Three separate verdict dimensions — scoped C2 return
+- **ENGINEERING (documentary):** S0–S1 reconstructed/committed/readback 3 complete entries + source manifest/static validator; 28 IDs present, shared 18 identities matched. `CANDIDATE_DOC_IMPLEMENTED__S0_S1_PARITY_PASS__S2_NOT_RUN`, not executable or deployment acceptance.
+- **SCIENTIFIC:** `NOT_ISSUED__NO_NATIVE_PSYCHOLOGY_OR_ORIGINAL35_SCIENCE_TESTED`.
+- **AUTHORITY:** `PENDING_INDEPENDENT_C3__PENDING_DOMAIN_OWNER_AND_PREMAIN_CAS`. This C2 author cannot self-accept or appoint C3.
+- **HUMAN/PRODUCT:** `NOT_RUN__NO_REAL_HUMAN_EXPOSURE`.
+
+## C3 receiving and shortest lawful completion path
+1. C3 must be a **different genuinely disinterested agent**, not C1/C2 author nor prior subject author with conflicting proximity. Its prepared separate held [issue #663](https://github.com/maidiu/rawlsing/issues/663) may be launched by the user only after this exact C2 commit/PR, with real harness/editor selected.
+2. Cold-read each of the **three 00s alone** on exact candidate SHA, then challenge their answers against controlling originals at pinned cuts. Execute all C1's 16 C3 adversarial probes, with material wrong-root reviewer, vacuous conditional READY, absent actual first importer, false user dispatch, false native/human acceptance and delayed guide write-through. Inspect source manifest and full historic startup preservation; cross-check no hidden mandatory constitution.
+3. If material RED, repair only exact defective scope on isolated branch then independent recheck. If accepted, rightful PRE-MAIN/CAS and original Pyat/Sorok HQ owners adopt only actual reviewed cut after concurrency and source grants; only **then** mark old shims historical/current and update actual progress/checkpoint and living guide as warranted. Close/retire old PR #654 by its actual author/owner, not this integrator. Stop after one draft PR.
+
+**Explicit stop:** This return is the integrator's full proposed documentary deliverable. No S2/S3, no independent acceptance, no protected branch merge, no native science or automatic launch.

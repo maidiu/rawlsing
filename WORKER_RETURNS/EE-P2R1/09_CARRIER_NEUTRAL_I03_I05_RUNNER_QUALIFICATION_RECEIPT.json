@@ -1,0 +1,31 @@
+{
+  "schema": "EE_P2R1_CARRIER_NEUTRAL_I03_I05_RUNNER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "runner": "CarrierNeutralResearchExecutor",
+  "inputs": [
+    "C11Repository",
+    "exact release refs",
+    "RuntimeObjectCatalog"
+  ],
+  "outputs": [
+    "existing PRE553 I03 QueryExecutionResult",
+    "existing exact-bounded I05 ExactBoundedDiscoveryResult",
+    "carrier-neutral learned empirical execution receipt"
+  ],
+  "exact_engine_delegation": {
+    "I03": "execute_empirical_query",
+    "I05": "execute_exact_bounded_discovery"
+  },
+  "replay_and_failure_law": "existing PRE553 engines remain authoritative; exact refs only; typed negatives preserved; no candidate semantic branches",
+  "D04_semantics": {
+    "accepted_reference": "ASTRA-D04-R2",
+    "claim": "when supplied the governed D04 workload catalog, runner executes the same I03/I05 contracts from which the 50-candidate/77-role research-layer product is constructed",
+    "historical_D04_product_used_as_fresh_output": false,
+    "research_layer_packaging_absorbed_into_Chetiri": false
+  },
+  "court": {
+    "i03_identity_parity": true,
+    "i03_predicate_substitution_rejected": true,
+    "existing_i03_i05_suites_included": true
+  }
+}

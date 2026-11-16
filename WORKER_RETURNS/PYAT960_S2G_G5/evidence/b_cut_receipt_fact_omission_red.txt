@@ -1,0 +1,10 @@
+B_CUT_RED Failed: DID NOT RAISE <class 'b_cut_learned.DurableLearnedLifecycleError'>
+Traceback (most recent call last):
+  File "<stdin>", line 12, in <module>
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-a/rawlsing_next/tests/test_pyat960_s2g_a_counter_subset.py", line 100, in test_a_counter_receipt_fact_omission_is_refused
+    with pytest.raises(DurableLearnedLifecycleError, match="receipt"):
+  File "/Users/matthewsmith/Library/Python/3.11/lib/python/site-packages/_pytest/raises.py", line 710, in __exit__
+    fail(f"DID NOT RAISE {self.expected_exceptions[0]!r}")
+  File "/Users/matthewsmith/Library/Python/3.11/lib/python/site-packages/_pytest/outcomes.py", line 163, in __call__
+    raise Failed(msg=reason, pytrace=pytrace)
+Failed: DID NOT RAISE <class 'b_cut_learned.DurableLearnedLifecycleError'>

@@ -1,0 +1,31 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.1.0",
+  "checkpoint_id": "20260926T0339-0400",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "governing_decision": "HQD-2026-09-26-108",
+  "semantic_pre_main_tip": "3efdfbbd26273135c3bb1b637ac5fbbf8f571ec7",
+  "files": {
+    "current_md": {
+      "path": "HQ_HANDOFF/checkpoints/20260926T0339-0400/CURRENT.md",
+      "git_blob_sha": "d5bad90c9ba0d9dfdd0df08de1635ad935780eb4"
+    },
+    "current_json": {
+      "path": "HQ_HANDOFF/checkpoints/20260926T0339-0400/CURRENT.json",
+      "git_blob_sha": "9d0565bd5a7db468c0700a9f63650500ede96b86"
+    },
+    "succession_handoff": {
+      "path": "HQ_HANDOFF/FIABC_HQ_SUCCESSION_BOUNDED_AUTONOMOUS_CONTROL_REMEDIATION_R1.md",
+      "git_blob_sha": "9a1f88913bdf8b4e4885811d606b5767686d7c3b"
+    },
+    "decision_ledger": {
+      "path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+      "git_blob_sha": "b344cd6ef7c9fcc0fe2982e72c92ac2ee34959dd"
+    }
+  },
+  "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "candidate_execution_bytes_frozen": true,
+  "bounded_autonomous_control_remediation_authorized": true,
+  "measured_execution_authorized": true,
+  "p2_authorized": false,
+  "next_action": "AUTONOMOUS_SOURCE_NEUTRAL_REMEDIATION_AND_FRESH_RETRY_UNTIL_SOURCE_LOCAL_ABC_SUCCESS_OR_PROVEN_SUBSTANTIVE_BLOCKER"
+}

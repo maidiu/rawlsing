@@ -1,0 +1,49 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260930-PYAT-C2-D02-CLOSED-C1R7-BOUND-R1",
+  "status": "C2_SOURCE_FREE_PREPARATION_COMPLETE__D02_LOCATOR_CLOSED__C1_R7_OWNER_CLOSURE_BOUND__C3_ADOPTED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20260930-PYAT-D02-LOCATOR-CORRECTED-REVIEW-BOUND-R1",
+  "governing_decision": "HQD-2026-09-30-135",
+  "c2": {
+    "state": "COMPLETE_AT_DECLARED_C4_PREPARATION_GRAIN",
+    "selected_sources": [
+      "02",
+      "06",
+      "08",
+      "12",
+      "14",
+      "26",
+      "27",
+      "35"
+    ],
+    "c2_review_head": "105e68c4e7b0d991299ef0bf33616b7a6d67349a",
+    "d02_review_head": "dbff6acdb9557ab65dda0bd564295cec5fc55062",
+    "d02_blocker": "CLOSED_AT_DECLARED_GRAIN"
+  },
+  "c1": {
+    "r6_review_head": "458f839845fc149874e5a64af5eda41bbd52c4e1",
+    "r6_review_disposition": "ESCALATE_WITH_COUNTEREXAMPLE",
+    "r6_execution_head": "a92f977e9ce4615326b09ad9e3407b3b02684788",
+    "r6_execution_disposition": "BLOCKED_EXECUTION_CAPABILITY",
+    "r7_branch": "agent/rabochii-pyat-hq135-c1-01-r7-owner-closure-r1",
+    "r7_commission_tip": "7ea809f3b4433d24c027eb0ad3e98b0a6d3fb607",
+    "c1_01_adopted": false,
+    "c1_02_authorized": false
+  },
+  "c3": {
+    "state": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
+    "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6"
+  },
+  "active_frontier": [
+    {
+      "id": "C1-01-R7",
+      "branch": "agent/rabochii-pyat-hq135-c1-01-r7-owner-closure-r1",
+      "commission_tip": "7ea809f3b4433d24c027eb0ad3e98b0a6d3fb607"
+    }
+  ],
+  "next_action": "USER_LAUNCH_C1_01_R7_OWNER_CLOSURE__HQ_ADJUDICATES_RETURN_THEN_FANS_OUT_REVIEW_AND_EXECUTION",
+  "raw_source_execution_authorized": false,
+  "c4_execution_authorized": false,
+  "astra_escalation_triggered": false
+}

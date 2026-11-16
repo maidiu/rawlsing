@@ -1,0 +1,90 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "PYAT960-S2G-A-MAC-WORKTREE",
+  "epoch_id": "HQ01a15c1e-5446-7ef3-80bb-9ff5c2cb27da",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "machine_alias": "matthewsmith-mac",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-11-12T19:30:33Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "37114d40487bb83aa5c9a8c9825c65af3991f721",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "git": "2.43.0",
+    "filesystem": "VERIFIED",
+    "connector": "VERIFIED",
+    "notes": "Exclusive sourcefree A worktree; Python/Git/import/source blob verified; no original source or credential read."
+  },
+  "branch": "agent/pyat960-s2g-a-r1",
+  "checkout_sha": "37114d40487bb83aa5c9a8c9825c65af3991f721",
+  "shared_store_alias": "rawlsing local Git store",
+  "worktree_alias": "pyat960-s2g-a",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
+      "path": "rawlsing_next/pre553_durable_learned_lifecycle.py",
+      "blob_sha1": "8980effc39efe322ccda29ef4f8ff01f1bf2643a",
+      "module_alias": "rawlsing_next.pre553_durable_learned_lifecycle",
+      "import_verified": true,
+      "relative_stage_path": null
+    },
+    {
+      "commit": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
+      "path": "rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py",
+      "blob_sha1": "66347b5704c5d566fa2d8b3803d4e49bf235777b0fd4ad45779cf75877986829",
+      "module_alias": "rawlsing_next.tests.test_pyat960_s2g_durable_lifecycle",
+      "import_verified": true,
+      "relative_stage_path": null
+    }
+  ],
+  "tests": [
+    {
+      "scope": "S2-G mandatory G01-G09 and hostile cases",
+      "status": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py rawlsing_next/tests/test_pyat960_s2g_fresh_process.py -q",
+      "receipt_ref": "WORKER_RETURNS/PYAT960_S2G_A/evidence/selected_147.txt",
+      "test_count": 13,
+      "claim_grade": "EXACT_OWNER_SOURCEFREE"
+    },
+    {
+      "scope": "existing M1/M2/B5/world owner regression plus S2-G",
+      "status": "PASS",
+      "command": "python3 -m pytest test_pre553_learned_world_composition test_pre553_learned_empirical_adjudication test_pre553_learned_product_lifecycle test_pre553_learned_product_release test_universal_learned_consumer test_pyat960_s2g_durable_lifecycle test_pyat960_s2g_fresh_process -q",
+      "receipt_ref": "WORKER_RETURNS/PYAT960_S2G_A/evidence/selected_147.txt",
+      "test_count": 147,
+      "claim_grade": "EXACT_OWNER_SOURCEFREE"
+    },
+    {
+      "scope": "S2-F closure regression",
+      "status": "PASS",
+      "command": "python3 -m pytest test_pyat940_s2f_durable_closure test_pyat940_s2f_fresh_process test_pyat940_s2f_b_negative_and_multisource test_pyat940_s2f_a_counter_provenance -q",
+      "receipt_ref": null,
+      "test_count": 19,
+      "claim_grade": "EXACT_OWNER_SOURCEFREE"
+    }
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "original_survey_use": "NOT_GRANTED",
+    "external_model_use": "EXPLICITLY_GRANTED",
+    "actor_execution": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "opencode-go/deepseek-v4.1-flash#max",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "UNKNOWN",
+    "retry_count": 0
+  },
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "S2-G-independent-G5",
+    "S2-E-dependency",
+    "sourcefree-custody"
+  ],
+  "independence_conflict": null,
+  "retirement_reason": null
+}

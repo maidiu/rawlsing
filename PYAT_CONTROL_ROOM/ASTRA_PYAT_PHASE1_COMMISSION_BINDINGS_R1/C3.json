@@ -1,0 +1,160 @@
+{
+  "schema": "ASTRA_PHASE1_COMMISSION_BINDING@1",
+  "id": "C3",
+  "status": "REVIEWABLE_DRAFT__NOT_ISSUED",
+  "base_commit": "0143c6e531aab7a5ad1e9c4149b385f8e209bc69",
+  "checkpoint_commit": "767ab2d8990935faed01135a4fc3b1f45f53530a",
+  "worker": null,
+  "independent_reviewer": null,
+  "runtime_identity": null,
+  "runtime_identity_reason": "Must be frozen from applicable qualification protocol before execution; no runtime executed in this documentary preparation.",
+  "proposed_write_terrain": [
+    "WORKER_RETURNS/PYAT-C3-REPRESENTATION-REPAIR-ACCEPTANCE-R1/** (initial review only)"
+  ],
+  "evidence": [
+    {
+      "repository": "maidiu/rawlsing",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "ref": "1585b3edf1014544dfce90bbeb758a5024d69855",
+      "blob_sha1": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "url": "https://github.com/maidiu/rawlsing/blob/1585b3edf1014544dfce90bbeb758a5024d69855/rawlsing_next/pre553_physical_decoder.py",
+      "retrieval_result": "SUCCESS",
+      "ref_kind": "immutable_commit",
+      "content_git_blob_verified": true,
+      "returned_content_sha256": "a75a8ff72310949b84adbe682a01375c5dcf5dcee69e94e2a4a8a9b39e17017b",
+      "inspected_ranges": [
+        {
+          "start": null,
+          "end": null
+        }
+      ],
+      "kind": "implementation",
+      "audit_record_locations": [
+        {
+          "path": "records/PASS4_FINAL_REPORT.md",
+          "line": 249
+        },
+        {
+          "path": "records/PASS1_EVIDENCE_PACKET.md",
+          "line": 146
+        },
+        {
+          "path": "records/PASS2_FORENSIC_PACKET.md",
+          "line": 123
+        }
+      ],
+      "id": "EV107"
+    },
+    {
+      "repository": "maidiu/rawlsing",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "ref": "1585b3edf1014544dfce90bbeb758a5024d69855",
+      "blob_sha1": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "url": "https://github.com/maidiu/rawlsing/blob/1585b3edf1014544dfce90bbeb758a5024d69855/rawlsing_next/pre553_source_backed_c11_facade.py",
+      "retrieval_result": "PRESERVED_PASS_IDENTITY__NOT_REFETCHED_FOR_DELIVERY",
+      "ref_kind": "immutable_commit",
+      "content_git_blob_verified": null,
+      "returned_content_sha256": null,
+      "inspected_ranges": [],
+      "kind": "implementation",
+      "audit_record_locations": [
+        {
+          "path": "records/PASS4_FINAL_REPORT.md",
+          "line": 250
+        },
+        {
+          "path": "records/PASS1_EVIDENCE_PACKET.md",
+          "line": 147
+        }
+      ],
+      "id": "EV113"
+    },
+    {
+      "repository": "maidiu/rawlsing",
+      "path": "WORKER_RETURNS/PREMAIN-CLOSED35-REPRESENTATION-IMPLEMENTATION-FANIN-R1/00_RETURN.md",
+      "ref": "9bf2fd3641136c58c9e54f050864eb9f29c1a6c4",
+      "blob_sha1": "4365bc346e7615382d0b909d09209260bbe8908d",
+      "url": "https://github.com/maidiu/rawlsing/blob/9bf2fd3641136c58c9e54f050864eb9f29c1a6c4/WORKER_RETURNS/PREMAIN-CLOSED35-REPRESENTATION-IMPLEMENTATION-FANIN-R1/00_RETURN.md",
+      "retrieval_result": "SUCCESS",
+      "ref_kind": "immutable_commit",
+      "content_git_blob_verified": true,
+      "returned_content_sha256": "b20bebba0da19979fe449c284923477593fdd1e041cc5930de2ce1983abe63aa",
+      "inspected_ranges": [
+        {
+          "start": null,
+          "end": null
+        },
+        {
+          "start": null,
+          "end": null
+        }
+      ],
+      "kind": "documentary_or_authority",
+      "audit_record_locations": [
+        {
+          "path": "records/PASS4_FINAL_REPORT.md",
+          "line": 454
+        },
+        {
+          "path": "records/PASS2_FORENSIC_PACKET.md",
+          "line": 127
+        }
+      ],
+      "id": "EV037"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "AT04",
+      "title": "Encoding boundary",
+      "gates": [
+        "F1"
+      ],
+      "positive": "D01 recognizes only its exact source/encoding contract and preserves governed values.",
+      "hostile": "Unknown SHA, malformed text and absent encoding declaration cannot trigger a global permissive fallback.",
+      "node_ids": [
+        "N1"
+      ],
+      "status": "PROPOSED_ACCEPTANCE_CASE__NOT_EXECUTED"
+    },
+    {
+      "id": "AT05",
+      "title": "Opaque date/text",
+      "gates": [
+        "F1"
+      ],
+      "positive": "D02 preserves the declared physical identity of opaque date/text carriers.",
+      "hostile": "Coercion, timezone/date reinterpretation or lost typed value is detected.",
+      "node_ids": [
+        "N1"
+      ],
+      "status": "PROPOSED_ACCEPTANCE_CASE__NOT_EXECUTED"
+    },
+    {
+      "id": "AT06",
+      "title": "Numeric key law",
+      "gates": [
+        "F1"
+      ],
+      "positive": "G01 operates only under the accepted value-key equivalence law.",
+      "hostile": "Do not collapse distinct types/values globally merely to make joins pass.",
+      "node_ids": [
+        "N1"
+      ],
+      "status": "PROPOSED_ACCEPTANCE_CASE__NOT_EXECUTED"
+    }
+  ],
+  "outputs": [
+    "candidate_current_diff_manifest.json",
+    "repair_acceptance.json",
+    "proposed_integration_allowlist.json",
+    "source_free_qualification_receipt.json",
+    "integrated_implementation_manifest.json",
+    "remaining_live_obligations.json",
+    "worker_return.json"
+  ],
+  "source_execution_authorized": false,
+  "implementation_authorized": false,
+  "dispatch_authorized": false,
+  "adoption_gate": "Independent exact-commit review followed by explicit HQ adoption and checkpoint sealing."
+}

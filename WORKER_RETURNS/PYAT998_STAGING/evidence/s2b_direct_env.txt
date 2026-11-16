@@ -1,0 +1,455 @@
+FF.......F...FFF.FFF.....F..........................                     [100%]
+=================================== FAILURES ===================================
+_______ test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release ________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_real_source0')
+
+    def test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release(tmp_path):
+        candidate, stripped, streams = _direct("s2b-a5-direct")
+        assert type(stripped) is C11SourceReleaseCandidate
+        assert stripped.candidate_replay_manifest is None
+        path = tmp_path / "direct-i02.sqlite"
+        expected = build_sourcefree_direct_i02(
+            streams, candidate.empirical_universes[0].ref, path, chunk_size=1,
+        )
+        assert expected.schema == DIRECT_SCHEMA and expected.schema != SCHEMA
+>       with VerifiedExternalI02(path, roots=expected) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:333: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_________ test_s2b_a5_direct_chunk_determinism_cold_root_wrong_source __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_chunk_deter0')
+
+    def test_s2b_a5_direct_chunk_determinism_cold_root_wrong_source(tmp_path):
+        candidate, _, _ = _direct("s2b-a5-determinism")
+        universe = candidate.empirical_universes[0].ref
+        def build(path, chunk):
+            _, _, source = _direct("s2b-a5-determinism")
+            return build_sourcefree_direct_i02(
+                source, universe, path, chunk_size=chunk,
+            )
+        small = tmp_path / "c1.sqlite"
+        large = tmp_path / "c257.sqlite"
+        r1 = build(small, 1)
+        r257 = build(large, 257)
+        assert r1.logical == r257.logical
+>       with VerifiedExternalI02(small, roots=r1) as left:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:451: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+________ test_s2b_a5_direct_legacy_valid_manifest_without_replay_count _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_legacy_vali0')
+
+    def test_s2b_a5_direct_legacy_valid_manifest_without_replay_count(tmp_path):
+        candidate, _, _ = _direct("s2b-a5-no-replay-count")
+        counts = dict(
+            candidate.source_release_manifest.declared_record_counts_by_logical_family
+        )
+        counts.pop("ReplayManifest")
+        base = replace(
+            candidate,
+            source_release_manifest=replace(
+                candidate.source_release_manifest,
+                declared_record_counts_by_logical_family=counts,
+            ),
+            candidate_replay_manifest=None,
+        )
+        replay = build_candidate_replay_manifest(
+            base,
+            replay_protocol_authority_ref=(
+                candidate.candidate_replay_manifest.replay_protocol_authority_ref
+            ),
+            deterministic_tie_order_rules_ref=(
+                candidate.candidate_replay_manifest.deterministic_tie_order_rules_ref
+            ),
+            replay_protocol_version=(
+                candidate.candidate_replay_manifest.replay_protocol_version
+            ),
+        )
+        candidate = replace(base, candidate_replay_manifest=replay)
+        historical = validate_c11_source_release(candidate)
+        direct = direct_sections_from_candidate(
+            replace(candidate, candidate_replay_manifest=None),
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+        )
+        path = tmp_path / "no-replay-count.sqlite"
+        roots = build_sourcefree_direct_i02(
+            direct, candidate.empirical_universes[0].ref, path, chunk_size=2,
+        )
+>       with VerifiedExternalI02(path, roots=roots) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:546: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_a5_sourcefree_direct_changed_restore_without_legacy_release _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_sourcefree_direct_0')
+
+    def test_s2b_a5_sourcefree_direct_changed_restore_without_legacy_release(tmp_path):
+        """New direct certificate responds to real typed sourcefree event changes.
+    
+        The sourcefree fixture is not an original35 source-equivalence claim.
+        Source/content rights remain held separately; changed bytes must be
+        independently issued before any native production consumer accepts them.
+        """
+        candidate, _, original = _direct("s2b-a5-change")
+        universe = candidate.empirical_universes[0].ref
+        original_path = tmp_path / "before.sqlite"
+        original_roots = build_sourcefree_direct_i02(original, universe, original_path, chunk_size=1)
+        event = candidate.respondent_events[0]
+        changed_event = RespondentEvent(
+            typed_state=event.typed_state,
+            authority_snapshot_refs=event.authority_snapshot_refs,
+            dependency_refs=event.dependency_refs,
+            producer_replay_locator_or_reference_root=event.producer_replay_locator_or_reference_root,
+            **{**dict(event.semantic_fields), "raw_response_value": "A_DIFFERENT_TYPED_RESPONSE"},
+        )
+        assert changed_event.ref != event.ref
+        changed_candidate = replace(candidate,
+            respondent_events=(changed_event, *candidate.respondent_events[1:]),
+            candidate_replay_manifest=None,
+        )
+        replay = candidate.candidate_replay_manifest
+        changed_stream = direct_sections_from_candidate(
+            changed_candidate,
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+        )
+        changed_path = tmp_path / "changed.sqlite"
+        changed_roots = build_sourcefree_direct_i02(
+            changed_stream, universe, changed_path, chunk_size=7,
+        )
+        assert changed_roots.logical != original_roots.logical
+        respondent = exact_ref(event.scoped_respondent_ref).key
+        question = exact_ref(event.native_question_ref)
+>       with VerifiedExternalI02(original_path, roots=original_roots) as reader:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:653: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_a5_direct_historical_identity_installs_native_i03_selectors _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_historical_0')
+
+    def test_s2b_a5_direct_historical_identity_installs_native_i03_selectors(tmp_path):
+        from rawlsing_next._pre553_query_predicate import (
+            _build_release_index, _select_respondent_events,
+        )
+        candidate, _, _ = _direct("s2b-a5-direct-install")
+        historical = validate_c11_source_release(candidate)
+        universe = candidate.empirical_universes[0].ref
+        path = tmp_path / "direct-install.sqlite"
+        roots = _build_direct(candidate, path, chunk_size=3)
+        repo = C11Repository()
+        admission = ingest_c11_source_release(candidate, repo)
+        assert admission.accepted
+        native = _build_release_index(historical, universe)
+>       with VerifiedExternalI02(path, roots=roots) as reader:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:682: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+________ test_s2b_a5_direct_changed_restored_native_i03_eligible_output ________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_changed_res0')
+
+    def test_s2b_a5_direct_changed_restored_native_i03_eligible_output(tmp_path):
+        from rawlsing_next._pre553_query_predicate import _select_respondent_events
+        candidate, _, _ = _direct("s2b-a5-native-change")
+        universe = candidate.empirical_universes[0].ref
+        event = candidate.respondent_events[0]
+        respondent = exact_ref(event.scoped_respondent_ref).key
+        target = exact_ref(event.native_question_ref)
+    
+        def selected(candidate_input, tag):
+            path = tmp_path / (tag + ".sqlite")
+            roots = _build_direct(candidate_input, path, chunk_size=2)
+            repo = C11Repository()
+            admission = ingest_c11_source_release(candidate_input, repo)
+            assert admission.accepted
+            reader = VerifiedExternalI02(path, roots=roots)
+            try:
+                install_direct_sourcefree_i02_i03(
+                    repo, admission.release_ref, universe, reader,
+                )
+                index = repo._i03_release_indices[
+                    (admission.release_ref, universe)
+                ]
+                return [
+                    selected_event.ref.key for selected_event in
+                    _select_respondent_events(
+                        index, respondent, target, native_only=True,
+                    )
+                ]
+            finally:
+                reader.close()
+    
+>       original = selected(candidate, "before")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:800: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:783: in selected
+    reader = VerifiedExternalI02(path, roots=roots)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+___________ test_s2b_a5_direct_selector_alias_order_and_state_parity ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_selector_al0')
+
+    def test_s2b_a5_direct_selector_alias_order_and_state_parity(tmp_path):
+        candidate, canonical_q, component = _alias_candidate("s2b-a5-alias-order")
+        historical = validate_c11_source_release(candidate)
+        replay = candidate.candidate_replay_manifest
+        direct = direct_sections_from_candidate(
+            replace(candidate, candidate_replay_manifest=None),
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+        )
+        path = tmp_path / "alias-order.sqlite"
+        roots = build_sourcefree_direct_i02(
+            direct, candidate.empirical_universes[0].ref, path, chunk_size=1,
+        )
+        from rawlsing_next._pre553_query_predicate import (
+            _build_release_index, _select_respondent_events,
+        )
+        native_index = _build_release_index(
+            historical, candidate.empirical_universes[0].ref,
+        )
+        targets = (
+            candidate.question_variable_bindings[0].native_question_ref,
+            canonical_q, component,
+        )
+>       with VerifiedExternalI02(path, roots=roots) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:892: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_________ test_s2b_a5_direct_multi_universe_relation_historical_parity _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_multi_unive0')
+
+    def test_s2b_a5_direct_multi_universe_relation_historical_parity(tmp_path):
+        candidate = _multi_universe_candidate("s2b-a5-multi-universe")
+        historical = validate_c11_source_release(candidate)
+        replay = candidate.candidate_replay_manifest
+        direct = direct_sections_from_candidate(
+            replace(candidate, candidate_replay_manifest=None),
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+        )
+        path = tmp_path / "multi-universe.sqlite"
+        roots = build_sourcefree_direct_i02(
+            direct, candidate.empirical_universes[0].ref, path, chunk_size=2,
+        )
+>       with VerifiedExternalI02(path, roots=roots) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:936: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_a5_direct_all_optional_internal_families_historical_parity ______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_all_optiona0')
+
+    def test_s2b_a5_direct_all_optional_internal_families_historical_parity(tmp_path):
+        candidate = _optional_family_candidate("s2b-a5-optional-families")
+        historical = validate_c11_source_release(candidate)
+        replay = candidate.candidate_replay_manifest
+        direct = direct_sections_from_candidate(
+            replace(candidate, candidate_replay_manifest=None),
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+        )
+        path = tmp_path / "optional-families.sqlite"
+        roots = build_sourcefree_direct_i02(
+            direct, candidate.empirical_universes[0].ref, path, chunk_size=1,
+        )
+>       with VerifiedExternalI02(path, roots=roots) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:969: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+________ test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-760/test_s2b_a5_direct_2048_one_sh0')
+
+    def test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory(tmp_path):
+        """Actual typed event generator, not a pre-materialized 2048-object tuple.
+    
+        The original fixture builds only two sourcefree events; the direct
+        producer consumes 2048 additional valid event instances one at a time.
+        This is a material-scale one-respondent occurrence sample, NOT
+        original35 100k-person or full integrated 6GiB release proof.
+        """
+        import time
+        import tracemalloc
+        import resource
+        base_candidate, _, base_source = _direct("s2b-a5-material")
+        base = base_candidate.respondent_events[0]
+        n = 2048
+        counts = dict(base_candidate.source_release_manifest.declared_record_counts_by_logical_family)
+        counts["RespondentEvent"] = n
+        manifest = replace(base_candidate.source_release_manifest,
+                           declared_record_counts_by_logical_family=counts)
+        def events():
+            for i in range(n):
+                yield RespondentEvent(
+                    typed_state=base.typed_state,
+                    authority_snapshot_refs=base.authority_snapshot_refs,
+                    dependency_refs=base.dependency_refs,
+                    producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+                    **{**dict(base.semantic_fields),
+                       "response_event_id_or_deterministic_index": f"bounded-{i:05d}"},
+                )
+        sections = dict(base_source.sections)
+        sections["RespondentEvent"] = events()
+        input_stream = replace(base_source, manifest=manifest, sections=sections)
+        universe = base_candidate.empirical_universes[0].ref
+        path = tmp_path / "direct-material.sqlite"
+        tracemalloc.start()
+        started = time.monotonic()
+        try:
+            roots = build_sourcefree_direct_i02(
+                input_stream, universe, path, chunk_size=31,
+            )
+            build_s = time.monotonic() - started
+            _live, peak_python = tracemalloc.get_traced_memory()
+        finally:
+            tracemalloc.stop()
+        started = time.monotonic()
+>       with VerifiedExternalI02(path, roots=roots) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py:1118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_real_sourcefree_candidate_without_v1_release
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_chunk_determinism_cold_root_wrong_source
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_legacy_valid_manifest_without_replay_count
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_sourcefree_direct_changed_restore_without_legacy_release
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_historical_identity_installs_native_i03_selectors
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_changed_restored_native_i03_eligible_output
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_selector_alias_order_and_state_parity
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_multi_universe_relation_historical_parity
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_all_optional_internal_families_historical_parity
+FAILED rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py::test_s2b_a5_direct_2048_one_shot_event_stream_and_cold_memory
+10 failed, 42 passed in 12.70s

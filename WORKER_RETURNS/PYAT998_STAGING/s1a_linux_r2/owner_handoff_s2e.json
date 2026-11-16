@@ -1,0 +1,29 @@
+{
+  "schema": "PYAT998_S2E_METHOD_OWNER_HANDOFF@1",
+  "status": "OWNER_ACK_PENDING__FILE_FROZEN__NO_NEW_EDIT",
+  "file": "rawlsing_next/pre553_issued_workload.py",
+  "symbol": "NativeWorkloadResult.exact_s2e_output_census",
+  "current_blob": "5879c2b6690deb01c9442061bca9d9691988281f",
+  "s2d_accepted_source_blob": "b02810677ae66231e5e59b09aefe9bd63a31aaa3",
+  "s2d_accepted_source_commit": "9d96a9cac7d10f59f2c30d8045dd1696fa3ab969",
+  "s2e_method_source_blob": "6356d6639a5af65b9e4e7f86f4e3b495905e9d2c",
+  "s2e_method_source_commit": "81a764cc7eac960f0fd607d9c3fe62428905daa4",
+  "minimal_delta": "WORKER_RETURNS/PYAT998_STAGING/s1a_linux_r2/evidence/s2e_method_delta.patch",
+  "minimal_delta_shape": "26-line unified diff; exactly the optional read-only 15-line method body; no resolver, CURRENT, Batch, checkpoint, scientific or authority semantic change",
+  "owner_session": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+  "owner_ack": false,
+  "previous_ancestry_is_not_owner_permission": true,
+  "further_edit": "PROHIBITED_UNTIL_EXACT_OWNER_ACK",
+  "required_before_accepting_composition": [
+    "exact owner ACK for the two source blobs and this minimal method delta",
+    "no second evaluator or authority minting",
+    "retain S2-D all-seven behavior and S2-E conservation tests"
+  ],
+  "current_compatibility_evidence": [
+    "S2-D 31 passed after S1-A",
+    "S2-E 22 passed after S1-A",
+    "world-binding 18 passed after S1-A",
+    "Linux S2-B 81 passed on the composed proofcopy"
+  ],
+  "disposition": "HANDOFF_ONLY_NOT_ACCEPTED_COMPOSITION"
+}

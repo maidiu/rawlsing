@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_EE_P2X_COURT_RUN_MANIFEST_CONTRACT@1.0.0",
+  "authority_class": "PROPOSED_FOR_HQ_ADOPTION__NON_OPERATIVE_UNTIL_ADOPTED",
+  "path": "WORKER_RETURNS/EE-P2X/LOCAL_COURT/00_COURT_RUN_MANIFEST.json",
+  "required": [
+    "schema",
+    "hq_handoff_commit",
+    "lock1_manifest_blob",
+    "lock2_hash",
+    "physical_host_identity_sha256",
+    "runtime",
+    "coverage",
+    "attempted_cells",
+    "executed_stage_ids",
+    "source_metric_pooling",
+    "ranking_or_selection"
+  ],
+  "canonical_coverage": [
+    "LITS_I/A",
+    "LITS_I/B",
+    "LITS_I/C",
+    "WVS7/A",
+    "WVS7/B",
+    "WVS7/C"
+  ],
+  "lawful_attempt_domain": [
+    "LITS_I/A",
+    "LITS_I/B",
+    "LITS_I/C",
+    "WVS7/A",
+    "WVS7/B"
+  ],
+  "attempt_order_law": "attempted_cells must be a duplicate-free subsequence of lawful_attempt_domain in exact canonical order; WVS7/C is never attempted",
+  "coverage_states": [
+    "QUALIFYING_CELL_COMPLETE",
+    "AUTHORIZED_STOP",
+    "PRESERVED_FAILURE"
+  ],
+  "preserved_stage_ids_forbidden_in_executed_stage_ids": [
+    "LITS_I_A_FIRST_BUILD",
+    "LITS_I_B_CACHELESS_C11"
+  ],
+  "source_metric_pooling": false,
+  "ranking_or_selection": false,
+  "coverage_pointer_law": "Every canonical row has cell_receipt and failure_receipt fields. QUALIFYING_CELL_COMPLETE requires cell_receipt and null failure_receipt. AUTHORIZED_STOP requires failure_receipt; if the cell appears in attempted_cells it also requires a stopped source-candidate cell_receipt. An unattempted cell may omit cell_receipt only when covered by an authorized common-source or court-interruption blocker. WVS7/C is unattempted and points to the preserved portability-failure receipt."
+}

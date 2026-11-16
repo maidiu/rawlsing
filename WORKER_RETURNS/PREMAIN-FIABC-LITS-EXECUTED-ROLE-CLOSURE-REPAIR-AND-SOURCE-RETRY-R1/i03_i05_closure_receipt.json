@@ -1,0 +1,52 @@
+{
+  "affected_fact_from_missing_predicate_authority": {
+    "fact_ref": {
+      "content_hash": "c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc"
+    },
+    "predicate_ref": {
+      "content_hash": "3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508"
+    },
+    "query_ref": {
+      "content_hash": "3419fd8377bd3b681315191bd22a3c37a95443946c0a0477b2c591e6690bfbd0",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3419fd8377bd3b681315191bd22a3c37a95443946c0a0477b2c591e6690bfbd0"
+    },
+    "typed_state": "SUPPORTED"
+  },
+  "canonical_i03_closure_identity": null,
+  "canonical_i05_role_object_preimages_retained": false,
+  "checkpoint_closure_status": "BLOCKED_MISSING_EXACT_AUTHORITY_SNAPSHOT_PREIMAGE",
+  "error": "LiTS canonical empirical closure lost authority snapshot preimage",
+  "error_location": "rawlsing_next/fiabc_final_oracle_freeze_producers.py::_validate_lits_canonical_empirical_closure",
+  "execution_commit": "11d86982bd671674f4b320599a5ff18066e0e209",
+  "i03_compact_fact_refs": {
+    "unique_facts": 60,
+    "unique_predicates": 27,
+    "unique_queries": 60
+  },
+  "i05_result": {
+    "candidate_count": 50,
+    "candidate_processes_started": 0,
+    "coverage_state_counts": {
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    },
+    "execution_identity": "e547bfc6b27e89fc3a205d808cc7d5ff295e54ef7f34bf0c825c4bc3be3b85c5",
+    "fact_count": 60,
+    "fact_state_counts": {
+      "SUPPORTED": 60
+    },
+    "role_count": 77,
+    "semantic_replay_identity": "dbd18f3c3393256b2062061f2096adcbf4c44605ad5b592b75d59824c0428640",
+    "typed_state_counts": {
+      "DISCOVERED_RESULT_SUPPORTED": 49,
+      "VALID_EMPTY": 1
+    }
+  },
+  "schema": "FIABC_LITS_I03_I05_CLOSURE_RECEIPT@1.0.0",
+  "source_identity_verified": true
+}

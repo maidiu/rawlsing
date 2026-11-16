@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_C4_DISPUTED_CLAIMS_RECHECK_R2__C4_R9_GAP@1.0.0",
+  "lane": "PYAT-C4-DISPUTED-CLAIMS-RECHECK-R1",
+  "role": "independent reviewer, R2. Not HQ. Does not adjudicate, adopt or self-adopt.",
+  "finding_id": "C4",
+
+  "verdict": "UPHELD__SUBSTANCE_CORRECT__ONE_FIELD_NAME_PRECISION_CORRECTION",
+
+  "artifacts_compared": [
+    {"role": "template", "path": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json", "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa"},
+    {"role": "candidate", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4"},
+    {"role": "accounting_law", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4"}
+  ],
+
+  "artifact_07_per_source_coverage": {
+    "per_source_expected_operation_class_entries": 8,
+    "sources": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27", "SRC35"],
+    "field_presence_matrix": [
+      {"field": "expected_full_reads", "present_in": 6, "absent_for": ["SRC27", "SRC35"]},
+      {"field": "expected_selected_reads", "present_in": 6, "absent_for": ["SRC27", "SRC35"]},
+      {"field": "expected_metadata_reads", "present_in": 2, "absent_for": ["SRC02", "SRC06", "SRC14", "SRC26", "SRC27", "SRC35"], "note": "present only where a metadata probe is the admitted operation, i.e. SRC08 and SRC12"},
+      {"field": "expected_header_prefix_bytes", "present_in": 1, "absent_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC27", "SRC35"], "note": "present only for SRC26, value 176"},
+      {"field": "max_retry_budget", "present_in": 8, "absent_for": []},
+      {"field": "retry_law", "present_in": 8, "absent_for": []}
+    ],
+    "substitute_fields_for_the_two_absences": [
+      {"source": "SRC27", "instead_of_expected_reads_carries": {"expected_full_route_passes": 1, "expected_full_route_passes_max": 1}, "constraint_semantically_preserved": true},
+      {"source": "SRC35", "instead_of_expected_reads_carries": {"fresh_reads": 0}, "constraint_semantically_preserved": true}
+    ]
+  },
+
+  "correction_to_the_packet": {
+    "packet_says": "artifact 07's 8 sources with expected_full_reads, expected_selected_reads, max_retry_budget, retry_law",
+    "problem": "expected_full_reads and expected_selected_reads exist for 6 of the 8 sources, not 8.",
+    "nature": "field-name imprecision, not a missing constraint. SRC27's full-read constraint survives under expected_full_route_passes/_max; SRC35's survives as fresh_reads: 0. Both are tighter than the field the packet names.",
+    "substantive_impact": "none",
+    "corrected_statement": "artifact 07 carries per-source read constraints for all 8 sources: max_retry_budget and retry_law for 8 of 8, expected_full_reads and expected_selected_reads for 6 of 8, expected_metadata_reads for the 2 metadata-only sources, expected_header_prefix_bytes for SRC26, and expected_full_route_passes/_max for SRC27."
+  },
+
+  "what_survives_in_the_warrant_candidate_per_source": {
+    "sources": 7,
+    "keys": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+    "retained_fields": ["source_key", "source_file", "format", "canonical_sha256", "access_locator", "reader_lane", "allowed_operations", "authority", "expected_operation_class", "max_retry_budget", "raw_bytes_retention"],
+    "max_retry_budget_all_zero": true,
+    "SRC14_carries_D02_witness_binding": true,
+    "SRC27_carries_oracle_binding_and_RES_1": true,
+    "verdict": "Per-source operations, reader lanes, authority, retry budget and retention all survive in the warrant. This is the substantive content of the C4 narrowing."
+  },
+
+  "what_is_absent_from_the_warrant": {
+    "per_source_source_access_accounting_present": false,
+    "template_had_it_for_each_of_seven_sources": true,
+    "template_slots": [
+      {"slot": "full_file_sha256_passes", "template_value": "REQUIRED_EXACT_COUNT"},
+      {"slot": "path_opens", "template_value": "REQUIRED_EXACT_COUNT_AND_BASIS"},
+      {"slot": "decoder_invocations", "template_value": "REQUIRED_EXACT_COUNT"},
+      {"slot": "metadata_header_reads", "template_value": "REQUIRED_EXACT_COUNT"},
+      {"slot": "selected_reads", "template_value": "REQUIRED_EXACT_COUNT_AND_CONFIG"},
+      {"slot": "full_reads", "template_value": "REQUIRED_EXACT_COUNT_AND_CONFIG"},
+      {"slot": "retries", "template_value": "REQUIRED_EXACT_COUNT_AND_REASON"}
+    ],
+    "slots_carrying_an_extra_qualifier": ["path_opens", "selected_reads", "full_reads", "retries"],
+    "global_replacement_present": true,
+    "global_block_location": "top-level key access_accounting_instrumentation_bound in the warrant candidate",
+    "global_block_contents": {
+      "accounts_count": 10,
+      "basis_required_per_figure": true,
+      "digest_publication_requirement": "Every physical-metadata digest must be published with its reader lane."
+    },
+    "why_the_loss_matters": "O1-C06 requires the warrant to bind read limits per source. An executor holding only the warrant has a global account list but no per-source limit field to comply with. The substantive expectations survive in artifact 07, but a cross-reference is not the same as a bound field.",
+    "required_repair_at_issuance": "Restore a per-source source_access_accounting block for all seven sources with the seven slots above and their basis/config/reason qualifiers, populated or bound to the frozen expectations in artifact 07."
+  },
+
+  "packet_narrowing_is_correct": {
+    "packet_claim": "per-source constraints survive in artifact 07; only explicit per-source read-limit counters are absent from the warrant",
+    "my_verdict": "CORRECT IN SUBSTANCE",
+    "basis": "I confirmed both halves independently: the constraints survive in artifact 07 for all 8 sources, and the per-source accounting slots are absent from the warrant while a global block is present."
+  },
+
+  "failure_mode_check": {
+    "does_C4_rest_on_truncated_or_partial_evidence": false,
+    "why": "Three artifacts were read in full at pinned commits and compared field by field, including an explicit presence/absence matrix rather than a spot check. The one discrepancy I found, the 6-of-8 field coverage, would have been missed by spot-checking a sample of sources."
+  },
+
+  "terminal": "C4_DISPUTED_CLAIMS_RECHECK_R2_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

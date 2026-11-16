@@ -1,0 +1,26 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0327-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0225-0400",
+  "status": "P2X_INFRASTRUCTURE_STOP_ADOPTED__PARALLEL_REPAIRS_READY__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-19-081"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2X_INFRASTRUCTURE_STOP_ADOPTION_20260919.md",
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head_at_checkpoint": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+    "status": "HELD_PENDING_INFRASTRUCTURE_REPAIRS"
+  },
+  "repair_targets": {
+    "EE-P2R6U": "EXACT_ADOPTED_R6A_RUNTIME_SUBSTRATE_FANIN_PREPARATION",
+    "EE-P2R6V": "WVS_MATERIALIZER_BINDER_SHADOW_RECURSION_REPAIR",
+    "EE-P2R6W": "S17_PRETERMINAL_ORDERING_AND_COURT_SCOPE_FAILURE_PATH_REPAIR",
+    "EE-P2R6X": "LOCAL_LEDGER_AND_BACKEND_STATE_RECONCILIATION_PREPARATION"
+  },
+  "stopped_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+  "terminal": "PARALLEL_REPAIRS_READY__P2X_HELD_AT_AE8B1DB9"
+}

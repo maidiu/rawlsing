@@ -1,0 +1,112 @@
+{
+  "schema": "FIABC_LM2_R1A_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1A",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/rabochii-premain-fiabc-lm2-wvs-parentage-oracle-physical-r1",
+    "sha": "bf0f4ebb00e7304e1cda29f7ca9b6595fff248dc"
+  },
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1a-mapping-authority-adjudication-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LM2-R1A/",
+  "disposition": "ADJUDICATED__MINIMAL_REPAIR_HOLDING_READY",
+  "terminal": "FIABC_LM2_R1A_WVS7_MAPPING_AUTHORITY_ADJUDICATED__MINIMAL_REPAIR_HOLDING_READY",
+  "frozen_wvs7": {
+    "filename": "WVS Wave 7.sav",
+    "bytes": 185163494,
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613,
+    "cells": 59595860,
+    "r6s_materializer_blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+    "structural_preimage_identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+    "parentage_bundle": "5037c55bf1a017112c0fe5f18ca5905696d66dfefcc4d8f47dcb0e7fcb13f37c",
+    "lock2_authority_workload_identity": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "canonical_physical_expectation_identity": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390"
+  },
+  "ontology_holding": {
+    "A_source_native_semantic_identity": {
+      "required_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "wvs7_status": "POSITIVE_ACCEPTED"
+    },
+    "B_source_topology": {
+      "required_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "wvs7_status": "POSITIVE_ACCEPTED"
+    },
+    "C_native_to_canonical_mapping": {
+      "required_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "wvs7_positive_mapping_authority_in_relevant_accepted_chain": false,
+      "source_semantics_implies_mapping": false
+    },
+    "D_cross_source_harmonization": {
+      "required_authority": "SEPARATE_SOURCE_RELATION_OR_EQUIVALENCE_AUTHORITY",
+      "implied_by_C": false,
+      "r6s_posture": "DISTINCT_BY_DEFAULT__NO_CROSS_SOURCE_PROJECTION"
+    }
+  },
+  "c11_validator_holding": {
+    "canonical_material_requires_positive_mapping_authority": true,
+    "cross_source_harmonization_required_by_that_gate": false,
+    "validator_semantic_boundary": "KEEP",
+    "validator_coarseness": "ONE_VALUE_TRANSFORM_AUTHORITY_REF_GATES_EITHER_CANONICAL_QUESTION_OR_RESPONSE"
+  },
+  "r6s_holding": {
+    "canonical_question_material": "ALREADY_TYPED_ABSENT_NOT_AUTHORIZED__KEEP",
+    "substantive_response_codes": [1, 2, 3, 4, 5],
+    "current_response_defect": "CANONICAL_RESPONSE_VALUE_POPULATED_WITH_SOURCE_SEMANTICS_TOPOLOGY_AUTHORITY",
+    "source_special_states": [-5, -4, -2, -1],
+    "special_state_mapping_defect": false
+  },
+  "derived_mapping_authority": {
+    "lawful_from_source_semantics_topology_alone": false,
+    "current_action": "DO_NOT_MINT",
+    "future_possibility": "ONLY_WITH_INDEPENDENTLY_ACCEPTED_CANONICAL_TARGET_AND_EXACT_CROSSWALK"
+  },
+  "minimal_repair": {
+    "question_canonical_ref": "PRESERVE_ABSENCE",
+    "substantive_raw_response": "PRESERVE",
+    "substantive_typed_state": "PRESERVE",
+    "source_semantics_topology_authority": "PRESERVE",
+    "canonical_response_value_if_authorized": null,
+    "value_transform_authority_ref": null,
+    "special_states": "UNCHANGED",
+    "c11_validator": "UNCHANGED",
+    "recovery_start": "CANDIDATE_NEUTRAL_COMMON_C11_BUILD"
+  },
+  "question_vs_response_mapping": {
+    "same_ontology_kind_possible": true,
+    "same_exact_authority_object_required": false,
+    "distinct_claim_scope_required": true,
+    "current_question_mapping_required": false,
+    "current_response_mapping_required_if_canonical_field_populated": true
+  },
+  "evidence": {
+    "original_authority_ontology_commit": "2faacc3f084cf65e61843f1692b947177a617013",
+    "original_c11_mapping_gate_commit": "e6cb975e1b2e401279c5580955464f6976929804",
+    "source_authority": {
+      "authority_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+    },
+    "hb01_final_closure": "WVS7_HB01_SOURCE_LOCAL_HQ_ADOPTION_R2/08_HQ_HB01_CLOSURE_R1.md",
+    "query_value_law": "CANONICAL_IF_AUTHORIZED_ELSE_RAW"
+  },
+  "outputs": [
+    "WORKER_RETURNS/FIABC-LM2-R1A/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1A/01_AUTHORITY_ONTOLOGY.md",
+    "WORKER_RETURNS/FIABC-LM2-R1A/02_WVS7_MAPPING_CLAIM_MATRIX.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1A/03_REQUIRED_AUTHORITY_GRAPH.json",
+    "WORKER_RETURNS/FIABC-LM2-R1A/04_MINIMAL_REPAIR_HOLDING.md",
+    "WORKER_RETURNS/FIABC-LM2-R1A/RETURN.json"
+  ],
+  "proof_boundary": {
+    "wvs7_source_opened": false,
+    "real_source_processing_executed": false,
+    "structural_preimage_regenerated": false,
+    "candidate_process_started": false,
+    "i03_run": false,
+    "i05_run": false,
+    "measured_p2x_run": false,
+    "new_semantic_authority_snapshot_minted": false,
+    "accepted_physical_source_evidence_reopened": false
+  }
+}

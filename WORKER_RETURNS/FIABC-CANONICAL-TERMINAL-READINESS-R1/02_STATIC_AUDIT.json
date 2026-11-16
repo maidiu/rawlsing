@@ -1,0 +1,324 @@
+{
+  "schema": "FIABC_CANONICAL_TERMINAL_READINESS_STATIC_AUDIT_R1@1.0.0",
+  "base_sha": "3206bad6419e02c3aa12fff38e288e4faf13d82d",
+  "bounded_repair_head_before_return_packet": "00cc1c0fbe945cd7bbc6a8187aaf5533c9fb9b38",
+  "runtime_qualification_executed": false,
+  "github_actions_triggered": false,
+  "raw_survey_carriers_opened_or_materialized": false,
+  "candidate_abc_executed": false,
+  "lits_oracle_generated": false,
+  "wvs_oracle_standardized_or_frozen": false,
+  "pre_candidate_t3_freeze_executed": false,
+  "measured_p2x_executed": false,
+  "checks": [
+    {
+      "id": 1,
+      "status": "PASS",
+      "claim": "LITS_CANDIDATE_COUNT resolves from rawlsing_next/pre553_independent_parity_oracle.py",
+      "evidence": "single module-level definition LITS_CANDIDATE_COUNT = 50"
+    },
+    {
+      "id": 2,
+      "status": "PASS",
+      "claim": "LITS_CANDIDATE_COUNT is exactly 50",
+      "value": 50
+    },
+    {
+      "id": 3,
+      "status": "PASS",
+      "claim": "LITS_QUERY_ROLE_COUNT resolves from rawlsing_next/pre553_independent_parity_oracle.py",
+      "evidence": "single module-level definition LITS_QUERY_ROLE_COUNT = 77"
+    },
+    {
+      "id": 4,
+      "status": "PASS",
+      "claim": "LITS_QUERY_ROLE_COUNT is exactly 77",
+      "value": 77
+    },
+    {
+      "id": 5,
+      "status": "PASS",
+      "claim": "rawlsing_next/fiabc_final_oracle_freeze_producers.py resolves/re-exports both names",
+      "evidence": "both names are imported at module scope from pre553_independent_parity_oracle; the producer does not define competing values"
+    },
+    {
+      "id": 6,
+      "status": "PASS",
+      "claim": "existing test import has a valid symbol path",
+      "evidence": "rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py imports both names from fiabc_final_oracle_freeze_producers; that producer now imports both at module scope"
+    },
+    {
+      "id": 7,
+      "status": "PASS",
+      "claim": "no FIABC/WVS/P2/PRE553 semantic identities changed",
+      "evidence": {
+        "oracle_literal_to_named_constant_refactor_only": true,
+        "producer_change_is_import_only": true,
+        "oracle_identity_assignment_lines_equal_to_base": true,
+        "producer_identity_assignment_lines_equal_to_base": true,
+        "unchanged_identities_include": [
+          "LiTS frontier seal",
+          "LiTS source SHA",
+          "LiTS learned-product identity",
+          "LiTS semantic replay identity",
+          "LiTS projection/release/replay identities",
+          "WVS7 successor Lock2",
+          "WVS7 successor Lock2 replay",
+          "WVS7 discovery authority",
+          "WVS7 empirical universe",
+          "WVS7 risk set",
+          "WVS7 measure basis"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "status": "PASS",
+      "claim": "all three requested launch scripts select Python 3 fail-closed",
+      "evidence": {
+        "behavior": [
+          "prefer python3",
+          "fallback to python",
+          "fail if neither exists",
+          "fail if selected interpreter major version is not 3",
+          "use selected PYTHON_BIN for subsequent Python operations"
+        ],
+        "scripts": [
+          "WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+          "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+          "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "status": "PASS",
+      "claim": "no bare operational python invocation remains in the three scripts",
+      "evidence": "no line begins with bare python; literal python occurs only in interpreter discovery/fallback text"
+    },
+    {
+      "id": 10,
+      "status": "PASS",
+      "claim": "source-free qualification remains source-free and does not start oracle/candidate work",
+      "evidence": {
+        "absent_tokens": [
+          "LITS_PATH",
+          "WVS_PATH",
+          "produce-lits",
+          "standardize-wvs",
+          "freeze-t3",
+          "--run",
+          "--resume"
+        ],
+        "payload_python_operation_sequence_preserved_after_prepending_version_guard": true,
+        "exact_repaired_python_blobs_pinned_before_drift_allowlist": true
+      }
+    },
+    {
+      "id": 11,
+      "status": "PASS",
+      "claim": "pre-candidate preflight remains candidate-neutral",
+      "evidence": {
+        "contains_preflight": true,
+        "contains_candidate_run_or_resume": false,
+        "preexisting_payload_python_operation_sequence_preserved_after_prepending_version_guard": true
+      }
+    },
+    {
+      "id": 12,
+      "status": "PASS",
+      "claim": "measured runner remains exactly six serialized cells in frozen order",
+      "evidence": {
+        "shell_run_invocations": 1,
+        "manifest_source_order": [
+          "LITS_I",
+          "WVS7"
+        ],
+        "manifest_candidate_order": [
+          "A",
+          "B",
+          "C"
+        ],
+        "manifest_cells": [
+          "LITS_I/A",
+          "LITS_I/B",
+          "LITS_I/C",
+          "WVS7/A",
+          "WVS7/B",
+          "WVS7/C"
+        ],
+        "exact_six_frozen_order": true,
+        "driver_guards_expected_source_and_candidate_order": true,
+        "driver_serial_continuation_loop_preserved": true,
+        "runner_payload_python_operation_sequence_preserved_after_prepending_version_guard": true
+      }
+    }
+  ],
+  "authority_provenance": {
+    "owner": "rawlsing_next/pre553_independent_parity_oracle.py",
+    "independent_manifest": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "manifest_lits_values": {
+      "learned_candidates": 50,
+      "learned_roles": 77
+    },
+    "authority_character": "integration/export repair only; no new empirical authority minted"
+  },
+  "changed_repair_paths": [
+    "rawlsing_next/pre553_independent_parity_oracle.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+    "WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+    "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+    "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
+  ],
+  "next_local_command": null,
+  "terminal": "FIABC_CANONICAL_TERMINAL_READINESS_REPAIR_R1__RETURNED__50_77_SYMBOL_BINDING_REPAIRED__PYTHON3_PORTABILITY_REPAIRED__LOCAL_SOURCE_FREE_QUALIFICATION_REQUIRED",
+  "local_qualification_followup": {
+    "user_reported_head": "97329d51aac6bec495114b5e89e60260c2fcc846",
+    "user_reported_result": {
+      "passed": 154,
+      "failed": 9,
+      "subtests_passed": 28,
+      "green_terminal_emitted": false
+    },
+    "user_reported_candidate_or_measured_execution": false,
+    "diagnosis": [
+      {
+        "class": "terminal_completeness_hostile_expectation",
+        "disposition": "TEST_EXPECTATION_DRIFT",
+        "repair": "expect TC_METRIC_SET_DRIFT when canonical metric key set is incomplete",
+        "production_semantics_changed": false
+      },
+      {
+        "class": "R1J_projection_preflight_assertion",
+        "disposition": "BRITTLE_LITERAL_SOURCE_ASSERTION",
+        "repair": "assert exact successor identity through WVS_DISCOVERY_AUTHORITY and scope text check to active _wvs_docs block",
+        "production_semantics_changed": false
+      },
+      {
+        "class": "seven_driver_fixture_failures",
+        "disposition": "LEGACY_UNIT_FIXTURE_CROSSED_NEW_T3_T4_INTEGRATION_SEAM",
+        "repair": "stub only admit_live_stage_accounting in driver-mechanics fixture; dedicated T3/T4 tests remain active",
+        "production_semantics_changed": false
+      }
+    ],
+    "repaired_test_blobs": {
+      "terminal_completeness": "d94090389f10cabe8eb475c9c63162dc11806548",
+      "final_preflight_fanin": "02c6dad5912fd7283cc1fc5b889cde62b9818101",
+      "darwin_court_driver": "f0c687948ef1a2ce03a4df4521c20720d5fbf7b7"
+    },
+    "qualification_script_blob": "2d3acdb96174c22c891b9228dbde12e803b6d7f9",
+    "dedicated_t3_t4_tests_remain_in_qualification": [
+      "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py",
+      "rawlsing_next/tests/test_fiabc_t4_live_accounting.py"
+    ],
+    "followup_runtime_qualification_executed_by_worker": false,
+    "rerun_required": true
+  },
+  "second_local_qualification_followup": {
+    "user_reported_head": "c0fa63e0817bca56566049e86bf192934964868a",
+    "user_reported_pytest": {
+      "passed": 163,
+      "failed": 0,
+      "subtests_passed": 28
+    },
+    "green_terminal_emitted": false,
+    "final_failure": "AttributeError: pre553_independent_parity_oracle has no attribute WVS7_LOCK2_REPLAY",
+    "diagnosis": "qualification-script symbol typo",
+    "authoritative_oracle_symbol": "WVS7_LOCK2_REPLAY_IDENTITY",
+    "authoritative_oracle_value": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "terminal_control_symbol": "WVS7_SUCCESSOR_LOCK2_REPLAY",
+    "terminal_control_value": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "production_semantics_changed": false,
+    "worker_runtime_rerun_executed": false,
+    "rerun_required": true
+  },
+  "final_local_source_free_qualification": {
+    "user_reported_head": "6e2b817c80fc8745354e4a54103ba97a04c4437d",
+    "worktree_clean": true,
+    "pytest": {
+      "passed": 163,
+      "failed": 0,
+      "subtests_passed": 28
+    },
+    "final_terminal": "RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE",
+    "status": "PASS",
+    "source_free_qualification_closed": true,
+    "stopped_before": {
+      "pre_candidate_freeze": true,
+      "lits_oracle_generation": true,
+      "wvs_oracle_standardization_or_freeze": true,
+      "candidate_abc_execution": true,
+      "measured_p2x": true
+    },
+    "executed_by_browser_github_worker": false,
+    "evidence_character": "USER_REPORTED_LOCAL_EXECUTION"
+  },
+  "next_phase": "PRE_CANDIDATE_FREEZE__SEPARATE_GOVERNING_AUTHORIZATION_REQUIRED",
+  "execution_branch_transition": {
+    "disposition": "FAST_FORWARD_EXISTING_P2X_BRANCH__DO_NOT_RELAX_TO_TERMINAL_READINESS_BRANCH",
+    "existing_remote_head": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "governed_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "green_qualified_code_head": "6e2b817c80fc8745354e4a54103ba97a04c4437d",
+    "qualification_closure_head": "cbda295ec2e265709f1634b643e27abf704582d3",
+    "remote_head_is_ancestor_of_closure": true,
+    "stale_historical_code_head": "aa15525750085f4e223d579010688660a9ae1b6b",
+    "guard_repaired_in": [
+      "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+      "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
+    ],
+    "post_green_allowed_paths": [
+      "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/",
+      "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/"
+    ],
+    "production_code_after_green_head_allowed": false
+  },
+  "lits_representation_blocker": {
+    "execution_branch_head": "e8909490cdc619beb884029cdabdc7027db663cf",
+    "lock1_runtime_passed": true,
+    "source_hashes_passed": true,
+    "wvs_standardization_passed": true,
+    "lits_oracle_production_status": "BLOCK",
+    "error": "SourceBackedC11FacadeError: unbound response value/state; no label/frequency/missingness inference",
+    "downstream_not_run": [
+      "T3 freeze",
+      "succession preflight",
+      "Candidate A/B/C",
+      "measured P2X"
+    ],
+    "documentary_holding": "CURRENT_TYPED_PHYSICAL_KEY_CONTRACT_LACKS_CLOSED_LITS_REPRESENTATION_AUTHORITY",
+    "accepted_historical_candidate_b_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "current_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "accepted_historical_c11_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "old_key_law": "semantic_hash(canonicalize(raw/state/declaration))",
+    "current_key_law": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0 + R5TypedValueCodec exact typed representation",
+    "speculative_numeric_coercion_admitted": false,
+    "diagnostic_path": "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/08_LITS_REPRESENTATION_DIAGNOSTIC.py",
+    "next_step": "COMPLETED__SEE_LITS_REPRESENTATION_AUTHORITY_CLOSURE"
+  },
+  "lits_representation_authority_closure": {
+    "diagnostic_receipt_sha256": "74fc2c53610ad2af5867e4c36728604a812cf9ad3d7b0e4bceebda68fe4ac74b",
+    "diagnostic_response_cells": 58004,
+    "diagnostic_observed_cells": 57989,
+    "diagnostic_system_missing_cells": 15,
+    "authority_content_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "authority_snapshot_hash": "9ac03b6d6e1464da29018ad1e6e803c490ff652a1ec4d9b18691b3e82d98ec7b",
+    "qualified_code_head": "d1833f9ebe363258575c6bd95737eb8f1b0f4154",
+    "source_free_qualification": {
+      "passed": 172,
+      "failed": 0,
+      "subtests_passed": 28,
+      "terminal": "RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE",
+      "status": "PASS"
+    },
+    "global_typed_key_law_changed": false,
+    "generic_numeric_coercion_added": false,
+    "source_backed_work_executed_during_qualification": false,
+    "candidate_abc_executed": false,
+    "measured_p2x_executed": false,
+    "qualification_closure_head": "2d93017626a2815d84fd13123ac872047614c353",
+    "launch_guards_rebound": true,
+    "governed_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "pre_rebind_execution_head": "e8909490cdc619beb884029cdabdc7027db663cf",
+    "pre_rebind_execution_head_is_ancestor": true
+  }
+}

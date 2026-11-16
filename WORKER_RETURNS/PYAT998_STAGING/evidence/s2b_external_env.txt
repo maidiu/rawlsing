@@ -1,0 +1,895 @@
+FFFFFFFFF.FFF.F.FFF.FFFF.FF..                                            [100%]
+=================================== FAILURES ===================================
+______________ test_s2b_real_i02_native_i03_complete_and_restore _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_real_i02_native_i03_c0')
+
+    def test_s2b_real_i02_native_i03_complete_and_restore(tmp_path):
+        source = _build_source("s2b-first-native", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-first-native")
+        assert oracle.facts[0].typed_state == "SUPPORTED"
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+__________ test_s2b_a5_direct_sourcefree_drives_full_native_i03_query __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a5_direct_sourcefree_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10e0e4b10>
+
+    def test_s2b_a5_direct_sourcefree_drives_full_native_i03_query(tmp_path, monkeypatch):
+        """Direct-schema selectors feed the complete native fact/replay pipeline.
+    
+        The direct certificate supplies the exact selector index; the already
+        sealed repository supplies semantic bodies. This is direct native I03
+        support, not the separate S2-C cold physical body realization.
+        """
+        import rawlsing_next.tests.test_pre553_empirical_query as empirical_query
+        captured = []
+        original = empirical_query.ingest_c11_source_release
+        def spy(candidate, repo):
+            captured.append(candidate)
+            return original(candidate, repo)
+        monkeypatch.setattr(
+            empirical_query, "ingest_c11_source_release", spy,
+        )
+    
+        def build(tag, rows, name):
+            source = _build_source(tag, rows)
+            candidate = captured[-1]
+            qa, pred, query, oracle = _facts(source, tag)
+            replay = candidate.candidate_replay_manifest
+            direct = direct_sections_from_candidate(
+                replace(candidate, candidate_replay_manifest=None),
+                replay_protocol_authority_ref=(
+                    replay.replay_protocol_authority_ref
+                ),
+                replay_protocol_version=replay.replay_protocol_version,
+                deterministic_tie_order_rules_ref=(
+                    replay.deterministic_tie_order_rules_ref
+                ),
+            )
+            path = tmp_path / (name + ".sqlite")
+            roots = build_sourcefree_direct_i02(
+                direct, source["universe"].ref, path, chunk_size=3,
+            )
+            return source, qa, pred, query, oracle, path, roots
+    
+        tag = "s2b-a5-direct-full-query"
+        original_rows = [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ]
+        changed_rows = [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 1}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ]
+        before = build(tag, original_rows, "direct-before")
+>       with VerifiedExternalI02(before[5], roots=before[6]) as certified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+___ test_s2b_b4_switchable_external_roots_cannot_authorize_wrong_i03_release ___
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_b4_switchable_externa0')
+
+    def test_s2b_b4_switchable_external_roots_cannot_authorize_wrong_i03_release(tmp_path):
+        """G3: external root identity MUST NOT change after cold authentication.
+    
+        A dataclass subclass can present A's correct hashes at open and later
+        impersonate B's release/source/replay when the normal I03 installer reads
+        the held roots. The certificate class can be exact while its root isn't.
+        """
+        from dataclasses import fields
+    
+        tag = "s2b-b4-root-persona"
+        before = _build_source(tag, [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        after = _build_source(tag, [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 1}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        _qa, _pred, _query, before_oracle = _facts(before, tag)
+        qa, pred, query, after_oracle = _facts(after, tag)
+        assert before_oracle != after_oracle
+        assert _cell_map(after_oracle.facts[0])["1"]["raw_numerator_support"] == 3
+        assert before["universe"].ref == after["universe"].ref
+        assert {v.ref.key for v in before["respondents"].values()} == {
+            v.ref.key for v in after["respondents"].values()
+        }
+        before_path, before_roots = _prepare(tmp_path, before)
+        after_path = tmp_path / "different-issued-release.sqlite"
+        after_roots = build_sourcefree_external_i02(
+            _release(after), after["universe"].ref, after_path,
+        )
+        assert after_roots.logical != before_roots.logical
+    
+        class SwitchingExternalRoots(ExternalI02Roots):
+            replacement = None
+    
+            def __getattribute__(self, name):
+                if name in ("release", "source", "replay", "universe"):
+                    other = type(self).replacement
+                    if other is not None:
+                        return getattr(other, name)
+                return super().__getattribute__(name)
+    
+        persona = SwitchingExternalRoots(
+            *(getattr(before_roots, f.name) for f in fields(ExternalI02Roots))
+        )
+        try:
+            # Before B4, VerifiedExternalI02 used isinstance rather than exact
+            # root type; its cold proof accepted the mutable persona and its
+            # real native installer later used different release identity.
+            with pytest.raises(ExternalI02IntegrityError, match="exact immutable.*roots"):
+                with VerifiedExternalI02(before_path, roots=persona) as verified:
+                    SwitchingExternalRoots.replacement = after_roots
+                    install_sourcefree_external_i02_i03(
+                        after["repo"], after["release_ref"], after["universe"].ref,
+                        verified,
+                    )
+                    changed = _run(after, qa, pred, query)
+                    assert changed != after_oracle, (
+                        "misbound certificate unexpectedly preserved the correct native fact"
+                    )
+                    pytest.fail("native I03 admitted unverified source/root persona")
+        finally:
+            SwitchingExternalRoots.replacement = None
+    
+        # Positive native I03 with unmodified exact issued roots is preserved.
+>       with VerifiedExternalI02(after_path, roots=after_roots) as legitimate:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:252: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_forged_certificate_cannot_install_false_zero_into_real_i03 ______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_forged_certificate_ca0')
+
+    def test_s2b_forged_certificate_cannot_install_false_zero_into_real_i03(tmp_path):
+        """Harden the *existing* S2-B G3 counterfeit-index refusal at its consumer.
+    
+        An attacker can copy genuine roots and the genuine respondent census,
+        while replacing only selector_refs. An arbitrary Protocol must never be
+        promoted into the ordinary native I03 index attestation.
+        """
+        from types import SimpleNamespace
+    
+        source = _build_source("s2b-b-forged-install", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-b-forged-install")
+        assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as real:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+____________ test_s2b_verified_subclass_cannot_substitute_postings _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_verified_subclass_can0')
+
+    def test_s2b_verified_subclass_cannot_substitute_postings(tmp_path):
+        """A subclass can override the validated object's selector reader."""
+        source = _build_source("s2b-b-subclass", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+        ])
+        path, roots = _prepare(tmp_path, source)
+    
+        class CounterfeitChild(VerifiedExternalI02):
+            def selector_refs(self, *args, **kwargs):
+                return iter(())
+    
+>       with CounterfeitChild(path, roots=roots) as counterfeit:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:307: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_verified_connection_cannot_be_swapped_after_cold_root_check _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_verified_connection_c0')
+
+    def test_s2b_verified_connection_cannot_be_swapped_after_cold_root_check(tmp_path):
+        """A genuine verified class must not become a counterfeit by db reassignment."""
+        import shutil
+    
+        source = _build_source("s2b-b-connection-swap", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-b-connection-swap")
+        assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+        path, roots = _prepare(tmp_path, source)
+        poisoned_path = tmp_path / "unanchored-copy.sqlite"
+        shutil.copy2(path, poisoned_path)
+        with sqlite3.connect(poisoned_path) as untrusted:
+            untrusted.execute("DELETE FROM selectors WHERE kind='native'")
+>       with VerifiedExternalI02(path, roots=roots) as real:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:331: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+________ test_s2b_closed_verified_reader_refuses_typed_native_selection ________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_closed_verified_reade0')
+
+    def test_s2b_closed_verified_reader_refuses_typed_native_selection(tmp_path):
+        """An attested installed I03 index must not use a closed SQLite witness."""
+        from rawlsing_next._pre553_query_predicate import _select_respondent_events
+    
+        source = _build_source("s2b-b-closed", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-b-closed")
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:366: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+___________ test_s2b_same_respondent_duplicate_occurrence_and_states ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_same_respondent_dupli0')
+
+    def test_s2b_same_respondent_duplicate_occurrence_and_states(tmp_path):
+        source = _multi_i03_source("s2b-duplicate")
+        path, roots = _prepare(tmp_path, source)
+        respondent = source["respondents"]["R1"].ref.key
+        qref = source["qrefs"]["Y"]
+>       with VerifiedExternalI02(path, roots=roots) as cert:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:385: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+____ test_s2b_attacker_rehashes_omitted_selector_but_cold_verifier_refuses _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_attacker_rehashes_omi0')
+
+    def test_s2b_attacker_rehashes_omitted_selector_but_cold_verifier_refuses(tmp_path):
+        source = _build_source("s2b-poison", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+        ])
+        path, held = _prepare(tmp_path, source)
+        db = sqlite3.connect(path)
+        try:
+            assert db.execute("SELECT COUNT(*) FROM selectors").fetchone()[0] > 0
+            db.execute("""DELETE FROM selectors WHERE rowid = (
+              SELECT rowid FROM selectors ORDER BY event_ref LIMIT 1
+            )""")
+            db.commit()
+            forged_local_logical = _logical_root(db)
+        finally:
+            db.close()
+        forged_local = replace(held, logical=forged_local_logical, physical=_digest_file(path))
+        # Even an adversary who knows the local recomputation algorithm cannot
+        # make the originally held roots change. Whole selector completeness also
+        # independently defeats an omitted entry under locally forged new roots.
+        with pytest.raises(ExternalI02IntegrityError):
+            VerifiedExternalI02(path, roots=held)
+        with pytest.raises(ExternalI02IntegrityError, match="omits"):
+>           VerifiedExternalI02(path, roots=forged_local)
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:421: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_attacker_rehashes_omi0')
+
+    def test_s2b_attacker_rehashes_omitted_selector_but_cold_verifier_refuses(tmp_path):
+        source = _build_source("s2b-poison", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+        ])
+        path, held = _prepare(tmp_path, source)
+        db = sqlite3.connect(path)
+        try:
+            assert db.execute("SELECT COUNT(*) FROM selectors").fetchone()[0] > 0
+            db.execute("""DELETE FROM selectors WHERE rowid = (
+              SELECT rowid FROM selectors ORDER BY event_ref LIMIT 1
+            )""")
+            db.commit()
+            forged_local_logical = _logical_root(db)
+        finally:
+            db.close()
+        forged_local = replace(held, logical=forged_local_logical, physical=_digest_file(path))
+        # Even an adversary who knows the local recomputation algorithm cannot
+        # make the originally held roots change. Whole selector completeness also
+        # independently defeats an omitted entry under locally forged new roots.
+        with pytest.raises(ExternalI02IntegrityError):
+            VerifiedExternalI02(path, roots=held)
+>       with pytest.raises(ExternalI02IntegrityError, match="omits"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'omits'
+E         Actual message: 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:420: AssertionError
+____________ test_s2b_deterministic_chunk_sizes_cold_reopen_orphan _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_deterministic_chunk_s0')
+
+    def test_s2b_deterministic_chunk_sizes_cold_reopen_orphan(tmp_path):
+        source = _build_source("s2b-deterministic", [
+            {"id": f"R{i}", "responses": {"Y": i % 2}} for i in range(72)
+        ])
+        a = tmp_path / "a.sqlite"
+        b = tmp_path / "b.sqlite"
+        release, universe = _release(source), source["universe"].ref
+        first = build_sourcefree_external_i02(release, universe, a, chunk_size=1)
+        second = build_sourcefree_external_i02(release, universe, b, chunk_size=19)
+        assert first.logical == second.logical
+        # Separate full cold independent verification, no in-memory witness passed.
+>       with VerifiedExternalI02(a, roots=first) as reader:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:464: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_________________ test_s2b_material_sourcefree_resource_probe __________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_material_sourcefree_r0')
+
+    def test_s2b_material_sourcefree_resource_probe(tmp_path):
+        """Narrow real I02 fixture; not 100k source-direct or 6GiB proof."""
+        n = 2048
+        source = _build_source("s2b-resource", [
+            {"id": f"R{i:05d}", "responses": {"Y": i % 2}} for i in range(n)
+        ])
+        path = tmp_path / "material.sqlite"
+        before = monotonic()
+        tracemalloc.start()
+        try:
+            roots = build_sourcefree_external_i02(
+                _release(source), source["universe"].ref, path, chunk_size=7,
+            )
+            elapsed_build = monotonic() - before
+            _current, peak = tracemalloc.get_traced_memory()
+        finally:
+            tracemalloc.stop()
+        before = monotonic()
+>       with VerifiedExternalI02(path, roots=roots) as verifier:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:494: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_______ test_s2b_h27_real_canonical_component_pairing_and_poisoned_index _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_h27_real_canonical_co0')
+
+    def test_s2b_h27_real_canonical_component_pairing_and_poisoned_index(tmp_path):
+        from rawlsing_next.tests.test_pre553_verified_semantic_range import _s2a_relation_source
+        from rawlsing_next._pre553_query_predicate import _select_respondent_events
+        release, universe, repository, cref, sref = _s2a_relation_source(
+            "s2b-h27-alias",
+            bindings=(("V1", "C1", "A"), ("V1", "C2", "B")),
+            event_canonical="C1", event_component="A",
+        )
+        path = tmp_path / "complete-alias.sqlite"
+        roots = build_sourcefree_external_i02(release, universe, path, chunk_size=1)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:527: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____________ test_s2b_exact_weight_and_unknown_routing_preserved ______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_exact_weight_and_unkn0')
+
+    def test_s2b_exact_weight_and_unknown_routing_preserved(tmp_path):
+        source = _build_source(
+            "s2b-weight-and-unknown",
+            [{"id": "R1", "responses": {"Y": 1}},
+             {"id": "R2", "responses": {}}],
+            weights={"R1": ("WEIGHT_VALID_AUTHORIZED", "2"),
+                     "R2": ("WEIGHT_MISSING", None)},
+            risk_sets={"R": {"Y": {"R1"}}},
+            nonmember_routing_state="ROUTING_UNKNOWN",
+        )
+        qa, pred, query, original = _facts(source, "s2b-weight-and-unknown")
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:604: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+____ test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03 _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_counterattack_sqlit0')
+
+    def test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03(tmp_path):
+        """G3: an already-verified connection is not a writable selector authority.
+    
+        SQLite's PRAGMA query_only is itself mutable. An untrusted consumer holding
+        the public db handle can turn it off and create a TEMP table that takes
+        precedence over the authenticated main.selectors in ordinary unqualified
+        SELECT statements. No root, file, class or Python attribute is reassigned.
+        """
+        source = _build_source("s2b-a-temp-shadow", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-temp-shadow")
+        assert oracle.facts[0].typed_state == "SUPPORTED"
+        assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:678: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_______ test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_counterattack_temp_0')
+
+    def test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty(tmp_path):
+        """G3: independently authenticated main.objects must not resolve TEMP."""
+        source = _build_source("s2b-a-object-shadow", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-object-shadow")
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as real:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:714: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+____________ test_s2b_a_counterattack_midstream_close_typed_refusal ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_counterattack_midst0')
+
+    def test_s2b_a_counterattack_midstream_close_typed_refusal(tmp_path):
+        """G3/G4: close between certified occurrences must not leak untyped SQL."""
+        source = _multi_i03_source("s2b-a-close-between-occurrences")
+        path, roots = _prepare(tmp_path, source)
+        respondent = source["respondents"]["R1"].ref.key
+        target = source["qrefs"]["Y"]
+>       cert = VerifiedExternalI02(path, roots=roots)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:743: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_______ test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_counterattack_verif0')
+
+    def test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation(tmp_path):
+        """G3: even main-qualified SQL can be falsified by mutable BINARY collation.
+    
+        A genuine sqlite3.Connection admits create_collation('BINARY', fn), so
+        respondent/target WHERE equality can match unrelated real I02 rows with
+        no file/manifest/root change. This attack does NOT use Python setattr or
+        arbitrary private-object mutation; it uses the public exposed db API.
+        """
+        source = _build_source("s2b-a-collation", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-collation")
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:800: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+__________ test_s2b_a_counterattack_nested_sql_handles_are_immutable ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_counterattack_neste0')
+
+    def test_s2b_a_counterattack_nested_sql_handles_are_immutable(tmp_path):
+        """B's original db-reassignment defect must not recur inside A's facade."""
+        source = _build_source("s2b-a-nested-sql-swap", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-nested-sql-swap")
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:830: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_a_r2_public_sqlite_connection_rollback_corrupts_native_i03 ______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_r2_public_sqlite_co0')
+
+    def test_s2b_a_r2_public_sqlite_connection_rollback_corrupts_native_i03(tmp_path):
+        """RED on B: public db.execute('ROLLBACK') releases the verified snapshot.
+    
+        A second writer can now alter the real SQLite file; the already-attested
+        I03 index reopens the changed posting keyspace under the *old* roots.
+        This is not object.__setattr__, subclassing or a forged certificate type.
+        """
+        source = _build_source("s2b-a-r2-rollback", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-r2-rollback")
+        assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:861: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_________ test_s2b_a_r2_deleting_verifier_seal_allows_db_substitution __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_r2_deleting_verifie0')
+
+    def test_s2b_a_r2_deleting_verifier_seal_allows_db_substitution(tmp_path):
+        """RED on B: ordinary delattr(_sealed) disables __setattr__ guard."""
+        import shutil
+        source = _build_source("s2b-a-r2-delattr", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+            {"id": "R3", "responses": {"Y": 1}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-r2-delattr")
+        assert _cell_map(oracle.facts[0])["1"]["raw_numerator_support"] == 2
+        path, roots = _prepare(tmp_path, source)
+        poison = tmp_path / "locally-rehashed-but-not-anchored.sqlite"
+        shutil.copy2(path, poison)
+        with sqlite3.connect(poison) as untrusted:
+            removed = untrusted.execute(
+                "DELETE FROM selectors WHERE kind='native'"
+            ).rowcount
+            assert removed == 3
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:904: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_________ test_s2b_a_r2_only_readonly_select_rows_and_closed_iterators _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_r2_only_readonly_se0')
+
+    def test_s2b_a_r2_only_readonly_select_rows_and_closed_iterators(tmp_path):
+        source = _build_source("s2b-a-r2-facade", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+        ])
+        path, roots = _prepare(tmp_path, source)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:969: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+_____ test_s2b_a_r2_same_semantics_different_physical_path_swap_pins_inode _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-754/test_s2b_a_r2_same_semantics_d0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10e0ce890>
+
+    def test_s2b_a_r2_same_semantics_different_physical_path_swap_pins_inode(
+        tmp_path, monkeypatch,
+    ):
+        """Physical root G3: adversary swaps equal-semantic but different bytes.
+    
+        Pre-repair: _digest_file(path) saw the genuine bytes; the distinct
+        sqlite3.connect(path) then opened a physically different file with an
+        unchanged logical root, silently treating its physical identity as held.
+        This intercepts exactly the connect boundary, not private Python mutation
+        of a previously verified certificate.
+        """
+        import shutil
+        import os
+        from rawlsing_next import _pre553_external_i02_certificate as owner
+    
+        source = _build_source("s2b-a-r2-physical-race", [
+            {"id": "R1", "responses": {"Y": 1}},
+            {"id": "R2", "responses": {"Y": 0}},
+        ])
+        qa, pred, query, oracle = _facts(source, "s2b-a-r2-physical-race")
+        path, roots = _prepare(tmp_path, source)
+        alternate = tmp_path / "same-logical-different-physical.sqlite"
+        archived = tmp_path / "original-verified-inode.sqlite"
+        shutil.copy2(path, alternate)
+        with sqlite3.connect(alternate) as connection:
+            connection.execute("PRAGMA user_version=19")
+            assert _logical_root(connection) == roots.logical
+        assert _digest_file(alternate) != roots.physical
+    
+        original_connect = sqlite3.connect
+        swapped = []
+    
+        def swap_just_before_sqlite_opens(database, *args, **kwargs):
+            if not swapped and "mode=ro" in str(database):
+                os.replace(path, archived)
+                os.replace(alternate, path)
+                swapped.append(True)
+            return original_connect(database, *args, **kwargs)
+    
+        monkeypatch.setattr(owner.sqlite3, "connect", swap_just_before_sqlite_opens)
+>       with VerifiedExternalI02(path, roots=roots) as verified:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_external_i02_certificate.py:1029: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/_pre553_external_i02_certificate.py:506: in __init__
+    _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+message = 'descriptor-pinned SQLite cold verification requires Linux /proc/self/fd'
+
+    def _fail(message: str) -> None:
+>       raise ExternalI02IntegrityError(message)
+E       rawlsing_next._pre553_external_i02_certificate.ExternalI02IntegrityError: descriptor-pinned SQLite cold verification requires Linux /proc/self/fd
+
+rawlsing_next/_pre553_external_i02_certificate.py:53: ExternalI02IntegrityError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_real_i02_native_i03_complete_and_restore
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a5_direct_sourcefree_drives_full_native_i03_query
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_b4_switchable_external_roots_cannot_authorize_wrong_i03_release
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_forged_certificate_cannot_install_false_zero_into_real_i03
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_verified_subclass_cannot_substitute_postings
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_verified_connection_cannot_be_swapped_after_cold_root_check
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_closed_verified_reader_refuses_typed_native_selection
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_same_respondent_duplicate_occurrence_and_states
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_attacker_rehashes_omitted_selector_but_cold_verifier_refuses
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_deterministic_chunk_sizes_cold_reopen_orphan
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_material_sourcefree_resource_probe
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_h27_real_canonical_component_pairing_and_poisoned_index
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_exact_weight_and_unknown_routing_preserved
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_counterattack_sqlite_temp_selector_shadow_changes_real_i03
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_counterattack_temp_objects_shadow_cannot_invent_empty
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_counterattack_midstream_close_typed_refusal
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_counterattack_nested_sql_handles_are_immutable
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_r2_public_sqlite_connection_rollback_corrupts_native_i03
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_r2_deleting_verifier_seal_allows_db_substitution
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_r2_only_readonly_select_rows_and_closed_iterators
+FAILED rawlsing_next/tests/test_pre553_external_i02_certificate.py::test_s2b_a_r2_same_semantics_different_physical_path_swap_pins_inode
+22 failed, 7 passed in 18.23s

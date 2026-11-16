@@ -5,12 +5,19 @@ I02 atomic ingest validator may be committed here.
 """
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
+from itertools import chain
+from threading import Lock
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping
+from typing import TYPE_CHECKING, Any, Iterable, Mapping
 
+from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _EventLocator
 from rawlsing_next.pre553_empirical_objects import CanonicalSemanticObject, ExactRef, canonical_json
 from rawlsing_next.pre553_c11_integrity import C11AtomicityError, C11InternalRecord, ReplayManifest
+
+if TYPE_CHECKING:
+    from rawlsing_next._pre553_query_common import _ReleaseIndex
 
 _C11_VALIDATION_SEAL = object()
 
@@ -29,7 +36,7 @@ class C11LogicalRelease:
     source_release_manifest_hash: str
     semantic_release_hash: str
     replay_manifest: ReplayManifest
-    public_objects: tuple[CanonicalSemanticObject, ...]
+    public_objects: Sequence[CanonicalSemanticObject]
     internal_records: tuple[C11InternalRecord, ...]
     m01_m18_coverage: Mapping[str, tuple[str, ...]]
     _validation_seal: object = field(default=None, repr=False, compare=False)
@@ -41,8 +48,20 @@ class C11LogicalRelease:
             raise C11AtomicityError("sealed release requires release_id")
         if len(self.source_release_manifest_hash) != 64 or len(self.semantic_release_hash) != 64:
             raise C11AtomicityError("sealed release hashes must be sha256 identities")
+        if isinstance(self.public_objects, _CompactPublicObjects) and (
+            self.public_objects.release_ref != self.release_ref
+            or self.public_objects.replay_ref != self.replay_manifest.ref
+        ):
+            raise C11AtomicityError("compact view does not bind the sealed release and replay")
         object.__setattr__(self, "m01_m18_coverage",
                            MappingProxyType(dict(self.m01_m18_coverage)))
+
+    @property
+    def _public_non_events(self) -> Sequence[CanonicalSemanticObject]:
+        # On a legacy release the caller's existing family checks still apply.
+        if isinstance(self.public_objects, _CompactPublicObjects):
+            return self.public_objects.non_events
+        return self.public_objects
 
     @property
     def release_ref(self) -> ExactRef:
@@ -55,7 +74,14 @@ class C11Repository:
     def __init__(self, releases: Iterable[C11LogicalRelease] = ()) -> None:
         self._by_ref: dict[str, C11LogicalRelease] = {}
         self._by_release_id: dict[str, str] = {}
-        self._objects: dict[str, CanonicalSemanticObject | C11InternalRecord] = {}
+        self._objects: dict[str, CanonicalSemanticObject | C11InternalRecord | _EventLocator] = {}
+        # Derived I03 topology only, scoped to this exact append-only repository.
+        self._i03_release_indices: dict[tuple[ExactRef, ExactRef], _ReleaseIndex] = {}
+        self._i03_index_lock = Lock()
+        # Independent strong references to the index and its immutable payload
+        # fields. An altered cache-slot value must not inherit the original seal.
+        # This is a bounded in-process fault check, not hostile-memory security.
+        self._i03_index_attestations: dict[tuple[ExactRef, ExactRef], tuple[Any, ...]] = {}
         for release in releases:
             self._commit_validated(release)
 
@@ -84,7 +110,7 @@ class C11Repository:
         obj = self._objects.get(ref.key)
         if obj is None:
             raise KeyError("exact C11 object unavailable; no fallback permitted")
-        return obj
+        return obj.materialize() if isinstance(obj, _EventLocator) else obj
 
     def _commit_validated(self, release: C11LogicalRelease) -> None:
         """Atomic commit primitive used only after complete ingest validation."""
@@ -99,10 +125,12 @@ class C11Repository:
 
         # Stage all exact object identities before mutating repository state.
         staged = dict(self._objects)
-        for obj in (*release.public_objects, *release.internal_records, release.replay_manifest):
+        public = release.public_objects
+        entries = public.exact_entries() if isinstance(public, _CompactPublicObjects) else public
+        for obj in chain(entries, release.internal_records, (release.replay_manifest,)):
             obj_ref = obj.ref
             prior = staged.get(obj_ref.key)
-            if prior is not None and getattr(prior, "content_hash", None) != obj_ref.content_hash:
+            if prior is not None and prior.ref.content_hash != obj_ref.content_hash:
                 raise C11AtomicityError("exact object ref collision has conflicting content")
             staged[obj_ref.key] = obj
 

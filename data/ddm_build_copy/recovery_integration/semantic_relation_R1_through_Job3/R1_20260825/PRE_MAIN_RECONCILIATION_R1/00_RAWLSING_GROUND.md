@@ -1,8 +1,16 @@
 # RAWLSING GROUND R1
 
-**Ground version:** `RAWLSING_GROUND_R1`
+**Ground version:** `RAWLSING_GROUND_R2`
 
 **Constitutional baseline:** PRE-MAIN `564feddf4228759aed970f42061aeae4e6b96478`, independently hostile-audited by W54 `99e1d7d3bab47f494ba3a82a06bb5775eaaddbe9` as succession-ready with explicit bounded primary gaps and no hidden architectural loss.
+
+**Post-W55 bounded authority amendment:** Global HQ adopted the repaired FIELD FORGE R2 terminal semantic/architecture authority at exact grain in `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`. Canonical grounding route: `PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md`. This amendment does not rewrite the historical W54/W55 baseline, select a runtime/backend, or close unrelated project obligations.
+
+**Post-PRE-MAIN live-state amendment:** the cumulative descendant line from PRE-MAIN has since executed and integrated WSC002/GT0, closed and HQ-adopted the real GT1/GT2 source-backed CONTEXT-only canary, and advanced GT3/GT4 through Q69B adoption plus bounded pre-positive repairs. The canonical central-state surfaces had not been maintained during that advance and therefore became stale. `RAWLSING_GROUND_R2` restores the rule that `CENTRAL_PROJECT_STATE_R1/` is the authoritative sweep surface for post-PRE-MAIN currentness.
+
+Observed reconciliation start: `integration/pre-main-reconciliation-r1 = d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3`; cumulative live build head = `acfac12a4ca4b9efa010fd224094ac4dc55d37a8`; relation = strict descendant, 312 commits ahead / 0 behind. A bounded competent reconciliation may fast-forward PRE-MAIN after validation. `main` movement is outside this amendment.
+
+Older W35/W55 “current” prose below remains a constitutional/historical floor. For live post-PRE-MAIN state, always consume `CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md` before project judgment.
 
 This file is the mandatory cognitive front door for any agent exercising project-level decision, redesign, adjudication, acceptance, succession or cross-campaign synthesis authority.
 
@@ -112,6 +120,7 @@ The current PRE-MAIN home is a consolidated project substrate containing:
 - the W51 adjudicated deep historical corpus;
 - W52 exact recovery improvements;
 - W53 direct navigation/status resolution;
+- the Global-HQ-adopted FIELD FORGE R2 project-level semantic/architecture capsule at its exact grain;
 - explicit unavailable-primary gaps rather than substitutions;
 - unfinished, return-required, tension and unknown-state ledgers.
 
@@ -141,7 +150,9 @@ The current binding semantic/governance spine includes:
 
 Current delegated surfaces include J01-A and `CURRENT_ROUTING_LEDGER_CONTRACT@2` at their admitted grains. They are project-current/delegated authority, not global sovereignty by themselves.
 
-The selected current runtime remains the W35 base plus the exact W32 reconstructed function units. R5 is preserved `INACTIVE_NON_SERVING`. Z02 remains `TESTED_NOT_ADMITTED`. Field Forge and Structural Pressure Observatory remain `EXPLORATORY_NONBINDING`.
+The selected current runtime remains the W35 base plus the exact W32 reconstructed function units. R5 is preserved `INACTIVE_NON_SERVING`. Z02 remains `TESTED_NOT_ADMITTED`. Structural Pressure Observatory remains `EXPLORATORY_NONBINDING`.
+
+FIELD FORGE R2 is now Global-HQ-adopted project semantic/architecture authority at its exact structural-observatory grain under `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`. Read `PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/` before any FIELD FORGE architecture decision. Historical/unadopted Field Forge proposals and claim-specific authority extensions do not become current merely because the R2 architecture was adopted.
 
 The physical persistent/virtual/source-backed/hybrid architecture winner remains OPEN.
 
@@ -191,7 +202,11 @@ R5 contributes preservation/replay/scale capital but remains inactive/non-servin
 
 ### Field Forge / Structural Pressure Observatory
 
-Field Forge explores position-role authority, exposure topology, disposition, geometry families, homology, pressure, articulation/hegemony, capital conversion, social-world packets and V3 interfaces. It remains exploratory/nonbinding. SPO is a separate exploratory body, not merely Field Forge renamed. Before any adoption, both must be re-grounded against current law and unresolved observability/estimand/crosswalk questions. Routes N028-N029.
+Historical Field Forge explored position-role authority, exposure topology, disposition, geometry families, homology, pressure, articulation/hegemony, capital conversion, social-world packets and V3 interfaces. The repaired FIELD FORGE R2 terminal architecture was later independently audited, repaired, rereviewed and Global-HQ-adopted at exact grain by `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`.
+
+Its adopted result is a producer-preserving, capability/relation-based structural-observatory architecture with no universal master carrier, no universal geometry, typed negative/blocker law, strong-noun admission ceilings, cross-context map/comparator/falsifier requirements, physical neutrality and a strict PRE-V3/V3 actor firewall. Route: `PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/`.
+
+This adoption does not globally adopt every historical Field Forge proposal or close POSITION_ROLE_AUTHORITY, external crosswalk, claim-specific estimand/transform/transport, strong-noun admission or physical architecture. SPO remains a separate exploratory body, not merely Field Forge renamed. Historical routes N028-N029 and `FIELD_FORGE_REINDUCTION_BRIDGE.md` remain design/evidence history rather than replacements for the adopted capsule.
 
 ---
 
@@ -211,7 +226,7 @@ Use `CENTRAL_PROJECT_STATE_R1/OPEN_OBLIGATIONS.tsv` for the operational registry
 10. **J01-B / Contract@1** — historical succession/current-joint contract remains without terminal admitted closure.
 11. **C01 current readmission** — fracture recovery/repair does not imply readmission.
 12. **Measurement portability** — no current governed owner is proved; adjacent equivalence law cannot be borrowed.
-13. **Field Forge** — POSITION_ROLE_AUTHORITY, external political-group crosswalk, observability grains, geometry/weight/homology/mode/estimand problems remain open.
+13. **FIELD FORGE residual authority/frontier** — R2 architecture is adopted, while claim-specific POSITION_ROLE_AUTHORITY, external political-group crosswalk, transform/estimand/transport authority, strong-noun admission and physical realization remain open at their exact grains.
 14. **SWID successor equivalence** — static issue closure does not prove runtime succession/equivalence.
 15. **Unknown coverage** — retained orphan branch families and cross-migration control-plane lessons require synthesis rather than merge-by-name.
 
@@ -307,7 +322,7 @@ Use `CENTRAL_PROJECT_STATE_R1/KNOWN_TENSIONS.tsv` and the original W50 tension l
 - staged PRE553 seam vs continuous producer DAG;
 - technical preservation vs practical conceptual discoverability;
 - source evidence vs person-world inference;
-- Field Forge geometry proposals vs observability/estimand authority;
+- adopted FIELD FORGE capability/relation architecture vs claim-specific geometry/observability/estimand authority;
 - questionnaire block/form structure vs counterfeit weight/homology risk;
 - SWID static closure vs runtime successor/equivalence uncertainty;
 - delegated current authority vs global project sovereignty;
@@ -342,11 +357,13 @@ At minimum do not resurrect:
 - R5 as serving/current;
 - Authority70 as certified;
 - Z02 as admitted;
-- Field Forge as binding architecture;
+- historical/unadopted Field Forge proposals as binding architecture beyond the exact Global-HQ-adopted FIELD FORGE R2 authority capsule;
 - C01 repair as readmission;
 - command-only branches as accepted results;
 - Job3 REJECT/BLOCKED as universal negative truth;
 - copied historical artifacts as current merely because they now live in canonical ancestry.
+
+The Global-HQ-adopted FIELD FORGE R2 architecture is an explicit post-W55 authority exception at its exact semantic/architecture grain; it does not promote the rest of Field Forge history.
 
 Physical materialization changes discoverability, not authority.
 
@@ -387,6 +404,8 @@ Use this order:
 → local original corpus
 
 → exact historical evidence/ref when necessary.
+
+For FIELD FORGE R2 architecture questions, descend first through `PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/` before historical N028/N029 or exploratory FIELD FORGE material.
 
 Do not load the deepest evidence by default. Do not make a decision from the surface when the deeper evidence is materially relevant.
 

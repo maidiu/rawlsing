@@ -1,0 +1,67 @@
+{
+  "branch": "agent/sorok-p3-compression-evidence-20261106-r1",
+  "candidate_commit": "755836fe5b11352a2d092819b1c741ab51d2f0e8",
+  "commands": [
+    {
+      "command": "python3 -m py_compile WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/compression.py",
+      "detail": "syntax compiled",
+      "exit": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1 python3 -m pytest WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_compression.py -q -o addopts=\"\" -p no:cacheprovider",
+      "detail": "22 passed in 0.11s",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check -- p3/compression.py tests/test_compression.py",
+      "detail": "no whitespace errors",
+      "exit": 0
+    },
+    {
+      "command": "opencode --version; python3 --version; uname -srm",
+      "detail": "opencode v2.0.22; Python 3.11.3; Darwin 22.3.0 x86_64",
+      "exit": 0
+    }
+  ],
+  "files": {
+    "API_EXAMPLE.json": {
+      "bytes": 3463,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/compression/API_EXAMPLE.json",
+      "sha256": "e22396ef4ae79a90107649f1a17bb63cd5240a5868e24b038fb8ba5cc9b2d8f9"
+    },
+    "git-diff-check.txt": {
+      "bytes": 0,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/compression/git-diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "p3/compression.py": {
+      "bytes": 25047,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/compression.py",
+      "sha256": "5219fd21ec9461468b508e2208c1e09ac0dcf9f1e76cc9fe8d0603f8fbcb8efb"
+    },
+    "pytest.log": {
+      "bytes": 99,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/compression/pytest.log",
+      "sha256": "b411c023c70b8479e9c4dc98b4a317930ed647ad5f3b6f0ea8bcb3a01496dd08"
+    },
+    "tests/test_compression.py": {
+      "bytes": 20560,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_compression.py",
+      "sha256": "a69c21b4609a9ca2aa386086133d8a369bda964bceb082e50794e33572fb0e27"
+    }
+  },
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "schema": "SOROK_P3_COMPRESSION_EVIDENCE_RECEIPTS@1.0.0",
+  "scope": {
+    "adp016_017_memory_or_claim": false,
+    "ci": false,
+    "original_sav_read": false,
+    "p2_batch_rerun": false,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "sourcefree": true
+  },
+  "startup_commit": "7db475fb29c0977d2c368dc2f83b5471f0a59460",
+  "worker": "sorok-p3-compression-evidence-r1"
+}

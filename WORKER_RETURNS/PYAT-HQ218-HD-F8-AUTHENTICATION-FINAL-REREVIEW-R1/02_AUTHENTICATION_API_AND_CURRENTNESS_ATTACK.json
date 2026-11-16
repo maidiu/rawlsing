@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_HQ218_AUTHENTICATION_API_AND_CURRENTNESS_ATTACK@1.0.0",
+  "lane": "PYAT-HQ218-HD-F8-AUTHENTICATION-FINAL-REREVIEW-R1",
+  "candidate_tip": "cff8449e1752f816ad82d1b18626e2290913f8b9",
+  "authentication_quality": {
+    "helper": "_authenticate_binding_against_authority",
+    "exact_inputs_required": [
+      "ServiceApplicabilityF8ScopeBindingRequest",
+      "CandidateClassApplicabilityReceipt",
+      "PositionedSubjectPossibilityModelRule"
+    ],
+    "uses_existing_replay_verifier": true,
+    "replay_verifier_rebinds_from_authority": true,
+    "compares_replay_identity": true,
+    "compares_complete_material": true,
+    "second_material_gate": true,
+    "presented_admitted_set_trusted": false,
+    "presented_provenance_trusted": false,
+    "presented_binding_ids_trusted": false,
+    "self_hash_sufficient": false,
+    "verdict": "PASS"
+  },
+  "power_1_and_2_scope": {
+    "authentication_required_for_both": true,
+    "necessary": true,
+    "reason": "Each method independently grants a positive eligibility assertion/set. Leaving either forgeable would preserve HQ215's authority overreach even if F8 delegation were authenticated.",
+    "new_semantic_power_added": false
+  },
+  "breaking_api": {
+    "evaluator_before": "receipt optional; request absent",
+    "evaluator_after": "request and receipt required",
+    "admission_assertion_before": "query only",
+    "admission_assertion_after": "query plus required request/receipt/rule",
+    "set_exposure_before": "no authority inputs",
+    "set_exposure_after": "required request/receipt/rule",
+    "current_candidate_production_callers_broken": 0,
+    "intentional_fail_closed_external_break": true,
+    "compatibility_classification": "DELIBERATE_AUTHORITY_CONTRACT_TIGHTENING__NO_CURRENT_IN_REPO_PRODUCTION_CONSUMER"
+  },
+  "currentness_recovery": {
+    "source": "presented binding.currentness_result",
+    "recovered_only_to_rederive_exact_material": true,
+    "revalidated_by_constructor_against_request": true,
+    "no_claim_plus_result_refuses": true,
+    "claim_plus_missing_result_refuses": true,
+    "adopted_noncurrency_states_refuse": true,
+    "arbitrary_positive_vocabulary_refuses": true,
+    "accepted_carried_value": [
+      "CURRENT"
+    ],
+    "applicability_receipt_certifies_currentness": false,
+    "currentness_authority_method_refuses": true,
+    "authority_invention": false,
+    "precise_classification": "CALLER_SUPPLIED_NONAUTHORITATIVE_CARRIED_MATERIAL__CLOSED_VOCABULARY__NOT_CURRENTNESS_AUTHORITY",
+    "verdict": "PASS_WITH_PRECISION_NOTE"
+  },
+  "removed_rule_hash_branch": {
+    "removed_reason_code": "BINDING_RULE_REPLAY_MISMATCH",
+    "rule_mismatch_still_refuses": true,
+    "current_reason_code": "BINDING_REPLAY_MISMATCH",
+    "why_stronger": "authentication re-derives the expected binding from the presented rule before evaluation; a different rule cannot reproduce a binding made from the prior rule",
+    "remaining_invariant_assertion": "bound_rule.rule_hash == authenticated.f8_rule_hash",
+    "production_reason_code_consumers_found": 0,
+    "semantic_defence_lost": false,
+    "compatibility_impact": "REFUSAL_REASON_VOCABULARY_CHANGE_ONLY"
+  },
+  "court_edit_attack": {
+    "worker_claimed_hoisted_request_variables": 20,
+    "raw_patch_req_assignment_additions_main_court": 23,
+    "repair_court_helper_request_paths": 2,
+    "exact_worker_count_reproduced": false,
+    "weakened_assertion_found": false,
+    "substantive_changes": [
+      "receipt mutation witness tightened to mutate only a non-admitted row while preserving admitted set",
+      "rule mismatch expected refusal retargeted from removed BINDING_RULE_REPLAY_MISMATCH to BINDING_REPLAY_MISMATCH",
+      "previously inlined request objects hoisted and threaded into authenticated calls"
+    ],
+    "verdict": "NO_TEST_WEAKENING__COUNT_DESCRIPTION_IMPRECISE"
+  },
+  "nonblocking_defect": {
+    "id": "CURRENTNESS-IMPORT-DIAGNOSTIC-01",
+    "finding": "Defensive module-level check references ServiceF8ScopeBindingError before its class definition. If adopted states ever cease to contain CURRENT, import fails with NameError rather than intended typed refusal.",
+    "fail_closed": true,
+    "affects_authentication_repair": false,
+    "blocking": false
+  },
+  "conclusion": "AUTHENTICATION_IS_AUTHORITY_DERIVATION_NOT_SELF_CONSISTENCY__API_BREAK_LAWFUL__CURRENTNESS_REMAINS_NONAUTHORITATIVE"
+}

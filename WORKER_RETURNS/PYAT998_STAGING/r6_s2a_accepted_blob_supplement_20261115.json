@@ -1,0 +1,164 @@
+{
+  "contract": "PYAT998_R6_S2A_ACCEPTED_BLOB_SUPPLEMENT_R1",
+  "published_date": "2026-11-15",
+  "integration_branch": "integration/pyat998-r6-s2a-joined-staging-20261115-r1",
+  "staging_parent": "d88630a448905856f980f7573442617813afda88",
+  "exact_blob_adoption_commit": "46453681e8fcd2d7eca6b14257fc8d99a98ac23c",
+  "parent_manifest": "WORKER_RETURNS/PYAT998_STAGING/provenance_manifest.json",
+  "parent_s1a_manifest": "WORKER_RETURNS/PYAT998_STAGING/s1a_linux_r2/provenance_supplement.json",
+  "sources": {
+    "R6": {
+      "candidate": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "independent_review": "24bcdb88c872ddfb46f435ae1b56adf716b94ab0",
+      "grade": "ACCEPT_SCOPED; genuine 0 QUERY + 1 DISCOVERY, no F4 QUERY issuer, S1-E terminal=false"
+    },
+    "S2A": {
+      "candidate": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+      "independent_review": "c18b7e087d5d5b178ed5acc92f9c82250a1743de",
+      "grade": "ACCEPT_SCOPED; canonical body truth verified both public/native"
+    }
+  },
+  "files": [
+    {
+      "path": "rawlsing_next/pre553_source_i02_handoff.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "31d99b70b9e726ecd1b2413aa68d642df4dc8151",
+      "integration_blob": "31d99b70b9e726ecd1b2413aa68d642df4dc8151",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_i02_streams.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "9547fe3d5972005c3bb96cb91083c39743cb2d0c",
+      "integration_blob": "9547fe3d5972005c3bb96cb91083c39743cb2d0c",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_postconsumer_receipts.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "37ffb13687cc760a8ce93f693c66a675f0fb32fd",
+      "integration_blob": "37ffb13687cc760a8ce93f693c66a675f0fb32fd",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_saved_body_bridge.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "eddaa9a57eec4e44ce5d0ee5c223facae8d5775d",
+      "integration_blob": "eddaa9a57eec4e44ce5d0ee5c223facae8d5775d",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_body_transport.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "e6ad684626f7b13e2382ad732ab48194627d9bac",
+      "integration_blob": "e6ad684626f7b13e2382ad732ab48194627d9bac",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_counter_attack.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "228c1b6438faa42186c8fc8f04dbb3d95ea0aa97",
+      "integration_blob": "228c1b6438faa42186c8fc8f04dbb3d95ea0aa97",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_native_bridge.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "334b68840734f39714538a4f691160331b072d71",
+      "integration_blob": "334b68840734f39714538a4f691160331b072d71",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_native_fact.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "912480ff514fa19a6a984729c4f5a8b8bf4696e9",
+      "integration_blob": "912480ff514fa19a6a984729c4f5a8b8bf4696e9",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_operation_antijoin.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "ff73ed220a2146b32c98af56373e693c50216e3c",
+      "integration_blob": "ff73ed220a2146b32c98af56373e693c50216e3c",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_source_i02.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "4c0a0041e15813970ea26dcde1fbef7980c93c4f",
+      "integration_blob": "4c0a0041e15813970ea26dcde1fbef7980c93c4f",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat960_s1e_support.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "3ee077dfb11dbde929a5de9b25948ef2d3ab4d5a",
+      "integration_blob": "3ee077dfb11dbde929a5de9b25948ef2d3ab4d5a",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "b60310350789bce539ff263302b436eb8a57d8dc",
+      "integration_blob": "b60310350789bce539ff263302b436eb8a57d8dc",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+      "integration_blob": "c3077ce89c05d6e39349c08468ce4022a3a6f506",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py",
+      "source_commit": "9ac034dd0734cdd000b4b73583f883dbcec2dfa6",
+      "source_blob": "3ca7396a50312b7b8daf2d29e4119aba71d63db9",
+      "integration_blob": "3ca7396a50312b7b8daf2d29e4119aba71d63db9",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/pre553_direct_estate_i03.py",
+      "source_commit": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+      "source_blob": "1dc82ab5658051f35dc1d81cbac30688e84a1623",
+      "integration_blob": "1dc82ab5658051f35dc1d81cbac30688e84a1623",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+      "source_commit": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+      "source_blob": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+      "integration_blob": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_s2a_public_selector_h26.py",
+      "source_commit": "ce7704253f6a2381310c3eb2c7412a2d85c5596c",
+      "source_blob": "84db13b94888065a99dbdb77b1aa73eab3653bd8",
+      "integration_blob": "84db13b94888065a99dbdb77b1aa73eab3653bd8",
+      "relationship": "EXACT_BLOB_REUSE_NO_PRODUCT_EDIT"
+    }
+  ],
+  "proof": {
+    "file_identity": "VERIFY_AGAINST_LIVE_CANDIDATE_BEFORE_CLAIMING_ACCEPTED_INTEGRATION",
+    "combined_native_execution": "NOT_RUN",
+    "independent_joined_g5": "NOT_RUN",
+    "full_s1e_original_terminal": "HOLD_MISSING_ORIGINAL_GOVERNED_QUERY_ISSUER",
+    "production_merge": "NOT_DONE",
+    "original35": "NOT_RUN",
+    "scale100k": "NOT_RUN",
+    "s2e_method_in_parent": "COMPOSED_NOT_ORIGINALLY_BLOB_IDENTICAL__OWNER_ACK_PENDING"
+  },
+  "authority": {
+    "protected_cas": "MERGE_AUTHORITY_HELD issue1000",
+    "runtime_issuer": "R03_ORIGINAL_ELIGIBLE_SUPPORTED_TO_QUERY_GRANT_OPEN issue997",
+    "reader_performance": "W05_P03_OWNER_GRANT_OPEN issue960/1006",
+    "source_science_actor": "NO_GRANT"
+  },
+  "excluded": [
+    "Do not mutate original #998 36-file manifest",
+    "Do not overwrite #998 composed S2-E issued_workload method",
+    "Do not reintroduce originally prohibited QUERY for 12 SAMPLE JOINT/CO_TRAVEL operations",
+    "Do not equate scoped independent G5 with combined G5/protected receipt"
+  ]
+}

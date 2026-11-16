@@ -1,0 +1,41 @@
+# VOZHD PYAT HQ273 — accept exact scientific negative, unfreeze productive conditional development, and pursue material source meaning
+
+Decision: HQD-2026-10-09-273.
+Decision class: INDEPENDENT_RETURN_SCIENTIFIC_ADJUDICATION__BOUNDED_SOURCE_FREE_DEVELOPMENT_COMMISSION__NO_OPERATIVE_GRANT.
+Canonical parent: e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f, HQ272. Semantic PRE-MAIN anchor 1f47063c3205a45888b3c55e81e7485943ed1390 unchanged.
+Checkpoint: HQ_HANDOFF/checkpoints/20261009-PYAT-HQ273-R01-F02-TRUE-CONDITIONAL-AND-MATERIAL-SOURCE-FRONT-R1
+
+## Two independent exact returns at origin
+
+R01 agent/reviewer-pyat-hq272-r01-afro-gt3-true-conditional-hostile-r1 @ 0c2730d5f7a15bfc6e633d8e4503f3144275bf69: one ahead/zero behind issued 063afdaf0934ae5aaa5f4e40f25f3689c24c219f, exactly four return docs plus required .rabochii/return_manifest.json. No production/HQ mutation. Actual GPT-6 model family, UI effort not independently certified. Independently visually verified merged R5 codebook page 53 citizenship battery. No SAV or respondent data read or computed.
+F02 agent/rabochii-pyat-hq272-f02-lits-ff02-source-meaning-admission-decision-r1 @ 0c31373ce0e0b278d921d3a3533184db8873aa1d: one ahead/zero behind issued 7147ab451e4996de5de4ad134eb6a0735ec0b2cd, four return docs plus mandatory .rabochii manifest, no source/code/HQ edits, no measurements computed.
+
+## R01: a joint target tensor is not a conditioned probability
+
+Original Afro R5 Q86A one-national-parent citizenship, Q86B two-non-national-parents citizenship, Q86C foreign-born wife of a male national: three distinct questions under shared stem; native 0 No / 1 Yes / 9 DK / 997 Not asked / 998 Refused / -1 Missing; not asked in ALG EGY MRC SUD TUN. M01 prior checked actual R5 and R9 source SHA and header metadata. The 19,210 GT2 frozen coexposure members are authenticated for Q86A/B ONLY; original identical block routing does not prove per-respondent Q86C exposure, native respondent events or exact eligible joint 3-way risk set. Existing frozen Q86 C11 and GT1/GT2 binding has Q86A/B only.
+
+IMPORTANT OWNERSHIP: generic PRE553 I03 _pre553_query_predicate SURVEY_RESPONSE_EVENT EQ and respondent-wise AND exist; _pre553_query_eval calculates denominator_member_refs from actual predicate-passing SAME RespondentIdentity. Frozen wave1_gt12_i03_positive_facts.py _predicate_for_members constructs only DERIVED_BRANCH_COHORT (19,210 base) and does not filter A=0 nor A=0,B=0. Dynamic arity of target_refs forms JOINT TENSOR, not q1 or q2 conditional output. NO R5 source-backed progressive q(Y|A)->q(Y|A,B) has executed. Conditional denominators N1/N2 must differ when the chosen conditions distinguish groups. Both nested comparisons must use a predeclared common 3-item complete-case S (or truthfully disclose sample-selection difference) so adding B does not hide changing eligibility. Proper q1 Pr(Q86A=1 | Q86B=0,S) and q2 Pr(Q86A=1 | Q86B=0,Q86C=0,S) are a symbolically defined experiment, NOT computed.
+
+New precise negative H272 corrected: Q86C item meaning/provenance known, but per-person routing/response binding and C11 qimpl/target-use absent. Generic engine is FUNCTIONALLY CAPABLE; source-bound GT12 wrapper/authority/method/consumer are MISSING, distinct from an intrinsically incapable I03. No granting new GT3 or EE14 permission to bridge this. No unweighted country pooling into national representative inference. Q97 original value 9 is substantive educational attainment while 99 is DK; Q8A 9 is DK; code domains are NOT globally interchangeable.
+
+R01 scientific ranking: one-battery Q86ABC is useful for citizenship boundary patterns and possible arity-3 test, but HQ249/HQD125 *first sociological progressive conditioner* is higher-value heterogeneous Y=Q86A citizenship stance, A=Q8A last-year respondent/family experienced food deprivation, B=Q97 highest education completed; all require actual shared-person exposure and routing, source-specific grammar/permission and properly typed absolute observed scope. Q8A is self-reported material experience, Q97 reported social position, not independent objective institutional cause. The 11-country frozen GT2 risk set is not a single representative national population.
+
+## F02: accept precise LiTS structural refusal, retain positive empirical evidence
+
+LiTS-I 2006 I03/I05 D02_P1 q301_2 respondent retrospective political appraisal x q301_7 reported present life satisfaction is positive SAME-person empirical report association at RAW joint risk 24,630 (marginals 24,897/28,325 different); 25 supported minority/nonmodal cells; D02_P3 VALID_EMPTY, no Simpson reversal. FF01 empirical-only ingress correctly conserves actor-independent SOURCE-INDEXED OBSERVATION ABOUT RESPONDENTS, not material institutions. HQ273 accepts F02 science-specific EMPIRICAL_ONLY_NO_STRUCTURAL_RELATION_SEMANTICS for a *present already authorized* LiTS FF02 focal structural referent; absence of a measured structural target is NOT absence of empirical co-travel. No LiTS relation-forming producer, EE15 issuer, structural focal proposition, relation-specific PREV3_FIELD_FORGE_RELATION_ADMISSION / ADMITTED, M1 positive ingress or N7/N9 world. I04 StructuralEmpiricalAdmission cannot be type-laundered into M1 relation admission. Do not port Afro GT2 authority.
+
+F02 proposes Afro R5 Q8A first reported-food-insufficiency material-context science, correctly only a source locator NOT a retained I03 fact, not national/weighted nor FF02 admitted. But Q8A AND currently accepted Afro GT2 are **THE SAME AFROBAROMETER SOURCE FAMILY**: gaining it does not independently discharge HQ249 distinct-second-family world objective. HQ273 accordingly issues a narrow LiTS original material-circumstance original-instrument court (not forcing q301 attitudes into structural ontology) to find a genuinely second-family original survey measurement. The Section 3 LiTS selected adult may differ from household respondent; do not silently share per-person identity with earlier/later household items or invent new conditional triple. Genuine new item may require source-specific I03 producer authority even though older LiTS I05 checkpoint is rich.
+
+## User-confirmed model provenance correction
+
+Earlier HQ272 M01 had launch MiMo V2.6-Flash and executable harness self-identified opencode-go/step-5-preview-free. User subsequently explicitly explained MiMo free usage expired and they intentionally SWITCHED to Step 5 Preview mid-task. CORRECT the prior tentative 'unexplained discrepancy' to USER_CONFIRMED_MID_TASK_MODEL_SWITCH: MiMo V2.6-Flash then Step 5 Preview. Exact which particular source observations each produced is NOT established by repo and is not certified. No scientific result re-run on this ground; preserve prior immutable HQ272 language as historically issued and apply this factual clarification here.
+
+## Three new exact non-grant parallel commissions
+
+1. C01 source-free native generic I03 two conditional fact executor with genuine respondent-specific AND/denominators and adversarial positive/negative fixtures — Step 5 Preview, local dev machine, tip 6e9e1ddb766861da273aa75c7b692547506acc25. No original surveys, no permission, no false source-backed claim, at most two owner/test paths.
+2. S01 independently establish original Afro R5 heterogeneous Q86A / Q8A / Q97 meaning, same-person vs routing and exact source-authority/first source operation — GPT-6 Sol High, Browser/GitHub, tip 92681161cc9edbae24622ccaf3f45c6e073d04df. No raw.
+3. L01 locate one genuine original LiTS-I material/household condition appropriate to independent SECOND survey-family reported/material-context source product, without cross-person Section 3 join — Step 5 Preview on survey-owning Mac, tip 362607490511d3c177b24ea994e1efd1f627b1bf. No raw DTA/checkpoint unless separately authorized.
+
+All three STATUS ISSUED_NEEDS_HUMAN_LAUNCH. No extra general surveys inventory, grant-form reprise or redundant Field Forge attitudes relabeling. Existing G1 source-free developer code HQ271 remains adopted; G0b operative EE14 issuer held; Uganda R5/R9 national temporal release and design held; N7/N9 world T2 and V3 held.
+
+Terminal: HQ273_R01_F02_SCIENCE_ACCEPTED__GENERIC_I03_CONDITIONAL_CAPABLE_WRAPPER_NOT__LITS_FF01_POSITIVE_FF02_STRUCTURAL_REFUSED__C01_S01_L01_ISSUED__NO_GT3_G0B_T1_T2.

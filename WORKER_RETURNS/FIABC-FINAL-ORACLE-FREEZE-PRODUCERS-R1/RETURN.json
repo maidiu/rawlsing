@@ -1,0 +1,68 @@
+{
+  "schema": "RAWLSING_FIABC_FINAL_ORACLE_FREEZE_PRODUCERS_RETURN@1.0.0",
+  "terminal": "FIABC_FINAL_ORACLE_T3_FREEZE_PRODUCERS_R1__PASS__B03_B05_B06_DETERMINISTIC_PRODUCER_CLIS_COMMITTED__NO_SOURCE_OR_CANDIDATE_EXECUTION",
+  "status": "PASS__PRODUCER_CLIS_COMMITTED__NOT_EXECUTED_IN_BROWSER_LANE",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-final-oracle-freeze-producers-r1",
+  "exact_base": "4c05a5289d0dd2fb6d475e90a039cce1360b38e3",
+  "commission_head": "42ed6a56c1b2a6f8f3837639bab094a154e08b5e",
+  "implementation_head_before_return_packet": "e45ddd0231d574d91fde64956cbc14ff59e467c2",
+  "blockers_closed": [
+    "B03",
+    "B05",
+    "B06"
+  ],
+  "producer_module": "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+  "cli_subcommands": [
+    "standardize-wvs",
+    "produce-lits",
+    "freeze-t3"
+  ],
+  "tests": "rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py",
+  "execution_status": {
+    "source_free_tests": "AUTHORED_NOT_EXECUTED",
+    "lits_real_source_producer": "NOT_EXECUTED",
+    "candidate_processes_started": 0,
+    "raw_survey_bytes_opened_by_worker": false,
+    "measured_p2x_run": false,
+    "github_actions_triggered": false
+  },
+  "b03": {
+    "accepted_r1m_oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "accepted_truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "source_free": true,
+    "standard_output_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_PARITY_ORACLE@1.0.0",
+    "final_integration_guard": "LIVE_STANDARD_WVS_CONSTANTS_MUST_EQUAL_ACCEPTED_SUCCESSOR__FAIL_CLOSED_OTHERWISE"
+  },
+  "b05": {
+    "source": "LITS_I",
+    "exact_candidates": 50,
+    "exact_query_roles": 77,
+    "accepted_product_identity": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+    "accepted_semantic_replay_identity": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+    "missing_surfaces_produced": [
+      "CURRENT_STANDARDIZED_CONSTITUENT_I03_FACT_REFS",
+      "CURRENT_CONSTITUENT_I03_CLOSURE_IDENTITY",
+      "CURRENT_OBSERVATION_SHAPED_EXACT_REF_MANIFEST"
+    ]
+  },
+  "b06": {
+    "output_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
+    "sources": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "freeze_order": [
+      10,
+      20,
+      30
+    ],
+    "self_validation": [
+      "load_frozen_upstream_receipt",
+      "load_frozen_source_oracle:LITS_I",
+      "load_frozen_source_oracle:WVS7"
+    ]
+  },
+  "ranking_or_selection": false,
+  "new_semantic_authority_invented": false
+}

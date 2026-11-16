@@ -1,0 +1,25 @@
+{
+  "schema":"RAWLSING_PREV3_W6_RETURN_FANIN_R1",
+  "status":"ADOPTED_BOUNDED_RETURNS__LOCAL_BLOCKERS_PRESERVED__SUCCESSORS_AUTHORIZED",
+  "prior_parallel_registry":"cd341c8086edc3909a9b4009559a5e8b53765144",
+  "astra_delta":"a70cd2ef7d2b77c700bd8795f491079be554ae6b",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "adopted_passes":[
+    {"id":"D01","return":"f89449fe4e44c8da9eafd10bf9b3892b53a8a5b5","effect":"producer court PASS only","wake":"D01Q"},
+    {"id":"D05","return":"c855a893c5c24e44c555e005808bc734a3c08c9c","effect":"PKG-A accepted; value_mode NONNUMERIC","wake":"D09 then D10"},
+    {"id":"D06","return":"5cc451a8aad026fa9ceecb43c052f67b72a2d456","effect":"PKG-C rows 20/21/22 explicit NOT_APPLICABLE","wake":"D10"},
+    {"id":"D07","return":"29a2301f0480c4fbc0029f9db9f8c12dcb9b7b30","package_ref":"260344e38287523593ec5fe6aecf96fccbec19c250d859c8bd4d5fc398ba6f05","effect":"PKG-D trace refs accepted","wake":"D10"},
+    {"id":"D08","return":"c4aaffea3ee7e15d10ebcb6c6b1c30eca9846f8a","effect":"PKG-E rows 12/13/14 accepted","wake":"D10"},
+    {"id":"D16","return":"d6a49a6e3991701c3fbd9d2c5d52609823ad9360","effect":"OP014 independent qualification PASS","wake":"D17"},
+    {"id":"N04-R3","return":"8e0266703bbf3b060abcd6fbe53c7ef6c49062c5","effect":"18,276 accounted; zero bindable; exact residuals proved","wake":"N04-R4A/N04-R4B/N04-R4C"}
+  ],
+  "adopted_local_blockers":[
+    {"id":"D02","return":"f59e5a8a6f3a97f1e81992d286cb9997d1e0d332","blocker":"pyreadstat unavailable/unprovisionable on execution surface","holds":["D03","D04"],"does_not_block":"unrelated lanes"},
+    {"id":"D12","return":"beef158c7df27f61df69da530d1647619dc0369c","blocker":"no exact source-owned real position witness","holds":["D13"],"does_not_block":"mechanism package work"},
+    {"id":"D15","return":"8d6fb0fccc2e297eb37e427530d3683b252fcb25","blocker":"no lawful D05 canonical producer binding for accepted two-root constituents","holds":["selected D15 route"],"does_not_block":"world roots or unrelated routes"}
+  ],
+  "n04_residuals":{"response_category_semantics_ref":18012,"routing_applicability_ref":159,"candidate_kind":42,"review_required":41,"typed_unresolved":22},
+  "newly_authorized":["D01Q","D09","D17","N04-R4A","N04-R4B","N04-R4C","D02-R2"],
+  "conditional_after_new_returns":{"D10":["D09"],"D03":["D02-R2"],"D04":["D01Q","D03"]},
+  "laws":["NO_ALL_LANES_BARRIER","LOCAL_BLOCKER_ONLY","NO_GENERIC_ARCHITECTURE_REOPEN","NO_PROVISIONAL_SIBLING_CONSUMPTION","PRE_V3_OBJECTIVE_WORLD_ONLY"]
+}

@@ -69,6 +69,31 @@ def test_dta_keeps_ordinary_nonresponse_like_code_ordinary(tmp_path: Path):
     assert decoded.variables[0].ordinal == 1
 
 
+def test_expected_source_identity_is_hashed_once_before_reader_decode(tmp_path: Path, monkeypatch):
+    import rawlsing_next.pre553_physical_decoder as decoder
+
+    path = tmp_path / "identity-gate.dta"
+    path.write_bytes(b"not a stata file; identity must fail before reader access")
+    hash_calls = []
+    reader_calls = []
+    original_hash = decoder._sha
+    monkeypatch.setattr(
+        decoder,
+        "_sha",
+        lambda source: (hash_calls.append(Path(source)) or original_hash(source)),
+    )
+    monkeypatch.setattr(
+        pyreadstat,
+        "read_dta",
+        lambda *args, **kwargs: (reader_calls.append((args, kwargs)) or (_ for _ in ()).throw(AssertionError("reader called before source identity gate"))),
+    )
+
+    with pytest.raises(DecoderError, match="source sha256 mismatch before governed decode"):
+        decode_dta(path, expected_source_sha256="0" * 64)
+    assert hash_calls == [path]
+    assert reader_calls == []
+
+
 def test_compatibility_allowlist_is_exact_and_nonsemantic():
     sha, encoding = next(iter(COMPATIBILITY_ALLOWLIST.items()))
     assert _compatibility_config(sha, encoding) == {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}

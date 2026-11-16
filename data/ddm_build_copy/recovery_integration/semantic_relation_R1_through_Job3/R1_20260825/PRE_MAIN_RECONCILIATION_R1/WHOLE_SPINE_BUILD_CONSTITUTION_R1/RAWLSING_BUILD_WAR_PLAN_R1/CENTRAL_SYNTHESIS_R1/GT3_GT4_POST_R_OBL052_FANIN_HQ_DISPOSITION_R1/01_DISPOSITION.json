@@ -1,0 +1,39 @@
+{
+  "schema": "GT34_POST_R_OBL052_FANIN_HQ_DISPOSITION@1.0.0",
+  "disposition_id": "GT34_POST_R_OBL052_FANIN_HQ_DISPOSITION_R1",
+  "anchor_before_disposition": "c36aaea630a6a7af245899e8cbfebb8a21eb9ae0",
+  "r1": {
+    "tip": "083626f80b29c63b0825f2d49267f401c773b5cb",
+    "merge": "15f45a5b8d496b50b307ac8c8049fd97ca23a2cc",
+    "terminal": "BLOCKED__GT34_R1_OBL052_NO_EXISTING_COMPETENT_SUBJECT_ENTITY_OWNER_OR_EVIDENCE_PATH"
+  },
+  "r2": {
+    "tip": "70206d2df4a3784bdbd2fb246ca36bf59bf227bc",
+    "merge": "c36aaea630a6a7af245899e8cbfebb8a21eb9ae0",
+    "terminal": "BLOCKED__GT34_R2_OBL052_NO_LAWFUL_CURRENT_SUBJECT_MATERIALIZATION_SEAM"
+  },
+  "spawned": [
+    "OBL053",
+    "OBL054",
+    "OBL055"
+  ],
+  "dependencies": {
+    "OBL052": [
+      "OBL053",
+      "OBL054"
+    ],
+    "OBL048": [
+      "OBL052"
+    ],
+    "OBL031": [
+      "OBL048",
+      "OBL055"
+    ],
+    "OBL032": [
+      "OBL031"
+    ]
+  },
+  "obl049": "CLOSED_AT_Q2_CANARY_GRAIN",
+  "positive_v3_authorized": false,
+  "main_moved": false
+}

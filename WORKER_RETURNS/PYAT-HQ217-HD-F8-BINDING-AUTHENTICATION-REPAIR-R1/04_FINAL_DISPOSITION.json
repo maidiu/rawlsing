@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_HQ217_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ217-HD-F8-BINDING-AUTHENTICATION-REPAIR-R1",
+  "branch": "agent/rabochii-pyat-hq217-hd-f8-binding-authentication-repair-r1",
+  "commission_tip": "29f8583ff24e372e5fe7948b6dc400e05ee69851",
+  "exact_startup_tip": "09e4dc0d9e8dba21eadab0b5dd55821af7f4811c",
+  "pushed_sha": "d588f709a8b923082d5d458ed6a671e2ae57fb76",
+  "remote_verified_equals_local": true,
+  "final_disposition": "HD_F8_AUTHENTICATION_REPAIR_COMPLETE__READY_FOR_FINAL_REREVIEW",
+  "the_bypass_is_closed": {
+    "statement": "A caller can no longer manufacture source eligibility by directly constructing or dataclasses.replace-ing the binding, and supplying a genuine authoritative receipt alongside a forged binding no longer helps, because the admitted set and provenance are re-derived from the receipt and never read from the presented binding.",
+    "reproduced_before_the_fix": "four attacks, all ALLOWED with state=EXACT_SUPPORTED for a source the authoritative receipt refused",
+    "after_the_fix": "the same four attacks refuse, with the genuine receipt and a request supplied in every case",
+    "enforcement_point": "one place, _authenticate_binding_against_authority, called first by all three authority-consuming paths",
+    "self_hash_disproved": "a forgery rehashed with the module's own semantic_hash, carrying the genuine receipt id and replay identity, still refuses"
+  },
+  "commission_requirements": {
+    "1_authenticate_before_delegating": "MET",
+    "2_require_exact_request_receipt_rule": "MET; request and receipt are required keywords on the evaluator, and rule is required on both powers",
+    "3_reuse_existing_verification_path": "MET; verify_service_f8_scope_binding_replay is the verification path",
+    "4_self_hash_or_post_init_insufficient": "HONOURED; not used, and disproved by court",
+    "5_construction_and_replace_cannot_manufacture_eligibility": "MET for the F8 path, the admission assertion and the set exposure",
+    "6_genuine_receipt_with_forged_binding_still_fails": "MET",
+    "7_public_surface_accounting_repaired": "MET; 28 exported names classified with nothing excluded, 3 classes pinned including the two forgery-surface dataclasses, 14 public binding methods pinned"
+  },
+  "HQD_216_productive_adequacy": {
+    "status": "MET at local grain",
+    "evidence": "four court tests require positive lawful behaviour; a competent applicability receipt plus a bound rule still reaches state=EXACT_SUPPORTED with correct source, geometry, rule hash, authority refs and replay determinants",
+    "the_repair_is_not_a_refuse_everything_change": true,
+    "missing_law_file_disclosed": "PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md, named by the commission for reading, does not exist at the commission tip; the highest HQD law present is 24_HQD125. HQD-216 was applied as the commission states it inline and the absence was disclosed rather than filled with invented content."
+  },
+  "authority_and_law_answers": {
+    "authority_overreach": false,
+    "selection_or_ranking_leak": false,
+    "f8_transformation": false,
+    "owner_modified": false,
+    "architecture_reopened": false,
+    "new_authority_acquired": false,
+    "adopted_owners_byte_identical": true,
+    "non_selecting_non_ranking_seam": true,
+    "no_pooling": true,
+    "no_permission_grant": true,
+    "no_equivalence_creation": true,
+    "no_currentness_authority_invention": true,
+    "complete_incomplete_law": true,
+    "off_release_fail_closed_law": true,
+    "requested_source_replay_refinement": true,
+    "actor_firewall": true,
+    "environment": "reconstructed-equivalent as disclosed; mechanical results independently reproduced; not relabelled as governed certification",
+    "self_adoption": "none; no merge, no adoption of this lane by any other lane"
+  },
+  "evidence_summary": {
+    "courts": "215 collected, 215 passed, 0 skipped, deterministic across three hash seeds",
+    "new_hostile_court": "25 tests covering all eight commissioned witnesses plus eleven additional ones",
+    "negative_control": "the new court fails 18 of 25 against the pre-authentication binder at the commission tip, including all four forgery attacks",
+    "regression": "74 pre-existing slice files compared as sorted failure-identity sets: 139 ids before and after, delta zero in both directions, and none touch the binder or the adopted owners",
+    "write_terrain": "exactly four files, three adopted owners byte-identical"
+  },
+  "honest_caveats_for_the_rereviewer": [
+    "This lane's disposition is COMPLETE and READY FOR REREVIEW, not accepted. Acceptance requires the independent rerereview the commission mandates.",
+    "THE BIGGEST CAVEAT IS THE API CHANGE. All three authority-consuming entry points now REQUIRE the authoritative request, receipt and rule. Any caller outside this repository's courts must be updated. That is a deliberate breaking change and it IS the repair, but it should be reviewed as a contract change, not only as a bug fix.",
+    "BINDING_RULE_REPLAY_MISMATCH was removed as unreachable, so a tampered F8 rule now refuses with BINDING_REPLAY_MISMATCH. If any downstream consumer matches on reason codes, that vocabulary changed.",
+    "The three existing binding courts had their call sites rewritten to thread the authority inputs. That is 20 hoisted request variables plus updated call sites; the reviewers should confirm no test was weakened. Two assertions were retargeted at the authentication-stage code rather than loosened, and one was tightened to isolate the signal it claims to measure.",
+    "Power 1 and power 2 signatures changed. A downstream adopter calling assert_query_source_admitted(query) or expose_unranked_admitted_source_set() will now get a TypeError rather than an answer. That is intended fail-closed behaviour, but it is a visible break.",
+    "The currentness result is recovered from the binding in order to re-derive exactly. This is safe because re-derivation re-validates it against the request, but it is a recovery rather than a caller-supplied input, and a reviewer should confirm that is acceptable.",
+    "The 139 pre-existing failing/error identities remain in the tree, untouched by design and out of scope.",
+    "Removing the dead rule-hash check is a judgement call. The argument is that authentication is strictly stronger and is now the single enforcement point, and that leaving unreachable code with an overstating comment is the F3 defect class. A reviewer who prefers defence-in-depth should say so explicitly.",
+    "The negative control used a shadow tree outside the repository with the pre-authentication binder substituted. It proves witness sensitivity; it does not replace independent reproduction."
+  ],
+  "what_the_rereviewer_should_attack_first": [
+    "Whether ANY remaining public path can report eligibility or reach F8 without passing through _authenticate_binding_against_authority. Enumerate the module's public surface independently of this lane's census.",
+    "Whether closing power 1 and power 2, not just the evaluator, was correct scope, or whether it over-reaches beyond the commissioned evaluation path.",
+    "Whether recovering currentness_result from the binding creates any divergence between what was bound and what is re-derived.",
+    "Whether the 20 hoisted request variables in the existing courts introduced any weakened assertion.",
+    "Whether removing BINDING_RULE_REPLAY_MISMATCH is right, or whether defence-in-depth was the better call."
+  ],
+  "bounds_observed": {
+    "no_raw_source": true,
+    "no_locator_discovery": true,
+    "no_warrant": true,
+    "no_live_C4": true,
+    "no_C7": true,
+    "no_actor_or_person_work": true,
+    "no_merge": true,
+    "no_self_adoption": true,
+    "no_broad_historical_import": true,
+    "no_clone_shared_store_law_followed": true,
+    "no_unrelated_upstream_occupancy_blockers_inherited": true
+  },
+  "terminal": "HQ217_HD_F8_BINDING_AUTHENTICATION_REPAIR_RETURNED__FINAL_REREVIEW_REQUIRED"
+}

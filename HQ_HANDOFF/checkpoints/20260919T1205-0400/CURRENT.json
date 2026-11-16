@@ -1,0 +1,29 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T1205-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0330-0400",
+  "status": "R6U_R6V_R6W_R6X_ADOPTED__SELECTIVE_P2X_FANIN_READY__P2X_HELD_PENDING_LOCAL_RECONCILIATION",
+  "decisions": [
+    "HQD-2026-09-19-081",
+    "HQD-2026-09-19-082",
+    "HQD-2026-09-19-083"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6U_R6V_R6W_R6X_PASS_ADOPTION_20260919.md",
+  "adopted_returns": {
+    "EE-P2R6U": "85c1c00c4dfa0b63d029dc3d20ec865f4d3ed3e8",
+    "EE-P2R6V": "75fcb21893919208423edadd24a2b43adf71c099",
+    "EE-P2R6W": "c7cb149a11795d6b9651a4303258534058fd027f",
+    "EE-P2R6X": "689995c798fece3c36d56905e4aaa67957ce8d79"
+  },
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head_at_checkpoint": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+    "status": "HELD_PENDING_SELECTIVE_FANIN_AND_LOCAL_RECONCILIATION",
+    "stopped_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671"
+  },
+  "next_action": "SELECTIVE_EXACT_ARTIFACT_FANIN_TO_EXISTING_P2X",
+  "terminal": "PARALLEL_REPAIRS_ADOPTED__SELECTIVE_FANIN_READY__LOCAL_RECONCILIATION_REQUIRED"
+}

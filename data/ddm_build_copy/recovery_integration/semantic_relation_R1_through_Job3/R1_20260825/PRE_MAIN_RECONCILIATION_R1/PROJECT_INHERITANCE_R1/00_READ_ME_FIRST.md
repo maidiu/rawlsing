@@ -12,6 +12,8 @@ then `../CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md`, and issue a valid grounding 
 
 Use this inheritance home after grounding to descend into the relevant campaign/evidence. A purely historical reader may enter here directly, but direct reading does not itself grant project decision authority.
 
+**Post-W55 FIELD FORGE R2 authority route:** Global HQ adopted the repaired FIELD FORGE R2 terminal semantic/architecture authority at exact grain in `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`. Before using historical Field Forge inheritance for a current architecture decision, read `FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md` and its owner/negative ceilings. Historical N028/N029 and `FIELD_FORGE_REINDUCTION_BRIDGE.md` remain design/evidence history rather than substitutes for the adopted capsule.
+
 ## The question this home answers
 
 This is the conceptual inheritance layer for **changing or redesigning Rawlsing**. It is not the operating-authority entrypoint. If you are validating or operating current Rawlsing, begin instead at `../00_CANONICAL_ENTRYPOINT.md` and `../CANONICAL_GOVERNANCE_R1/`.
@@ -77,11 +79,19 @@ R5 is preserved `INACTIVE_NON_SERVING`; it is not the selected runtime. Later so
 
 ### 10. Field Forge and Structural Pressure Observatory
 
-Field Forge is a forward architectural exploration, not current authority. It asks how respondent exposure topology, position-role authority, geometry families, disposition measurement, homology, pressure footprints, articulation/hegemony, capital conversion, positioned social-world packets, and eventual V3 interfaces might be built without mistaking questionnaire form for ontology. W48 fixes the ceiling: `EXPLORATORY_NONBINDING`. The Structural Pressure Observatory is another exploratory body and must not be collapsed into Field Forge merely because they touch neighboring questions. See N028–N029 and `FIELD_FORGE_REINDUCTION_BRIDGE.md`.
+Historical Field Forge is a forward architectural exploration that asked how respondent exposure topology, position-role authority, geometry families, disposition measurement, homology, pressure footprints, articulation/hegemony, capital conversion, positioned social-world packets, and eventual V3 interfaces might be built without mistaking questionnaire form for ontology. W48 correctly fixed that historical/pre-adoption corpus at `EXPLORATORY_NONBINDING`.
+
+The later FIELD FORGE R2 campaign re-grounded the problem, ran the required empirical/weakest-object courts, underwent independent architecture and evidence audits, repaired the owner-seam defect, passed independent rereview, and was then Global-HQ-adopted at exact semantic/architecture grain by `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`.
+
+Its current adopted route is `FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/`. The adopted R2 architecture is capability/relation based, producer-preserving, physically neutral, actor-safe, and explicit about strong-noun blockers and typed negatives. This does **not** promote all historical Field Forge proposals, close claim-specific PRA/crosswalk/estimand/transport/strong-noun authorities, or make Structural Pressure Observatory current. SPO remains a separate exploratory body and must not be collapsed into Field Forge merely because they touch neighboring questions. See N028–N029 and `FIELD_FORGE_REINDUCTION_BRIDGE.md` for historical inheritance only after the adopted capsule.
 
 ## What is currently authoritative versus inherited design capital?
 
-Current authority remains defined by the W35 canonical governance surfaces. W50-W55 do not change those authority ceilings. Conceptual materialization into this directory changes **discoverability**, not authority. In particular: Field Forge remains exploratory; R5 remains inactive/non-serving; Z02 remains tested/not-admitted; the physical architecture winner remains open; J01-B and WVS7 certification remain unresolved at their stated grains.
+Current operating/runtime authority remains defined by the W35 canonical governance surfaces at their exact grains. W50-W55 do not change those authority ceilings. Conceptual materialization into this directory changes **discoverability**, not authority.
+
+A later explicit exception now exists: Global HQ adopted FIELD FORGE R2 as current project semantic/architecture authority at its exact structural-observatory grain in `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`; the canonical route is `FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/`. This adoption does not select current runtime/physical architecture or promote historical/unadopted Field Forge material wholesale.
+
+R5 remains inactive/non-serving; Z02 remains tested/not-admitted; the physical architecture winner remains open; J01-B and WVS7 certification remain unresolved at their stated grains.
 
 ## What remains unfinished?
 
@@ -89,7 +99,7 @@ The historical source ledgers record **27** W41 unfinished threads, **13** W41 s
 
 The old W41 return requiring a complete conceptual-inheritance census is satisfied at that grain by W50-W54. Current discoverability survives as a standing maintenance/reintegration obligation, not a fake unfinished census.
 
-The highest-cost live fronts include: persistent vs virtual/source-backed vs hybrid physical architecture; PRE553 publication seam vs continuous DAG; full learned-world succession; full source→PRE-V3 compiler; Dva W3 and later stranded implementation; Trii comparator/PSEPF/source-composition/replay/source-retirement/economics; Chetiri C05R2B/C08/validation/comparability/source-universe composition; C01 readmission; Job3 BLOCKED/O12 successors; WVS7 certification; J01-B; measurement portability; Field Forge POSITION_ROLE_AUTHORITY and external-group crosswalk; and exploratory geometry/weight/homology/mode questions.
+The highest-cost live fronts include: persistent vs virtual/source-backed vs hybrid physical architecture; PRE553 publication seam vs continuous DAG; full learned-world succession; full source→PRE-V3 compiler; Dva W3 and later stranded implementation; Trii comparator/PSEPF/source-composition/replay/source-retirement/economics; Chetiri C05R2B/C08/validation/comparability/source-universe composition; C01 readmission; Job3 BLOCKED/O12 successors; WVS7 certification; J01-B; measurement portability; and FIELD FORGE residual claim-specific POSITION_ROLE_AUTHORITY, external-group crosswalk, transform/estimand/transport, strong-noun admission and physical-realization questions.
 
 A parent question is not closed merely because it spawned a prerequisite campaign. W55's `../CENTRAL_PROJECT_STATE_R1/DEPENDENCY_RETURN_GRAPH.tsv` makes the return obligations operationally explicit.
 
@@ -100,13 +110,15 @@ Read `09_TENSIONS_AND_NONHARMONIZED_RELATIONS.tsv` and the current normalized `.
 - Trii D15's historical persistent-C11 choice versus Chetiri's carrier-neutral conservation theorem;
 - persistent versus source-backed/virtual versus hybrid physical architecture;
 - staged PRE553 publication seam versus continuous producer DAG;
-- position/disposition/pressure geometry proposals versus the authority and observability needed to make them lawful;
+- adopted FIELD FORGE R2 capability/relation architecture versus claim-specific position/disposition/pressure geometry and authority/observability needs;
 - preservation sufficiency versus practical discoverability;
 - source-native evidence versus generated structural/person-world inference.
 
 ## Where is the exact evidence?
 
 `SOURCE_CORPORA/` contains exact Git-tree copies of all nine frozen W41–W49 Wave-4A report bundles. `11_FULL_DEVELOPMENT_ENVELOPES.tsv`, `12_MATERIALIZATION_MANIFEST.tsv`, and W53's `19A`/`19B`/`19C` navigation indexes give exact refs, physical availability and cross-campaign routes. Unavailable primaries remain typed and must not be replaced by asserted equivalents.
+
+For the adopted FIELD FORGE R2 authority/evidence chain, use `FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/03_EVIDENCE_AND_AUDIT_POINTERS.tsv`; the large exploratory research corpus remains external by immutable ref rather than copied into this canonical inheritance home.
 
 ## How to read this home after grounding
 
@@ -117,7 +129,7 @@ Read `09_TENSIONS_AND_NONHARMONIZED_RELATIONS.tsv` and the current normalized `.
 5. Use the central obligation/tension/unknown IDs before proposing architecture.
 6. Read the node's `CAMPAIGNS/<NODE>/00_READ_FIRST.md` route.
 7. Drill into `SOURCE_CORPORA/` / local `CORPUS/` and the full-development envelope when a claim matters.
-8. For Field Forge work, read `FIELD_FORGE_REINDUCTION_BRIDGE.md` after current Ground and global inheritance.
+8. For current FIELD FORGE R2 architecture work, read `FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/` first; use `FIELD_FORGE_REINDUCTION_BRIDGE.md` and N028/N029 afterward for historical design context.
 
 ## Non-negotiable architect rule
 

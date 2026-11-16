@@ -1,0 +1,121 @@
+{
+  "browser_github_only": true,
+  "candidate_a_b_c_outputs_seen": 0,
+  "candidate_a_b_c_processes_started": 0,
+  "candidate_owned_roots_consulted": [],
+  "candidate_owned_state_reused": false,
+  "github_actions_run_attempt": "1",
+  "github_actions_run_id": "35640170249",
+  "github_execution_sha": "4302685a2097ac9d02ffff59781b1dd4497244dc",
+  "github_ref": "refs/heads/agent/rabochii-premain-fiabc-lm2-r1m-lock2-successor-r16-oracle-r1",
+  "measured_p2x_executed": false,
+  "neutral_generic_i05_executions": 2,
+  "persisted_q291_carrier_reads": 1,
+  "persisted_r15_release_reused_exact": true,
+  "prior_attempts": [
+    {
+      "candidate_a_b_c_processes_started": 0,
+      "candidate_outputs_seen": 0,
+      "failure": "POST_I05_ORACLE_HELPER_ATTEMPTED_TEMPLATE_CATALOG_RESOLUTION_OF_GENERATED_QUERY_REF",
+      "generic_i05_modified": false,
+      "head_sha": "0b67f76fa7761504cf0622096a3c10c5f9e4d0ec",
+      "job_id": 106433393238,
+      "r16_generic_i05": "PASS_REACHED_ORACLE_ASSEMBLY",
+      "requalification": "37 passed in 36.60s",
+      "run_id": 35629934073
+    },
+    {
+      "candidate_a_b_c_processes_started": 0,
+      "candidate_outputs_seen": 0,
+      "failure": "POST_I05_ORACLE_SERIALIZER_ASSUMED_RECEIPT_REF_FIELDS_WERE_EXACTREF_NOT_MAPPINGPROXY",
+      "generic_i05_modified": false,
+      "head_sha": "aca5ea57b2686e66c5e770a04460857e2fd324d9",
+      "job_id": 106440683067,
+      "r16_generic_i05": "PASS_REACHED_ORACLE_ASSEMBLY",
+      "requalification": "37 passed in 26.27s",
+      "run_id": 35632152693
+    },
+    {
+      "candidate_a_b_c_processes_started": 0,
+      "candidate_outputs_seen": 0,
+      "failure": "POST_ORACLE_FINAL_LEDGER_CHECK_USED_BRITTLE_EXACT_CSV_SUBSTRING",
+      "generic_i05_modified": false,
+      "head_sha": "67fee929d987f97f15ebd0722afee58c40b553a2",
+      "independent_second_i05_replay": "PASS",
+      "job_id": 106448861255,
+      "oracle_independence_proof": "PASS_REACHED_GATE_7",
+      "r16_generic_i05": "PASS",
+      "requalification": "37 passed in 36.86s",
+      "run_id": 35634617786
+    },
+    {
+      "candidate_a_b_c_processes_started": 0,
+      "candidate_outputs_seen": 0,
+      "failure": "POST_COURT_COMMAND_TELEMETRY_USED_FLOAT_DURATION_FORBIDDEN_BY_CANONICAL_JSON",
+      "generic_i05_modified": false,
+      "head_sha": "44ad55d86cd73e634c1be9199118e05d3db46524",
+      "independent_second_i05_replay": "PASS",
+      "job_id": 106458116012,
+      "oracle_independence_proof": "PASS",
+      "r01_r18_ledger": "PASS_REACHED_RETURN_EMISSION",
+      "r16_generic_i05": "PASS",
+      "requalification": "37 passed in 37.00s",
+      "run_id": 35637413312
+    }
+  ],
+  "r15_mechanical_rehydration_performed": true,
+  "r15_semantic_rebuild_performed": false,
+  "raw_wvs_source_reads": 0,
+  "schema": "FIABC_LM2_R1M_COMMAND_TELEMETRY@1.0.0",
+  "stages": [
+    {
+      "milliseconds": 38,
+      "stage": "GATE_1_R1L_FANIN_ADJUDICATION",
+      "status": "PASS"
+    },
+    {
+      "milliseconds": 12,
+      "stage": "GATE_2_SUCCESSOR_DISCOVERY_AUTHORITY",
+      "status": "PASS",
+      "successor_discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873"
+    },
+    {
+      "candidate_count": 46,
+      "milliseconds": 78,
+      "stage": "GATE_3_SOURCE_FREE_FRONTIER_REPLAY",
+      "status": "PASS"
+    },
+    {
+      "milliseconds": 12,
+      "stage": "GATE_4_SUCCESSOR_LOCK2",
+      "status": "PASS",
+      "successor_lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+      "successor_replay": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+    },
+    {
+      "evaluated_frontier": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3",
+      "i05_replay": "a9d999d96533ceaf4535448a6a488227c05d205866a93feb391080c68d6f3024",
+      "milliseconds": 790750,
+      "stage": "GATE_5_R16_REENTRY",
+      "status": "PASS"
+    },
+    {
+      "milliseconds": 504100,
+      "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+      "stage": "GATE_6_FRESH_ORACLE_AND_SECOND_REPLAY",
+      "status": "PASS",
+      "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405"
+    },
+    {
+      "all_green": true,
+      "milliseconds": 0,
+      "stage": "GATE_7_R01_R18_FINAL",
+      "status": "PASS"
+    }
+  ],
+  "success_terminal": "FIABC_LM2_R1M_PASS__SUCCESSOR_DISCOVERY_AUTHORITY_ADOPTED__46_CANDIDATE_STREAM_EXACT__SUCCESSOR_LOCK2_SEALED__R16_PASS__FRESH_WVS_ORACLE_FROZEN__R01_R18_ALL_GREEN__CANDIDATES_NOT_STARTED",
+  "total_milliseconds": 1294991,
+  "user_mac_used": false,
+  "wvs_sav_opened": false,
+  "wvs_zip_opened": false
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_HQ218_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ218-HD-F8-AUTHENTICATION-FINAL-REREVIEW-R1",
+  "reviewer_role": "BROWSER_GITHUB_INDEPENDENT_HOSTILE_REREVIEW__NO_IMPLEMENTATION",
+  "commission_tip": "e6185d4fd6ce9a1708cb54242ba247fe494ec329",
+  "candidate": "agent/rabochii-pyat-hq217-hd-f8-binding-authentication-repair-r1 @ cff8449e1752f816ad82d1b18626e2290913f8b9",
+  "code_bearing_repair": "d588f709a8b923082d5d458ed6a671e2ae57fb76",
+  "prior_review": "6df6c86816a949d02bd91d33b6686ba0de728050",
+  "hqd216_object": "e0e7ce0e596e4e5ea7ec96c265ec949b9fe801a2:PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md",
+  "disposition": "ACCEPT_HD_F8_AUTHENTICATION_REPAIR__READY_FOR_HQ_ADOPTION",
+  "ready_for_hq_adoption": true,
+  "authority_overreach": false,
+  "blocking_defect": false,
+  "findings": [
+    "All three authority-consuming paths authenticate by re-deriving the binding from exact request + adopted applicability receipt + exact F8 rule before reporting eligibility or delegating to F8.",
+    "Direct construction, dataclasses.replace, copied identity fields and self-consistent attacker hashes cannot manufacture eligibility because presented binding material is not trusted as authority.",
+    "Authenticating power 1 and power 2 is necessary: each independently reports source eligibility and would otherwise preserve the HQ215 bypass.",
+    "The breaking API change strands no candidate-visible production consumer: all 136 production Python files were independently scanned and no external production caller of the binder APIs exists.",
+    "Currentness recovery remains non-authoritative carried material under a closed adopted vocabulary; currentness authority remains explicitly refused.",
+    "Removal of BINDING_RULE_REPLAY_MISMATCH loses no semantic defence. Rule mismatch now fails earlier as BINDING_REPLAY_MISMATCH during exact authentication; no current production reason-code consumer exists.",
+    "Court edits preserve or strengthen assertions; no positive path was made unreachable.",
+    "HQD-216 productive adequacy is demonstrated at local grain for lawful single-source and exhaustive modes.",
+    "All three adopted owners remain byte-identical and no ranking/selection/pooling/F8 transformation/currentness authority/actor power was added."
+  ],
+  "runtime_classification": {
+    "candidate_reported": "215/215, 0 skipped, deterministic across three hash seeds; 139 regression failure/error identities before and after",
+    "independent_reviewer_execution": false,
+    "classification": "CANDIDATE_PRODUCED_RECONSTRUCTED_EQUIVALENT_RUNTIME_EVIDENCE__STATIC_ATTACKS_INDEPENDENTLY_PERFORMED__NOT_GOVERNED_CERTIFICATION"
+  },
+  "nonblocking_precision_notes": [
+    {
+      "id": "DOC-CENSUS-01",
+      "finding": "Worker prose says 14 public methods. Exact class surface is 13 public methods plus one public binding_statement data attribute."
+    },
+    {
+      "id": "DOC-CENSUS-02",
+      "finding": "Worker/court prose says nine loud refusals. Exact refusal-method set exercised by the court contains eight methods."
+    },
+    {
+      "id": "DOC-PATCH-03",
+      "finding": "Worker's '20 hoisted request variables' is not an exact raw patch assignment count. Independent patch inspection nevertheless finds no weakened substantive assertion."
+    },
+    {
+      "id": "DEFENSIVE-DIAGNOSTIC-04",
+      "finding": "The module-level defensive currentness vocabulary check references ServiceF8ScopeBindingError before its class definition; if CURRENT vanished from the adopted state vocabulary the import would fail with NameError instead of the intended typed refusal. This remains fail-closed and is outside the authentication defect."
+    }
+  ],
+  "allowed_dispositions_considered": {
+    "ACCEPT_HD_F8_AUTHENTICATION_REPAIR__READY_FOR_HQ_ADOPTION": "SELECTED",
+    "HD_F8_AUTHENTICATION_REPAIR_PARTIAL__NAMED_DEFECT": "NOT SELECTED; only nonblocking precision/diagnostic notes remain.",
+    "HD_F8_AUTHENTICATION_REPAIR_AUTHORITY_OVERREACH": "NOT SELECTED; the HQ215 authority bypass is closed.",
+    "HD_F8_AUTHENTICATION_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED; exact candidate, repair, prior review, HQD-216 object, code and courts were available. Browser-only runtime non-execution does not block the static authority adjudication."
+  },
+  "hard_holds_respected": {
+    "implementation_modified": false,
+    "repair_performed": false,
+    "merge": false,
+    "rebase": false,
+    "self_adoption": false,
+    "raw_source_access": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_work": false
+  },
+  "required_artifacts": [
+    "00_REVIEW.md",
+    "01_PUBLIC_SURFACE_AND_FORGERY_ATTACK.json",
+    "02_AUTHENTICATION_API_AND_CURRENTNESS_ATTACK.json",
+    "03_COURT_POSITIVE_PATH_AND_PRESERVATION.json",
+    "04_FINAL_DISPOSITION.json"
+  ],
+  "terminal": "HQ218_HD_F8_AUTHENTICATION_FINAL_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

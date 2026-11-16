@@ -1,0 +1,88 @@
+{
+  "exact_path": "releases/e9eb4a7bba2e6674a03cffaebb5c3063e33eb89fde34c0f435a2530304afe54f",
+  "family_counts": {
+    "AuthoritySnapshot": 5,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 128,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 5,
+    "RespondentEvent": 416,
+    "RespondentIdentity": 128,
+    "RoutingEligibilityFact": 640,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 128
+  },
+  "fixture": {
+    "chunk_rows": 16,
+    "events": 416,
+    "family_counts": {
+      "AuthoritySnapshot": 5,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 128,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 5,
+      "RespondentEvent": 416,
+      "RespondentIdentity": 128,
+      "RoutingEligibilityFact": 640,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 128
+    },
+    "questions": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "MR"
+    ],
+    "repeated": "MR two occurrences at index % 13 == 0",
+    "respondents": 128,
+    "routed_sparse": "D eligible at index % 11 == 0",
+    "routing": 640,
+    "tag": "PYAT-COUNTRY-REUSE-20261115",
+    "typed_missing": "B at index % 17 == 0",
+    "weights": 128
+  },
+  "grade": "SOURCEFREE_TEST_ONLY",
+  "i02": {
+    "logical": "a2ed53bdc7724634a616ecbaa43057b38f040f97589e66a4459538bcc62597a8",
+    "physical": "f0c645ce2b2fd548a8c4540074e6bed7c497bfbac516a112bfdde95e92464b28",
+    "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-PYAT-COUNTRY-REUSE-20261115|7958f31a70aa57bdfd9f36c1a6bc59035d4534862bcf3276c0956576ebcff845",
+    "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:f6b61df767303027c160cea8611fae4d1264917418aae30a20d3d7d8659df588|f6b61df767303027c160cea8611fae4d1264917418aae30a20d3d7d8659df588",
+    "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+    "source": "SOURCE_ARTIFACT|SOURCE-PYAT-COUNTRY-REUSE-20261115|d698b8213d39a85faf8b30b41ed58f78988e049076e2455edcf9089151a64ae3",
+    "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:20eb977b93a22911b499168e95817bd13eff4ee150224e5892e460126dd724cc|20eb977b93a22911b499168e95817bd13eff4ee150224e5892e460126dd724cc"
+  },
+  "manifest_sha256": "7ac87df0f68aba3f9c8585a0f4c3983f42155f4aa1f4e1e179dd4cb8a116ac0b",
+  "members_sha256": {
+    "AuthoritySnapshot.parquet": "411b2a938875de461cc4064feb8f64d2830df6d9d870dbf8f3aaafd2b77f9d86",
+    "ComparatorReplayBinding.parquet": "642ebd87394dfbb87bd6e0fb27d9d01153245cd93ad131d0c5faff91b168e3bb",
+    "DiscoveryBranchReplayBinding.parquet": "642ebd87394dfbb87bd6e0fb27d9d01153245cd93ad131d0c5faff91b168e3bb",
+    "EmpiricalCoordinateFact.parquet": "027a1f17dc3784d973b2044fe2d18920f11b5abbf30ac4b6b7b7cf92c8693760",
+    "EmpiricalPredicateReplayBinding.parquet": "642ebd87394dfbb87bd6e0fb27d9d01153245cd93ad131d0c5faff91b168e3bb",
+    "EmpiricalUniverse.parquet": "5eb7245ed73a9ba58e2301b40a6ded33f1a892684261726d4635a544824f7f8c",
+    "QuestionVariableBinding.parquet": "fbaf4b1c11164de4d7a6fc5604043350ee400b8710963d5fcf59bae64973e72e",
+    "RespondentEvent.parquet": "8667f2aa8e703a5c309a7fddcd24bc8286a9ff2101825c69db0f3964d1515fd6",
+    "RespondentIdentity.parquet": "6c04bedbd50cfd6bd0dc822476704a46db136c7e300f3a552312fb8b132ccdec",
+    "RoutingEligibilityFact.parquet": "3f35c14f1e62e0ceea90984187abf9ca046dc75d976cdcb567d34dcd44ffb7ab",
+    "SourceUniverseRelation.parquet": "642ebd87394dfbb87bd6e0fb27d9d01153245cd93ad131d0c5faff91b168e3bb",
+    "StructuralAdmissionReplayBinding.parquet": "642ebd87394dfbb87bd6e0fb27d9d01153245cd93ad131d0c5faff91b168e3bb",
+    "WeightMeasureFact.parquet": "0426bcc8545f0f8dd798dd27a2f9bf2a0abc24d82bb19fc9a26d6dc5e6bbdf08",
+    "event_locator.parquet": "a253ff61b3ea5282ff783c2a380b89f95023dea47ef1ad39c253d5589c24bf5f",
+    "manifest.json": "7ac87df0f68aba3f9c8585a0f4c3983f42155f4aa1f4e1e179dd4cb8a116ac0b"
+  },
+  "reconstructed_v1_release_ref": {
+    "content_hash": "92db570ab1d722fb56d4eb2084b3ca20c3875f622dbdc5b9c0837f812b786310",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT-COUNTRY-REUSE-20261115"
+  },
+  "release_name": "e9eb4a7bba2e6674a03cffaebb5c3063e33eb89fde34c0f435a2530304afe54f",
+  "retained_bytes": 2153366,
+  "root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p0-c11-operable/WORKER_RETURNS/PYAT_P0_C11_OPERABLE_20261115_R1/.local-data/estate-128",
+  "schema": "PYAT_COUNTRY_REUSE_ESTATE@1"
+}

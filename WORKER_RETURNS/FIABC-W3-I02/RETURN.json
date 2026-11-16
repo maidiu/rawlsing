@@ -1,0 +1,53 @@
+{
+  "worker": "FIABC-W3-I02",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i02-effective-n-successor-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I02/",
+  "terminal": "FIABC_W3_I02_EFFECTIVE_N_SUCCESSOR_IMPLEMENTED__READY_FOR_FANIN",
+  "implementation": {
+    "contract_id": "PRE553_F018_EFFECTIVE_N@1.0.0",
+    "formula_id": "SUM_W_SQUARED_OVER_SUM_W2_EXACT@1.0.0",
+    "production_file": "rawlsing_next/pre553_effective_n.py",
+    "test_file": "rawlsing_next/tests/test_pre553_effective_n.py",
+    "semantic_owner_change": false,
+    "new_public_semantic_object_family": false,
+    "historical_v550_v550j_imported": false,
+    "measured_p2x_execution_performed": false
+  },
+  "files_changed": [
+    "rawlsing_next/pre553_effective_n.py",
+    "rawlsing_next/tests/test_pre553_effective_n.py",
+    "WORKER_RETURNS/FIABC-W3-I02/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-I02/01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "WORKER_RETURNS/FIABC-W3-I02/02_TEST_AND_EXECUTION_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-I02/03_AUTHORITY_AND_NEGATIVE_STATE_CONTRACT.md",
+    "WORKER_RETURNS/FIABC-W3-I02/RETURN.json"
+  ],
+  "tests_added": [
+    "test_weighted_effective_n_is_exact_replayable_and_input_order_invariant",
+    "test_raw_unweighted_does_not_manufacture_effective_n_from_respondent_count",
+    "test_absent_weight_authority_is_typed_not_authorized_without_default_weight",
+    "test_invalid_weight_state_never_leaks_partial_numeric_effective_n",
+    "test_zero_or_degenerate_weights_return_typed_state_not_numeric_zero",
+    "test_mismatched_weight_scope_fails_closed_without_reselecting_a_weight",
+    "test_missing_explicit_weight_scope_does_not_infer_scope_or_estimand",
+    "test_governed_weighted_query_without_exact_basis_cannot_infer_default_weight",
+    "test_design_and_estimand_authority_are_checked_as_distinct_bindings",
+    "test_weight_set_must_reproduce_i03_weighted_denominator_and_provenance"
+  ],
+  "tests_not_executed_and_why": "No tests were executed because the commission restricts this worker to GitHub/browser repository tools and forbids local-machine execution. No measured P2X execution was performed.",
+  "commands_for_integrated_execution_surface": [
+    "python -m compileall rawlsing_next/pre553_effective_n.py rawlsing_next/tests/test_pre553_effective_n.py",
+    "python -m pytest rawlsing_next/tests/test_pre553_effective_n.py -q",
+    "python -m pytest rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_effective_n.py -q"
+  ],
+  "headline_findings": [
+    "F018 effective-N now has a current governed PRE553 successor downstream of I03 truth.",
+    "Positive effective-N requires exact query-owned weight basis, exact authorized weight scope, exact one-to-one denominator weight coverage, positive design and estimand authority, provenance coupling to the I03 fact, and sum_w equality with I03 weighted denominator.",
+    "RAW/unweighted workloads return typed NOT_APPLICABLE with no numerical effective-N; respondent counts never imply all-ones weights.",
+    "The measurement product carries exact sum_w, sum_w2, effective_n, provenance, replay identity, and product identity without becoming EmpiricalFact or structural/discovery authority."
+  ],
+  "exact_blockers": [],
+  "commit_sha_note": "Use the branch tip commit containing this RETURN.json as the authoritative worker commit_sha."
+}

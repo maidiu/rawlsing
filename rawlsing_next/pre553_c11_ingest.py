@@ -7,6 +7,7 @@ admission, change V553+, or create actor/V3/V2 semantics.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 from enum import Enum
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
@@ -276,6 +277,80 @@ def _candidate_projection(candidate: C11SourceReleaseCandidate) -> dict[str, Any
     }
 
 
+def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) -> str:
+    """Hash the canonical candidate projection without materializing ref dictionaries.
+
+    This is byte-identical to semantic_hash(_candidate_projection(candidate)).
+    Candidate sections may be large, so immutable ExactRef values are sorted and
+    serialized directly into the SHA-256 stream instead of expanding every ref
+    into a fresh mapping first.
+    """
+    h = hashlib.sha256()
+
+    def write(text: str) -> None:
+        h.update(text.encode("utf-8"))
+
+    def write_section(section: Any) -> None:
+        if isinstance(section, TypedAbsence):
+            write(canonical_json(section.as_dict()))
+            return
+        refs: list[ExactRef] = []
+        for item in section:
+            if isinstance(item, CanonicalSemanticObject):
+                refs.append(item.ref)
+            elif isinstance(item, C11InternalRecord):
+                refs.append(item.ref)
+            else:
+                raise C11IntegrityError("unsupported C11 section member")
+        refs.sort(key=lambda ref: ref.key)
+        write("[")
+        for index, ref in enumerate(refs):
+            if index:
+                write(",")
+            write(canonical_json(ref.as_dict()))
+        write("]")
+
+    sections = {
+        "authority_snapshots": candidate.authority_snapshots,
+        "comparator_replay_bindings_or_typed_deferred_state":
+            candidate.comparator_replay_bindings_or_typed_deferred_state,
+        "discovery_branch_replay_bindings_or_typed_deferred_state":
+            candidate.discovery_branch_replay_bindings_or_typed_deferred_state,
+        "empirical_coordinate_facts": candidate.empirical_coordinate_facts,
+        "empirical_universes": candidate.empirical_universes,
+        "predicate_replay_bindings_when_retained_objects_require_them":
+            candidate.predicate_replay_bindings_when_retained_objects_require_them,
+        "question_variable_bindings": candidate.question_variable_bindings,
+        "respondent_events": candidate.respondent_events,
+        "respondent_identities": candidate.respondent_identities,
+        "routing_eligibility_facts_or_exact_rules":
+            candidate.routing_eligibility_facts_or_exact_rules,
+        "source_universe_relations_or_explicit_distinct_default":
+            candidate.source_universe_relations_or_explicit_distinct_default,
+        "structural_admission_replay_bindings_or_typed_not_applicable_state":
+            candidate.structural_admission_replay_bindings_or_typed_not_applicable_state,
+        "weight_measure_facts_or_typed_absence":
+            candidate.weight_measure_facts_or_typed_absence,
+    }
+    values = {
+        "ingest_contract_version": INGEST_CONTRACT_VERSION,
+        "source_release_manifest": candidate.source_release_manifest.semantic_projection(),
+    }
+    keys = sorted((*sections, *values))
+    write("{")
+    for index, key in enumerate(keys):
+        if index:
+            write(",")
+        write(canonical_json(key))
+        write(":")
+        if key in sections:
+            write_section(sections[key])
+        else:
+            write(canonical_json(values[key]))
+    write("}")
+    return h.hexdigest()
+
+
 def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate) -> tuple[ExactRef, ...]:
     refs: list[ExactRef] = [
         candidate.source_release_manifest.source_artifact_ref,
@@ -316,7 +391,7 @@ def build_candidate_replay_manifest(
         authority_snapshot_set_hash=authority_snapshot_set_hash(candidate.authority_snapshots),
         source_substrate_content_refs=(candidate.source_release_manifest.source_artifact_ref,),
         semantic_projection_id=SEMANTIC_PROJECTION_ID,
-        semantic_projection_hash=semantic_hash(_candidate_projection(candidate)),
+        semantic_projection_hash=_candidate_projection_semantic_hash(candidate),
         deterministic_tie_order_rules_ref=deterministic_tie_order_rules_ref,
         replay_protocol_version=replay_protocol_version,
         replay_protocol_authority_ref=replay_protocol_authority_ref,
@@ -608,7 +683,7 @@ def _validate_source_relations(candidate: C11SourceReleaseCandidate) -> None:
 def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRegistry) -> ReplayManifest:
     manifest = candidate.candidate_replay_manifest
     assert manifest is not None
-    expected_projection_hash = semantic_hash(_candidate_projection(candidate))
+    expected_projection_hash = _candidate_projection_semantic_hash(candidate)
     if manifest.frontier_version != FRONTIER_VERSION:
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM, "frontier version mismatch")

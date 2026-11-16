@@ -1,0 +1,197 @@
+{
+  "schema": "FIABC_LM2_R1F_MINIMAL_LOCAL_Q291_EXTRACTION_PACKET@1.0.0",
+  "status": "FROZEN__NOT_EXECUTED",
+  "repository": "maidiu/rawlsing",
+  "exact_repo_base": "d543958cb068b7f4401bafbf9edba1a68b05fea3",
+  "archaeology_branch": "agent/rabochii-premain-fiabc-lm2-r1f-q291-carrier-archaeology-r1",
+  "browser_verdict": "ABSENT__NO_BROWSER_ACCESSIBLE_EXACT_OR_EQUIVALENT_Q291_PHYSICAL_CELL_CARRIER",
+  "source_package": {
+    "library_file_id": "file_00000000386c820d8760e748b25ad7e1",
+    "library_name": "WVS Wave 7.sav.zip",
+    "version_id": "1",
+    "bytes": 26200230,
+    "sha256": "ce92993a022edbe39823f4a95d3f33522179ce4f388e2de2c1778c4ae6f1059a",
+    "selected_member": "WVS Wave 7.sav",
+    "selected_member_uncompressed_bytes": 185163494,
+    "selected_member_zip_crc32": "d0308f1a"
+  },
+  "source": {
+    "input_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav",
+    "name": "WVS Wave 7.sav",
+    "bytes": 185163494,
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613,
+    "verification_law": "ONE_HASH_ONLY_PASS_BEFORE_DECODER__STOP_ON_ANY_MISMATCH"
+  },
+  "decoder": {
+    "implementation": "pyreadstat.read_sav",
+    "application_decoder_call_count": 1,
+    "call": {
+      "usecols": [
+        "Q291G5",
+        "Q291P5"
+      ],
+      "apply_value_formats": false,
+      "user_missing": true,
+      "encoding_override": null
+    },
+    "no_metadataonly_source_call": true,
+    "no_retry": true,
+    "physical_normalization_helper": "rawlsing_next.pre553_physical_decoder._jsonable",
+    "missing_declaration_helper": "rawlsing_next.pre553_physical_decoder._missing_declarations(metadata,name,'SAV')",
+    "physical_classification_helper": "rawlsing_next.pre553_physical_decoder.classify_physical_value",
+    "raw_witness_helper": "rawlsing_next.pre553_source_backed_c11_facade.raw_physical_value_witness",
+    "raw_witness_schema": "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0",
+    "physical_value_material_schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+    "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+  },
+  "frozen_repo_blob_pins": {
+    "rawlsing_next/pre553_physical_decoder.py": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "rawlsing_next/pre553_r5_codec.py": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "rawlsing_next/fiabc_lm2_r1e_browser_prep.py": "165f3259618dfd58526c463f65499a54ff26c29c",
+    "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py": "d1dfe705fa4da56036bd472af18536da1f69d4ad",
+    "WORKER_RETURNS/FIABC-LM2/wvs7_projection_structural_input.json": "f46970acfb9a5d1b98caf953354552122562d255"
+  },
+  "structural_preimage": {
+    "identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+    "variables": [
+      {
+        "name": "Q291G5",
+        "ordinal": 388,
+        "expected_missing_declarations": [
+          {
+            "kind": {
+              "t": "str",
+              "v": "range"
+            },
+            "lo": {
+              "t": "int",
+              "v": -5
+            },
+            "hi": {
+              "t": "int",
+              "v": -1
+            }
+          }
+        ]
+      },
+      {
+        "name": "Q291P5",
+        "ordinal": 394,
+        "expected_missing_declarations": [
+          {
+            "kind": {
+              "t": "str",
+              "v": "range"
+            },
+            "lo": {
+              "t": "int",
+              "v": -5
+            },
+            "hi": {
+              "t": "int",
+              "v": -1
+            }
+          }
+        ]
+      }
+    ],
+    "source_of_truth": "WORKER_RETURNS/FIABC-LM2/wvs7_projection_structural_input.json"
+  },
+  "row_order_law": {
+    "source_order": "PYREADSTAT_RETURN_ORDER__UNCHANGED",
+    "row_ordinal": "ONE_BASED_POSITION_IN_EXACT_SELECTED_COLUMN_FRAME",
+    "required_first": 1,
+    "required_last": 97220,
+    "gaps_or_reordering_forbidden": true
+  },
+  "output_carrier": {
+    "schema": "FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER@1.0.0",
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "structural_preimage_identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+    "row_count": 97220,
+    "question_names": [
+      "Q291G5",
+      "Q291P5"
+    ],
+    "candidate_neutral": true,
+    "contains_candidate_output": false,
+    "required_cell_fields": [
+      "variable_ordinal",
+      "variable_name",
+      "raw_physical_value_witness",
+      "physical_missing_state",
+      "source_missing_declaration"
+    ],
+    "output_path": "WORKER_RETURNS/FIABC-LM2-R1F-CARRIER-ARCHAEOLOGY/LOCAL_OUTPUT/FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER.json",
+    "output_sha256": "TO_BE_MEASURED_BY_SINGLE_AUTHORIZED_LOCAL_EXECUTION",
+    "output_bytes": "TO_BE_MEASURED_BY_SINGLE_AUTHORIZED_LOCAL_EXECUTION"
+  },
+  "execution_receipt": {
+    "output_path": "WORKER_RETURNS/FIABC-LM2-R1F-CARRIER-ARCHAEOLOGY/LOCAL_OUTPUT/FIABC_LM2_R1F_Q291_EXTRACTION_RECEIPT.json",
+    "required_fields": [
+      "source_sha256",
+      "source_bytes",
+      "decoder_call_count",
+      "decoder_usecols",
+      "observed_rows",
+      "question_ordinals",
+      "fresh_missing_declarations",
+      "carrier_sha256",
+      "carrier_bytes",
+      "pyreadstat_version",
+      "hash_seconds",
+      "decoder_seconds",
+      "serialization_seconds",
+      "validation_seconds",
+      "total_seconds",
+      "status"
+    ]
+  },
+  "validation": {
+    "existing_validator": "rawlsing_next.fiabc_lm2_r1e_browser_prep.validate_frozen_response_carrier",
+    "expected_rows": 97220,
+    "expected_physical_cells": 194440,
+    "exact_question_set": [
+      "Q291G5",
+      "Q291P5"
+    ],
+    "require_fresh_missing_declarations_equal_frozen_structural_preimage": true,
+    "require_existing_output_absent_before_execution": true,
+    "stop_on_any_mismatch": true,
+    "no_partial_carrier_admission": true
+  },
+  "forbidden_work": [
+    "SECOND_SOURCE_DECODE_OR_RETRY",
+    "FULL_613_COLUMN_APPLICATION_LEVEL_TRAVERSAL",
+    "VALUE_LABEL_APPLICATION",
+    "SEMANTIC_INFERENCE_FROM_RAW_VALUES",
+    "CANDIDATE_A_B_C_EXECUTION",
+    "COMMON_C11_EXECUTION",
+    "ORACLE_CONSTRUCTION",
+    "I03",
+    "I05",
+    "MEASURED_P2X",
+    "LOCK2_OR_P2F2_MUTATION",
+    "R1E_BRANCH_OR_PR424_MUTATION",
+    "MERGE_REBASE_OR_HQ_MAIN_MOVEMENT"
+  ],
+  "telemetry": {
+    "measured_only": true,
+    "required": [
+      "source hash wall seconds",
+      "decoder wall seconds",
+      "serialization wall seconds",
+      "validation wall seconds",
+      "total wall seconds",
+      "carrier bytes",
+      "carrier SHA-256",
+      "pyreadstat version"
+    ],
+    "no_projection_or_estimated_values_to_be_reported_as_measured": true
+  },
+  "next_gate": "HQ_AUTHORIZE_SINGLE_LOCAL_Q291_EXTRACTION_ONLY",
+  "terminal_if_executed_successfully": "LOCAL_Q291_EXTRACTION_PASS__EXACT_FROZEN_CARRIER_PERSISTED__STOP_BEFORE_COMMON_C11"
+}

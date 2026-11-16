@@ -1,0 +1,80 @@
+{
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1m-lock2-successor-r16-oracle-r1",
+  "candidate_outputs_seen": 0,
+  "candidate_processes_started": 0,
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "fanin": {
+    "R1L_A_tip": "6eb66f354b6d29808be7f959acbe5fb6215fda26",
+    "R1L_B_tip": "3e14440ed2c4d0359f458356c8b7a046fc03d1eb",
+    "R1L_C_tip": "ad06f9b1f5e8ae543cf53e99fad77620e6264007",
+    "status": "PASS"
+  },
+  "prohibited_execution": {
+    "candidate_a_b_c": false,
+    "candidate_grammar_modified": false,
+    "generic_i05_modified": false,
+    "measured_p2x": false,
+    "predicates_modified": false,
+    "queries_modified": false,
+    "r1e_mapping_modified": false,
+    "r1j_authority_modified": false,
+    "validation_implementations_modified": false,
+    "wvs_sav_zip_opened": false
+  },
+  "r01_r18": {
+    "all_green": true,
+    "r15_pass": true,
+    "r16_pass": true
+  },
+  "r15": {
+    "logical_release_identity": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "mechanical_rehydration": true,
+    "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "semantic_rebuild": false,
+    "status": "PASS__ADMITTED_RELEASE_REUSED_EXACT"
+  },
+  "r16": {
+    "deterministic_second_replay_equal": true,
+    "evaluated_frontier": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3",
+    "generic_i05_guard_unchanged": true,
+    "i05_replay": "a9d999d96533ceaf4535448a6a488227c05d205866a93feb391080c68d6f3024",
+    "learned_execution_identity": "bea6eb82a991511a9e51c551397e4487dcdb30918370f2aa709fe6ba5ddb6cfa",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "status": "PASS",
+    "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405"
+  },
+  "repository": "maidiu/rawlsing",
+  "return_files": [
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/01_R1L_FANIN_ADJUDICATION.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/02_SUCCESSOR_DISCOVERY_AUTHORITY.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/03_46_CANDIDATE_REPLAY_CONSERVATION.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/04_SUCCESSOR_LOCK2.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/05_LOCK2_SUPERSESSION_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/06_R16_EXECUTION_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/08_ORACLE_INDEPENDENCE_PROOF.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/09_R01_R18_FINAL_LEDGER.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/10_COMMAND_TELEMETRY.json",
+    "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/RETURN.json"
+  ],
+  "schema": "FIABC_LM2_R1M_RETURN@1.0.0",
+  "status": "PASS",
+  "successor": {
+    "candidate_count": 46,
+    "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "candidate_hash_stream_exact": true,
+    "discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+    "family_counts": {
+      "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+      "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+      "PAIR_RESPONSE_COTRAVEL": 1,
+      "UNARY_SOCIAL_FORK": 10
+    },
+    "lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "replay": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "supersession_reason": "DISCOVERY_VALIDATION_ENVELOPE_SERIALIZATION_REPAIR__NO_WORKLOAD_SEMANTIC_CHANGE"
+  },
+  "terminal": "FIABC_LM2_R1M_PASS__SUCCESSOR_DISCOVERY_AUTHORITY_ADOPTED__46_CANDIDATE_STREAM_EXACT__SUCCESSOR_LOCK2_SEALED__R16_PASS__FRESH_WVS_ORACLE_FROZEN__R01_R18_ALL_GREEN__CANDIDATES_NOT_STARTED",
+  "worker": "FIABC-LM2-R1M"
+}

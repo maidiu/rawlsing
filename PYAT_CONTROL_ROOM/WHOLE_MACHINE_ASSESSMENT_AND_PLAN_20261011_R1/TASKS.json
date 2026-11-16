@@ -1,0 +1,802 @@
+{
+  "schema": "PYAT_WHOLE_MACHINE_FORWARD_PLAN@1",
+  "as_of": "2026-10-11",
+  "status": "DOCUMENTARY_PROPOSAL_NOT_DISPATCH",
+  "baseline_control": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+  "task_count": 25,
+  "tasks": [
+    {
+      "id": "R00",
+      "title": "Current return intake and evidence custody",
+      "owner_role": "HQ/evidence custodian",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Exact current refs, startup diffs, F8F/WVQ/WG0-R returns, staged decisions and LR/WGE-R custody",
+      "required_outputs": "Return-to-adoption ledger; primary-evidence custody map; narrow dispositions",
+      "exit_criteria": "All reported states have exact provenance; no duplicate launches",
+      "hostile_cases": "Stale startup, incomplete return, author self-review, inaccessible primary packet",
+      "evidence_ids": [
+        "E05",
+        "E08",
+        "E09",
+        "E10",
+        "E12",
+        "E15",
+        "E16"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "R01",
+      "title": "Evidence-backed live progress register",
+      "owner_role": "HQ/integration evidence owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "35x54 matrix, 151 and 101 registers, all accepted/staged receipts",
+      "required_outputs": "151-to-101 crosswalk; owner/authority/product/consumer register",
+      "exit_criteria": "Every inherited obligation mapped or explicitly unresolved at its actual grain",
+      "hostile_cases": "False green from counts; dropped unmatched task; global F8 counted 35 times",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "A01",
+      "title": "Original administered-item inventory succession",
+      "owner_role": "Source identity owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "LR-A, WGA-WGE, original instruments, V550 question-use contracts",
+      "required_outputs": "All-35 item/physical/implementation crosswalk and anti-joins",
+      "exit_criteria": "No original item silently omitted; nonmeasurement and unknown cases retained",
+      "hostile_cases": "Inner-join B omission; battery-parent/child confusion; alias collision",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E16"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "A02",
+      "title": "Response routing respondent design binding",
+      "owner_role": "Source-semantic/routing/design owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "A01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Exact source forms, response/routing/unit/design evidence",
+      "required_outputs": "Source contracts and typed unresolved scope; WVQ exact binding decision",
+      "exit_criteria": "Ready slices have exact risk/unit/response and appropriate design ceiling",
+      "hostile_cases": "Wrong subject; not-asked recode; fabricated weight/design; false Q291 mapping",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E12",
+        "E13"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "A03",
+      "title": "Finite operations and competent issuance",
+      "owner_role": "Source and operation issuers",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "A02"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Bound source contracts, finite grammar, exact intended use",
+      "required_outputs": "Issued per-slice expected operations; holds/denials/NA; E2B narrow decision if ready",
+      "exit_criteria": "Permission independent of results; actual competent issuer and exact scope",
+      "hostile_cases": "Same-topic joint; outcome-selected frontier; forged issuer; backdated seal",
+      "evidence_ids": [
+        "E04",
+        "E06",
+        "E14",
+        "E19"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "A04",
+      "title": "Existing-constructor workload binding",
+      "owner_role": "C11/I03/I05/batch integration owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "A03"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Issued operation preimages and existing owner contracts",
+      "required_outputs": "Deterministic projection/catalog/query/discovery/batch bindings",
+      "exit_criteria": "Expected operations map to correct existing owners with complete identity",
+      "hostile_cases": "Silent projection skip; key collision; reordered identity; unauthorized extra unit",
+      "evidence_ids": [
+        "E16",
+        "E18",
+        "E19"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "A05",
+      "title": "Independent original-work conservation court",
+      "owner_role": "Independent coverage reviewer",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "A04"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Independent original inventory and expected set; B1 precedent",
+      "required_outputs": "No-drop verifier results and positive/omission witnesses",
+      "exit_criteria": "External expected work detects selected-manifest omissions and false additions",
+      "hostile_cases": "A-only passes local jobs; missing J2; same-count wrong IDs; hidden held work",
+      "evidence_ids": [
+        "E04",
+        "E08"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "B01",
+      "title": "Runtime custody resource and recovery readiness",
+      "owner_role": "Runtime/host qualification owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Adopted code/dependency identity, runtime and source custody",
+      "required_outputs": "Execution envelope, measured budgets, checkpoint/publication policy",
+      "exit_criteria": "Reproducible exact environment; explicit scoped warrant before source execution",
+      "hostile_cases": "Missing sparse fixture; resource exhaustion; cache authority; stale checkpoint",
+      "evidence_ids": [
+        "E02",
+        "E10"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "B02",
+      "title": "First issued real slice with actual consumer",
+      "owner_role": "Empirical execution and consumer owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "A05",
+        "B01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Exact permitted source slice, frozen expectation, current owners",
+      "required_outputs": "Durable typed results, real products, consumer/replay receipts",
+      "exit_criteria": "Every expected productive obligation reaches its exact consumer",
+      "hostile_cases": "Unconditional denominator; missing output; typed refusal miscounted; retry duplicates",
+      "evidence_ids": [
+        "E04",
+        "E08",
+        "E18",
+        "E19"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "B03",
+      "title": "Rolling all-35 production and reconciliation",
+      "owner_role": "Batch/estate execution owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "B02"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Per-source issued expectations and qualified execution envelopes",
+      "required_outputs": "Global/per-shard expected-executed-produced-consumed ledgers",
+      "exit_criteria": "All applicable required work reconciled; all unresolved work still visible",
+      "hostile_cases": "Dropped failed shard; duplicate retry; truncated adaptive frontier; denominator shrink",
+      "evidence_ids": [
+        "E02",
+        "E04"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "C01",
+      "title": "F8F exact technical disposition",
+      "owner_role": "HQ/independent release reviewer",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "F8E candidate plus exact F8F return, logs and hostiles",
+      "required_outputs": "Narrow development disposition and residual/corrigendum record",
+      "exit_criteria": "Five repairs evaluated without promoting trust-gap witnesses to service acceptance",
+      "hostile_cases": "280-pass overclaim; fixture generalization; K6 prose-versus-fixture mismatch",
+      "evidence_ids": [
+        "E10",
+        "E11",
+        "E21"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "C02",
+      "title": "Authenticated producer-to-B5 boundary",
+      "owner_role": "Producer/lifecycle/deployment owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "C01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "B5 API, F8F K4/K5, actual ingress and principal topology",
+      "required_outputs": "Minimal trusted-ingress/subject binding and independent hostile acceptance",
+      "exit_criteria": "Authentic positive works; forged state/ceiling/receipts cannot publish/select/serve",
+      "hostile_cases": "K4/K5 spoofing; rehydration bypass; revoked authority; stale selection",
+      "evidence_ids": [
+        "E10",
+        "E11",
+        "E20",
+        "E21"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "C03",
+      "title": "Generic lawful C1 release and selected binding",
+      "owner_role": "C1 producer/M2/B5 or competent direct-route owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "C02"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Exact producer competence, source/model/use closure, native C1 outputs",
+      "required_outputs": "Generic scoped release/direct route preserving determinants and ceilings",
+      "exit_criteria": "Lawful rich products reach real release/consumer; no fixture hardcoding as general authority",
+      "hostile_cases": "Same-shape alien C1; reversed numerator; graph loss; I4 M1 spoof",
+      "evidence_ids": [
+        "E08",
+        "E10",
+        "E20"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "C04",
+      "title": "F2-F4 rich products and downstream conservation",
+      "owner_role": "Analytical/discovery/learned owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "A03"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Qualified original frontiers and exact rich result contracts",
+      "required_outputs": "Predictors, minority/recursive/cloud/joint products and consumer map",
+      "exit_criteria": "All applicable rich product classes conserved across declared issued scopes",
+      "hostile_cases": "Minority pruning; ancestry flattening; scalarization; S14 erases lawful co-travel",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E16",
+        "E19"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "D01",
+      "title": "Field Forge and demanded objective production",
+      "owner_role": "Field Forge and objective producer owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Qualified retained/new empirical products; exact structural demand/authority",
+      "required_outputs": "N5/N6 artifacts and real world-consumer receipts; conditional N13 resolution",
+      "exit_criteria": "All selected warranted objective demands populated at exact ceilings",
+      "hostile_cases": "CONTEXT-to-causal inflation; attitude-as-institution; missing demanded producer",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "D02",
+      "title": "Multi-family world composition",
+      "owner_role": "EE13/N7/world owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "D01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Two distinct lawful source-family field products and composition permission",
+      "required_outputs": "Real multi-family world contribution and higher-order scope queue",
+      "exit_criteria": "One actual consumer uses both with separate universe/estimand identity",
+      "hostile_cases": "Respondent pooling; duplicate family; scope mismatch; lost uncertainty",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "D03",
+      "title": "Exact EE12 comparability issuance",
+      "owner_role": "Original measurement/design/comparison owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Original within-family wave/country/form/design evidence",
+      "required_outputs": "Comparison permits or competently justified NONCOMPARABLE/held dispositions",
+      "exit_criteria": "Exact measure/population/estimand bridges, no availability shortcut",
+      "hostile_cases": "Code-label match alone; frame change; missing evidence called noncomparable",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "D04",
+      "title": "Empirical and structural temporal production",
+      "owner_role": "N8E/N8S owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "D03"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Permitted comparison and actual qualified wave products",
+      "required_outputs": "Change/no-change artifacts, warranted structural interpretation, N9 receipt",
+      "exit_criteria": "Actual temporal production consumed, separate from admission and native-security status",
+      "hostile_cases": "Unmeasured trend; admission as producer; F7-RR label conflation",
+      "evidence_ids": [
+        "E01",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "E01",
+      "title": "Service contract and operative model/use",
+      "owner_role": "EE14/G0b and actual service owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "R00"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Prior service proposals, consumer needs, exact model/use competence",
+      "required_outputs": "N9/N10E/N10W contract and actual permit or named issuer hold",
+      "exit_criteria": "Concrete API/query/output/currentness/actor ceiling with competent permission",
+      "hostile_cases": "Source-free competence promoted to live use; invented issuer root",
+      "evidence_ids": [
+        "E01",
+        "E14",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "E02",
+      "title": "Coherent objective-world snapshots",
+      "owner_role": "N9/world lifecycle owner",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "E01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "All required source/objective/multi-field/temporal products for selected scope",
+      "required_outputs": "Current/as-of world snapshots, dependency closure, real query receipt",
+      "exit_criteria": "Every mandatory dependency present, lawful and temporally coherent",
+      "hostile_cases": "Mixed epoch; missing mandatory field hidden; snapshot manifest mistaken occupancy",
+      "evidence_ids": [
+        "E01",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "E03",
+      "title": "Progressive empirical and world-conditioned possibility",
+      "owner_role": "N10E/N10W and selected consumer owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "E01",
+        "E02"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Actual empirical products plus world, trusted binding and model/use",
+      "required_outputs": "Progressive source-backed distributions and parent/coparent consumer witness",
+      "exit_criteria": "Successive conditioning preserves alternatives, uncertainty and sampling-unit firewall",
+      "hostile_cases": "Independent-marginal substitution; fixture world; actor state; permission spoof",
+      "evidence_ids": [
+        "E01",
+        "E08",
+        "E22"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "E04",
+      "title": "Lifecycle replay invalidation and recovery",
+      "owner_role": "Lifecycle/service/replay owners",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "C02",
+        "E01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Exact composed producer/service dependencies and authority epoch",
+      "required_outputs": "Cold replay/current-asof/invalidation/crash/race receipts",
+      "exit_criteria": "Affected products stop current use; siblings and historical explanation survive",
+      "hostile_cases": "Missing determinant; stale cache; forged current; duplicate/concurrent publication",
+      "evidence_ids": [
+        "E02",
+        "E10",
+        "E11",
+        "E20"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "Q01",
+      "title": "Minimum integrated real-world witness",
+      "owner_role": "Independent integration acceptance court",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "B02",
+        "C04",
+        "D02",
+        "D04",
+        "E03",
+        "E04"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Frozen scoped integrated build, independent expectation and competent authorities",
+      "required_outputs": "Real scoped F1-F8 witness with explicit estate limitations",
+      "exit_criteria": "Two-family world, qualified temporal path, N9/N10W and consumer proof",
+      "hostile_cases": "Canary counted estate; source-free fixture counted real world; absent temporal input",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E22",
+        "E23"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "Q02",
+      "title": "Full 35-wave productive acceptance",
+      "owner_role": "Independent whole-estate acceptance court",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "Q01",
+        "B03",
+        "R01"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "All-source expected/actual/consumed closure and exact integrated build",
+      "required_outputs": "AT01-AT35 and F1-F8 court; discrepancy register; exact acceptance verdict",
+      "exit_criteria": "Every mandatory supported obligation productive or explicit failed; NA independently justified",
+      "hostile_cases": "All-green refusal; missing held work; unsupported global denominator; stale authority",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E23"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    },
+    {
+      "id": "Q03",
+      "title": "PRE-V3 readiness and separate V3 wake decision",
+      "owner_role": "Competent HQ/downstream authority",
+      "status": "PROPOSED_NOT_ISSUED",
+      "depends_on": [
+        "Q02"
+      ],
+      "dependency_semantics": "Acceptance dependency for proposed full package; preparation and independent scopes may start earlier; exact retained accepted inputs can satisfy an edge.",
+      "inputs": "Accepted full-estate evidence, practical usability and actor firewall",
+      "required_outputs": "Explicit PRE-V3 readiness and N12 wake/defer decision",
+      "exit_criteria": "Separate competent seam decision; no automatic actor implementation",
+      "hostile_cases": "PRE-V3 acceptance mistaken actor grant; premature wake",
+      "evidence_ids": [
+        "E01",
+        "E22",
+        "E23"
+      ],
+      "details": "ACTION_PLAN.md",
+      "assigned_agent": null,
+      "model_effort": null,
+      "machine": null,
+      "worktree": null,
+      "branch": null,
+      "startup_sha": null,
+      "authority_grant": null,
+      "issued": false,
+      "source_execution_authorized": false
+    }
+  ],
+  "conditional_edges": [
+    {
+      "from": "C03",
+      "to": "B02",
+      "when": "Selected product requires this release route; already accepted direct/M1 routes may satisfy the exact contract"
+    },
+    {
+      "from": "B02",
+      "to": "C04",
+      "when": "New real source output needed; reuse qualified retained input otherwise"
+    },
+    {
+      "from": "B02",
+      "to": "D01",
+      "when": "Demanded field lacks a qualified retained empirical input"
+    },
+    {
+      "from": "B02",
+      "to": "D04",
+      "when": "Exact comparable wave products require new production"
+    },
+    {
+      "from": "D01",
+      "to": "E02",
+      "when": "Selected world demands these objective products"
+    },
+    {
+      "from": "D02",
+      "to": "E02",
+      "when": "Selected world includes multi-family composition"
+    },
+    {
+      "from": "D04",
+      "to": "E02",
+      "when": "Selected world includes temporal products"
+    },
+    {
+      "from": "C03",
+      "to": "E03",
+      "when": "Selected service uses this release/binding path"
+    },
+    {
+      "from": "N13_RETAINED_LITS_D2",
+      "to": "D01",
+      "when": "Exact selected LiTS structural claim consumes D2 preimages"
+    },
+    {
+      "from": "F7_NATIVE_R3_T1_QUALIFICATION",
+      "to": "D04",
+      "when": "Selected temporal production consumes that unqualified native boundary"
+    }
+  ]
+}

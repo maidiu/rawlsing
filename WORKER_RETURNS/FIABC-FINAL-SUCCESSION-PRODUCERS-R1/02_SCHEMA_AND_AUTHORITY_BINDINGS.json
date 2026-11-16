@@ -1,0 +1,128 @@
+{
+  "schema": "FIABC_FINAL_SUCCESSION_PRODUCERS_R1_BINDINGS@1.0.0",
+  "producer": {
+    "path": "rawlsing_next/fiabc_succession_producer.py",
+    "schema": "RAWLSING_FIABC_CURRENT_HEAD_SUCCESSION_PRODUCER@1.0.0",
+    "current_worker_blob_before_return_packet": "045c4803191ad6a0b8f06f035dbc30163fd2647f"
+  },
+  "adopted_contracts": {
+    "manifest_schema": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0",
+    "governing_profile": "RAWLSING_FIABC_SUCCESSION_GOVERNING_PROFILE@1.0.0",
+    "evaluator": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0",
+    "p10_context": "RAWLSING_FIABC_P10_LIFECYCLE_FAILURE_SCOPE_CONTEXT@1.0.0"
+  },
+  "current_control_inputs": {
+    "t2": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "t2_schema": "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
+    "t5": "WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json",
+    "t5_schema": "RAWLSING_FIABC_T5_CURRENT_SIX_CELL_COURT_CONTRACT@1.0.0",
+    "final_hq": "WORKER_RETURNS/FIABC-HQ-FINAL-PREFLIGHT-FANIN/RETURN.json"
+  },
+  "immutable_profile_authority": {
+    "workload": {
+      "commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "path": "HQ_HANDOFF/CHETIRI_FINAL_P2_COURT_MANIFEST_R1.json"
+    },
+    "l01_boundary": {
+      "commit": "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d",
+      "path": "WORKER_RETURNS/FIABC-W2-L01/02_COMPARISON_TERMINAL_ADJUDICATION.md",
+      "git_blob_sha": "cebb25f8fd715ede472d390a53ec8a1dea3e8e42"
+    },
+    "l02_claim_scoped_closure": {
+      "commit": "0c0dd1f23bc59017552afdbd5af2021f051d48f7",
+      "path": "WORKER_RETURNS/FIABC-W2-L02/03_CLAIM_SCOPED_ANTI_OMISSION_PROOF.md",
+      "git_blob_sha": "5317df5cf338fa6768b313e57bcebc8a42cd5ab4"
+    },
+    "inherited_function_ledger": {
+      "commit": "dfdae1dfcef5e3061094935312c3db2cc0fde2f0",
+      "path": "WORKER_RETURNS/FIABC-HQ-WAVE1-FANIN/02_MASTER_SUCCESSION_LEDGER.csv",
+      "git_blob_sha": "a2996d697997383da222fdace0b2fca4b322cc8d"
+    }
+  },
+  "current_owner_paths": {
+    "F001": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "F002": "rawlsing_next/pre553_physical_decoder.py",
+    "F003": "rawlsing_next/pre553_carrier_execution.py",
+    "F004": "rawlsing_next/pre553_carrier_execution.py",
+    "F005": "rawlsing_next/pre553_empirical_query.py",
+    "F006": "rawlsing_next/pre553_empirical_objects.py",
+    "F007": "rawlsing_next/pre553_carrier_execution.py",
+    "F008": "rawlsing_next/pre553_source_relations.py",
+    "F009": "rawlsing_next/pre553_empirical_query.py",
+    "F010": "rawlsing_next/pre553_empirical_query.py",
+    "F011": "rawlsing_next/pre553_empirical_query.py",
+    "F012": "rawlsing_next/pre553_diagnostics.py",
+    "F013": "rawlsing_next/pre553_discovery_exact.py",
+    "F014": "rawlsing_next/pre553_discovery_exact.py",
+    "F015": "rawlsing_next/pre553_discovery_exact.py",
+    "F016": "rawlsing_next/pre553_discovery_exact.py",
+    "F017": "rawlsing_next/pre553_empirical_query.py",
+    "F018": "rawlsing_next/pre553_diagnostics.py",
+    "F020": "rawlsing_next/pre553_carrier_execution.py",
+    "F021": "rawlsing_next/pre553_empirical_objects.py",
+    "F022": "rawlsing_next/pre553_empirical_objects.py",
+    "F023": "rawlsing_next/pre553_empirical_query.py",
+    "F024": "rawlsing_next/fiabc_live_terminal_control.py",
+    "F031": "rawlsing_next/pre553_carrier_execution.py",
+    "F032": "rawlsing_next/pre553_empirical_query.py",
+    "F033": "rawlsing_next/pre553_discovery_exact.py",
+    "F034": "rawlsing_next/pre553_empirical_objects.py",
+    "F035": "rawlsing_next/fiabc_live_terminal_control.py",
+    "F036": "rawlsing_next/fiabc_live_terminal_control.py"
+  },
+  "additional_current_provenance": {
+    "F018": [
+      "rawlsing_next/pre553_effective_n.py"
+    ]
+  },
+  "owner_map_static_audit": {
+    "profile_required_function_count": 29,
+    "producer_mapped_function_count": 29,
+    "missing": [],
+    "extra": [],
+    "profile_deferred_count": 7,
+    "profile_all_function_count": 36
+  },
+  "candidate_realizations": {
+    "A": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "git_blob_sha": "d4915e7e6755ba1850756aebff72f982f73a332b"
+    },
+    "B": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "git_blob_sha": "7c509c2098d0030f253344eb3f682471378812a8"
+    },
+    "C": {
+      "commit": "ACTUAL_CHECKED_OUT_HEAD_AT_PRODUCTION_TIME",
+      "path": "rawlsing_next/pre553_candidate_c_production_binding.py"
+    }
+  },
+  "cell_order": [
+    "LITS_I/A",
+    "LITS_I/B",
+    "LITS_I/C",
+    "WVS7/A",
+    "WVS7/B",
+    "WVS7/C"
+  ],
+  "stop_laws": {
+    "candidate_b": "PURE_B_NO_CACHE",
+    "wvs7_c": "C_ZERO_ACCELERATOR_NO_CACHE"
+  },
+  "lits_a_s01": "MEASURED_CURRENT_WORK__NOT_HISTORICAL_PRESERVATION",
+  "head_binding": {
+    "source": "git rev-parse --verify HEAD^{commit}",
+    "hardcoded_launch_head": false,
+    "clean_worktree_required": true,
+    "optional_expected_head_gate": true,
+    "every_current_required_file_blob_and_content_sha_recorded_in_receipt": true
+  },
+  "pre_candidate_zero_state": {
+    "candidate_processes_started": 0,
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "ranking_or_selection": false
+  }
+}

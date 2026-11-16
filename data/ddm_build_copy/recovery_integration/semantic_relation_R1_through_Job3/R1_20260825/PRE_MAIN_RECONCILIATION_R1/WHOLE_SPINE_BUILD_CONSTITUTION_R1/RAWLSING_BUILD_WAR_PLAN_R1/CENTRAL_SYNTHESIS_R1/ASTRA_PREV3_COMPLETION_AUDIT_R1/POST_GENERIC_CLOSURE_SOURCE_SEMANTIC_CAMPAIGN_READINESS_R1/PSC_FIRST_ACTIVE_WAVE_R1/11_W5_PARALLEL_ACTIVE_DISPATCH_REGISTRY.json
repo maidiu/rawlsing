@@ -1,0 +1,36 @@
+{
+  "schema": "RAWLSING_PREV3_PARALLEL_ACTIVE_DISPATCH_R1",
+  "status": "ASTRA_DELTA_ADOPTED__TEN_ACTIVE_EDGES__NO_ALL_LANES_BARRIER",
+  "hq_adoption": "98279580ffcccdd764663107aa65835fb6929228",
+  "d18_adoption": "a806d788d5a2ae25f65cc89f761ca340e80873bc",
+  "astra_return": "a70cd2ef7d2b77c700bd8795f491079be554ae6b",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "active_worker_count": 10,
+  "active_workers": [
+    {"id":"N04-R3","branch":"agent/rabochii-prev3-psc-w4-n04r3-production-premise-binding-r1","tip":"43a2c8b25a8b0ffb1fa9cfdea5b466dddd223da8","library":"NO"},
+    {"id":"ASTRA-D01","branch":"agent/rabochii-prev3-astra-d01-j02-producer-court-r1","tip":"88fc8db69bdfb9669c1529b861af5279b546f6ef","library":"NO"},
+    {"id":"ASTRA-D02","branch":"agent/rabochii-prev3-astra-d02-source-execution-r1","tip":"50de465a9c04faafca812390fd59a1c8b09fddd7","library":"EXACT_ONLY_AS_ASTRA_D02"},
+    {"id":"ASTRA-D05","branch":"agent/rabochii-prev3-astra-d05-rule-shape-payload-r1","tip":"2c9a6dee4e8657ba0ace41cd3e1d458ecea6d17e","library":"NO"},
+    {"id":"ASTRA-D06","branch":"agent/rabochii-prev3-astra-d06-measurement-dispositions-r1","tip":"fc35c4357d81f602941bf1988c81ad1ecafb963f","library":"NO"},
+    {"id":"ASTRA-D07","branch":"agent/rabochii-prev3-astra-candidate-inputs-r1","tip":"d805e3dcf21a5a8cac0ee6c2611bed46da8a3277","library":"NO"},
+    {"id":"ASTRA-D08","branch":"agent/rabochii-prev3-astra-lane-eight-r1","tip":"00179623ecfe5d0a451277a8edc25f27c197ce60","library":"NO"},
+    {"id":"ASTRA-D12","branch":"agent/rabochii-prev3-astra-position-input-r1","tip":"0fdf5fe811347fec697ed8f3952ed69b9e5d8ff6","library":"NO"},
+    {"id":"ASTRA-D15","branch":"agent/rabochii-prev3-astra-context-route-r1","tip":"e306961685819136d4d90a42fe8defe055d525db","library":"NO"},
+    {"id":"ASTRA-D16","branch":"agent/rabochii-prev3-astra-physical-court-r1","tip":"89fee7b74a4ac38c4f79392d5a6f123f111c6da7","library":"NO"}
+  ],
+  "eligible_not_commissioned": [
+    {"id":"ASTRA-D19","reason":"D18 HQ correction adopted; branch creation blocked by connector-side write guard in this HQ turn; project prerequisites otherwise satisfied per Astra."}
+  ],
+  "inert_uncommissioned_branches": [
+    "agent/rabochii-prev3-astra-d06-auxiliary-authority-r1",
+    "agent/rabochii-prev3-astra-d07-candidate-input-packet-r1",
+    "agent/rabochii-prev3-astra-lane-seven-r1"
+  ],
+  "law": [
+    "NO_ALL_LANES_BARRIER",
+    "LOCAL_BLOCKER_BLOCKS_ONLY_EXACT_CONSUMERS",
+    "NO_PROVISIONAL_SIBLING_OUTPUT_CONSUMPTION",
+    "NO_NEW_GENERIC_ARCHITECTURE_ABSENT_REAL_WORKLOAD_DEFECT"
+  ],
+  "terminal": "PARALLEL_REAL_CONSTRUCTION_ACTIVE__N04_R3_RETAINED_WITH_NINE_INDEPENDENT_NEW_FRONTS"
+}

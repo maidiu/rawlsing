@@ -1,0 +1,366 @@
+{
+  "schema": "FIABC_LM2_R1D_A_EXACT_AUTHORITY_GRAPH@1.0.0",
+  "worker": "FIABC-LM2-R1D-A",
+  "base_sha": "f5ccf2b2f12fcfe02842a2aefcacdc972b598c57",
+  "evidence": {
+    "p2f2_tip": "22667bd395e7293f99b285daddad36fe3a4377ef",
+    "p2f2_created_at": "2026-09-17T23:36:29Z",
+    "r6s_tip": "48887a2b1523c9d20933e4d6c5e341e80d7a0ff6",
+    "r6s_created_at": "2026-09-19T05:04:09Z",
+    "n1_tip": "827cc8457acaf8289ee8c70f54348008cd4f1b36",
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "exact_refs": {
+    "source_semantics_authority": {
+      "authority_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+    },
+    "predicate_grammar_authority": {
+      "authority_id": "EE-P2F2-WVS7-PRE553-I03-PREDICATE-GRAMMAR",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "92fc0bf93937b8e38cd181df7915c8786abdc16465833d731daa90ca1218dec5"
+    },
+    "response_semantics": {
+      "kind": "WVS7ResponseStateSemantics@1.0.0",
+      "content_hash": "8aaa37c601f0dac74870c585567403520ce77287feae525832c59841dac1b710"
+    },
+    "target_domain_replay": {
+      "kind": "WVS7TargetDomainReplay@1.0.0",
+      "content_hash": "5d0a1ca4cc23c198a6afd4b935d425d51c7dd5cd143d056b351740c059608ef4"
+    },
+    "universe": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "content_hash": "f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da4be4259d95e"
+    },
+    "risk_set": {
+      "kind": "WVS7RiskSetBinding@1.0.0",
+      "content_hash": "0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7"
+    },
+    "program_scope": {
+      "kind": "WVS7ExactProgramScope@1.0.0",
+      "content_hash": "ed669953b33512f0032abc40973f85be1bede1993f6d520f901c11bcd7e8666e"
+    },
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+  },
+  "questions": {
+    "Q291G5": {
+      "object_id": "question_impl.phase0.03ea3430fb4f08a1f0da",
+      "content_hash": "4574aecc9db3ec15ba255a5e6f6ce17304ccb610c7d7d9f4b7baddc6d4a77176"
+    },
+    "Q291P5": {
+      "object_id": "question_impl.phase0.068ef710ac1c269b8adf",
+      "content_hash": "304fbead4df5035bd97c02ff04000363cc5041129456555e3047ff3ff2efc185"
+    }
+  },
+  "mappings": [
+    {
+      "question": "Q291G5",
+      "native_code": 1,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "fe59b34a25ac4a76a08f7507a71294c3569826d6cc4408a7fe9a9109145e3be2"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "afe05c229c77cafeb3b2147e3f52d033f370845dc7ab6e97526a2b3c0135d5d8"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "1"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291G5",
+      "native_code": 2,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "2a15f85f601f5dd145351cc5179247fe18f13b707dcb88addbd33caa56781094"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "8c0e8cce557bb71adb99ba9ee9835594fb643032fe39e11a1d8c319316028f48"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "2"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291G5",
+      "native_code": 3,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "6566a9353a7bc1268019e70b5fc7ebae88efb3d7d70cd54bf87de9b5875d1b3d"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "b19ca77ef63dccef9236d0bf73d4914f042cb0cd28ca9cec6fdd4a20678fecf3"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "3"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291G5",
+      "native_code": 4,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "1bd0d39d693860453e8164e55396c1101a6e0c4c26b27fee2565598e7c567f9e"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "361ffc5a51d93e23321ab9cf7ae9a6918ac6d3fc151daac8db893fd0648d328d"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "4"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291G5",
+      "native_code": 5,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "d28bbdfa0022613de2f6c43bf8fa7aec233936901d4967df1e994586ca038ec8"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "59d3ffbdd5dc937319d2f9f44493303047095240351bdba06fd4e2959f12c73c"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "5"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291P5",
+      "native_code": 1,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "4f34da6a78e75c9c00125dfd7e5cd1469a094646b8362260d83ea56c4ebaa9fc"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "55a652713bf0827fc701b3dc05a9e26d7375b4be6792e230dd65f8e8bc3d1e93"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "1"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291P5",
+      "native_code": 2,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "45459f3e76a19bdc19b38a78491b62acc577977ed11b04eefd813bb162f3eb81"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "85cb7e47ce083deb8614a31bb1b7738c81103e5c81171a931965348338a53766"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "2"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291P5",
+      "native_code": 3,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "d9a9bb8f35fef19aada7e209137a7bc92b1d52a475483b6cb9f7cb6b76f92e64"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "5a239598cf7408de9c588c50e009b873e9a5025092206684ef8f84720ec32dd5"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "3"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291P5",
+      "native_code": 4,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "bf2d8543a920854a958b5f5109507fda099e364e84955be4fb938c1fb5e5bc57"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "2db758ac0c9100292621d7db3ee9f8fe91c1aa60e897f3513577c11571929365"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "4"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    },
+    {
+      "question": "Q291P5",
+      "native_code": 5,
+      "response_value_ref": {
+        "kind": "WVS7ResponseValue@1.0.0",
+        "content_hash": "d97b6d0287bf0002fcc6e8c433bf3d9ec823468de18a90b4088b34b4b3f0a967"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "content_hash": "880b8cdb115581e231708da4209f6bd9bb469b6288aa4246491d7a9b4d848b99"
+      },
+      "relation": {
+        "operator": "EQ",
+        "exact_value": "5"
+      },
+      "relation_status": "ACCEPTED_HASH_BOUND_SEMANTIC_PREDICATE_RELATION"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "R6A_SOURCE_RESPONSE_SEMANTICS",
+      "kind": "ACCEPTED_SOURCE_SEMANTIC_PREMISE",
+      "commit": "4b141b8b5748175e34c9286eba36f53d8df1e9d5"
+    },
+    {
+      "id": "P2F2_RESPONSE_SEMANTICS",
+      "kind": "EXACT_SEMANTIC_OBJECT",
+      "hash": "8aaa37c601f0dac74870c585567403520ce77287feae525832c59841dac1b710"
+    },
+    {
+      "id": "P2F2_SOURCE_AUTHORITY",
+      "kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+    },
+    {
+      "id": "P2F2_GRAMMAR_AUTHORITY",
+      "kind": "PREDICATE_GRAMMAR",
+      "hash": "92fc0bf93937b8e38cd181df7915c8786abdc16465833d731daa90ca1218dec5"
+    },
+    {
+      "id": "P2F2_TARGET_DOMAIN",
+      "kind": "WVS7TargetDomainReplay@1.0.0",
+      "hash": "5d0a1ca4cc23c198a6afd4b935d425d51c7dd5cd143d056b351740c059608ef4",
+      "domain": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "P2F2_PROGRAM_SCOPE",
+      "kind": "WVS7ExactProgramScope@1.0.0",
+      "hash": "ed669953b33512f0032abc40973f85be1bede1993f6d520f901c11bcd7e8666e"
+    },
+    {
+      "id": "P2F2_LOCK2",
+      "kind": "FROZEN_PROGRAM_WORKLOAD",
+      "hash": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+    },
+    {
+      "id": "CURRENT_N1_RAW_BOUNDARY",
+      "kind": "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0",
+      "holding": "RAW_RESPONSE_IS_OPAQUE_TYPED_PHYSICAL_WITNESS"
+    },
+    {
+      "id": "POTENTIAL_DERIVED_RESPONSE_MAPPING_AUTHORITY",
+      "kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "state": "NOT_ISSUED__NOT_ADOPTED__LAWFULLY_PARENTABLE"
+    }
+  ],
+  "edges": [
+    {
+      "from": "R6A_SOURCE_RESPONSE_SEMANTICS",
+      "to": "P2F2_RESPONSE_SEMANTICS",
+      "relation": "ACCEPTED_SOURCE_SEMANTICS_IMPORTED_AND_OBJECTIZED"
+    },
+    {
+      "from": "P2F2_RESPONSE_SEMANTICS",
+      "to": "P2F2_SOURCE_AUTHORITY",
+      "relation": "POSITIVELY_GOVERNED_SOURCE_MEANING"
+    },
+    {
+      "from": "P2F2_RESPONSE_SEMANTICS",
+      "to": "P2F2_TARGET_DOMAIN",
+      "relation": "TARGET_DOMAIN_REPLAY_HASHES_DOMAIN_PLUS_RESPONSE_SEMANTICS_REF"
+    },
+    {
+      "from": "P2F2_SOURCE_AUTHORITY",
+      "to": "POTENTIAL_DERIVED_RESPONSE_MAPPING_AUTHORITY",
+      "relation": "PARENT_PREMISE_NATIVE_MEANING_ONLY"
+    },
+    {
+      "from": "P2F2_GRAMMAR_AUTHORITY",
+      "to": "POTENTIAL_DERIVED_RESPONSE_MAPPING_AUTHORITY",
+      "relation": "PARENT_PREMISE_ACCEPTED_PREDICATE_RELATION"
+    },
+    {
+      "from": "P2F2_TARGET_DOMAIN",
+      "to": "POTENTIAL_DERIVED_RESPONSE_MAPPING_AUTHORITY",
+      "relation": "PARENT_PREMISE_EXACT_PROGRAM_VALUE_REPRESENTATION"
+    },
+    {
+      "from": "P2F2_PROGRAM_SCOPE",
+      "to": "POTENTIAL_DERIVED_RESPONSE_MAPPING_AUTHORITY",
+      "relation": "PARENT_PREMISE_EXACT_USE_SCOPE"
+    },
+    {
+      "from": "P2F2_TARGET_DOMAIN",
+      "to": "P2F2_LOCK2",
+      "relation": "FROZEN_WORKLOAD_DETERMINANT"
+    },
+    {
+      "from": "CURRENT_N1_RAW_BOUNDARY",
+      "to": "POTENTIAL_DERIVED_RESPONSE_MAPPING_AUTHORITY",
+      "relation": "PHYSICAL_WITNESS_SEPARATE_FROM_SEMANTIC_PROGRAM_TOKEN"
+    }
+  ],
+  "generic_execution_semantics": {
+    "survey_response_event_predicate": "canonicalize(_semantic_value(event)) in canonicalized exact_value(s)",
+    "semantic_value_selection": "canonical_response_value_if_authorized if present else raw_response_value",
+    "exact_value_role": "SEMANTIC_COMPARATOR_VALUE__NOT_INERT_LABEL"
+  },
+  "derivability_requirements": {
+    "accepted_native_source_semantic_identity": "PROVED",
+    "accepted_target_semantic_identity_value_representation": "PROVED",
+    "exact_native_to_target_relation": "PROVED",
+    "source_use_scope": "PROVED",
+    "provenance_independent_of_candidate_output": "PROVED",
+    "no_cross_source_equivalence_claim": "PROVED"
+  },
+  "negative_limits": [
+    "NO_CANONICAL_QUESTION_MAPPING",
+    "NO_SPECIAL_CODE_MAPPING_MINUS5_MINUS4_MINUS2_MINUS1",
+    "NO_CROSS_SOURCE_EQUIVALENCE",
+    "NO_POOLING",
+    "NO_RESPONDENT_LINKAGE",
+    "NO_BACKFILL",
+    "NO_NEW_RESPONSE_MEANING",
+    "NO_NEW_ROUTING",
+    "NO_WEIGHT_DESIGN_ESTIMAND",
+    "NO_POPULATION_GENERALIZATION",
+    "NO_CANDIDATE_OUTPUT_AS_PARENT"
+  ],
+  "proof_boundary": {
+    "authority_object_issued": false,
+    "authority_object_adopted": false,
+    "wvs7_source_opened": false,
+    "structural_preimage_regenerated": false,
+    "candidate_process_executed": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "measured_p2x_executed": false
+  },
+  "holding": "P2F2_ACCEPTED_PREDICATE_RELATIONS_SUPPLY_ALL_INDEPENDENT_PREMISES_FOR_A_FUTURE_TIGHTLY_BOUNDED_DERIVED_RESPONSE_VALUE_MAPPING_AUTHORITY"
+}

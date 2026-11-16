@@ -1,0 +1,92 @@
+{
+  "schema": "FIABC_W3_I04_RUNTIME_PACKAGING_BINDING@1.0.0",
+  "worker": "FIABC-W3-I04",
+  "audited_call_surface": {
+    "commit": "50839c66d8f17509122acba028585121cb13e98f",
+    "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "blob": "4fbcfdeb3c3c9b54754ad54a4e9e57aa982e808c"
+  },
+  "semantic_owner_change": false,
+  "measured_p2x_authorized": false,
+  "stable_runtime_assets": [
+    {
+      "role": "LITS_R6S_CURRENT_RUNTIME_MATERIALIZER",
+      "path": "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+      "source_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "source_path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+      "git_blob_sha": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+      "byte_identity_required": true
+    },
+    {
+      "role": "WVS7_P2F2_RUNTIME_PACKAGE",
+      "path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "source_commit": "8bada093f0fb5ce556ceecf7fc3806c3d5fb47ad",
+      "source_path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "git_blob_sha": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+      "byte_identity_required": true
+    },
+    {
+      "role": "WVS7_R6S_PROJECTION_MATERIALIZER",
+      "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "source_commit": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+      "source_path": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "git_blob_sha": "ec685803a7416032037ee415e8faf7bf60db8f1b",
+      "byte_identity_required": true
+    }
+  ],
+  "accepted_support_fanin": {
+    "role": "NODE4A_PREDICATE_INPUTS",
+    "path": "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py",
+    "source_ref": "agent/rabochii-prev3-ee-p2r6o-ab-owner-seam-requalification-r1",
+    "git_blob_sha": "504944f9533b7385d201076e2e834b8a9446dee8",
+    "exact_path_required_by_preserved_materializer": true
+  },
+  "preserved_runtime_identities": {
+    "lits_runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "lits_active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "lits_runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "wvs_lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "wvs_projection": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665",
+    "p2r1_seam_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "frozen_candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "frozen_candidate_owner_specs": {
+      "A": {
+        "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+        "git_blob_sha": "d4915e7e6755ba1850756aebff72f982f73a332b"
+      },
+      "B": {
+        "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "git_blob_sha": "7c509c2098d0030f253344eb3f682471378812a8"
+      },
+      "C": {
+        "path": "rawlsing_next/pre553_route_c_accelerators.py",
+        "git_blob_sha": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+      }
+    },
+    "candidate_owner_binding_mode": "IMMUTABLE_GIT_BY_EXACT_BLOB",
+    "wvs_representation_authority": "63543411892d8d30fb5670a39714a3dc115145e3f054a7017a325dab1c6cf053",
+    "wvs_representation_snapshot": "e23ec7451d150597799bbd9049cdab45339e647694a9ccfacb2e53aaf09b609b",
+    "wvs_response_binding": "f225e6289b553ab221902c95c1b416bbd01fb722efcc77c909e239d4ee02e87b",
+    "wvs_projection_authority": "5e793e2fe255d0a0ef6dd405f4bd4c7df125c2d6fb23bd464a0f77d65cb1fcdf",
+    "wvs_projection_snapshot": "540914a3ddf3b0349720fd81de49b1a88f194929adf1ea5506718af94e65c0d2",
+    "wvs_lock2_replay": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "wvs_discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+    "wvs_oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "wvs_oracle_truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405"
+  },
+  "forbidden": [
+    "CURRENT_TREE_CANDIDATE_OWNER_SUBSTITUTION",
+    "SEMANTIC_REMINTING",
+    "NODE4A_RECONSTRUCTION",
+    "WVS_SEMANTIC_REGENERATION",
+    "MEASURED_P2X_EXECUTION"
+  ],
+  "hq_final_fanin": {
+    "t2_manifest_blob": "49692c1c8527680c97af073039b36125edd7e56d",
+    "driver_blob": "b28e27f929d9deb6690e1dcbfa840a76ed2dd32e",
+    "backend_blob": "4fbcfdeb3c3c9b54754ad54a4e9e57aa982e808c",
+    "successor_runtime_package_blob": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "candidate_c_binding_blob": "47893688ed455ced2c2f2311ad0aead6fb5bf2d2",
+    "wvs_materializer_blob": "ec685803a7416032037ee415e8faf7bf60db8f1b"
+  }
+}

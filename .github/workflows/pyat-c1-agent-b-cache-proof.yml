@@ -1,0 +1,101 @@
+name: PYAT C-1 Agent B independent sourcefree cache differentials
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_source_backed_c11_facade.py'
+      - 'rawlsing_next/tests/test_c1_agent_b_cache_differential.py'
+      - 'rawlsing_next/tests/test_pre553_source_backed_c11_facade.py'
+      - '.github/workflows/pyat-c1-agent-b-cache-proof.yml'
+permissions:
+  contents: read
+jobs:
+  sourcefree-c1-cache:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb
+      - name: Independent divergent-projection, restore, decoder-context and existing C11 tests
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_c1_agent_b_cache_differential.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py \
+            --junitxml=pyat-c1-agent-b-sourcefree.xml
+      - name: S1-A G4 scoped cache key, warm/clear/recompute custody measures
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B - <<'PY'
+          import json
+          import resource
+          import sys
+          import time
+          from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+          from rawlsing_next.pre553_source_backed_c11_facade import (
+              ExactPhysicalCellStream, SourceBackedC11SessionCache,
+              build_source_backed_c11_repository,
+          )
+
+          fx = _fixture("s1a-b-g4-scoped-measure")
+          reads = [0]
+          def cells():
+              reads[0] += 1
+              return iter(fx["cells"])
+          source = ExactPhysicalCellStream(fx["source_sha"], 3, cells)
+          projection = fx["projection"]
+          cache = SourceBackedC11SessionCache()
+          t0 = time.perf_counter()
+          for _ in range(5):
+              _ = projection.cache_identity
+          key_hash_five_seconds = time.perf_counter() - t0
+          def run():
+              started = time.perf_counter()
+              _, release = build_source_backed_c11_repository(
+                  source, projection, cache=cache,
+              )
+              return release.release_ref, time.perf_counter() - started
+          first, cold = run()
+          second, warm = run()
+          assert reads[0] == 1 and cache.entry_count == 1
+          cache.clear()
+          third, rebuilt = run()
+          assert first == second == third
+          assert reads[0] == 2 and cache.entry_count == 1
+          print("S1A_G4_SCOPED=" + json.dumps({
+              "fixture_rows": 3,
+              "physical_cell_factory_calls": reads[0],
+              "cache_entries_after_rebuild": cache.entry_count,
+              "entry_dict_shallow_bytes": sys.getsizeof(cache._entries),
+              "cache_key_hash_5_calls_seconds": key_hash_five_seconds,
+              "cold_build_seconds": cold,
+              "warm_hit_seconds": warm,
+              "clear_recompute_seconds": rebuilt,
+              "single_process_maxrss_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+              "durable_cas_claim": "NOT_APPLICABLE",
+              "original35_or_100k_claim": "NOT_TESTED",
+          }, sort_keys=True), flush=True)
+          PY
+      - name: Preservation — source-equivalence, governed operations and joined-resume sourcefree paths
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pre553_source_equivalence.py \
+            rawlsing_next/tests/test_universal_workload.py \
+            rawlsing_next/tests/test_universal_workload_custody.py \
+            rawlsing_next/tests/test_universal_source_byte_custody.py \
+            --junitxml=pyat-c1-agent-b-preservation.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-c1-agent-b-sourcefree
+          path: |
+            pyat-c1-agent-b-sourcefree.xml
+            pyat-c1-agent-b-preservation.xml
+          if-no-files-found: ignore

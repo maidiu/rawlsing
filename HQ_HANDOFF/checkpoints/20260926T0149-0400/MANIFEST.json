@@ -1,0 +1,36 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.1.0",
+  "checkpoint_id": "20260926T0149-0400",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "governing_decision": "HQD-2026-09-26-107",
+  "semantic_pre_main_tip": "b83905cc12415f975831982dd2f396150045d87f",
+  "files": {
+    "current_md": {
+      "path": "HQ_HANDOFF/checkpoints/20260926T0149-0400/CURRENT.md",
+      "git_blob_sha": "1f0dfb1d02b3f817649fe0503c9a10a766a46ee7"
+    },
+    "current_json": {
+      "path": "HQ_HANDOFF/checkpoints/20260926T0149-0400/CURRENT.json",
+      "git_blob_sha": "d9c7b6924b725cbb71d6ec3187373a12b25d07a0"
+    },
+    "succession_handoff": {
+      "path": "HQ_HANDOFF/FIABC_HQ_SUCCESSION_MEASURED_LAUNCH_AUTHORIZED_R1.md",
+      "git_blob_sha": "b0f14753e63ca340a30f258e3b94f61eb520be60"
+    },
+    "decision_ledger": {
+      "path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+      "git_blob_sha": "1925cedec7ef217c29d1329a9d1d673f36e5072b"
+    }
+  },
+  "pair_receipt_identity": "23b09690726319306e7e40c0d2af7106f1d7a44fef03e917f85002d8c3d99b12",
+  "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "canonical_measurement_control_branch": "agent/vozhd-fiabc-split-r2-fanin-r1",
+  "canonical_measurement_control_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
+  "qualified_control_implementation_head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e",
+  "measured_execution_authorized": true,
+  "authorization_scope": [
+    "LITS_I/A->B->C",
+    "WVS7/A->B->C"
+  ],
+  "next_action": "LAUNCH_TWO_AUTHORIZED_SOURCE_LOCAL_MEASURED_RUNS__PRESERVE_TERMINALS__THEN_SOURCE_EVIDENCE_CLOSURE_AND_HQ_ADJUDICATION"
+}

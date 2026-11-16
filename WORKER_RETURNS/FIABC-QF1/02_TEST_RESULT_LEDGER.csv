@@ -1,0 +1,18 @@
+phase,test_surface,executed_command,status,exit,counts_or_observation,failure_cluster
+P2,R35-I01 physical metadata,python3 -m unittest rawlsing_next.tests.test_r35_i01_physical_metadata,PASS,0,6 tests,
+P2,R35-I02 derivative parentage,python3 -m unittest discover -s tests -p 'test_fiabc_derivative_parentage.py' -v,FAIL,1,8 passed and 1 error,FC-2 malformed forged bundle causes KeyError before verifier
+P2,R35-I03 physical equivalence,python3 -m pytest -q rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py,FAIL,1,2 passed and 13 failed,FC-3 binary floats rejected during expected-fixture construction
+P2,R35-Q01 generic guard court,python3 -m pytest -q tests/test_r35_generic_guard_court.py,PASS,0,10 tests and 29 subtests,
+P2,T6 live R35 convergence,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t6_live_r35_convergence.py,PASS,0,6 tests,
+P3,T2 six-cell execution binding,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py,PASS,0,5 tests,
+P3,T3 oracle process envelope,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py,PASS,0,6 tests,
+P3,W3-I06A process isolation,python3 -m pytest -q rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py,FAIL,1,8 passed and 1 failed,FC-4 missing second temporary directory
+P3,T4 live accounting,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t4_live_accounting.py,PASS,0,12 tests,
+P3,telemetry semantics,python3 -m pytest -q tests/test_fiabc_telemetry_semantics.py,PASS,0,18 tests,
+P3,lifecycle accounting,python3 -m pytest -q tests/test_fiabc_lifecycle_accounting.py,PASS,0,13 tests and 2 subtests,
+P4,PRE553 independent parity oracle,python3 -m pytest -q rawlsing_next/tests/test_pre553_independent_parity_oracle.py,PASS,0,15 tests,
+P4,succession preflight,python3 -m unittest discover -s rawlsing_next/tests -p 'test_fiabc_succession_preflight.py' -v,PASS,0,8 tests,
+P4,I08 terminal verifier,python3 -m pytest -q rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py,PASS,0,13 tests,
+P4,T5 live terminal control,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py,PASS,0,12 tests,
+P5,PRE553 authority query discovery spine,python3 -m pytest -q rawlsing_next/tests/test_pre553_empirical_objects_authority.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py,PASS,0,60 tests,
+P5,W3-I04 runtime packaging rebind,python3 -m pytest -q rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py,FAIL,1,4 passed and 2 failed,FC-1 production backend syntax prevents AST parse

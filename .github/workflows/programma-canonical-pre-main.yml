@@ -1,0 +1,62 @@
+name: PROGRAMMA canonical tree integrity
+
+on:
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+  push:
+    branches:
+      - integration/pre-main-reconciliation-r1
+
+jobs:
+  canonical-tree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: MCR authoring validator self-test (existing checker)
+        run: |
+          python3 -m py_compile CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+          python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+      - name: Reject invalid new or revised copy-paste commissions
+        if: ${{ github.event_name == 'pull_request' }}
+        shell: bash
+        env:
+          MCR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$MCR_BASE_SHA" HEAD > /tmp/mcr-changed-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import subprocess
+          paths = Path("/tmp/mcr-changed-paths.txt").read_text().splitlines()
+          checked = 0
+          for name in paths:
+              path = Path(name)
+              if not path.is_file() or path.suffix.lower() not in {".md", ".txt"}:
+                  continue
+              if not name.startswith("WORKER_COMMISSIONS/"):
+                  continue
+              body = path.read_text(encoding="utf-8")
+              is_launch_path = ("FLIGHT_LAUNCHES/" in name or
+                                any(term in path.name.upper()
+                                    for term in ("FULL_COPY_PASTE", "LAUNCH", "COMMISSION")))
+              is_launch_body = bool(re.search(r"(?m)^LAUNCH\s", body) or
+                                    re.search(r"(?m)^```text\nLAUNCH\s", body))
+              if not (is_launch_path or is_launch_body):
+                  continue
+              checked += 1
+              cmd = ["python3", "CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py",
+                     name, "--source-check"]
+              print("MCR AUTHORING SOURCE AND CONTRACT CHECK", name, flush=True)
+              subprocess.run(cmd, check=True)
+          print("MCR_CHANGED_COMMISSIONS_VALIDATED=" + str(checked))
+          PY
+      - name: Verify canonical PROGRAMMA guide and historical no-drop
+        run: python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+      - name: Prevent loss of mandatory product question and 27 local PP26 obligations
+        run: |
+          python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
+          python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test

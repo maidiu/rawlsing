@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1",
+  "governing_decision": "HQD-2026-10-03-197",
+  "status": "R9_CANDIDATE_PARTIAL__BYTE_LIMIT_R7_REQUAL_PHYSICAL_SELECTED_OPEN",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "candidate": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+  "candidate_adopted": false,
+  "open": [
+    "R9-BROKER-BYTE-CAP-001",
+    "R9-BROKER-R7-REQUAL-002",
+    "R9-SEL-PHYSICAL-SEMANTICS-003"
+  ],
+  "active_lanes": {
+    "review": {
+      "branch": "agent/reviewer-pyat-hq197-r9-broker-candidate-hostile-r1",
+      "tip": "b047e3258db80e753c23e5b5d70300e23b9bfafd"
+    },
+    "refinement": {
+      "branch": "agent/rabochii-pyat-hq197-r1",
+      "tip": "5b98343561e5bf225442d9ab59032d36e98693ba"
+    },
+    "interpretation": {
+      "branch": "agent/rabochii-pyat-hq197-r2",
+      "tip": "740a355b3aef0255dc6ecbe1b99bc9382ec3c91f"
+    }
+  },
+  "r7_court": {
+    "files": 6,
+    "tests": 55,
+    "runs": 2
+  },
+  "c4_closure": {
+    "modules": 23,
+    "wvs7_projection_materializer": false
+  },
+  "held": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "LAUNCH_ALL_THREE_HQ197_SPARSE_LANES_IN_PARALLEL"
+}

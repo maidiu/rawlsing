@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "OCT28_E1_I03_RELEASE_INDEX_REUSE",
+      "actual_consumer": "I03 execute_empirical_query resolving sealed release membership for an exact query",
+      "claimed_dependency": "An exact sealed release and universe reuse immutable topology without skipping current validation",
+      "positive_node": "rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py::test_repository_index_reuse_keeps_current_authority_risk_and_release_checks",
+      "fault": {
+        "path": "rawlsing_next/pre553_empirical_query.py",
+        "old": "matches.append((release.release_ref, _release_index_for(repository, release, universe_ref)))",
+        "new": "matches.append((release.release_ref, _build_release_index(release, universe_ref)))"
+      }
+    }
+  ]
+}

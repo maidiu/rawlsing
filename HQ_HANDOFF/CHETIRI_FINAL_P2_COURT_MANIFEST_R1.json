@@ -1,0 +1,256 @@
+{
+  "schema": "RAWLSING_CHETIRI_FINAL_P2_COURT_MANIFEST@1.0.0",
+  "status": "FROZEN_LOCK1__WVS_PREOUTCOME_PROGRAM_HASH_MATERIALIZATION_PENDING__NO_CANDIDATE_EXECUTION_YET",
+  "date": "2026-09-17",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "governing_closure_plan": {
+    "path": "HQ_HANDOFF/CHETIRI_CARRIER_DECISION_CLOSURE_PLAN_R2.md",
+    "commit": "0018eb173f6efbb034cf517179261105ae46e297"
+  },
+  "purpose": "Final dispositive P2 physical-carrier court before HQ measured synthesis, P3 hostile kill, and one permanent A/B/C carrier-policy selection.",
+  "freeze_law": {
+    "lock1": "Candidate meanings, proving sources, runtime requirements, workload-generation laws, operation classes, metric definitions, candidate order, lifecycle law, cleanup law, stop law, and parity gates are frozen by this manifest before any new dispositive candidate measurement.",
+    "lock2": "EE-P2F0 may only materialize the deterministic pre-outcome WVS7 I05 grammar/frontier and its ExactRefs/hashes from the exact accepted inputs frozen below. HQ then seals those hashes in a binding supplement without changing any Lock-1 field.",
+    "candidate_execution_before_lock2": "FORBIDDEN",
+    "post_measurement_manifest_mutation": "FORBIDDEN"
+  },
+  "runtime": {
+    "host_class": "DARWIN_X86_64_LOCAL_MACHINE",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "darwin_ru_maxrss_unit": "BYTES",
+    "same_host_requirement": "All dispositive A/B/C measurements for both source-local courts SHALL execute on the same physical host unless HQ explicitly replaces the entire court before any further measurement. No concurrent benchmark workload may contend for that host.",
+    "execution_serialization": ["LITS_I", "WVS7"],
+    "candidate_order_within_source": ["A", "B", "C"]
+  },
+  "sources": {
+    "LITS_I": {
+      "filename": "LITS-2006-data.dta",
+      "bytes": 139531180,
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "rows": 29002,
+      "variables": 1198,
+      "library_access": "EXACT_ONLY",
+      "projection_cache_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "c11_logical_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+      "replay_manifest": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+      "learned_workload": {
+        "authority_commit": "e631de162c582423639b7067a4f36b29f8aa4d89",
+        "worker": "ASTRA-D04-R2",
+        "program": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+        "candidates": 50,
+        "query_roles": 77,
+        "expected_terminal_counts": {"EVALUATED_SUPPORTED": 49, "EVALUATED_VALID_EMPTY": 1},
+        "fresh_process_product_sha256": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+        "semantic_replay_hash": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+        "law": "Use this exact already-frozen pre-outcome workload. No candidate, role, condition atom, validator, target cell, lane, pruning rule, ranking rule, source meaning, or denominator rule may change."
+      }
+    },
+    "WVS7": {
+      "filename": "WVS Wave 7.sav",
+      "bytes": 185163494,
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "rows": 97220,
+      "variables": 613,
+      "library_access": "EXACT_ONLY",
+      "accepted_pair_authority": {
+        "commit": "4b141b8b5748175e34c9286eba36f53d8df1e9d5",
+        "selected_pair_path": "WORKER_RETURNS/EE-R6A/03_SELECTED_PROVING_PAIR.json",
+        "qid0": "question_impl.phase0.03ea3430fb4f08a1f0da",
+        "qid0_source_variable": "Q291G5",
+        "qid0_semantic_object_sha256": "4574aecc9db3ec15ba255a5e6f6ce17304ccb610c7d7d9f4b7baddc6d4a77176",
+        "qid1": "question_impl.phase0.068ef710ac1c269b8adf",
+        "qid1_source_variable": "Q291P5",
+        "qid1_semantic_object_sha256": "304fbead4df5035bd97c02ff04000363cc5041129456555e3047ff3ff2efc185",
+        "pair_lf_stream_sha256": "aefe3477977a0b443bdf173b5d3866a0cc8d256a5937fa4c7af1107efa98ce07",
+        "substantive_states": [1, 2, 3, 4, 5],
+        "special_states": [-1, -2, -4, -5],
+        "shared_country_applicability": ["Ethiopia", "Kenya", "Iran", "Kyrgyzstan", "Libya", "Morocco", "Myanmar", "Nicaragua", "Philippines", "Tajikistan", "Venezuela", "Vietnam", "Zimbabwe"],
+        "outcomes_inspected_at_selection": false
+      },
+      "lower_surface_oracle": {
+        "commit": "4b141b8b5748175e34c9286eba36f53d8df1e9d5",
+        "path": "WORKER_RETURNS/EE-R6A/04_OP003_OP006_WVS7_PREMISE_ORACLE_PACKAGE.json"
+      },
+      "learned_workload_freeze": {
+        "status": "LOCK2_HASH_MATERIALIZATION_PENDING_EE_P2F0",
+        "source_open_allowed": false,
+        "outcome_access_allowed": false,
+        "input_pair_is_fixed": true,
+        "candidate_atom_law": "Create exact source-local response predicates only for qid0 and qid1 substantive states 1..5 under the already-accepted shared WVS7 risk/applicability authority. Special states remain typed non-substantive states and are not promoted to response atoms.",
+        "required_program_families": [
+          "UNARY_SOCIAL_FORK",
+          "PAIR_RESPONSE_COTRAVEL",
+          "BRANCH_CONDITIONED_DISTRIBUTION",
+          "BOUNDED_K_WAY_RESPONSE_CONFIGURATION"
+        ],
+        "required_program_shape": {
+          "unary_response_state_candidates": 10,
+          "pair_dependence_candidates": 1,
+          "directed_branch_conditioned_candidates": 10,
+          "two_response_joint_support_candidates": 25,
+          "total_candidates": 46
+        },
+        "construction_rule": "Using current accepted PRE553 I05 exact-bounded constructors and existing accepted WVS7 semantic/routing/risk authority only, materialize exactly 46 candidates: ten unary substantive-state candidates (five per question), one pair-response dependence/cotravel candidate, ten directed branch-conditioned candidates (qid1 conditional on each qid0 state and qid0 conditional on each qid1 state), and twenty-five joint-support candidates for the 5x5 substantive response grid. Every candidate is frozen before source outcomes are opened; no data-driven pruning, ranking, adaptive stop, or candidate substitution is permitted.",
+        "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+        "canonical_order": "CANDIDATE_HASH_ASCENDING",
+        "lock2_required_outputs": [
+          "exact DiscoveryAuthority ref/hash",
+          "exact candidate grammar ref/hash",
+          "exact evaluated-frontier ref/hash",
+          "exact atom and query-template refs",
+          "canonical 46-candidate hash list",
+          "role count and exact role manifest",
+          "authority closure receipt proving zero raw-source/outcome access"
+        ]
+      }
+    }
+  },
+  "candidate_definitions": {
+    "owner_registry": {
+      "commit": "e5012ff2d9116e65850402b4432899de4937ed5e",
+      "path": "WORKER_RETURNS/EE-R4B/01_EXECUTABLE_OWNER_REGISTRY.json"
+    },
+    "A": {
+      "meaning": "R5_LONG_COMPACT_V2__SERIAL_V4__AUDIT69__C05R2A_FACADE",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "owner_path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "first_build_from_absent_target_is_candidate_work": true,
+      "persistent_carrier_may_not_be_reclassified_as_authority_by_cost_or_frequency": true
+    },
+    "B": {
+      "meaning": "SOURCE_BACKED_VIRTUAL_C11",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "owner_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "persistent_transformed_empirical_payload_bytes_expected": 0,
+      "b16_broken_bootstrap": "FORBIDDEN__DO_NOT_OPEN_REPAIR_OR_USE",
+      "real_source_binding_law": "Use current accepted source-backed projection/owner lineage; cache=None for pure B."
+    },
+    "C": {
+      "meaning": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "owner_path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "owner_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c",
+      "permitted_accelerators_lits_only": ["CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE", "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"],
+      "extra_accelerator_surface": "FORBIDDEN",
+      "wvs_law": "No WVS-specific accelerator may be invented. Adjudicate lawful zero-accelerator fallback through the same source-backed semantic core or record candidate-specific WVS source-scope failure."
+    }
+  },
+  "source_local_workload_classes": [
+    "SOURCE_OPEN_AND_CERTIFICATION",
+    "EXACT_C11_RECONSTRUCTION_AND_REPLAY",
+    "BROAD_SEQUENTIAL_PHYSICAL_WORK",
+    "I03_UNIVARIATE",
+    "I03_RESPONDENT_JOINT_AND_CONJUNCTION",
+    "I03_HIGHER_ARITY_WHERE_ALREADY_AUTHORIZED",
+    "CONDITIONAL_DISTRIBUTION",
+    "ROUTING_OR_SUBGROUP_CORRECT_QUERY",
+    "WEIGHTED_OR_DESIGN_QUERY_ONLY_WHERE_EXACT_AUTHORITY_EXISTS",
+    "I05_EXACT_BOUNDED_DISCOVERY_AND_LEARNED_EMPIRICAL_PRODUCTION",
+    "PROVENANCE_RECEIPT_GENERATION",
+    "FULL_SEMANTIC_AND_REPLAY_AUDIT_PRIMITIVE",
+    "COLD_BUILD_OR_OPEN",
+    "REPEAT_WARM_SESSION",
+    "DELETE_ALL_REGENERABLE_STATE_AND_RECOVER",
+    "SOURCE_RELEASE_INVALIDATION",
+    "SEMANTIC_AUTHORITY_INVALIDATION",
+    "FRESH_PROCESS_REPLAY",
+    "INTERRUPTED_OR_FAILURE_RECOVERY"
+  ],
+  "parity_gate": {
+    "required_before_performance_is_admissible": [
+      "SEMANTIC_PARITY",
+      "EXACTREF_AND_IDENTITY_PARITY",
+      "REPLAY_PARITY",
+      "INTEGRITY_AND_FAIL_CLOSED_PARITY",
+      "COMPLETE_AUTHORIZED_FRONTIER_AND_TYPED_NEGATIVE_PARITY"
+    ],
+    "candidate_specific_failure_is_evidence": true,
+    "candidate_failure_may_not_suppress_other_candidates": true,
+    "cross_universe_metric_pooling": false
+  },
+  "measurements": {
+    "cold_construction": [
+      "source_open_count",
+      "source_decode_count",
+      "bytes_read",
+      "bytes_written",
+      "bytes_rewritten",
+      "first_build_or_open_wall_ns",
+      "cpu_user_ns",
+      "cpu_system_ns",
+      "peak_rss_bytes",
+      "peak_scratch_bytes",
+      "peak_scratch_file_count",
+      "persistent_authoritative_bytes",
+      "persistent_transformed_or_regenerable_bytes"
+    ],
+    "repeated_research": [
+      "cold_i03_latency",
+      "warm_i03_latency",
+      "i05_or_learned_workload_wall_ns",
+      "i05_or_learned_workload_throughput",
+      "repeat_source_open_count",
+      "repeat_source_decode_count",
+      "repeat_reread_count",
+      "warm_retained_state_bytes",
+      "exact_output_identity"
+    ],
+    "lifecycle_and_recovery": [
+      "repeat_build_or_session",
+      "delete_all_p4_p5_recovery_time",
+      "source_release_invalidation_recompute_unit",
+      "semantic_authority_invalidation_recompute_unit",
+      "stale_cache_behavior",
+      "corrupt_cache_behavior",
+      "interrupted_build_or_session_recovery",
+      "fresh_process_replay_time",
+      "full_audit_time",
+      "persistent_bytes_removable_with_zero_information_loss",
+      "implementation_moving_parts_count"
+    ],
+    "magic_scalar_score": "FORBIDDEN"
+  },
+  "deletion_law": {
+    "B_and_C": [
+      "After accepted learned products/receipts exist, delete every P4 optional cache.",
+      "Delete every P5 transient compiler artifact.",
+      "Retain only P1 source, P2 governed semantic/learned products, and P3 replay/provenance determinants.",
+      "Verify lawful C11/I03/I05 reachability remains.",
+      "In a fresh process regenerate required execution state.",
+      "Reproduce the same governed empirical product identity, semantic identity, and replay identity."
+    ],
+    "A": "Measure deletion/rebuild wherever the frozen lifecycle operation requires it; separately report whether R5 contains any irrecoverable information or is operationally retained regenerable representation. EXPENSIVE_TO_REBUILD does not imply authority."
+  },
+  "execution_law": {
+    "performance_host_contention": "FORBIDDEN",
+    "source_order": ["LITS_I", "WVS7"],
+    "candidate_order": ["A", "B", "C"],
+    "fresh_state_between_candidates": true,
+    "candidate_owned_state_isolated": true,
+    "pre_candidate_oracles_materialized": true,
+    "use_pre_p2_A_build_as_dispositive_metric": false,
+    "pre_p2_A_build_role": "CALIBRATION_ONLY__CAPACITY_AND_RECIPE_EVIDENCE",
+    "early_commit_after_each_expensive_stage": true
+  },
+  "stop_rules": {
+    "candidate_general_correctness_failure": "STOP_FURTHER_PERFORMANCE_WORK_FOR_THAT_CANDIDATE__RECORD_DISQUALIFYING_EVIDENCE",
+    "candidate_source_specific_failure": "RECORD_SOURCE_LOCAL_FAILURE__CONTINUE_OTHER_SOURCE_IF_LAWFUL_AND_INTERPRETIVE_VALUE_REMAINS",
+    "common_source_authority_failure": "BLOCK_ONLY_AFFECTED_SOURCE_CELLS__DO_NOT_FABRICATE_OR_SUBSTITUTE",
+    "candidate_C_wvs_accelerator_absence": "NOT_A_COMMON_BLOCKER__EITHER_ZERO_ACCELERATOR_FALLBACK_OR_CURRENT_C_PORTABILITY_FAILURE",
+    "one_candidate_failure": "MUST_NOT_SUPPRESS_OTHER_CANDIDATE_EXECUTION"
+  },
+  "post_p2_sequence": [
+    "HQ_MEASURED_SYNTHESIS_WITHOUT_MAGIC_SCORE",
+    "P3_HOSTILE_KILL_COURT_AGAINST_PROVISIONAL_FAVORITE",
+    "HQ_HOSTILE_ADJUDICATION",
+    "FINAL_HQ_CARRIER_SELECTION",
+    "CONVERGE_PRE_FIELD_FORGE_PRODUCTION_ON_SELECTED_POLICY",
+    "STOP_ROUTINE_MAINTENANCE_OF_LOSING_PRODUCTION_FUTURES"
+  ],
+  "terminal": "CHETIRI_FINAL_P2_LOCK1_FROZEN__EE_P2F0_MAY_ONLY_MATERIALIZE_WVS_PREOUTCOME_PROGRAM_HASHES__NO_CANDIDATE_EXECUTION_BEFORE_LOCK2"
+}

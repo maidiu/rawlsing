@@ -1,0 +1,105 @@
+/goal PROGRAMMA PYAT — PRE-553 UNIVERSAL35 GENERIC PIPELINE, HYBRID ECONOMY AND FIELD FORGE READINESS — OVERNIGHT FULL EXECUTION
+
+> **UNIVERSAL35 CURRENTNESS OVERLAY — 2026-11-06, candidate prepared from prior G review; exact-head independent review pending; not protected adoption.** This fresh branch is cut from protected `4df35cba8a254e50622d4cb3059625c82e0cb74b` and preserves the newer CAS3 fifteen-return write-through, 62/82/49 original IDs/grades, 51/82 graph, 88 direct/13 IF arcs and FIABC 144 PASS / 3 FAIL. #705 source `62329a720d835fd21505b67505751a7b3ec2ff02` is the reviewed-but-stale candidate; G review `b491fa87eab60be5b646bb3206495e1784913ec4` requires this currentness correction. Current exact facts: #696 merged `a02cd4e164eabed978bc577ed68f1c424b0ab187` with C8 receipt for `915b17ab7c7aeddf17e886086c3f4b574da1fcd4`; #702 merged `aaf098b877ccf825e09966ae5e74347f8829c3d3`; #703 PR open at `31c59b6d1c0d452b34b3e133e4a2b01317d00925` but L02 code received at `d119045f4169439b4ba02d0870bc328f8beb3aaa` via `1cbf3c63e`; L03 P2 `409be32f7e4b4b961a360be1c8f44a17b5c62173` and guard `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` received at `d119045f`; compressed body `02c1200b82b8397e551817e8e4cf2c6763413189` sourcefree-accepted `9999c0afac5d7d7eb72ad0df602da4b232a49565` but not protected; W04 caller-configured private-cache equivalence human-accepted; final L03 return `8af04c817f008ba4be5640bf776d09ed530a6cf2`. A source-pack port `9eaf9dd145409d8aedf583226c7c99d663c43abc` / final `51f39988863e049b09daf9cf4aeb30c09d5e84c2` is F-accepted sourcefree (`ebd20c165bb275f66e4b3e2210535e96eecaf2ac`), ABI truthful `load_original(sid).document` and compact `select`; B `dd0249a0` non-F1 REVISE; F `ebd20c16` accepts A/C scoped, B/AB/ABC REVISE with corrected RAW 5,630 / HELD 4,655 / INAPPLICABLE 8,131 / DEFERRED 51 total 18,467; D live binding/original execution not accepted; E r1 `7d1aadfd4` code `7920b7fc` accepted scoped by `6334063ab290d6497e7b8047eb1292b69661f51e` with two-target RAW owner limit, D authentic bind NOT_RUN and old semantic-linkage negative `e714` preserved. Source custody `b90708f7d79624faae3da2408932829e569e5ae2` / `9c871f14a` is candidate byte/header evidence; all 35 originals present/hash-match, SRC13/14 use exact configured compatibility encoding; no C11/native/science/actor promotion. No transitive READY/all35-native promotion. This overlay is candidate receiving text only; qualified protected receiving remains with the owner.
+
+
+**ROLE:** I3+/HIGH Codex HQ execution orchestrator, source- and current-ABI-qualified implementation lead, evidence receiver and qualified worker delegator. NOT original source/science issuer, distinct independent reviewer, protected PRE-MAIN CAS by default, Sorok actor issuer, or own reviewer. **SINGLE MULTI-WORKER COORDINATED FULL DELIVERABLE.**
+
+**REPO:** maidiu/rawlsing PRIVATE.
+**SOURCE TREE:** The new PROGRAMMA dossier at `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/PRE553_UNIVERSAL35_RECOVERY_20261106_R1/`. Read 00–04 IN FULL, particularly the all-35 register and 25 W/P currentness/priority map. Read existing PROGRAMMA Pyat 00 front door, S01–S11, five-test succession law, SOURCE_PRE553_PLAN/R157 P6, October 28 FINAL_PRODUCTION_ARCHITECTURE, HYB-01 and current review returns. This is a binding goal; read originals for exact API before implementation.
+
+**LAST OBSERVED:** protected `integration/pre-main-reconciliation-r1@33c40a315d3c231cb2021bd8e60f3261547efa62`; PR #696 latest source `915b17ab7c7aeddf17e886086c3f4b574da1fcd4` **author repair pending independent re-review**; PR #702 `0252e028e65dabb080d9aa485a151d5b77d32ffc` scoped independently reviewed; PR #703 `31c59b6d1c0d452b34b3e133e4a2b01317d00925` scoped independently reviewed. Refresh all heads/leases/CI and status before touching code. The documentary dossier is a candidate in its own branch/PR; it is not adopted or protected. Do not assume current live grants from historic source/host review.
+
+# USER'S NONNEGOTIABLE PRODUCT/ARCHITECTURE INSTRUCTION
+
+Build **ONE UNIVERSAL PRE-553 ENGINE** for **ALL 35 configured surveys/waves (SRC01–SRC35)**. Select a source at the ingestion boundary; source identity, administered items, question/option/response meanings, occurrence/routing, respondent/household joins, locality/time/coordinates, optional weights/design and applicable source-use/provenance come from **data, schemas, manifest, artifact and authority documents**. ALL downstream code is source-neutral. No 35 survey-specific engine copies, code-embedded source switch/case, hidden default source assumptions, hand-chosen few-question lists, 42-field ceiling, one-survey pilot as an end-state, arbitrary 2-item waves, or obligatory Cartesian all-pairs enumeration.
+
+We are building a **simulated-person/world application**, not a population-statistics paper. Compute authentic respondent-linked RAW observed-sample products by default wherever data and actual operation support exist. Weights/design improve estimates where supplied; their absence is not a blanket computation blocker. Preserve accurate RAW vs weighted vs population meaning, actual missingness, no-forged same-person joins, source facts and negative states. Field Forge separately adjudicates structural significance: do NOT stop numerical empirical artifact production because causal/material meaning is not yet granted. Honor actual operative source restrictions; do not invent admin paperwork into a universal stop.
+
+**The October 28 physical architecture choice is FINAL:** source-authoritative, compact, regenerable hybrid with existing I02/C11/I03/I05/Batch, optional source/version-keyed Parquet/Zstd and compatible grouped calculation. No renewed A/B/C bakeoff, no second compiler, new generalized SQL engine, alternative structural engine or new controller.
+
+**SRC04 old gigantic `native_streaming.py` global-pair computation is ABANDONED.** Its 7.91-GB carrier and 177 unary+31 joint historical run are negative cost/positive provenance evidence, not a restoration target. Current protected C11/issued-workload and HYB code are operative candidates. Do not build/test a SRC04-specific product as the campaign deliverable.
+
+# PHASE 0 — PROVE WHAT EXISTS AND FIX CHOICE OF WORK
+
+Read and reconcile **every reference in the new dossier** and the canonical existing PROGRAMMA 62 component / 82 seam / 49 GAP status, source-cut clauses and W00–W12/P01–P12 HYB map. Recheck exact Git objects/heads and current importing first consumers for:
+
+- R157 all35 library/code `agent/pyat-source-pre553-r157@1924499ef52403a0f331b8aff9b7c7eff99bf1e2`, 119 paths, 19 code paths, `rawlsing_next/source_configuration`, `pre553_source_read_admission.py`, manifest/exception/portable index/CLI and 35 validated native fixture results.
+- November 1 P1 `rawlsing_next/programma_pyat_original35_constructor.py@d1278613e9e1a5d986ccce15782a697f19cbd722` original35 prospectives / no-drop / BatchManifest and tests.
+- Protected source decoder / source-backed C11 / native preimage / R01/R03 grammar and compiler / query I03 / discovery I05 / Batch and joined cold resume; existing inherited V550/J, LiTS/WVS original semantics.
+- PR #684 independently reviewed merged E3 index reuse, PR #686 independently reviewed merged P1 compact C11 + authenticated optional Parquet/Zstd (including its fixed mutable-provenance defect).
+- L03 `409be32f7e4b4b961a360be1c8f44a17b5c62173` scoped accepted grouped P2, `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` separately focused accepted early-capacity guard, and `02c1200b82b8397e551817e8e4cf2c6763413189` measured compressed-body **unreviewed** candidate. Get their precise diff and latest source heads before receiving any slice.
+- L01/#702 R08→R118/P41 reviewed sourcefree consumer, L02/#703 genuine k-way C1 facts; #691 optional GF1 TEST_ONLY; #696 agenda current reviewed status and shared-doc collision.
+
+For each historic-to-current component, perform the binding **five-test succession** (same concrete function; current adequate successor/composition; actual first consumer; exact source/ABI/authority scope; REUSE/ADAPT/REPAIR/BUILD/HOLD comparative decision). Return `NO_BUILD` when adequate; not all paths need porting just because 119 historical names differ.
+
+Establish exclusive writer leases by modules **before worker dispatch**; do not assign overlapping `rawlsing_next` files to separate concurrent authors. Proof boundaries: author tests ≠ independent review; sources/adapters existing ≠ original35 full native execution; no synthetic/test data passed off as actual.
+
+# PHASE 1 — PARALLEL WORKSTREAMS; COMPLETE AS MANY AS PRACTICABLE
+
+### A. ALL35 source-configuration lossless current port (independent code owner)
+
+Read R157 config factory, reader, schema, `SourceConfigLibrary`, CLI, exact all35 `SOURCE_LIBRARY_INDEX.json`, exception ledgers and P6 independent A01–A16. Compare the complete 119-path set with CURRENT PRE-MAIN source-native adapter/source-backed C11. Identify every source-config function that has already been sublated into a suitable protected owner. Where missing, **selectively port the reusable, generic registry/factory/permission transport and pinned manifests**, with current ABI adaptation and no source-specific code logic. Preserve all 18,276 original item identities, 18,413 physical slots, 18,250 exact joins, 26 explicit unmatched and 35 source IDs; preserve SRC25/26 exact relation differences, LiTS repeated/household roles, WVS/EVS wave and country identities, and optional exact reader-encoding overrides via config.
+
+**Terminal tests:** 35/35 original pack discovery/status/validate/index and 35/35 nonrespondent configured native fixtures (regression floor); exact source binding/occurrence and wrong SHA/nonexistent source/refusal; actual accessible original-data execution separately measured. Produce one generic source selector API with effective source-root override and frozen interface, not 35 factories. Return file-by-file 119-path fate and every held source-specific exception.
+
+### B. ALL35 automated operation construction → actual current compiler (independent owner)
+
+Recover P1's sourcefree `construct_original35_epre` and current protected R01/R03 `compile_governed_frontier`/universal grammar/issued workload/Batch. Resolve typed incompatibility between P1 `EpreOperation`/Batch units and CURRENT executable I03/I05 jobs by **adapting the smallest missing interface**, not creating an alternative compiler.
+
+The source pack dynamically defines all valid administered item/option/routing/eligibility/response-state relationships and eligible raw/optional weighted operations. Instantiate a deterministic, no-drop source-by-source prospective frontier for ALL 35, with held/unknown/not-applicable/not-present reasons attached **per item and dependent operation**, no global gate. Include F1 raw distributions, F2 both directional conditionals, F3 heterogeneity/recursive alternatives, F4 genuine 3+ same-respondent co-occurrence and minority/contrary patterns. No product of marginals disguised as a joint, no semantic sign or value-direction invented.
+
+**Terminal tests:** run actual original35 manifest preparation for 35/35 source packs (not 35 synthetic arbitrary 2-item replacements), verify every original identity accounted, all generated concrete operations either executable via CURRENT C11/I03/I05/Batch or correctly typed refused/held, exact deterministic reproducibility. Prove first consumer consumes operation payload rather than merely accepting BatchManifest. Use available source data for real supported products; where unmounted, produce honest exact per-source `SOURCE_NOT_PRESENT_HERE`, not a fabricated original result.
+
+### C. Reviewed hybrid physical economy fan-in (separate one code owner + distinct reviewers)
+
+Treat current PR #684/#686 code as source of truth. Selectively adapt P2 reviewed grouped I03 functionality from L03, then its separate focused capacity guard if same reviewed semantics/current ABI. Respect exact-group/release/authority/risk/weight scopes, exact fact/replay/zero identities and independent review ceilings. Qualify compressed-body `02c1200…` through nonauthor code/provenance/cache/latency/memory/cold-rebuild review before accepting; if defective, submit the smallest repair to original owner. No forced “default cache” without measured/warranted reuse policy and no second persistent truth.
+
+**Full economic test:** cross-source-shape workloads (not only one favorable survey), cold and warm from current source, optional cache hit/miss/delete/corrupt/revoke, CPU/wall/RSS/temp/disk/bytes, I02 validation, source open, repeated query, grouped higher-order and full fact/replay exact parity. Establish when cache should activate; do not require 15,576 pair ops upfront. Measure bounded 16-GiB operational suitability if runner permits; if not, say NOT_RUN, not PASS.
+
+### D. End-to-end general empirical execution and durable release (integrator, after A+B, separate from C optimizer where possible)
+
+Use the existing CURRENT owner chain:
+`source pack → physical reader → GovernedC11Projection → validated I02/C11 → I03/I05/Batch → native EmpiricalFact / replay / exact receipts / restore → N3/N10E`.
+
+Run this **source-neutral** chain on all 35 manifests with qualified physical inputs and genuine source-specific data **where actually accessible**. For source bytes absent at the runner, preserve exact source-missing rows while keeping the 35-program registry and operation construction complete. Do not reduce the work to one 42-question source pilot; a focused test can diagnose but cannot be final acceptance.
+
+Produce provenance-correct observational counts, exact denominators/risk sets, support zeros, DK/UNKNOWN/NOT_ADMINISTERED distinctions, optional weighted results and observed sample status. A source or field without weight information still returns RAW sample facts. No loop over global all-pairs before publishing useful evidence. Batch all 35 legal configured workloads with bounded execution/memory, resumable exact operation-state ledger, and enough counters to know *all* eligible vs uncomputed operations. Demonstrate cross-process checkpoint, source/permission/release switch, mutated cell and restored output identity.
+
+### E. F1–F4 → Field Forge actual first consumer (separate owner; can begin with present C11 outputs)
+
+Do not invent sociology inside empirical processing. Show actual current I03/I05 facts via current N10E and `field_forge_conditional_support.py`, `gt12_c_to_d_relation_bridge.py`, `pre553_structural_admission.py` first readers. Verify different empirical values produce different support and conditioning; safe negative/refusal when structural/causal authority is absent. Preserve exact source/edition/target/condition/denominator/weight/raw/temporal/replay/permissions and minority branches. Do not block numerical production because FF has not decided its material meaning.
+
+Deliver a **direct cold-use first-consumer command and interface dossier for tomorrow's Field Forge work** and the exact source-selected native products feeding it. F6 source-indexed nonpooling, F7 qualified wave/as-of comparator, N9/N10W conditioned world, N11/N12 are separately graded; they are not universal PRE-553 physical prerequisites.
+
+### F. Broad provenance, negative, code-succession and scientific-source inventory (parallel read-only + independent work)
+
+Preserve original V550/J, LiTS/WVS A/B/C, R157 P6, original SRC04/SRC17 positive results and the no-revival cost decision as evidence. Search the **actual dated branches**, code symbols, return imports and 25 HYB references; resolve all remaining reference unknowns in a no-loss ledger with immutable SHA and candidate/current/stale/review/nonnative labels. Do not claim a full 2,831-branch census unless actually performed. Independently review current A/B/C operations, 35 source manifests, source-specific route/rank, WVS/EVS countries, GSS repeated fields, LiTS household, known weighted vs RAW scope, source-local crosswalks and ordinal/physical column equality. A missing publication-grade survey weighting scheme is not a blanket release stop for RAW.
+
+### G. Protected receiving / PROGRAMMA write-through (one documentary/CAS owner only)
+
+Review the isolated PROGRAMMA recovery PR and merge into existing #696 draft agenda only after distinct review and current-head readback. **#696 latest author-repaired HEAD has not inherited an independent C8 ACCEPT.** Reconcile its 51-child/82-seam graph correction independently before any protected receiving. Receive #702/#703 and reviewed L03 cuts according to exact code and first-consumer scope. PR #702/#703 modify overlapping control-room documents; one reconciler owns those paths. Refresh paired `CURRENT_PROGRESS.md/.json` through qualified protected CAS only, preserving 62/82/49 ID/status snapshots, historical tests, and 144 PASS/3 FAIL FIABC negative. No blind pin repair, no source/native/actor promotion.
+
+# CONCURRENCY / ORDER
+
+Immediately launch **A, B, C, E(read/plan), F and G(read-only receiving prep)** in parallel if code ownership/authorized runners are actually distinct. A and B create documented frozen source-pack and operation ABIs; D begins only after their exact compatibility contract, and may then fan out **across all 35 sources** while keeping one engine code owner. C may integrate behind current query API in parallel but conflicts with D if they edit same I03 files; use one writer or sequence. E performs sourcefree current-ABI ingress now, then accepts D's real output. G publishes only independent accepted exact source cuts and protected receipt. Reviewer is not implementer. No duplicate /goal leaders, new overcontroller, blanket branch inventory or arbitrary extra science governance.
+
+Prioritize **all35 universal pack → all35 operation catalog → exact current execution → first real FF empirical handoff → review/receiving**, while C's grouped/cold efficiency runs in parallel. Run technical tests using actual authorized S2 runner; do not pretend GitHub S1 reading is an S2 run.
+
+# DEFINITION OF DONE / REPORT STRUCTURE
+
+Return one complete table keyed **SRC01–SRC35** with `source/edition, exact manifest/config ref, original item count, physical slots, administered/support/held counts, optional weight/design status, external source bytes available?, C11 release status, real I03/I05 facts, Batch resume, N10E/FF first reader, first missing proof, current commit/reviewer/protected grade`. **35/35** is an accounting and architecture denominator, not a false claim that absent original files have been executed.
+
+Return:
+1. **Exact accepted code:** all changed paths/SHAs, original function reuse vs adapter, and no survey-specific conditionals in general engine.
+2. **Source-pack law and universal CLI:** single public caller path with examples selecting different source IDs through configs; 35/35 automated regression, full original metadata/held preserve.
+3. **Actual measurable end-to-end artifacts:** number of sources truly run from original data (not fixture), number of operation records and native facts, raw vs weighted, valid support vs unknown/held, changed input/restoration and real downstream consume.
+4. **Hybrid physical result:** P1/E3 and L03 P2/guard/compressed exact grades, paired resource measures and unresolved true cold/peak/default performance.
+5. **Independent receiving:** own reviewer, exactly reviewed SHA, status of protected PRs, fresh CI, first consumer, no full suite green if FIABC red.
+6. **Field Forge next-day handoff:** accepted source/ABI, exact support/refusal and reproduction, provenance and remaining interpretive questions.
+7. **PROGRAMMA:** existing A01–A16 and S01–S11 updated through qualified owning path; original snapshot IDs/grades and conditional edges retained; no new competing tracker.
+8. **Unresolved:** finite ordered smallest missing proof, owner, precise source/host/meaning dependency, all unmounted source bytes, unreviewed candidates, and explicit stop reason. Never convert “not validated” into “nonexistent”.
+
+Do NOT stop with a new plan, research memo, a one-survey test or a few-question demonstration. **Execute and integrate the maximum lawful general source-neutral 35-survey functionality now**, delegate as many compatible worker tasks as the environment and real writer leases support, and furnish real tests/receipts/reviews. If full native 35 cannot be achieved in this run, finish the universal library and all35 runnable-plan/accounting layers plus every source physically accessible, with exact per-source residuals, rather than disguising partial coverage as full completion.
+
+**Outcome names:** `ALL35_SOURCE_PACK_RECONCILED`, `ALL35_GENERIC_OPERATION_PLAN_READY`, `ALL35_EXECUTION_ENGINE_FIRST_CONSUMER_ACCEPTED`, `FIELD_FORGE_EMPIRICAL_INGRESS_READY`, `HYBRID_ECONOMY_SCOPED_ACCEPTED`, `PROTECTED_CAS_RECEIVED`, `ALL35_NATIVE_MEASURED`. Issue each **only with distinct evidence**, never as a single all-or-nothing invented maturity grade.

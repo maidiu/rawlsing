@@ -135,6 +135,9 @@ class ExactBoundedDiscoveryResult:
     covered_candidate_count: int
     receipts: tuple[DiscoveryResultReceipt, ...]
     empirical_fact_refs: tuple[ExactRef, ...]
+    empirical_facts: tuple[EmpiricalFact, ...]
+    executed_predicates: tuple[EmpiricalPredicate, ...]
+    executed_queries: tuple[EmpiricalQuerySpec, ...]
     valid_empty: bool
     replay_ref: ExactRef
 
@@ -149,6 +152,43 @@ class ExactBoundedDiscoveryResult:
             raise ExactBoundedDiscoveryError("receipts must be exact-ref sorted")
         if tuple(sorted(set(self.empirical_fact_refs), key=lambda r: r.key)) != self.empirical_fact_refs:
             raise ExactBoundedDiscoveryError("empirical_fact_refs must be canonical")
+        if tuple(sorted({f.ref.key: f for f in self.empirical_facts}.values(), key=lambda f: f.ref.key)) != self.empirical_facts:
+            raise ExactBoundedDiscoveryError("empirical_facts must be exact-ref canonical")
+        if tuple(f.ref for f in self.empirical_facts) != self.empirical_fact_refs:
+            raise ExactBoundedDiscoveryError("empirical fact preimages do not close over exact refs")
+        for objects, cls, label in (
+            (self.executed_predicates, EmpiricalPredicate, "executed_predicates"),
+            (self.executed_queries, EmpiricalQuerySpec, "executed_queries"),
+        ):
+            if tuple(sorted(objects, key=lambda obj: obj.ref.key)) != objects:
+                raise ExactBoundedDiscoveryError(f"{label} must be exact-ref sorted")
+            if len({obj.ref.key for obj in objects}) != len(objects):
+                raise ExactBoundedDiscoveryError(f"{label} must be exact-ref unique")
+            for obj in objects:
+                _verify_object_identity(obj, cls, f"{label} item")
+
+        predicate_by_key = {obj.ref.key: obj for obj in self.executed_predicates}
+        query_by_key = {obj.ref.key: obj for obj in self.executed_queries}
+        for receipt in self.receipts:
+            identity = receipt.candidate_identity
+            roles = identity.get("query_roles") if isinstance(identity, Mapping) else None
+            if not isinstance(roles, Sequence) or isinstance(roles, (str, bytes)):
+                raise ExactBoundedDiscoveryError("receipt query roles are malformed")
+            for role in roles:
+                if not isinstance(role, Mapping):
+                    raise ExactBoundedDiscoveryError("receipt query role is malformed")
+                predicate_ref = exact_ref(role.get("predicate_ref"), "role predicate_ref")
+                query_ref = exact_ref(role.get("query_ref"), "role query_ref")
+                predicate = predicate_by_key.get(predicate_ref.key)
+                query = query_by_key.get(query_ref.key)
+                if predicate is None or query is None:
+                    raise ExactBoundedDiscoveryError(
+                        "executed role object closure omits exact predicate/query preimage"
+                    )
+                if exact_ref(query.condition_predicate_ref, "role query condition") != predicate_ref:
+                    raise ExactBoundedDiscoveryError(
+                        "executed role query does not bind its exact predicate"
+                    )
 
 
 CANDIDATE_GRAMMAR_CONTRACT: Mapping[str, Any] = {
@@ -181,6 +221,47 @@ def _text(value: Any, name: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise ExactBoundedDiscoveryError(f"{name} must be a non-empty string")
     return value.strip()
+
+
+def _allowed_validation_kinds(validation_rules: Any) -> set[str]:
+    """Read only exact declared validation kinds, including rules-only owners."""
+    envelope = _mapping(validation_rules, "validation_rules")
+    declared: set[str] | None = None
+    if "kinds" in envelope:
+        declared = {
+            _text(value, "validation_rules.kinds member")
+            for value in _sequence(
+                envelope["kinds"], "validation_rules.kinds", allow_empty=True
+            )
+        }
+        if not declared <= VALIDATION_KINDS:
+            raise Pre553AuthorityError(
+                "discovery validation authority declares an unknown validation kind"
+            )
+
+    ruled: set[str] | None = None
+    if "rules" in envelope:
+        ruled = set()
+        for raw in _sequence(
+            envelope["rules"], "validation_rules.rules", allow_empty=True
+        ):
+            rule = _mapping(raw, "validation_rules rule")
+            kind = _text(rule.get("kind"), "validation_rules rule kind")
+            if kind not in VALIDATION_KINDS:
+                raise Pre553AuthorityError(
+                    "discovery validation authority rule has an unknown kind"
+                )
+            ruled.add(kind)
+
+    if declared is None and ruled is None:
+        return set()
+    if declared is None:
+        return ruled or set()
+    if ruled is not None and not ruled <= declared:
+        raise Pre553AuthorityError(
+            "discovery validation authority kinds contradict its explicit rules"
+        )
+    return declared
 
 
 def _derived_ref(kind: str, namespace: str, material: Any) -> ExactRef:
@@ -376,7 +457,21 @@ def _combine_predicates(
     grammar_refs = {canonical_json(p.grammar_authority_ref) for p in predicates}
     bindings = {p.same_respondent_binding_semantics for p in predicates}
     if len(grammar_refs) != 1 or len(bindings) != 1:
-        raise ExactBoundedDiscoveryError("composed predicates must share exact grammar and respondent binding law")
+        try:
+            from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+            runtime = current_runtime_authorities()
+        except ImportError:
+            runtime = None
+        if runtime is None:
+            raise ExactBoundedDiscoveryError(
+                "composed predicates must share exact grammar and respondent binding law")
+        from rawlsing_next.pre553_runtime_composition import compose_predicates_runtime
+        return compose_predicates_runtime(
+            predicates,
+            op=op,
+            tag_material=tag_material,
+            runtime_authorities=runtime,
+        )
     if op == "AND":
         ast = {"op": "AND", "children": [p.predicate_ast for p in predicates]}
     elif op == "OR":
@@ -903,6 +998,7 @@ def _evaluate_candidate(
     registry: AuthorityRegistry,
     release_refs: Iterable[ExactRef],
     minimum_raw_denominator: int,
+    group_scope=None,
 ) -> tuple[str, str, tuple[EmpiricalFact, ...], Mapping[str, Any]]:
     results: dict[str, QueryExecutionResult] = {}
     facts: list[EmpiricalFact] = []
@@ -913,6 +1009,7 @@ def _evaluate_candidate(
             predicate=role.predicate,
             authority_registry=registry,
             release_refs=release_refs,
+            group_scope=group_scope,
         )
         results[role.role] = result
         facts.extend(result.facts)
@@ -960,6 +1057,7 @@ def execute_exact_bounded_discovery(
     release_refs: Iterable[ExactRef],
     predicate_catalog: Iterable[EmpiricalPredicate],
     query_template_catalog: Iterable[EmpiricalQuerySpec],
+    group_scope=None,
 ) -> ExactBoundedDiscoveryResult:
     """Compile and exhaustively evaluate the exact authority-declared frontier.
 
@@ -973,7 +1071,7 @@ def execute_exact_bounded_discovery(
     templates = _catalog_templates(definition, query_template_catalog)
     _validate_catalog_scope(discovery_authority, atoms, templates)
     candidates = _compile_frontier(definition, atoms, templates)
-    allowed_validation = set(_mapping(discovery_authority.validation_rules, "validation_rules").get("kinds", ()))
+    allowed_validation = _allowed_validation_kinds(discovery_authority.validation_rules)
     used_validation = {c.validation["kind"] for c in candidates}
     if not used_validation <= allowed_validation:
         raise Pre553AuthorityError("candidate validation rule exceeds exact discovery validation authority")
@@ -996,7 +1094,7 @@ def execute_exact_bounded_discovery(
         raise ExactBoundedDiscoveryError("minimum_raw_denominator must be exact nonnegative integer")
 
     receipts: list[DiscoveryResultReceipt] = []
-    all_facts: list[ExactRef] = []
+    all_facts: list[EmpiricalFact] = []
     release_refs_tuple = _canonical_refs(exact_ref(ref, "release_ref") for ref in release_refs)
     if not release_refs_tuple:
         raise ExactBoundedDiscoveryError("one or more exact C11 release refs required")
@@ -1008,11 +1106,12 @@ def execute_exact_bounded_discovery(
             registry=authority_registry,
             release_refs=release_refs_tuple,
             minimum_raw_denominator=minimum_raw_denominator,
+            group_scope=group_scope,
         )
         if coverage_state not in TERMINAL_COVERAGE_STATES:
             raise ExactBoundedCoverageError("candidate did not receive terminal exact coverage state")
         fact_refs = _canonical_refs(f.ref for f in facts)
-        all_facts.extend(fact_refs)
+        all_facts.extend(facts)
         replay_material = {
             "contract": I05_CONTRACT_ID,
             "authority_ref": discovery_authority.ref.as_dict(),
@@ -1073,7 +1172,30 @@ def execute_exact_bounded_discovery(
     if any(r.coverage_state not in TERMINAL_COVERAGE_STATES for r in canonical_receipts):
         raise ExactBoundedCoverageError("complete frontier contains nonterminal candidate")
 
-    all_fact_refs = _canonical_refs(all_facts)
+    all_fact_objects = tuple(
+        sorted({fact.ref.key: fact for fact in all_facts}.values(), key=lambda fact: fact.ref.key)
+    )
+    predicate_objects: dict[str, EmpiricalPredicate] = {}
+    query_objects: dict[str, EmpiricalQuerySpec] = {}
+    for candidate in candidates:
+        for role in candidate.query_roles:
+            for collection, obj, cls, label in (
+                (predicate_objects, role.predicate, EmpiricalPredicate, "executed predicate"),
+                (query_objects, role.query, EmpiricalQuerySpec, "executed query"),
+            ):
+                _verify_object_identity(obj, cls, label)
+                previous = collection.setdefault(obj.ref.key, obj)
+                if canonical_json(previous.as_dict()) != canonical_json(obj.as_dict()):
+                    raise ExactBoundedDiscoveryError(
+                        f"conflicting {label} preimages share one exact ref"
+                    )
+    all_executed_predicates = tuple(
+        sorted(predicate_objects.values(), key=lambda obj: obj.ref.key)
+    )
+    all_executed_queries = tuple(
+        sorted(query_objects.values(), key=lambda obj: obj.ref.key)
+    )
+    all_fact_refs = tuple(fact.ref for fact in all_fact_objects)
     valid_empty = not canonical_receipts or all(
         r.typed_state == "VALID_EMPTY" for r in canonical_receipts
     )
@@ -1098,6 +1220,9 @@ def execute_exact_bounded_discovery(
         covered_candidate_count=len(canonical_receipts),
         receipts=canonical_receipts,
         empirical_fact_refs=all_fact_refs,
+        empirical_facts=all_fact_objects,
+        executed_predicates=all_executed_predicates,
+        executed_queries=all_executed_queries,
         valid_empty=valid_empty,
         replay_ref=final_replay,
     )
