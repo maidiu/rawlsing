@@ -1,0 +1,66 @@
+--- WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/original/completion_events.py	2026-11-15 22:46:01
++++ WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/patched/completion_events.py	2026-11-15 22:49:16
+@@ -33,6 +33,41 @@
+         os.close(directory_fd)
+ 
+ 
++def sorok_currentness_hook(job):
++    """Additive SOROK-only intake hook; absent env means no behavior change."""
++    raw = os.environ.get("COMPLETION_SOROK_CURRENTNESS")
++    if not raw:
++        return None
++    try:
++        config = json.loads(raw)
++    except (ValueError, TypeError):
++        return {"state": "SOROK_CURRENTNESS_CONFIG_INVALID"}
++    script = config.get("runtime_script")
++    config_path = config.get("config_path")
++    python = config.get("python", sys.executable)
++    if not script or not config_path:
++        return {"state": "SOROK_CURRENTNESS_CONFIG_INCOMPLETE"}
++    command = [python, script, "--config", config_path, "intake-completion",
++               "--run-dir", str(Path(job["completion_path"]).parent)]
++    try:
++        result = subprocess.run(command, capture_output=True, text=True,
++                                timeout=120, shell=False)
++        stdout = result.stdout or ""
++        stderr = result.stderr or ""
++        return {
++            "state": ("SOROK_CURRENTNESS_INTAKE_OK" if result.returncode == 0
++                      else "SOROK_CURRENTNESS_INTAKE_FAILED"),
++            "exit_code": result.returncode,
++            "stdout_sha256": hashlib.sha256(stdout.encode()).hexdigest(),
++            "stderr_sha256": hashlib.sha256(stderr.encode()).hexdigest(),
++            "stderr_tail": stderr[-2000:],
++            "hook_is_not_acceptance": True,
++        }
++    except Exception as error:
++        return {"state": "SOROK_CURRENTNESS_HOOK_ERROR",
++                "error": type(error).__name__, "hook_is_not_acceptance": True}
++
++
+ def main():
+     assert THREAD and CODEX, "EXPLICIT_THREAD_AND_CODEX_BINDINGS_REQUIRED"
+     target = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "completion_event_targets.json"
+@@ -74,6 +109,9 @@
+             "completion": completion, "state": "DISPATCH_RESERVED_NO_RETRY",
+             "reserved_at": time.time(), "model_override": None,
+         }
++        hook = sorok_currentness_hook(job)
++        if hook is not None:
++            record["sorok_currentness"] = hook
+         save(reservation, record)
+         qualification = any(label in job["task"] for label in
+                             ("notification-qualification", "opencode-roundtrip"))
+@@ -91,6 +129,11 @@
+             f"completion_path={job['completion_path']}\n"
+             f"pid={completion['pid']} exit_code={completion['exit_code']}\n"
+             "Read the exact durable terminal receipt and actual return before deciding. "
++            + ("" if not record.get("sorok_currentness")
++               or record["sorok_currentness"].get("state") == "SOROK_CURRENTNESS_INTAKE_OK"
++               else "\nSOROK currentness intake is not OK: "
++                    + str(record["sorok_currentness"].get("state"))
++                    + " - reconcile before acting.")
+             + continuation
+         )
+         if os.environ.get("COMPLETION_NOTIFY") != "1":

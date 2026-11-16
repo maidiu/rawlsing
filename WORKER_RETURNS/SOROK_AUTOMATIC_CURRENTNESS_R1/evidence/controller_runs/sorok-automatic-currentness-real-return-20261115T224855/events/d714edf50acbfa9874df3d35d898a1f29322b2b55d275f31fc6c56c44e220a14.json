@@ -1,0 +1,28 @@
+{
+  "task": "sorok-automatic-currentness-real-return-20261115T224855",
+  "session": "ses_local_fixture_child_r1",
+  "thread": "00000000-0000-4000-8000-000000000000",
+  "completion_path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/controller_demo_state/sorok-automatic-currentness-real-return-20261115T224855/completion.json",
+  "completion": {
+    "job_id": "sorok-automatic-currentness-real-return-20261115T224855",
+    "session": "ses_local_fixture_child_r1",
+    "grant_id": "local-sourcefree-infrastructure-grant-r1",
+    "pid": 59413,
+    "started_utc": "2026-11-16T03:48:55.540428+00:00",
+    "exit_code": 0,
+    "finished_utc": "2026-11-16T03:48:55.606502+00:00",
+    "scope": "LOCAL_SOURCEFREE_INFRASTRUCTURE_QUALIFICATION_ONLY",
+    "recipient_thread": "00000000-0000-4000-8000-000000000000"
+  },
+  "state": "NOTIFICATION_DISABLED",
+  "reserved_at": 1794800935.6168041,
+  "model_override": null,
+  "sorok_currentness": {
+    "state": "SOROK_CURRENTNESS_INTAKE_FAILED",
+    "exit_code": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "de0ee0a078f67f87e6656ed1b61cbdcc925173ac581ff095cb89049746988e81",
+    "stderr_tail": "usage: operational_currentness_runtime_r1.py [-h] --config CONFIG\n                                             {init,status,what-next,startup,recover,intake-completion,intake-review,intake-event}\n                                             ...\noperational_currentness_runtime_r1.py: error: the following arguments are required: --config\n",
+    "hook_is_not_acceptance": true
+  }
+}

@@ -2,8 +2,28 @@
 
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: preserve the full historically developing person objective, build/reuse actual owner code, prove first-consumer causality, independent receiving where warranted, close at honest sourcefree grade. `MCR: LITE` defaults; full MCR-C applies only when expressly mandated or frozen. Native CAN/ADP, Pyat source, actor, human and product rights remain separate.
 
-
 > **CURRENT PROTECTED STATUS UNCHANGED — PYAT-PRODUCT-PRIORITIES-20261110-R1 IS CANDIDATE PYAT→SOROK PRODUCT REQUIREMENT, NOT ACTOR GRANT.** **MANDATORY SITUATED HUMAN-LIFE QUESTION:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? [Pyat 27-row evidence/world/product obligation register](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) includes PP26-25 (N10E/N10W) and PP26-27 (actual Sorok person/scene consumer). The world may facilitate, prohibit, expose, reward, punish or contradict; actor-local biography chooses, interprets, resists, accommodates and transforms those conditions. **Group mean ≠ person's inner attitude or destiny**. Candidate pressure and hegemony theories must retain source/uncertainty, not masquerade as observer-proven causal or actor facts. No new MII/MIII/P5/P6, source, science, actor or protected CAS rights are minted by this marker.
+
+**AUTOMATIC CURRENTNESS RUNTIME (2026-11-16, existing-owner integration):** The paired `CURRENT_PROGRESS.json` / `CURRENT_PROGRESS.md` now carries an additive `operational_currentness_runtime_r1` section reconciled from authenticated local controller receipts and the GitHub intake baseline. The frozen #1095 `operational_currentness_r1` projection, its verifier and its two frozen sources remain historical candidate evidence and are not rewritten as live monitoring. Cold-start / return intake:
+
+```sh
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python \
+  SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py \
+  --config /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/currentness/config.json \
+  startup
+```
+
+Operational readout (same reconciled pair):
+
+```sh
+/private/tmp/rawlsing-oct28-p1r1/venv/bin/python \
+  SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py \
+  --config /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/currentness/config.json \
+  status
+```
+
+`startup` returns typed `RECONCILIATION_REQUIRED` for new/unseen local receipts or unavailable/stale authenticated GitHub intake; it never upgrades a zero exit to acceptance. The runtime's controller hook is SOROK-only and absent from bindings without a `sorok_currentness` object. No native science, actor/human authority, protected merge or automatic job dispatch follows.
+
 
 
 **2026-11-09 CURRENT CANDIDATE (NONISSUING):** [29 Nadia sensory access from committed player conduct](29_NADIA_SENSORY_ACCESS_FROM_PLAYER_CONDUCT_CANDIDATE_20261109_R1.md) is banked as a separate sourcefree one-scene requirement: world conduct → Nadia's situated sensory eligibility/cue → her fallible actor-local interpretation/choice. P5/P6 already protected by #775/#779/#828. Mechanism I #791 D8 joint gaze/ordinary S46 dispatch remains separate and incomplete; Mechanism III is incoming and not yet defined by this note. No new native/actor scientific or human authority, production receipt, mechanism implementation, agent launch or changed phase gate. Current paired progress remains R39; historical receiving statements below retain their dated source cuts.

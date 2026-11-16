@@ -1,0 +1,302 @@
+{
+  "schema": "SOROK1037_B05_R3_INDEPENDENT_G5_VERDICT@1",
+  "issue": 1037,
+  "round": "B05_R3_INDEPENDENT_G5",
+  "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HELD",
+  "accepted_code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+  "accept_scoped_target": "ACCEPT_SCOPED_SOURCEFREE@cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+  "base_sha": "270eb29cd4487b6865b61adc9d671952554d425d",
+  "branch": "codex/sorok1037-b05-zero-status-repair-20261115-r3",
+  "review_branch": "codex/sorok1037-b05-r3-independent-g5-20261115-r3",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "reviewer_session": "ses_e21caf5dfffeSywXGrQ6qw65oe",
+  "reviewer_role": "same_independent_nonauthor_R3_G5",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "independence": {
+    "same_reviewer_as_original_5b65_and_R2_6dc": true,
+    "author_is_reviewer": false,
+    "original_red_5b65": "5b65a35b1f54cd13da0a340eed1c9b92783a0ce1",
+    "r2_red_6dc": "6dc921841a748ee7121887c0484068249a526b17",
+    "historical_reviews_immutable": true,
+    "product_write": false,
+    "author_probes_executed_in_place": false
+  },
+  "host": {
+    "hostname": "oldMac.lan",
+    "platform": "Darwin 22.6.0 x86_64",
+    "macos": "13.7.8",
+    "python": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+    "pytest": "9.1.1",
+    "contention": "timings/RSS are observations, not isolated benchmarks"
+  },
+  "model_auth_metadata": {
+    "actual_model": "OpenCodeGo DeepSeekV4.1FlashMAX as declared",
+    "checkpoint_org_quota": "UNOBSERVED",
+    "provider_tokens_usd": "UNOBSERVED",
+    "provider_model_account_auth_globalpermission_server_changes": "NONE",
+    "paid_fallback": "NONE"
+  },
+  "source": {
+    "changed_product": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py",
+      "before_r3_blob": "a193fb5bfb6a1955209bedf0e66be974dcfa8e1b",
+      "candidate_blob": "9de3b5a295431fac2b0f9833ed520262df04b363",
+      "candidate_sha256": "bb67d3e03baf28943076cf5902e308c26ccbb7678672a297817a358a6296c774",
+      "change": "read-side status validation only; +10/-6; no writer/ABI/store/schema/lock/ledger change"
+    },
+    "preserved_b04": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+      "blob": "3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+      "sha256": "114f38e5303815d890188809309de56f2ff001d8fc8adb02243a6b1fc83d241a",
+      "unchanged": true
+    },
+    "other_product_changes": "NONE",
+    "new_ledger_registry_secret_key_writer_store": "NONE"
+  },
+  "test_and_probe_blobs": {
+    "author_r3_focused_tests": {
+      "path": "WORKER_RETURNS/SOROK1037_B05_ZERO_STATUS_REPAIR_R3/tests/test_b05_zero_status_semantics.py",
+      "git_blob": "0576b17433737f0f8831d81940848c7762d87d64",
+      "sha256": "28eb1028f2d0758b2deb20551f8f5beecc3cf1ea3dd0f0e8367d65253aaea375",
+      "count": 4
+    },
+    "r2_author_regression": {
+      "path": "WORKER_RETURNS/SOROK1037_B05_WRITER_PROOF_REPAIR_R2/tests/test_b05_actual_rent_transition.py",
+      "git_blob": "e61dca9f81ddc3fcb5fcf33272934232c2ae16a2",
+      "count": 5
+    },
+    "legacy_author_tests": {
+      "path": "WORKER_RETURNS/SOROK1037_B_RECEIPT_REPAIR_R1/tests/test_b04_b05_receipt_provenance.py",
+      "git_blob": "a28db531306b3ad4dcebc76915d079f14ac0ea0f",
+      "count": 6
+    },
+    "own_zero_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r2_focused_probe.py",
+      "git_blob": "d5d41240d32170ab0f2bed292afa747662283287",
+      "sha256": "0300e8ddc694a85260589a92a9632c3661835a3a096c9294e09287bbf8acd4d8",
+      "byte_identical_to_immutable_reviewer_probe": true,
+      "modified": false
+    },
+    "own_positive_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_review_probe.py",
+      "git_blob": "3e98929dbb526edf6fab60f74132cafe03d63239",
+      "sha256": "fb42f9fd48d455bedf236d6f578e8aab94de449b4bf1e07adb315c99115a6c57",
+      "byte_identical": true,
+      "modified": false
+    },
+    "exact_1027_witness": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_probe_1027.py",
+      "git_blob": "7cd5a23044426961d6f33e13b1ccf44f54916f81",
+      "sha256": "da1d4389fdae9d092f3bb777777e5f5ea76a71fea943730ff6cf029e3414fa5a",
+      "byte_identical": true,
+      "modified": false
+    },
+    "exact_1027_cold_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_cold_probe_1027.py",
+      "git_blob": "6fc86dc5ca7ca8cc52baa8ad71ad33349d846cab",
+      "sha256": "f9cc6e56cf6899bea1b09c820b4b3dc0ad52a97b5864bc9121a34229dc1820aa",
+      "byte_identical": true,
+      "modified": false
+    },
+    "own_r3_independent_probe": {
+      "path": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r3_independent_probe.py",
+      "git_blob": "d9f70c60620667f9940e5df884c45dcf070855c9",
+      "sha256": "805fbd67594469ac461b6bce18bcf2351f07630a7f436dabfe7295a3bf081d12",
+      "checks": "12/12",
+      "literal_exit": 0
+    }
+  },
+  "commands": [
+    {
+      "id": "zero_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-r3-independent-g5-20261115-r3/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r2_focused_probe.py",
+      "exit": 0,
+      "result": "17/17; zero forgery refused B05_RENT_RECEIPT_INVALID",
+      "elapsed_seconds": 47.61,
+      "peak_rss_bytes": 58920960
+    },
+    {
+      "id": "positive_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-r3-independent-g5-20261115-r3/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_review_probe.py",
+      "exit": 0,
+      "result": "34/34; positive sole rehash B05_RENT_OPERATION_UNPROVEN; B04 controls pass",
+      "elapsed_seconds": 43.84,
+      "peak_rss_bytes": 59695104
+    },
+    {
+      "id": "exact_1027_witness",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-r3-independent-g5-20261115-r3/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_probe_1027.py",
+      "literal_exit": 1,
+      "result": "63/63; both defects accepted=false; historical oracle quirk",
+      "elapsed_seconds": 19.37,
+      "peak_rss_bytes": 61104128
+    },
+    {
+      "id": "exact_1027_cold_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-r3-independent-g5-20261115-r3/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_cold_probe_1027.py",
+      "exit": 0,
+      "result": "ok=true; warm_ok=true; child_exit=0; two purchases + one rent; head unchanged",
+      "elapsed_seconds": 16.60,
+      "peak_rss_bytes": 59052032
+    },
+    {
+      "id": "r3_focused_tests",
+      "exit": 0,
+      "result": "4 passed",
+      "elapsed_seconds": 32.67,
+      "peak_rss_bytes": 69107712
+    },
+    {
+      "id": "r2_focused_regression",
+      "exit": 0,
+      "result": "5 passed",
+      "elapsed_seconds": 41.09,
+      "peak_rss_bytes": 65798144
+    },
+    {
+      "id": "legacy_tests",
+      "exit": 0,
+      "result": "6 passed",
+      "elapsed_seconds": 50.81,
+      "peak_rss_bytes": 70238208
+    },
+    {
+      "id": "selected_c03_c04",
+      "exit": 0,
+      "result": "3 passed; product read-only",
+      "elapsed_seconds": 75.18,
+      "peak_rss_bytes": 67919872
+    },
+    {
+      "id": "inherited_43",
+      "exit": 0,
+      "result": "43 passed once on final source",
+      "elapsed_seconds": 495.37,
+      "peak_rss_bytes": 73240576
+    },
+    {
+      "id": "own_r3_independent_probe",
+      "command": "TMPDIR=$PWD/.local-logs/sorok1037-b05-r3-independent-g5-20261115-r3/tmp PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /private/tmp/rawlsing-oct28-p1r1/venv/bin/python WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r3_independent_probe.py",
+      "exit": 0,
+      "result": "12/12 own negative/positive checks",
+      "elapsed_seconds": 40.06,
+      "peak_rss_bytes": 54599680
+    }
+  ],
+  "base_red_evidence": {
+    "immutable_r2_report": "evidence/immutable_r2_red_report.json",
+    "immutable_r2_report_sha256": "f941df6986a5ea4378abbd730d2828d6ceb3a562323e0041adbe130b92797588",
+    "checks": 17,
+    "passing_checks": 16,
+    "failed_checks": 1,
+    "residual": "zero forged ADMITTED rent accepted READ historical=false, cash 55",
+    "literal_exit_reported_by_author": 2,
+    "base_reexecuted_by_product_mutation": false,
+    "same_probe_blob_on_r3": "d5d41240d32170ab0f2bed292afa747662283287",
+    "final_result": "17/17, zero forgery B05_RENT_RECEIPT_INVALID"
+  },
+  "own_negative_witness": {
+    "path": "WORKER_REVIEWS/SOROK1037_B05_R3_INDEPENDENT_G5/g5_r3_independent_probe.py",
+    "report": "evidence/g5_r3_independent_probe_report.json",
+    "checks": 12,
+    "failed": 0,
+    "cases": {
+      "admitted_no_decrease": "rent 12, cash 55->55, public no-cash say checkpoints: B05_RENT_RECEIPT_INVALID",
+      "admitted_wrong_debit": "rent 12, cash 55->50: B05_RENT_RECEIPT_INVALID",
+      "admitted_no_transition": "self-consistent rent 12, cash 67->55, no actual checkpoint transition: B05_RENT_OPERATION_UNPROVEN",
+      "genuine_zero": "writer UNCHANGED, reader READ, cash unchanged",
+      "genuine_held": "writer REFUSED, reader READ, cash 5",
+      "genuine_positive": "ADMITTED READ, exact debit, h1 historical=true after h2, h2 historical=false",
+      "replay_boundary": "same-period copied ADMITTED receipt B05_RENT_OPERATION_NOT_UNIQUE; genuine fail-closed; no second debit"
+    },
+    "public_actions_used": [
+      "session.product.say for same-clock no-cash checkpoints",
+      "session.product.store.append_episode for forged receipts"
+    ],
+    "hidden_world_rewrite": "NONE"
+  },
+  "gates": {
+    "G1_source_owner_custody": {
+      "status": "PASS_SCOPED_SOURCEFREE",
+      "evidence": [
+        "exact candidate cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc; base 270eb29; author branch",
+        "only B05 read-side product changed; B04 unchanged 3c1d326bfa2f8a78c92a84e5cc5e039e04376441",
+        "no writer/schema/store/lock/ledger/registry/key/currency change",
+        "exact review probes byte-identical; no author probe executed in place",
+        "product read-only; exclusive reviewer root and assigned scratch"
+      ]
+    },
+    "G2_build_normal_first_consumers": {
+      "status": "PASS",
+      "evidence": [
+        "zero probe 17/17; positive probe 34/34; #1027 63/63 semantic with both defects false",
+        "cold probe ok=true, warm_ok=true, child_exit=0; two purchases + one rent; head unchanged",
+        "4 R3 + 5 R2 + 6 legacy + 3 selected consumer + 43 inherited passed",
+        "genuine zero UNCHANGED, held REFUSED, positive ADMITTED and historical h1/h2 read"
+      ]
+    },
+    "G3_falsification": {
+      "status": "PASS",
+      "evidence": [
+        "own malformed ADMITTED no-decrease and wrong-debit cases refuse B05_RENT_RECEIPT_INVALID",
+        "own well-formed ADMITTED without actual checkpoint transition refuses B05_RENT_OPERATION_UNPROVEN",
+        "own same-period replay copy refuses B05_RENT_OPERATION_NOT_UNIQUE; genuine fail-closed; no second debit",
+        "original positive sole-rehash remains B05_RENT_OPERATION_UNPROVEN",
+        "zero-rent public no-cash forgery now B05_RENT_RECEIPT_INVALID",
+        "checkpoint sever/restore, sibling transition copy, B04 foreign-root/C02 chain, changed/restored and cold preserved"
+      ]
+    },
+    "G4_boundaries_preservation": {
+      "status": "PASS_WITH_LIMITS",
+      "evidence": [
+        "no writer/ledger/schema/store/lock/currency/psychology/motive change",
+        "historical h1 true, h2 false; replay/retry; changed/restored; B04 purchase/refusals; cold preserved",
+        "no new ledger, scheduler, native authority or protected merge"
+      ],
+      "limits": [
+        "fully privileged checkpoint fabrication outside observed public-action/append threat model",
+        "UNCHANGED/REFUSED no-debit statuses remain readable by authorized scope",
+        "timings/RSS under concurrent host load; provider and checkpoint/org/quota UNOBSERVED"
+      ]
+    },
+    "G5_independent_nonauthor_receiving": {
+      "status": "ACCEPT_SCOPED_SOURCEFREE",
+      "accepted_code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+      "basis": "frozen zero probe 17/17; positive probe 34/34; #1027 63/63 with both defects false; cold and all required suites pass; own independent negative/positive witness 12/12; no new in-scope false ADMITTED found"
+    }
+  },
+  "preserved": {
+    "original_positive_sole_forgery": "B05_RENT_OPERATION_UNPROVEN",
+    "zero_rent_public_no_cash_forgery": "B05_RENT_RECEIPT_INVALID",
+    "admitted_positive_no_debit_forgery": "B05_RENT_OPERATION_UNPROVEN",
+    "genuine_positive_rent": "ADMITTED READ",
+    "genuine_zero_rent": "UNCHANGED READ without debit checkpoint",
+    "genuine_held_rent": "REFUSED READ without debit checkpoint",
+    "historical_h1_after_h2": "historical=true / historical=false; exactly two debits",
+    "replay_and_retry": "REPLAY; late same-period B05_RENT_ALREADY_RECORDED; no second debit",
+    "changed_severed_restored": "checkpoint sever/restore; B04 ownership restore; dwelling restore",
+    "b04_purchase_and_refusals": "preserved; B04 blob unchanged",
+    "cold_reopen": "two purchases + one rent; head unchanged"
+  },
+  "supersession": {
+    "original_red_5b65_immutable": true,
+    "r2_red_6dc_immutable": true,
+    "r2_positive_case_closed_at_r2": true,
+    "r2_zero_case_closed_at_r3": true,
+    "r3_accepted_sourcefree": true,
+    "protected_or_native_acceptance": "NONE"
+  },
+  "nonclaims": [
+    "no native/science/human/actor authority or psychological fact",
+    "no motive, desire or volition inference",
+    "no protected PRE-MAIN merge",
+    "no new ledger, scheduler, currency conversion or writer change",
+    "no full P6/MII/J1 campaign",
+    "no isolated performance or provider cost claim",
+    "no R4 or further repair round"
+  ],
+  "terminal": "STOP",
+  "review_commit_sha": "REPORTED_IN_FINAL_CHAT_AFTER_FREEZE"
+}
