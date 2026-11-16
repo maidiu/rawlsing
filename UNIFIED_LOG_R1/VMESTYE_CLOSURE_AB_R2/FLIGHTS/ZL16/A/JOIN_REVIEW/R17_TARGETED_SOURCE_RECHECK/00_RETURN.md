@@ -1,0 +1,53 @@
+# ZL16-A #815 — independent R17 new-head historical-forward S1 receiving
+
+**Reviewer disposition: `ACCEPT_SCOPED_S1__TWO_SOURCE_GRAPH_FIELD_REPAIRS` for the exact changed R16→R17 material, with explicit continuing canonical/native/issuer HOLDS.** This is an independently authored documentary reviewer candidate, **not** formal credential-certified MCR-C acceptance, official PR #864 canonical adoption, protected law, scientific issuance or current machine success.
+
+## Frozen receipt identity and segregation
+- **Current author source reviewed:** [draft #1099](https://github.com/maidiu/rawlsing/pull/1099) at exact immutable R17 `3f7e1168592dd2db02ae03ce26ac6a40cf71da23`, descendant of R16 `14351c105c4542d2951d275173518e8e50478ffd`; prior R15 `71e16fc45992b66926b1a4cf1bd3dd8b96f5d7c8`, official baseline draft #864 R8 `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`.
+- **Protected source:** `integration/pre-main-reconciliation-r1@6a5c12f04323d74001f9632063ec907f4fc4468e`, reverified unchanged. **Original source code:** `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`. Only original source, actual R17 patched DATA, exact R17 field/ledger records, Git diff, protected schema and bounded old A/B source receipts were read.
+- **A reviewer custody:** [PR #1077](https://github.com/maidiu/rawlsing/pull/1077) on an isolated existing author/review branch, additive return `UNIFIED_LOG_R1/VMESTYE_CLOSURE_AB_R2/FLIGHTS/ZL16/A/JOIN_REVIEW/R17_TARGETED_SOURCE_RECHECK/`. All prior A P0/P1/P2, independent T1 R12 receipt, and R15 JOIN_REVIEW are unchanged. B is a separate #1079 source reviewer, #816 another distinct current-backward reviewer.
+- **Execution: NONE — GitHub authenticated S0–S1 static documentary reads and Git metadata/table parsing only.** No Python science, original respondents, official validation/CI, S2/S3, native/35, source/actor/issuer grant, #814 graph author edits, SHARED, protected or main merge.
+
+## R17 H01 — corrected `R9-PROP-REL-001` at exact source scope
+
+I independently checked original 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/ddm_v552j_handoff.py#476e617370e8947ee1f38b0718243ecfc5ba9e5c:L110-L142. V552J's `_packet_rows(v551j_certified,v551j_review)` considers both lanes, certified first with packet-ID de-duplication; under both producer evidence statuses PRESENT and a qualifying structural match, review-kind can create `REVIEW_ONLY` without allowing downstream use. `join_permission=ALLOW` is strictly certified kind plus both upstream producer permissions ALLOW, fact ALLOW and observed pressure. An unresolved same-scope match is separately audited, not fabricated as a review row. The corrected actual `3f7e1168592dd2db02ae03ce26ac6a40cf71da23::data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/DATA/RELATIONS.tsv#e103653c27f4519362dc26399ddda696d0d22f7e:R9-PROP-REL-001` says:
+
+> V552J join construction requires V551J packet-family input (certified OR review) plus separately qualified V552 structural facts; join_permission=ALLOW requires certified packet, both producers' permission ALLOW, selected fact permission ALLOW, observed pressure; review kind may yield REVIEW_ONLY, other denied/unresolved cases remain typed; source-static/no native
+
+The full line was independently observed in #1099's actual Git patch, and the exact identical R17 value independently read in `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/PRONGS/J_JOIN/R17_TWO_EXACT_SOURCE_FIELD_REPAIR_20261115/R17_EXACT_TWO_FIELD_REPAIR.tsv` and R8→R17 70-row `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/PRONGS/J_JOIN/R15_ONE_CANONICAL_DATA_CANDIDATE_20261115/R15_REVERSIBLE_DELTA.tsv` **after** JSON. This closes the R16 strict-only-construction overclaim at **historical code/static graph field scope**, not native join construction. Keep `relation_type=MUST_DEPENDENCY`, `from_id=F21_J_STRUCT`, `to_id=F20_J_PACKET`; protected 07 allows both `MUST_DEPENDENCY` and `COMPOSED_FROM`.
+
+**Negative control (read-only source reasoning):** review packet + matching V552 fact cannot be promoted to `ALLOW`; missing match can generate audit only; certified with one producer DENY cannot be `ALLOW`; unobserved pressure cannot be `ALLOW`. R17 text retains all these constraints at the necessary specificity, without claiming execution.
+
+## R17 H02 — corrected `R9-PROP-EDGE-005` at exact input-grain scope
+
+I independently checked original 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/compile_v551j_joint_evidence_packets.py#2df97875172778c3f4616c0799c08667b57db407:L1320-L1324,L1353-L1374 and declared certifier signature 9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/ddm_v551j_certification.py#21791659d4446b4c61097fdf6786f1bdae2aeeae:L23-L35. It takes exactly `candidate`, `component`, `packet_contract_validation_report` and builds `review_surface` after preliminary certification. A review flag inside a candidate is not a separately consumed prebuilt review sidecar. The corrected actual `3f7e1168592dd2db02ae03ce26ac6a40cf71da23::data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/DATA/CONSUMER_EDGES.tsv#ab820904cac76c24d16d438f61f4163f7fe32632:R9-PROP-EDGE-005.from_object` reads:
+
+> uncertified candidate rows plus ordered component rows plus packet contract validation report are the certifier inputs; prebuilt review sidecar is NOT a certifier argument and is rebuilt separately after preliminary certifier; final strict publish remains later
+
+The actual R17 edge file, #1099 patch, R17 two-field repair register and R8→R17 ledger after-JSON agree. The actual consumer remains `R15-CANDIDATE-OP-V551J-CERT` and late `R15-CANDIDATE-OP-V551J-PUBLISH` is separate. `current_actual_status=OPEN_PROOF_GAP`, no first non-test current reader or signed source issuer has been invented. **H02 accepted at S1** only.
+
+## Exact graph preservation / reversibility
+
+I independently compared R16→R17 Git changes: **one relation-line replacement and one consumer-edge-line replacement**, two coupled reversible-ledger row revisions; no other DATA table changes. R8→R17 compare: `RELATIONS.tsv` **+5/-0**, `CONSUMER_EDGES.tsv` **+10/-0**, `EVIDENCE.tsv` +30, operations +10, implementations +10, `FUNCTION_ATLAS.tsv` five `next_step` substitutions only according to their exact before/after JSON. R8 original **8,503** relation lines and **332** consumer edge lines are preserved; R17 totals **8,508** and **342**. R16/R17 70 reversible records = 5 atlas, 5 relation, 30 evidence, 10 operation, 10 edge, 10 implementation; immutable R15 original had 74. R17 author two-field fix register has 2 before/after/rollback rows; independently checked both R17 ledger `after` JSON fields against actual patched DATA. Both R8 and R17 authority blob `bd833fd5d6e8a6f1cf54a691ef1df6316cdfdce8` (370 records) and decision-event blob `377cd8a5d63caf4e7d0ce5e3dcad6a23da0608c0` (884) are byte-identical, not newly applied authority. All 10 candidate edges read remain `OPEN_PROOF_GAP`; five recipient IDs are explicitly unissued. All 1,740 original atlas identities remain in the same graph (Git compare shows only 5 lines replaced with next_step-only changes).
+
+R15→R16 earlier repairs **remain banked**, including deletion of four invalid authority/dependency-to-documentary findings, the legality of `COMPOSED_FROM`, genuine F21→F20→F19→F18 source prerequisites, and late strict final publisher. No PR #864 official writer/lease transfer verified, no current-native semantic equivalence or original35 proven.
+
+## Three courts × five R1 qualities
+
+| Court | Provenance | Future utility | Navigability | Comprehensibility | Comprehensiveness |
+|---|---|---|---|---|---|
+| **Engineering** | R8/R15/R16/R17 commit+source blob and exact Git patch | Only 2 replaced cells and 2 after-JSON entries, no new campaign | REL001/EDGE005, repair table, 70/74 ledgers | Actual old call/branch and selected current table output separated | Source/TSV readback PASS, CI/Node/native NOT_RUN |
+| **Scientific** | Original V551J/V552J code at 9253064bc9423a0f0ccda4fbdea43c2f54f800c6 | REVIEW_ONLY vs ALLOW and preliminary vs strict-final falsifiers | F20/F21 operation/permission/negative IDs | Context preserved without numerical ALLOW or issuance | Current source, respondent, signed numerical effects held |
+| **Authority** | Protected 07, frozen canonical R8 and R17 candidate status | Distinct future #815/#816/current reader/issuer actions | 370 original authority and 884 events byte-identical | No candidate/source-reference → applied authority promotion | #864 custody and MCR independent credential acceptance not proved |
+
+## C1–C5 and four separate terminal states
+
+- **C1:** exact R16/R17 and relevant original-source strata inspected; entire accessible historical estate not independently relocked.
+- **C2:** 1,740 original atlas IDs and original graph rows demonstrably preserved at changed-file/static grain; 52 T1 candidates/LMX44/LMQ30/F29/AR58 and inherited counts overlapping, not additive independent functions.
+- **C3:** the two original source semantic defects are **repaired at S1 on R17**, but actual original selected execution, current equivalent/native first reader and ordered J authority remain typed `OPEN_PROOF_GAP`.
+- **C4:** A independently rechecked exact R17; B's R16 and #816's R16 reviews do **not retroactively receive R17**. Actual other #816 same-R17 receiving and accepted reviewer competence remain separate.
+- **C5:** one routine bounded source-grade recheck ends here. Future work is authorized canonical writer custody, same-R17 independent current-backward confirmation and #817 terminal court, **not** a new census or P0/P1/P2.
+
+`ESTATE_DISCOVERY_CLOSED_AT_PINNED_SCOPE=NOT_GLOBALLY_ADJUDICATED`; `FUNCTIONAL_MAP_COMPLETE_WITH_TYPED_GAPS=ACCEPT_SCOPED_ONLY_TWO_R17_HISTORICAL_SOURCE_FIELDS__WHOLE_ATLAS_HOLD`; `CURRENT_MACHINE_ZERO_LOSS_PROVED=HOLD`; `ALL35_NATIVE_WORLD_PRODUCT_ACCEPTED=HOLD`.
+
+**Next real reader:** distinct #816 current-backward receiving of **the same R17 HEAD** and authorized #814/#864 exclusive canonical custodian; only then can appropriate authority admit the delta and #817 conduct terminal C1–C5 court. This A review does not certify #864 ownership or merge.
