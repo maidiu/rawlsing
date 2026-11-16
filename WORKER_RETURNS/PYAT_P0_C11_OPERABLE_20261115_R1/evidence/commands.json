@@ -1,0 +1,50 @@
+{
+  "commands": [
+    {
+      "command": "pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_prepared_saved_i03.py",
+      "exit": 0,
+      "result": "3 passed in 8.70s"
+    },
+    {
+      "command": "pytest -q -o addopts='' -p no:cacheprovider <prepared + R03 v2 + W05 + S1E saved/source/body + direct estate + grouping + saved admission>",
+      "exit": 0,
+      "result": "80 passed in 125.81s"
+    },
+    {
+      "command": "python probe/run_prepared.py --mode baseline --out evidence/run_baseline.json",
+      "exit": 0,
+      "result": "100 ops; 213.456 s; 100 builds; 28,076 reads"
+    },
+    {
+      "command": "python probe/run_prepared.py --mode prepared --out evidence/run_prepared.json",
+      "exit": 0,
+      "result": "100 ops; 126.424 s; 1 build; 17,384 reads; 100/100 parity"
+    },
+    {
+      "command": "python probe/run_wide.py --mode baseline --out evidence/wide_baseline.json",
+      "exit": 0,
+      "result": "20 ops; 142.996 s; 20 builds; 121,882 reads"
+    },
+    {
+      "command": "python probe/run_wide.py --mode prepared --out evidence/wide_prepared.json",
+      "exit": 0,
+      "result": "20 ops; 83.873 s; 1 build; 71,304 reads; 20/20 parity"
+    },
+    {
+      "command": "python probe/measure_build.py",
+      "exit": 0,
+      "result": "writer 29.954 s; fixture 3.196 s; 39,609,311 B retained"
+    },
+    {
+      "command": "python probe/measure_open.py",
+      "exit": 0,
+      "result": "cold admission 0.423 s; prepared build 2.403 s; first query 1.587 s"
+    },
+    {
+      "command": "parity checks for 128, J5 baseline, wide baseline/prepared and wide native oracle",
+      "exit": 0,
+      "result": "0 mismatches in all four comparisons"
+    }
+  ],
+  "schema": "PYAT_P0_COMMANDS@1"
+}
