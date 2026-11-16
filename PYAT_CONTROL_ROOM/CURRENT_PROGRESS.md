@@ -1,3 +1,9 @@
+# K3 CONDITIONAL P2 AND INDEPENDENT REVIEW HANDOFF READY — 2026-11-16 (CANDIDATE ONLY)
+
+Two optional P2 commissions are PREPUBLISHED, not executed: [A answers B's P1](https://github.com/maidiu/rawlsing/pull/1131#issuecomment-6930278488) and [B answers A's P1](https://github.com/maidiu/rawlsing/pull/1134#issuecomment-6930280460). P2 is WAIVED if the opposing P1 has no decision-changing objection. Both P1 PRs/HEADs must exist and freeze before any response. A [separate reviewer commission](https://github.com/maidiu/rawlsing/issues/1112#issuecomment-6930306257) is prepublished and begins only after P1 and any needed P2; direct GitHub PR receipts, no manual HQ intermediate relay. All source/native/science/actor rights and protected CAS still held. Production #1097/#960 first.
+
+---
+
 # PYAT K3 P0 FROZEN / P1 ISSUED — 2026-11-16 (CANDIDATE ONLY; NOT PROTECTED)
 
 Both independent documentary Browser author P0s are now immutable/read back: [K3-A PR #1131](https://github.com/maidiu/rawlsing/pull/1131) `f1e52596e0803e4a32cb48b5f245324c292086d6` (29 historical families, 26 proposals, 10 bounded counterexamples) and [K3-B PR #1134](https://github.com/maidiu/rawlsing/pull/1134) `c16e03815fc11f1876e851dbc7b078cd97ff4fb3` (29+26 mapped, 20 first-consumer/cost edges). Neither is independent K3 reviewer accreditation or a current/source/native test. The initial blind-source requirement is now fulfilled. B's assignment-prompt-only exposure is not substantive A findings exposure.
