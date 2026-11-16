@@ -1,0 +1,224 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R3_G5_VERDICT@1",
+  "commission": "SOROK automatic PROGRAMMA currentness R3 material-event receiving",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "same_distinct_independent_nonauthor",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "branch": "codex/sorok-automatic-currentness-r3-receiving-20261116-r1",
+  "candidate_source_sha": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+  "main_correction_sha": "a1fa15d47",
+  "final_artifact_report_sha": "cb299a2f2a0fcd55826486c7a0a38108ba21bfab",
+  "runtime_blob": "fc322b1ea3b3769bae699aeea8c1d31c053fd042",
+  "test_blob": "d9e0f81ee6578ecf1fb9e6838ba0e6fa82d94651",
+  "focused_r3_test_blob": "fc8f18260127ca039453d2100c69602fef126e7b",
+  "runtime_sha256": "2d004d6d51993b3682c46d0afb38809ec0ee9339eb82788a3207f4c2e16ec9ed",
+  "test_sha256": "c15a6390251f0a392589760809ad7ae5292532137287aba53e08a58311b99683",
+  "focused_r3_test_sha256": "5566994bfcd4c0f5c7c7c12649394c65442650e7b1a3f53aa5b94ebc0608b57d",
+  "predecessor_reds": {
+    "R1": {
+      "commit": "fc49662603c3dd8148c847cd6f35f2172184fd5a",
+      "verdict": "REVISE_EXACT_DEFECT"
+    },
+    "R2": {
+      "commit": "53fad99fd8da86e4ab1cd12fdcfcd93fc8b2942f",
+      "evidence": "f8006235266aa618963b186e5c357bf92be830b3",
+      "verdict": "REVISE_EXACT_DEFECT"
+    }
+  },
+  "engineering_verdict": "REVISE_EXACT_DEFECT",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "verdict": "REVISE_EXACT_DEFECT",
+  "accept_scoped": false,
+  "accept_scoped_target": null,
+  "full_original_claim": "NOT_ESTABLISHED",
+  "protected_ci": "UNAVAILABLE_BILLING",
+  "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+  "scope": "FOCUSED_MATERIAL_EVENT_AUTHORITY_RECEIVING_ONLY; trusted event routes and live source rechecked; public attest-launch bypass remains; no protected/native/full claim",
+  "material_probe": {
+    "probe_original_sha256": "973d9695f1e511bd3f7e29773806b043f13d8f04915a6edb4459dd7ab15a731c",
+    "path_adaptation_only": true,
+    "result": "7 fixed / 0 gaps / PASS",
+    "fixed": [
+      "caller-only mechanism review refused",
+      "arbitrary STOP refused",
+      "arbitrary resolution refused",
+      "untrusted REJECTION refused",
+      "untrusted PROTECTED_INTEGRATION refused",
+      "unauthenticated GITHUB_OBSERVATION refused",
+      "self-consistent fake WORKER_RETURN refused"
+    ],
+    "raw": "evidence/material_auth_probe_stdout.log, evidence/material_auth_probe_report.json",
+    "old_ea5_reproduction": {
+      "result": "3 fixed / 4 gaps / REVISE_EXACT_DEFECT",
+      "raw": "evidence/old_ea5_material_probe_report.json, evidence/old_ea5_material_probe.stdout"
+    }
+  },
+  "fake_reviewer_probe": {
+    "result": "PASS",
+    "error": "UNTRUSTED_CONTROLLER_RUN",
+    "raw": "evidence/fake_reviewer_probe_stdout.log, evidence/fake_reviewer_run_report.json"
+  },
+  "public_trust_label_refusal": {
+    "result": "REFUSED",
+    "error": "LIVE_GITHUB_OBSERVATION_UNTRUSTED_SOURCE",
+    "case": "public intake-event with source.trust=RUNTIME_INTERNAL_LIVE_FETCH and observation_digest=evil",
+    "raw": "evidence/trusted_label_live_refused.err, evidence/trusted_label_live_refused.exit"
+  },
+  "residual_red": {
+    "id": "PUBLIC_ATTEST_LAUNCH_BYPASS",
+    "severity": "mission-critical code/authority",
+    "observed": "caller-authored launch.py with --binding/--job strings and caller-owned live supervisor/observer/child PIDs invoked attest-launch; it returned exit 0 TRUSTED_LAUNCH_ATTESTED; the self-consistent fake REVIEWER run was then intaked by the public intake-review route",
+    "fake_launch": {
+      "script": "launch.py --binding fake --job fake",
+      "installed_launcher_used": false,
+      "caller_flags_only": true,
+      "own_live_pids": true,
+      "author_secret_read": false,
+      "sandbox_capability_only": true,
+      "launch_id": "launch-aada117a2f29fc0b2459c69caa1d1912",
+      "state": "TRUSTED_LAUNCH_ATTESTED"
+    },
+    "fake_review": {
+      "exit": 0,
+      "state": "EVENT_RECORDED",
+      "mechanism_review_state": "REVISE_EXACT_DEFECT",
+      "job_session": "ses_FAKE_ATTEST",
+      "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu"
+    },
+    "source_lines": {
+      "_require_launcher_process_tree": "checks parent command string for launch.py/--binding/--job plus live PID relationships only",
+      "_require_trusted_launch": "accepts any valid registry entry; attest_launch is public and does not require operator authorization or an installed-launcher hash"
+    },
+    "shortest_fix": "Restrict attest-launch to the actual installed controller launcher (verified path/hash or launcher-issued nonce) or require competent operator authorization/enrollment. Do not accept caller-authored launch.py/process-tree strings or caller-provided live PIDs as proof of supervision. Bind actual run session/role/source to the registry and receipt, not only expected fields.",
+    "raw": "evidence/fake_attest_report.json, evidence/raw/fake_attest/attest.out, evidence/raw/fake_attest/review.out, evidence/raw/fake_attest/review.exit"
+  },
+  "live_source": {
+    "source_trust": "AUTHENTICATED_LIVE_GITHUB",
+    "refs_count": 16,
+    "refs_digest": "4c895ee3eea2bf2a6355fe9dc9a70a7f15246bdd1c15da08179f9fced8d3eff4",
+    "repo_http": 200,
+    "pull_http": {
+      "1062": 200,
+      "1066": 200,
+      "1089": 200,
+      "1091": 200,
+      "1095": 200
+    },
+    "issue_http": {
+      "939": 403,
+      "1008": 403,
+      "1010": 403
+    },
+    "status_coverage": "REF_SHA_ONLY",
+    "fetched_at_utc": "2026-11-16T06:38:32.130891+00:00",
+    "expires_at_utc": "2026-11-16T06:53:32.130960+00:00",
+    "evidence_digest": "48bd803b148c85823264e67fe10f4c6d832734735c8d4aa8bcc61710ba619068",
+    "current_items": [
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:939",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1008",
+      "GITHUB_STATUS_UPDATED_SOURCE_UNAVAILABLE issue:1010",
+      "GITHUB_PR_STATUS_ADVANCED pr:1095"
+    ],
+    "source_authority_hold": "issue/comment read scope HTTP 403; only refs/SHA and watched PR status observed; no full issue/comment currentness",
+    "raw": "evidence/live_observation_summary.json, evidence/live_status_before.json, evidence/live_startup.json, evidence/live_status_after.json, evidence/what_next.out"
+  },
+  "real_lifecycle": {
+    "author_job": "sorok-programma-automatic-currentness-material-auth-repair-20261116-r3",
+    "author_pid": 81644,
+    "author_pair_generation": 51,
+    "author_pair_checkpoint": "42c533215ffdd623e45a9016d14a81210813e93228bcb240c5983fa3b3c7d16b",
+    "author_worker_return_execution_state": "RETURNED_REVIEW_PENDING",
+    "author_worker_return_sha256": "4fc9476faf8b0b8bca81167a785797f652552b030f876389813f659f944a67e8",
+    "hook_state": "REAL_MECHANISM_WORKER_RETURN_INTAKEN",
+    "review_job": "sorok-programma-automatic-currentness-r3-receiving-20261116-r1",
+    "review_binding_role": "REVIEWER",
+    "review_binding_source": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+    "review_binding_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "review_launch_enrolled": true,
+    "review_receipt_path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/REVIEW_RECEIPT.json",
+    "author_live_mutation_by_reviewer": false,
+    "raw": "evidence/actual_author_state_snapshot.json, evidence/raw/actual_worker_run/, evidence/raw/review_job/, evidence/raw/review_run/"
+  },
+  "local_checks": {
+    "host": "Darwin x86_64, macOS 13.7.8",
+    "python": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+    "tests": "28 passed, exit 0, 16.49s with reviewer TMPDIR",
+    "frozen_verifier": "--self-test --status exit 0; plain exit 0; --no-git --status exit 0",
+    "mcr": "py_compile exit 0; --self-test exit 0",
+    "canonical": "verify_canonical_programma_r1.py exit 0",
+    "pyat": "plain exit 0; --self-test exit 0",
+    "changed_commissions": 0,
+    "old_material_probe": "PASS 7 fixed/0 gaps",
+    "old_fake_reviewer_probe": "PASS UNTRUSTED_CONTROLLER_RUN",
+    "raw": "evidence/checks/"
+  },
+  "historical_boundaries": {
+    "tasks": 27,
+    "decision_nodes": 21,
+    "original_scope": {
+      "functions": 144,
+      "seams": 38,
+      "gates": 83,
+      "assets": 304,
+      "inputs": 100
+    },
+    "B05": {
+      "review_pr": 1089,
+      "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "state": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+      "full_original_readiness": "HOLD_DECISION_A02,A03,A08"
+    },
+    "C04": {
+      "review_pr": 1062,
+      "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "full_original_readiness": "HOLD_DECISION_A07,S02,S03"
+    },
+    "C05": {
+      "review_pr": 1091,
+      "review_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+      "full_original_readiness": "HOLD_DECISION_S07"
+    },
+    "G03_I0": "RECEIVED_SCOPED_UNMERGED_PR993; full G03 held",
+    "CG_A_1066": "RECEIVED_SCOPED_UNMERGED_PR1066 outside the 27 DAG",
+    "protected_foundations": {
+      "P3": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+      "P4": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+      "P5": "5e266a80ccfc52da10741e15f6b9076138907758",
+      "P6": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+      "MI": "1f77f2036427a410429184780ef884ec4f253ad0",
+      "MII": "521ae459091c5d4e4009f442257d74d50b2c55db",
+      "MIII": "3e5b1611f5cb043b43ffd39b14c9d707923f1210"
+    },
+    "issue_939": "STOP_NEVER_DISPATCH / USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS",
+    "browser": {
+      "1008": "terminal scoped",
+      "1010": "terminal held",
+      "1012": "not launched"
+    },
+    "protected_ci": "UNAVAILABLE_BILLING / PENDING_PROTECTED_CI_AND_ADOPTION",
+    "native_science_actor_human": "HELD",
+    "protected_merge": "none",
+    "source_candidates": {
+      "oath_r2": "1341c81dfe0e99da030e7dca356f55789a10c6f8 DRAFT",
+      "atlas": "67698cfd32f838b7a5fdc381b0168d9225f5352f CANDIDATE_DOCUMENTARY"
+    }
+  },
+  "remaining_holds": {
+    "code": "REVISE_EXACT_DEFECT: public attest-launch can self-enroll caller-authored launch/process tree; bind actual installed launcher or operator authorization and actual session/source",
+    "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; no full issue/comment currentness",
+    "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
+    "native_science_actor_human": "HELD",
+    "protected_merge": "none"
+  },
+  "review_receipt": {
+    "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/REVIEW_RECEIPT.json",
+    "review_commit": "EVIDENCE_COMMIT_RECORDED_IN_FINAL_RECEIPT",
+    "verdict": "REVISE_EXACT_DEFECT",
+    "full_original_claim": "NOT_ESTABLISHED",
+    "protected_ci": "UNAVAILABLE_BILLING",
+    "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION"
+  },
+  "terminal": "STOP"
+}

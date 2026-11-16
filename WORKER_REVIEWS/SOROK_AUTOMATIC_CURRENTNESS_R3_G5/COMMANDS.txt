@@ -1,0 +1,101 @@
+# SOROK automatic currentness R3 focused receiving — commands
+# cwd /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+# host Darwin 22.6.0 x86_64 / macOS 13.7.8; Python /private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3
+# Product read-only; writes only WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5 and
+# .local-logs/sorok-programma-automatic-currentness-r3-receiving-20261116-r1.
+# No author live pair/config/capability/registry secret was read, copied or printed.
+
+REPO=/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+REV=$REPO/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5
+LOGS=$REPO/.local-logs/sorok-programma-automatic-currentness-r3-receiving-20261116-r1
+PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+RT=$REPO/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+AUTH=/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing
+STATE=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115
+
+# 1. Identity/source pins
+git rev-parse HEAD
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
+git hash-object WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/tests/test_material_auth_boundary.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+git hash-object .github/workflows/sorok-operational-currentness-r1.yml
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_task_packets_20261112.json
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_gmt_overlay_20261112.json
+# runtime fc322b1e…, test d9e0f81e…, focused test fc8f1826…, frozen d971b6ea…, f76c0d90…, 17cfae53…, 474befcb…
+
+# 2. Unchanged R2 material probe with path adaptation only
+# original sha256 973d9695f1e511bd3f7e29773806b043f13d8f04915a6edb4459dd7ab15a731c
+/usr/bin/time -l "$PY" -B WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/probes/material_auth_probe.r2_adapted.py \
+  > "$REV/evidence/material_auth_probe_stdout.log" \
+  2> "$REV/evidence/material_auth_probe_time.log"
+# exit 0; 7 fixed / 0 gaps / PASS.
+
+# 3. Unchanged R3 fake-reviewer probe with path adaptation only
+/usr/bin/time -l "$PY" -B WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/probes/fake_reviewer_run_probe.r3_adapted.py \
+  > "$REV/evidence/fake_reviewer_probe_stdout.log" \
+  2> "$REV/evidence/fake_reviewer_probe_time.log"
+# exit 0; unenrolled fake refused UNTRUSTED_CONTROLLER_RUN.
+
+# 4. 28 tests (17 original + 11 focused R3)
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+  SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py \
+  WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/tests/test_material_auth_boundary.py \
+  > "$REV/evidence/checks/r3_tests_stdout.log" \
+  2> "$REV/evidence/checks/r3_tests_time.log"
+# exit 0; 28 passed in 16.49s.
+
+# 5. Required local workflow equivalents (not hosted Actions)
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --self-test --status
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --no-git --status
+"$PY" -m py_compile CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test
+# all exit 0; raw in evidence/checks/.
+# changed WORKER_COMMISSIONS count 0; selector not applicable.
+
+# 6. Live sandbox (copy of author pair; author live pair read-only)
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" status \
+  > "$REV/evidence/live_status_before.json" 2> "$REV/evidence/live_status_before.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" startup --reconcile \
+  > "$REV/evidence/live_startup.json" 2> "$REV/evidence/live_startup.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" status \
+  > "$REV/evidence/live_status_after.json" 2> "$REV/evidence/live_status_after.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" what-next \
+  > "$REV/evidence/what_next.out" 2> "$REV/evidence/what_next.err"
+# exits 2/2/2/2 while four source items remain; 16 refs, PR 200, issue 403.
+
+# 7. Public GITHUB_OBSERVATION label/digest cannot mint live
+# A public event with source.trust=RUNTIME_INTERNAL_LIVE_FETCH and observation_digest=evil
+# was refused by the public intake route:
+TMPDIR=$LOGS/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/fake-attest/repo/config.json" intake-event \
+  --event "$LOGS/fake-attest/trusted_label_live.json"
+# exit 1; LIVE_GITHUB_OBSERVATION_UNTRUSTED_SOURCE.
+
+# 8. Public attest-launch bypass (reviewer-owned sandbox)
+# A self-authored launch.py with args --binding fake --job fake spawned its own
+# live supervisor/observer/child tree, wrote self-consistent run JSON, and called:
+#   "$PY" -B "$RT" --config "$LOGS/fake-attest/repo/config.json" \
+#     attest-launch --run-dir "$LOGS/fake-attest/repo/controller-state/fake-attest"
+# exit 0; TRUSTED_LAUNCH_ATTESTED; launch-aada117a2f29fc0b2459c69caa1d1912.
+# The fabricated REVIEWER run was then intaked with the real R2 receipt:
+#   intake-review --review-run-dir "$LOGS/fake-attest/repo/controller-state/fake-attest" \
+#     --receipt "$LOGS/fake-attest/work/return/REVIEW_RECEIPT.json"
+# exit 0; EVENT_RECORDED; mechanism_review REVISE_EXACT_DEFECT for job session ses_FAKE_ATTEST.
+# No author capability/registry secret was read or copied; sandbox cap only.
+
+# 9. Freeze sequence (performed after this log)
+# git add WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5
+# git commit -m "review: freeze automatic currentness R3 G5 evidence (REVISE_EXACT_DEFECT)"
+# Evidence commit is the receipt review_commit.
+# Create REVIEW_RECEIPT.json with runtime/test/VERDICT blobs at that commit;
+# commit only receipt later. The real prebound controller hook intakes it after
+# this reviewer process exits. Do not manually fabricate completion.
