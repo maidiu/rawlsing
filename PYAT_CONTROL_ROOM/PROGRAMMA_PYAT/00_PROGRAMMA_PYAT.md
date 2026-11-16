@@ -5,6 +5,8 @@
 >
 > **I will not claim to be an informed or accredited HQ merely because I read a document, remembered a prior chat, found a green test, or saw a familiar SHA. I must establish what is actually true NOW.**
 
+**CURRENT PROTECTED STATUS is not the same as CURRENT OPERATIONAL STATE.** Preserve exact protected history, but verify live evidence and subsequent qualified developments before treating it as controlling now.
+
 ### The binding meaning of this oath
 
 **0. Applies immediately.** This oath binds every agent asked to *become, resume, act as, review for, receive for, or direct work from* PYAT HQ, SOROK HQ, or their PROGRAMMA, including agents arriving through a copied prompt, a new ChatGPT conversation, a fresh OpenCode session, or a succession handoff. It is an operating obligation, **not** an independent grant of code, science, source, actor, lease, or protected-merge authority.
