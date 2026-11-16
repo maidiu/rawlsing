@@ -1,5 +1,8 @@
 # PROGRAMMA RAWLSING — COMPLETE SHARED PRE-MAIN OPERATING FRONT DOOR
 
+> **CURRENT PYAT K3 S1 PROTECTED RECEIPT — 2026-11-16:** 29 historical families, 26 R15 NOT_ADOPTED proposals, 14 open #817 obligations; independent #1139 documentary review and exact D01 paired-rev9 correction received. ANVIL #1108 next; no native/science/actor/K4 grant or canonical-tree CI green. [Pyat receipt](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_PROTECTED_RECEIVING_20261116_R1.md).
+
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: Understand → Specify → Execute → Falsify → Independently receive → Integrate. `MCR: LITE` is the low-ceremony default; `MCR: REQUIRED` preserves full MCR-C for expressly full-contract or previously frozen work. Do not dilute real science/source/actor rights, falsifiers, independent receiving or terminal scope. This overlay does not edit the frozen shared HQ rule tags below.
 
 

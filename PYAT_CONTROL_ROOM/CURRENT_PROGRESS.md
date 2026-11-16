@@ -1,3 +1,59 @@
+# PROGRAMMA PYAT — K3 PROTECTED SCOPED DOCUMENTARY RECEIVING (REVISION 9, 2026-11-16)
+
+**RECEIVED IN ONE PROTECTED PRE-MAIN CAS, documentary S0/S1 only; no new scientific/source/actor/native authority and no K4.** Source branch [#1130](https://github.com/maidiu/rawlsing/pull/1130) corrected at `f27dd0fa90c1c20960b90937878ba320335ff9f6` from protected parent `6a5c12f04323d74001f9632063ec907f4fc4468e`. Separate [independent source-static court #1139](https://github.com/maidiu/rawlsing/pull/1139) `9e9a0e0431e9e03b6a311376ccdd39aa112b9b88` independently accepted the 29/26/14 material mapping at S1 but found one exact old rev9 currentness defect D01, now repaired and directly rechecked by this user-authorized documentary receiver; the D01 repair was **not separately independently reviewed**. The receiving commit is this file's live protected branch HEAD, to be resolved from Git rather than embedded self-referentially.
+
+**K3 substantive terminal state:** K1 R4 #1126 `fda48f98ea519016a8815fea59ee9b46414b1559` independently same-head K2A #1128 `d2999a90ce17400ec61d93215788dca097d8803e` and K2B #1127 `096a653c0551368818c570b6d1d8b0f6be2a44bf`. K3 A P0/P1/P2 #1131/#1135/#1137 `f1e52596e0803e4a32cb48b5f245324c292086d6`, `9f18aee7e010c321139d03d038fb55a416a7849f`, `52b9b75de18ecb45d32fd29816021beb327f6a06`; K3 B P0/P1/P2 #1134/#1136/#1138 `c16e03815fc11f1876e851dbc7b078cd97ff4fb3`, `8bde0da79a6030ce456fba74f86bb5ca061714d6`, `7849ca601dd1447ead6c5dbf3454eeb2c64d28be`. All K3 A/B author rounds terminal, **no P3 or historical re-census**.
+
+**Exact receiving:** 29 inherited family paths, 26 R15 proposed PYAT-PC requirements each retaining original modality, negative, falsifier and competent owner (**26 NOT_ADOPTED, zero new requirements**), and all 14 original #817 P4R proof obligations with unchanged missing edge and owner. The 221 literal/67 typed-sentinel K1 mixed identities are not proof of 288 functions. All 14 obligations remain appropriately HELD until their existing competent owners' real evidence. Sourcefree S2-C/D exists at earlier independently accepted heads only; no false full native/first-reader/cost or code-stack G5 transfer.
+
+**D01 operational truth repair:** the protected pair no longer says K3 A/B dispatch-ready, and RRIF 2026-11-01 publication/readcut/HQ/receiving information is retained under `historical_rrif_receiving_snapshot` rather than misrepresented as current custody. JSON `publication_branch` now points at protected PRE-MAIN; `canonical_read_cut` is the verified receiving **parent**, not a claim about future branch HEAD. This pair and the canonical PYAT/shared PROGRAMMA front doors link the single permanent source-graded K3 receipt.
+
+**CI qualification, no false green:** GitHub canonical-tree PR checks for #1130 and #1139 were **FAIL**, including one failed rerun of #1130. Logs were inaccessible through the available GitHub connection. Protected parent had an earlier PASS. The receiving operation does **not** convert those failures into a passing CI or attest that the runner failure was environmental. Scope is S1 documentary with direct keyed source checks and transparent technical CI debt; independent Python/native tests, 100k original survey performance and production qualification were NOT RUN in this receiver. No code implementation is received by this K3 document-only transaction. The governed FIABC historic 144 PASS/3 FAIL remains RED.
+
+**Next scientific/engineering work, without further K3 bureaucracy:** ANVIL #1108 can now use these conditional historical-function conclusions as constraints to interrogate physical designs, without prematurely selecting an architecture. Existing #1097/#960/#997/#1006/#998 source-authorized P0 stays generic SAV/DTA → qualified sealed durable 13-family C11 → fresh-process distinct 1/10/100 under 6 GiB and actual selected first reader. Original source, F6/F7/N9, world, Sorok consent/actor and scientific authorities remain distinct. No K4 authorized here.
+
+**Exact receipt:** [K3 protected documentary receiving](PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_PROTECTED_RECEIVING_20261116_R1.md).
+
+---
+
+## Frozen historical K3 dispatch source-cuts (below): SUPERSEDED AS LIVE STATUS
+
+The following older November 16 sections are preserved for traceability only. Their phrases “P2 not executed,” “P1 issued,” “P0 not published” and “dispatch ready” describe earlier moments and are **not** current K3 tasks. Read the terminal record and current JSON at top.
+
+---
+
+# K3 CONDITIONAL P2 AND INDEPENDENT REVIEW HANDOFF READY — 2026-11-16 (CANDIDATE ONLY)
+
+Two optional P2 commissions are PREPUBLISHED, not executed: [A answers B's P1](https://github.com/maidiu/rawlsing/pull/1131#issuecomment-6930278488) and [B answers A's P1](https://github.com/maidiu/rawlsing/pull/1134#issuecomment-6930280460). P2 is WAIVED if the opposing P1 has no decision-changing objection. Both P1 PRs/HEADs must exist and freeze before any response. A [separate reviewer commission](https://github.com/maidiu/rawlsing/issues/1112#issuecomment-6930306257) is prepublished and begins only after P1 and any needed P2; direct GitHub PR receipts, no manual HQ intermediate relay. All source/native/science/actor rights and protected CAS still held. Production #1097/#960 first.
+
+---
+
+# PYAT K3 P0 FROZEN / P1 ISSUED — 2026-11-16 (CANDIDATE ONLY; NOT PROTECTED)
+
+Both independent documentary Browser author P0s are now immutable/read back: [K3-A PR #1131](https://github.com/maidiu/rawlsing/pull/1131) `f1e52596e0803e4a32cb48b5f245324c292086d6` (29 historical families, 26 proposals, 10 bounded counterexamples) and [K3-B PR #1134](https://github.com/maidiu/rawlsing/pull/1134) `c16e03815fc11f1876e851dbc7b078cd97ff4fb3` (29+26 mapped, 20 first-consumer/cost edges). Neither is independent K3 reviewer accreditation or a current/source/native test. The initial blind-source requirement is now fulfilled. B's assignment-prompt-only exposure is not substantive A findings exposure.
+
+K3 P1 exact-source cross-prosecution has been issued to the EXISTING author PRs: [K3-A reads B and challenges source/meaning loss](https://github.com/maidiu/rawlsing/pull/1131#issuecomment-6929372775); [K3-B reads A and challenges supposed missing current implementations](https://github.com/maidiu/rawlsing/pull/1134#issuecomment-6929374606). **ISSUED_NOT_COMPLETED**: authors use new isolated P1 branches preserving P0 HEADs. Each returns at most 5–7 decision-changing challenges or a documented no-objection finding. P2 only if actual material contested issues remain; one distinct independent K3 reviewer, then acting PYAT HQ applies five adopted tests to 26 **NOT_ADOPTED** prospective IDs. No build automatically authorized.
+
+**Live operating priority unchanged:** #1097/#960/#1006 existing source-authorized general SAV/DTA → persistently sealed complete 13-family C11 → cold 1/10/100 distinct correct operations under 6GiB → one meaningful joined #998 first scientific consumer. Historical source-grade K1/K2 accepted only at S1; current native original35 rights/actor/world and full physical economy HELD. **Candidate rev9 paired receiving remains DRAFT/UNMERGED; protected rev8 stays controlling, independent custody/CAS pending.**
+
+---
+
+# PYAT HQ K3 BROWSER EXECUTION RECOVERY — 2026-11-16 (REV9 CANDIDATE; NOT PROTECTED)
+
+Correction to user-appointed HQ K3 dispatch: Browser is the intended S0–S1 author host. K3-A's four source-static files are PREPARED_BUT_UNPUBLISHED; preserve and publish, no historical rerun. K3-B read K3-A **PROMPT ONLY**, not substantive findings; it may continue its original Browser investigation, publish its distinct current-first P0 and explicitly disclose the prompt view. External worker host/budget attestation and CLI worktrees are NOT preconditions for isolated GitHub documentary authoring. Only actual cross-reading of opponent's substantive return before P0 can raise independence conflict; separate independent reviewer/actual runtime/rights/protected CAS still demanded at their applicable scope. Governing in-place correction: [#1112](https://github.com/maidiu/rawlsing/issues/1112). No A/B P0 currently frozen, no K3 owner acceptance/K4, source/native/science/actor proof held. Existing #1097/#960 P0 engineering is FIRST. This remains a **proposed** paired rev9 branch, not protected.
+
+---
+
+# PYAT HQ 2026-11-16 accession + K3 dual P0 DISPATCH CANDIDATE (NOT PROTECTED)
+
+User appoints acting PYAT HQ with duty to abide by the HQ OATH; no science/source/actor/protected custody implied. Full accession: PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/VMESTYE_K3_HQ_ACCESSION_20261116_R1/00_HQ_ACCESSION_AND_CURRENTNESS_HOLD.md on this candidate branch.
+
+At exact R4 fda48f98ea519016a8815fea59ee9b46414b1559 K2A d2999a90ce17400ec61d93215788dca097d8803e and K2B 096a653c0551368818c570b6d1d8b0f6be2a44bf ACCEPT only documentary S1; 29 families/26 proposed NOT_ADOPTED, source-native/current parity still HELD. K3-A/B #1112 prompts prepared, NOT ACTUALLY LAUNCHED. Existing #1097/#960 P0 engine priority and owner grants unchanged.
+
+Old rev8 CAS4 protected history below is authoritative until an independent review and authorized protected receiving of this paired rev9 candidate. No new K4, BUILD, selected native/world/actor grant, or production green.
+
+---
+
 # PROGRAMMA PYAT CAS4 — PRE-553 UNIVERSAL35 DOCUMENTARY RECOVERY RECEIVED — 2026-11-06
 
 **Protected factual receiving:** [PR #709](https://github.com/maidiu/rawlsing/pull/709) merged the independently accepted universal35 recovery and currentness overlays from `6c243ffee042187092fead1e7a25f0f838578b9e`, with a receiving-only two-line canonical front-door status marker at `f4dc51fbd02dace3a893adc5397d5aa42adbff03`. PRE-MAIN moved from CAS3 `4df35cba8a254e50622d4cb3059625c82e0cb74b` to **`728b3b8aed7609abbe1f9245ccd307484a604265`**. Independent nonauthor receipt: `48c87186cc3ba873109f32edce10e16de220405e` **ACCEPT_SCOPED_DOCUMENTARY** at the unchanged dossier cut. Old draft [#705](https://github.com/maidiu/rawlsing/pull/705) is an immutable historical parent and must not be merged over CAS4.

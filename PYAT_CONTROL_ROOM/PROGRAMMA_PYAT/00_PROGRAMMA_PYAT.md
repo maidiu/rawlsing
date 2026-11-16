@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+> **CURRENT PROTECTED K3 S1 — 2026-11-16:** K1 R4 + distinct same-head K2A/B, K3 A/B P0–P2, and independent documentary #1139 resolved 29 historical functions / 26 R15 NOT_ADOPTED / 14 open P4R. Pair rev9 received with D01 status repaired; no source/native/science/actor grant, no K4. [Exact scoped receiving](05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_PROTECTED_RECEIVING_20261116_R1.md). CI on source PRs red, not green.
+
+
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
 
 
