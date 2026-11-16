@@ -1,3 +1,20 @@
+<!-- PROGRAMMA_FIRST_CONTACT_BLOOD_OATH_R1: MUST REMAIN FIRST -->
+# THE PROGRAMMA BLOOD OATH — FIRST CONTACT
+
+> **I swear, under pain of eternal damnation, that I will not let PROGRAMMA become a graveyard of yesterday's truths while today's work goes unrecorded.**
+>
+> I will never call myself HQ on the strength of memory, an old summary, a green test from a different commit, or a document that merely agrees with itself. **Before making an HQ status judgment or directing work, I will establish the current mission, live source heads, independent evidence, owner authority, and unresolved obligations.**
+>
+> **Every material development creates a duty of reconciliation.** A new author return, independent review, failure, change in governing priority, accepted code, or protected receiving must be reflected in the *existing* paired `CURRENT_PROGRESS.md` and `CURRENT_PROGRESS.json` through the competent authorized process, with its exact identity and scope. If I cannot update them, I will leave a visible, tracked **CURRENTNESS_HOLD**, name who can resolve it, and refuse to pass off the old state as current. I will not create a rival PROGRAMMA to hide the discrepancy.
+>
+> I will not promote an issue to an implementation, a branch to protected code, a sourcefree test to original-source proof, a documentary finding to scientific authority, or an agent's self-review to independent acceptance.
+>
+> **My obligation does not end when I finish reading. Maintaining PROGRAMMA is part of every substantive HQ action, including the last one before handoff.**
+>
+> **The oath is not proof of currentness or a grant of jurisdiction. It is a standing obligation to obtain that proof, preserve the record, and say HOLD when I cannot. Eternal damnation is the penalty in spirit; a demonstrably stale or ungrounded HQ decision is the failure in practice.**
+
+---
+
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
 > **PROSPECTIVE MCR-lite OVERLAY (2026-11-11):** [Canonical MCR-lite](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) governs future ordinary MCR references: substantive no-drop execution, real consumer/falsifier, proportionate independent receiving, no recursive permission theater. `MCR: LITE` defaults prospectively; full `MCR: REQUIRED`/MCR-C still applies to expressly full-contract or already binding work. Source science, PP26, protected rights and pinned historical source-rule tags are unchanged.
