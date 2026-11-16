@@ -1,5 +1,8 @@
 # ZL15 R11 — CONTROLLING HOSTILE-REPAIRED AUTHOR RETURN
 
+**R11.1 CURRENT CONTROLLING CROSS-REFERENCE REPAIR:** The current R11 normalized proposals now contain **24** exact source-evidence records (17 historical/duel roots, 2 latest T1 R12/T2 R7 author roots, and 5 precise source documents). All **24 material paths have valid evidence IDs**, all **21 unadopted prospective requirements reference real path IDs**, and all **16 earlier informal source tokens** are kept in an explicit source translation ledger. The newest author-executed source audit reports **15 positive + 12 hostile in-memory mutation checks = 27/27 expected PASS/REJECT**. These replace earlier R11 counts of 19/22; none authorizes science/issuer/actor, actual current native, independent acceptance, or canonical DATA.
+
+
 **Disposition:** `R11_S0_S1_REPAIRS_PUBLISHED__R10_HOSTILE_REVIEW_REVISE_EXACT_DEFECT_REPAIRED__CANONICAL_ADMISSION_HOLD`. This is an isolated updated candidate on PR #1086, not a new canonical head or independent receiving. Previous R9/R10 versions and all A/B P0–P2 source evidence remain immutable.
 
 **What was fixed after hostile review:** 24 source-invalid or premature normalized proposals quarantined in `R11_HOSTILE_REVIEW/R11_QUARANTINED_INVALID_PROPOSALS.tsv` (2 invented/unqualified operations, 2 held edges, 2 speculative dependent relations, 5 synthetic authority applications, 13 nonexistent decision events). Real source-body pins for V550J F18 `build_v550j_prepared_substrate.py#5226fef2:L255-409` and F19 `ddm_v550j_joint_patterns.py#644aab23:L3028-3341` verified. F26 old query-signature cache separated from V550 country prefetch; LMX043 explicitly inherited obligation only, not executable.

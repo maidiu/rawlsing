@@ -1,5 +1,8 @@
 # R11 — controlling reverse source navigation
 
+**R11.1 CURRENT REVERSE-FK RULE:** Each material path's `evidence_ids` now resolves to one of **24 exact candidate source-evidence IDs**; each of the 21 prospective PYAT conservation rows' `inherited_path_ids` resolves to one of the **24 real material path IDs**. The sixteen original noncanonical source tokens are retained [here](R11_HOSTILE_REVIEW/R11_EXTERNAL_SOURCE_TOKENS_TO_TYPED_EVIDENCE.tsv). Never follow a bare number as a relation edge or call an external source blob an issued authority.
+
+
 **Claimed current result → actual current consumer/effect (or OPEN_PROOF_GAP) → selected issuer and source → historical input/respondent risk set and science → exact old operation/negative → R8 source finding and its DVA/TRII/CHETIRI/LONG_MEMORY stage witness → historic and current owner falsifier.** A real source witness is not automatically a true same-function transformation.
 
 1. Start with [24 corrected material paths](MATERIAL_INTEGRATED_PATHS.tsv); their `evidence_ids`, `competent_owner` and `current_successor_and_gap` columns are repaired; old R9 columns were shifted and contained literal undefined.

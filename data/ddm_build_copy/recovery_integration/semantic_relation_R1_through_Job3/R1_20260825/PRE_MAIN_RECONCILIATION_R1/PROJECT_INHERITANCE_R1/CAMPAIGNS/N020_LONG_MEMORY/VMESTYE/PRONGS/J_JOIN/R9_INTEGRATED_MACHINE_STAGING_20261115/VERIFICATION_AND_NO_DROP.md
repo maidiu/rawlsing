@@ -1,5 +1,8 @@
 # R11 — controlling source-grade integrity and repair result
 
+**R11.1 FINAL CURRENT TEST CUT:** After normalization of six path evidence lists, five additional exact source-documentary records, and all 21 requirements' path keys, the current candidate carries **24 source evidence rows**. All material path→evidence and proposed requirement→material path foreign keys were checked. The latest **15 actual positive S0–S1 source-table checks plus 12 adverse in-memory mutations = 27/27 expected PASS/REJECT**. [Exact tests](R11_HOSTILE_REVIEW/R11_EXECUTED_SOURCE_AUDIT_AND_NEGATIVE_CONTROLS.tsv). Prior 19/22 statements below are archived older candidate results and not current. This is not official canonical typed-schema approval, independent acceptance, original/native execution, or scientific authority.
+
+
 Previous R9 verification below is **archived as an accurate *R9* snapshot only where its immutable blobs and denominators are concerned**. It was **wrong** to assert R9 proposed authority applications, decision-event rows, 10 verified executable operations or 23 correctly sourced path owners as presently admissible.
 
 **Current verified R11 staging:** 52 latest T1 R12 source IDs correspond 52 T2 R7 map IDs; 129 exact T1 frozen source finding matches yield 645 historical stage records and 260 52×five-stage summaries. Original R8 stage-court blob `d46c003d625ecdee2867519f233f5b7066cd60b8` (4,420), R8 anti-join `1833bd435cf4a126a0bfd75de847be0995dc9ccf` (2,607) and original typed conflict `c27cd5d5db2291fbe81646e27b74f186396ce3e8` (1,536) preserved. No stage witness identity is a semantic equivalence or actual native proof.

@@ -1,23 +1,28 @@
 test_id	test_type	target	falsification_or_integrity_condition	result	execution_scope
-T01	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	latest T1/T2 52 exact identities and 260 52x5 stage rows	PASS	Authenticated GitHub current source tables; not official validator/native test
-T02	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	129 exact T1 witness source-finding pairs and 645 stage source receipts	PASS	Authenticated GitHub current source tables; not official validator/native test
-T03	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	24 distinct, owned knowledge paths and explicit HELD ceilings	PASS	Authenticated GitHub current source tables; not official validator/native test
-T04	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	eight remaining proposed operation code locators have no fictitious paths	PASS	Authenticated GitHub current source tables; not official validator/native test
-T05	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	all eight producer/consumer FK pairs valid	PASS	Authenticated GitHub current source tables; not official validator/native test
-T06	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	no synthetic authority application candidates	PASS	Authenticated GitHub current source tables; not official validator/native test
-T07	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	no synthetic decision-event candidates	PASS	Authenticated GitHub current source tables; not official validator/native test
-T08	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	all eight operation evidence refs resolve	PASS	Authenticated GitHub current source tables; not official validator/native test
-T09	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	F26 query-signature cache distinct from V550 country prefetch	PASS	Authenticated GitHub current source tables; not official validator/native test
-T10	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	24 quarantined rows retained; 9 proposed relation rows and no broken operation refs	PASS	Authenticated GitHub current source tables; not official validator/native test
-T11	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	21 unadopted requirements and finite 17-owner queue	PASS	Authenticated GitHub current source tables; not official validator/native test
-T12	S0_S1_READBACK_STRUCTURAL	ACTUAL_CANDIDATE	latest author evidence in 19 evidence rows	PASS	Authenticated GitHub current source tables; not official validator/native test
-N01	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	delete one original transform identity	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N02	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	remove one accepted stage source receipt	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N03	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	forge literal undefined current-path owner	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N04	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	duplicate material path identity	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N05	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	add nonexistent selected authority application	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N06	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	add nonexistent status transition	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N07	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	restore previous fictitious executable locator	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N08	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	link producer to nonexistent evidence ID	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N09	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	link consumer to quarantined operation	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
-N10	HOSTILE_IN_MEMORY_NEGATIVE	DELiberately_MUTATED_COPY	conflate F26 signature cache with V550 country prep	REJECTED_AS_EXPECTED	Pure JS in-memory mutation against actual GitHub-read source rows; no repository mutation/native test
+T01	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	52 source contracts each have five stage summaries	PASS	Executed in source-table JavaScript audit, no native
+T02	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	129 contract/finding pairs and 645 R8 stage source rows	PASS	Executed in source-table JavaScript audit, no native
+T03	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	24 owned and held knowledge paths	PASS	Executed in source-table JavaScript audit, no native
+T04	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	eight source-code-located operation proposals	PASS	Executed in source-table JavaScript audit, no native
+T05	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	eight source-operation to held-consumer links resolve	PASS	Executed in source-table JavaScript audit, no native
+T06	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	zero invented authority applications	PASS	Executed in source-table JavaScript audit, no native
+T07	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	zero invented decision events	PASS	Executed in source-table JavaScript audit, no native
+T08	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	all proposed operations have qualified evidence ID	PASS	Executed in source-table JavaScript audit, no native
+T09	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	F26 query cache not conflated with V550 country prefetch	PASS	Executed in source-table JavaScript audit, no native
+T10	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	24 original invalid rows quarantined and remaining nine relations valid	PASS	Executed in source-table JavaScript audit, no native
+T11	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	21 unadopted requirements and 17 finite owner actions	PASS	Executed in source-table JavaScript audit, no native
+T12	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	24 source-evidence records including 7 latest author/source documents	PASS	Executed in source-table JavaScript audit, no native
+T13	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	all 24 path evidence reference IDs exist	PASS	Executed in source-table JavaScript audit, no native
+T14	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	all 21 requirement path reference IDs exist	PASS	Executed in source-table JavaScript audit, no native
+T15	POSITIVE_S0_S1	CURRENT_AUTHENTICATED_GITHUB_ROWS	16 informal original source tokens preserved in typed evidence ledger	PASS	Executed in source-table JavaScript audit, no native
+N01	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	erase one of the 52 source contract IDs	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N02	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	delete one of 645 R8 source stage witnesses	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N03	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	forge literal undefined path owner	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N04	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	duplicate a material path ID	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N05	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	insert unissued authority application	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N06	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	insert nonexistent transition event	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N07	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	restore invalid source executable path	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N08	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	point operation to non-existing evidence ID	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N09	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	point consumer to quarantined operation	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N10	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	conflate F26 query-signature cache with V550 country prefetch	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N11	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	point material path to unknown evidence ID	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native
+N12	ADVERSARIAL_IN_MEMORY	DELIBERATELY_CORRUPTED_COPY	point future requirement to bare shorthand path number	REJECTED_AS_EXPECTED	Executed mutation and source-table validator; not original or modern native

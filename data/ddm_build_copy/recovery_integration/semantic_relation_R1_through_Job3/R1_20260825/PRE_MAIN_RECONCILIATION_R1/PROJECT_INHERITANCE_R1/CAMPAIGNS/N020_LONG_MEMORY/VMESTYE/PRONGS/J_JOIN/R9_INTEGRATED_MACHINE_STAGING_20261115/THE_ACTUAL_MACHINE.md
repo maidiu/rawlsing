@@ -1,5 +1,8 @@
 # THE ACTUAL MACHINE — R11 controlling corrections to the historical/recovery-first explanation
 
+**R11.1 CURRENT CROSS-REFERENCE LAW:** There are **24 normalized documentary source-evidence rows** linked from 24 material paths—not the earlier 19. Twenty-one not-adopted future requirements now use complete literal path IDs. Sixteen original freeform source labels were not silently thrown out; see the R11 source-token translation ledger. This verifies cross-reference navigation and neither scientific source-selected performance nor a current non-test reader. The older source-grade count in the archived R9/R10 narrative is not controlling.
+
+
 The detailed R9/R10 narrative below remains useful historical analysis, but it was **not a valid complete canonical machine**. The R11 hostile review proved concrete source, graph and metadata defects; the old R9 counts and asserted candidate authority/decision rows below are **superseded** by this controlling R11 section. Read [the R11 hostile report](R11_HOSTILE_REVIEW/R11_HOSTILE_REVIEW_AND_REPAIR.md) before adopting anything.
 
 ### How computation, science and composition interlock (without equating a cache with an estimator)
