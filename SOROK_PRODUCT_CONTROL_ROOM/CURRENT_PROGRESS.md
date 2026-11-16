@@ -1,3 +1,16 @@
+<!-- SOROK_CURRENTNESS_LIVE_START -->
+## SOROK operational currentness — live intake (R1)
+**Checked:** 2026-11-16T03:12:43+00:00 | **Mode:** LIVE | **Status:** PASS
+**Static frozen snapshot:** validated below; exact static state SHA-256 `82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e`. Static history is not a live event feed.
+**Protected baseline:** `integration/pre-main-reconciliation-r1` @ `6a5c12f04323d74001f9632063ec907f4fc4468e`; protected rev 8.
+**Static scoped accepted, unmerged:** B05 (#1089), C04 (#1062), C05 (#1091).
+**Freshness:** PASS is current only within 24h of Checked; run --check to refresh.
+**Live accepted events:** none reconciled.
+**CURRENTNESS_HOLD:** none.
+**Unverified live streams:** ISSUE_COMMENTS; PR_REVIEW_COMMENTS; OWNER_DECISIONS_NOT_SUBMITTED_AS_RECEIPTS; LOCAL_RUNNER_PROCESS_TABLE; NEW_PULL_REQUEST_REFS_OUTSIDE_DECLARED_EVENT_PREFIXES
+**Next owner action:** Reconcile any new relevant ref with an explicit receipt; then decide protected receiving; issue/review comments still require live receipts.
+<!-- SOROK_CURRENTNESS_LIVE_END -->
+
 # Sorok current progress revision39 — P4 sourcefree first consumer protected received (2026-11-07)
 
 <!-- SOROK_OPERATIONAL_CURRENT_START -->

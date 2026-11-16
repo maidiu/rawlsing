@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SOROK scoped operational-currentness checker; NOT a live event-intake agent.
+"""SOROK frozen static currentness checker; live ref/receipt intake is CURRENTNESS_LIVE_R1.
 
 This validator deliberately freezes a November 15, 2026 candidate evidence cut.
 Changing an accepted fact requires an independently grounded new evidence revision,
@@ -403,8 +403,8 @@ def main():
         return 1
     if args.status:
         print(render(s))
-        print("SOROK_CURRENTNESS_NOT_LIVE: external PR/runner intake not implemented")
-    print("SOROK_CURRENTNESS_PASS: frozen 27 source-backed packets, 7 exact protected merges, 3 scoped G5; NOT adopted/live")
+        print("SOROK_CURRENTNESS_STATIC_BLOCK: live ref/receipt reconciliation is in the paired live block above; run CURRENTNESS_LIVE_R1/currentness_live_r1.py --check/--status. Issue/review comments still require explicit receipts.")
+    print("SOROK_CURRENTNESS_STATIC_PASS: frozen 27 source-backed packets, 7 exact protected merges, 3 scoped G5; live refs/receipts are in the paired live intake; NOT adopted")
     return 0
 
 if __name__ == "__main__":

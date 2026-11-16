@@ -1,4 +1,104 @@
 {
+  "operational_currentness_live_r1": {
+    "schema": "SOROK_OPERATIONAL_CURRENTNESS_LIVE@1",
+    "as_of": "2026-11-15",
+    "adoption": "PENDING_INDEPENDENT_RECEIVING",
+    "static_key": "operational_currentness_r1",
+    "static_snapshot_sha256": "82dbc9f814cdaeb6d76e970a73a80c67ad76bc09b615d9c407b705d695277b7e",
+    "protected": {
+      "branch": "integration/pre-main-reconciliation-r1",
+      "head_at_read": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+      "progress_revision": 8
+    },
+    "watch": {
+      "protected_branch": "integration/pre-main-reconciliation-r1",
+      "pr_refs": [
+        "refs/pull/1089/head",
+        "refs/pull/1062/head",
+        "refs/pull/1091/head",
+        "refs/pull/993/head",
+        "refs/pull/1066/head"
+      ],
+      "branch_prefixes": [
+        "codex/sorok-currentness-event-",
+        "review/sorok-currentness-"
+      ],
+      "note": "Exact pinned PR refs plus declared currentness event/review branch prefixes; unrelated SOROK/PYAT/VOSKRES/VMESTYE refs do not block."
+    },
+    "baseline_refs": {
+      "refs/heads/integration/pre-main-reconciliation-r1": {
+        "sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+        "state": "PROTECTED_HISTORICAL",
+        "grade": "PROTECTED_REV8",
+        "note": "protected baseline only"
+      },
+      "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1": {
+        "sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+        "state": "CURRENTNESS_SOURCE_SNAPSHOT",
+        "grade": "FROZEN_CURRENTNESS_CANDIDATE",
+        "note": "static snapshot source branch; moves require refresh"
+      },
+      "refs/pull/1089/head": {
+        "sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+        "state": "STATIC_PINNED_PR_HEAD",
+        "grade": "STATIC_SNAPSHOT_PIN",
+        "note": "PR #1089 head pinned by frozen SOROK snapshot"
+      },
+      "refs/pull/1062/head": {
+        "sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+        "state": "STATIC_PINNED_PR_HEAD",
+        "grade": "STATIC_SNAPSHOT_PIN",
+        "note": "PR #1062 head pinned by frozen SOROK snapshot"
+      },
+      "refs/pull/1091/head": {
+        "sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+        "state": "STATIC_PINNED_PR_HEAD",
+        "grade": "STATIC_SNAPSHOT_PIN",
+        "note": "PR #1091 head pinned by frozen SOROK snapshot"
+      },
+      "refs/pull/993/head": {
+        "sha": "385b9cb5a5a448d90d2868d7018215d7d556ba75",
+        "state": "STATIC_PINNED_PR_HEAD",
+        "grade": "STATIC_SNAPSHOT_PIN",
+        "note": "PR #993 head pinned by frozen SOROK snapshot"
+      },
+      "refs/pull/1066/head": {
+        "sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+        "state": "STATIC_PINNED_PR_HEAD",
+        "grade": "STATIC_SNAPSHOT_PIN",
+        "note": "PR #1066 head pinned by frozen SOROK snapshot"
+      }
+    },
+    "accepted_events": [],
+    "history": [],
+    "freshness_max_age_hours": 24,
+    "unverified_streams": [
+      "ISSUE_COMMENTS",
+      "PR_REVIEW_COMMENTS",
+      "OWNER_DECISIONS_NOT_SUBMITTED_AS_RECEIPTS",
+      "LOCAL_RUNNER_PROCESS_TABLE",
+      "NEW_PULL_REQUEST_REFS_OUTSIDE_DECLARED_EVENT_PREFIXES"
+    ],
+    "next_owner_action": "Reconcile any new relevant ref with an explicit receipt; then decide protected receiving; issue/review comments still require live receipts.",
+    "historical_root_sha256": "4ffecd531417e817b0581f71babbd25a8a733809d7098c4338a85949ee41ea22",
+    "historical_md_sha256": "4d1d3c0c6ed224d3bb2d555bf41adc78cad48d58d382fece72bc338cbb42e7c5",
+    "historical_md_length": 141549,
+    "last_check": {
+      "mode": "LIVE",
+      "status": "PASS",
+      "at": "2026-11-16T03:12:43+00:00",
+      "observed": {
+        "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+        "refs/heads/integration/pre-main-reconciliation-r1": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+        "refs/pull/1062/head": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+        "refs/pull/1066/head": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+        "refs/pull/1089/head": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+        "refs/pull/1091/head": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+        "refs/pull/993/head": "385b9cb5a5a448d90d2868d7018215d7d556ba75"
+      },
+      "holds": []
+    }
+  },
   "operational_currentness_r1": {
     "schema": "SOROK_OPERATIONAL_CURRENTNESS_R1",
     "as_of": "2026-11-15T19:45:00-05:00",
@@ -2216,8 +2316,7 @@
       "p4_p5_passed": 8,
       "received_source_pins_verified": 424
     }
-  }
-,
+  },
   "p6_candidate_20261107": {
     "branch": "agent/programma-sorok-p6-one-living-house-ahead-of-attention-20261107-r1",
     "grade": "SOURCEFREE_TEST_ONLY",
@@ -2269,8 +2368,7 @@
     "distinct_external_reviewer": false,
     "native_science_human_production_grant": false,
     "revision_note": "paired CURRENT_PROGRESS stays R39 because protected canonical checker explicitly permits revisions 37-39 only"
-  }
-,
+  },
   "p6_protected_receiving_20261108": {
     "status": "USER_DIRECTED_PROTECTED_SOURCEFREE_ENGINEERING_MERGED__INDEPENDENT_FINAL_HEAD_S2_NOT_RERUN",
     "source_pr": 779,
@@ -2292,8 +2390,7 @@
     "formal_distinct_final_head_s2_review": false,
     "native_science_human_production_grant": false,
     "mechanism_i_t4_unchanged_and_unmerged": true
-  }
-,
+  },
   "nadia_sensory_access_candidate_20261109": {
     "status": "CANDIDATE_REQUIREMENT_BANKED__NOT_IMPLEMENTED__NOT_DISPATCHED",
     "as_of": "2026-11-09",

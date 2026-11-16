@@ -1,0 +1,76 @@
+{
+  "as_of": "2026-11-15",
+  "protected": {
+    "branch": "integration/pre-main-reconciliation-r1",
+    "head_at_read": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "progress_revision": 8
+  },
+  "watch": {
+    "protected_branch": "integration/pre-main-reconciliation-r1",
+    "pr_refs": [
+      "refs/pull/1089/head",
+      "refs/pull/1062/head",
+      "refs/pull/1091/head",
+      "refs/pull/993/head",
+      "refs/pull/1066/head"
+    ],
+    "branch_prefixes": [
+      "codex/sorok-currentness-event-",
+      "review/sorok-currentness-"
+    ],
+    "note": "Exact pinned PR refs plus declared currentness event/review branch prefixes; unrelated SOROK/PYAT/VOSKRES/VMESTYE refs do not block."
+  },
+  "baseline_refs": {
+    "refs/heads/integration/pre-main-reconciliation-r1": {
+      "sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+      "state": "PROTECTED_HISTORICAL",
+      "grade": "PROTECTED_REV8",
+      "note": "protected baseline only"
+    },
+    "refs/heads/codex/sorok-operational-currentness-reconciliation-20261115-r1": {
+      "sha": "75581fa9e2c8576d1ca9a7a9a18759ea840d82e8",
+      "state": "CURRENTNESS_SOURCE_SNAPSHOT",
+      "grade": "FROZEN_CURRENTNESS_CANDIDATE",
+      "note": "static snapshot source branch; moves require refresh"
+    },
+    "refs/pull/1089/head": {
+      "sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+      "state": "STATIC_PINNED_PR_HEAD",
+      "grade": "STATIC_SNAPSHOT_PIN",
+      "note": "PR #1089 head pinned by frozen SOROK snapshot"
+    },
+    "refs/pull/1062/head": {
+      "sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+      "state": "STATIC_PINNED_PR_HEAD",
+      "grade": "STATIC_SNAPSHOT_PIN",
+      "note": "PR #1062 head pinned by frozen SOROK snapshot"
+    },
+    "refs/pull/1091/head": {
+      "sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+      "state": "STATIC_PINNED_PR_HEAD",
+      "grade": "STATIC_SNAPSHOT_PIN",
+      "note": "PR #1091 head pinned by frozen SOROK snapshot"
+    },
+    "refs/pull/993/head": {
+      "sha": "385b9cb5a5a448d90d2868d7018215d7d556ba75",
+      "state": "STATIC_PINNED_PR_HEAD",
+      "grade": "STATIC_SNAPSHOT_PIN",
+      "note": "PR #993 head pinned by frozen SOROK snapshot"
+    },
+    "refs/pull/1066/head": {
+      "sha": "938b5b8d6aaf42b3788d851d92e77e9151c98cce",
+      "state": "STATIC_PINNED_PR_HEAD",
+      "grade": "STATIC_SNAPSHOT_PIN",
+      "note": "PR #1066 head pinned by frozen SOROK snapshot"
+    }
+  },
+  "unverified_streams": [
+    "ISSUE_COMMENTS",
+    "PR_REVIEW_COMMENTS",
+    "OWNER_DECISIONS_NOT_SUBMITTED_AS_RECEIPTS",
+    "LOCAL_RUNNER_PROCESS_TABLE",
+    "NEW_PULL_REQUEST_REFS_OUTSIDE_DECLARED_EVENT_PREFIXES"
+  ],
+  "next_owner_action": "Reconcile any new relevant ref with an explicit receipt; then decide protected receiving; issue/review comments still require live receipts.",
+  "freshness_max_age_hours": 24
+}

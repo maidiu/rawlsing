@@ -1,0 +1,33 @@
+name: SOROK currentness live intake R1
+
+on:
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/**'
+      - '.github/workflows/sorok-currentness-live-r1.yml'
+  push:
+    branches:
+      - integration/pre-main-reconciliation-r1
+      - 'implementation/sorok-currentness-live-intake-*'
+
+jobs:
+  currentness:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Frozen static currentness self-test
+        run: |
+          python3 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --self-test --no-git
+      - name: Live-intake adversarial tests
+        run: |
+          python3 -m pytest -q -o addopts='' -p no:cacheprovider \
+            SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_LIVE_R1/tests
+      - name: Paired projection offline check
+        run: |
+          python3 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_LIVE_R1/currentness_live_r1.py --offline
