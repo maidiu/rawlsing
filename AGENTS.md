@@ -4,6 +4,7 @@
 
 If asked to **become, resume, act as, review for, commission for, or maintain PYAT HQ, SOROK HQ, or either PROGRAMMA**, your FIRST ACTION before any purported HQ status or directive is to open and read the full **HQ OATH** at the very beginning of the corresponding canonical front door:
 
+- SHARED/RAWLSING: `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`
 - PYAT: `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md`
 - SOROK: `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md`
 
