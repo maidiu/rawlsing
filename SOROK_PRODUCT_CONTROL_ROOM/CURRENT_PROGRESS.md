@@ -25,8 +25,8 @@
 
 <!-- SOROK_RUNTIME_CURRENT_START -->
 ## SOROK automatic currentness — runtime reconciled
-<!-- SOROK_RUNTIME_GENERATION: 48 -->
-**Generation:** 48 | **Checkpoint:** `20b7a8e387fca91486f1ec39e0d99b55c3ab72d816497ebff329e644a7b54be7` | **Updated:** 2026-11-16T05:15:16.863656+00:00
+<!-- SOROK_RUNTIME_GENERATION: 50 -->
+**Generation:** 50 | **Checkpoint:** `7e1fd6d057a4af6a3a3c2f97c976a0b6872e9a3d90ce76eaca703dfac72d3338` | **Updated:** 2026-11-16T05:48:51.470472+00:00
 **Frozen #1095 projection:** preserved as historical candidate; it is not rewritten as live intake.
 **Runtime adoption:** NO_PROTECTED_ADOPTION | **Protected CI:** PENDING_PROTECTED_CI_AND_ADOPTION
 **Authenticated GitHub checkpoint:** `3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7` (2026-11-16T03:54:06.994129+00:00)
@@ -34,7 +34,7 @@
 **Ready for scoped engineering:** NONE
 **Awaiting independent receiving:** B01, B02, B03, B04, C01, C02, C03, D01, D02, D03, E01
 **Holds and source-authority boundaries:**
-- MECHANISM_REVIEW | AUTOMATIC_CURRENTNESS_R1 | owner: separate independent nonauthor | PENDING_EXTERNAL_NONAUTHOR_REVIEW
+- REAL_MECHANISM_WORKER_RETURN | AUTOMATIC_CURRENTNESS_R1 | owner: ses_e21a481bfffefyvpxaeFaAOFvQ | RETURNED_REVIEW_PENDING
 - BROWSER_OWNERSHIP | issue_1008 | owner: user-operated Browser | A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED
 - BROWSER_OWNERSHIP | issue_1010 | owner: user-operated Browser | A_B_A_COMPLETED_G2_HELD
 - BROWSER_OWNERSHIP | issue_1012 | owner: user-operated Browser | NOT_LAUNCHED_WAITING_J1
