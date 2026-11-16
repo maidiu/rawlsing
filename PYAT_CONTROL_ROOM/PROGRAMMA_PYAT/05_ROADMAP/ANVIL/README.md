@@ -33,6 +33,7 @@ This workshop serves four duties:
 | 11 | [11 — Earlier architecture ancestry and forgotten constraints](11_PRIOR_WORK_AND_BOUNDARIES.md) | September A/B/C and November Stone/LAZARUS, original scope and limits |
 | 12 | [12 — Next workshop method and agenda](12_ANVIL_WORKSHOP_PROCEDURE.md) | Exhaustive requirements search and single-decision analytical process |
 | 13 | [13 — User's critical questions and decision boundaries](13_USER_QUESTIONS_AND_DECISION_BOUNDARIES.md) | Preserve the actual questions, objections, retractions and unresolved outcome |
+| 14 | [14 — 27 PYAT product obligations and 49 GAP titles, exact source snapshot](14_PRODUCT_SCIENCE_27_AND_GAP49_SNAPSHOT.md) | Material power/hegemony/contradiction and whole-world/person priorities preserved verbatim |
 
 ## The workshop's decisive distinctions
 
