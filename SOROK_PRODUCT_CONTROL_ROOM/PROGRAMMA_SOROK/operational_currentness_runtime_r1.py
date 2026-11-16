@@ -889,6 +889,13 @@ def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool,
     if run["completion"].get("exit_code") != 0:
         raise CurrentnessError("REVIEW_RUN_ZERO_EXIT_REQUIRED")
     binding = run["binding"].get("sorok_currentness") or {}
+    actual_session = run["job"].get("session")
+    if actual_session != receipt.get("reviewer_session"):
+        raise CurrentnessError("REVIEW_RUN_ACTUAL_SESSION_MISMATCH")
+    if run["binding"].get("session") != actual_session:
+        raise CurrentnessError("REVIEW_RUN_BINDING_SESSION_MISMATCH")
+    if actual_session == receipt.get("author_session"):
+        raise CurrentnessError("SELF_REVIEW_REFUSED")
     if binding.get("role") != "REVIEWER":
         raise CurrentnessError("REVIEW_RUN_ROLE_MISMATCH")
     if binding.get("task_id") != task_id:
@@ -896,8 +903,9 @@ def _validate_review_receipt(config: dict, receipt: dict, *, replay: bool,
     if binding.get("expected_session") and binding["expected_session"] != receipt.get(
             "reviewer_session"):
         raise CurrentnessError("REVIEW_RUN_SESSION_MISMATCH")
-    if binding.get("expected_source_commit") and binding[
-            "expected_source_commit"] != receipt.get("implementation_commit"):
+    if not binding.get("expected_source_commit"):
+        raise CurrentnessError("REVIEW_RUN_SOURCE_MISSING")
+    if binding["expected_source_commit"] != receipt.get("implementation_commit"):
         raise CurrentnessError("REVIEW_RUN_SOURCE_MISMATCH")
     artifact = _verify_return_artifact(source, run["binding"])
     if artifact["payload"].get("schema") != REVIEW_RECEIPT_SCHEMA:
@@ -991,6 +999,112 @@ def _pid_alive(pid: int) -> bool:
         return False
 
 
+LAUNCHER_TRUST_ROOT = Path.home() / ".local/share/rawlsing-controller"
+LAUNCHER_KEY_FILENAME = "launch_attestation.key"
+LAUNCHER_IDENTITY_FILENAME = "launch_attestation_identity.json"
+LAUNCHER_IDENTITY_SCHEMA = "SOROK_CONTROLLER_LAUNCHER_IDENTITY@1"
+SIGNATURE_REQUIRED_OPERATOR_PURPOSES = frozenset({
+    "TRUSTED_LAUNCH_ENROLLMENT", "STATE_MAINTENANCE", "LAUNCH_ATTESTATION",
+})
+
+
+def _launcher_key_path() -> Path:
+    return LAUNCHER_TRUST_ROOT / LAUNCHER_KEY_FILENAME
+
+
+def _launcher_identity_path() -> Path:
+    return LAUNCHER_TRUST_ROOT / LAUNCHER_IDENTITY_FILENAME
+
+
+def _launcher_key() -> bytes:
+    path = _launcher_key_path()
+    if not path.is_file():
+        raise CurrentnessError("LAUNCHER_KEY_UNAVAILABLE")
+    raw = path.read_text(encoding="utf-8").strip()
+    try:
+        key = bytes.fromhex(raw)
+    except ValueError as exc:
+        raise CurrentnessError("LAUNCHER_KEY_INVALID") from exc
+    if len(key) < 16:
+        raise CurrentnessError("LAUNCHER_KEY_INVALID")
+    return key
+
+
+def _launcher_identity() -> dict:
+    path = _launcher_identity_path()
+    if not path.is_file():
+        raise CurrentnessError("LAUNCHER_IDENTITY_UNAVAILABLE")
+    identity = read_json(path)
+    if (not isinstance(identity, dict)
+            or identity.get("schema") != LAUNCHER_IDENTITY_SCHEMA):
+        raise CurrentnessError("LAUNCHER_IDENTITY_SCHEMA")
+    if not identity.get("path") or not HASH_RE.fullmatch(
+            str(identity.get("sha256") or "")):
+        raise CurrentnessError("LAUNCHER_IDENTITY_INCOMPLETE")
+    return identity
+
+
+def _launch_spec(run_dir: Path, job: dict, binding: dict) -> dict:
+    currentness = binding.get("sorok_currentness") or {}
+    return {
+        "run_dir": str(run_dir.resolve()),
+        "job_id": job.get("job_id"),
+        "session": job.get("session"),
+        "grant_id": job.get("grant_id"),
+        "argv_sha256": command_digest(job.get("argv", [])),
+        "worktree": str(Path(binding.get("worktree", "")).resolve()),
+        "role": currentness.get("role"),
+        "task_id": currentness.get("task_id"),
+        "expected_session": currentness.get("expected_session"),
+        "expected_source_commit": currentness.get("expected_source_commit"),
+    }
+
+
+def _launcher_token(spec: dict) -> str:
+    return hmac.new(_launcher_key(), canonical(spec).encode("utf-8"),
+                    hashlib.sha256).hexdigest()
+
+
+def _launcher_proof() -> dict:
+    proof = {
+        "path": os.environ.get("SOROK_LAUNCHER_PATH"),
+        "sha256": os.environ.get("SOROK_LAUNCHER_SHA256"),
+        "token": os.environ.get("SOROK_LAUNCHER_TOKEN"),
+    }
+    if not all(proof.values()):
+        raise CurrentnessError("LAUNCHER_PROOF_REQUIRED")
+    return proof
+
+
+def _verify_launcher_proof(spec: dict, proof: dict) -> dict:
+    identity = _launcher_identity()
+    launcher_path = Path(str(proof["path"])).resolve()
+    expected_path = Path(str(identity["path"])).resolve()
+    if launcher_path != expected_path:
+        raise CurrentnessError("LAUNCHER_PATH_MISMATCH", str(launcher_path))
+    if not hmac.compare_digest(str(proof["sha256"]), str(identity["sha256"])):
+        raise CurrentnessError("LAUNCHER_HASH_MISMATCH")
+    if not launcher_path.is_file() or sha256_file(
+            launcher_path) != identity["sha256"]:
+        raise CurrentnessError("LAUNCHER_FILE_HASH_MISMATCH", str(launcher_path))
+    expected_token = _launcher_token(spec)
+    if not hmac.compare_digest(str(proof["token"]), expected_token):
+        raise CurrentnessError("LAUNCHER_TOKEN_MISMATCH")
+    return {
+        "launcher_path": str(launcher_path),
+        "launcher_sha256": identity["sha256"],
+        "launcher_token_sha256": hashlib.sha256(
+            str(proof["token"]).encode("utf-8")).hexdigest(),
+    }
+
+
+def _sign_operator_authorization(authorization: dict) -> str:
+    unsigned = {key: value for key, value in authorization.items()
+                if key != "operator_signature"}
+    return hmac.new(_launcher_key(), canonical(unsigned).encode("utf-8"),
+                    hashlib.sha256).hexdigest()
+
+
 def _pid_ppid(pid: int) -> int | None:
     try:
         result = subprocess.run(
@@ -1069,6 +1183,16 @@ def _registry_add(config: dict, entry: dict) -> None:
         write_json_atomic(_registry_path(config), registry)
 
 
+def _registry_store(config: dict, entry: dict) -> None:
+    with _lock(config, True):
+        registry = _registry_load(config)
+        for key, row in list(registry["entries"].items()):
+            if row.get("run_dir") == entry.get("run_dir"):
+                del registry["entries"][key]
+        registry["entries"][entry["launch_id"]] = entry
+        write_json_atomic(_registry_path(config), registry)
+
+
 def _registry_find(config: dict, run_dir: Path) -> dict | None:
     registry = _registry_load(config)
     resolved = str(run_dir.resolve())
@@ -1099,13 +1223,27 @@ def _require_trusted_launch(config: dict, run_dir: Path, run: dict,
         raise CurrentnessError("UNTRUSTED_CONTROLLER_RUN", str(run_dir))
     _verify_registry_entry(config, entry)
     currentness = binding.get("sorok_currentness") or {}
+    expected_session = currentness.get("expected_session")
+    actual_session = run["job"].get("session")
+    if not expected_session:
+        raise CurrentnessError("TRUSTED_LAUNCH_EXPECTED_SESSION_MISSING")
+    if actual_session != expected_session:
+        raise CurrentnessError("TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH")
+    if binding.get("session") != actual_session:
+        raise CurrentnessError("TRUSTED_LAUNCH_BINDING_SESSION_MISMATCH")
     checks = {
         "job_id": run["job"].get("job_id"),
-        "session": run["job"].get("session"),
+        "session": actual_session,
         "grant_id": run["job"].get("grant_id"),
         "child_pid": run["process"].get("pid"),
         "role": currentness.get("role"),
         "task_id": currentness.get("task_id"),
+        "expected_session": expected_session,
+        "expected_source_commit": currentness.get("expected_source_commit"),
+        "return_filename": currentness.get("return_filename"),
+        "worktree": str(Path(binding.get("worktree", "")).resolve()),
+        "recipient_thread": binding.get("recipient_thread"),
+        "argv_sha256": command_digest(run["job"].get("argv", [])),
         "job_sha256": run["hashes"].get("job_sha256"),
         "binding_sha256": run["hashes"].get("binding_sha256"),
         "launch_sha256": run["hashes"].get("launch_sha256"),
@@ -1139,6 +1277,10 @@ def attest_launch(config: dict, run_dir: Path) -> dict:
         raise CurrentnessError("TRUSTED_LAUNCH_ROLE_MISSING")
     if not currentness.get("task_id"):
         raise CurrentnessError("TRUSTED_LAUNCH_TASK_MISSING")
+    if not currentness.get("expected_session"):
+        raise CurrentnessError("TRUSTED_LAUNCH_EXPECTED_SESSION_MISSING")
+    if job.get("session") != currentness.get("expected_session"):
+        raise CurrentnessError("TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH")
     if (launch.get("child_pid") != process.get("pid")
             or job.get("job_id") != launch.get("job_id")
             or job.get("job_id") != process.get("job_id")):
@@ -1150,17 +1292,26 @@ def attest_launch(config: dict, run_dir: Path) -> dict:
         raise CurrentnessError("TRUSTED_LAUNCH_PROCESS_NOT_LIVE",
                                process.get("pid"))
     _require_launcher_process_tree(launch, process)
+    spec = _launch_spec(run_dir, job, binding)
+    proof = _verify_launcher_proof(spec, _launcher_proof())
     entry = _registry_entry(
         config, run_dir, binding, job, launch, process,
         provenance="TRUSTED_LAUNCHER_ATTESTATION", migration=False)
+    entry.update(proof)
+    entry["authorization"] = "LAUNCHER_HMAC_LAUNCH_SPEC"
+    entry["attestation"] = _sign_capability(
+        config, {key: value for key, value in entry.items()
+                 if key != "attestation"})
     _registry_add(config, entry)
     return {"state": "TRUSTED_LAUNCH_ATTESTED", "launch_id": entry["launch_id"],
             "run_dir": entry["run_dir"], "role": entry["role"],
-            "task_id": entry["task_id"], "child_pid": entry["child_pid"]}
+            "task_id": entry["task_id"], "child_pid": entry["child_pid"],
+            "launcher_sha256": entry["launcher_sha256"]}
 
 
 def enroll_existing_run(config: dict, run_dir: Path,
-                        authorization_id: str) -> dict:
+                        authorization_id: str,
+                        migrate_existing: bool = False) -> dict:
     run_dir = run_dir.resolve()
     _require_trusted_run_root(config, run_dir)
     job = read_json(run_dir / "job.json")
@@ -1187,6 +1338,10 @@ def enroll_existing_run(config: dict, run_dir: Path,
     if currentness.get("role") not in ("IMPLEMENTER", "REVIEWER", "REJECTOR",
                                        "PROTECTED_INTEGRATOR"):
         raise CurrentnessError("TRUSTED_LAUNCH_ROLE_MISSING")
+    if not currentness.get("expected_session"):
+        raise CurrentnessError("TRUSTED_LAUNCH_EXPECTED_SESSION_MISSING")
+    if job.get("session") != currentness.get("expected_session"):
+        raise CurrentnessError("TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH")
     if (launch.get("child_pid") != process.get("pid")
             or job.get("job_id") != launch.get("job_id")
             or job.get("job_id") != process.get("job_id")):
@@ -1194,22 +1349,45 @@ def enroll_existing_run(config: dict, run_dir: Path,
     if not _pid_alive(int(process.get("pid") or 0)):
         raise CurrentnessError("TRUSTED_LAUNCH_PROCESS_NOT_LIVE",
                                process.get("pid"))
+    old = _registry_find(config, run_dir)
+    legacy = None
+    if old is not None:
+        _verify_registry_entry(config, old)
+        if not migrate_existing:
+            raise CurrentnessError("TRUSTED_LAUNCH_ALREADY_ENROLLED",
+                                   str(run_dir))
+        if old.get("enrollment_authorization_id"):
+            raise CurrentnessError("TRUSTED_LAUNCH_ALREADY_MIGRATED",
+                                   str(run_dir))
+        legacy = {
+            key: old.get(key) for key in (
+                "provenance", "migration", "attested_at_utc",
+                "expires_at_utc", "attestation", "launcher_path",
+                "launcher_sha256", "launcher_token_sha256")
+            if old.get(key) is not None
+        }
     entry = _registry_entry(
         config, run_dir, binding, job, launch, process,
         provenance="HQ_EXPLICIT_ACTIVE_RUN_ENROLLMENT", migration=True)
+    if old is not None:
+        entry["launch_id"] = old["launch_id"]
+        entry["legacy_attestation"] = legacy
+        entry["migrated_from"] = old.get("provenance")
     entry["enrollment_authorization_id"] = authorization.get("authorization_id")
     entry["enrollment_authorization_sha256"] = authorization_sha
     entry["attestation"] = _sign_capability(
         config, {key: value for key, value in entry.items()
                  if key != "attestation"})
-    _registry_add(config, entry)
+    _registry_store(config, entry)
     return {"state": "EXISTING_RUN_ENROLLED", "launch_id": entry["launch_id"],
             "run_dir": entry["run_dir"], "role": entry["role"],
             "task_id": entry["task_id"], "child_pid": entry["child_pid"],
-            "migration": True}
+            "migration": True,
+            "legacy_attestation_preserved": legacy is not None}
 
 
-def _operator_authorization(config: dict) -> tuple[dict, str]:
+def _operator_authorization(config: dict,
+                            require_signature: bool = False) -> tuple[dict, str]:
     path = config.get("_operator_auth")
     if not path or not Path(path).is_file():
         raise CurrentnessError("OPERATOR_AUTHORIZATION_UNAVAILABLE")
@@ -1224,6 +1402,13 @@ def _operator_authorization(config: dict) -> tuple[dict, str]:
             raise CurrentnessError("OPERATOR_AUTHORIZATION_EXPIRED")
     except (KeyError, ValueError, TypeError) as exc:
         raise CurrentnessError("OPERATOR_AUTHORIZATION_EXPIRED") from exc
+    signature = authorization.get("operator_signature")
+    if signature:
+        expected = _sign_operator_authorization(authorization)
+        if not hmac.compare_digest(str(signature), expected):
+            raise CurrentnessError("OPERATOR_AUTHORIZATION_SIGNATURE_MISMATCH")
+    elif require_signature:
+        raise CurrentnessError("OPERATOR_AUTHORIZATION_SIGNATURE_REQUIRED")
     return authorization, sha256_file(Path(path))
 
 
@@ -1231,7 +1416,8 @@ def _authorize_operator(config: dict, *, purpose: str, item: dict,
                         authorization_id: str | None,
                         allowed_roles: tuple[str, ...],
                         supersedes: str | None = None) -> tuple[dict, str]:
-    authorization, authorization_sha = _operator_authorization(config)
+    authorization, authorization_sha = _operator_authorization(
+        config, require_signature=purpose in SIGNATURE_REQUIRED_OPERATOR_PURPOSES)
     if not authorization_id or authorization.get("authorization_id") != authorization_id:
         raise CurrentnessError("OPERATOR_AUTHORIZATION_ID_MISMATCH")
     if purpose not in authorization.get("allowed_kinds", []):
@@ -1389,8 +1575,13 @@ def apply_event(state: dict, event: dict, config: dict, contracts: tuple) -> dic
         binding = run["binding"].get("sorok_currentness") or {}
         role = payload.get("role") or binding.get("role")
         expected_session = binding.get("expected_session")
-        if expected_session and run["job"].get("session") != expected_session:
+        actual_session = run["job"].get("session")
+        if expected_session and actual_session != expected_session:
             raise CurrentnessError("CONTROLLER_EXPECTED_SESSION_MISMATCH")
+        if role in ("IMPLEMENTER", "REJECTOR", "PROTECTED_INTEGRATOR"):
+            supplied_session = artifact["payload"].get("session")
+            if supplied_session is not None and supplied_session != actual_session:
+                raise CurrentnessError("TASK_RETURN_ACTUAL_SESSION_MISMATCH")
         if role == "REJECTOR":
             if artifact["payload"].get("schema") != REJECTION_SCHEMA:
                 raise CurrentnessError("REJECTION_ARTIFACT_SCHEMA")
@@ -2834,6 +3025,7 @@ def main(argv: list[str] | None = None) -> int:
     enroll = sub.add_parser("enroll-existing-run")
     enroll.add_argument("--run-dir", required=True, type=Path)
     enroll.add_argument("--authorization-id", required=True)
+    enroll.add_argument("--migrate-existing", action="store_true")
     sub.add_parser("show-trusted-launches")
     completion = sub.add_parser("intake-completion")
     completion.add_argument("--run-dir", required=True, type=Path)
@@ -2867,7 +3059,8 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "enroll-existing-run":
             print(json.dumps(enroll_existing_run(
-                config, args.run_dir, args.authorization_id), indent=2,
+                config, args.run_dir, args.authorization_id,
+                migrate_existing=args.migrate_existing), indent=2,
                 sort_keys=True))
             return 0
         if args.command == "show-trusted-launches":

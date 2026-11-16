@@ -1,0 +1,50 @@
+{
+  "all_negative_refused": true,
+  "launcher_path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+  "launcher_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+  "positive_exact": true,
+  "results": {
+    "bytecopy_different_path": {
+      "error": "LAUNCHER_PATH_MISMATCH",
+      "result": "REFUSED"
+    },
+    "mismatched_job": {
+      "error": "LAUNCHER_TOKEN_MISMATCH",
+      "result": "REFUSED"
+    },
+    "mismatched_role": {
+      "error": "LAUNCHER_TOKEN_MISMATCH",
+      "result": "REFUSED"
+    },
+    "mismatched_session": {
+      "error": "LAUNCHER_TOKEN_MISMATCH",
+      "result": "REFUSED"
+    },
+    "mismatched_source": {
+      "error": "LAUNCHER_TOKEN_MISMATCH",
+      "result": "REFUSED"
+    },
+    "positive_exact": {
+      "call": {
+        "launcher_path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+        "launcher_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+        "launcher_token_sha256": "648c8a33abaffcaaa2d3b175f3e388c9fa8b21fa3e3a8d8d1c89c91e85c998e9"
+      },
+      "result": "ACCEPTED"
+    },
+    "same_basename_different_path": {
+      "error": "LAUNCHER_PATH_MISMATCH",
+      "result": "REFUSED"
+    },
+    "wrong_hash": {
+      "error": "LAUNCHER_HASH_MISMATCH",
+      "result": "REFUSED"
+    },
+    "wrong_token": {
+      "error": "LAUNCHER_TOKEN_MISMATCH",
+      "result": "REFUSED"
+    }
+  },
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R4_LAUNCHER_PROOF_VARIANTS@1",
+  "verdict": "PASS"
+}

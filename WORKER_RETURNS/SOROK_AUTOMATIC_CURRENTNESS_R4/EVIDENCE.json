@@ -1,0 +1,179 @@
+{
+  "active_pid": 93975,
+  "artifact_commit": "the commit containing WORKER_RETURN.json; not self-referential",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "base": "a60bffc293cf8805cd80fc2a95e4e0369be916c3",
+  "branch": "codex/sorok-automatic-currentness-launch-auth-20261116-r4",
+  "commission": "SOROK automatic PROGRAMMA currentness R4 launch enrollment/session correction",
+  "controller": {
+    "backup": "controller/backup_at_apply/",
+    "completion_events_sha256": "503f7b410343b1227cae9bf7cbbe130807e20a444915c12881030cdf19e02da2",
+    "diff": "controller/launch.r4.diff",
+    "install_receipt": "controller/INSTALL_RECEIPT.json",
+    "installed_launch_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+    "original_r3": "controller/original/",
+    "previous_launch_sha256": "4a7c243c0db89822ba8e51a1dd41ab6f63ad2929bef5508d64a78294aee8a370",
+    "supervisor_sha256": "6e914e59c92307e219f54c3fcdb99675299e178aa3af10c2f961e860d022ba02",
+    "unaffected_bindings": "non-SOROK bindings unchanged"
+  },
+  "installed_launcher_positive": {
+    "attestation_exit": 0,
+    "launch_exit": 0,
+    "launcher_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+    "probe": "probes/installed_launcher_positive.py",
+    "provenance": "TRUSTED_LAUNCHER_ATTESTATION",
+    "raw": "evidence/checks/installed_launcher_positive.out",
+    "report": "evidence/installed_launcher_positive_report.json",
+    "verdict": "PASS"
+  },
+  "job": "sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4",
+  "launcher_proof": {
+    "bytecopy_different_path": "REFUSED LAUNCHER_PATH_MISMATCH",
+    "mismatched_job": "REFUSED LAUNCHER_TOKEN_MISMATCH",
+    "mismatched_role": "REFUSED LAUNCHER_TOKEN_MISMATCH",
+    "mismatched_session": "REFUSED LAUNCHER_TOKEN_MISMATCH",
+    "mismatched_source": "REFUSED LAUNCHER_TOKEN_MISMATCH",
+    "positive_exact": "ACCEPTED",
+    "raw": "evidence/checks/launcher_proof_variants.out",
+    "report": "evidence/launcher_proof_variants_report.json",
+    "same_basename_different_path": "REFUSED LAUNCHER_PATH_MISMATCH",
+    "verdict": "PASS",
+    "wrong_hash": "REFUSED LAUNCHER_HASH_MISMATCH",
+    "wrong_token": "REFUSED LAUNCHER_TOKEN_MISMATCH"
+  },
+  "limitations": [
+    "Issue/comment GitHub reads remain HTTP 403 source-authority holds; no full issue/comment currentness.",
+    "PR #1095 status advance remains visible and unreconciled; no #1095 G5 rerun.",
+    "Actual independent review of R4 is pending; author cannot self-review.",
+    "Protected CI/adoption remains UNAVAILABLE_BILLING/pending.",
+    "The local key/identity boundary excludes rewriting trusted installed code or stealing the private key.",
+    "R4 hook pair update occurs after real process exit and needs HQ cold restart verification."
+  ],
+  "local_checks": {
+    "canonical_programma": 0,
+    "changed_worker_commissions": 0,
+    "frozen_1095_no_git_status": 0,
+    "frozen_1095_plain": 0,
+    "frozen_1095_self_test_status": 0,
+    "mcr_py_compile": 0,
+    "mcr_self_test": 0,
+    "platform": "macOS local Python; not GitHub Actions",
+    "pyat_visibility_plain": 0,
+    "pyat_visibility_self_test": 0,
+    "raw": "evidence/checks/final_local_workflow.out"
+  },
+  "pair_state_pre_exit": {
+    "checkpoint_id": "476fc4fb24bba99a7b5a24fba0d6aafe0641eacb5e02e3d5a9f9b3a5eb2703b1",
+    "decision_nodes": 21,
+    "generation": 52,
+    "r3_review": "REVISE_EXACT_DEFECT at b83438438dcb82eec43d23f170cf5672269edf54 / a49be6e8",
+    "r4_hook_expected": "after real exit, record mechanism_worker_return=RETURNED_REVIEW_PENDING; not acceptance",
+    "tasks": 27
+  },
+  "preserved": {
+    "atlas_1100": "CANDIDATE_DOCUMENTARY_NOT_PROTECTED_LAW",
+    "b05_1089": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+    "browser": "#1008/#1010 terminal scoped, #1012 not launched",
+    "c04_1062": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+    "c05_1091": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+    "frozen_1095_verifier_blob": "d971b6ea4af9c45904944c7eaa97f3dfef65f6b9",
+    "frozen_1095_workflow_blob": "f76c0d90d32e54d26d019b7f77c563b33fd5e97b",
+    "frozen_gmt_source_blob": "474befcb4d9f6e3842b4d256d00d9c0ac0bf1a4d",
+    "frozen_task_source_blob": "17cfae53f9ca16640d5d3d500aa7dcb3b31cc89c",
+    "historical_r1_red": "fc49662603c3dd8148c847cd6f35f2172184fd5a",
+    "historical_r2_red": "53fad99fd8da86e4ab1cd12fdcfcd93fc8b2942f",
+    "historical_r3_red": "b83438438dcb82eec43d23f170cf5672269edf54 / a49be6e8",
+    "issue_939": "STOP_NEVER_DISPATCH",
+    "native_science_actor_human": "HELD",
+    "oath_r2": "DRAFT_PR1098_NOT_PROTECTED_LAW",
+    "protected_foundations": [
+      "P3#746",
+      "P4#751",
+      "P5#775",
+      "P6#779",
+      "MI#907",
+      "MII#905",
+      "MIII#891"
+    ],
+    "required_ci": "UNAVAILABLE_BILLING / PENDING_PROTECTED_CI_AND_ADOPTION"
+  },
+  "r4_migration": {
+    "enrollment_authorization_id": "hq-legacy-infra-resolution-20261115-r2",
+    "immutable_run_records_edited": false,
+    "launch_id": "launch-695b11b03c8c17572726622983b1acd7",
+    "legacy_attestation_preserved": true,
+    "new_provenance": "HQ_EXPLICIT_ACTIVE_RUN_ENROLLMENT",
+    "old_attestation": "evidence/old_r4_launch_attestation.json",
+    "old_attestation_sha256": "b77390cea94a4506f4a5ae9701c49663378c001ee3cbc6f6cb31f640f445c569",
+    "raw_registry": "evidence/trusted_launch_registry.r4.json",
+    "replay_raw": "evidence/checks/r4_migration_replay.out",
+    "replay_refused": "TRUSTED_LAUNCH_ALREADY_MIGRATED",
+    "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-programma-automatic-currentness-launch-auth-repair-20261116-r4"
+  },
+  "red_witness": {
+    "corrected_exact": {
+      "attest_exit": 1,
+      "error": "TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH",
+      "fake_review_error": "UNTRUSTED_CONTROLLER_RUN",
+      "fake_review_exit": 1,
+      "result": "REFUSED"
+    },
+    "corrected_matching_session": {
+      "attest_exit": 1,
+      "error": "LAUNCHER_PROOF_REQUIRED",
+      "result": "REFUSED"
+    },
+    "matching_session_variant": "probes/fake_attest_launch.matching_session.py",
+    "old": {
+      "attest_exit": 0,
+      "fake_review_exit": 0,
+      "fake_review_state": "EVENT_RECORDED",
+      "result": "RED_REPRODUCED",
+      "state": "TRUSTED_LAUNCH_ATTESTED"
+    },
+    "original_launcher": "probes/fake_attest_launch.original.py",
+    "original_launcher_sha256": "c596188f68e4228e8a4a7bc7b5aa9072e42eb8df8690965d3431f837659f7252",
+    "probe": "probes/fake_attest_witness.py",
+    "raw_stdout": "evidence/checks/fake_attest_witness.out",
+    "report": "evidence/fake_attest_witness_report.json",
+    "verdict": "PASS"
+  },
+  "rejected_r3": {
+    "evidence_commit": "a49be6e8bf728262dad62753f3066e99351b7af9",
+    "hostile_launcher": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/evidence/raw/fake_attest/launch.py",
+    "implementation": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+    "review_commit": "b83438438dcb82eec43d23f170cf5672269edf54",
+    "review_path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R3_G5/",
+    "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "verdict": "REVISE_EXACT_DEFECT"
+  },
+  "retained_prior_probes": {
+    "fake_reviewer": "evidence/checks/fake_reviewer_probe.out",
+    "fake_reviewer_result": "UNTRUSTED_CONTROLLER_RUN",
+    "material_auth": "evidence/checks/material_auth_probe.out",
+    "material_result": "7 fixed / 0 gaps / PASS"
+  },
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R4_EVIDENCE@1",
+  "source_commit": "WORKER_RETURN.json implementation_commit (commit containing runtime/test/frontdoor/R4 evidence)",
+  "stop": "No self-review, protected merge, fleet/Browser/PYAT/SEAM operation, new provider or automatic dispatch.",
+  "terminal": "FROZEN_CORRECTED_CANDIDATE_FOR_SAME_FOCUSED_NONAUTHOR_RERECEIVING",
+  "tests": {
+    "breakdown": "28 prior + 6 R4",
+    "command": "pytest original runtime test + R3 material tests + R4 launch tests",
+    "original_test_blob": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1",
+    "r4_test_blob": "b3bb1fa938fe2adb716fcbfd85e6595d39f2502d",
+    "raw": "evidence/checks/final_runtime_tests.out",
+    "result": "34 passed",
+    "runtime_blob": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447"
+  },
+  "trust_anchor": {
+    "boundary": "No defense claimed against rewriting installed launcher/key/identity or stealing the private key; ordinary public-CLI self-attestation is closed.",
+    "identity_mode": "0600",
+    "identity_path": "/Users/matthewsmith/.local/share/rawlsing-controller/launch_attestation_identity.json",
+    "identity_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+    "key_mode": "0600",
+    "key_not_committed": true,
+    "key_not_logged": true,
+    "key_path": "/Users/matthewsmith/.local/share/rawlsing-controller/launch_attestation.key"
+  }
+}

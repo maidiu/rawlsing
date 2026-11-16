@@ -1,0 +1,82 @@
+{
+  "acceptance": "NOT_ACCEPTED; candidate for same focused nonauthor",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "automatic_dispatch": false,
+  "base": "a60bffc293cf8805cd80fc2a95e4e0369be916c3",
+  "change_scope": "SOURCEFREE_OPERATIONAL_CURRENTNESS_LAUNCH_AUTH_AND_ACTUAL_SESSION_ONLY",
+  "changed_paths": [
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md",
+    "WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R4/"
+  ],
+  "decision_nodes_unchanged": {
+    "count": 21,
+    "gates_preserved": true
+  },
+  "material_transitions": [
+    {
+      "after": "exact installed launcher path/hash plus HMAC launch-spec token from fixed local key; public fake/copy/wrong hash/token refused",
+      "before": "public attest-launch trusted a caller-authored launch.py command string and own live PID tree",
+      "grade": "SOURCEFREE_ENGINEERING_CANDIDATE",
+      "id": "R4_LAUNCH_PROOF"
+    },
+    {
+      "after": "actual job.session must equal binding/registry expected session and receipt.reviewer_session; author distinct",
+      "before": "review accepted expected_session while actual job.session was ses_FAKE_ATTEST",
+      "grade": "SOURCEFREE_ENGINEERING_CANDIDATE",
+      "id": "R4_SESSION_BINDING"
+    },
+    {
+      "after": "high-risk enrollment/state maintenance requires launcher-key-signed HQ operator auth; legacy R4 attestation migrated explicitly with legacy preserved",
+      "before": "arbitrary caller could ask signer to enroll a fake run",
+      "grade": "SOURCEFREE_ENGINEERING_CANDIDATE",
+      "id": "R4_OPERATOR_ENROLLMENT"
+    },
+    {
+      "after": "review requires expected source and actual receipt implementation match plus exact verdict artifact equality",
+      "before": "expected source field alone could differ from receipt/source",
+      "grade": "SOURCEFREE_ENGINEERING_CANDIDATE",
+      "id": "R4_VERDICT_SOURCE"
+    }
+  ],
+  "preserved": {
+    "browser": "#1008/#1010 terminal scoped, #1012 not launched",
+    "frozen_1095": "preserved; no rerun",
+    "github_issue_status": "HOLD_HTTP_403",
+    "historical_reds": [
+      "R1 fc496626",
+      "R2 53fad99/f800",
+      "R3 b8343843/a49be6e8"
+    ],
+    "issue_939": "STOP_NEVER_DISPATCH",
+    "native_science_actor_human": "HELD",
+    "protected_ci": "UNAVAILABLE_BILLING",
+    "protected_foundations": [
+      "P3#746",
+      "P4#751",
+      "P5#775",
+      "P6#779",
+      "MI#907",
+      "MII#905",
+      "MIII#891"
+    ],
+    "scoped": [
+      "B05#1089",
+      "C04#1062",
+      "C05#1091"
+    ]
+  },
+  "protected_merge": false,
+  "rejected_source": "0b2664a8353f5957e1dad4bb5678be66fa9470ef",
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R4_PROGRAMMA_DELTA@1",
+  "source_commit": "WORKER_RETURN.json implementation_commit",
+  "task": "AUTOMATIC_CURRENTNESS_R1",
+  "tasks_unchanged": {
+    "count": 27,
+    "full_original_claims": "NOT_ESTABLISHED",
+    "readiness_rewritten": false
+  },
+  "terminal": "FROZEN_CORRECTED_CANDIDATE_FOR_SAME_FOCUSED_NONAUTHOR_RERECEIVING"
+}
