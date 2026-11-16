@@ -1,0 +1,67 @@
+{
+  "schema": "K3_A_P1_VALIDATION_AND_SCOPE@1",
+  "date": "2026-11-16",
+  "role": "K3_A_P1_AUTHOR_NOT_REVIEWER_NOT_HQ",
+  "terminal": "K3_A_P1_FROZEN__B_P1_AND_OPTIONAL_P2_PENDING__K3_OWNER_HOLD",
+  "source_heads": {
+    "A_frozen": "f1e52596e0803e4a32cb48b5f245324c292086d6",
+    "B_frozen": "c16e03815fc11f1876e851dbc7b078cd97ff4fb3",
+    "K1_R4": "fda48f98ea519016a8815fea59ee9b46414b1559",
+    "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "modern_stacked_unmerged": "357a0fbf50377788b050f5365089ed54a0548f23",
+    "prepared_candidate_unmerged": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+  },
+  "isolated_writer": {
+    "branch": "review/pyat-k3-a-historical-p1-20261116-r1",
+    "base_commit": "f1e52596e0803e4a32cb48b5f245324c292086d6",
+    "base_branch": "review/pyat-k3-a-historical-p0-20261116-r1",
+    "root": "WORKER_RETURNS/PYAT_K3_A_P1_CHALLENGES_20261116_R1/",
+    "files": 3,
+    "p0_unchanged": true,
+    "no_protected_writes": true
+  },
+  "B_frozen_four_files_read": {
+    "narrative_blob": "341d51c59e7b9f6dd79d74e7084098a8f4e40bb4",
+    "roster_blob": "e66b28354a02395a8c235e5e503096d8ff54d6ef",
+    "edge_blob": "62a025f6ee345eefb3d99e3962d22626b254c681",
+    "scope_blob": "e19646ac995fdb523042d8fbbacfbb3266bacef8"
+  },
+  "challenge_count": 6,
+  "challenge_ids": [
+    "K3A-P1-01",
+    "K3A-P1-02",
+    "K3A-P1-03",
+    "K3A-P1-04",
+    "K3A-P1-05",
+    "K3A-P1-06"
+  ],
+  "tsv_columns": 16,
+  "gates": {
+    "one_to_seven_objections": true,
+    "unique_ids": true,
+    "TSV_width_checked": true,
+    "each_exact_B_ref": true,
+    "source_direct_code_S1": true,
+    "each_five_test_disposition": true,
+    "each_positive_denied_restore": true,
+    "no_new_build": true,
+    "grants_not_promoted": true
+  },
+  "author_blob_hashes": {
+    "K3_A_P1_CHALLENGE_VERDICT.md": "cd92eacbfd2d7795a4f79ae1901100452f83085c",
+    "K3_A_P1_DECISION_CHANGING_OBJECTIONS.tsv": "3d64e762de4fa191cb581ee23f0d8264525b5e5b"
+  },
+  "tests_not_run": [
+    "Python/S2/CI",
+    "native original35 SAV/DTA",
+    "original respondent values",
+    "1/10/100 distinct process-tree costs",
+    "G5 independent reviewer",
+    "competent source-science issuer",
+    "Sorok actor and consent",
+    "protected receiving",
+    "K4"
+  ],
+  "source_grades": "S0/S1 Git original and current code direct, semantic reasoning only; inherited historical sources remain attributed; no current production/native equivalence promotion",
+  "note": "The self-manifest hash is checked after GitHub publication rather than self-listed."
+}
