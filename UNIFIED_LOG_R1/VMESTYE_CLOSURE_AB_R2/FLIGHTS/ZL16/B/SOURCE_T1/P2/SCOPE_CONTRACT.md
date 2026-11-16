@@ -1,0 +1,5 @@
+# ZL16 B — bounded P2 response scope
+
+B P0 `e3b2dd44a9e73aecd70b939603c6f77128cb2de4` and P1 `401ce441cf48d46418f192d5941c258a2678c892` immutable. Read A's matched frozen P1 only at `5dab1db069a35c184a2a3378cde80dc0f427758f` after B P1 bulletin self-publication; reply to its exact two contests. No reinterpretation of A unpublished P2 and no new blind P0 or JOIN_REVIEW. Named original code `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`; protected `6a5c12f04323d74001f9632063ec907f4fc4468e`; T1 `5827cdb74f6820c338b79db0c423e9e0dc88a992`. Unique T produced: 0. A's own future response to B P1 remains independently owned.
+
+Only source/TSV GitHub read and documentary output to B isolated branch/PR #1079. No source/native Python/DB/respondents/tests/CI, no S2/S3, code modifications, scientific/actor/issuer/authority grant, shared ledger or protected write. Proposed scoped statuses do not change formal receiving. Future new #814 exact integrated head remains separate second tract; do not reuse this P2 to self-accept it.
