@@ -1,0 +1,143 @@
+{
+  "schema": "SOROK_C05_R3_ACTOR_PROJECTION_CHALLENGE_SUMMARY@1",
+  "source_base": "5d771dd86767655534b23576075e5da2db4fba78",
+  "reviewer_court": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+  "probes_byte_identical": {
+    "c05_challenge1_leakage.py": "b7c0a465e24e73fb1de4208264a76594932d61c8290cad5e4cdc93025da0e982",
+    "c05_challenge2_temporal.py": "b47d0e4712c6eb8763626e801f9f1c7bb4185c403587070b68fb2c8dfc5f46f8",
+    "c05_challenge3_relation_perception.py": "73ad97342e1a9db9bd1d9a0d0207aea62097ef62d9a0453dc74e269809a6947b",
+    "c05_r3_common.py": "b251b3be4fa16a49d369f2596f1cdc19d1a2541ea64d06e373273304cfc92800",
+    "c05_r3_cold_child.py": "02e89a0b265f2d152024b1bb1ed49906f19661401a55c88805278076bbe341a8"
+  },
+  "rows": [
+    {
+      "id": "challenge1_RED",
+      "literal_exit": 0,
+      "real_seconds": 10.9,
+      "max_rss_bytes": 49127424,
+      "report": "evidence/c05_challenge1_report_RED_at_5d771dd.json",
+      "report_sha256": "bfdd1d754fb253d69260a3711a7dc586fbde88d1213430bef6f75ff97ab1e0b1",
+      "observation": "withheld count 0->1 for unexposed Q; all other permitted fields equal"
+    },
+    {
+      "id": "challenge1_POST_FIX",
+      "literal_exit": 1,
+      "real_seconds": 10.23,
+      "max_rss_bytes": 48889856,
+      "report": null,
+      "observation": "unchanged obsolete oracle raises KeyError on intentionally removed withheld_relation_count; new R3 assertions cover desired noninterference"
+    },
+    {
+      "id": "challenge2_RED",
+      "literal_exit": 0,
+      "real_seconds": 12.73,
+      "max_rss_bytes": 47226880,
+      "report": "evidence/c05_challenge2_report_RED_at_5d771dd.json",
+      "report_sha256": "07d138e40d769e96d9cb5a1fd770dc77e21f99657d259503fb04be072b0c653d",
+      "observation": "same-clock ENTER/PROMOTE after event enters prior event context; event doc/access unchanged"
+    },
+    {
+      "id": "challenge2_POST_FIX",
+      "literal_exit": 0,
+      "real_seconds": 11.91,
+      "max_rss_bytes": 45793280,
+      "report": "evidence/c05_challenge2_report_POST_FIX.json",
+      "report_sha256": "4044256df12401d832a635cd49104f85014820b4d50a6489d21213543a0e1c44",
+      "observation": "unchanged probe still observes retrospective same-clock inclusion; new context now labels RETROSPECTIVE_AS_OF_EVENT_CLOCK and event-time knowledge NOT_AVAILABLE/HOLD_SOURCE_AUTHORITY"
+    },
+    {
+      "id": "challenge3_RED",
+      "literal_exit": 0,
+      "real_seconds": 5.83,
+      "max_rss_bytes": 44716032,
+      "report": "evidence/c05_challenge3_report_RED_at_5d771dd.json",
+      "report_sha256": "cacca579a30879913b579cf38ff4eddaf94aff9bdfaaddfd4c90ba2c86e2edc3",
+      "observation": "NOT_PERCEIVED event with QUALIFIED relation and basis includes C12_EVENT_PERCEPTION; plural relations present"
+    },
+    {
+      "id": "challenge3_POST_FIX",
+      "literal_exit": 2,
+      "real_seconds": 5.01,
+      "max_rss_bytes": 46235648,
+      "report": "evidence/c05_challenge3_report_POST_FIX.json",
+      "report_sha256": "6868143a43d277c752aff57d03875a08dde20aad5a0e2487bc84b52298a18e6c",
+      "observation": "unchanged obsolete oracle fails only basis_includes_c12_event_perception_without_own_perception; new viewer-specific event_perception/basis, plural relations, cold and private checks pass"
+    }
+  ],
+  "new_assertion_tests": {
+    "passed": 4,
+    "failed": 0,
+    "exit": 0,
+    "seconds": 30.41,
+    "max_rss_bytes": 61845504,
+    "log": "evidence/logs/c05_r3_new_tests_GREEN.log",
+    "log_sha256": "10046e6a44b19b1677ee7a00af833152bef4bb5015ac190d4274a6e40eee987a"
+  },
+  "original_c05_suite": {
+    "passed": 3,
+    "failed": 2,
+    "exit": 1,
+    "seconds": 48.02,
+    "max_rss_bytes": 62861312,
+    "log": "evidence/logs/original_c05_suite_final.log",
+    "failures": [
+      "withheld_relation_count KeyError",
+      "HOLD_UNKNOWN_SCOPE vs unified HOLD_NOT_EXPOSED"
+    ],
+    "note": "original bytes immutable; failures are the intentionally corrected actor-facing ABI"
+  },
+  "r2_promotion_test": {
+    "passed": 1,
+    "failed": 0,
+    "exit": 0,
+    "seconds": 7.84,
+    "max_rss_bytes": 58302464,
+    "log": "evidence/logs/c05_r2_promotion_test_final.log"
+  },
+  "regressions": [
+    {
+      "suite": "C01",
+      "passed": 6,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 14.21,
+      "max_rss_bytes": 58281984,
+      "log": "evidence/logs/c01_suite_final.log"
+    },
+    {
+      "suite": "C04 identity",
+      "passed": 6,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 30.62,
+      "max_rss_bytes": 64086016,
+      "log": "evidence/logs/c04_identity_final.log"
+    },
+    {
+      "suite": "C04 custody",
+      "passed": 12,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 64.58,
+      "max_rss_bytes": 66920448,
+      "log": "evidence/logs/c04_custody_final.log"
+    },
+    {
+      "suite": "P2 owner",
+      "passed": 5,
+      "failed": 0,
+      "exit": 0,
+      "seconds": 18.58,
+      "max_rss_bytes": 59793408,
+      "log": "evidence/logs/p2_owner_final.log"
+    }
+  ],
+  "harness_path_adapter": {
+    "probe_hardcoded_path": ".local-logs/sorok-c05-actor-view-temporal-challenge-20261115-r3",
+    "leased_target": ".local-logs/sorok-c05-actor-projection-repair-20261115-r3/probe-court-scratch",
+    "method": "temporary symlink; probe bytes and oracle unchanged",
+    "note": "probe hardcoded scratch and cold TMPDIR resolve inside the R3 lease"
+  },
+  "challenge3_red_preservation_note": "The first challenge3 RED report was overwritten by the post-fix run. The same byte-identical probe was re-executed against the base product blob to preserve a raw RED report; the original RED stdout log is also retained.",
+  "terminal": "STOP"
+}

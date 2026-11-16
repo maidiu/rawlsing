@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/newprobes/c05_probe.py", line 1034, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/newprobes/c05_probe.py", line 993, in main
+    world_info = relation_checks(session, focal, owner)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-repair/Rawlsing/WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/newprobes/c05_probe.py", line 252, in relation_checks
+    and envelope["withheld_relation_count"] == 1
+        ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'withheld_relation_count'
+        2.51 real         2.06 user         0.27 sys
+            46018560  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               13456  page reclaims
+                 216  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                 878  voluntary context switches
+                 379  involuntary context switches
+         16842049916  instructions retired
+          8990059484  cycles elapsed
+            40427520  peak memory footprint
