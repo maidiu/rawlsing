@@ -11,6 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ENTRYPOINTS = (
+    ROOT / "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md",
     ROOT / "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
     ROOT / "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
 )
@@ -45,31 +46,39 @@ def first_block(value: str) -> str:
         raise ValueError("HQ OATH must immediately precede original PROGRAMMA front door")
     return block
 
-def validate(inputs: tuple[str, str], instructions: str) -> None:
+def validate(inputs: tuple[str, ...], instructions: str) -> None:
     blocks = tuple(first_block(value) for value in inputs)
-    if blocks[0] != blocks[1]:
-        raise ValueError("PYAT and SOROK HQ OATH diverged")
+    if len(set(blocks)) != 1:
+        raise ValueError("shared, PYAT or SOROK HQ OATH diverged")
     if not instructions.startswith("# HQ OATH — REQUIRED FIRST CONTACT FOR PROGRAMMA WORK"):
         raise ValueError("project-level OpenCode AGENTS.md lacks first-contact HQ OATH")
     if not all(str(path.relative_to(ROOT)) in instructions for path in ENTRYPOINTS):
         raise ValueError("project AGENTS.md lacks exact canonical front-door pointers")
 
-def self_test(values: tuple[str, str], instructions: str) -> None:
+def self_test(values: tuple[str, ...], instructions: str) -> None:
     validate(values, instructions)
-    bad = [
-        (values[0].replace(START, "# stale\n", 1), values[1], instructions),
-        (values[0].replace(END, "", 1), values[1], instructions),
-        (values[0], values[1].replace("HQ_CURRENTNESS_HOLD", "nothing", 1), instructions),
-        (values[0], values[1], instructions.replace("AGENTS.md", "NONE", 1).replace(
-            "# HQ OATH — REQUIRED FIRST CONTACT FOR PROGRAMMA WORK", "# ignored", 1)),
-    ]
-    for i, (a, b, guide) in enumerate(bad, 1):
+    bad = []
+    for i, value in enumerate(values):
+        altered = list(values)
+        altered[i] = value.replace(START, "# stale\\n", 1)
+        bad.append((tuple(altered), instructions))
+        altered = list(values)
+        altered[i] = value.replace(END, "", 1)
+        bad.append((tuple(altered), instructions))
+        altered = list(values)
+        altered[i] = value.replace("HQ_CURRENTNESS_HOLD", "untracked", 1)
+        bad.append((tuple(altered), instructions))
+    bad.append((values, instructions.replace(
+        "# HQ OATH — REQUIRED FIRST CONTACT FOR PROGRAMMA WORK",
+        "# missing HQ entrypoint", 1)))
+    for index, (candidate, guide) in enumerate(bad, 1):
         try:
-            validate((a, b), guide)
+            validate(candidate, guide)
         except ValueError:
             pass
         else:
-            raise AssertionError(f"mutation {i} escaped HQ OATH guard")
+            raise AssertionError(f"mutation {index} escaped HQ OATH guard")
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
