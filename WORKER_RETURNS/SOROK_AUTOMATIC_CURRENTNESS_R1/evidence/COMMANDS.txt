@@ -1,0 +1,95 @@
+SOROK automatic currentness R1 — exact commands
+Checkout: /Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing
+Base: 75581fa9e2c8576d1ca9a7a9a18759ea840d82e8
+Branch: codex/sorok-automatic-currentness-engine-20261115-r1
+Author session: ses_e21a481bfffefyvpxaeFaAOFvQ
+
+Environment:
+  TMPDIR=$PWD/.local-logs/sorok-programma-automatic-currentness-implementation-20261115-r1/tmp
+  PYTHONDONTWRITEBYTECODE=1
+  PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+  CFG=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/currentness/config.json
+
+1. Inspect frozen #1095 source and controller:
+   git show -s --format=%H 75581fa9e2c8576d1ca9a7a9a18759ea840d82e8
+   git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+   git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_task_packets_20261112.json
+   git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_gmt_overlay_20261112.json
+   git hash-object .github/workflows/sorok-operational-currentness-r1.yml
+   cat /Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/{HANDOFF.md,PROVENANCE.json,INSTALL_MANIFEST.json}
+   -> frozen verifier/workflow/two-source blobs unchanged:
+      d971b6ea..., f76c0d90..., 17cfae53..., 474befcb...
+
+2. Apply narrow SOROK-only controller hook (backed up originals):
+   "$PY" WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/manage_hook.py apply
+   -> launch.py 4c5004ef...; completion_events.py 503f7b41...
+      PYAT behavior unchanged; no binding without `sorok_currentness` changes.
+
+3. Initialize runtime on the existing paired progress:
+   "$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py \
+     --config "$CFG" init
+   -> generation 1; frozen operational_currentness_r1 unchanged; runtime key appended last.
+
+4. REAL finite existing-controller child worker (notify=False):
+   "$PY" /Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py \
+     --binding .local-logs/sorok-programma-automatic-currentness-implementation-20261115-r1/binding3.json \
+     --job .local-logs/sorok-programma-automatic-currentness-implementation-20261115-r1/job3.json
+   -> real supervisor/child/observer; child exit 0; completion.json and observer finished.
+      Observer hook called the runtime automatically; receipt:
+      SOROK_CURRENTNESS_INTAKE_OK.
+      Successful job: sorok-automatic-currentness-real-return-20261115T224953
+      return.json sha256 8dcab490673c31b998793dff52eed8c9fa555a8700a45fc2e2199a846f64a2c0
+
+   Earlier two finite attempts are retained as fail-visible history:
+   - 20261115T224855: hook argparse --config order failed (INTAKE_FAILED).
+   - 20261115T224925: fixture child wrote the wrong argv path (RETURN_ARTIFACT_MISSING).
+   Both were explicitly resolved with evidence after the successful third run; do not
+   treat a zero child exit as acceptance.
+
+5. Authenticated GitHub intake / cold-start reconciliation:
+   "$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py \
+     --config "$CFG" startup
+   -> typed RECONCILIATION_REQUIRED for authenticated refs and unseen local receipts.
+   "$PY" ... --config "$CFG" startup --reconcile
+   -> records GITHUB_OBSERVATION with baseline sha256
+      3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7
+
+6. Real immutable historical nonauthor review replays (explicit replay, not new review):
+   "$PY" ... --config "$CFG" intake-review \
+     --receipt WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/fixtures/historical_reviews/B05_1089/REPLAY_RECEIPT.json --replay
+   "$PY" ... --config "$CFG" intake-review \
+     --receipt WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/fixtures/historical_reviews/C04_1062/REPLAY_RECEIPT.json --replay
+   "$PY" ... --config "$CFG" intake-review \
+     --receipt WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/fixtures/historical_reviews/C05_1091/REPLAY_RECEIPT.json --replay
+   -> B05 #1089, C04 #1062, C05 #1091 scoped states preserved; replay_is_not_new_review=true.
+
+7. Explicit resolution of the two failed infrastructure qualification attempts:
+   "$PY" ... --config "$CFG" resolve-reconciliation \
+     --what-changed "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855" \
+     --evidence "<run events + completion; INTAKE_FAILED argparse>; superseded by 224953" \
+     --owner "SOROK HQ/controller owner"
+   "$PY" ... --config "$CFG" resolve-reconciliation \
+     --what-changed "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925" \
+     --evidence "<run events + completion; RETURN_ARTIFACT_MISSING>; superseded by 224953" \
+     --owner "SOROK HQ/controller owner"
+   -> history retained; readout no longer silently stuck.
+
+8. Final operational readout / cold restart:
+   "$PY" ... --config "$CFG" status
+   "$PY" ... --config "$CFG" startup
+   -> generation 20, checkpoint f4a7d4a9... (pre-resolution) / final generation 20,
+      reconciliation_required empty, recommended next = RECEIVE B01.
+
+9. Tests and canonical validators:
+   "$PY" -m pytest -p no:cacheprovider -q \
+     SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
+   -> 15 passed.
+   "$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py \
+     --self-test --status
+   -> exit 0; frozen #1095 cut PASS/NOT live.
+   "$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+   -> exit 0; Pyat 782/892/62/82, FF 26/16, cross 18/16, Sorok 144/38.
+
+No /tmp redirect; checkout-local scratch and the authorized controller state dir only.
+No hosted CI, dependency install, new agent/fleet, model/provider/account change,
+global permission or protected merge.

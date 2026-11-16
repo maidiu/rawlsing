@@ -1,0 +1,667 @@
+{
+  "checkpoint_id": "fc182553712cad4125fddabade3699b069d0864a11f8029fb53909c25f04c958",
+  "generation": 2,
+  "readout": {
+    "authenticated_github_baseline": {
+      "as_of": "2026-11-16T03:48:33.864634+00:00",
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/GITHUB_INTAKE_BASELINE.json",
+      "sha256": "3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7"
+    },
+    "awaiting_independent_receiving": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "C01",
+      "C02",
+      "C03",
+      "D01",
+      "D02",
+      "D03",
+      "E01"
+    ],
+    "baseline_replay": [],
+    "browser": {
+      "issue_1008": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED",
+      "issue_1010": "A_B_A_COMPLETED_G2_HELD",
+      "issue_1012": "NOT_LAUNCHED_WAITING_J1"
+    },
+    "checkpoint_id": "fc182553712cad4125fddabade3699b069d0864a11f8029fb53909c25f04c958",
+    "controllers": {
+      "issue_939": "USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS",
+      "persistent_dispatch": false
+    },
+    "frozen_projection": {
+      "adoption": "PENDING_INDEPENDENT_RECEIVING",
+      "preserved": true
+    },
+    "generation": 2,
+    "holds": [
+      {
+        "kind": "BROWSER_OWNERSHIP",
+        "owner": "user-operated Browser",
+        "reason": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED",
+        "scope": "issue_1008"
+      },
+      {
+        "kind": "BROWSER_OWNERSHIP",
+        "owner": "user-operated Browser",
+        "reason": "A_B_A_COMPLETED_G2_HELD",
+        "scope": "issue_1010"
+      },
+      {
+        "kind": "BROWSER_OWNERSHIP",
+        "owner": "user-operated Browser",
+        "reason": "NOT_LAUNCHED_WAITING_J1",
+        "scope": "issue_1012"
+      },
+      {
+        "kind": "CONTROLLER",
+        "owner": "existing SOROK owner",
+        "reason": "USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS",
+        "scope": "issue_939"
+      },
+      {
+        "kind": "CONTROLLER",
+        "owner": "existing SOROK owner",
+        "reason": false,
+        "scope": "persistent_dispatch"
+      },
+      {
+        "kind": "SCIENCE_AUTHORITY",
+        "owner": "original CAN/ADP/Pyat/human issuers",
+        "reason": "native science, actor knowledge and human authority remain HELD",
+        "scope": "ALL"
+      }
+    ],
+    "infrastructure_qualification": [
+      {
+        "controller_run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115/controller_demo_state/sorok-automatic-currentness-real-return-20261115T224953",
+        "event_id": "completion:ec4b359332dc5024130fae27f986bd6843ce0c972744fdb8c472d09ad09055fa",
+        "execution_state": "RETURNED_REVIEW_PENDING",
+        "exit_code": 0,
+        "job_id": "sorok-automatic-currentness-real-return-20261115T224953",
+        "return_path": "/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-implementation-20261115-r1/controller-child-worktree/return.json",
+        "return_sha256": "8dcab490673c31b998793dff52eed8c9fa555a8700a45fc2e2199a846f64a2c0",
+        "review_required": true,
+        "scope": "INFRASTRUCTURE_QUALIFICATION_NOT_ORIGINAL_SCIENCE",
+        "session": "ses_local_fixture_child_r1"
+      }
+    ],
+    "mechanism_review": {
+      "id": "AUTOMATIC_CURRENTNESS_R1",
+      "implementation_commit": null,
+      "review_receipt": null,
+      "state": "PENDING_EXTERNAL_NONAUTHOR_REVIEW"
+    },
+    "no_automatic_dispatch": true,
+    "protected_ci": "PENDING_PROTECTED_CI_AND_ADOPTION",
+    "protected_foundations": {
+      "MI": {
+        "merge_sha": "1f77f2036427a410429184780ef884ec4f253ad0",
+        "pr": 907,
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "MII": {
+        "merge_sha": "521ae459091c5d4e4009f442257d74d50b2c55db",
+        "pr": 905,
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "MIII": {
+        "merge_sha": "3e5b1611f5cb043b43ffd39b14c9d707923f1210",
+        "pr": 891,
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P3": {
+        "merge_sha": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+        "pr": 746,
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P4": {
+        "merge_sha": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+        "pr": 751,
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P5": {
+        "merge_sha": "5e266a80ccfc52da10741e15f6b9076138907758",
+        "pr": 775,
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P6": {
+        "merge_sha": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+        "pr": 779,
+        "scope": "SOURCEFREE_PROTECTED"
+      }
+    },
+    "ready_for_independent_receiving": [],
+    "ready_for_scoped_engineering": [],
+    "recommended_next": {
+      "action": "RECEIVE",
+      "owner": "S47/P2 objective world; P6 house.py",
+      "task": "B01",
+      "unmet_full_original_prereqs": []
+    },
+    "reconciliation_required": [],
+    "runtime_adoption": "NO_PROTECTED_ADOPTION",
+    "schema": "SOROK_CURRENTNESS_READOUT_R1",
+    "source_trust": "SOURCEFREE_ENGINEERING_ONLY__NATIVE_SCIENCE_AND_HUMAN_HELD",
+    "task_readiness": [
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "B01",
+        "owner": "S47/P2 objective world; P6 house.py",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:B01",
+          "gmt:B01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "B02",
+        "owner": "P3 DevelopmentOwner and S46 clock; existing P2 owner",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:B02",
+          "gmt:B02"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "B01"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "B03",
+        "owner": "P2 world + bounded P6 material/house adapter",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:B03",
+          "gmt:B03"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "B01"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "B04",
+        "owner": "existing world/event/material writer",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:B04",
+          "gmt:B04"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "B02",
+          "B03"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "SCOPED_RECEIVED_UNMERGED",
+        "id": "B05",
+        "owner": "existing P3/S46 + P2 material world",
+        "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+        "source_refs": [
+          "packet:B05",
+          "gmt:B05"
+        ],
+        "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+        "unmet_full_original_prereqs": [
+          "B02",
+          "B04"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "C01",
+        "owner": "C4/ADP-015 actor identity; shared P2 world",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:C01",
+          "gmt:C01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "B01"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "C02",
+        "owner": "competent parent actor state owner coupled to P2 material world",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:C02",
+          "gmt:C02"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "C01",
+          "B02",
+          "B03"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "C03",
+        "owner": "parent own decision and P2 world act writer",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:C03",
+          "gmt:C03"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "C02",
+          "B04"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "SCOPED_RECEIVED_UNMERGED",
+        "id": "C04",
+        "owner": "parent event writer + child actor perception owner",
+        "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+        "source_refs": [
+          "packet:C04",
+          "gmt:C04"
+        ],
+        "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+        "unmet_full_original_prereqs": [
+          "C03"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "SCOPED_RECEIVED_UNMERGED",
+        "id": "C05",
+        "owner": "C4\u2013C7 / ADP-015 relation actor owner + shared world",
+        "readiness": "SCOPED_RECEIVED_PENDING_PROTECTED_CI_AND_ADOPTION",
+        "source_refs": [
+          "packet:C05",
+          "gmt:C05"
+        ],
+        "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+        "unmet_full_original_prereqs": [
+          "C01",
+          "C04"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "D01",
+        "owner": "P3Owner+PsycheStore; existing CAN/ADP science holds",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:D01",
+          "gmt:D01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "D02",
+        "owner": "thin read-only P3 context adapter over P2/Pyat/actor owners",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:D02",
+          "gmt:D02"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "D01",
+          "B02",
+          "C01"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "CANDIDATE_AUTHOR_TESTED",
+        "id": "D03",
+        "owner": "CAN-008-style actor response qualified by existing P3 current event",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:D03",
+          "gmt:D03"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "D02",
+          "C04"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "D04",
+        "owner": "existing P3 target/psyche owner and competent CAN/ADP holds",
+        "readiness": "HELD_NOT_LAUNCHED",
+        "source_refs": [
+          "packet:D04",
+          "gmt:D04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "D01",
+          "D03",
+          "B05"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "D05",
+        "owner": "existing P3 actual action/response consumer, P4/P6 reader",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:D05",
+          "gmt:D05"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "D04"
+        ],
+        "unmet_scoped_prereqs": [
+          "D04"
+        ]
+      },
+      {
+        "execution_state": "PARTIAL_CANDIDATE",
+        "id": "E01",
+        "owner": "existing P2 world, parent actor and focal P3 owner",
+        "readiness": "CANDIDATE_RETURNED_RECEIVING_NOT_RUN",
+        "source_refs": [
+          "packet:E01",
+          "gmt:E01"
+        ],
+        "sourcefree_state": "PARTIAL_CANDIDATE",
+        "unmet_full_original_prereqs": [
+          "B04",
+          "C04",
+          "D03"
+        ],
+        "unmet_scoped_prereqs": []
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "E02",
+        "owner": "P3/S46 period + shared world and actor state owners",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:E02",
+          "gmt:E02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "E01",
+          "B05",
+          "C05",
+          "D04"
+        ],
+        "unmet_scoped_prereqs": [
+          "D04"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "E03",
+        "owner": "existing P3 BatchEngine/P2 reservation/journal/C9 root receipts",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:E03",
+          "gmt:E03"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "E02"
+        ],
+        "unmet_scoped_prereqs": [
+          "E02"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "E04",
+        "owner": "actual joint J1/J2 consumers",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:E04",
+          "gmt:E04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "E03",
+          "D05"
+        ],
+        "unmet_scoped_prereqs": [
+          "E03",
+          "D05"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "F01",
+        "owner": "C12 root/fork, P4/P5/P6 actual house owner",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:F01",
+          "gmt:F01"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "E02"
+        ],
+        "unmet_scoped_prereqs": [
+          "E02"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "F02",
+        "owner": "P4/P5/P6 and existing D002 seven-cell sourcefree path",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:F02",
+          "gmt:F02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "F01"
+        ],
+        "unmet_scoped_prereqs": [
+          "F01"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "F03",
+        "owner": "protected MI #907, MII #905, MIII #891",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:F03",
+          "gmt:F03"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "F02"
+        ],
+        "unmet_scoped_prereqs": [
+          "F02"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "F04",
+        "owner": "P3 root + P4/P5/P6 + C12 sourcefree boundary",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:F04",
+          "gmt:F04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "F03",
+          "E04"
+        ],
+        "unmet_scoped_prereqs": [
+          "F03",
+          "E04"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "G01",
+        "owner": "joined CG-E/F root generator",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:G01",
+          "gmt:G01"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "F04"
+        ],
+        "unmet_scoped_prereqs": [
+          "F04"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "G02",
+        "owner": "common generated-root programme",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:G02",
+          "gmt:G02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "G01"
+        ],
+        "unmet_scoped_prereqs": [
+          "G01"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "G03",
+        "owner": "existing process usage/provider receipt instrumentation",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:G03",
+          "gmt:G03"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "G02"
+        ],
+        "unmet_scoped_prereqs": [
+          "G02"
+        ]
+      },
+      {
+        "execution_state": "HELD_NOT_LAUNCHED",
+        "id": "G04",
+        "owner": "existing SOROK PROGRAMMA 144/38/83/304/100 and D002/A0-A5",
+        "readiness": "HOLD_DEPENDENCY",
+        "source_refs": [
+          "packet:G04",
+          "gmt:G04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "unmet_full_original_prereqs": [
+          "G02",
+          "G03"
+        ],
+        "unmet_scoped_prereqs": [
+          "G02",
+          "G03"
+        ]
+      }
+    ],
+    "updated_utc": "2026-11-16T03:49:53.810803+00:00"
+  },
+  "reconciliation_required": [
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED issue:939"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED issue:1008"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED issue:1010"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED pr:1062"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED pr:1066"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED pr:1089"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED pr:1091"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED pr:1095"
+    },
+    {
+      "expected_evidence": "local return/review/protected receipt matching the GitHub ref",
+      "next_action": "run startup --reconcile and inspect the exact local return/review before any state change",
+      "owner": "SOROK HQ",
+      "what_changed": "AUTHENTICATED_GITHUB_REF_NOT_YET_RECONCILED row:1095"
+    },
+    {
+      "expected_evidence": "WORKER_RETURN event bound to this completion.json",
+      "next_action": "run intake-completion for this run before treating it as current",
+      "owner": "SOROK HQ/controller owner",
+      "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224855"
+    },
+    {
+      "expected_evidence": "WORKER_RETURN event bound to this completion.json",
+      "next_action": "run intake-completion for this run before treating it as current",
+      "owner": "SOROK HQ/controller owner",
+      "what_changed": "UNSEEN_LOCAL_CONTROLLER_RECEIPT sorok-automatic-currentness-real-return-20261115T224925"
+    }
+  ]
+}

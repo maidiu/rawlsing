@@ -1,0 +1,14 @@
+--- WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/original/launch.py	2026-11-15 22:46:01
++++ WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R1/controller/patched/launch.py	2026-11-15 22:46:38
+@@ -56,6 +56,11 @@
+     env = dict(os.environ, COMPLETION_THREAD=binding["recipient_thread"],
+                COMPLETION_CODEX=binding["codex_binary"], COMPLETION_RECEIPT_DIR=str(run / "events"),
+                COMPLETION_NOTIFY="1" if binding["notify"] else "0")
++    # Additive SOROK-only hook: bindings without this field are unchanged.
++    sorok_currentness = binding.get("sorok_currentness")
++    if isinstance(sorok_currentness, dict):
++        env["COMPLETION_SOROK_CURRENTNESS"] = json.dumps(
++            sorok_currentness, sort_keys=True)
+     with (run / "observer.log").open("w") as log:
+         observer = subprocess.Popen([sys.executable, str(root / "completion_events.py"), str(run / "targets.json")],
+             env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)

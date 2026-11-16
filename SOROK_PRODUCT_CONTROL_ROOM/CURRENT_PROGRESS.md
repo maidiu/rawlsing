@@ -23,6 +23,31 @@
 **External PR/review events and local runner processes:** must be authenticated at each HQ intake; older comments and stored leases are history, not live state.
 <!-- SOROK_OPERATIONAL_CURRENT_END -->
 
+<!-- SOROK_RUNTIME_CURRENT_START -->
+## SOROK automatic currentness — runtime reconciled
+<!-- SOROK_RUNTIME_GENERATION: 20 -->
+**Generation:** 20 | **Checkpoint:** `73472e3d45c649770b4a7b94ba9b1ea838b287a43d65ab8dfedfe6a5189b5b54` | **Updated:** 2026-11-16T03:55:53.850636+00:00
+**Frozen #1095 projection:** preserved as historical candidate; it is not rewritten as live intake.
+**Runtime adoption:** NO_PROTECTED_ADOPTION | **Protected CI:** PENDING_PROTECTED_CI_AND_ADOPTION
+**Authenticated GitHub checkpoint:** `3996034fd3f69b7d1fc2105b9f4021b4c543ba0d0a35f5544c4448deb4f375f7` (2026-11-16T03:54:06.994129+00:00)
+**Ready for independent receiving:** NONE
+**Ready for scoped engineering:** NONE
+**Awaiting independent receiving:** B01, B02, B03, B04, C01, C02, C03, D01, D02, D03, E01
+**Holds and source-authority boundaries:**
+- BROWSER_OWNERSHIP | issue_1008 | owner: user-operated Browser | A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED
+- BROWSER_OWNERSHIP | issue_1010 | owner: user-operated Browser | A_B_A_COMPLETED_G2_HELD
+- BROWSER_OWNERSHIP | issue_1012 | owner: user-operated Browser | NOT_LAUNCHED_WAITING_J1
+- CONTROLLER | issue_939 | owner: existing SOROK owner | USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS
+- CONTROLLER | persistent_dispatch | owner: existing SOROK owner | False
+- SCIENCE_AUTHORITY | ALL | owner: original CAN/ADP/Pyat/human issuers | native science, actor knowledge and human authority remain HELD
+**Reconciliation required:**
+- NONE at this authenticated checkpoint.
+**Real controller infrastructure returns:** 1 (review pending, not task acceptance)
+**Immutable historical review replays:** 3 (explicit replay, not new review)
+**Next non-dispatch action:** {"action": "RECEIVE", "owner": "S47/P2 objective world; P6 house.py", "task": "B01", "unmet_full_original_prereqs": []}
+**No automatic job dispatch.** Engineering, original-task completion, protected integration, scientific authority and execution state remain separate.
+<!-- SOROK_RUNTIME_CURRENT_END -->
+
 
 **CURRENT PROTECTED MII FACTUAL ADDENDUM (2026-11-11; after historical R39):** [PR #905](https://github.com/maidiu/rawlsing/pull/905) merged at protected PRE-MAIN `521ae459091c5d4e4009f442257d74d50b2c55db` with exact implementation `5eabd82074fab9318cb50838feeb6e78743dffdd`, distinct sourcefree engineering reviewer `34a70e7069a056972db13a805f736d7813823d3e` (`ACCEPT_SCOPED_SOURCEFREE_ENGINEERING`) and HQ decision `2611bd024195923c45af25713694ba4611c926cc`. MII full E1–E10 and 44 inherited behavioral cases are sourcefree accepted; protected P6 `run_p6.experience` now consumes `SOROK_MII_SURFACE@1` and its separate derivative exposure/gaze. Exact blob, canonical, full MII and inherited MIII joined PR checks PASS; MIII was already merged through #891. Source/evidence [protected integration packet](PROGRAMMA_SOROK/30_MII_PROTECTED_INTEGRATION_RECEIVING_20261111_R1.md). This **addendum is not R40 authority creation**: the underlying last qualified revision remains R39 with the original R37/R38/R39 evidence and 144-function/38-seam/83-gate no-drop. MI [#791](https://github.com/maidiu/rawlsing/pull/791) remains OPEN/unmerged; [Codex MI full completion commission](https://github.com/maidiu/rawlsing/blob/3f04a9cc140c746b30fe303074e4d7119e49a2b2/WORKER_COMMISSIONS/SOROK-MECHANISM-I-EXISTING-IMPLEMENTATION-COMPLETION-20261111-R1/00_COPY_PASTE_CODEX_LAUNCH.md) is ready. Native CAN/ADP scientific, actor permissions, live-provider validation, human wellbeing and production remain separate HELD; inherited FIABC/LiTS 144 PASS / 3 FAIL unchanged. Historical statements about MIII incoming below are now superseded, not erased.
 

@@ -1,0 +1,164 @@
+{
+  "schema": "SOROK_C05_PROJECTION_R3_VERDICT@1",
+  "issue": "C05",
+  "job": "sorok-c05-projection-r3-independent-g5-20261115-r3",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "same_independent_C05_nonauthor",
+  "author_session": "ses_e21b02ab1ffemxs6mpCCk6TCs1",
+  "independence": {
+    "same_reviewer_as_hostile_court": true,
+    "writer_of_repair": false,
+    "product_write": false,
+    "product_repair": false,
+    "b05_touched": false,
+    "protected_write_or_merge": false,
+    "new_agents_or_controller": false,
+    "provider_model_account_auth_global_permission_change": false
+  },
+  "checkout": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing",
+  "branch": "codex/sorok-c05-projection-r3-independent-g5-20261115-r3",
+  "final_report_sha": "fdce1cc266d914c8a28d290f881b42d745025d8c",
+  "implementation_tests_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+  "prior_mechanical_source": "5d771dd86767655534b23576075e5da2db4fba78",
+  "prior_review_sha": "c0cbe82f62a4e9516bf466575de3692c5c3081df",
+  "hostile_court_sha": "df4e51e75298bc1393c6f4b3640449e678bc44ff",
+  "protected_pre_main": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION",
+  "accept_scoped": true,
+  "accept_scoped_target": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION@4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+  "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "SCOPED_SOURCEFREE_RECEIVING_ONLY__NATIVE_PROTECTED_HELD",
+  "source_pins": {
+    "continuing_relations.py": {
+      "base_blob": "d2120fa9f691042336b8ec1f0b7aa9e150ea0b3a",
+      "final_blob": "8006440bd420ce8526bb2f333cd201ac077cbd22",
+      "final_sha256": "a9e0595f92005fffb0c93720b7d63881994df71ed14fbbd140a723cd78f965d1"
+    },
+    "supporting_actor.py": {
+      "blob": "98cb4ceb3e5e201815c0ac46ba93f773601d818c",
+      "sha256": "ba831554d7da2879cf8b32dd8a7a0337ef61e072408c24e3da69db43a9848b92",
+      "unchanged": true
+    },
+    "new_test": {
+      "path": "WORKER_RETURNS/SOROK_C05_ACTOR_PROJECTION_REPAIR_R3/tests/test_c05_actor_projection_repair_r3.py",
+      "blob": "a50b4cd744d7b949170a0fd9c77f5e0ec4c927ec",
+      "sha256": "944fd881f7a7046b0b58851a933ce59e6ed3f238e17c30c4f65f0c4ccb902f51"
+    }
+  },
+  "authorized_projection_correction": {
+    "scope": "only actor-facing projection/retrospective labels; no write/custody/promotion semantics change",
+    "items": [
+      "removed actor-facing withheld_relation_count from read_relation_history and nested read_actor_relative_context relation_scope",
+      "unified absent and fully unexposed scopes to HOLD_NOT_EXPOSED; no controller-only count API invented",
+      "viewer-specific event_perception from viewer's own event access; C12_EVENT_PERCEPTION basis only when PERCEIVED",
+      "plural relations retained; singular summary labeled MECHANICAL_FIRST_SORTED_RELATION_KEY and not salience/psychology",
+      "retrospective as-of-event-clock labels with event_time_relation_knowledge NOT_AVAILABLE / HOLD_SOURCE_AUTHORITY / usable_as_prior_event_cause false"
+    ]
+  },
+  "explicit_event_time_hold": {
+    "relation_projection": "RETROSPECTIVE_AS_OF_EVENT_CLOCK",
+    "event_time_relation_knowledge": "NOT_AVAILABLE",
+    "event_time_relation_status": "HOLD_SOURCE_AUTHORITY",
+    "within_clock_cutoff": "UNAVAILABLE",
+    "usable_as_prior_event_cause": false,
+    "event_time_capability_implemented": false,
+    "required_issuer": "original C05/CAN/ADP source owner",
+    "first_consumer": "continuing_relations.read_actor_relative_context"
+  },
+  "independent_results": {
+    "new_author_r3": {"passed": 4, "failed": 0, "exit": 0, "real_seconds": 28.59, "max_rss_bytes": 60055552},
+    "adapted_challenge1": {"checks_passed": 24, "checks_failed": 0, "exit": 0, "real_seconds": 11.39, "max_rss_bytes": 49078272},
+    "adapted_challenge2": {"checks_passed": 15, "checks_failed": 0, "exit": 0, "real_seconds": 11.11, "max_rss_bytes": 46968832},
+    "adapted_challenge3": {"checks_passed": 14, "checks_failed": 0, "exit": 0, "real_seconds": 8.3, "max_rss_bytes": 47931392},
+    "adapted89_new_abi": {"checks_passed": 89, "checks_failed": 0, "exit": 0, "real_seconds": 168.99, "max_rss_bytes": 56733696},
+    "r2_focused_promotion": {"passed": 1, "failed": 0, "exit": 0, "real_seconds": 7.66, "max_rss_bytes": 49999872},
+    "c01": {"passed": 6, "failed": 0, "exit": 0, "real_seconds": 13.84, "max_rss_bytes": 55848960},
+    "c04_identity": {"passed": 6, "failed": 0, "exit": 0, "real_seconds": 28.9, "max_rss_bytes": 66162688},
+    "c04_custody": {"passed": 12, "failed": 0, "exit": 0, "real_seconds": 58.18, "max_rss_bytes": 63930368},
+    "p2_owner": {"passed": 5, "failed": 0, "exit": 0, "real_seconds": 15.15, "max_rss_bytes": 57311232}
+  },
+  "preserved_obsolete_failures": {
+    "original_c05_author_suite": {"passed": 3, "failed": 2, "exit": 1, "failures": ["withheld_relation_count KeyError", "HOLD_UNKNOWN_SCOPE vs unified HOLD_NOT_EXPOSED"], "log": "evidence/original_c05_stdout.log"},
+    "original_challenge1": {"exit": 1, "reason": "KeyError: withheld_relation_count", "log": "evidence/original_challenge1_time.log"},
+    "original_challenge2": {"exit": 0, "reason": "same-clock relation still observed retrospectively; corrected ABI labels it", "report": "evidence/original_challenge2_post_fix_report.json"},
+    "original_challenge3": {"exit": 2, "reason": "only obsolete C12-basis-without-own-perception assertion fails", "report": "evidence/original_challenge3_post_fix_report.json"},
+    "prior89_pathadapted": {"exit": 1, "reason": "KeyError: withheld_relation_count at first unexposed assertion", "log": "evidence/prior89_pathadapted_time.log"}
+  },
+  "challenge1_projection": {
+    "same_event_viewer": true,
+    "a_b_full_actor_documents_equal": true,
+    "withheld_field_absent": true,
+    "named_absent_unexposed_same_hold": true,
+    "hidden_sever_exact_no_custody_disclosure": true,
+    "visible_positive_qualified": true,
+    "visible_sever_custody_restore_exact": true,
+    "cold_exact": true,
+    "report": "evidence/c05_challenge1_report.json",
+    "report_sha256": "7748546d7a45db50b57b13ac8f58bf9156639ee5c476c6498b7ccf18ffeea8f3"
+  },
+  "challenge2_projection": {
+    "event_document_hash_access_unchanged": true,
+    "same_clock_relation_visible_only_retrospectively": true,
+    "retrospective_labels_present": true,
+    "usable_as_prior_event_cause": false,
+    "later_clock_change_excluded": true,
+    "cold_exact": true,
+    "true_event_time_knowledge": "HOLD_SOURCE_AUTHORITY",
+    "report": "evidence/c05_challenge2_report.json",
+    "report_sha256": "b1ea910f99c59bbb80bebfa4385b83ec39811fd9bd40ce0cfe33eff2f0d97030"
+  },
+  "challenge3_projection": {
+    "viewer_event_access_not_perceived": true,
+    "relation_aware_true": true,
+    "basis_not_perceived_only_dated_relation_history": true,
+    "perceived_positive_basis_includes_c12": true,
+    "relation_count_plural": 2,
+    "mechanical_summary_label": true,
+    "both_parties_event_access_scope": "RELATION_PARTIES_ONLY",
+    "cold_private_exact": true,
+    "report": "evidence/c05_challenge3_report.json",
+    "report_sha256": "efda5d1b89a9d27fadab635a51370d63e9a310ed80ec415e3258e0f301550140"
+  },
+  "actual_first_consumer": "continuing_relations.read_relation_history / read_actor_relative_context",
+  "downstream_product_consumers_found": false,
+  "scope_boundary": {
+    "caller_supplied_relation_and_exposure": true,
+    "both_parties_mandatory_exposure": true,
+    "owner_source_receipt_qualifying_relation_knowledge": "NONE",
+    "coherent_append_still_accepted_as_caller_input": true,
+    "reader_relation_label": "DATED_EXPOSURE_ONLY",
+    "normal_event_perception_distinct_from_relation_knowledge": true,
+    "native_actor_truth": "HELD"
+  },
+  "residuals": [
+    "true same-clock event-time relation knowledge is not implemented; HOLD_SOURCE_AUTHORITY",
+    "both_parties_event_access inherited relation-party summary may reveal whether both relation parties perceived; labeled RELATION_PARTIES_ONLY, not used for viewer event_perception",
+    "non-party cannot form a named P/O hidden query because the public pair includes the viewer; hidden noninterference proved by A/B full-document equality and hidden severance",
+    "caller-supplied exposure/relation remains illustrative sourcefree input; no owner receipt proves relation knowledge",
+    "coherent public append change+head remains accepted as caller-authorized sourcefree input, not owner authentication",
+    "no downstream product consumer beyond C05 public readers was found",
+    "raw C12 private values remain developer-visible to a raw-store holder; actor-facing readers return NOT_READ",
+    "provider/token/cost and checkpoint/org/quota UNOBSERVED"
+  ],
+  "held": [
+    "native ADP-015/C4 relation authority and actor-qualified knowledge",
+    "true event-time relation knowledge and CAN/ADP/V3 science",
+    "psychology, autonomy and generated language",
+    "G2 selection, complete J1/Nadia response, J1/J2",
+    "D04/D05, durable acquisition",
+    "human/scientific/source-rights receiving and protected merge",
+    "#939 fleet, PYAT/Browser/SEAM, concurrency/fork, depth >2",
+    "C04 parent metadata/D03 caller-receipt residuals"
+  ],
+  "original_full_c05_actor_qualification": "UNPROVED",
+  "g1_g5": {
+    "G1_source_owner_custody": "PASS_SCOPED_SOURCEFREE",
+    "G2_build_actual_first_consumer": "PASS_SCOPED_PROJECTION",
+    "G3_falsification": "PASS_SCOPED_FALSIFICATION",
+    "G4_preservation_restore_cold": "PASS_SCOPED_PRESERVATION",
+    "G5_independent_receiving": "ACCEPT_SCOPED_SOURCEFREE_C05_ACTOR_PROJECTION"
+  },
+  "terminal": "STOP",
+  "next_gate": "none; frozen receiving complete. No additional author round, review campaign, protected merge, B05 reopening or automatic release."
+}
