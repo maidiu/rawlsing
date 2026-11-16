@@ -34,6 +34,7 @@ This workshop serves four duties:
 | 12 | [12 — Next workshop method and agenda](12_ANVIL_WORKSHOP_PROCEDURE.md) | Exhaustive requirements search and single-decision analytical process |
 | 13 | [13 — User's critical questions and decision boundaries](13_USER_QUESTIONS_AND_DECISION_BOUNDARIES.md) | Preserve the actual questions, objections, retractions and unresolved outcome |
 | 14 | [14 — 27 PYAT product obligations and 49 GAP titles](14_PRODUCT_SCIENCE_27_AND_GAP49_SNAPSHOT.md) | Navigable product-science source table, plus [unaltered original text](14A_PP26_UNALTERED_SOURCE_EXCERPT.txt) |
+| 15 | **[15 — Incoming SEAM social-field reverse-consumer report](15_SEAM_REVERSE_CONSUMER_SOCIAL_FIELD_AND_C11_DESIGN_IMPLICATIONS_R1.md)** | **2026-11-16 advisory**: how whole co-attitude configurations, positional distributions, independently qualified power, surrounding-others field, wave/sect/ancestry blind spots and developing identification/Horizon affect C11 source information sufficiency, Stage4 and FF/N9/SOROK handoffs **without new C11 psyche** |
 
 ## The workshop's decisive distinctions
 
