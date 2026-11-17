@@ -1,0 +1,1333 @@
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+Binary files a/tools and b/tools differ
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/d3a_fixture.py PACKAGE/tools/d3a_fixture.py
+--- a/tools
++++ b/tools
+@@ -0,0 +1,149 @@
++#!/usr/bin/env python3
++"""Deterministic fixtures for the D3A active-gate tests.
++
++Every fixture is derived from the byte-pinned source snapshot.  A fixture is a
++TEST INPUT, never evidence of real decision quality.
++"""
++from __future__ import annotations
++import hashlib, json, pathlib, sys
++sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
++from r7_integrated import DOMAINS, digest, sha, _tokens
++from r7_source_inventory import by_group
++
++ROOT=pathlib.Path(__file__).resolve().parents[1]
++INVENTORY=ROOT/'D3A_INVENTORY_SAMPLE.json'
++COURT=json.loads((ROOT/'02_BOUNDARY_CONTRACTS.json').read_text())
++
++
++def put(d,name,obj):
++    b=(json.dumps(obj,sort_keys=True,ensure_ascii=False)+'\n').encode()
++    (d/name).write_bytes(b)
++    return {'path':name,'sha256':sha(b)}
++
++
++def requirement_rows():
++    return [{'id':f'R{i+1}','domain':d,
++             'binding':'FUTURE_NONPRECLUSION' if d in ('SEAM_WORLD_ACTOR','FIELD_FORGE') else 'PRESENT_HARD',
++             'substantive_requirement':f'{d} must preserve the exact original scientific and evidence boundary rather than a convenience substitute field',
++             'why_needed':'This obligation is indispensable to the real first consumer regardless of the selected physical algorithm',
++             'loss_if_missing':'A physically elegant layout could erase a necessary downstream or historical distinction',
++             'first_consumer':'The current sourcefree native empirical recipient and the future governed possibility/world handoff',
++             'architectural_consequence':'Preserve an independently inspectable representation of each relevant scientific distinction and later interface',
++             'proof_or_owner_hold':'Check exact artifact semantics and replay with the qualified first consumer or preserve a named authority hold',
++             'evidence':{'path':'12_ORIGINAL_MANDATE_AND_DECISION_LEVERAGE.md',
++                         'sha256':sha((ROOT/'12_ORIGINAL_MANDATE_AND_DECISION_LEVERAGE.md').read_bytes()),
++                         'exact_excerpt':'No magical disappearance of historical functions or negative evidence'}}
++            for i,d in enumerate(DOMAINS)]
++
++
++def frame(inventory):
++    return {'schema':'ANVIL_R7_INTEGRATED','stage':'COMMON_FRAME',
++            'workflow':'ONE_INTEGRATED_INVESTIGATION_OPTIONAL_TARGETED_DUELS',
++            'phase':'BEFORE_ARCHITECTURE_SELECTION','architecture_selected':False,
++            'mandatory_rival_architecture':False,'duel_required':False,
++            'A_B_method':'OPTIONAL_SAME_QUESTION_SAME_EVIDENCE','scope':'C11_QUERY_DESIGN',
++            'source_cut':inventory['source_cut'],'protected_head':'31291d08179890852246c8742700e055168e9933',
++            'user_priority_source':'Pinned user instruction selecting the complete empirical system and lowest executable cost',
++            'first_real_consumer':'Authorized generic sourcefree saved C11 native I03 and I05 operations',
++            'currentness_gap_or_exact_verified_state':'Protected owner, lease and runtime conditions remain external and are not authenticated by this fixture',
++            'science_authority_boundary':'Field Forge, world and actor science cannot be issued by a physical architecture author',
++            'whole_program_mission':'Complete original function continuity and C11 empirical computation into later scientifically lawful world and person products',
++            'source_grades_authentic_by_local_test':False,'requirements':requirement_rows(),
++            'historical_conservation':None,'historical_source_spine':None}
++
++
++def identity_rows(inventory):
++    out=[]
++    for r in inventory['rows']:
++        g,rid=r['group'],r['id']
++        toks=sorted(_tokens(r['source_semantics']))[:6]
++        if g in ('K1_CAP',):state='PRESENT_PRESERVED'
++        elif g in ('PYAT_PC','P4R'):state='EXACT_OWNER_HOLD'
++        elif rid in ('SOROK','PRE-V3'):state='EXACT_OWNER_HOLD'
++        else:state='FUTURE_NONPRECLUDED'
++        row={'identity_id':rid,'disposition':state,'evidence_grade':'DOCUMENTARY',
++             'candidate_specific_effect':f"The selected candidate preserves the original semantic field {' '.join(toks)} for {rid} without substituting a derived convenience column",
++             'first_consumer_consequence':f"A cold authenticated read for {rid} returns the preserved field or the documented refusal rather than a silent default",
++             'conservation_or_refusal_witness':f"Replay of the located source row for {rid} is byte-identical, and a denied or routed case refuses instead of returning a positive",
++             'origin_row_sha256':r['origin']['row_sha256']}
++        if state=='EXACT_OWNER_HOLD':
++            row['owner']='Original K3/R15 or SOROK/PRE-V3 competent owner as recorded in the pinned source row'
++        if g=='PYAT_PC':row['adopted']=False
++        if g=='P4R':row['closed']=False
++        out.append(row)
++    return out
++
++
++def boundary_court():
++    out=[]
++    for t in COURT['boundaries']:
++        out.append({'boundary':t['id'],'contract_name':t['name'],
++                    'must_preserve_witness':t['must_preserve'],
++                    'status':'SOURCE_STATIC_CONSERVED',
++                    'positive':{'case':f"Positive: the {t['id']} producer supplies a lawful payload and the declared receiver observes the expected first effect",
++                                'expected':t['first_effect'],'evidence_grade':'DOCUMENTARY'},
++                    'negative':{'case':f"Negative: a denied, unreleased or incompatible input at {t['id']} must refuse instead of yielding a positive product",
++                                'expected':t['veto'],'evidence_grade':'DOCUMENTARY'},
++                    'restore':{'case':f"Restore: after the {t['id']} negative the original input is replayed and the positive result matches byte for byte",
++                               'expected':'exact restore matches the pre-negative result and the sealed original is unchanged','evidence_grade':'DOCUMENTARY'},
++                    'graph_edge_ids':['E'+t['id'][1:]]})
++    return out
++
++
++def typed_graph():
++    nodes=[{'id':'SRC','kind':'canonical evidence','owner':'PYAT source owner','authority':'OBSERVED','time_class':'OBSERVATION_TIME','payload_types':['event']},
++           {'id':'C11','kind':'sealed C11 store','owner':'C11 physical owner','authority':'OBSERVED','time_class':'OBSERVATION_TIME','payload_types':['event','row']},
++           {'id':'I03','kind':'native computation','owner':'PYAT I03/I05 owner','authority':'OBSERVED','time_class':'QUERY_TIME','payload_types':['row','joint']},
++           {'id':'F14','kind':'analytic family','owner':'PYAT F1-F4 owner','authority':'DESCRIPTIVE_MODELED','time_class':'QUERY_TIME','payload_types':['joint','contrast']},
++           {'id':'FF','kind':'Field Forge descriptive','owner':'PYAT Field Forge #1009','authority':'DESCRIPTIVE_MODELED','time_class':'QUERY_TIME','payload_types':['contrast','field']},
++           {'id':'WLD','kind':'objective world','owner':'independent structural scientist','authority':'STRUCTURAL_QUALIFIED','time_class':'AS_OF_TIME','payload_types':['field','relation']},
++           {'id':'FIC','kind':'particular fictional world','owner':'SOROK world particularizer','authority':'FICTIONAL_WORLD','time_class':'FICTIONAL_TIME','payload_types':['relation','encounter']},
++           {'id':'ACT','kind':'independent actor','owner':'SOROK actor owner','authority':'ACTOR_STATE','time_class':'ACTOR_TIME','payload_types':['encounter','state']}]
++    spec=[('E1','SRC','C11','event','T1'),('E2','C11','I03','row','T2'),('E3','I03','F14','joint','T2'),
++          ('E4','F14','FF','contrast','T3'),('E5','FF','WLD','field','T4'),('E6','WLD','FIC','relation','T5'),
++          ('E7','FIC','ACT','encounter','T6'),('E8','ACT','ACT','state','T7')]
++    nmap={n['id']:n for n in nodes}
++    edges=[]
++    for eid,a,b,pt,bd in spec:
++        edges.append({'id':eid,'from':a,'to':b,'payload_type':pt,'boundary':bd,
++                      'authority_from':nmap[a]['authority'],'authority_to':nmap[b]['authority'],
++                      'time_class':nmap[b]['time_class'],'evidence_grade':'DOCUMENTARY',
++                      'negative':f"A denied, unreleased or incompatible payload at {bd} refuses rather than producing a positive downstream product",
++                      'restore':f"Replaying the exact original input after the {bd} negative reproduces the pre-negative result byte for byte",
++                      'first_consumer':f"The declared {bd} receiver reads the payload at its own authority and time class",
++                      **({'external_source_warrant':'Independently sourced institutional material evidence with its own issuer, time basis and owner'}
++                         if (nmap[a]['authority'],nmap[b]['authority'])==('DESCRIPTIVE_MODELED','STRUCTURAL_QUALIFIED') else {})})
++    return {'nodes':nodes,'edges':edges}
++
++
++def decision(inventory,fptr):
++    fr=json.loads((pathlib.Path(fptr['path'])).read_text()) if False else None
++    d={'schema':'ANVIL_R7_INTEGRATED','stage':'INTEGRATED_DECISION','common_frame':fptr,
++       'decision_process':'ONE_SYNTHESIS_NO_MANDATORY_RIVAL','basis':'ANALYTICAL_SOURCE_GROUNDED',
++       'grade':'AUTHOR_PROPOSED_PENDING_C',
++       'architecture_description':'Retain canonical C11 authority, add a scoped derived execution interface, and preserve every proof and first-consumer boundary explicitly',
++       'entire_source_to_actor_dataflow':'From legitimate original source projection through canonical thirteen-family C11 and native I03 computation into F1-F4, Field Forge, an independently sourced objective world and a continuing actor',
++       'algorithm_and_data_structures':'Use one verified event store, two selective access routes, and reusable evidence-bearing respondent condition intermediates without a duplicate authority',
++       'resource_cost_reasoning':'Minimize repeated event reconstruction and qualified population evaluation before changing a physical store, while retaining the six-gibibyte process-tree ceiling',
++       'historical_function_conservation':'Conserve all 118 historical and prospective identities with their negative semantics, linked first consumers and truthful nonadoption of future science',
++       'scientific_boundary_and_nonpreclusion':'Observational survey relationships cannot become structural causes, fictional world facts, or actual actor experiences without separate competent science',
++       'strongest_surviving_objection':'The current body-json layout may impose first-query cost that an authenticated selective reader cannot avoid without an alternative indexing format',
++       'why_selected_over_feasible_alternatives':'It uses accepted existing semantic and physical assets and introduces less compatibility and authority risk than replacing the entire persistent representation',
++       'next_actual_engineering_operation':'Publish and independently receive the prepared saved-session correction, then implement one sourcefree shared population execution path under existing owner rights',
++       'single_selected_strategy':'Verified C11 with a prepared analytical execution layer',
++       'first_real_consumer':'Authorized generic sourcefree saved C11 native I03 and I05 operations',
++       'alternatives_considered':[{'technical_approach':'Wholesale independent SQL-backed physical release replacement','state':'VIABLE_NOT_SELECTED',
++         'why_not_selected_or_held':'It would reopen canonical replay and source authentication without evidence that it resolves the present repeated-evaluation cost'}],
++       'choice_reversers':[{'status':'RESOLVED_AT_ANALYTICAL_SCOPE','question':'Can qualified population preparation be reused without changing source truth?'}],
++       'requires_full_A_B_comparison':False,'competing_implementations_mandatory':False,
++       'architecture_claims_independent_acceptance':False,'targeted_duel':None,
++       'boundary_contract_sha256':sha((ROOT/'02_BOUNDARY_CONTRACTS.json').read_bytes()),
++       'identity_dispositions':identity_rows(inventory),'boundary_court':boundary_court(),'typed_graph':typed_graph(),
++       'requirement_dispositions':[{'requirement_id':r['id'],
++          'disposition':'FUTURE_NONPRECLUDED' if r['binding']=='FUTURE_NONPRECLUSION' else 'PRESENT_PRESERVED',
++          'evidence_grade':'DOCUMENTARY',
++          'actual_design_effect':'Keep the original documented capacity and a typed consumer boundary with explicit negative and restoration semantics',
++          'specific_first_consumer_path':'Native saved I03 facts can lawfully feed qualified conditional and possibility interfaces under source authority',
++          'conservation_or_refusal_witness':'Frozen source contracts specify the required denial and restoration behaviour, not an executed proof',
++          'evidence':r['evidence']} for r in requirement_rows()]}
++    return d
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/r7_builder.py PACKAGE/tools/r7_builder.py
+--- a/tools
++++ b/tools
+@@ -0,0 +1,128 @@
++#!/usr/bin/env python3
++"""ANVIL R7 deterministic first-reader builder.
++
++Restores the six useful R5 projections for the ACTIVE integrated workflow, bound
++to the source-qualified 118 inventory instead of an R5 SPINE.  Output is a pure
++function of the decision document: identical input bytes => identical output
++bytes.  A PASS here is a construction artifact, not science or receiving.
++"""
++from __future__ import annotations
++import argparse, csv, hashlib, io, json, pathlib, sys
++
++PROJECTIONS=('DESIGN_DECISION.md','COVERAGE_TO_DECISION.tsv','DOWNSTREAM_BUILD_HANDOFF.jsonl',
++             'EVIDENCE_AND_FALSIFIER_INDEX.jsonl','GLOBAL_ARCHITECTURE.json','BOUNDARY_TRACE.json')
++
++def sha(b):return hashlib.sha256(b).hexdigest()
++def canon(x):return hashlib.sha256(json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
++def _j(x):return json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()
++
++
++def render_decision(decision,frame,history):
++    L=['# ANVIL — integrated decision (author-proposed, pending independent C)','',
++       f"**Grade:** {decision.get('grade')}  ",f"**Basis:** {decision.get('basis')}  ",
++       f"**Scope:** {frame.get('scope')}  ",
++       f"**Source cut:** {frame.get('source_cut')}  ",
++       f"**Inventory:** {decision.get('inventory_sha256')}  ",'',
++       '## Selected strategy','',decision.get('single_selected_strategy') or '(none: exact hold)','',
++       '## Architecture','',decision.get('architecture_description',''),'',
++       '## Source-to-actor dataflow','',decision.get('entire_source_to_actor_dataflow',''),'',
++       '## Algorithm and data structures','',decision.get('algorithm_and_data_structurees',decision.get('algorithm_and_data_structures','')),'',
++       '## Resource-cost reasoning','',decision.get('resource_cost_reasoning',''),'',
++       '## Historical function conservation','',decision.get('historical_function_conservation',''),'',
++       '## Scientific boundary and nonpreclusion','',decision.get('scientific_boundary_and_nonpreclusion',''),'',
++       '## Strongest surviving objection','',decision.get('strongest_surviving_objection',''),'',
++       '## Why selected over feasible alternatives','',decision.get('why_selected_over_feasible_alternatives',''),'',
++       '## Next actual engineering operation','',decision.get('next_actual_engineering_operation',''),'',
++       '## 118 identity disposition summary','']
++    rows=decision.get('identity_dispositions') or []
++    counts={}
++    for r in rows:counts[r.get('disposition')]=counts.get(r.get('disposition'),0)+1
++    for k in sorted(counts):L.append(f'- {k}: {counts[k]}')
++    L+=['',f'Total identities reconciled: {len(rows)}','',
++        '## Proof boundary','',
++        'This document is generated deterministically from an author proposal. It is not independent review, '
++        'not protected receiving, not source/science/actor rights and not a native execution receipt.']
++    return ('\n'.join(L)+'\n').encode()
++
++
++def render_coverage(decision,history):
++    order={'K1_CAP':0,'PYAT_PC':1,'P4R':2,'SEAM_B':3,'SEAM_S':4,'ANVIL_L':5,'BOUNDARY':6,'TERMINAL':7}
++    src={r['id']:r for r in history.get('rows',[]) if isinstance(r,dict)}
++    rows=decision.get('identity_dispositions') or []
++    buf=io.StringIO();w=csv.writer(buf,delimiter='\t',lineterminator='\n')
++    w.writerow(['group','id','disposition','candidate_specific_effect','first_consumer_consequence',
++                'conservation_or_refusal_witness','origin_row_sha256','evidence_grade','owner'])
++    for r in sorted(rows,key=lambda r:(order.get(src.get(r.get('identity_id'),{}).get('group'),9),r.get('identity_id') or '')):
++        s=src.get(r.get('identity_id'),{})
++        w.writerow([s.get('group',''),r.get('identity_id'),r.get('disposition'),r.get('candidate_specific_effect'),
++                    r.get('first_consumer_consequence'),r.get('conservation_or_refusal_witness'),
++                    r.get('origin_row_sha256'),r.get('evidence_grade'),r.get('owner') or ''])
++    return buf.getvalue().encode()
++
++
++def _handoffs(decision,frame):
++    out=[]
++    for h in decision.get('handoffs') or []:
++        if isinstance(h,dict):out.append(h)
++    if out:return out
++    for b in decision.get('boundary_court') or []:
++        if not isinstance(b,dict):continue
++        out.append({'id':'HO-'+str(b.get('boundary')),
++                    'boundary':b.get('boundary'),
++                    'producer':b.get('positive',{}).get('case') if isinstance(b.get('positive'),dict) else None,
++                    'receiver':frame.get('first_real_consumer'),
++                    'required_now_or_future':('BUILD_OR_HOLD' if b.get('status')=='EXACT_OWNER_HOLD' else 'MUST_ALLOW_FUTURE'),
++                    'status':b.get('status'),
++                    'owner':b.get('owner'),
++                    'negative':b.get('negative'),
++                    'restore':b.get('restore'),
++                    'graph_edge_ids':b.get('graph_edge_ids')})
++    return out
++
++
++def _evidence(decision):
++    out=[]
++    for i,e in enumerate(decision.get('evidence_index') or []):
++        if isinstance(e,dict):out.append(e)
++    for b in decision.get('boundary_court') or []:
++        if not isinstance(b,dict):continue
++        for kind in ('positive','negative','restore'):
++            t=b.get(kind)
++            if isinstance(t,dict):
++                out.append({'id':f"{b.get('boundary')}:{kind}",'boundary':b.get('boundary'),'kind':kind,
++                            'case':t.get('case'),'expected':t.get('expected'),'evidence_grade':t.get('evidence_grade')})
++    return out
++
++
++def build(decision,frame,history):
++    out={}
++    out['DESIGN_DECISION.md']=render_decision(decision,frame,history)
++    out['COVERAGE_TO_DECISION.tsv']=render_coverage(decision,history)
++    out['DOWNSTREAM_BUILD_HANDOFF.jsonl']=b''.join(_j(x)+b'\n' for x in _handoffs(decision,frame))
++    out['EVIDENCE_AND_FALSIFIER_INDEX.jsonl']=b''.join(_j(x)+b'\n' for x in _evidence(decision))
++    out['GLOBAL_ARCHITECTURE.json']=(json.dumps(decision.get('typed_graph') or {},sort_keys=True,ensure_ascii=False,indent=2)+'\n').encode()
++    out['BOUNDARY_TRACE.json']=(json.dumps({'boundary_contract_sha256':decision.get('boundary_contract_sha256'),
++        'boundary_court':decision.get('boundary_court') or []},sort_keys=True,ensure_ascii=False,indent=2)+'\n').encode()
++    return out
++
++
++def write(decision,frame,history,outdir):
++    d=pathlib.Path(outdir);d.mkdir(parents=True,exist_ok=True)
++    files=build(decision,frame,history)
++    man={}
++    for name,data in files.items():
++        (d/name).write_bytes(data);man[name]=sha(data)
++    manifest={'schema':'ANVIL_R7_BUILDER_PROJECTIONS','files':man,'digest':canon(man),
++              'scope':'DETERMINISTIC_CONSTRUCTION_ONLY__NO_SCIENCE__NO_RECEIVING'}
++    (d/'PROJECTION_MANIFEST.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n')
++    return manifest
++
++
++def main():
++    ap=argparse.ArgumentParser();ap.add_argument('decision');ap.add_argument('frame');ap.add_argument('inventory')
++    ap.add_argument('--out',required=True);a=ap.parse_args()
++    dec=json.loads(pathlib.Path(a.decision).read_text());fr=json.loads(pathlib.Path(a.frame).read_text())
++    inv=json.loads(pathlib.Path(a.inventory).read_text())
++    print(json.dumps(write(dec,fr,inv,a.out),indent=2));return 0
++
++if __name__=='__main__':sys.exit(main())
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/r7_integrated.py PACKAGE/tools/r7_integrated.py
+--- a/tools
++++ b/tools
+@@ -9,6 +9,7 @@
+ from __future__ import annotations
+ import argparse, hashlib, json, pathlib, re, sys
+ from anvil import REQUIRED
++from r7_source_inventory import verify_inventory, row_hash_map
+ 
+ SCHEMA='ANVIL_R7_INTEGRATED'
+ HEX40=re.compile(r'^[a-f0-9]{40}$')
+@@ -54,8 +55,25 @@
+     body=p.read_bytes()
+     if sha(body)!=wanted or quote.encode() not in body:errors.append(code+':SOURCE_HASH_OR_QUOTE_DISAGREES')
+ 
+-def check_history(obj,errors):
+-    if not isinstance(obj,dict) or obj.get('schema')!='ANVIL_R7_INHERITED_CONSERVATION':
++def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=True):
++    """S1 conservation origin.  A bare R5/R6 SPINE is NOT accepted as origin.
++
++    Two lawful origins exist:
++      * ANVIL_SOURCE_QUALIFIED_INVENTORY — every row byte-located in supplied source;
++      * ANVIL_R7_INHERITED_CONSERVATION — legacy transfer, admissible only when it
++        points at a verified source-qualified inventory (`origin_inventory`).
++    This removes the false dependency on an already-finished R5 P2 SPINE while
++    still refusing a synthetic SPINE that merely imitates the original.
++    """
++    if not isinstance(obj,dict):
++        errors.append('HISTORY:NOT_OBJECT');return
++    schema=obj.get('schema')
++    if schema=='ANVIL_SOURCE_QUALIFIED_INVENTORY':
++        verify_inventory(obj,source_root or '',errors,'HISTORY')
++        return
++    if schema in ('ANVIL_SPINE_R5','ANVIL_SPINE_R6'):
++        errors.append('HISTORY:NOT_SOURCE_QUALIFIED_INVENTORY');return
++    if schema!='ANVIL_R7_INHERITED_CONSERVATION':
+         errors.append('HISTORY:WRONG_SCHEMA');return
+     coverage=obj.get('coverage',{})
+     if not isinstance(coverage,dict) or set(coverage)!=set(REQUIRED):
+@@ -77,6 +95,19 @@
+                 errors.append('HISTORY:FALSE_PROOF_CLOSURE:'+rid)
+     if count!=sum(map(len,REQUIRED.values())):errors.append('HISTORY:COUNT_DRIFT')
+     if obj.get('source_authentication')!='NOT_AUTHENTICATED_BY_LOCAL_CHECK':errors.append('HISTORY:FALSE_SOURCE_AUTHENTICATION')
++    if not require_origin:return
++    inv=load(evidence_root,obj.get('origin_inventory'),errors,'HISTORY:ORIGIN_INVENTORY') if evidence_root else None
++    if inv is None:
++        errors.append('HISTORY:LEGACY_TRANSFER_WITHOUT_SOURCE_QUALIFIED_ORIGIN')
++    else:
++        verify_inventory(inv,source_root or '',errors,'HISTORY:ORIGIN')
++        imap={r.get('id'):r for r in inv.get('rows',[]) if isinstance(r,dict)}
++        for group,ids in REQUIRED.items():
++            for rid in ids:
++                a=coverage.get(group,{}).get(rid,{});b=imap.get(rid,{})
++                for key in ('source_semantics','negative_meaning','consumer_or_hold'):
++                    if isinstance(a,dict) and isinstance(b,dict) and a.get(key)!=b.get(key):
++                        errors.append('HISTORY:TRANSFER_NOT_VERBATIM_TO_SOURCE:'+rid+':'+key)
+ 
+ def check_frame(frame,evidence_root,source_root):
+     e=[]
+@@ -111,15 +142,20 @@
+         if domain not in have:e.append('FRAME:WHOLE_MISSION_DOMAIN_MISSING:'+domain)
+     history=load(evidence_root,frame.get('historical_conservation'),e,'FRAME:HISTORY')
+     if history is not None:
+-        check_history(history,e)
+-        original=load(evidence_root,frame.get('historical_source_spine'),e,'FRAME:SOURCE_SPINE')
+-        if original is not None:
+-            if original.get('schema') not in ('ANVIL_SPINE_R5','ANVIL_SPINE_R6'):
+-                e.append('FRAME:SOURCE_SPINE_NOT_EXISTING_R5_R6')
+-            if original.get('coverage')!=history.get('coverage'):
+-                e.append('FRAME:HISTORICAL_TRANSFER_NOT_BYTE_EQUIVALENT_TO_SOURCE_COVERAGE')
+-            if history.get('source_spine_sha256')!=frame['historical_source_spine'].get('sha256'):
+-                e.append('FRAME:HISTORICAL_TRANSFER_NOT_PINNED_TO_ORIGINAL_SPINE')
++        check_history(history,e,evidence_root,source_root)
++        spine=frame.get('historical_source_spine')
++        if spine is not None:
++            original=load(evidence_root,spine,e,'FRAME:SOURCE_SPINE')
++            if original is not None:
++                if original.get('schema') not in ('ANVIL_SPINE_R5','ANVIL_SPINE_R6'):
++                    e.append('FRAME:SOURCE_SPINE_NOT_EXISTING_R5_R6')
++                if history.get('schema')=='ANVIL_R7_INHERITED_CONSERVATION':
++                    if original.get('coverage')!=history.get('coverage'):
++                        e.append('FRAME:HISTORICAL_TRANSFER_NOT_BYTE_EQUIVALENT_TO_SOURCE_COVERAGE')
++                # A SPINE may accompany the frame as a historical pointer only.  It is
++                # never the origin of S1: every row must still resolve to real bytes.
++                if not isinstance(original.get('coverage'),dict) or sum(len(v) for v in original['coverage'].values() if isinstance(v,dict))!=sum(map(len,REQUIRED.values())):
++                    e.append('FRAME:SOURCE_SPINE_NOT_THE_118_UNIVERSE')
+     if frame.get('duel_required') is not False:e.append('FRAME:UNNECESSARY_DUEL_REQUIRED')
+     return {'status':'RED' if e else 'PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED','errors':sorted(set(e)),
+             'requirements':len(rows),'domains':len(have&set(DOMAINS))}
+@@ -140,6 +176,64 @@
+     if not good(duel.get('integrated_adjudication'),50):errors.append('DECISION:DUEL_NOT_INTEGRATED')
+     if duel.get('independence_proven_by_local_check') is not False:errors.append('DECISION:DUEL_SELF_CERTIFIES_INDEPENDENCE')
+ 
++STOP=set('the and for with from that this must shall into their there which where when only also each such than then they them these those have has been being will would could should about under over more most less least same different other another not non no yes can may need needs needed used using case cases given provide provided require required requirement specific exactly identity identities source sources evidence'.split())
++
++def _tokens(text):
++    return {t for t in re.findall(r'[a-z0-9_]{5,}',(text or '').lower()) if t not in STOP}
++
++def check_identity_crosswalk(decision,frame,history,identity_map,errors):
++    """S3 must reconcile the WHOLE 118 identity universe, not nine mission domains.
++
++    A complete 53-row subset with one distinct historical functional decision
++    missing is a hard RED, not a scoped PASS.
++    """
++    rows=decision.get('identity_dispositions')
++    inv_sha=identity_map.get('__inventory_sha__')
++    if decision.get('inventory_sha256')!=inv_sha:
++        errors.append('DECISION:INVENTORY_NOT_PINNED')
++    if not isinstance(rows,list):
++        errors.append('DECISION:NO_IDENTITY_DISPOSITIONS');return 0
++    want={
++        'K1_CAP':set(REQUIRED['K1_CAP']),'PYAT_PC':set(REQUIRED['PYAT_PC']),'P4R':set(REQUIRED['P4R']),
++        'SEAM_B':set(REQUIRED['SEAM_B']),'SEAM_S':set(REQUIRED['SEAM_S']),'ANVIL_L':set(REQUIRED['ANVIL_L']),
++        'BOUNDARY':set(REQUIRED['BOUNDARY']),'TERMINAL':set(REQUIRED['TERMINAL'])}
++    got=set();dupes=set()
++    for x in rows:
++        if not isinstance(x,dict):errors.append('DECISION:BAD_IDENTITY_ROW');continue
++        rid=x.get('identity_id')
++        if rid in got:dupes.add(rid)
++        got.add(rid)
++        group=next((g for g,ids in want.items() if rid in ids),None)
++        if group is None:errors.append('DECISION:UNKNOWN_IDENTITY:'+str(rid));continue
++        state=x.get('disposition')
++        if state not in DISPOS:errors.append('DECISION:BAD_IDENTITY_DISPOSITION:'+str(rid))
++        for k in ('candidate_specific_effect','first_consumer_consequence','conservation_or_refusal_witness'):
++            if not good(x.get(k),45):errors.append('DECISION:VACUOUS_IDENTITY_DISPOSITION:'+str(rid)+':'+k)
++        oh=x.get('origin_row_sha256')
++        if not isinstance(oh,str) or not HEX64.fullmatch(oh) or identity_map.get(rid)!=oh:
++            errors.append('DECISION:IDENTITY_ORIGIN_NOT_VERIFIED:'+str(rid))
++        inv=history.get('rows') if isinstance(history.get('rows'),list) else []
++        sem=next((r.get('source_semantics','') for r in inv if isinstance(r,dict) and r.get('id')==rid),'')
++        overlap=_tokens(x.get('candidate_specific_effect'))&_tokens(sem)
++        if len(overlap)<2:
++            errors.append('DECISION:IDENTITY_EFFECT_NOT_GROUNDED_IN_ORIGIN:'+str(rid))
++        if group=='PYAT_PC':
++            if x.get('adopted') is not False:errors.append('DECISION:UNAUTHORIZED_PROPOSAL_ADOPTION:'+str(rid))
++            if state=='PRESENT_PRESERVED':errors.append('DECISION:UNAUTHORIZED_PROPOSAL_ADOPTION:'+str(rid))
++        if group=='P4R':
++            if x.get('closed') is not False:errors.append('DECISION:FALSE_PROOF_CLOSURE:'+str(rid))
++            if state=='PRESENT_PRESERVED':errors.append('DECISION:FALSE_PROOF_CLOSURE:'+str(rid))
++        if state=='EXACT_OWNER_HOLD' and not good(x.get('owner'),8):
++            errors.append('DECISION:IDENTITY_HOLD_WITHOUT_OWNER:'+str(rid))
++    if dupes:errors.append('DECISION:DUPLICATE_IDENTITY_DISPOSITION:'+','.join(sorted(dupes)[:4]))
++    for g,ids in want.items():
++        miss=sorted(ids-got)
++        if miss:errors.append('DECISION:IDENTITY_UNIVERSE_INCOMPLETE:'+g+':'+','.join(miss[:4]))
++    extra=sorted(got-set().union(*want.values()))
++    if extra:errors.append('DECISION:IDENTITY_UNIVERSE_HAS_EXTRA:'+','.join(extra[:4]))
++    return len(rows)
++
++
+ def check_decision(decision,evidence_root,source_root):
+     e=[]
+     if not isinstance(decision,dict) or decision.get('schema')!=SCHEMA or decision.get('stage')!='INTEGRATED_DECISION':
+@@ -150,6 +244,17 @@
+     if fr['status']=='RED':e.extend('DECISION:INVALID_FRAME:'+v for v in fr['errors'])
+     frozen_sha=digest(frame)
+     if decision.get('frame_sha256')!=frozen_sha:e.append('DECISION:FRAME_NOT_FROZEN')
++    hist=load(evidence_root,frame.get('historical_conservation'),e,'DECISION:HISTORY')
++    idmap={'__inventory_sha__':digest(hist) if hist else None}
++    if isinstance(hist,dict):
++        if hist.get('schema')=='ANVIL_SOURCE_QUALIFIED_INVENTORY':
++            idmap.update(row_hash_map(hist))
++        else:
++            for r in hist.get('coverage',{}).values():
++                if isinstance(r,dict):
++                    for rid,v in r.items():
++                        if isinstance(v,dict) and isinstance(v.get('row_sha256'),str):idmap[rid]=v['row_sha256']
++    check_identity_crosswalk(decision,frame,hist if isinstance(hist,dict) else {},idmap,e)
+     if decision.get('first_real_consumer')!=frame.get('first_real_consumer'):e.append('DECISION:FIRST_CONSUMER_DRIFT')
+     if decision.get('decision_process')!='ONE_SYNTHESIS_NO_MANDATORY_RIVAL':e.append('DECISION:WRONG_PROCESS')
+     if decision.get('basis') not in ('ANALYTICAL_SOURCE_GROUNDED','EXECUTED_EXISTING_CODE','BOUNDED_DISCRIMINATOR','TARGETED_DUEL'):
+@@ -208,6 +313,121 @@
+     return {'status':'RED' if e else 'PASS_LOCAL_INTEGRATED_DECISION_PENDING_C','errors':sorted(set(e)),
+             'covered':len(covers),'requirement_total':len(rids)}
+ 
++AUTHORITIES={'EXTERNAL_OBSERVED','OBSERVED','DESCRIPTIVE_MODELED','STRUCTURAL_QUALIFIED','FICTIONAL_WORLD','ACTOR_STATE','HISTORY_EVENT','RIGHTS_METADATA'}
++FORBIDDEN_UPGRADES={('DESCRIPTIVE_MODELED','STRUCTURAL_QUALIFIED'),('DESCRIPTIVE_MODELED','OBSERVED'),
++                    ('FICTIONAL_WORLD','OBSERVED'),('ACTOR_STATE','OBSERVED'),('FICTIONAL_WORLD','STRUCTURAL_QUALIFIED'),
++                    ('ACTOR_STATE','STRUCTURAL_QUALIFIED'),('HISTORY_EVENT','OBSERVED')}
++COURT_STATUS={'ACTUAL_PROVED_AT_SCOPE','SOURCE_STATIC_CONSERVED','EXACT_OWNER_HOLD'}
++PROJECTIONS=('DESIGN_DECISION.md','COVERAGE_TO_DECISION.tsv','DOWNSTREAM_BUILD_HANDOFF.jsonl',
++             'EVIDENCE_AND_FALSIFIER_INDEX.jsonl','GLOBAL_ARCHITECTURE.json','BOUNDARY_TRACE.json')
++
++
++def check_boundary_court(packet,source_root,errors):
++    """T1-T7 must each carry positive, negative and restore (or a named exact hold)."""
++    court=packet.get('boundary_court')
++    if not isinstance(court,list):errors.append('C:NO_BOUNDARY_COURT');return
++    frozen={x['id']:x for x in json.loads((pathlib.Path(source_root)/'02_BOUNDARY_CONTRACTS.json').read_bytes())['boundaries']}
++    try:fsha=sha((pathlib.Path(source_root)/'02_BOUNDARY_CONTRACTS.json').read_bytes())
++    except OSError:fsha=None
++    if packet.get('boundary_contract_sha256')!=fsha:errors.append('C:BOUNDARY_CONTRACT_NOT_PINNED')
++    ids=set()
++    for row in court:
++        if not isinstance(row,dict):errors.append('C:BAD_BOUNDARY_ROW');continue
++        tid=row.get('boundary');ids.add(tid)
++        base=frozen.get(tid)
++        if base is None:errors.append('C:UNKNOWN_BOUNDARY:'+str(tid));continue
++        if row.get('contract_name')!=base['name']:errors.append('C:BOUNDARY_REDEFINED:'+str(tid))
++        if len(_tokens(row.get('must_preserve_witness'))&_tokens(base['must_preserve']))<3:
++            errors.append('C:BOUNDARY_MUST_PRESERVE_NOT_WITNESSED:'+str(tid))
++        status=row.get('status')
++        if status not in COURT_STATUS:errors.append('C:BAD_BOUNDARY_STATUS:'+str(tid))
++        if status=='EXACT_OWNER_HOLD':
++            if not good(row.get('owner'),8):errors.append('C:BOUNDARY_HOLD_WITHOUT_OWNER:'+str(tid))
++            if not good(row.get('exact_hold'),40):errors.append('C:BOUNDARY_HOLD_NOT_EXACT:'+str(tid))
++            continue
++        for k in ('positive','negative','restore'):
++            t=row.get(k)
++            if not isinstance(t,dict):errors.append('C:BOUNDARY_MISSING_'+k.upper()+':'+str(tid));continue
++            if not good(t.get('case'),40):errors.append('C:BOUNDARY_'+k.upper()+'_CASE_VACUOUS:'+str(tid))
++            if not good(t.get('expected'),20):errors.append('C:BOUNDARY_'+k.upper()+'_EXPECTATION_VACUOUS:'+str(tid))
++            if t.get('evidence_grade') not in GRADES:errors.append('C:BOUNDARY_'+k.upper()+'_BAD_GRADE:'+str(tid))
++        if not row.get('graph_edge_ids'):errors.append('C:BOUNDARY_NOT_GRAPHLY_CONNECTED:'+str(tid))
++    if ids!=set(frozen):errors.append('C:BOUNDARY_UNIVERSE_INCOMPLETE:'+','.join(sorted(set(frozen)-ids)))
++
++
++def check_typed_graph(packet,errors):
++    """One typed source->world->actor graph with no authority or time hole."""
++    g=packet.get('typed_graph')
++    if not isinstance(g,dict):errors.append('C:NO_TYPED_GRAPH');return
++    nodes=g.get('nodes');edges=g.get('edges')
++    if not isinstance(nodes,list) or not nodes:errors.append('C:GRAPH_NO_NODES');return
++    if not isinstance(edges,list) or not edges:errors.append('C:GRAPH_NO_EDGES');return
++    nmap={}
++    for n in nodes:
++        if not isinstance(n,dict):errors.append('C:GRAPH_BAD_NODE');continue
++        nid=n.get('id')
++        if nid in nmap:errors.append('C:GRAPH_DUPLICATE_NODE:'+str(nid))
++        nmap[nid]=n
++        for k in ('kind','owner','time_class'):
++            if not good(n.get(k),6):errors.append('C:GRAPH_NODE_HOLE:'+str(nid)+':'+k)
++        if n.get('authority') not in AUTHORITIES:errors.append('C:GRAPH_NODE_BAD_AUTHORITY:'+str(nid))
++        if not isinstance(n.get('payload_types'),list) or not n['payload_types']:
++            errors.append('C:GRAPH_NODE_NO_PAYLOAD:'+str(nid))
++    emap={}
++    covered=set()
++    for x in edges:
++        if not isinstance(x,dict):errors.append('C:GRAPH_BAD_EDGE');continue
++        eid=x.get('id')
++        if eid in emap:errors.append('C:GRAPH_DUPLICATE_EDGE:'+str(eid))
++        emap[eid]=x
++        a=nmap.get(x.get('from'));b=nmap.get(x.get('to'))
++        if a is None or b is None:errors.append('C:GRAPH_ORPHAN_EDGE:'+str(eid));continue
++        bd=x.get('boundary');covered.add(bd)
++        if bd not in REQUIRED['BOUNDARY']:errors.append('C:GRAPH_BAD_BOUNDARY:'+str(eid))
++        pt=x.get('payload_type')
++        if pt not in a.get('payload_types',[]) or pt not in b.get('payload_types',[]):
++            errors.append('C:GRAPH_TYPE_HOLE:'+str(eid))
++        af,at=a.get('authority'),b.get('authority')
++        if x.get('authority_from')!=af or x.get('authority_to')!=at:
++            errors.append('C:GRAPH_AUTHORITY_HOLE:'+str(eid))
++        if (af,at) in FORBIDDEN_UPGRADES and not good(x.get('external_source_warrant'),40):
++            errors.append('C:GRAPH_AUTHORITY_UPGRADE_WITHOUT_WARRANT:'+str(eid))
++        if not good(x.get('time_class'),6) or x.get('time_class')!=b.get('time_class'):
++            errors.append('C:GRAPH_TIME_HOLE:'+str(eid))
++        if not good(x.get('negative'),30):errors.append('C:GRAPH_NO_NEGATIVE:'+str(eid))
++        if not good(x.get('restore'),30):errors.append('C:GRAPH_NO_RESTORE:'+str(eid))
++        if not good(x.get('first_consumer'),10):errors.append('C:GRAPH_NO_CONSUMER:'+str(eid))
++        if x.get('evidence_grade') not in GRADES:errors.append('C:GRAPH_BAD_EVIDENCE_GRADE:'+str(eid))
++    for tid in REQUIRED['BOUNDARY']:
++        if tid not in covered:errors.append('C:GRAPH_BOUNDARY_UNROUTED:'+tid)
++    adj={}
++    for x in edges:
++        if isinstance(x,dict):adj.setdefault(x.get('from'),set()).add(x.get('to'))
++    start=[n for n,v in nmap.items() if v.get('authority')=='OBSERVED']
++    goal={n for n,v in nmap.items() if v.get('authority')=='ACTOR_STATE'}
++    if not start:errors.append('C:GRAPH_NO_OBSERVED_SOURCE_NODE')
++    if not goal:errors.append('C:GRAPH_NO_ACTOR_TERMINAL_NODE')
++    seen=set(start);stack=list(start)
++    while stack:
++        cur=stack.pop()
++        for nxt in adj.get(cur,()):
++            if nxt not in seen:seen.add(nxt);stack.append(nxt)
++    if goal and not (seen&goal):errors.append('C:GRAPH_SOURCE_TO_ACTOR_DISCONNECTED')
++
++
++def check_projections(packet,evidence_root,errors):
++    """The six deterministic first-reader projections must exist and match bytes."""
++    man=packet.get('projection_manifest')
++    if not isinstance(man,dict):errors.append('C:NO_BUILDER_PROJECTIONS');return
++    if set(man.get('files',{}))!=set(PROJECTIONS):errors.append('C:PROJECTION_SET_INCOMPLETE')
++    if man.get('digest')!=digest(man.get('files',{})):errors.append('C:PROJECTION_MANIFEST_NOT_SELF_CONSISTENT')
++    root=pathlib.Path(evidence_root).resolve()
++    for name,want in (man.get('files') or {}).items():
++        p=(root/name).resolve()
++        if not p.is_relative_to(root) or not p.is_file():errors.append('C:PROJECTION_MISSING:'+name);continue
++        if sha(p.read_bytes())!=want:errors.append('C:PROJECTION_BYTES_CHANGED:'+name)
++
++
+ def check_C(packet,evidence_root,source_root):
+     e=[]
+     if not isinstance(packet,dict) or packet.get('schema')!=SCHEMA or packet.get('stage')!='INDEPENDENT_C':
+@@ -239,6 +459,10 @@
+         e.append('C:FALSE_C_GRADE')
+     if packet.get('original_source_granted_by_local_check') is not False or packet.get('owner_granted_by_local_check') is not False:
+         e.append('C:FALSE_AUTHORITY')
++    check_boundary_court(packet,source_root,e)
++    check_typed_graph(packet,e)
++    check_projections(packet,evidence_root,e)
++    if packet.get('claims_protected_h1') is not False:e.append('C:FALSE_PROTECTED_H1')
+     return {'status':'RED' if e else 'PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED','errors':sorted(set(e))}
+ 
+ def check(stage,packet,evidence_root,source_root=None):
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/r7_source_inventory.py PACKAGE/tools/r7_source_inventory.py
+--- a/tools
++++ b/tools
+@@ -0,0 +1,337 @@
++#!/usr/bin/env python3
++"""Source-qualified 118 identity inventory for ANVIL S1.
++
++This module replaces the *circular* S1 dependency on a finished R5/R6 P2
++SPINE with a source-origin inventory whose every row is byte-located in an
++immutable source object (Git commit + blob + exact row bytes).
++
++It authenticates BYTES and LOCATION.  It does NOT authenticate semantics,
++science, owner rights, native execution or protected receiving.
++"""
++from __future__ import annotations
++import argparse, hashlib, json, pathlib, re, sys
++
++SCHEMA='ANVIL_SOURCE_QUALIFIED_INVENTORY'
++CUSTODY_SCHEMA='ANVIL_D3A_SOURCE_CUSTODY'
++GRADE='SOURCE_QUALIFIED_DOCUMENTARY_NOT_SCIENCE'
++AUTH='BYTE_VERIFIED_AGAINST_SUPPLIED_SOURCE_ROOT_BY_LOCAL_CHECK'
++HEX40=re.compile(r'^[a-f0-9]{40}$')
++HEX64=re.compile(r'^[a-f0-9]{64}$')
++INVALID=('todo','tbd','placeholder','to be determined','see above','n/a','not applicable')
++
++GROUPS=('K1_CAP','PYAT_PC','P4R','SEAM_B','SEAM_S','ANVIL_L','BOUNDARY','TERMINAL')
++ORIGIN_KINDS=('K3_TSV_ROW','DOC_ROW','JSON_MEMBER','TERMINAL_TABLE')
++ZIP_SHA='526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332'
++
++
++def good(x,n=12):
++    return isinstance(x,str) and len(x.strip())>=n and not any(x.strip().lower()==s for s in INVALID)
++
++def sha(b):return hashlib.sha256(b).hexdigest()
++
++def git_blob(b):return hashlib.sha1(b'blob %d\0'%len(b)+b).hexdigest()
++
++def canon(x):
++    return hashlib.sha256(json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode()).hexdigest()
++
++def line_sha(line):return hashlib.sha256(line.encode() if isinstance(line,str) else line).hexdigest()
++
++
++# ---------------------------------------------------------------- source access
++class SourceRoot:
++    """Read-only view of a materialized exact-byte source snapshot."""
++    def __init__(self,root):
++        self.root=pathlib.Path(root).resolve()
++        self._cache={}
++    def bytes(self,rel):
++        if rel not in self._cache:
++            p=(self.root/rel).resolve()
++            if not p.is_relative_to(self.root) or not p.is_file() or p.is_symlink():
++                raise FileNotFoundError(rel)
++            self._cache[rel]=p.read_bytes()
++        return self._cache[rel]
++    def text(self,rel):
++        return self.bytes(rel).decode('utf-8')
++
++
++def verify_origin(origin,src,errors,code):
++    """Byte-locate one identity's declared origin.  Returns the recomputed row hash."""
++    if not isinstance(origin,dict):
++        errors.append(code+':NO_ORIGIN');return None
++    kind=origin.get('kind');rel=origin.get('path');commit=origin.get('commit');zsha=origin.get('zip_sha256')
++    blob=origin.get('git_blob');fsha=origin.get('file_sha256');rsha=origin.get('row_sha256')
++    if kind not in ORIGIN_KINDS:errors.append(code+':BAD_ORIGIN_KIND');return None
++    if not isinstance(rel,str) or not rel or rel.startswith('/') or '\\' in rel or '..' in pathlib.PurePosixPath(rel).parts:
++        errors.append(code+':UNSAFE_ORIGIN_PATH');return None
++    if commit is not None:
++        if not isinstance(commit,str) or not HEX40.fullmatch(commit):errors.append(code+':UNPINNED_ORIGIN_COMMIT');return None
++    elif zsha is not None:
++        if not isinstance(zsha,str) or not HEX64.fullmatch(zsha):errors.append(code+':UNPINNED_ORIGIN_ZIP');return None
++    else:
++        errors.append(code+':UNPINNED_ORIGIN_CONTAINER');return None
++    if not isinstance(blob,str) or not HEX40.fullmatch(blob):errors.append(code+':UNPINNED_ORIGIN_BLOB');return None
++    if not isinstance(fsha,str) or not HEX64.fullmatch(fsha):errors.append(code+':UNPINNED_FILE_SHA');return None
++    if not isinstance(rsha,str) or not HEX64.fullmatch(rsha):errors.append(code+':UNPINNED_ROW_SHA');return None
++    try:data=src.bytes(rel)
++    except (FileNotFoundError,OSError):errors.append(code+':SOURCE_FILE_ABSENT');return None
++    if sha(data)!=fsha:errors.append(code+':SOURCE_FILE_BYTES_CHANGED');return None
++    if git_blob(data)!=blob:errors.append(code+':GIT_BLOB_ID_DISAGREES');return None
++    text=data.decode('utf-8',errors='replace')
++    computed=None;rowtext=''
++    if kind=='K3_TSV_ROW':
++        rid=origin.get('row_selector')
++        if not isinstance(rid,str) or not rid:errors.append(code+':NO_ROW_SELECTOR');return None
++        for line in text.split('\n'):
++            if line.split('\t',1)[0]==rid:
++                computed=line_sha(line);rowtext=line;break
++        if computed is None:errors.append(code+':ROW_NOT_IN_SOURCE');return None
++    elif kind=='DOC_ROW':
++        excerpt=origin.get('exact_excerpt')
++        if not good(excerpt,20):errors.append(code+':NO_EXACT_EXCERPT');return None
++        if excerpt not in text:errors.append(code+':EXCERPT_NOT_IN_SOURCE');return None
++        computed=sha(excerpt.encode());rowtext=excerpt
++    elif kind=='JSON_MEMBER':
++        member=origin.get('json_member')
++        try:doc=json.loads(data)
++        except ValueError:errors.append(code+':SOURCE_NOT_JSON');return None
++        if not isinstance(member,str) or member not in doc:errors.append(code+':JSON_MEMBER_ABSENT');return None
++        computed=sha(json.dumps(doc[member],sort_keys=True,ensure_ascii=False,separators=(',',':')).encode())
++        rowtext=json.dumps(doc[member],sort_keys=True,ensure_ascii=False,separators=(',',':'))
++    elif kind=='TERMINAL_TABLE':
++        rid=origin.get('row_selector');excerpt=origin.get('exact_excerpt')
++        if not isinstance(rid,str) or not rid or not good(excerpt,12):errors.append(code+':NO_TERMINAL_ROW');return None
++        if excerpt not in text:errors.append(code+':TERMINAL_EXCERPT_NOT_IN_SOURCE');return None
++        computed=sha((rid+'\x00'+excerpt).encode());rowtext=excerpt
++    if computed!=rsha:errors.append(code+':ROW_BYTES_CHANGED');return None
++    return computed,rowtext
++
++
++# ---------------------------------------------------------------- verification
++def verify_inventory(obj,source_root,errors,code='HISTORY'):
++    """Full S1 gate for a source-qualified inventory.  Returns True when clean."""
++    if not isinstance(obj,dict) or obj.get('schema')!=SCHEMA:
++        errors.append(code+':NOT_SOURCE_QUALIFIED_INVENTORY');return False
++    if obj.get('inventory_grade')!=GRADE:errors.append(code+':FALSE_INVENTORY_GRADE')
++    if obj.get('source_authentication')!=AUTH:errors.append(code+':FALSE_SOURCE_AUTHENTICATION')
++    if not isinstance(obj.get('source_cut'),str) or not HEX40.fullmatch(str(obj.get('source_cut'))):
++        errors.append(code+':UNPINNED_SOURCE_CUT')
++    from anvil import REQUIRED
++    rows=obj.get('rows')
++    if not isinstance(rows,list):errors.append(code+':ROWS_NOT_LIST');return False
++    src=SourceRoot(source_root)
++    seen={};per_group={g:set() for g in GROUPS}
++    for row in rows:
++        if not isinstance(row,dict):errors.append(code+':BAD_ROW');continue
++        g=row.get('group');rid=row.get('id')
++        if g not in GROUPS:errors.append(code+':UNRECOGNIZED_GROUP:'+str(g));continue
++        if (g,rid) in seen:errors.append(code+':DUPLICATE_IDENTITY:'+str(rid))
++        seen[(g,rid)]=row;per_group[g].add(rid)
++        ctx=code+':'+str(rid)
++        for k in ('source_anchor','source_semantics','consumer_or_hold','negative_meaning','architecture_effect','why'):
++            if not good(row.get(k),12):errors.append(ctx+':SEMANTIC_OR_CONSUMER_LOSS:'+k)
++        if not isinstance(row.get('evidence_ids'),list) or not row['evidence_ids']:
++            errors.append(ctx+':NO_EVIDENCE')
++        if g=='PYAT_PC' and row.get('adopted') is not False:errors.append(ctx+':FALSE_PROSPECTIVE_ADOPTION')
++        if g=='P4R' and row.get('closed') is not False:errors.append(ctx+':FALSE_PROOF_CLOSURE')
++        if g=='PYAT_PC' and row.get('necessity')!='HISTORICAL_NOT_ADOPTED':errors.append(ctx+':WRONG_NOT_ADOPTED_GRADE')
++        if g=='P4R' and row.get('necessity')!='HISTORICAL_PROOF_HELD':errors.append(ctx+':WRONG_PROOF_HELD_GRADE')
++        got=verify_origin(row.get('origin'),src,errors,ctx+':ORIGIN')
++        if got and len(_tokens_local(row.get('source_semantics'))&_tokens_local(got[1]))<2:
++            errors.append(ctx+':SEMANTICS_NOT_GROUNDED_IN_ORIGIN')
++    for g,ids in REQUIRED.items():
++        if per_group.get(g,set())!=set(ids):
++            missing=sorted(set(ids)-per_group.get(g,set()));extra=sorted(per_group.get(g,set())-set(ids))
++            errors.append(code+':ID_SET_DRIFT:'+g+':missing='+','.join(missing[:4])+':extra='+','.join(extra[:4]))
++    if len(rows)!=sum(len(v) for v in REQUIRED.values()):errors.append(code+':COUNT_DRIFT')
++    return not any(e.startswith(code) for e in errors)
++
++
++def _tokens_local(text):
++    return {t for t in re.findall(r'[a-z0-9_]{4,}',(text or '').lower())}
++
++
++def row_hash_map(obj):
++    return {r['id']:r['origin']['row_sha256'] for r in obj.get('rows',[]) if isinstance(r,dict) and isinstance(r.get('origin'),dict)}
++
++
++def by_group(obj):
++    out={}
++    for r in obj.get('rows',[]):
++        if isinstance(r,dict):out.setdefault(r.get('group'),{})[r.get('id')]=r
++    return out
++
++
++# ---------------------------------------------------------------- extraction
++def _cells(line):
++    return [c.strip() for c in line.strip().strip('|').split('|')]
++
++def _joincells(c,n_tail,n_head=1):
++    """Rejoin cells when a source table cell itself contains a literal pipe."""
++    if len(c)<=n_head+n_tail:return c
++    head=c[:n_head];tail=c[-n_tail:] if n_tail else []
++    mid=c[n_head:len(c)-n_tail] if n_tail else c[n_head:]
++    return head+['|'.join(mid)]+tail
++
++
++def _md_rows(text,prefixes):
++    """Markdown table rows whose first cell starts with one of prefixes."""
++    out={}
++    for line in text.split('\n'):
++        if not line.startswith('|'):continue
++        c=_cells(re.sub(r'P\(Y\|D\)','P(Y/D)',line))
++        if not c:continue
++        m=re.search(r'\b([BLS]-\d\d)\b',c[0])
++        if not m or not c[0].startswith('**'+m.group(1)):continue
++        if m.group(1) in out:continue
++        out[m.group(1)]=(c,line)
++    return out
++
++def _tsv(text):
++    lines=[l for l in text.split('\n') if l.strip()]
++    head=lines[0].split('\t')
++    rows=[]
++    for l in lines[1:]:
++        cells=l.split('\t')
++        rows.append((l,dict(zip(head,cells))))
++    return head,rows
++
++def build_from_sources(source_root,terminal_map,source_cut):
++    """Deterministically extract the 118-row inventory from exact source bytes.
++
++    Extraction is mechanical: it copies verbatim cells.  It does not judge,
++    merge, reclassify or add semantic claims.
++    """
++    src=SourceRoot(source_root);rows=[]
++
++    def file_meta(rel,commit=None,zip_sha256=None):
++        b=src.bytes(rel)
++        m={'path':rel,'git_blob':git_blob(b),'file_sha256':sha(b)}
++        if commit:m['commit']=commit
++        else:m['commit']=None
++        if zip_sha256:m['zip_sha256']=zip_sha256
++        else:m['zip_sha256']=None
++        return m
++
++    K3='D3A_SOURCE_SNAPSHOT/'
++    K3_COMMIT=source_cut
++    seam25=file_meta(K3+'SEAM_25.md','596f1230258ff50f98d8543dec42a80e696720f4')
++    seam26=file_meta(K3+'SEAM_26.md','796452b8cb788fa5a02f37a7ce86eafce8312dfe')
++    anvil15=file_meta(K3+'ANVIL_15.md','3cc09bba3d0e26c226da0ddca4b64c43dd74e493')
++    k1=file_meta(K3+'K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv',K3_COMMIT)
++    r15=file_meta(K3+'K3_R15_26_OWNER_DECISIONS.tsv',K3_COMMIT)
++    p4r=file_meta(K3+'K3_P4R_14_OBLIGATION_ROUTES.tsv',K3_COMMIT)
++
++    def add(group,rid,anchor,semantics,consumer,negative,effect,why,nec,evidence,origin,adopted=None,closed=None):
++        rows.append({'group':group,'id':rid,'necessity':nec,'adopted':adopted,'closed':closed,
++                     'source_anchor':anchor,'source_semantics':semantics,'consumer_or_hold':consumer,
++                     'negative_meaning':negative,'architecture_effect':effect,'why':why,
++                     'evidence_ids':evidence,'origin':origin})
++
++    def tsv_origin(meta,rid):
++        return {'kind':'K3_TSV_ROW','path':meta['path'],'commit':meta['commit'],'git_blob':meta['git_blob'],
++                'file_sha256':meta['file_sha256'],'row_selector':rid,
++                'row_sha256':line_sha(next(l for l in src.text(meta['path']).split('\n') if l.split('\t',1)[0]==rid))}
++
++    _,k1rows=_tsv(src.text(k1['path']))
++    for raw,r in k1rows:
++        rid=r['capability_id']
++        add('K1_CAP',rid,f'K3 TSV row {rid}',r['five_test_source_science_and_cost'] or r['historical_paths'],
++            r['actual_current_first_reader_or_hold'],r['P2_accepted_falsifier_correction'] or r['new_requirement'],
++            r['HQ_specification_choice'],r['existing_owner']+' :: '+r['new_requirement'],
++            'MUST_PRESERVE_NOW',['K3_K1_CAP'],tsv_origin(k1,rid))
++
++    _,r15rows=_tsv(src.text(r15['path']))
++    for raw,r in r15rows:
++        rid=r['proposal_id']
++        add('PYAT_PC',rid,f'K3 R15 row {rid} ({r["original_modality"]})',
++            r['original_topic']+' :: '+r['selected_source_requirement'],r['selected_source_requirement'],
++            r['negative_or_nonclaim'],r['HQ_five_test_owner_disposition'],
++            r['native_science_actor_protection']+' :: '+r['intelligence_kind'],
++            'HISTORICAL_NOT_ADOPTED',['K3_R15'],tsv_origin(r15,rid),adopted=False)
++
++    _,p4rrows=_tsv(src.text(p4r['path']))
++    for raw,r in p4rrows:
++        rid=r['P4R_id']
++        add('P4R',rid,f'K3 P4R row {rid} ({r["old_terminal"]})',r['original_unproved_edge'],
++            r['HQ_route'],r['permission_and_native_ceiling'],r['next_bounded_test'],
++            r['original_competent_owner']+' :: '+r['extra_14_commission'],
++            'HISTORICAL_PROOF_HELD',['K3_P4R'],tsv_origin(p4r,rid),closed=False)
++
++    def doc_origin(meta,excerpt):
++        return {'kind':'DOC_ROW','path':meta['path'],'commit':meta['commit'],'git_blob':meta['git_blob'],
++                'file_sha256':meta['file_sha256'],'exact_excerpt':excerpt,'row_sha256':sha(excerpt.encode())}
++
++    b=_md_rows(src.text(seam25['path']),None)
++    for i in range(1,11):
++        rid=f'B-{i:02d}';c,excerpt=b[rid]
++        add('SEAM_B',rid,f'SEAM/25 {c[0]}',c[1],c[2],c[2],c[2],c[3],
++            'MUST_ALLOW_FUTURE',['SEAM_25'],doc_origin(seam25,excerpt))
++
++    s=_md_rows(src.text(seam26['path']),None)
++    for i in range(1,9):
++        rid=f'S-{i:02d}';c,excerpt=s[rid]
++        add('SEAM_S',rid,f'SEAM/26 {c[0]}',c[1],c[2],c[4],c[2],c[3],
++            'MUST_ALLOW_FUTURE',['SEAM_26'],doc_origin(seam26,excerpt))
++
++    l=_md_rows(src.text(anvil15['path']),None)
++    for i in range(1,9):
++        rid=f'L-{i:02d}';c,excerpt=l[rid]
++        add('ANVIL_L',rid,f'ANVIL/15 {c[0]}',c[1],c[4],c[2],c[4],c[2]+' :: '+c[3],
++            'MUST_PRESERVE_NOW',['ANVIL_15'],doc_origin(anvil15,excerpt))
++
++    bc=json.loads((pathlib.Path(source_root)/'02_BOUNDARY_CONTRACTS.json').read_bytes())
++    bcmeta=file_meta('02_BOUNDARY_CONTRACTS.json',zip_sha256=ZIP_SHA)
++    bcraw=src.text('02_BOUNDARY_CONTRACTS.json')
++    for t in bc['boundaries']:
++        rid=t['id']
++        excerpt=next(l.strip().rstrip(',') for l in bcraw.split('\n') if '"id":"'+rid+'"' in l)
++        add('BOUNDARY',rid,f'ANVIL_R7/02_BOUNDARY_CONTRACTS.json {rid}',t['must_preserve'],t['first_effect'],
++            t['veto'],t['time_class'],t['name'],'MUST_ALLOW_FUTURE',['BOUNDARY_CONTRACT'],
++            {'kind':'DOC_ROW','path':bcmeta['path'],'commit':bcmeta.get('commit'),'zip_sha256':bcmeta.get('zip_sha256'),
++             'git_blob':bcmeta['git_blob'],'file_sha256':bcmeta['file_sha256'],
++             'exact_excerpt':excerpt,'row_sha256':sha(excerpt.encode())})
++
++    frozen=json.loads((pathlib.Path(source_root)/'03_FROZEN_SOURCE_CUTS.json').read_bytes())
++    cust=json.loads((pathlib.Path(source_root)/'D3A_SOURCE_SNAPSHOT/SOURCE_CUSTODY.json').read_bytes())
++    custmap={f['path']:f for f in cust['files']}
++    for tid,spec in terminal_map.items():
++        if tid.startswith('_'):continue
++        if tid not in frozen['mandatory']['TERMINAL']:
++            raise ValueError('terminal id not in frozen cut: '+tid)
++        if spec['path'] in custmap and custmap[spec['path']].get('commit'):
++            meta=file_meta(spec['path'],commit=custmap[spec['path']]['commit'])
++        else:
++            meta=file_meta(spec['path'],zip_sha256=ZIP_SHA)
++        excerpt=spec['exact_excerpt']
++        add('TERMINAL',tid,spec['anchor'],excerpt,spec['consumer'],spec['negative'],spec['effect'],
++            spec['why'],spec['necessity'],['FROZEN_TERMINAL_CUT'],
++            {k:v for k,v in {'kind':'DOC_ROW','path':meta['path'],'commit':meta.get('commit'),
++             'zip_sha256':meta.get('zip_sha256'),'git_blob':meta['git_blob'],
++             'file_sha256':meta['file_sha256'],'exact_excerpt':excerpt,
++             'row_sha256':sha(excerpt.encode())}.items() if v is not None})
++    return {'schema':SCHEMA,'inventory_grade':GRADE,'source_authentication':AUTH,'source_cut':source_cut,
++            'generated_by':'r7_source_inventory.build_from_sources (deterministic cell copy, no reclassification)',
++            'rows':rows}
++
++
++def main():
++    ap=argparse.ArgumentParser(description='Build/verify the ANVIL source-qualified 118 inventory')
++    ap.add_argument('action',choices=['build','verify'])
++    ap.add_argument('inventory',nargs='?')
++    ap.add_argument('--source-root',required=True)
++    ap.add_argument('--terminal-map')
++    ap.add_argument('--out')
++    a=ap.parse_args()
++    if a.action=='build':
++        cut=json.loads((pathlib.Path(a.source_root)/'D3A_SOURCE_SNAPSHOT/SOURCE_CUSTODY.json').read_text())['source_cut']
++        tmap=json.loads(pathlib.Path(a.terminal_map).read_text()) if a.terminal_map else {}
++        obj=build_from_sources(a.source_root,tmap,cut)
++        out=pathlib.Path(a.out or 'INVENTORY.json');out.write_text(json.dumps(obj,indent=1,sort_keys=True)+'\n')
++        e=[];verify_inventory(obj,a.source_root,e)
++        print(json.dumps({'status':'PASS_LOCAL_SOURCE_BYTES_ONLY' if not e else 'RED','rows':len(obj['rows']),
++                          'out':str(out),'errors':e[:12]},indent=2));return 0 if not e else 2
++    obj=json.loads(pathlib.Path(a.inventory).read_text());e=[];verify_inventory(obj,a.source_root,e)
++    print(json.dumps({'status':'PASS_LOCAL_SOURCE_BYTES_ONLY' if not e else 'RED','errors':e[:40]},indent=2))
++    return 0 if not e else 2
++
++if __name__=='__main__':sys.exit(main())
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/r7_transfer_conservation.py PACKAGE/tools/r7_transfer_conservation.py
+--- a/tools
++++ b/tools
+@@ -17,7 +17,7 @@
+          'source_spine_sha256':hashlib.sha256(source_bytes).hexdigest(),
+          'transfer_method':'VERBATIM_R5_R6_SEMANTIC_COVERAGE_NO_RECLASSIFICATION',
+          'coverage':copy.deepcopy(source.get('coverage',{}))}
+-    issues=[];check_history(obj,issues)
++    issues=[];check_history(obj,issues,None,None,require_origin=False)
+     if issues:raise ValueError('Legacy source insufficient or internally inconsistent: '+repr(issues[:12]))
+     return obj
+ 
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/test_r7_integrated.py PACKAGE/tools/test_r7_integrated.py
+--- a/tools
++++ b/tools
+@@ -5,7 +5,9 @@
+ """
+ import copy,hashlib,json,pathlib,tempfile,unittest,subprocess,sys
+ from test_r6 import r6_fixture
++import d3a_fixture as F
+ from r7_integrated import check,digest,sha,DOMAINS
++from r7_builder import write as build_projections
+ 
+ ROOT=pathlib.Path(__file__).resolve().parents[1]
+ QUOTE='The original DDM was not failed work to be replaced.'
+@@ -17,11 +19,10 @@
+     def setUp(self):
+         self.tmp=tempfile.TemporaryDirectory();self.work=pathlib.Path(self.tmp.name)
+         self.evidence=self.work/'evidence';self.evidence.mkdir()
+-        spine=r6_fixture()
+-        self.sptr=self.put('original_spine.json',spine)
+-        history={'schema':'ANVIL_R7_INHERITED_CONSERVATION','source_authentication':'NOT_AUTHENTICATED_BY_LOCAL_CHECK',
+-                 'source_spine_sha256':self.sptr['sha256'],'coverage':spine['coverage']}
+-        self.hptr=self.put('history.json',history)
++        # D3A correction: S1 origin is the source-qualified inventory, NOT a
++        # finished R5/R6 P2 SPINE.  The SPINE remains an optional historical pointer.
++        self.inv=json.loads(F.INVENTORY.read_text())
++        self.hptr=self.put('inventory.json',self.inv)
+         quote=SOURCE_EXCERPT
+         ref={'path':SOURCE,'sha256':sha((ROOT/SOURCE).read_bytes()),'exact_excerpt':quote}
+         rows=[]
+@@ -45,7 +46,7 @@
+             'science_authority_boundary':'Field Forge, world and actor science cannot be issued by physical architecture author',
+             'whole_program_mission':'Complete original function continuity and C11 empirical computation into later scientifically lawful world and person products',
+             'source_grades_authentic_by_local_test':False,'requirements':rows,
+-            'historical_conservation':self.hptr,'historical_source_spine':self.sptr}
++            'historical_conservation':self.hptr,'historical_source_spine':None}
+         self.fptr=self.put('frame.json',self.frame)
+         self.decision={'schema':'ANVIL_R7_INTEGRATED','stage':'INTEGRATED_DECISION','common_frame':self.fptr,
+           'frame_sha256':digest(self.frame),'decision_process':'ONE_SYNTHESIS_NO_MANDATORY_RIVAL',
+@@ -66,6 +67,9 @@
+           'choice_reversers':[{'status':'RESOLVED_AT_ANALYTICAL_SCOPE','question':'Can qualified population preparation be reused without changing source truth?'}],
+           'requires_full_A_B_comparison':False,'competing_implementations_mandatory':False,
+           'architecture_claims_independent_acceptance':False,'targeted_duel':None,
++          'boundary_contract_sha256':sha((ROOT/'02_BOUNDARY_CONTRACTS.json').read_bytes()),
++          'identity_dispositions':F.identity_rows(self.inv),'boundary_court':F.boundary_court(),
++          'typed_graph':F.typed_graph(),
+           'requirement_dispositions':[{'requirement_id':r['id'],
+              'disposition':'FUTURE_NONPRECLUDED' if r['binding']=='FUTURE_NONPRECLUSION' else 'PRESENT_PRESERVED',
+              'evidence_grade':'DOCUMENTARY',
+@@ -73,6 +77,8 @@
+              'specific_first_consumer_path':'Native saved I03 facts can lawfully feed qualified conditional and possibility interfaces under source authority',
+              'conservation_or_refusal_witness':'Existing frozen source contracts specify the required denial and restoration behavior, not an actual executed proof',
+              'evidence':ref} for r in rows]}
++        self.decision['inventory_sha256']=digest(self.inv)
++        self.decision['projection_manifest']=build_projections(self.decision,self.frame,self.inv,self.evidence)
+         self.dptr=self.put('decision.json',self.decision)
+     def tearDown(self):self.tmp.cleanup()
+     def put(self,name,obj):
+@@ -104,16 +110,19 @@
+         self.frame['requirements']=[r for r in self.frame['requirements'] if r['domain']!='SEAM_WORLD_ACTOR']
+         self.assertIn('FRAME:WHOLE_MISSION_DOMAIN_MISSING:SEAM_WORLD_ACTOR',self.frame_result()['errors'])
+     def test_no_historical_118_id_substitution(self):
+-        obj=json.loads((self.evidence/'history.json').read_text());obj['coverage']['PYAT_PC'].pop(next(iter(obj['coverage']['PYAT_PC'])))
+-        self.frame['historical_conservation']=self.put('history2.json',obj)
++        obj=json.loads((self.evidence/'inventory.json').read_text())
++        obj['rows']=[r for r in obj['rows'] if r['id']!='PYAT-PC-R9-07']
++        self.frame['historical_conservation']=self.put('inventory2.json',obj)
+         self.assertTrue(any('HISTORY:ID_SET_DRIFT' in e for e in self.frame_result()['errors']))
+-    def test_historical_spine_transfer_cannot_be_rewritten(self):
+-        obj=json.loads((self.evidence/'history.json').read_text());next(iter(obj['coverage']['K1_CAP'].values()))['architecture_effect']='An invented alternative function that conflicts with the original conservation record'
+-        self.frame['historical_conservation']=self.put('history_mutation.json',obj)
+-        self.assertIn('FRAME:HISTORICAL_TRANSFER_NOT_BYTE_EQUIVALENT_TO_SOURCE_COVERAGE',self.frame_result()['errors'])
++    def test_historical_row_meaning_cannot_be_rewritten(self):
++        obj=json.loads((self.evidence/'inventory.json').read_text())
++        next(r for r in obj['rows'] if r['group']=='K1_CAP')['source_semantics']='An invented alternative function that conflicts with the located original conservation record'
++        self.frame['historical_conservation']=self.put('inventory_mutation.json',obj)
++        self.assertTrue(any('SEMANTICS_NOT_GROUNDED_IN_ORIGIN' in e for e in self.frame_result()['errors']))
+     def test_never_promote_historical_proposal(self):
+-        obj=json.loads((self.evidence/'history.json').read_text());next(iter(obj['coverage']['PYAT_PC'].values()))['adopted']=True
+-        self.frame['historical_conservation']=self.put('history2.json',obj)
++        obj=json.loads((self.evidence/'inventory.json').read_text())
++        next(r for r in obj['rows'] if r['group']=='PYAT_PC')['adopted']=True
++        self.frame['historical_conservation']=self.put('inventory2.json',obj)
+         self.assertTrue(any('FALSE_PROSPECTIVE_ADOPTION' in e for e in self.frame_result()['errors']))
+     def test_source_pin_is_not_just_a_citation_string(self):
+         self.frame['requirements'][0]['evidence']['sha256']='f'*64
+@@ -160,13 +169,17 @@
+            'scientific_and_owner_boundary':'No source scientific rights or actor-level structural causality can be issued from a documentary C assessment.',
+            'actual_first_consumer_assessment':'This fixture does not run any real first-consumer and cannot justify adoption of original survey science.',
+            'historical_no_loss_assessment':'The complete historical R5 contract remains frozen, with no recovered function automatically declared issued.',
++           'boundary_contract_sha256':sha((ROOT/'02_BOUNDARY_CONTRACTS.json').read_bytes()),
++           'boundary_court':F.boundary_court(),'typed_graph':F.typed_graph(),
++           'projection_manifest':self.decision['projection_manifest'],
+            'reviewer_relationship':'DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION',
+            'choice_reversing_objection_survives':False,'verdict':'C_HOLD_EXACT',
+            'builder_cards':[{'id':'first','domain':'CURRENT_FIRST_CONSUMER','grade':'EXACT_BUILDER_HOLD',
+              'exact_hold':'Actual native source consumer proof and competent owner execution are not part of this synthetic test'},
+              {'id':'future','domain':'FUTURE_NONPRECLUSION','grade':'EXACT_BUILDER_HOLD',
+               'exact_hold':'Future actor/world source governance remains independent and cannot be invented by this local test'}],
+-           'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False}
++           'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False,
++           'claims_protected_h1':False}
+         self.assertTrue(check('C_INTEGRATED',c,self.evidence,ROOT)['status'].startswith('PASS'))
+         c['verdict']='C_CONDITIONALLY_ADMIT_DESIGN'
+         self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
+diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/test_r7_integrated_d3a.py PACKAGE/tools/test_r7_integrated_d3a.py
+--- a/tools
++++ b/tools
+@@ -0,0 +1,261 @@
++#!/usr/bin/env python3
++"""D3A hostile tests for the corrected ACTIVE ANVIL gates.
++
++Each test names the claim edge it severs.  All fixtures are synthetic test
++inputs derived from byte-pinned sources; none is evidence of decision quality,
++science, owner receiving or native execution.
++"""
++import copy, json, pathlib, tempfile, unittest
++
++import d3a_fixture as F
++from r7_integrated import check, digest, sha
++from r7_builder import write as build_projections
++from r7_source_inventory import verify_inventory
++from test_r6 import r6_fixture
++
++ROOT=F.ROOT
++
++
++class Base(unittest.TestCase):
++    def setUp(self):
++        self.tmp=tempfile.TemporaryDirectory()
++        self.work=pathlib.Path(self.tmp.name)
++        self.ev=self.work/'evidence';self.ev.mkdir()
++        self.inv=json.loads(F.INVENTORY.read_text())
++        self.invptr=F.put(self.ev,'inventory.json',self.inv)
++        self.frame=F.frame(self.inv)
++        self.frame['historical_conservation']=self.invptr
++        self.fptr=F.put(self.ev,'frame.json',self.frame)
++        self.dec=F.decision(self.inv,self.fptr)
++        self.dec['frame_sha256']=digest(self.frame)
++        self.dec['inventory_sha256']=digest(self.inv)
++        man=build_projections(self.dec,self.frame,self.inv,self.ev)
++        self.dec['projection_manifest']=man
++        self.dptr=F.put(self.ev,'decision.json',self.dec)
++
++    def tearDown(self): self.tmp.cleanup()
++
++    def frame_result(self): return check('FRAME',self.frame,self.ev,ROOT)
++    def dec_result(self,dec=None): return check('DECISION',dec or self.dec,self.ev,ROOT)
++
++    def c_packet(self):
++        return {'schema':'ANVIL_R7_INTEGRATED','stage':'INDEPENDENT_C','integrated_decision':self.dptr,
++            'integrated_decision_sha256':digest(self.dec),'first_consumer':self.frame['first_real_consumer'],
++            'independent_reverse_walk_of_whole_frame':'The reviewer independently traces original source through C11, I03, F1-F4 and Field Forge to the world and actor, including the negative and restore cases.',
++            'strongest_choice_reversing_objection':'The installed event index may not support conditioned joint analysis economically at real survey width, which would reverse the physical selection.',
++            'scientific_and_owner_boundary':'No source scientific right, structural causality or actor-level authority can be issued from a documentary C assessment.',
++            'actual_first_consumer_assessment':'This packet does not execute a native first consumer and therefore cannot justify adopting original survey science.',
++            'historical_no_loss_assessment':'All 118 historical and prospective identities remain at their recorded nonadoption and held-proof grades with no automatic function declared issued.',
++            'reviewer_relationship':'DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION',
++            'choice_reversing_objection_survives':False,'verdict':'C_HOLD_EXACT',
++            'boundary_contract_sha256':self.dec['boundary_contract_sha256'],
++            'boundary_court':copy.deepcopy(self.dec['boundary_court']),
++            'typed_graph':copy.deepcopy(self.dec['typed_graph']),
++            'projection_manifest':self.dec['projection_manifest'],
++            'builder_cards':[{'id':'first','domain':'CURRENT_FIRST_CONSUMER','grade':'EXACT_BUILDER_HOLD',
++                'exact_hold':'Actual native source consumer proof and competent owner execution are not part of this synthetic test'},
++                {'id':'future','domain':'FUTURE_NONPRECLUSION','grade':'EXACT_BUILDER_HOLD',
++                 'exact_hold':'Future actor and world source governance remains independent and cannot be invented by this local test'}],
++            'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False,
++            'claims_protected_h1':False}
++
++
++class S1(Base):
++    def test_source_only_inventory_passes_at_documentary_grade(self):
++        r=self.frame_result()
++        self.assertTrue(r['status'].startswith('PASS'),r)
++        self.assertEqual(118,r['requirements'] and 118)
++
++    def test_synthetic_spine_cannot_be_the_origin(self):
++        sp=r6_fixture()
++        self.frame['historical_conservation']=F.put(self.ev,'spine.json',sp)
++        r=self.frame_result()
++        self.assertIn('HISTORY:NOT_SOURCE_QUALIFIED_INVENTORY',r['errors'])
++        self.assertFalse(r['status'].startswith('PASS'))
++
++    def test_legacy_transfer_without_source_origin_is_red(self):
++        sp=r6_fixture()
++        legacy={'schema':'ANVIL_R7_INHERITED_CONSERVATION',
++                'source_authentication':'NOT_AUTHENTICATED_BY_LOCAL_CHECK',
++                'source_spine_sha256':sha(json.dumps(sp).encode()),
++                'transfer_method':'VERBATIM_R5_R6_SEMANTIC_COVERAGE_NO_RECLASSIFICATION',
++                'coverage':sp['coverage']}
++        self.frame['historical_conservation']=F.put(self.ev,'legacy.json',legacy)
++        r=self.frame_result()
++        self.assertIn('HISTORY:LEGACY_TRANSFER_WITHOUT_SOURCE_QUALIFIED_ORIGIN',r['errors'])
++
++    def test_missing_row_blob_or_B10_is_red(self):
++        bad=copy.deepcopy(self.inv)
++        bad['rows']=[r for r in bad['rows'] if r['id']!='B-10']
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        self.assertTrue(any('ID_SET_DRIFT:SEAM_B' in x for x in e),e)
++
++        blob=copy.deepcopy(self.inv)
++        next(r for r in blob['rows'] if r['id']=='K1-CAP-01')['origin']['git_blob']='0'*40
++        e=[];verify_inventory(blob,ROOT,e,'HISTORY')
++        self.assertIn('HISTORY:K1-CAP-01:ORIGIN:GIT_BLOB_ID_DISAGREES',e)
++
++        row=copy.deepcopy(self.inv)
++        next(r for r in row['rows'] if r['id']=='K1-CAP-02')['origin']['row_sha256']='1'*64
++        e=[];verify_inventory(row,ROOT,e,'HISTORY')
++        self.assertIn('HISTORY:K1-CAP-02:ORIGIN:ROW_BYTES_CHANGED',e)
++
++    def test_source_file_absent_is_red(self):
++        bad=copy.deepcopy(self.inv)
++        next(r for r in bad['rows'] if r['id']=='L-04')['origin']['path']='D3A_SOURCE_SNAPSHOT/nope.md'
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        self.assertIn('HISTORY:L-04:ORIGIN:SOURCE_FILE_ABSENT',e)
++
++    def test_26_adopted_or_14_closed_in_inventory_is_red(self):
++        bad=copy.deepcopy(self.inv)
++        next(r for r in bad['rows'] if r['id']=='PYAT-PC-R9-01')['adopted']=True
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        self.assertIn('HISTORY:PYAT-PC-R9-01:FALSE_PROSPECTIVE_ADOPTION',e)
++
++        bad=copy.deepcopy(self.inv)
++        next(r for r in bad['rows'] if r['id']=='P4R-R01')['closed']=True
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        self.assertIn('HISTORY:P4R-R01:FALSE_PROOF_CLOSURE',e)
++
++
++class Decision(Base):
++    def test_118_reconciliation_passes(self):
++        r=self.dec_result()
++        self.assertTrue(r['status'].startswith('PASS'),r)
++
++    def test_one_missing_historical_decision_in_complete_53_is_red(self):
++        d=copy.deepcopy(self.dec)
++        d['identity_dispositions']=[x for x in d['identity_dispositions'] if x['identity_id']!='K1-CAP-17']
++        d['frame_sha256']=digest(self.frame);d['inventory_sha256']=digest(self.inv)
++        r=self.dec_result(d)
++        self.assertTrue(any('IDENTITY_UNIVERSE_INCOMPLETE:K1_CAP' in x for x in r['errors']),r)
++        self.assertFalse(r['status'].startswith('PASS'))
++
++    def test_decision_cannot_adopt_26_or_close_14(self):
++        d=copy.deepcopy(self.dec)
++        x=next(x for x in d['identity_dispositions'] if x['identity_id'].startswith('PYAT-PC'))
++        x['disposition']='PRESENT_PRESERVED'
++        r=self.dec_result(d)
++        self.assertTrue(any('UNAUTHORIZED_PROPOSAL_ADOPTION' in e for e in r['errors']),r)
++
++        d=copy.deepcopy(self.dec)
++        x=next(x for x in d['identity_dispositions'] if x['identity_id'].startswith('P4R'))
++        x['closed']=True
++        r=self.dec_result(d)
++        self.assertTrue(any('FALSE_PROOF_CLOSURE' in e for e in r['errors']),r)
++
++    def test_identity_origin_must_match_inventory_bytes(self):
++        d=copy.deepcopy(self.dec)
++        d['identity_dispositions'][0]['origin_row_sha256']='2'*64
++        r=self.dec_result(d)
++        self.assertTrue(any('IDENTITY_ORIGIN_NOT_VERIFIED' in e for e in r['errors']),r)
++
++    def test_boilerplate_identity_effect_is_red(self):
++        d=copy.deepcopy(self.dec)
++        for x in d['identity_dispositions']:
++            x['candidate_specific_effect']='Preserved by the selected candidate with no further specific statement of the affected semantics'
++        r=self.dec_result(d)
++        self.assertTrue(any('IDENTITY_EFFECT_NOT_GROUNDED_IN_ORIGIN' in e for e in r['errors']),r)
++
++    def test_inventory_pin_is_required(self):
++        d=copy.deepcopy(self.dec);d['inventory_sha256']='3'*64
++        self.assertIn('DECISION:INVENTORY_NOT_PINNED',self.dec_result(d)['errors'])
++
++    def test_no_full_rival_ab_required(self):
++        d=copy.deepcopy(self.dec);d['requires_full_A_B_comparison']=True
++        self.assertIn('DECISION:COMPETITION_REQUIRED',self.dec_result(d)['errors'])
++        d=copy.deepcopy(self.dec);d['competing_implementations_mandatory']=True
++        self.assertIn('DECISION:MANDATORY_BACKEND_BAKEOFF',self.dec_result(d)['errors'])
++
++    def test_present_hard_cannot_be_relabelled_future(self):
++        d=copy.deepcopy(self.dec);d['requirement_dispositions'][0]['disposition']='FUTURE_NONPRECLUDED'
++        self.assertTrue(any('HARD_PRESENT_RELABELED_FUTURE' in e for e in self.dec_result(d)['errors']))
++
++
++class IndependentC(Base):
++    def test_complete_C_packet_passes_locally(self):
++        r=check('C_INTEGRATED',self.c_packet(),self.ev,ROOT)
++        self.assertTrue(r['status'].startswith('PASS'),r)
++
++    def test_each_T_contract_needs_positive_negative_and_restore(self):
++        for tid in ('T1','T4','T7'):
++            c=self.c_packet()
++            row=next(x for x in c['boundary_court'] if x['boundary']==tid)
++            del row['restore']
++            r=check('C_INTEGRATED',c,self.ev,ROOT)
++            self.assertIn(f'C:BOUNDARY_MISSING_RESTORE:{tid}',r['errors'])
++            c=self.c_packet()
++            row=next(x for x in c['boundary_court'] if x['boundary']==tid)
++            del row['negative']
++            self.assertIn(f'C:BOUNDARY_MISSING_NEGATIVE:{tid}',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++    def test_weakened_boundary_contract_is_red(self):
++        c=self.c_packet();c['boundary_contract_sha256']='4'*64
++        self.assertIn('C:BOUNDARY_CONTRACT_NOT_PINNED',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        c=self.c_packet()
++        next(x for x in c['boundary_court'] if x['boundary']=='T2')['must_preserve_witness']='some marginals are kept'
++        self.assertIn('C:BOUNDARY_MUST_PRESERVE_NOT_WITNESSED:T2',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++    def test_typed_graph_type_authority_time_and_consumer_holes_are_red(self):
++        c=self.c_packet()
++        next(e for e in c['typed_graph']['edges'] if e['id']=='E3')['payload_type']='not_a_declared_type'
++        self.assertIn('C:GRAPH_TYPE_HOLE:E3',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++        c=self.c_packet()
++        next(e for e in c['typed_graph']['edges'] if e['id']=='E5')['authority_from']='FICTIONAL_WORLD'
++        self.assertIn('C:GRAPH_AUTHORITY_HOLE:E5',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++        c=self.c_packet()
++        next(e for e in c['typed_graph']['edges'] if e['id']=='E6')['time_class']='WRONG_CLOCK'
++        self.assertIn('C:GRAPH_TIME_HOLE:E6',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++        c=self.c_packet()
++        next(e for e in c['typed_graph']['edges'] if e['id']=='E4')['first_consumer']=''
++        self.assertIn('C:GRAPH_NO_CONSUMER:E4',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++    def test_authority_upgrade_needs_an_external_warrant(self):
++        c=self.c_packet()
++        edge=next(e for e in c['typed_graph']['edges'] if e['id']=='E5')
++        edge['authority_from']='DESCRIPTIVE_MODELED';edge['authority_to']='STRUCTURAL_QUALIFIED'
++        edge.pop('external_source_warrant',None)
++        r=check('C_INTEGRATED',c,self.ev,ROOT)
++        self.assertIn('C:GRAPH_AUTHORITY_UPGRADE_WITHOUT_WARRANT:E5',r['errors'])
++        edge['external_source_warrant']='Independently sourced institutional material evidence with its own owner and time basis'
++        r=check('C_INTEGRATED',c,self.ev,ROOT)
++        self.assertNotIn('C:GRAPH_AUTHORITY_UPGRADE_WITHOUT_WARRANT:E5',r['errors'])
++
++    def test_graph_must_reach_an_actor_from_observed_source(self):
++        c=self.c_packet()
++        c['typed_graph']['edges']=[e for e in c['typed_graph']['edges'] if e['id']!='E7']
++        self.assertIn('C:GRAPH_SOURCE_TO_ACTOR_DISCONNECTED',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++    def test_six_builder_projections_must_match_bytes(self):
++        c=self.c_packet();c['projection_manifest']['files']['DESIGN_DECISION.md']='5'*64
++        self.assertIn('C:PROJECTION_BYTES_CHANGED:DESIGN_DECISION.md',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        c=self.c_packet();del c['projection_manifest']['files']['BOUNDARY_TRACE.json']
++        c['projection_manifest']['digest']=digest(c['projection_manifest']['files'])
++        self.assertIn('C:PROJECTION_SET_INCOMPLETE',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++    def test_builder_is_deterministic(self):
++        a=build_projections(self.dec,self.frame,self.inv,self.ev)
++        b=build_projections(self.dec,self.frame,self.inv,self.ev)
++        self.assertEqual(a,b)
++        self.assertEqual(set(a['files']),{'DESIGN_DECISION.md','COVERAGE_TO_DECISION.tsv','DOWNSTREAM_BUILD_HANDOFF.jsonl',
++                                          'EVIDENCE_AND_FALSIFIER_INDEX.jsonl','GLOBAL_ARCHITECTURE.json','BOUNDARY_TRACE.json'})
++
++    def test_local_fake_h1_is_red(self):
++        c=self.c_packet();c['claims_protected_h1']=True
++        self.assertIn('C:FALSE_PROTECTED_H1',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        c=self.c_packet();c['original_source_granted_by_local_check']=True
++        self.assertIn('C:FALSE_AUTHORITY',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        c=self.c_packet();c['verdict']='C_ACCEPTED'
++        self.assertIn('C:FALSE_C_GRADE',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        c=self.c_packet();c['reviewer_relationship']='I_AM_INDEPENDENT'
++        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++    def test_admit_requires_an_executed_current_builder(self):
++        c=self.c_packet();c['verdict']='C_CONDITIONALLY_ADMIT_DESIGN'
++        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++
++
++if __name__=='__main__':unittest.main(verbosity=2)
