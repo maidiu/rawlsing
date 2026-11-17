@@ -1,0 +1,160 @@
+{
+  "schema": "ANVIL_R5_AUTHORITY_TRANSITIONS",
+  "subject_domains": [
+    "OBSERVED",
+    "DESCRIPTIVE_MODELED",
+    "STRUCTURAL_QUALIFIED",
+    "FICTIONAL_WORLD",
+    "ACTOR_STATE",
+    "HISTORY_EVENT",
+    "RIGHTS_METADATA",
+    "EXTERNAL_OBSERVED"
+  ],
+  "default": "DENY_UNLESS_LISTED_AND_QUALIFIED",
+  "allowed": [
+    {
+      "from_domain": "OBSERVED",
+      "to_domain": "OBSERVED",
+      "transition_class": "CANONICAL_PRESERVE",
+      "authority_grade": "SOURCE_CERTIFIED",
+      "temporal_mode": "SOURCE_TIME_FIXED"
+    },
+    {
+      "from_domain": "OBSERVED",
+      "to_domain": "DESCRIPTIVE_MODELED",
+      "transition_class": "DESCRIPTIVE_INFERENCE",
+      "authority_grade": "SCIENCE_GRADED",
+      "temporal_mode": "SOURCE_TIME_FIXED"
+    },
+    {
+      "from_domain": "DESCRIPTIVE_MODELED",
+      "to_domain": "DESCRIPTIVE_MODELED",
+      "transition_class": "DERIVED_ANALYSIS",
+      "authority_grade": "SCIENCE_GRADED",
+      "temporal_mode": "SOURCE_TIME_FIXED"
+    },
+    {
+      "from_domain": "DESCRIPTIVE_MODELED",
+      "to_domain": "STRUCTURAL_QUALIFIED",
+      "transition_class": "INDEPENDENT_STRUCTURAL_ADDITION",
+      "authority_grade": "EXTERNAL_STRUCTURAL_ISSUER",
+      "temporal_mode": "HISTORICAL_AS_OF_QUALIFIED"
+    },
+    {
+      "from_domain": "DESCRIPTIVE_MODELED",
+      "to_domain": "FICTIONAL_WORLD",
+      "transition_class": "QUALIFIED_POSSIBILITY",
+      "authority_grade": "WORLD_PARTICULARIZER",
+      "temporal_mode": "FICTIONAL_BRANCH_OWNED"
+    },
+    {
+      "from_domain": "STRUCTURAL_QUALIFIED",
+      "to_domain": "STRUCTURAL_QUALIFIED",
+      "transition_class": "STRUCTURAL_COMPOSE",
+      "authority_grade": "EXTERNAL_STRUCTURAL_ISSUER",
+      "temporal_mode": "HISTORICAL_AS_OF_QUALIFIED"
+    },
+    {
+      "from_domain": "STRUCTURAL_QUALIFIED",
+      "to_domain": "FICTIONAL_WORLD",
+      "transition_class": "WORLD_OPPORTUNITY",
+      "authority_grade": "WORLD_PARTICULARIZER",
+      "temporal_mode": "FICTIONAL_BRANCH_OWNED"
+    },
+    {
+      "from_domain": "FICTIONAL_WORLD",
+      "to_domain": "FICTIONAL_WORLD",
+      "transition_class": "WORLD_ADMIT",
+      "authority_grade": "WORLD_PARTICULARIZER",
+      "temporal_mode": "FICTIONAL_BRANCH_OWNED"
+    },
+    {
+      "from_domain": "FICTIONAL_WORLD",
+      "to_domain": "ACTOR_STATE",
+      "transition_class": "ACTOR_ACCESS",
+      "authority_grade": "ACTOR_OWNER_GRANTED",
+      "temporal_mode": "FICTIONAL_EVENT_ACCESS_QUALIFIED"
+    },
+    {
+      "from_domain": "ACTOR_STATE",
+      "to_domain": "ACTOR_STATE",
+      "transition_class": "ACTOR_DEVELOPMENT",
+      "authority_grade": "ACTOR_OWNER_GRANTED",
+      "temporal_mode": "FORWARD_FICTIONAL_TIME"
+    },
+    {
+      "from_domain": "ACTOR_STATE",
+      "to_domain": "HISTORY_EVENT",
+      "transition_class": "PERFORMED_ACT",
+      "authority_grade": "ACTOR_OWNER_GRANTED",
+      "temporal_mode": "FORWARD_FICTIONAL_TIME"
+    },
+    {
+      "from_domain": "HISTORY_EVENT",
+      "to_domain": "FICTIONAL_WORLD",
+      "transition_class": "SHARED_WORLD_EFFECT",
+      "authority_grade": "WORLD_PARTICULARIZER",
+      "temporal_mode": "FORWARD_FICTIONAL_TIME"
+    },
+    {
+      "from_domain": "HISTORY_EVENT",
+      "to_domain": "ACTOR_STATE",
+      "transition_class": "ACTOR_EXPERIENCE",
+      "authority_grade": "ACTOR_OWNER_GRANTED",
+      "temporal_mode": "FORWARD_FICTIONAL_TIME"
+    },
+    {
+      "from_domain": "RIGHTS_METADATA",
+      "to_domain": "OBSERVED",
+      "transition_class": "SOURCE_RIGHTS_FILTER",
+      "authority_grade": "SOURCE_CERTIFIED",
+      "temporal_mode": "SOURCE_TIME_FIXED"
+    },
+    {
+      "from_domain": "RIGHTS_METADATA",
+      "to_domain": "DESCRIPTIVE_MODELED",
+      "transition_class": "DERIVATION_PERMISSION",
+      "authority_grade": "SCIENCE_GRADED",
+      "temporal_mode": "SOURCE_TIME_FIXED"
+    },
+    {
+      "from_domain": "EXTERNAL_OBSERVED",
+      "to_domain": "STRUCTURAL_QUALIFIED",
+      "transition_class": "INDEPENDENT_STRUCTURAL_ADMISSION",
+      "authority_grade": "EXTERNAL_STRUCTURAL_ISSUER",
+      "temporal_mode": "HISTORICAL_AS_OF_QUALIFIED"
+    },
+    {
+      "from_domain": "EXTERNAL_OBSERVED",
+      "to_domain": "FICTIONAL_WORLD",
+      "transition_class": "EXTERNALLY_QUALIFIED_WORLD_INPUT",
+      "authority_grade": "WORLD_PARTICULARIZER",
+      "temporal_mode": "FICTIONAL_BRANCH_OWNED"
+    },
+    {
+      "from_domain": "FICTIONAL_WORLD",
+      "to_domain": "HISTORY_EVENT",
+      "transition_class": "EXOGENOUS_WORLD_EVENT",
+      "authority_grade": "WORLD_PARTICULARIZER",
+      "temporal_mode": "FORWARD_FICTIONAL_TIME"
+    },
+    {
+      "from_domain": "EXTERNAL_OBSERVED",
+      "to_domain": "EXTERNAL_OBSERVED",
+      "transition_class": "EXTERNAL_SOURCE_PRESERVE",
+      "authority_grade": "EXTERNAL_STRUCTURAL_ISSUER",
+      "temporal_mode": "HISTORICAL_AS_OF_QUALIFIED"
+    }
+  ],
+  "always_forbidden": [
+    "FICTIONAL_WORLD/ACTOR_STATE/HISTORY_EVENT -> OBSERVED or DESCRIPTIVE_MODELED as source evidence",
+    "DESCRIPTIVE_MODELED -> STRUCTURAL_QUALIFIED without independent structural issuer",
+    "WORLD -> ACTOR private state without actor access/development owner",
+    "source-native data release rights inferred from documentary evidence",
+    "retroactive modification of source event time or already committed fictional history"
+  ],
+  "cycle_rule": "Observed/descriptive/structural dependency graph acyclic. Fictional actor-world loops allowed only with every cyclic edge temporal_mode=FORWARD_FICTIONAL_TIME or FICTIONAL_EVENT_ACCESS_QUALIFIED, explicit positive increasing event time and granted actor/world ownership; build order handoff dependencies are always acyclic.",
+  "note": "This is an ANVIL architecture-review policy, not a new scientific entitlement or a final production ABI. Actual actor/sourced structural permits remain outside it.",
+  "canonical_edge_authority": "Only transition_class, authority_grade, temporal_mode are writable. Disallow independent grade/authority/clock strings on edges. No stage may treat this review-level matrix as a competent science/actor grant.",
+  "nonpreclusion_exception": "If an unanticipated legitimate external or fictional transformation is not listed, it is not scientifically denied: hold selection of affected edge, identify issuer and exact new transition proposal; do not force input through survey-derived descriptive science or pretend an authorized grant."
+}

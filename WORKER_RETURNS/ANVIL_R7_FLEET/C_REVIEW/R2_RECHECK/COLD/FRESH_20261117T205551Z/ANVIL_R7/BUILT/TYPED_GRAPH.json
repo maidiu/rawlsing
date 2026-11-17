@@ -1,0 +1,2124 @@
+{
+  "graph": {
+    "edges": [
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "RAW_RELEASE",
+        "edge_kind": "PRODUCES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "SURVEY_RELEASE",
+        "id": "E01",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "wrong file/ref or unpermitted source denies",
+        "positive_claim_to_test": "different native option affects C11",
+        "restoration": "authorized source restore exact records",
+        "scope": "actual edition/country/wave",
+        "source_identity_refs": [
+          "T1",
+          "L-01"
+        ],
+        "temporal_mode": "HISTORICAL_AS_OF",
+        "to": "S01_PROJECT"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "CODEBOOK_RULE",
+        "edge_kind": "SEMANTIC_SELECT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "INSTRUMENT",
+        "id": "E02",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "unselected alias/nonreleased sect refuses",
+        "positive_claim_to_test": "source-selected code binds value",
+        "restoration": "correct codebook restores",
+        "scope": "selected question/options/form",
+        "source_identity_refs": [
+          "T1",
+          "L-01",
+          "S-07"
+        ],
+        "temporal_mode": "HISTORICAL_AS_OF",
+        "to": "S01_PROJECT"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "QRA_QUC_F03_F08",
+        "edge_kind": "AUTHORITY_REQUIRED",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "SEMANTIC_RULE",
+        "id": "E03",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "conflicting same specificity fails",
+        "positive_claim_to_test": "selected directional affects role",
+        "restoration": "qualified selection restores",
+        "scope": "exact six coordinates",
+        "source_identity_refs": [
+          "K1-CAP-01",
+          "K1-CAP-25"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "S01_PROJECT"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "RIGHTS",
+        "edge_kind": "PERMISSION_GATE",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "SOURCE_RIGHT",
+        "id": "E04",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "denied source never positive",
+        "positive_claim_to_test": "granted execution allowed",
+        "restoration": "regrant restores conditional use",
+        "scope": "selected current source",
+        "source_identity_refs": [
+          "T1",
+          "L-07"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "S01_PROJECT"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SAMPLE_WEIGHT_RISK",
+        "edge_kind": "SCIENTIFIC_BIND",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "DESIGN_SCOPE",
+        "id": "E05",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "unknown design ≠ weight1",
+        "positive_claim_to_test": "qualified valid basis affects estimate",
+        "restoration": "proper estimand restores",
+        "scope": "strata/PSU/weights",
+        "source_identity_refs": [
+          "L-03",
+          "S-06"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "S01_PROJECT"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "CANONICAL_I02_PROOF_INPUT",
+        "edge_kind": "PRODUCES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "S01_PROJECT",
+        "id": "E06",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "drop respondent event/route fails",
+        "positive_claim_to_test": "logical identity and absence captured",
+        "restoration": "complete source restore",
+        "scope": "all 13 families",
+        "source_identity_refs": [
+          "T1",
+          "K1-CAP-18"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "I02_PROOF"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SEMANTIC_PROOF",
+        "edge_kind": "CERTIFIES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I02_PROOF",
+        "id": "E07",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "producer+verifier shared wrong hash cannot certify source truth",
+        "positive_claim_to_test": "verified logical/physical linkage",
+        "restoration": "independently verified roots restored",
+        "scope": "private release before publication",
+        "source_identity_refs": [
+          "T1",
+          "L-07"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "C11_ESTATE"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T1",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "13_FAMILY_TYPED_BODY",
+        "edge_kind": "STAGES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "S01_PROJECT",
+        "id": "E08",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "first-row coalescing fails",
+        "positive_claim_to_test": "correct repeated events persisted",
+        "restoration": "exact events restored",
+        "scope": "bounded one pass",
+        "source_identity_refs": [
+          "T1",
+          "L-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "C11_ESTATE"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EXTERNAL_TRUST_ROOT",
+        "edge_kind": "AUTHENTICATES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "C11_ROOT",
+        "id": "E09",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "wrong root or self-repin fails",
+        "positive_claim_to_test": "authorized cold open exact root",
+        "restoration": "correct external root reopened",
+        "scope": "external publisher root",
+        "source_identity_refs": [
+          "L-07",
+          "B-09"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "COLD_READ"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "VERIFIED_SAVED_ESTATE",
+        "edge_kind": "CONSUMED_BY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "C11_ESTATE",
+        "id": "E10",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "corrupted member refuses",
+        "positive_claim_to_test": "same source and body cold read",
+        "restoration": "reopen validated body",
+        "scope": "exact release",
+        "source_identity_refs": [
+          "T2",
+          "L-06"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "COLD_READ"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "QUERY_PREDICATE_ESTIMAND",
+        "edge_kind": "ISSUES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "QUERY_ISSUER",
+        "id": "E11",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "unissued/denied held does not become empty zero",
+        "positive_claim_to_test": "issued eligible positive",
+        "restoration": "exact issuance restores",
+        "scope": "selected query/grammar",
+        "source_identity_refs": [
+          "T2",
+          "K1-CAP-18"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "I03"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SAME_PERSON_EVENT_SOURCE",
+        "edge_kind": "CONSUMED_BY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "COLD_READ",
+        "id": "E12",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "stale prepared member/rights denies",
+        "positive_claim_to_test": "facts have same/respondent refs",
+        "restoration": "current read restores",
+        "scope": "repeated native queries",
+        "source_identity_refs": [
+          "T2",
+          "L-06"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "I03"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "GOVERNED_FACTS",
+        "edge_kind": "DISCOVERY_INPUT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I03",
+        "id": "E13",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "overbudget/unknown remains partial",
+        "positive_claim_to_test": "changed qualified fact changes frontier",
+        "restoration": "same source restored",
+        "scope": "selected bounded discovery",
+        "source_identity_refs": [
+          "K1-CAP-03",
+          "B-01"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "I05"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "BATCH_ISSUED_EXECUTED_FATE",
+        "edge_kind": "CONSUMED_BY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I03",
+        "id": "E14",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "issued-only cannot masquerade executed",
+        "positive_claim_to_test": "complete first consumer and replay",
+        "restoration": "idempotent run restores",
+        "scope": "normal/completed/partial/absent",
+        "source_identity_refs": [
+          "K1-CAP-04",
+          "P4R-R11"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "BATCH"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EXACT_DENOMINATOR_AND_EVIDENCE",
+        "edge_kind": "COMPUTES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I03",
+        "id": "E15",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "missing→zero or pairwise reconstructed F4 fails",
+        "positive_claim_to_test": "true source/cohort changes product",
+        "restoration": "correct events produce reproducible result",
+        "scope": "MARGINALS",
+        "source_identity_refs": [
+          "T2",
+          "L-06",
+          "S-01"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "F1"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EXACT_DENOMINATOR_AND_EVIDENCE",
+        "edge_kind": "COMPUTES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I03",
+        "id": "E16",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "missing→zero or pairwise reconstructed F4 fails",
+        "positive_claim_to_test": "true source/cohort changes product",
+        "restoration": "correct events produce reproducible result",
+        "scope": "DIRECTIONAL",
+        "source_identity_refs": [
+          "T2",
+          "L-06",
+          "S-01"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "F2"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EXACT_DENOMINATOR_AND_EVIDENCE",
+        "edge_kind": "COMPUTES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I03",
+        "id": "E17",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "missing→zero or pairwise reconstructed F4 fails",
+        "positive_claim_to_test": "true source/cohort changes product",
+        "restoration": "correct events produce reproducible result",
+        "scope": "BRANCH",
+        "source_identity_refs": [
+          "T2",
+          "L-06",
+          "S-01"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "F3"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EXACT_DENOMINATOR_AND_EVIDENCE",
+        "edge_kind": "COMPUTES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I03",
+        "id": "E18",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "missing→zero or pairwise reconstructed F4 fails",
+        "positive_claim_to_test": "true source/cohort changes product",
+        "restoration": "correct events produce reproducible result",
+        "scope": "JOINT",
+        "source_identity_refs": [
+          "T2",
+          "L-06",
+          "S-01"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "F4"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SELECTED_BRANCH",
+        "edge_kind": "BOUNDED_BRANCH_SELECTION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "I05",
+        "id": "E19",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "false demographic all-False masks refuse",
+        "positive_claim_to_test": "real minority ancestry reported",
+        "restoration": "correct mask/risk restored",
+        "scope": "source-qualified selected branch",
+        "source_identity_refs": [
+          "K1-CAP-06",
+          "S-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "F3"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "JOINT_MI_GAIN",
+        "edge_kind": "DERIVED_DIAGNOSTIC",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F4",
+        "id": "E20",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "old prevalence log ratio mislabeled MI refuses",
+        "positive_claim_to_test": "true joint changes diagnostics",
+        "restoration": "correct estimator restores",
+        "scope": "separate source-qualified science",
+        "source_identity_refs": [
+          "K1-CAP-05",
+          "K1-CAP-11"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "DIAGNOSTICS"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOURCE_GRADED_EMPIRICAL_FACT",
+        "edge_kind": "DESCRIPTIVE_CONSUMPTION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F1",
+        "id": "E21",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "opinion cannot become material power",
+        "positive_claim_to_test": "qualified input changes descriptive field",
+        "restoration": "restore source fact",
+        "scope": "source qualified FF01",
+        "source_identity_refs": [
+          "T3",
+          "S-01",
+          "S-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "FF01"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOURCE_GRADED_EMPIRICAL_FACT",
+        "edge_kind": "DESCRIPTIVE_CONSUMPTION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F2",
+        "id": "E22",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "opinion cannot become material power",
+        "positive_claim_to_test": "qualified input changes descriptive field",
+        "restoration": "restore source fact",
+        "scope": "source qualified FF01",
+        "source_identity_refs": [
+          "T3",
+          "S-01",
+          "S-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "FF01"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOURCE_GRADED_EMPIRICAL_FACT",
+        "edge_kind": "DESCRIPTIVE_CONSUMPTION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F3",
+        "id": "E23",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "opinion cannot become material power",
+        "positive_claim_to_test": "qualified input changes descriptive field",
+        "restoration": "restore source fact",
+        "scope": "source qualified FF01",
+        "source_identity_refs": [
+          "T3",
+          "S-01",
+          "S-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "FF01"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOURCE_GRADED_EMPIRICAL_FACT",
+        "edge_kind": "DESCRIPTIVE_CONSUMPTION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F4",
+        "id": "E24",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "opinion cannot become material power",
+        "positive_claim_to_test": "qualified input changes descriptive field",
+        "restoration": "restore source fact",
+        "scope": "source qualified FF01",
+        "source_identity_refs": [
+          "T3",
+          "S-01",
+          "S-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "FF01"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EMPIRICAL_POSSIBILITY",
+        "edge_kind": "PRODUCES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "FF01",
+        "id": "E25",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "no actor psyche/meeting generated",
+        "positive_claim_to_test": "changes possible distributions",
+        "restoration": "restore qualified conditions",
+        "scope": "FF01 qualified",
+        "source_identity_refs": [
+          "T3",
+          "B-03"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "N10E"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "PARTIAL_ID_INTERVAL",
+        "edge_kind": "CONDITIONAL_NUMERIC_SCIENCE",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F6",
+        "id": "E26",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "I07 guard not numeric interval",
+        "positive_claim_to_test": "selected actual interval changes world bound",
+        "restoration": "qualified method restores",
+        "scope": "issuer selected numerical bound",
+        "source_identity_refs": [
+          "K1-CAP-17",
+          "P4R-R07"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N9"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T4",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "COMPARABLE_WAVE",
+        "edge_kind": "TEMPORAL_QUALIFICATION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F7",
+        "id": "E27",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "same-name wave pooling refused",
+        "positive_claim_to_test": "world temporal relation on approved comparability",
+        "restoration": "qualified source pair restores",
+        "scope": "valid comparable source waves",
+        "source_identity_refs": [
+          "T4",
+          "S-06"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N9"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T4",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "OWNERSHIP_RIGHT_SANCTION",
+        "edge_kind": "INDEPENDENT_MATERIAL",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "MATERIAL_SOURCE",
+        "id": "E28",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "survey approval alone cannot mint ownership",
+        "positive_claim_to_test": "material right changes world option",
+        "restoration": "restore material source",
+        "scope": "institutional/material source",
+        "source_identity_refs": [
+          "T4",
+          "B-02",
+          "S-04"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "FF02"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T4",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "DESCRIPTIVE_ASSOCIATION",
+        "edge_kind": "DESCRIPTIVE_CONTEXT_ONLY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "FF01",
+        "id": "E29",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "direct attitude→coercion promotion forbidden",
+        "positive_claim_to_test": "if structural owner selects, observed profile conditions separate relation",
+        "restoration": "restore descriptive-only scope",
+        "scope": "cannot confer causal power",
+        "source_identity_refs": [
+          "T4",
+          "B-02"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "FF02"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T4",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "QUALIFIED_MATERIAL_WORLD_RELATION",
+        "edge_kind": "PRODUCES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "FF02",
+        "id": "E30",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "survey majority stays no causal force",
+        "positive_claim_to_test": "world opportunity changes when real control changes",
+        "restoration": "qualified world replay",
+        "scope": "selected material source",
+        "source_identity_refs": [
+          "T4",
+          "S-04"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "N9"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T4",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SITUATED_WORLD_CONDITION",
+        "edge_kind": "SELECTED_CONDITION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N9",
+        "id": "E31",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "hash join without effect not pass",
+        "positive_claim_to_test": "world limits selected option",
+        "restoration": "restore selected world relation",
+        "scope": "N10W selected only",
+        "source_identity_refs": [
+          "T4",
+          "B-03"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "N10W"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T4",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "EMPIRICAL_POSSIBILITY",
+        "edge_kind": "ALTERNATE_CONDITION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N10E",
+        "id": "E32",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "unselected N10E must not imply N10W",
+        "positive_claim_to_test": "possibility conditioned by authorized world",
+        "restoration": "restore admissible direct or composite route",
+        "scope": "only if actual selected route",
+        "source_identity_refs": [
+          "B-03",
+          "T4"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "N10W"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "POSSIBILITY_CANDIDATE",
+        "edge_kind": "ALTERNATE_DIRECT_ROUTE",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N10E",
+        "id": "E33",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "N9 chain not globally mandatory",
+        "positive_claim_to_test": "may be consumed without compelled N9 intermediate",
+        "restoration": "restore direct viable route",
+        "scope": "only if appropriate exact selected owner route",
+        "source_identity_refs": [
+          "B-03",
+          "T5"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "PRE-V3"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "POSITIONED_WORLD_POSSIBILITY",
+        "edge_kind": "PRODUCES",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N10W",
+        "id": "E34",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "does not create psyche/person on its own",
+        "positive_claim_to_test": "objective possibilities condition position proposal",
+        "restoration": "restore chosen world",
+        "scope": "selected lawful world",
+        "source_identity_refs": [
+          "T5",
+          "B-04"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "PRE-V3"
+      },
+      {
+        "authority_grade": "FUTURE_NONPRECLUSION_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "OTHER_POSITION_JOINT_DISTRIBUTIONS",
+        "edge_kind": "CONDITIONAL_OTHER_FIELD",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "FF01",
+        "id": "E35",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "focal memory/activity must not change now",
+        "positive_claim_to_test": "changing D2 may change eligible other distributions",
+        "restoration": "restore D2 distribution",
+        "scope": "differentiated D2 populations",
+        "source_identity_refs": [
+          "S-03",
+          "B-10"
+        ],
+        "temporal_mode": "HISTORICAL_AS_OF",
+        "to": "OTHER_CANDIDATE"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T6",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "PARTICULAR_FICTIONAL_OTHER",
+        "edge_kind": "MODEL_WORLD_ADMISSION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "OTHER_CANDIDATE",
+        "id": "E36",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "no real respondent is that fictional person",
+        "positive_claim_to_test": "selected Other plausible from separate field if admitted",
+        "restoration": "restore original fictional seed",
+        "scope": "independent fictional owner",
+        "source_identity_refs": [
+          "S-03",
+          "B-04",
+          "B-10"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "OTHER_INSTANTIATED"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T6",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "PARTICULAR_OTHER_ACTION",
+        "edge_kind": "WORLD_EVENT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "OTHER_INSTANTIATED",
+        "id": "E37",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "mere co-presence never means actor heard/learned",
+        "positive_claim_to_test": "coactor action creates objective possible contact",
+        "restoration": "restore coactor event",
+        "scope": "particular actor admitted and acts",
+        "source_identity_refs": [
+          "B-07",
+          "T6",
+          "S-03"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "ENCOUNTER"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "POSITION_ACCESS",
+        "edge_kind": "CONDITIONAL_WORLD_PLACEMENT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "PRE-V3",
+        "id": "E38",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "probability alone is not contact",
+        "positive_claim_to_test": "material opportunity may make encounter possible",
+        "restoration": "restore qualified placement",
+        "scope": "selected fictional world",
+        "source_identity_refs": [
+          "T5",
+          "B-05"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "ENCOUNTER"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T6",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "ACTOR_ACCESSIBLE_CUE",
+        "edge_kind": "ACCESS_FILTER",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "ENCOUNTER",
+        "id": "E39",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "offscreen event gives no memory",
+        "positive_claim_to_test": "accessible event may change actor cue",
+        "restoration": "restore accessible exposure",
+        "scope": "witnessed/perceived event",
+        "source_identity_refs": [
+          "T6",
+          "B-07",
+          "S-08"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "ACTOR_ACCESS"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T6",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "ACTOR_ACCESS_GRANT",
+        "edge_kind": "CONSENT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "E001",
+        "id": "E40",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "missing consent/capability refuses",
+        "positive_claim_to_test": "authorized event enters actor-local first reader",
+        "restoration": "valid grant restores",
+        "scope": "actor owner's actual readset",
+        "source_identity_refs": [
+          "B-05",
+          "P4R-R10"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "ACTOR_ACCESS"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T6",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "APPROPRIATED_PREMISE_OR_NO_CHANGE",
+        "edge_kind": "DEVELOPMENTAL_TRANSFORM",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "ACTOR_ACCESS",
+        "id": "E41",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "access alone must permit no-change",
+        "positive_claim_to_test": "access+activity under selected rule can modify acquired premise",
+        "restoration": "restore prior actor state",
+        "scope": "separate actor science",
+        "source_identity_refs": [
+          "T6",
+          "S-08"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "ACQUIRED"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "ACTOR_OWNED_PRACTICE",
+        "edge_kind": "ACTION_SELECTION",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "ACQUIRED",
+        "id": "E42",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "no deterministic survey score→act",
+        "positive_claim_to_test": "later actor-specific action may differ",
+        "restoration": "restore event history",
+        "scope": "constrained actual repertoire",
+        "source_identity_refs": [
+          "T7",
+          "S-08"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "ACT"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "REALIZED_ACTION_EFFECT",
+        "edge_kind": "PERFORMED_WORLD_EFFECT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "ACT",
+        "id": "E43",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "parent-local paid work not instant child care",
+        "positive_claim_to_test": "action changes qualified target or no-change",
+        "restoration": "restore prior world state",
+        "scope": "world admission needed",
+        "source_identity_refs": [
+          "T7",
+          "B-08"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "WORLD_EFFECT"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOURCE_GRADED_EXTERNAL_CHANGE",
+        "edge_kind": "EXOGENOUS_EVENT",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "MATERIAL_SOURCE",
+        "id": "E44",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "must not be actor-performed deed or actor memory",
+        "positive_claim_to_test": "material exogenous change affects available world options",
+        "restoration": "restore independent state",
+        "scope": "could occur without focal actor",
+        "source_identity_refs": [
+          "B-08",
+          "T7"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "WORLD_EFFECT"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "HISTORICAL_NEXT_STATE",
+        "edge_kind": "CONSUMED_BY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "WORLD_EFFECT",
+        "id": "E45",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "R4 redrive request not itself world mutation",
+        "positive_claim_to_test": "later genuine read observes changed eligible world",
+        "restoration": "cold exact prior state and replay",
+        "scope": "continuing person/world reader",
+        "source_identity_refs": [
+          "T7",
+          "B-10"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "NEXT_STATE"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "ACTOR_HISTORY",
+        "edge_kind": "CONTINUITY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "ACT",
+        "id": "E46",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "narrated biography not executed event",
+        "positive_claim_to_test": "real performed acts persist through time",
+        "restoration": "replay accepted event",
+        "scope": "later independent reader",
+        "source_identity_refs": [
+          "T7",
+          "B-10"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "NEXT_STATE"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T3",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "LIVE_CURRENT_SOURCE_RIGHT",
+        "edge_kind": "REVOCATION_GATE",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "SOURCE_RIGHT",
+        "id": "E47",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "hash/cached prepared index cannot bypass rights",
+        "positive_claim_to_test": "revocation denies stale cached result",
+        "restoration": "regrant plus fresh verification",
+        "scope": "each relevant operation",
+        "source_identity_refs": [
+          "B-09",
+          "L-07"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "COLD_READ"
+      },
+      {
+        "authority_grade": "PROPOSED_EDGE_NOT_EXECUTED",
+        "boundary": "T2",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "PREDICATE_FRONTIER",
+        "edge_kind": "CONSUMED_BY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "COLD_READ",
+        "id": "E48",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "unknown not false; partial remains partial",
+        "positive_claim_to_test": "frontier derived from correct current query",
+        "restoration": "restore admitted release",
+        "scope": "admitted saved estate",
+        "source_identity_refs": [
+          "T2",
+          "S-02"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "I05"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "QUALIFIED_M01_M1_M2_M3_LIFECYCLE",
+        "edge_kind": "LEARNED_RELATION_CANDIDATE_ONLY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "FF01",
+        "id": "E49",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "FF01 descriptive output alone cannot authorize F5 learned lifecycle or claim accepted product",
+        "positive_claim_to_test": "Selected learned-product fact/negative changes an admitted M1/M2/M3 first reader",
+        "restoration": "Restore exactly selected qualified learned product",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "F5",
+          "B-01",
+          "K1-CAP-18"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "F5"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "QUALIFIED_EMPIRICAL_POSSIBILITY",
+        "edge_kind": "LEARNED_INPUT_OPTION_ONLY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F5",
+        "id": "E50",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "No F5 imported science or full lifecycle => no claimed current F5-to-N10E first reader",
+        "positive_claim_to_test": "If selected, admitted learned fact changes a lawful empirical possibility; direct N10E remains possible",
+        "restoration": "Restore qualified admitted learned receipt",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "F5",
+          "N10E",
+          "B-03"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N10E"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "OPTION_NEEDS_SELECTED_WORLD_AND_SOURCE_GRADE",
+        "edge_kind": "F8_SELECTED_EMPIRICAL_OPTION_ONLY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N10E",
+        "id": "E51",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "N10E empirical possibility alone cannot self-certify F8 positioned/world selected effect",
+        "positive_claim_to_test": "Selected F8 issuer qualifies source conditional option with actual recipient, not presumed from N10E name",
+        "restoration": "Restore separately issued F8 input/recipient",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "F8",
+          "N10E",
+          "T5"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "F8"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "WORLD_CONDITIONED_POSITIONED_OPTION",
+        "edge_kind": "F8_SITUATED_ALTERNATE_ONLY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N10W",
+        "id": "E52",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "Hash fused without changed world-science first effect cannot qualify F8",
+        "positive_claim_to_test": "Changed qualified world condition can change selected F8 positioned option only at actual reader",
+        "restoration": "Restore source-valid world and qualified selected F8",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "F8",
+          "N10W",
+          "T5"
+        ],
+        "temporal_mode": "MODELED",
+        "to": "F8"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T5",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "OBJECTIVE_POSITIONED_PREV3_PRODUCT",
+        "edge_kind": "N11_OBJECTIVE_GATE",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "PRE-V3",
+        "id": "E53",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "N11 roadmap or schema pointer does not mean objective acceptance/real first reader",
+        "positive_claim_to_test": "Competent N11 reviewer reads exact objective PRE-V3 source/rights/world product if selected",
+        "restoration": "Restore qualified PRE-V3/N11 objective acceptance receipt",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "N11",
+          "PRE-V3",
+          "T5"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N11"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT",
+        "edge_kind": "F8_N11_OPTIONAL_DEPENDENCY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "F8",
+        "id": "E54",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "F8 TEST_ONLY first effect cannot mint N11 acceptance; unselected mode may legitimately defer",
+        "positive_claim_to_test": "Selected F8 status participates in independently accepted N11 gate when actually demanded",
+        "restoration": "Restore selected source and independent N11 decision",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "F8",
+          "N11",
+          "B-03"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N11"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "INDEPENDENT_ACTOR_HANDOFF_MODE",
+        "edge_kind": "CONDITIONAL_N12_WAKE_OR_DEFER",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N11",
+        "id": "E55",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "N11 objective acceptance is not consent, wake permission or actor state",
+        "positive_claim_to_test": "Qualified mode selection and actor consent chooses lawful SOROK wake or explicit DEFER",
+        "restoration": "Restore exact qualified mode and actor grant",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "N11",
+          "N12",
+          "P4R-R10"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N12"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOURCE_WORLD_ACTOR_SEPARATION",
+        "edge_kind": "BILATERAL_SCOPED_RECEIVING",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "N12",
+        "id": "E56",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "Unselected or denied actor mode cannot implicitly serve a person",
+        "positive_claim_to_test": "A selected bidirectional transformation carries source limitations/negative to distinct owner",
+        "restoration": "Restore independent bilateral receiving with typed source limitations",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "N12",
+          "SEAM",
+          "B-05"
+        ],
+        "temporal_mode": "MIXED_TYPED",
+        "to": "SEAM"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "SOROK_E001_ACTOR_FIRST_READ",
+        "edge_kind": "CONSENTED_IMPORT_PREREQUISITE_ONLY",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "SEAM",
+        "id": "E57",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "Boundary document and E001 ID do not prove consent/actual importer",
+        "positive_claim_to_test": "Named source-qualified E001 actual importer reads permitted world/actor boundary",
+        "restoration": "Restore qualified E001 source and actor readset",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "SEAM",
+          "N12",
+          "P4R-R10"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "E001"
+      },
+      {
+        "authority_grade": "OWNER_HELD_NOT_EXECUTED",
+        "boundary": "T7",
+        "claim_grade": "DESIGN_INSTRUMENT_EDGE_ONLY__NOT_EXECUTED",
+        "data_type": "TWO_ACTOR_EVENTS_AND_LATER_EFFECT",
+        "edge_kind": "INDEPENDENT_CONTINUING_PERSON_FIRST_READER",
+        "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
+        "from": "NEXT_STATE",
+        "id": "E58",
+        "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
+        "negative_or_refusal": "Narrated biography, one event or self-named result cannot count as independent actual later reader",
+        "positive_claim_to_test": "Two distinct admitted events and qualified later actor/world read demonstrate continuing possible person consequence",
+        "restoration": "Restore permitted actor-local event history and next valid read",
+        "scope": "OPTIONAL_SELECTED_DEPENDENCY__NOT_UNCONDITIONAL_STAGE_CHAIN",
+        "source_identity_refs": [
+          "SOROK",
+          "B-10",
+          "T7"
+        ],
+        "temporal_mode": "FICTIONAL",
+        "to": "SOROK"
+      }
+    ],
+    "nodes": [
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "SURVEY_RELEASE",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "NATIVE_SOURCE",
+        "output_types": [
+          "RAW_RELEASE"
+        ],
+        "owner": "original survey custodian",
+        "producer": "NATIVE_SOURCE producer/owner",
+        "producer_authority": "original survey custodian",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "INSTRUMENT",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "QUESTIONNAIRE_CODEBOOK",
+        "output_types": [
+          "CODEBOOK_RULE"
+        ],
+        "owner": "S01 QSM issuer",
+        "producer": "QUESTIONNAIRE_CODEBOOK producer/owner",
+        "producer_authority": "S01 QSM issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "SEMANTIC_RULE",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "SELECTED_ROLE_SCALE",
+        "output_types": [
+          "QRA_QUC_F03_F08"
+        ],
+        "owner": "F03/F08/QRA/QUC issuer",
+        "producer": "SELECTED_ROLE_SCALE producer/owner",
+        "producer_authority": "F03/F08/QRA/QUC issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "SOURCE_RIGHT",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "SOURCE_PERMISSION",
+        "output_types": [
+          "LIVE_CURRENT_SOURCE_RIGHT",
+          "RIGHTS"
+        ],
+        "owner": "original source right holder",
+        "producer": "SOURCE_PERMISSION producer/owner",
+        "producer_authority": "original source right holder",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "DESIGN_SCOPE",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "SAMPLE_WEIGHT_ESTIMAND",
+        "output_types": [
+          "SAMPLE_WEIGHT_RISK"
+        ],
+        "owner": "S01 source/estimator issuer",
+        "producer": "SAMPLE_WEIGHT_ESTIMAND producer/owner",
+        "producer_authority": "S01 source/estimator issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "S01_PROJECT",
+        "input_types": [
+          "CODEBOOK_RULE",
+          "QRA_QUC_F03_F08",
+          "RAW_RELEASE",
+          "RIGHTS",
+          "SAMPLE_WEIGHT_RISK"
+        ],
+        "kind": "SOURCE_PROJECTOR",
+        "output_types": [
+          "13_FAMILY_TYPED_BODY",
+          "CANONICAL_I02_PROOF_INPUT"
+        ],
+        "owner": "PYAT source bridge",
+        "producer": "SOURCE_PROJECTOR producer/owner",
+        "producer_authority": "PYAT source bridge",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "I02_PROOF",
+        "input_types": [
+          "CANONICAL_I02_PROOF_INPUT"
+        ],
+        "kind": "LOGICAL_CERTIFICATE",
+        "output_types": [
+          "SEMANTIC_PROOF"
+        ],
+        "owner": "PYAT I02 proof owner",
+        "producer": "LOGICAL_CERTIFICATE producer/owner",
+        "producer_authority": "PYAT I02 proof owner",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "C11_ESTATE",
+        "input_types": [
+          "13_FAMILY_TYPED_BODY",
+          "SEMANTIC_PROOF"
+        ],
+        "kind": "IMMUTABLE_13_FAMILY_BODY",
+        "output_types": [
+          "VERIFIED_SAVED_ESTATE"
+        ],
+        "owner": "PYAT C11 S2-C",
+        "producer": "IMMUTABLE_13_FAMILY_BODY producer/owner",
+        "producer_authority": "PYAT C11 S2-C",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "C11_ROOT",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "EXTERNAL_ROOT",
+        "output_types": [
+          "EXTERNAL_TRUST_ROOT"
+        ],
+        "owner": "independent custodian",
+        "producer": "EXTERNAL_ROOT producer/owner",
+        "producer_authority": "independent custodian",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "COLD_READ",
+        "input_types": [
+          "EXTERNAL_TRUST_ROOT",
+          "LIVE_CURRENT_SOURCE_RIGHT",
+          "VERIFIED_SAVED_ESTATE"
+        ],
+        "kind": "CURRENT_GATED_READER",
+        "output_types": [
+          "PREDICATE_FRONTIER",
+          "SAME_PERSON_EVENT_SOURCE"
+        ],
+        "owner": "PYAT S2-D",
+        "producer": "CURRENT_GATED_READER producer/owner",
+        "producer_authority": "PYAT S2-D",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "QUERY_ISSUER",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "U_EPRE_QUERY_PREDICATE",
+        "output_types": [
+          "QUERY_PREDICATE_ESTIMAND"
+        ],
+        "owner": "PYAT source/science issuer",
+        "producer": "U_EPRE_QUERY_PREDICATE producer/owner",
+        "producer_authority": "PYAT source/science issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "I03",
+        "input_types": [
+          "QUERY_PREDICATE_ESTIMAND",
+          "SAME_PERSON_EVENT_SOURCE"
+        ],
+        "kind": "GOVERNED_EMPIRICAL_EVALUATOR",
+        "output_types": [
+          "BATCH_ISSUED_EXECUTED_FATE",
+          "EXACT_DENOMINATOR_AND_EVIDENCE",
+          "GOVERNED_FACTS"
+        ],
+        "owner": "PYAT I03",
+        "producer": "GOVERNED_EMPIRICAL_EVALUATOR producer/owner",
+        "producer_authority": "PYAT I03",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "I05",
+        "input_types": [
+          "GOVERNED_FACTS",
+          "PREDICATE_FRONTIER"
+        ],
+        "kind": "GOVERNED_DISCOVERY_FRONTIER",
+        "output_types": [
+          "SELECTED_BRANCH"
+        ],
+        "owner": "PYAT I05",
+        "producer": "GOVERNED_DISCOVERY_FRONTIER producer/owner",
+        "producer_authority": "PYAT I05",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "BATCH",
+        "input_types": [
+          "BATCH_ISSUED_EXECUTED_FATE"
+        ],
+        "kind": "ISSUED_WORKLOAD_AND_REPLAY",
+        "output_types": [
+          "typed_output"
+        ],
+        "owner": "PYAT Batch",
+        "producer": "ISSUED_WORKLOAD_AND_REPLAY producer/owner",
+        "producer_authority": "PYAT Batch",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "F1",
+        "input_types": [
+          "EXACT_DENOMINATOR_AND_EVIDENCE"
+        ],
+        "kind": "MARGINALS",
+        "output_types": [
+          "SOURCE_GRADED_EMPIRICAL_FACT"
+        ],
+        "owner": "S04 empirical issuer",
+        "producer": "MARGINALS producer/owner",
+        "producer_authority": "S04 empirical issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "F2",
+        "input_types": [
+          "EXACT_DENOMINATOR_AND_EVIDENCE"
+        ],
+        "kind": "DIRECTIONAL_CONDITIONAL",
+        "output_types": [
+          "SOURCE_GRADED_EMPIRICAL_FACT"
+        ],
+        "owner": "S04 estimator issuer",
+        "producer": "DIRECTIONAL_CONDITIONAL producer/owner",
+        "producer_authority": "S04 estimator issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "F3",
+        "input_types": [
+          "EXACT_DENOMINATOR_AND_EVIDENCE",
+          "SELECTED_BRANCH"
+        ],
+        "kind": "RECURSIVE_MINORITY",
+        "output_types": [
+          "SOURCE_GRADED_EMPIRICAL_FACT"
+        ],
+        "owner": "S04 estimator/branch issuer",
+        "producer": "RECURSIVE_MINORITY producer/owner",
+        "producer_authority": "S04 estimator/branch issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "F4",
+        "input_types": [
+          "EXACT_DENOMINATOR_AND_EVIDENCE"
+        ],
+        "kind": "SAME_PERSON_JOINT",
+        "output_types": [
+          "JOINT_MI_GAIN",
+          "SOURCE_GRADED_EMPIRICAL_FACT"
+        ],
+        "owner": "S04 joint issuer",
+        "producer": "SAME_PERSON_JOINT producer/owner",
+        "producer_authority": "S04 joint issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "DIAGNOSTICS",
+        "input_types": [
+          "JOINT_MI_GAIN"
+        ],
+        "kind": "MI_ENTROPY_GAIN",
+        "output_types": [
+          "typed_output"
+        ],
+        "owner": "qualified S04 diagnostics issuer",
+        "producer": "MI_ENTROPY_GAIN producer/owner",
+        "producer_authority": "qualified S04 diagnostics issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "FF01",
+        "input_types": [
+          "SOURCE_GRADED_EMPIRICAL_FACT"
+        ],
+        "kind": "DESCRIPTIVE_SOCIAL_FIELD",
+        "output_types": [
+          "DESCRIPTIVE_ASSOCIATION",
+          "EMPIRICAL_POSSIBILITY",
+          "OTHER_POSITION_JOINT_DISTRIBUTIONS",
+          "QUALIFIED_M01_M1_M2_M3_LIFECYCLE"
+        ],
+        "owner": "PYAT FF issuer",
+        "producer": "DESCRIPTIVE_SOCIAL_FIELD producer/owner",
+        "producer_authority": "PYAT FF issuer",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "MATERIAL_SOURCE",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "INDEPENDENT_MATERIAL_FACT",
+        "output_types": [
+          "OWNERSHIP_RIGHT_SANCTION",
+          "SOURCE_GRADED_EXTERNAL_CHANGE"
+        ],
+        "owner": "external structural issuer",
+        "producer": "INDEPENDENT_MATERIAL_FACT producer/owner",
+        "producer_authority": "external structural issuer",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "FF02",
+        "input_types": [
+          "DESCRIPTIVE_ASSOCIATION",
+          "OWNERSHIP_RIGHT_SANCTION"
+        ],
+        "kind": "QUALIFIED_STRUCTURAL_POWER",
+        "output_types": [
+          "QUALIFIED_MATERIAL_WORLD_RELATION"
+        ],
+        "owner": "structural science owner",
+        "producer": "QUALIFIED_STRUCTURAL_POWER producer/owner",
+        "producer_authority": "structural science owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "F6",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "NONPOOLED_NUMERIC_PARTIAL_ID",
+        "output_types": [
+          "PARTIAL_ID_INTERVAL"
+        ],
+        "owner": "F6 scientific issuer",
+        "producer": "NONPOOLED_NUMERIC_PARTIAL_ID producer/owner",
+        "producer_authority": "F6 scientific issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "F7",
+        "input_types": [
+          "typed_input"
+        ],
+        "kind": "TEMPORAL_COMPARABILITY",
+        "output_types": [
+          "COMPARABLE_WAVE"
+        ],
+        "owner": "F7 scientific issuer",
+        "producer": "TEMPORAL_COMPARABILITY producer/owner",
+        "producer_authority": "F7 scientific issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "N10E",
+        "input_types": [
+          "EMPIRICAL_POSSIBILITY",
+          "QUALIFIED_EMPIRICAL_POSSIBILITY"
+        ],
+        "kind": "EMPIRICAL_POSSIBILITY",
+        "output_types": [
+          "EMPIRICAL_POSSIBILITY",
+          "OPTION_NEEDS_SELECTED_WORLD_AND_SOURCE_GRADE",
+          "POSSIBILITY_CANDIDATE"
+        ],
+        "owner": "PYAT FF empirical world",
+        "producer": "EMPIRICAL_POSSIBILITY producer/owner",
+        "producer_authority": "PYAT FF empirical world",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "N9",
+        "input_types": [
+          "COMPARABLE_WAVE",
+          "PARTIAL_ID_INTERVAL",
+          "QUALIFIED_MATERIAL_WORLD_RELATION"
+        ],
+        "kind": "OBJECTIVE_WORLD",
+        "output_types": [
+          "SITUATED_WORLD_CONDITION"
+        ],
+        "owner": "PYAT objective-world owner",
+        "producer": "OBJECTIVE_WORLD producer/owner",
+        "producer_authority": "PYAT objective-world owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "N10W",
+        "input_types": [
+          "EMPIRICAL_POSSIBILITY",
+          "SITUATED_WORLD_CONDITION"
+        ],
+        "kind": "SITUATED_WORLD_POSSIBILITY",
+        "output_types": [
+          "POSITIONED_WORLD_POSSIBILITY",
+          "WORLD_CONDITIONED_POSITIONED_OPTION"
+        ],
+        "owner": "PYAT qualified world owner",
+        "producer": "SITUATED_WORLD_POSSIBILITY producer/owner",
+        "producer_authority": "PYAT qualified world owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "PRE-V3",
+        "input_types": [
+          "POSITIONED_WORLD_POSSIBILITY",
+          "POSSIBILITY_CANDIDATE"
+        ],
+        "kind": "POSITIONED_PERSON_INPUT",
+        "output_types": [
+          "OBJECTIVE_POSITIONED_PREV3_PRODUCT",
+          "POSITION_ACCESS"
+        ],
+        "owner": "PRE-V3 external owner",
+        "producer": "POSITIONED_PERSON_INPUT producer/owner",
+        "producer_authority": "PRE-V3 external owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "OTHER_CANDIDATE",
+        "input_types": [
+          "OTHER_POSITION_JOINT_DISTRIBUTIONS"
+        ],
+        "kind": "DIFFERENTIATED_OTHER_CANDIDATE",
+        "output_types": [
+          "PARTICULAR_FICTIONAL_OTHER"
+        ],
+        "owner": "PYAT FF/N10E owner",
+        "producer": "DIFFERENTIATED_OTHER_CANDIDATE producer/owner",
+        "producer_authority": "PYAT FF/N10E owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "OTHER_INSTANTIATED",
+        "input_types": [
+          "PARTICULAR_FICTIONAL_OTHER"
+        ],
+        "kind": "ACTUAL_FICTIONAL_OTHER",
+        "output_types": [
+          "PARTICULAR_OTHER_ACTION"
+        ],
+        "owner": "SOROK/world owner",
+        "producer": "ACTUAL_FICTIONAL_OTHER producer/owner",
+        "producer_authority": "SOROK/world owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "ENCOUNTER",
+        "input_types": [
+          "PARTICULAR_OTHER_ACTION",
+          "POSITION_ACCESS"
+        ],
+        "kind": "WORLD_EVENT_WITH_ACCESS",
+        "output_types": [
+          "ACTOR_ACCESSIBLE_CUE"
+        ],
+        "owner": "SOROK world/coactor",
+        "producer": "WORLD_EVENT_WITH_ACCESS producer/owner",
+        "producer_authority": "SOROK world/coactor",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "ACTOR_ACCESS",
+        "input_types": [
+          "ACTOR_ACCESSIBLE_CUE",
+          "ACTOR_ACCESS_GRANT"
+        ],
+        "kind": "PERCEIVED_CUE_OR_NO_CHANGE",
+        "output_types": [
+          "APPROPRIATED_PREMISE_OR_NO_CHANGE"
+        ],
+        "owner": "SOROK ADP/CAN/P3",
+        "producer": "PERCEIVED_CUE_OR_NO_CHANGE producer/owner",
+        "producer_authority": "SOROK ADP/CAN/P3",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "ACQUIRED",
+        "input_types": [
+          "APPROPRIATED_PREMISE_OR_NO_CHANGE"
+        ],
+        "kind": "ACTOR_ACQUIRED_PREMISE_OR_NO_CHANGE",
+        "output_types": [
+          "ACTOR_OWNED_PRACTICE"
+        ],
+        "owner": "SOROK developmental science owner",
+        "producer": "ACTOR_ACQUIRED_PREMISE_OR_NO_CHANGE producer/owner",
+        "producer_authority": "SOROK developmental science owner",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "ACT",
+        "input_types": [
+          "ACTOR_OWNED_PRACTICE"
+        ],
+        "kind": "LATER_PERFORMED_ACTION",
+        "output_types": [
+          "ACTOR_HISTORY",
+          "REALIZED_ACTION_EFFECT"
+        ],
+        "owner": "SOROK action owner",
+        "producer": "LATER_PERFORMED_ACTION producer/owner",
+        "producer_authority": "SOROK action owner",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "WORLD_EFFECT",
+        "input_types": [
+          "REALIZED_ACTION_EFFECT",
+          "SOURCE_GRADED_EXTERNAL_CHANGE"
+        ],
+        "kind": "MATERIAL_EFFECT_OR_EXOGENOUS_EVENT",
+        "output_types": [
+          "HISTORICAL_NEXT_STATE"
+        ],
+        "owner": "world owner",
+        "producer": "MATERIAL_EFFECT_OR_EXOGENOUS_EVENT producer/owner",
+        "producer_authority": "world owner",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "NEXT_STATE",
+        "input_types": [
+          "ACTOR_HISTORY",
+          "HISTORICAL_NEXT_STATE"
+        ],
+        "kind": "NEXT_HISTORICAL_STATE",
+        "output_types": [
+          "TWO_ACTOR_EVENTS_AND_LATER_EFFECT"
+        ],
+        "owner": "SOROK continuing reader",
+        "producer": "NEXT_HISTORICAL_STATE producer/owner",
+        "producer_authority": "SOROK continuing reader",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "SOURCE_OR_CONTRACT",
+        "exact_hold": "",
+        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "id": "E001",
+        "input_types": [
+          "SOROK_E001_ACTOR_FIRST_READ"
+        ],
+        "kind": "ACTOR_CONSENT_GATE",
+        "output_types": [
+          "ACTOR_ACCESS_GRANT"
+        ],
+        "owner": "SOROK actor/consent owner",
+        "producer": "ACTOR_CONSENT_GATE producer/owner",
+        "producer_authority": "SOROK actor/consent owner",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+        "exact_hold": "Exact owner/science hold for F5: no current actual first reader is asserted",
+        "first_consumer": "EXACT_HOLD",
+        "id": "F5",
+        "input_types": [
+          "QUALIFIED_M01_M1_M2_M3_LIFECYCLE"
+        ],
+        "kind": "HELD_LEARNED_EMPIRICAL_RELATION",
+        "output_types": [
+          "QUALIFIED_EMPIRICAL_POSSIBILITY"
+        ],
+        "owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+        "producer": "HELD_LEARNED_EMPIRICAL_RELATION producer/owner",
+        "producer_authority": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+        "exact_hold": "Exact owner/science hold for F8: no current actual first reader is asserted",
+        "first_consumer": "EXACT_HOLD",
+        "id": "F8",
+        "input_types": [
+          "OPTION_NEEDS_SELECTED_WORLD_AND_SOURCE_GRADE",
+          "WORLD_CONDITIONED_POSITIONED_OPTION"
+        ],
+        "kind": "HELD_POSITIONED_WORLD_OPTION",
+        "output_types": [
+          "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT"
+        ],
+        "owner": "PYAT F8/source world issuer",
+        "producer": "HELD_POSITIONED_WORLD_OPTION producer/owner",
+        "producer_authority": "PYAT F8/source world issuer",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+        "exact_hold": "Exact owner/science hold for N11: no current actual first reader is asserted",
+        "first_consumer": "EXACT_HOLD",
+        "id": "N11",
+        "input_types": [
+          "OBJECTIVE_POSITIONED_PREV3_PRODUCT",
+          "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT"
+        ],
+        "kind": "HELD_OBJECTIVE_PREV3_GATE",
+        "output_types": [
+          "INDEPENDENT_ACTOR_HANDOFF_MODE"
+        ],
+        "owner": "PYAT N11 objective acceptance owner",
+        "producer": "HELD_OBJECTIVE_PREV3_GATE producer/owner",
+        "producer_authority": "PYAT N11 objective acceptance owner",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+        "exact_hold": "Exact owner/science hold for N12: no current actual first reader is asserted",
+        "first_consumer": "EXACT_HOLD",
+        "id": "N12",
+        "input_types": [
+          "INDEPENDENT_ACTOR_HANDOFF_MODE"
+        ],
+        "kind": "HELD_SOROK_WAKE_DEFER",
+        "output_types": [
+          "SOURCE_WORLD_ACTOR_SEPARATION"
+        ],
+        "owner": "PYAT/SOROK bilateral consent and mode owners",
+        "producer": "HELD_SOROK_WAKE_DEFER producer/owner",
+        "producer_authority": "PYAT/SOROK bilateral consent and mode owners",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+        "exact_hold": "Exact owner/science hold for SEAM: no current actual first reader is asserted",
+        "first_consumer": "EXACT_HOLD",
+        "id": "SEAM",
+        "input_types": [
+          "SOURCE_WORLD_ACTOR_SEPARATION"
+        ],
+        "kind": "HELD_BILATERAL_TRANSFORMATION",
+        "output_types": [
+          "SOROK_E001_ACTOR_FIRST_READ"
+        ],
+        "owner": "Both authorized PYAT/SOROK source/actor interface owners",
+        "producer": "HELD_BILATERAL_TRANSFORMATION producer/owner",
+        "producer_authority": "Both authorized PYAT/SOROK source/actor interface owners",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+        "exact_hold": "Exact owner/science hold for SOROK: no current actual first reader is asserted",
+        "first_consumer": "EXACT_HOLD",
+        "id": "SOROK",
+        "input_types": [
+          "TWO_ACTOR_EVENTS_AND_LATER_EFFECT"
+        ],
+        "kind": "HELD_LATER_ACTOR_FIRST_READER",
+        "output_types": [
+          "typed_output"
+        ],
+        "owner": "SOROK actor/science/consent and world owner",
+        "producer": "HELD_LATER_ACTOR_FIRST_READER producer/owner",
+        "producer_authority": "SOROK actor/science/consent and world owner",
+        "time_mode": "FICTIONAL"
+      }
+    ],
+    "schema": "ANVIL_WHOLE_MACHINE_TYPED_GRAPH_R2",
+    "terminal_node_map": {
+      "F1": "F1",
+      "F2": "F2",
+      "F3": "F3",
+      "F4": "F4",
+      "F5": "F5",
+      "F6": "F6",
+      "F7": "F7",
+      "F8": "F8",
+      "N10E": "N10E",
+      "N10W": "N10W",
+      "N11": "N11",
+      "N12": "N12",
+      "N9": "N9",
+      "PRE-V3": "PRE-V3",
+      "SEAM": "SEAM",
+      "SOROK": "SOROK"
+    }
+  },
+  "note": "Producer/authority/time/consumer typed source-to-terminal graph; held terminals explicit; local structure only.",
+  "schema": "ANVIL_R7_TYPED_GRAPH"
+}

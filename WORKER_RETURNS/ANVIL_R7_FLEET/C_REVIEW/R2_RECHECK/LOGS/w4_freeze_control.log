@@ -1,0 +1,23 @@
+{
+  "schema": "C_REVIEW_R2_W4_FREEZE_CONTROL",
+  "FRAME": {
+    "status": "RED",
+    "errors": [
+      "FRAME:INVENTORY:INVENTORY:AUTHORED_SEMANTIC_SUMMARY_FREEZE_MISMATCH"
+    ],
+    "requirements": 16,
+    "domains": 9,
+    "identity_inventory_total": 118
+  },
+  "DECISION": {
+    "status": "RED",
+    "errors": [
+      "DECISION:INVALID_FRAME:FRAME:INVENTORY:INVENTORY:AUTHORED_SEMANTIC_SUMMARY_FREEZE_MISMATCH",
+      "DECISION:SOURCE_MEANING_NOT_BOUND_TO_INVENTORY:K1-CAP-11"
+    ],
+    "covered": 16,
+    "requirement_total": 16,
+    "identity_dispositions": 118
+  },
+  "verdict": "FREEZE_CONTROL_RED_AS_EXPECTED"
+}

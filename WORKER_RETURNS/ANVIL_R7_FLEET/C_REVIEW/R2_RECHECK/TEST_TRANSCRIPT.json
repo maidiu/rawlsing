@@ -1,0 +1,43 @@
+{
+  "schema": "ANVIL_DISTINCT_C_R2_TEST_TRANSCRIPT",
+  "created_utc": "2026-11-17T21:05:00Z",
+  "target_commit": "e919cd6e637270951ab57c06c97a8fb7bf98107d",
+  "repaired_zip_sha256": "49750ae7a80cdeb84eefc8ec4b84fa7c8edefcbb10f5d29867a6d506cc71dae3",
+  "original_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+  "commands": [
+    {"command": "target git HEAD", "exit": 0, "result": "e919cd6e637270951ab57c06c97a8fb7bf98107d"},
+    {"command": "target ZIP SHA/size", "exit": 0, "result": "49750a…; 1,812,248 bytes"},
+    {"command": "target manifest 734-file rehash", "exit": 0, "result": "734/734 ok, 0 missing, 0 bad"},
+    {"command": "literal r7_inventory.py verify", "exit": 0, "result": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY; 118; zero errors", "log": "LOGS/literal_inventory.log"},
+    {"command": "literal python3 -m unittest test_r7_integrated -q", "exit": 0, "result": "29/29 OK", "log": "LOGS/literal_29.log"},
+    {"command": "literal python3 test_integrated_strict.py", "exit": 0, "result": "11/11 OK", "log": "LOGS/literal_11.log"},
+    {"command": "literal r7_integrated.py FRAME", "exit": 0, "result": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED", "log": "LOGS/literal_FRAME.log"},
+    {"command": "literal r7_integrated.py DECISION", "exit": 0, "result": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C", "log": "LOGS/literal_DECISION.log"},
+    {"command": "literal r7_integrated.py C_INTEGRATED", "exit": 0, "result": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED; C_HOLD_EXACT", "log": "LOGS/literal_C_INTEGRATED.log"},
+    {"command": "literal r7_build.py verify", "exit": 0, "result": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL", "log": "LOGS/literal_build.log"},
+    {"command": "python3 WITNESS/w1_paraphrase.py", "exit": 0, "result": "FRAME PASS; DECISION PASS after alternative pairwise-only and F6 guard-as-numeric text", "log": "LOGS/w1_paraphrase.log", "witness": "WITNESS/W1_PARAPHRASE/w1_result.json"},
+    {"command": "python3 WITNESS/w2_paraphrase.py", "exit": 0, "result": "C_INTEGRATED PASS with alternative false T4/T6/T7 SOURCE_STATIC prose", "log": "LOGS/w2_paraphrase.log", "witness": "WITNESS/W2_PARAPHRASE/w2_result.json"},
+    {"command": "python3 WITNESS/w3_external_flag.py", "exit": 0, "result": "C_INTEGRATED PASS with self-asserted EXTERNAL_RUNNER_VERIFIED and fabricated receipt", "log": "LOGS/w3_external_flag.log", "witness": "WITNESS/W3_EXTERNAL_FLAG/w3_result.json"},
+    {"command": "python3 WITNESS/w4_freeze_control.py", "exit": 0, "result": "FRAME RED AUTHORED_SEMANTIC_SUMMARY_FREEZE_MISMATCH; DECISION RED", "log": "LOGS/w4_freeze_control.log", "witness": "WITNESS/W4_FREEZE_CONTROL/w4_result.json"},
+    {"command": "python3 WITNESS/w5_terminal_relabel.py", "exit": 0, "result": "F5 exact hold relabelled; DECISION/C PASS; C audit still exact hold", "log": "LOGS/w5_terminal_relabel.log", "witness": "WITNESS/W5_TERMINAL_RELABEL/w5_result.json"},
+    {"command": "python3 WITNESS/w5b_disconnect.py", "exit": 0, "result": "F5 disconnected; 2 filler edges; counts 43/58; DECISION/C PASS", "log": "LOGS/w5b_disconnect.log", "witness": "WITNESS/W5_DISCONNECT/w5b_result.json"},
+    {"command": "python3 WITNESS/w6_projections.py", "exit": 0, "result": "118/16 distinct values; full T fields; 43/58; evidence/falsifier index; JSONL handoff with ABI/status/deps", "log": "LOGS/w6_projections.log", "witness": "WITNESS/W6_PROJECTIONS/w6_result.json"}
+  ],
+  "not_run": [
+    "native SAV/DTA source read",
+    "13-family native C11 cold run",
+    "dense 100k 600-1300 slots",
+    "process-tree <=6 GiB",
+    "cold 1/10/100 distinct operations",
+    "actual F1-F8/N9/N10W/SOROK first reader",
+    "protected H1/CAS",
+    "original35 source/science/actor rights"
+  ],
+  "limits": [
+    "Local structural/source-byte tests only; not independent C, native science or protected H1.",
+    "C packet is C_HOLD_EXACT; local PASS is not final acceptance.",
+    "Source semantic summaries remain an external C/source-owner hold despite machine freeze.",
+    "F26 exact caller/invalidation remains the existing K3/P4R owner hold.",
+    "Local receipts/human summaries can be forged; external runner/source custody closes that."
+  ]
+}

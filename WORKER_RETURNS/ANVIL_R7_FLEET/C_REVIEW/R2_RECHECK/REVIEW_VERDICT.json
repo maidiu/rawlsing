@@ -1,0 +1,168 @@
+{
+  "schema": "ANVIL_DISTINCT_C_R2_RECHECK_VERDICT",
+  "created_utc": "2026-11-17T21:00:00Z",
+  "reviewer": {
+    "role": "SAME_DISTINCT_NONAUTHOR_C_REVIEWER_R2_RECHECK",
+    "authored_target_or_tests": false,
+    "integrator": false,
+    "independence_grade": "DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION",
+    "self_certified_protected_independence": false
+  },
+  "host_model": {
+    "harness": "OpenCode 2.0.22 on mainMac",
+    "requested": "Go DeepSeek V4.1 Flash MAX",
+    "actual_served": "UNKNOWN",
+    "served_checkpoint_1017": "UNKNOWN",
+    "observed_first_turn_metadata": {
+      "providerID": "opencode-go",
+      "id": "deepseek-v4.1-flash",
+      "variant": "max"
+    },
+    "cost": "UNKNOWN",
+    "provider_model_account_host_switch": false,
+    "subagents_used": false,
+    "rate_limit_or_paid_fallback": false
+  },
+  "target": {
+    "integration_commit": "e919cd6e637270951ab57c06c97a8fb7bf98107d",
+    "branch": "agent/anvil-integrated-instrument-20261117-r1",
+    "base_frozen_review": "6c70839a6a1ed4dd4dd15cd709c92a379e589178",
+    "repaired_zip": {
+      "path": "R2_RECHECK/INPUT/REPAIRED_PACKAGE_R2.zip",
+      "bytes": 1812248,
+      "sha256": "49750ae7a80cdeb84eefc8ec4b84fa7c8edefcbb10f5d29867a6d506cc71dae3"
+    },
+    "original_zip": {
+      "path": "/Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip",
+      "entries": 280,
+      "sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332"
+    },
+    "candidate_manifest": {
+      "files": 734,
+      "verified": 734,
+      "missing": 0,
+      "bad": 0
+    },
+    "target_worktree_head_matches_git": true,
+    "target_zip_matches_git_blob": true
+  },
+  "source_identity": {
+    "status": "PRESERVED_IDENTITY_ONLY",
+    "protected_head": "31291d08179890852246c8742700e055168e9933",
+    "k3_cut": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+    "inventory_sha256": "d22dfcf07a9a6a81ac1e3713ac6bfe3a9b0414ecff24a7fec89ccff3b6844f34",
+    "counts": {
+      "K1_CAP": 29,
+      "PYAT_PC": 26,
+      "P4R": 14,
+      "SEAM_B": 10,
+      "SEAM_S": 8,
+      "ANVIL_L": 8,
+      "BOUNDARY": 7,
+      "TERMINAL": 16,
+      "TOTAL": 118
+    },
+    "unique_ids": 118,
+    "PYAT_PC_NOT_ADOPTED": 26,
+    "P4R_HELD": 14,
+    "exact_original_anchors": true,
+    "semantic_authentication": "AUTHORED_SOURCE_BOUNDED_FREEZE__EXTERNAL_C_SOURCE_OWNER_HOLD"
+  },
+  "local_execution": {
+    "literal_inventory": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY",
+    "literal_29": "PASS_29_OF_29",
+    "literal_11_closure": "PASS_11_OF_11",
+    "FRAME": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+    "DECISION": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+    "C_INTEGRATED": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "builder_verify": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL",
+    "cold_literal_from_fresh_zip": "PASS"
+  },
+  "defect_status": {
+    "D1_W1_requirement_identity_semantics": {
+      "status": "OPEN",
+      "witness": "R2_RECHECK/WITNESS/W1_PARAPHRASE/w1_result.json",
+      "result": "FRAME and DECISION PASS after coherent alternative pairwise-only F4 and I07-guard-as-F6-numeric wording; source fields and IDs preserved",
+      "reason": "16 requirement checks and identity guards remain exact phrase blacklists; the operative distinction can be erased without exact forbidden strings"
+    },
+    "D2_W5_terminal_graph": {
+      "status": "OPEN",
+      "witnesses": [
+        "R2_RECHECK/WITNESS/W5_TERMINAL_RELABEL/w5_result.json",
+        "R2_RECHECK/WITNESS/W5_DISCONNECT/w5b_result.json"
+      ],
+      "result": "43 nodes/58 edges and 16 names exist, but F5 can be relabelled to a generic consumer or disconnected with filler edges while C terminal_audit still claims exact hold; both gates PASS",
+      "reason": "node/edge counts and terminal names are proxies; C audit is not cross-checked against graph exact holds/edges; baseline several terminal consumers are placeholders"
+    },
+    "D3_W2_c_boundary_actor_world": {
+      "status": "OPEN",
+      "witness": "R2_RECHECK/WITNESS/W2_PARAPHRASE/w2_result.json",
+      "result": "C PASS with false T4 survey-material power, T6 no-encounter knowledge, T7 fictional-to-observed prose under SOURCE_STATIC_CONSERVED and empty forbidden_promotions",
+      "reason": "C_FORBIDDEN exact phrase list is not a semantic/typed court; coherent alternative false SOURCE_STATIC claims survive"
+    },
+    "D4_W3_builder_receipt": {
+      "status": "PARTIAL_OPEN",
+      "witness": "R2_RECHECK/WITNESS/W3_EXTERNAL_FLAG/w3_result.json",
+      "result": "Local fake receipts are refused, but a self-asserted EXTERNAL_RUNNER_VERIFIED string + fabricated local receipt reaches C_CONDITIONALLY_ADMIT_DESIGN with no external custody proof",
+      "reason": "external custody is a string flag, not an accountable receipt/trust root; absent actual external custody must remain HOLD/packet-only"
+    },
+    "D5_W6_projections": {
+      "status": "SUBSTANTIALLY_CLOSED",
+      "witness": "R2_RECHECK/WITNESS/W6_PROJECTIONS/w6_result.json",
+      "result": "118 distinct identity meanings/negatives/effects/consumers/witnesses; 16 distinct requirements; full T fields; 43/58 graph; evidence/falsifier index; JSONL handoff with ABI/status/deps",
+      "residual": "architecture_effect TSV column is aliased to design_effect; terminal hold consistency remains under D2/W5"
+    },
+    "D6_cold_handoff": {
+      "status": "CLOSED",
+      "result": "Literal fresh-extraction commands pass with package-resident ANVIL_R7/EVIDENCE; no parent copy or author checkout",
+      "logs": ["R2_RECHECK/LOGS/literal_inventory.log", "R2_RECHECK/LOGS/literal_29.log", "R2_RECHECK/LOGS/literal_11.log", "R2_RECHECK/LOGS/literal_FRAME.log", "R2_RECHECK/LOGS/literal_DECISION.log", "R2_RECHECK/LOGS/literal_C_INTEGRATED.log", "R2_RECHECK/LOGS/literal_build.log"]
+    },
+    "D7_source_semantic_tamper": {
+      "status": "CLOSED_AT_MACHINE_FREEZE",
+      "witness": "R2_RECHECK/WITNESS/W4_FREEZE_CONTROL/w4_result.json",
+      "result": "Inventory source_semantics/negative_meaning tamper RED at FRAME and DECISION; exact row/excerpts preserved",
+      "remaining": "Authored semantic summary remains an external C/source-owner truth comparison; not falsely declared native semantic truth"
+    }
+  },
+  "counterexamples": {
+    "W1_PARAPHRASE": "R2_RECHECK/WITNESS/W1_PARAPHRASE/w1_result.json",
+    "W2_PARAPHRASE": "R2_RECHECK/WITNESS/W2_PARAPHRASE/w2_result.json",
+    "W3_EXTERNAL_FLAG": "R2_RECHECK/WITNESS/W3_EXTERNAL_FLAG/w3_result.json",
+    "W5_TERMINAL_RELABEL": "R2_RECHECK/WITNESS/W5_TERMINAL_RELABEL/w5_result.json",
+    "W5_DISCONNECT": "R2_RECHECK/WITNESS/W5_DISCONNECT/w5b_result.json",
+    "W4_FREEZE_CONTROL": "R2_RECHECK/WITNESS/W4_FREEZE_CONTROL/w4_result.json",
+    "W6_PROJECTIONS": "R2_RECHECK/WITNESS/W6_PROJECTIONS/w6_result.json"
+  },
+  "minimum_corrective_action": [
+    "Replace phrase blacklists for the 16 obligations and guarded identities with structured typed obligations and source-bound positive/negative witnesses; reject the W1 alternative pairwise/F6-guard texts.",
+    "Cross-check every terminal graph node with the C terminal audit; require named actual consumer or exact hold plus producer/authority/time/negative/restore and source-required edges; reject relabelled, disconnected or filler-padded terminals even at 43/58 counts.",
+    "Make C boundary/prose checks semantic or scope-typed, not only exact C_FORBIDDEN strings; a SOURCE_STATIC claim must not accept T4/T6/T7 false science, and ACTUAL_PROVED must retain actual first-reader proof.",
+    "Do not accept self-asserted EXTERNAL_RUNNER_VERIFIED as external custody; require an accountable external receipt/authority or keep C at HOLD/packet-only.",
+    "Optionally make architecture_effect a distinct R5-equivalent field instead of aliasing design_effect."
+  ],
+  "authority": {
+    "protected_H1_CAS": "NOT_GRANTED",
+    "native_original35_science": "NOT_GRANTED",
+    "source_rights": "NOT_GRANTED",
+    "actor_consent_or_psychology": "NOT_GRANTED",
+    "physical_C11_architecture_selected": false,
+    "seven_mandatory_stages": false,
+    "mandatory_full_A_B": false,
+    "protected_merge": "NOT_MADE"
+  },
+  "limits": [
+    "Native SAV/DTA source read, 13-family native C11 cold run, dense 100k 600-1300 slots, process-tree <=6 GiB, cold 1/10/100 distinct operations, actual F1-F8/N9/N10W/SOROK first reader: NOT_RUN.",
+    "F26 exact original caller/body/invalidation remains the existing K3 K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21 owner hold; not invented.",
+    "Source semantic truth remains external C/source-owner; machine freeze is not native semantic truth.",
+    "Source bank 297/299 hash and 278/279 ZIP-text caveats preserved; original ZIP bytes remain authority.",
+    "Independence is a distinct-nonauthor assertion pending external verification; this review does not self-certify protected independence.",
+    "C packet remains C_HOLD_EXACT; local PASS is not H1/native/science/actor acceptance."
+  ],
+  "verdict": "REVISE_EXACT_DEFECT",
+  "disposition": "R2_TARGET_SOURCE_IDENTITY_PRESERVED__D6_D7_CLOSED__D1_D2_D3_OPEN__D4_PARTIAL__D5_SUBSTANTIALLY_CLOSED__REVISE_EXACT_DEFECT",
+  "readable_verdict": "R2_RECHECK/VERDICT.md",
+  "grok_delta": "R2_RECHECK/GROK_DELTA.md",
+  "raw_commands": "R2_RECHECK/RAW_COMMANDS.md",
+  "exact_sha256": "R2_RECHECK/EXACT_SHA256.json",
+  "stop": "Freeze/push this R2_RECHECK descendant only; HQ intake; no protected merge, architecture launch, or native/science/actor claim."
+}

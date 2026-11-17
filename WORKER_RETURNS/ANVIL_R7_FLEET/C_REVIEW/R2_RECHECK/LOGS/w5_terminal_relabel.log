@@ -1,0 +1,37 @@
+{
+  "schema": "C_REVIEW_R2_W5_TERMINAL_RELABEL",
+  "graph_nodes": 43,
+  "graph_edges": 58,
+  "F5_graph": {
+    "alternative_id": "A1",
+    "decision_id": "D1",
+    "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+    "exact_hold": "",
+    "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+    "id": "F5",
+    "input_types": [
+      "QUALIFIED_M01_M1_M2_M3_LIFECYCLE"
+    ],
+    "kind": "HELD_LEARNED_EMPIRICAL_RELATION",
+    "output_types": [
+      "QUALIFIED_EMPIRICAL_POSSIBILITY"
+    ],
+    "owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+    "producer": "HELD_LEARNED_EMPIRICAL_RELATION producer/owner",
+    "producer_authority": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+    "time_mode": "OBSERVED"
+  },
+  "C_terminal_audit_F5": "Exact owner/science hold: no current actual first reader asserted for F5",
+  "DECISION": {
+    "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+    "errors": [],
+    "covered": 16,
+    "requirement_total": 16,
+    "identity_dispositions": 118
+  },
+  "C_INTEGRATED": {
+    "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "errors": []
+  },
+  "verdict": "RELABEL_CONFIRMED_IF_BOTH_PASS"
+}
