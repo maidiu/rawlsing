@@ -4,13 +4,16 @@
 repaired ANVIL claim no-loss/ready while discarding essential functions,
 negative evidence, boundaries, or actual consumers?
 
-**Answer at the tested cut:** **YES, against the supplied R7 instrument.** Ten
-distinct sabotages pass the shipped FRAME/DECISION/C gates, including a fully
-synthetic 118-row ledger, a changed K3 row hash, an attacker-authored source
-file, deleted negative content, a fabricated owner grant, all seven boundary
-contracts removed, survey→actor causal knowledge, a revoked release, and a
-non-existent builder test command. The one defended case is the literal K3
-`NOT_ADOPTED` boolean (H12).
+**Answer at the tested cut:** **YES, against the supplied R7 instrument.**
+The matrix has 14 rows: one clean baseline (H00), one clean restore (H13), and
+**12 hostile mutations** (H01–H12). **11 of the 12 hostile mutations pass the
+component they target**; of the 11 gate-targeted mutations (H02–H11), **10/10
+pass**. Only the literal K3 `NOT_ADOPTED` boolean is defended (H12 RED).
+Passing attacks include a synthetic 118-row ledger, a changed K3 row hash, an
+attacker-authored source file, deleted negative content, a fabricated owner
+grant, all seven boundary contracts removed, survey→actor causal knowledge, a
+revoked release, and a non-existent builder test command. Exact accounting:
+`ATTACK_ACCOUNTING.md`.
 
 ## 1. Exact source / currentness
 
@@ -24,19 +27,25 @@ non-existent builder test command. The one defended case is the literal K3
 | K3 file SHA-256 | `0dfe6539f1a1f7f028c5968c0e85078cbf5f80a847d0c94ea1929f57d20c052d`, `6d0766ecc637ee03a705c1772e7bcda39c09c9534f0672cd36a27cfa85e0dfa2`, `8adf74cfbf2e916f41641f5836ab82305059b59e1665a2e1647dfb6bdeb0e9d3` |
 | supplied ZIP | `ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip` SHA-256 `526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332`, 280 files |
 | package digest (cold copy) | `4e951afefa29f29dc04d22cd9b0f2747590bcb1930f0d03ee8d028b3c96e53e0` before runner |
-| report | `MUTATION_TESTS/REPORT.json` SHA-256 `1e5611e51ad46b0d7edb9829cb15a5a1c07cd913d357149b39841b0be33ef772` |
-| matrix | `HOSTILE_ATTACK_MATRIX.tsv` SHA-256 `1b8fa66a125a6b13acf7508cc1ab26d086eec8cf8dc6aa79ab00db13f0634824` |
+| report | `MUTATION_TESTS/REPORT.json` SHA-256 `b800cc4328f1387bc946549a56a3d5284dc8df95fc62332c6e0d9a332cdf4c53` |
+| matrix | `HOSTILE_ATTACK_MATRIX.tsv` SHA-256 `78aaf2d830c2f5bfca95499897ffdd22060fa0c040711034466a538ab9bb3125` |
 | strict overlay | `MUTATION_TESTS/strict_instrument.py` SHA-256 `b7eca19e07df4d61288ec4b7e055c150b4d21477900c3123eb5400047d900b48` |
 | harness | `MUTATION_TESTS/hostile_attacks.py` SHA-256 `d9ae5dbea55f9d31f14002f389a360bcbc042cba51daf8430d6221f39722d5ad` |
 | cold log | `COLD_RUN.log` SHA-256 `63ed1a7aa2ebda245939b7899a3d531b4a618661b49cae99252efe57591b78d8` |
+| fleet bank | `8523007613d411390a76683fa464002c0f25df83`; `START_HERE` + `FORENSIC_RECOVERY` read |
+| bank byte check | 299 entries, **297 hash-match, 2 mismatch**; 279 ZIP text members, **278 exact, 1 CRLF→LF** |
 
 ## 2. Confirmed observations / interpretation / owner holds
 
-**FINDING (executed):** supplied gate results — 12 of 13 mutations PASS; H12
-(K3 NOT_ADOPTED flip) RED. Strict overlay — H01–H12 RED, base H00 and restore
+**FINDING (executed):** supplied gate results — 11 of 12 hostile mutations pass
+their target (10/10 gate-targeted); H12 (K3 NOT_ADOPTED flip) RED. H00/H13 are
+clean controls, not attacks. Strict overlay — H01–H12 RED, base H00 and restore
 H13 PASS at FRAME/DECISION/C. Exact rows and error codes: `HOSTILE_ATTACK_MATRIX.tsv`.
 Cold copy: author suite exit 0; quality runner `PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY`
-12/12; documented FRAME/DECISION CLI exit 2 because no packet exists.
+12/12; documented FRAME/DECISION CLI exit 2 because no packet exists. That last
+observation is **not** proof of a defective finished builder: FRAME/DECISION/C
+are author outputs (see `COLD_BUILDER_REHEARSAL.md`); the demonstrable builder
+defect is H11, where a non-existent `test_command` is accepted.
 
 **INTERPRETATION:** the passive checks (IDs, prose floors, schema, JSON pins)
 are real but are not source authentication or semantic conservation. The
@@ -82,6 +91,27 @@ All XML/JSON/TSV results are under `MUTATION_TESTS/`; cold log at `COLD_RUN.log`
 No integrated repair candidate was supplied to this return. Attacks on its
 exact bytes are **NOT_RUN**. My strict overlay is bounded authored evidence on
 the old package, not an acceptance of any candidate.
+
+**Fleet bank (same commission, source-access update):** pinned at
+`8523007613d411390a76683fa464002c0f25df83`; `START_HERE.md` and
+`FORENSIC_RECOVERY/ANVIL_118_FORENSIC_AUDIT.md` read. The forensic audit is an
+allegation tested against my own runs; it independently corroborates synthetic-
+spine acceptance, the 118→decision gap, boundary demotion and the false R5 SPINE
+prerequisite. Bank limits are exact: 299 manifest entries, 297 hash-match, 2
+mismatch; 278/279 extracted ZIP text members exact, one CRLF→LF synthetic TSV.
+The original ZIP SHA-256 remains byte authority and my `PACKAGE/` was not
+overwritten.
+
+**Probe-5 correction:** the earlier 000/111 illustration was false. The
+replacement XOR witness (identical univariate and pairwise marginals, different
+true 3-way joint, forward and reverse denominators) is computed in
+`MUTATION_TESTS/probe5_witness.py` and logged in `PROBE5_WITNESS.log`.
+
+**Probe-2 correction:** the earlier attribution to 4913 is withdrawn. Its exact
+`FRAME.json` has 53 requirements, no disposition field, `architecture_selected=false`,
+and its gate is RED only at `FRAME:HISTORY:NO_POINTER`; `00_RETURN.md` says no
+decision exists. The surviving criticism is its false dependency on an
+accepted R5/R6 SPINE.
 
 ## 6. Authority ceiling
 

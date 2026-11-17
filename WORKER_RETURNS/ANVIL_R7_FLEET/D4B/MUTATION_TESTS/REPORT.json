@@ -17,7 +17,8 @@
       "supplied_errors": [],
       "strict_status": "PASS_STRICT_LOCAL_ONLY",
       "strict_errors": [],
-      "note": "positive/restore baseline; local shape only"
+      "note": "positive/restore baseline; local shape only",
+      "kind": "CLEAN_BASELINE"
     },
     {
       "attack_id": "H01",
@@ -31,7 +32,8 @@
       "strict_errors": [
         "strict history rejects unbound rows"
       ],
-      "note": "supplied transfer helper returns a transfer object"
+      "note": "supplied transfer helper returns a transfer object",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H02",
@@ -52,7 +54,8 @@
         "STRICT_K3:K1_CAP:K1-CAP-02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY",
         "STRICT_K3:K1_CAP:K1-CAP-02:ROW_HASH_NOT_SOURCE"
       ],
-      "note": "FRAME: byte equality between two synthetic documents"
+      "note": "FRAME: byte equality between two synthetic documents",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H03",
@@ -66,7 +69,8 @@
       "strict_errors": [
         "STRICT_K3:K1_CAP:K1-CAP-01:ROW_HASH_NOT_SOURCE"
       ],
-      "note": "no K3 re-derivation in the active path"
+      "note": "no K3 re-derivation in the active path",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H04",
@@ -87,7 +91,8 @@
         "STRICT_EVIDENCE:R7:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
         "STRICT_EVIDENCE:R8:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT"
       ],
-      "note": "hash+quote match; content is not the claimed blob"
+      "note": "hash+quote match; content is not the claimed blob",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H05",
@@ -103,7 +108,8 @@
         "STRICT_K3:P4R:P4R-R02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY",
         "STRICT_K3:PYAT_PC:PYAT-PC-R9-02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY"
       ],
-      "note": "12-char prose floor accepts content-free negative"
+      "note": "12-char prose floor accepts content-free negative",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H06",
@@ -117,7 +123,8 @@
       "strict_errors": [
         "STRICT_GRANT:R6:TEXTUAL_GRANT_WITHOUT_RECEIPT"
       ],
-      "note": "no grant artifact can be required by the supplied gate"
+      "note": "no grant artifact can be required by the supplied gate",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H07",
@@ -131,7 +138,8 @@
       "strict_errors": [
         "STRICT_DECISION:NO_118_COVERAGE_DISPOSITIONS"
       ],
-      "note": "decision reconciles frame rows only, never the 118"
+      "note": "decision reconciles frame rows only, never the 118",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H08",
@@ -145,7 +153,8 @@
       "strict_errors": [
         "STRICT_FRAME:NO_BOUNDARY_CONTRACTS"
       ],
-      "note": "active FRAME/DECISION never read 02_BOUNDARY_CONTRACTS.json"
+      "note": "active FRAME/DECISION never read 02_BOUNDARY_CONTRACTS.json",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H09",
@@ -159,7 +168,8 @@
       "strict_errors": [
         "STRICT_ACTOR:FORBIDDEN_SURVEY_TO_ACTOR_CAUSAL:Survey answers directly determine each actor's private motive and knowledge"
       ],
-      "note": "no survey-to-actor causal prohibition in active gate"
+      "note": "no survey-to-actor causal prohibition in active gate",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H10",
@@ -175,7 +185,8 @@
         "STRICT_RELEASE:NO_REVOCATION_TEST",
         "STRICT_RELEASE:READY_WITH_NONCURRENT_RELEASE"
       ],
-      "note": "40-hex shape only; author's own fixture uses a*40"
+      "note": "40-hex shape only; author's own fixture uses a*40",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H11",
@@ -189,7 +200,8 @@
       "strict_errors": [
         "STRICT_BUILDER:NONEXISTENT_TEST_COMMAND:does_not_exist_runner.py"
       ],
-      "note": "test_command only prefix-checked, never resolved"
+      "note": "test_command only prefix-checked, never resolved",
+      "kind": "HOSTILE_MUTATION"
     },
     {
       "attack_id": "H12",
@@ -205,7 +217,8 @@
       "strict_errors": [
         "HISTORY:FALSE_PROSPECTIVE_ADOPTION:PYAT-PC-R9-01"
       ],
-      "note": "supplied gate does defend this exact boolean"
+      "note": "supplied gate does defend this exact boolean",
+      "kind": "HOSTILE_MUTATION_POSITIVE_CONTROL"
     },
     {
       "attack_id": "H13",
@@ -217,7 +230,19 @@
       "supplied_errors": [],
       "strict_status": "PASS_STRICT_LOCAL_ONLY/PASS_STRICT_LOCAL_ONLY/PASS_STRICT_LOCAL_ONLY",
       "strict_errors": [],
-      "note": "positive/restore demonstrated on the same bytes"
+      "note": "positive/restore demonstrated on the same bytes",
+      "kind": "CLEAN_RESTORE"
     }
-  ]
+  ],
+  "accounting": {
+    "total_rows": 14,
+    "clean_baseline": 1,
+    "clean_restore": 1,
+    "hostile_mutations": 12,
+    "hostile_mutations_passing_target": 11,
+    "hostile_mutations_passing_gate_only": 10,
+    "hostile_mutations_defended": 1,
+    "hostile_mutations_passing_transfer_helper_only": 1,
+    "note": "H01 targets the transfer helper; H02-H11 target the gate; H12 is the defended NOT_ADOPTED positive control; H00/H13 are clean controls, not attacks."
+  }
 }

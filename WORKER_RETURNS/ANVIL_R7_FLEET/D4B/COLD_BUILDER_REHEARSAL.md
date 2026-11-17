@@ -25,9 +25,16 @@ FRAME_EXIT=2
 DECISION_EXIT=2
 ```
 
-So the current consumer cannot be instantiated from the package's own source
-pins. `test_r7_integrated.py` constructs fixtures in Python memory instead;
-that is an author test, not a builder handoff.
+**Qualification (HQ correction):** FRAME/DECISION/C are **author outputs**, not
+shipped artifacts. `29_R7...` lines 49–53 gives the executable law as
+`r7_integrated.py FRAME FRAME.json ...`; it does not promise the ZIP contains
+`FRAME.json`, and 4913 legitimately authored one with `EVIDENCE/build_frame.py`.
+So file-not-found alone is **not** proof of a defective finished builder. The
+demonstrable defect is different: (a) H11 shows `check_builder()` accepts a
+non-existent `test_command`, and (b) the package supplies no generator or
+reproduction ABI for its own in-memory test fixture except reading
+`tools/test_r7_integrated.py`. `test_r7_integrated.py` constructs fixtures in
+Python memory; that is an author test, not a builder handoff.
 
 **Author suite in the cold copy:** `TEST_EXIT=0`.
 **Quality runner in the cold copy:** `PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY`,
@@ -61,7 +68,7 @@ local check can mint the SOROK grant.
 
 | Consumer | Instantiable from source pins? | Actually executed | Grade |
 |---|---|---|---|
-| R7 FRAME/DECISION/C | **No** (no packet files) | author synthetic suite only | `EXACT_BUILDER_HOLD` |
+| R7 FRAME/DECISION/C | No packet shipped (legitimate author output), no generator/ABI | author synthetic suite only | `EXACT_BUILDER_HOLD`, not "broken builder" |
 | T7/SOROK future | No (owner-held, no ABI/rights) | none | `EXACT_BUILDER_HOLD` |
 
 No local H1, no independent C, no science/source/actor receiving is claimed.

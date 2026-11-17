@@ -40,6 +40,13 @@ python3 tools/run_r7_quality.py
 
 ## Attack catalogue
 
+`H00` is the clean baseline, `H13` is the clean restore; **H01–H12 are the 12
+hostile mutations** (H12 is the defended positive control). See
+`ATTACK_ACCOUNTING.md`. The fleet bank `8523007...` was read after the attacks;
+it corroborates the synthetic-spine and 118→decision findings but did not alter
+any test result.
+
+
 | ID | Mutation | Target contract | Supplied gate | Strict overlay |
 |---|---|---|---|---|
 | H01 | synthetic 118-row boilerplate ledger through `r7_transfer_conservation.transfer()` | 118 identity conservation | `PASS_TRANSFERRED` | RED |

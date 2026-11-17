@@ -72,11 +72,15 @@ No item below is repaired in product code, shared package or protected refs.
     private reconstructed packet.
 21. Live GitHub currentness was not re-queried; the local protected copy at
     `31291d0...` is the authority used. `LIVE_GITHUB.json` was not revalidated
-    against the API in this pass.
+    against the API in this pass. The fleet bank at `8523007...` was read, but
+    its manifest has 2 mismatches (297/299) and the extracted ZIP texts 278/279;
+    the original ZIP `526d835d...` remains byte authority.
 22. No native SAV/DTA run, no 100k dense workload, no 6 GiB process-tree
     measurement, no C11/I03/I05 first reader. All such claims would be false.
 23. No source, scientific, actor or protected receiving rights were issued or
     exercised.
-24. The #1097/ZL-15 `52/24/21` crosswalk, the full V549/V550/V550J/F26 bodies,
-    SEAM/25, SEAM/26 and ANVIL/15 exact bytes were not read. Any statement about
-    them is limited to the protected summaries cited in `GROK_PROOF.md`.
+24. The #1097/ZL-15 `52/24/21` crosswalk was not read in full. V549, V550,
+    V550J, SEAM/25, SEAM/26 and ANVIL/15 exact bytes **were** read this pass and
+    are cited in `GROK_PROOF.md`. The exact original F26 per-query caller is
+    still missing: K3/P4R mark it unverified and the bank contains no F26 code.
+    This is the single precise `GROK_INCOMPLETE` item.
