@@ -357,7 +357,7 @@ def check_identity_dispositions(decision,inventory,source_root,errors,evidence_r
         expected=IDENTITY_MACHINE.get(rid)
         if expected is not None and row.get('machine_assertion')!=expected:
             errors.append('DECISION:TYPED_MACHINE_ASSERTION_MISMATCH:'+rid)
-        if nh(row,('source_meaning','source_negative','design_effect','first_consumer_path','conservation_or_refusal_witness','status_assertion','first_consumer_or_hold'))!=IDENTITY_NARRATIVE_HASH.get(rid):
+        if nh(row,('source_meaning','source_negative','design_effect','first_consumer_path','conservation_or_refusal_witness','disposition','status_assertion','evidence_grade','first_consumer_or_hold'))!=IDENTITY_NARRATIVE_HASH.get(rid):
             errors.append('DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+rid)
         if row.get('evidence_grade') not in GRADES:errors.append('DECISION:BAD_IDENTITY_EVIDENCE_GRADE:'+str(rid))
         source_ref(row.get('evidence'),source_root,errors,'DECISION:IDENTITY_EVIDENCE:'+str(rid),repo,zip_path,strict=True)
@@ -540,7 +540,7 @@ def check_decision(decision,evidence_root,source_root,repo=None,zip_path=None):
             e.append('DECISION:TYPED_OBLIGATION_MISMATCH:'+str(rid))
         if x.get('machine_assertion')!=REQUIREMENT_MACHINE.get(rid):
             e.append('DECISION:TYPED_MACHINE_ASSERTION_MISMATCH:'+str(rid))
-        if nh(x,('actual_design_effect','specific_first_consumer_path','conservation_or_refusal_witness'))!=REQUIREMENT_DISPOSITION_NARRATIVE_HASH.get(rid):
+        if nh(x,('actual_design_effect','specific_first_consumer_path','conservation_or_refusal_witness','disposition'))!=REQUIREMENT_DISPOSITION_NARRATIVE_HASH.get(rid):
             e.append('DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+str(rid))
         if x.get('evidence_grade') not in GRADES:e.append('DECISION:BAD_EVIDENCE_GRADE:'+str(rid))
         if state in ('PRESENT_PRESERVED','FUTURE_NONPRECLUDED'):
@@ -581,11 +581,14 @@ def check_boundary_court(court,evidence_root,source_root,errors,admit):
         grade=x.get('claim_grade')
         if grade not in ('SOURCE_STATIC_CONSERVED','EXACT_HOLD','ACTUAL_PROVED'):
             errors.append('C:BOUNDARY_FALSE_CLAIM_GRADE:'+t)
-        if grade=='ACTUAL_PROVED' and x.get('actual_first_reader_verified') is not True:
-            errors.append('C:BOUNDARY_ACTUAL_PROVED_WITHOUT_READER:'+t)
+        if grade=='ACTUAL_PROVED':
+            aw=x.get('actual_reader_witness')
+            trusted=()
+            if not isinstance(aw,dict) or not aw.get('reader_abi') or aw.get('exit_code')!=0 or aw.get('custody') not in trusted:
+                errors.append('C:ACTUAL_PROVED_WITHOUT_AUTHORIZED_READER_WITNESS:'+t)
         if x.get('machine_assertion')!=BOUNDARY_MACHINE.get(t):
             errors.append('C:TYPED_BOUNDARY_ASSERTION_MISMATCH:'+t)
-        if nh(x,('positive','negative','restore','first_consumer_or_hold','authority_owner'))!=BOUNDARY_NARRATIVE_HASH.get(t):
+        if nh(x,('positive','negative','restore','first_consumer_or_hold','authority_owner','claim_grade','grade','actual_first_reader_verified'))!=BOUNDARY_NARRATIVE_HASH.get(t):
             errors.append('C:BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+t)
         if not good(x.get('authority_owner'),8):errors.append('C:BOUNDARY_NO_AUTHORITY_OWNER:'+t)
         fp=x.get('forbidden_promotions')

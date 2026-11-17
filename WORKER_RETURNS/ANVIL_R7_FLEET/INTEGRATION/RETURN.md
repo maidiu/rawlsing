@@ -5,6 +5,10 @@
 
 This is a controlled descendant of `0f0c673f99978aff6c11f7bd0e6fe1840fbdc799` on the same branch/return root. Source identity `118/95 Git+23 ZIP/26 NOT_ADOPTED/14 HELD` is preserved. The C review `REVISE_EXACT_DEFECT` is accepted as a defect list; its D1–D7 are repaired where mechanical and honestly held where external.
 
+## R4 state/claim binding (R3 recheck 0d87a564)
+
+See `R4_DEFECT_CLOSURE.md`. Identity disposition/status/evidence grade, requirement disposition and boundary claim grade/actual-reader flag are now inside the typed/narrative binding. Held/future->present and source-static->actual refuse; exact baseline restores. No target blacklist; analogous rows/boundaries refuse. All prior closures preserved.
+
 ## R3 four-defect repair (same C recheck a81202f4)
 
 See `R3_DEFECT_CLOSURE.md`. Typed machine assertions and frozen narrative hashes replace phrase blacklists; W1/W2 paraphrases, W3 forged external flag, W5 terminal relabel/disconnect all refuse. Conditional C admission is disabled without authorized trusted external custody. D6/D7/D5 closures preserved.
