@@ -1,0 +1,32 @@
+{
+  "schema": "C_REVIEW_WITNESS_W1",
+  "question": "Can a choice-changing scientific distinction be erased while IDs/headings/hashes remain valid?",
+  "mutations": [
+    "REQ-MULTIWAY-JOINT text replaced by explicit pairwise-only acceptance",
+    "matching requirement disposition replaced by explicit pairwise-only acceptance",
+    "K1-CAP-17 F6 numeric/guard distinction replaced by \"guard is numeric bound\""
+  ],
+  "FRAME": {
+    "status": "RED",
+    "errors": [
+      "FRAME:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-only",
+      "FRAME:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-substitute"
+    ],
+    "requirements": 16,
+    "domains": 9,
+    "identity_inventory_total": 118
+  },
+  "DECISION": {
+    "status": "RED",
+    "errors": [
+      "DECISION:FORBIDDEN_DISTINCTION_REWRITE:K1-CAP-17:guard-as-numeric",
+      "DECISION:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:no three-way",
+      "DECISION:INVALID_FRAME:FRAME:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-only",
+      "DECISION:INVALID_FRAME:FRAME:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-substitute"
+    ],
+    "covered": 16,
+    "requirement_total": 16,
+    "identity_dispositions": 118
+  },
+  "verdict": "WITNESS_REFUTED"
+}

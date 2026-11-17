@@ -702,7 +702,7 @@
           "T5"
         ],
         "temporal_mode": "MODELED",
-        "to": "PREV3"
+        "to": "PRE-V3"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -723,7 +723,7 @@
           "B-04"
         ],
         "temporal_mode": "MODELED",
-        "to": "PREV3"
+        "to": "PRE-V3"
       },
       {
         "authority_grade": "FUTURE_NONPRECLUSION_NOT_EXECUTED",
@@ -797,7 +797,7 @@
         "data_type": "POSITION_ACCESS",
         "edge_kind": "CONDITIONAL_WORLD_PLACEMENT",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "PREV3",
+        "from": "PRE-V3",
         "id": "E38",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "probability alone is not contact",
@@ -1042,7 +1042,7 @@
           "K1-CAP-18"
         ],
         "temporal_mode": "MODELED",
-        "to": "F5_LEARNED"
+        "to": "F5"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1051,7 +1051,7 @@
         "data_type": "QUALIFIED_EMPIRICAL_POSSIBILITY",
         "edge_kind": "LEARNED_INPUT_OPTION_ONLY",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "F5_LEARNED",
+        "from": "F5",
         "id": "E50",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "No F5 imported science or full lifecycle => no claimed current F5-to-N10E first reader",
@@ -1086,7 +1086,7 @@
           "T5"
         ],
         "temporal_mode": "MODELED",
-        "to": "F8_POSITIONED"
+        "to": "F8"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1108,7 +1108,7 @@
           "T5"
         ],
         "temporal_mode": "MODELED",
-        "to": "F8_POSITIONED"
+        "to": "F8"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1117,7 +1117,7 @@
         "data_type": "OBJECTIVE_POSITIONED_PREV3_PRODUCT",
         "edge_kind": "N11_OBJECTIVE_GATE",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "PREV3",
+        "from": "PRE-V3",
         "id": "E53",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "N11 roadmap or schema pointer does not mean objective acceptance/real first reader",
@@ -1130,7 +1130,7 @@
           "T5"
         ],
         "temporal_mode": "MIXED_TYPED",
-        "to": "N11_ACCEPTANCE"
+        "to": "N11"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1139,7 +1139,7 @@
         "data_type": "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT",
         "edge_kind": "F8_N11_OPTIONAL_DEPENDENCY",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "F8_POSITIONED",
+        "from": "F8",
         "id": "E54",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "F8 TEST_ONLY first effect cannot mint N11 acceptance; unselected mode may legitimately defer",
@@ -1152,7 +1152,7 @@
           "B-03"
         ],
         "temporal_mode": "MIXED_TYPED",
-        "to": "N11_ACCEPTANCE"
+        "to": "N11"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1161,7 +1161,7 @@
         "data_type": "INDEPENDENT_ACTOR_HANDOFF_MODE",
         "edge_kind": "CONDITIONAL_N12_WAKE_OR_DEFER",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "N11_ACCEPTANCE",
+        "from": "N11",
         "id": "E55",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "N11 objective acceptance is not consent, wake permission or actor state",
@@ -1174,7 +1174,7 @@
           "P4R-R10"
         ],
         "temporal_mode": "MIXED_TYPED",
-        "to": "N12_WAKE"
+        "to": "N12"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1183,7 +1183,7 @@
         "data_type": "SOURCE_WORLD_ACTOR_SEPARATION",
         "edge_kind": "BILATERAL_SCOPED_RECEIVING",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "N12_WAKE",
+        "from": "N12",
         "id": "E56",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "Unselected or denied actor mode cannot implicitly serve a person",
@@ -1196,7 +1196,7 @@
           "B-05"
         ],
         "temporal_mode": "MIXED_TYPED",
-        "to": "SEAM_HANDOFF"
+        "to": "SEAM"
       },
       {
         "authority_grade": "OWNER_HELD_NOT_EXECUTED",
@@ -1205,7 +1205,7 @@
         "data_type": "SOROK_E001_ACTOR_FIRST_READ",
         "edge_kind": "CONSENTED_IMPORT_PREREQUISITE_ONLY",
         "first_consumer_status": "PROPOSED_OR_HELD__NOT_CURRENT_ACTUAL_READER_PROOF",
-        "from": "SEAM_HANDOFF",
+        "from": "SEAM",
         "id": "E57",
         "invalidation_rule": "SOURCEFREE_COUNTERFACTUAL_SPECIFICATION_ONLY",
         "negative_or_refusal": "Boundary document and E001 ID do not prove consent/actual importer",
@@ -1240,7 +1240,7 @@
           "T7"
         ],
         "temporal_mode": "FICTIONAL",
-        "to": "SOROK_CONTINUITY"
+        "to": "SOROK"
       }
     ],
     "nodes": [
@@ -1791,7 +1791,7 @@
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
         "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
-        "id": "PREV3",
+        "id": "PRE-V3",
         "input_types": [
           "POSITIONED_WORLD_POSSIBILITY",
           "POSSIBILITY_CANDIDATE"
@@ -1988,7 +1988,7 @@
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
         "exact_hold": "Exact owner/science hold for F5: no current actual first reader is asserted",
         "first_consumer": "EXACT_HOLD",
-        "id": "F5_LEARNED",
+        "id": "F5",
         "input_types": [
           "QUALIFIED_M01_M1_M2_M3_LIFECYCLE"
         ],
@@ -2007,7 +2007,7 @@
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
         "exact_hold": "Exact owner/science hold for F8: no current actual first reader is asserted",
         "first_consumer": "EXACT_HOLD",
-        "id": "F8_POSITIONED",
+        "id": "F8",
         "input_types": [
           "OPTION_NEEDS_SELECTED_WORLD_AND_SOURCE_GRADE",
           "WORLD_CONDITIONED_POSITIONED_OPTION"
@@ -2027,7 +2027,7 @@
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
         "exact_hold": "Exact owner/science hold for N11: no current actual first reader is asserted",
         "first_consumer": "EXACT_HOLD",
-        "id": "N11_ACCEPTANCE",
+        "id": "N11",
         "input_types": [
           "OBJECTIVE_POSITIONED_PREV3_PRODUCT",
           "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT"
@@ -2047,7 +2047,7 @@
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
         "exact_hold": "Exact owner/science hold for N12: no current actual first reader is asserted",
         "first_consumer": "EXACT_HOLD",
-        "id": "N12_WAKE",
+        "id": "N12",
         "input_types": [
           "INDEPENDENT_ACTOR_HANDOFF_MODE"
         ],
@@ -2066,7 +2066,7 @@
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
         "exact_hold": "Exact owner/science hold for SEAM: no current actual first reader is asserted",
         "first_consumer": "EXACT_HOLD",
-        "id": "SEAM_HANDOFF",
+        "id": "SEAM",
         "input_types": [
           "SOURCE_WORLD_ACTOR_SEPARATION"
         ],
@@ -2085,7 +2085,7 @@
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
         "exact_hold": "Exact owner/science hold for SOROK: no current actual first reader is asserted",
         "first_consumer": "EXACT_HOLD",
-        "id": "SOROK_CONTINUITY",
+        "id": "SOROK",
         "input_types": [
           "TWO_ACTOR_EVENTS_AND_LATER_EFFECT"
         ],
@@ -2105,18 +2105,18 @@
       "F2": "F2",
       "F3": "F3",
       "F4": "F4",
-      "F5": "F5_LEARNED",
+      "F5": "F5",
       "F6": "F6",
       "F7": "F7",
-      "F8": "F8_POSITIONED",
+      "F8": "F8",
       "N10E": "N10E",
       "N10W": "N10W",
-      "N11": "N11_ACCEPTANCE",
-      "N12": "N12_WAKE",
+      "N11": "N11",
+      "N12": "N12",
       "N9": "N9",
-      "PRE-V3": "PREV3",
-      "SEAM": "SEAM_HANDOFF",
-      "SOROK": "SOROK_CONTINUITY"
+      "PRE-V3": "PRE-V3",
+      "SEAM": "SEAM",
+      "SOROK": "SOROK"
     }
   },
   "note": "Producer/authority/time/consumer typed source-to-terminal graph; held terminals explicit; local structure only.",

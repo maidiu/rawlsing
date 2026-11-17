@@ -75,7 +75,7 @@ IDENTITY_GUARDS={
  'P4R-R02':{'required':['F26','hold'],'forbidden':['F26 caller proved','F26 equivalence proved']},
  'PYAT-PC-R11-21':{'required':['F26','hold'],'forbidden':['F26 caller proved','F26 equivalence proved']},
 }
-C_FORBIDDEN=('survey opinion is institutional power','survey answers give actor private knowledge','survey response gives actor knowledge','fictional action edits observed source','fictional action overwrites observed','no independent structural producer','respondent answers give the actor private')
+C_FORBIDDEN=('survey opinion is institutional power','survey opinion frequency is institutional power','survey answers give actor private knowledge','survey answers directly give the actor private knowledge','survey response gives actor knowledge','fictional action edits observed source','fictional performed action edits','fictional action overwrites observed','any branch may overwrite the measured source','no independent structural producer','respondent answers give the actor private','actor-private psychology and material power','offscreen knowledge without access','learns it automatically')
 GRADES={'CODE_STATIC','DOCUMENTARY','EXECUTED_SOURCEFREE','EXECUTED_NATIVE','UNVERIFIED_HELD'}
 INVALID=('todo','tbd','placeholder','to be determined','see above','n/a','not applicable')
 
@@ -343,6 +343,10 @@ def check_identity_dispositions(decision,inventory,source_root,errors,evidence_r
                 if ph.lower() not in blob:errors.append('DECISION:REQUIRED_DISTINCTION_MISSING:'+rid+':'+ph)
             for ph in guard['forbidden']:
                 if ph.lower() in blob:errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:'+rid+':'+ph)
+            if rid=='K1-CAP-17' and 'guard' in blob and any(w in blob for w in ('guaranteed','no separate','fully conserved','no additional','determines all','supplies')):
+                errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:K1-CAP-17:guard-as-numeric')
+            if rid=='K1-CAP-11' and 'pairwise' in blob and ('sufficient' in blob or 'substitute' in blob):
+                errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:K1-CAP-11:pairwise-substitute')
         if row.get('evidence_grade') not in GRADES:errors.append('DECISION:BAD_IDENTITY_EVIDENCE_GRADE:'+str(rid))
         source_ref(row.get('evidence'),source_root,errors,'DECISION:IDENTITY_EVIDENCE:'+str(rid),repo,zip_path,strict=True)
         if row.get('origin_sha256')!=base.get('origin_sha256'):errors.append('DECISION:IDENTITY_ORIGIN_DRIFT:'+str(rid))
@@ -426,6 +430,8 @@ def check_frame(frame,evidence_root,source_root,repo=None,zip_path=None):
                 if ph.lower() not in text:e.append('FRAME:REQUIRED_DISTINCTION_MISSING:'+str(key)+':'+ph)
             for ph in spec['forbidden_phrases']:
                 if ph.lower() in text:e.append('FRAME:FORBIDDEN_OBLIGATION_REWRITE:'+str(key)+':'+ph)
+            if key=='REQ-MULTIWAY-JOINT' and 'pairwise' in text and ('sufficient' in text or 'substitute' in text):
+                e.append('FRAME:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-substitute')
             for pk in ('positive_probe','negative_probe'):
                 if not good(row.get(pk),40):e.append('FRAME:NO_'+pk.upper()+':'+str(key))
         source_ref(row.get('evidence'),source_root,e,'FRAME:EVIDENCE:'+str(key),repo,zip_path,strict=True)
@@ -529,6 +535,8 @@ def check_decision(decision,evidence_root,source_root,repo=None,zip_path=None):
             blob=' '.join(str(x.get(k,'')) for k in ('actual_design_effect','specific_first_consumer_path')).lower()
             for ph in spec['forbidden_phrases']:
                 if ph.lower() in blob:e.append('DECISION:FORBIDDEN_OBLIGATION_REWRITE:'+str(rid)+':'+ph)
+            if rid=='REQ-MULTIWAY-JOINT' and 'pairwise' in blob and ('sufficient' in blob or 'substitute' in blob):
+                e.append('DECISION:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-substitute')
         if x.get('evidence_grade') not in GRADES:e.append('DECISION:BAD_EVIDENCE_GRADE:'+str(rid))
         if state in ('PRESENT_PRESERVED','FUTURE_NONPRECLUDED'):
             source_ref(x.get('evidence'),source_root,e,'DECISION:UNPROVED_PRESERVATION:'+str(rid),repo,zip_path,strict=True)

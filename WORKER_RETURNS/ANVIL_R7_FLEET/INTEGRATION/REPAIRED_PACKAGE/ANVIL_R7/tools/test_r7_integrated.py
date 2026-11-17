@@ -305,7 +305,7 @@ class G(unittest.TestCase):
         arts,err=r7_build.build(self.decision,self.evidence,SOURCE,REPO,ZIP)
         self.assertEqual([],err);self.assertEqual(set(r7_build.NAMES),set(arts))
         out=self.work/'built';man=r7_build.write(arts,out)
-        self.assertEqual(6,len(man));self.assertEqual([],r7_build.verify(arts,out))
+        self.assertEqual(7,len(man));self.assertEqual([],r7_build.verify(arts,out))
         p=out/'TYPED_GRAPH.json';orig=p.read_bytes();p.write_bytes(orig+b'x')
         self.assertIn('BYTES_CHANGED:TYPED_GRAPH.json',r7_build.verify(arts,out))
         p.write_bytes(orig);self.assertEqual([],r7_build.verify(arts,out))

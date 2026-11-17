@@ -10,7 +10,7 @@ from r7_integrated import check_decision, load, digest
 from r7_inventory import check_inventory
 
 NAMES=('DESIGN_DECISION.md','IDENTITY_DISPOSITIONS.tsv','BOUNDARY_CONTRACT_MAP.json',
-       'TYPED_GRAPH.json','EVIDENCE_INDEX.jsonl','BUILDER_HANDOFF.jsonl')
+       'TYPED_GRAPH.json','EVIDENCE_INDEX.jsonl','BUILDER_HANDOFF.json','BUILDER_HANDOFF.jsonl')
 
 def sha(b):return hashlib.sha256(b).hexdigest()
 def enc(s):return s.encode('utf-8')
@@ -43,13 +43,13 @@ def _artifacts(decision,frame,inv):
            '## Terminal / boundary status','|T1-T7| are boundary interrogations, not seven stages. F5/F8/N11/N12/SEAM/SOROK remain typed nodes or exact holds; no invented reader.', '',
            '## Authority ceiling','This is an author proposal pending distinct C and competent H1. No source/science/actor grant, no protected receiving, no architecture adoption.','']
     design=enc('\n'.join(lines))
-    head=['identity_id','group','disposition','status_assertion','typed_obligation','source_meaning','source_negative','design_effect','first_consumer_path','first_consumer_or_hold','conservation_or_refusal_witness','evidence_ids','why','source_excerpt','origin_sha256','interpretation_grade']
+    head=['identity_id','group','disposition','status_assertion','typed_obligation','source_meaning','source_negative','design_effect','first_consumer_path','first_consumer_or_hold','conservation_or_refusal_witness','evidence_ids','why','source_excerpt','origin_sha256','interpretation_grade','source_semantics','negative_meaning','decision_ids','architecture_effect']
     rows=[head]
     for x in disps:
         base=next((e for e in inv.get('entries',[]) if e.get('id')==x.get('identity_id')),{})
         rows.append([x.get('identity_id',''),base.get('group',''),x.get('disposition',''),x.get('status_assertion',''),x.get('typed_obligation',''),
           x.get('source_meaning',''),x.get('source_negative',''),x.get('design_effect',''),x.get('first_consumer_path',''),x.get('first_consumer_or_hold',''),
-          x.get('conservation_or_refusal_witness',''),';'.join(x.get('evidence_ids',[])),base.get('why',''),base.get('source_excerpt',''),x.get('origin_sha256',''),x.get('interpretation_grade','')])
+          x.get('conservation_or_refusal_witness',''),';'.join(x.get('evidence_ids',[])),base.get('why',''),base.get('source_excerpt',''),x.get('origin_sha256',''),x.get('interpretation_grade',''),base.get('source_semantics',''),base.get('negative_meaning',''),';'.join(x.get('decision_ids',[])),x.get('design_effect','')])
     tsv=enc('\n'.join('\t'.join(str(c).replace('\t',' ').replace('\n',' ') for c in r) for r in rows)+'\n')
     contracts=js({'schema':'ANVIL_R7_BOUNDARY_CONTRACT_MAP','boundaries':decision.get('boundary_contract_map',{}),
                   'note':'Full T1-T7 producer/receiver/must-preserve/first-effect/veto/time/owner fields; interrogations, not seven stages.'})
@@ -68,9 +68,18 @@ def _artifacts(decision,frame,inv):
     ev.extend(decision.get('evidence_index',[]) if isinstance(decision.get('evidence_index'),list) else [])
     evidence=jl(sorted(ev,key=lambda x:(str(x.get('id')),str(x.get('kind')))))
     handoffs=decision.get('builder_handoffs') or [decision.get('builder_handoff',{})]
-    handoff=jl(handoffs)
+    handoff_obj={'schema':'ANVIL_R7_BUILDER_HANDOFF','first_real_consumer':decision.get('first_real_consumer'),
+      'handoffs':handoffs,'producer_symbol':'tools/r7_integrated.py::check_decision','consumer_symbol':'tools/r7_build.py::_artifacts',
+      'input_abi':'verified FRAME + 118 dispositions + full graph','output_abi':'ANVIL_R7_FIRST_READER_ABI@1',
+      'transformation':'verified packet -> six deterministic projections','negative':'origin/semantic freeze/graph/boundary mismatch refuses',
+      'restore':'exact bytes regenerate identical projections','test_command':'python3 -m unittest test_r7_integrated -q',
+      'expected_first_effect':'local source-byte/topology pass only','source_authority':'documentary source court; no native/science/actor grant',
+      'implementation_status':'LOCAL_AUTHORED_NOT_EXTERNAL','required_now_or_future':'NOW_LOCAL_THEN_EXTERNAL_C',
+      'dependencies':['SOURCE_IDENTITY_INVENTORY','BOUNDARY_CONTRACTS','TERMINAL_GRAPH'],'evidence_ids':['INV:118','DISP:118']}
+    handoff_json=js(handoff_obj);handoff_jsonl=jl(handoffs)
     return {'DESIGN_DECISION.md':design,'IDENTITY_DISPOSITIONS.tsv':tsv,'BOUNDARY_CONTRACT_MAP.json':contracts,
-            'TYPED_GRAPH.json':graph,'EVIDENCE_INDEX.jsonl':evidence,'BUILDER_HANDOFF.jsonl':handoff}
+            'TYPED_GRAPH.json':graph,'EVIDENCE_INDEX.jsonl':evidence,'BUILDER_HANDOFF.json':handoff_json,
+            'BUILDER_HANDOFF.jsonl':handoff_jsonl}
 
 def write(arts,out):
     out=pathlib.Path(out);out.mkdir(parents=True,exist_ok=True)

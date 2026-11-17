@@ -76,7 +76,7 @@ class Closure(unittest.TestCase):
         r=self.res('FRAME',self.frame);self.assertTrue(any('AUTHORED_SEMANTIC_SUMMARY_FREEZE_MISMATCH' in x for x in r['errors']),r)
         r2=self.res('DECISION',self.decision);self.assertTrue(any('SOURCE_MEANING_NOT_BOUND' in x or 'AUTHORED_SEMANTIC_SUMMARY_FREEZE' in x for x in r2['errors']),r2)
     def test_w5_terminal_graph_missing_refused(self):
-        self.decision['whole_machine_graph']['nodes']=[n for n in self.decision['whole_machine_graph']['nodes'] if n['id']!='F5_LEARNED']
+        self.decision['whole_machine_graph']['nodes']=[n for n in self.decision['whole_machine_graph']['nodes'] if n['id']!='F5']
         self.resync();r=self.res('DECISION',self.decision);self.assertTrue(any('TERMINAL_NODE_MISSING' in x or 'GRAPH_NOT_WHOLE_MACHINE' in x for x in r['errors']),r)
     def test_w6_generic_dispositions_refused(self):
         for x in self.decision['identity_dispositions']:x['design_effect']='One generic candidate preserves the material without changing any first consumer or negative.'
@@ -88,7 +88,7 @@ class Closure(unittest.TestCase):
         self.assertIn('source_excerpt',json.loads(arts['EVIDENCE_INDEX.jsonl'].decode().splitlines()[0]))
         h=json.loads(arts['BUILDER_HANDOFF.jsonl'].decode().splitlines()[0]);self.assertIn('transformation',h);self.assertIn('negative',h)
         g=json.loads(arts['TYPED_GRAPH.json'])['graph'];self.assertGreaterEqual(len(g['nodes']),40);self.assertGreaterEqual(len(g['edges']),40)
-        ids={n['id'] for n in g['nodes']};self.assertTrue({'F5_LEARNED','F8_POSITIONED','N11_ACCEPTANCE','N12_WAKE','SOROK_CONTINUITY'}<=ids)
+        ids={n['id'] for n in g['nodes']};self.assertTrue({'F5','F8','N11','N12','SOROK'}<=ids)
     def test_cold_paths_self_contained(self):
         self.assertTrue((PKG/'EVIDENCE'/'SOURCE_IDENTITY_INVENTORY.json').is_file())
         self.assertEqual(EVIDENCE,PKG/'EVIDENCE')
