@@ -1,0 +1,80 @@
+# Original T1–T7 boundary contracts — lossless reading copy
+
+Frozen source: `R7_EXTRACTED/02_BOUNDARY_CONTRACTS.json`; this text is a readable view, not source/scientific adoption. Original upload SHA-256 `526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332`.
+
+## T1: original source to governed canonical evidence
+
+- **producers:** SAV/DTA, actual instrument, release, QSM, source and rights issuer
+- **receivers:** S01/S1-E I02 direct body and complete sealed C11
+- **must_preserve:** native question/option/code semantics, respondent and occurrence identity, form/translation/routing, eligibility, missing/not-asked/unreleased, survey design, population/time and source authority
+- **first_effect:** actual source-selected response, weight, routing or permission changes or refuses a cold authenticated C11 first read
+- **veto:** irreversible question/response/routing/instrument observability loss or positive on denied source
+- **time_class:** BUILD_NOW_P0
+- **owners:** PYAT source, QSM, U/Epre and C11 physical owners
+- **source:** ANVIL/15 FZ-1/FZ-2 and #997/#1097
+
+## T2: canonical evidence to respondent-coherent empirical computation
+
+- **producers:** sealed C11, native I03/I05/Batch, query issuer
+- **receivers:** F1-F4 and qualified descriptive query recipients
+- **must_preserve:** same-respondent >=3 true joint and repeated/ranked observations, conditioned risk set, weighted/unweighted denominators, direction of reverse conditional, minority and routing negatives, uncertainty and replay
+- **first_effect:** mutate true 3-way joint at fixed marginals; F4 and qualified consumer change; invalid body/fate denies; exact restore matches
+- **veto:** pairwise products, full-body replay per operation, false zero or unproved negative
+- **time_class:** BUILD_NOW_P0_AND_ADAPT
+- **owners:** PYAT I03/I05/F1-F4 / native saved reader
+- **source:** K3 B E06-E14 and #998/#1006
+
+## T3: empirical computation to differentiated social-field possibility
+
+- **producers:** F1-F4 and qualified Field Forge descriptive machinery
+- **receivers:** FF01/EPR and planned N10E/SEAM social-field recipient
+- **must_preserve:** multiple positions with full conditional configurations, minority alternatives, limits of survey sample, no unwitnessed individual co-presence or identity inference
+- **first_effect:** qualified position-specific distribution changes an admissible option/description at actual or explicitly held first reader
+- **veto:** marginal-only field, impossible proxy respondent identification, unqualified generalization to all persons
+- **time_class:** MUST_ALLOW_FUTURE_AND_SELECTED_GENERIC_FIRST_CONSUMER
+- **owners:** PYAT Field Forge #1009 and PRE-V3 receiving owner
+- **source:** SEAM/26 S03 and ANVIL/15
+
+## T4: descriptive field plus external structural evidence to objective-world relations
+
+- **producers:** qualified FF descriptive products and independently sourced material/structural issuer
+- **receivers:** N9 and N10W where selected; direct N10E otherwise preserved
+- **must_preserve:** observed prevalence separate from causal/structural claims, control/resources/sanctions/tenure, F6 numerical and nonpooling, F7 measured comparability, historical/current/as-of time
+- **first_effect:** hold survey fixed, change legitimate material relation; selected world opportunity changes, while empirical facts do not
+- **veto:** survey opinion treated as institutional power or modeled likelihood asserted as causal fact
+- **time_class:** MUST_ALLOW_AND_OWNER_SCIENCE_HELD
+- **owners:** PYAT FF02 N9/N10E/N10W, independent structural scientist
+- **source:** SEAM/25 B02-B03 and #920
+
+## T5: objective possibility to particular fictional world and encounter constraints
+
+- **producers:** N9/N10E/N10W accepted world possibility, separate world-particularization rules
+- **receivers:** PRE-V3/SOROK world, C0/P2 and legitimate actor ingress
+- **must_preserve:** positions and surrounding others, actual institutional/material access, physical/fictional history time, source vs modeled vs authored identity, branch and commitment ancestry
+- **first_effect:** same empirical evidence, different admissible world arrangement changes available encounter/opportunity without changing source
+- **veto:** sample respondent becomes character, unknown actual kinship fabricated as surveyed, proposed event counted performed
+- **time_class:** MUST_ALLOW_FUTURE_INTERFACE_AND_BOUNDED_PILOT
+- **owners:** PYAT N11/N12 seam and SOROK competent world particularizer
+- **source:** SEAM/25 B04-B06 and SEAM/26
+
+## T6: situated encounter to independent developing person
+
+- **producers:** SOROK admitted actor/world access and event, not PYAT psyche
+- **receivers:** SOROK C0-C12/A0-A5 actual activity, interpretation and continuing reader
+- **must_preserve:** distinct objective event, actor access, perception, knowledge, motives, activity, no-change, unobserved inner history and nonautomatic identification
+- **first_effect:** accessible vs inaccessible event yields distinguishable permitted actor consequence; no-access cannot create knowledge
+- **veto:** survey answers cause mandatory private motives or world change automatically modifies actor state
+- **time_class:** MUST_ALLOW_WITH_ACTOR_OWNER_HELD
+- **owners:** SOROK actor/consent/development owners
+- **source:** SEAM/25 B07/B10; SEAM/26
+
+## T7: performed activity and worldly consequence to next historical situation
+
+- **producers:** SOROK committed activity and separately authorized shared-world effect
+- **receivers:** SOROK subsequent world/actor; PYAT scientific redrive only on separate qualified external source
+- **must_preserve:** event clock, causal dependencies, shared-world consequences, committed past, branch replay, no retroactive mutation of real survey observations
+- **first_effect:** actual eligible performed action changes a later actor's opportunity while alternative branch and original survey remain unchanged
+- **veto:** fictional effect edits empirical C11, hypothetical branch rewrites sealed past, automatic child care change from parent job
+- **time_class:** MUST_ALLOW_FUTURE_AND_OWNER_HELD
+- **owners:** SOROK P2/world action response; separate PYAT N9/SDTF when externally justified
+- **source:** SEAM/25 B08-B09 and SEAM/24 R5
