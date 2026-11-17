@@ -1,0 +1,206 @@
+{
+  "schema": "ANVIL_R7_A0_P15_PROPOSAL@1",
+  "stage": "A0",
+  "status": "PROPOSED_NOT_RUN",
+  "controller_freeze_required_before_comparison": true,
+  "source_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "design_commit": "79293eb0964c69e5e0a7ded9c20d39d57d179349",
+  "rss_ceiling_bytes": 6442450944,
+  "comparison_rule": "complete-scope dominance/Pareto; no invented owner weights; missing rival cell is conditional/hold, not an incumbent win",
+  "profiles": [
+    {
+      "id": "W-S",
+      "name": "sealed source-scale",
+      "status": "TO_BE_FROZEN",
+      "proposed": {
+        "respondents": 100000,
+        "occasions_or_response_events_per_respondent": 3,
+        "question_width": 5,
+        "complete_13_families": true,
+        "governed_weight": true,
+        "operations": [1, 10, 100],
+        "operation_scope": "distinct exact I03 queries on the same admitted estate",
+        "fresh_process_per_operation_count": true
+      },
+      "cells": [
+        "W-S__build_wall_s",
+        "W-S__cold_open_wall_s",
+        "W-S__query_1_wall_s",
+        "W-S__query_10_wall_s",
+        "W-S__query_100_wall_s",
+        "W-S__process_tree_peak_rss_bytes",
+        "W-S__retained_bytes",
+        "W-S__scratch_peak_bytes"
+      ]
+    },
+    {
+      "id": "W-D",
+      "name": "dense respondent width",
+      "status": "TO_BE_FROZEN",
+      "proposed": {
+        "respondents": 100000,
+        "question_width": 300,
+        "response_density": "high; explicit dense counters frozen before run",
+        "operations": [1, 100],
+        "scope": "question-major and respondent-major projections; same exact facts required"
+      },
+      "cells": [
+        "W-D__build_wall_s",
+        "W-D__query_1_wall_s",
+        "W-D__query_100_wall_s",
+        "W-D__process_tree_peak_rss_bytes",
+        "W-D__retained_bytes",
+        "W-D__scratch_peak_bytes"
+      ]
+    },
+    {
+      "id": "W-R",
+      "name": "routed risk set",
+      "status": "TO_BE_FROZEN",
+      "proposed": {
+        "respondents": 100000,
+        "question_width": 20,
+        "routing": "exact RoutingEligibilityFact with conditional cohort and nonempty risk set",
+        "operations": [1],
+        "negatives": "unresolved routing must remain typed negative, never membership"
+      },
+      "cells": ["W-R__query_1_wall_s"]
+    },
+    {
+      "id": "W-O",
+      "name": "distinct operation mix",
+      "status": "TO_BE_FROZEN",
+      "proposed": {
+        "respondents": 100000,
+        "question_width": 20,
+        "operations": [1, 10, 100],
+        "operation_mix": "disjoint and overlapping exact query scopes with a frozen list",
+        "duplicate_rule": "no repeat may be counted as a distinct operation"
+      },
+      "cells": [
+        "W-O__query_1_wall_s",
+        "W-O__query_10_wall_s",
+        "W-O__query_100_wall_s"
+      ]
+    },
+    {
+      "id": "W-J",
+      "name": "true same-respondent 3-way joint",
+      "status": "TO_BE_FROZEN",
+      "proposed": {
+        "respondents": 100000,
+        "question_width": 20,
+        "target_arity": 3,
+        "same_respondent_binding_semantics": "exact joint domain; one shared denominator; no independent marginals",
+        "operations": [10, 100],
+        "oracle": "native in-memory evaluator exact fact/denominator comparison"
+      },
+      "cells": [
+        "W-J__query_10_wall_s",
+        "W-J__query_100_wall_s"
+      ]
+    },
+    {
+      "id": "W-X",
+      "name": "cold negative restore replay",
+      "status": "TO_BE_FROZEN",
+      "proposed": {
+        "respondents": 100000,
+        "operation": "cold close/reopen plus tamper/denied/restore, revocation/restore, exact replay",
+        "faults": ["member hash", "manifest", "missing family", "locator duplicate", "body/ref forgery", "revoked current"],
+        "restore": "same exact estate/current must reproduce exact facts"
+      },
+      "cells": [
+        "W-X__cold_open_wall_s",
+        "W-X__process_tree_peak_rss_bytes"
+      ]
+    }
+  ],
+  "mandatory_cell_count": 22,
+  "probes": [
+    {
+      "id": "P15-P0",
+      "status": "NOT_RUN",
+      "name": "profile/counter freeze",
+      "output": "hashed profile files, seeds, operation lists, oracle fixtures"
+    },
+    {
+      "id": "P15-P1",
+      "status": "NOT_RUN",
+      "name": "build",
+      "measure": ["build_wall_s", "fixture_wall_s", "journal_bytes", "i02_scratch_bytes", "physical_unique_scratch_bytes", "retained_bytes", "process_tree_peak_rss_bytes", "13-family census", "manifest_sha256"]
+    },
+    {
+      "id": "P15-P2",
+      "status": "NOT_RUN",
+      "name": "fresh cold open",
+      "measure": ["cold_open_wall_s", "member_hash_wall_s", "process_tree_peak_rss_bytes", "typed refusals for tamper"]
+    },
+    {
+      "id": "P15-P3",
+      "status": "NOT_RUN",
+      "name": "A1/A2 prepared index",
+      "measure": ["index_build_wall_s", "temp_sqlite_bytes", "row_group_reads", "process_tree_peak_rss_bytes", "exact parity"]
+    },
+    {
+      "id": "P15-P4",
+      "status": "NOT_RUN",
+      "name": "1/10/100 distinct operations",
+      "measure": ["wall", "fact refs", "full fact sha256", "typed state", "numerator/denominator", "replay ref", "oracle parity"]
+    },
+    {
+      "id": "P15-P5",
+      "status": "NOT_RUN",
+      "name": "joint/routed/negative/replay",
+      "measure": ["W-J exact joint", "W-R routing/risk", "typed negative", "revoke/restore", "tamper/restore", "replay"]
+    },
+    {
+      "id": "P15-P6",
+      "status": "NOT_RUN",
+      "name": "prepared Batch",
+      "condition": "only after exact owner-approved two-function edit",
+      "measure": ["one prepared context", "QUERY and DISCOVERY unit receipts", "exact refs"]
+    },
+    {
+      "id": "P15-P7",
+      "status": "NOT_RUN",
+      "name": "14 candidate-veto receipts",
+      "receipts": [
+        "SOURCE_SEMANTICS_AND_ROUTING",
+        "TRUE_SAME_RESPONDENT_KWAY_JOINT",
+        "FAULT_TAMPER_DENIED_RESTORED",
+        "SOURCE_RIGHTS_CURRENTNESS",
+        "NONPRECLUSION_OF_INDEPENDENT_WORLD_AND_ACTOR",
+        "MEASUREMENT_INPUT_COMPARABILITY",
+        "FULL_DECISION_DEPENDENCY_CLOSURE",
+        "MEMBER_MANIFEST_TAMPER",
+        "LOCATOR_POSITIONAL_COVERAGE",
+        "BODY_REF_IDENTITY",
+        "NO_SECOND_SOURCE_DECODE",
+        "NO_DURABLE_SQLITE_OR_JOURNAL",
+        "BATCH_EXACT_TYPE_ABI",
+        "RSS_AND_SCRATCH_CEILING"
+      ]
+    },
+    {
+      "id": "P15-P8",
+      "status": "NOT_RUN",
+      "name": "evidence publication",
+      "output": "raw logs, counters, hashes, host/runner identity, exact source cut under an evidence root"
+    }
+  ],
+  "source_only_runnable_falsifiers_not_executed": [
+    "python3 -m pytest rawlsing_next/tests/test_pre553_prepared_saved_i03.py rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py rawlsing_next/tests/test_pyat991_s2d_five_readers.py -q",
+    "P15 driver using pyat1001_scale_harness.ProcessTreeObservation for fresh-process RSS sampling",
+    "hostile locator/manifest/member/body mutation probe with exact restore",
+    "3-way same-respondent joint oracle differential"
+  ],
+  "substitution_rules": [
+    "No tiny fixture may substitute for a 100k W-S/W-D cell.",
+    "No repeated invocation may be counted as a distinct operation.",
+    "No missing B metric may be treated as an incumbent win.",
+    "No sourcefree result may be presented as original-source or native science."
+  ],
+  "executed": false,
+  "invented_measurements": 0
+}

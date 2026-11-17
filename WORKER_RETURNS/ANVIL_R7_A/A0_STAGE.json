@@ -1,0 +1,74 @@
+{
+  "schema": "ANVIL_R7_STAGE_1",
+  "stage": "A0",
+  "verdict": "A0_FROZEN",
+  "owner": "Existing user-appointed Codex HQ; MainMac; independent architect A under the user-authorized ANVIL R7 campaign",
+  "source_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "prior_tested_baseline": "b830458c3ebfe0a3f0e2d18e516e68b90324c88a",
+  "protected_head": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+  "blind_to_other": true,
+  "actual_frozen_head": "79293eb0964c69e5e0a7ded9c20d39d57d179349",
+  "frozen_design_path": "WORKER_RETURNS/ANVIL_R7_A/A0_DESIGN.md",
+  "frozen_design_blob": "217d958e5ef023598139e6397f52e95fbce48f32",
+  "frozen_design_sha256": "ce7e165a20dac2c99e246c9c6d27c70498359180013e04c0a21685d146a951b8",
+  "scope": "C11_QUERY_DESIGN; complete sealed 13-family C11 -> fresh native I03/I05/Batch and economical 1/10/100 distinct operations under 6442450944 B process-tree RSS",
+  "selected_candidate": "A0-A BCPPI: Q2 one-pass body bridge + frozen S2-C 13-family writer + VerifiedDirectEstate/SavedC11Admission + prepared saved I03/I05 session + A2 body-complete execution-local SQLite index + native I03/I05/Batch owners",
+  "selected_fallback": "A1: unmodified PreparedSavedC11Admission/PreparedI03Session candidate",
+  "first_consumer": "rawlsing_next/pre553_saved_c11_admission.py::SavedC11Admission.execute_i03 / execute_i05; native I03/I05 and Batch retained",
+  "material_challenge_record": {
+    "strongest_self_objection": "A1 is only an index-rebuild optimization; measured 1.7x speedup is on tiny fixtures and does not prove 100k economics. 3565 prepared row-group reads/op at 64 respondents is evidence against linear scale. A2 is unmeasured, grows scratch and build time, and may still fail 6 GiB/disk. The frozen writer retains body_json plus typed-column duplication and a second I02 certification. A rival persistent compact respondent-major index or dense typed substrate could be materially better.",
+    "decisive_falsifiers": [
+      "process-tree RSS above 6442450944 B at any W-S/W-D/W-X cell",
+      "retained_plus_scratch above the frozen compact/disk budget",
+      "row-group reads scaling linearly with respondents or A2 not materially reducing repeated-operation cost",
+      "W-J same-respondent joint denominator/support/projection mismatch",
+      "routing/risk or typed negative coerced to membership/EMPTY/ZERO",
+      "second source decode, family/count/absence drift, forged locator/body, or surviving journal/SQLite in the committed estate",
+      "served result after revocation or failure to restore",
+      "Batch exact-type guard not lawfully widened; prepared Batch is conditional",
+      "W-S build wall materially above the pre-result frozen P15 bound",
+      "invalid source/rights/current callback"
+    ],
+    "known_abi_defects": [
+      "pre553_saved_workload_integration.py::execute_saved_batch line 94 and pre553_batch_runner.py::BatchExecutionRunner.__init__ line 406 reject PreparedSavedC11Admission by exact type; prepared Batch requires an owner-approved two-function edit"
+    ],
+    "known_unmeasured_costs": [
+      "100k/200k-event S2-C build wall, journal/scratch peak, retained bytes and process-tree RSS",
+      "A2 body-complete SQLite index build wall, scratch bytes and per-operation cost",
+      "cold open 14-member hashing at 100k scale",
+      "full native fact/replay materialization at 100k"
+    ]
+  },
+  "workload_families": ["W-S", "W-D", "W-R", "W-O", "W-J", "W-X"],
+  "mandatory_cells": 22,
+  "cells_state": "P15_NOT_RUN",
+  "rss_ceiling_bytes": 6442450944,
+  "comparison_rule": "Default complete-scope dominance/Pareto; no invented owner weights or bounded-regression priority",
+  "proof_grade": "S0_S1_SOURCE_STATIC_DESIGN_ONLY",
+  "executed_at_A0": [
+    "read H0 oath/problem/stage/protected progress and named evidence",
+    "static inspection of actual startup source and tests",
+    "design authoring, Git commit, hash manifest"
+  ],
+  "unrun": [
+    "P15",
+    "100k scale",
+    "native tests and performance",
+    "A1/B1 reciprocal exchange",
+    "P2",
+    "C",
+    "H1",
+    "original-source access",
+    "Batch prepared-mode edit"
+  ],
+  "holds": [
+    "source/science/actor/host rights",
+    "protected merge or CAS",
+    "independent review",
+    "model/provider change",
+    "other worker outputs",
+    "original survey execution"
+  ],
+  "next_eligible_stage": "After B0 freeze, one bounded A1/B1 reciprocal critique then matched P15 under the controller's pre-result frozen plan",
+  "time_utc": "2026-11-17T06:27:02Z"
+}
