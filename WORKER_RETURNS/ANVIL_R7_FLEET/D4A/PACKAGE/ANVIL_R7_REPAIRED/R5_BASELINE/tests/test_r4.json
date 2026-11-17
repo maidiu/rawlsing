@@ -1,0 +1,6 @@
+{
+  "command": "python3 tools/test_r4.py",
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"PASS_RECONSTRUCTED_R4_TO_R5_SYNTHETIC\",\n  \"count\": 6,\n  \"cases\": {\n    \"forged_claim_upgrade\": \"UNAUTHORIZED_OR_UNMODELED_TRANSITION\",\n    \"actor_immaterial_source_backflow\": \"UNAUTHORIZED_OR_UNMODELED_TRANSITION\",\n    \"redundant_authority_field\": \"CONFLICTING_SECOND_AUTHORITY_VOCABULARY\",\n    \"missing_temporal_guard\": \"UNPROVED_FUTURE_TIME_GUARD\",\n    \"unimplemented_FF_grade\": \"PREMATURE_FF_FIRST_EFFECT_CLAIM\",\n    \"wrong_scope_boundary\": \"UNBOUNDED_DESIGN_READY_SCOPE\"\n  }\n}\n",
+  "stderr": ""
+}

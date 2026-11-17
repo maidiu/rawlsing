@@ -1,0 +1,33 @@
+{
+  "status": "PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY",
+  "tests": [
+    {
+      "command": "python3 tools/test_r5.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/test_stage.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/test_compare.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/test_anvil.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/test_r4.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/preflight_launches.py",
+      "exit_code": 0
+    }
+  ],
+  "scope": "LOCAL_SYNTHETIC_AND_FORMAT_ONLY_NO_GITHUB_CURRENTNESS_NO_ORIGINAL_SOURCE_NO_INDEPENDENT_RECEIVING",
+  "canonical_mcr_lite_checker": "SOURCE_INSPECTED_ON_GITHUB_NOT_EXECUTED_IN_ACTUAL_CHECKOUT",
+  "full_native_scale": "NOT_EXECUTED",
+  "scientific_or_actor_grant": "NOT_GRANTED"
+}
