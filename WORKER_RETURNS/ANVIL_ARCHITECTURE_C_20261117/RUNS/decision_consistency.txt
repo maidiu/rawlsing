@@ -1,0 +1,28 @@
+== FINAL_DECISION selected vs stale ==
+selection_status FINAL_CANDIDATE_FROZEN_PENDING_DISTINCT_C
+single_selected_strategy PREPARED-SESSION-FIRST + CONDITIONAL CONSTRUCTION/REPAIR: forward-wire the existing PreparedI03Session to the actual first consumer and saved Batch units; adopt the one-journal/one-certificate construction seam only if full physical proof against Q2 survives, otherwise keep the second certificate; repair interrupted publication with a no-clobber stage/lease; hold a durable locator index as a measured conditional option, not a first selection.
+physical_architecture.name Single-certification canonical C11 estate + immutable derived access index
+specialist_dependency.status PENDING_TWO_FROZEN_SPECIALIST_RETURNS
+specialist_consumption.status BOTH_RETURNS_RECEIVED_AND_ADJUDICATED
+implementation_sequence[1] 2. Add write_direct_estate_from_certified_stream on a descendant; one source decode, one I02, no JSONL, existing row schema/native readers.
+implementation_sequence[3] 4. Add immutable derived selector/denominator index; prove cold open and 1/10/100 sourcefree reuse without per-session full scan.
+REQ-RESOURCE-ECONOMICS SC-ESTATE removes the second I02, JSONL replay, per-row re-encode and per-session full scan; native 100k/6GiB/1-10-100 remains NOT_RUN until measured.
+REQ-PHYSICAL-WORKLOAD-1-10-100 The durable index and prepared session target 1/10/100 distinct operations; the 600-1,300-slot/6GiB/process-tree measurement remains a separate lawful run, not a synthetic claim.
+REQ-SOURCE-I02-REVOCATION The index is bound to the manifest/I02 roots and refuses on revocation; it can be rebuilt from the canonical estate but never overrides source/current truth.
+== guard ==
+$ python3 r7_integrated.py DECISION .../FINAL_DECISION.json --evidence-root ... --source-root .../SOURCE_118
+{
+  "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+  "errors": [],
+  "covered": 16,
+  "requirement_total": 16,
+  "identity_dispositions": 118
+}
+== v2 guard omission witness ==
+{
+  "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+  "errors": [],
+  "covered": 16,
+  "requirement_total": 16,
+  "identity_dispositions": 118
+}
