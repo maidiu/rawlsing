@@ -11,3 +11,21 @@
 | D7/W4 | Identity hash authenticated authored summary; semantic tamper passed | Inventory keeps exact row/excerpt and adds source-reported negative + authored interpretation grade; code-pinned semantic freeze; per-identity `source_meaning_sha256` binding; external C/source-owner semantic hold explicit | `test_w4_source_semantic_tamper_refused` FRAME freeze RED + DECISION binding RED |
 
 **Still held, not falsely closed:** F26 exact caller/invalidation; native 100k/dense/6 GiB/1-10-100; source/actor/science rights; independent C; H1. Local receipt forgery/human-summary truth remains external-C/source-owner. No architecture selected.
+
+## Raw command / exit receipt
+
+```
+python3 r7_inventory.py verify ... --inventory ../EVIDENCE/SOURCE_IDENTITY_INVENTORY.json
+  exit 0  PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY / GIT_AND_ZIP_PINS_VERIFIED
+python3 -m unittest test_r7_integrated -q
+  exit 0  Ran 29 tests ... OK
+python3 test_integrated_strict.py
+  exit 0  Ran 11 tests ... OK
+python3 r7_integrated.py FRAME ...       exit 0  PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED
+python3 r7_integrated.py DECISION ...    exit 0  PASS_LOCAL_INTEGRATED_DECISION_PENDING_C
+python3 r7_integrated.py C_INTEGRATED ... exit 0 PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED
+python3 r7_build.py verify ... --out ../BUILT
+  exit 0  PASS_SIX_PROJECTIONS_BYTE_IDENTICAL
+```
+
+All commands above were re-run from a fresh `tempfile.mkdtemp` extraction of the final `REPAIRED_PACKAGE.zip`; logs are `RAW_LOGS/final_cold_*`. Input pins: original ZIP `526d835d…`, inventory file SHA in `SOURCE_AUTHENTICATION.json`, final ZIP SHA in `MANIFEST.json`. No author worktree or parent EVIDENCE copy was used.
