@@ -11,11 +11,18 @@
   "host_model": {
     "harness": "OpenCode 2.0.22 on mainMac",
     "requested": "Go DeepSeek V4.1 Flash MAX",
-    "actual_served": "1017",
+    "actual_served": "UNKNOWN",
+    "served_checkpoint_1017": "UNKNOWN",
+    "observed_first_turn_metadata": {
+      "providerID": "opencode-go",
+      "id": "deepseek-v4.1-flash",
+      "variant": "max"
+    },
     "cost": "UNKNOWN",
     "provider_model_account_host_switch": false,
     "subagents_used": false,
-    "rate_limit_or_paid_fallback": false
+    "rate_limit_or_paid_fallback": false,
+    "metadata_correction": "HQ factual correction during the existing review: no authenticated runtime proof of served checkpoint 1017 exists in this review; the first-turn metadata exposes only providerID=opencode-go, id=deepseek-v4.1-flash, variant=max. No model switch, scope change or independence implication."
   },
   "target": {
     "integration_commit": "0f0c673f99978aff6c11f7bd0e6fe1840fbdc799",
