@@ -1,0 +1,6 @@
+{
+  "command": "python3 tools/test_stage.py",
+  "exit_code": 0,
+  "stdout": "{\n  \"status\": \"PASS_STAGE_SYNTHETIC_ONLY\",\n  \"rejected\": {\n    \"C_held_cannot_accept\": [\n      \"C_FALSE_SCOPED_ACCEPTANCE\"\n    ],\n    \"C_only_one_builder_sample\": [\n      \"C_ONE_COLD_BUILDER_NOT_TWO\"\n    ],\n    \"C_forged_runner\": [\n      \"C_FAKE_EXECUTED_BUILDER\"\n    ],\n    \"H1_undecidable_but_received\": [\n      \"H1_FALSE_SCOPED_RECEIVING_TRUTH_TABLE\",\n      \"H1_HELD_BUILDER_FALSE_SCOPED\",\n      \"H1_RECEIVING_WITH_NO_AUTHORITY_OR_CAS\"\n    ],\n    \"H1_no_owner_or_CAS\": [\n      \"H1_RECEIVING_WITH_NO_AUTHORITY_OR_CAS\"\n    ],\n    \"H1_no_new_product_advance\": [\n      \"H1_PAPERWORK_ONLY_CONDITIONAL_ACCEPTANCE\"\n    ],\n    \"H1_engineering_no_execution\": [\n      \"H1_ENGINEERING_WITHOUT_EXECUTED_FIRST_READER\"\n    ],\n    \"P15_B_unmeasured_decisive_false\": [\n      \"P15_WINNER_WITHOUT_MATCHED_BOTH_SIDES\"\n    ]\n  },\n  \"count\": 8\n}\n",
+  "stderr": ""
+}

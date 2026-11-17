@@ -1,0 +1,181 @@
+{
+  "graph": {
+    "edges": [
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T1",
+        "data_type": "raw_source",
+        "from": "N_SRC",
+        "id": "E1",
+        "invalidation_rule": "source hash or release revocation",
+        "negative_or_refusal": "wrong edition or denied source refuses",
+        "temporal_mode": "OBSERVED",
+        "to": "N_C11"
+      },
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T2",
+        "data_type": "canonical_event",
+        "from": "N_C11",
+        "id": "E2",
+        "invalidation_rule": "C11 member or CURRENT revocation",
+        "negative_or_refusal": "false same-person join or wrong denominator refuses",
+        "temporal_mode": "OBSERVED",
+        "to": "N_CALC"
+      },
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T3",
+        "data_type": "empirical_configuration",
+        "from": "N_CALC",
+        "id": "E3",
+        "invalidation_rule": "source or estimand incompatibility",
+        "negative_or_refusal": "marginal-only substitute refuses",
+        "temporal_mode": "OBSERVED",
+        "to": "N_FIELD"
+      },
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T4",
+        "data_type": "field_configuration",
+        "from": "N_FIELD",
+        "id": "E4",
+        "invalidation_rule": "structural source revocation",
+        "negative_or_refusal": "survey opinion treated as institutional power refuses",
+        "temporal_mode": "MIXED_TYPED",
+        "to": "N_WORLD"
+      },
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T5",
+        "data_type": "world_possibility",
+        "from": "N_WORLD",
+        "id": "E5",
+        "invalidation_rule": "world branch invalidation",
+        "negative_or_refusal": "respondent-to-character identity collapse refuses",
+        "temporal_mode": "FICTIONAL",
+        "to": "N_ACTOR"
+      },
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T6",
+        "data_type": "world_possible_event",
+        "from": "N_WORLD",
+        "id": "E6",
+        "invalidation_rule": "actor/world permission revocation",
+        "negative_or_refusal": "no actor access yields no knowledge",
+        "temporal_mode": "FICTIONAL",
+        "to": "N_ACTOR"
+      },
+      {
+        "authority_grade": "DOCUMENTARY",
+        "boundary": "T7",
+        "data_type": "performed_event",
+        "from": "N_ACTOR",
+        "id": "E7",
+        "invalidation_rule": "branch replay or committed past invalidation",
+        "negative_or_refusal": "fictional act cannot edit observed C11",
+        "temporal_mode": "FICTIONAL",
+        "to": "N_WORLD"
+      }
+    ],
+    "nodes": [
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "first_consumer": "N_C11",
+        "id": "N_SRC",
+        "input_types": [
+          "external_source"
+        ],
+        "output_types": [
+          "raw_source"
+        ],
+        "producer": "Original source decoder and release custodian",
+        "producer_authority": "PYAT S01 source owner",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "first_consumer": "N_CALC",
+        "id": "N_C11",
+        "input_types": [
+          "raw_source"
+        ],
+        "output_types": [
+          "canonical_event"
+        ],
+        "producer": "Sealed thirteen-family C11 writer",
+        "producer_authority": "S2-C/S1-E physical owner",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "first_consumer": "N_FIELD",
+        "id": "N_CALC",
+        "input_types": [
+          "canonical_event"
+        ],
+        "output_types": [
+          "empirical_configuration"
+        ],
+        "producer": "Native I03/I05/F1-F4 computation",
+        "producer_authority": "PYAT empirical computation owner",
+        "time_mode": "OBSERVED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "first_consumer": "N_WORLD",
+        "id": "N_FIELD",
+        "input_types": [
+          "empirical_configuration"
+        ],
+        "output_types": [
+          "field_configuration"
+        ],
+        "producer": "FF01 descriptive field reader",
+        "producer_authority": "PYAT Field Forge #1009 owner",
+        "time_mode": "MODELED"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "first_consumer": "N_ACTOR",
+        "id": "N_WORLD",
+        "input_types": [
+          "field_configuration",
+          "performed_event"
+        ],
+        "output_types": [
+          "world_possibility",
+          "world_possible_event"
+        ],
+        "producer": "N9/N10W selected world",
+        "producer_authority": "PYAT N9/N10W science owner (HELD)",
+        "time_mode": "FICTIONAL"
+      },
+      {
+        "alternative_id": "A1",
+        "decision_id": "D1",
+        "first_consumer": "N_WORLD",
+        "id": "N_ACTOR",
+        "input_types": [
+          "world_possibility",
+          "world_possible_event"
+        ],
+        "output_types": [
+          "actor_state",
+          "performed_event"
+        ],
+        "producer": "SOROK continuing actor",
+        "producer_authority": "SOROK actor/consent owner (HELD)",
+        "time_mode": "FICTIONAL"
+      }
+    ]
+  },
+  "note": "Producer/authority/time/consumer typed contract; local structure only.",
+  "schema": "ANVIL_R7_TYPED_GRAPH"
+}

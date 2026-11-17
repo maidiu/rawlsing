@@ -1,0 +1,107 @@
+{
+  "schema": "ANVIL_INTEGRATION_TEST_TRANSCRIPT_R1",
+  "created_utc": "2026-11-17T19:35:00.161824Z",
+  "host": "mainMac macOS Python 3.11",
+  "git_store": "/Users/matthewsmith/s2b-work/rawlsing",
+  "original_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+  "artifact_zip_sha256": "7569fb21a577aff06d48ce7759cf692c8f2ba3e475b8eba1e71c36d4e5abc689",
+  "test_selection": [
+    "r7_inventory.py verify: exact 118 identity bytes, 69 K3 rows + 26 B/S/L + T/terminal pins, canonical Git/ZIP provenance, no caller-kind bypass.",
+    "test_r7_integrated.py (inherited 29): S1 source inventory, caller source-kind/ZIP bypass, missing row/blob, 26 adoption/14 closure, 118 decision completeness, T boundary negative/restore, graph hole, local H1, six-projection restore.",
+    "test_integrated_strict.py (13): positive FRAME/DECISION/C and builder, then synthetic-spine, K3 row mutation, deleted requirement, revoked release, actor firewall, fabricated H1, missing identity, prospective adoption, missing T4 negative, non-existent builder command, forged ZIP member, and restore.",
+    "Cold reconstruct from REPAIRED_PACKAGE.zip repeated inventory verify, 29+13 tests, all three gate stages and six-projection verify in a fresh directory."
+  ],
+  "actual_results": [
+    {
+      "command": "r7_inventory.py verify",
+      "status": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY",
+      "grade": "GIT_AND_ZIP_PINS_VERIFIED",
+      "total": 118,
+      "counts": {
+        "K1_CAP": 29,
+        "PYAT_PC": 26,
+        "P4R": 14,
+        "SEAM_B": 10,
+        "SEAM_S": 8,
+        "ANVIL_L": 8,
+        "BOUNDARY": 7,
+        "TERMINAL": 16
+      },
+      "log": "RAW_LOGS/final_cold_inventory.log"
+    },
+    {
+      "command": "test_r7_integrated.py -q",
+      "status": "OK",
+      "tests": 29,
+      "fail": 0,
+      "log": "RAW_LOGS/final_cold_29.log"
+    },
+    {
+      "command": "test_integrated_strict.py",
+      "status": "OK",
+      "tests": 13,
+      "fail": 0,
+      "log": "RAW_LOGS/final_cold_13.log"
+    },
+    {
+      "command": "r7_integrated.py FRAME",
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "log": "RAW_LOGS/final_cold_FRAME.log"
+    },
+    {
+      "command": "r7_integrated.py DECISION",
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "log": "RAW_LOGS/final_cold_DECISION.log"
+    },
+    {
+      "command": "r7_integrated.py C_INTEGRATED",
+      "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+      "log": "RAW_LOGS/final_cold_C_INTEGRATED.log"
+    },
+    {
+      "command": "r7_build.py verify",
+      "status": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL",
+      "log": "RAW_LOGS/final_cold_verify.log"
+    }
+  ],
+  "not_run": [
+    "native SAV/DTA source read",
+    "13-family native C11 cold run",
+    "dense 100k 600-1300 slots",
+    "process-tree <=6 GiB",
+    "cold 1/10/100 distinct operations",
+    "actual F1-F8/N9/N10W/SOROK first reader",
+    "independent nonauthor C",
+    "protected H1/CAS",
+    "source/actor/science grant"
+  ],
+  "limits": [
+    "Local structural/source-byte evidence only; no native or independent acceptance.",
+    "The positive packet is an authored test input, not a real architecture decision.",
+    "Local receipts and human summaries can be forged by an evidence-root author; only external runner/source custody closes that.",
+    "D4A matrix: 13 hostiles, old 13 pass, private repair 12 refuse / 1 residual; D4B matrix: 14 rows = 2 controls + 12 hostiles, 11 pass old target / 1 refuses; prose count typos corrected, no extra worker round."
+  ],
+  "logs": {
+    "build_six.log": "2a98dc2d660b71b49f0b498bc6671b1b46b5ed23e0404f5bddf65b1fcd9e9ab2",
+    "cold_C_INTEGRATED.log": "0f22aa93aaf393a24633ec7a714fe32c73b91ff1bea1a2b793431a0468dc03b8",
+    "cold_DECISION.log": "725c3b3827fdcafa1f58a5e27af7d33ec070c55032c078c63c2159ecfd3f80dc",
+    "cold_FRAME.log": "f036343cfab32f75f085f09c4a683683277f0933d2a2d8e142c3982269f10f52",
+    "cold_test_inherited_29.log": "6bc8b1d592fc4b9ff9720cb524739303dd7bdd73d4e73c6b92ed05576af07544",
+    "cold_test_integrated_13.log": "ee92c195e7c6fe1c4d6245619f1342e034f13a8938c04763e32cb35a22805af3",
+    "cold_verify.log": "ceadfefd05e9f6bd2a0330d9c52289617806265b127d15d7cb4430f83d417a09",
+    "final_cold_13.log": "f11fb676a7d15f32d0890d20ae9ea708146d7308ed6269a723ded38d79cfec28",
+    "final_cold_29.log": "6caf87032e6fdaf609af3612b05cd640048d8c1af38e50ce8b3ec82630f37a43",
+    "final_cold_C_INTEGRATED.log": "0f22aa93aaf393a24633ec7a714fe32c73b91ff1bea1a2b793431a0468dc03b8",
+    "final_cold_DECISION.log": "725c3b3827fdcafa1f58a5e27af7d33ec070c55032c078c63c2159ecfd3f80dc",
+    "final_cold_FRAME.log": "f036343cfab32f75f085f09c4a683683277f0933d2a2d8e142c3982269f10f52",
+    "final_cold_inventory.log": "3aa43804f5f5d1ada96fe464c9e3f2baf4d50eaa9b043af86175370c846ef02c",
+    "final_cold_verify.log": "ceadfefd05e9f6bd2a0330d9c52289617806265b127d15d7cb4430f83d417a09",
+    "gate_C_INTEGRATED.log": "0f22aa93aaf393a24633ec7a714fe32c73b91ff1bea1a2b793431a0468dc03b8",
+    "gate_DECISION.log": "725c3b3827fdcafa1f58a5e27af7d33ec070c55032c078c63c2159ecfd3f80dc",
+    "gate_FRAME.log": "f036343cfab32f75f085f09c4a683683277f0933d2a2d8e142c3982269f10f52",
+    "inventory_verify.log": "3aa43804f5f5d1ada96fe464c9e3f2baf4d50eaa9b043af86175370c846ef02c",
+    "test_inherited_29.log": "d16435a4edacc2e1f31bd652d6143531521d86cf32c8b746d25e3777f90524c5",
+    "test_integrated_13.log": "1499beb012a00b66b2a2c9965b9d1da61afe155dbde58922e9135f01e5f83c04",
+    "verify_six.log": "ceadfefd05e9f6bd2a0330d9c52289617806265b127d15d7cb4430f83d417a09"
+  }
+}
