@@ -1,0 +1,144 @@
+{
+  "schema": "ANVIL_QUERY_SPECIALIST_RETURN@1",
+  "role": "QUERY",
+  "status": "COMPLETE_BOUNDED_SPECIALIST_RETURN_FOR_ARCHITECT_ADJUDICATION",
+  "generated_utc": "2026-11-17T22:58:06.968904+00:00",
+  "frame_commit": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+  "frame_grade": "AUTHOR_FROZEN_NOT_INDEPENDENTLY_ACCEPTED",
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "protected_currentness_observed": "31291d08179890852246c8742700e055168e9933",
+  "branch": "agent/anvil-architecture-query-20261117-r1",
+  "startup_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ARCHITECTURE_EXECUTION_20261117/QUERY",
+  "write_scope": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/QUERY/",
+  "outputs": {
+    "FINDINGS.md": "22537eb5789192ce5b199512140b3bf9bbe2f9df7ea09f8473e20f7975a0fe40",
+    "ALTERNATIVES.tsv": "19b0bd6ae63e44f15f64b3aece2e5bfb38f80dbfc8d73b65ac930d0ebd155a36",
+    "SOURCE_PINS.json": "76edcdd7f87df41caf94ead3964edc5e0cb357b4d252f60a1939004d96ebe3e8",
+    "COST_MODEL.json": "c7826a28846ae35dc7c1d4541ede0a228ef01693b0bfd72fe4783475792e886e",
+    "QUERY_SEMANTIC_PARITY.tsv": "d8888b7d09eb5fa2f6795ca9508000af8f8e3d75413df7657d8c561322e4e78b",
+    "FIRST_CONSUMER_HANDOFF.md": "19d5921adc1846a26c1e36eaee18814462a612c41ced5b2a3f98b32c23602b9c",
+    "NEW_FRAME_REQUIREMENTS.json": "a2b0aa68e1f86cb7b96730b3f1c1a7785a8a1fb56151a93e21b273d01307cee4"
+  },
+  "return_payload_sha256_definition": "SHA-256 of canonical JSON (sort_keys, separators comma/colon) of this object with the return_payload_sha256 field removed",
+  "key_findings": [
+    "Cold VerifiedDirectEstate hashes all 14 members and checks manifest/I02/root/census; this H is per fresh admission, not per operation.",
+    "DirectEstateI03Session._build scans all event and side-family row groups, full-body-validates and builds a temp SQLite index S; it is per session, 1.30 GB in the cited witness.",
+    "execute_empirical_query loops all universe respondents per operation Q; there is no selective pushdown in the cold path.",
+    "I03GroupedExecutionScope is explicitly refused for DirectEstateI03Session; grouped saved use awaits distinct S2-D qualification and would only help compatible measure-independent cores.",
+    "PreparedI03Session removes repeated S (one _build for four test operations) but not Q or O; each fact carries full risk/denominator member refs, so evidence output can dominate.",
+    "SavedC11Admission.execute_i03 and execute_i05, and saved Batch per unit, open fresh sessions; the prepared session is not forward-wired to Batch/NORMAL/resume. NORMAL/resume remain typed owner holds.",
+    "I05 evaluates every fixed-frontier candidate role via execute_empirical_query; no result-based pruning. F1-F4 composition calls the same evaluator; no second evaluator needed.",
+    "Under a four-op author-report basis, prepared-session reuse implies S/Q about 1.2 and a factor asymptote near 2.2x for N operations; it cannot be extrapolated to 1.69-1.70x at 100.",
+    "A durable exact locator index is the only route that removes S on a one-operation fresh open; it needs independent binding/proof/invalidation and adds 1.30 GB retained in the cited SQLite witness (4.19x the 310.16 MB estate).",
+    "Cross-wave/country pooling is refused by the cold path single-universe/release scope; no pooled index is lawful without separate authority."
+  ],
+  "recommendation": {
+    "minimal_path": "Forward-wire the existing PreparedI03Session to the actual first consumer and saved Batch units (one admission + one prepared session per exact release/universe/workload), keep check_current and per-operation fact/replay, then measure H/S/Q/O before selecting a durable index or pushdown.",
+    "conditional_alternative": "Qualify a compact validated durable locator index only if S is measured material; qualify typed/columnar/posting/mask pushdown only if Q is measured dominant and through the existing evaluator with S04/I03 parity, never as a second evaluator.",
+    "strongest_reverser": "If S is much smaller than Q, prepared/durable index work is marginal and only evaluator-index pushdown changes the 1/10/100 curve; if O dominates, the required work is exact set-ref sharing/streaming evidence output; if operations are one-per-fresh-process and revocation/multi-wave invalidates often, a durable index adds retained cost without reuse benefit.",
+    "smallest_lawful_test": "#1006 G2 protocol on one authorized real-width workload: one admission, 1/10/100 distinct issued I03/F1-F4 and one I05 multi-role operation in one process, plus 10 fresh-process opens, with fact/replay parity, changed-source/revocation refusal, RSS/retained/scratch/output and H/S/Q/O timing. Not executed in this lane.",
+    "no_speedup_claim": true
+  },
+  "semantic_parity": {
+    "rows": 20,
+    "preserved_contracts": [
+      "F2 forward and reverse distinct denominators",
+      "weighted/unweighted separate",
+      "missing/UNKNOWN/zero/routing typed",
+      "repeated/ranked occurrences per event",
+      "F3 minority/recursive and signed/neutral",
+      "F4 true same-person 3+ joint; pairwise not joint",
+      "I03 fact/replay/authority exact",
+      "I05 fixed frontier/no pruning",
+      "negative/held/deferred states",
+      "cross-wave nonpooling",
+      "F6 numeric vs I07 guard separate",
+      "FF01/FF02 separate",
+      "SEAM/SOROK actor nonpreclusion",
+      "F26 exact caller hold",
+      "evidence-bearing exact set refs"
+    ]
+  },
+  "new_frame_requirements": {
+    "file": "NEW_FRAME_REQUIREMENTS.json",
+    "count": 3,
+    "ids": [
+      "FRAME-Q1",
+      "FRAME-Q2",
+      "FRAME-Q3"
+    ],
+    "status": "PROPOSED_NOT_ADOPTED",
+    "reason": "The frozen frame lacks the H/S/Q/O cost-layer split, the derived-index proof/binding/invalidation contract, and the exact evidence-output set-ref/replay sharing rule; these are material to any query architecture adjudication."
+  },
+  "owner_holds_isolated": [
+    "S04/I03 scientific owner: any index-aware denominator/core sharing or evaluator input change; F1-F4 denominator/risk semantics.",
+    "S2-C/D physical owner: durable derived index proof, binding, rebuild, retained-size gate.",
+    "S05/Long Memory: evidence-output/replay and durable product persistence.",
+    "Batch/NORMAL/resume shared-file owners: existing typed ACKs; not claimed complete.",
+    "S2-D/grouped-scope owner: distinct qualification of grouped core for cold saved estate.",
+    "F6 numeric methods/uncertainty owner; FF02/N9/N10W/world owners; SOROK actor/consent owner.",
+    "F26 exact caller/invalidation: K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21.",
+    "Native original35/source/rights, production 100k/6 GiB, independent C/G5/H1: not issued."
+  ],
+  "findings_vs_interpretations_vs_holds": {
+    "findings": "Exact code/source trace of H, S, Q, O, group refusal, prepared reuse, Batch/NORMAL/resume handoffs, per-fact risk/denominator refs, I05 role amplification, single-universe/release refusal.",
+    "interpretations": "Analytic ~2.2x prepared asymptote from the author's four-op report; tens-of-MB per-fact output at 100k respondents; durable index value conditional on S; compact index smaller than 1.30 GB unproven.",
+    "owner_holds": "Derived-index admissibility/proof, evaluator index-aware input, science/core sharing, Batch/NORMAL/resume ACKs, F6/FF/SEAM/SOROK/F26, native rights and 100k/6 GiB acceptance."
+  },
+  "author_grade_and_resource_uncertainty": {
+    "frame": "AUTHOR_FROZEN_NOT_INDEPENDENTLY_ACCEPTED",
+    "prepared_i03": "AUTHOR_CANDIDATE_AT_cea2d4d_NOT_SCOPED_INDEPENDENT_NATIVE_ACCEPTANCE",
+    "instrument_preparation": "INSTRUMENT_PREPARATION_ONLY (05e81747/21d39dfa/f6073d92/701207ZIP); not native/performance/science/architecture/H1",
+    "resource_allowance": "UNKNOWN",
+    "native_100k_6GiB_1_10_100": "NOT_RUN",
+    "measurement": "no native/heavy benchmark, no raw source data, no speedup measurement; cited physical figures are sourcefree cut-specific",
+    "geometry": "100k-shape witness geometry not established as dense 100k respondents; 3.245-event/respondent canary not representative"
+  },
+  "commands_executed": [
+    {
+      "cmd": "pwd; git status --short --branch; ls -la",
+      "exit": 0,
+      "purpose": "worktree orientation"
+    },
+    {
+      "cmd": "find evidence/S1_FROZEN ...; cat S1_FROZEN_PINS.json",
+      "exit": 0,
+      "purpose": "read frozen frame/pins"
+    },
+    {
+      "cmd": "git rev-parse HEAD; git remote -v; git log -1",
+      "exit": 0,
+      "purpose": "confirm product cut and remote"
+    },
+    {
+      "cmd": "shasum -a 256 <ten traced source files>",
+      "exit": 0,
+      "purpose": "code pins"
+    },
+    {
+      "cmd": "shasum -a 256 S1_FROZEN_PINS.json S1_COMMON_FRAME.md FRAME.json LIVE_GITHUB.json",
+      "exit": 0,
+      "purpose": "input pins"
+    },
+    {
+      "cmd": "python3 read-only JSON inspections of LIVE_GITHUB/SOURCE_IDENTITY_INVENTORY/K3 rows",
+      "exit": 0,
+      "purpose": "currentness and source-status grounding"
+    },
+    {
+      "cmd": "python3 json.load on authored JSON; shasum -a 256 authored outputs",
+      "exit": 0,
+      "purpose": "authored artifact validation"
+    },
+    {
+      "cmd": "no native job, no product execution, no install, no source-data access",
+      "exit": 0,
+      "purpose": "scope compliance"
+    }
+  ],
+  "no_final_architecture_acceptance": true,
+  "no_protected_adoption": true,
+  "stop_condition": "Commit and push own branch; STOP for HQ. No autonomous worker launch.",
+  "return_payload_sha256": "623e106b2266cf6361f08a9f5b35fc118db8b6171f22bf1fce42f1f858f5eefa"
+}

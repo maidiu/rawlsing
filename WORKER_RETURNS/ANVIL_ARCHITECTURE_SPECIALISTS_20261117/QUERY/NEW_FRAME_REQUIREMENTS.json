@@ -1,0 +1,53 @@
+{
+  "schema": "ANVIL_QUERY_NEW_FRAME_REQUIREMENTS@1",
+  "status": "PROPOSED_FOR_SHARED_FRAME_VERSIONING_NOT_ADOPTED",
+  "basis": "immutable author S1 commit 5a619ff9fa79be9183eb4d4378d42f040ef2bd9b; QUERY lane independent code trace at cea2d4d",
+  "material_gaps_found": [
+    {
+      "id": "FRAME-Q1",
+      "title": "Separate the four cost layers in REQ-RESOURCE-ECONOMICS and REQ-PHYSICAL-WORKLOAD-1-10-100",
+      "why_material": "The frozen frame names 1/10/100, retained/scratch/output and 6 GiB, but does not distinguish cold validation H, index build S, per-operation scientific counting Q and evidence-output amplification O. The current prepared-session result removes only S, and the 1.69-1.70x author report cannot be extrapolated to 100 operations. Without this split an architecture can appear to satisfy repeated-operation economics while Q or O dominates.",
+      "source_grounding": [
+        "S1_COMMON_FRAME REQ-RESOURCE-ECONOMICS and REQ-PHYSICAL-WORKLOAD-1-10-100",
+        "#1097 current body: 3033.723 s writer, 310.16 MB retained, 1.30 GB native session index, 562.362 s pre-W05 selected query, prepared 1.69-1.70x author report",
+        "#1006 G2 measurement plan items (5)-(10): cold open, index rebuild, first I03/reverse F2/F4, 10 same-process, 10 fresh-process, fact/replay finalization"
+      ],
+      "proposed_requirement": "Every 1/10/100 claim must report H, S, Q and O separately for same-process and fresh-process opens, with fact/replay parity and peak process-tree RSS; no extrapolation from a small operation-count factor.",
+      "owner": "S2-C/D physical owner + S04/I03 scientific owner + #1006 measured-cost owner",
+      "not_a_new_science_requirement": true
+    },
+    {
+      "id": "FRAME-Q2",
+      "title": "Derived durable query index proof, binding and invalidation contract",
+      "why_material": "A persisted posting/locator index is the only route that removes S from a one-operation fresh open, but the frame has no explicit contract for a derived index. #1097 states a derived index is not presumed disposable until rebuild economics are proven. Without a binding/proof/invalidation rule a producer-self-hashed index could become a second corpus or a stale authority source.",
+      "source_grounding": [
+        "S1_COMMON_FRAME REQ-AUTHORITY-RECOVERY, REQ-CURRENT-I03-I05, REQ-C11-PERSISTENCE",
+        "#1097: 'A derived index is not presumed disposable until rebuild economics are proven'; current DirectEstateI03Session recreates temp SQLite indexed postings per session; VerifiedDirectEstate rehashes members on cold init",
+        "pre553_direct_estate_i03.py indices_for single-universe/release refusal; pre553_source_direct_parquet_estate.py manifest/member hashes"
+      ],
+      "proposed_requirement": "Any derived query index must (a) store no canonical bodies/evidence, only locators/selection metadata; (b) bind to the exact estate manifest SHA, I02 roots, release, replay, universe, family censuses, row-group topology and schema; (c) be independently validated on open after H; (d) refuse on any source/root/currentness/authority/wave change; (e) have owner, rebuild/restore and revocation procedures; (f) pass a retained-size and 6 GiB gate before adoption.",
+      "owner": "S2-C/D physical owner + S05/Long Memory + S04/I03 scientific owner",
+      "not_a_new_science_requirement": true
+    },
+    {
+      "id": "FRAME-Q3",
+      "title": "Exact evidence-output sharing and replay contract",
+      "why_material": "Facts currently carry full risk_set_member_refs and denominator_member_refs; 100 distinct operations can amplify evidence output independently of query cost. The frame requires output evidence/replay preservation but does not say when exact set refs may be shared or when replay must re-execute.",
+      "source_grounding": [
+        "S1_COMMON_FRAME section 4 'output evidence/replay' and REQ-AUTHORITY-RECOVERY",
+        "_pre553_query_eval.py _build_fact with risk_set_member_refs/denominator_member_refs",
+        "pre553_empirical_query.py replay_empirical_query: re-executes and requires exact fact identities; cache/materialization is nonauthoritative"
+      ],
+      "proposed_requirement": "Evidence output may reference content-addressed exact risk/denominator set objects only when the exact population, condition, routing, measure regime and wave identity are identical; forward/reverse F2, weighted/unweighted, missing/routing and cross-wave sets must remain separate. Replay of an identical operation must re-execute and compare exact fact refs; a cached fact is never authoritative.",
+      "owner": "S05/Long Memory + S04/I03 scientific owner + relevant F1-F4 science owner",
+      "not_a_new_science_requirement": true
+    }
+  ],
+  "not_material_or_rejected_as_new_frame_requirements": [
+    "No new K3/K4 recensus or R5P2SPINE prerequisite is introduced.",
+    "No new F26 caller/equivalence is invented; K1-CAP-24/P4R-R02 remains exact hold.",
+    "No native original35, FF02/N9/N10W or SOROK actor right is created.",
+    "No economic threshold or SLA is invented; measurement is required before acceptance.",
+    "26 NOT_ADOPTED and 14 HELD statuses remain unchanged."
+  ]
+}
