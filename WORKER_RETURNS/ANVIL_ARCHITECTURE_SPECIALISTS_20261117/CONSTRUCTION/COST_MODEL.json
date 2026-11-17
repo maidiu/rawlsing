@@ -1,0 +1,224 @@
+{
+  "schema": "ANVIL_ARCH_CONSTRUCTION_COST_MODEL@1",
+  "role": "CONSTRUCTION",
+  "grade": "ANALYTIC_MODEL_WITH_CITED_WITNESS; NO_NEW_BENCHMARK",
+  "labels": ["measured", "cited", "analytic", "extrapolated"],
+  "units": {
+    "N": "respondents",
+    "W": "physical source variable/cell slots per respondent",
+    "E": "RespondentEvent objects",
+    "C": "EmpiricalCoordinateFact objects",
+    "R": "RoutingEligibilityFact objects",
+    "G": "WeightMeasureFact objects",
+    "Q": "QuestionVariableBinding objects",
+    "S": "other static family objects (universe, respondent identity, authority, source relation, four replay-binding families)",
+    "M": "N + Q + E + C + R + G + S all-thirteen-family object count",
+    "B": "canonical body bytes (sum over families of object count times canonical row size)",
+    "J": "one exact-body journal bytes (B plus framing)",
+    "P": "retained Parquet/Zstd member bytes",
+    "I_q2": "Q2 direct I02 certificate SQLite bytes",
+    "I_w": "frozen writer second I02 certificate SQLite bytes",
+    "I_idx": "derived postings index bytes",
+    "O": "occurrences per realized response cell (>=1 for repeated/ranked)",
+    "U": "exact universes / country-wave-instrument scopes",
+    "Q_ops": "distinct operations in a run (1, 10 or 100)"
+  },
+  "witnesses": [
+    {
+      "id": "W1",
+      "label": "cited",
+      "source": "#1097 current body, sourcefree 100k-shape, cut-specific, not production/native acceptance",
+      "shape": "100k respondents; 3.245 events/respondent; ~324,500 events; width not dense",
+      "writer_seconds": 3033.723,
+      "retained_bytes": 310160000,
+      "staging_bytes": 5260000000,
+      "writer_temporary_i02_bytes": 4390000000,
+      "native_session_index_bytes": 1300000000,
+      "pre_w05_selected_query_seconds": 562.362,
+      "prepared_session_distinct_operation_factor": "1.69-1.70x author report; no independent G5",
+      "measured_by_specialist": false
+    },
+    {
+      "id": "W2",
+      "label": "cited",
+      "source": "#1006 measured physical court, old 100k-row/200k-event path; not current S2-C and not apples-to-apples",
+      "old_total_seconds": 777.5,
+      "old_persistence_seconds": 292.5,
+      "old_first_consumer_seconds": 124.5,
+      "old_persistence_rss_bytes": 5923426304,
+      "old_saved_artifact_peak_rss_bytes": 6468513792,
+      "measured_by_specialist": false
+    },
+    {
+      "id": "W3",
+      "label": "cited",
+      "source": "#1006 body, older scoped generated 100k/200k comparison",
+      "old_scoped_seconds": 681.934,
+      "new_scoped_seconds": 605.164,
+      "old_scoped_sampled_rss_bytes": 3700000000,
+      "new_scoped_sampled_rss_bytes": 2840000000,
+      "measured_by_specialist": false,
+      "note": "Not the current S2-C 3033.7s witness; do not combine."
+    }
+  ],
+  "current_work_model": {
+    "label": "analytic",
+    "source_open": "1 decode for fixture; original source adds 1 prehash pass (source_reads=2, prehash_passes=1 in SourceI02Stats)",
+    "source_cell_pass": "O(N*W) cells, one pass; _project_spooled_families",
+    "q2_three_family_spool_write": "O(E+C+G) objects, bytes J3",
+    "q2_i02_build": "O(M) SQLite rows plus indexes, I_q2; one full object pass",
+    "body_journal_write": "O(M) exact-body journal, J; all 13 families",
+    "body_journal_replay": "O(M) parse/reconstruct/canonical check, J read",
+    "parquet_write": "O(M) rows, P; body_json plus 18 typed lanes plus event locator",
+    "second_i02_build": "O(M) SQLite rows plus indexes, I_w; duplicate certification",
+    "physical_reread": "O(M) rows, P read/decompressed; reconstruct body and _row parity against second certificate",
+    "build_member_hash": "O(P) raw bytes",
+    "cold_member_hash": "O(P) raw bytes",
+    "session_build": "O(N+E+C+R+G) objects read; I_idx SQLite postings; full event/locator body validation and side-family scan",
+    "query": "selected row groups plus output facts/replay/references",
+    "full_object_touch_equivalents": 8,
+    "raw_hash_passes": 2,
+    "full_session_scans": 1
+  },
+  "proposed_work_model": {
+    "label": "analytic",
+    "source_open": "unchanged: 1 decode fixture, original prehash+snapshot as today",
+    "source_cell_pass": "unchanged O(N*W)",
+    "one_journal_write": "O(M), J; merge Q2 3-family spool and bridge 13-family journal",
+    "single_i02_build": "O(M), I_q2; Q2 certificate from source-derived stream; no writer second build",
+    "one_journal_replay": "O(M), J; writer consumes exact bodies and checks against Q2 certificate",
+    "parquet_write": "O(M), P; unchanged canonical body/typed layout",
+    "physical_reread": "O(M), P; full body/lane proof against Q2 certificate; all-family ref/selector fields; no sampling",
+    "build_member_hash": "O(P) raw bytes",
+    "cold_member_hash": "O(P) raw bytes",
+    "cold_qualification": "O(N+E+C+R+G) once per release; full event/locator and side-family proof; persist small qualification receipt",
+    "derived_index_build": "O(N+E+C+R+G) once per release or on mismatch; retained content-addressed index I_idx",
+    "fresh_process_repeat": "O(P) cold hash + O(1) index open + selected row groups + output; no full body/session scan",
+    "full_object_touch_equivalents": 6,
+    "raw_hash_passes": 2,
+    "full_session_scans": "0 after qualification (1 at qualification)"
+  },
+  "asymptotic": {
+    "label": "analytic",
+    "source_decode": "Theta(N*W) cells",
+    "q2_certificate": "Theta(M) disk rows with SQLite sorting/indexes; no all-object Python list; chunked commits",
+    "journal": "Theta(M) bytes",
+    "parquet": "Theta(M)",
+    "physical_proof": "Theta(M)",
+    "cold_hash": "Theta(P)",
+    "qualification": "Theta(N+E+C+R+G) once",
+    "index_build": "Theta(N+E+C+R+G) once; index size Theta(N+E+C+R+G) with constants",
+    "query_repeat": "Theta(selected postings + selected row-group bytes + output facts), independent of total E except index lookup; no per-op O(E) rebuild",
+    "multi_universe": "sum over U exact universes; no cross-wave pooling; per-universe denominators and indexes",
+    "retained": "P + I_idx + small manifest/receipt; Q2 certificate retained only if owner requires at-rest re-verifiable source comparison",
+    "scratch": "J + I_q2 + seen refs + stage; no I_w, no duplicate 3-family journal representation",
+    "rss": "bounded by chunk_rows, Arrow row-group buffer and SQLite cache_size=-2048; Q2 static-family tuples retain residual O(N+Q+R+G) objects"
+  },
+  "density": {
+    "label": "analytic",
+    "canary_events_per_respondent": 3.245,
+    "canary_100k_events": 324500,
+    "instrument_slots_low": 600,
+    "instrument_slots_high": 1300,
+    "one_event_per_slot_cells_low": 60000000,
+    "one_event_per_slot_cells_high": 130000000,
+    "canary_fraction_low_percent": 0.25,
+    "canary_fraction_high_percent": 0.54,
+    "explanation": "3.245 events/respondent is a sparse canary, not a dense 600-1300-slot survey. It cannot establish 100k production retained/scratch/RSS/query cost. A fully realized 600-slot survey is ~60M events before routing/missing/repeated occurrences; the canary is not representative.",
+    "old_100k_200k_events_per_respondent": 2.0,
+    "old_note": "The old 100k/200k witness is even sparser; do not compare merely because both say 100k."
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "label": "extrapolated",
+      "shape": "100k canary, Q_ops=1 first cold op",
+      "current": "cited W1 cost; analytic 8 object passes + 2 hash + full session scan",
+      "proposed": "analytic 6 object passes + 2 hash + one qualification/index build",
+      "claim": "Removes one I_w-class 4.39GB certificate and duplicate 3-family journal; first op still pays qualification. No timing prediction."
+    },
+    {
+      "id": "S2",
+      "label": "extrapolated",
+      "shape": "100k canary, Q_ops=10",
+      "current": "prepared-session 1.69-1.70x author report only; no independent G5",
+      "proposed": "one cold hash + index open per fresh process; selected row groups per op; qualification once",
+      "claim": "The economic gain is structural (no O(E) rebuild), not a claimed wall-clock speedup; measurement required."
+    },
+    {
+      "id": "S3",
+      "label": "extrapolated",
+      "shape": "100k canary, Q_ops=100",
+      "current": "per-process PreparedI03Session reuse if same process; otherwise full scan each new process",
+      "proposed": "durable index across processes; index invalidated on manifest/I02/source/authority change; rebuild from canonical on mismatch",
+      "claim": "Index is not disposable by declaration; it is bound and retained. If index cannot be bound/verified, fall back to full qualification, not stale reuse."
+    },
+    {
+      "id": "S4",
+      "label": "extrapolated",
+      "shape": "dense illustrative 100k x 600 slots, one event/slot, O=1",
+      "events": 60000000,
+      "claim": "Not a prediction; shows scale. Current O(M) proof/scan and proposed O(M) build with once-only qualification; query remains selected. Retained/staging scale with E and body bytes; 6GiB RSS must be measured, not inferred."
+    },
+    {
+      "id": "S5",
+      "label": "extrapolated",
+      "shape": "multi-country/wave U universes",
+      "claim": "Bodies and indexes partition by exact universe; total O(sum M_u). No cross-wave body pool; cross-universe query requires SourceUniverseRelation and separate denominators. Construction cost is additive, not a pseudo-person merge."
+    }
+  ],
+  "byte_amplification_observations": {
+    "label": "analytic",
+    "basis": "cited W1",
+    "staging_over_retained": 16.96,
+    "writer_i02_over_retained": 14.15,
+    "session_index_over_retained": 4.19,
+    "warning": "Staging 5.26GB and I_w 4.39GB are disk, not RSS. Q2 certificate size is not separately reported; do not assume zero. The 3033.7s witness is sourcefree/cut-specific; no native/100k/6GiB acceptance."
+  },
+  "cost_of_reductions": [
+    {
+      "reduction": "remove writer second I02 build",
+      "label": "analytic",
+      "saves": "one O(M) certification and I_w (4.39GB witness class)",
+      "cost": "physical verifier must query Q2 certificate and compare all family fields; Q2 certificate must be available until publish; fallback if not",
+      "integrity": "neutral if full physical proof against Q2 remains; weaker if verifier only samples or only checks event family"
+    },
+    {
+      "reduction": "one 13-family journal",
+      "label": "analytic",
+      "saves": "one duplicate 3-family journal write/read and one re-canonicalization pass",
+      "cost": "defer Q2 spool cleanup until writer finish; one journal lifecycle/lease; no canonical change",
+      "integrity": "neutral if journal line identity/count/absence and Q2 root equality remain"
+    },
+    {
+      "reduction": "durable derived index + one-time qualification",
+      "label": "analytic",
+      "saves": "per-session O(N+E+C+R+G) scan and I_idx scratch rebuild",
+      "cost": "retain I_idx (1.30GB witness) and a small receipt; index build once; invalidation logic",
+      "integrity": "neutral if index is non-authoritative, content-bound, rebuildable, and current authority still checked per op; weaker if stale index reused after revocation"
+    },
+    {
+      "reduction": "atomic directory publish + lease/orphan",
+      "label": "analytic",
+      "saves": "no partial target window; avoids manual orphan cleanup and unsafe deletion",
+      "cost": "one fsynced stage + rename/lease; recovery logic",
+      "integrity": "stronger than current target.mkdir-before-manifest"
+    }
+  ],
+  "rss_and_6gib": {
+    "label": "analytic",
+    "current_witness_rss": "not reported in the cited values; 5.26GB/4.39GB/1.30GB are disk/staging/index sizes",
+    "old_w2_rss": "5.923GB persistence; 6.468GB saved-artifact peak; old path, not current S2-C",
+    "bounded_pattern": "chunk_rows<=8192, SQLite cache_size=-2048, temp_store=FILE, bounded row-group reads, no pq.read_table whole-table, no full C11 graph",
+    "residual": "Q2 projection static tuples and per-session respondents dict are O(N+Q+R+G) resident; journaling does not remove them",
+    "claim": "No 6GiB pass claimed. A process-tree RSS measurement with the fixed 13-family witness is indispensable before any 6GiB claim."
+  },
+  "empirical_measurements_indispensable": [
+    "process-tree peak RSS at one high-width 13-family shape",
+    "peak disk by artifact class (journal, Q2 cert, second cert, Parquet, index)",
+    "cold 1/10/100 operations with and without durable index",
+    "chunk_rows 512 vs 1024/2048/4096 on narrow and wide queries",
+    "crash injection at each publish step",
+    "native/source/science results and revocation/negative parity"
+  ]
+}

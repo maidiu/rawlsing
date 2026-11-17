@@ -1,0 +1,73 @@
+{
+  "schema": "ANVIL_NEW_FRAME_REQUIREMENTS@1",
+  "role": "CONSTRUCTION",
+  "frame_ref": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+  "author_frame_grade": "AUTHOR_FROZEN_NOT_INDEPENDENTLY_ACCEPTED",
+  "requires_shared_frame_versioning": true,
+  "proposed_requirements": [
+    {
+      "id": "REQ-CONSTRUCTION-ATOMIC-RECOVERY",
+      "status": "PROPOSED_NOT_ADOPTED",
+      "binding": "PRESENT_HARD",
+      "domain": "AUTHORITY_AND_RECOVERY",
+      "typed_obligation": "ATOMIC_BUILD_AND_INTERRUPTED_RECOVERY",
+      "substantive_requirement": "Construction and publication must be crash-consistent and recoverable: no partially built estate may be readable as valid; a completed release must never be deleted or overwritten by a failed or concurrent build; an interrupted build must leave only typed scratch/orphan state that can be identified, discarded, or resumed under an explicit lease without touching a completed or another writer's release; manifest/member fsync and no-clobber are explicit.",
+      "why_needed": "The frozen 16 requirements cover cold restore and revocation but do not explicitly require interrupted-build publication recovery. The actual writer creates the content-addressed target directory before the manifest exists; a crash in that window leaves a manifest-less target that later builds refuse as occupied. The user mission explicitly requires bounded reliable construction and interrupted recovery.",
+      "source_grounding": [
+        {
+          "source": "user mission in this commission",
+          "quote": "bounded reliable construction/compact TOTAL retention ... exact identities/replay/negatives/recovery and 6 GiB",
+          "grade": "USER_ENDORSED_SCOPE_NOT_SCIENTIFIC_LAW"
+        },
+        {
+          "source": "actual code",
+          "path": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+          "symbol": "write_direct_estate",
+          "observation": "target = releases / _estate_name(i02); if target.exists() or target.is_symlink(): raise 'content-addressed release already occupied: no clobber'; target.mkdir(mode=0o700); members moved; manifest.json hard-linked last. A crash after mkdir and before manifest leaves an orphan target that the next build refuses.",
+          "grade": "ACTUAL_CODE_STATIC_TRACE"
+        },
+        {
+          "source": "S1 common frame",
+          "path": "evidence/S1_FROZEN/S1/FRAME.json",
+          "requirement": "REQ-AUTHORITY-RECOVERY / REQ-SOURCE-I02-REVOCATION",
+          "observation": "They require independent source comparison, revocation, cold restore and refusal; they do not name partial-publication/orphan crash recovery.",
+          "grade": "FRAME_GAP_CHECK"
+        }
+      ],
+      "positive_probe": "Kill the build at each publish step (after Q2 certificate, after stage members, after target claim, after member moves, after manifest link). No cold reader accepts an incomplete estate. Restart either completes from an exact verified journal/lease or removes only the typed orphan; a previously completed release remains byte-identical and readable.",
+      "negative_probe": "A manifest-less target is accepted as EMPTY/valid, silently overwritten, or deleted while another writer may be active; a completed release is deleted in response to a producer failure; must refuse.",
+      "architectural_consequence": "Use a fully fsynced stage directory and, where supported, one atomic directory rename to the content-addressed release name. If an exclusive claim is required, bind it to host/PID/start-time lease and return a typed ORPHAN_REQUIRES_OPERATOR rather than auto-deleting. GC only typed scratch with a proven-dead lease. Preserve the existing manifest/no-clobber/member-hash proofs.",
+      "owner": "Shared-frame architect + independent C + physical writer owner; no self-adoption",
+      "first_consumer": "Any cold SavedC11Admission or recovery operator; does not create a new science/world reader",
+      "does_not_authorize": [
+        "native/original35/source/science/actor rights",
+        "wave join/pooling promotion",
+        "F26 caller reinvention or closure",
+        "any protected adoption"
+      ]
+    }
+  ],
+  "not_proposed_as_new_frame_requirements": [
+    {
+      "topic": "derived durable index binding",
+      "reason": "Architecture obligation implied by REQ-C11-PERSISTENCE, REQ-CURRENT-I03-I05 and REQ-SOURCE-I02-REVOCATION; it must be content-bound, non-authoritative, regenerable and invalidated by manifest/I02/source/authority. It does not need a new common-frame row."
+    },
+    {
+      "topic": "canonical body vs typed projection split",
+      "reason": "Physical layout choice; the common frame requires exact body/locator/current, not a specific member layout. No unapproved format rewrite is performed."
+    },
+    {
+      "topic": "chunk_rows/dictionary geometry",
+      "reason": "Measurable implementation parameter, not a common-frame requirement; no invented threshold."
+    }
+  ],
+  "preserved_constraints": {
+    "requirements": 16,
+    "identity_rows": 118,
+    "PYAT_PC_NOT_ADOPTED": 26,
+    "P4R_HELD": 14,
+    "separate_52_24_21": "not additive",
+    "F26": "exact caller/invalidation hold remains K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21",
+    "native_source_actor_science": "held"
+  }
+}
