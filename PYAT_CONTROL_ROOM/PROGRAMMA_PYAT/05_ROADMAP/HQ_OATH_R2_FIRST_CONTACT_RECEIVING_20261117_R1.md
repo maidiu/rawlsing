@@ -23,6 +23,8 @@ The source R2 first-contact prefix is 6,393 characters; immutable candidate #109
 - **CENTRAL_STATE_HEAD_MATCH:** bounded checked source for this documentary task, NOT a new global project-state freshness or W55 project-adoption claim; **GROUNDING_COMPLETE_FOR_DECLARED_SCOPE:** only this nonarchitectural textual execution
 - **Owner/receiving destination:** existing PYAT `CURRENT_PROGRESS.md`/`.json` revision 10 on `integration/pre-main-reconciliation-r1` after exact ref CAS; counterpart progress under Sorok HQ only
 
+**Actual PR #1142 CI:** [OATH first-contact run 44130819935](https://github.com/maidiu/rawlsing/actions/runs/44130819935) and [canonical-tree run 44130819669](https://github.com/maidiu/rawlsing/actions/runs/44130819669) both completed **FAILURE, zero steps executed**. Job step endpoints returned empty arrays; job logs returned BlobNotFound. This is **OPEN CI NON-GREEN** (environment/run unqualified, cause unknown), not a passing test and not a demonstrated OATH assertion failure. Historical FIABC RED unchanged.
+
 ## Explicit holds
 
 No separately accredited independent review of the final patch is represented here; the source #1098 itself has no submitted GitHub PR review. Historic broad FIABC three failures remain. GitHub Actions (including canonical-tree) may be red or lack runners; the reviewer cannot infer green from the script. Initial candidate is not protected adoption. A passing guard cannot prove automatic instructions, correct real-time application, scientific authorization, local worker permission, or complete fresh-HQ credentialing. User-authorized receiving may be documentary and source-scoped only.
