@@ -35,6 +35,8 @@
 
 # PROGRAMMA RAWLSING — COMPLETE SHARED PRE-MAIN OPERATING FRONT DOOR
 
+> **PYAT scoped intake REV11:** ANVIL R7 **instrument preparation** separately accepted at sourcefree/source-identity grade, with C R4 verdict `21d39dfa5d5ca95a64251494ff9d4c0f961d4a43`, original implementation `05e81747fb2e5cca042c0d968ba1ae203182556e`, delivery `f6073d923a3e01caf4c1af54599797f04338d54f`. ANVIL architecture investigation is separately user-directed and not blocked by this documentary receiving; no architecture or native/scientific/actor authorization. [PYAT exact scoped receipt](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL_R7_INSTRUMENT_SCOPED_RECEIVING_20261117_R1.md).
+
 > **CURRENT PYAT K3 S1 PROTECTED RECEIPT — 2026-11-16:** 29 historical families, 26 R15 NOT_ADOPTED proposals, 14 open #817 obligations; independent #1139 documentary review and exact D01 paired-rev9 correction received. ANVIL #1108 next; no native/science/actor/K4 grant or canonical-tree CI green. [Pyat receipt](../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_PROTECTED_RECEIVING_20261116_R1.md).
 
 
