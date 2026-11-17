@@ -1,0 +1,20 @@
+"""PYAT #997 S1-E: bounded source-body tee into the accepted physical C11.
+
+Q2 projects the source once and tees every canonical object through its
+sourcefree I02 builder. S2-C only accepts a pull iterator AFTER Q2 has issued
+its certificate; journal the exact 13 typed family bodies in temporary private
+files, then replay into the UNCHANGED S2-C writer. No second SAV/DTA decode,
+full C11 graph, new science or persistent competing database. The frozen S2-C
+writer performs a second I02 certification, which is disclosed in stats.
+"""
+from __future__ import annotations
+
+from collections import Counter
+from hashlib import sha256
+import json
+from pathlib import Path
+import shutil
+import sqlite3
+import tempfile
+from types import MappingProxyType
+from typing import Any, Iterator, Mapping

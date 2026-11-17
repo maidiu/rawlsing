@@ -1,0 +1,74 @@
+    release_ref: ExactRef
+    estate_path: str
+    operations: int
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "schema": self.schema,
+            "manifest_sha256": self.manifest_sha256,
+            "release_ref": self.release_ref.as_dict(),
+            "estate_path": self.estate_path,
+            "operations": self.operations,
+        }
+
+
+class PreparedI03Session:
+    """One exact saved posting index reused by many I03/I05 operations."""
+
+    __slots__ = ("_admission", "_session", "_operations", "_closed")
+
+    def __init__(
+        self, admission: SavedC11Admission, session: DirectEstateI03Session,
+    ) -> None:
+        if type(admission) is not PreparedSavedC11Admission:
+            raise PreparedSavedI03Error("exact prepared saved admission required")
+        if type(session) is not DirectEstateI03Session:
+            raise PreparedSavedI03Error("exact DirectEstateI03Session required")
+        self._admission = admission
+        self._session = session
+        self._operations = 0
+        self._closed = False
+
+    def _require_open(self) -> None:
+        if self._closed:
+            raise PreparedSavedI03Error("prepared saved I03 session is closed")
+        self._admission.check_current()
+
+    def _copy_query(self, query_ref: ExactRef | Any):
+        catalog = self._admission._runtime_catalog
+        query = catalog.resolve_query_exact(query_ref)
+        self._admission._require_query_scope(query)
+        return query
+
+    def _copy_predicate(self, predicate_ref: ExactRef | Any):
+        catalog = self._admission._runtime_catalog
+        predicate = catalog.resolve_predicate_exact(predicate_ref)
+        self._admission._require_predicate_scope(predicate)
+        return predicate
+
+    def execute_i03(self, *, query_ref: Any, predicate_ref: Any) -> Any:
+        """Execute one exact I03 operation on the shared prepared index."""
+
+        self._require_open()
+        query = self._copy_query(query_ref)
+        predicate = self._copy_predicate(predicate_ref)
+        condition = exact_ref(
+            query.condition_predicate_ref, "query.condition_predicate_ref",
+        )
+        if condition != predicate.ref:
+            raise PreparedSavedI03Error(
+                "prepared I03 predicate is not the exact query condition"
+            )
+        result = execute_empirical_query(
+            repository=self._session,
+            query=query,
+            predicate=predicate,
+            authority_registry=self._admission._runtime_catalog.authority_registry,
+            release_refs=(self._admission._release_ref,),
+        )
+        self._admission.check_current()
+        self._operations += 1
+        return result
+
+    def execute_i05(self, *, discovery_authority_ref: Any) -> Any:
+        """Execute one exact I05 discovery on the shared prepared index."""

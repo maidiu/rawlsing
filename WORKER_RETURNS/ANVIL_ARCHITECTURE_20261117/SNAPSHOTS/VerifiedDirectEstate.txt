@@ -1,0 +1,96 @@
+class VerifiedDirectEstate:
+    """Independently pinned physical reader with bounded row-group loading.
+
+    A sourcefree candidate cannot authorize itself. Caller supplies held
+    manifest digest, exact previously qualified S2-B roots, and a live
+    independent current/rights guard on EACH materializing call.
+    """
+    def __init__(
+        self, root: str | Path, *, exact_path: str | Path,
+        independently_held_manifest_sha256: str,
+        independently_held_i02: ExternalI02Roots,
+        current_authorizer: Callable[[ExternalI02Roots], bool] | None,
+    ):
+        self.i02 = independently_held_i02
+        if type(self.i02) is not ExternalI02Roots:
+            raise DirectEstateError("exact independently held direct I02 roots required")
+        if not _hex(independently_held_manifest_sha256):
+            raise DirectEstateError("independently held SHA-256 required")
+        if current_authorizer is None or not callable(current_authorizer):
+            raise DirectEstateError("independent live current/rights guard required")
+        self._authorize = current_authorizer
+        self.held_manifest_sha256 = independently_held_manifest_sha256
+        # Refuse before hashing or opening any source-derived estate bytes.
+        self._live()
+        self.root = _root(root)
+        candidate = Path(exact_path).absolute()
+        expected = self.root / "releases" / _estate_name(self.i02)
+        if candidate != expected:
+            raise DirectEstateError("nonexact estate path or mismatched release identity")
+        _safe_dir(expected.parent)
+        _safe_dir(expected)
+        self.directory = expected
+        commit = expected / "manifest.json"
+        _safe_member(commit)
+        if _hash(commit) != independently_held_manifest_sha256:
+            raise DirectEstateError("manifest differs from independently held root")
+        try:
+            manifest = json.loads(commit.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            raise DirectEstateError("committed manifest invalid") from exc
+        if manifest.get("schema") != SCHEMA or manifest.get("i02") != _roots(self.i02):
+            raise DirectEstateError("estate source/replay/universe/logical/physical roots mismatch")
+        # Independently held manifest SHA binds this v1 historical identity;
+        # direct i02.release remains the *different* direct-schema identity.
+        direct_kind, sep, direct_tail = self.i02.release.partition("|")
+        direct_release_id, sep2, direct_digest = direct_tail.rpartition("|")
+        if (direct_kind != "C11_DIRECT_SOURCEFREE_RELEASE" or not sep
+                or not sep2 or not direct_release_id or not _hex(direct_digest)):
+            raise DirectEstateError("unqualified direct-sourcefree release identity")
+        self.reconstructed_v1_release_ref = _decode_reconstructed_v1_release(
+            manifest.get("reconstructed_v1_release_ref"), direct_release_id,
+        )
+        required = set(f + ".parquet" for f in _FAMILIES_IN_ORDER) | {"event_locator.parquet"}
+        members = manifest.get("members")
+        if not isinstance(members, dict) or set(members) != required:
+            raise DirectEstateError("entire expected family/selector member set required")
+        for name, digest in members.items():
+            member = expected / name
+            _safe_member(member)
+            if not _hex(digest) or _hash(member) != digest:
+                raise DirectEstateError("body/index Parquet member missing or corrupt")
+        census = manifest.get("family_counts")
+        if not isinstance(census, dict) or set(census) != set(_FAMILIES_IN_ORDER):
+            raise DirectEstateError("thirteen complete source family counts required")
+        event_count = census["RespondentEvent"]
+        locator_count = manifest.get("event_locator_count")
+        if (type(event_count) is not int or type(locator_count) is not int
+                or event_count < 0 or event_count != locator_count):
+            raise DirectEstateError("physical event locator census mismatch")
+        # Cold sourcefree boundary: a re-pinned manifest's mutable counters
+        # cannot hide a retained native event body. Compare both *actual*
+        # Parquet footer censuses and row-group topology before any query can
+        # consume a subset. Full per-position parity is checked while native
+        # I03 constructs its already-required bounded postings index.
+        import pyarrow.parquet as pq
+        body = pq.ParquetFile(expected / "RespondentEvent.parquet")
+        locator = pq.ParquetFile(expected / "event_locator.parquet")
+        try:
+            if (body.metadata.num_rows != event_count
+                    or locator.metadata.num_rows != locator_count
+                    or body.metadata.num_rows != locator.metadata.num_rows
+                    or body.num_row_groups != locator.num_row_groups):
+                raise DirectEstateError("cold physical event/locator census differs from event bodies")
+            for gid in range(body.num_row_groups):
+                self._live()
+                if (body.metadata.row_group(gid).num_rows
+                        != locator.metadata.row_group(gid).num_rows):
+                    raise DirectEstateError("cold event/locator row-group coverage mismatch")
+        finally:
+            body.close()
+            locator.close()
+        self.manifest = manifest
+        self._live()
+
+    def _live(self) -> None:
+        # This callback is a required guard, NOT a grant minted by this class.

@@ -1,0 +1,30 @@
+"""S2-D typed saved C11 admission over the accepted S2-C physical estate.
+
+This module is deliberately a *consumer admission*, not a second physical
+writer, scientific evaluator, issuer or C11 graph builder.  It binds one exact
+accepted ``VerifiedDirectEstate`` to the existing native I03/I05 owners:
+
+* I03: the existing ``CarrierNeutralResearchExecutor.execute_i03`` path and
+  ``execute_empirical_query`` semantics.
+* I05: the existing ``execute_exact_bounded_discovery`` owner, with the exact
+  S2-C ``DirectEstateI03Session`` as its bounded repository view.
+
+The admitted estate is read through S2-C's independently pinned manifest,
+direct-I02 roots and reconstructed historical v1 release identity.  No
+``C11LogicalRelease``, ``C11Repository`` object graph, full replay closure,
+second persistent body corpus or source reopen is introduced here.
+
+Shared-file integration for Batch, normal issued workloads and joined resume is
+intentionally not implemented in this new module.  The exact owner/signature
+handoff is exposed as a typed refusal so it cannot be mistaken for a completed
+all-reader product.
+"""
+from __future__ import annotations
+
+from collections.abc import Mapping, Sequence
+from dataclasses import dataclass
+from typing import Any
+
+from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
+from rawlsing_next.pre553_carrier_execution import (
+    CarrierNeutralResearchExecutor,

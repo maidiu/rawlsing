@@ -1,0 +1,79 @@
+class DirectEstateI03Session:
+    """Scoped existing-I03 read session anchored to one verified direct estate.
+
+    Only CarrierNeutralResearchExecutor opens this context for one query.
+    The temporary SQLite postings are a disposable physical query accelerator;
+    all bodies stay in the independently hashed Parquet estate.
+    """
+
+    def __init__(self, estate: VerifiedDirectEstate):
+        if type(estate) is not VerifiedDirectEstate:
+            raise DirectEstateError("native cold I03 requires exact VerifiedDirectEstate")
+        if estate.i02.schema != DIRECT_SCHEMA:
+            raise DirectEstateError("native cold I03 requires exact complete direct-I02 certificate")
+        self.estate = estate
+        self._temporary: tempfile.TemporaryDirectory[str] | None = None
+        self._db: sqlite3.Connection | None = None
+        self.respondents: dict[str, RespondentIdentity] = {}
+        self._universe: EmpiricalUniverse | None = None
+        self._relations: tuple[SourceUniverseRelation, ...] = ()
+        self._files: dict[str, Any] = {}
+        self._row_group_cache: dict[str, dict[str, Any]] = {}
+
+    def _require_live(self) -> sqlite3.Connection:
+        self.estate._live()
+        if self._db is None:
+            raise DirectEstateError("native I03 read session is not open")
+        return self._db
+
+    def __enter__(self) -> "DirectEstateI03Session":
+        self.estate._live()
+        self._temporary = tempfile.TemporaryDirectory(
+            prefix=".s2c-native-i03-", dir=self.estate.root
+        )
+        try:
+            db_path = Path(self._temporary.name) / "postings.sqlite"
+            self._db = sqlite3.connect(str(db_path))
+            self._db.execute("PRAGMA cache_size=-1024")
+            self._db.execute(
+                "CREATE TABLE events("
+                "respondent TEXT NOT NULL, ref TEXT NOT NULL UNIQUE, "
+                "native TEXT NOT NULL, canonical TEXT NOT NULL, "
+                "component TEXT NOT NULL, state TEXT NOT NULL, "
+                "gid INTEGER NOT NULL, off INTEGER NOT NULL)"
+            )
+            self._db.execute(
+                "CREATE TABLE members("
+                "family TEXT NOT NULL, respondent TEXT NOT NULL, "
+                "ref TEXT NOT NULL, gid INTEGER NOT NULL, off INTEGER NOT NULL, "
+                "PRIMARY KEY(family,ref))"
+            )
+            self._build()
+            self._db.execute(
+                "CREATE INDEX events_resp_idx ON events(respondent,ref)"
+            )
+            self._db.execute(
+                "CREATE INDEX members_resp_idx ON members(family,respondent,ref)"
+            )
+            self._db.commit()
+            return self
+        except BaseException:
+            self.__exit__(None, None, None)
+            raise
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        if self._db is not None:
+            self._db.close()
+            self._db = None
+        self.respondents.clear()
+        self._universe = None
+        self._relations = ()
+        for reader in self._files.values():
+            if hasattr(reader, "close"):
+                reader.close()
+        self._files.clear()
+        self._row_group_cache.clear()
+        if self._temporary is not None:
+            self._temporary.cleanup()
+            self._temporary = None
+

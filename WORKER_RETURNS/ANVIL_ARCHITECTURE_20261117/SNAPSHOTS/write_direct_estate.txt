@@ -1,0 +1,71 @@
+def write_direct_estate(
+    source: SourcefreeDirectI02Sections, universe_ref: ExactRef,
+    authorized_private_root: str | Path, *,
+    chunk_rows: int = 512,
+    expected_i02: ExternalI02Roots | None = None,
+) -> EstateReceipt:
+    """One pass over all 13 typed families, co-producing I02 proof and Parquet.
+
+    Requires a caller-authorized EXISTING private directory, never silently
+    defaults to a global cache or source-based host path. Source read itself
+    must already have been permitted by S1-B/S1-D; this does not issue it.
+    """
+    if type(source) is not SourcefreeDirectI02Sections or type(universe_ref) is not ExactRef:
+        raise DirectEstateError("exact direct I02 input and universe required")
+    if not isinstance(chunk_rows, int) or isinstance(chunk_rows, bool) or not (1 <= chunk_rows <= 8192):
+        raise DirectEstateError("bounded physical row group size required")
+    if set(source.sections) != set(_FAMILIES_IN_ORDER):
+        raise DirectEstateError("all thirteen typed source families required")
+    root = _root(authorized_private_root)
+    stage = Path(tempfile.mkdtemp(prefix=".s2c-stage-", dir=root))
+    stage.chmod(0o700)
+    writers = {f: _Sink(stage / (f + ".parquet"), f, chunk_rows)
+               for f in _FAMILIES_IN_ORDER}
+    index = _IndexSink(stage / "event_locator.parquet", chunk_rows)
+    i02 = None
+    published = None
+    try:
+        # S2-B is the sole semantic owner. Every object is forwarded unchanged
+        # and validated by its real source-direct I02 builder after the writer
+        # has observed the SAME iterator item; no second source read.
+        def tap(family: str):
+            for obj in source.sections[family]:
+                group, offset = writers[family].add(obj)
+                if family == "RespondentEvent":
+                    index.add(writers[family].pending[-1] if writers[family].pending
+                              else _row(family, obj), group, offset)
+                yield obj
+
+        wrapped = SourcefreeDirectI02Sections(
+            manifest=source.manifest,
+            sections=MappingProxyType({
+                f: tap(f) for f in _FAMILIES_IN_ORDER
+            }),
+            typed_absences=source.typed_absences,
+            replay_protocol_authority_ref=source.replay_protocol_authority_ref,
+            replay_protocol_version=source.replay_protocol_version,
+            deterministic_tie_order_rules_ref=source.deterministic_tie_order_rules_ref,
+        )
+        scratch = stage / ".i02-proof.sqlite"
+        i02 = build_sourcefree_direct_i02(
+            wrapped, universe_ref, scratch, chunk_size=min(chunk_rows, 8192),
+        )
+        if expected_i02 is not None and _roots(i02) != _roots(expected_i02):
+            raise DirectEstateError("complete direct I02 roots differ from independent expectation")
+        for writer in writers.values():
+            writer.close()
+        index.close()
+        # Prove the physical sidecar counts match the I02-validated stream
+        # census; never turn a missing locator into authenticated EMPTY.
+        if index.count != writers["RespondentEvent"].count:
+            raise DirectEstateError("event locator omitted or duplicated an event")
+        # Verify the complete emitted Parquet estate against the SAME one-pass
+        # S2-B source certificate before deleting temporary proof scratch.
+        _verify_emitted_physical_payloads(
+            stage, scratch, {name: writer.count for name, writer in writers.items()},
+        )
+        reconstructed_v1 = _reconstructed_v1_release_from_certificate(
+            scratch, i02, source.manifest.release_id, source.manifest.content_hash,
+        )
+        # SQLite is proof scratch and MUST NOT become a second durable corpus.
+        scratch.unlink()
