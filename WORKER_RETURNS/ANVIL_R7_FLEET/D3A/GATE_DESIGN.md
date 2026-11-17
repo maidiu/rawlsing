@@ -46,14 +46,20 @@ The correction is deliberately *not* a new tribunal. It moves three checks from 
       "evidence_ids":    ["K3_K1_CAP"],
       "origin": {
         "kind": "K3_TSV_ROW | DOC_ROW | JSON_MEMBER | TERMINAL_TABLE",
-        "path": "<relative path under --source-root>",
-        "commit": "<40-hex>",          // exactly one of commit / zip_sha256
-        "zip_sha256": "<64-hex>",
-        "git_blob": "<40-hex>",        // recomputed locally as sha1("blob <len>\0"+bytes)
-        "file_sha256": "<64-hex>",
-        "row_selector": "K1-CAP-01",   // TSV / terminal
-        "exact_excerpt": "≤ exact bytes present in the file",
-        "row_sha256": "<64-hex>"       // sha256 of the exact located row bytes
+        "container": "GIT | ZIP",       // authority is the container, never a local file
+        // --- container = GIT ---
+        "commit": "<40-hex>",           // must resolve via git rev-parse in --git-repo
+        "path": "<original repository-relative path>",
+        "git_blob": "<40-hex>",         // must equal `git rev-parse <commit>:<path>`
+        "file_sha256": "<64-hex>",      // sha256 of `git cat-file blob <git_blob>`
+        // --- container = ZIP ---
+        "member": "ANVIL_R7/02_BOUNDARY_CONTRACTS.json",
+        "zip_sha256": "<64-hex>",       // must equal sha256 of the real archive
+        "member_sha256": "<64-hex>",
+        // --- row ---
+        "row_selector": "K1-CAP-01",    // TSV / terminal
+        "exact_excerpt": "≤ exact bytes present in the container member",
+        "row_sha256": "<64-hex>"        // sha256 of the exact located row bytes
       }
     }
   ]
@@ -74,7 +80,18 @@ The correction is deliberately *not* a new tribunal. It moves three checks from 
 | `…:FALSE_PROSPECTIVE_ADOPTION` / `FALSE_PROOF_CLOSURE` / `WRONG_NOT_ADOPTED_GRADE` / `WRONG_PROOF_HELD_GRADE` | 26 adopted or 14 closed |
 | `FRAME:SOURCE_SPINE_NOT_THE_118_UNIVERSE` | a SPINE is still supplied but is not the 118 universe |
 
-**What the gate does not decide.** It does not decide whether a row's *semantic content* is scientifically right, whether the K3 owner decision was sound, or whether a terminal identity is implementable. Those stay with their owners.
+### 1.2b HQ defect D4 — a claimed commit was never resolved (fixed)
+
+`verify_origin` originally checked only the *shape* of `commit` and recomputed `git_blob` from the **caller's own file bytes**. A caller could set `commit = 'a'*40` and keep everything else, and the gate returned **PASS**. Reproduced verbatim before the fix (see `TEST_TRANSCRIPT.json` → `before_fix`).
+
+The repair binds each row to an **independently pinned container**:
+- `GIT` — `git rev-parse --verify <commit>^{commit}` (the commit must exist and be a commit), an optional allow-list of pinned cuts, `git rev-parse <commit>:<path>` (must equal `git_blob`), then `git cat-file blob` is the only byte source. The caller's working copy is never consulted.
+- `ZIP` — sha256 of the real archive must equal the declared `zip_sha256` and the externally supplied anchor, and the member bytes must hash to `member_sha256`.
+- **No anchor ⇒ `NO_EXTERNAL_TRUST_ANCHOR` ⇒ RED.** There is no silent degradation to a local-shape PASS.
+
+New refusal codes: `ORIGIN_COMMIT_NOT_IN_REPOSITORY`, `ORIGIN_COMMIT_OUTSIDE_PINNED_CUTS`, `ORIGIN_PATH_NOT_IN_COMMIT`, `ORIGIN_PATH_BLOB_MISMATCH`, `ORIGIN_FILE_SHA_MISMATCH`, `ZIP_CONTAINER_SHA_MISMATCH`, `ZIP_ANCHOR_SHA_MISMATCH`, `ZIP_MEMBER_SHA_MISMATCH`, `NO_GIT_ANCHOR`, `NO_ZIP_ANCHOR`. No blacklist of `a*40` is used.
+
+**What the gate still does not decide.** It does not decide whether a row's *semantic content* is scientifically right, whether the K3 owner decision was sound, or whether a terminal identity is implementable. Those stay with their owners.
 
 ### 1.3 Legacy path
 

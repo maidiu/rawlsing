@@ -1,24 +1,43 @@
 {
   "schema": "ANVIL_D3A_TEST_TRANSCRIPT",
-  "generated_utc": "2026-11-17T18:13:54.877713+00:00",
+  "generated_utc": "2026-11-17T18:34:30.939467+00:00",
   "platform": "macOS-13.2.1-x86_64-i386-64bit",
   "python": "3.11.3",
   "working_directory": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A/WORKER_RETURNS/ANVIL_R7_FLEET/D3A/PACKAGE/tools",
-  "target_package_root": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A/WORKER_RETURNS/ANVIL_R7_FLEET/D3A/PACKAGE",
   "scope": "LOCAL_AUTHORED_SYNTHETIC_AND_DOCUMENTARY_ONLY__NO_NATIVE_RUN__NO_INDEPENDENT_C__NO_H1",
+  "before_fix": {
+    "witness_file": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/D3A_HQ_ORIGIN_COMMIT_WITNESS.json",
+    "reproduced_command": "python3 - <<PY ... gate.verify_inventory(obj,\"PACKAGE\",errors); rows[0].origin.commit=\"a\"*40 ... PY",
+    "baseline_errors": [],
+    "forged_errors": [],
+    "forged_accepted": true,
+    "note": "REPRODUCED before the repair: a*40 commit accepted because only shape was checked."
+  },
+  "after_fix": {
+    "genuine": "PASS_ORIGINAL_CONTAINER_BYTES",
+    "fake_commit": "REFUSE",
+    "nonexistent_commit": "REFUSE",
+    "wrong_real_commit": "REFUSE",
+    "wrong_path": "REFUSE",
+    "replacement_bytes_with_self_hashes": "REFUSE",
+    "fake_zip_container": "REFUSE",
+    "no_anchor": "REFUSE",
+    "restoration": "PASS"
+  },
   "input_pins": {
-    "PACKAGE/D3A_INVENTORY_SAMPLE.json": "fae82637f686c81f8934fc457af540e79936f6c345b0cd2302ad1b85ee09fd7d",
+    "PACKAGE/D3A_INVENTORY_SAMPLE.json": "4efdeb62a7fa8eb2dcbca6c4c7970efd0345c513846d8c7a470d119fc56a7ec5",
     "PACKAGE/D3A_SOURCE_SNAPSHOT/K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv": "0dfe6539f1a1f7f028c5968c0e85078cbf5f80a847d0c94ea1929f57d20c052d",
     "PACKAGE/D3A_SOURCE_SNAPSHOT/K3_R15_26_OWNER_DECISIONS.tsv": "6d0766ecc637ee03a705c1772e7bcda39c09c9534f0672cd36a27cfa85e0dfa2",
     "PACKAGE/D3A_SOURCE_SNAPSHOT/K3_P4R_14_OBLIGATION_ROUTES.tsv": "8adf74cfbf2e916f41641f5836ab82305059b59e1665a2e1647dfb6bdeb0e9d3",
     "PACKAGE/D3A_SOURCE_SNAPSHOT/SEAM_25.md": "589379644edbb9f59734d5fe40787683e6836b073a3ba69649cfd5035432c17e",
     "PACKAGE/D3A_SOURCE_SNAPSHOT/SEAM_26.md": "a53c62b3f68a54947a26be2e8878d1f89bff1ad057833ef4f8c80f38ab9fb50c",
     "PACKAGE/D3A_SOURCE_SNAPSHOT/ANVIL_15.md": "0e09bc34235923b7f7b34d272b8e7cddcea0d4e524953f56665843bba6a0c50a",
-    "PACKAGE/tools/r7_integrated.py": "d878a976e13b6ac114ad8830534adeaec1a2284ca853ea7e516e46c093f585c8",
-    "PACKAGE/tools/r7_source_inventory.py": "7b81d9f8975574eeddc97543846ef7eb16266b5f8de12f6769c57bc8ea8c0ecc",
+    "PACKAGE/tools/r7_integrated.py": "a97d8f67b4b1dcf1e701e8160361595bccc5c8c58306146948ae83f607931e6f",
+    "PACKAGE/tools/r7_source_inventory.py": "3ee12821dcec515e89d35b91c51898fd658fbeb3652d116637d23533e5eda03e",
     "PACKAGE/tools/r7_builder.py": "4b0603fa030bf0917701abe3b70a561142b3c2adc834a4355414237850773057",
-    "PACKAGE/tools/test_r7_integrated_d3a.py": "cc827a4c339db65a56a5e0ddca97c5cdeb866ec56b10d1af7c3e1e1429e01d0a",
-    "PACKAGE/tools/test_r7_integrated.py": "79494ddb056e5d3453eb7371e9bef652a42aa6b57cd103736fa62cea6af510c7"
+    "PACKAGE/tools/test_r7_integrated_d3a.py": "ea477c720cb7c79bbc55eae75716bf7b13e7d3ffdcb1fa6ee36e62309f719910",
+    "PACKAGE/tools/test_r7_integrated.py": "b1df5a32ec8036662a5b596e59c984b130f219bd6d0b4b16752f48a352ed4a7c",
+    "PACKAGE/D3A_TERMINAL_ORIGINS.json": "f4894765c4bc4aa7583ede660ee4c67ae009762d3574ba4c586af45f8a55e3bd"
   },
   "runs": [
     {
@@ -26,20 +45,20 @@
       "cwd": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A/WORKER_RETURNS/ANVIL_R7_FLEET/D3A/PACKAGE/tools",
       "return_code": 0,
       "stdout_tail": "",
-      "stderr_tail": "t_reach_an_actor_from_observed_source (test_r7_integrated_d3a.IndependentC.test_graph_must_reach_an_actor_from_observed_source) ... ok\ntest_local_fake_h1_is_red (test_r7_integrated_d3a.IndependentC.test_local_fake_h1_is_red) ... ok\ntest_six_builder_projections_must_match_bytes (test_r7_integrated_d3a.IndependentC.test_six_builder_projections_must_match_bytes) ... ok\ntest_typed_graph_type_authority_time_and_consumer_holes_are_red (test_r7_integrated_d3a.IndependentC.test_typed_graph_type_authority_time_and_consumer_holes_are_red) ... ok\ntest_weakened_boundary_contract_is_red (test_r7_integrated_d3a.IndependentC.test_weakened_boundary_contract_is_red) ... ok\ntest_26_adopted_or_14_closed_in_inventory_is_red (test_r7_integrated_d3a.S1.test_26_adopted_or_14_closed_in_inventory_is_red) ... ok\ntest_legacy_transfer_without_source_origin_is_red (test_r7_integrated_d3a.S1.test_legacy_transfer_without_source_origin_is_red) ... ok\ntest_missing_row_blob_or_B10_is_red (test_r7_integrated_d3a.S1.test_missing_row_blob_or_B10_is_red) ... ok\ntest_source_file_absent_is_red (test_r7_integrated_d3a.S1.test_source_file_absent_is_red) ... ok\ntest_source_only_inventory_passes_at_documentary_grade (test_r7_integrated_d3a.S1.test_source_only_inventory_passes_at_documentary_grade) ... ok\ntest_synthetic_spine_cannot_be_the_origin (test_r7_integrated_d3a.S1.test_synthetic_spine_cannot_be_the_origin) ... ok\n\n----------------------------------------------------------------------\nRan 24 tests in 1.898s\n\nOK\n"
+      "stderr_tail": "ng.test_genuine_original_inventory_passes) ... ok\ntest_no_external_anchor_refuses (test_r7_integrated_d3a.OriginBinding.test_no_external_anchor_refuses) ... ok\ntest_nonexistent_but_wellformed_commit_refuses (test_r7_integrated_d3a.OriginBinding.test_nonexistent_but_wellformed_commit_refuses) ... ok\ntest_real_but_wrong_commit_refuses (test_r7_integrated_d3a.OriginBinding.test_real_but_wrong_commit_refuses) ... ok\ntest_restoration_passes_exactly (test_r7_integrated_d3a.OriginBinding.test_restoration_passes_exactly) ... ok\ntest_wrong_path_refuses_even_with_same_commit (test_r7_integrated_d3a.OriginBinding.test_wrong_path_refuses_even_with_same_commit) ... ok\ntest_26_adopted_or_14_closed_in_inventory_is_red (test_r7_integrated_d3a.S1.test_26_adopted_or_14_closed_in_inventory_is_red) ... ok\ntest_legacy_transfer_without_source_origin_is_red (test_r7_integrated_d3a.S1.test_legacy_transfer_without_source_origin_is_red) ... ok\ntest_missing_row_blob_or_B10_is_red (test_r7_integrated_d3a.S1.test_missing_row_blob_or_B10_is_red) ... ok\ntest_source_file_absent_is_red (test_r7_integrated_d3a.S1.test_source_file_absent_is_red) ... ok\ntest_source_only_inventory_passes_at_documentary_grade (test_r7_integrated_d3a.S1.test_source_only_inventory_passes_at_documentary_grade) ... ok\ntest_synthetic_spine_cannot_be_the_origin (test_r7_integrated_d3a.S1.test_synthetic_spine_cannot_be_the_origin) ... ok\n\n----------------------------------------------------------------------\nRan 33 tests in 62.419s\n\nOK\n"
     },
     {
       "command": "/usr/local/bin/python3 -m unittest test_r7_integrated -v",
       "cwd": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A/WORKER_RETURNS/ANVIL_R7_FLEET/D3A/PACKAGE/tools",
       "return_code": 0,
       "stdout_tail": "",
-      "stderr_tail": "d.Integrated.test_missing_source_not_made_into_unverified_claim) ... ok\ntest_never_promote_historical_proposal (test_r7_integrated.Integrated.test_never_promote_historical_proposal) ... ok\ntest_no_competing_implementations_required (test_r7_integrated.Integrated.test_no_competing_implementations_required) ... ok\ntest_no_fake_source_grants (test_r7_integrated.Integrated.test_no_fake_source_grants) ... ok\ntest_no_future_domain_unnoticed (test_r7_integrated.Integrated.test_no_future_domain_unnoticed) ... ok\ntest_no_historical_118_id_substitution (test_r7_integrated.Integrated.test_no_historical_118_id_substitution) ... ok\ntest_no_paper_independence (test_r7_integrated.Integrated.test_no_paper_independence) ... ok\ntest_obsolete_comparator_stage_fails_closed_as_live_cli (test_r7_integrated.Integrated.test_obsolete_comparator_stage_fails_closed_as_live_cli) ... ok\ntest_old_required_two_architects_is_a_defect (test_r7_integrated.Integrated.test_old_required_two_architects_is_a_defect) ... ok\ntest_optional_duel_requires_same_exact_evidence (test_r7_integrated.Integrated.test_optional_duel_requires_same_exact_evidence) ... ok\ntest_present_obligation_cannot_be_called_future (test_r7_integrated.Integrated.test_present_obligation_cannot_be_called_future) ... ok\ntest_source_pin_is_not_just_a_citation_string (test_r7_integrated.Integrated.test_source_pin_is_not_just_a_citation_string) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 1.102s\n\nOK\n"
+      "stderr_tail": ".Integrated.test_missing_source_not_made_into_unverified_claim) ... ok\ntest_never_promote_historical_proposal (test_r7_integrated.Integrated.test_never_promote_historical_proposal) ... ok\ntest_no_competing_implementations_required (test_r7_integrated.Integrated.test_no_competing_implementations_required) ... ok\ntest_no_fake_source_grants (test_r7_integrated.Integrated.test_no_fake_source_grants) ... ok\ntest_no_future_domain_unnoticed (test_r7_integrated.Integrated.test_no_future_domain_unnoticed) ... ok\ntest_no_historical_118_id_substitution (test_r7_integrated.Integrated.test_no_historical_118_id_substitution) ... ok\ntest_no_paper_independence (test_r7_integrated.Integrated.test_no_paper_independence) ... ok\ntest_obsolete_comparator_stage_fails_closed_as_live_cli (test_r7_integrated.Integrated.test_obsolete_comparator_stage_fails_closed_as_live_cli) ... ok\ntest_old_required_two_architects_is_a_defect (test_r7_integrated.Integrated.test_old_required_two_architects_is_a_defect) ... ok\ntest_optional_duel_requires_same_exact_evidence (test_r7_integrated.Integrated.test_optional_duel_requires_same_exact_evidence) ... ok\ntest_present_obligation_cannot_be_called_future (test_r7_integrated.Integrated.test_present_obligation_cannot_be_called_future) ... ok\ntest_source_pin_is_not_just_a_citation_string (test_r7_integrated.Integrated.test_source_pin_is_not_just_a_citation_string) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 26.506s\n\nOK\n"
     },
     {
-      "command": "/usr/local/bin/python3 r7_source_inventory.py verify ../D3A_INVENTORY_SAMPLE.json --source-root ..",
+      "command": "/usr/local/bin/python3 r7_source_inventory.py verify ../D3A_INVENTORY_SAMPLE.json --source-root .. --git-repo /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A --zip /Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip",
       "cwd": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A/WORKER_RETURNS/ANVIL_R7_FLEET/D3A/PACKAGE/tools",
       "return_code": 0,
-      "stdout_tail": "{\n  \"status\": \"PASS_LOCAL_SOURCE_BYTES_ONLY\",\n  \"errors\": []\n}\n",
+      "stdout_tail": "{\n  \"status\": \"PASS_ORIGINAL_CONTAINER_BYTES\",\n  \"errors\": []\n}\n",
       "stderr_tail": ""
     },
     {
@@ -49,5 +68,10 @@
       "stdout_tail": "{\n  \"status\": \"PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY\",\n  \"commands_checked\": 12,\n  \"exit_codes\": [\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0\n  ],\n  \"record\": \"tests/R7_QUALITY_REPORT.json\",\n  \"scope\": \"RECONSTRUCTED_SYNTHETIC_AND_FORMAT_ONLY__NO_NATIVE_ORIGINAL_SOURCE_100K_FULL_PHYSICAL_RUN__NO_INDEPENDENT_C__NO_PROTECTED_H1\"\n}\n",
       "stderr_tail": ""
     }
-  ]
+  ],
+  "anchors": {
+    "git_repo": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3A",
+    "zip_path": "/Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip",
+    "zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332"
+  }
 }

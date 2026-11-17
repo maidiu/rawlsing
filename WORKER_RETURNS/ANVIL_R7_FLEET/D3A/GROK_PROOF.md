@@ -66,18 +66,27 @@ The verifier re-opens the file, recomputes the Git blob id, recomputes the row h
 
 ## 4. Which essential information from V549/V550/V550J/F26 survives irrespective of old Postgres layout, and which historic bugs do not
 
-**Answer.** The surviving inheritance is *semantic function*, not carrier. Per `29_R7_INTEGRATED_MISSION_AND_GATES.md` §S1, the old DDM functions that remain real obligations are: **country preparation, respondent pivots, branch memoization, shared denominators, true same-person k-way joints, temporal / neutral / signed behaviour, and source-selection behaviour** — "treated as real inheritance, corrected for historic errors."
+**Correction (HQ REVISE):** the first version of this probe cited package *summaries*. This version cites the **original code bodies** read directly from the protected Git object store at `31291d08179890852246c8742700e055168e9933`, under `data/ddm_build_copy/`.
 
-What does **not** survive:
-- the old **Postgres/physical layout** — `01_DECISION_CONSTITUTION.md` "Candidate universe" forbids treating a historical persistent backend as universal semantic owner; `00_RAWLSING_GROUND.md` §12 anti-resurrection wall names "PostgreSQL or another persistent backend as universal semantic owner merely because historical code used it";
-- the **empty V552 contradiction tensor** — `05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md`: "Old V552 contradiction tensor is empty; it is not an F5 implementation";
-- **V549b / V552 / MI as a current oracle** — `22_R6_VALUE_AND_FUNCTION_CONSERVATION.md` line 13: "no old broken V549b/V552/MI as current oracle";
-- the **non-gating V550J FAIL** as a *pass* — it is preserved as a **negative** (`12_ORIGINAL_MANDATE_AND_DECISION_LEVERAGE.md`: "Preserve V550J non-gating FAIL");
-- `V551J` certification conflated with `V552` coverage scoring — these stay separate functions (`12`, same row).
+| Original body | sha256 | Lines | Surviving function (read from code) |
+|---|---|---|---|
+| `data/ddm_build_copy/build_branch_co_signature_summary_v549.py` | `d3171154a3ba0d0dc61218b866e5cd9a0b24cad1203577abd472bac6afee6c3d` | 800 | **Branch-conditioned co-signature.** Docstring lines 2–5: *"Build branch_co_signature_summary from live survey_microdata tables. This V549 builder treats branch membership from V548 recursive trees as the anchor and asks which other attitudinal/opinion items travel with that branch…"* — i.e. the function is *conditional co-travel within a recursively selected branch*, with checkpoints (`CHECKPOINT_DIR = …/branch_co_signature_summary_v549`). |
+| `data/ddm_build_copy/ddm_v550_branching.py` | `059efa0b68d8178dc3ab75328c5491db184dd7ca58d6d937b9886a27a80e99c2` | 466 | **Paired weighted/unweighted measurement.** The indicator schema carries `n_unweighted`, `n_weighted`, `dominant_response_pct_unweighted`, `dominant_response_pct_weighted`, plus `conditional_entropy`, `mutual_information`, `normalized_mutual_information`, `cramers_v`, `uplift_vs_baseline` (`indicator_summary_rows`, weights argument). Weight status is a first-class column, not a silent scalar. |
+| `data/ddm_build_copy/ddm_v550_distributions.py` | `0870b61a72ba5994d93ad34f8aafca5013ac902c2b48d9accd78631e9be0c14b` | 321 | **Typed response-state separation.** `is_missing`, `is_special`, `is_dk`, `is_refusal`, `is_iap`, `is_not_asked`, `is_inapplicable` are computed separately (lines ~168–192) instead of collapsing to `0`; `classify_weight_status(…)` derives weight class rather than assuming one. |
+| `data/ddm_build_copy/build_v550j_prepared_substrate.py` | `4d5ab06754b6bfce486e6c548cec46e5d6abd80bcd4b63a7f5f504be3dff53b6` | 523 | **Prepared shared substrate.** Builds a reusable per-shard response substrate (`weight_value`, `weight_status`, `is_missing` carried explicitly) consumed by the joint-pattern compiler — the "prepared state" function, not a per-query full replay. |
+| `data/ddm_build_copy/compile_v550j_joint_response_patterns.py` | `627f7094a70ad33652fba422536b776d32532b028c84e3fd543a453d25b4687a` | 2515 | **True same-person joint-response patterns.** Emits `joint_response_pattern_index` / `joint_response_pattern_item_index`, versioned `V550J_PRODUCER_COMPILER_VERSION = "v550j_joint_response_patterns_producer_v1"`, gated by `EXECUTABLE_JOINT_REGISTRY_STATUSES`. This is the k≥3 respondent-coherent substrate. |
 
-**Falsifier.** Falsified if the supplied package anywhere asserts that the historical physical schema is a current requirement, or that V550J FAIL is a success. Bounded search: `grep -n "V550J\|V549\|F26"` across the package resolves to the same five documents, all of which state the negative. Status: **not fired**.
+**What survives (semantic function, not carrier):** branch-anchored co-travel; paired weighted/unweighted counts and percentages; explicit response-state typing (missing/DK/refusal/IAP/not-asked/inapplicable); a prepared reusable substrate; and true same-person joint pattern indices. These map one-to-one onto T2's `must_preserve`: *"same-respondent ≥3 true joint and repeated/ranked observations, conditioned risk set, weighted/unweighted denominators, direction of reverse conditional, minority and routing negatives"*.
 
----
+**What does not survive:**
+- the **PostgreSQL/physical layout** — the surviving functions are expressed in pandas/CSV checkpoint form here; `00_RAWLSING_GROUND.md` §12 and `01_DECISION_CONSTITUTION.md` forbid treating the old backend as universal semantic owner;
+- **V549b / V552 / MI as a current oracle** — `22_R6_VALUE_AND_FUNCTION_CONSERVATION.md` line 13: *"no old broken V549b/V552/MI as current oracle"*;
+- the **non-gating V550J FAIL as a pass** — preserved as a **negative** (`12_ORIGINAL_MANDATE…`: *"Preserve V550J non-gating FAIL"*);
+- conflating **V551J certification** with **V552 coverage scoring** — two distinct functions, kept separate.
+
+**Honest residual gap (declared, not papered over).** I could not locate an original body for **F26**. `git ls-tree -r 31291d0` has no `F26` artefact; the token only appears inside content-hash filenames. F26 is therefore cited **only through the K3/original-law reference route** (`12_ORIGINAL_MANDATE…`, `29_R7_GATES.md`) and **not** from an original code body. This is a genuine source gap for that single item; I do **not** claim full readiness on F26, and no new historical recensus was performed.
+
+**Falsifier.** Falsified if any of the five sha256-pinned bodies does not contain the cited semantics, or if an F26 original body exists at the protected cut. Check: `git show 31291d0:data/ddm_build_copy/<file> | shasum -a 256` reproduces each hash above. Status: **the five bodies verify; the F26 gap stands as a declared hole.**
 
 ## 5. Why matching survey marginals can conceal different true three-way respondent patterns; distinct F2 denominators and typed missing/routing
 

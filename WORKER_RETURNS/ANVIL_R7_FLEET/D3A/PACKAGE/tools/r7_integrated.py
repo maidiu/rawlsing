@@ -9,7 +9,7 @@ not authenticate source rights, independent reviews, runner results, or HQ.
 from __future__ import annotations
 import argparse, hashlib, json, pathlib, re, sys
 from anvil import REQUIRED
-from r7_source_inventory import verify_inventory, row_hash_map
+from r7_source_inventory import verify_inventory, row_hash_map, Anchors as SourceAnchors
 
 SCHEMA='ANVIL_R7_INTEGRATED'
 HEX40=re.compile(r'^[a-f0-9]{40}$')
@@ -55,7 +55,7 @@ def source_ref(item,root,errors,code):
     body=p.read_bytes()
     if sha(body)!=wanted or quote.encode() not in body:errors.append(code+':SOURCE_HASH_OR_QUOTE_DISAGREES')
 
-def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=True):
+def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=True,anchors=None):
     """S1 conservation origin.  A bare R5/R6 SPINE is NOT accepted as origin.
 
     Two lawful origins exist:
@@ -69,7 +69,7 @@ def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=
         errors.append('HISTORY:NOT_OBJECT');return
     schema=obj.get('schema')
     if schema=='ANVIL_SOURCE_QUALIFIED_INVENTORY':
-        verify_inventory(obj,source_root or '',errors,'HISTORY')
+        verify_inventory(obj,source_root or '',errors,'HISTORY',anchors=anchors)
         return
     if schema in ('ANVIL_SPINE_R5','ANVIL_SPINE_R6'):
         errors.append('HISTORY:NOT_SOURCE_QUALIFIED_INVENTORY');return
@@ -100,7 +100,7 @@ def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=
     if inv is None:
         errors.append('HISTORY:LEGACY_TRANSFER_WITHOUT_SOURCE_QUALIFIED_ORIGIN')
     else:
-        verify_inventory(inv,source_root or '',errors,'HISTORY:ORIGIN')
+        verify_inventory(inv,source_root or '',errors,'HISTORY:ORIGIN',anchors=anchors)
         imap={r.get('id'):r for r in inv.get('rows',[]) if isinstance(r,dict)}
         for group,ids in REQUIRED.items():
             for rid in ids:
@@ -109,7 +109,7 @@ def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=
                     if isinstance(a,dict) and isinstance(b,dict) and a.get(key)!=b.get(key):
                         errors.append('HISTORY:TRANSFER_NOT_VERBATIM_TO_SOURCE:'+rid+':'+key)
 
-def check_frame(frame,evidence_root,source_root):
+def check_frame(frame,evidence_root,source_root,anchors=None):
     e=[]
     if not isinstance(frame,dict) or frame.get('schema')!=SCHEMA or frame.get('stage')!='COMMON_FRAME':
         return {'status':'RED','errors':['FRAME:BAD_SCHEMA']}
@@ -142,7 +142,7 @@ def check_frame(frame,evidence_root,source_root):
         if domain not in have:e.append('FRAME:WHOLE_MISSION_DOMAIN_MISSING:'+domain)
     history=load(evidence_root,frame.get('historical_conservation'),e,'FRAME:HISTORY')
     if history is not None:
-        check_history(history,e,evidence_root,source_root)
+        check_history(history,e,evidence_root,source_root,anchors=anchors)
         spine=frame.get('historical_source_spine')
         if spine is not None:
             original=load(evidence_root,spine,e,'FRAME:SOURCE_SPINE')
@@ -234,13 +234,13 @@ def check_identity_crosswalk(decision,frame,history,identity_map,errors):
     return len(rows)
 
 
-def check_decision(decision,evidence_root,source_root):
+def check_decision(decision,evidence_root,source_root,anchors=None):
     e=[]
     if not isinstance(decision,dict) or decision.get('schema')!=SCHEMA or decision.get('stage')!='INTEGRATED_DECISION':
         return {'status':'RED','errors':['DECISION:BAD_SCHEMA']}
     frame=load(evidence_root,decision.get('common_frame'),e,'DECISION:FRAME')
     if frame is None:return {'status':'RED','errors':sorted(set(e))}
-    fr=check_frame(frame,evidence_root,source_root)
+    fr=check_frame(frame,evidence_root,source_root,anchors)
     if fr['status']=='RED':e.extend('DECISION:INVALID_FRAME:'+v for v in fr['errors'])
     frozen_sha=digest(frame)
     if decision.get('frame_sha256')!=frozen_sha:e.append('DECISION:FRAME_NOT_FROZEN')
@@ -428,13 +428,13 @@ def check_projections(packet,evidence_root,errors):
         if sha(p.read_bytes())!=want:errors.append('C:PROJECTION_BYTES_CHANGED:'+name)
 
 
-def check_C(packet,evidence_root,source_root):
+def check_C(packet,evidence_root,source_root,anchors=None):
     e=[]
     if not isinstance(packet,dict) or packet.get('schema')!=SCHEMA or packet.get('stage')!='INDEPENDENT_C':
         return {'status':'RED','errors':['C:BAD_SCHEMA']}
     decision=load(evidence_root,packet.get('integrated_decision'),e,'C:DECISION')
     if decision is not None:
-        verdict=check_decision(decision,evidence_root,source_root)
+        verdict=check_decision(decision,evidence_root,source_root,anchors)
         if verdict['status']=='RED':e.extend('C:DEFECTIVE_DECISION:'+x for x in verdict['errors'])
         if packet.get('integrated_decision_sha256')!=digest(decision):e.append('C:DECISION_NOT_PINNED')
         if packet.get('first_consumer')!=decision.get('first_real_consumer'):
@@ -465,18 +465,22 @@ def check_C(packet,evidence_root,source_root):
     if packet.get('claims_protected_h1') is not False:e.append('C:FALSE_PROTECTED_H1')
     return {'status':'RED' if e else 'PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED','errors':sorted(set(e))}
 
-def check(stage,packet,evidence_root,source_root=None):
-    if stage=='FRAME':return check_frame(packet,evidence_root,source_root)
-    if stage=='DECISION':return check_decision(packet,evidence_root,source_root)
-    if stage=='C_INTEGRATED':return check_C(packet,evidence_root,source_root)
+def check(stage,packet,evidence_root,source_root=None,anchors=None):
+    if stage=='FRAME':return check_frame(packet,evidence_root,source_root,anchors)
+    if stage=='DECISION':return check_decision(packet,evidence_root,source_root,anchors)
+    if stage=='C_INTEGRATED':return check_C(packet,evidence_root,source_root,anchors)
     return {'status':'RED','errors':['ACTIVE_STAGE_UNKNOWN']}
 
 def main():
     ap=argparse.ArgumentParser(description='Active ANVIL integral workflow, NOT autonomous accreditation')
     ap.add_argument('stage',choices=['FRAME','DECISION','C_INTEGRATED'])
     ap.add_argument('packet');ap.add_argument('--evidence-root',required=True);ap.add_argument('--source-root',required=True)
+    ap.add_argument('--git-repo');ap.add_argument('--zip');ap.add_argument('--zip-sha256');ap.add_argument('--commits')
     arg=ap.parse_args()
-    try:out=check(arg.stage,json.loads(pathlib.Path(arg.packet).read_text()),arg.evidence_root,arg.source_root)
+    from r7_source_inventory import Anchors
+    anchors=Anchors(git_repo=arg.git_repo,zip_path=arg.zip,zip_sha256=arg.zip_sha256,
+                    commits=json.loads(arg.commits) if arg.commits else None) if (arg.git_repo or arg.zip) else None
+    try:out=check(arg.stage,json.loads(pathlib.Path(arg.packet).read_text()),arg.evidence_root,arg.source_root,anchors)
     except (OSError,ValueError,TypeError,KeyError) as exc:out={'status':'RED','errors':['UNHANDLED_MALFORMED_PACKET:'+repr(exc)]}
     print(json.dumps(out,indent=2));return 2 if out['status']=='RED' else 0
 if __name__=='__main__':sys.exit(main())

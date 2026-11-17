@@ -22,7 +22,7 @@ Binary files a/tools and b/tools differ
 diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/d3a_fixture.py PACKAGE/tools/d3a_fixture.py
 --- a/tools
 +++ b/tools
-@@ -0,0 +1,149 @@
+@@ -0,0 +1,160 @@
 +#!/usr/bin/env python3
 +"""Deterministic fixtures for the D3A active-gate tests.
 +
@@ -37,6 +37,17 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +
 +ROOT=pathlib.Path(__file__).resolve().parents[1]
 +INVENTORY=ROOT/'D3A_INVENTORY_SAMPLE.json'
++import os
++GIT_REPO=ROOT.parents[3]
++DEFAULT_ZIP='/Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip'
++ZIP_PATH=os.environ.get('D3A_ORIGINAL_ZIP',DEFAULT_ZIP)
++ZIP_SHA256='526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332'
++COMMITS=['31291d08179890852246c8742700e055168e9933','596f1230258ff50f98d8543dec42a80e696720f4',
++         '796452b8cb788fa5a02f37a7ce86eafce8312dfe','3cc09bba3d0e26c226da0ddca4b64c43dd74e493']
++
++def anchors():
++    from r7_source_inventory import Anchors
++    return Anchors(git_repo=GIT_REPO,zip_path=ZIP_PATH,zip_sha256=ZIP_SHA256,commits=COMMITS)
 +COURT=json.loads((ROOT/'02_BOUNDARY_CONTRACTS.json').read_text())
 +
 +
@@ -311,7 +322,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
  from __future__ import annotations
  import argparse, hashlib, json, pathlib, re, sys
  from anvil import REQUIRED
-+from r7_source_inventory import verify_inventory, row_hash_map
++from r7_source_inventory import verify_inventory, row_hash_map, Anchors as SourceAnchors
  
  SCHEMA='ANVIL_R7_INTEGRATED'
  HEX40=re.compile(r'^[a-f0-9]{40}$')
@@ -321,7 +332,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
  
 -def check_history(obj,errors):
 -    if not isinstance(obj,dict) or obj.get('schema')!='ANVIL_R7_INHERITED_CONSERVATION':
-+def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=True):
++def check_history(obj,errors,evidence_root=None,source_root=None,require_origin=True,anchors=None):
 +    """S1 conservation origin.  A bare R5/R6 SPINE is NOT accepted as origin.
 +
 +    Two lawful origins exist:
@@ -335,7 +346,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +        errors.append('HISTORY:NOT_OBJECT');return
 +    schema=obj.get('schema')
 +    if schema=='ANVIL_SOURCE_QUALIFIED_INVENTORY':
-+        verify_inventory(obj,source_root or '',errors,'HISTORY')
++        verify_inventory(obj,source_root or '',errors,'HISTORY',anchors=anchors)
 +        return
 +    if schema in ('ANVIL_SPINE_R5','ANVIL_SPINE_R6'):
 +        errors.append('HISTORY:NOT_SOURCE_QUALIFIED_INVENTORY');return
@@ -343,7 +354,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
          errors.append('HISTORY:WRONG_SCHEMA');return
      coverage=obj.get('coverage',{})
      if not isinstance(coverage,dict) or set(coverage)!=set(REQUIRED):
-@@ -77,6 +95,19 @@
+@@ -77,8 +95,21 @@
                  errors.append('HISTORY:FALSE_PROOF_CLOSURE:'+rid)
      if count!=sum(map(len,REQUIRED.values())):errors.append('HISTORY:COUNT_DRIFT')
      if obj.get('source_authentication')!='NOT_AUTHENTICATED_BY_LOCAL_CHECK':errors.append('HISTORY:FALSE_SOURCE_AUTHENTICATION')
@@ -352,7 +363,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    if inv is None:
 +        errors.append('HISTORY:LEGACY_TRANSFER_WITHOUT_SOURCE_QUALIFIED_ORIGIN')
 +    else:
-+        verify_inventory(inv,source_root or '',errors,'HISTORY:ORIGIN')
++        verify_inventory(inv,source_root or '',errors,'HISTORY:ORIGIN',anchors=anchors)
 +        imap={r.get('id'):r for r in inv.get('rows',[]) if isinstance(r,dict)}
 +        for group,ids in REQUIRED.items():
 +            for rid in ids:
@@ -361,8 +372,11 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +                    if isinstance(a,dict) and isinstance(b,dict) and a.get(key)!=b.get(key):
 +                        errors.append('HISTORY:TRANSFER_NOT_VERBATIM_TO_SOURCE:'+rid+':'+key)
  
- def check_frame(frame,evidence_root,source_root):
+-def check_frame(frame,evidence_root,source_root):
++def check_frame(frame,evidence_root,source_root,anchors=None):
      e=[]
+     if not isinstance(frame,dict) or frame.get('schema')!=SCHEMA or frame.get('stage')!='COMMON_FRAME':
+         return {'status':'RED','errors':['FRAME:BAD_SCHEMA']}
 @@ -111,15 +142,20 @@
          if domain not in have:e.append('FRAME:WHOLE_MISSION_DOMAIN_MISSING:'+domain)
      history=load(evidence_root,frame.get('historical_conservation'),e,'FRAME:HISTORY')
@@ -376,7 +390,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 -                e.append('FRAME:HISTORICAL_TRANSFER_NOT_BYTE_EQUIVALENT_TO_SOURCE_COVERAGE')
 -            if history.get('source_spine_sha256')!=frame['historical_source_spine'].get('sha256'):
 -                e.append('FRAME:HISTORICAL_TRANSFER_NOT_PINNED_TO_ORIGINAL_SPINE')
-+        check_history(history,e,evidence_root,source_root)
++        check_history(history,e,evidence_root,source_root,anchors=anchors)
 +        spine=frame.get('historical_source_spine')
 +        if spine is not None:
 +            original=load(evidence_root,spine,e,'FRAME:SOURCE_SPINE')
@@ -393,10 +407,11 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
      if frame.get('duel_required') is not False:e.append('FRAME:UNNECESSARY_DUEL_REQUIRED')
      return {'status':'RED' if e else 'PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED','errors':sorted(set(e)),
              'requirements':len(rows),'domains':len(have&set(DOMAINS))}
-@@ -140,6 +176,64 @@
+@@ -140,16 +176,85 @@
      if not good(duel.get('integrated_adjudication'),50):errors.append('DECISION:DUEL_NOT_INTEGRATED')
      if duel.get('independence_proven_by_local_check') is not False:errors.append('DECISION:DUEL_SELF_CERTIFIES_INDEPENDENCE')
  
+-def check_decision(decision,evidence_root,source_root):
 +STOP=set('the and for with from that this must shall into their there which where when only also each such than then they them these those have has been being will would could should about under over more most less least same different other another not non no yes can may need needs needed used using case cases given provide provided require required requirement specific exactly identity identities source sources evidence'.split())
 +
 +def _tokens(text):
@@ -455,10 +470,14 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    return len(rows)
 +
 +
- def check_decision(decision,evidence_root,source_root):
++def check_decision(decision,evidence_root,source_root,anchors=None):
      e=[]
      if not isinstance(decision,dict) or decision.get('schema')!=SCHEMA or decision.get('stage')!='INTEGRATED_DECISION':
-@@ -150,6 +244,17 @@
+         return {'status':'RED','errors':['DECISION:BAD_SCHEMA']}
+     frame=load(evidence_root,decision.get('common_frame'),e,'DECISION:FRAME')
+     if frame is None:return {'status':'RED','errors':sorted(set(e))}
+-    fr=check_frame(frame,evidence_root,source_root)
++    fr=check_frame(frame,evidence_root,source_root,anchors)
      if fr['status']=='RED':e.extend('DECISION:INVALID_FRAME:'+v for v in fr['errors'])
      frozen_sha=digest(frame)
      if decision.get('frame_sha256')!=frozen_sha:e.append('DECISION:FRAME_NOT_FROZEN')
@@ -476,10 +495,11 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
      if decision.get('first_real_consumer')!=frame.get('first_real_consumer'):e.append('DECISION:FIRST_CONSUMER_DRIFT')
      if decision.get('decision_process')!='ONE_SYNTHESIS_NO_MANDATORY_RIVAL':e.append('DECISION:WRONG_PROCESS')
      if decision.get('basis') not in ('ANALYTICAL_SOURCE_GROUNDED','EXECUTED_EXISTING_CODE','BOUNDED_DISCRIMINATOR','TARGETED_DUEL'):
-@@ -208,6 +313,121 @@
+@@ -208,13 +313,128 @@
      return {'status':'RED' if e else 'PASS_LOCAL_INTEGRATED_DECISION_PENDING_C','errors':sorted(set(e)),
              'covered':len(covers),'requirement_total':len(rids)}
  
+-def check_C(packet,evidence_root,source_root):
 +AUTHORITIES={'EXTERNAL_OBSERVED','OBSERVED','DESCRIPTIVE_MODELED','STRUCTURAL_QUALIFIED','FICTIONAL_WORLD','ACTOR_STATE','HISTORY_EVENT','RIGHTS_METADATA'}
 +FORBIDDEN_UPGRADES={('DESCRIPTIVE_MODELED','STRUCTURAL_QUALIFIED'),('DESCRIPTIVE_MODELED','OBSERVED'),
 +                    ('FICTIONAL_WORLD','OBSERVED'),('ACTOR_STATE','OBSERVED'),('FICTIONAL_WORLD','STRUCTURAL_QUALIFIED'),
@@ -595,10 +615,18 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +        if sha(p.read_bytes())!=want:errors.append('C:PROJECTION_BYTES_CHANGED:'+name)
 +
 +
- def check_C(packet,evidence_root,source_root):
++def check_C(packet,evidence_root,source_root,anchors=None):
      e=[]
      if not isinstance(packet,dict) or packet.get('schema')!=SCHEMA or packet.get('stage')!='INDEPENDENT_C':
-@@ -239,6 +459,10 @@
+         return {'status':'RED','errors':['C:BAD_SCHEMA']}
+     decision=load(evidence_root,packet.get('integrated_decision'),e,'C:DECISION')
+     if decision is not None:
+-        verdict=check_decision(decision,evidence_root,source_root)
++        verdict=check_decision(decision,evidence_root,source_root,anchors)
+         if verdict['status']=='RED':e.extend('C:DEFECTIVE_DECISION:'+x for x in verdict['errors'])
+         if packet.get('integrated_decision_sha256')!=digest(decision):e.append('C:DECISION_NOT_PINNED')
+         if packet.get('first_consumer')!=decision.get('first_real_consumer'):
+@@ -239,20 +459,28 @@
          e.append('C:FALSE_C_GRADE')
      if packet.get('original_source_granted_by_local_check') is not False or packet.get('owner_granted_by_local_check') is not False:
          e.append('C:FALSE_AUTHORITY')
@@ -608,28 +636,58 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    if packet.get('claims_protected_h1') is not False:e.append('C:FALSE_PROTECTED_H1')
      return {'status':'RED' if e else 'PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED','errors':sorted(set(e))}
  
- def check(stage,packet,evidence_root,source_root=None):
+-def check(stage,packet,evidence_root,source_root=None):
+-    if stage=='FRAME':return check_frame(packet,evidence_root,source_root)
+-    if stage=='DECISION':return check_decision(packet,evidence_root,source_root)
+-    if stage=='C_INTEGRATED':return check_C(packet,evidence_root,source_root)
++def check(stage,packet,evidence_root,source_root=None,anchors=None):
++    if stage=='FRAME':return check_frame(packet,evidence_root,source_root,anchors)
++    if stage=='DECISION':return check_decision(packet,evidence_root,source_root,anchors)
++    if stage=='C_INTEGRATED':return check_C(packet,evidence_root,source_root,anchors)
+     return {'status':'RED','errors':['ACTIVE_STAGE_UNKNOWN']}
+ 
+ def main():
+     ap=argparse.ArgumentParser(description='Active ANVIL integral workflow, NOT autonomous accreditation')
+     ap.add_argument('stage',choices=['FRAME','DECISION','C_INTEGRATED'])
+     ap.add_argument('packet');ap.add_argument('--evidence-root',required=True);ap.add_argument('--source-root',required=True)
++    ap.add_argument('--git-repo');ap.add_argument('--zip');ap.add_argument('--zip-sha256');ap.add_argument('--commits')
+     arg=ap.parse_args()
+-    try:out=check(arg.stage,json.loads(pathlib.Path(arg.packet).read_text()),arg.evidence_root,arg.source_root)
++    from r7_source_inventory import Anchors
++    anchors=Anchors(git_repo=arg.git_repo,zip_path=arg.zip,zip_sha256=arg.zip_sha256,
++                    commits=json.loads(arg.commits) if arg.commits else None) if (arg.git_repo or arg.zip) else None
++    try:out=check(arg.stage,json.loads(pathlib.Path(arg.packet).read_text()),arg.evidence_root,arg.source_root,anchors)
+     except (OSError,ValueError,TypeError,KeyError) as exc:out={'status':'RED','errors':['UNHANDLED_MALFORMED_PACKET:'+repr(exc)]}
+     print(json.dumps(out,indent=2));return 2 if out['status']=='RED' else 0
+ if __name__=='__main__':sys.exit(main())
 diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/r7_source_inventory.py PACKAGE/tools/r7_source_inventory.py
 --- a/tools
 +++ b/tools
-@@ -0,0 +1,337 @@
+@@ -0,0 +1,404 @@
 +#!/usr/bin/env python3
 +"""Source-qualified 118 identity inventory for ANVIL S1.
 +
-+This module replaces the *circular* S1 dependency on a finished R5/R6 P2
-+SPINE with a source-origin inventory whose every row is byte-located in an
-+immutable source object (Git commit + blob + exact row bytes).
++Replaces the *circular* S1 dependency on a finished R5/R6 P2 SPINE with a
++source-origin inventory whose every row is located inside an **independently
++pinned container**:
 +
-+It authenticates BYTES and LOCATION.  It does NOT authenticate semantics,
-+science, owner rights, native execution or protected receiving.
++  * GIT — resolved by `git rev-parse <commit>:<path>` in a real repository, so
++    the blob id and bytes come from the object store, never from the caller's
++    working copy; or
++  * ZIP — read from the exact original archive whose sha256 is checked.
++
++A caller-created file with matching self-hashes is NOT source evidence.  With
++no external anchor the gate refuses; it never degrades to a local shape PASS.
++
++It authenticates SOURCE LOCATION AND BYTES.  It does NOT authenticate
++semantics, science, owner rights, native execution or protected receiving.
 +"""
 +from __future__ import annotations
-+import argparse, hashlib, json, pathlib, re, sys
++import argparse, hashlib, json, pathlib, re, subprocess, sys, zipfile
 +
 +SCHEMA='ANVIL_SOURCE_QUALIFIED_INVENTORY'
-+CUSTODY_SCHEMA='ANVIL_D3A_SOURCE_CUSTODY'
 +GRADE='SOURCE_QUALIFIED_DOCUMENTARY_NOT_SCIENCE'
-+AUTH='BYTE_VERIFIED_AGAINST_SUPPLIED_SOURCE_ROOT_BY_LOCAL_CHECK'
++AUTH='BYTE_VERIFIED_IN_ORIGINAL_GIT_OBJECT_STORE_OR_ORIGINAL_ZIP'
 +HEX40=re.compile(r'^[a-f0-9]{40}$')
 +HEX64=re.compile(r'^[a-f0-9]{64}$')
 +INVALID=('todo','tbd','placeholder','to be determined','see above','n/a','not applicable')
@@ -638,92 +696,153 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +ORIGIN_KINDS=('K3_TSV_ROW','DOC_ROW','JSON_MEMBER','TERMINAL_TABLE')
 +ZIP_SHA='526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332'
 +
++K3ROOT='PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/'
++# logical source -> authoritative container locator
++SOURCE_INDEX={
++ 'K3_29':{'container':'GIT','commit':'31291d08179890852246c8742700e055168e9933','path':K3ROOT+'K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv','snapshot':'K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv'},
++ 'K3_26':{'container':'GIT','commit':'31291d08179890852246c8742700e055168e9933','path':K3ROOT+'K3_R15_26_OWNER_DECISIONS.tsv','snapshot':'K3_R15_26_OWNER_DECISIONS.tsv'},
++ 'K3_14':{'container':'GIT','commit':'31291d08179890852246c8742700e055168e9933','path':K3ROOT+'K3_P4R_14_OBLIGATION_ROUTES.tsv','snapshot':'K3_P4R_14_OBLIGATION_ROUTES.tsv'},
++ 'SEAM25':{'container':'GIT','commit':'596f1230258ff50f98d8543dec42a80e696720f4','path':'SEAM/25_RETURN_TO_BOUNDARY_TRANSFORMATIONS_AND_OPEN_REGISTER_R1.md','snapshot':'SEAM_25.md'},
++ 'SEAM26':{'container':'GIT','commit':'796452b8cb788fa5a02f37a7ce86eafce8312dfe','path':'SEAM/26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md','snapshot':'SEAM_26.md'},
++ 'ANVIL15':{'container':'GIT','commit':'3cc09bba3d0e26c226da0ddca4b64c43dd74e493','path':'PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/15_SEAM_REVERSE_CONSUMER_SOCIAL_FIELD_AND_C11_DESIGN_IMPLICATIONS_R1.md','snapshot':'ANVIL_15.md'},
++ 'HIST05':{'container':'GIT','commit':'31291d08179890852246c8742700e055168e9933','path':'PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md','snapshot':'05_HISTORICAL_SUCCESSION.md'},
++ 'ZIP02':{'container':'ZIP','member':'ANVIL_R7/02_BOUNDARY_CONTRACTS.json'},
++ 'ZIP03':{'container':'ZIP','member':'ANVIL_R7/03_FROZEN_SOURCE_CUTS.json'},
++ 'ZIP12':{'container':'ZIP','member':'ANVIL_R7/12_ORIGINAL_MANDATE_AND_DECISION_LEVERAGE.md'},
++ 'ZIP29':{'container':'ZIP','member':'ANVIL_R7/29_R7_INTEGRATED_MISSION_AND_GATES.md'},
++}
++
 +
 +def good(x,n=12):
 +    return isinstance(x,str) and len(x.strip())>=n and not any(x.strip().lower()==s for s in INVALID)
 +
 +def sha(b):return hashlib.sha256(b).hexdigest()
-+
 +def git_blob(b):return hashlib.sha1(b'blob %d\0'%len(b)+b).hexdigest()
-+
 +def canon(x):
 +    return hashlib.sha256(json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode()).hexdigest()
-+
 +def line_sha(line):return hashlib.sha256(line.encode() if isinstance(line,str) else line).hexdigest()
++def _tokens_local(text):return {t for t in re.findall(r'[a-z0-9_]{4,}',(text or '').lower())}
 +
 +
-+# ---------------------------------------------------------------- source access
-+class SourceRoot:
-+    """Read-only view of a materialized exact-byte source snapshot."""
-+    def __init__(self,root):
-+        self.root=pathlib.Path(root).resolve()
-+        self._cache={}
-+    def bytes(self,rel):
-+        if rel not in self._cache:
-+            p=(self.root/rel).resolve()
-+            if not p.is_relative_to(self.root) or not p.is_file() or p.is_symlink():
-+                raise FileNotFoundError(rel)
-+            self._cache[rel]=p.read_bytes()
-+        return self._cache[rel]
-+    def text(self,rel):
-+        return self.bytes(rel).decode('utf-8')
++# ---------------------------------------------------------------- anchors
++class Anchors:
++    """External, independently pinned containers.  No anchor => refuse."""
++    def __init__(self,git_repo=None,zip_path=None,zip_sha256=None,commits=None):
++        self.git_repo=pathlib.Path(git_repo).resolve() if git_repo else None
++        self.zip_path=pathlib.Path(zip_path).resolve() if zip_path else None
++        self.zip_sha256=zip_sha256
++        self.commits=set(commits) if commits else None
++        self._zip_cache=None;self._zip_sha=None;self._blob={};self._resolve={}
++    def git(self,*args):
++        return subprocess.run(['git','-C',str(self.git_repo),*args],capture_output=True)
++    def zipfile(self):
++        if self._zip_cache is None:
++            self._zip_cache=zipfile.ZipFile(self.zip_path)
++        return self._zip_cache
 +
 +
-+def verify_origin(origin,src,errors,code):
-+    """Byte-locate one identity's declared origin.  Returns the recomputed row hash."""
-+    if not isinstance(origin,dict):
-+        errors.append(code+':NO_ORIGIN');return None
-+    kind=origin.get('kind');rel=origin.get('path');commit=origin.get('commit');zsha=origin.get('zip_sha256')
-+    blob=origin.get('git_blob');fsha=origin.get('file_sha256');rsha=origin.get('row_sha256')
-+    if kind not in ORIGIN_KINDS:errors.append(code+':BAD_ORIGIN_KIND');return None
-+    if not isinstance(rel,str) or not rel or rel.startswith('/') or '\\' in rel or '..' in pathlib.PurePosixPath(rel).parts:
-+        errors.append(code+':UNSAFE_ORIGIN_PATH');return None
-+    if commit is not None:
++def container_bytes(origin,anchors,errors,code):
++    """Authoritative bytes from the pinned container, or None."""
++    if anchors is None:
++        errors.append(code+':NO_EXTERNAL_TRUST_ANCHOR');return None
++    container=origin.get('container')
++    if container=='GIT':
++        commit=origin.get('commit');rel=origin.get('path');blob=origin.get('git_blob')
 +        if not isinstance(commit,str) or not HEX40.fullmatch(commit):errors.append(code+':UNPINNED_ORIGIN_COMMIT');return None
-+    elif zsha is not None:
++        if not isinstance(rel,str) or not rel or rel.startswith('/') or '\\' in rel or '..' in pathlib.PurePosixPath(rel).parts:
++            errors.append(code+':UNSAFE_ORIGIN_PATH');return None
++        if not isinstance(blob,str) or not HEX40.fullmatch(blob):errors.append(code+':UNPINNED_ORIGIN_BLOB');return None
++        if anchors.git_repo is None or not (anchors.git_repo/'.git').exists():
++            errors.append(code+':NO_GIT_ANCHOR');return None
++        if anchors.commits is not None and commit not in anchors.commits:
++            errors.append(code+':ORIGIN_COMMIT_OUTSIDE_PINNED_CUTS');return None
++        r=anchors.git('rev-parse','--verify','--quiet',commit+'^{commit}')
++        if r.returncode!=0 or r.stdout.decode().strip()!=commit:
++            errors.append(code+':ORIGIN_COMMIT_NOT_IN_REPOSITORY');return None
++        key=(commit,rel)
++        if key in anchors._resolve:
++            actual=anchors._resolve[key]
++            if actual is None:errors.append(code+':ORIGIN_PATH_NOT_IN_COMMIT');return None
++        else:
++            r=anchors.git('rev-parse','--verify','--quiet',commit+':'+rel)
++            actual=r.stdout.decode().strip() if r.returncode==0 else None
++            anchors._resolve[key]=actual
++            if actual is None:errors.append(code+':ORIGIN_PATH_NOT_IN_COMMIT');return None
++        if actual!=blob:errors.append(code+':ORIGIN_PATH_BLOB_MISMATCH');return None
++        if blob in anchors._blob:data=anchors._blob[blob]
++        else:
++            r=anchors.git('cat-file','blob',blob)
++            if r.returncode!=0:errors.append(code+':ORIGIN_BLOB_UNREADABLE');return None
++            data=r.stdout;anchors._blob[blob]=data
++        if sha(data)!=origin.get('file_sha256'):errors.append(code+':ORIGIN_FILE_SHA_MISMATCH');return None
++        return data
++    if container=='ZIP':
++        member=origin.get('member');zsha=origin.get('zip_sha256');msha=origin.get('member_sha256')
++        if not isinstance(member,str) or not member or member.startswith('/') or '..' in member.split('/'):
++            errors.append(code+':UNSAFE_ZIP_MEMBER');return None
 +        if not isinstance(zsha,str) or not HEX64.fullmatch(zsha):errors.append(code+':UNPINNED_ORIGIN_ZIP');return None
-+    else:
-+        errors.append(code+':UNPINNED_ORIGIN_CONTAINER');return None
-+    if not isinstance(blob,str) or not HEX40.fullmatch(blob):errors.append(code+':UNPINNED_ORIGIN_BLOB');return None
-+    if not isinstance(fsha,str) or not HEX64.fullmatch(fsha):errors.append(code+':UNPINNED_FILE_SHA');return None
-+    if not isinstance(rsha,str) or not HEX64.fullmatch(rsha):errors.append(code+':UNPINNED_ROW_SHA');return None
-+    try:data=src.bytes(rel)
-+    except (FileNotFoundError,OSError):errors.append(code+':SOURCE_FILE_ABSENT');return None
-+    if sha(data)!=fsha:errors.append(code+':SOURCE_FILE_BYTES_CHANGED');return None
-+    if git_blob(data)!=blob:errors.append(code+':GIT_BLOB_ID_DISAGREES');return None
++        if anchors.zip_path is None or not anchors.zip_path.is_file():
++            errors.append(code+':NO_ZIP_ANCHOR');return None
++        if anchors._zip_sha is None:anchors._zip_sha=sha(anchors.zip_path.read_bytes())
++        actual=anchors._zip_sha
++        if actual!=zsha:errors.append(code+':ZIP_CONTAINER_SHA_MISMATCH');return None
++        if anchors.zip_sha256 and actual!=anchors.zip_sha256:
++            errors.append(code+':ZIP_ANCHOR_SHA_MISMATCH');return None
++        try:data=anchors.zipfile().read(member)
++        except (KeyError,zipfile.BadZipFile):errors.append(code+':ZIP_MEMBER_ABSENT');return None
++        if not isinstance(msha,str) or sha(data)!=msha:errors.append(code+':ZIP_MEMBER_SHA_MISMATCH');return None
++        return data
++    errors.append(code+':BAD_ORIGIN_CONTAINER');return None
++
++
++def extract_row(kind,origin,data,errors,code):
 +    text=data.decode('utf-8',errors='replace')
-+    computed=None;rowtext=''
 +    if kind=='K3_TSV_ROW':
 +        rid=origin.get('row_selector')
 +        if not isinstance(rid,str) or not rid:errors.append(code+':NO_ROW_SELECTOR');return None
 +        for line in text.split('\n'):
-+            if line.split('\t',1)[0]==rid:
-+                computed=line_sha(line);rowtext=line;break
-+        if computed is None:errors.append(code+':ROW_NOT_IN_SOURCE');return None
-+    elif kind=='DOC_ROW':
++            if line.split('\t',1)[0]==rid:return line_sha(line),line
++        errors.append(code+':ROW_NOT_IN_SOURCE');return None
++    if kind=='DOC_ROW':
 +        excerpt=origin.get('exact_excerpt')
 +        if not good(excerpt,20):errors.append(code+':NO_EXACT_EXCERPT');return None
 +        if excerpt not in text:errors.append(code+':EXCERPT_NOT_IN_SOURCE');return None
-+        computed=sha(excerpt.encode());rowtext=excerpt
-+    elif kind=='JSON_MEMBER':
-+        member=origin.get('json_member')
++        return sha(excerpt.encode()),excerpt
++    if kind=='JSON_MEMBER':
 +        try:doc=json.loads(data)
 +        except ValueError:errors.append(code+':SOURCE_NOT_JSON');return None
++        member=origin.get('json_member')
 +        if not isinstance(member,str) or member not in doc:errors.append(code+':JSON_MEMBER_ABSENT');return None
-+        computed=sha(json.dumps(doc[member],sort_keys=True,ensure_ascii=False,separators=(',',':')).encode())
-+        rowtext=json.dumps(doc[member],sort_keys=True,ensure_ascii=False,separators=(',',':'))
-+    elif kind=='TERMINAL_TABLE':
++        t=json.dumps(doc[member],sort_keys=True,ensure_ascii=False,separators=(',',':'))
++        return sha(t.encode()),t
++    if kind=='TERMINAL_TABLE':
 +        rid=origin.get('row_selector');excerpt=origin.get('exact_excerpt')
 +        if not isinstance(rid,str) or not rid or not good(excerpt,12):errors.append(code+':NO_TERMINAL_ROW');return None
 +        if excerpt not in text:errors.append(code+':TERMINAL_EXCERPT_NOT_IN_SOURCE');return None
-+        computed=sha((rid+'\x00'+excerpt).encode());rowtext=excerpt
-+    if computed!=rsha:errors.append(code+':ROW_BYTES_CHANGED');return None
++        return sha((rid+'\x00'+excerpt).encode()),excerpt
++    errors.append(code+':BAD_ORIGIN_KIND');return None
++
++
++def verify_origin(origin,anchors,errors,code):
++    """Resolve one identity in its pinned container.  Returns (row_sha,row_text)."""
++    if not isinstance(origin,dict):
++        errors.append(code+':NO_ORIGIN');return None
++    kind=origin.get('kind')
++    if kind not in ORIGIN_KINDS:errors.append(code+':BAD_ORIGIN_KIND');return None
++    if not isinstance(origin.get('row_sha256'),str) or not HEX64.fullmatch(origin['row_sha256']):
++        errors.append(code+':UNPINNED_ROW_SHA');return None
++    data=container_bytes(origin,anchors,errors,code)
++    if data is None:return None
++    got=extract_row(kind,origin,data,errors,code)
++    if got is None:return None
++    computed,rowtext=got
++    if computed!=origin['row_sha256']:errors.append(code+':ROW_BYTES_CHANGED');return None
 +    return computed,rowtext
 +
 +
 +# ---------------------------------------------------------------- verification
-+def verify_inventory(obj,source_root,errors,code='HISTORY'):
-+    """Full S1 gate for a source-qualified inventory.  Returns True when clean."""
++def verify_inventory(obj,source_root,errors,code='HISTORY',anchors=None):
++    """Full S1 gate.  `anchors` is the ONLY source of truth; `source_root` is a cache."""
 +    if not isinstance(obj,dict) or obj.get('schema')!=SCHEMA:
 +        errors.append(code+':NOT_SOURCE_QUALIFIED_INVENTORY');return False
 +    if obj.get('inventory_grade')!=GRADE:errors.append(code+':FALSE_INVENTORY_GRADE')
@@ -733,7 +852,9 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    from anvil import REQUIRED
 +    rows=obj.get('rows')
 +    if not isinstance(rows,list):errors.append(code+':ROWS_NOT_LIST');return False
-+    src=SourceRoot(source_root)
++    if anchors is None:
++        errors.append(code+':NO_EXTERNAL_TRUST_ANCHOR')
++        return False
 +    seen={};per_group={g:set() for g in GROUPS}
 +    for row in rows:
 +        if not isinstance(row,dict):errors.append(code+':BAD_ROW');continue
@@ -750,7 +871,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +        if g=='P4R' and row.get('closed') is not False:errors.append(ctx+':FALSE_PROOF_CLOSURE')
 +        if g=='PYAT_PC' and row.get('necessity')!='HISTORICAL_NOT_ADOPTED':errors.append(ctx+':WRONG_NOT_ADOPTED_GRADE')
 +        if g=='P4R' and row.get('necessity')!='HISTORICAL_PROOF_HELD':errors.append(ctx+':WRONG_PROOF_HELD_GRADE')
-+        got=verify_origin(row.get('origin'),src,errors,ctx+':ORIGIN')
++        got=verify_origin(row.get('origin'),anchors,errors,ctx+':ORIGIN')
 +        if got and len(_tokens_local(row.get('source_semantics'))&_tokens_local(got[1]))<2:
 +            errors.append(ctx+':SEMANTICS_NOT_GROUNDED_IN_ORIGIN')
 +    for g,ids in REQUIRED.items():
@@ -761,13 +882,8 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    return not any(e.startswith(code) for e in errors)
 +
 +
-+def _tokens_local(text):
-+    return {t for t in re.findall(r'[a-z0-9_]{4,}',(text or '').lower())}
-+
-+
 +def row_hash_map(obj):
 +    return {r['id']:r['origin']['row_sha256'] for r in obj.get('rows',[]) if isinstance(r,dict) and isinstance(r.get('origin'),dict)}
-+
 +
 +def by_group(obj):
 +    out={}
@@ -780,16 +896,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +def _cells(line):
 +    return [c.strip() for c in line.strip().strip('|').split('|')]
 +
-+def _joincells(c,n_tail,n_head=1):
-+    """Rejoin cells when a source table cell itself contains a literal pipe."""
-+    if len(c)<=n_head+n_tail:return c
-+    head=c[:n_head];tail=c[-n_tail:] if n_tail else []
-+    mid=c[n_head:len(c)-n_tail] if n_tail else c[n_head:]
-+    return head+['|'.join(mid)]+tail
-+
-+
-+def _md_rows(text,prefixes):
-+    """Markdown table rows whose first cell starts with one of prefixes."""
++def _md_rows(text):
 +    out={}
 +    for line in text.split('\n'):
 +        if not line.startswith('|'):continue
@@ -804,37 +911,37 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +def _tsv(text):
 +    lines=[l for l in text.split('\n') if l.strip()]
 +    head=lines[0].split('\t')
++    return [dict(zip(head,l.split('\t'))) for l in lines[1:]]
++
++
++def build_from_sources(snapshot_root,terminal_map,source_cut):
++    """Deterministic extraction.  Reads the snapshot (a cache) and emits
++    locators that point ONLY at the authoritative Git commit / ZIP member."""
++    snap=pathlib.Path(snapshot_root)/'D3A_SOURCE_SNAPSHOT'
 +    rows=[]
-+    for l in lines[1:]:
-+        cells=l.split('\t')
-+        rows.append((l,dict(zip(head,cells))))
-+    return head,rows
++    cache={}
++    def raw(key):
++        if key not in cache:
++            if SOURCE_INDEX[key]['container']=='GIT':
++                cache[key]=(snap/SOURCE_INDEX[key]['snapshot']).read_text()
++            else:
++                raise ValueError('build reads GIT sources only')
++        return cache[key]
++    # ZIP-sourced documents are read from the private package copy (cache);
++    # their authority is established later against the real ZIP archive.
++    pkg=pathlib.Path(snapshot_root)
++    def pkgtext(rel):return (pkg/rel).read_text()
 +
-+def build_from_sources(source_root,terminal_map,source_cut):
-+    """Deterministically extract the 118-row inventory from exact source bytes.
-+
-+    Extraction is mechanical: it copies verbatim cells.  It does not judge,
-+    merge, reclassify or add semantic claims.
-+    """
-+    src=SourceRoot(source_root);rows=[]
-+
-+    def file_meta(rel,commit=None,zip_sha256=None):
-+        b=src.bytes(rel)
-+        m={'path':rel,'git_blob':git_blob(b),'file_sha256':sha(b)}
-+        if commit:m['commit']=commit
-+        else:m['commit']=None
-+        if zip_sha256:m['zip_sha256']=zip_sha256
-+        else:m['zip_sha256']=None
-+        return m
-+
-+    K3='D3A_SOURCE_SNAPSHOT/'
-+    K3_COMMIT=source_cut
-+    seam25=file_meta(K3+'SEAM_25.md','596f1230258ff50f98d8543dec42a80e696720f4')
-+    seam26=file_meta(K3+'SEAM_26.md','796452b8cb788fa5a02f37a7ce86eafce8312dfe')
-+    anvil15=file_meta(K3+'ANVIL_15.md','3cc09bba3d0e26c226da0ddca4b64c43dd74e493')
-+    k1=file_meta(K3+'K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv',K3_COMMIT)
-+    r15=file_meta(K3+'K3_R15_26_OWNER_DECISIONS.tsv',K3_COMMIT)
-+    p4r=file_meta(K3+'K3_P4R_14_OBLIGATION_ROUTES.tsv',K3_COMMIT)
++    def origin_for(key,extra=None):
++        spec=dict(SOURCE_INDEX[key])
++        if spec['container']=='GIT':
++            data=raw(key).encode()
++            o={'kind':None,'container':'GIT','commit':spec['commit'],'path':spec['path'],
++               'git_blob':git_blob(data),'file_sha256':sha(data)}
++        else:
++            data=pkgtext(spec['member'].split('ANVIL_R7/',1)[1]).encode() if False else None
++            o=None
++        return o
 +
 +    def add(group,rid,anchor,semantics,consumer,negative,effect,why,nec,evidence,origin,adopted=None,closed=None):
 +        rows.append({'group':group,'id':rid,'necessity':nec,'adopted':adopted,'closed':closed,
@@ -842,91 +949,97 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +                     'negative_meaning':negative,'architecture_effect':effect,'why':why,
 +                     'evidence_ids':evidence,'origin':origin})
 +
-+    def tsv_origin(meta,rid):
-+        return {'kind':'K3_TSV_ROW','path':meta['path'],'commit':meta['commit'],'git_blob':meta['git_blob'],
-+                'file_sha256':meta['file_sha256'],'row_selector':rid,
-+                'row_sha256':line_sha(next(l for l in src.text(meta['path']).split('\n') if l.split('\t',1)[0]==rid))}
++    def git_origin(key,kind,selector=None,**extra):
++        spec=SOURCE_INDEX[key];data=raw(key).encode()
++        o={'kind':kind,'container':'GIT','commit':spec['commit'],'path':spec['path'],
++           'git_blob':git_blob(data),'file_sha256':sha(data)}
++        if selector is not None:o['row_selector']=selector
++        if extra.get('exact_excerpt') is not None:o['exact_excerpt']=extra['exact_excerpt']
++        _e=[];got=extract_row(kind,o,data,_e,'BUILD')
++        if got is None:raise ValueError('cannot locate row while building: '+repr(_e))
++        o['row_sha256']=got[0]
++        return o
 +
-+    _,k1rows=_tsv(src.text(k1['path']))
-+    for raw,r in k1rows:
++    def zip_origin(key,kind,data,selector=None,**extra):
++        spec=SOURCE_INDEX[key]
++        o={'kind':kind,'container':'ZIP','member':spec['member'],'zip_sha256':ZIP_SHA,
++           'member_sha256':sha(data)}
++        if selector is not None:o['row_selector']=selector
++        if extra.get('exact_excerpt') is not None:o['exact_excerpt']=extra['exact_excerpt']
++        _e=[];got=extract_row(kind,o,data,_e,'BUILD')
++        if got is None:raise ValueError('cannot locate row while building: '+repr(_e))
++        o['row_sha256']=got[0]
++        return o
++
++    for r in _tsv(raw('K3_29')):
 +        rid=r['capability_id']
 +        add('K1_CAP',rid,f'K3 TSV row {rid}',r['five_test_source_science_and_cost'] or r['historical_paths'],
 +            r['actual_current_first_reader_or_hold'],r['P2_accepted_falsifier_correction'] or r['new_requirement'],
 +            r['HQ_specification_choice'],r['existing_owner']+' :: '+r['new_requirement'],
-+            'MUST_PRESERVE_NOW',['K3_K1_CAP'],tsv_origin(k1,rid))
++            'MUST_PRESERVE_NOW',['K3_K1_CAP'],git_origin('K3_29','K3_TSV_ROW',rid))
 +
-+    _,r15rows=_tsv(src.text(r15['path']))
-+    for raw,r in r15rows:
++    for r in _tsv(raw('K3_26')):
 +        rid=r['proposal_id']
 +        add('PYAT_PC',rid,f'K3 R15 row {rid} ({r["original_modality"]})',
 +            r['original_topic']+' :: '+r['selected_source_requirement'],r['selected_source_requirement'],
 +            r['negative_or_nonclaim'],r['HQ_five_test_owner_disposition'],
 +            r['native_science_actor_protection']+' :: '+r['intelligence_kind'],
-+            'HISTORICAL_NOT_ADOPTED',['K3_R15'],tsv_origin(r15,rid),adopted=False)
++            'HISTORICAL_NOT_ADOPTED',['K3_R15'],git_origin('K3_26','K3_TSV_ROW',rid),adopted=False)
 +
-+    _,p4rrows=_tsv(src.text(p4r['path']))
-+    for raw,r in p4rrows:
++    for r in _tsv(raw('K3_14')):
 +        rid=r['P4R_id']
 +        add('P4R',rid,f'K3 P4R row {rid} ({r["old_terminal"]})',r['original_unproved_edge'],
 +            r['HQ_route'],r['permission_and_native_ceiling'],r['next_bounded_test'],
-+            r['original_competent_owner']+' :: '+r['extra_14_commission'],
-+            'HISTORICAL_PROOF_HELD',['K3_P4R'],tsv_origin(p4r,rid),closed=False)
++            r['original_competent_owner']+' :: r-14-commission',
++            'HISTORICAL_PROOF_HELD',['K3_P4R'],git_origin('K3_14','K3_TSV_ROW',rid),closed=False)
 +
-+    def doc_origin(meta,excerpt):
-+        return {'kind':'DOC_ROW','path':meta['path'],'commit':meta['commit'],'git_blob':meta['git_blob'],
-+                'file_sha256':meta['file_sha256'],'exact_excerpt':excerpt,'row_sha256':sha(excerpt.encode())}
-+
-+    b=_md_rows(src.text(seam25['path']),None)
++    b=_md_rows(raw('SEAM25'))
 +    for i in range(1,11):
 +        rid=f'B-{i:02d}';c,excerpt=b[rid]
 +        add('SEAM_B',rid,f'SEAM/25 {c[0]}',c[1],c[2],c[2],c[2],c[3],
-+            'MUST_ALLOW_FUTURE',['SEAM_25'],doc_origin(seam25,excerpt))
++            'MUST_ALLOW_FUTURE',['SEAM_25'],git_origin('SEAM25','DOC_ROW',exact_excerpt=excerpt))
 +
-+    s=_md_rows(src.text(seam26['path']),None)
++    s=_md_rows(raw('SEAM26'))
 +    for i in range(1,9):
 +        rid=f'S-{i:02d}';c,excerpt=s[rid]
 +        add('SEAM_S',rid,f'SEAM/26 {c[0]}',c[1],c[2],c[4],c[2],c[3],
-+            'MUST_ALLOW_FUTURE',['SEAM_26'],doc_origin(seam26,excerpt))
++            'MUST_ALLOW_FUTURE',['SEAM_26'],git_origin('SEAM26','DOC_ROW',exact_excerpt=excerpt))
 +
-+    l=_md_rows(src.text(anvil15['path']),None)
++    l=_md_rows(raw('ANVIL15'))
 +    for i in range(1,9):
 +        rid=f'L-{i:02d}';c,excerpt=l[rid]
 +        add('ANVIL_L',rid,f'ANVIL/15 {c[0]}',c[1],c[4],c[2],c[4],c[2]+' :: '+c[3],
-+            'MUST_PRESERVE_NOW',['ANVIL_15'],doc_origin(anvil15,excerpt))
++            'MUST_PRESERVE_NOW',['ANVIL_15'],git_origin('ANVIL15','DOC_ROW',exact_excerpt=excerpt))
 +
-+    bc=json.loads((pathlib.Path(source_root)/'02_BOUNDARY_CONTRACTS.json').read_bytes())
-+    bcmeta=file_meta('02_BOUNDARY_CONTRACTS.json',zip_sha256=ZIP_SHA)
-+    bcraw=src.text('02_BOUNDARY_CONTRACTS.json')
++    bcb=pkgtext('02_BOUNDARY_CONTRACTS.json');bc=json.loads(bcb)
 +    for t in bc['boundaries']:
 +        rid=t['id']
-+        excerpt=next(l.strip().rstrip(',') for l in bcraw.split('\n') if '"id":"'+rid+'"' in l)
++        excerpt=next(l.strip().rstrip(',') for l in bcb.split('\n') if '"id":"'+rid+'"' in l)
 +        add('BOUNDARY',rid,f'ANVIL_R7/02_BOUNDARY_CONTRACTS.json {rid}',t['must_preserve'],t['first_effect'],
 +            t['veto'],t['time_class'],t['name'],'MUST_ALLOW_FUTURE',['BOUNDARY_CONTRACT'],
-+            {'kind':'DOC_ROW','path':bcmeta['path'],'commit':bcmeta.get('commit'),'zip_sha256':bcmeta.get('zip_sha256'),
-+             'git_blob':bcmeta['git_blob'],'file_sha256':bcmeta['file_sha256'],
-+             'exact_excerpt':excerpt,'row_sha256':sha(excerpt.encode())})
++            zip_origin('ZIP02','DOC_ROW',bcb.encode(),exact_excerpt=excerpt))
 +
-+    frozen=json.loads((pathlib.Path(source_root)/'03_FROZEN_SOURCE_CUTS.json').read_bytes())
-+    cust=json.loads((pathlib.Path(source_root)/'D3A_SOURCE_SNAPSHOT/SOURCE_CUSTODY.json').read_bytes())
-+    custmap={f['path']:f for f in cust['files']}
++    frozen=json.loads(pkgtext('03_FROZEN_SOURCE_CUTS.json'))
++    docmap={'ZIP12':pkgtext('12_ORIGINAL_MANDATE_AND_DECISION_LEVERAGE.md'),
++            'ZIP29':pkgtext('29_R7_INTEGRATED_MISSION_AND_GATES.md'),
++            'HIST05':raw('HIST05')}
 +    for tid,spec in terminal_map.items():
 +        if tid.startswith('_'):continue
-+        if tid not in frozen['mandatory']['TERMINAL']:
-+            raise ValueError('terminal id not in frozen cut: '+tid)
-+        if spec['path'] in custmap and custmap[spec['path']].get('commit'):
-+            meta=file_meta(spec['path'],commit=custmap[spec['path']]['commit'])
-+        else:
-+            meta=file_meta(spec['path'],zip_sha256=ZIP_SHA)
-+        excerpt=spec['exact_excerpt']
-+        add('TERMINAL',tid,spec['anchor'],excerpt,spec['consumer'],spec['negative'],spec['effect'],
-+            spec['why'],spec['necessity'],['FROZEN_TERMINAL_CUT'],
-+            {k:v for k,v in {'kind':'DOC_ROW','path':meta['path'],'commit':meta.get('commit'),
-+             'zip_sha256':meta.get('zip_sha256'),'git_blob':meta['git_blob'],
-+             'file_sha256':meta['file_sha256'],'exact_excerpt':excerpt,
-+             'row_sha256':sha(excerpt.encode())}.items() if v is not None})
++        if tid not in frozen['mandatory']['TERMINAL']:raise ValueError('terminal id not in frozen cut: '+tid)
++        key=spec['source']
++        data=docmap[key].encode()
++        origin=(git_origin(key,'DOC_ROW',exact_excerpt=spec['exact_excerpt']) if SOURCE_INDEX[key]['container']=='GIT'
++                else zip_origin(key,'DOC_ROW',data,exact_excerpt=spec['exact_excerpt']))
++        add('TERMINAL',tid,spec['anchor'],spec['exact_excerpt'],spec['consumer'],spec['negative'],
++            spec['effect'],spec['why'],spec['necessity'],['FROZEN_TERMINAL_CUT'],origin)
 +    return {'schema':SCHEMA,'inventory_grade':GRADE,'source_authentication':AUTH,'source_cut':source_cut,
 +            'generated_by':'r7_source_inventory.build_from_sources (deterministic cell copy, no reclassification)',
 +            'rows':rows}
++
++
++def _anchors_from_args(a,obj=None):
++    return Anchors(git_repo=a.git_repo,zip_path=a.zip,zip_sha256=a.zip_sha256,
++                   commits=json.loads(a.commits) if a.commits else None)
 +
 +
 +def main():
@@ -936,17 +1049,22 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    ap.add_argument('--source-root',required=True)
 +    ap.add_argument('--terminal-map')
 +    ap.add_argument('--out')
++    ap.add_argument('--git-repo')
++    ap.add_argument('--zip')
++    ap.add_argument('--zip-sha256',default=ZIP_SHA)
++    ap.add_argument('--commits',help='JSON array of allowed commit ids')
 +    a=ap.parse_args()
 +    if a.action=='build':
 +        cut=json.loads((pathlib.Path(a.source_root)/'D3A_SOURCE_SNAPSHOT/SOURCE_CUSTODY.json').read_text())['source_cut']
 +        tmap=json.loads(pathlib.Path(a.terminal_map).read_text()) if a.terminal_map else {}
 +        obj=build_from_sources(a.source_root,tmap,cut)
 +        out=pathlib.Path(a.out or 'INVENTORY.json');out.write_text(json.dumps(obj,indent=1,sort_keys=True)+'\n')
-+        e=[];verify_inventory(obj,a.source_root,e)
-+        print(json.dumps({'status':'PASS_LOCAL_SOURCE_BYTES_ONLY' if not e else 'RED','rows':len(obj['rows']),
++        e=[];verify_inventory(obj,a.source_root,e,anchors=_anchors_from_args(a))
++        print(json.dumps({'status':'PASS_ORIGINAL_CONTAINER_BYTES' if not e else 'RED','rows':len(obj['rows']),
 +                          'out':str(out),'errors':e[:12]},indent=2));return 0 if not e else 2
-+    obj=json.loads(pathlib.Path(a.inventory).read_text());e=[];verify_inventory(obj,a.source_root,e)
-+    print(json.dumps({'status':'PASS_LOCAL_SOURCE_BYTES_ONLY' if not e else 'RED','errors':e[:40]},indent=2))
++    obj=json.loads(pathlib.Path(a.inventory).read_text());e=[]
++    verify_inventory(obj,a.source_root,e,anchors=_anchors_from_args(a))
++    print(json.dumps({'status':'PASS_ORIGINAL_CONTAINER_BYTES' if not e else 'RED','errors':e[:40]},indent=2))
 +    return 0 if not e else 2
 +
 +if __name__=='__main__':sys.exit(main())
@@ -965,17 +1083,18 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/test_r7_integrated.py PACKAGE/tools/test_r7_integrated.py
 --- a/tools
 +++ b/tools
-@@ -5,7 +5,9 @@
+@@ -5,7 +5,10 @@
  """
  import copy,hashlib,json,pathlib,tempfile,unittest,subprocess,sys
  from test_r6 import r6_fixture
 +import d3a_fixture as F
  from r7_integrated import check,digest,sha,DOMAINS
 +from r7_builder import write as build_projections
++ANCHORS=F.anchors()
  
  ROOT=pathlib.Path(__file__).resolve().parents[1]
  QUOTE='The original DDM was not failed work to be replaced.'
-@@ -17,11 +19,10 @@
+@@ -17,11 +20,10 @@
      def setUp(self):
          self.tmp=tempfile.TemporaryDirectory();self.work=pathlib.Path(self.tmp.name)
          self.evidence=self.work/'evidence';self.evidence.mkdir()
@@ -991,7 +1110,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
          quote=SOURCE_EXCERPT
          ref={'path':SOURCE,'sha256':sha((ROOT/SOURCE).read_bytes()),'exact_excerpt':quote}
          rows=[]
-@@ -45,7 +46,7 @@
+@@ -45,7 +47,7 @@
              'science_authority_boundary':'Field Forge, world and actor science cannot be issued by physical architecture author',
              'whole_program_mission':'Complete original function continuity and C11 empirical computation into later scientifically lawful world and person products',
              'source_grades_authentic_by_local_test':False,'requirements':rows,
@@ -1000,7 +1119,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
          self.fptr=self.put('frame.json',self.frame)
          self.decision={'schema':'ANVIL_R7_INTEGRATED','stage':'INTEGRATED_DECISION','common_frame':self.fptr,
            'frame_sha256':digest(self.frame),'decision_process':'ONE_SYNTHESIS_NO_MANDATORY_RIVAL',
-@@ -66,6 +67,9 @@
+@@ -66,6 +68,9 @@
            'choice_reversers':[{'status':'RESOLVED_AT_ANALYTICAL_SCOPE','question':'Can qualified population preparation be reused without changing source truth?'}],
            'requires_full_A_B_comparison':False,'competing_implementations_mandatory':False,
            'architecture_claims_independent_acceptance':False,'targeted_duel':None,
@@ -1010,7 +1129,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
            'requirement_dispositions':[{'requirement_id':r['id'],
               'disposition':'FUTURE_NONPRECLUDED' if r['binding']=='FUTURE_NONPRECLUSION' else 'PRESENT_PRESERVED',
               'evidence_grade':'DOCUMENTARY',
-@@ -73,6 +77,8 @@
+@@ -73,13 +78,15 @@
               'specific_first_consumer_path':'Native saved I03 facts can lawfully feed qualified conditional and possibility interfaces under source authority',
               'conservation_or_refusal_witness':'Existing frozen source contracts specify the required denial and restoration behavior, not an actual executed proof',
               'evidence':ref} for r in rows]}
@@ -1019,7 +1138,16 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
          self.dptr=self.put('decision.json',self.decision)
      def tearDown(self):self.tmp.cleanup()
      def put(self,name,obj):
-@@ -104,16 +110,19 @@
+         b=(json.dumps(obj,sort_keys=True,ensure_ascii=False)+'\n').encode();(self.evidence/name).write_bytes(b)
+         return {'path':name,'sha256':sha(b)}
+-    def frame_result(self):return check('FRAME',self.frame,self.evidence,ROOT)
+-    def dec_result(self):return check('DECISION',self.decision,self.evidence,ROOT)
++    def frame_result(self):return check('FRAME',self.frame,self.evidence,ROOT,ANCHORS)
++    def dec_result(self):return check('DECISION',self.decision,self.evidence,ROOT,ANCHORS)
+     def test_existing_historical_spine_transfers_without_new_census(self):
+         from r7_transfer_conservation import transfer
+         spine=r6_fixture();obj=transfer(json.dumps(spine).encode())
+@@ -104,16 +111,19 @@
          self.frame['requirements']=[r for r in self.frame['requirements'] if r['domain']!='SEAM_WORLD_ACTOR']
          self.assertIn('FRAME:WHOLE_MISSION_DOMAIN_MISSING:SEAM_WORLD_ACTOR',self.frame_result()['errors'])
      def test_no_historical_118_id_substitution(self):
@@ -1047,7 +1175,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
          self.assertTrue(any('FALSE_PROSPECTIVE_ADOPTION' in e for e in self.frame_result()['errors']))
      def test_source_pin_is_not_just_a_citation_string(self):
          self.frame['requirements'][0]['evidence']['sha256']='f'*64
-@@ -160,13 +169,17 @@
+@@ -160,18 +170,22 @@
             'scientific_and_owner_boundary':'No source scientific rights or actor-level structural causality can be issued from a documentary C assessment.',
             'actual_first_consumer_assessment':'This fixture does not run any real first-consumer and cannot justify adoption of original survey science.',
             'historical_no_loss_assessment':'The complete historical R5 contract remains frozen, with no recovered function automatically declared issued.',
@@ -1061,15 +1189,24 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
               {'id':'future','domain':'FUTURE_NONPRECLUSION','grade':'EXACT_BUILDER_HOLD',
                'exact_hold':'Future actor/world source governance remains independent and cannot be invented by this local test'}],
 -           'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False}
+-        self.assertTrue(check('C_INTEGRATED',c,self.evidence,ROOT)['status'].startswith('PASS'))
 +           'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False,
 +           'claims_protected_h1':False}
-         self.assertTrue(check('C_INTEGRATED',c,self.evidence,ROOT)['status'].startswith('PASS'))
++        self.assertTrue(check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['status'].startswith('PASS'))
          c['verdict']='C_CONDITIONALLY_ADMIT_DESIGN'
-         self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
+-        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
++        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['errors'])
+         c['choice_reversing_objection_survives']=True
+-        self.assertIn('C:ACCEPTS_SURVIVING_REVERSER',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
++        self.assertIn('C:ACCEPTS_SURVIVING_REVERSER',check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['errors'])
+         c['choice_reversing_objection_survives']=False;c['verdict']='C_HOLD_EXACT';c['reviewer_relationship']='I_AM_INDEPENDENT'
+-        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
++        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['errors'])
+ if __name__=='__main__':unittest.main(verbosity=2)
 diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/original_zip/ANVIL_R7/tools/test_r7_integrated_d3a.py PACKAGE/tools/test_r7_integrated_d3a.py
 --- a/tools
 +++ b/tools
-@@ -0,0 +1,261 @@
+@@ -0,0 +1,318 @@
 +#!/usr/bin/env python3
 +"""D3A hostile tests for the corrected ACTIVE ANVIL gates.
 +
@@ -1093,6 +1230,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +        self.tmp=tempfile.TemporaryDirectory()
 +        self.work=pathlib.Path(self.tmp.name)
 +        self.ev=self.work/'evidence';self.ev.mkdir()
++        self.anchors=F.anchors()
 +        self.inv=json.loads(F.INVENTORY.read_text())
 +        self.invptr=F.put(self.ev,'inventory.json',self.inv)
 +        self.frame=F.frame(self.inv)
@@ -1107,8 +1245,8 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +
 +    def tearDown(self): self.tmp.cleanup()
 +
-+    def frame_result(self): return check('FRAME',self.frame,self.ev,ROOT)
-+    def dec_result(self,dec=None): return check('DECISION',dec or self.dec,self.ev,ROOT)
++    def frame_result(self): return check('FRAME',self.frame,self.ev,ROOT,self.anchors)
++    def dec_result(self,dec=None): return check('DECISION',dec or self.dec,self.ev,ROOT,self.anchors)
 +
 +    def c_packet(self):
 +        return {'schema':'ANVIL_R7_INTEGRATED','stage':'INDEPENDENT_C','integrated_decision':self.dptr,
@@ -1159,35 +1297,91 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +    def test_missing_row_blob_or_B10_is_red(self):
 +        bad=copy.deepcopy(self.inv)
 +        bad['rows']=[r for r in bad['rows'] if r['id']!='B-10']
-+        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY',anchors=self.anchors)
 +        self.assertTrue(any('ID_SET_DRIFT:SEAM_B' in x for x in e),e)
 +
 +        blob=copy.deepcopy(self.inv)
 +        next(r for r in blob['rows'] if r['id']=='K1-CAP-01')['origin']['git_blob']='0'*40
-+        e=[];verify_inventory(blob,ROOT,e,'HISTORY')
-+        self.assertIn('HISTORY:K1-CAP-01:ORIGIN:GIT_BLOB_ID_DISAGREES',e)
++        e=[];verify_inventory(blob,ROOT,e,'HISTORY',anchors=self.anchors)
++        self.assertIn('HISTORY:K1-CAP-01:ORIGIN:ORIGIN_PATH_BLOB_MISMATCH',e)
 +
 +        row=copy.deepcopy(self.inv)
 +        next(r for r in row['rows'] if r['id']=='K1-CAP-02')['origin']['row_sha256']='1'*64
-+        e=[];verify_inventory(row,ROOT,e,'HISTORY')
++        e=[];verify_inventory(row,ROOT,e,'HISTORY',anchors=self.anchors)
 +        self.assertIn('HISTORY:K1-CAP-02:ORIGIN:ROW_BYTES_CHANGED',e)
 +
 +    def test_source_file_absent_is_red(self):
 +        bad=copy.deepcopy(self.inv)
 +        next(r for r in bad['rows'] if r['id']=='L-04')['origin']['path']='D3A_SOURCE_SNAPSHOT/nope.md'
-+        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
-+        self.assertIn('HISTORY:L-04:ORIGIN:SOURCE_FILE_ABSENT',e)
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY',anchors=self.anchors)
++        self.assertIn('HISTORY:L-04:ORIGIN:ORIGIN_PATH_NOT_IN_COMMIT',e)
 +
 +    def test_26_adopted_or_14_closed_in_inventory_is_red(self):
 +        bad=copy.deepcopy(self.inv)
 +        next(r for r in bad['rows'] if r['id']=='PYAT-PC-R9-01')['adopted']=True
-+        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY',anchors=self.anchors)
 +        self.assertIn('HISTORY:PYAT-PC-R9-01:FALSE_PROSPECTIVE_ADOPTION',e)
 +
 +        bad=copy.deepcopy(self.inv)
 +        next(r for r in bad['rows'] if r['id']=='P4R-R01')['closed']=True
-+        e=[];verify_inventory(bad,ROOT,e,'HISTORY')
++        e=[];verify_inventory(bad,ROOT,e,'HISTORY',anchors=self.anchors)
 +        self.assertIn('HISTORY:P4R-R01:FALSE_PROOF_CLOSURE',e)
++
++
++class OriginBinding(Base):
++    """HQ REVISE_EXACT_DEFECT: a claimed commit must resolve in the real object store."""
++    def v(self,obj,anchors=None):
++        e=[];verify_inventory(obj,ROOT,e,'HISTORY',anchors=anchors or self.anchors);return e
++
++    def test_genuine_original_inventory_passes(self):
++        self.assertEqual([],self.v(self.inv))
++
++    def test_fake_commit_refuses(self):
++        bad=copy.deepcopy(self.inv);bad['rows'][0]['origin']['commit']='a'*40
++        self.assertIn('HISTORY:K1-CAP-01:ORIGIN:ORIGIN_COMMIT_OUTSIDE_PINNED_CUTS',self.v(bad))
++
++    def test_nonexistent_but_wellformed_commit_refuses(self):
++        bad=copy.deepcopy(self.inv);bad['rows'][0]['origin']['commit']='deadbeef'*5
++        e=self.v(bad)
++        self.assertTrue(any('ORIGIN_COMMIT' in x for x in e),e)
++
++    def test_real_but_wrong_commit_refuses(self):
++        # a real commit in the same repository that is not a pinned source cut
++        import subprocess
++        real=subprocess.check_output(['git','-C',str(F.GIT_REPO),'rev-parse','HEAD'],text=True).strip()
++        bad=copy.deepcopy(self.inv);bad['rows'][0]['origin']['commit']=real
++        self.assertIn('HISTORY:K1-CAP-01:ORIGIN:ORIGIN_COMMIT_OUTSIDE_PINNED_CUTS',self.v(bad))
++
++    def test_wrong_path_refuses_even_with_same_commit(self):
++        bad=copy.deepcopy(self.inv);bad['rows'][0]['origin']['path']='PYAT_CONTROL_ROOM/NOT_THE_SOURCE.tsv'
++        self.assertIn('HISTORY:K1-CAP-01:ORIGIN:ORIGIN_PATH_NOT_IN_COMMIT',self.v(bad))
++
++    def test_caller_supplied_replacement_bytes_with_matching_self_hashes_refuses(self):
++        # replace the private snapshot bytes AND recompute every claimed hash:
++        # the Git object store still resolves the original blob, so the pin fails.
++        fake=b'K1-CAP-01\tFAKE\tFAKE\tFAKE\n'
++        bad=copy.deepcopy(self.inv)
++        o=bad['rows'][0]['origin']
++        o['git_blob']=__import__('hashlib').sha1(b'blob %d\0'%len(fake)+fake).hexdigest()
++        o['file_sha256']=__import__('hashlib').sha256(fake).hexdigest()
++        o['row_sha256']=__import__('hashlib').sha256(fake.rstrip(b'\n')).hexdigest()
++        e=self.v(bad)
++        self.assertTrue(any('ORIGIN_PATH_BLOB_MISMATCH' in x or 'ROW_BYTES_CHANGED' in x for x in e),e)
++
++    def test_no_external_anchor_refuses(self):
++        e=[];verify_inventory(self.inv,ROOT,e,'HISTORY',anchors=None)
++        self.assertIn('HISTORY:NO_EXTERNAL_TRUST_ANCHOR',e)
++
++    def test_fake_zip_container_refuses(self):
++        bad=copy.deepcopy(self.inv)
++        next(r for r in bad['rows'] if r['id']=='T1')['origin']['zip_sha256']='b'*64
++        self.assertIn('HISTORY:T1:ORIGIN:ZIP_CONTAINER_SHA_MISMATCH',self.v(bad))
++
++    def test_restoration_passes_exactly(self):
++        bad=copy.deepcopy(self.inv);bad['rows'][0]['origin']['commit']='a'*40
++        self.assertTrue(any('ORIGIN' in x for x in self.v(bad)))
++        restored=copy.deepcopy(bad);restored['rows'][0]['origin']['commit']=self.inv['rows'][0]['origin']['commit']
++        self.assertEqual([],self.v(restored))
 +
 +
 +class Decision(Base):
@@ -1246,7 +1440,7 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +
 +class IndependentC(Base):
 +    def test_complete_C_packet_passes_locally(self):
-+        r=check('C_INTEGRATED',self.c_packet(),self.ev,ROOT)
++        r=check('C_INTEGRATED',self.c_packet(),self.ev,ROOT,self.anchors)
 +        self.assertTrue(r['status'].startswith('PASS'),r)
 +
 +    def test_each_T_contract_needs_positive_negative_and_restore(self):
@@ -1254,59 +1448,59 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +            c=self.c_packet()
 +            row=next(x for x in c['boundary_court'] if x['boundary']==tid)
 +            del row['restore']
-+            r=check('C_INTEGRATED',c,self.ev,ROOT)
++            r=check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)
 +            self.assertIn(f'C:BOUNDARY_MISSING_RESTORE:{tid}',r['errors'])
 +            c=self.c_packet()
 +            row=next(x for x in c['boundary_court'] if x['boundary']==tid)
 +            del row['negative']
-+            self.assertIn(f'C:BOUNDARY_MISSING_NEGATIVE:{tid}',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++            self.assertIn(f'C:BOUNDARY_MISSING_NEGATIVE:{tid}',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +    def test_weakened_boundary_contract_is_red(self):
 +        c=self.c_packet();c['boundary_contract_sha256']='4'*64
-+        self.assertIn('C:BOUNDARY_CONTRACT_NOT_PINNED',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:BOUNDARY_CONTRACT_NOT_PINNED',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +        c=self.c_packet()
 +        next(x for x in c['boundary_court'] if x['boundary']=='T2')['must_preserve_witness']='some marginals are kept'
-+        self.assertIn('C:BOUNDARY_MUST_PRESERVE_NOT_WITNESSED:T2',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:BOUNDARY_MUST_PRESERVE_NOT_WITNESSED:T2',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +    def test_typed_graph_type_authority_time_and_consumer_holes_are_red(self):
 +        c=self.c_packet()
 +        next(e for e in c['typed_graph']['edges'] if e['id']=='E3')['payload_type']='not_a_declared_type'
-+        self.assertIn('C:GRAPH_TYPE_HOLE:E3',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:GRAPH_TYPE_HOLE:E3',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +        c=self.c_packet()
 +        next(e for e in c['typed_graph']['edges'] if e['id']=='E5')['authority_from']='FICTIONAL_WORLD'
-+        self.assertIn('C:GRAPH_AUTHORITY_HOLE:E5',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:GRAPH_AUTHORITY_HOLE:E5',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +        c=self.c_packet()
 +        next(e for e in c['typed_graph']['edges'] if e['id']=='E6')['time_class']='WRONG_CLOCK'
-+        self.assertIn('C:GRAPH_TIME_HOLE:E6',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:GRAPH_TIME_HOLE:E6',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +        c=self.c_packet()
 +        next(e for e in c['typed_graph']['edges'] if e['id']=='E4')['first_consumer']=''
-+        self.assertIn('C:GRAPH_NO_CONSUMER:E4',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:GRAPH_NO_CONSUMER:E4',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +    def test_authority_upgrade_needs_an_external_warrant(self):
 +        c=self.c_packet()
 +        edge=next(e for e in c['typed_graph']['edges'] if e['id']=='E5')
 +        edge['authority_from']='DESCRIPTIVE_MODELED';edge['authority_to']='STRUCTURAL_QUALIFIED'
 +        edge.pop('external_source_warrant',None)
-+        r=check('C_INTEGRATED',c,self.ev,ROOT)
++        r=check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)
 +        self.assertIn('C:GRAPH_AUTHORITY_UPGRADE_WITHOUT_WARRANT:E5',r['errors'])
 +        edge['external_source_warrant']='Independently sourced institutional material evidence with its own owner and time basis'
-+        r=check('C_INTEGRATED',c,self.ev,ROOT)
++        r=check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)
 +        self.assertNotIn('C:GRAPH_AUTHORITY_UPGRADE_WITHOUT_WARRANT:E5',r['errors'])
 +
 +    def test_graph_must_reach_an_actor_from_observed_source(self):
 +        c=self.c_packet()
 +        c['typed_graph']['edges']=[e for e in c['typed_graph']['edges'] if e['id']!='E7']
-+        self.assertIn('C:GRAPH_SOURCE_TO_ACTOR_DISCONNECTED',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:GRAPH_SOURCE_TO_ACTOR_DISCONNECTED',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +    def test_six_builder_projections_must_match_bytes(self):
 +        c=self.c_packet();c['projection_manifest']['files']['DESIGN_DECISION.md']='5'*64
-+        self.assertIn('C:PROJECTION_BYTES_CHANGED:DESIGN_DECISION.md',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:PROJECTION_BYTES_CHANGED:DESIGN_DECISION.md',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +        c=self.c_packet();del c['projection_manifest']['files']['BOUNDARY_TRACE.json']
 +        c['projection_manifest']['digest']=digest(c['projection_manifest']['files'])
-+        self.assertIn('C:PROJECTION_SET_INCOMPLETE',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:PROJECTION_SET_INCOMPLETE',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +    def test_builder_is_deterministic(self):
 +        a=build_projections(self.dec,self.frame,self.inv,self.ev)
@@ -1317,17 +1511,17 @@ diff -ruN --label a/tools --label b/tools /Users/matthewsmith/Desktop/ANVIL_RABO
 +
 +    def test_local_fake_h1_is_red(self):
 +        c=self.c_packet();c['claims_protected_h1']=True
-+        self.assertIn('C:FALSE_PROTECTED_H1',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:FALSE_PROTECTED_H1',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +        c=self.c_packet();c['original_source_granted_by_local_check']=True
-+        self.assertIn('C:FALSE_AUTHORITY',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:FALSE_AUTHORITY',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +        c=self.c_packet();c['verdict']='C_ACCEPTED'
-+        self.assertIn('C:FALSE_C_GRADE',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:FALSE_C_GRADE',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +        c=self.c_packet();c['reviewer_relationship']='I_AM_INDEPENDENT'
-+        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +    def test_admit_requires_an_executed_current_builder(self):
 +        c=self.c_packet();c['verdict']='C_CONDITIONALLY_ADMIT_DESIGN'
-+        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.ev,ROOT)['errors'])
++        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.ev,ROOT,self.anchors)['errors'])
 +
 +
 +if __name__=='__main__':unittest.main(verbosity=2)

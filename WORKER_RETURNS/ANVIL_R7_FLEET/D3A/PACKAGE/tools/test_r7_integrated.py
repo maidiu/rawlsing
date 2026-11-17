@@ -8,6 +8,7 @@ from test_r6 import r6_fixture
 import d3a_fixture as F
 from r7_integrated import check,digest,sha,DOMAINS
 from r7_builder import write as build_projections
+ANCHORS=F.anchors()
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 QUOTE='The original DDM was not failed work to be replaced.'
@@ -84,8 +85,8 @@ class Integrated(unittest.TestCase):
     def put(self,name,obj):
         b=(json.dumps(obj,sort_keys=True,ensure_ascii=False)+'\n').encode();(self.evidence/name).write_bytes(b)
         return {'path':name,'sha256':sha(b)}
-    def frame_result(self):return check('FRAME',self.frame,self.evidence,ROOT)
-    def dec_result(self):return check('DECISION',self.decision,self.evidence,ROOT)
+    def frame_result(self):return check('FRAME',self.frame,self.evidence,ROOT,ANCHORS)
+    def dec_result(self):return check('DECISION',self.decision,self.evidence,ROOT,ANCHORS)
     def test_existing_historical_spine_transfers_without_new_census(self):
         from r7_transfer_conservation import transfer
         spine=r6_fixture();obj=transfer(json.dumps(spine).encode())
@@ -180,11 +181,11 @@ class Integrated(unittest.TestCase):
               'exact_hold':'Future actor/world source governance remains independent and cannot be invented by this local test'}],
            'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False,
            'claims_protected_h1':False}
-        self.assertTrue(check('C_INTEGRATED',c,self.evidence,ROOT)['status'].startswith('PASS'))
+        self.assertTrue(check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['status'].startswith('PASS'))
         c['verdict']='C_CONDITIONALLY_ADMIT_DESIGN'
-        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
+        self.assertIn('C:ADMIT_WITHOUT_CURRENT_BUILDER',check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['errors'])
         c['choice_reversing_objection_survives']=True
-        self.assertIn('C:ACCEPTS_SURVIVING_REVERSER',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
+        self.assertIn('C:ACCEPTS_SURVIVING_REVERSER',check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['errors'])
         c['choice_reversing_objection_survives']=False;c['verdict']='C_HOLD_EXACT';c['reviewer_relationship']='I_AM_INDEPENDENT'
-        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.evidence,ROOT)['errors'])
+        self.assertIn('C:SELF_CERTIFIED_INDEPENDENCE',check('C_INTEGRATED',c,self.evidence,ROOT,ANCHORS)['errors'])
 if __name__=='__main__':unittest.main(verbosity=2)

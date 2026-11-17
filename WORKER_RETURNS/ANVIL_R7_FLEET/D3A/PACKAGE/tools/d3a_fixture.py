@@ -12,6 +12,17 @@ from r7_source_inventory import by_group
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 INVENTORY=ROOT/'D3A_INVENTORY_SAMPLE.json'
+import os
+GIT_REPO=ROOT.parents[3]
+DEFAULT_ZIP='/Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip'
+ZIP_PATH=os.environ.get('D3A_ORIGINAL_ZIP',DEFAULT_ZIP)
+ZIP_SHA256='526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332'
+COMMITS=['31291d08179890852246c8742700e055168e9933','596f1230258ff50f98d8543dec42a80e696720f4',
+         '796452b8cb788fa5a02f37a7ce86eafce8312dfe','3cc09bba3d0e26c226da0ddca4b64c43dd74e493']
+
+def anchors():
+    from r7_source_inventory import Anchors
+    return Anchors(git_repo=GIT_REPO,zip_path=ZIP_PATH,zip_sha256=ZIP_SHA256,commits=COMMITS)
 COURT=json.loads((ROOT/'02_BOUNDARY_CONTRACTS.json').read_text())
 
 
