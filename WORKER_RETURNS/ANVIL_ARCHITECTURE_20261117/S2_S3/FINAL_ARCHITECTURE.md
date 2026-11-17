@@ -161,40 +161,64 @@ not a measured 100-op asymptote; any `S/Q` inference is hypothetical.
 ≤6 GiB; cold 1/10/100 native; production retained/scratch/output; durable-index
 retained/invalidation; one-certificate full Q2 proof; native source rights.
 
-## 6. One actionable first-consumer handoff
+## 6. One actionable first-consumer handoff — corrected D4 grades
 
-**Consumer ABI:** `rawlsing_next/pre553_prepared_saved_i03.py::PreparedI03Session.execute_i03`
-via `PreparedSavedC11Admission.open`, forward-wired into
-`rawlsing_next/pre553_saved_workload_integration.py::execute_saved_batch` per
-unit.
+### Direct prepared path — executed sourcefree
 
+**ABI:** `rawlsing_next/pre553_prepared_saved_i03.py::PreparedI03Session.execute_i03`
+via `PreparedSavedC11Admission.open`.
 **Positive:** four distinct sourcefree operations (selected, F2 forward, F4 3+,
 raw) return exact fact-ref parity with the one-shot baseline; one `_build` for
-the workload.
-
-**Negative:** revocation after preparation refuses; changed member/index/root
-refuses; sourcefree result is never relabeled native.
-
+the workload (direct prepared test court).
+**Negative:** revocation after preparation refuses; condition mismatch refuses;
+changed member/root refuses.
 **Restore:** exact manifest/I02/source restore reproduces the same fact
 projections.
+**Grade:** `EXECUTED_SOURCEFREE_DIRECT_PATH_3_OF_34` — valid direct prepared
+session evidence, **not** the named Batch/wrapper path. Logs:
+`RUNS/prepared_saved_i03.txt` (3 passed), `RUNS/direct_estate_i03.txt` (7 passed),
+`RUNS/saved_native_first_consumer.txt` (24 passed).
 
-**Grade:** existing-code sourcefree execution, not native/protected. Logs:
-`RUNS/prepared_saved_i03.txt` (3 passed), `RUNS/saved_native_first_consumer.txt`
-(24 passed), `RUNS/direct_estate_i03.txt` (7 passed).
+### Wrapper/Batch path — proposed, not wired
+
+**Named ABI:** `execute_saved_i03` / `execute_saved_i05` /
+`execute_saved_batch`, plus `BatchExecutionRunner(saved_mode=True)`.
+**Actual exact-type boundaries:** `pre553_saved_workload_integration.py` lines
+42, 54 and 94 require `type(admission) is SavedC11Admission`;
+`pre553_batch_runner.py` line 406 requires
+`type(repository) is SavedC11Admission`. `PreparedSavedC11Admission` is rejected.
+Moreover, `SavedC11Admission.execute_i03/i05` open a fresh
+`DirectEstateI03Session`, so merely relaxing the type check would not reuse the
+prepared session.
+**Minimal owner-routed protocol:** an explicit prepared-session-aware adapter
+(not generic `isinstance` relaxation), exact `PreparedSavedC11Admission`
+whitelist, one prepared context per release/universe/workload threaded through
+Batch units, per-unit `check_current`, exact fact/replay/negative, exact restore.
+Owner: S2-D saved admission + BatchExecutionRunner owners; separate implementer
+step.
+**Grade:** `PROPOSED_NOT_WIRED`.
+**Witness for the defect:** `WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/WITNESS/test_prepared_abi.py`
+2 passed; both named paths reject the prepared subclass.
 
 ## 7. Remaining finite obligations
 
-1. Forward-wire prepared session into first consumer + saved Batch units.
-2. Construction one-journal/one-certificate only after full Q2 physical proof;
-   second-certificate fallback otherwise.
+1. Owner-approved prepared-session-aware first-consumer/Batch adapter; one
+   `_build` through the actual wrapper/Batch, four-operation exact parity,
+   revocation/current refusal, exact restore. Current grade
+   `PROPOSED_NOT_WIRED`.
+2. Construction one-journal/one-certificate only after full physical proof
+   against a **source-derived** Q2 certificate; second-certificate fallback
+   mandatory otherwise. Q2 must not originate from a re-parsed transport
+   journal.
 3. Recovery repair with no-clobber claim/lease; crash-injection proof.
 4. `#1006` H/S/Q/O measurement on one authorized real-width workload: 1/10/100
    same-process and 10 fresh-process, fact/replay parity, retained/scratch/RSS/
    output.
 5. Durable index only if `S` material and compact exact encoding/binding/
-   invalidation/retained-size gate passes.
+   invalidation/retained-size gate passes; currently `HELD_NOT_SELECTED`.
 6. Batch/NORMAL/resume shared-file owner ACKs.
-7. Distinct independent C; then, only if accepted, competent H1.
+7. Same distinct C recheck of this corrected candidate; then, only if accepted,
+   competent H1.
 
 All 26 NOT_ADOPTED, 14 HELD, 52/24/21 navigation, F26, native/source/science/
 actor, 100k/6 GiB/1-10-100, F5–F8/N9/N10W/SEAM/SOROK remain held.

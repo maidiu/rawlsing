@@ -1,0 +1,126 @@
+{
+  "adjudication": {
+    "construction": "SELECTED_CONDITIONAL: one-journal + one-certificate attempt only if full physical proof against Q2 survives; otherwise keep second certificate and take one-journal + recovery + prepared session. Recovery repair selected independently.",
+    "durable_index": "NOT_SELECTED_NOW; conditional second-stage option behind REQ-COST-LAYER-DECOMPOSITION and REQ-DERIVED-INDEX-BINDING. Prepared-session-first is the smaller first change; the 1.30GB index retained cost (4.19x estate) and invalidation economics must be earned by measurement.",
+    "evidence_output": "ADOPTED_AS_EXACT_IDENTITY_CONTRACT; no blanket cache/rehash law.",
+    "no_majority_vote": true,
+    "prepared_session": "SELECTED_FIRST_QUERY_STEP; forward-wire existing PreparedI03Session to the actual first consumer and saved Batch units, keep check_current and per-operation fact/replay. Sourcefree tests only; not protected/native qualification."
+  },
+  "base_frame": {
+    "canonical_digest": "7e7bfb9638f23894fd244a703e8a6b88d361f90fafa5b2b10ac78c1f24229913",
+    "frozen_commit": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+    "path": "S1/FRAME.json",
+    "preserved_immutable": true,
+    "sha256": "44b17c58e9610b856abe7b95b03cd6b011338b7a7d9d669bbedba206f685a573"
+  },
+  "does_not_authorize": [
+    "native/original35/source/science/actor rights",
+    "100k/6GiB/1-10-100 acceptance",
+    "new science or permanent ban",
+    "protected adoption or independent C/H1"
+  ],
+  "frame_version": 2,
+  "new_requirements": [
+    {
+      "architectural_consequence": "Durable index is a conditional second-stage option, not selected by the first handoff.",
+      "binding": "FUTURE_NONPRECLUSION",
+      "does_not_authorize": [
+        "new body store",
+        "new evaluator",
+        "native rights"
+      ],
+      "domain": "AUTHORITY_AND_RECOVERY",
+      "first_consumer": "conditional fresh-process query path",
+      "id": "REQ-DERIVED-INDEX-BINDING",
+      "negative_probe": "A producer-self-hashed index is accepted as source truth, or a stale index serves after revocation; must refuse.",
+      "owner": "S2-C/D physical owner + S05/Long Memory + S04/I03 scientific owner",
+      "positive_probe": "Index open after H uses only locators; changed manifest/I02/source/current/revocation refuses; rebuild from canonical reproduces exact facts; retained-size gate reported.",
+      "source_grounding": [
+        "QUERY/NEW_FRAME_REQUIREMENTS.json FRAME-Q2",
+        "CONSTRUCTION/FINDINGS.md sections 5-8",
+        "pre553_direct_estate_i03.py; pre553_source_direct_parquet_estate.py"
+      ],
+      "substantive_requirement": "Any durable derived locator/selection index must store no canonical bodies or evidence, bind to the exact manifest SHA, I02 roots, release/replay/universe, family censuses, row-group topology and schema, be independently validated on open after cold validation, refuse on any source/root/currentness/authority/wave change, and have an owner plus rebuild/restore/revocation procedure. It must pass a retained-size and 6 GiB gate before adoption.",
+      "typed_obligation": "DERIVED_INDEX_NONAUTHORITATIVE",
+      "why_needed": "A persisted index is the only route that removes S from a one-operation fresh open, but the cited SQLite index is 1.30 GB (4.19x the 310.16 MB estate) and could become a stale second authority."
+    },
+    {
+      "architectural_consequence": "Evidence output is a first-class cost layer; no blanket no-cache/full-rehash law is adopted, only exact-identity sharing and replay.",
+      "binding": "PRESENT_HARD",
+      "does_not_authorize": [
+        "new evidence issuer",
+        "new science"
+      ],
+      "domain": "AUTHORITY_AND_RECOVERY",
+      "first_consumer": "native fact/replay output",
+      "id": "REQ-EVIDENCE-OUTPUT-EXACT-IDENTITY",
+      "negative_probe": "Sharing a reverse F2 denominator with forward F2, or serving a cached fact after revocation; must refuse.",
+      "owner": "S05/Long Memory + S04/I03 scientific owner + F1-F4 science owner",
+      "positive_probe": "Identical exact set identity shares one content-addressed set ref; changed direction/weight/wave/missing creates a separate set; replay re-executes and matches fact refs.",
+      "source_grounding": [
+        "QUERY/NEW_FRAME_REQUIREMENTS.json FRAME-Q3; QUERY/COST_MODEL.json corrected numeric note",
+        "_pre553_query_eval.py _build_fact; pre553_empirical_query.py replay_empirical_query"
+      ],
+      "substantive_requirement": "Facts, risk/denominator member refs, provenance, authorities, replay and negatives remain exact and reconstructible. Content-addressed exact risk/denominator set objects may be referenced across operations only when the exact population, condition, routing, measure regime and wave identity are identical; forward/reverse F2, weighted/unweighted, missing/routing and cross-wave sets remain separate. Replay of an identical operation re-executes and compares exact fact refs; a cached fact is never authoritative.",
+      "typed_obligation": "EXACT_EVIDENCE_REPLAY",
+      "why_needed": "Facts currently carry full risk_set_member_refs and denominator_member_refs; at 100k, 2*100000 refs at 150-250 bytes is 30-50 MB per fact before provenance, so 100 facts is 3-5 GB. Actual cardinality/serialization is unmeasured."
+    },
+    {
+      "architectural_consequence": "Construct in a private stage; publish with a proven no-clobber claim/lease; typed orphan; GC only proven-dead scratch. Preserve manifest/member hashes.",
+      "binding": "PRESENT_HARD",
+      "does_not_authorize": [
+        "native/source rights",
+        "new science"
+      ],
+      "domain": "AUTHORITY_AND_RECOVERY",
+      "first_consumer": "cold SavedC11Admission or recovery operator",
+      "id": "REQ-CONSTRUCTION-ATOMIC-RECOVERY",
+      "negative_probe": "A manifest-less target is accepted, silently overwritten, or deleted while another writer may be active; must refuse.",
+      "owner": "Shared-frame architect + independent C + S2-C/D physical writer owner",
+      "positive_probe": "Kill at each publish step; no cold reader accepts incomplete estate; restart completes or removes only typed orphan; completed release remains byte-identical and readable.",
+      "source_grounding": [
+        "CONSTRUCTION/NEW_FRAME_REQUIREMENTS.json REQ-CONSTRUCTION-ATOMIC-RECOVERY",
+        "rawlsing_next/pre553_source_direct_parquet_estate.py write_direct_estate target.mkdir-before-manifest"
+      ],
+      "substantive_requirement": "Construction and publication must be crash-consistent and recoverable: no partially built estate may be readable as valid; a completed release must never be deleted or overwritten by a failed or concurrent build; an interrupted build leaves only typed scratch/orphan state identifiable, discardable or resumable under an explicit lease without touching a completed or another writer release; manifest/member fsync and no-clobber are explicit. Do not assume a portable atomic rename silently gives no-clobber; where rename may replace, use a no-clobber claim/lease or a typed ORPHAN_REQUIRES_OPERATOR.",
+      "typed_obligation": "ATOMIC_BUILD_AND_INTERRUPTED_RECOVERY",
+      "why_needed": "Actual code creates the content-addressed target before manifest.json; a crash in that window leaves a manifest-less target that later builds refuse. User mission requires bounded reliable construction and interrupted recovery."
+    }
+  ],
+  "numeric_corrections": {
+    "cost_laws": {
+      "durable_index": "H + I + N*(Q+O)",
+      "one_admission_reused": "H + N*(S+Q+O)",
+      "prepared_same_process": "H + S + N*(Q+O)",
+      "truly_fresh_each": "N*(H+S+Q+O)"
+    },
+    "evidence_refs": "2*100000 ExactRefs at 150-250 bytes = 30,000,000-50,000,000 bytes (30-50 MB) per fact, not 15-25 MB; 100 facts = 3-5 GB before provenance. Actual cardinality/serialization unmeasured.",
+    "four_op_factor": "The 1.69-1.70x four-operation figure is an author report, not a measured 100-op asymptote. Any S/Q inference is hypothetical and must be labeled."
+  },
+  "preserved": {
+    "F26": "K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21 hold",
+    "P4R_HELD": 14,
+    "PYAT_PC_NOT_ADOPTED": 26,
+    "base_requirements": 16,
+    "identity_rows": 118,
+    "native_source_actor_science": "held",
+    "separate_52_24_21": "not additive"
+  },
+  "schema": "ANVIL_COMMON_FRAME_ADDENDUM",
+  "specialist_pins": {
+    "construction": {
+      "commit": "f8c98027599b62069c03a269989075b4442f5138",
+      "payload_hashes_verified": 7,
+      "root": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/CONSTRUCTION/",
+      "source_pins_verified": 12
+    },
+    "query": {
+      "commit": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a",
+      "payload_hashes_verified": 7,
+      "root": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/QUERY/",
+      "source_pins_verified": 10
+    }
+  },
+  "status": "ADJUDICATED_BY_INTEGRATED_ARCHITECT_PENDING_INDEPENDENT_C",
+  "why_versioned": "Both specialist returns identified material whole-system gaps not explicit in the base 16: H/S/Q/O cost separation, derived-index binding/invalidation, exact evidence-output/replay identity, and interrupted-construction recovery. The base frame and its 16/118 rows are preserved unchanged; this addendum is the shared v2 common frame for final selection."
+}

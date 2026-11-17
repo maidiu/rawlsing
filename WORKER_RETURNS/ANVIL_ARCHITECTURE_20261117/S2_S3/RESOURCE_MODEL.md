@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED_BY_FINAL.** Authoritative final state: `S2_S3/FINAL_ARCHITECTURE.md`, `S2_S3/FINAL_DECISION.json`, `S2_S3/SPECIALIST_ADJUDICATION.md`, `S2_S3/FINAL_OBLIGATION_CROSSWALK.tsv`, `RETURN.md`. This file is preserved as prior evidence only; its PENDING/provisional/SC-ESTATE statements are not live.
+
 # RESOURCE MODEL — analytic, not a production claim
 
 **Status:** provisional; no native 100k/6 GiB/1-10-100 measurement. The only

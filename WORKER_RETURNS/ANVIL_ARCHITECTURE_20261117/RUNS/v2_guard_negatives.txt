@@ -1,0 +1,171 @@
+{
+  "schema": "ANVIL_V2_GUARD_NEGATIVES",
+  "cases": [
+    {
+      "case": "omit_addendum_REQ-COST-LAYER-DECOMPOSITION",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_addendum_REQ-DERIVED-INDEX-BINDING",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_addendum_REQ-EVIDENCE-OUTPUT-EXACT-IDENTITY",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_addendum_REQ-CONSTRUCTION-ATOMIC-RECOVERY",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_disposition_REQ-COST-LAYER-DECOMPOSITION",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_disposition_REQ-DERIVED-INDEX-BINDING",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_disposition_REQ-EVIDENCE-OUTPUT-EXACT-IDENTITY",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_disposition_REQ-CONSTRUCTION-ATOMIC-RECOVERY",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_crosswalk_REQ-COST-LAYER-DECOMPOSITION",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_crosswalk_REQ-DERIVED-INDEX-BINDING",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_crosswalk_REQ-EVIDENCE-OUTPUT-EXACT-IDENTITY",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "omit_crosswalk_REQ-CONSTRUCTION-ATOMIC-RECOVERY",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "stale_pending_dependency",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "unconditional_durable_index",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "unconditional_one_certificate",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "stale_sc_estate_name",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "stale_requirement_effect",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSE_V2_SUPPLEMENTARY",
+      "stderr": ""
+    },
+    {
+      "case": "d5_provisional_files_marked",
+      "expected": "DOCUMENT_CHECK",
+      "exit": 0,
+      "ok": true,
+      "status": "PROVISIONAL FILES CARRY SUPERSEDED_BY_FINAL HEADERS"
+    },
+    {
+      "case": "exact_restore",
+      "expected": "PASS",
+      "exit": 0,
+      "ok": true,
+      "status": "PASS",
+      "stderr": ""
+    },
+    {
+      "case": "accepted_guard_omission_still_passes",
+      "expected": "PASS_ACCEPTED_GUARD",
+      "exit": 0,
+      "ok": true,
+      "status": "ACCEPTED_GUARD_PASS_OBSERVED"
+    },
+    {
+      "case": "supplementary_guard_refuses_omission",
+      "expected": "REFUSE",
+      "exit": 1,
+      "ok": true,
+      "status": "REFUSED"
+    }
+  ],
+  "all_expected": true
+}

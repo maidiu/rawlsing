@@ -1,3 +1,5 @@
+> **HISTORICAL / SUPERSEDED_BY_FINAL.** Authoritative final state: `S2_S3/FINAL_ARCHITECTURE.md`, `S2_S3/FINAL_DECISION.json`, `S2_S3/SPECIALIST_ADJUDICATION.md`, `S2_S3/FINAL_OBLIGATION_CROSSWALK.tsv`, `RETURN.md`. This file is preserved as prior evidence only; its PENDING/provisional/SC-ESTATE statements are not live.
+
 # S2/S3 — PROVISIONAL INTEGRATED ANALYSIS
 
 **Status:** `PROVISIONAL_PENDING_TWO_SPECIALIST_RETURNS`.

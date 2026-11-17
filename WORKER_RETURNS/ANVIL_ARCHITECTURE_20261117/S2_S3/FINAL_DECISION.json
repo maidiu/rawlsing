@@ -175,23 +175,35 @@
   },
   "builder_handoffs": [
     {
-      "consumer": "PreparedSavedC11Admission.open + prepared_i03 in execute_saved_batch per unit",
-      "domain": "CURRENT_FIRST_CONSUMER",
-      "evidence": "RUNS/prepared_saved_i03.txt; RUNS/saved_native_first_consumer.txt",
+      "consumer": "PreparedSavedC11Admission.open + prepared_i03 direct sourcefree path",
+      "domain": "CURRENT_FIRST_CONSUMER_DIRECT_PREPARED",
+      "evidence": "RUNS/prepared_saved_i03.txt; C RUNS/focused_sourcefree_tests.txt",
       "first_reader_abi": "rawlsing_next/pre553_prepared_saved_i03.py::PreparedI03Session.execute_i03",
-      "grade": "EXECUTED_SOURCEFREE_EXISTING_CODE",
-      "input": "exact sourcefree estate + exact query/predicate refs + catalog + current authorizer",
-      "negative": "revocation after preparation refuses; changed member/index/root refuses; sourcefree not native",
-      "output": "native I03 facts with exact refs/replay/negative",
-      "restore": "exact manifest/I02/source restore reproduces fact projections"
+      "grade": "EXECUTED_SOURCEFREE_DIRECT_PATH_3_OF_34",
+      "input": "exact sourcefree estate + query/predicate refs + catalog + current authorizer",
+      "negative": "revocation after preparation; condition mismatch; changed root/member",
+      "output": "native I03 facts exact refs/replay/negative",
+      "restore": "exact manifest/I02/source restore"
+    },
+    {
+      "consumer": "execute_saved_i03/i05/batch + BatchExecutionRunner saved_mode with PreparedI03Session",
+      "domain": "CURRENT_FIRST_CONSUMER_WRAPPER_BATCH",
+      "evidence": "C WITNESS/test_prepared_abi.py 2 passed",
+      "exact_hold": "Exact-type guards reject PreparedSavedC11Admission; SavedC11Admission.execute_i03/i05 open fresh sessions. Owner-approved adapter required; no generic isinstance relaxation.",
+      "first_reader_abi": "rawlsing_next/pre553_saved_workload_integration.py::execute_saved_batch",
+      "grade": "PROPOSED_NOT_WIRED",
+      "input": "one prepared context per release/universe/workload",
+      "negative": "revocation/current; changed root; condition mismatch",
+      "output": "native facts exact refs/replay/negative",
+      "restore": "exact manifest/I02/source restore"
     },
     {
       "consumer": "T5/T6 boundary to N9/SEAM/SOROK",
       "domain": "FUTURE_NONPRECLUSION",
-      "exact_hold": "No selected N9/N10W/SEAM/SOROK actual first reader is issued; only the typed boundary and preserved information.",
+      "exact_hold": "No selected N9/N10W/SEAM/SOROK actual first reader is issued.",
       "first_reader_abi": "rawlsing_next/sorok_history/owner.py::HistoricalWorld",
       "grade": "EXACT_OWNER_HOLD",
-      "input": "qualified F4/FF/N9/world/encounter objects with separate owner authority",
+      "input": "qualified F4/FF/N9/world/encounter objects",
       "negative": "no survey-to-actor private knowledge; no offscreen access; no fictional-to-observed mutation",
       "output": "permitted actor/world possibility or exact hold",
       "restore": "exact owner/source/current bytes and hold"
@@ -256,22 +268,70 @@
     "sha256": "44b17c58e9610b856abe7b95b03cd6b011338b7a7d9d669bbedba206f685a573"
   },
   "competing_implementations_mandatory": false,
+  "construction_source_transport": {
+    "gate": "If source-vs-transport independence cannot be proved for every family/selector, keep the second certificate and do not claim one-certificate.",
+    "one_journal_merge": "The 13-family journal may be the exact body transport, but Q2 root identity is computed from the source stream; journal parity is checked, not used to originate Q2.",
+    "rule": "Q2 certificate must be built from the source-derived typed stream, never from a re-parsed JSONL transport journal.",
+    "status": "CONDITIONAL_OWNER_GATED_NOT_IMPLEMENTED"
+  },
+  "d1_d5_correction": {
+    "D1": "specialist_dependency now BOTH_RETURNS_RECEIVED_AND_ADJUDICATED; historical PENDING plan preserved only as historical_plan_only.",
+    "D2": "physical_architecture/layers/sequence/per-requirement effects regenerated for prepared-session-first + conditional construction/recovery + held durable index.",
+    "D3": "v2 supplementary guard added under GUARDS/; checks 16+4=20 requirements, 4 dispositions, 4 crosswalk rows, specialist/status and selected/held/conditional coherence.",
+    "D4": "wrapper/Batch handoff relabeled PROPOSED_NOT_WIRED; exact rejection boundaries and owner protocol recorded; direct prepared 34-test court separate.",
+    "D5": "provisional/reference docs marked SUPERSEDED_BY_FINAL and manifest roles distinguish historical from authoritative.",
+    "N3": "Q2 must be source-derived; journal is transport/parity only; second-certificate fallback remains."
+  },
+  "d4_abi_handoff": {
+    "exact_rejections": [
+      {
+        "effect": "PreparedSavedC11Admission rejected",
+        "guard": "type(admission) is SavedC11Admission",
+        "lines": "42,54,94",
+        "path": "rawlsing_next/pre553_saved_workload_integration.py"
+      },
+      {
+        "effect": "prepared subclass rejected",
+        "guard": "saved_mode requires type(repository) is SavedC11Admission",
+        "line": "406",
+        "path": "rawlsing_next/pre553_batch_runner.py"
+      },
+      {
+        "effect": "relaxing type alone does not reuse prepared session",
+        "guard": "execute_i03 delegates to executor which opens fresh DirectEstateI03Session; execute_i05 opens fresh session",
+        "lines": "424-444,446-477",
+        "path": "rawlsing_next/pre553_saved_c11_admission.py"
+      }
+    ],
+    "minimal_owner_protocol": [
+      "do not use generic isinstance relaxation",
+      "explicit prepared-session mode with exact PreparedSavedC11Admission whitelist",
+      "per-workload prepared context; per-operation check_current/fact/replay",
+      "thread one context through Batch units",
+      "owner ACK from S2-D saved admission + BatchExecutionRunner owners"
+    ],
+    "proof_obligations": [
+      "one _build through actual wrapper/Batch",
+      "four distinct operations exact fact-ref parity",
+      "revocation/current refusal before/after",
+      "changed root/member refusal",
+      "exact restore"
+    ],
+    "status": "PROPOSED_NOT_WIRED"
+  },
   "decision_process": "ONE_SYNTHESIS_NO_MANDATORY_RIVAL",
   "entire_source_to_actor_dataflow": "SAV/DTA source snapshot → one Q2 decode/projection (native question/option/form/routing/missing, respondent/occurrence, weights/design, authority/current) → one canonical 13-family Parquet/Zstd estate with body_json once, typed projections and event locator; Q2 direct-I02 roots + writer physical proof (one-certificate conditional, second-certificate fallback); cold admission H (manifest/I02/current/member checks) → one prepared native session S per workload → existing native I03/I05/F1-F4 Q and exact fact/replay O per distinct operation → FF01 descriptive / independent FF02 structural → N9/N10E/N10W → SEAM encounter/access → separately governed SOROK actor. Each edge keeps producer/authority/time/first-consumer/negative/invalidation; survey observation never becomes actor private knowledge, material power or fictional observed history.",
   "final_selection_frozen": true,
   "first_consumer_handoff": {
-    "abi": "rawlsing_next/pre553_prepared_saved_i03.py::PreparedI03Session.execute_i03; rawlsing_next/pre553_saved_workload_integration.py::execute_saved_batch",
-    "consumer": "PreparedSavedC11Admission.open + prepared_i03 in SavedC11Admission.execute_i03 and execute_saved_batch per unit",
-    "grade": "EXECUTED_SOURCEFREE_EXISTING_CODE_NOT_NATIVE/PROTECTED",
-    "negative": "revocation after preparation refuses; changed member/index/root refuses; no sourcefree relabel to native",
-    "positive": "four distinct operations (selected, F2 forward, F4 3+, raw) exact fact-ref parity with one-shot baseline; one _build for the workload",
-    "preconditions": [
-      "exact sourcefree estate/manifest/I02/current",
-      "exact query/predicate refs",
-      "runtime catalog",
-      "owner-private root"
-    ],
-    "restore": "exact manifest/I02/source restore reproduces same fact projections"
+    "direct_abi": "PreparedSavedC11Admission.open + prepared_i03",
+    "direct_prepared_status": "EXECUTED_SOURCEFREE_DIRECT_PATH_3_OF_34",
+    "negative_direct": "revocation/current/condition mismatch refusal",
+    "positive_direct": "four distinct sourcefree operations exact parity, one _build (direct test)",
+    "restore_direct": "exact restore",
+    "wrapper_batch_abi": "execute_saved_batch/BatchExecutionRunner saved_mode requires exact SavedC11Admission; prepared subclass rejected",
+    "wrapper_batch_proof": "one _build through actual execute_saved_batch with four operations, exact fact-ref parity, revocation/current refusal, exact restore; separate implementer + owner ACK.",
+    "wrapper_batch_required_protocol": "Owner-approved prepared-session-aware adapter/protocol: explicit prepared mode; exact type whitelist for PreparedSavedC11Admission, not generic isinstance; one prepared context threaded through Batch units; per-unit check_current and exact fact/replay; exposed release_ref/current guard; no shared-file edit by architect.",
+    "wrapper_batch_status": "PROPOSED_NOT_WIRED"
   },
   "first_real_consumer": "Authorized generic sourcefree saved C11 native I03 and I05 operations",
   "frame_ref": {
@@ -4816,13 +4876,46 @@
     }
   ],
   "implementation_sequence": [
-    "1. Freeze S1 frame (commit 5a619ff9) and preserve 118/16 statements.",
-    "2. Add write_direct_estate_from_certified_stream on a descendant; one source decode, one I02, no JSONL, existing row schema/native readers.",
-    "3. Prove sourcefree parity + changed body/locator/root/revocation refusal + exact restore; measure writer/retained/scratch.",
-    "4. Add immutable derived selector/denominator index; prove cold open and 1/10/100 sourcefree reuse without per-session full scan.",
-    "5. Complete saved Batch/NORMAL/resume owner handoffs; verify native Batch/NORMAL/PARTIAL/ABSENT over the same estate.",
-    "6. Run lawful native 100k 600-1,300-slot/6GiB/1-10-100 profile; if native enumeration dominates, open a separate bounded accelerator decision.",
-    "7. Only after scoped independent C/H1: use the estate for one joined F1-F4/FF01 first consumer; FF02/N9/N10W/SEAM/SOROK remain separate owner work."
+    {
+      "action": "Freeze S1 and v2 addendum; preserve 16/118 and specialist pins.",
+      "status": "DONE_DOCUMENTARY",
+      "step": 1
+    },
+    {
+      "action": "Add owner-approved prepared-session-aware first-consumer/Batch adapter; one prepared context per release/universe/workload; prove one _build/four operations exact parity, current/revocation, restore. No generic isinstance relaxation.",
+      "status": "SELECTED_NEXT_INTEGRATION_PROPOSED_NOT_WIRED",
+      "step": 2
+    },
+    {
+      "action": "One 13-family journal + one source-derived Q2 certificate only with full physical body/lane/selector proof against Q2; otherwise keep second certificate. Q2 must not be built from re-parsed journal.",
+      "status": "CONDITIONAL_OWNER_GATED",
+      "step": 3
+    },
+    {
+      "action": "Private stage/no-clobber claim/lease recovery repair; crash-injection witness; typed orphan; completed release untouched.",
+      "status": "CONDITIONAL_OWNER_GATED",
+      "step": 4
+    },
+    {
+      "action": "#1006 H/S/Q/O measurement on one authorized real-width workload; 1/10/100 same-process and 10 fresh-process; fact/replay parity.",
+      "status": "HELD_MEASUREMENT_GATED",
+      "step": 5
+    },
+    {
+      "action": "Durable locator index only if S material and compact exact encoding passes binding/invalidation/retained-size gates.",
+      "status": "HELD_CONDITIONAL",
+      "step": 6
+    },
+    {
+      "action": "Batch/NORMAL/resume shared-file owner ACKs; native/source/science/actor and 100k/6GiB/1-10-100 remain held.",
+      "status": "OWNER_HOLD",
+      "step": 7
+    },
+    {
+      "action": "Same distinct C rechecks this exact corrected candidate.",
+      "status": "PENDING_DISTINCT_C",
+      "step": 8
+    }
   ],
   "independent_s1_acceptance": false,
   "measurement_limits": {
@@ -4854,196 +4947,224 @@
   "obligation_crosswalk": {
     "coverage": "118 identities + 16 base requirements + 4 v2 addendum requirements + separate 52/24/21 navigation",
     "path": "S2_S3/FINAL_OBLIGATION_CROSSWALK.tsv",
-    "sha256": "e22a561a783d6fc3b1bb406013d3c402fca30be49ddb22c5104a91a9620c0668"
+    "sha256": "197c0bf48dcf86e65904b5055b4062f3e97c91dd22ab03375d41a1964cd14557"
   },
   "per_requirement_candidate_effect": [
     {
-      "candidate_effect": "SC-ESTATE preserves native question/option/form/routing/missing in the source stream and exact body; the Parquet typed projection is never a substitute for the native refs.",
+      "candidate_effect": "Unchanged: native question/option/form/routing/missing remain in the source stream and exact body; prepared session does not alter source semantics.",
       "requirement_id": "REQ-SOURCE-SEMANTICS"
     },
     {
-      "candidate_effect": "The canonical estate keeps body_json once + locator + manifest; cold reopen verifies member/row-group/manifest roots and CURRENT; a matching body hash alone is not source truth.",
+      "candidate_effect": "Unchanged canonical body/locator/CURRENT/cold restore; prepared session is an index reuse, not a new persistence authority.",
       "requirement_id": "REQ-C11-PERSISTENCE"
     },
     {
-      "candidate_effect": "Native I03/I05 run over the saved estate with sourcefree labels; the same native evaluator is used, never relabeled native.",
+      "candidate_effect": "Direct prepared session uses the same native execute_empirical_query/discovery with check_current before/after; Batch/wrapper prepared path is PROPOSED_NOT_WIRED.",
       "requirement_id": "REQ-CURRENT-I03-I05"
     },
     {
-      "candidate_effect": "V549/V550/V550J/F26 functions are carried in the typed event/occurrence/risk/joint paths; the old PostgreSQL carrier and old first-value/stale-cache bugs are not rebuilt.",
+      "candidate_effect": "V549/V550/V550J/F26 semantics remain in native event/occurrence/risk/joint paths; no carrier reconstruction and no stale cache.",
       "requirement_id": "REQ-HISTORICAL-DDM"
     },
     {
-      "candidate_effect": "The estate preserves respondent-coherent event rows so native F1-F4 can compute true same-person k>=3, forward/reverse denominators and branch/minority without pairwise substitution.",
+      "candidate_effect": "Native F1-F4 remain the authority; prepared session changes only index build S, not same-person k>=3, denominators or branch/minority.",
       "requirement_id": "REQ-F1-F4"
     },
     {
-      "candidate_effect": "FF01 descriptive facts consume native C11/F1-F4; FF02 remains a separately authorized structural owner; the physical estate adds no survey-to-power edge.",
+      "candidate_effect": "FF01 descriptive vs FF02 independent structural remains separate; no physical change introduces opinion-to-power.",
       "requirement_id": "REQ-FIELD-FORGE"
     },
     {
-      "candidate_effect": "The estate preserves position/time/occurrence/access fields; SEAM/SOROK remain separate owner readers with encounter/access/consent; no source vector becomes actor private knowledge.",
+      "candidate_effect": "SEAM/SOROK remain separate owner readers with encounter/access/consent; no source vector becomes actor private knowledge.",
       "requirement_id": "REQ-SEAM-WORLD-ACTOR"
     },
     {
-      "candidate_effect": "The manifest binds independent I02 logical/physical roots and source/release/current; revocation refuses even after index creation; exact restore rebuilds the same facts.",
+      "candidate_effect": "H/current/revocation checks remain; recovery repair selected conditionally; one-certificate is conditional with second-certificate fallback, never unconditional.",
       "requirement_id": "REQ-AUTHORITY-RECOVERY"
     },
     {
-      "candidate_effect": "SC-ESTATE removes the second I02, JSONL replay, per-row re-encode and per-session full scan; native 100k/6GiB/1-10-100 remains NOT_RUN until measured.",
+      "candidate_effect": "Prepared session removes repeated S within one process only; Q/O remain; fresh-process S remains; second I02/JSONL removal is conditional; durable index is held. Native 100k/6GiB/1-10-100 NOT_RUN.",
       "requirement_id": "REQ-RESOURCE-ECONOMICS"
     },
     {
-      "candidate_effect": "Respondent-coherent event rows are stored, not pairwise summaries; even/odd parity and true triple support can be recomputed; a pairwise product is refused as F4.",
+      "candidate_effect": "Respondent-coherent events and true same-person k>=3 remain; pairwise substitutes refused; prepared session does not change joint semantics.",
       "requirement_id": "REQ-MULTIWAY-JOINT"
     },
     {
-      "candidate_effect": "Typed state and risk/denominator basis keys are retained; forward/reverse eligible bases are distinct; NOT_ASKED is not zero.",
+      "candidate_effect": "Typed state and distinct forward/reverse eligible bases remain; NOT_ASKED is not zero; no shared denominator across directions.",
       "requirement_id": "REQ-DENOMINATOR-MISSING-ROUTING"
     },
     {
-      "candidate_effect": "The durable index and prepared session target 1/10/100 distinct operations; the 600-1,300-slot/6GiB/process-tree measurement remains a separate lawful run, not a synthetic claim.",
+      "candidate_effect": "Prepared session targets same-process 1/10/100 amortization of S; fresh-process opens still pay S; durable index is held pending H/S/Q/O and compact exact encoding.",
       "requirement_id": "REQ-PHYSICAL-WORKLOAD-1-10-100"
     },
     {
-      "candidate_effect": "The index is bound to the manifest/I02 roots and refuses on revocation; it can be rebuilt from the canonical estate but never overrides source/current truth.",
+      "candidate_effect": "Independent I02/current/revocation remains mandatory; no durable index selected, so no index-binding claim is made for the selected design; if later qualified it must obey FRAME-Q2.",
       "requirement_id": "REQ-SOURCE-I02-REVOCATION"
     },
     {
-      "candidate_effect": "The physical estate preserves observed facts; an independent FF02/world change may affect only the qualified world object; survey opinion cannot become material power.",
+      "candidate_effect": "Observed facts unchanged; independent world/structural changes affect only qualified world objects; no survey-to-power edge.",
       "requirement_id": "REQ-FF01-FF02-WORLD-ACTOR-FIREWALL"
     },
     {
-      "candidate_effect": "Terminal IDs remain explicit graph nodes/exact holds; the architecture preserves the information they need and does not turn T1-T7 into stages or serialize the terminals.",
+      "candidate_effect": "Terminals remain explicit nodes/exact holds; no serial pipeline; prepared session does not implement or promote any terminal.",
       "requirement_id": "REQ-TERMINAL-F5-F8-N11-N12"
     },
     {
-      "candidate_effect": "The 118 mixed identities keep 26 NOT_ADOPTED and 14 HELD; no row is promoted by being carried in the physical estate.",
+      "candidate_effect": "26 NOT_ADOPTED/14 HELD remain; no source fate promoted; separate 52/24/21 navigation only.",
       "requirement_id": "REQ-HISTORICAL-NOADOPTION-CONSERVATION"
     }
   ],
   "physical_architecture": {
+    "actual_current": [
+      "SavedC11Admission.execute_i03/i05 open a fresh DirectEstateI03Session per call.",
+      "DirectEstateI03Session._build scans all event/side-family rows and builds a temporary SQLite locator index S.",
+      "execute_saved_i03/i05/batch and BatchExecutionRunner saved_mode accept only exact SavedC11Admission; PreparedSavedC11Admission is rejected.",
+      "write_direct_estate builds a second I02, re-reads every row, and creates the target before manifest."
+    ],
     "canonical_artifacts": [
       "13 family Parquet/Zstd members",
       "event_locator.parquet",
-      "manifest.json with roots/counts/per-row-group digests/member hashes"
+      "manifest with roots/counts/member hashes"
     ],
     "derived_artifacts": [
-      "selector/denominator index (keys+locators+stats)",
-      "content-addressed evidence/replay fragments",
-      "small operation receipts"
+      "prepared session is process-local, not retained",
+      "exact content-addressed evidence set refs (contract)",
+      "durable index is HELD, not an artifact of this selection"
     ],
     "invariants": [
-      "one source decode per release",
-      "one I02 certification per release",
-      "no second persistent body corpus",
-      "index is derived and rebuildable",
-      "no body hash alone proves source truth",
-      "no sourcefree result relabeled native",
-      "no survey-to-actor or opinion-to-power edge",
-      "no fictional backflow into observed C11",
-      "all 26 NOT_ADOPTED and 14 HELD remain"
+      "prepared session removes repeated S only; Q/O remain",
+      "fresh-process S is not removed by selected design",
+      "second I02 is not removed unconditionally",
+      "JSONL is not removed unconditionally",
+      "durable index is not selected/implemented",
+      "Q2 must be source-derived, never re-parsed transport journal",
+      "no sourcefree->native label promotion",
+      "no source->actor/opinion->power/fictional->observed edge",
+      "26 NOT_ADOPTED/14 HELD preserved"
     ],
     "layers": [
       {
-        "artifact": "one-shot typed 13-family stream with native refs/occurrence/state/weights/design/authority",
-        "authority": "source owner/CURRENT",
-        "first_consumer": "L1 compiler",
+        "artifact": "typed 13-family stream with native refs/occurrence/state/weights/design/authority",
+        "first_consumer": "canonical writer",
         "id": "L0_SOURCE",
-        "loss_guard": "native meaning, occurrence, missing/routing, weights, time",
-        "producer": "S01/S02 source decoder"
+        "producer": "Q2 source decode/projection",
+        "status": "ACTUAL"
       },
       {
-        "artifact": "13-family Parquet/Zstd body estate + event locator + manifest + per-row-group digests",
-        "authority": "independent I02 roots + source/release/current guard",
-        "first_consumer": "L2 index / native readers",
-        "id": "L1_C11",
-        "loss_guard": "exact body, refs, selectors, family counts, revocation",
-        "producer": "single-certification compiler"
+        "artifact": "13-family Parquet/Zstd body_json once + typed lanes + event_locator + manifest",
+        "first_consumer": "cold admission",
+        "id": "L1_CANONICAL",
+        "producer": "pre553_source_direct_parquet_estate.write_direct_estate",
+        "status": "ACTUAL_UNCHANGED"
       },
       {
-        "artifact": "immutable sorted posting/denominator/row-group-stat index (keys+locators only)",
-        "authority": "manifest-bound derived; rebuildable; never authority",
-        "first_consumer": "L3 query adapter",
-        "id": "L2_INDEX",
-        "loss_guard": "no body duplication; no stale authority",
-        "producer": "derived index builder"
+        "artifact": "manifest/member/I02/current validation H",
+        "first_consumer": "prepared session",
+        "id": "L2_COLD_H",
+        "producer": "VerifiedDirectEstate/SavedC11Admission",
+        "status": "ACTUAL_REQUIRED"
       },
       {
-        "artifact": "facts/receipts/replay/negatives",
-        "authority": "native evaluator + exact risk/denominator/authority",
-        "first_consumer": "FF01/FF02/N9 consumers",
-        "id": "L3_NATIVE",
-        "loss_guard": "true same-person joint, directional denominators, typed missing, sourcefree label",
-        "producer": "existing native I03/I05/Batch/F1-F4 evaluators"
+        "artifact": "one prepared DirectEstateI03Session context per release/universe/workload",
+        "first_consumer": "native I03/I05",
+        "id": "L3_PREPARED_S",
+        "producer": "PreparedI03Session direct path; owner-approved adapter for Batch",
+        "status": "SELECTED_NEXT_INTEGRATION_NOT_WIRED_FOR_BATCH"
       },
       {
-        "artifact": "content-addressed fact/replay fragments + small operation receipt + shared risk/denominator refs",
-        "authority": "operation/release identity",
-        "first_consumer": "downstream readers/replay",
-        "id": "L4_EVIDENCE",
-        "loss_guard": "no output amplification; exact replay/restore",
-        "producer": "evidence fragment writer"
+        "artifact": "exact facts/risk/denominator/negative/replay O",
+        "first_consumer": "F1-F4/FF01/downstream",
+        "id": "L4_NATIVE_Q_O",
+        "producer": "execute_empirical_query/execute_exact_bounded_discovery",
+        "status": "ACTUAL_UNCHANGED"
       },
       {
-        "artifact": "FF02/N9/N10E/N10W/PRE-V3/SEAM/SOROK objects",
-        "authority": "separate science/actor owners",
-        "first_consumer": "named owner reader or exact hold",
-        "id": "L5_DOWNSTREAM",
-        "loss_guard": "no opinion-to-power, survey-to-actor, fictional-to-observed",
-        "producer": "separate FF/world/actor owners"
+        "artifact": "only if full physical body/lane/selector proof against source-derived Q2 survives",
+        "first_consumer": "L2 cold admission",
+        "id": "L5_CONSTRUCTION_CONDITIONAL",
+        "producer": "one-journal/one-certificate writer",
+        "status": "CONDITIONAL_NOT_SELECTED"
+      },
+      {
+        "artifact": "typed orphan; manifest-linked completion; completed release untouched",
+        "first_consumer": "recovery operator/cold admission",
+        "id": "L6_RECOVERY",
+        "producer": "private stage/no-clobber claim/lease",
+        "status": "SELECTED_CONDITIONAL"
+      },
+      {
+        "artifact": "locators only; bound to manifest/I02/release/replay/universe/census/topology/schema",
+        "first_consumer": "future fresh-process query path if owner gate passes",
+        "id": "L7_DURABLE_INDEX",
+        "producer": "future compact exact locator index",
+        "status": "HELD_NOT_SELECTED"
+      },
+      {
+        "artifact": "qualified world/actor objects or exact holds",
+        "first_consumer": "named owner reader",
+        "id": "L8_DOWNSTREAM",
+        "producer": "separate FF02/N9/N10W/SEAM/SOROK owners",
+        "status": "OWNER_HOLD"
       }
     ],
-    "name": "Single-certification canonical C11 estate + immutable derived access index",
+    "name": "Prepared-session-first + conditional construction/recovery; durable index held",
     "owner_interfaces": [
       {
-        "contract": "accept one-shot sections + already-built Q2 roots; no second I02; no JSONL",
-        "owner": "S2-C physical writer owner",
-        "status": "PROPOSED_MINIMAL_CHANGE",
-        "symbol": "write_direct_estate_from_certified_stream"
-      },
-      {
-        "contract": "native facts over exact saved estate",
+        "contract": "one _build/four operations; check_current; exact facts/replay",
         "owner": "S2-D saved admission owner",
-        "status": "EXISTING_EXECUTED_SOURCEFREE",
-        "symbol": "SavedC11Admission.execute_i03/execute_i05"
+        "status": "DIRECT_SOURCEFREE_EXECUTED",
+        "symbol": "PreparedI03Session.execute_i03/execute_i05"
       },
       {
-        "contract": "complete owner ACK; no silent shared-file edit",
-        "owner": "Batch/issued-workload/resume shared-file owners",
-        "status": "EXISTING_OWNER_GATED",
-        "symbol": "execute_saved_batch/execute_saved_normal/_execute_saved_resume"
+        "contract": "prepared-session-aware adapter; exact-type owner ACK; no generic isinstance relaxation",
+        "owner": "S2-D saved admission + BatchExecutionRunner owners",
+        "status": "PROPOSED_NOT_WIRED",
+        "symbol": "execute_saved_i03/execute_saved_i05/execute_saved_batch"
       },
       {
-        "contract": "exact native facts -> FF01 descriptive; FF02 separate",
-        "owner": "F1-F4/FF science owner",
-        "status": "EXISTING_SCOPED",
-        "symbol": "pre553_analytical_composition / field_forge_conditional_support"
+        "contract": "source-derived Q2 only; full physical proof; second-certificate fallback",
+        "owner": "S2-C/D physical writer owner",
+        "status": "CONDITIONAL_OWNER_GATED",
+        "symbol": "write_direct_estate one-journal/one-certificate"
       },
       {
-        "contract": "encounter/access/consent; no survey vector as person",
+        "contract": "private stage, no-clobber claim/lease, typed orphan, crash-injection witness",
+        "owner": "S2-C/D physical writer owner",
+        "status": "SELECTED_CONDITIONAL",
+        "symbol": "post-publication recovery"
+      },
+      {
+        "contract": "measurement, compact exact encoding, binding/invalidation, retained-size gate",
+        "owner": "S2-C/D + S05/Long Memory + S04/I03",
+        "status": "HELD_NOT_SELECTED",
+        "symbol": "durable locator index"
+      },
+      {
+        "contract": "encounter/access/consent; no source vector as person",
         "owner": "SOROK actor/consent owner",
         "status": "EXACT_OWNER_HOLD",
         "symbol": "sorok_history.owner.HistoricalWorld"
       }
     ],
     "proof_model": [
-      "I02 logical root over exact object/selector semantics",
-      "per-row-group byte digest over exact physical rows",
-      "one streaming byte readback at publish",
-      "independent manifest hash + source/release/current/revocation guard",
-      "changed-byte/locator/root/revocation refusal and exact restore"
+      "H manifest/I02/member/current on every fresh admission",
+      "one prepared session S per exact release/universe/workload",
+      "exact native Q/O per operation",
+      "second-certificate fallback unless full source-derived Q2 physical proof survives",
+      "recovery no-clobber claim/lease; no false atomic-rename guarantee",
+      "durable index only under future binding/invalidation/retained-size gate"
     ],
     "rejected_shortcuts": [
-      "JSONL as canonical query store",
-      "primary SQLite/DuckDB duplicate body",
-      "W03 full object graph",
-      "pairwise substitute for F4",
-      "per-query source re-read",
-      "precompute all answers",
-      "Stone/Arrow IPC as primary without evidence"
+      "unconditional one-certificate/JSONL removal",
+      "durable index as first step",
+      "generic isinstance relaxation of exact admission guards",
+      "JSONL-derived Q2 certificate",
+      "per-row-group digest as accepted physical proof without full Q2 parity",
+      "new primary DB/Stone as selected format"
     ],
-    "schema": "ANVIL_SC_ESTATE_V1"
+    "schema": "ANVIL_SELECTED_DESIGN_V1",
+    "status": "SELECTED_NEXT_INTEGRATION + CONDITIONAL_OWNER_GATES + HELD_OPTION"
   },
   "proof_contract": {
     "cold_H": "manifest/I02 roots/release/replay/universe/member hashes/current guard every admission",
@@ -5493,6 +5614,20 @@
   },
   "schema": "ANVIL_R7_INTEGRATED",
   "scientific_boundary_and_nonpreclusion": "Present-hard: native source meaning; body/locator/CURRENT; sourcefree-vs-native labels; historical DDM functions; true same-person k>=3 and directional denominators; I02 independent comparison/revocation; exact evidence/replay; H/S/Q/O honesty; interrupted-construction recovery. Future nonpreclusion: the canonical estate preserves native option/routing/occurrence/missing/weight/design/time/language and respondent coherence for F5-F8, N9/N10E/N10W, PRE-V3/N11/N12, SEAM and SOROK. Separate owner-held: FF02 independent structural/material power, N9 world, N10W situated possibility, SEAM encounter/access and SOROK consent/actor. No survey-to-actor private knowledge, opinion-to-institutional-power, fictional-to-observed backflow, stratum-to-individual identity, or pairwise substitute for a true joint. The native evaluator executes on sourcefree fixtures; sourcefree is a source-rights/authority label, not an impossibility of native code execution.",
+  "selected_design": {
+    "construction_one_journal_one_certificate": "CONDITIONAL_OWNER_GATED_FULL_Q2_PHYSICAL_PROOF_REQUIRED",
+    "direct_prepared_session_status": "EXECUTED_SOURCEFREE_DIRECT_PATH_34_TEST_COURT",
+    "durable_index_status": "HELD_NOT_SELECTED",
+    "fresh_session_scan_removed": false,
+    "jsonl_removed_unconditionally": false,
+    "name": "PREPARED-SESSION-FIRST + CONDITIONAL CONSTRUCTION/RECOVERY; DURABLE INDEX HELD",
+    "prepared_session_first": true,
+    "prepared_session_status": "SELECTED_NEXT_INTEGRATION_PROPOSED_NOT_WIRED_FOR_BATCH",
+    "q2_must_originate_from_source_stream": true,
+    "recovery_repair": "SELECTED_CONDITIONAL_NO_CLOBBER_CLAIM_LEASE_TYPED_ORPHAN",
+    "second_certificate_fallback": "REQUIRED_IF_FULL_Q2_PROOF_DOES_NOT_SURVIVE",
+    "second_i02_removed_unconditionally": false
+  },
   "selection_status": "FINAL_CANDIDATE_FROZEN_PENDING_DISTINCT_C",
   "self_critique": [
     "I initially over-weighted the durable index from construction/provisional; Query correctly shows the cited SQLite index is 1.30GB (4.19x estate) and prepared-session reuse only removes S. The final candidate therefore selects prepared-session-first and holds the durable index behind measurement.",
@@ -5542,38 +5677,20 @@
     "status": "BOTH_RETURNS_RECEIVED_AND_ADJUDICATED"
   },
   "specialist_dependency": {
-    "adjudication_rule": "No majority vote. Any material new requirement or source contradiction returns to S1 as a new frame version. Specialist disagreement is integrated by the synthesis owner with exact reasons; a targeted duel is optional only for one named unresolved question with same evidence. Final decision remains unfrozen until both returns are adjudicated and independent C is separately commissioned.",
-    "frame_ref": {
-      "canonical_digest": "7e7bfb9638f23894fd244a703e8a6b88d361f90fafa5b2b10ac78c1f24229913",
-      "frozen_commit": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
-      "path": "S1/FRAME.json",
-      "sha256": "44b17c58e9610b856abe7b95b03cd6b011338b7a7d9d669bbedba206f685a573"
+    "adjudication": "S2_S3/SPECIALIST_ADJUDICATION.md",
+    "construction_return": "f8c98027599b62069c03a269989075b4442f5138",
+    "final_paths": [
+      "S2_S3/FINAL_DECISION.json",
+      "S2_S3/FINAL_ARCHITECTURE.md",
+      "S2_S3/SPECIALIST_ADJUDICATION.md"
+    ],
+    "final_selection_frozen": true,
+    "historical_plan_only": {
+      "note": "Preserved from the provisional candidate; superseded by both frozen returns and this final adjudication.",
+      "status": "PENDING_TWO_FROZEN_SPECIALIST_RETURNS"
     },
-    "same_frame_required": true,
-    "specialist_1_construction_storage_proof_recovery": {
-      "consumption_rule": "If it shows the single-certification proof is weaker than the current full per-row re-encode, retain the second pass and re-cost; if it shows a material new requirement, version S1 before decision.",
-      "question": "Does the single-certification canonical estate plus per-row-group physical digest and manifest-bound I02 roots preserve the current attacker resistance while removing the second I02, 13 JSONL journals, per-row object re-encode and per-session full scan? What are the exact retained/scratch/writer/recovery costs and failure dispositions?",
-      "required_evidence": [
-        "exact code/call path at cea2d4d and accepted S2-C/D cuts",
-        "sourcefree writer/retained/scratch measurement or precise bounded hold",
-        "changed body/locator/root/revocation/restore attacks",
-        "crash/interrupted-publish/rebuild behavior",
-        "comparison to current 3033.7s/5.26GB/4.39GB/1.30GB witness",
-        "strongest reverser and smallest falsifier"
-      ]
-    },
-    "specialist_2_native_repeated_query_evidence_output": {
-      "consumption_rule": "If native enumeration dominates, keep the storage direction but isolate a separate columnar-accelerator decision; if index reuse cannot be made non-authoritative, reject the durable-index leg.",
-      "question": "Can the manifest-bound immutable selector/denominator index plus prepared native session deliver economical 1/10/100 distinct native I03/I05/Batch/F1-F4 operations and bounded evidence/replay output without a second evaluator or a stale authority? Where does native risk enumeration dominate?",
-      "required_evidence": [
-        "exact native I03/I05/F1-F4 call path and risk/denominator behavior",
-        "cold/fresh-process vs same-process 1/10/100 model or measured sourcefree run",
-        "evidence/fact/replay output amplification accounting",
-        "index invalidation/revocation/rebuild behavior",
-        "strongest reverser and smallest falsifier"
-      ]
-    },
-    "status": "PENDING_TWO_FROZEN_SPECIALIST_RETURNS"
+    "query_return": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a",
+    "status": "BOTH_RETURNS_RECEIVED_AND_ADJUDICATED"
   },
   "stage": "INTEGRATED_DECISION",
   "strongest_surviving_objection": "The strongest choice-changing unknown is the split among H, S, Q and O: prepared-session-first is the smallest query change and adds no retained artifact, but it does not help a one-operation fresh process; a durable locator index is the only route that removes S on fresh open, yet the cited SQLite index is 1.30GB (4.19x the estate) and may be invalidated often by source/currentness/revocation, making total retained cost worse. The second unknown is construction proof: one-certificate/one-journal is justified only if the full physical body/lane proof against Q2 survives; otherwise the second certificate must stay. The owner route is #1006 measured-cost owner + S2-C/D physical owner + S04/I03 scientific owner; the smallest falsifier is the #1006 G2 H/S/Q/O run with 1/10/100 same-process and 10 fresh-process opens, fact/replay parity, changed-source/revocation refusal, retained/scratch/RSS/output.",
@@ -7854,6 +7971,7 @@
       "command": "pytest -q rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py",
       "grade": "EXECUTED_SOURCEFREE",
       "log": "RUNS/saved_native_first_consumer.txt",
+      "note": "Direct prepared/saved native evaluator path; not the named execute_saved_batch prepared wrapper.",
       "result": "24 passed in 12.78s"
     },
     {
@@ -7867,6 +7985,18 @@
       "grade": "SPECIALIST_DOCUMENTARY",
       "log": "S2_S3/SPECIALIST_ADJUDICATION.md",
       "result": "7 hashes/10 source pins HQ verified"
+    },
+    {
+      "command": "pytest -q WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/WITNESS/test_prepared_abi.py",
+      "grade": "DISTINCT_C_BOUNDED_ABI_WITNESS",
+      "log": "C RUNS/prepared_abi_witness.txt",
+      "result": "2 passed in 2.24s; exact-type rejection of prepared subclass by execute_saved_i03 and BatchExecutionRunner"
+    },
+    {
+      "command": "python3 GUARDS/v2_supplementary_guard.py ...",
+      "grade": "LOCAL_SUPPLEMENTARY_STRUCTURAL_GUARD",
+      "log": "RUNS/v2_guard_baseline.txt; RUNS/v2_guard_negatives.txt",
+      "result": "PASS_BASELINE_20_REQUIREMENTS_118_IDENTITIES; negatives REFUSE; restore PASS"
     }
   ]
 }

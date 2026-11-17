@@ -1,9 +1,9 @@
 # RETURN — final conditional integrated candidate
 
-**Status:** `FINAL_CANDIDATE_FROZEN_PENDING_DISTINCT_C`.
+**Status:** `FINAL_CANDIDATE_CORRECTED_PENDING_SAME_DISTINCT_C_RECHECK`.
+**Predecessor:** `98b8d261accfcc7834c86d3f0d52f23e4524f666` (tag `anvil-architecture-candidate-20261117-r1`, untouched).
 **Branch:** `agent/anvil-integrated-architecture-20261117-r1`.
-**Candidate freeze tag:** `anvil-architecture-candidate-20261117-r1`
-(the tag points at the final candidate commit; see the pushed tag).
+**Corrected candidate tag:** `anvil-architecture-candidate-20261117-r2` (applied at this correction commit).
 **Final selection frozen:** yes, as a **conditional candidate**; **not accepted**.
 **Independent C / protected H1:** not performed, not claimed.
 
@@ -105,3 +105,8 @@ PASS is structural, not independent architecture/science acceptance.
 
 Stop for distinct independent C on the tagged candidate. No author acceptance,
 no protected adoption, no implementation or benchmark campaign.
+
+
+## D1–D5 correction (same distinct C)
+
+See `S2_S3/D1_D5_CORRECTION_MAP.md`. D1 specialist state received/adjudicated; D2 machine architecture/sequence/per-requirement effects/crosswalk regenerated for prepared-session-first + conditional construction/recovery + held index; D3 v2 supplementary guard calls accepted guard and checks 20/20 + 118/118 with omission/unconditional/stale negatives REFUSE; D4 wrapper/Batch grade `PROPOSED_NOT_WIRED`, direct prepared path separate, exact ABI boundaries and owner protocol recorded; D5 provisional files marked `SUPERSEDED_BY_FINAL` and manifest roles split. N3 Q2 must be source-derived, not journal-originated. No product edit, native run or engineering launch. Stop for the same reviewer recheck.
