@@ -1,0 +1,223 @@
+{
+  "schema": "D4B_HOSTILE_ATTACK_REPORT",
+  "instrument_package": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D4B/WORKER_RETURNS/ANVIL_R7_FLEET/D4B/PACKAGE",
+  "package_file_count": 305,
+  "code_head": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "live_protected_head": "31291d08179890852246c8742700e055168e9933",
+  "strict_overlay": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D4B/WORKER_RETURNS/ANVIL_R7_FLEET/D4B/MUTATION_TESTS/strict_instrument.py",
+  "note": "Supplied status is the actual verdict of the supplied R7 gate. Strict status is an authored private overlay, not independent C.",
+  "rows": [
+    {
+      "attack_id": "H00",
+      "attack": "clean authored base (restoration)",
+      "target_contract": "FRAME/DECISION/C",
+      "fixture_sha256": "95d0311891a19bd4b742f7e7aacd7add7eee972215550ef130d4e2a92d735098",
+      "expected": "PASS",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED",
+      "supplied_errors": [],
+      "strict_status": "PASS_STRICT_LOCAL_ONLY",
+      "strict_errors": [],
+      "note": "positive/restore baseline; local shape only"
+    },
+    {
+      "attack_id": "H01",
+      "attack": "synthetic 118-row boilerplate ledger via r7_transfer_conservation",
+      "target_contract": "118 identity conservation",
+      "fixture_sha256": "1db64ccb271030e986b4cb6a8d0a429c912f44b94a12531ad9bc52d835bf0a14",
+      "expected": "RED",
+      "supplied_status": "PASS_TRANSFERRED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "strict history rejects unbound rows"
+      ],
+      "note": "supplied transfer helper returns a transfer object"
+    },
+    {
+      "attack_id": "H02",
+      "attack": "synthetic ledger passes FRAME as inherited 118 conservation",
+      "target_contract": "FRAME history",
+      "fixture_sha256": "e53f0f910f93e5ad44f8a14fd9cdb8dffa55d36bd30939ae79e007e31e63e6f7",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_K3:K1_CAP:K1-CAP-01:BLOB_NOT_PINNED",
+        "STRICT_K3:K1_CAP:K1-CAP-01:EXCERPT_NOT_IN_SOURCE_ROW",
+        "STRICT_K3:K1_CAP:K1-CAP-01:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY",
+        "STRICT_K3:K1_CAP:K1-CAP-01:ROW_HASH_NOT_SOURCE",
+        "STRICT_K3:K1_CAP:K1-CAP-02:BLOB_NOT_PINNED",
+        "STRICT_K3:K1_CAP:K1-CAP-02:EXCERPT_NOT_IN_SOURCE_ROW",
+        "STRICT_K3:K1_CAP:K1-CAP-02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY",
+        "STRICT_K3:K1_CAP:K1-CAP-02:ROW_HASH_NOT_SOURCE"
+      ],
+      "note": "FRAME: byte equality between two synthetic documents"
+    },
+    {
+      "attack_id": "H03",
+      "attack": "K3 source-row hash altered; ledger still accepted",
+      "target_contract": "K3 row bytes",
+      "fixture_sha256": "d9fbfffbc958287061b4f362537c17ab37d9f7496d24b7578eb1abec4af6fc0b",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_K3:K1_CAP:K1-CAP-01:ROW_HASH_NOT_SOURCE"
+      ],
+      "note": "no K3 re-derivation in the active path"
+    },
+    {
+      "attack_id": "H04",
+      "attack": "forged source file quoted, borrowed Git blob claim",
+      "target_contract": "source pin authority",
+      "fixture_sha256": "a0f3d77d686314d9bf6fb8cfafc670c02523e28abd84a2a2e390bb80ec141966",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_EVIDENCE:R1:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R2:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R3:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R4:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R5:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R6:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R7:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT",
+        "STRICT_EVIDENCE:R8:FILE_HASH_IS_NOT_EXACT_BLOB_CONTENT"
+      ],
+      "note": "hash+quote match; content is not the claimed blob"
+    },
+    {
+      "attack_id": "H05",
+      "attack": "negative evidence replaced by boilerplate in 3 identities",
+      "target_contract": "negative conservation",
+      "fixture_sha256": "e1ace26f1c280311392e3cd58cf2f0982db8045eed0785e02d546af1676a65e4",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_K3:K1_CAP:K1-CAP-02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY",
+        "STRICT_K3:P4R:P4R-R02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY",
+        "STRICT_K3:PYAT_PC:PYAT-PC-R9-02:NEGATIVE_NOT_BOUND_TO_SOURCE_VOCABULARY"
+      ],
+      "note": "12-char prose floor accepts content-free negative"
+    },
+    {
+      "attack_id": "H06",
+      "attack": "fabricated future source/actor permission claim",
+      "target_contract": "authority boundary",
+      "fixture_sha256": "0f9d6e7b4b7d959ff2568cc30639889e14ebea4b488461fee4ecfaba891304c2",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_GRANT:R6:TEXTUAL_GRANT_WITHOUT_RECEIPT"
+      ],
+      "note": "no grant artifact can be required by the supplied gate"
+    },
+    {
+      "attack_id": "H07",
+      "attack": "118 ledger printed; zero per-identity design dispositions",
+      "target_contract": "118 to design conservation",
+      "fixture_sha256": "bff4a4cfd549588a82e96fb2759276f069bb0e2268434cedb1cf4cb5d6333556",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_DECISION:NO_118_COVERAGE_DISPOSITIONS"
+      ],
+      "note": "decision reconciles frame rows only, never the 118"
+    },
+    {
+      "attack_id": "H08",
+      "attack": "all seven T1-T7 boundary contracts removed, one sentence substituted",
+      "target_contract": "T1-T7 boundary contracts",
+      "fixture_sha256": "9a3d9ff359e891c8646d5f4746a259630bf7c71960649ae03d07e495f8ca5031",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_FRAME:NO_BOUNDARY_CONTRACTS"
+      ],
+      "note": "active FRAME/DECISION never read 02_BOUNDARY_CONTRACTS.json"
+    },
+    {
+      "attack_id": "H09",
+      "attack": "survey answer made into actor knowledge/motive",
+      "target_contract": "T6 actor firewall",
+      "fixture_sha256": "6fb51eca2b9155a8095dd980334331c26911b6b427ed263b4be73cdc17146238",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_ACTOR:FORBIDDEN_SURVEY_TO_ACTOR_CAUSAL:Survey answers directly determine each actor's private motive and knowledge"
+      ],
+      "note": "no survey-to-actor causal prohibition in active gate"
+    },
+    {
+      "attack_id": "H10",
+      "attack": "revoked release and fabricated protected head still PASS",
+      "target_contract": "release/currentness",
+      "fixture_sha256": "d4a2d63acf582638f586fe7016571216861d9df379cd1e50519d07e8de23fe37",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_RELEASE:HEAD_NOT_LIVE_PROTECTED",
+        "STRICT_RELEASE:NO_REVOCATION_TEST",
+        "STRICT_RELEASE:READY_WITH_NONCURRENT_RELEASE"
+      ],
+      "note": "40-hex shape only; author's own fixture uses a*40"
+    },
+    {
+      "attack_id": "H11",
+      "attack": "builder card cites a non-existent test command",
+      "target_contract": "cold builder executability",
+      "fixture_sha256": "83536f8e03b0df07496a6d0605748224f820414644dfb8ba308ab67d59df13dc",
+      "expected": "RED",
+      "supplied_status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+      "supplied_errors": [],
+      "strict_status": "RED",
+      "strict_errors": [
+        "STRICT_BUILDER:NONEXISTENT_TEST_COMMAND:does_not_exist_runner.py"
+      ],
+      "note": "test_command only prefix-checked, never resolved"
+    },
+    {
+      "attack_id": "H12",
+      "attack": "K3 NOT_ADOPTED flipped to adopted (positive control)",
+      "target_contract": "K3 NOT_ADOPTED",
+      "fixture_sha256": "d331e8dcea68bd68c170284a256ceaa531d23030f48f091efe7000915004c888",
+      "expected": "RED",
+      "supplied_status": "RED",
+      "supplied_errors": [
+        "HISTORY:FALSE_PROSPECTIVE_ADOPTION:PYAT-PC-R9-01"
+      ],
+      "strict_status": "RED",
+      "strict_errors": [
+        "HISTORY:FALSE_PROSPECTIVE_ADOPTION:PYAT-PC-R9-01"
+      ],
+      "note": "supplied gate does defend this exact boolean"
+    },
+    {
+      "attack_id": "H13",
+      "attack": "restore pristine packet after mutations",
+      "target_contract": "all stages",
+      "fixture_sha256": "95d0311891a19bd4b742f7e7aacd7add7eee972215550ef130d4e2a92d735098",
+      "expected": "PASS",
+      "supplied_status": "PASS_LOCAL_COMMON_REQUIREMENTS_NOT_OWNER_AUTHENTICATED/PASS_LOCAL_INTEGRATED_DECISION_PENDING_C/PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+      "supplied_errors": [],
+      "strict_status": "PASS_STRICT_LOCAL_ONLY/PASS_STRICT_LOCAL_ONLY/PASS_STRICT_LOCAL_ONLY",
+      "strict_errors": [],
+      "note": "positive/restore demonstrated on the same bytes"
+    }
+  ]
+}

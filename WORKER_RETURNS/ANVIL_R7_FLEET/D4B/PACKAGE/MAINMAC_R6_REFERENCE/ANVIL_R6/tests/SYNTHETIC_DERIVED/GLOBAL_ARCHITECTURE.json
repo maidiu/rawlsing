@@ -1,0 +1,169 @@
+{
+  "nodes": [
+    {
+      "id": "OBS",
+      "domain": "OBSERVED"
+    },
+    {
+      "id": "DES",
+      "domain": "DESCRIPTIVE_MODELED"
+    },
+    {
+      "id": "EXT",
+      "domain": "EXTERNAL_OBSERVED"
+    },
+    {
+      "id": "STR",
+      "domain": "STRUCTURAL_QUALIFIED"
+    },
+    {
+      "id": "WORLD",
+      "domain": "FICTIONAL_WORLD"
+    },
+    {
+      "id": "ACT",
+      "domain": "ACTOR_STATE"
+    },
+    {
+      "id": "HIST",
+      "domain": "HISTORY_EVENT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "OBS",
+      "to": "DES",
+      "transition": "DESCRIPTIVE_INFERENCE",
+      "authority": "SCIENCE_GRADED",
+      "clock": "qualified source/fiction history time boundary",
+      "payload": "qualified source and sourcefree semantic payload",
+      "negative": "held unsupported access must refuse",
+      "owner": "competent owner independently authenticated",
+      "evidence_ref": "test-only hypothetical source fixture"
+    },
+    {
+      "id": "e2",
+      "from": "EXT",
+      "to": "STR",
+      "transition": "INDEPENDENT_STRUCTURAL_ISSUANCE",
+      "authority": "EXTERNAL_STRUCTURAL_ISSUER",
+      "clock": "qualified source/fiction history time boundary",
+      "payload": "qualified source and sourcefree semantic payload",
+      "negative": "held unsupported access must refuse",
+      "owner": "competent owner independently authenticated",
+      "evidence_ref": "test-only hypothetical source fixture"
+    },
+    {
+      "id": "e3",
+      "from": "STR",
+      "to": "WORLD",
+      "transition": "WORLD_OPPORTUNITY",
+      "authority": "WORLD_PARTICULARIZER",
+      "clock": "qualified source/fiction history time boundary",
+      "payload": "qualified source and sourcefree semantic payload",
+      "negative": "held unsupported access must refuse",
+      "owner": "competent owner independently authenticated",
+      "evidence_ref": "test-only hypothetical source fixture"
+    },
+    {
+      "id": "e4",
+      "from": "WORLD",
+      "to": "ACT",
+      "transition": "ACTOR_ACCESS_OR_LEARNING",
+      "authority": "ACTOR_OWNER",
+      "clock": "qualified source/fiction history time boundary",
+      "payload": "qualified source and sourcefree semantic payload",
+      "negative": "held unsupported access must refuse",
+      "owner": "competent owner independently authenticated",
+      "evidence_ref": "test-only hypothetical source fixture"
+    },
+    {
+      "id": "e5",
+      "from": "ACT",
+      "to": "HIST",
+      "transition": "PERFORMED_ACT",
+      "authority": "ACTOR_OWNER",
+      "clock": "qualified source/fiction history time boundary",
+      "payload": "qualified source and sourcefree semantic payload",
+      "negative": "held unsupported access must refuse",
+      "owner": "competent owner independently authenticated",
+      "evidence_ref": "test-only hypothetical source fixture"
+    },
+    {
+      "id": "e6",
+      "from": "WORLD",
+      "to": "HIST",
+      "transition": "EXOGENOUS_WORLD_EVENT",
+      "authority": "WORLD_OWNER",
+      "clock": "qualified source/fiction history time boundary",
+      "payload": "qualified source and sourcefree semantic payload",
+      "negative": "held unsupported access must refuse",
+      "owner": "competent owner independently authenticated",
+      "evidence_ref": "test-only hypothetical source fixture"
+    }
+  ],
+  "routes": {
+    "OBSERVED_TO_DESCRIPTIVE": {
+      "edge_ids": [
+        "e1"
+      ],
+      "first_consumer": "qualified first consumer or prospective lawfully held owner",
+      "source_or_world_clock": "historical source and fictional actor times separate",
+      "preserved_information": "original source identity typed provenance and negatives",
+      "legitimate_owner": "independently competent separate producer and receiver owners",
+      "negative_or_hold": "actor/source permissions held where not executed",
+      "proof_grade": "OWNER_HELD_WITH_FEASIBLE_EXTENSION",
+      "extension_abi": "versioned proposed external owner interface and frozen payload"
+    },
+    "EXTERNAL_TO_STRUCTURAL_WORLD": {
+      "edge_ids": [
+        "e2",
+        "e3"
+      ],
+      "first_consumer": "qualified first consumer or prospective lawfully held owner",
+      "source_or_world_clock": "historical source and fictional actor times separate",
+      "preserved_information": "original source identity typed provenance and negatives",
+      "legitimate_owner": "independently competent separate producer and receiver owners",
+      "negative_or_hold": "actor/source permissions held where not executed",
+      "proof_grade": "OWNER_HELD_WITH_FEASIBLE_EXTENSION",
+      "extension_abi": "versioned proposed external owner interface and frozen payload"
+    },
+    "WORLD_TO_ACTOR": {
+      "edge_ids": [
+        "e4"
+      ],
+      "first_consumer": "qualified first consumer or prospective lawfully held owner",
+      "source_or_world_clock": "historical source and fictional actor times separate",
+      "preserved_information": "original source identity typed provenance and negatives",
+      "legitimate_owner": "independently competent separate producer and receiver owners",
+      "negative_or_hold": "actor/source permissions held where not executed",
+      "proof_grade": "OWNER_HELD_WITH_FEASIBLE_EXTENSION",
+      "extension_abi": "versioned proposed external owner interface and frozen payload"
+    },
+    "ACTOR_TO_HISTORY": {
+      "edge_ids": [
+        "e5"
+      ],
+      "first_consumer": "qualified first consumer or prospective lawfully held owner",
+      "source_or_world_clock": "historical source and fictional actor times separate",
+      "preserved_information": "original source identity typed provenance and negatives",
+      "legitimate_owner": "independently competent separate producer and receiver owners",
+      "negative_or_hold": "actor/source permissions held where not executed",
+      "proof_grade": "OWNER_HELD_WITH_FEASIBLE_EXTENSION",
+      "extension_abi": "versioned proposed external owner interface and frozen payload"
+    },
+    "EXOGENOUS_TO_HISTORY": {
+      "edge_ids": [
+        "e6"
+      ],
+      "first_consumer": "qualified first consumer or prospective lawfully held owner",
+      "source_or_world_clock": "historical source and fictional actor times separate",
+      "preserved_information": "original source identity typed provenance and negatives",
+      "legitimate_owner": "independently competent separate producer and receiver owners",
+      "negative_or_hold": "actor/source permissions held where not executed",
+      "proof_grade": "OWNER_HELD_WITH_FEASIBLE_EXTENSION",
+      "extension_abi": "versioned proposed external owner interface and frozen payload"
+    }
+  }
+}

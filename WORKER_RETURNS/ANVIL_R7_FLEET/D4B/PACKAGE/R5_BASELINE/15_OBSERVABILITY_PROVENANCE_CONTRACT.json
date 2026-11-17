@@ -1,0 +1,83 @@
+{
+  "schema": "ANVIL_OBSERVABILITY_R5",
+  "principle": "Independent facets; no single enum can encode asked/release/grain/attribution/translation/claim status. Source-design evidence, instrument consequence, and interpretation are separate provenance classes. Eligibility is a separate facet from administration/asking; risk-set and sampling-unit evidence must remain source-qualified.",
+  "axes": {
+    "asked": [
+      "YES",
+      "NO",
+      "NOT_ELIGIBLE",
+      "UNKNOWN_HELD"
+    ],
+    "released": [
+      "YES",
+      "NO",
+      "NOT_APPLICABLE",
+      "UNKNOWN_HELD"
+    ],
+    "observation": [
+      "VALUE",
+      "REFUSED",
+      "MISSING",
+      "NOT_OBSERVED",
+      "UNKNOWN_HELD"
+    ],
+    "unit": [
+      "PERSON",
+      "HOUSEHOLD",
+      "INSTITUTION",
+      "GROUP",
+      "OTHER_DOCUMENTED"
+    ],
+    "attribution": [
+      "SELF",
+      "INTERVIEWER",
+      "ADMINISTRATIVE",
+      "NOT_APPLICABLE",
+      "UNKNOWN_HELD"
+    ],
+    "translation": [
+      "SAME_INSTRUMENT",
+      "COMPARABLE_ISSUED",
+      "UNRECONCILED",
+      "NOT_APPLICABLE",
+      "UNKNOWN_HELD"
+    ],
+    "claim_kind": [
+      "ORIGINAL_OBSERVATION",
+      "QUALIFIED_DESCRIPTIVE",
+      "EXTERNAL_STRUCTURAL",
+      "MODEL_INFERENCE",
+      "FICTIONAL_FACT",
+      "NO_SUBSTANTIVE_CLAIM"
+    ],
+    "source_status": [
+      "DOCUMENTED_DESIGN",
+      "OBSERVED_INSTRUMENT_CONSEQUENCE",
+      "SCIENTIFIC_INTERPRETATION",
+      "MODEL_OR_FICTION",
+      "UNKNOWN_HELD"
+    ],
+    "eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE",
+      "CONDITIONAL",
+      "UNKNOWN_HELD"
+    ]
+  },
+  "always_forbidden": [
+    "NO_ASKED or NOT_RELEASED cannot give an ORIGINAL_OBSERVATION for the missing distinction",
+    "HOUSEHOLD datum cannot be silently recast as PERSON self-description",
+    "INTERVIEWER attribution cannot become SELF without separately authorized evidence",
+    "UNRECONCILED translation cannot be asserted wave-comparable",
+    "FICTIONAL_FACT or MODEL_INFERENCE cannot become source respondent evidence",
+    "No negative/no-effect conclusion from unasked, unreleased or unqualified risk set",
+    "INELIGIBLE respondents cannot become eligible observations by demographic proxy, and denominator cannot count unasked as zero"
+  ],
+  "required_cases": [
+    "ANCESTRY_OR_SECT_NOT_OBSERVED",
+    "HOUSEHOLD_VS_PERSON_GRAIN",
+    "INTERVIEWER_VS_SELF",
+    "TRANSLATION_OR_WAVE_NONCOMPARABLE"
+  ],
+  "proof_scope": "Test positive, forbidden inference, restoration at actual implemented first-reader boundary; for not-built futures preserve typed refusal + first receiver/owner, do not invent executive science."
+}

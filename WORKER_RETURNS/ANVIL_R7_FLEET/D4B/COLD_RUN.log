@@ -1,0 +1,66 @@
+COLD_ROOT=/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/d4b_cold.dBvTF9/INSTRUMENT
+SHA_BEFORE=4e951afefa29f29dc04d22cd9b0f2747590bcb1930f0d03ee8d028b3c96e53e0  -
+--- FRAME without a supplied packet ---
+{
+  "status": "RED",
+  "errors": [
+    "UNHANDLED_MALFORMED_PACKET:FileNotFoundError(2, 'No such file or directory')"
+  ]
+}
+FRAME_EXIT=2
+--- DECISION without a supplied packet ---
+{
+  "status": "RED",
+  "errors": [
+    "UNHANDLED_MALFORMED_PACKET:FileNotFoundError(2, 'No such file or directory')"
+  ]
+}
+DECISION_EXIT=2
+--- author synthetic suite ---
+test_A_and_B_cannot_split_the_source_and_downstream (__main__.Integrated.test_A_and_B_cannot_split_the_source_and_downstream) ... ok
+test_blocking_loss_cannot_win (__main__.Integrated.test_blocking_loss_cannot_win) ... ok
+test_decision_fails_without_requirement_crosswalk (__main__.Integrated.test_decision_fails_without_requirement_crosswalk) ... ok
+test_existing_historical_spine_transfers_without_new_census (__main__.Integrated.test_existing_historical_spine_transfers_without_new_census) ... ok
+test_good_uncontested_integrated_decision_without_a_b (__main__.Integrated.test_good_uncontested_integrated_decision_without_a_b) ... ok
+test_historical_spine_transfer_cannot_be_rewritten (__main__.Integrated.test_historical_spine_transfer_cannot_be_rewritten) ... ok
+test_missing_source_not_made_into_unverified_claim (__main__.Integrated.test_missing_source_not_made_into_unverified_claim) ... ok
+test_never_promote_historical_proposal (__main__.Integrated.test_never_promote_historical_proposal) ... ok
+test_no_competing_implementations_required (__main__.Integrated.test_no_competing_implementations_required) ... ok
+test_no_fake_source_grants (__main__.Integrated.test_no_fake_source_grants) ... ok
+test_no_future_domain_unnoticed (__main__.Integrated.test_no_future_domain_unnoticed) ... ok
+test_no_historical_118_id_substitution (__main__.Integrated.test_no_historical_118_id_substitution) ... ok
+test_no_paper_independence (__main__.Integrated.test_no_paper_independence) ... ok
+test_obsolete_comparator_stage_fails_closed_as_live_cli (__main__.Integrated.test_obsolete_comparator_stage_fails_closed_as_live_cli) ... ok
+test_old_required_two_architects_is_a_defect (__main__.Integrated.test_old_required_two_architects_is_a_defect) ... ok
+test_optional_duel_requires_same_exact_evidence (__main__.Integrated.test_optional_duel_requires_same_exact_evidence) ... ok
+test_present_obligation_cannot_be_called_future (__main__.Integrated.test_present_obligation_cannot_be_called_future) ... ok
+test_source_pin_is_not_just_a_citation_string (__main__.Integrated.test_source_pin_is_not_just_a_citation_string) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.562s
+
+OK
+TEST_EXIT=0
+--- quality runner ---
+{
+  "status": "PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY",
+  "commands_checked": 12,
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "record": "tests/R7_QUALITY_REPORT.json",
+  "scope": "RECONSTRUCTED_SYNTHETIC_AND_FORMAT_ONLY__NO_NATIVE_ORIGINAL_SOURCE_100K_FULL_PHYSICAL_RUN__NO_INDEPENDENT_C__NO_PROTECTED_H1"
+}
+QUALITY_EXIT=0
+SHA_AFTER=2024860872d1633575932d82eb00763e367315bfe981181f68208e4b3b565166  -
