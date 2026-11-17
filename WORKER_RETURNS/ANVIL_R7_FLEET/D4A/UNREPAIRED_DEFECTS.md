@@ -4,9 +4,9 @@ These are defects and holds that remain after the private instrument correction.
 
 ## A. Source/currentness holds
 
-1. **No accepted R5/R6 `SPINE.json` exists** in the supplied ZIP, `R5_BASELINE`, reference archives or the exact Git cuts searched. The original active gate therefore cannot reach a genuine `PASS`; Codex `4913...` is RED at `FRAME:HISTORY:NO_POINTER`. The D4A inventory is a **source-located replacement**, not an owner-accepted historical artifact.
+1. **No accepted R5/R6 `SPINE.json` was found in the bounded searched sources** (supplied ZIP, `R5_BASELINE`, reference archives and the exact Git cuts searched). This is not a claim of global nonexistence. The original active gate therefore cannot reach a genuine `PASS` on those sources; Codex `4913...` is RED at `FRAME:HISTORY:NO_POINTER`. The D4A inventory is a **source-located replacement**, not an owner-accepted historical artifact.
 2. **Live GitHub currentness, owner leases, protected CAS and paired PROGRAMMA revision** are not authenticated live in this bounded pass. `evidence/protected` and saved issue bodies are exact snapshots, not live receiving.
-3. **The optional independent forensic `ANVIL_118_FORENSIC_AUDIT.md` is not supplied and was not found** by bounded local search. No allegation from it is invented or tested. Original K3/SEAM rows were tested directly.
+3. **Forensic chronology reconciled.** The independent `ANVIL_118_FORENSIC_AUDIT.md` was genuinely absent in the first pre-grok pass (ZIP/local search) and was recorded as a gap. It was **later supplied** by the common bank at pin `8523007613d411390a76683fa464002c0f25df83` and read as an allegation, not authority. The stale “currently unavailable” gap is removed. Its main claims were independently reproduced by D4A attacks A1/A3/A7/A8/A13; original K3/SEAM rows were also tested directly.
 4. **Native survey source rights, science issuer rights, actor/consent rights and protected H1** are not granted. No native data, actor knowledge, material power, scientific grant or protected receiving is manufactured.
 
 ## B. Instrument defects still present after the private repair

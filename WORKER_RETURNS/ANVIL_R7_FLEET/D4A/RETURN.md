@@ -4,6 +4,8 @@
 **Pair question:** Can a malicious or merely incompetent author make the repaired ANVIL claim no-loss/ready while discarding essential functions, negative evidence, boundaries, or actual consumers?
 **Short answer:** The **original** active instrument can; I demonstrated it with 13 hostile mutations. A **bounded private repair** detects 12 of 13 on exact bytes plus a clean restoration. One requirement-roster omission residual remains. No final integrated candidate exists, so attacks on its exact bytes are `NOT_RUN`.
 
+**Correction pass (descendant of initial `747a2c203df0840ebd4a5d672682a10887c3097c`):** probe 4 now reads the actual V549/V550/V550J/F26 originals via `git show`; probe 5’s denominator falsifier is corrected; the forensic-bank chronology is reconciled; A5 metadata now matches its executed old-gate PASS; the tested tool cut is pinned by hash. The repaired tool bytes did not change, so the original attack matrix was **not** rerun. Known A6/zip-member/receipt limits are preserved for the integrator.
+
 ## 1. Exact source/currentness cut
 
 | Item | Exact pin / value |
@@ -31,8 +33,8 @@
 - The supplied ZIP has 280 entries and the stated SHA-256.
 - The original active gate passes a schema-valid **synthetic** R5/R6 SPINE with 118 fabricated semantic strings (attack A1), ignores K3 raw-row changes (A2), ignores 118→design omissions (A7), ignores T-boundary rewrites (A8), ignores revoked-release use (A9), ignores explicit survey→actor knowledge (A10), accepts a fabricated builder receipt (A11), accepts a false H1 claim (A12), and accepts generic no-loss replacement of all 118 negatives (A13).
 - The private repaired gate rejects A1–A5 and A7–A13, and accepts a clean source-authenticated fixture at all three stages (`FRAME`, `DECISION`, `C_INTEGRATED`).
-- Cold import of `rawlsing_next/pre553_empirical_query.py` succeeds from exact `git archive cea2d4d...` bytes; an actual call fails closed with `EmpiricalQueryExecutionError: repository must be accepted I02 C11Repository or exact verified S2-C I03 session`.
-- Cold `sorok_history.admission.evaluate({}, {})` returns `REJECTED / INVALID_REQUEST_ID`; no actor/world request is admitted.
+- Cold import of `rawlsing_next/pre553_empirical_query.py` succeeds from exact `git archive cea2d4d...` bytes; an actual call fails closed with `EmpiricalQueryExecutionError: repository must be accepted I02 C11Repository or exact verified S2-C I03 session`. This is an ABI/negative smoke check only, **not** positive cold-builder or first-consumer proof.
+- Cold `sorok_history.admission.evaluate({}, {})` returns `REJECTED / INVALID_REQUEST_ID`; no actor/world request is admitted. This is a rejection smoke check only, **not** positive actor/world receiving.
 
 **Reasoning (not executed native proof):**
 - A source-qualified identity inventory is the lawful S1 substitute for the never-accepted R5/R6 SPINE.
@@ -72,7 +74,9 @@ python3 tools/r7_integrated.py C_INTEGRATED ../../EVIDENCE/C.json ...
 # PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED (0 errors)
 ```
 
-**Attack summary:** `A1` synthetic SPINE, `A2` K3 row-byte change, `A3` NOT_ADOPTED rewrite, `A4` fabricated local source, `A5` missing negative, `A6` free-requirement omission (RESIDUAL), `A7` false 118 coverage, `A8` false T boundary, `A9` revoked release, `A10` survey→actor knowledge, `A11` unexecutable builder card, `A12` false H1, `A13` generic no-loss replacement. Clean restoration passes all three stages.
+**Tested-cut identity:** old gate `tools/r7_integrated.py` SHA-256 `1b73b0ddf20dcc9617172d53ac3873578a9d9d3a11de8dca4215cde021c65f0b`; repaired gate SHA-256 `3ef37d1fd2b7187864a725eb0a4edd46dc8cb69170f809c7c7bf0fbb7a7bf3bf`; exact source base `cea2d4d3009e9087d2267e9d1f53bec28b730dc7`. Execution was on the **prepublication D4A working tree**; initial publication `747a2c2` and this docs-only descendant retain the same repaired tool bytes. The matrix carries these pins plus the prepublication/initial-publication distinction.
+
+**Attack summary:** `A1` synthetic SPINE, `A2` K3 row-byte change, `A3` NOT_ADOPTED rewrite, `A4` fabricated local source, `A5` missing negative (old gate PASSed because it never read the source inventory; repaired RED), `A6` free-requirement omission (RESIDUAL), `A7` false 118 coverage, `A8` false T boundary, `A9` revoked release, `A10` survey→actor knowledge, `A11` unexecutable builder card, `A12` false H1, `A13` generic no-loss replacement. Clean restoration passes all three stages.
 
 ## 4. Strongest alternative / counterexample
 

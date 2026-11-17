@@ -1,6 +1,6 @@
 # D4A — COLD BUILDER REHEARSAL
 
-**Scope:** instrument/build-readiness rehearsal only. No native survey run, no owner/science/actor/H1 receiving. The product base is exact `cea2d4d3009e9087d2267e9d1f53bec28b730dc7`; the cold archive was extracted with `git archive` and did not use any author worktree path.
+**Scope:** instrument/build-readiness rehearsal only. The current refusal and empty SOROK rejection below are **limited ABI/negative smoke checks**, not positive cold-builder or first-consumer proof. No native survey run, no owner/science/actor/H1 receiving. The product base is exact `cea2d4d3009e9087d2267e9d1f53bec28b730dc7`; the cold archive was extracted with `git archive` and did not use any author worktree path.
 
 ## 1. Current consumer (present-hard)
 
