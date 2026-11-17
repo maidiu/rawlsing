@@ -17,6 +17,20 @@ SCHEMA='ANVIL_R7_SOURCE_IDENTITY_INVENTORY'
 GROUPS=('K1_CAP','PYAT_PC','P4R','SEAM_B','SEAM_S','ANVIL_L','BOUNDARY','TERMINAL')
 GROUP_COUNTS={'K1_CAP':29,'PYAT_PC':26,'P4R':14,'SEAM_B':10,'SEAM_S':8,'ANVIL_L':8,'BOUNDARY':7,'TERMINAL':16}
 HEX40=re.compile(r'^[a-f0-9]{40}$'); HEX64=re.compile(r'^[a-f0-9]{64}$')
+ORIGINAL_ZIP_SHA='526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332'
+K3ROOT='PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/'
+# Independently pinned origin for every family.  The caller may not choose a
+# provenance kind, commit, path, blob, ZIP member or expected byte hash.
+CANON_PINS={
+ 'K3_CAP_29.tsv':{'kind':'GIT','commit':'7fc00289dd801d2d0a8ce159986c7595fc27a4d9','git_path':K3ROOT+'K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv','git_blob':'a91214b9fd89ab97897ec1c3cd48cb5285b7029c','sha256':'0dfe6539f1a1f7f028c5968c0e85078cbf5f80a847d0c94ea1929f57d20c052d'},
+ 'K3_PC_26.tsv':{'kind':'GIT','commit':'7fc00289dd801d2d0a8ce159986c7595fc27a4d9','git_path':K3ROOT+'K3_R15_26_OWNER_DECISIONS.tsv','git_blob':'1f5a3ae8a40593dccf34753c9fa9577155ebf163','sha256':'6d0766ecc637ee03a705c1772e7bcda39c09c9534f0672cd36a27cfa85e0dfa2'},
+ 'K3_P4R_14.tsv':{'kind':'GIT','commit':'7fc00289dd801d2d0a8ce159986c7595fc27a4d9','git_path':K3ROOT+'K3_P4R_14_OBLIGATION_ROUTES.tsv','git_blob':'5a84ca8cb0a2b16d4a68b2200fa426fd9451b343','sha256':'8adf74cfbf2e916f41641f5836ab82305059b59e1665a2e1647dfb6bdeb0e9d3'},
+ 'SEAM_25.md':{'kind':'GIT','commit':'596f1230258ff50f98d8543dec42a80e696720f4','git_path':'SEAM/25_RETURN_TO_BOUNDARY_TRANSFORMATIONS_AND_OPEN_REGISTER_R1.md','git_blob':'181ab1aaee26d71524dd7401a59c2ca550b4a81c','sha256':'589379644edbb9f59734d5fe40787683e6836b073a3ba69649cfd5035432c17e'},
+ 'SEAM_26.md':{'kind':'GIT','commit':'796452b8cb788fa5a02f37a7ce86eafce8312dfe','git_path':'SEAM/26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md','git_blob':'a05c21dd0b7b1d404fc500c0ef36c81aee67c96e','sha256':'a53c62b3f68a54947a26be2e8878d1f89bff1ad057833ef4f8c80f38ab9fb50c'},
+ 'ANVIL_15.md':{'kind':'GIT','commit':'3cc09bba3d0e26c226da0ddca4b64c43dd74e493','git_path':'PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/15_SEAM_REVERSE_CONSUMER_SOCIAL_FIELD_AND_C11_DESIGN_IMPLICATIONS_R1.md','git_blob':'6253a632d10f201e0bf446f055f96c82fb4a479f','sha256':'0e09bc34235923b7f7b34d272b8e7cddcea0d4e524953f56665843bba6a0c50a'},
+ '02_BOUNDARY_CONTRACTS.json':{'kind':'ZIP','zip_sha256':ORIGINAL_ZIP_SHA,'zip_member':'ANVIL_R7/02_BOUNDARY_CONTRACTS.json','sha256':'89db35d554bbc693eac14595964ab1fe5574bc521e1ab9438e677c48c256502a'},
+ '03_FROZEN_SOURCE_CUTS.json':{'kind':'ZIP','zip_sha256':ORIGINAL_ZIP_SHA,'zip_member':'ANVIL_R7/03_FROZEN_SOURCE_CUTS.json','sha256':'cf26afb1264ce0ff44c1159e4143a261928f8712db33a7a07c1d0763565ba854'},
+}
 
 def sha(b): return hashlib.sha256(b).hexdigest()
 def good(x,n=12): return isinstance(x,str) and len(x.strip())>=n and x.strip().lower() not in {
@@ -50,26 +64,25 @@ def _terminal_ids(zip_root):
     o=json.loads((zip_root/'03_FROZEN_SOURCE_CUTS.json').read_text())
     return list(o['mandatory']['TERMINAL']),o
 
-def _file_pin(source_root,rel,commit,git_path,git_blob,extra=None):
-    p=source_root/rel
+def _file_pin(source_root,rel):
+    if rel not in CANON_PINS: raise SystemExit('unpinned source file: '+rel)
+    pin=CANON_PINS[rel];p=pathlib.Path(source_root)/rel
     if not p.is_file(): raise SystemExit('missing source file: '+str(p))
-    b=p.read_bytes()
-    d={'path':rel,'sha256':sha(b),'commit':commit,'git_path':git_path,'git_blob':git_blob,'bytes':len(b)}
-    for k in ('source_kind','zip_sha256'):
-        if extra and k in extra: d[k]=extra[k]
+    b=p.read_bytes();d={'path':rel,'sha256':sha(b)}
+    if pin['kind']=='GIT': d.update(kind='GIT',commit=pin['commit'],git_path=pin['git_path'],git_blob=pin['git_blob'])
+    else: d.update(kind='ZIP',zip_sha256=pin['zip_sha256'],zip_member=pin['zip_member'])
     return d
 
 def build_inventory(source_root,manifest_path,zip_root):
     source_root=pathlib.Path(source_root);zip_root=pathlib.Path(zip_root)
-    man=json.loads(pathlib.Path(manifest_path).read_text())
-    pins={x['path']:x for x in man['files']}
     files=[]
-    for rel in pins:
-        x=pins[rel];files.append(_file_pin(source_root,rel,x.get('commit'),x.get('git_path',rel),x.get('git_blob'),x))
+    for rel in CANON_PINS:
+        files.append(_file_pin(source_root,rel))
+    pins={rel:CANON_PINS[rel] for rel in CANON_PINS}
     entries=[]
     def add(group,rid,necessity,semantics,negative,consumer,why,excerpt,origin,source_file,extra=None):
         e={'group':group,'id':rid,'necessity':necessity,'status':'SOURCE_AUTHENTICATED_IDENTITY',
-           'source_file':source_file,'source_anchor':pins[source_file].get('commit','ZIP')+':'+pins[source_file].get('git_path',source_file),
+           'source_file':source_file,'source_anchor':(pins[source_file]['commit']+':'+pins[source_file]['git_path']) if pins[source_file]['kind']=='GIT' else ('ZIP:'+pins[source_file]['zip_member']),
            'source_excerpt':excerpt,'source_semantics':semantics,'negative_meaning':negative,
            'consumer_or_hold':consumer,'why':why,'origin_sha256':origin,'evidence_ids':['SRC:'+rid]}
         if len(consumer.strip())<8: consumer='COMPETENT_OWNER_HELD: '+consumer
@@ -84,7 +97,7 @@ def build_inventory(source_root,manifest_path,zip_root):
             r.get('P2_accepted_falsifier_correction','') or 'No accepted falsifier correction; historical negative retained.',
             r.get('existing_owner','') or 'COMPETENT_OWNER_HELD',
             'K3 protected 29-row conservation identity; not proof of native runtime equivalence. '+r.get('receiving',''),
-            r['_raw'],r['_sha256'],'K3_CAP_29.tsv',{'k3_blob':pins['K3_CAP_29.tsv']['git_blob']})
+            r['_raw'],r['_sha256'],'K3_CAP_29.tsv',{'k3_blob':CANON_PINS['K3_CAP_29.tsv']['git_blob']})
     h,pc=_tsv_rows(source_root/'K3_PC_26.tsv')
     for r in pc:
         add('PYAT_PC',r['proposal_id'],'HISTORICAL_NOT_ADOPTED',
@@ -92,7 +105,7 @@ def build_inventory(source_root,manifest_path,zip_root):
             r.get('negative_or_nonclaim','') or 'NOT_ADOPTED; no negative claim adopted.',
             r.get('source_owner','') or 'COMPETENT_OWNER_HELD: original requirement remains NOT_ADOPTED',
             '26 prospective owner-decision rows remain NOT_ADOPTED; no new requirement is created. '+r.get('native_science_actor_protection',''),
-            r['_raw'],r['_sha256'],'K3_PC_26.tsv',{'k3_blob':pins['K3_PC_26.tsv']['git_blob'],'adopted':False,'closed':False})
+            r['_raw'],r['_sha256'],'K3_PC_26.tsv',{'k3_blob':CANON_PINS['K3_PC_26.tsv']['git_blob'],'adopted':False,'closed':False})
     h,p4=_tsv_rows(source_root/'K3_P4R_14.tsv')
     for r in p4:
         add('P4R',r['P4R_id'],'HISTORICAL_PROOF_HELD',
@@ -100,7 +113,7 @@ def build_inventory(source_root,manifest_path,zip_root):
             r.get('HQ_route','') or 'HELD; no proof closure.',
             r.get('original_competent_owner','') or 'COMPETENT_OWNER_HELD',
             'Original P4R proof obligation remains HELD; no finite proof is declared closed. '+r.get('permission_and_native_ceiling',''),
-            r['_raw'],r['_sha256'],'K3_P4R_14.tsv',{'k3_blob':pins['K3_P4R_14.tsv']['git_blob'],'adopted':False,'closed':False})
+            r['_raw'],r['_sha256'],'K3_P4R_14.tsv',{'k3_blob':CANON_PINS['K3_P4R_14.tsv']['git_blob'],'adopted':False,'closed':False})
     # SEAM/25 B rows
     for line in _markdown_rows(source_root/'SEAM_25.md','B-'):
         rid=re.search(r'\*\*(B-\d\d)',line).group(1)
@@ -133,58 +146,78 @@ def build_inventory(source_root,manifest_path,zip_root):
             'Terminal identifier included for whole-machine scope analysis; not implemented or accepted by inventory.',
             ('"'+rid+'"'),sha(('"'+rid+'"').encode()),'03_FROZEN_SOURCE_CUTS.json')
     inv={'schema':SCHEMA,'status':'SOURCE_AUTHENTICATED_IDENTITY_INVENTORY_S1_DOCUMENTARY',
-         'source_authentication':'EXACT_BYTES_PINNED_GIT_UNVERIFIED',
+         'source_authentication':'GIT_AND_ZIP_PINS_VERIFIED',
          'meaning':'118 mixed source/contract identities; NOT 118 adopted functions or requirements.',
          'counts':{g:sum(1 for e in entries if e['group']==g) for g in GROUPS},
          'total':len(entries),'source_files':files,'entries':entries}
     return inv
 
-def _verify_file(src,e,repo,errors,code):
+def _verify_file(src,e,repo,zip_path,errors,code):
     rel=e.get('path');base=pathlib.Path(src).resolve()
     if not isinstance(rel,str) or not rel or rel.startswith('/') or '\\' in rel or '..' in pathlib.PurePosixPath(rel).parts:
         errors.append(code+':INVALID_PATH');return None
+    pin=CANON_PINS.get(rel)
+    if pin is None:errors.append(code+':UNPINNED_SOURCE_FILE');return None
     p=(base/rel).resolve()
     if not p.is_relative_to(base) or not p.is_file():errors.append(code+':MISSING_SOURCE_FILE');return None
     b=p.read_bytes()
-    if sha(b)!=e.get('sha256'):errors.append(code+':BYTES_CHANGED');return None
-    if repo:
-        if e.get('source_kind')=='SUPPLIED_ZIP':
-            if e.get('zip_sha256') and not HEX64.fullmatch(str(e.get('zip_sha256'))):
-                errors.append(code+':BAD_ZIP_PIN')
-            return b
-        commit=e.get('commit');git_path=e.get('git_path');blob=e.get('git_blob')
-        if not (isinstance(commit,str) and HEX40.fullmatch(commit) and isinstance(git_path,str) and isinstance(blob,str) and re.fullmatch(r'[a-f0-9]{40}',blob)):
-            errors.append(code+':INCOMPLETE_GIT_PIN');return b
+    if sha(b)!=pin['sha256']:errors.append(code+':BYTES_NOT_CANONICAL');return None
+    if e.get('sha256')!=pin['sha256']:errors.append(code+':INVENTORY_HASH_NOT_CANONICAL');return None
+    if pin['kind']=='GIT':
+        if e.get('kind')!='GIT' or e.get('source_kind') not in (None,'GIT'):
+            errors.append(code+':PROVENANCE_KIND_MISMATCH');return None
+        if e.get('commit')!=pin['commit'] or e.get('git_path')!=pin['git_path'] or e.get('git_blob')!=pin['git_blob']:
+            errors.append(code+':GIT_PIN_NOT_CANONICAL');return None
+        if not repo:
+            errors.append(code+':REPO_REQUIRED_FOR_GIT_ORIGIN');return None
+        commit=pin['commit'];git_path=pin['git_path'];blob=pin['git_blob']
         try:
             t=subprocess.run(['git','-C',str(repo),'cat-file','-t',commit],capture_output=True,text=True,timeout=8)
-            if t.returncode or t.stdout.strip()!='commit':errors.append(code+':COMMIT_NOT_FOUND');return b
+            if t.returncode or t.stdout.strip()!='commit':errors.append(code+':COMMIT_NOT_FOUND');return None
             r=subprocess.run(['git','-C',str(repo),'rev-parse',commit+':'+git_path],capture_output=True,text=True,timeout=8)
-            if r.returncode or r.stdout.strip()!=blob:errors.append(code+':GIT_BLOB_MISMATCH');return b
+            if r.returncode or r.stdout.strip()!=blob:errors.append(code+':GIT_BLOB_MISMATCH');return None
             g=subprocess.run(['git','-C',str(repo),'show',commit+':'+git_path],capture_output=True,timeout=8)
-            if g.returncode or sha(g.stdout)!=e.get('sha256'):errors.append(code+':GIT_BYTES_MISMATCH');return b
-        except (OSError,subprocess.SubprocessError):errors.append(code+':GIT_UNAVAILABLE');return b
+            if g.returncode or sha(g.stdout)!=pin['sha256']:errors.append(code+':GIT_BYTES_MISMATCH');return None
+        except (OSError,subprocess.SubprocessError):errors.append(code+':GIT_UNAVAILABLE');return None
+        return b
+    # ZIP origin is bound to the original uploaded archive and exact member.
+    if e.get('kind')!='ZIP' or e.get('source_kind') not in (None,'ZIP'):
+        errors.append(code+':PROVENANCE_KIND_MISMATCH');return None
+    if e.get('zip_sha256')!=ORIGINAL_ZIP_SHA or e.get('zip_member')!=pin['zip_member']:
+        errors.append(code+':ZIP_PIN_NOT_CANONICAL');return None
+    if not zip_path:
+        errors.append(code+':ZIP_REQUIRED_FOR_ZIP_ORIGIN');return None
+    try:
+        zb=pathlib.Path(zip_path).read_bytes()
+        if sha(zb)!=ORIGINAL_ZIP_SHA:errors.append(code+':ORIGINAL_ZIP_HASH_MISMATCH');return None
+        import zipfile
+        with zipfile.ZipFile(pathlib.Path(zip_path)) as z:
+            member=z.read(pin['zip_member'])
+        if sha(member)!=pin['sha256']:errors.append(code+':ZIP_MEMBER_BYTES_MISMATCH');return None
+    except (OSError,KeyError,zipfile.BadZipFile):errors.append(code+':ZIP_MEMBER_UNREADABLE');return None
     return b
 
-def check_inventory(inv,source_root,repo=None):
+def check_inventory(inv,source_root,repo=None,zip_path=None):
     e=[]
     if not isinstance(inv,dict) or inv.get('schema')!=SCHEMA:return {'status':'RED','errors':['INVENTORY:BAD_SCHEMA']}
     if inv.get('status')!='SOURCE_AUTHENTICATED_IDENTITY_INVENTORY_S1_DOCUMENTARY':e.append('INVENTORY:FALSE_STATUS')
-    if inv.get('source_authentication') not in ('EXACT_BYTES_PINNED_GIT_UNVERIFIED','GIT_OBJECT_BLOB_AND_BYTES_VERIFIED'):
-        e.append('INVENTORY:FALSE_AUTHENTICATION_GRADE')
     if source_root is None:e.append('INVENTORY:NO_SOURCE_ROOT');return {'status':'RED','errors':e}
     files=inv.get('source_files')
     if not isinstance(files,list) or not files:e.append('INVENTORY:NO_SOURCE_FILES');files=[]
     fmap={};bodies={}
     for i,f in enumerate(files):
         if not isinstance(f,dict):e.append('INVENTORY:BAD_SOURCE_FILE');continue
-        fmap[f.get('path')]=f
-        b=_verify_file(source_root,f,repo,e,'INVENTORY:FILE:'+str(f.get('path')))
-        if b is not None:bodies[f.get('path')]=b
-    if repo and len(bodies)==len(files) and not any(x.startswith('INVENTORY:FILE:') for x in e):
-        inv_auth='GIT_OBJECT_BLOB_AND_BYTES_VERIFIED'
-    else:inv_auth='EXACT_BYTES_PINNED_GIT_UNVERIFIED'
-    if inv.get('source_authentication')=='GIT_OBJECT_BLOB_AND_BYTES_VERIFIED' and inv_auth!='GIT_OBJECT_BLOB_AND_BYTES_VERIFIED':
-        e.append('INVENTORY:FALSE_GIT_AUTHENTICATION')
+        rel=f.get('path')
+        if rel in fmap:e.append('INVENTORY:DUPLICATE_SOURCE_FILE:'+str(rel))
+        fmap[rel]=f
+        b=_verify_file(source_root,f,repo,zip_path,e,'INVENTORY:FILE:'+str(rel))
+        if b is not None:bodies[rel]=b
+    # Exact canonical file set, not caller-supplied additions/removals.
+    if set(fmap)!=set(CANON_PINS):e.append('INVENTORY:SOURCE_FILE_SET_NOT_CANONICAL')
+    expected_auth='GIT_AND_ZIP_PINS_VERIFIED' if any(v['kind']=='ZIP' for v in CANON_PINS.values()) else 'GIT_OBJECT_BLOB_AND_BYTES_VERIFIED'
+    actual_auth=expected_auth if (repo and zip_path and len(bodies)==len(CANON_PINS) and not any(x.startswith('INVENTORY:FILE:') for x in e)) else 'UNVERIFIED'
+    if inv.get('source_authentication')!=actual_auth:
+        e.append('INVENTORY:GRADE_NOT_EARNED')
     entries=inv.get('entries')
     if not isinstance(entries,list):e.append('INVENTORY:NO_ENTRIES');entries=[]
     counts={g:0 for g in GROUPS};ids={g:set() for g in GROUPS};byid={}
@@ -198,19 +231,17 @@ def check_inventory(inv,source_root,repo=None):
         for k in ('source_anchor','source_excerpt','source_semantics','negative_meaning','consumer_or_hold','why','origin_sha256','source_file'):
             if not good(x.get(k),3 if k=='source_excerpt' else 8):e.append('INVENTORY:VACUOUS:'+rid+':'+k)
         sf=x.get('source_file')
-        if sf not in fmap:e.append('INVENTORY:ORPHAN_SOURCE_FILE:'+rid);continue
+        if sf not in CANON_PINS:e.append('INVENTORY:ORPHAN_SOURCE_FILE:'+rid);continue
         b=bodies.get(sf)
         if b is None:continue
         text=b.decode('utf-8','replace')
         if x.get('source_excerpt') not in text:e.append('INVENTORY:EXCERPT_NOT_IN_SOURCE:'+rid)
         if x.get('origin_sha256')!=sha(x.get('source_excerpt','').encode()):e.append('INVENTORY:ROW_HASH_MISMATCH:'+rid)
-        if g in ('PYAT_PC','P4R'):
-            if x.get('adopted') is not False:e.append('INVENTORY:UNAUTHORIZED_ADOPTION:'+rid)
+        if g in ('PYAT_PC','P4R') and x.get('adopted') is not False:e.append('INVENTORY:UNAUTHORIZED_ADOPTION:'+rid)
         if g=='P4R' and x.get('closed') is not False:e.append('INVENTORY:FALSE_PROOF_CLOSURE:'+rid)
     for g in GROUPS:
         if counts[g]!=GROUP_COUNTS[g]:e.append('INVENTORY:COUNT_DRIFT:'+g+':'+str(counts[g]))
     if len(entries)!=118:e.append('INVENTORY:TOTAL_NOT_118')
-    # Exact K3 row set/hash census against the source file, not against the inventory itself.
     for g,fname in (('K1_CAP','K3_CAP_29.tsv'),('PYAT_PC','K3_PC_26.tsv'),('P4R','K3_P4R_14.tsv')):
         b=bodies.get(fname)
         if not b:continue
@@ -222,13 +253,13 @@ def check_inventory(inv,source_root,repo=None):
             if byid.get(rid,{}).get('origin_sha256')!=h:e.append('INVENTORY:K3_ROW_HASH_MISMATCH:'+rid)
     return {'status':'RED' if e else 'PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY',
             'errors':sorted(set(e)),'counts':counts,'total':len(entries),
-            'source_authentication':inv_auth}
+            'source_authentication':actual_auth}
 
 def main():
     ap=argparse.ArgumentParser(description='Build or verify the source-qualified 118 identity inventory (S1 documentary, no architecture)')
     ap.add_argument('action',choices=['build','verify'])
     ap.add_argument('--source-root',required=True);ap.add_argument('--manifest');ap.add_argument('--zip-root')
-    ap.add_argument('--inventory');ap.add_argument('--repo');ap.add_argument('--out')
+    ap.add_argument('--inventory');ap.add_argument('--repo');ap.add_argument('--zip');ap.add_argument('--out')
     a=ap.parse_args()
     if a.action=='build':
         if not (a.manifest and a.zip_root):raise SystemExit('build requires --manifest and --zip-root')
@@ -238,7 +269,7 @@ def main():
         else:sys.stdout.write(b.decode())
         return 0
     inv=json.loads(pathlib.Path(a.inventory).read_text())
-    out=check_inventory(inv,a.source_root,a.repo)
+    out=check_inventory(inv,a.source_root,a.repo,a.zip)
     print(json.dumps(out,indent=2));return 0 if out['status'].startswith('PASS') else 2
 
 if __name__=='__main__':sys.exit(main())

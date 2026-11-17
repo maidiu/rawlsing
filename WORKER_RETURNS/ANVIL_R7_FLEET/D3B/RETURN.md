@@ -90,3 +90,38 @@ Published commit is the final branch HEAD reported to HQ; this file is included 
 ## 8. Explicit non-claims
 
 No final C, no HQ accreditation, no protected H1, no architecture selection, no source/science/actor permission, no 118 accepted functions, no 26 new adoptions, no 14 proof closures, no full A/B mandate, no K4, no CI-green claim. The test suite is bounded authored sourcefree evidence; the missing integrated candidate’s attacks are `NOT_RUN`.
+
+---
+
+## 9. R2 CORRECTION — HQ-received source-kind bypass (same branch, descendant)
+
+**Defect received:** r1 `_verify_file` trusted caller-controlled `source_kind=SUPPLIED_ZIP` to skip Git verification, and the aggregate then reported `GIT_OBJECT_BLOB_AND_BYTES_VERIFIED`. This was reproduced against immutable r1 commit `ebf79dc285a0b4c8f4358b2eabcbcaa76a56ca7b` with the HQ witness mutation (only `source_files[0]` reclassified; rows/body hashes unchanged): r1 returned PASS/`GIT_OBJECT_BLOB_AND_BYTES_VERIFIED`.
+
+**R2 fix:** `r7_inventory.py` now owns a canonical `CANON_PINS` map. Each family is bound to an independently pinned Git commit/path/blob/exact byte hash (K3 29/26/14, SEAM/25, SEAM/26, ANVIL/15) or to original ZIP SHA-256 `526d835d…` plus exact member (`02_BOUNDARY_CONTRACTS.json`, `03_FROZEN_SOURCE_CUTS.json`). The caller cannot change provenance kind, commit/path/blob, ZIP member or expected hashes. `--repo` is required for Git families; `--zip` is required for ZIP families; omission is RED. Mixed grade is `GIT_AND_ZIP_PINS_VERIFIED`, never all-Git.
+
+**Attack now RED:** same mutation → `INVENTORY:FILE:K3_CAP_29.tsv:PROVENANCE_KIND_MISMATCH` + `INVENTORY:GRADE_NOT_EARNED`, grade `UNVERIFIED`. Baseline legitimate 118 → `PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY` / `GIT_AND_ZIP_PINS_VERIFIED`. Also RED: omitted repo/zip, wrong/nonexistent commit/path, caller replacement bytes with matching caller hash, false ZIP member; restoration PASS.
+
+**Focused tests:** 29 tests OK (`test_r7_integrated`); full affected R7 runner `PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY`, 12 commands exit 0. Disposition guards, 26 NOT_ADOPTED / 14 HELD, typed T boundaries and all inherited guards remain.
+
+**R2 artifact hashes (supersede the r1 hashes above for changed files):**
+
+```
+5e06b95f037934750ad00047c537decb69f664ee0da3d1a680ce7ac2f886ad3e  EVIDENCE/SOURCE_IDENTITY_INVENTORY.json
+e1a2b9e14eec557913116eec6b891f7187f4f6b7c2f1bd5c18ff950862cf6400  EVIDENCE/SOURCE_118/PIN_MANIFEST.json
+798dc382fb07a8165c0747abcbe05ba831a4b87a6bae5ec76134d748811f94fb  EVIDENCE/PROBE5_WITNESS.json
+0eade9d9070f7bc4b2bb3411ea6a290ff6ef43636aecf6703f8d4b178ce731da  PACKAGE/ANVIL_R7/tools/r7_integrated.py
+cacb1ec73e7eee2d5513be6a1831cbd6ace8404989bce5b3bf7bd4a884eb47b0  PACKAGE/ANVIL_R7/tools/r7_inventory.py
+82cd6a139bc40ff23ff57faf1f54471a5b585452e7c8a54fe12825914b3e2994  PACKAGE/ANVIL_R7/tools/r7_build.py
+24262d141c7b0081342312a11cd0d88ec018a2bb09bef540113681ab7d535fc8  PACKAGE/ANVIL_R7/tools/test_r7_integrated.py
+b298f2625e41270d4095afdf7c58d3137cd8b4145639abfc5b052609401f8468  GATES_CHANGESET.patch
+bc361c88f66df16c677b79724648e499e66224d02c03cf44039eff3c4698c5de  GROK_PROOF.md
+6d35c19a633384783176e7a746b056504e3d5e46d01f5c49c3e6333c329290af  GATE_DESIGN.md
+656c659e2c1520d0f3dc7fb091e666d4eec6f3120ff133cf46fba32d3d595f16  COLD_BUILDER_OUTPUT_SPEC.md
+11542b0dcd339da3acbcf150b1121317c098b48048da71d09e82e0972a91ae80  TEST_TRANSCRIPT.json
+```
+
+**Bank/forensic:** `evidence/fleet_bank/START_HERE.md` read; `FORENSIC_RECOVERY/ANVIL_118_FORENSIC_AUDIT.md` read as an allegation, not authority. `evidence/FLEET_BANK_VERIFICATION.json` retains two manifest discrepancies (one bad TSV row and one ZIP-vs-bank line-ending/synthetic-fixture mismatch); original ZIP/private PACKAGE remain byte authority. No peer findings imported.
+
+**Probe 4/5 update:** `GROK_PROOF.md` probe 4 now cites the exact protected `31291d…:data/ddm_build_copy/` code blobs `eb143ffe…`, `8f6d40e0…`, `43a62723…`, `5226fef2…`, `b42b00ca…` with excerpts/function/failure limits/falsifier. Probe 5 now supplies the explicit even/odd parity 2×2×2 witness with equal univariate and pairwise marginals, different three-way support, and forward/reverse denominator counts; computed evidence is `EVIDENCE/PROBE5_WITNESS.json`.
+
+**Still not claimed:** native/source execution, 100k/6 GiB, independent C, protected H1, architecture selection, science/actor permission. No new A/B round, no P2 SPINE prerequisite, no blacklist-only fix, no external trust service.

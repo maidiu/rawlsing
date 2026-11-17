@@ -2,6 +2,8 @@
 
 **Status:** local, sourcefree instrument correction in a private package copy. **No architecture selected.** No source/native/science/actor/protected/H1 authority is created. This is an author return awaiting the HQ integrator and a distinct C.
 
+**R2 source-custody correction (HQ receiving):** the r1 `source_kind` field was caller-controlled and `_verify_file` skipped Git verification when it was set to `SUPPLIED_ZIP`; the aggregate grade then credited the skipped check as Git-verified. The attack was reproduced against the immutable r1 commit. R2 removes caller provenance selection: every family is bound in code to an independently pinned Git commit/path/blob/byte hash or to the original supplied ZIP SHA-256 plus exact member. `--repo` is required for Git families and `--zip` is required for ZIP families; omission is RED, not an unverified PASS. The mixed grade is `GIT_AND_ZIP_PINS_VERIFIED`; it is never reported as all-Git.
+
 ## 0. Exact inputs and currentness
 
 | Item | Exact pin |
@@ -41,8 +43,9 @@ The shared source and product code were not modified. All edits are under `WORKE
 - every B/S/L row has an exact excerpt present in the pinned SEAM/ANVIL file;
 - every T1–T7 and terminal ID is present in the supplied ZIP contracts;
 - `PYAT_PC` entries have `adopted: false`; `P4R` entries have `closed: false`; no entry may claim adoption/closure;
-- each entry has non-vacuous `source_semantics`, `negative_meaning`, `consumer_or_hold`, `why` and an origin hash;
-- source-file hash mutation, wrong Git blob, missing row, missing B-10, or false adoption/closure fails RED.
+- each entry has an independently pinned canonical origin (commit/path/blob/bytes or `526d…` ZIP member/bytes), not a caller-chosen `source_kind`;
+each entry has non-vacuous `source_semantics`, `negative_meaning`, `consumer_or_hold`, `why` and an origin hash;
+- source-file hash mutation, caller `source_kind` reclassification, wrong/nonexistent commit/path/blob, replacement bytes with matching caller hashes, false ZIP member, missing row, missing B-10, omitted `--repo`/`--zip`, or false adoption/closure fails RED.
 
 **No disposition is allowed at S1.** A source inventory that claims `PRESENT_PRESERVED`/`FUTURE_NONPRECLUDED` is over-claiming; dispositions live only in S3.
 
@@ -114,7 +117,12 @@ Commands and exact return codes are in `TEST_TRANSCRIPT.json`; the suite is `too
 
 | Required case | Test | Observed |
 |---|---|---|
-| valid source-only 118 inventory S1 PASS at documentary grade | `test_source_only_118_inventory_s1_pass` | PASS |
+| valid source-only 118 inventory S1 PASS at documentary grade | `test_source_only_118_inventory_s1_pass` | PASS (`GIT_AND_ZIP_PINS_VERIFIED`) |
+| caller `source_kind`/ZIP bypass | `test_caller_source_kind_bypass_is_red` | RED |
+| optional `--repo`/`--zip` omission | `test_optional_repo_or_zip_cannot_authenticate` | RED |
+| wrong/nonexistent commit/path | `test_wrong_commit_path_and_nonexistent_path_red` | RED |
+| caller replacement bytes with matching hashes | `test_caller_replacement_bytes_with_matching_hashes_red` | RED |
+| false ZIP member | `test_false_zip_member_red` | RED |
 | synthetic SPINE as fake original RED | `test_synthetic_r5_spine_alone_is_not_a_source` | RED `FRAME:NO_SOURCE_IDENTITY_INVENTORY` |
 | missing row/blob RED | `test_missing_k3_row_red`, `test_source_byte_mutation_red_and_restore` | RED then restore PASS |
 | missing B10 RED | `test_missing_b10_red` | RED count drift |
@@ -126,7 +134,7 @@ Commands and exact return codes are in `TEST_TRANSCRIPT.json`; the suite is `too
 | local fake H1 accepted → RED | `test_local_h1_claim_red`, `test_c_local_h1_red` | RED |
 | six projections deterministic/restore | `test_six_projections_deterministic_and_restore` | PASS, then RED on byte change, then PASS |
 
-**Full inherited R7 runner:** `python3 tools/run_r7_quality.py` → `PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY`, 12 commands, all exit 0. This does not authenticate native source, independent C or H1.
+**Full inherited R7 runner:** `python3 tools/run_r7_quality.py` → `PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY`, 12 commands, all exit 0. R2 focused run: 29 tests OK. This does not authenticate native source, independent C or H1.
 
 ## 7. Why this is the least nonceremonial machinery
 

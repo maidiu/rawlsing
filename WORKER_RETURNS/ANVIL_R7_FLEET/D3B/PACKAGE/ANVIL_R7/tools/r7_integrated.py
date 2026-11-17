@@ -155,7 +155,7 @@ def check_identity_dispositions(decision,inventory,source_root,errors,evidence_r
         if state in ('PRESENT_PRESERVED','FUTURE_NONPRECLUDED') and not row.get('evidence'):
             errors.append('DECISION:UNPROVED_IDENTITY_PRESERVATION:'+str(rid))
 
-def check_frame(frame,evidence_root,source_root,repo=None):
+def check_frame(frame,evidence_root,source_root,repo=None,zip_path=None):
     e=[]
     if not isinstance(frame,dict) or frame.get('schema')!=SCHEMA or frame.get('stage')!='COMMON_FRAME':
         return {'status':'RED','errors':['FRAME:BAD_SCHEMA']}
@@ -177,7 +177,7 @@ def check_frame(frame,evidence_root,source_root,repo=None):
     else:
         inventory=load(evidence_root,frame.get('source_inventory'),e,'FRAME:SOURCE_INVENTORY')
         if inventory is not None:
-            res=check_inventory(inventory,source_root,repo)
+            res=check_inventory(inventory,source_root,repo,zip_path)
             if res['status']=='RED':e.extend('FRAME:INVENTORY:'+x for x in res['errors'])
     # A legacy R5/R6 transfer is optional historical evidence only.  It cannot
     # supply identity truth; a synthetic self-consistent spine is not a source.
@@ -225,13 +225,13 @@ def check_duel(duel,frame_sha,errors):
     if not good(duel.get('integrated_adjudication'),50):errors.append('DECISION:DUEL_NOT_INTEGRATED')
     if duel.get('independence_proven_by_local_check') is not False:errors.append('DECISION:DUEL_SELF_CERTIFIES_INDEPENDENCE')
 
-def check_decision(decision,evidence_root,source_root,repo=None):
+def check_decision(decision,evidence_root,source_root,repo=None,zip_path=None):
     e=[]
     if not isinstance(decision,dict) or decision.get('schema')!=SCHEMA or decision.get('stage')!='INTEGRATED_DECISION':
         return {'status':'RED','errors':['DECISION:BAD_SCHEMA']}
     frame=load(evidence_root,decision.get('common_frame'),e,'DECISION:FRAME')
     if frame is None:return {'status':'RED','errors':sorted(set(e))}
-    fr=check_frame(frame,evidence_root,source_root,repo)
+    fr=check_frame(frame,evidence_root,source_root,repo,zip_path)
     if fr['status']=='RED':e.extend('DECISION:INVALID_FRAME:'+v for v in fr['errors'])
     frozen_sha=digest(frame)
     if decision.get('frame_sha256')!=frozen_sha:e.append('DECISION:FRAME_NOT_FROZEN')
@@ -322,13 +322,13 @@ def check_boundary_court(court,evidence_root,source_root,errors,admit):
             if not good(x.get('exact_hold'),30):errors.append('C:BOUNDARY_NOT_RUN_WITHOUT_EXACT_HOLD:'+t)
         if not good(x.get('first_consumer_or_hold'),20):errors.append('C:BOUNDARY_NO_CONSUMER_OR_HOLD:'+t)
 
-def check_C(packet,evidence_root,source_root,repo=None):
+def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
     e=[]
     if not isinstance(packet,dict) or packet.get('schema')!=SCHEMA or packet.get('stage')!='INDEPENDENT_C':
         return {'status':'RED','errors':['C:BAD_SCHEMA']}
     decision=load(evidence_root,packet.get('integrated_decision'),e,'C:DECISION')
     if decision is not None:
-        verdict=check_decision(decision,evidence_root,source_root,repo)
+        verdict=check_decision(decision,evidence_root,source_root,repo,zip_path)
         if verdict['status']=='RED':e.extend('C:DEFECTIVE_DECISION:'+x for x in verdict['errors'])
         if packet.get('integrated_decision_sha256')!=digest(decision):e.append('C:DECISION_NOT_PINNED')
         if packet.get('first_consumer')!=decision.get('first_real_consumer'):
@@ -370,19 +370,20 @@ def check_C(packet,evidence_root,source_root,repo=None):
     if packet.get('h1_grade')=='ACCEPTED':e.append('C:LOCAL_H1_ACCEPTED')
     return {'status':'RED' if e else 'PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED','errors':sorted(set(e))}
 
-def check(stage,packet,evidence_root,source_root=None,repo=None):
-    if stage=='FRAME':return check_frame(packet,evidence_root,source_root,repo)
-    if stage=='DECISION':return check_decision(packet,evidence_root,source_root,repo)
-    if stage=='C_INTEGRATED':return check_C(packet,evidence_root,source_root,repo)
+def check(stage,packet,evidence_root,source_root=None,repo=None,zip_path=None):
+    if stage=='FRAME':return check_frame(packet,evidence_root,source_root,repo,zip_path)
+    if stage=='DECISION':return check_decision(packet,evidence_root,source_root,repo,zip_path)
+    if stage=='C_INTEGRATED':return check_C(packet,evidence_root,source_root,repo,zip_path)
     return {'status':'RED','errors':['ACTIVE_STAGE_UNKNOWN']}
 
 def main():
     ap=argparse.ArgumentParser(description='Active ANVIL integral workflow, NOT autonomous accreditation')
     ap.add_argument('stage',choices=['FRAME','DECISION','C_INTEGRATED'])
     ap.add_argument('packet');ap.add_argument('--evidence-root',required=True);ap.add_argument('--source-root',required=True)
-    ap.add_argument('--repo',help='optional Git object store for commit/blob verification of the source inventory')
+    ap.add_argument('--repo',help='Git object store: REQUIRED to authenticate Git-origin families')
+    ap.add_argument('--zip',help='original supplied ZIP: REQUIRED to authenticate ZIP-origin families')
     arg=ap.parse_args()
-    try:out=check(arg.stage,json.loads(pathlib.Path(arg.packet).read_text()),arg.evidence_root,arg.source_root,arg.repo)
+    try:out=check(arg.stage,json.loads(pathlib.Path(arg.packet).read_text()),arg.evidence_root,arg.source_root,arg.repo,arg.zip)
     except (OSError,ValueError,TypeError,KeyError) as exc:out={'status':'RED','errors':['UNHANDLED_MALFORMED_PACKET:'+repr(exc)]}
     print(json.dumps(out,indent=2));return 2 if out['status']=='RED' else 0
 if __name__=='__main__':sys.exit(main())

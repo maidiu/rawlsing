@@ -6,7 +6,7 @@ tests/fixtures/source_118.  They prove local structure and fail-closed behavior
 only; no native survey execution, independent C, source right or H1 is created.
 """
 from __future__ import annotations
-import copy, hashlib, json, pathlib, shutil, tempfile, unittest
+import copy, hashlib, json, os, pathlib, shutil, tempfile, unittest
 
 from r7_integrated import check, digest, sha, DOMAINS
 from r7_inventory import build_inventory
@@ -14,6 +14,8 @@ import r7_build
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'tests/fixtures/source_118'
+REPO=os.environ.get('ANVIL_REPO','/Users/matthewsmith/s2b-work/rawlsing')
+ZIP=os.environ.get('ANVIL_ZIP','/Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip')
 DOC=SOURCE/'22_R6_VALUE_AND_FUNCTION_CONSERVATION.md'
 DOC_EXCERPT='Historical pre-FORGE 29/26/14, 118 mixed identity and five-test law'
 
@@ -137,11 +139,11 @@ class G(unittest.TestCase):
         b=(json.dumps(obj,sort_keys=True,ensure_ascii=False)+'\n').encode();(self.evidence/name).write_bytes(b)
         return {'path':name,'sha256':sha(b)}
     def frame_result(self,frame=None,source=SOURCE):
-        return check('FRAME',frame or self.frame,self.evidence,source)
+        return check('FRAME',frame or self.frame,self.evidence,source,REPO,ZIP)
     def dec_result(self,decision=None):
-        return check('DECISION',decision or self.decision,self.evidence,SOURCE)
+        return check('DECISION',decision or self.decision,self.evidence,SOURCE,REPO,ZIP)
     def c_result(self,c=None):
-        return check('C_INTEGRATED',c or self.c,self.evidence,SOURCE)
+        return check('C_INTEGRATED',c or self.c,self.evidence,SOURCE,REPO,ZIP)
     def assert_restore(self,call,key,errors):
         self.assertTrue(call()['status'].startswith('PASS'),call())
         old=copy.deepcopy(self.__dict__.get('_hold'))
@@ -162,6 +164,37 @@ class G(unittest.TestCase):
         bad=copy.deepcopy(self.inv);bad['entries']=[e for e in bad['entries'] if e['id']!='K1-CAP-17']
         f=copy.deepcopy(self.frame);f['source_inventory']=self.put('inv_missing.json',bad)
         r=self.frame_result(f);self.assertTrue(any('COUNT_DRIFT:K1_CAP' in x or 'K3_ID_CENSUS_CHANGED' in x for x in r['errors']),r)
+    def test_caller_source_kind_bypass_is_red(self):
+        bad=copy.deepcopy(self.inv);f=bad['source_files'][0]
+        f.update(kind='ZIP',source_kind='SUPPLIED_ZIP',zip_sha256='b'*64,commit='a'*40)
+        frame=copy.deepcopy(self.frame);frame['source_inventory']=self.put('inv_bypass.json',bad)
+        r=self.frame_result(frame);self.assertTrue(any('PROVENANCE_KIND_MISMATCH' in x or 'GIT_PIN_NOT_CANONICAL' in x for x in r['errors']),r)
+    def test_optional_repo_or_zip_cannot_authenticate(self):
+        base=self.inv
+        self.assertTrue(any('REPO_REQUIRED_FOR_GIT_ORIGIN' in x for x in check('FRAME',self.frame,self.evidence,SOURCE,None,ZIP)['errors']))
+        self.assertTrue(any('ZIP_REQUIRED_FOR_ZIP_ORIGIN' in x for x in check('FRAME',self.frame,self.evidence,SOURCE,REPO,None)['errors']))
+    def test_wrong_commit_path_and_nonexistent_path_red(self):
+        bad=copy.deepcopy(self.inv);bad['source_files'][0]['commit']='b'*40
+        frame=copy.deepcopy(self.frame);frame['source_inventory']=self.put('inv_badcommit.json',bad)
+        self.assertTrue(any('GIT_PIN_NOT_CANONICAL' in x for x in self.frame_result(frame)['errors']))
+        bad=copy.deepcopy(self.inv);bad['source_files'][0]['git_path']='WRONG/PATH.tsv'
+        frame=copy.deepcopy(self.frame);frame['source_inventory']=self.put('inv_badpath.json',bad)
+        self.assertTrue(any('GIT_PIN_NOT_CANONICAL' in x for x in self.frame_result(frame)['errors']))
+        bad=copy.deepcopy(self.inv);bad['source_files'][0]['path']='K3_MISSING.tsv'
+        frame=copy.deepcopy(self.frame);frame['source_inventory']=self.put('inv_missingpath.json',bad)
+        self.assertTrue(any('SOURCE_FILE_SET_NOT_CANONICAL' in x or 'UNPINNED_SOURCE_FILE' in x for x in self.frame_result(frame)['errors']))
+    def test_false_zip_member_red(self):
+        bad=copy.deepcopy(self.inv)
+        for f in bad['source_files']:
+            if f['path']=='02_BOUNDARY_CONTRACTS.json':f['zip_member']='ANVIL_R7/00_R7_READ_FIRST.md'
+        frame=copy.deepcopy(self.frame);frame['source_inventory']=self.put('inv_badzipmember.json',bad)
+        self.assertTrue(any('ZIP_PIN_NOT_CANONICAL' in x for x in self.frame_result(frame)['errors']))
+    def test_caller_replacement_bytes_with_matching_hashes_red(self):
+        tmp=self.work/'sourcecopy2';shutil.copytree(SOURCE,tmp)
+        p=tmp/'K3_CAP_29.tsv';p.write_bytes(b'arbitrary replacement bytes')
+        bad=copy.deepcopy(self.inv);bad['source_files'][0]['sha256']=hashlib.sha256(b'arbitrary replacement bytes').hexdigest()
+        frame=copy.deepcopy(self.frame);frame['source_inventory']=self.put('inv_replaced.json',bad)
+        r=self.frame_result(frame,source=tmp);self.assertTrue(any('BYTES_NOT_CANONICAL' in x for x in r['errors']),r)
     def test_missing_b10_red(self):
         bad=copy.deepcopy(self.inv);bad['entries']=[e for e in bad['entries'] if e['id']!='B-10']
         f=copy.deepcopy(self.frame);f['source_inventory']=self.put('inv_b10.json',bad)
@@ -169,7 +202,7 @@ class G(unittest.TestCase):
     def test_source_byte_mutation_red_and_restore(self):
         tmp=self.work/'sourcecopy';shutil.copytree(SOURCE,tmp)
         p=tmp/'K3_CAP_29.tsv';orig=p.read_bytes();p.write_bytes(orig.replace(b'K1-CAP-01',b'K1-CAP-XX'))
-        r=self.frame_result(source=tmp);self.assertTrue(any('BYTES_CHANGED' in x or 'EXCERPT_NOT_IN_SOURCE' in x for x in r['errors']),r)
+        r=self.frame_result(source=tmp);self.assertTrue(any('BYTES_NOT_CANONICAL' in x or 'EXCERPT_NOT_IN_SOURCE' in x for x in r['errors']),r)
         p.write_bytes(orig);r2=self.frame_result(source=tmp);self.assertTrue(r2['status'].startswith('PASS'),r2)
     def test_26_adopted_or_14_closed_red(self):
         bad=copy.deepcopy(self.inv)
@@ -268,7 +301,7 @@ class G(unittest.TestCase):
 
     # ---------- builder ----------
     def test_six_projections_deterministic_and_restore(self):
-        arts,err=r7_build.build(self.decision,self.evidence,SOURCE)
+        arts,err=r7_build.build(self.decision,self.evidence,SOURCE,REPO,ZIP)
         self.assertEqual([],err);self.assertEqual(set(r7_build.NAMES),set(arts))
         out=self.work/'built';man=r7_build.write(arts,out)
         self.assertEqual(6,len(man));self.assertEqual([],r7_build.verify(arts,out))

@@ -10,17 +10,18 @@ The cold builder receives exactly three paths:
 ```
 --evidence-root  EVIDENCE/          # JSON packet pointers and source inventory
 --source-root    EVIDENCE/SOURCE_118/  # exact pinned source bytes
---repo           /path/to/rawlsing     # optional Git object store; verifies commit:path:blob
+--repo           /path/to/rawlsing     # REQUIRED for Git-origin families
+--zip            /path/to/original.zip  # REQUIRED for ZIP-origin families
 ```
 
-It loads, in order:
+Each family has a canonical pinned origin in code: Git commit/path/blob/byte hash or original ZIP SHA-256 `526d…` plus exact member. The caller cannot choose a provenance kind or update expected hashes. It loads, in order:
 
 1. `DECISION.json` (`ANVIL_R7_INTEGRATED`, stage `INTEGRATED_DECISION`);
 2. `common_frame` pointer → `FRAME.json` (`ANVIL_R7_INTEGRATED`, stage `COMMON_FRAME`);
 3. `frame.source_inventory` pointer → `SOURCE_IDENTITY_INVENTORY.json`
    (`ANVIL_R7_SOURCE_IDENTITY_INVENTORY`, 118 entries, counts 29/26/14/10/8/8/7/16).
 
-Every pointer is `{path, sha256}` relative to `--evidence-root`; absolute paths, `..`, backslashes and symlinks are refused. Every source file is `{path, sha256, commit, git_path, git_blob}` or `{source_kind: SUPPLIED_ZIP, zip_sha256}`; bytes are rehashed, and with `--repo` the commit, path and Git blob are re-read.
+Every pointer is `{path, sha256}` relative to `--evidence-root`; absolute paths, `..`, backslashes and symlinks are refused. Every source file is `{path, sha256, commit, git_path, git_blob}` or `{source_kind: SUPPLIED_ZIP, zip_sha256}`; bytes are rehashed, and with `--repo` the commit, path and Git blob are re-read; ZIP families are checked against the original ZIP hash and exact member. Missing `--repo` or `--zip` is RED, not unverified PASS. Mixed grade is `GIT_AND_ZIP_PINS_VERIFIED`.
 
 ## 2. Hard refusal conditions (exit 2, no output)
 

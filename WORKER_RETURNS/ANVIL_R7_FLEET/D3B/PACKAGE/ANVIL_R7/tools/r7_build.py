@@ -17,7 +17,7 @@ def enc(s):return s.encode('utf-8')
 def js(o):return (json.dumps(o,sort_keys=True,ensure_ascii=False,indent=2)+'\n').encode()
 def jl(rows):return enc(''.join(json.dumps(x,sort_keys=True,ensure_ascii=False)+'\n' for x in rows))
 
-def build(decision,evidence_root,source_root,repo=None):
+def build(decision,evidence_root,source_root,repo=None,zip_path=None):
     err=[]
     frame=load(evidence_root,decision.get('common_frame'),err,'BUILD:FRAME')
     if frame is None:return None,err
@@ -89,11 +89,11 @@ def main():
     ap=argparse.ArgumentParser(description='Build/verify the six deterministic ANVIL R7 projections')
     ap.add_argument('action',choices=['build','verify']);ap.add_argument('decision')
     ap.add_argument('--evidence-root',required=True);ap.add_argument('--source-root',required=True)
-    ap.add_argument('--repo');ap.add_argument('--out',required=True);a=ap.parse_args()
+    ap.add_argument('--repo');ap.add_argument('--zip');ap.add_argument('--out',required=True);a=ap.parse_args()
     d=json.loads(pathlib.Path(a.decision).read_text())
-    res=check_decision(d,a.evidence_root,a.source_root,a.repo)
+    res=check_decision(d,a.evidence_root,a.source_root,a.repo,a.zip)
     if res['status']=='RED':print(json.dumps({'status':'RED','gate':res},indent=2));return 2
-    arts,err=build(d,a.evidence_root,a.source_root,a.repo)
+    arts,err=build(d,a.evidence_root,a.source_root,a.repo,a.zip)
     if arts is None:print(json.dumps({'status':'RED','errors':err},indent=2));return 2
     if a.action=='build':
         man=write(arts,a.out);print(json.dumps({'status':'BUILT','files':man,'scope':'LOCAL_STRUCTURE_ONLY_NOT_NATIVE_OR_PROTECTED'},indent=2));return 0

@@ -1,0 +1,71 @@
+{
+  "distributions": {
+    "D1_even_parity": {
+      "000": 0.25,
+      "011": 0.25,
+      "101": 0.25,
+      "110": 0.25
+    },
+    "D2_odd_parity": {
+      "001": 0.25,
+      "010": 0.25,
+      "100": 0.25,
+      "111": 0.25
+    }
+  },
+  "univariate_equal": true,
+  "univariate": {
+    "0": 0.5,
+    "1": 0.5
+  },
+  "pairwise_equal": true,
+  "pairwise": {
+    "01=00": 0.25,
+    "01=01": 0.25,
+    "01=10": 0.25,
+    "01=11": 0.25,
+    "02=00": 0.25,
+    "02=01": 0.25,
+    "02=10": 0.25,
+    "02=11": 0.25,
+    "12=00": 0.25,
+    "12=01": 0.25,
+    "12=10": 0.25,
+    "12=11": 0.25
+  },
+  "three_way": {
+    "D1": {
+      "000": 0.25,
+      "011": 0.25,
+      "101": 0.25,
+      "110": 0.25
+    },
+    "D2": {
+      "001": 0.25,
+      "010": 0.25,
+      "100": 0.25,
+      "111": 0.25
+    },
+    "P111_D1": 0,
+    "P111_D2": 0.25
+  },
+  "denominator_witness": {
+    "design": "8 equal respondents, 2 per even-parity pattern; D=1 for 000/011, D=0 for 101/110",
+    "forward": {
+      "P(Y=000|D=1)": {
+        "numerator": 2,
+        "denominator": 4,
+        "value": 0.5
+      }
+    },
+    "reverse": {
+      "P(D=1|Y=000)": {
+        "numerator": 2,
+        "denominator": 2,
+        "value": 1.0
+      }
+    },
+    "note": "forward denominator is respondents with D=1; reverse denominator is respondents with Y=000; they are not interchangeable"
+  },
+  "validity": "All entries are nonnegative and sum to 1; no source execution claimed."
+}
