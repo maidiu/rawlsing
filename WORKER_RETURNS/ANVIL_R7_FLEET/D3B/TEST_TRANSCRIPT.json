@@ -1,0 +1,61 @@
+{
+  "schema": "ANVIL_D3B_TEST_TRANSCRIPT",
+  "created_utc": "2026-11-17T18:17:05.189047+00:00",
+  "scope": "LOCAL_SOURCEFREE_STRUCTURE_AND_FAIL_CLOSED_ONLY__NO_NATIVE_SOURCE_100K_C_OR_H1",
+  "runtime": {
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "served_model": "UNKNOWN",
+    "host": "mainMac/OpenCode 2.0.22 CLI",
+    "quota": "UNKNOWN"
+  },
+  "input_sha256": {
+    "EVIDENCE/SOURCE_118/PIN_MANIFEST.json": "544d8822bd9f5b4fc6f771f4cb4578449348a32baa6a6db429f581f333b470ff",
+    "EVIDENCE/SOURCE_IDENTITY_INVENTORY.json": "3854e0bdcf6faa017a03e43db8817fa11cb25a08164898f300a75910a8bdffca",
+    "PACKAGE/ANVIL_R7/tools/r7_integrated.py": "01c5da0df1ba0db71383fbfeec6bcd7cec8d49bcf4dff4ebae75a15a76d873f6",
+    "PACKAGE/ANVIL_R7/tools/r7_inventory.py": "536f7fd9bdff388beb1482f0660a3758b6e5b2656d4b0fc6779f54da64848062",
+    "PACKAGE/ANVIL_R7/tools/r7_build.py": "9e90183219f755f1310df1d37515fb1ddc774ca4e9a36addd7671f33f05f4779",
+    "PACKAGE/ANVIL_R7/tools/test_r7_integrated.py": "ec3af115b1b8d7f6625c1d4434c6c661a01eeb362f9787007cf2afaccfb450bc"
+  },
+  "runs": [
+    {
+      "command": "python3 tools/r7_inventory.py build --source-root /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/EVIDENCE/SOURCE_118 --manifest /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/EVIDENCE/SOURCE_118/PIN_MANIFEST.json --zip-root /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/PACKAGE/ANVIL_R7 --out /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/EVIDENCE/SOURCE_IDENTITY_INVENTORY.json",
+      "cwd": "PACKAGE/ANVIL_R7",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"BUILT\",\n  \"path\": \"/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/EVIDENCE/SOURCE_IDENTITY_INVENTORY.json\",\n  \"sha256\": \"3854e0bdcf6faa017a03e43db8817fa11cb25a08164898f300a75910a8bdffca\",\n  \"total\": 118,\n  \"counts\": {\n    \"K1_CAP\": 29,\n    \"PYAT_PC\": 26,\n    \"P4R\": 14,\n    \"SEAM_B\": 10,\n    \"SEAM_S\": 8,\n    \"ANVIL_L\": 8,\n    \"BOUNDARY\": 7,\n    \"TERMINAL\": 16\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python3 tools/r7_inventory.py verify --source-root /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/EVIDENCE/SOURCE_118 --inventory /Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/D3B/WORKER_RETURNS/ANVIL_R7_FLEET/D3B/EVIDENCE/SOURCE_IDENTITY_INVENTORY.json --repo /Users/matthewsmith/s2b-work/rawlsing",
+      "cwd": "PACKAGE/ANVIL_R7",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY\",\n  \"errors\": [],\n  \"counts\": {\n    \"K1_CAP\": 29,\n    \"PYAT_PC\": 26,\n    \"P4R\": 14,\n    \"SEAM_B\": 10,\n    \"SEAM_S\": 8,\n    \"ANVIL_L\": 8,\n    \"BOUNDARY\": 7,\n    \"TERMINAL\": 16\n  },\n  \"total\": 118,\n  \"source_authentication\": \"GIT_OBJECT_BLOB_AND_BYTES_VERIFIED\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python3 -m unittest -v test_r7_integrated",
+      "cwd": "PACKAGE/ANVIL_R7/tools",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_26_adopted_or_14_closed_red (test_r7_integrated.G.test_26_adopted_or_14_closed_red) ... ok\ntest_53_rows_complete_but_one_identity_missing_red (test_r7_integrated.G.test_53_rows_complete_but_one_identity_missing_red) ... ok\ntest_blocking_loss_and_silent_retirement_red (test_r7_integrated.G.test_blocking_loss_and_silent_retirement_red) ... ok\ntest_c_graph_hole_red (test_r7_integrated.G.test_c_graph_hole_red) ... ok\ntest_c_hold_passes (test_r7_integrated.G.test_c_hold_passes) ... ok\ntest_c_local_h1_red (test_r7_integrated.G.test_c_local_h1_red) ... ok\ntest_c_missing_boundary_negative_red_and_restore (test_r7_integrated.G.test_c_missing_boundary_negative_red_and_restore) ... ok\ntest_c_missing_restore_red (test_r7_integrated.G.test_c_missing_restore_red) ... ok\ntest_c_self_independence_red (test_r7_integrated.G.test_c_self_independence_red) ... ok\ntest_decision_all_118_passes_pending_c (test_r7_integrated.G.test_decision_all_118_passes_pending_c) ... ok\ntest_decision_missing_one_identity_red (test_r7_integrated.G.test_decision_missing_one_identity_red) ... ok\ntest_decision_requires_requirement_crosswalk_and_hard_binding (test_r7_integrated.G.test_decision_requires_requirement_crosswalk_and_hard_binding) ... ok\ntest_local_h1_claim_red (test_r7_integrated.G.test_local_h1_claim_red) ... ok\ntest_missing_b10_red (test_r7_integrated.G.test_missing_b10_red) ... ok\ntest_missing_k3_row_red (test_r7_integrated.G.test_missing_k3_row_red) ... ok\ntest_new_adoption_or_closure_in_decision_red (test_r7_integrated.G.test_new_adoption_or_closure_in_decision_red) ... ok\ntest_no_fake_source_grants (test_r7_integrated.G.test_no_fake_source_grants) ... ok\ntest_no_mandatory_ab_or_rival (test_r7_integrated.G.test_no_mandatory_ab_or_rival) ... ok\ntest_optional_duel_requires_same_exact_evidence (test_r7_integrated.G.test_optional_duel_requires_same_exact_evidence) ... ok\ntest_six_projections_deterministic_and_restore (test_r7_integrated.G.test_six_projections_deterministic_and_restore) ... ok\ntest_source_byte_mutation_red_and_restore (test_r7_integrated.G.test_source_byte_mutation_red_and_restore) ... ok\ntest_source_only_118_inventory_s1_pass (test_r7_integrated.G.test_source_only_118_inventory_s1_pass) ... ok\ntest_synthetic_r5_spine_alone_is_not_a_source (test_r7_integrated.G.test_synthetic_r5_spine_alone_is_not_a_source) ... ok\ntest_typed_graph_hole_red (test_r7_integrated.G.test_typed_graph_hole_red) ... ok\n\n----------------------------------------------------------------------\nRan 24 tests in 4.166s\n\nOK\n"
+    },
+    {
+      "command": "python3 tools/run_r7_quality.py",
+      "cwd": "PACKAGE/ANVIL_R7",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY\",\n  \"commands_checked\": 12,\n  \"exit_codes\": [\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0,\n    0\n  ],\n  \"record\": \"tests/R7_QUALITY_REPORT.json\",\n  \"scope\": \"RECONSTRUCTED_SYNTHETIC_AND_FORMAT_ONLY__NO_NATIVE_ORIGINAL_SOURCE_100K_FULL_PHYSICAL_RUN__NO_INDEPENDENT_C__NO_PROTECTED_H1\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python3 -m unittest test_r7_integrated",
+      "cwd": "PACKAGE/ANVIL_R7/tools",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "........................\n----------------------------------------------------------------------\nRan 24 tests in 4.807s\n\nOK\n"
+    }
+  ],
+  "summary": {
+    "all_exit_zero": true,
+    "test_cases": 24,
+    "r7_quality_status": "PASS_LOCAL_SYNTHETIC_AND_FORMAT_ONLY"
+  }
+}

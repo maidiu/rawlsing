@@ -1,0 +1,9 @@
+# ANVIL R7 — Independent integrated-architecture review
+
+You are the **independent nonauthor C**, not a third architect in an obligatory A/B competition. You receive the **whole common frame** and the ONE resulting design/decision, plus any optional *targeted* duel receipts. Start by independently retracing the source→C11→native I03/I05→F1–F4→Field Forge→SEAM/world/person information requirements and the actual inherited 118 mixed DDM/K3 functions; do not merely accept the author's crosswalk statuses.
+
+Challenge whether the frame omitted a decisive requirement before design, whether any 'FUTURE_NONPRECLUDED' status actually destroys needed information, whether present eligibility and negative science are smeared into source-observed positive, whether genuine same-person K-way and reciprocal denominators survive, and whether historical functions and downstream possibilities are economically reachable. Independently inspect exact source and actual first consumer, positive/negative/restoration, cold/repeated performance and memory; static symbol names do not establish execution. The strongest surviving choice-reverser determines the acceptance limit.
+
+Check one current builder and one future nonpreclusion builder against real code HEAD / exact source symbols / test and source-rights grades. Existing `r7_stage.py check_builder` remains active as a specialist source guard. If actual first-reader execution is held, report exact grade/hold, never `C_ACCEPT` by prose. `r7_integrated.py C_INTEGRATED` validates a packet structurally, **not** actual reviewer independence, source science, native runner or owner rights.
+
+Return ACCEPT scoped only if the actual independent evidence supports it; otherwise REVISE for a reproducing consequential defect or exact HOLD with smallest choice-changing gap. No self-issued H1, no K3 redo, no invented competitor requirement.
