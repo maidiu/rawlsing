@@ -32,20 +32,7 @@ class G(unittest.TestCase):
         self.r2=json.loads((ROOT/'tests/fixtures/R2_MACHINE.json').read_text())
         self.inv_ptr=self.put('inventory.json',self.inv)
         self.ref=good_source_ref()
-        reqs=[]
-        for rid in REQUIREMENT_ROSTER:
-            d=REQUIREMENT_DOMAIN[rid]; spec=REQUIREMENT_SEMANTICS[rid]
-            reqs.append({'id':rid,'domain':d,'typed_obligation':spec['typed_obligation'],
-                'binding':'FUTURE_NONPRECLUSION' if d in ('SEAM_WORLD_ACTOR','FIELD_FORGE') else 'PRESENT_HARD',
-                'substantive_requirement':' '.join(spec['required_phrases'])+' precise source-court obligation '+rid,
-                'positive_probe':f'Positive probe for {rid}: a source-consistent input changes the named typed consumer at the honest local grade.',
-                'negative_probe':f'Negative probe for {rid}: the stated negative mutation is refused without a cached positive.',
-                'why_needed':'This source-court distinction is choice-changing and must not disappear while IDs and hashes remain valid.',
-                'loss_if_missing':'The named distinction would be erased by a coherent convenience fixture.',
-                'first_consumer':'Named typed graph reader or exact competent owner hold without a universal truth service.',
-                'architectural_consequence':'Carry the typed distinction and a refusal/restore test at the honest grade.',
-                'proof_or_owner_hold':'Execute the probe or preserve the exact external C/source-owner hold.',
-                'evidence':self.ref})
+        reqs=copy.deepcopy(self.r2['requirements'])
         self.frame={'schema':'ANVIL_R7_INTEGRATED','stage':'COMMON_FRAME',
             'workflow':'ONE_INTEGRATED_INVESTIGATION_OPTIONAL_TARGETED_DUELS','phase':'BEFORE_ARCHITECTURE_SELECTION',
             'architecture_selected':False,'mandatory_rival_architecture':False,'duel_required':False,
@@ -110,29 +97,10 @@ class G(unittest.TestCase):
           'identity_dispositions':disp,
           'requirement_dispositions':copy.deepcopy(self.r2['requirement_dispositions'])}
         self.dptr=self.put('decision.json',self.decision)
-        self.c={'schema':'ANVIL_R7_INTEGRATED','stage':'INDEPENDENT_C','integrated_decision':self.dptr,
-           'integrated_decision_sha256':digest(self.decision),'first_consumer':self.frame['first_real_consumer'],
-           'independent_reverse_walk_of_whole_frame':'The reviewer separately traces source through C11, I03, FF and world/actor evidence including negative cases',
-           'strongest_choice_reversing_objection':'The installed event index may not support conditioned joint analysis economically at survey width',
-           'scientific_and_owner_boundary':'No source scientific rights or actor-level structural causality can be issued from a documentary C assessment',
-           'actual_first_consumer_assessment':'This fixture does not run a real native first consumer and cannot justify adoption of original survey science',
-           'historical_no_loss_assessment':'The complete historical inventory remains frozen with no recovered function automatically declared issued',
-           'reviewer_relationship':'DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION',
-           'choice_reversing_objection_survives':False,'verdict':'C_HOLD_EXACT',
-           'boundary_court':{t:{'positive':'A valid source-consistent input produces the specified typed output at the boundary',
-               'negative':'A mutated, revoked or absent input is refused at the actual boundary consumer without cached positive',
-               'restore':'Exact authorized bytes and permission restore the prior positive output','grade':'SOURCE_STATIC_CONSERVED','claim_grade':'SOURCE_STATIC_CONSERVED','actual_first_reader_verified':False,'authority_owner':'Competent boundary owner','forbidden_promotions':[],
-               'first_consumer_or_hold':'Boundary consumer named in the typed graph; owner-held where future science is not issued',
-               'evidence':{'path':'02_BOUNDARY_CONTRACTS.json','sha256':sha((SOURCE/'02_BOUNDARY_CONTRACTS.json').read_bytes()),'exact_excerpt':self.quote(SOURCE/'02_BOUNDARY_CONTRACTS.json','"id":"'+t+'"')}} for t in ('T1','T2','T3','T4','T5','T6','T7')},
-           'graph_audit':{'producer_authority_time_consumer_checked':True,'holes':[],'boundary_edges_checked':['T1','T2','T3','T4','T5','T6','T7'],'terminal_ids_present':list(TERMINAL_IDS),'terminal_graph_checked':True},
-           'terminal_audit':{'terminal_ids_present':list(TERMINAL_IDS),'terminal_holds':{t:('Exact owner/science hold: no current actual first reader asserted for '+t) for t in TERMINAL_IDS}},
-           'builder_handoff_review':'The handoff identifies an exact first-reader ABI, six projections, refusal and restore behavior and a named external C/H1 consumer',
-           'actual_first_reader_verified':False,'local_h1_claim':False,'protected_received_locally':False,'h1_grade':'NOT_RECEIVED',
-           'builder_cards':[{'id':'present','domain':'CURRENT_FIRST_CONSUMER','grade':'EXACT_BUILDER_HOLD',
-             'exact_hold':'Actual native source consumer proof and competent owner execution are not part of this synthetic local test'},
-             {'id':'future','domain':'FUTURE_NONPRECLUSION','grade':'EXACT_BUILDER_HOLD',
-              'exact_hold':'Future actor/world source governance remains independent and cannot be invented by this local test'}],
-           'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False}
+        self.c=copy.deepcopy(self.r2['c'])
+        self.c['integrated_decision']=self.dptr
+        self.c['integrated_decision_sha256']=digest(self.decision)
+        self.c['first_consumer']=self.frame['first_real_consumer']
     def tearDown(self):self.tmp.cleanup()
     def quote(self,path,needle):
         text=path.read_text();i=text.index(needle);return text[i:i+80]

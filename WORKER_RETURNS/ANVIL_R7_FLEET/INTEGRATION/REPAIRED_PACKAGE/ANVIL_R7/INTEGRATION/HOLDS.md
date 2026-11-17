@@ -1,6 +1,6 @@
 # HOLDS — R2, exact and current
 
-1. **Distinct C recheck:** `PENDING_SAME_DISTINCT_C_RECHECK`; same independent C session must recheck the new cut. No local PASS is C.
+1. **Distinct C recheck:** `PENDING_SAME_C_RECHECK`; same independent C session must recheck the new cut. No local PASS is C.
 2. **Protected H1/CAS:** NOT_GRANTED. Local flags are false and refused if true.
 3. **Physical C11 architecture:** not selected.
 4. **Native/source/science/actor rights:** NOT_GRANTED. No original35 execution, native F4, FF02/N9/N10W/SOROK actor claim.

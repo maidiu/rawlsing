@@ -1,6 +1,6 @@
 # ANVIL integrated decision — deterministic first-reader projection
 
-**Frame:** abc009a177d61cd1a7eb887dff2970a7ec67789c53798f09335ab1301468e591
+**Frame:** 0bf70b0999972316637b55eddc35d34b7da25168f1732c873d3a5f2a0070b8eb
 **Decision grade:** AUTHOR_PROPOSED_PENDING_C
 **First real consumer:** Authorized generic sourcefree saved C11 native I03 and I05 operations
 

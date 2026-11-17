@@ -1249,7 +1249,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "S01_PROJECT",
         "id": "SURVEY_RELEASE",
         "input_types": [
           "typed_input"
@@ -1268,7 +1268,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "S01_PROJECT",
         "id": "INSTRUMENT",
         "input_types": [
           "typed_input"
@@ -1287,7 +1287,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "S01_PROJECT",
         "id": "SEMANTIC_RULE",
         "input_types": [
           "typed_input"
@@ -1306,7 +1306,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "S01_PROJECT",
         "id": "SOURCE_RIGHT",
         "input_types": [
           "typed_input"
@@ -1326,7 +1326,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "S01_PROJECT",
         "id": "DESIGN_SCOPE",
         "input_types": [
           "typed_input"
@@ -1345,7 +1345,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "I02_PROOF",
         "id": "S01_PROJECT",
         "input_types": [
           "CODEBOOK_RULE",
@@ -1369,7 +1369,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "C11_ESTATE",
         "id": "I02_PROOF",
         "input_types": [
           "CANONICAL_I02_PROOF_INPUT"
@@ -1388,7 +1388,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "COLD_READ",
         "id": "C11_ESTATE",
         "input_types": [
           "13_FAMILY_TYPED_BODY",
@@ -1408,7 +1408,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "COLD_READ",
         "id": "C11_ROOT",
         "input_types": [
           "typed_input"
@@ -1427,7 +1427,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "I03",
         "id": "COLD_READ",
         "input_types": [
           "EXTERNAL_TRUST_ROOT",
@@ -1449,7 +1449,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "I03",
         "id": "QUERY_ISSUER",
         "input_types": [
           "typed_input"
@@ -1468,7 +1468,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "I05",
         "id": "I03",
         "input_types": [
           "QUERY_PREDICATE_ESTIMAND",
@@ -1490,7 +1490,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "F3",
         "id": "I05",
         "input_types": [
           "GOVERNED_FACTS",
@@ -1509,8 +1509,8 @@
         "alternative_id": "A1",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact hold for BATCH: no current actual consumer asserted",
+        "first_consumer": "EXACT_HOLD",
         "id": "BATCH",
         "input_types": [
           "BATCH_ISSUED_EXECUTED_FATE"
@@ -1526,73 +1526,100 @@
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "S04 empirical issuer",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for F1: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "F1",
         "input_types": [
           "EXACT_DENOMINATOR_AND_EVIDENCE"
         ],
         "kind": "MARGINALS",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "SOURCE_GRADED_EMPIRICAL_FACT"
         ],
         "owner": "S04 empirical issuer",
         "producer": "MARGINALS producer/owner",
         "producer_authority": "S04 empirical issuer",
+        "required_edges": [
+          "E15",
+          "E21"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "S04 estimator issuer",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for F2: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "F2",
         "input_types": [
           "EXACT_DENOMINATOR_AND_EVIDENCE"
         ],
         "kind": "DIRECTIONAL_CONDITIONAL",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "SOURCE_GRADED_EMPIRICAL_FACT"
         ],
         "owner": "S04 estimator issuer",
         "producer": "DIRECTIONAL_CONDITIONAL producer/owner",
         "producer_authority": "S04 estimator issuer",
+        "required_edges": [
+          "E16",
+          "E22"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "S04 estimator/branch issuer",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for F3: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "F3",
         "input_types": [
           "EXACT_DENOMINATOR_AND_EVIDENCE",
           "SELECTED_BRANCH"
         ],
         "kind": "RECURSIVE_MINORITY",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "SOURCE_GRADED_EMPIRICAL_FACT"
         ],
         "owner": "S04 estimator/branch issuer",
         "producer": "RECURSIVE_MINORITY producer/owner",
         "producer_authority": "S04 estimator/branch issuer",
+        "required_edges": [
+          "E17",
+          "E19",
+          "E23"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "S04 joint issuer",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for F4: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "F4",
         "input_types": [
           "EXACT_DENOMINATOR_AND_EVIDENCE"
         ],
         "kind": "SAME_PERSON_JOINT",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "JOINT_MI_GAIN",
           "SOURCE_GRADED_EMPIRICAL_FACT"
@@ -1600,14 +1627,21 @@
         "owner": "S04 joint issuer",
         "producer": "SAME_PERSON_JOINT producer/owner",
         "producer_authority": "S04 joint issuer",
+        "required_edges": [
+          "E18",
+          "E20",
+          "E24"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact hold for DIAGNOSTICS: no current actual consumer asserted",
+        "first_consumer": "EXACT_HOLD",
         "id": "DIAGNOSTICS",
         "input_types": [
           "JOINT_MI_GAIN"
@@ -1626,7 +1660,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "N10E",
         "id": "FF01",
         "input_types": [
           "SOURCE_GRADED_EMPIRICAL_FACT"
@@ -1648,7 +1682,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "FF02",
         "id": "MATERIAL_SOURCE",
         "input_types": [
           "typed_input"
@@ -1668,7 +1702,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "N9",
         "id": "FF02",
         "input_types": [
           "DESCRIPTIVE_ASSOCIATION",
@@ -1685,54 +1719,70 @@
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "F6 scientific issuer",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for F6: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "F6",
         "input_types": [
           "typed_input"
         ],
         "kind": "NONPOOLED_NUMERIC_PARTIAL_ID",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "PARTIAL_ID_INTERVAL"
         ],
         "owner": "F6 scientific issuer",
         "producer": "NONPOOLED_NUMERIC_PARTIAL_ID producer/owner",
         "producer_authority": "F6 scientific issuer",
+        "required_edges": [
+          "E26"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "F7 scientific issuer",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for F7: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "F7",
         "input_types": [
           "typed_input"
         ],
         "kind": "TEMPORAL_COMPARABILITY",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "COMPARABLE_WAVE"
         ],
         "owner": "F7 scientific issuer",
         "producer": "TEMPORAL_COMPARABILITY producer/owner",
         "producer_authority": "F7 scientific issuer",
+        "required_edges": [
+          "E27"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT FF empirical world",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for N10E: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "N10E",
         "input_types": [
           "EMPIRICAL_POSSIBILITY",
           "QUALIFIED_EMPIRICAL_POSSIBILITY"
         ],
         "kind": "EMPIRICAL_POSSIBILITY",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "EMPIRICAL_POSSIBILITY",
           "OPTION_NEEDS_SELECTED_WORLD_AND_SOURCE_GRADE",
@@ -1741,14 +1791,24 @@
         "owner": "PYAT FF empirical world",
         "producer": "EMPIRICAL_POSSIBILITY producer/owner",
         "producer_authority": "PYAT FF empirical world",
+        "required_edges": [
+          "E25",
+          "E32",
+          "E33",
+          "E50",
+          "E51"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "MODELED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT objective-world owner",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for N9: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "N9",
         "input_types": [
           "COMPARABLE_WAVE",
@@ -1756,26 +1816,37 @@
           "QUALIFIED_MATERIAL_WORLD_RELATION"
         ],
         "kind": "OBJECTIVE_WORLD",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "SITUATED_WORLD_CONDITION"
         ],
         "owner": "PYAT objective-world owner",
         "producer": "OBJECTIVE_WORLD producer/owner",
         "producer_authority": "PYAT objective-world owner",
+        "required_edges": [
+          "E26",
+          "E27",
+          "E30",
+          "E31"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "MODELED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT qualified world owner",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for N10W: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "N10W",
         "input_types": [
           "EMPIRICAL_POSSIBILITY",
           "SITUATED_WORLD_CONDITION"
         ],
         "kind": "SITUATED_WORLD_POSSIBILITY",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "POSITIONED_WORLD_POSSIBILITY",
           "WORLD_CONDITIONED_POSITIONED_OPTION"
@@ -1783,20 +1854,30 @@
         "owner": "PYAT qualified world owner",
         "producer": "SITUATED_WORLD_POSSIBILITY producer/owner",
         "producer_authority": "PYAT qualified world owner",
+        "required_edges": [
+          "E31",
+          "E32",
+          "E34",
+          "E52"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "MODELED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PRE-V3 external owner",
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
-        "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "exact_hold": "Exact owner/science hold for PRE-V3: no current actual first reader is asserted; source-required dependencies are explicit",
+        "first_consumer": "EXACT_HOLD",
         "id": "PRE-V3",
         "input_types": [
           "POSITIONED_WORLD_POSSIBILITY",
           "POSSIBILITY_CANDIDATE"
         ],
         "kind": "POSITIONED_PERSON_INPUT",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "OBJECTIVE_POSITIONED_PREV3_PRODUCT",
           "POSITION_ACCESS"
@@ -1804,6 +1885,14 @@
         "owner": "PRE-V3 external owner",
         "producer": "POSITIONED_PERSON_INPUT producer/owner",
         "producer_authority": "PRE-V3 external owner",
+        "required_edges": [
+          "E33",
+          "E34",
+          "E38",
+          "E53"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "MODELED"
       },
       {
@@ -1811,7 +1900,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "OTHER_INSTANTIATED",
         "id": "OTHER_CANDIDATE",
         "input_types": [
           "OTHER_POSITION_JOINT_DISTRIBUTIONS"
@@ -1830,7 +1919,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "ENCOUNTER",
         "id": "OTHER_INSTANTIATED",
         "input_types": [
           "PARTICULAR_FICTIONAL_OTHER"
@@ -1849,7 +1938,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "ACTOR_ACCESS",
         "id": "ENCOUNTER",
         "input_types": [
           "PARTICULAR_OTHER_ACTION",
@@ -1869,7 +1958,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "ACQUIRED",
         "id": "ACTOR_ACCESS",
         "input_types": [
           "ACTOR_ACCESSIBLE_CUE",
@@ -1889,7 +1978,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "ACT",
         "id": "ACQUIRED",
         "input_types": [
           "APPROPRIATED_PREMISE_OR_NO_CHANGE"
@@ -1908,7 +1997,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "WORLD_EFFECT",
         "id": "ACT",
         "input_types": [
           "ACTOR_OWNED_PRACTICE"
@@ -1928,7 +2017,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "NEXT_STATE",
         "id": "WORLD_EFFECT",
         "input_types": [
           "REALIZED_ACTION_EFFECT",
@@ -1948,7 +2037,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "SOROK",
         "id": "NEXT_STATE",
         "input_types": [
           "ACTOR_HISTORY",
@@ -1968,7 +2057,7 @@
         "decision_id": "D1",
         "evidence_grade": "SOURCE_OR_CONTRACT",
         "exact_hold": "",
-        "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+        "first_consumer": "ACTOR_ACCESS",
         "id": "E001",
         "input_types": [
           "SOROK_E001_ACTOR_FIRST_READ"
@@ -1984,28 +2073,37 @@
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
         "decision_id": "D1",
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
-        "exact_hold": "Exact owner/science hold for F5: no current actual first reader is asserted",
+        "exact_hold": "Exact owner/science hold for F5: no current actual first reader is asserted; source-required dependencies are explicit",
         "first_consumer": "EXACT_HOLD",
         "id": "F5",
         "input_types": [
           "QUALIFIED_M01_M1_M2_M3_LIFECYCLE"
         ],
         "kind": "HELD_LEARNED_EMPIRICAL_RELATION",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "QUALIFIED_EMPIRICAL_POSSIBILITY"
         ],
         "owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
         "producer": "HELD_LEARNED_EMPIRICAL_RELATION producer/owner",
         "producer_authority": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+        "required_edges": [
+          "E49",
+          "E50"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT F8/source world issuer",
         "decision_id": "D1",
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
-        "exact_hold": "Exact owner/science hold for F8: no current actual first reader is asserted",
+        "exact_hold": "Exact owner/science hold for F8: no current actual first reader is asserted; source-required dependencies are explicit",
         "first_consumer": "EXACT_HOLD",
         "id": "F8",
         "input_types": [
@@ -2013,19 +2111,28 @@
           "WORLD_CONDITIONED_POSITIONED_OPTION"
         ],
         "kind": "HELD_POSITIONED_WORLD_OPTION",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT"
         ],
         "owner": "PYAT F8/source world issuer",
         "producer": "HELD_POSITIONED_WORLD_OPTION producer/owner",
         "producer_authority": "PYAT F8/source world issuer",
+        "required_edges": [
+          "E51",
+          "E52",
+          "E54"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT N11 objective acceptance owner",
         "decision_id": "D1",
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
-        "exact_hold": "Exact owner/science hold for N11: no current actual first reader is asserted",
+        "exact_hold": "Exact owner/science hold for N11: no current actual first reader is asserted; source-required dependencies are explicit",
         "first_consumer": "EXACT_HOLD",
         "id": "N11",
         "input_types": [
@@ -2033,69 +2140,100 @@
           "QUALIFIED_SELECTED_WORLD_FIRST_EFFECT"
         ],
         "kind": "HELD_OBJECTIVE_PREV3_GATE",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "INDEPENDENT_ACTOR_HANDOFF_MODE"
         ],
         "owner": "PYAT N11 objective acceptance owner",
         "producer": "HELD_OBJECTIVE_PREV3_GATE producer/owner",
         "producer_authority": "PYAT N11 objective acceptance owner",
+        "required_edges": [
+          "E53",
+          "E54",
+          "E55"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "OBSERVED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "PYAT/SOROK bilateral consent and mode owners",
         "decision_id": "D1",
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
-        "exact_hold": "Exact owner/science hold for N12: no current actual first reader is asserted",
+        "exact_hold": "Exact owner/science hold for N12: no current actual first reader is asserted; source-required dependencies are explicit",
         "first_consumer": "EXACT_HOLD",
         "id": "N12",
         "input_types": [
           "INDEPENDENT_ACTOR_HANDOFF_MODE"
         ],
         "kind": "HELD_SOROK_WAKE_DEFER",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "SOURCE_WORLD_ACTOR_SEPARATION"
         ],
         "owner": "PYAT/SOROK bilateral consent and mode owners",
         "producer": "HELD_SOROK_WAKE_DEFER producer/owner",
         "producer_authority": "PYAT/SOROK bilateral consent and mode owners",
+        "required_edges": [
+          "E55",
+          "E56"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "FICTIONAL"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "Both authorized PYAT/SOROK source/actor interface owners",
         "decision_id": "D1",
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
-        "exact_hold": "Exact owner/science hold for SEAM: no current actual first reader is asserted",
+        "exact_hold": "Exact owner/science hold for SEAM: no current actual first reader is asserted; source-required dependencies are explicit",
         "first_consumer": "EXACT_HOLD",
         "id": "SEAM",
         "input_types": [
           "SOURCE_WORLD_ACTOR_SEPARATION"
         ],
         "kind": "HELD_BILATERAL_TRANSFORMATION",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "SOROK_E001_ACTOR_FIRST_READ"
         ],
         "owner": "Both authorized PYAT/SOROK source/actor interface owners",
         "producer": "HELD_BILATERAL_TRANSFORMATION producer/owner",
         "producer_authority": "Both authorized PYAT/SOROK source/actor interface owners",
+        "required_edges": [
+          "E56",
+          "E57"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "MODELED"
       },
       {
         "alternative_id": "A1",
+        "competent_owner": "SOROK actor/science/consent and world owner",
         "decision_id": "D1",
         "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
-        "exact_hold": "Exact owner/science hold for SOROK: no current actual first reader is asserted",
+        "exact_hold": "Exact owner/science hold for SOROK: no current actual first reader is asserted; source-required dependencies are explicit",
         "first_consumer": "EXACT_HOLD",
         "id": "SOROK",
         "input_types": [
           "TWO_ACTOR_EVENTS_AND_LATER_EFFECT"
         ],
         "kind": "HELD_LATER_ACTOR_FIRST_READER",
+        "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
         "output_types": [
           "typed_output"
         ],
         "owner": "SOROK actor/science/consent and world owner",
         "producer": "HELD_LATER_ACTOR_FIRST_READER producer/owner",
         "producer_authority": "SOROK actor/science/consent and world owner",
+        "required_edges": [
+          "E58"
+        ],
+        "restore": "exact owner/source and release restore the prior qualified state",
+        "terminal_fate": "EXACT_HOLD",
         "time_mode": "FICTIONAL"
       }
     ],

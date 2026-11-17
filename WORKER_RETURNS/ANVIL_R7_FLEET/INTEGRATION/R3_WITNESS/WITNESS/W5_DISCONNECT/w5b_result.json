@@ -1,0 +1,36 @@
+{
+  "schema": "C_REVIEW_R2_W5_DISCONNECT",
+  "nodes": 43,
+  "edges": 58,
+  "removed_F5_edges": 2,
+  "remaining_F5_edges": 0,
+  "filler_edge_ids": [
+    "E_FILL_1",
+    "E_FILL_2"
+  ],
+  "C_terminal_audit_F5": {
+    "exact_hold": "Exact owner/science hold for F5: no current actual first reader is asserted; source-required dependencies are explicit",
+    "fate": "EXACT_HOLD",
+    "owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer"
+  },
+  "DECISION": {
+    "status": "RED",
+    "errors": [
+      "DECISION:GRAPH:TERMINAL_REQUIRED_EDGE_ABSENT:F5:E49",
+      "DECISION:GRAPH:TERMINAL_REQUIRED_EDGE_ABSENT:F5:E50",
+      "DECISION:GRAPH:TERMINAL_REQUIRED_EDGE_ABSENT:N10E:E50"
+    ],
+    "covered": 16,
+    "requirement_total": 16,
+    "identity_dispositions": 118
+  },
+  "C_INTEGRATED": {
+    "status": "RED",
+    "errors": [
+      "C:DEFECTIVE_DECISION:DECISION:GRAPH:TERMINAL_REQUIRED_EDGE_ABSENT:F5:E49",
+      "C:DEFECTIVE_DECISION:DECISION:GRAPH:TERMINAL_REQUIRED_EDGE_ABSENT:F5:E50",
+      "C:DEFECTIVE_DECISION:DECISION:GRAPH:TERMINAL_REQUIRED_EDGE_ABSENT:N10E:E50"
+    ]
+  },
+  "verdict": "DISCONNECT_REFUSED"
+}

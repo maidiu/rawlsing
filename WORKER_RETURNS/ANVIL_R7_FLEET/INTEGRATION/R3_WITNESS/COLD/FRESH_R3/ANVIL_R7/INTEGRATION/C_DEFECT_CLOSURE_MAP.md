@@ -1,0 +1,31 @@
+# C DEFECT CLOSURE MAP — REVISE_EXACT_DEFECT (review 6c70839a…)
+
+| C item | Consequential defect | Exact repair | Falsifier / witness now |
+|---|---|---|---|
+| D1/W1/W6 | 16 headings + generic 118 prose; pairwise-only/F6-guard erasure passed | Code-fixed `REQUIREMENT_SEMANTICS` with required/forbidden distinctions, typed obligation, positive/negative probes; 118 dispositions populated from D2A source-specific crosswalk with meaning, negative, consumer, typed obligation, origin/semantic binding; anti-generic cardinality checks | `test_w1_pairwise_requirement_refused` FRAME RED; `test_w1_f6_guard_as_numeric_refused` DECISION RED; `test_w6_generic_dispositions_refused` RED; projections full |
+| D2/W5 | 6-node/7-edge cartoon; 0/16 terminals | D2A 43-node/58-edge source→terminal graph imported; all 16 terminal IDs explicit (aliases for F5/F8/N11/N12/PRE-V3/SEAM/SOROK); held terminals exact holds; gate requires ≥30 nodes/≥40 edges and all terminal nodes; C terminal audit | `test_w5_terminal_graph_missing_refused` RED; positive graph has 43/58 and all 16 |
+| D3/W2 | C accepted false T4/T6/T7 science | C boundary court now requires `claim_grade`, authority owner, empty forbidden promotions, actual-reader proof only for `ACTUAL_PROVED`, and forbidden-phrase refusal in T positive/negative/restore and C prose | `test_w2_c_false_actor_world_science_refused` C RED |
+| D4/W3 | `python3` treated as script; fake local receipt reached conditional admit; text logs refused | `shlex` parse, interpreter tokens skipped, script resolved under source/evidence/package roots; raw log bytes/hash accepted as text; local custody cannot support `EXECUTED_FIRST_READER_PROOF` or conditional C admit | `test_w3_real_command_text_log_resolves_but_stays_local` no path/malformed error but local-custody refusal; `test_w3_fake_local_receipt_cannot_conditionally_admit` RED |
+| D5/W6 | Shallow projections | Six projections rebuilt with source meaning/negative/why/evidence/fates, full T fields, 43/58 graph, JSONL builder handoffs with ABI/transformation/negative/restore/test/effect/rights/status/dependencies, evidence+falsifier index and rationale | `test_w6_projections_are_full_not_shallow` checks full fields; builder verify byte-identical |
+| D6 | Cold commands not runnable; EVIDENCE parent copy | Package carries `ANVIL_R7/EVIDENCE` and `ANVIL_R7/BUILT`; `test_integrated_strict` resolves `PKG/EVIDENCE`; handoff commands use real `../EVIDENCE` paths and `tempfile.mkdtemp` | Exact final ZIP extracted and literal commands re-run; logs in `RAW_LOGS/final_cold_*` |
+| D7/W4 | Identity hash authenticated authored summary; semantic tamper passed | Inventory keeps exact row/excerpt and adds source-reported negative + authored interpretation grade; code-pinned semantic freeze; per-identity `source_meaning_sha256` binding; external C/source-owner semantic hold explicit | `test_w4_source_semantic_tamper_refused` FRAME freeze RED + DECISION binding RED |
+
+**Still held, not falsely closed:** F26 exact caller/invalidation; native 100k/dense/6 GiB/1-10-100; source/actor/science rights; independent C; H1. Local receipt forgery/human-summary truth remains external-C/source-owner. No architecture selected.
+
+## Raw command / exit receipt
+
+```
+python3 r7_inventory.py verify ... --inventory ../EVIDENCE/SOURCE_IDENTITY_INVENTORY.json
+  exit 0  PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY / GIT_AND_ZIP_PINS_VERIFIED
+python3 -m unittest test_r7_integrated -q
+  exit 0  Ran 29 tests ... OK
+python3 test_integrated_strict.py
+  exit 0  Ran 11 tests ... OK
+python3 r7_integrated.py FRAME ...       exit 0  PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED
+python3 r7_integrated.py DECISION ...    exit 0  PASS_LOCAL_INTEGRATED_DECISION_PENDING_C
+python3 r7_integrated.py C_INTEGRATED ... exit 0 PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED
+python3 r7_build.py verify ... --out ../BUILT
+  exit 0  PASS_SIX_PROJECTIONS_BYTE_IDENTICAL
+```
+
+All commands above were re-run from a fresh `tempfile.mkdtemp` extraction of the final `REPAIRED_PACKAGE.zip`; logs are `RAW_LOGS/final_cold_*`. Input pins: original ZIP `526d835d…`, inventory file SHA in `SOURCE_AUTHENTICATION.json`, final ZIP SHA in `MANIFEST.json`. No author worktree or parent EVIDENCE copy was used.

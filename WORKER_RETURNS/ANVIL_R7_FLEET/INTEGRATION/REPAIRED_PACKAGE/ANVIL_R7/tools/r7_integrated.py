@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse, hashlib, json, pathlib, re, subprocess, sys, zipfile
 from anvil import REQUIRED
 from r7_inventory import check_inventory, ORIGINAL_ZIP_SHA
+from r7_contract import REQUIREMENT_MACHINE, IDENTITY_MACHINE, BOUNDARY_MACHINE, REQUIREMENT_NARRATIVE_HASH, REQUIREMENT_DISPOSITION_NARRATIVE_HASH, IDENTITY_NARRATIVE_HASH, BOUNDARY_NARRATIVE_HASH, C_PROSE_HASH
 
 SCHEMA='ANVIL_R7_INTEGRATED'
 HEX40=re.compile(r'^[a-f0-9]{40}$')
@@ -84,6 +85,7 @@ def good(x,n=24):
 
 def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode()).hexdigest()
 def sha(x):return hashlib.sha256(x).hexdigest()
+def nh(obj,fields):return sha(json.dumps({k:(obj.get(k,'') if isinstance(obj,dict) else '') for k in fields},sort_keys=True,ensure_ascii=False).encode())
 
 def load(root,ptr,errors,code):
     if not isinstance(ptr,dict):errors.append(code+':NO_POINTER');return None
@@ -296,9 +298,25 @@ def check_graph(graph,errors,code='GRAPH'):
         n=nmap.get(tid) or nmap.get(aliases.get(tid,''))
         if not n:errors.append(code+':TERMINAL_NODE_MISSING:'+tid);continue
         if n.get('time_mode') not in GRAPH_TIME:errors.append(code+':TERMINAL_TIME_MODE:'+tid)
-        held=(n.get('first_consumer')=='EXACT_HOLD') or bool(n.get('exact_hold'))
-        if held and not good(n.get('exact_hold'),25):errors.append(code+':TERMINAL_HOLD_NOT_EXACT:'+tid)
-        if not held and not good(n.get('first_consumer'),3):errors.append(code+':TERMINAL_NO_CONSUMER_OR_HOLD:'+tid)
+        fate=n.get('terminal_fate')
+        if fate not in ('EXACT_HOLD','ACTUAL_CONSUMER'):errors.append(code+':TERMINAL_FATE_MISSING:'+tid)
+        if fate=='EXACT_HOLD':
+            for k,mn in (('exact_hold',25),('competent_owner',8),('negative_or_refusal',8),('restore',8)):
+                if not good(n.get(k),mn):errors.append(code+':TERMINAL_HOLD_FIELD:'+tid+':'+k)
+            req=n.get('required_edges')
+            if not isinstance(req,list) or not req:errors.append(code+':TERMINAL_REQUIRED_EDGES_MISSING:'+tid)
+            else:
+                for eid in req:
+                    if eid not in emap:errors.append(code+':TERMINAL_REQUIRED_EDGE_ABSENT:'+tid+':'+str(eid))
+                    elif emap[eid].get('from')!=tid and emap[eid].get('to')!=tid:errors.append(code+':TERMINAL_REQUIRED_EDGE_NOT_INCIDENT:'+tid+':'+str(eid))
+        if fate=='ACTUAL_CONSUMER':
+            abi=n.get('consumer_abi');grade=n.get('consumer_grade')
+            if not isinstance(abi,str) or '::' not in abi:errors.append(code+':TERMINAL_CONSUMER_ABI_MISSING:'+tid)
+            else:
+                f,sym=abi.split('::',1);p=pathlib.Path(f)
+                if not p.is_file() and not (pathlib.Path(__file__).resolve().parents[1]/f).is_file():errors.append(code+':TERMINAL_CONSUMER_ABI_NOT_FOUND:'+tid)
+            if grade not in ('EXECUTED_AT_SCOPE','CODE_STATIC','EXTERNAL_OWNER_HELD'):errors.append(code+':TERMINAL_CONSUMER_GRADE:'+tid)
+        if n.get('first_consumer')=='NAMED_TYPED_CONSUMER_OR_OWNER_HOLD':errors.append(code+':GENERIC_CONSUMER_PLACEHOLDER:'+tid)
 
 def check_identity_dispositions(decision,inventory,source_root,errors,evidence_root=None,repo=None,zip_path=None):
     """Every one of the 118 identities must have a candidate-specific disposition.
@@ -336,17 +354,11 @@ def check_identity_dispositions(decision,inventory,source_root,errors,evidence_r
             errors.append('DECISION:SOURCE_MEANING_NOT_BOUND_TO_INVENTORY:'+str(rid))
         if row.get('interpretation_grade') not in ('AUTHORED_SOURCE_BOUNDED_PENDING_C','EXTERNAL_C_SOURCE_OWNER_HOLD'):
             errors.append('DECISION:FALSE_SEMANTIC_AUTHENTICATION:'+str(rid))
-        guard=IDENTITY_GUARDS.get(rid)
-        if guard:
-            blob=(row.get('source_meaning','')+' '+row.get('source_negative','')+' '+row.get('design_effect','')+' '+row.get('conservation_or_refusal_witness','')).lower()
-            for ph in guard['required']:
-                if ph.lower() not in blob:errors.append('DECISION:REQUIRED_DISTINCTION_MISSING:'+rid+':'+ph)
-            for ph in guard['forbidden']:
-                if ph.lower() in blob:errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:'+rid+':'+ph)
-            if rid=='K1-CAP-17' and 'guard' in blob and any(w in blob for w in ('guaranteed','no separate','fully conserved','no additional','determines all','supplies')):
-                errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:K1-CAP-17:guard-as-numeric')
-            if rid=='K1-CAP-11' and 'pairwise' in blob and ('sufficient' in blob or 'substitute' in blob):
-                errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:K1-CAP-11:pairwise-substitute')
+        expected=IDENTITY_MACHINE.get(rid)
+        if expected is not None and row.get('machine_assertion')!=expected:
+            errors.append('DECISION:TYPED_MACHINE_ASSERTION_MISMATCH:'+rid)
+        if nh(row,('source_meaning','source_negative','design_effect','first_consumer_path','conservation_or_refusal_witness','status_assertion','first_consumer_or_hold'))!=IDENTITY_NARRATIVE_HASH.get(rid):
+            errors.append('DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+rid)
         if row.get('evidence_grade') not in GRADES:errors.append('DECISION:BAD_IDENTITY_EVIDENCE_GRADE:'+str(rid))
         source_ref(row.get('evidence'),source_root,errors,'DECISION:IDENTITY_EVIDENCE:'+str(rid),repo,zip_path,strict=True)
         if row.get('origin_sha256')!=base.get('origin_sha256'):errors.append('DECISION:IDENTITY_ORIGIN_DRIFT:'+str(rid))
@@ -422,18 +434,12 @@ def check_frame(frame,evidence_root,source_root,repo=None,zip_path=None):
         if row.get('binding') not in BINDS:e.append('FRAME:BAD_BINDING:'+str(key))
         for k in ('substantive_requirement','why_needed','loss_if_missing','first_consumer','architectural_consequence','proof_or_owner_hold'):
             if not good(row.get(k),28):e.append('FRAME:VACUOUS_'+str(key)+':'+k)
-        spec=REQUIREMENT_SEMANTICS.get(key)
-        if spec:
-            if row.get('typed_obligation')!=spec['typed_obligation']:e.append('FRAME:TYPED_OBLIGATION_MISMATCH:'+str(key))
-            text=' '.join(str(row.get(k,'')) for k in ('substantive_requirement','why_needed','loss_if_missing','first_consumer','architectural_consequence','proof_or_owner_hold')).lower()
-            for ph in spec['required_phrases']:
-                if ph.lower() not in text:e.append('FRAME:REQUIRED_DISTINCTION_MISSING:'+str(key)+':'+ph)
-            for ph in spec['forbidden_phrases']:
-                if ph.lower() in text:e.append('FRAME:FORBIDDEN_OBLIGATION_REWRITE:'+str(key)+':'+ph)
-            if key=='REQ-MULTIWAY-JOINT' and 'pairwise' in text and ('sufficient' in text or 'substitute' in text):
-                e.append('FRAME:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-substitute')
-            for pk in ('positive_probe','negative_probe'):
-                if not good(row.get(pk),40):e.append('FRAME:NO_'+pk.upper()+':'+str(key))
+        expected=REQUIREMENT_MACHINE.get(key)
+        if expected is None:e.append('FRAME:NO_TYPED_CONTRACT:'+str(key))
+        elif row.get('machine_assertion')!=expected:e.append('FRAME:TYPED_MACHINE_ASSERTION_MISMATCH:'+str(key))
+        if nh(row,('substantive_requirement','why_needed','loss_if_missing','first_consumer','architectural_consequence','proof_or_owner_hold','positive_probe','negative_probe'))!=REQUIREMENT_NARRATIVE_HASH.get(key):e.append('FRAME:NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+str(key))
+        for pk in ('positive_probe','negative_probe'):
+            if not good(row.get(pk),40):e.append('FRAME:NO_'+pk.upper()+':'+str(key))
         source_ref(row.get('evidence'),source_root,e,'FRAME:EVIDENCE:'+str(key),repo,zip_path,strict=True)
         ev=row.get('evidence') or {}
         if ev.get('sha256') in revoked or ev.get('zip_sha256') in revoked:e.append('FRAME:REVOKED_EVIDENCE_USED:'+str(key))
@@ -530,13 +536,12 @@ def check_decision(decision,evidence_root,source_root,repo=None,zip_path=None):
         for k in ('actual_design_effect','specific_first_consumer_path','conservation_or_refusal_witness'):
             if not good(x.get(k),38):e.append('DECISION:VACUOUS_DISPOSITION:'+str(rid)+':'+k)
         spec=REQUIREMENT_SEMANTICS.get(rid)
-        if spec:
-            if x.get('typed_obligation')!=spec['typed_obligation']:e.append('DECISION:TYPED_OBLIGATION_MISMATCH:'+str(rid))
-            blob=' '.join(str(x.get(k,'')) for k in ('actual_design_effect','specific_first_consumer_path')).lower()
-            for ph in spec['forbidden_phrases']:
-                if ph.lower() in blob:e.append('DECISION:FORBIDDEN_OBLIGATION_REWRITE:'+str(rid)+':'+ph)
-            if rid=='REQ-MULTIWAY-JOINT' and 'pairwise' in blob and ('sufficient' in blob or 'substitute' in blob):
-                e.append('DECISION:FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT:pairwise-substitute')
+        if spec and x.get('typed_obligation')!=spec['typed_obligation']:
+            e.append('DECISION:TYPED_OBLIGATION_MISMATCH:'+str(rid))
+        if x.get('machine_assertion')!=REQUIREMENT_MACHINE.get(rid):
+            e.append('DECISION:TYPED_MACHINE_ASSERTION_MISMATCH:'+str(rid))
+        if nh(x,('actual_design_effect','specific_first_consumer_path','conservation_or_refusal_witness'))!=REQUIREMENT_DISPOSITION_NARRATIVE_HASH.get(rid):
+            e.append('DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+str(rid))
         if x.get('evidence_grade') not in GRADES:e.append('DECISION:BAD_EVIDENCE_GRADE:'+str(rid))
         if state in ('PRESENT_PRESERVED','FUTURE_NONPRECLUDED'):
             source_ref(x.get('evidence'),source_root,e,'DECISION:UNPROVED_PRESERVATION:'+str(rid),repo,zip_path,strict=True)
@@ -578,13 +583,14 @@ def check_boundary_court(court,evidence_root,source_root,errors,admit):
             errors.append('C:BOUNDARY_FALSE_CLAIM_GRADE:'+t)
         if grade=='ACTUAL_PROVED' and x.get('actual_first_reader_verified') is not True:
             errors.append('C:BOUNDARY_ACTUAL_PROVED_WITHOUT_READER:'+t)
+        if x.get('machine_assertion')!=BOUNDARY_MACHINE.get(t):
+            errors.append('C:TYPED_BOUNDARY_ASSERTION_MISMATCH:'+t)
+        if nh(x,('positive','negative','restore','first_consumer_or_hold','authority_owner'))!=BOUNDARY_NARRATIVE_HASH.get(t):
+            errors.append('C:BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED:'+t)
         if not good(x.get('authority_owner'),8):errors.append('C:BOUNDARY_NO_AUTHORITY_OWNER:'+t)
         fp=x.get('forbidden_promotions')
         if not isinstance(fp,list):errors.append('C:BOUNDARY_FORBIDDEN_PROMOTIONS_NOT_LIST:'+t)
         elif fp:errors.append('C:BOUNDARY_FORBIDDEN_PROMOTION_PRESENT:'+t)
-        blob=' '.join(str(x.get(k,'')) for k in ('positive','negative','restore','first_consumer_or_hold')).lower()
-        for ph in C_FORBIDDEN:
-            if ph in blob:errors.append('C:BOUNDARY_FALSE_SCIENCE_CLAIM:'+t+':'+ph)
 
 def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
     e=[]
@@ -601,6 +607,8 @@ def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
               'scientific_and_owner_boundary','actual_first_consumer_assessment','historical_no_loss_assessment'):
         if not good(packet.get(k),60):e.append('C:INSUFFICIENT_'+k)
     admit=packet.get('verdict')=='C_CONDITIONALLY_ADMIT_DESIGN'
+    if admit and packet.get('external_custody_attestation') not in ():
+        e.append('C:CONDITIONAL_ADMIT_REQUIRES_TRUSTED_EXTERNAL_CUSTODY_NOT_AVAILABLE')
     check_boundary_court(packet.get('boundary_court'),evidence_root,source_root,e,admit)
     audit=packet.get('graph_audit')
     if not isinstance(audit,dict):e.append('C:NO_TYPED_GRAPH_AUDIT')
@@ -611,18 +619,24 @@ def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
         elif holes:e.append('C:TYPED_GRAPH_HOLE')
         if set(audit.get('boundary_edges_checked',[]))!=set(BOUND_IDS):e.append('C:GRAPH_BOUNDARY_COVERAGE_MISSING')
     if not good(packet.get('builder_handoff_review'),60):e.append('C:NO_ACTUAL_BUILDER_HANDOFF_REVIEW')
-    ctext=' '.join(str(packet.get(k,'')) for k in ('independent_reverse_walk_of_whole_frame','strongest_choice_reversing_objection','scientific_and_owner_boundary','actual_first_consumer_assessment','historical_no_loss_assessment','builder_handoff_review')).lower()
-    for ph in C_FORBIDDEN:
-        if ph in ctext:e.append('C:PROSE_FALSE_SCIENCE_CLAIM:'+ph)
+    if nh(packet,('independent_reverse_walk_of_whole_frame','strongest_choice_reversing_objection','scientific_and_owner_boundary','actual_first_consumer_assessment','historical_no_loss_assessment','builder_handoff_review'))!=C_PROSE_HASH:
+        e.append('C:PROSE_NARRATIVE_NOT_REVIEWED_OR_CHANGED')
     ta=packet.get('terminal_audit')
     if not isinstance(ta,dict):e.append('C:NO_TERMINAL_AUDIT')
     else:
         if set(ta.get('terminal_ids_present',[]))!=set(TERMINAL_IDS):e.append('C:TERMINAL_IDS_NOT_PRESENT_IN_GRAPH')
-        holds=ta.get('terminal_holds')
-        if not isinstance(holds,dict):e.append('C:NO_TERMINAL_HOLDS')
+        fates=ta.get('terminal_fates')
+        if not isinstance(fates,dict):e.append('C:NO_TERMINAL_FATES')
         else:
-            for tid in ('F5','F8','N11','N12','SEAM','SOROK'):
-                if not good(holds.get(tid),20):e.append('C:TERMINAL_HOLD_MISSING:'+tid)
+            g=decision.get('whole_machine_graph',{}) if isinstance(decision,dict) else {}
+            gn={n.get('id'):n for n in g.get('nodes',[]) if isinstance(n,dict)}
+            for tid in TERMINAL_IDS:
+                node=gn.get(tid,{})
+                f=fates.get(tid)
+                if not isinstance(f,dict):e.append('C:TERMINAL_FATE_MISSING:'+tid);continue
+                if f.get('fate')!=node.get('terminal_fate'):e.append('C:TERMINAL_FATE_GRAPH_MISMATCH:'+tid)
+                if f.get('exact_hold')!=node.get('exact_hold'):e.append('C:TERMINAL_HOLD_GRAPH_MISMATCH:'+tid)
+                if f.get('owner')!=node.get('competent_owner'):e.append('C:TERMINAL_OWNER_GRAPH_MISMATCH:'+tid)
     if admit and packet.get('actual_first_reader_verified') is not True:e.append('C:ADMIT_WITHOUT_ACTUAL_FIRST_READER')
     cards=packet.get('builder_cards')
     if not isinstance(cards,list) or len(cards)!=2 or {c.get('domain') for c in cards if isinstance(c,dict)}!={'CURRENT_FIRST_CONSUMER','FUTURE_NONPRECLUSION'}:

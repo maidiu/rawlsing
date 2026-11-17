@@ -44,7 +44,7 @@ class Closure(unittest.TestCase):
         req['substantive_requirement']='Pairwise marginals are sufficient; no three-way same-person joint need be preserved.'
         self.put('FRAME.json',self.frame)
         self.decision['common_frame']={'path':'FRAME.json','sha256':sha((self.ev/'FRAME.json').read_bytes())};self.decision['frame_sha256']=digest(self.frame);self.put('DECISION.json',self.decision);self.c['integrated_decision']={'path':'DECISION.json','sha256':sha((self.ev/'DECISION.json').read_bytes())};self.c['integrated_decision_sha256']=digest(self.decision);self.put('C.json',self.c)
-        r=self.res('FRAME',self.frame);self.assertTrue(any('FORBIDDEN_OBLIGATION_REWRITE:REQ-MULTIWAY-JOINT' in x or 'REQUIRED_DISTINCTION_MISSING:REQ-MULTIWAY-JOINT' in x for x in r['errors']),r)
+        r=self.res('FRAME',self.frame);self.assertTrue(any('NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-MULTIWAY-JOINT' in x for x in r['errors']),r)
     def test_w1_f6_guard_as_numeric_refused(self):
         x=next(x for x in self.decision['identity_dispositions'] if x['identity_id']=='K1-CAP-17')
         x['design_effect']='The I07 guard is the numeric F6 bound and determines all intervals and uncovered mass.'
@@ -53,7 +53,7 @@ class Closure(unittest.TestCase):
         for t,claim in (('T4','Survey opinion is institutional power and no independent structural producer exists.'),('T6','Survey answers give actor private knowledge without encounter.'),('T7','Fictional action edits observed source.')):
             self.c['boundary_court'][t]['positive']=claim
         self.c['scientific_and_owner_boundary']='Survey answers give actor private knowledge without encounter and fictional action edits observed source.'
-        r=self.res('C_INTEGRATED',self.c);self.assertTrue(any('BOUNDARY_FALSE_SCIENCE_CLAIM' in x or 'PROSE_FALSE_SCIENCE_CLAIM' in x for x in r['errors']),r)
+        r=self.res('C_INTEGRATED',self.c);self.assertTrue(any('BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED' in x or 'PROSE_NARRATIVE_NOT_REVIEWED_OR_CHANGED' in x for x in r['errors']),r)
     def test_w3_real_command_text_log_resolves_but_stays_local(self):
         log=self.ev/'real_stdout.log';log.write_bytes(subprocess.run(['python3','-c','print("real local test stdout")'],capture_output=True).stdout)
         card={'grade':'EXECUTED_FIRST_READER_PROOF','test_command':'python3 tools/test_r7_integrated.py -q','receipt':{'argv':['python3','tools/test_r7_integrated.py','-q'],'raw_log':{'path':'real_stdout.log','sha256':sha(log.read_bytes())},'host':'local','time':'2026-11-17T00:00:00Z','runner_head':'a'*40,'stdout_sha256':sha(log.read_bytes()),'test_command':'python3 tools/test_r7_integrated.py -q','execution_custody':'LOCAL_AUTHORED_NOT_ACCEPTED'}}

@@ -1,0 +1,63 @@
+{
+  "consumer_symbol": "tools/r7_build.py::_artifacts",
+  "dependencies": [
+    "SOURCE_IDENTITY_INVENTORY",
+    "BOUNDARY_CONTRACTS",
+    "TERMINAL_GRAPH"
+  ],
+  "evidence_ids": [
+    "INV:118",
+    "DISP:118"
+  ],
+  "expected_first_effect": "local source-byte/topology pass only",
+  "first_real_consumer": "Authorized generic sourcefree saved C11 native I03 and I05 operations",
+  "handoffs": [
+    {
+      "authority": "PREPARED_NOT_C",
+      "consumer_symbol": "tools/r7_build.py::_artifacts",
+      "dependencies": [
+        "SOURCE_IDENTITY_INVENTORY",
+        "BOUNDARY_CONTRACTS"
+      ],
+      "expected_effect": "local source-byte and topology pass only",
+      "id": "CURRENT_FIRST_CONSUMER",
+      "input_abi": "ANVIL_R7_INTEGRATED frame+decision",
+      "negative": "any origin/semantic freeze/graph/boundary mismatch refuses",
+      "output_abi": "ANVIL_R7_FIRST_READER_ABI@1",
+      "producer_symbol": "tools/r7_integrated.py::check_decision",
+      "restore": "exact bytes regenerate identical projections",
+      "status": "LOCAL_AUTHORED_NOT_EXTERNAL",
+      "test_command": "python3 -m unittest test_r7_integrated -q",
+      "transformation": "verified packet -> six deterministic projections"
+    },
+    {
+      "authority": "OWNER_HELD",
+      "consumer_symbol": "future qualified C/H1 owner",
+      "dependencies": [
+        "TERMINAL_HOLDS",
+        "EXTERNAL_C"
+      ],
+      "expected_effect": "no science/actor grant",
+      "id": "FUTURE_NONPRECLUSION",
+      "input_abi": "C packet + exact terminal holds",
+      "negative": "missing terminal/boundary/external custody refuses",
+      "output_abi": "C_HOLD_EXACT or C_CONDITIONALLY_ADMIT_DESIGN only with external custody",
+      "producer_symbol": "tools/r7_integrated.py::check_C",
+      "restore": "exact owner grant and evidence restore",
+      "status": "NOT_RUN",
+      "test_command": "python3 test_integrated_strict.py",
+      "transformation": "typed boundary court -> owner review"
+    }
+  ],
+  "implementation_status": "LOCAL_AUTHORED_NOT_EXTERNAL",
+  "input_abi": "verified FRAME + 118 dispositions + full graph",
+  "negative": "origin/semantic freeze/graph/boundary mismatch refuses",
+  "output_abi": "ANVIL_R7_FIRST_READER_ABI@1",
+  "producer_symbol": "tools/r7_integrated.py::check_decision",
+  "required_now_or_future": "NOW_LOCAL_THEN_EXTERNAL_C",
+  "restore": "exact bytes regenerate identical projections",
+  "schema": "ANVIL_R7_BUILDER_HANDOFF",
+  "source_authority": "documentary source court; no native/science/actor grant",
+  "test_command": "python3 -m unittest test_r7_integrated -q",
+  "transformation": "verified packet -> six deterministic projections"
+}

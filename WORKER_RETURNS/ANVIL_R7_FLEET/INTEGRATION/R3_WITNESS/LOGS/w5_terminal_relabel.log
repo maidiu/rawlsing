@@ -1,0 +1,56 @@
+{
+  "schema": "C_REVIEW_R2_W5_TERMINAL_RELABEL",
+  "graph_nodes": 43,
+  "graph_edges": 58,
+  "F5_graph": {
+    "alternative_id": "A1",
+    "competent_owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+    "decision_id": "D1",
+    "evidence_grade": "PROPOSED_OWNER_HELD_NOT_EXECUTED",
+    "exact_hold": "",
+    "first_consumer": "NAMED_TYPED_CONSUMER_OR_OWNER_HOLD",
+    "id": "F5",
+    "input_types": [
+      "QUALIFIED_M01_M1_M2_M3_LIFECYCLE"
+    ],
+    "kind": "HELD_LEARNED_EMPIRICAL_RELATION",
+    "negative_or_refusal": "missing/unauthorized/absent source-required dependency refuses",
+    "output_types": [
+      "QUALIFIED_EMPIRICAL_POSSIBILITY"
+    ],
+    "owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+    "producer": "HELD_LEARNED_EMPIRICAL_RELATION producer/owner",
+    "producer_authority": "PYAT M01/M1/M2/M3 and FF learned-product issuer",
+    "required_edges": [
+      "E49",
+      "E50"
+    ],
+    "restore": "exact owner/source and release restore the prior qualified state",
+    "terminal_fate": "EXACT_HOLD",
+    "time_mode": "OBSERVED"
+  },
+  "C_terminal_audit_F5": {
+    "exact_hold": "Exact owner/science hold for F5: no current actual first reader is asserted; source-required dependencies are explicit",
+    "fate": "EXACT_HOLD",
+    "owner": "PYAT M01/M1/M2/M3 and FF learned-product issuer"
+  },
+  "DECISION": {
+    "status": "RED",
+    "errors": [
+      "DECISION:GRAPH:GENERIC_CONSUMER_PLACEHOLDER:F5",
+      "DECISION:GRAPH:TERMINAL_HOLD_FIELD:F5:exact_hold"
+    ],
+    "covered": 16,
+    "requirement_total": 16,
+    "identity_dispositions": 118
+  },
+  "C_INTEGRATED": {
+    "status": "RED",
+    "errors": [
+      "C:DEFECTIVE_DECISION:DECISION:GRAPH:GENERIC_CONSUMER_PLACEHOLDER:F5",
+      "C:DEFECTIVE_DECISION:DECISION:GRAPH:TERMINAL_HOLD_FIELD:F5:exact_hold",
+      "C:TERMINAL_HOLD_GRAPH_MISMATCH:F5"
+    ]
+  },
+  "verdict": "RELABEL_REFUSED"
+}

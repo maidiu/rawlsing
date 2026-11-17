@@ -1,11 +1,15 @@
 # ANVIL INTEGRATED INSTRUMENT — R2 CONTROLLED DESCENDANT
 
-**Disposition:** `PREPARED__SOURCE_IDENTITY_PRESERVED__C_DEFECTS_D1-D7_REPAIRED_LOCALLY__PENDING_SAME_DISTINCT_C_RECHECK`.
+**Disposition:** `PREPARED__SOURCE_IDENTITY_PRESERVED__R3_FOUR_EXACT_DEFECTS_REPAIRED_OR_HELD__PENDING_SAME_C_RECHECK`.
 **Not:** independent C, protected H1, physical C11 architecture, native science, source/actor grant or final acceptance.
 
 This is a controlled descendant of `0f0c673f99978aff6c11f7bd0e6fe1840fbdc799` on the same branch/return root. Source identity `118/95 Git+23 ZIP/26 NOT_ADOPTED/14 HELD` is preserved. The C review `REVISE_EXACT_DEFECT` is accepted as a defect list; its D1–D7 are repaired where mechanical and honestly held where external.
 
-## Repairs actually executed
+## R3 four-defect repair (same C recheck a81202f4)
+
+See `R3_DEFECT_CLOSURE.md`. Typed machine assertions and frozen narrative hashes replace phrase blacklists; W1/W2 paraphrases, W3 forged external flag, W5 terminal relabel/disconnect all refuse. Conditional C admission is disabled without authorized trusted external custody. D6/D7/D5 closures preserved.
+
+## Earlier repairs retained
 
 - D1/W1/W6: 16 code-fixed obligations with required/forbidden distinctions, typed obligations and positive/negative probes; 118 dispositions from D2A source-specific material with source meaning, negative, consumer/hold, typed obligation, semantic binding and refusal/restore witness; anti-generic cardinality checks.
 - D2/W5: D2A 43-node/58-edge source→terminal graph; all 16 terminal identities present (aliases for F5/F8/N11/N12/PRE-V3/SEAM/SOROK); held terminals exact holds; C terminal audit.

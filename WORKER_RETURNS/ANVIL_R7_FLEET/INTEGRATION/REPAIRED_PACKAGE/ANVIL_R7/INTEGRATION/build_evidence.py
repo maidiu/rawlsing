@@ -10,6 +10,8 @@ D2A=pathlib.Path('/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/
 sys.path.insert(0,str(PKG/'tools'))
 from r7_inventory import build_inventory
 from r7_integrated import digest, sha, REQUIREMENT_ROSTER, REQUIREMENT_DOMAIN, REQUIREMENT_SEMANTICS, TERMINAL_IDS
+from r7_contract import REQUIREMENT_MACHINE, IDENTITY_MACHINE, BOUNDARY_MACHINE
+def nh(obj,fields): return sha(json.dumps({k:obj.get(k,'') for k in fields},sort_keys=True,ensure_ascii=False).encode())
 
 def put(name,obj):
     b=(json.dumps(obj,sort_keys=True,ensure_ascii=False,indent=2)+'\n').encode();(EV/name).write_bytes(b)
@@ -63,13 +65,14 @@ reqs=[]
 for rid in REQUIREMENT_ROSTER:
     d=REQUIREMENT_DOMAIN[rid]; sub,pos,neg=REQ_TEXT[rid]; spec=REQUIREMENT_SEMANTICS[rid]
     reqs.append({'id':rid,'domain':d,'binding':'FUTURE_NONPRECLUSION' if d in ('SEAM_WORLD_ACTOR','FIELD_FORGE') else 'PRESENT_HARD',
-      'typed_obligation':spec['typed_obligation'],'substantive_requirement':sub,'positive_probe':pos,'negative_probe':neg,
+      'typed_obligation':spec['typed_obligation'],'machine_assertion':REQUIREMENT_MACHINE[rid],'substantive_requirement':sub,'positive_probe':pos,'negative_probe':neg,
       'why_needed':'This source-court distinction is choice-changing; losing it would let a coherent fixture certify a false preservation.',
       'loss_if_missing':'The named positive/negative distinction would disappear while IDs, headings and hashes remain valid.',
       'first_consumer':'Named typed graph reader or exact competent owner hold; no universal truth service is implied.',
       'architectural_consequence':'Carry the typed distinction and a refusal/restore test; do not replace the source semantics with a convenience label.',
       'proof_or_owner_hold':'Execute the named probe at its honest grade or preserve the exact external C/source-owner hold.',
       'authority_owner':'Competent source/science/engineering owner where the binding is EXTERNAL_OWNER_HELD','evidence':ref})
+for r in reqs: r['narrative_sha256']=nh(r,('substantive_requirement','why_needed','loss_if_missing','first_consumer','architectural_consequence','proof_or_owner_hold','positive_probe','negative_probe'))
 frame={'schema':'ANVIL_R7_INTEGRATED','stage':'COMMON_FRAME','workflow':'ONE_INTEGRATED_INVESTIGATION_OPTIONAL_TARGETED_DUELS','phase':'BEFORE_ARCHITECTURE_SELECTION','architecture_selected':False,'mandatory_rival_architecture':False,'duel_required':False,'A_B_method':'OPTIONAL_SAME_QUESTION_SAME_EVIDENCE','scope':'C11_QUERY_DESIGN','source_cut':'7fc00289dd801d2d0a8ce159986c7595fc27a4d9','protected_head':'31291d08179890852246c8742700e055168e9933','user_priority_source':'Pinned user instruction: complete empirical system, exact source custody, lowest lawful executable cost','first_real_consumer':'Authorized generic sourcefree saved C11 native I03 and I05 operations','currentness_gap_or_exact_verified_state':'Protected PRE-MAIN rechecked at 31291d08179890852246c8742700e055168e9933; live owner rights and native execution remain external','science_authority_boundary':'Field Forge, world and actor science cannot be issued by a physical architecture author','whole_program_mission':'Complete original function continuity and C11 empirical computation into later scientifically lawful world and person products','source_grades_authentic_by_local_test':False,'requirements':reqs,'source_inventory':inv_ptr,'release_register':release,'boundary_contract':bc_ptr,'boundary_contracts':[{'id':b['id'],'producer':b['producers'],'receiver':b['receivers'],'must_preserve':b['must_preserve'],'expected_first_effect':b['first_effect'],'veto':b['veto'],'time_class':b['time_class'],'owner':b['owners']} for b in bc['boundaries']]}
 frame_ptr=put('FRAME.json',frame)
 
@@ -122,6 +125,26 @@ rename={'F5_LEARNED':'F5','F8_POSITIONED':'F8','N11_ACCEPTANCE':'N11','N12_WAKE'
 for n in nodes:n['id']=rename.get(n['id'],n['id'])
 for e in edges:
     e['from']=rename.get(e['from'],e['from']);e['to']=rename.get(e['to'],e['to'])
+# terminal fates and required incident edges are explicit, not count padding
+incident={}
+for e in edges:
+    incident.setdefault(e['from'],[]).append(e['id']);incident.setdefault(e['to'],[]).append(e['id'])
+outgoing={}
+for e in edges: outgoing.setdefault(e['from'],[]).append(e['to'])
+for n in nodes:
+    if n['id'] in TERMINAL_IDS:
+        n['terminal_fate']='EXACT_HOLD'
+        n['exact_hold']='Exact owner/science hold for '+n['id']+': no current actual first reader is asserted; source-required dependencies are explicit'
+        n['competent_owner']=n.get('owner','COMPETENT_OWNER_HELD')
+        n['negative_or_refusal']='missing/unauthorized/absent source-required dependency refuses'
+        n['restore']='exact owner/source and release restore the prior qualified state'
+        n['required_edges']=sorted(set(incident.get(n['id'],[])))
+        n['first_consumer']='EXACT_HOLD'
+    elif n.get('first_consumer')=='NAMED_TYPED_CONSUMER_OR_OWNER_HOLD':
+        nxt=(outgoing.get(n['id']) or [None])[0]
+        if nxt:n['first_consumer']=nxt
+        else:
+            n['first_consumer']='EXACT_HOLD';n['exact_hold']='Exact hold for '+n['id']+': no current actual consumer asserted'
 graph={'nodes':nodes,'edges':edges,'terminal_node_map':{t:t for t in TERMINAL_IDS},'schema':'ANVIL_WHOLE_MACHINE_TYPED_GRAPH_R2'}
 
 # Per-identity dispositions from D2A source-specific crosswalk.
@@ -142,7 +165,7 @@ for e in inv['entries']:
     if g=='BOUNDARY':ev['exact_excerpt']=ex_around(SRC/e['source_file'],'"id":"'+e['id']+'"')
     elif g=='TERMINAL':ev['exact_excerpt']=ex_around(SRC/e['source_file'],'"'+e['id']+'"')
     anchor(ev,sfmap[e['source_file']])
-    disp.append({'identity_id':e['id'],'disposition':state,'status_assertion':sa,'evidence_grade':'DOCUMENTARY','typed_obligation':tg,
+    disp.append({'identity_id':e['id'],'disposition':state,'status_assertion':sa,'evidence_grade':'DOCUMENTARY','typed_obligation':tg,'machine_assertion':IDENTITY_MACHINE.get(e['id'],{'operation':'IDENTITY_SCOPE','adopted':False,'closed':False}),
       'source_meaning':meaning,'source_negative':neg,'source_meaning_sha256':sha((e.get('source_semantics') or '').encode()),
       'interpretation_grade':'AUTHORED_SOURCE_BOUNDED_PENDING_C','original_row_excerpt':e.get('source_excerpt',''),
       'source_reported_negative_or_correction':x.get('source_reported_negative_or_correction',''),
@@ -150,6 +173,7 @@ for e in inv['entries']:
       'design_effect':f"Candidate carries '{meaning}' through the typed edge/reader '{consumer}' and refuses the stated negative without promoting a historical name",
       'first_consumer_path':consumer+' (source-bound first consumer or exact owner hold)','conservation_or_refusal_witness':f"Positive: source-bound {e['id']} effect at {consumer}; negative: {neg}; restore: exact owner/source bytes and hold",
       'origin_sha256':e['origin_sha256'],'adopted_by_this_decision':False,'closed_by_this_decision':False,'evidence':ev})
+for x in disp: x['narrative_sha256']=nh(x,('source_meaning','source_negative','design_effect','first_consumer_path','conservation_or_refusal_witness','status_assertion','first_consumer_or_hold'))
 decision={'schema':'ANVIL_R7_INTEGRATED','stage':'INTEGRATED_DECISION','common_frame':frame_ptr,'frame_sha256':digest(frame),'decision_process':'ONE_SYNTHESIS_NO_MANDATORY_RIVAL','basis':'ANALYTICAL_SOURCE_GROUNDED','grade':'AUTHOR_PROPOSED_PENDING_C',
  'architecture_description':'A prepared integrated instrument candidate that preserves source identity, C11 authority, true same-person joints and typed downstream boundaries without selecting a production backend',
  'entire_source_to_actor_dataflow':'From authenticated source through sealed C11 and native empirical computation into separately owned field, world and actor readers; no empirical or fictional fact is promoted across a boundary without its owner',
@@ -169,7 +193,8 @@ decision={'schema':'ANVIL_R7_INTEGRATED','stage':'INTEGRATED_DECISION','common_f
  'builder_handoffs':[{'id':'CURRENT_FIRST_CONSUMER','producer_symbol':'tools/r7_integrated.py::check_decision','consumer_symbol':'tools/r7_build.py::_artifacts','input_abi':'ANVIL_R7_INTEGRATED frame+decision','output_abi':'ANVIL_R7_FIRST_READER_ABI@1','transformation':'verified packet -> six deterministic projections','negative':'any origin/semantic freeze/graph/boundary mismatch refuses','restore':'exact bytes regenerate identical projections','test_command':'python3 -m unittest test_r7_integrated -q','expected_effect':'local source-byte and topology pass only','authority':'PREPARED_NOT_C','status':'LOCAL_AUTHORED_NOT_EXTERNAL','dependencies':['SOURCE_IDENTITY_INVENTORY','BOUNDARY_CONTRACTS']},
                       {'id':'FUTURE_NONPRECLUSION','producer_symbol':'tools/r7_integrated.py::check_C','consumer_symbol':'future qualified C/H1 owner','input_abi':'C packet + exact terminal holds','output_abi':'C_HOLD_EXACT or C_CONDITIONALLY_ADMIT_DESIGN only with external custody','transformation':'typed boundary court -> owner review','negative':'missing terminal/boundary/external custody refuses','restore':'exact owner grant and evidence restore','test_command':'python3 test_integrated_strict.py','expected_effect':'no science/actor grant','authority':'OWNER_HELD','status':'NOT_RUN','dependencies':['TERMINAL_HOLDS','EXTERNAL_C']}],
  'h1_received_by_local_check':False,'protected_received_by_local_check':False,'actor_world_boundary':{'survey_implies_actor_knowledge':False,'fictional_mutates_source':False,'source_implies_material_power':False,'actor_private_state_from_source':False},
- 'identity_dispositions':disp,'requirement_dispositions':[{'requirement_id':r['id'],'typed_obligation':r['typed_obligation'],'disposition':'FUTURE_NONPRECLUDED' if r['binding']=='FUTURE_NONPRECLUSION' else 'PRESENT_PRESERVED','evidence_grade':'DOCUMENTARY','actual_design_effect':r['substantive_requirement'],'specific_first_consumer_path':r['id']+' -> '+r['first_consumer'],'conservation_or_refusal_witness':r['positive_probe']+' / '+r['negative_probe'],'evidence':ref} for r in reqs]}
+ 'identity_dispositions':disp,'requirement_dispositions':[{'requirement_id':r['id'],'typed_obligation':r['typed_obligation'],'machine_assertion':r['machine_assertion'],'disposition':'FUTURE_NONPRECLUDED' if r['binding']=='FUTURE_NONPRECLUSION' else 'PRESENT_PRESERVED','evidence_grade':'DOCUMENTARY','actual_design_effect':r['substantive_requirement'],'specific_first_consumer_path':r['id']+' -> '+r['first_consumer'],'conservation_or_refusal_witness':r['positive_probe']+' / '+r['negative_probe'],'evidence':ref} for r in reqs]}
+for x in decision['requirement_dispositions']: x['narrative_sha256']=nh(x,('actual_design_effect','specific_first_consumer_path','conservation_or_refusal_witness'))
 dec_ptr=put('DECISION.json',decision)
 c={'schema':'ANVIL_R7_INTEGRATED','stage':'INDEPENDENT_C','integrated_decision':dec_ptr,'integrated_decision_sha256':digest(decision),'first_consumer':frame['first_real_consumer'],
  'independent_reverse_walk_of_whole_frame':'The reviewer separately traces source through C11, I03, FF, world and actor evidence including negative cases and exact terminal holds',
@@ -177,11 +202,13 @@ c={'schema':'ANVIL_R7_INTEGRATED','stage':'INDEPENDENT_C','integrated_decision':
  'actual_first_consumer_assessment':'This authored fixture does not run a real native first consumer and cannot justify adoption of original survey science','historical_no_loss_assessment':'The complete historical inventory remains frozen with no recovered function automatically declared issued',
  'reviewer_relationship':'DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION','choice_reversing_objection_survives':False,'verdict':'C_HOLD_EXACT',
  'boundary_court':{},'graph_audit':{'producer_authority_time_consumer_checked':True,'holes':[],'boundary_edges_checked':['T1','T2','T3','T4','T5','T6','T7'],'terminal_ids_present':list(TERMINAL_IDS),'terminal_graph_checked':True},
- 'terminal_audit':{'terminal_ids_present':list(TERMINAL_IDS),'terminal_holds':{t:('Exact owner/science hold: no current actual first reader asserted for '+t) for t in TERMINAL_IDS}},
+ 'terminal_audit':{'terminal_ids_present':list(TERMINAL_IDS),'terminal_fates':{n['id']:{'fate':n.get('terminal_fate'),'exact_hold':n.get('exact_hold',''),'owner':n.get('competent_owner','')} for n in graph['nodes'] if n['id'] in TERMINAL_IDS}},
  'builder_handoff_review':'The handoff identifies exact first-reader ABI, six projections, refusal/restore behavior, named external C/H1 consumer and honest local-only status','actual_first_reader_verified':False,'local_h1_claim':False,'protected_received_locally':False,'h1_grade':'NOT_RECEIVED',
  'builder_cards':[{'id':'present','domain':'CURRENT_FIRST_CONSUMER','grade':'EXACT_BUILDER_HOLD','exact_hold':'Actual native source consumer proof and competent owner execution are not part of this authored local fixture'},{'id':'future','domain':'FUTURE_NONPRECLUSION','grade':'EXACT_BUILDER_HOLD','exact_hold':'Future actor/world source governance remains independent and cannot be invented by this local fixture'}],
  'original_source_granted_by_local_check':False,'owner_granted_by_local_check':False}
 for b in bc['boundaries']:
-    t=b['id'];c['boundary_court'][t]={'positive':b['first_effect'],'negative':b['veto'],'restore':'Exact authorized source/owner bytes and permission restore the prior positive boundary effect','grade':'SOURCE_STATIC_CONSERVED','claim_grade':'SOURCE_STATIC_CONSERVED','actual_first_reader_verified':False,'authority_owner':b['owners'],'forbidden_promotions':[],'first_consumer_or_hold':b['receivers'],'evidence':{'path':'02_BOUNDARY_CONTRACTS.json','sha256':sha((SRC/'02_BOUNDARY_CONTRACTS.json').read_bytes()),'exact_excerpt':ex_around(SRC/'02_BOUNDARY_CONTRACTS.json','"id":"'+t+'"'),'zip_sha256':'526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332','zip_member':'ANVIL_R7/02_BOUNDARY_CONTRACTS.json'}}
+    t=b['id'];c['boundary_court'][t]={'machine_assertion':BOUNDARY_MACHINE[t],'positive':b['first_effect'],'negative':b['veto'],'restore':'Exact authorized source/owner bytes and permission restore the prior positive boundary effect','grade':'SOURCE_STATIC_CONSERVED','claim_grade':'SOURCE_STATIC_CONSERVED','actual_first_reader_verified':False,'authority_owner':b['owners'],'forbidden_promotions':[],'first_consumer_or_hold':b['receivers'],'evidence':{'path':'02_BOUNDARY_CONTRACTS.json','sha256':sha((SRC/'02_BOUNDARY_CONTRACTS.json').read_bytes()),'exact_excerpt':ex_around(SRC/'02_BOUNDARY_CONTRACTS.json','"id":"'+t+'"'),'zip_sha256':'526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332','zip_member':'ANVIL_R7/02_BOUNDARY_CONTRACTS.json'}}
+for t,x in c['boundary_court'].items(): x['narrative_sha256']=nh(x,('positive','negative','restore','first_consumer_or_hold','authority_owner'))
+c['narrative_sha256']=nh(c,('independent_reverse_walk_of_whole_frame','strongest_choice_reversing_objection','scientific_and_owner_boundary','actual_first_consumer_assessment','historical_no_loss_assessment','builder_handoff_review'))
 put('C.json',c)
 print(json.dumps({'status':'AUTHORED_FIXTURE_R2_BUILT','frame':frame_ptr,'decision':dec_ptr,'graph_nodes':len(nodes),'graph_edges':len(edges),'terminal_ids':len(TERMINAL_IDS)},indent=2))
