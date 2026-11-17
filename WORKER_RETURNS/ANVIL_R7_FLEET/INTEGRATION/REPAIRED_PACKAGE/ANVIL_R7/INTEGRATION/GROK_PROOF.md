@@ -58,3 +58,7 @@ Prepared/locally tested R5 tools are capabilities, not dispatched findings. A so
 ## Pre-grok result
 
 `READY_FOR_BOUNDED_COMMISSION` for **instrument integration only**, with the F26 caller/invalidation hold, all source/science/actor rights unmade, native 100k/dense/6 GiB/1-10-100 `NOT_RUN`, and final distinct C pending. This is not `READY_FOR_H1` and not a selected physical C11 architecture.
+
+## R2 post-C recheck note
+
+The source-identity answers above stand. Independent C returned `REVISE_EXACT_DEFECT` because the machine DECISION/C/projections did not carry the source-specific material already present in the source court. R2 repairs that by importing the frozen D2A 118-row crosswalk into the machine dispositions and the 43-node/58-edge source→terminal graph, encoding the 16 obligations, enforcing C boundary semantics and fixing builder/cold paths. The F26/source-science/native/H1 holds remain exactly as stated. No architecture is selected.

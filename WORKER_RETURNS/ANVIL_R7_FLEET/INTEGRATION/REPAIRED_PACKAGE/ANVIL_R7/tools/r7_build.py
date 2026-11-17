@@ -10,7 +10,7 @@ from r7_integrated import check_decision, load, digest
 from r7_inventory import check_inventory
 
 NAMES=('DESIGN_DECISION.md','IDENTITY_DISPOSITIONS.tsv','BOUNDARY_CONTRACT_MAP.json',
-       'TYPED_GRAPH.json','EVIDENCE_INDEX.jsonl','BUILDER_HANDOFF.json')
+       'TYPED_GRAPH.json','EVIDENCE_INDEX.jsonl','BUILDER_HANDOFF.jsonl')
 
 def sha(b):return hashlib.sha256(b).hexdigest()
 def enc(s):return s.encode('utf-8')
@@ -32,34 +32,45 @@ def _artifacts(decision,frame,inv):
            f"**First real consumer:** {decision.get('first_real_consumer')}","",
            '## Candidate',decision.get('architecture_description',''),'',
            '## Selected strategy',decision.get('single_selected_strategy',''),'',
+           '## Source-to-consumer rationale',decision.get('entire_source_to_actor_dataflow',''),'',
+           '## Data structures and transformation',decision.get('algorithm_and_data_structures',''),'',
            '## Resource / cost reasoning',decision.get('resource_cost_reasoning',''),'',
            '## Historical conservation',decision.get('historical_function_conservation',''),'',
            '## Scientific / owner boundary',decision.get('scientific_boundary_and_nonpreclusion',''),'',
-           '## Strongest surviving objection',decision.get('strongest_surviving_objection',''),'',
+           '## Strongest surviving objection',decision.get('strongest_surviving_objective',decision.get('strongest_surviving_objection','')),'',
            '## Next actual engineering operation',decision.get('next_actual_engineering_operation',''),'',
+           '## Evidence / negative / restore discipline','Every identity row carries its source meaning, source negative, typed obligation, consumer or exact hold, origin hash and authored-interpretation grade. The gate refuses generic repeated dispositions, false adoption/closure and terminal omission.', 
+           '## Terminal / boundary status','|T1-T7| are boundary interrogations, not seven stages. F5/F8/N11/N12/SEAM/SOROK remain typed nodes or exact holds; no invented reader.', '',
            '## Authority ceiling','This is an author proposal pending distinct C and competent H1. No source/science/actor grant, no protected receiving, no architecture adoption.','']
     design=enc('\n'.join(lines))
-    head=['identity_id','group','disposition','status_assertion','evidence_grade','design_effect','first_consumer_path','conservation_or_refusal_witness','origin_sha256']
-    rows=[head]+[[x.get('identity_id',''),next((e.get('group','') for e in inv.get('entries',[]) if e.get('id')==x.get('identity_id')),''),
-                  x.get('disposition',''),x.get('status_assertion',''),x.get('evidence_grade',''),x.get('design_effect',''),
-                  x.get('first_consumer_path',''),x.get('conservation_or_refusal_witness',''),x.get('origin_sha256','')] for x in disps]
-    # TSV without csv escaping surprises: fields are controlled; strip tabs/newlines.
+    head=['identity_id','group','disposition','status_assertion','typed_obligation','source_meaning','source_negative','design_effect','first_consumer_path','first_consumer_or_hold','conservation_or_refusal_witness','evidence_ids','why','source_excerpt','origin_sha256','interpretation_grade']
+    rows=[head]
+    for x in disps:
+        base=next((e for e in inv.get('entries',[]) if e.get('id')==x.get('identity_id')),{})
+        rows.append([x.get('identity_id',''),base.get('group',''),x.get('disposition',''),x.get('status_assertion',''),x.get('typed_obligation',''),
+          x.get('source_meaning',''),x.get('source_negative',''),x.get('design_effect',''),x.get('first_consumer_path',''),x.get('first_consumer_or_hold',''),
+          x.get('conservation_or_refusal_witness',''),';'.join(x.get('evidence_ids',[])),base.get('why',''),base.get('source_excerpt',''),x.get('origin_sha256',''),x.get('interpretation_grade','')])
     tsv=enc('\n'.join('\t'.join(str(c).replace('\t',' ').replace('\n',' ') for c in r) for r in rows)+'\n')
     contracts=js({'schema':'ANVIL_R7_BOUNDARY_CONTRACT_MAP','boundaries':decision.get('boundary_contract_map',{}),
-                  'note':'T1-T7 are interrogations, not seven pipeline stages; no science is accredited here.'})
+                  'note':'Full T1-T7 producer/receiver/must-preserve/first-effect/veto/time/owner fields; interrogations, not seven stages.'})
     graph=js({'schema':'ANVIL_R7_TYPED_GRAPH','graph':decision.get('whole_machine_graph',{}),
-              'note':'Producer/authority/time/consumer typed contract; local structure only.'})
+              'note':'Producer/authority/time/consumer typed source-to-terminal graph; held terminals explicit; local structure only.'})
     ev=[]
     for e in inv.get('entries',[]):
-        ev.append({'id':'INV:'+e.get('id',''),'kind':'SOURCE_IDENTITY','group':e.get('group'),'origin_sha256':e.get('origin_sha256'),'source_anchor':e.get('source_anchor')})
+        ev.append({'id':'INV:'+e.get('id',''),'kind':'SOURCE_IDENTITY','group':e.get('group'),'origin_sha256':e.get('origin_sha256'),
+                   'source_anchor':e.get('source_anchor'),'source_excerpt':e.get('source_excerpt',''),'source_semantics':e.get('source_semantics',''),
+                   'negative_meaning':e.get('negative_meaning',''),'consumer_or_hold':e.get('consumer_or_hold',''),'evidence_grade':'SOURCE_BYTE_VERIFIED_DOCUMENTARY',
+                   'falsifier':'exact source row/member mismatch or authored semantic freeze mismatch refuses','interpretation_grade':'AUTHORED_SOURCE_BOUNDED_PENDING_C'})
     for x in disps:
-        ev.append({'id':'DISP:'+x.get('identity_id',''),'kind':'IDENTITY_DISPOSITION','disposition':x.get('disposition'),'origin_sha256':x.get('origin_sha256')})
+        ev.append({'id':'DISP:'+x.get('identity_id',''),'kind':'IDENTITY_DISPOSITION','disposition':x.get('disposition'),'origin_sha256':x.get('origin_sha256'),
+                   'source_meaning':x.get('source_meaning',''),'source_negative':x.get('source_negative',''),'first_consumer_or_hold':x.get('first_consumer_or_hold',''),
+                   'evidence_grade':x.get('evidence_grade',''),'falsifier':x.get('conservation_or_refusal_witness',''),'interpretation_grade':x.get('interpretation_grade',''),'source_excerpt':next((e.get('source_excerpt','') for e in inv.get('entries',[]) if e.get('id')==x.get('identity_id')),''),'source_anchor':next((e.get('source_anchor','') for e in inv.get('entries',[]) if e.get('id')==x.get('identity_id')),'')})
     ev.extend(decision.get('evidence_index',[]) if isinstance(decision.get('evidence_index'),list) else [])
     evidence=jl(sorted(ev,key=lambda x:(str(x.get('id')),str(x.get('kind')))))
-    handoff=js({'schema':'ANVIL_R7_BUILDER_HANDOFF','first_real_consumer':decision.get('first_real_consumer'),
-                'handoff':decision.get('builder_handoff',{}),'authority_ceiling':'SPECIFICATION_ONLY_NOT_EXECUTED_OR_PROTECTED'})
+    handoffs=decision.get('builder_handoffs') or [decision.get('builder_handoff',{})]
+    handoff=jl(handoffs)
     return {'DESIGN_DECISION.md':design,'IDENTITY_DISPOSITIONS.tsv':tsv,'BOUNDARY_CONTRACT_MAP.json':contracts,
-            'TYPED_GRAPH.json':graph,'EVIDENCE_INDEX.jsonl':evidence,'BUILDER_HANDOFF.json':handoff}
+            'TYPED_GRAPH.json':graph,'EVIDENCE_INDEX.jsonl':evidence,'BUILDER_HANDOFF.jsonl':handoff}
 
 def write(arts,out):
     out=pathlib.Path(out);out.mkdir(parents=True,exist_ok=True)

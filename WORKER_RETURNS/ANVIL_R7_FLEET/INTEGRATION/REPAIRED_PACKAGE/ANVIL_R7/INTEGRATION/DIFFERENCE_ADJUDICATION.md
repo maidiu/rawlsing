@@ -55,3 +55,12 @@ All eight returns were frozen before integration. Browser D1A/D1B/D2A/D2B file s
 - **Builder:** D3B six deterministic projections plus integrated gate revalidation; cold reconstruct and sabotage/restore tested on the exact ZIP artifact.
 
 No difference was resolved by peer count, self-hostile PASS, or local green. Each is recorded with the exact source/falsifier and the remaining owner hold.
+
+## 7. R2 post-C reconciliation — prose claims replaced by machine content
+
+The first integrated candidate's difference adjudication claimed terminal completeness and source-specific dispositions that the **machine packet did not carry**. Independent C `REVISE_EXACT_DEFECT` correctly rejected that gap. The R2 repair does not change the A/B adjudication; it implements it:
+
+- D2A's 43-node/58-edge source→terminal graph now *is* `whole_machine_graph`; all 16 terminal IDs are explicit nodes or exact holds.
+- D2A's 118-row source-specific crosswalk now supplies each machine disposition's meaning, essential negative, consumer/hold and candidate effect; D2B's residual semantic-authentication warning is preserved as an external C/source-owner hold.
+- D3B's inventory/gate/builder remains the base; D4A/D4B checks are encoded in the gate, not prose.
+- The C review's W1–W6 are reproduced as refusal tests. The old candidate admitted them; R2 refuses them. No new A/B round, no architecture selection, no source identity change.

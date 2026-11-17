@@ -1,32 +1,33 @@
-# ANVIL INTEGRATED INSTRUMENT — ONE COMPLETE PREPARATION RETURN
+# ANVIL INTEGRATED INSTRUMENT — R2 CONTROLLED DESCENDANT
 
-**Disposition:** `PREPARED__SOURCE_AUTHENTICATED_118_IDENTITY_INSTRUMENT__LOCAL_POSITIVE_MUTATION_RESTORE_PASS__PENDING_DISTINCT_C`.
-**Not:** independent C, protected H1, selected physical C11 architecture, native science, source/actor grant or final acceptance.
+**Disposition:** `PREPARED__SOURCE_IDENTITY_PRESERVED__C_DEFECTS_D1-D7_REPAIRED_LOCALLY__PENDING_SAME_DISTINCT_C_RECHECK`.
+**Not:** independent C, protected H1, physical C11 architecture, native science, source/actor grant or final acceptance.
 
-## What this is
+This is a controlled descendant of `0f0c673f99978aff6c11f7bd0e6fe1840fbdc799` on the same branch/return root. Source identity `118/95 Git+23 ZIP/26 NOT_ADOPTED/14 HELD` is preserved. The C review `REVISE_EXACT_DEFECT` is accepted as a defect list; its D1–D7 are repaired where mechanical and honestly held where external.
 
-One standalone repaired package ZIP over the exact original instrument ZIP, integrating the smallest adequate corrections from D1–D4 rather than stacking eight parallel validators:
+## Repairs actually executed
 
-- S1/FRAME requires a **source-authenticated 118 mixed identity inventory** from exact Git/ZIP bytes. The nonexistent accepted R5/R6 `SPINE.json` prerequisite is eliminated; a synthetic equal-coverage spine is RED.
-- S3/DECISION requires **all 118 candidate-specific dispositions**, exact origin hashes, non-vacuous effects/first consumers/witnesses, 26 NOT_ADOPTED and 14 HELD preserved, plus a fixed 16-ID requirement roster and typed whole-machine graph.
-- C requires **T1–T7 positive/negative/restore or exact hold**, graph audit, actual builder handoff review, honest `C_HOLD_EXACT` where no native first reader exists, and no self-certified independence/H1/source grant.
-- A deterministic builder produces the six useful R5-equivalent projections and verifies byte-identical rebuild/restore.
-- D4A/D4B residuals are explicitly confronted: exact Git/ZIP anchors close provenance-only and member-laundering paths; a code-fixed requirement roster closes A6; release revocation, actor/world flags and fabricated-H1 denial are enforced; builder commands must resolve. Local receipt forgery and human-summary semantic truth remain explicit external-C/source-owner holds.
+- D1/W1/W6: 16 code-fixed obligations with required/forbidden distinctions, typed obligations and positive/negative probes; 118 dispositions from D2A source-specific material with source meaning, negative, consumer/hold, typed obligation, semantic binding and refusal/restore witness; anti-generic cardinality checks.
+- D2/W5: D2A 43-node/58-edge source→terminal graph; all 16 terminal identities present (aliases for F5/F8/N11/N12/PRE-V3/SEAM/SOROK); held terminals exact holds; C terminal audit.
+- D3/W2: C boundary court now enforces claim grade, authority owner, empty forbidden promotions and rejects false T4/T6/T7 actor/world science and C prose.
+- D4/W3: interpreter+script argv resolution; text stdout logs accepted; local receipts cannot support `EXECUTED_FIRST_READER_PROOF` or conditional C admission.
+- D5/W6: six projections carry full source meaning/negative/why/evidence/fates, full T fields, full graph, JSONL builder handoffs and evidence/falsifier index.
+- D6: package self-contained at `ANVIL_R7/EVIDENCE`; literal fresh-extraction commands tested; `tempfile.mkdtemp` handoff.
+- D7/W4: exact row/member and source-reported negative preserved separately from authored interpretation; code-frozen semantic summary; per-identity `source_meaning_sha256`; W4 replacement refused; external semantic hold explicit.
 
-## Exact executed evidence
+## Exact test evidence
 
-- Original ZIP `526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332`, 280 entries; shared Git store `/Users/matthewsmith/s2b-work/rawlsing`; protected currentness `31291d08179890852246c8742700e055168e9933`; K3 `7fc00289…`; SEAM/25 `596f1230…`; SEAM/26 `796452b8…`; ANVIL/15 `3cc09bba…`.
-- Inventory verify: `PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY` / `GIT_AND_ZIP_PINS_VERIFIED`, 118 total, counts 29/26/14/10/8/8/7/16, zero errors.
-- Gate: FRAME PASS (16 requirements, 9 domains, 118 inventory), DECISION PASS (16 requirements, 118 dispositions), C PASS (`C_HOLD_EXACT` packet only, independence unverified).
-- Tests: inherited 29/29 PASS; integrated 13/13 PASS (positive + 11 mutations + restore). Cold reconstruct from `REPAIRED_PACKAGE.zip` repeated the same results in a fresh directory.
-- Builder: six projections BUILT and `PASS_SIX_PROJECTIONS_BYTE_IDENTICAL`.
+- Inventory verify: `PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY` / `GIT_AND_ZIP_PINS_VERIFIED`, 118, counts 29/26/14/10/8/8/7/16.
+- Inherited suite: 29/29 OK at changed scope.
+- C-defect closure suite: 11/11 OK (W1–W6 positives/negatives/restore).
+- FRAME/DECISION/C: PASS local statuses; C `C_HOLD_EXACT`.
+- Six projections: byte-identical verify, full fields.
+- Cold exact-ZIP extraction: literal commands repeat all results.
 
-## Exact artifact root
+## Artifact
 
-`WORKER_RETURNS/ANVIL_R7_FLEET/INTEGRATION/` contains `REPAIRED_PACKAGE.zip`, `MANIFEST.json`, `SOURCE_AUTHENTICATION.json`, `FULL_118_TO_DECISION_REQUIREMENTS_SPEC.md`, `DIFFERENCE_ADJUDICATION.md`, `GROK_PROOF.md`, `COLD_BUILDER_HANDOFF.md`, `CODEX_RESUME_LAUNCH.md`, `HOLDS.md`, `PROPOSED_PAIRED_PROGRESS_DELTA.md`, `EVIDENCE/`, `BUILT/`, `RAW_LOGS/` and `TEST_TRANSCRIPT.json`.
+`REPAIRED_PACKAGE.zip` (new SHA in `MANIFEST.json`), `MANIFEST.json`, `SOURCE_AUTHENTICATION.json`, `FULL_118_TO_DECISION_REQUIREMENTS_SPEC.md`, `C_DEFECT_CLOSURE_MAP.md`, `DIFFERENCE_ADJUDICATION.md`, `GROK_PROOF.md`, `COLD_BUILDER_HANDOFF.md`, `CODEX_RESUME_LAUNCH.md`, `HOLDS.md`, `EVIDENCE/`, `BUILT/`, `RAW_LOGS/`, `TEST_TRANSCRIPT.json`.
 
-## Honest holds
+## Next
 
-Distinct nonauthor C not yet assigned/received. No native dense 100k/600–1,300-slot/6 GiB/1-10-100 run; no source/actor/science right; F26 exact caller/invalidation remains the existing K3/P4R owner hold; terminal16 are scope/held identities; T1–T7 are interrogations, not seven stages; local tests are not C/H1. No protected write, merge or worker launch.
-
-**Next:** hand the frozen artifact to the assigned genuinely independent nonauthor C. Do not launch architecture. Stop here.
+HQ returns the exact new cut to the SAME independent C session for recheck. No architecture launch, no reviewer dispatch by this author, no protected write.

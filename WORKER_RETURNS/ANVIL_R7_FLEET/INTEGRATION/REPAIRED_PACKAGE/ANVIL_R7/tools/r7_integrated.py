@@ -44,6 +44,38 @@ REQUIREMENT_DOMAIN={
  'REQ-PHYSICAL-WORKLOAD-1-10-100':'RESOURCE_ECONOMICS','REQ-SOURCE-I02-REVOCATION':'AUTHORITY_AND_RECOVERY',
  'REQ-FF01-FF02-WORLD-ACTOR-FIREWALL':'SEAM_WORLD_ACTOR','REQ-TERMINAL-F5-F8-N11-N12':'HISTORICAL_DDM_FUNCTIONS',
  'REQ-HISTORICAL-NOADOPTION-CONSERVATION':'AUTHORITY_AND_RECOVERY'}
+
+TERMINAL_IDS=('F1','F2','F3','F4','F5','F6','F7','F8','N9','N10E','N10W','N11','N12','PRE-V3','SEAM','SOROK')
+# Specific, mechanically encoded obligations.  This is not a universal truth
+# scanner: it freezes the choice-changing distinctions already stated in the
+# source court and refuses a coherent rewrite that erases them.  Semantic truth
+# of the authored summary remains an external C/source-owner hold.
+REQUIREMENT_SEMANTICS={
+ 'REQ-SOURCE-SEMANTICS':{'typed_obligation':'NATIVE_SOURCE_SEMANTICS','required_phrases':['native question','option','routing','missing'],'forbidden_phrases':['stratum implies sect','impute individual ancestry','normalization may replace']},
+ 'REQ-C11-PERSISTENCE':{'typed_obligation':'C11_BODY_LOCATOR','required_phrases':['body','locator','CURRENT','cold restore'],'forbidden_phrases':['body hash alone proves source']},
+ 'REQ-CURRENT-I03-I05':{'typed_obligation':'I03_I05_FIRST_READER','required_phrases':['I03','I05','sourcefree','source-native'],'forbidden_phrases':['sourcefree is native']},
+ 'REQ-HISTORICAL-DDM':{'typed_obligation':'HISTORICAL_FUNCTION_SEMANTICS','required_phrases':['V549','V550','V550J','F26'],'forbidden_phrases':['guard is the numeric','guard determines all','postgres is universal','f26 caller is proved']},
+ 'REQ-F1-F4':{'typed_obligation':'F1_F4_JOINT_DENOMINATOR','required_phrases':['same-person','k>=3','denominator','branch'],'forbidden_phrases':['marginal equality is sufficient']},
+ 'REQ-FIELD-FORGE':{'typed_obligation':'FF_DESCRIPTIVE_VS_STRUCTURAL','required_phrases':['FF01','FF02','descriptive','structural'],'forbidden_phrases':['ff01 is ff02']},
+ 'REQ-SEAM-WORLD-ACTOR':{'typed_obligation':'SEAM_ACTOR_BOUNDARY','required_phrases':['Other','encounter','access','SOROK'],'forbidden_phrases':['survey gives actor private knowledge']},
+ 'REQ-AUTHORITY-RECOVERY':{'typed_obligation':'I02_TRUST_REVOCATION','required_phrases':['I02','trust root','revocation','cold restore'],'forbidden_phrases':['producer hash is source truth']},
+ 'REQ-RESOURCE-ECONOMICS':{'typed_obligation':'RESOURCE_ECONOMICS','required_phrases':['100k','6 GiB','1/10/100','NOT_RUN'],'forbidden_phrases':['synthetic green benchmark']},
+ 'REQ-MULTIWAY-JOINT':{'typed_obligation':'SAME_PERSON_K3_JOINT','required_phrases':['three-way','same-person','joint','pairwise'],'forbidden_phrases':['pairwise marginal is sufficient','pairwise-only','no three-way','pairwise marginals are sufficient']},
+ 'REQ-DENOMINATOR-MISSING-ROUTING':{'typed_obligation':'DENOMINATOR_TYPED_MISSING','required_phrases':['forward','reverse','denominator','routing'],'forbidden_phrases':['one denominator for both']},
+ 'REQ-PHYSICAL-WORKLOAD-1-10-100':{'typed_obligation':'PHYSICAL_WORKLOAD','required_phrases':['600','1,300','process-tree','distinct'],'forbidden_phrases':['3.245 events is representative']},
+ 'REQ-SOURCE-I02-REVOCATION':{'typed_obligation':'SOURCE_I02_REVOCATION','required_phrases':['independent','source comparison','revoked','prepared'],'forbidden_phrases':['shared wrong hash is proof']},
+ 'REQ-FF01-FF02-WORLD-ACTOR-FIREWALL':{'typed_obligation':'FF_ACTOR_WORLD_FIREWALL','required_phrases':['survey','actor','knowledge','fictional'],'forbidden_phrases':['survey opinion is institutional power','survey answers give actor','fictional action edits observed']},
+ 'REQ-TERMINAL-F5-F8-N11-N12':{'typed_obligation':'TERMINAL_HOLD_DISCIPLINE','required_phrases':['F5','F8','N11','N12'],'forbidden_phrases':['seven stages','serial pipeline']},
+ 'REQ-HISTORICAL-NOADOPTION-CONSERVATION':{'typed_obligation':'HISTORICAL_NONADOPTION','required_phrases':['26','14','NOT_ADOPTED','HELD'],'forbidden_phrases':['adopt all','close all']},
+}
+IDENTITY_GUARDS={
+ 'K1-CAP-11':{'required':['three-way','joint','same-person'],'forbidden':['pairwise marginal is sufficient','pairwise-only','no three-way']},
+ 'K1-CAP-17':{'required':['F6','numeric'],'forbidden':['guard is the numeric','guard determines all','guard supplies the numeric']},
+ 'K1-CAP-24':{'required':['F26','hold'],'forbidden':['F26 caller proved','F26 equivalence proved']},
+ 'P4R-R02':{'required':['F26','hold'],'forbidden':['F26 caller proved','F26 equivalence proved']},
+ 'PYAT-PC-R11-21':{'required':['F26','hold'],'forbidden':['F26 caller proved','F26 equivalence proved']},
+}
+C_FORBIDDEN=('survey opinion is institutional power','survey answers give actor private knowledge','survey response gives actor knowledge','fictional action edits observed source','fictional action overwrites observed','no independent structural producer','respondent answers give the actor private')
 GRADES={'CODE_STATIC','DOCUMENTARY','EXECUTED_SOURCEFREE','EXECUTED_NATIVE','UNVERIFIED_HELD'}
 INVALID=('todo','tbd','placeholder','to be determined','see above','n/a','not applicable')
 
@@ -166,17 +198,36 @@ def _check_builder_receipt(card,evidence_root,source_root,errors):
         if not receipt.get(k):errors.append('C:BUILDER_RECEIPT_FIELD:'+k)
     cmd=receipt.get('test_command')
     if isinstance(cmd,str):
-        token=cmd.split()[0] if cmd.split() else ''
-        if not (pathlib.Path(source_root)/token).is_file() and not pathlib.Path(token).is_file():
-            errors.append('C:BUILDER_NONEXISTENT_TEST_COMMAND:'+token)
+        import shlex
+        toks=shlex.split(cmd)
+        # python3 from PATH is an interpreter, not a source script file.
+        script=None
+        for tok in toks:
+            if pathlib.PurePath(tok).name.lower() in ('python','python3','python3.11','bash','sh','node','rscript'):
+                continue
+            if tok.startswith('-'):continue
+            script=tok;break
+        if not script:
+            errors.append('C:BUILDER_NO_SCRIPT_AFTER_INTERPRETER')
+        else:
+            roots=[pathlib.Path(source_root),pathlib.Path(evidence_root),pathlib.Path(__file__).resolve().parent,pathlib.Path(__file__).resolve().parents[1]]
+            if not any((r/script).is_file() for r in roots if r is not None):
+                errors.append('C:BUILDER_NONEXISTENT_TEST_COMMAND:'+script)
     log=receipt.get('raw_log')
     if isinstance(log,dict):
-        ptr=load(evidence_root,log,errors,'C:BUILDER_RAW_LOG')
-        if ptr is not None:
-            if not isinstance(receipt.get('stdout_sha256'),str) or receipt.get('stdout_sha256')!=sha((pathlib.Path(evidence_root)/log['path']).read_bytes()):
-                errors.append('C:BUILDER_STDOUT_HASH_MISMATCH')
+        rel=log.get('path'); want=log.get('sha256')
+        if not isinstance(rel,str) or not isinstance(want,str):errors.append('C:BUILDER_RAW_LOG_NOT_POINTER')
+        else:
+            pth=pathlib.Path(evidence_root)/rel
+            if not pth.is_file():errors.append('C:BUILDER_RAW_LOG_MISSING')
+            else:
+                data=pth.read_bytes()
+                if sha(data)!=want or receipt.get('stdout_sha256')!=want:errors.append('C:BUILDER_STDOUT_HASH_MISMATCH')
     else:
         errors.append('C:BUILDER_RAW_LOG_NOT_POINTER')
+    custody=receipt.get('execution_custody')
+    if grade=='EXECUTED_FIRST_READER_PROOF' and custody not in ('EXTERNAL_RUNNER_VERIFIED','OWNER_CUSTODY_VERIFIED'):
+        errors.append('C:BUILDER_LOCAL_RECEIPT_CANNOT_SUPPORT_C_GRADE')
 
 def check_history(obj,errors):
     if not isinstance(obj,dict) or obj.get('schema')!='ANVIL_R7_INHERITED_CONSERVATION':
@@ -234,10 +285,20 @@ def check_graph(graph,errors,code='GRAPH'):
         if edge.get('data_type') not in a.get('output_types',[]) or edge.get('data_type') not in b.get('input_types',[]):
             errors.append(code+':TYPE_MISMATCH:'+str(rid))
         if edge.get('boundary') not in BOUND_IDS:errors.append(code+':BAD_BOUNDARY:'+str(rid))
-        if a.get('time_mode') in ('FICTIONAL','MODELED') and b.get('time_mode')=='OBSERVED':
+        observed_core={'SURVEY_RELEASE','INSTRUMENT','SEMANTIC_RULE','SOURCE_RIGHT','DESIGN_SCOPE','S01_PROJECT','I02_PROOF','C11_ESTATE','C11_ROOT','COLD_READ','I03','I05'}
+        if a.get('time_mode') in ('FICTIONAL','MODELED') and b.get('time_mode')=='OBSERVED' and edge.get('to') in observed_core:
             errors.append(code+':FICTIONAL_BACKFLOW:'+str(rid))
     for t in BOUND_IDS:
         if not any(e.get('boundary')==t for e in edges if isinstance(e,dict)):errors.append(code+':BOUNDARY_EDGE_MISSING:'+t)
+    if len(nodes)<30 or len(edges)<40:errors.append(code+':GRAPH_NOT_WHOLE_MACHINE')
+    aliases={'F5':'F5_LEARNED','F8':'F8_POSITIONED','N11':'N11_ACCEPTANCE','N12':'N12_WAKE','PRE-V3':'PREV3','SEAM':'SEAM_HANDOFF','SOROK':'SOROK_CONTINUITY'}
+    for tid in TERMINAL_IDS:
+        n=nmap.get(tid) or nmap.get(aliases.get(tid,''))
+        if not n:errors.append(code+':TERMINAL_NODE_MISSING:'+tid);continue
+        if n.get('time_mode') not in GRAPH_TIME:errors.append(code+':TERMINAL_TIME_MODE:'+tid)
+        held=(n.get('first_consumer')=='EXACT_HOLD') or bool(n.get('exact_hold'))
+        if held and not good(n.get('exact_hold'),25):errors.append(code+':TERMINAL_HOLD_NOT_EXACT:'+tid)
+        if not held and not good(n.get('first_consumer'),3):errors.append(code+':TERMINAL_NO_CONSUMER_OR_HOLD:'+tid)
 
 def check_identity_dispositions(decision,inventory,source_root,errors,evidence_root=None,repo=None,zip_path=None):
     """Every one of the 118 identities must have a candidate-specific disposition.
@@ -269,11 +330,30 @@ def check_identity_dispositions(decision,inventory,source_root,errors,evidence_r
             errors.append('DECISION:SILENT_HISTORICAL_PROMOTION:'+str(rid))
         for k in ('design_effect','first_consumer_path','conservation_or_refusal_witness'):
             if not good(row.get(k),38):errors.append('DECISION:VACUOUS_IDENTITY_EFFECT:'+str(rid)+':'+k)
+        for k,mn in (('source_meaning',20),('source_negative',20),('typed_obligation',8),('first_consumer_or_hold',8),('interpretation_grade',20)):
+            if not good(row.get(k),mn):errors.append('DECISION:NO_IDENTITY_SEMANTIC_FIELD:'+str(rid)+':'+k)
+        if row.get('source_meaning_sha256')!=sha((base.get('source_semantics') or '').encode()):
+            errors.append('DECISION:SOURCE_MEANING_NOT_BOUND_TO_INVENTORY:'+str(rid))
+        if row.get('interpretation_grade') not in ('AUTHORED_SOURCE_BOUNDED_PENDING_C','EXTERNAL_C_SOURCE_OWNER_HOLD'):
+            errors.append('DECISION:FALSE_SEMANTIC_AUTHENTICATION:'+str(rid))
+        guard=IDENTITY_GUARDS.get(rid)
+        if guard:
+            blob=(row.get('source_meaning','')+' '+row.get('source_negative','')+' '+row.get('design_effect','')+' '+row.get('conservation_or_refusal_witness','')).lower()
+            for ph in guard['required']:
+                if ph.lower() not in blob:errors.append('DECISION:REQUIRED_DISTINCTION_MISSING:'+rid+':'+ph)
+            for ph in guard['forbidden']:
+                if ph.lower() in blob:errors.append('DECISION:FORBIDDEN_DISTINCTION_REWRITE:'+rid+':'+ph)
         if row.get('evidence_grade') not in GRADES:errors.append('DECISION:BAD_IDENTITY_EVIDENCE_GRADE:'+str(rid))
         source_ref(row.get('evidence'),source_root,errors,'DECISION:IDENTITY_EVIDENCE:'+str(rid),repo,zip_path,strict=True)
         if row.get('origin_sha256')!=base.get('origin_sha256'):errors.append('DECISION:IDENTITY_ORIGIN_DRIFT:'+str(rid))
         if state in ('PRESENT_PRESERVED','FUTURE_NONPRECLUDED') and not row.get('evidence'):
             errors.append('DECISION:UNPROVED_IDENTITY_PRESERVATION:'+str(rid))
+    if len({x.get('design_effect') for x in dmap.values() if isinstance(x,dict)})<100:
+        errors.append('DECISION:GENERIC_IDENTITY_DESIGN_EFFECTS')
+    if len({x.get('first_consumer_path') for x in dmap.values() if isinstance(x,dict)})<80:
+        errors.append('DECISION:GENERIC_IDENTITY_CONSUMERS')
+    if len({x.get('conservation_or_refusal_witness') for x in dmap.values() if isinstance(x,dict)})<100:
+        errors.append('DECISION:GENERIC_IDENTITY_WITNESSES')
 
 def check_frame(frame,evidence_root,source_root,repo=None,zip_path=None):
     e=[]
@@ -338,6 +418,16 @@ def check_frame(frame,evidence_root,source_root,repo=None,zip_path=None):
         if row.get('binding') not in BINDS:e.append('FRAME:BAD_BINDING:'+str(key))
         for k in ('substantive_requirement','why_needed','loss_if_missing','first_consumer','architectural_consequence','proof_or_owner_hold'):
             if not good(row.get(k),28):e.append('FRAME:VACUOUS_'+str(key)+':'+k)
+        spec=REQUIREMENT_SEMANTICS.get(key)
+        if spec:
+            if row.get('typed_obligation')!=spec['typed_obligation']:e.append('FRAME:TYPED_OBLIGATION_MISMATCH:'+str(key))
+            text=' '.join(str(row.get(k,'')) for k in ('substantive_requirement','why_needed','loss_if_missing','first_consumer','architectural_consequence','proof_or_owner_hold')).lower()
+            for ph in spec['required_phrases']:
+                if ph.lower() not in text:e.append('FRAME:REQUIRED_DISTINCTION_MISSING:'+str(key)+':'+ph)
+            for ph in spec['forbidden_phrases']:
+                if ph.lower() in text:e.append('FRAME:FORBIDDEN_OBLIGATION_REWRITE:'+str(key)+':'+ph)
+            for pk in ('positive_probe','negative_probe'):
+                if not good(row.get(pk),40):e.append('FRAME:NO_'+pk.upper()+':'+str(key))
         source_ref(row.get('evidence'),source_root,e,'FRAME:EVIDENCE:'+str(key),repo,zip_path,strict=True)
         ev=row.get('evidence') or {}
         if ev.get('sha256') in revoked or ev.get('zip_sha256') in revoked:e.append('FRAME:REVOKED_EVIDENCE_USED:'+str(key))
@@ -433,6 +523,12 @@ def check_decision(decision,evidence_root,source_root,repo=None,zip_path=None):
             e.append('DECISION:HELD_SCIENCE_PROMOTED:'+str(rid))
         for k in ('actual_design_effect','specific_first_consumer_path','conservation_or_refusal_witness'):
             if not good(x.get(k),38):e.append('DECISION:VACUOUS_DISPOSITION:'+str(rid)+':'+k)
+        spec=REQUIREMENT_SEMANTICS.get(rid)
+        if spec:
+            if x.get('typed_obligation')!=spec['typed_obligation']:e.append('DECISION:TYPED_OBLIGATION_MISMATCH:'+str(rid))
+            blob=' '.join(str(x.get(k,'')) for k in ('actual_design_effect','specific_first_consumer_path')).lower()
+            for ph in spec['forbidden_phrases']:
+                if ph.lower() in blob:e.append('DECISION:FORBIDDEN_OBLIGATION_REWRITE:'+str(rid)+':'+ph)
         if x.get('evidence_grade') not in GRADES:e.append('DECISION:BAD_EVIDENCE_GRADE:'+str(rid))
         if state in ('PRESENT_PRESERVED','FUTURE_NONPRECLUDED'):
             source_ref(x.get('evidence'),source_root,e,'DECISION:UNPROVED_PRESERVATION:'+str(rid),repo,zip_path,strict=True)
@@ -469,6 +565,18 @@ def check_boundary_court(court,evidence_root,source_root,errors,admit):
         else:
             if not good(x.get('exact_hold'),30):errors.append('C:BOUNDARY_NOT_RUN_WITHOUT_EXACT_HOLD:'+t)
         if not good(x.get('first_consumer_or_hold'),20):errors.append('C:BOUNDARY_NO_CONSUMER_OR_HOLD:'+t)
+        grade=x.get('claim_grade')
+        if grade not in ('SOURCE_STATIC_CONSERVED','EXACT_HOLD','ACTUAL_PROVED'):
+            errors.append('C:BOUNDARY_FALSE_CLAIM_GRADE:'+t)
+        if grade=='ACTUAL_PROVED' and x.get('actual_first_reader_verified') is not True:
+            errors.append('C:BOUNDARY_ACTUAL_PROVED_WITHOUT_READER:'+t)
+        if not good(x.get('authority_owner'),8):errors.append('C:BOUNDARY_NO_AUTHORITY_OWNER:'+t)
+        fp=x.get('forbidden_promotions')
+        if not isinstance(fp,list):errors.append('C:BOUNDARY_FORBIDDEN_PROMOTIONS_NOT_LIST:'+t)
+        elif fp:errors.append('C:BOUNDARY_FORBIDDEN_PROMOTION_PRESENT:'+t)
+        blob=' '.join(str(x.get(k,'')) for k in ('positive','negative','restore','first_consumer_or_hold')).lower()
+        for ph in C_FORBIDDEN:
+            if ph in blob:errors.append('C:BOUNDARY_FALSE_SCIENCE_CLAIM:'+t+':'+ph)
 
 def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
     e=[]
@@ -495,6 +603,18 @@ def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
         elif holes:e.append('C:TYPED_GRAPH_HOLE')
         if set(audit.get('boundary_edges_checked',[]))!=set(BOUND_IDS):e.append('C:GRAPH_BOUNDARY_COVERAGE_MISSING')
     if not good(packet.get('builder_handoff_review'),60):e.append('C:NO_ACTUAL_BUILDER_HANDOFF_REVIEW')
+    ctext=' '.join(str(packet.get(k,'')) for k in ('independent_reverse_walk_of_whole_frame','strongest_choice_reversing_objection','scientific_and_owner_boundary','actual_first_consumer_assessment','historical_no_loss_assessment','builder_handoff_review')).lower()
+    for ph in C_FORBIDDEN:
+        if ph in ctext:e.append('C:PROSE_FALSE_SCIENCE_CLAIM:'+ph)
+    ta=packet.get('terminal_audit')
+    if not isinstance(ta,dict):e.append('C:NO_TERMINAL_AUDIT')
+    else:
+        if set(ta.get('terminal_ids_present',[]))!=set(TERMINAL_IDS):e.append('C:TERMINAL_IDS_NOT_PRESENT_IN_GRAPH')
+        holds=ta.get('terminal_holds')
+        if not isinstance(holds,dict):e.append('C:NO_TERMINAL_HOLDS')
+        else:
+            for tid in ('F5','F8','N11','N12','SEAM','SOROK'):
+                if not good(holds.get(tid),20):e.append('C:TERMINAL_HOLD_MISSING:'+tid)
     if admit and packet.get('actual_first_reader_verified') is not True:e.append('C:ADMIT_WITHOUT_ACTUAL_FIRST_READER')
     cards=packet.get('builder_cards')
     if not isinstance(cards,list) or len(cards)!=2 or {c.get('domain') for c in cards if isinstance(c,dict)}!={'CURRENT_FIRST_CONSUMER','FUTURE_NONPRECLUSION'}:
@@ -507,6 +627,9 @@ def check_C(packet,evidence_root,source_root,repo=None,zip_path=None):
         present=next(c for c in cards if c['domain']=='CURRENT_FIRST_CONSUMER')
         if admit and present.get('grade')=='EXACT_BUILDER_HOLD':
             e.append('C:ADMIT_WITHOUT_CURRENT_BUILDER')
+        if admit and present.get('grade')=='EXECUTED_FIRST_READER_PROOF':
+            if (present.get('receipt') or {}).get('execution_custody') not in ('EXTERNAL_RUNNER_VERIFIED','OWNER_CUSTODY_VERIFIED'):
+                e.append('C:ADMIT_ON_LOCAL_RECEIPT_WITHOUT_EXTERNAL_CUSTODY')
     if packet.get('reviewer_relationship')!='DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION':
         e.append('C:SELF_CERTIFIED_INDEPENDENCE')
     if packet.get('choice_reversing_objection_survives') is not False and admit:

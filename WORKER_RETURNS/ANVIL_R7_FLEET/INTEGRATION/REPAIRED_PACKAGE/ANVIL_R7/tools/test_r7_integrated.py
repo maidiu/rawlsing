@@ -8,7 +8,7 @@ only; no native survey execution, independent C, source right or H1 is created.
 from __future__ import annotations
 import copy, hashlib, json, os, pathlib, shutil, tempfile, unittest
 
-from r7_integrated import check, digest, sha, DOMAINS, REQUIREMENT_ROSTER, REQUIREMENT_DOMAIN
+from r7_integrated import check, digest, sha, DOMAINS, REQUIREMENT_ROSTER, REQUIREMENT_DOMAIN, REQUIREMENT_SEMANTICS, TERMINAL_IDS
 from r7_inventory import build_inventory
 import r7_build
 
@@ -29,19 +29,22 @@ class G(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory();self.work=pathlib.Path(self.tmp.name)
         self.evidence=self.work/'evidence';self.evidence.mkdir()
         self.inv=build_inventory(SOURCE,SOURCE/'PIN_MANIFEST.json',ROOT)
+        self.r2=json.loads((ROOT/'tests/fixtures/R2_MACHINE.json').read_text())
         self.inv_ptr=self.put('inventory.json',self.inv)
         self.ref=good_source_ref()
         reqs=[]
         for rid in REQUIREMENT_ROSTER:
-            d=REQUIREMENT_DOMAIN[rid]
-            reqs.append({'id':rid,'domain':d,
+            d=REQUIREMENT_DOMAIN[rid]; spec=REQUIREMENT_SEMANTICS[rid]
+            reqs.append({'id':rid,'domain':d,'typed_obligation':spec['typed_obligation'],
                 'binding':'FUTURE_NONPRECLUSION' if d in ('SEAM_WORLD_ACTOR','FIELD_FORGE') else 'PRESENT_HARD',
-                'substantive_requirement':f'{d} must preserve exact original scientific and evidence boundaries without replacing them with convenience fields',
-                'why_needed':'This requirement is indispensable to the real first consumer regardless of the selected physical algorithm',
-                'loss_if_missing':'Without the obligation a physically elegant source layout could erase a necessary downstream or historical distinction',
-                'first_consumer':'The current sourcefree native empirical recipient and future governed possibility/world handoff',
-                'architectural_consequence':'Preserve an independently inspectable representation of each relevant scientific distinction and later interface',
-                'proof_or_owner_hold':'Check exact artifact semantics and replay with the qualified first consumer or preserve a named authority hold',
+                'substantive_requirement':' '.join(spec['required_phrases'])+' precise source-court obligation '+rid,
+                'positive_probe':f'Positive probe for {rid}: a source-consistent input changes the named typed consumer at the honest local grade.',
+                'negative_probe':f'Negative probe for {rid}: the stated negative mutation is refused without a cached positive.',
+                'why_needed':'This source-court distinction is choice-changing and must not disappear while IDs and hashes remain valid.',
+                'loss_if_missing':'The named distinction would be erased by a coherent convenience fixture.',
+                'first_consumer':'Named typed graph reader or exact competent owner hold without a universal truth service.',
+                'architectural_consequence':'Carry the typed distinction and a refusal/restore test at the honest grade.',
+                'proof_or_owner_hold':'Execute the probe or preserve the exact external C/source-owner hold.',
                 'evidence':self.ref})
         self.frame={'schema':'ANVIL_R7_INTEGRATED','stage':'COMMON_FRAME',
             'workflow':'ONE_INTEGRATED_INVESTIGATION_OPTIONAL_TARGETED_DUELS','phase':'BEFORE_ARCHITECTURE_SELECTION',
@@ -77,24 +80,8 @@ class G(unittest.TestCase):
           {'id':'E5','from':'N_WORLD','to':'N_ACTOR','data_type':'world_possibility','authority_grade':'DOCUMENTARY','temporal_mode':'FICTIONAL','negative_or_refusal':'respondent-to-character identity collapse refuses','invalidation_rule':'world branch invalidation','boundary':'T5'},
           {'id':'E6','from':'N_WORLD','to':'N_ACTOR','data_type':'world_possible_event','authority_grade':'DOCUMENTARY','temporal_mode':'FICTIONAL','negative_or_refusal':'no actor access yields no knowledge','invalidation_rule':'actor/world permission revocation','boundary':'T6'},
           {'id':'E7','from':'N_ACTOR','to':'N_WORLD','data_type':'performed_event','authority_grade':'DOCUMENTARY','temporal_mode':'FICTIONAL','negative_or_refusal':'fictional act cannot edit observed C11','invalidation_rule':'branch replay or committed past invalidation','boundary':'T7'}]
-        self.graph={'nodes':nodes,'edges':edges}
-        disp=[]
-        sfmap={sf['path']:sf for sf in self.inv['source_files']}
-        def anchor(ref,sf):
-            if sf.get('kind')=='GIT':ref.update(commit=sf['commit'],git_path=sf['git_path'],git_blob=sf['git_blob'])
-            else:ref.update(zip_sha256=sf['zip_sha256'],zip_member=sf['zip_member'])
-            return ref
-        for e in self.inv['entries']:
-            g=e['group']
-            if g=='K1_CAP': st='PRESENT_PRESERVED';sa='HISTORICAL_FUNCTION_RETAINED'
-            elif g in ('PYAT_PC','P4R'): st='RETAINED_HISTORICAL_NONADOPTED';sa='NOT_ADOPTED' if g=='PYAT_PC' else 'HELD'
-            else: st='FUTURE_NONPRECLUDED';sa='INCLUDED_NOT_ADOPTED'
-            disp.append({'identity_id':e['id'],'disposition':st,'status_assertion':sa,'evidence_grade':'DOCUMENTARY',
-                'design_effect':'Candidate preserves the exact identity meaning, negative and owner boundary without promoting it to adopted science',
-                'first_consumer_path':'Traced from the source identity to the typed graph node and first consumer or explicit owner hold',
-                'conservation_or_refusal_witness':'The identity origin hash, refusal semantics and negative case are retained and checked by the gate',
-                'origin_sha256':e['origin_sha256'],'adopted_by_this_decision':False,'closed_by_this_decision':False,
-                'evidence':anchor(({'path':'02_BOUNDARY_CONTRACTS.json','sha256':sha((SOURCE/'02_BOUNDARY_CONTRACTS.json').read_bytes()),'exact_excerpt':'"schema": "ANVIL_BOUNDARIES_R3"'} if g=='BOUNDARY' else {'path':'03_FROZEN_SOURCE_CUTS.json','sha256':sha((SOURCE/'03_FROZEN_SOURCE_CUTS.json').read_bytes()),'exact_excerpt':'"schema": "ANVIL_SOURCE_CUTS_R3"'} if g=='TERMINAL' else {'path':e['source_file'],'sha256':sha((SOURCE/e['source_file']).read_bytes()),'exact_excerpt':e['source_excerpt']}),sfmap['02_BOUNDARY_CONTRACTS.json' if g=='BOUNDARY' else '03_FROZEN_SOURCE_CUTS.json' if g=='TERMINAL' else e['source_file']])})
+        self.graph=copy.deepcopy(self.r2['graph'])
+        disp=copy.deepcopy(self.r2['dispositions'])
         self.decision={'schema':'ANVIL_R7_INTEGRATED','stage':'INTEGRATED_DECISION','common_frame':self.put('frame.json',self.frame),
           'frame_sha256':digest(self.frame),'decision_process':'ONE_SYNTHESIS_NO_MANDATORY_RIVAL',
           'basis':'ANALYTICAL_SOURCE_GROUNDED','grade':'AUTHOR_PROPOSED_PENDING_C',
@@ -121,12 +108,7 @@ class G(unittest.TestCase):
           'actor_world_boundary':{'survey_implies_actor_knowledge':False,'fictional_mutates_source':False,
              'source_implies_material_power':False,'actor_private_state_from_source':False},
           'identity_dispositions':disp,
-          'requirement_dispositions':[{'requirement_id':r['id'],
-             'disposition':'FUTURE_NONPRECLUDED' if r['binding']=='FUTURE_NONPRECLUSION' else 'PRESENT_PRESERVED',
-             'evidence_grade':'DOCUMENTARY','actual_design_effect':'Keep the documented capacity and typed consumer boundary with explicit negative and restoration semantics',
-             'specific_first_consumer_path':'Native saved I03 facts can feed qualified conditional and possibility interfaces under source authority',
-             'conservation_or_refusal_witness':'The frozen source contracts specify denial and restoration behavior, not an actual native execution',
-             'evidence':self.ref} for r in reqs]}
+          'requirement_dispositions':copy.deepcopy(self.r2['requirement_dispositions'])}
         self.dptr=self.put('decision.json',self.decision)
         self.c={'schema':'ANVIL_R7_INTEGRATED','stage':'INDEPENDENT_C','integrated_decision':self.dptr,
            'integrated_decision_sha256':digest(self.decision),'first_consumer':self.frame['first_real_consumer'],
@@ -139,10 +121,11 @@ class G(unittest.TestCase):
            'choice_reversing_objection_survives':False,'verdict':'C_HOLD_EXACT',
            'boundary_court':{t:{'positive':'A valid source-consistent input produces the specified typed output at the boundary',
                'negative':'A mutated, revoked or absent input is refused at the actual boundary consumer without cached positive',
-               'restore':'Exact authorized bytes and permission restore the prior positive output','grade':'SOURCE_STATIC_CONSERVED',
+               'restore':'Exact authorized bytes and permission restore the prior positive output','grade':'SOURCE_STATIC_CONSERVED','claim_grade':'SOURCE_STATIC_CONSERVED','actual_first_reader_verified':False,'authority_owner':'Competent boundary owner','forbidden_promotions':[],
                'first_consumer_or_hold':'Boundary consumer named in the typed graph; owner-held where future science is not issued',
                'evidence':{'path':'02_BOUNDARY_CONTRACTS.json','sha256':sha((SOURCE/'02_BOUNDARY_CONTRACTS.json').read_bytes()),'exact_excerpt':self.quote(SOURCE/'02_BOUNDARY_CONTRACTS.json','"id":"'+t+'"')}} for t in ('T1','T2','T3','T4','T5','T6','T7')},
-           'graph_audit':{'producer_authority_time_consumer_checked':True,'holes':[],'boundary_edges_checked':['T1','T2','T3','T4','T5','T6','T7']},
+           'graph_audit':{'producer_authority_time_consumer_checked':True,'holes':[],'boundary_edges_checked':['T1','T2','T3','T4','T5','T6','T7'],'terminal_ids_present':list(TERMINAL_IDS),'terminal_graph_checked':True},
+           'terminal_audit':{'terminal_ids_present':list(TERMINAL_IDS),'terminal_holds':{t:('Exact owner/science hold: no current actual first reader asserted for '+t) for t in TERMINAL_IDS}},
            'builder_handoff_review':'The handoff identifies an exact first-reader ABI, six projections, refusal and restore behavior and a named external C/H1 consumer',
            'actual_first_reader_verified':False,'local_h1_claim':False,'protected_received_locally':False,'h1_grade':'NOT_RECEIVED',
            'builder_cards':[{'id':'present','domain':'CURRENT_FIRST_CONSUMER','grade':'EXACT_BUILDER_HOLD',

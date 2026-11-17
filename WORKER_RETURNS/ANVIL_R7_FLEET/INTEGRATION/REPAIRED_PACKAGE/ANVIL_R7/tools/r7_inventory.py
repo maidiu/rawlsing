@@ -18,6 +18,10 @@ GROUPS=('K1_CAP','PYAT_PC','P4R','SEAM_B','SEAM_S','ANVIL_L','BOUNDARY','TERMINA
 GROUP_COUNTS={'K1_CAP':29,'PYAT_PC':26,'P4R':14,'SEAM_B':10,'SEAM_S':8,'ANVIL_L':8,'BOUNDARY':7,'TERMINAL':16}
 HEX40=re.compile(r'^[a-f0-9]{40}$'); HEX64=re.compile(r'^[a-f0-9]{64}$')
 ORIGINAL_ZIP_SHA='526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332'
+# Freeze of the authored source-bounded summaries/negatives (D2A/D2B-integrated).
+# This is NOT machine proof of source truth; it prevents silent replacement of
+# an authored interpretation while retaining the exact source row hash.
+SEMANTIC_FREEZE='71714bbf9418513b898a57ac1d267d56a0f1bafdd89fe8ef73310460c4caa0e0'
 K3ROOT='PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/'
 # Independently pinned origin for every family.  The caller may not choose a
 # provenance kind, commit, path, blob, ZIP member or expected byte hash.
@@ -201,6 +205,8 @@ def check_inventory(inv,source_root,repo=None,zip_path=None):
     e=[]
     if not isinstance(inv,dict) or inv.get('schema')!=SCHEMA:return {'status':'RED','errors':['INVENTORY:BAD_SCHEMA']}
     if inv.get('status')!='SOURCE_AUTHENTICATED_IDENTITY_INVENTORY_S1_DOCUMENTARY':e.append('INVENTORY:FALSE_STATUS')
+    items=[f"{x.get('id')}\t{x.get('source_semantics','')}\t{x.get('negative_meaning','')}" for x in inv.get('entries',[]) if isinstance(x,dict)]
+    if sha('\n'.join(items).encode())!=SEMANTIC_FREEZE:e.append('INVENTORY:AUTHORED_SEMANTIC_SUMMARY_FREEZE_MISMATCH')
     if source_root is None:e.append('INVENTORY:NO_SOURCE_ROOT');return {'status':'RED','errors':e}
     files=inv.get('source_files')
     if not isinstance(files,list) or not files:e.append('INVENTORY:NO_SOURCE_FILES');files=[]
@@ -253,7 +259,8 @@ def check_inventory(inv,source_root,repo=None,zip_path=None):
             if byid.get(rid,{}).get('origin_sha256')!=h:e.append('INVENTORY:K3_ROW_HASH_MISMATCH:'+rid)
     return {'status':'RED' if e else 'PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY',
             'errors':sorted(set(e)),'counts':counts,'total':len(entries),
-            'source_authentication':actual_auth}
+            'source_authentication':actual_auth,
+            'semantic_authentication':'AUTHORED_SOURCE_BOUNDED_FREEZE__EXTERNAL_C_SOURCE_OWNER_HOLD'}
 
 def main():
     ap=argparse.ArgumentParser(description='Build or verify the source-qualified 118 identity inventory (S1 documentary, no architecture)')
