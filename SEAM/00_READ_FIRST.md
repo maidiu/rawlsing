@@ -2,6 +2,10 @@
 
 **Created:** 2026-11-12 · **Status:** OPENING PROPOSAL / NO JOINT ADOPTION · **Jurisdiction:** PRE-MAIN shared correspondence · **Proposed destination:** protected integration/pre-main-reconciliation-r1, subject to its actual receiving and merge law.
 
+## Specialist succession pointer (2026-11-17; documentary only)
+
+A new agent continuing the **UM-PYAT side of SEAM** should **first** ground in the live controlling PYAT PROGRAMMA, UM-PYAT governing mind, and exact paired currentness; **then** use the [stable UM-PYAT–SEAM specialist succession entrypoint](UM_PYAT_SEAM_START_HERE.md), which resolves to the [dated 2026-11-17 source/intellectual/competence regimen](27_UM_PYAT_SEAM_SPECIALIST_SUCCESSION_20261117_R1/00_START_HERE.md). The original [SEAM/25](25_RETURN_TO_BOUNDARY_TRANSFORMATIONS_AND_OPEN_REGISTER_R1.md) boundary register and [SEAM/26](26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md) social-field reverse requirements remain the active research agenda. This candidate pointer confers **no** HQ/source/science/actor authority or protected adoption and does **not** replace the original independent SEAM reading requirements below.
+
 ## What this is
 
 SEAM is the place where PROGRAMMA PYAT and PROGRAMMA SOROK jointly specify, attack, test, and eventually agree—or precisely disagree—about the **transformations and rights at the boundary between a scientifically qualified objective world and a historically developing person**.
