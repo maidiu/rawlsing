@@ -23,6 +23,8 @@ Existing K3 29 historical functional families / 26 NOT_ADOPTED /14 P4R held rema
 
 User states they are having **ANVIL itself begin in parallel**. This is sufficient to avoid making this intake a gating prerequisite. It is **not** direct attestation of a local host session, worker lease, instruction cut, or terminal architecture. ANVIL actual investigation must use its separately authorized launch/currentness and preserve separate engineering; do not copy this instrument's preparation grade into its architecture verdict.
 
+**New receiving PR #1143 CI (exact):** GitHub Actions OATH guard run [44191406669](https://github.com/maidiu/rawlsing/actions/runs/44191406669) and canonical-tree run [44191407348](https://github.com/maidiu/rawlsing/actions/runs/44191407348) both completed `failure`; job step API returned **zero steps**. These are **NON_GREEN / UNQUALIFIED RUNNER OUTCOMES**, not evidence the documentary parity guards were executed and rejected. No CI PASS or independently executed source/native test is claimed.
+
 ## Receiving and non-loss test
 
 **New source cut:** parent protected `31291d08179890852246c8742700e055168e9933`, expected revision 10 → revision 11 in the existing pair, plus one new source-pinned receipt, PYAT PROGRAMMA 00 scoped banner, shared entrypoint pointer, PYAT roadmap pointer. All existing files' text remains byte-identical outside a single prepend/insert and immutable rev11 JSON key additions. The protected OATH remains the identical first-position text in all three canonical front doors. No changes to SOROK, current worker/PR branches, running sessions, production code, or any existing source science. This receipt is no broader than the user-authorized documentary receiving mandate.
