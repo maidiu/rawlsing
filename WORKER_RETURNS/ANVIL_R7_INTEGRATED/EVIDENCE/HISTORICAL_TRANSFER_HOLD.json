@@ -1,0 +1,46 @@
+{
+  "schema": "ANVIL_R7_HISTORICAL_TRANSFER_HOLD",
+  "status": "EXACT_MISSING_ARTIFACT_OWNER_HOLD",
+  "frame": "FRAME.json",
+  "requirement_id": "HIST-07",
+  "required_artifact": {
+    "kind": "accepted R5/R6 SPINE.json",
+    "accepted_schemas": [
+      "ANVIL_SPINE_R5",
+      "ANVIL_SPINE_R6"
+    ],
+    "required_coverage": "All 118 identities in groups K1_CAP=29, PYAT_PC=26, P4R=14, SEAM_B=10, SEAM_S=8, ANVIL_L=8, BOUNDARY=7, TERMINAL=16.",
+    "required_record_fields": [
+      "source_anchor",
+      "source_semantics",
+      "consumer_or_hold",
+      "negative_meaning",
+      "architecture_effect",
+      "why",
+      "evidence_ids"
+    ],
+    "required_status_guards": "PYAT_PC records adopted=false and necessity=HISTORICAL_NOT_ADOPTED; P4R records closed=false and necessity=HISTORICAL_PROOF_HELD.",
+    "required_pin": "Immutable original bytes plus SHA-256 and, where available, the Git commit/blob pointer."
+  },
+  "bounded_search_performed": [
+    "Package /Users/matthewsmith/Desktop/ANVIL_R7 3: recursive JSON schema scan; only ANVIL_R6_SPINE_1 and ANVIL_R7_SPINE_1 synthetic examples were found.",
+    "Reference archives: MAINMAC_R7_REFERENCE/reference/ANVIL_R5_IMMUTABLE.zip; no SPINE.json member; R5_BASELINE contains policy/tests/tools only.",
+    "MAINMAC_R6_REFERENCE/ANVIL_R6/examples/SYNTHETIC_SPINE.json explicitly synthetic.",
+    "Old run /Users/matthewsmith/Desktop/ANVIL_R7_EXECUTION_20261117: no SPINE.json found; old A/B returns are nonoperative and were not used.",
+    "Exact Git cuts: cea2d4d3009e9087d2267e9d1f53bec28b730dc7 (worktree), 7fc00289dd801d2d0a8ce159986c7595fc27a4d9 (K3 protected), ca78b6a99a73f4e34790950caeb8d3684c5df94a, 3cc09bba3d0e26c226da0ddca4b64c43dd74e493, 796452b8cb788fa5a02f37a7ce86eafce8312dfe, 596f1230258ff50f98d8543dec42a80e696720f4; git grep/git log tree search found no accepted ANVIL_SPINE_R5/R6 file."
+  ],
+  "negative_findings": [
+    "No file with schema ANVIL_SPINE_R5 or ANVIL_SPINE_R6 exists in the searched package or exact Git trees.",
+    "The package fixture ANVIL_R7_SPINE_1 is synthetic and was not relabeled, copied as original, or used to manufacture 118 records.",
+    "The K3 29/26/14 TSVs are genuine documentary rows at the protected cut, but they cover only 69 of 118 identities and do not carry the full R5/R6 semantic record shape."
+  ],
+  "owner": "R5/R6 campaign owner and PYAT HQ receiving. The supplying owner must authenticate the immutable original; this return cannot self-accredit it.",
+  "next_receipt_needed": "Deliver the exact accepted R5/R6 SPINE.json bytes (or an authenticated immutable pointer) with the 118-record coverage. Then run: python3 tools/r7_transfer_conservation.py EXISTING_SPINE.json EVIDENCE/inherited_conservation.json; point FRAME.historical_source_spine and FRAME.historical_conservation at the two immutable files; rerun the active FRAME gate.",
+  "effect_on_gate": "The active FRAME gate is RED only at FRAME:HISTORY:NO_POINTER. All 53 requirement rows and all 9 mission domains pass the local structural/source-pin checks.",
+  "do_not": [
+    "Do not manufacture or autogenerate 118 semantic rows.",
+    "Do not relabel SYNTHETIC_SPINE as an accepted source.",
+    "Do not infer function parity from identity strings or K3 family names.",
+    "Do not start a new K3/K4 recensus or weaken r7_integrated.py."
+  ]
+}
