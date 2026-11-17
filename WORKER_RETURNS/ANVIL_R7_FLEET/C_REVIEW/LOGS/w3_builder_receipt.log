@@ -1,0 +1,15 @@
+{
+  "schema": "C_REVIEW_WITNESS_W3",
+  "A_real_command_no_dummy": {
+    "status": "RED",
+    "errors": [
+      "C:BUILDER_NONEXISTENT_TEST_COMMAND:python3"
+    ]
+  },
+  "B_real_command_with_dummy_python3": {
+    "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "errors": []
+  },
+  "meaning": "A refuses a real-looking command due to first-token path check; B passes the same non-executed receipt when a dummy python3 file exists.",
+  "verdict": "WITNESS_CONFIRMED_IF_A_RED_AND_B_PASS"
+}

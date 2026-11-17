@@ -1,0 +1,99 @@
+{
+  "schema": "C_REVIEW_WITNESS_W5",
+  "graph_nodes": [
+    "N_ACTOR",
+    "N_C11",
+    "N_CALC",
+    "N_FIELD",
+    "N_SRC",
+    "N_WORLD"
+  ],
+  "graph_edges": 7,
+  "terminal_ids_in_inventory": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "N9",
+    "N10E",
+    "N10W",
+    "N11",
+    "N12",
+    "PRE-V3",
+    "SEAM",
+    "SOROK"
+  ],
+  "terminal_ids_in_graph": [],
+  "terminal_ids_missing_from_graph": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "N9",
+    "N10E",
+    "N10W",
+    "N11",
+    "N12",
+    "PRE-V3",
+    "SEAM",
+    "SOROK"
+  ],
+  "terminal_mentions_anywhere_in_graph": {
+    "F1": 0,
+    "F2": 0,
+    "F3": 0,
+    "F4": 0,
+    "F5": 0,
+    "F6": 0,
+    "F7": 0,
+    "F8": 0,
+    "N9": 0,
+    "N10E": 0,
+    "N10W": 0,
+    "N11": 0,
+    "N12": 0,
+    "PRE-V3": 0,
+    "SEAM": 0,
+    "SOROK": 0
+  },
+  "FRAME": {
+    "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+    "errors": [],
+    "requirements": 16,
+    "domains": 9,
+    "identity_inventory_total": 118
+  },
+  "DECISION": {
+    "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+    "errors": [],
+    "covered": 16,
+    "requirement_total": 16,
+    "identity_dispositions": 118
+  },
+  "C_INTEGRATED": {
+    "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "errors": []
+  },
+  "C_graph_audit": {
+    "boundary_edges_checked": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6",
+      "T7"
+    ],
+    "holes": [],
+    "producer_authority_time_consumer_checked": true
+  },
+  "verdict": "WITNESS_CONFIRMED_IF_GATE_PASS_AND_MISSING_TERMINALS_NONEMPTY"
+}

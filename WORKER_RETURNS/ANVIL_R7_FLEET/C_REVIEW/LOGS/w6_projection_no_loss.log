@@ -1,0 +1,106 @@
+{
+  "schema": "C_REVIEW_WITNESS_W6",
+  "identity_rows": 118,
+  "identity_distinct_field_values": {
+    "design_effect": 1,
+    "first_consumer_path": 1,
+    "conservation_or_refusal_witness": 1
+  },
+  "requirement_rows": 16,
+  "requirement_distinct_field_values": {
+    "actual_design_effect": 1,
+    "specific_first_consumer_path": 1,
+    "conservation_or_refusal_witness": 1
+  },
+  "frame_requirement_distinct_field_values": {
+    "substantive_requirement": 16,
+    "why_needed": 1,
+    "loss_if_missing": 1,
+    "first_consumer": 1,
+    "architectural_consequence": 1,
+    "proof_or_owner_hold": 1
+  },
+  "boundary_map_field_keys_per_T": [
+    [
+      "name"
+    ]
+  ],
+  "boundary_source_contract_fields_present_in_map": {
+    "producers": false,
+    "receivers": false,
+    "must_preserve": false,
+    "first_effect": false,
+    "veto": false,
+    "time_class": false,
+    "owners": false
+  },
+  "graph_nodes": 6,
+  "graph_edges": 7,
+  "graph_terminal_nodes": [],
+  "evidence_index_lines": 236,
+  "evidence_index_keys": [
+    "disposition",
+    "id",
+    "kind",
+    "origin_sha256"
+  ],
+  "builder_handoff_keys": [
+    "authority_ceiling",
+    "first_real_consumer",
+    "handoff",
+    "schema"
+  ],
+  "build_handoff_is_single_object": true,
+  "r5_required_roles_fields": {
+    "COVERAGE_TO_DECISION.tsv": [
+      "group",
+      "id",
+      "necessity",
+      "status",
+      "decision_ids",
+      "source_anchor",
+      "source_semantics",
+      "consumer_or_hold",
+      "negative_meaning",
+      "architecture_effect",
+      "evidence_ids",
+      "why"
+    ],
+    "BOUNDARY_TRACE": [
+      "contract_name",
+      "first_consumer",
+      "status",
+      "negative",
+      "integrated_epistemic_case",
+      "provenance"
+    ],
+    "DOWNSTREAM_BUILD_HANDOFF": [
+      "id",
+      "boundary",
+      "recipient_owner",
+      "producer_symbol",
+      "producer_cut",
+      "consumer_symbol",
+      "consumer_status",
+      "input_abi",
+      "output_abi",
+      "transformation",
+      "negative",
+      "restore",
+      "test_command",
+      "expected_first_effect",
+      "source_authority",
+      "implementation_status",
+      "required_now_or_future",
+      "dependencies",
+      "evidence_ids"
+    ],
+    "EVIDENCE_AND_FALSIFIER_INDEX": [
+      "evidence records with source/falsifier provenance; not merely ID+origin hash"
+    ],
+    "GLOBAL_ARCHITECTURE": [
+      "nodes/edges with implementation/decision/alternative and boundary"
+    ]
+  },
+  "verdict": "SHALLOW_PROJECTION_LOSS_CONFIRMED"
+}

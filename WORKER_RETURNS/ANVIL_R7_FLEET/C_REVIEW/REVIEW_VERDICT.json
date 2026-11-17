@@ -1,0 +1,210 @@
+{
+  "schema": "ANVIL_DISTINCT_C_REVIEW_VERDICT_R1",
+  "created_utc": "2026-11-17T20:10:00Z",
+  "reviewer": {
+    "role": "DISTINCT_NONAUTHOR_C_REVIEWER",
+    "authored_target_or_tests": false,
+    "integrator": false,
+    "independence_grade": "DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION",
+    "self_certified_protected_independence": false
+  },
+  "host_model": {
+    "harness": "OpenCode 2.0.22 on mainMac",
+    "requested": "Go DeepSeek V4.1 Flash MAX",
+    "actual_served": "1017",
+    "cost": "UNKNOWN",
+    "provider_model_account_host_switch": false,
+    "subagents_used": false,
+    "rate_limit_or_paid_fallback": false
+  },
+  "target": {
+    "integration_commit": "0f0c673f99978aff6c11f7bd0e6fe1840fbdc799",
+    "branch": "agent/anvil-integrated-instrument-20261117-r1",
+    "repaired_zip": {
+      "path": "WORKER_RETURNS/ANVIL_R7_FLEET/INTEGRATION/REPAIRED_PACKAGE.zip",
+      "bytes": 1561148,
+      "sha256": "7569fb21a577aff06d48ce7759cf692c8f2ba3e475b8eba1e71c36d4e5abc689"
+    },
+    "original_zip": {
+      "path": "/Users/matthewsmith/Desktop/ANVIL_R7_INTEGRATED_WORKFLOW_FIX_20261117.zip",
+      "entries": 280,
+      "sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332"
+    },
+    "candidate_manifest": {
+      "files": 657,
+      "verified": 657,
+      "missing": 0,
+      "bad": 0
+    }
+  },
+  "source_authentication": {
+    "status": "ACCEPT_SCOPED_IDENTITY_ONLY",
+    "protected_head": "31291d08179890852246c8742700e055168e9933",
+    "first_position_oath": "VERIFIED_PRESENT",
+    "paired_pyat_progress_revision": 10,
+    "k3_cut": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+    "counts": {
+      "K1_CAP": 29,
+      "PYAT_PC": 26,
+      "P4R": 14,
+      "SEAM_B": 10,
+      "SEAM_S": 8,
+      "ANVIL_L": 8,
+      "BOUNDARY": 7,
+      "TERMINAL": 16,
+      "TOTAL": 118
+    },
+    "unique_ids": 118,
+    "exact_source_rows_or_members": 118,
+    "git_rows": 95,
+    "zip_objects_or_scalars": 23,
+    "k3_files": {
+      "K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv": {
+        "blob": "a91214b9fd89ab97897ec1c3cd48cb5285b7029c",
+        "sha256": "0dfe6539f1a1f7f028c5968c0e85078cbf5f80a847d0c94ea1929f57d20c052d"
+      },
+      "K3_R15_26_OWNER_DECISIONS.tsv": {
+        "blob": "1f5a3ae8a40593dccf34753c9fa9577155ebf163",
+        "sha256": "6d0766ecc637ee03a705c1772e7bcda39c09c9534f0672cd36a27cfa85e0dfa2"
+      },
+      "K3_P4R_14_OBLIGATION_ROUTES.tsv": {
+        "blob": "5a84ca8cb0a2b16d4a68b2200fa426fd9451b343",
+        "sha256": "8adf74cfbf2e916f41641f5836ab82305059b59e1665a2e1647dfb6bdeb0e9d3"
+      }
+    },
+    "seam_anvil": {
+      "SEAM_25.md": {
+        "commit": "596f1230258ff50f98d8543dec42a80e696720f4",
+        "blob": "181ab1aaee26d71524dd7401a59c2ca550b4a81c",
+        "sha256": "589379644edbb9f59734d5fe40787683e6836b073a3ba69649cfd5035432c17e"
+      },
+      "SEAM_26.md": {
+        "commit": "796452b8cb788fa5a02f37a7ce86eafce8312dfe",
+        "blob": "a05c21dd0b7b1d404fc500c0ef36c81aee67c96e",
+        "sha256": "a53c62b3f68a54947a26be2e8878d1f89bff1ad057833ef4f8c80f38ab9fb50c"
+      },
+      "ANVIL_15.md": {
+        "commit": "3cc09bba3d0e26c226da0ddca4b64c43dd74e493",
+        "blob": "6253a632d10f201e0bf446f055f96c82fb4a479f",
+        "sha256": "0e09bc34235923b7f7b34d272b8e7cddcea0d4e524953f56665843bba6a0c50a"
+      }
+    },
+    "statuses": {
+      "PYAT_PC_NOT_ADOPTED": 26,
+      "P4R_HELD": 14
+    },
+    "B10_S08_L08_present_exact": true,
+    "accepted_R5_R6_SPINE_used": false,
+    "semantic_summary_authentication": "NOT_MACHINE_AUTHENTICATED; EXTERNAL_C_SOURCE_OWNER_HOLD"
+  },
+  "local_execution": {
+    "source_replay": "PASS_118_EXACT_ROWS",
+    "candidate_29_tests": "PASS_29_OF_29",
+    "candidate_13_tests": "PASS_13_OF_13_ONLY_AFTER_UNDOCUMENTED_EVIDENCE_PATH_FIX",
+    "package_FRAME": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+    "package_DECISION": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+    "package_C": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "package_builder_verify": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL",
+    "documented_cold_handoff": "FAILED_EXACT_COMMANDS_IN_CLEAN_EXTRACTION",
+    "handoff_failure_details": [
+      "r7_inventory.py --inventory ../tests/fixtures/source_118/SOURCE_IDENTITY_INVENTORY.json -> FileNotFoundError; inventory is under ../EVIDENCE/SOURCE_IDENTITY_INVENTORY.json",
+      "test_integrated_strict.py -> 13 errors; it expects EVIDENCE at the package's grandparent, not ANVIL_R7/EVIDENCE"
+    ]
+  },
+  "findings": [
+    {
+      "id": "D1_REQUIREMENT_SEMANTICS",
+      "severity": "CONSEQUENTIAL",
+      "witness": "WITNESS/W1_REQ_AND_F6_HOLLOW/w1_result.json",
+      "result": "FRAME and DECISION PASS after replacing REQ-MULTIWAY-JOINT with explicit pairwise-only acceptance and erasing the F6 numeric/guard distinction",
+      "reason": "16 requirement headings and 118 IDs are present, but no machine check binds the text to the specific obligation or source negative"
+    },
+    {
+      "id": "D2_TERMINAL_GRAPH",
+      "severity": "CONSEQUENTIAL",
+      "witness": "WITNESS/W5_TERMINAL_GRAPH/w5_result.json",
+      "result": "DECISION and C PASS; graph is 6 nodes/7 edges; 0 of 16 terminal IDs present; C graph audit holes=[]",
+      "reason": "The actual graph payload is a six-role cartoon, not the source-to-terminal producer/authority/time/consumer graph; terminal names exist only as rows/heading"
+    },
+    {
+      "id": "D3_C_BOUNDARY_FALSE_SCIENCE",
+      "severity": "CONSEQUENTIAL",
+      "witness": "WITNESS/W2_C_BOUNDARY_FALSE_SCIENCE/w2_result.json",
+      "result": "C_INTEGRATED PASS with T4/T6/T7 and C prose asserting survey opinion=institutional power, survey answers=actor private knowledge, fictional action=observed source rewrite",
+      "reason": "C boundary court checks length/local excerpt, not the actor/world firewall"
+    },
+    {
+      "id": "D4_BUILDER_FALSE_ADMISSION",
+      "severity": "CONSEQUENTIAL",
+      "witness": "WITNESS/W3_BUILDER_RECEIPT/w3_result.json",
+      "result": "Real command refused as NONEXISTENT:python3; same non-executed fake receipt passes when a dummy file named python3 exists and reaches C_CONDITIONALLY_ADMIT_DESIGN",
+      "reason": "First-token path check and local receipt acceptance; no external runner identity or independence gate before conditional C admission"
+    },
+    {
+      "id": "D5_PROJECTIONS_SHALLOW",
+      "severity": "CONSEQUENTIAL",
+      "witness": "WITNESS/W6_PROJECTION_NO_LOSS/w6_result.json",
+      "result": "All 118 identity dispositions have 1 distinct design/first-consumer/witness string; all 16 requirement dispositions have 1 distinct string; BOUNDARY map has only name; evidence index only ID+origin; handoff is one generic object; graph 6 nodes",
+      "reason": "Deterministic byte rebuild is not R5 no-loss; renamed shallow views are not equivalent"
+    },
+    {
+      "id": "D6_COLD_HANDOFF",
+      "severity": "CONSEQUENTIAL_ENGINEERING",
+      "witness": "LOGS/handoff_clean_inventory.log; LOGS/handoff_clean_13.log",
+      "result": "Literal documented clean-extraction commands fail; 13 tests pass only after manual EVIDENCE copy to an undocumented location",
+      "reason": "Package is not self-contained per the handoff; cold reconstruction claim is not reproducible as written"
+    },
+    {
+      "id": "D7_SOURCE_SEMANTIC_SUMMARY",
+      "severity": "EXTERNAL_C_SOURCE_OWNER_HOLD",
+      "witness": "WITNESS/W4_SOURCE_NEGATIVE_TAMPER/w4_result.json",
+      "result": "FRAME and DECISION PASS after inverting K1-CAP-11/K1-CAP-17 source semantics/negatives while preserving exact excerpts and row hashes",
+      "reason": "D2B residual: row hash authenticates bytes, not authored semantic summary; source owner/C semantic comparison remains required"
+    }
+  ],
+  "positive_controls": {
+    "missing_B10_S08_L08": "RED_INCOMPLETE_118_IDENTITY_RECONCILIATION",
+    "inventory_missing_B10": "RED_COUNT_DRIFT_AND_TOTAL_NOT_118",
+    "candidate_mutations": "K3 row, synthetic spine, prospective adoption, missing T4 negative, revoked release, fabricated H1, missing identity, zip member forgery refused by candidate tests"
+  },
+  "minimum_corrective_action": [
+    "Encode the actual 16 obligations with per-obligation semantics and tests, not 16 generic strings; include F6 numeric vs guard, multiway joint, denominators/missing/routing, signed/neutral and review/coverage lanes, time vs fictive time, Other recruitment/access, independent actor life, 1/10/100, revocation and terminal holds.",
+    "Give every one of the 118 identities its own source meaning/negative, actual first-consumer path or exact hold, and positive/refusal/restore witness; reject repeated generic prose.",
+    "Publish a real whole-machine graph with terminal/FF/SEAM/SOROK nodes and producer/authority/time/consumer/negative/restore edges, or exact holds; make C graph audit require them.",
+    "Enforce the actor/world firewall in C boundary positive/negative/restore and C prose; add T4/T6/T7 false-science RED tests.",
+    "Fix builder argv/script resolution, text stdout logs and external runner/independence requirements; do not allow local fake receipts to reach C_CONDITIONALLY_ADMIT_DESIGN.",
+    "Make the exact package cold handoff self-contained and test the literal clean-extraction commands; keep only declared external Git/original-ZIP pins.",
+    "Rebuild the six projections with the R5 coverage/boundary/handoff/evidence/architecture fields and verify source→consumer/negative/builder/graph no-loss, not only hash equality."
+  ],
+  "authority": {
+    "protected_H1_CAS": "NOT_GRANTED",
+    "native_original35_science": "NOT_GRANTED",
+    "source_rights": "NOT_GRANTED",
+    "actor_consent_or_psychology": "NOT_GRANTED",
+    "physical_C11_architecture_selected": false,
+    "science_or_news_decision": "NOT_MADE",
+    "protected_merge": "NOT_MADE"
+  },
+  "limits": [
+    "Native SAV/DTA source read, 13-family native C11 cold run, dense 100k 600-1300 slots, process-tree <=6 GiB, cold 1/10/100 distinct operations, actual F1-F8/N9/N10W/SOROK first reader: NOT_RUN.",
+    "F26 exact original caller/body/invalidation remains unverified; preserve the existing K3 K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21 owner hold; do not invent a body or make it a global blocker to source-qualified identity review.",
+    "Source semantic summaries are not machine-authenticated; external C/source-owner semantic review is indispensable for a native/semantic acceptance.",
+    "Local receipts and human summaries can be forged by an evidence-root author; external runner identity and protected custody are not closed here.",
+    "Fleet bank 297/299 hash and 278/279 ZIP text caveats are preserved; original ZIP bytes remain authority.",
+    "Protected currentness was read at 31291d...; later movement requires re-grounding.",
+    "Independence is a distinct-nonauthor assertion pending external verification; this review does not self-certify protected independence."
+  ],
+  "peers_read": {
+    "D2A": "NO_LOSS_AND_ADDITIONS.md, substantive losses R01-R15, terminal graph blindspot",
+    "D2B": "NO_LOSS_AND_ADDITIONS.md, D2B_R2_RESIDUAL_BLINDSPOT.json, substantive omissions",
+    "D4A": "RETURN.md, A6 requirement-roster residual",
+    "D4B": "RETURN.md, UNREPAIRED_DEFECTS.md, H11 builder and residual limits"
+  },
+  "verdict": "REVISE_EXACT_DEFECT",
+  "disposition": "SOURCE_IDENTITY_S1_ACCEPT_SCOPED_IDENTITY_ONLY__CANDIDATE_INSTRUMENT_REVISE_EXACT_DEFECT",
+  "readable_verdict": "WORKER_RETURNS/ANVIL_R7_FLEET/C_REVIEW/VERDICT.md",
+  "grok_proof": "WORKER_RETURNS/ANVIL_R7_FLEET/C_REVIEW/GROK_PROOF.md",
+  "raw_commands": "WORKER_RETURNS/ANVIL_R7_FLEET/C_REVIEW/RAW_COMMANDS.md",
+  "exact_sha256": "WORKER_RETURNS/ANVIL_R7_FLEET/C_REVIEW/EXACT_SHA256.json",
+  "stop": "Freeze and publish this review root; HQ intake; no protected merge, no architecture launch, no native/science/actor claim."
+}

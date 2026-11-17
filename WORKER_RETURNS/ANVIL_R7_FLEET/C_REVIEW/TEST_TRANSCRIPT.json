@@ -1,0 +1,139 @@
+{
+  "schema": "ANVIL_DISTINCT_C_TEST_TRANSCRIPT_R1",
+  "created_utc": "2026-11-17T20:15:00Z",
+  "target_commit": "0f0c673f99978aff6c11f7bd0e6fe1840fbdc799",
+  "repaired_zip_sha256": "7569fb21a577aff06d48ce7759cf692c8f2ba3e475b8eba1e71c36d4e5abc689",
+  "original_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+  "commands": [
+    {
+      "command": "sha256/size of REPAIRED_PACKAGE.zip",
+      "exit": 0,
+      "result": "7569fb21a577aff06d48ce7759cf692c8f2ba3e475b8eba1e71c36d4e5abc689; 1561148 bytes"
+    },
+    {
+      "command": "manifest 657-file rehash",
+      "exit": 0,
+      "result": "657/657 ok, 0 missing, 0 bad"
+    },
+    {
+      "command": "python3 WITNESS/w0_source_replay.py",
+      "exit": 0,
+      "result": "118 unique IDs; 29/26/14/10/8/8/7/16; 118 exact rows; 26 NOT_ADOPTED; 14 HELD; B10/S08/L08 present",
+      "log": "LOGS/w0_source_replay.log"
+    },
+    {
+      "command": "r7_inventory.py verify (literal handoff inventory path)",
+      "exit": 1,
+      "result": "FileNotFoundError: ../tests/fixtures/source_118/SOURCE_IDENTITY_INVENTORY.json",
+      "log": "LOGS/handoff_clean_inventory.log"
+    },
+    {
+      "command": "r7_inventory.py verify (corrected ../EVIDENCE path)",
+      "exit": 0,
+      "result": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY; 118; 0 errors",
+      "log": "LOGS/cold_inventory_correctpath.log"
+    },
+    {
+      "command": "test_r7_integrated.py -q",
+      "exit": 0,
+      "result": "29/29 OK",
+      "log": "LOGS/cold_inherited29.log"
+    },
+    {
+      "command": "test_integrated_strict.py (literal clean extraction)",
+      "exit": 1,
+      "result": "13 errors: missing TEMP/EVIDENCE (package has ANVIL_R7/EVIDENCE)",
+      "log": "LOGS/handoff_clean_13.log"
+    },
+    {
+      "command": "test_integrated_strict.py (after undocumented EVIDENCE copy)",
+      "exit": 0,
+      "result": "13/13 OK",
+      "log": "LOGS/cold_integrated13_temp_evidence.log"
+    },
+    {
+      "command": "r7_integrated.py FRAME/DECISION/C_INTEGRATED with package ../EVIDENCE",
+      "exit": 0,
+      "result": "all three PASS_* local statuses",
+      "logs": ["LOGS/cold_FRAME.log", "LOGS/cold_DECISION.log", "LOGS/cold_C_INTEGRATED.log"]
+    },
+    {
+      "command": "r7_build.py verify ... --out INTEGRATION/BUILT",
+      "exit": 0,
+      "result": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL",
+      "log": "LOGS/verify_six.log"
+    },
+    {
+      "command": "python3 WITNESS/w1_req_f6_hollow.py",
+      "exit": 0,
+      "result": "FRAME PASS, DECISION PASS after pairwise-only REQ-MULTIWAY substitution and F6 guard/numeric erasure; WITNESS_CONFIRMED",
+      "log": "LOGS/w1_req_f6_hollow.log",
+      "witness": "WITNESS/W1_REQ_AND_F6_HOLLOW/w1_result.json"
+    },
+    {
+      "command": "python3 WITNESS/w2_c_boundary_false_science.py",
+      "exit": 0,
+      "result": "C_INTEGRATED PASS with false T4/T6/T7 actor/world science; WITNESS_CONFIRMED",
+      "log": "LOGS/w2_c_boundary_false_science.log",
+      "witness": "WITNESS/W2_C_BOUNDARY_FALSE_SCIENCE/w2_result.json"
+    },
+    {
+      "command": "python3 WITNESS/w3_builder_receipt.py",
+      "exit": 0,
+      "result": "A: real command RED NONEXISTENT:python3; B: fake receipt with dummy python3 PASS C_CONDITIONALLY_ADMIT; WITNESS_CONFIRMED",
+      "log": "LOGS/w3_builder_receipt.log",
+      "witness": "WITNESS/W3_BUILDER_RECEIPT/w3_result.json"
+    },
+    {
+      "command": "python3 WITNESS/w4_source_negative_tamper.py",
+      "exit": 0,
+      "result": "FRAME PASS, DECISION PASS after semantic/negative inversion with exact excerpt/hash retained; WITNESS_CONFIRMED",
+      "log": "LOGS/w4_source_negative_tamper.log",
+      "witness": "WITNESS/W4_SOURCE_NEGATIVE_TAMPER/w4_result.json"
+    },
+    {
+      "command": "python3 WITNESS/w5_terminal_graph.py",
+      "exit": 0,
+      "result": "6 nodes/7 edges; 0 of 16 terminal IDs; DECISION/C PASS; WITNESS_CONFIRMED",
+      "log": "LOGS/w5_terminal_graph.log",
+      "witness": "WITNESS/W5_TERMINAL_GRAPH/w5_result.json"
+    },
+    {
+      "command": "python3 WITNESS/w6_projection_no_loss.py",
+      "exit": 0,
+      "result": "1 distinct disposition string across 118 and 16 rows; shallow boundary/evidence/handoff/graph; SHALLOW_PROJECTION_LOSS_CONFIRMED",
+      "log": "LOGS/w6_projection_no_loss.log",
+      "witness": "WITNESS/W6_PROJECTION_NO_LOSS/w6_result.json"
+    },
+    {
+      "command": "python3 WITNESS/w7_joint_denominator.py",
+      "exit": 0,
+      "result": "even/odd marginals equal; P(111)=0 vs 0.25; forward denominator 4; reverse denominator 5",
+      "log": "LOGS/w7_joint_denominator.log"
+    },
+    {
+      "command": "python3 WITNESS/w8_omission_controls.py",
+      "exit": 0,
+      "result": "B-10/S-08/L-08 decision omission RED; inventory omission RED; control works",
+      "log": "LOGS/w8_omission_controls.log",
+      "witness": "WITNESS/W8_OMISSION_CONTROLS/w8_result.json"
+    }
+  ],
+  "not_run": [
+    "native SAV/DTA source read",
+    "13-family native C11 cold run",
+    "dense 100k 600-1300 slots",
+    "process-tree <=6 GiB",
+    "cold 1/10/100 distinct operations",
+    "actual F1-F8/N9/N10W/SOROK first reader",
+    "protected H1/CAS",
+    "original35 source/science/actor rights"
+  ],
+  "limits": [
+    "Local structural/source-byte tests only; not independent C, native science or protected H1.",
+    "The positive fixture is an authored test input, not a real architecture decision.",
+    "F26 exact caller/invalidation remains the existing K3/P4R owner hold.",
+    "Source semantic summaries are not machine-authenticated; external C/source-owner comparison remains.",
+    "Local receipts/human summaries can be forged; external runner/source custody closes that."
+  ]
+}
