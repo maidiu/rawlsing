@@ -1,0 +1,280 @@
+{
+  "schema": "C_REVIEW_R4_STATE_CLAIM",
+  "baseline": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "errors": [],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+      "errors": []
+    }
+  },
+  "P4R-R01_hold_to_present": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "RED",
+      "errors": [
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:P4R-R01"
+      ],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:P4R-R01"
+      ]
+    }
+  },
+  "REQ-FIELD-FORGE_future_to_present": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "RED",
+      "errors": [
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-FIELD-FORGE"
+      ],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-FIELD-FORGE"
+      ]
+    }
+  },
+  "T4_source_static_to_actual": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "errors": [],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:ACTUAL_PROVED_WITHOUT_AUTHORIZED_READER_WITNESS:T4",
+        "C:BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED:T4"
+      ]
+    }
+  },
+  "T4_actual_with_fake_witness": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "errors": [],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:ACTUAL_PROVED_WITHOUT_AUTHORIZED_READER_WITNESS:T4",
+        "C:BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED:T4"
+      ]
+    }
+  },
+  "P4R-R02_analog": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "RED",
+      "errors": [
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:P4R-R02"
+      ],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:P4R-R02"
+      ]
+    }
+  },
+  "REQ-SEAM-WORLD-ACTOR_analog": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "RED",
+      "errors": [
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-SEAM-WORLD-ACTOR"
+      ],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-SEAM-WORLD-ACTOR"
+      ]
+    }
+  },
+  "T6_actual_analog": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "errors": [],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:ACTUAL_PROVED_WITHOUT_AUTHORIZED_READER_WITNESS:T6",
+        "C:BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED:T6"
+      ]
+    }
+  },
+  "coherent_adversary_recomputed_flags_hashes": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "RED",
+      "errors": [
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:P4R-R01",
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-FIELD-FORGE"
+      ],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:ACTUAL_PROVED_WITHOUT_AUTHORIZED_READER_WITNESS:T4",
+        "C:BOUNDARY_NARRATIVE_NOT_REVIEWED_OR_CHANGED:T4",
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:P4R-R01",
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:REQ-FIELD-FORGE"
+      ]
+    }
+  },
+  "restore_exact_baseline": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "errors": [],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+      "errors": []
+    }
+  },
+  "usability_changed_proposal": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+      "errors": [],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+      "errors": []
+    }
+  },
+  "usability_changed_source_fate": {
+    "FRAME": {
+      "status": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+      "errors": [],
+      "requirements": 16,
+      "domains": 9,
+      "identity_inventory_total": 118
+    },
+    "DECISION": {
+      "status": "RED",
+      "errors": [
+        "DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:K1-CAP-11"
+      ],
+      "covered": 16,
+      "requirement_total": 16,
+      "identity_dispositions": 118
+    },
+    "C": {
+      "status": "RED",
+      "errors": [
+        "C:DEFECTIVE_DECISION:DECISION:NARRATIVE_NOT_REVIEWED_OR_CHANGED:K1-CAP-11"
+      ]
+    }
+  }
+}

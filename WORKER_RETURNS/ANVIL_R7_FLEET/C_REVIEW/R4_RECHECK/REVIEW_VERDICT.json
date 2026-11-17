@@ -1,0 +1,102 @@
+{
+  "schema": "ANVIL_DISTINCT_C_R4_RECHECK_VERDICT",
+  "created_utc": "2026-11-17T22:10:00Z",
+  "reviewer": {
+    "role": "SAME_DISTINCT_NONAUTHOR_C_R4_RECHECK",
+    "authored_target_or_tests": false,
+    "integrator": false,
+    "independence_grade": "DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION",
+    "self_certified_protected_independence": false
+  },
+  "host_model": {
+    "requested": "Go DeepSeek Flash MAX",
+    "actual_served": "UNKNOWN",
+    "served_checkpoint_1017": "UNKNOWN",
+    "observed_first_turn_metadata": {"providerID": "opencode-go", "id": "deepseek-v4.1-flash", "variant": "max"},
+    "cost": "UNKNOWN",
+    "provider_model_account_host_switch": false,
+    "subagents_used": false,
+    "rate_limit_or_paid_fallback": false
+  },
+  "target": {
+    "integration_commit": "05e81747fb2e5cca042c0d968ba1ae203182556e",
+    "branch": "agent/anvil-integrated-instrument-20261117-r1",
+    "base_r3_review": "0d87a5643d0bb515dad5c7431ab5b581ffb2ce0c",
+    "repaired_zip": {"path": "R4_RECHECK/INPUT/REPAIRED_PACKAGE_R4.zip", "bytes": 1858438, "sha256": "701207ec43eb1975e66f6dc324da7a9c786a84800d0ae16e9e2e4526d62daad9"},
+    "original_zip": {"sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332", "entries": 280},
+    "candidate_manifest": {"files": 1142, "verified": 1142, "missing": 0, "bad": 0},
+    "target_zip_matches_git_blob": true
+  },
+  "source_identity": {
+    "status": "PRESERVED_IDENTITY_ONLY",
+    "protected_head": "31291d08179890852246c8742700e055168e9933",
+    "k3_cut": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+    "counts": {"K1_CAP": 29, "PYAT_PC": 26, "P4R": 14, "SEAM_B": 10, "SEAM_S": 8, "ANVIL_L": 8, "BOUNDARY": 7, "TERMINAL": 16, "TOTAL": 118},
+    "PYAT_PC_NOT_ADOPTED": 26,
+    "P4R_HELD": 14,
+    "B10_S08_L08_present": true,
+    "semantic_authentication": "AUTHORED_SOURCE_BOUNDED_FREEZE__EXTERNAL_C_SOURCE_OWNER_HOLD"
+  },
+  "local_execution": {
+    "literal_inventory": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY",
+    "literal_29": "PASS_29_OF_29",
+    "literal_11_closure": "PASS_11_OF_11",
+    "FRAME": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+    "DECISION": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+    "C_INTEGRATED": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "builder_verify": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL",
+    "cold_literal_from_fresh_zip": "PASS"
+  },
+  "state_claim_recheck": {
+    "baseline": "PASS",
+    "P4R_R01_hold_to_present": "RED_NARRATIVE_NOT_REVIEWED",
+    "REQ_FIELD_FORGE_future_to_present": "RED_NARRATIVE_NOT_REVIEWED",
+    "T4_source_static_to_actual": "RED_ACTUAL_PROVED_WITHOUT_AUTHORIZED_READER_WITNESS_AND_NARRATIVE",
+    "T4_fake_witness": "RED_NO_AUTHORIZED_TRUSTED_CUSTODY",
+    "P4R_R02_analog": "RED",
+    "REQ_SEAM_WORLD_ACTOR_analog": "RED",
+    "T6_actual_analog": "RED",
+    "coherent_recomputed_flags_hashes": "RED",
+    "exact_baseline_restore": "PASS",
+    "changed_proposal_narrative": "PASS_LEGITIMATE_PROPOSED_C_HOLD",
+    "changed_source_fate": "RED_VERSIONED_REVIEW_REQUIRED",
+    "witness": "R4_RECHECK/WITNESS/W_STATE_CLAIM/r4_state_claim.json"
+  },
+  "preserved_closures": {
+    "source_identity_118_26_14": true,
+    "W1_typed_F4_F6": true,
+    "W2_typed_T4_T6_T7": true,
+    "W5_terminal_graph_fates": true,
+    "W3_no_conditional_admission": true,
+    "D5_projections": true,
+    "D6_cold_handoff": true,
+    "D7_machine_semantic_freeze": true,
+    "lawful_changed_proposal": true
+  },
+  "authority": {
+    "protected_H1_CAS": "NOT_GRANTED",
+    "native_original35_science": "NOT_GRANTED",
+    "source_rights": "NOT_GRANTED",
+    "actor_consent_or_psychology": "NOT_GRANTED",
+    "physical_C11_architecture_selected": false,
+    "seven_mandatory_stages": false,
+    "mandatory_full_A_B": false,
+    "protected_merge": "NOT_MADE"
+  },
+  "limits": [
+    "Native SAV/DTA, dense 100k 600-1300 slots, process-tree <=6 GiB, cold 1/10/100 distinct operations, actual F1-F8/N9/N10W/SOROK first reader: NOT_RUN.",
+    "Original35 science, source rights, actor consent, protected H1: NOT_GRANTED / external hold.",
+    "F26 exact caller/invalidation remains K3 K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21 owner hold.",
+    "Source semantic truth remains external C/source-owner; machine freeze is not native semantic truth.",
+    "Source bank 297/299 and 278/279 caveats preserved; original ZIP byte authority.",
+    "Independence is a distinct-nonauthor assertion pending external verification."
+  ],
+  "verdict": "ACCEPT_SCOPED",
+  "scope": "INSTRUMENT_PREPARATION_ONLY",
+  "disposition": "R4_STATE_CLAIM_BINDING_CLOSED__PRIOR_CLOSURES_PRESERVED__ACCEPT_SCOPED_INSTRUMENT_PREPARATION__PROTECTED_H1_NATIVE_SCIENCE_SOURCE_ACTOR_NOT_GRANTED",
+  "readable_verdict": "R4_RECHECK/VERDICT.md",
+  "grok_delta": "R4_RECHECK/GROK_DELTA.md",
+  "raw_commands": "R4_RECHECK/RAW_COMMANDS.md",
+  "exact_sha256": "R4_RECHECK/EXACT_SHA256.json",
+  "stop": "Freeze/push R4_RECHECK only; HQ receiving; no protected H1/native/science/actor grant, no architecture choice."
+}

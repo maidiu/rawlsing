@@ -1,0 +1,34 @@
+{
+  "schema": "ANVIL_DISTINCT_C_R4_TEST_TRANSCRIPT",
+  "created_utc": "2026-11-17T22:12:00Z",
+  "target_commit": "05e81747fb2e5cca042c0d968ba1ae203182556e",
+  "repaired_zip_sha256": "701207ec43eb1975e66f6dc324da7a9c786a84800d0ae16e9e2e4526d62daad9",
+  "original_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+  "commands": [
+    {"command": "target git HEAD", "exit": 0, "result": "05e81747fb2e5cca042c0d968ba1ae203182556e"},
+    {"command": "target ZIP SHA/size", "exit": 0, "result": "701207ec…; 1,858,438 bytes; Git blob MATCH"},
+    {"command": "target manifest 1142-file rehash", "exit": 0, "result": "1142/1142 ok, 0 missing, 0 bad"},
+    {"command": "literal inventory", "exit": 0, "result": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY; 118", "log": "LOGS/literal_inventory.log"},
+    {"command": "literal 29 tests", "exit": 0, "result": "29/29 OK", "log": "LOGS/literal_29.log"},
+    {"command": "literal 11 closure tests", "exit": 0, "result": "11/11 OK", "log": "LOGS/literal_11.log"},
+    {"command": "literal FRAME/DECISION/C", "exit": 0, "result": "PASS local; C_HOLD_EXACT", "logs": ["LOGS/literal_FRAME.log", "LOGS/literal_DECISION.log", "LOGS/literal_C_INTEGRATED.log"]},
+    {"command": "literal builder verify", "exit": 0, "result": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL", "log": "LOGS/literal_build.log"},
+    {"command": "python3 WITNESS/r4_state_witness.py", "exit": 0, "result": "state/claim promotions RED; analog RED; coherent recompute RED; baseline restore PASS; changed proposal PASS; changed source fate RED", "log": "LOGS/r4_state_witness.log", "witness": "WITNESS/W_STATE_CLAIM/r4_state_claim.json"}
+  ],
+  "not_run": [
+    "native SAV/DTA source read",
+    "13-family native C11 cold run",
+    "dense 100k 600-1300 slots",
+    "process-tree <=6 GiB",
+    "cold 1/10/100 distinct operations",
+    "actual F1-F8/N9/N10W/SOROK first reader",
+    "protected H1/CAS",
+    "original35 source/science/actor rights"
+  ],
+  "limits": [
+    "Local structural/source-byte tests only; not native science or protected H1.",
+    "C packet is C_HOLD_EXACT; local PASS is not final acceptance.",
+    "Source semantic summary truth remains external C/source-owner.",
+    "F26 exact caller/invalidation remains K3/P4R owner hold."
+  ]
+}
