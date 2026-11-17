@@ -1,0 +1,12 @@
+ID	Approach	State	Primary work	Retained	Cold open	1/10/100	Proof/authority	Why
+ALT-A	Current two-I02 + 13 JSONL + per-session SQLite	RULED_OUT	2 I02 + 13 journal writes + O object re-encode + O session index	310MB + 1.30GB session scratch	O(all events) scan	O(events) + native per fresh process	I02 roots + full re-encode	Measured 3033.7s/5.26GB/1.30GB/562s; duplicate work is avoidable
+ALT-B	SC-ESTATE one certification + derived index	PROVISIONAL_LEADING	1 source decode + 1 I02 + 1 Parquet write + byte digest + index	310MB + compact index + manifest	O(manifest+index)	index reuse; native risk dominates	I02 root + row-group digest + current/revocation	Smallest authority surface; reuses body format/native guards
+ALT-C	Primary SQLite/DuckDB/Postgres for all families	VIABLE_NOT_SELECTED	new primary DB + migration + concurrency + duplicate body	new DB + body	DB open	DB query	new authority/ABI	No evidence it fixes measured bottleneck; derived index enough
+ALT-D	Old W03 full object-materialized graph	RULED_OUT	whole C11 object graph + eager evaluator	full object corpus	O(all objects)	O(objects)	historical I02	6.47GB peak; failed cold query shape
+ALT-E	JSONL/document primary	RULED_OUT	JSON parse per query	JSONL corpus	O(file)	O(parse)	weak typed proof	No typed pruning/statistics; output amplification
+ALT-F	One wide/generic table	RULED_OUT	nullable wide schema	wide table	scan	scan	family semantics collapse	Typed absence/authority/exact body lost
+ALT-G	Stone/packed incidence/Arrow IPC primary	VIABLE_NOT_SELECTED	packed incidence/columnar	new format	format open	format query	unaccepted prototype	No evidence-bearing multi-way/exact negative proof; future derived accelerator only
+ALT-H	Precompute all answers	RULED_OUT	materialize query space	unbounded	lookup	lookup	stale/revocation	Open query space; unbounded output; stale facts
+ALT-I	Re-read source per query	RULED_OUT	source decode per query	source	source open	source decode	source rights	Violates custody/cost; no cold repeatability
+ALT-J	Split body/proof/index services	VIABLE_NOT_SELECTED	multi-service operational boundary	same + service stores	service open	service query	more authority surfaces	No demonstrated 100k need; harder to audit
+ALT-K	Columnar F1-F4/risk accelerator	VIABLE_NOT_SELECTED	columnar scan of exact facts	derived column store	derived open	faster dense F4	must reproduce native facts	Separate decision only if profile shows native enumeration dominates
