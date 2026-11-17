@@ -1,0 +1,36 @@
+{
+  "schema": "ANVIL_DISTINCT_C_R3_TEST_TRANSCRIPT",
+  "created_utc": "2026-11-17T21:55:00Z",
+  "target_commit": "9fe1fd3842ee1c1c76da0188150467e4799079cc",
+  "repaired_zip_sha256": "a4f881e751286f9a881bd7cd433b03a0bfbcf937affc4ac612f72b36357d9ef3",
+  "original_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+  "commands": [
+    {"command": "target git HEAD", "exit": 0, "result": "9fe1fd3842ee1c1c76da0188150467e4799079cc"},
+    {"command": "target ZIP SHA/size; Git blob compare", "exit": 0, "result": "a4f881e751286f9a881bd7cd433b03a0bfbcf937affc4ac612f72b36357d9ef3; 1,858,176 bytes; MATCH"},
+    {"command": "target manifest 1012-file rehash", "exit": 0, "result": "1012/1012 ok, 0 missing, 0 bad"},
+    {"command": "literal r7_inventory.py verify", "exit": 0, "result": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY; 118", "log": "LOGS/literal_inventory.log"},
+    {"command": "literal python3 -m unittest test_r7_integrated -q", "exit": 0, "result": "29/29 OK", "log": "LOGS/literal_29.log"},
+    {"command": "literal python3 test_integrated_strict.py", "exit": 0, "result": "11/11 OK", "log": "LOGS/literal_11.log"},
+    {"command": "literal FRAME/DECISION/C", "exit": 0, "result": "PASS local statuses; C_HOLD_EXACT", "logs": ["LOGS/literal_FRAME.log", "LOGS/literal_DECISION.log", "LOGS/literal_C_INTEGRATED.log"]},
+    {"command": "literal r7_build.py verify", "exit": 0, "result": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL", "log": "LOGS/literal_build.log"},
+    {"command": "python3 WITNESS/r3_witnesses.py", "exit": 0, "result": "W1 typed/prose, W2 typed/prose, W5 relabel/disconnect, W3 external flag all RED; changed proposal PASS; changed source fate RED", "log": "LOGS/r3_witnesses.log", "witness": "WITNESS/r3_results.json"},
+    {"command": "python3 WITNESS/w_state_claim.py", "exit": 0, "result": "state/claim promotions PASS: P4R-R01 EXACT_OWNER_HOLD->PRESENT_PRESERVED; REQ-FIELD-FORGE FUTURE_NONPRECLUDED->PRESENT_PRESERVED; C T4 SOURCE_STATIC->ACTUAL_PROVED with self-asserted reader flag", "log": "LOGS/w_state_claim.log", "witness": "WITNESS/W_STATE_CLAIM/w_state_claim.json"}
+  ],
+  "not_run": [
+    "native SAV/DTA source read",
+    "13-family native C11 cold run",
+    "dense 100k 600-1300 slots",
+    "process-tree <=6 GiB",
+    "cold 1/10/100 distinct operations",
+    "actual F1-F8/N9/N10W/SOROK first reader",
+    "protected H1/CAS",
+    "original35 source/science/actor rights"
+  ],
+  "limits": [
+    "Local structural/source-byte tests only; not independent C, native science or protected H1.",
+    "C packet is C_HOLD_EXACT; local PASS is not final acceptance.",
+    "Source semantic summaries remain an external C/source-owner hold.",
+    "F26 exact caller/invalidation remains the existing K3/P4R owner hold.",
+    "Local receipts/human summaries can be forged; external runner/source custody closes that."
+  ]
+}

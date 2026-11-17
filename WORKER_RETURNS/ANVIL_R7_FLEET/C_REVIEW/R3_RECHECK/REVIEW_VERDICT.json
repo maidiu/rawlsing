@@ -1,0 +1,148 @@
+{
+  "schema": "ANVIL_DISTINCT_C_R3_RECHECK_VERDICT",
+  "created_utc": "2026-11-17T21:50:00Z",
+  "reviewer": {
+    "role": "SAME_DISTINCT_NONAUTHOR_C_R3_RECHECK",
+    "authored_target_or_tests": false,
+    "integrator": false,
+    "independence_grade": "DISTINCT_NONAUTHOR_ASSERTION_PENDING_EXTERNAL_VERIFICATION",
+    "self_certified_protected_independence": false
+  },
+  "host_model": {
+    "harness": "OpenCode 2.0.22 on mainMac",
+    "requested": "Go DeepSeek Flash MAX",
+    "actual_served": "UNKNOWN",
+    "served_checkpoint_1017": "UNKNOWN",
+    "observed_first_turn_metadata": {
+      "providerID": "opencode-go",
+      "id": "deepseek-v4.1-flash",
+      "variant": "max"
+    },
+    "cost": "UNKNOWN",
+    "provider_model_account_host_switch": false,
+    "subagents_used": false,
+    "rate_limit_or_paid_fallback": false
+  },
+  "target": {
+    "integration_commit": "9fe1fd3842ee1c1c76da0188150467e4799079cc",
+    "branch": "agent/anvil-integrated-instrument-20261117-r1",
+    "base_frozen_review": "6c70839a6a1ed4dd4dd15cd709c92a379e589178",
+    "r2_review": "a81202f4c65b6580c3c0c5b1b7b99c917494014a",
+    "repaired_zip": {
+      "path": "R3_RECHECK/INPUT/REPAIRED_PACKAGE_R3.zip",
+      "bytes": 1858176,
+      "sha256": "a4f881e751286f9a881bd7cd433b03a0bfbcf937affc4ac612f72b36357d9ef3"
+    },
+    "original_zip": {
+      "sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+      "entries": 280
+    },
+    "candidate_manifest": {
+      "files": 1012,
+      "verified": 1012,
+      "missing": 0,
+      "bad": 0
+    },
+    "target_zip_matches_git_blob": true,
+    "target_worktree_head": "9fe1fd3842ee1c1c76da0188150467e4799079cc"
+  },
+  "source_identity": {
+    "status": "PRESERVED_IDENTITY_ONLY",
+    "protected_head": "31291d08179890852246c8742700e055168e9933",
+    "k3_cut": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+    "counts": {
+      "K1_CAP": 29,
+      "PYAT_PC": 26,
+      "P4R": 14,
+      "SEAM_B": 10,
+      "SEAM_S": 8,
+      "ANVIL_L": 8,
+      "BOUNDARY": 7,
+      "TERMINAL": 16,
+      "TOTAL": 118
+    },
+    "PYAT_PC_NOT_ADOPTED": 26,
+    "P4R_HELD": 14,
+    "B10_S08_L08_present": true,
+    "semantic_authentication": "AUTHORED_SOURCE_BOUNDED_FREEZE__EXTERNAL_C_SOURCE_OWNER_HOLD"
+  },
+  "local_execution": {
+    "literal_inventory": "PASS_SOURCE_IDENTITY_INVENTORY_S1_DOCUMENTARY",
+    "literal_29": "PASS_29_OF_29",
+    "literal_11_closure": "PASS_11_OF_11",
+    "FRAME": "PASS_LOCAL_COMMON_REQUIREMENTS_SOURCE_IDENTITY_NOT_NATIVE_AUTHENTICATED",
+    "DECISION": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C",
+    "C_INTEGRATED": "PASS_LOCAL_C_PACKET_ONLY_INDEPENDENCE_UNVERIFIED",
+    "builder_verify": "PASS_SIX_PROJECTIONS_BYTE_IDENTICAL",
+    "cold_literal_from_fresh_zip": "PASS"
+  },
+  "defect_status": {
+    "W1_typed_F4_F6": {
+      "status": "CLOSED_FOR_TYPED_PROSE_AND_IDENTITY_FATE",
+      "witness": "R3_RECHECK/WITNESS/r3_results.json",
+      "result": "False F4 machine assertion, pairwise-only prose, false identity design effect, absent witness all RED",
+      "residual": "disposition field promotion not bound (see R3_STATE_CLAIM)"
+    },
+    "W2_typed_T4_T6_T7": {
+      "status": "CLOSED_FOR_BOUNDARY_TYPED_PROSE_AND_C_PROSE",
+      "witness": "R3_RECHECK/WITNESS/r3_results.json",
+      "result": "Original T4/T6/T7 paraphrases, false typed T4, and changed C prose all RED",
+      "residual": "boundary claim_grade/grade/actual-reader flag promotion not bound (see R3_STATE_CLAIM)"
+    },
+    "W5_terminal_fates": {
+      "status": "CLOSED",
+      "witness": "R3_RECHECK/WITNESS/r3_results.json",
+      "result": "F5 relabel and disconnect+filler RED; all 16 baseline terminal fates are exact holds with required incident edges"
+    },
+    "W3_conditional_admission": {
+      "status": "CLOSED",
+      "witness": "R3_RECHECK/WITNESS/r3_results.json",
+      "result": "Forged external flag/conditional admit RED; local text-log and packet HOLD paths remain valid"
+    },
+    "R3_STATE_CLAIM": {
+      "status": "OPEN",
+      "witness": "R3_RECHECK/WITNESS/W_STATE_CLAIM/w_state_claim.json",
+      "result": "P4R-R01 EXACT_OWNER_HOLD→PRESENT_PRESERVED; REQ-FIELD-FORGE FUTURE_NONPRECLUDED→PRESENT_PRESERVED; C T4 SOURCE_STATIC_CONSERVED→ACTUAL_PROVED with self-asserted actual_first_reader_verified=true; DECISION and C PASS",
+      "reason": "disposition, requirement disposition, and boundary claim_grade/grade/actual-reader flag are not covered by narrative or typed freeze"
+    },
+    "D5_projections": "PRESERVED_SUBSTANTIALLY_CLOSED",
+    "D6_cold_handoff": "PRESERVED_CLOSED",
+    "D7_semantic_freeze": "PRESERVED_CLOSED_AT_MACHINE_FREEZE",
+    "F26": "PRESERVED_EXTERNAL_OWNER_HOLD"
+  },
+  "usability": {
+    "changed_proposal_narrative": "DECISION_PASS__LEGITIMATELY_PROPOSED_C_HOLD",
+    "changed_source_fate_narrative": "RED__VERSIONED_SOURCE_CLAIM_REVIEW_REQUIRED",
+    "assessment": "not a one-fixture dead end; source-fate changes require a new reviewed packet/version, which is honest held scope"
+  },
+  "minimum_corrective_action": [
+    "Bind identity disposition and status_assertion to the narrative/typed freeze or a signed state transition; reject EXACT_OWNER_HOLD/FUTURE_NONPRECLUDED→PRESENT_PRESERVED without exact new source/claim binding.",
+    "Bind requirement disposition to the same state contract; a FUTURE_NONPRECLUDED row cannot become PRESENT_PRESERVED by editing one enum.",
+    "Bind C boundary claim_grade, grade and actual_first_reader_verified to the boundary narrative/machine contract; ACTUAL_PROVED requires a real reader witness/ABI, not a self-asserted boolean.",
+    "Add a state/claim mutation test to the closure suite; the current 11 tests do not cover these fields."
+  ],
+  "authority": {
+    "protected_H1_CAS": "NOT_GRANTED",
+    "native_original35_science": "NOT_GRANTED",
+    "source_rights": "NOT_GRANTED",
+    "actor_consent_or_psychology": "NOT_GRANTED",
+    "physical_C11_architecture_selected": false,
+    "seven_mandatory_stages": false,
+    "mandatory_full_A_B": false,
+    "protected_merge": "NOT_MADE"
+  },
+  "limits": [
+    "Native SAV/DTA, dense 100k 600-1300 slots, process-tree <=6 GiB, cold 1/10/100 distinct operations, actual F1-F8/N9/N10W/SOROK first reader: NOT_RUN.",
+    "Source semantic truth, original35, actor consent, source rights, protected H1: external holds; not granted.",
+    "F26 exact caller/invalidation remains K3 K1-CAP-24 / P4R-R02 / PYAT-PC-R11-21 owner hold.",
+    "Source bank 297/299 and 278/279 caveats preserved; original ZIP byte authority.",
+    "Independence is a distinct-nonauthor assertion pending external verification."
+  ],
+  "verdict": "REVISE_EXACT_DEFECT",
+  "disposition": "R3_FOUR_TYPED_TERMINAL_CONDITIONAL_DEFECTS_CLOSED__STATE_CLAIM_PROMOTION_OPEN__REVISE_EXACT_DEFECT",
+  "readable_verdict": "R3_RECHECK/VERDICT.md",
+  "grok_delta": "R3_RECHECK/GROK_DELTA.md",
+  "raw_commands": "R3_RECHECK/RAW_COMMANDS.md",
+  "exact_sha256": "R3_RECHECK/EXACT_SHA256.json",
+  "stop": "Freeze/push R3_RECHECK only; HQ intake; no protected merge, worker launch, architecture choice, or native/science/actor/H1 grant."
+}

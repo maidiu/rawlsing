@@ -1,0 +1,379 @@
+{
+  "schema": "ANVIL_R6_POLICY_1",
+  "mission": "Select the smallest lawful, economically credible source-to-sealed-13-family-C11-to-reused-analytics architecture serving the next real first consumer, preserving future scientific information without inventing future science.",
+  "operating_cut": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+  "scope_enum": [
+    "C11_QUERY_DESIGN",
+    "F1_F4_CONSUMER_DESIGN",
+    "FF_FIRST_EFFECT_DESIGN"
+  ],
+  "decision_grades": [
+    "DESIGN_READY_SCOPED",
+    "CONDITIONAL_CANDIDATE",
+    "DECISION_BLOCKED_EXACT",
+    "INCUMBENT_REJECTED_SCOPED"
+  ],
+  "evidence_grades": [
+    "S0_DOCUMENTARY",
+    "S1_SOURCE_STATIC",
+    "S2_SOURCEFREE_EXECUTED",
+    "S2_NATIVE_EXECUTED"
+  ],
+  "physical_metrics": [
+    "build_wall_s",
+    "cold_open_wall_s",
+    "query_1_wall_s",
+    "query_10_wall_s",
+    "query_100_wall_s",
+    "process_tree_peak_rss_bytes",
+    "retained_bytes",
+    "scratch_peak_bytes",
+    "cross_world_100_wall_s"
+  ],
+  "physical_dimensions": {
+    "BUILD": [
+      "build_wall_s"
+    ],
+    "COLD": [
+      "cold_open_wall_s"
+    ],
+    "QUERY": [
+      "query_1_wall_s",
+      "query_10_wall_s",
+      "query_100_wall_s"
+    ],
+    "MEMORY": [
+      "process_tree_peak_rss_bytes"
+    ],
+    "STORAGE": [
+      "retained_bytes",
+      "scratch_peak_bytes"
+    ],
+    "WORLD_REUSE": [
+      "cross_world_100_wall_s"
+    ]
+  },
+  "workloads": {
+    "W-S": "100k sparse event density versus >=600 opportunities; no sparse-to-dense inference",
+    "W-D": "dense respondent answers/occurrences at comparable width and query scale",
+    "W-R": "routed, rostered, multiselect and source-semantic correctness",
+    "W-O": "1/10/100 distinct operations, shared and disjoint repeated predicates",
+    "W-J": ">=3 actual same-person joint, directional F2 and recursive/minority F3",
+    "W-U": "repeated qualified field/world demands and correct cache invalidation",
+    "W-X": "sealed cold reopen, revoked/changed CURRENT, fail/restore/crash/cold"
+  },
+  "minimal_design_wide_matrix": [
+    [
+      "W-S",
+      "BUILD",
+      "build_wall_s"
+    ],
+    [
+      "W-S",
+      "MEMORY",
+      "process_tree_peak_rss_bytes"
+    ],
+    [
+      "W-D",
+      "BUILD",
+      "build_wall_s"
+    ],
+    [
+      "W-D",
+      "MEMORY",
+      "process_tree_peak_rss_bytes"
+    ],
+    [
+      "W-R",
+      "COLD",
+      "cold_open_wall_s"
+    ],
+    [
+      "W-O",
+      "QUERY",
+      "query_10_wall_s"
+    ],
+    [
+      "W-O",
+      "QUERY",
+      "query_100_wall_s"
+    ],
+    [
+      "W-J",
+      "QUERY",
+      "query_100_wall_s"
+    ],
+    [
+      "W-U",
+      "WORLD_REUSE",
+      "cross_world_100_wall_s"
+    ],
+    [
+      "W-X",
+      "COLD",
+      "cold_open_wall_s"
+    ],
+    [
+      "W-X",
+      "STORAGE",
+      "retained_bytes"
+    ]
+  ],
+  "hard_vetoes": [
+    "NO_ORIGINAL_SOURCE_OR_RIGHTS_PROMOTION",
+    "NO_SOURCE_SEMANTIC_OR_OCCURRED_EVENT_LOSS",
+    "TRUE_SAME_RESPONDENT_JOINT_AND_DENOMINATOR",
+    "NO_SURVEY_CORRELATION_TO_STRUCTURAL_CAUSE",
+    "NO_MODEL_OR_FICTION_TO_SOURCE",
+    "SIX_GIB_PROCESS_TREE_RSS",
+    "AUTHENTICATED_COLD_OPEN_NEGATIVE_RESTORE",
+    "NO_UNAUTHORIZED_ACTOR_WORLD_HISTORY"
+  ],
+  "rss_ceiling_bytes": 6442450944,
+  "source_claim_types": [
+    "INSTRUMENT_METADATA",
+    "RESPONDENT_ORIGINAL_VALUE",
+    "QUALIFIED_DESCRIPTIVE",
+    "EXTERNAL_STRUCTURAL",
+    "MODELED_POSSIBILITY",
+    "FICTIONAL_FACT",
+    "INTERPRETIVE_HYPOTHESIS",
+    "NO_SUBSTANTIVE_CLAIM"
+  ],
+  "source_claim_facets": {
+    "asked": [
+      "YES",
+      "NO",
+      "NOT_ELIGIBLE",
+      "UNKNOWN_HELD"
+    ],
+    "released": [
+      "YES",
+      "NO",
+      "NOT_APPLICABLE",
+      "UNKNOWN_HELD"
+    ],
+    "observation": [
+      "VALUE",
+      "REFUSED",
+      "MISSING",
+      "NOT_OBSERVED",
+      "UNKNOWN_HELD"
+    ],
+    "eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE",
+      "CONDITIONAL",
+      "UNKNOWN_HELD"
+    ],
+    "unit": [
+      "PERSON",
+      "HOUSEHOLD",
+      "INSTITUTION",
+      "GROUP",
+      "OTHER_DOCUMENTED"
+    ],
+    "attribution": [
+      "SELF",
+      "INTERVIEWER",
+      "ADMINISTRATIVE",
+      "NOT_APPLICABLE",
+      "UNKNOWN_HELD"
+    ],
+    "source_status": [
+      "DOCUMENTED_RESPONDENT_RESPONSE",
+      "DOCUMENTED_DESIGN",
+      "OBSERVED_INSTRUMENT_CONSEQUENCE",
+      "SCIENTIFIC_INTERPRETATION",
+      "MODEL_OR_FICTION",
+      "UNKNOWN_HELD"
+    ],
+    "translation": [
+      "SAME_INSTRUMENT",
+      "COMPARABLE_ISSUED",
+      "UNRECONCILED",
+      "NOT_APPLICABLE",
+      "UNKNOWN_HELD"
+    ]
+  },
+  "domains": [
+    "OBSERVED",
+    "DESCRIPTIVE_MODELED",
+    "EXTERNAL_OBSERVED",
+    "STRUCTURAL_QUALIFIED",
+    "FICTIONAL_WORLD",
+    "ACTOR_STATE",
+    "HISTORY_EVENT"
+  ],
+  "transitions": [
+    [
+      "OBSERVED",
+      "OBSERVED",
+      "CANONICAL_PRESERVE",
+      "SOURCE_CERTIFIED"
+    ],
+    [
+      "OBSERVED",
+      "DESCRIPTIVE_MODELED",
+      "DESCRIPTIVE_INFERENCE",
+      "SCIENCE_GRADED"
+    ],
+    [
+      "DESCRIPTIVE_MODELED",
+      "DESCRIPTIVE_MODELED",
+      "ANALYTIC_COMPOSITION",
+      "SCIENCE_GRADED"
+    ],
+    [
+      "EXTERNAL_OBSERVED",
+      "STRUCTURAL_QUALIFIED",
+      "INDEPENDENT_STRUCTURAL_ISSUANCE",
+      "EXTERNAL_STRUCTURAL_ISSUER"
+    ],
+    [
+      "STRUCTURAL_QUALIFIED",
+      "STRUCTURAL_QUALIFIED",
+      "STRUCTURAL_COMPOSITION",
+      "EXTERNAL_STRUCTURAL_ISSUER"
+    ],
+    [
+      "DESCRIPTIVE_MODELED",
+      "FICTIONAL_WORLD",
+      "QUALIFIED_POSSIBILITY",
+      "WORLD_PARTICULARIZER"
+    ],
+    [
+      "STRUCTURAL_QUALIFIED",
+      "FICTIONAL_WORLD",
+      "WORLD_OPPORTUNITY",
+      "WORLD_PARTICULARIZER"
+    ],
+    [
+      "FICTIONAL_WORLD",
+      "FICTIONAL_WORLD",
+      "WORLD_ADMIT",
+      "WORLD_OWNER"
+    ],
+    [
+      "FICTIONAL_WORLD",
+      "ACTOR_STATE",
+      "ACTOR_ACCESS_OR_LEARNING",
+      "ACTOR_OWNER"
+    ],
+    [
+      "ACTOR_STATE",
+      "HISTORY_EVENT",
+      "PERFORMED_ACT",
+      "ACTOR_OWNER"
+    ],
+    [
+      "FICTIONAL_WORLD",
+      "HISTORY_EVENT",
+      "EXOGENOUS_WORLD_EVENT",
+      "WORLD_OWNER"
+    ],
+    [
+      "HISTORY_EVENT",
+      "FICTIONAL_WORLD",
+      "COMMITTED_WORLD_EFFECT",
+      "WORLD_OWNER"
+    ],
+    [
+      "HISTORY_EVENT",
+      "ACTOR_STATE",
+      "PERCEIVED_EVENT_CHANGE",
+      "ACTOR_OWNER"
+    ]
+  ],
+  "required_named_routes": {
+    "OBSERVED_TO_DESCRIPTIVE": [
+      "OBSERVED",
+      "DESCRIPTIVE_MODELED"
+    ],
+    "EXTERNAL_TO_STRUCTURAL_WORLD": [
+      "EXTERNAL_OBSERVED",
+      "FICTIONAL_WORLD"
+    ],
+    "WORLD_TO_ACTOR": [
+      "FICTIONAL_WORLD",
+      "ACTOR_STATE"
+    ],
+    "ACTOR_TO_HISTORY": [
+      "ACTOR_STATE",
+      "HISTORY_EVENT"
+    ],
+    "EXOGENOUS_TO_HISTORY": [
+      "FICTIONAL_WORLD",
+      "HISTORY_EVENT"
+    ]
+  },
+  "stage_verdicts": {
+    "H0": [
+      "H0_FROZEN",
+      "H0_EXACT_HOLD"
+    ],
+    "A0": [
+      "A0_FROZEN",
+      "A0_HOLD_EXACT"
+    ],
+    "B0": [
+      "B0_FROZEN",
+      "B0_HOLD_EXACT"
+    ],
+    "A1": [
+      "A1_FROZEN",
+      "A1_HOLD_EXACT"
+    ],
+    "B1": [
+      "B1_FROZEN",
+      "B1_HOLD_EXACT"
+    ],
+    "P15": [
+      "P15_DECISIVE_SCOPED",
+      "P15_CONDITIONAL",
+      "P15_EXACT_HOLD"
+    ],
+    "P2": [
+      "P2_PROPOSED_READY",
+      "P2_PROPOSED_CONDITIONAL",
+      "P2_EXACT_HOLD"
+    ],
+    "C": [
+      "C_ACCEPT_SCOPED",
+      "C_ACCEPT_DOCUMENTARY_HOLD",
+      "C_REVISE_EXACT_DEFECTS",
+      "C_DECISION_BLOCKED_EXACT"
+    ],
+    "H1": [
+      "H1_RECEIVED_SCOPED",
+      "H1_RECEIVED_CONDITIONAL",
+      "HQ_CURRENTNESS_HOLD",
+      "H1_REJECT_EXACT_DEFECT"
+    ]
+  },
+  "builder_grades": [
+    "SPECIFICATION_CONSTRUCTION_READY",
+    "EXECUTED_FIRST_READER_PROOF",
+    "EXACT_BUILDER_HOLD"
+  ],
+  "author_pending_builder_grade": "PENDING_INDEPENDENT_C",
+  "progress_grades": [
+    "VERIFIED_NEW_FIRST_CONSUMER_EFFECT",
+    "VERIFIED_NEW_QUALIFIED_INTERFACE",
+    "VERIFIED_ELIMINATED_ALTERNATIVE",
+    "VERIFIED_NARROWED_BLOCKER",
+    "NO_NEW_PRODUCT_ADVANCE"
+  ],
+  "scope_statuses": [
+    "CURRENT_BUILT",
+    "SOURCE_STATIC",
+    "PLANNED_OWNER_HELD"
+  ],
+  "author_delta_grades": [
+    "PROPOSED_FIRST_CONSUMER_EFFECT",
+    "PROPOSED_RESOLVED_INTERFACE",
+    "PROPOSED_ELIMINATED_ALTERNATIVE",
+    "PROPOSED_NARROWED_BLOCKER",
+    "NO_NEW_PRODUCT_ADVANCE"
+  ]
+}
