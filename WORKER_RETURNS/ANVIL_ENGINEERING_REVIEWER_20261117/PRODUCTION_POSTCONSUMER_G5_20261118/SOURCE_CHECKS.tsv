@@ -1,0 +1,34 @@
+check	target	value	status
+author_evidence_commit	IMPLEMENTER	e0445a00f2fbb9643880aeb83452aa956f8134fe	frozen
+code_test_commit	IMPLEMENTER	01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd	frozen
+baseline	IMPLEMENTER	6b5402658a342a32180e281c62f4762729e37220	base
+changed_file	rawlsing_next/pre553_source_postconsumer_receipts.py	4bf3d8e38227df01c20308fd421b552f3cc0badc -> 0a2e7b899ebd392761d38b8ceb175f0bf81c6378	exact
+new_test	rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py	d555f811353532f6df4b1eed3ea3476e4bb87719	exact
+diff_scope	production	only import PreparedSavedC11Admission and exact type tuple; all other guards unchanged	PASS
+guard	admission	type(admission) in (SavedC11Admission, PreparedSavedC11Admission) exact	PASS
+isinstance	admission	no isinstance/subclass/baseproxy in guard	PASS
+negative	arbitrary object / base subclass / prepared subclass	typed SourceReceiptJoinError EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED	PASS
+negative	foreign runner/repository	BATCH_RUNNER_NOT_BOUND_TO_SAVED_ADMISSION	PASS
+negative	manifest drift	Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT	PASS
+negative	I02/logical root drift	Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT	PASS
+negative	revoked CURRENT	DirectEstateError current source/operation authority refused	PASS
+negative	unissued/fabricated query	UNISSUED_SAVED_QUERY	PASS
+negative	forged completed receipt	RECEIPT_NATIVE_FIRST_CONSUMER_OUTPUT_DRIFT	PASS
+focused	tests	8 passed, 0 failed, exit 0, 8.41 s (resource rerun 8.82 s)	PASS
+affected	tests	45 passed, 0 failed, exit 0, 29.05 s	PASS
+changed_restore	existing s1e test	1 passed, 23 deselected, exit 0, 4.99 s	PASS
+witness	actual sourcefree join	13 COMPLETED base, 13 COMPLETED prepared, one prepared index build	PASS
+witness	operation fates	22 rows; ELIGIBLE 8, HELD 14; 6 positive; 2 pending eligible	PASS
+witness	parity	rows_equal true, audit_equal true, result_hash_equal true, batch_provenance_equal true	PASS
+issuer_v1	compiler	0 QUERY / 1 DISCOVERY genuine v1 preserved	PASS
+issuer_v2	compiler/TEST_ONLY	12 QUERY / 1 DISCOVERY; TEST_ONLY_SOURCEFREE, NOT original science	PASS
+source	changed input/restore	source identity changed then exact restore and guards	PASS
+current	source/current authority	revocation refusal retained	PASS
+manifest_I02_root	estate	manifest and independent I02/root checks retained	PASS
+runner	repository identity	runner.repository is exact admission retained	PASS
+result	full row/audit/native output/replay hash	exact base-vs-prepared equality, not counts-only	PASS
+resource	witness	3.65 s wall, 135,921,664 B max RSS, no abort	PASS
+resource	focused	8.82 s wall, 154,083,328 B max RSS	PASS
+fixture	independent vs author	per-run SAV source identity differs; within-run parity exact	LIMIT
+author_source	sourcefree	no original35/source/science/current grant	no claim
+integration	product	UNMERGED; no protected merge	STOP

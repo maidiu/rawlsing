@@ -1,0 +1,13 @@
+--- /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/evidence/postconsumer_witness.py	2026-11-18 00:58:09
++++ /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil-postconsumer-g5.Elrf7b/audit/evidence/postconsumer_witness_independent.py	2026-11-18 01:08:07
+@@ -28,9 +28,7 @@
+ 
+ def main() -> int:
+     evidence = Path(
+-        "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/"
+-        "IMPLEMENTER/WORKER_RETURNS/"
+-        "ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/evidence"
++        "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil-postconsumer-g5.Elrf7b/audit/evidence"
+     )
+     parent = evidence.parent / "tmp"
+     parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,165 @@
+{
+  "packet_id": "ANVIL-PRODUCTION-POSTCONSUMER-G5-20261118",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "distinct_nonauthor": true,
+  "author_worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+  "author_branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "author_evidence_commit": "e0445a00f2fbb9643880aeb83452aa956f8134fe",
+  "code_test_sha": "01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd",
+  "baseline_sha": "6b5402658a342a32180e281c62f4762729e37220",
+  "review_branch": "agent/anvil-engineering-cut1-g5-20261117-r1",
+  "prior_review_sha": "4d41a11a1b4da4ca0b543791e679b2de6377a8b1",
+  "evidence_grade": "SOURCEFREE_TEST_ONLY_PRODUCTION_EDIT_SCOPED",
+  "scope": "exact two-file production/test delta for PreparedSavedC11Admission through join_saved_source_operation_fates; one independent sourcefree actual witness; no broad rereview",
+  "authority": {
+    "source": "USER DIRECT PROJECT AUTHORITY GO 2026-11-18",
+    "scope": "both exact production edits and independent review; no historical owner approval needed for these edits",
+    "no_merge_grant": true,
+    "no_scientific_grant": true,
+    "no_original35_source_or_100k_grant": true
+  },
+  "exact_change": {
+    "file": "rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "baseline_blob": "4bf3d8e38227df01c20308fd421b552f3cc0badc",
+    "current_blob": "0a2e7b899ebd392761d38b8ceb175f0bf81c6378",
+    "import": "from rawlsing_next.pre553_prepared_saved_i03 import PreparedSavedC11Admission",
+    "guard": "type(admission) not in (SavedC11Admission, PreparedSavedC11Admission)",
+    "guard_is_exact_type": true,
+    "isinstance_used": false,
+    "subclass_accepted": false,
+    "other_guards_changed": false,
+    "runner_repository_identity_changed": false,
+    "producer_types_changed": false,
+    "v1_zero_query_one_discovery_guard_changed": false
+  },
+  "new_test": {
+    "file": "rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py",
+    "blob": "d555f811353532f6df4b1eed3ea3476e4bb87719",
+    "node_count": 8,
+    "meaningful_assertions": true,
+    "covers": [
+      "base/prepared 22-row equality and one prepared build",
+      "prepared audit equality and exact result hash",
+      "native output refs and batch provenance equality",
+      "arbitrary object, exact base subclass and exact prepared subclass refusal",
+      "foreign runner/repository refusal",
+      "estate manifest drift and I02 logical root drift refusal",
+      "CURRENT revocation after a valid prepared batch",
+      "unissued/fabricated saved query refusal",
+      "forged completed receipt/native output refusal"
+    ]
+  },
+  "gates": {
+    "G1_scope_and_identity": {
+      "state": "PASS",
+      "receipt": "Exactly the authorized changed production file and new test differ from 6b540; source/test blobs 0a2e7b899 and d555f811 match frozen 01dc; no other production path changed."
+    },
+    "G2_exact_guard_and_retained_guards": {
+      "state": "PASS",
+      "receipt": "Exact type tuple only; no isinstance/subclass/baseproxy. Source/current/authority/manifest/I02/U/root/replay/runner.repository/issuer conditions remain in the unchanged join body; new focused and existing affected tests exercise them."
+    },
+    "G3_independent_execution": {
+      "state": "PASS",
+      "receipt": "Own snapshot of exact 01dc, PYTHONPATH exact snapshot, no REVIEWER product. New focused 8 passed exit 0 in 8.82 s (max RSS 154,083,328 B); affected 45 passed exit 0 in 29.05 s; changed-input restore 1 passed in 4.99 s."
+    },
+    "G4_actual_first_consumer_witness": {
+      "state": "PASS",
+      "receipt": "Independent execution of the frozen author witness logic (own output path only) produced 13 COMPLETED base and 13 COMPLETED prepared receipts, one prepared index build, 22 operation fates 8 ELIGIBLE / 14 HELD, 6 positive native-linked, 2 pending eligible, 13 native units rechecked, 8 discovery candidates exactly joined, 0 issue grants. Rows/audit/native output/provenance/result hash exact base-vs-prepared. v1 0 QUERY / 1 DISCOVERY preserved; v2 12 QUERY / 1 DISCOVERY under TEST_ONLY_SOURCEFREE, not original science."
+    },
+    "G5_resources_and_limits": {
+      "state": "PASS_SCOPED",
+      "receipt": "Witness 3.65 s wall, 135,921,664 B max RSS, exit 0, no abort; focused 8.82 s, 154,083,328 B max RSS; affected 29.05 s. Under 120 s/2 GiB/2 GiB child guard; no 100k/6 GiB, matrix, original35/source, protected merge or science claim. Sourcefree SAV fixture identity is per-run, so author source/join hashes are not cross-run frozen identities; parity is exact within this run."
+    }
+  },
+  "fixture_identity": {
+    "status": "PER_RUN_SOURCEFREE_SAV_WITHIN_RUN_EXACT",
+    "independent_source_sha256": "0373cf50e1141945d2a9d4e8c32c78a2a5ab021596dee22799238c3a27728909",
+    "independent_estate_manifest_sha256": "231d7f018c49d74d43665e24666d4f030c0e446304fa8e4c216a4cece33a71bb",
+    "independent_v2_original_u_root": "df0ac7161f5e65ee7a60025a500fb4488db67bf2f1abdb1898bdb647272ebd87",
+    "independent_v2_envelope_sha256": "2061d14dff9a0070955da08f0def3fe7567b742e68f8ce5801b8d48398c6d979",
+    "independent_base_and_prepared_join_hash": "f954ef27ff4f583bd117446824436d1dcbf02a275d3e0546e23da7e009c807d6",
+    "author_source_sha256": "8d1f2ad10f4abfb949c10e590b0440a065f57c9ac146d8603de74a8714dc80dd",
+    "author_join_hash": "9ff0e289b6fe4e3a428291c85e26398dec21d6abc7c61af91412e1bb09df0ec7",
+    "note": "pyreadstat.write_sav writes a timestamped source file; source and dependent roots/hashes are per-run. The author-run and independent-run fixture hashes differ legitimately. Exact base/prepared row, audit, native output, provenance and result-hash parity is established within the independent run, not by counts alone. This is a fixture reproducibility limit, not a production defect."
+  },
+  "actual_results": {
+    "base_admission": "SavedC11Admission",
+    "prepared_admission": "PreparedSavedC11Admission",
+    "base_batch_units": 13,
+    "prepared_batch_units": 13,
+    "base_batch_states": ["COMPLETED"],
+    "prepared_batch_states": ["COMPLETED"],
+    "prepared_index_builds": 1,
+    "operation_count": 22,
+    "fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+    "positive_native_linked_operations": 6,
+    "pending_eligible_operations": 2,
+    "native_completed_units_rechecked": 13,
+    "native_discovery_candidates_exactly_joined": 8,
+    "issue_grants_created": 0,
+    "v1_queries": 0,
+    "v1_discoveries": 1,
+    "v2_queries": 12,
+    "v2_discoveries": 1,
+    "issued_v2_scope": "TEST_ONLY_SOURCEFREE",
+    "native_original_source_rights": "NOT_GRANTED",
+    "parity": {
+      "rows": true,
+      "rows_equal": true,
+      "audit_equal": true,
+      "result_hash_equal": true,
+      "batch_provenance_equal": true,
+      "native_output_refs_equal": true
+    }
+  },
+  "test_execution": {
+    "new_focused": {"count": 8, "passed": 8, "failed": 0, "exit": 0, "wall_seconds": 8.82, "maxrss_bytes": 154083328, "evidence": "evidence/new8_focused.txt"},
+    "affected": {"count": 45, "passed": 45, "failed": 0, "exit": 0, "wall_seconds": 29.05, "evidence": "evidence/affected45.txt"},
+    "changed_restore": {"count": 1, "deselected": 23, "passed": 1, "exit": 0, "wall_seconds": 4.99, "evidence": "evidence/changed_restore.txt"},
+    "witness": {"exit": 0, "wall_seconds": 3.65, "maxrss_bytes": 135921664, "evidence": "evidence/postconsumer_witness_independent.out"}
+  },
+  "source_pins": {
+    "product_candidate_cut1": "347baec696c8b395d750ac3b9e74417a6490c223",
+    "code_test_cut1": "a13d69cf5636de5541660cd60115f8b61d66261b",
+    "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+    "prior_r2_measurement_review": "244468493793ee2b49e129460b371f4c7573c5f0",
+    "prior_r5_locality_review": "4d41a11a1b4da4ca0b543791e679b2de6377a8b1",
+    "changed_source_sha256": "7c47e1a064c26c2a69335c99fa4e5811ecd97c34ff89f40ac8097d9c1f84499a",
+    "new_test_sha256": "3b44f7f75234bc12bb4c19e5253f001e985992b9d2ae9ff97dc1957130cf42a7"
+  },
+  "retained_limits": [
+    "Sourcefree TEST_ONLY engineering only; no original35, native science, production CURRENT, issuer, writer, schema or protected merge claim.",
+    "One independent actual sourcefree witness, not a benchmark matrix or full-scale performance claim.",
+    "45 targeted affected nodes, not the full repository suite.",
+    "Independent native revalidation remains per joined operation; one-build applies only to the initial prepared Batch.",
+    "Author and independent sourcefree SAV fixtures are timestamp/root-specific; hashes are not cross-run frozen identities.",
+    "No locality author worktree/file touched; separate locality integration remains separately frozen/received.",
+    "No merge, rebase or product adoption beyond the exact user-authorized delta."
+  ],
+  "owner_handoff": {
+    "new_owner_approval_required_for_exact_edits": false,
+    "reason": "USER DIRECT GO 2026-11-18 authorized both exact production edits and independent review; no historical owner approval needed for those edits.",
+    "merge_or_broader_adoption": "NOT_GRANTED; requires separate freeze/owner process.",
+    "exact_product_delta": "rawlsing_next/pre553_source_postconsumer_receipts.py: import PreparedSavedC11Admission and accept exact type(admission) in (SavedC11Admission, PreparedSavedC11Admission) in join_saved_source_operation_fates; plus the frozen new test.",
+    "handoff_to_original_author": "No defect correction requested. If downstream merge is desired, preserve exact two-file delta and rerun the independent G5."
+  },
+  "disposition": "ACCEPT_SCOPED_PRODUCTION_POSTCONSUMER_PREPARED_ADMISSION",
+  "integration": "UNMERGED",
+  "scientific_grade": "SOURCEFREE_TEST_ONLY_NO_ORIGINAL35_ACCEPTANCE",
+  "authority_grade": "NO_MERGE_NO_SCIENCE_NO_PROTECTED_GRANT",
+  "self_acceptance": false,
+  "author_status": "AWAITING_DISTINCT_NONAUTHOR_REVIEW",
+  "stop_state": "PRODUCTION_POSTCONSUMER_PREPARED_ADMISSION_ACCEPTED_TEST_ONLY__NO_MERGE",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/REVIEW_VERDICT.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/RETURN.md",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/FIXTURE_IDENTITY.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/SOURCE_MANIFEST.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/SOURCE_CHECKS.tsv",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/new8_focused.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/affected45.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/changed_restore.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/postconsumer_witness_independent.json"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "author_reported_fixture": {
+    "base_join_hash": "9ff0e289b6fe4e3a428291c85e26398dec21d6abc7c61af91412e1bb09df0ec7",
+    "estate_manifest_sha256": "4de8bbf7e93b17d4f83330cb58a16e1740c5014d14048f294b9bedf0a253832e",
+    "parity": {
+      "audit_equal": true,
+      "batch_provenance_equal": true,
+      "result_hash_equal": true,
+      "rows": true,
+      "rows_equal": true
+    },
+    "prepared_join_hash": "9ff0e289b6fe4e3a428291c85e26398dec21d6abc7c61af91412e1bb09df0ec7",
+    "roots": {
+      "logical": "705cd15d1bffd4fd1096b64a14a6b6959dba7a9aa77fe961f8d025c97c57ee56",
+      "physical": "ff5b7e38bccd9cd29d0b6fde23f71cc348c87d7946e90d5ed8aa3366d87ed696",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|b16036a162cb9e73019971bc180bc486243e374a5b6108c50c897a7ba98dce4b",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:f5edbe65bb683cf79e571947cd612da193bd7912f73b9698458cadb68d8419de|f5edbe65bb683cf79e571947cd612da193bd7912f73b9698458cadb68d8419de",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|8d1f2ad10f4abfb949c10e590b0440a065f57c9ac146d8603de74a8714dc80dd",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "source_sha256": "8d1f2ad10f4abfb949c10e590b0440a065f57c9ac146d8603de74a8714dc80dd",
+    "v2_envelope_sha256": "a7b986a8ff9a2366d9270a492a2eb2cc9ddb1439698ac87b5a41a7293b6128fd",
+    "v2_original_u_root": "ac9d5a0bd6c8620a192ec52c6b3379c1eeeac858c49cd415473bc81f00428ec1"
+  },
+  "fixture_identity_note": "Independent witness creates a fresh sourcefree SAV fixture; pyreadstat.write_sav can embed a timestamp, so source/root/hash values are per-run and are not expected to equal the author-run values. The exact base-vs-prepared rows/audit/native-output/result-hash parity is within this one independent run. Author source hash and join hash are therefore not frozen cross-run identities; this is a fixture reproducibility limit, not a production code defect.",
+  "independent_witness": {
+    "base_batch_units": 13,
+    "base_join_hash": "f954ef27ff4f583bd117446824436d1dcbf02a275d3e0546e23da7e009c807d6",
+    "estate_manifest_sha256": "231d7f018c49d74d43665e24666d4f030c0e446304fa8e4c216a4cece33a71bb",
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "ReplayManifest": 1,
+      "RespondentEvent": 5,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 5,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "issue_grants_created": 0,
+    "native_completed_units_rechecked": 13,
+    "native_discovery_candidates_exactly_joined": 8,
+    "operation_fates": {
+      "ELIGIBLE": 8,
+      "HELD": 14
+    },
+    "parity": {
+      "audit_equal": true,
+      "batch_provenance_equal": true,
+      "result_hash_equal": true,
+      "rows": true,
+      "rows_equal": true
+    },
+    "pending_eligible_operations": 2,
+    "positive_native_linked_operations": 6,
+    "prepared_batch_units": 13,
+    "prepared_index_builds": 1,
+    "prepared_join_hash": "f954ef27ff4f583bd117446824436d1dcbf02a275d3e0546e23da7e009c807d6",
+    "roots": {
+      "logical": "0af6de01e65fe8a70b63a4d0c9deff9acfdebfbec4c6cec1e34ee8036226d484",
+      "physical": "c11ac5d6689b5c058e289f38d5ee5b0b483bea317aba3477c086d83ff6b4b869",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|932220439dd3019174f9eb7e4f554fca871519f6c4200aa5ba6ef865adfcc2be",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:483825d01643ea07bc0a7818afa076cbbd120a32d8f982eb3c64f5826850dd72|483825d01643ea07bc0a7818afa076cbbd120a32d8f982eb3c64f5826850dd72",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|0373cf50e1141945d2a9d4e8c32c78a2a5ab021596dee22799238c3a27728909",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+    "source_sha256": "0373cf50e1141945d2a9d4e8c32c78a2a5ab021596dee22799238c3a27728909",
+    "stats": {
+      "cell_passes": 1,
+      "cleanup_complete": true,
+      "coordinate_count": 5,
+      "decode_calls": 1,
+      "event_count": 5,
+      "full_c11_builds": 0,
+      "key_witness_passes": 0,
+      "snapshot_acquisitions": 1,
+      "source_columns": 2,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_prehash_passes": 0,
+      "source_reads": 1,
+      "source_rows": 5,
+      "spool_bytes": 31090,
+      "spool_files": 3,
+      "weight_count": 0
+    },
+    "v1_discoveries": 1,
+    "v1_queries": 0,
+    "v2_discoveries": 1,
+    "v2_envelope_sha256": "2061d14dff9a0070955da08f0def3fe7567b742e68f8ce5801b8d48398c6d979",
+    "v2_original_u_root": "df0ac7161f5e65ee7a60025a500fb4488db67bf2f1abdb1898bdb647272ebd87",
+    "v2_queries": 12
+  },
+  "schema": "ANVIL_PRODUCTION_POSTCONSUMER_FIXTURE_IDENTITY@1",
+  "sourcefree": true
+}

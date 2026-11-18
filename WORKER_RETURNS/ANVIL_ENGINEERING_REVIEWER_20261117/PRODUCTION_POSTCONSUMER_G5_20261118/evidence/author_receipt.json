@@ -1,0 +1,206 @@
+{
+  "schema": "ANVIL_PRODUCTION_POSTCONSUMER_IMPLEMENTATION@1",
+  "task": "ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118",
+  "status": "AWAITING_DISTINCT_NONAUTHOR_REVIEW",
+  "authority": {
+    "source": "USER DIRECT PROJECT AUTHORITY GO 2026-11-18",
+    "scope": "two exact production edits; separate historical code-owner approval superseded only for these edits",
+    "owner_request": "https://github.com/maidiu/rawlsing/issues/997#issuecomment-6968569543",
+    "owner_request_saved": "evidence/owner_request_997_comment_6968569543.json",
+    "self_acceptance": false
+  },
+  "branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+  "start_head": "6b5402658a342a32180e281c62f4762729e37220",
+  "code_test_sha": "01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd",
+  "product_edits": [
+    "rawlsing_next/pre553_source_postconsumer_receipts.py"
+  ],
+  "new_tests": [
+    "rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py"
+  ],
+  "own_return": "WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/",
+  "exact_change": {
+    "file": "rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "function": "join_saved_source_operation_fates",
+    "import": "from rawlsing_next.pre553_prepared_saved_i03 import PreparedSavedC11Admission",
+    "baseline_blob": "4bf3d8e38227df01c20308fd421b552f3cc0badc",
+    "current_blob": "0a2e7b899ebd392761d38b8ceb175f0bf81c6378",
+    "test_blob": "d555f811353532f6df4b1eed3ea3476e4bb87719",
+    "baseline_guard_line": 272,
+    "current_guard_line": 273,
+    "guard": "type(admission) not in (SavedC11Admission, PreparedSavedC11Admission)",
+    "generic_isinstance": false,
+    "subclass_acceptance": false,
+    "other_guard_relaxation": false,
+    "producer_runner_types_unchanged": true,
+    "runner_repository_identity_unchanged": true,
+    "v1_zero_query_one_discovery_guard_unchanged": true,
+    "optional_v2_checks_unchanged": true,
+    "revalidation_acceleration": false
+  },
+  "red_green": {
+    "red": {
+      "command": "pytest -q new focused suite on baseline guard",
+      "result": "7 failed, 1 passed",
+      "exit": 1,
+      "evidence": "evidence/red_focused.txt",
+      "cause": "prepared admission rejected at EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED"
+    },
+    "green": {
+      "command": "same focused suite after exact guard",
+      "result": "8 passed",
+      "exit": 0,
+      "time_seconds": 7.86,
+      "evidence": "evidence/green_focused.txt"
+    },
+    "intermediate": {
+      "file": "evidence/green_focused_run1.txt",
+      "cause": "test-code typo indexing a UnitExecutionReceipt as a mapping",
+      "product_effect": "none; corrected before final green"
+    }
+  },
+  "real_sourcefree_parity": {
+    "witness": "evidence/postconsumer_witness.py",
+    "proof": "evidence/postconsumer_witness.json",
+    "source_sha256": "8d1f2ad10f4abfb949c10e590b0440a065f57c9ac146d8603de74a8714dc80dd",
+    "estate_manifest_sha256": "4de8bbf7e93b17d4f83330cb58a16e1740c5014d14048f294b9bedf0a253832e",
+    "family_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 5,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RoutingEligibilityFact": 5,
+      "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "ReplayManifest": 1,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "source_stats": {
+      "source_reads": 1,
+      "snapshot_acquisitions": 1,
+      "decode_calls": 1,
+      "full_c11_builds": 0,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_rows": 5,
+      "source_columns": 2,
+      "event_count": 5,
+      "coordinate_count": 5,
+      "spool_bytes": 31090,
+      "spool_files": 3,
+      "cleanup_complete": true
+    },
+    "compiler": {
+      "v1_queries": 0,
+      "v1_discoveries": 1,
+      "v2_queries": 12,
+      "v2_discoveries": 1,
+      "v2_original_u_root": "ac9d5a0bd6c8620a192ec52c6b3379c1eeeac858c49cd415473bc81f00428ec1",
+      "v2_envelope_sha256": "a7b986a8ff9a2366d9270a492a2eb2cc9ddb1439698ac87b5a41a7293b6128fd"
+    },
+    "base": {
+      "admission_class": "SavedC11Admission",
+      "batch_units": 13,
+      "batch_states": ["COMPLETED"],
+      "join_hash": "9ff0e289b6fe4e3a428291c85e26398dec21d6abc7c61af91412e1bb09df0ec7",
+      "operation_count": 22,
+      "fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+      "positive_native_linked_operations": 6,
+      "pending_eligible_operations": 2,
+      "native_completed_units_rechecked": 13,
+      "native_discovery_candidates_exactly_joined": 8,
+      "issue_grants_created": 0
+    },
+    "prepared": {
+      "admission_class": "PreparedSavedC11Admission",
+      "batch_units": 13,
+      "batch_states": ["COMPLETED"],
+      "prepared_index_builds": 1,
+      "join_hash": "9ff0e289b6fe4e3a428291c85e26398dec21d6abc7c61af91412e1bb09df0ec7",
+      "operation_count": 22,
+      "fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+      "positive_native_linked_operations": 6,
+      "pending_eligible_operations": 2,
+      "native_completed_units_rechecked": 13,
+      "native_discovery_candidates_exactly_joined": 8,
+      "issue_grants_created": 0
+    },
+    "parity": {
+      "rows": true,
+      "rows_equal": true,
+      "audit_equal": true,
+      "result_hash_equal": true,
+      "batch_provenance_equal": true
+    }
+  },
+  "focused_tests": {
+    "count": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "negative_cases": [
+      "arbitrary admission",
+      "SavedC11Admission subclass",
+      "PreparedSavedC11Admission subclass",
+      "foreign runner/repository",
+      "manifest drift",
+      "external I02 root drift",
+      "revoked CURRENT",
+      "unissued fabricated query",
+      "forged completed receipt/native output"
+    ],
+    "positive_case": "base/prepared 22-operation fate and ref/replay parity plus one prepared build"
+  },
+  "affected_suite": {
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider --basetemp=WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/affected rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py",
+    "count": 45,
+    "passed": 45,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "time_seconds": 32.03,
+    "exit": 0,
+    "evidence": "evidence/affected_suite.txt",
+    "node_inventory": "evidence/node_inventory.txt"
+  },
+  "changed_input_restore": {
+    "test": "test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join",
+    "result": "1 passed, 23 deselected",
+    "exit": 0,
+    "time_seconds": 3.97,
+    "evidence": "evidence/changed_restore.txt"
+  },
+  "resource": {
+    "focused_wall_seconds": 8.52,
+    "focused_user_seconds": 8.09,
+    "focused_sys_seconds": 1.50,
+    "focused_parent_maxrss_bytes": 129728512,
+    "witness_wall_seconds": 3.32,
+    "witness_user_seconds": 3.58,
+    "witness_sys_seconds": 0.57,
+    "witness_parent_maxrss_bytes": 126971904,
+    "staging_memory": "NOT_MEASURED",
+    "hundred_k_or_six_gib": "NOT_RUN"
+  },
+  "limits": [
+    "Sourcefree TEST_ONLY qualification; no original35, native science, production CURRENT, issuer, writer, schema, or protected merge claim.",
+    "45 targeted nodes, not a full matrix.",
+    "Independent native revalidation remains per joined operation; the one-build optimization applies only to the initial prepared Batch.",
+    "No independent G5 or self-acceptance.",
+    "No locality author file touched; concurrent work remains disjoint.",
+    "Temporary fixtures and pre-existing untracked files are not committed."
+  ],
+  "review": {
+    "required": true,
+    "reviewer": "distinct nonauthor reviewer",
+    "freeze_code_test_sha": "01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd",
+    "instructions": "verify exact two-file diff, base/prepared parity, one-build, typed negatives, changed/restore, current/replay/source guards, resource bounds; do not merge or broaden"
+  },
+  "stop": "AWAITING_DISTINCT_NONAUTHOR_REVIEW"
+}

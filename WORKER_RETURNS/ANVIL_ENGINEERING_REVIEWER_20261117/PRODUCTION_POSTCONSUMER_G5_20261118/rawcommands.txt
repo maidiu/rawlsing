@@ -1,0 +1,48 @@
+# ANVIL production postconsumer G5 independent commands
+# All source execution used the exact 01dc90cb source archive below, not REVIEWER product.
+
+# 1. exact frozen source snapshot
+git -C /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER \
+  archive 01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd rawlsing_next \
+  | tar -x -C <private-proof-root>/source
+# exit 0; changed source blob 0a2e7b899..., new test blob d555f811...
+# import check showed <private-proof-root>/source/rawlsing_next/... on sys.path;
+# no REVIEWER product was used.
+
+# 2. exact diff
+git -C IMPLEMENTER diff 6b5402658a342a32180e281c62f4762729e37220..01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd
+# exit 0; exactly two files: changed production file and new test.
+
+# 3. focused suite
+cd <private-proof-root>/source
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' \
+  -p no:cacheprovider --basetemp=<private-proof-root>/new8-resource-tmp \
+  rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py
+# exit 0; 8 passed; 8.82 s; maxrss 154,083,328 B.
+
+# 4. affected suite (45 targeted nodes)
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' \
+  -p no:cacheprovider --basetemp=<private-proof-root>/affected-tmp \
+  rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py \
+  rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py \
+  rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py \
+  rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py
+# exit 0; 45 passed; 29.05 s.
+
+# 5. explicit changed-input / changed-fact / exact-restore test
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' \
+  -p no:cacheprovider --basetemp=<private-proof-root>/changed-tmp \
+  rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join
+# exit 0; 1 passed, 23 deselected; 4.99 s.
+
+# 6. actual frozen-author postconsumer witness, copied to own evidence with
+#    output directory changed only (logic unchanged; see witness_output_path.diff)
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 TMPDIR=<private-proof-root>/tmp \
+  /usr/bin/time -l python3 -B evidence/postconsumer_witness_independent.py
+# exit 0; 3.65 real; maxrss 135,921,664 B; no abort.
+# base/prepared: 13 COMPLETED each; prepared_index_builds=1; 22 rows;
+# 8 ELIGIBLE / 14 HELD; 6 positive; 2 pending; exact rows/audit/result/provenance.
+# v1 0Q/1D; v2 12Q/1D; sourcefree TEST_ONLY, not original35.
+
+# No new benchmark matrix, estate geometry, 100k/6 GiB run, original35/source,
+# protected merge, subagent, model/provider change, or product rewrite.
