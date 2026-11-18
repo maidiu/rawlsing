@@ -1,0 +1,58 @@
+{
+  "accepted_accounting": {
+    "coordinate_facts": 22011,
+    "internal_records": 7514,
+    "public_objects": 2619317,
+    "q217_release_events": 0,
+    "q217_unbound": 38,
+    "release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "response_events": 1298649,
+    "response_positions": 1298649
+  },
+  "candidate_api": "(*, config: 'SourceConfig | Mapping[str, Any]', source_path: 'str | Path', destination: 'str | Path', row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None, universe_ref: 'ExactRef | None' = None, batch_size: 'int' = 512, chunk_size: 'int' = 512, resolver: 'Any' = None, host: 'str | None' = None, purpose: 'str | None' = None, consumer_use: 'str | None' = None, semantic_use_scope: 'tuple[str, ...] | None' = None, body_sink: 'SourceI02BodySink | None' = None) -> 'SourceI02ConstructionOnlyResult'",
+  "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+  "config_index_sha256": "463937b86046cf29c08dfab25bddb5b805c95361ce5d6a58ce36e5a3ee3b84e6",
+  "config_path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/src04.config.json",
+  "decision_ref": {
+    "content_hash": "63983453d1fc9edfc2b4452ca5f48177c1d1433be8006def1795b52d50922cec",
+    "kind": "FULL_SOURCE_READ_DECISION",
+    "object_id": "urn:rawlsing:full-source-decision:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+  },
+  "grant_binding_sha256": "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0",
+  "grant_ref": {
+    "content_hash": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "kind": "FULL_SOURCE_READ_GRANT",
+    "object_id": "urn:rawlsing:full-source-grant:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+  },
+  "no_source_open_stat_hash_decode": true,
+  "process_isolation": {
+    "producer": "separate subprocess; wait for exact nonzero exit",
+    "reopen": "fresh subprocess only after producer pid reaped",
+    "source_launch": "NOT_PERFORMED"
+  },
+  "q217": {
+    "release_events": 0,
+    "residual_id": "SRC04-FIELD-REPAIR-q217",
+    "residual_status": "UNRESOLVED_EXACT_UNLABELED_CODES",
+    "selected_in_release": false,
+    "slot_name": "q217",
+    "slot_ordinal": 27,
+    "status": "HELD_EXACT_BY_SCOPED_CONFIG",
+    "unbound_cells": 38
+  },
+  "resources": {
+    "available_bytes": 44316155904,
+    "disk_floor_bytes": 4976127760,
+    "measured_512x600_partial_bytes": 1951192968,
+    "ram_cap_bytes": 6442450944,
+    "wall_cutoff": null
+  },
+  "schema": "ANVIL_ALL35_WITNESS_PLAN@1",
+  "scoped_counts": {
+    "coordinate_slots": 3,
+    "physical_slots": 181,
+    "response_slots": 177
+  },
+  "source_id": "SRC04",
+  "status": "DRY_PREFLIGHT_OK__Q217_HELD__SCOPED_CONFIG_READY"
+}
