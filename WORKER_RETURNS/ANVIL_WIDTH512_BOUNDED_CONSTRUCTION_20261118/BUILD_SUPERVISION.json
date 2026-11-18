@@ -1,0 +1,60 @@
+{
+  "abort": "WALL_600S",
+  "caps": {
+    "free": 8589934592,
+    "rss": 6442450944,
+    "scratch": 4294967296,
+    "wall": 600.0
+  },
+  "command": [
+    "/usr/local/bin/python3",
+    "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/build_width512.py",
+    "--snapshot",
+    "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil-scale-06ulz7",
+    "--out",
+    "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/.local-data-width512",
+    "--respondents",
+    "512",
+    "--questions",
+    "600"
+  ],
+  "exit": -15,
+  "partial_bytes": 1951192968,
+  "rss_peak": 128729088,
+  "samples": 2111,
+  "schema": "ANVIL_WIDTH512_BUILD_SUPERVISION@1",
+  "scratch_peak": 1951192968,
+  "stage": {
+    "context_seconds": 0.0013305189786478877,
+    "estate_root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/.local-data-width512",
+    "schema": "ANVIL_WIDTH512_STAGES@1",
+    "stage": "writing",
+    "tag": "PYAT-1006-WIDTH512-600-20261118",
+    "width_audit": {
+      "added_questions": 595,
+      "base_events": 1663,
+      "base_repeated_mr_occurrences": 80,
+      "dense_assumption": false,
+      "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+      "events_per_respondent_max": 542,
+      "events_per_respondent_mean": 538.748046875,
+      "events_per_respondent_min": 538,
+      "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+      "extra_cells": 304640,
+      "extra_events": 274176,
+      "extra_typed_missing": 30464,
+      "extra_typed_not_asked": 30464,
+      "extra_valid_substantive": 243712,
+      "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+      "total_events": 275839,
+      "total_question_bindings": 600,
+      "total_routing": 307200,
+      "total_weights": 512
+    },
+    "width_population_seconds": 0.1253700879169628
+  },
+  "status": "CAPPED",
+  "stderr": "",
+  "stdout": "",
+  "wall": 600.2504626769805
+}
