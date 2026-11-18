@@ -1,0 +1,157 @@
+{
+ "schema": "ANVIL_R3_DISTINCT_C_REVIEW@1",
+ "verdict": "REVISE_EXACT_CONSEQUENTIAL_GAP",
+ "scope": "R3_DOWNSTREAM_ACCOMMODATION_CONCEPTUAL_DESIGN_AND_RESEARCH_CUSTODY_ONLY",
+ "target": {
+  "commit": "c548ef10bc2276cbe6016a53b8a39b9728cbc922",
+  "branch": "agent/anvil-r3-downstream-accommodation-20261117-r1",
+  "root": "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/R3_DOWNSTREAM_ACCOMMODATION/",
+  "package_hashes_verified": 6,
+  "capability_rows": 10,
+  "research_entries": 22,
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "product_unchanged": true,
+  "inherited_candidate": "06e88a5ac7e4c14362a97a046f44e25d8eec4162",
+  "prior_c": "d109ffa9fa8d88f60b6d8c11f3885428555c7bcd",
+  "protected_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "protected_revision": 11
+ },
+ "material_findings": [
+  {
+   "id": "G1",
+   "severity": "CONSEQUENTIAL",
+   "title": "FF01 k>2/reverse-distribution claim is not supported by ExactConditionalSupportProfile",
+   "claim_sources": [
+    "R3_ARCHITECTURE_DECISION.md \u00a76.4",
+    "R3_CAPABILITY_ACCOMMODATION.tsv R3-CAP-04"
+   ],
+   "actual_sources": [
+    "rawlsing_next/field_forge_conditional_support.py lines 1-8, 34-35, 136-141, 359-380, 432, 467, 530"
+   ],
+   "failure": "The actual object is a fixed two-target Q86B->Q86A count relation with participant_cardinality=2 and no ratio calculation; it cannot produce P(Y1..Yk|D,U,W), reverse P(D|Y,U,W), role/position contrasts or branch/recursive conditionals. R3-RES-008 itself only claims a conditional association/profile.",
+   "smallest_correction": "Split FF01-2 (existing exact count profile) from a versioned FF01-k derived-product contract with exact roles/keys, reverse risk basis, ratio/coverage and first consumer; if absent, grade k>2/reverse CONDITIONAL_EXTENSION/OWNER_HELD, not CONCEPTUALLY_ACCOMMODATED via the existing function. Add falsifier and R3-RES entry."
+  },
+  {
+   "id": "G2",
+   "severity": "CONSEQUENTIAL",
+   "title": "C11 source-preservation claim is overbroad at field level",
+   "claim_sources": [
+    "R3_ARCHITECTURE_DECISION.md \u00a76.1, \u00a76.3, \u00a77",
+    "R3_CAPABILITY_ACCOMMODATION.tsv R3-CAP-01, R3-CAP-03"
+   ],
+   "actual_sources": [
+    "rawlsing_next/pre553_c11_integrity.py lines 201-209 QuestionVariableBinding",
+    "rawlsing_next/pre553_empirical_objects.py lines 503-512 EmpiricalUniverse, 548-555 RoutingEligibilityFact, 559-567 WeightMeasureFact, 696-706 EmpiricalFact"
+   ],
+   "failure": "QuestionVariableBinding has no option/form/routing field; EmpiricalUniverse has respondent_namespace but no household/roster namespace; WeightMeasureFact has design/estimand authority refs but no PSU/strata/variance; EmpiricalFact has uncertainty_method_or_typed_state, not numeric variance. The decision asserts C11 preserves these without distinguishing exact C11 bytes, external codebook/source artifact, and unavailable/typed-absent.",
+   "smallest_correction": "Add an INSPECTED_CODE field map and R3-RES entry: C11 native refs/version/routing state; external source/codebook/questionnaire for original-language option/form/ballot; household/roster not canonical unless a source-specific projection is defined; PSU/strata/variance/numeric uncertainty external or typed-absent. Correct \u00a76.1/\u00a76.3/\u00a77 and R3-CAP-01/03."
+  },
+  {
+   "id": "G3",
+   "severity": "CONSEQUENTIAL_RESEARCH_CUSTODY",
+   "title": "Architecture decision does not cite R3-RES IDs",
+   "claim_sources": [
+    "00_USER_RESEARCH_PRESERVATION_ADDENDUM.md",
+    "00_USER_CONTINUATION_COMMISSION.md \u00a72A/\u00a74"
+   ],
+   "actual_sources": [
+    "R3_ARCHITECTURE_DECISION.md (zero R3-RES-* identifiers)",
+    "R3_CAPABILITY_ACCOMMODATION.tsv (zero R3-RES-* identifiers)",
+    "R3_FALSIFIERS_AND_COST.md (zero R3-RES-* identifiers)",
+    "R3_RESEARCH_LEDGER.jsonl cross_refs point to R3-CAP-* only"
+   ],
+   "failure": "The 22-entry ledger is substantive, but the architecture decision is not linked to the research IDs it relies on; the ledger is parallel rather than reverse-cited from the decision.",
+   "smallest_correction": "Add a research_refs column to the capability rows and explicit R3-RES citations in each decision section; add the missing source-field/FF01 entries and reverse links. No new research required."
+  },
+  {
+   "id": "G4",
+   "severity": "CONSEQUENTIAL_CONDITIONAL",
+   "title": "Typed-access views are stronger than their own R3-RES-021 grade",
+   "claim_sources": [
+    "R3_ARCHITECTURE_DECISION.md \u00a74.1",
+    "R3_CAPABILITY_ACCOMMODATION.tsv R3-CAP-02/R3-CAP-06",
+    "R3-RES-021"
+   ],
+   "actual_sources": [
+    "R3_RESEARCH_LEDGER.jsonl R3-RES-021 = OPEN_CONDITIONAL_ACCESS_EXTENSION",
+    "EmpiricalCoordinateFact native_coordinate_ref/time; WeightMeasureFact weight_basis_id/effective_scope; RoutingEligibilityFact question/target/risk_set"
+   ],
+   "failure": "The view is a plausible direction, but the exact join keys for coordinate/weight/routing families and the native-evaluator adapter are not specified; R3-RES-021 itself grades the extension open/conditional.",
+   "smallest_correction": "Supply the exact per-family key/ref map and adapter contract, or downgrade the view-specific claim to CONDITIONAL_EXTENSION while retaining the architectural direction."
+  },
+  {
+   "id": "G5",
+   "severity": "SECONDARY",
+   "title": "F6 design variance/PSU/strata need explicit external hold",
+   "claim_sources": [
+    "R3_ARCHITECTURE_DECISION.md \u00a76.3/\u00a77",
+    "R3_CAPABILITY_ACCOMMODATION.tsv R3-CAP-03"
+   ],
+   "actual_sources": [
+    "WeightMeasureFact lines 559-567",
+    "EmpiricalFact lines 696-706",
+    "EmpiricalUniverse lines 503-512"
+   ],
+   "failure": "F6 is correctly owner-held, but the exact design inputs absent from C11 are not named; a reader may infer WeightMeasureFact contains design variance/PSU/strata.",
+   "smallest_correction": "State explicitly that C11 has design/estimand authority refs and universe/frame labels only; PSU/strata/replicate weights/design variance and numeric uncertainty are external F6 inputs or typed-absent."
+  }
+ ],
+ "settled_at_documentary_grade": [
+  "13-family canonical body retained; no new body/database/psychological family",
+  "prepared-session-first within-process; conditional one-journal/source-derived Q2 with full proof and second-certificate fallback; conditional recovery; durable index held",
+  "native F1-F4 semantics; distinct F2 bases; F3 minority/recursive; F6/F7 external; FF01 not FF02; N9 not SOROK; no source->actor/opinion->power/fictional->observed promotion",
+  "26 NOT_ADOPTED / 14 HELD / F26 hold / separate 52/24/21 preserved",
+  "prepared-session removes repeated S only; fresh-open S/Q/O remain; no 1.69x 100-op extrapolation",
+  "research ledger 22 entries with sources, grades, counterarguments, negatives, uncertainty, cross-refs and reuse; no sampled fabricated execution"
+ ],
+ "conditional_extensions_owner_proofs": [
+  "exact respondent-major/question-major view keys and native-evaluator adapter",
+  "FF01-k/reverse derived-product contract",
+  "source field map/external codebook and household/roster status",
+  "F6 design variance/PSU/strata/uncertainty input",
+  "durable index H/S/Q/O and compact exact encoding",
+  "Batch prepared adapter; source-derived Q2 full proof; recovery crash injection",
+  "FF02 material power, F7 comparability, N9/N10W, SEAM encounter, SOROK actor, native/original35 rights, 100k/6GiB/1-10-100"
+ ],
+ "coverage_ceiling": [
+  "no native/100k/6GiB",
+  "no product implementation",
+  "no full 141-row/source recensus",
+  "no source/science/actor/H1 authority",
+  "no exhaustive research validation"
+ ],
+ "strongest_failed_attacks": [
+  "storage sufficiency -> R3 correctly separates body from access",
+  "prepared session solves repeated queries -> R3 limits to repeated within-process S",
+  "pairwise marginals substitute for true k>=3 joint -> R3 refuses",
+  "I07/I04 guard is F6 numeric -> R3 separates",
+  "FF01 association is FF02 power -> R3 preserves firewall",
+  "other-position marginals prove encounter -> R3 holds encounter/access",
+  "N9 world is SOROK person -> R3 preserves actor boundary"
+ ],
+ "research_custody": {
+  "ledger_entries": 22,
+  "all_entries_have_stable_ids_sources_grades_counterarguments_negatives_uncertainty": true,
+  "all_entries_have_cross_refs_and_reuse": true,
+  "architecture_decision_cites_r3_res": false,
+  "missing_field_map_entry": true,
+  "fabricated_execution_sample_found": false
+ },
+ "not_claimed": [
+  "native/source/science/actor authorization",
+  "100k/6GiB/1-10-100",
+  "product implementation",
+  "protected adoption or H1",
+  "exhaustive source lineage",
+  "semantic truth of authored narratives"
+ ],
+ "limits": [
+  "source lineage sampled, not exhaustive",
+  "no native/100k/product tests",
+  "no new sourcefree experiment needed for static code/schema findings",
+  "no instrument or external reviewer authentication",
+  "no author patch"
+ ],
+ "return_sha": "FINAL_R3_REVIEW_COMMIT_ON_REVIEW_BRANCH_SEE_GIT",
+ "payload_manifest": "PACKAGE_MANIFEST.json (self-excluded)"
+}

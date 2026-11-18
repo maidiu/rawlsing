@@ -1,0 +1,99 @@
+== QuestionVariableBinding ==
+class QuestionVariableBinding(C11InternalRecord):
+    RECORD_FAMILY: ClassVar[str] = "QuestionVariableBinding"
+    empirical_universe_ref: ExactRef
+    native_question_ref: ExactRef
+    instrument_question_version: str
+    canonical_question_ref_or_typed_absence: ExactRef | TypedAbsence
+    component_subitem_ref_or_typed_absence: ExactRef | TypedAbsence
+    semantic_authority_ref: AuthorityRef
+    topology_authority_ref: AuthorityRef
+
+    def _validate(self) -> None:
+        _require_exact_ref(self.empirical_universe_ref, "empirical_universe_ref")
+        _require_exact_ref(self.native_question_ref, "native_question_ref")
+        _require_text(self.instrument_question_version, "instrument_question_version")
+        if not isinstance(self.canonical_question_ref_or_typed_absence, (ExactRef, TypedAbsence)):
+            raise C11IntegrityError("canonical question must be ExactRef or TypedAbsence")
+        if not isinstance(self.component_subitem_ref_or_typed_absence, (ExactRef, TypedAbsence)):
+            raise C11IntegrityError("component/subitem must be ExactRef or TypedAbsence")
+        _require_authority_ref(self.semantic_authority_ref, "semantic_authority_ref")
+        _require_authority_ref(self.topology_authority_ref, "topology_authority_ref")
+== EmpiricalUniverse ==
+class EmpiricalUniverse(CanonicalSemanticObject):
+    FAMILY = "EmpiricalUniverse@1.0.0"
+    STATE_FAMILY = "SOURCE_UNIVERSE_STATE"
+    REQUIRED_FIELDS = frozenset({
+        "raw_source_identity", "source_family", "study_product_release", "instrument_release",
+        "country_geography", "sampling_geography", "raw_wave", "canonical_wave_if_governed",
+        "field_or_reference_time", "target_population_and_sample_frame", "sampling_design_regime",
+        "respondent_namespace", "source_artifact_import_lineage", "harmonization_authority_ref",
+        "source_relation_refs",
+    })
+    SET_LIKE_FIELDS = frozenset({"source_relation_refs"})
+== WeightMeasureFact ==
+class WeightMeasureFact(CanonicalSemanticObject):
+    FAMILY = "WeightMeasureFact@1.0.0"
+    STATE_FAMILY = "WEIGHT_MEASURE_STATE"
+    REQUIRED_FIELDS = frozenset({
+        "empirical_universe_ref", "scoped_respondent_ref", "weight_basis_id",
+        "exact_weight_value_representation", "weight_state", "weight_source_ref",
+        "design_authority_ref", "estimand_authority_ref", "normalization_or_recalibration_rule_ref",
+        "effective_scope_ref",
+    })
+== EmpiricalFact uncertainty ==
+class EmpiricalFact(CanonicalSemanticObject):
+    FAMILY = "EmpiricalFact@1.0.0"
+    STATE_FAMILY = "EMPIRICAL_FACT_STATE"
+    REQUIRED_FIELDS = frozenset({
+        "empirical_query_spec_ref", "empirical_universe_refs", "target_topology",
+        "condition_predicate_ref", "risk_set_ref", "raw_numerator_support",
+        "raw_denominator_support", "weighted_numerator_support_if_authorized",
+        "weighted_denominator_support_if_authorized", "measure_basis_ref",
+        "response_state_semantics_ref", "uncertainty_method_or_typed_state",
+        "source_empirical_provenance_refs", "replay_ref",
+    })
+== ExactConditionalSupportProfile header ==
+"""Bounded FIELD FORGE conditional-support count relation for GT2.
+
+This module owns only the exact actor-independent relation commitment frozen as
+EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0.
+
+It consumes an already-produced PRE553 I03 two-target joint EmpiricalFact.  It
+does not execute empirical queries, reinterpret source-native states, calculate
+ratios, infer order/metric/causal semantics, admit PRE-V3 structure, or create
+class ExactConditionalSupportProfile:
+    """Immutable FIELD FORGE relation/result at the frozen GT2 relation grain."""
+
+    typed_state: str
+    producer_state_blocking: bool
+    conditioner_ref: ExactRef
+    target_ref: ExactRef
+    conditioner_domain: tuple[Any, ...]
+    target_domain: tuple[Any, ...]
+    target_domain_identity: str
+    risk_set_ref: ExactRef
+    empirical_universe_refs: tuple[ExactRef, ...]
+    producer_fact_ref: ExactRef
+    producer_query_ref: ExactRef
+    producer_authority_refs: tuple[AuthorityRef, ...]
+    producer_provenance_refs: tuple[ExactRef, ...]
+    producer_replay_ref: ExactRef
+    producer_permission_ceiling: tuple[str, ...]
+    relation_permission_ceiling: tuple[str, ...]
+    conditional_count_profile: tuple[Mapping[str, Any], ...]
+    content_hash: str
+    object_id: str
+== fixed roles/cardinality ==
+34:CONDITIONER_SOURCE_NATIVE_VARIABLE = "Q86B"
+35:TARGET_SOURCE_NATIVE_VARIABLE = "Q86A"
+136:            "GT2 Q86B->Q86A target order must be SEMANTIC_ORDERED")
+141:            "query target role/order must be exactly [Q86B CONDITIONER, Q86A TARGET]")
+156:                "frozen Q86A/Q86B GT2 relation requires source-native SCALAR_SINGULAR targets")
+185:                "GT2 explicit joint domain must preserve the complete native Q86B x Q86A product")
+305:            raise FieldForgeConditionalSupportError("joint cell must contain Q86B,Q86A states")
+323:            "producer joint fact does not preserve the complete native Q86B x Q86A domain")
+432:            "participant_cardinality": 2,
+467:def produce_exact_conditional_support_profile(
+476:    """Produce the frozen Q86B-conditioned Q86A count profile.
+530:        "participant_cardinality": 2,

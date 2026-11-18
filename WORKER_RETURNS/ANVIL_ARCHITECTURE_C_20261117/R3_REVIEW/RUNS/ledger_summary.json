@@ -1,0 +1,692 @@
+{
+ "schema": "R3_RESEARCH_LEDGER_REVIEW_SUMMARY",
+ "target": "c548ef10bc2276cbe6016a53b8a39b9728cbc922",
+ "entries": [
+  {
+   "id": "R3-RES-001",
+   "tags": [
+    "C11",
+    "access",
+    "architecture"
+   ],
+   "question": "Does preserving the 13-family canonical body also preserve the downstream access capabilities?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "MODIFY_ACCESS_ARCHITECTURE_RETAIN_BODY",
+   "sources": [
+    {
+     "detail": "physical_architecture/implementation_sequence",
+     "path": "S2_S3/FINAL_DECISION.json",
+     "ref": "06e88a5ac7e4c14362a97a046f44e25d8eec4162"
+    },
+    {
+     "detail": "13 family object/body contract",
+     "path": "rawlsing_next/pre553_empirical_objects.py, pre553_parquet_carrier.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-CAP-01",
+    "R3-CAP-02"
+   ],
+   "reuse_beyond_anvil": "General lesson: canonical storage and capability access are separate architecture layers.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-002",
+   "tags": [
+    "economics",
+    "prepared-session",
+    "query"
+   ],
+   "question": "What exactly does PreparedI03Session remove?",
+   "method_grade": "EXECUTED_SOURCEFREE_PRIOR",
+   "disposition": "RETAIN_PREPARED_FIRST_AS_FIRST_STEP",
+   "sources": [
+    {
+     "detail": "PreparedI03Session 51-150",
+     "path": "rawlsing_next/pre553_prepared_saved_i03.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "H/S/Q/O distinction",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/QUERY/FINDINGS.md",
+     "ref": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-CAP-02"
+   ],
+   "reuse_beyond_anvil": "Reusable cost-layer distinction H/S/Q/O for any repeated-query system.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-003",
+   "tags": [
+    "F1-F4",
+    "joint",
+    "statistics"
+   ],
+   "question": "Do pairwise marginals determine a same-person k>=3 joint?",
+   "method_grade": "ANALYTICAL_DEDUCTION",
+   "disposition": "RETAIN_TRUE_JOINT",
+   "sources": [
+    {
+     "detail": "execute_empirical_query/_build_fact",
+     "path": "rawlsing_next/pre553_empirical_query.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "AnalyticalCompositionResult",
+     "path": "rawlsing_next/pre553_analytical_composition.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-02",
+    "R3-CAP-04"
+   ],
+   "reuse_beyond_anvil": "General statistical caution: marginal equality does not imply joint equality.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-004",
+   "tags": [
+    "F2",
+    "denominator",
+    "routing"
+   ],
+   "question": "Are forward and reverse F2 denominators interchangeable?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "RETAIN_DISTINCT_DENOMINATORS",
+   "sources": [
+    {
+     "detail": "_evaluate_index_group/_build_fact",
+     "path": "rawlsing_next/_pre553_query_eval.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "QP-02/QP-03",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/QUERY/QUERY_SEMANTIC_PARITY.tsv",
+     "ref": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-02",
+    "R3-CAP-01"
+   ],
+   "reuse_beyond_anvil": "Reusable denominator discipline for conditional survey analysis.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-005",
+   "tags": [
+    "source",
+    "observability",
+    "identity"
+   ],
+   "question": "When may a sample-design stratum or proxy become respondent identity?",
+   "method_grade": "SOURCE_DOCUMENTED",
+   "disposition": "RETAIN_OBSERVABILITY_SEPARATION",
+   "sources": [
+    {
+     "detail": "sections 4-5, observability classes",
+     "path": "SOURCE_118/SEAM_26.md",
+     "ref": "796452b8cb788fa5a02f37a7ce86eafce8312dfe"
+    },
+    {
+     "detail": "L-01..L-08, Section IV",
+     "path": "SOURCE_118/ANVIL_15.md",
+     "ref": "3cc09bba3d0e26c226da0ddca4b64c43dd74e493"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-01",
+    "R3-CAP-05"
+   ],
+   "reuse_beyond_anvil": "Reusable source-observability taxonomy for survey-based research.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-006",
+   "tags": [
+    "F6",
+    "I07",
+    "partial-identification"
+   ],
+   "question": "Is the I07/I04 structural guard the F6 numeric partial-identification interval?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "OWNER_HELD_F6_NUMERIC",
+   "sources": [
+    {
+     "detail": "evaluate_structural_empirical_admission 529",
+     "path": "rawlsing_next/pre553_structural_admission.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "compute_effective_n 454 (F018, not F6)",
+     "path": "rawlsing_next/pre553_effective_n.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-03",
+    "R3-CAP-08"
+   ],
+   "reuse_beyond_anvil": "Reusable distinction between structural compatibility and numeric partial identification.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-007",
+   "tags": [
+    "F7",
+    "crosswave",
+    "time"
+   ],
+   "question": "Does a same-name variable across waves establish individual temporal change?",
+   "method_grade": "SOURCE_DOCUMENTED",
+   "disposition": "OWNER_HELD_F7_COMPARABILITY",
+   "sources": [
+    {
+     "detail": "L-05, Section IV",
+     "path": "SOURCE_118/ANVIL_15.md",
+     "ref": "3cc09bba3d0e26c226da0ddca4b64c43dd74e493"
+    },
+    {
+     "detail": "single-universe/release refusal",
+     "path": "rawlsing_next/pre553_direct_estate_i03.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-03",
+    "R3-CAP-01"
+   ],
+   "reuse_beyond_anvil": "Reusable time/observability caution for cross-wave research.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-008",
+   "tags": [
+    "FF01",
+    "FF02",
+    "power"
+   ],
+   "question": "Does observed FF01 association become FF02 material power?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "RETAIN_FF01_FF02_FIREWALL",
+   "sources": [
+    {
+     "detail": "ExactConditionalSupportProfile 359; produce 467",
+     "path": "rawlsing_next/field_forge_conditional_support.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "O4/O5/S-04",
+     "path": "SOURCE_118/SEAM_26.md",
+     "ref": "796452b8cb788fa5a02f37a7ce86eafce8312dfe"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-04",
+    "R3-CAP-05",
+    "R3-CAP-07"
+   ],
+   "reuse_beyond_anvil": "Reusable descriptive-versus-structural firewall.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-009",
+   "tags": [
+    "SEAM",
+    "encounter",
+    "other-positions"
+   ],
+   "question": "Do position marginals establish actual encounter/relationship?",
+   "method_grade": "SOURCE_DOCUMENTED",
+   "disposition": "OWNER_HELD_ENCOUNTER_ACCESS",
+   "sources": [
+    {
+     "detail": "S-03, Section 3/5",
+     "path": "SOURCE_118/SEAM_26.md",
+     "ref": "796452b8cb788fa5a02f37a7ce86eafce8312dfe"
+    },
+    {
+     "detail": "R4/R5, Section III.C",
+     "path": "SOURCE_118/ANVIL_15.md",
+     "ref": "3cc09bba3d0e26c226da0ddca4b64c43dd74e493"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-05",
+    "R3-CAP-09"
+   ],
+   "reuse_beyond_anvil": "Reusable availability/access/action separation for social simulation.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-010",
+   "tags": [
+    "N9",
+    "N10W",
+    "SOROK"
+   ],
+   "question": "Is objective N9 world the same as a SOROK person?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "OWNER_HELD_N9_SOROK_SEPARATION",
+   "sources": [
+    {
+     "detail": "run_progressive_chain 466",
+     "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "HistoricalWorld 61",
+     "path": "rawlsing_next/sorok_history/owner.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-05",
+    "R3-CAP-09"
+   ],
+   "reuse_beyond_anvil": "Reusable world-versus-actor separation.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-011",
+   "tags": [
+    "J",
+    "FF",
+    "handoff"
+   ],
+   "question": "Does a J-to-FF manifest imply a certified FF effect?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "CONCEPTUALLY_ACCOMMODATED_ROUTE_OWNER_HELD",
+   "sources": [
+    {
+     "detail": "j_component_certification_validator 1257",
+     "path": "rawlsing_next/pre553_j_role_certification.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "build_m1_bundle_from_m01 770; adapt_m1_disposition_to_m2 838",
+     "path": "rawlsing_next/pre553_learned_world_composition.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-10",
+    "R3-CAP-04"
+   ],
+   "reuse_beyond_anvil": "Reusable manifest-scope discipline for staged analytical handoffs.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-012",
+   "tags": [
+    "signed-neutral",
+    "K1-CAP-08",
+    "FF02"
+   ],
+   "question": "Is signed neutral/nonneutral a standalone canonical C11 field?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "PARTIALLY_ACCOMMODATED_FF02_OWNER_HELD",
+   "sources": [
+    {
+     "detail": "evaluate_structural_empirical_admission 529",
+     "path": "rawlsing_next/pre553_structural_admission.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "manual_signed_polarity_status projection",
+     "path": "rawlsing_next/pre553_r157_projection_adapter.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-07",
+    "R3-CAP-05"
+   ],
+   "reuse_beyond_anvil": "Reusable distinction between source value and structural sign.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-013",
+   "tags": [
+    "Q2",
+    "certification",
+    "transport"
+   ],
+   "question": "Can a Q2 certificate be built from the re-parsed JSONL transport journal?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "CONDITIONAL_SOURCE_DERIVED_Q2",
+   "sources": [
+    {
+     "detail": "SourceSavedBodySink 57",
+     "path": "rawlsing_next/pre553_source_saved_body_bridge.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "write_direct_estate 460",
+     "path": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-RES-001"
+   ],
+   "reuse_beyond_anvil": "Reusable source-vs-transport independence rule.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-014",
+   "tags": [
+    "durable-index",
+    "retained-cost",
+    "invalidation"
+   ],
+   "question": "Does a durable locator index automatically earn its retained cost?",
+   "method_grade": "SOURCE_DOCUMENTED",
+   "disposition": "HELD_NOT_SELECTED",
+   "sources": [
+    {
+     "detail": "durable index HELD; 1.30GB cited",
+     "path": "S2_S3/FINAL_DECISION.json",
+     "ref": "06e88a5ac7e4c14362a97a046f44e25d8eec4162"
+    },
+    {
+     "detail": "index 4.19x estate",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/QUERY/FINDINGS.md",
+     "ref": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-RES-002"
+   ],
+   "reuse_beyond_anvil": "Reusable TCO test for derived indexes.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-015",
+   "tags": [
+    "evidence-output",
+    "O",
+    "sets"
+   ],
+   "question": "Is per-fact evidence output cheap at 100k?",
+   "method_grade": "ANALYTICAL_DEDUCTION",
+   "disposition": "RETAIN_EXACT_IDENTITY_SHARING_CONTRACT",
+   "sources": [
+    {
+     "detail": "_build_fact 893 risk/denominator refs",
+     "path": "rawlsing_next/_pre553_query_eval.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "corrected 30-50MB/fact",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/QUERY/COST_MODEL.json",
+     "ref": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-CAP-02"
+   ],
+   "reuse_beyond_anvil": "Reusable evidence-output amplification warning.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-016",
+   "tags": [
+    "Batch",
+    "ABI",
+    "prepared-session"
+   ],
+   "question": "Does the named Batch/first-consumer path accept the prepared admission?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "PROPOSED_NOT_WIRED",
+   "sources": [
+    {
+     "detail": "execute_saved_i03/i05/batch lines 42/54/94",
+     "path": "rawlsing_next/pre553_saved_workload_integration.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "BatchExecutionRunner 406",
+     "path": "rawlsing_next/pre553_batch_runner.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-RES-002"
+   ],
+   "reuse_beyond_anvil": "Reusable lesson: inheritance is not wiring; exact type guards protect authority.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-017",
+   "tags": [
+    "crosswalk",
+    "K1",
+    "documentation"
+   ],
+   "question": "Are generic crosswalk fates sufficient for K1-CAP-08/17/23/27?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "MODIFY_DOCUMENTATION_SPECIFIC_ROUTES",
+   "sources": [
+    {
+     "detail": "generic K1 fate",
+     "path": "S2_S3/FINAL_OBLIGATION_CROSSWALK.tsv",
+     "ref": "06e88a5ac7e4c14362a97a046f44e25d8eec4162"
+    },
+    {
+     "detail": "concern 2",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_HQ_REVIEW_20261117/01_CONCERNS_AND_DECISION_QUESTIONS.md",
+     "ref": "0e001e0b1eb01587f2a6cbbb9bab7fe8a6ff7151"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-07",
+    "R3-CAP-08",
+    "R3-CAP-09",
+    "R3-CAP-10"
+   ],
+   "reuse_beyond_anvil": "Reusable auditing rule: an ID is not an accommodation argument.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-018",
+   "tags": [
+    "guard",
+    "proof-grade",
+    "C"
+   ],
+   "question": "Does the 20/118 structural guard prove scientific accommodation?",
+   "method_grade": "EXECUTED_PRIOR_STRUCTURAL",
+   "disposition": "RETAIN_AS_STRUCTURAL_ONLY",
+   "sources": [
+    {
+     "detail": "scoped acceptance/limits",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/R2_RECHECK/REVIEW_VERDICT.json",
+     "ref": "d109ffa9fa8d88f60b6d8c11f3885428555c7bcd"
+    },
+    {
+     "detail": "structural 20/118",
+     "path": "GUARDS/v2_supplementary_guard.py",
+     "ref": "06e88a5ac7e4c14362a97a046f44e25d8eec4162"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06",
+    "R3-RES-017"
+   ],
+   "reuse_beyond_anvil": "Reusable distinction between guard completeness and scientific/epistemic truth.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-019",
+   "tags": [
+    "sourcefree",
+    "native",
+    "authority"
+   ],
+   "question": "Does sourcefree mean the native evaluator cannot execute?",
+   "method_grade": "EXECUTED_SOURCEFREE_PRIOR",
+   "disposition": "RETAIN_GRADE_DISTINCTION",
+   "sources": [
+    {
+     "detail": "3 prepared tests",
+     "path": "rawlsing_next/tests/test_pre553_prepared_saved_i03.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "34 sourcefree tests, native path distinct",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/RETURN.md",
+     "ref": "a352626dc05a03072c04954bfae6a42c0ece7dfa"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-02",
+    "R3-CAP-06"
+   ],
+   "reuse_beyond_anvil": "Reusable proof-grade vocabulary.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-020",
+   "tags": [
+    "recovery",
+    "no-clobber",
+    "construction"
+   ],
+   "question": "Does atomic rename guarantee no-clobber portability?",
+   "method_grade": "INSPECTED_CODE",
+   "disposition": "CONDITIONAL_RECOVERY_REPAIR",
+   "sources": [
+    {
+     "detail": "write_direct_estate 460 target before manifest",
+     "path": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "orphan window",
+     "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/CONSTRUCTION/FINDINGS.md",
+     "ref": "f8c98027599b62069c03a269989075b4442f5138"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-06"
+   ],
+   "reuse_beyond_anvil": "Reusable no-clobber/recovery caution for CAS publication.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-021",
+   "tags": [
+    "typed-access",
+    "question-major",
+    "respondent-major"
+   ],
+   "question": "Can demand-driven typed views reduce selector work without a second evaluator?",
+   "method_grade": "ANALYTICAL_DEDUCTION",
+   "disposition": "OPEN_CONDITIONAL_ACCESS_EXTENSION",
+   "sources": [
+    {
+     "detail": "_evaluate_index_group all-respondent loop",
+     "path": "rawlsing_next/_pre553_query_eval.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    },
+    {
+     "detail": "execute_empirical_query 734",
+     "path": "rawlsing_next/pre553_empirical_query.py",
+     "ref": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-02",
+    "R3-CAP-06"
+   ],
+   "reuse_beyond_anvil": "Reusable candidate-stream vs evaluator separation.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  },
+  {
+   "id": "R3-RES-022",
+   "tags": [
+    "SEAM",
+    "research",
+    "authority"
+   ],
+   "question": "Are SEAM/26 and ANVIL/15 adopted science or design constraints?",
+   "method_grade": "SOURCE_DOCUMENTED",
+   "disposition": "RETAIN_AS_DOCUMENTARY_CONSTRAINT",
+   "sources": [
+    {
+     "detail": "standing line 3",
+     "path": "SOURCE_118/SEAM_26.md",
+     "ref": "796452b8cb788fa5a02f37a7ce86eafce8312dfe"
+    },
+    {
+     "detail": "Section IX receiving",
+     "path": "SOURCE_118/ANVIL_15.md",
+     "ref": "3cc09bba3d0e26c226da0ddca4b64c43dd74e493"
+    }
+   ],
+   "cross_refs": [
+    "R3-CAP-05",
+    "R3-CAP-09"
+   ],
+   "reuse_beyond_anvil": "Reusable research-status discipline.",
+   "has_counterargument": true,
+   "has_negative_witness": true,
+   "has_uncertainty": true
+  }
+ ],
+ "count": 22
+}
