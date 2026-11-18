@@ -1,0 +1,118 @@
+{
+  "schema": "ANVIL_SRC04_ADMISSION@1",
+  "task": "ANVIL_SRC04_ADMISSION_20261118",
+  "status": "NOT_COMPATIBLE__EXACT_CURRENT_ADAPTER_AND_Q2_INPUT_BUNDLE_MISSING",
+  "grant": {
+    "path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+    "commit": "303a57851785557fff8229e29a5554717168cbd1",
+    "sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "issuer": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_rows": 7337,
+    "source_columns": 181,
+    "host": "USER_LOCAL_MAC",
+    "purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+    "consumer": "EXISTING_PRE553_SOURCE_BACKED_C11",
+    "currentness": "CURRENT_GRANTED",
+    "revocation": "NONE_RECORDED",
+    "full_source": true,
+    "scope": "ALL_181_PHYSICAL_SLOTS__ALL_QUALIFIED_RESPONSE_FIELDS"
+  },
+  "accepted_c11_reference": {
+    "commit": "ba41253681212be14a0cde009afb99d77e14935e",
+    "release_object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+    "semantic_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "rows": 7337,
+    "selected_response_count": 177,
+    "selected_coordinate_count": 3,
+    "response_positions": 1298649,
+    "held_q217_unbound_cells": 38,
+    "initial_target": "163_RESPONSES_PLUS_2_COORDINATES",
+    "repaired_target": "178_RESPONSES_PLUS_3_COORDINATES_WHERE_SOURCE_QUALIFIED"
+  },
+  "source_config": {
+    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "pinned_commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+    "present_in_current_aee_tree": false,
+    "note": "Exact historical config path/hash exists at 303a/B pin; current accepted tree has no source_configuration package."
+  },
+  "compatibility_findings": {
+    "human_grant_present": true,
+    "generic_current_resolver_present": false,
+    "campaign_resolver_present": true,
+    "campaign_resolver_status": "FullGrantResolver exists in the historical 303a campaign full_runner; it imports the absent rawlsing_next.source_configuration package and is campaign-local, not a current accepted ANVIL resolver.",
+    "current_protocol_only": "pre553_r157_projection_adapter.SourceReadDecisionResolver is a protocol; no concrete current implementation.",
+    "source_i02_builder_requires": [
+      "SourceConfig",
+      "FrozenInputCensus",
+      "SourceInventory",
+      "GrammarPolicy",
+      "ScientificFrontier",
+      "resolver/current request for original source",
+      "SourceSavedBodySink body transport"
+    ],
+    "q2_input_bundle_present_in_grant": false,
+    "q2_input_bundle_present_in_303a_grant_closure": false,
+    "q2_input_bundle_present_in_current_aee_tree": false,
+    "accepted_c11_release_is_not_q2_census": true,
+    "first_refusal": "SOURCE_READ_RESOLVER_REQUIRED in build_source_i02_handoff for original binding; after a resolver adapter, the required Q2 FrozenInputCensus/SourceInventory/GrammarPolicy/ScientificFrontier bundle is still absent."
+  },
+  "exact_request_fields_if_adapter_is_issued": {
+    "source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "source_format": "SAV",
+    "custody_locator_binding": "exact source.config identity.locator binding",
+    "host": "USER_LOCAL_MAC",
+    "purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+    "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+    "read_operation": "SOURCE_RESPONSE_DECODE",
+    "physical_read_extent": "EXACT_FILE",
+    "metadata_freeze_refs": "exact source.config metadata witness ref(s)",
+    "semantic_use_scope": [
+      "SOURCE_NATIVE_RESPONSE_INCIDENCE",
+      "NO_SEMANTIC_ADOPTION",
+      "SRC04",
+      "FULL_SRC04_C11_CONSTRUCTION"
+    ],
+    "currentness": "CURRENT_GRANTED",
+    "revocation_ref": null,
+    "retention_export_limits": "local runtime only; respondent data outside Git/stdout; nonidentifying aggregates only"
+  },
+  "smallest_conservative_wiring": {
+    "not_a_new_grant": true,
+    "step_1": "Use the existing human 303a grant via a harness-only SRC04 adapter that revalidates grant SHA/path and maps the exact request fields above to IssuedSourceReadDecision, with source_permission_refs=(grant_ref,) and a decision_ref derived from the grant SHA. Do not label it TEST_ONLY.",
+    "step_2": "Load the exact repaired-v2 SourceConfig from the 303a/B path/hash in a read-only historical snapshot; current accepted tree lacks the package.",
+    "step_3": "Supply or construct the exact Q2 FrozenInputCensus, SourceInventory, GrammarPolicy and ScientificFrontier for SRC04. These are not granted by FULL_SOURCE_GRANT and are not the accepted C11 release reference.",
+    "step_4": "Only then can build_source_i02_handoff with SourceSavedBodySink run one source build plus cold reopen. No command is valid yet."
+  },
+  "missing_inputs": [
+    "current concrete SourceReadDecisionResolver adapter with exact request mapping",
+    "current SourceConfig file in accepted tree at the exact path/hash",
+    "SRC04 FrozenInputCensus",
+    "SRC04 SourceInventory",
+    "SRC04 GrammarPolicy",
+    "SRC04 ScientificFrontier",
+    "exact row_native_keys only if source_native_key_slot is configured and required"
+  ],
+  "competent_issuing_boundary": "Source read/C11 construction authorization: HUMAN_USER_VIA_EXISTING_PYAT_HQ (existing 303a grant). Q2 operation/fate/frontier census and any scientific operation authority: the existing Pyat HQ/user scientific boundary; not supplied by this source-read grant. No new grant is minted or requested here.",
+  "one_build_command": null,
+  "why_no_command": "Not compatible: the current builder cannot accept the campaign-local resolver and lacks the required Q2 census/inventory/policy/frontier; no source read may start.",
+  "source_pins": {
+    "R2": "d4f0a6499432aa3186c0d92174fa228211759e44",
+    "C11_reference": "ba41253681212be14a0cde009afb99d77e14935e",
+    "accepted_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "writer_ref": "9e46202457c4ad69e714045e6cf831f0251695c2",
+    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+  },
+  "limits": [
+    "No raw source opening/reading/hashing.",
+    "No respondent values.",
+    "No new grant, source chemistry, science or product edit.",
+    "No heavy benchmark.",
+    "SRC04 is not relabeled TEST_ONLY."
+  ],
+  "stop": "STOP_AT_PREREQUISITE__NO_SOURCE_BUILD_COMMAND_YET"
+}
