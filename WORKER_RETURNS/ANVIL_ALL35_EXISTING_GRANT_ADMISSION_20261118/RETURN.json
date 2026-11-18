@@ -1,0 +1,82 @@
+{
+  "evidence_pins": {
+    "r157_config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+    "src04_admission": "f3000966fb05bda55fce8a804396a04eaf627a33",
+    "src04_config": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+    "src04_grant": "303a57851785557fff8229e29a5554717168cbd1",
+    "src17_config": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+    "src17_grant": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038"
+  },
+  "limits": [
+    "No new grant/source right/scientific eligibility/CURRENT issuer",
+    "No source path open/stat/hash/read",
+    "No I03/I05 expansion",
+    "No protected/product/science edits"
+  ],
+  "r157_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "request_contract": {
+    "concrete_resolver": "ExistingGrantResolver",
+    "external_signature_required": true,
+    "external_trust_required": true,
+    "i03_i05_expansion": false,
+    "no_source_open": true,
+    "source_decode_not_invoked": true,
+    "static_grant_hash_is_not_current": true
+  },
+  "schema": "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_RETURN@1",
+  "src04": {
+    "currentness": null,
+    "decision": null,
+    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "request": {
+      "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+      "custody_locator_binding": "SRC04_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+      "host": "USER_LOCAL_MAC",
+      "metadata_freeze_refs": [
+        {
+          "content_hash": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb",
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC04_PHYSICAL_METADATA.json"
+        }
+      ],
+      "physical_read_extent": "EXACT_FILE",
+      "purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+      "read_operation": "SOURCE_RESPONSE_DECODE",
+      "semantic_use_scope": [
+        "FULL_SRC04_C11_CONSTRUCTION",
+        "NO_SEMANTIC_ADOPTION",
+        "SOURCE_NATIVE_RESPONSE_INCIDENCE",
+        "SRC04"
+      ],
+      "source_format": "SAV",
+      "source_id": "SRC04",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    },
+    "request_digest": "ed0973dcc3be98d620a0174e59ff600927a7c81467aeb132252b975b5c1dfd4d",
+    "request_only_decided": true,
+    "revocation": null,
+    "self_issued_authority": false,
+    "source_read_performed": false,
+    "status": "RUNTIME_ISSUER_HOLD__INDEPENDENT_CURRENT_EVIDENCE_MISSING"
+  },
+  "src17": {
+    "authentication_sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
+    "grant_sha256": "d6272ba68d737fa9da27704e18bf6ee00ef1d31f685ba76f84f4a0dcc4764e3d",
+    "no_i03_i05_expansion": true,
+    "purpose": "SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE",
+    "reason": "SRC17_IS_EXACT_CONSTRUCTION_SOURCE_READ_C11_ONLY__NOT_A_CROSS_SOURCE_OR_SCIENTIFIC_GRANT",
+    "reusable_for_i03_i05": false,
+    "reusable_for_src04_binding": false,
+    "schema": "ANVIL_SRC17_REUSE_SCOPE_CHECK@1",
+    "scientific_allow_claimed": false,
+    "scope_is_source_specific": true,
+    "source_id": "SRC17"
+  },
+  "status": "RUNTIME_ISSUER_HOLD__INDEPENDENT_CURRENT_EVIDENCE_MISSING",
+  "tests": {
+    "command": "PYTHONPATH=. ANVIL_R157_SNAPSHOT=<aee954> python3 -m unittest -v test_existing_grant_binding.py",
+    "failed": 0,
+    "passed": 9,
+    "test_only_positive": "ephemeral Ed25519 signed current witness; not production authority"
+  }
+}
