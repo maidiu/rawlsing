@@ -2,7 +2,7 @@
 
 **2026-11-17 research/source ledger.** Protected PRE-MAIN verified branch HEAD **5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e**. This isolated ORACLE candidate branches from **8bd487fb8c2ca3b045900cad332fe2140fe95000**, SEAM/29's documentary head; no protected mutation, scientific ruling, execution or worker-lease attestation. All HEADs can change. This is not HQ accreditation or a source-use grant.
 
-## Verified canonical currentness and essential programme ancestry
+**Stage-sensitive correction after independent UM-SOROK review:** the original source ledger predates ANVIL R3 design. R3 author 02594c18f8401855a0f9cecc45921b548fa9aed6, separate C 8a245da3f6de5ca1eac3074eb99f817aabd62ac1 (`ACCEPT_SCOPED_STAGE_SENSITIVE_ACCOMMODATION_DESIGN`), and HQ handoff eeb67a18d0d8ee2dddc68f571f8759bde0c7fb03 (`HQ_CURRENTNESS_HOLD` for protected paired receiving) established a conditional respondent-major/question-major access and derived-product design direction, **not implemented native source/person science**. [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md) supersedes older R7-only status wording; [ORACLE/13](13_PINNED_SOURCE_LOOKUP.json) now contains immutable commit/blob and executable source code entries; [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) requires mechanical AND independent scientific tests and holds unexecuted independent cold accession.\n\n## Verified canonical currentness and essential programme ancestry
 
 | Asset | Exact inspected head/blob | Status and significance |
 |---|---|---|
