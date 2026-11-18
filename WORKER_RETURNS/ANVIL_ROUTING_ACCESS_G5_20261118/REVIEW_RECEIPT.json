@@ -1,0 +1,158 @@
+{
+  "schema": "ANVIL_ROUTING_ACCESS_INDEPENDENT_REVIEW@1",
+  "task": "ANVIL_ROUTING_ACCESS_G5_20261118",
+  "reviewer": "independent nonauthor review; OWNER worktree; author mutable worktree not inspected",
+  "decision": "REVISE_EXACT_DEFECT",
+  "full_acceptance": false,
+  "scoped_correctness_observed": true,
+  "candidate_code": "73b480080ede013770e0c887aa5aa82af3cfafb2",
+  "candidate_evidence": "1620f625d086d4e102c10112a4628b07f1689137",
+  "accepted_product_baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "review_boundary_pin": "e01a2bd7800cd906b12394dda8dcd1ebdf6eb961",
+  "contract": "15afd22f6d55fe3d208d0a3b63d802de2b4e6f13",
+  "product_scope_observed": {
+    "diff_from_baseline": [
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/_pre553_query_common.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py"
+    ],
+    "exact_four_paths": true,
+    "product_files_outside_those_paths": false,
+    "product_patch_made_by_reviewer": false,
+    "native_or_reference_execution": false
+  },
+  "accepted_scoped_axes": [
+    "public first consumer: prepared.execute_i03 reaches _routing_fact_for and the session locator for f4 and f2",
+    "full fact serialization: canonical_json(candidate_fact) equals baseline for f4 and f2",
+    "result parity: fact ref, risk members, denominator members, cells including the f4 observed-zero cell, used objects and used authority refs equal baseline for f4 and f2",
+    "CURRENT at lookup and before every locator yield: source calls _require_live before the query and before each yield; focused duplicate-row liveness/revocation test passes",
+    "changed source/root restore: independent focused test test_cold_i03_new_source_content_changes_fact_and_old_root_restores passed",
+    "missing locator and corrupt locator pointer fail closed in the focused negative test",
+    "source/universe admissibility: indices_for requires the exact single release and universe; _build checks routing body ref/respondent/universe and family/locator census"
+  ],
+  "blocking_findings": [
+    {
+      "id": "B1_SYMBOL_BOUNDARY",
+      "severity": "contract_conformance",
+      "finding": "The authorized candidate symbol scope is DirectEstateI03Session.__enter__, _build, indices_for and indispensable same-class private routing lookup/read helpers. The candidate adds module-level class _RoutingLookup (candidate lines 112-161) and new session state _routing_lookup in DirectEstateI03Session.__init__ (line 185). Neither is one of the named methods nor a same-class private helper.",
+      "source_evidence": [
+        "candidate rawlsing_next/pre553_direct_estate_i03.py:112 class _RoutingLookup",
+        "candidate rawlsing_next/pre553_direct_estate_i03.py:185 self._routing_lookup = _RoutingLookup(self)",
+        "commission_ANVIL_authenticated_access.md line 35 exact write scope"
+      ],
+      "required_repair": "Move the lookup/read path into a same-class private helper on DirectEstateI03Session and remove the new module-level class and __init__ attachment, or obtain an explicit scope amendment. Do not silently broaden the frozen symbol scope.",
+      "actual_code_patch_by_reviewer": false
+    },
+    {
+      "id": "B2_REDUNDANT_LOCATOR_INDEX_AND_UNUSED_MEMBER_SET",
+      "severity": "parsimony_and_build_cost",
+      "finding": "routing_locator has PRIMARY KEY(respondent,target,risk_set,fact_ref); routing_locator_resp_idx repeats exactly the same column order. SQLite's primary-key autoindex already serves the equality predicate and fact_ref order. The explicit index adds a second B-tree and build writes with no additional lookup result or semantic guarantee. The member_set column is inserted during _build but lookup selects only fact_ref,gid,off; no reader uses the stored member_set. The body is re-read and authority-validated, so the column is write-only in this cut.",
+      "source_evidence": [
+        "candidate pre553_direct_estate_i03.py:215-226 table and duplicate index",
+        "candidate pre553_direct_estate_i03.py:429-436 member_set insertion",
+        "candidate pre553_direct_estate_i03.py:123-127 lookup SELECT fact_ref,gid,off",
+        "sqlite-plan.txt: without explicit index SQLite uses sqlite_autoindex_routing_locator_1; with explicit index the planner uses the equivalent explicit index",
+        "grep: no SELECT/read of member_set in the candidate locator or focused test"
+      ],
+      "required_repair": "Remove routing_locator_resp_idx. Remove member_set unless an actual current reader and planner/storage justification is supplied; if retained, name the consumer and show a measured reason. Update the test-only INSERT/table shape accordingly.",
+      "actual_code_patch_by_reviewer": false
+    },
+    {
+      "id": "B3_DISTINCT_CONFLICT_PROOF_GAP",
+      "severity": "semantic_evidence_gap",
+      "finding": "The new path is not actually proven to retain distinct conflicting candidates. The multiple-yield test inserts a duplicate locator row with the same fact_ref and same body; it is a liveness/CURRENT witness only, not conflict semantics. The full-family test has one exact candidate in the tiny fixture. The existing native conflict test exercises routing_by_respondent, not index.routing_lookup.",
+      "source_evidence": [
+        "candidate test_anvil_authenticated_routing_access.py:160-190 controlled duplicate same-ref row",
+        "candidate test_anvil_authenticated_routing_access.py:100-145 one-candidate full-family comparison",
+        "candidate test_pre553_i03_scale_equivalence_repair.py:92-139 existing conflict test uses routing_by_respondent",
+        "candidate _pre553_query_eval.py:61-93 source passes every lookup row to matches and then conflict-checks states/member_sets, but this is not an actual locator-level distinct-candidate witness"
+      ],
+      "required_repair": "Add a narrow controlled regression with two distinct canonical routing facts for the same respondent/target/risk, ideally different routing/applicability state or member_set, exercised through routing_lookup and _routing_fact_for. Assert both are yielded in canonical ref order, both enter used/authority validation, and the existing conflict check refuses. A duplicate same-ref row must not be counted as this proof.",
+      "actual_code_patch_by_reviewer": false
+    },
+    {
+      "id": "B4_EAGER_REFUSAL_TEST_GAP",
+      "severity": "contract_test_gap",
+      "finding": "The new _build eagerly parses every routing body before lookup. Source has body/ref/respondent/universe checks and family/locator census checks, but the focused test corrupts only a locator pointer and deletes locator rows. No explicit test asserts the newly eager malformed-routing-body/refusal timing required by the contract. The existing tests do not provide a routing-body corruption witness.",
+      "source_evidence": [
+        "candidate pre553_direct_estate_i03.py:392-458 build-time routing body parse and census",
+        "candidate test_anvil_authenticated_routing_access.py:196-242 missing/corrupt locator only",
+        "no routing body corruption match in the candidate test tree"
+      ],
+      "required_repair": "Add one focused test that corrupts a routing body/projected key and proves fail-closed refusal at session preparation/lookup before any absence result is trusted. State the earlier refusal timing explicitly.",
+      "actual_code_patch_by_reviewer": false
+    }
+  ],
+  "resource_findings": [
+    {
+      "id": "R1_ROW_GROUP_BOUND_AND_REUSE",
+      "severity": "resource_and_reuse",
+      "finding": "No unbounded cross-call match cache was found: gids is local to one lookup generator and is discarded when _routing_fact_for finishes consuming it. It is bounded by the distinct physical gids touched by that lookup, but not by a fixed one-row-group bound. It bypasses session._row_group_cache, so repeated lookups reread groups. Qualification reports 40 lookup objects and 220 total row-group reads; that is not a reuse proof.",
+      "source_evidence": [
+        "candidate pre553_direct_estate_i03.py:129-135 gids dictionary and direct read_row_group",
+        "candidate pre553_direct_estate_i03.py:522-545 separate _row_group_cache used by _respondent_family",
+        "qualification.json: lookup_objects_yielded 40, parquet_row_group_reads_total 220"
+      ],
+      "required_repair_or_measurement": "Use the existing bounded row-group access or explicitly state the per-lookup gid bound and measure reuse/reads across operations. Do not claim a one-group bounded cache or broad reuse from this implementation.",
+      "actual_code_patch_by_reviewer": false
+    }
+  ],
+  "performance_and_measurement": {
+    "status": "NO_VALID_END_TO_END_BENEFIT_CONCLUSION",
+    "reason": "The author comparator builds both candidate and baseline _ReleaseIndex objects from the same candidate prepared session. baseline_index = replace(candidate_index, routing_lookup=None) disables only the adapter; it does not measure a separate baseline session build S or H. Candidate S=58.398 ms is candidate-only. H is outside timed scope. Parent maxrss is the only memory figure. Therefore the Q deltas (f4 40.731 vs 61.212 ms; f2 28.639 vs 39.734 ms) are a scoped same-session Q observation, not an end-to-end speedup and not a measured failure to amortize incremental S.",
+    "do_not_claim": [
+      "end-to-end speedup",
+      "measured amortization or measured failure to amortize incremental S",
+      "full H/S/Q/O resource accounting",
+      "sampled process-tree RSS",
+      "survey-scale performance"
+    ],
+    "keep_separate": {
+      "qualification_proof": "exact parity and full serialization for two tiny operations",
+      "resource_observation": "candidate S, same-session Q, export O, parent maxrss, raw row-group read count"
+    }
+  },
+  "fixture_limits": {
+    "tiny_fixture": "8 controlled respondents; 24 routing rows; two operations",
+    "no_weighted_k3_plus_coordinate": true,
+    "no_distinct_conflicting_candidate": true,
+    "coordinate_case": "ABSENT_FROM_TINY_FIXTURE; separately pinned native nodes only",
+    "no_survey_scale": true
+  },
+  "source_pins": {
+    "pre553_direct_estate_i03.py": "06d0ff922c87fad12eec75c5f999713c899f5ca6d4c59e385aceff33d91ba926",
+    "pre553_query_common.py": "ea884707beaa3fcb151973e3464ad2b469f1a187e108aad19db5e37454050777",
+    "pre553_query_eval.py": "2c0dc7da1b96670c570efd975c741c0e38de58eb96c5c64426654aa72acad934",
+    "test_anvil_authenticated_routing_access.py": "cdcfafc3f6099a2920c46b465237706af0733b68fd8a01a84de8afa9870fc7bc"
+  },
+  "tests": {
+    "independent_focused_locator": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_anvil_authenticated_routing_access.py",
+      "result": "5 passed in 3.36s",
+      "evidence": "focused-routing.txt"
+    },
+    "independent_changed_restore": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py::test_cold_i03_new_source_content_changes_fact_and_old_root_restores",
+      "result": "1 passed in 1.55s",
+      "evidence": "changed-restore.txt"
+    },
+    "author_evidence_not_rerun": {
+      "focused": "8 passed, 5.47s",
+      "main_union": "86 passed, 32.99s",
+      "affected_union": "21 passed, 21.32s",
+      "note": "author logs reviewed for scope; not claimed as independent reruns"
+    }
+  },
+  "custody": {
+    "reviewer_writes": "WORKER_RETURNS/ANVIL_ROUTING_ACCESS_G5_20261118/ only",
+    "product_edits": false,
+    "author_mutable_worktree_inspected": false,
+    "candidate_source": "git archive of exact candidate 73b480080ede013770e0c887aa5aa82af3cfafb2",
+    "no_raw_source": true,
+    "no_native_reference": true,
+    "no_heavy_benchmark": true,
+    "no_protected_or_production_acceptance": true
+  },
+  "next": "Author must repair B1 and B2 (and B5 if the bounded-row-group claim is retained), add B3/B4 focused witnesses, then freeze a revised cut for a new independent review. No product acceptance or architecture decision is implied."
+}

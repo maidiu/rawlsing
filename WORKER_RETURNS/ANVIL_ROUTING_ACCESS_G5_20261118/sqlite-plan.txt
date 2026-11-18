@@ -1,0 +1,4 @@
+pk_only [(4, 0, 0, 'SEARCH routing_locator USING INDEX sqlite_autoindex_routing_locator_1 (respondent=? AND target=? AND risk_set=?)')]
+pk_only indexes [('sqlite_autoindex_routing_locator_1', None)]
+pk_plus_explicit [(4, 0, 0, 'SEARCH routing_locator USING INDEX routing_locator_resp_idx (respondent=? AND target=? AND risk_set=?)')]
+pk_plus_explicit indexes [('sqlite_autoindex_routing_locator_1', None), ('routing_locator_resp_idx', 'CREATE INDEX routing_locator_resp_idx ON routing_locator(respondent,target,risk_set,fact_ref)')]

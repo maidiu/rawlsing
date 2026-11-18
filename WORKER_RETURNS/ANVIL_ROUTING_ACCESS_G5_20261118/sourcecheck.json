@@ -1,0 +1,61 @@
+{
+  "schema": "ANVIL_ROUTING_ACCESS_REVIEW_SOURCECHECK@1",
+  "candidate_code": "73b480080ede013770e0c887aa5aa82af3cfafb2",
+  "candidate_evidence": "1620f625d086d4e102c10112a4628b07f1689137",
+  "accepted_baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "parent_boundary_pin": "e01a2bd7800cd906b12394dda8dcd1ebdf6eb961",
+  "contract": "15afd22f6d55fe3d208d0a3b63d802de2b4e6f13",
+  "branch_reviewed": "agent/anvil-engineering-cut1-20261117-r1",
+  "product_diff": {
+    "paths": [
+      "rawlsing_next/_pre553_query_common.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py"
+    ],
+    "exactly_four_paths": true,
+    "other_product_paths_changed": false,
+    "repo_file_hashes": {
+      "rawlsing_next/pre553_direct_estate_i03.py": "06d0ff922c87fad12eec75c5f999713c899f5ca6d4c59e385aceff33d91ba926",
+      "rawlsing_next/_pre553_query_common.py": "ea884707beaa3fcb151973e3464ad2b469f1a187e108aad19db5e37454050777",
+      "rawlsing_next/_pre553_query_eval.py": "2c0dc7da1b96670c570efd975c741c0e38de58eb96c5c64426654aa72acad934",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py": "cdcfafc3f6099a2920c46b465237706af0733b68fd8a01a84de8afa9870fc7bc"
+    }
+  },
+  "source_lines": {
+    "routing_locator_table_and_index": "pre553_direct_estate_i03.py:215-226",
+    "routing_lookup_class": "pre553_direct_estate_i03.py:112-161",
+    "routing_init_attachment": "pre553_direct_estate_i03.py:185",
+    "routing_build": "pre553_direct_estate_i03.py:392-458",
+    "routing_lookup_current": "pre553_direct_estate_i03.py:118-161",
+    "routing_eval_ingress": "_pre553_query_eval.py:61-93",
+    "existing_full_family_selector": "_pre553_query_predicate.py:12-17"
+  },
+  "planner_check": {
+    "scope": "SQLite in-memory schema/EXPLAIN QUERY PLAN only; no scientific or native reference query",
+    "without_explicit_index": "SEARCH routing_locator USING INDEX sqlite_autoindex_routing_locator_1 (respondent=? AND target=? AND risk_set=?)",
+    "with_explicit_index": "SEARCH routing_locator USING INDEX routing_locator_resp_idx (respondent=? AND target=? AND risk_set=?)",
+    "conclusion": "explicit index is equivalent to the PK autoindex; it adds storage/build writes and is not necessary for the lookup"
+  },
+  "member_set_readers": {
+    "locator_select": "fact_ref,gid,off only",
+    "current_read_sites_found": 0,
+    "conclusion": "write-only in this candidate; body member_set remains authoritative and is revalidated downstream"
+  },
+  "tests": {
+    "independent_focused": "5 passed in 3.36s",
+    "independent_changed_restore": "1 passed in 1.55s",
+    "author_focused": "8 passed in 5.47s (author log; not independent)",
+    "author_main_union": "86 passed in 32.99s (author log; not independent)",
+    "author_affected_union": "21 passed in 21.32s (author log; not independent)"
+  },
+  "review_limits": {
+    "distinct_conflicting_candidate_physically_exercised": false,
+    "duplicate_same_ref_is_conflict_proof": false,
+    "weighted_k3_plus_coordinate_fixture": false,
+    "native_reference_run": false,
+    "heavy_benchmark": false,
+    "survey_scale": false,
+    "production_or_protected_acceptance": false
+  }
+}
