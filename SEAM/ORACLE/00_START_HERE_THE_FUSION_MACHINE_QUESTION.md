@@ -12,6 +12,10 @@ The claim to prove is **conditional and counterfactual necessity, not unique det
 
 **PYAT makes evidence-bearing historical/social possibility available. SOROK must be an actual process that, through situated life, becomes one of its materially possible people.** If the latter could run independently with generic demographic tags, or if a renderer could fabricate convincing histories after sampling attitudes, the projects have not fused.
 
+## Resource and intelligence execution precedence
+
+For the Astra commissioning and execution of this dossier, [ORACLE/07](07_INTELLIGENCE_USAGE_DELEGATION_AND_FIVE_HOUR_PERSISTENCE.md) is **mandatory**: classify reasoning intensity for every work unit, retain deep scientific/architectural adjudication with Astra, delegate narrowly specified checkable work through an actually authorized Codex HQ route using the user's chosen **Deepseek V4.1-Flash 1017 MAX** designation, check real usage and session limits if exposed, never invent remaining quota or claim switching without a real control, and commit early/incrementally with a generous reserve before the user-stated five-hour limit. Scientific/rights/owner boundaries override convenience or token economy.
+
 ## Two indispensable directions (do not collapse)
 
 - **Forward generative causal direction:** historical world, material social relations, independent people and developing organism -> activity/encounter -> differential access and practical consequences -> formation/reorganization of acquired psycho-relational structures -> ongoing lived person -> action/speech/survey emission.
@@ -47,6 +51,8 @@ End with a person able to encounter something new, act otherwise within situated
 - **03_CANDIDATE_MACHINERY_AND_SCIENTIFIC_FORKS.md** — competing ways of making data causally generate persons; proposed minimum functional operators, not imposed design; calibration and sufficient consequence.
 - **04_ADVERSARIAL_EXPERIMENTS_AND_ASTRA_DELIVERABLE.md** — source-sensitive experiments, negative controls, concrete deliverable demand and research order.
 - **05_SOURCES_CASES_CURRENTNESS_AND_UNRESOLVED_AUTHORITY.md** — exact live cuts, respondent dossiers, governing files, scientific literature, existing work vs missing verified operations, custodian questions.
+- **06_COPY_PASTE_ASTRA_LAUNCH.md** — standalone independent Astra commission.
+- **07_INTELLIGENCE_USAGE_DELEGATION_AND_FIVE_HOUR_PERSISTENCE.md** — user-directed task-tier reasoning, exact Deepseek V4.1-Flash 1017 MAX commissions through Codex HQ, honest usage/time monitoring, GitHub-first persistence and nominal five-hour cutoff reserve.
 
 ## Output standard
 
