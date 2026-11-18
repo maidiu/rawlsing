@@ -1,0 +1,53 @@
+{
+  "schema":"ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_REVIEW@1.0.0",
+  "job":"FOCUSED CLOSURE OF TWO FROZEN-EVIDENCE DEFECTS",
+  "reviewer":{"session_id":"ses_e30a442d8ffeYBbXi7rPUpPxoc","model":"opencode-go/deepseek-v4.1-flash#max","subagents":false},
+  "worktree":"/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/OWNER",
+  "branch":"agent/anvil-engineering-cut1-owner-20261117-r1",
+  "author_correction":"a933a96e646b59276707b6a8de2bb8192e7f75ac",
+  "previous_review":"073cb420a85c57d93682a0073f8bbd9f9b3eb484",
+  "raw_prior_execution":"7cc824eaca28771ec60f6d3d77236774237124ac",
+  "correction_manifest":{"files":9,"bad":[],"all_hashes_match":true},
+  "independent_postprocessor":{"script":"truth_correction_independent.py","output":"independent-postprocessor.out","exit":0,"all":true,"semantic_all":true,"width_all":true,"expected_sets":"EXPECTED_SETS.json.gz","actual_sets":"ACTUAL_SETS.json.gz","verification":"VERIFICATION.json"},
+  "full_10k_semantic_closure":{
+    "source":"e97 F4 independent proof + four corrected frozen payloads; no native rerun",
+    "operations":{
+      "selected_weighted":{"risk":10000,"denom":5000,"cells":2,"weighted_cells":true,"raw_num":true,"raw_denom":true,"risk_set":true,"denom_set":true,"replay_ref":true,"payload_sha":true},
+      "f2_forward_raw":{"risk":10000,"denom":5000,"cells":2,"raw_num":true,"raw_denom":true,"risk_set":true,"denom_set":true,"replay_ref":true,"payload_sha":true},
+      "f2_reverse_raw":{"risk":10000,"denom":3333,"cells":2,"raw_num":true,"raw_denom":true,"risk_set":true,"denom_set":true,"replay_ref":true,"payload_sha":true},
+      "repeated_mr_raw":{"risk":770,"denom":385,"cells":770,"raw_num":true,"raw_denom":true,"risk_set":true,"denom_set":true,"replay_ref":true,"payload_sha":true}
+    },
+    "expected_identity_source":"pattern-derived from pinned fixture_1006/respondent construction; independent postprocessor uses ctx._respondent, not actual payload membership",
+    "same_count_member_replacement_fails":true,
+    "restore_passes":true,
+    "raw_stdout_prior_false_preserved":true,
+    "prior_false_check_labels_preserved":true
+  },
+  "width128_closure":{
+    "scope":"one 128R x 600 binding observation only; not full-width or survey-scale proof",
+    "expected_cells":[{"cell":"0","cell_state":"OBSERVED_POSITIVE","raw_numerator_support":39},{"cell":"1","cell_state":"OBSERVED_ZERO_IN_SUPPORTED_RISK_SET","raw_numerator_support":0}],
+    "actual_cells_match":true,
+    "risk":128,"denom":39,"events":68960,"routing":76800,"weights":128,"retained":55187741,
+    "zero_cell_deletion_fails":true,
+    "replay_ref":true,"payload_sha":true,
+    "raw_stdout_prior_false_preserved":true
+  },
+  "cost_observations":{
+    "semantic_H":0.5745562830707058,"semantic_S":12.651083842036314,"semantic_Q_external":106.1867780839093,"semantic_O":{"selected_weighted":0.44066357298288494,"f2_forward_raw":0.379,"f2_reverse_raw":0.358,"repeated_mr_raw":0.161},"semantic_RSS":722276352,"semantic_scratch":122591630,
+    "width_build":293.95639729802497,"width_query_external":45.22563378105406,"width_S":22.8470964320004,"width_Q":21.238738670945168,"width_O":0.004812355036847293,"width_build_RSS":200609792,"width_query_RSS":158609408,"width_build_scratch":826683762,"width_query_scratch":248680671,
+    "cumulative":445.369,"caps":{"build":600,"query":600,"rss":6442450944,"scratch":4294967296,"total":900},"width_H_separately_timed":false,
+    "no_new_native_run_query_build_profile":true
+  },
+  "source_open_classification":"one Python os.open of temporary native I03 session directory .s2c-native-i03-*; not raw source; Arrow/SQLite internal opens not fully observable",
+  "defects_closed":[
+    {"id":"SEMANTIC_TRUTH_IDENTITY_SET_CLOSURE_GAP","state":"CLOSED","evidence":"EXPECTED_SETS/ACTUAL_SETS full sets; independent postprocessor all checks true; same-count member replacement fails; expected identities pattern-derived."},
+    {"id":"WIDTH128_EXPECTED_ZERO_CELL_OMITTED","state":"CLOSED","evidence":"Expected and actual cell 0=39 positive, cell 1=0 observed-zero; zero deletion fails; prior false raw label preserved via supersession."}
+  ],
+  "history":{"raw_prior_stdout_false_immutable":true,"prior_false_check_labels_immutable":true,"supersession":"SUPERSESSION.json; old raw files not edited"},
+  "decision":"ACCEPT_SCOPED_10K_FULL_SEMANTICS_AND_WIDTH128_OBSERVATION",
+  "accepted_scoped":true,
+  "proof_grade":{"full_five_10k":"DENOMINATOR/STATE + FULL CELLS/WEIGHTED/RISK/DENOM SETS from e97 F4 + four corrected payloads","width128":"ONE 128R x 600 F4 OBSERVATION WITH FULL ZERO-CELL/RISK/DENOM","not_full_width":true,"not_100k":true,"not_science":true,"no_speedup_extrapolation":true},
+  "next_measured_question":"The measured remaining resource is the width build/query (293.956 s + 45.226 s) and semantic closure 106.187 s; cumulative 445.369 s. The smallest next real question is one bounded 600-column x 10k respondent observation, not a linear extrapolation from 5Q or 128R; no new grant/backend/engine is created by this review.",
+  "limits":["Sourcefree TEST_ONLY engineering only; no original35/native science/production service/actor/CURRENT/protected merge.","No native run/query/build/profile in this closure; all payloads frozen.","One width point only, not full-width or 100k.","O and source-open visibility are limited as explicitly stated."],
+  "custody":{"writes":"WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/ only","product_or_test_edits":false,"background_jobs_left":false}
+}

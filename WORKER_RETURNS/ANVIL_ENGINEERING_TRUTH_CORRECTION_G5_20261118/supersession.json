@@ -1,0 +1,20 @@
+{
+  "old_author_commit": "7cc824eaca28771ec60f6d3d77236774237124ac",
+  "old_semantic": {
+    "RESULT_all_expected": "true (old incomplete checker)",
+    "defect": "expected full member sets absent; derive script indexed absent RESULT fields",
+    "new": "VERIFICATION.json / EXPECTED_SETS.json.gz / ACTUAL_SETS.json.gz; all four exact sets/cells/weights match",
+    "raw_stdout_all_expected": "false"
+  },
+  "old_width": {
+    "RESULT_all_expected": "true (old checker omitted zero cell)",
+    "defect": "observed-zero cell 1 omitted",
+    "expected_cells": [
+      "0"
+    ],
+    "new": "expected cells 0 and 1 included; VERIFICATION all true after actual comparison",
+    "raw_stdout_all_expected": "false"
+  },
+  "rule": "Old raw stdout/RESULT/MANIFEST are immutable and NOT edited; new corrected files explicitly supersede the old false labels.",
+  "schema": "ANVIL_TRUTH_SUPERSESSION@1"
+}
