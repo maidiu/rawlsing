@@ -1,0 +1,35 @@
+{
+  "schema": "ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_MANIFEST@1",
+  "accepted_baseline": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "scratch_baseline": "e3f79397ac51f1f6fc5ed998577bca90f855e483",
+  "scratch_candidate": "3b48fa355ee85ab0b7854301b275fde29dabbe44",
+  "files": {
+    "00_HANDOFF.md": {
+      "sha256": "25ffabbc89e62c50b4b25e84227a3c054b9e4069f310bbb20b917099ec256868",
+      "bytes": 2181
+    },
+    "COMMANDS.md": {
+      "sha256": "620b21c8fa8730f89ac48c90c7a36b676f1f7de27c2dbe47fa2830765f9bdcca",
+      "bytes": 811
+    },
+    "SCRATCH_SHA.txt": {
+      "sha256": "ee155d6fb76ccf80d188e5a47cbdc141478123b24cd05a1117e016d91ff24a4f",
+      "bytes": 41
+    },
+    "candidate.patch": {
+      "sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
+      "bytes": 21112
+    },
+    "tests.txt": {
+      "sha256": "6931136f382cb0bac133babe7632b97f2c68720e1619c370c9519c756f292199",
+      "bytes": 99
+    }
+  },
+  "patch_files": [
+    "pre553_source_i02_handoff.py",
+    "tests/test_all35_construction_only_candidate.py"
+  ],
+  "tests": "13 passed in 3.43s",
+  "real_source_read": false,
+  "product_edits": false
+}
