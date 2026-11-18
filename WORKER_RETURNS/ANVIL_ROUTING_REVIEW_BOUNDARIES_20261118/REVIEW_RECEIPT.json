@@ -1,0 +1,49 @@
+{
+  "schema":"ANVIL_ROUTING_REVIEW_BOUNDARIES_RECEIPT@1.0.0",
+  "job":"ROUTING REVIEW BOUNDARIES / PRE-FREEZE CHECKS",
+  "reviewer":{"session_id":"ses_e30a442d8ffeYBbXi7rPUpPxoc","model":"opencode-go/deepseek-v4.1-flash#max","subagents":false},
+  "worktree":"/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/OWNER",
+  "branch":"agent/anvil-engineering-cut1-owner-20261117-r1",
+  "contract":"15afd22f6d55fe3d208d0a3b63d802de2b4e6f13",
+  "contract_file_sha256":"2778d392b6f623511ede2801ed1795f963211568c5483912f4d42d8e07e9b5cc",
+  "current_product":"68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "author_mutable_implementation_inspected":false,
+  "status":"PREPARED_FOR_FROZEN_AUTHOR_RETURN",
+  "decision":"HOLD_PENDING_FROZEN_AUTHOR_RETURN",
+  "accepted_scoped":false,
+  "selected_scope":{"first_key_order":"RESPONDENT_FIRST_ONLY","target_first":"DEFERRED_NO_CURRENT_CALLER","coordinate_weight_indexes":"DEFERRED"},
+  "current_pins":{
+    "_routing_fact_for":"rawlsing_next/_pre553_query_eval.py 51-85; sha256 b22a3e…",
+    "matching":"full respondent routing family filtered by _question_matches and exact risk_set_ref",
+    "absence":"typed EmpiricalQueryResolutionError; absence is not zero membership",
+    "conflict":"all matches require one (routing_state,applicability_state) and one member_set_replay_ref; otherwise refuse",
+    "ordering":"sorted(matches,key=ref.key); first returned but every match appended to used/authority validation",
+    "current":"no explicit _require_live in _routing_fact_for; CURRENT comes from routing_by_respondent _ColdFamilyRows generator",
+    "sqlite":"members(family,respondent,ref,gid,off); members_resp_idx(family,respondent,ref)",
+    "indices_for":"new _ReleaseIndex per call; grouped key contains id(index)",
+    "prepared":"one DirectEstateI03Session/index build per prepared context; no cross-session persistence"
+  },
+  "decisive_assertion":{
+    "name":"ROUTING_LOCATOR_ALL_MATCHES_CONFLICT_PRESERVING",
+    "expected":"full _ColdFamilyRows routing family filtered by _question_matches/target exact risk; tuple(ref, routing_state, applicability_state, member_set_replay_ref.key, sorted authority refs) for every matching fact",
+    "actual":"locator lookup(respondent,target,risk)",
+    "requirements":["exact set equality","exact canonical ref order","same count","all conflicting candidates retained","authority refs exact for every match","used additions equal matches","no filtered absence before complete coverage","CURRENT before lookup and every match/yield","changed release/universe/manifest/I02 requires fresh admission"],
+    "negatives":["hide eligible row -> fail","hide conflicting row -> fail","return first-only while second exists -> fail","zero from incomplete locator -> fail/typed absence retained","drop/alter authority ref -> fail"]
+  },
+  "pinned_tests":{
+    "current_between_yields":["test_anvil_production_locality_20261118.py::test_production_family_order_is_canonical_and_revocation_refuses","test_pre553_prepared_saved_i03.py::test_prepared_session_revocation_and_condition_refusal","test_pre553_source_direct_parquet_estate.py::test_wrong_source_root_and_live_revocation_refuse","test_pre553_source_direct_parquet_estate.py::test_denied_current_does_not_open_estate_bytes"],
+    "changed_root_source_restore":["test_pre553_direct_estate_i03.py::test_cold_i03_new_source_content_changes_fact_and_old_root_restores","test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join"],
+    "corrupt_body_locator":["test_pre553_direct_estate_i03.py::test_g5_hidden_event_repin_cannot_produce_false_native_i03_fact","test_pre553_direct_estate_i03.py::test_g5_equal_census_forged_duplicate_locator_refuses_native_i03","test_pre553_source_direct_parquet_estate.py::test_forged_posting_rehashed_under_same_i02_detected","test_pre553_source_direct_parquet_estate.py::test_corrupt_locator_before_publication_refused"],
+    "actual_batch_ingress":["test_anvil_prepared_saved_batch_cut1.py","test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join"]
+  },
+  "unsafe_shared_paths":[
+    "_routing_fact_for filters the complete family then checks conflicts; a prefiltered locator returning only one row can hide a conflicting row and bypass the existing conflict guard.",
+    "_routing_fact_for has no own _require_live; a locator returning cached Python rows must not bypass _ColdFamilyRows CURRENT semantics.",
+    "indices_for builds a new _ReleaseIndex each call; locator construction only in _build without exposing it through indices_for yields no reuse.",
+    "current members index is family/respondent/ref only; target/risk locator requires exact new rows/index and complete positional coverage; filtered absence before full coverage is unsafe.",
+    "contract selected respondent-first only; target-first order and coordinate/weight indexes are deferred and must not slip into the first cut."
+  ],
+  "fixture_requirement":"Matched court needs a genuinely qualified weighted same-person k>=3 joint with coordinate predicate. If unavailable, record omission and use existing supported distinct operations plus existing focused weight/coordinate regressions; no invented fixture.",
+  "no_acceptance_reason":"Author implementation not frozen; this is boundary preparation only. Actual independent code review follows frozen return.",
+  "custody":{"writes":"WORKER_RETURNS/ANVIL_ROUTING_REVIEW_BOUNDARIES_20261118/ only","product_edits":false,"native_runs":0,"sql_reference":false}
+}

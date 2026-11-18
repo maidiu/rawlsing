@@ -1,0 +1,66 @@
+{
+  "schema": "ANVIL_ROUTING_REVIEW_BOUNDARIES@1.0.0",
+  "status": "PREPARED_FOR_FROZEN_AUTHOR_RETURN",
+  "contract_commit": "15afd22f6d55fe3d208d0a3b63d802de2b4e6f13",
+  "contract_file_sha256": "2778d392b6f623511ede2801ed1795f963211568c5483912f4d42d8e07e9b5cc",
+  "intake_scope": {
+    "selected_key_order": "RESPONDENT_FIRST_ONLY",
+    "target_first_key_order": "DEFERRED_NO_CURRENT_CALLER",
+    "coordinate_weight_indexes": "DEFERRED",
+    "current_product": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "author_mutable_implementation_inspected": false
+  },
+  "pinned_current_semantics": {
+    "_routing_fact_for": {
+      "file": "rawlsing_next/_pre553_query_eval.py",
+      "sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+      "lines": "51-85",
+      "matching": "index.routing_by_respondent[respondent.ref.key] filtered by _question_matches(fact,target_ref) and _ref_field(fact,'risk_set_ref') == risk_set_ref",
+      "absence": "no matches -> EmpiricalQueryResolutionError 'exact routing/risk-set membership fact is unavailable; absence is not zero membership'",
+      "conflict": "all matches must share one (routing_state,applicability_state) and one member_set_replay_ref; multiple states/member sets refuse",
+      "ordering": "returns sorted(matches, key=ref.key)[0]",
+      "used_objects": "appends every match to used, validates every match authority, appends authority refs, requires at least one ROUTING_RISK_SET authority",
+      "current_gap_for_new_locator": "function itself has no explicit _require_live; it relies on index.routing_by_respondent (DirectEstateI03Session._respondent_family) for CURRENT before every yield"
+    },
+    "current_sqlite": {
+      "file": "rawlsing_next/pre553_direct_estate_i03.py",
+      "sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+      "members": ["family","respondent","ref","gid","off"],
+      "index": "members_resp_idx(family,respondent,ref)",
+      "routing_access": "_ReleaseIndex.routing_by_respondent = _ColdFamilyRows(DirectEstateI03Session,'RoutingEligibilityFact')",
+      "indices_for": "builds a new _ReleaseIndex per call; current grouped key contains id(index)"
+    },
+    "current_prepared": {
+      "file": "rawlsing_next/pre553_prepared_saved_i03.py",
+      "sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+      "lifecycle": "one DirectEstateI03Session and one posting-index build per prepared context; no cross-session persistent index"
+    }
+  },
+  "exact_completeness_assertion": {
+    "name": "ROUTING_LOCATOR_ALL_MATCHES_CONFLICT_PRESERVING",
+    "pseudo_code": "full = list(session._respondent_family('RoutingEligibilityFact', respondent_key)); expected = [ (f.ref.key, f.routing_state, f.applicability_state, _ref_field(f,'member_set_replay_ref').key, tuple(sorted(a.key for a in _validate_public_object_authorities(f, registry)))) for f in full if _question_matches(f,target_ref) and _ref_field(f,'risk_set_ref')==risk_set_ref ]; actual = locator.lookup(respondent_key,target_ref,risk_set_ref); assert actual == sorted(expected,key=lambda x:x[0]); assert len(actual)==len(expected); assert all matches including conflicts; assert no filtered absence; assert authority refs exact for every match; assert used list additions equal actual",
+    "negative_variants": ["hide one eligible match -> count/set assertion must fail", "hide one conflicting state/member_set while keeping a favorable row -> conflict assertion must fail", "return only first sorted match while two full candidates exist -> count/canonical-order assertion must fail", "locator returns zero because target/risk candidate absent -> current typed absence must remain, not zero membership", "drop/alter authority refs on a retained match -> authority closure assertion must fail"],
+    "ordering_assertion": "actual refs must be exactly sorted by canonical ref.key; no physical gid/off order leakage",
+    "used_assertion": "every returned exact match is appended to used and all its authority refs are validated; no hidden used-object omission"
+  },
+  "current_guard_contract": {
+    "must_hold": ["CURRENT before lookup", "CURRENT before every returned match/yield", "revocation between first and second match refuses", "changed admitted release/universe/manifest/I02 requires fresh admission"],
+    "risk": "A new SQLite locator that returns cached Python rows directly can bypass DirectEstateI03Session._require_live; _routing_fact_for has no own explicit CURRENT check. The author must wire _require_live into preparation, lookup and each yield or preserve the existing generator path."
+  },
+  "pinned_existing_tests": {
+    "current_between_yields": ["rawlsing_next/tests/test_anvil_production_locality_20261118.py::test_production_family_order_is_canonical_and_revocation_refuses", "rawlsing_next/tests/test_pre553_prepared_saved_i03.py::test_prepared_session_revocation_and_condition_refusal", "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py::test_wrong_source_root_and_live_revocation_refuse", "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py::test_denied_current_does_not_open_estate_bytes"],
+    "changed_root_source_restore": ["rawlsing_next/tests/test_pre553_direct_estate_i03.py::test_cold_i03_new_source_content_changes_fact_and_old_root_restores", "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join"],
+    "corrupt_body_locator": ["rawlsing_next/tests/test_pre553_direct_estate_i03.py::test_g5_hidden_event_repin_cannot_produce_false_native_i03_fact", "rawlsing_next/tests/test_pre553_direct_estate_i03.py::test_g5_equal_census_forged_duplicate_locator_refuses_native_i03", "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py::test_forged_posting_rehashed_under_same_i02_detected", "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py::test_corrupt_locator_before_publication_refused"],
+    "actual_batch_ingress": ["rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py", "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join"]
+  },
+  "specific_contract_conflicts_or_unsafe_shared_paths": [
+    "Contract selected respondent-first only; any new target-first locator/key order in the first cut has no current caller and is outside the intake decision.",
+    "_routing_fact_for currently performs conflict/absence checks after filtering the complete family. A locator that pre-filters and returns only one row can hide a conflicting second row and bypass the existing state/member_set conflict guard.",
+    "_routing_fact_for has no direct _require_live; CURRENT is supplied by the _ColdFamilyRows generator. A cached locator bypassing that generator must explicitly call _require_live before lookup and before each match.",
+    "indices_for builds a fresh _ReleaseIndex per call and the grouped key contains id(index); building/augmenting locators only in _build without exposing them through indices_for will not produce cross-operation reuse.",
+    "The current SQLite members schema/index is family,respondent,ref only; a target/risk locator needs its own exact locator rows/index and complete positional coverage. Returning filtered absence before complete locator validation is unsafe.",
+    "The contract's full prepared-access direction permits a future persistent country substrate but the intake selects only a narrow session-local slice; do not broaden the routing cut into a persistent substrate or second key order under this prep."
+  ],
+  "fixture_court_requirement": "Matched court must use a genuinely qualified weighted same-person k>=3 joint with a coordinate predicate. If unavailable, record the omission and use existing supported distinct operations plus the existing focused weight/coordinate regression nodes; do not synthesize a fixture or claim the omitted dimension.",
+  "next": "Actual independent code review only after frozen author return. This return makes no architecture choice, product patch, source/native/science/actor/protected authorization, or acceptance."
+}
