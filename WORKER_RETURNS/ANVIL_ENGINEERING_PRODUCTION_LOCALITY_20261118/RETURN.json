@@ -1,0 +1,146 @@
+{
+  "actual_production_f4": {
+    "admission_outside_seconds": 0.2639007099205628,
+    "compressed_bytes": 7942218,
+    "event_object_materializations": 37,
+    "family_object_materializations": 9600,
+    "index_outside_seconds": 2.958361794007942,
+    "operation_wall_seconds": 2.7704618660500273,
+    "parity_exact": true,
+    "row_group_reads": 50,
+    "row_group_rows": 25472,
+    "uncompressed_bytes": 76150826
+  },
+  "authorization": "USER DIRECT PROJECT AUTHORITY GO 2026-11-18; exact two edits only; historical separate code-owner approval superseded for these edits",
+  "baseline_blob": "8825832f8067c7fce7a99a94505743cbb4eada06",
+  "changed_product_file_list": [
+    "rawlsing_next/pre553_direct_estate_i03.py"
+  ],
+  "changed_product_files": 1,
+  "commit": "REPORTED_IN_FINAL_MESSAGE",
+  "corrected_canonical_table_retained": "R4_LOCALITY_EXPERIMENT/CORRECTED_MEASUREMENT.json",
+  "current_blob": "d662fc578a1ecb42d54ec8b4bdab87fd7ecec176",
+  "current_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+  "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "fixtures": {
+    "contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+    "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b"
+  },
+  "limitations": [
+    "per-respondent/family buffer 600 routing facts; not whole estate",
+    "eager malformed-row refusal before first yield documented",
+    "one sourcefree f4; no 100k/full matrix/Batch/native/science/actor/current acceptance",
+    "production edit only exact authorized symbol; distinct reviewer reserved; no selfacceptance",
+    "R2/R3/R4/R5 historical evidence immutable"
+  ],
+  "new_test_blob": "7373c1704e21bcb4155eb690b17de5ecd8bf22dc",
+  "new_test_file": "rawlsing_next/tests/test_anvil_production_locality_20261118.py",
+  "new_test_sha256": "f763231c92976871fa93e12300d8162bf14125f38b05f782c83e4d4d460b04dc",
+  "no_other_product_edits": true,
+  "outputs": {
+    "PRODUCTION_DIFF.diff": {
+      "bytes": 1885,
+      "sha256": "b1b5c54e2711809b88d5f0586cd83a6c1f6911d4281633bf6d067e3dcdceabaf"
+    },
+    "PRODUCTION_LOCALITY_FINDINGS.md": {
+      "bytes": 4976,
+      "sha256": "f6a91cea32b7fbcacb3fd8727f212d3313442295c71d9c434d1f28fbff546f5c"
+    },
+    "RESULT.json": {
+      "bytes": 5615,
+      "sha256": "17db5b2b68817f4cdcb73e3972184f7c16d18fca720b32f8db9095f4f8b0e12d"
+    },
+    "SOURCE_PINS.json": {
+      "bytes": 1301,
+      "sha256": "068f3606bc150627672c2caa5280c98821ea27d0b7ec3f6c3358507f06ae9c75"
+    },
+    "SUPERVISION.json": {
+      "bytes": 6697,
+      "sha256": "c7626ae921df1c0789a35e1cd30db23b983896a3f66ca14dc4b7cba7dba072bf"
+    },
+    "production_revocation_witness.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "production_revocation_witness.json": {
+      "bytes": 1726,
+      "sha256": "64681613fdda72d65bf9fc056bab5ad5c94e3b9122a994b703f70a64e3da20a0"
+    },
+    "production_revocation_witness.out": {
+      "bytes": 1726,
+      "sha256": "64681613fdda72d65bf9fc056bab5ad5c94e3b9122a994b703f70a64e3da20a0"
+    },
+    "production_revocation_witness.py": {
+      "bytes": 3270,
+      "sha256": "45294472fec8fb2081615a3b71012ad79d9f553ca9942d4aedbda956a4bff2f1"
+    },
+    "qualify_production_locality.py": {
+      "bytes": 4520,
+      "sha256": "1fd2d64976510ea772459cb395a788c10552e925702195f8d798e5b39341c226"
+    },
+    "run_qualification.py": {
+      "bytes": 2894,
+      "sha256": "bb052838074f197a3cd5b227317bc3f3144f45e6de92fed751ed7a9053452dde"
+    },
+    "samples.json": {
+      "bytes": 2793,
+      "sha256": "497197dccef5baf291d31feba1cc412d7cfa265483d88a2f3ad8ae938db0ca6d"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.txt": {
+      "bytes": 145,
+      "sha256": "22d6a43ca20b4e9900f9f4f0f3698d52f1488dc75cc331d38d45e5bf5e00cac0"
+    },
+    "test_focused.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "test_focused.log": {
+      "bytes": 99,
+      "sha256": "9e580d6a60183a04d699b6fd85296cd088f5456bcf78c1a8ab140a17d416c4cf"
+    },
+    "test_native_batch.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "test_native_batch.log": {
+      "bytes": 99,
+      "sha256": "a1e48a3785aade9601c516f82cbb2afed3438e2254c84f0f83f42cd1982954f7"
+    }
+  },
+  "product_baseline": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "product_file": "rawlsing_next/pre553_direct_estate_i03.py",
+  "product_symbol": "DirectEstateI03Session._respondent_family",
+  "red_green": {
+    "actual_production_refused": true,
+    "canonical_order_count": 600,
+    "canonical_order_sorted": true,
+    "original_refused": true,
+    "r4_old_adapter_bypassed": true,
+    "restored": true
+  },
+  "schema": "ANVIL_PRODUCTION_LOCALITY_RETURN@1",
+  "source_pins": "SOURCE_PINS.json",
+  "status": "PRODUCTION_LOCALITY_IMPLEMENTED_RED_GREEN_PARITY",
+  "supervision": {
+    "aborted": null,
+    "caps": {
+      "rss_bytes": 2147483648,
+      "scratch_bytes": 2147483648,
+      "wall_seconds": 120.0
+    },
+    "exit": 0,
+    "external_wall_seconds": 6.523569909972139,
+    "rss_peak_sampled_bytes": 134471680,
+    "scratch_peak_sampled_bytes": 30368896
+  },
+  "tests": {
+    "focused": "36 passed in 9.06 s",
+    "focused_exit": 0,
+    "native_batch": "37 passed in 6.67 s",
+    "native_batch_exit": 0
+  }
+}

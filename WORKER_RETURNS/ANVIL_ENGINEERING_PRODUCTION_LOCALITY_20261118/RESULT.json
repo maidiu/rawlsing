@@ -1,0 +1,132 @@
+{
+  "admission_outside_operation": {
+    "hash_bytes": 7099520,
+    "hash_calls": 15,
+    "seconds": 0.2639007099205628
+  },
+  "buffer_limit": "per-respondent/family materialized list; 600 routing facts in sealed f4 witness; no whole-estate corpus",
+  "contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+  "counters": {
+    "c11_repository_tripwire_hits": 0,
+    "event_object_materializations": 37,
+    "family_calls": 16,
+    "family_object_materializations": 9600,
+    "family_rows_yielded": 9600,
+    "read_table_calls": 0,
+    "read_table_tripwire_hits": 0,
+    "row_group_compressed_bytes": 7942218,
+    "row_group_reads": 50,
+    "row_group_rows": 25472,
+    "row_group_uncompressed_bytes": 76150826,
+    "selected_event_calls": 37,
+    "selected_events_yielded": 37,
+    "session_build_seconds": 0.0,
+    "session_builds": 0,
+    "session_enter_seconds": 0.0,
+    "session_opens": 0,
+    "session_temp_max_bytes": 0
+  },
+  "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "index_build_outside_operation_seconds": 2.958361794007942,
+  "label": "f4_three_raw",
+  "limitations": [
+    "One existing f4 operation on sealed 16R/600Q sourcefree estate; no new build/pair/geometry.",
+    "No test-only adapter or monkeypatch is installed.",
+    "No native/original35/100k/6GiB/science/actor/CURRENT/production acceptance."
+  ],
+  "operation_wall_seconds": 2.7704618660500273,
+  "parity": {
+    "exact": true,
+    "fields": {
+      "identity_sha256": true,
+      "member_refs_sha256": true,
+      "refs_sha256": true,
+      "replay_sha256": true,
+      "semantic_sha256": true
+    }
+  },
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "schema": "ANVIL_PRODUCTION_LOCALITY_QUALIFICATION@1",
+  "serialization_seconds": 0.004167429055087268,
+  "session_receipt": {
+    "estate_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate/releases/396bada8e3b4a6ae880592b2e5f1a54cf076364866a8e8288024808232e7463c",
+    "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+    "operations": 1,
+    "release_ref": {
+      "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-CUT2-MEASURE"
+    },
+    "schema": "PYAT_PREP_SAVED_I03@1.0.0"
+  },
+  "snapshot": {
+    "denominator_member_payload_bytes": 1066,
+    "denominator_member_ref_count": 5,
+    "denominator_member_refs_sha256": "5a5be8964f8874c00ed73df1045aebe6b436ab2657e7829ad37a09304c911088",
+    "fact_count": 1,
+    "fact_refs": [
+      {
+        "content_hash": "ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94"
+      }
+    ],
+    "identity_payload_bytes": 36740,
+    "identity_sha256": "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+    "member_payload_bytes": 3409,
+    "member_ref_count": 16,
+    "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+    "provenance_payload_bytes": 11174,
+    "provenance_ref_count": 56,
+    "provenance_refs_sha256": "3ecc69a7996d47f62240bc9e0fcb59ecf2029e18a536452c6b2c46fcd6d4d9f8",
+    "query_ref": {
+      "content_hash": "6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6"
+    },
+    "raw_denominator_support": [
+      5
+    ],
+    "ref_only_payload_bytes": 234,
+    "ref_only_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+    "refs_payload_bytes": 234,
+    "refs_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+    "release_refs": [
+      {
+        "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-CUT2-MEASURE"
+      }
+    ],
+    "replay_payload_bytes": 241,
+    "replay_refs": [
+      {
+        "content_hash": "f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1",
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1"
+      }
+    ],
+    "replay_sha256": "9708fccb9c0a32491a29c32025a53ab555e6b43624b77499c475a793ab92d30d",
+    "risk_member_payload_bytes": 3409,
+    "risk_member_ref_count": 16,
+    "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+    "semantic_payload_bytes": 36538,
+    "semantic_sha256": "63b822858d59f282faf5833136559689418d45616f87c0122ac899aa295c3a9d",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "topology_ref_count": 0,
+    "typed_states": [
+      "SUPPORTED"
+    ],
+    "weighted_denominator_support": [
+      null
+    ]
+  },
+  "source_pins": {
+    "baseline_blob": "8825832f8067c7fce7a99a94505743cbb4eada06",
+    "baseline_product": "347baec696c8b395d750ac3b9e74417a6490c223",
+    "estate_contract": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+    "pre553_direct_estate_i03.py_current_blob": "d662fc578a1ecb42d54ec8b4bdab87fd7ecec176"
+  },
+  "status": "PRODUCTION_LOCALITY_F4_PARITY"
+}

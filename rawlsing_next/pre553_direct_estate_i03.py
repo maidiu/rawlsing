@@ -409,10 +409,15 @@ class DirectEstateI03Session:
         cache = self._row_group_cache.setdefault(family, {})
         group = None
         rows = None
+        # Physical gid/off traversal keeps the one-row-group cache effective;
+        # canonical ref order is restored before yielding so the externally
+        # observable family order remains unchanged.  Materialization is
+        # bounded to this respondent/family, never the whole estate.
         cursor = db.execute(
             "SELECT ref,gid,off FROM members WHERE family=? AND respondent=? "
-            "ORDER BY ref", (family, respondent_key),
+            "ORDER BY gid,off", (family, respondent_key),
         )
+        materialized: list[Any] = []
         for ref, gid, offset in cursor:
             self._require_live()
             if gid != group:
@@ -434,6 +439,13 @@ class DirectEstateI03Session:
                     or _key(obj.scoped_respondent_ref) != respondent_key
                     or _key(obj.empirical_universe_ref) != self.estate.i02.universe):
                 raise DirectEstateError("native I03 cold family body/index identity mismatch")
+            materialized.append(obj)
+        # Eager validation means a malformed later row refuses before the first
+        # yield.  That is a deliberate exception-timing difference from the old
+        # streaming loop, not a semantic/ordering change.  CURRENT is checked
+        # immediately before EVERY yield, matching the original per-row guard.
+        for obj in sorted(materialized, key=lambda item: item.ref.key):
+            self._require_live()
             yield obj
 
     def indices_for(
