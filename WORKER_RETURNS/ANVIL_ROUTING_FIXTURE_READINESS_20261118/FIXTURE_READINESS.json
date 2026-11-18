@@ -1,0 +1,176 @@
+{
+  "answer": "NO_EXACT_COMBINATION_IN_RETAINED_FIXTURES",
+  "coordinate_weight_regression_nodes": [
+    {
+      "covers": "coordinate conjunction and response-position predicate, univariate target Y",
+      "lines": "553-570",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "symbol": "test_arbitrary_coordinate_conjunction_and_response_position_condition"
+    },
+    {
+      "covers": "true k3 joint, no coordinate/weight",
+      "lines": "595-610",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "symbol": "test_k_way_parity_full_joint_is_not_pairwise_or_unary_synthesis"
+    },
+    {
+      "covers": "raw vs governed weighted univariate, no coordinate/k3",
+      "lines": "707-723",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "symbol": "test_raw_and_authorized_weighted_measure_are_distinct_exact_facts"
+    },
+    {
+      "covers": "weight missing/invalid fail-closed",
+      "lines": "726-741",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "symbol": "test_missing_or_invalid_weight_fails_closed_without_default_one"
+    },
+    {
+      "covers": "coordinate-conditioned response analysis, univariate target, no k3/weight",
+      "lines": "765-790",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "symbol": "test_simpson_reversal_preserves_pooled_and_conditioned_query_identity"
+    },
+    {
+      "covers": "changed legitimate source -> changed fact -> exact restore",
+      "lines": "160-222",
+      "path": "rawlsing_next/tests/test_pre553_direct_estate_i03.py",
+      "symbol": "test_cold_i03_new_source_content_changes_fact_and_old_root_restores"
+    }
+  ],
+  "exact_combination": {
+    "weighted_same_person_k3_joint_with_coordinate_predicate": false,
+    "why": "The retained 10k/5 and 128R/600 catalogs have a true k3 raw joint (f4_three: A1&B1 -> C), a weighted univariate operation (selected_weighted: A1 -> C weighted), and coordinate predicates only in the discovery/all-predicate path (G=A/B), not combined with the weighted k3 joint. No weighted k3+coordinate query exists in the catalog."
+  },
+  "existing_operations": {
+    "10k": {
+      "f2_forward": {
+        "coordinate_predicate": false,
+        "k3": false,
+        "kind": "raw A1->C",
+        "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:86afb73dd021aee092729c48173a13dae5ca929efaba128f7001f4f1e0466345|86afb73dd021aee092729c48173a13dae5ca929efaba128f7001f4f1e0466345",
+        "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9385ea71ee06bdf74e5e5812c1c30d5ec148f9a11333f4e79e79f0e1a1d15ea6|9385ea71ee06bdf74e5e5812c1c30d5ec148f9a11333f4e79e79f0e1a1d15ea6"
+      },
+      "f2_reverse": {
+        "coordinate_predicate": false,
+        "k3": false,
+        "kind": "raw C1->A (changed target+predicate)",
+        "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:ac7b04a76883d2f39b332564731b0cf3b075f56dcaac4e9d86f828ea0ede149d|ac7b04a76883d2f39b332564731b0cf3b075f56dcaac4e9d86f828ea0ede149d",
+        "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:08e2491f771f905f81dc8dc9006151b6e3eb154fa362f9709daeef173fc8d92e|08e2491f771f905f81dc8dc9006151b6e3eb154fa362f9709daeef173fc8d92e"
+      },
+      "f4_three": {
+        "coordinate_predicate": false,
+        "k3": true,
+        "kind": "true k3 raw A1&B1->C",
+        "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:ca8e2328671c0a14a853976cc87094bef7ced312ba9f07b18ab2212a543195f9|ca8e2328671c0a14a853976cc87094bef7ced312ba9f07b18ab2212a543195f9",
+        "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0cae7b2ec80eded28e936b9871804553fe7db94f00cf5925aebbd5eed6602bd2|0cae7b2ec80eded28e936b9871804553fe7db94f00cf5925aebbd5eed6602bd2"
+      },
+      "selected_weighted": {
+        "coordinate_predicate": false,
+        "k3": false,
+        "kind": "weighted univariate A1->C",
+        "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:86afb73dd021aee092729c48173a13dae5ca929efaba128f7001f4f1e0466345|86afb73dd021aee092729c48173a13dae5ca929efaba128f7001f4f1e0466345",
+        "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:76ff6f8ece65da63bf34fcc1decc4085aebeced472bac70bcd520750dbd85895|76ff6f8ece65da63bf34fcc1decc4085aebeced472bac70bcd520750dbd85895"
+      }
+    },
+    "width128": {
+      "f4_three": {
+        "coordinate_predicate": false,
+        "k3": true,
+        "kind": "true k3 raw A1&B1->C",
+        "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:b632e05177a6975f761223fa211c99f48374476bd3c6ec1ac7e82d1d5ab8df3b|b632e05177a6975f761223fa211c99f48374476bd3c6ec1ac7e82d1d5ab8df3b",
+        "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:611cf509840229019d6b815106d1c8cd70d6f9c8bef1202483a585bd68cf71f1|611cf509840229019d6b815106d1c8cd70d6f9c8bef1202483a585bd68cf71f1"
+      }
+    }
+  },
+  "harness_comparison": {
+    "counters": [
+      "H admission",
+      "S prepared index build",
+      "Q per operation",
+      "O full payload serialization",
+      "routing objects materialized",
+      "row-group reads/rows/bytes",
+      "event/family materializations",
+      "selected events",
+      "scratch/retained/RSS"
+    ],
+    "extra_build_vs_reduced_query": "Count routing locator/validation rows and S time added once; count routing objects/row reads/Q time removed per operation. Compare N-op net at measured N, never extrapolate. Frozen prior H/S/Q/O are observations only, not remeasured here.",
+    "full_outcomes": [
+      "fact as_dict/semantic_projection",
+      "cells including observed-zero",
+      "weighted/raw masses",
+      "risk and denominator member identity sets",
+      "provenance/used refs",
+      "replay ref",
+      "typed states"
+    ],
+    "no_execution": true,
+    "one_prepared_session": true,
+    "same_estate_catalog": true
+  },
+  "limits": [
+    "No weighted k3+coordinate operation found; do not manufacture one.",
+    "No build/query/native/SQL execution in this task.",
+    "Prior timings are frozen observations.",
+    "No 100k/full-width/science/source/actor/CURRENT/protected acceptance."
+  ],
+  "prior_observations_only": {
+    "10k_semantic": {
+      "H": 0.5745562830707058,
+      "RSS": 722276352,
+      "S": 12.651083842036314,
+      "external_Q_wall": 106.1867780839093,
+      "f2_forward_Q": 21.867546483990736,
+      "f2_reverse_Q": 21.39248690207023,
+      "repeated_Q": 16.105455241980962,
+      "scratch": 122591630,
+      "selected_Q": 24.320161571959034
+    },
+    "width128": {
+      "O": 0.004812355036847293,
+      "Q": 21.238738670945168,
+      "S": 22.8470964320004,
+      "events": 68960,
+      "external_query": 45.22563378105406,
+      "retained": 55187741,
+      "routing": 76800
+    }
+  },
+  "question": "Does a weighted same-person k>=3 joint with a coordinate predicate legitimately exist on a retained saved estate?",
+  "reusable_saved_estates": [
+    {
+      "contract": "WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/fixture_contract_10k.json",
+      "contract_sha256": "d2a7ffa81f95f904ceeff8c262fa0fb6680d7ec764e68e60ae18462164075526",
+      "estate_manifest_sha256": "e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+      "events": 32450,
+      "name": "10k/5 sourcefree",
+      "questions": 5,
+      "respondents": 10000,
+      "retained_bytes": 31163472,
+      "routing": 50000,
+      "tag": "PYAT-1006-SCALE-10K-20261118",
+      "weights": 10000
+    },
+    {
+      "contract": "WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/WIDTH128/fixture_contract_width128.json",
+      "contract_sha256": "89645891d608e609c2ab0b97253dd6d3ceb6a424565e382e5aba8f02a7bc604c",
+      "estate_manifest_sha256": "4d9604dc886ff9655ad25941fdcad2e412d18de4ab07c813524068c1dad09eea",
+      "events": 68960,
+      "name": "128R/600 sourcefree",
+      "questions": 600,
+      "respondents": 128,
+      "retained_bytes": 55187741,
+      "routing": 76800,
+      "tag": "PYAT-1006-WIDTH128-600-20261118",
+      "weights": 128
+    }
+  ],
+  "schema": "ANVIL_ROUTING_FIXTURE_READINESS@1",
+  "smallest_actual_distinct_second_operation": {
+    "alternative_meaningful_pair": "selected_weighted + f4_three_raw (weight and true k3, but same target C; changed predicate only)",
+    "coverage": "weight via selected_weighted; k3 via f4_three; coordinate/weight regression nodes cover the omitted coordinate dimension",
+    "pair": "f2_forward_raw + f2_reverse_raw",
+    "why": "Smallest existing pair with changed target (C vs A) and changed predicate (A1 vs C1); both are raw, so weight/k3 are represented separately, not falsely claimed combined."
+  }
+}
