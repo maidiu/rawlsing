@@ -2,6 +2,8 @@
 
 **Purpose:** You should be spending your intelligence on the actual question **WHAT CONFIGURATION OF MACHINERY MAKES A DEVELOPING SOROK PERSON A CAUSALLY TRACEABLE, NONDETERMINISTIC PRODUCT OF PYAT'S REAL SOCIAL/MATERIAL EVIDENCE?**, not repeating Rawlsing reconnaissance. **This is a pinned executive compression, not a source of new authority, current HEAD attestation, or replacement for exact sources when adjudication depends on them.** Prepared 2026-11-17 from live GitHub inspection. Full sourced packs /09–/12 follow. Paths and PRs are immutable at the indicated commit; do not confuse them with today's moving HEAD.
 
+**ASTRA-SPECIFIC WARNING:** [ORACLE/14](14_ASTRA_SPECIFIC_FAILURE_MODES_AND_HARD_STOPS.md) is the empirical failure/hard-stop overlay. Earlier Astra-associated Rawlsing work lost unpublished useful Git work at session expiry and had a worker-base/packet visibility defect; ORACLE/14 also requires challenge of its own scientific premises, independent non-self-oracle and *one* executable causal hinge. The dossier's 27 adversarial cases are not 27 required new workstreams. Historical incident attribution is qualified, not universal model profiling.
+
 ## A. Fourteen statements Astra should not have to rediscover
 
 1. **THE TERMINAL CLAIM:** Rawlsing is not a survey analytics dashboard plus a chatbot. PYAT must make a historically particular material/social world of *possible* differentiated lives, and SOROK must generate actual independent developing people whose later actions and *survey answers as instrument-mediated partial expressions* causally emerge from that world and their history. Real questionnaires underidentify private lives; generative necessity is **admissible, distributional and counterfactual**, never one-to-one respondent→biography.
@@ -35,7 +37,7 @@
 
 ## D. Token-optimal read order and source authority
 
-**Read 08 first (this), then 09 recovery/ANVIL, 10 SEAM decision evolution, 11 current mechanism/rights, 12 change-trigger and commission protocol. Read 00/03/04 for full question, rival machine designs and discriminators if designing the architecture; read 01/02/05/07 selectively for precise constraints.** They are *reference digests of exact sources*, not replacements for the primary file when a contested decision requires exact content.
+**Read 08 first (this), then 14 Astra-specific hard stops, then 09 recovery/ANVIL, 10 SEAM decision evolution, 11 current mechanism/rights, 12 change-trigger and commission protocol. Read 00/03/04 for full question, rival machine designs and discriminators if designing the architecture; read 01/02/05/07 selectively for precise constraints.** They are *reference digests of exact sources*, not replacements for the primary file when a contested decision requires exact content.
 
 Do **not** reopen all C11 archive/VMESTYE prongs/SEAM/00–29/PROGRAMMAs every time. For first research pass, inspect live currentness by comparing only the named protected/candidate heads to these pins and searching for material new developments. Deep-read only the source edges that actually decide a rival configuration. If a citation in a compressed bank conflicts with live competent owner evidence, **the source and current owner win** and the bank is repaired, not defended.
 
