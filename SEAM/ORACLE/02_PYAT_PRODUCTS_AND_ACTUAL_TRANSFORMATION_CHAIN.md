@@ -47,7 +47,7 @@ PYAT's proper contribution is a **source- and use-authorized historical populati
 
 **C. Formation by actual practice:** only actor-owned accessible experiences, with organismic state, developed capacities, current PFF, intersubjective relations and appropriate learning rules, can create/reconfigure internality. No crossing of A directly to C. No exhaustive micro-simulation requirement if a separately qualified coarse process can generate reliable summaries and explicit missing intervals.
 
-Astra must find a **minimal executable transducer** for A→B→C or show exactly which existing owner implements it. The first person formed must be capable of later affecting others and of producing her own contingent survey answers.
+These A/B/C categories identify **substantive distinctions that cannot be erased**, not an approved serial computational pipeline. Astra is responsible for independently determining whether existing owners already conserve the necessary functions, whether another organizing theory is superior, and what (if anything) must be added or changed at the bilateral seam. No mandated architecture, number of mediators, or first demonstration follows from the distinction.
 
 ## 4. Same-response, different-person inverse model
 
@@ -90,17 +90,11 @@ At verified 2026-11-17 protected PRE-MAIN HEAD **5d387a9a8c72c68e6ef87a671d6d486
 
 **ASTRA PRE-V3 R3 precedent:** branch agent/astra-persona-first-prev3-seam-correction-r3 HEAD 88d3c40def26d34ff202258171c256dfa9d17dbb proposes actor-INDEPENDENT structural world/position/possibility outputs, an evidence graph with MEASURED/TRANSFORMED/INFERRED/PRIOR and identity, actual per-value first consumer, negative and replay, no person fields and no V3 in its read-only PRE-V3 contract probe. It does not answer ORACLE's *formation mechanism*; do not ask Astra to reiterate its PRE-V3 endpoint as if that creates a person.
 
-## 7. Seven exact first-reader tests of the boundary
+## 7. Previously proposed first-reader cases — historical examples, not commissioned tests
 
-1. **Survey joint mutation:** identical marginals and pairwise cells but switched three-way association; qualified I03 F4 alternatives differ, and eligible adult observational candidates can differ. No fabricated psyche in C11.
-2. **Institution power mutation:** same survey opinions, different actually qualified employer sanction/household time/care capacity; actual action options differ; only actors who encounter it may learn.
-3. **Field-alone mutation:** change other-group response distribution without any instantiated coactor/institution/access. Actor psyche, memory and action **must remain unchanged**.
-4. **Other-realization mutation:** replace a particular coactor with another separately developed qualified person; verify legal contact/action, different potential child experience, not automatic learning.
-5. **Same observed mother tip, different actual adult prehistories:** if histories affect PFF formation, later caregiving can differ under invariant external encounter; no inference about actual respondent C.
-6. **Same person, different care conditions:** changed shift/caretaker resources and spouse acts change real workload and interaction; psychological identity persists, though new events may subsequently change it.
-7. **World feedback:** actor intention alone cannot alter historical source or objective determinant; performed and independently externally admitted act can cause targeted world invalidation and subsequent changed condition.
+The original ORACLE authors listed seven source/actor mutation examples here. Their exact versions remain in [the earlier revision of this file](https://github.com/maidiu/rawlsing/blob/50f526d02438111f8191b9b9b8f0ac7d1ef44a21/SEAM/ORACLE/02_PYAT_PRODUCTS_AND_ACTUAL_TRANSFORMATION_CHAIN.md). **They were proposed analytical probes, not principal-originated prescriptions**. Astra may find some useful, invent better ones, select other research methods, or establish that a formal argument or source comparison is more important than a specific first-reader experiment.
 
-For each: exact product identifier and SHA, eligible source, negative/held state, selected actor/coactor, actual named first reader, output diff, restored/cold replay and proof ceiling. **A changed hash alone never proves causal use.**
+What survives normatively is **causal and evidentiary integrity**, not the particular test apparatus: source co-occurrence cannot become private psychology; a qualified empirical change is not automatically an effective material/social pathway; a reported affiliation cannot become institutional power without further warrant; an actor cannot acquire inaccessible experience; future action and third-party causal history cannot be retrofitted to satisfy an adult survey; and an unperformed claim cannot change the external world. How to investigate these is Astra's decision.
 
 ## 8. Owner and source precedence
 
