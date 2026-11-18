@@ -101,6 +101,10 @@ full-row, audit, native-output, provenance and result-hash parity is satisfied
 The author's 8-focused and 45-affected claims were independently reproduced: 8/8 and
 45/45. Author source/test blobs match the frozen `01dc90cb` target exactly.
 
+A targeted follow-up executed the exact v1 fabricated-QUERY node and both v2 TEST_ONLY/v1-guard
+nodes: 3 passed in 3.14 s (max RSS 147,066,880 B), exit 0. This confirms the v1
+self-issued-query refusal and that v1 0Q/1D plus its postconsumer guards remain intact.
+
 ## Resource and scope
 
 - Witness: 3.65 s wall, 135,921,664 B max RSS, no abort.

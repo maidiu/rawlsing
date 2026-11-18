@@ -46,3 +46,11 @@ PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 TMPDIR=<private-proof-root>/tmp \
 
 # No new benchmark matrix, estate geometry, 100k/6 GiB run, original35/source,
 # protected merge, subagent, model/provider change, or product rewrite.
+
+# 7. exact v1 fabricated-QUERY / v2 TEST_ONLY guard nodes
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l python3 -B -m pytest -q \
+  -o addopts='' -p no:cacheprovider --basetemp=<private-proof-root>/targeted-tmp \
+  'rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py::test_original_r03_compiler_issuer_cannot_be_replaced_by_matching_manual_records[self_issued_query]' \
+  'rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py::test_v1_discovery_is_unchanged_and_v2_jobs_come_only_from_original_eligible_roles' \
+  'rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py::test_v1_postconsumer_guards_reject_even_consistent_v2_query_injection'
+# exit 0; 3 passed; 3.14 s; maxrss 147,066,880 B.

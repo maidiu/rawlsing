@@ -150,6 +150,20 @@
       "wall_seconds": 3.65,
       "maxrss_bytes": 135921664,
       "evidence": "evidence/postconsumer_witness_independent.out"
+    },
+    "targeted_v1_v2": {
+      "count": 3,
+      "passed": 3,
+      "failed": 0,
+      "exit": 0,
+      "wall_seconds": 3.14,
+      "maxrss_bytes": 147066880,
+      "nodes": [
+        "test_original_r03_compiler_issuer_cannot_be_replaced_by_matching_manual_records[self_issued_query]",
+        "test_v1_discovery_is_unchanged_and_v2_jobs_come_only_from_original_eligible_roles",
+        "test_v1_postconsumer_guards_reject_even_consistent_v2_query_injection"
+      ],
+      "evidence": "evidence/targeted_v1_v2.txt"
     }
   },
   "source_pins": {
@@ -195,6 +209,8 @@
     "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/affected45.txt",
     "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/changed_restore.txt",
     "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/postconsumer_witness_independent.json",
-    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/remote_verification.json"
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/remote_verification.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/targeted_v1_v2.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/targeted_v1_v2.time"
   ]
 }
