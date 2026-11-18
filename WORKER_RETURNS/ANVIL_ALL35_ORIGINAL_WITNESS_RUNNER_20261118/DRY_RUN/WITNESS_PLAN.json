@@ -10,7 +10,7 @@
     "response_positions": 1298649
   },
   "candidate_api": "(*, config: 'SourceConfig | Mapping[str, Any]', source_path: 'str | Path', destination: 'str | Path', row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None, universe_ref: 'ExactRef | None' = None, batch_size: 'int' = 512, chunk_size: 'int' = 512, resolver: 'Any' = None, host: 'str | None' = None, purpose: 'str | None' = None, consumer_use: 'str | None' = None, semantic_use_scope: 'tuple[str, ...] | None' = None, body_sink: 'SourceI02BodySink | None' = None) -> 'SourceI02ConstructionOnlyResult'",
-  "candidate_patch_sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
+  "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index_sha256": "463937b86046cf29c08dfab25bddb5b805c95361ce5d6a58ce36e5a3ee3b84e6",
   "config_path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/src04.config.json",
@@ -43,10 +43,12 @@
     "unbound_cells": 38
   },
   "resources": {
-    "available_bytes": 45358686208,
-    "disk_floor_bytes": 4976127760,
-    "measured_512x600_partial_bytes": 1951192968,
+    "available_bytes": 45980397568,
+    "completed_512x600_bytes": 3307124817,
+    "disk_floor_bytes": 12970801233,
+    "q2_spool_reserve_bytes": 1073741824,
     "ram_cap_bytes": 6442450944,
+    "staging_budget_bytes": 4380866641,
     "wall_cutoff": null
   },
   "schema": "ANVIL_ALL35_WITNESS_PLAN@1",

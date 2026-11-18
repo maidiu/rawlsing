@@ -23,9 +23,12 @@ HERE = Path(__file__).resolve().parent
 DEFAULT_BINDING_DIR = HERE.parent / "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118"
 DEFAULT_CONFIG_PIN = HERE / "SRC04_WITNESS_SCOPE.json"
 PINNED_BINDING_SHA = "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0"
-PINNED_CANDIDATE_PATCH = "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5"
-MEASURED_512K_PARTIAL_BYTES = 1951192968
-DISK_FLOOR = 2 * MEASURED_512K_PARTIAL_BYTES + 1024**3
+PINNED_CANDIDATE_PATCH = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
+PINNED_CANDIDATE_SOURCE_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
+COMPLETED_512K_BYTES = int(3.08 * 1024**3)
+Q2_SPOOL_RESERVE = 1024**3
+STAGING_BUDGET = COMPLETED_512K_BYTES + Q2_SPOOL_RESERVE
+DISK_FLOOR = STAGING_BUDGET + 8 * 1024**3
 RAM_CAP = 6 * 1024**3
 ACCEPTED = {
     "release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
@@ -236,7 +239,9 @@ def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
         },
         "resources": {
             "ram_cap_bytes": RAM_CAP,
-            "measured_512x600_partial_bytes": MEASURED_512K_PARTIAL_BYTES,
+            "completed_512x600_bytes": COMPLETED_512K_BYTES,
+            "q2_spool_reserve_bytes": Q2_SPOOL_RESERVE,
+            "staging_budget_bytes": STAGING_BUDGET,
             "disk_floor_bytes": DISK_FLOOR,
             "available_bytes": free,
             "wall_cutoff": None,

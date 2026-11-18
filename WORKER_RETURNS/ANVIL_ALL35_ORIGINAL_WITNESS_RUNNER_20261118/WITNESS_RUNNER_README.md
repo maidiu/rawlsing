@@ -13,7 +13,7 @@ Pins: candidate patch `2b139250…` / `9da2a368…`; grant binding `dbeada9a…`
 - The accepted 177-response + 3-coordinate selection from the accepted SRC04 receipt is applied as a scoped config; q217 is excluded, all 181 physical slots remain accounted, and the q217 38-cell hold is explicit.
 - Exact grant binding remains `REQUEST_ONLY_ALLOWED`; resolver pre/post recheck returned the same decision.
 - Accepted body accounting to compare after an authorized run: release `9ddec985…`, 2,619,317 public objects, 7,514 internal records, 1,298,649 events/response positions, 22,011 coordinates, q217 38 unbound / 0 release events.
-- Disk floor from 512×600 measured partial bytes: `2 × 1,951,192,968 + 1 GiB = 4,976,127,760 bytes`; actual free at preflight was ~44.3 GB. RAM cap 6 GiB; no writer wall cutoff.
+- Disk floor: completed 512×600 `3.08 GiB` + 1 GiB Q2/routing spool + 8 GiB retained free = `12,970,801,234 bytes`; actual free at preflight was ~45 GB. RAM cap 6 GiB; no writer wall cutoff.
 - Producer/reopen plan is separate processes; reopen must occur after the producer exits. No source launch was performed.
 
 ## Run

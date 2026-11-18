@@ -10,18 +10,22 @@
     "response_positions": 1298649
   },
   "accepted_src04_reference": "ba41253681212be14a0cde009afb99d77e14935e",
+  "actual_caller": "witness_caller.py",
+  "candidate_commit": "3aecb818d8f65d63da809c365f05f3320434f1c4",
   "candidate_patch": "2b139250eae19a04ce2778f7db9f2d2b025071a8",
-  "candidate_patch_sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
+  "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
+  "candidate_source_sha256": "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f",
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
   "gate": "Q217_FULL_CONFIG_WOULD_BE_INCLUDED__SCOPED_177_RESPONSE_3_COORDINATE_INPUT_USED",
   "grant_binding": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
   "grant_binding_sha256": "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0",
   "limits": [
-    "No source path open/stat/hash/decode",
+    "No original source open/stat/hash/decode",
     "No source launch",
     "No new grant/science/product edit",
-    "No I03/I05 expansion"
+    "No I03/I05 expansion",
+    "Accepted historical release ref is compared, not assumed identical"
   ],
   "no_launch_on_raw": true,
   "original_source_path_from_grant": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav",
@@ -40,23 +44,32 @@
     "status": "HELD_EXACT_BY_SCOPED_CONFIG",
     "unbound_cells": 38
   },
+  "refusal": {
+    "code": "EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED",
+    "detail": "",
+    "status": "REFUSED"
+  },
   "resources": {
-    "available_bytes": 45358686208,
-    "disk_floor_bytes": 4976127760,
-    "measured_512x600_partial_bytes": 1951192968,
+    "available_bytes": 45980397568,
+    "completed_512x600_bytes": 3307124817,
+    "disk_floor_bytes": 12970801233,
+    "q2_spool_reserve_bytes": 1073741824,
     "ram_cap_bytes": 6442450944,
+    "staging_budget_bytes": 4380866641,
     "wall_cutoff": null
   },
   "runner_generic": "all-wave metadata preflight API; SRC04 witness q217/body accounting; other waves use same scoped selection",
+  "runner_scope": "SRC04-specific witness checks; reusable producer/supervisor/fresh-reader machinery only",
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_RETURN@1",
   "scoped_counts": {
     "coordinate_slots": 3,
     "physical_slots": 181,
     "response_slots": 177
   },
+  "source_launch": "REFUSED_WITHOUT_EXACT_AUTHORIZATION",
   "source_path_opened_stat_hashed_or_decoded": false,
   "source_read_performed": false,
-  "status": "DRY_PREFLIGHT_OK__Q217_HELD__SCOPED_CONFIG_READY",
+  "status": "EXECUTABLE_CALLER_READY__SOURCE_LAUNCH_REFUSED_UNTIL_AUTHORIZATION",
   "tests": {
     "failed": 0,
     "passed": 3

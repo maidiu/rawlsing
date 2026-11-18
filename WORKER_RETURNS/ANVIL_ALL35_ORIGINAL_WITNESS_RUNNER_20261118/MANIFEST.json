@@ -1,16 +1,25 @@
 {
+  "actual_caller_available": true,
   "files": {
+    "CALLER_README.md": {
+      "bytes": 1914,
+      "sha256": "76ed1a160a16dbb16aa9ad46d35544a0135c03b22056bbb3ec12a951a1184594"
+    },
+    "CALLER_REFUSAL.txt": {
+      "bytes": 93,
+      "sha256": "3d1c150c752d83b46d6f7c6f05e8abcd4f887a8493b112f327d7d3a066745e14"
+    },
     "DRY_OUTPUT.txt": {
       "bytes": 592,
-      "sha256": "301a9f028173f4a5eee0e3716b39e9de8c8053b64c4f764a48e99c80e83b375b"
+      "sha256": "e7286025510dfaa8055dc9f290616e1a5c08363010d91db67ac45cad7d421bd6"
     },
     "DRY_RUN/WITNESS_PLAN.json": {
-      "bytes": 3045,
-      "sha256": "62b60307fcdf3d714ac19503d1f3fecdcb483741ef9ea30e1a7b6a4f6ed44fbb"
+      "bytes": 3121,
+      "sha256": "cf9c5804dcf6fa2d3f31f3b16d7e23dcc525f71963a0a9d754327074c710fc94"
     },
     "RETURN.json": {
-      "bytes": 2469,
-      "sha256": "028059bd267d39421443b30f214eaa296b9ba186f9ca244ecda09868bc17b86d"
+      "bytes": 3134,
+      "sha256": "4cf155a74b02adcb394b2490d4a8729c27f189df1402dc92743c3f4d289a2e50"
     },
     "SRC04_WITNESS_SCOPE.json": {
       "bytes": 4347,
@@ -21,21 +30,25 @@
       "sha256": "f5c935b3dddff28ae23b0e7411e28bde8da20cb9e3127f2e5a48a4cd718e9c8c"
     },
     "WITNESS_RUNNER_README.md": {
-      "bytes": 1986,
-      "sha256": "2207362c7b32bd3862d8dc26d666bda4441cab28ee5ce8e12ec7cf44747bb28f"
+      "bytes": 1998,
+      "sha256": "bdcb48cde5bd2f36b5a3d7126cfbb00a446c6e8a11397870a4b458a1bb317e7e"
     },
     "test_witness_runner.py": {
       "bytes": 1433,
       "sha256": "61075d0d19b2d1d83831324b683fc78cf8f9a776ddf83ca06dd3b0301f93a13f"
     },
+    "witness_caller.py": {
+      "bytes": 18403,
+      "sha256": "1a04fdf5d8c4452ee1c98f692a50b76cc926dcdfeefe8ee759737b8a7c9a8903"
+    },
     "witness_runner.py": {
-      "bytes": 13638,
-      "sha256": "d863b0214cf436116f65c789cc6672ffa7632b3622b70a3de71adf9b072cad48"
+      "bytes": 13902,
+      "sha256": "afedf66411c19cbdba9cd8ecc5ae89b51d70a0f26c642fb666f48f9c4c9e5c2c"
     }
   },
   "product_edits": false,
-  "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_MANIFEST@1",
+  "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_MANIFEST@2",
   "source_bytes_in_git": false,
   "source_read_performed": false,
-  "status": "DRY_PREFLIGHT_OK__Q217_HELD__SCOPED_CONFIG_READY"
+  "status": "EXECUTABLE_CALLER_READY__SOURCE_LAUNCH_REFUSED_UNTIL_AUTHORIZATION"
 }
