@@ -1,290 +1,601 @@
 {
-  "schema": "ORACLE_PINNED_SOURCE_LOOKUP_R1",
-  "created_date": "2026-11-17",
+  "schema": "ORACLE_IMMUTABLE_SOURCE_AND_CODE_LOOKUP_R2",
+  "created_local_date": "2026-11-17",
   "repo": "maidiu/rawlsing",
   "protected_policy_cut": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "anvil_candidate_product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
   "seam_parent_cut": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
-  "usage": "source lookup/grade only; compare current ref before live action; blob_sha verified on indicated ref at preparation; no adoption inferred",
+  "purpose": "source/code locator not execution, scientific authority or lossless accession proof",
+  "validation": "All 40 original source blobs independently refetched at exact commit SHA: 40/40 match. New code/doc rows source-inspected at exact indicated commit with matching stated Git blob. This is not a runtime or cold exam.",
+  "status": "ORACLE_ACCESSION_VALIDATION_HOLD",
   "items": [
     {
       "id": "SHARED_PROGRAMMA",
       "path": "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "894ccf15b27fc36b04f940f2511c7e7212927a76",
-      "grade": "CANONICAL_OPERATING_OATH"
+      "grade": "CANONICAL_OPERATING_OATH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "PYAT_PROGRAMMA",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "72e58b52506cc444c7643223fdb8673ee2969e7c",
-      "grade": "CANONICAL_OPERATING_OATH"
+      "grade": "CANONICAL_OPERATING_OATH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SOROK_PROGRAMMA",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "cdfde4b7d9e3441e65218a9728732c54f801b18a",
-      "grade": "CANONICAL_OPERATING_OATH"
+      "grade": "CANONICAL_OPERATING_OATH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "PYAT_PROGRESS_MD",
       "path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "91bb8775ae7d43f62bc46eae178d6691b6fd796f",
-      "grade": "PROTECTED_REV11"
+      "grade": "PROTECTED_REV11",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "PYAT_PROGRESS_JSON",
       "path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "45d3059064371378b18d883cff6dc9d05f0a3960",
-      "grade": "PROTECTED_REV11"
+      "grade": "PROTECTED_REV11",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SOROK_PROGRESS_MD",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "a565e6239ee730bf8aae796d1c5afb35207b1e93",
-      "grade": "PROTECTED_R39_PLUS_MII"
+      "grade": "PROTECTED_R39_PLUS_MII",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SOROK_PROGRESS_JSON",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "f2081d41452a5fb5d7061fcf340af725e4ee07af",
-      "grade": "PROTECTED_R39_PLUS_MII"
+      "grade": "PROTECTED_R39_PLUS_MII",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VMESTYE_CHAR",
       "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/01_PROGRAMMA_VMESTYE.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "2494d30758216a1b384d37913463c948b98b8cee",
-      "grade": "PROTECTED_DOCUMENTARY_FRAME"
+      "grade": "PROTECTED_DOCUMENTARY_FRAME",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VMESTYE_MACHINE",
       "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/06_THE_ACTUAL_MACHINE.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "37e594174c2ae0ea52de07ec95b237d5a627692c",
-      "grade": "INITIAL_SPINE_NOT_ACTUAL_COMPLETE_MACHINE"
+      "grade": "INITIAL_SPINE_NOT_ACTUAL_COMPLETE_MACHINE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VMESTYE_ATLAS",
       "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/07_ATLAS_AND_RELATION_SCHEMA.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "f5e322b675b10fc83dfc8fa85f5a054873230694",
-      "grade": "PROTECTED_NORMALIZATION_DOCUMENT"
+      "grade": "PROTECTED_NORMALIZATION_DOCUMENT",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VMESTYE_CLOSURE",
       "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/08_CLOSURE_AND_CERTAINTY.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "3d60ef4375887536864fe2ec9f24b39684ab062b",
-      "grade": "FINITE_SCOPED_EPISTEMIC_CLOSE"
+      "grade": "FINITE_SCOPED_EPISTEMIC_CLOSE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ZAK_CHAR",
       "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/ZAKONCHILOC/ZAK_PROGRAM_CHARTER.md",
-      "ref": "docs/vmestye-zakonchiloc-zak00-authority-architecture-r1",
+      "commit_sha": "1ebd603aa8f5b6d551363336a632a0c364b85f17",
+      "historical_branch_ref": "docs/vmestye-zakonchiloc-zak00-authority-architecture-r1",
       "blob_sha": "5978e975aece403a9898be59252e0619de0ffdb0",
-      "grade": "AUTHOR_PREPARED_S0S1_NOT_ISSUER"
+      "grade": "AUTHOR_PREPARED_S0S1_NOT_ISSUER",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ZAK04_RETURN",
       "path": "WORKER_RETURNS/VMESTYE_ZAK04_MCR_R1/00_RETURN.md",
-      "ref": "agent/vmestye-zak04-mcr-20261110-r1",
+      "commit_sha": "5789a8a5ef179966640490b9d03df96c34847385",
+      "historical_branch_ref": "agent/vmestye-zak04-mcr-20261110-r1",
       "blob_sha": "e9881f59b0bfd098d9e52a089a34075a156bec1c",
-      "grade": "INCOMPLETE_S1_UNREVIEWED_S2_NEG"
+      "grade": "INCOMPLETE_S1_UNREVIEWED_S2_NEG",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VOSKRES_AGENDA",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/DDM_VOSKRES_20261114_R1.md",
-      "ref": "review/voskres1059-r2-correction-closure-20261115",
+      "commit_sha": "3ac6e6523e014feee9a95ed3f05ef525e77ae61e",
+      "historical_branch_ref": "review/voskres1059-r2-correction-closure-20261115",
       "blob_sha": "66ed488199476ae301a19ac53980ca740206a855",
-      "grade": "CANDIDATE_ORIGINAL_FIRST_INQUIRY"
+      "grade": "CANDIDATE_ORIGINAL_FIRST_INQUIRY",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VOSKRES_R2",
       "path": "WORKER_RETURNS/DDM_VOSKRES1059_R2/00_RETURN.md",
-      "ref": "review/voskres1059-r2-correction-closure-20261115",
+      "commit_sha": "3ac6e6523e014feee9a95ed3f05ef525e77ae61e",
+      "historical_branch_ref": "review/voskres1059-r2-correction-closure-20261115",
       "blob_sha": "9c5111caace3e82d4c14dd62960f99d79a1b269e",
-      "grade": "SOURCE_CORRECTION_AUTHOR"
+      "grade": "SOURCE_CORRECTION_AUTHOR",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "VOSKRES_REVIEW",
       "path": "WORKER_REVIEWS/DDM_VOSKRES1059_R2_CORRECTION_CLOSURE/00_RETURN.md",
-      "ref": "review/voskres1059-r2-correction-closure-20261115",
+      "commit_sha": "3ac6e6523e014feee9a95ed3f05ef525e77ae61e",
+      "historical_branch_ref": "review/voskres1059-r2-correction-closure-20261115",
       "blob_sha": "3db660adb7ce69f37c7ef0c6c02d090f85b5a59e",
-      "grade": "DISTINCT_ACCEPT_SCOPED_S1"
+      "grade": "DISTINCT_ACCEPT_SCOPED_S1",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "K1_B0",
       "path": "WORKER_RETURNS/VMESTYE_K1_A0B0_HOSTILE_EXCHANGE_20261116_R1/B0_FROZEN_USER_SUPPLIED/RECOVERED_INTEGRATED_MACHINE.md",
-      "ref": "docs/vmestye-k1-a0b0-hostile-exchange-20261116-r1",
+      "commit_sha": "e39734cbf0237ce6117e0cc6fc58be19dc839d5b",
+      "historical_branch_ref": "docs/vmestye-k1-a0b0-hostile-exchange-20261116-r1",
       "blob_sha": "8d680dec1c3652224e69b58eb5dc9024393aab67",
-      "grade": "SOURCE_GRADED_COMPETING_AUTHOR_CANDIDATE"
+      "grade": "SOURCE_GRADED_COMPETING_AUTHOR_CANDIDATE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ANVIL_README",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/README.md",
-      "ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
+      "commit_sha": "ca78b6a99a73f4e34790950caeb8d3684c5df94a",
+      "historical_branch_ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
       "blob_sha": "90e09690dac306dd53b9a9461ccf902f85768b33",
-      "grade": "DRAFT_UNDECIDED"
+      "grade": "DRAFT_UNDECIDED",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ANVIL_MEASURE",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/02_SYSTEM_AND_MEASURED_STATE.md",
-      "ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
+      "commit_sha": "ca78b6a99a73f4e34790950caeb8d3684c5df94a",
+      "historical_branch_ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
       "blob_sha": "d8738f2435e88fabdab34259511e773f9fa2c042",
-      "grade": "SCOPED_MEASUREMENTS"
+      "grade": "SCOPED_MEASUREMENTS",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ANVIL_REVERSE",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/06_DOWNSTREAM_REVERSE_REQUIREMENTS.md",
-      "ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
+      "commit_sha": "ca78b6a99a73f4e34790950caeb8d3684c5df94a",
+      "historical_branch_ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
       "blob_sha": "be355789c5550e35618bdf0c06b877fcc2a51e05",
-      "grade": "DRAFT_REVERSE_REQ"
+      "grade": "DRAFT_REVERSE_REQ",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ANVIL_FACTOR",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/08_FACTOR_COURT_AND_OPEN_DECISIONS.md",
-      "ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
+      "commit_sha": "ca78b6a99a73f4e34790950caeb8d3684c5df94a",
+      "historical_branch_ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
       "blob_sha": "cf8ccaa4cc6cff5006cc68ed99a9b1c5dd9b0702",
-      "grade": "UNDECIDED_COURT"
+      "grade": "UNDECIDED_COURT",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ANVIL_PP26",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/14_PRODUCT_SCIENCE_27_AND_GAP49_SNAPSHOT.md",
-      "ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
+      "commit_sha": "ca78b6a99a73f4e34790950caeb8d3684c5df94a",
+      "historical_branch_ref": "docs/programma-pyat-anvil-c11-workshop-20261116-r1",
       "blob_sha": "96ff4492226d46de0deb48c0129d068165465792",
-      "grade": "S0S1_USER_PRIORITIES_CANDIDATE"
+      "grade": "S0S1_USER_PRIORITIES_CANDIDATE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ANVIL_R7_RECEIPT",
       "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL_R7_INSTRUMENT_SCOPED_RECEIVING_20261117_R1.md",
-      "ref": "integration/pre-main-reconciliation-r1",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "historical_branch_ref": "integration/pre-main-reconciliation-r1",
       "blob_sha": "6bcffbec1ff1a0c2cbc43d4dadf69d788c260a34",
-      "grade": "PROTECTED_SCOPED_PREPARATION_ONLY"
+      "grade": "PROTECTED_SCOPED_PREPARATION_ONLY",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SOROK_PRE_A0",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md",
-      "ref": "agent/sorok-prea0-psyche-architecture-r1",
+      "commit_sha": "0eae4cb22324c42973594e3909da56e4b2e5e45b",
+      "historical_branch_ref": "agent/sorok-prea0-psyche-architecture-r1",
       "blob_sha": "983d4133838ad9783eda1e9439ea97f2e1a68b4f",
-      "grade": "R_AND_D_NOT_NATIVE"
+      "grade": "R_AND_D_NOT_NATIVE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SOROK_C1_C7",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/01_PRE_A0_V3_PFF_BUILD_CAMPAIGN_R1.md",
-      "ref": "agent/sorok-prea0-psyche-architecture-r1",
+      "commit_sha": "0eae4cb22324c42973594e3909da56e4b2e5e45b",
+      "historical_branch_ref": "agent/sorok-prea0-psyche-architecture-r1",
       "blob_sha": "969368a8d2ae5ed6ca945804f03a5132ee557d43",
-      "grade": "R_AND_D_NOT_NATIVE"
+      "grade": "R_AND_D_NOT_NATIVE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "ASTRA_PREV3_R3",
       "path": "PYAT_CONTROL_ROOM/ASTRA_PREV3_SOCIOLOGICAL_COMPLETION_R3/02_SOCIOLOGICAL_PRODUCT_AND_SEAM_CONTRACT.md",
-      "ref": "agent/astra-persona-first-prev3-seam-correction-r3",
+      "commit_sha": "88d3c40def26d34ff202258171c256dfa9d17dbb",
+      "historical_branch_ref": "agent/astra-persona-first-prev3-seam-correction-r3",
       "blob_sha": "cea69874c995833e0be04585364b697887a84394",
-      "grade": "CANDIDATE_ACTOR_INDEPENDENT_CONTRACT"
+      "grade": "CANDIDATE_ACTOR_INDEPENDENT_CONTRACT",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_02",
       "path": "SEAM/02_TRANSFORMATION_AND_INTERFACE_CONTRACT_R0.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "fdbcf7c18468f8f04ddd02700f6d046dbbd09aad",
-      "grade": "CANDIDATE_BOUNDARY"
+      "grade": "CANDIDATE_BOUNDARY",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_10",
       "path": "SEAM/10_SOROK_PREMISE_PRACTICE_FORMATION_TRANSDUCER_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "2190b2aa41c9d64eed36050136fe0491a7424931",
-      "grade": "K_U_HYPOTHESIS"
+      "grade": "K_U_HYPOTHESIS",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_18",
       "path": "SEAM/18_SCIENTIFIC_BIOCULTURAL_ONTOGENESIS_ADEQUACY_CRITERION_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "c25ebb5261a1b334c4a2cf097bfb0a557076c2e3",
-      "grade": "DEVELOPMENTAL_RESEARCH_CRITERION"
+      "grade": "DEVELOPMENTAL_RESEARCH_CRITERION",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_19",
       "path": "SEAM/19_SOROK_Z_CONTRADICTORY_REPRODUCTION_AFFORDANCE_APPROPRIATION_KERNEL_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "867cddf0a5dab75cd5c36e0afbc9ca950bde5df8",
-      "grade": "X_Y_Z_RESEARCH"
+      "grade": "X_Y_Z_RESEARCH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_20",
       "path": "SEAM/20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "9830a2717a8e9ea6ad023a3b4d5cb6dcd84c1b04",
-      "grade": "PARENT_CHILD_GENESIS_USER_INTENT"
+      "grade": "PARENT_CHILD_GENESIS_USER_INTENT",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_21",
       "path": "SEAM/21_EMERGENT_ICEBERG_VARIABLE_PSYCHOLOGICAL_ONTOLOGY_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "e9f60f09933964fc7e3f7a224655cf46b1d9f477",
-      "grade": "VARIABLE_PSYCHOLOGY_RESEARCH"
+      "grade": "VARIABLE_PSYCHOLOGY_RESEARCH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_22",
       "path": "SEAM/22_MATERIAL_INFANT_PRIMITIVES_CAREGIVING_BACKGROUND_LIFE_AND_DISTRIBUTIONAL_BREADTH_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "dc82b12460c06379c41c2700f9348e1a45c0d576",
-      "grade": "INFANT_ROUTINE_RESEARCH"
+      "grade": "INFANT_ROUTINE_RESEARCH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_23",
       "path": "SEAM/23_C5_SHADOW_GRAVITY_MATERIAL_CARE_COVERAGE_ATTRACTOR_TEST_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "1dbb8eee90ce25eda765e1f5736a9cccff1b5710",
-      "grade": "C5_H0_H1_RESEARCH"
+      "grade": "C5_H0_H1_RESEARCH",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_24_R4",
       "path": "SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/10_R4_PRINCIPAL_MATERNAL_FORWARD_CONCEPTION_FATHER_BACKFILL_AND_SIBLING_HISTORY.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "e68fb7b22a075921ce3b6623855ae10bf9993720",
-      "grade": "USER_GENESIS_SEQUENCE"
+      "grade": "USER_GENESIS_SEQUENCE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_24_R5",
       "path": "SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/11_R5_CONCEPTION_MODEL_DELTA_RESOLVED_AND_OPEN.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "05a8c8a3009c72e72f0f2b67e6e434037ad2aee6",
-      "grade": "WITHDRAWN_FATHER_FIRST_DEFAULT"
+      "grade": "WITHDRAWN_FATHER_FIRST_DEFAULT",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_25",
       "path": "SEAM/25_RETURN_TO_BOUNDARY_TRANSFORMATIONS_AND_OPEN_REGISTER_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "2b7cace810f755cac38c08412c116dd5db1dbc03",
-      "grade": "OPERATIVE_RESEARCH_BOUNDARY"
+      "grade": "OPERATIVE_RESEARCH_BOUNDARY",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_26",
       "path": "SEAM/26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "a05c21dd0b7b1d404fc500c0ef36c81aee67c96e",
-      "grade": "REVERSE_CONSUMER_REQUIREMENTS"
+      "grade": "REVERSE_CONSUMER_REQUIREMENTS",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_28",
       "path": "SEAM/28_POST_SEAM26_SOCIAL_FIELD_RECRUITMENT_AND_ANVIL_LESSONS_20261117_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "4acc62fbf922844e30fe3e23eef38831f36c4eda",
-      "grade": "OTHER_FIELD_CONTACT_GAP"
+      "grade": "OTHER_FIELD_CONTACT_GAP",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
     },
     {
       "id": "SEAM_29",
       "path": "SEAM/29_UM_PYAT_TO_UM_SOROK_CROSS_FIELD_RECRUITMENT_FIRST_READER_CHALLENGE_20261117_R1.md",
-      "ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
+      "commit_sha": "8bd487fb8c2ca3b045900cad332fe2140fe95000",
+      "historical_branch_ref": "docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1",
       "blob_sha": "5f7d0188bcdb9f12c7897a8b56fed0f9d6fb1f55",
-      "grade": "OTHER_FIELD_FIRST_READER_CHALLENGE"
+      "grade": "OTHER_FIELD_FIRST_READER_CHALLENGE",
+      "verify": "BLOB_RETRIEVED_MATCH_AT_COMMIT"
+    },
+    {
+      "id": "ANVIL_R3_AUTHOR_DECISION",
+      "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/R3_DOWNSTREAM_ACCOMMODATION/R3_ARCHITECTURE_DECISION.md",
+      "commit_sha": "02594c18f8401855a0f9cecc45921b548fa9aed6",
+      "blob_sha": "205c5bfb95eaeef3a4295e8ec31f9c50d1b1b6d6",
+      "grade": "REVIEWED_SCOPED_CONCEPTUAL_DESIGN_AUTHOR",
+      "verify": "EXACT_FILE_RETRIEVED_AT_COMMIT"
+    },
+    {
+      "id": "ANVIL_R3_RESEARCH_SYNTHESIS",
+      "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/R3_DOWNSTREAM_ACCOMMODATION/R3_RESEARCH_SYNTHESIS.md",
+      "commit_sha": "02594c18f8401855a0f9cecc45921b548fa9aed6",
+      "blob_sha": "35f36c459dac533b1e87d65b178e51cf7eca4b85",
+      "grade": "REVIEWED_SCOPED_CONCEPTUAL_RESEARCH",
+      "verify": "EXACT_FILE_RETRIEVED_AT_COMMIT"
+    },
+    {
+      "id": "ANVIL_R3_FIELD_ADAPTER",
+      "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/R3_DOWNSTREAM_ACCOMMODATION/R3_FIELD_AND_ADAPTER_CONTRACT.md",
+      "commit_sha": "02594c18f8401855a0f9cecc45921b548fa9aed6",
+      "blob_sha": "dd9e55f0fd70c55929a5db3bb5a0b9c64a761bb4",
+      "grade": "CONDITIONAL_EXTENSION_PROPOSED_NOT_WIRED",
+      "verify": "EXACT_FILE_RETRIEVED_AT_COMMIT"
+    },
+    {
+      "id": "ANVIL_R3_INDEPENDENT_C",
+      "path": "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/R3_REVIEW/R4_FINAL_CARDINALITY_RECHECK/RETURN.md",
+      "commit_sha": "8a245da3f6de5ca1eac3074eb99f817aabd62ac1",
+      "blob_sha": "c9bac00c2910ed7d002cbb815de20ae9f52fc86f",
+      "grade": "INDEPENDENT_ACCEPT_SCOPED_STAGE_SENSITIVE_DESIGN",
+      "verify": "EXACT_FILE_RETRIEVED_AT_COMMIT"
+    },
+    {
+      "id": "ANVIL_R3_HQ_HANDOFF",
+      "path": "WORKER_RETURNS/ANVIL_R3_HQ_RECEIVING_20261117/00_HQ_HANDOFF.md",
+      "commit_sha": "eeb67a18d0d8ee2dddc68f571f8759bde0c7fb03",
+      "blob_sha": "2d4e6de83a8c1563ec33031d9b8e6740c93eed03",
+      "grade": "R3_HQ_HANDOFF_PROTECTED_RECEIVING_HOLD",
+      "verify": "EXACT_FILE_RETRIEVED_AT_COMMIT"
+    },
+    {
+      "id": "SEAM_27_COLD_QUESTIONS",
+      "path": "SEAM/27_UM_PYAT_SEAM_SPECIALIST_SUCCESSION_20261117_R1/03_COPY_PASTE_SUCCESSOR_COMMISSION_AND_PROOF_OF_GROKKING.md",
+      "commit_sha": "a783c116f37f3f818eb670ce88c638abbe8de5a2",
+      "blob_sha": "2fffa2d7ddfb4cac73a8e97d0892a61753009c20",
+      "grade": "EXISTING_COLD_QUESTION_BANK_NOT_ORACLE_INDEPENDENT_PASS",
+      "verify": "EXACT_FILE_RETRIEVED_AT_COMMIT"
+    },
+    {
+      "id": "CODE_C11_SOURCE_FACADE",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "7c967b8227a2843971c7cd9f61f3deaa423af866",
+      "symbol": "build_validated_source_backed_c11_release_from_stream:L601;execute_source_backed_empirical_query:L689",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_NEW_EXECUTION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_C11_REPOSITORY",
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "c0cd4e835ceb8fe6c6025ebeb89e32223427f955",
+      "symbol": "C11Repository:L71",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_NEW_EXECUTION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_I03_NATIVE_EVALUATOR_P",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "b72b469e6646b88e4e2ed4dbbf0f3c209557fd69",
+      "symbol": "execute_empirical_query:L685",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_NEW_EXECUTION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_I03_EVAL_FACT",
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "9808a6b72c716e26ebce5cbd76ef5ef6f3b5c920",
+      "symbol": "_evaluate_index_group_core:L404;_build_fact:L879",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_NEW_EXECUTION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_C1_COMPOSITION",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "8d5d9dddbb5283b58a39b83a1d6f94d691a633f1",
+      "symbol": "compose_positioned_subject_possibility:L1064",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_NEW_EXECUTION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_N10E_PROVIDER",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "symbol": "provide_empirical_possibility_slice:L531",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_NEW_EXECUTION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_POSSIBILITY_CONSUMER",
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "symbol": "evaluate_positioned_subject_possibility:L417",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_PSYCHIC_FIRST_READER",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_DIRECT_I03_A",
+      "path": "rawlsing_next/pre553_direct_estate_i03.py",
+      "commit_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+      "blob_sha": "8825832f8067c7fce7a99a94505743cbb4eada06",
+      "symbol": "DirectEstateI03Session:L112;_build:L252;indices_for:L439",
+      "grade": "CANDIDATE_SOURCEFREE_INSPECTED_NOT_FOUND_PROTECTED_P",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": false
+    },
+    {
+      "id": "CODE_PREPARED_I03_A",
+      "path": "rawlsing_next/pre553_prepared_saved_i03.py",
+      "commit_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+      "blob_sha": "bcb146edae680028e027e47cae45891693f63526",
+      "symbol": "PreparedI03Session:L51",
+      "grade": "CANDIDATE_SOURCEFREE_INSPECTED_NOT_FOUND_PROTECTED_P",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": false
+    },
+    {
+      "id": "CODE_SAVED_WRAPPER_A",
+      "path": "rawlsing_next/pre553_saved_workload_integration.py",
+      "commit_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+      "blob_sha": "cc8aa32512378261406d765f0b049c748cb3e11f",
+      "symbol": "execute_saved_i03:L34;execute_saved_batch:L81",
+      "grade": "CANDIDATE_SOURCEFREE_INSPECTED_NOT_FOUND_PROTECTED_P;BATCH_NOT_WIRED",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": false
+    },
+    {
+      "id": "CODE_BATCH_RUNNER_A",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "commit_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+      "blob_sha": "49e3974c658d66a270815d9faa3798b40d4488b1",
+      "symbol": "BatchExecutionRunner:L386",
+      "grade": "CANDIDATE_CODE_INSPECTED;NO_PREPARED_ADAPTER",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": false
+    },
+    {
+      "id": "CODE_I03_NATIVE_EVALUATOR_A",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "commit_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+      "blob_sha": "8885e637eb176946c8496671ff49ee70665b3bc6",
+      "symbol": "execute_empirical_query:L734",
+      "grade": "CANDIDATE_CODE_INSPECTED;AUTHORITY_NATIVE_EVALUATOR",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": false
+    },
+    {
+      "id": "CODE_FF01_COUNT",
+      "path": "rawlsing_next/field_forge_conditional_support.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "symbol": "ExactConditionalSupportProfile:L359;produce_exact_conditional_support_profile:L467",
+      "grade": "PROTECTED_CODE_INSPECTED_NARROW_COUNT_ONLY",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_N9_N10W_SYNTHETIC",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "symbol": "build_synthetic_world:L133;run_progressive_chain:L466",
+      "grade": "PROTECTED_SOURCEFREE_CANDIDATE_NOT_REAL_CHILD",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_SOROK_HISTORICAL_WORLD",
+      "path": "rawlsing_next/sorok_history/owner.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "4352415bc120e37abab4da989c00193221266af6",
+      "symbol": "HistoricalWorld:L61",
+      "grade": "PROTECTED_CODE_INSPECTED_NO_PYAT_PSYCHIC_FUSION",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_SOROK_P6_ACTOR",
+      "path": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "044a3e11e9b21849df52b62d7e4e5646c56756e2",
+      "symbol": "experience:L32",
+      "grade": "PROTECTED_WORKER_RETURN_SOURCEFREE_SCOPED_PRIOR_TESTS",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_SDTF_R4_REQUEST",
+      "path": "rawlsing_next/sdtf_r4_world_response_redrive.py",
+      "commit_sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+      "blob_sha": "9964a24e25467fa53cc9f5529b6f40be9f11f53a",
+      "symbol": "request_r4_invalidation_rederivation:L494",
+      "grade": "PROTECTED_CODE_INSPECTED_REQUEST_NOT_WORLD_WRITE",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": true
+    },
+    {
+      "id": "CODE_J_ROLE_CERTIFICATION_A",
+      "path": "rawlsing_next/pre553_j_role_certification.py",
+      "commit_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+      "blob_sha": "d96e0b1230b38c59ba4fa7716d6dfd3b9fdbe889",
+      "symbol": "j_component_certification_validator:L1257",
+      "grade": "CANDIDATE_J_TO_FF_PATH_SELECTED_CONSUMER_OWNER_HELD",
+      "verify": "EXACT_CODE_RETRIEVED_AT_COMMIT",
+      "protected_p": false
     }
   ]
 }
