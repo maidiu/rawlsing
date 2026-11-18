@@ -24,6 +24,7 @@ import json
 import os
 import platform
 import resource
+import signal
 import subprocess
 import sys
 import time
@@ -146,6 +147,16 @@ def build_fixture(args: argparse.Namespace) -> dict[str, Any]:
     members = {
         p.name: sha_file(p) for p in sorted(release_dir.iterdir())
     }
+    audit = dict(width.audit)
+    for key, family in (
+        ("total_events", "RespondentEvent"),
+        ("total_routing", "RoutingEligibilityFact"),
+        ("total_question_bindings", "QuestionVariableBinding"),
+    ):
+        if key in audit and int(audit[key]) != int(receipt.family_counts[family]):
+            raise AssertionError(
+                f"geometry audit vs manifest mismatch: {key}={audit[key]} "
+                f"actual={receipt.family_counts[family]}")
     ops = selected_ops(bundle)
     contract = {
         "schema": SCHEMA,
@@ -165,14 +176,16 @@ def build_fixture(args: argparse.Namespace) -> dict[str, Any]:
             "repeated_mod": shape.repeated_mod,
             "skew_events": shape.skew_events,
             "width_note": (
-                "600-slot geometry is implemented as routing-only extra slots with sparse base events; "
-                "it is not a dense 600-event/respondent workload or real-width economics"
+                "600 native question slots with substantial populated response items: "
+                "80% valid, 10% typed MISSING, 10% typed NOT_ASKED; actual events/routing "
+                "are audited and this is still not native/original/real-width economics"
                 if args.questions > 5 else
-                "5 questions is not realistic 600-column width; use --questions 600 for a bounded geometry check, not economics"
+                "5 questions is not realistic 600-column width; use --questions 600 for a bounded geometry pilot, not economics"
             ),
-            "event_count_expected": shape.event_count,
-            "routing_count_expected": shape.routing_count,
+            "event_count_expected": int(width.audit.get("total_events", shape.event_count)),
+            "routing_count_expected": int(width.audit.get("total_routing", shape.routing_count)),
             "weight_count_expected": shape.weight_count,
+            "geometry_audit": dict(width.audit),
             "actual_family_counts": dict(receipt.family_counts),
         },
         "estate": {
@@ -215,13 +228,19 @@ def build_fixture(args: argparse.Namespace) -> dict[str, Any]:
         },
         "distinct_operation_rule": "different target/predicate/direction/k3/measure/occurrence; no repeated ID-only clones",
     }
-    (HERE / "fixture_contract.json").write_text(
+    contract_path = Path(args.contract)
+    if not contract_path.is_absolute():
+        contract_path = HERE / contract_path
+    contract_path.write_text(
         json.dumps(contract, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return contract
 
 
-def load_contract() -> dict[str, Any]:
-    path = HERE / "fixture_contract.json"
+def load_contract(contract_path: str | Path | None = None) -> dict[str, Any]:
+    path = Path(contract_path) if contract_path is not None else (
+        HERE / "fixture_contract.json")
+    if not path.is_absolute():
+        path = HERE / path
     if not path.exists():
         raise SystemExit("fixture contract missing; run --mode prepare first")
     contract = json.loads(path.read_text())
@@ -280,27 +299,85 @@ def admission_open(estate: dict[str, Any], catalog: RuntimeObjectCatalog,
     return opened, calls
 
 
+def _collect_refs(value: Any, out: list[str]) -> None:
+    from collections.abc import Mapping
+    from rawlsing_next.pre553_empirical_objects import ExactRef
+
+    if isinstance(value, ExactRef):
+        out.append(value.key)
+    elif isinstance(value, Mapping):
+        for key in sorted(value):
+            _collect_refs(value[key], out)
+    elif isinstance(value, (list, tuple, set, frozenset)):
+        for item in value:
+            _collect_refs(item, out)
+
+
 def fact_snapshot(result: Any) -> dict[str, Any]:
+    from rawlsing_next.pre553_empirical_objects import canonical_json as cj
+
     facts = list(result.facts)
-    fact_payload = canonical_json(facts)
-    release_payload = canonical_json(list(result.release_refs))
-    typed = [getattr(f, "typed_state", None) for f in facts]
-    denoms = [getattr(f, "raw_denominator_support", None) for f in facts]
-    weighted = [
-        getattr(f, "weighted_denominator_support_if_authorized", None)
-        for f in facts
-    ]
+    semantic_payload = cj([f.semantic_projection() for f in facts])
+    identity_payload = cj([f.as_dict() for f in facts])
+    ref_only_payload = cj(facts)  # exact defect witness: canonicalize -> ref.as_dict()
+    refs_payload = cj([f.ref.as_dict() for f in facts])
+    replay_payload = cj([
+        exact_ref(f.replay_ref, "fact.replay_ref").as_dict() for f in facts
+    ])
+    risk_refs: list[str] = []
+    denom_refs: list[str] = []
+    provenance_refs: list[str] = []
+    topology_refs: list[str] = []
+    for fact in facts:
+        for ref in getattr(fact, "risk_set_member_refs", ()):
+            risk_refs.append(exact_ref(ref, "fact.risk_set_member_refs").key)
+        for ref in getattr(fact, "denominator_member_refs", ()):
+            denom_refs.append(exact_ref(ref, "fact.denominator_member_refs").key)
+        for ref in getattr(fact, "source_empirical_provenance_refs", ()):
+            provenance_refs.append(exact_ref(ref, "fact.source_empirical_provenance_refs").key)
+        _collect_refs(fact.semantic_projection().get("target_topology"), topology_refs)
+    risk_payload = cj(sorted(set(risk_refs)))
+    denom_payload = cj(sorted(set(denom_refs)))
+    provenance_payload = cj(sorted(set(provenance_refs)))
+    member_payload = cj(sorted(set(risk_refs) | set(denom_refs) | set(topology_refs)))
     return {
         "fact_count": len(facts),
-        "fact_refs": [j(f.ref) for f in facts],
-        "fact_sha256": sha_bytes(fact_payload.encode()),
-        "release_refs_sha256": sha_bytes(release_payload.encode()),
-        "fact_payload_bytes": len(fact_payload.encode()),
-        "release_payload_bytes": len(release_payload.encode()),
-        "typed_states": typed,
-        "raw_denominator_support": denoms,
-        "weighted_denominator_support": weighted,
+        "fact_refs": [f.ref.as_dict() for f in facts],
+        "replay_refs": [
+            exact_ref(f.replay_ref, "fact.replay_ref").as_dict() for f in facts
+        ],
+        "semantic_sha256": sha_bytes(semantic_payload.encode()),
+        "identity_sha256": sha_bytes(identity_payload.encode()),
+        "ref_only_sha256": sha_bytes(ref_only_payload.encode()),
+        "refs_sha256": sha_bytes(refs_payload.encode()),
+        "replay_sha256": sha_bytes(replay_payload.encode()),
+        "member_refs_sha256": sha_bytes(member_payload.encode()),
+        "risk_member_refs_sha256": sha_bytes(risk_payload.encode()),
+        "denominator_member_refs_sha256": sha_bytes(denom_payload.encode()),
+        "provenance_refs_sha256": sha_bytes(provenance_payload.encode()),
+        "risk_member_ref_count": len(set(risk_refs)),
+        "denominator_member_ref_count": len(set(denom_refs)),
+        "provenance_ref_count": len(set(provenance_refs)),
+        "topology_ref_count": len(set(topology_refs)),
+        "semantic_payload_bytes": len(semantic_payload.encode()),
+        "identity_payload_bytes": len(identity_payload.encode()),
+        "ref_only_payload_bytes": len(ref_only_payload.encode()),
+        "refs_payload_bytes": len(refs_payload.encode()),
+        "replay_payload_bytes": len(replay_payload.encode()),
+        "member_payload_bytes": len(member_payload.encode()),
+        "risk_member_payload_bytes": len(risk_payload.encode()),
+        "denominator_member_payload_bytes": len(denom_payload.encode()),
+        "provenance_payload_bytes": len(provenance_payload.encode()),
+        "member_ref_count": len(set(risk_refs) | set(denom_refs) | set(topology_refs)),
+        "typed_states": [getattr(f, "typed_state", None) for f in facts],
+        "raw_denominator_support": [getattr(f, "raw_denominator_support", None) for f in facts],
+        "weighted_denominator_support": [
+            getattr(f, "weighted_denominator_support_if_authorized", None)
+            for f in facts
+        ],
         "release_refs": j(result.release_refs),
+        "query_ref": j(result.query_ref),
+        "source_scope_mode": result.source_scope_mode,
     }
 
 
@@ -320,8 +397,9 @@ def _timer_patch(module: Any, name: str, bucket: dict[str, Any]):
     return original
 
 
-def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
-    contract, ctx, bundle, ops = load_contract()
+def measure(mode: str, *, contract_path: str | Path | None = None,
+            negatives: bool = False) -> dict[str, Any]:
+    contract, ctx, bundle, ops = load_contract(contract_path)
     estate = contract["estate"]
     catalog = bundle.catalog
     grant = {"now": True}
@@ -342,12 +420,26 @@ def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
     scratch_before = directory_bytes(Path(estate["root"]))
     output_bytes = 0
     prepared_receipt = None
+    observed: list[Any] = []
     rows: list[dict[str, Any]] = []
     evaluator_timer: dict[str, Any] = {}
     discovery_timer: dict[str, Any] = {}
     instrumentation = CourtInstrumentation()
     import rawlsing_next.pre553_carrier_execution as carrier
     import rawlsing_next.pre553_prepared_saved_i03 as prepared_mod
+    from rawlsing_next.pre553_prepared_saved_i03 import PreparedI03Session
+    original_prepared_exec = PreparedI03Session.execute_i03
+    original_saved_exec = SavedC11Admission.execute_i03
+
+    def observing(original):
+        def wrapper(self, *args, **kwargs):
+            result = original(self, *args, **kwargs)
+            observed.append(result)
+            return result
+        return wrapper
+
+    PreparedI03Session.execute_i03 = observing(original_prepared_exec)
+    SavedC11Admission.execute_i03 = observing(original_saved_exec)
     original_eval = _timer_patch(carrier, "execute_empirical_query", evaluator_timer)
     original_eval_prepared = _timer_patch(
         prepared_mod, "execute_empirical_query", evaluator_timer)
@@ -367,8 +459,9 @@ def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
                     snap["serialize_seconds"] = time.monotonic() - serial_start
                     snap["label"] = label
                     snap["wall_seconds"] = wall
-                    output_bytes += snap["fact_payload_bytes"] + snap[
-                        "release_payload_bytes"]
+                    output_bytes += sum(snap[key] for key in (
+                        "identity_payload_bytes", "refs_payload_bytes",
+                        "replay_payload_bytes", "member_payload_bytes"))
                     rows.append(snap)
             elif mode == "prepared":
                 with admission.prepared_i03() as session:
@@ -383,8 +476,9 @@ def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
                         snap["serialize_seconds"] = time.monotonic() - serial_start
                         snap["label"] = label
                         snap["wall_seconds"] = wall
-                        output_bytes += snap["fact_payload_bytes"] + snap[
-                            "release_payload_bytes"]
+                        output_bytes += sum(snap[key] for key in (
+                            "identity_payload_bytes", "refs_payload_bytes",
+                            "replay_payload_bytes", "member_payload_bytes"))
                         rows.append(snap)
                     prepared_receipt = session.receipt().as_dict()
             elif mode == "batch":
@@ -450,7 +544,7 @@ def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
                 neg_after = counters.material()
                 negative = {
                     "revoked_refusal": refusal,
-                    "restored_fact_sha256": fact_snapshot(restored)["fact_sha256"],
+                    "restored_identity_sha256": fact_snapshot(restored)["identity_sha256"],
                     "wall_seconds": time.monotonic() - negative_started,
                     "index_builds": neg_after["session_builds"] - neg_before["session_builds"],
                     "index_build_seconds": neg_after["session_build_seconds"] - neg_before["session_build_seconds"],
@@ -466,6 +560,8 @@ def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
         carrier.execute_empirical_query = original_eval
         prepared_mod.execute_empirical_query = original_eval_prepared
         prepared_mod.execute_exact_bounded_discovery = original_disc
+        PreparedI03Session.execute_i03 = original_prepared_exec
+        SavedC11Admission.execute_i03 = original_saved_exec
 
     wall = time.monotonic() - started
     end_cpu = cpu_times()
@@ -519,6 +615,22 @@ def measure(mode: str, *, negatives: bool = False) -> dict[str, Any]:
         "family_object_materializations": counters.material()["family_object_materializations"],
         "session_builds": counters.material()["session_builds"],
         "prepared_receipt": prepared_receipt,
+        "binding_receipt_bytes": len(canonical_json(
+            admission.binding_receipt().as_dict()).encode()),
+        "prepared_receipt_bytes": (
+            None if prepared_receipt is None else
+            len(canonical_json(prepared_receipt).encode())
+        ),
+        "observer_results": len(observed),
+        "observer_identity_sha256": [
+            fact_snapshot(result)["identity_sha256"] for result in observed
+        ],
+        "wrapper_abi_bytes": len(canonical_json({
+            "query_ref": rows[0]["query_ref"] if rows else None,
+            "release_refs": rows[0]["release_refs"] if rows else [],
+            "source_scope_mode": rows[0]["source_scope_mode"] if rows else None,
+            "fact_refs": [row.get("fact_refs", []) for row in rows],
+        }).encode()),
         "negative": negative,
         "rows": rows,
         "abort_limits": budget,
@@ -548,8 +660,236 @@ def write_result(result: dict[str, Any], out: Path) -> None:
     out.write_text(json.dumps(plain(result), indent=2, sort_keys=True) + "\n")
 
 
+
+
+def _supervise(cmd: list[str], *, cap_seconds: float, scratch_root: Path,
+               label: str, rss_limit: int, scratch_limit: int) -> dict[str, Any]:
+    """External child supervision with 0.25 s process-tree/RSS/scratch sampling."""
+    import court_instrumentation as ci
+
+    started = time.monotonic()
+    process = subprocess.Popen(
+        cmd, cwd=str(REPO), text=True, stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, start_new_session=True,
+    )
+    samples: list[dict[str, Any]] = []
+    aborted = None
+    last_sample = None
+    while process.poll() is None:
+        time.sleep(0.25)
+        elapsed = time.monotonic() - started
+        rss = ci.process_tree_rss_bytes(process.pid)
+        scratch = ci.directory_bytes(scratch_root)
+        last_sample = {
+            "elapsed_seconds": elapsed,
+            "process_tree_rss_bytes": rss,
+            "scratch_bytes": scratch,
+            "pid": process.pid,
+        }
+        samples.append(last_sample)
+        if elapsed > cap_seconds:
+            aborted = f"WALL_LIMIT:{cap_seconds}"
+            break
+        if rss > rss_limit:
+            aborted = f"RSS_LIMIT:{rss}>{rss_limit}"
+            break
+        if scratch > scratch_limit:
+            aborted = f"SCRATCH_LIMIT:{scratch}>{scratch_limit}"
+            break
+    if aborted:
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            process.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.wait(timeout=3)
+    try:
+        stdout, stderr = process.communicate(timeout=10)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        stdout, stderr = process.communicate(timeout=5)
+    wall = time.monotonic() - started
+    rss_peak = max((x["process_tree_rss_bytes"] for x in samples), default=0)
+    scratch_peak = max((x["scratch_bytes"] for x in samples), default=0)
+    return {
+        "label": label,
+        "command": cmd,
+        "exit": process.returncode,
+        "aborted": aborted,
+        "wall_seconds": wall,
+        "sample_count": len(samples),
+        "process_tree_rss_peak_sampled_bytes": rss_peak,
+        "scratch_peak_sampled_bytes": scratch_peak,
+        "last_sample": last_sample,
+        "stdout": stdout,
+        "stderr": stderr,
+    }
+
+
+def _write_samples(path: Path, data: dict[str, Any]) -> None:
+    path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+
+
+def pilot(args: argparse.Namespace) -> dict[str, Any]:
+    """One producer build + fresh baseline + fresh prepared; one pair total."""
+    outdir = HERE / "R2_PILOT"
+    outdir.mkdir(parents=True, exist_ok=True)
+    contract_rel = "R2_PILOT/fixture_contract_pilot.json"
+    root = HERE / ".local-data-pilot"
+    rss_limit = args.max_rss_bytes
+    scratch_limit = args.max_scratch_bytes
+    build_cap = 300.0
+    query_cap = 180.0
+    combined_cap = 12 * 60.0
+    started = time.monotonic()
+    common = [sys.executable, str(Path(__file__).resolve())]
+    build_cmd = common + [
+        "--mode", "prepare", "--respondents", "16", "--questions", "600",
+        "--root", str(root), "--contract", contract_rel,
+        "--chunk-rows", "512", "--max-seconds", str(query_cap),
+        "--max-rss-bytes", str(rss_limit), "--max-scratch-bytes", str(scratch_limit),
+    ]
+    build = _supervise(build_cmd, cap_seconds=build_cap, scratch_root=root,
+                       label="producer_build", rss_limit=rss_limit,
+                       scratch_limit=scratch_limit)
+    _write_samples(outdir / "samples_build.json", build)
+    if build["exit"] != 0 or build["aborted"]:
+        result = {
+            "schema": "ANVIL_CUT2_R2_PILOT@1",
+            "status": "EXACT_MEASUREMENT_FAILURE",
+            "stage": "producer_build",
+            "build": build,
+            "combined_wall_seconds": time.monotonic() - started,
+            "limitations": ["No query pair was run because producer build failed."],
+        }
+        _write_samples(outdir / "FIRST_PAIR_RESULT.json", result)
+        return result
+    baseline_cmd = common + [
+        "--mode", "baseline", "--root", str(root),
+        "--contract", contract_rel, "--out", str(outdir / "baseline.json"),
+        "--max-seconds", str(query_cap),
+        "--max-rss-bytes", str(rss_limit), "--max-scratch-bytes", str(scratch_limit),
+    ]
+    baseline = _supervise(baseline_cmd, cap_seconds=query_cap, scratch_root=root,
+                          label="fresh_baseline", rss_limit=rss_limit,
+                          scratch_limit=scratch_limit)
+    _write_samples(outdir / "samples_baseline.json", baseline)
+    if baseline["exit"] != 0 or baseline["aborted"]:
+        result = {
+            "schema": "ANVIL_CUT2_R2_PILOT@1",
+            "status": "EXACT_MEASUREMENT_FAILURE",
+            "stage": "fresh_baseline",
+            "build": build, "baseline": baseline,
+            "combined_wall_seconds": time.monotonic() - started,
+            "limitations": ["Prepared mode not run because baseline failed."],
+        }
+        _write_samples(outdir / "FIRST_PAIR_RESULT.json", result)
+        return result
+    prepared_cmd = common + [
+        "--mode", "prepared", "--root", str(root),
+        "--contract", contract_rel, "--out", str(outdir / "prepared.json"),
+        "--negatives", "--max-seconds", str(query_cap),
+        "--max-rss-bytes", str(rss_limit), "--max-scratch-bytes", str(scratch_limit),
+    ]
+    prepared = _supervise(prepared_cmd, cap_seconds=query_cap, scratch_root=root,
+                          label="fresh_prepared", rss_limit=rss_limit,
+                          scratch_limit=scratch_limit)
+    _write_samples(outdir / "samples_prepared.json", prepared)
+    if prepared["exit"] != 0 or prepared["aborted"]:
+        result = {
+            "schema": "ANVIL_CUT2_R2_PILOT@1",
+            "status": "EXACT_MEASUREMENT_FAILURE",
+            "stage": "fresh_prepared",
+            "build": build, "baseline": baseline, "prepared": prepared,
+            "combined_wall_seconds": time.monotonic() - started,
+            "limitations": ["Pair incomplete because prepared mode failed."],
+        }
+        _write_samples(outdir / "FIRST_PAIR_RESULT.json", result)
+        return result
+
+    baseline_json = json.loads((outdir / "baseline.json").read_text())
+    prepared_json = json.loads((outdir / "prepared.json").read_text())
+    contract = json.loads((HERE / contract_rel).read_text())
+    b_rows = {r["label"]: r for r in baseline_json["rows"]}
+    p_rows = {r["label"]: r for r in prepared_json["rows"]}
+    labels = sorted(b_rows)
+    parity_fields = ("identity_sha256", "semantic_sha256", "refs_sha256",
+                     "member_refs_sha256", "replay_sha256")
+    parity = {
+        label: {
+            field: b_rows[label][field] == p_rows[label][field]
+            for field in parity_fields
+        } for label in labels
+    }
+    exact = all(all(v.values()) for v in parity.values())
+    negative = prepared_json.get("negative") or {}
+    restored = negative.get("restored_identity_sha256")
+    negative_label = "selected_weighted" if "selected_weighted" in b_rows else (
+        labels[0] if labels else None)
+    first_identity = b_rows[negative_label]["identity_sha256"] if negative_label else None
+    result = {
+        "schema": "ANVIL_CUT2_R2_PILOT@1",
+        "status": "MEASURED_FIRST_BOUNDED_HIGHWIDTH_PAIR" if exact else "EXACT_MEASUREMENT_FAILURE",
+        "geometry": contract.get("shape", {}),
+        "geometry_audit": contract.get("shape", {}).get("geometry_audit"),
+        "estate": contract.get("estate", {}),
+        "build": build,
+        "baseline": baseline_json,
+        "prepared": prepared_json,
+        "parity": {
+            "labels": labels,
+            "per_operation": parity,
+            "exact_full_semantic_identity_refs_member_replay": exact,
+        },
+        "negative": {
+            "revoked_refusal": negative.get("revoked_refusal"),
+            "restored_identity_sha256": restored,
+            "baseline_selected_identity_sha256": first_identity,
+            "restored_matches_baseline": restored == first_identity,
+            "negative_label": negative_label,
+            "separate_index_builds": negative.get("index_builds"),
+            "separate_evaluator_calls": negative.get("evaluator_calls"),
+        },
+        "supervision": {
+            "build_cap_seconds": build_cap,
+            "query_cap_seconds": query_cap,
+            "combined_cap_seconds": combined_cap,
+            "rss_limit_bytes": rss_limit,
+            "scratch_limit_bytes": scratch_limit,
+            "combined_wall_seconds": time.monotonic() - started,
+            "build_exit": build["exit"],
+            "baseline_exit": baseline["exit"],
+            "prepared_exit": prepared["exit"],
+            "build_aborted": build["aborted"],
+            "baseline_aborted": baseline["aborted"],
+            "prepared_aborted": prepared["aborted"],
+            "sampling_interval_seconds": 0.25,
+        },
+        "limitations": [
+            "One paired baseline-vs-prepared comparison only; no fresh Batch, 1/10/100 or repetitions.",
+            "Queries target the accepted base A/B/C/MR roles; the 600 added slots load the writer/index but are not all queried.",
+            "The 80/10/10 populated pattern is synthetic TEST_ONLY source geometry, not original eligible QUERY issuance.",
+            "H/S/Q/O separation is existing-code instrumentation; Q includes fact construction/hash; O is export serialization and is not added to Q.",
+            "Process-tree RSS is 0.25 s ps sampling plus child ru_maxrss; not a continuous sampler; OS file cache is uncontrolled.",
+            "No native/original35/science/actor/100k/6GiB/economic acceptance.",
+        ],
+        "next_decision": "If exact parity and caps hold, qualify the measured H/S/Q/O/cost shape before any 1/10/100 or Batch-forward wiring; do not infer speedup from one pair.",
+    }
+    _write_samples(outdir / "FIRST_PAIR_RESULT.json", result)
+    return result
+
+
 def run_child(args: argparse.Namespace, mode: str, out: Path) -> dict[str, Any]:
-    result = measure(mode, negatives=args.negatives)
+    result = measure(mode, contract_path=args.contract, negatives=args.negatives)
     write_result(result, out)
     print(json.dumps({
         "mode": mode, "out": str(out), "operations": result["operations"],
@@ -565,6 +905,7 @@ def fresh(args: argparse.Namespace) -> dict[str, Any]:
     child = HERE / "evidence" / ".fresh_batch.child.json"
     cmd = [sys.executable, str(Path(__file__).resolve()),
            "--mode", "batch", "--root", args.root,
+           "--contract", args.contract,
            "--out", str(child)]
     if args.negatives:
         cmd.append("--negatives")
@@ -602,7 +943,8 @@ def smoke(args: argparse.Namespace) -> dict[str, Any]:
     for mode in ("baseline", "prepared", "batch"):
         out = evidence / f"{mode}.json"
         cmd = [sys.executable, str(Path(__file__).resolve()),
-               "--mode", mode, "--root", args.root, "--out", str(out)]
+               "--mode", mode, "--root", args.root,
+               "--contract", args.contract, "--out", str(out)]
         if args.negatives:
             cmd.append("--negatives")
         completed = subprocess.run(cmd, cwd=str(REPO), text=True,
@@ -616,14 +958,42 @@ def smoke(args: argparse.Namespace) -> dict[str, Any]:
     prepared_rows = {r["label"]: r for r in outputs["prepared"]["rows"]}
     batch_rows = {r["label"]: r for r in outputs["batch"]["rows"]}
     parity = {
-        "baseline_vs_prepared_fact_sha256": {
-            label: baseline_rows[label]["fact_sha256"] ==
-                   prepared_rows[label]["fact_sha256"]
+        "baseline_vs_prepared_identity_sha256": {
+            label: baseline_rows[label]["identity_sha256"] ==
+                   prepared_rows[label]["identity_sha256"]
             for label in baseline_rows
         },
-        "baseline_vs_prepared_exact": all(
-            baseline_rows[label]["fact_sha256"] ==
-            prepared_rows[label]["fact_sha256"]
+        "baseline_vs_prepared_semantic_sha256": {
+            label: baseline_rows[label]["semantic_sha256"] ==
+                   prepared_rows[label]["semantic_sha256"]
+            for label in baseline_rows
+        },
+        "baseline_vs_prepared_refs_sha256": {
+            label: baseline_rows[label]["refs_sha256"] ==
+                   prepared_rows[label]["refs_sha256"]
+            for label in baseline_rows
+        },
+        "baseline_vs_prepared_member_refs_sha256": {
+            label: baseline_rows[label]["member_refs_sha256"] ==
+                   prepared_rows[label]["member_refs_sha256"]
+            for label in baseline_rows
+        },
+        "baseline_vs_prepared_replay_sha256": {
+            label: baseline_rows[label]["replay_sha256"] ==
+                   prepared_rows[label]["replay_sha256"]
+            for label in baseline_rows
+        },
+        "baseline_vs_prepared_exact_full": all(
+            baseline_rows[label]["identity_sha256"] ==
+            prepared_rows[label]["identity_sha256"]
+            and baseline_rows[label]["semantic_sha256"] ==
+            prepared_rows[label]["semantic_sha256"]
+            and baseline_rows[label]["refs_sha256"] ==
+            prepared_rows[label]["refs_sha256"]
+            and baseline_rows[label]["member_refs_sha256"] ==
+            prepared_rows[label]["member_refs_sha256"]
+            and baseline_rows[label]["replay_sha256"] ==
+            prepared_rows[label]["replay_sha256"]
             for label in baseline_rows
         ),
         "batch_refs_vs_baseline_fact_refs": {
@@ -654,9 +1024,10 @@ def smoke(args: argparse.Namespace) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", required=True, choices=(
-        "prepare", "baseline", "prepared", "batch", "fresh", "smoke"))
+        "prepare", "baseline", "prepared", "batch", "fresh", "smoke", "pilot"))
     parser.add_argument("--root", default=str(HERE / ".local-data"))
     parser.add_argument("--out", default=str(HERE / "evidence" / "result.json"))
+    parser.add_argument("--contract", default="fixture_contract.json")
     parser.add_argument("--respondents", type=int, default=DEFAULT_RESPONDENTS)
     parser.add_argument("--questions", type=int, default=5)
     parser.add_argument("--chunk-rows", type=int, default=16)
@@ -669,13 +1040,19 @@ def main() -> int:
     args = parser.parse_args()
     if args.mode == "prepare":
         contract = build_fixture(args)
-        print(json.dumps({"contract": str(HERE / "fixture_contract.json"),
+        contract_path = Path(args.contract)
+        if not contract_path.is_absolute():
+            contract_path = HERE / contract_path
+        print(json.dumps({"contract": str(contract_path),
                           "estate": contract["estate"]["exact_path"],
                           "events": contract["shape"]["event_count_expected"]},
                          sort_keys=True))
         return 0
     if args.mode == "fresh":
         fresh(args)
+        return 0
+    if args.mode == "pilot":
+        pilot(args)
         return 0
     if args.mode == "smoke":
         smoke(args)

@@ -1,0 +1,1266 @@
+{
+  "baseline": {
+    "abort_limits": {
+      "enforcement": "checkpoint abort before/after each operation; process-tree RSS and scratch sampled; no mid-call kill",
+      "max_process_tree_rss_bytes": 2147483648,
+      "max_scratch_bytes": 2147483648,
+      "max_seconds": 180.0
+    },
+    "admission": {
+      "hash_bytes": 7099520,
+      "hash_calls": 15,
+      "seconds": 0.27261354302754626
+    },
+    "binding_receipt_bytes": 6923,
+    "command": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+      "--mode",
+      "baseline"
+    ],
+    "cpu_system_seconds": 5.078538,
+    "cpu_user_seconds": 78.10544900000001,
+    "discovery_calls": 0,
+    "discovery_seconds": 0.0,
+    "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+    "estate_retained_bytes": 7099520,
+    "evaluator_calls": 5,
+    "evaluator_calls_measured_operations": 5,
+    "evaluator_seconds": 65.40385016688379,
+    "evaluator_seconds_measured_operations": 65.40385016688379,
+    "event_object_materializations": 195,
+    "family_object_materializations": 91118,
+    "fixture": {
+      "actual_family_counts": {
+        "AuthoritySnapshot": 6,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 16,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 600,
+        "RespondentEvent": 8622,
+        "RespondentIdentity": 16,
+        "RoutingEligibilityFact": 9600,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 16
+      },
+      "event_count_expected": 8622,
+      "geometry_audit": {
+        "added_questions": 595,
+        "base_events": 54,
+        "base_repeated_mr_occurrences": 4,
+        "dense_assumption": false,
+        "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+        "events_per_respondent_max": 542,
+        "events_per_respondent_mean": 538.875,
+        "events_per_respondent_min": 538,
+        "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+        "extra_cells": 9520,
+        "extra_events": 8568,
+        "extra_typed_missing": 952,
+        "extra_typed_not_asked": 952,
+        "extra_valid_substantive": 7616,
+        "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+        "total_events": 8622,
+        "total_question_bindings": 600,
+        "total_routing": 9600,
+        "total_weights": 16
+      },
+      "include_weights": true,
+      "missing_mod": 17,
+      "questions": 600,
+      "repeated_mod": 13,
+      "respondents": 16,
+      "routing_count_expected": 9600,
+      "skew_events": 0,
+      "sparse_mod": 11,
+      "weight_count_expected": 16,
+      "width_note": "600 native question slots with substantial populated response items: 80% valid, 10% typed MISSING, 10% typed NOT_ASKED; actual events/routing are audited and this is still not native/original/real-width economics"
+    },
+    "grade": "SOURCEFREE_TEST_ONLY_MECHANICS_NOT_PERFORMANCE",
+    "index_build_seconds": 14.377979226992466,
+    "index_builds": 5,
+    "index_builds_measured_operations": 5,
+    "mode": "baseline",
+    "negative": null,
+    "observer_identity_sha256": [
+      "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+      "a616e92041eadee294cb68e6e4fcb86e5cca5d13d57bf4933aa625e3cebe1591",
+      "85bf7d6eea38a521a0908b041e81c03de2217ca6667c064a9685874be87a8c38",
+      "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+      "f426457e0d90b341637a50bc4fdd1d634b4253e82faca256c591be6fb9cdf96f"
+    ],
+    "observer_results": 5,
+    "operations": 5,
+    "output_bytes": 166175,
+    "prepared_receipt": null,
+    "prepared_receipt_bytes": null,
+    "process": {
+      "pid": 61363,
+      "platform": "macOS-13.2.1-x86_64-i386-64bit",
+      "ppid": 61118,
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+    },
+    "process_tree_rss_end_bytes": 167116800,
+    "process_tree_rss_peak_observed_bytes": 185323520,
+    "process_tree_rss_start_bytes": 61341696,
+    "row_group_compressed_bytes": 3203831044,
+    "row_group_reads": 20101,
+    "row_group_rows": 10195196,
+    "rows": [
+      {
+        "denominator_member_payload_bytes": 1705,
+        "denominator_member_ref_count": 8,
+        "denominator_member_refs_sha256": "8186b7799237317148a822d5fad714a305d8808b6cc069cb09fdb13341ba99e8",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "1fc79cb61b0e42b611b0eb9c7ff476d3f3d93ab02cdc08c3fb65ae67ecad86ac",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1fc79cb61b0e42b611b0eb9c7ff476d3f3d93ab02cdc08c3fb65ae67ecad86ac"
+          }
+        ],
+        "identity_payload_bytes": 35458,
+        "identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+        "label": "selected_weighted",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 10221,
+        "provenance_ref_count": 51,
+        "provenance_refs_sha256": "26f07e688e4c605f763eddfbfe65b63e848e68f052e77bfa4b3c51cf1fd04cdd",
+        "query_ref": {
+          "content_hash": "662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348"
+        },
+        "raw_denominator_support": [
+          8
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "1c1ff5dc813afa79fa0be080b69ce35d32bfdf0790d22dd95e571df90b68b759",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "1c1ff5dc813afa79fa0be080b69ce35d32bfdf0790d22dd95e571df90b68b759",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "9e9d94158549d1ff6e963bfe692d26f0a1cd87f2a7115d608e90de4f4a447a87",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9e9d94158549d1ff6e963bfe692d26f0a1cd87f2a7115d608e90de4f4a447a87"
+          }
+        ],
+        "replay_sha256": "bfad0ed36d3035ba097e29ef1c9ced8752daa508af8cad890b745a8c01b6425b",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 35256,
+        "semantic_sha256": "b95dba903e92a95dbd79f08301663f61c74146173e46652218f0a7ef6cfb8e78",
+        "serialize_seconds": 0.0048174039693549275,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 16.511652789020445,
+        "weighted_denominator_support": [
+          {
+            "$exact_fraction": [
+              24,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 1705,
+        "denominator_member_ref_count": 8,
+        "denominator_member_refs_sha256": "8186b7799237317148a822d5fad714a305d8808b6cc069cb09fdb13341ba99e8",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "493718e237f2804ffa5a3dffa51c5a420e52758636870d1b7a8bbd31f8f0047a",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:493718e237f2804ffa5a3dffa51c5a420e52758636870d1b7a8bbd31f8f0047a"
+          }
+        ],
+        "identity_payload_bytes": 31319,
+        "identity_sha256": "a616e92041eadee294cb68e6e4fcb86e5cca5d13d57bf4933aa625e3cebe1591",
+        "label": "f2_forward_raw",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 8613,
+        "provenance_ref_count": 43,
+        "provenance_refs_sha256": "0f28ee1858b06e29edbfa6ab406621931d01cf0a718648217a688140fe551f76",
+        "query_ref": {
+          "content_hash": "9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899"
+        },
+        "raw_denominator_support": [
+          8
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "527e92ed218dca3146933ed8450b2822a4e411cb8548267b5463d3a22595c3e6",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "527e92ed218dca3146933ed8450b2822a4e411cb8548267b5463d3a22595c3e6",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "0972d4d1dc0409d47de4ac17942ac117abde622a52b31d0987945f917e02ab03",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:0972d4d1dc0409d47de4ac17942ac117abde622a52b31d0987945f917e02ab03"
+          }
+        ],
+        "replay_sha256": "395b6e44a437a7991c6e41b6ad400d9ad0126094b2384359a81be569178225f4",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 31117,
+        "semantic_sha256": "6e16a57a66bba5bd785ff25f7f36fbcdeff4b59c51d8fdf4b8d241138ec5f58b",
+        "serialize_seconds": 0.003933890024200082,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 15.91572182503296,
+        "weighted_denominator_support": [
+          null
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 1066,
+        "denominator_member_ref_count": 5,
+        "denominator_member_refs_sha256": "c2cd67a0cefab44db3bb33a0b499c326498f2787ca204033fb963514183b9bed",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "54e3ed00e8f56d528642dc960c6b8bfc0ef2348d8ac6426f20c3240967329cf8",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:54e3ed00e8f56d528642dc960c6b8bfc0ef2348d8ac6426f20c3240967329cf8"
+          }
+        ],
+        "identity_payload_bytes": 29138,
+        "identity_sha256": "85bf7d6eea38a521a0908b041e81c03de2217ca6667c064a9685874be87a8c38",
+        "label": "f2_reverse_raw",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 8022,
+        "provenance_ref_count": 40,
+        "provenance_refs_sha256": "9a3178eebfd971653e3ac8fc569e2c96b699a6bc53879ea3363ffd3001baed8b",
+        "query_ref": {
+          "content_hash": "5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88"
+        },
+        "raw_denominator_support": [
+          5
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "5eac6df7dfe22cebbd9ba4e4b3ae0c502d6aa1065e0e3041cff879138594e85f",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "5eac6df7dfe22cebbd9ba4e4b3ae0c502d6aa1065e0e3041cff879138594e85f",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "3b1931fa3cd5cbbe34f81a6038eb4d5d9cee17d2bb5c82aebb9fc0aaaf93e7f6",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3b1931fa3cd5cbbe34f81a6038eb4d5d9cee17d2bb5c82aebb9fc0aaaf93e7f6"
+          }
+        ],
+        "replay_sha256": "21bcab7bbe742eebff73a2b64f15d80975f7d83a94709065f0f23ce97e6f0fd4",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 28936,
+        "semantic_sha256": "6223d638949fa87d12ca362deb05c8793783b3979bfabb1b2e0a26194b6d2704",
+        "serialize_seconds": 0.003601377015002072,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 15.638103675970342,
+        "weighted_denominator_support": [
+          null
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 1066,
+        "denominator_member_ref_count": 5,
+        "denominator_member_refs_sha256": "5a5be8964f8874c00ed73df1045aebe6b436ab2657e7829ad37a09304c911088",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94"
+          }
+        ],
+        "identity_payload_bytes": 36740,
+        "identity_sha256": "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+        "label": "f4_three_raw",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 11174,
+        "provenance_ref_count": 56,
+        "provenance_refs_sha256": "3ecc69a7996d47f62240bc9e0fcb59ecf2029e18a536452c6b2c46fcd6d4d9f8",
+        "query_ref": {
+          "content_hash": "6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6"
+        },
+        "raw_denominator_support": [
+          5
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1"
+          }
+        ],
+        "replay_sha256": "9708fccb9c0a32491a29c32025a53ab555e6b43624b77499c475a793ab92d30d",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 36538,
+        "semantic_sha256": "63b822858d59f282faf5833136559689418d45616f87c0122ac899aa295c3a9d",
+        "serialize_seconds": 0.004606253991369158,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 16.61579927796265,
+        "weighted_denominator_support": [
+          null
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 214,
+        "denominator_member_ref_count": 1,
+        "denominator_member_refs_sha256": "1d8749a27a10be0e59c7835eca247a994a6e6000a739a73204c848ea60d75436",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "29e5e032e6878aa5f864f848d6a1e2b130547f30fdffebc7b924fa88c57c3b89",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:29e5e032e6878aa5f864f848d6a1e2b130547f30fdffebc7b924fa88c57c3b89"
+          }
+        ],
+        "identity_payload_bytes": 17082,
+        "identity_sha256": "f426457e0d90b341637a50bc4fdd1d634b4253e82faca256c591be6fb9cdf96f",
+        "label": "repeated_mr_raw",
+        "member_payload_bytes": 427,
+        "member_ref_count": 2,
+        "member_refs_sha256": "4070181048f5f3355aee38aea3491096c6662e4ed2e22f7fc0f3c546f529e210",
+        "provenance_payload_bytes": 4673,
+        "provenance_ref_count": 23,
+        "provenance_refs_sha256": "3c18d9b07b806b4dfc4dce6c5052b72f19c6f144446a6e156451fdf16e2a27f3",
+        "query_ref": {
+          "content_hash": "2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071"
+        },
+        "raw_denominator_support": [
+          1
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "fbd3acc629f5bc2e1d64180fd53f28f4d02c32a3c18d9975c33bde699a048bfc",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "fbd3acc629f5bc2e1d64180fd53f28f4d02c32a3c18d9975c33bde699a048bfc",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "51ea6c9df979bd65f526643b53d68afedf87c08259ef003c366c03c9bbbf1e1c",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:51ea6c9df979bd65f526643b53d68afedf87c08259ef003c366c03c9bbbf1e1c"
+          }
+        ],
+        "replay_sha256": "1a335984b14fe06f8d6295ab471efa9268cf240c5d357e3e3fa1b79ea8b89809",
+        "risk_member_payload_bytes": 427,
+        "risk_member_ref_count": 2,
+        "risk_member_refs_sha256": "4070181048f5f3355aee38aea3491096c6662e4ed2e22f7fc0f3c546f529e210",
+        "semantic_payload_bytes": 16880,
+        "semantic_sha256": "b5c812e2d4de55b302c76a273741f3ed7f8b8025c55c14b17f2afa93572f4cd1",
+        "serialize_seconds": 0.0021647100220434368,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 15.721419209963642,
+        "weighted_denominator_support": [
+          null
+        ]
+      }
+    ],
+    "schema": "ANVIL_CUT2_MEASUREMENT_PREP@1",
+    "scratch_after_bytes": 7099520,
+    "scratch_before_bytes": 7099520,
+    "scratch_peak_component_bytes": 23269376,
+    "self_maxrss_bytes": 185323520,
+    "self_rss_end_bytes": 166207488,
+    "self_rss_start_bytes": 60526592,
+    "session_builds": 5,
+    "wall_seconds": 80.62440266500926,
+    "wrapper_abi_bytes": 1642
+  },
+  "build": {
+    "aborted": null,
+    "command": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+      "--mode",
+      "prepare",
+      "--respondents",
+      "16",
+      "--questions",
+      "600",
+      "--root",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot",
+      "--contract",
+      "R2_PILOT/fixture_contract_pilot.json",
+      "--chunk-rows",
+      "512",
+      "--max-seconds",
+      "180.0",
+      "--max-rss-bytes",
+      "2147483648",
+      "--max-scratch-bytes",
+      "2147483648"
+    ],
+    "exit": 0,
+    "label": "producer_build",
+    "last_sample": {
+      "elapsed_seconds": 33.840438908024225,
+      "pid": 61120,
+      "process_tree_rss_bytes": 0,
+      "scratch_bytes": 7099520
+    },
+    "process_tree_rss_peak_sampled_bytes": 199135232,
+    "sample_count": 121,
+    "scratch_peak_sampled_bytes": 100068948,
+    "stderr": "",
+    "stdout": "{\"contract\": \"/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R2_PILOT/fixture_contract_pilot.json\", \"estate\": \"/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate/releases/396bada8e3b4a6ae880592b2e5f1a54cf076364866a8e8288024808232e7463c\", \"events\": 8622}\n",
+    "wall_seconds": 33.8669873480103
+  },
+  "commands": {
+    "fresh_baseline": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+      "--mode",
+      "baseline",
+      "--root",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot",
+      "--contract",
+      "R2_PILOT/fixture_contract_pilot.json",
+      "--out",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R2_PILOT/baseline.json",
+      "--max-seconds",
+      "180.0",
+      "--max-rss-bytes",
+      "2147483648",
+      "--max-scratch-bytes",
+      "2147483648"
+    ],
+    "fresh_prepared": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+      "--mode",
+      "prepared",
+      "--root",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot",
+      "--contract",
+      "R2_PILOT/fixture_contract_pilot.json",
+      "--out",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R2_PILOT/prepared.json",
+      "--negatives",
+      "--max-seconds",
+      "180.0",
+      "--max-rss-bytes",
+      "2147483648",
+      "--max-scratch-bytes",
+      "2147483648"
+    ],
+    "producer_build": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+      "--mode",
+      "prepare",
+      "--respondents",
+      "16",
+      "--questions",
+      "600",
+      "--root",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot",
+      "--contract",
+      "R2_PILOT/fixture_contract_pilot.json",
+      "--chunk-rows",
+      "512",
+      "--max-seconds",
+      "180.0",
+      "--max-rss-bytes",
+      "2147483648",
+      "--max-scratch-bytes",
+      "2147483648"
+    ]
+  },
+  "correction_history": {
+    "old_82d14_smoke": "Mechanics smoke only; fact_snapshot canonical_json(facts) serialized refs because canonicalize returns CanonicalSemanticObject.ref.as_dict().",
+    "r2_correction": "Full semantic_projection/as_dict exact refs/replay/risk/denominator member identity and wrapper ABI bytes are measured separately; old smoke files preserved."
+  },
+  "estate": {
+    "exact_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate/releases/396bada8e3b4a6ae880592b2e5f1a54cf076364866a8e8288024808232e7463c",
+    "family_counts": {
+      "AuthoritySnapshot": 6,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 16,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 600,
+      "RespondentEvent": 8622,
+      "RespondentIdentity": 16,
+      "RoutingEligibilityFact": 9600,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 16
+    },
+    "i02": {
+      "logical": "1ac5ec295b3917c079e3f2c9d49da2b02ec4efdf981d5f9810efefafa0634e73",
+      "physical": "9e2645d75e5e6c553ad29cd9b2b11ca1cd81c8ea1497df5eca5d9003dda64f1f",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-CUT2-MEASURE|9ed9068c46a9e44d42f3d3e74dadc1ffc470a9fb0d94705a6cbc0bfbd9f50dcf",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:1d1584f004317046e839c7621304f0020350b620ac769ec197581759e90fb08d|1d1584f004317046e839c7621304f0020350b620ac769ec197581759e90fb08d",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|SOURCE-CUT2-MEASURE|4ee42ee68401b1bb95e6714779de64f001f9de07531ba409052bb86ad468f207",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:f5103ef4b9cc06ddaa4c645b416129883abfcf55e0aee42dd556db0910983fd6|f5103ef4b9cc06ddaa4c645b416129883abfcf55e0aee42dd556db0910983fd6"
+    },
+    "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+    "members_sha256": {
+      "AuthoritySnapshot.parquet": "82fcbd72315d4db33c8dc9a0095ce211ebd353c140282ac9e0b0137694f1fcdb",
+      "ComparatorReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "DiscoveryBranchReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "EmpiricalCoordinateFact.parquet": "2bbc41bd5868e72e36f2d8ac3890cc7af5fdb6525a12b0dbe25b49dbd8d081ec",
+      "EmpiricalPredicateReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "EmpiricalUniverse.parquet": "c2d1d90f45e568c02b3f72ff498ba293a97ed889288727e5673bcf001cea0789",
+      "QuestionVariableBinding.parquet": "a8f541fdcb4f4bc98bd3aaea5b2855a469c47700062adc54260e2a6ad1e15ce4",
+      "RespondentEvent.parquet": "6188e87e3a431f4f46b9403ec98db4bd86e0c0c59be4f8f7275475fa98d9ff10",
+      "RespondentIdentity.parquet": "8cd41a2e51ec4332477a3f2eb4c88ee91a1b986e2d45048cf795b2ebe9aba7b4",
+      "RoutingEligibilityFact.parquet": "7f36df2bcaa44eaa12382b8e7e61c3564457938557fa55bece1c477914f78640",
+      "SourceUniverseRelation.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "StructuralAdmissionReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "WeightMeasureFact.parquet": "2961dc5ca42fb43ef345239e161f3afcdbfd59ffece60361c860976f8a6c0887",
+      "event_locator.parquet": "d1cb0e6a721d21a0ea8026cc04e4e81afc7246b96be4f13a3da93570fa7ee54b",
+      "manifest.json": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b"
+    },
+    "reconstructed_v1_release_ref": {
+      "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-CUT2-MEASURE"
+    },
+    "retained_bytes": 7099520,
+    "root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate"
+  },
+  "geometry": {
+    "actual_family_counts": {
+      "AuthoritySnapshot": 6,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 16,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 600,
+      "RespondentEvent": 8622,
+      "RespondentIdentity": 16,
+      "RoutingEligibilityFact": 9600,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 16
+    },
+    "event_count_expected": 8622,
+    "geometry_audit": {
+      "added_questions": 595,
+      "base_events": 54,
+      "base_repeated_mr_occurrences": 4,
+      "dense_assumption": false,
+      "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+      "events_per_respondent_max": 542,
+      "events_per_respondent_mean": 538.875,
+      "events_per_respondent_min": 538,
+      "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+      "extra_cells": 9520,
+      "extra_events": 8568,
+      "extra_typed_missing": 952,
+      "extra_typed_not_asked": 952,
+      "extra_valid_substantive": 7616,
+      "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+      "total_events": 8622,
+      "total_question_bindings": 600,
+      "total_routing": 9600,
+      "total_weights": 16
+    },
+    "include_weights": true,
+    "missing_mod": 17,
+    "questions": 600,
+    "repeated_mod": 13,
+    "respondents": 16,
+    "routing_count_expected": 9600,
+    "skew_events": 0,
+    "sparse_mod": 11,
+    "weight_count_expected": 16,
+    "width_note": "600 native question slots with substantial populated response items: 80% valid, 10% typed MISSING, 10% typed NOT_ASKED; actual events/routing are audited and this is still not native/original/real-width economics"
+  },
+  "geometry_audit": {
+    "added_questions": 595,
+    "base_events": 54,
+    "base_repeated_mr_occurrences": 4,
+    "dense_assumption": false,
+    "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+    "events_per_respondent_max": 542,
+    "events_per_respondent_mean": 538.875,
+    "events_per_respondent_min": 538,
+    "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+    "extra_cells": 9520,
+    "extra_events": 8568,
+    "extra_typed_missing": 952,
+    "extra_typed_not_asked": 952,
+    "extra_valid_substantive": 7616,
+    "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+    "total_events": 8622,
+    "total_question_bindings": 600,
+    "total_routing": 9600,
+    "total_weights": 16
+  },
+  "limitations": [
+    "One paired baseline-vs-prepared comparison only; no fresh Batch, 1/10/100 or repetitions.",
+    "Queries target the accepted base A/B/C/MR roles; the 600 added slots load the writer/index but are not all queried.",
+    "The 80/10/10 populated pattern is synthetic TEST_ONLY source geometry, not original eligible QUERY issuance.",
+    "H/S/Q/O separation is existing-code instrumentation; Q includes fact construction/hash; O is export serialization and is not added to Q.",
+    "Process-tree RSS is 0.25 s ps sampling plus child ru_maxrss; not a continuous sampler; OS file cache is uncontrolled.",
+    "No native/original35/science/actor/100k/6GiB/economic acceptance."
+  ],
+  "negative": {
+    "baseline_selected_identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+    "negative_label": "selected_weighted",
+    "restored_identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+    "restored_matches_baseline": true,
+    "revoked_refusal": "DirectEstateError: current source/operation authority refused",
+    "separate_evaluator_calls": 1,
+    "separate_index_builds": 1
+  },
+  "next_decision": "If exact parity and caps hold, qualify the measured H/S/Q/O/cost shape before any 1/10/100 or Batch-forward wiring; do not infer speedup from one pair.",
+  "parity": {
+    "exact_full_semantic_identity_refs_member_replay": true,
+    "labels": [
+      "f2_forward_raw",
+      "f2_reverse_raw",
+      "f4_three_raw",
+      "repeated_mr_raw",
+      "selected_weighted"
+    ],
+    "per_operation": {
+      "f2_forward_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "f2_reverse_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "f4_three_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "repeated_mr_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "selected_weighted": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      }
+    }
+  },
+  "prepared": {
+    "abort_limits": {
+      "enforcement": "checkpoint abort before/after each operation; process-tree RSS and scratch sampled; no mid-call kill",
+      "max_process_tree_rss_bytes": 2147483648,
+      "max_scratch_bytes": 2147483648,
+      "max_seconds": 180.0
+    },
+    "admission": {
+      "hash_bytes": 7099520,
+      "hash_calls": 15,
+      "seconds": 0.2874188830028288
+    },
+    "binding_receipt_bytes": 6923,
+    "command": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+      "--mode",
+      "prepared"
+    ],
+    "cpu_system_seconds": 2.602234,
+    "cpu_user_seconds": 78.31566199999999,
+    "discovery_calls": 0,
+    "discovery_seconds": 0.0,
+    "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+    "estate_retained_bytes": 7099520,
+    "evaluator_calls": 6,
+    "evaluator_calls_measured_operations": 5,
+    "evaluator_seconds": 72.10342190094525,
+    "evaluator_seconds_measured_operations": 60.176479730929714,
+    "event_object_materializations": 168,
+    "family_object_materializations": 74860,
+    "fixture": {
+      "actual_family_counts": {
+        "AuthoritySnapshot": 6,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 16,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 600,
+        "RespondentEvent": 8622,
+        "RespondentIdentity": 16,
+        "RoutingEligibilityFact": 9600,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 16
+      },
+      "event_count_expected": 8622,
+      "geometry_audit": {
+        "added_questions": 595,
+        "base_events": 54,
+        "base_repeated_mr_occurrences": 4,
+        "dense_assumption": false,
+        "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+        "events_per_respondent_max": 542,
+        "events_per_respondent_mean": 538.875,
+        "events_per_respondent_min": 538,
+        "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+        "extra_cells": 9520,
+        "extra_events": 8568,
+        "extra_typed_missing": 952,
+        "extra_typed_not_asked": 952,
+        "extra_valid_substantive": 7616,
+        "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+        "total_events": 8622,
+        "total_question_bindings": 600,
+        "total_routing": 9600,
+        "total_weights": 16
+      },
+      "include_weights": true,
+      "missing_mod": 17,
+      "questions": 600,
+      "repeated_mod": 13,
+      "respondents": 16,
+      "routing_count_expected": 9600,
+      "skew_events": 0,
+      "sparse_mod": 11,
+      "weight_count_expected": 16,
+      "width_note": "600 native question slots with substantial populated response items: 80% valid, 10% typed MISSING, 10% typed NOT_ASKED; actual events/routing are audited and this is still not native/original/real-width economics"
+    },
+    "grade": "SOURCEFREE_TEST_ONLY_MECHANICS_NOT_PERFORMANCE",
+    "index_build_seconds": 5.497834365058225,
+    "index_builds": 2,
+    "index_builds_measured_operations": 1,
+    "mode": "prepared",
+    "negative": {
+      "discovery_calls": 0,
+      "discovery_seconds": 0.0,
+      "evaluator_calls": 1,
+      "evaluator_seconds": 11.926942170015536,
+      "excluded_from_timed_operation_build_count": true,
+      "index_build_seconds": 2.771773420041427,
+      "index_builds": 1,
+      "restored_identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+      "revoked_refusal": "DirectEstateError: current source/operation authority refused",
+      "wall_seconds": 14.802669909026008
+    },
+    "observer_identity_sha256": [
+      "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+      "a616e92041eadee294cb68e6e4fcb86e5cca5d13d57bf4933aa625e3cebe1591",
+      "85bf7d6eea38a521a0908b041e81c03de2217ca6667c064a9685874be87a8c38",
+      "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+      "f426457e0d90b341637a50bc4fdd1d634b4253e82faca256c591be6fb9cdf96f",
+      "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54"
+    ],
+    "observer_results": 6,
+    "operations": 5,
+    "output_bytes": 166175,
+    "prepared_receipt": {
+      "estate_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate/releases/396bada8e3b4a6ae880592b2e5f1a54cf076364866a8e8288024808232e7463c",
+      "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+      "operations": 5,
+      "release_ref": {
+        "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-CUT2-MEASURE"
+      },
+      "schema": "PYAT_PREP_SAVED_I03@1.0.0"
+    },
+    "prepared_receipt_bytes": 550,
+    "process": {
+      "pid": 61961,
+      "platform": "macOS-13.2.1-x86_64-i386-64bit",
+      "ppid": 61118,
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+    },
+    "process_tree_rss_end_bytes": 200810496,
+    "process_tree_rss_peak_observed_bytes": 200810496,
+    "process_tree_rss_start_bytes": 61186048,
+    "row_group_compressed_bytes": 3817786268,
+    "row_group_reads": 23898,
+    "row_group_rows": 12124696,
+    "rows": [
+      {
+        "denominator_member_payload_bytes": 1705,
+        "denominator_member_ref_count": 8,
+        "denominator_member_refs_sha256": "8186b7799237317148a822d5fad714a305d8808b6cc069cb09fdb13341ba99e8",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "1fc79cb61b0e42b611b0eb9c7ff476d3f3d93ab02cdc08c3fb65ae67ecad86ac",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1fc79cb61b0e42b611b0eb9c7ff476d3f3d93ab02cdc08c3fb65ae67ecad86ac"
+          }
+        ],
+        "identity_payload_bytes": 35458,
+        "identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+        "label": "selected_weighted",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 10221,
+        "provenance_ref_count": 51,
+        "provenance_refs_sha256": "26f07e688e4c605f763eddfbfe65b63e848e68f052e77bfa4b3c51cf1fd04cdd",
+        "query_ref": {
+          "content_hash": "662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348"
+        },
+        "raw_denominator_support": [
+          8
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "1c1ff5dc813afa79fa0be080b69ce35d32bfdf0790d22dd95e571df90b68b759",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "1c1ff5dc813afa79fa0be080b69ce35d32bfdf0790d22dd95e571df90b68b759",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "9e9d94158549d1ff6e963bfe692d26f0a1cd87f2a7115d608e90de4f4a447a87",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9e9d94158549d1ff6e963bfe692d26f0a1cd87f2a7115d608e90de4f4a447a87"
+          }
+        ],
+        "replay_sha256": "bfad0ed36d3035ba097e29ef1c9ced8752daa508af8cad890b745a8c01b6425b",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 35256,
+        "semantic_sha256": "b95dba903e92a95dbd79f08301663f61c74146173e46652218f0a7ef6cfb8e78",
+        "serialize_seconds": 0.004312958975788206,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 12.199642090010457,
+        "weighted_denominator_support": [
+          {
+            "$exact_fraction": [
+              24,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 1705,
+        "denominator_member_ref_count": 8,
+        "denominator_member_refs_sha256": "8186b7799237317148a822d5fad714a305d8808b6cc069cb09fdb13341ba99e8",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "493718e237f2804ffa5a3dffa51c5a420e52758636870d1b7a8bbd31f8f0047a",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:493718e237f2804ffa5a3dffa51c5a420e52758636870d1b7a8bbd31f8f0047a"
+          }
+        ],
+        "identity_payload_bytes": 31319,
+        "identity_sha256": "a616e92041eadee294cb68e6e4fcb86e5cca5d13d57bf4933aa625e3cebe1591",
+        "label": "f2_forward_raw",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 8613,
+        "provenance_ref_count": 43,
+        "provenance_refs_sha256": "0f28ee1858b06e29edbfa6ab406621931d01cf0a718648217a688140fe551f76",
+        "query_ref": {
+          "content_hash": "9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899"
+        },
+        "raw_denominator_support": [
+          8
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "527e92ed218dca3146933ed8450b2822a4e411cb8548267b5463d3a22595c3e6",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "527e92ed218dca3146933ed8450b2822a4e411cb8548267b5463d3a22595c3e6",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "0972d4d1dc0409d47de4ac17942ac117abde622a52b31d0987945f917e02ab03",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:0972d4d1dc0409d47de4ac17942ac117abde622a52b31d0987945f917e02ab03"
+          }
+        ],
+        "replay_sha256": "395b6e44a437a7991c6e41b6ad400d9ad0126094b2384359a81be569178225f4",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 31117,
+        "semantic_sha256": "6e16a57a66bba5bd785ff25f7f36fbcdeff4b59c51d8fdf4b8d241138ec5f58b",
+        "serialize_seconds": 0.0036111160297878087,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 11.88017125701299,
+        "weighted_denominator_support": [
+          null
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 1066,
+        "denominator_member_ref_count": 5,
+        "denominator_member_refs_sha256": "c2cd67a0cefab44db3bb33a0b499c326498f2787ca204033fb963514183b9bed",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "54e3ed00e8f56d528642dc960c6b8bfc0ef2348d8ac6426f20c3240967329cf8",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:54e3ed00e8f56d528642dc960c6b8bfc0ef2348d8ac6426f20c3240967329cf8"
+          }
+        ],
+        "identity_payload_bytes": 29138,
+        "identity_sha256": "85bf7d6eea38a521a0908b041e81c03de2217ca6667c064a9685874be87a8c38",
+        "label": "f2_reverse_raw",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 8022,
+        "provenance_ref_count": 40,
+        "provenance_refs_sha256": "9a3178eebfd971653e3ac8fc569e2c96b699a6bc53879ea3363ffd3001baed8b",
+        "query_ref": {
+          "content_hash": "5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88"
+        },
+        "raw_denominator_support": [
+          5
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "5eac6df7dfe22cebbd9ba4e4b3ae0c502d6aa1065e0e3041cff879138594e85f",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "5eac6df7dfe22cebbd9ba4e4b3ae0c502d6aa1065e0e3041cff879138594e85f",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "3b1931fa3cd5cbbe34f81a6038eb4d5d9cee17d2bb5c82aebb9fc0aaaf93e7f6",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3b1931fa3cd5cbbe34f81a6038eb4d5d9cee17d2bb5c82aebb9fc0aaaf93e7f6"
+          }
+        ],
+        "replay_sha256": "21bcab7bbe742eebff73a2b64f15d80975f7d83a94709065f0f23ce97e6f0fd4",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 28936,
+        "semantic_sha256": "6223d638949fa87d12ca362deb05c8793783b3979bfabb1b2e0a26194b6d2704",
+        "serialize_seconds": 0.0033130220253951848,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 12.055346411012579,
+        "weighted_denominator_support": [
+          null
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 1066,
+        "denominator_member_ref_count": 5,
+        "denominator_member_refs_sha256": "5a5be8964f8874c00ed73df1045aebe6b436ab2657e7829ad37a09304c911088",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94"
+          }
+        ],
+        "identity_payload_bytes": 36740,
+        "identity_sha256": "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+        "label": "f4_three_raw",
+        "member_payload_bytes": 3409,
+        "member_ref_count": 16,
+        "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "provenance_payload_bytes": 11174,
+        "provenance_ref_count": 56,
+        "provenance_refs_sha256": "3ecc69a7996d47f62240bc9e0fcb59ecf2029e18a536452c6b2c46fcd6d4d9f8",
+        "query_ref": {
+          "content_hash": "6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6"
+        },
+        "raw_denominator_support": [
+          5
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1"
+          }
+        ],
+        "replay_sha256": "9708fccb9c0a32491a29c32025a53ab555e6b43624b77499c475a793ab92d30d",
+        "risk_member_payload_bytes": 3409,
+        "risk_member_ref_count": 16,
+        "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+        "semantic_payload_bytes": 36538,
+        "semantic_sha256": "63b822858d59f282faf5833136559689418d45616f87c0122ac899aa295c3a9d",
+        "serialize_seconds": 0.003975968051236123,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 11.933302265009843,
+        "weighted_denominator_support": [
+          null
+        ]
+      },
+      {
+        "denominator_member_payload_bytes": 214,
+        "denominator_member_ref_count": 1,
+        "denominator_member_refs_sha256": "1d8749a27a10be0e59c7835eca247a994a6e6000a739a73204c848ea60d75436",
+        "fact_count": 1,
+        "fact_refs": [
+          {
+            "content_hash": "29e5e032e6878aa5f864f848d6a1e2b130547f30fdffebc7b924fa88c57c3b89",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:29e5e032e6878aa5f864f848d6a1e2b130547f30fdffebc7b924fa88c57c3b89"
+          }
+        ],
+        "identity_payload_bytes": 17082,
+        "identity_sha256": "f426457e0d90b341637a50bc4fdd1d634b4253e82faca256c591be6fb9cdf96f",
+        "label": "repeated_mr_raw",
+        "member_payload_bytes": 427,
+        "member_ref_count": 2,
+        "member_refs_sha256": "4070181048f5f3355aee38aea3491096c6662e4ed2e22f7fc0f3c546f529e210",
+        "provenance_payload_bytes": 4673,
+        "provenance_ref_count": 23,
+        "provenance_refs_sha256": "3c18d9b07b806b4dfc4dce6c5052b72f19c6f144446a6e156451fdf16e2a27f3",
+        "query_ref": {
+          "content_hash": "2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071"
+        },
+        "raw_denominator_support": [
+          1
+        ],
+        "ref_only_payload_bytes": 234,
+        "ref_only_sha256": "fbd3acc629f5bc2e1d64180fd53f28f4d02c32a3c18d9975c33bde699a048bfc",
+        "refs_payload_bytes": 234,
+        "refs_sha256": "fbd3acc629f5bc2e1d64180fd53f28f4d02c32a3c18d9975c33bde699a048bfc",
+        "release_refs": [
+          {
+            "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-CUT2-MEASURE"
+          }
+        ],
+        "replay_payload_bytes": 241,
+        "replay_refs": [
+          {
+            "content_hash": "51ea6c9df979bd65f526643b53d68afedf87c08259ef003c366c03c9bbbf1e1c",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:51ea6c9df979bd65f526643b53d68afedf87c08259ef003c366c03c9bbbf1e1c"
+          }
+        ],
+        "replay_sha256": "1a335984b14fe06f8d6295ab471efa9268cf240c5d357e3e3fa1b79ea8b89809",
+        "risk_member_payload_bytes": 427,
+        "risk_member_ref_count": 2,
+        "risk_member_refs_sha256": "4070181048f5f3355aee38aea3491096c6662e4ed2e22f7fc0f3c546f529e210",
+        "semantic_payload_bytes": 16880,
+        "semantic_sha256": "b5c812e2d4de55b302c76a273741f3ed7f8b8025c55c14b17f2afa93572f4cd1",
+        "serialize_seconds": 0.0021266379626467824,
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "topology_ref_count": 0,
+        "typed_states": [
+          "SUPPORTED"
+        ],
+        "wall_seconds": 12.110831003985368,
+        "weighted_denominator_support": [
+          null
+        ]
+      }
+    ],
+    "schema": "ANVIL_CUT2_MEASUREMENT_PREP@1",
+    "scratch_after_bytes": 7099520,
+    "scratch_before_bytes": 7099520,
+    "scratch_peak_component_bytes": 23269376,
+    "self_maxrss_bytes": 200454144,
+    "self_rss_end_bytes": 199901184,
+    "self_rss_start_bytes": 60379136,
+    "session_builds": 2,
+    "wall_seconds": 78.04721712099854,
+    "wrapper_abi_bytes": 1642
+  },
+  "raw_exit_codes": {
+    "fresh_baseline": 0,
+    "fresh_prepared": 0,
+    "producer_build": 0
+  },
+  "schema": "ANVIL_CUT2_R2_PILOT@1",
+  "source_pins": {
+    "changed_product_blobs": {
+      "rawlsing_next/pre553_batch_runner.py": {
+        "blob": "8320f28458fb85aec655d154a2527a161282f56b",
+        "sha256": "e8c110ff3a18acec0956bb47c4789312dd49e812c0643875b7a3e13a13415ab1"
+      },
+      "rawlsing_next/pre553_saved_workload_integration.py": {
+        "blob": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+        "sha256": "54cf978db77cef25a2dc17a0006f63ef13ee13a65708d68d194403a6e7afafee"
+      },
+      "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py": {
+        "blob": "bf00eb591bdee1087e9a10085d808c1ed2aadf88",
+        "sha256": "759a0912aa4bc799b67f68e4a7584412aece06275daaa32c8ac9178758c3371c"
+      }
+    },
+    "cut1_disposition": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1",
+    "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+    "executable_code_test_commit": "a13d69cf5636de5541660cd60115f8b61d66261b",
+    "fixture_contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+    "harness_sha256": "4fbbd48fd49d330efac0aeb8c41e2f08011cd00f550557a8377430a32b3491c6",
+    "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+    "width_fixture_sha256": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1"
+  },
+  "status": "MEASURED_FIRST_BOUNDED_HIGHWIDTH_PAIR",
+  "supervision": {
+    "baseline_aborted": null,
+    "baseline_exit": 0,
+    "build_aborted": null,
+    "build_cap_seconds": 300.0,
+    "build_exit": 0,
+    "combined_cap_seconds": 720.0,
+    "combined_wall_seconds": 194.57578067295253,
+    "prepared_aborted": null,
+    "prepared_exit": 0,
+    "query_cap_seconds": 180.0,
+    "rss_limit_bytes": 2147483648,
+    "sampling_interval_seconds": 0.25,
+    "scratch_limit_bytes": 2147483648
+  }
+}

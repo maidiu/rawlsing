@@ -1,6 +1,7 @@
 # CUT2 MEASUREMENT PREPARATION — EXECUTION HANDOFF
 
-**Status:** `COMPLETE_MEASUREMENT_PREPARATION_NOT_EXECUTED_REALWIDTH`
+**Status:** `MEASURED_FIRST_BOUNDED_HIGHWIDTH_PAIR` (R2; sourcefree TEST_ONLY geometry/mechanics)
+**Prior status:** `COMPLETE_MEASUREMENT_PREPARATION_NOT_EXECUTED_REALWIDTH` (82d14 smoke preserved)
 **Product cut:** `347baec696c8b395d750ac3b9e74417a6490c223`
 **Executable code/test commit:** `a13d69cf5636de5541660cd60115f8b61d66261b`
 **Baseline:** `cea2d4d3009e9087d2267e9d1f53bec28b730dc7`
@@ -125,7 +126,7 @@ It does **not** assume 600 columns = 600 events/respondent. A bounded geometry b
 |---|---:|---:|---:|---:|---:|---:|---|
 | `fixture_contract_600.json` | 8 | 600 | 27 | 4,800 | 8 | 7,522,473 B | `567122eff5c02dc7dd4379b58ad0aa491c89338c1281ce4524675d8d2e417b4a` |
 
-This proves the generator/13-family writer/geometry build mechanics. It does **not** prove a 600-column query workload, dense events, real-width economics, admission/index cost at scale, or 6 GiB. The 5-question 16-respondent fixture remains the only executed comparable pair. For a real-width pair, use `--questions 600` with a fixed cap and enough respondents to make the intended sparsity realistic, then rerun `baseline/prepared/batch/fresh`; do not call the geometry build production economics. The already-qualified 8R3Q fixture remains the fallback for the smallest mechanics pair.
+The earlier 8R/600Q build proved only routing-only geometry. **R2 section 10** now executes one 16R/600Q estate with substantial populated responses (8,622 events, 9,600 routing) through the actual writer and a fresh baseline-vs-prepared pair. Queries still target the base A/B/C/MR roles, not all 600 slots; this is sourcefree geometry/mechanics, not native/original/real-width economics or 6 GiB. The old 5Q smoke and routing-only geometry contract remain preserved as historical evidence. The already-qualified 8R3Q fixture remains the fallback for the smallest mechanics pair.
 
 ## 7. Next 1/10/100/fresh-process strategy after cut1 G5
 
@@ -153,4 +154,82 @@ No automatic matrix and no repeats in this turn.
 - H includes manifest/member hashing and admission checks; it is not a pure file-hash microbenchmark.
 - S is the existing `_build` cost; Q is the existing evaluator cost; O is serialization. They are not artificially decomposed beyond the existing code boundaries.
 - Batch full facts are not returned by the current Batch runner; `batch` parity is refs/receipts, while full fact parity is `prepared` direct on the same estate/catalog/operations.
-- The 16-respondent/5-question run has no realistic width/economy; its numbers must not be cited as 100k or matched performance.
+- The 16-respondent/5-question smoke has no realistic width/economy; its numbers must not be cited as 100k or matched performance. The R2 16R/600Q pair is sourcefree geometry/mechanics; it still does not test all 600 items as queries or establish native/100k economics.
+
+## 10. R2 correction and first bounded pilot (preserves old 82d14 smoke)
+
+The 82d14 smoke was a mechanics smoke. Its `fact_snapshot` used `canonical_json(result.facts)`, and `pre_canonicalize` returns `ref.as_dict()` for `CanonicalSemanticObject`; the observed 1,885 output bytes were refs, not full fact/risk/denominator payload. This is a harness defect, not a product defect. The R2 harness corrects it by separately serializing:
+
+- `f.semantic_projection()` (full semantic payload),
+- `f.as_dict()` (identity + semantics),
+- exact `f.ref`, `f.replay_ref`, `source_empirical_provenance_refs`,
+- `risk_set_member_refs` and `denominator_member_refs` identity sets,
+- wrapper/result ABI bytes,
+- `canonical_json(facts)` only as the old ref-only witness.
+
+The old smoke files and old 82d14 geometry contract remain preserved. R2 outputs are under `R2_PILOT/`.
+
+### Actual first bounded pair
+
+Producer build once, then two fresh child processes:
+
+1. `--mode prepare --respondents 16 --questions 600` (producer; exits)
+2. `--mode baseline` plain `SavedC11Admission` (fresh process; five ops; exits)
+3. `--mode prepared --negatives` one `PreparedI03Session` (fresh process; five ops; exits)
+
+No fresh Batch, no 1/10/100, no repeats, no matrix. The first pair is baseline vs prepared on the same immutable estate, catalog, operation refs, source authority and current callback.
+
+**Verdict:** `MEASURED_FIRST_BOUNDED_HIGHWIDTH_PAIR` (sourcefree TEST_ONLY geometry; not native/100k/science/economics).
+
+### Geometry actually audited
+
+| Field | Value |
+|---|---:|
+| Respondents | 16 |
+| Native question bindings | 600 |
+| Added slots | 595 |
+| Added cells | 9,520 |
+| Added valid substantive | 7,616 (80%) |
+| Added typed MISSING | 952 (10%) |
+| Added typed NOT_ASKED | 952 (10%) |
+| Added events | 8,568 |
+| Base events | 54 |
+| Total events | 8,622 |
+| Total routing | 9,600 |
+| Weights | 16 |
+| Events/respondent min / mean / max | 538 / 538.875 / 542 |
+| Base repeated MR occurrences | 4 |
+| Retained estate | 7,099,520 B |
+| Estate manifest SHA-256 | `c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b` |
+
+The 600 added slots are **not** treated as 600 events/respondent; this is an audited synthetic source-geometry pattern, not original eligible QUERY issuance.
+
+### Phase/cost summary (one pair, fresh children)
+
+| Phase | Wall s | CPU user+sys s | H s | S s | Q s (timed ops) | O s | RSS peak sampled | Retained B | Scratch peak B | Output B | Row reads |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| producer build | 33.18 | — | — | — | — | — | 193,429,504 | — | 99,941,972 | — | — |
+| baseline | 80.62 | 78.11 + 5.08 | 0.273 | 14.378 | 65.404 | 0.019 | 185,323,520 | 7,099,520 | 23,269,376 | 166,175 | 20,101 |
+| prepared | 78.05 | 78.32 + 2.60 | 0.287 | 5.498 | 60.176 | 0.017 | 200,810,496 | 7,099,520 | 23,269,376 | 166,175 | 23,898 |
+
+`S` total includes 2 prepared index builds (one timed context + one negative/restore); `index_builds_measured_operations` is 1 for prepared and 5 for baseline. Q includes fact construction/hash; O is export serialization and is not added to Q. One pair is not a speedup claim: prepared Q 60.18 vs baseline 65.40, prepared wall 78.05 vs baseline 80.62, RSS slightly higher.
+
+### Parity and negative
+
+- Full semantic, identity, exact refs, risk/denominator member identity and replay SHA-256: **exact for all five operations**.
+- Old ref-only vs full payload witness (selected first op): 234 B refs vs 35,256 B semantic / 35,458 B identity; five-op full semantic total 148,727 B vs 1,170 B ref-only.
+- Wrapper ABI: binding receipt 6,923 B both; prepared receipt 550 B.
+- Revoked CURRENT: `DirectEstateError: current source/operation authority refused`; restored identity SHA `435262ba...` exactly equals baseline selected identity. Negative/restore is separate from timed ops (1 index build, 1 evaluator call, ~14.8 s).
+
+### External abort / limitations
+
+- Build cap 300 s; each query mode 180 s; combined physical run cap 720 s; process-tree RSS cap 2 GiB; scratch cap 2 GiB.
+- 0.25 s `ps` process-tree/RSS/scratch sampling; child process group killed on timeout/limit; no admin/global kill.
+- Observed: build 33.18 s/193 MB/100 MB; baseline 80.62 s/185 MB; prepared 78.05 s/201 MB; combined 194.6 s. No abort.
+- Process-tree peak is sampled max plus child `ru_maxrss`, not a continuous sampler; OS file cache is uncontrolled.
+- Queries target base A/B/C/MR roles; the 600 added slots load the actual writer/index but are not all queried.
+- No native/original35/source/science/actor/100k/6GiB/economic acceptance.
+
+### Choice-changing next decision
+
+The one pair is exact and within caps. The measured shape shows index-build reuse (S 14.4→5.5 s, 5→1 measured builds) but Q dominates and prepared RSS is slightly higher. The next choice is **not** a predetermined speedup: qualify the measured H/S/Q/O/cost shape, then decide whether the next repair is (a) native evaluator/read-path cost, (b) index geometry/durability, or (c) Batch-forward wiring. Do not run 1/10/100 or Batch until that decision is recorded. See `R2_PILOT/FIRST_PAIR_RESULT.md` and `.json`.

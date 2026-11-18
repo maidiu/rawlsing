@@ -7,6 +7,14 @@
     "native_100k_execution": false,
     "original_survey_data_read": false,
     "product_edits": 0,
+    "r2_1_10_100": false,
+    "r2_first_bounded_pair": true,
+    "r2_fresh_baseline": true,
+    "r2_fresh_batch": false,
+    "r2_fresh_prepared": true,
+    "r2_original_survey_data_read": false,
+    "r2_producer_build_once": true,
+    "r2_repetitions": false,
     "real_width_execution": false,
     "subagents": 0,
     "tiny_5q_smoke": true,
@@ -16,48 +24,164 @@
   "branch": "agent/anvil-engineering-cut2-measurement-prep-20261117-r1",
   "commands_executed": [
     {
-      "command": "python3 .../measure_cut1_prepared.py --mode prepare",
+      "command": "python3 .../measure_cut1_prepared.py --mode pilot --max-rss-bytes 2147483648 --max-scratch-bytes 2147483648",
       "exit": 0
     },
     {
-      "command": "python3 .../measure_cut1_prepared.py --mode prepare --questions 600 --respondents 8 --root .../.local-data-600",
+      "command": "pilot producer prepare --respondents 16 --questions 600",
       "exit": 0
     },
     {
-      "command": "cp fixture_contract.json fixture_contract_600.json; python3 ... --mode prepare (restore 5Q contract)",
+      "command": "pilot fresh baseline five ops",
       "exit": 0
     },
     {
-      "command": "python3 .../measure_cut1_prepared.py --mode smoke --negatives",
+      "command": "pilot fresh prepared five ops + one negative/restore",
       "exit": 0
     },
     {
-      "command": "python3 -m py_compile measure_cut1_prepared.py width_fixture.py vendor/*.py",
+      "command": "py_compile runner/width/vendor",
       "exit": 0
     }
   ],
+  "correction_history": {
+    "defect": "prior fact_snapshot canonical_json(facts) serialized CanonicalSemanticObject.ref.as_dict() only; 1885 output bytes were refs, not full facts.",
+    "old_82d14_smoke_sha256": "904944b93a6b41f849ad7860d1e1874db93fff1131ed673fe3af55521d9ce3b8",
+    "old_smoke_evidence_preserved": true,
+    "r2_fix": "full semantic_projection/as_dict, exact fact/ref/replay/risk/denominator/provenance member identity, wrapper ABI bytes, and ref-only witness are measured separately."
+  },
   "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
   "cut1_review_disposition": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1",
   "cut1_scope": "sourcefree TEST_ONLY only; no reviewer product changes; code blobs identical at a13d69c and 347baec",
   "executable_code_test_commit": "a13d69cf5636de5541660cd60115f8b61d66261b",
   "findings": [
-    "The cut1 prepared path is mechanically executable through execute_saved_batch and prepared direct on the same estate/catalog/five distinct ops.",
-    "Full fact SHA-256 parity is exact baseline vs prepared; batch receipt refs match baseline fact refs for all five.",
-    "Revoked CURRENT refuses and exact restore returns the baseline fact SHA in baseline, prepared and batch.",
-    "H/S/Q/O separation is instrumented without product edits; negative/restore index builds are separated from timed operation builds.",
-    "The 600-slot geometry generator builds 600 question bindings, 4800 routing facts and only 27 events at 8 respondents; it does not assume dense 600 events/respondent.",
-    "The 5-question smoke is not real width/economics; no speedup is claimed (prepared Q 0.226 s vs baseline Q 0.230 s, tiny fixture)."
+    "R2 producer build: 16 respondents/600 question bindings, 8622 events, 9600 routing, 16 weights, 7099520 retained bytes; geometry audit exact.",
+    "R2 baseline vs prepared full semantic/identity/refs/member/replay parity exact for all five ops.",
+    "R2 prepared timed S 5.498s vs baseline 14.378s (5 vs 1 builds); Q 60.176 vs 65.404s; wall 78.05 vs 80.62s; prepared RSS slightly higher. One pair; no speedup claim.",
+    "R2 negative/restore exact; separate 1 index build/1 evaluator call.",
+    "Prior 1885-byte output was refs-only; R2 selected op full semantic 35256B vs ref-only 234B.",
+    "No product edit; cut1 code/test blobs unchanged at 347baec/a13d69c."
   ],
+  "first_pair_r2": {
+    "baseline": {
+      "H_seconds": 0.27261354302754626,
+      "O_seconds": 0.019123635021969676,
+      "Q_seconds": 65.40385016688379,
+      "S_seconds": 14.377979226992466,
+      "cpu_system_seconds": 5.078538,
+      "cpu_user_seconds": 78.105449,
+      "index_builds_timed": 5,
+      "output_bytes": 166175,
+      "retained": 7099520,
+      "row_group_reads": 20101,
+      "row_group_rows": 10195196,
+      "rss_peak_sampled": 185323520,
+      "scratch_peak": 23269376,
+      "wall_seconds": 80.62440266500926
+    },
+    "geometry": {
+      "added_missing": 952,
+      "added_not_asked": 952,
+      "added_valid": 7616,
+      "events": 8622,
+      "events_per_respondent_max": 542,
+      "events_per_respondent_mean": 538.875,
+      "events_per_respondent_min": 538,
+      "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+      "question_bindings": 600,
+      "questions": 600,
+      "respondents": 16,
+      "retained_bytes": 7099520,
+      "routing": 9600,
+      "weights": 16
+    },
+    "limitations": [
+      "One pair only; no 1/10/100/freshBatch/repetitions.",
+      "Queries target base A/B/C/MR; 600 added slots load writer/index but are not all queried.",
+      "Synthetic TEST_ONLY source geometry, not original eligible QUERY issuance.",
+      "Process-tree peak sampled at 0.25 s plus ru_maxrss; OS cache uncontrolled.",
+      "No native/original35/science/actor/100k/6GiB/economic acceptance."
+    ],
+    "negative": {
+      "restored_identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+      "restored_matches_baseline": true,
+      "revoked_refusal": "DirectEstateError: current source/operation authority refused",
+      "separate_evaluator_calls": 1,
+      "separate_index_builds": 1,
+      "wall_seconds": 14.802669909026008
+    },
+    "parity": {
+      "all_five_operations": true,
+      "identity": true,
+      "member_refs": true,
+      "refs": true,
+      "replay": true,
+      "semantic": true
+    },
+    "prepared": {
+      "H_seconds": 0.2874188830028288,
+      "O_seconds": 0.017339703044854105,
+      "Q_seconds": 60.176479730929714,
+      "S_seconds": 5.497834365058225,
+      "cpu_system_seconds": 2.602234,
+      "cpu_user_seconds": 78.315662,
+      "index_builds_timed": 1,
+      "index_builds_total": 2,
+      "output_bytes": 166175,
+      "retained": 7099520,
+      "row_group_reads": 23898,
+      "row_group_rows": 12124696,
+      "rss_peak_sampled": 200810496,
+      "scratch_peak": 23269376,
+      "wall_seconds": 78.04721712099854
+    },
+    "ref_vs_semantic_witness": {
+      "five_op_ref_only_bytes": 1170,
+      "five_op_semantic_bytes": 148727,
+      "selected_identity_bytes": 35458,
+      "selected_ref_only_bytes": 234,
+      "selected_semantic_bytes": 35256
+    },
+    "supervision": {
+      "aborted": false,
+      "baseline_exit": 0,
+      "build_cap_seconds": 300.0,
+      "build_exit": 0,
+      "combined_cap_seconds": 720.0,
+      "combined_wall_seconds": 194.57578067295253,
+      "prepared_exit": 0,
+      "query_cap_seconds": 180.0,
+      "rss_limit_bytes": 2147483648,
+      "sampling_interval_seconds": 0.25,
+      "scratch_limit_bytes": 2147483648
+    }
+  },
   "geometry_600": {
-    "events": 27,
-    "grade": "GEOMETRY_BUILD_ONLY_NOT_ECONOMICS",
-    "manifest_sha256": "567122eff5c02dc7dd4379b58ad0aa491c89338c1281ce4524675d8d2e417b4a",
-    "note": "extra slots are routing-only NOT_ELIGIBLE; sparse base events; 600 columns not treated as 600 events/respondent",
-    "question_bindings": 600,
-    "respondents": 8,
-    "retained_bytes": 7522473,
-    "routing": 4800,
-    "weights": 8
+    "note": "R2 adds substantial populated response items; old routing-only geometry is preserved but not the width evidence.",
+    "old_82d14_routing_only": {
+      "events": 27,
+      "question_bindings": 600,
+      "respondents": 8,
+      "retained_bytes": 7522473,
+      "routing": 4800,
+      "status": "preserved_old_geometry_build_only"
+    },
+    "r2_pilot": {
+      "added_missing": 952,
+      "added_not_asked": 952,
+      "added_valid": 7616,
+      "events": 8622,
+      "events_per_respondent_max": 542,
+      "events_per_respondent_mean": 538.875,
+      "events_per_respondent_min": 538,
+      "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+      "question_bindings": 600,
+      "questions": 600,
+      "respondents": 16,
+      "retained_bytes": 7099520,
+      "routing": 9600,
+      "weights": 16
+    }
   },
   "harness": {
     "first_pair": "plain SavedC11Admission one-shot vs prepared direct vs actual execute_saved_batch on the same estate/catalog/five distinct operations",
@@ -88,9 +212,12 @@
       "Q": "existing execute_empirical_query / execute_exact_bounded_discovery evaluator",
       "S": "DirectEstateI03Session._build index build"
     },
+    "pilot_contract": "R2_PILOT/fixture_contract_pilot.json",
     "resource_abort": "checkpoint before/after each operation; 120s/2GiB/2GiB smoke; real 6GiB RSS cap configurable; not a mid-call kill claim",
     "runner": "measure_cut1_prepared.py",
-    "schema": "MEASUREMENT_SCHEMA.json"
+    "runner_sha256": "4fbbd48fd49d330efac0aeb8c41e2f08011cd00f550557a8377430a32b3491c6",
+    "schema": "MEASUREMENT_SCHEMA.json",
+    "width_fixture_sha256": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1"
   },
   "measured_smoke": {
     "baseline": {
@@ -150,12 +277,48 @@
   },
   "outputs": {
     "EXECUTION_HANDOFF.md": {
-      "bytes": 12648,
-      "sha256": "273630b7e37935e50ca05bafc976bc8d83022db1a130a13d431629dbb5ecde45"
+      "bytes": 18065,
+      "sha256": "0307adcdf4936d59d48bd1110836078a83f2b8d9fbe4796ee5cffca509949048"
     },
     "MEASUREMENT_SCHEMA.json": {
-      "bytes": 7041,
-      "sha256": "be9d221db889140c640bba72a0c6e6713b3a64458e7a69f187c50f4a13cab96b"
+      "bytes": 8830,
+      "sha256": "45d625b8db50b769a4771b772b0ca84276a52bc6792344d0f7e65dfee3c854e9"
+    },
+    "R2_PILOT/ENGINEERING_LEDGER.md": {
+      "bytes": 3272,
+      "sha256": "02d54dd83175bbb9543447f0eed5c7b028d92d94ef974f162751aa387fd9461c"
+    },
+    "R2_PILOT/FIRST_PAIR_RESULT.json": {
+      "bytes": 57319,
+      "sha256": "9def4b08cfd9e937c42625d5d07d5a80e375fe4b425a814d225c7f8cc56f5f42"
+    },
+    "R2_PILOT/FIRST_PAIR_RESULT.md": {
+      "bytes": 6791,
+      "sha256": "35d58a2ddb025e4e850aa71a98e207aa846aafe90497395c8111e17c5f6808ac"
+    },
+    "R2_PILOT/baseline.json": {
+      "bytes": 19337,
+      "sha256": "e88892677269a6c1fae1c88bd53e6a5bbf55729f344eaad7fdbe80dc1b28fce7"
+    },
+    "R2_PILOT/fixture_contract_pilot.json": {
+      "bytes": 11695,
+      "sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28"
+    },
+    "R2_PILOT/prepared.json": {
+      "bytes": 20496,
+      "sha256": "1c21af5b999c9e952be71a03f30cce503689e3a61862fdd477177af6197a11d0"
+    },
+    "R2_PILOT/samples_baseline.json": {
+      "bytes": 1500,
+      "sha256": "e04942101686029f28900314f673e852685de3e031f8d4af924167a793be6f4b"
+    },
+    "R2_PILOT/samples_build.json": {
+      "bytes": 1576,
+      "sha256": "9e0b5c2800b01dc9a3fcce62607ad2ba4ae984966a71b05c626bfaa3b728e141"
+    },
+    "R2_PILOT/samples_prepared.json": {
+      "bytes": 1519,
+      "sha256": "d5d8883e72612987a2a78822d2325d863f17e24fe5e6cab0d161b5e4abad7422"
     },
     "SOURCE_PINS.json": {
       "bytes": 3218,
@@ -194,8 +357,8 @@
       "sha256": "02f5b832bc52ac067ec73af4b52203bbf4aeb2730976c3907790c3b08e5fc6ec"
     },
     "measure_cut1_prepared.py": {
-      "bytes": 29593,
-      "sha256": "533ae6c99f018a6aaeb8f554e715b9d06a8dafdba7c8690ba9d6aba82b75a7e6"
+      "bytes": 47425,
+      "sha256": "4fbbd48fd49d330efac0aeb8c41e2f08011cd00f550557a8377430a32b3491c6"
     },
     "vendor/court_instrumentation.py": {
       "bytes": 13287,
@@ -210,28 +373,36 @@
       "sha256": "83054ca64b609fbfb647c06e640255b65e701ba7644cdcd3e1443a2d7e6a47a7"
     },
     "width_fixture.py": {
-      "bytes": 7370,
-      "sha256": "5e044f74fc16e1ed2608dbb5224e5de9ef8e148fd0e78c5fb45e56ec0ede4bfe"
+      "bytes": 12352,
+      "sha256": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1"
     }
   },
   "owner_holds": [
     "Original governed QUERY/native 100k/source/science/actor/protected H1 not granted; synthetic TEST_ONLY only.",
-    "Next bounded paired execution waits HQ commission, exact accepted code pin and fixed cap.",
-    "No product branch merge, no old #1073/#1083/#1084 merge, no auto-wake, no recursive worker.",
+    "Next 1/10/100/fresh Batch waits HQ decision from measured H/S/Q/O shape; no auto matrix.",
+    "No product merge, no old #1073/#1083/#1084 merge, no auto-wake/recursive worker.",
     "No final architecture/native/economics acceptance."
   ],
+  "preserved_old_82d14": {
+    "commit": "82d14c72d5e3c207b99031e0bfd32d2ee7c78fc5",
+    "note": "Old smoke output was refs-only due canonicalize CanonicalSemanticObject -> ref.as_dict(); R2 corrects the measurement and does not overwrite old evidence.",
+    "old_5q_contract_preserved": true,
+    "old_600_routing_only_contract_preserved": true,
+    "old_return_sha256": "904944b93a6b41f849ad7860d1e1874db93fff1131ed673fe3af55521d9ce3b8",
+    "old_smoke_evidence_preserved": true
+  },
   "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
   "return_file_sha256": "SELF_EXCLUDED; final branch HEAD and file hash reported in final message",
   "role": "measurement_preparation",
   "schema": "ANVIL_CUT2_MEASUREMENT_PREP_RETURN@1",
   "self_found_caveats": [
-    "BatchExecutionRunner returns refs/receipts, not full fact objects; full fact parity is prepared direct, batch parity is refs/receipts.",
-    "selected raw and f2_forward raw are semantically identical in the accepted bundle; selected uses weighted measure to keep operations distinct.",
-    "process_tree_rss_peak_observed is max(start,end,ru_maxrss), not a continuous sampler.",
-    "600 geometry build is prepare/build only; no 600-column query pair or economics was run.",
-    "The tiny smoke ran after cut1 G5 acceptance but is not matched performance and may not be compared to native/100k."
+    "Batch not run; BatchExecutionRunner returns receipts/refs, not full facts; full fact parity is prepared direct.",
+    "600 added slots are routing/response population for geometry; queries target base roles, not all 600.",
+    "Q includes fact construction/hash; O is export serialization and is not added to Q.",
+    "Process-tree RSS is sampled max plus child ru_maxrss, not continuous; OS cache uncontrolled.",
+    "One pair cannot select a repair by itself; next decision is evidence-based."
   ],
-  "status": "COMPLETE_MEASUREMENT_PREPARATION_NOT_EXECUTED_REALWIDTH",
+  "status": "MEASURED_FIRST_BOUNDED_HIGHWIDTH_PAIR",
   "stop_for_hq": true,
   "write_scope": "WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/"
 }

@@ -126,6 +126,49 @@
     "typed_states": "fact typed states",
     "weighted_denominator_support": "fact weighted denominators where authorized"
   },
+  "r2_full_payload_correction": {
+    "defect": "canonical_json(facts) canonicalizes CanonicalSemanticObject to ref.as_dict(); prior 1885 B was refs-only.",
+    "fixed_fields": [
+      "semantic_sha256",
+      "identity_sha256",
+      "ref_only_sha256",
+      "refs_sha256",
+      "replay_sha256",
+      "member_refs_sha256",
+      "risk_member_refs_sha256",
+      "denominator_member_refs_sha256",
+      "provenance_refs_sha256",
+      "semantic_payload_bytes",
+      "identity_payload_bytes",
+      "ref_only_payload_bytes",
+      "refs_payload_bytes",
+      "replay_payload_bytes",
+      "member_payload_bytes",
+      "risk_member_payload_bytes",
+      "denominator_member_payload_bytes",
+      "provenance_payload_bytes"
+    ],
+    "observer": "transparent wrapper around PreparedI03Session.execute_i03/SavedC11Admission.execute_i03 captures the original returned result and returns it unchanged; no product receipt ABI change.",
+    "separation": "Q includes native fact construction/hash; O is export serialization of full fact/refs/replay/member payload and is not added to Q.",
+    "wrapper_abi_bytes": [
+      "binding_receipt_bytes",
+      "prepared_receipt_bytes",
+      "wrapper_abi_bytes"
+    ]
+  },
+  "r2_pilot": {
+    "caps": {
+      "build_seconds": 300.0,
+      "combined_seconds": 720.0,
+      "process_tree_rss_bytes": 2147483648,
+      "query_seconds": 180.0,
+      "sampling_seconds": 0.25,
+      "scratch_bytes": 2147483648
+    },
+    "external_supervision": "process group SIGTERM/SIGKILL on wall/RSS/scratch; samples saved under R2_PILOT/samples_*.json",
+    "geometry": "16 respondents/600 question bindings; 8,622 events; 9,600 routing; 7,099,520 retained B",
+    "mode": "one producer build + fresh baseline + fresh prepared; no Batch/1/10/100/repetitions"
+  },
   "resource_fields": {
     "cpu_system_seconds": "measured RUSAGE_SELF delta",
     "cpu_user_seconds": "measured RUSAGE_SELF delta",
