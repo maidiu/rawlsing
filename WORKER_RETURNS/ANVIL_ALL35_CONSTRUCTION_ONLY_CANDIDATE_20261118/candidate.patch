@@ -403,95 +403,332 @@ index 31d99b7..69145b6 100644
 +    "build_source_i02_construction_only",
      "open_direct_native_i03",
  ]
-diff --git a/rawlsing_next/tests/test_all35_construction_only_candidate.py b/rawlsing_next/tests/test_all35_construction_only_candidate.py
+diff --git a/rawlsing_next/tests/all35_construction_only_child.py b/rawlsing_next/tests/all35_construction_only_child.py
 new file mode 100644
-index 0000000..4f2a93b
+index 0000000..322fec6
 --- /dev/null
-+++ b/rawlsing_next/tests/test_all35_construction_only_candidate.py
-@@ -0,0 +1,99 @@
-+"""Focused candidate test: construction-only entry beside governed Q2."""
++++ b/rawlsing_next/tests/all35_construction_only_child.py
+@@ -0,0 +1,227 @@
++"""Separate native child processes for the construction-only proof.
++
++producer: performs exactly one tiny sourcefree construction and records the
++exact bodies observed by the sink before exiting.
++
++reopen: a fresh process proves the producer is gone, then opens the cold estate
++with the repaired exact held-root current callback.  Positive mode compares all
++family payloads; wrong_current, revoked and wrong_root must refuse.
++"""
 +from __future__ import annotations
 +
++import hashlib
++import json
++import os
++import subprocess
++import sys
++from dataclasses import replace
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[2]
++sys.path.insert(0, str(ROOT))
++
++from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
++from rawlsing_next.pre553_empirical_objects import canonical_json
++from rawlsing_next.pre553_source_direct_parquet_estate import (
++    DirectEstateError, VerifiedDirectEstate,
++)
++from rawlsing_next.pre553_source_i02_handoff import build_source_i02_construction_only
++from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
++from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
++from rawlsing_next.tests.test_pyat960_s1e_support import source_fixture
++
++FAMILIES = (
++    "EmpiricalUniverse", "RespondentIdentity", "QuestionVariableBinding",
++    "RespondentEvent", "RoutingEligibilityFact", "EmpiricalCoordinateFact",
++    "WeightMeasureFact", "AuthoritySnapshot", "SourceUniverseRelation",
++    "EmpiricalPredicateReplayBinding", "ComparatorReplayBinding",
++    "DiscoveryBranchReplayBinding", "StructuralAdmissionReplayBinding",
++)
++
++
++class RecordingSink:
++    """The frozen accepted sink plus exact in-memory body evidence."""
++
++    def __init__(self, delegate: SourceSavedBodySink):
++        self.delegate = delegate
++        self.bodies = {family: [] for family in FAMILIES}
++
++    def begin(self, **kwargs):
++        self.delegate.begin(**kwargs)
++
++    def emit(self, family: str, obj: object) -> None:
++        self.delegate.emit(family, obj)
++        self.bodies[family].append(obj.as_dict())
++
++    def absence(self, family: str, absence) -> None:
++        self.delegate.absence(family, absence)
++
++    def finish(self, **kwargs) -> None:
++        self.delegate.finish(**kwargs)
++
++    def abort(self, exc: BaseException) -> None:
++        self.delegate.abort(exc)
++
++
++def _digests(bodies):
++    return {
++        family: hashlib.sha256(
++            canonical_json(values).encode("utf-8")
++        ).hexdigest()
++        for family, values in bodies.items()
++    }
++
++
++def producer(root: Path) -> None:
++    fixture = source_fixture(root / "src")
++    private = root / "estate" / "private"
++    private.mkdir(parents=True, mode=0o700)
++    estate = root / "estate"
++    destination = estate / "direct.sqlite"
++    delegate = SourceSavedBodySink(
++        certificate_path=destination,
++        authorized_private_root=private,
++        chunk_rows=2,
++    )
++    sink = RecordingSink(delegate)
++    result = build_source_i02_construction_only(
++        config=fixture["config"], source_path=fixture["path"],
++        destination=destination, body_sink=sink, chunk_size=2,
++    )
++    receipt = delegate.receipt
++    proof = {
++        "schema": "ANVIL_CONSTRUCTION_ONLY_CHILD_BUILD@1",
++        "producer_pid": os.getpid(),
++        "sourcefree_test_only": True,
++        "original_source_bodies_read": False,
++        "destination": result.destination,
++        "path": receipt.path,
++        "manifest_sha256": receipt.manifest_sha256,
++        "i02": {k: getattr(result.roots, k) for k in (
++            "logical", "physical", "release", "source", "replay",
++            "universe", "schema",
++        )},
++        "family_counts": dict(receipt.family_counts),
++        "payload_digests": _digests(sink.bodies),
++        "source_metadata": dict(result.source_metadata),
++        "source_sha256": result.source_sha256,
++        "source_rows": result.row_count,
++        "unresolved_states": dict(result.unresolved_states),
++        "qualified_metadata_only": result.qualified_metadata_only,
++        "joined_q2": result.joined_q2,
++        "authorized_executable_q2": result.authorized_executable_q2,
++        "issued_workload": result.issued_workload,
++        "body_transport": dict(result.body_transport),
++        "has_operation_fates": hasattr(result, "operation_fates"),
++        "has_census_audit": hasattr(result, "census_audit"),
++    }
++    (root / "build.json").write_text(
++        json.dumps(proof, indent=2, sort_keys=True) + "\n"
++    )
++    print(json.dumps({
++        "producer": "PASS", "pid": os.getpid(),
++        "families": len(proof["family_counts"]),
++    }, sort_keys=True))
++
++
++def _alive(pid: int) -> bool:
++    probe = subprocess.run(
++        ["ps", "-p", str(pid), "-o", "pid="],
++        capture_output=True, text=True,
++    )
++    return bool(probe.stdout.strip())
++
++
++def reopen(root: Path, mode: str) -> None:
++    build = json.loads((root / "build.json").read_text())
++    if _alive(int(build["producer_pid"])):
++        raise SystemExit("PRODUCER_STILL_ALIVE_AT_FRESH_READER")
++    held_i02 = ExternalI02Roots(**build["i02"])
++    wrong_i02 = replace(held_i02, logical="0" * 64)
++
++    def current(roots):
++        if mode == "revoked":
++            return False
++        if mode == "wrong_current":
++            return roots == wrong_i02
++        if mode == "wrong_root":
++            return True
++        return roots == held_i02
++
++    reader_i02 = wrong_i02 if mode == "wrong_root" else held_i02
++    try:
++        estate = VerifiedDirectEstate(
++            root / "estate" / "private",
++            exact_path=build["path"],
++            independently_held_manifest_sha256=build["manifest_sha256"],
++            independently_held_i02=reader_i02,
++            current_authorizer=current,
++        )
++        counts = {
++            family: sum(1 for _ in estate.iter_family(family, batch_size=3))
++            for family in FAMILIES
++        }
++        bodies = {
++            family: [obj.as_dict() for obj in estate.iter_family(family, batch_size=3)]
++            for family in FAMILIES
++        }
++        if counts != build["family_counts"]:
++            raise SystemExit("FAMILY_COUNT_DRIFT")
++        digests = _digests(bodies)
++        if digests != build["payload_digests"]:
++            raise SystemExit("FAMILY_PAYLOAD_DRIFT")
++        if mode != "positive":
++            raise SystemExit("NEGATIVE_MODE_DID_NOT_REFUSE")
++        proof = {
++            "schema": "ANVIL_CONSTRUCTION_ONLY_CHILD_REOPEN@1",
++            "mode": mode,
++            "producer_pid": int(build["producer_pid"]),
++            "producer_exited_before_reader": True,
++            "family_counts": counts,
++            "payload_digests": digests,
++            "identity_payload_equivalent": (
++                digests["RespondentIdentity"]
++                == build["payload_digests"]["RespondentIdentity"]
++            ),
++            "routing_payload_equivalent": (
++                digests["RoutingEligibilityFact"]
++                == build["payload_digests"]["RoutingEligibilityFact"]
++            ),
++            "roots_equal_build": all(
++                getattr(estate.i02, k) == build["i02"][k] for k in build["i02"]
++            ),
++            "manifest_sha256": build["manifest_sha256"],
++        }
++        (root / "reopen_positive.json").write_text(
++            json.dumps(proof, indent=2, sort_keys=True) + "\n"
++        )
++        print(json.dumps({
++            "reopen": "PASS", "mode": mode, "families": len(counts),
++            "objects": sum(counts.values()),
++        }, sort_keys=True))
++    except DirectEstateError as exc:
++        if mode == "positive":
++            raise
++        proof = {
++            "schema": "ANVIL_CONSTRUCTION_ONLY_CHILD_REFUSAL@1",
++            "mode": mode,
++            "refused": True,
++            "before_estate_open": True,
++            "error_type": type(exc).__name__,
++            "error": str(exc),
++        }
++        (root / f"refusal_{mode}.json").write_text(
++            json.dumps(proof, indent=2, sort_keys=True) + "\n"
++        )
++        print(json.dumps(proof, sort_keys=True))
++
++
++if __name__ == "__main__":
++    root = Path(sys.argv[1]).resolve()
++    verb = sys.argv[2]
++    if verb == "producer":
++        producer(root)
++    elif verb == "reopen":
++        reopen(root, sys.argv[3])
++    else:
++        raise SystemExit("UNKNOWN_VERB")
+diff --git a/rawlsing_next/tests/test_all35_construction_only_candidate.py b/rawlsing_next/tests/test_all35_construction_only_candidate.py
+new file mode 100644
+index 0000000..7310db4
+--- /dev/null
++++ b/rawlsing_next/tests/test_all35_construction_only_candidate.py
+@@ -0,0 +1,103 @@
++"""Focused candidate test: construction-only entry with native child proof."""
++from __future__ import annotations
++
++import json
++import os
++import subprocess
++import sys
 +from pathlib import Path
 +
 +import pytest
 +
 +pytest.importorskip("pyarrow")
 +
-+from rawlsing_next.pre553_source_i02_handoff import (
-+    SourceI02ConstructionOnlyResult,
-+    SourceI02Handoff,
-+    build_source_i02_construction_only,
-+    build_source_i02_handoff,
-+)
-+from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
 +from rawlsing_next.pre553_r157_projection_adapter import SourceReadAdmissionRefusal
-+from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
-+from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
++from rawlsing_next.pre553_source_i02_handoff import build_source_i02_construction_only
 +from rawlsing_next.tests.test_pyat960_s1e_support import (
 +    DenyResolver, source_fixture,
 +)
 +
++CHILD = Path(__file__).with_name("all35_construction_only_child.py")
++SCRATCH_ROOT = Path(__file__).resolve().parents[2]
 +
-+def _cold(private: Path, receipt):
-+    return VerifiedDirectEstate(
-+        private, exact_path=receipt.path,
-+        independently_held_manifest_sha256=receipt.manifest_sha256,
-+        independently_held_i02=receipt.i02,
-+        current_authorizer=lambda _roots: True,
++
++def _run_child(root: Path, *args: str) -> subprocess.CompletedProcess:
++    env = {
++        **os.environ,
++        "PYTHONPATH": str(SCRATCH_ROOT),
++        "PYTHONDONTWRITEBYTECODE": "1",
++    }
++    return subprocess.run(
++        [sys.executable, "-B", str(CHILD), str(root), *args],
++        cwd=str(SCRATCH_ROOT), env=env, text=True, capture_output=True,
 +    )
 +
 +
-+def test_construction_only_build_and_independent_fresh_reopen(tmp_path):
-+    fixture = source_fixture(tmp_path / "src")
-+    private = tmp_path / "private"
-+    private.mkdir(mode=0o700)
-+    dest = tmp_path / "direct.sqlite"
-+    sink = SourceSavedBodySink(
-+        certificate_path=dest, authorized_private_root=private, chunk_rows=2,
++def _pid_alive(pid: int) -> bool:
++    probe = subprocess.run(
++        ["ps", "-p", str(pid), "-o", "pid="],
++        capture_output=True, text=True,
 +    )
-+    result = build_source_i02_construction_only(
-+        config=fixture["config"], source_path=fixture["path"],
-+        destination=dest, body_sink=sink, chunk_size=2,
-+    )
-+    assert isinstance(result, SourceI02ConstructionOnlyResult)
-+    assert isinstance(result, SourceI02Handoff) is False
-+    assert result.qualified_metadata_only is True
-+    assert result.joined_q2 is False
-+    assert result.authorized_executable_q2 is False
-+    assert result.issued_workload is False
-+    assert not hasattr(result, "operation_fates")
-+    assert not hasattr(result, "census_audit")
-+    assert result.unresolved_states["operation_eligibility"] == "UNRESOLVED_NOT_EVALUATED"
-+    assert result.unresolved_states["analytical_issuance"] == "NOT_ISSUED"
-+    assert result.source_metadata["source_id"] == fixture["config"].source_id
-+    assert result.source_metadata["identity_class"] == fixture["config"].identity_class
-+    assert result.source_sha256 == fixture["source_sha"]
-+    assert result.stats.source_reads == 1
-+    assert result.stats.cell_passes == 1
-+    assert result.stats.full_c11_builds == 0
-+    assert result.roots == sink.receipt.i02
-+    assert Path(result.destination).is_file()
-+    cold = _cold(private, sink.receipt)
-+    for family in ALL_FAMILIES:
-+        bodies = tuple(cold.iter_family(family, batch_size=3))
-+        assert len(bodies) == result.counts[family], family
-+    events = tuple(cold.iter_family("RespondentEvent"))
-+    identities = tuple(cold.iter_family("RespondentIdentity"))
-+    routing = tuple(cold.iter_family("RoutingEligibilityFact"))
-+    assert len(events) == len(identities) == fixture["rows"]
-+    assert routing
-+    assert {
-+        event.scoped_respondent_ref["object_id"] for event in events
-+    } <= {identity.ref.object_id for identity in identities}
-+    assert result.body_transport["complete"] is True
-+    assert result.unresolved_states["joined_q2"] == "FALSE"
++    return bool(probe.stdout.strip())
++
++
++def test_native_child_construction_then_fresh_full_payload_reopen(tmp_path):
++    root = tmp_path / "native"
++    root.mkdir()
++    produced = _run_child(root, "producer")
++    assert produced.returncode == 0, produced.stdout + produced.stderr
++    build = json.loads((root / "build.json").read_text())
++    assert _pid_alive(build["producer_pid"]) is False
++    assert build["sourcefree_test_only"] is True
++    assert build["original_source_bodies_read"] is False
++    assert build["joined_q2"] is False
++    assert build["authorized_executable_q2"] is False
++    assert build["issued_workload"] is False
++    assert build["has_operation_fates"] is False
++    assert build["has_census_audit"] is False
++    assert build["unresolved_states"]["operation_eligibility"] == "UNRESOLVED_NOT_EVALUATED"
++    assert build["unresolved_states"]["analytical_issuance"] == "NOT_ISSUED"
++    assert build["source_metadata"]["source_id"]
++    assert set(build["payload_digests"]) == set(build["family_counts"])
++    assert build["body_transport"]["complete"] is True
++
++    for mode in ("positive", "wrong_current", "revoked", "wrong_root"):
++        result = _run_child(root, "reopen", mode)
++        assert result.returncode == 0, (
++            mode + "\n" + result.stdout + result.stderr
++        )
++    positive = json.loads((root / "reopen_positive.json").read_text())
++    assert positive["producer_exited_before_reader"] is True
++    assert positive["roots_equal_build"] is True
++    assert positive["family_counts"] == build["family_counts"]
++    assert positive["payload_digests"] == build["payload_digests"]
++    assert positive["identity_payload_equivalent"] is True
++    assert positive["routing_payload_equivalent"] is True
++    for mode in ("wrong_current", "revoked", "wrong_root"):
++        refusal = json.loads((root / f"refusal_{mode}.json").read_text())
++        assert refusal["refused"] is True
++        assert refusal["before_estate_open"] is True
++        assert refusal["error_type"] == "DirectEstateError"
 +
 +
 +def test_original_missing_resolver_refuses_before_source_bytes(tmp_path, monkeypatch):
 +    fixture = source_fixture(tmp_path / "src-original", original=True)
 +    dest = tmp_path / "denied.sqlite"
 +    import rawlsing_next.pre553_source_i02_handoff as handoff_mod
++
 +    calls = []
 +
 +    def forbidden(*args, **kwargs):

@@ -1,35 +1,80 @@
 {
-  "schema": "ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_MANIFEST@1",
+  "schema": "ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_MANIFEST@2",
   "accepted_baseline": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "frozen_first_candidate": "2b139250eae19a04ce2778f7db9f2d2b025071a8",
+  "frozen_first_patch_sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
   "scratch_baseline": "e3f79397ac51f1f6fc5ed998577bca90f855e483",
-  "scratch_candidate": "3b48fa355ee85ab0b7854301b275fde29dabbe44",
+  "scratch_first_candidate": "3b48fa355ee85ab0b7854301b275fde29dabbe44",
+  "scratch_final_candidate": "9a2d5bc4d9e41ba5a4e02042f02ce9d33bbc6c6e",
+  "final_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
   "files": {
     "00_HANDOFF.md": {
-      "sha256": "25ffabbc89e62c50b4b25e84227a3c054b9e4069f310bbb20b917099ec256868",
-      "bytes": 2181
+      "sha256": "85452be0f735c559b6ab6f7000da2c2cbb9dc37cca3969686bce5bcdf7f5623a",
+      "bytes": 2925
     },
     "COMMANDS.md": {
-      "sha256": "620b21c8fa8730f89ac48c90c7a36b676f1f7de27c2dbe47fa2830765f9bdcca",
-      "bytes": 811
+      "sha256": "53f5022b04817afbd0976eae563a777dab7e766924648108ab6e01338ac0cc4c",
+      "bytes": 1345
     },
     "SCRATCH_SHA.txt": {
+      "sha256": "1b378ebcaddd4f9fb9315b490e6965573c855676a848b9f4155f0df6224d5f07",
+      "bytes": 41
+    },
+    "SCRATCH_SHA_ORIGINAL.txt": {
       "sha256": "ee155d6fb76ccf80d188e5a47cbdc141478123b24cd05a1117e016d91ff24a4f",
       "bytes": 41
     },
     "candidate.patch": {
+      "sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
+      "bytes": 29713
+    },
+    "candidate_original_9da2a368.patch": {
       "sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
       "bytes": 21112
     },
+    "proof/APPLY_CHECK.txt": {
+      "sha256": "b6ef7a64d5280238aa1b5fd886e979b469d2913be77f92cca8f0669eeacba6d1",
+      "bytes": 213
+    },
+    "proof/build.json": {
+      "sha256": "3dad2a4f1f56ff9ed73a4859f959ff0bdf361b20c47bd12176d7a6923b361012",
+      "bytes": 5352
+    },
+    "proof/producer_exit_probe.txt": {
+      "sha256": "63467305ca850741729a756dcc3af5fd4b2ca224c1cd6b68898b70f6caa890b9",
+      "bytes": 51
+    },
+    "proof/refusal_revoked.json": {
+      "sha256": "8b89bfcebd180362b43b28f426adf121d6340d26a578b4772130937ade3e36a7",
+      "bytes": 222
+    },
+    "proof/refusal_wrong_current.json": {
+      "sha256": "d105d274c2f1d66fa92af42256a8e3fdf1e845e28cede6d9f4bf3938b78e1b44",
+      "bytes": 228
+    },
+    "proof/refusal_wrong_root.json": {
+      "sha256": "09ca03e59798afbbcd0c34b87994b569541b9f067b766ca5ecfee044bf8ba2d1",
+      "bytes": 244
+    },
+    "proof/reopen_positive.json": {
+      "sha256": "a98fed617ff14dd354690925984fe6e22a0625d5be32cf07954613bef89512c6",
+      "bytes": 2099
+    },
     "tests.txt": {
-      "sha256": "6931136f382cb0bac133babe7632b97f2c68720e1619c370c9519c756f292199",
-      "bytes": 99
+      "sha256": "7a0592e7a74aed582ec1da2f9d263eb3c7ba558d6fae69ab5ad474f4a1b294eb",
+      "bytes": 100
+    },
+    "tests_native_child.txt": {
+      "sha256": "d5abd74aa7571e81048126b66cff47d06a8896c57fb52dcf5d9ed58deda10552",
+      "bytes": 98
     }
   },
-  "patch_files": [
-    "pre553_source_i02_handoff.py",
-    "tests/test_all35_construction_only_candidate.py"
-  ],
-  "tests": "13 passed in 3.43s",
+  "tests": {
+    "focused": "2 passed in 9.27s",
+    "focused_plus_q2": "13 passed in 10.38s"
+  },
+  "patch_applies_to_aee954": true,
+  "production_refactor_changed_during_repair": false,
   "real_source_read": false,
   "product_edits": false
 }

@@ -1,0 +1,510 @@
+diff --git a/rawlsing_next/pre553_source_i02_handoff.py b/rawlsing_next/pre553_source_i02_handoff.py
+index 31d99b7..69145b6 100644
+--- a/rawlsing_next/pre553_source_i02_handoff.py
++++ b/rawlsing_next/pre553_source_i02_handoff.py
+@@ -170,6 +170,48 @@ class SourceI02Handoff:
+         return VerifiedExternalI02(self.destination, roots=self.roots)
+ 
+ 
++@dataclass(frozen=True)
++class SourceI02ConstructionOnlyResult:
++    """Exact sourcefree construction output without a Q2 analytical entrance.
++
++    This result intentionally has no operation-fate, census, eligibility or
++    issued-workload field.  It proves sourcebody/identity/root construction only.
++    """
++
++    schema: str
++    destination: str
++    roots: ExternalI02Roots
++    manifest: SourceReleaseManifest
++    counts: Mapping[str, int]
++    universe_ref: ExactRef
++    source_sha256: str
++    row_count: int
++    stats: SourceI02Stats
++    source_metadata: Mapping[str, Any]
++    unresolved_states: Mapping[str, Any]
++    body_transport: Mapping[str, Any] | None = None
++    qualified_metadata_only: bool = True
++    joined_q2: bool = False
++    authorized_executable_q2: bool = False
++    issued_workload: bool = False
++
++    def open_certificate(self):
++        """Open the existing cold reader for an independent fresh reopen."""
++        from rawlsing_next._pre553_external_i02_certificate import VerifiedExternalI02
++        return VerifiedExternalI02(self.destination, roots=self.roots)
++
++
++@dataclass(frozen=True)
++class _ConstructionBodies:
++    roots: ExternalI02Roots
++    manifest: SourceReleaseManifest
++    counts: Mapping[str, int]
++    stats: SourceI02Stats
++    body_transport: Mapping[str, Any] | None
++    operation_fates: tuple[Mapping[str, Any], ...]
++    operation_audit: Mapping[str, Any]
++
++
+ def _pub_from_dict(family: str, payload: Mapping[str, Any]) -> Any:
+     from rawlsing_next.pre553_empirical_objects import (
+         AuthoritySnapshot, EmpiricalUniverse, RespondentEvent,
+@@ -984,66 +1026,26 @@ def _invalidate_target(target: Path, primary: BaseException) -> None:
+         os.close(dirfd)
+ 
+ 
+-def build_source_i02_handoff(
++def _construct_source_bodies(
+     *,
+-    config: SourceConfig | Mapping[str, Any],
++    config: SourceConfig,
++    projection: GovernedC11Projection,
+     source_path: str | Path,
+-    destination: str | Path,
+-    census: FrozenInputCensus,
+-    inventory: SourceInventory,
+-    policy: GrammarPolicy,
+-    frontier: ScientificFrontier,
+-    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
+-    universe_ref: ExactRef | None = None,
+-    batch_size: int = 512,
+-    chunk_size: int = 512,
+-    resolver: Any = None,
+-    host: str | None = None,
+-    purpose: str | None = None,
+-    consumer_use: str | None = None,
+-    semantic_use_scope: tuple[str, ...] | None = None,
+-    body_sink: SourceI02BodySink | None = None,
+-) -> SourceI02Handoff:
+-    """Build one bounded source→direct-I02 handoff.
+-
+-    The S1-C census is verified before any source read.  A configured
+-    source-native key slot must have explicit independently derived
+-    ``row_native_keys``; this adapter does not perform a second key pass.
+-
+-    If ``body_sink`` is supplied, the same one-shot 13-family objects consumed
+-    by the existing direct builder are synchronously transported to the sink.
+-    The sink stages only; ``finish`` commits it against the published exact
+-    certificate roots.  On any failure the adapter aborts the sink and removes
+-    its own published certificate.  The sink never causes a source reread.
+-    """
+-    if not isinstance(config, SourceConfig):
+-        config = SourceConfig(config)
++    target: Path,
++    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None,
++    universe_ref: ExactRef,
++    batch_size: int,
++    chunk_size: int,
++    resolver: Any,
++    host: str | None,
++    purpose: str | None,
++    consumer_use: str | None,
++    semantic_use_scope: tuple[str, ...] | None,
++    body_sink: SourceI02BodySink | None,
++    operation_hook: Any = None,
++) -> _ConstructionBodies:
++    """Shared exact source decode, spool, body publication and cleanup."""
+     doc = config.document
+-    target = Path(destination).absolute()
+-    if (target.suffix != ".sqlite" or target.exists() or target.is_symlink()
+-            or not target.parent.is_dir() or target.parent.is_symlink()):
+-        raise SourceI02Refusal(
+-            "OUTPUT_DESTINATION_INVALID",
+-            "new non-symlink .sqlite destination in an existing private directory required",
+-        )
+-    slot = doc["respondents"].get("source_native_key_slot")
+-    if slot is not None and row_native_keys is None:
+-        raise SourceI02Hold(
+-            "KEY_WITNESS_REQUIRED",
+-            "configured source_native_key_slot requires independently derived row_native_keys",
+-        )
+-    projection = build_governed_c11_projection(
+-        config,
+-        source_sha256=doc["binding"]["source_sha256"],
+-        row_count=doc["binding"]["row_count"],
+-        row_native_keys=row_native_keys,
+-    )
+-    if universe_ref is None:
+-        universe_ref = projection.universes[0].ref
+-    audit = _verify_census_before_source(
+-        config=config, projection=projection, census=census,
+-        inventory=inventory, policy=policy, frontier=frontier,
+-    )
+     original_source = (
+         doc["binding"]["identity_class"] == IDENTITY_CLASS_ORIGINAL)
+     source_prehash_passes = 1 if original_source else 0
+@@ -1089,9 +1091,6 @@ def build_source_i02_handoff(
+         else:
+             source_format = doc["identity"]["source_format"]
+             decoder = decode_sav if source_format == "SAV" else decode_dta
+-            # The fixture path performs the same content-bound snapshot hash in
+-            # the decoder; avoiding the pre-hash keeps the source path to one
+-            # governed open while the exact binding is checked below.
+             incidence = decoder(source_path, encoding=None)
+         if incidence.source_sha256 != doc["binding"]["source_sha256"]:
+             raise SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
+@@ -1112,15 +1111,10 @@ def build_source_i02_handoff(
+                 row_native_keys=row_native_keys,
+             )
+         )
+-        operation_fates, operation_audit = _operation_source_antijoin(
+-            config=config,
+-            projection=projection,
+-            frontier=frontier,
+-            census=census,
+-            slot_counts=slot_counts,
+-        )
+-        audit = dict(audit)
+-        audit["operation_source_antijoin"] = operation_audit
++        operation_fates: tuple[Mapping[str, Any], ...] = ()
++        operation_audit: Mapping[str, Any] = {}
++        if operation_hook is not None:
++            operation_fates, operation_audit = operation_hook(slot_counts)
+         manifest, source, declared_counts, _absences = _manifest_and_sections(
+             projection=projection,
+             incidence=incidence,
+@@ -1158,27 +1152,18 @@ def build_source_i02_handoff(
+             spool_files=len(spool_paths),
+             cleanup_complete=True,
+         )
+-        handoff = SourceI02Handoff(
+-            schema=SOURCE_I02_SCHEMA,
+-            destination=str(target),
+-            roots=roots,
+-            manifest=manifest,
+-            counts=declared_counts,
+-            universe_ref=universe_ref,
+-            source_sha256=incidence.source_sha256,
+-            row_count=incidence.row_count,
+-            census_audit=audit,
+-            operation_fates=operation_fates,
+-            stats=stats,
+-        )
++        body_transport = None
+         if sink is not None:
+             body_transport = sink.finish(
+                 roots=roots,
+                 manifest=manifest,
+                 counts=declared_counts,
+             )
+-            handoff = replace(handoff, body_transport=body_transport)
+-        return handoff
++        return _ConstructionBodies(
++            roots=roots, manifest=manifest, counts=declared_counts,
++            stats=stats, body_transport=body_transport,
++            operation_fates=operation_fates, operation_audit=operation_audit,
++        )
+     except BaseException as exc:
+         if sink is not None:
+             sink.abort(exc)
+@@ -1195,6 +1180,192 @@ def build_source_i02_handoff(
+             incidence.close()
+ 
+ 
++def build_source_i02_handoff(
++    *,
++    config: SourceConfig | Mapping[str, Any],
++    source_path: str | Path,
++    destination: str | Path,
++    census: FrozenInputCensus,
++    inventory: SourceInventory,
++    policy: GrammarPolicy,
++    frontier: ScientificFrontier,
++    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
++    universe_ref: ExactRef | None = None,
++    batch_size: int = 512,
++    chunk_size: int = 512,
++    resolver: Any = None,
++    host: str | None = None,
++    purpose: str | None = None,
++    consumer_use: str | None = None,
++    semantic_use_scope: tuple[str, ...] | None = None,
++    body_sink: SourceI02BodySink | None = None,
++) -> SourceI02Handoff:
++    """Build one bounded source→direct-I02 handoff.
++
++    The S1-C census is verified before any source read.  A configured
++    source-native key slot must have explicit independently derived
++    ``row_native_keys``; this adapter does not perform a second key pass.
++
++    If ``body_sink`` is supplied, the same one-shot 13-family objects consumed
++    by the existing direct builder are synchronously transported to the sink.
++    The sink stages only; ``finish`` commits it against the published exact
++    certificate roots.  On any failure the adapter aborts the sink and removes
++    its own published certificate.  The sink never causes a source reread.
++    """
++    if not isinstance(config, SourceConfig):
++        config = SourceConfig(config)
++    doc = config.document
++    target = Path(destination).absolute()
++    if (target.suffix != ".sqlite" or target.exists() or target.is_symlink()
++            or not target.parent.is_dir() or target.parent.is_symlink()):
++        raise SourceI02Refusal(
++            "OUTPUT_DESTINATION_INVALID",
++            "new non-symlink .sqlite destination in an existing private directory required",
++        )
++    slot = doc["respondents"].get("source_native_key_slot")
++    if slot is not None and row_native_keys is None:
++        raise SourceI02Hold(
++            "KEY_WITNESS_REQUIRED",
++            "configured source_native_key_slot requires independently derived row_native_keys",
++        )
++    projection = build_governed_c11_projection(
++        config,
++        source_sha256=doc["binding"]["source_sha256"],
++        row_count=doc["binding"]["row_count"],
++        row_native_keys=row_native_keys,
++    )
++    if universe_ref is None:
++        universe_ref = projection.universes[0].ref
++    audit = _verify_census_before_source(
++        config=config, projection=projection, census=census,
++        inventory=inventory, policy=policy, frontier=frontier,
++    )
++    body = _construct_source_bodies(
++        config=config,
++        projection=projection,
++        source_path=source_path,
++        target=target,
++        row_native_keys=row_native_keys,
++        universe_ref=universe_ref,
++        batch_size=batch_size,
++        chunk_size=chunk_size,
++        resolver=resolver,
++        host=host,
++        purpose=purpose,
++        consumer_use=consumer_use,
++        semantic_use_scope=semantic_use_scope,
++        body_sink=body_sink,
++        operation_hook=lambda slot_counts: _operation_source_antijoin(
++            config=config, projection=projection, frontier=frontier,
++            census=census, slot_counts=slot_counts,
++        ),
++    )
++    audit = dict(audit)
++    audit["operation_source_antijoin"] = body.operation_audit
++    return SourceI02Handoff(
++        schema=SOURCE_I02_SCHEMA,
++        destination=str(target),
++        roots=body.roots,
++        manifest=body.manifest,
++        counts=body.counts,
++        universe_ref=universe_ref,
++        source_sha256=doc["binding"]["source_sha256"],
++        row_count=body.stats.source_rows,
++        census_audit=audit,
++        operation_fates=body.operation_fates,
++        stats=body.stats,
++        body_transport=body.body_transport,
++    )
++
++
++def build_source_i02_construction_only(
++    *,
++    config: SourceConfig | Mapping[str, Any],
++    source_path: str | Path,
++    destination: str | Path,
++    row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
++    universe_ref: ExactRef | None = None,
++    batch_size: int = 512,
++    chunk_size: int = 512,
++    resolver: Any = None,
++    host: str | None = None,
++    purpose: str | None = None,
++    consumer_use: str | None = None,
++    semantic_use_scope: tuple[str, ...] | None = None,
++    body_sink: SourceI02BodySink | None = None,
++) -> SourceI02ConstructionOnlyResult:
++    """Build exact sourcefree C11 bodies without a Q2 analytical entrance.
++
++    This entry accepts no census, inventory, policy or scientific frontier.  It
++    preserves source metadata but reports all analytical dimensions UNRESOLVED:
++    the result cannot be represented as a joined Q2, eligible or issued workload.
++    Original sources still require the exact request/current resolver before
++    the first source byte is decoded.
++    """
++    if not isinstance(config, SourceConfig):
++        config = SourceConfig(config)
++    doc = config.document
++    target = Path(destination).absolute()
++    if (target.suffix != ".sqlite" or target.exists() or target.is_symlink()
++            or not target.parent.is_dir() or target.parent.is_symlink()):
++        raise SourceI02Refusal(
++            "OUTPUT_DESTINATION_INVALID",
++            "new non-symlink .sqlite destination in an existing private directory required",
++        )
++    slot = doc["respondents"].get("source_native_key_slot")
++    if slot is not None and row_native_keys is None:
++        raise SourceI02Hold(
++            "KEY_WITNESS_REQUIRED",
++            "configured source_native_key_slot requires independently derived row_native_keys",
++        )
++    projection = build_governed_c11_projection(
++        config,
++        source_sha256=doc["binding"]["source_sha256"],
++        row_count=doc["binding"]["row_count"],
++        row_native_keys=row_native_keys,
++    )
++    if universe_ref is None:
++        universe_ref = projection.universes[0].ref
++    body = _construct_source_bodies(
++        config=config, projection=projection, source_path=source_path,
++        target=target, row_native_keys=row_native_keys,
++        universe_ref=universe_ref, batch_size=batch_size,
++        chunk_size=chunk_size, resolver=resolver, host=host, purpose=purpose,
++        consumer_use=consumer_use, semantic_use_scope=semantic_use_scope,
++        body_sink=body_sink, operation_hook=None,
++    )
++    return SourceI02ConstructionOnlyResult(
++        schema="PYAT960_SOURCE_I02_CONSTRUCTION_ONLY@1",
++        destination=str(target), roots=body.roots, manifest=body.manifest,
++        counts=body.counts, universe_ref=universe_ref,
++        source_sha256=doc["binding"]["source_sha256"],
++        row_count=body.stats.source_rows,
++        stats=body.stats,
++        source_metadata={
++            "source_id": config.source_id,
++            "config_id": config.config_id,
++            "identity_class": config.identity_class,
++            "source_format": doc["identity"]["source_format"],
++            "source_sha256": config.active_source_sha256,
++        },
++        unresolved_states={
++            "source_inventory": "ABSENT_NOT_REQUIRED",
++            "grammar_policy": "ABSENT_NOT_REQUIRED",
++            "scientific_frontier": "ABSENT_NOT_REQUIRED",
++            "frozen_input_census": "ABSENT_NOT_REQUIRED",
++            "operation_eligibility": "UNRESOLVED_NOT_EVALUATED",
++            "operation_fates": "ABSENT_NOT_EVALUATED",
++            "analytical_issuance": "NOT_ISSUED",
++            "joined_q2": "FALSE",
++        },
++        body_transport=body.body_transport,
++        qualified_metadata_only=True,
++        joined_q2=False,
++        authorized_executable_q2=False,
++        issued_workload=False,
++    )
++
++
+ def open_direct_native_i03(
+     handoff: SourceI02Handoff,
+     repository: Any,
+@@ -1228,8 +1399,10 @@ __all__ = [
+     "SourceI02Hold",
+     "SourceI02Stats",
+     "SourceI02Handoff",
++    "SourceI02ConstructionOnlyResult",
+     "SourceI02BodySink",
+     "SourceI02BodyTransportRefusal",
+     "build_source_i02_handoff",
++    "build_source_i02_construction_only",
+     "open_direct_native_i03",
+ ]
+diff --git a/rawlsing_next/tests/test_all35_construction_only_candidate.py b/rawlsing_next/tests/test_all35_construction_only_candidate.py
+new file mode 100644
+index 0000000..4f2a93b
+--- /dev/null
++++ b/rawlsing_next/tests/test_all35_construction_only_candidate.py
+@@ -0,0 +1,99 @@
++"""Focused candidate test: construction-only entry beside governed Q2."""
++from __future__ import annotations
++
++from pathlib import Path
++
++import pytest
++
++pytest.importorskip("pyarrow")
++
++from rawlsing_next.pre553_source_i02_handoff import (
++    SourceI02ConstructionOnlyResult,
++    SourceI02Handoff,
++    build_source_i02_construction_only,
++    build_source_i02_handoff,
++)
++from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
++from rawlsing_next.pre553_r157_projection_adapter import SourceReadAdmissionRefusal
++from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
++from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
++from rawlsing_next.tests.test_pyat960_s1e_support import (
++    DenyResolver, source_fixture,
++)
++
++
++def _cold(private: Path, receipt):
++    return VerifiedDirectEstate(
++        private, exact_path=receipt.path,
++        independently_held_manifest_sha256=receipt.manifest_sha256,
++        independently_held_i02=receipt.i02,
++        current_authorizer=lambda _roots: True,
++    )
++
++
++def test_construction_only_build_and_independent_fresh_reopen(tmp_path):
++    fixture = source_fixture(tmp_path / "src")
++    private = tmp_path / "private"
++    private.mkdir(mode=0o700)
++    dest = tmp_path / "direct.sqlite"
++    sink = SourceSavedBodySink(
++        certificate_path=dest, authorized_private_root=private, chunk_rows=2,
++    )
++    result = build_source_i02_construction_only(
++        config=fixture["config"], source_path=fixture["path"],
++        destination=dest, body_sink=sink, chunk_size=2,
++    )
++    assert isinstance(result, SourceI02ConstructionOnlyResult)
++    assert isinstance(result, SourceI02Handoff) is False
++    assert result.qualified_metadata_only is True
++    assert result.joined_q2 is False
++    assert result.authorized_executable_q2 is False
++    assert result.issued_workload is False
++    assert not hasattr(result, "operation_fates")
++    assert not hasattr(result, "census_audit")
++    assert result.unresolved_states["operation_eligibility"] == "UNRESOLVED_NOT_EVALUATED"
++    assert result.unresolved_states["analytical_issuance"] == "NOT_ISSUED"
++    assert result.source_metadata["source_id"] == fixture["config"].source_id
++    assert result.source_metadata["identity_class"] == fixture["config"].identity_class
++    assert result.source_sha256 == fixture["source_sha"]
++    assert result.stats.source_reads == 1
++    assert result.stats.cell_passes == 1
++    assert result.stats.full_c11_builds == 0
++    assert result.roots == sink.receipt.i02
++    assert Path(result.destination).is_file()
++    cold = _cold(private, sink.receipt)
++    for family in ALL_FAMILIES:
++        bodies = tuple(cold.iter_family(family, batch_size=3))
++        assert len(bodies) == result.counts[family], family
++    events = tuple(cold.iter_family("RespondentEvent"))
++    identities = tuple(cold.iter_family("RespondentIdentity"))
++    routing = tuple(cold.iter_family("RoutingEligibilityFact"))
++    assert len(events) == len(identities) == fixture["rows"]
++    assert routing
++    assert {
++        event.scoped_respondent_ref["object_id"] for event in events
++    } <= {identity.ref.object_id for identity in identities}
++    assert result.body_transport["complete"] is True
++    assert result.unresolved_states["joined_q2"] == "FALSE"
++
++
++def test_original_missing_resolver_refuses_before_source_bytes(tmp_path, monkeypatch):
++    fixture = source_fixture(tmp_path / "src-original", original=True)
++    dest = tmp_path / "denied.sqlite"
++    import rawlsing_next.pre553_source_i02_handoff as handoff_mod
++    calls = []
++
++    def forbidden(*args, **kwargs):
++        calls.append(1)
++        raise AssertionError("source bytes were decoded")
++
++    monkeypatch.setattr(handoff_mod, "decode_sav", forbidden)
++    monkeypatch.setattr(handoff_mod, "decode_dta", forbidden)
++    with pytest.raises(SourceReadAdmissionRefusal, match="SOURCE_READ_NOT_CURRENT"):
++        build_source_i02_construction_only(
++            config=fixture["config"], source_path=fixture["path"],
++            destination=dest, resolver=DenyResolver(), host="h", purpose="p",
++            consumer_use="c", semantic_use_scope=("S1E_SOURCEFREE",),
++        )
++    assert calls == []
++    assert not dest.exists()

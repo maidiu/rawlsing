@@ -1,44 +1,53 @@
-# Construction-only C11 candidate
+# Construction-only C11 candidate — native-child proof repair
 
 ## Result
 
-**PASS — narrow executable construction-only entry implemented and tested; Q2 gates preserved.**
+**PASS — evidence repaired only; candidate production code unchanged from the frozen first patch.**
 
 - Exact accepted baseline: `aee95429609c372564e996c2d3d3eb30e9253cbf`
-- Isolated scratch baseline: `e3f79397ac51f1f6fc5ed998577bca90f855e483`
-- Candidate scratch commit: `3b48fa355ee85ab0b7854301b275fde29dabbe44`
-- Patch: `candidate.patch` (2 files: `pre553_source_i02_handoff.py`, focused test)
+- Frozen first candidate: `2b139250eae19a04ce2778f7db9f2d2b025071a8`
+- First patch (preserved): `candidate_original_9da2a368.patch`
+- Final scratch commit: `9a2d5bc4d9e41ba5a4e02042f02ce9d33bbc6c6e`
+- Final patch: `candidate.patch`; applies cleanly to `aee954` (`git apply --check` exit 0).
+- Final patch includes the unchanged production refactor plus the repaired focused test and native child harness.
 
-## Candidate design
+## Evidence gap repaired
 
-A shared private `_construct_source_bodies` now owns the existing exact source
-decode, projection/spooling, manifest and `SourceSavedBodySink` publication,
-guards, target invalidation and cleanup. Existing `build_source_i02_handoff`
-uses it with the unchanged census/frontier `_operation_source_antijoin` hook.
+The first test reopened in the producer pytest process with an unconditional
+`current_authorizer=lambda _roots: True`. The repaired focused test now follows
+the `b7acf7aacd6abe3fdc9e4c5a968fc2e71e6e4570` pattern:
 
-New public `build_source_i02_construction_only`:
-- accepts exact `SourceConfig` plus existing source-read inputs;
-- accepts no census, inventory, policy or scientific frontier;
-- returns `SourceI02ConstructionOnlyResult` with source metadata, roots,
-  manifest/counts/stats, body transport and explicit unresolved states;
-- has no operation-fate/census fields and explicitly reports `joined_q2=False`,
-  `authorized_executable_q2=False`, `issued_workload=False`;
-- preserves exact current/resolver/request checks before source bytes.
+1. A separate native producer child performs exactly one tiny sourcefree
+   construction and exits.
+2. The pytest parent waits for and reaps it.
+3. A separate fresh native reader child checks the producer PID is gone, then
+   opens `VerifiedDirectEstate` with the exact held-root callback
+   (`current(roots) = roots == held_i02`).
+4. Positive cold reopen compares every family count and canonical object
+   payload digest, including full `RespondentIdentity` and
+   `RoutingEligibilityFact` payloads, against the producer's recorded exact
+   bodies; it also proves roots, manifest and source metadata are exact.
+5. Negative children prove exact wrong-current and revoked refusal before estate
+   open. A wrong-root child also refuses with the exact held-root mismatch.
 
-The governed Q2 entrance keeps its exact census/frontier verification and
-operation-fate anti-join hook; no writer, S2-C physical format, decoder, source
-authorization or product-format semantics were changed.
+The original-mode pre-read denial test is retained. The existing governed Q2
+source-i02 regression court is retained.
 
 ## Native evidence
 
-- Candidate focused test: one tiny sourcefree construction + independent fresh
-  `VerifiedDirectEstate` reopen; exact roots, body family counts, respondent
-  identity/events, routing presence, source metadata, and unresolved Q2/holds.
-- Pre-read denial: original-mode fixture with `DenyResolver`; destination absent,
-  decoder call count zero, refusal before bytes.
-- Existing Q2 source-i02 regression court: passed with candidate.
-- Combined result: **13 passed in 3.43 s**.
+- `proof/build.json`: producer child PID, exact roots/manifest, all family
+  counts, producer payload digests, source metadata, unresolved Q2/issuance
+  states, and absence of operation/census fields.
+- `proof/reopen_positive.json`: producer exited first; all family payloads,
+  identity and routing payloads equal; roots/manifest equal.
+- `proof/refusal_wrong_current.json`: `current source/operation authority refused`.
+- `proof/refusal_revoked.json`: `current source/operation authority refused`.
+- `proof/refusal_wrong_root.json`: `estate source/replay/universe/logical/physical roots mismatch`.
+- `proof/producer_exit_probe.txt` and `proof/APPLY_CHECK.txt`.
+- `tests_native_child.txt`: focused test **2 passed in 9.27 s**.
+- `tests.txt`: focused candidate + existing Q2 regression court **13 passed in 10.38 s**.
 
-No real source was opened or decoded; no product branch edits were made; no
-configuration join, historical grant adapter, or separate experiment matrix was
-used.
+No original source was opened, hashed, decoded or statted. No new grant,
+protected write, product edit, benchmark, config join or separate experimental
+matrix was created. The production handoff refactor is unchanged from the frozen
+first candidate; this repair is confined to focused proof/evidence.
