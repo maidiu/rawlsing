@@ -44,12 +44,14 @@ Validation per source:
 | Metadata bundles validated | **35** |
 | Q2-executable input bundles | **0** |
 | Q2-held bundles | **35** |
-| Typed source-rights-held bundles | **33** |
+| Source-rights-held bundles | **33** |
+| Typed Q2-held bundles | **35** |
+| Actual test-only executable bundles | **1** |
 | Witness configs loaded | **1** (SRC04) |
 | Sourcefree transfer example | **SRC01** fixture pins only |
 
 `ALL35_RESULT.json` SHA-256:
-`e35d31f5dbcd1992a35e1c76211b6209ed56b9014b2d3fe1b33c072f9c7e1bdf`
+`9593145cd42cc958fe1b4e075a58b1dcfdd69fcceba183f7adbfbb92ef76e1c5`
 
 
 ## SRC04 witness
@@ -70,12 +72,33 @@ responses, 3 configured coordinates. The accepted C11 reference remains
 `ba41253681212be14a0cde009afb99d77e14935e`: 7,337 rows, 177 selected responses,
 3 coordinates, 1,298,649 response positions, q217 held at 38 unbound cells.
 
+## SRC17 correction
+
+SRC17 has **source-read/C11 construction permission at its exact scope**; I03/I05
+are excluded. Its Q2 inputs remain held. The permission bytes are preserved and
+the bundle status is corrected to
+`SOURCE_READ_C11_AUTHORIZED__I03_I05_EXCLUDED__Q2_INPUTS_MISSING`.
+
 ## Second sourcefree example
 
 `SRC01` is pinned as the existing R157 sourcefree fixture transfer witness from
 the R2 matrix (`fixture_file_sha256`, `fixture_config_file_sha256`). It is
 metadata-transfer evidence only; it is not an original source read and is not
 Q2-executable without the same missing Q2 inputs.
+
+## Actual executable TEST_ONLY bundle
+
+`testonly_bundle/` contains actual typed `SourceConfig`, `SourceInventory`,
+`GrammarPolicy`, `ScientificFrontier` and `FrozenInputCensus` pickled and
+reloaded from one existing 5-row sourcefree fixture. It performs:
+
+- one actual `SourceSavedBodySink` build into a 13-family saved estate;
+- a fresh-process cold reopen with exact full-family counts;
+- a pre-source census mismatch refusal (`SOURCE_CENSUS_SHA_MISMATCH`) against
+  a nonexistent source path.
+
+This is **separate** from the 35 original metadata bundles and is not counted
+as an original-source executable input.
 
 ## Unresolved required Q2 fields
 
@@ -102,7 +125,7 @@ resolver.
 ## Tests
 
 ```text
-4 passed in 0.98 s
+6 passed in 4.74 s
 ```
 
 - all-35 metadata positive and typed holds;

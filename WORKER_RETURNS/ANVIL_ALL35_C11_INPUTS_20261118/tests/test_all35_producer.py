@@ -48,3 +48,13 @@ def test_src04_config_drift_refused(tmp_path):
     p=subprocess.run([sys.executable,'-B',str(PRODUCER),'--src04-config',str(bad),'--out',str(out),'--bundles',str(bundles)],cwd=str(ROOT),text=True,capture_output=True)
     assert p.returncode != 0
     assert 'SRC04_CONFIG_FILE_DRIFT' in p.stderr
+
+
+def test_src17_source_read_c11_authorized_but_i03_i05_held(tmp_path):
+    p, out, bundles = run(tmp_path)
+    assert p.returncode == 0, p.stderr
+    d = json.loads((bundles/'SRC17.json').read_text())
+    assert d['rights_decision'] == 'AUTHORIZED_FOR_THIS_HOST_PURPOSE'
+    assert d['q2_input_status'] == 'HELD'
+    assert d['metadata_bundle_status'].startswith('SOURCE_READ_C11_AUTHORIZED')
+    assert any('I03/I05' in x for x in d['missing_q2_inputs'])

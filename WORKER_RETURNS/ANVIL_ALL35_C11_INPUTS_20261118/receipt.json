@@ -6,7 +6,7 @@
   "accepted_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
   "producer": {
     "path": "producer.py",
-    "sha256": "56742e05d1b444d4d3888a062bcdd0640ff7aa3f46d3201107656df3b0b3ea87",
+    "sha256": "78d0d95b78e852d1b5720cd6b842dc8356844092c9350d15d00e3c97107923cf",
     "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/producer.py",
     "exit": 0,
     "no_raw_source": true,
@@ -19,13 +19,15 @@
     "metadata_bundles_validated": 35,
     "q2_executable_bundles": 0,
     "q2_held_bundles": 35,
-    "typed_source_rights_held_bundles": 33,
+    "source_rights_held_bundles": 33,
+    "typed_held_bundles": 35,
     "witness_configs_loaded": 1,
-    "sourcefree_transfer_example": "SRC01"
+    "sourcefree_transfer_example": "SRC01",
+    "testonly_executable_bundles": 1
   },
   "artifacts": {
     "result": "ALL35_RESULT.json",
-    "result_sha256": "e35d31f5dbcd1992a35e1c76211b6209ed56b9014b2d3fe1b33c072f9c7e1bdf",
+    "result_sha256": "9593145cd42cc958fe1b4e075a58b1dcfdd69fcceba183f7adbfbb92ef76e1c5",
     "bundles": "bundles/SRC01.json \u2026 bundles/SRC35.json",
     "bundle_count": 35,
     "tests": "tests/test_all35_producer.py",
@@ -90,13 +92,15 @@
   },
   "tests": {
     "path": "tests/test_all35_producer.py",
-    "result": "4 passed in 0.98 s",
+    "result": "6 passed in 4.74 s",
     "exit": 0,
     "coverage": [
       "all35 metadata positive/typed holds",
+      "SRC17 source-read/C11 authorized but I03/I05 held",
       "codebook drift refusal",
       "data path drift refusal",
-      "SRC04 config drift refusal"
+      "SRC04 config drift refusal",
+      "actual small sourcefree typed bundle build/reopen/pre-source refusal"
     ]
   },
   "limits": [
@@ -106,5 +110,32 @@
     "No new grant, source science, product edit or large/real build.",
     "Existing SRC04 intake preserved."
   ],
-  "stop": "PUBLISHED_AT_35_METADATA_VALIDATED__Q2_HELD"
+  "stop": "PUBLISHED_AT_35_METADATA_VALIDATED__Q2_HELD",
+  "testonly_executable_bundle": {
+    "sourcefree_test_only": true,
+    "rows": 5,
+    "typed_objects": [
+      "SourceConfig",
+      "SourceInventory",
+      "GrammarPolicy",
+      "ScientificFrontier",
+      "FrozenInputCensus"
+    ],
+    "pickle_sha256": "c9a28d4dcff7e3108c549d620bd4c248843466bb99f1b4b25b28c5795f4c2732",
+    "build_sha256": "925b0b527a479d106b10d95ae11ecefb10f141bb55867fd60a064be8ed2a7781",
+    "reopen_sha256": "06a7a818e38324654e6b023662d601b4f6eff357a586d2f2837c3faf36d82a40",
+    "refusal_sha256": "223bd2760efdaa364d3b0b41e99688cb22e39c216be16cd6617e0f23e3e22938",
+    "build_status": "ACTUAL_SOURCE_SAVED_BODY_BUILD_PASS",
+    "reopen_status": "FRESH_PROCESS_FULL_FAMILY_REOPEN_PASS",
+    "refusal_status": "SOURCE_CENSUS_SHA_MISMATCH_BEFORE_SOURCE_ACCESS",
+    "original_q2_executable": false,
+    "test": "tests/test_testonly_transfer.py"
+  },
+  "src17_correction": {
+    "rights_decision": "AUTHORIZED_FOR_THIS_HOST_PURPOSE",
+    "scope": "SOURCE_READ_AND_C11_CONSTRUCTION_ONLY",
+    "i03_i05": "EXCLUDED",
+    "q2_inputs": "HELD",
+    "permission_bytes_preserved": true
+  }
 }

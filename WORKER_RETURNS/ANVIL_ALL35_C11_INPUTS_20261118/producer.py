@@ -81,10 +81,12 @@ def main() -> int:
                 raise ProducerRefusal('SRC04_CONFIG_SCOPE_DRIFT')
             config_loaded=True
         status=('METADATA_WITNESS_VALIDATED__Q2_INPUTS_MISSING' if sid=='SRC04' else
+                'SOURCE_READ_C11_AUTHORIZED__I03_I05_EXCLUDED__Q2_INPUTS_MISSING' if sid=='SRC17' else
                 'SOURCEFREE_TRANSFER_PINNED__Q2_INPUTS_MISSING' if sid=='SRC01' else
                 'HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING')
         missing=list(Q2_REQUIRED)
         if s['rights_decision']!='AUTHORIZED_FOR_THIS_HOST_PURPOSE': missing.insert(0,'current source-use grant')
+        if sid=='SRC17': missing.append('I03/I05 scientific issuer (source-read/C11 grant excludes I03/I05)')
         if not config_loaded: missing.insert(0,'current materialized SourceConfig')
         bundle={
           'schema':'ANVIL_ALL35_C11_INPUT_BUNDLE@1','source_id':sid,
@@ -109,9 +111,8 @@ def main() -> int:
         (bundles/(sid+'.json')).write_text(json.dumps(bundle,indent=2,sort_keys=True)+'\n')
         rows.append({'source_id':sid,'family':s['family'],'wave':s['wave'],'bundle':f'bundles/{sid}.json','status':status,'questions':s['counts']['questions'],'physical_slots':s['counts']['physical_slots'],'response_slots':s['counts']['response_slots'],'coordinate_slots':s['counts']['coordinate_slots'],'weight_slots':s['counts']['weight_slots'],'missing_q2_inputs':missing})
         produced+=1
-        if status.startswith('HELD'): held+=1
-    result={'schema':'ANVIL_ALL35_C11_INPUT_RESULT@1','canonical_commit':'d4f0a6499432aa3186c0d92174fa228211759e44','accepted_code':'aee95429609c372564e996c2d3d3eb30e9253cbf','matrix_sha256':sha(Path(a.matrix)),'source_count':35,'metadata_bundles_produced':produced,'metadata_bundles_validated':produced,'q2_executable_bundles':0,'q2_held_bundles':35,'typed_held_bundles':held,'witness_config_loaded':'SRC04','sourcefree_transfer_example':'SRC01','rows':rows,'limits':['metadata only; no original bodies','codebook is description not authorization','no Q2 frontier/census/resolver provided; all Q2 status HELD','no new source/science/rights']}
+    result={'schema':'ANVIL_ALL35_C11_INPUT_RESULT@1','canonical_commit':'d4f0a6499432aa3186c0d92174fa228211759e44','accepted_code':'aee95429609c372564e996c2d3d3eb30e9253cbf','matrix_sha256':sha(Path(a.matrix)),'source_count':35,'metadata_bundles_produced':produced,'metadata_bundles_validated':produced,'q2_executable_bundles':0,'q2_held_bundles':35,'source_rights_held_bundles':sum(1 for s in matrix['sources'] if s['rights_decision']!='AUTHORIZED_FOR_THIS_HOST_PURPOSE'),'typed_held_bundles':35,'witness_config_loaded':'SRC04','sourcefree_transfer_example':'SRC01','rows':rows,'limits':['metadata only; no original bodies','codebook is description not authorization','no Q2 frontier/census/resolver provided; all Q2 status HELD','no new source/science/rights']}
     Path(a.out).write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
-    print(json.dumps({k:result[k] for k in ('source_count','metadata_bundles_produced','metadata_bundles_validated','q2_executable_bundles','q2_held_bundles','typed_held_bundles','witness_config_loaded','sourcefree_transfer_example')},sort_keys=True))
+    print(json.dumps({k:result[k] for k in ('source_count','metadata_bundles_produced','metadata_bundles_validated','q2_executable_bundles','q2_held_bundles','source_rights_held_bundles','typed_held_bundles','witness_config_loaded','sourcefree_transfer_example')},sort_keys=True))
     return 0
 if __name__=='__main__': raise SystemExit(main())
