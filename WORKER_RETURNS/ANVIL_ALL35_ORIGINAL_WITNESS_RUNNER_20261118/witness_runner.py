@@ -165,7 +165,8 @@ def _grant_binding(binding_dir: Path):
     resolver = gb.ExistingGrantResolver(grant_path, trust, result.request)
     if resolver.resolve_current(result.request) != resolver.resolve_current(result.request):
         raise PreflightRefusal("GRANT_PRE_POST_DECISION_CHANGED")
-    return result, resolver
+    grant_document = load_json(grant_path)
+    return result, resolver, str(grant_document["source_path"])
 
 
 def _load_config(config_path: Path, index_row: Mapping[str, Any], SourceConfig):
@@ -203,7 +204,7 @@ def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
                                f"{len(scoped_doc['response_slots'])}/{len(scoped_doc['coordinate_slots'])}")
     if len(scoped_doc["physical_slots"]) != 181:
         raise PreflightRefusal("PHYSICAL_SLOT_ACCOUNTING_LOST")
-    grant, resolver = _grant_binding(binding_dir)
+    grant, resolver, original_source_path = _grant_binding(binding_dir)
     free = shutil.disk_usage(outdir).free
     if free < DISK_FLOOR:
         raise PreflightRefusal("DISK_GATE", f"{free} < {DISK_FLOOR}")
@@ -218,6 +219,8 @@ def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
         "config_index_sha256": sha_bytes(config_pin),
         "grant_binding_sha256": PINNED_BINDING_SHA,
         "grant_ref": grant.grant_ref.as_dict(),
+        "original_source_path_from_grant": original_source_path,
+        "source_path_opened_stat_hashed_or_decoded": False,
         "decision_ref": grant.decision.decision_ref.as_dict(),
         "q217": q217,
         "scoped_counts": {
