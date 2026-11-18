@@ -1,0 +1,279 @@
+{
+ "schema": "ANVIL_ARCHITECTURE_DISTINCT_C_VERDICT@1",
+ "verdict": "REVISE_EXACT_DEFECT",
+ "direction_assessment": "CONDITIONALLY_COMPETENT_SOURCE_GROUNDED_DIRECTION__FROZEN_PACKAGE_NOT_COHERENT_AS_IS",
+ "does_not_reject_conditional_direction": true,
+ "candidate": {
+  "head": "98b8d261accfcc7834c86d3f0d52f23e4524f666",
+  "annotated_tag": "anvil-architecture-candidate-20261117-r1",
+  "tag_object": "ad73064f7a7fece32030075188d15dea84004c72",
+  "tag_peels_to": "98b8d261accfcc7834c86d3f0d52f23e4524f666",
+  "author_branch": "agent/anvil-integrated-architecture-20261117-r1",
+  "review_branch": "agent/anvil-architecture-independent-c-20261117-r1",
+  "startup_sha": "98b8d261accfcc7834c86d3f0d52f23e4524f666",
+  "remote_verified": true,
+  "manifest_files": 61,
+  "manifest_hashes_verified": 61
+ },
+ "scope": {
+  "kind": "DISTINCT_INDEPENDENT_C_DOCUMENTARY_ARCHITECTURE_REVIEW",
+  "not": [
+   "instrument preparation",
+   "engineering implementation",
+   "native/original35/100k acceptance",
+   "science or actor-right issuance",
+   "protected adoption or H1",
+   "full test matrix or benchmark"
+  ],
+  "product_access": "READONLY",
+  "protected_access": "READONLY",
+  "writes": "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/ only"
+ },
+ "exact_inputs": {
+  "protected_head": "31291d08179890852246c8742700e055168e9933",
+  "protected_progress_revision": 10,
+  "base_frame_commit": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+  "base_frame_sha256": "44b17c58e9610b856abe7b95b03cd6b011338b7a7d9d669bbedba206f685a573",
+  "base_frame_canonical_digest": "7e7bfb9638f23894fd244a703e8a6b88d361f90fafa5b2b10ac78c1f24229913",
+  "v2_addendum_sha256": "aa170d8954a3fc0be99318f4d28399b6f3cb004603ef24d317bb3f475c3ea7ff",
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "register_snapshot": "b830458c3ebfe0a3f0e2d18e516e68b90324c88a",
+  "original_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+  "construction_specialist": "f8c98027599b62069c03a269989075b4442f5138",
+  "query_specialist": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a",
+  "instrument_preparation_only": [
+   "05e81747fb2e5cca042c0d968ba1ae203182556e",
+   "21d39dfa5d5ca95a64251494ff9d4c0f961d4a43",
+   "f6073d923a3e01caf4c1af54599797f04338d54f"
+  ]
+ },
+ "blocking_defects": [
+  {
+   "id": "D1",
+   "severity": "BLOCKING_DOCUMENTARY",
+   "title": "Frozen final decision still records the mandatory specialist dependency as PENDING",
+   "exact_sources": [
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/FINAL_DECISION.json",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/SPECIALIST_CONSUMPTION.md"
+   ],
+   "fields": [
+    "FINAL_DECISION.specialist_dependency.status == PENDING_TWO_FROZEN_SPECIALIST_RETURNS",
+    "FINAL_DECISION.specialist_consumption.status == BOTH_RETURNS_RECEIVED_AND_ADJUDICATED",
+    "FINAL_DECISION.final_selection_frozen == true",
+    "FINAL_DECISION.specialist_dependency.adjudication_rule says final remains unfrozen until both returns adjudicated",
+    "SPECIALIST_CONSUMPTION.md status PENDING and unchecked checklist"
+   ],
+   "why_material": "The package simultaneously asserts that it is frozen and that its gating specialist dependency is pending. The final decision's own rule makes the frozen state invalid. The guard passes because it does not check this field.",
+   "decisive_correction": "Set the final decision's specialist status to RECEIVED_AND_ADJUDICATED (or mark the old block explicitly HISTORICAL_PLAN), remove the PENDING contradiction, mark SPECIALIST_CONSUMPTION.md SUPERSEDED_BY_FINAL or move it to ARCHIVE, and refreeze."
+  },
+  {
+   "id": "D2",
+   "severity": "BLOCKING_DOCUMENTARY",
+   "title": "Final decision still describes the provisional SC-ESTATE, not the selected prepared-session-first/conditional design",
+   "exact_sources": [
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/FINAL_DECISION.json",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/FINAL_ARCHITECTURE.md"
+   ],
+   "fields": [
+    "physical_architecture.name == Single-certification canonical C11 estate + immutable derived access index",
+    "physical_architecture.layers includes L2_INDEX and per-row-group digests",
+    "implementation sequence step 2 adds write_direct_estate_from_certified_stream with one I02/no JSONL unconditionally",
+    "implementation sequence step 4 adds the immutable derived index unconditionally",
+    "per_requirement_candidate_effect REQ-RESOURCE-ECONOMICS says SC-ESTATE removes the second I02 and per-session full scan",
+    "per_requirement_candidate_effect REQ-PHYSICAL-WORKLOAD-1-10-100 says the durable index and prepared session target 1/10/100",
+    "per_requirement_candidate_effect REQ-SOURCE-I02-REVOCATION says the index is bound to manifest/I02 roots"
+   ],
+   "why_material": "The selected strategy holds the durable index and makes construction one-certificate conditional. The machine-readable final decision describes an index-bearing SC-ESTATE and an unconditional construction path. A downstream implementer cannot tell which architecture is selected.",
+   "decisive_correction": "Regenerate FINAL_DECISION from the selected design: label the SC-ESTATE as a conditional target if the index is later qualified, or replace it; make sequence steps 2 and 4 explicitly conditional on REV-1/REV-2; update the per-requirement candidate effects; re-run the guard."
+  },
+  {
+   "id": "D3",
+   "severity": "BLOCKING_STRUCTURAL_GUARD",
+   "title": "The 16/16 guard does not cover the four v2 addendum requirements; removing the entire addendum still PASSES",
+   "exact_sources": [
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S1/FRAME_V2_ADDENDUM.json",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/FINAL_DECISION.json",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/FINAL_DECISION_GUARD.txt",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/RUNS/guard_omission_witness.txt"
+   ],
+   "fields": [
+    "FRAME_V2_ADDENDUM.new_requirements length 4",
+    "FINAL_DECISION.candidate_requirement_addendum_dispositions length 4",
+    "FINAL_DECISION_GUARD.covered == 16",
+    "FINAL_DECISION_GUARD.requirement_total == 16"
+   ],
+   "why_material": "The four v2 requirements are the material additions from the specialists (H/S/Q/O separation, derived-index binding, evidence exact identity, construction recovery). If the guard cannot see them, their presence is not enforced and the 16/16 PASS cannot support the final 20-requirement package.",
+   "counterexample": "A copy of FINAL_DECISION with candidate_requirement_addendum_dispositions and frame_v2_addendum removed still returns PASS_LOCAL_INTEGRATED_DECISION_PENDING_C, covered 16, requirement_total 16, identity_dispositions 118.",
+   "decisive_correction": "Extend the guard (or add a v2 guard) to cover 16 base + 4 addendum = 20 requirements, their dispositions and crosswalk rows; record 20/20 and 118/118; also check specialist status and selected-strategy consistency."
+  },
+  {
+   "id": "D4",
+   "severity": "BLOCKING_FIRST_CONSUMER_ABI",
+   "title": "Prepared-session-first is not wired into the named first-consumer/Batch ABI and is rejected by exact-type guards",
+   "exact_sources": [
+    "rawlsing_next/pre553_saved_workload_integration.py",
+    "rawlsing_next/pre553_batch_runner.py",
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/pre553_prepared_saved_i03.py",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/WITNESS/test_prepared_abi.py",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/RUNS/prepared_abi_witness.txt"
+   ],
+   "fields": [
+    "execute_saved_i03 line 42: type(admission) is not SavedC11Admission -> reject",
+    "execute_saved_i05 line 54: type(admission) is not SavedC11Admission -> reject",
+    "execute_saved_batch line 94: type(admission) is not SavedC11Admission -> reject",
+    "BatchExecutionRunner.__init__ line 406: type(repository) is SavedC11Admission -> reject PreparedSavedC11Admission subclass",
+    "SavedC11Admission.execute_i03 line 424 and execute_i05 line 446 open fresh DirectEstateI03Session through executor/I05",
+    "FINAL_DECISION.builder_handoffs[0] grades PreparedSavedC11Admission.open + prepared_i03 in execute_saved_batch per unit as EXECUTED_SOURCEFREE_EXISTING_CODE"
+   ],
+   "why_material": "The selected first query step claims existing-code Batch/first-consumer reuse. The named paths reject the prepared subclass and would still open fresh sessions if the type guard were relaxed. The direct prepared 3-test log is real but is not the named Batch path.",
+   "counterexample": "The bounded witness constructs the real sourcefree prepared admission and asserts execute_saved_i03 raises SavedC11AdmissionError('exact SavedC11Admission required') and BatchExecutionRunner raises BatchIntegrityError('repository must be accepted...'). 2 passed.",
+   "decisive_correction": "Add a prepared-session-aware adapter or narrow owner-approved protocol, relax only the exact prepared class guards, thread one prepared context through Batch units, and prove one _build through the actual wrapper/Batch with four operations and exact fact-ref parity. Until then label the card PROPOSED_NOT_WIRED."
+  },
+  {
+   "id": "D5",
+   "severity": "BLOCKING_DOCUMENTARY_SUPERSESSION",
+   "title": "Preserved provisional artifacts are not unambiguously superseded in the final payload",
+   "exact_sources": [
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/SPECIALIST_CONSUMPTION.md",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/PROVISIONAL_STATUS.md",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/S2_S3/DECISION_GUARD.txt",
+    "WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/PACKAGE_MANIFEST.json"
+   ],
+   "fields": [
+    "SPECIALIST_CONSUMPTION.md status PENDING with unchecked checklist",
+    "PROVISIONAL_STATUS.md decision status PROVISIONAL_PENDING_TWO_SPECIALIST_RETURNS",
+    "DECISION_GUARD.txt is the provisional guard output",
+    "all three are included in the final package manifest without a supersession banner"
+   ],
+   "why_material": "Preserving history is required, but a final package must not present stale PENDING/provisional status as live. A cold reader can mistake the plan or provisional status for the final state.",
+   "decisive_correction": "Keep the files, but add an explicit SUPERSEDED_BY_FINAL_... header and label them historical in the manifest, or move them to ARCHIVE/ and point the final manifest only at final artifacts."
+  }
+ ],
+ "nonblocking_findings": [
+  {
+   "id": "N2",
+   "finding": "The 14 P4R source rows are not all literally the token HELD: they include HELD_*, HOLD_*, NOT_ADOPTED_PENDING and PENDING_OWNER_RECEIPT.",
+   "disposition": "The candidate's '14 P4R HELD' is a disposition shorthand, not a literal row-token claim; no promotion or closure was found. Use exact row labels in any future quote."
+  },
+  {
+   "id": "N3",
+   "finding": "The construction specialist's Q2 certificate must be built from the source-derived stream, not from a re-parsed journal; the final narrative says 'source-derived Q2' but the one-journal merge text does not explicitly forbid building Q2 from the journal.",
+   "disposition": "Make the source-vs-transport independence explicit in the construction gate; it is part of the same conditional proof, not a new architecture."
+  },
+  {
+   "id": "N4",
+   "finding": "Recovery no-clobber is a contract, not an implemented or crash-proven mechanism; host/PID/start lease and typed ORPHAN_REQUIRES_OPERATOR are proposed but the kill-at-each-step witness is a remaining obligation.",
+   "disposition": "Correctly marked conditional; no false guarantee was claimed. Require the crash-injection witness before acceptance of the construction seam."
+  }
+ ],
+ "strongest_failed_attack": {
+  "attack": "Prepared-session-first merely moves work or changes denominator, occurrence, routing, weight, negative or replay semantics.",
+  "result": "FAILED",
+  "why": "PreparedI03Session calls the same execute_empirical_query/execute_exact_bounded_discovery with the same query/predicate/authority and group_scope=None; the index is locators only and canonical bodies/typed lanes are unchanged. The focused prepared test passed 3/3 and asserts exact fact-ref parity for selected/F2/F4/raw, one _build, revocation refusal and condition mismatch refusal. The 34-test focused sourcefree run passed.",
+  "residual": "The prepared session is process-local and does not help N=1 or fresh-process opens; the candidate states this. The ABI wiring remains D4."
+ },
+ "other_attacks_tested": [
+  "Construction certificate removal: conditional on full physical body/lane/selector proof against Q2 with second-certificate fallback; direction competent, but final decision's unconditional sequence is D2.",
+  "Recovery: proposed no-clobber stage/lease/typed orphan; not falsely claimed as implemented; crash-injection proof is an open obligation.",
+  "Durable index: held, not ruled out forever; 1.30 GB SQLite is cited as a current witness, not a universal lower bound; compact exact encoding and H/S/Q/O measurement gates remain.",
+  "H/S/Q/O formulas: H+N(S+Q+O), H+S+N(Q+O), N(H+S+Q+O), H+I+N(Q+O) are correctly distinguished; 1.69-1.70x four-op report is not a 100-op asymptote.",
+  "Evidence estimate: 2*100000 refs at 150-250 bytes = 30-50 MB/fact and 3-5 GB/100 facts before provenance; still hypothetical, not measured.",
+  "13-family/full-joint/no-loss: body_json + typed lanes and native evaluators are unchanged; F2 directions, F3 minority, F4 true joint, F6 numeric-vs-guard, FF01/FF02, SEAM/SOROK remain preserved or exact owner holds; no new rights.",
+  "Source lineage: 118 counts, 26/14, 52/24/21 navigation, F26 hold and exact specialist pins verified; no consequential source-lineage defect found in sampled rows.",
+  "Protected/unmerged: 31291 protected; cea2d4d product candidate unmerged; no protected adoption/H1 claim."
+ ],
+ "coverage": {
+  "base_requirements_16": "PRESENT_AND_GUARDED_16_16",
+  "v2_requirements_4": "PRESENT_IN_CROSSWALK_AND_DECISION_BUT_NOT_GUARDED",
+  "identity_rows_118": "PRESENT_118_118",
+  "not_adopted_26": "PRESERVED",
+  "p4r_held_14": "PRESERVED_AS_HELD_PENDING_DISPOSITION",
+  "separate_52_24_21": "NAVIGATION_ONLY_NOT_ADDITIVE",
+  "f26": "EXACT_HOLD_K1_CAP_24_P4R_R02_PYAT_PC_R11_21",
+  "construction_specialist": "EXACT_SHA_READ_FULL_FINDINGS_RETURN_AND_PINS",
+  "query_specialist": "EXACT_SHA_READ_FULL_FINDINGS_RETURN_AND_PINS",
+  "specialist_disagreement": "CONSTRUCTION_DURABLE_INDEX_VS_QUERY_PREPARED_SESSION_FIRST_ADJUDICATED_NOT_MAJORITY",
+  "first_consumer": "DIRECT_PREPARED_SESSION_PASSES_NAMED_BATCH_ABI_NOT_WIRED",
+  "no_loss": "13_FAMILY_BODY_AND_NATIVE_EVALUATORS_UNCHANGED_DOWNSTREAM_HOLDS_PRESERVED"
+ },
+ "witnesses": [
+  {
+   "id": "W1",
+   "command": "python3 -m pytest -q rawlsing_next/tests/test_pre553_prepared_saved_i03.py rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py",
+   "result": "34 passed in 18.59s",
+   "log": "RUNS/focused_sourcefree_tests.txt"
+  },
+  {
+   "id": "W2",
+   "command": "python3 -m pytest -q WORKER_RETURNS/ANVIL_ARCHITECTURE_C_20261117/WITNESS/test_prepared_abi.py",
+   "result": "2 passed in 2.24s; both assert exact-type rejection of PreparedSavedC11Admission by the named first-consumer/Batch paths",
+   "log": "RUNS/prepared_abi_witness.txt"
+  },
+  {
+   "id": "W3",
+   "command": "accepted-instrument r7_integrated.py DECISION FINAL_DECISION.json",
+   "result": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C, covered 16, requirement_total 16, identity_dispositions 118",
+   "log": "RUNS/decision_consistency.txt"
+  },
+  {
+   "id": "W4",
+   "command": "same guard on FINAL_DECISION with entire v2 addendum removed",
+   "result": "PASS_LOCAL_INTEGRATED_DECISION_PENDING_C, covered 16, requirement_total 16, identity_dispositions 118",
+   "log": "RUNS/guard_omission_witness.txt"
+  },
+  {
+   "id": "W5",
+   "command": "manifest/ref/tag/count checks",
+   "result": "61/61 manifest hashes; tag ad73064f7a7fece32030075188d15dea84004c72 peels to 98b8d261...; remote branch/tag exact; product clean outside review root",
+   "log": "RUNS/refs_and_status.txt"
+  }
+ ],
+ "required_corrections": [
+  "D1: final decision specialist status must be received/adjudicated or explicit historical plan; remove frozen-vs-pending contradiction.",
+  "D2: final decision physical architecture, implementation sequence and per-requirement effects must match prepared-session-first + conditional construction + held index, or be explicitly labeled conditional target.",
+  "D3: guard must cover 16 base + 4 v2 = 20 requirements and their dispositions/crosswalk; rerun and record 20/20 + 118/118; add specialist/selected-strategy consistency checks.",
+  "D4: wire one prepared session through the actual first consumer/Batch with owner-approved exact-type changes; prove one _build and four-operation exact parity through that path; relabel the current card PROPOSED_NOT_WIRED.",
+  "D5: mark preserved provisional artifacts SUPERSEDED/ARCHIVE; do not leave PENDING or provisional guard text unlabeled in the final payload."
+ ],
+ "owner_routing": [
+  {
+   "owner": "Integrated architect (same synthesis owner)",
+   "obligation": "D1/D2/D3/D5 documentary correction and refreeze"
+  },
+  {
+   "owner": "S2-D saved admission owner + BatchExecutionRunner owner",
+   "obligation": "D4 prepared-session-aware first-consumer/Batch wiring and owner ACK"
+  },
+  {
+   "owner": "S2-C/D physical writer owner",
+   "obligation": "conditional one-certificate/full physical proof, recovery claim/lease and crash-injection witness"
+  },
+  {
+   "owner": "#1006 measured-cost owner + S04/I03 scientific owner",
+   "obligation": "H/S/Q/O measurement and durable-index gate"
+  },
+  {
+   "owner": "Competent H1/protected owner",
+   "obligation": "protected decision only after corrected distinct-C acceptance"
+  }
+ ],
+ "next_implementation_handoff": "1) Correct and refreeze D1-D3/D5 with a 20-requirement guard. 2) Implement D4 prepared-session-aware Batch/first-consumer adapter with exact-type owner ACK. 3) Run bounded sourcefree witness: one _build, four operations (selected, F2 forward, F4 3+, raw), exact fact-ref parity, revocation/current refusal, fresh-process honesty. 4) Then conditional construction/recovery proof; do not start with the durable index or native 100k.",
+ "not_claimed": [
+  "H1 or protected adoption",
+  "native/original35/source/science/actor rights",
+  "100k/6 GiB/1-10-100 production acceptance",
+  "full test matrix or native benchmark",
+  "external reviewer/science/adoption authentication",
+  "authority to fix the candidate in this review"
+ ],
+ "limits": [
+  "I did not audit every one of the 141 crosswalk rows against every source original; I sampled K1/P4R and verified exact pins/counts.",
+  "I did not run native/100k/6 GiB, crash injection, or the full matrix.",
+  "The ABI witness proves exact-type rejection, not that a correctly implemented prepared Batch path would fail.",
+  "I did not authenticate the preparation-only instrument or its reviewer content.",
+  "I did not independently verify sourcebank 8523007 hash caveats; I used original ZIP 526d and candidate pins."
+ ],
+ "return_sha": "FINAL_COMMIT_ON_REVIEW_BRANCH_SEE_GIT",
+ "payload_manifest": "PACKAGE_MANIFEST.json (self-excluded)"
+}

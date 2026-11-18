@@ -1,0 +1,28 @@
+check_id	kind	exact_ref	path_or_symbol	line_or_field	observed	result	evidence
+R2-C01	REF	06e88a5ac7e4c14362a97a046f44e25d8eec4162	corrected candidate HEAD	commit	matches target	VERIFIED	RUNS/refs_target_manifest.txt
+R2-C02	TAG	anvil-architecture-candidate-20261117-r2	annotated tag	tag object 3f55b252f325ec38e2a7e0c01bb3b58fbf588ee7	peels to 06e88...	VERIFIED	RUNS/refs_target_manifest.txt
+R2-C03	REMOTE	refs/heads/agent/anvil-integrated-architecture-20261117-r1 + r2 tag	origin	06e88.../3f55b...	exact	VERIFIED	RUNS/refs_target_manifest.txt
+R2-C04	MANIFEST	PACKAGE_MANIFEST.json	120 files	sha256/bytes	120/120; 0 missing; 0 bad	VERIFIED	RUNS/refs_target_manifest.txt
+R2-C05	PRODUCT_DIFF	cea2d4d3009e9087d2267e9d1f53bec28b730dc7..06e88	rawlsing_next	git diff --stat	empty; product unchanged	VERIFIED	RUNS/refs_target_manifest.txt
+R2-C06	D1_FIELD	FINAL_DECISION.specialist_dependency.status	corrected	BOTH_RETURNS_RECEIVED_AND_ADJUDICATED	historical_plan_only carries old PENDING; active state received	RESOLVED_D1	RETURN.md
+R2-C07	D1_NEG	stale PENDING dependency	independent mutation	specialist_dependency.status=PENDING...	REFUSE_V2_SUPPLEMENTARY	PASS_NEGATIVE	RUNS/negative_stale_pending.txt
+R2-C08	D2_NAME	FINAL_DECISION.physical_architecture.name	corrected	Prepared-session-first + conditional construction/recovery; durable index held	not SC-ESTATE	RESOLVED_D2	RETURN.md
+R2-C09	D2_LAYERS	L3/L5/L7	corrected	L3 selected-not-wired; L5 conditional; L7 held	no silent index/one-cert selection	RESOLVED_D2	RETURN.md
+R2-C10	D2_SEQ	FINAL_DECISION.implementation_sequence	corrected	steps conditional/held; no unconditional one I02/durable index	fresh-process S not removed	RESOLVED_D2	RETURN.md
+R2-C11	D2_EFFECTS	per_requirement_candidate_effect	corrected	16 rows; no SC-ESTATE stale phrases	fresh-process S remains; index held	RESOLVED_D2	RETURN.md
+R2-C12	D2_NEG_SC	stale SC-ESTATE name	independent mutation	old name	REFUSE_V2_SUPPLEMENTARY	PASS_NEGATIVE	RUNS/negative_stale_sc_estate.txt
+R2-C13	D2_NEG_EFFECT	stale SC-ESTATE effect	independent mutation	REQ-RESOURCE-ECONOMICS stale	REFUSE_V2_SUPPLEMENTARY	PASS_NEGATIVE	RUNS/negative_stale_effect.txt
+R2-C14	D2_NEG_INDEX	selected_design.durable_index_status=SELECTED	independent mutation	unconditional index	REFUSE_V2_SUPPLEMENTARY	PASS_NEGATIVE	RUNS/negative_selected_index.txt
+R2-C15	D2_NEG_ONECERT	selected_design.construction...=SELECTED_UNCONDITIONAL	independent mutation	unconditional one-certificate	REFUSE_V2_SUPPLEMENTARY	PASS_NEGATIVE	RUNS/negative_selected_onecert.txt
+R2-C16	D3_BASELINE	GUARDS/v2_supplementary_guard.py	corrected decision/addendum/crosswalk	20 base+v2; 118 identities	PASS_V2_SUPPLEMENTARY_STRUCTURAL_20_REQUIREMENTS_118_IDENTITIES	PASS	RUNS/v2_guard_baseline_independent.txt
+R2-C17	D3_EMPTY_V2	empty addendum/dispositions/crosswalk	independent mutation	all four v2 removed	REFUSE_V2_SUPPLEMENTARY	PASS_NEGATIVE	RUNS/negative_v2_empty.txt
+R2-C18	D3_ACCEPTED_BASE	accepted instrument guard	still 16/16	supplement adds four v2; base not sole authority	VERIFIED_HIERARCHY	RUNS/v2_guard_baseline_independent.txt
+R2-C19	D3_RESTORE	exact baseline after negatives	restore	20/118	PASS	PASS	RUNS/v2_guard_restore_independent.txt
+R2-C20	D4_GRADE	FINAL_DECISION.builder_handoffs	direct vs wrapper	direct EXECUTED_SOURCEFREE_DIRECT_PATH_3_OF_34; wrapper PROPOSED_NOT_WIRED	honest grade split	RESOLVED_D4	RETURN.md
+R2-C21	D4_BOUNDARY	pre553_saved_workload_integration.py lines 42/54/94; pre553_batch_runner.py line 406	exact type guards	SavedC11Admission exact type	PreparedSavedC11Admission rejected; no generic isinstance protocol recommended	RESOLVED_D4	FINAL_ARCHITECTURE.md section 6
+R2-C22	D4_PROTOCOL	first_consumer_handoff.wrapper_batch_required_protocol	exact whitelist	exact PreparedSavedC11Admission; one context; per-unit current; exact fact/replay/restore	actionable owner handoff	RESOLVED_D4	FINAL_DECISION.first_consumer_handoff
+R2-C23	N3_RULE	FINAL_DECISION.construction_source_transport.rule	source-derived Q2	never re-parsed journal; journal transport/parity only	full proof/fallback unchanged	RESOLVED_N3	RETURN.md
+R2-C24	D5_HEADERS	SPECIALIST_CONSUMPTION/PROVISIONAL_STATUS/PROVISIONAL_DECISION/DECISION_GUARD/BUILDER_CARDS	historical banners	HISTORICAL/SUPERSEDED_BY_FINAL	manifest document_roles separates historical	RESOLVED_D5	RETURN.md
+R2-C25	GUARD_RESIDUAL	sequence-status-only mutation	durable locator index / one source-derived Q2 certificate	status SELECTED while action conditional	PASS (guard literal gap)	NONBLOCKING_FINDING	RUNS/negative_summary.tsv
+R2-C26	PRIOR_TESTS	34 focused sourcefree tests	R1 a352626	NOT_RERUN because product cea2d4d..06e88 rawlsing_next empty	prior evidence retained	NOT_RERUN	RETURN.md
+R2-C27	SCOPE	REVIEW_VERDICT.json	not_claimed	no implementation/native/100k/science/authority/H1	scoped acceptance only	VERIFIED	REVIEW_VERDICT.json

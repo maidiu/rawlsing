@@ -1,0 +1,80 @@
+{
+  "schema": "ANVIL_QUERY_COST_MODEL@1",
+  "grade": "ANALYTIC_MODEL_WITH_CITED_SOURCEFREE_WITNESS; NOT_NATIVE_MEASUREMENT",
+  "units": {
+    "H": "cold validation: exact admission, member hashes, manifest/I02/root checks, footer census",
+    "S": "session index build: all event and side-family row groups, full body decode/truth check, temp events/members SQLite + indexes",
+    "Q": "scientific counting per operation: all-universe routing/predicate/target/weight evaluation",
+    "O": "evidence output per operation: fact with risk/denominator member refs, provenance, authorities, replay, cell projection; I05 receipts/support",
+    "I": "validation of a durable derived index (digest + binding checks, not rebuild)",
+    "N": "distinct issued operations in the workload",
+    "R": "respondents in the exact universe",
+    "E": "RespondentEvent rows",
+    "T": "targets/components per query",
+    "K": "query roles per I05 candidate",
+    "B": "retained estate bytes"
+  },
+  "cost_laws": {
+    "one_shot_per_operation": "H + N*(S+Q+O)",
+    "prepared_session_same_process": "H + S + N*(Q+O)",
+    "validated_durable_index": "H + I + N*(Q+O)",
+    "index_aware_pushdown": "H + I + N*(q+O), q<Q only if exact candidate streams preserve semantics",
+    "i05_discovery": "sum over candidates and roles of execute_empirical_query cost + frontier/receipt output; frontier fixed before results",
+    "f1_f4_composition": "one producer execute_empirical_query per direct route plus evidence/consumer construction; forward/reverse/joint routes are separate operations"
+  },
+  "measured_cited": [
+    {"label": "measured_cited", "metric": "sourcefree direct writer wall", "value": 3033.723, "unit": "s", "source": "#1097 current body; S1_COMMON_FRAME/GROUNDING_DELTA", "note": "sourcefree 100k-shape cut-specific; not production/native acceptance"},
+    {"label": "measured_cited", "metric": "retained estate", "value": 310.16, "unit": "MB", "source": "#1097", "note": "published Parquet estate size"},
+    {"label": "measured_cited", "metric": "staging peak", "value": 5.26, "unit": "GB", "source": "#1097", "note": "stage + I02 + uniqueness scratch"},
+    {"label": "measured_cited", "metric": "writer temporary I02", "value": 4.39, "unit": "GB", "source": "#1097", "note": "SQLite proof scratch"},
+    {"label": "measured_cited", "metric": "native session index", "value": 1.30, "unit": "GB", "source": "#1097", "note": "temporary events/members SQLite"},
+    {"label": "measured_cited", "metric": "pre-W05 selected query", "value": 562.362, "unit": "s", "source": "#1097", "note": "not decomposed into H/S/Q/O"},
+    {"label": "measured_cited", "metric": "old candidate peak tree RSS", "value": 6468513792, "unit": "B", "source": "#960/#1006", "note": "old candidate, not current S2-C; exceeds 6 GiB cap 6442450944 B"},
+    {"label": "author_report_cited", "metric": "prepared-session distinct-operation improvement", "value": "1.69-1.70", "unit": "x", "source": "#1108; cea2d4d author report", "note": "no independent G5; operation count not established; not extrapolated as measurement"}
+  ],
+  "analytic_inference": {
+    "prepared_factor_from_four_ops": {
+      "label": "analytic_inference",
+      "assumption": "author report basis is the four-query prepared test and O is ignored",
+      "equation": "4(S+Q)/(S+4Q)=1.695 => S/Q=1.206",
+      "implication": "N(1+S/Q)/(N+S/Q): N=1 1.00x, N=10 1.97x, N=100 2.18x, asymptote 2.21x",
+      "caveat": "if the report basis differs or O is material, this inference is invalid"
+    },
+    "evidence_output_refs": {
+      "label": "analytic_inference",
+      "equation": "O_refs ~ 2*R ExactRefs per fact (risk + denominator) + provenance/authority/cell/replay",
+      "estimate": "at R=100000 and ~150-250 bytes per serialized ExactRef, ~15-25 MB per fact before provenance; 100 distinct facts ~1.5-2.5 GB",
+      "caveat": "must be measured; not a measured output size"
+    },
+    "durable_index_retained_ratio": {
+      "label": "analytic_inference",
+      "equation": "1.30 GB index / 310.16 MB estate = 4.19x",
+      "implication": "current SQLite locator index is not compact TOTAL retention; a compact exact encoding may be much smaller but is unproven"
+    }
+  },
+  "extrapolated": [
+    {"label": "extrapolated", "scenario": "one-shot admission, 10 ops", "cost": "10*(S+Q+O)+H", "note": "S paid per op; no benefit from cea2d4d placement"},
+    {"label": "extrapolated", "scenario": "prepared session, 10 ops same process", "cost": "H+S+10*(Q+O)", "note": "S amortized; Q/O remain"},
+    {"label": "extrapolated", "scenario": "prepared session, 100 ops same process", "cost": "H+S+100*(Q+O)", "note": "S amortized; if Q dominates, near-linear"},
+    {"label": "extrapolated", "scenario": "10 fresh-process opens, one op each", "cost": "10*(H+S+Q+O)", "note": "prepared session cannot help across processes; only C can remove S"},
+    {"label": "extrapolated", "scenario": "100 ops at cited 562.362 s/op", "cost": "56236.2 s plus H/S/O", "note": "ILLUSTRATIVE ONLY: cited number is undecomposed and geometry not established; not a prediction"},
+    {"label": "extrapolated", "scenario": "F1-F4 mix", "cost": "sum of producer queries; F2 forward+reverse are two; F4 3+ is one joint query per consumer; I05 is candidates*roles", "note": "pairwise marginals are not a joint and cannot be substituted"}
+  ],
+  "indispensable_measurements": [
+    "H wall and bytes hashed per fresh admission",
+    "S wall and peak RSS/disk for index build, separately from Q",
+    "Q wall for selected marginal, reverse F2, weighted and unweighted, true F4 3+, I05 multiple roles",
+    "O bytes and wall per fact/receipt; exact ref serialization size",
+    "1/10/100 distinct operations in one process and 10 fresh-process opens",
+    "peak process-tree RSS vs 6 GiB; retained + scratch + output bytes",
+    "changed source/root/currentness/authority and revocation refusals at each layer",
+    "cross-wave/country nonpooling and fresh-process restore"
+  ],
+  "not_claimed": [
+    "no native/source/actor rights",
+    "no production 100k/6GiB acceptance",
+    "no 1/10/100 economic acceptance",
+    "no speedup measurement",
+    "no final architecture selection"
+  ]
+}

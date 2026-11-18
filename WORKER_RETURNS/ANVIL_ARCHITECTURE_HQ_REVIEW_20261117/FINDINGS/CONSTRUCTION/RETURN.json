@@ -1,0 +1,134 @@
+{
+  "schema": "ANVIL_ARCH_CONSTRUCTION_RETURN@1",
+  "role": "CONSTRUCTION",
+  "status": "SPECIALIST_RETURN_COMPLETE_AUTHOR_GRADE_NOT_ACCEPTED",
+  "author_frame_sha": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+  "product_startup_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "branch": "agent/anvil-architecture-construction-20261117-r1",
+  "write_scope": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/CONSTRUCTION/",
+  "independence": {
+    "read_s1_frozen": true,
+    "read_integrated_architect_s2_draft": false,
+    "read_sibling_specialist_findings": false,
+    "read_prior_d1_d4_evidence": true,
+    "native_or_original_survey_data_accessed": false,
+    "product_source_edits": 0,
+    "benchmark_executed": false,
+    "subagents": 0,
+    "model_provider_host_switch": false
+  },
+  "stance": {
+    "recommendation": "One source-derived Q2 I02 certificate as sole I02 proof; one private 13-family exact-body journal; one canonical Parquet/Zstd body_json estate with derived typed/locator lanes; one full physical body/lane proof against Q2; manifest/member hashes; one cold qualification + durable non-authoritative postings index; atomic stage-directory publish with lease/orphan recovery; per-universe partition.",
+    "package": "A1 + A2 + A5 + A10 (with A0 second-certificate fallback if independent source comparison cannot be preserved without it).",
+    "strongest_reverser": "If the Q2 certificate cannot be independently held/qualified as the writer proof DB, or the physical verifier cannot compare every family body/selector to it without a second representation, keep the second I02 certificate and take only one-journal + durable-index + atomic-recovery.",
+    "smallest_lawful_discriminating_test": "Fixed 13-family sourcefree fixture with repeated/ranked event, typed missing/routing/weight negatives, distinct-universe relation, one I03 and one I05; compare current two-cert path vs one-cert path on roots, member hashes, full facts/replay/negatives/revocation, build disk/RSS, cold 1/10/100; inject one body/selector/locator corruption and one crash before manifest. Not executed."
+  },
+  "findings": [
+    "Q2 spools 3 families to JSONL and the bridge journals all 13 to JSONL: the 3 families are materialized twice.",
+    "The frozen writer builds a second full I02 SQLite certificate from the journal and the physical reread checks that second certificate, not the source-derived Q2 certificate.",
+    "The per-session DirectEstateI03Session._build scans all respondents, all events and three side families for every new session; PreparedI03Session reuses only within one process.",
+    "write_direct_estate creates the content-addressed target before manifest.json; a crash there leaves a manifest-less orphan target that later builds refuse.",
+    "The 16 S1 requirement objects are byte-identical to the accepted instrument FRAME; this is instrument-to-S1 identity, not independent current-code/science review.",
+    "118 identity counts are exact: 29 K1_CAP + 26 PYAT_PC + 14 P4R + 10 SEAM_B + 8 SEAM_S + 8 ANVIL_L + 7 BOUNDARY + 16 TERMINAL.",
+    "b830458c and cea2d4d have byte-identical writer/reader/bridge/I02 files; cea2d4d adds only pre553_prepared_saved_i03.py (180 lines). Protected 31291 lacks the writer file.",
+    "The 100k witness is 3.245 events/respondent (~324.5k events), about 0.25-0.54% of 600-1300 slots per respondent; it is not dense width proof."
+  ],
+  "interpretations": [
+    "The second I02 certification is duplicate representation/conversion, not a second independent source observation, if the journal is checked against Q2 and the physical reread is full and all-family against Q2.",
+    "A one-time cold qualification plus a content-bound derived index removes repeated semantic verification of immutable bytes without weakening cold member-hash/currentness proofs.",
+    "A transient Q2 certificate with retained roots + proof receipt may satisfy compact retention, but this is an owner acceptance question.",
+    "Chunk rows 1024-4096 may reduce overhead but need a small fixed witness because narrow-query read amplification is a real cost."
+  ],
+  "owner_holds": [
+    "Whether transient Q2 certificate (not retained) satisfies REQ-AUTHORITY-RECOVERY independent source comparison.",
+    "Whether a durable derived index and qualification receipt are acceptable, and the exact manifest schema/version extension.",
+    "Whether to adopt REQ-CONSTRUCTION-ATOMIC-RECOVERY into the shared frame.",
+    "All native/original35/source/science/actor/F26/FF02/N9/N10W/SOROK and 100k/6GiB/1-10-100 decisions.",
+    "No final architecture acceptance or protected adoption."
+  ],
+  "new_frame_requirements": {
+    "required": true,
+    "file": "NEW_FRAME_REQUIREMENTS.json",
+    "proposed": [
+      "REQ-CONSTRUCTION-ATOMIC-RECOVERY"
+    ],
+    "note": "Only the crash-consistent publication/recovery gap is proposed; derived-index binding and layout remain architecture obligations."
+  },
+  "outputs": {
+    "FINDINGS.md": {
+      "bytes": 27764,
+      "sha256": "11a220287a7a5edf9e2f31711ed9638661f10cef9a0b36b209c1693f492369e1"
+    },
+    "ALTERNATIVES.tsv": {
+      "bytes": 6929,
+      "sha256": "22f4f0854902c02cb4a3889362145d83bc3e48f7952c42c20274705ace62e7b0"
+    },
+    "SOURCE_PINS.json": {
+      "bytes": 11412,
+      "sha256": "76d087911cf782ee19615cac34f6bb4e9f3ff91c75ecdba3c2ec8404ba48a7ba"
+    },
+    "COST_MODEL.json": {
+      "bytes": 12638,
+      "sha256": "b49a9a8334b318556938357920db19f371c57436ad0d1b5454b2ec9b8487da93"
+    },
+    "PROOF_AND_FAILURE_OBLIGATIONS.tsv": {
+      "bytes": 6484,
+      "sha256": "4352f7486a51d1c68a79e2149b7f0981c0b573bf5de7b96d9567c14577b115c0"
+    },
+    "FIRST_CONSUMER_HANDOFF.md": {
+      "bytes": 7922,
+      "sha256": "b795097885809f1a7b6c216a87672a0f532de60a2fa8c0c29d824f32eaffef7a"
+    },
+    "NEW_FRAME_REQUIREMENTS.json": {
+      "bytes": 5264,
+      "sha256": "d13c5453c17945ecc8f4a8de23e786a9199d05d9f993f12c44064f95b85bdca0"
+    }
+  },
+  "commands_executed": [
+    {
+      "command": "pwd && git status --short --branch && git log -1 --format=%H %s",
+      "exit": 0
+    },
+    {
+      "command": "cat S1_FROZEN snapshots and S1_COMMON_FRAME/GROUNDING_DELTA/SOURCE_SNAPSHOTS/RELEASE_REGISTER/FRAME_GUARD",
+      "exit": 0
+    },
+    {
+      "command": "rg/sed over rawlsing_next core source files",
+      "exit": 0
+    },
+    {
+      "command": "python3 compare S1/FRAME.json requirements to ACCEPTED_INSTRUMENT/ANVIL_R7/EVIDENCE/FRAME.json; count 118 identities",
+      "exit": 0
+    },
+    {
+      "command": "git diff --stat b830458c cea2d4d -- core files",
+      "exit": 0
+    },
+    {
+      "command": "git show 31291:rawlsing_next/pre553_source_direct_parquet_estate.py | wc -l",
+      "exit": 0,
+      "observed": "fatal: path exists on disk but not in 31291; confirms 31291 lacks the writer file"
+    },
+    {
+      "command": "git ls-tree cea2d4d -- core files; shasum -a 256 core files",
+      "exit": 0
+    },
+    {
+      "command": "no benchmark, no native execution, no install, no source data read",
+      "exit": 0
+    }
+  ],
+  "resource_uncertainty": {
+    "measured_by_specialist": false,
+    "cited_witness": "3033.723 s; 310.16 MB retained; 5.26 GB staging; 4.39 GB writer temp I02; 1.30 GB session index; 562.362 s selected query; sourcefree/cut-specific",
+    "rss": "No current RSS measurement; 5.26/4.39/1.30 GB are disk; old 5.923/6.468 GB RSS is old path, not current S2-C.",
+    "q2_certificate_size": "not separately reported; do not assume zero",
+    "6gib": "NOT_RUN / no claim",
+    "1_10_100": "NOT_RUN / no claim; structural analysis only",
+    "native_source_science": "HELD"
+  },
+  "return_file_sha256": "SELF_EXCLUDED; see final message for branch HEAD and RETURN.json hash",
+  "no_final_architecture_acceptance": true,
+  "stop_for_hq": true
+}

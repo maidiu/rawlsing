@@ -1,0 +1,118 @@
+{
+  "schema": "ANVIL_QUERY_SOURCE_PINS@1",
+  "role": "QUERY",
+  "author_frame_commit": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+  "author_frame_grade": "AUTHOR_FROZEN_NOT_INDEPENDENTLY_ACCEPTED",
+  "frame_pins": {
+    "path": "/Users/matthewsmith/Desktop/ANVIL_ARCHITECTURE_EXECUTION_20261117/evidence/S1_FROZEN_PINS.json",
+    "sha256": "af7bfbc30503af00263304ebf0fa239c0c030f19b017747f0ee9f5cefc1217f9",
+    "framed_commit": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b"
+  },
+  "frame_files": [
+    {"path": "S1/S1_COMMON_FRAME.md", "sha256": "7716a18354e00b4b17a319503d4293ef17c75b68fee04152b5ce91b3b29cbfe4"},
+    {"path": "S1/FRAME.json", "sha256": "44b17c58e9610b856abe7b95b03cd6b011338b7a7d9d669bbedba206f685a573"},
+    {"path": "S1/GROUNDING_DELTA.md", "sha256": "d5625bd21ceee58846c0f790e559d8b2de82022eaa6ab6df8a82bafaf9512c88"},
+    {"path": "S1/SOURCE_SNAPSHOTS.json", "sha256": "7738ecf22a840c47d9a89c1a13ebc6c9007fee17f0f47dc86314b78d8b8a3ddc"},
+    {"path": "EVIDENCE/SOURCE_IDENTITY_INVENTORY.json", "sha256": "d22dfcf07a9a6a81ac1e3713ac6bfe3a9b0414ecff24a7fec89ccff3b6844f34"},
+    {"path": "EVIDENCE/SOURCE_118/K3_CAP_29.tsv", "sha256": "0dfe6539f1a1f7f028c5968c0e85078cbf5f80a847d0c94ea1929f57d20c052d"},
+    {"path": "EVIDENCE/SOURCE_118/K3_P4R_14.tsv", "sha256": "8adf74cfbf2e916f41641f5836ab82305059b59e1665a2e1647dfb6bdeb0e9d3"},
+    {"path": "EVIDENCE/SOURCE_118/K3_PC_26.tsv", "sha256": "6d0766ecc637ee03a705c1772e7bcda39c09c9534f0672cd36a27cfa85e0dfa2"},
+    {"path": "EVIDENCE/LIVE_GITHUB.json", "sha256": "b762ff80d02ca3ce1a4df26525f91d278bc09dc0220af070365c793ac63ede17"}
+  ],
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "protected_currentness_observed": "31291d08179890852246c8742700e055168e9933",
+  "currentness_register_snapshot": "b830458c3ebfe0a3f0e2d18e516e68b90324c88a",
+  "source_evidence_cut": "7fc00289dd801d2d0a8ce159986c7595fc27a4d9",
+  "code_pins": [
+    {
+      "path": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+      "sha256": "068fc525b6c117fbb3feba52f740f7e764674ff0b2a78f52e5b649b5fafe643a",
+      "symbols": ["VerifiedDirectEstate.__init__", "VerifiedDirectEstate._live", "VerifiedDirectEstate.iter_family", "write_direct_estate"],
+      "role": "cold admission, member hashes, manifest/I02/root/census checks, writer"
+    },
+    {
+      "path": "rawlsing_next/pre553_direct_estate_i03.py",
+      "sha256": "dc54970a1ba5ae945206b82424da05aaee0e5eb4acc166d90efca4c8d8d7871d",
+      "symbols": ["DirectEstateI03Session.__enter__", "DirectEstateI03Session._build", "DirectEstateI03Session._selected_events", "DirectEstateI03Session._respondent_family", "DirectEstateI03Session.indices_for"],
+      "role": "per-session temp SQLite events/members index; body truth; single-universe/release scope"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "sha256": "f6ee1ea3016e58245532989c16b3d4e1ca3e41cb05ea11cf2b03ea56dcb8e926",
+      "symbols": ["execute_empirical_query", "replay_empirical_query", "I03GroupedExecutionScope"],
+      "role": "authoritative I03 evaluator; group-scope refusal for cold session"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+      "symbols": ["_evaluate_index_group", "_evaluate_index_group_core", "_materialize_grouped_evaluation", "_build_fact"],
+      "role": "all-universe respondent loop; fact with risk/denominator member refs"
+    },
+    {
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "sha256": "a9ab765be9c877c7e65c4118a6ae16de4e43ad6361e3b1b00541d76aa37eb29f",
+      "symbols": ["execute_exact_bounded_discovery", "_evaluate_candidate"],
+      "role": "I05 fixed frontier; one execute_empirical_query per candidate role"
+    },
+    {
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "sha256": "9e773e4936b0208d29e3f5a7ef4419f23829b34f9e99946b3c66af4e55b5eb6c",
+      "symbols": ["CarrierNeutralResearchExecutor.execute_i03", "CarrierNeutralResearchExecutor.execute_i05", "CarrierNeutralResearchExecutor.grouped_i03_scope"],
+      "role": "new DirectEstateI03Session per saved I03; grouped saved scope refusal"
+    },
+    {
+      "path": "rawlsing_next/pre553_saved_c11_admission.py",
+      "sha256": "93299f5c0100d132bb2bef07b321af1755726a5e90ee3b488a11dc1b6028c526",
+      "symbols": ["SavedC11Admission.open", "SavedC11Admission.check_current", "SavedC11Admission.execute_i03", "SavedC11Admission.execute_i05"],
+      "role": "admission/current; one-op I03 and fresh-session I05"
+    },
+    {
+      "path": "rawlsing_next/pre553_prepared_saved_i03.py",
+      "sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+      "symbols": ["PreparedI03Session.execute_i03", "PreparedI03Session.execute_i05", "PreparedSavedC11Admission.prepared_i03"],
+      "role": "one session reused across many I03/I05 operations; author candidate"
+    },
+    {
+      "path": "rawlsing_next/pre553_saved_workload_integration.py",
+      "sha256": "5f885a5d34f8363dd474b691aafb4b22c6bff4f886825cccbbb30cf12aa5e07b",
+      "symbols": ["execute_saved_i03", "execute_saved_i05", "execute_saved_batch", "execute_saved_normal", "require_batch_owner_ack", "require_normal_owner_ack", "require_resume_owner_ack"],
+      "role": "Batch/NORMAL/resume adapters and typed owner-ACK refusals"
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "sha256": "2358cd2676133e61b8a36dd59295ef6dc16f2ef840bbc7d9792ebcc3961fdd01",
+      "symbols": ["compose_positioned_subject_possibility", "_selected_fact", "_build_evidence"],
+      "role": "F1-F4 producer query and evidence construction; no second evaluator"
+    }
+  ],
+  "snapshot_pins": {
+    "VerifiedDirectEstate.txt": {"sha256": "3499b5e349c58d5c31a582c313dd1f3779a2bc28d69c35b6e794371bcf984d1d", "source_lines": [605, 700]},
+    "DirectEstateI03Session.txt": {"sha256": "432d251ba68d846e6e743fe3aa0674640b85f0b5fab91b53c5efa9ce2ea74467", "source_lines": [112, 190]},
+    "PreparedI03Session.txt": {"sha256": "252ca634acf669c851d82ce1c1fd1e8b19b6a543dcc878eca88246f684fb6fd8", "source_lines": [37, 110]},
+    "write_direct_estate.txt": {"sha256": "bfeb30234154b00acaf3c7f412c509913bca83c543676eaf147e5fb9741231df", "source_lines": [460, 530]},
+    "SourceSavedBodySink.txt": {"sha256": "2ce8c3af2adbe99e2c33473df313831c2a2f344cfef2d006e74524f26eeb39b1", "source_lines": [1, 20]},
+    "SavedC11Admission.txt": {"sha256": "2155b19e365e164532705e92dac56a1eaba5b5af80d58c10a71c2a4af60d0958", "source_lines": [1, 30]}
+  },
+  "issue_pins": [
+    {"number": 1097, "role": "P0 operating register; cited 100k-shape witness and derived-index non-disposability", "url": "https://github.com/maidiu/rawlsing/issues/1097"},
+    {"number": 1006, "role": "measured physical-cost court; G2 decomposition protocol", "url": "https://github.com/maidiu/rawlsing/issues/1006"},
+    {"number": 998, "role": "joined S01-S05 first consumer; F1-F4/I05 vertical", "url": "https://github.com/maidiu/rawlsing/issues/998"},
+    {"number": 997, "role": "S1-E source-body bridge and saved native first consumer", "url": "https://github.com/maidiu/rawlsing/issues/997"},
+    {"number": 960, "role": "sourcefree S01-S05 priority; 6 GiB and old RSS evidence", "url": "https://github.com/maidiu/rawlsing/issues/960"},
+    {"number": 1108, "role": "documentary preservation; prepared cea2d4d report only", "url": "https://github.com/maidiu/rawlsing/pull/1108"},
+    {"number": 1133, "role": "SEAM reverse-consumer advisory; no architecture choice", "url": "https://github.com/maidiu/rawlsing/pull/1133"}
+  ],
+  "instrument_preparation_pins_readonly": {
+    "accepted_instrument_code": "05e81747",
+    "review": "21d39dfa",
+    "delivery": "f6073d92",
+    "exact_zip": "701207ZIP",
+    "grade": "INSTRUMENT_PREPARATION_ONLY; not native/performance/science/architecture/H1"
+  },
+  "notes": [
+    "PreparedI03Session at cea2d4d is an author candidate, not scoped independent native acceptance.",
+    "The 1.69-1.70x factor is an author report cited in #1108, not a measurement in this return.",
+    "The 562.362 s selected-query figure is cited and undecomposed; no speedup is claimed.",
+    "No source-native/original35 or actor rights are issued by these pins."
+  ]
+}

@@ -1,0 +1,192 @@
+{
+ "schema": "ANVIL_ARCHITECTURE_DISTINCT_C_R2_RECHECK@1",
+ "verdict": "ACCEPT_SCOPED_CONDITIONAL_ARCHITECTURE_DIRECTION",
+ "scope": "SOURCE_GROUNDED_CONDITIONAL_DIRECTION_AND_CORRECTED_DOCUMENTARY_CONTRACT_ONLY",
+ "original_review_commit": "a352626dc05a03072c04954bfae6a42c0ece7dfa",
+ "original_verdict": "REVISE_EXACT_DEFECT",
+ "corrected_target": {
+  "head": "06e88a5ac7e4c14362a97a046f44e25d8eec4162",
+  "tag": "anvil-architecture-candidate-20261117-r2",
+  "tag_object": "3f55b252f325ec38e2a7e0c01bb3b58fbf588ee7",
+  "tag_peels_to": "06e88a5ac7e4c14362a97a046f44e25d8eec4162",
+  "manifest_files": 120,
+  "manifest_hashes_verified": 120,
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "product_unchanged": true,
+  "remote_branch_and_tag_verified": true
+ },
+ "per_defect_disposition": [
+  {
+   "id": "D1",
+   "disposition": "RESOLVED",
+   "evidence": "specialist_dependency.status=BOTH_RETURNS_RECEIVED_AND_ADJUDICATED; historical_plan_only labeled; final_selection_frozen=true; independent stale-PENDING mutation REFUSES."
+  },
+  {
+   "id": "D2",
+   "disposition": "RESOLVED",
+   "evidence": "physical_architecture prepared-session-first/held index; L3 selected-not-wired, L5 conditional, L7 held; sequence conditional/held; 16 effects corrected; independent stale-SC-ESTATE/stale-effect/unconditional selected_design mutations REFUSE."
+  },
+  {
+   "id": "D3",
+   "disposition": "RESOLVED",
+   "evidence": "independent supplement baseline PASS 20/118; empty-v2 mutation REFUSES; accepted base guard remains 16/16; restore PASS."
+  },
+  {
+   "id": "D4",
+   "disposition": "RESOLVED_AT_DOCUMENTARY_GRADE",
+   "evidence": "direct prepared path EXECUTED_SOURCEFREE_DIRECT_PATH_3_OF_34; wrapper/Batch PROPOSED_NOT_WIRED with exact lines 42/54/94 and Batch 406; exact-type whitelist protocol, not generic isinstance; actual implementation owner-gated."
+  },
+  {
+   "id": "D5",
+   "disposition": "RESOLVED",
+   "evidence": "HISTORICAL/SUPERSEDED_BY_FINAL headers; PROVISIONAL_DECISION.selection_status historical; manifest document_roles split."
+  },
+  {
+   "id": "N3",
+   "disposition": "RESOLVED",
+   "evidence": "Q2 must originate from source-derived typed stream, never re-parsed journal; full physical proof and second-certificate fallback unchanged; guard flag true."
+  }
+ ],
+ "independent_checks": [
+  {
+   "id": "R2-W1",
+   "check": "target ref/tag/remote",
+   "result": "06e88.../3f55b... peels 06e88; origin branch/tag exact",
+   "log": "RUNS/refs_target_manifest.txt"
+  },
+  {
+   "id": "R2-W2",
+   "check": "120 manifest hashes",
+   "result": "120/120; 0 missing; 0 bad",
+   "log": "RUNS/refs_target_manifest.txt"
+  },
+  {
+   "id": "R2-W3",
+   "check": "product diff cea2d4d..06e88 rawlsing_next",
+   "result": "empty; product unchanged",
+   "log": "RUNS/refs_target_manifest.txt"
+  },
+  {
+   "id": "R2-W4",
+   "check": "supplement baseline",
+   "result": "PASS_V2_SUPPLEMENTARY_STRUCTURAL_20_REQUIREMENTS_118_IDENTITIES",
+   "log": "RUNS/v2_guard_baseline_independent.txt"
+  },
+  {
+   "id": "R2-W5",
+   "check": "empty v2 addendum",
+   "result": "REFUSE_V2_SUPPLEMENTARY",
+   "log": "RUNS/negative_v2_empty.txt"
+  },
+  {
+   "id": "R2-W6",
+   "check": "stale PENDING dependency",
+   "result": "REFUSE_V2_SUPPLEMENTARY",
+   "log": "RUNS/negative_stale_pending.txt"
+  },
+  {
+   "id": "R2-W7",
+   "check": "stale SC-ESTATE name",
+   "result": "REFUSE_V2_SUPPLEMENTARY",
+   "log": "RUNS/negative_stale_sc_estate.txt"
+  },
+  {
+   "id": "R2-W8",
+   "check": "stale SC-ESTATE effect",
+   "result": "REFUSE_V2_SUPPLEMENTARY",
+   "log": "RUNS/negative_stale_effect.txt"
+  },
+  {
+   "id": "R2-W9",
+   "check": "unconditional selected_design durable index",
+   "result": "REFUSE_V2_SUPPLEMENTARY",
+   "log": "RUNS/negative_selected_index.txt"
+  },
+  {
+   "id": "R2-W10",
+   "check": "unconditional selected_design one-certificate",
+   "result": "REFUSE_V2_SUPPLEMENTARY",
+   "log": "RUNS/negative_selected_onecert.txt"
+  },
+  {
+   "id": "R2-W11",
+   "check": "exact restore after negatives",
+   "result": "PASS 20/118",
+   "log": "RUNS/v2_guard_restore_independent.txt"
+  },
+  {
+   "id": "R2-W12",
+   "check": "34 focused tests",
+   "result": "NOT_RERUN: product source unchanged from cea2d4d; R1 34-pass evidence retained separately",
+   "log": "RETURN.md"
+  }
+ ],
+ "residual_nonblocking_findings": [
+  {
+   "id": "R2-N1",
+   "finding": "Sequence-status-only mutation passes the supplement guard when action text says 'Durable locator index only if...' or 'One source-derived Q2 certificate only with...', because the guard checks literal 'durable index'/'one i02'/'one-certificate'. Authoritative selected_design fields and actual statuses are correct.",
+   "disposition": "Tighten guard normalization and add two negative cases; not a false claim in the corrected decision."
+  },
+  {
+   "id": "R2-N2",
+   "finding": "RETURN/FINAL_ARCHITECTURE top lines still quote base 16/16; authoritative 20/20 supplement is in D1_D5_CORRECTION_MAP, GUARDS/v2_supplementary_guard.py and RUNS/v2_guard_baseline.txt.",
+   "disposition": "Update top-line to 'base 16/16 + v2 supplement 20/20' in a future editorial pass; no substantive false claim."
+  },
+  {
+   "id": "R2-N3",
+   "finding": "FINAL_DECISION.selection_status still reads FINAL_CANDIDATE_FROZEN_PENDING_DISTINCT_C while RETURN says corrected pending same C; both mean pending this C, not accepted.",
+   "disposition": "Editorial alignment only."
+  }
+ ],
+ "scoped_acceptance_conditions": [
+  "Acceptance is only of the source-grounded conditional architecture direction and corrected documentary contract.",
+  "Base 16/118 plus v2 4 = 20/118; D1/D2 coherence; D4 wrapper/Batch remains PROPOSED_NOT_WIRED, not implemented.",
+  "Q2 must be source-derived; full physical proof and second-certificate fallback remain mandatory.",
+  "D5 historical separation remains; no live provisional status.",
+  "No native/100k/6 GiB, original35/source/science/actor, protected adoption or H1 is accepted."
+ ],
+ "remaining_owner_obligations": [
+  {
+   "owner": "S2-D saved admission + BatchExecutionRunner owners",
+   "obligation": "exact prepared-session-aware wrapper/Batch adapter; one _build/four operations/current/revocation/restore; exact PreparedSavedC11Admission whitelist, no generic isinstance; owner ACK"
+  },
+  {
+   "owner": "S2-C/D physical writer owner",
+   "obligation": "one-journal/one-certificate only after source-derived Q2 full physical proof; recovery claim/lease crash-injection witness; second-certificate fallback"
+  },
+  {
+   "owner": "#1006 measured-cost owner + S04/I03",
+   "obligation": "H/S/Q/O measurement on one authorized real-width workload; 1/10/100 same-process and 10 fresh-process"
+  },
+  {
+   "owner": "durable-index owner gate",
+   "obligation": "only if S material and compact exact encoding passes binding/invalidation/retained-size gates"
+  },
+  {
+   "owner": "guard owner",
+   "obligation": "tighten the two sequence-status literal checks and top-line 20/20 hierarchy"
+  },
+  {
+   "owner": "competent H1/protected owner",
+   "obligation": "only after scoped C acceptance and competent receiving"
+  }
+ ],
+ "smallest_first_consumer_handoff": "Owner-approved prepared-session-aware execute_saved_batch or prepared-mode BatchExecutionRunner: one PreparedI03Session per exact release/universe/workload; exact PreparedSavedC11Admission whitelist; per-unit check_current; selected/F2/F4/raw exact fact parity; one _build; revocation/changed-root refusal; exact restore. Not authorized or claimed here.",
+ "not_claimed": [
+  "implementation/product Batch patch",
+  "native/original35/source/science/actor rights",
+  "100k/6 GiB/1-10-100",
+  "protected adoption or H1",
+  "semantic truth of authored narratives",
+  "full source recensus"
+ ],
+ "limits": [
+  "source lineage sampled from R1; no exhaustive 141-row/source recensus",
+  "no 34-test rerun because product source unchanged",
+  "no native/100k/crash-injection",
+  "no instrument or external reviewer authentication",
+  "supplement guard sequence-status residual disclosed"
+ ],
+ "return_sha": "FINAL_R2_COMMIT_ON_REVIEW_BRANCH_SEE_GIT",
+ "payload_manifest": "PACKAGE_MANIFEST.json (self-excluded)"
+}

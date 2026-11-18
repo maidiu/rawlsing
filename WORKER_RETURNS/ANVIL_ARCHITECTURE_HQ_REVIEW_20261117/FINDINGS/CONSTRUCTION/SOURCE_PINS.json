@@ -1,0 +1,207 @@
+{
+  "schema": "ANVIL_ARCH_CONSTRUCTION_SOURCE_PINS@1",
+  "role": "CONSTRUCTION",
+  "grade": "AUTHOR_FROZEN_INPUTS_READ; SOURCEFREE_CODE_TRACE; NO_NATIVE_OR_PROTECTED_ACCEPTANCE",
+  "author_frame_sha": "5a619ff9fa79be9183eb4d4378d42f040ef2bd9b",
+  "s1_frozen_pins": {
+    "path": "/Users/matthewsmith/Desktop/ANVIL_ARCHITECTURE_EXECUTION_20261117/evidence/S1_FROZEN_PINS.json",
+    "grade": "AUTHOR_FROZEN_NOT_INDEPENDENTLY_ACCEPTED",
+    "files_used": [
+      {
+        "path": "S1/S1_COMMON_FRAME.md",
+        "sha256": "7716a18354e00b4b17a319503d4293ef17c75b68fee04152b5ce91b3b29cbfe4"
+      },
+      {
+        "path": "S1/FRAME.json",
+        "sha256": "44b17c58e9610b856abe7b95b03cd6b011338b7a7d9d669bbedba206f685a573",
+        "requirements": 16,
+        "identity_inventory_total": 118
+      },
+      {
+        "path": "S1/GROUNDING_DELTA.md",
+        "sha256": "d5625bd21ceee58846c0f790e559d8b2de82022eaa6ab6df8a82bafaf9512c88"
+      },
+      {
+        "path": "EVIDENCE/FRAME.json",
+        "sha256": "568c28f02e0166f9ed66e4e5a1814f65efd39858c45b1705b99d14badb60dedb"
+      },
+      {
+        "path": "EVIDENCE/SOURCE_IDENTITY_INVENTORY.json",
+        "sha256": "d22dfcf07a9a6a81ac1e3713ac6bfe3a9b0414ecff24a7fec89ccff3b6844f34",
+        "counts": {
+          "K1_CAP": 29,
+          "PYAT_PC": 26,
+          "P4R": 14,
+          "SEAM_B": 10,
+          "SEAM_S": 8,
+          "ANVIL_L": 8,
+          "BOUNDARY": 7,
+          "TERMINAL": 16,
+          "total": 118
+        },
+        "statuses_preserved": "26 PYAT_PC NOT_ADOPTED; 14 P4R HELD; 52/24/21 separate; no promotion"
+      },
+      {
+        "path": "EVIDENCE/RELEASE_REGISTER.json",
+        "sha256": "1f75ab32f07058f7bdc5cd142c7d8b4db52f8fe705528a8fec437e2d31b05683",
+        "current_original_supplied_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332"
+      },
+      {
+        "path": "EVIDENCE/BOUNDARY_CONTRACTS.json",
+        "sha256": "3a6d829da01f0ce4122b27d891b1a6147f2361ae5041ca91d4558ecefca42e67",
+        "boundaries": 7
+      }
+    ]
+  },
+  "currentness": {
+    "protected_head": "31291d08179890852246c8742700e055168e9933",
+    "protected_progress_revision": 10,
+    "protected_evidence_root": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/protected",
+    "live_issue_refs": ["909", "960", "997", "998", "1006", "1009", "1011", "1097", "1108", "1133"],
+    "live_github_snapshot": "/Users/matthewsmith/Desktop/ANVIL_ARCHITECTURE_EXECUTION_20261117/evidence/LIVE_GITHUB.json",
+    "launch_basis": {
+      "path": "/Users/matthewsmith/Desktop/ANVIL_ARCHITECTURE_EXECUTION_20261117/evidence/LAUNCH_BASIS.json",
+      "user_authorization": "campaign begin after preparation; no native/science/actor/protected rights",
+      "recurring_auto_wake": false
+    },
+    "note": "Read as currentness evidence only; no HQ accreditation, no protected write, no issue adoption."
+  },
+  "actual_code_cuts": {
+    "startup_and_product": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+    "register_snapshot": "b830458c3ebfe0a3f0e2d18e516e68b90324c88a",
+    "protected_head": "31291d08179890852246c8742700e055168e9933",
+    "observations": [
+      "pre553_source_direct_parquet_estate.py is present at b830458c and cea2d4d and byte-identical between them.",
+      "cea2d4d adds pre553_prepared_saved_i03.py (180 lines) relative to b830458c; core writer/reader/bridge/I02 files are unchanged.",
+      "protected 31291d0 does not contain rawlsing_next/pre553_source_direct_parquet_estate.py; 31291 is documentary/OATH currentness, not the physical writer cut.",
+      "PreparedI03Session at cea2d4d is an author candidate, not independent native acceptance."
+    ]
+  },
+  "code_files_readonly": [
+    {
+      "path": "rawlsing_next/pre553_source_i02_handoff.py",
+      "git_blob_cea2d4d": "31d99b70b9e726ecd1b2413aa68d642df4dc8151",
+      "sha256": "801ff41640bf9d7f06f9256ac002d09b8ea1da2834aea4c7495c41dc3e682fae",
+      "symbols": ["build_source_i02_handoff", "SourceI02Stats", "SourceI02Handoff", "_verify_census_before_source", "_project_spooled_families", "_manifest_and_sections", "open_direct_native_i03"]
+    },
+    {
+      "path": "rawlsing_next/pre553_source_i02_streams.py",
+      "git_blob_cea2d4d": "9547fe3d5972005c3bb96cb91083c39743cb2d0c",
+      "sha256": "33d824d8415d9690e47bbee57ec1df2e9dfc2254f8ba692eb1a9b1756d0a47bb",
+      "symbols": ["SourceI02BodyTee", "SourceI02BodySink", "ALL_FAMILIES"]
+    },
+    {
+      "path": "rawlsing_next/pre553_source_saved_body_bridge.py",
+      "git_blob_cea2d4d": "eddaa9a57eec4e44ce5d0ee5c223facae8d5775d",
+      "sha256": "aaee27b6603f6b61b5e9a0fb99352311b52c88f5070f0bdc16e0e3744e3a3510",
+      "symbols": ["SourceSavedBodySink", "begin", "emit", "absence", "_rows", "_replay_from_certificate", "finish", "abort", "_discard"]
+    },
+    {
+      "path": "rawlsing_next/_pre553_direct_i02_sourcefree.py",
+      "git_blob_cea2d4d": "451727511af7f727b082c518aae2f4a3dbe2ba3a",
+      "sha256": "b70e9a49b5d0a2445ed76053b04579fa0cbede2717286c7708dfb6f18ff016d2",
+      "symbols": ["SourcefreeDirectI02Sections", "_build_sourcefree_direct_i02_impl", "build_sourcefree_direct_i02", "_FAMILIES"]
+    },
+    {
+      "path": "rawlsing_next/_pre553_external_i02_certificate.py",
+      "git_blob_cea2d4d": "2af16c6d9097333570a3417519995bd8dc7fcaa0",
+      "sha256": "33afde41071d9a62d5921cd56c4a9b0c48e59692e4a55d33b48773ca1c652c08",
+      "symbols": ["ExternalI02Roots", "_schema", "_insert_object", "_check_relations", "_logical_root", "VerifiedExternalI02"]
+    },
+    {
+      "path": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+      "git_blob_cea2d4d": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+      "sha256": "068fc525b6c117fbb3feba52f740f7e764674ff0b2a78f52e5b649b5fafe643a",
+      "symbols": ["write_direct_estate", "_Sink", "_IndexSink", "_verify_emitted_physical_payloads", "EstateReceipt", "VerifiedDirectEstate", "iter_family", "_locators", "select_events", "_events_from_postings"]
+    },
+    {
+      "path": "rawlsing_next/pre553_direct_estate_i03.py",
+      "git_blob_cea2d4d": "8825832f8067c7fce7a99a94505743cbb4eada06",
+      "sha256": "dc54970a1ba5ae945206b82424da05aaee0e5eb4acc166d90efca4c8d8d7871d",
+      "symbols": ["DirectEstateI03Session", "__enter__", "_build", "_validate_event_body_truth", "_selected_events", "_respondent_family", "indices_for"]
+    },
+    {
+      "path": "rawlsing_next/pre553_prepared_saved_i03.py",
+      "git_blob_cea2d4d": "bcb146edae680028e027e47cae45891693f63526",
+      "sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+      "symbols": ["PreparedI03Session", "execute_i03", "execute_i05", "PreparedSavedC11Admission", "prepared_i03"]
+    },
+    {
+      "path": "rawlsing_next/pre553_saved_c11_admission.py",
+      "git_blob_cea2d4d": "22749addc1fca5f0b90e12728847c390aafa7a84",
+      "sha256": "93299f5c0100d132bb2bef07b321af1755726a5e90ee3b488a11dc1b6028c526",
+      "symbols": ["SavedC11Admission", "open", "check_current", "_require_query_scope", "_require_predicate_scope", "SavedBindingReceipt"]
+    },
+    {
+      "path": "rawlsing_next/pre553_parquet_carrier.py",
+      "git_blob_cea2d4d": "9dad6713a3aae66717d4ab046e802a72c9b2aa90",
+      "sha256": "9aed001cb51d8fedf897e656ac4304f5e641c9ff026258c25f5e0660443293ec",
+      "symbols": ["_object_row", "_object_from_row", "verify_semantic_release_root"]
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "git_blob_cea2d4d": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "symbols": ["CanonicalSemanticObject", "EmpiricalUniverse", "RespondentEvent", "EmpiricalCoordinateFact", "RoutingEligibilityFact", "WeightMeasureFact", "AuthoritySnapshot", "SourceUniverseRelation"]
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_integrity.py",
+      "git_blob_cea2d4d": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33",
+      "symbols": ["RespondentIdentity", "QuestionVariableBinding", "EmpiricalPredicateReplayBinding", "ComparatorReplayBinding", "DiscoveryBranchReplayBinding", "StructuralAdmissionReplayBinding", "ReplayManifest"]
+    }
+  ],
+  "instrument_preparation_only": {
+    "accepted_instrument_code": "05e81747fb2e5cca042c0d968ba1ae203182556e",
+    "exact_zip_sha256": "701207ec43eb1975e66f6dc324da7a9c786a84800d0ae16e9e2e4526d62daad9",
+    "distinct_preparation_review": "21d39dfa5d5ca95a64251494ff9d4c0f961d4a43",
+    "hq_delivery_receipt": "f6073d923a3e01caf4c1af54599797f04338d54f",
+    "grade": "INSTRUMENT_PREPARATION_ONLY; NOT_NATIVE/PERFORMANCE/SCIENCE/ARCHITECTURE/H1",
+    "verified": "16 S1 requirement objects are byte-identical to the accepted instrument FRAME; 118 counts match; instrument acceptance does not equal current code/science acceptance."
+  },
+  "source_bank_and_original": {
+    "source_bank_sha": "8523007613d411390a76683fa464002c0f25df83",
+    "source_bank_root": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/fleet_bank",
+    "source_bank_grade": "READ_ONLY_REFERENCE; TWO_HASH_MISMATCHES_REFERENCE_ONLY",
+    "original_upload_zip_sha256": "526d835d64a98c886a8cbb159fb39f06af7c287ebe1029a93fbbfc9131072332",
+    "original_upload_zip_grade": "EXACT_SOURCE_BYTE_AUTHORITY",
+    "prior_returns": {
+      "custody": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/INTEGRATION_INPUT_CUSTODY.json",
+      "browser_custody": "/Users/matthewsmith/Desktop/ANVIL_RABOCHII_EXECUTION_20261117/evidence/BROWSER_RETURN_CUSTODY.json",
+      "D1A": "12947dd4ac25c91c005de03331688e5c75505fbb",
+      "D1B": "e8ac8017f6d2d28118408dcf9ca704d09b513027",
+      "D2A": "D2A_ANVIL_RETURN_R2 (Browser custody; source-specific crosswalks/graphs/52-24-21)",
+      "D2B": "D2B_ANVIL_RETURN (Browser custody; source-specific crosswalks/graphs/52-24-21)",
+      "D3A": "baa5516f4281f3bab33accddc9360a41dacd559f",
+      "D4A": "acbe16f7b069c3f07ca0e6779e46b790f08ed401",
+      "grade": "IMMUTABLE_PRIOR_EVIDENCE; NOT_ARCHITECTURE_ACCEPTANCE"
+    }
+  },
+  "measured_cost_citations": {
+    "source": "#1097 current body, sourcefree 100k-shape, cut-specific; #1006 measured physical court; not production/native acceptance",
+    "writer_seconds": 3033.723,
+    "retained_bytes": 310160000,
+    "staging_bytes": 5260000000,
+    "writer_temporary_i02_bytes": 4390000000,
+    "native_session_index_bytes": 1300000000,
+    "pre_w05_selected_query_seconds": 562.362,
+    "prepared_session_distinct_operation_factor": "1.69-1.70x author report; no independent G5",
+    "events_per_respondent_canary": 3.245,
+    "old_100k_200k_event_seconds": 777.5,
+    "old_100k_200k_persistence_seconds": 292.5,
+    "old_100k_200k_first_consumer_seconds": 124.5,
+    "old_100k_200k_persistence_rss_bytes": 5923426304,
+    "old_100k_saved_artifact_peak_rss_bytes": 6468513792,
+    "grade": "CITED_EXTERNAL_MEASUREMENTS; NOT_RUN_BY_THIS_SPECIALIST"
+  },
+  "readonly_scope": {
+    "write_root": "WORKER_RETURNS/ANVIL_ARCHITECTURE_SPECIALISTS_20261117/CONSTRUCTION/",
+    "branch": "agent/anvil-architecture-construction-20261117-r1",
+    "shared_git": "/Users/matthewsmith/s2b-work/rawlsing",
+    "no_product_edits": true,
+    "no_source_data_access": true,
+    "no_native_or_heavy_benchmark": true,
+    "no_subagents": true,
+    "no_model_or_provider_switch": true
+  }
+}
