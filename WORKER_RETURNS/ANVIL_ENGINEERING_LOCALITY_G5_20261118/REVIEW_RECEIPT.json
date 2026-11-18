@@ -1,0 +1,136 @@
+{
+  "schema": "ANVIL_ENGINEERING_LOCALITY_G5_REVIEW_RECEIPT@1.0.0",
+  "job": "INDEPENDENT ACTUAL PRODUCTION LOCALITY G5",
+  "reviewer": {
+    "role": "EXISTING_INDEPENDENT_NATIVE_S1E_R6_REVIEWER",
+    "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "author_of_product_change": false,
+    "subagents": false
+  },
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/OWNER",
+  "branch": "agent/anvil-engineering-cut1-owner-20261117-r1",
+  "frozen_product_archive": "60e767a53ecdffaae289a11fc5ce6c40e5c4ecd0",
+  "product_baseline": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "baseline_product_blob": "8825832f8067c7fce7a99a94505743cbb4eada06",
+  "current_product_blob": "d662fc578a1ecb42d54ec8b4bdab87fd7ecec176",
+  "current_product_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+  "new_test_blob": "7373c1704e21bcb4155eb690b17de5ecd8bf22dc",
+  "new_test_sha256": "f763231c92976871fa93e12300d8162bf14125f38b05f782c83e4d4d460b04dc",
+  "product_scope": "rawlsing_next/pre553_direct_estate_i03.py::DirectEstateI03Session._respondent_family only",
+  "only_authorized_product_file_changed": true,
+  "numerical_writer_schema_issuer_changes": false,
+  "sealed_estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+  "runtime": {
+    "python": "3.11.3",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "installs_or_vm_changes": false
+  },
+  "snapshot_execution": {
+    "method": "git archive 60e767a53ecdffaae289a11fc5ce6c40e5c4ecd0 rawlsing_next into own return tmp/snapshot",
+    "snapshot_product_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+    "snapshot_new_test_sha256": "f763231c92976871fa93e12300d8162bf14125f38b05f782c83e4d4d460b04dc",
+    "old_owner_baseline_executed": false
+  },
+  "courts": [
+    {
+      "name": "focused production locality + native/body/parquet/prepared suite",
+      "command": "pytest -q test_anvil_production_locality_20261118.py test_pre553_direct_estate_i03.py test_pre553_source_direct_parquet_estate.py test_pre553_prepared_saved_i03.py",
+      "exit_code": 0,
+      "result": "36 passed in 8.61s",
+      "evidence": "focused-36.txt"
+    },
+    {
+      "name": "native empirical + prepared Batch suite",
+      "command": "pytest -q test_pre553_empirical_query.py test_anvil_prepared_saved_batch_cut1.py",
+      "exit_code": 0,
+      "result": "37 passed in 6.13s",
+      "evidence": "native-batch-37.txt"
+    },
+    {
+      "name": "actual production revocation-after-yield + canonical 600 order",
+      "command": "python3 -B witness_revocation_order.py",
+      "exit_code": 0,
+      "result": "R4 old adapter bypassed; actual production second yield refused DirectEstateError current source/operation authority refused; canonical 600 refs sorted; restored",
+      "evidence": "revocation-order.json; revocation-order.out"
+    },
+    {
+      "name": "sealed R2 actual production f4 parity and 50 reads",
+      "command": "python3 -B supervise_qualification.py",
+      "exit_code": 0,
+      "result": "actual production f4 2.654351s unprofiled; 50 row-group reads; 9600 family objects; 32 common payload fields exact including fact/semantic/risk/denominator/member/ref/replay",
+      "evidence": "qualification.json; supervision.json; samples.json"
+    },
+    {
+      "name": "corrupted later row eager typed refusal",
+      "command": "python3 -B witness_later_row_eager.py",
+      "exit_code": 0,
+      "result": "later RoutingEligibilityFact ref corrupted; first next(gen) raised DirectEstateError body/index identity mismatch before 0 yields; 600 row respondent scope vs 9600 family total",
+      "evidence": "later-row-eager.json"
+    }
+  ],
+  "actual_f4": {
+    "label": "f4_three_raw",
+    "operation_wall_seconds_unprofiled": 2.6543513549258932,
+    "not_comparable_to_profiled_18_296_or_7_583": true,
+    "row_group_reads": 50,
+    "row_group_rows": 25472,
+    "family_object_materializations": 9600,
+    "family_calls": 16,
+    "event_object_materializations": 37,
+    "session_builds": 0,
+    "read_table_calls": 0,
+    "parity_exact": true,
+    "parity_common_fields_compared": 32,
+    "parity_mismatches": [],
+    "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94|ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94",
+    "replay_sha256": "9708fccb9c0a32491a29c32025a53ab555e6b43624b77499c475a793ab92d30d",
+    "semantic_sha256": "63b822858d59f282faf5833136559689418d45616f87c0122ac899aa295c3a9d",
+    "identity_sha256": "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+    "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+    "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+    "denominator_member_refs_sha256": "5a5be8964f8874c00ed73df1045aebe6b436ab2657e7829ad37a09304c911088",
+    "raw_denominator_support": [5],
+    "typed_states": ["SUPPORTED"]
+  },
+  "resource": {
+    "external_wall_seconds": 6.539264310966246,
+    "process_tree_rss_peak_sampled_bytes": 131907584,
+    "scratch_peak_sampled_bytes": 30368896,
+    "caps": {"wall_seconds": 120.0, "rss_bytes": 2147483648, "scratch_bytes": 2147483648},
+    "aborted": null,
+    "child_exit": 0,
+    "sampling_seconds": 0.25
+  },
+  "gates": {
+    "G1": {"state": "PASS", "receipt": "Exact frozen archive, one authorized product symbol, baseline/current blobs, new test, sealed estate/contract pins verified; no other product/numerical/writer/schema/issuer change."},
+    "G2": {"state": "PASS", "receipt": "Actual production f4 on sealed R2 estate exact parity across 32 common fields, 50 reads; changed-source/restore existing suite passes; canonical 600 order; true production revocation after first yield."},
+    "G3": {"state": "PASS", "receipt": "36/37 existing suites pass; body/ref/locator/routing/repeated/UNKNOWN-zero negatives retained; later-row corruption typed refusal before first yield; no eager false positive or whole-estate buffer."},
+    "G4": {"state": "PASS_SCOPED_SMALL", "receipt": "One bounded actual f4, 50 reads, 131,907,584 B sampled RSS, 30,368,896 B scratch, 6.54s external; caps 120s/2GiB/2GiB; no 100k/full matrix."},
+    "G5": {"state": "PASS_SCOPED_PRODUCTION_LOCALITY_CORRECTION", "receipt": "Independent reviewer accepts the exact sourcefree production locality correction at its stated scoped grade. No reproducible consequential defect found."}
+  },
+  "decision": "ACCEPT_SCOPED_PRODUCTION_LOCALITY_CORRECTION",
+  "accepted_scoped": true,
+  "production_service_science_actor_current_protected": false,
+  "original35": "HOLD",
+  "full_100k": "NOT_RUN",
+  "postconsumer_g5": "SEPARATE_NOT_TOUCHED",
+  "integration": "UNMERGED",
+  "limits": [
+    "Sourcefree engineering only; no production service/science/actor/CURRENT/protected promotion.",
+    "2.654s unprofiled actual production is not compared with profiled 18.296/7.583s.",
+    "Per-respondent/family buffer is bounded at 600 routing facts in this witness; eager malformed-later-row refusal is documented and independently exercised.",
+    "No full-scale/100k, full native matrix, original35 or Batch pair rebuild.",
+    "Only exact authorized production symbol and focused test; no other product file change.",
+    "Separate postconsumer G5 and combined integration are untouched."
+  ],
+  "custody": {
+    "writes": "WORKER_RETURNS/ANVIL_ENGINEERING_LOCALITY_G5_20261118/ only; snapshot tmp uncommitted",
+    "product_or_test_edits": false,
+    "background_jobs_left": false
+  }
+}
