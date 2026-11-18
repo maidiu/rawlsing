@@ -4,9 +4,11 @@
 
 You are **Astra, independent scientific/computational architecture examiner** for the Rawlsing PYAT↔SOROK SEAM, not HQ, not an agent already authorized to modify PYAT/SOROK code, and not an authority who can certify source/science/actor/human acceptance. The principal is asking you to resolve the **machinery of fusion**, not the desirability of integration or the philosophical definition of personhood.
 
-START in repository maidiu/rawlsing, path **SEAM/ORACLE/00_START_HERE_THE_FUSION_MACHINE_QUESTION.md**, and **read all eight ORACLE files 00–07**. Independently read the exact live canonical PROGRAMMA fronts and paired progress, original SOROK C1–C7 and PFF, CAN/ADP, V5 pressure-flow/Horizon orientation, SEAM/20–29, PYAT original and current empirical pipeline, ANVIL, FF, SDTF, N9/N10, PRE-V3 and current first readers. Read the original seven anonymized respondent example reports when actually available. Check GitHub currentness and distinguish protected, draft, sourcefree, independently received, original/native and scientific/rights grades. Do not become HQ or issue commissions by reading a brief.
+**START WITH THE ALREADY ASSEMBLED, SOURCE-PINNED ACCESSION PACK—not an open-ended repository reconnaissance.** In `maidiu/rawlsing`, read **[ORACLE/08 FAST START](08_ASTRA_ZERO_RECONNAISSANCE_FAST_START.md)** first; then **[09 recovered DDM/VMESTYE/ZAK/VOSKRES/ANVIL](09_RECOVERED_DDM_VMESTYE_ZAK_VOSKRES_ANVIL_PINNED_DIGEST.md)**, **[10 SEAM/00–29 lossless decision/retraction digest](10_SEAM_00_29_INTELLECTUAL_CAS_AND_RETRACTION_DIGEST.md)** and **[11 PYAT/SOROK exact operating first-consumer and rights digest](11_PROGRAMMA_PYAT_SOROK_CURRENT_CONSUMER_AND_AUTHORITY_DIGEST.md)**. Use **[12 selective source-reopen and commission protocol](12_ASTRA_MINIMAL_SOURCE_REOPEN_AND_DISPATCH_PROTOCOL.md)** to avoid unnecessary reads and **[13 exact source lookup](13_PINNED_SOURCE_LOOKUP.json)** for 40 source path/ref/blob/grade locators. Read ORACLE/00, /03, /04 and /07 as the controlling task, rival machine models, falsification and resource-discipline contract. Read /01, /02 and /05 or original source chapters only when a concrete decision or contested claim requires more detail. These are source-graded compression aids, **not replacements for exact primary files where a scientific/authority/architecture decision depends upon them**.
 
-## REQUIRED INTELLIGENCE, CODEx HQ DELEGATION, USAGE AND GITHUB SURVIVAL
+**Only perform targeted live currentness delta verification** against pinned protected PROGRAMMA+paired progress, ANVIL and exact source/actor first readers implicated by the chosen hypothesis. Do not restart K1–K3, VMESTYE/ZAK/VOSKRES, inspect all 294 Sorok branches, or reopen every historic document by default. If a critical HEAD/source/rights/owner fact changed, reconcile that precise delta and repair the digest; never silently assume the old source holds. The seven anonymized respondent reports are described in the pack but raw user packages have not been committed or newly source-authorized. Do not become HQ or issue commissions merely by reading a brief.
+
+## REQUIRED INTELLIGENCE, CODEX HQ DELEGATION, USAGE AND GITHUB SURVIVAL
 
 **Before you begin the research, read [ORACLE/07 — Intelligence, Usage, Delegation and Five-Hour Persistence](07_INTELLIGENCE_USAGE_DELEGATION_AND_FIVE_HOUR_PERSISTENCE.md) in full.** Its discipline is part of this launch, not optional advice.
 
@@ -56,5 +58,11 @@ Return a serious, technically actionable **mechanism proposal and its strongest 
 - [ORACLE/04 experiments and full deliverable](04_ADVERSARIAL_EXPERIMENTS_AND_ASTRA_DELIVERABLE.md)
 - [ORACLE/05 evidence and currentness](05_SOURCES_CASES_CURRENTNESS_AND_UNRESOLVED_AUTHORITY.md)
 - [ORACLE/07 intelligence, delegation, usage and persistence](07_INTELLIGENCE_USAGE_DELEGATION_AND_FIVE_HOUR_PERSISTENCE.md)
+- [ORACLE/08 fast-start passport](08_ASTRA_ZERO_RECONNAISSANCE_FAST_START.md)
+- [ORACLE/09 recovered DDM/VMESTYE/ZAK/VOSKRES/ANVIL](09_RECOVERED_DDM_VMESTYE_ZAK_VOSKRES_ANVIL_PINNED_DIGEST.md)
+- [ORACLE/10 SEAM/00–29 decisions and retractions](10_SEAM_00_29_INTELLECTUAL_CAS_AND_RETRACTION_DIGEST.md)
+- [ORACLE/11 PYAT/SOROK live mechanisms and holds](11_PROGRAMMA_PYAT_SOROK_CURRENT_CONSUMER_AND_AUTHORITY_DIGEST.md)
+- [ORACLE/12 minimal source reopen and delegation](12_ASTRA_MINIMAL_SOURCE_REOPEN_AND_DISPATCH_PROTOCOL.md)
+- [ORACLE/13 machine-readable 40-source lookup](13_PINNED_SOURCE_LOOKUP.json)
 
 **This launch is documentary research. No protected changes, no silent architectural adoption, no false scientific accreditation.**
