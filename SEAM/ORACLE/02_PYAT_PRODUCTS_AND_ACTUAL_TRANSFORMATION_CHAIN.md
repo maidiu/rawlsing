@@ -2,7 +2,9 @@
 
 **Claim grade:** research crosswalk based on source-checked existing documents and protected progress, not a witnessed complete runtime integration. Names and issue numbers below refer to incumbent owners; they are NOT a mandate to duplicate implementations or start a new parallel PYAT pipeline.
 
-**Post-UM-SOROK correction:** source/actor first-reader executable code at two different cuts, plus ANVIL R3 independently reviewed design with protected receiving still held, are source-pinned in [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md). A source-backed possibility-provider call is not the same thing as a formed psyche. `FF01-2` is a **narrow two-participant count** for fixed Q86B→Q86A, not a general reverse/k conditional distribution; `FF01-k`/external original-language/PSU/variance artifact access remain proposed/held. Full necessary coupling must also meet **two-axis mechanical versus scientific tests** and holdout noncircularity in [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md).\n\n## 1. The upstream object is not 'a pile of opinions'
+**Post-UM-SOROK correction:** source/actor first-reader executable code at two different cuts, plus ANVIL R3 independently reviewed design with protected receiving still held, are source-pinned in [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md). A source-backed possibility-provider call is not the same thing as a formed psyche. `FF01-2` is a **narrow two-participant count** for fixed Q86B→Q86A, not a general reverse/k conditional distribution; `FF01-k`/external original-language/PSU/variance artifact access remain proposed/held. Full necessary coupling must also meet **two-axis mechanical versus scientific tests** and holdout noncircularity in [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md).
+
+## 1. The upstream object is not 'a pile of opinions'
 
 PYAT's proper contribution is a **source- and use-authorized historical population/structural field**, not a latent adult personality distribution. Its strengths and irreplaceable functions must survive the handoff:
 
