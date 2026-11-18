@@ -1,5 +1,8 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+> **ONE-PLAN S05 CLAIM-SPECIFIC STATUS — AUTHOR CANDIDATE:** M1/M2/B5 learned-family adjudication and publication remains a selected route for claims that actually require it, NOT an obligatory serial bridge for every S04 observed RAW conditional or k>=3 respondent joint. Preserve exact source/semantic/negative/currentness and role certification where warranted; missing historical V551J interpretation must never erase independently lawful observed co-travel. See the [single PROGRAMMA execution agenda](../REMAINING_REAL_PYAT_WORK.md). No new science or mandatory edge.
+
+
 ## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S05 exact science-to-product work (candidate; not accepted)
 
 **Mandatory product question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? Source of complete obligations: [27-row PROGRAMMA agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). This section remains governed by its native existing ROADMAP/GAP/IF/AND identities and competent source/science/actor owner; alias visibility does not mint a new obligation grade. Future commission writing must freeze evidence, source IDs, first reader and negative checks under MCR-C.
