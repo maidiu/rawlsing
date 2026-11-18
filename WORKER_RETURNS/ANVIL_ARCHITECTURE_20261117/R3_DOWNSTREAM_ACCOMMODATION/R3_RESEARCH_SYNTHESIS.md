@@ -295,3 +295,8 @@ The same C found contract-level, not architectural, residuals. Corrected:
 
 The ledger now has 32 entries: original 22 preserved, 023–027 prior corrections,
 028–032 residual corrections. No new body/database/science/actor grant.
+
+
+## 9. FF01-REVERSE cardinality correction
+
+R3-RES-032 is partially superseded by R3-RES-033: FF01-k role cardinality is direction-specific. FORWARD has D>=1 conditioner and ordered Y1..Yk k>=2 target; REVERSE has ordered Y1..Yk k>=2 conditioner and D>=1 target. A single-D reverse is valid; empty role lists or wrong order refuse. FF01-2 fixed Q86B->Q86A two-target count/no-ratio is unchanged. [R3-RES-033]

@@ -36,3 +36,8 @@ wholesale rewrite.
 
 The prior G3 linkage and G5 F6 external-input limits remain resolved; this
 section does not reopen them.
+
+
+## Final G1-REVERSE correction
+
+C `b61f98632cd78bea1b891e552a0a92e672548552` found one residual: FF01KProduct applied target_roles k>=2 universally. Corrected: FORWARD D>=1 conditioner / Y1..Yk k>=2 target; REVERSE Y1..Yk k>=2 conditioner / D>=1 target. Single-D reverse valid; empty role lists/wrong order refuse. Per-direction risk/denominator/native refs/weights/coverage/typed states/owner-held ratio/receipt/consumer retained. Supersedes only R3-RES-032 direction-cardinality sentence; FF01-2 unchanged. [R3-RES-033]

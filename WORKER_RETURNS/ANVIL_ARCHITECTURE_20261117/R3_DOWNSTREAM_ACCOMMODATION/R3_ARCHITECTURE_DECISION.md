@@ -231,11 +231,11 @@ explicitly does not calculate ratios. It is an exact count profile, not a
 general conditional distribution. [R3-RES-023]
 
 **FF01-k (proposed, not implemented):** a versioned derived-product contract
-for ordered k≥2 conditioner/target roles and a separate reverse direction. The
+for direction-specific ordered roles (FORWARD: D≥1 conditioner, Y1..Yk k≥2 target; REVERSE: Y1..Yk k≥2 conditioner, D≥1 target) and a separate reverse direction. The
 exact field/receipt/consumer schema is in `R3_FIELD_AND_ADAPTER_CONTRACT.md` §6
 (`FF01KProduct`). Summary:
-- exact keys: release/universe/time/population/conditioner roles/target
-  roles/order/risk-set/measure/direction;
+- exact keys: release/universe/time/population/direction-specific conditioner
+  and target roles/order/risk-set/measure/direction;
 - direction-specific numerator/denominator/routing/weights/coverage/zero/
   unknown/refused/inapplicable states;
 - producer inputs: exact native I03/F1–F4 facts; no ratio unless the existing
@@ -357,3 +357,8 @@ physical direction:
 
 The field/adapter contract now cites R3-RES-024/025/026/028–032 directly.
 No new C11 body/family, product code, science/actor grant or native 100k claim.
+
+
+## 11. FF01-REVERSE cardinality correction
+
+FORWARD `P(Y|D)`: conditioner roles `D>=1`, target roles ordered `Y1..Yk k>=2`. REVERSE `P(D|Y)`: conditioner roles ordered `Y1..Yk k>=2`, target roles `D>=1`. Empty role lists and wrong order refuse; per-direction risk/denominator/native refs/weights/coverage/typed states/owner-held ratio/receipt/consumer remain. This supersedes only the direction-cardinality sentence of R3-RES-032; FF01-2 fixed GT2 is unchanged. [R3-RES-033]

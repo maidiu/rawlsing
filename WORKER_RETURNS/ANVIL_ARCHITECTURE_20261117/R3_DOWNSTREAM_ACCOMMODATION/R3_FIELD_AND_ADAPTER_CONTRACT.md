@@ -160,9 +160,10 @@ the inspected product cut. Status `PROPOSED_OWNER_ROUTE`; no false claim that a
 | `release_ref` / `universe_ref` / `time_scope_ref` | exact producer scope |
 | `population_ref` | eligible/asked/observed population identity |
 | `direction` | `FORWARD` (`P(Y|D)`) or `REVERSE` (`P(D|Y)`) |
-| `conditioner_roles` | ordered tuple of `(role_id, source_native_ref, component_ref, domain_ref)` |
-| `target_roles` | ordered tuple `k>=2` of same |
-| `role_order` | exact ordered role IDs; no set comparison |
+| `conditioner_roles` | FORWARD: `D` (>=1); REVERSE: ordered `Y1..Yk` (`k>=2`) |
+| `target_roles` | FORWARD: ordered `Y1..Yk` (`k>=2`); REVERSE: `D` (>=1) |
+| `direction_cardinality` | `FORWARD: D>=1, Y>=2`; `REVERSE: Y>=2, D>=1`; no zero-length role list |
+| `role_order` | exact ordered role IDs per direction; no set comparison |
 | `condition_predicate_ref` / `risk_set_ref` | exact forward or reverse condition/risk |
 | `measure_basis_ref` / `weight_basis_id` / `effective_scope_ref` | exact measure/weight/scope |
 | `numerator_support` / `denominator_support` | exact native fact supports for this direction |
@@ -173,11 +174,13 @@ the inspected product cut. Status `PROPOSED_OWNER_ROUTE`; no false claim that a
 | `permission_ceiling` / `receipt_ref` / `replay_ref` | no widening; exact receipt/replay |
 | `first_consumer` | FF01 science owner/prospective FF-N9 reader; explicit hold |
 
-**Rules:** forward/reverse use different risk/denominator bases; ratios require
-an owner-issued method and positive exact denominator; weighted estimand is
-owner-held; k≥3 must come from a native exact joint fact, not GT2 widening; no
-new metric/science authority. Consumer distinguishes count profile (no ratio)
-from distribution/ratio (owner-held).
+**Rules:** FORWARD has `conditioner_roles=D >=1, target_roles=Y1..Yk k>=2`;
+REVERSE has `conditioner_roles=Y1..Yk k>=2, target_roles=D >=1`. Empty role
+lists are invalid. Forward/reverse use different risk/denominator bases; ratios
+require an owner-issued method and positive exact denominator; weighted
+estimand is owner-held; k≥3 must come from a native exact joint fact, not GT2
+widening; no new metric/science authority. Consumer distinguishes count profile
+(no ratio) from distribution/ratio (owner-held). [R3-RES-033]
 
 ## 7. Research citations
 

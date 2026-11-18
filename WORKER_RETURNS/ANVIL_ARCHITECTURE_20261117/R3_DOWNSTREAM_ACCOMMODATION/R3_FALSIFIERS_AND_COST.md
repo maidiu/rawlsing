@@ -237,11 +237,15 @@ Affected: source observability/F6; field contract §5. [R3-RES-031]
 
 ### F16 — FF01-2 versus FF01-k
 
-Input: fixed Q86B→Q86A GT2 count fact vs proposed ordered k≥3 forward and
-reverse product with separate risk/denominator.
-Expected: FF01-2 returns only the two-target count profile/no ratio; FF01-k
-returns the versioned product fields or refuses if k/roles/order/reverse risk/
-coverage/method/permission absent; ratio/weighted estimand owner-held.
+Input: fixed Q86B→Q86A GT2 count fact vs proposed FF01-k: FORWARD D≥1 conditioner / Y1..Yk k≥2 target; REVERSE Y1..Yk k≥2 conditioner / D≥1 target, with separate risk/denominator.
+Expected: FF01-2 returns only the two-target count profile/no ratio; FF01-k returns the versioned product fields or refuses if direction-specific roles/order/forward or reverse risk/coverage/method/permission absent; a single-D reverse is valid, empty D/empty Y/wrong order refuses; ratio/weighted estimand owner-held.
 Negative: GT2 count profile presented as k≥3 distribution; reverse denominator
 reused; ratio computed without owner method.
 Affected: FF01; field contract §6. [R3-RES-032]
+
+
+### F17 — FF01-k direction-cardinality
+
+Input: FORWARD P(Y|D) with D=1 and Y1..Yk k>=2; REVERSE P(D|Y) with Y1..Yk k>=2 and D=1; then empty D, empty Y, or reversed role order.
+Expected: first two are valid role shapes (subject to method/science); empty role list or wrong order refuses. Universal target k>=2 for reverse is wrong.
+Affected: FF01-k; [R3-RES-033].
