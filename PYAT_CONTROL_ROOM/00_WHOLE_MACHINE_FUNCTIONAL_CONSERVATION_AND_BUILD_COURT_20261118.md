@@ -1,0 +1,231 @@
+# PYAT WHOLE-MACHINE FUNCTIONAL CONSERVATION & BUILD-WORTHINESS COURT — 2026-11-18
+
+> **STATUS: USER-REQUESTED CONSOLIDATED DECISION AID / PROPOSED RECEIVING, NOT PROTECTED PROGRAMMA ADOPTION.** This is one readable *view of existing controlling records*, not a new scientific ontology, a second live issue register, a newly authorized work programme, a source-native acceptance or a certified exhaustive reconstruction of every historical file. The active operating register remains [#1097](https://github.com/maidiu/rawlsing/issues/1097) and controlling [#960](https://github.com/maidiu/rawlsing/issues/960). The 27 PP26 obligations, 29 K3 decisions, 26 R15 proposals and 14 P4R obligations retain their original IDs, modalities, source grades and owners. No paired CURRENT_PROGRESS or PROGRAMMA sections are modified by this artifact.
+
+**Exact inspected custody:** protected PRE-MAIN `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e` / PYAT progress **rev11** (ANVIL instrument *preparation*, not latest integrated code); current independently reviewed ANVIL product `68aa7cac7cce7057fefd458ef4a06bec2dede1b2`, independent joined G5 `d74b641f8ec0c3a94da8ea90e9f5e7b5dc97a0ab`, sourcefree integration only; reviewed 10k semantic/128-width evidence `55d2239e9ea98b3e47aa02a7969cb21c0624115e`; corrected historical report `059e862cd900e4f328315392319a9b7b090ecdb2` with source reviewer `8c5da4d4a3a08c002275f28bfc886fe7d1da95a1`. These later code/documents are **not** yet received into paired protected progress at this inspected cut. Other PRs may advance: refresh exact heads before engineering decisions.
+
+## Executive answer: is HQ building the right thing?
+
+**YES as a necessary first part, NOT YET as a sufficient complete machine.** Fast, complete, source-authenticated SAV/DTA → 13-family C11 → durable reopen → 1/10/100 **distinct** correct empirical operations → genuine first consumer is the correct immediate P0. Existing locality and postconsumer corrections were independently accepted at scoped sourcefree level. Historical V550 shared preparation and V550J nonlossy same-person analysis must shape this implementation. **NO**: a flat 67-column clone, extra database, ungoverned cache, size-only benchmark, duplicate historical investigation, or premature actor generator. Neither full original35 native execution nor combined high-width/large/respondent fresh-process 6GiB performance nor broad Field Forge+N9+Sorok first-consumer functionality is proved by current receipts.
+
+| Decision | Status at verified cuts | Why it matters / smallest justified next act |
+|---|---|---|
+| Source→C11 semantics | **Schema/current sourcefree implementation, native occupancy held** | Source-specific exact instrument, country/wave/respondent, topology, missing/routing/weight/rights must survive; issuer selected work cannot be synthesized |
+| Complete 13-family durable C11 + cold reader | **Scoped integrated code; whole original/native/full cost held** | Preserve all 13 family sections, atomic durable Parquet/Zstd or PERSISTENCE_HELD, one validated source root, cold facts and replay |
+| Prepared repeated analytical access | **Scoped index/grouped reuse; varied-target repetition remains** | Recover V550's sharing *of source-stable work*, not its file shape; establish which current operations repeat stable routing/object preparation and its genuine first consumer |
+| Two production corrections | **Independently ACCEPT_SCOPED_SOURCEFREE at 68aa** | Do not recommission locality or postconsumer fixes; carry exact tests and negative controls forward |
+| 10k sourcefree semantic / 128 width | **Independently accepted limited observations** | 10k × 5 question roles is not 10k × 600, nor 100k × 600, nor native35; no automatic size-only test sweep |
+| Exact k-way/J and branches | **Present bounded I03/I05/J components; generalized consumption not proved** | Test changed triple with unchanged pairwise marginals at actual conditional/FF first reader, preserving membership/denominators |
+| FF descriptive empirical social configurations | **Narrow accepted/partial routes; generic configuration service not certified** | F1–F4 actual distributions, alternatives, minority and reverse conditionals, without claim of material power |
+| FF objective material/power relations | **Independent source/science and general producer held** | External material/time/group/source evidence required; don't turn attitude distribution into institutional power |
+| F6/F7 and N9 world | **Partial/scoped products; original native and general first consumer held** | Compare valid wave/source pairs, qualified as-of world, preserve separate universes and actual first reader |
+| SEAM / Sorok developing person | **Reverse requirements and partial guarded actors; terminal scientific person-generation held** | Sociohistorical exposures/activity and actual encounter/formation cannot be inferred from source respondents |
+| HQ operational receiving | **HQ_CURRENTNESS_HOLD on later ANVIL/K3 evidence** | Protected rev11 is prep-only; qualified receiver reconciles later independently reviewed code/design and this proposed view with paired state; no self-accreditation |
+
+### Critical yes/no questions for any current PYAT commission
+A commission is productive **only when** it (i) names an unfulfilled PP26/Sxx/current first-consumer requirement; (ii) inspects a real accepted current producer and lawful composition; (iii) identifies an exact absent/lossy/slow edge rather than restating a historical file; (iv) proposes the smallest coherent repair with actual owner/lease; (v) preserves respondent/risk/weight/topology/negative/replay and tests both positive and refusal; and (vi) leads toward source→usable social-field intelligence rather than an isolated artifact. If it merely counts old rows, chooses a new cache/backend, reimplements V5xx numbers, or measures size without function, **STOP/REDIRECT**.
+
+## I. Three information boundaries: what belongs in C11 and what emphatically does not
+
+1. **C11 owns observed source truth:** exact source and instrument editions, raw code/option/translation/routing where source-qualified, actual respondent and occurrence/topology, coordinate and weight/design provenance, typed absence, authority source and immutable replay. Schema capability is not source-occupancy proof. Real missing source information cannot be filled by downstream scientific guesses.
+2. **I03/I05/J own measured statistical derivation:** genuine same-person k-way, sample/risk/asked masks, weighted/unweighted estimands, ordered compound configuration and component roles where separately issued; negative and nonpromotable mass. These are derived; they should not be pre-painted into C11 as survey observations.
+3. **Field Forge/F6/F7/N9/N10/SEAM/Sorok own further meanings:** descriptive composition, separately sourced material/political-economic power, objective structural relations and time, socially conditioned possibilities, encounters and developing persons—distinct scientific and actor permissions. No C11 schema patch can manufacture those authorities.
+
+**Seven old V551J→V552J→V553 downcast warnings:** joint semantic identity; same-respondent measurement; component identity/order; multi-axis authority; role/certification contribution; non-scalar vector/scalarization; denominator/context certification. The [historical code-path review](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/G1A_C4R1_V550J_V551J_V552J_INFORMATION_CONSERVATION_RETURN.md) found old-carrier loss, **not** seven proven missing C11 fields. Modern tests must prove C11→I03/J→FF preserves/retrieves them at the selected reader.
+
+**Eight C11/SEAM pre-freeze risks:** original-language instrument meaning; exact respondent/occurrence; sampling, PSU/strata/weight/routing; source-native identity categories; observation vs reference vs actor time; joint asked/answered/member/denominator recoverability; release/rights/currentness; external group data that must **not** be presented as individual respondent identity. [ANVIL SEAM/15](https://github.com/maidiu/rawlsing/blob/3cc09bba3d0e26c226da0ddca4b64c43dd74e493/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/15_SEAM_REVERSE_CONSUMER_SOCIAL_FIELD_AND_C11_DESIGN_IMPLICATIONS_R1.md) names L-01…L-08 and provides the full source-side risks and downstream counterexamples.
+
+## II. Original function → actual current jurisdiction → no-loss decision (historical T/S/M master)
+
+**Evidence grade:** selected historical implementation and inherited modern code/source-static readbacks, NOT a completed exhaustive V540–V558 all-branch, native/executed parity census. Historical *purpose* and the old defect are recorded separately. `PARTIAL`/ `HELD` means prove actual current effect before building another engine.
+
+| ID | Original empirical knowledge/mechanism | Current lawful owner | Unproved or lost edge | Conservation action / forbidden shortcut |
+|---|---|---|---|---|
+| **A** | V547–V550 QSM, source answers, response distributions | Source + C11 / F1 | C11 schema and sourcefree F1 exist; original selected wave semantics/35 scope not proved. **PP01–07; K3 01,25** | Retain native question/option/response/routing/weight/position identities; refuse arbitrary latest mapping/defaults. |
+| **B** | V548/V549 primary/secondary/recursive splitters and minority/outliers | I05 / discovery / F3 | Present scoped discovery/recursive facilities; original branch family and actual selected consumer coverage unproved. **PP11,13; K3 03,06,07** | Preserve genuine minority/recursive knowledge; reject old mixed-cohort MI, Boolean FALSE=literal-zero, fixed depth myth. |
+| **C** | V549/V550 co-signatures, attitude clouds, association | F2/F4 / Field Forge descriptive | Observed co-travel not globally demonstrated at FF/N10 first receiver. **PP11,13,14; K3 06,26,27** | Co-travel independent of special relation certification; source-native respondent linkage; no pairwise-as-kway. |
+| **D** | V550 country selected-variable shared preparation, Parquet | Canonical C11 + reusable access | Canonical long estate exists; varied-target/predicate routing/object reuse and full cost unresolved. **PP07–10; K3 02,04,10,22,24** | Recover compile once/use often, not 67-col duplicate, Postgres dependency, non-gating validation, fake default weights. |
+| **E** | V550J true ordered k-way respondent patterns, memberships and outside-variable | I03/I05 + J + FF | Native true-k support and scoped results; full source and actual meaningful 3+ first consumer unproved. **PP11,13–14; K3 11,26,27** | Use k>=3 parity-indistinguishable cohort counterexample; retain topology, order, duplicates, membership, multiple risk bases. |
+| **F** | V551 signed/neutral/blocked relation-evidence atoms | Scientific mapping/learned empirical authority | Generic current owners exist; selected signed scope, neutral/unresolved coverage and first consumer not globally proved. **PP03–05,19; K3 08** | Neutral ≠ missing ≠ zero intensity; never invent direction from intensity or discard nonpromotable candidates. |
+| **G** | V551J family roles, certification and component authority | J-role certification / M1 / component vectors | Scoped J role engine exists; family-specific native authority/complete certification downstream held. **PP11,14; K3 12,13** | Keep role identity/ordered component/negative/permission and review-only separate from certified ALLOW. |
+| **H** | V552 structural signed diagnostics and pressure grading | FF / M1 / structural admission | Selected claim-specific structural relations and material causality not broadly proven. **PP13,15–19; K3 08,09,19** | Score vs coverage vs J permission distinct; no automatic causal/material-power reading of survey intensity. |
+| **I** | V552J J+structural two-producer AND join and downstream review | J/FF composition | Historical carrier lost 7 dimensions; present code has exact refs/roles but terminal real consumption unproved. **PP11,14,19; K3 12,13,27** | Restore full direct/readable components, denominator, roles, authority; don't pass only packet ID or flattened score. |
+| **J** | V551J-D/V553 cross-wave semantic differences and temporal fields | F7, N9 world, F6 if needed | Comparability and selected real wave-native temporal reader/science held. **PP22–24; K3 14–16,29** | Only comparable observed waves; V553 sparse keyed != V554 heuristic; no synthetic individual trajectories. |
+| **K** | V554 affordance / bounded seeds / absence and blockers | N10E/N10W possibility/world | Modern partial services exist; heuristic absence templates not empirical observations. **PP24–25; K3 16,23** | Keep possible vs observed vs modeled, source-bound limits; don't port old fixed absence lists as measurements. |
+| **L** | V555 household/parent/co-parent mediation contracts | N9/N10W → SEAM → SOROK | Distinct encounter/exposure and generative person first consumer unproved. **PP25,27; SEAM26** | No survey-inferred spouse/kin/household contacts, no independent trait sampling or childhood deterministic copying. |
+| **M** | V556 pressure-flow/attractors | World model + actor developmental authority | Legacy contract only, real pressure/learning mechanism must be separately issued. **PP17,18,24,25,27** | No psyche/attractor as observed survey fact; independent institutions/exposure/activity required. |
+| **N** | V557 renderer / V558 admission/publishing | Objective publication and Sorok owner | Bounded publication/gates; actor execution and user consent separate. **PP20,24–27; P4R R09–10** | No renderer contract as generated person, V558 as current runtime proof, or unauthorized actor admission. |
+| **O** | Long Memory/P3C/ZAK custody, rollback and replay | C11/long-memory/authority receiving | Historical contracts banked, complete current authority-to-first-consumer/recovery proof held. **PP08,10,12,26; K3 22,28** | Reversible custody and fail-closed reuse, not inherited document statuses as execution proof. |
+
+**Historical specificity:** V550J stored a **long** prepared country respondent-variable dataset (67 required columns, 25,067 long rows in the verified artifact, 26 *configured* output paths, not 26 proven consumers), enabling subsequent DB-free country load after preparation/harmonization. Existing C11 is already a canonical **long** 13-family estate. The economic gap is not “old wide vs new long”; it is repeated stable lookup/routing/object reconstruction across different operations. The old branch-mask/memoization and V549 respondent×variable pivot are additional distinct mechanisms, and the original V550 J cache included a non-gating failure-path defect. [Corrected exact historical handoff](https://github.com/maidiu/rawlsing/blob/059e862cd900e4f328315392319a9b7b090ecdb2/WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/HISTORICAL_CONNECTION_CORRECTED_FINAL/00_HANDOFF.md); [VOSKRES bounded A/B result](https://github.com/maidiu/rawlsing/blob/819dc54c69633dd75b6d13ac0ee8c3bbfd624853/WORKER_RETURNS/DDM_VOSKRES1059_HQ_R1/00_RECONCILED_RETURN.md).
+
+## III. The 27 existing product obligations — **no new IDs**
+
+These are all 27 user-selected PP26 aliases, **OPEN at whole-mission grade**, not 27 mandatory jobs to launch now. Grades below summarize the inspected inherited source cut and later ANVIL evidence; actual PP26 row/negative/owner controls in [REMAINING_REAL_PYAT_WORK](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md).
+
+| PP26 | Section | Required output | Current scope | Action/acceptance discriminator |
+|---|---|---|---|---|
+| [01](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S01 | Original35 source custody/rights | HELD_NATIVE | Source issuer: identify exact rights, bytes, instruments, release/use; reject substituted or unauthorized source. |
+| [02](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S01 | Codebook/administration→C11 semantic projection | PARTIAL | Qualified exact value, option, missing, routing, component/roster and original-language path to selected C11 and query; no label-guess. |
+| [03](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S01 | Historical QSM/QUC/semantic and relation authority actually selected | HELD_APPLIED_USE | Select real source-specific rules at actual current first read; refusal and unchosen aliases remain visible. |
+| [04](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S01 | Historical semantic no-loss vs internal C11 validity | HELD_EQUIVALENCE | Prove selected old-required meanings and negative rules survive the modern projection; sealed package ≠ complete historical rule application. |
+| [05](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S02 | Claim-graded U_item/U_unit/U_app/E_pre | PARTIAL | Authorize RAW known-scope observation without extra causal/weight barriers; deny unknown routing as denominator. |
+| [06](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S02 | All applicable original35 planned/issued operation compiler | HELD_ORIGINAL35 | Competent U/E_pre owner issues exact query/frontier/negative fate; no injected fixture as source issuance. |
+| [07](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S03 | SAV/DTA true selected physical source and costs | PARTIAL | Select source bytes, tested decoder, version, projection, topologies; actual selected high-width resource proof. |
+| [08](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S03 | Durable sealed 13-family C11 release | PARTIAL | Authorized Parquet/Zstd + hashed manifest + fresh-process reopen or PERSISTENCE_HELD; no unauthorized disk use. |
+| [09](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S03 | W03/W04 cold/warm physical economics | UNFINISHED_SCALE | Record 1/10/100 distinct full-semantic operations, CPU/wall/RSS tree/scratch, source reads and replay; no selective benchmark substitution. |
+| [10](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S03 | Reusable prepared access and cache invalidation | PARTIAL | Share source-stable relationships across DIFFERENT targets/predicates; changed source/authority/revocation must refuse. Do not copy V550's bad cache. |
+| [11](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S04 | Original35 F1–F4 same-person empirical work | SCOPED_SOURCEFREE | Real issuer-selected unary/conditional/reverse/true k-way/recursive outputs, support/risk/weights/negative/replay; exact first consumer. |
+| [12](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S05 | Learned product universe, fate and first use | PARTIAL | Complete produced/denied/held identities, immutable release, actual selected consumer and source-specific effects. |
+| [13](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Empirical position-conditioned redistribution/possibilities | PARTIAL | Observed P(Y|D), P(D|Y), minority/counterpatterns with own denominators/uncertainty to real FF/N10 reader. |
+| [14](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Old FFX A/B/C function-by-function reuse | COMPARE_NOT_PORT | Prove genuine missing output/first-reader edge before reconnecting optional geometry or conditional; don't revive FFX wholesale. |
+| [15](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Distinct material position and attitude/disposition spaces | HELD_SOURCE/SCIENCE | Independently supported position/resource/role from independent opinion observations; anti-circularity and conflicting measures. |
+| [16](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Power relations, EPR/GeoEPR, global hegemony | HELD_EXTERNAL_SOURCE | Exact group/institution/geography/time/power evidence; never infer power from survey majority. |
+| [17](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Hegemonic/subhegemonic/counter-hegemonic configuration | HELD_SCIENTIFIC | Prevalence plus qualified reach, resources, elite alignment, institutional coercion, counter-complex; >50% ≠ domination. |
+| [18](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Interfield contradiction, pressure and mediation | HELD_SCIENTIFIC | Qualified rival mechanisms, action/constraint/mediation, differing positions and fields; no score-as-causation. |
+| [19](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Observed vs experimental vs causal claim tiers | PARTIAL | Descriptive relation remains usable without absent causal permission; stronger causal claim separately sourced. |
+| [20](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Objective-position materializer/import correctness | SCOPED_CANDIDATE | Sourcefree import/test candidate must receive exact independent and protected review; does not manufacture position input. |
+| [21](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S06 | Source-qualified objective-position producer | HELD_PRODUCER | Independently materialize exact position/resource/rights/power, temporal/role identity; a framework or heuristic is not an observed position. |
+| [22](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S07 | F6 cross-survey nonpooling composition | HELD_NATIVE | Question equivalence, estimand and rights for separate samples; no fictional same-respondent cross-source joint. |
+| [23](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S08 | F7 cross-wave measured comparison | HELD_NATIVE | Comparable anchored instruments/populations/times; preserve differences, noncomparability, no synthetic respondent panel. |
+| [24](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S09 | N9 as-of objective material world | PARTIAL | Exact selected world including social/material power and conflicts from source/science, version/currentness, real first reader. |
+| [25](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S10 | N10E/N10W conditional situated possibility | PARTIAL | Deliver what is possible/facilitated/inhibited, by what force/contradiction, altered world effects, minority/uncertainty. |
+| [26](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S11 | N11 original35 product/first-consumer receiving | HELD_NATIVE_ACCEPTANCE | All original qualified source/operations/products/fates and independent authority; no sourcefree proxy. |
+| [27](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1) | S10/S11 | SOROK developing-person actual consumer | HELD_ACTOR | Real social exposure/relations, lived activity and developmental change under SOROK authority, not a trait-from-frequency decoder. |
+
+## IV. Every K3 inherited function and R15 proposal remains visible
+
+**29 K3 functions** (IDs preserved; **not** 29 new builds or a scientifically exhaustive history):
+
+| ID | Meaning | ID | Meaning | ID | Meaning |
+|---|---|---|---|---|---|
+| K1-CAP-01 | 01 source/QUC selection | K1-CAP-02 | 02 shared source preparation | K1-CAP-03 | 03 respondent-mask reuse |
+| K1-CAP-04 | 04 checkpoint/reopen | K1-CAP-05 | 05 MI estimand/risk | K1-CAP-06 | 06 recursive discovery |
+| K1-CAP-07 | 07 false-comparator negative | K1-CAP-08 | 08 signed atom | K1-CAP-09 | 09 score-vs-certification |
+| K1-CAP-10 | 10 J prepared cache | K1-CAP-11 | 11 joint member topology | K1-CAP-12 | 12 J review-only |
+| K1-CAP-13 | 13 two-producer J/structure | K1-CAP-14 | 14 alias diagnostic | K1-CAP-15 | 15 measured timeline |
+| K1-CAP-16 | 16 heuristic vs measured absence | K1-CAP-17 | 17 F6 numeric partial ID | K1-CAP-18 | 18 selected first consumer |
+| K1-CAP-19 | 19 I07 guard ≠ numerical estimator | K1-CAP-20 | 20 test-only negative | K1-CAP-21 | 21 limited raw context |
+| K1-CAP-22 | 22 atomic publication | K1-CAP-23 | 23 world→person permissions | K1-CAP-24 | 24 F26 historical caller/invalidation |
+| K1-CAP-25 | 25 source relation scope | K1-CAP-26 | 26 k-way co-travel | K1-CAP-27 | 27 carrier info-loss |
+| K1-CAP-28 | 28 historical asset custody | K1-CAP-29 | 29 F6/F7/N9 boundaries |  |  |
+
+The controlling **per-row** history/current reader, five-work-selection tests, source/science/cost, falsifier, owner and no-new-build decision is the [K3 29-row source table](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv), protected at scoped documentary grade. A path named there **does not prove an actually executing current first reader**.
+
+**All 26 R15 prospective PYAT-PC items** remain **NOT_ADOPTED, 0 automatic new BUILDs**. These are independent original topics—not the same 26 as PP26-01…27:
+
+| Candidate | Original topic | Candidate | Original topic |
+|---|---|---|---|
+| R9-01 | prepared country/wave reuse | R9-14 | V554 absence/seed vs keyed data |
+| R9-02 | respondent/branch mask memoization | R9-15 | F6 numerical partial-ID intervals |
+| R9-03 | checkpoint invalidation/replay | R9-16 | I07 guard first reader |
+| R9-04 | F03 six-coordinate authority | R9-17 | R08 test-only signed check |
+| R9-05 | V547 MI denominator | R9-18 | N11/N12→Sorok consent |
+| R9-06 | V548 recursive/minority knowledge | R9-19 | atomic staging/replay |
+| R9-07 | V549b literal anchor vs false | R9-20 | finite archaeology stop |
+| R9-08 | V551 neutral/signed atoms | R11-21 | F26 per-query cache distinct from country prep |
+| R9-09 | V552 score/coverage dual state | R15-22 | V550J cache source identity |
+| R9-10 | J prepared country family reuse | R15-23 | J duplicate rule |
+| R9-11 | same-person pattern/component/denominator | R15-24 | provisional vs final J certification |
+| R9-12 | J+V552 two-producer join | R15-25 | V552J dual-producer AND permission |
+| R9-13 | V553 sparse authorized timeline | R15-26 | strict V553 key vs V554 heuristic |
+
+The precise original modality, negative, smallest falsifier, competent owner and nonadoption are retained verbatim in [K3 R15 26 owner decisions](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_R15_26_OWNER_DECISIONS.tsv). **Do not turn this navigation shorthand into a change of modality or grant.**
+
+## V. Fourteen finite P4R holds — no extra archaeology fleet
+
+| P4R | Exact issue/owner boundary |
+|---|---|
+| R01 | R01 historical alias vs unique rule — source-document only |
+| R02 | R02 F26 actual caller/invalidation — source/physical owner |
+| R03 | R03 Sorok indexed body effect — Sorok owner |
+| R04 | R04 Dva/Trii/Chetiri/Long Memory witness status — history owner |
+| R05 | R05 selected F03/QUC six-coordinate current rule — C6 source issuer/C11 |
+| R06 | R06 J review-only vs certified/current V553 reader — J/FF issuer |
+| R07 | R07 F6 numerical partial-ID validity — F6 scientific owner |
+| R08 | R08 N9 actual selected world first reader — world owner |
+| R09 | R09 Sorok genuine person positive — Sorok scientific/actor owner |
+| R10 | R10 N11/N12→Sorok consented importer — actor/consent owner |
+| R11 | R11 atomic publication/rollback/replay — release owner |
+| R12 | R12 K3 26 proposals — decision complete, no new requirements |
+| R13 | R13 protected paired receiving — qualified custodian |
+| R14 | R14 original35 native scientific/actor/terminal acceptance — competent issuers |
+
+Use [K3 P4R fourteen routes](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_P4R_14_OBLIGATION_ROUTES.tsv) for the actual original owner, smallest falsifier and permission ceiling. Status is **held** unless an independently received later receipt proves the specific edge; K3 has not authorized repeat 14-way reviews. R12's *documentary K3 choice* is recorded; that is not all other 13 closures.
+
+## VI. SEAM/Field Forge/TOTALITY question: what knowledge must PYAT actually produce?
+
+The necessary terminal product is more than `P(attitude | demographic)`. It must make source-observed **coexisting joint configurations**, separately situated **other social positions** and alternatives, conditional distributions with minority and uncertainty, reversible provenance, and independently qualified **material/political power, relations and historical conditions** available to an actual world/actor constructor. Observed distribution ≠ power; co-occurrence ≠ causal institution; sample respondent ≠ developing person. A future subject's relationships, encounters, activity, exposure, identification and change require independent SEAM/Sorok actor/model authority. [SEAM 26](https://github.com/maidiu/rawlsing/blob/796452b8cb788fa5a02f37a7ce86eafce8312dfe/SEAM/26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md) and [ANVIL 15](https://github.com/maidiu/rawlsing/blob/3cc09bba3d0e26c226da0ddca4b64c43dd74e493/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/15_SEAM_REVERSE_CONSUMER_SOCIAL_FIELD_AND_C11_DESIGN_IMPLICATIONS_R1.md) are reverse-demand **documents**, not accepted new C11 family/science.
+
+**The six downstream real-information deliveries:** (1) complete conditioned high-order within-person response configurations; (2) differently situated *other* positions' distributions and counterconfigurations; (3) independent source-qualified resource/institutional/power relations, with causal grade; (4) qualified actual contact/exposure channels, not invented marriage probabilities; (5) observed and noncomparable historical/measurement frames; (6) model-graded subject-world interpretation and genuine activity/development under Sorok. A later inverse questionnaire check is a separate research test, not a demand that individual simulated persons reproduce survey codes.
+
+## VII. Historical design defects that must NEVER cross into the current machine
+
+| Old defect / tempting shortcut | Mandatory refusal |
+|---|---|
+| **V550 67-column long clone/mandatory PostgreSQL** | Reuse its shared-preparation semantics; do not duplicate canonical C11 or require PG; SAV/DTA adapters must preserve source meaning. |
+| **Latest-loaded semantic mapping / `COALESCE` acceptance** | Never infer science from newest timestamp, label or absent authority; exact adjudicated selection or typed hold. |
+| **`DISTINCT ON respondent` arbitrarily primary weight** | Require selected weight basis/design/estimand and conflict refusal; never default nonpositive weight to 1.0. |
+| **`(respondent,var_code)` as universal unique answer** | Retain multiselect, repeated event, ordered component, source group and deterministic occurrence identity. |
+| **V550J `.iloc[0]` for repeated variable** | Do not discard multiple observed events or infer scalar response. |
+| **Cache validator returning FAIL but caller using cache** | All validation/CURRENT/revocation failures must gate serving; atomic publish and provenance/invalidation tests. |
+| **V549b False complement == source code 0** | Differentiate not-answer-code from literally observed zero, not-asked and authoritative complement. |
+| **V550 MI baseline vs conditional different respondent cohorts** | Same risk set and weight basis per estimator; do not copy named historical MI/NMI as correct science. |
+| **V550J prevalence-scaled PMI called `mutual_information`** | Do not elevate misleading historical metric label to validated whole-joint MI. |
+| **V551 neutral intensity coerced 0 / absent direction inferred** | Keep observed neutral/zero/unresolved/blocked and direction-authority distinctions. |
+| **V552 score/coverage/J certification collapsed** | Recorded diagnostic is not scientific permission, causal pressure or a fabricated world fact. |
+| **V552J packet-only lossy handoff** | Preserve direct component, member, order, topology, denominator, negative and authority retrieval. |
+| **V553/V554 sparse measured time vs interpolation/absence template** | Never convert V554 proposed absence, interpolation or modeled seed into observed historical change. |
+| **Original respondent sample and external group data pooled** | No cross-source same respondent and no external ethnic-power source posed as respondent field. |
+| **Only modes/marginals/2-way average** | Cannot reproduce k>=3 and minority; protect actual respondent-coherent joint and alternative branch topology. |
+| **LLM-generated persona from responses** | Population frequency cannot be a person's beliefs, motives, affiliations, psyche, family or developmental history. |
+| **Premature 100k size-only testing / backend tournaments** | Use exact observed cost mechanism and target causal complexity; reject redundant bakeoffs/repeated archaeology. |
+| **Sourcefree accepted called source-native/current protected** | Enforce five separate grades: selected need, code, execution+review, receiving/rights, remaining first consumer. |
+
+## VIII. What happens next, **in dependency order**, without another research campaign
+
+**FIRST — live owner/custodian reconciliation.** Existing [#1097](https://github.com/maidiu/rawlsing/issues/1097) and [#960](https://github.com/maidiu/rawlsing/issues/960) retain operational coordination. Read live heads for ANVIL 68aa/G5 and subsequent reports, ownership, selected run and source rights. The protected progress rev11 is preparation-only: `HQ_CURRENTNESS_HOLD` until a qualified receiving authority applies one expected-HEAD paired update. **This document does not itself authorize a protected write.**
+
+**SECOND — finish the already selected generic physical P0, not a prototype zoo.** Reuse accepted locality/postconsumer and current R3. Source→complete C11→durable authorized reopen→one prepared multi-operation context→distinct actual F1–F4 queries/replay, with source/permission/CURRENT checks and 6GiB process-tree/4GiB scratch/600s child constraints. Separate known 10k limited grade from missing combined/100k/full-width/native proof. If a tighter shared-access layer is necessary, specify precisely which source-stable relationships currently rebuild and why a release-bound lookup solves that, *not* a generic old-file port.
+
+**THIRD — real scientific function outputs and first read.** Selected issued RAW/weighted source query → exact same-person conditional/joint and minority branch product → observed FF01 conditioned social-position descriptive product with actual counterpattern/negative behavior; demonstrate changed triple distribution and distinct P(Y|D) versus P(D|Y), without requiring unissued structural power science. Preserve J component vector/certification/read-only states at selected J consumer. Reject satisfied or source-held branches instead of building new engines.
+
+**FOURTH — separately qualified structural/temporal world.** Accept observed FF01 association; obtain independent FF02 objective resource/role/power evidence and model/causal issuers where required; F6 nonpooled sources, F7 authorized wave pairs; N9 as-of real material world and N10W genuine conditional action possibilities. Noncausal tier-1 evidence must remain useful while stronger tiers are held.
+
+**FIFTH — SEAM/Sorok.** Actual generated/positioned adult alternatives and relevant others, qualified access/encounter/exposure and material context, actor-specific perception, action, conflict, adaptation and history; not a static trait table. Separate independent source/science/actor consent and first consumer tests. N11/N12 overall issue remains held until competent issuance.
+
+**No requirement of completing every IF edge before the current selected producer can operate.** Choose the largest existing owner-authorized coherent advance with a real consumer; tests should falsify a material claimed property, not merely tick a historical label.
+
+## IX. Provenance: the existing authoritative records, not a new archive
+
+- **Governing scientific/product target:** [HQD-125 acceptance law](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md), [HQD-125 crosswalk](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/25_HQD125_DDM_FUNCTIONAL_CONSERVATION_CROSSWALK.md), [27 PP26 rows](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md).
+- **Protected historical selection:** [K3 29](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_CONSERVATION_VS_IMPLEMENTATION_29.tsv), [K3 26](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_R15_26_OWNER_DECISIONS.tsv), [K3 P4R14](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_P4R_14_OBLIGATION_ROUTES.tsv), [K3 owner decision](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/K3_HQ_POST_AB_OWNER_DECISIONS_20261116_R1/K3_HQ_OWNER_DECISION_AND_NEXT_WORK.md).
+- **Recovery archive:** [VMESTYE R17 PR864](https://github.com/maidiu/rawlsing/pull/864) source-graded 13-prong documentary graph, **not** a proven current execution trace; [ZAK02 PR1046](https://github.com/maidiu/rawlsing/pull/1046) old function inventory; [ZAK04 R5 PR1051](https://github.com/maidiu/rawlsing/pull/1051) 35-source-to-actor seams; [ZAK04 R6 PR1052](https://github.com/maidiu/rawlsing/pull/1052) 129-source code census / 20 courts. Counts are different grains, not additive unique functions.
+- **VOSKRES:** [method/mission PR1039](https://github.com/maidiu/rawlsing/pull/1039) demands an exhaustive original-first T/S/M cycle; [bounded A/B pilot PR1060](https://github.com/maidiu/rawlsing/pull/1060) did **not** finish that cycle; selected [R2 documentary acceptance on #1059](https://github.com/maidiu/rawlsing/issues/1059#issuecomment-6898436244) is S1, not native or universal completion.
+- **Current R3 and ANVIL:** [R3 design](https://github.com/maidiu/rawlsing/blob/02594c18f8401855a0f9cecc45921b548fa9aed6/WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/R3_DOWNSTREAM_ACCOMMODATION/R3_ARCHITECTURE_DECISION.md); [integrated sourcefree G5](https://github.com/maidiu/rawlsing/blob/d74b641f8ec0c3a94da8ea90e9f5e7b5dc97a0ab/WORKER_RETURNS/ANVIL_ENGINEERING_INTEGRATED_G5_20261118/REVIEW_RECEIPT.json); [10k correction G5](https://github.com/maidiu/rawlsing/blob/55d2239e9ea98b3e47aa02a7969cb21c0624115e/WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/REVIEW_RECEIPT.json); [corrected history](https://github.com/maidiu/rawlsing/blob/059e862cd900e4f328315392319a9b7b090ecdb2/WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/HISTORICAL_CONNECTION_CORRECTED_FINAL/00_HANDOFF.md).
+- **Reverse consumers:** [ANVIL/15 SEAM](https://github.com/maidiu/rawlsing/blob/3cc09bba3d0e26c226da0ddca4b64c43dd74e493/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ANVIL/15_SEAM_REVERSE_CONSUMER_SOCIAL_FIELD_AND_C11_DESIGN_IMPLICATIONS_R1.md), [SEAM/26](https://github.com/maidiu/rawlsing/blob/796452b8cb788fa5a02f37a7ce86eafce8312dfe/SEAM/26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md), both research-level not current native person proof.
+
+## X. Future embed map — **NOT EXECUTED IN THIS PASS**
+
+This is a proposed embedding map *after* owner validation, independent review and authorized protected receiving, not a demand to alter PROGRAMMA right now:
+
+| PROGRAMMA home | Embed only what is controlling there |
+|---|---|
+| S01/source governance | PP01–04, C11 original-instrument/semantic/source/rights risks; selected QSM/QUC no-default negatives |
+| S02/U/E_pre | PP05–06, original issuer and entitlement; no fake eligible/query; claim tiers |
+| S03/C11/physical | PP07–10 and corrected V550 shared-preparation economics, durable source-bound index and fail-closed replay |
+| S04/F1–F4/J | PP11 and K3 03/05–07/11–13/26–27, exact k-way/minority/branch/component first-read proof |
+| S05/learned lifecycle | PP12, produced/denied/held fate and actual selected use |
+| S06/FF | PP13–21, FF01 vs FF02 vs objective material positions/power, no score-to-causality |
+| S07/F6 | PP22 and numerical partial-ID science/anti-pooling limits |
+| S08/F7 | PP23 and precise V553 source-scoped temporal observability |
+| S09/N9 | PP24 as-of material/structural world, real source/consumer and model grade |
+| S10/N10E/N10W | PP25,27 and differentiable conditioned possibilities/exposures to later persons |
+| S11/N11/N12 | PP26 and original35 independent science/source/actor acceptance, exact conditional progression |
+| Cross-programme SEAM/SOROK | Specific reverse conditions/first reader, no Pyat usurpation of developing actor |
+
+**Receiving discipline:** do not insert this document as a new overarching independent PROGRAMMA or overwrite 62/82/49, existing 27 PP26, K3 29/26/14, VMESTYE 44/30, source/risk/actor ownership or current #1097. An authorized reviewer should falsify specific rows against live heads. Then the competent protected custodian can embed deltas in their existing sections and **paired** PYAT CURRENT_PROGRESS MD+JSON using one exact expected-HEAD transaction. Until then: `HQ_CURRENTNESS_HOLD__CONSOLIDATION_DRAFT_NOT_PROTECTED__REV11_STALE_TO_LATER_ANVIL`.
+
+## XI. Limit of knowledge / the precise remaining inventory question
+
+This master is **complete for the known controlling 27 PP26, 29 K3, 26 R15 and 14 P4R row identities**, and provides a cross-stage map of the major V540–V558 mechanisms and the present high-value edge. It is **not** an independently closed proof that every original V540–V558 knowledge-producing transformation was discovered, nor that each current successor passed actual source/native first-reader parity. VOSKRES explicitly defines that stronger exhaustive old-first T×successor closure and says the bounded pilot did not perform it. Do not invent a 100% coverage claim. If a concrete missing original substantive T emerges, add source-linked evidence to existing K3/VMESTYE/VOSKRES owners and only then amend this readable view; no default new archaeology fleet.
