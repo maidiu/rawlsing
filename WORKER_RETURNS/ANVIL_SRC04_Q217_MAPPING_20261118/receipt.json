@@ -8,8 +8,8 @@
   },
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 7167,
-      "sha256": "6453ac0f0c3eaf8e8d2152a72e52ff3f294baffd283d5c4b4c72e83ed2e0362c"
+      "bytes": 5389,
+      "sha256": "31fe5459cfa19b605590e5d4d611911f6584f42404d466d81fb865d7371c544e"
     },
     "evidence/accepted_receipt.json": {
       "bytes": 1395,
@@ -51,9 +51,29 @@
       "bytes": 269,
       "sha256": "41c78237ed2bf92aea70cb6bc2b041d87b4bd20cb3751bf876f2e85150dc87f7"
     },
+    "evidence/q217_native_witness.json": {
+      "bytes": 1435,
+      "sha256": "3f5e90bbe00bd5ed420d51383e149bcec6a2204832b5e1b52e23f74474e220f1"
+    },
+    "evidence/q217_native_witness.out": {
+      "bytes": 1189,
+      "sha256": "9255212d76463ec82103dc7aa61f22cecf8632b8327c78d5f686eac0ae97d242"
+    },
     "evidence/q217_residual_check.json": {
       "bytes": 980,
       "sha256": "7d076b5df3636f39e2037788e47b12f64eb9ce1270e958cd9db231fb424facab"
+    },
+    "evidence/q217_v3.out": {
+      "bytes": 908,
+      "sha256": "c3965949e151219e16094516b62ecdca9e8e07d1c6fba701870a661e1777b57f"
+    },
+    "evidence/q217_v3_validation.json": {
+      "bytes": 1762,
+      "sha256": "1aa41610151b5f6a429166cc33174a361ec50a880ad727f88aa5c64e3bec1e8c"
+    },
+    "evidence/questionnaire_q217_scan.json": {
+      "bytes": 1252,
+      "sha256": "40bebb9d0ce54392e479af2b89a214e1dbbf64d1c7750ffed909d41a50881de1"
     },
     "evidence/source_codebook_q217.json": {
       "bytes": 1366,
@@ -65,7 +85,7 @@
     },
     "evidence/tests.txt": {
       "bytes": 98,
-      "sha256": "ef0e7ef49e71fa999842be0cb8d22ec1058d3a384ed5c0a2ec6efb8f434975ac"
+      "sha256": "c2c6b596f6326dec34c3110029f10ae752a6b80ef7dd9f3d368c2793a9363a31"
     },
     "q217_candidate.py": {
       "bytes": 6974,
@@ -76,16 +96,32 @@
       "sha256": "e295e5ffcdf9d0e32def62043cf65418baaa00696d852a58f54dab1bb985246f"
     },
     "q217_mapping_patch.json": {
-      "bytes": 1477,
-      "sha256": "55d1c356d543b05d997d4f60fa11606d33413508cc87d5a5a1570b8468af294f"
+      "bytes": 1997,
+      "sha256": "9ad986621069db0e33dfedc6a3b8af5eaa0e1222273210ac6c24f672e1fe447e"
+    },
+    "q217_native_witness.py": {
+      "bytes": 3531,
+      "sha256": "c745d6ff05a30beb8c14d3243d7b74c68c4531e73633da1524bae0abf52fbd6f"
+    },
+    "q217_v3.py": {
+      "bytes": 6039,
+      "sha256": "629df0b371ca7bd152073dedae3801a184136aba27edd752bfda540552febb71"
     },
     "residual_check.py": {
       "bytes": 2249,
       "sha256": "c1bf1f3713ec66f1e4c14bf021267ecac0db0ef27c6508497d260402b19c0031"
     },
+    "source.config.repaired.v3.json": {
+      "bytes": 2774712,
+      "sha256": "5aeca1d70d2de1148c7f6aff163eeef2a3cefc3a034297e7f90ec77ed7ff3d71"
+    },
+    "successor_reference.json": {
+      "bytes": 983,
+      "sha256": "06b5113c6c0f50f1a3abaedde1c591222fe9ef5b2ecedef2546ab9434d11104a"
+    },
     "tests/test_q217_mapping.py": {
-      "bytes": 2122,
-      "sha256": "4529890eca86bdc1308dbbc8d3be7538fc95a2f1e3806e333ee81a1fded248f2"
+      "bytes": 3795,
+      "sha256": "83429fb809bae20a517993ad4f70c063e9469b5b8bca422dd8c9a82e13e6aea1"
     }
   },
   "full_construction_grant_commit": "303a57851785557fff8229e29a5554717168cbd1",
@@ -98,24 +134,44 @@
     "Existing construction witness pins unchanged"
   ],
   "mapping_candidate": {
-    "accepted_config_changed": false,
-    "candidate_canonical_sha256": "b5e3ac84d407901daf79ee7fdd4d2e6f63edf4f440d5bdca33aba71edf224c82",
-    "code_7_label": null,
-    "code_7_state": "INVALID_UNRESOLVED",
+    "accepted_config_replaced": false,
+    "canonical_sha256": "323c1447e76ad447163514f6805c26f4b7033cd34f042d1b59bee91f2274a70c",
+    "code_7_label": "Other",
+    "code_7_state": "SOURCE_SPECIFIC_SPECIAL",
+    "code_97_98_state": "DK",
     "code_99_state": "REFUSAL",
-    "existing_validator": "load_source_config / canonical_config_hash at aee95429609c372564e996c2d3d3eb30e9253cbf",
-    "product_changed": false,
-    "status": "PROPOSED_NOT_APPLIED_TO_ACCEPTED_CONFIG"
+    "file_sha256": "5aeca1d70d2de1148c7f6aff163eeef2a3cefc3a034297e7f90ec77ed7ff3d71",
+    "live_selection_changed": false,
+    "original_source_file_touched": false,
+    "path": "source.config.repaired.v3.json",
+    "status": "MATERIALIZED_AS_SELECTABLE_V3_NOT_LIVE_SELECTED",
+    "substantive_known_codes": [
+      "1.0",
+      "2.0",
+      "3.0",
+      "4.0",
+      "5.0",
+      "6.0",
+      "10.0"
+    ],
+    "system_missing_state": "MISSING"
   },
   "residual": {
+    "aggregate_correction": "7150 physically observed = 7112 processed-label cells + 38 unlabeled cells; plus 187 system missing; total 7337.",
     "cells": 38,
-    "classification": "UNLABELED_OBSERVED_NUMERIC_CODE__NO_CODEBOOK_OR_PHYSICAL_LABEL__NO_MISSING_DECLARATION",
+    "classification": "UNLABELED_IN_PHYSICAL_CODEBOOK__PRIMARY_SOURCE_QUESTIONNAIRE_CORROBORATES_7_OTHER__NO_MISSING_DECLARATION",
     "code": 7.0,
     "field": "q217",
-    "known_labeled_cells": 7150,
-    "label_verified": false,
+    "known_labeled_cells": 7112,
+    "label_verified": true,
+    "processed_codebook_physical_label_verified": false,
+    "processed_label_count": 7112,
+    "questionnaire_code_7": "Other (primary source questionnaire page 5)",
+    "questionnaire_label_verified": true,
     "system_missing_cells": 187,
-    "total_rows": 7337
+    "total_rows": 7337,
+    "unlabeled_observed_cells": 38,
+    "unlabeled_processed_count": 38
   },
   "schema": "ANVIL_SRC04_Q217_MAPPING_RECEIPT@1",
   "source_access": {
@@ -131,7 +187,7 @@
   "status": "EXACT_Q217_CODE_7_HELD__NO_LABEL__CANDIDATE_VALIDATED_NOT_APPLIED",
   "tests": {
     "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q ... WORKER_RETURNS/ANVIL_SRC04_Q217_MAPPING_20261118/tests",
-    "result": "5 passed in 0.02 s"
+    "result": "6 passed in 0.07 s"
   },
   "wave": "I"
 }

@@ -1,39 +1,52 @@
 {
-  "schema": "ANVIL_SRC04_Q217_MAPPING_PATCH_CANDIDATE@1",
-  "status": "PROPOSED_NOT_APPLIED_TO_ACCEPTED_CONFIG",
-  "source_id": "SRC04",
-  "field": "q217",
+  "canonical_scientific_or_rights_promoted": false,
   "config_base": {
+    "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
     "commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
-    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
     "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
-    "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d"
+    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json"
   },
-  "operations": [
-    {
-      "op": "add_response_value_rule",
-      "raw_value": 7.0,
-      "missing_state": "OBSERVED_STORAGE_VALUE",
-      "response_state": "INVALID_UNRESOLVED",
-      "canonical_value": null,
-      "label": null,
-      "reason": "Observed in 38 cells; code 7.0 has no codebook or physical label and no missing declaration. Preserve typed unknown; do not infer."
-    },
-    {
-      "op": "change_response_state",
-      "raw_value": 99.0,
-      "response_state": "REFUSAL",
-      "canonical_value": null,
-      "reason": "Source codebook and physical metadata label code 99.0 'decline to answer'."
-    }
-  ],
   "evidence": [
     "evidence/existing_construction_residual.json",
     "evidence/source_codebook_q217.json",
     "evidence/physical_metadata_q217.json",
     "evidence/config_q217.json",
-    "evidence/q217_aggregate.json"
+    "evidence/q217_aggregate.json",
+    "evidence/questionnaire_q217_scan.json"
   ],
-  "validation": "evidence/q217_candidate_validation.json",
-  "canonical_scientific_or_rights_promoted": false
+  "field": "q217",
+  "live_selection_changed": false,
+  "operations": [
+    {
+      "evidence": "evidence/questionnaire_q217_scan.json (page 5, q217 line)",
+      "label": "Other",
+      "op": "add_physical_label",
+      "raw_value": 7.0
+    },
+    {
+      "canonical_value": null,
+      "label": "Other",
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "op": "add_response_value_rule",
+      "raw_value": 7.0,
+      "reason": "Direct same-wave questionnaire corroborates 7=Other; preserved as source-special, not substantive.",
+      "response_state": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "canonical_value": null,
+      "op": "change_response_state",
+      "raw_value": 99.0,
+      "reason": "Source codebook/physical labels and questionnaire: decline to answer.",
+      "response_state": "REFUSAL"
+    }
+  ],
+  "schema": "ANVIL_SRC04_Q217_MAPPING_PATCH_CANDIDATE@1",
+  "source_id": "SRC04",
+  "status": "MATERIALIZED_AS_SELECTABLE_V3_NOT_LIVE_SELECTED",
+  "successor": {
+    "canonical_sha256": "323c1447e76ad447163514f6805c26f4b7033cd34f042d1b59bee91f2274a70c",
+    "file_sha256": "5aeca1d70d2de1148c7f6aff163eeef2a3cefc3a034297e7f90ec77ed7ff3d71",
+    "path": "WORKER_RETURNS/ANVIL_SRC04_Q217_MAPPING_20261118/source.config.repaired.v3.json"
+  },
+  "validation": "evidence/q217_v3_validation.json"
 }
