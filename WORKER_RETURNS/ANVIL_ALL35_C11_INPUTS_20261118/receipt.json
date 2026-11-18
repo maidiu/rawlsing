@@ -91,8 +91,8 @@
     "no_inference": true
   },
   "tests": {
-    "path": "tests/test_all35_producer.py",
-    "result": "6 passed in 4.74 s",
+    "path": "tests/test_all35_producer.py; tests/test_testonly_transfer.py",
+    "result": "6 passed in 5.14 s",
     "exit": 0,
     "coverage": [
       "all35 metadata positive/typed holds",
@@ -100,7 +100,11 @@
       "codebook drift refusal",
       "data path drift refusal",
       "SRC04 config drift refusal",
-      "actual small sourcefree typed bundle build/reopen/pre-source refusal"
+      "actual small sourcefree typed bundle build/reopen/pre-source refusal",
+      "fresh-process exact-held reopen positive",
+      "revoked exact-current refusal",
+      "wrong-root/scope refusal",
+      "forged pickle digest refusal before deserialization"
     ]
   },
   "limits": [
@@ -129,7 +133,8 @@
     "reopen_status": "FRESH_PROCESS_FULL_FAMILY_REOPEN_PASS",
     "refusal_status": "SOURCE_CENSUS_SHA_MISMATCH_BEFORE_SOURCE_ACCESS",
     "original_q2_executable": false,
-    "test": "tests/test_testonly_transfer.py"
+    "test": "tests/test_testonly_transfer.py",
+    "frozen_bundle_notes": "Canonical d875 proof retained; repaired portable replay is in .harness_repair."
   },
   "src17_correction": {
     "rights_decision": "AUTHORIZED_FOR_THIS_HOST_PURPOSE",
@@ -137,5 +142,26 @@
     "i03_i05": "EXCLUDED",
     "q2_inputs": "HELD",
     "permission_bytes_preserved": true
+  },
+  "harness_repair": {
+    "frozen_input": "d8758a1b1e776406aac551ccc1b4822ed03639d3",
+    "q2_interfaces": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "scope": "proof harness only; sourcefree 5-row fixture; no production CURRENT",
+    "old_defect_reproduced": "e3d4a23de5186cd8870ed7fc23bb5cb7e8b438242c59e78f04cb3d1abdd63d05",
+    "old_defect": "ANVIL_REOPEN_MODE=revoked still reopened PASS under unconditional lambda _roots: True",
+    "positive_fresh_root": "3bbb8843bf8243a1daec5a8da9480bc4e64cd374c595cda0b7ad0b0a0ed0978e",
+    "positive_build": "ecd1acd6b7ff01c6931a2ac3a1b4e91769a9afcec53d2265c05716430508bcea",
+    "revoked_refusal": "7f51107fba3f7adc2e131ac47465c20063288e3b9778e0ebed02eac5c8b53afc",
+    "wrong_root_refusal": "2c4f4ba734d0599e5f56f1c670cc5a65972689feb42f4088a74e81ad1356dc81",
+    "source_mismatch_refusal": "c220809e723b1d2b400965a637965eff029a3bf247f3b1c46ac4c3c528b42cc9",
+    "pickle_digest_refusal": "06113c4d3f215355902b459f0854ec284d16777c4574cc96c373331a388a8f71",
+    "commands": "REPAIR_COMMANDS.md",
+    "tests_evidence": "9d4c8a3cd125615a55cf725b5a21b87ae6704455542959fb66c766e124501f82",
+    "fresh_root": "WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/tmp/fresh_repair",
+    "canonical_frozen_proof_untouched": true,
+    "original_rows_changed": false,
+    "src17_scope_preserved": true,
+    "other_checkout_replay": "444ee9153967d23acca9410dd25b274ee0d248a5815d7cad2759fe7fdddc1ef1",
+    "other_checkout_note": "Copied scripts under a fresh checkout-shaped tree with only rawlsing_next symlinked; emitted source/estate paths were relative to that checkout."
   }
 }

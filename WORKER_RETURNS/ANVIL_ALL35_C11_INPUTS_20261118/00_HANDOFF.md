@@ -100,6 +100,27 @@ reloaded from one existing 5-row sourcefree fixture. It performs:
 This is **separate** from the 35 original metadata bundles and is not counted
 as an original-source executable input.
 
+## Proof-harness repair
+
+The frozen `d8758a1b` harness had two observed defects: unconditional
+`current_authorizer=lambda _roots: True` on cold reopen, and pickle load before
+checking its emitted digest. Both are repaired in `testonly_bundle/`:
+
+- reopen now uses the existing exact-held manifest/roots callback pattern;
+  revoked and wrong-root/scope cases both refuse;
+- `build_bundle.py` validates the local TEST_ONLY manifest marker, relative
+  pickle path, and SHA-256 digest **before** `pickle.loads`; arbitrary pickle
+  packages are not accepted as original input;
+- replay root is an explicit fresh empty directory, with relative source path;
+  `run.py` refuses the canonical return and non-empty roots;
+- canonical frozen proofs and all 35 original rows are unchanged.
+
+Exact commands: `REPAIR_COMMANDS.md`.
+
+Evidence: `evidence/reproduce_old_defect.json`,
+`evidence/fresh_repair_proof/`, `evidence/fresh_repair.out`,
+`evidence/tests_repair.txt`.
+
 ## Unresolved required Q2 fields
 
 For every source, the following current Q2 inputs are still absent:
@@ -125,7 +146,7 @@ resolver.
 ## Tests
 
 ```text
-6 passed in 4.74 s
+6 passed in 5.14 s
 ```
 
 - all-35 metadata positive and typed holds;
