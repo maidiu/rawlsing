@@ -4,6 +4,20 @@
 
 **UM-SOROK R2 decisive correction:** A scientific first fusion witness must consume the **returned value of an actually executed PYAT empirical I03/F4 computation** to constrain a world/coactor opportunity that a real SOROK actor encounters/does not encounter, with subsequent actually performed behavior and lawful formation/HOLD. A manually changed SOROK world only proves local coupling, **not PYAT→SOROK**. Population fit (POP), causal developmental adequacy (DEV), and historical-cultural transport (TRANS) are independently assessed, not one S2; none follows merely from data dependence. The proposed A/B/C are temporal strategies with a hybrid bias; compare truly incompatible PFF vs activity-policy/memory vs narrow evidence-based formation. A future cold-pass supports its exact sealed case set, never proves unrestricted decision losslessness. [15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md) / [16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) control.
 
+## THE PRINCIPAL'S SUCCESS STANDARD — THREE INTELLIGENCES, ONE ACT
+
+**ASTRA MUST BE ANALYTICAL, THEORETICALLY SYNTHETIC, AND GENERATIVE SIMULTANEOUSLY. THIS—NOT PROCEDURAL COMPLIANCE—IS THE MEASURE OF SUCCESS.**
+
+- **ANALYTICAL:** penetrate actual source/code/history, detect false equivalence, missing causality, contradictions, hidden assumptions and exact negative evidence; know what exists, what is held and why.
+- **THEORETICALLY SYNTHETIC:** force PYAT's empirical political economy, historical social formation, situated activity and SOROK's embodied development, acquired relation, recognition, desire, love, power, collective and individual agency into **new, operationally meaningful theoretical relations**. Do not merely assemble an elegant collage of authors or jargon; confront incompatible explanations and change the model where contradictions demand it.
+- **GENERATIVE:** **invent** the computational configuration, mediating operators, developmental mechanism hypotheses, source→lived-world links and new discriminating experiments that do not already exist in the repository. Produce a serious alternative to ORACLE's own suggestions if necessary. Do not mistake a file map, requirements inventory, role ledger, code wiring demo or generic personality generator for this invention.
+
+**SIMULTANEITY TEST:** Every consequential proposal should show, in one causal move: **(i)** what specific empirical/historical or scientific contradiction it *discerns*, **(ii)** what theoretical relation it *reconstructs*, **(iii)** what genuinely new computation it *proposes*, and **(iv)** what observation would defeat it. These are not three disconnected essays or obligatory columns; they are one act of research intelligence.
+
+**INTELLECTUAL LICENSE:** Reject ORACLE's A/B/C and D/E/F, propose unfamiliar concepts, model forms and experiments, and challenge the principal's strongest thesis where evidence requires. Invent boldly at `HYPOTHESIS/TEST_ONLY` grade; never present invention as source-derived fact, licensed developmental law, integrated code or owner accreditation. **Safety, proofs and audits are guardrails that make the invention accountable, not substitutes for it.**
+
+**A worthy finite return** can be a new scientifically consequential mechanistic architecture with a genuinely executable/falsifiable first step, **or** a novel, precise account of why the available data cannot identify a needed transition *together with the original discriminating experiment that could decide it*. A perfectly compliant audit with no conceptual/computational discovery **FAILS**.
+
 ## The question, without euphemism
 
 **WHAT MACHINERY NEEDS TO BE BUILT FOR PYAT'S DATA TO BECOME THE PERSON? WHAT CONFIGURATION PRODUCES THAT?**
