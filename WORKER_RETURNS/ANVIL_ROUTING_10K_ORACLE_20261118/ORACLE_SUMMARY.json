@@ -1,0 +1,139 @@
+{
+  "schema": "ANVIL_ROUTING_10K_F2_ORACLE_SUMMARY@1",
+  "fixture": {
+    "label": "PYAT-1006-SCALE-10K-20261118",
+    "respondents": 10000,
+    "questions": 5,
+    "manifest_sha256": "e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+    "estate_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/.local-data-10k/releases/0bcf5d40882ac09fc4cd7083c20d2ce32763e64dcd428f387e6da27b80391aad",
+    "release_ref": {
+      "content_hash": "e8f79a13bbc8aea3fb8a5d647fb677dc1f434f5509c145e1d93e858ff09e31fe",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-1006-SCALE-10K-20261118"
+    },
+    "i02": {
+      "logical": "a0787391b8e79681a10631af40a51740ec0896da35d7d1641a0d3c8d1e341c9e",
+      "physical": "3be20db299979324f993e6b73e99cacd675b73db6a91aa4b6998eb9ca11766f4",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-PYAT-1006-SCALE-10K-20261118|867cb924256b4945fba5abda4ad9e7e7c7ffd8dc8abc1545b8669a0267208447",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:b9b8f77660908b1d36b1ce1893d3f02eeeef5495bf71497c36a2bc1c8047ee8d|b9b8f77660908b1d36b1ce1893d3f02eeeef5495bf71497c36a2bc1c8047ee8d",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|SOURCE-PYAT-1006-SCALE-10K-20261118|fdbeca9a18605cce8aa3cd0fbe662ef15b8ae2427a505873fc8288bf97b46c1f",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:126a42ee320ac089d43272a0e5413f8d74cbcede7ac181b5b2e41c55298023c8|126a42ee320ac089d43272a0e5413f8d74cbcede7ac181b5b2e41c55298023c8"
+    },
+    "source_open_classification": "one os.open is temporary native I03 session directory, not raw source",
+    "accepted_truth_review": "55d2239e9ea98b3e47aa02a7969cb21c0624115e",
+    "accepted_truth_review_receipt": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/REVIEW_RECEIPT.json",
+    "accepted_truth_review_receipt_sha256": "070c97c6f48c187ef7b3b78cab6cfaa9672c9c50e993be849216910b55bddc8a",
+    "g5_verification_all": true,
+    "g5_semantic_all": true,
+    "g5_width_all": true
+  },
+  "operations": {
+    "f2_forward_raw": {
+      "risk_count": 10000,
+      "risk_order_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "risk_set_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "denom_count": 5000,
+      "denom_order_sha256": "4f87ca252fa67e21fcdebe29a3d6e65d22ccea752a1dba7fa69fbf6518777b17",
+      "denom_set_sha256": "4f87ca252fa67e21fcdebe29a3d6e65d22ccea752a1dba7fa69fbf6518777b17",
+      "cells": [
+        {
+          "cell": "0",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 3333
+        },
+        {
+          "cell": "1",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1667
+        }
+      ],
+      "expected_raw": {
+        "raw_numerator_support": 5000,
+        "raw_denominator_support": 5000,
+        "typed_state": "SUPPORTED"
+      },
+      "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:d7009e0b440ebe2ce609d3588f2fff2076eed78501295adf2e590e535821ce09|d7009e0b440ebe2ce609d3588f2fff2076eed78501295adf2e590e535821ce09",
+      "fact_canonical_sha256": "25593d4f520dbce843765103da3ca790ba5c3515d1230491b20ded0f674d15db",
+      "payload_file_sha256": "f86668fd138aabb774fe8703966a0a29984a3c2fcd0a5aaf7748661ef1ee741b",
+      "replay_ref": "PRE553_I03_QUERY_REPLAY|urn:rawlsing:pre553:i03-query-replay:sha256:7a7be0dfaaeba2884b4455253ac368337bcf0ec708bd9e31f1c39ec682d3fc9d|7a7be0dfaaeba2884b4455253ac368337bcf0ec708bd9e31f1c39ec682d3fc9d",
+      "provenance_count": 25003,
+      "provenance_sha256": "e4eae355e347d0c32b28a4b1ebd7c619bee619387cd6219a6dc31fe379cef092"
+    },
+    "f2_reverse_raw": {
+      "risk_count": 10000,
+      "risk_order_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "risk_set_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "denom_count": 3333,
+      "denom_order_sha256": "e481b104767b2a23a2942123ae5865e0416b78bc5d7f12883dec0bfad1730417",
+      "denom_set_sha256": "e481b104767b2a23a2942123ae5865e0416b78bc5d7f12883dec0bfad1730417",
+      "cells": [
+        {
+          "cell": "0",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1666
+        },
+        {
+          "cell": "1",
+          "cell_state": "OBSERVED_POSITIVE",
+          "raw_numerator_support": 1667
+        }
+      ],
+      "expected_raw": {
+        "raw_numerator_support": 3333,
+        "raw_denominator_support": 3333,
+        "typed_state": "SUPPORTED"
+      },
+      "fact_ref": "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:720a158498d583f1c94285c664cb571e91d68f626b49898ba9a68328140dca1d|720a158498d583f1c94285c664cb571e91d68f626b49898ba9a68328140dca1d",
+      "fact_canonical_sha256": "96db45da1e205f0e62d4b3d624a4285a60df9054dceb4b2f2ccb54d339f7cfd7",
+      "payload_file_sha256": "f06e9a0a54da90a4d034590f70fbe1b857c9e3764902a3197a60076b593d7771",
+      "replay_ref": "PRE553_I03_QUERY_REPLAY|urn:rawlsing:pre553:i03-query-replay:sha256:d3d12648b7c259d6f807466ad7f9a27f9404608e66cf654b86f9365752c27ed6|d3d12648b7c259d6f807466ad7f9a27f9404608e66cf654b86f9365752c27ed6",
+      "provenance_count": 23336,
+      "provenance_sha256": "636c6458eb1141234d1e8385772a81e0cfc125c83e00f384e7c1dd7dba895669"
+    }
+  },
+  "sources": {
+    "expected_sets": {
+      "path": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/EXPECTED_SETS.json.gz",
+      "sha256": "4b199527567c8dcd0cdc12736d6a974a0289a5a31322b72ff2eb53ddcfdb09ed",
+      "role": "accepted G5 expected set source; expected array order not used as output order"
+    },
+    "actual_sets": {
+      "path": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/ACTUAL_SETS.json.gz",
+      "sha256": "77ba3751db2ceea2f26f4b4e6c2dd408ebf965a83b902347a5cda8013b44179d",
+      "role": "accepted G5 actual sets/order corroboration"
+    },
+    "truth_review_receipt": {
+      "path": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/REVIEW_RECEIPT.json",
+      "sha256": "070c97c6f48c187ef7b3b78cab6cfaa9672c9c50e993be849216910b55bddc8a",
+      "role": "accepted frozen truth correction review"
+    },
+    "semantic_result": {
+      "path": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/SEMANTIC_CLOSURE/RESULT.json",
+      "sha256": "aaa676323c41934f5df2e7135f95fc981967201da9b5203de9069cf0b1924156",
+      "role": "fixture identity, fact/provenance/replay/cell operation metadata"
+    },
+    "expected_truth": {
+      "path": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/SEMANTIC_CLOSURE/EXPECTED_TRUTH.json",
+      "sha256": "2d358038a6133623c9c6cafa544d9e2c4d1a54ef4dff4fe9cb5a4188fdbf6952",
+      "role": "accepted expected cells and counts"
+    },
+    "verification": {
+      "path": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_TRUTH_CORRECTION_G5_20261118/VERIFICATION.json",
+      "sha256": "566ce3686e9d8dd90e83f673fee9b09d61c9478b30a63721c30e750d038d1cda",
+      "role": "accepted truth correction checks"
+    },
+    "f2_forward_payload": {
+      "path": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/SEMANTIC_CLOSURE/f2_forward_raw.payload.json.gz",
+      "sha256": "f86668fd138aabb774fe8703966a0a29984a3c2fcd0a5aaf7748661ef1ee741b",
+      "role": "exact earlier full fact payload"
+    },
+    "f2_reverse_payload": {
+      "path": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/SEMANTIC_CLOSURE/f2_reverse_raw.payload.json.gz",
+      "sha256": "f06e9a0a54da90a4d034590f70fbe1b857c9e3764902a3197a60076b593d7771",
+      "role": "exact earlier full fact payload"
+    }
+  },
+  "pins_file": "ORACLE_PINS.json.gz",
+  "pins_file_sha256": "fce898bf7de83d02c0eb175ea097f2ec9101ccb24fcbc84b04c3135ff5f9b447"
+}
