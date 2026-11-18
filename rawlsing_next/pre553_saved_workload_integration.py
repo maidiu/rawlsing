@@ -29,6 +29,7 @@ from rawlsing_next.pre553_saved_c11_admission import (
     SavedC11AdmissionError,
     SavedWorkloadOwnerHandoffRequired,
 )
+from rawlsing_next.pre553_prepared_saved_i03 import PreparedSavedC11Admission
 
 
 def execute_saved_i03(
@@ -39,8 +40,9 @@ def execute_saved_i03(
 ) -> Any:
     """Execute one exact normal I03 request on the admitted saved estate."""
 
-    if type(admission) is not SavedC11Admission:
-        raise SavedC11AdmissionError("exact SavedC11Admission required")
+    if type(admission) not in (SavedC11Admission, PreparedSavedC11Admission):
+        raise SavedC11AdmissionError(
+            "exact SavedC11Admission or PreparedSavedC11Admission required")
     return admission.execute_i03(query_ref=query_ref, predicate_ref=predicate_ref)
 
 
@@ -51,8 +53,9 @@ def execute_saved_i05(
 ) -> Any:
     """Execute one exact I05 frontier on the admitted saved estate."""
 
-    if type(admission) is not SavedC11Admission:
-        raise SavedC11AdmissionError("exact SavedC11Admission required")
+    if type(admission) not in (SavedC11Admission, PreparedSavedC11Admission):
+        raise SavedC11AdmissionError(
+            "exact SavedC11Admission or PreparedSavedC11Admission required")
     return admission.execute_i05(discovery_authority_ref=discovery_authority_ref)
 
 
@@ -91,27 +94,29 @@ def execute_saved_batch(
 
     if admission is None or manifest is None or predicate_ref_by_query is None:
         require_batch_owner_ack()
-    if type(admission) is not SavedC11Admission:
-        raise SavedC11AdmissionError("exact SavedC11Admission required")
+    if type(admission) not in (SavedC11Admission, PreparedSavedC11Admission):
+        raise SavedC11AdmissionError(
+            "exact SavedC11Admission or PreparedSavedC11Admission required")
     if not isinstance(predicate_ref_by_query, Mapping):
         raise SavedC11AdmissionError("exact query/predicate binding map required")
     discovery_refs = dict(discovery_authority_ref_by_key or {})
 
-    def execute(unit):
+    def execute(unit, prepared=None):
         admission.check_current()
+        target = prepared if prepared is not None else admission
         if unit.job_kind == "QUERY":
             predicate_ref = predicate_ref_by_query.get(unit.job_ref.key)
             if predicate_ref is None:
                 raise SavedC11AdmissionError(
                     "saved Batch query unit lacks exact predicate binding"
                 )
-            result = admission.execute_i03(
+            result = target.execute_i03(
                 query_ref=unit.job_ref, predicate_ref=predicate_ref,
             )
             refs = tuple(f.ref for f in result.facts)
         else:
             authority_ref = discovery_refs.get(unit.job_ref.key, unit.job_ref)
-            result = admission.execute_i05(
+            result = target.execute_i05(
                 discovery_authority_ref=authority_ref,
             )
             refs = tuple(r.ref for r in result.receipts)
@@ -120,21 +125,29 @@ def execute_saved_batch(
             refs, (admission.replay_ref,),
         )
 
+    def bindings(prepared=None):
+        return {
+            "QUERY": ExecutorBinding(
+                admission.replay_ref, lambda unit: execute(unit, prepared),
+            ),
+            "DISCOVERY": ExecutorBinding(
+                admission.replay_ref, lambda unit: execute(unit, prepared),
+            ),
+        }
+
     runner = BatchExecutionRunner(
         manifest=manifest, repository=admission,
         prior_receipts=tuple(prior_receipts), saved_mode=True,
     )
-    runner.run(
-        executors={
-            "QUERY": ExecutorBinding(
-                admission.replay_ref, execute,
-            ),
-            "DISCOVERY": ExecutorBinding(
-                admission.replay_ref, execute,
-            ),
-        },
-        max_units=max_units,
-    )
+    if type(admission) is PreparedSavedC11Admission:
+        with admission.prepared_i03() as prepared:
+            runner.run(
+                executors=bindings(prepared), max_units=max_units,
+            )
+    else:
+        runner.run(
+            executors=bindings(), max_units=max_units,
+        )
     admission.check_current()
     return runner
 

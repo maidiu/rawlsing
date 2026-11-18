@@ -1,0 +1,145 @@
+{
+  "schema": "ANVIL_CUT1_IMPLEMENTER_BASELINE_RECEIPT@1",
+  "status": "BASELINE_READY_PENDING_CURRENT_OWNER_ACK",
+  "task": "ANVIL_ENGINEERING_CUT1_IMPLEMENTER_20261117",
+  "branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+  "product_baseline": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "startup_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "protected_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "product_edits": "NONE",
+  "rawlsing_next_edits": "NONE",
+  "test_edits": "NONE",
+  "canonical_tests_added": "NONE__OWN_RETURN_WITNESS_ONLY",
+  "new_test_under_rawlsing_next": false,
+  "canonical_product_diff": "EMPTY",
+  "sourcefree": true,
+  "original35_used": false,
+  "production_current_used": false,
+  "protected_write": false,
+  "owner_ack": "PENDING_CURRENT_OWNER_ACK__PRIOR_ACK_IS_NOT_EXTENSION",
+  "environment": {
+    "runner": "existing mainMac / OpenCode / local Python",
+    "python": "3.11.3",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.0.2",
+    "installation_or_environment_change": false,
+    "cwd": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER"
+  },
+  "source_pins": {
+    "rawlsing_next/pre553_saved_workload_integration.py": "cc8aa32512378261406d765f0b049c748cb3e11f",
+    "rawlsing_next/pre553_batch_runner.py": "49e3974c658d66a270815d9faa3798b40d4488b1",
+    "rawlsing_next/pre553_prepared_saved_i03.py": "bcb146edae680028e027e47cae45891693f63526",
+    "rawlsing_next/pre553_saved_c11_admission.py": "22749addc1fca5f0b90e12728847c390aafa7a84"
+  },
+  "baseline_tests": {
+    "focused_cut1": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_prepared_saved_i03.py rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pre553_batch_runner.py",
+      "tests": 58,
+      "passed": 58,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 17.523,
+      "log": "evidence/baseline_cut1.txt",
+      "junit": "evidence/baseline_cut1.junit.xml",
+      "by_class": {
+        "test_pre553_prepared_saved_i03": 3,
+        "test_pre553_direct_estate_i03": 7,
+        "test_pyat997_s1e_saved_native_first_consumer": 24,
+        "test_pyat991_s2d_saved_admission": 8,
+        "test_pre553_batch_runner": 16
+      }
+    },
+    "batch_and_five_readers": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat991_s2d_five_readers.py rawlsing_next/tests/test_pre553_batch_runner.py",
+      "tests": 23,
+      "passed": 23,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time_seconds": 6.13,
+      "log": "evidence/batch_court.txt"
+    },
+    "prepared_direct_one_build_four_operations": {
+      "test": "test_pre553_prepared_saved_i03.py::test_prepared_session_matches_baseline_and_builds_one_index",
+      "result": "PASS",
+      "evidence": "one DirectEstateI03Session index build across four queries; exact native fact refs/projections parity"
+    },
+    "prepared_i05_parity": {
+      "test": "test_pre553_prepared_saved_i03.py::test_prepared_i05_reuses_session_with_exact_discovery_parity",
+      "result": "PASS"
+    },
+    "legacy_saved_batch": {
+      "test": "test_pyat991_s2d_five_readers.py::test_saved_batch_actual_native_scheduler",
+      "result": "PASS",
+      "note": "existing saved Batch/NORMAL/COMPLETED/PARTIAL/ABSENT paths retained"
+    }
+  },
+  "prepared_abi_red": {
+    "witness": "evidence/test_prepared_abi_witness.py",
+    "witness_source": "copied read-only from prior independent ABI witness; no peer writes or hard-coded checkout path",
+    "witness_result": "2 passed, 1.53s",
+    "witness_log": "evidence/prepared_abi_red.txt",
+    "direct_i03_error": {
+      "type": "SavedC11AdmissionError",
+      "message": "exact SavedC11Admission required"
+    },
+    "batch_error": {
+      "type": "BatchIntegrityError",
+      "message": "repository must be accepted I02 C11Repository or exact SavedC11Admission"
+    },
+    "fixture": {
+      "admission_type": "PreparedSavedC11Admission",
+      "manifest_sha256": "87f5c6c68da3707c4fa565b929c9411ffc6b18f161533788885dd2be943496a9",
+      "direct_queries": 4,
+      "sourcefree_test_only": true
+    },
+    "classification": "RED_FOR_DESIRED_PREPARED_SAVED_BATCH_FEATURE__NOT_FAILING_EXISTING_TEST"
+  },
+  "baseline_disposition": "BASELINE_READY_PENDING_CURRENT_OWNER_ACK",
+  "cut_contract": "EXECUTABLE_CUT_CONTRACT.md",
+  "planned_production_write_scope": {
+    "files": [
+      "rawlsing_next/pre553_saved_workload_integration.py",
+      "rawlsing_next/pre553_batch_runner.py"
+    ],
+    "new_test_after_ack": "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py",
+    "third_production_file_required": false,
+    "frozen": [
+      "pre553_saved_c11_admission.py",
+      "pre553_prepared_saved_i03.py",
+      "pre553_direct_estate_i03.py",
+      "pre553_source_direct_parquet_estate.py",
+      "pre553_empirical_query.py",
+      "normal/completed/partial/absent/resume",
+      "native writer/evaluator/issuer"
+    ]
+  },
+  "source_correctives": {
+    "w05_three_current_blobs": {
+      "rawlsing_next/pre553_direct_estate_i03.py": "8825832f8067c7fce7a99a94505743cbb4eada06",
+      "rawlsing_next/pre553_source_direct_parquet_estate.py": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+      "rawlsing_next/_pre553_query_eval.py": "87849f7cc41a2d4647582aba2eae00ab4531b90b"
+    },
+    "w05_three_match_1c37/_357a": true,
+    "prepared_blob": "bcb146edae680028e027e47cae45891693f63526",
+    "saved_base_blob": "22749addc1fca5f0b90e12728847c390aafa7a84",
+    "r03_corrective_source_preserved": true,
+    "old_branch_merge": false,
+    "duplicate_implementation": false,
+    "source_science_current_issuer_grant": false
+  },
+  "unexecuted": [
+    "new prepared Batch feature",
+    "new test_anvil_prepared_saved_batch_cut1.py",
+    "1/10/100 wide operation benchmark",
+    "100k/6GiB",
+    "original35/native/source/current/science/actor/issuer/protected merge",
+    "S2-A kernel re-repair"
+  ],
+  "next_gate": "Fresh current owner ACK for the exact two production files and new test; then same branch may implement and return a new exact cut.",
+  "stop": "BASELINE_READY_PENDING_CURRENT_OWNER_ACK"
+}
