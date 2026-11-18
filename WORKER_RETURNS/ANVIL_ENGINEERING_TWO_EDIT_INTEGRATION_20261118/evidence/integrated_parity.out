@@ -1,0 +1,115 @@
+{
+  "schema": "ANVIL_PRODUCTION_POSTCONSUMER_WITNESS@1",
+  "sourcefree": true,
+  "fixture": {
+    "source_sha256": "c9911a0c4448b34bbe82175f35345e921fc935276d7e04eaf1eb72dcecf90418",
+    "estate_manifest_sha256": "99624c65d0e2fdb61ecd465a5cc182d79104ff63b1e765d6f4882ccb1af82f9e",
+    "roots": {
+      "logical": "8d274dbe42c2d701f41b18349f43b1d10271d72b323bb0c59a33ed47966ea228",
+      "physical": "d986a9f373c0d8e6068cdaaddadbb4c2e524e02f95a22954ac1f18277d83436a",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|df5b59f125cdbfcfa91d0e97e9984faa8773118baf7ba08e310d25e45d94ffed",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|c9911a0c4448b34bbe82175f35345e921fc935276d7e04eaf1eb72dcecf90418",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:768779556afa0e31928cc0a710c05ef67e682eec1f14fbb570eb6cdad9a79094|768779556afa0e31928cc0a710c05ef67e682eec1f14fbb570eb6cdad9a79094",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1"
+    },
+    "family_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 5,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RoutingEligibilityFact": 5,
+      "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "ReplayManifest": 1,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "stats": {
+      "source_reads": 1,
+      "source_prehash_passes": 0,
+      "snapshot_acquisitions": 1,
+      "decode_calls": 1,
+      "key_witness_passes": 0,
+      "cell_passes": 1,
+      "full_c11_builds": 0,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_rows": 5,
+      "source_columns": 2,
+      "event_count": 5,
+      "coordinate_count": 5,
+      "weight_count": 0,
+      "spool_bytes": 31090,
+      "spool_files": 3,
+      "cleanup_complete": true
+    }
+  },
+  "compiler": {
+    "v1_queries": 0,
+    "v1_discoveries": 1,
+    "v2_queries": 12,
+    "v2_discoveries": 1,
+    "v2_original_u_root": "522d4f1c9576b249a0320a1c7e95e04de5a612aad51d657704139faad23745fc",
+    "v2_envelope_sha256": "ae16a5a4ea846bc112aaa6530fe8fda002c5dbaae40b3cd0171759408174d4d0"
+  },
+  "base": {
+    "admission_class": "SavedC11Admission",
+    "batch_units": 13,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "join_hash": "886c5d452c8d078beab53486e8b341f5c97d1914766557101328cc585d87c9ec",
+    "join_audit": {
+      "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+      "operation_count": 22,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "positive_native_linked_operations": 6,
+      "native_discovery_candidates_exactly_joined": 8,
+      "pending_eligible_operations": 2,
+      "batch_units": 13,
+      "native_completed_units_rechecked": 13,
+      "issue_grants_created": 0,
+      "preconsumer_handoff_unchanged": true,
+      "independent_g5": "NOT_RUN"
+    }
+  },
+  "prepared": {
+    "admission_class": "PreparedSavedC11Admission",
+    "batch_units": 13,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "prepared_index_builds": 1,
+    "join_hash": "886c5d452c8d078beab53486e8b341f5c97d1914766557101328cc585d87c9ec",
+    "join_audit": {
+      "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+      "operation_count": 22,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "positive_native_linked_operations": 6,
+      "native_discovery_candidates_exactly_joined": 8,
+      "pending_eligible_operations": 2,
+      "batch_units": 13,
+      "native_completed_units_rechecked": 13,
+      "issue_grants_created": 0,
+      "preconsumer_handoff_unchanged": true,
+      "independent_g5": "NOT_RUN"
+    }
+  },
+  "parity": {
+    "rows": true,
+    "rows_equal": true,
+    "audit_equal": true,
+    "result_hash_equal": true,
+    "batch_provenance_equal": true
+  }
+}

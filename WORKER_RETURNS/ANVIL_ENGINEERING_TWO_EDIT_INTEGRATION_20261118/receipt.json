@@ -1,0 +1,229 @@
+{
+  "schema": "ANVIL_TWO_EDIT_INTEGRATED_QUALIFICATION@1",
+  "task": "ANVIL_ENGINEERING_TWO_EDIT_INTEGRATION_20261118",
+  "status": "FROZEN_AWAITING_DISTINCT_JOINED_REVIEW",
+  "branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+  "integration_parent": "e0445a00f2fbb9643880aeb83452aa956f8134fe",
+  "code_test_sha": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "frozen_locality_source": "60e767a53ecdffaae289a11fc5ce6c40e5c4ecd0",
+  "locality_g5_review": "9ff290fd9d5eda87cb1541bd7b48b48897f6e099",
+  "locality_g5_decision": "ACCEPT_SCOPED_PRODUCTION_LOCALITY_CORRECTION",
+  "postconsumer_author_frozen": "01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd",
+  "postconsumer_g5": "SEPARATE_PENDING_NOT_CLAIMED",
+  "self_acceptance": false,
+  "product_files": {
+    "rawlsing_next/pre553_direct_estate_i03.py": {
+      "blob": "d662fc578a1ecb42d54ec8b4bdab87fd7ecec176",
+      "source": "60e767a53ecdffaae289a11fc5ce6c40e5c4ecd0",
+      "scope": "exact accepted locality correction",
+      "import_method": "git show frozen archive to exact path; no merge/cherry-pick"
+    },
+    "rawlsing_next/pre553_source_postconsumer_receipts.py": {
+      "blob": "0a2e7b899ebd392761d38b8ceb175f0bf81c6378",
+      "source": "01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd",
+      "scope": "exact prepared saved admission postconsumer guard",
+      "unchanged_during_integration": true
+    }
+  },
+  "unchanged_cut1": {
+    "rawlsing_next/pre553_saved_workload_integration.py": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+    "rawlsing_next/pre553_batch_runner.py": "8320f28458fb85aec655d154a2527a161282f56b"
+  },
+  "new_tests": {
+    "rawlsing_next/tests/test_anvil_production_locality_20261118.py": "7373c1704e21bcb4155eb690b17de5ecd8bf22dc",
+    "rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py": "d555f811353532f6df4b1eed3ea3476e4bb87719"
+  },
+  "production_diff_blob_assertions": {
+    "baseline": "347baec696c8b395d750ac3b9e74417a6490c223",
+    "production_files_differing": [
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/pre553_source_postconsumer_receipts.py"
+    ],
+    "exactly_two_production_files": true,
+    "other_production_files": []
+  },
+  "affected_union": {
+    "files": [
+      "test_anvil_prepared_saved_postconsumer_join.py",
+      "test_anvil_production_locality_20261118.py",
+      "test_anvil_prepared_saved_batch_cut1.py",
+      "test_pre553_direct_estate_i03.py",
+      "test_pre553_source_direct_parquet_estate.py",
+      "test_pre553_prepared_saved_i03.py",
+      "test_pre553_empirical_query.py",
+      "test_pyat997_s1e_saved_native_first_consumer.py",
+      "test_pyat997_r03_governed_query_issuer_v2.py"
+    ],
+    "node_counts": {
+      "test_anvil_prepared_saved_postconsumer_join.py": 8,
+      "test_anvil_production_locality_20261118.py": 2,
+      "test_anvil_prepared_saved_batch_cut1.py": 5,
+      "test_pre553_direct_estate_i03.py": 7,
+      "test_pre553_source_direct_parquet_estate.py": 24,
+      "test_pre553_prepared_saved_i03.py": 3,
+      "test_pre553_empirical_query.py": 32,
+      "test_pyat997_s1e_saved_native_first_consumer.py": 24,
+      "test_pyat997_r03_governed_query_issuer_v2.py": 8
+    },
+    "collected": 113,
+    "passed": 113,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "time_seconds": 42.61,
+    "exit": 0,
+    "evidence": [
+      "evidence/integrated_union.txt",
+      "evidence/integrated_union.time",
+      "evidence/node_inventory.txt"
+    ]
+  },
+  "integrated_sourcefree_chain": {
+    "witness": "evidence/integrated_parity.py",
+    "source_sha256": "c9911a0c4448b34bbe82175f35345e921fc935276d7e04eaf1eb72dcecf90418",
+    "estate_manifest_sha256": "99624c65d0e2fdb61ecd465a5cc182d79104ff63b1e765d6f4882ccb1af82f9e",
+    "family_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 5,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RoutingEligibilityFact": 5,
+      "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "ReplayManifest": 1,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "source_stats": {
+      "source_reads": 1,
+      "snapshot_acquisitions": 1,
+      "decode_calls": 1,
+      "full_c11_builds": 0,
+      "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+      "source_rows": 5,
+      "source_columns": 2,
+      "event_count": 5,
+      "coordinate_count": 5,
+      "spool_bytes": 31090,
+      "spool_files": 3,
+      "cleanup_complete": true
+    },
+    "compiler": {
+      "v1_queries": 0,
+      "v1_discoveries": 1,
+      "v2_queries": 12,
+      "v2_discoveries": 1,
+      "v2_original_u_root": "522d4f1c9576b249a0320a1c7e95e04de5a612aad51d657704139faad23745fc",
+      "v2_envelope_sha256": "ae16a5a4ea846bc112aaa6530fe8fda002c5dbaae40b3cd0171759408174d4d0"
+    },
+    "base": {
+      "admission_class": "SavedC11Admission",
+      "batch_units": 13,
+      "batch_states": ["COMPLETED"],
+      "join_hash": "886c5d452c8d078beab53486e8b341f5c97d1914766557101328cc585d87c9ec",
+      "operation_count": 22,
+      "fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+      "positive_native_linked_operations": 6,
+      "pending_eligible_operations": 2,
+      "native_completed_units_rechecked": 13,
+      "native_discovery_candidates_exactly_joined": 8,
+      "issue_grants_created": 0
+    },
+    "prepared": {
+      "admission_class": "PreparedSavedC11Admission",
+      "batch_units": 13,
+      "batch_states": ["COMPLETED"],
+      "prepared_index_builds": 1,
+      "join_hash": "886c5d452c8d078beab53486e8b341f5c97d1914766557101328cc585d87c9ec",
+      "operation_count": 22,
+      "fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+      "positive_native_linked_operations": 6,
+      "pending_eligible_operations": 2,
+      "native_completed_units_rechecked": 13,
+      "native_discovery_candidates_exactly_joined": 8,
+      "issue_grants_created": 0
+    },
+    "parity": {
+      "rows": true,
+      "rows_equal": true,
+      "audit_equal": true,
+      "result_hash_equal": true,
+      "batch_provenance_equal": true
+    }
+  },
+  "locality_integration_evidence": {
+    "actual_respondent_family_used": true,
+    "monkeypatched_product_method": false,
+    "canonical_ref_order_restored": true,
+    "current_before_every_yield": true,
+    "body_poison_refusal_retained": true,
+    "revocation_after_first_yield": true,
+    "revocation_source": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_LOCALITY_G5_20261118/",
+    "g5_sealed_estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+    "g5_actual_f4": {
+      "reused_not_rerun": true,
+      "row_group_reads": 50,
+      "row_group_rows": 25472,
+      "family_object_materializations": 9600,
+      "parity_exact": true,
+      "fact_ref_suffix": "ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94",
+      "external_wall_seconds": 6.539264310966246,
+      "process_tree_rss_peak_sampled_bytes": 131907584,
+      "scratch_peak_sampled_bytes": 30368896
+    },
+    "g5_courts": ["36 passed", "37 passed"],
+    "new_locality_test_nodes": 2
+  },
+  "changed_input_restore": {
+    "source": "test_pyat997_s1e_saved_native_first_consumer.py",
+    "node": "test_source_to_saved_cold_s1c_i03_i05_batch_normal_and_exact_fate_join",
+    "included_in_union": true,
+    "result": "PASS"
+  },
+  "guard_coverage": {
+    "postconsumer_wrong_class_subclass": true,
+    "foreign_runner_repository": true,
+    "root_manifest_drift": true,
+    "revoked_current": true,
+    "unissued_fabricated_query": true,
+    "forged_receipt": true,
+    "source_current_refusal": true,
+    "v1_zero_query_one_discovery_guard": true,
+    "optional_v2_compiler_eligibility_decision_expected_job_receipt_fate": true
+  },
+  "resource": {
+    "union_wall_seconds": 43.23,
+    "union_user_seconds": 39.68,
+    "union_sys_seconds": 10.40,
+    "union_parent_maxrss_bytes": 141873152,
+    "integrated_witness_wall_seconds": 3.17,
+    "integrated_witness_user_seconds": 3.56,
+    "integrated_witness_sys_seconds": 0.53,
+    "integrated_witness_parent_maxrss_bytes": 124973056,
+    "staging_memory": "NOT_MEASURED",
+    "cold_shared_hs_qo": "NOT_RUN__NO_NEW_SCALE_CLAIM",
+    "hundred_k_or_full_benchmark": "NOT_RUN",
+    "note": "G5 sealed f4 is reused at accepted scope; no new benchmark or sealed-estate rebuild"
+  },
+  "limits": [
+    "Sourcefree TEST_ONLY engineering; no original35, native science, production service/CURRENT/actor, issuer/writer/schema, or protected merge.",
+    "Postconsumer G5 remains separate and pending; this is not final joined acceptance.",
+    "Exactly one affected-union execution, 113 nodes; no full matrix or 100k.",
+    "Integrated witness uses the existing small Q2 fixture; family table is present but some families are zero.",
+    "No new source reopening, compiler authority, issuer, or revalidation acceleration.",
+    "No locality benchmark repetition; accepted frozen G5 evidence is cited.",
+    "Temporary fixtures and pre-existing untracked files are not committed."
+  ],
+  "review": {
+    "required": "distinct joined/nonauthor review",
+    "code_test_freeze": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "postconsumer_g5": "separate pending; do not claim acceptance",
+    "next": "freeze this executable cut, push, verify remote, stop for distinct joined review"
+  },
+  "stop": "STOP_FOR_DISTINCT_JOINED_REVIEW"
+}
