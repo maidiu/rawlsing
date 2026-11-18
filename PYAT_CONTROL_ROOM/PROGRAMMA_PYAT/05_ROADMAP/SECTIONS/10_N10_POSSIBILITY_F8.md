@@ -1,5 +1,8 @@
 # ROADMAP:S10 — N10E empirical possibility plus N10W progressive world-conditioned possibility (F8)
 
+> **ONE-PLAN DYNAMIC KNOWLEDGE→V3 LIMIT — AUTHOR CANDIDATE:** N10E/N10W can request new context- and target-conditioned knowledge, true respondent joints, minority alternatives and uncertainty from qualified S04/FF01 without requiring pre-generated pseudo-respondents. V3 separately samples hypothetical complete adult starting configurations on demand. No PYAT person, actual mother/father pair, relationship probability from a within-person survey, actor biography or SOROK psychogenesis. N9 AND N10E and other original IF/rights conditions remain exact. See [single PROGRAMMA execution agenda](../REMAINING_REAL_PYAT_WORK.md).
+
+
 ## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S10 world/individual/terminal requirements (candidate; not a source grant)
 
 **Mandatory world-and-actor question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? These aliases remain OPEN and are grounded in the [existing 27-row PROGRAMMA execution agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). **N9 must assemble rather than fabricate relational pressure; N10W must qualify N9 and N10E together; Sorok V3 must encounter and transform concrete social possibilities rather than inherit the group distribution as its own predestination.** Original source/science/actor gates and S09–S11 stable IDs/IF edges remain unchanged. Formal commissions must satisfy MCR-C exact evidence/consumer requirements.
