@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "checks": {
+    "one_prepared_session": true,
+    "two_completed_units": true,
+    "distinct_operations": true,
+    "baseline_exact": true,
+    "receipts_present": true,
+    "provenance_present": true
+  },
+  "result": "BATCH_RESULT.json",
+  "caps": {
+    "schema": "ANVIL_RETAINED_WIDTH_BATCH_CAPS@1",
+    "limits": {
+      "child_seconds": 240.0,
+      "rss": 6442450944,
+      "scratch": 4294967296,
+      "minimum_free": 8589934592
+    },
+    "observed": {
+      "exit": 0,
+      "abort": null,
+      "wall_seconds": 47.814586700988,
+      "samples": 205,
+      "rss_peak": 148971520,
+      "scratch_peak": 323143200,
+      "free_before": 48008728576
+    },
+    "stdout_tail": "de2616\"\n      ],\n      \"provenance_refs\": [\n        \"C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:8ee4dc6c0d15427f16c2c4c33d3489f48837cce1463f079bcb04ba5be4e11aba|8ee4dc6c0d15427f16c2c4c33d3489f48837cce1463f079bcb04ba5be4e11aba\",\n        \"C11LogicalRelease|REL-PYAT-1006-WIDTH128-600-20261118|2ee554466c767ac61085b7a167dbb7e2bf9634d89beb6f63b7b3809b3af5609e\",\n        \"EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6c30e4f531554ef76f7b749096b58e456f162f3159cbdfe60f5a29942b3fdac2|6c30e4f531554ef76f7b749096b58e456f162f3159cbdfe60f5a29942b3fdac2\"\n      ]\n    }\n  ],\n  \"parity\": {\n    \"baseline_status\": \"AVAILABLE\",\n    \"operations\": [\n      {\n        \"label\": \"f2_forward_raw\",\n        \"baseline_status\": \"AVAILABLE\",\n        \"batch_result_refs\": [\n          \"EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:ef7615883af616bd4a74384a46824e24afe9c53b6cf93a8c69511b741e295c36|ef7615883af616bd4a74384a46824e24afe9c53b6cf93a8c69511b741e295c36\"\n        ],\n        \"full_payload_comparison\": \"NOT_CARRIED_BY_BATCH_RECEIPT\",\n        \"denominator_comparison\": \"NOT_CARRIED_BY_BATCH_RECEIPT\",\n        \"baseline_fact_ref\": \"EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:ef7615883af616bd4a74384a46824e24afe9c53b6cf93a8c69511b741e295c36|ef7615883af616bd4a74384a46824e24afe9c53b6cf93a8c69511b741e295c36\",\n        \"baseline_query_ref\": \"EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:84a8d0642adc388fc87b1af8022940caa74077c5c8ec518437aa546c2e27e753|84a8d0642adc388fc87b1af8022940caa74077c5c8ec518437aa546c2e27e753\",\n        \"baseline_predicate_ref\": \"EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:79b02060ed60be6a2000c5950f70a0dda62d0784f61267a8195219a560684d06|79b02060ed60be6a2000c5950f70a0dda62d0784f61267a8195219a560684d06\",\n        \"fact_ref_equal\": true,\n        \"baseline_has_full_payload\": true,\n        \"query_ref_equal\": true,\n        \"predicate_ref_equal\": true\n      },\n      {\n        \"label\": \"f2_reverse_raw\",\n        \"baseline_status\": \"AVAILABLE\",\n        \"batch_result_refs\": [\n          \"EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:516f4f0eea33c2a6cbd89d326b7168b3b6c243abf0ff1e10b3ab8dd2cade2616|516f4f0eea33c2a6cbd89d326b7168b3b6c243abf0ff1e10b3ab8dd2cade2616\"\n        ],\n        \"full_payload_comparison\": \"NOT_CARRIED_BY_BATCH_RECEIPT\",\n        \"denominator_comparison\": \"NOT_CARRIED_BY_BATCH_RECEIPT\",\n        \"baseline_fact_ref\": \"EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:516f4f0eea33c2a6cbd89d326b7168b3b6c243abf0ff1e10b3ab8dd2cade2616|516f4f0eea33c2a6cbd89d326b7168b3b6c243abf0ff1e10b3ab8dd2cade2616\",\n        \"baseline_query_ref\": \"EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6c30e4f531554ef76f7b749096b58e456f162f3159cbdfe60f5a29942b3fdac2|6c30e4f531554ef76f7b749096b58e456f162f3159cbdfe60f5a29942b3fdac2\",\n        \"baseline_predicate_ref\": \"EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:3592eb8d16f607b87fa40bde6b4f763795baaa4500ad688bbc72e7e756ca499f|3592eb8d16f607b87fa40bde6b4f763795baaa4500ad688bbc72e7e756ca499f\",\n        \"fact_ref_equal\": true,\n        \"baseline_has_full_payload\": true,\n        \"query_ref_equal\": true,\n        \"predicate_ref_equal\": true\n      }\n    ],\n    \"note\": \"Batch receipts carry result refs/receipts; full payload and denominator/cell comparison require the existing direct artifact API and are not faked here.\"\n  },\n  \"full_fact_payload\": {\n    \"status\": \"NOT_CARRIED_BY_BATCH_RECEIPT\",\n    \"reuse\": \"existing execute_i03/artifact-receipt API; not executed by this driver\"\n  },\n  \"denominator_semantics\": {\n    \"status\": \"BATCH_RECEIPT_NOT_CARRIED\",\n    \"note\": \"execute_saved_batch delegates to execute_i03; no denominator is reinterpreted here.\"\n  },\n  \"claims\": {\n    \"one_synthetic_source_wave_country_context\": true,\n    \"multi_country_execution\": false,\n    \"native_or_raw_source\": false,\n    \"performance_claim\": false\n  }\n}\n",
+    "stderr_tail": ""
+  }
+}
