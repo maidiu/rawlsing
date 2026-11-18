@@ -22,3 +22,17 @@ NOT_ADOPTED / 14 HELD / F26 / separate 52/24/21; no new science/engine/DB.
 native/100k, product test, source authority or actor/science grant. The previous
 22 ledger entries remain; entries 023–027 are corrections/extensions, not a
 wholesale rewrite.
+
+
+## Residual correction after same-C recheck `c996cf1a`
+
+| Residual | Former contract | Counterevidence | Correction | Research | Remaining hold |
+|---|---|---|---|---|---|
+| **G4-A** | Event/routing/coordinate/weight identity keys included state | Same stable identity with contradictory state became distinct valid records | Stable keys exclude mutable state/value; state/value are checked content; `TYPED_IDENTITY_CONTENT_CONFLICT` unless exact version/authority distinguishes; legitimate repeat/weight/time/routing distinctions specified | R3-RES-028 | source-specific version/authority exceptions |
+| **G4-B** | `SelectionMembership` = candidate refs + nonselected count | `_build_fact` lines 986/987 require full ordered `risk_set_member_refs`/`denominator_member_refs` | Full exact candidate/risk/denominator member refs + nonselected typed states; counts diagnostic; full `_ReleaseIndex` baseline valid; compact sidecar proposed/owner-qualified | R3-RES-029 | compact exact membership representation/implementation |
+| **G4-C** | “Disk/RAM bounded by selected row groups” | `_evaluate_index_group` loops all R; `_ReleaseIndex` carries full population; full member refs required | Selected page reads separated from full universe/routing/weight/denominator validation and member-ref/output cost; no bounded-RAM/Q claim; O(R) baseline; 6 GiB unproven | R3-RES-030 | measured H/S/Q/O and qualified compact index |
+| **G2 EXT** | “external source/codebook/design artifact by exact identity” rule only | No artifact kind/ref/lookup/authority/scope/refusal resolver in product/contract | Proposed `ExternalSourceArtifact` contract with exact lookup/receipt/replay/ambiguity/refusal; no general resolver found; `PROPOSED_OWNER_ROUTE`, not accepted code | R3-RES-031 | artifact registry/rights/current implementation |
+| **G1 FF01-k** | Category-level proposed contract | No exact FF01-k field/receipt/consumer table | Exact `FF01KProduct` table added in field contract §6; FF01-2 fixed two-target count/no-ratio; method/eligibility/ratio/weighted estimand owner-held | R3-RES-032 | FF01-k implementation/science method |
+
+The prior G3 linkage and G5 F6 external-input limits remain resolved; this
+section does not reopen them.

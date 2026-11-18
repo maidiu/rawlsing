@@ -92,30 +92,37 @@ The exact per-family key/ref/binding map and adapter are in
 - **QuestionVariableBinding**: `(universe_ref, native_question_ref,
   instrument_question_version, canonical/component ref or typed absence)`;
   semantic/topology authority refs. No option/form/ballot content.
-- **RespondentEvent**: exact `ref`; `(universe_ref, scoped_respondent_ref,
+- **RespondentEvent**: stable identity `(universe_ref, scoped_respondent_ref,
   native_question_ref, canonical/component refs, event_group_id,
   response_event_id_or_deterministic_index, response_topology_ref,
-  multiplicity_order_rank_fields, response_state)`; raw/canonical value and
-  transform authority.
-- **RoutingEligibilityFact**: exact `ref`; `(universe_ref, respondent_ref,
-  question_or_target_ref, risk_set_ref, routing_rule_ref, applicability_state,
-  routing_state, parent_predicate_refs, member_set_replay_ref)`.
-- **EmpiricalCoordinateFact**: exact `ref`; `(universe_ref, respondent_ref,
+  multiplicity_order_rank_fields)`; **state/value are checked content**, not
+  identity.
+- **RoutingEligibilityFact**: stable identity `(universe_ref, respondent_ref,
+  question_or_target_ref, risk_set_ref, routing_rule_ref)`; state/parents/
+  member-set replay are checked content.
+- **EmpiricalCoordinateFact**: stable identity `(universe_ref, respondent_ref,
   native_coordinate_ref, canonical_coordinate_ref_if_authorized,
-  effective_or_reference_time, coordinate_state)`; unit/taxonomy and semantic
-  authority.
-- **WeightMeasureFact**: exact `ref`; `(universe_ref, respondent_ref,
+  effective_or_reference_time)`; value/unit/state/normalization are content.
+- **WeightMeasureFact**: stable identity `(universe_ref, respondent_ref,
   weight_basis_id, effective_scope_ref, weight_source_ref, design_authority_ref,
-  estimand_authority_ref, weight_state)`; exact weight representation.
+  estimand_authority_ref)`; exact value/state/normalization rule are content.
 - **EmpiricalFact**: exact `ref`; query/condition/risk/measure refs, universe
   refs, raw/weighted support, typed uncertainty method/state, provenance,
   replay. No numeric variance/interval field.
 
-**Cardinality/ambiguity rules:** duplicate key → refuse; missing required key →
-typed absence/refusal; multiple weights/routing/coordinates for the same key →
-typed ambiguity/refuse; occurrence key must include event id/topology; no
-first-value pivot; no cross-universe/respondent join unless exact relation
-authority; release/universe/current mismatch → refuse.
+**Conflict rule:** same stable identity with differing checked content →
+`TYPED_IDENTITY_CONTENT_CONFLICT` refusal unless an exact declared
+version/authority distinguishes it. State cannot make a contradiction into two
+valid records. Legitimate repeated events differ by event group/id/topology;
+different weight basis/scope/design/estimand authority, coordinate time, or
+routing rule/risk set are legitimate distinct identities. Duplicate physical
+refs with identical identity/content are duplicate rows and refuse.
+
+**External route:** original-language option/form/ballot, household/roster,
+PSU/strata/replicate weights/design variance and numeric uncertainty resolve
+through the proposed `ExternalSourceArtifact` contract by exact native/
+instrument/source-lineage identity, or typed absent/RIGHTS_HELD. A reference is
+not the referenced data. [R3-RES-024/031]
 
 ### 3.2 Native-evaluator adapter
 
@@ -150,11 +157,18 @@ ordered target_refs, direction/role, routing state set, weight_basis_id,
 measure_basis_ref, source_scope)`.
 
 It may be shared across different operations only when that whole identity is
-identical. It stores candidate respondent/event refs and complement counts, not
-facts, denominators or evidence. It is invalidated by source/release/frame/
-current/revocation change. Sparse selection uses exact postings; full-domain
-k-way uses the native evaluator’s exact support enumeration. No precomputed
-Cartesian product and no Q-reduction claim without measurement.
+identical. It stores exact ordered **candidate, risk and denominator member
+refs** plus nonselected eligible/answered/weighted typed states; counts are
+diagnostic only. It never substitutes for `_build_fact`’s
+`risk_set_member_refs=evaluation.risk_members` /
+`denominator_member_refs=evaluation.denominator_members` (lines 986/987).
+Invalidation is on source/release/frame/current/revocation change. The baseline
+full `_ReleaseIndex` always preserves exact membership; a compact exact
+membership sidecar is proposed/owner-qualified. Selected event-page reads do not
+remove full universe/routing/weight/denominator validation or member-ref
+materialization. No bounded-RAM or Q-reduction claim before measurement;
+v1 full risk refs/output may dominate RSS/O and 6 GiB remains unproven.
+[R3-RES-029/030]
 
 ## 4. Strongest-alternative court
 
@@ -178,8 +192,12 @@ state/refs, raw/canonical values, respondent namespace, occurrence/repeat,
 weights/design authority refs, source/time/authority. It does **not** itself
 carry original-language option/form/ballot content, household/roster namespace,
 PSU/strata/replicate weights/design variance or numeric uncertainty. Those are
-resolved through an external source/codebook/questionnaire artifact by exact
-native ref or typed absent/hold. [R3-RES-024]
+resolved through the proposed `ExternalSourceArtifact` contract (kind/ref/
+bytes/version/source-lineage/instrument/wave/country/language/native-question-
+version/form/ballot/design-scope/permission/current/lookup/receipt/replay,
+ambiguity/refusal) or typed absent/RIGHTS_HELD. No existing general resolver was
+found in the inspected product; this is `PROPOSED_OWNER_ROUTE`, not a recovered
+datum. [R3-RES-024/031]
 
 Observability classes remain `OBSERVED_RESPONDENT`, `SAMPLE_DESIGN_ONLY`,
 `COLLECTED_BUT_NOT_RELEASED`, `EXTERNAL_GROUP_CONTEXT`, `PROXY_OBSERVED`,
@@ -213,7 +231,9 @@ explicitly does not calculate ratios. It is an exact count profile, not a
 general conditional distribution. [R3-RES-023]
 
 **FF01-k (proposed, not implemented):** a versioned derived-product contract
-for ordered k≥2 conditioner/target roles and a separate reverse direction:
+for ordered k≥2 conditioner/target roles and a separate reverse direction. The
+exact field/receipt/consumer schema is in `R3_FIELD_AND_ADAPTER_CONTRACT.md` §6
+(`FF01KProduct`). Summary:
 - exact keys: release/universe/time/population/conditioner roles/target
   roles/order/risk-set/measure/direction;
 - direction-specific numerator/denominator/routing/weights/coverage/zero/
@@ -299,3 +319,41 @@ The following R3-RES entries are relied upon by this decision:
 | §5.6 construction/economics | R3-RES-002, R3-RES-013, R3-RES-014, R3-RES-015, R3-RES-016, R3-RES-020 | S/Q/O; Q2 source; durable index; evidence; Batch; recovery |
 | §6 K1-CAP-08/17/23/27 | R3-RES-012, R3-RES-006, R3-RES-026, R3-RES-010, R3-RES-011 | signed atom; F6; design variance; N9/SOROK; J/FF |
 | G3 linkage | R3-RES-027 | decision-to-ledger reverse link |
+| Residual G4-A/B/C | R3-RES-028, R3-RES-029, R3-RES-030 | identity/content, full membership, full cost |
+| External artifact / FF01-k | R3-RES-031, R3-RES-032 | external lookup; product contract |
+
+
+## 10. Residual G4-A/B/C and G2/G1 corrections (this descendant)
+
+This descendant corrects the same-C residuals without changing the selected
+physical direction:
+
+- **G4-A identity vs content:** stable keys exclude mutable state/value.
+  Same stable identity with differing checked content →
+  `TYPED_IDENTITY_CONTENT_CONFLICT` unless exact version/authority distinguishes
+  it. Repeated events/weights/times/routing rules are legitimate distinct
+  identities only through their actual identity fields. [R3-RES-028]
+- **G4-B full membership:** `SelectionMembership` now carries exact ordered
+  candidate/risk/denominator member refs and nonselected typed states; counts
+  are diagnostic. The existing full `_ReleaseIndex` baseline always preserves
+  membership; a compact sidecar is proposed/owner-qualified and cannot exclude
+  needed risk members. v1 `risk_set_member_refs`/`denominator_member_refs`
+  remain exact (lines 986/987). [R3-RES-029]
+- **G4-C cost:** selected event-page reads are separate from full-universe
+  routing/weight/denominator validation, membership refs and output. Remove the
+  blanket bounded-RAM/Q claim; baseline is O(R) population work plus refs/output.
+  v1 full risk refs/output may dominate RSS/O; 6 GiB remains unproven.
+  [R3-RES-030]
+- **G2 external artifact:** proposed versioned `ExternalSourceArtifact` with
+  exact kind/ref/bytes/version/source-lineage/instrument/wave/country/language/
+  native-question-version/form/ballot/design-scope/permission/current/lookup/
+  receipt/replay and ambiguity/refusal. No general resolver found; status
+  `PROPOSED_OWNER_ROUTE`, not accepted code. A ref is not the referenced data.
+  [R3-RES-031]
+- **G1 FF01-k:** exact `FF01KProduct` field/receipt/consumer table added in
+  `R3_FIELD_AND_ADAPTER_CONTRACT.md` §6. FF01-2 remains fixed Q86B→Q86A two-
+  target count/no-ratio; FF01-k is proposed/owner-held for method/eligibility/
+  ratio/weighted estimand. [R3-RES-032]
+
+The field/adapter contract now cites R3-RES-024/025/026/028–032 directly.
+No new C11 body/family, product code, science/actor grant or native 100k claim.

@@ -191,3 +191,57 @@ now.
 No native original35/100k/6 GiB/1–10–100 pass; no new execution; no
 source/science/actor authorization; no protected adoption; no whole-future
 guarantee.
+
+
+## 5. Residual G4-A/B/C and G2/G1 falsifiers
+
+### F12 — Same stable identity, conflicting content
+
+Input: two event/routing/coordinate/weight records with identical stable
+identity (state excluded) but different state/value/authority content, no exact
+version/authority distinguishing them.
+Expected: `TYPED_IDENTITY_CONTENT_CONFLICT` refusal; not two valid records.
+Negative: state included in identity, so contradiction becomes distinct record.
+Affected: R3-CAP-02/06; field contract §2. [R3-RES-028]
+
+### F13 — Count-only membership cannot build a fact
+
+Input: a selection object with candidate refs + nonselected count; a native
+query needing `risk_set_member_refs`/`denominator_member_refs`.
+Expected: full exact ordered member refs; count-only object is insufficient and
+must refuse rather than fabricate/approximate membership.
+Negative: counts used as fact membership; omitted nonselected risk members.
+Affected: F1-F4/I03; field contract §3. [R3-RES-029]
+
+### F14 — Selected row groups cannot bound full population cost
+
+Input: a full-domain fact over R respondents; selected event page read.
+Expected: selected page cost separated from full routing/weight/denominator
+validation and member-ref/output cost; no bounded-RAM/Q claim without a
+qualified exact index and measurement.
+Negative: “bounded by selected row groups” while evaluator loops all R and
+emits full risk refs; 6 GiB inferred.
+Affected: economics/F1-F4; field contract §4. [R3-RES-030]
+
+### F15 — External artifact lookup/refusal
+
+Input: native question ref/version + source lineage requesting option/form/
+ballot/PSU/strata/variance; artifact missing, ambiguous, unreleased, rights-held
+or noncomparable.
+Expected: scoped response by exact artifact kind/ref/bytes/version/authority/
+current/scope, or typed absent/RIGHTS_HELD/NONCOMPARABLE/refusal; a reference
+alone does not recover unrecorded data.
+Negative: assume `native_question_ref` contains option text; multiple artifacts
+silently merged; rights ignored.
+Affected: source observability/F6; field contract §5. [R3-RES-031]
+
+### F16 — FF01-2 versus FF01-k
+
+Input: fixed Q86B→Q86A GT2 count fact vs proposed ordered k≥3 forward and
+reverse product with separate risk/denominator.
+Expected: FF01-2 returns only the two-target count profile/no ratio; FF01-k
+returns the versioned product fields or refuses if k/roles/order/reverse risk/
+coverage/method/permission absent; ratio/weighted estimand owner-held.
+Negative: GT2 count profile presented as k≥3 distribution; reverse denominator
+reused; ratio computed without owner method.
+Affected: FF01; field contract §6. [R3-RES-032]

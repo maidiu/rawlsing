@@ -271,3 +271,27 @@ is not variance data. A weight authority reference is not a PSU/strata table. A
 source question reference is not the original-language option text. These are
 now explicit so a future reader cannot mistake a reference for the referenced
 material.
+
+
+## 8. Residual G4/G2/G1 correction after same-C recheck
+
+The same C found contract-level, not architectural, residuals. Corrected:
+
+- **G4-A:** identity keys now exclude mutable state/value; contradictions at
+  the same stable identity are refused unless exact version/authority
+  distinguishes them. [R3-RES-028]
+- **G4-B:** membership must carry full exact ordered risk/denominator member
+  refs, not counts; counts are diagnostic. The full `_ReleaseIndex` baseline is
+  still valid; compact membership is proposed/owner-qualified. [R3-RES-029]
+- **G4-C:** selected event-page reads are separate from full-universe routing/
+  weight/denominator validation and member-ref/output cost; no bounded-RAM or Q
+  reduction claim. [R3-RES-030]
+- **G2:** an `ExternalSourceArtifact` proposal now specifies exact lookup/
+  authority/current/scope/receipt/replay/refusal for external codebook/form/
+  design metadata. No general resolver exists; `PROPOSED_OWNER_ROUTE`.
+  [R3-RES-031]
+- **G1:** `FF01KProduct` exact field/receipt/consumer table added; FF01-2
+  remains fixed two-target count/no-ratio. [R3-RES-032]
+
+The ledger now has 32 entries: original 22 preserved, 023–027 prior corrections,
+028–032 residual corrections. No new body/database/science/actor grant.

@@ -128,3 +128,21 @@ direction:
 The same distinct reviewer session is asked to recheck this exact correction.
 No self-acceptance, product implementation, native/100k, source/science/actor
 authorization, protected adoption or H1 is claimed.
+
+
+## 8. Residual correction after same-C recheck `c996cf1a`
+
+The same focused C found G4-A/B/C plus external-artifact and FF01-k
+contract-level gaps. Corrected additively:
+
+- stable identity vs mutable state/value with conflict refusal;
+- full exact risk/denominator member refs, counts diagnostic;
+- selected page cost separated from full population/membership/output cost;
+- proposed `ExternalSourceArtifact` lookup/authority/scope/refusal contract;
+- exact `FF01KProduct` field/receipt/consumer table, FF01-2 kept narrow.
+
+G3 linkage and G5 F6 external limits remain resolved and were not reopened.
+The same distinct reviewer is asked to recheck only these residuals and any new
+contradiction, not a new general architecture court. No self-acceptance,
+product implementation, native/100k, source/science/actor authorization,
+protected adoption or H1.
