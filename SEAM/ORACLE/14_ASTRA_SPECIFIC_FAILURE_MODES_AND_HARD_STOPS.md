@@ -37,7 +37,7 @@ It must present at least one serious skeptical thesis:
 
 Then try to *defeat that thesis* with actual mechanism and evidence—not a statement that dialectical materialism is compelling. If it survives, preserve it as a scientific limitation while identifying the smallest useful lawful engineering witness.
 
-## C. One mandatory anti-self-delusion test per claimed success
+**UM-SOROK R2 warning:** the first fused test MUST call the actual PYAT I03/F4 computation and pass its returned value into a real owner-approved world/coactor reader. A manual childcare world toggle, even if SOROK subsequently learns, is **M_LOCAL_SOROK_ONLY**. Separate **POP/DEV/TRANS** scientific verdicts and compare independent PFF/activity-memory/bounded-learning architectures; A/B/C forward/inverse/hybrid alone is a biased comparison. Cold cases and answer keys are independently sealed **before** candidate package exposure, never placed in ORACLE or SEAM/27; a passing set earns only `ORACLE_COLD_CASESET_ACCEPTED_AT_<SHA>`. No cold run currently exists.\n\n## C. One mandatory anti-self-delusion test per claimed success
 
 For any "this fuses PYAT→SOROK" claim, construct:
 1. **A native source- or qualified-fixture manipulation** that leaves superficial data labels and optionally marginal counts unchanged but alters a relevant real joint, material power or practice opportunity;
@@ -53,7 +53,7 @@ If those cannot be instantiated today, the honest answer is **FIRST_MISSING_MECH
 The dossier contains several thousand words, multiple matrices and 27 theoretical tests. **Astra is NOT instructed to perform all 27, investigate 40 source pins, reread SEAM/00–29, or produce matching-length prose.** It is asked to make a hard architectural decision *or prove exactly why a decision is scientifically premature*.
 
 Astra's first GitHub commit should be ≤2 pages containing:
-- **Three candidate causal configurations** (A/B/C or genuinely better rivals), each on 5–10 lines;
+- **At least two genuinely incompatible developmental architectures** (persistent PFF network vs activity/context-memory policy vs restricted evidence-based learning, or better), each on 5–10 lines; A/B/C are separate temporal initialization choices and C must not win merely by combining A+B;
 - **one first demonstrable PYAT→SOROK hinge** and exactly why it needs a *specific* PYAT output;
 - **one fatal counterexample or scientific underidentification** against each candidate;
 - **the least expensive distinguishing test**, including non-contact/no-formation and source-ablation controls;
