@@ -4,13 +4,15 @@
 
 **First safeguard before delegation:** read [ORACLE/14](14_ASTRA_SPECIFIC_FAILURE_MODES_AND_HARD_STOPS.md). In previous Astra-associated work an apparently committed packet was not at the worker's referenced base, and valuable unpushed work survived only as a Git tree when quota ended; therefore worker-visible file/SHA preflight and pushed remote HEAD readback are required. ORACLE/14 also tests whether the analysis produces a real causal hinge rather than source-authority paperwork.
 
-**Precedence correction:** [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) is the sole reading order and success-grade court. Start 08→14→15→16, then use 09–12 selectively; neither ORACLE/04 nor any lower file may demand original corpus reading *first*. A decisive source/rights/scientific dispute still requires exact primary retrieval.\n\n## 1. Five-minute conceptual orientation (no massive search)
+**Precedence correction:** [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) is the sole reading order and success-grade court. Start 08→14→15→16, then use 09–12 selectively; neither ORACLE/04 nor any lower file may demand original corpus reading *first*. A decisive source/rights/scientific dispute still requires exact primary retrieval.
 
-1. **Read 08 first**: fourteen durable constraints, three missing fusion hinges, live protected SHAs and exact non-claims.
-2. **Read 09 next only to the relevant recovery/ANVIL sections**: original DDM knowledge/compute/J diamond, exact denials, no-drop, owner fates, required cold/efficiency. Do not reread 13 VMESTYE prongs or 118 ANVIL identities unless a named exact source conflict would change a candidate design.
-3. **Read 10 next**: source-pinned SEAM/00–29 history, withdrawn father default, seven cracks and 0/1/2 Other-field objection. Do not reread all 30 sources; read only /20+/24 R4/R5 if designing parental chronology; /21–23 if qualifying formation/C5; /26/28/29 if designing the empirical social-field-to-actor first reader.
-4. **Read 11 next**: PYAT/SOROK exact current code/evidence gaps and three courts; only reopen the actual current repository code/owner issue for a selected architectural decision. Treat historical admission as current only after scoped head delta and current owner confirmation.
-5. **Read 00/03/04/07** as the binding question, rival machines, finite falsifiers and intelligence/usage/handoff protocol. Use /01/02/05 and original theoretical works only when the selected model needs a missing dimension, exact canonical semantics or qualifying scientific evidence.
+## 1. Five-minute conceptual orientation (no massive search)
+
+1. **Read 08**, then **14** (Astra hard stops), **15** (ANVIL R3 and inspected code), **16** (science M/S and held cold trial).
+2. Use **09** only for an inherited DDM/ANVIL question that could change a mechanism or cost decision.
+3. Use **10** only for a contested SEAM principle, retraction, maternal/child chronology or Other-field issue.
+4. Use **11** only for exact owner/status/first-reader currentness, with protected and candidate commits separate.
+5. Use **12** for selective source reopen and bounded Deepseek commission, **13** for immutable exact lookup; then **00/03/04/07** for core research and proof. Original source texts and /01/02/05 only when a decisive claim requires inspection.
 
 **No need for a full K1–K3 repeat, N020 root resurvey, 294 SOROK branch survey, broad source-extract rebuild or new ANVIL machine design.** Existing owners retain these. Do not infer all currentness from a documentary snapshot when an exact current decision requires verification.
 
