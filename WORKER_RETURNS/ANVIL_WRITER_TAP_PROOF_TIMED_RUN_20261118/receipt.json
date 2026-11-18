@@ -1,0 +1,91 @@
+{
+  "schema": "ANVIL_WRITER_TAP_PROOF_TIMED_RUN@1",
+  "task": "ANVIL_WRITER_TAP_PROOF_TIMED_RUN_20261118",
+  "status": "CAPPED_WALL_600S__ATTRIBUTION_TO_I02_PROOF_RESIDUAL",
+  "instrument_commit": "9e46202457c4ad69e714045e6cf831f0251695c2",
+  "writer": {
+    "baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "writer_sha256": "068fc525b6c117fbb3feba52f740f7e764674ff0b2a78f52e5b649b5fafe643a",
+    "i02_sha256": "b70e9a49b5d0a2445ed76053b04579fa0cbede2717286c7708dfb6f18ff016d2",
+    "unchanged": true
+  },
+  "run": {
+    "geometry": "512 respondents x 600 populated bindings",
+    "command": "python3 -B timed_writer.py --snapshot /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil-scale-06ulz7 --out <new-owned-root> --respondents 512 --questions 600 --progress <new-owned-root>/PROGRESS.json",
+    "status": "CAPPED",
+    "abort": "WALL_600S",
+    "exit": -15,
+    "wall": 600.1917194500566,
+    "samples": 2111,
+    "rss_peak": 139546624,
+    "scratch_peak": 1948384851,
+    "partial_bytes": 1943852728,
+    "output_root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_WRITER_TAP_PROOF_TIMED_RUN_20261118/.local-data-width512-timed",
+    "no_retry": true,
+    "no_query": true,
+    "no_publication": true
+  },
+  "stages": {
+    "context_seconds": 0.0012127369409427047,
+    "width_population_seconds": 0.11344573902897537,
+    "writer_stage": "writing",
+    "verify_or_publish_reached": false,
+    "proof_active_seconds_at_cap": 594.432271,
+    "writer_active_seconds_at_cap": 594.875635,
+    "stage_file": "BUILD_STAGES.json",
+    "progress_file": "PROGRESS.json"
+  },
+  "attribution": {
+    "sink_add_inclusive_seconds": 117.10750296560582,
+    "index_add_inclusive_seconds": 1.8972432346781716,
+    "proof_residual_at_cap_seconds": 475.4275328000000,
+    "proof_residual_formula": "proof_active 594.432271 - sink_add 117.107503 - index_add 1.897243",
+    "pending_or_reporting_uncertainty": "proof active is in-flight at SIGTERM; completed inclusive spans are lower bounds; residual includes validation, hashing, SQLite insert/commit and proof bookkeeping, NOT pure SQL",
+    "deepest_observed_boundary": "I02 proof call; RoutingEligibilityFact had consumed 127,139 of 307,200 expected; RespondentEvent complete; no verify/publication"
+  },
+  "per_family_sink": {
+    "RespondentIdentity": {"calls": 512, "seconds": 0.7479287690948695},
+    "QuestionVariableBinding": {"calls": 600, "seconds": 0.12508255382999778},
+    "RespondentEvent": {"calls": 275839, "seconds": 80.57577317242976},
+    "RoutingEligibilityFact": {"calls": 127139, "seconds": 35.657546307425946},
+    "AuthoritySnapshot": {"calls": 6, "seconds": 0.000987921841442585},
+    "EmpiricalUniverse": {"calls": 1, "seconds": 0.00018424098379909992}
+  },
+  "partial_tree": {
+    "proof_db_bytes": 1789673472,
+    "proof_journal_bytes": 985472,
+    "proof_db_plus_journal_bytes": 1790658944,
+    "total_partial_bytes": 1943852728,
+    "parquet_bytes": {
+      "RespondentIdentity": 99217,
+      "RespondentEvent": 89285610,
+      "RoutingEligibilityFact": 41209051,
+      "QuestionVariableBinding": 100778,
+      "event_locator": 22499128
+    },
+    "sealed": false,
+    "publication": "not reached"
+  },
+  "actionable_next_boundary": {
+    "classification": "I02_PROOF_RESIDUAL_DOMINANT__SUBSTAGE_UNRESOLVED",
+    "candidate_repair": "Do not implement yet. The next safe candidate is to reuse the writer's already materialized row/projection at the tap boundary when populating proof tables, retaining the distinct duplicate/occurrence/closure/negative/census proof and exact external I02. Timing must first separate validation/hash from SQLite insert/commit.",
+    "smallest_next_measurement": "Narrow test-only wrappers around _insert_object, authority-ref walks, and SQLite commit boundaries (counts/timing) on the preserved writer; no new size and no retry.",
+    "no_claim": "No CPU attribution below proof; no assertion that SQLite alone causes the cap; no product optimization authorized."
+  },
+  "source_pins": {
+    "return": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/RETURN.json",
+    "partial_tree": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/PARTIAL_TREE.json",
+    "writer": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "i02": "rawlsing_next/_pre553_direct_i02_sourcefree.py",
+    "correctness": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "review": "bbc3114f70fa6948f4f3c6a55aa7d3cf5f23cef1"
+  },
+  "limits": [
+    "One run only; no retry.",
+    "No product edit, query, SQL reference execution, source access or protected rights.",
+    "No partial estate bytes committed.",
+    "No cap-cause claim below the proof residual; pending/reporting uncertainty retained.",
+    "Correctness at aee954/bbc3114 not reopened."
+  ],
+  "stop": "STOP_AFTER_COMMIT_PUSH_REMOTE_VERIFY"
+}

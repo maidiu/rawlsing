@@ -1,0 +1,104 @@
+{
+  "active": {
+    "build_sourcefree_direct_i02": 594.432271,
+    "write_direct_estate_total": 594.875635
+  },
+  "derived": {
+    "index_add_inclusive": 1.8972432346781716,
+    "note": "nested spans; residual buckets are not pure SQL and may include setup/hash/fsync/publication",
+    "proof_residual_not_pure_sql": 0.0,
+    "sink_add_inclusive": 117.10750296560582,
+    "writer_residual_after_proof_verify": 0.0
+  },
+  "events": 679936,
+  "family": {
+    "AuthoritySnapshot": {
+      "_Sink.add": {
+        "calls": 6,
+        "count": 6,
+        "seconds": 0.000987921841442585
+      }
+    },
+    "EmpiricalUniverse": {
+      "_Sink.add": {
+        "calls": 1,
+        "count": 1,
+        "seconds": 0.00018424098379909992
+      }
+    },
+    "QuestionVariableBinding": {
+      "_Sink.add": {
+        "calls": 600,
+        "count": 600,
+        "seconds": 0.12508255382999778
+      },
+      "_Sink.flush": {
+        "calls": 1,
+        "count": 1,
+        "seconds": 0.00800031702965498
+      }
+    },
+    "RespondentEvent": {
+      "_Sink.add": {
+        "calls": 275839,
+        "count": 275839,
+        "seconds": 80.57577317242976
+      },
+      "_Sink.flush": {
+        "calls": 538,
+        "count": 538,
+        "seconds": 4.643055224791169
+      }
+    },
+    "RespondentIdentity": {
+      "_Sink.add": {
+        "calls": 512,
+        "count": 512,
+        "seconds": 0.7479287690948695
+      },
+      "_Sink.flush": {
+        "calls": 1,
+        "count": 1,
+        "seconds": 0.6849977909587324
+      }
+    },
+    "RoutingEligibilityFact": {
+      "_Sink.add": {
+        "calls": 127139,
+        "count": 127139,
+        "seconds": 35.657546307425946
+      },
+      "_Sink.flush": {
+        "calls": 248,
+        "count": 248,
+        "seconds": 1.7166877122363076
+      }
+    }
+  },
+  "stage": {
+    "harness_start": {
+      "at": 1795026511.256117,
+      "detail": ""
+    },
+    "proof_start": {
+      "at": 1795026512.0287008,
+      "detail": ""
+    },
+    "writer_start": {
+      "at": 1795026511.5853271,
+      "detail": ""
+    }
+  },
+  "total": {
+    "_IndexSink.add": {
+      "calls": 275839,
+      "count": 275839,
+      "seconds": 1.8972432346781716
+    },
+    "_IndexSink.flush": {
+      "calls": 538,
+      "count": 538,
+      "seconds": 1.3592805198859423
+    }
+  }
+}

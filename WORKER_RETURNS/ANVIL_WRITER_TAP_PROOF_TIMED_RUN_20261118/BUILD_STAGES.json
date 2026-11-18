@@ -1,0 +1,29 @@
+{
+  "schema": "ANVIL_WIDTH512_STAGES@1",
+  "tag": "PYAT-1006-WIDTH512-600-20261118",
+  "context_seconds": 0.0012127369409427047,
+  "stage": "writing",
+  "estate_root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_WRITER_TAP_PROOF_TIMED_RUN_20261118/.local-data-width512-timed",
+  "width_population_seconds": 0.11344573902897537,
+  "width_audit": {
+    "added_questions": 595,
+    "extra_cells": 304640,
+    "extra_valid_substantive": 243712,
+    "extra_typed_missing": 30464,
+    "extra_typed_not_asked": 30464,
+    "extra_events": 274176,
+    "base_events": 1663,
+    "total_events": 275839,
+    "total_routing": 307200,
+    "total_weights": 512,
+    "total_question_bindings": 600,
+    "events_per_respondent_min": 538,
+    "events_per_respondent_max": 542,
+    "events_per_respondent_mean": 538.748046875,
+    "base_repeated_mr_occurrences": 80,
+    "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+    "dense_assumption": false,
+    "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+    "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried"
+  }
+}
