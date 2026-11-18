@@ -1,0 +1,170 @@
+{
+  "schema": "ANVIL_HISTORICAL_CONNECTION_CORRECTED_FINAL@1",
+  "task": "ANVIL_ENGINEERING_HISTORICAL_CONNECTION_DOCUMENTARY_CORRECTION_20261118",
+  "status": "DOCUMENTARY_CORRECTION_COMPLETE__AWAITING_HQ_RECEIPT",
+  "supersedes": {
+    "author_correction_commit": "56eb6d084070e4a177809902909d636b0b215c6f",
+    "author_report": "WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/HISTORICAL_CONNECTION_CORRECTION/historical_connection.json",
+    "review_commit": "8c5da4d4a3a08c002275f28bfc886fe7d1da95a1",
+    "review_return": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_HISTORICAL_CONNECTION_G5_20261118/",
+    "review_disposition": "REVISE_EXACT_DOCUMENTARY_DEFECT",
+    "old_return_preserved_as_superseded_history": true
+  },
+  "product": {
+    "branch": "agent/anvil-engineering-cut1-20261117-r1",
+    "integrated_code_test": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "current_head_before_correction": "56eb6d084070e4a177809902909d636b0b215c6f",
+    "product_changes": "NONE",
+    "tests_or_prototypes_rerun": "NONE",
+    "new_patch": "NONE"
+  },
+  "source_grade": {
+    "old_local_files": 6,
+    "local_sha256_matches": 6,
+    "grade": "LOCAL_SHA256_ONLY__BABB256_COMMIT_TO_FILES_NOT_PROVED",
+    "babb256": "BUNDLE_HEADER_IDENTIFIES_COMMIT_LABEL_ONLY",
+    "git_blob_identity_claimed": false,
+    "note": "The local Rawlsing tree is not a live Git checkout for all cited files; the six local SHA-256 values match, but commit-to-file identity is not proven."
+  },
+  "corrected_old_mechanism": {
+    "representation": "LONG respondent-variable records",
+    "not_wide_one_row_per_respondent": true,
+    "required_columns": {
+      "prepared": 62,
+      "additive": 5,
+      "total": 67,
+      "not_68": true
+    },
+    "long_keys": [
+      "respondent_id",
+      "var_code",
+      "question_id",
+      "response_value",
+      "response_label"
+    ],
+    "grain_columns": [
+      "source_norm",
+      "canonical_wave_norm",
+      "country_code_norm",
+      "respondent_id_norm",
+      "var_code_norm"
+    ],
+    "artifact_row_count": 25067,
+    "artifact_row_count_meaning": "LONG respondent-variable rows, NOT respondent count",
+    "preparation": "PostgreSQL question-row extraction plus one-time per-country harmonization; persisted long prepared substrate with schema, manifest, validation and COMPLETE marker; can be loaded without reharmonization or DB access.",
+    "source_locators": {
+      "data/ddm_build_copy/build_determinicity_repository_v550.py": "708-784 prefetch per country; 787-825 harmonize once in country mode",
+      "data/ddm_build_copy/build_determinicity_wave_shard_v550.py": "1328-1353 selection; 1380-1389 prefetch/prepare; 1391-1445 write shared substrate",
+      "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py": "25-105 schema/62+5 columns; 332-346 canonicalize without reharmonization; 565-637 atomic write; 640-655 DB-free validated load",
+      "data/ddm_build_copy/build_v550j_prepared_substrate.py": "316-374 cache/signature; 408-416 harmonize once",
+      "data/ddm_build_copy/compile_v550j_joint_response_patterns.py": "1214-1236 database-forbidden prepared_required; 1690-1725 prepared country load/cache; 1750-1759 family use",
+      "Rawlsing_V550_Fused_GSS_Proof_babb256_20260803/evidence/shard_manifest.json": "90-101 shared substrate mode=write, row_count=25067 long rows, content hash; 56-81 output path list"
+    }
+  },
+  "output_paths_and_consumption": {
+    "manifest_output_paths": 26,
+    "not_22": true,
+    "writer_configured_outputs": true,
+    "proves_each_output_consumed_substrate": false,
+    "shared_substrate_mode": "write",
+    "shared_substrate_row_count": 25067,
+    "shared_substrate_row_count_meaning": "long respondent-variable rows",
+    "actual_consumer_evidence": "V550J code loads the explicit prepared country substrate and multiple family products use the loaded frame (compile_v550j_joint_response_patterns.py 1690-1725, 1750-1759). V550 writer call path emits the configured outputs; the manifest list alone is not proof that all 26 paths consumed the substrate.",
+    "historical_run_claim": "Artifact proves the writer produced one shared substrate and lists 26 configured output paths; it does not prove all 26 products consumed it in a completed historical run."
+  },
+  "corrected_current_mechanism": {
+    "source": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "representation": "canonical LONG 13-family DirectEstateI03Session estate",
+    "index": "temporary SQLite members(family,respondent,ref,gid,off) plus members_resp_idx(family,respondent,ref)",
+    "prepared_session": "one DirectEstateI03Session and one posting-index build per prepared context",
+    "query_independent_selector": "NOT_ESTABLISHED_IN_CURRENT_FROZEN_68AA",
+    "reharmonization": "the canonical estate already avoids reharmonizing raw source per query; the old/current comparison must not equate old one-time country harmonization cost with current canonical-estate preparation cost",
+    "routing_work": "per-query routing/object resolution remains for changing predicates/targets",
+    "grouped_scope": "only exact compatible core; measure-independent key; RAW/WEIGHTED same-core sharing; different target/predicate/risk/authority misses",
+    "current_files": {
+      "rawlsing_next/pre553_direct_estate_i03.py": {
+        "blob_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+        "locators": "112-190 session; 398-449 _respondent_family; 451-489 indices_for"
+      },
+      "rawlsing_next/pre553_prepared_saved_i03.py": {
+        "blob_sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+        "locators": "51-150 PreparedI03Session; 85-107 execute_i03"
+      },
+      "rawlsing_next/pre553_empirical_query.py": {
+        "blob_sha256": "f6ee1ea3016e58245532989c16b3d4e1ca3e41cb05ea11cf2b03ea56dcb8e926",
+        "locators": "490-627 grouped scope; 734-757 current direct-estate group guard"
+      },
+      "rawlsing_next/_pre553_query_eval.py": {
+        "blob_sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+        "locators": "314-332 _GroupCore; 418-578 core; 578-637 materialization"
+      }
+    }
+  },
+  "supported_distinction": {
+    "old": "persisted preharmonized LONG country respondent-variable substrate with validated DB-free load",
+    "current": "canonical LONG 13-family estate with per-query routing/object resolution and exact-core grouped reuse",
+    "removed_unsupported_causal_claim": "old wide vs current long does NOT cause cost; both are long representations",
+    "shared_work": "old country preparation/harmonization once; current canonical estate avoids raw reharmonization per query"
+  },
+  "grouped_boundary": {
+    "supported": "RAW/WEIGHTED variants of same exact compatible core; selected RAW/GOVERNED_WEIGHTED prototype core_builds=1, core_hits=1",
+    "not_supported": "arbitrary distinct targets/predicates; selected vs f2 core_builds=2, core_hits=0",
+    "arbitrary_hundreds_claimed": false,
+    "old_all_product_parity_claimed": false
+  },
+  "cost_layers": [
+    {
+      "layer": "redundant row-group reads",
+      "status": "REPAIRED",
+      "evidence": "R3 3,965 reads -> locality G5 50 reads"
+    },
+    {
+      "layer": "release index build",
+      "status": "SHARED_SESSION",
+      "evidence": "R2 5 baseline vs 1 prepared; current prepared context one build"
+    },
+    {
+      "layer": "routing/object validation",
+      "status": "STILL_REPEATED_FOR_CHANGING_QUERIES",
+      "evidence": "R3 routing/object numbers; current model per query"
+    },
+    {
+      "layer": "compatibility-specific statistical core",
+      "status": "NARROW_EXACT_CORE_ONLY",
+      "evidence": "group key and prototype selected/raw vs f2"
+    },
+    {
+      "layer": "facts/member refs/output",
+      "status": "PER_OPERATION_BY_DESIGN",
+      "evidence": "current evaluator builds exact facts/refs/replay per operation"
+    }
+  ],
+  "remaining_decision": {
+    "selector_candidate": "A session-local query-independent authenticated routing/target lookup over the existing members index is a supported INFERENCE/candidate, not a forced unique architecture and not proof of old all-product parity.",
+    "persistent_substrate_candidate": "A persistent derived long prepared-country substrate is a broader representation decision; the old artifact does not establish a wide one-row-per-respondent frame and does not force this option.",
+    "question_for_browser_hq_user": "Does existing canonical-estate access need a narrow reusable authenticated lookup first, or does the evidence justify persisting a derived prepared view? This is not a choice of backend or generic new architecture.",
+    "no_owner_grant_campaign": "No three historical owner grants are requested. The existing two-edit grant covers only already-completed corrections.",
+    "new_patch": "NONE"
+  },
+  "review_resolution_map": [
+    {
+      "defect": "OLD_SUBSTRATE_IS_LONG_NOT_WIDE",
+      "resolution": "Corrected: long respondent-variable rows; 62 prepared + 5 additive = 67 columns; 25067 long rows not respondents; unsupported wide/long causal claim removed."
+    },
+    {
+      "defect": "OUTPUT_COUNT_AND_CONSUMPTION_OVERSTATED",
+      "resolution": "Corrected: 26 output paths not 22; manifest is writer-configured output/substrate-write evidence, not proof all outputs consumed substrate; actual V550J consumer code cited separately; historical run claim limited."
+    },
+    {
+      "defect": "BABB256_NOT_GIT_FILESYSTEM_IDENTITY",
+      "resolution": "Corrected: six local SHA-256 matches; source grade LOCAL_SHA256_ONLY__BABB256_COMMIT_TO_FILES_NOT_PROVED; bundle header identifies commit label only, no invented Git blobs."
+    }
+  ],
+  "limits": [
+    "Documentary correction only; no new source investigation, architecture, benchmark, native run, tests or product patch.",
+    "Source facts are independently verified; this corrected text report is not asserted independently accepted.",
+    "No source/science/actor/CURRENT/protected/issuer authority.",
+    "No old wide-frame claim, all-26-consumer proof, arbitrary grouped-query sharing, or persistent substrate requirement."
+  ],
+  "stop": "COMMIT_PUSH_VERIFY_AND_STOP_FOR_HQ_RECEIPT"
+}
