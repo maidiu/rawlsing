@@ -1,0 +1,17 @@
+{
+  "schema": "ANVIL_ALL35_CONFIG_NEGATIVE_EVIDENCE@1",
+  "checks": [
+    {
+      "name": "stale_src04_sibling_rejected",
+      "status": "PASS",
+      "expected_accepted_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+      "observed_stale_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900"
+    },
+    {
+      "name": "source_sha_mismatch_rejected",
+      "status": "PASS",
+      "observed_source_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+      "expected_source_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}
