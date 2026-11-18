@@ -182,16 +182,15 @@ def _load_config(config_path: Path, index_row: Mapping[str, Any], SourceConfig):
 
 def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
               binding_dir: Path, outdir: Path, source_id: str = "SRC04") -> dict[str, Any]:
-    if source_id != "SRC04":
-        raise PreflightRefusal("WITNESS_ONLY_SRC04_IMPLEMENTED")
     pin = load_json(config_pin)
-    if pin.get("source_id") != "SRC04":
+    if pin.get("source_id") != source_id:
         raise PreflightRefusal("CONFIG_INDEX_SOURCE_MISMATCH")
     if pin.get("held_q217_unbound_cells") != 38:
         raise PreflightRefusal("Q217_PIN_MISMATCH")
     build, SourceConfig, signature = _candidate_api(candidate_tree)
     cfg, document = _load_config(config_path, pin["config_index_row"], SourceConfig)
-    q217 = _q217_guard(document, pin)
+    q217 = _q217_guard(document, pin) if source_id == "SRC04" else {
+        "status": "NOT_APPLICABLE__NON_WITNESS_WAVE"}
     scoped_doc = _strip_scope(document, pin)
     scoped = SourceConfig(scoped_doc)
     if _slot_ordinal(next(x for x in document["response_slots"]
@@ -211,6 +210,8 @@ def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
     plan = {
         "schema": "ANVIL_ALL35_WITNESS_PLAN@1",
         "source_id": "SRC04",
+        "source_id": source_id,
+        "candidate_patch_sha256": PINNED_CANDIDATE_PATCH,
         "candidate_api": signature,
         "config_path": str(config_path),
         "config_file_sha256": sha_bytes(config_path),
@@ -224,7 +225,7 @@ def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
             "coordinate_slots": len(scoped_doc["coordinate_slots"]),
             "physical_slots": len(scoped_doc["physical_slots"]),
         },
-        "accepted_accounting": ACCEPTED,
+        "accepted_accounting": ACCEPTED if source_id == "SRC04" else {},
         "process_isolation": {
             "producer": "separate subprocess; wait for exact nonzero exit",
             "reopen": "fresh subprocess only after producer pid reaped",

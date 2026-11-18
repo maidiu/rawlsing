@@ -21,13 +21,13 @@ class RunnerTests(unittest.TestCase):
             w.verify_accounting({"RespondentEvent": 0, "EmpiricalCoordinateFact": 22011}, Stats())
         self.assertEqual(ctx.exception.code, "ACCOUNTING_MISMATCH_RespondentEvent")
 
-    def test_source_id_is_witness_only(self):
+    def test_wrong_wave_pin_refused(self):
         with self.assertRaises(w.PreflightRefusal) as ctx:
             w.preflight(candidate_tree=Path("/nonexistent"),config_path=Path("/nonexistent"),
                         config_pin=HERE/"SRC04_WITNESS_SCOPE.json",
                         binding_dir=HERE.parent/"ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118",
                         outdir=HERE/"DRY_RUN",source_id="SRC17")
-        self.assertEqual(ctx.exception.code, "WITNESS_ONLY_SRC04_IMPLEMENTED")
+        self.assertEqual(ctx.exception.code, "CONFIG_INDEX_SOURCE_MISMATCH")
 
 
 if __name__=="__main__":
