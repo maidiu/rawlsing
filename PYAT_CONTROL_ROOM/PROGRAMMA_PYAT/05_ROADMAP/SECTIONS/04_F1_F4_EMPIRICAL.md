@@ -1,5 +1,8 @@
 # ROADMAP:S04 — Measured F1–F4: distributions, conditionals, recursive alternatives and same-person configurations
 
+> **ONE-PLAN S04 ANALYTICAL-SERVICE REQUIREMENT — AUTHOR CANDIDATE:** Existing S04 and EE07–EE08 must turn correct F1–F4/I03/I05/J/Batch primitives into scientifically qualified contextual comparative determinicity, interactions and conditional rank changes, recursive/minority alternatives, actual respondent-coherent higher-order structures, and uncertainty/typed abstention, re-queryable for S06 FF01/N10E. Historic V550–V552 algorithm/file parity is not the goal. The narrower #998 sourcefree joined engineering G5 is NOT automatic evidence of this scientific research service. Competent S04/estimand owner must specify method before implementation. See the [single PROGRAMMA execution agenda](../REMAINING_REAL_PYAT_WORK.md). No new S04 graph edge or science grant.
+
+
 ## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S04 named source-to-product obligations (2026-11-10 candidate, not adopted)
 
 **Mandatory product/receiving question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? These local aliases and their positive/negative obligations are reproduced from [the existing 27-row Pyat execution agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). They do NOT change existing S/IF/AND/GAP identities, historical accepted source cuts or source/science/actor rights. A future commission must satisfy MCR-C before dispatch; sourcefree code presence alone never marks these rows complete.
