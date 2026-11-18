@@ -5,8 +5,8 @@ PREP ONLY; not run. Use the exact frozen repaired routing candidate, not `73b480
 ```bash
 python3 WORKER_RETURNS/ANVIL_ROUTING_MATCHED_RUNNER_20261118/routing_matched_runner.py \
   --baseline-commit 68aa7cac7cce7057fefd458ef4a06bec2dede1b2 \
-  --candidate-commit <FROZEN_REPAIRED_ROUTING_COMMIT> \
-  --outdir WORKER_RETURNS/ANVIL_ROUTING_MATCHED_RUNNER_20261118/RUN_<SHORT_SHA>
+  --candidate-commit aee95429609c372564e996c2d3d3eb30e9253cbf \
+  --outdir WORKER_RETURNS/ANVIL_ROUTING_MATCHED_RUNNER_20261118/RUN_aee95429609c
 ```
 
 The runner creates distinct temporary snapshots from the two exact commits, launches one fresh process/session per variant, runs `f2_forward_raw` and `f2_reverse_raw` once each on the frozen WIDTH128 estate, and writes per-variant JSON plus `COMPARISON.json`. It compares exact full payloads, fact/replay/provenance refs, cells and risk/denominator identity sets; it reports H/S/Q/O, setup vs operation routing work, row-group/file counters, scratch/RSS samples and total setup+operation cost. Baseline and candidate are never the same session with an adapter disabled.

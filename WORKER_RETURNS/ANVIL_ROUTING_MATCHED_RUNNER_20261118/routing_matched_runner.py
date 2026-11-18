@@ -8,11 +8,12 @@ from __future__ import annotations
 import argparse, gzip, hashlib, json, os, shutil, signal, subprocess, sys, tempfile, time
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
-MEASUREMENT_PREP=HERE.parents[2]
+MEASUREMENT_PREP=HERE.parents[1]
 REPO=MEASUREMENT_PREP
 MP=REPO/'WORKER_RETURNS'/'ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117'
 W=REPO/'WORKER_RETURNS'/'ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118'/'WIDTH128'
 CONTRACT=W/'fixture_contract_width128.json';SHARED_GIT=Path('/Users/matthewsmith/s2b-work/rawlsing')
+sys.path.insert(0,str(MP/'vendor'))
 CAP=600.0;RSS=6*1024**3;SCRATCH=4*1024**3;TOTAL=900.0
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -61,15 +62,16 @@ def child(variant,snapshot,out):
  finally:qeval._routing_fact_for=orig_lookup
 
 def sha_bytes(b):return hashlib.sha256(b).hexdigest()
-def supervise(cmd,label,outdir):
+def supervise(cmd,label,outdir,deadline):
  from court_instrumentation import process_tree_rss_bytes,directory_bytes
  contract=json.loads(CONTRACT.read_text());estate_root=Path(contract['root']);retained=int(contract['retained_bytes'])
  start=time.monotonic();p=subprocess.Popen(cmd,cwd=str(REPO),text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,start_new_session=True);samples=[];abort=None
  while p.poll() is None:
   time.sleep(.25);e=time.monotonic()-start;r=process_tree_rss_bytes(p.pid);estate_bytes=directory_bytes(estate_root);scratch=max(0,estate_bytes-retained);owned=directory_bytes(outdir);samples.append({'e':e,'rss':r,'estate_scratch':scratch,'owned_outdir':owned})
-  if e>CAP:abort='WALL_600S'
+  if time.monotonic()>deadline:abort='TOTAL_DEADLINE'
+  elif e>CAP:abort='WALL_600S'
   elif r>RSS:abort='RSS_6GIB'
-  elif s>SCRATCH:abort='SCRATCH_4GIB'
+  elif scratch>SCRATCH:abort='SCRATCH_4GIB'
   if abort:break
  if abort:
   try:os.killpg(p.pid,signal.SIGTERM)
@@ -82,7 +84,7 @@ def supervise(cmd,label,outdir):
  o,e=p.communicate(timeout=10);return {'exit':p.returncode,'abort':abort,'wall':time.monotonic()-start,'rss_peak':max((x['rss'] for x in samples),default=0),'scratch_peak':max((x['estate_scratch'] for x in samples),default=0),'owned_outdir_peak':max((x['owned_outdir'] for x in samples),default=0),'samples':len(samples),'stdout':o,'stderr':e}
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--baseline-commit',required=True);ap.add_argument('--candidate-commit',required=True);ap.add_argument('--outdir',required=True);a=ap.parse_args();out=Path(a.outdir).resolve();out.mkdir(parents=True,exist_ok=True);base_snap=Path(tempfile.mkdtemp(prefix='anvil-routing-base-',dir='/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode'));cand_snap=Path(tempfile.mkdtemp(prefix='anvil-routing-cand-',dir='/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode'))
+ ap=argparse.ArgumentParser();ap.add_argument('--baseline-commit',required=True);ap.add_argument('--candidate-commit',required=True);ap.add_argument('--outdir',required=True);a=ap.parse_args();out=Path(a.outdir).resolve();out.mkdir(parents=True,exist_ok=True);overall_start=time.monotonic();deadline=overall_start+TOTAL;base_snap=Path(tempfile.mkdtemp(prefix='anvil-routing-base-',dir='/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode'));cand_snap=Path(tempfile.mkdtemp(prefix='anvil-routing-cand-',dir='/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode'))
  for commit,snap in ((a.baseline_commit,base_snap),(a.candidate_commit,cand_snap)):
   archive=subprocess.check_output(['git','-C',str(SHARED_GIT),'archive',commit,'rawlsing_next']); subprocess.run(['tar','-x','-C',str(snap)],input=archive,check=True)
   if not (snap/'rawlsing_next/pre553_direct_estate_i03.py').exists():raise SystemExit('SNAPSHOT_MISSING')
@@ -91,7 +93,7 @@ def main():
   child_out=out/f'{variant}.json';cmd=[sys.executable,str(Path(__file__)),'--child',variant,'--snapshot',str(snap),'--out',str(child_out)]
   # Parent process executes child mode via re-entry below; use subprocess with an internal child entry.
   cmd=[sys.executable,str(Path(__file__)),'--child-run',variant,str(snap),str(child_out)]
-  res[variant]=supervise(cmd,variant,out)
+  res[variant]=supervise(cmd,variant,out,deadline)
   res[variant]['file']=str(child_out)
   if res[variant]['exit'] != 0 or res[variant]['abort']:
    (out/'RUN_RESULT.json').write_text(json.dumps({'schema':'ANVIL_ROUTING_MATCHED_RUNNER@1','status':'CHILD_FAILED_OR_ABORTED','variant':variant,'variant_result':res[variant]},indent=2,sort_keys=True)+'\n')
