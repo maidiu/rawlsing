@@ -1,0 +1,47 @@
+{
+  "schema": "ANVIL_ROUTING_ACCESS_QUALIFICATION@1",
+  "fixture": "existing tiny 8R controlled prepared fixture",
+  "operations": [
+    {
+      "name": "f4",
+      "candidate_q_ms": 40.731,
+      "baseline_q_ms": 61.212,
+      "export_o_ms": 0.027,
+      "export_bytes": 232,
+      "fact_ref_equal": true,
+      "fact_json_equal": true,
+      "risk_members_equal": true,
+      "denominator_members_equal": true,
+      "cells_equal": true,
+      "observed_zero_cells": 1,
+      "used_object_refs_equal": true,
+      "used_authority_refs_equal": true
+    },
+    {
+      "name": "f2",
+      "candidate_q_ms": 28.639,
+      "baseline_q_ms": 39.734,
+      "export_o_ms": 0.019,
+      "export_bytes": 232,
+      "fact_ref_equal": true,
+      "fact_json_equal": true,
+      "risk_members_equal": true,
+      "denominator_members_equal": true,
+      "cells_equal": true,
+      "observed_zero_cells": 0,
+      "used_object_refs_equal": true,
+      "used_authority_refs_equal": true
+    }
+  ],
+  "h_note": "estate/fixture admission outside timed prepared session; not isolated",
+  "reads_note": "all Parquet row-group reads during prepared build + qualification ops",
+  "routing_locator_rows": 24,
+  "lookup_calls": 40,
+  "lookup_objects_yielded": 40,
+  "prepared_session_build_ms": 58.398,
+  "parquet_row_group_reads_total": 220,
+  "parent_maxrss_bytes": 104599552,
+  "scratch_retained": "session SQLite temp only; no persistent artifact",
+  "coordinate_case": "ABSENT_FROM_TINY_FIXTURE; existing native suites cover coordinate/observed-zero cases",
+  "all_parity": true
+}

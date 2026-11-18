@@ -1,0 +1,173 @@
+{
+  "schema": "ANVIL_ROUTING_ACCESS_IMPLEMENTATION@1",
+  "task": "ANVIL_ROUTING_ACCESS_IMPLEMENTATION_20261118",
+  "status": "IMPLEMENTED_FROZEN_FOR_DISTINCT_REVIEW",
+  "branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "start_head": "15afd22f6d55fe3d208d0a3b63d802de2b4e6f13",
+  "accepted_product_baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "code_test_sha": "73b480080ede013770e0c887aa5aa82af3cfafb2",
+  "product_changes": {
+    "rawlsing_next/pre553_direct_estate_i03.py": "3ef754db7d4bc273dbe03a0f9a7f7205b8c41c6d",
+    "rawlsing_next/_pre553_query_common.py": "402186dd6e923b3afdee3c2c2100c18f9ee3ce95",
+    "rawlsing_next/_pre553_query_eval.py": "f79d7734f09319b0eb205dab996e311b053dea5a",
+    "rawlsing_next/tests/test_anvil_authenticated_routing_access.py": "6fbc7532553665864ce590fd5e132ffc594c4bff"
+  },
+  "writer_grant": {
+    "source": "USER_EXPLICIT_SCOPED_ROUTING_SLICE_20261118",
+    "scope": "exact four paths above; session-local routing locator; no other production change",
+    "used": true
+  },
+  "implementation": {
+    "routing_locator_table": {
+      "columns": [
+        "respondent",
+        "target",
+        "risk_set",
+        "fact_ref",
+        "member_set",
+        "gid",
+        "off"
+      ],
+      "key_order": "respondent,target,risk_set,fact_ref",
+      "physical_locator": "gid/off",
+      "reverse_index": false
+    },
+    "session_lifecycle": "created in DirectEstateI03Session.__enter__; populated/validated in _build; temp SQLite deleted with session",
+    "lookup": "_RoutingLookup.lookup exact respondent/target/risk; validates body/ref/respondent/universe/target/risk; canonical ref order; CURRENT before each yield",
+    "census": "routing body/ref/respondent/universe authenticated; observed manifest family count; locator count equals expected family count",
+    "filtered_absence": "trusted only for complete locator; existing native conflict/absence/authority checks unchanged",
+    "current": "session/build/lookup boundaries and before each yield",
+    "cleanup": "session SQLite temp cleanup; no durable artifact",
+    "no_change": [
+      "prepared saved session",
+      "predicate/evaluator semantics",
+      "postconsumer receipts",
+      "issuer/writer/schema",
+      "source/science/actor/current/protected"
+    ]
+  },
+  "qualification": {
+    "fixture": "existing tiny controlled 8R prepared fixture",
+    "operations": 2,
+    "operation_names": [
+      "f4 weighted 3-target joint",
+      "f2 different target"
+    ],
+    "routing_locator_rows": 24,
+    "lookup_calls": 40,
+    "lookup_objects_yielded": 40,
+    "prepared_session_build_ms": 58.398,
+    "parquet_row_group_reads_total": 220,
+    "f4_candidate_q_ms": 40.731,
+    "f4_baseline_q_ms": 61.212,
+    "f2_candidate_q_ms": 28.639,
+    "f2_baseline_q_ms": 39.734,
+    "export_o_ms": [
+      0.027,
+      0.019
+    ],
+    "completed_operations": 2,
+    "observed_zero_cells_f4": 1,
+    "parent_maxrss_bytes": 104599552,
+    "retained_scratch": "session SQLite temp only; no persistent artifact",
+    "h_isolated": false,
+    "h_note": "fixture/admission outside timed prepared session; H not separately isolated",
+    "all_parity": true,
+    "parity": [
+      "fact ref",
+      "full fact JSON",
+      "cells including observed zero",
+      "risk members",
+      "denominator members",
+      "used objects",
+      "used authorities",
+      "replay/provenance via full fact JSON"
+    ],
+    "coordinate_case": "ABSENT_FROM_TINY_FIXTURE; existing native focused suites cover coordinate/observed-zero cases",
+    "amortization": "NOT_AMORTIZED_ON_TINY_FIXTURE: 58ms preparation exceeds the two tiny candidate-vs-baseline savings; no performance claim"
+  },
+  "regression": {
+    "main_union": {
+      "result": "86 passed, 0 failed, 0 errors, 0 skipped",
+      "exit": 0,
+      "time_seconds": 32.99,
+      "evidence": "evidence/regression.txt"
+    },
+    "affected_union": {
+      "result": "21 passed, 0 failed, 0 errors, 0 skipped",
+      "exit": 0,
+      "time_seconds": 21.32,
+      "evidence": "evidence/affected.txt"
+    },
+    "focused": {
+      "result": "8 passed, exit 0",
+      "evidence": "evidence/focused.txt",
+      "coverage": "full-family/authority parity, multiple yields, CURRENT between yields"
+    },
+    "coverage": [
+      "locator public parity for f4/f2",
+      "baseline fallback parity",
+      "exact key axes",
+      "filtered missing routing",
+      "corrupt locator/body path",
+      "CURRENT revocation",
+      "cleanup",
+      "existing conflict/absence/authority semantics",
+      "changed source/restore via S1E",
+      "wrong root/source via existing focused suites",
+      "Batch/prepared/postconsumer impacted paths"
+    ],
+    "fixture_nodes": {
+      "result": "3 passed, 29 deselected, exit 0, 0.19 s",
+      "evidence": "evidence/fixture_readiness_nodes.txt"
+    }
+  },
+  "evidence": {
+    "qualification_json": "evidence/qualification.json",
+    "qualification_out": "evidence/qualification.out",
+    "qualification_time": "evidence/qualification.time",
+    "qualification_script": "evidence/qualification.py",
+    "regression": "evidence/regression.txt",
+    "affected": "evidence/affected.txt",
+    "focused": "evidence/focused.txt"
+  },
+  "limits": [
+    "Tiny 8R controlled fixture; no 128R/600, 100k, raw source or production run.",
+    "No coordinate predicate in tiny fixture; existing native suites cover.",
+    "H not isolated; S/Q/O scoped only.",
+    "No performance or cross-fixture extrapolation; prep not amortized on two operations.",
+    "No group-cache, reverse index, coordinate/weight access, durable artifact or second dataset.",
+    "No protected/source/science/actor/current/issuer/writer authority.",
+    "No self-acceptance; distinct independent review required."
+  ],
+  "review": {
+    "required": true,
+    "code_test_freeze": "ab4c7c7e91fa245e794b6c2252f4f6c13497afc8",
+    "independence": "distinct nonauthor reviewer",
+    "next": "freeze, push, remote verify, stop"
+  },
+  "stop": "AWAITING_DISTINCT_INDEPENDENT_REVIEW",
+  "review_pin": {
+    "commit": "e01a2bd7800cd906b12394dda8dcd1ebdf6eb961",
+    "full_family_parity": "canonical complete routing family filtered by exact target/risk; ref/state/applicability/member-set/authority refs compared",
+    "multiple_matches": "test-only duplicate locator row path proves multiple yields; fixture has no conflicting scientific candidate, documented",
+    "current_between_yields": "revocation after first new-path yield refuses before second",
+    "conflicting_candidate_limitation": "fixture lacks two distinct canonical conflicting facts; existing native conflict tests retain evaluator semantics",
+    "no_new_scope_or_benchmark": true
+  },
+  "fixture_readiness": {
+    "commit": "ab0d54b18ffc8437f9736cd9534ed4536c4484b8",
+    "path": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ROUTING_FIXTURE_READINESS_20261118",
+    "answer": "NO_EXACT_COMBINATION_IN_RETAINED_FIXTURES",
+    "matched_comparison_used": [
+      "f4 weighted 3-target joint",
+      "f2 different target"
+    ],
+    "already_started_finished_no_duplicate": true,
+    "f2_forward_reverse_not_run": true,
+    "combined_weighted_k3_coordinate_claimed": false,
+    "separate_focused_nodes": "coordinate, true-k3, weighted; 3 passed, 29 deselected, 0.19 s",
+    "conflicting_candidate_limitation": "fixture lacks two distinct canonical conflicting routing facts; existing native conflict tests cover evaluator; new path tests multiple yields and CURRENT between yields with controlled duplicate locator row",
+    "evidence": "evidence/fixture_readiness_nodes.txt"
+  }
+}
