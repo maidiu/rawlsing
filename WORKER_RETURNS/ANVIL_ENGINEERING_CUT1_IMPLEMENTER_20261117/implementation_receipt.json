@@ -48,15 +48,25 @@
       "tests": 5,
       "passed": 5,
       "failed": 0,
-      "time_seconds": 5.20,
+      "time_seconds": 5.2,
       "log": "evidence/new_focused.txt"
     }
   },
   "positive_evidence": {
     "prepared_direct_wrapper": "accepted exact PreparedSavedC11Admission; exact fact signature",
-    "four_operations": ["selected", "f2_forward", "f4_k_ge_3_same_person", "raw"],
+    "four_operations": [
+      "selected",
+      "f2_forward",
+      "f4_k_ge_3_same_person",
+      "raw"
+    ],
     "prepared_batch_receipts": 4,
-    "prepared_batch_states": ["COMPLETED", "COMPLETED", "COMPLETED", "COMPLETED"],
+    "prepared_batch_states": [
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED"
+    ],
     "prepared_index_builds": 1,
     "full_fact_projection_denominator_cell_release_parity": true,
     "batch_result_refs": 4,
@@ -106,5 +116,13 @@
     "No protected/source/science/current/issuer/original35/100k claim.",
     "Sourcefree accepted evidence is not integrated acceptance."
   ],
-  "stop": "CUT1_IMPLEMENTED_READY_FOR_DISTINCT_NONAUTHOR_REVIEW"
+  "stop": "CUT1_IMPLEMENTED_READY_FOR_DISTINCT_NONAUTHOR_REVIEW",
+  "code_test_commit": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "remote_verified": true,
+  "remote_head": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "remote_blobs": {
+    "rawlsing_next/pre553_saved_workload_integration.py": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+    "rawlsing_next/pre553_batch_runner.py": "8320f28458fb85aec655d154a2527a161282f56b",
+    "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py": "bf00eb591bdee1087e9a10085d808c1ed2aadf88"
+  }
 }
