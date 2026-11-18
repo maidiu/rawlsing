@@ -2,6 +2,8 @@
 
 **Objective:** Spend the expensive intelligence allocation on *architectural hypotheses, exact missing transformations and decisive falsifiers*, not re-reading vast historical programme corpora. The digests are **bounded, versioned source-conditioned compressions**; "lossless" means retaining all decision-changing distinctions, counterevidence, authority grades, retractions and original source locators—not pretending every source sentence is reprinted. Read the original source when any claim is contested or architecture depends on detail not in the digest.
 
+**First safeguard before delegation:** read [ORACLE/14](14_ASTRA_SPECIFIC_FAILURE_MODES_AND_HARD_STOPS.md). In previous Astra-associated work an apparently committed packet was not at the worker's referenced base, and valuable unpushed work survived only as a Git tree when quota ended; therefore worker-visible file/SHA preflight and pushed remote HEAD readback are required. ORACLE/14 also tests whether the analysis produces a real causal hinge rather than source-authority paperwork.
+
 ## 1. Five-minute conceptual orientation (no massive search)
 
 1. **Read 08 first**: fourteen durable constraints, three missing fusion hinges, live protected SHAs and exact non-claims.
