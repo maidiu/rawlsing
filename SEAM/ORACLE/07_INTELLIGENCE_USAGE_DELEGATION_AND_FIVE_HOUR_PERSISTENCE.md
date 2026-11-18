@@ -2,6 +2,8 @@
 
 **Principal supplement, 2026-11-17. Status:** binding work-discipline expectation for the Astra ORACLE inquiry, **not** a claim that Astra, this chat or a delegated agent possesses a visible token meter, model-selection API, Codex HQ control, independent review authority, or a verified host deadline. This file does not appoint a new HQ, grant leases, change protected PROGRAMMA/CURRENT_PROGRESS, or authorize unsafe external work.
 
+**Specific observed failure overlay:** [ORACLE/14](14_ASTRA_SPECIFIC_FAILURE_MODES_AND_HARD_STOPS.md) records earlier Astra-linked unpublished Git work at expiry and a ghost-packet worker-base discrepancy; require **REMOTE push and authenticated READBACK, not just local commit/tree construction**, and worker-visible exact packet/path/base SHA before Codex HQ dispatch. It also enforces an independent frozen oracle and nonceremonial architecture discrimination. Historical attributions are scoped.
+
 ## The principal's actual commission choice — do not substitute
 
 **Delegated Codex HQ commissions use: `Deepseek V4.1-Flash 1017 MAX`** (the user-specified exact model / effort designation). Preserve this literal name and **MAX**. Do not reinterpret this as another DeepSeek version, a cheaper tier, or permission to change providers/models. Any proposed model change requires the principal's explicit decision or a separately controlling authorization; absence of a selectable model is an honest HOLD, not a quiet fallback.
