@@ -10,6 +10,7 @@
   "contract_sha256": "89645891d608e609c2ab0b97253dd6d3ceb6a424565e382e5aba8f02a7bc604c",
   "estate_manifest": "4d9604dc886ff9655ad25941fdcad2e412d18de4ab07c813524068c1dad09eea",
   "no_author_worktree_inspection": true,
+  "no_heavy_run": true,
   "no_product_edit": true,
   "no_rebuild": true,
   "no_run": true,
@@ -17,6 +18,7 @@
     "f2_forward_raw",
     "f2_reverse_raw"
   ],
+  "original_commit_preserved": "c79d1a33efa272f485ee20eb07917968c91585f0",
   "outputs": {
     "INPUT_MANIFEST.json": {
       "bytes": 1970,
@@ -30,17 +32,23 @@
       "bytes": 504,
       "sha256": "8b1b29a16de3d2ae157258f9858992ee20cfa0026fc439ebcbc53a8ea48547c9"
     },
+    "REPAIR_NOTES.md": {
+      "bytes": 1371,
+      "sha256": "005a5717b84db848749704040942376c7d23623c3219e26ff4e99c9f918b35e4"
+    },
     "SOURCE_PINS.json": {
       "bytes": 815,
       "sha256": "abc7bb34572fdae0cf3eac66c40cd6d4149604386d52f79170685391594e33aa"
     },
     "routing_matched_runner.py": {
-      "bytes": 9547,
-      "sha256": "0fee9ba4b910d1c6b8cc933dc5e6a59f8db8da337a3539e6c6d096dcfde694c7"
+      "bytes": 11492,
+      "sha256": "93d0918fc628071cffe88126c7b103a4b4d9ee87352739b8e4ee0816ab2b9cb8"
     }
   },
+  "repair": "REVISE_EXACT_RUNNER_DEFECT_CORRECTED",
+  "runtime_api_check": "PASS_BASELINE_SNAPSHOT_NO_QUERY",
   "schema": "ANVIL_ROUTING_MATCHED_RUNNER_RETURN@1",
   "separate_processes": true,
   "separate_sessions": true,
-  "status": "EXECUTABLE_MATCHED_RUNNER_PREPARED_NOT_RUN"
+  "status": "REPAIRED_EXECUTABLE_MATCHED_RUNNER_PREPARED_NOT_RUN"
 }
