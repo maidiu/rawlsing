@@ -1,0 +1,66 @@
+{
+  "exact_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/WIDTH128/.local-data-width128/releases/190863fac57b2e0885004b16735e903dba1e0723fe51ad1e0b2c85a1c2689dfe",
+  "family_counts": {
+    "AuthoritySnapshot": 6,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 128,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 600,
+    "RespondentEvent": 68960,
+    "RespondentIdentity": 128,
+    "RoutingEligibilityFact": 76800,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 128
+  },
+  "fixture": "R2 response-populated width_fixture",
+  "grade": "SOURCEFREE_TEST_ONLY",
+  "i02": {
+    "logical": "71a42af8b787438b7be63913ad77b04a62428505e3960d57d1d316a1d76a00d6",
+    "physical": "20e45b03b6898531740748de2b9975794858b879ee2cd4e71cb969085b693412",
+    "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-PYAT-1006-WIDTH128-600-20261118|b5342e7c97b55278bcceb4324042bf30742346a96cfac01d750ff00836c1d3fb",
+    "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:8ee4dc6c0d15427f16c2c4c33d3489f48837cce1463f079bcb04ba5be4e11aba|8ee4dc6c0d15427f16c2c4c33d3489f48837cce1463f079bcb04ba5be4e11aba",
+    "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+    "source": "SOURCE_ARTIFACT|SOURCE-PYAT-1006-WIDTH128-600-20261118|dc1268962cc03108708457ee5a5c456c505c935eec64f3d34e73ee451da146b6",
+    "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:9d8f16b90605fa3879ad5ec4c6cd0eb6b37dbaf39bbf1507fd7cc695bd2490be|9d8f16b90605fa3879ad5ec4c6cd0eb6b37dbaf39bbf1507fd7cc695bd2490be"
+  },
+  "integrated_commit": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "manifest_sha256": "4d9604dc886ff9655ad25941fdcad2e412d18de4ab07c813524068c1dad09eea",
+  "questions": 600,
+  "reconstructed_v1_release_ref": {
+    "content_hash": "2ee554466c767ac61085b7a167dbb7e2bf9634d89beb6f63b7b3809b3af5609e",
+    "kind": "C11LogicalRelease",
+    "object_id": "REL-PYAT-1006-WIDTH128-600-20261118"
+  },
+  "respondents": 128,
+  "retained_bytes": 55187741,
+  "root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/WIDTH128/.local-data-width128",
+  "schema": "ANVIL_WIDTH128_ESTATE_CONTRACT@1",
+  "source_pins": {
+    "width_fixture_blob": "5e044f74fc16e1ed2608dbb5224e5de9ef8e148fd0e78c5fb45e56ec0ede4bfe"
+  },
+  "tag": "PYAT-1006-WIDTH128-600-20261118",
+  "width_audit": {
+    "added_questions": 595,
+    "base_events": 416,
+    "base_repeated_mr_occurrences": 20,
+    "dense_assumption": false,
+    "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+    "events_per_respondent_max": 542,
+    "events_per_respondent_mean": 538.75,
+    "events_per_respondent_min": 538,
+    "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+    "extra_cells": 76160,
+    "extra_events": 68544,
+    "extra_typed_missing": 7616,
+    "extra_typed_not_asked": 7616,
+    "extra_valid_substantive": 60928,
+    "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+    "total_events": 68960,
+    "total_question_bindings": 600,
+    "total_routing": 76800,
+    "total_weights": 128
+  }
+}
