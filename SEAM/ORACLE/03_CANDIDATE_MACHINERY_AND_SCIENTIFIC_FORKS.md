@@ -61,9 +61,9 @@ The model parameters for child learning, sociohistorical context variation, fami
 
 We need **multiple independent validation targets**: longitudinal change under known occupational autonomy, historical/cohort constraints, childcare/activity observations, socialization and context shifts, action/relationship behavior, source-specific survey structures, and source-free adversarial invariants.
 
-## 3. Three real rival machine configurations for Astra
+## 3. Temporal organization options A/B/C — NOT three independent scientific theories
 
-### Candidate A — constrained forward social micro-ontogenesis (world-first)
+### Temporal option A — constrained forward social micro-ontogenesis (world-first)
 
 - PYAT emits a source-qualified field: objective world/position, material constraints, social and attitudinal heterogeneity, permitted coactor/household possibility pools and uncertainty.
 - SOROK constructs independent mother and other actor life histories, with ordinary structured activity plus higher-resolution events, using common acquisition/PFF rules.
@@ -72,7 +72,7 @@ We need **multiple independent validation targets**: longitudinal change under k
 - Weakness: enormous search and compute; sparse observed fields may fail to constrain mechanisms tightly; matching empirical distributions could be difficult or nonidentifiable. Adult mother prototype may be expensive.
 - Falsifier: cannot reproduce within-position rare high-order configurations even with broad admissible histories; acquires equally sophisticated adult ideology in infant or no-language environments; source ablation produces no change.
 
-### Candidate B — inverse constrained adult history synthesis, then prospective living
+### Temporal option B — inverse constrained adult history synthesis, then prospective living
 
 - PYAT samples an actual *synthetic observation target* as a source-qualified joint respondent tip (not necessarily any named real respondent). SOROK proposes N historically feasible prehistories using same child/parent ontology at a cheaper resolution, advances each **forward** to a possible adult.
 - Compare adult emitted survey responses with target observation. Retain a *set* of compatible generated histories; select one by explicit model/proposal likelihood or honest nonprobabilistic constraint, keeping rejected candidates as alternatives.
@@ -81,7 +81,7 @@ We need **multiple independent validation targets**: longitudinal change under k
 - Weakness: danger of backwards storytelling and posterior fiction; unknown developmental prior, answer-emission likelihood, assent meaning and selection probabilities. If LLM merely invents candidate life to match response it violates the standard.
 - Falsifier: chosen history has no effect on later behavior; can arbitrarily change any detail to fit all tips; silently computes numeric posterior from unvalidated terms.
 
-### Candidate C — calibrated hybrid / hierarchical programme of development
+### Temporal option C — calibrated hybrid / hierarchical programme of development
 
 - PYAT-conditioned field calibrates ensemble distributions of material opportunities, institutions, language/practice repertoires, repeated activity regimes and observable answer patterns; SOROK's same primitive developmental operators yield actor-specific state under actual life events.
 - A cheap source- and science-graded **mesoscopic time-window process** represents ordinary work/care/social participation with conserved opportunities and exposure counts; fine event recursion activates only where ordering, personal recognition or consequential novelty matters. Slow PFF motifs as derived history summaries.
@@ -90,7 +90,32 @@ We need **multiple independent validation targets**: longitudinal change under k
 - Weakness: highest danger of coarse summary inventing unsimulated episodes/learning, cached attractor becoming a hidden label, aggregate calibration laundering unsupported causal mechanisms, and coupling source population to fictional household pairs without evidence.
 - Falsifier: coarsened process and fine process lead to contradictory later actors under equal qualified coverage; changed data affect narrative but no performed outcome; different histories produce identical actor behavior except prose.
 
-**Astra need not pick A/B/C.** It must present a technically defensible *alternative* if all three fail; compare on scientific identifiability, developmental scope, real source use, counterfactual dependence, compute, memory, causal replay and implementation risk. A composed hybrid is eligible only after demonstrating that each imported component performs a distinct needed computation.
+**UM-SOROK R2's architectural-bias objection is accepted.** A and B are competing *adult initialization/generative direction strategies*; C combines them to satisfy both newborn-forward and adult inverse tasks. C may be operationally attractive **by definition**, which is not evidence that the underlying developmental computation is scientifically right. Do not award C the victory because it inherits A's and B's intended features. Decouple *temporal initialization* (A/B/C) from *what mechanistically constitutes acquired personhood* (D/E/F below).
+
+### Genuine developmental-computation rival D — persistent, actor-owned acquired relational topology
+
+- Actor state includes a dynamically earned sparse CAN/ADP/PFF network of acquired practices, expectations, inhibitions, recognition/power relations, memory parentage and potentially derived C5 motifs; no default fixed modern psychotypes.
+- **Claim needing proof:** learned relational links and their context-conditional interaction have independent predictive/causal and compression value for later performed behavior, rather than merely naming what a policy could infer from history.
+- **Cost:** state graph, formation-rule science, lineage, storage/identity, temporal granularity and actor independence; cannot call a schema's CREATE permission a qualified developmental law.
+- **Falsifiers:** an event+context-only policy predicts the same held-out behavior and counterfactuals with lower complexity; graph edges alter prose but never later real decisions; topology is invented retrospectively.
+
+### Genuine rival E — bounded activity-policy with event/context memory, without a persistent PFF graph
+
+- Keep bodily need, socially organized activity, actual coactors, individual accessible events, material affordances, historical context and selective episodic memories; an event-conditioned policy produces action without independent stored psychological mediator-network identity. Learned policy parameters/limited memory can still change with history.
+- **Claim needing proof:** repeated history and context-sensitive action do not need separately reified graph nodes to express ordinary dispositions, contradictions, different social identifications and practical agency at the chosen observation resolution.
+- **Cost:** possible short memory, hidden monolithic policy and poor counterfactual explainability; danger of LLM-only improvisation that cannot conserve why a change occurred.
+- **Falsifiers:** requires unsupported hidden memory to capture durable cross-context shifts; cannot explain contrary behavior with same recent context but different distant causal histories; fails explicit inherited relation/rupture obligations.
+
+### Genuine rival F — restricted empirically qualified learning primitives first
+
+- Begin with a narrow independently supported set of development mechanisms (e.g. age/context-bounded caregiver response/attention/routine acquisition) and conservative actor state, delaying broader Horizon/ideological/PFF claims until independent evidence is obtainable. This need not assume either D's graph or E's policy is sufficient.
+- **Claim needing proof:** smaller identified mechanisms and honest UNMODELED domains produce more defensible causal predictions than an unvalidated whole-person dynamical grammar.
+- **Cost:** limited expressivity and fewer culturally complex adults; cannot fulfill the strongest Rawlsing human representation aspiration until extended.
+- **Falsifiers:** even within supported domain it cannot predict actual exposure/learning counterfactuals; results are no better than simple observation sampling; impossibly fragmented laws defeat consistent person continuity.
+
+**Required independent comparison:** Astra must compare at least **one D/E/F architecture against a genuinely incompatible other**, under the same qualified PYAT-produced empirical fact, world/coactor first reader, actor access, later action, source/owner permissions and replay. A/B/C may be used as orthogonal initialization strategies for each. Score **POP population generalization, DEV developmental mechanism, TRANS historical transport separately**, as well as mechanical PYAT→SOROK actual-value reachability, event memory, complexity, latency, loss of psychical meaning, and source-negative behavior; no option wins by having more named features. Every chosen mechanism needs a falsifier that could cause its rejection; `NONE_ADMISSIBLE_YET` is an authorized scientific result.
+
+**Astra need not pick A/B/C, D/E/F or a prewritten hybrid.** The dossier's candidates are *challenge targets, not recommended answers*. A composed hybrid is eligible only if its imported mechanisms have distinct, independently required and tested functions. It must propose a different architecture if these fail, including a narrower admissible project claim where necessary.
 
 ## 4. What would make the 'configuration' specifically executable?
 
