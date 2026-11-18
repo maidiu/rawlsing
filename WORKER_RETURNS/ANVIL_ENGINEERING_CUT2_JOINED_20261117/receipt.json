@@ -1,0 +1,174 @@
+{
+  "schema": "ANVIL_CUT2_JOINED_QUALIFICATION@1",
+  "task": "ANVIL_ENGINEERING_CUT2_JOINED_20261117",
+  "status": "EXACT_JOINED_DEFECT_OR_OWNER_SEAM",
+  "branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+  "cut1_code_test": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "cut1_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "cut1_g5_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "cut1_review_disposition": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1",
+  "product_edits": "NONE",
+  "canonical_code_test_edits": "NONE",
+  "sourcefree": true,
+  "original35_used": false,
+  "production_current_used": false,
+  "protected_write": false,
+  "targeted_tests": {
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider --basetemp=WORKER_RETURNS/ANVIL_ENGINEERING_CUT2_JOINED_20261117/tmp/pytest rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py rawlsing_next/tests/test_pyat919_s2e_a_whole_native_batch.py rawlsing_next/tests/test_universal_world_binding.py",
+    "tests": 38,
+    "passed": 38,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "time_seconds": 300.69,
+    "exit": 0,
+    "log": "evidence/targeted_courts.txt",
+    "node_inventory": "evidence/node_inventory.txt",
+    "by_file": {
+      "test_pyat997_r03_governed_query_issuer_v2.py": 8,
+      "test_pyat997_s1e_source_saved_body_bridge.py": 6,
+      "test_pyat919_s2e_a_whole_native_batch.py": 6,
+      "test_universal_world_binding.py": 18
+    }
+  },
+  "node_coverage": {
+    "r03_v2": [
+      "v1 discovery unchanged; v2 jobs only from original eligible roles",
+      "actual saved Batch without source reopen",
+      "v1 postconsumer guards reject v2 injection",
+      "public compiler rederives frozen frontier and preserves prohibitions",
+      "v2 saved postconsumer consumes only compiler-issued jobs",
+      "changed operation bindings refuse",
+      "caller-injected query in original issuance refused",
+      "manifest query not issued by v2 refused"
+    ],
+    "source_bridge": [
+      "one source snapshot 13-family SAV/DTA",
+      "changed source cell changes native body then exact restore",
+      "missing body member fail-closed and clean",
+      "wrong pinned root and current revocation refuse",
+      "wrong transport before publish refuses"
+    ],
+    "s2e_native_batch": [
+      "one shared native Batch F1/F4/I05",
+      "lost I05 receipt RED",
+      "rehashed F4 domain hole RED",
+      "output proof cap RED",
+      "valid-empty false absence RED",
+      "wrong frontier replay RED"
+    ],
+    "world_binding": [
+      "18-case actual P41/world binding court",
+      "cold subprocess replay",
+      "partial resume to actual P41",
+      "separation/authority/transport/context/restore refusals"
+    ]
+  },
+  "sourcefree_joined_probe": {
+    "path": "evidence/joined_probe.py",
+    "proof": "evidence/joined_probe.json",
+    "new_run_log": "evidence/joined_probe_resource.out",
+    "source_sha256": "7303078bbf946831004807be306b1a24d6b3d686b9765934d01313ae4cce566c",
+    "estate_manifest_sha256": "62289c3aa41f90af5b3455e0e4ecd9c41847891bc3791c9e0bb8f011d80dbc9b",
+    "roots": {
+      "logical": "864288da8a1d4f5d05a7e89f912f291dcf9d981bbb062370c81ca88435ce1d9a",
+      "physical": "b00ca273b9f9352d538c0e491a0b5129d5cfe76e0a1fecb962af475e781c0e77",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|8fb1785c74d8597f734f03faf4a7868d506e1b66266a72c949671dc266e2ab63",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|7303078bbf946831004807be306b1a24d6b3d686b9765934d01313ae4cce566c",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:f4487be06a038bf73ce99bf719dc4e25046976a572fba90ed43567105fedbbfa|f4487be06a038bf73ce99bf719dc4e25046976a572fba90ed43567105fedbbfa"
+    },
+    "compiler": {
+      "v1_requests": 0,
+      "v1_discoveries": 1,
+      "v2_requests": 12,
+      "v2_discoveries": 1,
+      "v2_original_u_root": "39bb27a75b3d7885c98b6b177a6dad7bc20bff60c2a4998695bb70ea66f0ab96",
+      "v2_envelope_sha256": "c77c550dc64489bc8b434bfdcfd45bad36a51f355f861fb5c5f805fdee3fa5a2"
+    },
+    "base_legacy_positive": {
+      "admission_class": "SavedC11Admission",
+      "batch_units": 13,
+      "batch_states": ["COMPLETED"],
+      "join_hash": "e074010a80157b71c2b28ffdec419efe3b3406a8384ad1476bc3ff92a5cbfbba",
+      "join_audit": {
+        "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+        "operation_count": 22,
+        "preconsumer_fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+        "positive_native_linked_operations": 6,
+        "native_discovery_candidates_exactly_joined": 8,
+        "pending_eligible_operations": 2,
+        "batch_units": 13,
+        "native_completed_units_rechecked": 13,
+        "issue_grants_created": 0,
+        "preconsumer_handoff_unchanged": true,
+        "independent_g5": "NOT_RUN"
+      },
+      "positive_rows": 6
+    },
+    "prepared_cut1_positive": {
+      "admission_class": "PreparedSavedC11Admission",
+      "batch_units": 13,
+      "batch_states": ["COMPLETED"],
+      "prepared_index_builds": 1,
+      "join_result": "GAP",
+      "join_error": "EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED"
+    },
+    "required_result": "JOINED_BASE_PASS__PREPARED_JOIN_GAP"
+  },
+  "exact_owner_seam": {
+    "classification": "NEW_PREPARED_JOIN_GAP__BASE_LEGACY_JOIN_PASS",
+    "file": "rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "function": "join_saved_source_operation_fates",
+    "line": 272,
+    "current_condition": "type(admission) is not SavedC11Admission",
+    "observed_error": "EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED",
+    "current_owner": "S1-E/postconsumer receipt owner",
+    "minimum_grant": "exact PreparedSavedC11Admission whitelist in the postconsumer join, preserving unchanged compiler/workload/receipt/fate and CURRENT checks; no product edit in this turn",
+    "not_a_query_issuance_claim": true,
+    "not_a_source_science_grant": true
+  },
+  "sourcefree_cold_fresh_and_refusal_evidence": {
+    "cold_fresh_targeted": "test_universal_world_binding.py 18 PASS (includes cold subprocess replay and fresh P41 wrapper)",
+    "changed_restore": "test_pyat997_s1e_source_saved_body_bridge.py 6 PASS including changed source cell and exact restore",
+    "source_current_refusal": "source bridge 6 PASS including wrong root/current revocation",
+    "r03_saved_no_source_reopen": "test_v2_valid_issued_query_runs_actual_saved_batch_without_source_reopen PASS",
+    "r03_v1_v2_distinction": "v1 0 QUERY/1 DISCOVERY; v2 12 QUERY/1 DISCOVERY in joined probe",
+    "postconsumer": "base SavedC11Admission 22 operations, 6 positive native-linked, 8 discovery candidates, 2 pending; prepared join refused by exact accepted-type check"
+  },
+  "resource": {
+    "joined_probe_wall_seconds": 2.59,
+    "joined_probe_user_seconds": 3.16,
+    "joined_probe_sys_seconds": 0.45,
+    "joined_probe_parent_maxrss_bytes": 124575744,
+    "process_tree": "single owner probe process; no subprocess launched",
+    "staging_memory": "NOT_MEASURED",
+    "output_count": "13 Batch receipts; prepared one index build",
+    "100k_6gib": "NOT_RUN"
+  },
+  "source_pins": {
+    "cut1_integration": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+    "cut1_batch": "8320f28458fb85aec655d154a2527a161282f56b",
+    "cut1_test": "bf00eb591bdee1087e9a10085d808c1ed2aadf88",
+    "prepared_module": "bcb146edae680028e027e47cae45891693f63526",
+    "saved_base": "22749addc1fca5f0b90e12728847c390aafa7a84",
+    "w05_direct_estate": "8825832f8067c7fce7a99a94505743cbb4eada06"
+  },
+  "archive": "R3/independent archive untouched; prior proofs unchanged",
+  "gates": {
+    "G1": "PASS_SCOPED cut1 accepted code/test and sourcefree fixture provenance; no product edit.",
+    "G2": "PASS_SCOPED base legacy joined sourcefree chain; 38 targeted courts green.",
+    "G3": "PASS_SCOPED source/current/route/negative and changed/restore courts; prepared join typed refusal captured.",
+    "G4": "PASS_SCOPED_SMALL bounded joined probe resource; no 100k claim.",
+    "G5": "NOT_RUN; cut1 G5 is independent; prepared join has exact owner seam."
+  },
+  "limits": [
+    "Small TEST_ONLY fixture; no original35/source/respondent/watch science.",
+    "No production CURRENT/issuer/authority/protected merge.",
+    "No 100k/6GiB or real-width economic claim.",
+    "Prepared postconsumer join is a new exact gap outside the cut1 grant.",
+    "Targeted courts cover 38 nodes, not a full 202/100k matrix."
+  ],
+  "next_dependency": "Postconsumer receipt owner decides whether to grant the exact PreparedSavedC11Admission whitelist in join_saved_source_operation_fates; then rerun actual prepared joined path and distinct review. Do not patch here.",
+  "stop": "EXACT_JOINED_DEFECT_OR_OWNER_SEAM"
+}

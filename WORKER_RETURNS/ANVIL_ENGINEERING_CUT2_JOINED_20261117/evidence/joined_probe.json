@@ -1,0 +1,101 @@
+{
+  "schema": "ANVIL_CUT2_JOINED_PROBE@1",
+  "sourcefree": true,
+  "fixture": "existing sourcefree Q2/native TEST_ONLY fixture",
+  "source_sha256": "7303078bbf946831004807be306b1a24d6b3d686b9765934d01313ae4cce566c",
+  "estate_manifest_sha256": "62289c3aa41f90af5b3455e0e4ecd9c41847891bc3791c9e0bb8f011d80dbc9b",
+  "roots": {
+    "logical": "864288da8a1d4f5d05a7e89f912f291dcf9d981bbb062370c81ca88435ce1d9a",
+    "physical": "b00ca273b9f9352d538c0e491a0b5129d5cfe76e0a1fecb962af475e781c0e77",
+    "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|8fb1785c74d8597f734f03faf4a7868d506e1b66266a72c949671dc266e2ab63",
+    "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|7303078bbf946831004807be306b1a24d6b3d686b9765934d01313ae4cce566c",
+    "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:f4487be06a038bf73ce99bf719dc4e25046976a572fba90ed43567105fedbbfa|f4487be06a038bf73ce99bf719dc4e25046976a572fba90ed43567105fedbbfa",
+    "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662",
+    "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1"
+  },
+  "family_counts": {
+    "EmpiricalUniverse": 1,
+    "RespondentIdentity": 5,
+    "QuestionVariableBinding": 1,
+    "RespondentEvent": 5,
+    "RoutingEligibilityFact": 5,
+    "EmpiricalCoordinateFact": 5,
+    "WeightMeasureFact": 0,
+    "AuthoritySnapshot": 7,
+    "ReplayManifest": 1,
+    "SourceUniverseRelation": 0,
+    "EmpiricalPredicateReplayBinding": 0,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "StructuralAdmissionReplayBinding": 0
+  },
+  "source_stats": {
+    "source_reads": 1,
+    "source_prehash_passes": 0,
+    "snapshot_acquisitions": 1,
+    "decode_calls": 1,
+    "key_witness_passes": 0,
+    "cell_passes": 1,
+    "full_c11_builds": 0,
+    "source_open_model": "FIXTURE_SNAPSHOT_ONLY",
+    "source_rows": 5,
+    "source_columns": 2,
+    "event_count": 5,
+    "coordinate_count": 5,
+    "weight_count": 0,
+    "spool_bytes": 31090,
+    "spool_files": 3,
+    "cleanup_complete": true
+  },
+  "compiler": {
+    "v1_requests": 0,
+    "v1_discoveries": 1,
+    "v2_requests": 12,
+    "v2_discoveries": 1,
+    "v2_original_u_root": "39bb27a75b3d7885c98b6b177a6dad7bc20bff60c2a4998695bb70ea66f0ab96",
+    "v2_envelope_sha256": "c77c550dc64489bc8b434bfdcfd45bad36a51f355f861fb5c5f805fdee3fa5a2"
+  },
+  "base_positive": {
+    "admission_class": "SavedC11Admission",
+    "batch_units": 13,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "join_hash": "e074010a80157b71c2b28ffdec419efe3b3406a8384ad1476bc3ff92a5cbfbba",
+    "join_audit": {
+      "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+      "operation_count": 22,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "positive_native_linked_operations": 6,
+      "native_discovery_candidates_exactly_joined": 8,
+      "pending_eligible_operations": 2,
+      "batch_units": 13,
+      "native_completed_units_rechecked": 13,
+      "issue_grants_created": 0,
+      "preconsumer_handoff_unchanged": true,
+      "independent_g5": "NOT_RUN"
+    },
+    "positive_rows": 6
+  },
+  "prepared_positive": {
+    "admission_class": "PreparedSavedC11Admission",
+    "batch_units": 13,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "prepared_index_builds": 1,
+    "join_error": "EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED",
+    "join_result": "GAP"
+  },
+  "required_result": "JOINED_BASE_PASS__PREPARED_JOIN_GAP",
+  "prepared_join_boundary": {
+    "file": "rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "function": "join_saved_source_operation_fates",
+    "condition": "type(admission) is not SavedC11Admission",
+    "current_owner": "S1-E/postconsumer receipt owner",
+    "minimum_grant": "exact PreparedSavedC11Admission whitelist in the postconsumer join while preserving unchanged compiler/workload/receipt/fate checks"
+  }
+}

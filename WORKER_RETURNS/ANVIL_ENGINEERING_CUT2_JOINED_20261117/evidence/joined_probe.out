@@ -1,0 +1,56 @@
+{
+  "schema": "ANVIL_CUT2_JOINED_PROBE@1",
+  "sourcefree": true,
+  "fixture": "existing sourcefree Q2/native TEST_ONLY fixture",
+  "compiler": {
+    "v1_requests": 0,
+    "v1_discoveries": 1,
+    "v2_requests": 12,
+    "v2_discoveries": 1,
+    "v2_original_u_root": "01b543ffb65a9f976ff4c104398b0617ebe1c1639122e05e43c5cb208274bf96",
+    "v2_envelope_sha256": "b5b15f514ca01ce8c49a25f4b4153e36d7d1e847b736b0f8fb654414ecaf1b32"
+  },
+  "base_positive": {
+    "admission_class": "SavedC11Admission",
+    "batch_units": 13,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "join_hash": "de225cb13d2d1cdd262bee14c89319c99d97d1808da155d23ea462fbaf40e67a",
+    "join_audit": {
+      "scope": "TEST_ONLY_SOURCEFREE_NOT_NATIVE_SCIENCE",
+      "operation_count": 22,
+      "preconsumer_fate_counts": {
+        "ELIGIBLE": 8,
+        "HELD": 14
+      },
+      "positive_native_linked_operations": 6,
+      "native_discovery_candidates_exactly_joined": 8,
+      "pending_eligible_operations": 2,
+      "batch_units": 13,
+      "native_completed_units_rechecked": 13,
+      "issue_grants_created": 0,
+      "preconsumer_handoff_unchanged": true,
+      "independent_g5": "NOT_RUN"
+    },
+    "positive_rows": 6
+  },
+  "prepared_positive": {
+    "admission_class": "PreparedSavedC11Admission",
+    "batch_units": 13,
+    "batch_states": [
+      "COMPLETED"
+    ],
+    "prepared_index_builds": 1,
+    "join_error": "EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED",
+    "join_result": "GAP"
+  },
+  "required_result": "JOINED_BASE_PASS__PREPARED_JOIN_GAP",
+  "prepared_join_boundary": {
+    "file": "rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "function": "join_saved_source_operation_fates",
+    "condition": "type(admission) is not SavedC11Admission",
+    "current_owner": "S1-E/postconsumer receipt owner",
+    "minimum_grant": "exact PreparedSavedC11Admission whitelist in the postconsumer join while preserving unchanged compiler/workload/receipt/fate checks"
+  }
+}
