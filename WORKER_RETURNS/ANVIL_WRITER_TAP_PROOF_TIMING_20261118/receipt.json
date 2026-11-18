@@ -1,0 +1,73 @@
+{
+  "schema": "ANVIL_WRITER_TAP_PROOF_TIMING@1",
+  "task": "ANVIL_WRITER_TAP_PROOF_TIMING_20261118",
+  "status": "TEST_ONLY_INSTRUMENT_FROZEN__SMOKE_PASS__NO_BUILD",
+  "received_diagnosis": "2bdd689698a404e728fc395bbdd3dfd6df989348",
+  "writer": {
+    "baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "file": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "sha256": "068fc525b6c117fbb3feba52f740f7e764674ff0b2a78f52e5b649b5fafe643a",
+    "unchanged": true,
+    "i02_file": "rawlsing_next/_pre553_direct_i02_sourcefree.py",
+    "i02_sha256": "b70e9a49b5d0a2445ed76053b04579fa0cbede2717286c7708dfb6f18ff016d2"
+  },
+  "instrument": {
+    "path": "timed_writer.py",
+    "smoke": "timer_smoke.py",
+    "isolation": "test-only transparent wrappers around the unchanged writer; no product edit",
+    "wrapped_boundaries": [
+      "_Sink.add/flush/close",
+      "_IndexSink.add/flush/close",
+      "build_sourcefree_direct_i02",
+      "_verify_emitted_physical_payloads",
+      "write_direct_estate total"
+    ],
+    "progress": "bounded periodic JSON every 8192 add events; atomic temp replace; no per-row verbose output",
+    "family_breakdown": true,
+    "partial_cap": "progress persisted during run; incomplete spans remain incomplete and are not inferred",
+    "stage_marks": ["harness_start", "proof_start", "verify_start", "writer_start", "done"]
+  },
+  "derived_buckets": {
+    "sink_add_inclusive": "sum per-family _Sink.add, includes nested flush",
+    "index_add_inclusive": "_IndexSink.add, includes nested flush",
+    "proof_residual_not_pure_sql": "build_sourcefree_direct_i02 elapsed minus sink/add and index/add inclusive; includes validation, inserts, hashes and SQLite overhead, NOT pure SQL",
+    "writer_residual_after_proof_verify": "write_direct_estate elapsed minus proof and verify; includes setup, hashing, fsync and publication",
+    "non_overlapping_claim": false
+  },
+  "nesting_limits": [
+    "_Sink.add includes _Sink.flush; flush duration is nested and must not be added again.",
+    "_IndexSink.add includes flush.",
+    "build_sourcefree_direct_i02 includes tap/_Sink/_IndexSink consumption and proof work; residual is not pure SQL.",
+    "write_direct_estate includes proof and verify; post-proof residual is not a single stage.",
+    "If cap kills the process, only completed calls/spans and periodic progress survive; no final residual is fabricated."
+  ],
+  "smoke": {
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/ANVIL_WRITER_TAP_PROOF_TIMING_20261118/timer_smoke.py",
+    "result": "PASS",
+    "events": 8,
+    "derived_present": true,
+    "native_build": false,
+    "output": "{\"smoke\": \"PASS\", \"events\": 8, \"derived\": {...}}"
+  },
+  "later_command": "SNAP=/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil-scale-06ulz7; MP=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117; PYTHONPATH=\"$SNAP:$MP:$MP/vendor\" PYTHONDONTWRITEBYTECODE=1 python3 -B /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_WRITER_TAP_PROOF_TIMING_20261118/timed_writer.py --snapshot \"$SNAP\" --out <NEW_UNIQUE_OWNED_ROOT> --respondents 512 --questions 600 --progress <NEW_UNIQUE_OWNED_ROOT>/progress.json",
+  "later_caps": {
+    "build_seconds": 600,
+    "rss_bytes": 6442450944,
+    "scratch_bytes": 4294967296,
+    "free_bytes": 8589934592
+  },
+  "later_constraints": [
+    "unique new owned output root; never mutate preserved .local-data-width512 stage",
+    "same 512x600 geometry; no new geometry/size",
+    "sourcefree only; no native source/query/build beyond this writer",
+    "supervision must enforce caps and retain progress on SIGTERM",
+    "one run only; no retry"
+  ],
+  "not_run": [
+    "no actual writer build in this turn",
+    "no benchmark/query",
+    "no product edit",
+    "no source/science/protected changes"
+  ],
+  "stop": "STOP_FOR_ONE_LATER_SUPERVISED_TIMED_WRITER_DIAGNOSTIC"
+}
