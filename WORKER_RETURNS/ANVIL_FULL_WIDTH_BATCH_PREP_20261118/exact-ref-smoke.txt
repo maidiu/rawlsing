@@ -1,0 +1,21 @@
+{
+  "smoke": "PASS",
+  "checks": [
+    {
+      "name": "release",
+      "roundtrip_key": true,
+      "kind": "C11LogicalRelease"
+    },
+    {
+      "name": "query",
+      "roundtrip_key": true,
+      "kind": "EmpiricalQuerySpec@1.0.0"
+    },
+    {
+      "name": "predicate",
+      "roundtrip_key": true,
+      "kind": "EmpiricalPredicate@1.0.0"
+    }
+  ],
+  "bare_string_rejected": true
+}

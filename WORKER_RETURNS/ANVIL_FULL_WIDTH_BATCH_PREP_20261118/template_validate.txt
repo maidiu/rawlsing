@@ -5,20 +5,36 @@
     "tag": "<SEALED_COMBINED_TAG>",
     "respondents": 10000,
     "questions": 600,
-    "manifest_sha256": "<SEALED_COMBINED_MANIFEST_SHA256>",
-    "release_ref": "C11LogicalRelease|<SEALED_COMBINED_OBJECT_ID>|<SEALED_COMBINED_CONTENT_HASH>",
+    "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "release_ref": "C11LogicalRelease|REL-TEMPLATE-SEALED-COMBINED|0000000000000000000000000000000000000000000000000000000000000000",
     "source_wave_country_context": "SYNTHETIC_SINGLE_SOURCE_WAVE_COUNTRY"
   },
   "operations": [
     {
       "label": "f2_forward_raw",
-      "query_ref": "<F2_FORWARD_QUERY_REF>",
-      "predicate_ref": "<F2_FORWARD_PREDICATE_REF>"
+      "query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "content_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "content_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
     },
     {
       "label": "f2_reverse_raw",
-      "query_ref": "<F2_REVERSE_QUERY_REF>",
-      "predicate_ref": "<F2_REVERSE_PREDICATE_REF>"
+      "query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "content_hash": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "predicate_ref": {
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "content_hash": "1111111111111111111111111111111111111111111111111111111111111111"
+      }
     }
   ],
   "session_scope": "NOT_OPENED_VALIDATION_ONLY",

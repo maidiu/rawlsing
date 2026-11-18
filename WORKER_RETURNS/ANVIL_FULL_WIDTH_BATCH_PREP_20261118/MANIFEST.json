@@ -6,28 +6,39 @@
   "product_edits": false,
   "files": {
     "00_HANDOFF.md": {
-      "sha256": "06f1595fd538d143992e1d1b37472a9bca2ae894fc0bdb1b3971776ec7ae555f",
-      "bytes": 4366
+      "sha256": "c78d86dbc6009d86f3efa92f8b9b72a4167f9875e56fe66abc8789c6d39f0ff0",
+      "bytes": 5771
     },
     "SOURCE_PINS.json": {
       "sha256": "af56c1181a1901bbeedde8e67c060e5fe7b2f1f669c4a80bae82244c57aac7cd",
       "bytes": 1406
     },
     "contract_template.json": {
-      "sha256": "f324af3ed2a9ca27eec26cb26225c4b7127e97a7363a101741e5ee572305534b",
-      "bytes": 1255
+      "sha256": "5e640c3ee29a910059faf1db59a8c0aef722a9e51cc49e356d9f10d83baf641e",
+      "bytes": 2025
+    },
+    "exact-ref-smoke.txt": {
+      "sha256": "b1db73d83bb07341c43f51ff229a9925ae2969946143925da7e5b87d9e3cd54c",
+      "bytes": 389
     },
     "full_width_batch_driver.py": {
-      "sha256": "184b7cf2b5849e9b10bae826cac9824661d4f97be84de234c943e521eaf75b18",
-      "bytes": 15642
+      "sha256": "eb45ed768741c4b87ff17b3acd1a43168a6d3411f93f25ed84c606d2c5f29408",
+      "bytes": 18820
+    },
+    "placeholder-reject.txt": {
+      "sha256": "063307607ca6ef7c48a7af9f0ad815fdb04c3c9c737d0c92819106def4e80345",
+      "bytes": 113
     },
     "template_validate.txt": {
-      "sha256": "183929c9596c210202742bbaf126bb98219ad049ab4363b5edccd8ce415f9c24",
-      "bytes": 1002
+      "sha256": "6303e820cecd1262b74ed6385fba9f9d0c90d6f6403870839fbc27ad9efdd9b3",
+      "bytes": 2080
     }
   },
   "existing_runner_sufficient": false,
   "existing_runner_reason": "direct I03 matched runner does not construct actual BatchExecutionRunner/BatchManifest/receipts",
   "no_full_batch_payload_claim": true,
-  "multi_country_execution": false
+  "multi_country_execution": false,
+  "exact_ref_normalization": "strict three-field document; bare strings rejected by exact_ref",
+  "runtime_catalog_precedence": "explicit --runtime-catalog over contract template",
+  "baseline_identity": "manifest/query/predicate/fact exact; mismatch fails"
 }

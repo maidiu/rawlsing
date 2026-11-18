@@ -70,3 +70,29 @@ python3 full_width_batch_driver.py \
 - Prior evidence: WIDTH128 and 10k fixture contracts, accepted Cut1 prepared Batch tests, postconsumer prepared-Batch join tests, and the routing exact-repair recheck at `bbc3114f`.
 
 No raw/original source, production/protected/science claims, product edits, build, native run, or heavy child was used.
+
+## Exact input repair
+
+The prior template exposed exact refs as strings. The accepted API's `exact_ref`
+requires an `ExactRef` or a three-field mapping; it rejects strings. The driver
+now normalizes every contract/baseline ref to a strict
+`kind/object_id/content_hash` document, verifies its canonical round-trip, and
+passes the document to `exact_ref`. Bare strings and non-sha256 placeholders are
+rejected by the same path used by `--validate-only`; `template_validate.txt`
+records the valid synthetic template validation and `placeholder-reject.txt`
+records the rejection.
+
+`load_catalog` now gives explicit `--runtime-catalog` precedence over an empty
+contract-template catalog. It requires nonempty authorities/predicates/queries,
+materializes the catalog, and resolves every forward/reverse query and predicate
+exactly before opening the estate.
+
+Baseline use now requires an exact manifest and exact query/predicate/fact
+identities. Any available-baseline mismatch fails; absent baseline remains
+`BASELINE_NOT_AVAILABLE`. Full Batch payload/denominator comparison remains
+explicitly separated.
+
+`exact-ref-smoke.txt` is a light no-native smoke against the exact `aee954`
+snapshot using existing 10k release/query/predicate documents: normalization
+round-trips and the bare string form is rejected by `exact_ref`. No estate was
+opened, no query/build/benchmark ran, and construction was untouched.

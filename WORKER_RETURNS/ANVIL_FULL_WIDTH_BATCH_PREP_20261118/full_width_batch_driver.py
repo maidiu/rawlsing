@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import importlib
 import json
+import re
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -71,12 +72,42 @@ def operation_entry(contract, aliases):
     raise ValueError(f"missing contract operation {aliases[0]}")
 
 
-def ref_string(value):
-    if isinstance(value, str):
-        return value
-    if isinstance(value, dict) and all(k in value for k in ("kind", "object_id", "content_hash")):
-        return f"{value['kind']}|{value['object_id']}|{value['content_hash']}"
-    raise ValueError("expected an exact ref string or exact ref mapping")
+SHA256 = re.compile(r"^[0-9a-f]{64}$")
+EXACT_FIELDS = {"kind", "object_id", "content_hash"}
+
+
+def normalize_exact_ref(value, name="exact_ref"):
+    """Return a strict three-field exact-ref document, never a bare key.
+
+    The accepted API's exact_ref accepts ExactRef or a three-field mapping,
+    not a pipe-delimited string.  This normalizer preserves the mapping for
+    exact_ref and verifies the canonical round-trip key.
+    """
+    if isinstance(value, dict):
+        if set(value) != EXACT_FIELDS:
+            raise ValueError(f"{name} must contain exact kind/object_id/content_hash only")
+        doc = {field: value[field] for field in EXACT_FIELDS}
+    elif isinstance(value, str):
+        if value.count("|") < 2:
+            raise ValueError(f"{name} must be an exact three-field ref document")
+        kind, rest = value.split("|", 1)
+        object_id, content_hash = rest.rsplit("|", 1)
+        doc = {"kind": kind, "object_id": object_id, "content_hash": content_hash}
+    else:
+        raise ValueError(f"{name} must be an exact ref mapping or canonical key")
+    for field in EXACT_FIELDS:
+        if not isinstance(doc[field], str) or not doc[field].strip():
+            raise ValueError(f"{name}.{field} must be a nonempty string")
+    if not SHA256.fullmatch(doc["content_hash"]):
+        raise ValueError(f"{name}.content_hash must be lowercase sha256")
+    key = f"{doc['kind']}|{doc['object_id']}|{doc['content_hash']}"
+    if isinstance(value, str) and value != key:
+        raise ValueError(f"{name} does not round-trip to its canonical key")
+    return doc
+
+
+def ref_key(value):
+    return "|".join((value["kind"], value["object_id"], value["content_hash"]))
 
 
 def contract_validate(contract):
@@ -95,42 +126,53 @@ def contract_validate(contract):
         raise ValueError("multi-country execution is outside this template")
     if int(contract.get("respondents", 0)) <= 0 or int(contract.get("questions", 0)) <= 0:
         raise ValueError("respondents/questions must be positive")
+    if not isinstance(contract["manifest_sha256"], str) or not SHA256.fullmatch(contract["manifest_sha256"]):
+        raise ValueError("manifest_sha256 must be lowercase sha256")
     forward = operation_entry(contract, FORWARD)
     reverse = operation_entry(contract, REVERSE)
-    fq = ref_string(forward[1]["query_ref"])
-    rq = ref_string(reverse[1]["query_ref"])
-    fp = ref_string(forward[1]["predicate_ref"])
-    rp = ref_string(reverse[1]["predicate_ref"])
-    if fq == rq:
+    fq = normalize_exact_ref(forward[1]["query_ref"], "forward.query_ref")
+    rq = normalize_exact_ref(reverse[1]["query_ref"], "reverse.query_ref")
+    fp = normalize_exact_ref(forward[1]["predicate_ref"], "forward.predicate_ref")
+    rp = normalize_exact_ref(reverse[1]["predicate_ref"], "reverse.predicate_ref")
+    if ref_key(fq) == ref_key(rq):
         raise ValueError("forward/reverse query refs must be genuinely distinct")
+    if ref_key(fp) == ref_key(rp):
+        raise ValueError("forward/reverse predicate refs must be genuinely distinct")
     return {
-        "release_ref": ref_string(release),
+        "release_ref": normalize_exact_ref(release, "release_ref"),
         "forward": {"label": FORWARD[0], "query_ref": fq, "predicate_ref": fp},
         "reverse": {"label": REVERSE[0], "query_ref": rq, "predicate_ref": rp},
         "context": context,
     }
 
 
-def load_catalog(contract, catalog_path):
+def load_catalog(contract, catalog_path, operations):
     from rawlsing_next.pre553_carrier_execution import (
         RuntimeObjectCatalog, materialize_public_object,
     )
-    raw = contract.get("runtime_catalog")
-    if raw is None and catalog_path:
-        raw = load_json(catalog_path)
+    # Explicit external catalog wins even when the contract carries an empty
+    # template catalog.  Never let an empty contract block mask a real input.
+    raw = load_json(catalog_path) if catalog_path is not None else contract.get("runtime_catalog")
     if not isinstance(raw, dict):
         raise ValueError(
             "runtime catalog required in contract or --runtime-catalog "
             "(authorities/predicates/queries public documents)"
         )
-    return RuntimeObjectCatalog(
-        authorities=tuple(materialize_public_object(v) for v in raw.get("authorities", ())),
-        predicates=tuple(materialize_public_object(v) for v in raw.get("predicates", ())),
-        queries=tuple(materialize_public_object(v) for v in raw.get("queries", ())),
+    for key in ("authorities", "predicates", "queries"):
+        if not isinstance(raw.get(key), list) or not raw[key]:
+            raise ValueError(f"runtime catalog {key} must be a nonempty list")
+    catalog = RuntimeObjectCatalog(
+        authorities=tuple(materialize_public_object(v) for v in raw["authorities"]),
+        predicates=tuple(materialize_public_object(v) for v in raw["predicates"]),
+        queries=tuple(materialize_public_object(v) for v in raw["queries"]),
         discovery_authorities=tuple(
             materialize_public_object(v) for v in raw.get("discovery_authorities", ())
         ),
     )
+    for op in operations:
+        catalog.resolve_query_exact(op["query_ref"])
+        catalog.resolve_predicate_exact(op["predicate_ref"])
+    return catalog
 
 
 def import_authorizer(spec: str):
@@ -148,7 +190,9 @@ def baseline_map(path, expected_manifest):
         return None, "NOT_AVAILABLE"
     data = load_json(path)
     manifest = data.get("estate_manifest")
-    if manifest is not None and manifest != expected_manifest:
+    if not isinstance(manifest, str) or not SHA256.fullmatch(manifest):
+        return None, "BASELINE_MANIFEST_MISSING"
+    if manifest != expected_manifest:
         return None, "BASELINE_FIXTURE_MISMATCH"
     rows = data.get("operations", data)
     if isinstance(rows, list):
@@ -162,13 +206,16 @@ def baseline_map(path, expected_manifest):
         for alias in aliases:
             if alias in by_label:
                 row = by_label[alias]
-                fact = row.get("fact_ref")
-                if fact is None:
-                    return None, "BASELINE_FACT_REF_MISSING"
+                try:
+                    fact = normalize_exact_ref(row["fact_ref"], "baseline.fact_ref")
+                    query = normalize_exact_ref(row["query_ref"], "baseline.query_ref")
+                    predicate = normalize_exact_ref(row["predicate_ref"], "baseline.predicate_ref")
+                except (KeyError, ValueError) as exc:
+                    return None, f"BASELINE_IDENTITY_INVALID:{exc}"
                 result[aliases[0]] = {
-                    "fact_ref": ref_string(fact),
-                    "query_ref": ref_string(row["query_ref"]) if row.get("query_ref") else None,
-                    "predicate_ref": ref_string(row["predicate_ref"]) if row.get("predicate_ref") else None,
+                    "fact_ref": fact,
+                    "query_ref": query,
+                    "predicate_ref": predicate,
                     "has_full_payload": row.get("payload") is not None,
                 }
                 break
@@ -189,7 +236,7 @@ def run(args):
                 "respondents": contract.get("respondents"),
                 "questions": contract.get("questions"),
                 "manifest_sha256": contract["manifest_sha256"],
-                "release_ref": spec["release_ref"],
+                "release_ref": ref_key(spec["release_ref"]),
                 "source_wave_country_context": spec["context"],
             },
             "operations": [spec["forward"], spec["reverse"]],
@@ -202,6 +249,8 @@ def run(args):
 
     if not args.snapshot or not args.current_authorizer:
         raise ValueError("--snapshot and --current-authorizer are required for execution")
+    if str(contract.get("status", "")).startswith("TEMPLATE_ONLY"):
+        raise ValueError("template contract is not executable; supply an exact sealed contract")
     sys.path.insert(0, str(Path(args.snapshot).resolve()))
     # Re-import only after the read-only snapshot is placed first.
     from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots as _I02
@@ -212,10 +261,10 @@ def run(args):
     from rawlsing_next.pre553_saved_workload_integration import execute_saved_batch as _execute
     from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session as _Session
 
-    catalog = load_catalog(contract, args.runtime_catalog)
+    ops = (spec["forward"], spec["reverse"])
+    catalog = load_catalog(contract, args.runtime_catalog, ops)
     authorizer = import_authorizer(args.current_authorizer)
     release_ref = _exact(spec["release_ref"], "release_ref")
-    ops = (spec["forward"], spec["reverse"])
     units = tuple(
         _Unit("QUERY", _exact(op["query_ref"], "query_ref"), (release_ref,))
         for op in ops
@@ -263,8 +312,8 @@ def run(args):
             return fail("BATCH_RECEIPT_MISSING", op["label"])
         operations.append({
             "label": op["label"],
-            "query_ref": op["query_ref"],
-            "predicate_ref": op["predicate_ref"],
+            "query_ref": ref_key(op["query_ref"]),
+            "predicate_ref": ref_key(op["predicate_ref"]),
             "unit_ref": unit.unit_ref.key,
             "receipt_ref": receipt.receipt_ref.key,
             "receipt_hash": receipt.receipt_hash,
@@ -289,15 +338,24 @@ def run(args):
         if baseline is not None:
             expected = baseline[op["label"]]
             row.update({
-                "baseline_fact_ref": expected["fact_ref"],
-                "fact_ref_equal": op["result_refs"] == [expected["fact_ref"]],
+                "baseline_fact_ref": ref_key(expected["fact_ref"]),
+                "baseline_query_ref": ref_key(expected["query_ref"]),
+                "baseline_predicate_ref": ref_key(expected["predicate_ref"]),
+                "fact_ref_equal": op["result_refs"] == [ref_key(expected["fact_ref"])],
                 "baseline_has_full_payload": expected["has_full_payload"],
-                "query_ref_equal": expected["query_ref"] in (None, op["query_ref"]),
-                "predicate_ref_equal": expected["predicate_ref"] in (None, op["predicate_ref"]),
+                "query_ref_equal": ref_key(expected["query_ref"]) == op["query_ref"],
+                "predicate_ref_equal": ref_key(expected["predicate_ref"]) == op["predicate_ref"],
             })
         parity.append(row)
-    if any(row.get("fact_ref_equal") is False for row in parity):
-        return fail("BASELINE_FACT_REF_MISMATCH", "batch result refs differ", parity=parity)
+    if any(
+        row.get("fact_ref_equal") is False
+        or row.get("query_ref_equal") is False
+        or row.get("predicate_ref_equal") is False
+        for row in parity if row["baseline_status"] == "AVAILABLE"
+    ):
+        return fail("BASELINE_IDENTITY_MISMATCH",
+                    "baseline manifest/query/predicate/fact identities differ",
+                    parity=parity)
 
     return {
         "status": "PASS",
@@ -308,7 +366,7 @@ def run(args):
             "respondents": contract.get("respondents"),
             "questions": contract.get("questions"),
             "manifest_sha256": contract["manifest_sha256"],
-            "release_ref": spec["release_ref"],
+            "release_ref": ref_key(spec["release_ref"]),
             "source_wave_country_context": spec["context"],
         },
         "batch": {
