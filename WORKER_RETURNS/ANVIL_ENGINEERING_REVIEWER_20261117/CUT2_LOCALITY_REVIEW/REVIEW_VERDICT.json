@@ -1,0 +1,99 @@
+{
+  "packet_id": "ANVIL-CUT2-R4-LOCALITY",
+  "task_id": "ANVIL-ENGINEERING-CUT2-R4-LOCALITY-REVIEW",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "reviewer_role": "same distinct nonauthor G5; test-only locality receiving, not author/fixer",
+  "target_sha": "1cc507614496d79c4c546b066da17adf7175e328",
+  "product_candidate_sha": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "code_test_sha": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "cut1_review_sha": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+  "manifest_files": 17,
+  "manifest_hashes_verified": true,
+  "evidence_grade": "SOURCEFREE_TEST_ONLY_LOCALITY_EXPERIMENT",
+  "scope": "ONE f4_three_raw instrumented query on sealed 16R/600Q estate; no production/native/100k/science/current/protected acceptance",
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Target R4 commit, 17-file manifest, R2 estate/contract and product source pins verified; product unchanged, no edit."
+    },
+    "G2": {
+      "state": "PASS_SCOPED",
+      "receipt": "One locality observation: reads 3965 -> 50; profile Q 18.296 -> 7.690 s; exact identity/semantic/refs/member/replay parity; cProfile 9637 reconstructions; external exit 0 and caps under 120 s/2 GiB/2 GiB."
+    },
+    "G3": {
+      "state": "FAIL",
+      "receipt": "Test-only adapter bypasses CURRENT between yields: after consuming the first routing object and revoking, the adapter yields a second object with no DirectEstateError; original _respondent_family refuses the same state. Exact correction required."
+    },
+    "G4": {
+      "state": "PASS_SCOPED",
+      "receipt": "Supervised child exit 0, wall 11.932816951 s, sampled RSS 128036864 B, sampled scratch 30368896 B, 42 samples; no abort. Adapter materializes per respondent/family, not full estate; process-tree/sampled limits apply."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; distinct nonauthor",
+      "receipt": "REVISE_EXACT_DEFECT at the test-only adapter current/ordering boundary; locality mechanism itself is supported as one observation, adapter not production-ready."
+    }
+  },
+  "locality_observation": {
+    "query": "f4_three_raw",
+    "row_group_reads": {"baseline": 3965, "locality": 50},
+    "profile_query_wall_seconds": {"baseline": 18.29603375500301, "locality": 7.690256591013167},
+    "row_group_rows": {"baseline": 2012160, "locality": 25472},
+    "compressed_bytes": {"baseline": 634219540, "locality": 7942218},
+    "uncompressed_bytes": {"baseline": 6011490388, "locality": 76150826},
+    "parity_exact": true,
+    "cProfile_object_from_row_calls": 9637,
+    "raw_family_materialization_counter": 0,
+    "raw_counter_blind_spot": true,
+    "grade": "ONE_INSTRUMENTED_OBSERVATION_NOT_PRODUCTION_SPEEDUP"
+  },
+  "supervision": {
+    "exit": 0,
+    "aborted": null,
+    "external_wall_seconds": 11.932816951011773,
+    "max_sampled_process_tree_rss_bytes": 128036864,
+    "max_sampled_scratch_bytes": 30368896,
+    "samples": 42,
+    "caps": {"wall_seconds": 120, "rss_bytes": 2147483648, "scratch_bytes": 2147483648}
+  },
+  "defect": {
+    "id": "R4_LOCALITY_REVOCATION_BYPASS_BETWEEN_YIELDS",
+    "severity": "SEV-1_TEST_ONLY_ADAPTER__PRODUCTION_ADOPTION_WOULD_BE_SEV-0",
+    "file": "locality_adapter.py",
+    "function": "physical_order_respondent_family",
+    "input": "sealed R2 estate; RoutingEligibilityFact; consume first yielded object; revoke CURRENT; request next object",
+    "expected": "DirectEstateError current source/operation authority refused before second yield",
+    "actual": "second RoutingEligibilityFact yielded with no error; adapter materializes all rows before yield and never calls _require_live in the yield loop",
+    "original_control": "DirectEstateI03Session._respondent_family refused the same revocation with DirectEstateError",
+    "required_correction": "add self._require_live() before every yield in physical_order_respondent_family (and any production equivalent); add focused revocation-after-first-yield regression; rerun one locality observation/parity",
+    "production_handoff": "rawlsing_next/pre553_direct_estate_i03.py::DirectEstateI03Session._respondent_family; owner grant #1006 comment6969187403 REQUESTED_NOT_GRANTED; product READONLY"
+  },
+  "ordering_memory_exception": {
+    "canonical_ref_order_restored": true,
+    "duplicate_order_parity": "target complete-query parity exact",
+    "per_respondent_family_materialization": "bounded at 600 RoutingEligibilityFact rows in witness; not full-estate",
+    "streaming_exception_timing_difference": "adapter materializes before first yield, so a later malformed row can raise before earlier objects would have been yielded; not separately executed"
+  },
+  "owner_handoff": {
+    "requested_comment": "https://github.com/maidiu/rawlsing/issues/1006#issuecomment-6969187403",
+    "grant_status": "REQUESTED_NOT_GRANTED",
+    "product_file": "rawlsing_next/pre553_direct_estate_i03.py",
+    "product_symbol": "DirectEstateI03Session._respondent_family",
+    "experiment_status": "LOCALITY_MECHANISM_SUPPORTED_ONE_OBSERVATION__ADAPTER_NOT_PRODUCTION_READY"
+  },
+  "disposition": "REVISE_EXACT_DEFECT",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT",
+  "stop_state": "REVISE_EXACT_DEFECT__R4_ADAPTER_CURRENT_BETWEEN_YIELDS",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW/evidence/locality_revocation_witness.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW/evidence/locality_revocation_witness.out",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW/RECOMPUTED_LOCALITY.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW/SOURCE_CHECKS.tsv",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW/snapshot/"
+  ]
+}

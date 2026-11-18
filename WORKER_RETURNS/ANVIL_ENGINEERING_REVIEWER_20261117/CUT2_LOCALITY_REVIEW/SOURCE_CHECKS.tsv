@@ -1,0 +1,18 @@
+check	target	value	status
+target_commit	MEASUREMENT_PREP	1cc507614496d79c4c546b066da17adf7175e328	present
+manifest	R4_LOCALITY_EXPERIMENT/MANIFEST.json	17 files; all SHA-256 verify	PASS
+product_candidate	rawlsing_next	347baec696c8b395d750ac3b9e74417a6490c223	unchanged/read-only
+code_test	a13d69cf5636de5541660cd60115f8b61d66261b	accepted cut1	unchanged
+cut1_review	092bf29ffa6724d477abb4ccfc770e3bc492250d	ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1	prior accepted
+estate	R2 contract	c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b	sealed sourcefree
+contract	R2_PILOT/fixture_contract_pilot.json	e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28	exact
+product_source	pre553_direct_estate_i03.py	8825832f8067c7fce7a99a94505743cbb4eada06	unchanged
+adapter	locality_adapter.py	physical_order_respondent_family	test-only monkeypatch
+read_reduction	R4 raw	3965 -> 50 row-group reads	ONE OBSERVATION
+profile_Q	R4 raw/cProfile	18.29603375500301 -> 7.690256591013167 s	ONE INSTRUMENTED OBSERVATION
+parity	R4 child_result	identity/semantic/refs/member/replay true	PASS complete query
+profile_reconstructions	call_tree/callers	9637 _object_from_row calls	corroborates raw counter 0 blind spot
+supervision	RESULT.json	exit 0, no abort; wall 11.932816951 s; RSS 128036864 B; scratch 30368896 B	PASS caps
+adapter_revocation	revocation_witness.py	second yield after revoke; no error	FAIL
+original_revocation	revocation_witness.py	DirectEstateError before second yield	correct
+owner_handoff	#1006 comment6969187403	requested, not granted	product READONLY

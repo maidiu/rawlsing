@@ -1,0 +1,57 @@
+{
+  "schema": "ANVIL_CUT2_R4_LOCALITY_REVIEW@1",
+  "target_sha": "1cc507614496d79c4c546b066da17adf7175e328",
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "manifest_files": 17,
+  "manifest_hashes_verified": true,
+  "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+  "locality_observation": {
+    "row_group_reads": {"baseline": 3965, "locality": 50},
+    "profile_query_wall_seconds": {"baseline": 18.29603375500301, "locality": 7.690256591013167},
+    "row_group_rows": {"baseline": 2012160, "locality": 25472},
+    "compressed_bytes": {"baseline": 634219540, "locality": 7942218},
+    "uncompressed_bytes": {"baseline": 6011490388, "locality": 76150826},
+    "parity_exact": true,
+    "cProfile_object_from_row_calls": 9637,
+    "raw_family_object_materializations": 0,
+    "raw_counter_is_blind_spot": true,
+    "grade": "ONE_INSTRUMENTED_OBSERVATION_NOT_PRODUCTION_SPEEDUP"
+  },
+  "supervision": {
+    "exit": 0,
+    "aborted": null,
+    "external_wall_seconds": 11.932816951011773,
+    "max_sampled_process_tree_rss_bytes": 128036864,
+    "max_sampled_scratch_bytes": 30368896,
+    "samples": 42,
+    "caps": {"wall_seconds": 120, "rss_bytes": 2147483648, "scratch_bytes": 2147483648}
+  },
+  "adapter_defect": {
+    "id": "R4_LOCALITY_REVOCATION_BYPASS_BETWEEN_YIELDS",
+    "file": "locality_adapter.py",
+    "function": "physical_order_respondent_family",
+    "expected": "CURRENT revoked after a yielded object must be checked before the next object/yield; DirectEstateError",
+    "actual": "adapter materializes all rows, then yields sorted objects without _require_live; second RoutingEligibilityFact yielded after revocation with no error",
+    "original": "original _respondent_family checks _require_live per row and refused the same second yield with DirectEstateError: current source/operation authority refused",
+    "required_correction": "add self._require_live() before every yield in physical_order_respondent_family (and in any production equivalent); add focused revocation-after-first-yield regression; re-run one locality observation and parity",
+    "scope": "test-only adapter; product _respondent_family requires owner grant and separate production change",
+    "severity": "SEV-1_TEST_ONLY_ADAPTER__PRODUCTION_ADOPTION_WOULD_BE_SEV-0"
+  },
+  "ordering_memory": {
+    "adapter_restores_ref_order": true,
+    "duplicate_order_parity": "target full parity exact for complete query",
+    "materialized_bounded_per_respondent_family": "600 RoutingEligibilityFact rows at most in witness; not full-estate materialization",
+    "streaming_difference": "adapter raises on a later malformed row before first yield; original streams and can yield earlier; not separately executed"
+  },
+  "owner_handoff": {
+    "requested_comment": "https://github.com/maidiu/rawlsing/issues/1006#issuecomment-6969187403",
+    "grant_status": "REQUESTED_NOT_GRANTED",
+    "product_file": "rawlsing_next/pre553_direct_estate_i03.py",
+    "product_symbol": "DirectEstateI03Session._respondent_family",
+    "minimal_correction": "Production would need owner-granted physical gid,off member read plus canonical ref-order restoration and current checks before every yield; no product edit by reviewer.",
+    "experiment_status": "LOCALITY_MECHANISM_SUPPORTED_ONE_OBSERVATION__ADAPTER_NOT_PRODUCTION_READY"
+  },
+  "verdict": "REVISE_EXACT_DEFECT"
+}

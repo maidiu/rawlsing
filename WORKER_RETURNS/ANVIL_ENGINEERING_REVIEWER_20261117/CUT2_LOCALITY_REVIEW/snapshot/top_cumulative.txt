@@ -1,0 +1,88 @@
+         13878051 function calls (11821553 primitive calls) in 7.603 seconds
+
+   Ordered by: cumulative time
+   List reduced from 452 to 80 due to restriction <80>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    7.690    7.690 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R4_LOCALITY_EXPERIMENT/locality_profile.py:51(observed_exec)
+        1    0.000    0.000    7.690    7.690 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_prepared_saved_i03.py:85(execute_i03)
+        1    0.000    0.000    7.689    7.689 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_query.py:734(execute_empirical_query)
+        1    0.000    0.000    7.675    7.675 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_eval.py:640(_evaluate_index_group)
+       16    0.000    0.000    7.617    0.476 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_eval.py:51(_routing_fact_for)
+       16    0.001    0.000    7.417    0.464 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_direct_estate_i03.py:100(__getitem__)
+     9616    0.004    0.000    7.416    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/vendor/court_instrumentation.py:280(family)
+     9616    0.225    0.000    7.412    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R4_LOCALITY_EXPERIMENT/locality_adapter.py:20(physical_order_respondent_family)
+     9637    0.297    0.000    6.351    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_parquet_carrier.py:131(_object_from_row)
+     9638    0.259    0.000    4.777    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:377(__init__)
+666379/96789    0.825    0.000    2.720    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:181(canonicalize)
+     9642    0.024    0.000    2.297    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:220(semantic_hash)
+5301372/4258228    0.887    0.000    2.234    0.000 {built-in method builtins.isinstance}
+     9710    0.021    0.000    2.199    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:215(canonical_json)
+154406/67488    0.265    0.000    1.885    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:206(<dictcomp>)
+   521572    0.268    0.000    1.366    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/typing.py:1291(__instancecheck__)
+260566/86904    0.239    0.000    1.124    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:251(_freeze_semantic_descendants)
+   521572    0.393    0.000    1.098    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/typing.py:1566(__subclasscheck__)
+   105933    0.122    0.000    0.794    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:299(loads)
+57872/57870    0.085    0.000    0.734    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:257(<dictcomp>)
+   105933    0.203    0.000    0.632    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:332(decode)
+   531209    0.204    0.000    0.578    0.000 {built-in method builtins.issubclass}
+279251/96296    0.205    0.000    0.565    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_parquet_carrier.py:63(_decode)
+    38862    0.092    0.000    0.555    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:320(exact_ref)
+   154436    0.135    0.000    0.420    0.000 {built-in method builtins.any}
+    58267    0.099    0.000    0.409    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:285(__post_init__)
+   521576    0.157    0.000    0.375    0.000 <frozen abc>:121(__subclasscheck__)
+     9710    0.028    0.000    0.343    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:183(dumps)
+    19422    0.021    0.000    0.319    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_source_direct_parquet_estate.py:175(_key)
+     9710    0.027    0.000    0.305    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:183(encode)
+   105933    0.297    0.000    0.297    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py:343(raw_decode)
+   714146    0.230    0.000    0.285    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:204(<genexpr>)
+     9699    0.272    0.000    0.272    0.000 /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:205(iterencode)
+   213758    0.170    0.000    0.245    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:158(_text)
+   521576    0.193    0.000    0.218    0.000 {built-in method _abc._abc_subclasscheck}
+   250859    0.116    0.000    0.211    0.000 {built-in method builtins.sorted}
+    68039    0.059    0.000    0.203    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:164(_sha256)
+       16    0.024    0.002    0.197    0.012 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_eval.py:61(<listcomp>)
+    19502    0.020    0.000    0.185    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:475(ref)
+     9600    0.010    0.000    0.173    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_predicate.py:12(_question_matches)
+    57785    0.087    0.000    0.168    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_parquet_carrier.py:75(<dictcomp>)
+     9632    0.009    0.000    0.157    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_common.py:221(_ref_field)
+28910/28905    0.011    0.000    0.147    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:211(<listcomp>)
+     9773    0.004    0.000    0.131    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_common.py:207(_exact)
+    38511    0.012    0.000    0.114    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_parquet_carrier.py:77(<genexpr>)
+   193151    0.061    0.000    0.110    0.000 <frozen abc>:117(__instancecheck__)
+   211878    0.090    0.000    0.090    0.000 {method 'match' of 're.Pattern' objects}
+     9600    0.007    0.000    0.083    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R4_LOCALITY_EXPERIMENT/locality_adapter.py:62(<lambda>)
+   347536    0.077    0.000    0.077    0.000 {method 'startswith' of 'str' objects}
+    68039    0.072    0.000    0.072    0.000 {method 'fullmatch' of 're.Pattern' objects}
+     9772    0.019    0.000    0.072    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:304(__post_init__)
+     9637    0.034    0.000    0.071    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_parquet_carrier.py:121(_class_for_family)
+       50    0.001    0.000    0.066    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/vendor/court_instrumentation.py:203(read_row_group)
+       50    0.063    0.001    0.063    0.001 /Users/matthewsmith/Library/Python/3.11/lib/python/site-packages/pyarrow/parquet/core.py:436(read_row_group)
+     9642    0.055    0.000    0.055    0.000 {built-in method _hashlib.openssl_sha256}
+   427832    0.051    0.000    0.051    0.000 {method 'strip' of 'str' objects}
+    48/16    0.000    0.000    0.050    0.003 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_predicate.py:417(_eval_predicate)
+       16    0.000    0.000    0.050    0.003 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_predicate.py:446(<listcomp>)
+       32    0.001    0.000    0.050    0.002 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_predicate.py:175(_leaf_match)
+     9638    0.016    0.000    0.049    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:355(_canonical_authority_ref_set)
+       74    0.000    0.000    0.049    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/_pre553_query_predicate.py:20(_select_respondent_events)
+   193151    0.049    0.000    0.049    0.000 {built-in method _abc._abc_instancecheck}
+       74    0.000    0.000    0.049    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_direct_estate_i03.py:80(select)
+       74    0.000    0.000    0.048    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/vendor/court_instrumentation.py:274(selected)
+       74    0.001    0.000    0.048    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_direct_estate_i03.py:347(_selected_events)
+       74    0.002    0.000    0.036    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_source_direct_parquet_estate.py:981(_events_from_postings)
+     9638    0.017    0.000    0.032    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:347(_authority_refs)
+   211866    0.027    0.000    0.027    0.000 {method 'end' of 're.Match' objects}
+    19274    0.020    0.000    0.026    0.000 <frozen importlib._bootstrap>:1209(_handle_fromlist)
+    29561    0.026    0.000    0.026    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:456(__getattr__)
+    19311    0.016    0.000    0.025    0.000 {built-in method builtins.getattr}
+       37    0.000    0.000    0.024    0.001 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/vendor/court_instrumentation.py:239(event_object)
+     9602    0.015    0.000    0.023    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:224(canonical_set)
+       53    0.022    0.000    0.022    0.000 {method 'execute' of 'sqlite3.Connection' objects}
+    87151    0.022    0.000    0.022    0.000 <frozen _collections_abc>:409(__subclasshook__)
+    39205    0.021    0.000    0.021    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:290(key)
+    86882    0.021    0.000    0.021    0.000 {method 'endswith' of 'str' objects}
+   115641    0.018    0.000    0.018    0.000 {built-in method builtins.len}
+     9728    0.007    0.000    0.016    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_direct_estate_i03.py:134(_require_live)
+     9638    0.008    0.000    0.015    0.000 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/rawlsing_next/pre553_empirical_objects.py:427(<listcomp>)
+
+

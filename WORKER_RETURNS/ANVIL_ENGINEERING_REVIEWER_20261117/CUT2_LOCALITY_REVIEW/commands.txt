@@ -1,0 +1,17 @@
+ANVIL CUT2 R4 locality review — actual commands
+
+1) Target/payload freeze:
+   target commit 1cc507614496d79c4c546b066da17adf7175e328
+   R4_LOCALITY_EXPERIMENT/MANIFEST.json: 17 payload files; all SHA-256 match (hash check 0 bad).
+
+2) Frozen locality observation read:
+   RESULT.json + child_result.json + raw.prof + call_tree.txt/top_*.txt/callers.txt
+   reported reads 3965 -> 50; cProfile Q wall 18.296033755 -> 7.690256591 s;
+   parity identity/semantic/refs/member/replay all true; external supervision exit 0,
+   wall 11.932816951 s, RSS 128036864 B, scratch 30368896 B, 42 samples, no abort.
+
+3) Adapter revocation/order witness:
+   python3 -B WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW/revocation_witness.py <proofroot>
+   => adapter yielded a second RoutingEligibilityFact after CURRENT was revoked between yields,
+      with no error; original _respondent_family refused with DirectEstateError:
+      current source/operation authority refused.

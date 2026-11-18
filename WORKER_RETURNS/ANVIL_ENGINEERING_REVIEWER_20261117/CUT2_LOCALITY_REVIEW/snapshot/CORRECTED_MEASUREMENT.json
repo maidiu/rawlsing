@@ -1,0 +1,89 @@
+{
+  "schema": "ANVIL_CUT2_CORRECTED_MEASUREMENT@1",
+  "status": "CANONICAL_CORRECTED_TABLE_SUPERSEDES_STALE_FIELDS",
+  "source": {
+    "reviewer_audit": "REVIEWER/WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/RETURN.md",
+    "reviewer_verdict": "REVIEWER/WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/REVIEW_VERDICT.json",
+    "review_verdict": "ACCEPT_SCOPED_MEASUREMENT_WITH_ALIGNED_PHASE_CORRECTIONS",
+    "r2_raw": "R2_PILOT/FIRST_PAIR_RESULT.json and samples_*.json (frozen at 495796e)"
+  },
+  "aligned_phase_table": {
+    "wall_seconds": {
+      "baseline": 80.624402665,
+      "prepared_aligned_positive": 63.244547212,
+      "saving": 17.379855453,
+      "note": "prepared as-run 78.047217121 includes 14.802669909 negative/restore; aligned positive subtracts it. Not a qualified speedup."
+    },
+    "S_index_build_seconds": {
+      "baseline": 14.377979227,
+      "prepared_aligned_positive": 2.726060945,
+      "saving": 11.651918282,
+      "note": "prepared as-run 5.497834365 includes 2.771773420 restore session build."
+    },
+    "Q_native_evaluator_seconds": {
+      "baseline": 65.403850167,
+      "prepared_aligned_positive": 60.176479731,
+      "saving": 5.227370436
+    },
+    "O_export_serialization_seconds": {
+      "baseline": 0.019123635,
+      "prepared_aligned_positive": 0.017339703
+    },
+    "H_admission_seconds": {
+      "baseline": 0.272613543,
+      "prepared_aligned_positive": 0.287418883
+    },
+    "prepared_Q_share_of_aligned_wall_percent": 95.15,
+    "prepared_S_share_of_aligned_wall_percent": 4.31
+  },
+  "corrected_build_and_scratch": {
+    "producer_build_external_wall_seconds": 33.8669873480103,
+    "producer_build_process_tree_rss_peak_sampled_bytes": 199135232,
+    "producer_build_scratch_peak_sampled_bytes": 100068948,
+    "external_scratch_peak_baseline_bytes": 30368896,
+    "external_scratch_peak_prepared_bytes": 30368896,
+    "internal_session_component_peak_bytes": 23269376,
+    "staging_total": "NOT_SEPARATELY_MEASURED",
+    "combined_wall_seconds": 194.57578067295253
+  },
+  "mixed_fields_not_matched": {
+    "prepared_cpu_user_seconds": 78.31566199999999,
+    "prepared_cpu_system_seconds": 2.602234,
+    "prepared_process_tree_rss_peak_observed_bytes": 200810496,
+    "prepared_row_group_reads": 23898,
+    "note": "Prepared aggregate fields include the negative/restore phase; there are no separate aligned positive CPU/RSS/read values. Do not present them as matched positive comparisons. Baseline as-run CPU 78.105449/5.078538 and RSS 185323520 are not a phase-aligned substitute."
+  },
+  "supersedes": [
+    {
+      "field": "headline wall comparison",
+      "wrong": "80.624 vs 78.047",
+      "correct": "80.624402665 vs 63.244547212 aligned positive"
+    },
+    {
+      "field": "S saving",
+      "wrong": "8.9 s (total-vs-total)",
+      "correct": "11.651918282 s aligned positive"
+    },
+    {
+      "field": "build row",
+      "wrong": "33.18 s / 193,429,504 B / 99,941,972 B",
+      "correct": "33.8669873480103 s / 199,135,232 B / 100,068,948 B raw external samples"
+    },
+    {
+      "field": "scratch label",
+      "wrong": "23,269,376 B as total scratch",
+      "correct": "30,368,896 B external sampled scratch; 23,269,376 B internal session-component peak only; total staging not separately measured"
+    },
+    {
+      "field": "prepared CPU/RSS/reads",
+      "wrong": "presented as matched positive cost",
+      "correct": "aggregate includes negative/restore; no aligned positive values; do not compare as matched"
+    },
+    {
+      "field": "combined wall",
+      "wrong": "top-level null",
+      "correct": "194.57578067295253 s in supervision"
+    }
+  ],
+  "immutability": "R2 raw and old report remain frozen at 495796e; this new table explicitly supersedes only the wrong derived/presented fields. No rerun, no product edit, no new pair."
+}
