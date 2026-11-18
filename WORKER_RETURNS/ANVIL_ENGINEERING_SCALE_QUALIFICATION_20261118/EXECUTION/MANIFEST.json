@@ -1,0 +1,124 @@
+{
+  "actual_counts": {
+    "events": 32450,
+    "manifest_sha256": "e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+    "questions": 5,
+    "respondents": 10000,
+    "retained_bytes": 31163472,
+    "routing": 50000,
+    "weights": 10000
+  },
+  "build": {
+    "abort": null,
+    "exit": 0,
+    "rss_peak_sampled": 234422272,
+    "scratch_peak_sampled": 535740432,
+    "wall_seconds": 210.42334323492832
+  },
+  "files": {
+    "BUILD_SAMPLES.json": {
+      "bytes": 72885,
+      "sha256": "97267de4ef140050af541e44aaffad9ed3b42b965772057cba8d460bbac645b2"
+    },
+    "BUILD_STDERR.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "BUILD_STDOUT.txt": {
+      "bytes": 554,
+      "sha256": "ca01e62cc0af48e0eca7fb9aa58ea6ff4ca89ea1a48b791cc697553e543e581a"
+    },
+    "BUILD_SUPERVISION.json": {
+      "bytes": 1477,
+      "sha256": "62145b5f2f385930dfc7691be203b2d5d0a25dec695569ea0304d64621238218"
+    },
+    "EXECUTION/SUPERVISION.json": {
+      "bytes": 1154,
+      "sha256": "c52c1099cf4bdf97626007ce3d14b360020bea99a490e975b90573dfcb7f2d92"
+    },
+    "EXECUTION/samples.json": {
+      "bytes": 45195,
+      "sha256": "4e61535ed4fc8e5f07d2bba35063a7184cc0f1eca783af2dc2dab2760893a3a5"
+    },
+    "EXECUTION/scale_result.json": {
+      "bytes": 9025,
+      "sha256": "fad8d75307822019c61c6a1f2b09a3f7774d1da6a95727a365a5a3457644fef3"
+    },
+    "EXECUTION/stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "EXECUTION/stdout.txt": {
+      "bytes": 149,
+      "sha256": "e050dafa9d321bdf752d6c75ca0185f0e56f9bf82414a057ae3a2a7f9770ea00"
+    },
+    "EXECUTION_FINDINGS.md": {
+      "bytes": 4343,
+      "sha256": "0ad4988477e2d97e18fe6b959db413160062b665ad8760422da8656ea0e1232f"
+    },
+    "EXPECTED_FIXTURE_TRUTH.json": {
+      "bytes": 1646,
+      "sha256": "46077548165b8782746b8311be3c802951534506beb91e854f3510184a52b807"
+    },
+    "HARNESS_CORRECTION.diff": {
+      "bytes": 1049,
+      "sha256": "48905b4a6a314d32ccddcb86878af2d967820ed1b61fb9d9465941edf46e9ac1"
+    },
+    "RETURN.json": {
+      "bytes": 4794,
+      "sha256": "0a8962249404e5eed659ae70d9d96aa6bd6ff01c788b98a87dd489bc333bcb69"
+    },
+    "SNAPSHOT_PATH.txt": {
+      "bytes": 85,
+      "sha256": "817f0d54c25225e15a8eb2ac68dd03b648c9773bea165605f6c08750981fe96a"
+    },
+    "build_10k_estate.py": {
+      "bytes": 3207,
+      "sha256": "e953c4667f7eb43dc30d13bb0a12d3b85de6b22792ee182c27f832839fc41439"
+    },
+    "fixture_contract_10k.json": {
+      "bytes": 2887,
+      "sha256": "d2a7ffa81f95f904ceeff8c262fa0fb6680d7ec764e68e60ae18462164075526"
+    },
+    "qualify_scale.py": {
+      "bytes": 5227,
+      "sha256": "0af34d7bf0034fa56dac5cdd8a8515eed35f4537f4283c5c18f18cfde953843a"
+    },
+    "run_build.py": {
+      "bytes": 2370,
+      "sha256": "75ae0c25f8d7f4952dab33d463998a1e5db9bc8e4cab8b7945bb3d3aec6d3a1f"
+    },
+    "run_scale.py": {
+      "bytes": 2584,
+      "sha256": "538bc911f7df62d828c2052c9e914e015f30533fcc4408e26709b6cfa51e81d8"
+    }
+  },
+  "integrated_executable": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "query": {
+    "abort": null,
+    "admission_seconds": 0.3614558579865843,
+    "completed": 5,
+    "counters": {
+      "event_object_materializations": 78011,
+      "family_object_materializations": 287450,
+      "row_group_reads": 1126,
+      "row_group_rows": 572192,
+      "row_group_uncompressed_bytes": 1686816826,
+      "session_builds": 1
+    },
+    "exit": 0,
+    "external_wall_seconds": 130.86366408504546,
+    "index_seconds": 12.617640899959952,
+    "per_op": {
+      "f2_forward_raw": 21.840493601979688,
+      "f2_reverse_raw": 21.23921791499015,
+      "f4_three_raw": 26.14959521603305,
+      "repeated_mr_raw": 15.969202462001704,
+      "selected_weighted": 25.542910177027807
+    },
+    "rss_peak_sampled": 568688640,
+    "scratch_peak_sampled": 163660060,
+    "total_wall_seconds": 129.92667842691299
+  },
+  "schema": "ANVIL_SCALE_QUALIFICATION_EXECUTION_MANIFEST@1"
+}

@@ -1,0 +1,52 @@
+{
+  "actual_input": {
+    "events": 32450,
+    "questions": 5,
+    "respondents": 10000,
+    "retained_bytes": 31163472,
+    "routing": 50000,
+    "weights": 10000
+  },
+  "all_expected_match": true,
+  "expected_derivation": "controlled A/B/C/D/MR pattern; denominators computed from fixture pattern (A=1 5000; C=1 3333; A1B1 with B missing/risk 3137; MR under A1 385)",
+  "fixture": "1006 10k respondents/5 native questions",
+  "note": "controlled fixture invariants; full per-op semantic/identity/member/ref/replay hashes are in EXECUTION/scale_result.json and pinned for reviewer, not a native re-run.",
+  "operations": {
+    "f2_forward_raw": {
+      "actual_denominator": 5000,
+      "actual_state": "SUPPORTED",
+      "expected_denominator": 5000,
+      "expected_state": "SUPPORTED",
+      "match": true
+    },
+    "f2_reverse_raw": {
+      "actual_denominator": 3333,
+      "actual_state": "SUPPORTED",
+      "expected_denominator": 3333,
+      "expected_state": "SUPPORTED",
+      "match": true
+    },
+    "f4_three_raw": {
+      "actual_denominator": 3137,
+      "actual_state": "SUPPORTED",
+      "expected_denominator": 3137,
+      "expected_state": "SUPPORTED",
+      "match": true
+    },
+    "repeated_mr_raw": {
+      "actual_denominator": 385,
+      "actual_state": "SUPPORTED",
+      "expected_denominator": 385,
+      "expected_state": "SUPPORTED",
+      "match": true
+    },
+    "selected_weighted": {
+      "actual_denominator": 5000,
+      "actual_state": "SUPPORTED",
+      "expected_denominator": 5000,
+      "expected_state": "SUPPORTED",
+      "match": true
+    }
+  },
+  "schema": "ANVIL_SCALE_EXPECTED_FIXTURE_TRUTH@1"
+}

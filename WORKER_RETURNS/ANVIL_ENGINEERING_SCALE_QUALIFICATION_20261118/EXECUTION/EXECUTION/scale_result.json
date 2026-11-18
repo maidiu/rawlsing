@@ -1,0 +1,201 @@
+{
+  "admission_seconds": 0.3614558579865843,
+  "completed": 5,
+  "counters": {
+    "c11_repository_tripwire_hits": 0,
+    "event_object_materializations": 78011,
+    "family_calls": 55000,
+    "family_object_materializations": 287450,
+    "family_rows_yielded": 255000,
+    "read_table_calls": 0,
+    "read_table_tripwire_hits": 0,
+    "row_group_compressed_bytes": 132332989,
+    "row_group_reads": 1126,
+    "row_group_rows": 572192,
+    "row_group_uncompressed_bytes": 1686816826,
+    "selected_event_calls": 67625,
+    "selected_events_yielded": 68010,
+    "session_build_seconds": 11.792213240987621,
+    "session_builds": 1,
+    "session_enter_seconds": 12.617618196061812,
+    "session_opens": 1,
+    "session_temp_max_bytes": 132370432
+  },
+  "fixture": {
+    "event_count": 32450,
+    "exact_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/.local-data-10k/releases/0bcf5d40882ac09fc4cd7083c20d2ce32763e64dcd428f387e6da27b80391aad",
+    "family_counts": {
+      "AuthoritySnapshot": 5,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 10000,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 5,
+      "RespondentEvent": 32450,
+      "RespondentIdentity": 10000,
+      "RoutingEligibilityFact": 50000,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 10000
+    },
+    "fixture": "fixture_1006.ShapeSpec 5-question base",
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "i02": {
+      "logical": "a0787391b8e79681a10631af40a51740ec0896da35d7d1641a0d3c8d1e341c9e",
+      "physical": "3be20db299979324f993e6b73e99cacd675b73db6a91aa4b6998eb9ca11766f4",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-PYAT-1006-SCALE-10K-20261118|867cb924256b4945fba5abda4ad9e7e7c7ffd8dc8abc1545b8669a0267208447",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:b9b8f77660908b1d36b1ce1893d3f02eeeef5495bf71497c36a2bc1c8047ee8d|b9b8f77660908b1d36b1ce1893d3f02eeeef5495bf71497c36a2bc1c8047ee8d",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|SOURCE-PYAT-1006-SCALE-10K-20261118|fdbeca9a18605cce8aa3cd0fbe662ef15b8ae2427a505873fc8288bf97b46c1f",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:126a42ee320ac089d43272a0e5413f8d74cbcede7ac181b5b2e41c55298023c8|126a42ee320ac089d43272a0e5413f8d74cbcede7ac181b5b2e41c55298023c8"
+    },
+    "integrated_commit": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "manifest_sha256": "e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+    "question_bindings": 5,
+    "questions": 5,
+    "reconstructed_v1_release_ref": {
+      "content_hash": "e8f79a13bbc8aea3fb8a5d647fb677dc1f434f5509c145e1d93e858ff09e31fe",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-1006-SCALE-10K-20261118"
+    },
+    "respondents": 10000,
+    "retained_bytes": 31163472,
+    "root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/.local-data-10k",
+    "routing_count": 50000,
+    "schema": "ANVIL_SCALE_10K_ESTATE_CONTRACT@1",
+    "source_pins": {
+      "fixture_1006_blob": "1487ad233c871d973b2a64c9649c37f100c46832",
+      "fixture_1006_sha256": "74cd928d050ec7a8720e526dea00101e4c0f718a1b2ab72e5677deb64360b827"
+    },
+    "tag": "PYAT-1006-SCALE-10K-20261118",
+    "weight_count": 10000,
+    "width_note": "5 native questions only; this is respondent-scale, not 600-column width"
+  },
+  "grade": "SOURCEFREE_TEST_ONLY_SURVEY_SCALE_QUALIFICATION",
+  "index_build_seconds": 12.617640899959952,
+  "integrated_commit": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "limits": [
+    "5 distinct ops only; no 100k/native/science/actor/CURRENT acceptance",
+    "one fresh process; OS cache uncontrolled"
+  ],
+  "negative": "NOT_INCLUDED_TIMED_POSITIVE_ONLY",
+  "operations": [
+    {
+      "fact_count": 1,
+      "identity_bytes": 18341261,
+      "identity_sha256": "8cf3aac70f07e47a9457fbb8783d2db387eae51429e7cf28ac72fb41bc592d02",
+      "label": "selected_weighted",
+      "member_refs_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "operation_index": 0,
+      "output_bytes": 20471737,
+      "raw_denominator_support": [
+        5000
+      ],
+      "refs_sha256": "1dc7753d13c10393e74dbc264dcc700b560ce09ccb736fc1cdbe3b5bef232d2b",
+      "replay_sha256": "7a0d18e04a5099783558f64b5e13303c7e5542fc2a6d8a64e3a327de516b1422",
+      "semantic_bytes": 18341059,
+      "semantic_sha256": "325d1077e45a113e8074e3c5267a78b234e4cb9223f9ea38e12b4b3e0b87ab10",
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 25.542910177027807
+    },
+    {
+      "fact_count": 1,
+      "identity_bytes": 15930950,
+      "identity_sha256": "96c32bf1f5347cc4a53cdcaa799bb98848b192198ca8043729488998d5052c30",
+      "label": "f2_forward_raw",
+      "member_refs_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "operation_index": 1,
+      "output_bytes": 18061426,
+      "raw_denominator_support": [
+        5000
+      ],
+      "refs_sha256": "1ab749283b0d4d61ea0dbdd728fc20a4fd01f1ffeffca21d3614946c713829af",
+      "replay_sha256": "150ae6839d27a0ef8935952903ac2a3a7c3153f4d3f39447eef925a7d081395e",
+      "semantic_bytes": 15930748,
+      "semantic_sha256": "2fb85cb94273a1002d12b8d75e37258c794a0c4e6d4ed339acfee4498ecebc51",
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 21.840493601979688
+    },
+    {
+      "fact_count": 1,
+      "identity_bytes": 14719041,
+      "identity_sha256": "7b086baba5f94ad12585e0161076f9514963a136f83157e2d0962f9b9e156eef",
+      "label": "f2_reverse_raw",
+      "member_refs_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "operation_index": 2,
+      "output_bytes": 16849517,
+      "raw_denominator_support": [
+        3333
+      ],
+      "refs_sha256": "a443c4f49118c459a3adf00624aea04a182c4ff32eb418ec012cb397d257cecc",
+      "replay_sha256": "082b8b3da023b22cd80acb104edc63e1bcee1a347a5d51eaf3c9fe39ef1f6942",
+      "semantic_bytes": 14718839,
+      "semantic_sha256": "e327c0defb529fa7948c945ed6e5c2bef2abf6b0eae021c8cb37ad0647536764",
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 21.23921791499015
+    },
+    {
+      "fact_count": 1,
+      "identity_bytes": 19316564,
+      "identity_sha256": "3bd10d7594e6bf9eed543c320d19ab9430fdb2e6afd8610521f90f78e0246396",
+      "label": "f4_three_raw",
+      "member_refs_sha256": "27aa0694c1d18c0ede9a60e5ca7db6db78b2a4f52623b047b80eb3d736dbf34d",
+      "operation_index": 3,
+      "output_bytes": 21447040,
+      "raw_denominator_support": [
+        3137
+      ],
+      "refs_sha256": "0adb300c9afc3af49278415202aedfe24f4ae3f050789337a01a8f6c34595661",
+      "replay_sha256": "edb876b315ae11a904ee1efb41dd8423c6406ca8fdb2fd2c224bd3dec89e92b1",
+      "semantic_bytes": 19316362,
+      "semantic_sha256": "ff5bf161b37c37370a664f6b5b86bd8f5fa4f285c79a6bdc4d3fc4185ae1cb5d",
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 26.14959521603305
+    },
+    {
+      "fact_count": 1,
+      "identity_bytes": 6348976,
+      "identity_sha256": "d613ad5984badd0a1aef53782fe3d516ee47641cae2acc73a9414fe651231655",
+      "label": "repeated_mr_raw",
+      "member_refs_sha256": "aa3d5b2b7297fcb3e3361ea7892dac157d2d87f024b4566085fca68c7ac4c0f9",
+      "operation_index": 4,
+      "output_bytes": 6513462,
+      "raw_denominator_support": [
+        385
+      ],
+      "refs_sha256": "658c6d5e2413a3303694ff20e7380b1118a1d9dac2dc406491f53ff11e14ef64",
+      "replay_sha256": "869a6624cc257f3268051619232d8eceebcf25e07cb7d269ef84aa7ed1d8e921",
+      "semantic_bytes": 6348774,
+      "semantic_sha256": "d3dd2f4fbac6305343fde574bc8f852c52247d7f816020b92d3cdd696ef299b8",
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 15.969202462001704
+    }
+  ],
+  "process_tree_rss_end": 518619136,
+  "retained_bytes": 31163472,
+  "schema": "ANVIL_SCALE_QUALIFICATION_RESULT@1",
+  "session_receipt": {
+    "estate_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/.local-data-10k/releases/0bcf5d40882ac09fc4cd7083c20d2ce32763e64dcd428f387e6da27b80391aad",
+    "manifest_sha256": "e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+    "operations": 5,
+    "release_ref": {
+      "content_hash": "e8f79a13bbc8aea3fb8a5d647fb677dc1f434f5509c145e1d93e858ff09e31fe",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-1006-SCALE-10K-20261118"
+    },
+    "schema": "PYAT_PREP_SAVED_I03@1.0.0"
+  },
+  "status": "COMPLETE",
+  "total_wall_seconds": 129.92667842691299
+}

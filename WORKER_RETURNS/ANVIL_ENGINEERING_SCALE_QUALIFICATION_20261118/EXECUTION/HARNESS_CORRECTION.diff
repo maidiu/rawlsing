@@ -1,0 +1,12 @@
+--- WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/PREP/build_10k_estate.py	2026-11-18 01:22:14
++++ WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/build_10k_estate.py	2026-11-18 01:29:44
+@@ -15,7 +15,8 @@
+     ap.add_argument('--respondents',type=int,default=10000)
+     ap.add_argument('--chunk-rows',type=int,default=512)
+     ap.add_argument('--tag',default='PYAT-1006-SCALE-10K-20261118')
+-    a=ap.parse_args(); snap=Path(a.snapshot).resolve(); vend=Path(__file__).resolve().parents[2]/'WORKER_RETURNS'/'ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117'/'vendor'
++    a=ap.parse_args(); snap=Path(a.snapshot).resolve(); worktree=Path(__file__).resolve().parents[3]; vend=worktree/'WORKER_RETURNS'/'ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117'/'vendor'
++    if not vend.is_dir(): raise SystemExit(f'VENDOR_PATH_MISSING:{vend}')
+     sys.path[:0]=[str(snap),str(vend)]
+     from fixture_1006 import ShapeSpec, build_context
+     from rawlsing_next.pre553_source_direct_parquet_estate import write_direct_estate
