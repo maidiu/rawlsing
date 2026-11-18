@@ -1,0 +1,39 @@
+{
+  "schema": "ANVIL_CUT2_R5_CLOSURE@1",
+  "author_sha": "cdee48f9d0403cb1e2f46e8c6630872b0e5623b3",
+  "prior_review_sha": "07c2409e3c15620a6c3eb392ba02549cf3def83b",
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "manifest_files": 19,
+  "manifest_hashes_verified": true,
+  "minimal_diff": "locality_adapter.physical_order_respondent_family: add self._require_live() immediately before every yield; docstring/comment only otherwise. No numerical, validation, ordering, index, schema or product change.",
+  "independent_witness": {
+    "r4_red_bypassed": true,
+    "r5_green": "DirectEstateError: current source/operation authority refused",
+    "original_control": "DirectEstateError: current source/operation authority refused",
+    "r5_refused": true,
+    "r5_restored": true,
+    "r4_restored": true,
+    "valid_iteration_count": 600,
+    "canonical_sorted": true,
+    "matches_original_order": true,
+    "all_expected": true
+  },
+  "frozen_locality": {
+    "row_group_reads": {"baseline": 3965, "r5": 50},
+    "profile_query_wall_seconds": {"baseline": 18.29603375500301, "r5": 7.582851973013021},
+    "row_group_rows": {"baseline": 2012160, "r5": 25472},
+    "compressed_bytes": {"baseline": 634219540, "r5": 7942218},
+    "uncompressed_bytes": {"baseline": 6011490388, "r5": 76150826},
+    "parity_exact": true,
+    "cProfile_object_from_row_calls": 9637,
+    "raw_family_object_materializations": 0,
+    "raw_counter_blind_spot": true,
+    "grade": "ONE_INSTRUMENTED_OBSERVATION_NOT_PRODUCTION_SPEEDUP"
+  },
+  "external": {"exit": 0, "aborted": null, "wall_seconds": 11.346635817957576, "rss_peak_sampled_bytes": 127127552, "scratch_peak_sampled_bytes": 30368896, "samples": 40, "caps": {"wall_seconds": 120, "rss_bytes": 2147483648, "scratch_bytes": 2147483648}},
+  "product_identity": {"product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223", "code_test": "a13d69cf5636de5541660cd60115f8b61d66261b", "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d", "product_edit": false, "adapter_scope": "test-only"},
+  "author_metadata_note": "Target MANIFEST.json still carries disposition REVISE_EXACT_DEFECT from prior R4 context; actual R5 repair findings/result and independent witness show resolved defect. Metadata correction is nonblocking; no self-acceptance.",
+  "owner_handoff": {"requested": "https://github.com/maidiu/rawlsing/issues/1006#issuecomment-6969187403", "status": "REQUESTED_NOT_GRANTED", "product_file": "rawlsing_next/pre553_direct_estate_i03.py", "symbol": "DirectEstateI03Session._respondent_family", "required": "physical gid/off traversal + canonical ref-order restoration + _require_live before every yield + revocation/parity regressions"},
+  "verdict": "ACCEPT_SCOPED_TESTONLY_LOCALITY_FINDING"
+}

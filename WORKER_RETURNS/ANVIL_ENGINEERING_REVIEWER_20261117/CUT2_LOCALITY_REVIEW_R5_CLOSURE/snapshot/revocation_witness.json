@@ -1,0 +1,38 @@
+{
+  "all_expected": true,
+  "family": "RoutingEligibilityFact",
+  "green_expected": true,
+  "order_expected": true,
+  "original_control": {
+    "first_ref": "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16|000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16",
+    "refused": true,
+    "second_error": "DirectEstateError: current source/operation authority refused",
+    "second_ref": null
+  },
+  "original_expected": true,
+  "r4_red": {
+    "bypassed": true,
+    "first_ref": "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16|000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16",
+    "restored": true,
+    "second_error": null,
+    "second_ref": "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:000f3b80b6002d3a98f9fd5dcef1144bd774b5230679b25757cf9fb169d4cdb2|000f3b80b6002d3a98f9fd5dcef1144bd774b5230679b25757cf9fb169d4cdb2"
+  },
+  "r5_green": {
+    "bypassed": false,
+    "first_ref": "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16|000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16",
+    "restored": true,
+    "second_error": "DirectEstateError: current source/operation authority refused",
+    "second_ref": null
+  },
+  "red_expected": true,
+  "schema": "ANVIL_CUT2_R5_LOCALITY_REVOCATION_REPAIR_WITNESS@1",
+  "sealed_estate_manifest": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "valid_iteration_order": {
+    "canonical_sorted": true,
+    "count": 600,
+    "first_ref": "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16|000878d680c811a9f068170c362dcae32f4a8b0e11d2651695d9c6ce58d6ba16",
+    "last_ref": "RoutingEligibilityFact@1.0.0|urn:rawlsing:pre553:RoutingEligibilityFact:sha256:fffc40f880e7e409a680685308589528bb08156b2c45254e699f2e522d79ea06|fffc40f880e7e409a680685308589528bb08156b2c45254e699f2e522d79ea06",
+    "matches_original_order": true,
+    "restored": true
+  }
+}

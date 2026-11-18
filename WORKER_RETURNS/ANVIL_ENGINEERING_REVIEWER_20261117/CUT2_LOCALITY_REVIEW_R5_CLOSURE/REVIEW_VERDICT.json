@@ -1,0 +1,65 @@
+{
+  "packet_id": "ANVIL-CUT2-R5-LOCALITY-REVOCATION-CLOSURE",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "author_sha": "cdee48f9d0403cb1e2f46e8c6630872b0e5623b3",
+  "prior_review_sha": "07c2409e3c15620a6c3eb392ba02549cf3def83b",
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "code_test_sha": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "cut1_review_sha": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "manifest_files": 19,
+  "manifest_hashes_verified": true,
+  "evidence_grade": "SOURCEFREE_TEST_ONLY_LOCALITY_CLOSURE",
+  "scope": "one corrected f4_three_raw instrumented observation; no performance/native/100k/science/current/protected acceptance",
+  "gates": {
+    "G1": {"state": "PASS", "receipt": "R5 19-file manifest and source pins verified; product/cut1/code/test unchanged; adapter test-only."},
+    "G2": {"state": "PASS_SCOPED", "receipt": "Frozen corrected query: reads 3965 -> 50; profile Q 18.296033755 -> 7.582851973 s; exact identity/semantic/refs/member/replay parity; cProfile 9637; one observation."},
+    "G3": {"state": "PASS", "receipt": "Independent R5 witness: R4 old adapter RED (second yield no error after revoke); R5 corrected GREEN typed DirectEstateError; original control same; valid 600-row order matches original; adapters restored."},
+    "G4": {"state": "PASS_SCOPED", "receipt": "External exit 0, no abort; wall 11.346635818 s; sampled RSS 127127552 B; scratch 30368896 B; 40 samples; caps 120 s/2 GiB/2 GiB; sampled, not continuous; one query."},
+    "G5": {"state": "PASS", "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; distinct nonauthor", "receipt": "ACCEPT_SCOPED_TESTONLY_LOCALITY_FINDING; exact R4 defect resolved, product unchanged."}
+  },
+  "exact_repair": "locality_adapter.physical_order_respondent_family adds self._require_live() immediately before every yield; no numerical/validation/order/index/schema/product change.",
+  "independent_witness": {
+    "r4_red_bypassed": true,
+    "r5_green": "DirectEstateError: current source/operation authority refused",
+    "original_control": "DirectEstateError: current source/operation authority refused",
+    "r5_restored": true,
+    "r4_restored": true,
+    "valid_iteration_count": 600,
+    "canonical_sorted": true,
+    "matches_original_order": true,
+    "all_expected": true
+  },
+  "frozen_locality": {
+    "row_group_reads": {"baseline": 3965, "r5": 50},
+    "profile_query_wall_seconds": {"baseline": 18.29603375500301, "r5": 7.582851973013021},
+    "parity_exact": true,
+    "cProfile_object_from_row_calls": 9637,
+    "raw_family_materialization_counter": 0,
+    "raw_counter_blind_spot": true,
+    "grade": "ONE_INSTRUMENTED_OBSERVATION_NOT_PRODUCTION_SPEEDUP"
+  },
+  "supervision": {"exit": 0, "aborted": null, "wall_seconds": 11.346635817957576, "rss_peak_sampled_bytes": 127127552, "scratch_peak_sampled_bytes": 30368896, "samples": 40, "caps": {"wall_seconds": 120, "rss_bytes": 2147483648, "scratch_bytes": 2147483648}},
+  "retained_limits": [
+    "ONE sourcefree f4 observation; no production speedup.",
+    "cProfile/wrapper overhead.",
+    "Per-respondent/family buffering (600 routing facts in witness), not full-estate memory.",
+    "Adapter buffers before first yield; streaming exception timing remains different.",
+    "OS cache uncontrolled; RSS/scratch sampled.",
+    "No native/original35/source/science/actor/current/100k/protected acceptance."
+  ],
+  "author_metadata_note": "Target MANIFEST.json still says disposition REVISE_EXACT_DEFECT from prior R4 context; actual R5 findings/result and independent witness resolve the exact defect. Nonblocking metadata correction; no self-acceptance.",
+  "owner_handoff": {"requested_comment": "https://github.com/maidiu/rawlsing/issues/1006#issuecomment-6969187403", "grant_status": "REQUESTED_NOT_GRANTED", "product_file": "rawlsing_next/pre553_direct_estate_i03.py", "product_symbol": "DirectEstateI03Session._respondent_family", "minimal_change": "physical gid/off + canonical ref-order restoration + _require_live before every yield + revocation/order/parity regressions", "product_edit": false},
+  "disposition": "ACCEPT_SCOPED_TESTONLY_LOCALITY_FINDING",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT",
+  "stop_state": "LOCALITY_REPAIR_CLOSED_TESTONLY__PRODUCTION_OWNER_GRANT_PENDING",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW_R5_CLOSURE/evidence/r5_closure_witness.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW_R5_CLOSURE/evidence/r5_closure_witness.out",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW_R5_CLOSURE/RECOMPUTED_LOCALITY.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW_R5_CLOSURE/SOURCE_CHECKS.tsv",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_LOCALITY_REVIEW_R5_CLOSURE/snapshot/"
+  ]
+}

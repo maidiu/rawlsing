@@ -1,0 +1,23 @@
+--- WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R4_LOCALITY_EXPERIMENT/locality_adapter.py	2026-11-17 23:31:42
++++ WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R5_LOCALITY_REVOCATION_REPAIR/locality_adapter.py	2026-11-17 23:42:39
+@@ -1,7 +1,8 @@
+ """Test-only physical-order adapter for DirectEstateI03Session._respondent_family.
+ 
+ Reads one respondent/family in physical gid/off order, then restores the
+-externally observable canonical ref-key order before yielding.  This is not a
++externally observable canonical ref-key order before yielding.  CURRENT is
++rechecked immediately before every yield (R5 exact repair).  This is not a
+ product edit; it is installed only in the profiling process and restored.
+ """
+ from __future__ import annotations
+@@ -59,7 +60,10 @@
+             raise DirectEstateError("native I03 cold family body/index identity mismatch")
+         materialized.append(obj)
+     # Restore the externally observable ORDER BY ref contract before yield.
++    # CURRENT is rechecked immediately before EVERY yield, matching the original
++    # per-row guard.  This is the exact R4 revocation-after-first-yield repair.
+     for obj in sorted(materialized, key=lambda item: item.ref.key):
++        self._require_live()
+         yield obj
+ 
+ 

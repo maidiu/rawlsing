@@ -1,0 +1,21 @@
+check	target	value	status
+author_target	R5	cdee48f9d0403cb1e2f46e8c6630872b0e5623b3	frozen
+manifest	R5 19 payloads	all sha256 verify	PASS
+prior_review	R4	07c2409e3c15620a6c3eb392ba02549cf3def83b	immutable
+product	rawlsing_next	347baec696c8b395d750ac3b9e74417a6490c223	unchanged
+code_test	a13d69cf5636de5541660cd60115f8b61d66261b	accepted cut1
+cut1_review	092bf29ffa6724d477abb4ccfc770e3bc492250d	unchanged
+estate	sealed R2	c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b	sealed
+contract	e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28	exact
+diff	locality_adapter.py	only _require_live before every yield	PASS
+witness	r4_red	second yield after revoke, no error	RED reproduced
+witness	r5_green	DirectEstateError current refused	GREEN
+witness	original	DirectEstateError current refused	control
+witness	order	600 refs canonical sorted equal original	PASS
+witness	restoration	adapter restored in all cases	PASS
+query	reads	3965 -> 50	one observation
+query	profileQ	18.296033755 -> 7.582851973 s	one instrumented observation
+parity	identity/semantic/refs/member/replay	exact	PASS
+cProfile	_object_from_row	9637 calls	actual
+resource	external	exit0 wall11.346635818s RSS127127552B scratch30368896B no abort	PASS caps
+owner	#1006 comment6969187403	REQUESTED_NOT_GRANTED	product READONLY

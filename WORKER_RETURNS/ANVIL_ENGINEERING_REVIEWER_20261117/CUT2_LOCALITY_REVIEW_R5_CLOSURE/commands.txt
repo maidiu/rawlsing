@@ -1,0 +1,15 @@
+R5 closure commands (read-only)
+
+1) 19-file target manifest hash check: PASS (0 bad).
+2) inspect CHANGED_SCRIPT.diff: one added `self._require_live()` before every yield; no numerical/validation change.
+3) independent witness:
+   python3 -B CUT2_LOCALITY_REVIEW_R5_CLOSURE/revocation_witness.py <proofroot>
+   exit 0; all_expected=true
+   R4 old adapter: first yield, revoke, second yield NO error (RED)
+   R5 corrected: first yield, revoke, second DirectEstateError current source/operation authority refused (GREEN)
+   original product: same typed refusal
+   valid order: 600 canonical sorted, matches original order; adapter restorations true.
+4) frozen R5 query artifact audit: reads 3965 -> 50; profile Q 18.296033755 -> 7.582851973 s;
+   cProfile 9637 _object_from_row; parity exact; external exit 0,
+   wall 11.346635818 s, RSS 127127552 B, scratch 30368896 B, 40 samples, no abort.
+5) source pins/product: product 347baec/a13d69c unchanged; no product edit.
