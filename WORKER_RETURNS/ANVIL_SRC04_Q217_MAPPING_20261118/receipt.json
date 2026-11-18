@@ -1,0 +1,137 @@
+{
+  "accepted_receipt_commit": "ba41253681212be14a0cde009afb99d77e14935e",
+  "config": {
+    "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+    "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json"
+  },
+  "files": {
+    "00_HANDOFF.md": {
+      "bytes": 7167,
+      "sha256": "6453ac0f0c3eaf8e8d2152a72e52ff3f294baffd283d5c4b4c72e83ed2e0362c"
+    },
+    "evidence/accepted_receipt.json": {
+      "bytes": 1395,
+      "sha256": "615e6acb1ce92e7a6dba51b5bc3248eeaefbdba4128bf84f8273c25ba0e33987"
+    },
+    "evidence/config_q217.json": {
+      "bytes": 11036,
+      "sha256": "078f357bca5c289ec9dafec3a4a4001bf48cab68489965d6c5656377ff4bc2e5"
+    },
+    "evidence/existing_construction_residual.json": {
+      "bytes": 1157,
+      "sha256": "b355e67516f08262eecbe8fa06fa4a824747419c83ed86b3b7015ff20f617420"
+    },
+    "evidence/gate_route.json": {
+      "bytes": 1247,
+      "sha256": "9849f8d79e43a7d45be7aef7b946dba4b45be724227fa8d485465d7f9c59cc16"
+    },
+    "evidence/no_active_original_writer.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/physical_metadata_q217.json": {
+      "bytes": 1077,
+      "sha256": "756c54426d6f2b9d2085e8fa681138437e6c8ae496e966941c5ea2cb33bba37f"
+    },
+    "evidence/q217_aggregate.json": {
+      "bytes": 2758,
+      "sha256": "79bec2f0b3b34844c0ae4b6ddce8f6c1b1245dbeab45c02d57b87f337c35a47b"
+    },
+    "evidence/q217_candidate.out": {
+      "bytes": 1001,
+      "sha256": "5d407e878b95e4de6215fa9c68c6f751c911cd83ebf6c50670b68141c25952af"
+    },
+    "evidence/q217_candidate_validation.json": {
+      "bytes": 2779,
+      "sha256": "14c523b57daef6984671d80d2a7531f3ee8113aefe7506f7100d897cd6aab49f"
+    },
+    "evidence/q217_gate_check.out": {
+      "bytes": 269,
+      "sha256": "41c78237ed2bf92aea70cb6bc2b041d87b4bd20cb3751bf876f2e85150dc87f7"
+    },
+    "evidence/q217_residual_check.json": {
+      "bytes": 980,
+      "sha256": "7d076b5df3636f39e2037788e47b12f64eb9ce1270e958cd9db231fb424facab"
+    },
+    "evidence/source_codebook_q217.json": {
+      "bytes": 1366,
+      "sha256": "031be7e2469ccbcb21b8af3e4ab7a0df0881f12d45c1deac417118fc135030df"
+    },
+    "evidence/source_questionnaire_pin.json": {
+      "bytes": 434,
+      "sha256": "7fc5e2ed848af4f1f404b1911db111d8badc19a73794c8941bbcabbf19cf1ffa"
+    },
+    "evidence/tests.txt": {
+      "bytes": 98,
+      "sha256": "ef0e7ef49e71fa999842be0cb8d22ec1058d3a384ed5c0a2ec6efb8f434975ac"
+    },
+    "q217_candidate.py": {
+      "bytes": 6974,
+      "sha256": "b4ff4c44900da7ed1dbc2ecf0727671c4b006e0294429e6bc8f1550c6010d2ad"
+    },
+    "q217_gate_check.py": {
+      "bytes": 6596,
+      "sha256": "e295e5ffcdf9d0e32def62043cf65418baaa00696d852a58f54dab1bb985246f"
+    },
+    "q217_mapping_patch.json": {
+      "bytes": 1477,
+      "sha256": "55d1c356d543b05d997d4f60fa11606d33413508cc87d5a5a1570b8468af294f"
+    },
+    "residual_check.py": {
+      "bytes": 2249,
+      "sha256": "c1bf1f3713ec66f1e4c14bf021267ecac0db0ef27c6508497d260402b19c0031"
+    },
+    "tests/test_q217_mapping.py": {
+      "bytes": 2122,
+      "sha256": "4529890eca86bdc1308dbbc8d3be7538fc95a2f1e3806e333ee81a1fded248f2"
+    }
+  },
+  "full_construction_grant_commit": "303a57851785557fff8229e29a5554717168cbd1",
+  "gate_route_commit": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
+  "limits": [
+    "No canonical/scientific/rights promotion",
+    "No product/protected/config-custody writes",
+    "No broad profiling or large build",
+    "Questionnaire q217 text not extracted; no label inferred from it",
+    "Existing construction witness pins unchanged"
+  ],
+  "mapping_candidate": {
+    "accepted_config_changed": false,
+    "candidate_canonical_sha256": "b5e3ac84d407901daf79ee7fdd4d2e6f63edf4f440d5bdca33aba71edf224c82",
+    "code_7_label": null,
+    "code_7_state": "INVALID_UNRESOLVED",
+    "code_99_state": "REFUSAL",
+    "existing_validator": "load_source_config / canonical_config_hash at aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "product_changed": false,
+    "status": "PROPOSED_NOT_APPLIED_TO_ACCEPTED_CONFIG"
+  },
+  "residual": {
+    "cells": 38,
+    "classification": "UNLABELED_OBSERVED_NUMERIC_CODE__NO_CODEBOOK_OR_PHYSICAL_LABEL__NO_MISSING_DECLARATION",
+    "code": 7.0,
+    "field": "q217",
+    "known_labeled_cells": 7150,
+    "label_verified": false,
+    "system_missing_cells": 187,
+    "total_rows": 7337
+  },
+  "schema": "ANVIL_SRC04_Q217_MAPPING_RECEIPT@1",
+  "source_access": {
+    "active_original_source_writer_present": false,
+    "one_local_bounded_check": true,
+    "performed": true,
+    "respondent_records_ids_combinations_or_samples_emitted": false,
+    "source_bytes_or_paths_emitted": false,
+    "through_exact_grant_gate": true
+  },
+  "source_id": "SRC04",
+  "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "status": "EXACT_Q217_CODE_7_HELD__NO_LABEL__CANDIDATE_VALIDATED_NOT_APPLIED",
+  "tests": {
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q ... WORKER_RETURNS/ANVIL_SRC04_Q217_MAPPING_20261118/tests",
+    "result": "5 passed in 0.02 s"
+  },
+  "wave": "I"
+}

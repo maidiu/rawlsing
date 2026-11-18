@@ -1,0 +1,87 @@
+{
+  "config": {
+    "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+    "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "q217_labels": {
+      "1.0": "television",
+      "10.0": "others",
+      "2.0": "radio",
+      "3.0": "local newspaper",
+      "4.0": "weekly magazines and papers",
+      "5.0": "internet",
+      "6.0": "sms messages",
+      "97.0": "not clear",
+      "98.0": "can't choose/don't know",
+      "99.0": "decline to answer"
+    },
+    "q217_missing_declarations": null
+  },
+  "grant": {
+    "commit": "303a57851785557fff8229e29a5554717168cbd1",
+    "request_digest": "ed0973dcc3be98d620a0174e59ff600927a7c81467aeb132252b975b5c1dfd4d",
+    "route_commit": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
+    "route_module": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118/existing_grant_binding.py",
+    "sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "status": "REQUEST_ONLY_ALLOWED"
+  },
+  "output_scope": "CODES_AND_COUNTS_ONLY__NO_RESPONDENT_RECORDS_IDS_COMBINATIONS_OR_VALUES_BY_ROW",
+  "q217": {
+    "codes": {
+      "1.0": 4719,
+      "10.0": 18,
+      "2.0": 440,
+      "3.0": 860,
+      "4.0": 67,
+      "5.0": 345,
+      "6.0": 37,
+      "7.0": 38,
+      "97.0": 72,
+      "98.0": 335,
+      "99.0": 219,
+      "None": 187
+    },
+    "column_ordinal": 27,
+    "label_occurrences": {
+      "\"can't choose/don't know\"": 335,
+      "'decline to answer'": 219,
+      "'internet'": 345,
+      "'local newspaper'": 860,
+      "'not clear'": 72,
+      "'others'": 18,
+      "'radio'": 440,
+      "'sms messages'": 37,
+      "'television'": 4719,
+      "'weekly magazines and papers'": 67,
+      "None": 225
+    },
+    "labels_declared": {
+      "1.0": "television",
+      "10.0": "others",
+      "2.0": "radio",
+      "3.0": "local newspaper",
+      "4.0": "weekly magazines and papers",
+      "5.0": "internet",
+      "6.0": "sms messages",
+      "97.0": "not clear",
+      "98.0": "can't choose/don't know",
+      "99.0": "decline to answer"
+    },
+    "missing_declarations": [],
+    "missing_states": {
+      "OBSERVED_STORAGE_VALUE": 7150,
+      "SYSTEM_MISSING": 187
+    },
+    "observed_rows": 7337
+  },
+  "respondent_records_emitted": false,
+  "schema": "ANVIL_SRC04_Q217_AGGREGATE_CHECK@1",
+  "source_columns": 181,
+  "source_id": "SRC04",
+  "source_path_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "source_read_performed": true,
+  "source_rows": 7337,
+  "sourcefree_test_only": false,
+  "wave": "I"
+}
