@@ -1,0 +1,28 @@
+{
+  "all_refused": true,
+  "checks": {
+    "source_sha_mismatch": {
+      "error": "CONFIG_BINDING_MISMATCH:SRC01:{\"active_source_sha\": false, \"binding_row_count\": true, \"binding_source_sha\": false, \"canonical_sha\": true, \"config_purpose\": true, \"config_schema\": true, \"declared_shape\": true, \"expected_source_sha\": false, \"identity_class\": true, \"source_column_count\": true, \"source_id\": true, \"source_row_count\": true, \"wave\": true}",
+      "refused": true,
+      "type": "ProducerRefusal"
+    },
+    "stale_src04": {
+      "error": "STALE_SRC04_CONFIG_REFUSED",
+      "refused": true,
+      "type": "ProducerRefusal"
+    },
+    "swapped_config": {
+      "error": "CONFIG_BINDING_MISMATCH:SRC01:{\"active_source_sha\": false, \"binding_row_count\": false, \"binding_source_sha\": false, \"canonical_sha\": true, \"config_purpose\": true, \"config_schema\": true, \"declared_shape\": false, \"expected_source_sha\": false, \"identity_class\": true, \"source_column_count\": false, \"source_id\": false, \"source_row_count\": false, \"wave\": false}",
+      "refused": true,
+      "type": "ProducerRefusal"
+    },
+    "swapped_wave": {
+      "error": "CONFIG_BINDING_MISMATCH:SRC01:{\"active_source_sha\": true, \"binding_row_count\": true, \"binding_source_sha\": true, \"canonical_sha\": true, \"config_purpose\": true, \"config_schema\": true, \"declared_shape\": true, \"expected_source_sha\": true, \"identity_class\": true, \"source_column_count\": true, \"source_id\": true, \"source_row_count\": true, \"wave\": false}",
+      "refused": true,
+      "type": "ProducerRefusal"
+    }
+  },
+  "index_ref": "ad3386b718fd9ace234a00dab3b32ee51039b77f:WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json",
+  "index_sha256": "d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27",
+  "schema": "ANVIL_ALL35_CONFIG_BINDING_NEGATIVES@1"
+}

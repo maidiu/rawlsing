@@ -3,7 +3,7 @@
 ## Status
 
 **Executable metadata/input producer complete.**
-**35 metadata bundles validated; 0 Q2-executable bundles; 35 Q2 inputs held.**
+**35 metadata bundles validated; 35/35 exact R157 config revisions bound; 0 Q2-executable bundles; 35 Q2 inputs held.**
 
 - Branch: `agent/anvil-engineering-cut1-20261117-r1`
 - Canonical source set: PYAT1002 R2 `d4f0a6499432aa3186c0d92174fa228211759e44`
@@ -42,6 +42,8 @@ Validation per source:
 | Canonical sources | 35 |
 | Metadata bundles produced | **35** |
 | Metadata bundles validated | **35** |
+| Exact R157 config revisions bound | **35** |
+| Config binding failures | **0** |
 | Q2-executable input bundles | **0** |
 | Q2-held bundles | **35** |
 | Source-rights-held bundles | **33** |
@@ -51,8 +53,28 @@ Validation per source:
 | Sourcefree transfer example | **SRC01** fixture pins only |
 
 `ALL35_RESULT.json` SHA-256:
-`9593145cd42cc958fe1b4e075a58b1dcfdd69fcceba183f7adbfbb92ef76e1c5`
+`c4bdc2a6e94fabd4e06a3616eb112be4d36759443df3a61ef7aed259d9b7fbdc`
 
+
+## Exact R157 config binding
+
+The frozen index is accepted only by immutable reference:
+
+- commit `ad3386b718fd9ace234a00dab3b32ee51039b77f`
+- path `WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json`
+- SHA-256 `d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27`
+
+All 35 rows are materialized through the existing current
+`load_source_config` / `canonical_config_hash` path and bound to the package
+bundle's exact wave, expected source SHA-256, row/column counts, physical/
+question/response/coordinate/weight/routing shape and Q2 hold. The bundles carry
+only immutable revision refs and hashes; no config blobs are committed. The
+resolver is `resolve_config.py --all`.
+
+Negative checks all refuse: swapped config, swapped wave, source SHA mismatch,
+and stale SRC04 (the stale `1924499` sibling is rejected; the repaired
+`da23c65d` config is required). Permissions and hold fields are byte-identical
+to `d8758a1b` for all 35 rows.
 
 ## SRC04 witness
 
@@ -121,6 +143,19 @@ Evidence: `evidence/reproduce_old_defect.json`,
 `evidence/fresh_repair_proof/`, `evidence/fresh_repair.out`,
 `evidence/tests_repair.txt`.
 
+## Commands
+
+```bash
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B \
+  WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/producer.py
+
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B \
+  WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/resolve_config.py --all
+```
+
+Evidence: `evidence/config_bindings.json` (35/35 resolver rows),
+`evidence/config_binding_negatives.json`, `evidence/config_binding_summary.json`.
+
 ## Unresolved required Q2 fields
 
 For every source, the following current Q2 inputs are still absent:
@@ -133,7 +168,7 @@ For every source, the following current Q2 inputs are still absent:
 
 Additionally:
 
-- 34 sources lack a materialized current `SourceConfig` in the accepted tree;
+- All 35 sources now have an exact materialized metadata `SourceConfig` binding;
 - 33 sources have no current source-use grant (`UNKNOWN_OWNER_DECISION`);
 - SRC17 is source-read/C11-only and excludes I03/I05;
 - SRC04 has the grant/config/C11 witness but not the Q2 census/frontier objects.

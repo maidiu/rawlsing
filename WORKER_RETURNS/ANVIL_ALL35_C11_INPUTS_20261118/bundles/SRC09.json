@@ -39,7 +39,6 @@
   "family": "Asian Barometer",
   "metadata_bundle_status": "HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING",
   "missing_q2_inputs": [
-    "current materialized SourceConfig",
     "current source-use grant",
     "FrozenInputCensus",
     "SourceInventory",
@@ -53,10 +52,36 @@
   "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
   "source_artifact_id": "Asian Barometer Wave 4.sav",
   "source_config": {
+    "binding_checks": {
+      "active_source_sha": true,
+      "binding_row_count": true,
+      "binding_source_sha": true,
+      "canonical_sha": true,
+      "config_purpose": true,
+      "config_schema": true,
+      "declared_shape": true,
+      "expected_source_sha": true,
+      "identity_class": true,
+      "source_column_count": true,
+      "source_id": true,
+      "source_row_count": true,
+      "wave": true
+    },
+    "binding_status": "BOUND_EXACT_CONFIG_REVISION",
     "canonical_sha256": "1cc204b6fd709247b0fa2423ec8f95de53a2c3c74a7b6d09d59394ce77e020cf",
+    "config_index": {
+      "commit": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+      "path": "WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json",
+      "sha256": "d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27"
+    },
+    "config_wave": "W4",
     "file_sha256": "d353ad11d8320a0d72bee4a61eb05cadc9c6b64725aab2453445d4a49e27fdc9",
-    "materialized": false,
-    "path": "rawlsing_next/source_configuration/data/SRC09/SRC09.config.json"
+    "materialized": true,
+    "path": "rawlsing_next/source_configuration/data/SRC09/SRC09.config.json",
+    "revision_basis": "EXACT_R157_ACCEPTED_LOCATOR",
+    "revision_commit": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+    "revision_path": "rawlsing_next/source_configuration/data/SRC09/SRC09.config.json",
+    "revision_ref": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2:rawlsing_next/source_configuration/data/SRC09/SRC09.config.json"
   },
   "source_format": "SAV",
   "source_id": "SRC09",

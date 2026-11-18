@@ -6,7 +6,7 @@
   "accepted_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
   "producer": {
     "path": "producer.py",
-    "sha256": "78d0d95b78e852d1b5720cd6b842dc8356844092c9350d15d00e3c97107923cf",
+    "sha256": "de4e1be091b483d4636bb9c5b381c13bd7bb8d6023c7253ee734110b1127b224",
     "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/producer.py",
     "exit": 0,
     "no_raw_source": true,
@@ -23,11 +23,15 @@
     "typed_held_bundles": 35,
     "witness_configs_loaded": 1,
     "sourcefree_transfer_example": "SRC01",
-    "testonly_executable_bundles": 1
+    "testonly_executable_bundles": 1,
+    "config_binding_count": 35,
+    "config_binding_failures": 0,
+    "config_revisions_distinct": 35,
+    "config_index_accepted": true
   },
   "artifacts": {
     "result": "ALL35_RESULT.json",
-    "result_sha256": "9593145cd42cc958fe1b4e075a58b1dcfdd69fcceba183f7adbfbb92ef76e1c5",
+    "result_sha256": "c4bdc2a6e94fabd4e06a3616eb112be4d36759443df3a61ef7aed259d9b7fbdc",
     "bundles": "bundles/SRC01.json \u2026 bundles/SRC35.json",
     "bundle_count": 35,
     "tests": "tests/test_all35_producer.py",
@@ -36,8 +40,15 @@
       "evidence/FULL_SOURCE_GRANT.json",
       "evidence/tests.txt",
       "evidence/producer.out",
-      "evidence/producer.err"
-    ]
+      "evidence/producer.err",
+      "evidence/config_bindings.json",
+      "evidence/config_binding_negatives.json",
+      "evidence/config_binding_summary.json",
+      "evidence/config_binding_tests.txt",
+      "evidence/config_binding_related_tests.txt",
+      "evidence/producer_config_binding.out"
+    ],
+    "config_resolver": "resolve_config.py"
   },
   "src04_witness": {
     "grant_path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
@@ -85,26 +96,32 @@
       "ScientificFrontier",
       "current SourceReadDecisionResolver adapter"
     ],
-    "source_config_materialized": "SRC04 only",
+    "source_config_materialized": "35/35 exact config revisions bound; 0 Q2 executable",
     "current_grant": "SRC04 only full-source; SRC17 partial C11-only; 33 UNKNOWN_OWNER_DECISION",
     "held_exact": "q217 38 unbound cells; SRC17 I03/I05 excluded; source routing/response-authority gaps preserved in bundles",
     "no_inference": true
   },
   "tests": {
-    "path": "tests/test_all35_producer.py; tests/test_testonly_transfer.py",
-    "result": "6 passed in 5.14 s",
+    "paths": [
+      "tests/test_all35_producer.py",
+      "tests/test_testonly_transfer.py",
+      "tests/test_config_binding.py"
+    ],
+    "results": [
+      "6 passed in 80.18 s",
+      "5 passed in 237.22 s"
+    ],
     "exit": 0,
     "coverage": [
       "all35 metadata positive/typed holds",
       "SRC17 source-read/C11 authorized but I03/I05 held",
-      "codebook drift refusal",
-      "data path drift refusal",
-      "SRC04 config drift refusal",
-      "actual small sourcefree typed bundle build/reopen/pre-source refusal",
-      "fresh-process exact-held reopen positive",
-      "revoked exact-current refusal",
-      "wrong-root/scope refusal",
-      "forged pickle digest refusal before deserialization"
+      "codebook/data/SRC04 drift refusals",
+      "actual small sourcefree harness preserved and passing",
+      "35/35 exact config binding to wave/source SHA/shape",
+      "resolver resolves 35/35 distinct revisions",
+      "swapped config/wave refused",
+      "source SHA mismatch refused",
+      "stale SRC04 refused"
     ]
   },
   "limits": [
@@ -163,5 +180,30 @@
     "src17_scope_preserved": true,
     "other_checkout_replay": "444ee9153967d23acca9410dd25b274ee0d248a5815d7cad2759fe7fdddc1ef1",
     "other_checkout_note": "Copied scripts under a fresh checkout-shaped tree with only rawlsing_next symlinked; emitted source/estate paths were relative to that checkout."
+  },
+  "config_binding": {
+    "schema": "ANVIL_ALL35_R157_CONFIG_INDEX@1",
+    "commit": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+    "path": "WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json",
+    "sha256": "d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27",
+    "accepted_by_immutable_ref": true,
+    "materializer": "existing current load_source_config / canonical_config_hash at aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "rows_bound": 35,
+    "distinct_revision_refs": 35,
+    "positive_checks_all_true": true,
+    "q2_executable": 0,
+    "q2_held": 35,
+    "resolver": "resolve_config.py --all",
+    "resolver_evidence": "evidence/config_bindings.json",
+    "negative_evidence": "evidence/config_binding_negatives.json",
+    "negative_checks": {
+      "swapped_config": true,
+      "swapped_wave": true,
+      "source_sha_mismatch": true,
+      "stale_src04": true
+    },
+    "permissions_or_hold_fields_changed_vs_d875": [],
+    "source_config_materialized": "35/35 exact config revisions bound; no config blob committed",
+    "original_source_bodies_read": false
   }
 }

@@ -106,10 +106,36 @@
   "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
   "source_artifact_id": "Arab Barometer Wave 1.sav",
   "source_config": {
+    "binding_checks": {
+      "active_source_sha": true,
+      "binding_row_count": true,
+      "binding_source_sha": true,
+      "canonical_sha": true,
+      "config_purpose": true,
+      "config_schema": true,
+      "declared_shape": true,
+      "expected_source_sha": true,
+      "identity_class": true,
+      "source_column_count": true,
+      "source_id": true,
+      "source_row_count": true,
+      "wave": true
+    },
+    "binding_status": "BOUND_EXACT_CONFIG_REVISION",
     "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "config_index": {
+      "commit": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+      "path": "WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json",
+      "sha256": "d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27"
+    },
+    "config_wave": "I",
     "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
     "materialized": true,
-    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.json"
+    "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "revision_basis": "REPAIRED_ACCEPTED_SRC04_PREFERRED_OVER_STALE_1924499",
+    "revision_commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+    "revision_path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "revision_ref": "da23c65d1e211cb7e8ce416e98757f321b78d25e:rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json"
   },
   "source_format": "SAV",
   "source_id": "SRC04",
