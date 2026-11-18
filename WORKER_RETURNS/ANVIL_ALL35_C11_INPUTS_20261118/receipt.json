@@ -1,40 +1,19 @@
 {
-  "schema": "ANVIL_ALL35_C11_INPUTS_RECEIPT@1",
-  "task": "ANVIL_ALL35_C11_INPUTS_20261118",
-  "status": "METADATA_PRODUCER_EXECUTED__35_METADATA_VALIDATED__0_Q2_EXECUTABLE",
-  "canonical_source_commit": "d4f0a6499432aa3186c0d92174fa228211759e44",
   "accepted_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
-  "producer": {
-    "path": "producer.py",
-    "sha256": "de4e1be091b483d4636bb9c5b381c13bd7bb8d6023c7253ee734110b1127b224",
-    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/producer.py",
-    "exit": 0,
-    "no_raw_source": true,
-    "data_metadata_only": true,
-    "codebook_metadata_only": true
-  },
-  "counts": {
-    "source_count": 35,
-    "metadata_bundles_produced": 35,
-    "metadata_bundles_validated": 35,
-    "q2_executable_bundles": 0,
-    "q2_held_bundles": 35,
-    "source_rights_held_bundles": 33,
-    "typed_held_bundles": 35,
-    "witness_configs_loaded": 1,
-    "sourcefree_transfer_example": "SRC01",
-    "testonly_executable_bundles": 1,
-    "config_binding_count": 35,
-    "config_binding_failures": 0,
-    "config_revisions_distinct": 35,
-    "config_index_accepted": true
+  "all35_validation": {
+    "canonical_ids_ordered_unique": true,
+    "codebook_hash_matches": 35,
+    "data_path_present_and_size_matches": 35,
+    "fields_wave_scope_accounted": true,
+    "matrix_sha256": "e46177cb89a929ae4dcdc3890b88562d9a64a52ec2b7137f5275e11a1aae2444",
+    "matrix_source_count": 35,
+    "q2_held": 35,
+    "q2_inputs_validated": 0
   },
   "artifacts": {
-    "result": "ALL35_RESULT.json",
-    "result_sha256": "c4bdc2a6e94fabd4e06a3616eb112be4d36759443df3a61ef7aed259d9b7fbdc",
-    "bundles": "bundles/SRC01.json \u2026 bundles/SRC35.json",
     "bundle_count": 35,
-    "tests": "tests/test_all35_producer.py",
+    "bundles": "bundles/SRC01.json \u2026 bundles/SRC35.json",
+    "config_resolver": "resolve_config.py",
     "evidence": [
       "evidence/35_row_source_rights_matrix.json",
       "evidence/FULL_SOURCE_GRANT.json",
@@ -46,72 +25,215 @@
       "evidence/config_binding_summary.json",
       "evidence/config_binding_tests.txt",
       "evidence/config_binding_related_tests.txt",
-      "evidence/producer_config_binding.out"
+      "evidence/producer_config_binding.out",
+      "evidence/resolver_pin_materialization.json",
+      "evidence/resolver_all_default.json",
+      "evidence/resolver_refusals.json",
+      "evidence/resolver_pins_tests.txt"
     ],
-    "config_resolver": "resolve_config.py"
+    "resolver_tests": "tests/test_resolver_pins.py",
+    "result": "ALL35_RESULT.json",
+    "result_sha256": "c4bdc2a6e94fabd4e06a3616eb112be4d36759443df3a61ef7aed259d9b7fbdc",
+    "tests": "tests/test_all35_producer.py"
   },
-  "src04_witness": {
-    "grant_path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
-    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
-    "config_path": "inputs/SRC04/source.config.repaired.v2.json",
-    "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
-    "config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
-    "loaded_source_id": "SRC04",
-    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
-    "physical_slots": 181,
-    "configured_response_slots": 178,
-    "configured_coordinate_slots": 3,
-    "accepted_c11_reference": {
-      "commit": "ba41253681212be14a0cde009afb99d77e14935e",
-      "release_object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
-      "semantic_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
-      "rows": 7337,
-      "selected_responses": 177,
-      "selected_coordinates": 3,
-      "response_positions": 1298649,
-      "q217_held_unbound_cells": 38
+  "canonical_source_commit": "d4f0a6499432aa3186c0d92174fa228211759e44",
+  "config_binding": {
+    "accepted_by_immutable_ref": true,
+    "commit": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+    "distinct_revision_refs": 35,
+    "materializer": "existing current load_source_config / canonical_config_hash at aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "negative_checks": {
+      "source_sha_mismatch": true,
+      "stale_src04": true,
+      "swapped_config": true,
+      "swapped_wave": true
+    },
+    "negative_evidence": "evidence/config_binding_negatives.json",
+    "original_source_bodies_read": false,
+    "path": "WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json",
+    "permissions_or_hold_fields_changed_vs_d875": [],
+    "positive_checks_all_true": true,
+    "q2_executable": 0,
+    "q2_held": 35,
+    "resolver": "resolve_config.py --all",
+    "resolver_evidence": "evidence/config_bindings.json",
+    "rows_bound": 35,
+    "schema": "ANVIL_ALL35_R157_CONFIG_INDEX@1",
+    "sha256": "d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27",
+    "source_config_materialized": "35/35 exact config revisions bound; no config blob committed"
+  },
+  "counts": {
+    "config_binding_count": 35,
+    "config_binding_failures": 0,
+    "config_index_accepted": true,
+    "config_revisions_distinct": 35,
+    "metadata_bundles_produced": 35,
+    "metadata_bundles_validated": 35,
+    "q2_executable_bundles": 0,
+    "q2_held_bundles": 35,
+    "source_count": 35,
+    "source_rights_held_bundles": 33,
+    "sourcefree_transfer_example": "SRC01",
+    "testonly_executable_bundles": 1,
+    "typed_held_bundles": 35,
+    "witness_configs_loaded": 1
+  },
+  "files": {
+    "00_HANDOFF.md": {
+      "bytes": 8171,
+      "sha256": "0f901589b795010098bd162ed059040f93797685964db044c5b14ae49139ff59"
+    },
+    "evidence/resolver_all_default.json": {
+      "bytes": 31269,
+      "sha256": "4acbb26b961e15ef0cb883c3d43d26a787b9804e3c029103afc5da0f376a112e"
+    },
+    "evidence/resolver_pin_materialization.json": {
+      "bytes": 2732,
+      "sha256": "3a5c2d8e182a49fc8785432cce53228d30d718cc323c50632af3ff28ebe4355e"
+    },
+    "evidence/resolver_pins_tests.txt": {
+      "bytes": 98,
+      "sha256": "1b415d1977d98806713495be9044408df873b8b4939392164c659401bb728c84"
+    },
+    "evidence/resolver_refusals.json": {
+      "bytes": 666,
+      "sha256": "46acd88b5536a13a4da7bf3481dd6ce1d43646bdf2984075dcaf01bc0e357740"
+    },
+    "resolve_config.py": {
+      "bytes": 7936,
+      "sha256": "8a006d2b69aac08d0c7c23a252f17db11eff6ae744008ca65fd734b3c52fdfc8"
+    },
+    "tests/test_resolver_pins.py": {
+      "bytes": 3331,
+      "sha256": "4ad5681c7c4e2f0358c9c6cf7bc220e11cc253a0965d7ce597d69f60792b9173"
     }
   },
+  "harness_repair": {
+    "canonical_frozen_proof_untouched": true,
+    "commands": "REPAIR_COMMANDS.md",
+    "fresh_root": "WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/tmp/fresh_repair",
+    "frozen_input": "d8758a1b1e776406aac551ccc1b4822ed03639d3",
+    "old_defect": "ANVIL_REOPEN_MODE=revoked still reopened PASS under unconditional lambda _roots: True",
+    "old_defect_reproduced": "e3d4a23de5186cd8870ed7fc23bb5cb7e8b438242c59e78f04cb3d1abdd63d05",
+    "original_rows_changed": false,
+    "other_checkout_note": "Copied scripts under a fresh checkout-shaped tree with only rawlsing_next symlinked; emitted source/estate paths were relative to that checkout.",
+    "other_checkout_replay": "444ee9153967d23acca9410dd25b274ee0d248a5815d7cad2759fe7fdddc1ef1",
+    "pickle_digest_refusal": "06113c4d3f215355902b459f0854ec284d16777c4574cc96c373331a388a8f71",
+    "positive_build": "ecd1acd6b7ff01c6931a2ac3a1b4e91769a9afcec53d2265c05716430508bcea",
+    "positive_fresh_root": "3bbb8843bf8243a1daec5a8da9480bc4e64cd374c595cda0b7ad0b0a0ed0978e",
+    "q2_interfaces": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "revoked_refusal": "7f51107fba3f7adc2e131ac47465c20063288e3b9778e0ebed02eac5c8b53afc",
+    "scope": "proof harness only; sourcefree 5-row fixture; no production CURRENT",
+    "source_mismatch_refusal": "c220809e723b1d2b400965a637965eff029a3bf247f3b1c46ac4c3c528b42cc9",
+    "src17_scope_preserved": true,
+    "tests_evidence": "9d4c8a3cd125615a55cf725b5a21b87ae6704455542959fb66c766e124501f82",
+    "wrong_root_refusal": "2c4f4ba734d0599e5f56f1c670cc5a65972689feb42f4088a74e81ad1356dc81"
+  },
+  "limits": [
+    "No original source body opened/read/hashed.",
+    "Codebooks are metadata descriptions, not authorization or eligibility.",
+    "No Q2 executable bundle; no issued frontier/census/inventory/policy/resolver.",
+    "No new grant, source science, product edit or large/real build.",
+    "Existing SRC04 intake preserved."
+  ],
+  "producer": {
+    "codebook_metadata_only": true,
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/producer.py",
+    "data_metadata_only": true,
+    "exit": 0,
+    "no_raw_source": true,
+    "path": "producer.py",
+    "sha256": "de4e1be091b483d4636bb9c5b381c13bd7bb8d6023c7253ee734110b1127b224"
+  },
+  "resolver_selection": {
+    "default_is_frozen_run": true,
+    "default_pin": "v2-historical",
+    "evidence": {
+      "all35_default": "evidence/resolver_all_default.json",
+      "materialization": "evidence/resolver_pin_materialization.json",
+      "refusals": "evidence/resolver_refusals.json",
+      "tests": "evidence/resolver_pins_tests.txt"
+    },
+    "metadata_only": true,
+    "no_duplicate_index_or_config": true,
+    "other_waves_unchanged": true,
+    "path": "resolve_config.py",
+    "selectable_pin": "v3-accepted",
+    "tests": "3 passed in 1.60 s",
+    "v2": {
+      "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+      "commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e",
+      "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+      "path": "rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json"
+    },
+    "v3": {
+      "canonical_sha256": "a3d3267cc37f7f6d2f6267d777c414f285be58ff5e7ea88b8bc9ac0d74c1269f",
+      "commit": "35bb18f8e347efa432ffd7d19af9cb419c1f529f",
+      "file_sha256": "f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855",
+      "path": "WORKER_RETURNS/ANVIL_SRC04_Q217_MAPPING_20261118/source.config.repaired.v3.json"
+    }
+  },
+  "schema": "ANVIL_ALL35_C11_INPUTS_RECEIPT@1",
   "sourcefree_transfer": {
-    "source_id": "SRC01",
-    "fixture_file_sha256": "f3c0f9b954011ed7a78127578d6fefe61a4209544544ad0399b8de0b1345909e",
     "fixture_config_file_sha256": "4eda3129dc2e893020069f970746d1cd09eb80c2d44bcfad1130cff1dacd1df8",
+    "fixture_file_sha256": "f3c0f9b954011ed7a78127578d6fefe61a4209544544ad0399b8de0b1345909e",
+    "source_id": "SRC01",
     "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ__Q2_HELD"
   },
-  "all35_validation": {
-    "canonical_ids_ordered_unique": true,
-    "codebook_hash_matches": 35,
-    "data_path_present_and_size_matches": 35,
-    "q2_inputs_validated": 0,
-    "q2_held": 35,
-    "fields_wave_scope_accounted": true,
-    "matrix_source_count": 35,
-    "matrix_sha256": "e46177cb89a929ae4dcdc3890b88562d9a64a52ec2b7137f5275e11a1aae2444"
+  "src04_witness": {
+    "accepted_c11_reference": {
+      "commit": "ba41253681212be14a0cde009afb99d77e14935e",
+      "q217_held_unbound_cells": 38,
+      "release_object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+      "response_positions": 1298649,
+      "rows": 7337,
+      "selected_coordinates": 3,
+      "selected_responses": 177,
+      "semantic_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1"
+    },
+    "config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "config_path": "inputs/SRC04/source.config.repaired.v2.json",
+    "configured_coordinate_slots": 3,
+    "configured_response_slots": 178,
+    "grant_path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "loaded_source_id": "SRC04",
+    "physical_slots": 181,
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
   },
-  "unresolved_required_fields": {
-    "q2_all_sources": [
-      "FrozenInputCensus",
+  "src17_correction": {
+    "i03_i05": "EXCLUDED",
+    "permission_bytes_preserved": true,
+    "q2_inputs": "HELD",
+    "rights_decision": "AUTHORIZED_FOR_THIS_HOST_PURPOSE",
+    "scope": "SOURCE_READ_AND_C11_CONSTRUCTION_ONLY"
+  },
+  "status": "METADATA_PRODUCER_EXECUTED__35_METADATA_VALIDATED__0_Q2_EXECUTABLE",
+  "stop": "PUBLISHED_AT_35_METADATA_VALIDATED__Q2_HELD",
+  "task": "ANVIL_ALL35_C11_INPUTS_20261118",
+  "testonly_executable_bundle": {
+    "build_sha256": "925b0b527a479d106b10d95ae11ecefb10f141bb55867fd60a064be8ed2a7781",
+    "build_status": "ACTUAL_SOURCE_SAVED_BODY_BUILD_PASS",
+    "frozen_bundle_notes": "Canonical d875 proof retained; repaired portable replay is in .harness_repair.",
+    "original_q2_executable": false,
+    "pickle_sha256": "c9a28d4dcff7e3108c549d620bd4c248843466bb99f1b4b25b28c5795f4c2732",
+    "refusal_sha256": "223bd2760efdaa364d3b0b41e99688cb22e39c216be16cd6617e0f23e3e22938",
+    "refusal_status": "SOURCE_CENSUS_SHA_MISMATCH_BEFORE_SOURCE_ACCESS",
+    "reopen_sha256": "06a7a818e38324654e6b023662d601b4f6eff357a586d2f2837c3faf36d82a40",
+    "reopen_status": "FRESH_PROCESS_FULL_FAMILY_REOPEN_PASS",
+    "rows": 5,
+    "sourcefree_test_only": true,
+    "test": "tests/test_testonly_transfer.py",
+    "typed_objects": [
+      "SourceConfig",
       "SourceInventory",
       "GrammarPolicy",
       "ScientificFrontier",
-      "current SourceReadDecisionResolver adapter"
-    ],
-    "source_config_materialized": "35/35 exact config revisions bound; 0 Q2 executable",
-    "current_grant": "SRC04 only full-source; SRC17 partial C11-only; 33 UNKNOWN_OWNER_DECISION",
-    "held_exact": "q217 38 unbound cells; SRC17 I03/I05 excluded; source routing/response-authority gaps preserved in bundles",
-    "no_inference": true
+      "FrozenInputCensus"
+    ]
   },
   "tests": {
-    "paths": [
-      "tests/test_all35_producer.py",
-      "tests/test_testonly_transfer.py",
-      "tests/test_config_binding.py"
-    ],
-    "results": [
-      "6 passed in 80.18 s",
-      "5 passed in 237.22 s"
-    ],
-    "exit": 0,
     "coverage": [
       "all35 metadata positive/typed holds",
       "SRC17 source-read/C11 authorized but I03/I05 held",
@@ -122,88 +244,29 @@
       "swapped config/wave refused",
       "source SHA mismatch refused",
       "stale SRC04 refused"
+    ],
+    "exit": 0,
+    "paths": [
+      "tests/test_all35_producer.py",
+      "tests/test_testonly_transfer.py",
+      "tests/test_config_binding.py"
+    ],
+    "results": [
+      "6 passed in 80.18 s",
+      "5 passed in 237.22 s"
     ]
   },
-  "limits": [
-    "No original source body opened/read/hashed.",
-    "Codebooks are metadata descriptions, not authorization or eligibility.",
-    "No Q2 executable bundle; no issued frontier/census/inventory/policy/resolver.",
-    "No new grant, source science, product edit or large/real build.",
-    "Existing SRC04 intake preserved."
-  ],
-  "stop": "PUBLISHED_AT_35_METADATA_VALIDATED__Q2_HELD",
-  "testonly_executable_bundle": {
-    "sourcefree_test_only": true,
-    "rows": 5,
-    "typed_objects": [
-      "SourceConfig",
+  "unresolved_required_fields": {
+    "current_grant": "SRC04 only full-source; SRC17 partial C11-only; 33 UNKNOWN_OWNER_DECISION",
+    "held_exact": "q217 38 unbound cells; SRC17 I03/I05 excluded; source routing/response-authority gaps preserved in bundles",
+    "no_inference": true,
+    "q2_all_sources": [
+      "FrozenInputCensus",
       "SourceInventory",
       "GrammarPolicy",
       "ScientificFrontier",
-      "FrozenInputCensus"
+      "current SourceReadDecisionResolver adapter"
     ],
-    "pickle_sha256": "c9a28d4dcff7e3108c549d620bd4c248843466bb99f1b4b25b28c5795f4c2732",
-    "build_sha256": "925b0b527a479d106b10d95ae11ecefb10f141bb55867fd60a064be8ed2a7781",
-    "reopen_sha256": "06a7a818e38324654e6b023662d601b4f6eff357a586d2f2837c3faf36d82a40",
-    "refusal_sha256": "223bd2760efdaa364d3b0b41e99688cb22e39c216be16cd6617e0f23e3e22938",
-    "build_status": "ACTUAL_SOURCE_SAVED_BODY_BUILD_PASS",
-    "reopen_status": "FRESH_PROCESS_FULL_FAMILY_REOPEN_PASS",
-    "refusal_status": "SOURCE_CENSUS_SHA_MISMATCH_BEFORE_SOURCE_ACCESS",
-    "original_q2_executable": false,
-    "test": "tests/test_testonly_transfer.py",
-    "frozen_bundle_notes": "Canonical d875 proof retained; repaired portable replay is in .harness_repair."
-  },
-  "src17_correction": {
-    "rights_decision": "AUTHORIZED_FOR_THIS_HOST_PURPOSE",
-    "scope": "SOURCE_READ_AND_C11_CONSTRUCTION_ONLY",
-    "i03_i05": "EXCLUDED",
-    "q2_inputs": "HELD",
-    "permission_bytes_preserved": true
-  },
-  "harness_repair": {
-    "frozen_input": "d8758a1b1e776406aac551ccc1b4822ed03639d3",
-    "q2_interfaces": "aee95429609c372564e996c2d3d3eb30e9253cbf",
-    "scope": "proof harness only; sourcefree 5-row fixture; no production CURRENT",
-    "old_defect_reproduced": "e3d4a23de5186cd8870ed7fc23bb5cb7e8b438242c59e78f04cb3d1abdd63d05",
-    "old_defect": "ANVIL_REOPEN_MODE=revoked still reopened PASS under unconditional lambda _roots: True",
-    "positive_fresh_root": "3bbb8843bf8243a1daec5a8da9480bc4e64cd374c595cda0b7ad0b0a0ed0978e",
-    "positive_build": "ecd1acd6b7ff01c6931a2ac3a1b4e91769a9afcec53d2265c05716430508bcea",
-    "revoked_refusal": "7f51107fba3f7adc2e131ac47465c20063288e3b9778e0ebed02eac5c8b53afc",
-    "wrong_root_refusal": "2c4f4ba734d0599e5f56f1c670cc5a65972689feb42f4088a74e81ad1356dc81",
-    "source_mismatch_refusal": "c220809e723b1d2b400965a637965eff029a3bf247f3b1c46ac4c3c528b42cc9",
-    "pickle_digest_refusal": "06113c4d3f215355902b459f0854ec284d16777c4574cc96c373331a388a8f71",
-    "commands": "REPAIR_COMMANDS.md",
-    "tests_evidence": "9d4c8a3cd125615a55cf725b5a21b87ae6704455542959fb66c766e124501f82",
-    "fresh_root": "WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/tmp/fresh_repair",
-    "canonical_frozen_proof_untouched": true,
-    "original_rows_changed": false,
-    "src17_scope_preserved": true,
-    "other_checkout_replay": "444ee9153967d23acca9410dd25b274ee0d248a5815d7cad2759fe7fdddc1ef1",
-    "other_checkout_note": "Copied scripts under a fresh checkout-shaped tree with only rawlsing_next symlinked; emitted source/estate paths were relative to that checkout."
-  },
-  "config_binding": {
-    "schema": "ANVIL_ALL35_R157_CONFIG_INDEX@1",
-    "commit": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
-    "path": "WORKER_RETURNS/ANVIL_ALL35_R157_CONFIG_MATERIALIZATION_20261118/CONFIG_INDEX.json",
-    "sha256": "d6741f8e7d084f031d0b762f4f8b6465dc35eb73d7ab6ffc64598123174a1f27",
-    "accepted_by_immutable_ref": true,
-    "materializer": "existing current load_source_config / canonical_config_hash at aee95429609c372564e996c2d3d3eb30e9253cbf",
-    "rows_bound": 35,
-    "distinct_revision_refs": 35,
-    "positive_checks_all_true": true,
-    "q2_executable": 0,
-    "q2_held": 35,
-    "resolver": "resolve_config.py --all",
-    "resolver_evidence": "evidence/config_bindings.json",
-    "negative_evidence": "evidence/config_binding_negatives.json",
-    "negative_checks": {
-      "swapped_config": true,
-      "swapped_wave": true,
-      "source_sha_mismatch": true,
-      "stale_src04": true
-    },
-    "permissions_or_hold_fields_changed_vs_d875": [],
-    "source_config_materialized": "35/35 exact config revisions bound; no config blob committed",
-    "original_source_bodies_read": false
+    "source_config_materialized": "35/35 exact config revisions bound; 0 Q2 executable"
   }
 }

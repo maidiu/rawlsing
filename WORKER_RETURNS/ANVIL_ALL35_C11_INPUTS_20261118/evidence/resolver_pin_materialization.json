@@ -1,0 +1,77 @@
+{
+  "pins": {
+    "v2-historical": {
+      "bundle_pin_accepted": "v2-historical",
+      "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+      "checks": {
+        "canonical_sha": true,
+        "expected_source_sha": true,
+        "identity_class": true,
+        "row_count": true,
+        "shape": true,
+        "source_id": true,
+        "source_sha": true,
+        "wave": true
+      },
+      "config_materialized": true,
+      "declared_shape": {
+        "columns": 181,
+        "coordinate_slots": 3,
+        "original_items": 181,
+        "physical_slots": 181,
+        "questions": 178,
+        "response_slots": 178,
+        "routing_rules": 178,
+        "rows": 7337,
+        "weight_slots": 0
+      },
+      "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+      "historical_default": true,
+      "materialized_bytes": 2774032,
+      "materialized_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+      "original_source_bodies_read": false,
+      "revision_ref": "da23c65d1e211cb7e8ce416e98757f321b78d25e:rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+      "selected_pin": "v2-historical",
+      "selected_pin_status": "HISTORICAL_DEFAULT",
+      "source_id": "SRC04",
+      "wave": "I"
+    },
+    "v3-accepted": {
+      "bundle_pin_accepted": "v2-historical",
+      "canonical_sha256": "a3d3267cc37f7f6d2f6267d777c414f285be58ff5e7ea88b8bc9ac0d74c1269f",
+      "checks": {
+        "canonical_sha": true,
+        "expected_source_sha": true,
+        "identity_class": true,
+        "row_count": true,
+        "shape": true,
+        "source_id": true,
+        "source_sha": true,
+        "wave": true
+      },
+      "config_materialized": true,
+      "declared_shape": {
+        "columns": 181,
+        "coordinate_slots": 3,
+        "original_items": 181,
+        "physical_slots": 181,
+        "questions": 178,
+        "response_slots": 178,
+        "routing_rules": 178,
+        "rows": 7337,
+        "weight_slots": 0
+      },
+      "file_sha256": "f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855",
+      "historical_default": false,
+      "materialized_bytes": 2774688,
+      "materialized_file_sha256": "f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855",
+      "original_source_bodies_read": false,
+      "revision_ref": "35bb18f8e347efa432ffd7d19af9cb419c1f529f:WORKER_RETURNS/ANVIL_SRC04_Q217_MAPPING_20261118/source.config.repaired.v3.json",
+      "selected_pin": "v3-accepted",
+      "selected_pin_status": "SELECTABLE_ACCEPTED",
+      "source_id": "SRC04",
+      "wave": "I"
+    }
+  },
+  "schema": "ANVIL_RESOLVER_PIN_MATERIALIZATION@1"
+}

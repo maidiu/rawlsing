@@ -156,6 +156,19 @@ PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B \
 Evidence: `evidence/config_bindings.json` (35/35 resolver rows),
 `evidence/config_binding_negatives.json`, `evidence/config_binding_summary.json`.
 
+## SRC04 successor selection pin
+
+`resolve_config.py` now has one explicit selectable exact SRC04 pin:
+
+- default/historical `v2-historical`: exact repaired-v2 ref, file `5e107de4…`;
+- selectable accepted `v3-accepted`: commit `35bb18f8e…`, path in the q217
+  mapping return, file `f007afdc…`, canonical `a3d3267c…`.
+
+The v3 accepted config and index are not duplicated. The v2 pin remains the
+default for the already commissioned frozen run and for `--all`; other 34 wave
+bundles are unchanged. Focused tests cover both materializations plus swapped
+wave, arbitrary revision and stale historical SRC04 refusal.
+
 ## Unresolved required Q2 fields
 
 For every source, the following current Q2 inputs are still absent:

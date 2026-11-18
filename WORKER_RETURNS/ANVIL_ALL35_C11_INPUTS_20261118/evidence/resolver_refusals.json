@@ -1,0 +1,21 @@
+{
+  "all_refused": true,
+  "checks": {
+    "arbitrary_revision": {
+      "error": "UNKNOWN_SRC04_PIN:v9-arbitrary",
+      "refused": true,
+      "type": "ResolveRefusal"
+    },
+    "stale_src04": {
+      "error": "STALE_SRC04_CONFIG_REFUSED",
+      "refused": true,
+      "type": "ResolveRefusal"
+    },
+    "swapped_wave": {
+      "error": "CONFIG_BINDING_MISMATCH:SRC04:{\"canonical_sha\": true, \"expected_source_sha\": true, \"identity_class\": true, \"row_count\": true, \"shape\": true, \"source_id\": true, \"source_sha\": true, \"wave\": false}",
+      "refused": true,
+      "type": "ResolveRefusal"
+    }
+  },
+  "schema": "ANVIL_RESOLVER_PIN_REFUSALS@1"
+}
