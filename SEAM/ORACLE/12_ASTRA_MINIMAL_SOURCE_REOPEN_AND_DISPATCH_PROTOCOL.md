@@ -1,0 +1,71 @@
+# ORACLE / 12 — Astra zero-archaeology execution protocol: selective reopen, source-pins, commissions and early persistence
+
+**Objective:** Protect Astra's independent scientific work on the principal's exact PYAT–SOROK fusion question from unnecessary reconnaissance, delegation errors and lost Git progress; **this protocol does not prescribe the research method, architecture, experiment or next scientific result**. The digests are **bounded, versioned source-conditioned compressions**; 'decision-sensitive compression' is an **unvalidated author claim**. It seeks to retain material distinctions and source locators; independent cold trials must still discover omissions. The immutable source/code index now carries commit SHAs and 40/40 re-fetched original blob matches. Read the original source when any claim is contested or architecture depends on detail not in the digest.
+
+**First safeguard before delegation:** read [ORACLE/14](14_ASTRA_SPECIFIC_FAILURE_MODES_AND_HARD_STOPS.md). In previous Astra-associated work an apparently committed packet was not at the worker's referenced base, and valuable unpushed work survived only as a Git tree when quota ended; therefore worker-visible file/SHA preflight and pushed remote HEAD readback are required. ORACLE/14 also tests whether the analysis produces a real causal hinge rather than source-authority paperwork.
+
+**Precedence correction:** Start /08 → **/01 in full** → /14–16 for currentness, inspected sources and claim grades, then revised /00, /02, /04 and /06 as needed. /03's older architecture menu is an archive, not compulsory reading or a design mandate. /09–13 and original sources are selective for decision-changing facts. Independently justified targeted primary inspection remains permitted and necessary when the source dictates it.
+
+## 1. Five-minute conceptual orientation (no massive search)
+
+1. **Read /08, then /01 in full**, then /14 (execution risk), /15 (historical ANVIL and inspected code), /16 (scientific claims and separate cold-accession HOLD). No old ORACLE research example supersedes /01.
+2. Use **09** only for an inherited DDM/ANVIL question that could change a mechanism or cost decision.
+3. Use **10** only for a contested SEAM principle, retraction, maternal/child chronology or Other-field issue.
+4. Use **11** only for exact owner/status/first-reader currentness, with protected and candidate commits separate.
+5. Use **12** for selective source reopen and bounded Deepseek commission, **13** for immutable exact lookup; then **00/03/04/07** for core research and proof. Original source texts and /01/02/05 only when a decisive claim requires inspection.
+
+**No need for a full K1–K3 repeat, N020 root resurvey, 294 SOROK branch survey, broad source-extract rebuild or new ANVIL machine design.** Existing owners retain these. Do not infer all currentness from a documentary snapshot when an exact current decision requires verification.
+
+## 2. Fast live delta: verify only what could falsify the pack
+
+**Protected:** query actual policy PRE-MAIN ref and compare to **5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e** (frozen Nov17 cut). If changed, inspect touched PROGRAMMA fronts, paired CURRENT_PROGRESS, #960/#1097, #1011 and any changed source/actor rights or relevant first-reader code. No forced fresh full repo survey; record relevant delta and unchanged capabilities. A changed HEAD is not automatic conceptual invalidity; a changed source permission/consumer law is.
+
+**ORACLE candidate:** branch docs/seam-oracle-pyat-to-sorok-necessary-emergence-20261117-r1 under PR #1144. Read exact current branch SHA and separate source parent SEAM/29 **8bd487fb8c2ca3b045900cad332fe2140fe95000**. ORACLE documents are documentary and unmerged; reference them as research claims, not binding protected programme.
+
+**ANVIL:** protected paired PYAT REV11 receives R7 preparation only, but **R3 downstream accommodation separately received independent scoped design review** at author 02594c18f8401855a0f9cecc45921b548fa9aed6, reviewer 8a245da3f6de5ca1eac3074eb99f817aabd62ac1 and HQ handoff eeb67a18d0d8ee2dddc68f571f8759bde0c7fb03, with protected `HQ_CURRENTNESS_HOLD`. R3's conditional access/derived-product design matters; no native implementer/100k/rights. Exact code+cut and next first-reader gaps in ORACLE/15. Inspect *newer* owner progress only if a decision hinges upon it; don't re-survey ANVIL.
+
+**SOROK:** paired R39+MII sourcefree and MI #791 status; check active #989 response and any new #1030/related sourcefree parent/child, #1011 current actual first-reader. Authenticated GitHub cannot by itself confirm local worker process, selected Claude/Astra reasoning effort or Codex quota. If no actual evidence, mark UNKNOWN.
+
+**Recovery:** historical original/source authority remains pinned; if new reviewed VMESTYE K3/ZAK/VOSKRES changes, examine only the affected T/S/M/first-reader or negative. Do not start an archaeological fleet from this file.
+
+## 3. One page of task and re-open triggers
+
+| Astra's immediate question | Digest sufficient? | Exact source you reopen *if decisive* |
+|---|---|---|
+| Why is survey-tip→psychology prohibited? | 08/10/11 yes | 21 CAN-011 and ADP source if proposing a new formation operator |
+| Which source covariance does PYAT conserve? | 08/09/11 yes | current C11/I03/F4 source + original question metadata if defining a genuine estimator |
+| Do non-marginal historical discoveries survive? | 09 yes at scientific *hypothesis and negative* grade | VOSKRES R2 G1–G4 source-return; source code only for a disputed exact old function |
+| Which actor-first reader exists? | 11 as proof ceiling | selected SOROK P2/P3/P6 code @ protected head, independent actual tests and ORACLE/02 |
+| Is an ANVIL backend now selected? | 08/09/11 NO at verified cut | actual new ANVIL HQ design decision, tests and receiving after rev11 |
+| How does mother/father/child chronology work? | 08/10 yes | SEAM/20 and SEAM/24 R4/R5 for the only disputed case |
+| How can different acquired psychological KINDS exist? | 10/11 yes requirement | SEAM/21/22/23 and original C1–C7; exact CAN/ADP authority if issuing a rule |
+| Why does OTHER-field context matter? | 08/10 yes | SEAM/26/28/29 and selected actual source inquiry only |
+| What does Deepseek via Codex HQ get? | 07/12 sufficient | actual incumbent Codex HQ charter/lease/API and principal chosen model before dispatch |
+| What scientific evidence could identify learning law? | NO, source-level research required | peer-reviewed developmental/life-course/ethnographic evidence and qualified owner; do NOT guess coefficients |
+| What should Astra independently investigate? | corrected /01 establishes the principal's exact needs and /04 protects scientific autonomy | original source/actor evidence selected by Astra because it materially affects a warranted conclusion; no first-vertical experiment has been chosen |
+
+## 4. Delegation and model integrity — no prescribed commissions
+
+**Principal-selected commission model:** Deepseek V4.1-Flash 1017 MAX, only through a genuinely authorized Codex HQ path. No silent model switching, invented usage, or assumption that a named worker exists. Astra retains scientific/theoretical/architectural judgment, independently chooses research methods and may delegate bounded mechanical work where useful and authorized.
+
+Previous 'C1–C4' packets prescribing a source-map exercise, actor-symbol review, I03 parity/W experiment and H-world/coactor mechanism have been **retired as required work**. Their complete text remains in [the prior /12](https://github.com/maidiu/rawlsing/blob/50f526d02438111f8191b9b9b8f0ac7d1ef44a21/SEAM/ORACLE/12_ASTRA_MINIMAL_SOURCE_REOPEN_AND_DISPATCH_PROTOCOL.md). Any of those operations might be independently justified, but they are not selected by ORACLE.
+
+**Actual delegation authority and persistence remain binding:** Check worker-visible source commit/paths, write lease, model/usage and independent review competence before dispatch. Packets must precisely scope authorized mechanical work, not determine psychological science or source semantics by fiat. If tools or permissions are missing, report their actual absence. Save and read back useful authorized research commits; never claim dispatched work that has not occurred.
+
+## 5. Five-hour and usage cutoff: work in durable increments
+
+User describes a **five-hour session boundary** and wants GitHub persistence well before it expires. Treat the actual start/expiration/usage limits as **unknown unless host exposes them**; do not infer remaining credits/time from a clock in a different conversation. First useful work = committed partial architecture/ledger, not an uncommitted huge answer.
+
+- At session beginning record actual local timestamp and expiry if available, current branch/base and write lease. If unavailable, assume conservative time risk and commit immediately.
+- Where useful and authorized, commit substantial source-sensitive research progress in recoverable increments. The division into intellectual tasks, whether/when to use experiments, and research sequence belong to Astra. Keep unsaved work limited under actual session/persistence risks.
+- At nominal T+3h, consolidate decision-changing results and independently verified source/review; T+4h freeze main analysis; **by T+4h15** ensure draft PR + exact checkpoint and next plan exist (≥45m margin); at T+4h30 or earlier warning, stop expansion and verify SHA/readback.
+- If quota remaining cannot be observed, register USAGE_UNKNOWN; if reasoning effort cannot be changed, MODEL_SWITCH_NOT_AVAILABLE; if true branch/host cannot be confirmed, branch persistence CHECKPOINT_HOLD. No mythical AI self-management action.
+- No unlaunched asynchronous continuation claim. If cut off, a successor must be able to resume from latest **GitHub commit+source/preimage+unresolved cases** without rereading the whole origin.
+
+## 6. Research autonomy with accountable persistence
+
+**The previous compulsory first research terminal has been withdrawn.** ORACLE cannot mandate an H mediator, two candidate configurations, one I03-produced first-reader test, a fixed deliverable structure, or one preselected falsification experiment. Astra is expected to decide what the actual PYAT→SOROK fusion needs and how best to investigate it, under the principal's binding objectives in /01 and the source/science authority of the real owners.
+
+Astra's return may establish a substantive new mechanism, an unexpectedly sufficient incumbent operation, an important narrower result, or a precise reason the evidence cannot yet identify an intended relationship. The form and order of research are Astra's. Claims of implementation, empirical adequacy, developmental science or source authority still require appropriate independent warrant.
+
+**Operational limits remain separate:** no unapproved protected PROGRAMMA/status bank changes, shadow HQ, ANVIL design selection or expansion of unrelated incumbent scientific gates. If a research session ends, retain actual branch and source references, saved work and honest unknowns. Independent cold accession remains separately governed and unexecuted; it cannot be self-certified by the candidate.
