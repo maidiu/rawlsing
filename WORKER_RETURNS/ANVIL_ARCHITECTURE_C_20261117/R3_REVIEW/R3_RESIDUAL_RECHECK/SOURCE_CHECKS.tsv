@@ -1,0 +1,16 @@
+check_id	kind	exact_ref	path_or_symbol	line_or_field	observed	result	evidence
+R3R3-C01	TARGET	b5e4babe2835a18de3aeabe76a4bfa0f8b9928dd	author branch	commit/remote	exact target; remote same	VERIFIED	RUNS/target_verify.txt
+R3R3-C02	PACKAGE	R3_PACKAGE_MANIFEST.json	8 payloads	sha256/bytes	8/8; 10 capability rows; 32 ledger entries	VERIFIED	RUNS/target_verify.txt
+R3R3-C03	PRODUCT	cea2d4d3009e9087d2267e9d1f53bec28b730dc7	06e88..b5e4 rawlsing_next	git diff --stat	empty; product unchanged	VERIFIED	RUNS/target_verify.txt
+R3R3-C04	G4A	R3_FIELD_AND_ADAPTER_CONTRACT.md §2 lines 37-64	stable identity keys	state/value excluded; TYPED_IDENTITY_CONTENT_CONFLICT; legitimate distinctions	resolved	RESOLVED_G4A	RUNS/contract_checks.txt
+R3R3-C05	G4B	R3_FIELD_AND_ADAPTER_CONTRACT.md §3 lines 66-92	SelectionMembership	full exact candidate/risk/denominator refs; counts diagnostic; full _ReleaseIndex baseline	resolved	RESOLVED_G4B	RUNS/contract_checks.txt
+R3R3-C06	G4C	R3_FIELD_AND_ADAPTER_CONTRACT.md §4 lines 94-110	cost accounting	selected pages vs O(R) population/routing/weights/member refs/output; no bounded RAM/Q; 6GiB unproven	resolved	RESOLVED_G4C	RUNS/contract_checks.txt
+R3R3-C07	G2EXT	R3_FIELD_AND_ADAPTER_CONTRACT.md §5 lines 112-140	ExternalSourceArtifact	kind/ref/digest/source-lineage/scope/rights/current/lookup/receipt/ambiguity/refusal; proposed owner route; no existing resolver	resolved at proposed route	RESOLVED_G2EXT	RUNS/contract_checks.txt
+R3R3-C08	ADAPTER	R3_ARCHITECTURE_DECISION.md §3.2-3.3	indices_for/_ReleaseIndex/execute_empirical_query	retained in authoritative decision	resolved; not lost	RESOLVED_ADAPTER	RUNS/contract_checks.txt
+R3R3-C09	G1_TABLE	R3_FIELD_AND_ADAPTER_CONTRACT.md §6.2 lines 162-164	FF01KProduct direction/roles	FORWARD/REVERSE; target_roles k>=2 for both	reverse P(D|Y) target D need not k>=2; dimensional conflict	DEFECT_G1_REVERSE	RUNS/g1_ff01_cardinality.txt
+R3R3-C10	G1_RESEARCH	R3-RES-032	FF01-k contract	ordered k>=2 roles without direction-specific cardinality	repeats ambiguity; needs update with table	DEFECT_G1_REVERSE	RUNS/research_checks.txt
+R3R3-C11	RESEARCH	R3_RESEARCH_LEDGER.jsonl	32 entries	old 27 exact; new 028-032	old preserved; new corrections present	SETTLED_G3	RUNS/research_checks.txt
+R3R3-C12	REFS	decision/table/falsifier/contract	R3-RES refs	29/28/15/8 all resolve	G3 linkage settled	SETTLED_G3	RUNS/research_checks.txt
+R3R3-C13	G5	R3_ARCHITECTURE_DECISION.md §5.3; CAP-03/08	F6 external	PSU/strata/replicate weights/design variance/numeric uncertainty external/typed absent	settled	SETTLED_G5	RUNS/contract_checks.txt
+R3R3-C14	PROTECTED	5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e	PYAT CURRENT_PROGRESS	revision 11	read-only; no protected write	VERIFIED	RUNS/target_verify.txt
+R3R3-C15	SCOPE	REVIEW_VERDICT.json	not_claimed	no native/100k/implementation/source/science/actor/H1	scoped review only	VERIFIED	REVIEW_VERDICT.json

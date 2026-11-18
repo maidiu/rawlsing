@@ -1,0 +1,33 @@
+== FF01-k table ==
+   153	### 6.2 FF01-k — proposed versioned derived product
+   154
+   155	`FF01KProduct` (proposed; not an accepted code object/ref authority):
+   156
+   157	| Field | Exact role/type |
+   158	|---|---|
+   159	| `product_version` | `FF01_K_PROPOSED@1.0.0` |
+   160	| `release_ref` / `universe_ref` / `time_scope_ref` | exact producer scope |
+   161	| `population_ref` | eligible/asked/observed population identity |
+   162	| `direction` | `FORWARD` (`P(Y|D)`) or `REVERSE` (`P(D|Y)`) |
+   163	| `conditioner_roles` | ordered tuple of `(role_id, source_native_ref, component_ref, domain_ref)` |
+   164	| `target_roles` | ordered tuple `k>=2` of same |
+   165	| `role_order` | exact ordered role IDs; no set comparison |
+   166	| `condition_predicate_ref` / `risk_set_ref` | exact forward or reverse condition/risk |
+   167	| `measure_basis_ref` / `weight_basis_id` / `effective_scope_ref` | exact measure/weight/scope |
+   168	| `numerator_support` / `denominator_support` | exact native fact supports for this direction |
+   169	| `weighted_numerator_if_authorized` / `weighted_denominator_if_authorized` | exact if issued |
+   170	| `coverage` | full domain, observed support, minority/remainder/tail |
+   171	| `typed_states` | `ZERO_SUPPORT`, `OBSERVED_ZERO`, `ZERO_OVERLAP`, `LOW_SUPPORT`, `NOT_ASKED`, `ROUTING_UNKNOWN`, `UNKNOWN`, `REFUSED`, `INAPPLICABLE` |
+   172	| `producer_fact_ref` / `producer_query_ref` / `producer_replay_ref` | exact native inputs |
+   173	| `permission_ceiling` / `receipt_ref` / `replay_ref` | no widening; exact receipt/replay |
+   174	| `first_consumer` | FF01 science owner/prospective FF-N9 reader; explicit hold |
+   175
+   176	**Rules:** forward/reverse use different risk/denominator bases; ratios require
+   177	an owner-issued method and positive exact denominator; weighted estimand is
+   178	owner-held; k≥3 must come from a native exact joint fact, not GT2 widening; no
+   179	new metric/science authority. Consumer distinguishes count profile (no ratio)
+   180	from distribution/ratio (owner-held).
+   181
+== G1 research entry ==
+R3-RES-032 ANALYTICAL_DEDUCTION CONCEPTUAL_PRODUCT_CONTRACT_OWNER_HELD
+Corrected contract now specifies proposed FF01KProduct fields: version, release/universe/time/population, direction, ordered k>=2 roles, condition/risk, measure/weight/scope, exact numerator/denominator support, weighted-if-authorized, coverage, typed states, producer fact/query/replay, permission/receipt/replay, first-consumer hold. FF01-2 remains fixed two-target count/no-ratio. Method/eligibility/ratio/weighted estimand owner-held; no counterfeit accepted ExactRef authority.

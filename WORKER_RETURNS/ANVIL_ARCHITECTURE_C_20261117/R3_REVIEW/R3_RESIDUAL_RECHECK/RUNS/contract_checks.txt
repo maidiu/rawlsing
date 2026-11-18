@@ -1,0 +1,220 @@
+== contract sections 2-6 ==
+    30	| Source/wave/country/time | `EmpiricalUniverse` source identity, family, releases, geography, wave, field/reference time, frame/design regime | external source metadata by exact identity |
+    31	| Source/codebook tuple identity | `native_question_ref` + `instrument_question_version` + `source_artifact_import_lineage` | external artifact lookup key; no inference from a ref alone |
+    32
+    33	**Rule:** each requested meaning resolves to exactly one of: C11 field, external
+    34	artifact field by exact identity, or typed absent/hold. A reference is not the
+    35	referenced data.
+    36
+    37	## 2. Stable identity keys versus mutable content (G4-A)
+    38
+    39	Identity keys **exclude** state/value content. State/value are checked content.
+    40
+    41	| Family | Stable identity key | Mutable content checked for conflict |
+    42	|---|---|---|
+    43	| `RespondentEvent` | `(universe_ref, respondent_ref, native_question_ref, canonical_question_ref_or_absence, component_ref_or_absence, event_group_id, response_event_id_or_deterministic_index, response_topology_ref, multiplicity_order_rank_fields)` | `raw_response_value`, `canonical_response_value_if_authorized`, `value_transform_authority_ref`, `response_state` |
+    44	| `RoutingEligibilityFact` | `(universe_ref, respondent_ref, question_or_target_ref, risk_set_ref, routing_rule_ref)` | `applicability_state`, `routing_state`, `parent_predicate_refs`, `member_set_replay_ref` |
+    45	| `EmpiricalCoordinateFact` | `(universe_ref, respondent_ref, native_coordinate_ref, canonical_coordinate_ref_or_absence, effective_or_reference_time)` | raw/canonical value, unit/taxonomy, `coordinate_state`, normalization authority |
+    46	| `WeightMeasureFact` | `(universe_ref, respondent_ref, weight_basis_id, effective_scope_ref, weight_source_ref, design_authority_ref, estimand_authority_ref)` | exact weight representation, `weight_state`, normalization rule |
+    47	| `QuestionVariableBinding` | `(universe_ref, native_question_ref, instrument_question_version, canonical/component ref or absence)` | semantic/topology authority, option/form external ref |
+    48	| `RespondentIdentity` | `(universe_ref, respondent_key)` | native-key ref/absence, identity-map authority |
+    49	| `EmpiricalFact` | `(query_ref, universe_refs, target_topology, condition_predicate_ref, risk_set_ref, measure_basis_ref, response_state_semantics_ref)` | numerator/denominator support, weighted support, provenance, replay, typed state |
+    50
+    51	**Conflict rule:** two records with the same stable identity but differing
+    52	checked content → `TYPED_IDENTITY_CONTENT_CONFLICT` refusal unless an exact
+    53	declared version/authority distinguishes them. State cannot make a
+    54	contradiction into two valid records.
+    55
+    56	**Legitimate distinctions:**
+    57	- repeated/ranked events differ by `event_group_id`/`response_event_id_or_
+    58	  deterministic_index`/`response_topology_ref`/`multiplicity_order_rank_fields`;
+    59	- different weight basis/effective scope/design/estimand authority is a
+    60	  different weight identity;
+    61	- different coordinate time is a different coordinate identity;
+    62	- different risk set or routing rule is a different routing identity;
+    63	- duplicate physical refs with identical identity/content are duplicate rows
+    64	  and must be refused, not counted twice.
+    65
+    66	## 3. Full exact membership (G4-B)
+    67
+    68	`_build_fact` sets `risk_set_member_refs=evaluation.risk_members` and
+    69	`denominator_member_refs=evaluation.denominator_members` (lines 986/987).
+    70	These are full exact ordered member refs, not counts.
+    71
+    72	`SelectionMembership` **must** carry:
+    73	- `candidate_member_refs`: exact ordered `ExactRef` stream for the selected
+    74	  population;
+    75	- `risk_member_refs`: exact ordered refs for the risk population;
+    76	- `denominator_member_refs`: exact ordered refs for the denominator population;
+    77	- nonselected eligible/answered/weighted state refs/members where the native
+    78	  fact requires them;
+    79	- counts only as diagnostics.
+    80
+    81	**Ordering/materialization:** use the exact `_ReleaseIndex` population order
+    82	(`native_verified_physical_respondent_order` where applicable); member refs are
+    83	the same exact `ExactRef` identities the evaluator would append. Hash/bind the
+    84	membership stream to release/universe/query/predicate/risk/measure/authority/
+    85	current. Replay re-derives the same refs; counts never construct facts.
+    86
+    87	**Baseline:** the current full `_ReleaseIndex` route always preserves full
+    88	membership and remains valid. A compact membership sidecar is a **proposed,
+    89	owner-qualified** option; it cannot exclude needed risk members to save space.
+    90	A selected target page may be read selectively, but risk/denominator/routing/
+    91	weight population validation and member-ref materialization remain full unless
+    92	a qualified exact index proves otherwise.
+    93
+    94	## 4. Cost accounting (G4-C)
+    95
+    96	Separate:
+    97	- **selected page cost** — selected event/coordinate body bytes;
+    98	- **full population validation** — all `R` respondents, routing/eligibility,
+    99	  weights, condition/predicate evaluation;
+   100	- **full risk/denominator membership** — exact member refs for every included
+   101	  respondent;
+   102	- **index/refs/output** — `_ReleaseIndex` population, member-ref
+   103	  serialization, fact/replay output.
+   104
+   105	The baseline is `O(R)` population/routing/weight work per operation plus member
+   106	refs and output; selected pages do not remove that. A compact index/sidecar may
+   107	reduce repeated scan only if it preserves exact full membership and passes
+   108	binding/invalidation. **No bounded-RAM or Q-reduction claim** for full-domain
+   109	facts before measurement; materializing v1 full risk refs/output may dominate
+   110	RSS/O. The 6 GiB guarantee remains unproven.
+   111
+   112	## 5. ExternalSourceArtifact contract (G2)
+   113
+   114	Proposed versioned external metadata object; **not** a new canonical C11 family
+   115	and not an implemented resolver.
+   116
+   117	| Field | Requirement |
+   118	|---|---|
+   119	| `artifact_kind` | `QUESTIONNAIRE`, `CODEBOOK`, `FORM_BALLOT`, `DESIGN_WEIGHT`, `DESIGN_VARIANCE`, `HOUSEHOLD_ROSTER`, `NUMERIC_UNCERTAINTY`, other exact enum |
+   120	| `artifact_ref` | proposed versioned exact ref kind/content hash; not a claimed accepted C11/ExactRef authority |
+   121	| `bytes_digest` / `version` | exact content hash/version |
+   122	| `source_lineage` | source identity, edition, file/member, retrieval authority/receipt |
+   123	| `instrument` / `wave` / `country` / `language` | exact scope |
+   124	| `native_question_ref` / `instrument_question_version` | exact join key |
+   125	| `form` / `ballot` / option content | external bytes or typed absent |
+   126	| `design_scope` | weight/design/PSU/strata/replicate/variance scope |
+   127	| permission/current issuer | exact rights/current/revocation |
+   128	| lookup request | `(native_question_ref, instrument_question_version, source_lineage, artifact_kind, scope)` |
+   129	| response/receipt/replay | exact artifact bytes/ref + receipt + replay; no implicit recovery of unrecorded data |
+   130	| ambiguity/refusal | multiple matching artifacts without version/authority → refuse; unreleased/rights-held/noncomparable → typed state |
+   131
+   132	**Mapping examples:** original-language option text → `QUESTIONNAIRE`/
+   133	`CODEBOOK`; form/ballot → `FORM_BALLOT`; PSU/strata/replicate/variance →
+   134	`DESIGN_WEIGHT`/`DESIGN_VARIANCE`; numeric interval → `NUMERIC_UNCERTAINTY`;
+   135	household/roster → `HOUSEHOLD_ROSTER` only if a source-specific released
+   136	projection exists, else typed absent.
+   137
+   138	**Existing producer/registry:** none found for this general external artifact in
+   139	the inspected product cut. Status `PROPOSED_OWNER_ROUTE`; no false claim that a
+   140	`native_question_ref` recovers option text.
+   141
+   142	## 6. FF01-2 versus FF01-k (G1)
+   143
+   144	### 6.1 FF01-2 — existing exact count profile
+   145
+   146	`ExactConditionalSupportProfile` (product `cea2d4d`):
+   147	- fixed `Q86B` conditioner → `Q86A` target;
+   148	- `participant_cardinality=2`, target arity 2, `SEMANTIC_ORDERED`;
+   149	- conditional **count** profile only; no ratio calculation;
+   150	- producer fact/query/risk/universe/permission/replay refs;
+   151	- `IMPLEMENTED_NARROW` sourcefree; no k>2/reverse.
+   152
+   153	### 6.2 FF01-k — proposed versioned derived product
+   154
+   155	`FF01KProduct` (proposed; not an accepted code object/ref authority):
+   156
+   157	| Field | Exact role/type |
+   158	|---|---|
+   159	| `product_version` | `FF01_K_PROPOSED@1.0.0` |
+   160	| `release_ref` / `universe_ref` / `time_scope_ref` | exact producer scope |
+   161	| `population_ref` | eligible/asked/observed population identity |
+   162	| `direction` | `FORWARD` (`P(Y|D)`) or `REVERSE` (`P(D|Y)`) |
+   163	| `conditioner_roles` | ordered tuple of `(role_id, source_native_ref, component_ref, domain_ref)` |
+   164	| `target_roles` | ordered tuple `k>=2` of same |
+   165	| `role_order` | exact ordered role IDs; no set comparison |
+   166	| `condition_predicate_ref` / `risk_set_ref` | exact forward or reverse condition/risk |
+   167	| `measure_basis_ref` / `weight_basis_id` / `effective_scope_ref` | exact measure/weight/scope |
+   168	| `numerator_support` / `denominator_support` | exact native fact supports for this direction |
+   169	| `weighted_numerator_if_authorized` / `weighted_denominator_if_authorized` | exact if issued |
+   170	| `coverage` | full domain, observed support, minority/remainder/tail |
+   171	| `typed_states` | `ZERO_SUPPORT`, `OBSERVED_ZERO`, `ZERO_OVERLAP`, `LOW_SUPPORT`, `NOT_ASKED`, `ROUTING_UNKNOWN`, `UNKNOWN`, `REFUSED`, `INAPPLICABLE` |
+   172	| `producer_fact_ref` / `producer_query_ref` / `producer_replay_ref` | exact native inputs |
+   173	| `permission_ceiling` / `receipt_ref` / `replay_ref` | no widening; exact receipt/replay |
+   174	| `first_consumer` | FF01 science owner/prospective FF-N9 reader; explicit hold |
+   175
+   176	**Rules:** forward/reverse use different risk/denominator bases; ratios require
+   177	an owner-issued method and positive exact denominator; weighted estimand is
+   178	owner-held; k≥3 must come from a native exact joint fact, not GT2 widening; no
+   179	new metric/science authority. Consumer distinguishes count profile (no ratio)
+   180	from distribution/ratio (owner-held).
+   181
+   182	## 7. Research citations
+   183
+   184	- Identity vs state contradiction: `R3-RES-028`.
+   185	- Full membership: `R3-RES-029`.
+   186	- Full cost accounting: `R3-RES-030`.
+   187	- External artifact contract: `R3-RES-031`.
+   188	- FF01-k contract: `R3-RES-032`.
+   189	- C11/external field map: `R3-RES-024`; adapter keys: `R3-RES-025`; F6 external
+   190	  inputs: `R3-RES-026`.
+   191
+   192	## 8. Remaining real holds
+   193
+   194	External artifact producer/registry/rights; FF01-k method/eligibility/ratio/
+   195	weighted estimand and implementation; exact compact membership index; full
+   196	H/S/Q/O measurement; source/actor/science/native rights; 100k/6 GiB/1–10–100.
+== decision adapter retained ==
+   120
+   121	**External route:** original-language option/form/ballot, household/roster,
+   122	PSU/strata/replicate weights/design variance and numeric uncertainty resolve
+   123	through the proposed `ExternalSourceArtifact` contract by exact native/
+   124	instrument/source-lineage identity, or typed absent/RIGHTS_HELD. A reference is
+   125	not the referenced data. [R3-RES-024/031]
+   126
+   127	### 3.2 Native-evaluator adapter
+   128
+   129	The existing accepted route is `DirectEstateI03Session.indices_for` returning
+   130	`_ReleaseIndex` with `release`, `universe`, `respondents`,
+   131	`events_by_respondent`, `coordinates_by_respondent`, `routing_by_respondent`,
+   132	`weights_by_respondent`, `source_relations` and
+   133	`native_verified_physical_respondent_order`. `execute_empirical_query` accepts
+   134	`C11Repository` or exact `DirectEstateI03Session`; group scope is refused for
+   135	the cold sourcefree session.
+   136
+   137	The proposed extension is a **read-only adapter** that either:
+   138
+   139	- materializes the exact existing `_ReleaseIndex` from the typed views and
+   140	  presents it through an owner-qualified exact session type; or
+   141	- adds a narrow owner-approved protocol branch accepting an exact
+   142	  `R3DerivedReadView` whose `indices_for(query, release_refs)` returns the same
+   143	  exact `_ReleaseIndex` and whose `_live()`/current checks are equivalent.
+   144
+   145	**Status:** `CONDITIONAL_EXTENSION`; not implemented. It must yield exact
+   146	`RespondentIdentity`/`RespondentEvent`/`RoutingEligibilityFact`/
+   147	`EmpiricalCoordinateFact`/`WeightMeasureFact` objects/refs, not a new fact
+   148	format. The adapter must expose the full risk population and nonselected
+   149	members; it may not pre-decide denominator or fact identity. The native
+   150	evaluator remains the authority.
+   151
+   152	### 3.3 Reusable selection membership
+   153
+   154	A reusable selection/membership object is keyed by:
+   155	`(release_ref, universe_ref, condition_predicate_ref, risk_set_ref,
+   156	ordered target_refs, direction/role, routing state set, weight_basis_id,
+   157	measure_basis_ref, source_scope)`.
+   158
+   159	It may be shared across different operations only when that whole identity is
+   160	identical. It stores exact ordered **candidate, risk and denominator member
+   161	refs** plus nonselected eligible/answered/weighted typed states; counts are
+   162	diagnostic only. It never substitutes for `_build_fact`’s
+   163	`risk_set_member_refs=evaluation.risk_members` /
+   164	`denominator_member_refs=evaluation.denominator_members` (lines 986/987).
+   165	Invalidation is on source/release/frame/current/revocation change. The baseline
+   166	full `_ReleaseIndex` always preserves exact membership; a compact exact
+   167	membership sidecar is proposed/owner-qualified. Selected event-page reads do not
+   168	remove full universe/routing/weight/denominator validation or member-ref
+   169	materialization. No bounded-RAM or Q-reduction claim before measurement;
+   170	v1 full risk refs/output may dominate RSS/O and 6 GiB remains unproven.

@@ -1,0 +1,124 @@
+{
+ "schema": "ANVIL_R3_RESIDUAL_RECHECK@1",
+ "verdict": "REVISE_EXACT_CONSEQUENTIAL_GAP",
+ "target": {
+  "commit": "b5e4babe2835a18de3aeabe76a4bfa0f8b9928dd",
+  "branch": "agent/anvil-r3-downstream-accommodation-20261117-r1",
+  "package_files_verified": 8,
+  "capability_rows": 10,
+  "research_entries": 32,
+  "prior_27_preserved_exactly": true,
+  "new_ids": [
+   "R3-RES-028",
+   "R3-RES-029",
+   "R3-RES-030",
+   "R3-RES-031",
+   "R3-RES-032"
+  ],
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "product_unchanged": true,
+  "protected_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "protected_revision": 11
+ },
+ "prior_review": "c996cf1a69344efb2e76e92e9adc2b723c6a2503",
+ "single_residual": {
+  "id": "G1-REVERSE",
+  "claim_source": "R3_FIELD_AND_ADAPTER_CONTRACT.md \u00a76.2 lines 162-164; R3-RES-032",
+  "claim": "FF01KProduct direction FORWARD(P(Y|D)) or REVERSE(P(D|Y)); target_roles ordered tuple k>=2",
+  "counterexample": "P(D|Y) has target D, which need not be k>=2; the k>=2 ordered Y set belongs on the conditioner side for reverse. The table applies k>=2 to target_roles unconditionally.",
+  "minimum_correction": "FORWARD: conditioner_roles=D (>=1), target_roles=Y1..Yk (k>=2); REVERSE: conditioner_roles=Y1..Yk (k>=2), target_roles=D (>=1); retain separate risk/denominator, native refs, weights/coverage/typed states, owner-held ratio, receipt and prospective consumer; update R3-RES-032 and any repeated table/decision wording."
+ },
+ "resolved_residuals": [
+  {
+   "id": "G4-A",
+   "status": "RESOLVED",
+   "evidence": "contract \u00a72 lines 37-64 stable identity excludes state/value; TYPED_IDENTITY_CONTENT_CONFLICT; legitimate repeat/weight/time/routing distinctions"
+  },
+  {
+   "id": "G4-B",
+   "status": "RESOLVED",
+   "evidence": "contract \u00a73 lines 66-92 full exact candidate/risk/denominator refs and nonselected typed states; counts diagnostic; full _ReleaseIndex baseline; compact sidecar proposed"
+  },
+  {
+   "id": "G4-C",
+   "status": "RESOLVED",
+   "evidence": "contract \u00a74 lines 94-110 selected pages vs O(R) population/routing/weight validation/full membership/refs/output; no bounded RAM/Q claim; 6GiB unproven"
+  },
+  {
+   "id": "G2EXT",
+   "status": "RESOLVED_AT_PROPOSED_ROUTE_GRADE",
+   "evidence": "contract \u00a75 lines 112-140 proposed ExternalSourceArtifact kind/ref/digest/source-lineage/native version/scope/rights/current/lookup/receipt/ambiguity/refusal; no existing general resolver; no false preservation"
+  },
+  {
+   "id": "ADAPTER_RETENTION",
+   "status": "RESOLVED",
+   "evidence": "R3_ARCHITECTURE_DECISION \u00a73.2-3.3 retains indices_for/_ReleaseIndex/execute_empirical_query adapter"
+  },
+  {
+   "id": "G3",
+   "status": "SETTLED",
+   "evidence": "32 entries; old27 exact; new028-032; 29/28/15/8 refs resolve"
+  },
+  {
+   "id": "G5",
+   "status": "SETTLED",
+   "evidence": "decision \u00a75.3/CAP-03/08 external/typed-absent F6 design/numeric inputs"
+  }
+ ],
+ "research_custody": {
+  "entries": 32,
+  "old27_exact": true,
+  "new_028_032_accurate": true,
+  "refs": {
+   "decision": 29,
+   "capability": 28,
+   "falsifier": 15,
+   "contract": 8,
+   "all_resolve": true
+  },
+  "fabricated_execution_sampled": false,
+  "r3_res_032_needs_cardinality_fix": true
+ },
+ "settled": [
+  "13-family body",
+  "prepared-first; conditional Q2/full proof/fallback; recovery conditional; durable index held; v1 ABI",
+  "FF01-2 fixed two-target count/no ratio",
+  "G4 identity/membership/cost",
+  "G2 external artifact proposed route",
+  "G3/G5",
+  "26 NOT_ADOPTED/14 HELD/F26/52-24-21"
+ ],
+ "external_holds": [
+  "external artifact registry/rights/current",
+  "FF01-k method/eligibility/ratio/weighted estimand/implementation",
+  "compact exact membership index",
+  "H/S/Q/O measurement",
+  "source/actor/science/native rights",
+  "100k/6GiB/1-10-100"
+ ],
+ "coverage_ceiling": [
+  "no native/100k",
+  "no product implementation",
+  "no benchmark matrix",
+  "no full source recensus",
+  "no source/science/actor authority",
+  "no protected adoption/H1"
+ ],
+ "smallest_next_owner_handoff": "Author edits FF01-k direction-specific role cardinality in field contract and R3-RES-032, refreezes; no product/new science work.",
+ "not_claimed": [
+  "native/source/science/actor/H1",
+  "100k/6GiB/1-10-100",
+  "product implementation",
+  "protected adoption",
+  "exhaustive source lineage"
+ ],
+ "limits": [
+  "source lineage sampled",
+  "no product test matrix/native run",
+  "static contract/schema findings decisive",
+  "no instrument/external reviewer authentication",
+  "no author patch"
+ ],
+ "return_sha": "FINAL_R3_RESIDUAL_RECHECK_COMMIT_ON_REVIEW_BRANCH_SEE_GIT",
+ "payload_manifest": "PACKAGE_MANIFEST.json (self-excluded)"
+}
