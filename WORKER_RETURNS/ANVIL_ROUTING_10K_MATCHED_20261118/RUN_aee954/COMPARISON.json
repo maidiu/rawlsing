@@ -1,0 +1,52 @@
+{
+  "all_exact": true,
+  "end_to_end": {
+    "baseline_H_S_Q_O": 60.542590130120516,
+    "candidate_H_S_Q_O": 55.51552331610583
+  },
+  "external": {
+    "baseline": 63.64202974003274,
+    "candidate": 58.79541744093876,
+    "total": 122.4374471809715
+  },
+  "note": "one measured pair only; no extrapolation/speedup claim",
+  "operation": {
+    "baseline_O": 0.7305594990029931,
+    "baseline_Q": 46.24859692109749,
+    "candidate_O": 0.7130798511207104,
+    "candidate_Q": 26.37695630604867,
+    "delta_Q": -19.87164061504882
+  },
+  "ops": {
+    "f2_forward": {
+      "denom_set": true,
+      "fact_ref": true,
+      "payload_exact": true,
+      "payload_sha": true,
+      "provenance": true,
+      "replay": true,
+      "risk_set": true
+    },
+    "f2_reverse": {
+      "denom_set": true,
+      "fact_ref": true,
+      "payload_exact": true,
+      "payload_sha": true,
+      "provenance": true,
+      "replay": true,
+      "risk_set": true
+    }
+  },
+  "routing": {
+    "baseline_lookup_calls": 20000,
+    "baseline_setup_family_objects": 32450,
+    "candidate_lookup_calls": 20000,
+    "candidate_setup_family_objects": 82450
+  },
+  "schema": "ANVIL_ROUTING_MATCHED_COMPARISON@1",
+  "setup": {
+    "baseline_H_plus_S": 13.563433710020036,
+    "candidate_H_plus_S": 28.42548715893645,
+    "candidate_added_setup_seconds": 14.862053448916413
+  }
+}
