@@ -1,0 +1,21 @@
+check_id	kind	exact_ref	path_or_symbol	line_or_field	observed	result	evidence
+R3R2-C01	TARGET	b567ceee8291b4927004dfc4b5b109ae29ba0294	author branch	commit/remote	exact target; remote same	VERIFIED	RUNS/target_verify.txt
+R3R2-C02	PACKAGE	R3_PACKAGE_MANIFEST.json	8 payload files	sha256/bytes	8/8 match; 10 capability rows; 27 ledger entries	VERIFIED	RUNS/target_verify.txt
+R3R2-C03	PRODUCT	cea2d4d3009e9087d2267e9d1f53bec28b730dc7	06e88..b567 rawlsing_next	git diff --stat	empty; product unchanged	VERIFIED	RUNS/target_verify.txt
+R3R2-C04	G3	R3_RESEARCH_LEDGER.jsonl	27 entries	old 22 exact; new 023-027	old 22 byte-identical; 5 correction entries	RESOLVED_G3	RUNS/research_checks.txt
+R3R2-C05	G3_REFS	decision/table/falsifiers	R3-RES refs	24/23/10 refs all resolve	all IDs exist	RESOLVED_G3	RUNS/research_checks.txt
+R3R2-C06	G1_SPLIT	R3-RES-023; decision 5.4; R3-CAP-04	FF01-2 vs FF01-k	FF01-2 fixed Q86B/Q86A count/no ratio; FF01-k proposed	old claim retracted; proposed contract categories	MOSTLY_RESOLVED_G1	RUNS/g1_g5_checks.txt
+R3R2-C07	G1_FIELD	R3_FIELD_AND_ADAPTER_CONTRACT.md	FF01-k field/receipt	no exact FF01-k table	decision categories only; general manifest; add exact table	RESIDUAL_G1	RUNS/g1_g5_checks.txt
+R3R2-C08	G2_FIELDS	QVB/EmpiricalUniverse/Weight/Fact	exact fields	QVB no option/form/routing; universe no household/PSU/strata; weight no variance; fact method/state	field map correct	RESOLVED_G2_FIELDS	RUNS/g1_g5_checks.txt
+R3R2-C09	G2_EXTERNAL	contract external resolution	external source/codebook/design artifact by exact identity	no ExternalArtifact/ref kind/lookup/authority/scope/refusal in product/contract	external lookup still conditional	RESIDUAL_G2	RUNS/external_lookup_check.txt
+R3R2-C10	G5	decision 5.3; CAP-03/08	F6 external	PSU/strata/replicate weights/design variance/numeric uncertainty external or typed absent	resolved; matches actual fields	RESOLVED_G5	RUNS/g1_g5_checks.txt
+R3R2-C11	G4A_KEY	R3_FIELD_AND_ADAPTER_CONTRACT.md lines 44-70	identity keys	event/routing/coordinate/weight state included in key	contradictory state can be distinct record	DEFECT_G4A	RUNS/g4_checks.txt
+R3R2-C12	G4A_ACTUAL	_pre553_query_eval.py routing/weight conflict	actual evaluator	routing conflict/weight multiplicity checks exist; not view contract	does not cure contract key flaw	DEFECT_G4A	RUNS/code_checks.txt
+R3R2-C13	G4B_SELECTION	R3_FIELD_AND_ADAPTER_CONTRACT.md line 107; decision 3.3	SelectionMembership	candidate refs + nonselected count	count-only	DEFECT_G4B	RUNS/g4_checks.txt
+R3R2-C14	G4B_FACT	_pre553_query_eval.py _build_fact	risk_set_member_refs/denominator_member_refs	full evaluation.risk_members/denominator_members	count cannot construct exact fact membership	DEFECT_G4B	RUNS/code_checks.txt
+R3R2-C15	G4C_RAM	R3_FIELD_AND_ADAPTER_CONTRACT.md lines 125-129	bounded selected row groups	full risk population/nonselected members required	no account of full universe/routing/denominator cost	DEFECT_G4C	RUNS/g4_checks.txt
+R3R2-C16	G4C_EVAL	_evaluate_index_group	all respondents loop	appends full risk refs	selected-only view insufficient for exact full-domain facts	DEFECT_G4C	RUNS/code_checks.txt
+R3R2-C17	RELEASE_INDEX	pre553_direct_estate_i03.py indices_for	_ReleaseIndex fields	full respondents/events/routing/weights/source_relations	contract adapter can use exact index, but selection count conflicts	DEFECT_G4B/C	RUNS/code_checks.txt
+R3R2-C18	FF01_ACTUAL	field_forge_conditional_support.py	fixed Q86B/Q86A; participant_cardinality=2; no ratios	resolved old claim correctly	RESOLVED_G1_CLAIM	RUNS/code_checks.txt
+R3R2-C19	PROTECTED	5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e	PYAT CURRENT_PROGRESS	revision 11	read-only; no protected write	VERIFIED	RUNS/target_verify.txt
+R3R2-C20	SCOPE	REVIEW_VERDICT.json	not_claimed	no native/100k/implementation/source/science/actor/H1	scoped review only	VERIFIED	REVIEW_VERDICT.json

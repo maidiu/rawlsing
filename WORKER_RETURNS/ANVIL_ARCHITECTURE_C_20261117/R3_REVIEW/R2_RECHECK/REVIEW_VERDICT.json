@@ -1,0 +1,137 @@
+{
+ "schema": "ANVIL_R3_G1_G5_RECHECK@1",
+ "verdict": "REVISE_EXACT_CONSEQUENTIAL_GAP",
+ "target": {
+  "commit": "b567ceee8291b4927004dfc4b5b109ae29ba0294",
+  "branch": "agent/anvil-r3-downstream-accommodation-20261117-r1",
+  "package_files_verified": 8,
+  "capability_rows": 10,
+  "research_entries": 27,
+  "old_22_preserved_exactly": true,
+  "new_entry_ids": [
+   "R3-RES-023",
+   "R3-RES-024",
+   "R3-RES-025",
+   "R3-RES-026",
+   "R3-RES-027"
+  ],
+  "product_cut": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "product_unchanged": true,
+  "protected_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "protected_revision": 11
+ },
+ "prior_review": "e4cda70a66af241297c230362a61b03e77bb13bc",
+ "per_gap": [
+  {
+   "id": "G1",
+   "disposition": "MOSTLY_RESOLVED_EXACT_CONTRACT_GAP",
+   "evidence": "R3-RES-023 retraction; corrected decision \u00a75.4 splits FF01-2 fixed Q86B->Q86A two-target count/no-ratio from proposed FF01-k roles/order/direction/risk/weights/coverage/typed states/owner-held ratio. Field/adapter contract lacks exact FF01-k field/receipt/consumer schema.",
+   "correction": "Add exact FF01KProduct role/order/ref/receipt/consumer table; keep method/eligibility/ratio owner-held."
+  },
+  {
+   "id": "G2",
+   "disposition": "PARTIALLY_RESOLVED",
+   "evidence": "Exact C11 field map correct: QVB no option/form/routing; EmpiricalUniverse respondent_namespace only, no household/PSU/strata; WeightMeasureFact design/estimand authority refs only; EmpiricalFact method/state not interval. External source/codebook/design artifact has no concrete artifact type/ref/lookup/authority/scope/refusal resolver in product or contract.",
+   "correction": "Add ExternalSourceArtifact contract from native ref/version/source-lineage with authority/current/scope/rights/typed absent/refusal, or mark external lookup UNPROVEN_HOLD and do not grade those fields conceptually accommodated."
+  },
+  {
+   "id": "G3",
+   "disposition": "RESOLVED",
+   "evidence": "27 entries; old 22 byte-identical; new 023-027; 24 decision refs, 23 capability refs, 10 falsifier refs all resolve.",
+   "correction": "Add R3-RES-024/025/026 refs to R3_FIELD_AND_ADAPTER_CONTRACT when next edited; no substantive gap."
+  },
+  {
+   "id": "G4",
+   "disposition": "NOT_RESOLVED",
+   "evidence": "Identity keys include response/applicability/routing/coordinate/weight state, so state contradictions can be distinct records; SelectionMembership is candidate refs + nonselected count while _build_fact needs full risk_set_member_refs/denominator_member_refs; bounded selected-row-group RAM claim conflicts with full-universe routing/denominator membership.",
+   "correction": "Separate stable identity keys from state/value content and refuse conflicts; make SelectionMembership carry full exact member refs or always materialize full _ReleaseIndex; separate selected page reads from full universe/routing/denominator cost and remove bounded-RAM/Q claim without qualified index/measurement."
+  },
+  {
+   "id": "G5",
+   "disposition": "RESOLVED",
+   "evidence": "Corrected \u00a75.3, R3-CAP-03, R3-CAP-08 explicitly external/typed-absent for PSU/strata/replicate weights/design variance/numeric uncertainty; matches actual fields.",
+   "correction": "None beyond G2 external artifact route."
+  }
+ ],
+ "decisive_counterexamples": [
+  {
+   "id": "G4-A",
+   "claim_source": "R3_FIELD_AND_ADAPTER_CONTRACT.md lines 44-70",
+   "claim": "event/routing/coordinate/weight identity keys include state",
+   "actual": "same identity with differing state has different key, so contradiction is not duplicate/refused",
+   "minimum_correction": "identity keys exclude mutable state/value; content conflict refusal"
+  },
+  {
+   "id": "G4-B",
+   "claim_source": "R3_FIELD_AND_ADAPTER_CONTRACT.md line 107; decision \u00a73.3",
+   "claim": "SelectionMembership = candidate refs + nonselected count",
+   "actual": "_build_fact uses risk_set_member_refs=evaluation.risk_members and denominator_member_refs=evaluation.denominator_members; _evaluate_index_group appends full respondent refs",
+   "minimum_correction": "full exact member refs in SelectionMembership or full _ReleaseIndex materialization; counts diagnostic only"
+  },
+  {
+   "id": "G4-C",
+   "claim_source": "R3_FIELD_AND_ADAPTER_CONTRACT.md lines 125-129",
+   "claim": "Disk/RAM bounded by selected partition/row groups",
+   "actual": "_ReleaseIndex full respondents/events/routing/weights; evaluator loops all respondents; full risk/denominator membership required",
+   "minimum_correction": "separate selected page reads from full universe/routing/denominator cost; no bounded-RAM/Q claim without qualified index/measurement"
+  },
+  {
+   "id": "G2-EXT",
+   "claim_source": "R3_FIELD_AND_ADAPTER_CONTRACT.md \u00a71; decision \u00a75.1",
+   "claim": "external source/codebook/design artifact by exact identity",
+   "actual": "no ExternalArtifact/ref kind/lookup/authority/scope/refusal resolver in product or contract",
+   "minimum_correction": "add external artifact contract or mark UNPROVEN_HOLD"
+  }
+ ],
+ "settled": [
+  "13-family canonical body retained; no new body/database/psychology",
+  "prepared-first within-process; conditional Q2/full proof/fallback; conditional recovery; durable index held; v1 ABI",
+  "native F1-F4, true k>=3, F2 distinct bases, F3 minority/recursive; FF01-2 vs FF01-k split; F6/F7 external; FF02/N9/SEAM/SOROK boundaries",
+  "26 NOT_ADOPTED/14 HELD/F26/52-24-21 preserved"
+ ],
+ "remaining_conditional": [
+  "exact FF01-k field/receipt/consumer schema",
+  "external source codebook/design artifact lookup/scope/refusal",
+  "state/value-separated view keys and conflict refusal",
+  "full member-ref SelectionMembership/full _ReleaseIndex",
+  "full universe/routing/denominator cost accounting",
+  "durable index; Batch adapter; Q2 full proof; recovery crash injection",
+  "FF02 power, F7 comparability, N9/N10W, SEAM, SOROK, native rights, 100k"
+ ],
+ "research_custody": {
+  "entries": 27,
+  "old_22_exact": true,
+  "new_023_027": true,
+  "decision_refs": 24,
+  "capability_refs": 23,
+  "falsifier_refs": 10,
+  "all_resolve": true,
+  "fabricated_execution_sampled": false,
+  "contract_r3_res_refs": false
+ },
+ "strongest_failed_attacks": [
+  "storage sufficiency",
+  "prepared session removes fresh S/Q/O",
+  "pairwise substitute for k>=3",
+  "I07 as F6",
+  "FF01 as FF02",
+  "marginals as encounter",
+  "N9 as SOROK"
+ ],
+ "not_claimed": [
+  "native/source/science/actor/H1",
+  "100k/6GiB/1-10-100",
+  "product implementation",
+  "protected adoption",
+  "exhaustive source lineage"
+ ],
+ "limits": [
+  "sampled source lineage",
+  "no native/100k/product tests",
+  "static schema/code/contract findings decisive",
+  "no instrument/external reviewer authentication",
+  "no author patch"
+ ],
+ "return_sha": "FINAL_R3_R2_RECHECK_COMMIT_ON_REVIEW_BRANCH_SEE_GIT",
+ "payload_manifest": "PACKAGE_MANIFEST.json (self-excluded)"
+}

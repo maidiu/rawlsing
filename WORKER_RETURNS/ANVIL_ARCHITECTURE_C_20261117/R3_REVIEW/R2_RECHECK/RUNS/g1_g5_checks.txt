@@ -1,0 +1,103 @@
+== corrected decision 5.1-5.4 ==
+   170	  body/authority surface, duplication, staleness or cost.
+   171
+   172	## 5. Six capability envelopes — corrected claims
+   173
+   174	### 5.1 Source observability and native meaning — `CONCEPTUALLY_ACCOMMODATED`
+   175
+   176	C11 preserves exact native question **refs**, instrument version, routing
+   177	state/refs, raw/canonical values, respondent namespace, occurrence/repeat,
+   178	weights/design authority refs, source/time/authority. It does **not** itself
+   179	carry original-language option/form/ballot content, household/roster namespace,
+   180	PSU/strata/replicate weights/design variance or numeric uncertainty. Those are
+   181	resolved through an external source/codebook/questionnaire artifact by exact
+   182	native ref or typed absent/hold. [R3-RES-024]
+   183
+   184	Observability classes remain `OBSERVED_RESPONDENT`, `SAMPLE_DESIGN_ONLY`,
+   185	`COLLECTED_BUT_NOT_RELEASED`, `EXTERNAL_GROUP_CONTEXT`, `PROXY_OBSERVED`,
+   186	`MEASUREMENT_NONCOMPARABLE`, `RIGHTS_HELD`. A stratum is not an individual
+   187	sect/ancestry. [R3-RES-005]
+   188
+   189	### 5.2 Respondent-coherent DDM, F1–F4, I03/I05 — `CONCEPTUALLY_ACCOMMODATED` (native route) + `CONDITIONAL_EXTENSION` (typed view)
+   190
+   191	Native `execute_empirical_query`, `execute_exact_bounded_discovery` and
+   192	`AnalyticalCompositionResult` preserve true same-person k≥3, F2 direction-
+   193	specific bases, F3 minority/recursive and occurrence/repeat. The typed views
+   194	must supply exact candidate streams through the adapter in §3.2; without that,
+   195	the view is conditional. Pairwise substitution is refused. [R3-RES-001/
+   196	002/003/004/021/025]
+   197
+   198	### 5.3 F6/F7 numerical and historical comparison — `EXTERNAL_OWNER_HELD`
+   199
+   200	C11 preserves separate releases/universes/waves/time/instrument/design
+   201	authority refs and source relations. It does **not** contain F6 numeric
+   202	intervals, uncovered mass, PSU/strata/replicate weights, design variance or a
+   203	numeric uncertainty interval. `EmpiricalFact.uncertainty_method_or_typed_state`
+   204	is a method/state, not a variance. F6/F7 are separate owner-held derived
+   205	products; no pooling, fake longitudinal person or I07-as-numeric substitution.
+   206	[R3-RES-006/007/026]
+   207
+   208	### 5.4 FF01 and Field Forge — `FF01-2 IMPLEMENTED_NARROW`, `FF01-k CONDITIONAL_EXTENSION`
+   209
+   210	**FF01-2:** the existing `ExactConditionalSupportProfile` is a fixed
+   211	**two-target Q86B→Q86A** count relation (`participant_cardinality=2`) and
+   212	explicitly does not calculate ratios. It is an exact count profile, not a
+   213	general conditional distribution. [R3-RES-023]
+   214
+   215	**FF01-k (proposed, not implemented):** a versioned derived-product contract
+   216	for ordered k≥2 conditioner/target roles and a separate reverse direction:
+   217	- exact keys: release/universe/time/population/conditioner roles/target
+   218	  roles/order/risk-set/measure/direction;
+   219	- direction-specific numerator/denominator/routing/weights/coverage/zero/
+   220	  unknown/refused/inapplicable states;
+   221	- producer inputs: exact native I03/F1–F4 facts; no ratio unless the existing
+   222	  native qualified fact and owner permission support it;
+   223	- relation permission ceiling cannot widen producer;
+   224	- first consumer: FF01 science owner / prospective FF/N9 reader, exact hold;
+   225	- method/eligibility/ratio/weighted-estimand issuance remains `OWNER_HELD`.
+   226	No new metric/science authority is created.
+== CAP-01/03/08 ==
+R3-CAP-01	Source observability and native meaning	Conceptualised; S01/QSM partially coded	Original-language item/option/form/ballot/routing/version; raw/authorized values; respondent/household namespace; occurrence/rank/repeat; typed absent; weights/design; source/time/authority/revocation	C11 exact: native_question_ref+instrument_question_version; routing state/rule refs; respondent_namespace; universe/source/time; event/occurrence/typed state. External by exact ref: original-language option/form/ballot content and codebook/questionnaire; household/roster unless source-specific projection exists; PSU/strata/replicate weights/design variance and numeric uncertainty. Typed absent/RIGHTS_HELD if unavailable.	Exact canonical body plus respondent-major/question-major views; observability profile; external codebook lookup by native ref/version; no stratum-to-individual identity	Observability profile into S01/QSM/F1-F4; source/semantic owner and C11 projection	C11 asserted to contain option/form/household/PSU/variance when it does not; stratum implies sect/ancestry; normalization replaces native meaning	No new body; external metadata lookup; invalidation on source/edition/current/revocation	CONCEPTUALLY_ACCOMMODATED (C11+external+typed absent); source rights owner-held	L-01..L-08; K1-CAP-08; T1; S-06	INSPECTED_CODE + SOURCE_DOCUMENTED + ANALYTICAL_DEDUCTION	R3-RES-005;R3-RES-024
+R3-CAP-03	F6 numerical partial identification and F7 historical comparison	F6/F7 owner-held; C11 source/time/universe fields inspected	F6 partial-ID bounds/uncovered mass; design variance/PSU/strata/replicate weights; F7 wave/instrument/time comparability; separate surveys/universes	C11 exact: separate releases/universes/waves/time/instrument/design_authority_ref/estimand_authority_ref/source relations. External/typed absent: PSU/strata/replicate weights/design variance, numeric uncertainty interval, F6 method, F7 comparability authority. I07/I04 guard is not numeric F6.	Separate releases addressed by exact universe/release/time refs; F6/F7 are separate derived-product manifests with owner method/authority; no crosswave individual row	F6IntervalProduct and F7ComparabilityIndex into N9/comparison reader or exact hold	I07 guard as F6 numeric; same-name wave as trajectory; cross-section pseudo-person; pooling; omitted uncovered mass; treating design authority ref as variance data	No crosswave body; derived evidence; invalidation on source/frame/time/authority; v1 ABI retained	EXTERNAL_OWNER_HELD (F6 numeric/F7 science); C11 information conceptual	F6,F7; K1-CAP-17,-19,-29; P4R-R07; S-06; L-05,L-08	INSPECTED_CODE + SOURCE_DOCUMENTED + OWNER_HELD	R3-RES-006;R3-RES-007;R3-RES-026
+R3-CAP-08	K1-CAP-17 F6 numeric partial-ID intervals	No dedicated F6 numeric C11 family/method found; owner-held	F6 estimand; source/frame/design/estimand variance; partial-ID interval; uncovered mass; nonpooling; actual N9 consumer	C11 source/universe/design_authority_ref/estimand_authority_ref/weights; external F6 method and PSU/strata/replicate weights/design variance/numeric uncertainty; I07/I04 not numeric F6	C11 exact facts -> separate F6 derived product manifest; no canonical F6 family; no I07 substitution; owner-qualified numeric method	F6IntervalProduct into N9 or exact owner hold	I07 as numeric interval; uncovered mass omitted; nonpooling ignored; effective-N as F6; design authority ref treated as variance data	Derived product; no C11 body change; invalidation on source/frame/estimand/authority	EXTERNAL_OWNER_HELD (F6 numeric); C11 source information accommodated	K1-CAP-17,-19; P4R-R07; F6; S-06; T4	INSPECTED_CODE + SOURCE_DOCUMENTED + OWNER_HELD	R3-RES-006;R3-RES-026
+== field map header/rows ==
+     1	# R3 FIELD AND ADAPTER CONTRACT — exact C11 fields and native-evaluator view
+     2
+     3	**Status:** `CONDITIONAL_EXTENSION`; actual schema inspected at product cut
+     4	`cea2d4d3009e9087d2267e9d1f53bec28b730dc7`; no product edit.
+     5	**Purpose:** answer G2/G4/G5 with exact field/ref keys and a concrete adapter
+     6	into the existing native evaluator.
+     7
+     8	## 1. Exact C11 fields versus external/hold
+     9
+    10	| Family | Exact C11 fields (inspected) | Not in this field | Resolution |
+    11	|---|---|---|---|
+    12	| `EmpiricalUniverse` | `raw_source_identity`, `source_family`, `study_product_release`, `instrument_release`, `country_geography`, `sampling_geography`, `raw_wave`, `canonical_wave_if_governed`, `field_or_reference_time`, `target_population_and_sample_frame`, `sampling_design_regime`, `respondent_namespace`, `source_artifact_import_lineage`, `harmonization_authority_ref`, `source_relation_refs` | household/roster namespace; PSU/strata/replicate weights/design variance; numeric uncertainty | external source/codebook/design artifact by exact universe/source identity; else typed absent/hold |
+    13	| `RespondentIdentity` | `empirical_universe_ref`, `respondent_key`, `source_native_respondent_key_ref_or_typed_absence`, `identity_map_authority_ref_or_typed_absence` | household/roster membership | source-specific projection if released; else typed absent; no inferred household |
+    14	| `QuestionVariableBinding` | `empirical_universe_ref`, `native_question_ref`, `instrument_question_version`, `canonical_question_ref_or_typed_absence`, `component_subitem_ref_or_typed_absence`, `semantic_authority_ref`, `topology_authority_ref` | original-language item/option/form/ballot content; routing content | external source/codebook/questionnaire artifact by exact native ref/version; routing state in `RoutingEligibilityFact`; typed absent if unavailable |
+    15	| `RespondentEvent` | `empirical_universe_ref`, `scoped_respondent_ref`, `native_question_ref`, `canonical_question_ref_if_authorized`, `component_or_subitem_ref`, `event_group_id`, `response_event_id_or_deterministic_index`, `raw_response_value`, `canonical_response_value_if_authorized`, `value_transform_authority_ref`, `response_topology_ref`, `multiplicity_order_rank_fields`, `response_state` | option/form text | native/source codebook by ref; value/state preserved |
+    16	| `RoutingEligibilityFact` | `empirical_universe_ref`, `scoped_respondent_ref`, `question_or_target_ref`, `risk_set_ref`, `routing_rule_ref`, `applicability_state`, `routing_state`, `parent_predicate_refs`, `member_set_replay_ref` | original option/form text | routing state/rule refs preserved; option text external |
+    17	| `EmpiricalCoordinateFact` | `empirical_universe_ref`, `scoped_respondent_ref`, `native_coordinate_ref`, `canonical_coordinate_ref_if_authorized`, `raw_coordinate_value`, `canonical_coordinate_value_if_authorized`, `unit_category_taxonomy_ref`, `effective_or_reference_time`, `coordinate_state`, `normalization_crosswalk_authority_ref`, `source_semantic_authority_ref` | household/roster, design variance | external/source or typed absent |
+    18	| `WeightMeasureFact` | `empirical_universe_ref`, `scoped_respondent_ref`, `weight_basis_id`, `exact_weight_value_representation`, `weight_state`, `weight_source_ref`, `design_authority_ref`, `estimand_authority_ref`, `normalization_or_recalibration_rule_ref`, `effective_scope_ref` | PSU, strata, replicate weights, design variance | external design/weight artifact or typed absent; `design_authority_ref` is an authority ref, not the variance data |
+    19	| `EmpiricalFact` | `empirical_query_spec_ref`, `empirical_universe_refs`, `target_topology`, `condition_predicate_ref`, `risk_set_ref`, `raw_numerator_support`, `raw_denominator_support`, `weighted_numerator_support_if_authorized`, `weighted_denominator_support_if_authorized`, `measure_basis_ref`, `response_state_semantics_ref`, `uncertainty_method_or_typed_state`, `source_empirical_provenance_refs`, `replay_ref` | numeric variance/interval | external F6 method/uncertainty product or typed absent; method/state is not a numeric interval |
+    20	| `AuthoritySnapshot` | authority id/version/hash/kind, decision state, governed operations/families, scope, time, parents, negatives, supersession, replay protocol | source codebook content | exact authority/revocation lookup |
+    21	| `SourceUniverseRelation` | relation id/kind, exact universe refs, relation authority, effective scope, overlap/nonduplication evidence, composition estimand refs, dedup rule, negative limits | direct respondent link | separate relation authority; no inferred person join |
+    22
+    23	**Rule:** every requested meaning must resolve to exactly one of: C11 exact
+    24	field, external immutable source/codebook/questionnaire/design artifact by exact
+    25	identity, or typed absent/hold. No generic "source owner will handle it".
+    26
+    27	## 2. Exact per-family read view keys
+    28
+    29	### 2.1 Universe/release
+    30
+    31	`universe_key = ExactRef(EmpiricalUniverse@1.0.0, object_id, content_hash)`.
+    32	`release_key = ExactRef(C11LogicalRelease, object_id, content_hash)`. Current
+    33	authorization is a separate `current_authorizer` check, not a field.
+    34
+    35	### 2.2 Respondent
+    36
+    37	`respondent_key = (universe_key, respondent_key)`; exact `ref` plus native key
+    38	ref/typed absence and identity-map authority/typed absence. A household/roster
+    39	key is **not** defined by this schema; it must come from a source-specific
+    40	external projection or typed absent.

@@ -1,0 +1,135 @@
+== R3_FIELD_AND_ADAPTER_CONTRACT exact keys/selection/lifetime ==
+    40	external projection or typed absent.
+    41
+    42	### 2.3 Event/occurrence
+    43
+    44	`event_key = (universe_key, respondent_ref, native_question_ref,
+    45	canonical_question_ref_or_absence, component_ref_or_absence, event_group_id,
+    46	response_event_id_or_deterministic_index, response_topology_ref,
+    47	multiplicity_order_rank_fields, response_state)`; exact `ref` must match.
+    48	Duplicate event key → refusal. No first-value collapse.
+    49
+    50	### 2.4 Routing
+    51
+    52	`routing_key = (universe_key, respondent_ref, question_or_target_ref,
+    53	risk_set_ref, routing_rule_ref, applicability_state, routing_state,
+    54	parent_predicate_refs, member_set_replay_ref)`. Multiple conflicting routing
+    55	facts for the same key → typed ambiguity/refusal; missing → typed absence.
+    56
+    57	### 2.5 Coordinate
+    58
+    59	`coordinate_key = (universe_key, respondent_ref, native_coordinate_ref,
+    60	canonical_coordinate_ref_or_absence, effective_or_reference_time,
+    61	coordinate_state)`; exact `ref`, unit/taxonomy, normalization/crosswalk
+    62	authority. Multiple values at the same time/key → refusal unless a declared
+    63	version/authority distinguishes them.
+    64
+    65	### 2.6 Weight
+    66
+    67	`weight_key = (universe_key, respondent_ref, weight_basis_id,
+    68	effective_scope_ref, weight_source_ref, design_authority_ref,
+    69	estimand_authority_ref, weight_state)`; exact representation. Multiple active
+    70	weights for the same operation/scope → refusal; nonpositive/unknown is not 1.0.
+    71
+    72	### 2.7 Fact
+    73
+    74	`fact_key = (query_ref, universe_refs, target_topology, condition_predicate_ref,
+    75	risk_set_ref, measure_basis_ref, response_state_semantics_ref)`. Exact
+    76	numerator/denominator support, provenance, replay; typed state. A fact is not a
+    77	weight/design variance or FF01 distribution.
+    78
+    79	## 3. Adapter into the existing native evaluator
+    80
+    81	**Already implemented route:** `DirectEstateI03Session.indices_for(query,
+    82	release_refs)` returns a tuple of `(universe_ref, _ReleaseIndex)`.
+    83	`_ReleaseIndex` carries `release`, `universe`, `respondents`,
+    84	`events_by_respondent`, `coordinates_by_respondent`, `routing_by_respondent`,
+    85	`weights_by_respondent`, `source_relations`,
+    86	`native_verified_physical_respondent_order`. `execute_empirical_query` accepts
+    87	`C11Repository` or exact `DirectEstateI03Session`; exact `SavedC11Admission`
+    88	remains the wrapper guard.
+    89
+    90	**Proposed read-only adapter (not implemented):**
+    91
+    92	```text
+    93	R3DerivedReadView
+    94	  .release_ref / .universe_ref / .current_authorizer
+    95	  .respondents() -> Iterator[RespondentIdentity]
+    96	  .events_for(respondent_ref, target_refs, occurrence_scope)
+    97	      -> Iterator[RespondentEvent]
+    98	  .routing_for(respondent_ref, target_ref, risk_set_ref)
+    99	      -> RoutingEligibilityFact
+   100	  .coordinates_for(respondent_ref, coordinate_ref, time_scope)
+   101	      -> Iterator[EmpiricalCoordinateFact]
+   102	  .weights_for(respondent_ref, weight_basis_id, effective_scope_ref)
+   103	      -> Iterator[WeightMeasureFact]
+   104	  .selection_membership(release_ref, universe_ref, condition_predicate_ref,
+   105	      risk_set_ref, ordered_target_refs, direction, routing_states,
+   106	      weight_basis_id, measure_basis_ref)
+   107	      -> SelectionMembership (candidate refs + nonselected count)
+   108	  .indices_for(query, release_refs) -> tuple[(universe_ref, _ReleaseIndex)]
+   109	  ._live() / .check_current() -> bool
+   110	```
+   111
+   112	The adapter must yield **exact existing objects/refs**, not new fact rows. It
+   113	must expose the full risk population and nonselected members; the native
+   114	evaluator still decides eligibility, denominator, weights, typed states and
+   115	fact construction. A new exact protocol branch in `execute_empirical_query` is
+   116	an owner-qualified extension; it is not implemented here and must not be a
+   117	second evaluator.
+   118
+   119	**Selection membership reuse:** share only when
+   120	`(release, universe, condition predicate, risk set, ordered targets, direction,
+   121	routing states, weight basis, measure)` is identical. Do not share across
+   122	forward/reverse F2, weighted/unweighted, missing/routing states or waves.
+   123	Membership is candidate refs, not a fact/denominator/evidence cache.
+   124
+   125	**Lifetime/cost:** derived view is read-only, per release/universe; in-memory
+   126	ephemeral or content-addressed sidecar. Disk/RAM bounded by selected
+   127	partition/row groups; no full object graph. Invalidate on source/release/frame/
+   128	current/revocation change. Sparse selection uses exact postings; full-domain
+   129	k-way uses exact support enumeration. No Q-reduction claim before measurement.
+   130
+   131	## 4. Explicit holds
+   132
+== corrected decision 5.4 ==
+   228	### 5.5 FF02/material power, N9/N10E/N10W, PRE-V3, SEAM/SOROK — `OWNER_HELD` with nonpreclusion
+   229
+   230	C11 supplies exact source facts, positions, time, occurrence and universe
+   231	relations. FF02 must add independent institutional/legal/economic power;
+   232	N9/N10W add separately issued world possibility; SEAM adds encounter/access;
+   233	SOROK owns actor-specific access/interpretation/identification/action.
+   234	Availability ≠ access ≠ comprehension ≠ identification ≠ action. No invented
+   235	power, contact probability, psyche or longitudinal person. [R3-RES-008/009/
+   236	010/022]
+   237
+   238	### 5.6 Construction, query and evidence economics — retained/conditional/held
+   239
+   240	Prepared-first retains repeated-S removal within one process; fresh-open S, Q
+   241	and O remain. Conditional one-journal/source-derived Q2 with full physical
+   242	proof and second-certificate fallback; recovery claim/lease conditional;
+   243	durable index held. Evidence output is 30–50 MB/fact at 100k before provenance;
+   244	100 facts is 3–5 GB. Exact set-ref sharing only under identical identity;
+   245	replay re-executes. [R3-RES-002/013/014/015/016/020]
+   246
+   247	## 6. K1-CAP-08/17/23/27 — corrected specific routes
+   248
+   249	- **K1-CAP-08 signed neutral/nonneutral:** source value/role/authority and
+   250	  structural admission exist; signed/nonneutral meaning is **not** a standalone
+   251	  canonical field. FF02 owner issues sign/power; neutral0 is not missing,
+   252	  nonneutral is not causal power. `CONCEPTUALLY_ACCOMMODATED at admission;
+   253	  FF02 OWNER_HELD`. [R3-RES-012]
+   254	- **K1-CAP-17 F6 numeric:** no dedicated F6 numeric C11 family/method; I07/I04
+   255	  is structural admission, effective-N is F018. C11 preserves source/frame/
+   256	  design/weight authority material; F6 interval/uncovered mass are external
+   257	  owner-held derived products. [R3-RES-006/026]
+   258	- **K1-CAP-23 N9 vs SOROK:** `run_progressive_chain` /
+   259	  `provide_empirical_possibility_slice` produce world/possibility material;
+   260	  `HistoricalWorld` is separate actor. Route conceptually accommodated; actual
+   261	  N9/SOROK first reader owner-held. [R3-RES-010]
+   262	- **K1-CAP-27 J→FF:** `j_component_certification_validator` + J role/component
+   263	  objects + `build_m1_bundle_from_m01`/`adapt_m1_disposition_to_m2` provide a
+   264	  scoped manifest path; selected J→FF first reader and certification remain
+   265	  owner-held. [R3-RES-011]
+== R3-CAP-04 ==
+R3-CAP-04	FF01-2 exact count profile and proposed FF01-k conditional/reverse product	FF01-2 implemented fixed Q86B/Q86A two-participant count; FF01-k proposed	FF01-2: fixed conditioner/target count profile, permission/replay. FF01-k: ordered k>=2 Y roles, reverse D direction, exact universe/release/time/population/condition/target membership, direction-specific numerator/denominator/routing/weights/coverage/zero/unknown states	C11 exact F1-F4 facts and refs; FF01-2 ExactConditionalSupportProfile (fixed Q86B->Q86A, participant_cardinality=2, no ratios). FF01-k uses exact native facts plus owner-qualified method/eligibility/ratio/weighted estimand. No new canonical C11 family.	FF01-2 producer only. FF01-k proposed versioned derived product: exact roles/order/keys; forward and reverse computed separately from their own risk bases; no ratio without native qualified fact/permission; no GT2 widening	FF01-2 existing FF owner; FF01-k prospective FF/N9 reader, owner-held not implemented	Claiming ExactConditionalSupportProfile produces k>2/reverse; publishing ratio without permission; sharing forward/reverse denominator; omitting minority/coverage/typed states; widening permission ceiling	Derived product; Q/O scale with width; exact content-addressed refs; invalidation on producer/authority/current; no precomputed Cartesian	FF01-2 IMPLEMENTED_NARROW; FF01-k CONDITIONAL_EXTENSION/OWNER_HELD	FF01; K1-CAP-08,-26,-27; T3; S-03,S-04; B-02	INSPECTED_CODE + ANALYTICAL_DEDUCTION + OWNER_HELD	R3-RES-008;R3-RES-023

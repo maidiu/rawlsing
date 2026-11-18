@@ -1,0 +1,112 @@
+== _build_fact full membership refs ==
+        weighted_denominator_support_if_authorized=_fraction_material(evaluation.weighted_denominator),
+        measure_basis_ref=measure_ref,
+        response_state_semantics_ref=profile.response_state_semantics_ref,
+        uncertainty_method_or_typed_state=profile.uncertainty_method_or_typed_state,
+        source_empirical_provenance_refs=provenance,
+        replay_ref=replay_ref,
+        query_execution_contract_id=QUERY_EXECUTION_CONTRACT_ID,
+        execution_detail=evaluation.detail,
+        source_scope_mode=profile.source_scope_mode,
+        measure_kind=profile.measure_kind,
+        risk_set_type=profile.risk_set_type,
+        risk_set_member_refs=evaluation.risk_members,
+        denominator_member_refs=evaluation.denominator_members,
+        target_domain_identity=plan.domain_identity,
+        raw_resolved_target_support=evaluation.raw_resolved_target_support,
+    )
+== _evaluate_index_group all respondents ==
+    raw_resolved = 0
+    inapplicable_count = 0
+    component_positive = [False] * plan.arity
+    derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
+
+    used.extend([index.universe, index.release.replay_manifest])
+    used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+    for respondent in _query_respondents(index):
+        per_target_states: list[str] = []
+        for i, component in enumerate(plan.components):
+            fact = _routing_fact_for(
+                respondent,
+                index,
+                target_ref=component.target_ref,
+                risk_set_ref=risk_set_ref,
+                registry=registry,
+                used=used,
+                used_auth=used_auth,
+            )
+            per_target_states.append(str(fact.routing_state))
+            if fact.routing_state in ELIGIBLE_ROUTING_STATES:
+                component_positive[i] = True
+        member, explicitly_inapplicable = _risk_membership(
+            per_target_states,
+            profile=profile,
+        )
+        if explicitly_inapplicable:
+            inapplicable_count += 1
+        if not member:
+            continue
+        risk_members.append(respondent.ref)
+== _ReleaseIndex fields ==
+            "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback permitted"
+        ) from exc
+
+
+# The E1 builder freezes the respondent dictionaries into mapping proxies and
+# values into tuples. Hold their original object identities separately from the
+# mutable cache slot: checking these references is constant-time per cache hit,
+# unlike rehashing or traversing the full respondent graph per query.
+_I03_INDEX_ATTESTED_FIELDS = (
+    "release", "universe", "respondents", "events_by_respondent",
+    "coordinates_by_respondent", "routing_by_respondent",
+    "weights_by_respondent", "source_relations", "runtime_authorities",
+    "runtime_repository", "runtime_predicate_grammar_authority_ref",
+)
+_I03_INDEX_MISSING = object()
+
+
+def _i03_index_attestation(index: _ReleaseIndex) -> tuple[object, ...]:
+    return (index,) + tuple(
+        getattr(index, name) for name in _I03_INDEX_ATTESTED_FIELDS
+    )
+== indices_for / _ReleaseIndex construction ==
+    def indices_for(
+        self, *, query: Any, release_refs: Any,
+    ) -> tuple[tuple[ExactRef, _ReleaseIndex], ...]:
+        self._require_live()
+        release = self.estate.reconstructed_v1_release_ref
+        replay = _ref_from_key(self.estate.i02.replay, "C11Internal:ReplayManifest")
+        universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse@1.0.0")
+        supplied = tuple(sorted(
+            {exact_ref(ref, "release_ref") for ref in release_refs},
+            key=lambda ref: ref.key,
+        ))
+        universe_refs = tuple(sorted(
+            {exact_ref(ref, "query.empirical_universe_refs")
+             for ref in query.empirical_universe_refs}, key=lambda ref: ref.key
+        ))
+        if supplied != (release,) or universe_refs != (universe_ref,):
+            raise EmpiricalQueryResolutionError(
+                "cold sourcefree I03 requires exact single-universe qualified release scope"
+            )
+        if self._universe is None or self._universe.ref != universe_ref:
+            raise DirectEstateError("cold universe lost its authenticated identity")
+        index = _ReleaseIndex(
+            release=_DirectReleaseIdentity(release, _HeldReplayIdentity(replay)),
+            universe=self._universe,
+            respondents=MappingProxyType(self.respondents),
+            events_by_respondent=MappingProxyType({
+                key: DirectSelectedRespondent(self, respondent.ref)
+                for key, respondent in self.respondents.items()
+            }),
+            coordinates_by_respondent=_ColdFamilyRows(self, "EmpiricalCoordinateFact"),
+            routing_by_respondent=_ColdFamilyRows(self, "RoutingEligibilityFact"),
+            weights_by_respondent=_ColdFamilyRows(self, "WeightMeasureFact"),
+            source_relations=self._relations,
+            # Opt in ONLY after VerifiedDirectEstate/DirectEstateI03Session
+            # has authenticated body/locator and respondent identities.
+            # The dict preserves their saved physical insertion order.
+            native_verified_physical_respondent_order=True,
+        )
+        return ((universe_ref, index),)
+
