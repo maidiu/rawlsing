@@ -10,7 +10,7 @@ The new problem is worse than model errors alone: a highly capable model can fai
 
 **Top adversarial criterion:** Is Astra discovering and discriminating a necessary PYAT→SOROK mechanism, or merely generating text that passes an increasingly elaborate requirements checklist?
 
-## A. Source-graded Astra-associated incident ledger and direct countermeasure
+**UM-SOROK independent source criticism confirms that ORACLE's first index was documentary-only with moving refs, and missed ANVIL R3 despite it preceding the original package's commit.** [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md) corrects both the conceptual currentness and executable first-reader map; [ORACLE/13](13_PINNED_SOURCE_LOOKUP.json) pins commit/blob for source+code; [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) independently separates causal wiring from valid developmental learning and leaves the cold successor trial explicitly **HOLD/UNEXECUTED**. These repairs do not prove the compression decision-lossless.\n\n## A. Source-graded Astra-associated incident ledger and direct countermeasure
 
 | ID / evidence grade | Concrete Rawlsing experience | Astra must do instead | Test / stop |
 |---|---|---|---|
