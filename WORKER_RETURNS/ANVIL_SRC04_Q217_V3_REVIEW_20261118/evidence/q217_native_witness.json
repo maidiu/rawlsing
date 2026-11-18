@@ -1,0 +1,114 @@
+{
+  "config_only_validation": false,
+  "event_count": 12,
+  "native_projection_completed": true,
+  "original_source_bodies_read": false,
+  "physical_labels_source": "synthetic config; actual v3 physical_slots are byte-equivalent to v2",
+  "projection_events": [
+    {
+      "canonical_value": "4",
+      "raw_bits": "4010000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    },
+    {
+      "canonical_value": null,
+      "raw_bits": "401c000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "canonical_value": "5",
+      "raw_bits": "4014000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    },
+    {
+      "canonical_value": "2",
+      "raw_bits": "4000000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    },
+    {
+      "canonical_value": null,
+      "raw_bits": "4058c00000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "REFUSAL"
+    },
+    {
+      "canonical_value": "6",
+      "raw_bits": "4018000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    },
+    {
+      "canonical_value": "10",
+      "raw_bits": "4024000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    },
+    {
+      "canonical_value": null,
+      "raw_bits": "4058800000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "DK"
+    },
+    {
+      "canonical_value": null,
+      "raw_bits": null,
+      "raw_kind": "none",
+      "response_state": "MISSING"
+    },
+    {
+      "canonical_value": "1",
+      "raw_bits": "3ff0000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    },
+    {
+      "canonical_value": null,
+      "raw_bits": "4058400000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "DK"
+    },
+    {
+      "canonical_value": "3",
+      "raw_bits": "4008000000000000",
+      "raw_kind": "float64_finite",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    }
+  ],
+  "raw_7_identity": "RETAINED_AS_FLOAT64_BITS_401c000000000000__NO_LABEL_IN_RAW_EVENT",
+  "response_rules": "source.config.repaired.v3.json q217 values",
+  "schema": "ANVIL_SRC04_Q217_NATIVE_SYNTHETIC_CELL_WITNESS@1",
+  "state_expectations": {
+    "1.0": "SUBSTANTIVE_RESPONSE",
+    "10.0": "SUBSTANTIVE_RESPONSE",
+    "2.0": "SUBSTANTIVE_RESPONSE",
+    "3.0": "SUBSTANTIVE_RESPONSE",
+    "4.0": "SUBSTANTIVE_RESPONSE",
+    "5.0": "SUBSTANTIVE_RESPONSE",
+    "6.0": "SUBSTANTIVE_RESPONSE",
+    "7.0": "SOURCE_SPECIFIC_SPECIAL",
+    "97.0": "DK",
+    "98.0": "DK",
+    "99.0": "REFUSAL",
+    "None": "MISSING"
+  },
+  "synthetic_only": true,
+  "synthetic_source_sha256": "4f2a011f617788a910f8a08c7a54d9ae70bdaa30f9cc009d8a497f4e5de0b2cd",
+  "values": [
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    10.0,
+    97.0,
+    98.0,
+    99.0,
+    null
+  ]
+}

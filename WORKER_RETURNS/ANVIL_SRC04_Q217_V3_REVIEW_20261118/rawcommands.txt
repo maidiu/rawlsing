@@ -1,0 +1,23 @@
+# SRC04 q217 v3 independent commands
+# Retained evidence only; no original PDF/SAV opening or decoding.
+
+# v3 file hash
+sha256sum IMPLEMENTER/.../source.config.repaired.v3.json
+# f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855
+
+# exact v2 (git show da23c65d...) vs actual v3
+# top-level changed: response_slots only
+# q217 added raw 7 special; raw 99 changed to REFUSAL; 10 remains substantive
+# physical_slots byte-equal; non-q217 177 response slots unchanged
+
+# native synthetic exact-cell projection against actual v3 q217 rules
+PYTHONPATH=<exact source snapshot> python3 -B q217_native_witness.py
+# exit 0; 12 events; raw 7 bits 401c000000000000; canonical None;
+# 10 canonical "10"; 99 REFUSAL; 97/98 DK; None MISSING.
+
+# focused tests
+PYTHONPATH=<exact source snapshot> PYTHONDONTWRITEBYTECODE=1 python3 -B \
+  -m pytest -q -o addopts='' -p no:cacheprovider tests
+# exit 0; 6 passed in 0.06 s
+
+# No live config selection change, no product edits, no original source read.

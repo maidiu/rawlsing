@@ -1,0 +1,84 @@
+{
+  "packet_id": "ANVIL-SRC04-Q217-V3-REVIEW-20261118",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "distinct_nonauthor": true,
+  "corrected_config_commit": "35bb18f8e347efa432ffd7d19af9cb419c1f529f",
+  "v3_file_sha256": "f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855",
+  "v3_canonical_sha256": "a3d3267cc37f7f6d2f6267d777c414f285be58ff5e7ea88b8bc9ac0d74c1269f",
+  "base_v2": {
+    "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "commit": "da23c65d1e211cb7e8ce416e98757f321b78d25e"
+  },
+  "evidence_grade": "RETAINED_METADATA_AND_VERSIONED_CONFIG",
+  "new_original_survey_open_or_decode": false,
+  "live_selection_changed": false,
+  "product_edits": false,
+  "gates": {
+    "G1_exact_config_and_versioning": {
+      "state": "PASS",
+      "receipt": "Exact v3 file f007af... and canonical a3d326... verified. v3 is a selectable successor, not a live selection or product edit."
+    },
+    "G2_questionnaire_vs_physical": {
+      "state": "PASS",
+      "receipt": "Retained PDF page 5 line says q217 7=Other. Retained physical SAV/codebook says 10=others and omits 7. Neither label was overwritten or merged; code 7 and 10 remain distinct."
+    },
+    "G3_v2_v3_exact_diff": {
+      "state": "PASS",
+      "receipt": "All 181 physical slots byte-equivalent; 177 non-q217 response slots unchanged. Only q217 response values change: raw 7 added as SOURCE_SPECIFIC_SPECIAL canonical None and raw 99 changed to REFUSAL canonical None."
+    },
+    "G4_native_state_mapping": {
+      "state": "PASS",
+      "receipt": "Actual v3 q217 rules produced 12 synthetic exact-cell events: 1,2,3,4,5,6,10 substantive; 7 SOURCE_SPECIFIC_SPECIAL canonical None; 97/98 DK; 99 REFUSAL; stored missing MISSING. Raw 7 float64 bits 401c000000000000 retained."
+    },
+    "G5_scope_and_provenance": {
+      "state": "PASS_SCOPED",
+      "receipt": "6 focused tests pass exit 0. No new original survey opening/decoding, live config selection, product/protected edit, extra architecture, matrix, or 177-field build comparison. Frozen full comparison remains separate."
+    }
+  },
+  "independent_native_witness": {
+    "event_count": 12,
+    "actual_config_consumed": true,
+    "raw_7_state": "SOURCE_SPECIFIC_SPECIAL",
+    "raw_7_canonical": null,
+    "raw_7_bits": "401c000000000000",
+    "raw_10_state": "SUBSTANTIVE_RESPONSE",
+    "raw_10_canonical": "10",
+    "raw_99_state": "REFUSAL",
+    "raw_97_98_state": "DK",
+    "stored_missing_state": "MISSING",
+    "original_source_bodies_read": false
+  },
+  "focused_tests": {"count": 6, "passed": 6, "exit": 0, "wall_seconds": 0.06},
+  "physical_metadata": {
+    "physical_slots_equal_v2": true,
+    "physical_slots_total": 181,
+    "q217_label_7": null,
+    "q217_label_10": "others",
+    "q217_physical_labels": {
+      "1.0": "television", "2.0": "radio", "3.0": "local newspaper",
+      "4.0": "weekly magazines and papers", "5.0": "internet",
+      "6.0": "sms messages", "10.0": "others", "97.0": "not clear",
+      "98.0": "can't choose/don't know", "99.0": "decline to answer"
+    }
+  },
+  "questionnaire": {
+    "retained_page": 5,
+    "q217_7": "Other",
+    "q217_97": "Not clear",
+    "q217_98": "Can't Choose/Don't know",
+    "q217_99": "Decline to Answer",
+    "source": "evidence/questionnaire_q217_scan.json",
+    "no_new_pdf_open": true
+  },
+  "limits": [
+    "Metadata/provenance review only; no new original survey or SAV opening/decoding.",
+    "Synthetic exact-cell native projection only; no source-free/full build claim.",
+    "No live selection of v3; successor is selectable but not selected.",
+    "Frozen 177-field build comparison is separate and not run.",
+    "No product/protected edits, new architecture, matrix, or scientific/rights promotion."
+  ],
+  "disposition": "ACCEPT_SCOPED",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_CANONICAL_OR_SCIENTIFIC_PROMOTION",
+  "authority_grade": "NO_NEW_SOURCE_SCIENCE_OR_MERGE_GRANT"
+}

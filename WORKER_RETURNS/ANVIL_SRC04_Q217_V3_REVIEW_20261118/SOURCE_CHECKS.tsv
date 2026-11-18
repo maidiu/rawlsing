@@ -1,0 +1,17 @@
+check	target	value	status
+exact_config	v3	source.config.repaired.v3.json SHA-256 f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855	PASS
+baseline_v2	da23c65d...	file SHA-256 5e107de4...	PASS
+questionnaire	retained page 5	7=Other; 97,98,99 labels retained; no new PDF/source open	PASS
+physical	SAV metadata	10.0=others; no 7.0 label; no overwrite	PASS
+codebook	retained processed codebook	10=others; 7 absent; no merge	PASS
+v3_diff	v2 vs v3	only response_slots q217 changes; 181 physical slots equal; 177 non-q217 response slots unchanged	PASS
+raw7	q217 response	SOURCE_SPECIFIC_SPECIAL canonical None; float64 bits 401c... retained	PASS
+raw10	q217 response	SUBSTANTIVE_RESPONSE canonical "10"; distinct from 7	PASS
+raw99	q217 response	REFUSAL canonical None	PASS
+raw97_98	q217 response	DK canonical None	PASS
+missing	q217 response	MISSING canonical None	PASS
+native	synthetic exact-cell projection	12 events; actual v3 q217 response rules; raw 7 retained; no canonical promotion	PASS
+tests	q217 mapping	6 passed, exit 0	PASS
+live_selection	product/config	no v3 live selection; artifact only; no product edit	PASS
+source	read	new original survey/source opening or decode	NOT_PERFORMED
+full_build	177-field comparison	separate; not run	NOT_RUN
