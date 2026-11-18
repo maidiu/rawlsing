@@ -1,0 +1,104 @@
+{
+  "schema": "ANVIL_ROUTING_ACCESS_G5_RECHECK@1",
+  "task": "ANVIL_ROUTING_ACCESS_G5_RECHECK_20261118",
+  "decision": "ACCEPT_SCOPED_CORRECTNESS",
+  "prior_review": "1a02f52800734bcb68d165cef67f79efa0be3d72",
+  "candidate_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "candidate_evidence": "a99cc83250898bcce521ba480cdc1a75f936bc5b",
+  "accepted_product_baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "prior_code": "73b480080ede013770e0c887aa5aa82af3cfafb2",
+  "contract": "15afd22f6d55fe3d208d0a3b63d802de2b4e6f13",
+  "review_boundary_pin": "e01a2bd7800cd906b12394dda8dcd1ebdf6eb961",
+  "scope": {
+    "closed_findings": [
+      "B1 same-class helper and no module-level _RoutingLookup/session adapter state",
+      "B2 redundant routing_locator_resp_idx removed; unused member_set column removed",
+      "R1 single existing row-group cache used by _routing_facts; no per-lookup gids dict",
+      "B3 distinct canonical conflict returned in canonical order and refused",
+      "B4 corrupt routing projection/body refuses at preparation before filtered absence"
+    ],
+    "accepted_axes": [
+      "actual first consumer through prepared.execute_i03",
+      "exact full-fact serialization and parity for f4/f2",
+      "canonical all-match order including two distinct physical facts",
+      "CURRENT before lookup and each yield, including revocation between yields",
+      "missing/corrupt locator fail-closed",
+      "changed source/root restore",
+      "source/universe and body/ref/respondent/census admission"
+    ],
+    "explicitly_not_accepted": [
+      "matched performance court; not run here",
+      "end-to-end speedup or amortization",
+      "survey scale, 100k, production, protected or source/native authorization",
+      "raw-source conflict; physical conflict witness is a controlled C11 candidate"
+    ]
+  },
+  "product_scope": {
+    "product_diff_relative_to_prior_code": [
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py"
+    ],
+    "product_diff_relative_to_accepted_baseline": [
+      "rawlsing_next/_pre553_query_common.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py"
+    ],
+    "product_diff_code_to_evidence": [],
+    "product_patch_by_reviewer": false,
+    "mutable_author_worktree_inspected": false
+  },
+  "source_checks": {
+    "no_removed_symbols": {
+      "class _RoutingLookup": "ABSENT",
+      "_routing_lookup": "ABSENT",
+      "routing_locator_resp_idx": "ABSENT",
+      "member_set": "ABSENT in pre553_direct_estate_i03.py locator"
+    },
+    "same_class_helper": "DirectEstateI03Session._routing_facts at pre553_direct_estate_i03.py:400; indices_for binds routing_lookup=self._routing_facts at line 592",
+    "callable_adapter": "_pre553_query_eval.py:61-66 calls index.routing_lookup(respondent=...,target=...,risk_set=...)",
+    "single_group_cache": "_routing_facts uses self._row_group_cache.setdefault('RoutingEligibilityFact', {}) and a single gid/rows entry at lines 411-423; no local gids accumulation",
+    "routing_schema": "routing_locator has respondent,target,risk_set,fact_ref,gid,off with composite primary key; explicit duplicate index absent",
+    "current": "_require_live before query and before each yield",
+    "source_universe_census": "_build validates routing type/ref/respondent/universe and exact family/locator counts; indices_for requires exact release/universe"
+  },
+  "independent_evidence": {
+    "focused_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_anvil_authenticated_routing_access.py",
+    "focused_result": "8 passed in 4.46s",
+    "focused_tests": [
+      "test_routing_locator_parity_and_exact_key_axes",
+      "test_locator_equals_full_authoritative_family_with_authority_inputs",
+      "test_locator_multiple_yields_and_current_between_yields",
+      "test_filtered_missing_routing_and_corrupt_locator_fail_closed",
+      "test_routing_locator_revocation_and_cleanup",
+      "test_two_distinct_canonical_locator_matches_and_used_authority",
+      "test_malformed_routing_projection_refuses_at_preparation",
+      "test_physical_canonical_conflict_is_returned_and_refused"
+    ],
+    "focused_file": "focused-recheck.txt",
+    "author_evidence_read_only": {
+      "focused": "11 passed in 6.73s",
+      "existing_checks": "3 passed, 29 deselected in 0.20s",
+      "changed_restore": "1 passed in 0.99s"
+    },
+    "no_heavy_run": true,
+    "no_matched_court": true,
+    "no_native_or_raw": true
+  },
+  "consequential_defects": [],
+  "residual_limits": [
+    "Tiny controlled 8R fixture; physical conflict uses a controlled C11 candidate, not raw source.",
+    "Malformed preparation witness uses a controlled codec/projection corruption.",
+    "Matched performance court and H/S/Q/O accounting are intentionally excluded and proceed separately.",
+    "No survey-scale, 100k, persistent substrate, reverse index, coordinate/weight locator, production or protected acceptance."
+  ],
+  "custody": {
+    "reviewer_writes": "WORKER_RETURNS/ANVIL_ROUTING_ACCESS_G5_RECHECK_20261118/ only",
+    "candidate_source": "isolated git archive of exact aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "product_edits": false,
+    "no_provider_switch": true,
+    "no_broad_backend_or_research": true
+  },
+  "next": "Scoped correctness accepted for this repaired routing cut. The separately owned matched runner and all non-authorized production/protected/scale work remain outside this review."
+}

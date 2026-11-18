@@ -1,0 +1,12 @@
+class _RoutingLookup ABSENT
+_routing_lookup ABSENT
+routing_locator_resp_idx ABSENT
+member_set ABSENT
+same_class_helper True
+single_cache True
+locator_table_columns CREATE TABLE routing_locator("
+                "respondent TEXT NOT NULL, target TEXT NOT NULL, "
+                "risk_set TEXT NOT NULL, fact_ref TEXT NOT NULL, "
+                "gid INTEGER NOT NULL, off INTEGER NOT NULL, "
+                "PRIMARY KEY(respondent,target,risk_set,fact_ref))"
+    
