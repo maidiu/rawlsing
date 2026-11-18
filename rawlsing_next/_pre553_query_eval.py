@@ -59,7 +59,7 @@ def _routing_fact_for(
     used_auth: list[AuthorityRef],
 ) -> RoutingEligibilityFact:
     if index.routing_lookup is not None:
-        routing_rows = index.routing_lookup.lookup(
+        routing_rows = index.routing_lookup(
             respondent=respondent.ref.key,
             target=target_ref.key,
             risk_set=risk_set_ref.key,

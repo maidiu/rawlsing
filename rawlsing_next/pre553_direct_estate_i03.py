@@ -109,58 +109,6 @@ class _ColdFamilyRows(Mapping[str, tuple[Any, ...]]):
         return len(self._session.respondents)
 
 
-class _RoutingLookup:
-    """Exact respondent-first routing locator over the session SQLite index."""
-
-    def __init__(self, session: "DirectEstateI03Session") -> None:
-        self._session = session
-
-    def lookup(
-        self, *, respondent: str, target: str, risk_set: str,
-    ) -> Iterator[RoutingEligibilityFact]:
-        session = self._session
-        db = session._require_live()
-        rows = db.execute(
-            "SELECT fact_ref,gid,off FROM routing_locator "
-            "WHERE respondent=? AND target=? AND risk_set=? ORDER BY fact_ref",
-            (respondent, target, risk_set),
-        ).fetchall()
-        physical = session._files["RoutingEligibilityFact"]
-        gids: dict[int, list[dict[str, Any]]] = {}
-        for fact_ref, gid, offset in rows:
-            session._require_live()
-            if gid not in gids:
-                gids[gid] = physical.read_row_group(
-                    gid, columns=["ref", "body_json"],
-                ).to_pylist()
-            if not 0 <= offset < len(gids[gid]):
-                raise DirectEstateError(
-                    "cold I03 routing locator out of bounds"
-                )
-            row = gids[gid][offset]
-            if row["ref"] != fact_ref:
-                raise DirectEstateError(
-                    "cold I03 routing locator disagrees with physical ref"
-                )
-            try:
-                obj = _object_from_row(json.loads(row["body_json"]))
-            except Exception as exc:
-                raise DirectEstateError(
-                    "cold I03 routing body/ref does not match locator"
-                ) from exc
-            if (type(obj) is not RoutingEligibilityFact
-                    or obj.ref.key != fact_ref
-                    or _key(obj.scoped_respondent_ref) != respondent
-                    or _key(obj.empirical_universe_ref) != session.estate.i02.universe
-                    or _ref_field(obj, "question_or_target_ref").key != target
-                    or _ref_field(obj, "risk_set_ref").key != risk_set):
-                raise DirectEstateError(
-                    "cold I03 routing locator key/body identity mismatch"
-                )
-            session._require_live()
-            yield obj
-
-
 class DirectEstateI03Session:
     """Scoped existing-I03 read session anchored to one verified direct estate.
 
@@ -182,7 +130,6 @@ class DirectEstateI03Session:
         self._relations: tuple[SourceUniverseRelation, ...] = ()
         self._files: dict[str, Any] = {}
         self._row_group_cache: dict[str, dict[str, Any]] = {}
-        self._routing_lookup = _RoutingLookup(self)
 
     def _require_live(self) -> sqlite3.Connection:
         self.estate._live()
@@ -216,13 +163,8 @@ class DirectEstateI03Session:
                 "CREATE TABLE routing_locator("
                 "respondent TEXT NOT NULL, target TEXT NOT NULL, "
                 "risk_set TEXT NOT NULL, fact_ref TEXT NOT NULL, "
-                "member_set TEXT NOT NULL, gid INTEGER NOT NULL, "
-                "off INTEGER NOT NULL, "
+                "gid INTEGER NOT NULL, off INTEGER NOT NULL, "
                 "PRIMARY KEY(respondent,target,risk_set,fact_ref))"
-            )
-            self._db.execute(
-                "CREATE INDEX routing_locator_resp_idx "
-                "ON routing_locator(respondent,target,risk_set,fact_ref)"
             )
             self._build()
             self._db.execute(
@@ -430,15 +372,13 @@ class DirectEstateI03Session:
                         row["respondent"],
                         _ref_field(obj, "question_or_target_ref").key,
                         _ref_field(obj, "risk_set_ref").key,
-                        row["ref"],
-                        _ref_field(obj, "member_set_replay_ref").key,
-                        gid, offset,
+                        row["ref"], gid, offset,
                     ))
                     routing_count += 1
                 db.executemany("INSERT INTO members VALUES(?,?,?,?,?)", inserts)
                 if routing_inserts:
                     db.executemany(
-                        "INSERT INTO routing_locator VALUES(?,?,?,?,?,?,?)",
+                        "INSERT INTO routing_locator VALUES(?,?,?,?,?,?)",
                         routing_inserts,
                     )
             if observed != self.estate.manifest["family_counts"][family]:
@@ -456,6 +396,57 @@ class DirectEstateI03Session:
                     raise DirectEstateError(
                         "cold I03 routing locator omitted exact physical facts"
                     )
+
+    def _routing_facts(
+        self, *, respondent: str, target: str, risk_set: str,
+    ) -> Iterator[RoutingEligibilityFact]:
+        """Yield every exact routing fact for one respondent/target/risk."""
+        db = self._require_live()
+        rows = db.execute(
+            "SELECT fact_ref,gid,off FROM routing_locator "
+            "WHERE respondent=? AND target=? AND risk_set=? ORDER BY fact_ref",
+            (respondent, target, risk_set),
+        ).fetchall()
+        physical = self._files["RoutingEligibilityFact"]
+        cache = self._row_group_cache.setdefault(
+            "RoutingEligibilityFact", {},
+        )
+        for fact_ref, gid, offset in rows:
+            self._require_live()
+            if cache.get("gid") == gid:
+                group_rows = cache["rows"]
+            else:
+                group_rows = physical.read_row_group(
+                    gid, columns=["ref", "body_json"],
+                ).to_pylist()
+                cache.clear()
+                cache.update({"gid": gid, "rows": group_rows})
+            if not 0 <= offset < len(group_rows):
+                raise DirectEstateError(
+                    "cold I03 routing locator out of bounds"
+                )
+            row = group_rows[offset]
+            if row["ref"] != fact_ref:
+                raise DirectEstateError(
+                    "cold I03 routing locator disagrees with physical ref"
+                )
+            try:
+                obj = _object_from_row(json.loads(row["body_json"]))
+            except Exception as exc:
+                raise DirectEstateError(
+                    "cold I03 routing body/ref does not match locator"
+                ) from exc
+            if (type(obj) is not RoutingEligibilityFact
+                    or obj.ref.key != fact_ref
+                    or _key(obj.scoped_respondent_ref) != respondent
+                    or _key(obj.empirical_universe_ref) != self.estate.i02.universe
+                    or _ref_field(obj, "question_or_target_ref").key != target
+                    or _ref_field(obj, "risk_set_ref").key != risk_set):
+                raise DirectEstateError(
+                    "cold I03 routing locator key/body identity mismatch"
+                )
+            self._require_live()
+            yield obj
 
     def _selected_events(
         self, respondent_ref: ExactRef, target: ExactRef, *,
@@ -598,7 +589,7 @@ class DirectEstateI03Session:
             # has authenticated body/locator and respondent identities.
             # The dict preserves their saved physical insertion order.
             native_verified_physical_respondent_order=True,
-            routing_lookup=self._routing_lookup,
+            routing_lookup=self._routing_facts,
         )
         return ((universe_ref, index),)
 
