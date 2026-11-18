@@ -1,0 +1,31 @@
+{
+  "schema": "ANVIL_CUT2_MEASUREMENT_VENDOR_PINS@1",
+  "purpose": "Exact read-only reuse of the accepted #1006/country-reuse fixture and bounded runtime instrumentation, copied into the measurement return root so the runner is self-contained without editing product or reading a peer worktree.",
+  "source_commit": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "files": [
+    {
+      "local": "vendor/fixture_1006.py",
+      "source": "WORKER_RETURNS/PYAT_P0_C11_OPERABLE_20261115_R1/probe/fixture_1006.py",
+      "git_blob": "1487ad233c871d973b2a64c9649c37f100c46832",
+      "sha256": "74cd928d050ec7a8720e526dea00101e4c0f718a1b2ab72e5677deb64360b827"
+    },
+    {
+      "local": "vendor/query_1006.py",
+      "source": "WORKER_RETURNS/PYAT_P0_C11_OPERABLE_20261115_R1/probe/query_1006.py",
+      "git_blob": "5a15272043246e5293a51e2390adc038bd280e47",
+      "sha256": "83054ca64b609fbfb647c06e640255b65e701ba7644cdcd3e1443a2d7e6a47a7"
+    },
+    {
+      "local": "vendor/court_instrumentation.py",
+      "source": "WORKER_RETURNS/PYAT_P0_C11_OPERABLE_20261115_R1/probe/court_instrumentation.py",
+      "git_blob": "5f2b424b198ac2242b9a4bf0028b64afde25d6a8",
+      "sha256": "0bce33bb3c62a9c91b689ef87f50d985fc85639f1f5695c37f0812c0344324ce"
+    }
+  ],
+  "grade": "EXACT_REUSE_SOURCE_PINNED_READONLY; NOT_NEW_AUTHORITY",
+  "limits": [
+    "fixture_1006 is a synthetic TEST_ONLY sourcefree 13-family fixture; it is not original survey data or native provenance.",
+    "court_instrumentation wraps accepted runtime boundaries and always calls the original; it does not alter product behavior.",
+    "The 5-question fixture is not a 600-column width proof."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "ANVIL_CUT2_MEASUREMENT_SOURCE_PINS@1",
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "executable_code_test_commit": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "baseline": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "cut1_review": {
+    "sha": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+    "disposition": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1",
+    "scope": "SOURCEFREE_TEST_ONLY; no reviewer product changes; tiny resources not real width"
+  },
+  "owner_ack": {
+    "sha": "a744a5a4e4bb31ba9e93a650c7200c064d4d2e11",
+    "path": "WORKER_RETURNS/ANVIL_ENGINEERING_CUT1_OWNER_20261117/owner_ack.json",
+    "status": "ACK_SCOPED_TWO_FILE_PREPARED_SAVED_BATCH_CUT1",
+    "ceiling": "engineering only; no native/source/science/actor/protected rights"
+  },
+  "changed_product_blobs": {
+    "rawlsing_next/pre553_saved_workload_integration.py": {
+      "blob": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+      "sha256": "54cf978db77cef25a2dc17a0006f63ef13ee13a65708d68d194403a6e7afafee"
+    },
+    "rawlsing_next/pre553_batch_runner.py": {
+      "blob": "8320f28458fb85aec655d154a2527a161282f56b",
+      "sha256": "e8c110ff3a18acec0956bb47c4789312dd49e812c0643875b7a3e13a13415ab1"
+    },
+    "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py": {
+      "blob": "bf00eb591bdee1087e9a10085d808c1ed2aadf88",
+      "sha256": "759a0912aa4bc799b67f68e4a7584412aece06275daaa32c8ac9178758c3371c"
+    }
+  },
+  "fixture_reuse": {
+    "source_commit": "347baec696c8b395d750ac3b9e74417a6490c223",
+    "probe_root": "WORKER_RETURNS/PYAT_P0_C11_OPERABLE_20261115_R1/probe",
+    "files": {
+      "fixture_1006.py": {
+        "blob": "1487ad233c871d973b2a64c9649c37f100c46832",
+        "sha256": "74cd928d050ec7a8720e526dea00101e4c0f718a1b2ab72e5677deb64360b827"
+      },
+      "query_1006.py": {
+        "blob": "5a15272043246e5293a51e2390adc038bd280e47",
+        "sha256": "83054ca64b609fbfb647c06e640255b65e701ba7644cdcd3e1443a2d7e6a47a7"
+      },
+      "court_instrumentation.py": {
+        "blob": "5f2b424b198ac2242b9a4bf0028b64afde25d6a8",
+        "sha256": "0bce33bb3c62a9c91b689ef87f50d985fc85639f1f5695c37f0812c0344324ce"
+      }
+    },
+    "grade": "EXACT_READONLY_REUSE_NOT_NEW_AUTHORITY"
+  },
+  "currentness": {
+    "protected_head_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+    "protected_rev": 11,
+    "protected_writes": "NONE",
+    "no_source_science_actor_native100k_or_protected_H1_grant": true,
+    "old_corrective_branches": {
+      "1073": "18dc7106f032bb86c89503daaefc5616cad29c58",
+      "1083": "1c37e2d45f5e74fc48b467272858986cd0bfc8a5",
+      "1084": "357a0fbf50377788b050f5365089ed54a0548f23",
+      "status": "UNMERGED_VS_PROTECTED; SCIENTIFIC SCOPE DISTINCT; NOT MERGED"
+    }
+  },
+  "measurement_labels": {
+    "H": "admission/member validation",
+    "S": "DirectEstateI03Session._build index build",
+    "Q": "existing native evaluator (execute_empirical_query / execute_exact_bounded_discovery)",
+    "O": "fact/replay/reference serialization"
+  },
+  "readonly": {
+    "product_edits": 0,
+    "source_data_reads": 0,
+    "native_100k": false,
+    "heavy_benchmark": false,
+    "subagents": 0,
+    "model_or_provider_switch": false
+  }
+}

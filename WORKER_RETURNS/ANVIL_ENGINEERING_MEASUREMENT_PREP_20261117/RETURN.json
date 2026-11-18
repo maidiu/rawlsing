@@ -1,0 +1,237 @@
+{
+  "actual_execution": {
+    "auto_1000_queries": false,
+    "benchmark_matrix": false,
+    "bounded_600_geometry_note": "8 respondents/600 question bindings, 27 events, 4800 routing, 7522473 retained bytes; prepare/build only, no query/performance pair",
+    "bounded_600_geometry_prepare": true,
+    "native_100k_execution": false,
+    "original_survey_data_read": false,
+    "product_edits": 0,
+    "real_width_execution": false,
+    "subagents": 0,
+    "tiny_5q_smoke": true,
+    "tiny_5q_smoke_note": "16 respondents/5 questions; mechanics only, not economics"
+  },
+  "baseline": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "branch": "agent/anvil-engineering-cut2-measurement-prep-20261117-r1",
+  "commands_executed": [
+    {
+      "command": "python3 .../measure_cut1_prepared.py --mode prepare",
+      "exit": 0
+    },
+    {
+      "command": "python3 .../measure_cut1_prepared.py --mode prepare --questions 600 --respondents 8 --root .../.local-data-600",
+      "exit": 0
+    },
+    {
+      "command": "cp fixture_contract.json fixture_contract_600.json; python3 ... --mode prepare (restore 5Q contract)",
+      "exit": 0
+    },
+    {
+      "command": "python3 .../measure_cut1_prepared.py --mode smoke --negatives",
+      "exit": 0
+    },
+    {
+      "command": "python3 -m py_compile measure_cut1_prepared.py width_fixture.py vendor/*.py",
+      "exit": 0
+    }
+  ],
+  "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "cut1_review_disposition": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1",
+  "cut1_scope": "sourcefree TEST_ONLY only; no reviewer product changes; code blobs identical at a13d69c and 347baec",
+  "executable_code_test_commit": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "findings": [
+    "The cut1 prepared path is mechanically executable through execute_saved_batch and prepared direct on the same estate/catalog/five distinct ops.",
+    "Full fact SHA-256 parity is exact baseline vs prepared; batch receipt refs match baseline fact refs for all five.",
+    "Revoked CURRENT refuses and exact restore returns the baseline fact SHA in baseline, prepared and batch.",
+    "H/S/Q/O separation is instrumented without product edits; negative/restore index builds are separated from timed operation builds.",
+    "The 600-slot geometry generator builds 600 question bindings, 4800 routing facts and only 27 events at 8 respondents; it does not assume dense 600 events/respondent.",
+    "The 5-question smoke is not real width/economics; no speedup is claimed (prepared Q 0.226 s vs baseline Q 0.230 s, tiny fixture)."
+  ],
+  "geometry_600": {
+    "events": 27,
+    "grade": "GEOMETRY_BUILD_ONLY_NOT_ECONOMICS",
+    "manifest_sha256": "567122eff5c02dc7dd4379b58ad0aa491c89338c1281ce4524675d8d2e417b4a",
+    "note": "extra slots are routing-only NOT_ELIGIBLE; sparse base events; 600 columns not treated as 600 events/respondent",
+    "question_bindings": 600,
+    "respondents": 8,
+    "retained_bytes": 7522473,
+    "routing": 4800,
+    "weights": 8
+  },
+  "harness": {
+    "first_pair": "plain SavedC11Admission one-shot vs prepared direct vs actual execute_saved_batch on the same estate/catalog/five distinct operations",
+    "first_pair_command": "python3 WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py --mode smoke --negatives",
+    "fixture_contract": "fixture_contract.json",
+    "fresh_process": "parent passes paths/id only; subprocess child loads product-exited and writes its own metrics",
+    "geometry_contract": "fixture_contract_600.json",
+    "geometry_generator": "width_fixture.py",
+    "modes": [
+      "prepare",
+      "baseline",
+      "prepared",
+      "batch",
+      "fresh",
+      "smoke"
+    ],
+    "negative_restore": "separate fields negative.index_builds/evaluator_* and index_builds_measured_operations excludes it",
+    "operations": [
+      "selected_weighted",
+      "f2_forward_raw",
+      "f2_reverse_raw",
+      "f4_three_raw",
+      "repeated_mr_raw"
+    ],
+    "phase_labels": {
+      "H": "admission/member validation (SavedC11Admission.open + exact manifest/member hashes)",
+      "O": "canonical fact/replay/reference serialization after native result",
+      "Q": "existing execute_empirical_query / execute_exact_bounded_discovery evaluator",
+      "S": "DirectEstateI03Session._build index build"
+    },
+    "resource_abort": "checkpoint before/after each operation; 120s/2GiB/2GiB smoke; real 6GiB RSS cap configurable; not a mid-call kill claim",
+    "runner": "measure_cut1_prepared.py",
+    "schema": "MEASUREMENT_SCHEMA.json"
+  },
+  "measured_smoke": {
+    "baseline": {
+      "H_seconds": 0.23,
+      "Q_seconds_timed_ops": 0.23,
+      "S_seconds": 0.183,
+      "index_builds_timed_ops": 5,
+      "index_builds_total": 6,
+      "output_bytes": 1885,
+      "row_group_reads": 196,
+      "rss_peak_observed": 70942720,
+      "wall_seconds": 0.676
+    },
+    "batch": {
+      "H_seconds": 0.237,
+      "Q_seconds_timed_ops": 0.231,
+      "S_seconds": 0.063,
+      "index_builds_timed_ops": 1,
+      "index_builds_total": 2,
+      "output_bytes": 1170,
+      "row_group_reads": 136,
+      "rss_peak_observed": 69619712,
+      "wall_seconds": 0.404
+    },
+    "estate_retained_bytes": 345134,
+    "fixture": "16 respondents, 5 questions, 54 events, 80 routing, 16 weights",
+    "fresh_batch": {
+      "H_seconds": 0.243,
+      "Q_seconds_timed_ops": 0.221,
+      "S_seconds": 0.063,
+      "index_builds_timed_ops": 1,
+      "index_builds_total": 2,
+      "output_bytes": 1170,
+      "row_group_reads": 136,
+      "rss_peak_observed": 69124096,
+      "wall_seconds": 0.4
+    },
+    "interpretation": "mechanics only; prepared Q is not faster in this tiny fixture; structural saving is index-build count; no matched/native/100k claim",
+    "parity": {
+      "baseline_vs_prepared_full_fact_sha256_exact": true,
+      "batch_receipt_refs_vs_baseline_fact_refs_exact": true,
+      "restored_fact_sha256": "f1d2df7449f6b69a7ea13086cc571001e5afd50ea7d6b0bd82a38f923c2cfcf7",
+      "revoked_refusal": "DirectEstateError: current source/operation authority refused"
+    },
+    "prepared": {
+      "H_seconds": 0.238,
+      "Q_seconds_timed_ops": 0.226,
+      "S_seconds": 0.064,
+      "index_builds_timed_ops": 1,
+      "index_builds_total": 2,
+      "output_bytes": 1885,
+      "row_group_reads": 136,
+      "rss_peak_observed": 69197824,
+      "wall_seconds": 0.55
+    },
+    "scratch_peak_component_bytes": 245760
+  },
+  "outputs": {
+    "EXECUTION_HANDOFF.md": {
+      "bytes": 12648,
+      "sha256": "273630b7e37935e50ca05bafc976bc8d83022db1a130a13d431629dbb5ecde45"
+    },
+    "MEASUREMENT_SCHEMA.json": {
+      "bytes": 7041,
+      "sha256": "be9d221db889140c640bba72a0c6e6713b3a64458e7a69f187c50f4a13cab96b"
+    },
+    "SOURCE_PINS.json": {
+      "bytes": 3218,
+      "sha256": "7a5c3992b0bfe08443b232f8efdf64c08ccebc28034f25926e3b7e7c75b3014d"
+    },
+    "VENDOR_PINS.json": {
+      "bytes": 1663,
+      "sha256": "90aca1fe8b6b371fbee8b4e4f7b174aa4c13d85e6bc5f19d194dfb0e6484f40e"
+    },
+    "evidence/baseline.json": {
+      "bytes": 9322,
+      "sha256": "e392fc27b427a08bc95f0eeb0e233aebb01e141e94c01da96b6dfc35edb1bc06"
+    },
+    "evidence/batch.json": {
+      "bytes": 11105,
+      "sha256": "ce3cea8dd4cfd13bb3788a50f5e24325bb0828a3d29dd859257e2c4eeb3812e6"
+    },
+    "evidence/fresh_batch.json": {
+      "bytes": 12929,
+      "sha256": "62b0192c9a6ec68ad5b85a5634e55b89dbf324144c932f97d69cbac7a1ddb295"
+    },
+    "evidence/prepared.json": {
+      "bytes": 9899,
+      "sha256": "0f8466a09ce08c097c6384b84fca187710b477d392f122c686aff4c27c87ddda"
+    },
+    "evidence/smoke_evidence.json": {
+      "bytes": 49250,
+      "sha256": "5510fab5a499a41bb24e62cf3e89034e7768fdad4ebaf32361af059285eb6d32"
+    },
+    "fixture_contract.json": {
+      "bytes": 10681,
+      "sha256": "1635241e6da616141c07679f6ca0d9d2faf276d7ab7e5cd612024e6f725aa516"
+    },
+    "fixture_contract_600.json": {
+      "bytes": 10822,
+      "sha256": "02f5b832bc52ac067ec73af4b52203bbf4aeb2730976c3907790c3b08e5fc6ec"
+    },
+    "measure_cut1_prepared.py": {
+      "bytes": 29593,
+      "sha256": "533ae6c99f018a6aaeb8f554e715b9d06a8dafdba7c8690ba9d6aba82b75a7e6"
+    },
+    "vendor/court_instrumentation.py": {
+      "bytes": 13287,
+      "sha256": "0bce33bb3c62a9c91b689ef87f50d985fc85639f1f5695c37f0812c0344324ce"
+    },
+    "vendor/fixture_1006.py": {
+      "bytes": 23381,
+      "sha256": "74cd928d050ec7a8720e526dea00101e4c0f718a1b2ab72e5677deb64360b827"
+    },
+    "vendor/query_1006.py": {
+      "bytes": 9511,
+      "sha256": "83054ca64b609fbfb647c06e640255b65e701ba7644cdcd3e1443a2d7e6a47a7"
+    },
+    "width_fixture.py": {
+      "bytes": 7370,
+      "sha256": "5e044f74fc16e1ed2608dbb5224e5de9ef8e148fd0e78c5fb45e56ec0ede4bfe"
+    }
+  },
+  "owner_holds": [
+    "Original governed QUERY/native 100k/source/science/actor/protected H1 not granted; synthetic TEST_ONLY only.",
+    "Next bounded paired execution waits HQ commission, exact accepted code pin and fixed cap.",
+    "No product branch merge, no old #1073/#1083/#1084 merge, no auto-wake, no recursive worker.",
+    "No final architecture/native/economics acceptance."
+  ],
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "return_file_sha256": "SELF_EXCLUDED; final branch HEAD and file hash reported in final message",
+  "role": "measurement_preparation",
+  "schema": "ANVIL_CUT2_MEASUREMENT_PREP_RETURN@1",
+  "self_found_caveats": [
+    "BatchExecutionRunner returns refs/receipts, not full fact objects; full fact parity is prepared direct, batch parity is refs/receipts.",
+    "selected raw and f2_forward raw are semantically identical in the accepted bundle; selected uses weighted measure to keep operations distinct.",
+    "process_tree_rss_peak_observed is max(start,end,ru_maxrss), not a continuous sampler.",
+    "600 geometry build is prepare/build only; no 600-column query pair or economics was run.",
+    "The tiny smoke ran after cut1 G5 acceptance but is not matched performance and may not be compared to native/100k."
+  ],
+  "status": "COMPLETE_MEASUREMENT_PREPARATION_NOT_EXECUTED_REALWIDTH",
+  "stop_for_hq": true,
+  "write_scope": "WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/"
+}
