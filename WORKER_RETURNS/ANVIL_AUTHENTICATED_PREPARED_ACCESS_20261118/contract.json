@@ -1,0 +1,426 @@
+{
+  "schema": "ANVIL_AUTHENTICATED_PREPARED_ACCESS_CONTRACT@1",
+  "task": "ANVIL_AUTHENTICATED_PREPARED_ACCESS_20261118",
+  "status": "CODE_LEVEL_CONTRACT__NO_PRODUCT_WRITE",
+  "start_head": "059e862cd900e4f328315392319a9b7b090ecdb2",
+  "product_code_test": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "product_changes": "NONE",
+  "sql_execution": "NONE",
+  "raw_sources": "NONE",
+  "tests_or_performance_runs": "NONE",
+  "subagents": false,
+  "governing_sources": [
+    "/Users/matthewsmith/Desktop/ANVIL_CODEX_HANDOFF.md",
+    "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/commission_ANVIL_authenticated_access.md",
+    "/Users/matthewsmith/.codex/attachments/a9605e8f-16c7-42fe-97fa-7d02c5ea9900/Pasted text.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/HISTORICAL_CONNECTION_CORRECTED_FINAL/"
+  ],
+  "chosen_reuse_boundary": {
+    "name": "session-local authenticated prepared access over the existing canonical C11 estate",
+    "derived_not_canonical": true,
+    "no_second_full_long_frame": true,
+    "no_answer_or_fact_cache": true,
+    "no_second_evaluator": true,
+    "session_scope": true,
+    "durable_state": "NOT_SELECTED_FOR_FIRST_CUT",
+    "source": "exact admitted VerifiedDirectEstate / DirectEstateI03Session"
+  },
+  "old_sql_evidence": {
+    "grade": "HISTORICAL_REFERENCE_ONLY__NO_SQL_EXECUTION",
+    "accepted_patterns": [
+      "respondent/question/occurrence integration",
+      "source/wave/instrument/semantic reconciliation with provenance",
+      "coordinate/position lookup",
+      "governed weight basis/scope/design/estimand relationship",
+      "routing/risk-set locators",
+      "reusable preparation across consumers"
+    ],
+    "rejected_patterns": [
+      "DISTINCT ON is_primary weight choice",
+      "loaded_at DESC latest mapping choice",
+      "COALESCE missing mapping to accepted",
+      "COALESCE missing authority/missingness to false/valid",
+      "scalar (respondent_id,var_code) uniqueness",
+      "per-wave demographic table proliferation",
+      "PostgreSQL dependency",
+      "whole-frame pandas as universal reader",
+      "cache_valid report without enforcement"
+    ],
+    "files": {
+      "PRIMARY/v_ddm_response_long_facet_ready_definition.sql": "d06a939701dfc7bba7561ba05cea4b8858a4384ca40f9e1ca4314791d9067b8e",
+      "PRIMARY/Rawlsing_WVS_authority_reconcile_schema.sql": "57e8c58c9444be9c34df54765e1801a9819f7a15fd02ddaa9a8e194e57596877",
+      "PRIMARY/Rawlsing_WVS_public_schema.sql": "2c3f4a9ebec1e6c0cf62e8827ab982e52243c5c8899c961cd0e30b489573ec76",
+      "PRIMARY/base_microdata.sql": "5795745642bca7c6630fdd8cadc1098bc9c876ccc086cbfaee85576f81f1b4c2",
+      "PRIMARY/facet_ready_substrate.sql": "3807968407a85f651e80b12ff9858f32da9010c37fbb8381b30b2163f054a26e"
+    },
+    "specific_evidence": {
+      "arbitrary_weight": "v_ddm...:1-7 DISTINCT ON is_primary",
+      "latest_mapping": "v_ddm...:62-77 loaded_at DESC and COALESCE accepted",
+      "scalar_key": "base_microdata.sql:21 PRIMARY KEY(respondent_id,var_code)",
+      "question_alias_provenance": "authority_reconcile_schema.sql:36-145",
+      "weight_primary": "facet_ready_substrate.sql:35-54, 139"
+    }
+  },
+  "current_symbols_and_consumers": {
+    "rawlsing_next/pre553_direct_estate_i03.py": {
+      "sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+      "DirectEstateI03Session.__enter__": "140-173 creates temp SQLite events/members and calls _build",
+      "DirectEstateI03Session._build": "252-344 validates event positional coverage and side-family member locators",
+      "DirectEstateI03Session._selected_events": "347-396 respondent-first exact event postings",
+      "DirectEstateI03Session._respondent_family": "398-449 bounded side-family body access with gid/off and CURRENT per yield",
+      "DirectEstateI03Session.indices_for": "451-489 constructs lazy _ReleaseIndex",
+      "current_consumer": "_select_respondent_events, _routing_fact_for, _target_component_value, _weight_for"
+    },
+    "rawlsing_next/_pre553_query_common.py": {
+      "_ReleaseIndex": "159-175 fields for respondents/events/coordinates/routing/weights",
+      "current_consumer": "query common/eval/predicate"
+    },
+    "rawlsing_next/_pre553_query_eval.py": {
+      "sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+      "_routing_fact_for": "51-93 scans index.routing_by_respondent[respondent] and filters target/risk",
+      "_target_component_value": "166-271 selects exact events/occurrences and topology",
+      "_weight_for": "275-? selects one exact governed weight per denominator member",
+      "_evaluate_index_group_core": "418-578 exact routing/risk/condition/target/denominator core"
+    },
+    "rawlsing_next/_pre553_query_predicate.py": {
+      "_select_respondent_events": "20-? exact native/canonical/component event selection",
+      "_leaf_match": "175-? coordinate/target predicate handling",
+      "_eval_predicate": "417-? exact condition semantics"
+    },
+    "rawlsing_next/pre553_prepared_saved_i03.py": {
+      "sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+      "PreparedI03Session": "51-150 one estate/index lifetime across operation sequence"
+    }
+  },
+  "access_layer_contract": {
+    "context_identity": [
+      "release_ref.key",
+      "semantic_release_hash",
+      "source_release_manifest_hash",
+      "replay_ref.key",
+      "universe_ref.key",
+      "estate manifest_sha256",
+      "i02 logical/physical roots",
+      "authenticated session identity"
+    ],
+    "constructions": [
+      {
+        "name": "respondent/question and occurrence access",
+        "existing_symbols": [
+          "DirectEstateI03Session._build events table",
+          "events_resp_idx(respondent,ref)",
+          "_selected_events",
+          "_select_respondent_events",
+          "_target_component_value"
+        ],
+        "identity": [
+          "universe ref",
+          "respondent ref",
+          "native question ref",
+          "canonical question ref if authorized",
+          "component ref if authorized",
+          "event occurrence group/id",
+          "typed_state"
+        ],
+        "lifetime": "per DirectEstateI03Session",
+        "invalidation": "context close, source/root/manifest/current refusal, malformed event body/ref",
+        "storage": "locator/event rows only; no body copy",
+        "proof": "complete event locator count equals manifest event and event_locator counts; positional gid/offset; exact body/ref/universe/respondent; typed occurrence topology",
+        "native_consumer": "_selected_events -> _select_respondent_events -> _target_component_value"
+      },
+      {
+        "name": "source/instrument/question semantic reconciliation",
+        "existing_symbols": [
+          "EmpiricalUniverse",
+          "QuestionVariableBinding",
+          "RuntimeObjectCatalog",
+          "authority snapshot refs",
+          "_question_matches",
+          "_validate_public_object_authorities"
+        ],
+        "identity": [
+          "universe ref",
+          "source lineage ref",
+          "instrument/version binding ref",
+          "canonical question binding ref",
+          "semantic authority ref"
+        ],
+        "lifetime": "exact admitted release/catalog",
+        "invalidation": "binding/authority/current change",
+        "storage": "no new alias store; exact canonical refs only",
+        "proof": "exact binding and positive semantic authority; ambiguity/absence is typed, never COALESCE accepted",
+        "native_consumer": "existing query/predicate authority path",
+        "not_established": "historical raw alias tables are not a current C11 authority source"
+      },
+      {
+        "name": "coordinate/time access",
+        "existing_symbols": [
+          "_ColdFamilyRows",
+          "_respondent_family",
+          "_coordinate_matches",
+          "_leaf_match"
+        ],
+        "identity": [
+          "context",
+          "respondent ref",
+          "exact coordinate ref",
+          "native/canonical coordinate ref",
+          "effective-time/interpretation fields evaluated natively"
+        ],
+        "lifetime": "per session; locator extension only if measured consumer gap",
+        "invalidation": "context/source/current/body ref",
+        "storage": "locator rows if added; bodies remain canonical",
+        "proof": "exact coordinate body/ref/respondent/universe; time applicability remains native operation",
+        "native_consumer": "_leaf_match",
+        "first_cut": false,
+        "reason": "no isolated current cost evidence; existing evaluator remains authoritative"
+      },
+      {
+        "name": "governed weight access",
+        "existing_symbols": [
+          "_ColdFamilyRows",
+          "_respondent_family",
+          "_weight_for"
+        ],
+        "identity": [
+          "context",
+          "respondent ref",
+          "weight basis id",
+          "scope/source/design/estimand refs",
+          "exact weight fact ref"
+        ],
+        "lifetime": "per session; locator extension only if measured",
+        "invalidation": "context/current/authority/body ref",
+        "storage": "locator rows if added; no chosen primary/weight",
+        "proof": "exactly one exact governed weight for operation; positive WEIGHT_DESIGN_ESTIMAND authority; ambiguity refuses",
+        "native_consumer": "_weight_for",
+        "first_cut": false,
+        "reason": "weight selection is operation-specific; no unjustified pre-choice"
+      },
+      {
+        "name": "routing/risk-set access",
+        "existing_symbols": [
+          "members(family,respondent,ref,gid,off)",
+          "members_resp_idx(family,respondent,ref)",
+          "_ColdFamilyRows",
+          "_routing_fact_for",
+          "_risk_membership"
+        ],
+        "identity": [
+          "context",
+          "respondent ref",
+          "question_or_target_ref",
+          "risk_set_ref",
+          "routing fact ref",
+          "routing state/applicability state",
+          "member_set_replay_ref"
+        ],
+        "lifetime": "per session; first cut",
+        "invalidation": "context close/source/root/current/body/index mismatch",
+        "storage": "one compact locator row per exact routing fact; body remains canonical Parquet",
+        "proof": "complete routing family census and exact body/ref/respondent/universe/type; target/risk exact; all conflicts returned; filtered absence only after complete index; authority closure per matched fact",
+        "native_consumer": "_routing_fact_for -> _risk_membership -> predicate/denominator/fact"
+      },
+      {
+        "name": "selection coverage",
+        "existing_symbols": [
+          "estate.manifest family_counts",
+          "_build census",
+          "full respondents mapping"
+        ],
+        "identity": [
+          "release/universe",
+          "full 13-family census",
+          "excluded/nonselected exact refs"
+        ],
+        "lifetime": "per session",
+        "invalidation": "context/source/root",
+        "storage": "no consumer subset store",
+        "proof": "full canonical census; consumer selection may not redefine universe; missing/unselected is not zero",
+        "native_consumer": "all query evaluation"
+      }
+    ]
+  },
+  "first_implementation_sequence": {
+    "selected_slice": "routing/risk-set locator over existing members/body access",
+    "why": "R3 measured 9,600 routing objects and 18.222s cumulative routing work for one f4-style operation; _routing_fact_for scans all routing rows per respondent before target/risk filtering. This is the observed reconstruction gap.",
+    "not_selected": [
+      "coordinate locator: no isolated consumer gap established",
+      "weight locator: weight basis selection is necessarily operation-specific",
+      "persistent durable substrate: currentness/invalidation/economics not yet proved",
+      "target-first event index: no current production consumer",
+      "historical alias tables: no current C11 authority"
+    ],
+    "sequence": [
+      "1. Add session-local routing locator table and two key-order indexes during DirectEstateI03Session._build.",
+      "2. Add optional _ReleaseIndex.routing_lookup adapter defaulting to None.",
+      "3. Change only _routing_fact_for ingress to use exact locator matches; leave conflict/authority/absence logic unchanged.",
+      "4. Run one focused matched qualification; defer coordinate/weight/persistent work unless the measured case establishes need."
+    ],
+    "persistence_conditions": [
+      "session-local only for first cut; no durable artifact",
+      "durable only if exact generation pointer, complete validation, current/revocation closure, atomic publish and demonstrated rebuild economics exist",
+      "no second canonical body copy"
+    ],
+    "durable_conditions_not_met": [
+      "no approved currentness/generation contract for a durable derived index",
+      "no demonstrated cross-process economics",
+      "no revocation/current generation binding beyond session"
+    ]
+  },
+  "code_patch_description": {
+    "status": "READY_TO_APPLY_DESCRIPTION__NOT_APPLIED",
+    "changed_functions": [
+      {
+        "file": "rawlsing_next/pre553_direct_estate_i03.py",
+        "symbols": [
+          "DirectEstateI03Session.__init__: add context-bound routing lookup state",
+          "DirectEstateI03Session.__enter__: create session-local routing_locator table and indexes",
+          "DirectEstateI03Session._build: validate and insert routing locator rows once from existing RoutingEligibilityFact bodies",
+          "DirectEstateI03Session.__exit__: clear locator state with session",
+          "DirectEstateI03Session.indices_for: pass exact routing lookup adapter into _ReleaseIndex",
+          "new same-class private exact routing lookup helper"
+        ],
+        "no_change": "events/members canonical bodies; no second dataset"
+      },
+      {
+        "file": "rawlsing_next/_pre553_query_common.py",
+        "symbols": [
+          "_ReleaseIndex: optional routing_lookup adapter field default None"
+        ],
+        "no_change": "all existing identity fields and semantics"
+      },
+      {
+        "file": "rawlsing_next/_pre553_query_eval.py",
+        "symbols": [
+          "_routing_fact_for: exact locator ingress only; existing state/conflict/member-set/authority/used-object logic remains authoritative"
+        ],
+        "no_change": "_risk_membership, target, weight, predicate, fact, replay semantics"
+      }
+    ],
+    "new_test": "rawlsing_next/tests/test_anvil_authenticated_routing_access.py",
+    "not_changed": [
+      "pre553_prepared_saved_i03.py",
+      "_pre553_query_predicate.py",
+      "pre553_source_postconsumer_receipts.py",
+      "issuer/writer/schema/source/science/actor/current/protected"
+    ]
+  },
+  "qualification_contract": {
+    "status": "DESCRIBED_NOT_RUN",
+    "fixture": "existing tiny sourcefree sealed 13-family fixture; no raw respondents",
+    "baseline": "accepted 68aa product and same evaluator",
+    "workload": [
+      "true same-respondent k3 joint with a coordinate predicate and exact governed weight",
+      "different F2 direction or changed target/predicate operation over the same admitted release"
+    ],
+    "parity": [
+      "full fact identities and semantic payloads including observed-zero cells",
+      "risk and denominator member identities/order",
+      "weighted and raw state, exact weight application",
+      "event occurrence/repeat/rank/topology",
+      "used object and authority refs",
+      "provenance and replay refs"
+    ],
+    "reuse_proof": [
+      "both operations share the same respondent/event/question/occurrence access context",
+      "routing locator serves respondent-first and target-first keys",
+      "k3 and changed-target operation use distinct routing keys where required",
+      "no fact/denominator/variant answer cache"
+    ],
+    "negatives": [
+      "wrong source/root/manifest/universe",
+      "wrong target/risk key",
+      "malformed body/ref/locator mismatch",
+      "missing/conflicting routing candidate",
+      "revocation before and between yields",
+      "changed source then exact restore"
+    ],
+    "counters": [
+      "routing objects materialized per query",
+      "row-group reads",
+      "H/S/Q/O wall/CPU",
+      "scratch/retained disk",
+      "sampled process-tree RSS"
+    ],
+    "limit": "one bounded qualification; no 100k/full matrix/extrapolation"
+  },
+  "cost_movement": {
+    "to_H_S": [
+      "one routing body validation pass over the admitted routing family",
+      "routing locator row construction and index creation",
+      "respondent/question/occurrence locator build already in session S"
+    ],
+    "remains_Q": [
+      "exact target/risk locator query",
+      "matching body validation/authority for matched routing facts",
+      "predicate/condition and risk membership",
+      "F2 direction and target plan",
+      "governed weight selection/application",
+      "cell/denominator/fact/evidence/replay"
+    ],
+    "unchanged": [
+      "event occurrence selection",
+      "coordinate/time semantics",
+      "weight authority",
+      "CURRENT/revocation and source/root checks"
+    ]
+  },
+  "k3_and_changed_operation_reuse": {
+    "shared_source_stable": [
+      "release/universe/source lineage",
+      "respondent identities",
+      "question bindings and exact event/occurrence postings",
+      "coordinate/weight locators when present",
+      "routing locator rows for all targets in the same admitted context"
+    ],
+    "per_operation": [
+      "k3 target plan and coordinate predicate",
+      "F2 direction/condition and target/risk",
+      "population/denominator membership",
+      "weight basis/design/estimand selection",
+      "cells, facts, member refs, provenance, replay"
+    ],
+    "no_cross_operation_core_claim": "grouped core still only reuses exact compatible keys; changed target/predicate does not inherit a statistical core"
+  },
+  "writer_grant_request": {
+    "status": "NOT_GRANTED__NOT_APPLIED",
+    "one_grant": "session-local authenticated routing locator slice",
+    "files": [
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/_pre553_query_common.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py"
+    ],
+    "owners": [
+      "S2C direct saved-reader owner",
+      "native I03 evaluator owner (exact ingress only)"
+    ],
+    "excluded": [
+      "source/science/actor/current/protected authority",
+      "issuer/writer/schema",
+      "second evaluator or canonical dataset",
+      "SQL/PostgreSQL",
+      "persistent substrate"
+    ]
+  },
+  "remaining_decision": {
+    "not_blocking_contract": true,
+    "choice": "After this routing slice, decide whether coordinate/weight locators or a durable prepared access generation are warranted by a real consumer/resource case; do not infer them from V550 parity.",
+    "browser_hq": "The contract selects the routing slice; it does not authorize production write or claim broad product parity."
+  },
+  "immutable_evidence": {
+    "old_source_grade": "LOCAL_SHA256_ONLY__BABB256_COMMIT_TO_FILES_NOT_PROVED",
+    "corrected_historical_return": "WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/HISTORICAL_CONNECTION_CORRECTED_FINAL/",
+    "prior_group_proposal_preserved": "WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/proposal.patch",
+    "product": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "current_head": "059e862cd900e4f328315392319a9b7b090ecdb2"
+  },
+  "limits": [
+    "No product modification, SQL execution, raw source, evaluator rewrite, production authority, test creation or performance run.",
+    "No second canonical dataset, full long-frame copy, answer cache, alias authority or arbitrary weight/mapping choice.",
+    "No claim of old V550 product parity, full 100k/extrapolation, or current durable index acceptance.",
+    "CURRENT/revocation and all native scientific semantics remain evaluator-owned."
+  ],
+  "stop": "STOP_FOR_OWNER_REVIEW_AND_WRITER_GRANT"
+}
