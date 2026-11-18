@@ -1,0 +1,173 @@
+{
+  "schema": "ANVIL_HISTORICAL_TO_CURRENT_SHARED_COMPUTATION@1",
+  "task": "ANVIL_ENGINEERING_HISTORICAL_CONNECTION_CORRECTION_20261118",
+  "status": "COMPARISON_COMPLETE__NARROW_GROUP_PROPOSAL_PRESERVED",
+  "base_head": "7f0366de3ee83b90b9607e278193bd08c4478213",
+  "integrated_code_test": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "product_changes": "NONE",
+  "prototype_reruns": "NONE_FOR_THIS_CORRECTION",
+  "old_source": {
+    "artifact_commit": "babb256ca43e887ab1519339108ae3a29c1928f4",
+    "artifact_commit_note": "Git bundle header in Rawlsing_V550_Fused_GSS_Proof_babb256_20260803 identifies babb256 as 'Implement V550 shared respondent substrate bridge'.",
+    "files": {
+      "data/ddm_build_copy/build_determinicity_repository_v550.py": {
+        "sha256": "09c3915b3019945047c38d34e4159e2eb2771354e4418057683b2551d0f1340a",
+        "symbols": [
+          "_prefetch_question_rows_by_country:708-784",
+          "_prepare_v550_question_row_cache:787-825"
+        ],
+        "mechanism": "PostgreSQL response-long query per country; harmonize a shared question row cache once per country in 'country' mode."
+      },
+      "data/ddm_build_copy/build_determinicity_wave_shard_v550.py": {
+        "sha256": "1f7dfa44b7b3e9e04c22bd2db8044eadb43f79c7452b1f71d71a24e8bc9a7558",
+        "symbols": [
+          "shared substrate selection:1328-1353",
+          "prefetch/prepare question cache:1380-1389",
+          "write canonical shared substrate:1391-1445",
+          "V550 output product list:529-552"
+        ],
+        "mechanism": "One country-level harmonized cache feeds the shard's V550 analytical products and is atomically written as the shared respondent substrate for downstream V550J."
+      },
+      "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py": {
+        "sha256": "3d16f43524cc68994a96a4ca43477f3ee7a5dd3d3f263f5551599327506db95e",
+        "symbols": [
+          "schema/required columns:25-105",
+          "canonicalize without reharmonization:332-346",
+          "write/validate atomic substrate:565-637",
+          "load/validate COMPLETE substrate:640-655"
+        ],
+        "mechanism": "Persistent source/wave/country respondent×variable substrate with exact content hash, schema, manifest, validation and COMPLETE marker; loading does not reharmonize."
+      },
+      "data/ddm_build_copy/build_v550j_prepared_substrate.py": {
+        "sha256": "4d5ab06754b6bfce486e6c548cec46e5d6abd80bcd4b63a7f5f504be3dff53b6",
+        "symbols": [
+          "prepared cache/signature/load:316-374",
+          "one-time harmonization before write:408-416"
+        ],
+        "mechanism": "V550J-prepared per-country substrate cache; cache signature and validation must match before reuse."
+      },
+      "data/ddm_build_copy/compile_v550j_joint_response_patterns.py": {
+        "sha256": "627f7094a70ad33652fba422536b776d32532b028c84e3fd543a453d25b4687a",
+        "symbols": [
+          "database-forbidden prepared_required path:1214-1236",
+          "load/cache prepared country frame:1690-1725",
+          "cache validation and family use:1750-1759"
+        ],
+        "mechanism": "Multiple V550J family products consume the same explicit prepared country substrate; database access can be forbidden."
+      },
+      "Rawlsing_V550_Fused_GSS_Proof_babb256_20260803/evidence/shard_manifest.json": {
+        "sha256": "f3b2f9b94a1dbbc4e09468a85f4cefb2007494ae05a9d58454f45b91783648a7",
+        "lines": "56-81, 90-101",
+        "mechanism": "Concrete GSS 2010 US artifact: 22 V550 output artifacts, shared substrate mode=write, row_count=25067, content hash e58a7087..."
+      }
+    }
+  },
+  "old_shared_work": {
+    "prepared_material": "per source/wave/country respondent×variable long-frame with harmonized response, weight, missing/typed-state, semantic/direction, routing, target and authority columns",
+    "indexed_or_cached": "country question row cache plus persistent v550_shared_respondent_substrate.parquet, schema, manifest, validation and COMPLETE marker",
+    "downstream_consumers": [
+      "V550 shard analytical products (answer_distribution, country_answer_distribution, position_indicator_summary, indicator_answer_matrix, outlier_cohort_summary, secondary_indicator_summary, recursive_branch_nodes, clouds/audit products; source list 529-552)",
+      "V550J family products explicitly using prepared_required substrate (compile_v550j_joint_response_patterns.py 1214-1236, 1690-1725)"
+    ],
+    "postgresql_dependence": "First extraction of question rows requires conn and SQL against v_ddm_response_long_facet_ready (build_determinicity_repository_v550.py 708-784); the reusable shared substrate itself is DB-free and can be loaded with database access forbidden.",
+    "reusable_organization": "harmonize/canonicalize once per country; persist exact substrate; load and validate without reharmonization; multiple products consume the same prepared rows"
+  },
+  "current_implementation": {
+    "source": "7f0366de3ee83b90b9607e278193bd08c4478213",
+    "files": {
+      "rawlsing_next/pre553_direct_estate_i03.py": {
+        "sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+        "symbols": [
+          "DirectEstateI03Session:112-190",
+          "_respondent_family physical gid/off traversal:398-449",
+          "indices_for lazy _ReleaseIndex:451-489"
+        ],
+        "mechanism": "13-family Parquet estate plus temporary session SQLite postings; lazy per-respondent family materialization; index object is constructed on each indices_for call."
+      },
+      "rawlsing_next/pre553_prepared_saved_i03.py": {
+        "sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+        "symbols": ["PreparedI03Session:51-150", "execute_i03:85-107"],
+        "mechanism": "One DirectEstateI03Session and one posting-index build per prepared context; each I03 call runs execute_empirical_query."
+      },
+      "rawlsing_next/pre553_empirical_query.py": {
+        "sha256": "f6ee1ea3016e58245532989c16b3d4e1ca3e41cb05ea11cf2b03ea56dcb8e926",
+        "symbols": ["I03GroupedExecutionScope:490-627", "execute_empirical_query:734-757"],
+        "mechanism": "Compatibility-specific measure-independent core cache; current direct-estate grouped path remains refused at 756-757."
+      },
+      "rawlsing_next/_pre553_query_eval.py": {
+        "sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+        "symbols": ["_GroupCore:314-332", "_evaluate_index_group_core:418-578", "_materialize_grouped_evaluation:578-637"],
+        "mechanism": "Core stores routing/risk membership, condition truth, target cells, denominator and used objects; facts/replay/weighted aggregation rebuilt per operation."
+      }
+    },
+    "current_equivalent": "canonical 13-family estate and prepared session index; not a persistent country respondent×variable substrate",
+    "missing_edge": "No query-independent routing/target selector or persistent country/source prepared substrate is established. indices_for builds a new _ReleaseIndex unless a future exact session cache is granted; group scope key contains id(index).",
+    "not_established": [
+      "current persistent v550_shared_respondent_substrate equivalent: NOT_ESTABLISHED",
+      "current query-independent routing selector for changing targets/predicates: NOT_ESTABLISHED",
+      "current reuse across distinct V550-family analytical products: NOT_ESTABLISHED"
+    ]
+  },
+  "cost_layers": {
+    "redundant_rowgroup_reads": {
+      "old_state": "R3 measured 3,965 row-group reads / 3,964 cache clears for one f4 on sealed R2",
+      "current_repair": "accepted locality correction orders members by gid,off; G5 actual f4 measured 50 row-group reads",
+      "status": "REPAIRED",
+      "old_source": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R3_Q_PROFILE/Q_PROFILE_FINDINGS.md",
+      "current_source": "OWNER/WORKER_RETURNS/ANVIL_ENGINEERING_LOCALITY_G5_20261118/REVIEW_RECEIPT.json"
+    },
+    "release_index_build": {
+      "old_state": "R2 baseline 5 measured builds vs prepared 1",
+      "current_state": "one DirectEstateI03Session build per prepared context",
+      "status": "SHARED_BY_PREPARED_SESSION",
+      "remaining": "no cross-session persistent index/substrate"
+    },
+    "routing_object_validation": {
+      "old_state": "R3 f4: routing 18.222s cumulative/16 calls, 9,600 routing objects, 6.774s object reconstruction/hash",
+      "current_state": "still per-query for changing predicates/targets; group core can reuse only exact compatible core",
+      "status": "STILL_MEASURED"
+    },
+    "compatibility_specific_core": {
+      "current_group_key": "exact index/release/replay/universe, risk-set identity, predicate identity, target plan, query authority closure, registry fingerprint, measure excluded",
+      "supported_reuse": "same exact core RAW/WEIGHTED sibling (qualification prototype core_builds=1, core_hits=1)",
+      "not_supported": "different target plan/predicate/risk/authority; prototype selected vs f2 core_builds=2, core_hits=0",
+      "status": "NARROW_ONLY"
+    },
+    "exact_facts_members_outputs": {
+      "current_state": "empirical fact, full refs, replay, weighted/raw aggregation, members and output always rebuilt per operation",
+      "status": "PER_OPERATION_BY_DESIGN"
+    }
+  },
+  "historical_connection": {
+    "old_preparation": "harmonized country respondent×variable rows persisted once and shared across V550/V550J products",
+    "current_preparation": "canonical 13-family Parquet estate persisted; prepared session builds a temporary SQLite posting index; no country-wide wide-frame substrate",
+    "difference_that_forces_work": "the old representation offered a prejoined/wide country row surface reusable by many different products; the current canonical long-form representation exposes lazy family rows and forces per-query routing/object resolution. Group-scope core caching does not change that for changing predicates/targets.",
+    "group_proposal_answer": "ONLY_RAW_WEIGHTED_AND_EXACT_SIBLING_CORE; cannot recover arbitrary distinct-old-product reuse",
+    "postgres": "old extraction depended on PostgreSQL; the old reusable substrate/load path was DB-free. Current estate is file-based, so avoiding PG is compatible with keeping prepared population/index reuse; it does not require discarding the old shared-substrate idea."
+  },
+  "smallest_justified_next_cut": {
+    "decision": "Do not broaden the three-file group patch as the historical answer. The evidenced smallest next cut is an exact session-local routing/target selector over the existing DirectEstateI03Session/members index, not a new backend and not a new evaluator.",
+    "why": "It addresses the repeated routing/object materialization for changing targets/predicates that the old wide prepared substrate avoided, while preserving the current 13-family estate, authority closure, CURRENT checks, exact facts and replay.",
+    "surface": "DirectEstateI03Session / existing SQLite members index and _ReleaseIndex routing access; exact keys from release/universe, respondent, target and risk set; no arbitrary query/result cache.",
+    "what_it_does_not_do": [
+      "does not recreate a persistent country substrate",
+      "does not cache facts, weighted values, member refs, replay or output",
+      "does not make different predicates/targets share a statistical core",
+      "does not establish old V550/V550J product parity"
+    ],
+    "alternative_if_required": "A persistent prepared country/respondent substrate is a larger architecture/semantics decision and is NOT_ESTABLISHED as current implementation.",
+    "owner_terrain_after_choice": [
+      "S2C direct saved-reader owner for selector/index build and exact invalidation",
+      "native I03 evaluator owner for selector use without weakening validation/current",
+      "no source/science/issuer/actor/protected grant implied"
+    ],
+    "hardest_decision_for_browser_hq": "Choose between a narrow query-independent routing selector and a broader persistent prepared country substrate. The latter would reproduce more of V550's shared representation but is a new architecture/semantics decision; neither is authorized by the two-edit grant."
+  },
+  "limits": [
+    "No production change, no prototype rerun, no native query/build, no larger benchmark.",
+    "Old artifacts are cited at the archived babb256 checkpoint; local file hashes are recorded because the Rawlsing tree is not a live git checkout.",
+    "VOSKRES/ZAK/K3 returns establish source/native/parity boundaries but do not establish a different current shared-computation implementation; no new inventory was performed.",
+    "No claim of arbitrary hundreds of distinct query sharing, V550/V550J product parity, native/science/actor/100k acceptance, or final joined acceptance."
+  ],
+  "stop": "STOP_FOR_BROWSER_HQ_DECISION"
+}
