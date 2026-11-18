@@ -1,0 +1,186 @@
+{
+  "schema": "ANVIL_ENGINEERING_CUT1_OWNER_ACK_R1",
+  "status": "ACK",
+  "disposition": "ACK_SCOPED_TWO_FILE_PREPARED_SAVED_BATCH_CUT1",
+  "contract_id": "ANVIL-ENGINEERING-CUT1-OWNER-20261117",
+  "contract_path": "CUT1_EXECUTION_CONTRACT.md",
+  "owner_session": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+  "owner_role": "actual existing S1-D inherited maintainer / issued-workload + Batch composition owner",
+  "owner_worktree": "ANVIL_ENGINEERING_EXECUTION_20261117/OWNER",
+  "owner_branch": "agent/anvil-engineering-cut1-owner-20261117-r1",
+  "baseline": {
+    "product_baseline_commit": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+    "baseline_note": "parentless local snapshot; exact repository pins below, not a clone/recensus",
+    "protected_head_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+    "protected_current_rev": "protected paired rev11",
+    "protected_writes": "NONE",
+    "remote_heads_observed": {
+      "1073": "18dc7106f032bb86c89503daaefc5616cad29c58",
+      "1083": "1c37e2d45f5e74fc48b467272858986cd0bfc8a5",
+      "1084": "357a0fbf50377788b050f5365089ed54a0548f23"
+    },
+    "old_ack": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
+    "old_ack_ceiling": "PRIOR_TERMINAL_G5_CLOSED__NOT_SILENTLY_EXTENDED__FRESH_CUT1_ACK"
+  },
+  "pins": {
+    "rawlsing_next/pre553_saved_workload_integration.py": {
+      "blob": "cc8aa32512378261406d765f0b049c748cb3e11f",
+      "sha256": "5f885a5d34f8363dd474b691aafb4b22c6bff4f886825cccbbb30cf12aa5e07b"
+    },
+    "rawlsing_next/pre553_batch_runner.py": {
+      "blob": "49e3974c658d66a270815d9faa3798b40d4488b1",
+      "sha256": "96fe6c6574be8f6641252d07a8b09349126a369e53d4f892a840f4ea5070701e"
+    },
+    "rawlsing_next/pre553_prepared_saved_i03.py": {
+      "blob": "bcb146edae680028e027e47cae45891693f63526",
+      "sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78"
+    },
+    "rawlsing_next/pre553_saved_c11_admission.py": {
+      "blob": "22749addc1fca5f0b90e12728847c390aafa7a84",
+      "sha256": "93299f5c0100d132bb2bef07b321af1755726a5e90ee3b488a11dc1b6028c526"
+    }
+  },
+  "grantor_role_basis": {
+    "basis": "INHERITED_S1D_BATCH_FUNCTIONAL_ALLOCATION_UNDER_CURRENT_PARENT_USER_CUT1_GO_PLUS_PRIOR_ACK_B32F2156",
+    "parent_user_allocation": "Current user GO for owner-approved prepared saved Batch, exact cut1 contract, explicit two-file scope",
+    "prior_ack": "b32f215660def205762f0e9d0eafa2c3dfaa0c36: inherited S1-D/Batch maintainer acknowledgement; not personal R16 Batch authorship",
+    "batch_owner": "Parent user + inherited maintainer allocation; A is not historical R16 Batch author",
+    "saved_integration_owner": "NEW_CUT1_SPECIFIC_PARENT_USER_ALLOCATION for the exact prepared saved Batch integration functions; prior ACK listed this surface READONLY and is not silently extended",
+    "s2d_a_role": "Existing S2-D A ses_e3120ba1cffeO1w43uU5MLh4yq is receiving implementer/product owner for this cut; no S2-D packet authorship transfer",
+    "s2e_role": "Accepted S2-E scientific ownership remains separate; this ACK does not claim it",
+    "new_owner_elected": false
+  },
+  "observed_baseline_red": {
+    "prepared_wrapper_rejects_exact_prepared_subclass": true,
+    "batch_runner_rejects_exact_prepared_subclass": true,
+    "evidence_read_only": {
+      "prepared_abi_red": "IMPLEMENTER/.../evidence/prepared_abi_red.txt: 2 passed witness tests proving exact rejection",
+      "baseline_cut1": "IMPLEMENTER/.../evidence/baseline_cut1.txt: 58 passed",
+      "batch_court": "IMPLEMENTER/.../evidence/batch_court.txt: 23 passed"
+    },
+    "owner_reran_tests": false
+  },
+  "allowed_scope": {
+    "file_1": "rawlsing_next/pre553_saved_workload_integration.py",
+    "allowed_symbols_file_1": [
+      "execute_saved_i03",
+      "execute_saved_i05",
+      "execute_saved_batch"
+    ],
+    "allowed_helpers_file_1": "private helpers only, exactly limited to exact prepared-type dispatch/import, one prepared-context lifecycle, and saved Batch unit dispatch; no new public symbols and no change to normal/resume/checkpoint functions",
+    "file_2": "rawlsing_next/pre553_batch_runner.py",
+    "allowed_symbols_file_2": [
+      "BatchExecutionRunner.__init__"
+    ],
+    "allowed_helpers_file_2": "indispensable exact PreparedSavedC11Admission class import and exact saved-admission/release-guard helper only; no change to run/schedule/state/receipt/summary/failure behavior",
+    "public_signatures_unchanged": true,
+    "legacy_paths_preserved": [
+      "exact SavedC11Admission",
+      "genuine C11Repository",
+      "plain saved I03/I05/Batch behavior"
+    ],
+    "prepared_types_only": [
+      "SavedC11Admission",
+      "PreparedSavedC11Admission"
+    ],
+    "no_blanket_isinstance": true,
+    "no_fake_C11Repository": true,
+    "no_role_grant_forge": true,
+    "no_new_issuer": true,
+    "same_SavedReleaseIdentity_validation": true,
+    "one_prepared_context_per_actual_Batch": true,
+    "per_unit_CURRENT_and_receipts_required": true,
+    "full_fact_parity_required": true,
+    "cleanup_on_success_refusal_exception": true,
+    "legacy_behavior_unchanged": true
+  },
+  "readonly_surfaces": [
+    "rawlsing_next/pre553_prepared_saved_i03.py (PreparedSavedC11Admission/PreparedI03Session)",
+    "rawlsing_next/pre553_saved_c11_admission.py (base admission/release identity/current checks)",
+    "S2-C writer and actual direct reader/writer",
+    "existing native I03/I05 evaluator and issuer",
+    "BatchExecutionRunner.run/scheduler/unit order/state/receipt machine/summary/failure behavior",
+    "pre553_issued_workload.py NORMAL/COMPLETED/PARTIAL/ABSENT/resume/checkpoint",
+    "existing tests and all prior returns/control/protected files",
+    "all source/respondent/private data"
+  ],
+  "scope_exclusions": [
+    "No edits outside the two named product files.",
+    "No edits to prepared module, base admission, writer, native evaluator, issuer, run/scheduler/receipt machine, NORMAL/resume/checkpoint, existing tests or prior returns.",
+    "No new source decoder, writer, store, issuer, scientific engine, authority system or role grant.",
+    "No generic isinstance/duck repository, fake C11Repository, fabricated release/identity/seal or monkeypatched guard.",
+    "No source read, raw respondent/original35/native100k/heavy benchmark.",
+    "No merge of old branches or duplicate implementation.",
+    "No protected write/merge, production CURRENT, science/actor/source/issuer grant.",
+    "No start of implementer/source execution by this ACK."
+  ],
+  "receiving": {
+    "implementer_session": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+    "implementer_worktree": "ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+    "implementer_branch": "agent/anvil-engineering-cut1-20261117-r1",
+    "implementer_baseline": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+    "serial_product_owner": true,
+    "lease": "EXCLUSIVE_SERIAL_FOR_EXACT_TWO_FILE_CUT1_ONLY",
+    "competing_worker_writes": "NONE_GRANTED_BY_THIS_ACK",
+    "valid_until": "FROZEN_NONAUTHOR_REVIEW_AT_EXACT_CUT1_CANDIDATE_SHA",
+    "post_review_engineering": "NONE",
+    "post_review_science_protected_rights": "NONE",
+    "implementer_started_by_ack": false
+  },
+  "decisive_tests_required": {
+    "baseline_red": [
+      "exact prepared subclass is rejected at saved I03/I05 wrapper",
+      "exact prepared subclass is rejected at BatchExecutionRunner.__init__"
+    ],
+    "positive": [
+      "one actual saved sourcefree fixture; four DISTINCT operations: selected, F2 forward, true same-respondent F4 k>=3, raw",
+      "execute through saved wrappers and actual Batch with one prepared context and one DirectEstateI03Session._build",
+      "full facts/risk/denominator member refs/used refs/replay and Batch receipts/fates identical to one-shot baseline"
+    ],
+    "negative": [
+      "arbitrary SavedC11Admission subclass/wrong release/wrong source/forged admission refuses before protected work or positive receipt",
+      "CURRENT revoked before or during batch refuses; changed root/manifest binding refuses",
+      "repeated/ranked occurrences and UNKNOWN/zero/routing remain distinct",
+      "cleanup occurs on success, refusal and exception; no prepared session reuse across mismatched release/universe/predicate/weight scopes"
+    ],
+    "legacy_restore": [
+      "plain SavedC11Admission and C11Repository behavior unchanged",
+      "exact restoration recovers original facts and legitimate legacy path"
+    ],
+    "resources": [
+      "bounded cut1 fixture wall/CPU/process-tree RSS/retained/scratch/output/build count honestly reported",
+      "no 100k/full-matrix claim"
+    ],
+    "new_test_only": "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py and own return allowed; existing tests read-only"
+  },
+  "expiry": {
+    "valid_only_for_this_cut": true,
+    "valid_until": "frozen nonauthor review at exact cut1 candidate SHA",
+    "subsequent_engineering_or_files": "NONE",
+    "subsequent_science_source_actor_protected_rights": "NONE",
+    "transferable_to_other_branches_files_symbols": false
+  },
+  "authority_boundaries": {
+    "engineering": "Owner ACK only; not independent G5 or integrated acceptance.",
+    "scientific": "No S2-E/S2-D science ownership or result claimed.",
+    "authority": "No source/science/CURRENT/completion/Batch fact, new issuer/licence or role grant.",
+    "protected": "Protected5d387a9/rev11 untouched; no merge/CAS.",
+    "original35": "HOLD; no source/respondent bytes.",
+    "other_workers": "READONLY; no subagents/other worktrees."
+  },
+  "activity": {
+    "product_edits": 0,
+    "source_opens": 0,
+    "source_bytes_read": 0,
+    "source_bytes_hashed": 0,
+    "test_reruns": 0,
+    "native_executions": 0,
+    "implementer_started": false,
+    "subagents_started": 0
+  },
+  "write_scope": [
+    "WORKER_RETURNS/ANVIL_ENGINEERING_CUT1_OWNER_20261117/owner_ack.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_CUT1_OWNER_20261117/RETURN.md"
+  ],
+  "confirmation": "ACK_SCOPED for the exact prepared saved Batch cut1 on the two named files and symbols; exact SavedC11Admission/PreparedSavedC11Admission whitelist, inherited SavedReleaseIdentity validation, one prepared context for actual Batch units, per-unit CURRENT/receipts/full fact parity/cleanup/refusal, legacy behavior unchanged; valid only through frozen nonauthor review; no product edit/source/native/science/protected action by this ACK."
+}
