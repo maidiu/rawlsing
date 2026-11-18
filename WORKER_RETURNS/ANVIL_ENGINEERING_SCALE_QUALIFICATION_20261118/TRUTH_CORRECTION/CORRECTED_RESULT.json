@@ -1,0 +1,107 @@
+{
+  "classification": {
+    "arrow_sqlite_visibility": "NOT_FULLY_OBSERVABLE",
+    "one_python_open": "TEMP_I03_SESSION_DIRECTORY_NOT_RAW_SOURCE"
+  },
+  "no_native": "true",
+  "raw_history": "unchanged; explicit supersession only",
+  "schema": "ANVIL_TRUTH_CORRECTION_RESULT@1",
+  "semantic": {
+    "f2_forward_raw": {
+      "actual": "ACTUAL_SETS.json.gz",
+      "checks": {
+        "cells": true,
+        "denom_set": true,
+        "payload_sha": true,
+        "raw_denom": true,
+        "raw_num": true,
+        "replay_ref": true,
+        "risk_set": true
+      },
+      "expected": "EXPECTED_SETS.json.gz",
+      "negative_member_replacement_fails": true
+    },
+    "f2_reverse_raw": {
+      "actual": "ACTUAL_SETS.json.gz",
+      "checks": {
+        "cells": true,
+        "denom_set": true,
+        "payload_sha": true,
+        "raw_denom": true,
+        "raw_num": true,
+        "replay_ref": true,
+        "risk_set": true
+      },
+      "expected": "EXPECTED_SETS.json.gz",
+      "negative_member_replacement_fails": true
+    },
+    "repeated_mr_raw": {
+      "actual": "ACTUAL_SETS.json.gz",
+      "checks": {
+        "cells": true,
+        "denom_set": true,
+        "payload_sha": true,
+        "raw_denom": true,
+        "raw_num": true,
+        "replay_ref": true,
+        "risk_set": true
+      },
+      "expected": "EXPECTED_SETS.json.gz",
+      "negative_member_replacement_fails": true
+    },
+    "selected_weighted": {
+      "actual": "ACTUAL_SETS.json.gz",
+      "checks": {
+        "cells": true,
+        "denom_set": true,
+        "payload_sha": true,
+        "raw_denom": true,
+        "raw_num": true,
+        "replay_ref": true,
+        "risk_set": true,
+        "weighted_cells": true
+      },
+      "expected": "EXPECTED_SETS.json.gz",
+      "negative_member_replacement_fails": true
+    }
+  },
+  "semantic_all": true,
+  "status": "TRUTH_CORRECTION_PASS",
+  "width": {
+    "actual_cells": [
+      {
+        "cell": "0",
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 39,
+        "weighted_numerator_support_if_authorized": null
+      },
+      {
+        "cell": "1",
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0,
+        "weighted_numerator_support_if_authorized": null
+      }
+    ],
+    "checks": {
+      "cells": true,
+      "denom_set": true,
+      "payload_sha": true,
+      "replay_ref": true,
+      "risk_set": true
+    },
+    "expected_cells": [
+      {
+        "cell": "0",
+        "cell_state": "OBSERVED_POSITIVE",
+        "raw_numerator_support": 39
+      },
+      {
+        "cell": "1",
+        "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "raw_numerator_support": 0
+      }
+    ],
+    "negative_zero_cell_deletion_fails": true
+  },
+  "width_all": true
+}

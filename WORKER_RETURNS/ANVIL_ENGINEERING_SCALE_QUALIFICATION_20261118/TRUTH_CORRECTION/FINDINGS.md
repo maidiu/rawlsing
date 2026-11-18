@@ -1,0 +1,3 @@
+# TRUTH CORRECTION
+
+Frozen-payload postprocessing only; no native run/build/query. Full expected member sets are derived from the pinned 10k/128R fixture pattern and exact respondent refs, not copied from actual. Actual sets/cells are read from frozen payloads. All four 10k operations and width128 match exact sets/cells/states/weights/replay/payload hashes. Negative mutation checks pass: same-count member replacement fails; width zero-cell deletion fails; restoration passes. Old raw stdout/RESULT/MANIFEST remain immutable; `SUPERSESSION.json` records the prior false labels. One Python open is a temporary I03 session directory, not raw source; Arrow/SQLite opens remain not fully observable. No product edit, native run, 100k/full-width claim, or self-acceptance.
