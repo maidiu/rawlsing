@@ -73,4 +73,6 @@ Astra's **first finite persistent research terminal** is a first independently f
 
 Only commission code after freezing an independently falsifiable first vertical and verifying no existing owner already supplies it. Research success at this stage can be a decisive **EXACT_MISSING_RULE/OWNER** if honest source/actor developmental transition cannot yet be justified.
 
-**Independent cold accession must be sealed and pre-frozen outside candidate-readable PR/workspace, with independent sources and grading. No four-case pass can establish unlimited future decision-losslessness; it can prove only the tested case-set performance. Model effort should be used for the actual science, not for Astra to examine itself.**\n\n**No new PROGRAMMA status bank, shadow HQ, override of VMESTYE C1–C5, K4, ANVIL design or #1011 gate** is permitted by this efficiency protocol.
+**Independent cold accession must be sealed and pre-frozen outside candidate-readable PR/workspace, with independent sources and grading. No four-case pass can establish unlimited future decision-losslessness; it can prove only the tested case-set performance. Model effort should be used for the actual science, not for Astra to examine itself.**
+
+**No new PROGRAMMA status bank, shadow HQ, override of VMESTYE C1–C5, K4, ANVIL design or #1011 gate** is permitted by this efficiency protocol.
