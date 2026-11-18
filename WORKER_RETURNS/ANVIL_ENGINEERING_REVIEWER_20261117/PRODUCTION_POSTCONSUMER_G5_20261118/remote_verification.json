@@ -1,0 +1,42 @@
+{
+  "schema": "ANVIL_PRODUCTION_POSTCONSUMER_G5_REMOTE_VERIFICATION@1",
+  "repository": "https://github.com/maidiu/rawlsing.git",
+  "review_branch": "agent/anvil-engineering-cut1-g5-20261117-r1",
+  "review_content_commit": "8242b718eaf1f702054feef82c0025a6bc29431f",
+  "remote_branch_head_at_verification": "8242b718eaf1f702054feef82c0025a6bc29431f",
+  "author_worktree_branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "author_evidence_commit": "e0445a00f2fbb9643880aeb83452aa956f8134fe",
+  "code_test_commit": "01dc90cb0d1c5c7cdcf5cb29a02bc0cfda650efd",
+  "baseline_commit": "6b5402658a342a32180e281c62f4762729e37220",
+  "review_diff_scope": "only new WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/ artifacts",
+  "product_paths_changed_by_review_commit": [],
+  "target_product_diff_name_status": [
+    "M rawlsing_next/pre553_source_postconsumer_receipts.py",
+    "A rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py"
+  ],
+  "target_source_blob": "0a2e7b899ebd392761d38b8ceb175f0bf81c6378",
+  "target_test_blob": "d555f811353532f6df4b1eed3ea3476e4bb87719",
+  "old_reviews_changed": [],
+  "verdict": "ACCEPT_SCOPED_PRODUCTION_POSTCONSUMER_PREPARED_ADMISSION",
+  "gates": {
+    "G1_scope_and_identity": "PASS",
+    "G2_exact_guard_and_retained_guards": "PASS",
+    "G3_independent_execution": "PASS",
+    "G4_actual_first_consumer_witness": "PASS",
+    "G5_resources_and_limits": "PASS_SCOPED"
+  },
+  "independent_results": {
+    "new_focused": "8 passed, exit 0, 8.82 s",
+    "affected": "45 passed, exit 0, 29.05 s",
+    "changed_restore": "1 passed, exit 0, 4.99 s",
+    "witness": "exit 0, 3.65 s, max RSS 135921664 B; 13 COMPLETED base/prepared; one prepared build; 22 fates 8/14; 6 positive; 2 pending; exact rows/audit/native/provenance/result hash",
+    "v1": "0 QUERY / 1 DISCOVERY",
+    "v2": "12 QUERY / 1 DISCOVERY TEST_ONLY_SOURCEFREE"
+  },
+  "fixture_identity": "per-run sourcefree SAV; exact base-vs-prepared parity within independent run; author source/join hashes not cross-run frozen identities",
+  "product_edit_by_reviewer": false,
+  "merge": "NOT_PERFORMED",
+  "scientific_acceptance": "NONE",
+  "original35_or_source_grant": "NONE",
+  "note": "remote_verification.json is a metadata/pointer artifact after the review content commit; final branch head is reported to HQ outside this file."
+}

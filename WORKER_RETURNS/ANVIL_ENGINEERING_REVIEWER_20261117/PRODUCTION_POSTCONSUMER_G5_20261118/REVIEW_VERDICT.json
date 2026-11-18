@@ -87,11 +87,18 @@
     "prepared_admission": "PreparedSavedC11Admission",
     "base_batch_units": 13,
     "prepared_batch_units": 13,
-    "base_batch_states": ["COMPLETED"],
-    "prepared_batch_states": ["COMPLETED"],
+    "base_batch_states": [
+      "COMPLETED"
+    ],
+    "prepared_batch_states": [
+      "COMPLETED"
+    ],
     "prepared_index_builds": 1,
     "operation_count": 22,
-    "fate_counts": {"ELIGIBLE": 8, "HELD": 14},
+    "fate_counts": {
+      "ELIGIBLE": 8,
+      "HELD": 14
+    },
     "positive_native_linked_operations": 6,
     "pending_eligible_operations": 2,
     "native_completed_units_rechecked": 13,
@@ -113,10 +120,37 @@
     }
   },
   "test_execution": {
-    "new_focused": {"count": 8, "passed": 8, "failed": 0, "exit": 0, "wall_seconds": 8.82, "maxrss_bytes": 154083328, "evidence": "evidence/new8_focused.txt"},
-    "affected": {"count": 45, "passed": 45, "failed": 0, "exit": 0, "wall_seconds": 29.05, "evidence": "evidence/affected45.txt"},
-    "changed_restore": {"count": 1, "deselected": 23, "passed": 1, "exit": 0, "wall_seconds": 4.99, "evidence": "evidence/changed_restore.txt"},
-    "witness": {"exit": 0, "wall_seconds": 3.65, "maxrss_bytes": 135921664, "evidence": "evidence/postconsumer_witness_independent.out"}
+    "new_focused": {
+      "count": 8,
+      "passed": 8,
+      "failed": 0,
+      "exit": 0,
+      "wall_seconds": 8.82,
+      "maxrss_bytes": 154083328,
+      "evidence": "evidence/new8_focused.txt"
+    },
+    "affected": {
+      "count": 45,
+      "passed": 45,
+      "failed": 0,
+      "exit": 0,
+      "wall_seconds": 29.05,
+      "evidence": "evidence/affected45.txt"
+    },
+    "changed_restore": {
+      "count": 1,
+      "deselected": 23,
+      "passed": 1,
+      "exit": 0,
+      "wall_seconds": 4.99,
+      "evidence": "evidence/changed_restore.txt"
+    },
+    "witness": {
+      "exit": 0,
+      "wall_seconds": 3.65,
+      "maxrss_bytes": 135921664,
+      "evidence": "evidence/postconsumer_witness_independent.out"
+    }
   },
   "source_pins": {
     "product_candidate_cut1": "347baec696c8b395d750ac3b9e74417a6490c223",
@@ -160,6 +194,7 @@
     "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/new8_focused.txt",
     "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/affected45.txt",
     "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/changed_restore.txt",
-    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/postconsumer_witness_independent.json"
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/evidence/postconsumer_witness_independent.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/remote_verification.json"
   ]
 }
