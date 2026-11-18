@@ -1,0 +1,11 @@
+check_id	kind	exact_ref	path_or_symbol	line_or_field	observed	result	evidence
+R4-C01	TARGET	02594c18f8401855a0f9cecc45921b548fa9aed6	author branch	commit/remote	exact target; remote same	VERIFIED	RUNS/target_verify.txt
+R4-C02	PACKAGE	R3_PACKAGE_MANIFEST.json	8 payloads	sha256/bytes	8/8; 10 capability rows; 33 entries	VERIFIED	RUNS/target_verify.txt
+R4-C03	PRODUCT	cea2d4d3009e9087d2267e9d1f53bec28b730dc7	rawlsing_next	git diff	empty; unchanged	VERIFIED	RUNS/target_verify.txt
+R4-C04	CARDINALITY	R3_FIELD_AND_ADAPTER_CONTRACT.md §6.2 lines 163-183	FORWARD/REVERSE roles	D>=1/Y>=2 forward; Y>=2/D>=1 reverse; no empty lists; exact order	defect closed	RESOLVED	RUNS/cardinality_check.txt
+R4-C05	DECISION	R3_ARCHITECTURE_DECISION.md §11 line 364	direction-specific rule	same correction; R3-RES-033	no live unconditional target k2	RESOLVED	RUNS/cardinality_check.txt
+R4-C06	CAPABILITY	R3_CAPABILITY_ACCOMMODATION.tsv R3-CAP-04	FF01-k row	FORWARD D>=1/Y>=2; REVERSE Y>=2/D>=1; falsifier universal target k>=2 wrong	no live unconditional target k2	RESOLVED	RUNS/cardinality_check.txt
+R4-C07	RESEARCH	R3_RESEARCH_LEDGER.jsonl	33 entries	prior 32 exact; R3-RES-033; only false cardinality sentence of 032 superseded	research coherent; fixed GT2 not widened	RESOLVED	RUNS/research_033.txt
+R4-C08	NO_REGRESSION	G4-A/B/C; G2EXT; adapter; G3/G5	inherited corrected contract	all prior residuals remain resolved	ACCEPT	REVIEW_VERDICT.json
+R4-C09	PROTECTED	5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e	CURRENT_PROGRESS rev11	read-only	VERIFIED	RUNS/target_verify.txt
+R4-C10	SCOPE	REVIEW_VERDICT.json	not_claimed	no implementation/native100k/source/science/actor/H1	scoped acceptance only	VERIFIED	REVIEW_VERDICT.json

@@ -1,0 +1,35 @@
+== contract 6.2 cardinality ==
+   159	| `product_version` | `FF01_K_PROPOSED@1.0.0` |
+   160	| `release_ref` / `universe_ref` / `time_scope_ref` | exact producer scope |
+   161	| `population_ref` | eligible/asked/observed population identity |
+   162	| `direction` | `FORWARD` (`P(Y|D)`) or `REVERSE` (`P(D|Y)`) |
+   163	| `conditioner_roles` | FORWARD: `D` (>=1); REVERSE: ordered `Y1..Yk` (`k>=2`) |
+   164	| `target_roles` | FORWARD: ordered `Y1..Yk` (`k>=2`); REVERSE: `D` (>=1) |
+   165	| `direction_cardinality` | `FORWARD: D>=1, Y>=2`; `REVERSE: Y>=2, D>=1`; no zero-length role list |
+   166	| `role_order` | exact ordered role IDs per direction; no set comparison |
+   167	| `condition_predicate_ref` / `risk_set_ref` | exact forward or reverse condition/risk |
+   168	| `measure_basis_ref` / `weight_basis_id` / `effective_scope_ref` | exact measure/weight/scope |
+   169	| `numerator_support` / `denominator_support` | exact native fact supports for this direction |
+   170	| `weighted_numerator_if_authorized` / `weighted_denominator_if_authorized` | exact if issued |
+   171	| `coverage` | full domain, observed support, minority/remainder/tail |
+   172	| `typed_states` | `ZERO_SUPPORT`, `OBSERVED_ZERO`, `ZERO_OVERLAP`, `LOW_SUPPORT`, `NOT_ASKED`, `ROUTING_UNKNOWN`, `UNKNOWN`, `REFUSED`, `INAPPLICABLE` |
+   173	| `producer_fact_ref` / `producer_query_ref` / `producer_replay_ref` | exact native inputs |
+   174	| `permission_ceiling` / `receipt_ref` / `replay_ref` | no widening; exact receipt/replay |
+   175	| `first_consumer` | FF01 science owner/prospective FF-N9 reader; explicit hold |
+   176
+   177	**Rules:** FORWARD has `conditioner_roles=D >=1, target_roles=Y1..Yk k>=2`;
+   178	REVERSE has `conditioner_roles=Y1..Yk k>=2, target_roles=D >=1`. Empty role
+   179	lists are invalid. Forward/reverse use different risk/denominator bases; ratios
+   180	require an owner-issued method and positive exact denominator; weighted
+   181	estimand is owner-held; k≥3 must come from a native exact joint fact, not GT2
+   182	widening; no new metric/science authority. Consumer distinguishes count profile
+   183	(no ratio) from distribution/ratio (owner-held). [R3-RES-033]
+== decision 364 ==
+   360
+   361
+   362	## 11. FF01-REVERSE cardinality correction
+   363
+   364	FORWARD `P(Y|D)`: conditioner roles `D>=1`, target roles ordered `Y1..Yk k>=2`. REVERSE `P(D|Y)`: conditioner roles ordered `Y1..Yk k>=2`, target roles `D>=1`. Empty role lists and wrong order refuse; per-direction risk/denominator/native refs/weights/coverage/typed states/owner-held ratio/receipt/consumer remain. This supersedes only the direction-cardinality sentence of R3-RES-032; FF01-2 fixed GT2 is unchanged. [R3-RES-033]
+== R3-RES-033 ==
+R3-RES-033 CORRECTED_DIRECTION_SPECIFIC_CARDINALITY; R3_RES_032_PARTIALLY_SUPERSEDED
+No. FORWARD P(Y|D): conditioner_roles=D>=1, target_roles=ordered Y1..Yk k>=2. REVERSE P(D|Y): conditioner_roles=ordered Y1..Yk k>=2, target_roles=D>=1. Role identity/order, per-direction risk/denominator/native fact/query/replay/weights/coverage/typed states, owner-held ratio, receipt and prospective consumer remain. Valid single-D reverse must not be excluded; empty D or empty Y/role list and wrong role order must refuse. This supersedes only the direction-cardinality sentence of R3-RES-032; FF01-2 fixed two-target GT2 is unchanged and not widened.
