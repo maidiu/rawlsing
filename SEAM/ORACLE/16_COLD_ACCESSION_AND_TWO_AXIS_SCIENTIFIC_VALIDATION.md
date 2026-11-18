@@ -8,6 +8,21 @@ The independently supplied review inspected #1144 at dfbbdc6c8a0ada562917ce08bd1
 
 **This correction disposition:** R3 and actual code graph corrected in ORACLE/15. Immutable commit locators corrected in /13. Scientific two-axis standard and heldout split added here. Reading precedence fixed in /04/06/08/12. Cold trial specified below **UNEXECUTED**. “Decision-lossless” is an **author hypothesis under independent test**, not a proven property of /08–13. Do not promote this package beyond a source-graded preparatory dossier merely because the documents have been repaired.
 
+## Independent UM-SOROK review disposition ledger (bounded)
+
+The external review at ORACLE earlier HEAD **dfbbdc6c8a0ada562917ce08bd16f0a33ab2b251** was `REVISE / HOLD ASTRA LAUNCH`. This matrix distinguishes repaired *documentation* from outstanding independent *proof*.
+
+| Review demand | Re-checked original evidence / disposition | Remaining ceiling |
+|---|---|---|
+| **P0 ANVIL R2/R3 currentness** | Independently accepted R3 author 02594c18f8401855a0f9cecc45921b548fa9aed6, C 8a245da3f6de5ca1eac3074eb99f817aabd62ac1, handoff eeb67a18d0d8ee2dddc68f571f8759bde0c7fb03 verified and summarized in /15; /08, /09, /11, /12 corrected | **REPAIRED DOCUMENTARY**; protected R3 progress remains `HQ_CURRENTNESS_HOLD`; no native implementation |
+| **P0 executable first-reader map** | /15 identifies source-native C11 and C1 functions at protected P plus saved-access reader/Batch at candidate A with exact code SHAs, first missing contact/learning consumer and sourcefree negative states | **REPAIRED SOURCE INSPECTION**; no new executed integrated first-reader or independent scientific test |
+| **P0 independent cold accession** | Pre-registered blind two-pass source/omission challenge in §4 with independent reviewer and cold cost/accuracy metrics, drawing on existing SEAM/27 P1–P8 | **NOT EXECUTED — ORACLE_ACCESSION_VALIDATION_HOLD**; no independent decision-lossless acceptance |
+| **P1 mechanical dependence vs scientific adequacy** | §2 two-axis M/S grade and no-contact/no-rule controls; §3 a priori respondent-level, source/cluster-aware heldout calibration and independent developmental observations | **REPAIRED EVALUATION DESIGN**; no S2 evidence or causal learning law established |
+| **P1 immutable source/index and launch precedence** | /13 replaced all 40 moving refs with exact immutable commit SHAs (40/40 re-fetched blob equality) and adds 18 code + six R3/review entries, 64 total; /04, /06, /08, /12, /00 now defer to one /16 order | **REPAIRED REPRODUCIBILITY/INSTRUCTIONS**; completeness remains author hypothesis |
+| **P1 finite research terminal** | §5 requires one independently falsifiable first owner-correct source→world/Other→actor→later-action operation OR exact missing scientific rule/issuer/experiment; no whole science overclaim | **REPAIRED SCOPE**, not an executable implementation or final architecture choice |
+
+**No other result is implied.** The independent reviewer of the original package is not an independent reviewer of this repaired edition. No unannounced cold questions have been issued and no new code tests run.
+
 ## 2. Two distinct, non-substitutable kinds of evidence
 
 ### Axis M — mechanical coupling / executable provenance
