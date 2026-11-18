@@ -8,7 +8,7 @@
 
 ## 1. Five-minute conceptual orientation (no massive search)
 
-1. **Read 08**, then **14** (Astra hard stops), **15** (ANVIL R3 and inspected code), **16** (science M/S and held cold trial).
+1. **Read 08**, then **14** (Astra hard stops), **15** (ANVIL R3 and inspected code), **16** (PYAT-specific M + POP/DEV/TRANS + sealed cold HOLD).
 2. Use **09** only for an inherited DDM/ANVIL question that could change a mechanism or cost decision.
 3. Use **10** only for a contested SEAM principle, retraction, maternal/child chronology or Other-field issue.
 4. Use **11** only for exact owner/status/first-reader currentness, with protected and candidate commits separate.
@@ -52,7 +52,7 @@ The highest-value *potential* bounded Deepseek commissions, in sequence only aft
 
 - **C1 mechanical source map:** Given pinned exact input list in ORACLE/09, produce a compact many-to-many index of existing source→old function T/S/M→modern code/reader, exact snippets/hashes and grade; **no absent→false inference, no proposed retirement, no new science**, independent Astra checks.
 - **C2 current actor-symbol surface:** Given frozen C0/C4/P2/P3/P6/CAN-011/ADP source SHAs, list real callable symbols/consumed states and explicit unconsumed edges, with one positive/negative trace; **no fabricated psychology**.
-- **C3 sourcefree deterministic adversarial harness:** Implement an Astra-defined 3way-marginal parity canary, contact vs noncontact, same tip/different committed history, physical-care-condition perturbation, and acquisition vs no-op/replay. Exact acceptance oracle **written independently first**; Deepseek does not decide what the science means.
+- **C3 cross-owner mechanical harness:** Independently freeze two sourcefree C11 populations with equal uni/pairwise support but different true three-way joints; **actually execute PYAT I03/F4** to produce different returned fact values and build an owner-qualified TEST_ONLY world/Other reader consuming these returned values. Then contact vs noncontact, formation versus withheld law, same-output/different-label, source ablation/stale refusal and cold actor replay. A local SOROK scenario toggle is not fusion. Exact acceptance oracle **written independently first**; Deepseek does not decide what the science means.
 - **C4 long deterministic scripts/hashing:** Only if available host/rights, exact source and budget ceilings; return raw machine-readable measurements, no interpretation.
 
 Every packet contains source SHA, owner/lease, model, paths, no-other-branch, success/failure and independent reviewer. Without actual Codex HQ dispatch tools and authorization, **prepare** the packet on ORACLE branch, report DISPATCH_HOLD; never claim an agent was spawned. Do not launch broad parallel redundant research to save a few minutes; source-meaning errors are expensive to repair.
@@ -69,8 +69,8 @@ User describes a **five-hour session boundary** and wants GitHub persistence wel
 
 ## 6. Architecture-first deliverable before any large new programme
 
-Astra's **first finite persistent research terminal** is a first independently falsifiable PYAT→SOROK operation **or** exact `FIRST_MISSING_RULE / OWNER / DECISION_CHANGING_EXPERIMENT` at proper proof grade; full architecture remains conditional research. It should describe **two competing candidate machine configurations** and their scientific holds, their precise intermediate objects/operators, why their laws can create *variable historically acquired psychological ontology*, selected source/context/learned state first readers, and one small counterfactual test proving PYAT actually conditions a later SOROK performed action. Explain which required scientific laws cannot yet be derived from available adult surveys. Present competing costs and missing owner grants. Do not write another personhood philosophy just because the original question is profound.
+Astra's **first finite persistent research terminal** is a first independently falsifiable PYAT→SOROK operation **or** exact `FIRST_MISSING_RULE / OWNER / DECISION_CHANGING_EXPERIMENT` at proper proof grade; full architecture remains conditional research. It should describe **two competing candidate machine configurations** and their scientific holds, their precise intermediate objects/operators, why their laws can create *variable historically acquired psychological ontology*, selected source/context/learned state first readers, and one small counterfactual test that **executes PYAT to produce a value** consumed by a real world/actor first reader; merely manually changing SOROK's world is insufficient. Explain which required scientific laws cannot yet be derived from available adult surveys. Present competing costs and missing owner grants. Do not write another personhood philosophy just because the original question is profound.
 
 Only commission code after freezing an independently falsifiable first vertical and verifying no existing owner already supplies it. Research success at this stage can be a decisive **EXACT_MISSING_RULE/OWNER** if honest source/actor developmental transition cannot yet be justified.
 
-**No new PROGRAMMA status bank, shadow HQ, override of VMESTYE C1–C5, K4, ANVIL design or #1011 gate** is permitted by this efficiency protocol.
+**Independent cold accession must be sealed and pre-frozen outside candidate-readable PR/workspace, with independent sources and grading. No four-case pass can establish unlimited future decision-losslessness; it can prove only the tested case-set performance. Model effort should be used for the actual science, not for Astra to examine itself.**\n\n**No new PROGRAMMA status bank, shadow HQ, override of VMESTYE C1–C5, K4, ANVIL design or #1011 gate** is permitted by this efficiency protocol.
