@@ -1,0 +1,135 @@
+{
+  "schema": "ANVIL_FULL_WIDTH_WRITER_STAGE_DIAG@1",
+  "task": "ANVIL_FULL_WIDTH_WRITER_STAGE_DIAG_20261118",
+  "status": "DIAGNOSIS_INSUFFICIENT_FOR_SUBSTAGE__WRITING_AGGREGATE_ONLY",
+  "correctness": {
+    "code_test": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "independent_receipt": "bbc3114f70fa6948f4f3c6a55aa7d3cf5f23cef1",
+    "reopened": false
+  },
+  "writer_pin": {
+    "baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "file": "rawlsing_next/pre553_source_direct_parquet_estate.py",
+    "sha256": "068fc525b6c117fbb3feba52f740f7e764674ff0b2a78f52e5b649b5fafe643a",
+    "git_blob": "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1",
+    "unchanged_from_baseline": true,
+    "relevant_symbols": [
+      "_Sink.add:229-236",
+      "_Sink.flush:238-253",
+      "_Sink.close:255-265",
+      "_IndexSink.add:278-287",
+      "_IndexSink.flush:289-308",
+      "write_direct_estate:460-602",
+      "build_sourcefree_direct_i02:509-511",
+      "_verify_emitted_physical_payloads:523-525"
+    ]
+  },
+  "current_512_stage_snapshot": {
+    "path": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/BUILD_STAGES.json",
+    "stage": "writing",
+    "context_seconds": 0.0013305189786478877,
+    "width_population_seconds": 0.1253700879169628,
+    "expected": {
+      "respondents": 512,
+      "questions": 600,
+      "events": 275839,
+      "routing": 307200,
+      "weights": 512,
+      "bindings": 600
+    },
+    "stage_file_only_marks": "context and width_population are complete; writing has no sub-stage marker",
+    "current_cap_claim": "NOT_MADE__NO_CAP_RECEIPT",
+    "supervision_file_note": "BUILD_SUPERVISION.json currently records an earlier ModuleNotFoundError, not a 600s cap; it must not be read as a cap result"
+  },
+  "observable_stage_directory": {
+    "note": "One read-only observation; no polling or wait.",
+    "stage_directory": ".local-data-width512/.s2c-stage-f5vlsu4x",
+    "observed_files": [
+      "RespondentIdentity.parquet",
+      "RespondentEvent.parquet",
+      "event_locator.parquet",
+      "QuestionVariableBinding.parquet",
+      ".s2b-direct-stage-cce5x0l2.tmp",
+      ".s2b-direct-stage-cce5x0l2.tmp-journal"
+    ],
+    "observed_sizes_bytes": {
+      "RespondentEvent.parquet": 73836555,
+      "event_locator.parquet": 18602867,
+      "QuestionVariableBinding.parquet": 100778,
+      "RespondentIdentity.parquet": 99217,
+      ".s2b-direct-stage-cce5x0l2.tmp": 1200836608,
+      ".s2b-direct-stage-cce5x0l2.tmp-journal": 12542328
+    },
+    "interpretation": "The writer has entered its one-pass writer/I02 proof phase. This shows that the writer has emitted some family parquet files and has a large I02 proof scratch, but it does not distinguish the cost of _Sink.add/flush from build_sourcefree_direct_i02."
+  },
+  "writer_stage_anatomy": {
+    "stage": "writing",
+    "covers_in_one_span": [
+      "all 13 family _Sink.add calls and periodic ParquetWriter.flush",
+      "RespondentEvent _IndexSink.add/flush",
+      "build_sourcefree_direct_i02 full family consumption and SQLite proof construction",
+      "writer close/final empty-family files",
+      "event locator census check",
+      "_verify_emitted_physical_payloads full physical re-read/hash/census",
+      "reconstructed release identity, manifest hashing/fsync, publication and directory fsync"
+    ],
+    "distinguishable_if_600s_cap": "Only BUILD_STAGES.stage == 'writing'. The stage cannot distinguish sink write/compression from I02 proof, verification, or publication.",
+    "what_partial_files_can_show": "Which family files exist and their sizes/row-group footers; presence/absence of the I02 SQLite temp/journal; whether a final manifest/release was published. They cannot assign wall time to the mechanisms."
+  },
+  "historical_timing_receipts": {
+    "10k_5role_build": {
+      "wall_seconds": 210.42334323492832,
+      "rss_peak": 234422272,
+      "scratch_peak": 535740432,
+      "stage_granularity": "total build only; no writing sub-stage"
+    },
+    "width128_600_build": {
+      "wall_seconds": 293.95639729802497,
+      "rss_peak": 200609792,
+      "scratch_peak": 826683762,
+      "stage_granularity": "total build only; no writing sub-stage"
+    },
+    "512_600": {
+      "stage": "writing",
+      "substage_time": "NOT_AVAILABLE",
+      "cap_result": "NOT_AVAILABLE"
+    }
+  },
+  "first_expensive_mechanism": {
+    "localized": "WRITING_AGGREGATE_ONLY",
+    "candidate_mechanisms_not_distinguished": [
+      "Parquet Zstd sink write/compression and flush",
+      "build_sourcefree_direct_i02 SQLite proof/temporary journal growth",
+      "_verify_emitted_physical_payloads full physical reread",
+      "manifest hashing/fsync/publication"
+    ],
+    "evidence_for_large_I02_scratch": "Observed .s2b-direct-stage tmp 1,200,836,608 B plus journal 12,542,328 B while only part of the family files exist; this is evidence the one-pass proof is active, not a timing attribution.",
+    "no_claim": "No claim that I02 proof, sink writes, or any one mechanism causes a 600s cap."
+  },
+  "exact_missing_measurement": [
+    "timestamp/count at each _Sink.add and _Sink.flush per family",
+    "timestamp/count at each _IndexSink.add/flush",
+    "start/end time and consumed-row count of build_sourcefree_direct_i02",
+    "start/end time of _verify_emitted_physical_payloads",
+    "start/end time of manifest hashing/fsync/publication",
+    "per-family stage-directory file growth and row-group footer updates"
+  ],
+  "smallest_nonproduction_diagnostic": {
+    "recommendation": "Do not rerun or add test sizes. On a capped/failed run, inspect the retained stage directory read-only: family file set/sizes, Parquet footer row/row-group counts, I02 SQLite temp/journal sizes, and BUILD_STAGES/BUILD_SAMPLES. This localizes the family/sink boundary and proof-vs-publish boundary without product edit.",
+    "to_distinguish_sink_vs_proof": "A separate nonproduction harness would need to wrap the existing writer's `tap`, `_Sink.flush`, and `build_sourcefree_direct_i02` call boundaries; no such counters exist in the current writer. This is a measurement handoff, not a product optimization.",
+    "existing_optimization_handoff": "No writer optimization is justified by current evidence. The existing writer uses bounded 512-row groups, zstd, one-pass family taps and a single I02 proof build; changing chunking/compression or splitting proof/write phases requires an owner-granted writer change after timing."
+  },
+  "concrete_read_only_post_cap_audit": {
+    "command": "find /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/.local-data-width512 -maxdepth 3 -type f -exec stat -f '%N %z' {} \\;",
+    "optional_footer_audit": "Read Parquet footers of observed family files to count rows/row groups; do not execute the writer.",
+    "bounds": "read-only metadata only; no build/query/retry"
+  },
+  "limits": [
+    "No execution, no polling/wait, no new test size, no retry.",
+    "No claim that the 512x600 build has hit 600s.",
+    "No stage attribution below 'writing'.",
+    "No source/science/protected/product change.",
+    "Correctness at aee954/bbc3114 is not reopened."
+  ],
+  "stop": "STOP_FOR_CAP_RECEIPT_AND_READ_ONLY_STAGE_AUDIT"
+}
