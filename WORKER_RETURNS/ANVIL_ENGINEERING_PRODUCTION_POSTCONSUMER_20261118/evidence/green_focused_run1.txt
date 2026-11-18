@@ -1,0 +1,80 @@
+F.......                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_prepared_exact_join_has_base_parity_and_one_prepared_build ________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/green1/test_prepared_exact_join_has_b0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x138c84710>
+
+    def test_prepared_exact_join_has_base_parity_and_one_prepared_build(
+        tmp_path, monkeypatch,
+    ):
+        fixture = _fixture(tmp_path)
+        assert type(fixture["base"]) is SavedC11Admission
+        assert type(fixture["prepared"]) is PreparedSavedC11Admission
+
+        base_runner = _run(fixture["base"], fixture)
+        assert len(base_runner.receipts) == len(fixture["manifest"].units) == 13
+        assert {r.state for r in base_runner.receipts} == {"COMPLETED"}
+
+        builds = []
+        original_build = DirectEstateI03Session._build
+
+        def counted_build(self):
+            builds.append(1)
+            return original_build(self)
+
+        monkeypatch.setattr(DirectEstateI03Session, "_build", counted_build)
+        prepared_runner = _run(fixture["prepared"], fixture)
+        assert len(builds) == 1
+        assert len(prepared_runner.receipts) == 13
+        assert {r.state for r in prepared_runner.receipts} == {"COMPLETED"}
+
+        base_joined = _join(fixture["base"], base_runner, fixture)
+        prepared_joined = _join(fixture["prepared"], prepared_runner, fixture)
+
+        assert len(base_joined.rows) == len(prepared_joined.rows) == 22
+        assert base_joined.rows == prepared_joined.rows
+        assert base_joined.audit == prepared_joined.audit
+        assert base_joined.result_hash == prepared_joined.result_hash
+        assert prepared_joined.audit["operation_count"] == 22
+        assert prepared_joined.audit["preconsumer_fate_counts"] == {
+            "ELIGIBLE": 8, "HELD": 14,
+        }
+        assert prepared_joined.audit["positive_native_linked_operations"] == 6
+        assert prepared_joined.audit["pending_eligible_operations"] == 2
+        assert prepared_joined.audit["native_completed_units_rechecked"] == 13
+        assert prepared_joined.audit["native_discovery_candidates_exactly_joined"] == 8
+        assert prepared_joined.audit["issue_grants_created"] == 0
+        assert prepared_joined.audit["preconsumer_handoff_unchanged"] is True
+        assert all(
+            row["postconsumer_receipt_refs"]
+            == base_row["postconsumer_receipt_refs"]
+            and row["postconsumer_native_output_refs"]
+            == base_row["postconsumer_native_output_refs"]
+            for row, base_row in zip(prepared_joined.rows, base_joined.rows)
+        )
+>       assert all(
+            prepared["provenance_refs"] == base["provenance_refs"]
+            for prepared, base in zip(
+                prepared_runner.receipts, base_runner.receipts,
+            )
+        )
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:142:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <zip object at 0x138d77180>
+
+    assert all(
+>       prepared["provenance_refs"] == base["provenance_refs"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        for prepared, base in zip(
+            prepared_runner.receipts, base_runner.receipts,
+        )
+    )
+E   TypeError: 'UnitExecutionReceipt' object is not subscriptable
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:143: TypeError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_exact_join_has_base_parity_and_one_prepared_build
+1 failed, 7 passed in 7.50s

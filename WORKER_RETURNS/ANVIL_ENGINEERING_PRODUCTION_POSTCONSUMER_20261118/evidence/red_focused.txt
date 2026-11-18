@@ -1,0 +1,533 @@
+F.FFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_prepared_exact_join_has_base_parity_and_one_prepared_build ________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_exact_join_has_b0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x133aac990>
+
+    def test_prepared_exact_join_has_base_parity_and_one_prepared_build(
+        tmp_path, monkeypatch,
+    ):
+        fixture = _fixture(tmp_path)
+        assert type(fixture["base"]) is SavedC11Admission
+        assert type(fixture["prepared"]) is PreparedSavedC11Admission
+
+        base_runner = _run(fixture["base"], fixture)
+        assert len(base_runner.receipts) == len(fixture["manifest"].units) == 13
+        assert {r.state for r in base_runner.receipts} == {"COMPLETED"}
+
+        builds = []
+        original_build = DirectEstateI03Session._build
+
+        def counted_build(self):
+            builds.append(1)
+            return original_build(self)
+
+        monkeypatch.setattr(DirectEstateI03Session, "_build", counted_build)
+        prepared_runner = _run(fixture["prepared"], fixture)
+        assert len(builds) == 1
+        assert len(prepared_runner.receipts) == 13
+        assert {r.state for r in prepared_runner.receipts} == {"COMPLETED"}
+
+        base_joined = _join(fixture["base"], base_runner, fixture)
+>       prepared_joined = _join(fixture["prepared"], prepared_runner, fixture)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:119:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:80: in _join
+    return join_saved_source_operation_fates(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+_____________ test_prepared_join_rejects_foreign_runner_repository _____________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_for0')
+
+    def test_prepared_join_rejects_foreign_runner_repository(tmp_path):
+        fixture = _fixture(tmp_path)
+        base_runner = _run(fixture["base"], fixture)
+        assert base_runner.repository is fixture["base"]
+        with pytest.raises(
+            SourceReceiptJoinError,
+            match="BATCH_RUNNER_NOT_BOUND_TO_SAVED_ADMISSION",
+        ):
+>           _join(fixture["prepared"], base_runner, fixture)
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:182:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:80: in _join
+    return join_saved_source_operation_fates(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_for0')
+
+    def test_prepared_join_rejects_foreign_runner_repository(tmp_path):
+        fixture = _fixture(tmp_path)
+        base_runner = _run(fixture["base"], fixture)
+        assert base_runner.repository is fixture["base"]
+>       with pytest.raises(
+            SourceReceiptJoinError,
+            match="BATCH_RUNNER_NOT_BOUND_TO_SAVED_ADMISSION",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'BATCH_RUNNER_NOT_BOUND_TO_SAVED_ADMISSION'
+E         Actual message: 'EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED'
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:178: AssertionError
+______ test_prepared_join_rejects_estate_manifest_or_root_drift[manifest] ______
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_est0')
+drift = 'manifest'
+
+    @pytest.mark.parametrize("drift", ["manifest", "roots"])
+    def test_prepared_join_rejects_estate_manifest_or_root_drift(tmp_path, drift):
+        fixture = _fixture(tmp_path)
+        runner = _run(fixture["prepared"], fixture)
+        if drift == "manifest":
+            estate = replace(fixture["estate"], manifest_sha256="0" * 64)
+        else:
+            estate = replace(
+                fixture["estate"],
+                i02=replace(fixture["estate"].i02, logical="0" * 64),
+            )
+        with pytest.raises(
+            SourceReceiptJoinError,
+            match="Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT",
+        ):
+>           join_saved_source_operation_fates(
+                handoff=fixture["handoff"], estate_receipt=estate,
+                admission=fixture["prepared"], compilation=fixture["v1"],
+                workload=fixture["workload"],
+                resolver=TestOnlyDecisionResolver(fixture["issue"].issued.record),
+                host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+                runner=runner, issuer_v2=fixture["issue"],
+            )
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:200:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_est0')
+drift = 'manifest'
+
+    @pytest.mark.parametrize("drift", ["manifest", "roots"])
+    def test_prepared_join_rejects_estate_manifest_or_root_drift(tmp_path, drift):
+        fixture = _fixture(tmp_path)
+        runner = _run(fixture["prepared"], fixture)
+        if drift == "manifest":
+            estate = replace(fixture["estate"], manifest_sha256="0" * 64)
+        else:
+            estate = replace(
+                fixture["estate"],
+                i02=replace(fixture["estate"].i02, logical="0" * 64),
+            )
+>       with pytest.raises(
+            SourceReceiptJoinError,
+            match="Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT'
+E         Actual message: 'EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED'
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:196: AssertionError
+_______ test_prepared_join_rejects_estate_manifest_or_root_drift[roots] ________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_est1')
+drift = 'roots'
+
+    @pytest.mark.parametrize("drift", ["manifest", "roots"])
+    def test_prepared_join_rejects_estate_manifest_or_root_drift(tmp_path, drift):
+        fixture = _fixture(tmp_path)
+        runner = _run(fixture["prepared"], fixture)
+        if drift == "manifest":
+            estate = replace(fixture["estate"], manifest_sha256="0" * 64)
+        else:
+            estate = replace(
+                fixture["estate"],
+                i02=replace(fixture["estate"].i02, logical="0" * 64),
+            )
+        with pytest.raises(
+            SourceReceiptJoinError,
+            match="Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT",
+        ):
+>           join_saved_source_operation_fates(
+                handoff=fixture["handoff"], estate_receipt=estate,
+                admission=fixture["prepared"], compilation=fixture["v1"],
+                workload=fixture["workload"],
+                resolver=TestOnlyDecisionResolver(fixture["issue"].issued.record),
+                host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+                runner=runner, issuer_v2=fixture["issue"],
+            )
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:200:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_est1')
+drift = 'roots'
+
+    @pytest.mark.parametrize("drift", ["manifest", "roots"])
+    def test_prepared_join_rejects_estate_manifest_or_root_drift(tmp_path, drift):
+        fixture = _fixture(tmp_path)
+        runner = _run(fixture["prepared"], fixture)
+        if drift == "manifest":
+            estate = replace(fixture["estate"], manifest_sha256="0" * 64)
+        else:
+            estate = replace(
+                fixture["estate"],
+                i02=replace(fixture["estate"].i02, logical="0" * 64),
+            )
+>       with pytest.raises(
+            SourceReceiptJoinError,
+            match="Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Q2_SAVED_REPLAY_AND_RELEASE_IDENTITY_DRIFT'
+E         Actual message: 'EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED'
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:196: AssertionError
+_________________ test_prepared_join_rechecks_revoked_current __________________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rechecks_re0')
+
+    def test_prepared_join_rechecks_revoked_current(tmp_path):
+        fixture = _fixture(tmp_path)
+        live = [True]
+        prepared = _open_prepared(
+            fixture["base"], fixture["workload"].catalog,
+            current=lambda _roots: live[0],
+        )
+        runner = _run(prepared, fixture)
+        live[0] = False
+        with pytest.raises(
+            DirectEstateError,
+            match="current source/operation authority refused",
+        ):
+>           _join(prepared, runner, fixture)
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:223:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:80: in _join
+    return join_saved_source_operation_fates(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+__________________ test_prepared_join_rejects_unissued_query ___________________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_uni0')
+
+    def test_prepared_join_rejects_unissued_query(tmp_path):
+        fixture = _fixture(tmp_path)
+        issued = {request.query_ref.key for request in fixture["workload"].requests}
+        unissued = next(
+            query for query in fixture["workload"].catalog.queries
+            if query.ref.key not in issued
+        )
+        forged_manifest = BatchManifest((
+            *fixture["manifest"].units,
+            BatchUnitSpec(
+                "QUERY", unissued.ref,
+                (fixture["prepared"].release_ref,),
+                (fixture["workload"].decision_ref,),
+            ),
+        ))
+        runner = BatchExecutionRunner(
+            manifest=forged_manifest, repository=fixture["prepared"],
+            saved_mode=True,
+        )
+        with pytest.raises(
+            SourceReceiptJoinError,
+            match="UNISSUED_SAVED_QUERY",
+        ):
+>           _join(fixture["prepared"], runner, fixture)
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:249:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:80: in _join
+    return join_saved_source_operation_fates(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_uni0')
+
+    def test_prepared_join_rejects_unissued_query(tmp_path):
+        fixture = _fixture(tmp_path)
+        issued = {request.query_ref.key for request in fixture["workload"].requests}
+        unissued = next(
+            query for query in fixture["workload"].catalog.queries
+            if query.ref.key not in issued
+        )
+        forged_manifest = BatchManifest((
+            *fixture["manifest"].units,
+            BatchUnitSpec(
+                "QUERY", unissued.ref,
+                (fixture["prepared"].release_ref,),
+                (fixture["workload"].decision_ref,),
+            ),
+        ))
+        runner = BatchExecutionRunner(
+            manifest=forged_manifest, repository=fixture["prepared"],
+            saved_mode=True,
+        )
+>       with pytest.raises(
+            SourceReceiptJoinError,
+            match="UNISSUED_SAVED_QUERY",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'UNISSUED_SAVED_QUERY'
+E         Actual message: 'EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED'
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:245: AssertionError
+_____________ test_prepared_join_rejects_forged_completed_receipt ______________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_for1')
+
+    def test_prepared_join_rejects_forged_completed_receipt(tmp_path):
+        fixture = _fixture(tmp_path)
+        runner = _run(fixture["prepared"], fixture)
+        query_unit = next(
+            unit for unit in fixture["manifest"].units if unit.job_kind == "QUERY"
+        )
+        target = next(
+            receipt for receipt in runner.receipts
+            if receipt.unit_ref == query_unit.unit_ref
+        )
+        forged = replace(target, result_refs=())
+        forged_runner = BatchExecutionRunner(
+            manifest=fixture["manifest"], repository=fixture["prepared"],
+            prior_receipts=tuple(
+                forged if receipt == target else receipt
+                for receipt in runner.receipts
+            ),
+            saved_mode=True,
+        )
+        with pytest.raises(
+            SourceReceiptJoinError,
+            match="RECEIPT_NATIVE_FIRST_CONSUMER_OUTPUT_DRIFT",
+        ):
+>           _join(fixture["prepared"], forged_runner, fixture)
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:276:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:80: in _join
+    return join_saved_source_operation_fates(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def join_saved_source_operation_fates(
+        *, handoff: SourceI02Handoff, estate_receipt: EstateReceipt,
+        admission: SavedC11Admission, compilation: GovernedFrontierCompilation,
+        workload: NativeWorkload, resolver: Any,
+        host: str, purpose: str, runner: BatchExecutionRunner,
+        allow_test_only: bool = True,
+        issuer_v2: Any | None = None,
+    ) -> PostconsumerFateJoin:
+        """Verify actual saved-native receipts and join to every original operation.
+
+        No original35/native-scientific promotion is possible; only sourcefree
+        TEST_ONLY is emitted. A positive marks an individual verified QUERY,
+        not an unproved scientific interpretation or universal source eligibility.
+        """
+        if (type(handoff) is not SourceI02Handoff
+                or type(estate_receipt) is not EstateReceipt
+                or type(admission) is not SavedC11Admission
+                or type(compilation) is not GovernedFrontierCompilation
+                or type(workload) is not NativeWorkload
+                or type(runner) is not BatchExecutionRunner):
+>           raise SourceReceiptJoinError("EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED")
+E           rawlsing_next.pre553_source_postconsumer_receipts.SourceReceiptJoinError: EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED
+
+rawlsing_next/pre553_source_postconsumer_receipts.py:276: SourceReceiptJoinError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_ENGINEERING_PRODUCTION_POSTCONSUMER_20261118/tmp/red/test_prepared_join_rejects_for1')
+
+    def test_prepared_join_rejects_forged_completed_receipt(tmp_path):
+        fixture = _fixture(tmp_path)
+        runner = _run(fixture["prepared"], fixture)
+        query_unit = next(
+            unit for unit in fixture["manifest"].units if unit.job_kind == "QUERY"
+        )
+        target = next(
+            receipt for receipt in runner.receipts
+            if receipt.unit_ref == query_unit.unit_ref
+        )
+        forged = replace(target, result_refs=())
+        forged_runner = BatchExecutionRunner(
+            manifest=fixture["manifest"], repository=fixture["prepared"],
+            prior_receipts=tuple(
+                forged if receipt == target else receipt
+                for receipt in runner.receipts
+            ),
+            saved_mode=True,
+        )
+>       with pytest.raises(
+            SourceReceiptJoinError,
+            match="RECEIPT_NATIVE_FIRST_CONSUMER_OUTPUT_DRIFT",
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'RECEIPT_NATIVE_FIRST_CONSUMER_OUTPUT_DRIFT'
+E         Actual message: 'EXACT_ACCEPTED_PRODUCER_AND_NATIVE_TYPES_REQUIRED'
+
+rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py:272: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_exact_join_has_base_parity_and_one_prepared_build
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_join_rejects_foreign_runner_repository
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_join_rejects_estate_manifest_or_root_drift[manifest]
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_join_rejects_estate_manifest_or_root_drift[roots]
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_join_rechecks_revoked_current
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_join_rejects_unissued_query
+FAILED rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py::test_prepared_join_rejects_forged_completed_receipt
+7 failed, 1 passed in 7.03s
