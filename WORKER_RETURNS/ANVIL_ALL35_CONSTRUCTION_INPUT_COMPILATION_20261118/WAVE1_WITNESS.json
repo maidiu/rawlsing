@@ -1,0 +1,42 @@
+{
+  "schema": "ANVIL_WAVE1_CONSTRUCTION_INPUT_WITNESS@1",
+  "source_id": "SRC01",
+  "config_revision_ref": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2:rawlsing_next/source_configuration/data/SRC01/SRC01.config.json",
+  "config_file_sha256": "e3f9d1c4393357361dc8f601e3e89fc7d60f6da88156d58866dff628131ae584",
+  "config_canonical_sha256": "bd30e23139c3c7f4fc7162522bc595e977795f5c5edf3abb40fc3ae76b085ac5",
+  "parsed": {
+    "source_id": "SRC01",
+    "identity_class": "ORIGINAL_SOURCE",
+    "source_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2"
+  },
+  "metadata_shape": {
+    "questions": 129,
+    "physical_slots": 144,
+    "items": 144,
+    "response_slots": 129,
+    "coordinate_slots": 5,
+    "weight_slots": 5,
+    "routing": 129
+  },
+  "required_q2_preimages": {
+    "occurrence_target_role": "ABSENT_FROM_SOURCE_CONFIG__NOT_DERIVABLE_EXACTLY",
+    "occurrence_conditioner_role": "ABSENT_FROM_SOURCE_CONFIG__NOT_DERIVABLE_EXACTLY",
+    "occurrence_forms_domain_administration": "PARTIAL_OR_ABSENT__NO_EXACT_Q2_MAPPING",
+    "measure_plans": "ABSENT_FROM_SOURCE_CONFIG",
+    "held_records": "ABSENT_FROM_SOURCE_CONFIG",
+    "grammar_policy": "ABSENT_FROM_SOURCE_CONFIG",
+    "scientific_frontier": "ABSENT_FROM_SOURCE_CONFIG",
+    "frozen_input_census": "ABSENT_FROM_SOURCE_CONFIG"
+  },
+  "earliest_gate": {
+    "symbol": "SourceInventory",
+    "file": "rawlsing_next/universal_grammar/types.py:277",
+    "reason": "SourceConfig carries source-native item/question/response metadata but not the exact occurrence roles, measure plans, held records, or grammar policy required by SourceInventory and ScientificFrontier. Constructing those would require a new owner-approved interpretation, not an exact preimage.",
+    "existing_parser_validated": true,
+    "source_config_validator": "rawlsing_next/pre553_r157_projection_adapter.py:load_source_config",
+    "downstream_consumer": "rawlsing_next/pre553_source_i02_handoff.py:build_source_i02_handoff:987",
+    "downstream_first_gate": "rawlsing_next/pre553_source_i02_handoff.py:_verify_census_before_source:218"
+  },
+  "verdict": "CONFIG_METADATA_PARSED__Q2_INVENTORY_PREIMAGE_ABSENT__STOP_BEFORE_SCIENCE_CONSTRUCTION",
+  "no_source_body_access": true
+}

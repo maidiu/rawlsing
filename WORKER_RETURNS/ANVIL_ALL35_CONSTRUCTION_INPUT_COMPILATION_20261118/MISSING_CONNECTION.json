@@ -1,0 +1,44 @@
+{
+  "schema": "ANVIL_ALL35_CONSTRUCTION_INPUT_MISSING_CONNECTION@1",
+  "status": "NO_EXISTING_EXACT_CONFIG_TO_Q2_INVENTORY_CONNECTION__BOUNDED_REFUSAL",
+  "first_gate": {
+    "symbol": "SourceInventory",
+    "file": "rawlsing_next/universal_grammar/types.py:277",
+    "reason": "SourceConfig has physical/item/question/response metadata but not exact universal-grammar occurrence roles, measure plans, held records, or grammar policy. No current config->SourceInventory adapter exists."
+  },
+  "existing_components": {
+    "SourceConfig": "rawlsing_next/pre553_r157_projection_adapter.py:class SourceConfig:1297; load_source_config:1346; canonical_config_hash:1360",
+    "SourceInventory": "rawlsing_next/universal_grammar/types.py:277",
+    "Occurrence": "rawlsing_next/universal_grammar/types.py:166",
+    "MeasurePlan": "rawlsing_next/universal_grammar/types.py:228",
+    "HeldRecord": "rawlsing_next/universal_grammar/types.py:255",
+    "GrammarPolicy": "rawlsing_next/universal_grammar/types.py:421",
+    "ScientificFrontier": "rawlsing_next/universal_grammar/types.py:745",
+    "FrozenInputCensus": "rawlsing_next/pre553_operation_fate_census.py:88",
+    "consumer": "rawlsing_next/pre553_source_i02_handoff.py:build_source_i02_handoff:987",
+    "consumer_first_gate": "rawlsing_next/pre553_source_i02_handoff.py:_verify_census_before_source:218"
+  },
+  "missing_exact_preimages": {
+    "occurrence_target_role": "not in SourceConfig",
+    "occurrence_conditioner_role": "not in SourceConfig",
+    "occurrence_forms_domain_administration": "partial/absent; no exact Q2 mapping",
+    "measure_plans": "not in SourceConfig",
+    "held_records": "not in SourceConfig",
+    "GrammarPolicy": "not in SourceConfig; no owner policy found",
+    "ScientificFrontier": "not derivable without policy/inventory",
+    "FrozenInputCensus": "per-source source candidates/fates absent"
+  },
+  "smallest_construction_only_cut": "Owner-approved metadata adapter at the SourceConfig boundary into SourceInventory, using only exact item/question/response/slot identities and explicit held records. It must preserve all source metadata and mark all scientific roles/measure plans/frontier/fates HELD; it must not infer target/conditioner roles or eligibility. No such adapter exists in current accepted code.",
+  "must_remain_held": [
+    "all target/conditioner scientific roles",
+    "all measure plans",
+    "all operation eligibility/fates",
+    "ScientificFrontier",
+    "FrozenInputCensus",
+    "Q2 executable issuance",
+    "source read/current authority"
+  ],
+  "owner": "Universal Grammar/SourceInventory owner for exact occurrence-role/measure/held preimages; Q2/S1-C operation-fate census owner for FrozenInputCensus; source-access/current owner for any eventual original read.",
+  "config_availability_grants_no_authority": true,
+  "no_product_change": true
+}
