@@ -10,7 +10,9 @@ The new problem is worse than model errors alone: a highly capable model can fai
 
 **Top adversarial criterion:** Is Astra discovering and discriminating a necessary PYAT→SOROK mechanism, or merely generating text that passes an increasingly elaborate requirements checklist?
 
-**UM-SOROK independent source criticism confirms that ORACLE's first index was documentary-only with moving refs, and missed ANVIL R3 despite it preceding the original package's commit.** [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md) corrects both the conceptual currentness and executable first-reader map; [ORACLE/13](13_PINNED_SOURCE_LOOKUP.json) pins commit/blob for source+code; [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) independently separates causal wiring from valid developmental learning and leaves the cold successor trial explicitly **HOLD/UNEXECUTED**. These repairs do not prove the compression decision-lossless.\n\n## A. Source-graded Astra-associated incident ledger and direct countermeasure
+**UM-SOROK independent source criticism confirms that ORACLE's first index was documentary-only with moving refs, and missed ANVIL R3 despite it preceding the original package's commit.** [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md) corrects both the conceptual currentness and executable first-reader map; [ORACLE/13](13_PINNED_SOURCE_LOOKUP.json) pins commit/blob for source+code; [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md) independently separates causal wiring from valid developmental learning and leaves the cold successor trial explicitly **HOLD/UNEXECUTED**. These repairs do not prove the compression decision-lossless.
+
+## A. Source-graded Astra-associated incident ledger and direct countermeasure
 
 | ID / evidence grade | Concrete Rawlsing experience | Astra must do instead | Test / stop |
 |---|---|---|---|
@@ -37,7 +39,9 @@ It must present at least one serious skeptical thesis:
 
 Then try to *defeat that thesis* with actual mechanism and evidence—not a statement that dialectical materialism is compelling. If it survives, preserve it as a scientific limitation while identifying the smallest useful lawful engineering witness.
 
-**UM-SOROK R2 warning:** the first fused test MUST call the actual PYAT I03/F4 computation and pass its returned value into a real owner-approved world/coactor reader. A manual childcare world toggle, even if SOROK subsequently learns, is **M_LOCAL_SOROK_ONLY**. Separate **POP/DEV/TRANS** scientific verdicts and compare independent PFF/activity-memory/bounded-learning architectures; A/B/C forward/inverse/hybrid alone is a biased comparison. Cold cases and answer keys are independently sealed **before** candidate package exposure, never placed in ORACLE or SEAM/27; a passing set earns only `ORACLE_COLD_CASESET_ACCEPTED_AT_<SHA>`. No cold run currently exists.\n\n## C. One mandatory anti-self-delusion test per claimed success
+**UM-SOROK R2 warning:** the first fused test MUST call the actual PYAT I03/F4 computation and pass its returned value into a real owner-approved world/coactor reader. A manual childcare world toggle, even if SOROK subsequently learns, is **M_LOCAL_SOROK_ONLY**. Separate **POP/DEV/TRANS** scientific verdicts and compare independent PFF/activity-memory/bounded-learning architectures; A/B/C forward/inverse/hybrid alone is a biased comparison. Cold cases and answer keys are independently sealed **before** candidate package exposure, never placed in ORACLE or SEAM/27; a passing set earns only `ORACLE_COLD_CASESET_ACCEPTED_AT_<SHA>`. No cold run currently exists.
+
+## C. One mandatory anti-self-delusion test per claimed success
 
 For any "this fuses PYAT→SOROK" claim, construct:
 1. **A native source- or qualified-fixture manipulation** that leaves superficial data labels and optionally marginal counts unchanged but alters a relevant real joint, material power or practice opportunity;
