@@ -1,0 +1,121 @@
+--- a/rawlsing_next/pre553_empirical_query.py
++++ b/rawlsing_next/pre553_empirical_query.py
+@@ -753,8 +753,12 @@
+         raise EmpiricalQueryExecutionError(
+             "repository must be accepted I02 C11Repository or exact verified S2-C I03 session"
+         )
+-    if type(repository) is DirectEstateI03Session and group_scope is not None:
+-        raise EmpiricalQueryExecutionError("grouped native I03 cache not yet qualified for cold sourcefree estate")
++    if (type(repository) is DirectEstateI03Session
++            and group_scope is not None
++            and type(group_scope) is not I03GroupedExecutionScope):
++        raise EmpiricalQueryExecutionError(
++            "cold sourcefree group_scope must be exact I03GroupedExecutionScope"
++        )
+     if not isinstance(query, EmpiricalQuerySpec):
+         raise EmpiricalQueryExecutionError("query must be EmpiricalQuerySpec@1.0.0")
+     if not isinstance(predicate, EmpiricalPredicate):
+--- a/rawlsing_next/pre553_prepared_saved_i03.py
++++ b/rawlsing_next/pre553_prepared_saved_i03.py
+@@ -18,7 +18,9 @@
+ from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+ from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+ from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
+-from rawlsing_next.pre553_empirical_query import execute_empirical_query
++from rawlsing_next.pre553_empirical_query import (
++    I03GroupedExecutionScope, execute_empirical_query,
++)
+ from rawlsing_next.pre553_saved_c11_admission import (
+     SavedC11Admission, SavedC11AdmissionError,
+ )
+@@ -51,7 +53,9 @@
+ class PreparedI03Session:
+     """One exact saved posting index reused by many I03/I05 operations."""
+ 
+-    __slots__ = ("_admission", "_session", "_operations", "_closed")
++    __slots__ = (
++        "_admission", "_session", "_operations", "_group_scope", "_closed",
++    )
+ 
+     def __init__(
+         self, admission: SavedC11Admission, session: DirectEstateI03Session,
+@@ -63,6 +67,7 @@
+         self._admission = admission
+         self._session = session
+         self._operations = 0
++        self._group_scope = I03GroupedExecutionScope()
+         self._closed = False
+ 
+     def _require_open(self) -> None:
+@@ -101,6 +106,7 @@
+             predicate=predicate,
+             authority_registry=self._admission._runtime_catalog.authority_registry,
+             release_refs=(self._admission._release_ref,),
++            group_scope=self._group_scope,
+         )
+         self._admission.check_current()
+         self._operations += 1
+@@ -139,6 +145,7 @@
+ 
+     def close(self) -> None:
+         if not self._closed:
++            self._group_scope.close()
+             self._session.__exit__(None, None, None)
+             self._closed = True
+ 
+--- a/rawlsing_next/pre553_direct_estate_i03.py
++++ b/rawlsing_next/pre553_direct_estate_i03.py
+@@ -68,6 +68,8 @@
+     """Versioned sourcefree physical I03 index identity; NOT an I02 v1 seal."""
+     release_ref: ExactRef
+     replay_manifest: _HeldReplayIdentity
++    semantic_release_hash: str
++    source_release_manifest_hash: str
+ 
+ 
+ class DirectSelectedRespondent:
+@@ -130,6 +132,7 @@
+         self._relations: tuple[SourceUniverseRelation, ...] = ()
+         self._files: dict[str, Any] = {}
+         self._row_group_cache: dict[str, dict[str, Any]] = {}
++        self._indices_cache: dict[tuple[tuple[str, ...], tuple[str, ...]], _ReleaseIndex] = {}
+ 
+     def _require_live(self) -> sqlite3.Connection:
+         self.estate._live()
+@@ -184,6 +187,7 @@
+                 reader.close()
+         self._files.clear()
+         self._row_group_cache.clear()
++        self._indices_cache.clear()
+         if self._temporary is not None:
+             self._temporary.cleanup()
+             self._temporary = None
+@@ -469,8 +473,19 @@
+             )
+         if self._universe is None or self._universe.ref != universe_ref:
+             raise DirectEstateError("cold universe lost its authenticated identity")
++        cache_key = (
++            tuple(ref.key for ref in supplied),
++            tuple(ref.key for ref in universe_refs),
++        )
++        cached = self._indices_cache.get(cache_key)
++        if cached is not None:
++            return ((universe_ref, cached),)
+         index = _ReleaseIndex(
+-            release=_DirectReleaseIdentity(release, _HeldReplayIdentity(replay)),
++            release=_DirectReleaseIdentity(
++                release, _HeldReplayIdentity(replay),
++                semantic_release_hash=release.content_hash,
++                source_release_manifest_hash=self.estate.held_manifest_sha256,
++            ),
+             universe=self._universe,
+             respondents=MappingProxyType(self.respondents),
+             events_by_respondent=MappingProxyType({
+@@ -486,6 +501,7 @@
+             # The dict preserves their saved physical insertion order.
+             native_verified_physical_respondent_order=True,
+         )
++        self._indices_cache[cache_key] = index
+         return ((universe_ref, index),)
+ 
+ 

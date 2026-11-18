@@ -1,0 +1,151 @@
+{
+  "schema": "ANVIL_SHARED_COMPUTATION_CUT@1",
+  "task": "ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118",
+  "status": "PROPOSAL_FROZEN_FOR_OWNER_REVIEW",
+  "base_head": "7f0366de3ee83b90b9607e278193bd08c4478213",
+  "integrated_code_test": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "product_changes": "NONE",
+  "product_diff_files": 0,
+  "own_return": "WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/",
+  "proposal": {
+    "path": "proposal.patch",
+    "sha256": "b82d17413a64c63c6090858a5559b8860eeeccd8a0b3c4f0f621eb57c777d292",
+    "applies_to_current_head": true,
+    "apply_check_exit": 0,
+    "files": [
+      "rawlsing_next/pre553_empirical_query.py",
+      "rawlsing_next/pre553_prepared_saved_i03.py",
+      "rawlsing_next/pre553_direct_estate_i03.py"
+    ],
+    "new_engine": false,
+    "new_source_authority": false,
+    "new_issuer": false
+  },
+  "current_seam": {
+    "file": "rawlsing_next/pre553_empirical_query.py",
+    "line": 757,
+    "current_error": "grouped native I03 cache not yet qualified for cold sourcefree estate",
+    "exact_direct_estate_repository_required": true,
+    "existing_group_engine": [
+      "I03GroupedExecutionScope",
+      "_evaluate_index_group_core",
+      "_materialize_grouped_evaluation",
+      "PreparedI03Session",
+      "DirectEstateI03Session"
+    ]
+  },
+  "proposed_edits": [
+    {
+      "file": "rawlsing_next/pre553_empirical_query.py",
+      "symbol": "execute_empirical_query",
+      "change": "allow exact I03GroupedExecutionScope for exact DirectEstateI03Session; reject any other non-None scope",
+      "owner": "native I03/grouped evaluator owner",
+      "new_engine": false
+    },
+    {
+      "file": "rawlsing_next/pre553_prepared_saved_i03.py",
+      "symbol": "PreparedI03Session",
+      "change": "one session-owned I03GroupedExecutionScope passed to execute_empirical_query and closed with the prepared session",
+      "owner": "prepared saved I03 owner"
+    },
+    {
+      "file": "rawlsing_next/pre553_direct_estate_i03.py",
+      "symbols": [
+        "_DirectReleaseIdentity",
+        "DirectEstateI03Session.indices_for",
+        "DirectEstateI03Session.__init__/__exit__"
+      ],
+      "change": "exact release/manifest identity fields and session-local cached exact _ReleaseIndex keyed by release/universe; cleared on close",
+      "reason": "grouped key includes id(index); current indices_for creates a new index object per call",
+      "owner": "S2C direct saved-reader owner"
+    }
+  ],
+  "reuse_boundary": {
+    "shared": [
+      "routing/risk membership",
+      "condition truth",
+      "exact target cell resolution",
+      "denominator membership",
+      "used objects/authorities for the exact compatible core"
+    ],
+    "per_operation": [
+      "EmpiricalFact construction",
+      "full provenance/refs",
+      "replay material",
+      "RAW/GOVERNED_WEIGHTED aggregation",
+      "weight validation",
+      "CURRENT/revocation checks"
+    ],
+    "compatible_examples": [
+      "same exact query core with RAW and GOVERNED_WEIGHTED variants",
+      "exact sibling operations with the same group key"
+    ],
+    "incompatible_examples": [
+      "different target plan",
+      "different predicate identity",
+      "different risk set",
+      "different query authority closure",
+      "different registry fingerprint"
+    ],
+    "arbitrary_distinct_query_sharing_claimed": false,
+    "hundreds_of_queries_sharing_one_core_claimed": false,
+    "group_key_excludes": ["measure", "weight", "design"],
+    "group_key_includes": [
+      "exact index identity/release/replay/universe",
+      "exact risk-set identity",
+      "exact predicate identity",
+      "exact target plan identity",
+      "exact query authority closure",
+      "exact registry fingerprint"
+    ]
+  },
+  "prototype": {
+    "path": "evidence/qualification_test.py",
+    "sha256": "80cd32bd67d8b7fe9b45491c5b40ed3607b3fcf54bc66a416ab26a4c4285d38c",
+    "result": "1 passed",
+    "exit": 0,
+    "time_seconds": 1.64,
+    "parent_maxrss_bytes": 112570368,
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider --basetemp=WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/tmp/prototype_final WORKER_RETURNS/ANVIL_ENGINEERING_SHARED_COMPUTATION_CUT_20261118/evidence/qualification_test.py",
+    "assertions": [
+      "current public direct-estate group_scope is RED at the exact current guard",
+      "existing group engine on a stable proposed index has exact fact parity for compatible RAW/WEIGHTED variants",
+      "core_builds=1, core_hits=1, raw_materializations=1, weighted_materializations=1, fallbacks=0",
+      "incompatible selected vs f2 has core_builds=2, core_hits=0",
+      "prototype uses SimpleNamespace only to simulate proposed direct identity fields; product patch is not applied"
+    ],
+    "evidence": [
+      "evidence/qualification_test.txt",
+      "evidence/qualification_final.txt",
+      "evidence/qualification_final.time",
+      "evidence/patch_check.txt",
+      "evidence/source_pins.txt"
+    ]
+  },
+  "prior_findings_used": {
+    "R3": "prepared S-only reuse; this proposal targets existing grouped Q core only, no Q/O speedup claim",
+    "K3": "held NOT_ADOPTED mappings remain unadopted; not requirements here",
+    "F26": "caller invalidation remains unchanged; not adopted here",
+    "1006": "country reuse guard already reported; not re-investigated or benchmarked",
+    "R3_archive": "preserved"
+  },
+  "authority_boundary": {
+    "current_two_edit_grant_authorizes_patch": false,
+    "required_grants": [
+      "native I03/grouped evaluator owner for exact group scope acceptance",
+      "prepared saved I03 owner for prepared session scope/lifecycle",
+      "S2C direct saved-reader owner for release identity fields and session-local index cache"
+    ],
+    "hardest_decision": "Whether sourcefree DirectEstate grouped execution and a session-local stable _ReleaseIndex are scientifically/authority acceptable under CURRENT/revocation and source-root invalidation, and whether the proposed direct release/manifest identity fields are exact rather than new scientific state.",
+    "silent_adoption": false
+  },
+  "limits": [
+    "Tiny existing 8-respondent prepared fixture; no raw/production respondents.",
+    "One test prototype; no broader matrix, 100k, full benchmark, or new estate.",
+    "No product patch applied; no production write.",
+    "No source/science/issuer/writer/schema/current/actor/protected rights.",
+    "No claim that arbitrary hundreds of distinct queries share a core.",
+    "No claim of prepared Q/O speedup or final joined acceptance."
+  ],
+  "stop": "STOP_FOR_OWNER_REVIEW"
+}
