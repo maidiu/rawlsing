@@ -1,0 +1,128 @@
+{
+  "contract_sha256": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28",
+  "cut1_review": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "external": {
+    "aborted": null,
+    "caps": {
+      "rss_bytes": 2147483648,
+      "scratch_bytes": 2147483648,
+      "wall_seconds": 120.0
+    },
+    "exit": 0,
+    "rss_peak_sampled_bytes": 127127552,
+    "scratch_peak_sampled_bytes": 30368896,
+    "wall_seconds": 11.346635817957576
+  },
+  "files": {
+    "CHANGED_SCRIPT.diff": {
+      "bytes": 1289,
+      "sha256": "810ce08d9f82ca7cf0994a2ab6abf8530ead79fbc24001b8ccdedf722470a252"
+    },
+    "ENGINEERING_FINDING.md": {
+      "bytes": 2258,
+      "sha256": "9f0914c5910e340271112cb1de177ee98277968c9175600ad4c01ae93fd349af"
+    },
+    "LOCALITY_REPAIR_FINDINGS.md": {
+      "bytes": 4729,
+      "sha256": "71eb84580e5f58546bc0bebfed73f43fe4ac33cd0c8880b2891349a3a04af7d5"
+    },
+    "RED_GREEN_EVIDENCE.md": {
+      "bytes": 985,
+      "sha256": "94e02e88d0913ca386e9e3cef5c440ca87908911e79338bea3a226befe0129fd"
+    },
+    "RESULT.json": {
+      "bytes": 9838,
+      "sha256": "08261ddf333bae1b6083a198396d8aa2fa6f53e4dfff3f8a3c168ba629d5103d"
+    },
+    "call_tree.txt": {
+      "bytes": 3997,
+      "sha256": "36e921e5ffdf48c2e979035b050492ac0c14f7668be605681d0986d9be136882"
+    },
+    "callers.txt": {
+      "bytes": 67562,
+      "sha256": "14beebbccc90199de30fc1a84ec1efc3c656aa00d09999f95469d8110bc3b3bf"
+    },
+    "child_result.json": {
+      "bytes": 6030,
+      "sha256": "ad9e6eef76f761c2b24e67a6b459bf1d20a7db49fa7da265d0a8548701a40a5c"
+    },
+    "locality_adapter.py": {
+      "bytes": 3186,
+      "sha256": "c8bd968d0f0bbb3db738a1e0ddf4f26b01dc1a127e7a9dd40f74153b9cb89fb1"
+    },
+    "locality_profile.py": {
+      "bytes": 6557,
+      "sha256": "5cea191c8ca1b87b188f25e10dacdb6ca94fbaccaba647bdc0ca9f4b465566f2"
+    },
+    "raw.prof": {
+      "bytes": 65340,
+      "sha256": "e983976a90735193a35dfa3b65cc53b076ea503db204b31fa6ee2ecf7a525776"
+    },
+    "revocation_witness.json": {
+      "bytes": 2265,
+      "sha256": "d5f5af2acb13a1d97be1618a9411f747f917b7c6dbcdba548e5a14ee1b9a0b33"
+    },
+    "revocation_witness.py": {
+      "bytes": 5985,
+      "sha256": "f8c8d04c8fa5a10d0a79ad48a4467c1364faca268353748ec5d3efd774feec0e"
+    },
+    "run_locality.py": {
+      "bytes": 3507,
+      "sha256": "3a2c033cf243c0a2c0f4d182bbc0a81ce70b777005f34218ddf036ae773094b1"
+    },
+    "samples.json": {
+      "bytes": 4874,
+      "sha256": "f12dcd2793c96b911342c5ede45e332a3c7393812d74e01d940badbd5f41d1bc"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.txt": {
+      "bytes": 167,
+      "sha256": "6af3af330a5641b3a59fd9ecab9628c8aeb3e942d3b2a95d3dc8ea8334fdc83b"
+    },
+    "top_cumulative.txt": {
+      "bytes": 13249,
+      "sha256": "7baafb3cf6683e9027e6d22848a6a1fcc3f5601cf266ba8f0c504780c49343f4"
+    },
+    "top_tottime.txt": {
+      "bytes": 12154,
+      "sha256": "2c419c6f40821233cff44b8b2908afe509365af2afa336f0db7c0dcb235ffbe3"
+    }
+  },
+  "independent_locality_review": "07c2409e3c15620a6c3eb392ba02549cf3def83b",
+  "note": "TEST_ONLY; one f4 query; cProfile overhead; no production speedup/native/100k; product READONLY; R2/R3/R4 immutable.",
+  "one_corrected_query": true,
+  "owner_handoff": {
+    "comment": "#1006 comment6969187403",
+    "file": "rawlsing_next/pre553_direct_estate_i03.py",
+    "grant_status": "REQUESTED_NOT_GRANTED",
+    "symbol": "DirectEstateI03Session._respondent_family"
+  },
+  "parity_exact": true,
+  "product_candidate": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "profile": {
+    "compressed_bytes": 7942218,
+    "object_from_row_calls": 9637,
+    "q_wall_seconds": 7.582851973013021,
+    "r3_q_baseline_seconds": 18.29603375500301,
+    "r3_row_group_reads": 3965,
+    "row_group_reads": 50,
+    "row_group_rows": 25472,
+    "uncompressed_bytes": 76150826
+  },
+  "red_green": {
+    "all_expected": true,
+    "canonical_sorted": true,
+    "matches_original_order": true,
+    "original_refused": true,
+    "r4_bypassed": true,
+    "r5_refused": true,
+    "valid_order_count": 600
+  },
+  "repair": "self._require_live() immediately before every yield only; no other optimization",
+  "schema": "ANVIL_CUT2_R5_LOCALITY_REVOCATION_REPAIR_MANIFEST@1"
+}
