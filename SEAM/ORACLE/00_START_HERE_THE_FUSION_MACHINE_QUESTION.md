@@ -44,7 +44,11 @@ End with a person able to encounter something new, act otherwise within situated
 9. Confusing a research prototype, sourcefree fixture, unmerged reviewed document, scoped engineering receipt or first-reader transcript with accepted scientific, original-source, actor, human or protected authority.
 10. New architectural infrastructure that adds no discriminating generative capability or ignores existing SOROK CAN/ADP/PFF, PYAT C11/FF/N9/N10/SDTF and source contracts.
 
-## File map (read all, then answer the commission)
+## File map — START AT THE PINNED FAST-START, read originals only when necessary
+
+**Token-economy start:** read **[08 fast-start](08_ASTRA_ZERO_RECONNAISSANCE_FAST_START.md)**, then source-graded digests [09 recovery/ANVIL](09_RECOVERED_DDM_VMESTYE_ZAK_VOSKRES_ANVIL_PINNED_DIGEST.md), [10 SEAM decisions/retractions](10_SEAM_00_29_INTELLECTUAL_CAS_AND_RETRACTION_DIGEST.md), [11 canonical PYAT/SOROK mechanisms and holds](11_PROGRAMMA_PYAT_SOROK_CURRENT_CONSUMER_AND_AUTHORITY_DIGEST.md). Use [12 selective reopen and usage/delegation](12_ASTRA_MINIMAL_SOURCE_REOPEN_AND_DISPATCH_PROTOCOL.md) and [13 40-entry machine-readable source index](13_PINNED_SOURCE_LOOKUP.json). Then focus on ORACLE/00/03/04/07. Do not needlessly reread all original PROGRAMMA, VMESTYE, ZAK, VOSKRES, ANVIL or SEAM chapters. A pinned digest is not source authority: retrieve exact original material for a contested assertion or operation-relevant new evidence.
+
+
 
 - **01_TOTAL_PROBLEM_AND_NONNEGOTIABLE_DIMENSIONS.md** — full problem lattice, starting organism through multi-world human and survey observations, difficult interactions, deep variation and failure modes.
 - **02_PYAT_PRODUCTS_AND_ACTUAL_TRANSFORMATION_CHAIN.md** — available and missing source→C11→F1–F4/FF/SDTF→world/possibility→actor ingress, authority, branches, first-reader court, ANVIL, limits.
