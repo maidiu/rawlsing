@@ -1,0 +1,426 @@
+{
+  "test_only_antecedent_translation": {
+    "revisions_used": {
+      "world_allocations": [
+        {
+          "shift": 0,
+          "posted": "east",
+          "proposed": "west",
+          "performed": "west"
+        },
+        {
+          "shift": 1,
+          "posted": "west",
+          "proposed": "east",
+          "performed": "east"
+        },
+        {
+          "shift": 2,
+          "posted": "east",
+          "proposed": "east",
+          "performed": "east"
+        },
+        {
+          "shift": 3,
+          "posted": "west",
+          "proposed": "west",
+          "performed": "west"
+        }
+      ],
+      "saw_result": true,
+      "rule": "contrast",
+      "derived_input": "recognized_plan",
+      "incumbent": {
+        "mode": "joint_check",
+        "expression": "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685",
+        "readset": [
+          "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+          "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+          "efa44695486622b2e9cc83efb828aef874c77fcc181397c2cc322213c0e35df7"
+        ]
+      },
+      "work_question_if_contributing": "often",
+      "work_question_if_changing_allocation": "intermediate_threshold_unqualified"
+    },
+    "roster_controls": {
+      "world_allocations": [
+        {
+          "shift": 0,
+          "posted": "east",
+          "proposed": "west",
+          "performed": "east"
+        },
+        {
+          "shift": 1,
+          "posted": "west",
+          "proposed": "east",
+          "performed": "west"
+        },
+        {
+          "shift": 2,
+          "posted": "east",
+          "proposed": "east",
+          "performed": "east"
+        },
+        {
+          "shift": 3,
+          "posted": "west",
+          "proposed": "west",
+          "performed": "west"
+        }
+      ],
+      "saw_result": true,
+      "rule": "contrast",
+      "derived_input": "imposed_plan",
+      "incumbent": {
+        "mode": "private_check",
+        "expression": "TEST_ONLY_BP4_WORLD_EVT_74a99bc80d6031dc8bc03179f16b71277afab560af5813e1ad042812c48693cb",
+        "readset": [
+          "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+          "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+          "338b01942374590f1ecec654aefffd64181f76f6b57abfd83578c22891d17320"
+        ]
+      },
+      "work_question_if_contributing": "often",
+      "work_question_if_changing_allocation": "never"
+    },
+    "results_inaccessible": {
+      "world_allocations": [
+        {
+          "shift": 0,
+          "posted": "east",
+          "proposed": "west",
+          "performed": "east"
+        },
+        {
+          "shift": 1,
+          "posted": "west",
+          "proposed": "east",
+          "performed": "west"
+        },
+        {
+          "shift": 2,
+          "posted": "east",
+          "proposed": "east",
+          "performed": "east"
+        },
+        {
+          "shift": 3,
+          "posted": "west",
+          "proposed": "west",
+          "performed": "west"
+        }
+      ],
+      "saw_result": false,
+      "rule": "contrast",
+      "derived_input": null,
+      "incumbent": {
+        "mode": "inspect_alone",
+        "expression": "TEST_ONLY_BP4_WORLD_EVT_e11332d2ef948e1372168a0ce6d8a045f4382e672233bb2e11ae77c62b73ea7d",
+        "readset": [
+          "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+          "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938"
+        ]
+      },
+      "work_question_if_contributing": "often",
+      "work_question_if_changing_allocation": null
+    },
+    "observational_alias": {
+      "world_allocations": [
+        {
+          "shift": 0,
+          "posted": "east",
+          "proposed": null,
+          "performed": "east"
+        },
+        {
+          "shift": 1,
+          "posted": "west",
+          "proposed": null,
+          "performed": "west"
+        },
+        {
+          "shift": 2,
+          "posted": "east",
+          "proposed": "east",
+          "performed": "east"
+        },
+        {
+          "shift": 3,
+          "posted": "west",
+          "proposed": "west",
+          "performed": "west"
+        }
+      ],
+      "saw_result": true,
+      "rule": "contrast",
+      "derived_input": null,
+      "incumbent": {
+        "mode": "inspect_alone",
+        "expression": "TEST_ONLY_BP4_WORLD_EVT_e11332d2ef948e1372168a0ce6d8a045f4382e672233bb2e11ae77c62b73ea7d",
+        "readset": [
+          "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+          "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938"
+        ]
+      },
+      "work_question_if_contributing": "intermediate_threshold_unqualified",
+      "work_question_if_changing_allocation": "never"
+    },
+    "coincidence_rival": {
+      "world_allocations": [
+        {
+          "shift": 0,
+          "posted": "east",
+          "proposed": null,
+          "performed": "east"
+        },
+        {
+          "shift": 1,
+          "posted": "west",
+          "proposed": null,
+          "performed": "west"
+        },
+        {
+          "shift": 2,
+          "posted": "east",
+          "proposed": "east",
+          "performed": "east"
+        },
+        {
+          "shift": 3,
+          "posted": "west",
+          "proposed": "west",
+          "performed": "west"
+        }
+      ],
+      "saw_result": true,
+      "rule": "coincidence",
+      "derived_input": "recognized_plan",
+      "incumbent": {
+        "mode": "joint_check",
+        "expression": "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685",
+        "readset": [
+          "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+          "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+          "efa44695486622b2e9cc83efb828aef874c77fcc181397c2cc322213c0e35df7"
+        ]
+      },
+      "work_question_if_contributing": "intermediate_threshold_unqualified",
+      "work_question_if_changing_allocation": "never"
+    }
+  },
+  "scenario_law": {
+    "employed_female/profile_only/accept_revision": {
+      "probability_of_informative_history": 0.344673911715169,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_female/profile_only/follow_roster": {
+      "probability_of_informative_history": 0.344673911715169,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_female/1111/accept_revision": {
+      "probability_of_informative_history": 0.5262903264673313,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_female/1111/follow_roster": {
+      "probability_of_informative_history": 0.5262903264673313,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_female/1010/accept_revision": {
+      "probability_of_informative_history": 0.4599743249052879,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_female/1010/follow_roster": {
+      "probability_of_informative_history": 0.4599743249052879,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_male/profile_only/accept_revision": {
+      "probability_of_informative_history": 0.3418847226647953,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_male/profile_only/follow_roster": {
+      "probability_of_informative_history": 0.3418847226647953,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_male/1111/accept_revision": {
+      "probability_of_informative_history": 0.28836301964658334,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_male/1111/follow_roster": {
+      "probability_of_informative_history": 0.28836301964658334,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_male/1010/accept_revision": {
+      "probability_of_informative_history": 0.3446152329481082,
+      "equal_opportunity_control": 0.5
+    },
+    "employed_male/1010/follow_roster": {
+      "probability_of_informative_history": 0.3446152329481082,
+      "equal_opportunity_control": 0.5
+    }
+  },
+  "misclassification_sensitivity": {
+    "employed_female/0.0": {
+      "formative_probability_difference_bounds": [
+        0.18161641475216228,
+        0.18161641475216228
+      ],
+      "design_se_at_zero_disagreement": 0.1531823114573778
+    },
+    "employed_female/0.05": {
+      "formative_probability_difference_bounds": [
+        0.10836590574733584,
+        0.2548669237569887
+      ],
+      "design_se_at_zero_disagreement": 0.1531823114573778
+    },
+    "employed_female/0.1": {
+      "formative_probability_difference_bounds": [
+        0.03511539674250938,
+        0.32811743276181515
+      ],
+      "design_se_at_zero_disagreement": 0.1531823114573778
+    },
+    "employed_female/0.2": {
+      "formative_probability_difference_bounds": [
+        -0.11138562126714349,
+        0.4746184507714681
+      ],
+      "design_se_at_zero_disagreement": 0.1531823114573778
+    },
+    "employed_male/0.0": {
+      "formative_probability_difference_bounds": [
+        -0.053521703018212005,
+        -0.053521703018212005
+      ],
+      "design_se_at_zero_disagreement": 0.11911647419929514
+    },
+    "employed_male/0.05": {
+      "formative_probability_difference_bounds": [
+        -0.12572574029594738,
+        0.01868233425952337
+      ],
+      "design_se_at_zero_disagreement": 0.11911647419929514
+    },
+    "employed_male/0.1": {
+      "formative_probability_difference_bounds": [
+        -0.1979297775736827,
+        0.09088637153725874
+      ],
+      "design_se_at_zero_disagreement": 0.11911647419929514
+    },
+    "employed_male/0.2": {
+      "formative_probability_difference_bounds": [
+        -0.3423378521291534,
+        0.23529444609272954
+      ],
+      "design_se_at_zero_disagreement": 0.11911647419929514
+    }
+  },
+  "sampled_uncommitted_proposals": [
+    {
+      "domain": "employed_female",
+      "external_tip": "1110",
+      "offers": [
+        false,
+        true,
+        true,
+        false
+      ],
+      "derived": null,
+      "response": "inspect_alone",
+      "performed_expression": "TEST_ONLY_BP4_WORLD_EVT_e11332d2ef948e1372168a0ce6d8a045f4382e672233bb2e11ae77c62b73ea7d",
+      "readset": [
+        "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+        "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938"
+      ]
+    },
+    {
+      "domain": "employed_male",
+      "external_tip": "0011",
+      "offers": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "derived": "recognized_plan",
+      "response": "joint_check",
+      "performed_expression": "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685",
+      "readset": [
+        "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+        "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+        "5f4befdda98345868f2427e35da12d327568bee3175d5871a917b1a497b2d38c"
+      ]
+    }
+  ],
+  "same_draw_source_ablation": {
+    "1111": {
+      "offers": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "derived": "recognized_plan",
+      "response": "joint_check",
+      "performed_expression": "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685",
+      "readset": [
+        "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+        "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+        "aa99470bd23f614529b814e157a4e7b412d1cac74ff15d76b9e0759123fa6e4c"
+      ]
+    },
+    "profile_only": {
+      "offers": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "derived": null,
+      "response": "inspect_alone",
+      "performed_expression": "TEST_ONLY_BP4_WORLD_EVT_e11332d2ef948e1372168a0ce6d8a045f4382e672233bb2e11ae77c62b73ea7d",
+      "readset": [
+        "e5b0ac46a022ce26e08741e57d5641f49ad5e7d0b68c56f9fadd39a0f50b59c7",
+        "d3584f1277168fd7095312f73e3551b31ad6972b1f91dedddf4acba1049b365e",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938"
+      ]
+    }
+  }
+}
