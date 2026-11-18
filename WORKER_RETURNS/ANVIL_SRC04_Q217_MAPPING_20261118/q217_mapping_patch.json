@@ -18,34 +18,30 @@
   "live_selection_changed": false,
   "operations": [
     {
-      "evidence": "evidence/questionnaire_q217_scan.json (page 5, q217 line)",
-      "label": "Other",
-      "op": "add_physical_label",
-      "raw_value": 7.0
-    },
-    {
       "canonical_value": null,
-      "label": "Other",
+      "label": null,
       "missing_state": "OBSERVED_STORAGE_VALUE",
       "op": "add_response_value_rule",
       "raw_value": 7.0,
-      "reason": "Direct same-wave questionnaire corroborates 7=Other; preserved as source-special, not substantive.",
+      "reason": "Raw 7 observed; questionnaire page 5 says 7=Other; physical SAV has no 7 label. Keep raw special and provenance separate.",
       "response_state": "SOURCE_SPECIFIC_SPECIAL"
     },
     {
       "canonical_value": null,
       "op": "change_response_state",
       "raw_value": 99.0,
-      "reason": "Source codebook/physical labels and questionnaire: decline to answer.",
+      "reason": "decline to answer label",
       "response_state": "REFUSAL"
     }
   ],
+  "physical_metadata": "BYTE_EQUIVALENT_TO_V2__NO_7_LABEL__10_OTHERS_DISTINCT",
+  "questionnaire_label_7": "Other (evidence/questionnaire_q217_scan.json page 5)",
   "schema": "ANVIL_SRC04_Q217_MAPPING_PATCH_CANDIDATE@1",
   "source_id": "SRC04",
   "status": "MATERIALIZED_AS_SELECTABLE_V3_NOT_LIVE_SELECTED",
   "successor": {
-    "canonical_sha256": "323c1447e76ad447163514f6805c26f4b7033cd34f042d1b59bee91f2274a70c",
-    "file_sha256": "5aeca1d70d2de1148c7f6aff163eeef2a3cefc3a034297e7f90ec77ed7ff3d71",
+    "canonical_sha256": "a3d3267cc37f7f6d2f6267d777c414f285be58ff5e7ea88b8bc9ac0d74c1269f",
+    "file_sha256": "f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855",
     "path": "WORKER_RETURNS/ANVIL_SRC04_Q217_MAPPING_20261118/source.config.repaired.v3.json"
   },
   "validation": "evidence/q217_v3_validation.json"

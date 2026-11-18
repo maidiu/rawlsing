@@ -32,12 +32,10 @@ def main():
     if canonical_config_hash(old) != V2_CANON:
         raise SystemExit("V2_CANONICAL_DRIFT")
     doc = copy.deepcopy(old.document)
-    # q217 only: add source-questionnaire label 7=Other; add typed special rule;
-    # correct 99=Decline to Answer to REFUSAL. All other fields are preserved.
-    slot = next(x for x in doc["physical_slots"] if x.get("name") == "q217")
-    labels = dict(slot.get("value_labels") or {})
-    labels["7.0"] = "Other"
-    slot["value_labels"] = labels
+    # q217 only: add typed special rule for raw 7; correct 99=Decline to Answer
+    # to REFUSAL. Physical SAV labels remain byte-equivalent to v2: 10=others,
+    # no 7 label. Questionnaire 7=Other stays in versioned evidence, not in
+    # physical metadata.
     rslot = next(x for x in doc["response_slots"] if x.get("question_id") == "q217")
     values = rslot["values"]
     if any(float(v["raw_value"]) == 7.0 for v in values if v.get("raw_value") is not None):
@@ -65,12 +63,13 @@ def main():
     # Field-level diff: every physical/response/other semantic field except q217
     # must be identical.
     old_doc = old.document; new_doc = new.document
-    old_phys = [x for x in old_doc["physical_slots"] if x.get("name") != "q217"]
-    new_phys = [x for x in new_doc["physical_slots"] if x.get("name") != "q217"]
+    old_phys = old_doc["physical_slots"]
+    new_phys = new_doc["physical_slots"]
     old_resp = [x for x in old_doc["response_slots"] if x.get("question_id") != "q217"]
     new_resp = [x for x in new_doc["response_slots"] if x.get("question_id") != "q217"]
     stable = {
         "physical_slots_stable": old_phys == new_phys,
+        "physical_slots_byte_equivalent": json.dumps(old_doc["physical_slots"], sort_keys=True) == json.dumps(new_doc["physical_slots"], sort_keys=True),
         "response_slots_stable": old_resp == new_resp,
         "questions_stable": old_doc["questions"] == new_doc["questions"],
         "coordinates_stable": old_doc["coordinate_slots"] == new_doc["coordinate_slots"],
@@ -88,8 +87,12 @@ def main():
         "base_v2": {"path": str(V2.relative_to(ROOT)), "file_sha256": V2_FILE, "canonical_sha256": V2_CANON},
         "v3": {"path": str(V3.relative_to(ROOT)), "file_sha256": sha(V3), "canonical_sha256": canonical_config_hash(new)},
         "q217": {
-            "labels_added": {"7.0": "Other"},
-            "label_source": "PRIMARY_SOURCE_QUESTIONNAIRE_SCAN_PAGE_5__Q217__7_OTHER",
+            "labels_added": {},
+            "physical_metadata_q217_labels": next(x for x in new_doc["physical_slots"] if x.get("name") == "q217").get("value_labels"),
+            "physical_code_7_label_present": False,
+            "questionnaire_label": {"7.0": "Other"},
+            "questionnaire_label_location": "evidence/questionnaire_q217_scan.json (page 5)",
+            "label_source": "PRIMARY_SOURCE_QUESTIONNAIRE_SCAN_PAGE_5__Q217__7_OTHER_NOT_EMBEDDED_IN_SAV_LABELS",
             "code_7_state": "SOURCE_SPECIFIC_SPECIAL",
             "code_7_canonical": None,
             "code_99_state": "REFUSAL",

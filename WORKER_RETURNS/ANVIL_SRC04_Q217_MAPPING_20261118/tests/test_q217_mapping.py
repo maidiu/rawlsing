@@ -18,16 +18,20 @@ def test_aggregate_correction_and_exact_38_unlabeled_cells():
 def test_v3_is_actual_selectable_successor_and_180_columns_stable():
     v=load('q217_v3_validation.json')
     assert v['status']=='SELECTABLE_SUCCESSOR_NOT_LIVE_SELECTED'
-    assert v['physical_slots_total']==181 and v['physical_slots_unchanged']==180
+    assert v['physical_slots_total']==181 and v['physical_slots_unchanged']==181
+    assert v['field_diff']['physical_slots_byte_equivalent'] is True
     assert v['response_slots_total']==178 and v['response_slots_unchanged']==177
     assert all(v['field_diff'].values())
     assert v['live_selection_changed'] is False and v['original_source_file_touched'] is False
-    assert v['v3']['file_sha256']=='5aeca1d70d2de1148c7f6aff163eeef2a3cefc3a034297e7f90ec77ed7ff3d71'
-    assert v['v3']['canonical_sha256']=='323c1447e76ad447163514f6805c26f4b7033cd34f042d1b59bee91f2274a70c'
+    assert v['v3']['file_sha256']=='f007afdc0cbcd58a3f856121e265a5069f2145cce6c9ce0c112aff1f9c7d7855'
+    assert v['v3']['canonical_sha256']=='a3d3267cc37f7f6d2f6267d777c414f285be58ff5e7ea88b8bc9ac0d74c1269f'
 
 def test_only_q217_states_changed():
     v=load('q217_v3_validation.json'); q=v['q217']
-    assert q['labels_added']=={'7.0':'Other'}
+    assert q['labels_added']=={}
+    assert q['physical_code_7_label_present'] is False
+    assert q['questionnaire_label']=={'7.0':'Other'}
+    assert q['physical_metadata_q217_labels'].get('10.0')=='others'
     assert q['code_7_state']=='SOURCE_SPECIFIC_SPECIAL'
     assert q['code_7_canonical'] is None
     assert q['code_99_state']=='REFUSAL' and q['code_97_98_state']=='DK'
@@ -38,6 +42,7 @@ def test_only_q217_states_changed():
     states={str(x['raw_value']):(x['response_state'],x.get('canonical_value')) for x in rs['values']}
     assert states['7.0']==('SOURCE_SPECIFIC_SPECIAL',None)
     assert states['99.0']==('REFUSAL',None)
+    assert '7.0' not in next(x for x in cfg['physical_slots'] if x.get('name')=='q217')['value_labels']
     assert states['97.0']==('DK',None) and states['98.0']==('DK',None)
     assert states['None']==('MISSING',None)
     assert states['1.0']==('SUBSTANTIVE_RESPONSE','1')
@@ -54,15 +59,17 @@ def test_questionnaire_page_5_corroborates_only_code_7_other():
 def test_native_projection_retains_raw_7_and_states():
     n=load('q217_native_witness.json')
     assert n['native_projection_completed'] is True
-    assert n['event_count']==5
-    events={e['response_state']:e for e in n['projection_events']}
-    assert events['SUBSTANTIVE_RESPONSE']['raw_bits']=='3ff0000000000000'
-    assert events['SUBSTANTIVE_RESPONSE']['canonical_value']=='1.0'
-    assert events['SOURCE_SPECIFIC_SPECIAL']['raw_bits']=='401c000000000000'
-    assert events['SOURCE_SPECIFIC_SPECIAL']['canonical_value'] is None
-    assert events['REFUSAL']['raw_bits']=='4058c00000000000'
-    assert events['DK']['raw_bits']=='4058800000000000'
-    assert events['MISSING']['raw_kind']=='none'
+    assert n['event_count']==12
+    assert n['response_rules']=='source.config.repaired.v3.json q217 values'
+    by_bits={e['raw_bits']:e for e in n['projection_events'] if e['raw_bits']}
+    assert by_bits['3ff0000000000000']['response_state']=='SUBSTANTIVE_RESPONSE'
+    assert by_bits['3ff0000000000000']['canonical_value']=='1'
+    assert by_bits['401c000000000000']['response_state']=='SOURCE_SPECIFIC_SPECIAL'
+    assert by_bits['401c000000000000']['canonical_value'] is None
+    assert by_bits['4058c00000000000']['response_state']=='REFUSAL'
+    assert by_bits['4058400000000000']['response_state']=='DK'
+    assert by_bits['4058800000000000']['response_state']=='DK'
+    assert any(e['raw_kind']=='none' and e['response_state']=='MISSING' for e in n['projection_events'])
     assert n['raw_7_identity'].startswith('RETAINED_AS_FLOAT64_BITS_401c000000000000')
 
 def test_generic_residual_check_separates_known_unknown_missing():
