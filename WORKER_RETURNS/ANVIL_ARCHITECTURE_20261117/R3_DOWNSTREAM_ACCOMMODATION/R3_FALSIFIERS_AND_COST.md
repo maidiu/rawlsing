@@ -1,8 +1,14 @@
 # R3 FALSIFIERS AND COST — minimal decision-changing witnesses
 
-**Status:** analytical/documentary. No native/100k/6 GiB run, no new benchmark.
-Existing sourcefree tests are cited only where already executed; no new test was
-needed in this pass.
+**Status:** analytical/documentary, corrected after R3 C
+`e4cda70a66af241297c230362a61b03e77bb13bc`. No native/100k/6 GiB run, no new
+benchmark. Existing sourcefree tests are cited only where already executed; no
+new test was needed for the static FF/schema findings.
+
+**Research linkage:** F1 [R3-RES-003/004], F2 [R3-RES-004], F3
+[R3-RES-003/004], F4 [R3-RES-005/024], F5 [R3-RES-006/007/026], F6
+[R3-RES-008], F7 [R3-RES-009], F8 [R3-RES-013/014/015], F9
+[R3-RES-002/014/015], F10 [R3-RES-023], F11 [R3-RES-024/025].
 
 ## 1. Finite design falsifiers
 
@@ -56,10 +62,14 @@ Input: two valid releases with different question wording/options/routing/time
 and a same-name variable; one overlapping and one non-overlapping population.
 Expected: separate C11 universes; F7 comparison only under exact authority;
 numeric uncovered mass and nonpooling refusal for non-comparable inputs; no
-individual longitudinal row.
+individual longitudinal row. C11 has design/estimand **authority refs** and
+frame labels, not PSU/strata/replicate weights/design variance or a numeric
+uncertainty interval; those are external F6 inputs or typed absent.
 Negative: same-name variable treated as measured trajectory; cross-sections
-joined into a pseudo-person; pooling without authority.
-Affected: F6/F7, L-05/L-08, S-06, K1-CAP-17.
+joined into a pseudo-person; pooling without authority; treating
+`design_authority_ref` or `uncertainty_method_or_typed_state` as the variance
+data.
+Affected: F6/F7, L-05/L-08, S-06, K1-CAP-17. [R3-RES-006/007/026]
 
 ### F6 — Independent material power changed, survey answers fixed
 
@@ -104,6 +114,33 @@ output; exact facts/replay; no fabricated PASS.
 Negative: 1.69–1.70× four-op author report extrapolated to 100; sparse canary
 called dense 100k; 20/118 structural guard called science.
 Status: **NOT RUN**; owner `#1006` + S04/I03.
+
+### F10 — Existing FF01-2 versus proposed FF01-k
+
+Input: (a) the fixed Q86B→Q86A two-participant producer fact; (b) a proposed
+ordered k≥3 conditioner/target joint with a separate reverse direction.
+Expected: FF01-2 returns only the exact two-target count profile with
+`participant_cardinality=2`, permission ceiling and no ratio. FF01-k is a
+**proposed versioned derived product** and must refuse if roles/order/keys,
+reverse risk basis, ratio permission, coverage/typed states or owner method are
+absent.
+Negative: claiming `ExactConditionalSupportProfile` already produces k>2 or
+reverse `P(D|Y,U,W)`; silently widening GT2; calculating a ratio without native
+qualified fact/owner permission; sharing a forward denominator with reverse.
+Affected: FF01, K1-CAP-08/26/27, T3, S-03/S-04. [R3-RES-023]
+
+### F11 — Source field map: C11 versus external versus absent
+
+Input: a request for original-language option/form/ballot, household/roster,
+PSU/strata/replicate weights/design variance, or numeric uncertainty.
+Expected: the exact C11 field map resolves each to C11 bytes, an external
+source/codebook/questionnaire/design artifact by exact identity, or typed
+absent/RIGHTS_HELD. It must not claim C11 contains what the inspected schema
+does not.
+Negative: `native_question_ref` assumed to contain option text; `design_authority_ref`
+assumed to contain variance data; `uncertainty_method_or_typed_state` assumed to
+be a numeric interval; household/roster invented.
+Affected: source meaning, F6/F7, K1-CAP-17, L-01/L-03. [R3-RES-024/025]
 
 ## 2. H/S/Q/O cost model
 

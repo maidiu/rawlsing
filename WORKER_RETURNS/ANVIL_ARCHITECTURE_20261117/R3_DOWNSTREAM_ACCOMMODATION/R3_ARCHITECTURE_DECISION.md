@@ -1,296 +1,301 @@
-# R3 ARCHITECTURE DECISION — downstream accommodation
+# R3 ARCHITECTURE DECISION — corrected downstream accommodation
 
-**Status:** `AUTHOR_CONDITIONAL_ACCOMMODATION_CANDIDATE_PENDING_FOCUSED_C`.
+**Status:** `AUTHOR_CONDITIONAL_ACCOMMODATION_CANDIDATE_G1_G5_CORRECTED_PENDING_SAME_C`.
 **Branch:** `agent/anvil-r3-downstream-accommodation-20261117-r1`.
-**Starting HEAD:** `f95e6eecc476ac09400a583503828bdee5571a24`.
-**Inherited candidate:** `06e88a5ac7e4c14362a97a046f44e25d8eec4162` (R2 tag
-`anvil-architecture-candidate-20261117-r1`/`r2` untouched).
+**Predecessor:** `c548ef10bc2276cbe6016a53b8a39b9728cbc922` (preserved).
+**Inherited candidate:** `06e88a5ac7e4c14362a97a046f44e25d8eec4162`.
+**Prior R2 C:** `d109ffa9fa8d88f60b6d8c11f3885428555c7bcd` (scoped direction only).
+**R3 focused C:** `e4cda70a66af241297c230362a61b03e77bb13bc` (`REVISE_EXACT_CONSEQUENTIAL_GAP`).
 **Product cut:** `cea2d4d3009e9087d2267e9d1f53bec28b730dc7`.
-**Prior C:** `d109ffa9fa8d88f60b6d8c11f3885428555c7bcd`, scoped acceptance of
-the conditional direction only — not whole downstream accommodation.
-**Protected currentness observed:** `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`,
-paired PYAT revision 11, read-only; prior `31291` snapshot is not live.
-**No** new product code, native run, source right, science/actor authorization,
+**Protected currentness observed:** `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, paired rev11, read-only.
+**No** product code, native/100k, raw source, source/science/actor grant,
 protected adoption or H1.
 
-## 1. Decision in one paragraph
+## 0. What this correction changes
 
-**Retain the accepted conditional physical direction** — prepared-session-first
-for within-process reuse, conditional one-journal/source-derived Q2 construction
-with full physical proof and second-certificate fallback, selected no-clobber
-recovery repair, and the durable locator index **held** — and **amend the access
-architecture** with an explicit, versioned, derived-access contract over the
-unchanged 13-family canonical C11. The contract defines respondent-major event
-access, question-major selector/denominator access, and content-addressed
-derived products (F1–F4, F6/F7 owner products, FF01, FF02/ N9/N10E/N10W/
-PRE-V3/SEAM/SOROK boundaries). It creates no new canonical body family, no new
-database, no new science engine and no psychological C11 columns. The physical
-storage stays; the access/derivation architecture becomes explicit and
-testable. Savings remain conditional on measurement: prepared sessions remove
-repeated `S` only, not fresh-open `S`, full-population `Q` or evidence-output
-`O`.
+C found five exact consequential gaps. This version does not defend the old
+wording:
 
-## 2. What is actually preserved versus accommodated
+- **G1:** The existing `ExactConditionalSupportProfile` is a fixed **Q86B→Q86A,
+  two-participant, count-only** relation. It is **not** a k>2 or reverse
+  distribution. Split `FF01-2` (existing exact count profile) from a proposed
+  versioned `FF01-k` derived-product contract. [R3-RES-023]
+- **G2:** C11 does **not** itself persist original-language option/form/ballot
+  content, household/roster namespace, PSU/strata/replicate weights/design
+  variance or numeric uncertainty. Add an exact field map: C11 exact field,
+  external source/codebook artifact, or typed absent/hold. [R3-RES-024]
+- **G3:** Add `research_refs` to capability rows and explicit R3-RES citations
+  in the decision/falsifiers. The ledger is not parallel decoration. [R3-RES-027]
+- **G4:** Supply exact per-family key/ref/binding map and a concrete native-
+  evaluator adapter contract; grade the typed views `CONDITIONAL_EXTENSION`,
+  not already accommodated. [R3-RES-025]
+- **G5:** State explicitly that PSU/strata/replicate weights/design variance and
+  numeric uncertainty are external F6 inputs or typed absent, not in
+  `WeightMeasureFact`/`EmpiricalFact`. [R3-RES-026]
 
-| Grade | Meaning in R3 |
+The canonical 13-family body, prepared-first, conditional Q2/full proof with
+second-certificate fallback, recovery repair and durable-index hold are
+unchanged.
+
+## 1. Selected direction
+
+**Retain the 13-family canonical body. Amend the access/derivation
+architecture with an explicit, versioned, conditional derived-access contract.**
+
+The contract has three parts:
+
+1. **Respondent-major event/material view** — exact events, occurrences,
+   routing, coordinates, weights and universe refs keyed by exact family fields.
+2. **Question-major selector/denominator view** — exact question/version,
+   routing/risk, weights/design refs and direction-specific condition/target
+   memberships.
+3. **Derived-product manifests** — content-addressed products for F1–F4,
+   F6/F7 owner products, FF01-2/FF01-k, FF02/N9/N10E/N10W/PRE-V3/SEAM/SOROK,
+   each with exact input refs, method/authority, typed states, negative,
+   replay, owner and invalidation.
+
+The existing native `execute_empirical_query` / `execute_exact_bounded_discovery`
+remain the scientific authority. The views are **candidate/selection and
+exact-object access**; they do not replace the evaluator, denominator logic or
+fact/replay output.
+
+## 2. Five grades used
+
+| Grade | Meaning |
 |---|---|
-| `PRESERVED_BYTES` | exact source/body/ref/state bytes remain in C11 or an immutable source |
-| `NOT_PRECLUDED` | no current field/contract logically forbids a future authorized computation |
-| `CONCEPTUALLY_ACCOMMODATED` | a concrete information→C11→access→derived-product→consumer route is specified, with owner and falsifier |
+| `PRESERVED_BYTES` | exact source/body/ref/state bytes remain in C11 or an immutable source artifact |
+| `NOT_PRECLUDED` | no current field/contract forbids a future authorized computation |
+| `CONCEPTUALLY_ACCOMMODATED` | concrete information→C11/external→access→derived-product→consumer route at known maturity |
 | `IMPLEMENTED_FIRST_CONSUMER` | actual code executes that route at the stated scope |
-| `SCIENTIFICALLY_OR_ACTOR_AUTHORIZED` | the science/actor/source owner has issued the claim; never inferred here |
+| `SCIENTIFICALLY_OR_ACTOR_AUTHORIZED` | separate owner issuance; never inferred |
 
-The R3 claim is **conceptual accommodation at known downstream maturity**, not
-native performance, scientific truth or actor authorization. Existing R2
-prepared-path tests are sourcefree implementation evidence; they do not
-authorize downstream science.
+`OWNER_HELD` is only for genuinely unissued science/source/actor authority. It
+does not hide an access/derivation decision.
 
-## 3. Currentness, authority and inherited limits
+## 3. R3-DERIVED-ACCESS — exact contract
 
-- Protected `5d387a9a…` and paired revision 11 were read; the prior local
-  `31291` snapshot is historical, not live. No protected write.
-- R2 C accepted the corrected documentary **direction** only. Its source-lineage
-  inspection was sampled, not exhaustive; this R3 package does not claim a
-  141-row recensus or a new 118/20 guard.
-- The 26 PYAT-PC `NOT_ADOPTED`, 14 P4R `HELD`, F26 exact caller/invalidation
-  (`K1-CAP-24` / `P4R-R02` / `PYAT-PC-R11-21`) and separate 52/24/21 estate
-  remain exactly as before. No historical status is promoted.
-- The 13-family body remains `EmpiricalUniverse`, `RespondentIdentity`,
-  `QuestionVariableBinding`, `RespondentEvent`, `RoutingEligibilityFact`,
-  `EmpiricalCoordinateFact`, `WeightMeasureFact`, `AuthoritySnapshot`,
-  `SourceUniverseRelation`, `EmpiricalPredicateReplayBinding`,
-  `ComparatorReplayBinding`, `DiscoveryBranchReplayBinding`,
-  `StructuralAdmissionReplayBinding`.
+### 3.1 Family keys and exact refs
 
-## 4. The selected access architecture — R3-DERIVED-ACCESS
+The exact per-family key/ref/binding map and adapter are in
+`R3_FIELD_AND_ADAPTER_CONTRACT.md`. Summary:
 
-The canonical body is unchanged. Add a **read-only derived-access contract**,
-not a new canonical C11 family:
+- **EmpiricalUniverse**: exact `ref`; `raw_source_identity`, `source_family`,
+  `study_product_release`, `instrument_release`, `country_geography`,
+  `sampling_geography`, `raw_wave`, `canonical_wave_if_governed`,
+  `field_or_reference_time`, `target_population_and_sample_frame`,
+  `sampling_design_regime`, `respondent_namespace`,
+  `source_artifact_import_lineage`, `harmonization_authority_ref`,
+  `source_relation_refs`.
+- **RespondentIdentity**: `(universe_ref, respondent_key)` with
+  `source_native_respondent_key_ref_or_typed_absence`,
+  `identity_map_authority_ref_or_typed_absence`.
+- **QuestionVariableBinding**: `(universe_ref, native_question_ref,
+  instrument_question_version, canonical/component ref or typed absence)`;
+  semantic/topology authority refs. No option/form/ballot content.
+- **RespondentEvent**: exact `ref`; `(universe_ref, scoped_respondent_ref,
+  native_question_ref, canonical/component refs, event_group_id,
+  response_event_id_or_deterministic_index, response_topology_ref,
+  multiplicity_order_rank_fields, response_state)`; raw/canonical value and
+  transform authority.
+- **RoutingEligibilityFact**: exact `ref`; `(universe_ref, respondent_ref,
+  question_or_target_ref, risk_set_ref, routing_rule_ref, applicability_state,
+  routing_state, parent_predicate_refs, member_set_replay_ref)`.
+- **EmpiricalCoordinateFact**: exact `ref`; `(universe_ref, respondent_ref,
+  native_coordinate_ref, canonical_coordinate_ref_if_authorized,
+  effective_or_reference_time, coordinate_state)`; unit/taxonomy and semantic
+  authority.
+- **WeightMeasureFact**: exact `ref`; `(universe_ref, respondent_ref,
+  weight_basis_id, effective_scope_ref, weight_source_ref, design_authority_ref,
+  estimand_authority_ref, weight_state)`; exact weight representation.
+- **EmpiricalFact**: exact `ref`; query/condition/risk/measure refs, universe
+  refs, raw/weighted support, typed uncertainty method/state, provenance,
+  replay. No numeric variance/interval field.
 
-### 4.1 Respondent-major event view
+**Cardinality/ambiguity rules:** duplicate key → refuse; missing required key →
+typed absence/refusal; multiple weights/routing/coordinates for the same key →
+typed ambiguity/refuse; occurrence key must include event id/topology; no
+first-value pivot; no cross-universe/respondent join unless exact relation
+authority; release/universe/current mismatch → refuse.
 
-A typed view over `RespondentEvent` + `RoutingEligibilityFact` +
-`EmpiricalCoordinateFact` + `WeightMeasureFact`, keyed by exact
-`(universe, respondent, question/native, occurrence/rank/repeat)`:
+### 3.2 Native-evaluator adapter
 
-- exact raw/canonical value and typed state;
-- native/canonical/component role refs;
-- occurrence group/id/topology;
-- risk/eligibility/routing status;
-- weight/design refs where issued;
-- source/instrument/time/authority refs.
+The existing accepted route is `DirectEstateI03Session.indices_for` returning
+`_ReleaseIndex` with `release`, `universe`, `respondents`,
+`events_by_respondent`, `coordinates_by_respondent`, `routing_by_respondent`,
+`weights_by_respondent`, `source_relations` and
+`native_verified_physical_respondent_order`. `execute_empirical_query` accepts
+`C11Repository` or exact `DirectEstateI03Session`; group scope is refused for
+the cold sourcefree session.
 
-This is the physical view needed for true same-person k≥3, repeated/ranked
-events, F2/F3/F4 and FF01. It may be implemented as bounded in-memory typed
-selection first; a persisted compact form is a later option, not a new body.
+The proposed extension is a **read-only adapter** that either:
 
-### 4.2 Question-major selector/denominator view
+- materializes the exact existing `_ReleaseIndex` from the typed views and
+  presents it through an owner-qualified exact session type; or
+- adds a narrow owner-approved protocol branch accepting an exact
+  `R3DerivedReadView` whose `indices_for(query, release_refs)` returns the same
+  exact `_ReleaseIndex` and whose `_live()`/current checks are equivalent.
 
-A typed view over `QuestionVariableBinding` + native/canonical/component refs +
-`RoutingEligibilityFact` + weight/design and predicate/risk refs:
+**Status:** `CONDITIONAL_EXTENSION`; not implemented. It must yield exact
+`RespondentIdentity`/`RespondentEvent`/`RoutingEligibilityFact`/
+`EmpiricalCoordinateFact`/`WeightMeasureFact` objects/refs, not a new fact
+format. The adapter must expose the full risk population and nonselected
+members; it may not pre-decide denominator or fact identity. The native
+evaluator remains the authority.
 
-- native option/form/routing/version;
-- eligible / asked / observed / refused / inapplicable / routing-unknown;
-- forward and reverse condition/target roles;
-- weight/estimand/design scope;
-- exact risk-set and predicate refs.
+### 3.3 Reusable selection membership
 
-This is the view needed for demand-driven selection without a full respondent
-scan for every operation. It is a selector/denominator view, not a new
-scientific evaluator.
+A reusable selection/membership object is keyed by:
+`(release_ref, universe_ref, condition_predicate_ref, risk_set_ref,
+ordered target_refs, direction/role, routing state set, weight_basis_id,
+measure_basis_ref, source_scope)`.
 
-### 4.3 Derived-product contract
+It may be shared across different operations only when that whole identity is
+identical. It stores candidate respondent/event refs and complement counts, not
+facts, denominators or evidence. It is invalidated by source/release/frame/
+current/revocation change. Sparse selection uses exact postings; full-domain
+k-way uses the native evaluator’s exact support enumeration. No precomputed
+Cartesian product and no Q-reduction claim without measurement.
 
-Every downstream product is an immutable manifest with exact:
-`input C11 release + universe + fact/ref set + method/authority + typed state +
-negative/refusal + replay + owner + validity/invalidation + claim grade`.
-Examples:
+## 4. Strongest-alternative court
 
-- `F1-F4` product: native `execute_empirical_query` / `AnalyticalCompositionResult`
-  output, exact risk/denominator refs, true same-person joint.
-- `F6` numeric product: separate owner-held partial-identification interval and
-  uncovered mass; no C11 canonical F6 family.
-- `F7` comparability product: separate owner-held wave/source comparison; C11
-  supplies separate universes/time/instrument refs, never a fake longitudinal
-  row.
-- `FF01` conditional support: existing `ExactConditionalSupportProfile` /
-  `produce_exact_conditional_support_profile` over native facts.
-- `FF02` structural/material product: independent external authority, not a
-  relabel of FF01; may reference C11 positions but must carry its own
-  provenance/population/time/rule.
-- `N9/N10E/N10W/PRE-V3` world possibility: `run_progressive_chain` /
-  `provide_empirical_possibility_slice` over C11 facts plus separately issued
-  world/structural material.
-- `SEAM` encounter/access and `SOROK` actor history: separate owners; C11
-  provides source/position/time/occurrence refs, not actor private knowledge.
+- **Prepared-session-first only:** retained as the first step; insufficient for
+  fresh-open S, full Q/O and explicit downstream access.
+- **Demand-driven typed access + derived products:** selected access
+  architecture, but the typed view itself is `CONDITIONAL_EXTENSION` until the
+  exact adapter/one-build proof exists. [R3-RES-025]
+- **Compact durable/secondary access:** genuinely competitive and held; only
+  route to remove fresh-open S, but 1.30 GB cited retained cost and
+  invalidation/rebuild economics are unproven. [R3-RES-014]
+- **New primary DB / full object graph / precompute-all:** rejected; new
+  body/authority surface, duplication, staleness or cost.
 
-The v1 fact/ref/replay ABI remains intact. Any versioned compression/sharing is
-owner-qualified and must preserve exact fact identity; no permanent per-query
-precomputation.
+## 5. Six capability envelopes — corrected claims
 
-### 4.4 Physical implementation choice
+### 5.1 Source observability and native meaning — `CONCEPTUALLY_ACCOMMODATED`
 
-| Choice | Disposition | Reason |
-|---|---|---|
-| Prepared-session-first within process | **RETAIN** | actual code, exact facts, removes repeated `S`; no new retained artifact |
-| Conditional one-journal/source-derived Q2 | **RETAIN CONDITIONAL** | removes duplicate representation only if full physical proof against Q2 survives; second-certificate fallback mandatory |
-| Recovery no-clobber claim/lease/typed orphan | **RETAIN CONDITIONAL** | actual target-before-manifest defect; crash-injection proof still required |
-| Durable locator index | **HELD** | only route to remove fresh-open `S`, but 1.30 GB cited retained cost and invalidation/rebuild economics unproven; must earn place |
-| New primary DB / bitmap / DuckDB / Stone | **NOT SELECTED** | no evidence it beats the derived views on exactness/retention; avoid fashion |
-| Batch prepared variable | **PROPOSED_NOT_WIRED** | exact-type guards reject prepared subclass; owner-approved adapter required |
+C11 preserves exact native question **refs**, instrument version, routing
+state/refs, raw/canonical values, respondent namespace, occurrence/repeat,
+weights/design authority refs, source/time/authority. It does **not** itself
+carry original-language option/form/ballot content, household/roster namespace,
+PSU/strata/replicate weights/design variance or numeric uncertainty. Those are
+resolved through an external source/codebook/questionnaire artifact by exact
+native ref or typed absent/hold. [R3-RES-024]
 
-**Key distinction:** unchanged 13-family storage does **not** mean unchanged
-access architecture. R3 changes the access/derivation contract, not the
-canonical body.
-
-## 5. Strongest-alternative court
-
-### Alternative A — prepared-session-first only
-
-**Verdict: insufficient as the whole destination, retained as the first query
-step.** It removes repeated `S` within one process. It does not remove
-fresh-open `S`, full-universe `Q` or evidence-output `O`. It also has no
-explicit contract for question-major selection, derived products or downstream
-owner handoffs. It is a valid optimization, not a complete accommodation.
-
-### Alternative B — demand-driven typed selection / respondent-major + question-major + reusable derived intermediates
-
-**Verdict: selected access architecture.** It directly addresses the known
-information/access needs without a new body corpus. It can be implemented in
-bounded typed views first, with exact C11 refs and native evaluators. It
-accommodates K1-CAP-08/17/23/27 and FF/SEAM/SOROK boundaries at the right
-owner grade. It preserves the v1 fact/output ABI.
-
-### Alternative C — compact durable/secondary access
-
-**Verdict: genuinely competitive, held.** It is the only route that can remove
-fresh-open `S` and make 1/10/100 fresh processes cheap. But the cited SQLite
-index is 1.30 GB (≈4.19× the 310.16 MB estate); invalidation/rebuild frequency
-and compact exact encoding are unmeasured. It must pass `#1006` H/S/Q/O and a
-retained-size/binding gate. It is not rejected forever and not selected now.
-
-### Alternative D — new canonical body database / full object graph / per-query precompute
-
-**Verdict: rejected.** New authority/body surface, duplicate evidence, RSS/cost,
-or stale output. No evidence it is needed for the known capabilities.
-
-## 6. Six capability envelopes — summary
-
-### 6.1 Source observability and native meaning
-
-C11 preserves native item/option/form/routing/version, raw/canonical values,
-respondent/household namespace, occurrence/rank/repeat, typed absent/unknown,
-weights/design and source/time/authority. The derived observability profile
-classifies `OBSERVED_RESPONDENT`, `SAMPLE_DESIGN_ONLY`,
+Observability classes remain `OBSERVED_RESPONDENT`, `SAMPLE_DESIGN_ONLY`,
 `COLLECTED_BUT_NOT_RELEASED`, `EXTERNAL_GROUP_CONTEXT`, `PROXY_OBSERVED`,
-`MEASUREMENT_NONCOMPARABLE`, `RIGHTS_HELD`. A design stratum is never an
-individual sect/ancestry. The route is conceptually accommodated; source
-rights and wave availability remain owner/source holds.
+`MEASUREMENT_NONCOMPARABLE`, `RIGHTS_HELD`. A stratum is not an individual
+sect/ancestry. [R3-RES-005]
 
-### 6.2 Respondent-coherent DDM and F1–F4/I03/I05
+### 5.2 Respondent-coherent DDM, F1–F4, I03/I05 — `CONCEPTUALLY_ACCOMMODATED` (native route) + `CONDITIONAL_EXTENSION` (typed view)
 
-The respondent-major view carries exact events/occurrences; the question-major
-view carries risk/denominator roles; native `execute_empirical_query`,
-`execute_exact_bounded_discovery` and `AnalyticalCompositionResult` compute
-F1–F4. True same-person k≥3, F2 forward/reverse, F3 minority/recursive and
-signed/neutral distinctions are preserved in the native evaluator and exact
-refs. Historical V549/V550/V550J semantics are conserved functionally, not as
-old carriers. F26 remains held. Pairwise substitution is refused.
+Native `execute_empirical_query`, `execute_exact_bounded_discovery` and
+`AnalyticalCompositionResult` preserve true same-person k≥3, F2 direction-
+specific bases, F3 minority/recursive and occurrence/repeat. The typed views
+must supply exact candidate streams through the adapter in §3.2; without that,
+the view is conditional. Pairwise substitution is refused. [R3-RES-001/
+002/003/004/021/025]
 
-### 6.3 F6/F7 numerical and historical comparison
+### 5.3 F6/F7 numerical and historical comparison — `EXTERNAL_OWNER_HELD`
 
-C11 preserves separate releases, universes, waves, instruments, time, design
-and source relations. F6 numeric partial-ID/uncovered mass is a separate
-owner-held derived product; the I07 structural guard is not numeric proof. F7
-cross-wave comparability is a separate owner-held product; same-name variables
-are not a measured trajectory, and cross-sections are not an individual
-longitudinal join. No pooling without authority. This is a genuine external
-science hold, not an architectural omission: the information needed to ask the
-question is preserved.
+C11 preserves separate releases/universes/waves/time/instrument/design
+authority refs and source relations. It does **not** contain F6 numeric
+intervals, uncovered mass, PSU/strata/replicate weights, design variance or a
+numeric uncertainty interval. `EmpiricalFact.uncertainty_method_or_typed_state`
+is a method/state, not a variance. F6/F7 are separate owner-held derived
+products; no pooling, fake longitudinal person or I07-as-numeric substitution.
+[R3-RES-006/007/026]
 
-### 6.4 FF01 and Field Forge
+### 5.4 FF01 and Field Forge — `FF01-2 IMPLEMENTED_NARROW`, `FF01-k CONDITIONAL_EXTENSION`
 
-`ExactConditionalSupportProfile` already models conditional support with
-producer/relation permissions, typed states and replay. The R3 contract extends
-the route to `P(Y1..Yk|D,U,W)` and reverse `P(D|Y,U,W)` over exact F1–F4
-facts, with ordinary/minority alternatives, role/position contrasts,
-branch/recursive conditionals, uncertainty/coverage. FF01 is a derived product;
-it is not a canonical C11 psychological field. FF01 measured association is
-not FF02 structural power.
+**FF01-2:** the existing `ExactConditionalSupportProfile` is a fixed
+**two-target Q86B→Q86A** count relation (`participant_cardinality=2`) and
+explicitly does not calculate ratios. It is an exact count profile, not a
+general conditional distribution. [R3-RES-023]
 
-### 6.5 FF02/material power, N9/N10E/N10W, PRE-V3, SEAM and SOROK
+**FF01-k (proposed, not implemented):** a versioned derived-product contract
+for ordered k≥2 conditioner/target roles and a separate reverse direction:
+- exact keys: release/universe/time/population/conditioner roles/target
+  roles/order/risk-set/measure/direction;
+- direction-specific numerator/denominator/routing/weights/coverage/zero/
+  unknown/refused/inapplicable states;
+- producer inputs: exact native I03/F1–F4 facts; no ratio unless the existing
+  native qualified fact and owner permission support it;
+- relation permission ceiling cannot widen producer;
+- first consumer: FF01 science owner / prospective FF/N9 reader, exact hold;
+- method/eligibility/ratio/weighted-estimand issuance remains `OWNER_HELD`.
+No new metric/science authority is created.
 
-C11 can supply positions, resources actually measured, time, occurrence,
-universe relations and exact fact refs. FF02 must add independently measured
-institutional/legal/economic power with its own population/time/rule. N9/N10E/
-N10W world possibility uses `run_progressive_chain` / possibility provider plus
-separate world material. SEAM needs an encounter/access relation; C11 does not
-invent contact probabilities. SOROK `HistoricalWorld` owns actor-specific
-access, interpretation, identification and action. Availability ≠ access ≠
-comprehension ≠ identification ≠ action. No respondent psyche, sect/ancestry,
-longitudinal person, contact probability, hegemony or causal antagonism is
-minted.
+### 5.5 FF02/material power, N9/N10E/N10W, PRE-V3, SEAM/SOROK — `OWNER_HELD` with nonpreclusion
 
-### 6.6 Construction, query and evidence economics
+C11 supplies exact source facts, positions, time, occurrence and universe
+relations. FF02 must add independent institutional/legal/economic power;
+N9/N10W add separately issued world possibility; SEAM adds encounter/access;
+SOROK owns actor-specific access/interpretation/identification/action.
+Availability ≠ access ≠ comprehension ≠ identification ≠ action. No invented
+power, contact probability, psyche or longitudinal person. [R3-RES-008/009/
+010/022]
 
-The selected access architecture separates source decode/Q2 proof, canonical
-body, cold `H`, session `S`, per-operation `Q` and evidence `O`. Prepared-first
-removes repeated `S` in one process. Demand-driven typed views can reduce
-selector/denominator work without a second evaluator. Fresh-open `S` remains
-until a compact durable index earns its retained cost. Evidence output is
-30–50 MB/fact at 100k before provenance (100 facts 3–5 GB), so exact set-ref
-sharing under identical population/condition/routing/measure/wave is required;
-replay re-executes; cached facts are never authoritative.
+### 5.6 Construction, query and evidence economics — retained/conditional/held
 
-## 7. K1-CAP-08/17/23/27 — specific findings
+Prepared-first retains repeated-S removal within one process; fresh-open S, Q
+and O remain. Conditional one-journal/source-derived Q2 with full physical
+proof and second-certificate fallback; recovery claim/lease conditional;
+durable index held. Evidence output is 30–50 MB/fact at 100k before provenance;
+100 facts is 3–5 GB. Exact set-ref sharing only under identical identity;
+replay re-executes. [R3-RES-002/013/014/015/016/020]
 
-The generic crosswalk fate is **not sufficient**. Actual adjacent code/contracts
-support concrete routes, with different grades:
+## 6. K1-CAP-08/17/23/27 — corrected specific routes
 
-- **K1-CAP-08 signed neutral/nonneutral structural atom:** source projection
-  carries native value/role/authority; `evaluate_structural_empirical_admission`
-  provides exact admission/refusal and support/uncertainty material; FF02
-  structural owner issues signed/nonneutral meaning. **Partially accommodated;
-  signed/neutral is not a standalone canonical field and must not be collapsed
-  to absence or causal power.** Owner-held at FF02.
-- **K1-CAP-17 F6 numerical partial-ID:** no dedicated F6 numeric C11 family or
-  complete numeric method exists. `compute_effective_n` is F018 effective-N,
-  not F6; I07/I04 structural admission is not numeric partial identification.
-  C11 preserves the source/frame/design/weight/uncertainty material; F6 interval
-  and uncovered mass are a separate owner-held derived product. **Owner-held
-  science, not architectural loss.**
-- **K1-CAP-23 objective N9 world vs SOROK person:** `run_progressive_chain`
-  and `provide_empirical_possibility_slice` produce world/possibility material;
-  `sorok_history.owner.HistoricalWorld` is a separate actor reader. **Route
-  conceptually accommodated; actual N9/SOROK first reader owner-held.**
-- **K1-CAP-27 J-to-FF handoff:** `j_component_certification_validator` +
-  `JFamilyRoleAssignment`/`JComponentCertificationPremise` +
-  `build_m1_bundle_from_m01`/`adapt_m1_disposition_to_m2` provide the exact J/
-  FF manifest path. **Route exists at code-contract grade; selected J→FF
-  first reader and science remain owner-held.**
+- **K1-CAP-08 signed neutral/nonneutral:** source value/role/authority and
+  structural admission exist; signed/nonneutral meaning is **not** a standalone
+  canonical field. FF02 owner issues sign/power; neutral0 is not missing,
+  nonneutral is not causal power. `CONCEPTUALLY_ACCOMMODATED at admission;
+  FF02 OWNER_HELD`. [R3-RES-012]
+- **K1-CAP-17 F6 numeric:** no dedicated F6 numeric C11 family/method; I07/I04
+  is structural admission, effective-N is F018. C11 preserves source/frame/
+  design/weight authority material; F6 interval/uncovered mass are external
+  owner-held derived products. [R3-RES-006/026]
+- **K1-CAP-23 N9 vs SOROK:** `run_progressive_chain` /
+  `provide_empirical_possibility_slice` produce world/possibility material;
+  `HistoricalWorld` is separate actor. Route conceptually accommodated; actual
+  N9/SOROK first reader owner-held. [R3-RES-010]
+- **K1-CAP-27 J→FF:** `j_component_certification_validator` + J role/component
+  objects + `build_m1_bundle_from_m01`/`adapt_m1_disposition_to_m2` provide a
+  scoped manifest path; selected J→FF first reader and certification remain
+  owner-held. [R3-RES-011]
 
-## 8. Explicit dispositions
+## 7. Dispositions
 
-- **RETAIN** prepared-session-first within-process.
-- **RETAIN CONDITIONAL** one-journal/source-derived Q2 and recovery repair.
-- **HOLD** durable locator index pending H/S/Q/O and compact exact
-  encoding/binding/invalidation/retained-size evidence.
-- **MODIFY** access/derivation architecture: add R3-DERIVED-ACCESS contract;
-  canonical 13-family body unchanged.
-- **PROPOSED_NOT_WIRED** prepared Batch/wrapper path.
-- **OWNER_HELD** FF02 material power, F6 numeric, F7 comparability, N9/N10W/
-  PRE-V3, SEAM encounter/access, SOROK actor, F26, original35/source/science/
-  actor rights, 100k/6 GiB/1–10/100.
-- **NO NEW** C11 family, primary DB, body corpus, science engine or protected
-  status.
+- **RETAIN** 13-family canonical body, prepared-first, conditional Q2/full
+  proof/fallback, conditional recovery.
+- **MODIFY** access/derivation: typed views are `CONDITIONAL_EXTENSION` pending
+  exact adapter; derived products are versioned/owner-held.
+- **HOLD** durable index, F6 numeric, F7 comparability, FF02/N9/N10W/PRE-V3/
+  SEAM/SOROK, F26, native/source/science/actor rights, 100k/6 GiB/1–10–100.
+- **PROPOSED_NOT_WIRED** Batch prepared path.
 
-## 9. Terminal statement
+## 8. Terminal statement
 
-To the best of what is presently conceptualized downstream, the chosen C11 and
-surrounding derived-access/derivation architecture **conceptually accommodate**
-the six capability envelopes at the stated grades, with exact routes, preserved
-information, falsifiers and owner boundaries. They do **not** yet implement all
-first consumers, authorize the science/actor/source claims, or prove native
-100k/6 GiB/1–10–100 economics. The remaining gaps are named, bounded and
-owner-routed, not hidden under a generic `OWNER_HOLD` or a false claim of
-universal future proof.
+At present conceptual maturity, the R3 package demonstrates a credible
+**information-preservation and derived-access design** for the six envelopes,
+with exact C11/external/hold field boundaries, direction-specific semantics and
+owner routes. It does **not** demonstrate a complete implemented first consumer
+for FF01-k, F6/F7, FF02/N9/N10W/SEAM/SOROK, typed-view Q reduction, native
+100k/6 GiB/1–10–100 or source/actor/science authorization. Those are precise
+remaining gaps, not hidden under a generic hold.
+
+
+## 9. Exact research citation index
+
+The following R3-RES entries are relied upon by this decision:
+
+| Decision section | Research IDs | Use |
+|---|---|---|
+| §3/§5.2 native F1-F4 and typed view | R3-RES-001, R3-RES-002, R3-RES-003, R3-RES-004, R3-RES-021, R3-RES-025 | storage/access distinction; prepared S only; true joint; F2 denominators; conditional typed view |
+| §5.1 source observability | R3-RES-005, R3-RES-024 | observability classes; exact C11/external/absent field map |
+| §5.3 F6/F7 | R3-RES-006, R3-RES-007, R3-RES-026 | numeric vs guard; crosswave comparability; PSU/strata/variance external |
+| §5.4 FF01 | R3-RES-008, R3-RES-023 | FF01/FF02 firewall; FF01-2 vs FF01-k correction |
+| §5.5 FF02/N9/SOROK | R3-RES-008, R3-RES-009, R3-RES-010, R3-RES-022 | power/encounter/actor boundaries; documentary status |
+| §5.6 construction/economics | R3-RES-002, R3-RES-013, R3-RES-014, R3-RES-015, R3-RES-016, R3-RES-020 | S/Q/O; Q2 source; durable index; evidence; Batch; recovery |
+| §6 K1-CAP-08/17/23/27 | R3-RES-012, R3-RES-006, R3-RES-026, R3-RES-010, R3-RES-011 | signed atom; F6; design variance; N9/SOROK; J/FF |
+| G3 linkage | R3-RES-027 | decision-to-ledger reverse link |

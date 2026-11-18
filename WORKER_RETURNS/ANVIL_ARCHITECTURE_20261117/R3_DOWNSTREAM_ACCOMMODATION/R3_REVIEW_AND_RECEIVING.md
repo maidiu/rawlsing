@@ -1,6 +1,6 @@
 # R3 REVIEW AND RECEIVING — additive package
 
-**Status:** `AUTHOR_CONDITIONAL_ACCOMMODATION_CANDIDATE_PENDING_FOCUSED_C`.
+**Status:** `AUTHOR_CONDITIONAL_ACCOMMODATION_G1_G5_CORRECTED_PENDING_SAME_C`.
 **Branch:** `agent/anvil-r3-downstream-accommodation-20261117-r1`.
 **Starting HEAD:** `f95e6eecc476ac09400a583503828bdee5571a24`.
 **Write root:** `WORKER_RETURNS/ANVIL_ARCHITECTURE_20261117/R3_DOWNSTREAM_ACCOMMODATION/`.
@@ -39,6 +39,8 @@ Files:
 - `R3_REVIEW_AND_RECEIVING.md`
 - `R3_RESEARCH_LEDGER.jsonl`
 - `R3_RESEARCH_SYNTHESIS.md`
+- `G1_G5_CORRECTION_MAP.md`
+- `R3_FIELD_AND_ADAPTER_CONTRACT.md`
 - `R3_PACKAGE_MANIFEST.json` (self-excluded hash list)
 
 ## 3. Proof grades and claim ceiling
@@ -101,3 +103,28 @@ protected owner later receives the scoped result, it should be by correct
 expected-HEAD CAS into the existing PROGRAMMA and paired CURRENT_PROGRESS,
 with archive pointers, not by duplicating this research corpus. If that cannot
 happen, `HQ_CURRENTNESS_HOLD` with the exact gap is required.
+
+
+## 7. G1–G5 correction after focused C `e4cda70a`
+
+The same focused C returned `REVISE_EXACT_CONSEQUENTIAL_GAP` on the predecessor
+`c548ef10`. The corrected descendant changes claims, not the selected physical
+direction:
+
+- G1: split existing FF01-2 fixed Q86B/Q86A two-participant count profile from
+  proposed FF01-k/reverse product; no claim that the existing function supplies
+  k>2 or ratios.
+- G2: exact C11/external/typed-absent field map; corrected overbroad
+  source-preservation claims for option/form/ballot, household/roster,
+  PSU/strata/variance and numeric uncertainty.
+- G3: added `research_refs` to every capability row and explicit R3-RES
+  citations in decision/falsifiers; appended entries 023–027 and reverse
+  cross-refs.
+- G4: added exact per-family keys and native-evaluator adapter contract;
+  typed views are `CONDITIONAL_EXTENSION`, not implemented.
+- G5: named PSU/strata/replicate weights/design variance/numeric uncertainty as
+  external F6 inputs or typed absent.
+
+The same distinct reviewer session is asked to recheck this exact correction.
+No self-acceptance, product implementation, native/100k, source/science/actor
+authorization, protected adoption or H1 is claimed.

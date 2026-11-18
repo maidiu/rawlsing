@@ -3,57 +3,63 @@
   "capability_rows": 10,
   "claims": {
     "conceptual_accommodation": true,
+    "ff01_k_implemented": false,
     "h1": false,
     "native_100k": false,
     "new_benchmark": false,
     "product_edit": false,
     "protected_adoption": false,
-    "source_science_actor_authorization": false
+    "source_science_actor_authorization": false,
+    "typed_view_implemented": false
   },
   "files": [
     {
-      "bytes": 16381,
+      "bytes": 16864,
       "path": "R3_ARCHITECTURE_DECISION.md",
-      "sha256": "c4d711a25d490293a72dd2f0fbb64f9db19e5065d61bce72c8738a20462f7bcb"
+      "sha256": "ebb52317929c5e246e7095af8a1c8e736fc35b92a0bda660a7fdf8e464147fb9"
     },
     {
-      "bytes": 12671,
+      "bytes": 12186,
       "path": "R3_CAPABILITY_ACCOMMODATION.tsv",
-      "sha256": "e60803bb426c7342ba37b0fb294aa03de09e0e9b254b1c5a56ac237c898fb8f3"
+      "sha256": "8ae0ee6f789eeee7fbc218d39a50e022b0f8d49b4fe0aa5f670f64e5cd3e9220"
     },
     {
-      "bytes": 7976,
+      "bytes": 10165,
       "path": "R3_FALSIFIERS_AND_COST.md",
-      "sha256": "fa0fa93764526ba60c80f27c3f05c23441442f6de1c8bc4cc3d4dc673fdfa68c"
+      "sha256": "881d95a7747fd85079f8041a364708b5d354452e3120bd924fd310e663e38732"
     },
     {
-      "bytes": 5939,
+      "bytes": 7217,
       "path": "R3_REVIEW_AND_RECEIVING.md",
-      "sha256": "ab4e50552cf91a64f88b55794ce6754373e108ca1a5f7ca2e3442385c85ec459"
+      "sha256": "ce4aae66d665689a545fd8565a8b84cc8d8fe139cebec6b78899d87011c6c802"
     },
     {
-      "bytes": 28381,
+      "bytes": 36247,
       "path": "R3_RESEARCH_LEDGER.jsonl",
-      "sha256": "7774da707d08dd86a36e9ce8b9bade22f51180764c16cd1aceabca2518e37166"
+      "sha256": "ab99056d7c51420f81a549c94a77130b2007a4e06360111d387cbfa6355cafe2"
     },
     {
-      "bytes": 10846,
+      "bytes": 13337,
       "path": "R3_RESEARCH_SYNTHESIS.md",
-      "sha256": "a3c55b50aebf0c89982639061dc4f2f3f2e63af9cc82e5e39b0eb4778def846f"
+      "sha256": "7f50f453957fb06407390489f8531f71ae6613bcaefaf47d52eeb2e9d0dd595c"
+    },
+    {
+      "bytes": 3530,
+      "path": "G1_G5_CORRECTION_MAP.md",
+      "sha256": "964f45cad590f9135a2af0a8253ab82dc77fe407de7d14e4f095bac7aea617ab"
+    },
+    {
+      "bytes": 10174,
+      "path": "R3_FIELD_AND_ADAPTER_CONTRACT.md",
+      "sha256": "df0839d7bd57aed5bfeb49c9d0cfe128358cef2ea018659eda46a99e8b4d98cf"
     }
   ],
   "package_head": "SEE_GIT_COMMIT",
-  "prior_refs": {
-    "c_r2": "d109ffa9fa8d88f60b6d8c11f3885428555c7bcd",
-    "candidate": "06e88a5ac7e4c14362a97a046f44e25d8eec4162",
-    "construction": "f8c98027599b62069c03a269989075b4442f5138",
-    "product": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
-    "protected_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
-    "query": "a5ea7fd9c6d8fdb4ba43d839bff900df4b60d89a"
-  },
-  "research_ledger_entries": 22,
-  "schema": "ANVIL_R3_DOWNSTREAM_ACCOMMODATION_PACKAGE",
+  "predecessor": "c548ef10bc2276cbe6016a53b8a39b9728cbc922",
+  "research_ledger_entries": 27,
+  "review": "e4cda70a66af241297c230362a61b03e77bb13bc",
+  "schema": "ANVIL_R3_DOWNSTREAM_ACCOMMODATION_CORRECTED_PACKAGE",
   "self_excluded": true,
   "start_head": "f95e6eecc476ac09400a583503828bdee5571a24",
-  "status": "AUTHOR_CONDITIONAL_ACCOMMODATION_CANDIDATE_PENDING_FOCUSED_C"
+  "status": "AUTHOR_CONDITIONAL_ACCOMMODATION_G1_G5_CORRECTED_PENDING_SAME_C"
 }

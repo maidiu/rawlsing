@@ -222,3 +222,52 @@ must pass `#1006` H/S/Q/O and a retained-size/binding gate.
 These negatives are as important as the selected route because they prevent a
 future reader from mistaking a documentary accommodation for an implemented or
 authorized capability.
+
+
+## 7. Post-C correction (G1–G5)
+
+The first R3 synthesis overclaimed two things. They are corrected here rather
+than silently rewritten:
+
+1. **FF01 was not a general conditional-distribution route.** The existing
+   `ExactConditionalSupportProfile` is a fixed Q86B→Q86A, two-participant
+   **count** profile with no ratios. `FF01-2` is the implemented narrow object;
+   `FF01-k` and reverse `P(D|Y,U,W)` are a proposed versioned derived-product
+   contract, with owner-held method/eligibility/ratio/weighted estimand.
+   [R3-RES-023]
+2. **C11 does not itself carry every source-design field.** Inspected schema:
+   `QuestionVariableBinding` has native ref/version, not option/form/ballot
+   text; `EmpiricalUniverse` has respondent namespace/frame/design-regime
+   labels, not household/roster or PSU/strata/variance; `WeightMeasureFact` has
+   design/estimand authority refs, not variance/PSU/strata/replicate weights;
+   `EmpiricalFact` has an uncertainty method/state, not a numeric interval.
+   These are external source/codebook/design artifacts by exact identity or
+   typed absent/RIGHTS_HELD. [R3-RES-024/026]
+
+The typed respondent/question access views remain a `CONDITIONAL_EXTENSION`.
+`R3_FIELD_AND_ADAPTER_CONTRACT.md` supplies exact per-family keys, ambiguity/
+refusal cardinalities and the existing `DirectEstateI03Session.indices_for` →
+`_ReleaseIndex` → `execute_empirical_query` adapter path; it does not claim the
+adapter or Q reduction is implemented. [R3-RES-025]
+
+The decision/capability/falsifier documents now cite R3-RES IDs directly;
+entries 023–027 are corrections/extensions, not replacements of the original
+22. [R3-RES-027]
+
+### Updated reuse index additions
+
+| Topic | Entries | Limitation |
+|---|---|---|
+| FF01-2 vs FF01-k | 023 | FF01-k method/eligibility/ratio owner-held |
+| C11 source field map | 024 | external metadata/rights may be unavailable |
+| Typed access adapter | 025 | conditional extension; one-build/Q/O unmeasured |
+| F6 design variance/PSU/strata | 026 | external F6 input or typed absent |
+| Decision-to-research linkage | 027 | sampled C validation, not exhaustive |
+
+### Retained negative knowledge
+
+A count profile is not a conditional distribution. A design authority reference
+is not variance data. A weight authority reference is not a PSU/strata table. A
+source question reference is not the original-language option text. These are
+now explicit so a future reader cannot mistake a reference for the referenced
+material.
