@@ -1,14 +1,16 @@
-test_actual_src04_structural_request_is_held_without_current (test_existing_grant_binding.ExistingGrantBindingTests.test_actual_src04_structural_request_is_held_without_current) ... ok
-test_bad_current_signature_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_bad_current_signature_refused) ... ok
+test_actual_src04_request_only_allowed (test_existing_grant_binding.ExistingGrantBindingTests.test_actual_src04_request_only_allowed) ... ok
 test_expanded_operation_or_extent_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_expanded_operation_or_extent_refused) ... ok
-test_external_signed_current_can_bind_request_only (test_existing_grant_binding.ExistingGrantBindingTests.test_external_signed_current_can_bind_request_only) ... ok
-test_grant_bytes_trust_mismatch (test_existing_grant_binding.ExistingGrantBindingTests.test_grant_bytes_trust_mismatch) ... ok
-test_noncurrent_or_revoked_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_noncurrent_or_revoked_refused) ... ok
+test_grant_drift_refused_on_recheck (test_existing_grant_binding.ExistingGrantBindingTests.test_grant_drift_refused_on_recheck) ... ok
+test_grant_location_drift_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_grant_location_drift_refused) ... ok
+test_resolver_rechecks_same_bound_permission_twice (test_existing_grant_binding.ExistingGrantBindingTests.test_resolver_rechecks_same_bound_permission_twice) ... ok
+test_revoked_grant_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_revoked_grant_refused) ... ok
+test_snapshot_presence_alone_is_not_permission (test_existing_grant_binding.ExistingGrantBindingTests.test_snapshot_presence_alone_is_not_permission) ... ok
 test_src17_scope_is_construction_only_and_not_reusable (test_existing_grant_binding.ExistingGrantBindingTests.test_src17_scope_is_construction_only_and_not_reusable) ... ok
-test_static_grant_alone_never_creates_current (test_existing_grant_binding.ExistingGrantBindingTests.test_static_grant_alone_never_creates_current) ... ok
+test_wrong_request_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_wrong_request_refused) ... ok
+test_wrong_scope_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_wrong_scope_refused) ... ok
 test_wrong_survey_config_refused (test_existing_grant_binding.ExistingGrantBindingTests.test_wrong_survey_config_refused) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.020s
+Ran 11 tests in 0.012s
 
 OK

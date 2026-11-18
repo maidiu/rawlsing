@@ -1,4 +1,13 @@
 {
+  "controls": {
+    "grant_currentness": "CURRENT_GRANTED",
+    "grant_drift_refused": true,
+    "grant_revocation": "NONE_RECORDED",
+    "independent_current_artifact": null,
+    "recheck": "EXACT_GRANT_SHA_AND_LOCATION_EACH_RESOLVER_CALL",
+    "revoked_grant_refused": true,
+    "wrong_scope_refused": true
+  },
   "evidence_pins": {
     "r157_config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
     "src04_admission": "f3000966fb05bda55fce8a804396a04eaf627a33",
@@ -8,56 +17,40 @@
     "src17_grant": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038"
   },
   "limits": [
-    "No new grant/source right/scientific eligibility/CURRENT issuer",
-    "No source path open/stat/hash/read",
+    "No source path open/stat/hash/read/decode",
+    "No product/protected/science/issuer edits",
     "No I03/I05 expansion",
-    "No protected/product/science edits"
+    "No authorization for other waves or analytical use"
   ],
   "r157_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
-  "request_contract": {
-    "concrete_resolver": "ExistingGrantResolver",
-    "external_signature_required": true,
-    "external_trust_required": true,
-    "i03_i05_expansion": false,
-    "no_source_open": true,
-    "source_decode_not_invoked": true,
-    "static_grant_hash_is_not_current": true
-  },
+  "removed": "BESPOKE_ED25519_ENVELOPE_NOT_IN_ACCEPTED_RESOLVER_CONTRACT",
   "schema": "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_RETURN@1",
   "src04": {
-    "currentness": null,
-    "decision": null,
-    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
-    "request": {
-      "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
-      "custody_locator_binding": "SRC04_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
-      "host": "USER_LOCAL_MAC",
-      "metadata_freeze_refs": [
-        {
-          "content_hash": "6b98d33a8c7598934fcad38cecb3b23e0db7a3031990b302c3df113d295351fb",
-          "kind": "R154_PHYSICAL_METADATA",
-          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC04_PHYSICAL_METADATA.json"
-        }
-      ],
-      "physical_read_extent": "EXACT_FILE",
-      "purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
-      "read_operation": "SOURCE_RESPONSE_DECODE",
-      "semantic_use_scope": [
-        "FULL_SRC04_C11_CONSTRUCTION",
-        "NO_SEMANTIC_ADOPTION",
-        "SOURCE_NATIVE_RESPONSE_INCIDENCE",
-        "SRC04"
-      ],
-      "source_format": "SAV",
-      "source_id": "SRC04",
-      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    "currentness": "CURRENT_GRANTED",
+    "decision_ref": {
+      "content_hash": "63983453d1fc9edfc2b4452ca5f48177c1d1433be8006def1795b52d50922cec",
+      "kind": "FULL_SOURCE_READ_DECISION",
+      "object_id": "urn:rawlsing:full-source-decision:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
     },
+    "grant_ref": {
+      "content_hash": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+      "kind": "FULL_SOURCE_READ_GRANT",
+      "object_id": "urn:rawlsing:full-source-grant:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+    },
+    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "pre_post_decision_identical": true,
     "request_digest": "ed0973dcc3be98d620a0174e59ff600927a7c81467aeb132252b975b5c1dfd4d",
-    "request_only_decided": true,
-    "revocation": null,
+    "resolver_calls_pre_post": 2,
+    "retention_export_limits": {
+      "export": "DENY",
+      "retention": "LOCAL_RUNTIME_ONLY",
+      "rowwise_response_artifacts": "DENY",
+      "source_bytes_in_git": "DENY"
+    },
+    "revocation_ref": null,
     "self_issued_authority": false,
     "source_read_performed": false,
-    "status": "RUNTIME_ISSUER_HOLD__INDEPENDENT_CURRENT_EVIDENCE_MISSING"
+    "status": "REQUEST_ONLY_ALLOWED"
   },
   "src17": {
     "authentication_sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
@@ -72,11 +65,11 @@
     "scope_is_source_specific": true,
     "source_id": "SRC17"
   },
-  "status": "RUNTIME_ISSUER_HOLD__INDEPENDENT_CURRENT_EVIDENCE_MISSING",
+  "status": "REQUEST_ONLY_ALLOWED__EXACT_ACCEPTED_GRANT_ROUTE",
+  "superseding_requirement": "NONE_FOUND__ACCEPTED_303A_GRANT_ROUTE_RETAINED",
   "tests": {
     "command": "PYTHONPATH=. ANVIL_R157_SNAPSHOT=<aee954> python3 -m unittest -v test_existing_grant_binding.py",
     "failed": 0,
-    "passed": 9,
-    "test_only_positive": "ephemeral Ed25519 signed current witness; not production authority"
+    "passed": 11
   }
 }

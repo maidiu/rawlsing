@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Reusable existing-grant to R157 source-read binding.
 
-This is construction/source-*read* preparation only.  It does not issue a
-source right, CURRENT decision, scientific eligibility, or I03/I05 authority.
+Construction/source-read preparation only.  This module does not issue a new
+source right, scientific eligibility, CURRENT record, or I03/I05 authority.
 
-The grant document is static evidence.  Its hash does NOT establish CURRENT.
-A deployment must supply an independently trusted current-evidence verifier
-(public key plus issuer identity) and a signed current record.  This module
-constructs the exact R157 SourceReadRequest, verifies the static grant bytes
-against externally supplied trust, verifies the signed current record against
-that same external trust, and only then returns an IssuedSourceReadDecision.
+It deliberately follows the accepted historical SRC04 grant route
+(303a57851785557fff8229e29a5554717168cbd1):
+``validate_grant_document`` accepts an exact human grant, and
+``FullGrantResolver.resolve_current`` rechecks the exact bound request and grant
+bytes on every callback.  The grant's own currentness/revocation fields are the
+controls; no bespoke signature or nonexistent current artifact is required.
 No source path is opened, stat'ed, hashed, or decoded here.
 """
 from __future__ import annotations
@@ -19,9 +19,6 @@ import hashlib
 import json
 from pathlib import Path
 from typing import Any, Mapping
-
-from cryptography.exceptions import InvalidSignature
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_r157_projection_adapter import (
@@ -38,16 +35,27 @@ SRC04_GRANT_SCHEMA = "PYAT_FULL_SOURCE_READ_GRANT@1.0.0"
 SRC04_SCOPE = "ALL_181_PHYSICAL_SLOTS__ALL_QUALIFIED_RESPONSE_FIELDS"
 SRC04_PURPOSE = "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION"
 SRC04_CONSUMER = "EXISTING_PRE553_SOURCE_BACKED_C11"
+SRC04_SOURCE_SHA256 = "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+SRC04_SOURCE_ROWS = 7337
+SRC04_SOURCE_COLUMNS = 181
+SRC04_SOURCE_BYTES = 1531099
 SRC04_SEMANTIC_SCOPE = (
     "SOURCE_NATIVE_RESPONSE_INCIDENCE",
     "NO_SEMANTIC_ADOPTION",
     "SRC04",
     "FULL_SRC04_C11_CONSTRUCTION",
 )
+RETENTION_EXPORT_LIMITS = {
+    "export": "DENY",
+    "rowwise_response_artifacts": "DENY",
+    "retention": "LOCAL_RUNTIME_ONLY",
+    "source_bytes_in_git": "DENY",
+}
+HERE = Path(__file__).resolve().parent
 
 
 class BindingRefusal(ValueError):
-    """A static grant, config, request, or current record failed closed."""
+    """A static grant, config, request, or current check failed closed."""
 
     def __init__(self, code: str, detail: str = ""):
         super().__init__(code + (f": {detail}" if detail else ""))
@@ -64,15 +72,19 @@ def _canonical(value: Any) -> bytes:
                       ensure_ascii=False, allow_nan=False).encode("utf-8")
 
 
+def _path(value: str | Path) -> Path:
+    p = Path(value)
+    return p if p.is_absolute() else (HERE / p)
+
+
 def _ref(value: Mapping[str, Any] | ExactRef, name: str) -> ExactRef:
     try:
         if isinstance(value, ExactRef):
             return value
         if not isinstance(value, Mapping):
             raise TypeError
-        ref = ExactRef(str(value["kind"]), str(value["object_id"]),
-                       str(value["content_hash"]))
-        return ref
+        return ExactRef(str(value["kind"]), str(value["object_id"]),
+                        str(value["content_hash"]))
     except Exception as exc:
         raise BindingRefusal("BINDING_REF_INVALID", name) from exc
 
@@ -92,12 +104,7 @@ def _refs(value: Any, name: str) -> tuple[ExactRef, ...]:
 
 @dataclass(frozen=True)
 class ConfigBinding:
-    """Exact R157 config metadata, without copying or reading source bytes.
-
-    ``config_path`` and the hashes identify the frozen config blob; this class
-    does not parse the full config.  The request fields below are the exact
-    R157 identity/locator/metadata witness fields needed for admission.
-    """
+    """Exact R157 config metadata, without source bytes or full config copy."""
 
     source_id: str
     source_sha256: str
@@ -129,12 +136,12 @@ class ConfigBinding:
     def validate(self, trust: "ExternalTrust") -> None:
         if self.source_id != "SRC04":
             raise BindingRefusal("CONFIG_SOURCE_NOT_SRC04", self.source_id)
-        if self.source_sha256 != "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18":
+        if self.source_sha256 != SRC04_SOURCE_SHA256:
             raise BindingRefusal("CONFIG_SOURCE_SHA_MISMATCH")
         if self.source_format != "SAV":
             raise BindingRefusal("CONFIG_SOURCE_FORMAT_MISMATCH")
-        if not self.locator_id:
-            raise BindingRefusal("CONFIG_LOCATOR_REQUIRED")
+        if self.locator_id != "SRC04_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING":
+            raise BindingRefusal("CONFIG_LOCATOR_MISMATCH")
         if (self.config_file_sha256 != trust.config_file_sha256
                 or self.config_canonical_sha256 != trust.config_canonical_sha256
                 or self.binding_sha256() != trust.config_binding_sha256):
@@ -147,15 +154,13 @@ class ConfigBinding:
 
 @dataclass(frozen=True)
 class ExternalTrust:
-    """Deployment-supplied trust anchors, not a caller authority claim."""
+    """Deployment-supplied exact hashes and grant location."""
 
     grant_sha256: str
+    grant_path: str
     config_file_sha256: str
     config_canonical_sha256: str
     config_binding_sha256: str
-    current_issuer: str
-    current_public_key_hex: str
-    current_evidence_sha256: str | None = None
 
     def validate(self) -> None:
         for value, name in (
@@ -163,17 +168,11 @@ class ExternalTrust:
             (self.config_file_sha256, "config_file_sha256"),
             (self.config_canonical_sha256, "config_canonical_sha256"),
             (self.config_binding_sha256, "config_binding_sha256"),
-            (self.current_public_key_hex, "current_public_key_hex"),
         ):
             if not isinstance(value, str) or len(value) != 64 or value.lower() != value:
                 raise BindingRefusal("TRUST_SHA_REQUIRED", name)
-        if self.current_evidence_sha256 is not None:
-            if (not isinstance(self.current_evidence_sha256, str)
-                    or len(self.current_evidence_sha256) != 64
-                    or self.current_evidence_sha256.lower() != self.current_evidence_sha256):
-                raise BindingRefusal("TRUST_EVIDENCE_SHA_REQUIRED")
-        if not isinstance(self.current_issuer, str) or not self.current_issuer.strip():
-            raise BindingRefusal("TRUST_CURRENT_ISSUER_REQUIRED")
+        if not isinstance(self.grant_path, str) or not self.grant_path.strip():
+            raise BindingRefusal("TRUST_GRANT_LOCATION_REQUIRED")
 
 
 @dataclass(frozen=True)
@@ -199,6 +198,7 @@ class BindingResult:
             "currentness": None if self.decision is None else self.decision.currentness,
             "revocation_ref": None if self.decision is None or self.decision.revocation_ref is None
                               else self.decision.revocation_ref.as_dict(),
+            "retention_export_limits": RETENTION_EXPORT_LIMITS,
             "reason": self.reason,
             "source_read_performed": False,
             "self_issued_authority": False,
@@ -225,26 +225,15 @@ def _request_digest(request: SourceReadRequest) -> str:
     return _sha256(_canonical(_request_payload(request)))
 
 
-def _load_grant(grant_path: str | Path, trust: ExternalTrust) -> tuple[dict[str, Any], str, ExactRef]:
-    path = Path(grant_path)
-    try:
-        raw = path.read_bytes()
-    except OSError as exc:
-        raise BindingRefusal("GRANT_BYTES_UNAVAILABLE", str(path)) from exc
-    actual = _sha256(raw)
-    if actual != trust.grant_sha256:
-        raise BindingRefusal("GRANT_TRUST_HASH_MISMATCH", actual)
-    try:
-        document = json.loads(raw.decode("utf-8"))
-    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-        raise BindingRefusal("GRANT_JSON_INVALID") from exc
-    if not isinstance(document, dict):
+def validate_grant_document(document: Mapping[str, Any], grant_sha256: str) -> None:
+    """Accepted SRC04 grant checks; no source path is touched."""
+    if not isinstance(document, Mapping):
         raise BindingRefusal("GRANT_DOCUMENT_REQUIRED")
     if document.get("schema") != SRC04_GRANT_SCHEMA:
-        raise BindingRefusal("GRANT_SCHEMA_MISMATCH", str(document.get("schema")))
+        raise BindingRefusal("GRANT_SCHEMA_MISMATCH")
     if document.get("source_id") != "SRC04":
-        raise BindingRefusal("GRANT_SOURCE_MISMATCH", str(document.get("source_id")))
-    if document.get("expected_source_sha256") != "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18":
+        raise BindingRefusal("GRANT_SOURCE_MISMATCH")
+    if document.get("expected_source_sha256") != SRC04_SOURCE_SHA256:
         raise BindingRefusal("GRANT_SOURCE_SHA_MISMATCH")
     if document.get("host") != "USER_LOCAL_MAC":
         raise BindingRefusal("GRANT_HOST_MISMATCH")
@@ -253,30 +242,62 @@ def _load_grant(grant_path: str | Path, trust: ExternalTrust) -> tuple[dict[str,
     if document.get("consumer") != SRC04_CONSUMER:
         raise BindingRefusal("GRANT_CONSUMER_MISMATCH")
     if document.get("full_source") is not True or document.get("first_slice_only") is not False:
-        raise BindingRefusal("GRANT_FULL_SOURCE_REQUIRED")
+        raise BindingRefusal("GRANT_SCOPE_NOT_FULL")
     if document.get("scope") != SRC04_SCOPE:
-        raise BindingRefusal("GRANT_SCOPE_MISMATCH")
+        raise BindingRefusal("GRANT_SCOPE_NOT_FULL")
+    for key, expected in (("source_rows", SRC04_SOURCE_ROWS),
+                          ("source_columns", SRC04_SOURCE_COLUMNS),
+                          ("source_bytes", SRC04_SOURCE_BYTES)):
+        if document.get(key) != expected:
+            raise BindingRefusal("GRANT_" + key.upper() + "_MISMATCH")
     if document.get("currentness") != CURRENT_GRANTED:
-        raise BindingRefusal("GRANT_STATIC_CURRENTNESS_NOT_CURRENT")
+        raise BindingRefusal("GRANT_NOT_CURRENT", str(document.get("currentness")))
     if document.get("revocation") not in (None, "NONE_RECORDED"):
-        raise BindingRefusal("GRANT_STATIC_REVOKED")
+        raise BindingRefusal("GRANT_REVOKED", str(document.get("revocation")))
     if not isinstance(document.get("authorization"), str) or not document["authorization"].strip():
         raise BindingRefusal("GRANT_AUTHORIZATION_REQUIRED")
     if not isinstance(document.get("source_path"), str) or not document["source_path"].strip():
         raise BindingRefusal("GRANT_SOURCE_PATH_REQUIRED")
-    grant_ref = ExactRef("FULL_SOURCE_READ_GRANT",
-                         f"urn:rawlsing:full-source-grant:SRC04:{actual}", actual)
+    if (not isinstance(grant_sha256, str) or len(grant_sha256) != 64
+            or grant_sha256.lower() != grant_sha256):
+        raise BindingRefusal("GRANT_SHA_REQUIRED")
+
+
+def _load_grant(path: str | Path, trust: ExternalTrust) -> tuple[dict[str, Any], str, ExactRef]:
+    actual_path = _path(path)
+    expected_path = _path(trust.grant_path)
+    if actual_path.resolve() != expected_path.resolve():
+        raise BindingRefusal("GRANT_LOCATION_MISMATCH", str(actual_path))
+    try:
+        raw = actual_path.read_bytes()
+    except OSError as exc:
+        raise BindingRefusal("GRANT_BYTES_UNAVAILABLE", str(actual_path)) from exc
+    actual = _sha256(raw)
+    if actual != trust.grant_sha256:
+        raise BindingRefusal("GRANT_TRUST_HASH_MISMATCH", actual)
+    try:
+        document = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise BindingRefusal("GRANT_JSON_INVALID") from exc
+    validate_grant_document(document, actual)
+    if document.get("source_id") != "SRC04":
+        raise BindingRefusal("GRANT_SOURCE_MISMATCH")
+    grant_ref = ExactRef(
+        "FULL_SOURCE_READ_GRANT",
+        f"urn:rawlsing:full-source-grant:SRC04:{actual}", actual)
     return document, actual, grant_ref
 
 
 def make_request(grant: Mapping[str, Any], config: ConfigBinding) -> SourceReadRequest:
-    """Build the exact request; metadata config comes from the frozen config."""
+    """Build exact request from frozen config metadata and exact grant."""
     if grant.get("source_id") != config.source_id:
         raise BindingRefusal("GRANT_CONFIG_SOURCE_MISMATCH")
     if grant.get("expected_source_sha256") != config.source_sha256:
         raise BindingRefusal("GRANT_CONFIG_SOURCE_SHA_MISMATCH")
     if grant.get("host") != "USER_LOCAL_MAC":
         raise BindingRefusal("GRANT_HOST_MISMATCH")
+    if grant.get("purpose") != SRC04_PURPOSE or grant.get("consumer") != SRC04_CONSUMER:
+        raise BindingRefusal("GRANT_PURPOSE_OR_CONSUMER_MISMATCH")
     return SourceReadRequest(
         source_id=config.source_id,
         source_sha256=config.source_sha256,
@@ -292,140 +313,86 @@ def make_request(grant: Mapping[str, Any], config: ConfigBinding) -> SourceReadR
     )
 
 
-def _expected_decision_ref(request: SourceReadRequest, grant_ref: ExactRef) -> ExactRef:
-    return ExactRef(
-        "USER_SOURCE_READ_DECISION",
-        f"urn:rawlsing:existing-grant:SRC04:{grant_ref.content_hash}",
-        semantic_hash({
-            "schema": SCHEMA,
-            "grant_ref": grant_ref.as_dict(),
-            "request_digest": _request_digest(request),
-            "source_id": request.source_id,
-            "source_sha256": request.source_sha256,
-            "host": request.host,
-            "purpose": request.purpose,
-            "consumer_use": request.consumer_use,
-            "read_operation": request.read_operation,
-            "physical_read_extent": request.physical_read_extent,
-        }),
+def make_decision(request: SourceReadRequest, grant_ref: ExactRef) -> IssuedSourceReadDecision:
+    """Decision from the accepted grant; currentness is the grant's control."""
+    return IssuedSourceReadDecision(
+        decision_ref=ExactRef(
+            "FULL_SOURCE_READ_DECISION",
+            f"urn:rawlsing:full-source-decision:SRC04:{grant_ref.content_hash}",
+            semantic_hash({
+                "grant_sha256": grant_ref.content_hash,
+                "source_id": request.source_id,
+                "source_sha256": request.source_sha256,
+                "host": request.host,
+                "purpose": request.purpose,
+                "consumer": request.consumer_use,
+                "scope": SRC04_SCOPE,
+                "read_operation": request.read_operation,
+                "physical_read_extent": request.physical_read_extent,
+            }),
+        ),
+        source_permission_refs=(grant_ref,),
+        source_id=request.source_id,
+        source_sha256=request.source_sha256,
+        source_format=request.source_format,
+        custody_locator_binding=request.custody_locator_binding,
+        host=request.host,
+        purpose=request.purpose,
+        consumer_use=request.consumer_use,
+        read_operation=SOURCE_RESPONSE_DECODE,
+        physical_read_extent=EXACT_FILE,
+        metadata_freeze_refs=request.metadata_freeze_refs,
+        semantic_use_scope=request.semantic_use_scope,
+        effective_interval="2026-10-28/FULL_SRC04_PINNED_GRANT",
+        currentness=CURRENT_GRANTED,
+        revocation_ref=None,
+        retention_export_limits=RETENTION_EXPORT_LIMITS,
     )
 
 
-def _verify_current_evidence(
-    *,
-    request: SourceReadRequest,
-    grant_ref: ExactRef,
-    trust: ExternalTrust,
-    current_evidence_path: str | Path,
-) -> IssuedSourceReadDecision:
-    path = Path(current_evidence_path)
-    try:
-        raw = path.read_bytes()
-    except OSError as exc:
-        raise BindingRefusal("CURRENT_EVIDENCE_UNAVAILABLE") from exc
-    if trust.current_evidence_sha256 is not None and _sha256(raw) != trust.current_evidence_sha256:
-        raise BindingRefusal("CURRENT_EVIDENCE_TRUST_HASH_MISMATCH")
-    try:
-        envelope = json.loads(raw.decode("utf-8"))
-        payload = envelope["payload"]
-        signature = bytes.fromhex(envelope["signature"])
-    except (UnicodeDecodeError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
-        raise BindingRefusal("CURRENT_EVIDENCE_MALFORMED") from exc
-    if not isinstance(payload, dict):
-        raise BindingRefusal("CURRENT_EVIDENCE_PAYLOAD_REQUIRED")
-    try:
-        public_key = Ed25519PublicKey.from_public_bytes(bytes.fromhex(trust.current_public_key_hex))
-        public_key.verify(signature, _canonical(payload))
-    except (ValueError, InvalidSignature) as exc:
-        raise BindingRefusal("CURRENT_EVIDENCE_SIGNATURE_INVALID") from exc
-    if payload.get("issuer") != trust.current_issuer:
-        raise BindingRefusal("CURRENT_EVIDENCE_ISSUER_MISMATCH")
-    if payload.get("grant_sha256") != grant_ref.content_hash:
-        raise BindingRefusal("CURRENT_EVIDENCE_GRANT_MISMATCH")
-    if payload.get("request_digest") != _request_digest(request):
-        raise BindingRefusal("CURRENT_EVIDENCE_REQUEST_MISMATCH")
-    expected_decision = _expected_decision_ref(request, grant_ref)
-    if _ref(payload.get("decision_ref"), "decision_ref") != expected_decision:
-        raise BindingRefusal("CURRENT_EVIDENCE_DECISION_MISMATCH")
-    permission_refs = _refs(payload.get("source_permission_refs"), "source_permission_refs")
-    if permission_refs != (grant_ref,):
-        raise BindingRefusal("CURRENT_EVIDENCE_PERMISSION_MISMATCH")
-    if payload.get("currentness") != CURRENT_GRANTED:
-        raise BindingRefusal("CURRENT_EVIDENCE_NOT_CURRENT")
-    revocation = payload.get("revocation_ref")
-    if revocation is not None:
-        raise BindingRefusal("CURRENT_EVIDENCE_REVOKED")
-    if not isinstance(payload.get("effective_interval"), str) or not payload["effective_interval"].strip():
-        raise BindingRefusal("CURRENT_EVIDENCE_INTERVAL_REQUIRED")
-    limits = payload.get("retention_export_limits")
-    if not isinstance(limits, dict):
-        raise BindingRefusal("CURRENT_EVIDENCE_LIMITS_REQUIRED")
-    try:
-        return IssuedSourceReadDecision(
-            decision_ref=expected_decision,
-            source_permission_refs=(grant_ref,),
-            source_id=request.source_id,
-            source_sha256=request.source_sha256,
-            source_format=request.source_format,
-            custody_locator_binding=request.custody_locator_binding,
-            host=request.host,
-            purpose=request.purpose,
-            consumer_use=request.consumer_use,
-            read_operation=request.read_operation,
-            physical_read_extent=request.physical_read_extent,
-            metadata_freeze_refs=request.metadata_freeze_refs,
-            semantic_use_scope=request.semantic_use_scope,
-            effective_interval=payload["effective_interval"],
-            currentness=payload["currentness"],
-            revocation_ref=None,
-            retention_export_limits=limits,
-        )
-    except (SourceReadAdmissionRefusal, TypeError, ValueError) as exc:
-        raise BindingRefusal("CURRENT_EVIDENCE_DECISION_INVALID") from exc
-
-
 def bind_existing_grant(
-    *,
-    grant_path: str | Path,
-    config: ConfigBinding,
-    trust: ExternalTrust,
-    current_evidence_path: str | Path | None = None,
+    *, grant_path: str | Path, config: ConfigBinding, trust: ExternalTrust
 ) -> BindingResult:
-    """Verify static grant/config and return a request or an exact hold.
-
-    Missing independently authenticated current evidence is a hold, not a
-    fabricated CURRENT and not a caller-supplied boolean.  No source path is
-    touched.
-    """
+    """Verify exact grant/config and return allowed request-only binding."""
     trust.validate()
     config.validate(trust)
     grant, grant_sha, grant_ref = _load_grant(grant_path, trust)
     request = make_request(grant, config)
-    if current_evidence_path is None:
-        return BindingResult(
-            status="RUNTIME_ISSUER_HOLD__INDEPENDENT_CURRENT_EVIDENCE_MISSING",
-            request=request,
-            decision=None,
-            grant_sha256=grant_sha,
-            grant_ref=grant_ref,
-            request_digest=_request_digest(request),
-            reason="STATIC_GRANT_HASH_IS_NOT_CURRENT",
-        )
-    decision = _verify_current_evidence(
-        request=request,
-        grant_ref=grant_ref,
-        trust=trust,
-        current_evidence_path=current_evidence_path,
-    )
+    decision = make_decision(request, grant_ref)
     return BindingResult(
-        status="CURRENT_BOUND_REQUEST_ONLY",
+        status="REQUEST_ONLY_ALLOWED",
         request=request,
         decision=decision,
         grant_sha256=grant_sha,
         grant_ref=grant_ref,
         request_digest=_request_digest(request),
-        reason="EXTERNALLY_AUTHENTICATED_CURRENT_EVIDENCE",
+        reason="EXACT_EXISTING_GRANT_AND_BOUND_REQUEST",
     )
+
+
+class ExistingGrantResolver:
+    """Concrete R157 resolver; rechecks bound grant/request on every call."""
+
+    def __init__(self, grant_path: str | Path, trust: ExternalTrust,
+                 request: SourceReadRequest):
+        self.grant_path = _path(grant_path)
+        self.trust = trust
+        self.request = request
+        self.calls = 0
+
+    def resolve_current(self, request: SourceReadRequest) -> IssuedSourceReadDecision:
+        self.calls += 1
+        if not isinstance(request, SourceReadRequest) or request != self.request:
+            raise SourceReadAdmissionRefusal("FULL_GRANT_REQUEST_MISMATCH")
+        try:
+            _, _, grant_ref = _load_grant(self.grant_path, self.trust)
+            decision = make_decision(request, grant_ref)
+        except BindingRefusal as exc:
+            if exc.code == "GRANT_TRUST_HASH_MISMATCH" or exc.code == "GRANT_LOCATION_MISMATCH":
+                raise SourceReadAdmissionRefusal(
+                    "FULL_GRANT_CURRENTNESS_MISMATCH", exc.code) from exc
+            raise SourceReadAdmissionRefusal("FULL_GRANT_CURRENT_REFUSED", exc.code) from exc
+        return decision
 
 
 def check_src17_reuse_scope(
@@ -469,31 +436,9 @@ def check_src17_reuse_scope(
     }
 
 
-class ExistingGrantResolver:
-    """Thin R157 resolver over a verified BindingResult.
-
-    It never creates CURRENT; a hold is a refusal, and a verified decision is
-    returned only after external signature/trust and exact request matching.
-    """
-
-    def __init__(self, binding: BindingResult):
-        if not isinstance(binding, BindingResult):
-            raise BindingRefusal("BINDING_RESULT_REQUIRED")
-        self.binding = binding
-        self.calls = 0
-
-    def resolve_current(self, request: SourceReadRequest) -> IssuedSourceReadDecision:
-        self.calls += 1
-        if not isinstance(request, SourceReadRequest) or request != self.binding.request:
-            raise SourceReadAdmissionRefusal("SOURCE_READ_REQUEST_MISMATCH")
-        if self.binding.decision is None:
-            raise SourceReadAdmissionRefusal(
-                "SOURCE_READ_CURRENT_EVIDENCE_HOLD", self.binding.status)
-        return self.binding.decision
-
-
 __all__ = [
     "SCHEMA", "BindingRefusal", "BindingResult", "ConfigBinding",
     "ExternalTrust", "ExistingGrantResolver", "bind_existing_grant",
-    "check_src17_reuse_scope", "make_request",
+    "check_src17_reuse_scope", "make_decision", "make_request",
+    "validate_grant_document",
 ]

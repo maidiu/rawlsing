@@ -1,14 +1,19 @@
 {
-  "currentness": null,
-  "decision_ref": null,
-  "effective_interval": null,
+  "currentness": "CURRENT_GRANTED",
+  "decision_ref": {
+    "content_hash": "63983453d1fc9edfc2b4452ca5f48177c1d1433be8006def1795b52d50922cec",
+    "kind": "FULL_SOURCE_READ_DECISION",
+    "object_id": "urn:rawlsing:full-source-decision:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+  },
+  "effective_interval": "2026-10-28/FULL_SRC04_PINNED_GRANT",
   "grant_ref": {
     "content_hash": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
     "kind": "FULL_SOURCE_READ_GRANT",
     "object_id": "urn:rawlsing:full-source-grant:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
   },
   "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
-  "reason": "STATIC_GRANT_HASH_IS_NOT_CURRENT",
+  "pre_post_decision_identical": true,
+  "reason": "EXACT_EXISTING_GRANT_AND_BOUND_REQUEST",
   "request": {
     "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
     "custody_locator_binding": "SRC04_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
@@ -34,9 +39,16 @@
     "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
   },
   "request_digest": "ed0973dcc3be98d620a0174e59ff600927a7c81467aeb132252b975b5c1dfd4d",
+  "resolver_calls_pre_post": 2,
+  "retention_export_limits": {
+    "export": "DENY",
+    "retention": "LOCAL_RUNTIME_ONLY",
+    "rowwise_response_artifacts": "DENY",
+    "source_bytes_in_git": "DENY"
+  },
   "revocation_ref": null,
   "schema": "ANVIL_EXISTING_GRANT_TO_C11_BINDING@1",
   "self_issued_authority": false,
   "source_read_performed": false,
-  "status": "RUNTIME_ISSUER_HOLD__INDEPENDENT_CURRENT_EVIDENCE_MISSING"
+  "status": "REQUEST_ONLY_ALLOWED"
 }
