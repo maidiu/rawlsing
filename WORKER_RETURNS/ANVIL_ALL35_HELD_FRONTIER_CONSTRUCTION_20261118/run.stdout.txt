@@ -1,0 +1,24 @@
+{
+  "verdict": "PASS_COMPLETE_ALL_HELD_BUILD__NO_ISSUABLE_WORKLOAD",
+  "before": {
+    "operation_count": 42,
+    "disposition_counts": {
+      "HELD": 42
+    },
+    "eligible_count": 0,
+    "census_source_candidates": 42,
+    "census_scientific_fates": 42,
+    "census_fate_dispositions": [
+      "HELD"
+    ],
+    "census_nonempty": true
+  },
+  "after": {
+    "operation_count": 42,
+    "all_held": true,
+    "eligible_count": 0,
+    "issuable_analytical_workload": false,
+    "reason": "complete nonempty frontier is all HELD; no operation is eligible for issuance"
+  },
+  "build": "CLOSED"
+}
