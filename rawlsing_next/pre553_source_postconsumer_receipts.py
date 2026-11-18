@@ -29,6 +29,7 @@ from rawlsing_next.pre553_issued_workload import (
 from rawlsing_next.pre553_native_workload_binding import (
     TestOnlyIssuedWorkload, _ref as _historical_test_only_ref,
 )
+from rawlsing_next.pre553_prepared_saved_i03 import PreparedSavedC11Admission
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_source_direct_parquet_estate import EstateReceipt
 from rawlsing_next.pre553_source_i02_handoff import SourceI02Handoff
@@ -269,7 +270,9 @@ def join_saved_source_operation_fates(
     """
     if (type(handoff) is not SourceI02Handoff
             or type(estate_receipt) is not EstateReceipt
-            or type(admission) is not SavedC11Admission
+            or type(admission) not in (
+                SavedC11Admission, PreparedSavedC11Admission,
+            )
             or type(compilation) is not GovernedFrontierCompilation
             or type(workload) is not NativeWorkload
             or type(runner) is not BatchExecutionRunner):
