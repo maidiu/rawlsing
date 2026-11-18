@@ -1,6 +1,6 @@
 # ORACLE / 14 — Astra-specific adversarial operating court: empirical failures, antidotes, hard stops
 
-**Priority:** Read immediately after ORACLE/08 and before choosing a machine. This is an *adversarial control on Astra's reasoning and execution*, not an additional research programme. **Do not conflate project cases with innate immutable model defects.** Distinguish (A) *direct observed Astra-associated work*, (B) *failures Astra detected in other code*, and (C) *anticipated general agent tendencies*. Historical descriptions here derive from earlier Rawlsing conversations/returns as assembled for the principal; they are **not newly verified native-source/host executions**. Original repository/PR histories govern any contested exact incident. This file does not appoint a reviewer, create a lease, grant source rights, or prove any developmental science.
+**Priority (corrected):** Read after ORACLE/08 **and the full binding ORACLE/01**, before treating this historical risk ledger as a method. This is an *adversarial control on Astra's reasoning and execution*, not an additional research programme. **Do not conflate project cases with innate immutable model defects.** Distinguish (A) *direct observed Astra-associated work*, (B) *failures Astra detected in other code*, and (C) *anticipated general agent tendencies*. Historical descriptions here derive from earlier Rawlsing conversations/returns as assembled for the principal; they are **not newly verified native-source/host executions**. Original repository/PR histories govern any contested exact incident. This file does not appoint a reviewer, create a lease, grant source rights, or prove any developmental science.
 
 ## Governing correction to the original ORACLE author
 
@@ -29,48 +29,31 @@ The new problem is worse than model errors alone: a highly capable model can fai
 
 ## B. Hard requirement: decontaminate ORACLE's conclusions
 
-Astra must start by identifying **which claims in ORACLE/00–13 are user requirements**, **which are recovered/source-proved historical facts**, **which are active accepted source/owner contracts**, **which are merely previous authors' architecture proposals**, and **which are scientifically unidentifiable or speculative**. ORACLE must not become an unchallengeable training set.
+**Source and epistemic distinctions must remain visible**: user-originated requirements, proven historical facts, active accepted source/owner contracts, previous ORACLE authors' research proposals and currently unidentifiable scientific hypotheses are different. ORACLE must not become an unchallengeable training set. **Astra decides how and when to organize its inquiry**, rather than being required to start with a prescribed classification table.
 
 Astra must not copy this table's *anticipated* rows as proven observations of Astra. Historic failures discovered **by** Astra are not historic failures **of** Astra. If exact historical episode attribution changes on inspection, correct the ledger, not the immutable source.
 
-It must present at least one serious skeptical thesis:
+**A serious scientific limitation that must not be suppressed:** Even complete PYAT joint-response evidence may fail to identify the distribution of private childhood histories or developmental laws. An adequate answer must remain open to that possibility and distinguish identified constraints from hypotheses. **Astra chooses which countertheses to examine, how to adjudicate them and what consequences follow**; it is not compelled to present or defeat this prewritten skeptical thesis.
 
-> Even if PYAT accurately constrains a population and SOROK accurately simulates situated agents, the cross-sectional respondent evidence may not identify the developmental transition laws required to make one *specific* personality emerge. Full formation remains an unvalidated modelling hypothesis, and some version of the strongest Rawlsing claim might require new longitudinal/ethnographic/behavioral data or a narrower explanatory claim.
+**Source-to-SOROK claim integrity:** A numeric PYAT output affecting a synthetic world is not by itself a sociologically warranted formative mechanism. The exact source meaning, candidate mediation, world and actor ownership, independent evidence and later effect must match the scope of any claimed result. Sourcefree proof, historical/sociological explanation, POP, DEV and TRANS are separate. **The previous compulsory W/I03/parity route and R/L/T architecture comparisons are retired as method instructions**; see /15 for historically inspected code and /16 for proof categories, which do not select Astra's research method. Independent cold accession, if claimed, remains subject to independent sealed review; no such pass is recorded.
 
-Then try to *defeat that thesis* with actual mechanism and evidence—not a statement that dialectical materialism is compelling. If it survives, preserve it as a scientific limitation while identifying the smallest useful lawful engineering witness.
+## C. Claim-specific independent criticism — no prescribed experiment
 
-**UM-SOROK R3 correction supersedes R2's strong wording:** the first **W interface test** MUST call real PYAT I03/F4 and pass its returned value into an actual owner-approved sourcefree world/coactor reader; **that alone is not social fusion**. The substantive **H test** requires an independently intelligible historical/material *reason why* a measured social-field configuration changes particular coactors/practices/opportunities and therefore actual accessible human experience. **Astra must ANALYZE, THEORETICALLY SYNTHESIZE and GENERATE this mediator in one act;** it cannot earn success with a great evidence matrix or a hand-coded number→behavior effect. A manual childcare world toggle, even if SOROK subsequently learns, is **M_LOCAL_SOROK_ONLY**. Separate **POP/DEV/TRANS** scientific verdicts and compare independent PFF/activity-memory/bounded-learning architectures; A/B/C forward/inverse/hybrid alone is a biased comparison. Cold cases and answer keys are independently sealed **before** candidate package exposure, never placed in ORACLE or SEAM/27; a passing set earns only `ORACLE_COLD_CASESET_ACCEPTED_AT_<SHA>`. No cold run currently exists.
+Astra may not call an unexecuted interface a working mechanism, a locally authored fixture an independently justified historical relation, or source-dependent simulation a validated psychological law. A credible affirmative claim needs evidence suited to *that claim*, meaningful negative possibilities or competing explanations, traceable producer/consumer information where code is involved, and an openly limited scientific grade. **Astra chooses the evidentiary method, counterexamples and appropriate challenge**, not the earlier ORACLE author.
 
-## C. One mandatory anti-self-delusion test per claimed success
-
-For any "this fuses PYAT→SOROK" claim, construct:
-1. **A native source- or qualified-fixture manipulation** that leaves superficial data labels and optionally marginal counts unchanged but alters a relevant real joint, material power or practice opportunity;
-2. **A true semantic and negative control** that alters surrounding field but provides no actual actor contact/access, and one that gives accessible event but no qualified formation;
-3. **An observed downstream difference or lawful non-effect** through *a real SOROK reader and later performed act*, on cold replay, not through the generator's own summary;
-4. **An anti-author test:** an independent challenger can reproduce its oracle/inputs before reading the implementer's claimed result;
-5. **A hold statement:** whether the measured effect is only sourcefree expressivity, external empirical fit, structural mechanism, or independently scientifically qualified developmental causation.
-
-If those cannot be instantiated today, the honest answer is **FIRST_MISSING_MECHANISM + EXACT_OWNER + DECISION-CHANGING_NEXT_EXPERIMENT**, not an architecture "PASS."
+Where a claim is currently unsupported, identify its precise limit and what would change the assessment. **Do not prescribe a native source mutation, exactly one first-read, one number of controls or a particular experiment merely because those appeared in prior drafts.** Their examples remain recoverable from the immutable pre-correction version of this document.
 
 ## D. Guard against the dossier itself becoming the failure
 
-The dossier contains several thousand words, multiple matrices and 27 theoretical tests. **Astra is NOT instructed to perform all 27, investigate 40 source pins, reread SEAM/00–29, or produce matching-length prose.** It is asked to make a hard architectural decision *or prove exactly why a decision is scientifically premature*.
+Previously this file demanded a first ≤2-page GitHub commit containing a fixed number of rival *developmental* architectures, an assigned hinge, a specific counterexample and test. **That demand is revoked.** SOROK owns its psychological architecture. Astra owns an independent scientific inquiry into the two-sided seam. It chooses the form, length, sequencing, research methods, alternatives and first useful remote deliverable consistent with authorized persistence and resource constraints.
 
-Astra's first GitHub commit should be ≤2 pages containing:
-- **At least two genuinely incompatible developmental architectures** (persistent PFF network vs activity/context-memory policy vs restricted evidence-based learning, or better), each on 5–10 lines; A/B/C are separate temporal initialization choices and C must not win merely by combining A+B;
-- **one first demonstrable PYAT→SOROK hinge** and exactly why it needs a *specific* PYAT output;
-- **one fatal counterexample or scientific underidentification** against each candidate;
-- **the least expensive distinguishing test**, including non-contact/no-formation and source-ablation controls;
-- **the top unproved learning rule and responsible scientific owner**, and a short next step;
-- **model/usage/clock/branch/commit actuality** or UNKNOWN.
-
-This is a **commit-and-choice discipline**, not a requirement to prematurely pick a favorite. Subsequent details add evidence only where they change a verdict.
+Astra must not become captive to ORACLE's vocabulary, prior hypothetical experiments, presumed architecture, administrative compliance or prestige of source indices. A decision-changing finding, a well-supported rejection or an exact underidentification result can all be valuable. Their **substantive warrant**, not matching a template, is what matters.
 
 ## E. Last-mile requirements (designed against past actual incidents)
 
 - Do an actual remote branch/diff/packet accessibility preflight **before delegating**. Require worker-visible SHA, path list and exact model; otherwise DISPATCH_HOLD.
 - Commit useful partial output immediately; after any important research segment or new authenticated source, push if authorized and **read back remote HEAD**. Saving to the chat, a local file, staging area or unreferenced Git tree does NOT satisfy persistence.
-- Run at least one deliberately hostile negative under independent test semantics. A green internal fixture that mirrors author assumptions is insufficient.
+- Claims requiring independent evidence must not rely solely on a green internally authored fixture that encodes its own expected outcome. **The appropriate critical or negative examination is for Astra and competent reviewers to determine**, not this historical dossier.
 - If high intelligence is exhausted or the five-hour limit approaches: stop broad reading, preserve **documented uncompleted science and contradictory alternatives**, and hand off the exact committed head.
 - Time savings never justify falsely reporting native usage, an independent review, source access, actual model changes, or authenticated credits.
 - Avoid self-punishing process bureaucracy: if ORACLE/08–13 already supplies a qualified source fact and it is not decision-changing, **use it at its stated historical grade** and move on.
