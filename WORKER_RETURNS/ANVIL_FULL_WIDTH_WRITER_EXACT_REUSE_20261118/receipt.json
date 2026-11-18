@@ -1,0 +1,103 @@
+{
+  "schema": "ANVIL_FULL_WIDTH_WRITER_EXACT_REUSE@1",
+  "task": "ANVIL_FULL_WIDTH_WRITER_EXACT_REUSE_20261118",
+  "status": "NO_EVIDENCE_SUPPORTED_REPAIR_YET__DECISIVE_MEASUREMENT_REQUIRED",
+  "receipt": {
+    "return": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/RETURN.json",
+    "source": "9ba991847ec043ab12f00244c4d3a0301ddb0f98",
+    "status": "CAPPED_WALL_600S_PARTIAL_WRITING",
+    "wall": 600.2504626769805,
+    "partial_bytes": 1951192968,
+    "partial_files": 7,
+    "sealed": false,
+    "publication": "NOT_REACHED"
+  },
+  "writer_pin": {
+    "baseline": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+    "pre553_source_direct_parquet_estate.py": {
+      "sha256": "068fc525b6c117fbb3feba52f740f7e764674ff0b2a78f52e5b649b5fafe643a",
+      "symbols": ["_Sink.add:229-236", "_Sink.flush:238-253", "write_direct_estate:460-602", "_verify_emitted_physical_payloads:523-525"]
+    },
+    "pre553_direct_i02_sourcefree.py": {
+      "sha256": "b70e9a49b5d0a2445ed76053b04579fa0cbede2717286c7708dfb6f18ff016d2",
+      "symbols": ["build_sourcefree_direct_i02:617+", "SQLite proof setup:409-425", "family consumption/insert:441-500", "hashes/headers:517-581"]
+    },
+    "pre553_external_i02_certificate.py": {
+      "sha256": "33afde41071d9a62d5921cd56c4a9b0c48e59692e4a55d33b48773ca1c652c08",
+      "symbols": ["_insert_object:96-134", "semantic hash validation and SQLite row insertion"]
+    }
+  },
+  "scratch_observation": {
+    "proof_db_bytes": 1789673472,
+    "journal_bytes": 8325712,
+    "proof_db_plus_journal_bytes": 1797999184,
+    "total_partial_bytes": 1951192968,
+    "fraction_of_partial": 0.9214,
+    "interpretation": "Dominant bytes are SQLite proof/scratch. Bytes are NOT CPU timing evidence and do not identify the cap cause."
+  },
+  "repeated_or_duplicated_work_visible": [
+    {
+      "stage": "writer sink",
+      "work": "_Sink.add -> _row -> canonical_json body_json -> ParquetWriter Zstd write, row_group_size=512",
+      "evidence": "writer _Sink 220-265, 481-496"
+    },
+    {
+      "stage": "I02 proof stream",
+      "work": "each object is type-checked, public carrier validated, semantic_hash/semantic_projection validated, inserted into SQLite objects/closure and family-specific tables; every chunk committed",
+      "evidence": "_pre553_direct_i02_sourcefree.py 441-500; _insert_object 96-134; db PRAGMAs 413-417"
+    },
+    {
+      "stage": "proof hashing/closure",
+      "work": "streamed candidate projection/replay hashes and closure/header reconstruction query sorted SQLite rows; SQLite integrity check",
+      "evidence": "_pre553_direct_i02_sourcefree.py 517-581"
+    },
+    {
+      "stage": "physical verification",
+      "work": "_verify_emitted_physical_payloads re-reads emitted Parquet families and compares against the same proof scratch/stream",
+      "evidence": "pre553_source_direct_parquet_estate.py 523-525, 329-445"
+    },
+    {
+      "stage": "publication",
+      "work": "hash every member, fsync members/manifests/directories and atomic publish",
+      "evidence": "pre553_source_direct_parquet_estate.py 531-587"
+    }
+  ],
+  "existing_fast_path_assessment": {
+    "w03_or_1006_direct_i02_fast_path_found": false,
+    "evidence": "No accepted existing direct-I02 writer fast-path/reuse artifact was found in the focused existing returns read; no claim is made.",
+    "same_size_reuse_candidate": "NOT_ESTABLISHED",
+    "what_would_be_reused": "No safe existing reuse can be named from the current evidence without a stage timing partition."
+  },
+  "why_no_repair_yet": [
+    "The dominant bytes are a required proof DB; stripping or bypassing it is forbidden.",
+    "Bytes and journal size do not establish that SQLite proof, Parquet sink, verification, or hashing is the wall-time mechanism.",
+    "No accepted W03/#1006 fast path was found in the available focused evidence.",
+    "No current writer instrumentation separates tap/sink, I02 proof, verification and publication.",
+    "A production optimization would be speculative and could weaken duplicate/negative/census/atomic/recovery guarantees."
+  ],
+  "decisive_stage_measurement": {
+    "name": "WRITER_STAGE_SPLIT",
+    "needed": [
+      "time and object count for tap/_Sink.add/flush",
+      "time and object count for build_sourcefree_direct_i02",
+      "time for _verify_emitted_physical_payloads",
+      "time for member hashing and fsync/publication"
+    ],
+    "smallest_nonproduction": "A test-only wrapper around those existing boundaries on the same preserved writer, no new fixture size and no retry, recording start/end and counts only. No product edit.",
+    "currently_available": "BUILD_STAGES has stage=writing only; BUILD_SAMPLES has elapsed/RSS/scratch; no substage timing.",
+    "measurement_first": true
+  },
+  "candidate_if_measurement_supports": {
+    "idea": "Reuse the writer's already materialized row/projection at the tap boundary when populating the I02 proof tables, so body/field serialization and validation are not independently repeated, while retaining the distinct SQLite duplicate/occurrence/closure/negative/census proof.",
+    "status": "CANDIDATE_ONLY__NOT_IMPLEMENTABLE_WITHOUT_TIMING_AND_OWNER_GRANT",
+    "preserves": ["external I02 roots", "duplicate rejection", "typed absences", "census", "atomic publication", "recovery"],
+    "forbidden": ["proof stripping", "new canonical dataset", "product edit", "build retry"]
+  },
+  "limits": [
+    "No build/query/retry or product edit.",
+    "No CPU attribution from bytes.",
+    "No source/science/protected/current authority.",
+    "Correctness at aee95429609c372564e996c2d3d3eb30e9253cbf not reopened."
+  ],
+  "stop": "STOP_FOR_DECISIVE_WRITER_STAGE_TIMING"
+}
