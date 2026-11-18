@@ -1,0 +1,145 @@
+{
+  "author_claims": {
+    "calls_wide": true,
+    "claims_22_outputs": true,
+    "claims_68_columns": true
+  },
+  "babb256": {
+    "git_commit_to_files_proved": false,
+    "local_hash_match": true,
+    "source_grade": "LOCAL_SHA256_ONLY_BUNDLE_HEADER_IDENTIFIES_COMMIT"
+  },
+  "counterexamples": {
+    "actual_grain": "long respondent-variable rows",
+    "actual_outputs_count": 26,
+    "actual_required_columns": 67,
+    "row_count": 25067,
+    "row_count_is_not_respondent_count": true
+  },
+  "current_files": {
+    "rawlsing_next/_pre553_query_eval.py": {
+      "cited_sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+      "local_sha256": "b22a3e058cd0925ce0f016eb416c490982301c9465ef0f311b9a00ff0aed6a88",
+      "match": true
+    },
+    "rawlsing_next/pre553_direct_estate_i03.py": {
+      "cited_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+      "local_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+      "match": true
+    },
+    "rawlsing_next/pre553_empirical_query.py": {
+      "cited_sha256": "f6ee1ea3016e58245532989c16b3d4e1ca3e41cb05ea11cf2b03ea56dcb8e926",
+      "local_sha256": "f6ee1ea3016e58245532989c16b3d4e1ca3e41cb05ea11cf2b03ea56dcb8e926",
+      "match": true
+    },
+    "rawlsing_next/pre553_prepared_saved_i03.py": {
+      "cited_sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+      "local_sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+      "match": true
+    }
+  },
+  "current_sqlite": {
+    "indices_for": "constructs new _ReleaseIndex each call; grouped key contains id(index)",
+    "members_fields": [
+      "family",
+      "respondent",
+      "ref",
+      "gid",
+      "off"
+    ],
+    "members_index": "members_resp_idx(family,respondent,ref)",
+    "query_independent_selector": "NOT_ESTABLISHED_IN_CURRENT_FROZEN_68AA",
+    "routing_by_respondent": "_ColdFamilyRows(DirectEstateI03Session,\"RoutingEligibilityFact\")"
+  },
+  "grain": {
+    "artifact_row_count": 25067,
+    "author_calls_wide": true,
+    "interpretation": "LONG respondent\u00d7variable rows, not respondent count",
+    "required_total": 67,
+    "respondent_key": "respondent_id_norm",
+    "response_column": "response_value",
+    "variable_key": "var_code_norm"
+  },
+  "manifest": {
+    "bridge_rows": 13202,
+    "outputs_count": 26,
+    "prepared_call_count": 1,
+    "prepared_row_count": 25067,
+    "shared_mode": "write",
+    "substrate_outputs": [
+      {
+        "complete_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550/shard_runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/checkpoints/respondent_substrate/source=GSS/wave=2010/country_code=US/COMPLETE",
+        "content_hash": "e58a708772ef20102182d3c4b57e4165021cecf86632d1a490bb7821b1a2c919",
+        "country_code": "US",
+        "manifest_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550/shard_runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/checkpoints/respondent_substrate/source=GSS/wave=2010/country_code=US/v550_shared_respondent_substrate_manifest.json",
+        "parquet_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550/shard_runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/checkpoints/respondent_substrate/source=GSS/wave=2010/country_code=US/v550_shared_respondent_substrate.parquet",
+        "row_count": 25067,
+        "validation_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550/shard_runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/checkpoints/respondent_substrate/source=GSS/wave=2010/country_code=US/v550_shared_respondent_substrate_validation.json"
+      }
+    ]
+  },
+  "old_files": {
+    "Rawlsing_V550_Fused_GSS_Proof_babb256_20260803/evidence/shard_manifest.json": {
+      "cited_sha256": "f3b2f9b94a1dbbc4e09468a85f4cefb2007494ae05a9d58454f45b91783648a7",
+      "exists": true,
+      "local_sha256": "f3b2f9b94a1dbbc4e09468a85f4cefb2007494ae05a9d58454f45b91783648a7",
+      "match": true
+    },
+    "data/ddm_build_copy/build_determinicity_repository_v550.py": {
+      "cited_sha256": "09c3915b3019945047c38d34e4159e2eb2771354e4418057683b2551d0f1340a",
+      "exists": true,
+      "local_sha256": "09c3915b3019945047c38d34e4159e2eb2771354e4418057683b2551d0f1340a",
+      "match": true
+    },
+    "data/ddm_build_copy/build_determinicity_wave_shard_v550.py": {
+      "cited_sha256": "1f7dfa44b7b3e9e04c22bd2db8044eadb43f79c7452b1f71d71a24e8bc9a7558",
+      "exists": true,
+      "local_sha256": "1f7dfa44b7b3e9e04c22bd2db8044eadb43f79c7452b1f71d71a24e8bc9a7558",
+      "match": true
+    },
+    "data/ddm_build_copy/build_v550j_prepared_substrate.py": {
+      "cited_sha256": "4d5ab06754b6bfce486e6c548cec46e5d6abd80bcd4b63a7f5f504be3dff53b6",
+      "exists": true,
+      "local_sha256": "4d5ab06754b6bfce486e6c548cec46e5d6abd80bcd4b63a7f5f504be3dff53b6",
+      "match": true
+    },
+    "data/ddm_build_copy/compile_v550j_joint_response_patterns.py": {
+      "cited_sha256": "627f7094a70ad33652fba422536b776d32532b028c84e3fd543a453d25b4687a",
+      "exists": true,
+      "local_sha256": "627f7094a70ad33652fba422536b776d32532b028c84e3fd543a453d25b4687a",
+      "match": true
+    },
+    "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py": {
+      "cited_sha256": "3d16f43524cc68994a96a4ca43477f3ee7a5dd3d3f263f5551599327506db95e",
+      "exists": true,
+      "local_sha256": "3d16f43524cc68994a96a4ca43477f3ee7a5dd3d3f263f5551599327506db95e",
+      "match": true
+    }
+  },
+  "outputs": {
+    "artifact_output_list_count": 26,
+    "note": "outputs list is writer manifest; actual caller/call evidence needed for per-product consumption",
+    "proves_each_output_consumed_substrate": false,
+    "proves_writer_configured": true
+  },
+  "schema": {
+    "additive_count": 5,
+    "has_wide_question_columns": false,
+    "long_keys": [
+      "respondent_id",
+      "var_code",
+      "question_id",
+      "response_value",
+      "response_label"
+    ],
+    "prepared_required_count": 62,
+    "total_required_count": 67,
+    "unique_scalar_required": [
+      "source_norm",
+      "canonical_wave_norm",
+      "country_code_norm",
+      "respondent_id_norm",
+      "var_code_norm"
+    ]
+  }
+}
