@@ -233,3 +233,11 @@ The 600 added slots are **not** treated as 600 events/respondent; this is an aud
 ### Choice-changing next decision
 
 The one pair is exact and within caps. The measured shape shows index-build reuse (S 14.4→5.5 s, 5→1 measured builds) but Q dominates and prepared RSS is slightly higher. The next choice is **not** a predetermined speedup: qualify the measured H/S/Q/O/cost shape, then decide whether the next repair is (a) native evaluator/read-path cost, (b) index geometry/durability, or (c) Batch-forward wiring. Do not run 1/10/100 or Batch until that decision is recorded. See `R2_PILOT/FIRST_PAIR_RESULT.md` and `.json`.
+
+## 11. R3 targeted Q profile (append-only, R2 frozen)
+
+`R3_Q_PROFILE/` profiles one `f4_three_raw` execution on the frozen R2 estate. Admission (0.461 s) and index build (2.889 s) are outside the profile; cProfile wall 18.296 s is not a matched timing. External wall 22.57 s, sampled process-tree RSS 172,122,112 B, scratch 30,390,928 B, exit 0, no abort. Full semantic/identity/refs/member/replay parity is exact against R2.
+
+Main hotspot: `_pre553_query_eval.py:51(_routing_fact_for)` 18.222 s cumulative / 16 calls, materializing all 600 routing facts per respondent. `pre553_direct_estate_i03.py:398(_respondent_family)` is 18.003 s cumulative; its `ORDER BY ref` plus single-row-group cache causes 3,965 row-group reads / 3,964 cache clears. `_object_from_row` 6.774 s, object init 5.035 s, `canonicalize` 2.786 s, `semantic_hash` 2.393 s; SQLite execute is 0.011 s / 53 calls. Numerical counting is not the dominant hotspot; physical routing materialization/parity/hash is.
+
+Smallest lawful corrective experiment: under S2-C direct-reader + native evaluator owner grant, change `_respondent_family` member order to physical `gid,off` (or equivalent) and re-profile the same frozen f4 query with exact parity. If insufficient, an exact routing selector keyed by respondent/target/risk/state is the next bounded option. No validation/hash/current-math weakening, no new store/evaluator, no 1/10/100/Batch rerun from one profile. See `R3_Q_PROFILE/Q_PROFILE_FINDINGS.md` and `RESULT.json`.
