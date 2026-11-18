@@ -1,0 +1,82 @@
+{
+  "defect_present": true,
+  "semantic_closure": {
+    "defect": "EXPECTED_TRUTH has no expected full member sets; RESULT rows have counts/hashes only, while derive_expected.py line 45 indexes row[risk_set_member_refs]/denominator_member_refs; full identity-set proof is absent and the derivation is not runnable against the frozen RESULT.",
+    "derive_expected_requires_result_identity_lists": true,
+    "operations": {
+      "f2_forward_raw": {
+        "result_row_has_identity_lists": false,
+        "truth_full_expected_sets": false,
+        "truth_keys": [
+          "actual_denom_count",
+          "actual_risk_count",
+          "all",
+          "checks",
+          "expected_cells",
+          "expected_denominator_count",
+          "expected_risk_count"
+        ]
+      },
+      "f2_reverse_raw": {
+        "result_row_has_identity_lists": false,
+        "truth_full_expected_sets": false,
+        "truth_keys": [
+          "actual_denom_count",
+          "actual_risk_count",
+          "all",
+          "checks",
+          "expected_cells",
+          "expected_denominator_count",
+          "expected_risk_count"
+        ]
+      },
+      "repeated_mr_raw": {
+        "result_row_has_identity_lists": false,
+        "truth_full_expected_sets": false,
+        "truth_keys": [
+          "actual_denom_count",
+          "actual_risk_count",
+          "all",
+          "checks",
+          "expected_cells",
+          "expected_denominator_count",
+          "expected_risk_count"
+        ]
+      },
+      "selected_weighted": {
+        "result_row_has_identity_lists": false,
+        "truth_full_expected_sets": false,
+        "truth_keys": [
+          "actual_denom_count",
+          "actual_risk_count",
+          "all",
+          "checks",
+          "expected_cells",
+          "expected_denominator_count",
+          "expected_risk_count"
+        ]
+      }
+    },
+    "raw_stdout_all_expected": "false",
+    "result_all_expected": true
+  },
+  "width128": {
+    "actual_cells": [
+      "0",
+      "1"
+    ],
+    "actual_zero_cell": {
+      "cell": "1",
+      "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "raw_numerator_support": 0,
+      "weighted_numerator_support_if_authorized": null
+    },
+    "all_expected_declared": true,
+    "checks_cells_declared": true,
+    "expected_cells": [
+      "0"
+    ],
+    "expected_zero_cell": null,
+    "raw_stdout_all_expected": "false"
+  }
+}

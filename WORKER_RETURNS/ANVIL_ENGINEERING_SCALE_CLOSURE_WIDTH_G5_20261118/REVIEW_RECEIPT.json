@@ -1,0 +1,68 @@
+{
+  "schema":"ANVIL_ENGINEERING_SCALE_CLOSURE_WIDTH_G5_REVIEW@1.0.0",
+  "job":"FOCUSED RECEIVING OF 10K FOUR-OP SEMANTIC CLOSURE AND WIDTH128",
+  "reviewer":{"session_id":"ses_e30a442d8ffeYBbXi7rPUpPxoc","model":"opencode-go/deepseek-v4.1-flash#max","subagents":false},
+  "worktree":"/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/OWNER",
+  "branch":"agent/anvil-engineering-cut1-owner-20261117-r1",
+  "author_execution":"7cc824eaca28771ec60f6d3d77236774237124ac",
+  "integrated_executable":"68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "integrated_g5":"d74b641f8ec0c3a94da8ea90e9f5e7b5dc97a0ab",
+  "payloads":{
+    "semantic_manifest_files":18,"semantic_manifest_bad":[],
+    "width_manifest_files":14,"width_manifest_bad":[],
+    "semantic_estate":"e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+    "width_estate":"4d9604dc886ff9655ad25941fdcad2e412d18de4ab07c813524068c1dad09eea"
+  },
+  "cost_observations":{
+    "semantic_H":0.5745562830707058,"semantic_S":12.651083842036314,"semantic_Q_total":106.1867780839093,
+    "semantic_O": {"selected_weighted":0.44066357298288494,"f2_forward_raw":0.379,"f2_reverse_raw":0.358,"repeated_mr_raw":0.161},
+    "semantic_rss":722276352,"semantic_scratch":122591630,
+    "width_build":293.95639729802497,"width_external":45.22563378105406,"width_S":22.8470964320004,"width_Q":21.238738670945168,"width_O":0.004812355036847293,
+    "width_build_rss":200609792,"width_build_scratch":826683762,"width_query_rss":158609408,"width_query_scratch":248680671,
+    "width_retained":55187741,"width_respondents":128,"width_questions":600,"width_events":68960,"width_routing":76800,"width_weights":128,
+    "cumulative_semantic_width_widthquery":445.369,"caps":{"build":600,"query":600,"rss":6442450944,"scratch":4294967296,"total":900},
+    "no_hidden_second_width_build":true,"width_H_separately_timed":false
+  },
+  "material_defects":[
+    {
+      "id":"SEMANTIC_TRUTH_IDENTITY_SET_CLOSURE_GAP",
+      "severity":"SEV-1",
+      "gate":"full semantic",
+      "witness":"measurement-defect-witness.json",
+      "observed":"EXPECTED_TRUTH operations contain only expected_cells/counts; they do not contain expected full risk/denominator identity sets. RESULT operation rows contain only counts/hashes, not full lists. derive_expected.py indexes row['risk_set_member_refs']/row['denominator_member_refs'], which are absent from the frozen RESULT, so the claimed full-set derivation is not runnable or independently comparable. Actual full sets exist only in payloads.",
+      "consequence":"Does not close full risk/denominator identity-set semantics for four ops; hashes/counts are insufficient.",
+      "minimal_repair":"Add expected full member sets to EXPECTED_TRUTH (pattern-derived; no native rerun); preserve or re-export full actual lists/sets in RESULT or read them directly from payloads; fix derive_expected.py; re-freeze truth/manifest. No product or native rerun."
+    },
+    {
+      "id":"WIDTH128_EXPECTED_ZERO_CELL_OMITTED",
+      "severity":"SEV-1",
+      "gate":"full semantic",
+      "witness":"measurement-defect-witness.json",
+      "observed":"Actual f4 payload has cells {0:39 positive, 1:0 OBSERVED_ZERO}; RESULT.expected.cells contains only cell 0, but RESULT.checks.cells/all_expected_match are true and raw query.json stdout says all_expected:false. The expected truth omits the observed-zero cell and the post-hoc true label is inconsistent with raw output.",
+      "consequence":"The claimed exact width cell closure is not verified by the frozen expected truth; actual payload is complete but expected/check label is incomplete.",
+      "minimal_repair":"Add expected cell '1' raw 0/OBSERVED_ZERO to RESULT.expected, recompute cells check from actual payload, correct stale all_expected stdout label, re-freeze manifest. No query/native rerun."
+    }
+  ],
+  "counterlabels":{
+    "semantic_closure_raw_stdout":"{\"all_expected\": false}",
+    "semantic_closure_RESULT_all_expected":true,
+    "semantic_explanation":"inline semantic_closure check omitted cells/weighted; later EXPECTED_TRUTH sets all true but lacks full member sets",
+    "width_raw_stdout":"all_expected:false",
+    "width_RESULT_all_expected":true,
+    "width_explanation":"expected truth omitted observed-zero cell; result label true is not supported"
+  },
+  "source_open_event":{
+    "count":1,
+    "event":"os.open('/.../EXECUTION/.local-data-10k/.s2c-native-i03-xchwzfxa')",
+    "classification":"temporary native I03 session directory, not raw source artifact/payload",
+    "visibility":"Python builtins/os.open only; Arrow C++/SQLite opens/mmaps not fully observable"
+  },
+  "gates":{"G1":"PASS_SCOPED_PINS_AND_MANIFESTS","G2":"FAIL_SEMANTIC_IDENTITY_SET_AND_WIDTH_ZERO_CELL","G3":"FAIL_TRUTH_LABEL_INCONSISTENCY","G4":"PASS_SCOPED_COST_OBSERVATION","G5":"FAIL_REVISE_EXACT_MEASUREMENT_DEFECT"},
+  "semantic_proof_grade":"F4 ONLY was independently verified at e97; four-op full cells/weighted/risk/denom sets are NOT closed by current expected truth; denominator/state/count observations match.",
+  "width_proof_grade":"Actual f4 payload has 39 positive + 0 zero, risk128/denom39; expected truth lacks the zero cell; resource observation only, not full expected closure.",
+  "decision":"REVISE_EXACT_DEFECT",
+  "accepted_scoped":false,
+  "next_smallest_engineering_action":"Re-export/recompute the frozen truth only (no native rerun): full expected identity sets for four 10k ops, plus width expected zero cell and consistent all_expected labels. Then, if still needed, ask one 600-column × 10k respondent resource question; do not infer it linearly from 5Q or 128R.",
+  "limits":["No product/source/science/actor/protected grant or edits.","No native rerun; no 100k/full-width/matrix.","Semantic 4-op and width closure not accepted until truth/label correction.","Sourcefree TEST_ONLY; no original35."],
+  "custody":{"writes":"WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_CLOSURE_WIDTH_G5_20261118/ only","product_edits":false,"background_jobs_left":false}
+}
