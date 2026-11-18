@@ -58,8 +58,16 @@ def _routing_fact_for(
     used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
 ) -> RoutingEligibilityFact:
+    if index.routing_lookup is not None:
+        routing_rows = index.routing_lookup.lookup(
+            respondent=respondent.ref.key,
+            target=target_ref.key,
+            risk_set=risk_set_ref.key,
+        )
+    else:
+        routing_rows = index.routing_by_respondent[respondent.ref.key]
     matches = [
-        fact for fact in index.routing_by_respondent[respondent.ref.key]
+        fact for fact in routing_rows
         if _question_matches(fact, target_ref)
         and _ref_field(fact, "risk_set_ref") == risk_set_ref
     ]

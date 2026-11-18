@@ -168,6 +168,9 @@ class _ReleaseIndex:
     runtime_authorities: Any | None = None
     runtime_repository: C11Repository | None = None
     runtime_predicate_grammar_authority_ref: Any | None = None
+    # Optional exact respondent-first routing locator. Default None preserves
+    # every existing C11Direct/S2-C caller and all current semantics.
+    routing_lookup: Any | None = None
     # Only the independently authenticated DirectEstateI03Session may opt in.
     # Its respondent mapping was inserted in saved physical row-group order.
     # Legacy C11 and other indexes retain canonical ref-key iteration.
