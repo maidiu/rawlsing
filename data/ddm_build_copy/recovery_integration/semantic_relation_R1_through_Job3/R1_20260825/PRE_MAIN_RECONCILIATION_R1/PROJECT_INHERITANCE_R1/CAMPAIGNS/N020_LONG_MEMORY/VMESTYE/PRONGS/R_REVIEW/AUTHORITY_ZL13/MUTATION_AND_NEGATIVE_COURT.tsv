@@ -1,0 +1,12 @@
+test_id	input_condition	expected	observed	execution_surface	mutated_original_source	cold_restore	grade
+P0_149_HISTORICAL_SOURCE_IDS	P0 C6/F/AR/AUX and C777 JSONL source rows	Exact row identity match for each frozen tuple	149/149 uniquely matched and raw row locators validated	READ_ONLY_S1_SOURCE_COMPARISON	NO_MUTATION	N/A	NOT_A_RULE_EFFECT_TEST
+I03_WRONG_KIND	Wrong authority_kind at exact queried operation	Typed rejection not generic silently waived	NOT_RUN	NO_RUNNER	NO	NOT_RUN	REQUIRES_AUTHORIZED_S2
+I03_WRONG_OPERATION	Wrong operation in otherwise exact ALLOW rule	Typed denial preserving evidence	NOT_RUN	NO_RUNNER	NO	NOT_RUN	REQUIRES_AUTHORIZED_S2
+I03_WRONG_SCOPE	Wrong source/claim/target-use scope	Typed negative exact scope	NOT_RUN	NO_RUNNER	NO	NOT_RUN	REQUIRES_AUTHORIZED_S2
+F03_RULE_MUTATION	Mutate one qualified QSM/FQRA/QRA relation cell in sourcefree candidate	Expected relation output delta or refusal with cold restore	NOT_RUN	NO_RUNNER_OR_ISSUER	NO	NOT_RUN	C10_18518_ROWS_35_WAVES_HISTORIC_TEST_ONLY
+F08_QUC_NEGATIVE	GSS 1973 uswar RELATION_EVIDENCE review_required	No V551 relation-evidence promotion	NOT_RUN	NO_RUNNER	NO	NOT_RUN	HISTORICAL_TEST_ONLY
+Q86_CONTEXT_ONLY	Q86 context_only and recommended_computation none	No unsupported source semantics promotion; RAW counts assessed separately	NOT_RUN	NO_RUNNER	NO	NOT_RUN	NEEDS_SOURCE_EXACT_SELECTION
+WEIGHT_OPTIONAL_RAW	No weight supplied, lawful RAW operation	Unweighted RAW not blocked; weighted estimand must be governed	NOT_RUN	NO_RUNNER	NO	NOT_RUN	NEEDS_SOURCE/ESTIMAND_BOUNDARY
+F09_RISKSET_ABSENCE	Historical routing/known absence case	Typed risk-set unknown vs false positive	NOT_RUN	NO_RUNNER	NO	NOT_RUN	C6_HISTORIC_ONLY
+I04_RULE_CONTENT	Modify hash-bound StructuralAdmissionRule allowed material in qualified fixture	Output/admission delta or typed refusal and cold restore	NOT_RUN	NO_RUNNER	NO	NOT_RUN	SOURCE_CONTENT_EVAL_S1_ONLY
+REVOCATION_REPLAY	Superseded/revoked release version in replay	Explicit rejection of stale authority and descendant invalidation	NOT_RUN	NO_RUNNER	NO	NOT_RUN	REGISTRY_LOOKUP_NOT_FULL_LIFECYCLE
