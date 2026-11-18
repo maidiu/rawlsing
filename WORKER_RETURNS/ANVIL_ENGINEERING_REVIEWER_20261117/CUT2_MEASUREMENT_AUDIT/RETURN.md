@@ -104,3 +104,10 @@ recorded. A qualified speedup, native, 100k or production claim is not made.
 - `MANIFEST.sha256`
 
 Reviewer: `ses_e30c25800ffeT8XbyTuHekRCme`; same distinct nonauthor G5.
+
+## Remote verification
+
+Review content commit `bf6f7f8d267247896c8d2c82bc16d3010d811f76` was pushed to
+`origin/agent/anvil-engineering-cut1-g5-20261117-r1`. Direct remote verification
+found product unchanged from `347baec6` and the original 092 review unchanged.
+See `remote_verification.txt`.
