@@ -1,0 +1,95 @@
+{
+  "packet_id": "ANVIL-ALL35-CONSTRUCTION-ONLY-G5-20261118",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "distinct_nonauthor": true,
+  "author_artifact_commit": "3aecb818d8f65d63da809c365f05f3320434f1c4",
+  "accepted_baseline": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
+  "original_patch_sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
+  "author_manifest_files": 15,
+  "author_manifest_hashes_verified": true,
+  "scratch_isolated": true,
+  "sourcefree": true,
+  "product_edits": false,
+  "gates": {
+    "G1_artifact_and_patch": {
+      "state": "PASS",
+      "receipt": "All 15 author artifact payloads verified by SHA-256 and byte length. Exact patch ffa452... applies cleanly to exact baseline aee954...; production segment identical to frozen first patch."
+    },
+    "G2_shared_construction_refactor": {
+      "state": "PASS",
+      "receipt": "Shared decode/projection/spool/manifest/publication extraction preserves build_source_i02_handoff guard/result behavior; construction-only result has no operation fates, census audit, eligibility or issued workload."
+    },
+    "G3_focused_and_q2": {
+      "state": "PASS",
+      "receipt": "Focused 2 passed exit 0 in 8.60 s; focused + existing source_i02 Q2 regression 13 passed exit 0 in 9.87 s. Existing census/fate/scope nodes remain green."
+    },
+    "G4_process_payload_and_refusals": {
+      "state": "PASS",
+      "receipt": "Producer PID dead before fresh reader; all 13 family counts and full canonical payload digests equal across cold reopen; identity and routing payload equivalent; wrong-current, revoked and wrong-root refused typed before estate open."
+    },
+    "G5_source_and_scope": {
+      "state": "PASS_SCOPED",
+      "receipt": "Original fixture + DenyResolver refused SOURCE_READ_NOT_CURRENT before decode; no source bytes/destination. Same-count misbinding is caught by full canonical payload digests, not counts only. joined_q2, authorized_executable_q2 and issued_workload all false."
+    }
+  },
+  "actual_results": {
+    "focused": {"count": 2, "passed": 2, "exit": 0, "wall_seconds": 8.60},
+    "focused_plus_q2": {"count": 13, "passed": 13, "exit": 0, "wall_seconds": 9.87},
+    "family_counts": {
+      "EmpiricalUniverse": 1, "RespondentIdentity": 5,
+      "QuestionVariableBinding": 1, "RespondentEvent": 5,
+      "RoutingEligibilityFact": 5, "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0, "AuthoritySnapshot": 7,
+      "SourceUniverseRelation": 0, "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0, "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "producer_exited_before_reader": true,
+    "roots_equal_build": true,
+    "payload_digests_equal": true,
+    "identity_payload_equivalent": true,
+    "routing_payload_equivalent": true,
+    "manifest_equal": true,
+    "wrong_current": "DirectEstateError current source/operation authority refused; before_estate_open true",
+    "revoked": "DirectEstateError current source/operation authority refused; before_estate_open true",
+    "wrong_root": "DirectEstateError roots mismatch; before_estate_open true",
+    "original_denied_before_bytes": "SOURCE_READ_NOT_CURRENT; decode not called; destination absent",
+    "joined_q2": false,
+    "authorized_executable_q2": false,
+    "issued_workload": false,
+    "has_operation_fates": false,
+    "has_census_audit": false
+  },
+  "all35_config_input_binding": {
+    "commit": "6d264ee86c154e284e8ac9a64d2d5b08dad0edab",
+    "verified": true,
+    "positive_bindings": 35,
+    "q2_executable": 0,
+    "consumed_by_candidate": false,
+    "precise_remaining_dependency": "The candidate API accepts a SourceConfig and source path; it does not consume the all35 metadata bundle or assemble each exact config/source pair. Real all35 construction still requires bundle-to-SourceConfig/source-path assembly plus the exact current resolver."
+  },
+  "src04_grant_binding": {
+    "commit": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
+    "path": "WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118/SRC04_BINDING.json",
+    "verified": true,
+    "status": "REQUEST_ONLY_ALLOWED",
+    "source_read_performed": false,
+    "consumed_by_candidate": false,
+    "precise_remaining_dependency": "The candidate uses only a sourcefree fixture and DenyResolver; it does not consume the SRC04 ExistingGrantResolver or original source. Real SRC04 assembly must supply that exact resolver/config; no original bytes were read in this review."
+  },
+  "same_count_misbinding": "Attacked by exact canonical payload digests for every family plus RespondentIdentity/RoutingEligibilityFact digests; equal counts alone are insufficient. Reopen payloads matched producer exactly.",
+  "original_witness_runner": "Not run or duplicated; being prepared separately in parallel.",
+  "limits": [
+    "Sourcefree construction-only proof only; no original35/source read, source-rights/science grant, Q2 analytical issuance, production adoption or protected merge.",
+    "Focused tiny positive/negative plus one existing source_i02 Q2 regression court; not a full suite or new matrix.",
+    "All35 metadata config binding is verified but not consumed by the candidate; exact assembly dependency is recorded.",
+    "SRC04 grant binding is verified as request-only but not consumed; no source bytes opened.",
+    "No product edits; patch applied only in private scratch."
+  ],
+  "disposition": "ACCEPT_SCOPED",
+  "integration": "UNMERGED",
+  "scientific_grade": "SOURCEFREE_CONSTRUCTION_ONLY_NO_ORIGINAL_OR_Q2_ISSUANCE",
+  "authority_grade": "NO_NEW_SOURCE_SCIENCE_OR_MERGE_GRANT",
+  "stop_state": "CONSTRUCTION_ONLY_CANDIDATE_ACCEPTED_SCOPED__ASSEMBLY_AND_REAL_WITNESS_REMAIN_SEPARATE"
+}

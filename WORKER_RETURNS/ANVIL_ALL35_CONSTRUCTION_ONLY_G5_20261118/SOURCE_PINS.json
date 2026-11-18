@@ -1,0 +1,42 @@
+{
+  "accepted_baseline": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "all35_config_binding": {
+    "commit": "6d264ee86c154e284e8ac9a64d2d5b08dad0edab",
+    "config_summary_sha256": "66c6ce431b44ebe5c3ab2b73ba7128e2018e412497c9b0e250a7c680b6f127c1",
+    "consumed_by_candidate": false,
+    "dependency": "construction-only API accepts SourceConfig/source path; all35 bundle-to-config/source assembly is not invoked by the tiny candidate test. Real all35 assembly must bind each exact bundle config and source path; original witness runner is being prepared separately and was not duplicated.",
+    "positive_bindings": 35,
+    "q2_executable": 0
+  },
+  "author_artifact_commit": "3aecb818d8f65d63da809c365f05f3320434f1c4",
+  "author_manifest_all_hashes_verified": true,
+  "author_manifest_files": 15,
+  "baseline_source_archive": "git -C OWNER archive aee954 rawlsing_next",
+  "candidate_original_patch_sha256": "9da2a3689dc7c4da92474b5c1ae00b7067301d2904354594282d785f3a2c53b5",
+  "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
+  "changed_files": [
+    "rawlsing_next/pre553_source_i02_handoff.py",
+    "rawlsing_next/tests/all35_construction_only_child.py",
+    "rawlsing_next/tests/test_all35_construction_only_candidate.py"
+  ],
+  "no_new_matrix": true,
+  "no_original_data_read": true,
+  "no_product_edit": true,
+  "patch_apply_check": "exit 0; applied cleanly to exact baseline",
+  "production_segment_equal_to_frozen_first": true,
+  "schema": "ANVIL_ALL35_CONSTRUCTION_ONLY_G5_SOURCE_PINS@1",
+  "snapshot_sha256": {
+    "child": "96ed1c641c7d9d351bc46f0ece536f978783907bb6e9e08af6d58802e833d448",
+    "focused_test": "b21c5db34684dacaba6a15c4465ece8bf274b1b3cc279eed41ea6e3413d0166d",
+    "production": "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
+  },
+  "src04_grant_binding": {
+    "commit": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
+    "consumed_by_candidate": false,
+    "dependency": "The candidate uses only a sourcefree SourceConfig and DenyResolver test; it does not consume the SRC04 ExistingGrantResolver or original source. Real SRC04 assembly must supply that exact resolver and source config; no original bytes were read in this review.",
+    "path": "WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118/SRC04_BINDING.json",
+    "sha256": "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0",
+    "source_read_performed": false,
+    "status": "REQUEST_ONLY_ALLOWED"
+  }
+}

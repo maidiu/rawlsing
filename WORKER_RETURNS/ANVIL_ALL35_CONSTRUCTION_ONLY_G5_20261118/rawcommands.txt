@@ -1,0 +1,32 @@
+# Independent all35 construction-only G5 commands
+# Scratch: private /private/.../anvil-all35-g5.urZ52q, exact baseline archive.
+
+git -C OWNER archive aee95429609c372564e996c2d3d3eb30e9253cbf rawlsing_next | tar -x -C <scratch>/source
+cp OWNER/.../R5...candidate.patch <scratch>/candidate.patch
+git apply --check candidate.patch   # exit 0
+git apply candidate.patch           # exit 0
+
+cd <scratch>/source
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  --basetemp=<scratch>/tmp/focused rawlsing_next/tests/test_all35_construction_only_candidate.py
+# exit 0; 2 passed; 8.60 s
+
+PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider \
+  --basetemp=<scratch>/tmp/focused_q2 rawlsing_next/tests/test_all35_construction_only_candidate.py \
+  rawlsing_next/tests/test_pyat960_s1e_source_i02.py
+# exit 0; 13 passed; 9.87 s
+
+# Actual producer/reopen child artifacts copied to evidence/ from focused run:
+# producer PID dead before reader; 13 family counts and payload digests exact;
+# wrong_current/revoked/wrong_root all typed refusals before estate open.
+
+# Author artifact 3aec all 15 manifest files verified by SHA-256 and bytes; patch
+# production segment identical between candidate_original and candidate.patch.
+# all35 input binding 6d264e... verified (35 positive, 0 Q2 executable) but not
+# consumed by the candidate. SRC04 grant binding dbea... verified
+# (REQUEST_ONLY_ALLOWED, source_read_performed=false) but not consumed. Neither
+# was exercised as an original read; precise assembly dependency is recorded in
+# SOURCE_PINS.json. Original witness runner was not duplicated.
+
+# No original data reads, source/science grant changes, product edits, new matrix,
+# alternative implementation, Q2 promotion, or analytical issuance.
