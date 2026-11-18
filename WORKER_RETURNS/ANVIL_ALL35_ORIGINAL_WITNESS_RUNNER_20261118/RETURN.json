@@ -11,6 +11,7 @@
   },
   "accepted_src04_reference": "ba41253681212be14a0cde009afb99d77e14935e",
   "actual_caller": "witness_caller.py",
+  "caller_scope": "SRC04 witness-specific; producer/supervisor/fresh-reader machinery is reusable, but the q217 hold, 177/3 projection and accepted accounting are not generic acceptance",
   "candidate_commit": "3aecb818d8f65d63da809c365f05f3320434f1c4",
   "candidate_patch": "2b139250eae19a04ce2778f7db9f2d2b025071a8",
   "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
@@ -58,7 +59,6 @@
     "staging_budget_bytes": 4380866641,
     "wall_cutoff": null
   },
-  "runner_generic": "all-wave metadata preflight API; SRC04 witness q217/body accounting; other waves use same scoped selection",
   "runner_scope": "SRC04-specific witness checks; reusable producer/supervisor/fresh-reader machinery only",
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_RETURN@1",
   "scoped_counts": {
