@@ -1,0 +1,33 @@
+{
+  "schema": "ANVIL_FULL_WIDTH_BATCH_PREP_MANIFEST@1",
+  "prepared_only": true,
+  "batch_executed": false,
+  "build_or_native_run": false,
+  "product_edits": false,
+  "files": {
+    "00_HANDOFF.md": {
+      "sha256": "06f1595fd538d143992e1d1b37472a9bca2ae894fc0bdb1b3971776ec7ae555f",
+      "bytes": 4366
+    },
+    "SOURCE_PINS.json": {
+      "sha256": "af56c1181a1901bbeedde8e67c060e5fe7b2f1f669c4a80bae82244c57aac7cd",
+      "bytes": 1406
+    },
+    "contract_template.json": {
+      "sha256": "f324af3ed2a9ca27eec26cb26225c4b7127e97a7363a101741e5ee572305534b",
+      "bytes": 1255
+    },
+    "full_width_batch_driver.py": {
+      "sha256": "184b7cf2b5849e9b10bae826cac9824661d4f97be84de234c943e521eaf75b18",
+      "bytes": 15642
+    },
+    "template_validate.txt": {
+      "sha256": "183929c9596c210202742bbaf126bb98219ad049ab4363b5edccd8ce415f9c24",
+      "bytes": 1002
+    }
+  },
+  "existing_runner_sufficient": false,
+  "existing_runner_reason": "direct I03 matched runner does not construct actual BatchExecutionRunner/BatchManifest/receipts",
+  "no_full_batch_payload_claim": true,
+  "multi_country_execution": false
+}

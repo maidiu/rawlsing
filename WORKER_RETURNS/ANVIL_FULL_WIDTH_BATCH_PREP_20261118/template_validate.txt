@@ -1,0 +1,29 @@
+{
+  "status": "VALID_CONTRACT_NO_EXECUTION",
+  "contract": "WORKER_RETURNS/ANVIL_FULL_WIDTH_BATCH_PREP_20261118/contract_template.json",
+  "fixture": {
+    "tag": "<SEALED_COMBINED_TAG>",
+    "respondents": 10000,
+    "questions": 600,
+    "manifest_sha256": "<SEALED_COMBINED_MANIFEST_SHA256>",
+    "release_ref": "C11LogicalRelease|<SEALED_COMBINED_OBJECT_ID>|<SEALED_COMBINED_CONTENT_HASH>",
+    "source_wave_country_context": "SYNTHETIC_SINGLE_SOURCE_WAVE_COUNTRY"
+  },
+  "operations": [
+    {
+      "label": "f2_forward_raw",
+      "query_ref": "<F2_FORWARD_QUERY_REF>",
+      "predicate_ref": "<F2_FORWARD_PREDICATE_REF>"
+    },
+    {
+      "label": "f2_reverse_raw",
+      "query_ref": "<F2_REVERSE_QUERY_REF>",
+      "predicate_ref": "<F2_REVERSE_PREDICATE_REF>"
+    }
+  ],
+  "session_scope": "NOT_OPENED_VALIDATION_ONLY",
+  "batch_executed": false,
+  "full_fact_payload": "NOT_CARRIED_BY_BATCH_RECEIPT",
+  "denominator_semantics": "BATCH_RECEIPT_NOT_CARRIED",
+  "multi_country_claim": false
+}
