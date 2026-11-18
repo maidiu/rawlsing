@@ -1,0 +1,192 @@
+{
+  "abort_limits": {
+    "real_measurement": {
+      "max_process_tree_rss_bytes": 6442450944,
+      "note": "6 GiB is a cap, not a measured pass; exact wall/scratch caps are set by the measurement owner before execution"
+    },
+    "smoke": {
+      "max_process_tree_rss_bytes": 2147483648,
+      "max_scratch_bytes": 2147483648,
+      "max_seconds": 120.0
+    }
+  },
+  "batch_fields": {
+    "limit": "BatchExecutionRunner returns refs/receipts, not full fact objects; full fact/risk/denominator parity is measured in prepared direct mode on the same estate/catalog/ops.",
+    "provenance_refs": "Batch receipt provenance refs",
+    "result_refs": "Batch receipt result refs",
+    "state": "Batch receipt state",
+    "unit_ref": "exact Batch unit identity"
+  },
+  "fresh_process": {
+    "method": "parent prepare/loads paths only; subprocess child runs one mode and writes its own metrics; parent records child exit/stdout/stderr/RUSAGE_CHILDREN",
+    "requirement": "child starts product-exited with no parent objects/caches; only estate paths and deterministic fixture contract are passed"
+  },
+  "geometry_generator": {
+    "executed": "8 respondents / 600 question bindings, 27 events, 4800 routing, 7522473 retained bytes; geometry only, not economics",
+    "option": "--questions N (5..1300)",
+    "path": "width_fixture.py",
+    "rule": "extra slots are QuestionVariableBinding + NOT_ELIGIBLE routing facts; base events remain sparse; no dense 600-event/respondent assumption"
+  },
+  "grade": "SOURCEFREE_TEST_ONLY_MECHANICS_NOT_PERFORMANCE",
+  "identity": {
+    "baseline": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+    "changed_product_files": {
+      "rawlsing_next/pre553_batch_runner.py": {
+        "blob": "8320f28458fb85aec655d154a2527a161282f56b",
+        "sha256": "e8c110ff3a18acec0956bb47c4789312dd49e812c0643875b7a3e13a13415ab1"
+      },
+      "rawlsing_next/pre553_saved_workload_integration.py": {
+        "blob": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+        "sha256": "54cf978db77cef25a2dc17a0006f63ef13ee13a65708d68d194403a6e7afafee"
+      },
+      "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py": {
+        "blob": "bf00eb591bdee1087e9a10085d808c1ed2aadf88",
+        "sha256": "759a0912aa4bc799b67f68e4a7584412aece06275daaa32c8ac9178758c3371c"
+      }
+    },
+    "executable_code_test_commit": "a13d69cf5636de5541660cd60115f8b61d66261b",
+    "note": "The three blobs are identical at a13d69c and 347baec; no other rawlsing_next file changed versus cea2d4d.",
+    "product_cut": "347baec696c8b395d750ac3b9e74417a6490c223"
+  },
+  "labels": [
+    "measured",
+    "cited",
+    "analytic",
+    "extrapolated"
+  ],
+  "measurement_phases": {
+    "H_admission_member_validation": {
+      "fields": [
+        "admission.seconds",
+        "admission.hash_calls",
+        "admission.hash_bytes"
+      ],
+      "method": "time SavedC11Admission.open / PreparedSavedC11Admission.open; wrap pre553_source_direct_parquet_estate._hash to count manifest/member hash calls and bytes",
+      "what_it_does_not_include": "index build and query/evaluator work"
+    },
+    "O_evidence_serialization": {
+      "fields": [
+        "rows[].serialize_seconds",
+        "rows[].fact_payload_bytes",
+        "rows[].release_payload_bytes",
+        "output_bytes"
+      ],
+      "method": "time canonical_json(result.facts) and canonical_json(result.release_refs) after the native result",
+      "what_it_does_not_include": "scientific counting inside Q; O is evidence-output serialization only"
+    },
+    "Q_existing_native_evaluator": {
+      "fields": [
+        "evaluator_seconds",
+        "evaluator_calls",
+        "discovery_seconds",
+        "discovery_calls",
+        "evaluator_seconds_measured_operations",
+        "evaluator_calls_measured_operations"
+      ],
+      "method": "wrap rawlsing_next.pre553_carrier_execution.execute_empirical_query; for I05 wrap pre553_prepared_saved_i03.execute_exact_bounded_discovery",
+      "what_it_does_not_include": "admission open, index build, or explicit output serialization"
+    },
+    "S_index_build": {
+      "fields": [
+        "index_build_seconds",
+        "index_builds",
+        "session_builds",
+        "scratch_peak_component_bytes",
+        "index_builds_measured_operations"
+      ],
+      "method": "CourtInstrumentation bounds on DirectEstateI03Session.__enter__ and _build",
+      "what_it_does_not_include": "query/evaluator counting and output serialization"
+    }
+  },
+  "negative_restore_phase": {
+    "fields": [
+      "negative.index_builds",
+      "negative.index_build_seconds",
+      "negative.evaluator_calls",
+      "negative.evaluator_seconds",
+      "negative.wall_seconds",
+      "negative.revoked_refusal",
+      "negative.restored_fact_sha256"
+    ],
+    "rule": "negative/restore work is reported separately and subtracted from index_builds_measured_operations and evaluator_*_measured_operations; it is not a timed distinct operation"
+  },
+  "non_claims": [
+    "No native/original35/source/science/actor/protected acceptance",
+    "No 100k, realistic 600-column, 1/10/100, or 6 GiB pass",
+    "No matched-performance result from the tiny smoke",
+    "No new store/evaluator/issuer/backend",
+    "No original survey/raw respondent data read"
+  ],
+  "parity_fields": {
+    "fact_refs": "exact fact refs",
+    "fact_sha256": "sha256(canonical_json(result.facts))",
+    "negative": "revoked CURRENT refusal text and restored fact SHA",
+    "raw_denominator_support": "fact raw denominators",
+    "release_refs_sha256": "sha256(canonical_json(result.release_refs))",
+    "typed_states": "fact typed states",
+    "weighted_denominator_support": "fact weighted denominators where authorized"
+  },
+  "r2_full_payload_correction": {
+    "defect": "canonical_json(facts) canonicalizes CanonicalSemanticObject to ref.as_dict(); prior 1885 B was refs-only.",
+    "fixed_fields": [
+      "semantic_sha256",
+      "identity_sha256",
+      "ref_only_sha256",
+      "refs_sha256",
+      "replay_sha256",
+      "member_refs_sha256",
+      "risk_member_refs_sha256",
+      "denominator_member_refs_sha256",
+      "provenance_refs_sha256",
+      "semantic_payload_bytes",
+      "identity_payload_bytes",
+      "ref_only_payload_bytes",
+      "refs_payload_bytes",
+      "replay_payload_bytes",
+      "member_payload_bytes",
+      "risk_member_payload_bytes",
+      "denominator_member_payload_bytes",
+      "provenance_payload_bytes"
+    ],
+    "observer": "transparent wrapper around PreparedI03Session.execute_i03/SavedC11Admission.execute_i03 captures the original returned result and returns it unchanged; no product receipt ABI change.",
+    "separation": "Q includes native fact construction/hash; O is export serialization of full fact/refs/replay/member payload and is not added to Q.",
+    "wrapper_abi_bytes": [
+      "binding_receipt_bytes",
+      "prepared_receipt_bytes",
+      "wrapper_abi_bytes"
+    ]
+  },
+  "r2_pilot": {
+    "caps": {
+      "build_seconds": 300.0,
+      "combined_seconds": 720.0,
+      "process_tree_rss_bytes": 2147483648,
+      "query_seconds": 180.0,
+      "sampling_seconds": 0.25,
+      "scratch_bytes": 2147483648
+    },
+    "external_supervision": "process group SIGTERM/SIGKILL on wall/RSS/scratch; samples saved under R2_PILOT/samples_*.json",
+    "geometry": "16 respondents/600 question bindings; 8,622 events; 9,600 routing; 7,099,520 retained B",
+    "mode": "one producer build + fresh baseline + fresh prepared; no Batch/1/10/100/repetitions"
+  },
+  "resource_fields": {
+    "cpu_system_seconds": "measured RUSAGE_SELF delta",
+    "cpu_user_seconds": "measured RUSAGE_SELF delta",
+    "estate_retained_bytes": "sum of published estate member bytes",
+    "event_object_materializations": "instrumented _object_from_row calls for event bodies",
+    "family_object_materializations": "instrumented _object_from_row calls for family rows",
+    "output_bytes": "serialized fact + release reference bytes",
+    "process_tree_rss_end_bytes": "ps process-tree RSS at end (single process)",
+    "process_tree_rss_peak_observed_bytes": "max(start, end, ru_maxrss); label observed, not a continuous sampler",
+    "process_tree_rss_start_bytes": "ps process-tree RSS at start (single process)",
+    "row_group_compressed_bytes": "instrumented compressed bytes",
+    "row_group_reads": "instrumented Parquet row-group reads",
+    "row_group_rows": "instrumented Parquet rows read",
+    "scratch_after_bytes": "estate directory bytes after phase",
+    "scratch_before_bytes": "estate directory bytes before phase",
+    "scratch_peak_component_bytes": "max temporary session directory observed at session exit",
+    "self_maxrss_bytes": "resource.getrusage(RUSAGE_SELF).ru_maxrss",
+    "wall_seconds": "measured monotonic wall for the measured phase"
+  },
+  "schema": "ANVIL_CUT2_MEASUREMENT_SCHEMA@1"
+}

@@ -1,0 +1,14 @@
+check	target	blob_or_sha	status
+measurement_return	WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117	495796e5f7f10a0e25122d0ccc45e40b703c885c	frozen read-only target
+machine_result	R2_PILOT/FIRST_PAIR_RESULT.json	9def4b08cfd9e937c42625d5d07d5a80e375fe4b425a814d225c7f8cc56f5f42	hash match
+measurement_harness	measure_cut1_prepared.py	4fbbd48fd49d330efac0aeb8c41e2f08011cd00f550557a8377430a32b3491c6	hash match
+width_generator	width_fixture.py	8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1	hash match
+fixture_contract	R2_PILOT/fixture_contract_pilot.json	e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28	hash match
+product_candidate	rawlsing_next code/test	347baec696c8b395d750ac3b9e74417a6490c223 / a13d69cf5636de5541660cd60115f8b61d66261b	cut1 accepted, unchanged
+cut1_g5	092bf29ffa6724d477abb4ccfc770e3bc492250d	ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1	prior accepted
+protected	5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e	rev11	no write/merge
+source_geometry	R2 result	16R / 600 QVB / 8622 events / 9600 routing / 16 weights	exact counts
+parity	R2 parity	identity/semantic/refs/member/replay all true	exact
+negative/restore	R2 negative	restored_identity_sha256 = baseline	exact
+supervision	R2 supervision	exits 0, no abort, combined 194.5758 s	actual child exits
+timers	code + raw	H outside wall; S outside Q; Q and O separate	verified

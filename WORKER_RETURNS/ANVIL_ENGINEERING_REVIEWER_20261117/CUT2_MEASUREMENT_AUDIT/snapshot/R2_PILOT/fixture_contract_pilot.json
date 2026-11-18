@@ -1,0 +1,232 @@
+{
+  "abort_limits": {
+    "enforcement": "checkpoint abort before/after each operation; process-tree RSS and scratch sampled; no mid-call kill",
+    "max_process_tree_rss_bytes": 2147483648,
+    "max_scratch_bytes": 2147483648,
+    "max_seconds": 180.0
+  },
+  "distinct_operation_rule": "different target/predicate/direction/k3/measure/occurrence; no repeated ID-only clones",
+  "estate": {
+    "exact_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate/releases/396bada8e3b4a6ae880592b2e5f1a54cf076364866a8e8288024808232e7463c",
+    "family_counts": {
+      "AuthoritySnapshot": 6,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 16,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 600,
+      "RespondentEvent": 8622,
+      "RespondentIdentity": 16,
+      "RoutingEligibilityFact": 9600,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 16
+    },
+    "i02": {
+      "logical": "1ac5ec295b3917c079e3f2c9d49da2b02ec4efdf981d5f9810efefafa0634e73",
+      "physical": "9e2645d75e5e6c553ad29cd9b2b11ca1cd81c8ea1497df5eca5d9003dda64f1f",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-CUT2-MEASURE|9ed9068c46a9e44d42f3d3e74dadc1ffc470a9fb0d94705a6cbc0bfbd9f50dcf",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:1d1584f004317046e839c7621304f0020350b620ac769ec197581759e90fb08d|1d1584f004317046e839c7621304f0020350b620ac769ec197581759e90fb08d",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|SOURCE-CUT2-MEASURE|4ee42ee68401b1bb95e6714779de64f001f9de07531ba409052bb86ad468f207",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:f5103ef4b9cc06ddaa4c645b416129883abfcf55e0aee42dd556db0910983fd6|f5103ef4b9cc06ddaa4c645b416129883abfcf55e0aee42dd556db0910983fd6"
+    },
+    "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+    "members_sha256": {
+      "AuthoritySnapshot.parquet": "82fcbd72315d4db33c8dc9a0095ce211ebd353c140282ac9e0b0137694f1fcdb",
+      "ComparatorReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "DiscoveryBranchReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "EmpiricalCoordinateFact.parquet": "2bbc41bd5868e72e36f2d8ac3890cc7af5fdb6525a12b0dbe25b49dbd8d081ec",
+      "EmpiricalPredicateReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "EmpiricalUniverse.parquet": "c2d1d90f45e568c02b3f72ff498ba293a97ed889288727e5673bcf001cea0789",
+      "QuestionVariableBinding.parquet": "a8f541fdcb4f4bc98bd3aaea5b2855a469c47700062adc54260e2a6ad1e15ce4",
+      "RespondentEvent.parquet": "6188e87e3a431f4f46b9403ec98db4bd86e0c0c59be4f8f7275475fa98d9ff10",
+      "RespondentIdentity.parquet": "8cd41a2e51ec4332477a3f2eb4c88ee91a1b986e2d45048cf795b2ebe9aba7b4",
+      "RoutingEligibilityFact.parquet": "7f36df2bcaa44eaa12382b8e7e61c3564457938557fa55bece1c477914f78640",
+      "SourceUniverseRelation.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "StructuralAdmissionReplayBinding.parquet": "c988268cac5d726dd837812c4f7bc927c435aebecb43cab2266a53a9b718e36a",
+      "WeightMeasureFact.parquet": "2961dc5ca42fb43ef345239e161f3afcdbfd59ffece60361c860976f8a6c0887",
+      "event_locator.parquet": "d1cb0e6a721d21a0ea8026cc04e4e81afc7246b96be4f13a3da93570fa7ee54b",
+      "manifest.json": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b"
+    },
+    "reconstructed_v1_release_ref": {
+      "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-CUT2-MEASURE"
+    },
+    "retained_bytes": 7099520,
+    "root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate"
+  },
+  "fixture_pins": {
+    "court_instrumentation.py": "0bce33bb3c62a9c91b689ef87f50d985fc85639f1f5695c37f0812c0344324ce",
+    "fixture_1006.py": "74cd928d050ec7a8720e526dea00101e4c0f718a1b2ab72e5677deb64360b827",
+    "query_1006.py": "83054ca64b609fbfb647c06e640255b65e701ba7644cdcd3e1443a2d7e6a47a7",
+    "width_fixture.py": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1"
+  },
+  "fixture_source": "accepted #1006 fixture/query harness at exact pinned blobs",
+  "grade": "SOURCEFREE_TEST_ONLY_MECHANICS_NOT_PERFORMANCE",
+  "operations": [
+    {
+      "label": "selected_weighted",
+      "measure": "GOVERNED_WEIGHTED",
+      "predicate_ref": {
+        "content_hash": "5b25f59d9f11ea707d7e4fe8f18e85ef591c6dd9871a47c0c6de907ad63342a2",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:5b25f59d9f11ea707d7e4fe8f18e85ef591c6dd9871a47c0c6de907ad63342a2"
+      },
+      "query_ref": {
+        "content_hash": "662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348"
+      },
+      "semantic_role": "selected weighted estimand",
+      "targets": [
+        {
+          "content_hash": "99035a08837372d13c9483e1408f31d9218c52791ce62f7c551cf0c5df4ba6ff",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:CUT2-MEASURE-C"
+        }
+      ]
+    },
+    {
+      "label": "f2_forward_raw",
+      "measure": "RAW",
+      "predicate_ref": {
+        "content_hash": "5b25f59d9f11ea707d7e4fe8f18e85ef591c6dd9871a47c0c6de907ad63342a2",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:5b25f59d9f11ea707d7e4fe8f18e85ef591c6dd9871a47c0c6de907ad63342a2"
+      },
+      "query_ref": {
+        "content_hash": "9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899"
+      },
+      "semantic_role": "F2 forward direction / raw",
+      "targets": [
+        {
+          "content_hash": "99035a08837372d13c9483e1408f31d9218c52791ce62f7c551cf0c5df4ba6ff",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:CUT2-MEASURE-C"
+        }
+      ]
+    },
+    {
+      "label": "f2_reverse_raw",
+      "measure": "RAW",
+      "predicate_ref": {
+        "content_hash": "3e5979c9a850b724a7724bc678afbd957a710f1c51163c557168b5a81d0318d8",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3e5979c9a850b724a7724bc678afbd957a710f1c51163c557168b5a81d0318d8"
+      },
+      "query_ref": {
+        "content_hash": "5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88"
+      },
+      "semantic_role": "F2 reverse direction / separate denominator",
+      "targets": [
+        {
+          "content_hash": "b92bdff9e2781b201f3d5ed705dfd644ea791ac694412ae5e13d9871e16514c5",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:CUT2-MEASURE-A"
+        }
+      ]
+    },
+    {
+      "label": "f4_three_raw",
+      "measure": "RAW",
+      "predicate_ref": {
+        "content_hash": "cdcaec5401992156d8b4fb13b6f71188744bceff55cd603edc6a456c6f3a3ea2",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:cdcaec5401992156d8b4fb13b6f71188744bceff55cd603edc6a456c6f3a3ea2"
+      },
+      "query_ref": {
+        "content_hash": "6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6"
+      },
+      "semantic_role": "true same-person k>=3 joint",
+      "targets": [
+        {
+          "content_hash": "99035a08837372d13c9483e1408f31d9218c52791ce62f7c551cf0c5df4ba6ff",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:CUT2-MEASURE-C"
+        }
+      ]
+    },
+    {
+      "label": "repeated_mr_raw",
+      "measure": "RAW",
+      "predicate_ref": {
+        "content_hash": "5b25f59d9f11ea707d7e4fe8f18e85ef591c6dd9871a47c0c6de907ad63342a2",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:5b25f59d9f11ea707d7e4fe8f18e85ef591c6dd9871a47c0c6de907ad63342a2"
+      },
+      "query_ref": {
+        "content_hash": "2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071"
+      },
+      "semantic_role": "repeated/ranked occurrence, not first-value",
+      "targets": [
+        {
+          "content_hash": "a0a7a4b4abd3f8e6efe586399740f258c11c19081482b5d0e5bd64e616a01584",
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:CUT2-MEASURE-MR"
+        }
+      ]
+    }
+  ],
+  "schema": "ANVIL_CUT2_MEASUREMENT_PREP@1",
+  "shape": {
+    "actual_family_counts": {
+      "AuthoritySnapshot": 6,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 16,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 600,
+      "RespondentEvent": 8622,
+      "RespondentIdentity": 16,
+      "RoutingEligibilityFact": 9600,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 16
+    },
+    "event_count_expected": 8622,
+    "geometry_audit": {
+      "added_questions": 595,
+      "base_events": 54,
+      "base_repeated_mr_occurrences": 4,
+      "dense_assumption": false,
+      "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+      "events_per_respondent_max": 542,
+      "events_per_respondent_mean": 538.875,
+      "events_per_respondent_min": 538,
+      "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+      "extra_cells": 9520,
+      "extra_events": 8568,
+      "extra_typed_missing": 952,
+      "extra_typed_not_asked": 952,
+      "extra_valid_substantive": 7616,
+      "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+      "total_events": 8622,
+      "total_question_bindings": 600,
+      "total_routing": 9600,
+      "total_weights": 16
+    },
+    "include_weights": true,
+    "missing_mod": 17,
+    "questions": 600,
+    "repeated_mod": 13,
+    "respondents": 16,
+    "routing_count_expected": 9600,
+    "skew_events": 0,
+    "sparse_mod": 11,
+    "weight_count_expected": 16,
+    "width_note": "600 native question slots with substantial populated response items: 80% valid, 10% typed MISSING, 10% typed NOT_ASKED; actual events/routing are audited and this is still not native/original/real-width economics"
+  },
+  "tag": "CUT2-MEASURE"
+}

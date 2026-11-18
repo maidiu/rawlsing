@@ -1,0 +1,6 @@
+# All read-only; target extracted with git show into snapshot/
+git show 495796e5f7f10a0e25122d0ccc45e40b703c885c:WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/R2_PILOT/FIRST_PAIR_RESULT.json
+python3 recompute_phases.py > RECOMPUTED_PHASES.out
+# raw files: snapshot/R2_PILOT/{baseline,prepared,FIRST_PAIR_RESULT}.json
+# code: snapshot/measure_cut1_prepared.py, snapshot/vendor/*.py
+# no product edits, no measurement rerun

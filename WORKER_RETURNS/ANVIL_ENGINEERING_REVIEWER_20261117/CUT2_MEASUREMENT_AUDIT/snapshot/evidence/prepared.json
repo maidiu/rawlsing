@@ -1,0 +1,282 @@
+{
+  "abort_limits": {
+    "enforcement": "checkpoint abort before/after each operation; process-tree RSS and scratch sampled; no mid-call kill",
+    "max_process_tree_rss_bytes": 2147483648,
+    "max_scratch_bytes": 2147483648,
+    "max_seconds": 120.0
+  },
+  "admission": {
+    "hash_bytes": 345134,
+    "hash_calls": 15,
+    "seconds": 0.23765809903852642
+  },
+  "command": [
+    "/usr/local/bin/python3",
+    "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+    "--mode",
+    "prepared"
+  ],
+  "cpu_system_seconds": 0.06486,
+  "cpu_user_seconds": 0.36883,
+  "discovery_calls": 0,
+  "discovery_seconds": 0.0,
+  "estate_manifest_sha256": "f70e5cd3dd6716d0851201cf020ce3295f5a25eca92e376aecef2e846a7ee77b",
+  "estate_retained_bytes": 345134,
+  "evaluator_calls": 6,
+  "evaluator_calls_measured_operations": 5,
+  "evaluator_seconds": 0.2870418441016227,
+  "evaluator_seconds_measured_operations": 0.22573488409398124,
+  "event_object_materializations": 168,
+  "family_object_materializations": 604,
+  "fixture": {
+    "actual_family_counts": {
+      "AuthoritySnapshot": 5,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 16,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 5,
+      "RespondentEvent": 54,
+      "RespondentIdentity": 16,
+      "RoutingEligibilityFact": 80,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 16
+    },
+    "event_count_expected": 54,
+    "include_weights": true,
+    "missing_mod": 17,
+    "questions": 5,
+    "repeated_mod": 13,
+    "respondents": 16,
+    "routing_count_expected": 80,
+    "skew_events": 0,
+    "sparse_mod": 11,
+    "weight_count_expected": 16,
+    "width_note": "5 questions is not realistic 600-column width; use --questions 600 for a bounded geometry check, not economics"
+  },
+  "grade": "SOURCEFREE_TEST_ONLY_MECHANICS_NOT_PERFORMANCE",
+  "index_build_seconds": 0.06373781390720978,
+  "index_builds": 2,
+  "index_builds_measured_operations": 1,
+  "mode": "prepared",
+  "negative": {
+    "discovery_calls": 0,
+    "discovery_seconds": 0.0,
+    "evaluator_calls": 1,
+    "evaluator_seconds": 0.061306960007641464,
+    "excluded_from_timed_operation_build_count": true,
+    "index_build_seconds": 0.030580455961171538,
+    "index_builds": 1,
+    "restored_fact_sha256": "f1d2df7449f6b69a7ea13086cc571001e5afd50ea7d6b0bd82a38f923c2cfcf7",
+    "revoked_refusal": "DirectEstateError: current source/operation authority refused",
+    "wall_seconds": 0.09764756902586669
+  },
+  "operations": 5,
+  "output_bytes": 1885,
+  "prepared_receipt": {
+    "estate_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data/estate/releases/fd1be686832e1272691b8505c14aced70dbae6d5ccf29e34186980a228e0a046",
+    "manifest_sha256": "f70e5cd3dd6716d0851201cf020ce3295f5a25eca92e376aecef2e846a7ee77b",
+    "operations": 5,
+    "release_ref": {
+      "content_hash": "6cdb7ba773f5d71e64b5d46e39f4e3e31a250125201477ed5f22b9993d9292db",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-CUT2-MEASURE"
+    },
+    "schema": "PYAT_PREP_SAVED_I03@1.0.0"
+  },
+  "process": {
+    "pid": 50590,
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "ppid": 50568,
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "process_tree_rss_end_bytes": 69197824,
+  "process_tree_rss_peak_observed_bytes": 69197824,
+  "process_tree_rss_start_bytes": 58875904,
+  "row_group_compressed_bytes": 1778279,
+  "row_group_reads": 136,
+  "row_group_rows": 2086,
+  "rows": [
+    {
+      "fact_count": 1,
+      "fact_payload_bytes": 234,
+      "fact_refs": [
+        {
+          "content_hash": "0c5960359df4f465a62946136bce4d1ee0cfec22f93078d19c63b916347823ad",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:0c5960359df4f465a62946136bce4d1ee0cfec22f93078d19c63b916347823ad"
+        }
+      ],
+      "fact_sha256": "f1d2df7449f6b69a7ea13086cc571001e5afd50ea7d6b0bd82a38f923c2cfcf7",
+      "label": "selected_weighted",
+      "raw_denominator_support": [
+        8
+      ],
+      "release_payload_bytes": 143,
+      "release_refs": [
+        {
+          "content_hash": "6cdb7ba773f5d71e64b5d46e39f4e3e31a250125201477ed5f22b9993d9292db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "release_refs_sha256": "5f635fd13ec26a14233f60bd9f98cbc620d74565bc330a351895da39710d6fee",
+      "serialize_seconds": 0.00010402599582448602,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 0.05221095896558836,
+      "weighted_denominator_support": [
+        {
+          "$exact_fraction": [
+            24,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "fact_count": 1,
+      "fact_payload_bytes": 234,
+      "fact_refs": [
+        {
+          "content_hash": "4b00d9b2e417a941b7cc2cf6b54b0f7671f9af487fa1deda18a35e41374769ac",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4b00d9b2e417a941b7cc2cf6b54b0f7671f9af487fa1deda18a35e41374769ac"
+        }
+      ],
+      "fact_sha256": "83d6b22d2240af7d7df26c634e5f88453c99ec1355c05984721280070da2cff2",
+      "label": "f2_forward_raw",
+      "raw_denominator_support": [
+        8
+      ],
+      "release_payload_bytes": 143,
+      "release_refs": [
+        {
+          "content_hash": "6cdb7ba773f5d71e64b5d46e39f4e3e31a250125201477ed5f22b9993d9292db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "release_refs_sha256": "5f635fd13ec26a14233f60bd9f98cbc620d74565bc330a351895da39710d6fee",
+      "serialize_seconds": 9.802001295611262e-05,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 0.04461226600687951,
+      "weighted_denominator_support": [
+        null
+      ]
+    },
+    {
+      "fact_count": 1,
+      "fact_payload_bytes": 234,
+      "fact_refs": [
+        {
+          "content_hash": "ca5bed84372ca2ac5eb3ea97d0619a8bf847a16b24d33342b89028ccbdc1d03e",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ca5bed84372ca2ac5eb3ea97d0619a8bf847a16b24d33342b89028ccbdc1d03e"
+        }
+      ],
+      "fact_sha256": "714b9cd003363826b28ff0c40bffbf7da6194ef330dd1fdd302703d43e43445f",
+      "label": "f2_reverse_raw",
+      "raw_denominator_support": [
+        5
+      ],
+      "release_payload_bytes": 143,
+      "release_refs": [
+        {
+          "content_hash": "6cdb7ba773f5d71e64b5d46e39f4e3e31a250125201477ed5f22b9993d9292db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "release_refs_sha256": "5f635fd13ec26a14233f60bd9f98cbc620d74565bc330a351895da39710d6fee",
+      "serialize_seconds": 0.00010385294444859028,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 0.04514840996125713,
+      "weighted_denominator_support": [
+        null
+      ]
+    },
+    {
+      "fact_count": 1,
+      "fact_payload_bytes": 234,
+      "fact_refs": [
+        {
+          "content_hash": "bb79125715fd387268ddc4dbae50c538b5f9ec79b110324b1474f0e74d9a5e08",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:bb79125715fd387268ddc4dbae50c538b5f9ec79b110324b1474f0e74d9a5e08"
+        }
+      ],
+      "fact_sha256": "a26a6c3327407b97654c680f860f3505fc8903b83f90b290faed60fb91ba0542",
+      "label": "f4_three_raw",
+      "raw_denominator_support": [
+        5
+      ],
+      "release_payload_bytes": 143,
+      "release_refs": [
+        {
+          "content_hash": "6cdb7ba773f5d71e64b5d46e39f4e3e31a250125201477ed5f22b9993d9292db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "release_refs_sha256": "5f635fd13ec26a14233f60bd9f98cbc620d74565bc330a351895da39710d6fee",
+      "serialize_seconds": 0.00010456301970407367,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 0.05112313397694379,
+      "weighted_denominator_support": [
+        null
+      ]
+    },
+    {
+      "fact_count": 1,
+      "fact_payload_bytes": 234,
+      "fact_refs": [
+        {
+          "content_hash": "761a6e0f3ef8688239347bcbf5131518ea5587cd76db7da538e7cbd112709931",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:761a6e0f3ef8688239347bcbf5131518ea5587cd76db7da538e7cbd112709931"
+        }
+      ],
+      "fact_sha256": "70f2716c5d03bb131e3325638f3dfa5902ba104069f016bd31fb39296f23e522",
+      "label": "repeated_mr_raw",
+      "raw_denominator_support": [
+        1
+      ],
+      "release_payload_bytes": 143,
+      "release_refs": [
+        {
+          "content_hash": "6cdb7ba773f5d71e64b5d46e39f4e3e31a250125201477ed5f22b9993d9292db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "release_refs_sha256": "5f635fd13ec26a14233f60bd9f98cbc620d74565bc330a351895da39710d6fee",
+      "serialize_seconds": 9.52300033532083e-05,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 0.03497468098066747,
+      "weighted_denominator_support": [
+        null
+      ]
+    }
+  ],
+  "schema": "ANVIL_CUT2_MEASUREMENT_PREP@1",
+  "scratch_after_bytes": 345134,
+  "scratch_before_bytes": 345134,
+  "scratch_peak_component_bytes": 245760,
+  "self_maxrss_bytes": 68407296,
+  "self_rss_end_bytes": 68263936,
+  "self_rss_start_bytes": 58085376,
+  "session_builds": 2,
+  "wall_seconds": 0.5502213449799456
+}

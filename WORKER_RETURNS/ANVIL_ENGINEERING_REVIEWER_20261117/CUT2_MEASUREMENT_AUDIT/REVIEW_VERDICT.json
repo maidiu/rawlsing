@@ -1,0 +1,245 @@
+{
+  "packet_id": "ANVIL-CUT2-MEASUREMENT-R2",
+  "task_id": "ANVIL-ENGINEERING-CUT2-MEASUREMENT-AUDIT",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "reviewer_role": "same distinct nonauthor G5; measurement audit only, not code author or rerun owner",
+  "target_sha": "495796e5f7f10a0e25122d0ccc45e40b703c885c",
+  "product_candidate_sha": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "code_test_sha": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "cut1_review_sha": "092bf29ffa6724d477abb4ccfc770e3bc492250d",
+  "protected_observed": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "source_pins": {
+    "machine_result": "9def4b08cfd9e937c42625d5d07d5a80e375fe4b425a814d225c7f8cc56f5f42",
+    "measurement_harness": "4fbbd48fd49d330efac0aeb8c41e2f08011cd00f550557a8377430a32b3491c6",
+    "width_generator": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1",
+    "fixture_contract_pilot": "e928ebd17016c005efd1c8fee19a19b27e35fb360c6b8f85dd489cc9371b8f28"
+  },
+  "evidence_grade": "SOURCEFREE_TEST_ONLY_MEASUREMENT",
+  "scope": "First bounded 16R/600Q/8622-event sourcefree pair; no performance/native/100k/science acceptance.",
+  "disposition": "ACCEPT_SCOPED_MEASUREMENT_WITH_ALIGNED_PHASE_CORRECTIONS",
+  "integration": "UNMERGED",
+  "gates": {
+    "G1": {
+      "state": "PASS_WITH_CORRECTIONS",
+      "receipt": "Target 495796e5 and key source/harness/width/contract/machine-result hashes verified; product code/test and cut1 review pins unchanged. Geometry is exactly 16 respondents, 600 QVB, 8622 RespondentEvent, 9600 routing, 16 weights, 80/10/10 added cells, 5 base-role queries; not dense all-600 and not original science."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "Fresh producer, baseline and prepared child exits are all 0 with no abort under 300/180/720 s and 2 GiB caps. Full semantic/identity/refs/member/replay parity is exact for all five operations. Negative/restore identity exactly matches baseline. Full semantic/as_dict and risk/denominator/provenance payloads are present; the old ref-only smoke was explicitly corrected."
+    },
+    "G3": {
+      "state": "PASS_WITH_CORRECTIONS",
+      "receipt": "Actual phase nesting and raw data are sufficient to derive aligned positive wall/S/Q/O; CPU/RSS/reads aligned fields remain unmeasured because the negative phase has no separate fields. Derived positive wall 63.2445 vs baseline 80.6244, with mandatory corrections to the published headline, stale build row and scratch labeling."
+    },
+    "G4": {
+      "state": "PASS_WITH_CORRECTIONS",
+      "receipt": "Supervision/process groups and exits were real; caps not exceeded. Retained 7,099,520 B; external sampled RSS baseline/prepared 185,176,064/200,720,384 B; external sampled scratch 30,368,896 B for both; internal session-component peak 23,269,376 B is not total scratch. Prepared aggregate RSS/reads include negative/restore and cannot be treated as aligned. No CPU aligned value."
+    },
+    "G5": {
+      "state": "PASS",
+      "receipt": "Independent nonauthor audit accepted the measured data with the specified aligned-phase and reporting corrections; no performance/native/100k/protected acceptance."
+    }
+  },
+  "aligned_phase": {
+    "baseline_wall_seconds": 80.62440266500926,
+    "prepared_total_wall_seconds": 78.04721712099854,
+    "prepared_negative_wall_seconds": 14.802669909026008,
+    "prepared_aligned_positive_wall_seconds": 63.24454721197253,
+    "baseline_S_index_seconds": 14.377979226992466,
+    "prepared_total_S_index_seconds": 5.497834365058225,
+    "prepared_negative_S_index_seconds": 2.771773420041427,
+    "prepared_aligned_positive_S_index_seconds": 2.7260609450167976,
+    "baseline_Q_seconds": 65.40385016688379,
+    "prepared_Q_seconds": 60.176479730929714,
+    "prepared_negative_Q_seconds": 11.926942170015536,
+    "baseline_O_serialize_seconds": 0.019123635021969676,
+    "prepared_O_serialize_seconds": 0.017339703044854105,
+    "baseline_H_admission_seconds": 0.27261354302754626,
+    "prepared_H_admission_seconds": 0.2874188830028288,
+    "derived_wall_saving_seconds": 17.379855453036726,
+    "derived_S_saving_seconds": 11.651918281975668,
+    "derived_Q_saving_seconds": 5.227370435954072,
+    "prepared_positive_overhead_seconds": 0.3246668329811655,
+    "baseline_Q_fraction": 0.8112165548516845,
+    "prepared_positive_Q_fraction": 0.9514888220994012,
+    "prepared_positive_S_fraction": 0.04310349374278925,
+    "derivation": "H admission is outside wall. S index build occurs in DirectEstateI03Session.__enter__, before execute_empirical_query, so it is outside Q. Q is native evaluator/fact construction; O is post-call export serialization. Positive wall = total prepared wall minus separately measured negative/restore wall. External child walls corroborate the same ~17.3 s saving.",
+    "claim_grade": "DERIVED_EXPLORATORY_ONE_PAIR_NOT_QUALIFIED_SPEEDUP"
+  },
+  "unmeasurable_or_unaligned": [
+    "CPU aligned positive: negative phase has no CPU fields; aggregate CPU includes negative.",
+    "Process-tree RSS aligned positive: prepared aggregate peak includes negative/restore and cannot be matched to baseline.",
+    "Row-group reads aligned positive: prepared 23,898 includes negative/restore; baseline 20,101 has no matched negative.",
+    "Peak staging: only internal session-component 23,269,376 B is available; external scratch sample is 30,368,896 B; no total staging peak.",
+    "Process-tree peak is 0.25 s sampled plus ru_maxrss, not continuous.",
+    "OS page cache is uncontrolled; one fresh pair is not a warm-cache result."
+  ],
+  "geometry": {
+    "respondents": 16,
+    "question_bindings": 600,
+    "respondent_events": 8622,
+    "routing_facts": 9600,
+    "weights": 16,
+    "added_questions": 595,
+    "added_cells": 9520,
+    "added_valid_substantive": 7616,
+    "added_missing": 952,
+    "added_not_asked": 952,
+    "base_events": 54,
+    "added_events": 8568,
+    "events_per_respondent_min_mean_max": [
+      538,
+      538.875,
+      542
+    ],
+    "retained_bytes": 7099520,
+    "five_operations": [
+      "selected_weighted",
+      "f2_forward_raw",
+      "f2_reverse_raw",
+      "f4_three_raw",
+      "repeated_mr_raw"
+    ],
+    "note": "600 added slots load geometry/index but are not 600 queried operations; synthetic sourcefree 80/10/10, not original science."
+  },
+  "serialization_and_parity": {
+    "parity": "exact identity/semantic/refs/member/replay for all five operations",
+    "full_semantic_bytes_selected": 35256,
+    "full_identity_bytes_selected": 35458,
+    "ref_only_bytes_selected": 234,
+    "full_semantic_bytes_all_five": 148727,
+    "ref_only_bytes_all_five": 1170,
+    "output_bytes_all_five": 166175,
+    "risk_denominator_provenance": "risk/denominator member refs and source provenance refs are separately measured; full as_dict/semantic_projection are used; Q does not include O export serialization",
+    "old_smoke": "old ref-only 1,885-byte/canonical_json(facts) behavior was a measurement defect and is correctly superseded by R2; no fabricated execution"
+  },
+  "supervision": {
+    "build": {
+      "exit": 0,
+      "aborted": null,
+      "external_wall_seconds": 33.8669873480103,
+      "external_sampled_rss_bytes": 199135232,
+      "external_sampled_scratch_bytes": 100068948,
+      "samples": 121
+    },
+    "baseline": {
+      "exit": 0,
+      "aborted": null,
+      "external_wall_seconds": 81.59833719499875,
+      "internal_wall_seconds": 80.62440266500926,
+      "external_sampled_rss_bytes": 185176064,
+      "external_sampled_scratch_bytes": 30368896,
+      "samples": 288
+    },
+    "prepared": {
+      "exit": 0,
+      "aborted": null,
+      "external_wall_seconds": 79.10624823300168,
+      "internal_wall_seconds": 78.04721712099854,
+      "external_sampled_rss_bytes": 200720384,
+      "external_sampled_scratch_bytes": 30368896,
+      "samples": 281
+    },
+    "combined_external_wall_seconds": 194.57578067295253,
+    "caps": {
+      "build_seconds": 300,
+      "query_seconds": 180,
+      "combined_seconds": 720,
+      "process_tree_rss": 2147483648,
+      "scratch": 2147483648
+    },
+    "process_group": "start_new_session=True; SIGTERM/SIGKILL to child process group on abort",
+    "note": "No abort; top-level combined_wall_seconds was null in the result, supervision carries 194.5758 s."
+  },
+  "evidence_corrections": [
+    {
+      "id": "HEADLINE_WALL_UNALIGNED",
+      "severity": "measurement",
+      "published": "prepared 78.05 vs baseline 80.62, Q 60.176 vs 65.404",
+      "correction": "Prepared 78.05 includes negative/restore 14.8027. Aligned positive wall is 63.2445 vs 80.6244; headlined total-vs-total comparison is not matched work. Use aligned positive table; one pair, not speedup."
+    },
+    {
+      "id": "S_SAVING_UNALIGNED",
+      "severity": "measurement",
+      "published": "S reuse saves about 8.9 s",
+      "correction": "14.3780 - 5.4978 = 8.88 includes negative index build. Aligned positive S is 2.7261, so aligned S saving is 11.6519 s."
+    },
+    {
+      "id": "BUILD_ROW_STALE",
+      "severity": "measurement",
+      "published": "build 33.18 s / 193,429,504 B / 99,941,972 B",
+      "correction": "Raw external build supervision is 33.866987 s / 199,135,232 B / 100,068,948 B; the 33.18/193.4/99.94 row is not substantiated by raw samples."
+    },
+    {
+      "id": "SCRATCH_LABEL",
+      "severity": "measurement",
+      "published": "scratch peak 23,269,376 B",
+      "correction": "23,269,376 B is the internal session-component peak. External sampled scratch is 30,368,896 B for both modes; no separate total staging peak was measured. Do not label 23.27 MB as total scratch peak."
+    },
+    {
+      "id": "CPU_RSS_READS_ALIGNMENT",
+      "severity": "measurement",
+      "published": "prepared CPU/RSS/reads alongside baseline",
+      "correction": "Prepared aggregate CPU/RSS/20,101-vs-23,898 reads include negative/restore; no aligned fields exist. Report aggregate as-run separately, not a matched positive comparison."
+    },
+    {
+      "id": "COMBINED_WALL_NULL",
+      "severity": "minor",
+      "published": "top-level combined_wall_seconds null",
+      "correction": "supervision.combined_wall_seconds = 194.5758 s; use that field."
+    },
+    {
+      "id": "GEOMETRY_AND_PARITY_OK",
+      "severity": "none",
+      "published": "16/600/8622/9600, 80/10/10, five base-role queries, full parity",
+      "correction": "Verified from raw result/contract; no correction needed."
+    }
+  ],
+  "cost_decision": {
+    "primary": "Q/native evaluator/read path: Q is 60.1765 s, 95.1% of prepared aligned positive wall; attack evaluator and read-path cost first.",
+    "strongest_alternative": "Index geometry/durability or Batch-forward wiring. S is only 2.7261 s / 4.3% after reuse; S reuse saved 11.65 s but is now small in absolute prepared work. Do not spend on O export serialization (0.017 s).",
+    "not_yet_justified": "A 1/10/100 or fresh-Batch matrix; one pair is insufficient for a qualified speedup or production-selection claim.",
+    "decision_limit": "ONE_SOURCEFREE_PAIR; no native/100k/real-width economics."
+  },
+  "external_holds": [
+    {
+      "owner": "native/original35/source science",
+      "minimal_missing_witness": "qualified source/rights/U/Epre/science and native execution; no source bytes read"
+    },
+    {
+      "owner": "production CURRENT/host/actor issuer",
+      "minimal_missing_witness": "production current/rights; TEST_ONLY sourcefree only"
+    },
+    {
+      "owner": "100k/6 GiB integrated",
+      "minimal_missing_witness": "full integrated scale; NOT_RUN"
+    },
+    {
+      "owner": "protected merge/N11-N12/#998",
+      "minimal_missing_witness": "protected receiving and integration; NONE"
+    }
+  ],
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT",
+  "measurement_grade": "ACCEPT_SCOPED_MEASUREMENT_WITH_ALIGNED_PHASE_CORRECTIONS",
+  "stop_state": "MEASUREMENT_AUDITED__ALIGNED_CORRECTIONS__ONE_PAIR_ONLY",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/RECOMPUTED_PHASES.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/RECOMPUTED_PHASES.out",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/ALIGNED_PHASE_TABLE.md",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/SOURCE_CHECKS.tsv",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/snapshot/",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/RETURN.md",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/ALIGNED_PHASE_TABLE.md",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/SOURCE_CHECKS.tsv",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/recompute_phases.py",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/MANIFEST.sha256"
+  ],
+  "review_branch": "agent/anvil-engineering-cut1-g5-20261117-r1",
+  "review_worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REVIEWER",
+  "target_commit": "495796e5f7f10a0e25122d0ccc45e40b703c885c",
+  "measurement_rerun": false,
+  "product_edits": 0,
+  "artifact_source": "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/CUT2_MEASUREMENT_AUDIT/"
+}

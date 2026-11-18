@@ -1,0 +1,118 @@
+{
+  "Q_fraction_baseline": 0.8112165548516845,
+  "Q_fraction_prepared_aligned": 0.9514888220994012,
+  "S_fraction_baseline": 0.17833284652950943,
+  "S_fraction_prepared_aligned": 0.04310349374278925,
+  "aligned_positive_overhead_seconds": 0.3246668329811655,
+  "baseline_H_admission_seconds": 0.27261354302754626,
+  "baseline_O_serialize_seconds": 0.019123635021969676,
+  "baseline_Q_seconds": 65.40385016688379,
+  "baseline_S_index_seconds": 14.377979226992466,
+  "baseline_cpu_system_seconds": 5.078538,
+  "baseline_cpu_user_seconds": 78.10544900000001,
+  "baseline_output_bytes": 166175,
+  "baseline_process_tree_peak_sampled": 185323520,
+  "baseline_receipts": 5,
+  "baseline_row_group_reads": 20101,
+  "baseline_scratch_component_peak": 23269376,
+  "baseline_wall_seconds": 80.62440266500926,
+  "derived_savings_Q_seconds": 5.227370435954072,
+  "derived_savings_S_seconds": 11.651918281975668,
+  "derived_savings_wall_seconds": 17.379855453036726,
+  "negative": {
+    "baseline_selected_identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+    "negative_label": "selected_weighted",
+    "restored_identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+    "restored_matches_baseline": true,
+    "revoked_refusal": "DirectEstateError: current source/operation authority refused",
+    "separate_evaluator_calls": 1,
+    "separate_index_builds": 1
+  },
+  "parity": {
+    "exact_full_semantic_identity_refs_member_replay": true,
+    "labels": [
+      "f2_forward_raw",
+      "f2_reverse_raw",
+      "f4_three_raw",
+      "repeated_mr_raw",
+      "selected_weighted"
+    ],
+    "per_operation": {
+      "f2_forward_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "f2_reverse_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "f4_three_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "repeated_mr_raw": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      },
+      "selected_weighted": {
+        "identity_sha256": true,
+        "member_refs_sha256": true,
+        "refs_sha256": true,
+        "replay_sha256": true,
+        "semantic_sha256": true
+      }
+    }
+  },
+  "phase_model": "H admission is outside wall; S index build is outside Q timer because DirectEstateI03Session.__enter__ builds before execute_empirical_query; Q is native evaluator/fact construction; O is post-call serialization. Positive wall = total wall - separately measured negative/restore wall.",
+  "prepared_H_admission_seconds": 0.2874188830028288,
+  "prepared_O_serialize_seconds": 0.017339703044854105,
+  "prepared_Q_seconds": 60.176479730929714,
+  "prepared_aligned_positive_S_index_seconds": 2.7260609450167976,
+  "prepared_aligned_positive_wall_seconds": 63.24454721197253,
+  "prepared_cpu_system_seconds": 2.602234,
+  "prepared_cpu_user_seconds": 78.31566199999999,
+  "prepared_negative_Q_seconds": 11.926942170015536,
+  "prepared_negative_S_index_seconds": 2.771773420041427,
+  "prepared_negative_wall_seconds": 14.802669909026008,
+  "prepared_output_bytes": 166175,
+  "prepared_process_tree_peak_sampled": 200810496,
+  "prepared_receipts": 1,
+  "prepared_row_group_reads": 23898,
+  "prepared_scratch_component_peak": 23269376,
+  "prepared_total_S_index_seconds": 5.497834365058225,
+  "prepared_total_wall_seconds": 78.04721712099854,
+  "supervision": {
+    "baseline_aborted": null,
+    "baseline_exit": 0,
+    "build_aborted": null,
+    "build_cap_seconds": 300.0,
+    "build_exit": 0,
+    "combined_cap_seconds": 720.0,
+    "combined_wall_seconds": 194.57578067295253,
+    "prepared_aborted": null,
+    "prepared_exit": 0,
+    "query_cap_seconds": 180.0,
+    "rss_limit_bytes": 2147483648,
+    "sampling_interval_seconds": 0.25,
+    "scratch_limit_bytes": 2147483648
+  },
+  "unmeasurable_aligned": [
+    "CPU (negative phase has no CPU fields)",
+    "process-tree RSS (aggregate includes negative/restore)",
+    "row_group_reads (aggregate includes negative/restore)",
+    "peak staging (component only, no staging peak)",
+    "process-tree continuous peak (0.25 s samples + maxrss only)"
+  ]
+}

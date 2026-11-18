@@ -1,0 +1,453 @@
+{
+  "abort_limits": {
+    "enforcement": "checkpoint abort before/after each operation; process-tree RSS and scratch sampled; no mid-call kill",
+    "max_process_tree_rss_bytes": 2147483648,
+    "max_scratch_bytes": 2147483648,
+    "max_seconds": 180.0
+  },
+  "admission": {
+    "hash_bytes": 7099520,
+    "hash_calls": 15,
+    "seconds": 0.27261354302754626
+  },
+  "binding_receipt_bytes": 6923,
+  "command": [
+    "/usr/local/bin/python3",
+    "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/measure_cut1_prepared.py",
+    "--mode",
+    "baseline"
+  ],
+  "cpu_system_seconds": 5.078538,
+  "cpu_user_seconds": 78.10544900000001,
+  "discovery_calls": 0,
+  "discovery_seconds": 0.0,
+  "estate_manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+  "estate_retained_bytes": 7099520,
+  "evaluator_calls": 5,
+  "evaluator_calls_measured_operations": 5,
+  "evaluator_seconds": 65.40385016688379,
+  "evaluator_seconds_measured_operations": 65.40385016688379,
+  "event_object_materializations": 195,
+  "family_object_materializations": 91118,
+  "fixture": {
+    "actual_family_counts": {
+      "AuthoritySnapshot": 6,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 16,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 600,
+      "RespondentEvent": 8622,
+      "RespondentIdentity": 16,
+      "RoutingEligibilityFact": 9600,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 16
+    },
+    "event_count_expected": 8622,
+    "geometry_audit": {
+      "added_questions": 595,
+      "base_events": 54,
+      "base_repeated_mr_occurrences": 4,
+      "dense_assumption": false,
+      "deterministic_pattern": "bucket=(respondent*added_questions+q_index)%10; 0-7 valid, 8 MISSING, 9 NOT_ASKED",
+      "events_per_respondent_max": 542,
+      "events_per_respondent_mean": 538.875,
+      "events_per_respondent_min": 538,
+      "extra_authority": "TEST_ONLY_SOURCE_GEOMETRY_NOT_ORIGINAL_QUERY_ISSUANCE",
+      "extra_cells": 9520,
+      "extra_events": 8568,
+      "extra_typed_missing": 952,
+      "extra_typed_not_asked": 952,
+      "extra_valid_substantive": 7616,
+      "query_surface": "base A/B/C/D/MR five operations; added slots load writer/index but are not all queried",
+      "total_events": 8622,
+      "total_question_bindings": 600,
+      "total_routing": 9600,
+      "total_weights": 16
+    },
+    "include_weights": true,
+    "missing_mod": 17,
+    "questions": 600,
+    "repeated_mod": 13,
+    "respondents": 16,
+    "routing_count_expected": 9600,
+    "skew_events": 0,
+    "sparse_mod": 11,
+    "weight_count_expected": 16,
+    "width_note": "600 native question slots with substantial populated response items: 80% valid, 10% typed MISSING, 10% typed NOT_ASKED; actual events/routing are audited and this is still not native/original/real-width economics"
+  },
+  "grade": "SOURCEFREE_TEST_ONLY_MECHANICS_NOT_PERFORMANCE",
+  "index_build_seconds": 14.377979226992466,
+  "index_builds": 5,
+  "index_builds_measured_operations": 5,
+  "mode": "baseline",
+  "negative": null,
+  "observer_identity_sha256": [
+    "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+    "a616e92041eadee294cb68e6e4fcb86e5cca5d13d57bf4933aa625e3cebe1591",
+    "85bf7d6eea38a521a0908b041e81c03de2217ca6667c064a9685874be87a8c38",
+    "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+    "f426457e0d90b341637a50bc4fdd1d634b4253e82faca256c591be6fb9cdf96f"
+  ],
+  "observer_results": 5,
+  "operations": 5,
+  "output_bytes": 166175,
+  "prepared_receipt": null,
+  "prepared_receipt_bytes": null,
+  "process": {
+    "pid": 61363,
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "ppid": 61118,
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "process_tree_rss_end_bytes": 167116800,
+  "process_tree_rss_peak_observed_bytes": 185323520,
+  "process_tree_rss_start_bytes": 61341696,
+  "row_group_compressed_bytes": 3203831044,
+  "row_group_reads": 20101,
+  "row_group_rows": 10195196,
+  "rows": [
+    {
+      "denominator_member_payload_bytes": 1705,
+      "denominator_member_ref_count": 8,
+      "denominator_member_refs_sha256": "8186b7799237317148a822d5fad714a305d8808b6cc069cb09fdb13341ba99e8",
+      "fact_count": 1,
+      "fact_refs": [
+        {
+          "content_hash": "1fc79cb61b0e42b611b0eb9c7ff476d3f3d93ab02cdc08c3fb65ae67ecad86ac",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1fc79cb61b0e42b611b0eb9c7ff476d3f3d93ab02cdc08c3fb65ae67ecad86ac"
+        }
+      ],
+      "identity_payload_bytes": 35458,
+      "identity_sha256": "435262ba5458e965412c68e1695ae521ade2d4a6053210dfd8f4f34da4f4bf54",
+      "label": "selected_weighted",
+      "member_payload_bytes": 3409,
+      "member_ref_count": 16,
+      "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "provenance_payload_bytes": 10221,
+      "provenance_ref_count": 51,
+      "provenance_refs_sha256": "26f07e688e4c605f763eddfbfe65b63e848e68f052e77bfa4b3c51cf1fd04cdd",
+      "query_ref": {
+        "content_hash": "662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:662eb0dbcbdfc3149b595f6ae6ce364d5a31a5c289f280e77991f94354633348"
+      },
+      "raw_denominator_support": [
+        8
+      ],
+      "ref_only_payload_bytes": 234,
+      "ref_only_sha256": "1c1ff5dc813afa79fa0be080b69ce35d32bfdf0790d22dd95e571df90b68b759",
+      "refs_payload_bytes": 234,
+      "refs_sha256": "1c1ff5dc813afa79fa0be080b69ce35d32bfdf0790d22dd95e571df90b68b759",
+      "release_refs": [
+        {
+          "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "replay_payload_bytes": 241,
+      "replay_refs": [
+        {
+          "content_hash": "9e9d94158549d1ff6e963bfe692d26f0a1cd87f2a7115d608e90de4f4a447a87",
+          "kind": "PRE553_I03_QUERY_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9e9d94158549d1ff6e963bfe692d26f0a1cd87f2a7115d608e90de4f4a447a87"
+        }
+      ],
+      "replay_sha256": "bfad0ed36d3035ba097e29ef1c9ced8752daa508af8cad890b745a8c01b6425b",
+      "risk_member_payload_bytes": 3409,
+      "risk_member_ref_count": 16,
+      "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "semantic_payload_bytes": 35256,
+      "semantic_sha256": "b95dba903e92a95dbd79f08301663f61c74146173e46652218f0a7ef6cfb8e78",
+      "serialize_seconds": 0.0048174039693549275,
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "topology_ref_count": 0,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 16.511652789020445,
+      "weighted_denominator_support": [
+        {
+          "$exact_fraction": [
+            24,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "denominator_member_payload_bytes": 1705,
+      "denominator_member_ref_count": 8,
+      "denominator_member_refs_sha256": "8186b7799237317148a822d5fad714a305d8808b6cc069cb09fdb13341ba99e8",
+      "fact_count": 1,
+      "fact_refs": [
+        {
+          "content_hash": "493718e237f2804ffa5a3dffa51c5a420e52758636870d1b7a8bbd31f8f0047a",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:493718e237f2804ffa5a3dffa51c5a420e52758636870d1b7a8bbd31f8f0047a"
+        }
+      ],
+      "identity_payload_bytes": 31319,
+      "identity_sha256": "a616e92041eadee294cb68e6e4fcb86e5cca5d13d57bf4933aa625e3cebe1591",
+      "label": "f2_forward_raw",
+      "member_payload_bytes": 3409,
+      "member_ref_count": 16,
+      "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "provenance_payload_bytes": 8613,
+      "provenance_ref_count": 43,
+      "provenance_refs_sha256": "0f28ee1858b06e29edbfa6ab406621931d01cf0a718648217a688140fe551f76",
+      "query_ref": {
+        "content_hash": "9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9768f186e12a2c963e47ca21155dc308f9931893b4a258d94f407bb35327a899"
+      },
+      "raw_denominator_support": [
+        8
+      ],
+      "ref_only_payload_bytes": 234,
+      "ref_only_sha256": "527e92ed218dca3146933ed8450b2822a4e411cb8548267b5463d3a22595c3e6",
+      "refs_payload_bytes": 234,
+      "refs_sha256": "527e92ed218dca3146933ed8450b2822a4e411cb8548267b5463d3a22595c3e6",
+      "release_refs": [
+        {
+          "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "replay_payload_bytes": 241,
+      "replay_refs": [
+        {
+          "content_hash": "0972d4d1dc0409d47de4ac17942ac117abde622a52b31d0987945f917e02ab03",
+          "kind": "PRE553_I03_QUERY_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:0972d4d1dc0409d47de4ac17942ac117abde622a52b31d0987945f917e02ab03"
+        }
+      ],
+      "replay_sha256": "395b6e44a437a7991c6e41b6ad400d9ad0126094b2384359a81be569178225f4",
+      "risk_member_payload_bytes": 3409,
+      "risk_member_ref_count": 16,
+      "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "semantic_payload_bytes": 31117,
+      "semantic_sha256": "6e16a57a66bba5bd785ff25f7f36fbcdeff4b59c51d8fdf4b8d241138ec5f58b",
+      "serialize_seconds": 0.003933890024200082,
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "topology_ref_count": 0,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 15.91572182503296,
+      "weighted_denominator_support": [
+        null
+      ]
+    },
+    {
+      "denominator_member_payload_bytes": 1066,
+      "denominator_member_ref_count": 5,
+      "denominator_member_refs_sha256": "c2cd67a0cefab44db3bb33a0b499c326498f2787ca204033fb963514183b9bed",
+      "fact_count": 1,
+      "fact_refs": [
+        {
+          "content_hash": "54e3ed00e8f56d528642dc960c6b8bfc0ef2348d8ac6426f20c3240967329cf8",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:54e3ed00e8f56d528642dc960c6b8bfc0ef2348d8ac6426f20c3240967329cf8"
+        }
+      ],
+      "identity_payload_bytes": 29138,
+      "identity_sha256": "85bf7d6eea38a521a0908b041e81c03de2217ca6667c064a9685874be87a8c38",
+      "label": "f2_reverse_raw",
+      "member_payload_bytes": 3409,
+      "member_ref_count": 16,
+      "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "provenance_payload_bytes": 8022,
+      "provenance_ref_count": 40,
+      "provenance_refs_sha256": "9a3178eebfd971653e3ac8fc569e2c96b699a6bc53879ea3363ffd3001baed8b",
+      "query_ref": {
+        "content_hash": "5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5ca8c8ad0d80e20d0d0fc0203ba49425d04bf595f525f7f2055c9f3f8639cc88"
+      },
+      "raw_denominator_support": [
+        5
+      ],
+      "ref_only_payload_bytes": 234,
+      "ref_only_sha256": "5eac6df7dfe22cebbd9ba4e4b3ae0c502d6aa1065e0e3041cff879138594e85f",
+      "refs_payload_bytes": 234,
+      "refs_sha256": "5eac6df7dfe22cebbd9ba4e4b3ae0c502d6aa1065e0e3041cff879138594e85f",
+      "release_refs": [
+        {
+          "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "replay_payload_bytes": 241,
+      "replay_refs": [
+        {
+          "content_hash": "3b1931fa3cd5cbbe34f81a6038eb4d5d9cee17d2bb5c82aebb9fc0aaaf93e7f6",
+          "kind": "PRE553_I03_QUERY_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3b1931fa3cd5cbbe34f81a6038eb4d5d9cee17d2bb5c82aebb9fc0aaaf93e7f6"
+        }
+      ],
+      "replay_sha256": "21bcab7bbe742eebff73a2b64f15d80975f7d83a94709065f0f23ce97e6f0fd4",
+      "risk_member_payload_bytes": 3409,
+      "risk_member_ref_count": 16,
+      "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "semantic_payload_bytes": 28936,
+      "semantic_sha256": "6223d638949fa87d12ca362deb05c8793783b3979bfabb1b2e0a26194b6d2704",
+      "serialize_seconds": 0.003601377015002072,
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "topology_ref_count": 0,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 15.638103675970342,
+      "weighted_denominator_support": [
+        null
+      ]
+    },
+    {
+      "denominator_member_payload_bytes": 1066,
+      "denominator_member_ref_count": 5,
+      "denominator_member_refs_sha256": "5a5be8964f8874c00ed73df1045aebe6b436ab2657e7829ad37a09304c911088",
+      "fact_count": 1,
+      "fact_refs": [
+        {
+          "content_hash": "ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ff607ebd2c084e1642ec84aaf235e41dbeb7684dbf41b5ac314835438710ea94"
+        }
+      ],
+      "identity_payload_bytes": 36740,
+      "identity_sha256": "c912bcc4f4783f85d72ef5520d096d6e61b13fad72119d614fa9963cbe6045f5",
+      "label": "f4_three_raw",
+      "member_payload_bytes": 3409,
+      "member_ref_count": 16,
+      "member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "provenance_payload_bytes": 11174,
+      "provenance_ref_count": 56,
+      "provenance_refs_sha256": "3ecc69a7996d47f62240bc9e0fcb59ecf2029e18a536452c6b2c46fcd6d4d9f8",
+      "query_ref": {
+        "content_hash": "6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6155123c7df4875d1a66a2380a25de939f33b39141b8b388b18d2b30269651e6"
+      },
+      "raw_denominator_support": [
+        5
+      ],
+      "ref_only_payload_bytes": 234,
+      "ref_only_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+      "refs_payload_bytes": 234,
+      "refs_sha256": "4e94026ce916f94dad78e0a192a0e997aee0766a34c07dfbd2f1647fbb09a2d3",
+      "release_refs": [
+        {
+          "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "replay_payload_bytes": 241,
+      "replay_refs": [
+        {
+          "content_hash": "f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1",
+          "kind": "PRE553_I03_QUERY_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:f6b7f6a2264751c999cc3576a15a4b6764026f968905e54f675b28737f51d5a1"
+        }
+      ],
+      "replay_sha256": "9708fccb9c0a32491a29c32025a53ab555e6b43624b77499c475a793ab92d30d",
+      "risk_member_payload_bytes": 3409,
+      "risk_member_ref_count": 16,
+      "risk_member_refs_sha256": "040baabafa6e6d4dbc088052d3128d67206923ee790018f742af3a6e4edd6868",
+      "semantic_payload_bytes": 36538,
+      "semantic_sha256": "63b822858d59f282faf5833136559689418d45616f87c0122ac899aa295c3a9d",
+      "serialize_seconds": 0.004606253991369158,
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "topology_ref_count": 0,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 16.61579927796265,
+      "weighted_denominator_support": [
+        null
+      ]
+    },
+    {
+      "denominator_member_payload_bytes": 214,
+      "denominator_member_ref_count": 1,
+      "denominator_member_refs_sha256": "1d8749a27a10be0e59c7835eca247a994a6e6000a739a73204c848ea60d75436",
+      "fact_count": 1,
+      "fact_refs": [
+        {
+          "content_hash": "29e5e032e6878aa5f864f848d6a1e2b130547f30fdffebc7b924fa88c57c3b89",
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:29e5e032e6878aa5f864f848d6a1e2b130547f30fdffebc7b924fa88c57c3b89"
+        }
+      ],
+      "identity_payload_bytes": 17082,
+      "identity_sha256": "f426457e0d90b341637a50bc4fdd1d634b4253e82faca256c591be6fb9cdf96f",
+      "label": "repeated_mr_raw",
+      "member_payload_bytes": 427,
+      "member_ref_count": 2,
+      "member_refs_sha256": "4070181048f5f3355aee38aea3491096c6662e4ed2e22f7fc0f3c546f529e210",
+      "provenance_payload_bytes": 4673,
+      "provenance_ref_count": 23,
+      "provenance_refs_sha256": "3c18d9b07b806b4dfc4dce6c5052b72f19c6f144446a6e156451fdf16e2a27f3",
+      "query_ref": {
+        "content_hash": "2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ed6ad6fbe1e43783c144f76bbda05fbf1d14d966de475af63f69cd762c27071"
+      },
+      "raw_denominator_support": [
+        1
+      ],
+      "ref_only_payload_bytes": 234,
+      "ref_only_sha256": "fbd3acc629f5bc2e1d64180fd53f28f4d02c32a3c18d9975c33bde699a048bfc",
+      "refs_payload_bytes": 234,
+      "refs_sha256": "fbd3acc629f5bc2e1d64180fd53f28f4d02c32a3c18d9975c33bde699a048bfc",
+      "release_refs": [
+        {
+          "content_hash": "e771746150985843d272d4c9aa198d5755d7575a7cecfd91060132d8ceb94b28",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-CUT2-MEASURE"
+        }
+      ],
+      "replay_payload_bytes": 241,
+      "replay_refs": [
+        {
+          "content_hash": "51ea6c9df979bd65f526643b53d68afedf87c08259ef003c366c03c9bbbf1e1c",
+          "kind": "PRE553_I03_QUERY_REPLAY",
+          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:51ea6c9df979bd65f526643b53d68afedf87c08259ef003c366c03c9bbbf1e1c"
+        }
+      ],
+      "replay_sha256": "1a335984b14fe06f8d6295ab471efa9268cf240c5d357e3e3fa1b79ea8b89809",
+      "risk_member_payload_bytes": 427,
+      "risk_member_ref_count": 2,
+      "risk_member_refs_sha256": "4070181048f5f3355aee38aea3491096c6662e4ed2e22f7fc0f3c546f529e210",
+      "semantic_payload_bytes": 16880,
+      "semantic_sha256": "b5c812e2d4de55b302c76a273741f3ed7f8b8025c55c14b17f2afa93572f4cd1",
+      "serialize_seconds": 0.0021647100220434368,
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "topology_ref_count": 0,
+      "typed_states": [
+        "SUPPORTED"
+      ],
+      "wall_seconds": 15.721419209963642,
+      "weighted_denominator_support": [
+        null
+      ]
+    }
+  ],
+  "schema": "ANVIL_CUT2_MEASUREMENT_PREP@1",
+  "scratch_after_bytes": 7099520,
+  "scratch_before_bytes": 7099520,
+  "scratch_peak_component_bytes": 23269376,
+  "self_maxrss_bytes": 185323520,
+  "self_rss_end_bytes": 166207488,
+  "self_rss_start_bytes": 60526592,
+  "session_builds": 5,
+  "wall_seconds": 80.62440266500926,
+  "wrapper_abi_bytes": 1642
+}
