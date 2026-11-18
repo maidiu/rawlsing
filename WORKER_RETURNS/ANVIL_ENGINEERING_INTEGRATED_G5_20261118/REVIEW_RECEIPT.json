@@ -1,0 +1,103 @@
+{
+  "schema": "ANVIL_ENGINEERING_INTEGRATED_G5_REVIEW@1.0.0",
+  "job": "INTEGRATED TWO-EDIT SEAM G5",
+  "reviewer": {
+    "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "same_existing_locality_and_native_s1e_reviewer": true,
+    "author_of_either_edit": false,
+    "subagents": false
+  },
+  "worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/OWNER",
+  "branch": "agent/anvil-engineering-cut1-owner-20261117-r1",
+  "reviewed_executable": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "author_return": "7f0366de3ee83b90b9607e278193bd08c4478213",
+  "baseline": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "exact_changes": {
+    "production_files": {
+      "rawlsing_next/pre553_direct_estate_i03.py": "d662fc578a1ecb42d54ec8b4bdab87fd7ecec176",
+      "rawlsing_next/pre553_source_postconsumer_receipts.py": "0a2e7b899ebd392761d38b8ceb175f0bf81c6378"
+    },
+    "new_tests": {
+      "rawlsing_next/tests/test_anvil_production_locality_20261118.py": "7373c1704e21bcb4155eb690b17de5ecd8bf22dc",
+      "rawlsing_next/tests/test_anvil_prepared_saved_postconsumer_join.py": "d555f811353532f6df4b1eed3ea3476e4bb87719"
+    },
+    "unchanged_cut1": {
+      "rawlsing_next/pre553_saved_workload_integration.py": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+      "rawlsing_next/pre553_batch_runner.py": "8320f28458fb85aec655d154a2527a161282f56b"
+    },
+    "exactly_two_production_files": true,
+    "other_production_files": []
+  },
+  "snapshot_execution": {
+    "method": "git archive 68aa7cac... rawlsing_next into own return tmp/snapshot",
+    "product_sha256": "6dcb875bfdf15bd430e14b8ba406a489549a7458e717f70746494c2eff316836",
+    "postconsumer_sha256": "7c47e1a064c26c2a69335c99fa4e5811ecd97c34ff89f40ac8097d9c1f84499a",
+    "wrapper_sha256": "54cf978db77cef25a2dc17a0006f63ef13ee13a65708d68d194403a6e7afafee",
+    "batch_sha256": "e8c110ff3a18acec0956bb47c4789312dd49e812c0643875b7a3e13a13415ab1",
+    "old_OWNER_product_executed": false,
+    "locality_adapter_installed": false,
+    "reader_function": "DirectEstateI03Session._respondent_family",
+    "reader_source_has_gid_off_order": true,
+    "reader_source_has_canonical_sort": true,
+    "reader_source_has_per_yield_live": true,
+    "execution_blob_evidence": "execution-blobs.json"
+  },
+  "component_postconsumer": {
+    "status": "ACCEPTED_COMPONENT_RECEIVED",
+    "review_sha": "d2988fdb2e5fd0f47f8080b49aef2c9554a07326",
+    "verdict": "ACCEPT_SCOPED_PRODUCTION_POSTCONSUMER_PREPARED_ADMISSION",
+    "source": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REVIEWER/WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/PRODUCTION_POSTCONSUMER_G5_20261118/REVIEW_VERDICT.json",
+    "reviewed_by_this_integrated_g5": false,
+    "note": "HQ reports exact remote; component courts not repeated for ceremony."
+  },
+  "integrated_actual_witness": {
+    "script": "integrated_parity.py copied from frozen author return with ONLY output path changed to own evidence",
+    "source_sha256_per_run": "4a6a08f1f18a0e46b211a3d6c90c2120226114b9978da88de3a6cba97d7492d6",
+    "estate_manifest_sha256_per_run": "45c206c8757d7c756fa50b0d1836879c307e80f431ab80fb0e03a1496b7a4519",
+    "fixture_note": "SAV source identity is timestamp/root-specific; exact base/prepared parity is required within-run, not cross-run hash equality.",
+    "source_stats": {"source_reads":1,"snapshot_acquisitions":1,"decode_calls":1,"cell_passes":1,"full_c11_builds":0,"cleanup_complete":true},
+    "family_counts": {"EmpiricalUniverse":1,"RespondentIdentity":5,"QuestionVariableBinding":1,"RespondentEvent":5,"RoutingEligibilityFact":5,"EmpiricalCoordinateFact":5,"WeightMeasureFact":0,"AuthoritySnapshot":7,"ReplayManifest":1,"SourceUniverseRelation":0,"EmpiricalPredicateReplayBinding":0,"ComparatorReplayBinding":0,"DiscoveryBranchReplayBinding":0,"StructuralAdmissionReplayBinding":0},
+    "family_table_distinction": "13 C11 family keys; 7 nonempty families + 6 zero families. ReplayManifest=1 is a separate non-family table. The fixture does not make all families nonempty.",
+    "compiler": {"v1_queries":0,"v1_discoveries":1,"v2_queries":12,"v2_discoveries":1,"v2_scope":"TEST_ONLY_SOURCEFREE"},
+    "base": {"admission":"SavedC11Admission","batch_units":13,"batch_states":["COMPLETED"],"operation_count":22,"fate_counts":{"ELIGIBLE":8,"HELD":14},"positive_native_linked_operations":6,"pending_eligible_operations":2,"native_completed_units_rechecked":13,"native_discovery_candidates_exactly_joined":8,"issue_grants_created":0,"join_hash":"1fea765ed40fa5296a35367d3e4d095d3983eac85abd36f71f2e876b500e4882"},
+    "prepared": {"admission":"PreparedSavedC11Admission","batch_units":13,"batch_states":["COMPLETED"],"prepared_index_builds":1,"operation_count":22,"fate_counts":{"ELIGIBLE":8,"HELD":14},"positive_native_linked_operations":6,"pending_eligible_operations":2,"native_completed_units_rechecked":13,"native_discovery_candidates_exactly_joined":8,"issue_grants_created":0,"join_hash":"1fea765ed40fa5296a35367d3e4d095d3983eac85abd36f71f2e876b500e4882"},
+    "parity": {"rows":true,"rows_equal":true,"audit_equal":true,"result_hash_equal":true,"batch_provenance_equal":true,"native_output_refs_equal":true},
+    "run": {"exit":0,"wall_seconds":3.50,"max_rss_bytes":133939200}
+  },
+  "focused_courts": {
+    "files": [
+      "test_anvil_prepared_saved_postconsumer_join.py",
+      "test_anvil_production_locality_20261118.py",
+      "test_anvil_prepared_saved_batch_cut1.py",
+      "test_pyat997_s1e_saved_native_first_consumer.py",
+      "test_pyat997_r03_governed_query_issuer_v2.py"
+    ],
+    "collected":47,"passed":47,"failed":0,"exit":0,"wall_seconds":32.93,
+    "covers": ["changed valid source -> changed native fact -> exact restore","fabricated QUERY/root/CURRENT/forged receipt/base subclass refusals","v1 0Q/1D and v2 TEST_ONLY eligibility/issuer fates","13-unit prepared batch/join","locality canonical order/revocation"],
+    "evidence":"focused-47.txt"
+  },
+  "gates": {
+    "G1": {"state":"PASS","receipt":"Exact code/test 68aa, two production blobs, two new tests, unchanged cut1 wrapper/batch; no other production diff; solved snapshot execution from 68aa, not old OWNER."},
+    "G2": {"state":"PASS","receipt":"Actual sourcefree Q2 source -> 13-family saved estate -> prepared Batch 13 COMPLETED/one build -> join 22 rows, 8 ELIGIBLE/14 HELD, 6 positive/2 pending, exact base/prepared rows/audit/native refs/provenance/replay hash. v1 0Q/1D; v2 TEST_ONLY 12Q/1D."},
+    "G3": {"state":"PASS","receipt":"Focused 47/47 covers changed/restore, fabricated QUERY, root/CURRENT, forged receipt, exact base/prepared subclass, foreign runner/repository and v1/v2 guards; no false positive."},
+    "G4": {"state":"PASS_SCOPED_SMALL","receipt":"Integrated witness 3.50s, max RSS 133,939,200 B, exit0; focused 32.93s; under 120s/2GiB/2GiB; no 100k/matrix; sourcefree small 5-respondent fixture."},
+    "G5": {"state":"PASS_SCOPED_INTEGRATED","receipt":"Independent integrated seam review finds no consequential defect; both component G5s now independently received (locality 9ff290, postconsumer d2988). No science/protected promotion."}
+  },
+  "decision": "ACCEPT_SCOPED_INTEGRATED_TWO_EDIT_SOURCEFREE_FIRST_CONSUMER",
+  "accepted_scoped": true,
+  "postconsumer_component": "ACCEPTED_AT_d2988FDB",
+  "locality_component": "ACCEPTED_AT_9ff290FD9",
+  "integration": "UNMERGED",
+  "science_or_protected": "NOT_PROMOTED",
+  "original35": "HOLD",
+  "full_100k": "NOT_RUN",
+  "limits": [
+    "Sourcefree TEST_ONLY engineering only; no original35/native science/production service/actor/CURRENT/protected merge.",
+    "Fixture SAV identity is timestamp/root-specific; exact base/prepared parity is within-run; author and independent source/join hashes are not cross-run frozen.",
+    "One bounded integrated witness and focused 47 nodes; no full 113 ceremony, 100k, full matrix or new locality benchmark.",
+    "13 C11 family keys are present but 6 are zero; ReplayManifest is separate; not all nonempty.",
+    "Postconsumer G5 evidence is received from d2988, not re-reviewed here; no false promotion of component verdict into broader science/protected grade."
+  ],
+  "custody": {"writes":"WORKER_RETURNS/ANVIL_ENGINEERING_INTEGRATED_G5_20261118/ only; snapshot tmp uncommitted","product_or_test_edits":false,"background_jobs_left":false}
+}
