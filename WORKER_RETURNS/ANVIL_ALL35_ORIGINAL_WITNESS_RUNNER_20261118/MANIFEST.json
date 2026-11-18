@@ -14,24 +14,24 @@
       "sha256": "cf9c5804dcf6fa2d3f31f3b16d7e23dcc525f71963a0a9d754327074c710fc94"
     },
     "OVERLAY_BLOCKER.md": {
-      "bytes": 1111,
-      "sha256": "620fc11a7c0558ccca04730b9edcf9cd7c8639570fe7da3e59a3130dde1e3571"
+      "bytes": 713,
+      "sha256": "3f42708a7d646c223a5f3f432125c7a6e8d34e48084a213eeed3ff5ea4407c61"
     },
     "OVERLAY_COVERAGE.json": {
-      "bytes": 1237,
-      "sha256": "7abc2c18de1bdec3b54d6665ffceaacac3b0904686612f446512dcb3ed58f0b0"
+      "bytes": 1540,
+      "sha256": "c0f51bc95ef0f5911d07edec82f270f55cb4a6feb5737453d9d19ba78616f0eb"
     },
     "OVERLAY_PREFLIGHT.json": {
-      "bytes": 1391,
-      "sha256": "f902e9d4628680686352ea323ce1c7d391013329010693cd63b134e8fec79947"
+      "bytes": 2032,
+      "sha256": "944990d23c2e251201da2ad82a714f901f354a1442af274871fc9d743ce76140"
     },
     "OVERLAY_PREFLIGHT.txt": {
-      "bytes": 1277,
-      "sha256": "0964910fd41b6156b1c5ca280387b5b5ad368a8a0448db66c9b22fa2dbee5c11"
+      "bytes": 1826,
+      "sha256": "914e85b54a3adc5cda664cf32e38304d832836f05d7e6db2a0615f6322b5bef4"
     },
     "OVERLAY_RECONCILIATION.json": {
-      "bytes": 1543,
-      "sha256": "e27a36701a5f5fb22ea28f32b9cdc4be985b7af0e424aa967c99a0723468bf02"
+      "bytes": 1795,
+      "sha256": "b02c06dcf01071638e4434522bcd85ae792d71c1c6478a8266f5882f52ad0c86"
     },
     "OVERLAY_RUN_REFUSAL.txt": {
       "bytes": 80,
@@ -53,6 +53,14 @@
       "bytes": 135,
       "sha256": "0cf5a72e9f0accbe307925d72b651df55969132e9d2b3534a0d6939e2138719c"
     },
+    "REPLAY.txt": {
+      "bytes": 853,
+      "sha256": "5cd48c8618974670f06fd3d2583e59b8a48d1f892c8423e041a7e7995f8f544b"
+    },
+    "REPLAY_RECEIPT.json": {
+      "bytes": 2115,
+      "sha256": "243608e99dc3e504591f346ca027707e01c25e13cd4c89fdb30e7a33d32b1b9b"
+    },
     "REQUEST_CHECK.json": {
       "bytes": 1518,
       "sha256": "fb2cdf337c1f25c77d83945d1a3f4842718d5f904ce0db7de6fd7763b9a68347"
@@ -62,8 +70,8 @@
       "sha256": "444c4f89c3060f81869c9b04186e857c79e4205e4143f7f1c0ccc0cf36d8edd9"
     },
     "RETURN.json": {
-      "bytes": 7297,
-      "sha256": "e419d368743a005a6a1b6992317417e61eff962fe34a03f222c6b9f8aebcbd44"
+      "bytes": 8456,
+      "sha256": "5cfa1c3d85e6edc9d70d02d1c3e03f94b3a01e456c4c8e18e9ac79c2dc1c79eb"
     },
     "SRC04_WITNESS_SCOPE.json": {
       "bytes": 4347,
@@ -82,8 +90,8 @@
       "sha256": "61075d0d19b2d1d83831324b683fc78cf8f9a776ddf83ca06dd3b0301f93a13f"
     },
     "witness_caller.py": {
-      "bytes": 22720,
-      "sha256": "5d9504d3b5fcc03a9d6e82d73880264a1953c07181d3af51475207d93966a940"
+      "bytes": 23073,
+      "sha256": "3cd627343e211a13ec21324a487a9645d74fc47a66dfd5a30c8a52735258e1fb"
     },
     "witness_runner.py": {
       "bytes": 13902,
@@ -91,10 +99,12 @@
     }
   },
   "native_sink_direct": true,
+  "one_authorized_admitted_decode": true,
+  "private_runtime_config_committed": false,
   "product_edits": false,
   "runtime_overlay_bytes_available": false,
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_MANIFEST@4",
   "source_bytes_in_git": false,
-  "source_read_performed": false,
-  "status": "RUNTIME_OVERLAY_BYTES_MISSING__EXACT_INPUT_BLOCKER"
+  "source_read_performed": true,
+  "status": "POST_ALIGNMENT_RUNTIME_CONFIG_READY"
 }

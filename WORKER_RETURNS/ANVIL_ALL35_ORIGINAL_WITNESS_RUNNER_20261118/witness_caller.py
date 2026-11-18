@@ -29,11 +29,21 @@ Q2_SPOOL_RESERVE = 1024**3                       # routing/current-Q2 spool
 STAGING_BUDGET = COMPLETED_512K_BYTES + Q2_SPOOL_RESERVE
 FREE_FLOOR = STAGING_BUDGET + 8 * 1024**3        # retain 8 GiB uncommitted
 OVERLAY_CANONICAL = "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0"
-OVERLAY_RULE_COUNTS = {
+OVERLAY_ADDED_RULE_COUNTS = {
     "q715withoutmorocco": 303,
     "q716withoutmorocco": 327,
     "q715incomedeciles": 4,
     "q716incomedeciles": 2,
+}
+BASE_RULE_COUNTS = {
+    "q715withoutmorocco": 6,
+    "q716withoutmorocco": 6,
+    "q715incomedeciles": 11,
+    "q716incomedeciles": 11,
+}
+OVERLAY_RULE_COUNTS = {
+    k: BASE_RULE_COUNTS[k] + OVERLAY_ADDED_RULE_COUNTS[k]
+    for k in BASE_RULE_COUNTS
 }
 ACCEPTED = {
     "release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
@@ -155,6 +165,7 @@ def preflight(args) -> int:
         semantic_use_scope=("SOURCE_NATIVE_RESPONSE_INCIDENCE", "NO_SEMANTIC_ADOPTION", "SRC04", "FULL_SRC04_C11_CONSTRUCTION"))
     result.update({"status": "RUNTIME_OVERLAY_QUALIFIED", "runtime_config_file_sha256": wr.sha_bytes(args.runtime_config),
                    "runtime_config_canonical_sha256": actual_canonical, "rule_counts": counts,
+                   "added_rule_counts": {k: counts[k] - BASE_RULE_COUNTS[k] for k in counts},
                    "request_equal_to_approved": request == _grant()[1].request,
                    "request": {"source_id": request.source_id, "source_sha256": request.source_sha256,
                                "locator": request.custody_locator_binding, "host": request.host,

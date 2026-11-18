@@ -1,16 +1,7 @@
-# SRC04 runtime-overlay blocker
+# SRC04 runtime-overlay replay — resolved
 
-R2 used the base repaired v2 config and stopped at:
+Authorized one-decode replay completed. The historical `_apply_admitted_binding`/`_runtime_config` path produced the exact intermediate and final canonical config `ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0`, with added rule counts 303/327/4/2, 177 response slots, 3 coordinate slots, and q217 held at 38 unbound cells / 0 release events.
 
-`UNBOUND_RESPONSE_CELL: {"row": 1, "slot": (176, "q716withoutmorocco")}`
+The actual accepted post-alignment runtime config is private, mode 0700/0600, outside Git at the path recorded in `REPLAY_RECEIPT.json`. The runner now requires that exact final config via `--runtime-config`; no source re-read is needed for the subsequent full witness.
 
-The required input is the accepted intermediate runtime config:
-
-- canonical SHA-256 `ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0`
-- added rule counts `q715withoutmorocco=303`, `q716withoutmorocco=327`, `q715incomedeciles=4`, `q716incomedeciles=2`
-
-Known local historical evidence contains the hash/counts, not the exact bytes. The base v2 and initial campaign-a local release are insufficient. Rebuilding from the original source is forbidden in this repair; guessing numeric domains is prohibited. Therefore the exact blocker is **missing retained ba886d runtime-config bytes**, not a writer or selection defect.
-
-The base selected slice is complete for all 177 response fields and 3 coordinates; q217 remains held at 38 unbound cells. The corrected runner requires the ba886d overlay and refuses before source if it is absent.
-
-No original source was opened, stat'ed, hashed or decoded in this repair. No writer build was run.
+No full writer build was launched.
