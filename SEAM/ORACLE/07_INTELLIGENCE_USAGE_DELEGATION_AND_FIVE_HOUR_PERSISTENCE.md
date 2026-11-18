@@ -18,21 +18,19 @@
 
 The five-hour window is a **user-stated operational boundary**, not a deadline that this dossier independently measured. Confirm session start, known expiration and clock from the host if accessible. If not accessible, record `SESSION_EXPIRY_UNVERIFIED`, assume a conservative five-hour *maximum* from the earliest credible start, and checkpoint much sooner; never claim to know time remaining from a model guess.
 
-## 1. Intelligence-level necessity: classify every substantive work unit before doing it
+## 1. Reasoning and delegation risks — Astra chooses its research sequence
 
-For each task, record a compact decision:
+When authorizing actual delegation or claiming specific model/effort settings, preserve verifiable scope, authority and usage facts. **This does not require a separate pretask classification ledger for all of Astra's own scientific reasoning.**
 
 **Optional delegation record fields, not a research-plan schema:** `task_id | why technically justified | source/rights risk | actual delegated owner/model | observed usage | saved Git commit`. Preserve the verifiable facts required by the user's execution constraints; do not force Astra's scientific inquiry into a predetermined task grid.
 
-<!-- Historical schema retained at pre-correction Git SHA 50f526d02438111f8191b9b9b8f0ac7d1ef44a21. -->
-
-`legacy_task_id | legacy_required_reasoning_grade
+Earlier detailed task-format examples are available in the pre-correction file at commit `50f526d02438111f8191b9b9b8f0ac7d1ef44a21`; they are not required formats.
 
 Ask first: **Does this task require discovering, challenging, or issuing a *meaning*, *scientific assumption*, *causal law*, *priority*, *acceptance test*, *source use*, or *architecture decision*?** If so, it is not dumb work regardless of file format. High-stakes or irreversible errors automatically escalate.
 
 The cost of inadequate intelligence is not measured in tokens alone. It is the likelihood of introducing a seductive but false causal linkage into the only project that claims empirically defensible person-formation. Rework of a mistaken ontology is more expensive than correctly allocating high intelligence once.
 
-### Preliminary adjudication — explicitly provisional, binding until Astra performs its own task-specific review
+### Historical examples of work-risk allocation — nonbinding, not a research roadmap
 
 | Work | Reasoning need and default owner | Commission rule |
 |---|---|---|
