@@ -1,0 +1,46 @@
+{
+  "build_estimate": {
+    "build_cap_seconds": 600,
+    "estimated_build_wall_seconds": "250-350 (extrapolated from 100k witness/128R estate; not measured)",
+    "estimated_retained_bytes": 164000000,
+    "expected_events": 32448,
+    "expected_routing": 50000,
+    "expected_weights": 10000,
+    "questions": 5,
+    "respondents": 10000,
+    "rss_cap_bytes": 6442450944,
+    "scratch_cap_bytes": 4294967296
+  },
+  "execution_started": false,
+  "free_space_now_bytes": 52923187200,
+  "free_space_required_before_start_bytes": 8589934592,
+  "input_gate": "FAIL_NO_EXISTING_10K_OR_100K",
+  "negative_contract": "Accepted G5 negative/revocation suite preserved; scale qualification is positive five-op only and does not rerun hostile court.",
+  "no_execution_statement": "No heavy/native/estate construction or f4 probe was executed in this prep. Input gate is banked for HQ.",
+  "query_qualification": {
+    "abort": "external process-group SIGTERM/SIGKILL",
+    "matrix": false,
+    "native_child_cap_seconds": 600,
+    "one_fresh_process": true,
+    "operations": [
+      "selected_weighted",
+      "f2_forward_raw",
+      "f2_reverse_raw",
+      "f4_three_raw",
+      "repeated_mr_raw"
+    ],
+    "prepared_session": true,
+    "process_tree_rss_cap_bytes": 6442450944,
+    "repetitions": 0,
+    "sampling_seconds": 0.25,
+    "scratch_cap_bytes": 4294967296,
+    "total_cap_seconds": 900
+  },
+  "required_next_commands": [
+    "SNAP=/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil-scale-68aa7",
+    "git -C /Users/matthewsmith/s2b-work/rawlsing archive 68aa7cac7cce7057fefd458ef4a06bec2dede1b2 rawlsing_next | tar -x -C \"$SNAP\"",
+    "python3 WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/PREP/build_10k_estate.py --snapshot \"$SNAP\" --out WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/PREP/.local-data-10k --respondents 10000 --chunk-rows 512",
+    "python3 WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/PREP/run_scale.py --snapshot \"$SNAP\" --contract WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/PREP/fixture_contract_10k.json --out WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/PREP/EXECUTION/scale_result.json"
+  ],
+  "schema": "ANVIL_SCALE_QUALIFICATION_RESOURCE_GATE@1"
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "ANVIL_SCALE_QUALIFICATION_INPUT_MANIFEST@1",
+  "input_gate": "FAIL_NO_100K_OR_10K_ESTATE_PHYSICALLY_AVAILABLE",
+  "integrated_executable": "68aa7cac7cce7057fefd458ef4a06bec2dede1b2",
+  "required_artifact": {
+    "contract": "PREP/fixture_contract_10k.json",
+    "estate_root": "PREP/.local-data-10k",
+    "status": "MISSING_NOT_BUILT",
+    "required_counts": {
+      "respondents": 10000,
+      "questions": 5,
+      "events_expected": 32448,
+      "routing_expected": 50000,
+      "weights_expected": 10000
+    },
+    "required_width_note": "10k respondents x 5 native questions; respondent-scale only, not 600-column width"
+  },
+  "existing_candidates": [
+    {
+      "path": "WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-pilot/estate/releases/396bada8...",
+      "manifest_sha256": "c209d3a198b25e5392dd422878fcc9111ada5c72aeb146d5d2a07388586bbc8b",
+      "respondents": 16,
+      "questions": 600,
+      "events": 8622,
+      "routing": 9600,
+      "retained_bytes": 7099520,
+      "eligible": false,
+      "reason": "16 respondents; not 10k/100k survey-scale"
+    },
+    {
+      "path": "WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/.local-data-600/estate",
+      "respondents": 8,
+      "questions": 600,
+      "events": 27,
+      "routing": 4800,
+      "retained_bytes": 7522473,
+      "eligible": false,
+      "reason": "8 respondents and sparse response geometry"
+    },
+    {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing_CLEANUP_SALVAGE_20261116/dirty/Desktop__Rawlsing_Worktrees__pyat-country-reuse-g5-20261115_ignored/WORKER_REVIEWS/PYAT_COUNTRY_REUSE_G5_20261115/.local-data/estate-128/releases/e9eb4a7b...",
+      "manifest_sha256": "e9eb4a7bba2e6674a03cffaebb5c3063e33eb89fde34c0f435a2530304afe54f",
+      "respondents": 128,
+      "questions": 5,
+      "events": 416,
+      "routing": 640,
+      "retained_bytes": 2110000,
+      "eligible": false,
+      "reason": "largest physically found estate, but only 128 respondents; not 10k/100k"
+    }
+  ],
+  "search_scope": [
+    "MEASUREMENT_PREP/WORKER_RETURNS",
+    "ANVIL_RABOCHII_EXECUTION_20261117/evidence known runpaths",
+    "Rawlsing_CLEANUP_SALVAGE_20261116 country-reuse estate",
+    "R2/R3/R4/R5 sealed pilot estates"
+  ],
+  "no_100k_estate_found": true,
+  "no_10k_estate_found": true,
+  "source_permissions": "sourcefree TEST_ONLY; no original35/raw respondent read or scientific grant",
+  "estate_rebuild_in_this_run": false,
+  "next_if_HQ_authorizes_construction": "Build exactly one 10k/5Q sourcefree #1006 fixture estate under PREP/.local-data-10k, then run the prepared five-operation qualification. Construction is not started here."
+}
