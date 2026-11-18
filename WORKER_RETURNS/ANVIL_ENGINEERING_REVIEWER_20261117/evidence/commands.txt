@@ -1,0 +1,46 @@
+ANVIL CUT1 independent G5 — actual commands (exit 0 unless noted)
+
+1) New focused 5:
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py
+=> 5 passed in 5.56s
+
+2) Author 70-node scoped boundary:
+PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider \
+ rawlsing_next/tests/test_pre553_prepared_saved_i03.py \
+ rawlsing_next/tests/test_pre553_direct_estate_i03.py \
+ rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py \
+ rawlsing_next/tests/test_pyat991_s2d_saved_admission.py \
+ rawlsing_next/tests/test_pyat991_s2d_five_readers.py \
+ rawlsing_next/tests/test_pre553_batch_runner.py \
+ rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py
+=> 70 passed in 31.34s
+
+3) Prepared Batch I05 (new independent):
+python3 -B WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/prepared_i05_witness.py <proofroot>
+=> 1 discovery unit, 1 receipt COMPLETED, prepared_builds=1, refs equal one-shot
+
+4) Full receipt/summary parity prepared vs plain:
+python3 -B .../prepared_batch_receipt_parity.py <proofroot>
+=> receipts_equal=true; result_refs_equal=true; both summaries COMPLETED/FULL
+
+5) Actual receipt-boundary revocation:
+python3 -B .../receipt_boundary_witness.py <proofroot>
+=> actual states COMPLETED,FAILED,FAILED,FAILED; execute_saved_batch error
+   DirectEstateError: current source/operation authority refused; subclass refused
+
+6) Actual constructor counters:
+python3 -B .../counter_witness.py <proofroot>
+=> c11_init_calls=0, source_builder_calls=0, 4 COMPLETED
+
+7) Resource probe rerun:
+python3 -B WORKER_RETURNS/ANVIL_ENGINEERING_CUT1_IMPLEMENTER_20261117/evidence/resource_probe.py
+=> wall 0.164410677s, parent RSS 110874624 B, estate 783936 B,
+   4 receipts COMPLETED, 1 prepared index build; single process.
+
+8) S2-A/C semantic selector/reader preservation:
+pytest test_pre553_verified_semantic_range.py test_pre553_source_direct_parquet_estate.py test_pre553_direct_estate_i03.py
+=> 57 passed in 5.90s
+
+9) S2-D saved-reader preservation:
+pytest test_pyat991_s2d_saved_admission.py test_pyat991_s2d_b_adversarial.py test_pyat991_s2d_a_counter.py test_pyat991_s2d_g5_source_scope.py test_pyat991_s2d_five_readers.py test_pyat991_s2d_partial_binding_order.py
+=> 31 passed in 13.79s

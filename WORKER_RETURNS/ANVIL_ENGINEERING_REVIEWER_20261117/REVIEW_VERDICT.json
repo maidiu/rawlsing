@@ -1,0 +1,188 @@
+{
+  "packet_id": "ANVIL-CUT1-PREPARED-SAVED-BATCH",
+  "old_obligations": [
+    "P2-05",
+    "ANVIL-ENGINEERING-CUT1"
+  ],
+  "contract_id": "ANVIL-ENGINEERING-CUT1-20261117",
+  "contract_source_cut": "CUT1_EXECUTION_CONTRACT.md (2026-11-17 local contract)",
+  "owner_ack": "a744a5a4e4bb31ba9e93a650c7200c064d4d2e11:WORKER_RETURNS/ANVIL_ENGINEERING_CUT1_OWNER_20261117/owner_ack.json",
+  "baseline_sha": "cea2d4d3009e9087d2267e9d1f53bec28b730dc7",
+  "code_test_sha": "a13d69cf5636de5541660cd60115f8b61d66261b",
+  "candidate_sha": "347baec696c8b395d750ac3b9e74417a6490c223",
+  "review_branch": "agent/anvil-engineering-cut1-g5-20261117-r1",
+  "review_worktree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REVIEWER",
+  "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "reviewer_independence": "same distinct nonauthor G5; not author, ACK issuer or implementer",
+  "actual_first_consumer": "BatchExecutionRunner.run -> execute_saved_batch prepared target -> PreparedI03Session.execute_i03/execute_i05 -> existing DirectEstateI03Session/native evaluators",
+  "scope": "sourcefree TEST_ONLY prepared saved Batch cut1",
+  "source_blob_pins": {
+    "rawlsing_next/pre553_saved_workload_integration.py": "c568836b7ab1ce88224d4bc5c9de6dca8476a5db",
+    "rawlsing_next/pre553_batch_runner.py": "8320f28458fb85aec655d154a2527a161282f56b",
+    "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py": "bf00eb591bdee1087e9a10085d808c1ed2aadf88",
+    "rawlsing_next/pre553_prepared_saved_i03.py": "bcb146edae680028e027e47cae45891693f63526",
+    "rawlsing_next/pre553_saved_c11_admission.py": "22749addc1fca5f0b90e12728847c390aafa7a84",
+    "rawlsing_next/pre553_direct_estate_i03.py": "8825832f8067c7fce7a99a94505743cbb4eada06"
+  },
+  "changed_paths": [
+    "rawlsing_next/pre553_saved_workload_integration.py",
+    "rawlsing_next/pre553_batch_runner.py",
+    "rawlsing_next/tests/test_anvil_prepared_saved_batch_cut1.py",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_CUT1_IMPLEMENTER_20261117/"
+  ],
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "receipt": "Owner ACK and exact two-file scope verified; exact baseline cea2, code/test a13, candidate 347, source/test blobs and frozen prepared/base/direct reader pins match. No public, prepared, writer, schema, evaluator, issuer or normal/resume edit."
+    },
+    "G2": {
+      "state": "PASS",
+      "receipt": "New five tests: 5 passed; author 70-node boundary: 70 passed. Prepared Batch executes four distinct operations through one prepared context with one DirectEstateI03Session._build, full fact/receipt/denominator/cell/release parity and actual prepared I05 discovery Batch; prepared vs plain full receipt material and summary parity equal."
+    },
+    "G3": {
+      "state": "PASS",
+      "receipt": "Foreign object and prepared subclass refused, wrong release and changed manifest refused, revoked CURRENT before/mid-Batch refused; actual receipt-boundary revocation produced COMPLETED then FAILED receipts and execute_saved_batch raised; context closed; plain SavedC11Admission legacy path green. No source/full C11 construction by new Batch (actual counter 0/0)."
+    },
+    "G4": {
+      "state": "PASS_SCOPED_SMALL",
+      "receipt": "Independent prepared probe rerun: 4 COMPLETED receipts, one index build, wall 0.164410677 s, parent RSS 110874624 B, estate 783936 B; single process, no subprocess/process-tree increment measured; no CPU or peak-staging measurement; full 100k/6 GiB NOT_RUN."
+    },
+    "G5": {
+      "state": "PASS",
+      "reviewer": "ses_e30c25800ffeT8XbyTuHekRCme; distinct nonauthor",
+      "receipt": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1 at sourcefree TEST_ONLY grade; no self-acceptance, protected merge, source/science/current/issuer/100k claim."
+    }
+  },
+  "mandatory_cases": [
+    {
+      "id": "NEW5",
+      "result": "PASS",
+      "command": "pytest test_anvil_prepared_saved_batch_cut1.py",
+      "actual": "5 passed in 5.56s"
+    },
+    {
+      "id": "AUTHOR70",
+      "result": "PASS",
+      "command": "author 7-file boundary command from implementation_receipt",
+      "actual": "70 passed in 31.34s"
+    },
+    {
+      "id": "ONE_PREPARED_CONTEXT_FOUR_OPS",
+      "result": "PASS",
+      "actual": "4 distinct queries, 4 COMPLETED receipts, 1 DirectEstateI03Session._build, full result/receipt parity with plain saved one-shot"
+    },
+    {
+      "id": "PREPARED_BATCH_I05",
+      "result": "PASS",
+      "actual": "1 discovery unit, 1 COMPLETED receipt, 1 build, result refs equal one-shot prepared I05"
+    },
+    {
+      "id": "FULL_RECEIPT_PARITY",
+      "result": "PASS",
+      "actual": "prepared and plain receipt material and summary equal; result refs equal"
+    },
+    {
+      "id": "MID_BATCH_RECEIPT_BOUNDARY",
+      "result": "PASS",
+      "actual": "revoked after actual first completed receipt; observed COMPLETED/FAILED/FAILED/FAILED; execute_saved_batch raised CURRENT refusal; no positive return"
+    },
+    {
+      "id": "CLASS_RELEASE_MANIFEST_NEGATIVES",
+      "result": "PASS",
+      "actual": "object, EvilPrepared subclass, wrong release and changed manifest refused before positive receipt"
+    },
+    {
+      "id": "PLAIN_LEGACY_PATH",
+      "result": "PASS",
+      "actual": "plain SavedC11Admission four-op Batch equivalent and green"
+    },
+    {
+      "id": "SOURCE_C11_COUNTER",
+      "result": "PASS",
+      "actual": "actual source builder 0, C11Repository.__init__ 0 across prepared four-op Batch"
+    },
+    {
+      "id": "S2A_SELECTOR_PRESERVATION_57",
+      "result": "PASS",
+      "command": "pytest test_pre553_verified_semantic_range.py test_pre553_source_direct_parquet_estate.py test_pre553_direct_estate_i03.py",
+      "actual": "57 passed in 5.90s; repeats/ranks/UNKNOWN/zero/None/empty, changed/restore and direct reader negatives included"
+    },
+    {
+      "id": "S2D_SAVED_READER_PRESERVATION_31",
+      "result": "PASS",
+      "command": "pytest six S2-D focused files",
+      "actual": "31 passed in 13.79s"
+    }
+  ],
+  "resource_evidence": {
+    "fixture": "8 respondents / 3 questions / 4 operations; sourcefree TEST_ONLY",
+    "wall_seconds": 0.1644106770399958,
+    "parent_maxrss_bytes": 110874624,
+    "estate_bytes": 783936,
+    "fixture_root_bytes": 783936,
+    "prepared_index_builds": 1,
+    "batch_receipts": 4,
+    "batch_states": [
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "output_refs": 4,
+    "process_tree": "single process; no subprocess launched",
+    "source_reads_by_new_batch_actual": 0,
+    "full_c11_builds_by_new_batch_actual": 0,
+    "cpu_measured": false,
+    "peak_staging_measured": false,
+    "100k_6GiB": "NOT_RUN",
+    "limits": "Small synthetic fixture only; parent RSS includes fixture construction; no 100k/real-width/economic claim."
+  },
+  "author_accuracy_gaps": [
+    "The author resource probe hardcodes source_reads_by_new_batch=0 and full_c11_builds_by_new_batch=0; our independent monkeypatch counter confirms actual 0/0, but the author's printed zeros are not themselves measurement.",
+    "Our resource rerun parent RSS is 110874624 B vs author 104222720 B; run-to-run/fixture-parent variation, not a code result.",
+    "No CPU or peak staging was measured; no process-tree child exists; do not promote the small probe to 100k/real-width economics.",
+    "The implementer return contains a historical 'stops before implementation' section followed by the appended implementation; it is documentation-phase residue, not a product control. Receipt/ACK/code/test/candidate pins control."
+  ],
+  "external_holds": [
+    {
+      "owner": "protected PRE-MAIN / rev11",
+      "minimal_missing_witness": "protected receiving and merge authority; NONE granted"
+    },
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing_witness": "permitted original source/respondent/rights and scientific issuer; no source bytes used"
+    },
+    {
+      "owner": "production CURRENT/host/actor issuer",
+      "minimal_missing_witness": "independent production current/rights; TEST_ONLY local fixture only"
+    },
+    {
+      "owner": "100k/6 GiB integrated economics",
+      "minimal_missing_witness": "full integrated resource gate; NOT_RUN"
+    },
+    {
+      "owner": "#998/#1009 integration",
+      "minimal_missing_witness": "not claimed; this is cut1 sourcefree code acceptance only"
+    }
+  ],
+  "k3_preservation": "Relevant accepted S2-C/D direct, saved-I03, saved-Batch and prepared tests are in the 70-node boundary; 29K3/26NOT_ADOPTED/14HELD/F26 exact-callers are not re-adjudicated or changed by this cut. No full 202 matrix claim.",
+  "disposition": "ACCEPT_SCOPED_PREPARED_SAVED_BATCH_CUT1",
+  "integration": "UNMERGED",
+  "scientific_grade": "NO_ORIGINAL35_SCIENTIFIC_ACCEPTANCE",
+  "authority_grade": "NO_NEW_SOURCE_CURRENT_ISSUER_HOST_OR_MERGE_GRANT",
+  "engineering_grade": "SOURCEFREE_TEST_ONLY_PREPARED_SAVED_BATCH_CUT1_ACCEPTED",
+  "stop_state": "TERMINAL_CLOSED_CUT1_SOURCEFREE",
+  "known_session_cost": "UNKNOWN",
+  "evidence_files": [
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/anvil_new_5.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/anvil_70.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/prepared_i05_witness.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/prepared_batch_receipt_parity.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/receipt_boundary_witness.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/counter_witness.json",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/anvil_resource_probe_recheck.out",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/SOURCE_CHECKS.tsv",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/anvil_s2a_preserve_57.txt",
+    "WORKER_RETURNS/ANVIL_ENGINEERING_REVIEWER_20261117/evidence/anvil_s2d_preserve_31.txt"
+  ]
+}
