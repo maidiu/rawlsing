@@ -1,0 +1,45 @@
+{
+  "exact_blocker": "No retained exact ba886d runtime-config bytes found in known historical runtime/evidence; base config would stop at slot 176 q716withoutmorocco. Reconstruction from source is forbidden in this repair and guessing numeric domains is prohibited.",
+  "schema": "ANVIL_SRC04_OVERLAY_RECONCILIATION@1",
+  "source_io": false,
+  "stages": [
+    {
+      "canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+      "counts": {
+        "q715incomedeciles": 11,
+        "q715withoutmorocco": 6,
+        "q716incomedeciles": 11,
+        "q716withoutmorocco": 6
+      },
+      "file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+      "stage": "BASE_REPAIRED_CONFIG"
+    },
+    {
+      "added_rule_counts": {
+        "q715incomedeciles": 4,
+        "q715withoutmorocco": 303,
+        "q716incomedeciles": 2,
+        "q716withoutmorocco": 327
+      },
+      "bytes_available": false,
+      "canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
+      "stage": "INTERMEDIATE_NUMERIC_OVERLAY"
+    },
+    {
+      "accepted_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+      "bytes_available": false,
+      "q217_held": {
+        "ordinal": 27,
+        "release_events": 0,
+        "unbound_cells": 38
+      },
+      "selected_coordinate_slots": [
+        1,
+        2,
+        158
+      ],
+      "selected_response_slots": 177,
+      "stage": "FINAL_PHYSICAL_STATE_ALIGNMENT_AND_SELECTION"
+    }
+  ]
+}

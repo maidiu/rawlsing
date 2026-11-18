@@ -11,6 +11,12 @@
   },
   "accepted_src04_reference": "ba41253681212be14a0cde009afb99d77e14935e",
   "actual_caller": "witness_caller.py",
+  "actual_runner_inputs": {
+    "base_config": "WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/inputs/SRC04/source.config.repaired.v2.json",
+    "base_config_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "corrected_call_requires": "--runtime-config exact ba886d bytes",
+    "required_runtime_config": null
+  },
   "caller_scope": "SRC04 witness-specific; producer/supervisor/fresh-reader machinery is reusable, but the q217 hold, 177/3 projection and accepted accounting are not generic acceptance",
   "candidate_commit": "3aecb818d8f65d63da809c365f05f3320434f1c4",
   "candidate_patch": "2b139250eae19a04ce2778f7db9f2d2b025071a8",
@@ -19,19 +25,69 @@
   "candidate_tree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/anvil-src04-candidate-31rqm9z_/candidate",
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+  "coverage": {
+    "all_selected_coordinates_present": true,
+    "all_selected_fields_present": true,
+    "base_config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "base_config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "physical_slots": 181,
+    "q217": {
+      "held_unbound": 38,
+      "ordinal": 27,
+      "release_events": 0,
+      "selected": false
+    },
+    "q2_census_or_eligibility_claimed": false,
+    "schema": "ANVIL_SRC04_OVERLAY_COVERAGE@1",
+    "selected_coordinate_slots": 3,
+    "selected_response_slots": 177,
+    "source_id": "SRC04",
+    "source_native_only_slice": true,
+    "status": "BASE_SELECTED_FIELDS_COMPLETE__RUNTIME_OVERLAY_BYTES_MISSING",
+    "target_fields": {
+      "q715incomedeciles": {
+        "base_rule_count": 11,
+        "expected_added_rule_count": 4,
+        "selected": true
+      },
+      "q715withoutmorocco": {
+        "base_rule_count": 6,
+        "expected_added_rule_count": 303,
+        "selected": true
+      },
+      "q716incomedeciles": {
+        "base_rule_count": 11,
+        "expected_added_rule_count": 2,
+        "selected": true
+      },
+      "q716withoutmorocco": {
+        "base_rule_count": 6,
+        "expected_added_rule_count": 327,
+        "selected": true
+      }
+    }
+  },
   "defect_repaired": "REMOVED_BODY_SINK_ADAPTER__NATIVE_SOURCESAVEDBODYSINK_DIRECT__TEE_SUPPLIES_TRANSPORT",
   "gate": "Q217_FULL_CONFIG_WOULD_BE_INCLUDED__SCOPED_177_RESPONSE_3_COORDINATE_INPUT_USED",
   "grant_binding": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
   "grant_binding_sha256": "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0",
   "limits": [
     "No original source open/stat/hash/decode",
-    "No original launch",
-    "No new grant/science/product edit",
-    "No I03/I05 expansion",
-    "Historical release ref compared, not assumed"
+    "No writer build",
+    "No numeric-domain guess",
+    "q217 held, not altered",
+    "No new grant/science/product edit"
   ],
   "no_launch_on_raw": true,
   "original_source_path_from_grant": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav",
+  "overlay_bytes_available": false,
+  "overlay_rule_counts": {
+    "q715incomedeciles": 4,
+    "q715withoutmorocco": 303,
+    "q716incomedeciles": 2,
+    "q716withoutmorocco": 327
+  },
+  "overlay_source": "HASH_AND_COUNTS_IN_303A_RELEASE_RECEIPT__EXACT_BYTES_NOT_RETAINED_LOCALLY",
   "process_isolation": {
     "producer": "separate subprocess; wait for exact nonzero exit",
     "reopen": "fresh subprocess only after producer pid reaped",
@@ -47,6 +103,7 @@
     "status": "HELD_EXACT_BY_SCOPED_CONFIG",
     "unbound_cells": 38
   },
+  "real_construction_preimage": "BASE_CONFIG_STOPS_AT_Q716WITHOUTMOROCCO_SLOT_176",
   "refusal": {
     "code": "EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED",
     "detail": "",
@@ -105,6 +162,7 @@
     "response_slots": 177,
     "status": "REQUEST_MATCH"
   },
+  "required_overlay_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
   "resources": {
     "available_bytes": 45980397568,
     "completed_512x600_bytes": 3307124817,
@@ -113,6 +171,11 @@
     "ram_cap_bytes": 6442450944,
     "staging_budget_bytes": 4380866641,
     "wall_cutoff": null
+  },
+  "runner_refusal": {
+    "code": "RUNTIME_OVERLAY_REQUIRED_FOR_RUN",
+    "detail": "",
+    "status": "REFUSED"
   },
   "runner_scope": "SRC04-specific witness checks; reusable producer/supervisor/fresh-reader machinery only",
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_RETURN@1",
@@ -124,7 +187,8 @@
   "source_launch": "REFUSED_WITHOUT_EXACT_AUTHORIZATION",
   "source_path_opened_stat_hashed_or_decoded": false,
   "source_read_performed": false,
-  "status": "EXECUTABLE_CALLER_READY__RED_GREEN_VERIFIED__SOURCE_LAUNCH_REFUSED_UNTIL_AUTHORIZATION",
+  "status": "RUNTIME_OVERLAY_BYTES_MISSING__EXACT_INPUT_BLOCKER",
+  "supervisor_root_absolute": true,
   "tests": {
     "failed": 0,
     "passed": 3

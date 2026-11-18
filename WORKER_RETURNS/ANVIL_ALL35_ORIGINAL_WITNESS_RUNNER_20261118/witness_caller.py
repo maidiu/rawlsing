@@ -28,6 +28,13 @@ COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
 Q2_SPOOL_RESERVE = 1024**3                       # routing/current-Q2 spool
 STAGING_BUDGET = COMPLETED_512K_BYTES + Q2_SPOOL_RESERVE
 FREE_FLOOR = STAGING_BUDGET + 8 * 1024**3        # retain 8 GiB uncommitted
+OVERLAY_CANONICAL = "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0"
+OVERLAY_RULE_COUNTS = {
+    "q715withoutmorocco": 303,
+    "q716withoutmorocco": 327,
+    "q715incomedeciles": 4,
+    "q716incomedeciles": 2,
+}
 ACCEPTED = {
     "release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
     "public_objects": 2619317,
@@ -94,6 +101,72 @@ def _scoped(binding_dir: Path = BINDING_DIR):
     return wr, pin
 
 
+def preflight(args) -> int:
+    """Metadata-only overlay/request/coverage check; never opens source."""
+    verify_candidate(args.candidate_tree, args.candidate_patch)
+    sys.path.insert(0, str(args.candidate_tree))
+    from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, canonical_config_hash, source_read_request_from_config
+    wr, pin = _scoped()
+    base_doc = json.loads(args.config.read_text())
+    if wr.sha_bytes(args.config) != pin["config_index_row"]["source_config"]["file_sha256"]:
+        raise CallerRefusal("BASE_CONFIG_HASH_MISMATCH")
+    base_cfg = SourceConfig(base_doc)
+    scoped_doc = wr._strip_scope(base_doc, pin)
+    if any(x["slot"]["name"] == "q217" for x in scoped_doc["response_slots"]):
+        raise CallerRefusal("Q217_NOT_EXCLUDED")
+    result = {
+        "schema": "ANVIL_SRC04_OVERLAY_PREFLIGHT@1",
+        "base_config_file_sha256": wr.sha_bytes(args.config),
+        "base_config_canonical_sha256": canonical_config_hash(base_cfg),
+        "expected_overlay_canonical_sha256": OVERLAY_CANONICAL,
+        "expected_rule_counts": OVERLAY_RULE_COUNTS,
+        "q217": wr._q217_guard(base_doc, pin),
+        "scoped_counts": {"response_slots": len(scoped_doc["response_slots"]),
+                          "coordinate_slots": len(scoped_doc["coordinate_slots"]),
+                          "physical_slots": len(scoped_doc["physical_slots"])},
+        "source_path_opened_stat_hashed_decoded": False,
+    }
+    if args.runtime_config is None:
+        result.update({"status": "RUNTIME_OVERLAY_BYTES_MISSING",
+                       "reason": "Exact accepted ba886d intermediate runtime overlay not supplied; base v2 would stop at UNBOUND_RESPONSE_CELL q716withoutmorocco slot 176.",
+                       "first_failure_if_base_used": {"slot": 176, "name": "q716withoutmorocco", "error": "UNBOUND_RESPONSE_CELL"},
+                       "source_path_from_grant": _grant_source_path(args.binding_dir)})
+        (Path(args.outdir).mkdir(parents=True, exist_ok=True) if args.outdir else (HERE / "OVERLAY_PREFLIGHT.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n"))
+        if args.outdir:
+            (Path(args.outdir) / "OVERLAY_PREFLIGHT.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+        print(json.dumps(result))
+        return 2
+    overlay_doc = json.loads(args.runtime_config.read_text())
+    overlay_cfg = SourceConfig(overlay_doc)
+    actual_canonical = canonical_config_hash(overlay_cfg)
+    if actual_canonical != OVERLAY_CANONICAL:
+        raise CallerRefusal("RUNTIME_OVERLAY_CANONICAL_MISMATCH", actual_canonical)
+    # Count the exact accepted target rules in the supplied overlay.
+    counts = {}
+    for slot in overlay_doc.get("response_slots", []):
+        name = slot.get("slot", {}).get("name")
+        if name in OVERLAY_RULE_COUNTS:
+            counts[name] = len(slot.get("values", []))
+    if counts != OVERLAY_RULE_COUNTS:
+        raise CallerRefusal("RUNTIME_OVERLAY_RULE_COUNT_MISMATCH", json.dumps(counts, sort_keys=True))
+    request = source_read_request_from_config(
+        overlay_cfg, host="USER_LOCAL_MAC", purpose="FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+        consumer_use="EXISTING_PRE553_SOURCE_BACKED_C11",
+        semantic_use_scope=("SOURCE_NATIVE_RESPONSE_INCIDENCE", "NO_SEMANTIC_ADOPTION", "SRC04", "FULL_SRC04_C11_CONSTRUCTION"))
+    result.update({"status": "RUNTIME_OVERLAY_QUALIFIED", "runtime_config_file_sha256": wr.sha_bytes(args.runtime_config),
+                   "runtime_config_canonical_sha256": actual_canonical, "rule_counts": counts,
+                   "request_equal_to_approved": request == _grant()[1].request,
+                   "request": {"source_id": request.source_id, "source_sha256": request.source_sha256,
+                               "locator": request.custody_locator_binding, "host": request.host,
+                               "purpose": request.purpose, "consumer": request.consumer_use,
+                               "semantic_use_scope": list(request.semantic_use_scope)}})
+    out = Path(args.outdir) if args.outdir else HERE
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "OVERLAY_PREFLIGHT.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+    print(json.dumps(result))
+    return 0
+
+
 def producer(args) -> int:
     verify_candidate(args.candidate_tree, args.candidate_patch)
     sys.path.insert(0, str(args.candidate_tree))
@@ -101,9 +174,14 @@ def producer(args) -> int:
     from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, source_read_request_from_config
     from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
     wr, pin = _scoped()
-    cfg_doc = json.loads(args.config.read_text())
+    if args.runtime_config is None:
+        raise CallerRefusal("RUNTIME_OVERLAY_REQUIRED_FOR_PRODUCER")
+    cfg_doc = json.loads(args.runtime_config.read_text())
+    canonical_config_hash = __import__("rawlsing_next.pre553_r157_projection_adapter", fromlist=["canonical_config_hash"]).canonical_config_hash
+    if canonical_config_hash(SourceConfig(cfg_doc)) != OVERLAY_CANONICAL:
+        raise CallerRefusal("RUNTIME_OVERLAY_CANONICAL_MISMATCH")
     if wr.sha_bytes(args.config) != pin["config_index_row"]["source_config"]["file_sha256"]:
-        raise CallerRefusal("CONFIG_FILE_HASH_MISMATCH")
+        raise CallerRefusal("BASE_CONFIG_HASH_MISMATCH")
     q217 = wr._q217_guard(cfg_doc, pin)
     scoped_doc = wr._strip_scope(cfg_doc, pin)
     if any(x["slot"]["name"] == "q217" for x in scoped_doc["response_slots"]):
@@ -275,9 +353,11 @@ def supervisor(args) -> int:
     verify_candidate(args.candidate_tree, args.candidate_patch)
     if not args.authorized_source_launch:
         raise CallerRefusal("EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED")
+    if args.runtime_config is None:
+        raise CallerRefusal("RUNTIME_OVERLAY_REQUIRED_FOR_RUN")
     work = Path(args.work_root).absolute()
     work.mkdir(mode=0o700, parents=True, exist_ok=True)
-    root = Path(tempfile_name(work, args.candidate_tree))
+    root = (work / tempfile_name(work, args.candidate_tree)).absolute()
     root.mkdir(mode=0o700)
     if shutil.disk_usage(root).free < FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_RUN")
@@ -286,6 +366,7 @@ def supervisor(args) -> int:
     common = ["--candidate-tree", str(args.candidate_tree),
               "--candidate-patch", str(args.candidate_patch),
               "--config", str(args.config),
+              "--runtime-config", str(args.runtime_config),
               "--binding-dir", str(args.binding_dir), "--root", str(root),
               "--source-path", source_path]
     samples: list[dict[str, Any]] = []
@@ -353,10 +434,12 @@ def tempfile_name(work: Path, candidate: Path) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=("run", "producer", "reader"), required=True)
+    ap.add_argument("--mode", choices=("preflight", "run", "producer", "reader"), required=True)
     ap.add_argument("--candidate-tree", type=Path, required=True)
     ap.add_argument("--candidate-patch", type=Path, required=True)
     ap.add_argument("--config", type=Path, required=True)
+    ap.add_argument("--runtime-config", type=Path)
+    ap.add_argument("--outdir", type=Path)
     ap.add_argument("--binding-dir", type=Path, default=BINDING_DIR)
     ap.add_argument("--root", type=Path)
     ap.add_argument("--work-root", type=Path, default=HERE / "RUNS")
@@ -364,6 +447,8 @@ def main() -> int:
     ap.add_argument("--authorized-source-launch", action="store_true")
     args = ap.parse_args()
     try:
+        if args.mode == "preflight":
+            return preflight(args)
         if args.mode == "producer":
             if not args.root or not args.source_path:
                 raise CallerRefusal("PRODUCER_ROOT_AND_GRANT_SOURCE_REQUIRED")
