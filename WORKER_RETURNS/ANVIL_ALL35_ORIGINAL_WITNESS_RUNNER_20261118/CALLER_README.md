@@ -25,7 +25,7 @@ The candidate tree must hash as `pre553_source_i02_handoff.py = 6ab7cb50…` and
 
 1. Supervisor verifies candidate/patch hashes and opens a unique private root.
 2. Producer verifies exact grant/request, q217 hold and 177/3 scoped config before source decode.
-3. Producer uses the candidate construction-only entry with `SourceSavedBodySink` (compatibility adapter supplies its required transport census) and exits.
+3. Producer uses the candidate construction-only entry with the native `SourceSavedBodySink` directly; the existing `SourceI02BodyTee` supplies its transport census. No adapter.
 4. Supervisor reaps producer, checks 6 GiB process-tree RSS and live free-space floor, then starts a fresh reader.
 5. Reader checks producer is gone, opens exact held roots/manifest with a real grant-scope callback (not allow-all), records family counts, identity/routing digests, release-ref comparison and precise differences from the accepted historical receipt.
 6. No wall clock cutoff; abort only on RSS/free-space caps or failure.

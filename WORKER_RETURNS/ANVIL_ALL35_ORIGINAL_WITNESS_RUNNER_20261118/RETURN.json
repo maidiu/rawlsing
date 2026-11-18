@@ -16,17 +16,19 @@
   "candidate_patch": "2b139250eae19a04ce2778f7db9f2d2b025071a8",
   "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
   "candidate_source_sha256": "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f",
+  "candidate_tree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/anvil-src04-candidate-31rqm9z_/candidate",
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
+  "defect_repaired": "REMOVED_BODY_SINK_ADAPTER__NATIVE_SOURCESAVEDBODYSINK_DIRECT__TEE_SUPPLIES_TRANSPORT",
   "gate": "Q217_FULL_CONFIG_WOULD_BE_INCLUDED__SCOPED_177_RESPONSE_3_COORDINATE_INPUT_USED",
   "grant_binding": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
   "grant_binding_sha256": "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0",
   "limits": [
     "No original source open/stat/hash/decode",
-    "No source launch",
+    "No original launch",
     "No new grant/science/product edit",
     "No I03/I05 expansion",
-    "Accepted historical release ref is compared, not assumed identical"
+    "Historical release ref compared, not assumed"
   ],
   "no_launch_on_raw": true,
   "original_source_path_from_grant": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav",
@@ -50,6 +52,59 @@
     "detail": "",
     "status": "REFUSED"
   },
+  "rehearsal": {
+    "green_producer": {
+      "family_counts": {
+        "AuthoritySnapshot": 7,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 5,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 1,
+        "RespondentEvent": 5,
+        "RespondentIdentity": 5,
+        "RoutingEligibilityFact": 5,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 0
+      },
+      "producer_pid": 21496,
+      "status": "GREEN_PRODUCER"
+    },
+    "green_reader": {
+      "family_counts": {
+        "AuthoritySnapshot": 7,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 5,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 1,
+        "RespondentEvent": 5,
+        "RespondentIdentity": 5,
+        "RoutingEligibilityFact": 5,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 0
+      },
+      "producer_exited_before_reader": true,
+      "status": "GREEN_READER"
+    },
+    "red": {
+      "error": "LegacyAdapter.finish() got an unexpected keyword argument 'transport'",
+      "error_type": "TypeError",
+      "status": "RED"
+    }
+  },
+  "request_check": {
+    "coordinate_slots": 3,
+    "physical_slots": 181,
+    "q217_slot_present": false,
+    "request_equal": true,
+    "response_slots": 177,
+    "status": "REQUEST_MATCH"
+  },
   "resources": {
     "available_bytes": 45980397568,
     "completed_512x600_bytes": 3307124817,
@@ -69,7 +124,7 @@
   "source_launch": "REFUSED_WITHOUT_EXACT_AUTHORIZATION",
   "source_path_opened_stat_hashed_or_decoded": false,
   "source_read_performed": false,
-  "status": "EXECUTABLE_CALLER_READY__SOURCE_LAUNCH_REFUSED_UNTIL_AUTHORIZATION",
+  "status": "EXECUTABLE_CALLER_READY__RED_GREEN_VERIFIED__SOURCE_LAUNCH_REFUSED_UNTIL_AUTHORIZATION",
   "tests": {
     "failed": 0,
     "passed": 3

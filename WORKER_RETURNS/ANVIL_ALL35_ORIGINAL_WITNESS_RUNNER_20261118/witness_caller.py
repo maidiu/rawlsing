@@ -87,46 +87,6 @@ def _grant(binding_dir: Path = BINDING_DIR):
     return gb, bound, resolver, source_path, trust
 
 
-class BodySinkAdapter:
-    """Compatibility adapter for the exact SourceSavedBodySink.
-
-    The frozen construction entry calls the three-field sink protocol; the
-    existing native sink additionally accepts the Q2 transport census.  This
-    adapter supplies that census and returns the transport receipt, without
-    changing source semantics or the native sink.
-    """
-
-    def __init__(self, sink):
-        self.sink = sink
-        self.absences: dict[str, str] = {}
-
-    def begin(self, **kwargs):
-        return self.sink.begin(**kwargs)
-
-    def emit(self, family: str, obj) -> None:
-        return self.sink.emit(family, obj)
-
-    def absence(self, family: str, absence) -> None:
-        self.absences[family] = getattr(absence, "state", str(absence))
-        return self.sink.absence(family, absence)
-
-    def finish(self, *, roots, manifest, counts):
-        transport = {
-            "complete": True,
-            "families": dict(counts),
-            "absences": dict(self.absences),
-        }
-        self.sink.finish(roots=roots, manifest=manifest, counts=counts,
-                         transport=transport)
-        return transport
-
-    def abort(self, exc: BaseException) -> None:
-        return self.sink.abort(exc)
-
-    @property
-    def receipt(self):
-        return self.sink.receipt
-
 
 def _scoped(binding_dir: Path = BINDING_DIR):
     import witness_runner as wr
@@ -138,7 +98,7 @@ def producer(args) -> int:
     verify_candidate(args.candidate_tree, args.candidate_patch)
     sys.path.insert(0, str(args.candidate_tree))
     from rawlsing_next.pre553_source_i02_handoff import build_source_i02_construction_only
-    from rawlsing_next.pre553_r157_projection_adapter import SourceConfig
+    from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, source_read_request_from_config
     from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
     wr, pin = _scoped()
     cfg_doc = json.loads(args.config.read_text())
@@ -152,6 +112,12 @@ def producer(args) -> int:
     _gb, bound, resolver, source_path_from_grant, _trust = _grant(args.binding_dir)
     if os.path.normpath(args.source_path) != os.path.normpath(source_path_from_grant):
         raise CallerRefusal("SOURCE_PATH_DOES_NOT_MATCH_GRANT")
+    exact_request = source_read_request_from_config(
+        scoped, host=bound.request.host, purpose=bound.request.purpose,
+        consumer_use=bound.request.consumer_use,
+        semantic_use_scope=bound.request.semantic_use_scope)
+    if exact_request != bound.request:
+        raise CallerRefusal("SCOPED_REQUEST_MISMATCH")
     root = Path(args.root).absolute()
     private = root / "private"
     private.mkdir(mode=0o700, parents=False, exist_ok=True)
@@ -160,9 +126,9 @@ def producer(args) -> int:
         raise CallerRefusal("DESTINATION_ALREADY_EXISTS")
     if shutil.disk_usage(root).free < FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_PRODUCER")
-    sink = BodySinkAdapter(SourceSavedBodySink(
+    sink = SourceSavedBodySink(
         certificate_path=destination, authorized_private_root=private,
-        chunk_rows=512))
+        chunk_rows=512)
     result = build_source_i02_construction_only(
         config=scoped, source_path=args.source_path, destination=destination,
         body_sink=sink, chunk_size=512, resolver=resolver,
