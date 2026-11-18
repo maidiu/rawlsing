@@ -1,0 +1,46 @@
+{
+  "journal_bytes": 8325712,
+  "journal_hot": true,
+  "known": [
+    "writer was capped at 600 s",
+    "no publication or validation marker",
+    "five parquet files exist but none has a footer",
+    "SQLite I02 staging DB and hot journal exist",
+    "committed I02 object snapshot is 408,064",
+    "routing ingestion is partial (131,112/307,200)",
+    "header is empty",
+    "no selectors table rows"
+  ],
+  "no_recovery_checkpoint_mutation_copy": true,
+  "parquet_files_present": 5,
+  "parquet_footers_present": 0,
+  "partial_bytes": 1951192968,
+  "publication_reached": false,
+  "read_only": true,
+  "schema": "ANVIL_WIDTH512_POST_CAP_AUDIT_RETURN@1",
+  "smallest_dynamic_boundary": "writer start >= 0.12670 s from recorded stage timings; exact per-family writer timing unavailable and not indispensable",
+  "source_cap": "WALL_600S",
+  "source_construction": "9ba991847ec043ab12f00244c4d3a0301ddb0f98",
+  "source_stage": "writing",
+  "sqlite_committed_objects": 408064,
+  "sqlite_family_position": {
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 600,
+    "RespondentEvent": 275839,
+    "RespondentIdentity": 512,
+    "RoutingEligibilityFact": 131112,
+    "expected_RoutingEligibilityFact": 307200
+  },
+  "sqlite_header_rows": 0,
+  "sqlite_selectors_rows": 0,
+  "status": "READ_ONLY_METADATA_INSPECTION_COMPLETE",
+  "tap_i02_active": true,
+  "unknown": [
+    "exact rows/row-groups in footerless parquet",
+    "exact pending/uncommitted journal logical content",
+    "exact writer wall split beyond stage timestamps",
+    "whether final I02 validation would pass",
+    "exact per-family writer completion times"
+  ],
+  "validation_reached": false
+}

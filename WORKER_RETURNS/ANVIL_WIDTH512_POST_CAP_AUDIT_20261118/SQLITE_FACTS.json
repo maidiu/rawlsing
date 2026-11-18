@@ -1,0 +1,45 @@
+{
+  "access": "sqlite3 URI mode=ro&immutable=1; PRAGMA query_only=ON",
+  "caveat": "Hot rollback journal ignored under immutable access; committed DB snapshot only; no recovery/checkpoint/mutation/copy performed. Journal page contents and pending/uncommitted logical rows are UNKNOWN.",
+  "db_bytes": 1789673472,
+  "db_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/.local-data-width512/.s2c-stage-f5vlsu4x/.s2b-direct-stage-cce5x0l2.tmp",
+  "final_i02_proof_sqlite_present": false,
+  "header_rows": 0,
+  "ingest_active": true,
+  "journal_bytes": 8325712,
+  "journal_header": {
+    "checksum": 1063754401,
+    "initial_db_pages": 436604,
+    "nrec": 381,
+    "page_size": 4096,
+    "sector_size": 512
+  },
+  "journal_magic": "d9d505f920a163d7",
+  "journal_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/.local-data-width512/.s2c-stage-f5vlsu4x/.s2b-direct-stage-cce5x0l2.tmp-journal",
+  "schema": "ANVIL_WIDTH512_POST_CAP_SQLITE_FACTS@1",
+  "selectors_rows": 0,
+  "sqlite_families": {
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 600,
+    "RespondentEvent": 275839,
+    "RespondentIdentity": 512,
+    "RoutingEligibilityFact": 131112
+  },
+  "sqlite_pragmas": {
+    "freelist_count": 0,
+    "journal_mode": "delete",
+    "page_count": 436932,
+    "page_size": 4096,
+    "schema_version": 9,
+    "user_version": 0
+  },
+  "sqlite_tables": {
+    "bindings": 600,
+    "closure": 408064,
+    "event_occurrences": 275839,
+    "header": 0,
+    "objects": 408064,
+    "scoped_names": 512,
+    "selectors": 0
+  }
+}

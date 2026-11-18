@@ -1,0 +1,30 @@
+{
+  "construction_return": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118",
+  "has_i02_proof_sqlite": false,
+  "has_manifest_json": false,
+  "has_manifest_pending": false,
+  "has_releases": false,
+  "known": [
+    "writer was capped at 600 s",
+    "no publication or validation marker",
+    "five parquet files exist but none has a footer",
+    "SQLite I02 staging DB and hot journal exist",
+    "committed I02 object snapshot is 408,064",
+    "routing ingestion is partial (131,112/307,200)",
+    "header is empty",
+    "no selectors table rows"
+  ],
+  "partial_bytes": 1951192968,
+  "schema": "ANVIL_WIDTH512_POST_CAP_AUDIT@1",
+  "smallest_dynamic_boundary": "Writer start is bounded by context_seconds + width_population_seconds = 0.12670 s; exact writer start and per-family completion were not timestamped. No additional dynamic measurement is indispensable for this read-only audit.",
+  "stage": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_WIDTH512_BOUNDED_CONSTRUCTION_20261118/.local-data-width512/.s2c-stage-f5vlsu4x",
+  "stage_files": 7,
+  "status": "READ_ONLY_METADATA_INSPECTION_COMPLETE",
+  "unknown": [
+    "exact rows/row-groups in footerless parquet",
+    "exact pending/uncommitted journal logical content",
+    "exact writer wall split beyond stage timestamps",
+    "whether final I02 validation would pass",
+    "exact per-family writer completion times"
+  ]
+}

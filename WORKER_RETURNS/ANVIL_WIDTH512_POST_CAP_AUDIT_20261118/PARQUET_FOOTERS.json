@@ -1,0 +1,218 @@
+{
+  "families": [
+    {
+      "expected_rows": 1,
+      "family": "EmpiricalUniverse",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 1
+    },
+    {
+      "expected_rows": 512,
+      "family": "RespondentIdentity",
+      "file": "RespondentIdentity.parquet",
+      "file_bytes": 99217,
+      "file_state": "present_no_footer",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 512
+    },
+    {
+      "expected_rows": 600,
+      "family": "QuestionVariableBinding",
+      "file": "QuestionVariableBinding.parquet",
+      "file_bytes": 100778,
+      "file_state": "present_no_footer",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 600
+    },
+    {
+      "expected_rows": 275839,
+      "family": "RespondentEvent",
+      "file": "RespondentEvent.parquet",
+      "file_bytes": 89285610,
+      "file_state": "present_no_footer",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 275839
+    },
+    {
+      "expected_rows": 307200,
+      "family": "RoutingEligibilityFact",
+      "file": "RoutingEligibilityFact.parquet",
+      "file_bytes": 41209051,
+      "file_state": "present_no_footer",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 131112
+    },
+    {
+      "expected_rows": 512,
+      "family": "EmpiricalCoordinateFact",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 512,
+      "family": "WeightMeasureFact",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 6,
+      "family": "AuthoritySnapshot",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 0,
+      "family": "SourceUniverseRelation",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 0,
+      "family": "EmpiricalPredicateReplayBinding",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 0,
+      "family": "ComparatorReplayBinding",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 0,
+      "family": "DiscoveryBranchReplayBinding",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 0,
+      "family": "StructuralAdmissionReplayBinding",
+      "file": null,
+      "file_bytes": 0,
+      "file_state": "absent",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": 0
+    },
+    {
+      "expected_rows": 275839,
+      "family": "event_locator",
+      "file": "event_locator.parquet",
+      "file_bytes": 22499128,
+      "file_state": "present_no_footer",
+      "footer_present": false,
+      "readable_rows": null,
+      "row_groups": null,
+      "sqlite_ingested_rows": null
+    }
+  ],
+  "files": [
+    {
+      "bytes": 100778,
+      "error": "ArrowInvalid: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.",
+      "footer": false,
+      "head": "PAR1",
+      "mtime_utc": "2026-11-18T18:10:18.086198+00:00",
+      "name": "QuestionVariableBinding.parquet",
+      "row_groups": null,
+      "rows": null,
+      "tail": "f3ebdfcfbfbfffff"
+    },
+    {
+      "bytes": 89285610,
+      "error": "ArrowInvalid: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.",
+      "footer": false,
+      "head": "PAR1",
+      "mtime_utc": "2026-11-18T18:17:42.496450+00:00",
+      "name": "RespondentEvent.parquet",
+      "row_groups": null,
+      "rows": null,
+      "tail": "f3ebdfcfbfbfffff"
+    },
+    {
+      "bytes": 99217,
+      "error": "ArrowInvalid: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.",
+      "footer": false,
+      "head": "PAR1",
+      "mtime_utc": "2026-11-18T18:10:17.862597+00:00",
+      "name": "RespondentIdentity.parquet",
+      "row_groups": null,
+      "rows": null,
+      "tail": "f3ebdfcfbfbfffff"
+    },
+    {
+      "bytes": 41209051,
+      "error": "ArrowInvalid: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.",
+      "footer": false,
+      "head": "PAR1",
+      "mtime_utc": "2026-11-18T18:20:16.244665+00:00",
+      "name": "RoutingEligibilityFact.parquet",
+      "row_groups": null,
+      "rows": null,
+      "tail": "f3ebdfcfbfbfffff"
+    },
+    {
+      "bytes": 22499128,
+      "error": "ArrowInvalid: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.",
+      "footer": false,
+      "head": "PAR1",
+      "mtime_utc": "2026-11-18T18:17:42.499492+00:00",
+      "name": "event_locator.parquet",
+      "row_groups": null,
+      "rows": null,
+      "tail": "f3ebdfcfbfbfffff"
+    }
+  ],
+  "footer_rule": "PAR1 must appear at both start and end; tail is not PAR1 for every present file",
+  "note": "No present file is a readable Parquet estate; no rows/row-groups can be certified from file metadata.",
+  "schema": "ANVIL_WIDTH512_POST_CAP_PARQUET_FOOTERS@1"
+}
