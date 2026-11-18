@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "schema": "ANVIL_FULL_WIDTH_BATCH_RESULT@1",
+  "contract": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/OWNER/WORKER_RETURNS/ANVIL_WIDTH512_PREPARED_BATCH_20261118/sealed_contract.json",
+  "fixture": {
+    "tag": "PYAT-1006-WIDTH512-600-20261118",
+    "respondents": 512,
+    "questions": 600,
+    "manifest_sha256": "984814f820fea4eba983f5f1fd4ce02c3e45371e879e2e9c910dcdd0f0b4b348",
+    "release_ref": "C11LogicalRelease|REL-PYAT-1006-WIDTH512-600-20261118|d1c50ca967d4d98ba15a2a488b9a9057cc0a3c1219cabda128c83f04740744c4",
+    "source_wave_country_context": "SYNTHETIC_SINGLE_SOURCE_WAVE_COUNTRY_WIDTH512"
+  },
+  "batch": {
+    "manifest_ref": "PRE553BatchManifest@1.0.0|urn:rawlsing:pre553:batch-manifest:sha256:dedf60da320303cc4fcafa1f9dc119b5e871ae1da8730fccea7797be7de4763b|dedf60da320303cc4fcafa1f9dc119b5e871ae1da8730fccea7797be7de4763b",
+    "manifest_hash": "dedf60da320303cc4fcafa1f9dc119b5e871ae1da8730fccea7797be7de4763b",
+    "summary": {
+      "manifest_ref": {
+        "kind": "PRE553BatchManifest@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:dedf60da320303cc4fcafa1f9dc119b5e871ae1da8730fccea7797be7de4763b",
+        "content_hash": "dedf60da320303cc4fcafa1f9dc119b5e871ae1da8730fccea7797be7de4763b"
+      },
+      "batch_state": "COMPLETED",
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "full_coverage": true,
+      "total_units": 2,
+      "completed_units": 2,
+      "failed_units": 0,
+      "deferred_units": 0,
+      "pending_units": 0,
+      "actual_execution_receipts": 2,
+      "receipt_set_hash": "1e0a13865ffcf929f39a2bf0c27d7fe825ca07f271ad29ce7642792097201a1f",
+      "populated_data_execution_claim": false
+    },
+    "operation_count": 2
+  },
+  "session_scope": {
+    "builds_observed": 1,
+    "one_prepared_session": true,
+    "source": "execute_saved_batch prepared_i03 context"
+  },
+  "operations": [
+    {
+      "label": "f2_forward_raw",
+      "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc|e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc",
+      "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6|37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+      "unit_ref": "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:56f76e9fcb1c5f78504f636cb951057dbcd402691ff05234fd7d51c60878b32b|56f76e9fcb1c5f78504f636cb951057dbcd402691ff05234fd7d51c60878b32b",
+      "receipt_ref": "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:3fdb2c3c66d6aaf824ace68545e191ce07403d8b1ee076a86ebdd9d8a98e7a97|3fdb2c3c66d6aaf824ace68545e191ce07403d8b1ee076a86ebdd9d8a98e7a97",
+      "receipt_hash": "3fdb2c3c66d6aaf824ace68545e191ce07403d8b1ee076a86ebdd9d8a98e7a97",
+      "state": "COMPLETED",
+      "execution_performed": true,
+      "result_refs": [
+        "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:2d873efea3d535877adc0d682df1ba777e873fc0fb50929aec973e7958ffd071|2d873efea3d535877adc0d682df1ba777e873fc0fb50929aec973e7958ffd071"
+      ],
+      "provenance_refs": [
+        "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:5671b1cd3570c736d6891503d10e60038851fd544152c1369c390fed1a0c9e57|5671b1cd3570c736d6891503d10e60038851fd544152c1369c390fed1a0c9e57",
+        "C11LogicalRelease|REL-PYAT-1006-WIDTH512-600-20261118|d1c50ca967d4d98ba15a2a488b9a9057cc0a3c1219cabda128c83f04740744c4",
+        "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc|e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc"
+      ]
+    },
+    {
+      "label": "f2_reverse_raw",
+      "query_ref": "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c|7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c",
+      "predicate_ref": "EmpiricalPredicate@1.0.0|urn:rawlsing:pre553:EmpiricalPredicate:sha256:df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca|df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca",
+      "unit_ref": "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:992588b7b88727205806612e1d3b30f6a502f5451345dcfb91450894f4dfc327|992588b7b88727205806612e1d3b30f6a502f5451345dcfb91450894f4dfc327",
+      "receipt_ref": "PRE553BatchExecutionReceipt@1.0.0|urn:rawlsing:pre553:batch-receipt:sha256:734003f6ff849023065973af02c92b37de9791427e11365aeb0f2ffa5078cb19|734003f6ff849023065973af02c92b37de9791427e11365aeb0f2ffa5078cb19",
+      "receipt_hash": "734003f6ff849023065973af02c92b37de9791427e11365aeb0f2ffa5078cb19",
+      "state": "COMPLETED",
+      "execution_performed": true,
+      "result_refs": [
+        "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:6326a2f135fc1e6b804c1f531085797dab66115a7b4d6a83b6c75259f0260ed3|6326a2f135fc1e6b804c1f531085797dab66115a7b4d6a83b6c75259f0260ed3"
+      ],
+      "provenance_refs": [
+        "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:5671b1cd3570c736d6891503d10e60038851fd544152c1369c390fed1a0c9e57|5671b1cd3570c736d6891503d10e60038851fd544152c1369c390fed1a0c9e57",
+        "C11LogicalRelease|REL-PYAT-1006-WIDTH512-600-20261118|d1c50ca967d4d98ba15a2a488b9a9057cc0a3c1219cabda128c83f04740744c4",
+        "EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c|7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c"
+      ]
+    }
+  ],
+  "parity": {
+    "baseline_status": "NOT_AVAILABLE",
+    "operations": [
+      {
+        "label": "f2_forward_raw",
+        "baseline_status": "NOT_AVAILABLE",
+        "batch_result_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:2d873efea3d535877adc0d682df1ba777e873fc0fb50929aec973e7958ffd071|2d873efea3d535877adc0d682df1ba777e873fc0fb50929aec973e7958ffd071"
+        ],
+        "full_payload_comparison": "NOT_CARRIED_BY_BATCH_RECEIPT",
+        "denominator_comparison": "NOT_CARRIED_BY_BATCH_RECEIPT"
+      },
+      {
+        "label": "f2_reverse_raw",
+        "baseline_status": "NOT_AVAILABLE",
+        "batch_result_refs": [
+          "EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:6326a2f135fc1e6b804c1f531085797dab66115a7b4d6a83b6c75259f0260ed3|6326a2f135fc1e6b804c1f531085797dab66115a7b4d6a83b6c75259f0260ed3"
+        ],
+        "full_payload_comparison": "NOT_CARRIED_BY_BATCH_RECEIPT",
+        "denominator_comparison": "NOT_CARRIED_BY_BATCH_RECEIPT"
+      }
+    ],
+    "note": "Batch receipts carry result refs/receipts; full payload and denominator/cell comparison require the existing direct artifact API and are not faked here."
+  },
+  "full_fact_payload": {
+    "status": "NOT_CARRIED_BY_BATCH_RECEIPT",
+    "reuse": "existing execute_i03/artifact-receipt API; not executed by this driver"
+  },
+  "denominator_semantics": {
+    "status": "BATCH_RECEIPT_NOT_CARRIED",
+    "note": "execute_saved_batch delegates to execute_i03; no denominator is reinterpreted here."
+  },
+  "claims": {
+    "one_synthetic_source_wave_country_context": true,
+    "multi_country_execution": false,
+    "native_or_raw_source": false,
+    "performance_claim": false
+  }
+}

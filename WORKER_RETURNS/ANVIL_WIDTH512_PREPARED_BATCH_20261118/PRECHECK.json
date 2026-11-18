@@ -1,0 +1,55 @@
+{
+  "status": "READY",
+  "checks": {
+    "free_bytes": 44735545344,
+    "width_manifest": "984814f820fea4eba983f5f1fd4ce02c3e45371e879e2e9c910dcdd0f0b4b348",
+    "manifest_members": 14,
+    "expected_fact_oracle": "NOT_AVAILABLE_WITHOUT_EXTRA_HEAVY_ORACLE",
+    "operation_refs": {
+      "f2_forward_raw": {
+        "query_ref": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc",
+          "content_hash": "e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc"
+        },
+        "predicate_ref": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        }
+      },
+      "f2_reverse_raw": {
+        "query_ref": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c",
+          "content_hash": "7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c"
+        },
+        "predicate_ref": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca",
+          "content_hash": "df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca"
+        }
+      }
+    },
+    "i02": {
+      "logical": "b232cd2648b2c5a33ff9e66e1c32067e1f9119e44c020d3d583debcbe8e42fcd",
+      "physical": "1687e6f53a339bc5c0a18971b9b1db9d2b5866eff7376203f0384d1849457ca5",
+      "release": "C11_DIRECT_SOURCEFREE_RELEASE|REL-PYAT-1006-WIDTH512-600-20261118|60b2a976c8f025769162675b9e3d520df25369e6a213fa3402d5a9adc3754276",
+      "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:5671b1cd3570c736d6891503d10e60038851fd544152c1369c390fed1a0c9e57|5671b1cd3570c736d6891503d10e60038851fd544152c1369c390fed1a0c9e57",
+      "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1",
+      "source": "SOURCE_ARTIFACT|SOURCE-PYAT-1006-WIDTH512-600-20261118|b4e94c14a31e8f9f74a889694170694c34ac38335f9a8e685f3c1ccda2c4a63a",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1|3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+    },
+    "release_ref": {
+      "content_hash": "d1c50ca967d4d98ba15a2a488b9a9057cc0a3c1219cabda128c83f04740744c4",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-PYAT-1006-WIDTH512-600-20261118"
+    },
+    "catalog_counts": {
+      "authorities": 7,
+      "predicates": 5,
+      "queries": 8
+    },
+    "competing_heavy_processes": []
+  }
+}

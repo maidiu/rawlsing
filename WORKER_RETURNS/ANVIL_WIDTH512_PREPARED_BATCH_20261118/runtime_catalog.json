@@ -1,0 +1,2722 @@
+{
+  "authorities": [
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-coord-PYAT-1006-WIDTH512-600-20261118",
+        "content_hash": "79a4f0d82c569d0940bdc100eade651b44d9b376be232c0a9eb0ed59356693e5"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-coord-PYAT-1006-WIDTH512-600-20261118",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "42663a0bae5110923c38a5ea0c41bb7ff08c7357b52bab9afb94c61bab13f4f0",
+        "authority_kind": "COORDINATE_SEMANTICS",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-coord-PYAT-1006-WIDTH512-600-20261118"
+        ],
+        "governed_object_families": [
+          "EmpiricalCoordinateFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "e2b52117947427de3e372977d9e8902934caf8011e98386dd69abfb990510d26",
+        "replay_protocol_ref": {
+          "content_hash": "52e6d4e5cfe98d86df46dc797ab1d4717a210170941b8577d44e7b08f8f8dde4",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:coord-PYAT-1006-WIDTH512-600-20261118"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:2caa92f6fce57c239bfdbaf5bf07bf29005b9925fd1d40994ad8b788d82cd047",
+      "content_hash": "2caa92f6fce57c239bfdbaf5bf07bf29005b9925fd1d40994ad8b788d82cd047"
+    },
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-PYAT-1006-WIDTH512-600-20261118",
+        "content_hash": "d45a32188e461773d1d5b487cafe771bf506cc0f853e8966d0eddd6a463702f7"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+        "authority_kind": "PREDICATE_GRAMMAR",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-PYAT-1006-WIDTH512-600-20261118"
+        ],
+        "governed_object_families": [
+          "EmpiricalFact@1.0.0",
+          "EmpiricalPredicate@1.0.0",
+          "EmpiricalQuerySpec@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "925dd221ec100399edb1ef99e71045e20fff4f39120c5831e7ed04eb551c7e5c",
+        "replay_protocol_ref": {
+          "content_hash": "b480b18565c987a6929785760312d7090cbe2f7d8561ce909e121b261ecd7e01",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:PYAT-1006-WIDTH512-600-20261118"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:508c7742531d4be2a9bd4f30cbb4bcbd5793736a95b102e6154e72aca16fd2d5",
+      "content_hash": "508c7742531d4be2a9bd4f30cbb4bcbd5793736a95b102e6154e72aca16fd2d5"
+    },
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-source-PYAT-1006-WIDTH512-600-20261118",
+        "content_hash": "8220c97b2cf3e86f681e39aa88045f2ff5c6dbc50a4cc057ca6d66424e7cc44a"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-source-PYAT-1006-WIDTH512-600-20261118"
+        ],
+        "governed_object_families": [
+          "EmpiricalUniverse@1.0.0",
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "4b94b0d7bd688f6ad7e9623c62ea18ab046a030292f33c3684bf962d37b92122",
+        "replay_protocol_ref": {
+          "content_hash": "bffde51aac0489be77ee9580eee0dc279fc7d70cda26ea23252a2236e4f3e85a",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:source-PYAT-1006-WIDTH512-600-20261118"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:5ceadb064360dd50bae45dbaa5a18a9fb36344496262bba9ed6aff2ca64f0ef2",
+      "content_hash": "5ceadb064360dd50bae45dbaa5a18a9fb36344496262bba9ed6aff2ca64f0ef2"
+    },
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-routing-PYAT-1006-WIDTH512-600-20261118",
+        "content_hash": "afd62a2d0e0fc463fe2ef8f9e661b6f8225845165823d0ae4737a221059e8a2a"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-routing-PYAT-1006-WIDTH512-600-20261118",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "4e13627ac60b8b0b112dc149722dd0870c21ee6c17b66c07e48d16cfeff6d351",
+        "authority_kind": "ROUTING_RISK_SET",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-routing-PYAT-1006-WIDTH512-600-20261118"
+        ],
+        "governed_object_families": [
+          "RoutingEligibilityFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "9a72f7bae2303286cba52786e7727d164c0bfe88f1fadfcced1e74753a8c3d70",
+        "replay_protocol_ref": {
+          "content_hash": "02b8900794927f8f58b3c10de36f81c37cceff6d48235d8e6e1d103b1c3ab937",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:routing-PYAT-1006-WIDTH512-600-20261118"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:6a3ea4d4daa5a380836c05006c1631fedacb05ce49c23ea60eb6d49c08962a83",
+      "content_hash": "6a3ea4d4daa5a380836c05006c1631fedacb05ce49c23ea60eb6d49c08962a83"
+    },
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-replay-PYAT-1006-WIDTH512-600-20261118",
+        "content_hash": "2bca31c6915265f23990f7fac563c38cb8de953a3012fbed778a0b1ae64a5b52"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-replay-PYAT-1006-WIDTH512-600-20261118",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "4623694bd6c965183b235028fe1876ebcdffdefc9b4bbd5953e7b2b5aeb2cd26",
+        "authority_kind": "REPLAY_PROTOCOL",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-replay-PYAT-1006-WIDTH512-600-20261118"
+        ],
+        "governed_object_families": [
+          "ReplayReceipt@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "618919c50059b3acc79c84a7982286472741680cd9c591b8bebdacdfcb6ea3bb",
+        "replay_protocol_ref": {
+          "content_hash": "7428eb31b79889b13c034ce7352cd1a49c148326e33f426099cf0a30e224aa08",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:replay-PYAT-1006-WIDTH512-600-20261118"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:8df90206b507fc60f200f77529c28331d94a5221077825c63e82e34e24658d42",
+      "content_hash": "8df90206b507fc60f200f77529c28331d94a5221077825c63e82e34e24658d42"
+    },
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-PYAT-1006-WIDTH512-600-20261118-discovery",
+        "content_hash": "8dbdf47db166da1a5a592320f605f14ab13f1cdd806fadbfdfc3b6408aefdb69"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118-discovery",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e5f1d22a00fda4cb1456a85a0211c36bd8363ca093dd57429b5188b996d1c9ad",
+        "authority_kind": "DISCOVERY_FRONTIER",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-PYAT-1006-WIDTH512-600-20261118-discovery"
+        ],
+        "governed_object_families": [
+          "DiscoveryAuthority@1.0.0",
+          "DiscoveryResultReceipt@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "21099cc35b4d9a3c9ed656e84d0f1f2c04cbdaaeedd029e782bb6e6b5e556d36",
+        "replay_protocol_ref": {
+          "content_hash": "c262cb1e01eff6bf9d96138a7f7a46120582ea8a408e2f32b033136ff5057e0e",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:PYAT-1006-WIDTH512-600-20261118-discovery"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:c19bd8a307cecac83a5b488410254e47babf7a83aba19485310c4b1047b23328",
+      "content_hash": "c19bd8a307cecac83a5b488410254e47babf7a83aba19485310c4b1047b23328"
+    },
+    {
+      "schema_id": "AuthoritySnapshot",
+      "schema_version": "1.0.0",
+      "typed_state": "ALLOW",
+      "authority_snapshot_refs": [],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:authority-weight-PYAT-1006-WIDTH512-600-20261118",
+        "content_hash": "c9138b4f1e5944dff2d5401476ab72daa37bb7d767653664676aa6dafb7aa6b2"
+      },
+      "semantic_fields": {
+        "authority_id": "I03-AUTH-weight-PYAT-1006-WIDTH512-600-20261118",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "8e2223998372184cdeda7887f145f7d6e9429c8459d6397b988e547868bdb44e",
+        "authority_kind": "WEIGHT_DESIGN_ESTIMAND",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "I03-OP-weight-PYAT-1006-WIDTH512-600-20261118"
+        ],
+        "governed_object_families": [
+          "WeightMeasureFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_universe_refs": "EXPLICIT_UNRESTRICTED"
+        },
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "733caba8bffa4c0e5814c9acacbd56d631b1c06c31f33697e090123270475604",
+        "replay_protocol_ref": {
+          "content_hash": "c294eab92efc6eb070cec028b79d6c78ea6efd192d3ced6fb87992ecbf4255f2",
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:test:i03:replay_protocol:weight-PYAT-1006-WIDTH512-600-20261118"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:d2cfa61dcd741374fc7504f07e0074004771f261780a560d387ac77f95c3a74f",
+      "content_hash": "d2cfa61dcd741374fc7504f07e0074004771f261780a560d387ac77f95c3a74f"
+    }
+  ],
+  "predicates": [
+    {
+      "schema_id": "EmpiricalPredicate",
+      "schema_version": "1.0.0",
+      "typed_state": "PREDICATE_RESOLVED_AUTHORIZED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:predicate-PYAT-1006-WIDTH512-600-20261118-b1",
+        "content_hash": "24a9c6445ab05e98674ca452ac4ba92e4fb69a7ec27c0dacd341c853834ff429"
+      },
+      "semantic_fields": {
+        "predicate_ast": {
+          "component_or_event_selector_ref": {
+            "content_hash": "dc3997432d3d2e672862695006d59d66f803642bf7d35d79cd0279fbd799f6a3",
+            "kind": "EVENT_SELECTOR",
+            "object_id": "urn:test:i03:event_selector:B-ANY"
+          },
+          "exact_value": "1",
+          "leaf_type": "SURVEY_RESPONSE_EVENT",
+          "op": "LEAF",
+          "operator": "EQ",
+          "question_semantic_ref": {
+            "content_hash": "0b149e63d9a40840f94a068beebaabc18bd1fedaf79c0731bdda48313114544c",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-B"
+          },
+          "response_semantic_authority_ref": {
+            "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+            "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          },
+          "response_topology_authority_ref": {
+            "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+            "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          },
+          "response_value_or_state_ref": {
+            "content_hash": "2c75d2275ad27c66af1970e9eaef7d0371adc39c260fc740df9a71fa8b91a1dc",
+            "kind": "VALUE_REF",
+            "object_id": "urn:test:i03:value_ref:B-1"
+          }
+        },
+        "predicate_hash": "af90faf4fcaa87606b5afa82c11b69a1582aab5d3e3d9b885812ab19dad62ab2",
+        "grammar_authority_ref": {
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0"
+        },
+        "coordinate_question_value_refs": [],
+        "risk_set_refs": [
+          {
+            "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "same_respondent_binding_semantics": "EXACT_SCOPED_RESPONDENT",
+        "operator_semantics_refs": [
+          {
+            "content_hash": "f388ea815c03981d92f9487c9e2430b0f95dc97e8e3c4f5a590fa1eb80698242",
+            "kind": "OPERATOR_SEMANTICS",
+            "object_id": "urn:test:i03:operator_semantics:BOOLEAN-AND-OR-NOT"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:2be80a546038885b11eb2e89291c93a495ca434caed4ebfbf2182000d57241cf",
+      "content_hash": "2be80a546038885b11eb2e89291c93a495ca434caed4ebfbf2182000d57241cf"
+    },
+    {
+      "schema_id": "EmpiricalPredicate",
+      "schema_version": "1.0.0",
+      "typed_state": "PREDICATE_RESOLVED_AUTHORIZED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:predicate-PYAT-1006-WIDTH512-600-20261118-a1",
+        "content_hash": "33275d72c1f4e41c0d371589042227585432583454c65d0f9a6e3fc902f60c7d"
+      },
+      "semantic_fields": {
+        "predicate_ast": {
+          "component_or_event_selector_ref": {
+            "content_hash": "18237d789890df4d5dc837689af5f31ae9f0eb3b60ceb878b31cf452bc2f24f3",
+            "kind": "EVENT_SELECTOR",
+            "object_id": "urn:test:i03:event_selector:A-ANY"
+          },
+          "exact_value": "1",
+          "leaf_type": "SURVEY_RESPONSE_EVENT",
+          "op": "LEAF",
+          "operator": "EQ",
+          "question_semantic_ref": {
+            "content_hash": "b09af6952b87044f5801cbcb78df22f80f401876a9c6a9384dce2491c31669cd",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-A"
+          },
+          "response_semantic_authority_ref": {
+            "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+            "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          },
+          "response_topology_authority_ref": {
+            "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+            "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          },
+          "response_value_or_state_ref": {
+            "content_hash": "e636be7b1e89aee8c4e185fbade02f547033d3fbb9d9bb5a7a7442df4980b2d8",
+            "kind": "VALUE_REF",
+            "object_id": "urn:test:i03:value_ref:A-1"
+          }
+        },
+        "predicate_hash": "082016689bdb53ea3587d7e580e0a85d0107329484ccdbd57f21b37b3a241435",
+        "grammar_authority_ref": {
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0"
+        },
+        "coordinate_question_value_refs": [],
+        "risk_set_refs": [
+          {
+            "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "same_respondent_binding_semantics": "EXACT_SCOPED_RESPONDENT",
+        "operator_semantics_refs": [
+          {
+            "content_hash": "f388ea815c03981d92f9487c9e2430b0f95dc97e8e3c4f5a590fa1eb80698242",
+            "kind": "OPERATOR_SEMANTICS",
+            "object_id": "urn:test:i03:operator_semantics:BOOLEAN-AND-OR-NOT"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+      "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+    },
+    {
+      "schema_id": "EmpiricalPredicate",
+      "schema_version": "1.0.0",
+      "typed_state": "PREDICATE_RESOLVED_AUTHORIZED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:predicate-PYAT-1006-WIDTH512-600-20261118-all",
+        "content_hash": "4a819ceb849eed741b3ef3f8878cb1432d48febb8af71e8e3f1c9c01492b2e89"
+      },
+      "semantic_fields": {
+        "predicate_ast": {
+          "children": [
+            {
+              "comparison_operator_ref": {
+                "content_hash": "071101ba0ec6e9f4985367c14c711d0e944a7e56d0bc27aedbd09567789af0a7",
+                "kind": "COMPARISON_OPERATOR",
+                "object_id": "urn:test:i03:comparison_operator:EQ"
+              },
+              "coordinate_authority_ref": {
+                "authority_content_hash": "42663a0bae5110923c38a5ea0c41bb7ff08c7357b52bab9afb94c61bab13f4f0",
+                "authority_id": "I03-AUTH-coord-PYAT-1006-WIDTH512-600-20261118",
+                "authority_version": "1.0.0"
+              },
+              "coordinate_semantic_ref": {
+                "content_hash": "cf4e94244b28a53a0103fc674e403e5ca32ccc23d238c21dc96e61e1276c436e",
+                "kind": "COORDINATE_NATIVE",
+                "object_id": "urn:test:i03:coordinate_native:PYAT-1006-WIDTH512-600-20261118-G"
+              },
+              "exact_value": "A",
+              "leaf_type": "EMPIRICAL_POSITION_COORDINATE",
+              "op": "LEAF",
+              "operator": "EQ",
+              "typed_state_policy_ref": {
+                "content_hash": "7c74d346070077045491107ee06633f44a24a2e433437aafa07587f5a903e91e",
+                "kind": "STATE_POLICY",
+                "object_id": "urn:test:i03:state_policy:OBSERVED_ONLY"
+              },
+              "value_or_value_set_ref": {
+                "content_hash": "dba4e8347c6ff8b1406e07332ff0befeb3ae28ef7f97f66b7a1123f17f761d2e",
+                "kind": "VALUE_REF",
+                "object_id": "urn:test:i03:value_ref:G-A"
+              }
+            },
+            {
+              "comparison_operator_ref": {
+                "content_hash": "071101ba0ec6e9f4985367c14c711d0e944a7e56d0bc27aedbd09567789af0a7",
+                "kind": "COMPARISON_OPERATOR",
+                "object_id": "urn:test:i03:comparison_operator:EQ"
+              },
+              "coordinate_authority_ref": {
+                "authority_content_hash": "42663a0bae5110923c38a5ea0c41bb7ff08c7357b52bab9afb94c61bab13f4f0",
+                "authority_id": "I03-AUTH-coord-PYAT-1006-WIDTH512-600-20261118",
+                "authority_version": "1.0.0"
+              },
+              "coordinate_semantic_ref": {
+                "content_hash": "cf4e94244b28a53a0103fc674e403e5ca32ccc23d238c21dc96e61e1276c436e",
+                "kind": "COORDINATE_NATIVE",
+                "object_id": "urn:test:i03:coordinate_native:PYAT-1006-WIDTH512-600-20261118-G"
+              },
+              "exact_value": "B",
+              "leaf_type": "EMPIRICAL_POSITION_COORDINATE",
+              "op": "LEAF",
+              "operator": "EQ",
+              "typed_state_policy_ref": {
+                "content_hash": "7c74d346070077045491107ee06633f44a24a2e433437aafa07587f5a903e91e",
+                "kind": "STATE_POLICY",
+                "object_id": "urn:test:i03:state_policy:OBSERVED_ONLY"
+              },
+              "value_or_value_set_ref": {
+                "content_hash": "ee3fdab91c0091690b61502d8cf64a3f620d46ecadd9ffe1604df02f4ca5eeca",
+                "kind": "VALUE_REF",
+                "object_id": "urn:test:i03:value_ref:G-B"
+              }
+            }
+          ],
+          "op": "OR"
+        },
+        "predicate_hash": "62b7ec57e3ccf97bd189dbf71ff668fcc5475c3b9ad172d89c16f00ea9462865",
+        "grammar_authority_ref": {
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0"
+        },
+        "coordinate_question_value_refs": [],
+        "risk_set_refs": [
+          {
+            "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "same_respondent_binding_semantics": "EXACT_SCOPED_RESPONDENT",
+        "operator_semantics_refs": [
+          {
+            "content_hash": "f388ea815c03981d92f9487c9e2430b0f95dc97e8e3c4f5a590fa1eb80698242",
+            "kind": "OPERATOR_SEMANTICS",
+            "object_id": "urn:test:i03:operator_semantics:BOOLEAN-AND-OR-NOT"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d",
+      "content_hash": "4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d"
+    },
+    {
+      "schema_id": "EmpiricalPredicate",
+      "schema_version": "1.0.0",
+      "typed_state": "PREDICATE_RESOLVED_AUTHORIZED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:predicate-PYAT-1006-WIDTH512-600-20261118-a1b1",
+        "content_hash": "5764dbcfdcbf9dd402f7ef93c0a414b9323919e93e98816361fa6c4ffe3e95ed"
+      },
+      "semantic_fields": {
+        "predicate_ast": {
+          "children": [
+            {
+              "component_or_event_selector_ref": {
+                "content_hash": "18237d789890df4d5dc837689af5f31ae9f0eb3b60ceb878b31cf452bc2f24f3",
+                "kind": "EVENT_SELECTOR",
+                "object_id": "urn:test:i03:event_selector:A-ANY"
+              },
+              "exact_value": "1",
+              "leaf_type": "SURVEY_RESPONSE_EVENT",
+              "op": "LEAF",
+              "operator": "EQ",
+              "question_semantic_ref": {
+                "content_hash": "b09af6952b87044f5801cbcb78df22f80f401876a9c6a9384dce2491c31669cd",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-A"
+              },
+              "response_semantic_authority_ref": {
+                "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                "authority_version": "1.0.0"
+              },
+              "response_topology_authority_ref": {
+                "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                "authority_version": "1.0.0"
+              },
+              "response_value_or_state_ref": {
+                "content_hash": "e636be7b1e89aee8c4e185fbade02f547033d3fbb9d9bb5a7a7442df4980b2d8",
+                "kind": "VALUE_REF",
+                "object_id": "urn:test:i03:value_ref:A-1"
+              }
+            },
+            {
+              "component_or_event_selector_ref": {
+                "content_hash": "dc3997432d3d2e672862695006d59d66f803642bf7d35d79cd0279fbd799f6a3",
+                "kind": "EVENT_SELECTOR",
+                "object_id": "urn:test:i03:event_selector:B-ANY"
+              },
+              "exact_value": "1",
+              "leaf_type": "SURVEY_RESPONSE_EVENT",
+              "op": "LEAF",
+              "operator": "EQ",
+              "question_semantic_ref": {
+                "content_hash": "0b149e63d9a40840f94a068beebaabc18bd1fedaf79c0731bdda48313114544c",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-B"
+              },
+              "response_semantic_authority_ref": {
+                "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                "authority_version": "1.0.0"
+              },
+              "response_topology_authority_ref": {
+                "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                "authority_version": "1.0.0"
+              },
+              "response_value_or_state_ref": {
+                "content_hash": "2c75d2275ad27c66af1970e9eaef7d0371adc39c260fc740df9a71fa8b91a1dc",
+                "kind": "VALUE_REF",
+                "object_id": "urn:test:i03:value_ref:B-1"
+              }
+            }
+          ],
+          "op": "AND"
+        },
+        "predicate_hash": "efc8d47b329e4181a807c6142cfbb93983795aea817c76a11f5ef6f866912962",
+        "grammar_authority_ref": {
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0"
+        },
+        "coordinate_question_value_refs": [],
+        "risk_set_refs": [
+          {
+            "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "same_respondent_binding_semantics": "EXACT_SCOPED_RESPONDENT",
+        "operator_semantics_refs": [
+          {
+            "content_hash": "f388ea815c03981d92f9487c9e2430b0f95dc97e8e3c4f5a590fa1eb80698242",
+            "kind": "OPERATOR_SEMANTICS",
+            "object_id": "urn:test:i03:operator_semantics:BOOLEAN-AND-OR-NOT"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5",
+      "content_hash": "d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5"
+    },
+    {
+      "schema_id": "EmpiricalPredicate",
+      "schema_version": "1.0.0",
+      "typed_state": "PREDICATE_RESOLVED_AUTHORIZED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:predicate-PYAT-1006-WIDTH512-600-20261118-c1",
+        "content_hash": "55b7e41fe96dab873763c3f7b6808b9918e6e3233f9f270de0ef3fe94ba859b5"
+      },
+      "semantic_fields": {
+        "predicate_ast": {
+          "component_or_event_selector_ref": {
+            "content_hash": "aa36716c2f53a42e884ffcbd76117584c04af4b774aa415da12623a25e94bfab",
+            "kind": "EVENT_SELECTOR",
+            "object_id": "urn:test:i03:event_selector:C-ANY"
+          },
+          "exact_value": "1",
+          "leaf_type": "SURVEY_RESPONSE_EVENT",
+          "op": "LEAF",
+          "operator": "EQ",
+          "question_semantic_ref": {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          },
+          "response_semantic_authority_ref": {
+            "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+            "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          },
+          "response_topology_authority_ref": {
+            "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+            "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          },
+          "response_value_or_state_ref": {
+            "content_hash": "83f9a8e3a6063a078881f4aaedff3303d1bdb4caa719a30271121a94c775a804",
+            "kind": "VALUE_REF",
+            "object_id": "urn:test:i03:value_ref:C-1"
+          }
+        },
+        "predicate_hash": "9b763d046f50b0f681d12a49019b01f9ead43c10500d594d54a6a79d990c4756",
+        "grammar_authority_ref": {
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0"
+        },
+        "coordinate_question_value_refs": [],
+        "risk_set_refs": [
+          {
+            "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "same_respondent_binding_semantics": "EXACT_SCOPED_RESPONDENT",
+        "operator_semantics_refs": [
+          {
+            "content_hash": "f388ea815c03981d92f9487c9e2430b0f95dc97e8e3c4f5a590fa1eb80698242",
+            "kind": "OPERATOR_SEMANTICS",
+            "object_id": "urn:test:i03:operator_semantics:BOOLEAN-AND-OR-NOT"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca",
+      "content_hash": "df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca"
+    }
+  ],
+  "queries": [
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d",
+          "content_hash": "4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-i05-target",
+        "content_hash": "1fdd462461598ba0d9ab51b73c0ee8260e5559440d3026214cb74c1b90d23652"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b20d20e4a677ad26fec2ebdf51598ab26833cde037ecdc54a68a8fe1ddf1d073",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:C-01"
+              },
+              "target_ref": {
+                "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:024476c0f82518d6d8a7054d91fbc749c93b03ae8b6088b24312e602b2b5bf9f",
+      "content_hash": "024476c0f82518d6d8a7054d91fbc749c93b03ae8b6088b24312e602b2b5bf9f"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:r12-query-PYAT-1006-WIDTH512-600-20261118-repeated",
+        "content_hash": "0dbdcf0155e5c6ff50e628ab742b5293ad05103f2ab12621e3677de914630889"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6abf8bc3dddc42c8036efa7252d394dd14e15c97a8d3113f94de46da8d0de54c",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-MR"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                [
+                  {
+                    "event_id": "00000000-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000000-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000013-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000013-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000026-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000026-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000039-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000039-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000052-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000052-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000065-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000065-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000078-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000078-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000091-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000091-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000104-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000104-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000117-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000117-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000130-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000130-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000143-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000143-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000156-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000156-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000169-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000169-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000182-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000182-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000195-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000195-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000208-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000208-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000221-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000221-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000234-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000234-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000247-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000247-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000260-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000260-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000273-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000273-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000286-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000286-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000299-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000299-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000312-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000312-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000325-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000325-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000338-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000338-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000351-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000351-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000364-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000364-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000377-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000377-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000390-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000390-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000403-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000403-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000416-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000416-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000429-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000429-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000442-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000442-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000455-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000455-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000468-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000468-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000481-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "event_id": "00000481-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "2"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000494-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "2"
+                  },
+                  {
+                    "event_id": "00000494-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "0"
+                  }
+                ],
+                [
+                  {
+                    "event_id": "00000507-MR-0",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 0,
+                      "rank": 1
+                    },
+                    "value": "0"
+                  },
+                  {
+                    "event_id": "00000507-MR-1",
+                    "multiplicity_order_rank_fields": {
+                      "kind": "REPEATED_EVENT",
+                      "multiplicity_index": 1,
+                      "rank": 2
+                    },
+                    "value": "1"
+                  }
+                ]
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "09d844db80e6e4ea34926ffcb14cef9e369ca3200b50500aed24048ac48566d7",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:r12-PYAT-1006-WIDTH512-600-20261118-repeated"
+              },
+              "target_ref": {
+                "content_hash": "6abf8bc3dddc42c8036efa7252d394dd14e15c97a8d3113f94de46da8d0de54c",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-MR"
+              },
+              "topology": "REPEATED_EVENT",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "c34cf56f5a7ada968450a9aff2c03db2ba5858aa36d1a5cb0d4ed2793f35659f",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:r12-PYAT-1006-WIDTH512-600-20261118-repeated"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:1f1bd826e9cb23cda49cbca27a8353d5d3caa9706e96bec43a559a1f2496a445",
+      "content_hash": "1f1bd826e9cb23cda49cbca27a8353d5d3caa9706e96bec43a559a1f2496a445"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-selected",
+        "content_hash": "210900129b42bdbd8249081156308f506978c377931aa5ae3f83f2281b46cfdc"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b20d20e4a677ad26fec2ebdf51598ab26833cde037ecdc54a68a8fe1ddf1d073",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:C-01"
+              },
+              "target_ref": {
+                "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3b81213fe2bbc333c3a8d8d43ef4baefe986e051b4990d3c59ec756cc0ccd065",
+      "content_hash": "3b81213fe2bbc333c3a8d8d43ef4baefe986e051b4990d3c59ec756cc0ccd065"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5",
+          "content_hash": "d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-f4-four",
+        "content_hash": "33be7d7390dbe79283e1b1a18e5321e58463f445ba8d0152bf2acc805f367b2f"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          },
+          {
+            "content_hash": "6851b9a27f232a42ea336de114831c5eea2622888221988d5b81f04cb6a8288e",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-D"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 2,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b20d20e4a677ad26fec2ebdf51598ab26833cde037ecdc54a68a8fe1ddf1d073",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:C-01"
+              },
+              "target_ref": {
+                "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            },
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b76cb7c7af2c2f185adb469573823613bfa53d247f1b84e81fd2aa120cc194e4",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:D-01"
+              },
+              "target_ref": {
+                "content_hash": "6851b9a27f232a42ea336de114831c5eea2622888221988d5b81f04cb6a8288e",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-D"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "COMMON_ELIGIBLE_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:57c03021a477dfabfb8c6df44c97ec30e042eb25950548ba45fac0eae1922f0d",
+      "content_hash": "57c03021a477dfabfb8c6df44c97ec30e042eb25950548ba45fac0eae1922f0d"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca",
+          "content_hash": "df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-f2-reverse",
+        "content_hash": "3e46f44dcabb595f357dc5ae321734fa77d0d4dccbb583dfc603635626081047"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "b09af6952b87044f5801cbcb78df22f80f401876a9c6a9384dce2491c31669cd",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-A"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "8b0d7879b074893202f87803a798aee2d9a5643baf69ab70dea9a8889eb6cea7",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:A-01"
+              },
+              "target_ref": {
+                "content_hash": "b09af6952b87044f5801cbcb78df22f80f401876a9c6a9384dce2491c31669cd",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-A"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:df7e338d302e95e503e111849364c7fd93f2a5965d8e9a040ac037307c4e20ca"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c",
+      "content_hash": "7fc8b9b3a0372eca38c7c6893fbe4d1250da063aa0a2f20ef7b68e6e4387ec2c"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5",
+          "content_hash": "d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-f4-three",
+        "content_hash": "566fc97e96f0f5fa3db091aa38d8364b5f5bd3ef87770cef67f9a3e9292eca90"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b20d20e4a677ad26fec2ebdf51598ab26833cde037ecdc54a68a8fe1ddf1d073",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:C-01"
+              },
+              "target_ref": {
+                "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d00cc41a746c1816642b8d6c440adc9e007aa9aa54b8b1f787c7c0f331f1b4e5"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b7b4330d50ea38b553b76b0017038e8cbc01c7aab8d4db57aeff42db2ac4e39a",
+      "content_hash": "b7b4330d50ea38b553b76b0017038e8cbc01c7aab8d4db57aeff42db2ac4e39a"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-f2-forward",
+        "content_hash": "aafaf5d1348526bbd1bae6088f13398957d9793f718f8adaed5bfb3dc7a99e5e"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b20d20e4a677ad26fec2ebdf51598ab26833cde037ecdc54a68a8fe1ddf1d073",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:C-01"
+              },
+              "target_ref": {
+                "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:RAW"
+        },
+        "requested_output_grain": {
+          "measure_kind": "RAW",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc",
+      "content_hash": "e2d338d1db84117d1ebb0f2f3df69d8925fc9b0d8f94eabfa8c20df16d1c96fc"
+    },
+    {
+      "schema_id": "EmpiricalQuerySpec",
+      "schema_version": "1.0.0",
+      "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84"
+        }
+      ],
+      "dependency_refs": [
+        {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        }
+      ],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i03:replay_root:query-PYAT-1006-WIDTH512-600-20261118-weighted",
+        "content_hash": "a2f6d643ed912788bce5162704a2d582ad788fac28088e5b9a58af642320d84b"
+      },
+      "semantic_fields": {
+        "target_refs": [
+          {
+            "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+            "kind": "QUESTION_NATIVE",
+            "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+          }
+        ],
+        "target_arity_and_topology": {
+          "arity": 1,
+          "components": [
+            {
+              "domain": [
+                "0",
+                "1"
+              ],
+              "included_states": [
+                "SUBSTANTIVE_RESPONSE"
+              ],
+              "response_semantic_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ],
+              "target_domain_replay_ref": {
+                "content_hash": "b20d20e4a677ad26fec2ebdf51598ab26833cde037ecdc54a68a8fe1ddf1d073",
+                "kind": "TARGET_DOMAIN",
+                "object_id": "urn:test:i03:target_domain:C-01"
+              },
+              "target_ref": {
+                "content_hash": "6a22f8dd2e831a4dbaff6d618e684e434884b4c131dd88f247b86f6c7eb25207",
+                "kind": "QUESTION_NATIVE",
+                "object_id": "urn:test:i03:question_native:PYAT-1006-WIDTH512-600-20261118-C"
+              },
+              "topology": "SCALAR_SINGULAR",
+              "topology_authority_refs": [
+                {
+                  "authority_content_hash": "bf6933c7029dc47feba8f9ab25a3462956629fabdad2e90e0eebbc1b94dafb4a",
+                  "authority_id": "I03-AUTH-source-PYAT-1006-WIDTH512-600-20261118",
+                  "authority_version": "1.0.0"
+                }
+              ]
+            }
+          ],
+          "joint_order_semantics": "SEMANTIC_ORDERED"
+        },
+        "condition_predicate_ref": {
+          "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+        },
+        "risk_set_ref": {
+          "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+        },
+        "empirical_universe_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "scope_refs": [
+          {
+            "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+          }
+        ],
+        "measure_basis_ref": {
+          "content_hash": "916af1dd5b79e19972eb37624dc134bb2ca22be504f9e2e93357e8b5d395cc43",
+          "kind": "MEASURE_BASIS",
+          "object_id": "urn:test:i03:measure_basis:GOVERNED_WEIGHTED"
+        },
+        "requested_output_grain": {
+          "measure_kind": "GOVERNED_WEIGHTED",
+          "response_state_semantics_ref": {
+            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+            "kind": "RESPONSE_STATE_SEMANTICS",
+            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+          },
+          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+          "source_scope_mode": "SINGLE_UNIVERSE",
+          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
+          "weight_basis_id": "W"
+        },
+        "query_authority_refs": [
+          {
+            "authority_content_hash": "de49f7ee28d407f56707927e7d7046f7fb474c936f93e16460373b3c6fdb7f84",
+            "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118",
+            "authority_version": "1.0.0"
+          }
+        ]
+      },
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f662fa7f93dfc117c5b0f64849246675d215e3145473a49cd1dad691153b2341",
+      "content_hash": "f662fa7f93dfc117c5b0f64849246675d215e3145473a49cd1dad691153b2341"
+    }
+  ],
+  "discovery_authorities": [
+    {
+      "schema_id": "DiscoveryAuthority",
+      "schema_version": "1.0.0",
+      "typed_state": "EXACT_BOUNDED_AUTHORIZED",
+      "authority_snapshot_refs": [
+        {
+          "authority_id": "I03-AUTH-PYAT-1006-WIDTH512-600-20261118-discovery",
+          "authority_version": "1.0.0",
+          "authority_content_hash": "e5f1d22a00fda4cb1456a85a0211c36bd8363ca093dd57429b5188b996d1c9ad"
+        }
+      ],
+      "dependency_refs": [],
+      "producer_replay_locator_or_reference_root": {
+        "kind": "REPLAY_ROOT",
+        "object_id": "urn:test:i05:authority-replay:d",
+        "content_hash": "360160569817f873546e2204d64aa4a629bf1c7145a5dfeefed6225a5c9f316e"
+      },
+      "semantic_fields": {
+        "candidate_grammar_ref": {
+          "content_hash": "b3f4c6899ecfde187bb7935cfa014b6596755ecde4b4e47ca46ad078641653b2",
+          "kind": "PRE553_I05_CANDIDATE_GRAMMAR",
+          "object_id": "urn:test:i05:grammar:d:b3f4c6899ecfde187bb7935cfa014b6596755ecde4b4e47ca46ad078641653b2"
+        },
+        "candidate_universe_definition": {
+          "allow_empty_frontier": false,
+          "atoms": [
+            {
+              "ancestry_refs": [],
+              "atom_id": "ALL",
+              "kind": "BRANCH",
+              "predicate_ref": {
+                "content_hash": "4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d",
+                "kind": "EmpiricalPredicate@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4160dd72e7731320a65dbdd0c1e86f49306d5c4d3dfe93a51c4461ddd612c48d"
+              }
+            },
+            {
+              "ancestry_refs": [],
+              "atom_id": "A1",
+              "kind": "RESPONSE",
+              "predicate_ref": {
+                "content_hash": "37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6",
+                "kind": "EmpiricalPredicate@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:37fcbad0dcd288edc174d50a3afa9c174da0fef27cf5825572e7fac43d6df1a6"
+              }
+            }
+          ],
+          "discovery_operation": "I03-OP-PYAT-1006-WIDTH512-600-20261118-discovery",
+          "limits": {
+            "maximum_conditioner_arity_K": 3,
+            "maximum_target_arity_J": 4
+          },
+          "query_templates": [
+            {
+              "query_ref": {
+                "content_hash": "024476c0f82518d6d8a7054d91fbc749c93b03ae8b6088b24312e602b2b5bf9f",
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:024476c0f82518d6d8a7054d91fbc749c93b03ae8b6088b24312e602b2b5bf9f"
+              },
+              "template_id": "B"
+            }
+          ],
+          "rules": [
+            {
+              "atom_ids": [
+                "A1"
+              ],
+              "baseline_atom_id": "ALL",
+              "family": "PAIR_RESPONSE_COTRAVEL",
+              "form": "SINGLE_ATOM",
+              "query_template_id": "B",
+              "rule_id": "pair",
+              "validation": {
+                "kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"
+              }
+            }
+          ],
+          "schema": "PRE553_I05_EXACT_BOUNDED_CANDIDATE_GRAMMAR@1.0.0"
+        },
+        "source_universe_scope": {
+          "allowed_universe_refs": [
+            {
+              "content_hash": "3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1",
+              "kind": "EmpiricalUniverse@1.0.0",
+              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:3ef5b79e794c019c02c70cf7b8143bc858ebe609efd2fce3b35f088e0418efd1"
+            }
+          ]
+        },
+        "risk_set_scope": {
+          "allowed_risk_set_refs": [
+            {
+              "content_hash": "fb1d49ebd9a471b40906bbc82f3720cd3ef5a6b6517416e1c932b9cccd0f7bbc",
+              "kind": "RISK_SET",
+              "object_id": "urn:test:i03:risk_set:PYAT-1006-WIDTH512-600-20261118-R"
+            }
+          ]
+        },
+        "topology_scope": {
+          "maximum_target_arity_J": 4
+        },
+        "measure_scope": {
+          "allowed_measure_kinds": [
+            "RAW",
+            "GOVERNED_WEIGHTED"
+          ]
+        },
+        "support_rules": {
+          "minimum_raw_denominator": 1
+        },
+        "validation_rules": {
+          "rules": [
+            {
+              "kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"
+            }
+          ]
+        },
+        "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+        "pruning_contract": {
+          "kind": "NONE_EXACT_EVALUATE_ALL"
+        },
+        "algorithm_identity_if_semantically_required": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+        "tie_order_rules": "CANONICAL_CANDIDATE_HASH_ORDER",
+        "rng_policy_if_any": "NONE",
+        "mode": "EXACT_BOUNDED",
+        "candidate_scoring_or_ranking_rule_if_any": {
+          "controls_frontier": false,
+          "kind": "NONE"
+        }
+      },
+      "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:740430c5bc4f9a2da7d031f5feff8c521be6fadf8b6dd7c74b0b2187291cfce7",
+      "content_hash": "740430c5bc4f9a2da7d031f5feff8c521be6fadf8b6dd7c74b0b2187291cfce7"
+    }
+  ]
+}
