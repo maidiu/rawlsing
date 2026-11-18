@@ -1,0 +1,91 @@
+{
+  "schema": "ANVIL_ROUTING_JOINT_SCALE_GATE@1",
+  "task": "ANVIL_ROUTING_JOINT_SCALE_GATE_20261118",
+  "status": "NO_EXISTING_SEALED_JOINT_FIXTURE__INPUT_GATE_FIRST",
+  "current_correctness": {
+    "code_test": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "independent_receipt": "bbc3114f70fa6948f4f3c6a55aa7d3cf5f23cef1",
+    "reopened": false
+  },
+  "question": "Can an existing authorized sealed fixture or existing bounded writer test substantial respondent count and actual populated width together within 600s build / 900s total / 6GiB RSS / 4GiB scratch?",
+  "answer": "NO_EXISTING_SEALED_JOINT_FIXTURE. The two existing sealed estates are complementary, not combined. The first blocker is the pre-run input gate: no sealed 10k-respondent x 600-question estate exists. The existing writer can be invoked but would construct a new fixture; its behavior at that combination has not been measured and no linear forecast is made.",
+  "existing_sealed_fixtures": {
+    "10k_5role": {
+      "contract": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/fixture_contract_10k.json",
+      "contract_sha256": "d2a7ffa81f95f904ceeff8c262fa0fb6680d7ec764e68e60ae18462164075526",
+      "manifest_sha256": "e192dc25e55528101b6116f81aa7bce49c170a9a72f61386e97d20a9f9e09619",
+      "respondents": 10000,
+      "questions": 5,
+      "events": 32450,
+      "routing": 50000,
+      "weights": 10000,
+      "retained_bytes": 31163472,
+      "build_wall_seconds": 210.42334323492832,
+      "build_rss_peak_sampled": 234422272,
+      "build_scratch_peak_sampled": 535740432,
+      "width_note": "5 native questions only; respondent-scale, not populated 600 width"
+    },
+    "width128_600": {
+      "contract": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/WIDTH128/fixture_contract_width128.json",
+      "contract_sha256": "89645891d608e609c2ab0b97253dd6d3ceb6a424565e382e5aba8f02a7bc604c",
+      "manifest_sha256": "4d9604dc886ff9655ad25941fdcad2e412d18de4ab07c813524068c1dad09eea",
+      "respondents": 128,
+      "questions": 600,
+      "events": 68960,
+      "routing": 76800,
+      "weights": 128,
+      "retained_bytes": 55187741,
+      "build_wall_seconds": 293.95639729802497,
+      "build_rss_peak_sampled": 200609792,
+      "build_scratch_peak_sampled": 826683762,
+      "width_note": "600 populated bindings, 128 respondents only"
+    }
+  },
+  "writer_stage_evidence": {
+    "10k_command_script": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/EXECUTION/build_10k_estate.py",
+    "10k_script_sha256": "e953c4667f7eb43dc30d13bb0a12d3b85de6b22792ee182c27f832839fc41439",
+    "10k_stage_accounting": "build_context(ShapeSpec('scale-10k', 10000)) then write_direct_estate; no separate writer phase timing; total 210.423s",
+    "width_command_script": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/WIDTH128/build_width128.py",
+    "width_script_sha256": "32efbeb09550ad526c52a5876ac2e62e23c82a9e3e1a3f70e7f17069b7fbb0b6",
+    "width_stage_accounting": "build_context(ShapeSpec('width128', respondents)) then build_width(ctx, questions) then write_direct_estate; no separate phase timing; total 293.956s",
+    "width_fixture_sha256": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1",
+    "width_fixture_behavior": "adds 595 question bindings and deterministic populated cells; 128 base respondents; no persistent sealed 10k-base joint artifact",
+    "first_resource_stage_if_authorized": "new fixture construction: build_context + build_width in the writer process before write_direct_estate; no existing sealed combined input. This is not a measured cap failure and no combined-stage timing exists."
+  },
+  "caps_and_individual_results": {
+    "build_cap_seconds": 600,
+    "total_cap_seconds": 900,
+    "rss_cap_bytes": 6442450944,
+    "scratch_cap_bytes": 4294967296,
+    "free_bytes_required": 8589934592,
+    "10k_build_within_caps": true,
+    "width128_build_within_caps": true,
+    "joint_build_within_caps": "NOT_ESTABLISHED",
+    "linear_forecast": "NOT_MADE"
+  },
+  "concrete_next_command_if_authorized": "python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_SCALE_QUALIFICATION_20261118/WIDTH128/build_width128.py --snapshot <authorized-68aa-snapshot> --out <new-authorized-combined-estate-root> --respondents 10000 --questions 600",
+  "why_not_run": "No fixture construction, new benchmark, production change or unauthorized run is permitted by this task. Existing command would construct a new unsealed estate; it is not an existing reusable input.",
+  "smallest_next_receiving_step": "Authorize either (a) a bounded writer build of the 10k x 600 combined sourcefree estate under the existing supervised caps, or (b) supply an already sealed combined estate contract. No query/matched run can be scheduled from existing sealed inputs alone.",
+  "explicitly_not_claimed": [
+    "joint 10k x 600 build fits caps",
+    "linear performance estimate",
+    "new query or benchmark",
+    "source/science/actor/CURRENT/protected authority",
+    "reopening correctness at aee954"
+  ],
+  "source_pins": {
+    "10k_contract_sha256": "d2a7ffa81f95f904ceeff8c262fa0fb6680d7ec764e68e60ae18462164075526",
+    "width_contract_sha256": "89645891d608e609c2ab0b97253dd6d3ceb6a424565e382e5aba8f02a7bc604c",
+    "10k_build_script_sha256": "e953c4667f7eb43dc30d13bb0a12d3b85de6b22792ee182c27f832839fc41439",
+    "width_build_script_sha256": "32efbeb09550ad526c52a5876ac2e62e23c82a9e3e1a3f70e7f17069b7fbb0b6",
+    "width_fixture_sha256": "8d9efbb779a1596530c89226b37b4950be6b80e067f2e2425ec78029de5334f1",
+    "correctness_code_test": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "correctness_receipt": "bbc3114f70fa6948f4f3c6a55aa7d3cf5f23cef1"
+  },
+  "limits": [
+    "No new fixture, benchmark, query or production change.",
+    "No source/science/actor/CURRENT/protected/issuer/writer authority.",
+    "No joint cap or performance claim."
+  ],
+  "stop": "STOP_FOR_RECEIVING_AUTHORIZATION_OR_SEALED_JOINT_INPUT"
+}
