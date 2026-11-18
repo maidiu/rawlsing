@@ -298,7 +298,9 @@ new exact source cut for receiving.
 
 ## Stop
 
-`BASELINE_READY_PENDING_CURRENT_OWNER_ACK`.
+`CUT1_IMPLEMENTED_READY_FOR_DISTINCT_NONAUTHOR_REVIEW` at code/test commit
+`a13d69cf5636de5541660cd60115f8b61d66261b`; evidence head
+`eb450254bd7d10a884cab3edc16bf06bf8083cba`.
 
 No production code/test edit, no owner poll, no 1/10/100 wide run, no 100k,
 no source/original35/current/science/actor/issuer/protected merge.
