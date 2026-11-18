@@ -1,0 +1,110 @@
+{
+  "schema": "ANVIL_ALL35_C11_INPUTS_RECEIPT@1",
+  "task": "ANVIL_ALL35_C11_INPUTS_20261118",
+  "status": "METADATA_PRODUCER_EXECUTED__35_METADATA_VALIDATED__0_Q2_EXECUTABLE",
+  "canonical_source_commit": "d4f0a6499432aa3186c0d92174fa228211759e44",
+  "accepted_code": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "producer": {
+    "path": "producer.py",
+    "sha256": "56742e05d1b444d4d3888a062bcdd0640ff7aa3f46d3201107656df3b0b3ea87",
+    "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/producer.py",
+    "exit": 0,
+    "no_raw_source": true,
+    "data_metadata_only": true,
+    "codebook_metadata_only": true
+  },
+  "counts": {
+    "source_count": 35,
+    "metadata_bundles_produced": 35,
+    "metadata_bundles_validated": 35,
+    "q2_executable_bundles": 0,
+    "q2_held_bundles": 35,
+    "typed_source_rights_held_bundles": 33,
+    "witness_configs_loaded": 1,
+    "sourcefree_transfer_example": "SRC01"
+  },
+  "artifacts": {
+    "result": "ALL35_RESULT.json",
+    "result_sha256": "e35d31f5dbcd1992a35e1c76211b6209ed56b9014b2d3fe1b33c072f9c7e1bdf",
+    "bundles": "bundles/SRC01.json \u2026 bundles/SRC35.json",
+    "bundle_count": 35,
+    "tests": "tests/test_all35_producer.py",
+    "evidence": [
+      "evidence/35_row_source_rights_matrix.json",
+      "evidence/FULL_SOURCE_GRANT.json",
+      "evidence/tests.txt",
+      "evidence/producer.out",
+      "evidence/producer.err"
+    ]
+  },
+  "src04_witness": {
+    "grant_path": "campaign_src04_completion/release/evidence/FULL_SOURCE_GRANT.json",
+    "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+    "config_path": "inputs/SRC04/source.config.repaired.v2.json",
+    "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
+    "config_canonical_sha256": "28630f26b491dcbce411667e3ad285ea42b40abf2d0176056a8a15d1ecad768d",
+    "loaded_source_id": "SRC04",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "physical_slots": 181,
+    "configured_response_slots": 178,
+    "configured_coordinate_slots": 3,
+    "accepted_c11_reference": {
+      "commit": "ba41253681212be14a0cde009afb99d77e14935e",
+      "release_object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION",
+      "semantic_release_hash": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+      "rows": 7337,
+      "selected_responses": 177,
+      "selected_coordinates": 3,
+      "response_positions": 1298649,
+      "q217_held_unbound_cells": 38
+    }
+  },
+  "sourcefree_transfer": {
+    "source_id": "SRC01",
+    "fixture_file_sha256": "f3c0f9b954011ed7a78127578d6fefe61a4209544544ad0399b8de0b1345909e",
+    "fixture_config_file_sha256": "4eda3129dc2e893020069f970746d1cd09eb80c2d44bcfad1130cff1dacd1df8",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ__Q2_HELD"
+  },
+  "all35_validation": {
+    "canonical_ids_ordered_unique": true,
+    "codebook_hash_matches": 35,
+    "data_path_present_and_size_matches": 35,
+    "q2_inputs_validated": 0,
+    "q2_held": 35,
+    "fields_wave_scope_accounted": true,
+    "matrix_source_count": 35,
+    "matrix_sha256": "e46177cb89a929ae4dcdc3890b88562d9a64a52ec2b7137f5275e11a1aae2444"
+  },
+  "unresolved_required_fields": {
+    "q2_all_sources": [
+      "FrozenInputCensus",
+      "SourceInventory",
+      "GrammarPolicy",
+      "ScientificFrontier",
+      "current SourceReadDecisionResolver adapter"
+    ],
+    "source_config_materialized": "SRC04 only",
+    "current_grant": "SRC04 only full-source; SRC17 partial C11-only; 33 UNKNOWN_OWNER_DECISION",
+    "held_exact": "q217 38 unbound cells; SRC17 I03/I05 excluded; source routing/response-authority gaps preserved in bundles",
+    "no_inference": true
+  },
+  "tests": {
+    "path": "tests/test_all35_producer.py",
+    "result": "4 passed in 0.98 s",
+    "exit": 0,
+    "coverage": [
+      "all35 metadata positive/typed holds",
+      "codebook drift refusal",
+      "data path drift refusal",
+      "SRC04 config drift refusal"
+    ]
+  },
+  "limits": [
+    "No original source body opened/read/hashed.",
+    "Codebooks are metadata descriptions, not authorization or eligibility.",
+    "No Q2 executable bundle; no issued frontier/census/inventory/policy/resolver.",
+    "No new grant, source science, product edit or large/real build.",
+    "Existing SRC04 intake preserved."
+  ],
+  "stop": "PUBLISHED_AT_35_METADATA_VALIDATED__Q2_HELD"
+}

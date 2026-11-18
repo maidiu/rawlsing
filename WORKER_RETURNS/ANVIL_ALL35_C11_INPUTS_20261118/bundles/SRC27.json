@@ -1,0 +1,70 @@
+{
+  "codebook": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/LiTS-I-codebook.csv",
+    "sha256": "400ad9cf8b0b350a8ba1a2a778346f190ef2bba710145e648a12fc9ff464fc44",
+    "status": "METADATA_DESCRIPTION_ONLY_NOT_AUTHORIZATION"
+  },
+  "counts": {
+    "coordinate_slots": 3,
+    "original_items": 1198,
+    "physical_slots": 1198,
+    "questions": 280,
+    "response_slots": 280,
+    "routing_rules": 280,
+    "weight_slots": 0
+  },
+  "current_permission": {
+    "authorized_host": null,
+    "authorized_purpose": null,
+    "authorized_scope": null,
+    "decision": "UNKNOWN_OWNER_DECISION",
+    "decision_reason": "NO_AUTHENTICATED_CURRENT_SOURCE_USE_GRANT_LOCATED__FILESYSTEM_PRESENCE_AND_ENGINEERING_REPLAY_ARE_NOT_PERMISSION",
+    "expiry": "NOT_STATED_NO_CURRENT_GRANT",
+    "minimal_missing_actor": "Named competent LiTS source owner/data steward with authority over the exact LiTS_I.dta SHA-256 7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09.",
+    "minimal_missing_proof": "Authenticated current source-use decision naming host, purpose, consumer use, semantic scope, retention/export limits, effective interval, currentness and revocation for SRC27 SHA-256 7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09.",
+    "proof_refs": [],
+    "retention": null,
+    "revocation": "NOT_STATED_NO_CURRENT_GRANT",
+    "source_permission_authority": null,
+    "why_not_denied_or_expired": "No explicit DENIED or EXPIRED artifact was located; absence of a grant/proof is not denial and is not inferred as permission."
+  },
+  "data_metadata_only": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta",
+    "present": true,
+    "size": 139531180,
+    "size_matches": true
+  },
+  "declared_columns": 1198,
+  "declared_rows": 29002,
+  "family": "LiTS",
+  "metadata_bundle_status": "HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING",
+  "missing_q2_inputs": [
+    "current materialized SourceConfig",
+    "current source-use grant",
+    "FrozenInputCensus",
+    "SourceInventory",
+    "GrammarPolicy",
+    "ScientificFrontier",
+    "current SourceReadDecisionResolver adapter"
+  ],
+  "original_source_bodies_read": false,
+  "q2_input_status": "HELD",
+  "rights_decision": "UNKNOWN_OWNER_DECISION",
+  "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
+  "source_artifact_id": "LiTS_I.dta",
+  "source_config": {
+    "canonical_sha256": "15f2ae367c617d944f971a82f68d4e5bd9da674dc6f3ce27f94c5630fa99b49a",
+    "file_sha256": "03671a45d89ddf3bdaf84e3b74490479e4228ba8d9158fc6de237152658d416a",
+    "materialized": false,
+    "path": "rawlsing_next/source_configuration/data/SRC27/src27.config.json"
+  },
+  "source_format": "DTA",
+  "source_id": "SRC27",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "sourcefree_fixture": {
+    "config_file_sha256": "4f591cd6468e28bd055354e0d50254341f1316ef4ae32fdd595c01058c81758d",
+    "file_sha256": "656dfce7763cbef2c649fa1fd1f9c4935163d4c2ae028e7364a3ccaaf5b07946",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ"
+  },
+  "wave": "2006"
+}

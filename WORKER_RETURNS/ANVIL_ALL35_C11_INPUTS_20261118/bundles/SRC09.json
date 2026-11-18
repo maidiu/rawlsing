@@ -1,0 +1,70 @@
+{
+  "codebook": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/Asian Barometer Wave 4 codebook.csv",
+    "sha256": "5b6d7341f16570783d4ba6f434fae58fea1ed509e75940b37565d73794cfcddb",
+    "status": "METADATA_DESCRIPTION_ONLY_NOT_AUTHORIZATION"
+  },
+  "counts": {
+    "coordinate_slots": 46,
+    "original_items": 289,
+    "physical_slots": 289,
+    "questions": 240,
+    "response_slots": 240,
+    "routing_rules": 240,
+    "weight_slots": 2
+  },
+  "current_permission": {
+    "authorized_host": null,
+    "authorized_purpose": null,
+    "authorized_scope": null,
+    "decision": "UNKNOWN_OWNER_DECISION",
+    "decision_reason": "NO_AUTHENTICATED_CURRENT_SOURCE_USE_GRANT_LOCATED__FILESYSTEM_PRESENCE_AND_ENGINEERING_REPLAY_ARE_NOT_PERMISSION",
+    "expiry": "NOT_STATED_NO_CURRENT_GRANT",
+    "minimal_missing_actor": "Named competent Asian Barometer source owner/data steward with authority over the exact Asian Barometer Wave 4.sav SHA-256 4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200.",
+    "minimal_missing_proof": "Authenticated current source-use decision naming host, purpose, consumer use, semantic scope, retention/export limits, effective interval, currentness and revocation for SRC09 SHA-256 4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200.",
+    "proof_refs": [],
+    "retention": null,
+    "revocation": "NOT_STATED_NO_CURRENT_GRANT",
+    "source_permission_authority": null,
+    "why_not_denied_or_expired": "No explicit DENIED or EXPIRED artifact was located; absence of a grant/proof is not denial and is not inferred as permission."
+  },
+  "data_metadata_only": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Asian Barometer Wave 4.sav",
+    "present": true,
+    "size": 7735596,
+    "size_matches": true
+  },
+  "declared_columns": 289,
+  "declared_rows": 20667,
+  "family": "Asian Barometer",
+  "metadata_bundle_status": "HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING",
+  "missing_q2_inputs": [
+    "current materialized SourceConfig",
+    "current source-use grant",
+    "FrozenInputCensus",
+    "SourceInventory",
+    "GrammarPolicy",
+    "ScientificFrontier",
+    "current SourceReadDecisionResolver adapter"
+  ],
+  "original_source_bodies_read": false,
+  "q2_input_status": "HELD",
+  "rights_decision": "UNKNOWN_OWNER_DECISION",
+  "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
+  "source_artifact_id": "Asian Barometer Wave 4.sav",
+  "source_config": {
+    "canonical_sha256": "1cc204b6fd709247b0fa2423ec8f95de53a2c3c74a7b6d09d59394ce77e020cf",
+    "file_sha256": "d353ad11d8320a0d72bee4a61eb05cadc9c6b64725aab2453445d4a49e27fdc9",
+    "materialized": false,
+    "path": "rawlsing_next/source_configuration/data/SRC09/SRC09.config.json"
+  },
+  "source_format": "SAV",
+  "source_id": "SRC09",
+  "source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+  "sourcefree_fixture": {
+    "config_file_sha256": "3c139f24a5ca511f65d16e5eff0135756136735ec60a6395c26ede7fea4e1895",
+    "file_sha256": "9300c0364e2664db643ebbfb366d42d857b1df6fac7bcdcd249210c5167cac13",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ"
+  },
+  "wave": "W4"
+}

@@ -1,0 +1,70 @@
+{
+  "codebook": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/World Values Survey Wave 4 codebook.csv",
+    "sha256": "8c1654ae3b9b712e959225b8464b0d407f8849873834ae306ff9ac0c81b794b4",
+    "status": "METADATA_DESCRIPTION_ONLY_NOT_AUTHORIZATION"
+  },
+  "counts": {
+    "coordinate_slots": 3,
+    "original_items": 418,
+    "physical_slots": 418,
+    "questions": 418,
+    "response_slots": 354,
+    "routing_rules": 354,
+    "weight_slots": 0
+  },
+  "current_permission": {
+    "authorized_host": null,
+    "authorized_purpose": null,
+    "authorized_scope": null,
+    "decision": "UNKNOWN_OWNER_DECISION",
+    "decision_reason": "NO_AUTHENTICATED_CURRENT_SOURCE_USE_GRANT_LOCATED__FILESYSTEM_PRESENCE_AND_ENGINEERING_REPLAY_ARE_NOT_PERMISSION",
+    "expiry": "NOT_STATED_NO_CURRENT_GRANT",
+    "minimal_missing_actor": "Named competent WVS source owner/data steward with authority over the exact WVS Wave 4.sav SHA-256 c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a.",
+    "minimal_missing_proof": "Authenticated current source-use decision naming host, purpose, consumer use, semantic scope, retention/export limits, effective interval, currentness and revocation for SRC34 SHA-256 c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a.",
+    "proof_refs": [],
+    "retention": null,
+    "revocation": "NOT_STATED_NO_CURRENT_GRANT",
+    "source_permission_authority": null,
+    "why_not_denied_or_expired": "No explicit DENIED or EXPIRED artifact was located; absence of a grant/proof is not denial and is not inferred as permission."
+  },
+  "data_metadata_only": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 4.sav",
+    "present": true,
+    "size": 41997221,
+    "size_matches": true
+  },
+  "declared_columns": 418,
+  "declared_rows": 60045,
+  "family": "WVS",
+  "metadata_bundle_status": "HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING",
+  "missing_q2_inputs": [
+    "current materialized SourceConfig",
+    "current source-use grant",
+    "FrozenInputCensus",
+    "SourceInventory",
+    "GrammarPolicy",
+    "ScientificFrontier",
+    "current SourceReadDecisionResolver adapter"
+  ],
+  "original_source_bodies_read": false,
+  "q2_input_status": "HELD",
+  "rights_decision": "UNKNOWN_OWNER_DECISION",
+  "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
+  "source_artifact_id": "WVS Wave 4.sav",
+  "source_config": {
+    "canonical_sha256": "8da98c0e3123ca4cfc84416206d2f0ef1fd4e51ecb40dea5a681cfeb439d0753",
+    "file_sha256": "cf919f86a22e6dc576fa3700ccb68ac9239f5e74dfd2ab38fd2a2c4fd23c2597",
+    "materialized": false,
+    "path": "rawlsing_next/source_configuration/data/SRC34/SRC34.source.config.json"
+  },
+  "source_format": "SAV",
+  "source_id": "SRC34",
+  "source_sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+  "sourcefree_fixture": {
+    "config_file_sha256": "1932747a999c4812f6fa5dd86497eb1bd1240865e16749654b958898f6842feb",
+    "file_sha256": "fb58a594ead4d74f3c6cdb2e6859406164dd38977e78b37ad73df089f1f6d87e",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ"
+  },
+  "wave": "W4"
+}

@@ -1,0 +1,70 @@
+{
+  "codebook": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/GSS2002-codebook.csv",
+    "sha256": "c78f97ecd10c95d62e062a31b8cf8b1e5ef50b787abc091ef0580a6f3cbeba54",
+    "status": "METADATA_DESCRIPTION_ONLY_NOT_AUTHORIZATION"
+  },
+  "counts": {
+    "coordinate_slots": 2,
+    "original_items": 1119,
+    "physical_slots": 1119,
+    "questions": 1119,
+    "response_slots": 1021,
+    "routing_rules": 1021,
+    "weight_slots": 0
+  },
+  "current_permission": {
+    "authorized_host": null,
+    "authorized_purpose": null,
+    "authorized_scope": null,
+    "decision": "UNKNOWN_OWNER_DECISION",
+    "decision_reason": "NO_AUTHENTICATED_CURRENT_SOURCE_USE_GRANT_LOCATED__FILESYSTEM_PRESENCE_AND_ENGINEERING_REPLAY_ARE_NOT_PERMISSION",
+    "expiry": "NOT_STATED_NO_CURRENT_GRANT",
+    "minimal_missing_actor": "Named competent GSS source owner/data steward with authority over the exact GSS2002.sav SHA-256 8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1.",
+    "minimal_missing_proof": "Authenticated current source-use decision naming host, purpose, consumer use, semantic scope, retention/export limits, effective interval, currentness and revocation for SRC20 SHA-256 8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1.",
+    "proof_refs": [],
+    "retention": null,
+    "revocation": "NOT_STATED_NO_CURRENT_GRANT",
+    "source_permission_authority": null,
+    "why_not_denied_or_expired": "No explicit DENIED or EXPIRED artifact was located; absence of a grant/proof is not denial and is not inferred as permission."
+  },
+  "data_metadata_only": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/GSS2002.sav",
+    "present": true,
+    "size": 17746227,
+    "size_matches": true
+  },
+  "declared_columns": 1119,
+  "declared_rows": 2765,
+  "family": "GSS",
+  "metadata_bundle_status": "HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING",
+  "missing_q2_inputs": [
+    "current materialized SourceConfig",
+    "current source-use grant",
+    "FrozenInputCensus",
+    "SourceInventory",
+    "GrammarPolicy",
+    "ScientificFrontier",
+    "current SourceReadDecisionResolver adapter"
+  ],
+  "original_source_bodies_read": false,
+  "q2_input_status": "HELD",
+  "rights_decision": "UNKNOWN_OWNER_DECISION",
+  "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
+  "source_artifact_id": "GSS2002.sav",
+  "source_config": {
+    "canonical_sha256": "e5e25188a819a8049c47698233329b83faa8dc05d6e0666778327efbea973ea2",
+    "file_sha256": "904f8076da807caa8d7698e9cc13052e0d99574ed4755b93acc2d4feceb6f035",
+    "materialized": false,
+    "path": "rawlsing_next/source_configuration/data/SRC20/SRC20.source.config.json"
+  },
+  "source_format": "SAV",
+  "source_id": "SRC20",
+  "source_sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
+  "sourcefree_fixture": {
+    "config_file_sha256": "dfe0b987423f4945c5ca4cb954e29b0fa458faceab43d55659501b2ea18b4029",
+    "file_sha256": "6d47d0a89749c8922b9f7b54b4145bb122efbbe49274e2519f79e88f06a3e591",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ"
+  },
+  "wave": "2002"
+}

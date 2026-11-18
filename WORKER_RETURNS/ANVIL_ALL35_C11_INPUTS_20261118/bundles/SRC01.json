@@ -1,0 +1,70 @@
+{
+  "codebook": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/Afrobarometer Round 1 codebook.csv",
+    "sha256": "d790f895a2094a9d914f4e6b9c7937d75aeeb4338f017673f1d7997fe12a51e2",
+    "status": "METADATA_DESCRIPTION_ONLY_NOT_AUTHORIZATION"
+  },
+  "counts": {
+    "coordinate_slots": 5,
+    "original_items": 144,
+    "physical_slots": 144,
+    "questions": 129,
+    "response_slots": 129,
+    "routing_rules": 129,
+    "weight_slots": 5
+  },
+  "current_permission": {
+    "authorized_host": null,
+    "authorized_purpose": null,
+    "authorized_scope": null,
+    "decision": "UNKNOWN_OWNER_DECISION",
+    "decision_reason": "NO_AUTHENTICATED_CURRENT_SOURCE_USE_GRANT_LOCATED__FILESYSTEM_PRESENCE_AND_ENGINEERING_REPLAY_ARE_NOT_PERMISSION",
+    "expiry": "NOT_STATED_NO_CURRENT_GRANT",
+    "minimal_missing_actor": "Named competent Afrobarometer source owner/data steward with authority over the exact Afro Barometer Round 1.sav SHA-256 6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2.",
+    "minimal_missing_proof": "Authenticated current source-use decision naming host, purpose, consumer use, semantic scope, retention/export limits, effective interval, currentness and revocation for SRC01 SHA-256 6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2.",
+    "proof_refs": [],
+    "retention": null,
+    "revocation": "NOT_STATED_NO_CURRENT_GRANT",
+    "source_permission_authority": null,
+    "why_not_denied_or_expired": "No explicit DENIED or EXPIRED artifact was located; absence of a grant/proof is not denial and is not inferred as permission."
+  },
+  "data_metadata_only": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 1.sav",
+    "present": true,
+    "size": 4492565,
+    "size_matches": true
+  },
+  "declared_columns": 144,
+  "declared_rows": 21531,
+  "family": "Afrobarometer",
+  "metadata_bundle_status": "SOURCEFREE_TRANSFER_PINNED__Q2_INPUTS_MISSING",
+  "missing_q2_inputs": [
+    "current materialized SourceConfig",
+    "current source-use grant",
+    "FrozenInputCensus",
+    "SourceInventory",
+    "GrammarPolicy",
+    "ScientificFrontier",
+    "current SourceReadDecisionResolver adapter"
+  ],
+  "original_source_bodies_read": false,
+  "q2_input_status": "HELD",
+  "rights_decision": "UNKNOWN_OWNER_DECISION",
+  "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
+  "source_artifact_id": "Afro Barometer Round 1.sav",
+  "source_config": {
+    "canonical_sha256": "bd30e23139c3c7f4fc7162522bc595e977795f5c5edf3abb40fc3ae76b085ac5",
+    "file_sha256": "e3f9d1c4393357361dc8f601e3e89fc7d60f6da88156d58866dff628131ae584",
+    "materialized": false,
+    "path": "rawlsing_next/source_configuration/data/SRC01/SRC01.config.json"
+  },
+  "source_format": "SAV",
+  "source_id": "SRC01",
+  "source_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+  "sourcefree_fixture": {
+    "config_file_sha256": "4eda3129dc2e893020069f970746d1cd09eb80c2d44bcfad1130cff1dacd1df8",
+    "file_sha256": "f3c0f9b954011ed7a78127578d6fefe61a4209544544ad0399b8de0b1345909e",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ"
+  },
+  "wave": "R1"
+}

@@ -1,0 +1,70 @@
+{
+  "codebook": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS/EVS Wave 4 codebook 2008.csv",
+    "sha256": "7a40a0ee1999825c6af30a4f6435dc17940ede3ca6d56cb293b4cce52fb54294",
+    "status": "METADATA_DESCRIPTION_ONLY_NOT_AUTHORIZATION"
+  },
+  "counts": {
+    "coordinate_slots": 71,
+    "original_items": 477,
+    "physical_slots": 477,
+    "questions": 384,
+    "response_slots": 384,
+    "routing_rules": 384,
+    "weight_slots": 2
+  },
+  "current_permission": {
+    "authorized_host": null,
+    "authorized_purpose": null,
+    "authorized_scope": null,
+    "decision": "UNKNOWN_OWNER_DECISION",
+    "decision_reason": "NO_AUTHENTICATED_CURRENT_SOURCE_USE_GRANT_LOCATED__FILESYSTEM_PRESENCE_AND_ENGINEERING_REPLAY_ARE_NOT_PERMISSION",
+    "expiry": "NOT_STATED_NO_CURRENT_GRANT",
+    "minimal_missing_actor": "Named competent EVS source owner/data steward with authority over the exact EVS 2008.sav SHA-256 5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379.",
+    "minimal_missing_proof": "Authenticated current source-use decision naming host, purpose, consumer use, semantic scope, retention/export limits, effective interval, currentness and revocation for SRC14 SHA-256 5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379.",
+    "proof_refs": [],
+    "retention": null,
+    "revocation": "NOT_STATED_NO_CURRENT_GRANT",
+    "source_permission_authority": null,
+    "why_not_denied_or_expired": "No explicit DENIED or EXPIRED artifact was located; absence of a grant/proof is not denial and is not inferred as permission."
+  },
+  "data_metadata_only": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/EVS 2008.sav",
+    "present": true,
+    "size": 63832833,
+    "size_matches": true
+  },
+  "declared_columns": 477,
+  "declared_rows": 66280,
+  "family": "EVS",
+  "metadata_bundle_status": "HELD__CURRENT_SOURCE_RIGHTS_AND_Q2_INPUTS_MISSING",
+  "missing_q2_inputs": [
+    "current materialized SourceConfig",
+    "current source-use grant",
+    "FrozenInputCensus",
+    "SourceInventory",
+    "GrammarPolicy",
+    "ScientificFrontier",
+    "current SourceReadDecisionResolver adapter"
+  ],
+  "original_source_bodies_read": false,
+  "q2_input_status": "HELD",
+  "rights_decision": "UNKNOWN_OWNER_DECISION",
+  "schema": "ANVIL_ALL35_C11_INPUT_BUNDLE@1",
+  "source_artifact_id": "EVS 2008.sav",
+  "source_config": {
+    "canonical_sha256": "579640288b5af397c6a2edf5761898b10d5d6203a5d4e133fc9071c3aed620f0",
+    "file_sha256": "a7bcd7cc30a5d985284b8232ef9a68b6c61ac9eed93afd95a41ba66851704e10",
+    "materialized": false,
+    "path": "rawlsing_next/source_configuration/data/SRC14/SRC14.config.json"
+  },
+  "source_format": "SAV",
+  "source_id": "SRC14",
+  "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+  "sourcefree_fixture": {
+    "config_file_sha256": "a6e761867b00653b7f65a1947d2249c83aec8cf1834b8ae9b3c1eaf2c813a7d4",
+    "file_sha256": "e2350a327ed692f2eb22dfcd431bc27ca0a17fee38a528a68e663efc7fb3b962",
+    "status": "SOURCEFREE_FIXTURE_PIN_ONLY__NOT_ORIGINAL_READ"
+  },
+  "wave": "2008"
+}
