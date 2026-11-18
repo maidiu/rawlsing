@@ -94,3 +94,10 @@ RSS includes fixture construction and is not an economic claim.
 These cover the retained repeated/ranked/UNKNOWN/zero/None/empty, changed/
 restore and saved-reader boundaries relevant to the cut1 Batch change. No full
 202-matrix claim is made.
+
+## Remote verification
+
+Review content commit `d9818f81670cec898391a76b8ac60d8a811eb2fd` was pushed to
+`origin/agent/anvil-engineering-cut1-g5-20261117-r1`. Direct remote verification
+found the product tree unchanged from candidate `347baec6` and the remote verdict
+valid. See `evidence/remote_verification.txt`.
