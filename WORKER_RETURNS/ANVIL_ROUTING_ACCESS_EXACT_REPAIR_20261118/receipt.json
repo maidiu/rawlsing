@@ -1,0 +1,112 @@
+{
+  "schema": "ANVIL_ROUTING_ACCESS_EXACT_REPAIR@1",
+  "task": "ANVIL_ROUTING_ACCESS_EXACT_REPAIR_20261118",
+  "status": "FROZEN_FOR_SAME_INDEPENDENT_REVIEW",
+  "branch": "agent/anvil-engineering-cut1-20261117-r1",
+  "start_head": "1620f625d086d4e102c10112a4628b07f1689137",
+  "prior_code_test": "73b480080ede013770e0c887aa5aa82af3cfafb2",
+  "code_test_sha": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+  "review_pin": "1a02f52800734bcb68d165cef67f79efa0be3d72",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "product_scope": {
+    "paths": [
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py",
+      "rawlsing_next/_pre553_query_common.py"
+    ],
+    "relative_to_73b": [
+      "rawlsing_next/pre553_direct_estate_i03.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/tests/test_anvil_authenticated_routing_access.py"
+    ],
+    "outside_scope": "NONE"
+  },
+  "source_pins": {
+    "pre553_direct_estate_i03.py": "9fd39efb858be48c6883e0238266a4991ac6de49",
+    "pre553_query_common.py": "402186dd6e923b3afdee3c2c2100c18f9ee3ce95",
+    "pre553_query_eval.py": "7372290e74aedc4210a95ea4a0d0faca0ffb1b17",
+    "test_anvil_authenticated_routing_access.py": "2df300c1cf675a6f6d965d02288b5f3a3200346e"
+  },
+  "repairs": {
+    "B1_symbol_boundary": {
+      "status": "DONE",
+      "removed": [
+        "module-level _RoutingLookup class",
+        "_routing_lookup session state"
+      ],
+      "replacement": "DirectEstateI03Session._routing_facts bound through indices_for"
+    },
+    "B2_redundant_index_member_set": {
+      "status": "DONE",
+      "removed": [
+        "routing_locator_resp_idx explicit index",
+        "unused member_set locator column"
+      ],
+      "retained": "canonical body member-set/replay semantics and evaluator authority checks"
+    },
+    "R1_bounded_row_group": {
+      "status": "DONE",
+      "implementation": "one-at-a-time existing session _row_group_cache; no per-lookup decoded-group accumulation",
+      "canonical_order": true,
+      "current_before_lookup_and_yields": true
+    },
+    "B3_distinct_conflict": {
+      "status": "DONE",
+      "physical_actual_locator": "controlled C11 candidate with two distinct canonical routing facts for same respondent/target/risk; both yielded in canonical ref order; native conflict refusal",
+      "used_authority": "actual canonical nonconflicting twin facts through locator ingress enter used and authority validation without reordering checks",
+      "duplicate_same_ref_not_counted": true
+    },
+    "B4_eager_malformed": {
+      "status": "DONE",
+      "behavior": "malformed routing body/projected identity refuses at session preparation before filtered absence"
+    }
+  },
+  "tests": {
+    "focused": {
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -o addopts='' -p no:cacheprovider --basetemp=WORKER_RETURNS/ANVIL_ROUTING_ACCESS_EXACT_REPAIR_20261118/tmp/final_focused rawlsing_next/tests/test_anvil_authenticated_routing_access.py rawlsing_next/tests/test_pre553_prepared_saved_i03.py",
+      "result": "11 passed, 0 failed, 0 errors, exit 0",
+      "time_seconds": 6.73,
+      "evidence": "evidence/focused.txt"
+    },
+    "existing_focused_nodes": {
+      "result": "3 passed, 29 deselected, exit 0",
+      "time_seconds": 0.20,
+      "evidence": "evidence/existing_checks.txt"
+    },
+    "changed_restore": {
+      "result": "1 passed, exit 0",
+      "time_seconds": 0.99,
+      "evidence": "evidence/changed_restore.txt"
+    }
+  },
+  "measurement_correction": {
+    "prior_same_session_q_timer": "SUPERSEDED_AS_END_TO_END_OR_AMORTIZATION_INTERPRETATION",
+    "end_to_end_gain_claimed": false,
+    "amortization_failure_measured": false,
+    "full_hs_qo_accounting_claimed": false,
+    "new_performance_run": false,
+    "reason": "previous comparator toggled only the adapter on one candidate prepared session; it did not measure separate baseline S/H"
+  },
+  "fixture_readiness": {
+    "pin": "ab0d54b18ffc8437f9736cd9534ed4536c4484b8",
+    "weighted_k3_plus_coordinate": "ABSENT",
+    "duplicate_matched_comparison": false,
+    "combined_case_claimed": false
+  },
+  "limits": [
+    "Tiny controlled 8R fixture; no survey-scale/100k.",
+    "Physical conflict witness uses a controlled C11 candidate; no raw source.",
+    "No new benchmark; no end-to-end or amortization claim.",
+    "No persistent artifact, reverse index, coordinate/weight locator, group cache or second dataset.",
+    "No source/science/actor/CURRENT/protected/issuer/writer authority.",
+    "Distinct independent review pending; no self-acceptance."
+  ],
+  "review": {
+    "required": "same independent reviewer",
+    "code_test_freeze": "aee95429609c372564e996c2d3d3eb30e9253cbf",
+    "evidence_freeze": "pending final evidence commit",
+    "next": "push, remote verify, stop"
+  },
+  "stop": "AWAITING_SAME_INDEPENDENT_REVIEW"
+}
