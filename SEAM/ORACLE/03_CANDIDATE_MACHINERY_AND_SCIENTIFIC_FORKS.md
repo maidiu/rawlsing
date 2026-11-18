@@ -2,7 +2,7 @@
 
 **Purpose:** propose concrete, competing computational mechanisms that could make PYAT materially necessary to SOROK without treating the survey as a mental-state oracle. These are **hypotheses for Astra to attack**, not an adopted architecture, exact existing ABI, validated psychology or authorized programme.
 
-## 0. Define 'necessary consequence' correctly
+**Essential UM-SOROK correction:** a traceable PYAT-dependent perturbation can be programmer-imposed and scientifically false. Distinguish **M mechanical dependence** from **S independently validated developmental adequacy**, require genuine no-contact/no-rule negatives, and evaluate a heldout survey respondent population **not used to infer adult candidate histories**. See [ORACLE/16](16_COLD_ACCESSION_AND_TWO_AXIS_SCIENTIFIC_VALIDATION.md). [ORACLE/15](15_ANVIL_R3_AND_EXECUTABLE_FIRST_READER_COURT.md) corrects earlier omission of independently reviewed ANVIL R3, which conditionally selects access/derived-product direction but is not protected/natively implemented. This file's A/B/C designs are unadopted hypotheses, and no amount of mechanical ablation upgrades them to psychological science.\n\n## 0. Define 'necessary consequence' correctly
 
 Rawlsing cannot claim that the real survey uniquely entails one true individual biography. The many-to-one observation problem and historical agency prohibit that.
 
@@ -11,7 +11,7 @@ It *can* demand four stronger, testable dependencies:
 - **Admissibility necessity:** source-qualified world/position/period conditions determine which fictional histories, encounters, actions and observable adult configurations are allowable, disallowed or unidentifiable.
 - **Distributional necessity:** changing properly qualified PYAT joint/conditional material/social evidence changes supported ensembles of possible lives/observables, with typed uncertainty and exceptions, *where the identified mechanism makes that evidence relevant*. Equal conditional inputs may admit different persons.
 - **Mechanism necessity:** structural facts become actual conditions of activity and are consumed by independent actor/world developmental rules; some downstream actions and acquired states are traceable through concrete events to those source-derived facts.
-- **Ablation necessity:** deleting or corrupting relevant PYAT inputs alters the reachable world/person/action or yields honest hold; retaining irrelevant inputs does not spuriously alter personhood. A prose renderer or generic actor simulator cannot replace the missing causal edge.
+- **Mechanical ablation necessity:** deleting or corrupting relevant PYAT inputs alters the reachable world/person/action or yields honest hold; retaining irrelevant inputs does not spuriously alter personhood. A prose renderer or generic actor simulator cannot replace the missing causal edge.
 
 'Necessary' = source-to-person consequential dependence **conditional on an empirically justified mechanism and stochastic/world choices**, not deterministic derivation from demographics or guaranteed psychological effect of every source item.
 
