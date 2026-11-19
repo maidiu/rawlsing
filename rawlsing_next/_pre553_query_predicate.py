@@ -465,15 +465,36 @@ def _eval_predicate(
         )
     if op in {"AND", "OR"}:
         children = _require_sequence(node.get("children"), f"{op} children")
-        values = [
-            _eval_predicate(
-                _require_mapping(child, f"{op} child"), respondent=respondent,
-                index=index, registry=registry, used=used, used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
-            )
-            for child in children
-        ]
-        return all(values) if op == "AND" else any(values)
+        known_values: list[bool] = []
+        unresolved_members: list[EmpiricalQueryResolutionError] = []
+        # Evaluate EVERY child so exact authority/used-source receipts remain
+        # complete. UNKNOWN is not False and cannot be negated into True.
+        # But AND(False, UNKNOWN) and OR(True, UNKNOWN) are already
+        # determinately False and True, respectively: do not suppress an
+        # unaffected question merely because another branch has no mapping.
+        # Never swallow any other source/authority/integrity exception.
+        for child in children:
+            try:
+                known_values.append(_eval_predicate(
+                    _require_mapping(child, f"{op} child"),
+                    respondent=respondent, index=index, registry=registry,
+                    used=used, used_auth=used_auth,
+                    derived_branch_memberships=derived_branch_memberships,
+                ))
+            except EmpiricalQueryResolutionError as exc:
+                if not str(exc).startswith("UNRESOLVED_CONDITION_MEMBER:"):
+                    raise
+                unresolved_members.append(exc)
+        if op == "AND" and False in known_values:
+            return False
+        if op == "OR" and True in known_values:
+            return True
+        if unresolved_members:
+            raise EmpiricalQueryResolutionError(
+                "UNRESOLVED_CONDITION_MEMBER: no conclusive "
+                f"{op} membership with source-typed unresolved values"
+            ) from unresolved_members[0]
+        return all(known_values) if op == "AND" else any(known_values)
     raise EmpiricalQueryResolutionError("predicate op must be AND/OR/NOT/LEAF")
 
 
