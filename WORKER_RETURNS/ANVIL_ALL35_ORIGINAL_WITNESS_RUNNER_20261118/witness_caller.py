@@ -23,7 +23,7 @@ HERE = Path(__file__).resolve().parent
 BINDING_DIR = HERE.parent / "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118"
 FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
 FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
-SINGLE_PASS_SHA = "719fe9574b0e92f69f700a67705ea4f07c32d5731055e7573bc301df613f5f2e"
+SINGLE_PASS_SHA = "2692e811401e65ab0f2f38ddd3afcedad22fc66434f886187dd2d89ee935ebec"
 RAM_CAP = 6 * 1024**3
 COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
 Q2_SPOOL_RESERVE = 1024**3                       # routing/current-Q2 spool
@@ -176,10 +176,13 @@ def preflight(args) -> int:
         overlay_cfg, host="USER_LOCAL_MAC", purpose="FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
         consumer_use="EXISTING_PRE553_SOURCE_BACKED_C11",
         semantic_use_scope=("SOURCE_NATIVE_RESPONSE_INCIDENCE", "NO_SEMANTIC_ADOPTION", "SRC04", "FULL_SRC04_C11_CONSTRUCTION"))
+    approved_request = _grant(args.binding_dir)[1].request
+    if request != approved_request:
+        raise CallerRefusal("RUNTIME_OVERLAY_GRANT_REQUEST_MISMATCH")
     result.update({"status": "RUNTIME_OVERLAY_QUALIFIED", "runtime_config_file_sha256": wr.sha_bytes(args.runtime_config),
                    "runtime_config_canonical_sha256": actual_canonical, "rule_counts": counts,
                    "added_rule_counts": {k: counts[k] - BASE_RULE_COUNTS[k] for k in counts},
-                   "request_equal_to_approved": request == _grant()[1].request,
+                   "request_equal_to_approved": True,
                    "request": {"source_id": request.source_id, "source_sha256": request.source_sha256,
                                "locator": request.custody_locator_binding, "host": request.host,
                                "purpose": request.purpose, "consumer": request.consumer_use,
@@ -192,9 +195,11 @@ def preflight(args) -> int:
 
 
 def producer(args) -> int:
+    if not args.authorized_source_launch:
+        raise CallerRefusal("EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED")
     verify_candidate(args.candidate_tree, args.candidate_patch)
     sys.path.insert(0, str(args.candidate_tree))
-    from single_pass_handoff import build_single_pass, resume_single_pass
+    from single_pass_handoff import build_single_pass, resume_single_pass, CHECKPOINT_NAME, _require_current
     from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, source_read_request_from_config
     wr, pin = _scoped()
     if args.runtime_config is None:
@@ -221,14 +226,20 @@ def producer(args) -> int:
         raise CallerRefusal("SCOPED_REQUEST_MISMATCH")
     root = Path(args.root).absolute()
     private = root / "private"
+    if root.is_symlink() or private.is_symlink():
+        raise CallerRefusal("PRIVATE_ROOT_SYMLINK_REFUSED")
     private.mkdir(mode=0o700, parents=False, exist_ok=True)
+    if private.stat().st_mode & 0o077:
+        raise CallerRefusal("PRIVATE_ROOT_PERMISSION_REFUSED")
+    if args.resume_checkpoint and args.resume_checkpoint.absolute() != private / CHECKPOINT_NAME:
+        raise CallerRefusal("RESUME_CHECKPOINT_ROOT_MISMATCH")
     if shutil.disk_usage(root).free < STARTUP_FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_PRODUCER")
     def progress(update):
         print(json.dumps(update, sort_keys=True), file=sys.stderr, flush=True)
     if args.resume_checkpoint:
         receipt = resume_single_pass(
-            checkpoint=args.resume_checkpoint, root=root, config=scoped,
+            checkpoint=args.resume_checkpoint, root=private, config=scoped,
             request=bound.request, grant_ref=bound.grant_ref,
             decision_ref=bound.decision.decision_ref, resolver=resolver,
             chunk_rows=512, progress=progress)
@@ -242,6 +253,7 @@ def producer(args) -> int:
             chunk_rows=512, progress=progress, request=bound.request,
             grant_ref=bound.grant_ref, decision_ref=bound.decision.decision_ref)
         resumed = False
+    _require_current(resolver, bound.request, bound.decision.decision_ref)
     payload = {
         "schema": "ANVIL_ALL35_WITNESS_PRODUCER_RECEIPT@1",
         "producer_pid": os.getpid(),
@@ -264,7 +276,9 @@ def producer(args) -> int:
         "checkpoint": None,
         "i02_passes": 1,
         "retained_bytes": receipt.retained_bytes,
-        "source_read_performed": True,
+        "source_read_performed": True,  # lineage: earlier admitted decode
+        "source_decode_performed_in_this_process": not resumed,
+        "source_resumed_from_authenticated_spool": resumed,
         "joined_q2": False,
         "authorized_executable_q2": False,
         "issued_workload": False,
@@ -274,6 +288,45 @@ def producer(args) -> int:
     (root / "producer.stderr").write_text("")
     print(json.dumps({"status": "PRODUCER_COMMITTED", "path": receipt.path, "single_pass": True}))
     return 0
+
+
+
+def _resume_existing_root(checkpoint: Path, work: Path) -> Path:
+    """Resume the original private checkpoint, never a fresh unrelated HMAC root."""
+    checkpoint = Path(checkpoint).absolute()
+    work = Path(work).absolute()
+    private, root = checkpoint.parent, checkpoint.parent.parent
+    if (checkpoint.name != "prepared-sections.checkpoint.json"
+            or private.name != "private" or root.parent != work
+            or any(p.is_symlink() for p in (work, root, private, checkpoint))
+            or not checkpoint.is_file() or not root.is_dir() or not private.is_dir()):
+        raise CallerRefusal("RESUME_CHECKPOINT_WORKROOT_MISMATCH")
+    if private.stat().st_mode & 0o077:
+        raise CallerRefusal("RESUME_PRIVATE_ROOT_PERMISSION_REFUSED")
+    return root
+
+
+def _enforce_src04_reference(counts: Mapping[str, int], release_hash: str) -> None:
+    """SRC04 exact historical reference gate, not a generic writer requirement."""
+    differences = {k: {"actual": counts.get(k), "accepted": v}
+                   for k, v in ACCEPTED.items()
+                   if k in counts and counts.get(k) != v}
+    if differences:
+        raise CallerRefusal("SRC04_ACCEPTED_COUNTS_DIFFER",
+                            json.dumps(differences, sort_keys=True))
+    if release_hash != ACCEPTED["release_hash"]:
+        raise CallerRefusal("SRC04_ACCEPTED_RELEASE_HASH_DIFFER")
+
+
+def _reader_current(resolver, request, decision_ref, roots, held) -> bool:
+    if roots != held:
+        return False
+    from single_pass_handoff import _require_current, CheckpointRefusal
+    try:
+        _require_current(resolver, request, decision_ref)
+    except CheckpointRefusal:
+        return False
+    return True
 
 
 def reader(args) -> int:
@@ -294,14 +347,8 @@ def reader(args) -> int:
     request = _bound.request
 
     def current(roots):
-        if roots != held:
-            return False
-        decision = resolver.resolve_current(request)
-        return (decision.currentness == "CURRENT_GRANTED"
-                and decision.source_id == "SRC04"
-                and decision.purpose == request.purpose
-                and decision.consumer_use == request.consumer_use
-                and decision.physical_read_extent == "EXACT_FILE")
+        return _reader_current(resolver, request,
+                               _bound.decision.decision_ref, roots, held)
 
     estate = VerifiedDirectEstate(
         root / "private", exact_path=receipt["estate_path"],
@@ -347,8 +394,10 @@ def reader(args) -> int:
         "source_read_performed_by_reader": False,
         "source_path_opened_stat_hashed_decoded_by_reader": False,
     }
+    payload["historical_reference_verified"] = not differences and payload["release_ref_equal_to_accepted"]
     (root / "reader_receipt.json").write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
-    print(json.dumps({"status": "READER_OPENED", "counts": counts,
+    _enforce_src04_reference(counts, estate.reconstructed_v1_release_ref.content_hash)
+    print(json.dumps({"status": "READER_REFERENCE_PARITY_VERIFIED", "counts": counts,
                       "differences": differences}))
     return 0
 
@@ -387,8 +436,11 @@ def supervisor(args) -> int:
         raise CallerRefusal("RUNTIME_OVERLAY_REQUIRED_FOR_RUN")
     work = Path(args.work_root).absolute()
     work.mkdir(mode=0o700, parents=True, exist_ok=True)
-    root = (work / tempfile_name(work, args.candidate_tree)).absolute()
-    root.mkdir(mode=0o700)
+    if args.resume_checkpoint:
+        root = _resume_existing_root(args.resume_checkpoint, work)
+    else:
+        root = (work / tempfile_name(work, args.candidate_tree)).absolute()
+        root.mkdir(mode=0o700)
     if shutil.disk_usage(root).free < STARTUP_FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_RUN")
     base = [sys.executable, str(Path(__file__).resolve()), "--mode"]
@@ -403,7 +455,8 @@ def supervisor(args) -> int:
                  if args.resume_checkpoint else []))
     samples: list[dict[str, Any]] = []
     started = time.monotonic()
-    producer = subprocess.Popen([*base, "producer", *common], cwd=str(HERE),
+    producer = subprocess.Popen([*base, "producer", *common,
+                                 "--authorized-source-launch"], cwd=str(HERE),
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                 text=True, start_new_session=True)
     abort = None

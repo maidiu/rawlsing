@@ -278,7 +278,8 @@ def _require_current(resolver, request, decision_ref):
         raise CheckpointRefusal("CURRENT_NOT_GRANTED", first.currentness)
     if first.revocation_ref is not None:
         raise CheckpointRefusal("CURRENT_REVOKED")
-    for name in ("source_id", "source_sha256", "host", "purpose", "consumer_use",
+    for name in ("source_id", "source_sha256", "source_format",
+                 "custody_locator_binding", "host", "purpose", "consumer_use",
                  "read_operation", "physical_read_extent", "metadata_freeze_refs",
                  "semantic_use_scope"):
         if getattr(first, name) != getattr(request, name):

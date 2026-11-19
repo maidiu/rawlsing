@@ -39,3 +39,22 @@ The candidate tree must hash as `pre553_source_i02_handoff.py = 6ab7cb50…` and
 8. No wall clock cutoff; abort only on RSS/free-space caps or failure.
 
 Startup working-room gate: **26,907,826,727 B** (R3 terminal stage less duplicate journal + 8 GiB reserve). In-flight abort floor: **8 GiB**. RAM cap: 6 GiB. Current commercial-free availability was 15,924,334,592 B, leaving a **10,983,492,135 B startup gap**; no real run was launched.
+
+## Follow-on hostile integration repair (source-static; not a new test receipt)
+
+The original b3dd caller bypassed the launch flag through direct producer invocation,
+created the checkpoint under root/private but resumed from root, and allocated an
+unrelated run root on restart. Reader differences and release mismatch were advisory
+only, and its CURRENT callback missed decision/revocation/source-format/locator checks.
+
+Direct producer mode now enforces the flag *as well as* independent grant/currentness;
+the supervisor passes it to the child. For resume supply the original --work-root and
+--resume-checkpoint path inside its private directory; do not make a new root. A
+resume is writer continuation with no additional source decode. The exact SRC04
+reference witness now rejects count/release mismatches, and preflight rejects
+request/grant divergence. Source-format and custody locator are included in full
+CURRENT checks.
+
+No actual original SRC04 source launch or real resumed writer has been carried out
+for this patch; the old three green sourcefree tests apply to b3dd only. New tests
+are authored but unexecuted and independent receiving remains held.

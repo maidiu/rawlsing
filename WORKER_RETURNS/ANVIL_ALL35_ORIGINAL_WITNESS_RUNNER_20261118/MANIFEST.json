@@ -4,8 +4,8 @@
   "compact_spool_tested": true,
   "files": {
     "CALLER_README.md": {
-      "bytes": 3364,
-      "sha256": "8577970c08b9149d40c1ebc15bfef3c605e0d85aaa0ce450b685f281a5068233"
+      "bytes": 4532,
+      "sha256": "2d9e27ceff017da5019115e61efb781890350b6e3aca29a47e428d6ee994c882"
     },
     "CURRENT_GUARD_TEST.json": {
       "bytes": 68,
@@ -204,8 +204,8 @@
       "sha256": "78cc3638abf0720bb5cd64d9a98768bff1498896e1eff796458d57fc742b900b"
     },
     "single_pass_handoff.py": {
-      "bytes": 21043,
-      "sha256": "719fe9574b0e92f69f700a67705ea4f07c32d5731055e7573bc301df613f5f2e"
+      "bytes": 21104,
+      "sha256": "2692e811401e65ab0f2f38ddd3afcedad22fc66434f886187dd2d89ee935ebec"
     },
     "test_current_guard.py": {
       "bytes": 1507,
@@ -220,12 +220,20 @@
       "sha256": "61075d0d19b2d1d83831324b683fc78cf8f9a776ddf83ca06dd3b0301f93a13f"
     },
     "witness_caller.py": {
-      "bytes": 24851,
-      "sha256": "d574a55676a57cbbc2bd87242802cddd11b2bc63abca76ae86d1681183cb6bac"
+      "bytes": 27578,
+      "sha256": "9f288b4a085c9bc4a5495e2d779a23011af3c971ced5f1a3976ac249481866b7"
     },
     "witness_runner.py": {
       "bytes": 13940,
       "sha256": "b91cef44077b7496007f55246e489eb08f96262ffcd0c46a146040ff115785ed"
+    },
+    "test_witness_integration_guards.py": {
+      "bytes": 3494,
+      "sha256": "8cbfea415426978167a85bd713e06e7eb77818942c176946045c48c70795285b"
+    },
+    "HOSTILE_INTEGRATION_REPAIR.md": {
+      "bytes": 2607,
+      "sha256": "f56c82abaccb24bc03e5e8c55cccc7c070ec894b40dc7be8164462e84817e7ef"
     }
   },
   "free_space_blocker": {
@@ -244,5 +252,10 @@
   "source_read_performed": true,
   "sourcefree_only": true,
   "sourcefree_rehearsal": true,
-  "status": "COMPACT_PARITY_REVIEWED__CALLER_DEFECTS_REPAIRED__HEADROOM_CLEARED"
+  "status": "HOSTILE_AUTHOR_INTEGRATION_REPAIR__RUNTIME_NOT_RUN__SOURCE_NATIVE_NOT_LAUNCHED",
+  "b3dd_historical_status": "COMPACT_PARITY_REVIEWED__CALLER_DEFECTS_REPAIRED__HEADROOM_CLEARED",
+  "b3dd_parent": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
+  "new_test_execution": "NOT_RUN",
+  "independent_review": "NOT_RUN",
+  "protected_receiving": "NOT_PERFORMED"
 }
