@@ -109,3 +109,47 @@ def test_unmapped_response_does_not_skip_independent_approved_coordinate_owner(
     # respondent including the one whose response meaning was unmapped.
     assert handoff.stats.coordinate_count == 2 * fixture[2]
     assert sum(_states(Path(handoff.destination), "EmpiricalCoordinateFact").values()) == 2 * fixture[2]
+
+
+
+def test_unmapped_value_must_not_acquire_union_of_conflicting_known_occurrences():
+    from types import SimpleNamespace
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_source_backed_c11_facade import OccurrenceRule
+    from rawlsing_next.pre553_source_i02_handoff import (
+        _occurrence_templates, SourceI02Refusal,
+    )
+
+    def occurrence(tag, key="0"):
+        ref = ExactRef(
+            "RESPONSE_TOPOLOGY", f"urn:test:preff:c0:{tag}",
+            semantic_hash(tag),
+        )
+        return OccurrenceRule(
+            key=key, topology_ref=ref,
+            multiplicity_order_rank_fields={"index": int(key),
+                                             "kind": "SCALAR_SINGULAR"},
+        )
+
+    one = occurrence("T1")
+    other = occurrence("T2")
+    same = SimpleNamespace(values=(
+        SimpleNamespace(occurrences=(one,)),
+        SimpleNamespace(occurrences=(one,)),
+    ))
+    assert _occurrence_templates(same) == (one,)
+    wrong = SimpleNamespace(values=(
+        SimpleNamespace(occurrences=(one,)),
+        SimpleNamespace(occurrences=(other,)),
+    ))
+    with pytest.raises(SourceI02Refusal, match="TOPOLOGY_AMBIGUOUS"):
+        _occurrence_templates(wrong)
+    added = SimpleNamespace(values=(
+        SimpleNamespace(occurrences=(one,)),
+        SimpleNamespace(occurrences=(one, occurrence("T3", key="1"))),
+    ))
+    with pytest.raises(SourceI02Refusal, match="TOPOLOGY_AMBIGUOUS"):
+        _occurrence_templates(added)
+    no_source_template = SimpleNamespace(values=())
+    with pytest.raises(SourceI02Refusal, match="NO_OCCURRENCE_TEMPLATE"):
+        _occurrence_templates(no_source_template)
