@@ -10,6 +10,7 @@ only. No source bytes are handled here.
 """
 from __future__ import annotations
 import dbm, hashlib, json, os, shutil, tempfile, datetime
+from collections import OrderedDict
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
@@ -31,6 +32,33 @@ _REQUIRED = frozenset({"EmpiricalUniverse","RespondentIdentity","QuestionVariabl
 
 class StreamRefusal(ValueError):
     pass
+
+class ShardedRefIndex:
+    """Bounded exact ref index: deterministic shards, LRU-bounded dbm handles."""
+    def __init__(self, root: Path, *, shards: int = 128, max_open: int = 16):
+        self.root=Path(root); self.shards=shards; self.max_open=max_open
+        self.handles=OrderedDict(); self.paths={i:self.root/f".ref-index-{i:03d}" for i in range(shards)}
+    def _shard(self,key: str) -> int:
+        return int.from_bytes(hashlib.sha256(key.encode("utf-8")).digest()[:4],"big") % self.shards
+    def _db(self,i: int):
+        if i in self.handles:
+            db=self.handles.pop(i);self.handles[i]=db;return db
+        while len(self.handles)>=self.max_open:
+            _,old=self.handles.popitem(last=False)
+            try:old.close()
+            except Exception:pass
+        db=dbm.open(str(self.paths[i]),"c");self.handles[i]=db;return db
+    def add(self,key: str) -> None:
+        db=self._db(self._shard(key))
+        if key in db: raise StreamRefusal("DUPLICATE_EXACT_REF")
+        db[key]=b""
+    def close(self) -> None:
+        for db in self.handles.values():
+            try:db.close()
+            except Exception:pass
+        self.handles.clear()
+
+
 
 
 def _sha256(value: Any) -> str:
@@ -116,7 +144,7 @@ def write_streaming_estate(
     stage = Path(tempfile.mkdtemp(prefix=".stream-stage-", dir=root)); stage.chmod(0o700)
     writers = {f: _Sink(stage / (f + ".parquet"), f, chunk_rows) for f in _FAMILIES_IN_ORDER}
     index = _IndexSink(stage / "event_locator.parquet", chunk_rows)
-    ref_index = dbm.open(str(stage / ".ref-index"), "n")
+    ref_index = ShardedRefIndex(stage)
     counts = {}
     try:
         for family in _FAMILIES_IN_ORDER:
@@ -132,9 +160,7 @@ def write_streaming_estate(
                     pass
                 if not getattr(obj, "ref", None):
                     raise StreamRefusal("OBJECT_WITHOUT_REF")
-                if obj.ref.key in ref_index:
-                    raise StreamRefusal("DUPLICATE_EXACT_REF")
-                ref_index[obj.ref.key] = b""
+                ref_index.add(obj.ref.key)
                 group, offset = writers[family].add(obj)
                 if family == "RespondentEvent":
                     index.add(writers[family].pending[-1] if writers[family].pending else _row(family, obj), group, offset)

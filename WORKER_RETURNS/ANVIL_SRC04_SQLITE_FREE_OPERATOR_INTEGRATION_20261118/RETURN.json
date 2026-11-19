@@ -23,13 +23,25 @@
     "stream_release_identity": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|cfe4d1e07c47036d67c70ead9785e3a2c49c2b40f21d1a48fc8f3eab9ad89127"
   },
   "compact_runner_source": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
+  "expected_roots_changed": false,
   "free_space": {
     "available_bytes": 44736503808,
     "gap_bytes": 0,
     "in_flight_floor_bytes": 8589934592,
     "startup_floor_bytes": 26907826727
   },
+  "full_estate_benchmark": false,
   "full_witness_launched": false,
+  "index_repair": {
+    "capacity_seconds": 427.23095005203504,
+    "duplicate_refused": true,
+    "entries_tested": 2626832,
+    "implementation": "ShardedRefIndex@128 shards, LRU max 16 open descriptors",
+    "index_bytes": 340996096,
+    "index_files": 128,
+    "runtime_pin": "d4d188c54bbab99f8a1e0c467168f0209f75fc5f56fbe85a390ff7af461a1b6f",
+    "streaming_estate_sha256": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
+  },
   "legacy_compatibility": "old VerifiedDirectEstate read path retained; cut test passes",
   "limitations": [
     "Sourcefree fixture only",
@@ -136,10 +148,27 @@
       "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
     }
   },
+  "resume_wiring": {
+    "exit": 2,
+    "free_min": 39334514688,
+    "rss_peak": 45137920,
+    "samples": 3,
+    "schema": "ANVIL_ALL35_WITNESS_SUPERVISOR@1",
+    "status": "PRODUCER_REFUSED"
+  },
   "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_RETURN@1",
   "source_cut": "302e04941fc1d3d986af41a9a61d4869e927ca3d",
   "source_read_performed": false,
-  "status": "SQLITE_FREE_OPERATOR_INTEGRATION_GREEN__ACTUAL_READER_FIXED",
+  "sourcefree_resume": {
+    "decode_called": false,
+    "no_sqlite": true,
+    "normal_counts_equal": true,
+    "normal_manifest_equal": true,
+    "normal_roots_equal": true,
+    "reader_counts_equal": true,
+    "reader_digests_equal": true
+  },
+  "status": "SHARDED_INDEX_REPAIR_GREEN__CHECKPOINT_RESUME_GREEN__SOURCEFREE_ONLY",
   "tests": {
     "actual_sourcefree_reader": "PASS",
     "cut": "....                                                                     [100%]\n4 passed in 3.92s",

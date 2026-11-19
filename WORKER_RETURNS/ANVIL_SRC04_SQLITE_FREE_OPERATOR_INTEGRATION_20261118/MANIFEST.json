@@ -16,6 +16,42 @@
       "bytes": 1826,
       "sha256": "914e85b54a3adc5cda664cf32e38304d832836f05d7e6db2a0615f6322b5bef4"
     },
+    "INDEX_RESUME_WIRING.txt": {
+      "bytes": 149,
+      "sha256": "d1edb1a58856cb6bd485c85282616c74a5e580b99327d5d5a21f50cfba749d4b"
+    },
+    "INDEX_SOURCEFREE_NORMAL.json": {
+      "bytes": 1606,
+      "sha256": "4cc996b5acf4e06d3b2b13a3ce874aaace28fd7b9b1680fb7149c6cd3acfb4dc"
+    },
+    "INDEX_SOURCEFREE_NORMAL.out": {
+      "bytes": 10,
+      "sha256": "496e739cc0a30be316b82997d5464dffce18525f6728bdd6b01ada4cc83223c7"
+    },
+    "INDEX_SOURCEFREE_READER.out": {
+      "bytes": 44,
+      "sha256": "5c47933d04e27a0a04affb5ae0e86c091a4f71ace0e16f79064da4b32786907b"
+    },
+    "INDEX_SOURCEFREE_READERS.json": {
+      "bytes": 3740,
+      "sha256": "f9dd3064691fadf12bc5d337f0696afda3a6cfaa94158125dc6fb40305812949"
+    },
+    "INDEX_SOURCEFREE_RESUME.out": {
+      "bytes": 18,
+      "sha256": "b06930ecc7650b2071d0f667d224edc69bfe33191c9d51bd88292d87acf8fdb5"
+    },
+    "INDEX_SOURCEFREE_RESUMED.json": {
+      "bytes": 1607,
+      "sha256": "4d8286d3676e5e1647f5a649b05ef44b1ef4e2b25118d285179a36631cbebc07"
+    },
+    "INDEX_SOURCEFREE_STOP.json": {
+      "bytes": 154,
+      "sha256": "1adb2b0f4855ba519a079a202969b8e3a6a92a818a293e766586b35d55181722"
+    },
+    "INDEX_SOURCEFREE_STOP.out": {
+      "bytes": 8,
+      "sha256": "3fd8d9c761a4aea7c2911a579306650dcc3aa2c0afcc12fa9184b445c502e3cc"
+    },
     "INTEGRATION.patch": {
       "bytes": 2220,
       "sha256": "e4a2de742d157ebcca102a88d14c098cfd61874b9d2f7208caf619a10b017ec6"
@@ -65,8 +101,16 @@
       "sha256": "3fd8d9c761a4aea7c2911a579306650dcc3aa2c0afcc12fa9184b445c502e3cc"
     },
     "RETURN.json": {
-      "bytes": 8565,
-      "sha256": "6680ba0c20128a3f3e78b27c02ccc11d291dba1b7117e46201598af8ef03c6c1"
+      "bytes": 9538,
+      "sha256": "e3dc035cedd4246e13488cded37d08085351cd5d91292a8772f8d9d827a70f33"
+    },
+    "SHARDED_INDEX_RECEIPT.json": {
+      "bytes": 250,
+      "sha256": "389f0b5280fc9f51de6446951eb543180b2d10ac61655b2607be029fda4ecdad"
+    },
+    "SHARDED_INDEX_TEST.txt": {
+      "bytes": 230,
+      "sha256": "9aaa79ef204f4bb609fec814c16bf10910ce691f6cab251e17a7e36f7439b6df"
     },
     "SRC04_WITNESS_SCOPE.json": {
       "bytes": 4347,
@@ -94,11 +138,15 @@
     },
     "sqlite_free_witness.py": {
       "bytes": 25632,
-      "sha256": "0cbfc4382e065309e673ec1c766b69e80fb43bcc66c786ace3264472d8e90b08"
+      "sha256": "d4d188c54bbab99f8a1e0c467168f0209f75fc5f56fbe85a390ff7af461a1b6f"
     },
     "streaming_estate.py": {
-      "bytes": 14077,
-      "sha256": "5a8a4d6cd0a1f2793571c695c9d5658f7e882213821f745ed0d42614514474e2"
+      "bytes": 15161,
+      "sha256": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
+    },
+    "test_sharded_index.py": {
+      "bytes": 1299,
+      "sha256": "a1efdce17f42f6ace8dcffd1bd4b0cfd28c1bf276439660f251d79d5afa5f9c1"
     },
     "test_sqlite_free_cut.py": {
       "bytes": 8508,
@@ -110,8 +158,11 @@
     }
   },
   "object_new_bypass": false,
+  "runtime_streaming_pin": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a",
   "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_MANIFEST@1",
+  "sharded_index": true,
+  "source_read_performed": false,
   "sourcefree_only": true,
   "sqlite_free_normal": true,
-  "status": "SQLITE_FREE_OPERATOR_INTEGRATION_GREEN__ACTUAL_READER_FIXED"
+  "status": "SHARDED_INDEX_REPAIR_GREEN__CHECKPOINT_RESUME_GREEN__SOURCEFREE_ONLY"
 }
