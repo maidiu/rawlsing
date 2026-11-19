@@ -1,13 +1,26 @@
 {
   "base_sha": "1f8b61b81cdbcfdd3d1b12d2826b5464df87fd66",
+  "batch_owner_modified": false,
   "files": {
+    "GREEN_PATCHED.json": {
+      "bytes": 707,
+      "sha256": "f8d40863afaa845334cf81bdc4ed853c85a146d801e69835a76c2cc82b9d6da2"
+    },
+    "I05_UNRESOLVED_REPAIR.patch": {
+      "bytes": 1307,
+      "sha256": "7825cd02024b6a1e310efcf5c8d34161a33ce0c5540cab4f83330d14cfda83b2"
+    },
     "README.md": {
-      "bytes": 2224,
-      "sha256": "9de721e2c52da4436120dda83dd30f270672f36e5f0a6536bf6cccabfb75ceeb"
+      "bytes": 2826,
+      "sha256": "5cf9e5197fbe68cfa9f70a813772fd37d015990acdac5c4417c5bcc06f23fca6"
+    },
+    "RED_ORIGINAL.json": {
+      "bytes": 718,
+      "sha256": "1439318c4031385dbc8a60a8f4b31b2ed7b99270e158445ffd1e0fdb333ff2a1"
     },
     "RETURN.json": {
-      "bytes": 6100,
-      "sha256": "ff7ccaeee18103b85f683dfc00c9c1cf6b416a69aa4c02e3d631706e80fcd15a"
+      "bytes": 8376,
+      "sha256": "41616e7c5d1299f66cd1e2dd7322bfa87e4d964c183992186972ff4fc8b33d8a"
     },
     "TRACE.json": {
       "bytes": 5731,
@@ -16,12 +29,17 @@
     "trace_i03_i05_batch.py": {
       "bytes": 15914,
       "sha256": "d027a3dd7a0e6b9e27274b4b9cb1d1d5a00c11b797357518ebbdbd3197890fda"
+    },
+    "verify_i05_unresolved_repair.py": {
+      "bytes": 6747,
+      "sha256": "5a105d8cb572e1f77588d99f83af4b66f9c57ade68f4db737b87706298b9e947"
     }
   },
   "original_source_accessed": false,
   "product_files_modified": false,
+  "repair_status": "RED_GREEN_I05_UNRESOLVED_DISTINCT",
   "schema": "ANVIL_SRC16_I03_I05_BATCH_TRACE_MANIFEST@1",
   "sourcefree": true,
   "src16_sha": "5a4b1cabce9625a61cfe26c20afb519531f567bd",
-  "status": "FIRST_DISCREPANCY__UNRESOLVED_MAPPED_TO_COVERAGE_LIMITED__BATCH_PRIOR_RECEIPT_REUSE_UNVALIDATED"
+  "status": "I05_UNRESOLVED_REPAIR_RED_GREEN__BATCH_OWNER_SEPARATE"
 }

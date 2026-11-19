@@ -82,9 +82,9 @@
     "why": "UNRESOLVED is collapsed with UNAVAILABLE in _terminal_fact_class before _evaluate_candidate selects EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED."
   },
   "one_narrow_fix": {
-    "batch_prior_cache": "In execute_saved_batch, require exact prior native outputs and validate every completed prior receipt with the existing _validate_prior_cache; reject otherwise. Do not trust result_refs from a prior receipt alone.",
-    "first_discrepancy": "In pre553_discovery_exact._terminal_fact_class, test UNRESOLVED before UNAVAILABLE and return UNRESOLVED; in _evaluate_candidate return EVALUATED_UNRESOLVED / UNRESOLVED; add EVALUATED_UNRESOLVED to TERMINAL_COVERAGE_STATES.",
-    "not_applied": true
+    "batch_prior_cache": "Separate Batch owner lane; not edited here.",
+    "first_discrepancy": "Use existing EVALUATED_UNRESOLVED coverage lane and split UNRESOLVED before UNAVAILABLE; preserve COVERAGE_LIMITED typed lane because DISCOVERY_RESULT_STATE has no UNRESOLVED member.",
+    "status": "APPLIED_IN_ISOLATED_COPY_NOT_PRODUCT"
   },
   "original_source_accessed": false,
   "pins": {
@@ -102,6 +102,87 @@
     "typed_state": "SUPPORTED"
   },
   "product_files_modified": false,
+  "repair": {
+    "applied_to_isolated_sourcefree_copy": true,
+    "applied_to_product": false,
+    "batch_owner_modified": false,
+    "existing_coverage_lane": "EVALUATED_UNRESOLVED",
+    "existing_typed_lane": "COVERAGE_LIMITED",
+    "green": {
+      "authority_denial": {
+        "message": "current source/operation authority refused",
+        "type": "DirectEstateError"
+      },
+      "batch_invoked": false,
+      "positive": {
+        "raw_denominator_support": 8,
+        "typed_state": "SUPPORTED"
+      },
+      "schema": "ANVIL_SRC16_I05_UNRESOLVED_VERIFY@1",
+      "sourcefree": true,
+      "status": "GREEN",
+      "tree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/i05-patch-gen/apply",
+      "unresolved": {
+        "coverage_state": "EVALUATED_UNRESOLVED",
+        "fact_states": [
+          "UNRESOLVED",
+          "UNRESOLVED"
+        ],
+        "typed_state": "COVERAGE_LIMITED",
+        "valid_empty": false
+      },
+      "valid_empty": {
+        "coverage_state": "EVALUATED_VALID_EMPTY",
+        "fact_states": [
+          "SUPPORTED",
+          "ZERO_SUPPORT"
+        ],
+        "typed_state": "VALID_EMPTY",
+        "valid_empty": true
+      }
+    },
+    "new_state_added": false,
+    "patch_file": "I05_UNRESOLVED_REPAIR.patch",
+    "patch_scope": [
+      "rawlsing_next/pre553_discovery_exact.py"
+    ],
+    "patch_sha256": "7825cd02024b6a1e310efcf5c8d34161a33ce0c5540cab4f83330d14cfda83b2",
+    "red": {
+      "authority_denial": {
+        "message": "current source/operation authority refused",
+        "type": "DirectEstateError"
+      },
+      "batch_invoked": false,
+      "positive": {
+        "raw_denominator_support": 8,
+        "typed_state": "SUPPORTED"
+      },
+      "schema": "ANVIL_SRC16_I05_UNRESOLVED_VERIFY@1",
+      "sourcefree": true,
+      "status": "RED",
+      "tree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER",
+      "unresolved": {
+        "coverage_state": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+        "fact_states": [
+          "UNRESOLVED",
+          "UNRESOLVED"
+        ],
+        "typed_state": "COVERAGE_LIMITED",
+        "valid_empty": false
+      },
+      "valid_empty": {
+        "coverage_state": "EVALUATED_VALID_EMPTY",
+        "fact_states": [
+          "SUPPORTED",
+          "ZERO_SUPPORT"
+        ],
+        "typed_state": "VALID_EMPTY",
+        "valid_empty": true
+      }
+    },
+    "sourcefree": true,
+    "status": "RED_GREEN_I05_UNRESOLVED_DISTINCT"
+  },
   "rights_denial": {
     "direct_i05": {
       "message": "current source/operation authority refused",
@@ -118,7 +199,7 @@
   "sqlite_files": [],
   "src16_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119",
   "src16_sha": "5a4b1cabce9625a61cfe26c20afb519531f567bd",
-  "status": "FIRST_DISCREPANCY__UNRESOLVED_MAPPED_TO_COVERAGE_LIMITED__BATCH_PRIOR_RECEIPT_REUSE_UNVALIDATED",
+  "status": "I05_UNRESOLVED_REPAIR_RED_GREEN__BATCH_OWNER_SEPARATE",
   "trace": {
     "executed": true,
     "path": "TRACE.json",

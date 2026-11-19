@@ -37,13 +37,30 @@ still yields three `COMPLETED` receipts and `FULL_MANIFEST_COVERAGE`, with no
 native execution. The prior-cache consistency guard exists in the issued path
 (`_validate_prior_cache`) but is not applied by `execute_saved_batch`.
 
-## Narrow fix (not applied)
+## I05 unresolved repair — isolated RED/GREEN
 
-1. Split `UNRESOLVED` from `UNAVAILABLE` in `_terminal_fact_class`; add a
-   distinct `EVALUATED_UNRESOLVED` / `UNRESOLVED` terminal.
-2. Require exact prior native outputs in `execute_saved_batch` and validate
-   completed prior receipts with the existing `_validate_prior_cache`; reject
-   otherwise.
+`I05_UNRESOLVED_REPAIR.patch` is the exact one-file patch for
+`rawlsing_next/pre553_discovery_exact.py`. It is not applied to the product
+tree.
+
+- RED: `EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY` / `COVERAGE_LIMITED`
+- GREEN: `EVALUATED_UNRESOLVED` / `COVERAGE_LIMITED`
+- native fact states remain `UNRESOLVED`
+- valid empty remains `EVALUATED_VALID_EMPTY` / `VALID_EMPTY`
+- positive I03 remains `SUPPORTED`, denominator 8
+- revoked authority remains `DirectEstateError`
+
+`EVALUATED_UNRESOLVED` is an existing caller lane in
+`pre553_analytical_state_and_route.py`; no new state is invented. The existing
+typed lane remains `COVERAGE_LIMITED`.
+
+The separate Batch prior-receipt issue is not modified here. No Batch owner
+code or evidence is changed.
+
+## Prior narrow fix note
+
+The earlier suggested Batch fix is intentionally not in this patch; the Batch
+owner lane remains separate.
 
 Run:
 
