@@ -247,7 +247,7 @@ def producer(args) -> int:
         print(json.dumps(update, sort_keys=True), file=sys.stderr, flush=True)
     if args.resume_checkpoint:
         receipt = resume_single_pass(
-            checkpoint=args.resume_checkpoint, root=root, config=scoped,
+            checkpoint=args.resume_checkpoint, root=root / "private", config=scoped,
             request=bound.request, grant_ref=bound.grant_ref,
             decision_ref=bound.decision.decision_ref, resolver=resolver,
             checkpoint_root=checkpoint_root, preserve_checkpoint=True,
@@ -285,7 +285,7 @@ def producer(args) -> int:
         "checkpoint": None,
         "i02_passes": 1,
         "retained_bytes": receipt.retained_bytes,
-        "source_read_performed": True,
+        "source_read_performed": not resumed,
         "joined_q2": False,
         "authorized_executable_q2": False,
         "issued_workload": False,
