@@ -1,5 +1,5 @@
 --- MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_single_pass.py	2026-11-19 01:28:59
-+++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_single_pass.py	2026-11-19 03:03:33
++++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_single_pass.py	2026-11-19 03:37:36
 @@ -350,6 +350,7 @@
  ):
      """One admitted decode, exact projected sections, authenticated checkpoint, one writer pass."""
@@ -8,10 +8,17 @@
      from streaming_estate import write_streaming_estate
      doc = config.document if hasattr(config, "document") else config
      original = doc["binding"]["identity_class"] == "ORIGINAL_SOURCE"
-@@ -373,9 +374,11 @@
+@@ -373,9 +374,18 @@
              raise handoff.SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
          if incidence.row_count != doc["binding"]["row_count"]:
              raise handoff.SourceI02Refusal("DECODED_SOURCE_ROWS_MISMATCH")
++        # One bounded aggregate precheck before any spool/projection.  It reports
++        # every mapped-slot binding gap at once (age is the first observed case)
++        # instead of failing on the first cell of a later full run.
++        from mapped_slot_precheck import aggregate_mapped_slots
++        coverage = aggregate_mapped_slots(doc, incidence.iter_cells(batch_size))
++        if not coverage["precheck_passed"]:
++            raise handoff.SourceI02Refusal("UNBOUND_MAPPED_SLOTS", coverage)
 +        row_native_keys = row_native_keys_from_transport(
 +            config, incidence=incidence, batch_size=batch_size)
          projection = handoff.build_governed_c11_projection(
@@ -21,7 +28,7 @@
          universe_ref = projection.universes[0].ref
          root = Path(private_root).absolute()
          spool_dir = Path(tempfile.mkdtemp(prefix=".s1e-i02-spool-", dir=root))
-@@ -390,7 +393,7 @@
+@@ -390,7 +400,7 @@
              counts, _metrics, _slots, _key = handoff._project_spooled_families(
                  config=config, projection=projection, incidence=incidence,
                  spool_paths=write_paths, batch_size=batch_size,
@@ -31,7 +38,7 @@
                  projection=projection, incidence=incidence,
                  spool_paths=actual_paths, counts=counts,
 --- MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py	2026-11-19 02:26:55
-+++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_witness.py	2026-11-19 03:18:02
++++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_witness.py	2026-11-19 03:37:36
 @@ -20,10 +20,11 @@
  from typing import Any, Mapping
 
@@ -41,7 +48,7 @@
  FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
  FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
 -SINGLE_PASS_SHA = "399c71e013d7a9afffb3bc1f512d94d76a85117ee5b917d35bd1d5ef80cec01e"
-+SINGLE_PASS_SHA = "d70de4b9a82f0434833fcf998181a98bd045f37558b39270f22522c2f4e003dd"
++SINGLE_PASS_SHA = "f72220d3add9f4fff5c8ee66f416d3fb9b6df053d15fca2c1d5216fd956bef4f"
  STREAMING_ESTATE_SHA = "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
  RAM_CAP = 6 * 1024**3
  COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness

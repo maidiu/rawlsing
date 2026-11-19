@@ -1,146 +1,136 @@
-# SRC16 common supervisor — native row-group correction
+# SRC16 native mapping — age refusal and bounded gap census
 
-## Readiness
+## Finding
 
-- **NATIVE SRC16 ADAPTER PRODUCER CHUNK ROWS: 512** (default corrected)
-- **TEST_ONLY SOURCEFREE CHUNK ROWS: 2** (kept for fixture test only)
-- **KEYED TEST_ONLY SOURCE THROUGH THE ACTUAL COMMON SUPERVISOR: PASS**
-- **TWO DISTINCT CHILD PIDS: PASS**
-- **SRC16 METADATA-ONLY PROFILE RESOLUTION VIA ACTUAL ADAPTER: PASS**
-- **SRC16 NATIVE INITIAL BUILD: READY-INPUT, NOT RUN**
-- **KEYED NO-DECODE RESUME: NOT PROVEN (honest residual)**
-- No original source access or launch by this worker.
-
-## Scale defect corrected
-
-The actual source-adapter producer branch in
-`common/sqlite_free_witness.py` previously passed `chunk_rows=2` for every
-adapter profile. That produced tens of thousands of tiny Parquet row groups on
-a real source and invalidated real performance/storage.
-
-The branch now uses:
-
-```python
-chunk_rows=(2 if prof.kind == "sourcefree" else 512)
-```
-
-The real SRC16 adapter therefore uses the existing native 512-row default.
-The sourcefree TEST_ONLY path keeps 2 where the fixture requires it. No gate,
-benchmark, source read, or launch was added.
-
-## Corrected call path
-
-`generic_cli.py --mode src16-run` still routes to the existing common
-supervisor; it does not call `build_single_pass` directly:
-
-`common/sqlite_free_witness.py --mode run --source-adapter <private-profile>`
-
-The common supervisor starts the producer child with the same adapter, waits
-for producer termination, then starts the native reader child with the same
-adapter. Existing caps, progress, and logs remain in force. The adapter checks
-the exact config/current and requires the source path to match the exact
-private grant before decode. No alternate source-path env override exists in
-the child path.
-
-## Sourcefree check
-
-The actual common supervisor was run once with a keyed TEST_ONLY sourcefree
-profile. Supervisor result:
+The admitted native run at `3d63d416e9ed…` refused before publish with:
 
 ```json
-{"schema":"ANVIL_ALL35_WITNESS_SUPERVISOR@1","status":"COMPLETE",
- "producer_exit":0,"reader_exit":0,"abort":null,
- "elapsed":1.7461587350117043,"samples":6,
- "rss_peak":100450304,"free_min":38117892096}
+{"code":"UNBOUND_RESPONSE_CELL","detail":{"row":1,"slot":[11,"age"]}}
 ```
 
-Child receipts:
+The pinned config has an `age` response slot whose configured substantive value
+set is only `89 = 89 or older`.  Its other 13 values are typed missing/special
+codes.  The existing `GSS1972-codebook.csv` likewise gives only
+`response_options_substantive = "89 = 89 or older"` and does not state the
+ordinary age range.  Therefore the ordinary age tokens at physical ordinal 11
+are not inferable from the pinned config/codebook alone.  Adding a guessed
+`18..88` range or accepting arbitrary numeric codes would be semantic invention
+and is not done.
 
-- producer PID `79174`; reader PID `79182`; **distinct PIDs**;
-- producer/reader counts equal: 6 identities/events/routing/coordinates,
-  1 universe, 1 question, 7 authority snapshots, 0 weights;
-- no `.sqlite` artifact;
-- TEST_ONLY chunk setting: 2.
+The `.sav` was not modified.  No source was opened by this worker.
 
-## SRC16 metadata-only profile resolution
+## One bounded precheck correction
 
-`generic_cli.py --mode src16-metadata` now constructs and resolves a source
-profile through the **actual** `common/source_adapter.py` `Profile`; it no
-longer relies on a standalone resolver helper. No source path is opened,
-stat'ed, hashed, or decoded.
+`common/sqlite_free_single_pass.py` now invokes
+`common/mapped_slot_precheck.py` **once after exact decode and before spool or
+projection**.  It aggregates unresolved physical tokens for every mapped
+response/coordinate/weight slot, plus missing and duplicate mapped cells, and
+refuses with `UNBOUND_MAPPED_SLOTS` containing the whole aggregate report.
+This prevents repeated full runs that would stop at age first.
 
-Result:
+The sourcefree path was re-run through the actual common supervisor after the
+change: `COMPLETE`, producer/reader exit 0, distinct child PIDs `84780`/`84791`,
+6 rows, no SQLite.  `copy_observed_raw` coordinate handling is respected.
 
-```json
-{"status":"SRC16_METADATA_ADMISSION_PASS",
- "source_id":"SRC16","config_file_sha256":"1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
- "config_canonical_sha256":"c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
- "currentness":"CURRENT_GRANTED","revocation":null,
- "shape":{"rows":1613,"physical_slots":216,"response_slots":157,
- "coordinate_slots":2,"weight_slots":0},
- "negative_cases":[
- {"case":"other_source","code":"EXACT_REQUEST_MISMATCH","refused":true},
- {"case":"analysis_purpose","code":"EXACT_REQUEST_MISMATCH","refused":true},
- {"case":"incorrect_scope","code":"EXACT_REQUEST_MISMATCH","refused":true}],
- "source_read_performed":false}
-```
+Synthetic yes/no witness (`synthetic_mapping_witness.out`):
 
-A separate actual common-producer adapter denial with a denied purpose returned
-`BindingRefusal: EXACT_REQUEST_MISMATCH` before decode. No source bytes were
-opened.
+- pinned config file `1106de3e…`;
+- configured age values: 14;
+- `89` bound: yes;
+- typed missing `-99`, `-98`, system missing: bound: yes;
+- ordinary `18` unresolved: yes;
+- arbitrary code `3` not made valid: yes;
+- one precheck collected `18` and `30` together: yes;
+- no respondent rows emitted and no source read.
 
-## Exact direct common supervisor command
+## Exact missing evidence: one controller census
 
-Private values are supplied only by the owner. The private profile is:
-
-```json
-{"kind":"src16","config":"$PRIVATE_SRC16_CONFIG",
- "binding_dir":"$PRIVATE_SRC16_GRANT_DIR",
- "source_path":"$PRIVATE_EXACT_SRC16_SOURCE"}
-```
-
-Exact command:
+The worker cannot run the source.  The owner/controller can run this one bounded
+census under the **existing exact SRC16 construction grant**, using the existing
+profile and resolver, without any new grant or wider scope:
 
 ```bash
 PYTHONPATH="$PRIVATE_CANDIDATE_TREE:$RETURN/common" \
 PYTHONDONTWRITEBYTECODE=1 \
-python3 -B "$RETURN/common/sqlite_free_witness.py" \
-  --mode run \
-  --source-adapter "$PRIVATE_SRC16_PROFILE" \
-  --candidate-tree "$PRIVATE_CANDIDATE_TREE" \
-  --candidate-patch "$PRIVATE_CANDIDATE_PATCH" \
-  --config "$PRIVATE_SRC16_CONFIG" \
-  --binding-dir "$PRIVATE_SRC16_GRANT_DIR" \
-  --work-root "$PRIVATE_WORK_ROOT"
+python3 -B "$RETURN/common/gap_census.py" \
+  --profile "$PRIVATE_SRC16_PROFILE" \
+  --out "$PRIVATE_GAP_CENSUS_JSON" \
+  --controller-run
 ```
 
-This is the direct common supervisor command; the owner launches it. It is not
-run by this worker.
+`$PRIVATE_SRC16_PROFILE` is the existing exact SRC16 profile containing
+`binding_dir`, `config`, and `source_path`.  The script:
 
-## Residual
+1. loads the pinned config and exact current resolver;
+2. verifies config file SHA `1106de3e…`, canonical SHA `c26e8e71…`, source SHA
+   `e368fc0f…`, currentness and revocation;
+3. performs one bounded physical pass;
+4. writes only aggregate per-slot unresolved tokens/counts, missing/duplicate
+   slot counts, and no respondent rows, identity keys, source bytes, or
+   decoded response table.
 
-Only the keyed **no-decode resume** path lacks an explicit typed-key witness
-checkpoint test. Normal initial build and sourcefree keyed supervision are
-tested. No new grant, scientific, or alternate-lifecycle issue was introduced.
+The output must remain local/private, not Git.  It collects all mapped-slot
+unresolved coverage at once, not just age.
+
+## Exact repair content after census
+
+The exact repair is to add, for each **observed** unresolved age token returned
+by the census, a rule with the original token and physical state:
+
+```json
+{
+  "raw_value": "<observed decoded age token>",
+  "missing_state": "OBSERVED_STORAGE_VALUE",
+  "source_missing_declaration": null,
+  "response_state": "SUBSTANTIVE_RESPONSE",
+  "occurrences": "<copy the existing age scalar occurrence exactly>",
+  "canonical_value": null,
+  "transform_authority_ref": null,
+  "extra_authority_refs": []
+}
+```
+
+Only tokens actually observed in the exact source are added.  Unobserved
+arbitrary codes remain unbound.  No canonical recoding, range invention,
+category invention, or field discard is performed.  Other unresolved slots in
+the census are reported together and must be adjudicated from their own exact
+codebook evidence; they are not silently coerced.
+
+This worker has not mutated the pinned config or published an override because
+the census tokens have not been supplied.  That census output is the exact
+missing evidence required to finish the age construction mapping.
+
+## Metadata-only agreement
+
+`generic_cli.py --mode src16-metadata` still passes through the actual source
+adapter:
+
+- source SHA `e368fc0f…`;
+- config file `1106de3e…`, canonical `c26e8e71…`;
+- 1,613 rows / 216 physical / 157 response / 2 coordinates / 0 weights;
+- `CURRENT_GRANTED`, no revocation;
+- other-source, analysis-purpose and incorrect-scope cases refused with
+  `EXACT_REQUEST_MISMATCH`;
+- `source_read_performed: false`.
+
+## Residual / scope
+
+- Native SRC16 remains **READY-INPUT, NOT RERUN**.
+- Exact age mapping remains blocked only on the aggregate census token set.
+- No new wave, Q2/science, protected write, runner redesign beyond the bounded
+  aggregate precheck, alternate lifecycle, or DHIKR was added.
+- Source config and authorization identity remain pinned; `.sav` unchanged.
 
 ## Files
 
-- `common.patch`
+- `common/mapped_slot_precheck.py`
+- `common/gap_census.py`
+- `common/synthetic_mapping_witness.py`
 - `common/sqlite_free_single_pass.py`
 - `common/sqlite_free_witness.py`
-- `common/source_adapter.py`
-- `common/sourcefree_fixture.py`
-- `common/streaming_estate.py`
-- `generic_cli.py`
-- `sourcefree_native_chunk.out`
-- `sourcefree_native_chunk_receipts.json`
-- `src16_native_metadata.out`
-- `keyed_adapter_supervisor.out`
-- `keyed_adapter_receipts.json`
-- `sourcefree_test.out`
-- `src16_metadata_test.out`
+- `sourcefree_precheck_test.out`
+- `sourcefree_precheck_receipts.json`
+- `synthetic_mapping_witness.out`
+- `src16_metadata_mapping_repair.out`
 - `src16_denial.out`
 - `receipt.json`
-
-No original source read/run, private path/config/grant publication, per-wave
-lifecycle, protected edit, new GSS writer, Q2/science, or DHIKR was added.

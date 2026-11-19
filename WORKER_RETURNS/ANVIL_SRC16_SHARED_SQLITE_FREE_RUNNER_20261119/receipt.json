@@ -1,12 +1,41 @@
 {
+  "age_refusal": {
+    "code": "UNBOUND_RESPONSE_CELL",
+    "codebook_substantive": "89 = 89 or older",
+    "config_canonical_sha256": "c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
+    "config_file_sha256": "1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
+    "config_substantive_tokens": [
+      "89.0"
+    ],
+    "name": "age",
+    "ordinal": 11,
+    "ordinary_range_not_in_metadata": true,
+    "row": 1
+  },
+  "census": {
+    "controller_run_required": true,
+    "exact_existing_grant": true,
+    "file": "common/gap_census.py",
+    "one_bounded_pass": true,
+    "output_local_private": true,
+    "status": "REQUIRED_NOT_RUN_BY_WORKER"
+  },
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 5221,
-      "sha256": "6f6ee49a24da59aa0d590c13f00284457c68c802eaa7283204748569a430c338"
+      "bytes": 5359,
+      "sha256": "b047e70d70ed1165dc07b3494d9e93c394e144b3ecbfebc466772f3179703a7e"
     },
     "common.patch": {
-      "bytes": 15315,
-      "sha256": "ffc08e6578cb3ed1fa88685154460c0d4bce53e7b29e9867a9a12c665a6889c3"
+      "bytes": 15819,
+      "sha256": "0b108bd0734137d458f6a5683949057798d0f1ae799780d285c0a6abd18da4bf"
+    },
+    "common/gap_census.py": {
+      "bytes": 5310,
+      "sha256": "b6a38e210038b2d9ef0500716d84d3481a275cd7a390f54c192406231289734d"
+    },
+    "common/mapped_slot_precheck.py": {
+      "bytes": 5515,
+      "sha256": "20836568963fd60a439e3df174709d531c5e969719c06dd1705e71359a6a99aa"
     },
     "common/source_adapter.py": {
       "bytes": 3338,
@@ -17,77 +46,71 @@
       "sha256": "466b7995f5d7abf12e7d580c54e7d750a4da4b27f6cf4e255e75c7259ef95cfe"
     },
     "common/sqlite_free_single_pass.py": {
-      "bytes": 21661,
-      "sha256": "d70de4b9a82f0434833fcf998181a98bd045f37558b39270f22522c2f4e003dd"
+      "bytes": 22158,
+      "sha256": "f72220d3add9f4fff5c8ee66f416d3fb9b6df053d15fca2c1d5216fd956bef4f"
     },
     "common/sqlite_free_witness.py": {
       "bytes": 35126,
-      "sha256": "128bd9704d55e6541cc40b66af1e4cca3dfad714652ee49d2fb9f3208bf9e2d1"
+      "sha256": "6fbdfcd92108656cc099e3b3ea5365fea06cbfc2a0bb2bf4e9396a43b9eedb4d"
     },
     "common/streaming_estate.py": {
       "bytes": 15161,
       "sha256": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
     },
+    "common/synthetic_mapping_witness.py": {
+      "bytes": 3902,
+      "sha256": "4fc31f8f5ab584b07ae8dab5811f6be51541c78746fdf8e1f94c142868dfdfa1"
+    },
     "generic_cli.py": {
       "bytes": 7656,
       "sha256": "fb1e4f62cab6bb952c167eff8629354c0479ac7c38a45b5cb6aeac2eb0589259"
     },
-    "keyed_adapter_receipts.json": {
-      "bytes": 1436,
-      "sha256": "d5499e339cb56d8f674cc6b6759f98ebd7212ee62720c32717263fc921380e4e"
+    "sourcefree_precheck_receipts.json": {
+      "bytes": 1344,
+      "sha256": "40ac84f1c66f1d1893ecf8972331f0f6b42c5e7be2bd993fd683624452f4af69"
     },
-    "keyed_adapter_supervisor.out": {
-      "bytes": 367,
-      "sha256": "ed9bb1147741b0170488f6114a8f4f0c79d0c43fcb3078d0333f3778420b1847"
+    "sourcefree_precheck_test.out": {
+      "bytes": 366,
+      "sha256": "9dd01476e962a9b37d5a8581b1296866d5c9a40bf5c590535b84a1c8f7261fec"
     },
-    "sourcefree_native_chunk.out": {
-      "bytes": 367,
-      "sha256": "6b23d2e32ff16a23ee3ba98f52fb77e14b2dcd73294326c1154b3bc4e8d25b7f"
-    },
-    "sourcefree_native_chunk_receipts.json": {
-      "bytes": 1355,
-      "sha256": "bd7ffe24956427f15e581c0d62d8be3efc28faffd064adc8799515da18e53d0f"
-    },
-    "sourcefree_supervisor.out": {
-      "bytes": 367,
-      "sha256": "b2b67703069ac2c95fc5ac0f0215d039a15b6d3bc4a1979930f8cd23784017f5"
-    },
-    "sourcefree_test.out": {
-      "bytes": 793,
-      "sha256": "d58cb1bfe194e688f4353d2c37fdab30d4ae08e99bf66cad78834b4f5deb5f14"
+    "src16_age_refusal.out": {
+      "bytes": 165,
+      "sha256": "70914afd1e458f67894993c4cbde2a006457ea89f3ab2ca94258328954216f91"
     },
     "src16_denial.out": {
       "bytes": 84,
       "sha256": "588fd7d34b4742c6f4e5c5724fb94e5f003a697fbcf6aac6b4fc78853240618d"
     },
-    "src16_metadata_test.out": {
+    "src16_metadata_mapping_repair.out": {
       "bytes": 826,
       "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
     },
-    "src16_native_metadata.out": {
-      "bytes": 826,
-      "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
+    "synthetic_mapping_witness.out": {
+      "bytes": 1150,
+      "sha256": "2b96468bd1aa1b8934db6e0e89cbeb9f6f5b7f3df6aa2ace3d37e4af1ca9fac2"
     }
   },
-  "native_chunk_policy": {
-    "corrected_file": "common/sqlite_free_witness.py",
-    "defect": "adapter branch hardcoded chunk_rows=2",
-    "real_src16_adapter": 512,
-    "test_only_sourcefree": 2
-  },
   "native_source": {
+    "age_mapping": "EXACT_OBSERVED_TOKENS_REQUIRED",
     "keyed_resume_proven": false,
-    "launch_path": "generic_cli src16-run -> common supervisor --source-adapter",
-    "status": "READY_INPUT_NOT_RUN"
+    "status": "READY_INPUT_NOT_RERUN"
   },
-  "no_new_gss_writer": true,
-  "no_original_source_read": true,
+  "no_new_grant_or_scope": true,
+  "no_original_source_read_by_worker": true,
   "no_private_paths_published": true,
+  "no_sav_modification": true,
   "no_sqlite": true,
+  "precheck": {
+    "aggregate_only": true,
+    "all_mapped_slots": true,
+    "checks": "synthetic_mapping_witness.out",
+    "file": "common/mapped_slot_precheck.py",
+    "respondent_rows_emitted": false,
+    "synthetic_status": "PASS"
+  },
   "schema": "ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER@1",
   "sourcefree_supervised": {
     "distinct_pids": true,
-    "elapsed": 1.7461587350117043,
     "family_counts": {
       "AuthoritySnapshot": 7,
       "EmpiricalCoordinateFact": 6,
@@ -98,36 +121,23 @@
       "RoutingEligibilityFact": 6,
       "WeightMeasureFact": 0
     },
-    "free_min": 38117892096,
+    "free_min": 38891307008,
+    "precheck_passed": true,
     "producer_exit": 0,
-    "producer_pid": 79174,
+    "producer_pid": 84780,
     "reader_exit": 0,
-    "reader_pid": 79182,
-    "rss_peak": 100450304,
-    "samples": 6,
+    "reader_pid": 84791,
+    "rss_peak": 97968128,
+    "samples": 7,
     "sqlite_present": false,
     "status": "COMPLETE"
   },
   "src16_metadata": {
-    "actual_adapter_profile_resolution": true,
-    "common_producer_denial": "ENFORCED_BEFORE_DECODE",
     "config_canonical_sha256": "c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
     "config_file_sha256": "1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
-    "negative_cases": [
-      "other_source",
-      "analysis_purpose",
-      "incorrect_scope"
-    ],
-    "shape": {
-      "coordinate_slots": 2,
-      "physical_slots": 216,
-      "response_slots": 157,
-      "rows": 1613,
-      "weight_slots": 0
-    },
     "source_read_performed": false,
     "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
-    "status": "PASS"
+    "status": "SRC16_METADATA_ADMISSION_PASS"
   },
-  "status": "NATIVE_CHUNK_512_CORRECTED__SOURCEFREE_2_PASS__SRC16_ADAPTER_METADATA_PASS__NATIVE_READY_INPUT__KEYED_RESUME_RESIDUAL"
+  "status": "AGE_MAPPING_REFUSAL_REPRODUCED__AGGREGATE_PRECHECK_ADDED__SOURCEFREE_PASS__CENSUS_REQUIRED__NATIVE_NOT_RERUN"
 }

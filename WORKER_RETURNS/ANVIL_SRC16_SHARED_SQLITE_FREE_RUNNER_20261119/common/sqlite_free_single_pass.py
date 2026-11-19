@@ -374,6 +374,13 @@ def build_single_pass(
             raise handoff.SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
         if incidence.row_count != doc["binding"]["row_count"]:
             raise handoff.SourceI02Refusal("DECODED_SOURCE_ROWS_MISMATCH")
+        # One bounded aggregate precheck before any spool/projection.  It reports
+        # every mapped-slot binding gap at once (age is the first observed case)
+        # instead of failing on the first cell of a later full run.
+        from mapped_slot_precheck import aggregate_mapped_slots
+        coverage = aggregate_mapped_slots(doc, incidence.iter_cells(batch_size))
+        if not coverage["precheck_passed"]:
+            raise handoff.SourceI02Refusal("UNBOUND_MAPPED_SLOTS", coverage)
         row_native_keys = row_native_keys_from_transport(
             config, incidence=incidence, batch_size=batch_size)
         projection = handoff.build_governed_c11_projection(
