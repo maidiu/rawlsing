@@ -384,3 +384,41 @@ def test_actual_pairwise_i03_marginals_identical_while_triples_differ():
             for row in rhs.target_topology["complete_cell_semantic_projection"]
         }
         assert left_cells == right_cells
+
+
+def test_sourcefree_caller_cannot_mint_strong_causal_or_actor_permission():
+    _, _, _, query, result = _case(tag="FF01-NO-CALLER-CAUSAL")
+    for forbidden in ("STRONG_CAUSAL", "FF02_MATERIAL_POWER", "V3_ACTOR_AUTHORITY", "SOROK_WORLD"):
+        with pytest.raises(FF01GenericIngressError, match="protected use"):
+            _receive(query, result, producer_permission_ceiling=(forbidden,))
+
+
+def test_new_generic_supported_ingress_requires_actual_i03_respondent_enumeration():
+    _, _, _, query, result = _case(tag="FF01-NO-ROSTER")
+    invalid = _changed_result(
+        result, risk_set_member_refs=None, denominator_member_refs=None,
+    )
+    with pytest.raises(FF01GenericIngressError, match="missing both respondent"):
+        _receive(query, invalid)
+
+
+def test_no_duplicate_question_position_can_masquerade_as_three_independent_dimensions():
+    from rawlsing_next.field_forge_generic_empirical_ingress import _domain
+    _, _, _, query, _ = _case(tag="FF01-DUPLICATE-DIMENSION")
+    fields = dict(query.semantic_fields)
+    refs = list(query.target_refs)
+    components = dict(query.target_arity_and_topology)
+    comps = [dict(row) for row in components["components"]]
+    refs[2] = refs[0]
+    comps[2] = comps[0]
+    fields["target_refs"] = refs
+    fields["target_arity_and_topology"] = {**components, "components": comps}
+    duplicate = native.EmpiricalQuerySpec(
+        typed_state=query.typed_state,
+        authority_snapshot_refs=query.authority_snapshot_refs,
+        dependency_refs=query.dependency_refs,
+        producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+    with pytest.raises(FF01GenericIngressError, match="duplicate target ref"):
+        _domain(duplicate)
