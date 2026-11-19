@@ -149,12 +149,14 @@
     }
   },
   "resume_wiring": {
-    "exit": 2,
-    "free_min": 39334514688,
-    "rss_peak": 45137920,
-    "samples": 3,
-    "schema": "ANVIL_ALL35_WITNESS_SUPERVISOR@1",
-    "status": "PRODUCER_REFUSED"
+    "no_source_decode": true,
+    "note": "missing-checkpoint run wiring refused before source; retained original checkpoint not opened or changed",
+    "result": {
+      "code": "CHECKPOINT_MISSING",
+      "detail": "",
+      "status": "REFUSED"
+    },
+    "retained_checkpoint_not_executed": true
   },
   "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_RETURN@1",
   "source_cut": "302e04941fc1d3d986af41a9a61d4869e927ca3d",
