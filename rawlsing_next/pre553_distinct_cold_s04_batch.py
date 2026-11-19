@@ -254,6 +254,9 @@ def execute_distinct_native_s04_research(
                 "OPERATION_SCOPED_EXTERNAL_EXACT_REF_MATCH__NOT_ISSUER"
                 if interpretation else "INTERPRETATION_CURRENT_NOT_VERIFIED"
             ),
+            "mapping_edition_dependencies": (
+                "SEPARATE_C11_VERSIONED_MAPPING_IDENTITY_NOT_ESTABLISHED"
+            ),
         })
 
     source._live()
