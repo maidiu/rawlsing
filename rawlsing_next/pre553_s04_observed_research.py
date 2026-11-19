@@ -387,17 +387,20 @@ def ask_s04_common_risk_predictor_evidence(
     owner still determines valid comparative metric and uncertainty.
     """
     m = _read(knowledge)
-    _request(m, target_index, context)
+    selected_context = _request(m, target_index, context)
+    normalized_context = dict(selected_context)
     if isinstance(candidate_indices, (str, bytes)) or not isinstance(candidate_indices, Sequence):
         raise S04KnowledgeError("candidate predictors must be explicit sequence")
     indices = tuple(candidate_indices)
     if (not indices or any(type(i) is not int or i == target_index or not (0 <= i < m["target_arity"]) for i in indices)
             or len(indices) != len(set(indices))):
         raise S04KnowledgeError("invalid comparable predictor selection")
-    if any(i in context for i in indices):
+    if any(i in normalized_context for i in indices):
         raise S04KnowledgeError("candidate predictor cannot be preselected in common context")
     indices = tuple(sorted(indices))
-    baseline = ask_s04_exact_condition(knowledge=knowledge, target_index=target_index, conditions=context)
+    baseline = ask_s04_exact_condition(
+        knowledge=knowledge, target_index=target_index, conditions=normalized_context,
+    )
     common_n = baseline.material()["raw_conditioned_full_case_n"]
     tables = []
     if m["state"] == "SUPPORTED_SAMPLE_DESCRIPTIVE":
@@ -406,7 +409,7 @@ def ask_s04_common_risk_predictor_evidence(
             for value in m["target_domains"][index]:
                 req = ask_s04_exact_condition(
                     knowledge=knowledge, target_index=target_index,
-                    conditions={**context, index: value},
+                    conditions={**normalized_context, index: value},
                 )
                 detail = req.material()
                 parts.append({
@@ -425,7 +428,11 @@ def ask_s04_common_risk_predictor_evidence(
     return _answer({
         "contract": ANSWER_CONTRACT,
         "kind": "COMPARABLE_CONDITIONAL_TABLES_NOT_DETERMINICITY_RANK",
-        "state": "COUNTS_AVAILABLE__SCIENTIFIC_METHOD_HELD" if tables else "SOURCE_OR_SCIENCE_HELD",
+        "state": (
+            "COUNTS_AVAILABLE__SCIENTIFIC_METHOD_HELD" if tables and common_n
+            else "ZERO_WITHIN_COMPLETE_CASE_CONTEXT" if tables and common_n == 0
+            else "SOURCE_OR_SCIENCE_HELD"
+        ),
         "knowledge_ref": knowledge.ref.as_dict(),
         "source_release_ref": m["release_ref"],
         "risk_set_ref": m["risk_set_ref"],
@@ -433,7 +440,7 @@ def ask_s04_common_risk_predictor_evidence(
         "target_ref": m["target_refs"][target_index],
         "candidate_indices": list(indices),
         "common_context": [
-            {"index": i, "value": v} for i, v in sorted(context.items())
+            {"index": i, "value": v} for i, v in selected_context
         ],
         "baseline_answer_ref": baseline.ref.as_dict(),
         "common_full_case_n": common_n,
