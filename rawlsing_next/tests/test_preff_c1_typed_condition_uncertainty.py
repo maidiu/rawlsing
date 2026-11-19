@@ -81,9 +81,9 @@ def test_native_i03_typed_held_condition_conserves_exact_unknown_members(
     assert ff01.semantic_projection()["complete_cells"] == []
     held = ff01.semantic_projection()["held_condition_membership_uncertainty"]
     assert held["state"] == "UNRESOLVED_CONDITION_MEMBERSHIP__NO_FULL_DISTRIBUTION"
-    from rawlsing_next.pre553_empirical_objects import semantic_hash
-    assert held["unknown_member_ref_commitment"] == semantic_hash(
-        material["source_unknown_condition_member_refs"]
+    assert "unknown_member_ref_commitment" not in held
+    assert held["roster_binding"] == (
+        "EXACT_S04_KNOWLEDGE_REF_ONLY__NO_EXPORTED_ROSTER_DIGEST"
     )
     assert held["unknown_member_n"] == unknown_count
     assert held["member_refs_exported"] is False

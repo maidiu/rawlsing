@@ -38,6 +38,14 @@ def test_real_source_derived_xor_detects_pair_synergy_and_adaptive_context():
     assert root["pairwise_conditional_interactions"][0]["joint_information_bits"] == 1.0
     assert root["pairwise_conditional_interactions"][0]["sample_interaction_information_bits"] == 1.0
     assert root["split_axis"] == 0
+    assert m["bootstrap_rank_instability"]["observed_priority_group"] == [0, 1]
+    assert any(
+        item["axes"] == [0, 1] and
+        item["observed_information_bits"] == 1.0 and
+        item["unique_top_group_fraction"] is not None
+        for item in m["bootstrap_rank_instability"]["groups"]
+    )
+    assert root["pairwise_conditional_interactions"][0]["interpretation"] == "SAMPLE_SYNERGY__NONCAUSAL"
     assert len(m["nodes"]) >= 3
     assert {node["depth"] for node in m["nodes"]} >= {0, 1}
     assert m["no_new_I03_or_source_reads"] is True
@@ -123,3 +131,64 @@ def test_bootstrap_no_observed_context_does_not_attempt_empty_multinomial():
     )
     assert result["state"] == "ZERO_OBSERVED_CONTEXT_SUPPORT__NO_IID_RESAMPLING"
     assert result["repetitions_completed"] == 0
+
+def test_group_bootstrap_ranks_the_same_interactions_recruited_by_search():
+    xor = [
+        (("0", "0", "0"), 1), (("0", "1", "1"), 1),
+        (("1", "0", "1"), 1), (("1", "1", "0"), 1),
+    ]
+    result = _bootstrap_stability(
+        xor, target=2, predictors=(0, 1),
+        repeats=48, case_cap=64, seed=987,
+        max_interaction_order=2,
+    )
+    assert result["observed_priority_group"] == [0, 1]
+    assert result["max_interaction_order"] == 2
+    assert [x["axes"] for x in result["groups"]] == [[0], [1], [0, 1]]
+    assert all(x["unique_top_group_fraction"] is not None
+               for x in result["groups"])
+    assert result["group_priority_rule"] == "IN_SAMPLE_INFORMATION_BITS_PER_GROUP_AXIS"
+    assert result["limitation"].find("POST_SELECTION_BIAS") >= 0
+    # Legacy single-predictor stability remains present, but is not used
+    # as a surrogate for the recruited two-axis group.
+    assert [x["axis"] for x in result["predictors"]] == [0, 1]
+
+
+def test_budget_refuses_interaction_bootstrap_explosion_without_fake_stability():
+    cells = [(("0", "0", "0", "0", "0", "0"), 1)] * 4096
+    result = _bootstrap_stability(
+        cells, target=5, predictors=(0, 1, 2, 3, 4),
+        repeats=200, case_cap=4096, seed=4,
+        max_interaction_order=3,
+    )
+    assert result["state"] == "HELD_GROUP_BOOTSTRAP_WORK_CAP"
+    assert result["repetitions_completed"] == 0
+
+
+def test_modal_tie_is_explicitly_ambiguous_not_discarded():
+    cells = [(("same", "yes"), 2), (("same", "no"), 2)]
+    findings = _source_minority(cells, target=1, axis=0)
+    assert len(findings) == 1
+    assert findings[0]["qualification"] == "TIED_MODAL_TARGETS__NO_UNIQUE_NONMODAL_LABEL"
+    assert findings[0]["raw_group_n"] == 4
+    assert "raw_contradictory_n" not in findings[0]
+
+
+def test_below_minimum_branch_never_claims_comparison_or_discloses_target_split():
+    _, _, _, query, execution = _real(tag="DHIKR-MULCH-BELOW-MINIMUM")
+    result = compare_dhikr_from_i03(
+        query=query, execution=execution,
+        request=DHIKRComparisonRequest(
+            target_axis=2, predictor_axes=(1,), fixed_context=((0, "0"),),
+            min_branch_n=3, max_nodes=4,
+        ),
+    ).material()
+    root = result["nodes"][0]
+    assert root["raw_same_case_n"] == 2
+    assert root["terminal_reason"] == "BELOW_MINIMUM_OBSERVED_CONTEXT_N"
+    assert root["sample_association_scores"] == []
+    assert root["priority_group"] == []
+    assert root["raw_target_counts"] == []
+    assert root["target_count_disposition"] == (
+        "HELD_BELOW_MIN_BRANCH_N__NO_CONTEXT_TARGET_DISCLOSURE"
+    )

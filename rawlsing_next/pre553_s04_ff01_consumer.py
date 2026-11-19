@@ -140,9 +140,11 @@ def receive_ff01_from_s04(
                 # already held under source-scoped S04, never by exporting
                 # identifying member refs into this portable receipt.
                 "source_knowledge_ref": knowledge.ref.as_dict(),
-                "unknown_member_ref_commitment": semantic_hash(
-                    material["source_unknown_condition_member_refs"]
-                ),
+                # The exact S04 knowledge ref already commits to the entire
+                # authenticated source statement, including the restricted
+                # roster. Do NOT publish a separate enumerable hash oracle
+                # over respondent identifiers under caller-declared rights.
+                "roster_binding": "EXACT_S04_KNOWLEDGE_REF_ONLY__NO_EXPORTED_ROSTER_DIGEST",
                 "unknown_member_n": len(
                     material["source_unknown_condition_member_refs"]
                 ),

@@ -47,3 +47,34 @@ New C3 sourcefree first-fault tests use actual I03/S04 XOR and context, explicit
 **PROGRAMMA proposed intake, not protected CAS:** add a single receipt to controlling #1097 and current one PROGRAMMA candidate with frozen original #1158, review branch HEAD, exact changed paths/ledger PF022–PF028, tests NOT_EXECUTED, science/source/owner/protected holds; update paired `CURRENT_PROGRESS.md/.json` only by competent authorized protected receiving owner. No new master PROGRAMMA.
 
 **Next operational handoff:** one of the exact-head C0/C1/C3 small courts on Mac; repair real REDs at first fault (don't weaken historical negatives), independent nonauthor attack on repaired current HEAD and original-condition membership, then source-mapping edition and real DHIKR method owner/science qualification. User's priority remains building the same integrated machine.
+
+## CONTINUATION MULCH — sourcefree implementation after independent #1164 author return
+
+**Parent**: #1164 exact `2b6d561c56c0d3227b65ffb501121a4c1a78b97e`; one linear continuation on same existing branch,
+not another PRE-FF backend or master plan. Implementation (not a G5 judgment):
+
+- **PF029 (permission):** removed separately enumerable unkeyed hash of restricted
+  unknown-respondent roster from FF01 portable receipts; the exact already
+  authenticated S04 knowledge ref is the sole holistic source binding, with
+  counts preserved and no identifiers exported. This is a minimized disclosure,
+  not a claim of anonymity or newly issued original-source permission.
+- **PF030 (genuine comparative advance):** constructed interaction-aligned
+  bounded IID bootstrap: the same candidate predictor groups and exactly the
+  same per-axis information-priority law are now used in recursive recruitment
+  and resampling. Group-specific estimated top fractions, observed priority,
+  tie and degenerate counts, historical single predictor diagnostics and
+  explicit post-selection limits travel in the DHIKR receipt. Work capped at
+  2,000,000 case-group evaluations; high work is HELD, not silently run.
+- **PF031 (sample integrity):** undersupported contextual nodes no longer
+  report ranked predictors or disaggregated target counts; tied-modal
+  contradictory contexts are represented as ambiguity rather than silently
+  disappearing; signed sample synergy/redundancy distinguishes the two.
+- **Tests authored**: actual native sourcefree I03→S04 XOR group receipt,
+  group-bootstrap standalone, resource-cap negative, tied-modal negative,
+  below-minimum contextual zero disclosure and FF01 roster-oracle refusal.
+  **Full first-fault C0/C1/C3 courts not executed here**; earlier parent
+  271-pass remains evidence only for #1157. Source and review owner rights HELD.
+- **Scientific remaining**: source-issued mapping edition/query/fact/Batch
+  currentness; adaptive selection-corrected uncertainty and design variance;
+  independent source permission for context/minority publication; original
+  100k economics; true FF02→SEAM and independently received G5.

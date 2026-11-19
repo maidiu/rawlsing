@@ -143,7 +143,17 @@ def _source_minority(
         maximum = max(counts.values())
         modal = {y for y, n in counts.items() if n == maximum}
         if len(modal) != 1:
-            # Tied modal observations do not issue an artificial majority.
+            # A tie is a real contradictory context, not an absence of
+            # contradiction. It does not license a fake single majority.
+            minority.append({
+                "predictor_axis": axis,
+                "predictor_state": original[x],
+                "raw_group_n": sum(counts.values()),
+                "tied_modal_target_states": [
+                    target_original[y] for y in sorted(modal)
+                ],
+                "qualification": "TIED_MODAL_TARGETS__NO_UNIQUE_NONMODAL_LABEL",
+            })
             continue
         for y in sorted(counts):
             if y not in modal and counts[y]:
@@ -157,17 +167,43 @@ def _source_minority(
                     "qualification": "NONMODAL_WITHIN_OBSERVED_CONTEXT__NOT_PERSONAL_TRAIT",
                 })
     minority.sort(key=lambda v: (
-        -v["raw_contradictory_n"],
-        _key(v["predictor_state"]), _key(v["target_state"])
+        -v.get("raw_contradictory_n", 0),
+        _key(v["predictor_state"]), _key(v.get("target_state"))
     ))
     return minority[:cap]
+
+
+def _candidate_groups(
+    cells: list[tuple[tuple[Any, ...], int]], target: int,
+    predictors: tuple[int, ...], max_order: int,
+) -> list[tuple[float, float, tuple[int, ...]]]:
+    """Exactly the bounded per-axis-normalized priority used in recursion.
+
+    Zero-signal groups are not a discovery result. The groups are exploratory
+    same-case sample associations, never a science-issued predictor ranking.
+    """
+    ordered: list[tuple[float, float, tuple[int, ...]]] = []
+    for width in range(1, min(max_order, len(predictors)) + 1):
+        for group in combinations(predictors, width):
+            signal = _association(cells, target, group)["information_bits"]
+            if signal is not None and signal > 1e-12:
+                ordered.append((signal / width, signal, group))
+    ordered.sort(key=lambda row: (-row[0], -row[1], row[2]))
+    return ordered
 
 
 def _bootstrap_stability(
     cells: list[tuple[tuple[Any, ...], int]],
     target: int, predictors: tuple[int, ...], *,
     repeats: int, case_cap: int, seed: int,
+    max_interaction_order: int = 1,
 ) -> dict[str, Any]:
+    """Bounded IID sample sensitivity for BOTH singles and recruited groups.
+
+    Historical single-predictor output is preserved, but the new group
+    fractions measure the same per-axis-normalized priority as the recursive
+    search. This does NOT correct data-dependent selection or survey design.
+    """
     n = sum(c for _, c in cells)
     if repeats == 0:
         return {"state": "NOT_REQUESTED__DESIGN_UNCERTAINTY_NOT_ESTABLISHED"}
@@ -177,11 +213,38 @@ def _bootstrap_stability(
     if n > case_cap:
         return {"state": "HELD_RESOURCE_CAP", "raw_n": n,
                 "max_case_n": case_cap, "repetitions_completed": 0}
+    if (type(max_interaction_order) is not int
+            or not 1 <= max_interaction_order <= 3):
+        raise DHIKRExplorationError("bootstrap interaction order must be finite 1..3")
+    groups = tuple(
+        group
+        for width in range(1, min(max_interaction_order, len(predictors)) + 1)
+        for group in combinations(predictors, width)
+    )
+    # Every resample must score ALL candidate groups; avoid accidentally
+    # multiplying the original bounded single-predictor budget by 92.
+    work = n * repeats * (len(groups) + len(predictors))
+    if work > 2_000_000:
+        return {"state": "HELD_GROUP_BOOTSTRAP_WORK_CAP",
+                "raw_n": n, "estimated_case_group_evaluations": work,
+                "max_case_group_evaluations": 2_000_000,
+                "repetitions_completed": 0}
+    observed = _candidate_groups(cells, target, predictors, max_interaction_order)
+    observed_top = observed[0][2] if observed else None
+    observed_by_group = {
+        group: _association(cells, target, group)["information_bits"]
+        for group in groups
+    }
     rng = Random(seed)
     values = [row for row, _ in cells]
     weights = [count for _, count in cells]
     draws_by_predictor: dict[int, list[float]] = {a: [] for a in predictors}
     winner: Counter[int] = Counter()
+    group_draws: dict[tuple[int, ...], list[float]] = {
+        group: [] for group in groups
+    }
+    group_winners: Counter[tuple[int, ...]] = Counter()
+    group_ties_or_no_signal = 0
     degenerate = 0
     for _ in range(repeats):
         indices = rng.choices(range(len(values)), weights=weights, k=n)
@@ -197,11 +260,27 @@ def _bootstrap_stability(
         for axis, value in computed.items():
             draws_by_predictor[axis].append(value)
         best = max(computed.values())
-        # A tie is not issued as a confident winner.
         tied = [axis for axis, value in computed.items()
                 if abs(value - best) <= 1e-10]
         if len(tied) == 1:
             winner[tied[0]] += 1
+        # Interaction units use EXACTLY recursion's priority rule, not the
+        # single-axis ranking previously mislabeled as recruitment stability.
+        group_priority = {}
+        for group in groups:
+            bits = _association(sampled, target, group)["information_bits"]
+            score = (bits or 0.0) / len(group)
+            group_draws[group].append(score)
+            group_priority[group] = score
+        top = max(group_priority.values(), default=0.0)
+        group_ties = [
+            group for group, score in group_priority.items()
+            if abs(score - top) <= 1e-10
+        ]
+        if top <= 1e-12 or len(group_ties) != 1:
+            group_ties_or_no_signal += 1
+        else:
+            group_winners[group_ties[0]] += 1
 
     def percentile(sorted_scores: list[float], fraction: float) -> float | None:
         if not sorted_scores:
@@ -217,6 +296,29 @@ def _bootstrap_stability(
         "repetitions_with_target_variation": retained,
         "degenerate_target_repetitions": degenerate,
         "seed": seed,
+        "max_interaction_order": max_interaction_order,
+        "observed_priority_group": list(observed_top) if observed_top else None,
+        "group_priority_rule": "IN_SAMPLE_INFORMATION_BITS_PER_GROUP_AXIS",
+        "group_tie_or_zero_signal_repetitions": group_ties_or_no_signal,
+        "groups": [
+            {
+                "axes": list(group),
+                "observed_information_bits": observed_by_group[group],
+                "observed_priority_bits_per_axis": (
+                    round(observed_by_group[group] / len(group), 12)
+                    if observed_by_group[group] is not None else None
+                ),
+                "empirical_priority_5_to_95_percentiles": [
+                    percentile(sorted(group_draws[group]), 0.05),
+                    percentile(sorted(group_draws[group]), 0.95),
+                ],
+                "unique_top_group_fraction": (
+                    round(group_winners[group] / retained, 10)
+                    if retained else None
+                ),
+            }
+            for group in groups
+        ],
         "predictors": [
             {
                 "axis": axis,
@@ -231,7 +333,7 @@ def _bootstrap_stability(
             for axis in predictors
         ],
         "limitation": "IID_CASE_RESAMPLING_ASSUMPTION_UNISSUED__"
-                      "SELECTION_EFFECTS_AND_COMPLEX_SURVEY_DESIGN_NOT_ESTIMATED",
+                      "POST_SELECTION_BIAS_AND_COMPLEX_SURVEY_DESIGN_NOT_ESTIMATED",
     }
 
 
@@ -327,6 +429,8 @@ def analyze_s04_dhikr(
             "IN_SAMPLE_CONDITIONAL_ENTROPY_REDUCTION_NOT_CAUSAL_DETERMINISM",
             "NO_COMPLEX_SURVEY_VARIANCE_OR_POPULATION_RANK_AUTHORITY",
             "EXPLORATORY_ADAPTIVE_CONTEXT_SELECTION_NOT_FAMILYWISE_VALIDATED",
+            "BOOTSTRAP_GROUP_RANK_IS_SELECTED_SAMPLE_SENSITIVITY_NOT_POPULATION_INFERENCE",
+            "NO_SOURCE_ISSUED_CONTEXT_DISCLOSURE_OR_MINORITY_THEORY",
             "NO_PER_CELL_PERSONAL_MEMBERSHIP_IN_AGGREGATE_S04",
             "NO_INDEPENDENT_ORIGINAL_SOURCE_CURRENTNESS",
             "NO_FF02_OR_PSYCHIC_ACTOR_FACT_EMITTED",
@@ -362,6 +466,7 @@ def analyze_s04_dhikr(
         repeats=request.bootstrap_replicates,
         case_cap=request.bootstrap_case_cap,
         seed=seed,
+        max_interaction_order=request.max_interaction_order,
     ) if any(a not in dict(context) for a in request.predictor_axes) else {
         "state": "NO_UNCONDITIONED_PREDICTOR_LEFT"
     }
@@ -374,30 +479,32 @@ def analyze_s04_dhikr(
         n = sum(count for _, count in data)
         remaining = tuple(a for a in request.predictor_axes if a not in dict(keys))
         scores = []
-        for axis in remaining:
-            metrics = _association(data, request.target_axis, (axis,))
-            scores.append({"axis": axis, **metrics})
+        if n >= request.min_branch_n:
+            for axis in remaining:
+                metrics = _association(data, request.target_axis, (axis,))
+                scores.append({"axis": axis, **metrics})
         scores.sort(key=lambda v: (
             -(v["information_bits"] or 0), v["axis"]
         ))
         interactions = []
-        for a, b in combinations(remaining, 2):
-            ia = _association(data, request.target_axis, (a,))["information_bits"]
-            ib = _association(data, request.target_axis, (b,))["information_bits"]
-            iab = _association(data, request.target_axis, (a, b))["information_bits"]
-            interactions.append({
-                "axes": [a, b], "joint_information_bits": iab,
-                "sample_interaction_information_bits": round(iab - ia - ib, 12)
-                if ia is not None else None,
-                "interpretation": "POSITIVE_SYNERGY_OR_NEGATIVE_REDUNDANCY__DESCRIPTIVE",
-            })
-        frontier_groups = []
-        for k in range(1, min(request.max_interaction_order, len(remaining)) + 1):
-            for group in combinations(remaining, k):
-                signal = _association(data, request.target_axis, group)["information_bits"]
-                if signal is not None and signal > 1e-12:
-                    frontier_groups.append((signal / k, signal, group))
-        frontier_groups.sort(key=lambda x: (-x[0], -x[1], x[2]))
+        if n >= request.min_branch_n:
+            for a, b in combinations(remaining, 2):
+                ia = _association(data, request.target_axis, (a,))["information_bits"]
+                ib = _association(data, request.target_axis, (b,))["information_bits"]
+                iab = _association(data, request.target_axis, (a, b))["information_bits"]
+                interaction = round(iab - ia - ib, 12) if ia is not None and ib is not None and iab is not None else None
+                interactions.append({
+                    "axes": [a, b], "joint_information_bits": iab,
+                    "sample_interaction_information_bits": interaction,
+                    "interpretation": (
+                        "SAMPLE_SYNERGY__NONCAUSAL" if interaction is not None and interaction > 1e-12
+                        else "SAMPLE_REDUNDANCY__NONCAUSAL" if interaction is not None and interaction < -1e-12
+                        else "ZERO_OR_UNRESOLVED_SAMPLE_INTERACTION__NONCAUSAL"
+                    ),
+                })
+        frontier_groups = _candidate_groups(
+            data, request.target_axis, remaining, request.max_interaction_order
+        ) if n >= request.min_branch_n else []
         best = frontier_groups[0] if frontier_groups else None
         split_axis = best[2][0] if best is not None else None
         node_id = len(result["nodes"])
@@ -413,7 +520,12 @@ def analyze_s04_dhikr(
                     if _key(row[request.target_axis]) == _key(value)
                 )}
                 for value in workspace._domains[request.target_axis]
-            ],
+            ] if n >= request.min_branch_n else [],
+            "target_count_disposition": (
+                "OBSERVED_SAMPLE_COUNTS__NOT_POPULATION"
+                if n >= request.min_branch_n
+                else "HELD_BELOW_MIN_BRANCH_N__NO_CONTEXT_TARGET_DISCLOSURE"
+            ),
             "sample_association_scores": scores,
             "pairwise_conditional_interactions": interactions,
             "priority_group": list(best[2]) if best else [],
